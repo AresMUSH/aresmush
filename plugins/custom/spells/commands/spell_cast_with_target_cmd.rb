@@ -39,11 +39,10 @@ module AresMUSH
             self.caster_combat = enactor.combatant
             self.target_combat = combat.find_combatant(target_name)
           end
-          arg_array = [self.target_name, self.spell]
-          self.action_args = arg_array.join("/")
-          client.emit "Test"
-        end
 
+        end
+        arg_array = [self.target_name, self.spell]
+        self.action_args = arg_array.join("/")
       end
 
       def check_errors
@@ -98,7 +97,6 @@ module AresMUSH
 
             #Roll Spell in Combat
             if roll == true
-              client.emit self.action_args
               FS3Combat.set_action(client, enactor, enactor.combat, caster_combat, FS3Combat::RollSpellTargetAction, self.action_args)
             end
 

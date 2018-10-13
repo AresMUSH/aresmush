@@ -23,8 +23,7 @@ attr_accessor  :spell, :args, :action, :target, :names
       end
 
       def print_action
-        msg = self.action_args
-        # msg = t('custom.roll_spell_target_action_msg_long', :name => self.name, :spell => self.spell, :target => print_target_names)
+        msg = t('custom.roll_spell_target_action_msg_long', :name => self.name, :spell => self.spell, :target => print_target_names)
         msg
       end
 
