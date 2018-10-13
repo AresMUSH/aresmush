@@ -6,3 +6,4 @@ manage:
     name: rename
     nuke: destroy
     wall: announce
+    about: version
