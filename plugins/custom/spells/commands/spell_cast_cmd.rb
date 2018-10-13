@@ -29,7 +29,7 @@ module AresMUSH
           end
 
         end
-        arg_array = [enactor.name, spell]
+        arg_array = [caster_name, spell]
         self.args = arg_array.join("/")
       end
 
