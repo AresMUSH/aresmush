@@ -15,8 +15,8 @@ File.open('version.txt', 'w') do |file|
   file.puts release_version
 end
 
-File.open(File.join('..', 'ares-webportal', 'version.txt'), 'w') do |file|
-  file.puts release_version
+File.open(File.join('..', 'ares-webportal', 'public', 'scripts', 'aresweb_version.js'), 'w') do |file|
+  file.puts "var aresweb_version = #{release_version};"
 end
 
 
