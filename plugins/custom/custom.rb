@@ -43,6 +43,8 @@ module AresMUSH
           return ItemAddCmd
         when "equip"
           return ItemEquipCmd
+        when "unequip"
+          return ItemUnequipCmd
         when "remove"
           return ItemRemoveCmd
         end

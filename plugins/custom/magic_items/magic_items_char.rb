@@ -2,6 +2,8 @@ module AresMUSH
   class Character < Ohm::Model
     collection :magic_items, "AresMUSH::MagicItems"
     attribute :magic_item_equipped, :default => "None"
+    attribute :item_spell
+    attribute :item_spell_mod, :type => DataType::Integer, :default => 0
     end
 end
 

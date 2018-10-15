@@ -1,6 +1,6 @@
 module AresMUSH
   module Custom
-    class ItemEquipCmd
+    class ItemUnequipCmd
     #item/equip <item>
       include CommandHandler
       attr_accessor :caster, :caster_name, :item_name
@@ -29,24 +29,17 @@ module AresMUSH
 
       def check_errors
         return t('custom.not_character') if !caster
-        return t('custom.item_not_owned') if !Custom.find_item(caster, item_name)
+        return t('custom.item_not_equipped') if item_name != caster.magic_item_equipped
       end
 
       def handle
         item = Custom.find_item(caster, item_name)
-        spell_mod = item.item_spell_mod
-        if spell_mod
-          caster.update(item_spell_mod: spell_mod)
-        end
+        caster.update(item_spell_mod: 0)
+        caster.update(item_spell: nil)
 
-        spell = item.spell
-        if spell
-          caster.update(item_spell: spell)
-        end
-
-        caster.update(magic_item_equipped: item_name)
-        client.emit_success t('custom.item_equipped', :item => self.item_name)
-        enactor_room.emit t('custom.has_equipped_item', :name => self.caster.name, :item => self.item_name)
+        caster.update(magic_item_equipped: "None")
+        client.emit_success t('custom.item_unequipped', :item => self.item_name)
+        enactor_room.emit t('custom.has_unequipped_item', :name => self.caster.name, :item => self.item_name)
       end
 
 
