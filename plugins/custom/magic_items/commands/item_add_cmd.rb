@@ -34,11 +34,11 @@ module AresMUSH
 
         MagicItems.create(name: name, character: self.target, desc: desc, weapon_specials: weapon_specials, armor_specials: armor_specials, spell: spell, item_spell_mod: spell_mod)
 
-        client.emit_success t('custom.added_magic_item', :item_name => name, :target => target.name)
+        client.emit_success t('custom.added_magic_item', :item => name, :target => target.name)
 
-        message = t('custom.given_magic_item', :name => enactor.name, :item_name => name)
+        message = t('custom.given_magic_item', :name => enactor.name, :item => name)
         client.emit_success message
-        Mail.send_mail([target.name], t('custom.give_magic_item_subj'), message, nil)
+        Mail.send_mail([target.name], t('custom.give_magic_item_subj', :item => name), message, nil)
 
       end
 
