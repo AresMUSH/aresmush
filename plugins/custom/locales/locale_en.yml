@@ -130,6 +130,7 @@ en:
       # ----------------------------
       # MAGIC ITEMS
       # ----------------------------
+      magic_items_title: "%{name}'S MAGIC ITEMS"
       item_equipped: "You have equipped %{item}."
       has_equipped_item: "%{name} has equipped %{item}"
       item_unequipped: "You have unequipped %{item}."
@@ -142,4 +143,4 @@ en:
       given_magic_item_subj: "%{item} Recieved"
       target_does_not_have_item: "They do not have that item."
       magic_item_removed: "%{name} has removed the magical item %{item} from your inventory."
-      magic_item_removed_subj: ""%{item} Removed"
+      magic_item_removed_subj: "%{item} Removed"

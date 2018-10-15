@@ -31,9 +31,9 @@ module AresMUSH
 
         client.emit_success t('custom.removed_item', :item => item_name, :target => target.name)
 
-        message = t('custom.magic_item_removed', :name => enactor.name, :item_name => item_name)
+        message = t('custom.magic_item_removed', :name => enactor.name, :item => item_name)
         client.emit_success message
-        Mail.send_mail([target.name], t('custom.magic_item_removed_subj'), message, nil)
+        Mail.send_mail([target.name], t('custom.magic_item_removed_subj', :item => item_name), message, nil)
 
       end
 
