@@ -1,0 +1,57 @@
+---
+fate:
+    skills:
+        - 
+            name: Athletics
+            description: "General physical fitness and feats like running, jumping, etc."
+        -
+            name: Burglary
+            description: "Stealing things and getting into places."
+        -
+            name: Contacts
+            description: Networking and making connections.
+        -
+            name: Crafts
+            description: Working with machinery.
+        -
+            name: Deceive
+            description: Lying to and misdirecting people.
+        -
+            name: Drive
+            description: Operating vehicles.
+        -
+            name: Empathy
+            description: Reading someone's mood or bearing.
+        -
+            name: Fight
+            description: Close-quarters combat.
+        -
+            name: Investigate
+            description: In-depth scrutiny and finding things out.
+        -
+            name: Lore
+            description: Knowledge and education.
+        -
+            name: Notice
+            description: Noticing things.
+        -
+            name: Physique
+            description: Raw strength and endurance.
+        -
+            name: Provoke
+            description: The 'being a jerk' skill.
+        -
+            name: Rapport
+            description: Making positive connections with people.
+        -
+            name: Resources
+            description: Material wealth.
+        -
+            name: Shoot
+            description: Using ranged weapons.
+        -
+            name: Stealth
+            description: Sneaking around.
+        -
+            name: Will
+            description: Mental fortitude.

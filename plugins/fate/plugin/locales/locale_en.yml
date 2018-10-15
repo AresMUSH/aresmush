@@ -1,0 +1,38 @@
+---
+en:
+  fate:
+      already_have_aspect: "You already have that aspect."
+      aspect_added: "Aspect added."
+      aspect_removed: "Aspect removed."
+      dont_have_aspect: "You don't have that aspect."
+      
+      fate_point_spent: "%{name} has spent a fate point on %{reason}."
+      not_enough_points: "You don't have any more points."
+      fate_point_awarded: "You give fate points to %{name}."
+      fate_refreshed: "Everyone's fate points have been refreshed."
+      
+      stunt_set: "Stunt set."
+      stunt_removed: "Stunt removed."
+      dont_have_stunt: "You don't have that stunt."
+      see_stunts_list: "See stunts list."
+      stunt_description_required: "A stunt description is required for custom stunts."
+
+      stunts_title: "Stunts"
+      skills_title: "Skills"
+      aspects_title: "Aspects"
+      fate_points_title: "Fate Points:"
+      refresh_title: "Refresh:"
+      
+      skill_removed: "Skill removed."
+      skill_set: "Skill set."
+      invalid_rating: "That is not a valid skill rating."
+      
+      roll_results: "%{name} rolls %{roll_str} and gets %{result} (%{roll})."
+      opposed_roll_results: "Opposed Roll: %{name1}/%{roll_str1} - %{result1} (%{roll1}) vs %{name2}/%{roll_str2} - %{result2} (%{roll2}).  %{overall}"
+      opposed_win: "%{name} wins."
+      opposed_draw: "DRAW!"
+      
+      review_num_stunts: "%{total} stunts (%{max} max)."
+      review_num_aspects: "%{total} aspects (%{max} max, %{min} min)."
+      review_skills: "Checking skill levels."
+      too_many_skills: "Too many skills at %{rating} (%{max} max)."

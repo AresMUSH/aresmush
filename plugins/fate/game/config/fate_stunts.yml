@@ -1,0 +1,22 @@
+---
+fate:
+    stunts:
+        - 
+            name: Sprinter
+            description: "Double free movement."
+        - 
+            name: Hardcore Parkour
+            description: "+2 to overcome with Athletics in places you can parkour."
+        - 
+            name: Dazing Counter
+            description: "Succeed with style on a defend action lets you Daze the opponent with an invoke."
+        - 
+            name: Always A Way Out
+            description: "+2 to Burglary to escape."
+        - 
+            name: Security Specialist
+            description: "Provide active opposition when someone's overcoming your security measures."
+        - 
+            name: Talk The Talk
+            description: "Use Burglary instead of Contacts when talking with thieves."
+
