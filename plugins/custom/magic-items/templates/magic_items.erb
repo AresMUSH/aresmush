@@ -1,0 +1,12 @@
+%lh
+<%= t('custom.magic_items_title', :name => char.name.upcase) %>
+<% magic_items.each do |a| %>
+<%= a.name %>
+
+<%= a.desc %>
+<%= a.spell %>
+<% end %>
+
+
+
+%lf
