@@ -31,6 +31,22 @@ module AresMUSH
           return GMSecretsCmd
         end
       end
+    #Items
+      case cmd.root
+      when "items"
+        return ItemsCmd
+      end
+      case cmd.root
+      when "item"
+        case cmd.switch
+        when "add"
+          return ItemAddCmd
+        when "equip"
+          return ItemEquipCmd
+        when "remove"
+          return ItemRemoveCmd
+        end
+      end
     #Potions
       case cmd.root
       when "potion"

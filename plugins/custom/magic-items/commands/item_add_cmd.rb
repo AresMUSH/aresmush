@@ -31,7 +31,7 @@ module AresMUSH
         desc = Global.read_config("magic-items", self.item_name, "desc")
 
 
-        MagicItem.create(name: name, character: self.target, desc: desc, weapon_specials: weapon_specials, armor_specials: armor_specials, spell: spell)
+        MagicItems.create(name: name, character: self.target, desc: desc, weapon_specials: weapon_specials, armor_specials: armor_specials, spell: spell)
 
         client.emit_success t('custom.added_magic_item', :item_name => name, :target => target.name)
 
