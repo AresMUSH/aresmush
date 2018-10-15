@@ -1,0 +1,23 @@
+---
+fate:
+    physical_stress_skill: Physique
+    mental_stress_skill: Will
+    max_starting_aspects: 5
+    starting_skills:
+        "Average" : 4
+        "Fair" : 3
+        "Good" : 2
+        "Great" : 1
+        "Superb": 0
+        "Fantastic": 0
+        "Legendary": 0
+    max_stunts: 5
+    refresh_cron: {}
+    
+    shortcuts: 
+        "stunts": stunt
+        "aspects": aspect
+        "skills": skill
+        "stunt/add": "stunt/set"
+        "stunt/delete": "stunt/remove"
+        "aspect/add": "aspect/set"

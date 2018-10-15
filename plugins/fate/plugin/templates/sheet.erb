@@ -1,0 +1,20 @@
+%lh
+%xh<%= char.name %>%xn <%= center( approval_status, 23 ) %>
+<%= line_with_text t('fate.aspects_title') %>
+<% aspects.each do |a| %>
+<%= a %>
+<% end %> 
+
+<%= line_with_text t('fate.skills_title') -%>
+<% skills.each do |a| -%>
+<%= a -%>
+<% end %> 
+
+
+<%= line_with_text t('fate.stunts_title') %>
+<% stunts.each do |name, desc| %>
+<%= name %> - <%= desc %>
+<% end %> 
+
+%xh<%= t('fate.refresh_title') %>%xn <%= left( char.fate_refresh, 30 ) %> %xh<%= t('fate.fate_points_title') %>%xn <%= char.fate_points %>
+%lf
