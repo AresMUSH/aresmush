@@ -29,7 +29,7 @@ module AresMUSH
 
         item.delete
 
-        client.emit_success t('custom.item_removed', :item => item_name, :target => target.name)
+        client.emit_success t('custom.removed_item', :item => item_name, :target => target.name)
 
         message = t('custom.magic_item_removed', :name => enactor.name, :item_name => item_name)
         client.emit_success message
