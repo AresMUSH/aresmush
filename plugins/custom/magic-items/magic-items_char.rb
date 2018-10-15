@@ -1,9 +1,8 @@
 module AresMUSH
   class Character < Ohm::Model
     collection :magic_item, "AresMUSH::PotionsHas"
-    attribute :magic_item_equipped, :string, default: "None"
-
-  end
+    attribute :magic_item_equipped, :default => "None"
+    end
 end
 
   class MagicItem < Ohm::Model

@@ -18,7 +18,7 @@ module AresMUSH
 
       def check_errors
         return t('custom.invalid_name') if !self.target
-        return t('custom.not_spell') if !Custom.is_item?(self.item_name)
+        return t('custom.not_item') if !Custom.is_item?(self.item_name)
         return nil
       end
 
@@ -32,9 +32,12 @@ module AresMUSH
 
 
         MagicItem.create(name: name, character: self.target, desc: desc, weapon_specials: weapon_specials, armor_specials: armor_specials, spell: spell)
+
         client.emit_success t('custom.added_magic_item', :item_name => name, :target => target.name)
-        # other_client = Login.find_client(self.target)
-        # other_client.emit t('custom.potion_has_been_added', :name => enactor.name, :potion_name => potion_name)
+
+        message = t('custom.given_magic_item', :name => enactor.name, :item_name => name)
+        client.emit_success message
+        Mail.send_mail([target.name], t('custom.give_magic_item_subj'), message, nil)
 
       end
 
