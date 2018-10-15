@@ -45,11 +45,12 @@ module AresMUSH
       luck_mod = (combatant.luck == "Attack") ? 3 : 0
       distraction_mod = combatant.distraction
       spell_mod = combatant.spell_mod
+      item_spell_mod = combatant.associated_model.item_spell_mod
 
 
       combatant.log "Attack roll for #{combatant.name} school=#{school} accuracy=#{accuracy_mod} damage=#{damage_mod} stance=#{stance_mod} luck=#{luck_mod} stress=#{stress_mod} special=#{special_mod} distract=#{distraction_mod}"
 
-      mod = spell_mod.to_i + accuracy_mod.to_i + damage_mod.to_i  + stance_mod.to_i  + luck_mod.to_i  - stress_mod.to_i  + special_mod.to_i  - distraction_mod.to_i
+      mod = item_spell_mod.to_i + spell_mod.to_i + accuracy_mod.to_i + damage_mod.to_i  + stance_mod.to_i  + luck_mod.to_i  - stress_mod.to_i  + special_mod.to_i  - distraction_mod.to_i
 
       successes = combatant.roll_ability(school, mod)
       return successes
@@ -93,8 +94,9 @@ module AresMUSH
     end
 
     def self.roll_noncombat_spell_success(caster, spell)
+      mod = caster.item_spell_mod
       school = Global.read_config("spells", spell, "school")
-      roll = caster.roll_ability(school)
+      roll = caster.roll_ability(school, mod)
       die_result = roll[:successes]
       succeeds = Custom.combat_spell_success(spell, die_result)
     end

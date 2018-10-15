@@ -1,6 +1,8 @@
 module AresMUSH
   class Character < Ohm::Model
     collection :spells_learned, "AresMUSH::SpellsLearned"
+    attribute :item_spell_mod, :type => DataType::Integer, :default => 0
+    attribute :item_spell
   end
 end
 

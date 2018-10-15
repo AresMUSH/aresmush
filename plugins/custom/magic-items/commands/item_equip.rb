@@ -33,6 +33,16 @@ module AresMUSH
       end
 
       def handle
+        item = Custom.find_item(caster, item_name)
+        spell_mod = item.item_spell_mod
+        if spell_mod
+          caster.update(item_spell_mod: spell_mod)
+        end
+
+        spell = item.spell
+        if spell
+          caster.update(item_spell: spell)
+        end
 
         caster.update(magic_item_equipped: item_name)
         client.emit_success t('custom.item_equipped', :item => self.item_name)
