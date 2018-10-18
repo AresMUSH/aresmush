@@ -14,9 +14,7 @@ module AresMUSH
         elsif (char.is_statue?)
           return { error: t('dispatcher.you_are_statue') }
         end
-        char.update(login_api_token: "#{SecureRandom.uuid}")
-        char.update(login_api_token_expiry: Time.now + 86400)
-        
+        char.set_login_token
         {
           token: char.login_api_token,
           name: char.name,
