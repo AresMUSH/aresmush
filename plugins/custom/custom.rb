@@ -47,6 +47,8 @@ module AresMUSH
           return ItemUnequipCmd
         when "remove"
           return ItemRemoveCmd
+        when "give"
+          return GiveItemCmd
         end
       end
     #Potions

@@ -22,12 +22,7 @@ module AresMUSH
            self.caster = enactor
            self.item_name = titlecase_arg(args.arg1)
 
-
-
           end
-          client.emit item_name
-          find = Custom.find_item(caster, item_name)
-          client.emit find
       end
 
       def check_errors
@@ -36,9 +31,9 @@ module AresMUSH
       end
 
       def handle
-
+        item = Custom.find_item(enactor, item_name)
         caster.update(magic_item_equipped: item_name)
-        client.emit caster.magic_item_equipped
+        client.emit_success t('custom.item_equipped', :item => caster.magic_item_equipped)
       end
 
 

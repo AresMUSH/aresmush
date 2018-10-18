@@ -12,6 +12,9 @@ module AresMUSH
         @char.magic_items
       end
 
+      def equipped_item
+        @char.magic_item_equipped
+      end
 
       def format_two_per_line(list)
         list.to_a.sort_by { |a| a.name }

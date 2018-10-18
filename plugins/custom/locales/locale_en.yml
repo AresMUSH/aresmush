@@ -144,3 +144,7 @@ en:
       target_does_not_have_item: "They do not have that item."
       magic_item_removed: "%{name} has removed the magical item %{item} from your inventory."
       magic_item_removed_subj: "%{item} Removed"
+      dont_have_item: "You do not have that item."
+      give_item: "You have given %{target} %{item}."
+      item_has_been_given: "%{name} has given you %{item}. Type `items` to see details."
+      unequip_first: "You can't given away items you have equipped. Do `item/unequip %{item}` first."
