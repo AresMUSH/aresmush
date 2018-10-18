@@ -13,6 +13,10 @@ module AresMUSH
       Scenes.custom_format(pose, recipient, enactor)
     end
     
+    def self.format_autospace(enactor, autospace_str)
+      autospace_str.gsub(/\%n/i, Demographics.name_and_nickname(enactor))
+    end
+    
     def self.add_to_scene(scene, pose, character = Game.master.system_character, is_setpose = nil, is_ooc = nil)
       return if !scene.logging_enabled
       
@@ -31,6 +35,7 @@ module AresMUSH
           is_ooc: scene_pose.is_ooc,
           pose: Website.format_markdown_for_html(scene_pose.pose) 
         }.to_json
+      scene.update(last_activity: Time.now)
       Scenes.new_scene_activity(scene, data)
       if (!is_ooc)
         Scenes.handle_word_count_achievements(character, pose)
