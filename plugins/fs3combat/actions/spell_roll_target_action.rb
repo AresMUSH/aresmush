@@ -5,8 +5,14 @@ module AresMUSH
 attr_accessor  :spell, :args, :action, :target, :names
 
       def prepare
-        self.names = self.action_args.before("/")
-        self.spell = self.action_args.after("/")
+
+        if (self.action_args =~ /\//)
+          self.names = self.action_args.before("/")
+          self.spell = self.action_args.after("/")
+        else
+          self.names = self.name
+          self.spell = self.action_args
+        end
 
         error = self.parse_targets(self.names)
         return error if error
@@ -17,7 +23,7 @@ attr_accessor  :spell, :args, :action, :target, :names
       end
 
       def print_action
-        msg = t('custom.roll_spell__target_action_msg_long', :name => self.name, :spell => self.spell, :target => print_target_names)
+        msg = t('custom.roll_spell_target_action_msg_long', :name => self.name, :spell => self.spell, :target => print_target_names)
         msg
       end
 
