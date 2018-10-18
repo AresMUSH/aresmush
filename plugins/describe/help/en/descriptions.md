@@ -31,6 +31,8 @@ Characters have a short description that shows up in things like the glance comm
 
 `shortdesc <name>=<description>` - Sets your short desc.
 `shortdesc/edit <name>` - Grabs an existing short desc into your input buffer.
+  
+> Note: Exits can have a short description also, which is used in place of the destination name when listing exits in a room.
 
 ## Outfits and Details
 
