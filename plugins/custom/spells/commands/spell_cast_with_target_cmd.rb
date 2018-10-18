@@ -88,7 +88,7 @@ module AresMUSH
         if self.caster.combat
           if self.caster_combat.is_ko
             client.emit_failure t('custom.spell_ko')
-          elsif (!caster_combat.is_npc? &&  Custom.knows_spell?(caster, self.spell) == false)
+          elsif (!caster_combat.is_npc? &&  Custom.knows_spell?(caster, self.spell) == false && Custom.item_spell(caster) != spell)
               client.emit_failure t('custom.dont_know_spell')
           else
 
