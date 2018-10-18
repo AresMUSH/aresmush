@@ -126,3 +126,25 @@ en:
       awarded_luck_title: "%{target} awarded %{luck} luck."
       spent_luck: "%{name} has spent 1 luck point. %R%RReason: %{reason}"
       spent_luck_title: "%{name} spent luck."
+
+      # ----------------------------
+      # MAGIC ITEMS
+      # ----------------------------
+      magic_items_title: "%{name}'S MAGIC ITEMS"
+      item_equipped: "You have equipped %{item}."
+      has_equipped_item: "%{name} has equipped %{item}"
+      item_unequipped: "You have unequipped %{item}."
+      has_unequipped_item: "%{name} has unequipped %{item}"
+      item_not_equipped: "That item is not equipped."
+      not_item: "That is not an item."
+      added_item: "You have added %{item} to %{target}."
+      removed_item: "You have removed %{item} from %{target}."
+      given_magic_item: "%{name} has given you the magical item %{item}."
+      given_magic_item_subj: "%{item} Recieved"
+      target_does_not_have_item: "They do not have that item."
+      magic_item_removed: "%{name} has removed the magical item %{item} from your inventory."
+      magic_item_removed_subj: "%{item} Removed"
+      dont_have_item: "You do not have that item."
+      give_item: "You have given %{target} %{item}."
+      item_has_been_given: "%{name} has given you %{item}. Type `items` to see details."
+      unequip_first: "You can't given away items you have equipped. Do `item/unequip %{item}` first."

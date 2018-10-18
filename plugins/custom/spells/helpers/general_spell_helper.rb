@@ -36,7 +36,7 @@ module AresMUSH
     end
 
 
-    def self.roll_combat_spell(char, combatant, school)
+    def self.roll_combat_spell(char, combatant, school, mod)
       accuracy_mod = FS3Combat.weapon_stat(combatant.weapon, "accuracy")
       special_mod = combatant.attack_mod
       damage_mod = combatant.total_damage_mod
@@ -45,11 +45,12 @@ module AresMUSH
       luck_mod = (combatant.luck == "Attack") ? 3 : 0
       distraction_mod = combatant.distraction
       spell_mod = combatant.spell_mod
+      item_spell_mod = Custom.item_spell_mod(combatant.associated_model)
 
 
-      combatant.log "Attack roll for #{combatant.name} school=#{school} accuracy=#{accuracy_mod} damage=#{damage_mod} stance=#{stance_mod} luck=#{luck_mod} stress=#{stress_mod} special=#{special_mod} distract=#{distraction_mod}"
+      combatant.log "Attack roll for #{combatant.name} school=#{school} mod=#{mod} spell_mod=#{spell_mod} item_spell_mod=#{item_spell_mod} accuracy=#{accuracy_mod} damage=#{damage_mod} stance=#{stance_mod} luck=#{luck_mod} stress=#{stress_mod} special=#{special_mod} distract=#{distraction_mod}"
 
-      mod = spell_mod.to_i + accuracy_mod.to_i + damage_mod.to_i  + stance_mod.to_i  + luck_mod.to_i  - stress_mod.to_i  + special_mod.to_i  - distraction_mod.to_i
+      mod = mod + item_spell_mod.to_i + spell_mod.to_i + accuracy_mod.to_i + damage_mod.to_i  + stance_mod.to_i  + luck_mod.to_i  - stress_mod.to_i  + special_mod.to_i  - distraction_mod.to_i
 
       successes = combatant.roll_ability(school, mod)
       return successes
@@ -86,15 +87,34 @@ module AresMUSH
       end
     end
 
-    def self.roll_combat_spell_success(caster, spell)
-      school = Global.read_config("spells", spell, "school")
-      die_result = Custom.roll_combat_spell(caster, caster, school)
+    def self.roll_combat_spell_success(caster_combat, spell)
+      if Custom.knows_spell?(caster_combat.associated_model, spell)
+        school = Global.read_config("spells", spell, "school")
+        mod = 0
+      elsif caster_combat.npc
+        school = Global.read_config("spells", spell, "school")
+        mod = 0
+      else
+        school = "Magic"
+        mod = FS3Skills.ability_rating(caster_combat.associated_model, "Magic") * 2
+      end
+
+      die_result = Custom.roll_combat_spell(caster_combat, caster_combat, school, mod)
       succeeds = Custom.combat_spell_success(spell, die_result)
     end
 
     def self.roll_noncombat_spell_success(caster, spell)
-      school = Global.read_config("spells", spell, "school")
-      roll = caster.roll_ability(school)
+      if Custom.knows_spell?(caster, spell)
+        school = Global.read_config("spells", spell, "school")
+        mod = 0
+      else
+        school = "Magic"
+        mod = FS3Skills.ability_rating(caster, "Magic") * 2
+      end
+
+      spell_mod = Custom.item_spell_mod(caster)
+      total_mod = mod.to_i + spell_mod.to_i
+      roll = caster.roll_ability(school, total_mod)
       die_result = roll[:successes]
       succeeds = Custom.combat_spell_success(spell, die_result)
     end

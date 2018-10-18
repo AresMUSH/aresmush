@@ -1,6 +1,7 @@
 module AresMUSH
   class Character < Ohm::Model
     collection :spells_learned, "AresMUSH::SpellsLearned"
+
   end
 end
 
