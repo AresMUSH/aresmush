@@ -13,7 +13,19 @@ module AresMUSH
       end
 
       def equipped_item
-        @char.magic_item_equipped
+        if @char.magic_item_equipped
+          @char.magic_item_equipped
+        else
+          "None"
+        end
+      end
+
+      def length
+        if equipped_item
+          equipped_item.length
+        else
+          0
+        end
       end
 
       def format_two_per_line(list)

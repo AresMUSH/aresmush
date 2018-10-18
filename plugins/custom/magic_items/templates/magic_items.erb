@@ -1,6 +1,6 @@
 %lh
 <%= t('custom.magic_items_title', :name => char.name.upcase) -%>
-<%= right( "Equipped: ", 55 - equipped_item.length ) -%>
+<%= right( "Equipped: ", 55 - length ) -%>
 <%= equipped_item %>
 <% magic_items.each do |a| -%>
 

@@ -10,10 +10,9 @@ end
     attribute :name
     index :name
     reference :character, "AresMUSH::Character"
-    attribute :description
+    attribute :desc
     attribute :spell
     attribute :weapon_specials
     attribute :armor_specials
     attribute :item_spell_mod
-
   end
