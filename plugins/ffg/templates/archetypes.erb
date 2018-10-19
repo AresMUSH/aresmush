@@ -1,0 +1,13 @@
+%lh
+%xh<%= t('ffg.archetypes_title') %>%xn
+
+<% types.each do |c| %>
+<%= left c['name'], 15 %> 
+  %xh<%= t('ffg.characteristics_title') %>:%xn <%= characteristics(c) %>
+  %xh<%= t('ffg.xp_title') %>%xn <%= c['xp'] -%>
+  %xh<%= t('ffg.strain_title') %>%xn <%= c['strain'] -%>
+  %xh<%= t('ffg.wound_title') %>%xn <%= c['wound'] %>
+  %xh<%= t('ffg.skills_title') %>:%xn <%= skills(c) %>  %xh<%= t('ffg.talents_title') %>:%xn <%= talents(c) %>
+  
+<% end %>
+%lf

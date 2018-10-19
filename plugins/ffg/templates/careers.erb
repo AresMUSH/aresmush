@@ -1,0 +1,15 @@
+%lh
+%xh<%= t('ffg.careers_title') %>%xn
+
+<% careers.each do |c| %>
+<%= left c['name'], 15 %> <%= skills(c) %>
+  <% specs(c).each do |s| %>
+  - <%= s['name'] %>: <%= skills(s) %>
+  <% end %>
+<% end %>
+
+%xh<%= t('ffg.universal_specializations')%>%xn
+<% universal_specs.each do |s| %>
+<%= left s['name'], 15 %> <%= skills(s) %>
+<% end %>
+%lf

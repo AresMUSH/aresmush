@@ -1,0 +1,29 @@
+%lh
+%xh<%= t('ffg.sheet_title', :name => char.name) %>%xn 
+<%= summary %>
+
+<%= line_with_text t('ffg.characteristics_title') -%>
+<% characteristics.each do |c| -%>
+<%= c -%>
+<% end %>
+
+
+<%= line_with_text t('ffg.skills_title') -%>
+<% skills.each do |s| %>
+<%= s -%>
+<% end %>
+
+
+<%= line_with_text t('ffg.talents_title') -%>
+<% talents.each do |t| -%>
+<%= t -%>
+<% end %>
+
+
+<%= line_with_text t('ffg.other_title') %>
+%xh<%= left( t('ffg.xp_title'), 15 ) %>%xn <%= left( char.ffg_xp, 20 ) -%>
+%xh<%= left( t('ffg.story_title'), 15 ) %>%xn <%= left( char.ffg_story_points, 20 ) %>
+%xh<%= left( t('ffg.strain_title'), 15 ) %>%xn <%= left( char.ffg_strain_threshold, 20 ) -%>
+%xh<%= left( t('ffg.wound_title'), 15 ) %>%xn <%= left( char.ffg_wound_threshold, 20 ) %>
+%xh<%= left( t('ffg.force_title'), 15 ) %>%xn <%= left( char.ffg_force_rating, 20 ) %>
+%lf

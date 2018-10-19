@@ -1,0 +1,10 @@
+%lh
+%xh<%= t('ffg.talents_title') %>%xn
+
+%xh<%= talents_header %>%xn
+<% paginator.items.each do |t| %>
+<%= left(name(t), 22) %> <%= center(tier(t), 5)%> <%= center(ranked(t), 7) %> <%= force_power(t) %> <%= left t['prereq'], 20 %> <%= specializations(t)%> 
+<% end %>
+%ld
+<%= paginator.page_marker %>
+%lf

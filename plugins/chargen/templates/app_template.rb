@@ -39,6 +39,9 @@ module AresMUSH
         Chargen.hook_app_review(@char)
       end
       
+      def ffg_abilities
+        Ffg.app_review(@char)
+      end
      
       def job_info
         job = @char.approval_job

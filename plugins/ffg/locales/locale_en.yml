@@ -1,0 +1,72 @@
+---
+en:
+  ffg:
+      characteristics_title: "Characteristics"
+      skills_title: "Skills"
+      careers_title: "Careers"
+      talents_title: "Talents"
+      archetypes_title: "Archetypes"
+      talents_headings: "Name                    Tier Ranked?  Prereq             Specializations"
+      talents_headings_force: "Name                    Tier Ranked?  Force? Prereq             Specializations"
+      universal_specializations: "Universal Specializations"
+      
+      invalid_career: "That is not a valid career."
+      career_set: "You set your career."
+      invalid_archetype: "That is not a valid archetype."
+      archetype_set: "You set your archetype."
+      already_have_spec: "You already have that specialization."
+      dont_have_spec: "You don't have that specialization."
+      invalid_spec_for_career: "Your career doesn't allow that specialization."
+      specialization_added: "Specialization added."
+      specialization_removed: "Specialization removed."
+      invalid_specialization: "That is not a valid specialization."
+      first_spec_must_be_career: "Your first specialization must be a career or universal specialization."
+      
+      invalid_characteristic_rating: "Characteristics are rated 1-5."
+      invalid_skill_rating: "Skills are rated 1-5."
+      cant_lower_skill_after_approval: "You can't lower a skill once you've been approved."
+      cant_lower_below_archetype_min: "You can't lower a characteristic below the starting archetype value."
+      
+      ability_not_found: "You don't have that ability."
+      already_have_talent: "You already have that talent and it doesn't allow multiple ranks."
+      talent_at_maximum: "That talent cannot be raised further."
+      talent_tier_raised: "You raise that talent to tier %{tier}."
+      talent_tier_lowered: "You lower that talent to tier %{tier}."
+      talent_added: "You add that talent."
+      talent_force_restricted: "Only force users can select force talents."
+      missing_talent_specialization: "That talent is only available to characters with one of the following specializations: %{specs}."
+      
+      invalid_ability_name: "That is not a valid ability name."
+      ability_set: "Ability set."
+      ability_removed: "Ability removed."
+      starting_rating_limit: "The maximum starting rating for that ability is %{rating}."
+      
+      story_point_spent: "%{name} spends %{points} story points on %{reason}."
+      not_enough_points: "You don't have enough points."
+      story_point_awarded: "You award story points to %{name}."
+      xp_award: "You award %{num} experience points to %{name}."
+
+      sheet_title: "Character Sheet for %{name}"
+      other_title: "Other"
+      xp_title: "Experience:"
+      story_title: "Story Points:"
+      force_title: "Force Rating:"
+      strain_title: "Strain Thresh:"
+      wound_title: "Wound Thresh:"
+      
+      not_enough_xp: "You don't have enough XP for that."
+      career_skills_taken: "%{taken} career skills taken (%{min} min)."
+      
+      must_set_archetype_and_career: "You have to set your archetype and career first."
+      must_set_archetype: "You have to set your archetype first."
+
+
+      talent_add_unbalanced: "Adding that talent would unbalance your talent tree."
+      talent_remove_unbalanced: "Removing that talent would unbalance your talent tree."
+      
+      roll_advantage: "%xgAdvantage (%{net})%xn"
+      roll_threat: "%xrThreat (%{net})%xn"
+      roll_triumph: "%xGTriumph!%xn"
+      roll_despair: "%xRDespair!%xn"
+      roll_successful: "%{char} rolls %{roll} and is successful. (%{dice}) %{special}"
+      roll_failed: "%{char} rolls %{roll} and fails. (%{dice}) %{special}"
