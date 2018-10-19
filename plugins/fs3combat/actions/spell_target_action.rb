@@ -52,6 +52,17 @@ module AresMUSH
 
           targets.each do |target|
 
+            #Healing
+            if heal_points
+              wound = FS3Combat.worst_treatable_wound(target.associated_model)
+              if (wound)
+                FS3Combat.heal(wound, heal_points)
+                messages.concat [t('custom.cast_heal', :name => self.name, :spell => spell, :succeeds => succeeds, :target => print_target_names, :points => heal_points)]
+              else
+                 messages.concat [t('custom.cast_heal_no_effect', :name => self.name, :spell => spell, :succeeds => succeeds, :target => print_target_names)]
+              end
+            end
+
             #Equip Weapon
             if weapon
               FS3Combat.set_weapon(combatant, target, weapon)
@@ -66,7 +77,14 @@ module AresMUSH
             if weapon_specials_str
               weapon_specials = weapon_specials_str ? weapon_specials_str.split('+') : nil
               FS3Combat.set_weapon(combatant, target, target.weapon, weapon_specials)
-              messages.concat [t('custom.casts_spell', :name => self.name, :spell => self.spell, :succeeds => succeeds)]
+              if heal_points
+
+              elsif lethal_mod || defense_mod || attack_mod || spell_mod
+
+              else
+                messages.concat [t('custom.casts_spell', :name => self.name, :spell => self.spell, :succeeds => succeeds)]
+              end
+
             end
 
             #Equip Armor
@@ -82,16 +100,7 @@ module AresMUSH
               messages.concat [t('custom.casts_spell', :name => self.name, :spell => self.spell, :succeeds => succeeds)]
             end
 
-            #Healing
-            if heal_points
-              wound = FS3Combat.worst_treatable_wound(target.associated_model)
-              if (wound)
-                FS3Combat.heal(wound, heal_points)
-                messages.concat [t('custom.cast_heal', :name => self.name, :spell => spell, :succeeds => succeeds, :target => print_target_names, :points => heal_points)]
-              else
-                 messages.concat [t('custom.cast_heal_no_effect', :name => self.name, :spell => spell, :succeeds => succeeds, :target => print_target_names)]
-              end
-            end
+
 
             #Reviving
             if is_revive
