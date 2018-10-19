@@ -1,6 +1,7 @@
 module AresMUSH
   module FS3Combat
     class SpellTargetAction < CombatAction
+      attr_accessor  :spell, :target, :names
 
       def prepare
         if (self.action_args =~ /\//)
