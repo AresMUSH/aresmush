@@ -44,6 +44,7 @@ module AresMUSH
           defense_mod = Global.read_config("spells", self.spell, "defense_mod")
           spell_mod = Global.read_config("spells", self.spell, "spell_mod")
           stance = Global.read_config("spells", self.spell, "stance")
+          roll = Global.read_config("spells", self.spell, "roll")
 
 
 
