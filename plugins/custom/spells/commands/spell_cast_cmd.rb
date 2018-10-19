@@ -170,7 +170,7 @@ module AresMUSH
 
 
           end
-        self.caster_combat.update(has_cast: true)
+        # self.caster_combat.update(has_cast: true)
         elsif
           #Roll NonCombat
           if roll
