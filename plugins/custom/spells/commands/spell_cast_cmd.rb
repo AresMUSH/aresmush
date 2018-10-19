@@ -39,32 +39,32 @@ module AresMUSH
         return t('custom.not_character') if !caster
         return t('custom.not_spell') if !self.spell_list.include?(self.spell)
         return t('custom.cant_force_cast') if (self.caster != enactor && !enactor.combatant)
-        return t('custom.already_cast') if (enactor.combat && Custom.already_cast(self.caster_combat))
-        require_target = Global.read_config("spells", self.spell, "require_target")
-        multi_target = Global.read_config("spells", self.spell, "multi_target")
-        return t('custom.needs_multi_target') if (require_target && multi_target)
-        return t('custom.needs_target') if require_target
+        # return t('custom.already_cast') if (enactor.combat && Custom.already_cast(self.caster_combat))
+        # require_target = Global.read_config("spells", self.spell, "require_target")
+        # multi_target = Global.read_config("spells", self.spell, "multi_target")
+        # return t('custom.needs_multi_target') if (require_target && multi_target)
+        # return t('custom.needs_target') if require_target
         return nil
       end
 
       def handle
       #Reading Config Files
 
-        weapon = Global.read_config("spells", self.spell, "weapon")
-        weapon_specials = Global.read_config("spells", self.spell, "weapon_specials")
-        armor = Global.read_config("spells", self.spell, "armor")
-        armor_specials = Global.read_config("spells", self.spell, "armor_specials")
-        is_stun = Global.read_config("spells", self.spell, "is_stun")
+        # weapon = Global.read_config("spells", self.spell, "weapon")
+        # weapon_specials = Global.read_config("spells", self.spell, "weapon_specials")
+        # armor = Global.read_config("spells", self.spell, "armor")
+        # armor_specials = Global.read_config("spells", self.spell, "armor_specials")
+        # is_stun = Global.read_config("spells", self.spell, "is_stun")
         roll = Global.read_config("spells", self.spell, "roll")
-        heal_points = Global.read_config("spells", self.spell, "heal_points")
-        is_revive = Global.read_config("spells", self.spell, "is_revive")
-        lethal_mod = Global.read_config("spells", self.spell, "lethal_mod")
-        attack_mod = Global.read_config("spells", self.spell, "attack_mod")
-        defense_mod = Global.read_config("spells", self.spell, "defense_mod")
-        spell_mod = Global.read_config("spells", self.spell, "spell_mod")
-        stance = Global.read_config("spells", self.spell, "stance")
-        school = Global.read_config("spells", self.spell, "school")
-        fs3_attack = Global.read_config("spells", self.spell, "fs3_attack")
+        # heal_points = Global.read_config("spells", self.spell, "heal_points")
+        # is_revive = Global.read_config("spells", self.spell, "is_revive")
+        # lethal_mod = Global.read_config("spells", self.spell, "lethal_mod")
+        # attack_mod = Global.read_config("spells", self.spell, "attack_mod")
+        # defense_mod = Global.read_config("spells", self.spell, "defense_mod")
+        # spell_mod = Global.read_config("spells", self.spell, "spell_mod")
+        # stance = Global.read_config("spells", self.spell, "stance")
+        # school = Global.read_config("spells", self.spell, "school")
+        # fs3_attack = Global.read_config("spells", self.spell, "fs3_attack")
 
 
         if self.caster.combat
