@@ -14,6 +14,7 @@ module AresMUSH
     end
     
     def self.format_autospace(enactor, autospace_str)
+      return autospace_str if !autospace_str
       autospace_str.gsub(/\%n/i, Demographics.name_and_nickname(enactor))
     end
     
