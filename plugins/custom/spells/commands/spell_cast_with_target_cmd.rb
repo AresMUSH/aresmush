@@ -218,7 +218,7 @@ module AresMUSH
 
             # For some reason, both of these break setting weapons and armor. I have no idea why.
 
-            self.caster_combat.update(has_cast: true)
+            # self.caster_combat.update(has_cast: true)
 
           end
 
