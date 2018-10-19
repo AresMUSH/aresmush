@@ -15,11 +15,13 @@ module AresMUSH
          self.caster = FS3Combat.find_named_thing(caster_name, enactor)
          #Returns combatant
          if enactor.combat
+
            self.caster_combat = combat.find_combatant(caster_name)
            self.spell = titlecase_arg(args.arg2)
          end
        else
           args = cmd.parse_args(/(?<arg1>[^\+]+)\+?(?<arg2>.+)?/)
+          caster_name = enactor.name
           #Returns char or NPC
           self.caster = enactor
           self.spell = titlecase_arg(args.arg1)
@@ -76,12 +78,12 @@ module AresMUSH
 
             #Roll Spell in Combat
             if roll == true
-              FS3Combat.set_action(client, enactor, enactor.combat, caster_combat, FS3Combat::RollSpellAction, self.spell)
+              FS3Combat.set_action(client, enactor, enactor.combat, caster_combat, FS3Combat::SpellAction, self.spell)
             end
 
             #Equip Gear without attack
             if (!fs3_attack && (weapon || weapon_specials || armor || armor_specials))
-              FS3Combat.set_action(client, self.caster_combat, self.caster.combat, self.caster_combat, FS3Combat::SpellEquipGearAction, self.args)
+              FS3Combat.set_action(client, self.caster_combat, self.caster.combat, self.caster_combat, FS3Combat::SpellAction, self.args)
             end
 
             # #Equip Armor
@@ -101,7 +103,7 @@ module AresMUSH
 
             #Healing
             if heal_points
-              FS3Combat.set_action(client, enactor, enactor.combat, caster_combat, FS3Combat::SpellHealAction, self.args)
+              FS3Combat.set_action(client, enactor, enactor.combat, caster_combat, FS3Combat::SpellAction, self.args)
             end
 
             # #Equip Weapon
@@ -121,12 +123,12 @@ module AresMUSH
 
             #Change stance
             if stance
-              FS3Combat.set_action(client, enactor, enactor.combat, caster_combat, FS3Combat::SpellStanceAction, self.args)
+              FS3Combat.set_action(client, enactor, enactor.combat, caster_combat, FS3Combat::SSpellAction, self.args)
             end
 
             #Set Mods
             if (lethal_mod || defense_mod || attack_mod || spell_mod)
-              FS3Combat.set_action(client, enactor, enactor.combat, caster_combat, FS3Combat::SpellModAction, self.args)
+              FS3Combat.set_action(client, enactor, enactor.combat, caster_combat, FS3Combat::SpellAction, self.args)
             end
 
             # #Set Lethal Mod
