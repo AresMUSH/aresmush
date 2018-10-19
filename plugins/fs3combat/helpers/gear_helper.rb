@@ -156,15 +156,17 @@ module AresMUSH
     end
 
     def self.set_weapon(enactor, combatant, weapon, specials = nil)
-      item_specials = Custom.item_weapon_specials(combatant.associated_model)
-      if specials
+      if !combatant.npc
+        item_specials = Custom.item_weapon_specials(combatant.associated_model)
+      end
+      if !combatant.npc && combatant.associated_model.magic_item_equipped && specials && item_specials
         specials.concat [item_specials]
-      else
+      elsif !combatant.npc && combatant.associated_model.magic_item_equipped && item_specials
         specials = [item_specials]
       end
       max_ammo = weapon ? FS3Combat.weapon_stat(weapon, "ammo") : 0
       combatant.update(weapon_name: weapon ? weapon.titlecase : "Unarmed")
-      combatant.update(weapon_specials: specials ? specials.map { |s| s.titlecase } : [])
+      combatant.update(weapon_specials: specials ? specials.map { |s| s.titlecase }.uniq : [])
       combatant.update(ammo: max_ammo)
       combatant.update(max_ammo: max_ammo)
       combatant.update(action_klass: nil)
@@ -176,14 +178,16 @@ module AresMUSH
     end
 
     def self.set_armor(enactor, combatant, armor, specials = nil)
-      item_specials = Custom.item_armor_specials(combatant.associated_model)
-      if specials
+      if !combatant.npc &&
+        item_specials = Custom.item_armor_specials(combatant.associated_model)
+      end
+      if !combatant.npc && specials && combatant.associated_model.magic_item_equipped && item_specials
         specials.concat [item_specials]
-      else
+      elsif !combatant.npc && combatant.associated_model.magic_item_equipped && item_specials
         specials = [item_specials]
       end
       combatant.update(armor_name: armor ? armor.titlecase : nil)
-      combatant.update(armor_specials: specials ? specials.map { |s| s.titlecase } : [])
+      combatant.update(armor_specials: specials ? specials.map { |s| s.titlecase }.uniq : [])
       message = t('fs3combat.armor_changed', :name => combatant.name, :armor => combatant.armor)
       FS3Combat.emit_to_combat combatant.combat, message, FS3Combat.npcmaster_text(combatant.name, enactor)
     end

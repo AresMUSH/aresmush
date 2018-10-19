@@ -15,7 +15,9 @@ module AresMUSH
         error = self.parse_targets(self.names)
         return error if error
 
-        return t('fs3combat.only_one_target') if (self.targets.count > 1)
+        num = Global.read_config("spells", self.spell, "target_num")
+
+        return t('custom.too_many_targets', :spell => self.spell, :num => num) if (self.targets.count > num)
       end
 
       def print_action
@@ -57,9 +59,9 @@ module AresMUSH
               wound = FS3Combat.worst_treatable_wound(target.associated_model)
               if (wound)
                 FS3Combat.heal(wound, heal_points)
-                messages.concat [t('custom.cast_heal', :name => self.name, :spell => spell, :succeeds => succeeds, :target => print_target_names, :points => heal_points)]
+                messages.concat [t('custom.cast_heal', :name => self.name, :spell => spell, :succeeds => succeeds, :target => target.name, :points => heal_points)]
               else
-                 messages.concat [t('custom.cast_heal_no_effect', :name => self.name, :spell => spell, :succeeds => succeeds, :target => print_target_names)]
+                 messages.concat [t('custom.cast_heal_no_effect', :name => self.name, :spell => spell, :succeeds => succeeds, :target => target.name)]
               end
             end
 
