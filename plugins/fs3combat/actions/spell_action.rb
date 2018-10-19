@@ -1,6 +1,6 @@
 module AresMUSH
   module FS3Combat
-    class SpellTargetAction < CombatAction
+    class SpellAction < CombatAction
       attr_accessor  :spell, :target, :names
 
       def prepare
@@ -19,7 +19,7 @@ module AresMUSH
       end
 
       def print_action
-        msg = t('custom.spell_target_action_msg_long', :name => self.name, :spell => self.spell, :target => print_target_names)
+        msg = t('custom.spell_action_msg_long', :name => self.name, :spell => self.spell, :target => print_target_names)
         msg
       end
 
@@ -153,12 +153,12 @@ module AresMUSH
             #Roll
             if roll
               succeeds = Custom.roll_combat_spell_success(self.combatant, self.spell)
-              messages.concat [t('custom.spell_target_resolution_msg', :name => self.name, :spell => self.spell, :target => print_target_names, :succeeds => succeeds)]
+              messages.concat [t('custom.roll_spell_target_resolution_msg', :name => self.name, :spell => self.spell, :target => print_target_names, :succeeds => succeeds)]
             end
 
           end
         else
-          messages.concat [t('custom.spell_target_resolution_msg', :name => self.name, :spell => spell, :target => print_target_names, :succeeds => succeeds)]
+          messages.concat [t('custom.roll_spell_target_resolution_msg', :name => self.name, :spell => spell, :target => print_target_names, :succeeds => succeeds)]
         end
         messages
       end

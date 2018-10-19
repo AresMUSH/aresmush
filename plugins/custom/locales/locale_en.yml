@@ -100,10 +100,10 @@ en:
       # FS3 COMBAT SPELL
       # ----------------------------
       spell_action_msg_short: "Spell"
-      roll_spell_target_action_msg_long: "%{name} will cast %xB%{spell}%xn on %{target} this turn."
-      roll_spell_target_resolution_msg: "%{name} casts %xB%{spell}%xn on %{target} and %{succeeds}."
-      roll_spell_action_msg_long: "%{name} will cast %xB%{spell}%xn."
-      roll_spell_resolution_msg: "%{name} casts %xB%{spell}%xn and %{succeeds}."
+      pell_target_action_msg_long: "%{name} will cast %xB%{spell}%xn on %{target} this turn."
+      spell_target_resolution_msg: "%{name} casts %xB%{spell}%xn on %{target} and %{succeeds}."
+      spell_action_msg_long: "%{name} will cast %xB%{spell}%xn."
+      spell_resolution_msg: "%{name} casts %xB%{spell}%xn and %{succeeds}."
       # ----------------------------
       # FS3 COMBAT POTION
       # ----------------------------
