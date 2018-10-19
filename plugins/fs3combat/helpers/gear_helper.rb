@@ -156,10 +156,9 @@ module AresMUSH
     end
 
     def self.set_weapon(enactor, combatant, weapon, specials = nil)
-      item_specials = Custom.item_weapon_specials(combatant.associated_model)
-      if specials
+      if combatant.associated_model.magic_item_equipped && specials
         specials.concat [item_specials]
-      else
+      elsif combatant.associated_model.magic_item_equipped
         specials = [item_specials]
       end
       max_ammo = weapon ? FS3Combat.weapon_stat(weapon, "ammo") : 0
@@ -176,10 +175,9 @@ module AresMUSH
     end
 
     def self.set_armor(enactor, combatant, armor, specials = nil)
-      item_specials = Custom.item_armor_specials(combatant.associated_model)
-      if specials
+      if specials && combatant.associated_model.magic_item_equipped
         specials.concat [item_specials]
-      else
+      elsif combatant.associated_model.magic_item_equipped
         specials = [item_specials]
       end
       combatant.update(armor_name: armor ? armor.titlecase : nil)
