@@ -1,6 +1,7 @@
 ---
 toc: ~admin~ Building
 summary: Creating rooms.
+order: 1
 aliases:
 - build
 - open
@@ -22,8 +23,6 @@ You can create a room and optionally specify an outgoing exit (from your current
 
 `build <name>[=<outgoing exit name>,<return exit name>]` - Creates a room.
 
-> **Tip:** In Ares, exits have only a single name so there is no exit;alias;alias syntax.  Any exit named "O" is automatically aliased to "Out".  Also, if no specific 'out' exit exists, 'out' will simply take you out the first exit.
-
 ## Creating Exits
 
 You can create additional exits using the 'open' command, and link exits to different rooms.  You can use the room database ID or a name (as long as the name is unambiguous).
@@ -37,6 +36,14 @@ Once you have an exit, you can change the source or destination rooms that it's 
 `unlink <exit>` - Unlinks an exit from its destination.
 
 > **Tip:** By default, the room description shows you the exit name and the name of its destionation, e.g. `[S] Town Square`.  You can change the destination name to something else just by giving the exit a description.
+
+## Exit Aliases
+
+Ares has several navigational cues that make exit aliases largely unnecessary.  If you need them, though, Ares exits can have a *single* alias, which you can set using the alias command:
+
+`alias <exit name>=<exit alias>`
+
+> **Tip:** Any exit named "O" is automatically aliased to "Out".  Also, if no specific 'out' exit exists, 'out' will simply take you out the first exit it can find.
 
 ## Locking Exits
 
@@ -75,6 +82,10 @@ Use the [describe](/help/describe) command to give the room a description.  You 
 Normally a room will show the destination name for exits (e.g. `[O] Town Square`), but you can override the destination name by setting a [shortdesc](/help/describe) for the exit.
 
 [Vistas](/help/vistas) allow you to set up different pieces of the room description to be shown based on the time of day and season.
+
+## Areas
+
+Areas are used to group rooms together to represent different regions of the game.  See [Areas](/help/areas) for more information.
 
 ## Advanced Room Setup
 

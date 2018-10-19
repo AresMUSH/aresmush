@@ -16,7 +16,7 @@ module AresMUSH
         config['description'] = Website.format_input_for_html(config['description'])
         {
           config: config,
-          status_options: [ 'In Development', 'Beta', 'Open', 'Closed', 'Sandbox' ],
+          status_options: [ 'In Development', 'Alpha', 'Beta', 'Open', 'Closed', 'Sandbox' ],
           category_options: [ 'Social', 'Historical', 'Fantasy', 'Sci-Fi', 'Modern', 'Supernatural', 'Other' ]
         }
       end

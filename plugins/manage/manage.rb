@@ -67,6 +67,11 @@ module AresMUSH
         return MigrateCmd
       when "plugins"
         return PluginListCmd
+      when "plugin"
+        case cmd.switch
+        when "install"
+          return PluginInstallCmd
+        end
       when "rename"
         return RenameCmd
       when "ruby"

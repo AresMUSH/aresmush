@@ -27,6 +27,15 @@ module AresMUSH
           return { error: t('webportal.not_found') }
         end
         
+        if (file_type == "config")
+          begin
+              yaml_hash = YAML.load(text)
+          rescue Exception => ex
+            Global.logger.warn "Trouble loading YAML config; #{ex}"
+            return { error: t('webportal.config_error', :error => ex, :file => file ) }
+          end
+        end
+        
         File.open(path, 'w') do |f|
           f.write(text)
         end

@@ -86,7 +86,7 @@ module AresMUSH
       headwiz.room = welcome_room
       headwiz.save
   
-      builder = Character.create(name: "Builder", is_approved: true, is_playerbit: true)
+      builder = Character.create(name: "Builder", is_playerbit: true)
       builder.change_password("change_me!")
       builder.roles.add builder_role
       builder.roles.add everyone_role

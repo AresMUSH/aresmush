@@ -16,20 +16,19 @@ module AresMUSH
   
   
         if (!Dir.exist?(@source_dir))
-          puts "ERROR! Directory #{@source_dir} not found."
-          return
+          raise "ERROR! Directory #{@source_dir} not found."
         end
   
         existing = import_plugin
         if (existing)
-          puts "Plugin previously installed - skipping game directory."
-          puts "If want to overwrite your configuration, you'll have to copy the game files manually from #{@source_dir} to your aresmush/game directory."
+          Global.logger.info "Plugin previously installed - skipping game directory."
+          Global.logger.info "If want to overwrite your configuration, you'll have to copy the game files manually from #{@source_dir} to your aresmush/game directory."
         else
           import_game
         end
         import_portal
         
-        puts "Plugin #{@plugin_name} added."
+        Global.logger.info "Plugin #{@plugin_name} added."
       end
       
       def import_plugin
@@ -39,12 +38,12 @@ module AresMUSH
         exists = Dir.exist?(dest_path)
         
         if (!Dir.exist?(plugin_dir))
-          puts "No plugin files to import."
+          Global.logger.debug "No plugin files to import."
           return false
         end
         
         if (!File.exists?(File.join(plugin_dir, "#{@plugin_name}.rb")))
-          puts "ERROR! Plugin module file #{@plugin_name}.rb not found.  This plugin can't be automatically imported."
+          raise "ERROR! Plugin module file #{@plugin_name}.rb not found.  This plugin can't be automatically imported."
           return false
         end
         
@@ -52,7 +51,7 @@ module AresMUSH
           Dir.mkdir dest_path
         end
         
-        puts "Copying plugin files to #{dest_path}."  
+        Global.logger.debug "Copying plugin files to #{dest_path}."  
         plugin_files = Dir["#{plugin_dir}/*"]
         plugin_files.each do |f|
           FileUtils.cp_r(f, dest_path)
@@ -67,11 +66,11 @@ module AresMUSH
         dest_path = AresMUSH.game_path
         
         if (!Dir.exist?(game_dir))
-          puts "No game files to import."
+          Global.logger.debug "No game files to import."
           return
         end
         
-        puts "Copying game files to #{dest_path}."  
+        Global.logger.debug "Copying game files to #{dest_path}."  
         game_files = Dir["#{game_dir}/*"]
         
         game_files.each do |f|
@@ -84,16 +83,16 @@ module AresMUSH
         dest_path = File.join( Global.read_config("website", "website_code_path"), "app" )
 
         if (!Dir.exist?(web_source_dir))
-          puts "No web files to import."
+          Global.logger.debug "No web files to import."
           return
         end
         
         if (!Dir.exist?(dest_path))
-          puts "WARNING! Web Portal directory #{dest_path} not found.  You'll need to install web files manually." 
+          Global.logger.warn "WARNING! Web Portal directory #{dest_path} not found.  You'll need to install web files manually." 
           return
         end
         
-        puts "Copying web portal files to #{dest_path}."
+        Global.logger.debug "Copying web portal files to #{dest_path}."
         
         web_files = Dir["#{web_source_dir}/*"]
         web_files.each do |f|
