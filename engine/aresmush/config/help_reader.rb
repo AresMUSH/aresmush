@@ -1,7 +1,7 @@
 module AresMUSH
   class HelpReader
     
-    attr_accessor :help_file_index, :help_toc, :help_keys
+    attr_accessor :help_file_index, :help_toc, :help_keys, :help_text
     
     def initialize
       self.clear_help
@@ -11,6 +11,7 @@ module AresMUSH
       self.help_file_index = {}
       self.help_toc = {}
       self.help_keys = {}
+      self.help_text = {}
     end
     
     def load_game_help
@@ -53,7 +54,10 @@ module AresMUSH
           (meta['aliases'] || []).each do |a|
             self.help_keys[a] = topic
           end
+          
+          self.help_text[topic] = md.contents
         end
+        
       else
         Global.logger.warn "Skipping help file #{file} - missing metadata."
       end

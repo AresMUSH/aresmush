@@ -87,7 +87,7 @@ module AresMUSH
         end
         linebreak = i % 2 == 0 ? "%R          " : ""
         room_name = "#{e.dest.name} (#{status})"
-        "#{linebreak}%xh[#{e.name}]%xn #{left(room_name,29)}"
+        "#{linebreak}%xh#{exit_name(e)}]%xn #{left(room_name,29)}"
       end
 
       def char_shortdesc(char)
@@ -128,7 +128,9 @@ module AresMUSH
       end
 
       def exit_name(e)
-        "(#{e.name})"
+        start_bracket = Global.read_config("describe", "exit_start_bracket")
+        end_bracket = Global.read_config("describe", "exit_end_bracket")
+        "#{start_bracket}#{e.name}#{end_bracket}"
       end
 
       def exit_destination(e)

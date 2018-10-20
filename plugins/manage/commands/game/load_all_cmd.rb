@@ -12,8 +12,8 @@ module AresMUSH
         begin
           # Make sure everything is valid before we start.
           Global.config_reader.validate_game_config          
-        rescue
-          client.emit_failure t('manage.game_config_invalid')
+        rescue Exception => ex
+          client.emit_failure t('manage.game_config_invalid', :error => ex)
           return
         end
         
