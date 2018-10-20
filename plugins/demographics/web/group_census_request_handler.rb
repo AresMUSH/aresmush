@@ -15,7 +15,7 @@ module AresMUSH
         end
         
         census = []
-        groups.sort_by { |g, chars | g || "" }.each do |name, chars|  
+        groups.select { |g| !g.blank? }.sort_by { |g, chars | g || "" }.each do |name, chars|  
           group = {}
           group[:name] = name
           group[:count] = chars.count

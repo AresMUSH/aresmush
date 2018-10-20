@@ -12,6 +12,10 @@ module AresMUSH
           allow(@char).to receive(:pose_nospoof) { nil }
           allow(@char).to receive(:pose_autospace) { "" }
           allow(@enactor).to receive(:place_title) { "" }
+          allow(Scenes).to receive(:format_autospace) do |enactor, format|
+            format
+          end
+          
           stub_translate_for_testing
         end
         
@@ -88,7 +92,8 @@ module AresMUSH
                 
         it "should include autospace if set" do
           allow(@char).to receive(:pose_autospace) { "%R" }
-          expect(Scenes.custom_format("Test", @char, @enactor)).to eq "%RTest"
+          expect(Scenes).to receive(:format_autospace).with(@enactor, "%R") { "-%R-" }
+          expect(Scenes.custom_format("Test", @char, @enactor)).to eq "-%R-Test"
         end
         
         it "should include nospoof if set and if an emit" do

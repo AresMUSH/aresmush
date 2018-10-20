@@ -13,13 +13,18 @@ module AresMUSH
       end
 
       def handle
-        guest = Login.guests.sort_by{ |g| g.name }.select { |g| !Login.is_online?(g) }
-        if (guest.empty?)
+        guest = Login.guests.sort_by{ |g| g.name }.select { |g| !Login.is_online?(g) }.first
+
+        if (!guest)
           client.emit_ooc t('login.all_guests_taken')
           return
         end
         
-        guest = guest.first
+        if (!Login.can_login?(guest))
+          client.emit_failure t('login.login_restricted', :reason => Login.restricted_login_message)
+          return
+        end
+        
         client.char_id = guest.id
         terms_of_service = Login.terms_of_service
         if (terms_of_service)

@@ -192,8 +192,10 @@ en:
         invalid_armor: "That is not a valid armor type."
         armor_title_description: "Description:"
         armor_title_protection: "Protection:"
+
         armor_title_is_magic: "Magic?"
-        armor_title_defense: "Defense:"
+        armor_title_allowed_specials: "Allowed Specials:"
+        armor_title_defense: "Defense Mod:"
         invalid_armor_specials: "%{special} is not a valid special for that armor."
 
         # ----------------------------
@@ -233,7 +235,7 @@ en:
         hitlocs_for: "Hit Locations for %{name}"
         hitlocs_vehicle_warning: "Note: %{name} is in a vehicle, so these hit locations are for the vehicle."
         use_pilot_name_for_vehicle_hitlocs: "Use a pilot or passenger name to find their vehicle's hit locations."
- 
+
         # ----------------------------
         # GEAR COMMANDS
         # ----------------------------

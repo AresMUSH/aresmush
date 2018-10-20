@@ -37,12 +37,19 @@ module AresMUSH
         if (scene.shared)
           text << scene.scene_log.log
         else
-          poses = scene.poses_in_order.map { |p| p.pose }.join("\n\n")
+          text = scene.poses_in_order.map { |p| p.pose }.join("\n\n")
         end
+
+
+        formatter = MarkdownFormatter.new
+        log = formatter.to_mush(text)
+        log.gsub!(/\[\[div ([^\]]*)\]\]/, '')
+        log.gsub!(/\[\[\/div\]\]/, '')
 
         {
           id: scene.id,
-          log: Website.format_markdown_for_html(text),
+          title: scene.date_title,
+          log: AresMUSH::MushFormatter.format(log, false)
         }
       end
     end

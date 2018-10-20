@@ -23,12 +23,16 @@ module AresMUSH
       bbs_posts.each { |p| p.delete }
     end
       
+    def sorted_posts
+      bbs_posts.to_a.sort_by { |p| p.created_at }
+    end
+    
     def set_upcase_name
       self.name_upcase = self.name.upcase
     end
     
     def last_post
-      bbs_posts.to_a[-1]
+      self.sorted_posts[-1]
     end
     
     def unread_posts(char)

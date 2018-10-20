@@ -68,6 +68,7 @@ module AresMUSH
   
       admin_role = Role.create(name: "admin", is_restricted: true)
       everyone_role = Role.create(name: "everyone")
+      everyone_role.update(permissions: ["login"])
       builder_role = Role.create(name: "builder")
       builder_role.update(permissions: ["build", "teleport", "desc_places", "access_jobs" ] )
       guest_role = Role.create(name: "guest")
@@ -86,7 +87,7 @@ module AresMUSH
       headwiz.room = welcome_room
       headwiz.save
   
-      builder = Character.create(name: "Builder", is_approved: true, is_playerbit: true)
+      builder = Character.create(name: "Builder", is_playerbit: true)
       builder.change_password("change_me!")
       builder.roles.add builder_role
       builder.roles.add everyone_role

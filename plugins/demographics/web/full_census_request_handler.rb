@@ -3,12 +3,8 @@ module AresMUSH
     class FullCensusRequestHandler
       def handle(request)
 
-        titles = ['Name']
-        titles << 'Gender'
-        titles.concat(Demographics.all_groups.keys.map { |t| t.titlecase })
-        if (Ranks.is_enabled?)
-          titles << 'Rank'
-        end
+        fields = Global.read_config("demographics", "census_fields")
+        titles = fields.map { |f| f['title'] }
         
         chars = Chargen.approved_chars.sort_by { |c| c.name}
 
@@ -16,16 +12,15 @@ module AresMUSH
         
         chars.each do |c|
           char_data = {}
-          char_data['Name'] = c.name
           char_data['icon'] = Website.icon_for_char(c)
-          Demographics.all_demographics.each do |demographic|
-            char_data[demographic.titlecase] = c.demographic(demographic)
+          fields.each do |field_config|
+            field = field_config["field"]
+            title = field_config["title"]
+            value = field_config["value"]
+
+            char_data[title] = Profile.general_field(c, field, value)
           end
           
-          Demographics.all_groups.keys.each do |group|
-            char_data[group] = c.group(group)
-          end
-          char_data['Rank'] = c.rank
           census << char_data
         end
         
