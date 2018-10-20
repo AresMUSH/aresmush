@@ -85,7 +85,8 @@ module AresMUSH
           end # with error handling
         end # each
         if (!@handled)
-          client.emit_ooc t('dispatcher.huh')
+          trimmed_cmd = (cmd.raw || "")[0,10]
+          client.emit_ooc t('dispatcher.huh', :command => trimmed_cmd)
         end
       end # with error handling
     end

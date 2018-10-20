@@ -16,7 +16,8 @@ module AresMUSH
           message = t('page.autospace_cleared')
         else
           enactor.update(page_autospace: self.option)
-          message = t('page.autospace_set', :option => self.option)
+          formatted = Scenes.format_autospace(enactor, self.option)
+          message = t('page.autospace_set', :option => formatted)
         end
         
         client.emit_success message

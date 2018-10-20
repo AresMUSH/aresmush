@@ -23,7 +23,12 @@ module AresMUSH
           return ConnectCmd
         end
       when "create"
-        return CreateCmd
+        case cmd.switch
+        when "reserve"
+          return ReserveCmd
+        else
+          return CreateCmd
+        end
       when "email"
         case cmd.switch
         when "set"

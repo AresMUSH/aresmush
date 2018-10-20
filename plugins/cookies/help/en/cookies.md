@@ -8,9 +8,7 @@ aliases:
 ---
 # Cookies
 
-Cookies are a fun way to appreciate your fellow players for playing with you.  Cookies are tallied and awarded weekly; you can only give someone a single cookie each week.
-
-You get a fraction of a luck point per cookie received.  You also may get recognized on the weekly "top cookie earner" bbpost, if your game has it set up.
+Cookies are a fun way to appreciate your fellow players for playing with you.  Cookies are tallied and awarded weekly; you can only give someone a single cookie each week. You get a fraction of a luck point per cookie received.  
 
 `cookie <list of names>` - Give a cookie.
 `cookie/here` - Give cookies to everyone in the room (handy for big scenes).

@@ -156,7 +156,7 @@ module AresMUSH
           return
         end
         
-        post = category.bbs_posts.to_a[index]
+        post = category.sorted_posts[index]
         
         yield category, post
       end

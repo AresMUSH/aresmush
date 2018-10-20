@@ -3,11 +3,10 @@ module AresMUSH
     class ForumCategoryTemplate < ErbTemplateRenderer
       
       # List of all posts on the category, in order by date.
-      attr_accessor :posts, :category
+      attr_accessor :category
       
       def initialize(category, enactor)
         @category = category
-        @posts = category.bbs_posts
         @enactor = enactor
         
         super File.dirname(__FILE__) + "/category.erb"
