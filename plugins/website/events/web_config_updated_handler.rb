@@ -9,7 +9,7 @@ module AresMUSH
         rescue
           use_api_proxy = false
         end
-        
+
         config = {
           "mush_port" => Global.read_config("server", "port"),
           "web_portal_port" => Global.read_config("server", "web_portal_port"),
@@ -24,11 +24,11 @@ module AresMUSH
           "use_api_proxy" => use_api_proxy,
           "ssl" => Global.read_config("server", "ssl")
         }
-        
+
         if (!Dir.exist?(AresMUSH.website_scripts_path))
           Dir.mkdir AresMUSH.website_scripts_path
         end
-        
+
         File.open(file_path, 'w') do |f|
           f.write "var aresconfig = #{config.to_json};"
         end

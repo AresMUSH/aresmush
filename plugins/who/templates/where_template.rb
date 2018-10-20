@@ -3,8 +3,7 @@ module AresMUSH
     class WhereTemplate < ErbTemplateRenderer
       
       # NOTE!  Because so many fields are shared between the who and where templates,
-      # they are defined in these two modules, found in other files in this directory.
-      include WhoCharacterFields
+      # some are defined in a common file.
       include CommonWhoFields
     
       attr_accessor :online_chars, :scene_groups
@@ -24,7 +23,7 @@ module AresMUSH
         end
         
         super File.dirname(__FILE__) + template_file
-      end    
+      end
       
       def append_to_group(groups, key, value)
         if (groups.has_key?(key))
@@ -72,6 +71,14 @@ module AresMUSH
         groups
       end
       
+      def name(char)
+         Demographics.name_and_nickname(char)
+      end
+       
+      def scene_room_name(char)
+        Who.who_room_name(char)
+      end
+      
       def room_name(char)
         room = char.room
         name = Who.who_room_name(char)
@@ -103,7 +110,12 @@ module AresMUSH
           append_to_group(groups, room, name)
         end
         groups.sort
-      end 
+      end
+      
+      def profile_field(char, field, value = nil)
+        Profile.general_field(char, field, value)
+      end
+       
     end 
   end
 end

@@ -22,13 +22,14 @@ module AresMUSH
                          name: p.name, 
                          id: p.id, 
                          icon: Website.icon_for_char(p), 
-                         online: Login.is_online?(p) }},
+                         online: Login.is_online?(p),
+                         last_posed: s.last_posed == p }},
                   scene_type: s.scene_type ? s.scene_type.titlecase : 'Unknown',
                   likes: s.likes,
                   is_unread: enactor && Scenes.can_access_scene?(enactor, s) && s.participants.include?(enactor) && s.is_unread?(enactor),
-                  updated: OOCTime.local_long_timestr(enactor, s.updated_at),
+                  updated: OOCTime.local_long_timestr(enactor, s.last_activity),
                   watching: Scenes.is_watching?(s, enactor),
-                  participating: Scenes.is_participant?(s, enactor)        
+                  participating: Scenes.is_participant?(s, enactor)
                 }}
       end
       

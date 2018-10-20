@@ -26,12 +26,10 @@ module AresMUSH
             config[k] = { key: k, value: v, new_value: v, lines: lines }
           end
         
-          { file: file, config:  config }
+          { file: file, config:  config, valid: true }
         rescue Exception => ex
-          Global.logger.warn "Trouble loading YAML config; #{ex}"
-          return { error: t('webportal.config_error', :error => ex ) }
+          { file: file, valid: false }
         end
-        
       end
     end
   end

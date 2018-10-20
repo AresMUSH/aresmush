@@ -21,7 +21,8 @@ module AresMUSH
       def handle
 
         enactor.spend_luck(1)
-        enactor_room.emit_ooc t('fs3skills.luck_point_spent', :name => enactor_name, :reason => reason)
+        message = t('fs3skills.luck_point_spent', :name => enactor_name, :reason => reason)
+        enactor_room.emit_ooc message
         Achievements.award_achievement(enactor, "fs3_luck_spent", 'fs3', "Spent a luck point.")
 
         job_message = t('custom.spent_luck', :name => enactor.name, :reason => self.reason)

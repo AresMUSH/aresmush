@@ -35,6 +35,11 @@ module AresMUSH
 
         ClassTargetFinder.with_a_character(self.charname, client, enactor) do |char|
   
+          if (!Login.can_login?(char))
+            client.emit_failure t('login.login_restricted', :reason => Login.restricted_login_message)
+            return
+          end
+          
           if (char.is_statue?)
             client.emit_failure t('dispatcher.you_are_statue')
             return

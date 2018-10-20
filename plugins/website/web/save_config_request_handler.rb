@@ -31,11 +31,15 @@ module AresMUSH
               f.write(yaml_hash.to_yaml)
           end
           
-          Manage.reload_config
+          error = Manage.reload_config     
+          if (error)
+            Global.logger.warn "Trouble loading YAML config: #{error}"
+            return { error: t('manage.game_config_invalid', :error => error) }
+          end
                     
         rescue Exception => ex
-          Global.logger.warn "Trouble loading YAML config; #{ex}"
-          return { error: t('webportal.config_error', :error => ex ) }
+          Global.logger.warn "Trouble loading YAML config: #{ex}"
+          return { error: t('webportal.config_error', :error => ex, :file => file ) }
         end
         
         {}

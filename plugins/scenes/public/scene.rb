@@ -7,6 +7,7 @@ module AresMUSH
     reference :owner, "AresMUSH::Character"
     attribute :date_completed, :type => DataType::Time
     attribute :date_shared, :type => DataType::Time
+    attribute :last_activity, :type => DataType::Time
     
     attribute :title
     attribute :private_scene, :type => DataType::Boolean
@@ -42,6 +43,11 @@ module AresMUSH
     
     def is_private?
       self.private_scene
+    end
+    
+    def last_posed
+      last_pose = self.scene_poses.to_a[-1]
+      last_pose ? last_pose.character : nil
     end
     
     def created_date_str(char)

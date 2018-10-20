@@ -60,7 +60,11 @@ module AresMUSH
           return DemographicsListCmd
         end
       when "census"
-        return CensusCmd
+        if (cmd.switch_is?("types"))
+          return CensusTypesCmd
+        else
+          return CensusCmd
+        end
       when "group"
         case cmd.switch
         when "set"

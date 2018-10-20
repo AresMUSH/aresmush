@@ -49,7 +49,7 @@ module AresMUSH
           recipient_names = recipients.map { |r| r.name }.join(",")
         
           client.emit t('page.to_sender', 
-            :autospace => enactor.page_autospace, 
+            :autospace => Scenes.format_autospace(enactor, enactor.page_autospace), 
             :color => enactor.page_color, 
             :recipients => recipient_names, 
             :message => message)
@@ -66,7 +66,7 @@ module AresMUSH
           client.emit_ooc t('page.recipient_do_not_disturb', :name => other_char.name)
         else          
           other_client.emit t('page.to_recipient', 
-            :autospace => other_char.page_autospace, 
+            :autospace => Scenes.format_autospace(enactor, other_char.page_autospace), 
             :color => other_char.page_color, 
             :recipients => recipients, 
             :message => message)

@@ -23,7 +23,7 @@ en:
           Please send this error information to the admins and tell them what you were doing at the time:
           Description: "%{desc}"
           Error: "%{error_info}"
-        huh: "Huh? Unrecognized command."
+        huh: "Command %{command} is not recognized.  See `help`."
         not_allowed: "You are not allowed to do that."
         must_be_logged_in: "You must be logged in to use this command."
         cmd_no_args: "This command does not take any arguments."

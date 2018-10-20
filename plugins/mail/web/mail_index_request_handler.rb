@@ -8,7 +8,9 @@ module AresMUSH
         return error if error
 
         tags = Mail.all_tags(enactor).select { |t| t != Mail.inbox_tag }.sort
-        mail = enactor.mail.map { |m| {
+        mail = enactor.mail.to_a.sort_by { |m| m.created_at }
+           .reverse
+           .map { |m| {
             id: m.id,
             subject: m.subject,
             to_list: m.to_list,

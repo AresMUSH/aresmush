@@ -56,7 +56,7 @@ module AresMUSH
       
       def self.export_scenes
         index = {}
-        scenes = Scene.shared_scenes.sort_by { |s| s.icdate }
+        scenes = Scene.shared_scenes.sort_by { |s| s.icdate }.reverse
         scenes.each do |s|
           puts "Parsing scene #{s.id} #{s.title}"
         
@@ -100,7 +100,10 @@ module AresMUSH
           File.open(File.join(export_path, page_name), 'w') do |f|
             request = WebRequest.new( { args: { id: p.id } } )
             response = Website::GetWikiPageRequestHandler.new.handle(request)
-            f.puts render_template(File.join(template_path, 'wiki-page.hbs'), { model: response }, p.heading)
+            
+            f.puts format_wiki_template(response[:text], p.heading)
+            
+            #f.puts render_template(File.join(template_path, 'wiki-page.hbs'), { model: response }, p.heading)
           end
         end
         
@@ -193,7 +196,7 @@ module AresMUSH
         text = AnsiFormatter.strip_ansi(text)
 
         template = HandlebarsTemplate.new(File.join(AresMUSH.plugin_path, 'website', 'templates', 'wiki_export.hbs'))
-        template.render(body: text, title: title, mush_name: Global.read_config("game", "name"))
+        template.render(body: text, page_title: title, mush_name: Global.read_config("game", "name"))
       end
     end
     
@@ -253,6 +256,7 @@ module AresMUSH
 
         template_contents = replace_char_icon(template_contents, "c")
         template_contents = replace_char_icon(template_contents, "p")
+        template_contents = replace_relationship_icon(template_contents)
         
         @template = @handlebars.compile(template_contents)
       end
@@ -263,6 +267,10 @@ module AresMUSH
       
       def replace_char_icon(template_contents, key)
         template_contents.gsub("{{char-icon char=#{key}}}", "<div class=\"char-icon-container\"><div class=\"log-icon-container\"><a href=\"{{#{key}.name}}.html\"><img src=\"game/uploads/{{#{key}.icon}}\" class=\"log-icon\"/></a></div></div><div class=\"log-icon-title-container\"><div class=\"log-icon-title\">{{#{key}.name}}</div></div>") 
+      end	
+      
+      def replace_relationship_icon(template_contents)
+        template_contents.gsub("{{relationship-icon char=ship}}", "<div class=\"char-icon-container\"><div class=\"log-icon-container\"><a href=\"{{ship.name}}.html\"><img src=\"game/uploads/{{ship.icon}}\" class=\"log-icon\"/></a></div></div><div class=\"log-icon-title-container\"><div class=\"log-icon-title\">{{ship.name}}</div></div>") 
       end	
     end
     

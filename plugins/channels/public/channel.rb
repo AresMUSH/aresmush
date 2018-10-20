@@ -18,6 +18,7 @@ module AresMUSH
     set :characters, "AresMUSH::Character"
 
     before_save :save_upcase
+    before_delete :delete_options
     
     def save_upcase
       self.name_upcase = self.name.upcase
@@ -33,6 +34,10 @@ module AresMUSH
         self.default_alias = aliases.uniq
       end
     end      
+    
+    def delete_options
+      ChannelOptions.all.select { |c| c.channel_id == self.id }.each { |c| c.delete }
+    end
         
     def display_name(include_markers = true)
       display = "#{self.color}#{self.name}%xn"
