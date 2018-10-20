@@ -9,6 +9,18 @@ module AresMUSH
       actor.has_permission?("manage_login")
     end
     
+    def self.can_login?(actor)
+      actor.has_permission?("login")
+    end
+    
+    def self.creation_allowed?
+      Global.read_config('login', 'allow_creation')
+    end
+    
+    def self.restricted_login_message
+      Global.read_config('login', 'login_not_allowed_message') || ''
+    end
+    
     def self.can_boot?(actor)
       # Limit to admins or approved non-admins to prevent trolls from using it.
       not_new = actor.has_permission?("manage_login") || actor.is_approved?

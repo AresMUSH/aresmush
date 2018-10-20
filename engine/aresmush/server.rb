@@ -37,13 +37,13 @@ module AresMUSH
         web.run(port: engine_api_port)
         
         websocket_port = Global.read_config("server", "websocket_port")
-        use_ssl = Global.read_config("server", "use_ssl")
+        use_https = Global.read_config("server", "use_https")
         
         websocket_options = {
           :host => host,
           :port => websocket_port,
-          :secure => use_ssl,
-          :tls_options => use_ssl ? {
+          :secure => use_https,
+          :tls_options => use_https ? {
                 :private_key_file => Global.read_config("server", "private_key_file_path"),
       	        :cert_chain_file => Global.read_config("server", "certificate_file_path")
                 } : nil

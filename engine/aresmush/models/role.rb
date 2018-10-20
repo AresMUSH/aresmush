@@ -20,6 +20,13 @@ module AresMUSH
       permissions.include?(name)
     end
     
+    def add_permission(name)
+      return if self.has_permission?(name)
+      new_permissions = self.permissions
+      new_permissions << name
+      self.update(permissions: new_permissions)
+    end
+    
     index :name
   end
 end
