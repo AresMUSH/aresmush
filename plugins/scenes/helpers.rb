@@ -318,7 +318,8 @@ module AresMUSH
         end
       end      
       
-      "#{char.pose_autospace}#{nospoof}#{place_title}#{colored_pose}"
+      autospace = Scenes.format_autospace(enactor, char.pose_autospace)
+      "#{autospace}#{nospoof}#{place_title}#{colored_pose}"
     end  
     
     def self.find_all_scene_links(scene)

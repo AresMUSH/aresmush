@@ -18,7 +18,7 @@ module AresMUSH
           return { error: t('forum.cannot_access_category') }
         end
 
-        posts = category.bbs_posts
+        posts = category.sorted_posts.reverse
            .map { |p| {
              id: p.id,
              title: p.subject,
