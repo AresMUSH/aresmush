@@ -34,6 +34,7 @@ You can also view and load the plugin configuration files.
 
 `config` - Lists config sections
 `config <section>` - Views config variables for a section.
+`config <section>/<variable>` - Views a specific config variable.
 `load config` - Reloads configuration from disk.
    
 ## Loading Locale Translations
