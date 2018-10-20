@@ -18,6 +18,8 @@ module AresMUSH
         PassAction
       when "spell"
         SpellAction
+      when "spelltarget"
+        SpellTargetAction
       when "potion"
         PotionAction
       when "rollspelltarget"

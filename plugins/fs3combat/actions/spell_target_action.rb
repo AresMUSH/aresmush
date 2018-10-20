@@ -15,11 +15,13 @@ module AresMUSH
         error = self.parse_targets(self.names)
         return error if error
 
-        return t('fs3combat.only_one_target') if (self.targets.count > 1)
+        num = Global.read_config("spells", self.spell, "target_num")
+
+        return t('custom.too_many_targets', :spell => self.spell, :num => num) if (self.targets.count > num)
       end
 
       def print_action
-        msg = t('custom.roll_spell_target_action_msg_long', :name => self.name, :spell => self.spell, :target => print_target_names)
+        msg = t('custom.spell_target_action_msg_long', :name => self.name, :spell => self.spell, :target => print_target_names)
         msg
       end
 
@@ -52,6 +54,17 @@ module AresMUSH
 
           targets.each do |target|
 
+            #Healing
+            if heal_points
+              wound = FS3Combat.worst_treatable_wound(target.associated_model)
+              if (wound)
+                FS3Combat.heal(wound, heal_points)
+                messages.concat [t('custom.cast_heal', :name => self.name, :spell => spell, :succeeds => succeeds, :target => target.name, :points => heal_points)]
+              else
+                 messages.concat [t('custom.cast_heal_no_effect', :name => self.name, :spell => spell, :succeeds => succeeds, :target => target.name)]
+              end
+            end
+
             #Equip Weapon
             if weapon
               FS3Combat.set_weapon(combatant, target, weapon)
@@ -66,7 +79,14 @@ module AresMUSH
             if weapon_specials_str
               weapon_specials = weapon_specials_str ? weapon_specials_str.split('+') : nil
               FS3Combat.set_weapon(combatant, target, target.weapon, weapon_specials)
-              messages.concat [t('custom.casts_spell', :name => self.name, :spell => self.spell, :succeeds => succeeds)]
+              if heal_points
+
+              elsif lethal_mod || defense_mod || attack_mod || spell_mod
+
+              else
+                messages.concat [t('custom.casts_spell', :name => self.name, :spell => self.spell, :succeeds => succeeds)]
+              end
+
             end
 
             #Equip Armor
@@ -82,16 +102,7 @@ module AresMUSH
               messages.concat [t('custom.casts_spell', :name => self.name, :spell => self.spell, :succeeds => succeeds)]
             end
 
-            #Healing
-            if heal_points
-              wound = FS3Combat.worst_treatable_wound(target.associated_model)
-              if (wound)
-                FS3Combat.heal(wound, heal_points)
-                messages.concat [t('custom.cast_heal', :name => self.name, :spell => spell, :succeeds => succeeds, :target => print_target_names, :points => heal_points)]
-              else
-                 messages.concat [t('custom.cast_heal_no_effect', :name => self.name, :spell => spell, :succeeds => succeeds, :target => print_target_names)]
-              end
-            end
+
 
             #Reviving
             if is_revive
@@ -153,12 +164,12 @@ module AresMUSH
             #Roll
             if roll
               succeeds = Custom.roll_combat_spell_success(self.combatant, self.spell)
-              messages.concat [t('custom.roll_spell_target_resolution_msg', :name => self.name, :spell => self.spell, :target => print_target_names, :succeeds => succeeds)]
+              messages.concat [t('custom.spell_target_resolution_msg', :name => self.name, :spell => self.spell, :target => print_target_names, :succeeds => succeeds)]
             end
 
           end
         else
-          messages.concat [t('custom.roll_spell_target_resolution_msg', :name => self.name, :spell => spell, :target => print_target_names, :succeeds => succeeds)]
+          messages.concat [t('custom.spell_target_resolution_msg', :name => self.name, :spell => spell, :target => print_target_names, :succeeds => succeeds)]
         end
         messages
       end
