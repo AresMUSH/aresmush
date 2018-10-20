@@ -18,3 +18,5 @@ Magical items range from weapons enchanted to cause increased damage to amulets 
 **Admin Only**
 `item/add <name>=<item>` - Add an item to someone.
 `item/remove <name>=<item>` - Remove an item from someone.
+
+Note that temporary NPCs cannot use magical items. To use a magical item, NPCs need to be character objects. See [help NPCs](/help/npc).

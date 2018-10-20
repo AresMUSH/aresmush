@@ -15,11 +15,13 @@ module AresMUSH
          self.caster = FS3Combat.find_named_thing(caster_name, enactor)
          #Returns combatant
          if enactor.combat
+
            self.caster_combat = combat.find_combatant(caster_name)
            self.spell = titlecase_arg(args.arg2)
          end
        else
           args = cmd.parse_args(/(?<arg1>[^\+]+)\+?(?<arg2>.+)?/)
+          caster_name = enactor.name
           #Returns char or NPC
           self.caster = enactor
           self.spell = titlecase_arg(args.arg1)
@@ -37,32 +39,32 @@ module AresMUSH
         return t('custom.not_character') if !caster
         return t('custom.not_spell') if !self.spell_list.include?(self.spell)
         return t('custom.cant_force_cast') if (self.caster != enactor && !enactor.combatant)
-        return t('custom.already_cast') if (enactor.combat && Custom.already_cast(self.caster_combat))
-        require_target = Global.read_config("spells", self.spell, "require_target")
-        multi_target = Global.read_config("spells", self.spell, "multi_target")
-        return t('custom.needs_multi_target') if (require_target && multi_target)
-        return t('custom.needs_target') if require_target
+        # return t('custom.already_cast') if (enactor.combat && Custom.already_cast(self.caster_combat))
+        # require_target = Global.read_config("spells", self.spell, "require_target")
+        # multi_target = Global.read_config("spells", self.spell, "multi_target")
+        # return t('custom.needs_multi_target') if (require_target && multi_target)
+        # return t('custom.needs_target') if require_target
         return nil
       end
 
       def handle
       #Reading Config Files
 
-        weapon = Global.read_config("spells", self.spell, "weapon")
-        weapon_specials = Global.read_config("spells", self.spell, "weapon_specials")
-        armor = Global.read_config("spells", self.spell, "armor")
-        armor_specials = Global.read_config("spells", self.spell, "armor_specials")
-        is_stun = Global.read_config("spells", self.spell, "is_stun")
+        # weapon = Global.read_config("spells", self.spell, "weapon")
+        # weapon_specials = Global.read_config("spells", self.spell, "weapon_specials")
+        # armor = Global.read_config("spells", self.spell, "armor")
+        # armor_specials = Global.read_config("spells", self.spell, "armor_specials")
+        # is_stun = Global.read_config("spells", self.spell, "is_stun")
         roll = Global.read_config("spells", self.spell, "roll")
-        heal_points = Global.read_config("spells", self.spell, "heal_points")
-        is_revive = Global.read_config("spells", self.spell, "is_revive")
-        lethal_mod = Global.read_config("spells", self.spell, "lethal_mod")
-        attack_mod = Global.read_config("spells", self.spell, "attack_mod")
-        defense_mod = Global.read_config("spells", self.spell, "defense_mod")
-        spell_mod = Global.read_config("spells", self.spell, "spell_mod")
-        stance = Global.read_config("spells", self.spell, "stance")
-        school = Global.read_config("spells", self.spell, "school")
-        fs3_attack = Global.read_config("spells", self.spell, "fs3_attack")
+        # heal_points = Global.read_config("spells", self.spell, "heal_points")
+        # is_revive = Global.read_config("spells", self.spell, "is_revive")
+        # lethal_mod = Global.read_config("spells", self.spell, "lethal_mod")
+        # attack_mod = Global.read_config("spells", self.spell, "attack_mod")
+        # defense_mod = Global.read_config("spells", self.spell, "defense_mod")
+        # spell_mod = Global.read_config("spells", self.spell, "spell_mod")
+        # stance = Global.read_config("spells", self.spell, "stance")
+        # school = Global.read_config("spells", self.spell, "school")
+        # fs3_attack = Global.read_config("spells", self.spell, "fs3_attack")
 
 
         if self.caster.combat
@@ -71,18 +73,19 @@ module AresMUSH
           elsif (!caster_combat.is_npc? &&  Custom.knows_spell?(caster, self.spell) == false && Custom.item_spell(caster) != spell)
               client.emit_failure t('custom.dont_know_spell')
           else
+            FS3Combat.set_action(client, enactor, enactor.combat, caster_combat, FS3Combat::SpellAction, self.spell)
             # #Roll spell successes
             # succeeds = Custom.roll_combat_spell_success(self.caster_combat, self.spell)
 
             #Roll Spell in Combat
-            if roll == true
-              FS3Combat.set_action(client, enactor, enactor.combat, caster_combat, FS3Combat::RollSpellAction, self.spell)
-            end
+            # if roll == true
+            #   FS3Combat.set_action(client, enactor, enactor.combat, caster_combat, FS3Combat::SpellAction, self.spell)
+            # end
 
             #Equip Gear without attack
-            if (!fs3_attack && (weapon || weapon_specials || armor || armor_specials))
-              FS3Combat.set_action(client, self.caster_combat, self.caster.combat, self.caster_combat, FS3Combat::SpellEquipGearAction, self.args)
-            end
+            # if (!fs3_attack && (weapon || weapon_specials || armor || armor_specials))
+            #   FS3Combat.set_action(client, self.caster_combat, self.caster.combat, self.caster_combat, FS3Combat::SpellAction, self.args)
+            # end
 
             # #Equip Armor
             # if armor
@@ -100,9 +103,9 @@ module AresMUSH
             # end
 
             #Healing
-            if heal_points
-              FS3Combat.set_action(client, enactor, enactor.combat, caster_combat, FS3Combat::SpellHealAction, self.args)
-            end
+            # if heal_points
+            #   FS3Combat.set_action(client, enactor, enactor.combat, caster_combat, FS3Combat::SpellAction, self.args)
+            # end
 
             # #Equip Weapon
             # if weapon
@@ -120,14 +123,14 @@ module AresMUSH
             # end
 
             #Change stance
-            if stance
-              FS3Combat.set_action(client, enactor, enactor.combat, caster_combat, FS3Combat::SpellStanceAction, self.args)
-            end
-
-            #Set Mods
-            if (lethal_mod || defense_mod || attack_mod || spell_mod)
-              FS3Combat.set_action(client, enactor, enactor.combat, caster_combat, FS3Combat::SpellModAction, self.args)
-            end
+            # if stance
+            #   FS3Combat.set_action(client, enactor, enactor.combat, caster_combat, FS3Combat::SSpellAction, self.args)
+            # end
+            #
+            # #Set Mods
+            # if (lethal_mod || defense_mod || attack_mod || spell_mod)
+            #   FS3Combat.set_action(client, enactor, enactor.combat, caster_combat, FS3Combat::SpellAction, self.args)
+            # end
 
             # #Set Lethal Mod
             # if lethal_mod
@@ -168,7 +171,7 @@ module AresMUSH
 
 
           end
-        self.caster_combat.update(has_cast: true)
+        # self.caster_combat.update(has_cast: true)
         elsif
           #Roll NonCombat
           if roll
