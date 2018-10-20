@@ -21,16 +21,21 @@ module AresMUSH
         yaml_hash['game']['public_game'] = config['public_game'].to_bool
         
         File.open(path, 'w') do |f|
-            f.write(yaml_hash.to_yaml)
+          f.write(yaml_hash.to_yaml)
         end
-        
-        Manage.reload_config
-        
+
+        error = Manage.reload_config  
+        if (error)
+          Global.logger.warn "Trouble loading YAML config: #{error}"
+          return { error: t('manage.game_config_invalid', :error => error) }
+        end
+                  
         if (AresCentral.is_registered?)
           AresCentral.update_game
         elsif (AresCentral.is_public_game?)
           AresCentral.register_game
         end
+         
         {
         }
       end

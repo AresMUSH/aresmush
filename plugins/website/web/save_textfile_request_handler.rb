@@ -31,7 +31,7 @@ module AresMUSH
           begin
               yaml_hash = YAML.load(text)
           rescue Exception => ex
-            Global.logger.warn "Trouble loading YAML config; #{ex}"
+            Global.logger.warn "Trouble loading YAML config: #{ex}"
             return { error: t('webportal.config_error', :error => ex, :file => file ) }
           end
         end
@@ -40,11 +40,21 @@ module AresMUSH
           f.write(text)
         end
         
-        if (file_type == "style")
-          Website.rebuild_css
-        else
-          Manage.reload_config
+        begin
+          if (file_type == "style")
+            Website.rebuild_css
+          else
+            error = Manage.reload_config     
+            if (error)
+              Global.logger.warn "Trouble loading YAML config: #{error}"
+              return { error: t('manage.game_config_invalid', :error => error) }
+            end
+          end
+        rescue Exception => ex
+          Global.logger.warn "Trouble loading YAML config: #{ex}"
+          return { error: t('webportal.config_error', :error => ex, :file => file ) }
         end
+        
         {}
         
       end
