@@ -3,10 +3,12 @@ module AresMUSH
     class ConfigViewCmd
       include CommandHandler
 
-      attr_accessor :section
+      attr_accessor :section, :subsection
       
       def parse_args
-        self.section = trim_arg(cmd.args)
+        args = cmd.parse_args(ArgParser.arg1_slash_optional_arg2)
+        self.section = trim_arg(args.arg1)
+        self.subsection = trim_arg(args.arg2)
       end
       
       def check_section_exists
@@ -20,10 +22,21 @@ module AresMUSH
       end
             
       def handle
-        title = t('manage.config_section', :name => self.section)
-        json = Global.read_config(self.section)
+        if (self.subsection)
+          title = t('manage.config_section', :name => "#{self.section}/#{self.subsection}")
+          json = Global.read_config(self.section, self.subsection)
+        else
+          title = t('manage.config_section', :name => self.section)
+          json = Global.read_config(self.section)
+        end
 
-        template = BorderedDisplayTemplate.new JSON.pretty_generate(json), title
+        begin
+          text = JSON.pretty_generate(json)
+        rescue
+          text = json
+        end
+        
+        template = BorderedDisplayTemplate.new text, title
         client.emit template.render
       end
     end

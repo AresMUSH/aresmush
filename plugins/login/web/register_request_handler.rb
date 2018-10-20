@@ -32,8 +32,7 @@ module AresMUSH
         char.name = name
         char.change_password(pw)
         char.room = Game.master.welcome_room
-        char.login_api_token = Character.random_link_code
-        char.login_api_token_expiry = Time.now + 86400
+        char.set_login_token
       
         if (Login.terms_of_service)
           char.update(terms_of_service_acknowledged: Time.now)

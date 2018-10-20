@@ -150,7 +150,7 @@ module AresMUSH
     def self.set_weapon(enactor, combatant, weapon, specials = nil)
       max_ammo = weapon ? FS3Combat.weapon_stat(weapon, "ammo") : 0
       combatant.update(weapon_name: weapon ? weapon.titlecase : "Unarmed")
-      combatant.update(weapon_specials: specials ? specials.map { |s| s.titlecase } : [])
+      combatant.update(weapon_specials: specials ? specials.map { |s| s.titlecase }.uniq : [])
       combatant.update(ammo: max_ammo)
       combatant.update(max_ammo: max_ammo)
       combatant.update(action_klass: nil)
@@ -163,7 +163,7 @@ module AresMUSH
     
     def self.set_armor(enactor, combatant, armor, specials = nil)
       combatant.update(armor_name: armor ? armor.titlecase : nil)
-      combatant.update(armor_specials: specials ? specials.map { |s| s.titlecase } : [])
+      combatant.update(armor_specials: specials ? specials.map { |s| s.titlecase }.uniq : [])
       message = t('fs3combat.armor_changed', :name => combatant.name, :armor => combatant.armor)
       FS3Combat.emit_to_combat combatant.combat, message, FS3Combat.npcmaster_text(combatant.name, enactor)
     end

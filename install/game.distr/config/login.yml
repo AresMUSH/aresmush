@@ -21,3 +21,6 @@ login:
     conn: connect
     kick: boot
     password/change: password/set
+  allow_creation: true
+  login_not_allowed_message: ''
+  creation_not_allowed_message: ''

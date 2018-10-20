@@ -37,7 +37,7 @@ module AresMUSH
         topic_keys.each do |found_topic|
           md_contents = Help.topic_contents(found_topic)
           lines = md_contents.split("\n")            
-          matching_lines = lines.select { |l| l.start_with?("`#{self.topic}")}
+          matching_lines = lines.select { |l| line_is_match?(l) }
           
           if (!matching_lines.empty?)
             list.concat matching_lines
@@ -50,6 +50,14 @@ module AresMUSH
         template = BorderedDisplayTemplate.new text, t('help.command_help_title'), footer
         client.emit template.render
         
+      end
+      
+      def line_is_match?(line)
+        search = self.topic
+        return true if line.start_with?("`#{search}")
+        
+        search = self.topic.gsub(' ', '/')
+        return line.start_with?("`#{search}")
       end
     end
   end
