@@ -190,6 +190,8 @@ en:
         invalid_armor: "That is not a valid armor type."
         armor_title_description: "Description:"
         armor_title_protection: "Protection:"
+        armor_title_allowed_specials: "Allowed Specials:"
+        armor_title_defense: "Defense Mod:"
         invalid_armor_specials: "%{special} is not a valid special for that armor."
         
         # ----------------------------

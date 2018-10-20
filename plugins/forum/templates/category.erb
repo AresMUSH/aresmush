@@ -2,7 +2,7 @@
 %xh<%= category.category_index %> - <%= category.name %>%xn
 <%= category.description %>		
 <%= divider %>		
-<% posts.each_with_index do |p, i| -%> 		
+<% category.sorted_posts.each_with_index do |p, i| -%> 		
 <%= right(num(i),3) -%>		
  <%= center(unread(p),5) -%>		
  <%= left(p.subject,30) -%>		

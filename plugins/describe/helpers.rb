@@ -5,7 +5,7 @@ module AresMUSH
         return true
       elsif (char.has_permission?("desc_anything"))
         return true
-      elsif (model.class == Room)        
+      elsif (model.class == Room || model.class == Exit)        
         return model.owned_by?(char) || char.has_permission?("desc_places")
       end
       return false

@@ -55,7 +55,7 @@ module AresMUSH
     end
     
     def post_index
-      self.bbs_board.bbs_posts.to_a.index(self) + 1
+      self.bbs_board.sorted_posts.index(self) + 1
     end
     
     def category_index
