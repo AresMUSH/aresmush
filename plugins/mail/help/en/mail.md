@@ -15,7 +15,6 @@ The **Mail System** lets you send messages to players who are not online, simili
 `mail <to>=<subject>/<message>` - Sends a message. The "to" field can include any number of player names, separated by spaces.
 
 Ares also supports MUX-style mail composition, which lets you write your mail in pieces instead of all at once.
-
 `mail <to>=<subject>` - Starts a mail.
 `-<message>` - Adds a new paragraph to a message.
 `mail/proof` - Shows your mail so far.
@@ -23,39 +22,34 @@ Ares also supports MUX-style mail composition, which lets you write your mail in
 `mail/toss` - Throws away the message you were drafting.
 
 `mail/fwd <#>=<to>/<comment>` - Forwards a message, along with an optional comment.
-
 `mail/reply[all] <message>` - Replies to the last message you read.
 `mail/reply[all] <#>=<message>` - Replies to a message.
 
 ## Reviewing Sent Mail
-
+`mail/sentmail <on or off` - Turns sent mail copy on or off. On by default.
 `mail/sent` - View mails you have sent.
 `mail/review <name>` - Shows messages you've sent to someone.
 `mail/unsend <name>/<#>` - Unsends a message if it hasn't already been read.
 
 ## Organizing  Mail
 
-Instead of folders, Ares mail uses `tags`, which are a sort of label used to organize your mail.  There are several special tags:  
+Ares mail uses `tags`, which are labels used to organize your mail.  You can make your own custom tags to organize your messages. There are also several special tags:
 
-    Inbox - Incoming mail.
-    Sent - If you've enabled the sent-mail feature, saves a copy of mail you've sent.
-    Trash - Mail you've marked for deletion.
-    Archive - Mail you've archived to keep it from cluttering up the inbox.
-
-You can make your own custom tags as well to organize your messages as you desire.
+Inbox - Incoming mail.
+Sent - If you've enabled the sent-mail feature, saves a copy of mail you've sent.
+Trash - Mail you've marked for deletion.
+Archive - Mail you've archived to keep it from cluttering up the inbox.
 
 `mail/tag <#>=<tag>` - Assigns a tag to a message.
 `mail/untag <#>=<tag>` - Removes a tag from a message.
 `mail/tags` - Lists all your tags.
 
-You can filter your mail view to only show a certain tag.
-
-`mail/filter <tag>` - Shows mail matching the tag.  
+`mail/filter <tag>` - Shows mail matching the tag.
 `mail/inbox, mail/sent, mail/archive or mail/trash` - Shortcuts to common tag views.
 
 ## Deleting and Archiving Mail
 
-You can delete mail messages. This tags it as trash.  Messages tagged as trash are deleted when you log out.
+Messages in trash are deleted when you log out.
 
 `mail/delete <#> or <start#>-<end#>` - Sends a message to the trash.
 `mail/undelete <#>` - Recovers a message from the trash.
