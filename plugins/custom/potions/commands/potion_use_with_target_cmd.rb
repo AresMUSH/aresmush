@@ -3,7 +3,7 @@ module AresMUSH
     class PotionUseWithTargetCmd
     #potion/use <potion>=<target>
       include CommandHandler
-      attr_accessor :potion, :potion_name, :potion, :roll, :spell, :caster, :target, :caster_combat, :target_combat, :target_name
+      attr_accessor :potion, :potion_name, :potion, :roll, :spell, :caster, :target, :caster_combat, :target_combat, :target_name, :action_args
 
       def parse_args
         if (cmd.args =~ /\//)
@@ -44,8 +44,8 @@ module AresMUSH
           end
 
         end
-        arg_array = [caster_name, potion_name]
-        self.args = arg_array.join("/")
+        arg_array = [target_name, potion_name]
+        self.action_args = arg_array.join("/")
         self.potion = Custom.find_potion_has(enactor, self.potion_name)
       end
 
@@ -79,7 +79,8 @@ module AresMUSH
           elsif (!caster_combat.is_npc? &&  !Custom.find_potion_has(caster, self.potion_name))
             client.emit_failure t('custom.dont_have_potion')
           else
-            FS3Combat.set_action(client, enactor, enactor.combat, caster_combat, FS3Combat::PotionTargetAction, self.spell)
+            FS3Combat.set_action(client, enactor, enactor.combat, caster_combat, FS3Combat::PotionTargetAction, self.action_args)
+          end
             #Inflict damage
           #   if damage_inflicted
           #     Custom.potion_inflict_damage(self.caster_combat, self.target, self.spell)

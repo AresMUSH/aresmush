@@ -129,7 +129,7 @@ module AresMUSH
           #Roll
           if roll
             succeeds = Custom.roll_combat_spell_success(self.combatant, self.spell)
-            messages.concat [t('custom.spell_target_resolution_msg', :name => self.name, :potion => self.spell, :target => print_target_names)]
+            messages.concat [t('custom.potion_action_target_resolution_msg_long', :name => self.name, :potion => self.spell, :target => print_target_names)]
           end
 
         end
