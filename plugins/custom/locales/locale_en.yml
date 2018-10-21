@@ -114,10 +114,12 @@ en:
       # FS3 COMBAT POTION
       # ----------------------------
 
-      potion_action_msg_long: "%{name} will use a %{potion} potion this turn."
-      potion_action_target_msg_long: "%{name} will use a %{potion} potion on %{target} this turn."
+      potion_action_msg_long: "%{name} will use a %xM%{potion}%xn potion this turn."
+      potion_action_target_msg_long: "%{name} will use a %xM%{potion}%xn potion on %{target} this turn."
+      potion_action_resolution_msg_long: "%{name} uses a %xM%{potion}%xn potion."
+      potion_action_target_resolution_msg_long: "%{name} uses a %xM%{potion}%xn potion on %{target}."
       potion_action_msg_short: "Potion"
-      potion_resolution_msg: "%{name} used a  %{potion} potion"
+      potion_resolution_msg: "%{name} used a  %xM%{potion}%xn potion"
 
       # ----------------------------
       # FS3 COMBAT POTION
