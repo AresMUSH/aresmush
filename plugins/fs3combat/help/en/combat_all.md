@@ -50,6 +50,7 @@ There are various kinds of gear that can be used in combat.  You should only use
 `weapons` - List all weapons.
 `weapon <name>` - See details for a particular weapon.
 `combat/weapon <name+specials>` - Sets your weapon.
+`combat/weaponspecials <name>=<special>[+<special>+<special>]` - Organizer-only. Set a character or NPC's persistent weapon specials. 'None' to clear.
 
 `armor` - List all types of armor.
 `armor <name>` - See details for a particular armor type.
