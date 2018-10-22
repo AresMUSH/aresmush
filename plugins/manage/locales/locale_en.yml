@@ -11,7 +11,7 @@ en:
         styles_loaded: "Website styles reloaded."
         error_loading_locale: "Problem loading locale: %{error}"
         management_config_messed_up: "Your permissions for who can manage the game aren't working right.  This is a security issue.  Please check your role configuration."
-        game_config_invalid: "Something is wrong with your configuration.  If this problem persists, check the logs and fix your config files."
+        game_config_invalid: "Something is wrong with one of your game's configuration files.  See http://aresmush.com/tutorials for troubleshooting help: %{error}"
         config_sections: "Config Sections"
         config_section: "Config Section: %{name}"
         invalid_config_section: "That config section does not exist."

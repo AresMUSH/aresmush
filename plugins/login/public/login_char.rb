@@ -43,5 +43,11 @@ module AresMUSH
     def is_valid_api_token?(token)
       return self.login_api_token == token && self.login_api_token_expiry > Time.now
     end
+    
+    def set_login_token
+      self.update(login_api_token: "#{SecureRandom.uuid}")
+      self.update(login_api_token_expiry: Time.now + (86400 * 30))
+    end
+    
   end  
 end

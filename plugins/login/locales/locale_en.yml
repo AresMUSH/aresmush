@@ -17,6 +17,7 @@ en:
        recaptcha_failed: "Please prove you're human first."
        no_guest_webportal: "Guests do not have a web portal account.  You can still use the 'Play' screen to play with the web client as a guest."
        web_registration_disabled: "Web registration is disabled.  Please create a character in the game."
+       char_reserved: "Character %{name} created.  Temporary password is %{password}."
        invalid_email_format:  "That is not a valid email format."
        password_changed: "You change your password."
        password_reset: "%{name}'s password has been reset to %{password}"
@@ -54,7 +55,8 @@ en:
        upcoming_events_title: "Upcoming Events"
        
        tos_reset: "You have reset everyone's terms of service acknowledgement."
-       
+       login_restricted: "This game has restricted logins.  %{reason}"
+       creation_restricted: "This game has disabled player creation from the login screen.  %{reason}"
        activity_header: "Game Activity"
        activity_footer: "@ = 5 players, o = 1-4 players"
        

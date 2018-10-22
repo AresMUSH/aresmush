@@ -7,12 +7,13 @@ aliases:
 - quotecolor
 - textcolor
 - posecolor
+- posebreak
 ---
 # Formatting Poses
 
 AresMUSH provides a few commands to help make poses and emits more readable.
 
-The autospace command automatically inserts a blank line or other symbol between poses and pages, to help you tell where one ends and the next begins.  This is particularly helpful when there are multi-line poses.
+The autospace command automatically inserts a blank line or other characters between poses and pages, to help you tell where one ends and the next begins.  This is particularly helpful when there are multi-line poses.  Autospace can contain formatting codes and `%n` to include the poser's name.
 
 `autospace <text>` - Sets your autospace text.  Leave blank to clear it.
 

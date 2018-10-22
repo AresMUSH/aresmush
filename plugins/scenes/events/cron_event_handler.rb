@@ -61,9 +61,14 @@ module AresMUSH
       end
       
       def should_stop_empty_scene(room)
-        return false if !room.scene
-        return true if !room.scene.temp_room
-        return false
+        scene = room.scene
+        return false if !scene
+        return true if !scene.temp_room
+        
+        last_activity = scene.last_activity || Time.now
+        idle_timeout = Global.read_config("scenes", "idle_scene_timeout_days")
+        elapsed_days = (Time.now - last_activity) / 86400
+        return (elapsed_days >= idle_timeout)
       end
     end
   end

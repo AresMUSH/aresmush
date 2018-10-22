@@ -18,7 +18,7 @@ module AresMUSH
 
         Global.dispatcher.spawn("Archiving BBS", client) do
           Forum.with_a_category(self.category_name, client, enactor) do |category|  
-            posts = category.bbs_posts
+            posts = category.sorted_posts
             posts.each_with_index do |post, seconds|
               Global.dispatcher.queue_timer(seconds, "Forum archive #{category.name}", client) do
                 Global.logger.debug "Logging post #{post.id} from #{category.name}."

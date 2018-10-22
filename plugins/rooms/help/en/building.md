@@ -35,7 +35,7 @@ Once you have an exit, you can change the source or destination rooms that it's 
 `link/source <exit>=<source>` - Changes the exit's source.  The destination will be the current room.
 `unlink <exit>` - Unlinks an exit from its destination.
 
-> **Tip:** By default, the room description shows you the exit name and the name of its destionation, e.g. `[S] Town Square`.  You can change the destination name to something else just by giving the exit a description.
+> **Tip:** By default, the room description shows you the exit name and the name of its destionation, e.g. `[S] Town Square`.  You can change the destination name to something else just by giving the exit a short description using the `shortdesc` command (see [Descriptions](/help/descriptions)).
 
 ## Exit Aliases
 

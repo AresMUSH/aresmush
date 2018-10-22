@@ -63,7 +63,7 @@ module AresMUSH
         before do
           allow(Login).to receive(:terms_of_service) { nil }
           allow(@client).to receive(:program) { {} }       
-          
+          allow(Login).to receive(:can_login?) { true }
           @handler.parse_args
         end
              
@@ -91,6 +91,15 @@ module AresMUSH
             expect(Global).to_not receive(:queue_event)
             @handler.handle
           end
+          
+          it "should fail if the char isn't allowed to log in" do
+            allow(Character).to receive(:find_any_by_name) { [ @found_char ] }
+            expect(Login).to receive(:can_login?) { false }
+            expect(Login).to receive(:restricted_login_message) { "" }
+            expect(@client).to receive(:emit_failure).with("login.login_restricted")
+            @handler.handle
+          end
+          
         end
      
         context "success" do
