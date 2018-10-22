@@ -2,6 +2,7 @@
 en:
   custom:
       invalid_name: "%xrCharacter not found.%xn"
+      updated_weapon_specials: "You have updated %{target}'s persistent weapon specials to %{specials}."
         # ----------------------------
         # SCHOOLS
         # ----------------------------
@@ -122,7 +123,7 @@ en:
       potion_resolution_msg: "%{name} used a  %xM%{potion}%xn potion"
 
       # ----------------------------
-      # FS3 COMBAT POTION
+      # FS3 COMBAT DEATH
       # ----------------------------
       one_death: "%xR%{name} has been knocked out for one round.%xn"
       two_death: "%xR%{name} has been knocked out for two rounds. If they are not revived, healed, or treated this round, they will die.%xn"
