@@ -12,26 +12,42 @@ module AresMUSH
 
     def self.item_weapon_specials(char)
       item_name = char.magic_item_equipped
-      item = self.find_item(char, item_name)
-      item.weapon_specials
+      if item_name == "None"
+        nil
+      else
+        item = self.find_item(char, item_name)
+        item.weapon_specials
+      end
     end
 
     def self.item_armor_specials(char)
       item_name = char.magic_item_equipped
-      item = self.find_item(char, item_name)
-      item.armor_specials
+      if item_name == "None"
+        nil
+      else
+        item = self.find_item(char, item_name)
+        item.armor_specials
+      end
     end
 
     def self.item_spell(char)
       item_name = char.magic_item_equipped
-      item = self.find_item(char, item_name)
-      item.spell
+      if item_name == "None"
+        nil
+      else
+        item = self.find_item(char, item_name)
+        item.spell
+      end
     end
 
     def self.item_spell_mod(char)
       item_name = char.magic_item_equipped
-      item = self.find_item(char, item_name)
-      item.item_spell_mod
+      if item_name == "None"
+        0
+      else
+        item = self.find_item(char, item_name)
+        item.item_spell_mod
+      end
     end
 
   end

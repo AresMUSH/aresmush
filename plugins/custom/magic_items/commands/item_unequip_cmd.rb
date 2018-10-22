@@ -34,9 +34,6 @@ module AresMUSH
 
       def handle
         item = Custom.find_item(caster, item_name)
-        caster.update(item_spell_mod: 0)
-        caster.update(item_spell: nil)
-
         caster.update(magic_item_equipped: "None")
         client.emit_success t('custom.item_unequipped', :item => self.item_name)
         enactor_room.emit t('custom.has_unequipped_item', :name => self.caster.name, :item => self.item_name)
