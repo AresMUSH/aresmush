@@ -56,7 +56,7 @@ module AresMUSH
         # armor_specials = Global.read_config("spells", self.spell, "armor_specials")
         # is_stun = Global.read_config("spells", self.spell, "is_stun")
         roll = Global.read_config("spells", self.spell, "roll")
-        # heal_points = Global.read_config("spells", self.spell, "heal_points")
+        heal_points = Global.read_config("spells", self.spell, "heal_points")
         # is_revive = Global.read_config("spells", self.spell, "is_revive")
         # lethal_mod = Global.read_config("spells", self.spell, "lethal_mod")
         # attack_mod = Global.read_config("spells", self.spell, "attack_mod")
