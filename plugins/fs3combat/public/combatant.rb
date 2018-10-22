@@ -1,11 +1,11 @@
-module AresMUSH
 
   class Combatant < Ohm::Model
     include ObjectModel
     #SPELLS
     attribute :spell_mod, :type => DataType::Integer, :default => 0
     attribute :has_cast, :type => DataType::Boolean, :default => false
-    attribute :death_count, :type => DataType::Integer, :default => 0    
+    attribute :death_count, :type => DataType::Integer, :default => 0
+    attribute :spell_weapon_specials, :type => DataType::Array, :default => []
 
     attribute :action_klass
     attribute :action_args
@@ -187,4 +187,3 @@ module AresMUSH
       self.combat.log(msg)
     end
   end
-end
