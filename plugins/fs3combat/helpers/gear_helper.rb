@@ -164,6 +164,9 @@ module AresMUSH
       elsif !combatant.npc && combatant.associated_model.magic_item_equipped && item_specials
         specials = [item_specials]
       end
+      if combatant.spell_weapon_specials
+        specials.concat [combatant.spell_weapon_specials]
+      end
       max_ammo = weapon ? FS3Combat.weapon_stat(weapon, "ammo") : 0
       combatant.update(weapon_name: weapon ? weapon.titlecase : "Unarmed")
       combatant.update(weapon_specials: specials ? specials.map { |s| s.titlecase }.uniq : [])
