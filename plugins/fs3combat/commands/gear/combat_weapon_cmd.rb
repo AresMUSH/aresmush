@@ -33,7 +33,7 @@ module AresMUSH
         special_group = FS3Combat.weapon_stat(weapon, "special_group") || ""
         allowed_specials = Global.read_config("fs3combat", "weapon special groups", special_group) || []
         self.specials.each do |s|
-          return t('fs3combat.invalid_weapon_special') if !allowed_specials.include?(s.downcase)
+          return t('fs3combat.invalid_weapon_special', :special => s) if !allowed_specials.include?(s.downcase)
         end
         return nil
       end
