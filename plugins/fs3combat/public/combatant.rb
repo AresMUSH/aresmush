@@ -1,5 +1,6 @@
-
+module AresMUSH
   class Combatant < Ohm::Model
+
     include ObjectModel
     #SPELLS
     attribute :spell_mod, :type => DataType::Integer, :default => 0
@@ -187,3 +188,4 @@
       self.combat.log(msg)
     end
   end
+end
