@@ -132,6 +132,11 @@ module AresMUSH
             messages.concat [t('custom.potion_action_target_resolution_msg_long', :name => self.name, :potion => self.spell, :target => print_target_names)]
           end
 
+          if !combatant.is_npc?
+            potion = Custom.find_potion_has(combatant.associated_model, self.spell)
+            potion.delete
+          end
+
         end
 
         messages

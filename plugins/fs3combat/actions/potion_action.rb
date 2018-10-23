@@ -1,7 +1,7 @@
 module AresMUSH
   module FS3Combat
     class PotionAction < CombatAction
-      attr_accessor  :spell, :target, :names
+      attr_accessor  :spell, :target, :names, :potion
       def prepare
         if (self.action_args =~ /\//)
           #Uses 'spell' instead of potion for easy c/p. Spell == potion.
@@ -11,6 +11,8 @@ module AresMUSH
           self.names = self.name
           self.spell = self.action_args
         end
+
+
 
         error = self.parse_targets(self.names)
         return error if error
@@ -39,7 +41,7 @@ module AresMUSH
         spell_mod = Global.read_config("spells", self.spell, "spell_mod")
         stance = Global.read_config("spells", self.spell, "stance")
         roll = Global.read_config("spells", self.spell, "roll")
-        
+
 
         targets.each do |target|
 
@@ -130,6 +132,11 @@ module AresMUSH
           if roll
             succeeds = Custom.roll_combat_spell_success(self.combatant, self.spell)
             messages.concat [t('custom.spell_target_resolution_msg', :name => self.name, :potion => self.spell)]
+          end
+
+          if !combatant.is_npc?
+            potion = Custom.find_potion_has(combatant.associated_model, self.spell)
+            potion.delete
           end
 
         end

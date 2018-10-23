@@ -46,7 +46,7 @@ module AresMUSH
         end
         arg_array = [target_name, potion_name]
         self.action_args = arg_array.join("/")
-        self.potion = Custom.find_potion_has(enactor, self.potion_name)
+
       end
 
       def check_errors
@@ -164,9 +164,7 @@ module AresMUSH
             client.emit_failure t('custom.not_in_combat')
           end
         end
-        if caster == enactor
-          self.potion.delete
-        end
+
 
       end
 
