@@ -33,7 +33,7 @@ module AresMUSH
              self.caster_combat = enactor.combatant
            end
           end
-          self.potion = Custom.find_potion_has(enactor, self.potion_name)
+
           arg_array = [caster_name, potion_name]
           self.args = arg_array.join("/")
       end
@@ -139,9 +139,7 @@ module AresMUSH
           end
 
         end
-        if caster == enactor
-          self.potion.delete
-        end
+
 
       end
 
