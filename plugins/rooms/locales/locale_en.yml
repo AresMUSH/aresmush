@@ -51,6 +51,7 @@ en:
        way_in_unlocked: "You unlock the way in."
        already_has_lock: "The way in already has a different kind of lock."
        no_roles_specified: "You need to specify which roles the exit should be locked to."
+       multiple_rooms_found: "Multiple rooms found.  Maybe you meant one of these: %{rooms}."
        
        foyer_set: This room is now marked as a foyer.
        foyer_cleared: This room is no longer marked as a foyer.

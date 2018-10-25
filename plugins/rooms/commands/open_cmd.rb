@@ -24,12 +24,12 @@ module AresMUSH
       def handle
         room = nil
         if (self.dest)
-          matched_rooms = Rooms.find_destination(self.dest, enactor)
-          if (matched_rooms.count != 1)
-            client.emit_failure matched_rooms.count == 0 ? t('db.object_not_found') : t('db.object_ambiguous')
+          find_result = Rooms.find_single_room(self.dest, enactor)
+          if (find_result[:error])
+            client.emit_failure find_result[:error]
             return
           end
-          room = matched_rooms.first
+          room = find_result[:room]
         end
         client.emit_success Rooms.open_exit(self.name, enactor_room, room)
       end
