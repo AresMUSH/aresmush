@@ -15,6 +15,8 @@ module AresMUSH
       case cmd.root
       when "channel"
         case cmd.switch
+        when "addchar"
+          return ChannelForceJoinCmd
         when "alias"
           return ChannelAliasCmd 
         when "announce"
@@ -39,6 +41,8 @@ module AresMUSH
           return ChannelListCmd
         when "recall"
           return ChannelRecallCmd
+        when "removechar"
+          return ChannelForceLeaveCmd
         when "rename"
           return ChannelRenameCmd
         when "report"
@@ -78,6 +82,8 @@ module AresMUSH
         return RoleDeletedEventHandler
       when "CronEvent"
         return CronEventHandler
+      when "CharApprovedEvent"
+        return CharApprovedEventHandler
       end
       nil
     end
