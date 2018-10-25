@@ -12,7 +12,7 @@ echo kill -9 ${ARES_PID}  > bin/killares
 chmod +x bin/killares
 
 echo "Deploying website."
-cd ~/ares-webportal
+cd /home/ares/ares-webportal
 bin/deploy
 
 sleep 3s

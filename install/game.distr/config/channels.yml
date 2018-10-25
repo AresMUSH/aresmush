@@ -3,6 +3,7 @@ channels:
   default_channels:
   - Questions
   - Chat
+  approved_channels:
   - RP Requests
   end_marker: ">"
   shortcuts:
