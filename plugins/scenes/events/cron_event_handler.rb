@@ -14,6 +14,11 @@ module AresMUSH
              delete_unshared_scenes
           end
         end
+        
+        config = Global.read_config("scenes", "scene_achievement_cron")
+        if Cron.is_cron_match?(config, event.time)
+           do_scene_achievements
+        end
       end
 
       def clear_watchers

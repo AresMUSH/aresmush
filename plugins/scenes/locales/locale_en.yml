@@ -12,6 +12,7 @@ en:
         scene_type_title: "Type: "
         organizer_title: "Organized By: %{name}"
         organizer_deleted: "(Organizer Deleted)"
+        last_activity: "Last Activity: "
         
         scene_ending: "The scene has ended."
         scene_stopped: "The scene has ended.  To share the log, set the scene info (help scene info) and then use `scene/share %{id}` to share it."
