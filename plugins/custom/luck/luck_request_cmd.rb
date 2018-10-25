@@ -8,7 +8,8 @@ module AresMUSH
 
       def handle
         reason = cmd.args
-        Jobs.create_job("SYS", "Luck Request", reason, enactor)
+        Jobs.create_job("LUCK", "Luck Request", reason, enactor)
+        client.emit_success t('custom.luck_requested')
       end
 
     end
