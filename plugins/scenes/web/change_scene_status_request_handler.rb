@@ -38,7 +38,7 @@ module AresMUSH
           
         when "share"
           if (!scene.all_info_set?)
-            return { error: t('scenes.missing_required_fields')}
+            return { error: Scenes.info_missing_message(scene)}
           end
           
           Scenes.share_scene(scene)

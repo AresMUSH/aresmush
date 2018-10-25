@@ -62,6 +62,8 @@ module AresMUSH
           scene.update(scene_log: log)
         end
       
+        Scenes.create_scene_temproom(scene)
+        
         { id: scene.id }
       end
     end

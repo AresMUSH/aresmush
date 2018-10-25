@@ -146,6 +146,13 @@ module AresMUSH
       return message
     end
     
+    def self.info_missing_message(scene)
+      t('scenes.scene_info_missing', :title => scene.title.blank? ? "??" : scene.title, 
+                     :summary => scene.summary.blank? ? "??" : scene.summary,
+                     :type => scene.scene_type.blank? ? "??" : scene.scene_type, 
+                     :location => scene.location.blank? ? "??" : scene.location)
+    end
+                   
     def self.is_valid_privacy?(privacy)
       ["Public", "Open", "Private"].include?(privacy)
     end
@@ -258,7 +265,6 @@ module AresMUSH
     end
 
     def self.notify_next_person(room)
-      return if room.pose_order.count < 2
         
       poses = room.sorted_pose_order
       poses.each do |name, time|
@@ -270,6 +276,7 @@ module AresMUSH
       end
           
       poses = room.sorted_pose_order
+      return if poses.count < 2
  
       if (room.pose_order_type == '3-per')
         poses.reverse.each_with_index do |(name, time), i|
