@@ -11,7 +11,10 @@ module AresMUSH
       end
       
       def characters(scene)
-        scene.participant_names.join(", ")
+        scene.participants.sort { |p| p.name }
+           .map { |p| p.room == scene.room ? p.name : "%xh%xx#{p.name}%xn"}
+           .join(", ")
+        
       end
       
       def organizer(scene)
@@ -20,6 +23,10 @@ module AresMUSH
       
       def last_activity(scene)
         OOCTime.local_long_timestr(self.enactor, scene.last_activity)
+      end
+      
+      def location_type(scene)
+        scene.temp_room ? t('scenes.temproom_scene') : t('scenes.grid_scene')
       end
       
       def privacy(scene)

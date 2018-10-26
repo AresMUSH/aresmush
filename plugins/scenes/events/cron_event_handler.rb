@@ -14,11 +14,6 @@ module AresMUSH
              delete_unshared_scenes
           end
         end
-        
-        config = Global.read_config("scenes", "scene_achievement_cron")
-        if Cron.is_cron_match?(config, event.time)
-           do_scene_achievements
-        end
       end
 
       def clear_watchers
@@ -27,8 +22,13 @@ module AresMUSH
       
       def clear_rooms
         rooms = Room.all.select { |r| !!r.scene_set || !!r.scene || !r.scene_nag}
+        
+        active_scenes = Scene.all.select { |s| !s.completed }.map { |s| s.id }
+        Global.logger.debug "Room cleanup cron running: #{active_scenes}."
+        
         rooms.each do |r|
           if (r.clients.empty?)
+            Global.logger.debug "Checking room #{r.name} -- #{r.scene ? r.scene.id : 'No scene'}"
             if (r.scene_set)
               r.update(scene_set: nil)
             end
