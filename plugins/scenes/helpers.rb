@@ -40,6 +40,7 @@ module AresMUSH
     end
     
     def self.restart_scene(scene)
+      Scenes.create_scene_temproom(scene)
       scene.update(completed: false)
       Scenes.set_scene_location(scene, scene.location)
       Scenes.new_scene_activity(scene)

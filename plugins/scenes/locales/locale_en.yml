@@ -14,6 +14,9 @@ en:
         organizer_deleted: "(Organizer Deleted)"
         last_activity: "Last Activity: "
         
+        grid_scene: "<%xhOn Grid%xn>"
+        temproom_scene: "<%xhTemp Room%xn>"
+        
         scene_ending: "The scene has ended."
         scene_stopped: "The scene has ended.  To share the log, set the scene info (help scene info) and then use `scene/share %{id}` to share it."
         scene_not_specified: "You must either be in a room with an active scene, or specifiy a scene number for this command."

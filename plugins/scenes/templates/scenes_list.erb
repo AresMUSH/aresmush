@@ -3,7 +3,7 @@
 <% scenes.each do |scene| %>
 <%= divider %>
 %xh#<%= scene.id %> - <%= scene.title || scene.location %>%xn <<%= privacy(scene) %>>  <%= organizer(scene) %>
-<%= left( t('scenes.location_title'), 15 ) %> <%= scene.location %>
+<%= left( t('scenes.location_title'), 15 ) %> <%= location_type(scene) %> <%= scene.location %> 
 <%= left( t('scenes.scene_type_title'), 15 ) %> <%= scene.scene_type %>
 <%= left( t('scenes.players_title'), 15 ) %> <%= characters(scene) %>
 <%= left( t('scenes.last_activity'), 15) %> <%= last_activity(scene) %>
