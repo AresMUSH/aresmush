@@ -10,11 +10,11 @@ module AresMUSH
           return { error: t('webportal.not_found') }
         end
 
-        Global.logger.debug "Scene change: #{request}"
-        
+
+
         error = Website.check_login(request)
         return error if error
-
+        Global.logger.debug "Scene change: #{scene.id} #{status} by #{enactor.name}"
         if (!Scenes.can_access_scene?(enactor, scene))
           return { error: t('scenes.access_not_allowed') }
         end
