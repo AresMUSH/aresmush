@@ -68,6 +68,7 @@ module AresMUSH
     end
       
     def self.stop_scene(scene)
+      Global.logger.debug "Stopping scene #{scene.id}."
       return if scene.completed
       
       if (scene.room)
