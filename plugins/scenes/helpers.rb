@@ -268,7 +268,7 @@ module AresMUSH
     def self.update_pose_order(enactor, room)
       room.update_pose_order(enactor.name.titlecase)
       Scenes.notify_next_person(room)
-      Global.logger.debug "Updated pose order in room: #{room}."
+      Global.logger.debug "Updated pose order in room: #{room.id}."
     end
 
     def self.notify_next_person(room)
