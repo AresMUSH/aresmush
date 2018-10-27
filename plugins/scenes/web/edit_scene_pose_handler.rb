@@ -23,6 +23,8 @@ module AresMUSH
           return { error: t('dispatcher.not_allowed') }
         end
         
+        Global.logger.debug "Scene #{scene.id} pose #{scene_pose.id} edited by #{enactor.name}."
+        
         scene_pose.update(pose: pose_text)
         
         if (notify)

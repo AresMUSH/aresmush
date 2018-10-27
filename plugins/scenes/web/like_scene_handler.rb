@@ -16,7 +16,9 @@ module AresMUSH
         if (!enactor.is_approved?)
           return { error: t('dispatcher.not_allowed') }
         end
-      
+       
+        Global.logger.debug "Scene #{scene.id} #{liked ? 'liked' : 'unliked'} by #{enactor.name}."
+       
         if (liked) 
           scene.like(enactor)
         else
