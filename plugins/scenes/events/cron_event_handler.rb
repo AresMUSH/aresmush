@@ -42,6 +42,7 @@ module AresMUSH
             end
           end
         end
+        Global.logger.debug "Room cleanup cron running: #{active_scenes}."
       end
 
       def delete_unshared_scenes
