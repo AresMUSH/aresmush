@@ -34,6 +34,8 @@ module AresMUSH
         private_scene: completed ? false : (privacy == "Private"),
         owner: enactor
         )
+          
+        Global.logger.debug "Web scene #{scene.id} created by #{enactor.name}."
             
         participant_names = request.args[:participants] || []
       

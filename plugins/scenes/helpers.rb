@@ -87,9 +87,8 @@ module AresMUSH
           scene.room.delete
         else
           scene.room.update(scene: nil)
-          scene.update(room: nil)
         end
-        
+        scene.update(room: nil)
       end
 
       scene.update(completed: true)
