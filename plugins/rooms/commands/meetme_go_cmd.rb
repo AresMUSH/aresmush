@@ -17,8 +17,10 @@ module AresMUSH
       def handle
         inviter = Character[client.program[:meetme]]
         if (self.going)
+          Global.logger.debug "#{enactor_name} joining #{inviter.name} in #{inviter.room.name}."
           Rooms.move_to(client, enactor, inviter.room)
         else
+          Global.logger.debug "#{enactor_name} bringing #{inviter.name} to #{enactor_room.name}."
           Rooms.move_to(Login.find_client(inviter), inviter, enactor_room)
         end
       end

@@ -42,8 +42,6 @@ jobs:
   system_category: SYS
   trouble_category: ALERT
   shortcuts:
-    jobs/mine: job/filter mine
-    jobs/active: job/filter active
     jobs: job
     requests: request
     request/comment: request/respond

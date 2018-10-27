@@ -15,8 +15,6 @@ Ares supports the standard Penn/Tiny color codes (g, b, c, etc.) as well as exte
 
 `fansi <on or off>` - Turns extended FANSI colors on or off.
 
-The 'colors' command will show you all available colors.
-
 `colors` - View all color codes as they appear in your client.
 
 Ansi codes can be nested within each other.
