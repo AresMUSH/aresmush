@@ -47,6 +47,7 @@ module AresMUSH
             end
           end
         end
+        active_scenes = Scene.all.select { |s| !s.completed }.map { |s| s.id }
         Global.logger.debug "Room cleanup cron running: #{active_scenes}."
       end
 
