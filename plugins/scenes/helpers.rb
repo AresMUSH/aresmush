@@ -91,7 +91,7 @@ module AresMUSH
         scene.update(room: nil)
       end
 
-      end
+
       Global.logger.debug  "Scene #{scene.id} will be marked completed."
       scene.update(completed: true)
       Global.logger.debug  "Scene #{scene.id} marked completed."
