@@ -119,14 +119,13 @@ If you have a common snippet that you want to use in multiple places, you can pu
 
 `[[include PageName]]`
 
-You can use includes like templates by creating placeholders where variables will go.  Inside the wiki page, make a placeholder like so with a variable name:  `%{foo}`.  Then when you use the include, set the variable like so:
+You can use includes like templates, creating consistent formatting easily across other wiki articles.  Within the original wiki page (the template), you style everything the way you want, but use placeholders like `%{foo}` where page-specific variables will go.  When you include that template inside another wiki page, set variables within the include statement like so:
 
 `[[include PageName`
 `|foo=Foo Value`
 `]]`
 
 In the page, `%{foo}` will be replaced with "Foo Value".  Be sure to put only one variable per line, and start the line with |.
-
 
 ## Table of Contents
 

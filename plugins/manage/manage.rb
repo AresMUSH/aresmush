@@ -20,6 +20,8 @@ module AresMUSH
         return BackupCmd
       when "config"
         case cmd.switch
+        when "check"
+          return ConfigCheckCmd
         when nil
           if (cmd.args)
             return ConfigViewCmd

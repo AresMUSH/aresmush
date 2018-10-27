@@ -26,8 +26,8 @@ en:
         unable_to_determine_auto_alias: "Could not automatically pick an alias for this channel due to name conflicts.  Use channel/join <name>=<alias> to pick one yourself."
         
         joined_channel: "%{name} has joined this channel."
-        already_on_channel: "You are already on that channel."
-        not_on_channel: "You are not on that channel."
+        already_on_channel: "That channel is already on."
+        not_on_channel: "That channel is already off."
         left_channel: "%{name} has left this channel."
         has_disconnected: "%{name} has disconnected."
         has_connected: "%{name} has connected."
@@ -56,3 +56,8 @@ en:
         channel_reported_body: "%{reporter} has reported the following conversation on the %{name} channel.%R%RReason:%R"
         channel_reported_title: "Channel Reported"
         channel_reported: "Thank you.  A report has been created using the channel log as evidence."
+        
+        char_added_to_channel: "You add %{char} to channel %{channel}."
+        char_removed_from_channel: "You remove %{char} from channel %{channel}."
+        force_added: "You have been added to channel %{channel} by %{char}."
+        force_removed: "You have been removed from channel %{channel} by %{char}."

@@ -46,7 +46,7 @@ module AresMUSH
       end
       
       def do_blacklist_cron
-        Global.dispatcher.spawn("Getting rhost blacklist", nil) do
+        Global.dispatcher.spawn("Updating rhost blacklist", nil) do
           Login.update_blacklist
         end
       end

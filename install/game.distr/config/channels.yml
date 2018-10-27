@@ -3,7 +3,6 @@ channels:
   default_channels:
   - Questions
   - Chat
-  - RP Requests
   end_marker: ">"
   shortcuts:
     chan: channel
@@ -26,3 +25,5 @@ channels:
     - 4
     minute:
     - 47
+  approved_channels:
+  - RP Requests

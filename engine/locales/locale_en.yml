@@ -5,6 +5,7 @@ en:
         none: "None"
         or: "or"
         done: "Done!"
+        ok: "OK"
 
     date:
         # Don't forget the nil at the beginning; there's no such thing as a 0th month
