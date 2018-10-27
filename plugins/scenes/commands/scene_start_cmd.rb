@@ -50,6 +50,8 @@ module AresMUSH
             scene_type: Scenes.scene_types.first,
             temp_room: self.temp,
             icdate: ICTime.ictime.strftime("%Y-%m-%d"))
+
+        Global.logger.info "Scene #{scene.id} started by #{enactor.name} in #{self.temp ? 'temp room' : enactor_room.name}."
             
         if (self.temp)
           room = Scenes.create_scene_temproom(scene)
