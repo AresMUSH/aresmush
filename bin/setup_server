@@ -113,7 +113,14 @@ echo -e "${ARES_INSTALL_TEXT} Have the game server start when the server reboots
 echo "sudo -u ${ARES_USERNAME} -i '/home/${ARES_USERNAME}/onboot.sh'" > /root/onboot.sh
 echo "sudo hugeadm --thp-never" >> /root/onboot.sh
 chmod +x /root/onboot.sh
-printf '%s\n' '#!/bin/bash' '/root/onboot.sh' 'exit 0' | sudo tee -a /etc/rc.local
+
+if [ -e /etc/rc.local ]
+then
+    sed -i -e '$i \/root/onboot.sh &\n' /etc/rc.local
+else
+    printf '%s\n' '#!/bin/bash' '/root/onboot.sh' 'exit 0' | sudo tee -a /etc/rc.local
+fi
+
 sudo chmod +x /etc/rc.local
 
 # #########################################################################################
