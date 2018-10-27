@@ -5,6 +5,13 @@ summary: Managing channels.
 # Managing Channels
 **These commands require the Admin role or the permission: manage\_channels**
 
+## Adding and Removing Characters
+
+Channel administrators can add or remove characters from a channel:
+
+`channel/addchar <char>=<channel>`
+`channel/removechar <char>=<channel>`
+
 ## Creating and Deleting Channels
 `channel/create <channel>`
 `channel/delete <channel>`
@@ -18,7 +25,7 @@ summary: Managing channels.
 ## Roles
 Control who is allowed to use a channel. If you change the roles for an existing channel, anyone who no longer has permission will automatically leave the channel.
 
-`channel/roles <channel>=<roles>` - Use "none" to clear existing roles.
+`channel/roles <channel>=<roles>` - Use commas to separate multiple roles.  Use "none" to clear existing roles.
 
 ## Default Aliases
 The game automatically uses the first letters of the channel name for its default aliases.  You can specify a list of space-separated names: 'c ch cha' for the chat channel.

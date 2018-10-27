@@ -134,7 +134,7 @@ module AresMUSH
             response = Profile::CharacterRequestHandler.new.handle(request)
             
             profile = ""
-            profile << '<script type="text/javascript" src="http://www.youtube.com/player_api"></script>'
+            profile << '<script type="text/javascript" src="https://www.youtube.com/player_api"></script>'
             profile << '<script type="text/javascript" src="game/scripts/music_player.js"></script>'
 
             profile << "<h1>#{c.name}</h1>"

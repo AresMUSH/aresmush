@@ -127,7 +127,7 @@ module AresMUSH
         if (scene.room)
           scene.room.emit message
           if (!scene.temp_room)
-            client.emit_error t('scenes.grid_location_change_warning')
+            client.emit_failure t('scenes.grid_location_change_warning')
           end
         end
         

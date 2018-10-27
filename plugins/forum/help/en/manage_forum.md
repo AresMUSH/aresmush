@@ -23,8 +23,8 @@ aliases:
 
 Access to forums is done by [role](/help/roles). You can give a role read and/or write permissions to a forum category. Posting and replying to a forum requires 'write' permissions.
 
-`forum/readroles <category>=<roles that can read it, or 'everyone'>`
-`forum/writeroles <category>=<roles that can write to it, or 'everyone'>`
+`forum/readroles <category>=<comma-separated roles that can read it, or 'everyone'>`
+`forum/writeroles <category>=<comma-separated roles that can write to it, or 'everyone'>`
 
 ## Archiving a Board
 

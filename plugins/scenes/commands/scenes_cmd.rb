@@ -19,7 +19,7 @@ module AresMUSH
       def handle
         if (self.mode == :active)
           scenes = Scene.all.select { |s| !s.completed }.reverse
-          template = SceneListTemplate.new(scenes)
+          template = SceneListTemplate.new(scenes, enactor)
         else
           
           scenes = Scene.all.select { |s| Scenes.can_access_scene?(enactor, s) }.sort_by { |s| s.id.to_i }.reverse

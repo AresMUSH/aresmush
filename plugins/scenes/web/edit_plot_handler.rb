@@ -16,6 +16,8 @@ module AresMUSH
           return { error: t('dispatcher.not_allowed') }
         end
         
+        Global.logger.debug "Plot #{plot.id} edited by #{enactor.name}."
+        
         [ :title, :summary ].each do |field|
           if (request.args[field].blank?)
             return { error: t('webportal.missing_required_fields') }

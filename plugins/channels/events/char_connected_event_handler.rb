@@ -15,7 +15,8 @@ module AresMUSH
         end
 
         if (char.is_guest?)
-          Channels.add_to_default_channels(client, char)
+          channels = Global.read_config("channels", "default_channels")          
+          Channels.add_to_channels(client, char, channels)
           client.emit_success t('channels.channel_command_hint')
         end
       end

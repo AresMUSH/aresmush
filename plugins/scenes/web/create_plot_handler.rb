@@ -22,7 +22,9 @@ module AresMUSH
           description: request.args[:description],
           summary: request.args[:summary]
         )
-                
+              
+        Global.logger.debug "Plot #{plot.id} created by #{enactor.name}."
+  
         { id: plot.id }
       end
     end
