@@ -89,6 +89,8 @@ module AresMUSH
           scene.room.update(scene: nil)
         end
         scene.update(room: nil)
+      else
+        Global.logger.warn "Stopping a scene that lost its room."
       end
 
 
