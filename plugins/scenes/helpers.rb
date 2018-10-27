@@ -92,6 +92,7 @@ module AresMUSH
       end
 
       scene.update(completed: true)
+      Global.logger.debug  "Scene #{scene.id} marked completed."
       scene.update(date_completed: Time.now)
       Scenes.new_scene_activity(scene)
       scene.participants.each do |char|
