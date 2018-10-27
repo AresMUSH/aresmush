@@ -54,6 +54,21 @@ module AresMUSH
       matches
     end
     
+    def self.find_single_room(name, enactor)
+      matched_rooms = Rooms.find_destination(name, enactor)
+      
+      if (matched_rooms == 0)
+        return { error: t('db.object_not_found') }
+      end
+      
+      if (matched_rooms.count > 1)
+        room_names = matched_rooms.map { |r| r.name_and_area }.join(', ')
+        return { error: t('rooms.multiple_rooms_found', :rooms => room_names) }
+      end
+      
+      { room: matched_rooms.first }
+    end
+    
     def self.top_level_areas
       Area.all.select { |a| !a.parent }.sort_by { |a| a.name }
     end

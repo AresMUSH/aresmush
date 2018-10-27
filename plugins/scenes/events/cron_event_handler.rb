@@ -2,6 +2,8 @@ module AresMUSH
   module Scenes
     class CronEventHandler
       def on_event(event)
+        Global.logger.debug "Scene cleanup cron running."
+
         config = Global.read_config("scenes", "room_cleanup_cron")
         if Cron.is_cron_match?(config, event.time)
           clear_rooms
@@ -14,6 +16,8 @@ module AresMUSH
              delete_unshared_scenes
           end
         end
+
+        Global.logger.debug "Scene cleanup cron complete."
       end
 
       def clear_watchers
@@ -37,7 +41,7 @@ module AresMUSH
             end
 
             if (should_stop_empty_scene(r))
-              Global.logger.debug("Stopping scene in #{r.name}")
+              Global.logger.debug("Stopping empty scene in #{r.name}")
               Scenes.stop_scene(r.scene)
             end
           end

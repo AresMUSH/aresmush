@@ -21,6 +21,8 @@ module AresMUSH
           return { error: t('dispatcher.not_allowed') }
         end
         
+        Global.logger.debug "Scene #{scene.id} pose #{scene_pose.id} deleted by #{enactor.name}."
+        
         pose_text = scene_pose.pose
         scene_pose.delete
         
