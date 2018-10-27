@@ -82,6 +82,8 @@ module AresMUSH
         return AppRejectRequestHandler
       when "appReview"
         return AppReviewRequestHandler
+      when "charAbilities"
+        return CharAbilitiesRequestHandler
       end
       nil
     end

@@ -4,7 +4,6 @@ scenes:
     minute:
     - 15
     - 45
-    - 18
   ooc_color: "%xc"
   unshared_scene_cleanup_cron:
     day_of_week:

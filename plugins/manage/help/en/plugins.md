@@ -35,6 +35,10 @@ You can also view and load the plugin configuration files.
 `config <section>/<variable>` - Views a specific config variable.
 `load config` - Reloads configuration from disk.
 
+If you're getting weird configuration errors and are having trouble figuring out where the problem lies, you can run a complete check of your game config.
+
+`config/check`
+
 ## Loading Locale Translations
 
 The plugin translation files must be loaded separately.

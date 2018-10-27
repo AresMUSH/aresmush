@@ -34,7 +34,8 @@ module AresMUSH
         end
         
         if (matched_rooms.count > 1)
-          client.emit_failure t('db.object_ambiguous')
+          room_names = matched_rooms.map { |r| r.name_and_area }.join(', ')
+          client.emit_failure t('rooms.multiple_rooms_found', :rooms => room_names)
           return
         end
         

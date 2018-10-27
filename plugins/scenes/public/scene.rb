@@ -79,9 +79,10 @@ module AresMUSH
     end
     
     def all_info_set?
-      self.title && self.location && self.scene_type && self.summary
+      missing_fields = self.title.blank? || self.location.blank? || self.scene_type.blank? || self.summary.blank?
+      !missing_fields
     end
-    
+
     def date_title
       "#{self.icdate} - #{self.title}"
     end

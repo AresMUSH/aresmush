@@ -29,6 +29,8 @@ module AresMUSH
           raise "Trying to pose to a scene that doesn't have a room."
         end
         
+        Global.logger.debug "Scene #{scene.id} pose added by #{enactor.name}."
+        
         pose = Website.format_input_for_mush(pose)
         
         command = ((pose.split(" ").first) || "").downcase
