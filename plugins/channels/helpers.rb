@@ -153,12 +153,11 @@ module AresMUSH
       channel.characters.include?(char)
     end
     
-    def self.add_to_default_channels(client, char)
-      channels = Global.read_config("channels", "default_channels")
+    def self.add_to_channels(client, char, channels)
       channels.each do |name|
         channel = Channel.find_one_with_partial_match(name)
         if (!channel)
-          Global.logger.error "Default channel #{name} does not exist."
+          Global.logger.warn "Channel #{name} does not exist."
           next
         end
         
@@ -197,7 +196,7 @@ module AresMUSH
       return nil
     end
     
-    def self.join_channel(channel, char, chan_alias)
+    def self.join_channel(channel, char, chan_alias = nil)
         if (Channels.is_on_channel?(char, channel))
           return t('channels.already_on_channel')
         end

@@ -22,12 +22,12 @@ module AresMUSH
       end
       
       def handle
-        matched_rooms = Rooms.find_destination(self.room_name, enactor)
-        if (matched_rooms.count != 1)
-          client.emit_failure matched_rooms.count == 0 ? t('db.object_not_found') : t('db.object_ambiguous')
+        find_result = Rooms.find_single_room(self.room_name, enactor)
+        if (find_result[:error])
+          client.emit_failure find_result[:error]
           return
         end
-        room = matched_rooms.first
+        room = find_result[:room]
           
         find_result = VisibleTargetFinder.find(self.name, enactor)
         if (!find_result.found?)

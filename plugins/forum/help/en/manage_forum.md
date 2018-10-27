@@ -33,9 +33,8 @@ Access to forums is done by role.  You can define a role in the [Roles System](/
 
 Posting and replying to a forum requires 'write' permissions.
 
-`forum/readroles <category>=<roles that can read it, or 'everyone'>`
-`forum/writeroles <category>=<roles that can write to it, or 'everyone'>`
-> **Permission Required:** These commands require the Admin role or the permission: manage\_forum
+`forum/readroles <category>=<comma-separated roles that can read it, or 'everyone'>`
+`forum/writeroles <category>=<comma-separated roles that can write to it, or 'everyone'>`
 
 ## Archiving a Board
 

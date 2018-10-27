@@ -12,7 +12,9 @@ module AresMUSH
         
         error = Website.check_login(request)
         return error if error
-        
+
+        Global.logger.debug "Scene #{scene.id} #{status} by #{enactor.name}."
+                
         if (!Scenes.can_access_scene?(enactor, scene))
           return { error: t('scenes.access_not_allowed') }
         end
@@ -38,7 +40,7 @@ module AresMUSH
           
         when "share"
           if (!scene.all_info_set?)
-            return { error: t('scenes.missing_required_fields')}
+            return { error: Scenes.info_missing_message(scene)}
           end
           
           Scenes.share_scene(scene)
