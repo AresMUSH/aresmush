@@ -38,8 +38,16 @@ module AresMUSH
     end
 
     def validate_game_config
+      tmp_config = {}
+      
+      # First check each file individually
       ConfigReader.config_files.each do |file|
         validate_config_file(file)
+      end
+
+      # Then try loading them all
+      ConfigReader.config_files.each do |file|
+        tmp_config = tmp_config.merge_yaml(file)
       end
     end
     

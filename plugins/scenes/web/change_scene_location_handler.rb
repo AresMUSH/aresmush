@@ -21,6 +21,8 @@ module AresMUSH
           return { error: t('scenes.scene_already_completed') }
         end
         
+        Global.logger.debug "Scene #{scene.id} location changed to #{location} by #{enactor.name}."
+        
         message = Scenes.set_scene_location(scene, location)
         
         if (scene.room)

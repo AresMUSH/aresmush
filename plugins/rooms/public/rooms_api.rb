@@ -1,7 +1,7 @@
 module AresMUSH
   module Rooms
     
-    def self.move_to(client, char, room, exit_name = nil?)
+    def self.move_to(client, char, room, exit_name = nil)
       current_room = char.room
       if (current_room)
         Status.update_last_ic_location(char)

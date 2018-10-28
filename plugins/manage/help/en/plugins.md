@@ -36,6 +36,10 @@ You can also view and load the plugin configuration files.
 `config <section>` - Views config variables for a section.
 `config <section>/<variable>` - Views a specific config variable.
 `load config` - Reloads configuration from disk.
+
+If you're getting weird configuration errors and are having trouble figuring out where the problem lies, you can run a complete check of your game config.
+
+`config/check`
    
 ## Loading Locale Translations
 

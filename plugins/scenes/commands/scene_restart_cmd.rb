@@ -30,9 +30,8 @@ module AresMUSH
             return
           end
           
-          room = Scenes.create_scene_temproom(scene)
-          Rooms.move_to(client, enactor, room)
           Scenes.restart_scene(scene)
+          Rooms.move_to(client, enactor, scene.room)
           
           client.emit_success t('scenes.scene_restarted')
         end        

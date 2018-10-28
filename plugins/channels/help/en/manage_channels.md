@@ -6,6 +6,13 @@ summary: Managing channels.
 
 > **Permission Required:** These commands require the Admin role or the permission: manage\_channels
 
+## Adding and Removing Characters
+
+Channel administrators can add or remove characters from a channel:
+
+`channel/addchar <char>=<channel>`
+`channel/removechar <char>=<channel>`
+
 ## Creating and Deleting Channels
 
 If you have the appropriate permissions, you can create and delete channels.
@@ -28,7 +35,7 @@ You can control who is allowed to use a channel by assigning roles to it.  Only 
 
 If you change the roles for an existing channel, anyone who no longer has permission to be there will automatically leave the channel.
 
-`channel/roles <channel>=<roles>` - Use "none" to clear existing roles.
+`channel/roles <channel>=<roles>` - Use commas to separate multiple roles.  Use "none" to clear existing roles.
 
 ## Default Aliases
 

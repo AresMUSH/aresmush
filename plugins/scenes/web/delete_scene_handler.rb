@@ -16,6 +16,8 @@ module AresMUSH
           return { error: t('dispatcher.not_allowed') }
         end
         
+        Global.logger.debug "Scene #{scene.id} deleted by #{enactor.name}."
+        
         scene.delete
         {
         }

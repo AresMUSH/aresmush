@@ -79,8 +79,6 @@ module AresMUSH
         return AbilitiesRequestHandler
       when "addSceneRoll"
         return AddSceneRollRequestHandler
-      when "charAbilities"
-        return CharAbilitiesRequestHandler
       end
       nil
     end

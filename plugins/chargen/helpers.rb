@@ -165,6 +165,8 @@ module AresMUSH
          Global.read_config("chargen", "post_approval_message"), 
          Game.master.system_character)
          
+       Global.dispatcher.queue_event CharApprovedEvent.new(Login.find_client(model), model.id)
+         
        return nil
      end
      
