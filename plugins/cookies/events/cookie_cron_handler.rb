@@ -5,6 +5,8 @@ module AresMUSH
         config = Global.read_config("cookies", "cookie_award_cron")
         return if !Cron.is_cron_match?(config, event.time)
         
+        Global.logger.debug "Issuing cookies."
+        
         cookies_per_luck = Global.read_config("cookies", "cookies_per_luck")
         
         awards = ""
