@@ -1,0 +1,28 @@
+---
+fs3combat:
+  default_npc_type: Goon
+  npc_types:
+    Goon:
+      Default: 4
+      Firearms: 6
+      Gunnery: 6
+      Melee: 6
+      Wounds: 30
+    Henchman:
+      Default: 6
+      Firearms: 8
+      Gunnery: 8
+      Melee: 8
+      Wounds: 20
+    Miniboss:
+      Default: 9
+      Firearms: 11
+      Gunnery: 11
+      Melee: 11
+      Wounds: 15
+    Boss:
+      Default: 11
+      Firearms: 13
+      Gunnery: 13
+      Melee: 13
+      Wounds: 0

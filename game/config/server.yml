@@ -1,0 +1,11 @@
+---
+server:
+  hostname: chontio.aresmush.com
+  port: 3268
+  websocket_port: 4202
+  web_portal_port: 80
+  engine_api_port: 4203
+  private_key_file_path: ''
+  certificate_file_path: ''
+  use_https: false
+  bind_address: ''

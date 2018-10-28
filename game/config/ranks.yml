@@ -1,0 +1,52 @@
+---
+ranks:
+  permissions:
+  - manage_ranks
+  rank_group: Faction
+  rank_rows: 9
+  ranks:
+    Navy:
+      Officer:
+        Ensign: true
+        Lieutenant Jg: true
+        Lieutenant: true
+        Captain: true
+        Major: false
+        Colonel: false
+        Commander: false
+        Rear Admiral: false
+        Admiral: false
+      Enlisted:
+        Crewman Apprentice: true
+        Crewman: true
+        Able Crewman: true
+        Specialist: true
+        Petty Officer 2nd Class: true
+        Petty Officer 1st Class: true
+        Chief Petty Officer: false
+        Senior Chief Petty Officer: false
+        Master Chief Petty Officer: false
+    Marines:
+      Officer:
+        Ensign: false
+        Lieutenant Jg: false
+        Lieutenant: false
+        Captain: false
+        Major: false
+        Colonel: false
+        Commander: false
+        Brigadier General: false
+        General: false
+      Enlisted:
+        Private: true
+        Private First Class: true
+        Lance Corporal: true
+        Corporal: true
+        Sergeant: true
+        Staff Sergeant: true
+        Gunnery Sergeant: false
+        Master Sergeant: false
+        Sergeant Major: false
+  shortcuts:
+    rank/clear: rank/set
+  rank_style: military

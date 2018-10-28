@@ -1,0 +1,15 @@
+<div class="jumbotron-tagline">The Chontio Conflict</div>
+A Star Wars Stand Alone Saga
+
+### We are currently IN DEVELOPMENT. 
+### Logins, character creation, and all that is currently DISABLED.
+### We expect to go live on December 1, 2018! Please keep checking back!
+
+## Welcome
+Welcome to Chontio, we are an on-line storytelling based game, utilizing Fantasy Flight Game's Star Wars system.  We utilize Age of Rebellion as the primary source for game aspects while all other features are AresMUSH. For information about Chontio and the game, please see [[[home|our wiki]]].
+
+## Mission Statment
+
+The players and their characters on Chontio will help guide the Tageeri Confederation and the people of Chontio through the process of contact with the Empire, criminal syndicates, and native forces, cooperating and competing to get the Confederation to a position they want.
+
+## About Ares/MUSH

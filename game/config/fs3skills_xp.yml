@@ -1,0 +1,45 @@
+---
+fs3skills:
+  periodic_xp: 1
+  days_between_learning: 30
+  allow_advantages_xp: false
+  max_xp_hoard: 4
+  xp_cron:
+    day_of_week:
+    - Sat
+    hour:
+    - 21
+    minute:
+    - 0
+  dots_beyond_chargen_max: 3
+  skills_requiring_training:
+  - Demolitions
+  - Gunnery
+  - Medicine
+  - Piloting
+  xp_costs:
+    language:
+      0: 1
+      1: 4
+      2: 12
+    action:
+      0: 1
+      1: 1
+      2: 2
+      3: 3
+      4: 6
+      5: 8
+      6: 8
+      7: 12
+    background:
+      0: 1
+      1: 4
+      2: 8
+    attribute:
+      1: 1
+      2: 4
+      3: 8
+    advantages:
+      0: 1
+      1: 4
+      2: 12

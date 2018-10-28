@@ -1,0 +1,25 @@
+---
+logger:
+  loggers:
+  - name: ares
+    level: DEBUG
+    trace: 'true'
+    outputters:
+    - stdout
+    - file
+  outputters:
+  - type: StdoutOutputter
+    name: stdout
+    formatter:
+      date_pattern: "%Y-%m-%d %H:%M:%S"
+      pattern: "%d %l - %M "
+      type: PatternFormatter
+  - type: RollingFileOutputter
+    name: file
+    max_backups: '10'
+    maxsize: 250000
+    filename: game/logs/log.txt
+    formatter:
+      date_pattern: "%Y-%m-%d %H:%M:%S"
+      pattern: "%d %l - %M "
+      type: PatternFormatter

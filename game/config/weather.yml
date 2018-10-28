@@ -1,0 +1,150 @@
+---
+weather:
+  temperatures:
+  - hot
+  - warm
+  - cool
+  - cold
+  - freezing
+  conditions:
+  - clear
+  - fair
+  - misty
+  - overcast
+  - drizzling
+  - raining
+  - storming
+  - flurrying
+  - snowing
+  climates:
+    polar:
+      spring:
+        temperature: cold cold cold cold cold freezing freezing freezing cool cool
+        condition: clear clear clear fair fair fair flurrying flurrying overcast snowing
+        stability: 70
+      summer:
+        temperature: cold cold cold cold cold freezing freezing freezing cool cool
+        condition: clear clear clear fair fair fair flurrying flurrying overcast snowing
+        stability: 70
+      fall:
+        temperature: cold cold cold cold cold freezing freezing freezing cool cool
+        condition: clear clear clear fair fair fair flurrying flurrying overcast snowing
+        stability: 70
+      winter:
+        temperature: cold cold cold cold cold freezing freezing freezing cool cool
+        condition: clear clear clear fair fair fair flurrying flurrying overcast snowing
+        stability: 70
+    temperate:
+      summer:
+        temperature: hot hot hot hot hot warm warm warm cool cool
+        condition: clear clear clear fair fair fair drizzling drizzling overcast raining
+        stability: 70
+      spring:
+        temperature: cool cool cool cool cool warm warm warm warm warm
+        condition: clear clear clear fair fair fair drizzling drizzling overcast raining
+        stability: 70
+      fall:
+        temperature: cool cool cool cool cool cool cool freezing warm warm
+        condition: clear clear clear fair fair fair drizzling drizzling overcast raining
+        stability: 70
+      winter:
+        temperature: cold cold cold cold cold cold cold cool cool freezing freezing
+        condition: clear clear clear fair fair fair flurrying flurrying overcast snowing
+        stability: 70
+  default_climate: temperate
+  climate_for_area:
+    Offstage: none
+    North: polar
+  weather_cron:
+    minute:
+    - 0
+  descriptions:
+    clear: The skies are clear.
+    fair: The weather is fair.
+    misty: There's a mist in the air.
+    overcast: The skies are overcast.
+    drizzling: It's drizzling.
+    raining: It's raining.
+    storming: It's raining really hard.
+    flurrying: It's flurrying.
+    snowing: It's snowing.
+    hot_spring_morning: It is a hot spring morning.
+    hot_spring_day: It is a hot spring day.
+    hot_spring_evening: It is a hot spring evening.
+    hot_spring_night: It is a hot spring night.
+    hot_summer_morning: It is a hot summer morning.
+    hot_summer_day: It is a hot summer day.
+    hot_summer_evening: It is a hot summer evening.
+    hot_summer_night: It is a hot summer night.
+    hot_fall_morning: It is a hot fall morning.
+    hot_fall_day: It is a hot fall day.
+    hot_fall_evening: It is a hot fall evening.
+    hot_fall_night: It is a hot fall night.
+    hot_winter_morning: It is a hot winter morning.
+    hot_winter_day: It is a hot winter day.
+    hot_winter_evening: It is a hot winter evening.
+    hot_winter_night: It is a hot winter night.
+    warm_spring_morning: It is a warm spring morning.
+    warm_spring_day: It is a warm spring day.
+    warm_spring_evening: It is a warm spring evening.
+    warm_spring_night: It is a warm spring night.
+    warm_summer_morning: It is a warm summer morning.
+    warm_summer_day: It is a warm summer day.
+    warm_summer_evening: It is a warm summer evening.
+    warm_summer_night: It is a warm summer night.
+    warm_fall_morning: It is a warm fall morning.
+    warm_fall_day: It is a warm fall day.
+    warm_fall_evening: It is a warm fall evening.
+    warm_fall_night: It is a warm fall night.
+    warm_winter_morning: It is a warm winter morning.
+    warm_winter_day: It is a warm winter day.
+    warm_winter_evening: It is a warm winter evening.
+    warm_winter_night: It is a warm winter night.
+    cool_spring_morning: It is a cool spring morning.
+    cool_spring_day: It is a cool spring day.
+    cool_spring_evening: It is a cool spring evening.
+    cool_spring_night: It is a cool spring night.
+    cool_summer_morning: It is a cool summer morning.
+    cool_summer_day: It is a cool summer day.
+    cool_summer_evening: It is a cool summer evening.
+    cool_summer_night: It is a cool summer night.
+    cool_fall_morning: It is a cool fall morning.
+    cool_fall_day: It is a cool fall day.
+    cool_fall_evening: It is a cool fall evening.
+    cool_fall_night: It is a cool fall night.
+    cool_winter_morning: It is a cool winter morning.
+    cool_winter_day: It is a cool winter day.
+    cool_winter_evening: It is a cool winter evening.
+    cool_winter_night: It is a cool winter night.
+    cold_spring_morning: It is a cold spring morning.
+    cold_spring_day: It is a cold spring day.
+    cold_spring_evening: It is a cold spring evening.
+    cold_spring_night: It is a cold spring night.
+    cold_summer_morning: It is a cold summer morning.
+    cold_summer_day: It is a cold summer day.
+    cold_summer_evening: It is a cold summer evening.
+    cold_summer_night: It is a cold summer night.
+    cold_fall_morning: It is a cold fall morning.
+    cold_fall_day: It is a cold fall day.
+    cold_fall_evening: It is a cold fall evening.
+    cold_fall_night: It is a cold fall night.
+    cold_winter_morning: It is a cold winter morning.
+    cold_winter_day: It is a cold winter day.
+    cold_winter_evening: It is a cold winter evening.
+    cold_winter_night: It is a cold winter night.
+    freezing_spring_morning: It is a freezing spring morning.
+    freezing_spring_day: It is a freezing spring day.
+    freezing_spring_evening: It is a freezing spring evening.
+    freezing_spring_night: It is a freezing spring night.
+    freezing_summer_morning: It is a freezing summer morning.
+    freezing_summer_day: It is a freezing summer day.
+    freezing_summer_evening: It is a freezing summer evening.
+    freezing_summer_night: It is a freezing summer night.
+    freezing_fall_morning: It is a freezing fall morning.
+    freezing_fall_day: It is a freezing fall day.
+    freezing_fall_evening: It is a freezing fall evening.
+    freezing_fall_night: It is a freezing fall night.
+    freezing_winter_morning: It is a freezing winter morning.
+    freezing_winter_day: It is a freezing winter day.
+    freezing_winter_evening: It is a freezing winter evening.
+    freezing_winter_night: It is a freezing winter night.

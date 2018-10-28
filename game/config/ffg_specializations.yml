@@ -1,0 +1,177 @@
+ffg:
+    specializations:
+        -
+            name: Recruit
+            career_skills:
+                - Athletics
+                - Discipline
+                - Survival
+                - Vigilance
+            force_user: false
+            career: ''
+        -
+            name: Force Sensitive
+            career_skills: []
+            force_user: true
+            career: ''
+        -
+            name: Driver
+            career_skills:
+                - Cool
+                - Gunnery
+                - Mechanics
+                - Piloting Planet
+            force_user: false
+            career: Ace
+        -
+            name: Gunner
+            career_skills:
+                - Discipline
+                - Ranged Heavy
+                - Resilience
+            force_user: false
+            career: Ace
+        -
+            name: Pilot
+            career_skills:
+                - Astrogation
+                - Gunnery
+                - Piloting Planet
+                - Piloting Space
+            force_user: false
+            career: Ace
+        -
+            name: Commodore
+            career_skills:
+                - Astrogation
+                - Computers
+                - Education
+                - Outer Rim
+            force_user: false
+            career: Commander
+        -
+            name: Squadron Leader
+            career_skills:
+                - Gunnery
+                - Mechanics
+                - Planteary Pilot
+                - Piloting Space
+            force_user: false
+            career: Commander
+        -
+            name: Tactician
+            career_skills:
+                - Brawl
+                - Discipline
+                - Leadership
+                - Ranged Heavy
+            force_user: false
+            career: Commander
+        -
+            name: Ambassador
+            career_skills:
+                - Charm
+                - Discipline
+                - Core Worlds
+                - Negotiation
+            force_user: false
+            career: Diplomat
+        -
+            name: Agitator
+            career_skills:
+                - Coercion
+                - Deception
+                - Underworld
+                - Streetwise
+            force_user: false
+            career: Diplomat
+        -
+            name: Quartermaster
+            career_skills:
+                - Computers
+                - Negotiation
+                - Skulduggery
+                - Vigilance
+            force_user: false
+            career: Diplomat
+        -
+            name: Mechanic
+            career_skills:
+                - Brawl
+                - Mechanics
+                - Piloting Space
+                - Skulduggery
+            force_user: false
+            career: Engineer
+        -
+            name: Saboteur
+            career_skills:
+                - Coordination
+                - Mechanics
+                - Skulduggery
+                - Stealth
+            force_user: false
+            career: Engineer
+        -
+            name: Scientist
+            career_skills:
+                - Computers
+                - Education
+                - Lore
+                - Medicine
+            force_user: false
+            career: Engineer
+        -
+            name: Commando
+            career_skills:
+                - Brawl
+                - Melee
+                - Resilience
+                - Survival
+            force_user: false
+            career: Soldier
+        -
+            name: Medic
+            career_skills:
+                - Xenology
+                - Medicine
+                - Resilience
+                - Vigilance
+            force_user: false
+            career: Soldier
+        -
+            name: Sharpshooter
+            career_skills:
+                 - Cool
+                 - Perception
+                 - Ranged Light
+                 - Ranged Heavy
+            force_user: false
+            career: Soldier
+        -
+            name: Infiltrator
+            career_skills:
+                 - Deception
+                 - Melee
+                 - Skulduggery
+                 - Streetwise
+            force_user: false
+            career: Spy
+        -
+            name: Scout
+            career_skills:
+                - Athletics
+                - Medicine
+                - Piloting Planet
+                - Survival
+            force_user: false
+            career: Spy
+        -
+            name: Slicer
+            career_skills:
+                - Computers
+                - Education
+                - Underworld
+                - Stealth
+            force_user: false
+            career: Spy

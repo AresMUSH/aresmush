@@ -1,0 +1,19 @@
+ffg:
+    max_cg_skill_rating: 2
+    max_cg_characteristic_rating: 5
+    bonus_xp: 0
+    career_skill_xp: 20
+    use_force: true
+    min_career_skills: 4
+    wound_characteristic: Brawn
+    strain_characteristic: Willpower
+    
+    shortcuts:
+        talents: talent
+        skills: skill
+        characteristics: characteristic
+        charac: characteristic
+        careers: career
+        archetypes: archetype
+        spec: specialization
+        career/add: career/set

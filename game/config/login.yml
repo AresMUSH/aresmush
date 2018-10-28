@@ -1,0 +1,29 @@
+---
+login:
+  activity_cron:
+    minute:
+    - 0
+  allow_creation: false
+  allow_web_registration: false
+  blacklist_cron:
+    day:
+    - 1
+    - 15
+    hour:
+    - 3
+    minute:
+    - 0
+  creation_not_allowed_message: Hello! We are still in development. Please check back
+    sometime around December 1st!
+  guest_role: guest
+  login_not_allowed_message: Hello! We are still in development. Please check back
+    sometime around December 1st!
+  shortcuts:
+    logout: quit
+    con: connect
+    newpassword: password/reset
+    conn: connect
+    kick: boot
+    password/change: password/set
+    pcreate: create/reserve
+  use_terms_of_service: true

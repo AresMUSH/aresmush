@@ -1,0 +1,21 @@
+ffg:
+    characteristics:
+        - 
+            name: Agility
+            description: "Dexterity, hand-eye coordination, body control."
+        - 
+            name: Brawn
+            description: "Brute power, strength and toughness."
+        - 
+            name: Cunning
+            description: "Being crafty, devious, clever and creative."
+        -
+            name: Intellect
+            description: "Intelligence, education, reasoning and rationalization."
+        -
+            name: Presence
+            description: "Moxie, charisma, confidence and force of personality."
+        -
+            name: Willpower
+            description: "Discipline, self-control, mental fortitude and faith."
+            

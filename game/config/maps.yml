@@ -1,0 +1,5 @@
+---
+maps:
+  shortcuts:
+    map/update: map/create
+    map/areas: map/area

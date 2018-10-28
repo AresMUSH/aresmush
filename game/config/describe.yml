@@ -1,0 +1,26 @@
+---
+describe:
+  always_show_idle_in_rooms: false
+  shortcuts:
+    l: look
+    desc: describe
+    outfits: outfit
+    outfit/create: outfit/set
+    outfit/add: outfit/set
+    outfit/remove: outfit/delete
+    detail/add: detail/set
+    detail/create: detail/set
+    detail/remove: detail/delete
+    view/add: detail/set
+    view/create: detail/set
+    view/remove: detail/delete
+    view: look
+    vistas: vista
+    vista/add: vista/set
+    vista/create: vista/set
+    vista/remove: vista/delete
+  tag_colors:
+    admin: "%xb"
+    beginner: "%xg"
+  exit_start_bracket: "["
+  exit_end_bracket: "]"

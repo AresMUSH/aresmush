@@ -1,0 +1,7 @@
+---
+custom:
+  shortcuts:
+    what: help
+    when: event
+    why: xp
+    how: server

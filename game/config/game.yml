@@ -1,0 +1,12 @@
+---
+game: !ruby/hash:Sinatra::IndifferentHash
+  name: Chontio
+  category: Sci-Fi
+  description: |-
+    Chontio is a Star Wars MUSH using the FFG Star Wars RPG system. It is set during the Age of Empire.
+
+    Player Characters will help guide the Tageeri Confederation and the people of Chontio through the process of contact with the Empire, criminal syndicates, and native forces, cooperating and competing to get the Confederation to a position they want.
+  website: chontio.aresmush.com
+  public_game: false
+  game_status: In Development
+  status: In Development

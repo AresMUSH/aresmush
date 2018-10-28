@@ -1,0 +1,954 @@
+---
+ffg:
+    archetypes:
+        -
+            name: Aleena
+            characteristics:
+                Brawn: 1
+                Agility: 3
+                Intellect: 2
+                Cunning: 2
+                Willpower: 2
+                Presence: 2
+            wound: 8
+            strain: 10
+            xp: 95
+            skills:
+                - Coordination
+            talents:
+                - Durable
+        -
+            name: Anx
+            characteristics:
+                Brawn: 3
+                Agility: 1
+                Intellect: 2
+                Cunning: 2
+                Willpower: 2
+                Presence: 2
+            wound: 13
+            strain: 10
+            xp: 85
+            skills: []
+            talents:
+                - Kill With Kindness
+                - Lethal Blows
+        -
+            name: Aqualish
+            characteristics:
+                Brawn: 3
+                Agility: 2
+                Intellect: 1
+                Cunning: 2
+                Willpower: 2
+                Presence: 2
+            wound: 11
+            strain: 8
+            xp: 90
+            skills: 
+                - Brawl
+                - Resilience
+            talents: []
+        -
+            name: Arcona
+            characteristics:
+                Brawn: 1
+                Agility: 2
+                Intellect: 2
+                Cunning: 2
+                Willpower: 3
+                Presence: 2
+            wound: 10
+            strain: 10
+            xp: 100
+            skills:
+                - Vigiliance
+            talents: []
+        -
+            name: Bardottan
+            characteristics:
+                Brawn: 2
+                Agility: 2
+                Intellect: 2
+                Cunning: 1
+                Willpower: 3
+                Presence: 2
+            wound: 9
+            strain: 10
+            xp: 105
+            skills: 
+                - Lore
+            talents: []
+        -
+            name: Besalisk
+            characteristics:
+                Brawn: 3
+                Agility: 1
+                Intellect: 2
+                Cunning: 1
+                Willpower: 2
+                Presence: 2
+            wound: 12
+            strain: 7
+            xp: 85
+            skills:
+                - Resilience
+            talents: []
+        -
+            name: Bothan
+            characteristics:
+                Brawn: 1
+                Agility: 2
+                Intellect: 2
+                Cunning: 3
+                Willpower: 2
+                Presence: 2
+            wound: 10
+            strain: 11
+            xp: 100
+            skills:
+                - Streetwise
+            talents:
+                - Convincing Demeanor
+        -
+            name: Caamasi
+            characteristics:
+                Brawn: 2
+                Agility: 2
+                Intellect: 2
+                Cunning: 1
+                Willpower: 3
+                Presence: 2
+            wound: 10
+            strain: 11
+            xp: 100
+            skills:
+                - Charm
+                - Discipline
+            talents: []
+        -
+            name: Cerean
+            characteristics:
+                Brawn: 2
+                Agility: 1
+                Intellect: 3
+                Cunning: 2
+                Willpower: 2
+                Presence: 2
+            wound: 10
+            strain: 13
+            xp: 90
+            skills:
+                - Vigilance
+            talents: []
+        -
+            name: ChadraFan
+            characteristics:
+                Brawn: 1
+                Agility: 3
+                Intellect: 3
+                Cunning: 2
+                Willpower: 1
+                Presence: 2
+            wound: 9
+            strain: 11
+            xp: 90
+            skills:
+                - Mechanics
+            talents: []
+        -
+            name: Chagrian
+            characteristics:
+                Brawn: 2
+                Agility: 1
+                Intellect: 2
+                Cunning: 2
+                Willpower: 3
+                Presence: 2
+            wound: 11
+            strain: 10
+            xp: 90
+            skills:
+                - Resilience
+            talents:
+                - Knowledge Specialization
+        -
+            name: Chevin
+            characteristics:
+                Brawn: 3
+                Agility: 1
+                Intellect: 2
+                Cunning: 3
+                Willpower: 2
+                Presence: 1
+            wound: 11
+            strain: 11
+            xp: 80
+            skills:
+                - Negotiation
+            talents:
+                - Durable
+        -
+            name: Chiss
+            characteristics:
+                Brawn: 2
+                Agility: 2
+                Intellect: 3
+                Cunning: 2
+                Willpower: 2
+                Presence: 1
+            wound: 10
+            strain: 10
+            xp: 100
+            skills:
+                - Cool
+            talents: []
+        -
+            name: Clawdite
+            characteristics:
+                Brawn: 2
+                Agility: 2
+                Intellect: 2
+                Cunning: 3
+                Willpower: 1
+                Presence: 2
+            wound: 9
+            strain: 9
+            xp: 95
+            skills:
+                - Resilience
+            talents: []
+        -
+            name: Devaronian
+            characteristics:
+                Brawn: 2
+                Agility: 2
+                Intellect: 2
+                Cunning: 3
+                Willpower: 2
+                Presence: 1
+            wound: 11
+            strain: 11
+            xp: 95
+            skills:
+                - Survival
+                - Deception
+            talents: []
+        -
+            name: Drall
+            characteristics:
+                Brawn: 1
+                Agility: 1
+                Intellect: 4
+                Cunning: 2
+                Willpower: 2
+                Presence: 2
+            wound: 8
+            strain: 12
+            xp: 90
+            skills:
+                - Education
+            talents: []
+        -
+            name: Dressellian
+            characteristics:
+                Brawn: 2
+                Agility: 2
+                Intellect: 2
+                Cunning: 2
+                Willpower: 3
+                Presence: 1
+            wound: 11
+            strain: 10
+            xp: 110
+            skills:
+                - Survival
+            talents: []
+        -
+            name: Droid
+            characteristics:
+                Brawn: 1
+                Agility: 1
+                Intellect: 1
+                Cunning: 1
+                Willpower: 1
+                Presence: 1
+            wound: 10
+            strain: 10
+            xp: 185
+            skills: []
+            talents: []
+        -
+            name: Duro
+            characteristics:
+                Brawn: 1
+                Agility: 2
+                Intellect: 3
+                Cunning: 2
+                Willpower: 2
+                Presence: 2
+            wound: 11
+            strain: 10
+            xp: 100
+            skills:
+                - Piloting Space
+            talents: []
+        -
+            name: Elom
+            characteristics:
+                Brawn: 3
+                Agility: 2
+                Intellect: 2
+                Cunning: 2
+                Willpower: 2
+                Presence: 1
+            wound: 10
+            strain: 9
+            xp: 100
+            skills:
+                - Resilience
+            talents: []
+        -
+            name: Elomin
+            characteristics:
+                Brawn: 2
+                Agility: 2
+                Intellect: 3
+                Cunning: 2
+                Willpower: 1
+                Presence: 2
+            wound: 9
+            strain: 10
+            xp: 105
+            skills:
+                - Charm
+            talents: []
+        -
+            name: Falleen
+            characteristics:
+                Brawn: 1
+                Agility: 2
+                Intellect: 2
+                Cunning: 2
+                Willpower: 2
+                Presence: 3
+            wound: 10
+            strain: 12
+            xp: 90
+            skills:
+                - Charm
+            talents: []
+        -
+            name: Gand
+            characteristics:
+                Brawn: 2
+                Agility: 2
+                Intellect: 2
+                Cunning: 2
+                Willpower: 3
+                Presence: 1
+            wound: 10
+            strain: 10
+            xp: 100
+            skills:
+                - Discipline
+            talents: []
+        -
+            name: Gossam
+            characteristics:
+                Brawn: 1
+                Agility: 2
+                Intellect: 2
+                Cunning: 3
+                Willpower: 2
+                Presence: 2
+            wound: 9
+            strain: 11
+            xp: 100
+            skills:
+                - Deception
+            talents: []
+         -
+            name: Gotal
+            characteristics:
+                Brawn: 2
+                Agility: 2
+                Intellect: 2
+                Cunning: 3
+                Willpower: 2
+                Presence: 1
+            wound: 9
+            strain: 8
+            xp: 100
+            skills:
+                - Perception
+            talents: []
+        -
+            name: Gran
+            characteristics:
+                Brawn: 2
+                Agility: 2
+                Intellect: 2
+                Cunning: 1
+                Willpower: 2
+                Presence: 3
+            wound: 10
+            strain: 9
+            xp: 100
+            skills:
+                - Negotiation
+            talents: []
+        -
+            name: Human
+            characteristics:
+                Brawn: 2
+                Agility: 2
+                Intellect: 2
+                Cunning: 2
+                Willpower: 2
+                Presence: 2
+            wound: 10
+            strain: 10
+            xp: 130
+            skills: []
+            talents: []
+        -
+            name: Hutt
+            characteristics:
+                Brawn: 3
+                Agility: 1
+                Intellect: 2
+                Cunning: 2
+                Willpower: 3
+                Presence: 2
+            wound: 13
+            strain: 11
+            xp: 70
+            skills: []
+            talents: []
+                - Enduring
+                - Nobody's Fool
+        -
+            name: Iktotchi
+            characteristics:
+                Brawn: 2
+                Agility: 2
+                Intellect: 2
+                Cunning: 2
+                Willpower: 3
+                Presence: 1
+            wound: 10
+            strain: 12
+            xp: 90
+            skills:
+                - Vigilance
+            talents: []
+        -
+            name: IshiTib
+            characteristics:
+                Brawn: 2
+                Agility: 2
+                Intellect: 3
+                Cunning: 2
+                Willpower: 1
+                Presence: 2
+            wound: 12
+            strain: 10
+            xp: 100
+            skills:
+                - Discipline
+            talents: []
+        -
+            name: Ithorian
+            characteristics:
+                Brawn: 2
+                Agility: 1
+                Intellect: 2
+                Cunning: 2
+                Willpower: 3
+                Presence: 2
+            wound: 9
+            strain: 12
+            xp: 90
+            skills:
+                - Survival
+            talents: []
+        -
+            name: Kalleran
+            characteristics:
+                Brawn: 3
+                Agility: 2
+                Intellect: 2
+                Cunning: 2
+                Willpower: 2
+                Presence: 1
+            wound: 8
+            strain: 12
+            xp: 90
+            skills:
+                - Streetwise
+            talents: 
+                - Heightened Awareness
+        -
+            name: KelDor
+            characteristics:
+                Brawn: 1
+                Agility: 2
+                Intellect: 2
+                Cunning: 2
+                Willpower: 3
+                Presence: 2
+            wound: 10
+            strain: 10
+            xp: 100
+            skills:
+                - Education
+            talents: []
+        -
+            name: Klatooinian
+            characteristics:
+                Brawn: 2
+                Agility: 3
+                Intellect: 2
+                Cunning: 2
+                Willpower: 1
+                Presence: 2
+            wound: 10
+            strain: 10
+            xp: 90
+            skills:
+                - Brawl
+                - Ranged Heavy
+                - Ranged Light
+            talents: []
+        -
+            name: Kyuzo
+            characteristics:
+                Brawn: 2
+                Agility: 3
+                Intellect: 2
+                Cunning: 2
+                Willpower: 2
+                Presence: 1
+            wound: 11
+            strain: 11
+            xp: 90
+            skills:
+                - Coordination
+            talents: []
+        -
+            name: Lannik
+            characteristics:
+                Brawn: 2
+                Agility: 1
+                Intellect: 3
+                Cunning: 2
+                Willpower: 2
+                Presence: 2
+            wound: 8
+            strain: 12
+            xp: 95
+            skills:
+                - Streetwise
+            talents: []
+        -
+            name: Mirialan
+            characteristics:
+                Brawn: 2
+                Agility: 3
+                Intellect: 2
+                Cunning: 1
+                Willpower: 2
+                Presence: 2
+            wound: 11
+            strain: 10
+            xp: 100
+            skills:
+                - Cool
+                - Discipline
+            talents: []
+        -
+            name: Mon Calamari
+            characteristics:
+                Brawn: 2
+                Agility: 2
+                Intellect: 3
+                Cunning: 1
+                Willpower: 2
+                Presence: 2
+            wound: 10
+            strain: 10
+            xp: 100
+            skills:
+                - Education
+            talents: []
+        -
+            name: Muun
+            characteristics:
+                Brawn: 2
+                Agility: 2
+                Intellect: 3
+                Cunning: 3
+                Willpower: 1
+                Presence: 1
+            wound: 9
+            strain: 9
+            xp: 90
+            skills:
+                - Core Worlds
+                - Education
+            talents: []
+        -
+            name: Nautolan
+            characteristics:
+                Brawn: 3
+                Agility: 2
+                Intellect: 2
+                Cunning: 2
+                Willpower: 1
+                Presence: 2
+            wound: 11
+            strain: 9
+            xp: 100
+            skills:
+                - Athletics
+            talents: []
+        -
+            name: Neimoidian
+            characteristics:
+                Brawn: 1
+                Agility: 2
+                Intellect: 3
+                Cunning: 3
+                Willpower: 1
+                Presence: 2
+            wound: 11
+            strain: 9
+            xp: 90
+            skills:
+                - Deception
+                - Negotiation
+            talents: []
+        -
+            name: Nikto
+            characteristics:
+                Brawn: 3
+                Agility: 2
+                Intellect: 2
+                Cunning: 2
+                Willpower: 2
+                Presence: 1
+            wound: 11
+            strain: 10
+            xp: 100
+            skills:
+                - Resilience
+                - Coordination
+            talents: []
+        -
+            name: Pantoran
+            characteristics:
+                Brawn: 2
+                Agility: 2
+                Intellect: 2
+                Cunning: 2
+                Willpower: 1
+                Presence: 3
+            wound: 10
+            strain: 11
+            xp: 110
+            skills:
+                - Cool
+                - Negotiation
+            talents: []
+        -
+            name: PolisMassan
+            characteristics:
+                Brawn: 1
+                Agility: 2
+                Intellect: 3
+                Cunning: 2
+                Willpower: 3
+                Presence: 1
+            wound: 8
+            strain: 11
+            xp: 100
+            skills:
+                - Medicine
+            talents: []
+        -
+            name: Quarren
+            characteristics:
+                Brawn: 2
+                Agility: 2
+                Intellect: 1
+                Cunning: 2
+                Willpower: 3
+                Presence: 2
+            wound: 10
+            strain: 8
+            xp: 95
+            skills:
+                - Negotiation
+            talents: []
+        -
+            name: Quermian
+            characteristics:
+                Brawn: 1
+                Agility: 2
+                Intellect: 3
+                Cunning: 2
+                Willpower: 2
+                Presence: 1
+            wound: 10
+            strain: 10
+            xp: 85
+            skills:
+                - Perception
+            talents: []
+        -
+            name: Rodian
+            characteristics:
+                Brawn: 2
+                Agility: 3
+                Intellect: 2
+                Cunning: 2
+                Willpower: 1
+                Presence: 2
+            wound: 10
+            strain: 10
+            xp: 100
+            skills:
+                - Survival
+            talents: []
+        -
+            name: Sakiyan
+            characteristics:
+                Brawn: 2
+                Agility: 2
+                Intellect: 3
+                Cunning: 2
+                Willpower: 2
+                Presence: 2
+            wound: 8
+            strain: 10
+            xp: 80
+            skills:
+                - Perception
+                - Vigilance
+            talents: []
+        -
+            name: Sathari
+            characteristics:
+                Brawn: 1
+                Agility: 3
+                Intellect: 2
+                Cunning: 2
+                Willpower: 2
+                Presence: 2
+            wound: 8
+            strain: 10
+            xp: 100
+            skills:
+                - Coordination
+            talents: []
+        -
+            name: Selonian
+            characteristics:
+                Brawn: 2
+                Agility: 3
+                Intellect: 2
+                Cunning: 1
+                Willpower: 3
+                Presence: 1
+            wound: 11
+            strain: 10
+            xp: 80
+            skills:
+                - Coordination
+            talents: []
+        -
+            name: Shistavanen
+            characteristics:
+                Brawn: 2
+                Agility: 3
+                Intellect: 3
+                Cunning: 2
+                Willpower: 1
+                Presence: 1
+            wound: 12
+            strain: 10
+            xp: 80
+            skills:
+                - Brawl
+                - Survival
+            talents: []
+        -
+            name: Sullustans
+            characteristics:
+                Brawn: 2
+                Agility: 3
+                Intellect: 2
+                Cunning: 1
+                Willpower: 2
+                Presence: 2
+            wound: 10
+            strain: 10
+            xp: 100
+            skills:
+                - Astrogation
+            talents:
+                - Skilled Jockey
+        -
+            name: Togruta
+            characteristics:
+                Brawn: 1
+                Agility: 2
+                Intellect: 2
+                Cunning: 3
+                Willpower: 2
+                Presence: 2
+            wound: 10
+            strain: 10
+            xp: 100
+            skills:
+                - Perception
+            talents: []
+        -
+            name: Toydarian
+            characteristics:
+                Brawn: 1
+                Agility: 1
+                Intellect: 2
+                Cunning: 2
+                Willpower: 3
+                Presence: 3
+            wound: 9
+            strain: 12
+            xp: 90
+            skills:
+                - Negotiation
+            talents:
+                - Durable
+        -
+            name: Trandoshan
+            characteristics:
+                Brawn: 3
+                Agility: 1
+                Intellect: 2
+                Cunning: 2
+                Willpower: 2
+                Presence: 2
+            wound: 12
+            strain: 9
+            xp: 
+            skills:
+                - Perception
+            talents: []
+        -
+            name: Twilek
+            characteristics:
+                Brawn: 1
+                Agility: 2
+                Intellect: 2
+                Cunning: 2
+                Willpower: 2
+                Presence: 3
+            wound: 10
+            strain: 11
+            xp: 100
+            skills:
+                - Charm
+                - Deception
+            talents: []
+        -
+            name: Verpine
+            characteristics:
+                Brawn: 2
+                Agility: 3
+                Intellect: 3
+                Cunning: 1
+                Willpower: 2
+                Presence: 1
+            wound: 9
+            strain: 12
+            xp: 80
+            skills:
+                - Mechanics
+            talents: []
+        -
+            name: Weequay
+            characteristics:
+                Brawn: 3
+                Agility: 2
+                Intellect: 1
+                Cunning: 3
+                Willpower: 2
+                Presence: 1
+            wound: 10
+            strain: 9
+            xp: 90
+            skills:
+                - Athletics
+                - Resilience
+            talents: []
+        -
+            name: Whipid
+            characteristics:
+                Brawn: 3
+                Agility: 2
+                Intellect: 2
+                Cunning: 1
+                Willpower: 2
+                Presence: 2
+            wound: 12
+            strain: 10
+            xp: 80
+            skills:
+                - Survival
+            talents: []
+        -
+            name: Wookie
+            characteristics:
+                Brawn: 3
+                Agility: 2
+                Intellect: 2
+                Cunning: 2
+                Willpower: 1
+                Presence: 2
+            wound: 14
+            strain: 8
+            xp: 90
+            skills:
+                - Brawl
+            talents: []
+        -
+            name: Xexto
+            characteristics:
+                Brawn: 1
+                Agility: 3
+                Intellect: 2
+                Cunning: 2
+                Willpower: 1
+                Presence: 2
+            wound: 9
+            strain: 9
+            xp: 85
+            skills: []
+            talents:
+                - Confidence
+        -
+            name: Zabrak 
+            characteristics:
+                Brawn: 2
+                Agility: 2
+                Intellect: 2
+                Cunning: 2
+                Willpower: 3
+                Presence: 1
+            wound: 10
+            strain: 10
+            xp: 100
+            skills:
+                - Survival
+            talents: []

@@ -1,0 +1,7 @@
+---
+achievements:
+  types:
+    community: fa-users
+    portal: fa-globe
+    fs3: fa-cubes
+    story: fa-book

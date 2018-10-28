@@ -1,0 +1,68 @@
+---
+ffg:
+    careers:
+        - 
+            name: Ace
+            career_skills:
+                - Astrogation
+                - Cool
+                - Gunnery
+                - Mechanics
+                - Perception
+                - Piloting Space
+                - Piloting Planet
+                - Ranged Light
+        -
+            name: Commander
+            career_skills:
+                - Coercion
+                - Cool
+                - Discipline
+                - Warfare
+                - Leadership
+                - Perception
+                - Ranged Light
+                - Vigilance
+        -
+            name: Diplomat
+            career_skills:
+                - Charm
+                - Deception
+                - Core Worlds
+                - Outer Rim
+                - Lore
+                - Xenology
+                - Leadership
+                - Negotiation
+        - 
+            name: Engineer
+            career_skills:
+                - Athletics
+                - Computers
+                - Education
+                - Mechanics
+                - Perception
+                - Piloting Space
+                - Ranged Light
+                - Vigilance
+        -
+            name: Soldier
+            career_skills:
+                - Athletics
+                - Brawl
+                - Warfare
+                - Medicine
+                - Melee
+                - Ranged Light
+                - Ranged Heavy
+        -
+            name: Spy
+            career_skills:
+                - Computers
+                - Cool
+                - Coordination
+                - Deception
+                - Warfare
+                - Perception
+                - Skulduggery
+                - Stealth
