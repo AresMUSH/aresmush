@@ -11,6 +11,12 @@ module AresMUSH
       char.place.delete if char.place
     end
     
+    def self.reset_place_if_moved(char)
+      if (char.place && char.place.room != char.room)
+        char.upate(place: nil)
+      end
+    end
+      
     def self.find_place(char, place_name)
       return nil if !place_name
       

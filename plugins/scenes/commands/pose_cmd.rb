@@ -8,6 +8,7 @@ module AresMUSH
           client.emit_failure t('scenes.pose_order_mistake')
           return
         end
+        Places.reset_place_if_moved(enactor)
         Scenes.emit_pose(enactor, message, cmd.root_is?("emit"), cmd.root_is?("ooc"))
       end
       

@@ -32,8 +32,6 @@ module AresMUSH
 
     def self.get_event_handler(event_name) 
       case event_name
-        when "CronEvent"
-          return WebCronEventHandler
         when "WebCmdEvent"
           return WebCmdEventHandler
         when "ConfigUpdatedEvent", "GameStartedEvent"
