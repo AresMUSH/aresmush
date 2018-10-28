@@ -96,15 +96,16 @@ module AresMUSH
     def on_event(event)
       begin
         event_name = event.class.to_s.gsub("AresMUSH::", "")
+        if (event_name != "CronEvent")
+          Global.logger.debug "Handling #{event_name}."
+        end
         Global.plugin_manager.plugins.each do |p|
           next if !p.respond_to?(:get_event_handler)
           AresMUSH.with_error_handling(nil, "Handling #{event_name}.") do            
             handler_class = p.get_event_handler(event_name)
             if (handler_class)
-              spawn("Handling #{event_name} with #{p}", nil) do
-                handler = handler_class.new
-                handler.on_event(event)
-              end
+              handler = handler_class.new
+              handler.on_event(event)
             end # if
           end # with error handling
         end # each
@@ -117,6 +118,7 @@ module AresMUSH
     def on_web_request(request)
       handled = false
       AresMUSH.with_error_handling(nil, "Web Request") do
+        Global.logger.debug "Web Request: #{request.cmd} by #{request.auth[:id]}"
         Global.plugin_manager.plugins.each do |p|
           next if !p.respond_to?(:get_web_request_handler)
           handler_class = p.get_web_request_handler(request)
