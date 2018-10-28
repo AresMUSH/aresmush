@@ -5,6 +5,8 @@ module AresMUSH
         config = Global.read_config("idle", "monthly_reminder_cron")
         return if !Cron.is_cron_match?(config, event.time)
         
+        Global.logger.debug "Monthly idle reminder."
+        
         category = Global.read_config('idle', 'reminder_category')
         reminder = Global.read_config("idle", "monthly_reminder")
         title = Global.read_config("idle", "monthly_reminder_title")
