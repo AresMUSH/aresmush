@@ -7,14 +7,14 @@ module AresMUSH
         if Cron.is_cron_match?(config, event.time)
           Global.logger.debug "Scene cleanup cron running."
           clear_rooms
-          # clear_watchers
+          clear_watchers
           Global.logger.debug "Scene cleanup cron complete."
         end
 
         if (Global.read_config("scenes", "delete_unshared_scenes"))
           config = Global.read_config("scenes", "unshared_scene_cleanup_cron")
           if Cron.is_cron_match?(config, event.time)
-             Global.logger.debug "Unshared scenes cleanup running."
+             Global.logger.debug "Delete unshared scene cron running."
              delete_unshared_scenes
           end
         end
