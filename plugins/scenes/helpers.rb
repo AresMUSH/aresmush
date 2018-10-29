@@ -89,14 +89,9 @@ module AresMUSH
           scene.room.update(scene: nil)
         end
         scene.update(room: nil)
-      else
-        Global.logger.warn "Stopping a scene that lost its room."
       end
 
-
-      Global.logger.debug  "Scene #{scene.id} will be marked completed."
       scene.update(completed: true)
-      Global.logger.debug  "Scene #{scene.id} marked completed."
       scene.update(date_completed: Time.now)
       Scenes.new_scene_activity(scene)
       scene.participants.each do |char|
@@ -266,9 +261,8 @@ module AresMUSH
     end
 
     def self.update_pose_order(enactor, room)
-      # room.update_pose_order(enactor.name.titlecase)
-      # Scenes.notify_next_person(room)
-      Global.logger.debug "Updated pose order in room: #{room.id}."
+      room.update_pose_order(enactor.name.titlecase)
+      Scenes.notify_next_person(room)
     end
 
     def self.notify_next_person(room)
