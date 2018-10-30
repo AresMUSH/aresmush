@@ -60,7 +60,7 @@ en:
         active_combats_titlebar: "#   Organizer       Participants"
         invalid_combat_type: "That is no a valid combat type.  Try one of these: %{types}."
         summary_title: "Combatant       Act/Pose   Skill    Weapon           Armor            Stance"
-        hud_subtitle: "%xhCombatant           Damage    Weapon(ammo)             Action(stance)%xn"
+        hud_subtitle: "%xhCombatant      Damage    Weapon(ammo)     Armor            Action(stance)%xn"
         marked_idle: "%{name} has been marked idle."
         marked_unidle: "%{name} has been marked un-idle."
         targets_title: "Combatant        Targets                        Targeted By"
