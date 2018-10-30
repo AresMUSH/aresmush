@@ -27,6 +27,9 @@
 <% end %>
 
 <%= line_with_text "Other Spells" %>
+<% if item_spell %>
+<%= item_spell %>
+<% end %>
 <% spell_list.each_with_index do |a, index| -%>
 <% if a.learning_complete %>
 <% if a.school != minor_school %>
