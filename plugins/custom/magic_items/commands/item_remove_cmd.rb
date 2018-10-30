@@ -10,8 +10,9 @@ module AresMUSH
         args = cmd.parse_args(ArgParser.arg1_equals_arg2)
         self.target = Character.find_one_by_name(args.arg1)
         self.item_name = titlecase_arg(args.arg2)
-        self.item = Custom.find_item(target, item_name)
+
       end
+
 
       def check_can_set
         return t('dispatcher.not_allowed') if !FS3Skills.can_manage_abilities?(enactor)
@@ -19,13 +20,13 @@ module AresMUSH
 
       def check_errors
         return t('custom.invalid_name') if !self.target
-        return t('custom.not_item') if !Custom.is_item?(self.item_name)
+        return t('custom.not_item') if !item_name
         return t('custom.target_does_not_have_item') if !item
         return nil
       end
 
       def handle
-
+        self.item = Custom.find_item(target, item_name)
 
         item.delete
 
