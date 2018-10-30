@@ -84,7 +84,7 @@ module AresMUSH
 
               new_spell_specials = current_spell_specials << weapon_specials_str
               combatant.update(spell_weapon_specials: new_spell_specials)
-              
+
               if heal_points
 
               elsif lethal_mod || defense_mod || attack_mod || spell_mod
@@ -134,31 +134,32 @@ module AresMUSH
 
             #Apply Mods
             if lethal_mod
-              current_mod = target.damage_lethality_mod
-              new_mod = current_mod + lethal_mod
-              target.update(damage_lethality_mod: new_mod)
-              messages.concat [t('custom.cast_mod', :name => self.name, :spell => self.spell, :succeeds => succeeds, :target =>  print_target_names, :mod => lethal_mod, :type => "lethality", :total_mod => target.damage_lethality_mod)]
+              rounds = Global.read_config("spells", self.spell, "rounds")
+              #Rounds + 1, otherwise the newturn it casts in will count as a round.
+              target.update(lethal_mod_counter: rounds + 1)
+              target.update(damage_lethality_mod: lethal_mod)
+              messages.concat [t('custom.cast_mod', :name => self.name, :spell => self.spell, :succeeds => succeeds, :target =>  print_target_names, :mod => lethal_mod, :type => "lethality")]
             end
 
             if attack_mod
-              current_mod = target.attack_mod
-              new_mod = current_mod + attack_mod
-              target.update(attack_mod: new_mod)
-              messages.concat [t('custom.cast_mod', :name => self.name, :spell => self.spell, :succeeds => succeeds, :target =>  print_target_names, :mod => attack_mod, :type => "attack", :total_mod => target.attack_mod)]
+              rounds = Global.read_config("spells", self.spell, "rounds")
+              target.update(attack_mod_counter: rounds + 1)
+              target.update(attack_mod: attack_mod)
+              messages.concat [t('custom.cast_mod', :name => self.name, :spell => self.spell, :succeeds => succeeds, :target =>  print_target_names, :mod => attack_mod, :type => "attack")]
             end
 
             if defense_mod
-              current_mod = target.defense_mod
-              new_mod = current_mod + defense_mod
-              target.update(defense_mod: new_mod)
-              messages.concat [t('custom.cast_mod', :name => self.name, :spell => self.spell, :succeeds => succeeds, :target =>  print_target_names, :mod => defense_mod, :type => "defense", :total_mod => target.defense_mod)]
+              rounds = Global.read_config("spells", self.spell, "rounds")
+              target.update(defense_mod_counter: rounds + 1)
+              target.update(defense_mod: defense_mod)
+              messages.concat [t('custom.cast_mod', :name => self.name, :spell => self.spell, :succeeds => succeeds, :target =>  print_target_names, :mod => defense_mod, :type => "defense")]
             end
 
             if spell_mod
-              current_mod = target.spell_mod
-              new_mod = current_mod + spell_mod
-              target.update(spell_mod: new_mod)
-              messages.concat [t('custom.cast_mod', :name => self.name, :spell => self.spell, :succeeds => succeeds, :target =>  print_target_names, :mod => spell_mod, :type => "spell", :total_mod => target.spell_mod)]
+              rounds = Global.read_config("spells", self.spell, "rounds")
+              target.update(spell_mod_counter: rounds + 1)
+              target.update(spell_mod: spell_mod)
+              messages.concat [t('custom.cast_mod', :name => self.name, :spell => self.spell, :succeeds => succeeds, :target =>  print_target_names, :mod => spell_mod, :type => "spell")]
             end
 
             #Change Stance
