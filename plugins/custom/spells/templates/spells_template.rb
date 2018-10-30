@@ -28,6 +28,10 @@ module AresMUSH
         char.group("Minor School")
       end
 
+      def item_spell
+        Custom.item_spell(char)
+      end
+
 
 
     end
