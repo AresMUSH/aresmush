@@ -45,7 +45,11 @@ module AresMUSH
       luck_mod = (combatant.luck == "Attack") ? 3 : 0
       distraction_mod = combatant.distraction
       spell_mod = combatant.spell_mod
-      item_spell_mod = Custom.item_spell_mod(combatant.associated_model)
+      if !combatant.is_npc?
+        item_spell_mod = Custom.item_spell_mod(combatant.associated_model)
+      else
+        item_spell_mod = 0
+      end
 
 
       combatant.log "Attack roll for #{combatant.name} school=#{school} mod=#{mod} spell_mod=#{spell_mod} item_spell_mod=#{item_spell_mod} accuracy=#{accuracy_mod} damage=#{damage_mod} stance=#{stance_mod} luck=#{luck_mod} stress=#{stress_mod} special=#{special_mod} distract=#{distraction_mod}"
@@ -88,10 +92,10 @@ module AresMUSH
     end
 
     def self.roll_combat_spell_success(caster_combat, spell)
-      if Custom.knows_spell?(caster_combat.associated_model, spell)
+      if caster_combat.npc
         school = Global.read_config("spells", spell, "school")
         mod = 0
-      elsif caster_combat.npc
+      elsif Custom.knows_spell?(caster_combat.associated_model, spell)
         school = Global.read_config("spells", spell, "school")
         mod = 0
       else
