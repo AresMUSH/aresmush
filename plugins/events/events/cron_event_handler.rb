@@ -5,7 +5,7 @@ module AresMUSH
         config = Global.read_config("events", "event_alert_cron")
         return if !Cron.is_cron_match?(config, event.time)
         
-        Global.logger.debug "Events notifications."
+        Global.logger.debug "Upcoming event notifications."
         
         Event.all.each do |e|
           time_until_event = e.time_until_event

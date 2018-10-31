@@ -5,7 +5,7 @@ module AresMUSH
         config = Global.read_config("fs3skills", "xp_cron")
         return if !Cron.is_cron_match?(config, event.time)
         
-        Global.logger.debug "Issuing XP."
+        Global.logger.debug "XP awards."
         
         periodic_xp = Global.read_config("fs3skills", "periodic_xp")
         max_xp = Global.read_config("fs3skills", "max_xp_hoard")
