@@ -1,0 +1,95 @@
+if [[ $EUID == 0 ]]; then
+   echo "This script should not be run as root.  Log out and log back in with your arestest user." 
+   exit 1
+fi
+
+export ARES_INSTALL_TEXT="<\033[0;32mINSTALL\033[0m>"
+
+# Set up some variables we'll use throughout.
+
+GAME_CLONE_URL=${1:-'https://github.com/aresmush/aresmush.git'}
+WEBPORTAL_CLONE_URL=${2:-'https://github.com/aresmush/ares-webportal.git'}
+export HOME_DIR="/home/arestest"
+
+# #########################################################################################
+
+# Convenience for Faraday.
+echo "(setq make-backup-files nil)" > ~/.emacs
+
+# #########################################################################################
+
+echo -e "${ARES_INSTALL_TEXT} Use Ruby version."
+
+rvm use ruby-2.5.1
+
+# #########################################################################################
+
+echo -e "${ARES_INSTALL_TEXT} Ensure proper Ruby version used at startup."
+
+echo "rvm use 2.5.1" >> "${HOME_DIR}/.profile"
+
+# #########################################################################################
+
+echo -e "${ARES_INSTALL_TEXT} Install gem bundler for dependencies."
+
+gem install bundler
+
+# #########################################################################################
+
+echo -e "${ARES_INSTALL_TEXT} Getting game code from ${GAME_CLONE_URL}."
+
+git clone ${GAME_CLONE_URL}
+
+# #########################################################################################
+
+echo -e "${ARES_INSTALL_TEXT} Getting web portal code from ${WEBPORTAL_CLONE_URL}."
+
+git clone ${WEBPORTAL_CLONE_URL}
+
+# #########################################################################################
+
+echo -e "${ARES_INSTALL_TEXT} Copy over the initial game configuration."
+
+cd "${HOME_DIR}/aresmush"
+
+cp -r install/game.distr game
+
+# #########################################################################################
+
+echo -e "${ARES_INSTALL_TEXT} Create a logs directory."
+
+mkdir game/logs
+
+# #########################################################################################
+
+echo -e "${ARES_INSTALL_TEXT} Make the bin scripts executable."
+
+chmod +x bin/*
+
+# #########################################################################################
+
+echo -e "${ARES_INSTALL_TEXT} Run the configure script to set up basic game options."
+
+bin/configure
+
+# #########################################################################################
+
+echo -e "${ARES_INSTALL_TEXT} Initialize the database."
+
+bin/wipedb
+
+# #########################################################################################
+
+echo -e "${ARES_INSTALL_TEXT} Installing Node for Ember."
+
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+nvm install node
+
+# #########################################################################################
+
+echo -e "${ARES_INSTALL_TEXT} Installing Ember CLI."
+
+sudo ln -s `which nodejs` "${HOME_DIR}/node"
+npm install -g ember-cli
