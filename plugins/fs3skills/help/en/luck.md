@@ -12,7 +12,7 @@ They can be earned via [cookies](/help/cookies) for RP, as well as through vario
     See [Combat Luck](/help/combat) for combat-related luck commands.
 `potion/create <potion>` - Spends luck to create a potion.
 
-See [Luck](http://spiritlakemu.com/wiki/luck) for more information on how to earn Luck Points and how you can spend them.
+See [Luck](http://spiritlakemu.com/wiki/luck_points) for more information on how to earn Luck Points and how you can spend them.
 
 **Admin Only**
 `luck/award <name>=<number of luck points>/<reason>` - Award luck points. This will take decimals (.5), but not fractions (1\/2).
