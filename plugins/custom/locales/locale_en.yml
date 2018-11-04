@@ -33,8 +33,8 @@ en:
       potion_heal_no_effect_target: "%{name} uses a %xM%{potion}%xn potion on %{target}, but they have no healable wounds. The potion has no effect."
       potion_stance: "%{name} uses a %xM%{potion}%xn potion, changing their stance to %{stance}."
       potion_stance_target: "%{name} uses a %xM%{potion}%xn potion on %{target}, changing their stance to %{stance}."
-      potion_mod: "%{name} uses a %xM%{potion}%xn potion, giving them a %{mod} %{type} modification for a total of %{total_mod}."
-      potion_mod_target: "%{name} uses a %xM%{potion}%xn potion on %{target}, giving them a %{mod} %{type} modification for a total of %{total_mod}."
+      potion_mod: "%{name} uses a %xM%{potion}%xn potion, giving them a %{mod} %{type} modification."
+      potion_mod_target: "%{name} uses a %xM%{potion}%xn potion on %{target}, giving them a %{mod} %{type} modification."
       not_character: "%xrThat is not a character.%xn"
 
         # ----------------------------
@@ -65,7 +65,8 @@ en:
       raised_dead: "%xB%{name} has raised %{target} from the dead.%xn"
       npc_rejoin: "If you want them to act again, have %{target} rejoin the combat by doing combat/join %{target}=%{id}."
       not_dead: "%{target} is not dead."
-      cast_mod: "%{name} casts %xB%{spell}%xn on %{target} and %{succeeds}, giving %{target} a %xg%{mod} %{type} modification%xn for a total of %{total_mod}."
+      cast_mod: "%{name} casts %xB%{spell}%xn on %{target} and %{succeeds}, giving %{target} a %xg%{mod} %{type} modification%xn."
+      mod_wore_off: "%{name}'s %{mod} %{type} modification has worn off."
       cast_stance: "%{name} casts %xB%{spell}%xn on %{target} and %{succeeds}, changing %{target}'s stance to %{stance}."
       not_spell: "That is not a spell."
       no_target: "This spell does not use a target. Do spell/cast <spell>."
