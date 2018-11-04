@@ -60,8 +60,10 @@ There are various kinds of gear that can be used in combat.  You should only use
 `combat/armor <name+specials>` - Sets your armor.
 
 ## Luck
+ `combat/luck <attack, defense or initiative>` - Spend luck for a +3 dice bonus.
+`combat/hero` - Spends a luck point to un-KO yourself.
 
-Luck points (see [Luck](/help/luck)) have special effects in combat.
+See [Luck Points](/wiki/luck_points) for more options.
 
 ### Bonus Dice
 
@@ -138,7 +140,7 @@ This is a quick reference for combat organizer commands.   You may also want to 
 
 `combat/transfer <name>` - Transfer organizer powers to another person in combat.
 
-`combat/scene <scene id>` - Ties combat to a scene, so combat messages will be included in the scene log.  
+`combat/scene <scene id>` - Ties combat to a scene, so combat messages will be included in the scene log.
     This will happen automatically as soon as someone poses.  The command exists in case you ever need to change it.
 
 `combat/log <page>` - Views the combat log, with detailed messages about the rolls and effects.
@@ -176,7 +178,7 @@ On some games, you can use vehicles or mounts in combat.
 
 You can spend luck to get a bonus on attack, defense or initiative, or undo a knockout.
 
-`combat/luck <attack, defense or initiative>` - Spend a luck point this turn. 
+`combat/luck <attack, defense or initiative>` - Spend a luck point this turn.
 `combat/hero` - Spends a luck point to un-KO yourself.
 
 ## Organizing
