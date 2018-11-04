@@ -45,6 +45,7 @@ module AresMUSH
           defense_mod = Global.read_config("spells", self.spell, "defense_mod")
           spell_mod = Global.read_config("spells", self.spell, "spell_mod")
           stance = Global.read_config("spells", self.spell, "stance")
+          target_optional = Global.read_config("spells", self.spell, "target_optional")
           roll = Global.read_config("spells", self.spell, "roll")
 
 
@@ -169,7 +170,11 @@ module AresMUSH
             #Roll
             if roll
               succeeds = Custom.roll_combat_spell_success(self.combatant, self.spell)
-              messages.concat [t('custom.spell_target_resolution_msg', :name => self.name, :spell => self.spell, :target => print_target_names, :succeeds => succeeds)]
+              if target_optional
+                messages.concat [t('custom.spell_target_resolution_msg', :name => self.name, :spell => self.spell, :target => print_target_names, :succeeds => succeeds)]
+              else
+                messages.concat [t('custom.spell_resolution_msg', :name => self.name, :spell => self.spell, :succeeds => succeeds)]
+              end
             end
 
           end
