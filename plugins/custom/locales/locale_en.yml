@@ -95,7 +95,7 @@ en:
       xp_learned_spell_title: "%{name} learned %{spell}"
       need_previous_level: "You must have a spell at the previous level in the same school before you can learn this spell."
       cant_learn_yet: "You have %{days} days before you can learn the %{spell} spell again."
-      too_many_spells: "You can only learn up to 16 spells. Discard a spell before learning a new one."
+      too_many_spells: "You can only learn up to 30 spells. Discard a spell before learning a new one."
       dont_know_spell: "You don't know that spell. Type 'spells' to see the spells you know."
       cant_discard: "You can't discard that spell. You must have one spell at each prior level in the same school in order to discard a spell."
       discarded_spell: "You have discarded the %{spell} spell."
