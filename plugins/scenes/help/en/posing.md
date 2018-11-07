@@ -22,7 +22,7 @@ aliases:
 `emit Go Bob!` or `\Go Bob!` - Go Bob!
 `ooc I have a question.` or `'I have a question.` - <OOC> Bob says, "I have a question."
 
-## Private Emits / Whispers
+## Private Emits
 
 The `pemit` command lets you make a private emit only to certain characters.
 
