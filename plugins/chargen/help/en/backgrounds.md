@@ -18,7 +18,9 @@ Here on Chontio, we've attempted to keep backgrounds as simple as we can. What w
 **#3** is the future, and what the Confederation succeeding looks like to you.
 
 > Example: 
+
 > Concept: Greedy Corporate Drone
+
 > The Confederation is important to me because it has brought prosperity to the city of Davotay. I want to grow fantastically rich by milking the Empire, because that's what the Empire is good for: taking from.
 
 If you have not read any of the lore, please see [Getting Started](/wiki/Getting Started) to make sure you have the information you need to complete your background.
