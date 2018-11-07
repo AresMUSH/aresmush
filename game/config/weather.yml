@@ -1,21 +1,8 @@
 ---
 weather:
-  temperatures:
-  - hot
-  - warm
-  - cool
-  - cold
-  - freezing
-  conditions:
-  - clear
-  - fair
-  - misty
-  - overcast
-  - drizzling
-  - raining
-  - storming
-  - flurrying
-  - snowing
+  climate_for_area:
+    Offstage: none
+    North: polar
   climates:
     polar:
       spring:
@@ -36,28 +23,36 @@ weather:
         stability: 70
     temperate:
       summer:
-        temperature: hot hot hot hot hot warm warm warm cool cool
-        condition: clear clear clear fair fair fair drizzling drizzling overcast raining
-        stability: 70
+        temperature: hot hot hot warm warm warm warm cool cool cool
+        condition: clear clear clear vapor-haze vapor-haze vapor-haze drizzling drizzling
+          vapor-storm vapor-lightning
+        stability: 50
       spring:
-        temperature: cool cool cool cool cool warm warm warm warm warm
-        condition: clear clear clear fair fair fair drizzling drizzling overcast raining
-        stability: 70
+        temperature: hot hot warm warm warm warm cool cool cool cold
+        condition: clear clear clear vapor-haze vapor-haze drizzling drizzling raining
+          vapor-storm vapor-lightning
+        stability: 60
       fall:
-        temperature: cool cool cool cool cool cool cool freezing warm warm
-        condition: clear clear clear fair fair fair drizzling drizzling overcast raining
-        stability: 70
+        temperature: hot warm warm warm warm cool cool cool cool cold
+        condition: clear clear clear vapor-haze vapor-haze drizzling drizzling raining
+          vapor-storm vapor-lightning
+        stability: 60
       winter:
-        temperature: cold cold cold cold cold cold cold cool cool freezing freezing
-        condition: clear clear clear fair fair fair flurrying flurrying overcast snowing
+        temperature: warm warm warm cool cool cool cool cold cold freezing
+        condition: clear clear clear clear clear drizzling flurrying vapor-storm vapor-storm
+          vapor-lightning
         stability: 70
+  conditions:
+  - clear
+  - vapor-haze
+  - drizzling
+  - raining
+  - storming
+  - flurrying
+  - snowing
+  - vapor-storm
+  - vapor-lightning
   default_climate: temperate
-  climate_for_area:
-    Offstage: none
-    North: polar
-  weather_cron:
-    minute:
-    - 0
   descriptions:
     clear: The skies are clear.
     fair: The weather is fair.
@@ -148,3 +143,12 @@ weather:
     freezing_winter_day: It is a freezing winter day.
     freezing_winter_evening: It is a freezing winter evening.
     freezing_winter_night: It is a freezing winter night.
+  temperatures:
+  - hot
+  - warm
+  - cool
+  - cold
+  - freezing
+  weather_cron:
+    minute:
+    - 0

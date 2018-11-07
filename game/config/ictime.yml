@@ -1,9 +1,21 @@
 ---
 ictime:
-  year_offset: 0
-  day_offset: 0
   day_names: []
-  month_names: []
-  time_ratio: 1
+  day_offset: 0
   game_start_date: ''
   hour_offset: 0
+  month_names:
+  - Ianvari
+  - Tebervali
+  - Mart'i
+  - Ap'rili
+  - Maisi
+  - Ivnisi
+  - Ivlisi
+  - Agvist'o
+  - Sekt'emberi
+  - Okt'omberi
+  - Noemberi
+  - Dek'emberi
+  time_ratio: 1
+  year_offset: 1250

@@ -5,3 +5,4 @@ custom:
     when: event
     why: xp
     how: server
+    em: emit

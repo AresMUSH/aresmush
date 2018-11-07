@@ -137,6 +137,7 @@ code {
     border-bottom-left-radius: 25px;
     float: right;
     margin-left: 10px;
+    max-width: 400px;
 }
 
 .h4, h4 {
@@ -181,8 +182,22 @@ code {
     border-top-right-radius: 25px;
     border-bottom-left-radius: 25px;
     border: 3px solid #eeaa77;
-    width: 30%;
+    width: 450px;
     overflow: hidden;
+}
+
+@media only screen and (max-width: 500px) {
+    .org-template {
+        width: 100%;
+    }
+
+    table {
+        width: 100%;
+    }
+
+    .toc {
+        width: 100%;
+    }
 }
 
 .org-template-header {
@@ -199,4 +214,16 @@ code {
 
 .org-template-clear {
      clear: both;
+}
+
+/* This sets the colors of the logs */
+
+legend, pre {
+    color: #AAA;
+}
+
+/* This is for the forum every other line color */
+
+.table-striped>tbody>tr:nth-of-type(odd) {
+    background-color: #222;
 }

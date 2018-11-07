@@ -6,13 +6,17 @@ summary: Viewing and setting character groups/affiliations.
 
 During chargen, you can assign your character to various **Groups**.  Only admin may change your groups after you've been approved.
 
-Different games will have different groups, like Department or Faction.  You can see a list of all group types and then look at what options exist for each type.
+Available groups: Affiliation, Corporation, Government, Origin.
 
-`groups` - List all group types.
-`group <type>` - Shows options available for a group type.
+To see the choices in each group, please use `group <type>`, like such:
+* `group Affiliation`: Your major affiliation in the city.
+* `group Corporation`: Where do you work? These are the local corporations on Chontio.
+* `group Government`: Government Agencies of the Tageeri Confederation
+* `group Origin`: The city you're from.
 
 To set up your group affiliation, you specify the group type and your desired option.
 
-`group/set <group type>=<option>` - Sets your group option for a group type.
+`group/set <group type>=<option>` - Sets your group option for a group type. **or**
+`<group type> <choise>` - Ex: `Affiliation Tageeri`
 
-> **Tip:** Most games will have shortcuts set up for the different group types.  For example, if there's a faction group there will be a `factions` command to see faction options and a `faction <name>` command to set your faction.
+> **Tip:** *Empire* is only available for NPCs. Please do not chose Empire.

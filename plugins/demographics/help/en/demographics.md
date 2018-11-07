@@ -8,4 +8,17 @@ Demographics commands are used to set your basic character info.  Some items may
 
 Use `<demographic name> <value>` to set a demographic.  For example:  `hair <hair color>`.
 
-For a complete list of demographics available, type `demographics`.
+Available demographics:
+* Actor
+* Birthdate *or* Age
+* Eyes
+* Fullname*
+* Gender
+* Hair*
+* Height
+* Physique*
+* Skin
+
+* - Editable after chargen.
+
+You can also type `demographics` to see this list.
