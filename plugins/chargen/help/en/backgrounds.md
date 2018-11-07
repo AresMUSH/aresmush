@@ -7,7 +7,9 @@ aliases:
 ---
 # Backgrounds
 
-Here on Chontio, we've attempted to keep backgrounds as simple as we can. We need three responses, which will be used to complete the following statement: *The Confederation is important to me because <#1>. I want to see it <#2> because <#3>.*
+Here on Chontio, we've attempted to keep backgrounds as simple as we can. What we need is: Your *Concept*, And you to complete the following statement:*The Confederation is important to me because <#1>. I want to see it <#2> because <#3>.*
+
+**Concept**: This is should be a *few word* summary of your character. Eg: Daredevil Smuggler.
 
 **#1** is your investment in the [Tageeri Confederation](/wiki/theme:Tageeri Confederation). It can be as complex or as simple as you'd like, but it should define a major motivation of your character.
 
@@ -15,9 +17,11 @@ Here on Chontio, we've attempted to keep backgrounds as simple as we can. We nee
 
 **#3** is the future, and what the Confederation succeeding looks like to you.
 
-You may enter this as two complete sentences or as a bullet list. We prefer one line for each (or equivalent). If you wish to expand further, please feel free, but limit each item to a paragraph. 
+> Example: 
 
-Example: The Confederation is important to me because it has brought prosperity to the city of Davotay. I want to grow fantastically rich by milking the Empire, because that's what the Empire is good for: taking from.
+> Concept: Greedy Corporate Drone
+
+> The Confederation is important to me because it has brought prosperity to the city of Davotay. I want to grow fantastically rich by milking the Empire, because that's what the Empire is good for: taking from.
 
 If you have not read any of the lore, please see [Getting Started](/wiki/Getting Started) to make sure you have the information you need to complete your background.
 
