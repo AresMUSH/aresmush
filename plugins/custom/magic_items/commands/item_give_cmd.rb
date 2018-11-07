@@ -29,7 +29,11 @@ module AresMUSH
         self.item.delete
 
         client.emit_success t('custom.give_item', :target => target.name, :item => item.name)
-        self.other_client.emit_success t('custom.item_has_been_given', :name => enactor.name, :item => item.name)
+        
+
+        message = t('custom.given_magic_item', :name => enactor.name, :item => item_name)
+        other_client.emit_success message
+        Mail.send_mail([target.name], t('custom.given_magic_item_subj', :item => name), message, nil)
       end
 
     end
