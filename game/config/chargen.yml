@@ -35,6 +35,7 @@ chargen:
     hooks: hook
     hook/delete: hook/remove
     hook/add: hook/set
+    background: bg
   stages:
     start:
       tutorial: chargen.md

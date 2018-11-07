@@ -3,6 +3,7 @@ plugins:
   disabled_plugins:
   - fs3combat
   - fs3skills
+  - ranks
   optional_plugins:
   - achievements
   - chargen
