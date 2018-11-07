@@ -25,10 +25,9 @@ module AresMUSH
         PotionsHas.create(name: self.potion.name, character: self.target)
         self.potion.delete
 
-        client.emit_success t('custom.give_potion', :target => target.name, :potion => potion.name)
-        other_client = Login.find_client(self.target)
+        client.emit_success t('custom.give_potion', :target => target.name, :potion => potion.name)        
         message = t('custom.given_potion', :name => enactor.name, :potion => potion.name)
-        other_client.emit_success message
+        Login.emit_if_logged_in self.target, message
         Mail.send_mail([target.name], t('custom.given_potion_subj', :potion => potion.name), message, nil)
 
 
