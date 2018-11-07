@@ -1,3 +1,7 @@
-Character creation (aka chargen) here works a little differently than what you might be used to from other games.  Instead of being a series of rooms, the %xccg%xn command will walk you through the necessary steps.  
+This game uses a web-based applications system for character approvals.
 
-You can go back and forth through the steps of chargen as much as you want using %xccg/next%xn and %xccg/prev%xn.  Going back is always allowed, but when you go forward - the game may check to make sure you've done what you needed to do in that step.
+Log in to the web portal with your character name and password, then visit [Create a Character](spiritlakemu.com/chargen) to complete your application online. As you are going through character creation, you can save and review your application.  The system will flag common issues.
+
+* Visit our [Guidelines & Help](/wiki/join_us#guidelines-help) for information on restrictions and more.
+* [Hooks & Hopes](/wiki/hooks___hopes) offers hooks to new characters and lists characters others are searching for.
+* The [roster](/roster) has pre-made characters you can pick up easily.
