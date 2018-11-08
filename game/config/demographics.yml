@@ -10,9 +10,9 @@ demographics:
     value: gender
   - field: group
     width: 20
-    title: Faction
-    value: Faction
-  - field: group
+    title: Affiliation
+    value: Affiliation
+  - field: demographic
     width: 20
     title: Position
     value: Position
@@ -26,12 +26,14 @@ demographics:
   - fullname
   - gender
   - birthdate
+  - concept
+  - position
   disable_auto_shortcuts: false
   editable_properties:
   - fullname
   - hair
   - physique
-  - callsign
+  - position
   groups:
     Origin:
       desc: The city you're from
@@ -87,6 +89,8 @@ demographics:
     eyes: "%xceyes <eye color>%xn"
     skin: "%xcskin <complexion>%xn"
     birthdate: "%xcbirthdate <mm/dd/yyy>%xn or %xcage <years>%xn"
+    concept: "%xcconcept <concept>%xn - Your character concept"
+    position: "%xcposition <position>%xn - Your position/job/rank/etc"
   max_age: 99
   min_age: 18
   nickname_field: ''
@@ -101,6 +105,7 @@ demographics:
   - fullname
   - gender
   - birthdate
+  - position
   shortcuts:
     groups: group
     colonies: group colony

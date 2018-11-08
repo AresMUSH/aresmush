@@ -170,6 +170,30 @@ code {
     padding: 20px;
 }
 
+/* /chars list */
+
+.log-icon-title-container {
+    width: 150px;
+    background-color: #eeaa77;
+    z-index: 98;
+    position: relative;
+    top: -19px;
+    -moz-border-radius: 25px 0px;
+    -webkit-border-radius: 25px 0px;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    opacity: 0.8;
+    filter: alpha(opacity=80);
+    vertical-align: middle;
+}
+
+.log-icon-title {
+    z-index: 99;
+    text-align: center;
+    font-weight: bold;
+    color: #000;
+}
+
 /* Templates */
 
 .org-template {
@@ -226,4 +250,23 @@ legend, pre {
 
 .table-striped>tbody>tr:nth-of-type(odd) {
     background-color: #222;
+}
+
+/* This is for picking drop downs on the profile edit. I only changed 'background-color' */
+
+.ember-power-select-trigger {
+    position: relative;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #222;
+    line-height: 2;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    min-height: 2em;
+    user-select: none;
+    -webkit-user-select: none;
+    color: inherit;
 }
