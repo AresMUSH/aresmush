@@ -1,10 +1,16 @@
 ---
 toc: FS3 Combat
-summary: All combat commands in one giant place.
+summary: Participating in combat scenes.
+aliases:
+- vehicles
+- weapons
+- weapon
+- vehicle
+- gear
+- mount
 order: 1
 ---
 # FS3 Combat
-This is a list of ALL combat commands and is super spammy. See [Combat Index](/help/combat_index) for a list of smaller files or use **qr <command>** to see the correct syntax for a command.
 
 The FS3 Combat system is designed to bring some order to the chaos of large combat scenes, managing ability rolls and tracking damage in an automated fashion.
 
@@ -12,12 +18,10 @@ To learn how FS3 combat works, you should read the [FS3 Combat Player's Guide](h
 
 There is also an online [Quick Reference](http://aresmush.com/fs3/fs3-3/combat-quickref) to the most common combat commands.
 
-
 ## Actions
-> **Tip:** You can always specify a NPC or player name in front of any action command to make them do something.  For example, combat/join Bob/#123.
+> **Tip:** You can always specify a NPC or player name in front of any action command to make them do something.  For example, combat/join Bob=#123.  You need the equals sign even if there are no command options.  For example, combat/pass Bob=
 >
-> Most commands support multiple names as well, so you can do: combat/attack A B/C
-`combat/join <combat #>[/<type>]` - Joins a combat. Use the 'Observer' type to watch the combat without participating.
+> Most commands support multiple names as well, so you can do: combat/attack A B=C
 
 `combat/pass` - Take no action this turn.
 
@@ -50,15 +54,16 @@ There are various kinds of gear that can be used in combat.  You should only use
 `weapons` - List all weapons.
 `weapon <name>` - See details for a particular weapon.
 `combat/weapon <name+specials>` - Sets your weapon.
-`combat/weaponspecials <name>=<special>[+<special>+<special>]` - Organizer-only. Set a character or NPC's persistent weapon specials. 'None' to clear.
 
 `armor` - List all types of armor.
 `armor <name>` - See details for a particular armor type.
 `combat/armor <name+specials>` - Sets your armor.
 
 ## Luck
+ `combat/luck <attack, defense, initiative, or spell>` - Spend luck for a +3 dice bonus.
+`combat/hero` - Spends a luck point to un-KO yourself.
 
-Luck points (see [Luck](/help/luck)) have special effects in combat.
+See [Luck Points](/wiki/luck_points) for more options.
 
 ### Bonus Dice
 
@@ -103,7 +108,7 @@ Admins, combat organizers, and characters with the manage_combat permission can 
 
 ## Organizing
 
-This is a quick reference for combat organizer commands.   You may also want to check out [Combat Organizing](/help/organizing) or the [Running Combats](http://aresmush.com/fs3/fs3-3/running-combat) tutorial on AresMUSH.com.
+This is a quick reference for combat organizer commands.   You may also want to check out the [Running Combats](http://aresmush.com/fs3/fs3-3/running-combat) tutorial on AresMUSH.com.
 
 `combat/start [<mock or real>]` - Starts a combat (default real).
 `combat/stop <combat #>` - Stops a combat.
@@ -135,7 +140,7 @@ This is a quick reference for combat organizer commands.   You may also want to 
 
 `combat/transfer <name>` - Transfer organizer powers to another person in combat.
 
-`combat/scene <scene id>` - Ties combat to a scene, so combat messages will be included in the scene log.  
+`combat/scene <scene id>` - Ties combat to a scene, so combat messages will be included in the scene log.
     This will happen automatically as soon as someone poses.  The command exists in case you ever need to change it.
 
 `combat/log <page>` - Views the combat log, with detailed messages about the rolls and effects.
@@ -153,25 +158,12 @@ There are various kinds of gear that can be used in combat.  You should only use
 `armor <name>` - See details for a particular armor type.
 `combat/armor <name+specials>` - Sets your armor.
 
-## Vehicles and Mounts
-
-On some games, you can use vehicles or mounts in combat.
-
-`vehicles` - List all types of vehicles.
-`vehicle <name>` - See details for a particular vehicle type.
-`combat/pilot <vehicle type or name>` - Pilots a vehicle.
-`combat/passenger <vehicle type or name>` - Becomes a passenger in a vehicle.
-        You can also use a person's name to join them in a vehicle.
-`combat/disembark` - Leaves a vehicle.
-
-`mounts` - Lists all types of mounts.
-`mount <name>` - See details for a particular mount type.
-`combat/mount <name>` - Mounts an animal.
-`combat/dismount` - Dismounts an animal.
-
 ## Luck
 
-See [Luck in Combat](/help/combat_luck)
+You can spend luck to get a bonus on attack, defense or initiative, or undo a knockout.
+
+`combat/luck <attack, defense or initiative>` - Spend a luck point this turn.
+`combat/hero` - Spends a luck point to un-KO yourself.
 
 ## Organizing
 

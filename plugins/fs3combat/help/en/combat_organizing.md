@@ -30,7 +30,7 @@ aliases:
 ---
 # Organizing FS3 Combat
 
-This is a quick reference for combat organizer commands. Also  check out the [Running Combats](http://aresmush.com/fs3/fs3-3/running-combat) tutorial.
+This is a quick reference for combat organizer commands. Also  check out the [Combat Organizer's Guide](/combat_org_guide).
 
 ## Running Combat
 `combat/start [<mock or real>]` - Starts a combat (default real).
@@ -47,8 +47,8 @@ This is a quick reference for combat organizer commands. Also  check out the [Ru
 `combat/log <page>` - Views the combat log, with detailed messages about the rolls and effects.
 
 ## NPCs
-You can always specify a NPC or player name in front of any action command to make them do something.  For example, combat/join Bob/#123.
-Most commands support multiple names as well, so you can do: combat/attack A B/C.
+You can always specify a NPC or player name in front of any action command to make them do something.  For example, `combat/join Bob/#123`.
+Most commands support multiple names as well, so you can do: `combat/attack A B/C`.
 **See [NPC](/help/npc) for more information on how spells, potions, and levels work for NPCs**
 
 `combat/join <list of names>=<combat #>[/<type>]` - Creates temporary NPCs and adds them to the combat. 'Type' affects their available hitlocs. See `combat/types` for a list.

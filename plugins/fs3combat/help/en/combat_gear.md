@@ -8,6 +8,8 @@ aliases:
 - weapon
 - combat_weapon
 - combat_armor
+- weapon_specials
+- armor_specials
 ---
 # FS3 Combat Gear
 
