@@ -97,6 +97,8 @@ module AresMUSH
            return CombatJoinCmd
          when "leave"
            return CombatLeaveCmd
+         when "type"
+           return CombatTypeCmd
          when "log"
            return CombatLogCmd
          when "luck"
