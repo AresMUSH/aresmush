@@ -3,7 +3,7 @@ module AresMUSH
     class SpellCastCmd
     #spell/cast <spell>
       include CommandHandler
-      attr_accessor :name, :weapon_name, :spell, :spell_list, :weapon,  :caster, :caster_combat, :args
+      attr_accessor :name, :weapon_name, :spell, :spell_list, :weapon,  :caster, :caster_combat, :args, :mod
       def parse_args
        self.spell_list = Global.read_config("spells")
        if (cmd.args =~ /\//)
@@ -25,6 +25,7 @@ module AresMUSH
           #Returns char or NPC
           self.caster = enactor
           self.spell = titlecase_arg(args.arg1)
+          self.mod = args.arg2
           #Returns combatant
           if enactor.combat
             self.caster_combat = enactor.combatant
@@ -176,9 +177,9 @@ module AresMUSH
           #Roll NonCombat
           if roll
 
-            Custom.cast_noncombat_spell(self.caster, self.spell)
+            Custom.cast_noncombat_spell(self.caster, self.spell, self.mod)
           elsif heal_points
-            Custom.cast_non_combat_heal(self.caster, self.spell)
+            Custom.cast_non_combat_heal(self.caster, self.spell, self.mod)
           else
             client.emit_failure t('custom.not_in_combat')
           end
