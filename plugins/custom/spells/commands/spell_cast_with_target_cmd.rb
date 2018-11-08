@@ -2,7 +2,7 @@ module AresMUSH
   module Custom
     class SpellCastWithTargetCmd
       include CommandHandler
-      attr_accessor :name, :target, :target_name, :target_combat, :spell, :spell_list, :caster, :caster_combat, :action_args
+      attr_accessor :name, :target, :target_name, :target_combat, :spell, :spell_list, :caster, :caster_combat, :action_args, :mod
 
       def parse_args
         self.spell_list = Global.read_config("spells")
@@ -25,13 +25,14 @@ module AresMUSH
 
         else
           #Enactor casts
-          args = cmd.parse_args(/(?<arg1>[^\=]+)\=?(?<arg2>.+)?/)
+          args = cmd.parse_args(/(?<arg1>[^\=]+)\=?(?<arg2>[^\+]+)\+?(?<arg3>.+)?/)
           self.spell = titlecase_arg(args.arg1)
           self.target_name = titlecase_arg(args.arg2)
 
           #Returns char or NPC
           self.caster = enactor
           self.target = FS3Combat.find_named_thing(self.target_name, self.caster)
+          self.mod = args.arg3
 
           #Returns combatant
           if enactor.combat
@@ -232,13 +233,13 @@ module AresMUSH
         else
           if heal_points
             if Custom.knows_spell?(caster, self.spell)
-              Custom.cast_non_combat_heal_with_target(self.caster, self.target, self.spell)
+              Custom.cast_non_combat_heal_with_target(self.caster, self.target, self.spell, self.mod)
             else
               client.emit_failure t('custom.dont_know_spell')
             end
           elsif roll
             if Custom.knows_spell?(caster, self.spell)
-              Custom.cast_noncombat_roll_spell_with_target(self.caster, self.target, self.spell)
+              Custom.cast_noncombat_roll_spell_with_target(self.caster, self.target, self.spell, self.mod)
             else
               client.emit_failure t('custom.dont_know_spell')
             end
