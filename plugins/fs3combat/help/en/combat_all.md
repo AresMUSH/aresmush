@@ -138,7 +138,8 @@ This is a quick reference for combat organizer commands.   You may also want to 
 `combat/defensemod <name>=<modifier>` - Gives the combatant a modifier to defend
 `combat/lethalmod <name>=<modifier>` - Gives the combatant a modifier to lethality on damage TAKEN
 `spell/mod <name>=<mod>` - Gives the combatant a modifier to their spell rolls.
-`combat/clearmods <name>` - Clears all modifiers from combatant and sets to 0.
+`combat/clearmods <name>` - Clears all modifiers from combatant and sets to 0.  Use with caution, as this can erase spell effects.
+`combat/seemods <name>` Shows all combat mods set on a combatant.
 
 `combat/transfer <name>` - Transfer organizer powers to another person in combat.
 
