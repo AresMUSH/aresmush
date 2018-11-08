@@ -79,6 +79,8 @@ module AresMUSH
            return CombatModCmd
          when "clearmods"
            return CombatClearModsCmd
+         when "seemods"
+           return CombatSeeModsCmd
          when "armor"
            return CombatArmorCmd
          when "hitloc"
