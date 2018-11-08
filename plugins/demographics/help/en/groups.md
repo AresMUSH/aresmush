@@ -4,7 +4,11 @@ summary: Viewing and setting character groups/affiliations.
 ---
 # Groups
 
-During chargen, you can assign your character to various **Groups**.  Only admin may change your groups after you've been approved.
+Groups represent your job and where you are from. All the options listed below are open to all characters, though your position in that group should be worked out with the head of that group. Please see [/wiki/theme:corporations](Corporations) and [/wiki/theme:government](Government) for more information on these groups, and [/wiki/theme:cities](Cities) for information on the cities of Chontio.
+
+If you are interested in creating a new group and having it listed here, please contact staff. If you what to be part of a private group (that is not open to all characters), you should choose "Freelance" under Affiliation or Corporation.
+
+Only admin may change your groups after you've been approved.
 
 Available groups: Affiliation, Corporation, Government, Origin.
 
