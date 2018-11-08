@@ -78,7 +78,8 @@ Admins, combat organizers, and characters with the manage_combat permission can 
 `combat/defensemod <name>=<modifier>` - Gives the combatant a modifier to defend
 `combat/lethalmod <name>=<modifier>` - Gives the combatant a modifier to lethality on damage TAKEN
 `spell/mod <name>=<mod>` - Gives the combatant a modifier to their spell rolls.
-**Tip:** Mods only last for one round.
+`combat/clearmods <name>` - Clears all modifiers from combatant and sets to 0.
+**Tip:** Mods set this way only last for one round.
 
 ##Specials
 `combat/weaponspecials <name>=<special>[+<special>+<special>]` - Set a character or NPC's persistent weapon specials. Use 'None' to clear.
