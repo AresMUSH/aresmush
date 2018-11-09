@@ -11,7 +11,10 @@ You may pick additional specializations, but these will cost xp: 10 times the nu
 You may set skills higher or choose non-career skills at the cost of XP. That will be explained in the next screen.
 
 ### Commands:
-
 `careers` - Lists available careers, career skills, and specializations
+
+`specialization/add <name>` - Adds a specialization.
+`specialization/remove <name>` - Removes a specialization.
+
 `skills` - Lists skills.
 `skill/set <name>=<rating>` - Sets a skill. Set the skill to 0 to remove it.
