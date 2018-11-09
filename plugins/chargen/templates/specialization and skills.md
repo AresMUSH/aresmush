@@ -4,7 +4,11 @@
 
 You may pick additional specializations, but these will cost xp: 10 times the number you will have, plus an additional 10 if it is not within your career. (So, if you have 1, your second would cost 10 * 2 = 20, plus 10 if outside your career).
 
+**You must set your specializations NOW as you will not be able to set them later.**
+
 **Skills** are things you are trained in. You must have four career skills set to at least 1. Use `app` to see how many career skills have been taken. Use `skills` to see a list of skills, or see here: LINK
+
+You should only set your 4 starting career skills. You will set the rest later.
 
 > Note: All skills cost XP, even the 4 starting skills. You've already been granted xp to accomodate that. If your **archetype**/**species** grants you free skills, you start with extra xp to purchase those skills.
 
