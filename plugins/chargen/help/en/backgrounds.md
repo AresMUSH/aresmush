@@ -7,7 +7,9 @@ aliases:
 ---
 # Backgrounds
 
-Here on Chontio, we've attempted to keep backgrounds as simple as we can. You should have already set a **Concept** and **Position** in the Demographics step. This will tell staff who you are and what you do. Your background will show us you understand the theme. What we need is: Complete the following statement:*The Confederation is important to me because <#1>. I want to see it <#2> because <#3>.*
+Here on Chontio, we've attempted to keep backgrounds as simple as we can. You should have already set a **Concept** and **Position** in the Demographics step. This will tell staff who you are and what you do. Your background is statement, which will will show us you understand the theme. Complete the following:
+
+*The Confederation is important to me because <#1>. I want to see it <#2> because <#3>.*
 
 **#1** is your investment in the [Tageeri Confederation](/wiki/theme:Tageeri Confederation). It can be as complex or as simple as you'd like, but it should define a major motivation of your character.
 
