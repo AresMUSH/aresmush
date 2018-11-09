@@ -8,6 +8,7 @@ aliases:
 - skills
 - specializations
 - reset/
+- reset//
 ---
 
 # FFG Abilities

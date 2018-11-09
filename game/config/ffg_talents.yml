@@ -42,6 +42,8 @@ ffg:
             ranked: false
             tier: 4
             force_power: true
+            specializations:
+                - Force Sensitive
         - 
             name: Basic Combat Training
             ranked: false
@@ -327,75 +329,101 @@ ffg:
             ranked: false
             tier: 1
             force_power: true
+            specializations:
+                - Force Sensitive
         -
             name: Force Move Magnitude
             ranked: true
             tier: 1
             force_power: true
             prereq: Force Move
+            specializations:
+                - Force Sensitive
         -
             name: Force Move Range
             ranked: true
             tier: 1
             force_power: true
+            specializations:
+                - Force Sensitive
             prereq: Force Move
         -
             name: Force Move Strength
             ranked: true
             tier: 1
             force_power: true
+            specializations:
+                - Force Sensitive
             prereq: Force Move
         -
             name: Force Move Control
             ranked: true
             tier: 1
             force_power: true
+            specializations:
+                - Force Sensitive
             prereq: Force Move
         -
             name: Force Enhance
             ranked: false
             tier: 1
             force_power: true
+            specializations:
+                - Force Sensitive
         -
             name: Force Enhance Control
             ranked: true
             tier: 1
             force_power: true
+            specializations:
+                - Force Sensitive
             prereq: Force Enhance
         -
             name: Force Enhance Range
             ranked: true
             tier: 1
             force_power: true
+            specializations:
+                - Force Sensitive
             prereq: Force Enhance
         -
             name: Force Forsee
             ranked: false
             tier: 1
             force_power: true
+            specializations:
+                - Force Sensitive
         -
             name: Force Forsee Magnitude
             ranked: true
             tier: 1
             force_power: true
+            specializations:
+                - Force Sensitive
             prereq: Force Forsee
         -
             name: Force Forsee Range
             ranked: true
             tier: 1
             force_power: true
+            specializations:
+                - Force Sensitive
             prereq: Force Forsee
         -
             name: Force Forsee Strength
             ranked: true
             tier: 1
             force_power: true
+            specializations:
+                - Force Sensitive
             prereq: Force Forsee
         -
             name: Force Forsee Control
             ranked: true
             tier: 1
             force_power: true
+            specializations:
+                - Force Sensitive
             prereq: Force Forsee
         - 
             name: Form On Me
