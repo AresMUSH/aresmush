@@ -4,8 +4,8 @@ chargen:
   app_hold_status: HOLD
   app_resubmit_status: OPEN
   approval_message: Congratulations!  Your application has been approved.  Type %xhonstage%xn
-    to go forth and RP.  You may want to customize your character profile on the web
-    portal.
+    to go forth and RP.  Please log in via the web portal (http://chontio.aresmush.com)
+    and set up your web profile.
   arrivals_board: New Arrivals
   bg_blurb: 'You don''t need to write a novel. Just cover the basics: who you are,
     why are you here, and is there anything noteworthy about you. Be sure to explain
@@ -49,10 +49,16 @@ chargen:
       help: groups
     background:
       help: backgrounds
-    abilities:
-      help: skills
+    archetype and career:
+      tutorial: archetype and career.md
+    specialization and skills:
+      tutorial: specialization and skills.md
+    spending xp:
+      tutorial: spending xp.md
+    gear and etc:
+      tutorial: gear and etc.md
     desc:
-      help: descriptions
+      tutorial: character description.md
     hooks:
       help: hooks
     handles:

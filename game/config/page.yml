@@ -1,6 +1,6 @@
 ---
 page:
-  page_color: "%xg"
+  page_color: "%xh%xg"
   shortcuts:
     p: page
     page/lock: page/ignore
