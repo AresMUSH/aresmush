@@ -7,13 +7,11 @@ aliases:
 ---
 # Backgrounds
 
-Here on Chontio, we've attempted to keep backgrounds as simple as we can. What we need is: Your *Concept*, And you to complete the following statement:*The Confederation is important to me because <#1>. I want to see it <#2> because <#3>.*
-
-**Concept**: This is should be a *few word* summary of your character. Eg: Daredevil Smuggler.
+Here on Chontio, we've attempted to keep backgrounds as simple as we can. You should have already set a **Concept** and **Position** in the Demographics step. This will tell staff who you are and what you do. Your background will show us you understand the theme. What we need is: Complete the following statement:*The Confederation is important to me because <#1>. I want to see it <#2> because <#3>.*
 
 **#1** is your investment in the [Tageeri Confederation](/wiki/theme:Tageeri Confederation). It can be as complex or as simple as you'd like, but it should define a major motivation of your character.
 
-**#2** is what you're fighting for: to see the Confederation succeed, see it join the Empire, see it grow rich.
+**#2** is what you're fighting for, e.g., to see the Confederation succeed, see it join the Empire, see it grow rich.
 
 **#3** is the future, and what the Confederation succeeding looks like to you.
 
@@ -24,6 +22,8 @@ Here on Chontio, we've attempted to keep backgrounds as simple as we can. What w
 > The Confederation is important to me because it has brought prosperity to the city of Davotay. I want to grow fantastically rich by milking the Empire, because that's what the Empire is good for: taking from.
 
 If you have not read any of the lore, please see [Getting Started](/wiki/Getting Started) to make sure you have the information you need to complete your background.
+
+If you wish to add more to your background, please limit it to 1 screen of text. Add that after the above statement.
 
 -----
 
