@@ -13,7 +13,7 @@ en:
       invalid_career: "That is not a valid career."
       career_set: "You set your career."
       invalid_archetype: "That is not a valid archetype."
-      archetype_set: "You set your archetype."
+      archetype_set: "You set your archetype and career."
       already_have_spec: "You already have that specialization."
       dont_have_spec: "You don't have that specialization."
       invalid_spec_for_career: "Your career doesn't allow that specialization."
