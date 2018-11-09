@@ -46,12 +46,12 @@ demographics:
         Sakav: Frontier city nearest the Ushawbay clans.
         Offworld: You originated off world, but are involved with the planet.
     Affiliation:
-      desc: Your major affiliation in the city
+      desc: Your major affiliation in the city.
       values:
-        Tageeri: You work for the government
-        Corporation: You work a regular job in the city
+        Tageeri: You work for the government, or are a student.
+        Corporation: You work a regular job in the city.
         Freelance: Everything else.
-        Empire: A servant of the Galactic Empire (NPC Only)
+        Empire: A servant of the Galactic Empire (NPC Only).
     Government:
       desc: Government Agencies of the Tageeri Confederation
       values:
@@ -66,12 +66,13 @@ demographics:
         General Assembly: The legislative body of the Tageeri Confederation and its
           staff.
         Other Agency: You work for a Confederation agency that's not listed above.
+        Student: You work at the University of Tageeri, or are a student there.
         Citizen: You do not work for the Confederation. You are a citizen of Tageeri.
         Empire: A servant of the Galactic Empire (NPC Only)
     Corporation:
       desc: Where do you work? These are the local corporations on Chontio.
       values:
-        Independent: You are a private citizen, but you do not work for any recognized
+        Freelance: You are a private citizen, but you do not work for any recognized
           corporations, or you work for yourself.
         Government: You work for the Tageeri Confederation.
         TTshipping: A local favorite. This corporation transports goods around the
@@ -80,6 +81,7 @@ demographics:
           that advertising itself as a Private Security Corporation.
         Sevanar LT: Makers of the best sabacc tables in the galaxy! Also freelance
           tech geniuses.
+        CNN: You work at the Chontio News Network, Chontio's most only news agency.
         Empire: A servant of the Galactic Empire (NPC Only)
   help_text:
     actor: "%xcactor <actor>%xn - See 'help actors'."
