@@ -12,6 +12,8 @@ Talents cost 5x the tier that is being purchased.
 
 For a list of talents, use `talents` or see here: LINK
 
+*Specializations MUST be set before skills are set. If you wish to add a specialization, you must UNSET all your skills, or `reset` entirely. Setting specializations now will create problems with your XP and make staff sad.*
+
 ### Commands:
 
 `charac` - Lists characteristics.
