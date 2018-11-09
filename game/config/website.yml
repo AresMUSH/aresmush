@@ -1,8 +1,8 @@
 ---
 website:
   allow_html_in_markdown: true
-  character_gallery_group: Faction
-  character_gallery_subgroup: Position
+  character_gallery_group: Affiliation
+  character_gallery_subgroup: Government
   left_sidebar: false
   max_upload_size_kb: 5000
   portal_requires_registration: false

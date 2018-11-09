@@ -274,3 +274,10 @@ legend, pre {
     -webkit-user-select: none;
     color: inherit;
 }
+
+.ember-basic-dropdown-content {
+    position: absolute;
+    width: auto;
+    z-index: 1000;
+    background-color: #222;
+}
