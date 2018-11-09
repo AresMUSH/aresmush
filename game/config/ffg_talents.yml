@@ -1,1262 +1,1040 @@
+---
 ffg:
-    talents: 
-        - 
-            name: All Terrain Driver
-            tier: 1
-            ranked: true
-            specializations: 
-                - Driver
-        -
-            name: Anatomy Lessons
-            ranked: false
-            tier: 5
-            specializations:
-                - Medic
-        - 
-            name: Armor Master
-            ranked: false
-            tier: 3
-            specializations:
-                - Commando
-        - 
-            name: Armor Master Improved
-            ranked: false
-            tier: 5
-            prereq: Armor Master
-            specializations:
-                - Commando
-        - 
-            name: Bacta Specialist
-            ranked: true
-            tier: 2
-            specializations:
-                - Medic
-        -
-            name: Bad Motivator
-            ranked: false
-            tier: 3
-            specializations:
-                - Mechanic
-        -
-            name: Balance
-            ranked: false
-            tier: 4
-            force_power: true
-            specializations:
-                - Force Sensitive
-        - 
-            name: Basic Combat Training
-            ranked: false
-            tier: 1
-            specializations:
-                - Recruit
-
-        - 
-            name: Blooded
-            ranked: true
-            tier: 3
-            specializations:
-                - Commando
-        -
-            name: Body Guard
-            ranked: true
-            tier: 3
-            specializations:
-                - Tactician
-        -
-            name: Bought Info
-            ranked: false
-            tier: 3
-            specializations:
-                - Quartermaster
-        -
-            name: Brace
-            tier: 1
-            ranked: true
-            specializations:
-                - Gunner
-                - Sharpshooter
-        -
-            name: Brilliant Evasion
-            ranked: false
-            tier: 5
-            specializations:
-                - Pilot
-                - Squadron Leader
-        -
-            name: Bypass Security
-            ranked: true
-            tier: 1
-            specializations:
-                - Slicer
-        - 
-            name: Careful Planning
-            ranked: false
-            tier: 5
-            specializations:
-                - Scientist
-        - 
-            name: Clever Solution
-            ranked: false
-            tier: 5
-            specializations:
-                - Infiltrator
-        -
-            name: Codebreaker
-            tier: 1
-            ranked: true
-            specializations:
-                - Slicer
-        -
-            name: Command
-            ranked: true
-            tier: 1
-            specializations:
-                - Commodore
-                - Squadron Leader
-        - 
-            name: Commanding Presence
-            ranked: true
-            tier: 1
-            specializations:
-                - Commodore
-                - Tactician
-        -
-            name: Confidence
-            ranked: true
-            tier: 1
-            specializations:
-                - Ambassador
-                - Squadron Leader
-                - Tactician
-        -
-            name: Contraption
-            ranked: false
-            tier: 4
-            specializations:
-                - Mechanic
-        -
-            name: Convincing Demeanor
-            ranked: true
-            tier: 2
-            specializations:
-                - Agitator
-        - 
-            name: Coordinated Assault
-            ranked: true
-            tier: 5
-            specializations:
-                - Tactician
-        - 
-            name: Creative Killer
-            ranked: false
-            tier: 4
-            specializations:
-                - Recruit
-        -
-            name: Crippling Blow
-            ranked: false
-            tier: 4
-            specializations:
-                - Sharpshooter
-        -
-            name: Dead To Rights
-            ranked: false
-            tier: 2
-            specializations:
-                - Pilot
-        -
-            name: Dead To Rights Improved
-            ranked: false
-            tier: 3
-            prereq: Dead To Rights
-            specializations:
-                - Pilot
-        -
-            name: Deadly Accuracy
-            ranked: true
-            tier: 2
-            specializations:
-                - Sharpshooter
-        - 
-            name: Debilitating Shot
-            tier: 1
-            ranked: false
-            specializations:
-                - Gunner
-        -
-            name: Dedication
-            ranked: true
-            tier: 5
-            specializations: []
-        -
-            name: Defensive Driving
-            tier: 3
-            ranked: true
-            specializations:
-                - Driver
-                - Pilot
-                - Squadron Leader
-        -
-            name: Defensive Slicing
-            ranked: true
-            tier: 2
-            specializations:
-                - Slicer          
-        -
-            name: Defensive Slicing Improved
-            ranked: false
-            tier: 4
-            prereq: Defensive Slicing
-            specializations:
-                - Slicer
-        -
-            name: Defensive Stance
-            ranked: true
-            tier: 1
-            specializations:
-                - Infiltrator
-        -
-            name: Disorient
-            ranked: true
-            tier: 2
-            specializations:
-                - Scout
-        -
-            name: Dodge
-            ranked: true
-            tier: 1
-            specializations:
-                - Ambassador
-                - Medic
-                - Infiltrator
-        -
-            name: Durable
-            ranked: true
-            tier: 1
-            specializations:
-                - Commando
-                - Gunner
-        - 
-            name: Dynamic Fire
-            ranked: false
-            tier: 5
-            specializations:
-                - Recruit
-        -
-            name: Enduring
-            ranked: true
-            tier: 3
-            specializations:
-                - Gunner
-                - Mechanic
-                - Recruit
-        - 
-            name: Exhaust Port
-            tier: 4
-            ranked: false
-            specializations:
-                - Gunner
-        -
-            name: Expert Tracker
-            ranked: true
-            tier: 1
-            specializations:
-                - Sharpshooter
-        -
-            name: Familiar Suns
-            ranked: false
-            tier: 2
-            specializations:
-                - Commodore
-                - Scout
-        -
-            name: Feral Strength
-            ranked: true
-            tier: 3
-            specializations:
-                - Commando
-        -
-            name: Field Commander
-            ranked: true
-            tier: 2
-            specializations:
-                - Squadron Leader
-                - Tactician
-        -
-            name: Field Commander Improved
-            ranked: false
-            tier: 4
-            prereq: Field Commander
-            specializations:
-                - Squadron Leader
-                - Tactician
-        -
-            name: Fine Tuning
-            tier: 1
-            ranked: true
-            specializations:
-                - Driver
-                - Mechanic
-        - 
-            name: Fire Control
-            ranked: false
-            tier: 5
-            specializations:
-                - Commodore
-        -
-            name: Forager
-            tier: 1
-            ranked: false
-            specializations:
-                - Medic
-                - Scout
-        - 
-            name: Force Of Will
-            tier: 5
-            ranked: false
-            specializations:
-                - Force Sensitive
-        -
-            name: Force Rating
-            ranked: true
-            force_power: true
-            tier: 5
-            specializations:
-                - Force Sensitive
-        -
-            name: Force Move
-            ranked: false
-            tier: 1
-            force_power: true
-            specializations:
-                - Force Sensitive
-        -
-            name: Force Move Magnitude
-            ranked: true
-            tier: 1
-            force_power: true
-            prereq: Force Move
-            specializations:
-                - Force Sensitive
-        -
-            name: Force Move Range
-            ranked: true
-            tier: 1
-            force_power: true
-            specializations:
-                - Force Sensitive
-            prereq: Force Move
-        -
-            name: Force Move Strength
-            ranked: true
-            tier: 1
-            force_power: true
-            specializations:
-                - Force Sensitive
-            prereq: Force Move
-        -
-            name: Force Move Control
-            ranked: true
-            tier: 1
-            force_power: true
-            specializations:
-                - Force Sensitive
-            prereq: Force Move
-        -
-            name: Force Enhance
-            ranked: false
-            tier: 1
-            force_power: true
-            specializations:
-                - Force Sensitive
-        -
-            name: Force Enhance Control
-            ranked: true
-            tier: 1
-            force_power: true
-            specializations:
-                - Force Sensitive
-            prereq: Force Enhance
-        -
-            name: Force Enhance Range
-            ranked: true
-            tier: 1
-            force_power: true
-            specializations:
-                - Force Sensitive
-            prereq: Force Enhance
-        -
-            name: Force Forsee
-            ranked: false
-            tier: 1
-            force_power: true
-            specializations:
-                - Force Sensitive
-        -
-            name: Force Forsee Magnitude
-            ranked: true
-            tier: 1
-            force_power: true
-            specializations:
-                - Force Sensitive
-            prereq: Force Forsee
-        -
-            name: Force Forsee Range
-            ranked: true
-            tier: 1
-            force_power: true
-            specializations:
-                - Force Sensitive
-            prereq: Force Forsee
-        -
-            name: Force Forsee Strength
-            ranked: true
-            tier: 1
-            force_power: true
-            specializations:
-                - Force Sensitive
-            prereq: Force Forsee
-        -
-            name: Force Forsee Control
-            ranked: true
-            tier: 1
-            force_power: true
-            specializations:
-                - Force Sensitive
-            prereq: Force Forsee
-        - 
-            name: Form On Me
-            ranked: false
-            tier: 4
-            specializations:
-                - Squadron Leader
-        -
-            name: Frenzied Attack
-            ranked: true
-            tier: 1
-            specializations:
-                - Infiltrator
-        - 
-            name: Full Stop
-            tier: 3
-            ranked: false
-            specializations:
-                - Driver
-                - Squadron Leader
-        -
-            name: Full Throttle
-            tier: 1
-            ranked: false
-            specializations:
-                - Driver
-                - Pilot
-        -
-            name: Full Throttle Improved
-            ranked: false
-            tier: 3
-            prereq: Full Throttle
-            specializations:
-                - Driver
-                - Pilot
-        -
-            name: Full Throttle Supreme
-            ranked: false
-            prereq: Full Throttle
-            tier: 4
-            specializations:
-                - Driver
-                - Pilot
-        -
-            name: Galaxy Mapper
-            tier: 2
-            ranked: true
-            specializations:
-                - Commodore
-                - Pilot
-        -
-            name: Gearhead
-            ranked: true
-            tier: 1
-            specializations:
-                - Driver
-                - Mechanic
-        - 
-            name: Greased Palms
-            ranked: true
-            tier: 2
-            specializations:
-                - Quartermaster
-        -
-            name: Grit
-            ranked: true
-            tier: 1
-            specializations: []
-        -
-            name: Hard Headed
-            ranked: true
-            tier: 3
-            specializations:
-                - Mechanic
-                - Saboteur
-        -
-            name: Hard Headed Improved
-            ranked: false
-            tier: 5
-            prereq: Hard Headed
-            specializations:
-                - Mechanic
-                - Saboteur
-        -
-            name: Heightened Awareness
-            ranked: false
-            tier: 4
-            specializations:
-                - Scout
-        -
-            name: Heroic Fortitude
-            ranked: false
-            tier: 4
-            specializations:
-                - Commando
-                - Gunner
-        -
-            name: Hidden Storage
-            ranked: true
-            tier: 2
-            specializations:
-                - Scientist
-        -
-            name: Hold Together
-            ranked: false
-            tier: 4
-            specializations:
-                - Commodore
-                - Mechanic
-        - 
-            name: Incite Rebellion
-            ranked: false
-            tier: 5
-            specializations:
-                - Agitator
-        -
-            name: Indistinguishable
-            ranked: true
-            tier: 1
-            specializations:
-                - Ambassador
-                - Force Sensitive
-        -
-            name: Insight
-            tier: 1
-            ranked: false
-            force_power: true
-            specializations:
-                - Force Sensitive
-        -
-            name: Inspiring Rhetoric
-            ranked: false
-            tier: 3
-            specializations:
-                - Ambassador
-        -
-            name: Inspiring Rhetoric Improved
-            ranked: false
-            tier: 4
-            prereq: Inspiring Rhetoric
-            specializations:
-                - Ambassador
-        -
-            name: Inspiring Rhetoric Supreme
-            ranked: false
-            prereq: Inspiring Rhetoric
-            tier: 5
-            specializations:
-                - Ambassador
-        -
-            name: Intense Focus
-            ranked: false
-            tier: 4
-            specializations:
-                - Quartermaster
-                - Scientist
-        -
-            name: Intense Presence
-            ranked: false
-            tier: 4
-            specializations:
-                - Ambassador
-        -
-            name: Intimidating
-            ranked: true
-            tier: 1
-            specializations:
-                - Agitator
-        -
-            name: Inventor
-            ranked: true
-            tier: 3
-            specializations:
-                - Scientist
-        - 
-            name: Invigorate
-            tier: 5
-            ranked: false
-            force_power: true
-            specializations:
-                - Force Sensitive
-        - 
-            name: It’s Not That Bad
-            ranked: false
-            tier: 5
-            specializations:
-                - Medic
-        -
-            name: Jump Up
-            tier: 2
-            ranked: false
-            specializations:
-                - Infiltrator
-                - Recruit
-        -
-            name: Jury Rigged
-            tier: 3
-            ranked: true
-            specializations:
-                - Gunner
-        -
-            name: Kill With Kindness
-            ranked: true
-            tier: 1
-            specializations:
-                - Ambassador
-        -
-            name: Knockdown
-            ranked: false
-            tier: 3
-            specializations:
-                - Commando
-                - Infiltrator
-        -
-            name: Know Somebody
-            ranked: true
-            tier: 1
-            specializations:
-                - Quartermaster
-        -
-            name: Knowledge Specialization
-            ranked: true
-            tier: 1
-            specializations:
-                - Scientist
-        -
-            name: Known Schematic
-            ranked: false
-            tier: 2
-            specializations:
-                - Commodore
-        -
-            name: Let's Ride
-            ranked: false
-            tier: 1
-            specializations:
-                - Pilot
-                - Scout
-                - Squadron Leader
-        -
-            name: Lethal Blows
-            ranked: true
-            tier: 2
-            specializations:
-                - Sharpshooter
-        -
-            name: Master Doctor
-            ranked: false
-            tier: 3
-            specializations:
-                - Medic
-        -
-            name: Master Driver
-            ranked: false
-            tier: 5
-            specializations:
-                - Driver
-        - 
-            name: Master Grenadier
-            ranked: false
-            tier: 5
-            specializations:
-                - Saboteur
-        - 
-            name: Master Leader
-            ranked: false
-            tier: 5
-            specializations:
-                - Squadron Leader
-        -
-            name: Master Merchant
-            ranked: false
-            tier: 2
-            specializations:
-                - Quartermaster
-        -
-            name: Master Of Shadows
-            ranked: false
-            tier: 5
-            specializations:
-                - Infiltrator
-        -
-            name: Master Pilot
-            ranked: false
-            tier: 5
-            specializations:
-                - Pilot
-        -
-            name: Master Slicer
-            ranked: false
-            tier: 5
-            specializations:
-                - Slicer
-        -
-            name: Master Starhopper
-            ranked: false
-            tier: 4
-            specializations:
-                - Commodore
-        -
-            name: Mental Fortress
-            ranked: false
-            tier: 3
-            specializations:
-                - Scientist
-                - Slicer
-        -
-            name: Natural Brawler
-            ranked: false
-            tier: 4
-            specializations:
-                - Infiltrator
-        -
-            name: Natural Charmer
-            ranked: false
-            tier: 5
-            specializations:
-                - Ambassador
-        -
-            name: Natural Doctor
-            ranked: false
-            tier: 4
-            specializations:
-                - Medic
-        -
-            name: Natural Driver
-            ranked: false
-            tier: 4
-            specializations:
-                - Driver
-        - 
-            name: Natural Enforcer
-            ranked: false
-            tier: 4
-            specializations:
-                - Agitator
-        -
-            name: Natural Hunter
-            ranked: false
-            tier: 3
-            specializations:
-                - Scout
-        - 
-            name: Natural Leader
-            ranked: false
-            tier: 5
-            specializations:
-                - Tactician
-        -
-            name: Natural Marksman
-            ranked: false
-            tier: 5
-            specializations:
-                - Sharpshooter
-        -
-            name: Natural Negotiator
-            ranked: false
-            tier: 5
-            specializations:
-                - Quartermaster
-        -
-            name: Natural Outdoorsman
-            ranked: false
-            tier: 3
-            specializations:
-                - Commando
-                - Tactician
-        -
-            name: Natural Pilot
-            ranked: false
-            tier: 3
-            specializations:
-                - Pilot
-        -
-            name: Natural Programmer
-            ranked: false
-            tier: 3
-            specializations:
-                - Slicer
-        -
-            name: Natural Rogue
-            ranked: false
-            tier: 5
-            specializations:
-                - Infiltrator
-        -
-            name: Natural Scholar
-            ranked: false
-            tier: 4
-            specializations:
-                - Scientist
-        -
-            name: Natural Tinkerer
-            ranked: false
-            tier: 5
-            specializations:
-                - Mechanic
-        -
-            name: Nobody's Fool
-            ranked: true
-            tier: 1
-            specializations:
-                - Ambassador
-                - Agitator
-        -
-            name: Outdoorsman
-            ranked: true
-            tier: 1
-            specializations:
-                - Recruit
-                - Tactician
-        - 
-            name: Overwhelm Defenses
-            tier: 3
-            ranked: true
-            specializations:
-                - Gunner
-        - 
-            name: Physical Training
-            ranked: true
-            tier: 1
-            specializations:
-                - Commando
-        -
-            name: Plausible Deniability
-            ranked: true
-            tier: 1
-            specializations:
-                - Agitator
-        -
-            name: Point Blank
-            ranked: true
-            tier: 1
-            specializations:
-                - Commando
-        - 
-            name: Powerful Blast
-            ranked: true
-            tier: 2
-            specializations:
-                - Saboteur
-        -
-            name: Quick Draw
-            ranked: false
-            tier: 2
-            specializations:
-                - Recruit
-                - Tactician
-        - 
-            name: Quick Fix
-            ranked: false
-            tier: 5
-            specializations:
-                - Sharpshooter
-        -
-            name: Quick Strike
-            ranked: true
-            tier: 1
-            specializations:
-                - Scout
-                - Squadron Leader
-        -
-            name: Rapid Reaction
-            ranked: true
-            tier: 2
-            specializations:
-                - Driver
-                - Commodore
-        -
-            name: Rapid Recovery
-            ranked: true
-            tier: 1
-            specializations:
-                - Pilot
-                - Saboteur
-                - Scout
-        -
-            name: Redundant Systems
-            ranked: false
-            tier: 2
-            specializations:
-                - Mechanic
-        -
-            name: Researcher
-            ranked: true
-            tier: 1
-            specializations:
-                - Scientist
-        - 
-            name: Resolve
-            ranked: true
-            tier: 1
-            specializations:
-                - Saboteur
-                - Slicer
-        - 
-            name: Respected Scholar
-            ranked: true
-            tier: 1
-            specializations:
-                - Scientist
-        - 
-            name: Scathing Tirade
-            ranked: false
-            tier: 3
-            specializations:
-                - Agitator
-        - 
-            name: Scathing Tirade Improved
-            ranked: false
-            tier: 4
-            prereq: Scathing Tirade
-            specializations:
-                - Agitator
-        - 
-            name: Scathing Tirade Supreme
-            ranked: false
-            prereq: Scathing Tirade
-            tier: 5
-            specializations:
-                - Agitator
-        - 
-            name: Second Wind
-            ranked: true
-            tier: 1
-            specializations:
-                - Recruit
-                - Saboteur
-        - 
-            name: Selective Detonation
-            ranked: true
-            tier: 4
-            specializations:
-                - Saboteur
-        - 
-            name: Sense Danger
-            tier: 4
-            ranked: false
-            force_power: true
-            specializations:
-                - Force Sensitive
-        - 
-            name: Shortcut
-            ranked: true
-            tier: 1
-            specializations:
-                - Scout
-        - 
-            name: Side Step
-            ranked: true
-            tier: 51
-            specializations:
-                - Tactician
-        - 
-            name: Situational Awareness
-            ranked: false
-            tier: 2
-            specializations:
-                - Squadron Leader
-        - 
-            name: Sixth Sense
-            ranked: false
-            tier: 5
-            specializations:
-                - Ambassador
-        - 
-            name: Skilled Jockey
-            ranked: true
-            tier: 1
-            specializations:
-                - Driver
-                - Pilot
-        - 
-            name: Skilled Slicer
-            ranked: false
-            tier: 5
-            specializations:
-                - Slicer
-        - 
-            name: Sleight Of Mind
-            ranked: true
-            tier: 2
-            force_power: true
-            specializations:
-                - Force Sensitive
-        - 
-            name: Smooth Talker
-            ranked: true
-            tier: 1
-            specializations:
-                - Quartermaster
-        - 
-            name: Sniper Shot
-            ranked: true
-            tier: 1
-            specializations:
-                - Sharpshooter
-        - 
-            name: Soft Spot
-            ranked: false
-            tier: 2
-            specializations:
-                - Infiltrator
-        - 
-            name: Solid Repairs
-            ranked: true
-            tier: 1
-            specializations:
-                - Commodore
-                - Mechanic
-        - 
-            name: Sound Investments
-            ranked: true
-            tier: 4
-            specializations:
-                - Quartermaster
-        - 
-            name: Spare Clip
-            tier: 2
-            ranked: false
-            specializations:
-                - Gunner
-                - Recruit
-        - 
-            name: Speak Binary
-            ranked: true
-            tier: 1
-            specializations:
-                - Scientist
-        - 
-            name: Stalker
-            ranked: true
-            tier: 1
-            specializations:
-                - Scout
-        - 
-            name: Steely Nerves
-            ranked: false
-            tier: 3
-            specializations:
-                - Ambassador
-        - 
-            name: Stim Application
-            ranked: false
-            tier: 3
-            specializations:
-                - Medic
-        - 
-            name: Stim Application Improved
-            ranked: false
-            tier: 4
-            prereq: Stim Application
-            specializations:
-                - Medic
-        - 
-            name: Stim Application Supreme
-            ranked: false
-            prereq: Stim Application
-            tier: 5
-            specializations:
-                - Medic
-        - 
-            name: Stimpack Specialization
-            ranked: true
-            tier: 1
-            specializations:
-                - Medic
-        -
-            name: Street Smarts
-            ranked: true
-            tier: 2
-            specializations:
-                - Agitator
-        -
-            name: Stroke Of Genius
-            ranked: false
-            tier: 4
-            specializations:
-                - Scientist
-        -
-            name: Strong Arm
-            ranked: false
-            tier: 2
-            specializations:
-                - Commando
-        -
-            name: Stunning Blow
-            ranked: false
-            tier: 2
-            specializations:
-                - Infiltrator
-        -
-            name: Stunning Blow Improved
-            ranked: false
-            tier: 4
-            prereq: Stunning Blow
-            specializations:
-                - Infiltrator
-        -
-            name: Superior Reflexes
-            ranked: false
-            tier: 5
-            specializations:
-                - Quartermaster
-        -
-            name: Surgeon
-            ranked: true
-            tier: 1
-            specializations:
-                - Medic
-        -
-            name: Swift
-            ranked: false
-            tier: 2
-            specializations:
-                - Tactician
-        - 
-            name: Tactical Combat Training
-            ranked: false
-            tier: 1
-            specializations:
-                - Recruit
-        -
-            name: Targeted Blow
-            ranked: false
-            tier: 5
-            specializations:
-                - Sharpshooter
-        -
-            name: Technical Aptitude
-            ranked: true
-            tier: 1
-            specializations:
-                - Slicer
-        - 
-            name: Time To Go
-            ranked: false
-            tier: 3
-            specializations:
-                - Saboteur
-        - 
-            name: Time To Go Improved
-            ranked: false
-            tier: 4
-            prereq: Time To Go
-            specializations:
-                - Saboteur
-        -
-            name: Tinkerer
-            ranked: true
-            tier: 2
-            specializations:
-                - Scientist
-        -
-            name: Touch Of Fate
-            ranked: false
-            tier: 4
-            specializations:
-                - Force Sensitive
-        -
-            name: Toughened
-            ranked: true
-            tier: 1
-            specializations: []
-        -
-            name: Tricky Target
-            tier: 3
-            ranked: false
-            specializations:
-                - Driver
-                - Pilot
-                - Squadron Leader
-        -
-            name: True Aim
-            tier: 2
-            ranked: true
-            specializations:
-                - Gunner
-                - Sharpshooter
-        -
-            name: Uncanny Reactions
-            ranked: true
-            force_power: true
-            tier: 2
-            specializations:
-                - Force Sensitive
-        -
-            name: Uncanny Senses
-            ranked: true
-            force_power: true
-            tier: 1
-            specializations:
-                - Force Sensitive
-        - 
-            name: Unstoppable
-            ranked: false
-            tier: 5
-            specializations:
-                - Commando
-        -
-            name: Utility Belt
-            ranked: false
-            tier: 5
-            specializations:
-                - Scientist
-                - Scout
-        - 
-            name: Vehicle Combat Training
-            ranked: false
-            tier: 2
-            specializations:
-                - Recruit
-        -
-            name: Well Rounded
-            ranked: true
-            tier: 3
-            specializations:
-                - Medic
-        - 
-            name: Well Traveled
-            ranked: false
-            tier: 2
-            specializations:
-                - Recruit
-        -
-            name: Wheel And Deal
-            ranked: true
-            tier: 1
-            specializations:
-                - Quartermaster
-        - 
-            name: Works Like A Charm
-            ranked: false
-            tier: 4
-            specializations:
-                - Ambassador
+  talents:
+  - name: All Terrain Driver
+    tier: 1
+    ranked: false
+    specializations:
+    - Driver
+  - name: Anatomy Lessons
+    ranked: false
+    tier: 5
+    specializations:
+    - Medic
+  - name: Armor Master
+    ranked: false
+    tier: 3
+    specializations:
+    - Commando
+  - name: Armor Master Improved
+    ranked: false
+    tier: 5
+    prereq: Armor Master
+    specializations:
+    - Commando
+  - name: Bacta Specialist
+    ranked: true
+    tier: 2
+    specializations:
+    - Medic
+  - name: Bad Motivator
+    ranked: false
+    tier: 3
+    specializations:
+    - Mechanic
+  - name: Balance
+    ranked: false
+    tier: 4
+    force_power: true
+  - name: Basic Combat Training
+    ranked: false
+    tier: 1
+    specializations:
+    - Recruit
+  - name: Blooded
+    ranked: true
+    tier: 3
+    specializations:
+    - Commando
+  - name: Body Guard
+    ranked: true
+    tier: 3
+    specializations:
+    - Tactician
+  - name: Bought Info
+    ranked: false
+    tier: 3
+    specializations:
+    - Quartermaster
+  - name: Brace
+    tier: 1
+    ranked: true
+    specializations:
+    - Gunner
+    - Sharpshooter
+  - name: Brilliant Evasion
+    ranked: false
+    tier: 5
+    specializations:
+    - Pilot
+    - Squadron Leader
+  - name: Bypass Security
+    ranked: true
+    tier: 1
+    specializations:
+    - Slicer
+  - name: Careful Planning
+    ranked: false
+    tier: 5
+    specializations:
+    - Scientist
+  - name: Clever Solution
+    ranked: false
+    tier: 5
+    specializations:
+    - Infiltrator
+  - name: Codebreaker
+    tier: 1
+    ranked: true
+    specializations:
+    - Slicer
+  - name: Command
+    ranked: true
+    tier: 1
+    specializations:
+    - Commodore
+    - Squadron Leader
+  - name: Commanding Presence
+    ranked: true
+    tier: 1
+    specializations:
+    - Commodore
+    - Tactician
+  - name: Confidence
+    ranked: true
+    tier: 1
+    specializations:
+    - Ambassador
+    - Squadron Leader
+    - Tactician
+  - name: Contraption
+    ranked: false
+    tier: 4
+    specializations:
+    - Mechanic
+  - name: Convincing Demeanor
+    ranked: true
+    tier: 2
+    specializations:
+    - Agitator
+  - name: Coordinated Assault
+    ranked: true
+    tier: 5
+    specializations:
+    - Tactician
+  - name: Creative Killer
+    ranked: false
+    tier: 4
+    specializations:
+    - Recruit
+  - name: Crippling Blow
+    ranked: false
+    tier: 4
+    specializations:
+    - Sharpshooter
+  - name: Dead To Rights
+    ranked: false
+    tier: 2
+    specializations:
+    - Pilot
+  - name: Dead To Rights Improved
+    ranked: false
+    tier: 3
+    prereq: Dead To Rights
+    specializations:
+    - Pilot
+  - name: Deadly Accuracy
+    ranked: true
+    tier: 2
+    specializations:
+    - Sharpshooter
+  - name: Debilitating Shot
+    tier: 1
+    ranked: false
+    specializations:
+    - Gunner
+  - name: Dedication
+    ranked: true
+    tier: 5
+    specializations: []
+  - name: Defensive Driving
+    tier: 3
+    ranked: true
+    specializations:
+    - Driver
+    - Pilot
+    - Squadron Leader
+  - name: Defensive Slicing
+    ranked: true
+    tier: 2
+    specializations:
+    - Slicer
+  - name: Defensive Slicing Improved
+    ranked: false
+    tier: 4
+    prereq: Defensive Slicing
+    specializations:
+    - Slicer
+  - name: Defensive Stance
+    ranked: true
+    tier: 1
+    specializations:
+    - Infiltrator
+  - name: Disorient
+    ranked: true
+    tier: 2
+    specializations:
+    - Scout
+  - name: Dodge
+    ranked: true
+    tier: 1
+    specializations:
+    - Ambassador
+    - Medic
+    - Infiltrator
+  - name: Durable
+    ranked: true
+    tier: 1
+    specializations:
+    - Commando
+    - Gunner
+  - name: Dynamic Fire
+    ranked: false
+    tier: 5
+    specializations:
+    - Recruit
+  - name: Enduring
+    ranked: true
+    tier: 3
+    specializations:
+    - Gunner
+    - Mechanic
+    - Recruit
+  - name: Exhaust Port
+    tier: 4
+    ranked: false
+    specializations:
+    - Gunner
+  - name: Expert Tracker
+    ranked: true
+    tier: 1
+    specializations:
+    - Sharpshooter
+  - name: Familiar Suns
+    ranked: false
+    tier: 2
+    specializations:
+    - Commodore
+    - Scout
+  - name: Feral Strength
+    ranked: true
+    tier: 3
+    specializations:
+    - Commando
+  - name: Field Commander
+    ranked: true
+    tier: 2
+    specializations:
+    - Squadron Leader
+    - Tactician
+  - name: Field Commander Improved
+    ranked: false
+    tier: 4
+    prereq: Field Commander
+    specializations:
+    - Squadron Leader
+    - Tactician
+  - name: Fine Tuning
+    tier: 1
+    ranked: true
+    specializations:
+    - Driver
+    - Mechanic
+  - name: Fire Control
+    ranked: false
+    tier: 5
+    specializations:
+    - Commodore
+  - name: Forager
+    tier: 1
+    ranked: false
+    specializations:
+    - Medic
+    - Scout
+  - name: Force Of Will
+    tier: 5
+    ranked: false
+    specializations:
+    - Force Sensitive
+  - name: Force Rating
+    ranked: true
+    force_power: true
+    tier: 5
+    specializations:
+    - Force Sensitive
+  - name: Force Move
+    ranked: false
+    tier: 1
+    force_power: true
+  - name: Force Move Magnitude
+    ranked: true
+    tier: 1
+    force_power: true
+    prereq: Force Move
+  - name: Force Move Range
+    ranked: true
+    tier: 1
+    force_power: true
+    prereq: Force Move
+  - name: Force Move Strength
+    ranked: true
+    tier: 1
+    force_power: true
+    prereq: Force Move
+  - name: Force Move Control
+    ranked: true
+    tier: 1
+    force_power: true
+    prereq: Force Move
+  - name: Force Enhance
+    ranked: false
+    tier: 1
+    force_power: true
+  - name: Force Enhance Control
+    ranked: true
+    tier: 1
+    force_power: true
+    prereq: Force Enhance
+  - name: Force Enhance Range
+    ranked: true
+    tier: 1
+    force_power: true
+    prereq: Force Enhance
+  - name: Force Forsee
+    ranked: false
+    tier: 1
+    force_power: true
+  - name: Force Forsee Magnitude
+    ranked: true
+    tier: 1
+    force_power: true
+    prereq: Force Forsee
+  - name: Force Forsee Range
+    ranked: true
+    tier: 1
+    force_power: true
+    prereq: Force Forsee
+  - name: Force Forsee Strength
+    ranked: true
+    tier: 1
+    force_power: true
+    prereq: Force Forsee
+  - name: Force Forsee Control
+    ranked: true
+    tier: 1
+    force_power: true
+    prereq: Force Forsee
+  - name: Form On Me
+    ranked: false
+    tier: 4
+    specializations:
+    - Squadron Leader
+  - name: Frenzied Attack
+    ranked: true
+    tier: 1
+    specializations:
+    - Infiltrator
+  - name: Full Stop
+    tier: 3
+    ranked: false
+    specializations:
+    - Driver
+    - Squadron Leader
+  - name: Full Throttle
+    tier: 1
+    ranked: false
+    specializations:
+    - Driver
+    - Pilot
+  - name: Full Throttle Improved
+    ranked: false
+    tier: 3
+    prereq: Full Throttle
+    specializations:
+    - Driver
+    - Pilot
+  - name: Full Throttle Supreme
+    ranked: false
+    prereq: Full Throttle
+    tier: 4
+    specializations:
+    - Driver
+    - Pilot
+  - name: Galaxy Mapper
+    tier: 2
+    ranked: true
+    specializations:
+    - Commodore
+    - Pilot
+  - name: Gearhead
+    ranked: true
+    tier: 1
+    specializations:
+    - Driver
+    - Mechanic
+  - name: Greased Palms
+    ranked: true
+    tier: 2
+    specializations:
+    - Quartermaster
+  - name: Grit
+    ranked: true
+    tier: 1
+    specializations: []
+  - name: Hard Headed
+    ranked: true
+    tier: 3
+    specializations:
+    - Mechanic
+    - Saboteur
+  - name: Hard Headed Improved
+    ranked: false
+    tier: 5
+    prereq: Hard Headed
+    specializations:
+    - Mechanic
+    - Saboteur
+  - name: Heightened Awareness
+    ranked: false
+    tier: 4
+    specializations:
+    - Scout
+  - name: Heroic Fortitude
+    ranked: false
+    tier: 4
+    specializations:
+    - Commando
+    - Gunner
+  - name: Hidden Storage
+    ranked: true
+    tier: 2
+    specializations:
+    - Scientist
+  - name: Hold Together
+    ranked: false
+    tier: 4
+    specializations:
+    - Commodore
+    - Mechanic
+  - name: Incite Rebellion
+    ranked: false
+    tier: 5
+    specializations:
+    - Agitator
+  - name: Indistinguishable
+    ranked: true
+    tier: 1
+    specializations:
+    - Ambassador
+    - Force Sensitive
+  - name: Insight
+    tier: 1
+    ranked: false
+    force_power: true
+    specializations:
+    - Force Sensitive
+  - name: Inspiring Rhetoric
+    ranked: false
+    tier: 3
+    specializations:
+    - Ambassador
+  - name: Inspiring Rhetoric Improved
+    ranked: false
+    tier: 4
+    prereq: Inspiring Rhetoric
+    specializations:
+    - Ambassador
+  - name: Inspiring Rhetoric Supreme
+    ranked: false
+    prereq: Inspiring Rhetoric
+    tier: 5
+    specializations:
+    - Ambassador
+  - name: Intense Focus
+    ranked: false
+    tier: 4
+    specializations:
+    - Quartermaster
+    - Scientist
+  - name: Intense Presence
+    ranked: false
+    tier: 4
+    specializations:
+    - Ambassador
+  - name: Intimidating
+    ranked: true
+    tier: 1
+    specializations:
+    - Agitator
+  - name: Inventor
+    ranked: true
+    tier: 3
+    specializations:
+    - Scientist
+  - name: Invigorate
+    tier: 5
+    ranked: false
+    force_power: true
+    specializations:
+    - Force Sensitive
+  - name: It’s Not That Bad
+    ranked: false
+    tier: 5
+    specializations:
+    - Medic
+  - name: Jump Up
+    tier: 2
+    ranked: false
+    specializations:
+    - Infiltrator
+    - Recruit
+  - name: Jury Rigged
+    tier: 3
+    ranked: true
+    specializations:
+    - Gunner
+  - name: Kill With Kindness
+    ranked: true
+    tier: 1
+    specializations:
+    - Ambassador
+  - name: Knockdown
+    ranked: false
+    tier: 3
+    specializations:
+    - Commando
+    - Infiltrator
+  - name: Know Somebody
+    ranked: true
+    tier: 1
+    specializations:
+    - Quartermaster
+  - name: Knowledge Specialization
+    ranked: true
+    tier: 1
+    specializations:
+    - Scientist
+  - name: Known Schematic
+    ranked: false
+    tier: 2
+    specializations:
+    - Commodore
+  - name: Let's Ride
+    ranked: false
+    tier: 1
+    specializations:
+    - Pilot
+    - Scout
+    - Squadron Leader
+  - name: Lethal Blows
+    ranked: true
+    tier: 2
+    specializations:
+    - Sharpshooter
+  - name: Master Doctor
+    ranked: false
+    tier: 3
+    specializations:
+    - Medic
+  - name: Master Driver
+    ranked: false
+    tier: 5
+    specializations:
+    - Driver
+  - name: Master Grenadier
+    ranked: false
+    tier: 5
+    specializations:
+    - Saboteur
+  - name: Master Leader
+    ranked: false
+    tier: 5
+    specializations:
+    - Squadron Leader
+  - name: Master Merchant
+    ranked: false
+    tier: 2
+    specializations:
+    - Quartermaster
+  - name: Master Of Shadows
+    ranked: false
+    tier: 5
+    specializations:
+    - Infiltrator
+  - name: Master Pilot
+    ranked: false
+    tier: 5
+    specializations:
+    - Pilot
+  - name: Master Slicer
+    ranked: false
+    tier: 5
+    specializations:
+    - Slicer
+  - name: Master Starhopper
+    ranked: false
+    tier: 4
+    specializations:
+    - Commodore
+  - name: Mental Fortress
+    ranked: false
+    tier: 3
+    specializations:
+    - Scientist
+    - Slicer
+  - name: Natural Brawler
+    ranked: false
+    tier: 4
+    specializations:
+    - Infiltrator
+  - name: Natural Charmer
+    ranked: false
+    tier: 5
+    specializations:
+    - Ambassador
+  - name: Natural Doctor
+    ranked: false
+    tier: 4
+    specializations:
+    - Medic
+  - name: Natural Driver
+    ranked: false
+    tier: 4
+    specializations:
+    - Driver
+  - name: Natural Enforcer
+    ranked: false
+    tier: 4
+    specializations:
+    - Agitator
+  - name: Natural Hunter
+    ranked: false
+    tier: 3
+    specializations:
+    - Scout
+  - name: Natural Leader
+    ranked: false
+    tier: 5
+    specializations:
+    - Tactician
+  - name: Natural Marksman
+    ranked: false
+    tier: 5
+    specializations:
+    - Sharpshooter
+  - name: Natural Negotiator
+    ranked: false
+    tier: 5
+    specializations:
+    - Quartermaster
+  - name: Natural Outdoorsman
+    ranked: false
+    tier: 3
+    specializations:
+    - Commando
+    - Tactician
+  - name: Natural Pilot
+    ranked: false
+    tier: 3
+    specializations:
+    - Pilot
+  - name: Natural Programmer
+    ranked: false
+    tier: 3
+    specializations:
+    - Slicer
+  - name: Natural Rogue
+    ranked: false
+    tier: 5
+    specializations:
+    - Infiltrator
+  - name: Natural Scholar
+    ranked: false
+    tier: 4
+    specializations:
+    - Scientist
+  - name: Natural Tinkerer
+    ranked: false
+    tier: 5
+    specializations:
+    - Mechanic
+  - name: Nobody's Fool
+    ranked: true
+    tier: 1
+    specializations:
+    - Ambassador
+    - Agitator
+  - name: Outdoorsman
+    ranked: true
+    tier: 1
+    specializations:
+    - Recruit
+    - Tactician
+  - name: Overwhelm Defenses
+    tier: 3
+    ranked: true
+    specializations:
+    - Gunner
+  - name: Physical Training
+    ranked: true
+    tier: 1
+    specializations:
+    - Commando
+  - name: Plausible Deniability
+    ranked: true
+    tier: 1
+    specializations:
+    - Agitator
+  - name: Point Blank
+    ranked: true
+    tier: 1
+    specializations:
+    - Commando
+  - name: Powerful Blast
+    ranked: true
+    tier: 2
+    specializations:
+    - Saboteur
+  - name: Quick Draw
+    ranked: false
+    tier: 2
+    specializations:
+    - Recruit
+    - Tactician
+  - name: Quick Fix
+    ranked: false
+    tier: 5
+    specializations:
+    - Sharpshooter
+  - name: Quick Strike
+    ranked: true
+    tier: 1
+    specializations:
+    - Scout
+    - Squadron Leader
+  - name: Rapid Reaction
+    ranked: true
+    tier: 2
+    specializations:
+    - Driver
+    - Commodore
+  - name: Rapid Recovery
+    ranked: true
+    tier: 1
+    specializations:
+    - Pilot
+    - Saboteur
+    - Scout
+  - name: Redundant Systems
+    ranked: false
+    tier: 2
+    specializations:
+    - Mechanic
+  - name: Researcher
+    ranked: true
+    tier: 1
+    specializations:
+    - Scientist
+  - name: Resolve
+    ranked: true
+    tier: 1
+    specializations:
+    - Saboteur
+    - Slicer
+  - name: Respected Scholar
+    ranked: true
+    tier: 1
+    specializations:
+    - Scientist
+  - name: Scathing Tirade
+    ranked: false
+    tier: 3
+    specializations:
+    - Agitator
+  - name: Scathing Tirade Improved
+    ranked: false
+    tier: 4
+    prereq: Scathing Tirade
+    specializations:
+    - Agitator
+  - name: Scathing Tirade Supreme
+    ranked: false
+    prereq: Scathing Tirade
+    tier: 5
+    specializations:
+    - Agitator
+  - name: Second Wind
+    ranked: true
+    tier: 1
+    specializations:
+    - Recruit
+    - Saboteur
+  - name: Selective Detonation
+    ranked: true
+    tier: 4
+    specializations:
+    - Saboteur
+  - name: Sense Danger
+    tier: 4
+    ranked: false
+    force_power: true
+    specializations:
+    - Force Sensitive
+  - name: Shortcut
+    ranked: true
+    tier: 1
+    specializations:
+    - Scout
+  - name: Side Step
+    ranked: true
+    tier: 51
+    specializations:
+    - Tactician
+  - name: Situational Awareness
+    ranked: false
+    tier: 2
+    specializations:
+    - Squadron Leader
+  - name: Sixth Sense
+    ranked: false
+    tier: 5
+    specializations:
+    - Ambassador
+  - name: Skilled Jockey
+    ranked: true
+    tier: 1
+    specializations:
+    - Driver
+    - Pilot
+  - name: Skilled Slicer
+    ranked: false
+    tier: 5
+    specializations:
+    - Slicer
+  - name: Sleight Of Mind
+    ranked: true
+    tier: 2
+    force_power: true
+    specializations:
+    - Force Sensitive
+  - name: Smooth Talker
+    ranked: true
+    tier: 1
+    specializations:
+    - Quartermaster
+  - name: Sniper Shot
+    ranked: true
+    tier: 1
+    specializations:
+    - Sharpshooter
+  - name: Soft Spot
+    ranked: false
+    tier: 2
+    specializations:
+    - Infiltrator
+  - name: Solid Repairs
+    ranked: true
+    tier: 1
+    specializations:
+    - Commodore
+    - Mechanic
+  - name: Sound Investments
+    ranked: true
+    tier: 4
+    specializations:
+    - Quartermaster
+  - name: Spare Clip
+    tier: 2
+    ranked: false
+    specializations:
+    - Gunner
+    - Recruit
+  - name: Speak Binary
+    ranked: true
+    tier: 1
+    specializations:
+    - Scientist
+  - name: Stalker
+    ranked: true
+    tier: 1
+    specializations:
+    - Scout
+  - name: Steely Nerves
+    ranked: false
+    tier: 3
+    specializations:
+    - Ambassador
+  - name: Stim Application
+    ranked: false
+    tier: 3
+    specializations:
+    - Medic
+  - name: Stim Application Improved
+    ranked: false
+    tier: 4
+    prereq: Stim Application
+    specializations:
+    - Medic
+  - name: Stim Application Supreme
+    ranked: false
+    prereq: Stim Application
+    tier: 5
+    specializations:
+    - Medic
+  - name: Stimpack Specialization
+    ranked: true
+    tier: 1
+    specializations:
+    - Medic
+  - name: Street Smarts
+    ranked: true
+    tier: 2
+    specializations:
+    - Agitator
+  - name: Stroke Of Genius
+    ranked: false
+    tier: 4
+    specializations:
+    - Scientist
+  - name: Strong Arm
+    ranked: false
+    tier: 2
+    specializations:
+    - Commando
+  - name: Stunning Blow
+    ranked: false
+    tier: 2
+    specializations:
+    - Infiltrator
+  - name: Stunning Blow Improved
+    ranked: false
+    tier: 4
+    prereq: Stunning Blow
+    specializations:
+    - Infiltrator
+  - name: Superior Reflexes
+    ranked: false
+    tier: 5
+    specializations:
+    - Quartermaster
+  - name: Surgeon
+    ranked: true
+    tier: 1
+    specializations:
+    - Medic
+  - name: Swift
+    ranked: false
+    tier: 2
+    specializations:
+    - Tactician
+  - name: Tactical Combat Training
+    ranked: false
+    tier: 1
+    specializations:
+    - Recruit
+  - name: Targeted Blow
+    ranked: false
+    tier: 5
+    specializations:
+    - Sharpshooter
+  - name: Technical Aptitude
+    ranked: true
+    tier: 1
+    specializations:
+    - Slicer
+  - name: Time To Go
+    ranked: false
+    tier: 3
+    specializations:
+    - Saboteur
+  - name: Time To Go Improved
+    ranked: false
+    tier: 4
+    prereq: Time To Go
+    specializations:
+    - Saboteur
+  - name: Tinkerer
+    ranked: true
+    tier: 2
+    specializations:
+    - Scientist
+  - name: Touch Of Fate
+    ranked: false
+    tier: 4
+    specializations:
+    - Force Sensitive
+  - name: Toughened
+    ranked: true
+    tier: 1
+    specializations: []
+  - name: Tricky Target
+    tier: 3
+    ranked: false
+    specializations:
+    - Driver
+    - Pilot
+    - Squadron Leader
+  - name: True Aim
+    tier: 2
+    ranked: true
+    specializations:
+    - Gunner
+    - Sharpshooter
+  - name: Uncanny Reactions
+    ranked: true
+    force_power: true
+    tier: 2
+    specializations:
+    - Force Sensitive
+  - name: Uncanny Senses
+    ranked: true
+    force_power: true
+    tier: 1
+    specializations:
+    - Force Sensitive
+  - name: Unstoppable
+    ranked: false
+    tier: 5
+    specializations:
+    - Commando
+  - name: Utility Belt
+    ranked: false
+    tier: 5
+    specializations:
+    - Scientist
+    - Scout
+  - name: Vehicle Combat Training
+    ranked: false
+    tier: 2
+    specializations:
+    - Recruit
+  - name: Well Rounded
+    ranked: true
+    tier: 3
+    specializations:
+    - Medic
+  - name: Well Traveled
+    ranked: false
+    tier: 2
+    specializations:
+    - Recruit
+  - name: Wheel And Deal
+    ranked: true
+    tier: 1
+    specializations:
+    - Quartermaster
+  - name: Works Like A Charm
+    ranked: false
+    tier: 4
+    specializations:
+    - Ambassador
