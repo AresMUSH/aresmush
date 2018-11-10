@@ -3,7 +3,7 @@ if [[ $EUID == 0 ]]; then
    exit 1
 fi
 
-export ARES_INSTALL_TEXT="<\033[0;32mINSTALL\033[0m>"
+export ARES_INSTALL_TEXT="\n\n<\033[0;32mINSTALL\033[0m>"
 
 # Set up some variables we'll use throughout.
 
