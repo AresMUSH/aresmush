@@ -22,6 +22,10 @@ module AresMUSH
         @char.demographic(d)
       end
 
+      def name
+        Demographics.name_and_nickname(@char)
+      end
+      
       def age
         age = @char.age
         age == 0 ? "" : age
