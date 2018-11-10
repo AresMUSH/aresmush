@@ -14,7 +14,7 @@ Your **concept** should already be set. Your **background** will be set later. W
 
 **Archetype** is your character's **species**. This determines your starting characteristics, XP, some talents and other things, etc.
 
-We are using many species, from a multitude of books. Use `archetypes` to see a long, spammy list of available species, or visit here for a cleaner list: LINK
+We are using many species, from a multitude of books. Use `archetypes` to see a long, spammy list of available species, or visit here for a cleaner list: http://chontio.aresmush.com/wiki/species_chart
 
 **Career** is not just your job, but the heart of your character. It defines who they are and how they react to any given situation. Regardless of who Luke Skywalker became, he was an Ace, and that informs the way he handles situations. You career cannot change. Careers give access to specializations (next step) and discounts on buying certain career skills.
 
