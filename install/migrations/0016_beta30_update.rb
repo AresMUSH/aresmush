@@ -10,6 +10,13 @@ module AresMUSH
         config = DatabaseMigrator.read_config_file("demographics.yml")
         config['demographics']['shortcuts']['birthday'] = 'birthdate'
         DatabaseMigrator.write_config_file("demographics.yml", config)    
+        
+        
+        Global.logger.debug "Fixing welcome message board."
+        config = DatabaseMigrator.read_config_file("chargen.yml")
+        config['chargen']['arrivals_category'] = Global.read_config("chargen", "arrivals_board")
+        config['chargen'].delete "arrivals_board"
+        DatabaseMigrator.write_config_file("chargen.yml", config)   
       end
     end
   end
