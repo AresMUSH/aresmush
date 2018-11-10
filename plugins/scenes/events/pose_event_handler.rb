@@ -2,8 +2,8 @@ module AresMUSH
   module Scenes
     class PoseEventHandler
       def on_event(event)
-        enactor = event.enactor
-        room = event.room
+        enactor = Character[event.enactor_id]
+        room = Room[event.room_id]
         scene = room.scene
         if (scene)
           Scenes.add_to_scene(scene, event.pose, enactor, event.is_setpose, event.is_ooc)
