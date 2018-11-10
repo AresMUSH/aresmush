@@ -44,11 +44,15 @@ module AresMUSH
         elsif (command == "emit")
           pose = pose.after(" ")
         else
-          if (pose.start_with?(*PoseFormatter.pose_markers) && !pose.start_with?("\""))
+          markers = PoseFormatter.pose_markers
+          markers.delete "\""
+          markers.delete "'"
+          if (pose.start_with?(*markers))
             pose = PoseFormatter.format(enactor.name, pose)
           end
         end
         
+        pp pose
         Scenes.emit_pose(enactor, pose, is_emit, is_ooc, nil, is_setpose, scene.room)
         
         {
