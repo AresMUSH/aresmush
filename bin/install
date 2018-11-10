@@ -143,6 +143,7 @@ echo -e "${ARES_INSTALL_TEXT} Starting the game."
 
 cd "${HOME_DIR}/aresmush"
 
+bundle exec rake initmigrations
 bin/startares
 
 echo -e "${ARES_INSTALL_TEXT} Done!"
