@@ -6,7 +6,7 @@ chargen:
   approval_message: Congratulations!  Your application has been approved.  Type %xhonstage%xn
     to go forth and RP.  Please log in via the web portal (http://chontio.aresmush.com)
     and set up your web profile.
-  arrivals_board: New Arrivals
+  arrivals_category: New Arrivals
   bg_blurb: 'You don''t need to write a novel. Just cover the basics: who you are,
     why are you here, and is there anything noteworthy about you. Be sure to explain
     any unusual skills.'
@@ -69,4 +69,4 @@ chargen:
       help: idle_out
     review:
       help: apps
-  welcome_message: Please welcome %{name}, our latest %{position} to be approved!
+  welcome_message: Please welcome %{name}, our newest approval!

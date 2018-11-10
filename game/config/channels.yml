@@ -1,5 +1,12 @@
 ---
 channels:
+  approved_channels:
+  - RP Requests
+  clear_history_cron:
+    hour:
+    - 4
+    minute:
+    - 47
   default_channels:
   - Questions
   - Chat
@@ -21,8 +28,3 @@ channels:
     comtitle: channel/title
     channel/name: channel/rename
   start_marker: "<"
-  clear_history_cron:
-    hour:
-    - 4
-    minute:
-    - 47
