@@ -125,6 +125,7 @@ class MarkdownFormatter
   end
   
   def to_mush(markdown)
+    return "" if !markdown
     @engine.render markdown
   end
 end

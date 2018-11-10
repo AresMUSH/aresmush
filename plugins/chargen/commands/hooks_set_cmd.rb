@@ -19,7 +19,7 @@ module AresMUSH
       end
       
       def required_args
-        [ self.target, self.hooks ]
+        [ self.target ]
       end
       
       def handle
