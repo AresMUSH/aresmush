@@ -52,7 +52,7 @@ module AresMUSH
           return HooksEditCmd
         when "set"
           return HooksSetCmd
-        else
+        when nil
           return HooksViewCmd
         end
       end
