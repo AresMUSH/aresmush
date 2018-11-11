@@ -20,6 +20,8 @@ module AresMUSH
       
       def do_activity_cron
         
+        Global.logger.debug "Recording game activity."
+        
         game = Game.master
 
         activity = game.login_activity || {}
@@ -46,6 +48,8 @@ module AresMUSH
       end
       
       def do_blacklist_cron
+        Global.logger.debug "Updating game blacklist."
+
         Global.dispatcher.spawn("Updating rhost blacklist", nil) do
           Login.update_blacklist
         end

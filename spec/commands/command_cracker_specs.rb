@@ -80,7 +80,7 @@ module AresMUSH
         expect(cracked[:args]).to eq nil        
       end
       
-      it "should be able to crack a root with page after the switch xxx" do
+      it "should be able to crack a root with page after the switch" do
         cracked = CommandCracker.crack("test/sw2")
         expect(cracked[:prefix]).to eq nil
         expect(cracked[:root]).to eq "test"

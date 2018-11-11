@@ -15,6 +15,7 @@ module AresMUSH
         it "should emit to the room" do
           room = double
           allow(@client).to receive(:room) { room }
+          allow(Places).to receive(:reset_place_if_moved)
           allow(@handler).to receive(:message) { "a message" }
           expect(Scenes).to receive(:emit_pose).with(@enactor, "a message", false, false)
           @handler.handle

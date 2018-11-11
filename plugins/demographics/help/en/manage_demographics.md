@@ -14,7 +14,7 @@ You can set any of the basic character demographics (fullname, gender, etc.) on 
 
 Use the special birthday command to set someone else's age or birthdate.
 
-`birthday <name>=<birthdate>`
+`birthdate <name>=<birthdate>`
 
 ## Setting Actor
 
