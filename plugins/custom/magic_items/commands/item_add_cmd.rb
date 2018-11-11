@@ -33,7 +33,7 @@ module AresMUSH
 
         MagicItems.create(name: self.item_name, character: self.target, desc: desc, weapon_specials: weapon_specials, armor_specials: armor_specials, spell: spell, item_spell_mod: spell_mod)
 
-        client.emit_success t('custom.added_item', :item => name, :target => target.name)
+        client.emit_success t('custom.added_item', :item => self.item_name, :target => target.name)
 
         message = t('custom.given_magic_item', :name => enactor.name, :item => self.item_name)
         client.emit_success message
