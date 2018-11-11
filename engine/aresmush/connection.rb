@@ -46,7 +46,12 @@ module AresMUSH
       end
     end
     
-    def send_formatted(msg, enable_fansi = true)
+    def send_formatted(msg, enable_fansi = true, ascii_mode = false)
+      if (ascii_mode)
+        msg = msg.gsub(/[\u201c\u201d]/, '"')
+                 .gsub(/[\u2018\u2019]/, "'")
+                 .encode("ASCII", invalid: :replace, undef: :replace, replace: '?')
+      end
       send_data MushFormatter.format(msg, enable_fansi)
     end
     
