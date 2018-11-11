@@ -34,7 +34,7 @@ module AresMUSH
           allow(@char).to receive(:handle) { @handle }
           allow(@char).to receive(:name) { "Bob" }
           allow(@char).to receive(:id) { 111 }
-          response = { "status" => "success", "data" => { "linked" => true, "autospace" => "x", "timezone" => "t", "friends" => "f", "quote_color" => "q", "page_color" => "pc", "page_autospace" => "ps" }}
+          response = { "status" => "success", "data" => { "linked" => true, "autospace" => "x", "timezone" => "t", "friends" => "f", "quote_color" => "q", "page_color" => "pc", "page_autospace" => "ps", "ascii_only" => true }}
           
           
           expect(@connector).to receive(:sync_handle).with(123, "Bob", 111) { AresCentral::AresResponse.new(response) }  
@@ -43,6 +43,7 @@ module AresMUSH
           expect(@char).to receive(:update).with({:page_autospace => "ps"})
           expect(@char).to receive(:update).with({:page_color => "pc"})
           expect(@char).to receive(:update).with({:timezone => "t"})
+          expect(@char).to receive(:update).with(ascii_mode_enabled: true)
           expect(@handle).to receive(:update).with(friends: "f")
           expect(@client).to receive(:emit_success).with("arescentral.handle_synced")
           @handler.on_event(@event)
