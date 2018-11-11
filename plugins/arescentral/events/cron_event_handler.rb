@@ -7,7 +7,7 @@ module AresMUSH
         
         Global.logger.debug "Updating game info with AresCentral."
 
-        Global.dispatcher.spawn("Updating game info with AresCentral", client) do        
+        Global.dispatcher.spawn("Updating game info with AresCentral", nil) do        
           if (AresCentral.is_registered?)
             AresCentral.update_game
           elsif (AresCentral.is_public_game?)
