@@ -118,7 +118,6 @@ module AresMUSH
     def on_web_request(request)
       handled = false
       AresMUSH.with_error_handling(nil, "Web Request") do
-        Global.logger.debug "Web Request: #{request.cmd} by #{request.auth[:id]}"
         Global.plugin_manager.plugins.each do |p|
           next if !p.respond_to?(:get_web_request_handler)
           handler_class = p.get_web_request_handler(request)
