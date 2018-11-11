@@ -16,6 +16,8 @@ en:
         colors_title: "ANSI Colors"
         x_or_c: "See 'help ansi' for help using colors."
         fansi_set: "FANSI extended color support is now %{option}."
+    ascii:
+        ascii_mode_set: "ASCII-only mode is now %{option}."
     utils:
         no_set_cmd: "AresMUSH has no set command.  There are individual commands to set various things.  Try searching the help files with `help <topic>` or ask for help."
     dice:

@@ -83,6 +83,9 @@ module AresMUSH
     end
     
     def self.pose_to_channel(channel, name, msg, title)
+      if (msg.start_with?("\\"))
+        msg = msg.gsub(/\\+/, '')
+      end
       formatted_msg = PoseFormatter.format(name, msg)
       Channels.emit_to_channel channel, formatted_msg, title
       return formatted_msg

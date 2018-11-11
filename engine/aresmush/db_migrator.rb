@@ -22,6 +22,23 @@ module AresMUSH
       end
     end
     
+    def init_migrations
+      applied_migrations = self.read_applied_migrations
+      
+      self.available_migrations.each do |file|
+        migration_name = File.basename(file, ".rb")
+        if !applied_migrations.include?(migration_name)
+          applied_migrations << migration_name
+        end
+      end
+      
+      File.open(self.applied_migrations_path, 'w') do |file|
+        file.write applied_migrations.join("\n")
+      end
+      
+      Global.logger.info "Applying initial migrations."
+    end
+    
     def migrate(mode)
       self.messages = []
       applied_migrations = self.read_applied_migrations

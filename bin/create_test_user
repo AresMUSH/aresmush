@@ -1,0 +1,19 @@
+export ARES_INSTALL_TEXT="<\033[0;32mINSTALL\033[0m>"
+
+echo -e "${ARES_INSTALL_TEXT} Create an ares test user"
+
+export ARES_USERNAME="arestest”
+
+sudo adduser --disabled-password --gecos "" ${ARES_USERNAME}
+
+# Give them a temporary password
+
+PASSWD=$(openssl rand 1000 | strings | grep -io [[:alnum:]] | head -n 16 | tr -d '\n')
+ENCRYPTEDPW=$(openssl passwd -1 "$PASSWD")
+sudo usermod -p "$ENCRYPTEDPW" ${ARES_USERNAME}
+
+# Add them to groups
+
+sudo usermod -a -G sudo,www,redis,rvm ${ARES_USERNAME}
+
+echo -e "${ARES_INSTALL_TEXT} User ${ARES_USERNAME} created with password $PASSWD"
