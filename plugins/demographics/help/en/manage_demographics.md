@@ -10,7 +10,7 @@ You can set any of the basic character demographics (fullname, gender, etc.) on 
 
 `demographic <name>=<field>/<value>`
 
-`birthday <name>=<birthdate>`
+`birthdate <name>=<birthdate>`
 
 `actor <name>=<actor name>`
 

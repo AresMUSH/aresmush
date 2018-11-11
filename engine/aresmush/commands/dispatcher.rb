@@ -85,7 +85,7 @@ module AresMUSH
           end # with error handling
         end # each
         if (!@handled)
-          trimmed_cmd = (cmd.raw || "")[0,10]
+          trimmed_cmd = (cmd.raw || "")[0,20]
           client.emit_ooc t('dispatcher.huh', :command => trimmed_cmd)
         end
       end # with error handling
@@ -118,7 +118,6 @@ module AresMUSH
     def on_web_request(request)
       handled = false
       AresMUSH.with_error_handling(nil, "Web Request") do
-        Global.logger.debug "Web Request: #{request.cmd} by #{request.auth[:id]}"
         Global.plugin_manager.plugins.each do |p|
           next if !p.respond_to?(:get_web_request_handler)
           handler_class = p.get_web_request_handler(request)

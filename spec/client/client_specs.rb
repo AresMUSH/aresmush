@@ -29,35 +29,46 @@ module AresMUSH
         @client.char_id = 5
         allow(@client).to receive(:char) { char }
         allow(char).to receive(:fansi_on) { true }
-        expect(@connection).to receive(:send_formatted).with("Hi", true)
+        allow(char).to receive(:ascii_mode_enabled) { false }
+        expect(@connection).to receive(:send_formatted).with("Hi", true, false)
+        @client.emit "Hi"
+      end
+      
+      it "should send the message to the connection with ASCII enabled if char has it turned on" do
+        char = double
+        @client.char_id = 5
+        allow(@client).to receive(:char) { char }
+        allow(char).to receive(:fansi_on) { false }
+        allow(char).to receive(:ascii_mode_enabled) { true }
+        expect(@connection).to receive(:send_formatted).with("Hi", false, true)
         @client.emit "Hi"
       end
     end
         
     describe :emit do
       it "should send the message to the connection" do
-        expect(@connection).to receive(:send_formatted).with("Hi", false)
+        expect(@connection).to receive(:send_formatted).with("Hi", false, false)
         @client.emit "Hi"
       end
     end
 
     describe :emit_ooc do
       it "should send the message with yellow ansi tags and %% prefix" do
-        expect(@connection).to receive(:send_formatted).with("%xc%% OOC%xn", false)
+        expect(@connection).to receive(:send_formatted).with("%xc%% OOC%xn", false, false)
         @client.emit_ooc "OOC"
       end
     end    
     
     describe :emit_success do
       it "should send the message with green ansi tags and %% prefix" do
-        expect(@connection).to receive(:send_formatted).with("%xg%% Yay%xn", false)
+        expect(@connection).to receive(:send_formatted).with("%xg%% Yay%xn", false, false)
         @client.emit_success "Yay"
       end
     end
 
     describe :emit_failure do
       it "sends the message with green ansi tags and %% prefix" do
-        expect(@connection).to receive(:send_formatted).with("%xr%% Boo%xn", false)
+        expect(@connection).to receive(:send_formatted).with("%xr%% Boo%xn", false, false)
         @client.emit_failure "Boo"
       end
     end
@@ -147,20 +158,20 @@ module AresMUSH
       it "should resolve the IP address" do
         expect(@client.hostname).to eq "fake host"
       end
-   end 
+    end 
    
-   describe :char do
-     it "should look up the char if there is one" do
-       @client.char_id = 15
-       found_char = double
-       allow(Character).to receive(:[]).with(15) { found_char }
-       expect(@client.char).to eq found_char
-     end
+    describe :char do
+      it "should look up the char if there is one" do
+        @client.char_id = 15
+        found_char = double
+        allow(Character).to receive(:[]).with(15) { found_char }
+        expect(@client.char).to eq found_char
+      end
      
-     it "should return nil if not logged in" do
-       @client.char_id = nil
-       expect(@client.char).to eq nil
-     end
-   end
+      it "should return nil if not logged in" do
+        @client.char_id = nil
+        expect(@client.char).to eq nil
+      end
+    end
   end
 end
