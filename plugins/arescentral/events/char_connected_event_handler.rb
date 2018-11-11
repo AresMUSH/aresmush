@@ -25,6 +25,7 @@ module AresMUSH
                 char.update(page_color: response.data["page_color"])
                 char.update(pose_autospace: response.data["autospace"])
                 char.update(timezone: response.data["timezone"])
+                char.update(ascii_mode_enabled: response.data["ascii_only"])
                 char.handle.update(friends: response.data["friends"])
                 event.client.emit_success t('arescentral.handle_synced')              
               else

@@ -49,18 +49,18 @@ end
 task :dumpdb do
   minimal_boot
   AresMUSH::Channel.all.each do |c|
-    puts c.inspect
+    puts c.print_json
   end
   
   AresMUSH::Character.all.each do |c|
-    puts c.inspect
+    puts c.print_json
   end
 
   AresMUSH::Room.all.each do |c|
-    puts c.inspect
+    puts c.print_json
   end
   
-  puts AresMUSH::Game[1].inspect
+  puts AresMUSH::Game[1].print_json
 end
 
 task :init do    
@@ -79,6 +79,12 @@ task :migrate do
   minimal_boot
   migrator = AresMUSH::DatabaseMigrator.new
   migrator.migrate(:offline)
+end
+
+task :initmigrations do
+  minimal_boot
+  migrator = AresMUSH::DatabaseMigrator.new
+  migrator.init_migrations
 end
 
 desc "Run all specs."

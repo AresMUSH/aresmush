@@ -10,6 +10,7 @@ module AresMUSH
       end
       
       def handle        
+        Places.reset_place_if_moved(enactor)
         Scenes.emit_setpose(enactor, self.pose)
       end
       

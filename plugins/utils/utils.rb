@@ -14,6 +14,8 @@ module AresMUSH
  
     def self.get_cmd_handler(client, cmd, enactor)
       case cmd.root
+      when "ascii"
+        return AsciiCmd
       when "beep"
         return BeepCmd
       when "colors"

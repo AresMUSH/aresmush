@@ -153,7 +153,11 @@ module AresMUSH
       Achievements.award_achievement(model, "created_character", 'story', "Created a character.")
       
       welcome_message = Global.read_config("chargen", "welcome_message")
-      post_body = welcome_message % { :name => model.name, :position => model.group("Position") }
+      welcome_message_args = { name: model.name }
+      Demographics.all_groups.keys.each do |k|
+        welcome_message_args[k.downcase.to_sym] = model.group(k)
+      end
+      post_body = welcome_message % welcome_message_args
       
       Forum.system_post(
         Global.read_config("chargen", "arrivals_category"),
