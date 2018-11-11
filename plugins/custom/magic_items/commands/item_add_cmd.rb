@@ -35,7 +35,7 @@ module AresMUSH
 
         client.emit_success t('custom.added_item', :item => name, :target => target.name)
 
-        message = t('custom.given_magic_item', :name => enactor.name, :item => name)
+        message = t('custom.given_magic_item', :name => enactor.name, :item => self.item_name)
         client.emit_success message
         Mail.send_mail([target.name], t('custom.given_magic_item_subj', :item => self.item_name), message, nil)
 
