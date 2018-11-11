@@ -3,6 +3,7 @@ module AresMUSH
     attribute :utils_edit_prefix, :default => "FugueEdit >"
     attribute :utils_saved_text, :type => DataType::Array
     attribute :notes, :type => DataType::Hash, :default => {}
+    attribute :ascii_mode_enabled, :type => DataType::Boolean, :default => false
     
     def notes_section(section)
       self.notes[section] || {}

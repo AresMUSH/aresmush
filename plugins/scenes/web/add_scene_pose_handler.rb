@@ -52,7 +52,6 @@ module AresMUSH
           end
         end
         
-        pp pose
         Scenes.emit_pose(enactor, pose, is_emit, is_ooc, nil, is_setpose, scene.room)
         
         {
