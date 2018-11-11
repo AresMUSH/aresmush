@@ -10,7 +10,7 @@ module AresMUSH
         args = cmd.parse_args(ArgParser.arg1_equals_arg2)
         self.target = Character.find_one_by_name(args.arg1)
         self.item_name = titlecase_arg(args.arg2)
-
+        self.item = Custom.find_item(target, item_name)
       end
 
 
