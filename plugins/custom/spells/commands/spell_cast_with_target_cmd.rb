@@ -59,7 +59,14 @@ module AresMUSH
         # multi_target = Global.read_config("spells", self.spell, "multi_target")
         # return t('custom.needs_multi_target') if multi_target
         is_res = Global.read_config("spells", self.spell, "is_res")
-        return t('custom.not_dead', :target => target.name) if (is_res && !target.dead)
+        target_names = target_name.split(" ").map { |n| InputFormatter.titlecase_arg(n) }
+        target_names.each do |name|
+          target = enactor.combat.find_combatant(name)
+          return t('fs3combat.not_in_combat', :name => name) if !target
+          return t('custom.not_dead', :target => target.name) if (is_res && !target.associated_model.dead)
+          return t('custom.not_ko', :target => target.name) if !target.is_ko
+        end
+
         return t('custom.caster_should_not_equal_target') if (self.caster.combat && self.caster_combat == self.target_combat)
 
         return nil
@@ -110,122 +117,10 @@ module AresMUSH
                   FS3Combat.set_action(client, enactor, enactor.combat, caster_combat, FS3Combat::AttackAction, target_name)
                 end
               end
-            elsif is_revive
-            #Revive
-              if (!self.target_combat.is_ko)
-                    client.emit_failure t('custom.not_ko', :target => self.target.name)
-              else
-                FS3Combat.set_action(client, enactor, enactor.combat, caster_combat, FS3Combat::SpellTargetAction, self.action_args)
-              end
             else
               FS3Combat.set_action(client, enactor, enactor.combat, caster_combat, FS3Combat::SpellTargetAction, self.action_args)
             end
 
-
-            # #Roll spell successes
-            # succeeds = Custom.roll_combat_spell_success(self.caster_combat, self.spell)
-
-            #Roll Spell in Combat
-            # if roll == true
-            #   FS3Combat.set_action(client, enactor, enactor.combat, caster_combat, FS3Combat::SpellTargetAction, self.action_args)
-            # end
-
-            #Inflict damage
-            # if damage_inflicted
-            #   FS3Combat.set_action(client, enactor, enactor.combat, caster_combat, FS3Combat::SpellTargetAction, self.action_args)
-            # end
-
-            #Healing
-            # if heal_points
-            #   FS3Combat.set_action(client, enactor, enactor.combat, caster_combat, FS3Combat::SpellTargetAction, self.action_args)
-            # end
-
-
-
-            #Resurrect
-            # if is_res
-            #   FS3Combat.set_action(client, enactor, enactor.combat, caster_combat, FS3Combat::SpellTargetAction, self.action_args)
-            # end
-
-            #Set Mods
-            # if (lethal_mod || defense_mod || attack_mod || spell_mod)
-            #   FS3Combat.set_action(client, enactor, enactor.combat, caster_combat, FS3Combat::SpellTargetAction, self.action_args)
-            # end
-
-            # #Set defense mod
-            # if defense_mod
-            #   if succeeds == "%xgSUCCEEDS%xn"
-            #     Custom.cast_defense_mod_with_target(self.caster, self.target_combat, self.spell)
-            #   else
-            #     FS3Combat.emit_to_combat self.caster.combat, t('custom.casts_spell', :name => self.caster.name, :spell => spell, :succeeds => succeeds)
-            #   end
-            # end
-            #
-            # #Set attack mod
-            # if attack_mod
-            #   if succeeds == "%xgSUCCEEDS%xn"
-            #     Custom.cast_attack_mod_with_target(self.caster, self.target_combat, self.spell)
-            #   else
-            #     FS3Combat.emit_to_combat self.caster.combat, t('custom.casts_spell', :name => self.caster.name, :spell => spell, :succeeds => succeeds), nil, true
-            #   end
-            # end
-            #
-            # #Set spell mod
-            # if spell_mod
-            #   if succeeds == "%xgSUCCEEDS%xn"
-            #     Custom.cast_spell_mod_with_target(self.caster, self.target_combat, self.spell)
-            #   else
-            #     FS3Combat.emit_to_combat self.caster.combat, t('custom.casts_spell', :name => self.caster.name, :spell => spell, :succeeds => succeeds), nil, true
-            #   end
-            # end
-
-            #Change stance
-            # if stance
-            #   FS3Combat.set_action(client, enactor, enactor.combat, caster_combat, FS3Combat::SpellTargetAction, self.action_args)
-            # end
-
-            # #Equip Armor
-            # if armor
-            #   if succeeds == "%xgSUCCEEDS%xn"
-            #     Custom.cast_equip_armor_with_target(enactor, self.caster_combat, self.target_combat, self.spell)
-            #   else
-            #     FS3Combat.emit_to_combat self.caster.combat, t('custom.casts_spell', :name => self.caster.name, :spell => spell, :succeeds => succeeds), nil, true
-            #   end
-            #
-            # end
-
-            # #Equip Armor Specials
-            # if armor_specials
-            #   if succeeds == "%xgSUCCEEDS%xn"
-            #     FS3Combat.emit_to_combat self.caster.combat, t('custom.casts_spell', :name => self.caster.name, :spell => spell, :succeeds => succeeds), nil, true
-            #     Custom.cast_equip_armor_specials_with_target(enactor, self.caster_combat, self.target_combat, self.spell)
-            #   else
-            #     FS3Combat.emit_to_combat self.caster.combat, t('custom.casts_spell', :name => self.caster.name, :spell => spell, :succeeds => succeeds), nil, true
-            #   end
-            # end
-
-            #Equip Gear without attack
-            # if (!fs3_attack && (weapon || weapon_specials || armor || armor_specials))
-            #   FS3Combat.set_action(client, self.caster_combat, self.caster.combat, self.caster_combat, FS3Combat::SpellTargetAction, self.action_args)
-            # end
-
-
-
-
-
-            # #Equip Weapon Specials
-            # if weapon_specials
-            #   if succeeds == "%xgSUCCEEDS%xn"
-            #     FS3Combat.emit_to_combat self.caster.combat, t('custom.casts_spell', :name => self.caster.name, :spell => spell, :succeeds => succeeds), nil, true
-            #     Custom.cast_equip_weapon_specials_with_target(enactor, self.caster_combat, self.target_combat, self.spell)
-            #   else
-            #     FS3Combat.emit_to_combat self.caster.combat, t('custom.casts_spell', :name => self.caster.name, :spell => spell, :succeeds => succeeds), nil, true
-            #   end
-            # end
-
-            # For some reason, both of these break setting weapons and armor. I have no idea why.
-
-            # self.caster_combat.update(has_cast: true)
 
           end
 
