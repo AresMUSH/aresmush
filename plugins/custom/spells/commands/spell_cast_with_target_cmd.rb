@@ -59,13 +59,19 @@ module AresMUSH
         # multi_target = Global.read_config("spells", self.spell, "multi_target")
         # return t('custom.needs_multi_target') if multi_target
         is_res = Global.read_config("spells", self.spell, "is_res")
+        is_revive = Global.read_config("spells", self.spell, "is_revive")
         target_names = target_name.split(" ").map { |n| InputFormatter.titlecase_arg(n) }
         target_names.each do |name|
           target = enactor.combat.find_combatant(name)
           return t('fs3combat.not_in_combat', :name => name) if !target
           return t('custom.not_dead', :target => target.name) if (is_res && !target.associated_model.dead)
-          return t('custom.not_ko', :target => target.name) if !target.is_ko
+          return t('custom.not_ko', :target => target.name) if (is_revive && !target.is_ko)
         end
+
+        weapon = Global.read_config("spells", self.spell, "weapon")
+        return t('fs3combat.invalid_weapon') if (weapon && !FS3Combat.weapon(weapon))
+        armor = Global.read_config("spells", self.spell, "armor")
+        return t('fs3combat.invalid_armor') if (armor && !FS3Combat.armor(armor))
 
         return t('custom.caster_should_not_equal_target') if (self.caster.combat && self.caster_combat == self.target_combat)
 
@@ -78,8 +84,8 @@ module AresMUSH
         # damage_desc = Global.read_config("spells", self.spell, "damage_desc")
         # damage_inflicted = Global.read_config("spells", self.spell, "damage_inflicted")
         heal_points = Global.read_config("spells", self.spell, "heal_points")
-        is_revive = Global.read_config("spells", self.spell, "is_revive")
-        is_res = Global.read_config("spells", self.spell, "is_res")
+        # is_revive = Global.read_config("spells", self.spell, "is_revive")
+        # is_res = Global.read_config("spells", self.spell, "is_res")
         # lethal_mod = Global.read_config("spells", self.spell, "lethal_mod")
         # attack_mod = Global.read_config("spells", self.spell, "attack_mod")
         # defense_mod = Global.read_config("spells", self.spell, "defense_mod")
