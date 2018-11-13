@@ -46,6 +46,7 @@ module AresMUSH
           #Healing
           if heal_points
             wound = FS3Combat.worst_treatable_wound(target.associated_model)
+            target.update(death_count: 0  )
             if (wound)
               FS3Combat.heal(wound, heal_points)
               messages.concat [t('custom.potion_heal_target', :name => self.name, :potion => self.spell, :points => heal_points, :target => print_target_names)]
