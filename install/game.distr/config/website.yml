@@ -1,20 +1,123 @@
 ---
 website:
+  allow_html_in_markdown: true
+  character_gallery_group: Faction
+  character_gallery_subgroup: Position
+  left_sidebar: false
+  max_upload_size_kb: 5000
+  portal_requires_registration: false
+  restricted_pages:
+  - home
   sitemap_update_cron:
     hour:
     - 2
     minute:
     - 17
-  allow_html_in_markdown: true
-  max_upload_size_kb: 5000
-  character_gallery_group: Faction
-  character_gallery_subgroup: Position
-  portal_requires_registration: false
-  website_code_path: "/home/ares/ares-webportal"
-  left_sidebar: false
-  wiki_nav:
-  - Home
+  top_navbar:
+  - menu:
+    - page: chargen
+      title: Create a Character
+    - page: roster
+      title: Pre-Made Characters
+    - page: who
+      title: Who's Online
+    - divider: true
+    - page: scenes-live
+      title: Active Scenes
+    - page: scene-create
+      title: Start New Scene
+    - divider: true
+    - page: play
+      title: Play via Web Client
+    title: Play
+  - title: Story
+    menu:
+    - page: characters
+      title: Characters
+    - page: scenes
+      title: Scenes
+    - page: plots
+      title: Plots
+  - title: Community
+    menu:
+    - page: chat
+      title: Chat
+    - page: forum
+      title: Forum
+    - page: events
+      title: Events
+    - page: players
+      title: Players
+  - title: Directory
+    menu:
+    - page: characters
+      title: Characters
+    - page: census
+      title: Census
+    - page: actors
+      title: Actors
+    - page: roster
+      title: Roster
+    - divider: true
+    - page: scenes
+      title: Scenes
+    - page: plots
+      title: Plots
+    - page: locations
+      title: Locations
+    - page: combats
+      title: Combats
+    - divider: true
+    - page: files
+      title: Files
+  - title: FS3
+    menu:
+    - page: fs3skills-abilities
+      title: Abilities List
+    - page: fs3combat-gear
+      title: Gear List
+    - divider: true
+    - target: blank
+      title: Player's Guide <i class="fa fa-external-link-alt" aria-hidden="true">
+      url: http://aresmush.com/fs3/fs3-3
+    - target: blank
+      title: Combat Quick Reference <i class="fa fa-external-link-alt" aria-hidden="true">
+      url: http://aresmush.com/fs3/fs3-3/combat-quickref
+    - target: blank
+      title: Interactive Combat Walkthrough <i class="fa fa-external-link-alt" aria-hidden="true">
+      url: http://aresmush.com/fs3/fs3-3/combat-walkthrough
+  - title: Wiki
+    menu:
+    - page: wiki
+      title: Home
+    - divider: true
+    - page: wiki-create
+      title: Create New Page
+    - page: wiki-all
+      title: All Pages
+    - page: wiki-tags
+      title: Tags
+    - page: recent-changes
+      title: Recent Changes
+    - divider: true
+    - page: files
+      title: Files
+    - page: help-topic
+      id: markdown
+      title: Markdown Reference
+  - title: Help
+    menu:
+    - page: help
+      title: Game Help
+    - page: help-topic
+      id: markdown
+      title: Markdown Reference
+    - divider: true
+    - target: blank
+      title: MUSH 101 Tutorial <i class="fa fa-external-link-alt" aria-hidden="true">
+      url: https://aresmush.com/mush-101/
+    - page: jobs
+      title: Requests
+  website_code_path: "/Users/lynn/Code/ares-webportal"
   wiki_aliases:
     main: home
-  restricted_pages:
-  - home
