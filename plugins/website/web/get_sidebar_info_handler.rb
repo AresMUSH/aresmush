@@ -6,17 +6,17 @@ module AresMUSH
         
         error = Website.check_login(request, true)
         return error if error
-                
-        wiki_nav = []
-        nav_list = Global.read_config('website', 'wiki_nav') || [ "Home" ]
-        nav_list.each do |page_name|
-          page = WikiPage.find_one_by_name(WikiPage.sanitize_page_name(page_name))
-          if (page)
-            wiki_nav << { url: page.name, heading: page.heading }
+        
+        if (enactor)
+          if (Jobs.can_access_jobs?(enactor))
+            job_activity = enactor.unread_jobs.count
           else
-            Global.logger.warn "Can't find wiki page #{page_name}."
+            job_activity = enactor.unread_requests.count
           end
+        else
+          job_activity = nil
         end
+        
         {
           timestamp: Time.now.getutc,
           game: GetGameInfoRequestHandler.new.handle(request),
@@ -29,7 +29,8 @@ module AresMUSH
           left_sidebar: Global.read_config('website', 'left_sidebar'),
           top_navbar: Global.read_config('website', 'top_navbar'),
           registration_required: Global.read_config("website", "portal_requires_registration"),
-          wiki_nav: wiki_nav
+          job_activity: job_activity,
+          jobs_admin: Jobs.can_access_jobs?(enactor)
         }
       end
     end
