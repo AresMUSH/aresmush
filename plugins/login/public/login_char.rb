@@ -41,7 +41,11 @@ module AresMUSH
     end
     
     def is_valid_api_token?(token)
-      return self.login_api_token == token && self.login_api_token_expiry > Time.now
+      return self.login_api_token == token && !self.login_token_expired?
+    end
+    
+    def login_token_expired?
+      self.login_api_token_expiry < Time.now
     end
     
     def set_login_token
