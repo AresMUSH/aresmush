@@ -2,6 +2,7 @@ module AresMUSH
   module Jobs    
       
     def self.can_access_jobs?(actor)
+      return false if !actor
       actor.has_permission?("access_jobs")
     end
     
@@ -77,10 +78,12 @@ module AresMUSH
         return
       end
       
-      if (!Jobs.can_access_category?(char, job.category))
-        client.emit_failure t('jobs.cant_access_category')
+      error = Jobs.check_job_access(char, job)
+      if (error)
+        client.emit_failure error
         return
       end
+      
       yield job
     end
     
@@ -106,6 +109,26 @@ module AresMUSH
         notification = t('jobs.responded_to_job', :name => author.name, :number => job.id, :title => job.title)
         Jobs.notify(job, notification, author)
       end
+    end
+    
+    def self.can_access_job?(enactor, job)
+      !Jobs.check_job_access(enactor, job)
+    end
+    
+    def self.check_job_access(enactor, job, allow_author = false)
+      if (allow_author)
+        return nil if enactor == job.author
+      end
+      return t('dispatcher.not_allowed') if !Jobs.can_access_jobs?(enactor)
+      return t('jobs.cant_access_category') if !Jobs.can_access_category?(enactor, job.category)
+      return nil
+    end
+          
+    def self.assign(job, assignee, enactor)
+      job.update(assigned_to: assignee)
+      job.update(status: "OPEN")
+      notification = t('jobs.job_assigned', :number => job.id, :title => job.title, :assigner => enactor.name, :assignee => assignee.name)
+      Jobs.notify(job, notification, enactor)
     end
     
     def self.mark_read(job, char)      

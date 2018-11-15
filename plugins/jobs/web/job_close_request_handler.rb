@@ -12,10 +12,10 @@ module AresMUSH
           return { error: t('webportal.not_found') }
         end
         
-        if (job.author != enactor)
-          if (!enactor.is_admin?)
-            return { error: t('dispatcher.not_allowed') }
-          end
+        # Authors can close their own jobs.
+        error = Jobs.check_job_access(enactor, job, true)
+        if (error)
+          return { error: error }
         end
         
         Jobs.close_job(enactor, job)
