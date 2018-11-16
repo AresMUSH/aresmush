@@ -32,7 +32,7 @@ GEM
       http_parser.rb (~> 0.6.0)
     erubis (2.7.0)
     eventmachine (1.2.5)
-    ffi (1.9.23)
+    ffi (1.9.25)
     handlebars (0.8.0)
       handlebars-source (~> 4.0.5)
       therubyracer (~> 0.12.1)
@@ -64,9 +64,6 @@ GEM
     rack-protection (2.0.1)
       rack
     rake (12.3.0)
-    rb-fsevent (0.10.3)
-    rb-inotify (0.9.10)
-      ffi (>= 0.5.0, < 2)
     redcarpet (3.4.0)
     redic (1.5.0)
       hiredis
@@ -91,11 +88,9 @@ GEM
       rspec-support (~> 3.7.0)
     rspec-support (3.7.1)
     rubyzip (1.2.2)
-    sass (3.5.5)
-      sass-listen (~> 4.0.0)
-    sass-listen (4.0.0)
-      rb-fsevent (~> 0.9, >= 0.9.4)
-      rb-inotify (~> 0.9, >= 0.9.7)
+    sassc (2.0.0)
+      ffi (~> 1.9.6)
+      rake
     sinatra (2.0.1)
       mustermann (~> 1.0)
       rack (~> 2.0)
@@ -155,7 +150,7 @@ DEPENDENCIES
   redis-rack (~> 2.0.4)
   rspec (~> 3.7.0)
   rubyzip (~> 1.2.2)
-  sass (~> 3.5.5)
+  sassc (~> 2.0.0)
   sinatra (~> 2.0.1)
   sinatra-cross_origin (~> 0.4.0)
   sinatra-flash (~> 0.3.0)
@@ -164,4 +159,4 @@ DEPENDENCIES
   timezone (~> 1.2.10)
 
 BUNDLED WITH
-   1.16.1
+   1.16.3

@@ -32,7 +32,7 @@ require 'sinatra/reloader'
 require 'thin'
 require 'rubygems'
 require 'zip'
-require 'sass'
+require 'sassc'
 
 module AresMUSH
     
