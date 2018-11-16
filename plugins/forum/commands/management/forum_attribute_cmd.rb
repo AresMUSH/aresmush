@@ -61,7 +61,7 @@ module AresMUSH
     
       def handle
         Forum.with_a_category(name, client, enactor) do |category|        
-          category.update(name: self.attribute)
+          category.update(name: titlecase_arg(self.attribute))
           client.emit_success t('forum.category_renamed')
         end
       end
