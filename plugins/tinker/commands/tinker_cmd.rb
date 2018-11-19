@@ -14,13 +14,26 @@ module AresMUSH
 
 
       def handle
-        char = enactor
-        spell_names = char.spells_learned.map { |s| s.name }
-        list = spell_names.join " "
-        potion = list.include?("Potions")
-        client.emit spell_names
-        client.emit list
-        client.emit potion
+        args = cmd.parse_args(ArgParser.arg1_equals_arg2)
+        weapon = args.arg1
+        special = args.arg2
+        rounds = 3
+        combatant = enactor.combatant
+
+        weapon_specials = combatant.spell_weapon_specials
+        client.emit weapon_specials
+
+        if combatant.spell_weapon_specials.has_key?(weapon)
+          old_weapon_specials = weapon_specials[weapon]
+          client.emit old_weapon_specials
+          weapon_specials[weapon] = old_weapon_specials.merge!(special => rounds)
+        else
+          weapon_specials[weapon] = {special => rounds}
+        end
+
+
+        combatant.update(spell_weapon_specials: weapon_specials)
+        client.emit  combatant.spell_weapon_specials
       end
 
 

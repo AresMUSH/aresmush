@@ -76,14 +76,28 @@ module AresMUSH
 
             #Equip Weapon Specials
             if weapon_specials_str
-              weapon_specials = weapon_specials_str ? weapon_specials_str.split('+') : nil
-              current_spell_specials = combatant.spell_weapon_specials
+              rounds = Global.read_config("spells", self.spell, "rounds")
+              weapon = combatant.weapon.before("+")
+              Global.logger.info "Weapon: #{weapon}"
+              weapon_specials = combatant.spell_weapon_effects
+              Global.logger.info "Combatant's old weapon effects: #{combatant.spell_weapon_effects}"
+              if combatant.spell_weapon_effects.has_key?(weapon)
+                Global.logger.info "Has weapon effects for this weapon"
+                old_weapon_specials = combatant.spell_weapon_effects[weapon]
+                weapon_specials[weapon] = old_weapon_specials.merge!(weapon_specials_str => rounds)
+              else
+                weapon_specials[weapon] = {weapon_specials_str => rounds}
+              end
+              Global.logger.info "Weapon effects: #{weapon_specials[weapon]}"
+
+              combatant.update(spell_weapon_effects: weapon_specials)
+
+              Global.logger.info "Combatant's weapon effects: #{combatant.spell_weapon_effects}"
+
+              weapon_specials = combatant.spell_weapon_effects[weapon].keys
+              Global.logger.info weapon_specials
 
               FS3Combat.set_weapon(combatant, target, target.weapon, weapon_specials)
-
-
-              new_spell_specials = current_spell_specials << weapon_specials_str
-              combatant.update(spell_weapon_specials: new_spell_specials)
 
               if heal_points
 
@@ -179,8 +193,11 @@ module AresMUSH
 
           end
         else
+
           messages.concat [t('custom.spell_target_resolution_msg', :name => self.name, :spell => spell, :target => print_target_names, :succeeds => succeeds)]
+
         end
+        Global.logger.info "Combatant's final weapon effects: #{combatant.spell_weapon_effects}"
         messages
       end
     end
