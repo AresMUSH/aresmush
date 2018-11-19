@@ -29,6 +29,7 @@ module AresMUSH
         end
 
         FS3Combat.emit_to_combat combat, t('fs3combat.starting_turn_resolution', :name => enactor_name)
+        Global.logger.info "Combatant's weapon effects before resolutions: #{enactor.combatant.spell_weapon_effects}"
         combat.update(turn_in_progress: true)
         combat.update(everyone_posed: false)
 

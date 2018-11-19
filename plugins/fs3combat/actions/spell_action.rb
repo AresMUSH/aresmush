@@ -81,6 +81,7 @@ module AresMUSH
               Global.logger.info "Weapon: #{weapon}"
               weapon_specials = combatant.spell_weapon_effects
               Global.logger.info "Combatant's old weapon effects: #{combatant.spell_weapon_effects}"
+
               if combatant.spell_weapon_effects.has_key?(weapon)
                 Global.logger.info "Has weapon effects for this weapon"
                 old_weapon_specials = combatant.spell_weapon_effects[weapon]
@@ -88,10 +89,9 @@ module AresMUSH
               else
                 weapon_specials[weapon] = {weapon_specials_str => rounds}
               end
-              Global.logger.info "Weapon effects: #{weapon_specials[weapon]}"
+
 
               combatant.update(spell_weapon_effects: weapon_specials)
-
               Global.logger.info "Combatant's weapon effects: #{combatant.spell_weapon_effects}"
 
               weapon_specials = combatant.spell_weapon_effects[weapon].keys
