@@ -97,7 +97,7 @@ module AresMUSH
               weapon_specials = combatant.spell_weapon_effects[weapon].keys
               Global.logger.info weapon_specials
 
-              FS3Combat.set_weapon(combatant, target, target.weapon, weapon_specials)
+              FS3Combat.set_weapon(combatant, target, weapon, weapon_specials)
 
               if heal_points
 
