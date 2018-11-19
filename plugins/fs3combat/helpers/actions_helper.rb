@@ -44,6 +44,7 @@ module AresMUSH
     end
 
     def self.reset_for_new_turn(combatant)
+      Global.logger.info "Combatant's weapon effects start of newturn: #{combatant.spell_weapon_effects}"
       # Reset aim if they've done anything other than aiming.
       if (combatant.is_aiming? && combatant.action_klass != "AresMUSH::FS3Combat::AimAction")
         combatant.log "Reset aim for #{combatant.name}."
@@ -56,7 +57,7 @@ module AresMUSH
       if combatant.action_klass = "AresMUSH::FS3Combat::SpellAction"
         combatant.update(action_klass: nil)
       end
-      combatant.update(has_cast: false)
+
 
       if combatant.lethal_mod_counter == 0 && combatant.damage_lethality_mod != 0
                 combatant.log "#{combatant.name} resetting lethality mod to #{combatant.damage_lethality_mod}."
@@ -89,6 +90,8 @@ module AresMUSH
       else
         combatant.update(spell_mod_counter: combatant.spell_mod_counter - 1)
       end
+
+      Global.logger.info "Combatant's weapon effects after mod updates in newturn: #{combatant.spell_weapon_effects}"
 
       combatant.update(luck: nil)
       combatant.update(posed: false)
