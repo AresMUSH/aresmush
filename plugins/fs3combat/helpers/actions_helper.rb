@@ -104,7 +104,7 @@ module AresMUSH
 
 
       if (combatant.is_ko && combatant.is_npc?)
-        FS3Combat.leave_combat(combatant.combat, combatant)
+        # FS3Combat.leave_combat(combatant.combat, combatant)
       else
         # Be sure to do this AFTER checking for KO up above.
         combatant.update(damaged_by: [])
@@ -143,6 +143,11 @@ module AresMUSH
         combatant.update(action_args: nil)
         damaged_by = combatant.damaged_by.join(", ")
         FS3Combat.emit_to_combat combatant.combat, t('fs3combat.is_koed', :name => combatant.name, :damaged_by => damaged_by), nil, true
+        if (!combatant.is_npc? && Custom.knows_spell?(combatant.associated_model, "Phoenix's Healing Flames"))
+          combatant.update(is_ko: false)
+          combatant.update(action_klass: "AresMUSH::FS3Combat::SpellTargetAction")
+          combatant.update(action_args: "#{combatant.name}/Phoenix's Healing Flames")
+        end
       end
     end
 

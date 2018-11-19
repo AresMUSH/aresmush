@@ -6,7 +6,7 @@ module AresMUSH
     attribute :spell_mod, :type => DataType::Integer, :default => 0
     attribute :has_cast, :type => DataType::Boolean, :default => false
     attribute :death_count, :type => DataType::Integer, :default => 0
-    attribute :spell_weapon_specials, :type => DataType::Array, :default => []
+    attribute :spell_weapon_effects, :type => DataType::Hash, :default => {}
     attribute :spell_mod_counter, :type => DataType::Integer, :default => 0
     attribute :lethal_mod_counter, :type => DataType::Integer, :default => 0
     attribute :attack_mod_counter, :type => DataType::Integer, :default => 0
