@@ -81,6 +81,7 @@ demographics:
     groups: group
     colonies: group colony
     demographics: demographic
+    birthday: birthdate
   help_text:
     actor: "%xcactor <actor>%xn - See 'help actors'."
     physique: "%xcphysique <build/body type>%xn - athletic, wiry, slim, pudgy, etc."

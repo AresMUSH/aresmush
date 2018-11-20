@@ -27,6 +27,9 @@ module AresMUSH
           allow(Login).to receive(:find_client).with(@char1) { @client1 }
           allow(Login).to receive(:find_client).with(@char2) { @client2 }
           allow(Scenes).to receive(:update_pose_order)
+          allow(@enactor_room).to receive(:id) { 12 }
+          allow(@enactor).to receive(:id) { 34 }
+          
         end
 
         context "general" do
@@ -53,9 +56,9 @@ module AresMUSH
 
           it "should queue pose event" do
             expect(dispatcher).to receive(:queue_event) do |event|
-              expect(event.enactor).to eq @enactor
+              expect(event.enactor_id).to eq 34
               expect(event.pose).to eq "A pose"
-              expect(event.room).to eq @enactor_room
+              expect(event.room_id).to eq 12
               expect(event.is_emit).to eq false
               expect(event.is_ooc).to eq true
               expect(event.is_setpose).to eq false
@@ -82,9 +85,9 @@ module AresMUSH
           
           it "should queue pose event" do
             expect(dispatcher).to receive(:queue_event) do |event|
-              expect(event.enactor).to eq @enactor
+              expect(event.enactor_id).to eq 34
               expect(event.pose).to eq "A pose"
-              expect(event.room).to eq @enactor_room
+              expect(event.room_id).to eq 12
               expect(event.is_emit).to eq true
               expect(event.is_ooc).to eq false
               expect(event.is_setpose).to eq true
@@ -114,9 +117,9 @@ module AresMUSH
           
           it "should queue pose event" do
             expect(dispatcher).to receive(:queue_event) do |event|
-              expect(event.enactor).to eq @enactor
+              expect(event.enactor_id).to eq 34
               expect(event.pose).to eq "A pose"
-              expect(event.room).to eq @enactor_room
+              expect(event.room_id).to eq 12
               expect(event.is_emit).to eq false
               expect(event.is_ooc).to eq false
               expect(event.is_setpose).to eq false
@@ -148,6 +151,7 @@ module AresMUSH
             @scene_room = double
             allow(@scene_room).to receive(:room_type) { "IC" }
             allow(@scene_room).to receive(:characters) { [] }
+            allow(@scene_room).to receive(:id) { 56 }
           end
           
           it "should format a regular pose normally" do
@@ -158,9 +162,9 @@ module AresMUSH
           
           it "should queue pose event" do
             expect(dispatcher).to receive(:queue_event) do |event|
-              expect(event.enactor).to eq @enactor
+              expect(event.enactor_id).to eq 34
               expect(event.pose).to eq "A pose"
-              expect(event.room).to eq @scene_room
+              expect(event.room_id).to eq 56
               expect(event.is_emit).to eq false
               expect(event.is_ooc).to eq false
               expect(event.is_setpose).to eq false

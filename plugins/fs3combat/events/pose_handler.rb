@@ -2,9 +2,9 @@ module AresMUSH
   module FS3Combat
     class PoseEventHandler
       def on_event(event)
-        enactor = event.enactor
+        enactor = Character[event.enactor_id]
         combatant = enactor.combatant
-        room = event.room
+        room = Room[event.room_id]
         return if !combatant
         return if event.is_ooc
         

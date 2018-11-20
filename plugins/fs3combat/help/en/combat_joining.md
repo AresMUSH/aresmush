@@ -12,6 +12,8 @@ alias:
 `combats` - See a list of active combats.
 `combat/join <combat #>[/<type>]` - Joins a combat. Use the 'Observer' type to watch the combat without participating.
 `combat/join <list of names>=<combat #>[/<type>]` - Allows the organizer to add characters or NPCs to combats.
+`combat/type <type>`- Change your type.  
+`combat/types` to see available types and their associated gear.
 `combat/leave` - Leaves a combat
 
 Note: You have to leave and rejoin the combat to change your type.

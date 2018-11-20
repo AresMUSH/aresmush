@@ -20,8 +20,8 @@
         <p>{{scene.summary}}</p>
         </td>
         <td>
-            {{#each scene.participant_names}}
-            <a href="/char/{{scene}}">{{scene}}</a>
+            {{#each scene.participant_names as |p|}}
+            <a href="/char/{{p}}">{{p}}</a>
             {{/each}}
             
             

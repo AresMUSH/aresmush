@@ -9,6 +9,7 @@ module AresMUSH
         @char = double
         allow(Exit).to receive(:where) { [] }
         allow(Character).to receive(:where) { [] }
+        stub_translate_for_testing
       end
 
       it "should return the char for the me keword" do
@@ -24,25 +25,7 @@ module AresMUSH
         expect(result.target).to eq room
         expect(result.error).to be_nil
       end
-      
-      it "should return the char's location if the name matches the room name" do
-        room = double
-        expect(room).to receive(:name) { "My Room" }
-        allow(@char).to receive(:room) { room }
-        result = VisibleTargetFinder.find("My Room", @char)
-        expect(result.target).to eq room
-        expect(result.error).to be_nil
-      end
-      
-      it "should return the char's location if the name matches the room name" do
-        room = double
-        expect(room).to receive(:name) { "My Room" }
-        allow(@char).to receive(:room) { room }
-        result = VisibleTargetFinder.find("My", @char)
-        expect(result.target).to eq room
-        expect(result.error).to be_nil
-      end
-      
+            
       describe :single_target do
         before do
           @room = double
@@ -50,29 +33,30 @@ module AresMUSH
           @char2 = double
           @exit = double
           
-          allow(@room).to receive(:name) { "My Room" }
-          expect(@char1).to receive(:room) { @room }
-          expect(@room).to receive(:exits) { [@exit] }
-          expect(@room).to receive(:characters) { [@char1, @char2] }
+          allow(@char1).to receive(:room) { @room }
+          allow(@room).to receive(:exits) { [@exit] }
+          allow(@room).to receive(:characters) { [@char1, @char2] }
         end
         
         it "should ensure only a single result" do
           result = FindResult.new(nil, "An error")
           
-          allow(@char1).to receive(:name) { "Cal" }
-          allow(@char2).to receive(:name) { "California" }
-          allow(@exit).to receive(:name) { "CA" }
+          allow(@room).to receive(:name_upcase) { "CAR PARK" }
+          allow(@char1).to receive(:name_upcase) { "CAL" }
+          allow(@char2).to receive(:name_upcase) { "CALIFORNIA" }
+          allow(@exit).to receive(:name_upcase) { "CA" }
           
           expect(SingleResultSelector).to receive(:select).with([@char1, @char2, @exit]) { result }
-          expect(VisibleTargetFinder.find("Ca", @char1)).to eq result      
+          expect(VisibleTargetFinder.find("C", @char1)).to eq result      
         end
         
         it "should match an exit name" do
           result = FindResult.new(nil, "An error")
           
-          allow(@char1).to receive(:name) { "Eli" }
-          allow(@char2).to receive(:name) { "Torres" }
-          allow(@exit).to receive(:name) { "CA" }
+          allow(@room).to receive(:name_upcase) { "PARK" }
+          allow(@char1).to receive(:name_upcase) { "ELI" }
+          allow(@char2).to receive(:name_upcase) { "TORRES" }
+          allow(@exit).to receive(:name_upcase) { "CA" }
           
           result = VisibleTargetFinder.find("Ca", @char1)
           expect(result.target).to eq @exit
@@ -81,14 +65,61 @@ module AresMUSH
         it "should match a char name" do
           result = FindResult.new(nil, "An error")
           
-          allow(@char1).to receive(:name) { "Eli" }
-          allow(@char2).to receive(:name) { "Torres" }
-          allow(@exit).to receive(:name) { "CA" }
+          allow(@room).to receive(:name_upcase) { "CAR PARK" }
+          allow(@char1).to receive(:name_upcase) { "ELI" }
+          allow(@char2).to receive(:name_upcase) { "TORRES" }
+          allow(@exit).to receive(:name_upcase) { "CA" }
           
           result = VisibleTargetFinder.find("Eli", @char1)
           expect(result.target).to eq @char1
         end
-
+        
+        it "should match the char's room name" do
+          allow(@room).to receive(:name_upcase) { "PARK" }
+          allow(@char1).to receive(:name_upcase) { "ELI" }
+          allow(@char2).to receive(:name_upcase) { "TORRES" }
+          allow(@exit).to receive(:name_upcase) { "CA" }
+          
+          result = VisibleTargetFinder.find("Park", @char1)
+          expect(result.target).to eq @room
+          expect(result.error).to be_nil
+        end
+        
+        it "should pick an exact match over a partial one with char" do
+          result = FindResult.new(nil, "An error")
+          
+          allow(@room).to receive(:name_upcase) { "CAR PARK" }
+          allow(@char1).to receive(:name_upcase) { "CAL" }
+          allow(@char2).to receive(:name_upcase) { "CALIFORNIA" }
+          allow(@exit).to receive(:name_upcase) { "CA" }
+          
+          expect(SingleResultSelector).to receive(:select).with([@char1]) { result }
+          expect(VisibleTargetFinder.find("CAL", @char1)).to eq result      
+        end
+        
+        it "should pick an exact match over a partial one with exit" do
+          result = FindResult.new(nil, "An error")
+          
+          allow(@room).to receive(:name_upcase) { "CAR PARK" }
+          allow(@char1).to receive(:name_upcase) { "CAL" }
+          allow(@char2).to receive(:name_upcase) { "CALIFORNIA" }
+          allow(@exit).to receive(:name_upcase) { "CA" }
+          
+          expect(SingleResultSelector).to receive(:select).with([@exit]) { result }
+          expect(VisibleTargetFinder.find("CA", @char1)).to eq result      
+        end
+        
+        it "should pick an exact match over a partial one with a room" do
+          result = FindResult.new(nil, "An error")
+          
+          allow(@room).to receive(:name_upcase) { "CA" }
+          allow(@char1).to receive(:name_upcase) { "CAL" }
+          allow(@char2).to receive(:name_upcase) { "CALIFORNIA" }
+          allow(@exit).to receive(:name_upcase) { "CAR" }
+          
+          expect(SingleResultSelector).to receive(:select).with([@room]) { result }
+          expect(VisibleTargetFinder.find("CA", @char1)).to eq result      
+        end
         
       end
     end
@@ -97,7 +128,7 @@ module AresMUSH
       before do
         @client = double
         @object = double
-        allow(@object).to receive(:name) { "obj name" }
+        allow(@object).to receive(:name_upcase) { "OBJ NAME" }
       end
       
       it "should emit failure if the object isn't visible" do
@@ -120,7 +151,7 @@ module AresMUSH
       it "should call the block with the char if it exists" do
         allow(VisibleTargetFinder).to receive(:find) { FindResult.new(@object, nil) }
         VisibleTargetFinder.with_something_visible("name", @client, @char) do |obj|
-          expect(@object.name).to eq "obj name"
+          expect(@object.name_upcase).to eq "OBJ NAME"
         end
       end
     end

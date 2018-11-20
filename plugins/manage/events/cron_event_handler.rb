@@ -7,6 +7,7 @@ module AresMUSH
         
         Global.logger.debug "Starting backup."
         
+	# Note: The spawn is inside the backup method.
         Manage.perform_backup(nil)
       end
     end    
