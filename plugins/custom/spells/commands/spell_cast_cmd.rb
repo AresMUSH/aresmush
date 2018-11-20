@@ -3,7 +3,7 @@ module AresMUSH
     class SpellCastCmd
     #spell/cast <spell>
       include CommandHandler
-      attr_accessor :name, :weapon_name, :spell, :spell_list, :weapon,  :caster, :caster_combat, :args
+      attr_accessor :name, :weapon_name, :spell, :spell_list, :weapon,  :caster, :caster_combat, :args, :mod
       def parse_args
        self.spell_list = Global.read_config("spells")
        if (cmd.args =~ /\//)
@@ -25,6 +25,7 @@ module AresMUSH
           #Returns char or NPC
           self.caster = enactor
           self.spell = titlecase_arg(args.arg1)
+          self.mod = args.arg2
           #Returns combatant
           if enactor.combat
             self.caster_combat = enactor.combatant
@@ -39,6 +40,10 @@ module AresMUSH
         return t('custom.not_character') if !caster
         return t('custom.not_spell') if !self.spell_list.include?(self.spell)
         return t('custom.cant_force_cast') if (self.caster != enactor && !enactor.combatant)
+        weapon = Global.read_config("spells", self.spell, "weapon")
+        return t('fs3combat.invalid_weapon') if (weapon && !FS3Combat.weapon(weapon))
+        armor = Global.read_config("spells", self.spell, "armor")
+        return t('fs3combat.invalid_armor') if (armor && !FS3Combat.armor(armor))
         # return t('custom.already_cast') if (enactor.combat && Custom.already_cast(self.caster_combat))
         # require_target = Global.read_config("spells", self.spell, "require_target")
         # multi_target = Global.read_config("spells", self.spell, "multi_target")
@@ -176,9 +181,9 @@ module AresMUSH
           #Roll NonCombat
           if roll
 
-            Custom.cast_noncombat_spell(self.caster, self.spell)
+            Custom.cast_noncombat_spell(self.caster, self.spell, self.mod)
           elsif heal_points
-            Custom.cast_non_combat_heal(self.caster, self.spell)
+            Custom.cast_non_combat_heal(self.caster, self.spell, self.mod)
           else
             client.emit_failure t('custom.not_in_combat')
           end

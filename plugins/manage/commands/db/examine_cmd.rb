@@ -19,6 +19,7 @@ module AresMUSH
           model = search.target
         else
           search = AnyTargetFinder.find(self.target, enactor)
+
           if (!search.found?)
             client.emit_failure search.error
             return

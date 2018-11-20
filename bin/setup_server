@@ -3,7 +3,7 @@ if [[ $EUID -ne 0 ]]; then
    exit 1
 fi
 
-export ARES_INSTALL_TEXT="<\033[0;32mINSTALL\033[0m>"
+export ARES_INSTALL_TEXT="\n\n<\033[0;32mINSTALL\033[0m>"
 
 # #########################################################################################
 
@@ -84,8 +84,8 @@ dpkg-reconfigure -plow unattended-upgrades
 # #########################################################################################
 
 echo -e "${ARES_INSTALL_TEXT} Start the database server, then restart it to ensure that a dump file is immediately generated."
-service redis start
-service redis restart
+service redis-server start
+service redis-server restart
 
 # #########################################################################################
 
@@ -122,6 +122,8 @@ else
 fi
 
 sudo chmod +x /etc/rc.local
+
+sudo systemctl enable redis-server
 
 # #########################################################################################
 

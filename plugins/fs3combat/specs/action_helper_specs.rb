@@ -560,7 +560,7 @@ module AresMUSH
           expect(FS3Combat.determine_armor(@combatant, "Head", "Rifle", 0)).to eq 0
         end
         
-        it "should provide minimum armor xxx" do
+        it "should provide minimum armor" do
           allow(FS3Combat).to receive(:rand).with(8) { 4 }
           allow(FS3Combat).to receive(:rand).with(25) { 24 }
           allow(FS3Combat).to receive(:weapon_stat).with("Rifle", "penetration") { 5 }
@@ -836,7 +836,7 @@ module AresMUSH
           FS3Combat.resolve_attack(@combatant, "A", @target, "Knife")
         end
         
-        it "should update damaged by xxx" do 
+        it "should update damaged by" do 
           allow(@target).to receive(:damaged_by) { [ "X" ] }
           expect(@target).to receive(:update).with(damaged_by: [ "X", "A" ])
           expect(FS3Combat).to receive(:determine_damage).with(@target, "Chest", "Knife", 0, false) { "INCAP" }
@@ -921,7 +921,7 @@ module AresMUSH
           expect(FS3Combat.resolve_possible_crew_hit(@target, "Body", "GRAZE")).to eq []
         end
         
-        it "should not do damage if not a crew hitloc xxx" do
+        it "should not do damage if not a crew hitloc" do
           allow(@target).to receive(:vehicle) { @vehicle}
           expect(FS3Combat.resolve_possible_crew_hit(@target, "Body", "GRAZE")).to eq []
         end

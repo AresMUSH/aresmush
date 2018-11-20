@@ -5,7 +5,7 @@ module AresMUSH
         config = Global.read_config("fs3combat", "healing_cron")
         return if !Cron.is_cron_match?(config, event.time)
         
-        Global.logger.debug "Clearing damage."
+        Global.logger.debug "Time for healing."
         
         Character.all.each do |c|
           FS3Combat.heal_wounds(c)   

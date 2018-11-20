@@ -39,6 +39,11 @@ module AresMUSH
       @connection.window_height
     end
 
+    def ascii_mode
+      return false if !@char_id
+      self.char.ascii_mode_enabled
+    end
+    
     def enable_fansi
       return false if !@char_id
       self.char.fansi_on
@@ -49,19 +54,19 @@ module AresMUSH
     end
     
     def emit(msg)
-      @connection.send_formatted "#{msg}", enable_fansi
+      @connection.send_formatted "#{msg}", enable_fansi, ascii_mode
     end 
     
     def emit_ooc(msg)
-      @connection.send_formatted "%xc%% #{msg}%xn", enable_fansi
+      @connection.send_formatted "%xc%% #{msg}%xn", enable_fansi, ascii_mode
     end
 
     def emit_success(msg)
-      @connection.send_formatted "%xg%% #{msg}%xn", enable_fansi
+      @connection.send_formatted "%xg%% #{msg}%xn", enable_fansi, ascii_mode
     end
 
     def emit_failure(msg)
-      @connection.send_formatted "%xr%% #{msg}%xn", enable_fansi
+      @connection.send_formatted "%xr%% #{msg}%xn", enable_fansi, ascii_mode
     end
     
     def emit_raw(msg)

@@ -26,9 +26,9 @@ module AresMUSH
     #   FS3Combat.set_action(client, caster_combat, caster_combat.combat, caster_combat, FS3Combat::SpellAction, "")
     # end
 
-    def self.cast_noncombat_roll_spell_with_target(caster, target, spell)
+    def self.cast_noncombat_roll_spell_with_target(caster, target, spell, mod)
       enactor_room = caster.room
-      success = Custom.roll_noncombat_spell_success(caster, spell)
+      success = Custom.roll_noncombat_spell_success(caster, spell, mod)
       enactor_room.emit t('custom.casts_noncombat_spell_with_target', :name => caster.name, :target => target.name, :spell => spell, :succeeds => success)
     end
 
@@ -49,8 +49,8 @@ module AresMUSH
     #   FS3Combat.set_action(client, caster_combat, caster_combat.combat, caster_combat, FS3Combat::SpellAction, "")
     # end
 
-    def self.cast_non_combat_heal_with_target(caster, target, spell)
-      succeeds = Custom.roll_noncombat_spell_success(caster, spell)
+    def self.cast_non_combat_heal_with_target(caster, target, spell, mod)
+      succeeds = Custom.roll_noncombat_spell_success(caster, spell, mod)
       client = Login.find_client(caster)
       if succeeds == "%xgSUCCEEDS%xn"
         wound = FS3Combat.worst_treatable_wound(target)

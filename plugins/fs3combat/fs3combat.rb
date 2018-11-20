@@ -77,6 +77,10 @@ module AresMUSH
            return CombatAmmoCmd
          when "attackmod", "defensemod", "lethalmod"
            return CombatModCmd
+         when "clearmods"
+           return CombatClearModsCmd
+         when "seemods"
+           return CombatSeeModsCmd
          when "armor"
            return CombatArmorCmd
          when "hitloc"
@@ -97,6 +101,8 @@ module AresMUSH
            return CombatJoinCmd
          when "leave"
            return CombatLeaveCmd
+         when "type"
+           return CombatTypeCmd
          when "log"
            return CombatLogCmd
          when "luck"

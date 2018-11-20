@@ -10,7 +10,7 @@ The FS3 Combat system is designed to bring some order to the chaos of large comb
 To learn how FS3 combat works, see the [Combat Guide](/wiki/combat_guide).
 
 ##Available Help
->**Tip:** You can use **qr <command>** to see the correct syntax for a command.
+>**Tip:** You can use **qr <command>** to see the correct syntax for a command. `qr combat/join`
 
 * [Combat All](/help/combat_all) - All combat commands in one huge spammy place
 * [Combat Joining](/help/combat_joining) - Joining and leaving a combat

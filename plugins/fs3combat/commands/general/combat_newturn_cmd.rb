@@ -44,14 +44,16 @@ module AresMUSH
               next if c.is_noncombatant?
 
               combat.log "Action #{c.name} #{c.action ? c.action.print_action_short : "-"} #{c.is_noncombatant?}"
-
+              Global.logger.info "Enactor Combatant's weapon effects mid resolutions: #{enactor.combatant.spell_weapon_effects}"
               messages = c.action.resolve
+              Global.logger.info "Enactor Combatant's weapon effects mid resolutions2: #{enactor.combatant.spell_weapon_effects}"
               messages.each do |m|
                 FS3Combat.emit_to_combat combat, m, nil, true
               end
+              Global.logger.info "Enactor Combatant's weapon effects mid resolutions3: #{enactor.combatant.spell_weapon_effects}"
 
             end
-
+            Global.logger.info "Enactor Combatant's weapon effects at end of resolutions: #{enactor.combatant.spell_weapon_effects}"
             combat.log "---- Resolutions ----"
 
             combat = enactor.combat

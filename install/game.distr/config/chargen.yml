@@ -6,7 +6,6 @@ chargen:
   approval_message: Congratulations!  Your application has been approved.  Type %xhonstage%xn
     to go forth and RP.  You may want to customize your character profile on the web
     portal.
-  arrivals_board: New Arrivals
   bg_blurb: 'You don''t need to write a novel. Just cover the basics: who you are,
     why are you here, and is there anything noteworthy about you. Be sure to explain
     any unusual skills.'
@@ -64,4 +63,6 @@ chargen:
       help: idle_out
     review:
       help: apps
-  welcome_message: Please welcome %{name}, our latest %{position} to be approved!
+  welcome_message: Please welcome %{name}, our latest %{position} to
+    be approved!
+  arrivals_category: New Arrivals

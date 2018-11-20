@@ -30,7 +30,7 @@ aliases:
 ---
 # Organizing FS3 Combat
 
-This is a quick reference for combat organizer commands. Also  check out the [Running Combats](http://aresmush.com/fs3/fs3-3/running-combat) tutorial.
+This is a quick reference for combat organizer commands. Also  check out the [Combat Organizer's Guide](/combat_org_guide).
 
 ## Running Combat
 `combat/start [<mock or real>]` - Starts a combat (default real).
@@ -47,8 +47,8 @@ This is a quick reference for combat organizer commands. Also  check out the [Ru
 `combat/log <page>` - Views the combat log, with detailed messages about the rolls and effects.
 
 ## NPCs
-You can always specify a NPC or player name in front of any action command to make them do something.  For example, combat/join Bob/#123.
-Most commands support multiple names as well, so you can do: combat/attack A B/C.
+You can always specify a NPC or player name in front of any action command to make them do something.  For example, `combat/join Bob/#123`.
+Most commands support multiple names as well, so you can do: `combat/attack A B/C`.
 **See [NPC](/help/npc) for more information on how spells, potions, and levels work for NPCs**
 
 `combat/join <list of names>=<combat #>[/<type>]` - Creates temporary NPCs and adds them to the combat. 'Type' affects their available hitlocs. See `combat/types` for a list.
@@ -78,7 +78,9 @@ Admins, combat organizers, and characters with the manage_combat permission can 
 `combat/defensemod <name>=<modifier>` - Gives the combatant a modifier to defend
 `combat/lethalmod <name>=<modifier>` - Gives the combatant a modifier to lethality on damage TAKEN
 `spell/mod <name>=<mod>` - Gives the combatant a modifier to their spell rolls.
-**Tip:** Mods only last for one round.
+`combat/clearmods <name>` - Clears all modifiers from combatant and sets to 0.  Use with caution, as this can erase spell effects.
+`combat/seemods <name>` Shows all combat mods set on a combatant. 
+**Tip:** Mods set this way only last for one round.
 
 ##Specials
 `combat/weaponspecials <name>=<special>[+<special>+<special>]` - Set a character or NPC's persistent weapon specials. Use 'None' to clear.

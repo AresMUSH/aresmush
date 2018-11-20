@@ -42,7 +42,8 @@ module AresMUSH
       damage_mod = combatant.total_damage_mod
       stance_mod = combatant.attack_stance_mod
       stress_mod = combatant.stress
-      luck_mod = (combatant.luck == "Attack") ? 3 : 0
+      attack_luck_mod = (combatant.luck == "Attack") ? 3 : 0
+      spell_luck_mod = (combatant.luck == "Spell") ? 3 : 0
       distraction_mod = combatant.distraction
       spell_mod = combatant.spell_mod
       if !combatant.is_npc?
@@ -52,9 +53,9 @@ module AresMUSH
       end
 
 
-      combatant.log "Spell roll for #{combatant.name} school=#{school} mod=#{mod} spell_mod=#{spell_mod} item_spell_mod=#{item_spell_mod} accuracy=#{accuracy_mod} damage=#{damage_mod} stance=#{stance_mod} luck=#{luck_mod} stress=#{stress_mod} special=#{special_mod} distract=#{distraction_mod}"
+      combatant.log "Spell roll for #{combatant.name} school=#{school} mod=#{mod} spell_mod=#{spell_mod} item_spell_mod=#{item_spell_mod} accuracy=#{accuracy_mod} damage=#{damage_mod} stance=#{stance_mod} attack_luck=#{attack_luck_mod} spell_luck=#{spell_luck_mod} stress=#{stress_mod} special=#{special_mod} distract=#{distraction_mod}"
 
-      mod = mod + item_spell_mod.to_i + spell_mod.to_i + accuracy_mod.to_i + damage_mod.to_i  + stance_mod.to_i  + luck_mod.to_i  - stress_mod.to_i  + special_mod.to_i  - distraction_mod.to_i
+      mod = mod + item_spell_mod.to_i + spell_mod.to_i + accuracy_mod.to_i + damage_mod.to_i  + stance_mod.to_i  + attack_luck_mod.to_i  + spell_luck_mod.to_i - stress_mod.to_i  + special_mod.to_i - distraction_mod.to_i
 
       successes = combatant.roll_ability(school, mod)
       return successes
@@ -107,13 +108,13 @@ module AresMUSH
       succeeds = Custom.combat_spell_success(spell, die_result)
     end
 
-    def self.roll_noncombat_spell_success(caster, spell)
+    def self.roll_noncombat_spell_success(caster, spell, mod)
       if Custom.knows_spell?(caster, spell)
         school = Global.read_config("spells", spell, "school")
-        mod = 0
       else
         school = "Magic"
-        mod = FS3Skills.ability_rating(caster, "Magic") * 2
+        cast_mod = FS3Skills.ability_rating(caster, "Magic") * 2
+        mod = mod + cast_mod
       end
 
       spell_mod = Custom.item_spell_mod(caster)

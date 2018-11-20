@@ -31,7 +31,7 @@ Preparing actions do not take up a turn unless they are accomplished via spell o
 ### Luck
 Luck points have special effects in combat. (see [Luck](/help/luck))
 
-`combat/luck <attack, defense or initiative>` - Spend a luck point to get +3 bonus dice this turn.
+`combat/luck <attack, defense, initiative, or spell>` - Spend a luck point to get +3 bonus dice this turn.
 **Tip:** Spending luck on attack affects special attacks like explosions or suppression.  It also conveys a bonus to damage.
 
 ## TAKING A TURN
@@ -40,11 +40,12 @@ Luck points have special effects in combat. (see [Luck](/help/luck))
 ### Magic
 `spell/cast <spell>` - Casts a spell that doesn't need a target.
 `spell/cast <spell>=<target>` - Casts a spell that needs a target.
+**Tip** You can also just use `cast`
 `potion/use <potion>` - Uses a potion.
 
 ### Attacks
 `combat/attack <target>[>mod:<mod>] OR [>called:<hitloc>]`
-    Specials are optional. Use commas to separate multiple options.
+    Use commas to separate multiple options.
     * mod:<special modifiers> - Dice to add or subtract to the roll.
     * called:<location> - Perform a called shot to a particular hit location.
        Use `combat/hitlocs <target>` to see a list of valid hit locations.
