@@ -40,7 +40,6 @@ module AresMUSH
             self.caster_combat = enactor.combatant
             self.target_combat = combat.find_combatant(target_name)
           end
-
         end
         arg_array = [self.target_name, self.spell]
         self.action_args = arg_array.join("/")
@@ -49,15 +48,10 @@ module AresMUSH
       def check_errors
         return t('custom.not_character') if !caster
         return t('custom.not_spell') if !self.spell_list.include?(self.spell)
-        # return t('custom.already_cast') if (self.caster.combat && Custom.already_cast(self.caster_combat)) == true
-        # return t('custom.invalid_name') if !self.target
         require_target = Global.read_config("spells", self.spell, "require_target")
         target_optional = Global.read_config("spells", self.spell, "target_optional")
         return t('custom.no_target') if (!require_target && !target_optional)
         heal_points = Global.read_config("spells", self.spell, "heal_points")
-        # return t('custom.cant_heal_dead') if (heal_points && target.dead)
-        # multi_target = Global.read_config("spells", self.spell, "multi_target")
-        # return t('custom.needs_multi_target') if multi_target
         is_res = Global.read_config("spells", self.spell, "is_res")
         is_revive = Global.read_config("spells", self.spell, "is_revive")
         target_names = target_name.split(" ").map { |n| InputFormatter.titlecase_arg(n) }
@@ -66,7 +60,21 @@ module AresMUSH
           return t('fs3combat.not_in_combat', :name => name) if !target
           return t('custom.not_dead', :target => target.name) if (is_res && !target.associated_model.dead)
           return t('custom.not_ko', :target => target.name) if (is_revive && !target.is_ko)
+          #Check that weapon specials can be added to weapon
+          weapon_specials_str = Global.read_config("spells", self.spell, "weapon_specials")
+          if weapon_specials_str
+            weapon_special_group = FS3Combat.weapon_stat(target.weapon, "special_group") || ""
+            weapon_allowed_specials = Global.read_config("fs3combat", "weapon special groups", weapon_special_group) || []
+            return t('custom.cant_cast_on_gear', :spell => self.spell, :target => target.name, :gear => "weapon") if !weapon_allowed_specials.include?(weapon_specials_str.downcase)
+          end
+          #Check that armor specials can be added to weapon
+          armor_specials_str = Global.read_config("spells", self.spell, "armor_specials")
+          if armor_specials_str
+            armor_allowed_specials = FS3Combat.armor_stat(target.armor, "allowed_specials") || []
+            return t('custom.cant_cast_on_gear', :spell => self.spell, :target => target.name, :gear => "armor") if !armor_allowed_specials.include?(armor_specials_str)
+          end
         end
+
 
         weapon = Global.read_config("spells", self.spell, "weapon")
         return t('fs3combat.invalid_weapon') if (weapon && !FS3Combat.weapon(weapon))

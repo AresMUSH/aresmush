@@ -56,10 +56,10 @@ module AresMUSH
       if combatant.action_klass = "AresMUSH::FS3Combat::SpellAction"
         combatant.update(action_klass: nil)
       end
-      combatant.update(has_cast: false)
 
+      # Tracking mod rounds
       if combatant.lethal_mod_counter == 0 && combatant.damage_lethality_mod != 0
-                combatant.log "#{combatant.name} resetting lethality mod to #{combatant.damage_lethality_mod}."
+        combatant.log "#{combatant.name} resetting lethality mod to #{combatant.damage_lethality_mod}."
         FS3Combat.emit_to_combat combatant.combat, t('custom.mod_wore_off', :name => combatant.name, :type => "lethality", :mod => combatant.damage_lethality_mod), nil, true
         combatant.update(damage_lethality_mod: 0)
       else
@@ -90,6 +90,31 @@ module AresMUSH
         combatant.update(spell_mod_counter: combatant.spell_mod_counter - 1)
       end
 
+      #Tracking rounds for spell weapon specials
+      if !combatant.spell_weapon_effects.empty?
+        weapon_effects = combatant.spell_weapon_effects
+        weapon_effects.each do |weapon, effects|
+          effects.each do |effect, rounds|
+            new_rounds = rounds - 1
+            if new_rounds == 0
+              weapon_effects[weapon].delete(effect)
+              weapon = combatant.weapon.before("+")
+              if weapon_effects[weapon] && weapon_effects[weapon].empty?
+                weapon_effects.delete(weapon)
+              end
+            else
+              weapon_effects[weapon][effect] = new_rounds
+            end
+            combatant.update(spell_weapon_effects: weapon_effects)
+            if new_rounds == 0
+              FS3Combat.set_weapon(nil, combatant, weapon, nil)
+            end
+          end
+        end
+      end
+
+      Global.logger.info "Combatant's weapon effects after round updates in newturn: #{combatant.spell_weapon_effects}"
+
       combatant.update(luck: nil)
       combatant.update(posed: false)
       combatant.update(recoil: 0)
@@ -104,7 +129,7 @@ module AresMUSH
 
 
       if (combatant.is_ko && combatant.is_npc?)
-        FS3Combat.leave_combat(combatant.combat, combatant)
+        # FS3Combat.leave_combat(combatant.combat, combatant)
       else
         # Be sure to do this AFTER checking for KO up above.
         combatant.update(damaged_by: [])
@@ -143,6 +168,11 @@ module AresMUSH
         combatant.update(action_args: nil)
         damaged_by = combatant.damaged_by.join(", ")
         FS3Combat.emit_to_combat combatant.combat, t('fs3combat.is_koed', :name => combatant.name, :damaged_by => damaged_by), nil, true
+        if (!combatant.is_npc? && Custom.knows_spell?(combatant.associated_model, "Phoenix's Healing Flames"))
+          combatant.update(is_ko: false)
+          combatant.update(action_klass: "AresMUSH::FS3Combat::SpellTargetAction")
+          combatant.update(action_args: "#{combatant.name}/Phoenix's Healing Flames")
+        end
       end
     end
 
