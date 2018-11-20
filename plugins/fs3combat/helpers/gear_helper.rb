@@ -156,6 +156,8 @@ module AresMUSH
     end
 
     def self.set_weapon(enactor, combatant, weapon, specials = nil)
+
+
       if !combatant.npc
         item_specials = Custom.item_weapon_specials(combatant.associated_model)
       end
@@ -165,6 +167,14 @@ module AresMUSH
         specials = [item_specials]
       end
 
+      spell_specials = combatant.spell_weapon_effects[weapon].keys
+      Global.logger.debug "Spell Specials:  #{spell_specials}"
+
+      specials = specials.concat spell_specials
+      Global.logger.debug "Specials:  #{specials}"
+
+
+
       # if specials && !combatant.spell_weapon_specials.empty?
       #   specials.concat combatant.spell_weapon_specials
       # elsif !combatant.spell_weapon_specials.empty?
@@ -172,12 +182,14 @@ module AresMUSH
       # end
 
       max_ammo = weapon ? FS3Combat.weapon_stat(weapon, "ammo") : 0
+
       combatant.update(weapon_name: weapon ? weapon.titlecase : "Unarmed")
       combatant.update(weapon_specials: specials ? specials.map { |s| s.titlecase }.uniq : [])
       combatant.update(ammo: max_ammo)
       combatant.update(max_ammo: max_ammo)
       combatant.update(action_klass: nil)
       combatant.update(action_args: nil)
+      Global.logger.debug "Real saved spell thingy post-updates:  #{Combatant[combatant.id].spell_weapon_effects}"
 
       message = t('fs3combat.weapon_changed', :name => combatant.name,
         :weapon => combatant.weapon)
