@@ -76,14 +76,10 @@ module AresMUSH
 
             #Equip Weapon Specials
             if weapon_specials_str
-              weapon_specials = weapon_specials_str ? weapon_specials_str.split('+') : nil
-              current_spell_specials = combatant.spell_weapon_specials
+              Custom.spell_weapon_effects(combatant, self.spell)
+              weapon = combatant.weapon.before("+")
 
-              FS3Combat.set_weapon(combatant, target, target.weapon, weapon_specials)
-
-
-              new_spell_specials = current_spell_specials << weapon_specials_str
-              combatant.update(spell_weapon_specials: new_spell_specials)
+              FS3Combat.set_weapon(combatant, target, weapon, [weapon_specials_str])
 
               if heal_points
 
@@ -179,9 +175,13 @@ module AresMUSH
 
           end
         else
+
           messages.concat [t('custom.spell_target_resolution_msg', :name => self.name, :spell => spell, :target => print_target_names, :succeeds => succeeds)]
+
         end
+        Global.logger.info "Combatant's final weapon effects: #{combatant.spell_weapon_effects}"
         messages
+        
       end
     end
   end
