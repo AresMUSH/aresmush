@@ -72,6 +72,7 @@ en:
       mod_wore_off: "%{name}'s %{mod} %{type} modification has worn off."
       cast_stance: "%{name} casts %xB%{spell}%xn on %{target} and %{succeeds}, changing %{target}'s stance to %{stance}."
       not_spell: "That is not a spell."
+      cant_cast_on_gear: "You cannot cast %{spell} on %{target}'s %{gear}."
       no_target: "This spell does not use a target. Do spell/cast <spell>."
       needs_multi_target: "This spell can take multiple targets. Do spell/castmulti <spell>=<target>."
       not_multi_target: "This spell can only take one target. Do spell/cast <spell>=<target>"
