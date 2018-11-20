@@ -12,15 +12,35 @@ module AresMUSH
 
 
 
-
       def handle
-        char = enactor
-        spell_names = char.spells_learned.map { |s| s.name }
-        list = spell_names.join " "
-        potion = list.include?("Potions")
-        client.emit spell_names
-        client.emit list
-        client.emit potion
+        combatant = enactor.combatant
+        if !combatant.spell_weapon_effects.empty?
+          weapon_effects = combatant.spell_weapon_effects
+          client.emit "Old hash: #{weapon_effects}"
+          weapon_effects.each do |weapon, effects|
+            effects.each do |effect, rounds|
+              new_rounds = rounds - 1
+              if new_rounds == 0
+                weapon_effects[weapon].delete(effect)
+                if weapon_effects[weapon].empty?
+                  weapon_effects.delete(weapon)
+                end
+              else
+                weapon_effects[weapon][effect] = new_rounds
+              end
+              combatant.update(spell_weapon_effects: weapon_effects)
+
+            end
+          end
+          client.emit "New hash: #{weapon_effects}"
+
+
+
+
+
+
+
+        end
       end
 
 
