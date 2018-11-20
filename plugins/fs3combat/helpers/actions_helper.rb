@@ -44,7 +44,6 @@ module AresMUSH
     end
 
     def self.reset_for_new_turn(combatant)
-      Global.logger.info "Combatant's weapon effects start of newturn: #{combatant.spell_weapon_effects}"
       # Reset aim if they've done anything other than aiming.
       if (combatant.is_aiming? && combatant.action_klass != "AresMUSH::FS3Combat::AimAction")
         combatant.log "Reset aim for #{combatant.name}."
@@ -58,9 +57,9 @@ module AresMUSH
         combatant.update(action_klass: nil)
       end
 
-
+      # Tracking mod rounds
       if combatant.lethal_mod_counter == 0 && combatant.damage_lethality_mod != 0
-                combatant.log "#{combatant.name} resetting lethality mod to #{combatant.damage_lethality_mod}."
+        combatant.log "#{combatant.name} resetting lethality mod to #{combatant.damage_lethality_mod}."
         FS3Combat.emit_to_combat combatant.combat, t('custom.mod_wore_off', :name => combatant.name, :type => "lethality", :mod => combatant.damage_lethality_mod), nil, true
         combatant.update(damage_lethality_mod: 0)
       else
@@ -91,7 +90,30 @@ module AresMUSH
         combatant.update(spell_mod_counter: combatant.spell_mod_counter - 1)
       end
 
-      Global.logger.info "Combatant's weapon effects after mod updates in newturn: #{combatant.spell_weapon_effects}"
+      #Tracking rounds for spell weapon specials
+      if !combatant.spell_weapon_effects.empty?
+        weapon_effects = combatant.spell_weapon_effects
+        weapon_effects.each do |weapon, effects|
+          effects.each do |effect, rounds|
+            new_rounds = rounds - 1
+            if new_rounds == 0
+              weapon_effects[weapon].delete(effect)
+              weapon = combatant.weapon.before("+")
+              if weapon_effects[weapon] && weapon_effects[weapon].empty?
+                weapon_effects.delete(weapon)
+              end
+            else
+              weapon_effects[weapon][effect] = new_rounds
+            end
+            combatant.update(spell_weapon_effects: weapon_effects)
+            if new_rounds == 0
+              FS3Combat.set_weapon(nil, combatant, weapon, nil)
+            end
+          end
+        end
+      end
+
+      Global.logger.info "Combatant's weapon effects after round updates in newturn: #{combatant.spell_weapon_effects}"
 
       combatant.update(luck: nil)
       combatant.update(posed: false)

@@ -5,8 +5,6 @@ module AresMUSH
       rounds = Global.read_config("spells", spell, "rounds")
       special = Global.read_config("spells", spell, "weapon_specials")
       weapon = combatant.weapon.before("+")
-
-      Global.logger.info "Weapon: #{weapon}"
       weapon_specials = combatant.spell_weapon_effects
       Global.logger.info "Combatant's old weapon effects: #{combatant.spell_weapon_effects}"
 
