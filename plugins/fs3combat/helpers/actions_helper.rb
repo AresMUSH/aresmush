@@ -44,6 +44,7 @@ module AresMUSH
     end
 
     def self.reset_for_new_turn(combatant)
+      Global.logger.info "Combatant's weapon effects start of newturn: #{combatant.spell_weapon_effects}"
       # Reset aim if they've done anything other than aiming.
       if (combatant.is_aiming? && combatant.action_klass != "AresMUSH::FS3Combat::AimAction")
         combatant.log "Reset aim for #{combatant.name}."
@@ -56,7 +57,7 @@ module AresMUSH
       if combatant.action_klass = "AresMUSH::FS3Combat::SpellAction"
         combatant.update(action_klass: nil)
       end
-      combatant.update(has_cast: false)
+
 
       if combatant.lethal_mod_counter == 0 && combatant.damage_lethality_mod != 0
                 combatant.log "#{combatant.name} resetting lethality mod to #{combatant.damage_lethality_mod}."
@@ -90,6 +91,8 @@ module AresMUSH
         combatant.update(spell_mod_counter: combatant.spell_mod_counter - 1)
       end
 
+      Global.logger.info "Combatant's weapon effects after mod updates in newturn: #{combatant.spell_weapon_effects}"
+
       combatant.update(luck: nil)
       combatant.update(posed: false)
       combatant.update(recoil: 0)
@@ -104,7 +107,7 @@ module AresMUSH
 
 
       if (combatant.is_ko && combatant.is_npc?)
-        FS3Combat.leave_combat(combatant.combat, combatant)
+        # FS3Combat.leave_combat(combatant.combat, combatant)
       else
         # Be sure to do this AFTER checking for KO up above.
         combatant.update(damaged_by: [])
@@ -143,6 +146,11 @@ module AresMUSH
         combatant.update(action_args: nil)
         damaged_by = combatant.damaged_by.join(", ")
         FS3Combat.emit_to_combat combatant.combat, t('fs3combat.is_koed', :name => combatant.name, :damaged_by => damaged_by), nil, true
+        if (!combatant.is_npc? && Custom.knows_spell?(combatant.associated_model, "Phoenix's Healing Flames"))
+          combatant.update(is_ko: false)
+          combatant.update(action_klass: "AresMUSH::FS3Combat::SpellTargetAction")
+          combatant.update(action_args: "#{combatant.name}/Phoenix's Healing Flames")
+        end
       end
     end
 
