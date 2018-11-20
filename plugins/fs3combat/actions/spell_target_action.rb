@@ -18,10 +18,6 @@ module AresMUSH
         num = Global.read_config("spells", self.spell, "target_num")
 
         return t('custom.too_many_targets', :spell => self.spell, :num => num) if (self.targets.count > num)
-
-
-
-
       end
 
       def print_action
@@ -86,7 +82,7 @@ module AresMUSH
 
             #Equip Weapon Specials
             if weapon_specials_str
-              Global.logger.info "Target: #{target}"
+
               Custom.spell_weapon_effects(target, self.spell)
 
               weapon = target.weapon.before("+")
@@ -111,8 +107,13 @@ module AresMUSH
 
             #Equip Armor Specials
             if armor_specials_str
-              armor_specials = armor_specials_str ? armor_specials_str.split('+') : nil
-              FS3Combat.set_armor(combatant, target, target.armor, armor_specials)
+
+              Custom.spell_armor_effects(target, self.spell)
+
+              weapon = target.armor.before("+")
+
+              FS3Combat.set_armor(nil, target, armor, [armor_specials_str])
+
               messages.concat [t('custom.casts_spell', :name => self.name, :spell => self.spell, :succeeds => succeeds)]
             end
 
