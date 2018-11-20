@@ -40,7 +40,6 @@ module AresMUSH
             self.caster_combat = enactor.combatant
             self.target_combat = combat.find_combatant(target_name)
           end
-
         end
         arg_array = [self.target_name, self.spell]
         self.action_args = arg_array.join("/")
