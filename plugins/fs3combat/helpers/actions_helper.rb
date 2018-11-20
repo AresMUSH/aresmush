@@ -113,7 +113,28 @@ module AresMUSH
         end
       end
 
-      Global.logger.info "Combatant's weapon effects after round updates in newturn: #{combatant.spell_weapon_effects}"
+      #Tracking rounds for spell armor specials
+      if !combatant.spell_armor_effects.empty?
+        weapon_effects = combatant.spell_armor_effects
+        weapon_effects.each do |armor, effects|
+          effects.each do |effect, rounds|
+            new_rounds = rounds - 1
+            if new_rounds == 0
+              armor_effects[armor].delete(effect)
+              armor = combatant.armor.before("+")
+              if armor_effects[armor] && armor_effects[armor].empty?
+                armor_effects.delete(armor)
+              end
+            else
+              armor_effects[armor][effect] = new_rounds
+            end
+            combatant.update(spell_armor_effects: armor_effects)
+            if new_rounds == 0
+              FS3Combat.set_armor(nil, combatant, armor, nil)
+            end
+          end
+        end
+      end
 
       combatant.update(luck: nil)
       combatant.update(posed: false)
