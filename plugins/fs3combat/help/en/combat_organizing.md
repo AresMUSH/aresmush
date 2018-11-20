@@ -79,11 +79,8 @@ Admins, combat organizers, and characters with the manage_combat permission can 
 `combat/lethalmod <name>=<modifier>` - Gives the combatant a modifier to lethality on damage TAKEN
 `spell/mod <name>=<mod>` - Gives the combatant a modifier to their spell rolls.
 `combat/clearmods <name>` - Clears all modifiers from combatant and sets to 0.  Use with caution, as this can erase spell effects.
-`combat/seemods <name>` Shows all combat mods set on a combatant. 
+`combat/seemods <name>` Shows all combat mods set on a combatant.
 **Tip:** Mods set this way only last for one round.
-
-##Specials
-`combat/weaponspecials <name>=<special>[+<special>+<special>]` - Set a character or NPC's persistent weapon specials. Use 'None' to clear.
 
 ## Housekeeping
 `combat/transfer <name>` - Transfer organizer powers to another person in combat.
