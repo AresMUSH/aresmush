@@ -15,9 +15,24 @@ module AresMUSH
         weapon_specials[weapon] = {special => rounds}
       end
 
+      def self.spell_armor_effects(combatant, spell)
+        rounds = Global.read_config("spells", spell, "rounds")
+        special = Global.read_config("spells", spell, "armor_specials")
+        weapon = combatant.armor.before("+")
+        weapon_specials = combatant.spell_armor_effects
+        
+        Global.logger.info "Combatant's old armor effects: #{combatant.spell_armor_effects}"
 
-      combatant.update(spell_weapon_effects: weapon_specials)
-      Global.logger.info "Combatant's weapon effects: #{combatant.spell_weapon_effects}"
+        if combatant.spell_armor_effects.has_key?(armor)
+          old_armor_specials = armor_specials[armor]
+          armor_specials[armor] = old_armor_specials.merge!( special => rounds)
+        else
+          armor_specials[armor] = {special => rounds}
+        end
+
+
+      combatant.update(spell_armor_effects:armor_specials)
+      Global.logger.info "Combatant's armor effects: #{combatant.armor_weapon_effects}"
 
     end
 

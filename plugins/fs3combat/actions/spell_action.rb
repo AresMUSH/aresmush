@@ -48,9 +48,6 @@ module AresMUSH
           target_optional = Global.read_config("spells", self.spell, "target_optional")
           roll = Global.read_config("spells", self.spell, "roll")
 
-
-
-
           targets.each do |target|
 
             #Healing
@@ -98,9 +95,15 @@ module AresMUSH
 
             #Equip Armor Specials
             if armor_specials_str
-              armor_specials = armor_specials_str ? armor_specials_str.split('+') : nil
-              FS3Combat.set_armor(nil, self.combatant, target.armor, armor_specials)
+
+              Custom.spell_armor_effects(combatant, self.spell)
+              armor = combatant.armor.before("+")
+
+              FS3Combat.set_armor(nil, self.combatant, armor, [armor_specials_str])
+
               messages.concat [t('custom.casts_spell', :name => self.name, :spell => self.spell, :succeeds => succeeds)]
+
+
             end
 
 
