@@ -16,7 +16,7 @@ module AresMUSH
         end
         
         { 
-          jobs: jobs.map { |j| {
+          jobs: jobs.reverse.map { |j| {
             id: j.id,
             title: j.title,
             unread: j.is_unread?(enactor),
