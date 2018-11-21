@@ -14,7 +14,7 @@ module AresMUSH
       else
         weapon_specials[weapon] = {special => rounds}
       end
-      combatant.update(spell_weapon_effects:weaopn_specials)
+      combatant.update(spell_weapon_effects:weapon_specials)
       Global.logger.info "Combatant's weapon effects: #{combatant.spell_weapon_effects}"
 
     end
