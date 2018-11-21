@@ -144,7 +144,7 @@ a:focus{
 }
 
 .navbar {
-  z-index: 9999;
+  z-index: 2000;
 }
 
 .navbar-collapse.in {
@@ -352,6 +352,10 @@ mark {
 
 .pull-right {
     padding: 10px;
+}
+
+.modal {
+  z-index: 3000;
 }
 
 /* -------------------------
@@ -956,7 +960,7 @@ input[type='file'] {
 
 /*.char-scene-list li:before { content: "\2666  "; }*/
 
-@media (max-width:800px)  { 
+@media (max-width:992px)  { 
 
 .profile-wrap { 
     padding: 10px; 
@@ -980,6 +984,31 @@ input[type='file'] {
     padding-left: 0px;
     padding-right: 0px;
 }
+
+
+.body-row 
+{
+  display: flex;
+  flex-direction: column;
+  
+}
+
+.left-sidebar {
+  order: 2;
+}
+
+.right-sidebar {
+  order: 2;
+}
+
+.left-body {
+  order: 1;
+}
+
+.right-body {
+  order: 1;
+}
+
 
 }
 
