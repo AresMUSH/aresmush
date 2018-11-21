@@ -122,7 +122,7 @@ module AresMUSH
             #Reviving
             if is_revive
               target.update(is_ko: false)
-              messages.concat [t('custom.cast_res', :name => self.name, :spell => self.spell, :succeeds => succeeds, :target => print_target_names)]
+              messages.concat [t('custom.cast_res', :name => self.name, :spell => self.spell, :succeeds => succeeds, :target => target.name)]
               FS3Combat.emit_to_combatant target, t('custom.been_resed', :name => self.name)
             end
 
