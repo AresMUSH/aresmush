@@ -16,7 +16,6 @@ module AresMUSH
       end
       combatant.update(spell_weapon_effects:weapon_specials)
       Global.logger.info "Combatant's weapon effects: #{combatant.spell_weapon_effects}"
-
     end
 
     def self.spell_armor_effects(combatant, spell)
