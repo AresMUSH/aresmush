@@ -30,6 +30,7 @@ module AresMUSH
          {
            id: category.id,
            name: category.name,
+           description: category.description,
            can_post: Forum.can_write_to_category?(enactor, category),
            posts: posts
          }
