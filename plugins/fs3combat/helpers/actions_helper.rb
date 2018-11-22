@@ -53,9 +53,9 @@ module AresMUSH
       if (!combatant.is_subdued?)
         combatant.update(subdued_by: nil)
       end
-      if combatant.action_klass = "AresMUSH::FS3Combat::SpellAction"
-        combatant.update(action_klass: nil)
-      end
+      # if combatant.action_klass = "AresMUSH::FS3Combat::SpellAction"
+      #   combatant.update(action_klass: nil)
+      # end
 
       # Tracking mod rounds
       if combatant.lethal_mod_counter == 0 && combatant.damage_lethality_mod != 0
