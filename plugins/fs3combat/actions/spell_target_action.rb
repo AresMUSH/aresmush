@@ -189,7 +189,7 @@ module AresMUSH
         end
         level = Global.read_config("spells", self.spell, "level")
         if level == 8
-          messages.concat [t('custom.level_eight_fatigue', :name => self.name]
+          messages.concat [t('custom.level_eight_fatigue', :name => self.name)]
         end
         messages
       end
