@@ -67,7 +67,8 @@ module AresMUSH
       end
       
       def hooks        
-        @char.rp_hooks
+        formatter = MarkdownFormatter.new
+        formatter.to_mush @char.rp_hooks
       end
       
       def last_on
