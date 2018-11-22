@@ -10,7 +10,7 @@
 %xh<%= t('events.signups')%>%xn
 
 <% event.ordered_signups.each_with_index do |s, i| %>
-<%= left("#{i+1}.", 3) %><%= s.character.name %> - <%= s.comment %>
+<%= left("#{i+1}.", 3) %><%= s.character.name %> <%= signup_comment(s) %>
 <% end %>
 
 %lf
