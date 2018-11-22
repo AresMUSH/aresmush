@@ -182,6 +182,11 @@ module AresMUSH
           messages.concat [t('custom.spell_target_resolution_msg', :name => self.name, :spell => spell, :target => print_target_names, :succeeds => succeeds)]
 
         end
+        level = Global.read_config("spells", self.spell, "level")
+        
+        if level == 8
+          messages.concat [t('custom.level_eight_fatigue', :name => self.name]
+        end
         Global.logger.info "Combatant's final weapon effects: #{combatant.spell_weapon_effects}"
         messages
 
