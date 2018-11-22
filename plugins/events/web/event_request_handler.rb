@@ -22,13 +22,20 @@ module AresMUSH
           description = Website.format_markdown_for_html(event.description)
         end
         
+        if (enactor)
+          current_signup = event.signups.select { |s| s.character == enactor }.first
+        else
+          current_signup = nil
+        end
+
         signups = event.ordered_signups.map { |s| 
           {
             char: {
                     name: s.char_name,
                     icon: s.character ? Website.icon_for_char(s.character) : nil
                   },
-            comment: s.comment
+            comment: s.comment,
+            author: enactor && s.character == enactor
             }}
                   
         {
@@ -39,6 +46,8 @@ module AresMUSH
           date: datetime.before(' '),
           time: datetime.after( ' '),
           signups: signups,
+          signed_up: !!current_signup,
+          signup_comment: current_signup ? current_signup.comment : nil,
           can_manage: enactor && Events.can_manage_event(enactor, event),
           date_entry_format: Global.read_config("datetime", 'date_entry_format_help').upcase,
           start_datetime_local: event.start_datetime_local(request.enactor),
