@@ -1,4 +1,3 @@
-# Test
 module AresMUSH
   module Tinker
     class TinkerCmd
