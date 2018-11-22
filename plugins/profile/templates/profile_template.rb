@@ -15,7 +15,7 @@ module AresMUSH
       end
       
       def basic_demographics
-        Demographics.basic_demographics.sort
+        Demographics.visible_demographics(@char, @enactor).sort
       end
       
       def demographic(d)

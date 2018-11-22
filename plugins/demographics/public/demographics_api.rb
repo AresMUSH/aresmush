@@ -9,9 +9,27 @@ module AresMUSH
       basic_demographics.delete 'actor'
       basic_demographics
     end
+    
+    def self.visible_demographics(char, viewer)
+      show_all = viewer && (viewer == char || viewer.has_permission?("manage_demographics"))
+
+      demographics = Demographics.basic_demographics
+
+      if (!show_all)
+        Demographics.private_demographics.each do |d|
+          demographics.delete d
+        end
+      end
+      
+      demographics
+    end
             
     def self.required_demographics
       Global.read_config("demographics", "required_properties")
+    end
+
+    def self.private_demographics
+      Global.read_config("demographics", "private_properties")
     end
     
     def self.name_and_nickname(char)
