@@ -17,7 +17,7 @@ en:
        recaptcha_failed: "Please prove you're human first."
        no_guest_webportal: "Guests do not have a web portal account.  You can still use the 'Play' screen to play with the web client as a guest."
        web_registration_disabled: "Web registration is disabled.  Please create a character in the game."
-       char_reserved: "Character %{name} created.  Temporary password is %{password}."
+       char_reserved: "Character %{name} created.  Temporary password is %{password}"
        invalid_email_format:  "That is not a valid email format."
        password_changed: "You change your password."
        password_reset: "%{name}'s password has been reset to %{password}"
