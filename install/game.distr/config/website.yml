@@ -95,6 +95,8 @@ website:
       title: Create New Page
     - page: wiki-all
       title: All Pages
+    - page: search-wiki
+      title: Search Wiki
     - page: wiki-tags
       title: Tags
     - page: recent-changes
@@ -120,6 +122,6 @@ website:
       url: https://aresmush.com/mush-101/
     - page: jobs
       title: Requests
-  website_code_path: "/Users/lynn/Code/ares-webportal"
+  website_code_path: "/home/ares/ares-webportal"
   wiki_aliases:
     main: home
