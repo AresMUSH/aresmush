@@ -21,6 +21,17 @@ module AresMUSH
         config['demographics']['private_properties'] = []
         DatabaseMigrator.write_config_file("demographics.yml", config)    
         
+        Global.logger.debug "Normalize group names"
+        
+        Character.all.each do |c|
+          new_groups = {}
+          if (c.groups)
+            c.groups.each do |k, v|
+              new_groups[k.downcase] = v
+            end
+          end
+          c.update(groups: new_groups)
+        end
         
       end
     end
