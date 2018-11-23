@@ -11,7 +11,7 @@ Players with the necessary permissions can add and remove people from the roster
 `roster/add <name>=<contact>` - Adds someone to the roster.  Contact is optional.
 `roster/remove <name>` - Removes someone from the roster.
 `roster/notes <name>=<summary>` - Adds a short summary of the character.
-`roster/played <yes/no>` - Indicates if the character was previously played.
+`roster/played <name>=<yes/no>` - Indicates if the character was previously played.
 
 ## Restricted Characters
 

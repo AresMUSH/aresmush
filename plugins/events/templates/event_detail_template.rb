@@ -17,6 +17,10 @@ module AresMUSH
       def start_time_standard
         @event.start_time_standard
       end
+      
+      def signup_comment(signup)
+        signup.comment ? "- #{signup.comment}" : ""
+      end
     end
   end
 end

@@ -56,6 +56,8 @@ module AresMUSH
         return ProfileSaveRequestHandler
       when "profileSource"
         return ProfileSourceRequestHandler
+      when "searchChars"
+        return SearchCharsRequestHandler
       end
       nil
     end

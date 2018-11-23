@@ -24,28 +24,6 @@ module AresMUSH
     def save_upcase
       self.name_upcase = self.name ? self.name.upcase : nil
     end
-    
-    def search_blob
-      rooms = self.rooms.map { |r| "#{r.name} #{r.description}"}.join(" ")
-      parent_name = self.parent ? self.parent.name : ''
-      "#{self.name} #{self.description} #{parent_name} #{rooms}"
-    end
-    
-    def searchable?
-      true
-    end
-    
-    def search_name
-      self.name
-    end
-    
-    def search_id
-      self.id
-    end
-    
-    def search_summary
-      self.description
-    end
   end
 end
 
