@@ -27,10 +27,7 @@ module AresMUSH
               client.emit_failure t('jobs.cannot_handle_jobs')
               return
             end
-            job.update(assigned_to: target)
-            job.update(status: "OPEN")
-            notification = t('jobs.job_assigned', :number => job.id, :title => job.title, :assigner => enactor_name, :assignee => target.name)
-            Jobs.notify(job, notification, enactor)
+            Jobs.assign(job, target, enactor)
           end
         end
       end

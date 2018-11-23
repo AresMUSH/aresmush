@@ -16,3 +16,4 @@ en:
         command_help_title: "Command Quick Reference"
         command_help_footer: "For more help, use %xchelp %{topic}%xn or visit the web portal: %{url}."
         beginner_set: "You set your beginner flag to %{option}."
+        pages_tip: "For additional pages, put the page # after the command (e.g. help2, help3, etc.)"

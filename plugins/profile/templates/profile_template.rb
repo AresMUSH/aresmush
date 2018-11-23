@@ -15,7 +15,7 @@ module AresMUSH
       end
       
       def basic_demographics
-        Demographics.basic_demographics.sort
+        Demographics.visible_demographics(@char, @enactor).sort
       end
       
       def demographic(d)
@@ -67,7 +67,8 @@ module AresMUSH
       end
       
       def hooks        
-        @char.rp_hooks
+        formatter = MarkdownFormatter.new
+        formatter.to_mush @char.rp_hooks
       end
       
       def last_on

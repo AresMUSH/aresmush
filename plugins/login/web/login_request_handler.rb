@@ -14,7 +14,11 @@ module AresMUSH
         elsif (char.is_statue?)
           return { error: t('dispatcher.you_are_statue') }
         end
-        char.set_login_token
+        
+        if (char.login_token_expired?)
+          char.set_login_token
+        end
+        
         {
           token: char.login_api_token,
           name: char.name,
