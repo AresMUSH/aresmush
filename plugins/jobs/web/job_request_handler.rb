@@ -12,7 +12,7 @@ module AresMUSH
           return { error: t('webportal.not_found') }
         end
         
-        job_admin = Jobs.can_access_jobs?(enactor)
+        is_job_admin = Jobs.can_access_jobs?(enactor)
         
         # Authors can access their own job.
         error = Jobs.check_job_access(enactor, job, true)
@@ -34,7 +34,7 @@ module AresMUSH
           status: job.status,
           created: job.created_date_str(enactor),
           is_open: job.is_open?,
-          job_admin: job_admin,
+          is_job_admin: is_job_admin,
           is_approval_job: job.author && !job.author.is_approved? && (job.author.approval_job == job),
           author: { name: job.author_name, id: job.author ? job.author.id : nil, icon: Website.icon_for_char(job.author) },
           assigned_to: job.assigned_to ? { name: job.assigned_to.name, icon: Website.icon_for_char(job.assigned_to) } : nil,
