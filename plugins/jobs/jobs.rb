@@ -105,6 +105,8 @@ module AresMUSH
         return JobAssignRequestHandler
       when "jobChangeStatus"
         return JobChangeStatusRequestHandler
+      when "searchJobs"
+        return SearchJobsRequestHandler
       end
       nil
     end

@@ -8,7 +8,7 @@ module AresMUSH
           enactor.jobs.to_a : 
           Jobs.open_requests(enactor)
 
-        requests = requests.sort_by { |r| r.id }
+        requests = requests.sort_by { |r| r.created_at }
         paginator = Paginator.paginate(requests, cmd.page, 20)
         if (paginator.out_of_bounds?)
           template = BorderedDisplayTemplate.new t('pages.not_that_many_pages')

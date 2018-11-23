@@ -57,18 +57,17 @@ module AresMUSH
       end
       case filter
       when "ALL"
-        jobs = Job.all.to_a
+        jobs = Job.all.select { |j| Jobs.can_access_category?(char, j.category) }
       when "ACTIVE", nil
-        jobs = Job.all.select { |j| j.is_open? || j.is_unread?(char) }
+        jobs = Job.all.select { |j| Jobs.can_access_category?(char, j.category) && (j.is_open? || j.is_unread?(char)) }
       when "MINE"
         jobs = char.assigned_jobs.select { |j| j.is_open? }
       else
-        jobs = Job.find(category: char.jobs_filter.upcase).select { |j| j.is_open? }
+        jobs = Job.find(category: char.jobs_filter.upcase).select { |j| Jobs.can_access_category?(char, j.category) && j.is_open? }
       end
 
       jobs = jobs || []
-      jobs = jobs.select { |j| Jobs.can_access_category?(char, j.category) }
-      jobs.sort_by { |j| j.id }
+      jobs.sort_by { |j| j.created_at }
     end
     
     def self.with_a_job(char, client, number, &block)

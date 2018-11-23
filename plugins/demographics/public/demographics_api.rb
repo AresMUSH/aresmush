@@ -10,6 +10,14 @@ module AresMUSH
       basic_demographics
     end
     
+    def self.public_demographics
+      demographics = Demographics.basic_demographics
+      Demographics.private_demographics.each do |d|
+        demographics.delete d
+      end
+      demographics
+    end
+    
     def self.visible_demographics(char, viewer)
       show_all = viewer && (viewer == char || viewer.has_permission?("manage_demographics"))
 
