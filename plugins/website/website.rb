@@ -118,8 +118,6 @@ module AresMUSH
         return MarkdownPreviewRequestHandler
       when "recentChanges"
         return GetRecentChangesRequestHandler
-      when "searchSite"
-        return SiteSearchRequestHandler
       when "sidebarInfo"
         return GetSidebarInfoRequestHandler
       when "shutdown"

@@ -35,26 +35,6 @@ module AresMUSH
       self.update(profile_last_edited: Time.now)
       ProfileVersion.create(character: self, text: build_profile_version, author: enactor)
     end
-        
-    def search_blob
-      "#{self.name} #{build_profile_version} #{self.profile_tags.join(' ')}"
-    end
-    
-    def searchable?
-      is_approved?
-    end
-    
-    def search_name
-      self.name
-    end
-    
-    def search_id
-      self.name
-    end
-    
-    def search_summary
-      nil
-    end
   end
   
 end

@@ -173,6 +173,8 @@ module AresMUSH
         return GetSceneTypesRequestHandler
       when "sceneLocations"
         return GetSceneLocationsHandler
+      when "searchScenes"
+        return SearchScenesRequestHandler
       when "unwatchScene"
         return UnwatchSceneRequestHandler
       end
