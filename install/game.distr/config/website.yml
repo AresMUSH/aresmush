@@ -109,6 +109,8 @@ website:
     menu:
     - page: help
       title: Game Help
+    - page: search-wiki
+      title: Search
     - page: help-topic
       id: markdown
       title: Markdown Reference
