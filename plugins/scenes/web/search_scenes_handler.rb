@@ -24,7 +24,8 @@ module AresMUSH
         end
         
         if (!searchParticipant.blank?)
-          scenes = scenes.select { |s| s.participants.map { |p| p.name.upcase }.include?(searchParticipant.upcase) }
+          names = searchParticipant.upcase.split(" ")
+          scenes = scenes.select { |s| (names & s.participants.map { |p| p.name.upcase }).count == names.count }
         end
         
         if (!searchTag.blank?)

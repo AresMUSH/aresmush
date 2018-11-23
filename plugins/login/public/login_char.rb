@@ -45,7 +45,7 @@ module AresMUSH
     end
     
     def login_token_expired?
-      self.login_api_token_expiry < Time.now
+      !self.login_api_token_expiry || (self.login_api_token_expiry < Time.now)
     end
     
     def set_login_token
