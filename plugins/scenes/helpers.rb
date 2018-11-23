@@ -4,7 +4,7 @@ module AresMUSH
     def self.new_scene_activity(scene, data = nil)
       web_msg = "#{scene.id}|#{data}"
       Global.client_monitor.notify_web_clients(:new_scene_activity, web_msg) do |char|
-        Scenes.is_watching?(scene, char)
+        Scenes.can_read_scene?(char, scene)
       end
     end
     
