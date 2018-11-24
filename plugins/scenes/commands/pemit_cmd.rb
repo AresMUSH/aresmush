@@ -15,6 +15,11 @@ module AresMUSH
         [ self.names, self.message ]
       end
       
+      def log_command
+        # Don't log pose details, but do record that someone used the command for abuse
+        Global.logger.debug("#{self.class.name}: #{client} Enactor=#{enactor_name} Cmd=pemit")
+      end
+      
       def handle
         OnlineCharFinder.with_online_chars(self.names, client) do |results|
           results.each do |r|
