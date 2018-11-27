@@ -12,6 +12,7 @@ module AresMUSH
     attribute :lethal_mod_counter, :type => DataType::Integer, :default => 0
     attribute :attack_mod_counter, :type => DataType::Integer, :default => 0
     attribute :defense_mod_counter, :type => DataType::Integer, :default => 0
+    attribute :stance_counter, :type => DataType::Integer, :default => 0
 
     attribute :action_klass
     attribute :action_args

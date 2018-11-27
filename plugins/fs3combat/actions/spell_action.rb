@@ -163,6 +163,8 @@ module AresMUSH
             #Change Stance
             if stance
               target.update(stance: stance)
+              rounds = Global.read_config("spells", self.spell, "rounds")
+              target.update(stance_counter: rounds)
               messages.concat [t('custom.cast_stance', :name => self.name, :target => print_target_names, :spell => self.spell, :succeeds => succeeds, :stance => stance)]
             end
 
