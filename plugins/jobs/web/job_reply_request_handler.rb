@@ -14,10 +14,10 @@ module AresMUSH
           return { error: t('webportal.not_found') }
         end
                 
-        if (job.author != enactor)
-          if (!enactor.is_admin?)
-            return { error: t('dispatcher.not_allowed') }
-          end
+        # Authors can reply to their own job.
+        error = Jobs.check_job_access(enactor, job, true)
+        if (error)
+          return { error: error }
         end
         
         reply = Website.format_input_for_mush(reply)

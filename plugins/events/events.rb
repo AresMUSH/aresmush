@@ -60,6 +60,10 @@ module AresMUSH
          return DeleteEventRequestHandler
        when "upcomingEvents"
          return UpcomingEventsRequestHandler
+       when "eventSignup"
+         return EventSignupRequestHandler
+       when "eventCancelSignup"
+         return EventCancelSignupRequestHandler
        end
        nil
     end
