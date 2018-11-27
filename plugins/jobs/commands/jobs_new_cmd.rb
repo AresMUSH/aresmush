@@ -15,7 +15,7 @@ module AresMUSH
           return
         end
         
-        unread = unread.sort_by { |j| j.id }
+        unread = unread.sort_by { |j| j.created_at }
         job = unread[0]
         template = JobTemplate.new(enactor, job)            
         client.emit template.render

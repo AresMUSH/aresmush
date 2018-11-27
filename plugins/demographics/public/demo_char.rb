@@ -14,7 +14,7 @@ module AresMUSH
     end
     
     def demographic(key)
-      name = key.to_s
+      name = key.to_s.downcase
       return self.birthdate if name == "birthdate"
       demo = self.demographics[name]
       return demo.blank? ? nil : demo
@@ -32,7 +32,7 @@ module AresMUSH
     end
     
     def group(name)
-      self.groups[name]
+      self.groups[name.downcase]
     end
   end
   

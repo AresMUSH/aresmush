@@ -34,6 +34,14 @@ module AresMUSH
       messages.sort_by { |m| m.created_at }
     end
     
+    def self.archive_delivery(delivery)
+      tags = delivery.tags
+      tags << Mail.archive_tag
+      tags.delete(Mail.inbox_tag)
+      tags.uniq!
+      delivery.update(tags: tags)
+    end
+    
     def self.with_a_delivery(client, enactor, num, &block)
       list = Mail.filtered_mail(enactor, enactor.mail_filter)      
       Mail.with_a_delivery_from_a_list client, num, list, &block

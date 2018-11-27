@@ -130,28 +130,5 @@ module AresMUSH
     def likes
       self.likers.count
     end
-
-    def search_name
-      self.title.blank? ? "Untitled Scene #{self.id}" : self.title
-    end
-    
-    def search_id
-      self.id
-    end
-    
-    def searchable?
-      self.shared
-    end
-    
-    def search_blob
-      people = self.participants.map { |p| p.name }.join(" ")
-      log = self.scene_log ? self.scene_log.log : ''
-      plot = self.plot ? self.plot.title : ''
-      "#{self.search_name} #{self.summary} #{plot} #{people} #{tags.join(' ')} #{log}"
-    end
-    
-    def search_summary
-      self.summary
-    end
   end
 end

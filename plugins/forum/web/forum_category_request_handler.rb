@@ -21,6 +21,7 @@ module AresMUSH
         posts = category.sorted_posts.reverse
            .map { |p| {
              id: p.id,
+             category_id: p.bbs_board.id,
              title: p.subject,
              unread: enactor && p.is_unread?(enactor),
              date: p.created_date_str(enactor),
@@ -30,6 +31,7 @@ module AresMUSH
          {
            id: category.id,
            name: category.name,
+           description: category.description,
            can_post: Forum.can_write_to_category?(enactor, category),
            posts: posts
          }

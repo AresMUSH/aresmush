@@ -47,7 +47,7 @@ module AresMUSH
     
     def self.set_group(char, group_name, group)
       groups = char.groups
-      groups[group_name] = group
+      groups[group_name.downcase] = group
       char.update(groups: groups)      
     end
     

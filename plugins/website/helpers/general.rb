@@ -36,7 +36,7 @@ module AresMUSH
       scss_path = File.join(engine_styles_path, 'ares.scss')
       css_path = File.join(AresMUSH.website_styles_path, 'ares.css')
       load_paths = [ engine_styles_path, AresMUSH.website_styles_path ]
-      css = Sass::Engine.for_file(scss_path, { load_paths: load_paths }).render
+      css = SassC::Engine.new(File.read(scss_path), { load_paths: load_paths }).render
       File.open(css_path, "wb") {|f| f.write(css) }
     end
     
