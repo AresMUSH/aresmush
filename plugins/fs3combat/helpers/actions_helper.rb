@@ -58,7 +58,7 @@ module AresMUSH
       # end
 
       # Tracking mod rounds
-       Global.logger.debug "Lethal counter: #{combatant.lethal_mod_counter} Lethal mod: #{combatant.damage_lethality_mod}"
+
       if combatant.lethal_mod_counter == 0 && combatant.damage_lethality_mod != 0
         combatant.log "#{combatant.name} resetting lethality mod to #{combatant.damage_lethality_mod}."
         FS3Combat.emit_to_combat combatant.combat, t('custom.mod_wore_off', :name => combatant.name, :type => "lethality", :mod => combatant.damage_lethality_mod), nil, true
@@ -66,7 +66,6 @@ module AresMUSH
       elsif combatant.lethal_mod_counter != 0
         combatant.update(lethal_mod_counter: combatant.lethal_mod_counter - 1)
       end
-      Global.logger.debug "Lethal counter: #{combatant.lethal_mod_counter} Lethal mod: #{combatant.damage_lethality_mod}"
 
       if combatant.defense_mod_counter == 0 && combatant.defense_mod != 0
         combatant.log "#{combatant.name} resetting defense mod to #{combatant.defense_mod}."
@@ -90,6 +89,15 @@ module AresMUSH
         combatant.update(spell_mod: 0)
       elsif combatant.spell_mod_counter != 0
         combatant.update(spell_mod_counter: combatant.spell_mod_counter - 1)
+      end
+
+      #Tracking rounds for stance spells_learned
+      if combatant.stance_counter == 0 && combatant.stance != "Normal"        
+        FS3Combat.emit_to_combat combatant.combat, t('custom.stance_wore_off', :name => combatant.name, :stance => combatant.stance), nil, true
+        combatant.update(stance: "Normal")
+        combatant.log "#{combatant.name} resetting stance to #{combatant.stance}."
+      elsif combatant.stance_counter != 0
+        combatant.update(stance_counter: combatant.stance_counter - 1)
       end
 
       #Tracking rounds for spell weapon specials

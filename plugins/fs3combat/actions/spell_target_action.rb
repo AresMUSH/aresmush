@@ -26,7 +26,7 @@ module AresMUSH
       end
 
       def print_action_short
-        t('custom.spell_action_target_msg_short', :targets => print_target_names)
+        t('custom.spell_target_action_msg_short', :targets => print_target_names)
       end
 
       def resolve
@@ -174,6 +174,8 @@ module AresMUSH
             #Change Stance
             if stance
               target.update(stance: stance)
+              rounds = Global.read_config("spells", self.spell, "rounds")
+              target.update(stance_counter: rounds)
               messages.concat [t('custom.cast_stance', :name => self.name, :target => print_target_names, :spell => self.spell, :succeeds => succeeds, :stance => stance)]
             end
 
