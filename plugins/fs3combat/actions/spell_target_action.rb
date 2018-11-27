@@ -26,7 +26,7 @@ module AresMUSH
       end
 
       def print_action_short
-        t('custom.spell_action_msg_short')
+        t('custom.spell_action_target_msg_short', :targets => print_target_names)
       end
 
       def resolve
