@@ -41,6 +41,16 @@ module AresMUSH
       return Events.can_manage_events?(enactor) || enactor == event.character
     end
     
+    def self.signup_for_event(event, char, comment)
+      signup = event.signups.select { |s| s.character == char }.first
+      
+      if (signup)
+        signup.update(comment: comment)
+      else
+        EventSignup.create(event: event, character: char, comment: comment)
+      end
+    end
+    
     def self.create_event(enactor, title, datetime, desc)
       event = Event.create(title: title, 
       starts: datetime, 

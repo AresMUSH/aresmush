@@ -46,7 +46,8 @@ module AresMUSH
       end
     end
     
-    def self.substitute_ic_names(format, time)
+    def self.substitute_ic_names(original_format, time)
+      format = "#{original_format}"
       month_names = Global.read_config("ictime", "month_names") 
       day_names = Global.read_config("ictime", "day_names")
                       

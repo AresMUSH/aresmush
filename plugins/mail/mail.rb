@@ -96,6 +96,10 @@ module AresMUSH
         return MailMessageRequestHandler
       when "sendMail"
         return MailSendRequestHandler
+      when "archiveMail"
+        return MailArchiveRequestHandler
+      when "deleteMail"
+        return MailDeleteRequestHandler
       end
       nil
     end
