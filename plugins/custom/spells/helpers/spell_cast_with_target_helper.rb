@@ -29,7 +29,7 @@ module AresMUSH
     def self.cast_noncombat_roll_spell_with_target(caster, target, spell, mod)
       enactor_room = caster.room
       success = Custom.roll_noncombat_spell_success(caster, spell, mod)
-      enactor_room.emit t('custom.casts_noncombat_spell_with_target', :name => caster.name, :target => target.name, :spell => spell, :succeeds => success)
+      enactor_room.emit t('custom.casts_noncombat_spell_with_target', :name => caster.name, :target => target.name, :spell => spell, :mod => mod, :succeeds => success)
     end
 
     # def self.cast_heal_with_target(caster_combat, target, spell)

@@ -108,7 +108,7 @@ module AresMUSH
     def self.cast_noncombat_spell(caster, spell, mod)
       enactor_room = caster.room
       success = Custom.roll_noncombat_spell_success(caster, spell, mod)
-      message = t('custom.casts_noncombat_spell', :name => caster.name, :spell => spell, :succeeds => success)
+      message = t('custom.casts_noncombat_spell', :name => caster.name, :spell => spell, :mod => mod, :succeeds => success)
       enactor_room.emit message
       if enactor_room.scene
         Scenes.add_to_scene(enactor_room.scene, message)
