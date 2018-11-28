@@ -91,26 +91,5 @@ module AresMUSH
         return nil
       end
     end
-    
-    def search_name
-      self.heading
-    end
-    
-    def search_id
-      WikiPage.sanitize_page_name(self.name)
-    end
-    
-    def searchable?
-      true
-    end
-    
-    def search_blob
-      text = self.current_version ? self.current_version.text : ''
-      "#{self.search_name} #{text} #{tags.join(' ')}"
-    end
-    
-    def search_summary
-      nil
-    end
   end
 end

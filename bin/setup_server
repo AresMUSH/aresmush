@@ -118,7 +118,7 @@ if [ -e /etc/rc.local ]
 then
     sed -i -e '$i \/root/onboot.sh &\n' /etc/rc.local
 else
-    printf '%s\n' '#!/bin/bash' '/root/onboot.sh' 'exit 0' | sudo tee -a /etc/rc.local
+    printf '%s\n' '#!/bin/bash' '/root/onboot.sh &\n' 'exit 0' | sudo tee -a /etc/rc.local
 fi
 
 sudo chmod +x /etc/rc.local

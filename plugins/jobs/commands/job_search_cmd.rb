@@ -23,11 +23,11 @@ module AresMUSH
   
       def handle
         if (self.category == "title")
-          jobs = Job.all.select { |j| j.title =~ /#{self.value}/i }.sort_by { |j| j.id }
+          jobs = Job.all.select { |j| Jobs.can_access_category?(enactor, j.category) && (j.title =~ /#{self.value}/i) }
         elsif (self.category == "submitter")
           result = ClassTargetFinder.find(self.value, Character, enactor)
           if (result.found?)
-            jobs = Job.find(author_id: result.target.id).sort_by(:number)
+            jobs = Job.find(author_id: result.target.id).select { |j| Jobs.can_access_category?(enactor, j.category)}
           else
             client.emit_failure t('db.object_not_found')
             return
@@ -38,6 +38,7 @@ module AresMUSH
           return
         end
         
+        jobs = jobs.sort_by { |j| j.created_at }
         paginator = Paginator.paginate(jobs, cmd.page, 20)        
         template = JobsListTemplate.new(enactor, paginator)
         if (paginator.out_of_bounds?)

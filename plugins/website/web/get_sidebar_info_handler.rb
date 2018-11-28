@@ -3,28 +3,20 @@ module AresMUSH
     class GetSidebarInfoRequestHandler
       def handle(request)
         enactor = request.enactor
-        
+
         error = Website.check_login(request, true)
         return error if error
-                
-        wiki_nav = []
-        nav_list = Global.read_config('website', 'wiki_nav') || [ "Home" ]
-        nav_list.each do |page_name|
-          page = WikiPage.find_one_by_name(WikiPage.sanitize_page_name(page_name))
-          if (page)
-            wiki_nav << { url: page.name, heading: page.heading }
+
+        if (enactor)
+          if (Jobs.can_access_jobs?(enactor))
+            job_activity = enactor.unread_jobs.count
           else
-            Global.logger.warn "Can't find wiki page #{page_name}."
+            job_activity = enactor.unread_requests.count
           end
+        else
+          job_activity = nil
         end
 
-	if enactor
-	  if Jobs.can_access_jobs?(enactor)
-            job_count = Job.all.select { |j| j.is_unread?(enactor) }.count 
-          else 
-            job_count = enactor.jobs.select { |r| r.is_unread?(enactor) }.count
-	  end
-        end
         {
           timestamp: Time.now.getutc,
           game: GetGameInfoRequestHandler.new.handle(request),
@@ -34,10 +26,11 @@ module AresMUSH
           happenings: Who::WhoRequestHandler.new.handle(request),
           unread_mail: enactor ? enactor.unread_mail.count : nil,
           recent_changes: Website.get_recent_changes(true, 10),
-          job_activity: enactor ? job_count : nil,
-	  left_sidebar: Global.read_config('website', 'left_sidebar'),
+          left_sidebar: Global.read_config('website', 'left_sidebar'),
+          top_navbar: Global.read_config('website', 'top_navbar'),
           registration_required: Global.read_config("website", "portal_requires_registration"),
-          wiki_nav: wiki_nav
+          job_activity: job_activity,
+          jobs_admin: Jobs.can_access_jobs?(enactor)
         }
       end
     end
