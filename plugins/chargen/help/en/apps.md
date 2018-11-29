@@ -15,7 +15,7 @@ This game uses an Applications system for character approvals.  As you are going
 
 Once you're happy with your character, you can submit it for review.  Application admins will make sure it's a good fit for the game's theme, that the skills are reasonable given the background, and that you haven't missed anything important in chargen.
 
-`app/submit` - Submits your application.
+`app/submit [<optional notes about your app>]` - Submits your application.
 
 You can't make further changes while your app is under review.  If you realize you need to change something, you can withdraw or un-submit your application.  Make the necessary changes using the chargen commands.  The app will be on hold while you do this, and you can use the submit command again when you're done.
 
