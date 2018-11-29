@@ -41,7 +41,7 @@ en:
         set_hospital: "You set up this room as a hospital."
         clear_hospital: "This room is no longer set as a hospital."
         max_patients: "You can have up to %{max} patients at once."
-        healed_by_title: "Healed By:"
+        healed_by_title: "Treated By:"
         damage_scan_title: "Injured Characters"
         damage_scan_subtitle: "Name                      Damage Modifier"
 
