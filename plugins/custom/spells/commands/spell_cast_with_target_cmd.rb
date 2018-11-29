@@ -58,6 +58,9 @@ module AresMUSH
         is_revive = Global.read_config("spells", self.spell, "is_revive")
         target_names = target_name.split(" ").map { |n| InputFormatter.titlecase_arg(n) }
         if enactor.combat
+          return emit_failure t('custom.spell_ko') if self.caster_combat.is_ko
+          return t('custom.dont_know_spell') if (!caster_combat.is_npc? &&  Custom.knows_spell?(caster, self.spell) == false && Custom.item_spell(caster) != self.spell)
+
           target_names.each do |name|
             target = enactor.combat.find_combatant(name)
             return t('fs3combat.not_in_combat', :name => name) if !target
@@ -77,6 +80,8 @@ module AresMUSH
               return t('custom.cant_cast_on_gear', :spell => self.spell, :target => target.name, :gear => "armor") if !armor_allowed_specials.include?(armor_specials_str)
             end
           end
+        else
+          return t('custom.dont_know_spell') if (Custom.knows_spell?(caster, self.spell) == false && Custom.item_spell(caster) != spell)
         end
 
 
@@ -92,56 +97,33 @@ module AresMUSH
 
       def handle
       #Reading Config Files
-        # multi_target = Global.read_config("spells", self.spell, "multi_target")
-        # damage_desc = Global.read_config("spells", self.spell, "damage_desc")
-        # damage_inflicted = Global.read_config("spells", self.spell, "damage_inflicted")
+
         heal_points = Global.read_config("spells", self.spell, "heal_points")
-        # is_revive = Global.read_config("spells", self.spell, "is_revive")
-        # is_res = Global.read_config("spells", self.spell, "is_res")
-        # lethal_mod = Global.read_config("spells", self.spell, "lethal_mod")
-        # attack_mod = Global.read_config("spells", self.spell, "attack_mod")
-        # defense_mod = Global.read_config("spells", self.spell, "defense_mod")
-        # spell_mod = Global.read_config("spells", self.spell, "spell_mod")
-        # stance = Global.read_config("spells", self.spell, "stance")
         weapon = Global.read_config("spells", self.spell, "weapon")
-        # weapon_specials = Global.read_config("spells", self.spell, "weapon_specials")
-        # armor = Global.read_config("spells", self.spell, "armor")
-        # armor_specials = Global.read_config("spells", self.spell, "armor_specials")
         fs3_attack = Global.read_config("spells", self.spell, "fs3_attack")
         roll = Global.read_config("spells", self.spell, "roll")
         is_stun = Global.read_config("spells", self.spell, "is_stun")
 
         if self.caster.combat
-          if self.caster_combat.is_ko
-            client.emit_failure t('custom.spell_ko')
-          elsif (!caster_combat.is_npc? &&  Custom.knows_spell?(caster, self.spell) == false && Custom.item_spell(caster) != spell)
-              client.emit_failure t('custom.dont_know_spell')
-          else
 
-
-            #Equip Weapon with attack
-            if fs3_attack
-              if weapon
-                FS3Combat.emit_to_combat caster_combat.combat, t('custom.will_cast_fs3_attack', :name => caster_combat.name, :spell => spell, :target => target_name), nil, true
-                FS3Combat.set_weapon(enactor, caster_combat, weapon)
-                weapon_type = FS3Combat.weapon_stat(caster_combat.weapon, "weapon_type")
-                if is_stun
-                  FS3Combat.set_action(client, enactor, enactor.combat, caster_combat, FS3Combat::SubdueAction, target_name)
-                elsif weapon_type == "Explosive"
-                  FS3Combat.set_action(client, enactor, enactor.combat, caster_combat, FS3Combat::ExplodeAction, target_name)
-                elsif weapon_type == "Suppressive"
-                  FS3Combat.set_action(client, enactor, enactor.combat, caster_combat, FS3Combat::SuppressAction, target_name)
-                else
-                  FS3Combat.set_action(client, enactor, enactor.combat, caster_combat, FS3Combat::AttackAction, target_name)
-                end
+          if fs3_attack
+            if weapon
+              FS3Combat.emit_to_combat caster_combat.combat, t('custom.will_cast_fs3_attack', :name => caster_combat.name, :spell => spell, :target => target_name), nil, true
+              FS3Combat.set_weapon(enactor, caster_combat, weapon)
+              weapon_type = FS3Combat.weapon_stat(caster_combat.weapon, "weapon_type")
+              if is_stun
+                FS3Combat.set_action(client, enactor, enactor.combat, caster_combat, FS3Combat::SubdueAction, target_name)
+              elsif weapon_type == "Explosive"
+                FS3Combat.set_action(client, enactor, enactor.combat, caster_combat, FS3Combat::ExplodeAction, target_name)
+              elsif weapon_type == "Suppressive"
+                FS3Combat.set_action(client, enactor, enactor.combat, caster_combat, FS3Combat::SuppressAction, target_name)
+              else
+                FS3Combat.set_action(client, enactor, enactor.combat, caster_combat, FS3Combat::AttackAction, target_name)
               end
-            else
-              FS3Combat.set_action(client, enactor, enactor.combat, caster_combat, FS3Combat::SpellTargetAction, self.action_args)
             end
-
-
+          else
+            FS3Combat.set_action(client, enactor, enactor.combat, caster_combat, FS3Combat::SpellTargetAction, self.action_args)
           end
-
 
         else
           if heal_points
