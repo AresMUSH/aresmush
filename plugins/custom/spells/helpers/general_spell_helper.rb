@@ -108,13 +108,15 @@ module AresMUSH
       succeeds = Custom.combat_spell_success(spell, die_result)
     end
 
-    def self.roll_noncombat_spell_success(caster, spell, mod)
+    def self.roll_noncombat_spell_success(caster, spell, mod = nil)
       if Custom.knows_spell?(caster, spell)
         school = Global.read_config("spells", spell, "school")
       else
         school = "Magic"
         cast_mod = FS3Skills.ability_rating(caster, "Magic") * 2
-        mod = mod + cast_mod
+        Global.logger.debug "Mod: #{mod}"
+        Global.logger.debug "Cast Mod: #{cast_mod}"
+        mod = mod.to_i + cast_mod
       end
 
       spell_mod = Custom.item_spell_mod(caster)
