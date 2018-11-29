@@ -8,11 +8,6 @@ module AresMUSH
         return nil
       end
       
-      def check_can_advance
-        return t('chargen.not_started') if !enactor.chargen_stage
-        return nil
-      end
-      
       def handle
         if (cmd.switch_is?("confirm"))
           client.emit_success Chargen.submit_app(enactor)
