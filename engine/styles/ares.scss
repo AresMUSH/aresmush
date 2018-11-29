@@ -936,6 +936,10 @@ input[type='file'] {
     overflow-x: hidden;
 }
 
+.job-status {
+  background-color: gray;
+}
+
 .job-status-DONE {
     background-color: gray;
     color: white;
@@ -954,6 +958,30 @@ input[type='file'] {
 .job-status-HOLD {
     background-color: red;
     color: white;
+}
+
+.job-category {
+  background-color: gray;
+}
+
+.job-category-ALERT, .job-category-BUG {
+  background-color: red;
+  color: white;
+}
+
+.job-category-BUILD, .job-category-CODE {
+  background-color: orange;
+  color: black;
+}
+
+.job-category-APP {
+  background-color: purple;
+  color: white;
+}
+
+.job-category-APP, .job-category-REQ {
+  background-color: purple;
+  color: white;
 }
 
 .small-who-icon {
