@@ -9,7 +9,7 @@ module AresMUSH
         pages = WikiPage.all
         
         if (!searchText.blank?)
-          pages = pages.select { |p| p.text =~ /\b#{searchText}\b/i }
+          pages = pages.select { |p| "#{p.heading} #{p.text}" =~ /\b#{searchText}\b/i }
         end
         
         if (!searchTag.blank?)

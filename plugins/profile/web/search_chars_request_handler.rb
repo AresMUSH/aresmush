@@ -6,8 +6,13 @@ module AresMUSH
         searchGroups = request.args[:searchGroups] || {}
         searchDemographics = request.args[:searchDemographics] || {}
         searchTag = (request.args[:searchTag] || "").strip
-                
+        searchName = (request.args[:searchName] || "").strip
+        
         chars = Chargen.approved_chars
+        
+        if (!searchName.blank?)
+          chars = chars.select { |c| "#{Demographics.name_and_nickname(c)} #{c.demographic('fullname')}" =~ /#{searchName}/i }
+        end
         
         searchGroups.each do |group, search|
           next if search.blank?
