@@ -53,17 +53,12 @@ module AresMUSH
       if (!combatant.is_subdued?)
         combatant.update(subdued_by: nil)
       end
-      # if combatant.action_klass = "AresMUSH::FS3Combat::SpellAction"
-      #   combatant.update(action_klass: nil)
-      # end
-
-      # Tracking mod rounds
 
       if combatant.lethal_mod_counter == 0 && combatant.damage_lethality_mod != 0
-        combatant.log "#{combatant.name} resetting lethality mod to #{combatant.damage_lethality_mod}."
+                combatant.log "#{combatant.name} resetting lethality mod to #{combatant.damage_lethality_mod}."
         FS3Combat.emit_to_combat combatant.combat, t('custom.mod_wore_off', :name => combatant.name, :type => "lethality", :mod => combatant.damage_lethality_mod), nil, true
         combatant.update(damage_lethality_mod: 0)
-      elsif combatant.lethal_mod_counter != 0
+      else
         combatant.update(lethal_mod_counter: combatant.lethal_mod_counter - 1)
       end
 
@@ -71,7 +66,7 @@ module AresMUSH
         combatant.log "#{combatant.name} resetting defense mod to #{combatant.defense_mod}."
         FS3Combat.emit_to_combat combatant.combat, t('custom.mod_wore_off', :name => combatant.name, :type => "defense", :mod => combatant.defense_mod), nil, true
         combatant.update(defense_mod: 0)
-      elsif combatant.defense_mod_counter != 0
+      else
         combatant.update(defense_mod_counter: combatant.defense_mod_counter - 1)
       end
 
@@ -79,7 +74,7 @@ module AresMUSH
         combatant.log "#{combatant.name} resetting attack mod to #{combatant.attack_mod}."
         FS3Combat.emit_to_combat combatant.combat, t('custom.mod_wore_off', :name => combatant.name, :type => "attack", :mod => combatant.attack_mod), nil, true
         combatant.update(attack_mod: 0)
-      elsif combatant.attack_mod_counter != 0
+      else
         combatant.update(attack_mod_counter: combatant.attack_mod_counter - 1)
       end
 
@@ -87,63 +82,8 @@ module AresMUSH
         combatant.log "#{combatant.name} resetting spell mod to #{combatant.spell_mod}."
         FS3Combat.emit_to_combat combatant.combat, t('custom.mod_wore_off', :name => combatant.name, :type => "spell", :mod => combatant.spell_mod), nil, true
         combatant.update(spell_mod: 0)
-      elsif combatant.spell_mod_counter != 0
+      else
         combatant.update(spell_mod_counter: combatant.spell_mod_counter - 1)
-      end
-
-      #Tracking rounds for stance spells_learned
-      if combatant.stance_counter == 0 && combatant.stance != "Normal"        
-        FS3Combat.emit_to_combat combatant.combat, t('custom.stance_wore_off', :name => combatant.name, :stance => combatant.stance), nil, true
-        combatant.update(stance: "Normal")
-        combatant.log "#{combatant.name} resetting stance to #{combatant.stance}."
-      elsif combatant.stance_counter != 0
-        combatant.update(stance_counter: combatant.stance_counter - 1)
-      end
-
-      #Tracking rounds for spell weapon specials
-      if !combatant.spell_weapon_effects.empty?
-        weapon_effects = combatant.spell_weapon_effects
-        weapon_effects.each do |weapon, effects|
-          effects.each do |effect, rounds|
-            new_rounds = rounds - 1
-            if new_rounds == 0
-              weapon_effects[weapon].delete(effect)
-              weapon = combatant.weapon.before("+")
-              if weapon_effects[weapon] && weapon_effects[weapon].empty?
-                weapon_effects.delete(weapon)
-              end
-            else
-              weapon_effects[weapon][effect] = new_rounds
-            end
-            combatant.update(spell_weapon_effects: weapon_effects)
-            if new_rounds == 0
-              FS3Combat.set_weapon(nil, combatant, weapon, nil)
-            end
-          end
-        end
-      end
-
-      #Tracking rounds for spell armor specials
-      if !combatant.spell_armor_effects.empty?
-        weapon_effects = combatant.spell_armor_effects
-        weapon_effects.each do |armor, effects|
-          effects.each do |effect, rounds|
-            new_rounds = rounds - 1
-            if new_rounds == 0
-              armor_effects[armor].delete(effect)
-              armor = combatant.armor.before("+")
-              if armor_effects[armor] && armor_effects[armor].empty?
-                armor_effects.delete(armor)
-              end
-            else
-              armor_effects[armor][effect] = new_rounds
-            end
-            combatant.update(spell_armor_effects: armor_effects)
-            if new_rounds == 0
-              FS3Combat.set_armor(nil, combatant, armor, nil)
-            end
-          end
-        end
       end
 
       combatant.update(luck: nil)
@@ -201,8 +141,11 @@ module AresMUSH
         FS3Combat.emit_to_combat combatant.combat, t('fs3combat.is_koed', :name => combatant.name, :damaged_by => damaged_by), nil, true
         if (!combatant.is_npc? && Custom.knows_spell?(combatant.associated_model, "Phoenix's Healing Flames"))
           combatant.update(is_ko: false)
-          combatant.update(action_klass: "AresMUSH::FS3Combat::SpellTargetAction")
+          combatant.update(death_count: 0)
+          Global.logger.info "Phoenix's Healing Flames: Setting #{combatant.name}'s KO to #{combatant.is_ko}."
+          combatant.update(action_klass: "AresMUSH::FS3Combat::SpellAction")
           combatant.update(action_args: "#{combatant.name}/Phoenix's Healing Flames")
+          Custom.delete_all_untreated_damage(combatant.associated_model)
         end
       end
     end

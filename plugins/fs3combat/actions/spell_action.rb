@@ -10,6 +10,7 @@ module AresMUSH
         else
           self.names = self.name
           self.spell = self.action_args
+
         end
 
         error = self.parse_targets(self.names)
@@ -48,6 +49,9 @@ module AresMUSH
           target_optional = Global.read_config("spells", self.spell, "target_optional")
           roll = Global.read_config("spells", self.spell, "roll")
 
+
+
+
           targets.each do |target|
 
             #Healing
@@ -63,7 +67,7 @@ module AresMUSH
 
             #Equip Weapon
             if weapon
-              FS3Combat.set_weapon(nil, self.combatant, weapon)
+              FS3Combat.set_weapon(combatant, target, weapon)
               if armor
 
               else
@@ -73,10 +77,14 @@ module AresMUSH
 
             #Equip Weapon Specials
             if weapon_specials_str
-              Custom.spell_weapon_effects(combatant, self.spell)
-              weapon = combatant.weapon.before("+")
+              weapon_specials = weapon_specials_str ? weapon_specials_str.split('+') : nil
+              current_spell_specials = combatant.spell_weapon_specials
 
-              FS3Combat.set_weapon(nil, self.combatant, weapon, [weapon_specials_str])
+              FS3Combat.set_weapon(combatant, target, target.weapon, weapon_specials)
+
+
+              new_spell_specials = current_spell_specials << weapon_specials_str
+              combatant.update(spell_weapon_specials: new_spell_specials)
 
               if heal_points
 
@@ -89,21 +97,15 @@ module AresMUSH
 
             #Equip Armor
             if armor
-              FS3Combat.set_armor(nil, self.combatant, armor)
+              FS3Combat.set_armor(combatant, target, armor)
               messages.concat [t('custom.casts_spell', :name => self.name, :spell => self.spell, :succeeds => succeeds)]
             end
 
             #Equip Armor Specials
             if armor_specials_str
-
-              Custom.spell_armor_effects(combatant, self.spell)
-              armor = combatant.armor.before("+")
-
-              FS3Combat.set_armor(nil, self.combatant, armor, [armor_specials_str])
-
+              armor_specials = armor_specials_str ? armor_specials_str.split('+') : nil
+              FS3Combat.set_armor(combatant, target, target.armor, armor_specials)
               messages.concat [t('custom.casts_spell', :name => self.name, :spell => self.spell, :succeeds => succeeds)]
-
-
             end
 
 
@@ -163,39 +165,26 @@ module AresMUSH
             #Change Stance
             if stance
               target.update(stance: stance)
-              rounds = Global.read_config("spells", self.spell, "rounds")
-              target.update(stance_counter: rounds)
               messages.concat [t('custom.cast_stance', :name => self.name, :target => print_target_names, :spell => self.spell, :succeeds => succeeds, :stance => stance)]
             end
 
             #Roll
             if roll
               succeeds = Custom.roll_combat_spell_success(self.combatant, self.spell)
-              if armor
-                  
+              if target_optional
+                messages.concat [t('custom.spell_target_resolution_msg', :name => self.name, :spell => self.spell, :target => print_target_names, :succeeds => succeeds)]
               else
-                if target_optional
-                  messages.concat [t('custom.spell_target_resolution_msg', :name => self.name, :spell => self.spell, :target => print_target_names, :succeeds => succeeds)]
-                else
-                  messages.concat [t('custom.spell_resolution_msg', :name => self.name, :spell => self.spell, :succeeds => succeeds)]
-                end
+                messages.concat [t('custom.spell_resolution_msg', :name => self.name, :spell => self.spell, :succeeds => succeeds)]
               end
             end
 
           end
+        elsif self.spell == "Phoenix's Healing Flames"
+          messages.concat [t('custom.cast_phoenix_heal', :name => self.name, :spell => self.spell, :succeeds => "%xgSUCCEEDS%xn")]
         else
-
           messages.concat [t('custom.spell_target_resolution_msg', :name => self.name, :spell => spell, :target => print_target_names, :succeeds => succeeds)]
-
         end
-        level = Global.read_config("spells", self.spell, "level")
-
-        if level == 8
-          messages.concat [t('custom.level_eight_fatigue', :name => self.name)]
-        end
-        Global.logger.info "Combatant's final weapon effects: #{combatant.spell_weapon_effects}"
         messages
-
       end
     end
   end
