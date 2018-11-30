@@ -936,6 +936,25 @@ input[type='file'] {
     overflow-x: hidden;
 }
 
+.chat-button {
+  width: 100%;
+}
+
+.chat-button-active {
+  color: $primary-words-color;
+  background-color: $primary-color;
+}
+
+.chat-button-active:focus {
+  color: $primary-words-color;
+  background-color: $primary-color;
+}
+
+.chat-nav > li > a {
+  padding: 0px;
+}
+
+
 .job-status {
   background-color: gray;
 }
