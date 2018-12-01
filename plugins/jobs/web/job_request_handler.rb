@@ -40,6 +40,7 @@ module AresMUSH
           assigned_to: job.assigned_to ? { name: job.assigned_to.name, icon: Website.icon_for_char(job.assigned_to) } : nil,
           description: Website.format_markdown_for_html(job.description),
           status_values: Jobs.status_vals,
+          category_values: Jobs.categories,
           job_admin: job_admin.map { |c|  { 
             id: c.id, 
             name: c.name 

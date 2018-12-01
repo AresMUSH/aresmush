@@ -99,21 +99,21 @@ module AresMUSH
     
     def self.events_updated
       File.open(Events.ical_path, 'w') do |f|
-        f.puts "BEGIN:VCALENDAR"
-        f.puts "VERSION:2.0"
-        f.puts "PRODID:-//hacksw/handcal//NONSGML v1.0//EN"
+        f.puts "BEGIN:VCALENDAR\r\n"
+        f.puts "VERSION:2.0\r\n"
+        f.puts "PRODID:-//hacksw/handcal//NONSGML v1.0//EN\r\n"
                   
         Event.all.each do |event|
-          f.puts "BEGIN:VEVENT"
-          f.puts "UID:#{event.ical_uid}"
-          f.puts "DTSTART:#{Events.format_timestamp(event.starts)}"
-          f.puts "DTSTAMP:#{Events.format_timestamp(event.created_at)}"
-          f.puts "SUMMARY:#{event.title}"
-          f.puts "DESCRIPTION:#{event.description.gsub("%r", "\r\n  ")}"
-          f.puts "END:VEVENT"
+          f.puts "BEGIN:VEVENT\r\n"
+          f.puts "UID:#{event.ical_uid}\r\n"
+          f.puts "DTSTART:#{Events.format_timestamp(event.starts)}\r\n"
+          f.puts "DTSTAMP:#{Events.format_timestamp(event.created_at)}\r\n"
+          f.puts "SUMMARY:#{event.title}\r\n"
+          f.puts "DESCRIPTION:#{event.description.gsub("%r", "\r\n  ")}\r\n"
+          f.puts "END:VEVENT\r\n"
         end
         
-        f.puts "END:VCALENDAR"
+        f.puts "END:VCALENDAR\r\n"
       end
     end
     

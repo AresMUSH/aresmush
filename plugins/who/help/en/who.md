@@ -34,6 +34,13 @@ IC/OOC status is determined by where you are.  Some rooms are IC areas; others a
 You can also search who and where for characters whose name starts with or matches a particular string.
 
 `who <search>` or `where <search>`
+  
+## Filtering Where List
+
+The where command has a few modes to help you narrow down what you see.
+
+`where/ic` - Only show people who are IC.
+`where/friends` - Only show where your friends are.
 
 ## Who Is Someone?
 
