@@ -24,9 +24,13 @@ aliases:
 
 ## Private Emits / Whispers
 
-The `pemit` command lets you make a private emit only to certain characters.
+The `pemit` command lets you make a private emit only to certain characters.  This will appear like an emit, but with an OOC notice in front telling who it came from.
 
-`pemit <list of names>=<message>`
+`pemit <list of names>=<message>` - Make a private emit.
+  
+You can also whisper to another character.  This is formatted like a 'say' (e.g. `whisper Cate=Hi!` - Bob whispers to Cate, "Hi!") but is only shown to the recipient.  The room doesn't see anything.
+
+`whisper <name>=<message>` - Whisper to someone.
 
 ## Set Pose
 
