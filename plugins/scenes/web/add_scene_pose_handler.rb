@@ -47,7 +47,7 @@ module AresMUSH
           markers = PoseFormatter.pose_markers
           markers.delete "\""
           markers.delete "'"
-          if (pose.start_with?(*markers))
+          if (pose.start_with?(*markers) || is_ooc)
             pose = PoseFormatter.format(enactor.name, pose)
           end
         end

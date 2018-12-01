@@ -57,6 +57,8 @@ module AresMUSH
     def self.submit_app(char, app_notes = nil)
       job = char.approval_job
       
+      app_notes = app_notes || t('global.none')
+      
       if (!job)
         result = Jobs.create_job(Global.read_config("chargen", "app_category"), 
           t('chargen.application_title', :name => char.name), 

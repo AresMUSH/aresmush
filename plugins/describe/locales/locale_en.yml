@@ -54,5 +54,3 @@ en:
        
        notify_set: "You turn the notifications when someone looks at you %{status}."
        
-       glance: "%{height} height, %{age} year-old %{gender} with %{hair} hair and %{eyes} eyes."
-       
