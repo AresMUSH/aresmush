@@ -12,7 +12,7 @@ module AresMUSH
       end
       
       def preprocess(text)
-        return text if text =~ /^`/
+        return text if text =~ /\[\[disableWikiExtensions\]\]/
         
         @pre_tag_blocks.each do |tag|
           text = text.gsub(tag.regex) { tag.parse(Regexp.last_match) }
@@ -25,7 +25,7 @@ module AresMUSH
       end
       
       def postprocess(text)
-        return text if text =~ /^(<p>)?(<br>)?<code>/
+        return text if text =~ /\[\[disableWikiExtensions\]\]/
         
         text = text.gsub(/\&quot\;/i, '"')
         
