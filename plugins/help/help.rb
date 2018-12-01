@@ -39,6 +39,8 @@ module AresMUSH
         return HelpIndexRequestHandler
       when "helpTopic"
         return HelpTopicRequestHandler
+      when "searchHelp"
+        return SearchHelpRequestHandler
       end
       nil
     end

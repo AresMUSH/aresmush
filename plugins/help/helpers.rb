@@ -8,18 +8,36 @@ module AresMUSH
       "#{Game.web_portal_url}/help/#{topic}"
     end
     
+    # {
+    #    section_titleA: [ 'topic1', 'topic2', 'topic3' ],
+    #    section_titleB: [ 'topic4', 'topic5' ]
+    # }
     def self.toc
       Global.help_reader.help_toc
     end
     
+    # {
+    #    alias1: cmd1,
+    #    alias2: cmd1,
+    #    alias3: cmd2
+    # }
     def self.topic_keys
       Global.help_reader.help_keys
     end
     
+    # {
+    #    topic1: { summary: "X", aliases: [], path: "/", etc. },
+    #    topic2: { summary: "Y", aliases: [], path: "/", etc. }
+    # }
     def self.topic_index
       Global.help_reader.help_file_index
     end
     
+    # Given one of the sections from Help.toc (e.g. "section_titleA", returns info about topics in that section):
+    # {
+    #   "topic1": { summary: "X", aliases: [], path: "/", etc. },
+    #   "topic2": { summary: "Y", aliases: [], path: "/", etc. }
+    # }
     def self.toc_section_topic_data(section)
       topics = {}
       topic_names = Help.toc[section]
@@ -29,13 +47,15 @@ module AresMUSH
       topics
     end
     
+    # Finds topic keys that are a partial match for the command being searched.
     def self.find_quickref(topic)
       search = strip_prefix(topic).downcase.gsub(/[\/ ]/, "_")
       search = search.split("_").first
       return Help.topic_keys.select { |k, v| k =~ /#{search}/ }
     end
         
-    
+    # Finds topic keys for topic names and aliases matching the search string - with some added logic
+    # to account for plurals, partials.
     def self.find_topic(topic)
       search = strip_prefix(topic).downcase.gsub(/[\/ ]/, "_")
             

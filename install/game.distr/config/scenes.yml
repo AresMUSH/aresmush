@@ -45,9 +45,8 @@ scenes:
     pose/remove: pose/drop
     po: pose
     me: pose
-    whisper: pemit
-    whisp: pemit
-    mutter: pemit
+    whisp: whisper
+    mutter: whisper
     repose/nudge: pose/nudge
     repose/notify: pose/notify
     repose/drop: pose/drop
