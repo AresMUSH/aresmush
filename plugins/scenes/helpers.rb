@@ -326,7 +326,7 @@ module AresMUSH
         end
       end      
       
-      autospace = Scenes.format_autospace(enactor, char.pose_autospace)
+      autospace = Scenes.format_autospace(enactor, is_ooc ? char.page_autospace : char.pose_autospace)
       "#{autospace}#{nospoof}#{place_title}#{colored_pose}"
     end  
     
