@@ -4,11 +4,11 @@ jobs:
     APP:
       color: "%xm"
     BUILD:
-      color: "%xc"
+      color: "%xy"
       roles:
       - builder
     BUG:
-      color: "%xy"
+      color: "%xr"
       roles:
       - coder
     CODE:
@@ -52,3 +52,4 @@ jobs:
     job/mine: job/filter mine
     job/active: job/filter active
     job/deletecomment: job/deletereply
+    job/category: job/cat
