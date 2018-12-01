@@ -6,3 +6,6 @@ page:
     page/lock: page/ignore
     pagelock: page/ignore
     tell: page
+    pm: page
+  page_start_marker: "<"
+  page_end_marker: ">"
