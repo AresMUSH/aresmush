@@ -3,7 +3,7 @@ module AresMUSH
     attribute :last_paged, :type => DataType::Array, :default => []
     attribute :page_do_not_disturb, :type => DataType::Boolean
     attribute :page_autospace, :default => "%r"
-    attribute :page_color, :default => "%xc"
+    attribute :page_color
     attribute :page_monitor, :type => DataType::Hash, :default => {}
     set :page_ignored, "AresMUSH::Character"
     

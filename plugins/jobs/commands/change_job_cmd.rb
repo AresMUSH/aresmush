@@ -1,6 +1,7 @@
 module AresMUSH
   module Jobs
-    module ChangeJobCmd
+
+    class ChangeTitleCmd
       include SingleJobCmd
       
       attr_accessor :value
@@ -17,36 +18,36 @@ module AresMUSH
       
       def handle
         Jobs.with_a_job(enactor, client, self.number) do |job|
-          update_value(job)
-          notification = t('jobs.updated_job', :number => job.id, :title => job.title, :name => enactor_name)
-          Jobs.notify(job, notification, enactor)
+          Jobs.change_job_title(enactor, job, self.value)
         end
-      end
-      
-      def update_value(job)
-        raise "Not implemented."
-      end
-    end
-    
-    class ChangeTitleCmd
-      include ChangeJobCmd
-      
-      def update_value(job)
-        job.update(title: self.value)
       end
     end
     
     class ChangeCategoryCmd
-      include ChangeJobCmd
+      include SingleJobCmd
+      
+      attr_accessor :value
+
+      def parse_args
+        args = cmd.parse_args(ArgParser.arg1_equals_optional_arg2)
+        self.number = trim_arg(args.arg1)
+        self.value = trim_arg(args.arg2)
+      end
+      
+      def required_args
+        [ self.number, self.value ]
+      end
       
       def check_category
         return nil if !self.value
-        return t('jobs.invalid_category', :categories => Jobs.categories) if (!Jobs.categories.include?(self.value.upcase))
+        return t('jobs.invalid_category', :categories => Jobs.categories.join(', ')) if (!Jobs.categories.include?(self.value.upcase))
         return nil
       end
       
-      def update_value(job)
-        job.update(category: self.value.upcase)
+      def handle
+        Jobs.with_a_job(enactor, client, self.number) do |job|
+          Jobs.change_job_category(enactor, job, self.value)
+        end
       end
     end
     

@@ -18,6 +18,10 @@ module AresMUSH
         end
       end
       
+      def log_command
+        # Don't log poses
+      end
+      
       def handle
         Scenes.with_a_scene(self.scene_num, client) do |scene|
           if (!Scenes.can_access_scene?(enactor, scene))

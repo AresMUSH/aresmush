@@ -74,6 +74,7 @@ module AresMUSH
           end
           
           it "should not colorize an OOC remark" do
+            allow(@char).to receive(:page_autospace) { "" }
             pose = "The cat said, \"Whee!\" and then \"Whoosh!\" and then \"Wow!\"."
             expect(Scenes.custom_format(pose, @char, @enactor, false, true)).to eq pose
           end
@@ -94,6 +95,12 @@ module AresMUSH
           allow(@char).to receive(:pose_autospace) { "%R" }
           expect(Scenes).to receive(:format_autospace).with(@enactor, "%R") { "-%R-" }
           expect(Scenes.custom_format("Test", @char, @enactor)).to eq "-%R-Test"
+        end
+        
+        it "should use page autospace for an OOC remark" do
+          allow(@char).to receive(:page_autospace) { "%R" }
+          expect(Scenes).to receive(:format_autospace).with(@enactor, "%R") { "-%R-" }
+          expect(Scenes.custom_format("Test", @char, @enactor, false, true)).to eq "-%R-Test"
         end
         
         it "should include nospoof if set and if an emit" do
