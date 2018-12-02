@@ -107,8 +107,8 @@ module AresMUSH
         return JobCloseRequestHandler
       when "jobAssign"
         return JobAssignRequestHandler
-      when "jobChangeStatus"
-        return JobChangeStatusRequestHandler
+      when "jobChangeData"
+        return JobChangeDataRequestHandler
       when "searchJobs"
         return SearchJobsRequestHandler
       end

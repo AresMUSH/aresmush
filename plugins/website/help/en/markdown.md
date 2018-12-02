@@ -2,7 +2,6 @@
 toc: Web Portal
 summary: Using Markdown text.
 ---
-
 # Markdown Formatting
 
 Most text blocks in the web portal accept [Markdown formatting](https://daringfireball.net/projects/markdown/syntax).  Markdown is a markup language that is designed to be readable even when displayed in plain text, making it ideal for text that can also be viewed on the MUSH itself.
@@ -137,6 +136,10 @@ You can include an auto-generated table of contents with level 2 and 3 headers. 
 
 Using the raw `<div></div>`, `<span></span>` and `<pre></pre>` block tags often doesn't work the way you want for a variety of technical reasons.  Instead you can use the div/span/pre wiki extensions.
 
-``[[div class="someClass"]]
-Some text
-[[/div]]``
+`[[div class="someClass"]]`
+`Some text`
+`[[/div]]`
+
+## Disabling Extensions
+
+If you want to disable all custom Ares markdown extensions on a page, simply add text [[disableWikiExtensions]] anywhere on the page.  That's probably only necessary on a page like this where you're trying to explain the wiki extensions.

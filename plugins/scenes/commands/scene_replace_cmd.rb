@@ -15,6 +15,10 @@ module AresMUSH
         [ self.pose ]
       end
       
+      def log_command
+        # Don't log poses
+      end
+      
       def handle        
         Scenes.with_a_scene(self.scene_num, client) do |scene|
 
