@@ -159,5 +159,17 @@ module AresMUSH
     def self.reboot_required_notice
       File.exist?('/var/run/reboot-required') ? t('jobs.reboot_required') : nil
     end
+
+    def self.change_job_title(enactor, job, title)
+      job.update(title: title)
+      notification = t('jobs.updated_job', :number => job.id, :title => job.title, :name => enactor.name)
+      Jobs.notify(job, notification, enactor)
+    end
+        
+    def self.change_job_category(enactor, job, category)
+      job.update(category: category)
+      notification = t('jobs.updated_job', :number => job.id, :title => job.title, :name => enactor.name)
+      Jobs.notify(job, notification, enactor)
+    end
   end
 end

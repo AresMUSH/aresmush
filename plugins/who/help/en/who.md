@@ -11,6 +11,8 @@ aliases:
 
 `who` - Shows which other players are connected to the game and information about them.
 `where` - Shows character locations on the grid.
+`where/ic` - Only show people who are IC.
+`where/friends` - Only show where your friends are.
 `scenes` - Shows active scenes and who is in them.
 `hide` and `unhide` - Controls whether your location shows up on the who list.
 
@@ -26,6 +28,6 @@ Your character status is a general reflection of what you're doing on the game. 
     NEW (A new character who has not been approved or has marked themselves as a beginner)
     ADM (Admin on duty; off-duty admins show up as OOC)
 
-## Who Is Someone?
+IC/OOC status is determined by where you are.  Some rooms are IC areas; others are OOC.
 
 `whois <name>` - Quickly look up a character's fullname and other info based on part of their full name, MU* character name or a nickname.

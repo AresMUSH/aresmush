@@ -46,12 +46,12 @@ module AresMUSH
           
           name = enactor.name_and_alias
           message = PoseFormatter.format(name, self.message)
-          recipient_names = recipients.map { |r| r.name }.join(",")
+          recipient_names = recipients.map { |r| r.name }
         
           client.emit t('page.to_sender', 
+            :pm => Page.format_page_indicator(enactor),
             :autospace => Scenes.format_autospace(enactor, enactor.page_autospace), 
-            :color => enactor.page_color, 
-            :recipients => recipient_names, 
+            :recipients => Page.format_recipient_indicator(recipient_names), 
             :message => message)
           results.each do |r|
             page_recipient(r.client, r.char, recipient_names, message)
@@ -61,61 +61,26 @@ module AresMUSH
         end
       end
       
-      def page_recipient(other_client, other_char, recipients, message)
+      def page_recipient(other_client, other_char, recipient_names, message)
         if (other_char.page_do_not_disturb)
           client.emit_ooc t('page.recipient_do_not_disturb', :name => other_char.name)
         else          
           other_client.emit t('page.to_recipient', 
+            :pm => Page.format_page_indicator(other_char),
             :autospace => Scenes.format_autospace(enactor, other_char.page_autospace), 
-            :color => other_char.page_color, 
-            :recipients => recipients, 
+            :recipients => Page.format_recipient_indicator(recipient_names), 
             :message => message)
-          send_afk_message(other_client, other_char)
+          Page.send_afk_message(client, other_client, other_char)
         end
         
         
         if (other_char.is_monitoring?(enactor))
-          add_to_monitor(other_char, enactor.name, message)
+          Page.add_to_monitor(other_char, enactor.name, message)
         end
         
         if (enactor.is_monitoring?(other_char))
-          add_to_monitor(enactor, other_char.name, message)
+          Page.add_to_monitor(enactor, other_char.name, message)
         end
-      end
-      
-      def add_to_monitor(char, monitor_name, message)
-        monitor = char.page_monitor
-        
-        if (!monitor[monitor_name])
-          monitor[monitor_name] = []
-        end
-        
-        if (monitor[monitor_name].count > 30)
-          monitor[monitor_name].shift
-        end
-        monitor[monitor_name] << "#{Time.now} #{message}"
-        char.update(page_monitor: monitor)
-      end
-            
-      def send_afk_message(other_client, other_char)
-        if (other_char.is_afk)
-          afk_message = ""
-          if (other_char.afk_display)
-            afk_message = "(#{other_char.afk_display})"
-          end
-          afk_message = t('page.recipient_is_afk', :name => other_char.name, :message => afk_message)
-          client.emit_ooc afk_message
-          other_client.emit_ooc afk_message
-        elsif (Status.is_idle?(other_client))
-          time = TimeFormatter.format(other_client.idle_secs)
-          afk_message = t('page.recipient_is_idle', :name => other_char.name, :time => time)
-          client.emit_ooc afk_message
-          other_client.emit_ooc afk_message
-        end
-      end
-      
-      def page_color
-        Global.read_config("page", "page_color")
       end
       
       def log_command
