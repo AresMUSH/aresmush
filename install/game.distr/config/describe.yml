@@ -1,6 +1,8 @@
 ---
 describe:
   always_show_idle_in_rooms: false
+  glance_format: "%{height_title} height, %{age} year-old %{gender_noun} with %{hair}
+    hair and %{eyes} eyes."
   shortcuts:
     l: look
     desc: describe
