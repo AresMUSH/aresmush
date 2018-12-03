@@ -135,6 +135,7 @@ en:
         # ----------------------------
 
         is_koed: "%{name} has been %xr**KO'd**%xn! (Damaged This Turn By: %{damaged_by})"
+        is_killed: "%{name} has been %xr**KILLED**%xn! (Damaged This Turn By: %{damaged_by})"
         is_no_longer_koed: "%{name} is %xgno longer KOed%xn!"
         not_koed: "You are not KOed!"
         back_in_the_fight: "%{name} spends a luck point and is back in the fight!"
