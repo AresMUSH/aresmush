@@ -34,6 +34,12 @@ chargen:
     hooks: hook
     hook/delete: hook/remove
     hook/add: hook/set
+  app_review_commands: 
+    - "app %{name}"
+    - "profile %{name}"
+    - "bg %{name}"
+    - "hooks %{name}"
+    - "sheet %{name}"
   stages:
     start:
       tutorial: chargen.md
