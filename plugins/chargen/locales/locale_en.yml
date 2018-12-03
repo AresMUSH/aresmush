@@ -17,6 +17,8 @@ en:
         
         review_summary: "%xrRed%xn issues will probably hold up your app.%R%xyYellow%xn may be OK if it suits your character."
         
+        background_title: "Background for %{name}"
+        
         not_started: "You haven't starget chargen yet.  Use chargen/start first."
         cant_go_back: "You are already on the first stage of Chargen."
         chargen_complete: "You have completed Chargen!"
