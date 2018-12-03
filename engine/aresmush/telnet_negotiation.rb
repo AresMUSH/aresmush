@@ -17,6 +17,8 @@ module AresMUSH
     
     CHARSET = 42  # x2A
     NAWS = 31     # x1f
+    TTYPE = 24    # x18
+    SGA = 3       # x3  Suppress Go Ahead
     
     def handle_input(data)
       chars = data.split("")
@@ -50,6 +52,9 @@ module AresMUSH
         end
       elsif (chars[0].ord == WONT)
         chars.shift # Ditch the won't code
+        op = chars.shift.ord
+      elsif (chars[0].ord == DO)
+        chars.shift # Ditch the do code
         op = chars.shift.ord
       elsif (chars[0].ord == NOP)
         # Do nothing
