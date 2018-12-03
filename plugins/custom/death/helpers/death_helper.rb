@@ -13,6 +13,7 @@ module AresMUSH
         combatant.update(death_count: 4  )
         FS3Combat.emit_to_combat combatant.combat, t('custom.died', :name => combatant.name)
         combatant.character.update(dead: true)
+        Custom.handle_has_died_achievement(enactor)
       end
     end
 
@@ -24,6 +25,19 @@ module AresMUSH
       character.update(dead: false )
     end
 
+    def self.handle_has_died_achievement(char)
+      char.update(has_died: char.has_died + 1)
+      [ 1, 10, 20, 50, 100 ].each do |count|
+        if (char.has_died >= count)
+          if (count == 1)
+            message = "Has died."
+          else
+            message = "Has died #{count} times."
+          end
+          Achievements.award_achievement(char, "has_died_#{count}", 'death', message)
+        end
+      end
+    end
 
 
   end

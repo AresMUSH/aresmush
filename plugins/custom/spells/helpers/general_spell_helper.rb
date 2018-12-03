@@ -11,6 +11,34 @@ module AresMUSH
       end
     end
 
+    def self.handle_spell_cast_achievement(char)
+      char.update(spells_cast: char.spells_cast + 1)
+      [ 1, 10, 20, 50, 100 ].each do |count|
+        if (char.spells_cast >= count)
+          if (count == 1)
+            message = "Cast a spell."
+          else
+            message = "Cast #{count} spells."
+          end
+          Achievements.award_achievement(char, "cast_spells_#{count}", 'spell', message)
+        end
+      end
+    end
+
+    def self.handle_spell_learn_achievement(char)
+      char.update(spells_learned: char.spells_learned + 1)
+      [ 1, 10, 20, 30 ].each do |count|
+        if (char.spells_cast >= count)
+          if (count == 1)
+            message = "Learned a spell."
+          else
+            message = "Learned #{count} spells."
+          end
+          Achievements.award_achievement(char, "learned_spells_#{count}", 'spell', message)
+        end
+      end
+    end
+
     def self.already_cast(caster_combat)
       has_cast = caster_combat.has_cast
       return true if has_cast

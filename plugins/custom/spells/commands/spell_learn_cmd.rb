@@ -54,7 +54,7 @@ module AresMUSH
           SpellsLearned.create(name: self.spell, last_learned: Time.now, level: self.spell_level, school: self.school, character: enactor, xp_needed: xp_needed, learning_complete: false)
           client.emit_success t('custom.start_learning', :spell => self.spell)
         end
-
+        Custom.handle_spell_learn_achievement(enactor)
       end
 
     end

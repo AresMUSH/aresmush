@@ -46,20 +46,8 @@ module AresMUSH
 
       def handle
       #Reading Config
-        # require_target = Global.read_config("spells", self.spell, "require_target")
-        # weapon = Global.read_config("spells", self.spell, "weapon")
-        # weapon_specials = Global.read_config("spells", self.spell, "weapon_specials")
-        # armor = Global.read_config("spells", self.spell, "armor")
-        # armor_specials = Global.read_config("spells", self.spell, "self.armor_specials")
-        # is_stun = Global.read_config("spells", self.spell, "is_stun")
         roll = Global.read_config("spells", self.spell, "roll")
-        # school = Global.read_config("spells", self.spell, "school")
-        # spell_mod = Global.read_config("spells", self.spell, "spell_mod")
         heal_points = Global.read_config("spells", self.spell, "heal_points")
-        # stance = Global.read_config("spells", self.spell, "stance")
-        # lethal_mod = Global.read_config("spells", self.spell, "lethal_mod")
-        # attack_mod = Global.read_config("spells", self.spell, "attack_mod")
-        # defense_mod = Global.read_config("spells", self.spell, "defense_mod")
 
         if self.caster.combat
           if self.caster_combat.is_ko
@@ -68,63 +56,6 @@ module AresMUSH
               client.emit_failure t('custom.dont_have_potion')
           else
             FS3Combat.set_action(client, enactor, enactor.combat, caster_combat, FS3Combat::PotionAction, self.spell)
-
-            # #Roll Spell in Combat
-            # if roll == true
-            #   Custom.potion_roll_spell(self.caster_combat, self.spell)
-            # end
-            #
-            # #Equip Armor
-            # if armor
-            #   Custom.potion_equip_armor(enactor, self.caster_combat, self.spell)
-            # end
-            #
-            # #Healing
-            # if heal_points
-            #   Custom.potion_heal(self.caster_combat, self.caster, self.spell)
-            # end
-            #
-            # #Equip Weapon
-            # if weapon
-            #   Custom.potion_equip_weapon(enactor, self.caster_combat, self.spell)
-            # end
-            #
-            # #Equip Weapon Specials
-            # if weapon_specials
-            #   Custom.potion_equip_weapon_specials(enactor, self.caster_combat, self.spell)
-            # end
-            #
-            # #Stun
-            # if is_stun
-            #   Custom.potion_stun_spell(enactor, self.caster_combat, self.spell)
-            # end
-            #
-            # #Change stance
-            # if stance
-            #   Custom.potion_stance(self.caster_combat, self.spell)
-            # end
-            #
-            # #Set Lethal Mod
-            # if lethal_mod
-            #   Custom.potion_lethal_mod_with_target(self.caster_combat, self.spell)
-            # end
-            #
-            # #Set defense mod
-            # if defense_mod
-            #   Custom.potion_defense_mod(self.caster_combat, self.spell)
-            # end
-            #
-            # #Set attack mod
-            # if attack_mod
-            #   Custom.potion_attack_mod(self.caster_combat, self.spell)
-            # end
-            #
-            #
-            # #Set spell mod
-            # if spell_mod
-            #   Custom.potion_spell_mod(self.caster_combat, self.spell)
-            # end
-
 
           end
         self.caster_combat.update(has_cast: true)
@@ -140,7 +71,7 @@ module AresMUSH
 
         end
 
-
+        Custom.handle_potions_used_achievement(caster)
       end
 
 
