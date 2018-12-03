@@ -5,8 +5,9 @@ summary: Learning & casting spells
 # Spells
 `spells [<name>]` - See a list of your spells or someone else's spells, including spells you are learning.
 
-`spell/cast <spell>` - Cast a spell on yourself, the environment, or an object.
-`spell/cast <spell>=<target>[<target> <target>]` - Cast a spell on one or more targets.
+`spell/cast <spell>[+/-mod]` - Cast a spell on yourself, the environment, or an object.
+`spell/cast <spell>=<target>[<target> <target>][+/-mod]` - Cast a spell on one or more targets.
+Mods only work outside of combat. In combat, use `spell/mod`.
 
 `spell/cast <npc>/<spell>[=<target>]` - Make NPCs and other combatants cast in combat.
 

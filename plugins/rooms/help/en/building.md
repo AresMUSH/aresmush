@@ -11,6 +11,10 @@ aliases:
 - unlink
 - icstart
 ---
+# Requesting a Build
+You can request that a room or series of rooms be built for many reasons, including a place of business, a home, or a location for a plot.
+`build/request <room name>=<details>`- Request a room be built. Include where it should be built and any other needed info. If you need several rooms built, you can do a single request.
+
 # Creating Rooms
 
 > **These commands require the Admin role or the build permission.**

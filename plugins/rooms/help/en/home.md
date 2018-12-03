@@ -11,3 +11,5 @@ The `home` command lets you return quickly to a place of your choosing on the ga
 `home/set` and `work/set` - Sets your home/workplace to your current location.
 `home` - Go home.
 `work` - Go to work.
+
+See [help residence](/help/residence) for info on how to find a place to live.
