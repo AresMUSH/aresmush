@@ -25,6 +25,7 @@ module AresMUSH
         hours_to_create = spell_level * 48
         PotionsCreating.create(name: self.potion_name, hours_to_creation: hours_to_create, character: enactor)
         client.emit_success t('custom.begun_creating_potion', :potion_name => potion_name, :hours_to_create => hours_to_create)
+        Custom.handle_potions_made_achievement(enactor)
       end
 
 

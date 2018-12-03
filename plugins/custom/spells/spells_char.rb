@@ -2,6 +2,7 @@ module AresMUSH
   class Character < Ohm::Model
     collection :spells_learned, "AresMUSH::SpellsLearned"
     attribute :spells_cast, :type => DataType::Integer
+    attribute :spells_learned, :type => DataType::Integer
 
   end
 end
