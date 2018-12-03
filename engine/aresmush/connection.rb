@@ -145,6 +145,7 @@ module AresMUSH
         1 => "REQ",
         42 => "CHARSET",
         31 => "NAWS",
+        24 => "TTYPE",
         '\r'.ord => "CR",
         '\n'.ord => "LF",
         20 => "_"
