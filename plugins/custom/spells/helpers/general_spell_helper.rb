@@ -126,7 +126,15 @@ module AresMUSH
       succeeds = Custom.combat_spell_success(spell, die_result)
     end
 
-
+    def self.delete_all_untreated_damage(char)
+      damage = char.damage
+      damage.each do |d|
+        if !d.healed
+          d.delete
+        end
+        Global.logger.info "Phoenix's Healing Flames deleting #{char.name}'s' damage."
+      end
+    end
 
   end
 end
