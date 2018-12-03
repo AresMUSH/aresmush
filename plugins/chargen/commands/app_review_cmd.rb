@@ -32,10 +32,11 @@ module AresMUSH
             return
           end
           
-          Global.dispatcher.queue_command(client, Command.new("app #{model.name}"))
-          Global.dispatcher.queue_command(client, Command.new("profile #{model.name}"))
-          Global.dispatcher.queue_command(client, Command.new("bg #{model.name}"))
-          Global.dispatcher.queue_command(client, Command.new("sheet #{model.name}"))
+          commands = Global.read_config("chargen", "app_review_commands") || []
+          commands.each do |command|
+            command_text = command % { name: model.name }
+            Global.dispatcher.queue_command(client, Command.new(command_text))
+          end
           
           desc = Describe.desc_template(model, enactor)
           client.emit desc.render
