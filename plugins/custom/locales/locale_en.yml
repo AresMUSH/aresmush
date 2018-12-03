@@ -59,6 +59,8 @@ en:
       target_stun: "Choose your target by doing stun <target>."
       cast_heal: "%{name} casts %xB%{spell}%xn on %{target} and %{succeeds}. %{target} receives up to %{points} points of healing to a wound."
       cast_heal_no_effect: "%{name} casts %xB%{spell}%xn on %{target} and %{succeeds}, but they have no healable wounds. The spell has no effect."
+      cast_phoenix_heal: "%{name} casts %xB%{spell}%xn and %{succeeds}. They have been revived, and all untreated wounds have been healed."
+      cast_phoenix_heal_target: "%{name} casts %xB%{spell}%xn on %{target} and %{succeeds}. %{target} has been revived, and all untreated wounds have been healed."
       not_ko: "%{target} is not knocked out."
       cast_revive: "%{name} casts %xB%{spell}%xn on %{target} and %{succeeds}, reviving %{target} so they can rejoin the fight."
       been_revived: "%xgYou have been revived by %{name}. You will be able to take an action next turn.%xn"
