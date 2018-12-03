@@ -2,7 +2,7 @@ export ARES_INSTALL_TEXT="<\033[0;32mINSTALL\033[0m>"
 
 echo -e "${ARES_INSTALL_TEXT} Create an ares test user"
 
-export ARES_USERNAME="arestest”
+export ARES_USERNAME="arestest"
 
 sudo adduser --disabled-password --gecos "" ${ARES_USERNAME}
 
