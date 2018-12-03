@@ -15,7 +15,7 @@ module AresMUSH
           return
         end
         
-        list = unread.map { |u| "#{u.reference_str} #{u.bbs_category.name} - #{u.subject}"}
+        list = unread.map { |u| "#{u.reference_str} #{u.bbs_board.name} - #{u.subject}"}
         
         
         template = BorderedListTemplate.new list, t('forum.scan_title')

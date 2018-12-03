@@ -3,8 +3,8 @@ toc: Miscellaneous
 summary: Notices and commands on login.
 aliases:
 - aconnect
-- onstartup
 - motd
+- onconnect
 ---
 
 You always see the notices screen when you connect, which shows you a summary of important messages and what's new to read on the game (like mail or forum posts).
