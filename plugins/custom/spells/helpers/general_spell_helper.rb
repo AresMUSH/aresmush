@@ -26,9 +26,9 @@ module AresMUSH
     end
 
     def self.handle_spell_learn_achievement(char)
-      char.update(spells_learned: char.spells_learned + 1)
+      char.update(achievement_spells_learned: char.achievement_spells_learned + 1)
       [ 1, 10, 20, 30 ].each do |count|
-        if (char.spells_cast >= count)
+        if (char.achievement_spells_learned >= count)
           if (count == 1)
             message = "Learned a spell."
           else
