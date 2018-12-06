@@ -40,8 +40,6 @@ module AresMUSH
 
       def check_errors
         return t('custom.not_character') if !caster
-        # return t('custom.already_cast') if (enactor.combat && Custom.already_cast(self.caster_combat))
-
       end
 
       def handle
@@ -58,7 +56,7 @@ module AresMUSH
             FS3Combat.set_action(client, enactor, enactor.combat, caster_combat, FS3Combat::PotionAction, self.spell)
 
           end
-        self.caster_combat.update(has_cast: true)
+
         elsif
           #Roll NonCombat
           if roll

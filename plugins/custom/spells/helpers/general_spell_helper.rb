@@ -39,10 +39,10 @@ module AresMUSH
       end
     end
 
-    def self.already_cast(caster_combat)
-      has_cast = caster_combat.has_cast
-      return true if has_cast
-    end
+    # def self.already_cast(caster_combat)
+    #   has_cast = caster_combat.has_cast
+    #   return true if has_cast
+    # end
 
     def parse_heal_targets(name_string)
       return t('fs3combat.no_targets_specified') if (!name_string)

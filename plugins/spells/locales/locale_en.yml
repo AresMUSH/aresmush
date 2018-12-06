@@ -1,10 +1,9 @@
 ---
 en:
-  spells: 
+  spells:
         # ----------------------------
         # SPELL CASTING
         # ----------------------------
-      already_cast: "%xr You have already cast a spell or used a potion this turn. Wait until a new turn starts to take an action.%xn"
       casts_spell: "%{name} casts %xB%{spell}%xn and %{succeeds}."
       casts_noncombat_spell: "%{name} casts %xB%{spell}%xn."
       will_cast_spell: "%{name} will cast %xB%{spell}%xn."

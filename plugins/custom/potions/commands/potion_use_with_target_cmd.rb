@@ -50,7 +50,6 @@ module AresMUSH
       end
 
       def check_errors
-        # return t('custom.already_cast') if (enactor.combat && Custom.already_cast(self.caster_combat))
         return t('custom.invalid_name') if !self.target
       end
 
