@@ -131,7 +131,7 @@ en:
       potion_action_resolution_msg_long: "%{name} uses a %xM%{potion}%xn potion."
       potion_action_target_resolution_msg_long: "%{name} uses a %xM%{potion}%xn potion on %{target}."
       potion_action_msg_short: "Potion"
-      potion_resolution_msg: "%{name} used a  %xM%{potion}%xn potion"
+      potion_resolution_msg: "%{name} used a %xM%{potion}%xn potion"
 
       # ----------------------------
       # FS3 COMBAT DEATH

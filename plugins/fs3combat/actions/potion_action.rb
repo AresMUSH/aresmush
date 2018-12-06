@@ -132,7 +132,7 @@ module AresMUSH
           #Roll
           if roll
             succeeds = Custom.roll_combat_spell_success(self.combatant, self.spell)
-            messages.concat [t('custom.spell_target_resolution_msg', :name => self.name, :potion => self.spell)]
+            messages.concat [t('custom.potion_resolution_msg', :name => self.name, :potion => self.spell)]
           end
 
           if !combatant.is_npc?
