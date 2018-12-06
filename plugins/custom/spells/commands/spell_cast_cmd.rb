@@ -98,7 +98,7 @@ module AresMUSH
 
         end
         if !caster.is_npc?
-          # Custom.handle_spell_cast_achievement(self.caster)
+          Custom.handle_spell_cast_achievement(self.caster)
         end
 
       end
