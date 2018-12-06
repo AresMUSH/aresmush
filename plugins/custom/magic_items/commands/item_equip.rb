@@ -35,7 +35,7 @@ module AresMUSH
         caster.update(magic_item_equipped: item_name)
         client.emit_success t('custom.item_equipped', :item => caster.magic_item_equipped)
         message = "Equipped a magic item."
-        Achievements.award_achievement(char, "equipped_magic_item", 'magic', message)
+        Achievements.award_achievement(caster, "equipped_magic_item", 'magic', message)
       end
 
 
