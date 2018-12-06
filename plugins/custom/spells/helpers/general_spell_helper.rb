@@ -59,8 +59,12 @@ module AresMUSH
     end
 
     #Can read armor or weapon
-    def self.is_magic_gear(gear)
+    def self.is_magic_weapon(gear)
       FS3Combat.weapon_stat(gear, "is_magic")
+    end
+
+    def self.is_magic_armor(gear)
+      FS3Combat.armor_stat(gear, "is_magic")
     end
 
 

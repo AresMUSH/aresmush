@@ -40,7 +40,7 @@ module AresMUSH
 
       def check_valid_weapon
         return t('fs3combat.invalid_weapon') if !FS3Combat.weapon(self.weapon)
-        return t('custom.cast_to_use') if Custom.is_magic_gear(self.weapon)
+        return t('custom.cast_to_use') if Custom.is_magic_weapon(self.weapon)
         return nil
       end
 
