@@ -42,7 +42,8 @@ module AresMUSH
         stance = Global.read_config("spells", self.spell, "stance")
         roll = Global.read_config("spells", self.spell, "roll")
 
-
+        succeeds = "%xgSUCCEEDS%xn"
+        
         targets.each do |target|
 
           #Healing
