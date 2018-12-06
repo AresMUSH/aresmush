@@ -78,13 +78,13 @@ module AresMUSH
             #Equip Weapon Specials
             if weapon_specials_str
               weapon_specials = weapon_specials_str ? weapon_specials_str.split('+') : nil
-              current_spell_specials = combatant.spell_weapon_specials
+              current_spell_specials = combatant.spell_weapon_effects
 
               FS3Combat.set_weapon(combatant, target, target.weapon, weapon_specials)
 
 
               new_spell_specials = current_spell_specials << weapon_specials_str
-              combatant.update(spell_weapon_specials: new_spell_specials)
+              combatant.update(spell_weapon_effects: new_spell_specials)
 
               if heal_points
 
