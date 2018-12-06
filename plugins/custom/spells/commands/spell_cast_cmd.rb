@@ -76,6 +76,7 @@ module AresMUSH
 
         end
 
+
         return nil
       end
 
@@ -86,6 +87,10 @@ module AresMUSH
 
         if self.caster.combat
           FS3Combat.set_action(client, enactor, enactor.combat, caster_combat, FS3Combat::SpellAction, self.spell)
+
+          if !caster_combat.is_npc?
+            Custom.handle_spell_cast_achievement(self.caster)
+          end
         else
           #Roll NonCombat
           if roll
@@ -95,10 +100,8 @@ module AresMUSH
           else
             client.emit_failure t('custom.not_in_combat')
           end
-
-        end
-        if !caster.is_npc?
           Custom.handle_spell_cast_achievement(self.caster)
+
         end
 
       end

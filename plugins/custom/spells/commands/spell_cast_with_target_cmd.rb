@@ -124,17 +124,22 @@ module AresMUSH
           else
             FS3Combat.set_action(client, enactor, enactor.combat, caster_combat, FS3Combat::SpellTargetAction, self.action_args)
           end
+          if !caster_combat.is_npc?
+            Custom.handle_spell_cast_achievement(self.caster)
+          end
 
         else
           if heal_points
             if Custom.knows_spell?(caster, self.spell)
               Custom.cast_non_combat_heal_with_target(self.caster, self.target, self.spell, self.mod)
+              Custom.handle_spell_cast_achievement(self.caster)
             else
               client.emit_failure t('custom.dont_know_spell')
             end
           elsif roll
             if Custom.knows_spell?(caster, self.spell)
               Custom.cast_noncombat_roll_spell_with_target(self.caster, self.target, self.spell, self.mod)
+              Custom.handle_spell_cast_achievement(self.caster)
             else
               client.emit_failure t('custom.dont_know_spell')
             end
@@ -142,7 +147,7 @@ module AresMUSH
             client.emit_failure t('custom.not_in_combat')
           end
         end
-        Custom.handle_spell_cast_achievement(self.caster)
+
       end
 
 
