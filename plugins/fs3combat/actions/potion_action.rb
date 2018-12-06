@@ -99,28 +99,28 @@ module AresMUSH
             current_mod = target.damage_lethality_mod
             new_mod = current_mod + lethal_mod
             target.update(damage_lethality_mod: new_mod)
-            messages.concat  [t('custom.use_potion', :name => self.name, :potion => self.spell)]
+            messages.concat  [t('custom.potion_mod', :name => self.name, :potion => self.spell, :mod => target.damage_lethality_mod, :type => "lethality")]
           end
 
           if attack_mod
             current_mod = target.attack_mod
             new_mod = current_mod + attack_mod
             target.update(attack_mod: new_mod)
-            messages.concat  [t('custom.use_potion', :name => self.name, :potion => self.spell)]
+            messages.concat  [t('custom.potion_mod', :name => self.name, :potion => self.spell, :mod => target.attack_mod, :type => "attack")]
           end
 
           if defense_mod
             current_mod = target.defense_mod
             new_mod = current_mod + defense_mod
             target.update(defense_mod: new_mod)
-            messages.concat [t('custom.use_potion', :name => self.name, :potion => self.spell)]
+            messages.concat [t('custom.potion_mod', :name => self.name, :potion => self.spell, :mod => target.defense_mod, :type => "defense")]
           end
 
           if spell_mod
             current_mod = target.spell_mod
             new_mod = current_mod + spell_mod
             target.update(spell_mod: new_mod)
-            messages.concat  [t('custom.use_potion', :name => self.name, :potion => self.spell)]
+            messages.concat  [t('custom.potion_mod', :name => self.name, :potion => self.spell, :mod => target.spell_mod, :type => "spell")]
           end
 
           #Change Stance

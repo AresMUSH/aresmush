@@ -46,13 +46,18 @@ module AresMUSH
           #Healing
           if heal_points
             wound = FS3Combat.worst_treatable_wound(target.associated_model)
-            target.update(death_count: 0  )
+
             if (wound)
               FS3Combat.heal(wound, heal_points)
-              messages.concat [t('custom.potion_heal_target', :name => self.name, :potion => self.spell, :points => heal_points, :target => print_target_names)]
+              if target.death_count > 0
+                messages.concat [t('custom.potion_heal_ko_target', :name => self.name, :potion => self.spell, :points => heal_points, :target => print_target_names)]
+              else
+                messages.concat [t('custom.potion_heal_target', :name => self.name, :potion => self.spell, :points => heal_points, :target => print_target_names)]
+              end
             else
                messages.concat [t('custom.potion_heal_no_effect_target', :name => self.name, :potion => self.spell, :target => print_target_names)]
             end
+            target.update(death_count: 0  )
           end
 
           #Equip Weapon
@@ -97,28 +102,28 @@ module AresMUSH
             current_mod = target.damage_lethality_mod
             new_mod = current_mod + lethal_mod
             target.update(damage_lethality_mod: new_mod)
-            messages.concat [t('custom.use_potion_target', :name => self.name, :potion => self.spell, :target => print_target_names)]
+            messages.concat [t('custom.potion_mod_target', :name => self.name, :potion => self.spell, :target => print_target_names, :mod => target.spell_mod, :type => "spell")]
           end
 
           if attack_mod
             current_mod = target.attack_mod
             new_mod = current_mod + attack_mod
             target.update(attack_mod: new_mod)
-            messages.concat [t('custom.use_potion_target', :name => self.name, :potion => self.spell, :target => print_target_names)]
+            messages.concat [t('custom.potion_mod_target', :name => self.name, :potion => self.spell, :target => print_target_names, :mod => target.attack_mod, :type => "attack")]
           end
 
           if defense_mod
             current_mod = target.defense_mod
             new_mod = current_mod + defense_mod
             target.update(defense_mod: new_mod)
-            messages.concat [t('custom.use_potion_target', :name => self.name, :potion => self.spell, :target => print_target_names)]
+            messages.concat [t('custom.potion_mod_target', :name => self.name, :potion => self.spell, :target => print_target_names, :mod => target.defense_mod, :type => "defense")]
           end
 
           if spell_mod
             current_mod = target.spell_mod
             new_mod = current_mod + spell_mod
             target.update(spell_mod: new_mod)
-            messages.concat [t('custom.use_potion_target', :name => self.name, :potion => self.spell, :target => print_target_names)]
+            messages.concat [t('custom.potion_mod_target', :name => self.name, :potion => self.spell, :target => print_target_names, :mod => target.spell_mod, :type => "spell")]
           end
 
           #Change Stance
