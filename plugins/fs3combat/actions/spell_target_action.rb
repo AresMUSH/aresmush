@@ -61,13 +61,18 @@ module AresMUSH
             #Healing
             if heal_points
               wound = FS3Combat.worst_treatable_wound(target.associated_model)
-              target.update(death_count: 0  )
+
               if (wound)
                 FS3Combat.heal(wound, heal_points)
-                messages.concat [t('custom.cast_heal', :name => self.name, :spell => spell, :succeeds => succeeds, :target => target.name, :points => heal_points)]
+                if target.death_count > 0
+                  messages.concat [t('custom.cast_ko_heal', :name => self.name, :spell => spell, :succeeds => succeeds, :target => target.name, :points => heal_points)]
+                else
+                  messages.concat [t('custom.cast_heal', :name => self.name, :spell => spell, :succeeds => succeeds, :target => target.name, :points => heal_points)]
+                end
               else
                  messages.concat [t('custom.cast_heal_no_effect', :name => self.name, :spell => spell, :succeeds => succeeds, :target => target.name)]
               end
+              target.update(death_count: 0  )
             end
 
             #Equip Weapon
