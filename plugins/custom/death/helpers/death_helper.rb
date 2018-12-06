@@ -5,13 +5,13 @@ module AresMUSH
       death_count = combatant.death_count
       if death_count == 1
         combatant.update(death_count: 2 )
-        FS3Combat.emit_to_combat combatant.combat, t('custom.one_death', :name => combatant.name)
+        FS3Combat.emit_to_combat(combatant.combat, t('custom.one_death', :name => combatant.name), npcmaster = nil, add_to_scene = true)
       elsif death_count == 2
         combatant.update(death_count: 3 )
-        FS3Combat.emit_to_combat combatant.combat, t('custom.two_death', :name => combatant.name)
+        FS3Combat.emit_to_combat (combatant.combat, t('custom.two_death', :name => combatant.name), npcmaster = nil, add_to_scene = true)
       elsif death_count == 3
         combatant.update(death_count: 4  )
-        FS3Combat.emit_to_combat combatant.combat, t('custom.died', :name => combatant.name)
+        FS3Combat.emit_to_combat (combatant.combat, t('custom.died', :name => combatant.name), npcmaster = nil, add_to_scene = true)
         combatant.character.update(dead: true)
         Custom.handle_has_died_achievement(enactor)
       end
