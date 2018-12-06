@@ -97,28 +97,28 @@ module AresMUSH
             current_mod = target.damage_lethality_mod
             new_mod = current_mod + lethal_mod
             target.update(damage_lethality_mod: new_mod)
-            messages.concat [t('custom.cast_mod', :name => self.name, :spell => self.spell, :succeeds => succeeds, :target =>  print_target_names, :mod => lethal_mod, :type => "lethality", :total_mod => target.damage_lethality_mod)]
+            messages.concat [t('custom.use_potion_target', :name => self.name, :potion => self.spell, :target => print_target_names)]
           end
 
           if attack_mod
             current_mod = target.attack_mod
             new_mod = current_mod + attack_mod
             target.update(attack_mod: new_mod)
-            messages.concat [t('custom.cast_mod', :name => self.name, :spell => self.spell, :succeeds => succeeds, :target =>  print_target_names, :mod => attack_mod, :type => "attack", :total_mod => target.attack_mod)]
+            messages.concat [t('custom.use_potion_target', :name => self.name, :potion => self.spell, :target => print_target_names)]
           end
 
           if defense_mod
             current_mod = target.defense_mod
             new_mod = current_mod + defense_mod
             target.update(defense_mod: new_mod)
-            messages.concat [t('custom.cast_mod', :name => self.name, :spell => self.spell, :succeeds => succeeds, :target =>  print_target_names, :mod => defense_mod, :type => "defense", :total_mod => target.defense_mod)]
+            messages.concat [t('custom.use_potion_target', :name => self.name, :potion => self.spell, :target => print_target_names)]
           end
 
           if spell_mod
             current_mod = target.spell_mod
             new_mod = current_mod + spell_mod
             target.update(spell_mod: new_mod)
-            messages.concat [t('custom.cast_mod', :name => self.name, :spell => self.spell, :succeeds => succeeds, :target =>  print_target_names, :mod => spell_mod, :type => "spell", :total_mod => target.spell_mod)]
+            messages.concat [t('custom.use_potion_target', :name => self.name, :potion => self.spell, :target => print_target_names)]
           end
 
           #Change Stance
