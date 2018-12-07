@@ -1,0 +1,11 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//hacksw/handcal//NONSGML v1.0//EN
+BEGIN:VEVENT
+UID:61fe4cb6-72d5-44da-9724-61511cbba256@Spirit Lake-spiritlakemu.com
+DTSTART:20181208T013000Z
+DTSTAMP:20181206T174510Z
+SUMMARY:The Crown Speaks
+DESCRIPTION:The Crown of Eight shares its secrets. Pls RSVP if you can come.
+END:VEVENT
+END:VCALENDAR
