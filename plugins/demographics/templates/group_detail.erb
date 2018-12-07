@@ -1,11 +1,11 @@
-<%= header %>		
-%xh<%= name %>%xn		
+<%= header %>
+%xh<%= name %>%xn
 <%= description %>
 <%= divider %>
 <% if values %>
 <% values.each do |name, desc| %>
-<%= left(name.titlecase, 20) -%>		
- <%= desc %>		
+<%= left(name.titlecase, 20) -%>
+ <%= desc %>
 <% end %>
 <% else %>
 <%= t('demographics.open_ended_group') %>
