@@ -12,7 +12,7 @@ module AresMUSH
     end
 
     def self.get_cmd_handler(client, cmd, enactor)
-      if (cmd.root_is?("achievements"))
+      if (cmd.root_is?("achievement"))
         return AchievementsCmd
       end
     end
