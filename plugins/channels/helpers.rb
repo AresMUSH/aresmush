@@ -179,9 +179,20 @@ module AresMUSH
       end
     end
     
+    def self.cleanup_alias(chan_alias, client, warn)
+      if (warn && client && (chan_alias =~ /\d/))
+        client.emit_failure t('channels.alias_number_warning')
+      end
+      
+      formatted = CommandCracker.strip_prefix(chan_alias).downcase
+      formatted = formatted.gsub(/\d/, '')
+      
+      formatted
+    end
+    
     # Client may be nil for web requests
     def self.set_channel_alias(client, char, channel, chan_alias, warn = true)
-      aliases = chan_alias.split(/[, ]/).map { |a| CommandCracker.strip_prefix(a).downcase }
+      aliases = chan_alias.split(/[, ]/).map { |a| Channels.cleanup_alias(a, client, warn) }.uniq
       aliases.each do |a|
         existing_channel = Channels.channel_for_alias(char, a)
         if (existing_channel && existing_channel != channel)
@@ -190,6 +201,10 @@ module AresMUSH
         
         if (warn && client && (!a || a.length < 2))
           client.emit_failure t('channels.short_alias_warning')
+        end
+        
+        if (a.blank?)
+          return t('channels.invalid_alias', :a => a)
         end
       end
       
