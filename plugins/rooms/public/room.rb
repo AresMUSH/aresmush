@@ -5,13 +5,10 @@ module AresMUSH
     attribute :room_type, :default => "IC"
     attribute :room_area
     attribute :room_is_foyer, :type => DataType::Boolean
-    
-    # Room owner is just the ID, but it's not named "_id" to prevent builders
-    # from seeing all character details on examine.
-    attribute :room_owner
          
     index :room_type
     
+    set :room_owners, "AresMUSH::Character"
     reference :area, "AresMUSH::Area"
     
     def grid_x
@@ -31,7 +28,7 @@ module AresMUSH
     end
     
     def owned_by?(char)
-      self.room_owner == char.id
+      self.room_owners.include?(char)
     end
     
     def name_and_area

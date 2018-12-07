@@ -36,6 +36,6 @@ The `roomtype` property ties in with the 'status' system, to tell whether someon
 
 ## Room Owners
 
-By default, only people with builder privileges can modify the description on a room.  However, builders can assign an 'owner' to a room, who is also allowed to describe it.
+By default, only people with builder privileges can modify the description on a room.  However, builders can assign 'owners' to a room, who are also allowed to describe it.
 
-`owner [<room name>=]<name>` - Sets a room owner.  Leave blank to reset.
+`owners [<room name>=]<list of names>` - Sets room owners.  Leave blank to reset.
