@@ -15,8 +15,10 @@ module AresMUSH
         
         if (edit_mode)
           description = plot.description
+          summary = plot.summary
         else
           description = plot.description.blank? ? nil : Website.format_markdown_for_html(plot.description)
+          summary = Website.format_markdown_for_html(plot.summary)
         end
         
         scenes = plot.scenes.select { |s| s.shared }
@@ -32,7 +34,7 @@ module AresMUSH
         {
           id: plot.id,
           title: plot.title,
-          summary: plot.summary,
+          summary: summary,
           description: description,
           start_date: plot.start_date,
           end_date: plot.end_date,
