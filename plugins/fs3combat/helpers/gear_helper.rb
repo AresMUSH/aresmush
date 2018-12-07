@@ -9,7 +9,7 @@ module AresMUSH
     end
 
     def self.mundane_weapon_specials
-      Global.read_config("fs3combat", "weapon_specials").select { |k, w| !w['is_magic'] }
+      FS3Combat.weapon_specials.select { |k, w| !w['is_magic'] }
     end
 
     def self.weapon(name)
