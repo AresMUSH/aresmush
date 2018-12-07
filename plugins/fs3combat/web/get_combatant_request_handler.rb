@@ -6,21 +6,21 @@ module AresMUSH
         id = request.args[:id]
 
         combatant_type = request.args[:combatant_type] || FS3Combat.default_combatant_type
-        
+
         error = Website.check_login(request)
         return error if error
-        
+
         combatant = Combatant[id]
         if (!combatant)
           return { error: t('webportal.not_found') }
         end
-        
+
         can_manage = (enactor == combatant.combat.organizer) || enactor.is_admin? || (enactor.name == combatant.name)
-        
+
         if (!can_manage)
           return { error: t('dispatcher.not_allowed') }
         end
-          
+
         {
           id: combatant.id,
           name: combatant.name,
@@ -41,7 +41,7 @@ module AresMUSH
           combat: combatant.combat.id,
           options: {
             weapons: AresMUSH::FS3Combat.weapons.keys,
-            weapon_specials: AresMUSH::FS3Combat.weapon_specials.keys,
+            weapon_specials: build_list(FS3Combat.mundane_weapon_specials),
             armor_specials:  AresMUSH::FS3Combat.armor_specials.keys,
             armor: AresMUSH::FS3Combat.armors.keys,
             stances: FS3Combat.stances.keys,
@@ -52,5 +52,3 @@ module AresMUSH
     end
   end
 end
-
-

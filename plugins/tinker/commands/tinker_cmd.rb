@@ -10,29 +10,33 @@ module AresMUSH
       end
 
 
+      def get_spell_list(list)
+        list.to_a.sort_by { |a| a.name }.map { |a|
+          {
+            name: a.name,
+            level: a.level,
+            }}
+      end
+
+      def get_ability_list(list)
+        list.to_a.sort_by { |a| a.name }.map { |a|
+          {
+            name: a.name,
+            rating: a.rating,
+            rating_name: a.rating_name
+            }}
+          end
 
 
       def handle
-        combatant = enactor.combatant
-        if !combatant.spell_weapon_effects.empty?
-          weapon_effects = combatant.spell_weapon_effects
-          client.emit "Old hash: #{weapon_effects}"
-          weapon_effects.each do |weapon, effects|
-            effects.each do |effect, rounds|
-              new_rounds = rounds - 1
-              if new_rounds == 0
-                weapon_effects[weapon].delete(effect)
-                if weapon_effects[weapon].empty?
-                  weapon_effects.delete(weapon)
-                end
-              else
-                weapon_effects[weapon][effect] = new_rounds
-              end
-              combatant.update(spell_weapon_effects: weapon_effects)
+        spells = get_spell_list(enactor.spells_learned)
 
-            end
-          end
-          client.emit "New hash: #{weapon_effects}"
+
+
+         client.emit spells
+
+         attributes = get_ability_list(enactor.fs3_attributes)
+         client.emit attributes
 
 
 
@@ -40,7 +44,6 @@ module AresMUSH
 
 
 
-        end
       end
 
 
