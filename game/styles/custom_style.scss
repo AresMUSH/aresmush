@@ -1,0 +1,563 @@
+/* Put any custom styles here.  They will override the default styles. */
+
+@import url('https://fonts.googleapis.com/css?family=Libre Baskerville');
+
+
+/* All Pages */
+
+body {
+    color: $primary-words-color;
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 15px;
+    line-height:1.5em;
+
+}
+
+.container-fluid {
+    background: #1A1B1C;
+}
+
+pre {
+     background-color: #d1d2d3;
+}
+
+textarea {
+     color: $dark-words-color;
+     background-color: white;
+}
+
+::-webkit-scrollbar {
+    width: 9px;
+    background-color: white;
+}
+
+input[type="text"] {
+	background:white;
+	color:$dark-words-color;
+}
+
+input[type="password"] {
+	background:white;
+	color:$dark-words-color;
+}
+
+blockquote {
+    color:$dark-words-color;
+}
+
+#ember-basic-dropdown-wormhole {
+	color:$dark-words-color;
+}
+
+.table-striped>tbody>tr:nth-of-type(odd) {
+    background: #D9DCDF;
+    color: $dark-words-color;
+}
+
+.table-striped>tbody>tr:nth-of-type(odd) a {
+    color: #63697E;
+}
+
+.table-striped>tbody>tr:nth-of-type(even) a {
+    color: #63697E;
+}
+
+.table-striped>tbody>tr:nth-of-type(even) a:hover, a:focus {
+    color: #8790AD;
+}
+
+.table-striped>tbody>tr:nth-of-type(odd	) a:hover, a:focus {
+    color: #8790AD;
+}
+
+.table-striped>tbody>tr:nth-of-type(even) {
+    background: #ECEDEF;
+    color: $dark-words-color;
+    }
+
+.table-striped>thead>th {
+    background: #314254;
+}
+
+.tab-content {
+    margin-bottom: 15px;
+}
+
+.label-pill {
+    background-color: #A9353E;
+}
+
+.toc {
+    border:1px solid white;
+    box-shadow: 5px 5px 5px #2A2E33;
+    padding: 15px;
+    width: max-content;
+    max-width: 300px;
+    float: right;
+    font-variant: all-small-caps;
+    margin: 15px;
+    background: #314254;
+    border-radius: 8px;
+}
+
+
+.ansi-blue-bg {
+    background-color: #2A4C7C;
+}
+
+.ember-power-select-trigger {
+	color:$dark-words-color;
+
+
+#ember624 {
+  width: 150px;
+}
+}
+
+.panel-body {
+    background: #1A1B1C;
+}
+
+.panel-default {
+    border: 0px;
+}
+
+.panel {
+    background: inherit;
+}
+
+.topboxes {
+   width: 100%;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.infobox {
+   margin: 15px;
+   width: 350px;
+   float: left;
+   border-radius: 5px;
+   border: 2px solid;
+}
+
+.infobox-body {
+    background: #404B56;
+    padding: 20px;
+    border-radius: 0px 0px 5px 5px;
+}
+
+.infobox-heading {
+    background-color: #314254;
+    border-bottom: 4px solid #293038;
+}
+
+.infobox-title-text {
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px;
+    text-align: left;
+}
+
+.infobox-subtitle {
+    font-style: italic;
+    font-size: 14px;
+    padding-top: 5px;
+}
+
+.infobox-majorschool {
+   float:right;
+   font-style: italic;
+}
+
+.infobox-minorschool {
+   float:right;
+}
+
+.hint {
+	padding-top: 5px;
+}
+
+code {
+    background: #c5c6d0;
+    padding: 3px;
+}
+
+.modal-content {
+  color: #333333;
+}
+
+.collapse.in {
+    background: #383A4F;
+    padding: 10px;
+    border-radius: 0px 5px 5px 5px;
+    top: -10px;
+    position: relative;
+}
+
+.nav-tabs > li > a {
+    background: #343438;
+}
+
+/* Buttons */
+.btn {
+    font-size:12px;
+    padding:10px;
+    line-height:1px;
+}
+
+.btn-collapse {
+    font-size: 15px;
+    font-weight:bold;
+    height: 40px;
+    border-radius: 5px 5px 0px 0px;
+    background: #383A4F;
+    border: black;
+    color: #d1d2d3;
+    padding: 15px;
+    width: 145px;
+    text-align:left;
+}
+
+button, input, select, textarea {
+    color: $dark-words-color;
+}
+
+/* Text */
+.wiki-links {
+     font-size: 12.6px;
+}
+
+a {
+    /* color: #968DA0;     */
+    color:#A7C6DA;
+    text-decoration: none;
+	font-weight:bold;
+}
+
+a:hover,
+a:focus{
+    color: #8790AD;
+    text-decoration: none;
+}
+
+h1 {
+    padding: 10px 25px;
+    font-family: "Libre Baskerville";
+    font-size: 2.5em;
+    font-variant: small-caps;
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+    border-radius: 15px;
+    border:0px;
+}
+
+h2 {
+   border-bottom: 1px solid #aaa;
+   overflow:hidden;
+}
+
+/* Header & Nav */
+
+.header-wrap {
+     background-position: 50% 100%;
+     min-height: 170px;
+}
+
+.title-wrap {
+ background-color: transparent;
+}
+
+
+.site-title a, .site-title a:hover, .site-title a:active {
+    font-family: "Libre Baskerville";
+    font-variant: small-caps;
+    font-size:1.5em;
+    letter-spacing:3px;
+    line-height: 1;
+}
+
+.site-subtitle {
+    font-size: 1em;
+    font-family: Verdana, Geneva, sans-serif;
+    font-variant: small-caps;
+    letter-spacing:1px;
+}
+
+.fs3-divider {
+    background-color: #2E2F30;
+}
+
+.nav>li>a:focus, .nav>li>a:hover {
+    background-color: #1A1B1C;
+}
+
+.nav .open>a, .nav .open>a:focus, .nav .open>a:hover {
+    background-color: #1A1B1C;
+    border-color: #1A1B1C;
+}
+
+/* Jobs */
+.job-status-HOLD {
+    background-color: #A31B1B;
+}
+
+
+.job-status-OPEN {
+    background-color: #448444;
+}
+
+.job-category-APP {
+    background-color: #804c80;
+}
+
+.job-category-ALERT, .job-category-BUG {
+    background-color: #C12020;
+}
+
+.job-category-REQ {
+    background-color: gray;
+}
+
+.job-category-SPELL {
+    background-color: #3E7499;
+}
+
+.job-category-PLOT{
+    background-color: #345B5B;
+}
+
+
+/* Sidebar */
+.sidebar-heading h2 {
+    padding: 0px;
+    color: #C2C1C2;
+    border: 0px;
+}
+
+.sidebar-box {
+    line-height: 1.5em;
+}
+
+/* Landing Page */
+.jumbotron p {
+    color: $primary-words-color;
+    font-size:16px;
+    line-height: 1.5em;
+
+}
+
+.jumbotron-tagline {
+	display:none;
+}
+
+.jumbotron img {
+    max-width: 75%;
+    width: 500px;
+    opacity: .8;
+}
+
+.image-container.right img {
+   float: right;
+}
+
+.image-container.left img {
+   float: left;
+}
+
+/* Specific Shit*/
+/* BG text area */
+#ember823 {
+    height:700px;
+}
+
+.panel-default>.panel-heading {
+    color: $primary-words-color;
+    background-color: #314254;
+    border-color: #314254;
+}
+/* Combat 'type' spacing */
+#ember670 {
+    margin-top:5px;
+}
+
+/* Character pages */
+
+.profile-box {
+    color: #d1d2d3;
+    background-color: #383A4F;
+    border-radius: 10px;
+    opacity: .8;
+}
+
+.profile-box .row {
+    border-bottom: 1px solid #383A4F;
+    margin: 3px;
+}
+
+.profile-title {
+    font-size: 2em;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+
+/* Log Pages */
+.log-wrap {
+    background-position: 20% 40%;
+    background-color: rgba(0, 0, 0, 0.25);
+}
+
+.log-box {
+    color: $dark-words-color;
+}
+
+// Scenes
+
+.log-box {
+    background-color: #58585E;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding: 15px;
+    border-radius: 10px;
+    color: #F9F9F9;
+    line-height: 1.25em;
+    opacity: .75;
+}
+
+.log-icon-container {
+    width: 125px;
+    height: 125px;
+}
+
+.log-icon-title-container {
+    width: 125px;
+}
+
+.char-icon-container {
+    padding: 0px;
+}
+
+.scene-pose {
+    padding: 0px;
+    margin: 10px 10px 20px 10px
+}
+
+.scene-log p {
+    margin: 2px 10px 10px 10px;
+}
+
+.scene-ooc-pose {
+    margin-bottom: 10px;
+}
+
+.scene-journal {
+    background-color: #DB5461;
+}
+
+.scene-log p {
+  margin: 25px 10px 25px 10px;
+  line-height: 1.6;
+}
+
+.scene-log {
+  border: 0px;
+}
+
+.badge-likes {
+    background-color: #99233A;
+}
+
+.sheet_header {
+    background-color: #383A4F;
+    color: #d1d2d3;
+    font-weight: normal;
+    letter-spacing: 0.1em;
+    padding: 5px 25px;
+    margin: 15px;
+    font-family: "Libre Baskerville";
+    font-size: 1.5em;
+    font-variant: small-caps;
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+    border-radius: 15px;
+    border: 0px;
+}
+
+div.rating-wrapper {
+    width: 55%;
+    float: right;
+    text-align: right;
+    display: inline-block;
+}
+
+div.rating-block {
+    width: 90%;
+}
+
+div.rating-numeric, div.rating-alpha {
+    width: 100%;
+}
+
+div.rating-numeric {
+    display: inline-block;
+}
+
+div.rating-alpha {
+    color: rgb(116, 139, 165);
+    display: none;
+}
+
+.rating-fill {
+    color: rgb(116, 139, 165);
+    opacity: 0.8;
+}
+
+.rating-empty {
+    color: rgb(116, 139, 165);
+    opacity: 0.6;
+}
+
+.alpha-numeric-switch {
+    cursor: pointer;
+    padding: 0px;
+}
+
+.alpha-numeric-switch:hover {
+    color: rgb(116, 139, 165);
+}
+
+.cg-tip {
+
+    color: white;
+    background: #555662;
+    padding: 15px;
+    border-radius: 10px;
+
+}
+
+.cg-subtle-tip {
+   font-style: italic;
+   margin: 15px;
+}
+
+.cg-tip-table {
+    background: #555662;
+   padding: 20px;
+   border-radius: 10px;
+}
+
+.chat-timestamp {
+    color: #999999;
+    font-size: 85%;
+}
+
+.chat-button-active {
+    color: #d1d2d3;
+    background-color: #333;
+}
+
+.chat-button {
+    background: #383A4F;
+    color: #d1d2d3;
+    overflow: hidden;
+}

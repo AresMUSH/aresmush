@@ -1,0 +1,1 @@
+var aresconfig = {"mush_port":4201,"web_portal_port":443,"websocket_port":4202,"version":"0.34","host":"spiritlakemu.com","api_port":4203,"api_key":"d810dfd5-d751-46b3-ad89-2df7a0b20ed1","styles_path":"/home/ares/aresmush/game/styles","uploads_path":"/home/ares/aresmush/game/uploads","game_name":"Spirit Lake","use_api_proxy":true,"ssl":true};

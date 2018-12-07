@@ -1,0 +1,148 @@
+2018-12-07 13:39:43 DEBUG - Loading config from /home/ares/aresmush/game/config/events.yml. 
+2018-12-07 13:39:43 DEBUG - Loading config from /home/ares/aresmush/game/config/names.yml. 
+2018-12-07 13:39:43 DEBUG - Loading config from /home/ares/aresmush/game/config/who.yml. 
+2018-12-07 13:39:43 DEBUG - Loading config from /home/ares/aresmush/game/config/channels.yml. 
+2018-12-07 13:39:43 DEBUG - Loading config from /home/ares/aresmush/game/config/fs3skills_misc.yml. 
+2018-12-07 13:39:43 DEBUG - Loading config from /home/ares/aresmush/game/config/profile.yml. 
+2018-12-07 13:39:43 DEBUG - Loading config from /home/ares/aresmush/game/config/scenes.yml. 
+2018-12-07 13:39:43 DEBUG - Loading config from /home/ares/aresmush/game/config/describe.yml. 
+2018-12-07 13:39:43 DEBUG - Loading config from /home/ares/aresmush/game/config/fs3skills_action.yml. 
+2018-12-07 13:39:43 DEBUG - Loading config from /home/ares/aresmush/game/config/fs3combat_damage.yml. 
+2018-12-07 13:39:43 DEBUG - Loading config from /home/ares/aresmush/game/config/manage.yml. 
+2018-12-07 13:39:43 DEBUG - Loading config from /home/ares/aresmush/game/config/rooms.yml. 
+2018-12-07 13:39:43 DEBUG - Loading config from /home/ares/aresmush/game/config/tinker.yml. 
+2018-12-07 13:39:43 DEBUG - Loading config from /home/ares/aresmush/game/config/demographics.yml. 
+2018-12-07 13:39:43 DEBUG - Loading config from /home/ares/aresmush/game/config/login.yml. 
+2018-12-07 13:39:43 DEBUG - Loading config from /home/ares/aresmush/game/config/backup.yml. 
+2018-12-07 13:39:43 DEBUG - Loading config from /home/ares/aresmush/game/config/logger.yml. 
+2018-12-07 13:39:43 DEBUG - Loading config from /home/ares/aresmush/game/config/fs3skills_advantages.yml. 
+2018-12-07 13:39:43 DEBUG - Loading config from /home/ares/aresmush/game/config/fs3combat_vehicles.yml. 
+2018-12-07 13:39:43 DEBUG - Loading config from /home/ares/aresmush/game/config/database.yml. 
+2018-12-07 13:39:43 DEBUG - Loading config from /home/ares/aresmush/game/config/plugins.yml. 
+2018-12-07 13:39:43 DEBUG - Loading config from /home/ares/aresmush/game/config/fs3combat_hitloc.yml. 
+2018-12-07 13:39:43 DEBUG - Loading config from /home/ares/aresmush/game/config/fs3skills_bg.yml. 
+2018-12-07 13:39:43 DEBUG - Loading config from /home/ares/aresmush/game/config/ranks.yml. 
+2018-12-07 13:39:43 DEBUG - Loading config from /home/ares/aresmush/game/config/jobs.yml. 
+2018-12-07 13:39:43 DEBUG - Loading config from /home/ares/aresmush/game/config/status.yml. 
+2018-12-07 13:39:43 DEBUG - Loading config from /home/ares/aresmush/game/config/fs3combat_mounts.yml. 
+2018-12-07 13:39:43 DEBUG - Loading config from /home/ares/aresmush/game/config/ictime.yml. 
+2018-12-07 13:39:43 DEBUG - Loading config from /home/ares/aresmush/game/config/website.yml. 
+2018-12-07 13:39:43 DEBUG - Loading config from /home/ares/aresmush/game/config/fs3combat_npcs.yml. 
+2018-12-07 13:39:43 DEBUG - Loading config from /home/ares/aresmush/game/config/spells-nature.yml. 
+2018-12-07 13:39:43 DEBUG - Loading config from /home/ares/aresmush/game/config/forum.yml. 
+2018-12-07 13:39:43 DEBUG - Loading config from /home/ares/aresmush/game/config/mail.yml. 
+2018-12-07 13:39:43 DEBUG - Loading config from /home/ares/aresmush/game/config/fs3combat_armor.yml. 
+2018-12-07 13:39:43 DEBUG - Loading config from /home/ares/aresmush/game/config/spells-will.yml. 
+2018-12-07 13:39:43 DEBUG - Loading config from /home/ares/aresmush/game/config/locale.yml. 
+2018-12-07 13:39:43 DEBUG - Loading config from /home/ares/aresmush/game/config/fs3skills_xp.yml. 
+2018-12-07 13:39:43 DEBUG - Loading config from /home/ares/aresmush/game/config/game.yml. 
+2018-12-07 13:39:43 DEBUG - Loading config from /home/ares/aresmush/game/config/spells-air.yml. 
+2018-12-07 13:39:43 DEBUG - Loading config from /home/ares/aresmush/game/config/secrets.yml. 
+2018-12-07 13:39:43 DEBUG - Loading config from /home/ares/aresmush/game/config/fs3skills_langs.yml. 
+2018-12-07 13:39:43 DEBUG - Loading config from /home/ares/aresmush/game/config/skin.yml. 
+2018-12-07 13:39:43 DEBUG - Loading config from /home/ares/aresmush/game/config/friends.yml. 
+2018-12-07 13:39:43 DEBUG - Loading config from /home/ares/aresmush/game/config/arescentral.yml. 
+2018-12-07 13:39:43 DEBUG - Loading config from /home/ares/aresmush/game/config/roles.yml. 
+2018-12-07 13:39:43 DEBUG - Loading config from /home/ares/aresmush/game/config/help.yml. 
+2018-12-07 13:39:43 DEBUG - Loading config from /home/ares/aresmush/game/config/fs3skills_attrs.yml. 
+2018-12-07 13:39:43 DEBUG - Loading config from /home/ares/aresmush/game/config/custom.yml. 
+2018-12-07 13:39:43 DEBUG - Loading config from /home/ares/aresmush/game/config/page.yml. 
+2018-12-07 13:39:43 INFO - Loading fs3combat 
+2018-12-07 13:39:43 DEBUG - Loading translations from /home/ares/aresmush/plugins/fs3combat/locales/locale_en.yml. 
+2018-12-07 13:39:43 WARN - Skipping help file /home/ares/aresmush/plugins/custom/help/en/spells.md - topic already exists. 
+2018-12-07 13:39:43 DEBUG - Handling ConfigUpdatedEvent. 
+2018-12-07 13:39:56 DEBUG - Handling ConnectionClosedEvent. 
+2018-12-07 13:39:57 DEBUG - Handling ConnectionClosedEvent. 
+2018-12-07 13:39:59 DEBUG - Handling ConnectionEstablishedEvent. 
+2018-12-07 13:40:01 DEBUG - Handling ConnectionEstablishedEvent. 
+2018-12-07 13:40:02 DEBUG - Handling ConnectionClosedEvent. 
+2018-12-07 13:40:04 DEBUG - Handling ConnectionEstablishedEvent. 
+2018-12-07 13:40:08 DEBUG - Cleaning up places. 
+2018-12-07 13:42:34 ERROR - Error in Web Request: client= error=undefined method `each' for nil:NilClass backtrace=["/home/ares/aresmush/plugins/demographics/public/demographics_api.rb:27:in `visible_demographics'", "/home/ares/aresmush/plugins/profile/web/character_request_handler.rb:27:in `handle'", "/home/ares/aresmush/engine/aresmush/commands/dispatcher.rb:127:in `block (2 levels) in on_web_request'", "/home/ares/aresmush/engine/aresmush/commands/dispatcher.rb:121:in `each'", "/home/ares/aresmush/engine/aresmush/commands/dispatcher.rb:121:in `block in on_web_request'", "/home/ares/aresmush/engine/aresmush/error_block.rb:6:in `with_error_handling'", "/home/ares/aresmush/engine/aresmush/commands/dispatcher.rb:120:in `on_web_request'", "/home/ares/aresmush/engine/aresmush/web/engine_api_server.rb:77:in `block in handle_request'", "/home/ares/aresmush/engine/aresmush/error_block.rb:6:in `with_error_handling'", "/home/ares/aresmush/engine/aresmush/web/engine_api_server.rb:71:in `handle_request'"] 
+2018-12-07 13:42:34 ERROR - Unhandled web request: {"cmd"=>"character", "args"=>{"id"=>"Kistokir"}, "api_key"=>"d810dfd5-d751-46b3-ad89-2df7a0b20ed1", "auth"=>{"authenticator"=>"authenticator:ares", "token"=>"adad28fb-1826-498f-aeb2-16c020f361a7", "name"=>"Ji", "id"=>"71", "is_approved"=>"true", "is_admin"=>"false", "is_coder"=>"false"}}. 
+2018-12-07 13:42:54 ERROR - Error in Web Request: client= error=undefined method `each' for nil:NilClass backtrace=["/home/ares/aresmush/plugins/demographics/public/demographics_api.rb:27:in `visible_demographics'", "/home/ares/aresmush/plugins/profile/web/character_request_handler.rb:27:in `handle'", "/home/ares/aresmush/engine/aresmush/commands/dispatcher.rb:127:in `block (2 levels) in on_web_request'", "/home/ares/aresmush/engine/aresmush/commands/dispatcher.rb:121:in `each'", "/home/ares/aresmush/engine/aresmush/commands/dispatcher.rb:121:in `block in on_web_request'", "/home/ares/aresmush/engine/aresmush/error_block.rb:6:in `with_error_handling'", "/home/ares/aresmush/engine/aresmush/commands/dispatcher.rb:120:in `on_web_request'", "/home/ares/aresmush/engine/aresmush/web/engine_api_server.rb:77:in `block in handle_request'", "/home/ares/aresmush/engine/aresmush/error_block.rb:6:in `with_error_handling'", "/home/ares/aresmush/engine/aresmush/web/engine_api_server.rb:71:in `handle_request'"] 
+2018-12-07 13:42:54 ERROR - Unhandled web request: {"cmd"=>"character", "args"=>{"id"=>"Kistokir"}, "api_key"=>"d810dfd5-d751-46b3-ad89-2df7a0b20ed1", "auth"=>{"authenticator"=>"authenticator:ares", "token"=>"adad28fb-1826-498f-aeb2-16c020f361a7", "name"=>"Ji", "id"=>"71", "is_approved"=>"true", "is_admin"=>"false", "is_coder"=>"false"}}. 
+2018-12-07 13:43:22 DEBUG - Handling ConnectionEstablishedEvent. 
+2018-12-07 13:44:43 DEBUG - Loading game config. 
+2018-12-07 13:44:43 DEBUG - Loading config from /home/ares/aresmush/game/config/achievements.yml. 
+2018-12-07 13:44:43 DEBUG - Loading config from /home/ares/aresmush/game/config/server.yml. 
+2018-12-07 13:44:43 DEBUG - Loading config from /home/ares/aresmush/game/config/cookies.yml. 
+2018-12-07 13:44:43 DEBUG - Loading config from /home/ares/aresmush/game/config/spells-corpus.yml. 
+2018-12-07 13:44:43 DEBUG - Loading config from /home/ares/aresmush/game/config/fs3skills_chargen.yml. 
+2018-12-07 13:44:43 DEBUG - Loading config from /home/ares/aresmush/game/config/weather.yml. 
+2018-12-07 13:44:43 DEBUG - Loading config from /home/ares/aresmush/game/config/idle.yml. 
+2018-12-07 13:44:43 DEBUG - Loading config from /home/ares/aresmush/game/config/chargen.yml. 
+2018-12-07 13:44:43 DEBUG - Loading config from /home/ares/aresmush/game/config/places.yml. 
+2018-12-07 13:44:43 DEBUG - Loading config from /home/ares/aresmush/game/config/spells-spirit.yml. 
+2018-12-07 13:44:43 DEBUG - Loading config from /home/ares/aresmush/game/config/fs3combat_weapons.yml. 
+2018-12-07 13:44:43 DEBUG - Loading config from /home/ares/aresmush/game/config/schools.yml. 
+2018-12-07 13:44:43 DEBUG - Loading config from /home/ares/aresmush/game/config/fs3combat_skills.yml. 
+2018-12-07 13:44:43 DEBUG - Loading config from /home/ares/aresmush/game/config/magic-items.yml. 
+2018-12-07 13:44:43 DEBUG - Loading config from /home/ares/aresmush/game/config/maps.yml. 
+2018-12-07 13:44:43 DEBUG - Loading config from /home/ares/aresmush/game/config/sites.yml. 
+2018-12-07 13:44:43 DEBUG - Loading config from /home/ares/aresmush/game/config/fs3combat_misc.yml. 
+2018-12-07 13:44:43 DEBUG - Loading config from /home/ares/aresmush/game/config/spells-water.yml. 
+2018-12-07 13:44:43 DEBUG - Loading config from /home/ares/aresmush/game/config/spells-earth.yml. 
+2018-12-07 13:44:43 DEBUG - Loading config from /home/ares/aresmush/game/config/datetime.yml. 
+2018-12-07 13:44:43 DEBUG - Loading config from /home/ares/aresmush/game/config/ooctime.yml. 
+2018-12-07 13:44:43 DEBUG - Loading config from /home/ares/aresmush/game/config/colors.yml. 
+2018-12-07 13:44:43 DEBUG - Loading config from /home/ares/aresmush/game/config/utils.yml. 
+2018-12-07 13:44:43 DEBUG - Loading config from /home/ares/aresmush/game/config/spells-fire.yml. 
+2018-12-07 13:44:43 DEBUG - Loading config from /home/ares/aresmush/game/config/events.yml. 
+2018-12-07 13:44:43 DEBUG - Loading config from /home/ares/aresmush/game/config/names.yml. 
+2018-12-07 13:44:43 DEBUG - Loading config from /home/ares/aresmush/game/config/who.yml. 
+2018-12-07 13:44:43 DEBUG - Loading config from /home/ares/aresmush/game/config/channels.yml. 
+2018-12-07 13:44:43 DEBUG - Loading config from /home/ares/aresmush/game/config/fs3skills_misc.yml. 
+2018-12-07 13:44:43 DEBUG - Loading config from /home/ares/aresmush/game/config/profile.yml. 
+2018-12-07 13:44:43 DEBUG - Loading config from /home/ares/aresmush/game/config/scenes.yml. 
+2018-12-07 13:44:43 DEBUG - Loading config from /home/ares/aresmush/game/config/describe.yml. 
+2018-12-07 13:44:43 DEBUG - Loading config from /home/ares/aresmush/game/config/fs3skills_action.yml. 
+2018-12-07 13:44:43 DEBUG - Loading config from /home/ares/aresmush/game/config/fs3combat_damage.yml. 
+2018-12-07 13:44:43 DEBUG - Loading config from /home/ares/aresmush/game/config/manage.yml. 
+2018-12-07 13:44:43 DEBUG - Loading config from /home/ares/aresmush/game/config/rooms.yml. 
+2018-12-07 13:44:43 DEBUG - Loading config from /home/ares/aresmush/game/config/tinker.yml. 
+2018-12-07 13:44:43 DEBUG - Loading config from /home/ares/aresmush/game/config/demographics.yml. 
+2018-12-07 13:44:43 DEBUG - Loading config from /home/ares/aresmush/game/config/login.yml. 
+2018-12-07 13:44:43 DEBUG - Loading config from /home/ares/aresmush/game/config/backup.yml. 
+2018-12-07 13:44:43 DEBUG - Loading config from /home/ares/aresmush/game/config/logger.yml. 
+2018-12-07 13:44:43 DEBUG - Loading config from /home/ares/aresmush/game/config/fs3skills_advantages.yml. 
+2018-12-07 13:44:43 DEBUG - Loading config from /home/ares/aresmush/game/config/fs3combat_vehicles.yml. 
+2018-12-07 13:44:43 DEBUG - Loading config from /home/ares/aresmush/game/config/database.yml. 
+2018-12-07 13:44:43 DEBUG - Loading config from /home/ares/aresmush/game/config/plugins.yml. 
+2018-12-07 13:44:43 DEBUG - Loading config from /home/ares/aresmush/game/config/fs3combat_hitloc.yml. 
+2018-12-07 13:44:43 DEBUG - Loading config from /home/ares/aresmush/game/config/fs3skills_bg.yml. 
+2018-12-07 13:44:43 DEBUG - Loading config from /home/ares/aresmush/game/config/ranks.yml. 
+2018-12-07 13:44:43 DEBUG - Loading config from /home/ares/aresmush/game/config/jobs.yml. 
+2018-12-07 13:44:43 DEBUG - Loading config from /home/ares/aresmush/game/config/status.yml. 
+2018-12-07 13:44:43 DEBUG - Loading config from /home/ares/aresmush/game/config/fs3combat_mounts.yml. 
+2018-12-07 13:44:43 DEBUG - Loading config from /home/ares/aresmush/game/config/ictime.yml. 
+2018-12-07 13:44:43 DEBUG - Loading config from /home/ares/aresmush/game/config/website.yml. 
+2018-12-07 13:44:43 DEBUG - Loading config from /home/ares/aresmush/game/config/fs3combat_npcs.yml. 
+2018-12-07 13:44:43 DEBUG - Loading config from /home/ares/aresmush/game/config/spells-nature.yml. 
+2018-12-07 13:44:43 DEBUG - Loading config from /home/ares/aresmush/game/config/forum.yml. 
+2018-12-07 13:44:43 DEBUG - Loading config from /home/ares/aresmush/game/config/mail.yml. 
+2018-12-07 13:44:43 DEBUG - Loading config from /home/ares/aresmush/game/config/fs3combat_armor.yml. 
+2018-12-07 13:44:43 DEBUG - Loading config from /home/ares/aresmush/game/config/spells-will.yml. 
+2018-12-07 13:44:43 DEBUG - Loading config from /home/ares/aresmush/game/config/locale.yml. 
+2018-12-07 13:44:43 DEBUG - Loading config from /home/ares/aresmush/game/config/fs3skills_xp.yml. 
+2018-12-07 13:44:43 DEBUG - Loading config from /home/ares/aresmush/game/config/game.yml. 
+2018-12-07 13:44:43 DEBUG - Loading config from /home/ares/aresmush/game/config/spells-air.yml. 
+2018-12-07 13:44:43 DEBUG - Loading config from /home/ares/aresmush/game/config/secrets.yml. 
+2018-12-07 13:44:43 DEBUG - Loading config from /home/ares/aresmush/game/config/fs3skills_langs.yml. 
+2018-12-07 13:44:43 DEBUG - Loading config from /home/ares/aresmush/game/config/skin.yml. 
+2018-12-07 13:44:43 DEBUG - Loading config from /home/ares/aresmush/game/config/friends.yml. 
+2018-12-07 13:44:43 DEBUG - Loading config from /home/ares/aresmush/game/config/arescentral.yml. 
+2018-12-07 13:44:43 DEBUG - Loading config from /home/ares/aresmush/game/config/roles.yml. 
+2018-12-07 13:44:43 DEBUG - Loading config from /home/ares/aresmush/game/config/help.yml. 
+2018-12-07 13:44:43 DEBUG - Loading config from /home/ares/aresmush/game/config/fs3skills_attrs.yml. 
+2018-12-07 13:44:43 DEBUG - Loading config from /home/ares/aresmush/game/config/custom.yml. 
+2018-12-07 13:44:43 DEBUG - Loading config from /home/ares/aresmush/game/config/page.yml. 
+2018-12-07 13:44:43 DEBUG - Handling ConfigUpdatedEvent. 
+2018-12-07 13:45:13 DEBUG - Handling ConnectionClosedEvent. 
+2018-12-07 13:45:14 DEBUG - Handling ConnectionEstablishedEvent. 
+2018-12-07 13:45:23 DEBUG - Empty scene cleanup. 
+2018-12-07 13:45:23 DEBUG - Room cleanup cron running: []. 
+2018-12-07 13:45:23 DEBUG - Room cleanup cron running: []. 
+2018-12-07 13:45:23 DEBUG - Upcoming event notifications. 
+2018-12-07 13:46:50 DEBUG - Handling ConnectionEstablishedEvent. 
+2018-12-07 13:48:42 DEBUG - Handling ConnectionClosedEvent. 
