@@ -4,14 +4,14 @@ module AresMUSH
       def handle(request)
         char = Character.find_one_by_name request.args[:id]
         enactor = request.enactor
-        
+
         if (!char)
           return { error: t('webportal.not_found') }
         end
 
         error = Website.check_login(request, true)
         return error if error
-        
+
         # Generic demographic/group field list for those who want custom displays.
         all_fields = {}
         Demographics.all_demographics.each do |d|
@@ -24,32 +24,43 @@ module AresMUSH
         all_fields['age'] = char.age
 
 
-        demographics = Demographics.visible_demographics(char, enactor).sort.each.map { |d| 
+        demographics = Demographics.visible_demographics(char, enactor).sort.each.map { |d|
             {
               name: d.titleize,
               key: d.titleize,
               value: char.demographic(d)
             }
           }
-        
-        
+
+
         demographics << { name: t('profile.age_title'), key: 'Age', value: char.age }
         demographics << { name: t('profile.birthdate_title'), key: 'Birthdate', value: char.demographic(:birthdate)}
         demographics << { name: t('profile.actor_title'), key: 'Actor', value: char.demographic(:actor)}
-        
-        groups = Demographics.all_groups.keys.sort.map { |g| 
+
+        groups = Demographics.all_groups.keys.sort.map { |g|
           {
             name: g.titleize,
             value: char.group(g)
           }
         }
-        
+
+        #Spells
+        def get_spell_list(list)
+          list.to_a.sort_by { |a| a.name }.map { |a|
+            {
+              name: a.name,
+              level: a.level,
+              }}
+        end
+
+        spells = get_spell_list(char.spells_learned)
+
         if (Ranks.is_enabled?)
           groups << { name: t('profile.rank_title'), key: 'Rank', value: char.rank }
         end
-          
-          
-        profile = char.profile.each_with_index.map { |(section, data), index| 
+
+
+        profile = char.profile.each_with_index.map { |(section, data), index|
           {
             name: section.titlecase,
             key: section.parameterize(),
@@ -57,7 +68,7 @@ module AresMUSH
             active_class: index == 0 ? 'active' : ''  # Stupid bootstrap hack
           }
         }
-        
+
         relationships_by_category = Profile.relationships_by_category(char)
         relationships = relationships_by_category.map { |category, relationships| {
           name: category,
@@ -70,10 +81,10 @@ module AresMUSH
              }
            }
         }}
-        
-        
+
+
         scenes_starring = char.scenes_starring
-        
+
         scenes = scenes_starring.sort_by { |s| s.date_shared || s.created_at }.reverse
              .map { |s| {
                       id: s.id,
@@ -84,24 +95,24 @@ module AresMUSH
                       participants: s.participants.to_a.sort_by { |p| p.name }.map { |p| { name: p.name, id: p.id, icon: Website.icon_for_char(p) }},
                       scene_type: s.scene_type ? s.scene_type.titlecase : 'Unknown',
                       likes: s.likes
-        
+
                     }
                   }
         #        }
         #      }
-        
+
         show_background = (char.on_roster? || char.bg_shared || Chargen.can_view_bgs?(enactor)) && !char.background.blank?
 
-        
+
         files = Profile.character_page_files(char)
         files = files.map { |f| Website.get_file_info(f) }
-        
+
         if (FS3Skills.is_enabled?)
           fs3 = FS3Skills::CharProfileRequestHandler.new.handle(request)
         else
           fs3 = nil
         end
-        
+
         {
           id: char.id,
           name: char.name,
@@ -113,6 +124,7 @@ module AresMUSH
           profile_image: Website.get_file_info(char.profile_image),
           demographics: demographics,
           groups: groups,
+          spells: spells,
           roster_notes: char.idle_state == 'Roster' ? char.roster_notes : nil,
           handle: char.handle ? char.handle.name : nil,
           status_message: Profile.get_profile_status_message(char),
@@ -133,8 +145,8 @@ module AresMUSH
           achievements: Achievements.is_enabled? ? Achievements.build_achievements(char) : nil
         }
       end
-      
-      
+
+
     end
   end
 end
