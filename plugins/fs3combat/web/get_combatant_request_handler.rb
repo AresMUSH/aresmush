@@ -40,10 +40,10 @@ module AresMUSH
           npc_skill: combatant.is_npc? ? combatant.npc.level : nil,
           combat: combatant.combat.id,
           options: {
-            weapons: AresMUSH::FS3Combat.weapons.keys,
+            weapons: AresMUSH::FS3Combat.mundane_weapons.keys,
             weapon_specials: AresMUSH::FS3Combat.mundane_weapon_specials.keys,
             armor_specials:  AresMUSH::FS3Combat.armor_specials.keys,
-            armor: AresMUSH::FS3Combat.armors.keys,
+            armor: AresMUSH::FS3Combat.mundane_armors.keys,
             stances: FS3Combat.stances.keys,
             npc_skills: FS3Combat.npc_type_names
           }

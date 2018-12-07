@@ -21,12 +21,12 @@ module AresMUSH
 
 
       def handle
-        specials = AresMUSH::FS3Combat.weapon_specials.keys
+        specials = AresMUSH::FS3Combat.weapons.keys
 
 
          client.emit specials
 
-        specials2 = FS3Combat.mundane_weapon_specials.keys
+        specials2 = FS3Combat.mundane_weapons.keys
         client.emit specials2
 
 
