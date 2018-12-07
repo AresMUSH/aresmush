@@ -3,6 +3,7 @@ module AresMUSH
     collection :spells_learned, "AresMUSH::SpellsLearned"
     attribute :spells_cast, :type => DataType::Integer
     attribute :achievement_spells_learned, :type => DataType::Integer
+    attribute :spells_learned=, :type => DataType::Integer
 
   end
 end
