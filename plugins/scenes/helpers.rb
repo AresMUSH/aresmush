@@ -357,7 +357,7 @@ module AresMUSH
         end
       end
         
-      [ 1, 10, 20, 50, 100 ].each do |level|
+      [ 1, 10, 20, 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000 ].each do |level|
         if ( count >= level )
           message = "Participated in #{level} #{level == 1 ? 'scene' : 'scenes'}."
           Achievements.award_achievement(char, "scene_participant_#{level}", 'story', message)
