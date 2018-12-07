@@ -29,7 +29,7 @@ module AresMUSH
     end
     
     def beep
-      send_data "\a\n"
+      send_data "\a\r\n"
     end
     
     def connect_client(client)
