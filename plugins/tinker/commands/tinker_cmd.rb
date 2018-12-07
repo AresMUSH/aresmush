@@ -9,34 +9,25 @@ module AresMUSH
         return nil
       end
 
-
-      def get_spell_list(list)
-        list.to_a.sort_by { |a| a.name }.map { |a|
-          {
-            name: a.name,
-            level: a.level,
-            }}
+      def build_list(hash)
+        hash.sort.map { |name, data| {
+          key: name,
+          name: name.titleize,
+          description: data['description']
+          }
+        }
       end
 
-      def get_ability_list(list)
-        list.to_a.sort_by { |a| a.name }.map { |a|
-          {
-            name: a.name,
-            rating: a.rating,
-            rating_name: a.rating_name
-            }}
-          end
 
 
       def handle
-        spells = get_spell_list(enactor.spells_learned)
+        specials = AresMUSH::FS3Combat.weapon_specials.keys
 
 
+         client.emit specials
 
-         client.emit spells
-
-         attributes = get_ability_list(enactor.fs3_attributes)
-         client.emit attributes
+        specials2 = FS3Combat.mundane_weapon_specials.keys
+        client.emit specials2
 
 
 
