@@ -26,9 +26,9 @@ module AresMUSH
           name: combatant.name,
           combatant_type: combatant.combatant_type,
           weapon: combatant.weapon_name,
-          weapon_specials: AresMUSH::FS3Combat.mundane_weapon_specials.keys.map { |k| {
+          weapon_specials: AresMUSH::FS3Combat.weapon_specials.keys.map { |k| {
             name: k,
-            selected: (combatant.mundane_weapon_specials || []).include?(k)
+            selected: (combatant.weapon_specials || []).include?(k)
           }},
           armor: combatant.armor_name,
           armor_specials: AresMUSH::FS3Combat.armor_specials.keys.map { |k| {
