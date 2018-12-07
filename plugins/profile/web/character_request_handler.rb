@@ -46,10 +46,11 @@ module AresMUSH
 
         #Spells
         def get_spell_list(list)
-          list.to_a.sort_by { |a| a.name }.map { |a|
+          list.to_a.sort_by { |a| a.level }.map { |a|
             {
               name: a.name,
               level: a.level,
+              school: a.school
               }}
         end
 
