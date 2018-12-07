@@ -23,7 +23,10 @@ module AresMUSH
           end
         
           scene.delete_poses_and_log
-          scene.room.emit_ooc t('scenes.log_cleared')
+          if (scene.room)
+            scene.room.emit_ooc t('scenes.log_cleared')
+          end
+          client.emit_success t('scenes.log_cleared')
         end
       end
     end
