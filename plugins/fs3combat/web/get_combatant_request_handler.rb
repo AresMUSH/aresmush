@@ -41,7 +41,7 @@ module AresMUSH
           combat: combatant.combat.id,
           options: {
             weapons: AresMUSH::FS3Combat.weapons.keys,
-            weapon_specials: build_list(FS3Combat.mundane_weapon_specials),
+            weapon_specials: AresMUSH::FS3Combat.weapon_specials.keys,
             armor_specials:  AresMUSH::FS3Combat.armor_specials.keys,
             armor: AresMUSH::FS3Combat.armors.keys,
             stances: FS3Combat.stances.keys,
