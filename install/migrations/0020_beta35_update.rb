@@ -16,6 +16,11 @@ module AresMUSH
         config['achievements']['shortcuts'] = { 'achievements' => 'achievement' }
         DatabaseMigrator.write_config_file("achievements.yml", config)    
     
+        Global.logger.debug "Adding room owners shortcut."
+        config = DatabaseMigrator.read_config_file("rooms.yml")
+        config['rooms']['shortcuts']['owners'] = 'owner'
+        DatabaseMigrator.write_config_file("rooms.yml", config)    
+    
         
       end
     end

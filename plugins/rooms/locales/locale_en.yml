@@ -25,8 +25,8 @@ en:
        cant_meetme_newbie: "You can't meetme %{name} because they haven't been approved."
        cant_meetme_if_newbie: "You can't use this command until you've been approved."
 
-       owner_set: "You set the room's owner."
-       owner_cleared: "You remove the room's owner."
+       owners_set: "You set the room's owners."
+       owners_cleared: "You remove the room's owners."
        
        grid_set: "You set the room's grid coordinates."
        grid_cleared: "You clear the room's grid coordinates."

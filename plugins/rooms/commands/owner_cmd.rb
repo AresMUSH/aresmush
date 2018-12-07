@@ -3,16 +3,16 @@ module AresMUSH
     class OwnerCmd
       include CommandHandler
 
-      attr_accessor :name, :owner_name
+      attr_accessor :name, :owner_names
       
       def parse_args
         if (cmd.args =~ /=/)
           args = cmd.parse_args(ArgParser.arg1_equals_optional_arg2)
           self.name = args.arg1
-          self.owner_name = titlecase_arg(args.arg2)
+          self.owner_names = list_arg(args.arg2)
         else
           self.name = "here"
-          self.owner_name = !cmd.args ? nil : titlecase_arg(cmd.args)
+          self.owner_names = !cmd.args ? nil : list(cmd.args)
         end
       end
 
@@ -33,14 +33,22 @@ module AresMUSH
         end
         room = matched_rooms.first
         
-        if (!self.owner_name)
-          room.update(room_owner: nil)
-          client.emit_success t('rooms.owner_cleared')
+        if (!self.owner_names)
+          room.room_owners.replace []
+          client.emit_success t('rooms.owners_cleared')
         else
-          ClassTargetFinder.with_a_character(self.owner_name, client, enactor) do |model|
-            room.update(room_owner: model.id)
-            client.emit_success t('rooms.owner_set')
+          owners = []
+          self.owner_names.each do |o|
+            char = Character.find_one_by_name(o)
+            if (!char)
+              client.emit_failure t('db.object_not_found')
+              return
+            end
+            owners << char
           end
+          
+          room.room_owners.replace owners
+          client.emit_success t('rooms.owners_set')
         end
       end
     end
