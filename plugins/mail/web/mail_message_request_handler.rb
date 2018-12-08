@@ -28,6 +28,8 @@ module AresMUSH
             can_reply: !!message.author,
             unread: !message.read,
             body: Website.format_markdown_for_html(message.body),
+            in_trash: message.tags.include?(Mail.trashed_tag),
+            raw_body: message.body,
             unread_mail_count: enactor.num_unread_mail
         }
       end
