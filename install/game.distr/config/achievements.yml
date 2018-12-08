@@ -5,3 +5,5 @@ achievements:
     portal: fa-globe
     fs3: fa-cubes
     story: fa-book
+  shortcuts:
+    achievements: achievement

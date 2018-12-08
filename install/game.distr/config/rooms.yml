@@ -15,3 +15,4 @@ rooms:
     room/type: roomtype
     room/area: area/set
     map: area
+    owners: owner
