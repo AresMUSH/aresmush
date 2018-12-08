@@ -27,7 +27,8 @@ module AresMUSH
             tags: message.tags,
             can_reply: !!message.author,
             unread: !message.read,
-            body: Website.format_markdown_for_html(message.body)
+            body: Website.format_markdown_for_html(message.body),
+            unread_mail_count: enactor.num_unread_mail
         }
       end
     end

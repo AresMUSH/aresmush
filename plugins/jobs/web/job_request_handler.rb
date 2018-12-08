@@ -41,6 +41,7 @@ module AresMUSH
           description: Website.format_markdown_for_html(job.description),
           status_values: Jobs.status_vals,
           category_values: Jobs.categories,
+          unread_jobs_count: is_job_admin ? enactor.unread_jobs.count : enactor.unread_requests.count,
           job_admin: job_admin.map { |c|  { 
             id: c.id, 
             name: c.name 
