@@ -9,7 +9,7 @@ module AresMUSH
         return error if error
 
         if (!message)
-          return { error: t('webportal.missing_required_fields') }
+          return { error: t('db.object_not_found') }
         end
         
         if (message.character != enactor)
@@ -28,6 +28,7 @@ module AresMUSH
             can_reply: !!message.author,
             unread: !message.read,
             body: Website.format_markdown_for_html(message.body),
+            all_tags: Mail.all_tags(enactor),
             in_trash: message.tags.include?(Mail.trashed_tag),
             raw_body: message.body,
             unread_mail_count: enactor.num_unread_mail
