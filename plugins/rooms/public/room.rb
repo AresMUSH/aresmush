@@ -7,7 +7,7 @@ module AresMUSH
     attribute :room_is_foyer, :type => DataType::Boolean
          
     index :room_type
-    
+        
     set :room_owners, "AresMUSH::Character"
     reference :area, "AresMUSH::Area"
     
