@@ -22,9 +22,10 @@ module AresMUSH
         
         Jobs.mark_read(job, enactor)
         
+        
         system_char = Game.master.system_character
         master_admin = Game.master.master_admin
-        job_admin = Character.all.select { |c| Jobs.can_access_job?(c, job) && c != system_char && c != master_admin }
+        job_admins = Character.all.select { |c| Jobs.can_access_job?(c, job) && c != system_char && c != master_admin }
         
         {
           id: job.id,
@@ -39,19 +40,18 @@ module AresMUSH
           author: { name: job.author_name, id: job.author ? job.author.id : nil, icon: Website.icon_for_char(job.author) },
           assigned_to: job.assigned_to ? { name: job.assigned_to.name, icon: Website.icon_for_char(job.assigned_to) } : nil,
           description: Website.format_markdown_for_html(job.description),
-          status_values: Jobs.status_vals,
-          category_values: Jobs.categories,
           unread_jobs_count: is_job_admin ? enactor.unread_jobs.count : enactor.unread_requests.count,
-          job_admin: job_admin.map { |c|  { 
-            id: c.id, 
-            name: c.name 
-            }},
           replies: Jobs.visible_replies(enactor, job).map { |r| {
             author: { name: r.author_name, icon: Website.icon_for_char(r.author) },
             message: Website.format_markdown_for_html(r.message),
             created: r.created_date_str(enactor),
-            admin_only: r.admin_only
-          }}
+            admin_only: r.admin_only,
+            id: r.id
+          }},
+          job_admins: job_admins.map { |c|  { 
+            id: c.id, 
+            name: c.name 
+            }}
         }
       end
     end
