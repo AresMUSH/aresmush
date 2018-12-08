@@ -31,6 +31,9 @@ module AresMUSH
             participants: s.participants.to_a.sort_by { |p| p.name }.map { |p| { name: p.name, id: p.id, icon: Website.icon_for_char(p) }},
             scene_type: s.scene_type ? s.scene_type.titlecase : 'Unknown',
             }}
+            
+        storyteller = plot.storyteller || Game.master.system_character
+        
         {
           id: plot.id,
           title: plot.title,
@@ -38,7 +41,8 @@ module AresMUSH
           description: description,
           start_date: plot.start_date,
           end_date: plot.end_date,
-          scenes: scenes
+          scenes: scenes,
+          storyteller: { name: storyteller.name, id: storyteller.id, icon: Website.icon_for_char(storyteller) }
         }
       end
     end
