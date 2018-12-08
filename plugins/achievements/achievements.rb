@@ -13,7 +13,14 @@ module AresMUSH
 
     def self.get_cmd_handler(client, cmd, enactor)
       if (cmd.root_is?("achievement"))
-        return AchievementsCmd
+        case cmd.switch
+        when "add"
+          return AchievementAddCmd
+        when "remove"
+          return AchievementRemoveCmd
+        else
+          return AchievementsCmd
+        end
       end
     end
 

@@ -8,6 +8,10 @@ module AresMUSH
     def self.award_achievement(char, name, type, message)
       return if char.is_admin? || char.is_npc? || char.is_guest?
       
+      if (!type || !message)
+        raise "Invalid achievement details.  Missing name or message."
+      end
+      
       if (Achievements.is_enabled? && !Achievements.has_achievement?(char, name))
         Achievement.create(character: char, type: type, name: name, message: message)
         notification = t('achievements.achievement_earned', :name => char.name, :message => message)
@@ -51,6 +55,7 @@ module AresMUSH
         name: name,
         type: data[:type],
         message: data[:message],
+        count: (data[:count] || 0) > 1 ? data[:count] : nil,
         type_icon: icon_types["#{data[:type]}"] || "fa-question"
       }}
     end
