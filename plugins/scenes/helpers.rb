@@ -2,7 +2,8 @@ module AresMUSH
   module Scenes
     
     def self.new_scene_activity(scene, data = nil)
-      web_msg = "#{scene.id}|#{data}"
+      last_posed = scene.last_posed ? scene.last_posed.name : nil
+      web_msg = "#{scene.id}|#{last_posed}|#{data}"
       Global.client_monitor.notify_web_clients(:new_scene_activity, web_msg) do |char|
         Scenes.can_read_scene?(char, scene)
       end

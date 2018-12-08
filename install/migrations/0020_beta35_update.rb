@@ -11,9 +11,10 @@ module AresMUSH
         config['chargen']['allow_web_submit'] = true
         DatabaseMigrator.write_config_file("chargen.yml", config)    
   
-        Global.logger.debug "Adding achievement shortcut."
+        Global.logger.debug "Adding achievement shortcut and custom achievements."
         config = DatabaseMigrator.read_config_file("achievements.yml")
         config['achievements']['shortcuts'] = { 'achievements' => 'achievement' }
+        config['achievements']['custom_achievements'] = {}
         DatabaseMigrator.write_config_file("achievements.yml", config)    
     
         Global.logger.debug "Adding room owners shortcut."
