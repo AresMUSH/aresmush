@@ -1,8 +1,12 @@
 module AresMUSH  
+  class Room
+    attribute :room_owner
+  end
+  
   module Migrations
     class MigrationBeta35Update
       def require_restart
-        false
+        true
       end
       
       def migrate
@@ -22,7 +26,12 @@ module AresMUSH
         config['rooms']['shortcuts']['owners'] = 'owner'
         DatabaseMigrator.write_config_file("rooms.yml", config)    
     
-        
+        Room.all.each do |r|
+          if (r.room_owner)
+            r.room_owners.replace [ Character[r.room_owner] ]
+            r.update(room_owner: nil)
+          end
+        end
       end
     end
   end
