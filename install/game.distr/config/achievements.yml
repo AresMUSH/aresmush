@@ -7,3 +7,4 @@ achievements:
     story: fa-book
   shortcuts:
     achievements: achievement
+  custom_achievements: {}
