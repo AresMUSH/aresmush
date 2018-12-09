@@ -11,6 +11,10 @@ module AresMUSH
          self.achievement_name = downcase_arg(args.arg2)
       end
       
+      def required_args
+        [ self.name, self.achievement_name ]
+      end
+      
       def check_permissions
         Achievements.can_manage_achievements?(enactor) ? nil : t('dispatcher.not_allowed')
       end

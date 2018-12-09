@@ -8,5 +8,10 @@ module AresMUSH
     def self.has_achievement?(char, name)
       char.achievements.any? { |a| a.name == name }
     end
+    
+    def self.custom_achievement_data(achievement)
+      data = Global.read_config("achievements", "custom_achievements")
+      data.select { |k, v| k.downcase == achievement.downcase }.values.first
+    end
   end  
 end
