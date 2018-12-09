@@ -6,6 +6,7 @@ module AresMUSH
     attribute :description
     attribute :summary
     
+    reference :storyteller, "AresMUSH::Character"
     collection :scenes, "AresMUSH::Scene"
     
     def sorted_scenes

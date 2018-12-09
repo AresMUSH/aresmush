@@ -3,9 +3,14 @@ module AresMUSH
     class CreatePlotRequestHandler
       def handle(request)
         enactor = request.enactor
+        storyteller = Character[request.args[:storyteller_id]]
         
         error = Website.check_login(request)
         return error if error
+        
+        if (!storyteller)
+          return { error: t('webportal.not_found') }
+        end
         
         if (!enactor.is_approved?)
           return { error: t('dispatcher.not_allowed') }
@@ -19,6 +24,7 @@ module AresMUSH
         
         plot = Plot.create(
           title: request.args[:title],
+          storyteller: storyteller,
           description: request.args[:description],
           summary: request.args[:summary]
         )

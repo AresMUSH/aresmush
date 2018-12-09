@@ -12,8 +12,8 @@ en:
         afk_disconnect:  "You've been idle so long we're guessing you're not there any more.  Please come back soon."
         perhaps_you_meant_offstage: "Perhaps you're looking for the 'offstage' command?"
         
-        set_playerbit_on: "You mark this character as a player bit."
-        set_playerbit_off: "This character is no longer marked as a player bit."
+        set_playerbit_on: "You mark that character as a player bit."
+        set_playerbit_off: "That character is no longer marked as a player bit."
 
         set_npc_on: "You mark %{name} as a NPC."
         set_npc_off: "%{name} is no longer marked as a NPC."
