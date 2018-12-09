@@ -1,8 +1,8 @@
-<%= header %>		
-%xh<%= t('demographics.group_types_title') %>%xn		
-<%= divider %>	
+<%= header %>
+%xh<%= t('demographics.group_types_title') %>%xn
+<%= divider %>
 <% groups.each do |name, data| %>
-<%= left(name, 20) -%>		
- <%= data['desc'] %>		
+<%= left(name, 20) -%>
+ <%= data['desc'] %>
 <% end %>
 <%= footer %> 

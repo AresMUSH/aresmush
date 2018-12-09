@@ -2,6 +2,10 @@
 en:
   achievements:
       achievement_earned: "%{name} has earned the achievement: %{message}"
-
+      already_has_achievement: "%{name} already has that achievement."
+      invalid_achievement: "You can only award custom achievements manually."
+      achievement_added: "Achievement added!"
+      achievement_removed: "Achievement removed!"
+      doesnt_have_achievement: "%{name} doesn't have that achievement."
       achievements_title: "Achievements for %{name}"
       

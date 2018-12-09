@@ -89,6 +89,12 @@ module AresMUSH
         cron = { "minute" => [4, 18, 22] }
         expect(Cron.is_cron_match?(cron, time)).to be true
       end
+      
+      it "should not match an empty cron spec" do
+        time = Time.new(2014, 01, 25, 14, 22, 17)
+        cron = {}
+        expect(Cron.is_cron_match?(cron, time)).to be false
+      end
     end
   end   
 end

@@ -1,7 +1,7 @@
 %lh
-%xh<%= t('achievements.achievements_title', :name => name) %>%xn
+%xh<%= t('achievements.achievements_title', :name => char.name) %>%xn
 
 <% list.each do |name, data| %>
-<%= data[:message] %> <% if data[:count] > 1 %>(<%= data[:count] %>)<% end %>
+<%= data[:message] %> <% if data[:count] > 1 %>(<%= data[:count] %>)<% end %> <%= staff_hint(name) %>
 <% end %>
 %lf
