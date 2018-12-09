@@ -5,8 +5,22 @@ module AresMUSH
       !Global.plugin_manager.is_disabled?("achievements")
     end
     
-    def self.award_achievement(char, name, type, message)
+    def self.award_achievement(char, name, type = nil, message = nil)
       return if char.is_admin? || char.is_npc? || char.is_guest?
+      
+      achievement_data = Achievements.custom_achievement_data(name)
+      if (achievement_data)
+        if (!type)
+          type = achievement_data['type']
+        end
+        if (!message)
+          message = achievement_data['message']
+        end
+      end
+      
+      if (!type || !message)
+        raise "Invalid achievement details.  Missing name or message."
+      end
       
       if (Achievements.is_enabled? && !Achievements.has_achievement?(char, name))
         Achievement.create(character: char, type: type, name: name, message: message)
@@ -51,6 +65,7 @@ module AresMUSH
         name: name,
         type: data[:type],
         message: data[:message],
+        count: (data[:count] || 0) > 1 ? data[:count] : nil,
         type_icon: icon_types["#{data[:type]}"] || "fa-question"
       }}
     end
