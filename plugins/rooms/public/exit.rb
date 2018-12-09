@@ -8,7 +8,7 @@ module AresMUSH
     end
     
     def owned_by?(char)
-      self.source && self.source.room_owner == char.id
+      self.source && self.source.room_owners.include?(char)
     end
     
   end

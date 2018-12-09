@@ -28,6 +28,7 @@ en:
         tag_added:  "You add the %{name} tag to the message."
         tag_removed: "You remove the %{name} tag from the message."
         message_archived: "Message archived."
+        tags_cant_be_empty: "Mail tags can't be empty."
         
         tags: "Tags:"
         from: "From:"

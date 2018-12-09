@@ -26,6 +26,7 @@ module AresMUSH
                   name: c.name,
                   is_ko: c.is_ko,
                   weapon: c.weapon,
+                  armor: c.armor,
                   ammo: c.ammo ? "(#{c.ammo})" : '',
                   damage_boxes: (-c.total_damage_mod).ceil.times.map { |d| d },
                   vehicle: c.vehicle ? "#{c.vehicle.name} #{c.piloting ? 'Pilot' : 'Passenger'}" : "" ,

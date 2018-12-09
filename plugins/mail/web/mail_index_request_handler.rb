@@ -16,6 +16,7 @@ module AresMUSH
             to_list: m.to_list,
             from: m.author_name,
             created: m.created_date_str(enactor),
+            is_in_trash: m.tags.include?(Mail.trashed_tag),
             tags: m.tags,
             can_reply: m.author,
             unread: !m.read,

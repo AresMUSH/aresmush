@@ -151,5 +151,54 @@ module AresMUSH
         nil
       end
     end
+    
+    def self.update_combatant(combat, combatant, enactor, team, stance, 
+      weapon, selected_weapon_specials, armor, selected_armor_specials, npc_level)
+      
+      if (team != combatant.team)
+        combatant.update(team: team)
+        FS3Combat.emit_to_combat combat, t('fs3combat.team_set', :name => combatant.name, :team => team ), FS3Combat.npcmaster_text(combatant.name, enactor)
+      end
+      
+      if (stance != combatant.stance)
+        combatant.update(stance: stance)
+        FS3Combat.emit_to_combat combat, t('fs3combat.stance_changed', :name => combatant.name, :poss => combatant.poss_pronoun, :stance => stance), FS3Combat.npcmaster_text(combatant.name, enactor)
+      end
+      
+      allowed_specials = FS3Combat.weapon_stat(weapon, "allowed_specials") || []
+      weapon_specials = []
+      selected_weapon_specials.each do |name|
+        if (allowed_specials.include?(name))
+          weapon_specials << name
+        else
+          return t('fs3combat.invalid_weapon_special', :special => name)
+        end
+      end
+      
+      if (combatant.weapon_name != weapon || combatant.weapon_specials != weapon_specials)
+        FS3Combat.set_weapon(enactor, combatant, weapon, weapon_specials)
+      end
+      
+      
+      allowed_specials = FS3Combat.armor_stat(armor, "allowed_specials") || []
+      armor_specials = []
+      selected_armor_specials.each do |name|
+        if (allowed_specials.include?(name))
+          armor_specials << name
+        else
+          return t('fs3combat.invalid_armor_special', :special => name)
+        end
+      end
+            
+      if (armor != combatant.armor_name || combatant.armor_specials != armor_specials)
+        FS3Combat.set_armor(enactor, combatant, armor, armor_specials)
+      end
+      
+      if (combatant.is_npc? && combatant.npc.level != npc_level)
+        combatant.npc.update(level: npc_level)
+      end
+      
+      return nil
+    end
   end
 end

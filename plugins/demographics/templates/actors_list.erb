@@ -1,9 +1,9 @@
-<%= header %>		
-%xh<%= t('demographics.actors_title') %>%xn		
-<%= divider %>	
+<%= header %>
+%xh<%= t('demographics.actors_title') %>%xn
+<%= divider %>
 <% paginator.page_items.each do |p| %>
-<%= left(p.name, 27) -%>		
- <%= p.actor %>		
+<%= left(p.name, 27) -%>
+ <%= p.actor %>
 <% end %>
 <%= paginator.page_footer %>
-<%= footer %> 
+<%= footer %>
