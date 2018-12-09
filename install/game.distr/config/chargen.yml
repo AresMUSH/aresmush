@@ -34,12 +34,6 @@ chargen:
     hooks: hook
     hook/delete: hook/remove
     hook/add: hook/set
-  app_review_commands: 
-    - "app %{name}"
-    - "profile %{name}"
-    - "bg %{name}"
-    - "hooks %{name}"
-    - "sheet %{name}"
   stages:
     start:
       tutorial: chargen.md
@@ -69,6 +63,12 @@ chargen:
       help: idle_out
     review:
       help: apps
-  welcome_message: Please welcome %{name}, our latest %{position} to
-    be approved!
+  welcome_message: Please welcome %{name}, our latest %{position} to be approved!
   arrivals_category: New Arrivals
+  app_review_commands:
+  - app %{name}
+  - profile %{name}
+  - bg %{name}
+  - hooks %{name}
+  - sheet %{name}
+  allow_web_submit: true

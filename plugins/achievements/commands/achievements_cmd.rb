@@ -11,7 +11,7 @@ module AresMUSH
       
       def handle
         ClassTargetFinder.with_a_character(self.name, client, enactor) do |model|
-          template = AchievementsTemplate.new Achievements.achievements_list(model), model.name
+          template = AchievementsTemplate.new Achievements.achievements_list(model), model, enactor
           client.emit template.render
         end
       end

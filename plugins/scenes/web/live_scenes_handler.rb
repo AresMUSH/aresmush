@@ -29,7 +29,8 @@ module AresMUSH
                   is_unread: enactor && Scenes.can_access_scene?(enactor, s) && s.participants.include?(enactor) && s.is_unread?(enactor),
                   updated: OOCTime.local_long_timestr(enactor, s.last_activity),
                   watching: Scenes.is_watching?(s, enactor),
-                  participating: Scenes.is_participant?(s, enactor)
+                  participating: Scenes.is_participant?(s, enactor),
+                  last_posed: s.last_posed ? s.last_posed.name : nil
                 }}
       end
       

@@ -27,7 +27,8 @@ module AresMUSH
           background: bg_app,
           desc: desc_app,
           ranks: ranks_app,
-          hooks: hooks_app
+          hooks: hooks_app,
+          allow_web_submit: Global.read_config("chargen", "allow_web_submit")
         }
       end
     end

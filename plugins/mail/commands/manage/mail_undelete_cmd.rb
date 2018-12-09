@@ -15,9 +15,7 @@ module AresMUSH
         
       def handle
         Mail.with_a_delivery(client, enactor, self.num) do |delivery|
-          tags = delivery.tags
-          tags.delete Mail.trashed_tag
-          delivery.update(tags: tags)
+          Mail.remove_from_trash(delivery)
           client.emit_ooc t("mail.message_undeleted", :subject => delivery.subject)
         end
       end

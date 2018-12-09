@@ -44,7 +44,8 @@ module AresMUSH
           date_format: Global.read_config("datetime", "date_entry_format_help"),
           bg_blurb: Website.format_markdown_for_html(Global.read_config("chargen", "bg_blurb")),
           hooks_blurb: Website.format_markdown_for_html(Global.read_config("chargen", "hooks_blurb")),
-          desc_blurb: Website.format_markdown_for_html(Global.read_config("chargen", "desc_blurb"))
+          desc_blurb: Website.format_markdown_for_html(Global.read_config("chargen", "desc_blurb")),
+          allow_web_submit: Global.read_config("chargen", "allow_web_submit")
         }
       end
     end

@@ -61,7 +61,7 @@ module AresMUSH
           return ChannelListCmd
         end
         
-        if (is_talk_cmd(enactor, cmd))
+        if (Channels.is_talk_cmd(enactor, cmd))
           return ChannelTalkCmd
         end
       end

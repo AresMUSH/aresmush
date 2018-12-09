@@ -4,11 +4,11 @@ module AresMUSH
       include CommandHandler
       include NotAllowedWhileTurnInProgress
       
-      attr_accessor :level, :name
+      attr_accessor :level, :names
       
       def parse_args
         args = cmd.parse_args(ArgParser.arg1_equals_arg2)
-        self.name = titlecase_arg(args.arg1)
+        self.names = list_arg(args.arg1)
         self.level = titlecase_arg(args.arg2)
       end
 
@@ -23,20 +23,22 @@ module AresMUSH
       end
       
       def handle
-        FS3Combat.with_a_combatant(self.name, client, enactor) do |combat, combatant|
+        self.names.each do |name|
+          FS3Combat.with_a_combatant(name, client, enactor) do |combat, combatant|
           
-          if (combat.organizer != enactor)
-            client.emit_failure t('fs3combat.only_organizer_can_do')
-            return
-          end
+            if (combat.organizer != enactor)
+              client.emit_failure t('fs3combat.only_organizer_can_do')
+              return
+            end
           
-          if (!combatant.is_npc?)
-            client.emit_failure t('fs3combat.not_a_npc')
-            return
-          end
+            if (!combatant.is_npc?)
+              client.emit_failure t('fs3combat.not_a_npc')
+              return
+            end
 
-          combatant.npc.update(level: self.level)
-          client.emit_success t('fs3combat.npc_skill_set', :name => self.name, :level => self.level)
+            combatant.npc.update(level: self.level)
+            client.emit_success t('fs3combat.npc_skill_set', :name => name, :level => self.level)
+          end
         end
       end
     end

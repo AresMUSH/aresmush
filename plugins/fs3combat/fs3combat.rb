@@ -176,6 +176,12 @@ module AresMUSH
         return CombatSummaryRequestHandler
       when "combats"
         return CombatsRequestHandler
+      when "combatSetup"
+        return CombatSetupRequestHandler
+      when "saveCombatSetup"
+        return SaveCombatSetupRequestHandler
+      when "combatLog"
+        return CombatLogRequestHandler
       when "gear"
         return GearListRequestHandler
       when "gearDetail"
