@@ -14,23 +14,28 @@ website:
     minute:
     - 17
   top_navbar:
-  - menu:
+  - title: Play
+    menu:
     - page: chargen
       title: Create a Character
     - page: roster
       title: Pre-Made Characters
-    - page: who
-      title: Who's Online
     - divider: true
     - page: scenes-live
       title: Active Scenes
     - page: scene-create
       title: Start New Scene
     - divider: true
+    - page: who
+      title: Who's Online
+    - page: chat
+      title: Chat
+    - page: forum
+      title: Forum
+    - divider: true
     - page: play
       title: Play via Web Client
-    title: Play
-  - title: Story
+  - title: Directory
     menu:
     - page: characters
       title: Characters
@@ -38,31 +43,15 @@ website:
       title: Scenes
     - page: plots
       title: Plots
-  - title: Community
-    menu:
-    - page: chat
-      title: Chat
-    - page: forum
-      title: Forum
-    - page: events
-      title: Events
+    - divider: true
     - page: players
       title: Players
-  - title: Directory
-    menu:
-    - page: characters
-      title: Characters
     - page: census
       title: Census
     - page: actors
       title: Actors
     - page: roster
       title: Roster
-    - divider: true
-    - page: scenes
-      title: Scenes
-    - page: plots
-      title: Plots
     - page: locations
       title: Locations
     - page: combats
@@ -70,7 +59,7 @@ website:
     - divider: true
     - page: files
       title: Files
-  - title: FS3
+  - title: System
     menu:
     - page: fs3skills-abilities
       title: Abilities List
@@ -78,13 +67,13 @@ website:
       title: Gear List
     - divider: true
     - target: blank
-      title: Player's Guide <i class="fa fa-external-link-alt" aria-hidden="true">
+      title: FS3 Player's Guide <i class="fa fa-external-link-alt" aria-hidden="true">
       url: http://aresmush.com/fs3/fs3-3
     - target: blank
-      title: Combat Quick Reference <i class="fa fa-external-link-alt" aria-hidden="true">
+      title: FS3 Combat Quick Reference <i class="fa fa-external-link-alt" aria-hidden="true">
       url: http://aresmush.com/fs3/fs3-3/combat-quickref
     - target: blank
-      title: Interactive Combat Walkthrough <i class="fa fa-external-link-alt" aria-hidden="true">
+      title: FS3 Interactive Combat Walkthrough <i class="fa fa-external-link-alt" aria-hidden="true">
       url: http://aresmush.com/fs3/fs3-3/combat-walkthrough
   - title: Wiki
     menu:
@@ -109,6 +98,9 @@ website:
       title: Markdown Reference
   - title: Help
     menu:
+    - page: jobs
+      title: Requests
+    - divider: true
     - page: help
       title: Game Help
     - page: search-wiki
@@ -120,8 +112,6 @@ website:
     - target: blank
       title: MUSH 101 Tutorial <i class="fa fa-external-link-alt" aria-hidden="true">
       url: https://aresmush.com/mush-101/
-    - page: jobs
-      title: Requests
   website_code_path: "/home/ares/ares-webportal"
   wiki_aliases:
     main: home

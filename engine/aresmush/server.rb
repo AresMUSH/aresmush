@@ -25,11 +25,17 @@ module AresMUSH
             Cron.raise_event
           end
         end
-                
-        EventMachine::start_server(host, port, Connection) do |connection|
-          AresMUSH.with_error_handling(nil, "Connection established") do
-            Global.client_monitor.connection_established(connection)
+           
+        begin     
+          EventMachine::start_server(host, port, Connection) do |connection|
+            AresMUSH.with_error_handling(nil, "Connection established") do
+              Global.client_monitor.connection_established(connection)
+            end
           end
+        rescue Exception => ex
+          Global.logger.error "Couldn't start the game: error=#{ex} backtrace=#{ex.backtrace[0,10]}"
+          EventMachine.stop_event_loop
+          raise SystemExit.new
         end
         
         engine_api_port = Global.read_config("server", "engine_api_port")

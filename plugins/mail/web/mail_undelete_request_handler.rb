@@ -1,6 +1,6 @@
 module AresMUSH
   module Mail
-    class MailDeleteRequestHandler
+    class MailUndeleteRequestHandler
       def handle(request)
         enactor = request.enactor
         message = MailMessage[request.args[:id]]
@@ -12,14 +12,11 @@ module AresMUSH
           return { error: t('db.object_not_found') }
         end
         
-        
         if (message.character != enactor)
           return { error: t('dispatcher.not_allowed') }
         end
         
-        tags = message.tags
-        tags << Mail.trashed_tag
-        message.update(tags: tags)
+        Mail.remove_from_trash(message)
         
        {
        }

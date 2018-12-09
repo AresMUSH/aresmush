@@ -96,5 +96,17 @@ module AresMUSH
         end
       end
     end
+    
+    def self.remove_from_trash(message)
+      tags = message.tags
+      tags.delete Mail.trashed_tag
+      message.update(tags: tags)
+    end
+    
+    def self.move_to_trash(message)
+      tags = message.tags
+      tags << Mail.trashed_tag
+      message.update(tags: tags)
+    end
   end
 end

@@ -388,6 +388,14 @@ table.gsc-search-box td {
     padding: 3px;
 }
 
+/* --------------------------
+ALERTIFY DIALOGS
+---------------------------*/
+
+.alertify-notifier .ajs-message.ajs-success {
+  background-color: $primary-color;
+  color: $primary-words-color;
+}
 
 /* --------------------------
 YOUTUBE MUSIC PLAYER
@@ -930,6 +938,10 @@ input[type='file'] {
   color: transparent;
 }
 
+/* -------------------------
+CHAT SCREEN
+------------------------- */
+
 #chat-window {
     max-height: 400px;
     overflow-y: scroll;
@@ -938,6 +950,12 @@ input[type='file'] {
 
 .chat-button {
   width: 100%;
+}
+
+.timestamp-tip {
+  color: $faded-text-color;
+  font-style: italic;
+  font-size: 1em;
 }
 
 .chat-button-active {
@@ -954,6 +972,9 @@ input[type='file'] {
   padding: 0px;
 }
 
+/* -------------------------
+JOBS SCREEN
+------------------------- */
 
 .job-status {
   background-color: gray;
@@ -1002,6 +1023,10 @@ input[type='file'] {
   background-color: purple;
   color: white;
 }
+
+/* -------------------------
+OTHER
+------------------------- */
 
 .small-who-icon {
     float:left;

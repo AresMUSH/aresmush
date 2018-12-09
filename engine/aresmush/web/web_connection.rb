@@ -37,13 +37,15 @@ module AresMUSH
       end
     end
     
-    def web_notify(type, message)      
+    def web_notify(type, message)   
+      char = @web_char_id ? Character[@web_char_id] : nil
       data = {
         type: "notification",
         args: {
           notification_type: type,
           message: message,
-          character: @web_char_id
+          character: @web_char_id,
+          timestamp: OOCTime.local_long_timestr(nil, Time.now)
         }
       }
       send_data data.to_json.to_s
