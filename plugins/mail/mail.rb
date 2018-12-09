@@ -100,6 +100,10 @@ module AresMUSH
         return MailArchiveRequestHandler
       when "deleteMail"
         return MailDeleteRequestHandler
+      when "undeleteMail"
+        return MailUndeleteRequestHandler
+      when "tagMail"
+        return MailTagsRequestHandler
       end
       nil
     end

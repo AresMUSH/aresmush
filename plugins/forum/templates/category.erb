@@ -1,14 +1,14 @@
-<%= header %>		
+<%= header %>
 %xh<%= category.category_index %> - <%= category.name %>%xn
-<%= category.description %>		
-<%= divider %>		
-<% category.sorted_posts.each_with_index do |p, i| -%> 		
-<%= right(num(i),3) -%>		
- <%= center(unread(p),5) -%>		
- <%= left(p.subject,30) -%>		
- <%= left(author(p),25) -%> 		
- <%= date(p) %> 		
-<% end %>		
-<%= divider %>		
-<%= can_read %>   <%= can_post %>		
+<%= category.description %>
+<%= divider %>
+<% category.sorted_posts.each_with_index do |p, i| -%>
+<%= right(num(i),3) -%>
+ <%= center(unread(p),5) -%>
+ <%= left(p.subject,30) -%>
+ <%= left(author(p),25) -%>
+ <%= date(p) %>
+<% end %>
+<%= divider %>
+<%= can_read %>   <%= can_post %>
 <%= footer %>

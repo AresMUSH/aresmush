@@ -20,6 +20,7 @@ demographics:
   - hair
   - physique
   - callsign
+  - gender
   demographics:
   - actor
   - hair

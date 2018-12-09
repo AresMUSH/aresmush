@@ -5,16 +5,24 @@ module AresMUSH
       
       attr_accessor :location, :privacy, :temp
       
+      # scene/start (no args) -->  Here/privacy based on room
+      # scene/start (location) -->  Temproom named same as here/private
+      # scene/start (location)=(privacy) --> Temproom with privacy setting
+      
       def parse_args
-        if (cmd.args =~ /=/)
+        if (!cmd.args)
+          self.location = enactor_room.name
+          self.privacy = enactor_room.room_type == "IC" ? "Open" : "Private"
+          self.temp = false
+        elsif (cmd.args =~ /=/)
           args = cmd.parse_args(ArgParser.arg1_equals_arg2)
           self.location = titlecase_arg(args.arg1)
           self.privacy = titlecase_arg(args.arg2)
           self.temp = true
         else
           self.location = enactor_room.name
-          self.privacy = enactor_room.room_type == "IC" ? "Open" : "Private"
-          self.temp = false
+          self.privacy = "Private"
+          self.temp = true
         end
       end
       
