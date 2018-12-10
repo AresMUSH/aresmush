@@ -205,6 +205,11 @@ code {
     line-height:1px;
 }
 
+.btn-primary {
+    background-color: #555;
+    border-color: #383A4F;
+}
+
 .btn-collapse {
     font-size: 15px;
     font-weight:bold;
@@ -214,7 +219,7 @@ code {
     border: black;
     color: #d1d2d3;
     padding: 15px;
-    width: 145px;
+    width: fit-content;
     text-align:left;
 }
 
