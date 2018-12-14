@@ -24,6 +24,7 @@ module AresMUSH
     def self.change_weather(area)
       # Figure out the climate for this area
       climate = Weather.climate_for_area(area)
+      Global.logger.debug "#{area} = #{climate} "
 
       # Save no weather if the weather is disabled for this area.
       if (climate == "none")
