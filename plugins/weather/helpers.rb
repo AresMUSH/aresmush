@@ -35,7 +35,6 @@ module AresMUSH
 
       climate_config = Global.read_config("weather", "climates", climate)
       season_config = climate_config[season]
-      Global.logger.debug climate_config
       Global.logger.debug season_config
 
 
