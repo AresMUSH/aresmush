@@ -1,11 +1,11 @@
 module AresMUSH
   module Weather
     mattr_accessor :current_weather
-   
+
     def self.can_change_weather?(actor)
       actor.has_permission?("manage_weather")
     end
-    
+
     def self.load_weather_if_needed
       if (Weather.current_weather == {})
         Weather.change_all_weathers
@@ -20,7 +20,7 @@ module AresMUSH
         Weather.change_weather(a)
       end
     end
-      
+
     def self.change_weather(area)
       # Figure out the climate for this area
       climate = Weather.climate_for_area(area)
@@ -32,14 +32,17 @@ module AresMUSH
       end
 
       season = ICTime.season(area)
-      
+
       climate_config = Global.read_config("weather", "climates", climate)
       season_config = climate_config[season]
+      Global.logger.debug climate_config
+      Global.logger.debug season_config
+
 
       # Get the current weather
       weather = Weather.current_weather[area]
 
-      # Make a stability roll to see if the weather actually changes.  
+      # Make a stability roll to see if the weather actually changes.
       # Also change it if the weather was never set.
       if (!weather || rand(100) < season_config["stability"])
         weather = Weather.random_weather(season_config)
@@ -52,10 +55,10 @@ module AresMUSH
     def self.random_weather(season_config)
       condition = season_config["condition"].split(/ /).shuffle.first
       temperature = season_config["temperature"].split(/ /).shuffle.first
-      
+
       { :condition => condition, :temperature => temperature }
     end
-    
+
     def self.climate_for_area(area)
       Global.read_config("weather", "climate_for_area", area) || Global.read_config("weather", "default_climate")
     end
