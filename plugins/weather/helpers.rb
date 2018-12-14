@@ -32,6 +32,7 @@ module AresMUSH
       end
 
       season = ICTime.season(area)
+      Global.logger.debug "Season: #{season}"
 
       climate_config = Global.read_config("weather", "climates", climate)
       season_config = climate_config[season]
