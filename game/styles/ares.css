@@ -309,6 +309,13 @@ table.gsc-search-box td {
   padding: 3px; }
 
 /* --------------------------
+ALERTIFY DIALOGS
+---------------------------*/
+.alertify-notifier .ajs-message.ajs-success {
+  background-color: #383A4F;
+  color: #d1d2d3; }
+
+/* --------------------------
 YOUTUBE MUSIC PLAYER
 ---------------------------*/
 .musicplayer-button {
@@ -745,6 +752,9 @@ ul.char-ability-list {
 input[type='file'] {
   color: transparent; }
 
+/* -------------------------
+CHAT SCREEN
+------------------------- */
 #chat-window {
   max-height: 400px;
   overflow-y: scroll;
@@ -752,6 +762,11 @@ input[type='file'] {
 
 .chat-button {
   width: 100%; }
+
+.timestamp-tip {
+  color: #999999;
+  font-style: italic;
+  font-size: 1em; }
 
 .chat-button-active {
   color: #d1d2d3;
@@ -764,6 +779,9 @@ input[type='file'] {
 .chat-nav > li > a {
   padding: 0px; }
 
+/* -------------------------
+JOBS SCREEN
+------------------------- */
 .job-status {
   background-color: gray; }
 
@@ -802,6 +820,9 @@ input[type='file'] {
   background-color: purple;
   color: white; }
 
+/* -------------------------
+OTHER
+------------------------- */
 .small-who-icon {
   float: left;
   padding: 15px; }
@@ -992,6 +1013,10 @@ code {
   padding: 10px;
   line-height: 1px; }
 
+.btn-primary {
+  background-color: #555;
+  border-color: #383A4F; }
+
 .btn-collapse {
   font-size: 15px;
   font-weight: bold;
@@ -1001,7 +1026,7 @@ code {
   border: black;
   color: #d1d2d3;
   padding: 15px;
-  width: 145px;
+  width: fit-content;
   text-align: left; }
 
 button, input, select, textarea {
