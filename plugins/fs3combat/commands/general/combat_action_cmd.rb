@@ -30,7 +30,6 @@ module AresMUSH
 
       def check_can_act
         return t('fs3combat.you_are_not_in_combat') if !enactor.is_in_combat?
-        return t('fs3combat.cannot_act_while_koed') if (acting_for_self && enactor.combatant.is_ko)
         return t('fs3combat.you_are_a_noncombatant') if (acting_for_self && enactor.combatant.is_noncombatant?)
         return nil
       end
@@ -51,7 +50,9 @@ module AresMUSH
         self.names.each do |name|
 
           FS3Combat.with_a_combatant(name, client, enactor) do |combat, combatant|
-            if (combatant.is_subdued? && self.combat_command != "escape")
+            if combatant.is_ko
+              client.emit t('fs3combat.cannot_act_while_koed')
+            elsif (combatant.is_subdued? && self.combat_command != "escape")
               client.emit_failure t('fs3combat.must_escape_first')
               next
             end
