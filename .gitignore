@@ -2,6 +2,7 @@
 # -----------------------------
 secrets.yml
 real_database.yml
+server.yml
 
 # Logs and errors
 # -----------------------------
