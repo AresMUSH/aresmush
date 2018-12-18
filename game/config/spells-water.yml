@@ -197,6 +197,7 @@ spells:
     is_stun: false
     roll: true
     defense_mod: 10
+    rounds: 4
   #Level 7
   Ice Storm:
     name: Ice Storm
