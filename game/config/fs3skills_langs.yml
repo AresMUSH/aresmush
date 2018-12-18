@@ -1,0 +1,32 @@
+---
+fs3skills:
+  language_blurb: 'Languages represent your ability to speak and read other languages. If a language that you would like is not currently listed, please speak to admin. Languages
+    have a descriptive rating.   See [FS3: Languages](http://aresmush.com/fs3/fs3-3/chargen/#languages)
+    for details.'
+  languages:
+  - name: Arabic
+    desc:
+  - name: Cantonese
+    desc:
+  - name: English
+    desc:
+  - name: French
+    desc:
+  - name: German
+    desc:
+  - name: Hindi
+    desc:
+  - name: Italian
+    desc:
+  - name: Japanese
+    desc:
+  - name: Mandarin
+    desc:
+  - name: Portugese
+    desc:
+  - name: Russian
+    desc:
+  - name: Spanish
+    desc:
+  starting_languages:
+  - English

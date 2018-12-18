@@ -1,0 +1,197 @@
+---
+spells:
+## Fire
+  #Level 1
+  Fire Starter:
+    name: Fire Starter
+    level: 1
+    school: Fire
+    desc: Fire Starter desc
+    target_optional: false
+    is_revive: false
+    is_stun: false
+    roll: true
+  Flashlight:
+    name: Flashlight
+    level: 1
+    school: Fire
+    desc: Flashlight desc
+    target_optional: false
+    is_revive: false
+    is_stun: false
+    roll: true
+  #Level 2
+  Shape Fire:
+    name: Shape Fire
+    level: 2
+    school: Fire
+    desc: Shape Fire desc
+    target_optional: false
+    is_revive: false
+    is_stun: false
+    roll: true
+  Blur Image:
+    name: Blur Image
+    level: 2
+    school: Fire
+    desc: Blur Image desc
+    target_optional: false
+    is_revive: false
+    is_stun: false
+    defense_mod: 1
+    is_potion: true
+    rounds: 2
+  Shape Light:
+    name: Shape Light
+    level: 2
+    school: Fire
+    desc: Shape Light desc
+    target_optional: false
+    is_revive: false
+    is_stun: false
+    roll: true
+  #Level 3
+  Hot Hands:
+    name: Hot Hands
+    level: 3
+    school: Fire
+    desc: Hot Hands desc
+    target_optional: true
+    fs3_attack: true
+    is_revive: false
+    is_stun: false
+    weapon: Hot Hands
+    is_potion: true
+  Endure Fire:
+    name: Endure Fire
+    level: 3
+    school: Fire
+    desc: Endure Fire desc
+    target_optional: false
+    is_revive: false
+    is_stun: false
+    roll: true
+    is_potion: true
+  #Level 4 Fire
+  "Potions (Fire)":
+    name: 'Potions'
+    level: 4
+    school: Fire
+    desc: Potions desc
+  Fire Weapon:
+    name: Fire Weapon
+    level: 4
+    school: Fire
+    desc: Fire Weapon desc
+    target_optional: true
+    target_num: 1
+    is_revive: false
+    is_stun: false
+    weapon_specials: Fire
+    rounds: 100
+    is_potion: true
+  Flame Burst:
+    name: Flame Burst
+    level: 4
+    school: Fire
+    desc: Hot Hands desc
+    target_optional: true
+    fs3_attack: true
+    is_revive: false
+    is_stun: false
+    weapon: Flame Burst
+    target_num: 1
+  #Level 5
+  Flares:
+    name: Flares
+    level: 5
+    school: Fire
+    desc: Flares desc
+    target_optional: true
+    fs3_attack: true
+    is_revive: false
+    is_stun: false
+    weapon: Flares
+    target_num: 3
+  Invisible:
+    name: Invisible
+    level: 5
+    school: Fire
+    desc: Shape Light desc
+    target_optional: true
+    target_num: 1
+    is_revive: false
+    is_stun: false
+    stance: hidden
+    rounds: 30
+  #Level 6
+  "Familiar (Fire)":
+    name: Familiar
+    level: 6
+    school: Fire
+    desc: Familiar  desc
+    target_optional: false
+    is_revive: false
+    is_stun: false
+    roll: true
+  Pyre:
+    name: Pyre
+    level: 6
+    school: Fire
+    desc: Pyre desc
+    target_optional: true
+    fs3_attack: true
+    is_revive: false
+    target_num: 1
+    is_stun: false
+    weapon: Pyre
+  #Level 7
+  Complex Illusion:
+    name: Complex Illusion
+    level: 7
+    school: Fire
+    desc: Complex Illusion desc
+    target_optional: true
+    target_num: 1
+    is_revive: false
+    is_stun: false
+    roll: true
+  "Phoenix's Healing Flames":
+    name: Phoenix's Healing Flames
+    level: 7
+    school: Fire
+    desc: Phoenix's Healing Flames desc
+    is_revive: false
+    is_stun: false
+    roll: false
+    target_optional: true
+    target_num: 1
+  Energize Dimensional Anchor (Fire):
+    name: 'Dimensional Anchor'
+    level: 7
+    school: Fire
+    desc: Dimensional Anchor desc
+    target_optional: false
+    is_revive: false
+    is_stun: false
+    roll: true
+  #Level 8
+  Firestorm:
+    name: Firestorm
+    level: 8
+    school: Fire
+    desc: Firestorm desc
+    target_optional: true
+    target_num: 10
+    fs3_attack: true
+    is_revive: false
+    is_stun: false
+    weapon: Firestorm
+  "Phoenix's Last Flight":
+    name: Phoenix's Last Flight"
+    level: 8
+    school: Fire
+    desc: Phoenix's Last Flight" desc
+    is_revive: false
+    is_stun: false
+    is_res: true

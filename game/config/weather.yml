@@ -1,0 +1,330 @@
+---
+weather:
+  climate_for_area:
+    Offstage: none
+    Grand Lake: mountain
+    Granby: mountain
+    Hot Sulphur Springs: mountain
+    Portals: temperate
+  climates:
+    polar:
+      early-spring:
+        temperature: cold cold cold cold cold freezing freezing freezing cool cool
+        condition: clear clear clear fair fair fair flurrying flurrying overcast snowing
+        stability: 70
+      spring:
+        temperature: cold cold cold cold cold freezing freezing freezing cool cool
+        condition: clear clear clear fair fair fair flurrying flurrying overcast snowing
+        stability: 70
+      early-summer:
+        temperature: cold cold cold cold cold freezing freezing freezing cool cool
+        condition: clear clear clear fair fair fair flurrying flurrying overcast snowing
+        stability: 70
+      summer:
+        temperature: cold cold cold cold cold freezing freezing freezing cool cool
+        condition: clear clear clear fair fair fair flurrying flurrying overcast snowing
+        stability: 70
+      early-fall:
+        temperature: cold cold cold cold cold freezing freezing freezing cool cool
+        condition: clear clear clear fair fair fair flurrying flurrying overcast snowing
+        stability: 70
+      fall:
+        temperature: cold cold cold cold cold freezing freezing freezing cool cool
+        condition: clear clear clear fair fair fair flurrying flurrying overcast snowing
+        stability: 70
+      early-winter:
+        temperature: cold cold cold cold cold freezing freezing freezing cool cool
+        condition: clear clear clear fair fair fair flurrying flurrying overcast snowing
+        stability: 70
+      winter:
+        temperature: cold cold cold cold cold freezing freezing freezing cool cool
+        condition: clear clear clear fair fair fair flurrying flurrying overcast snowing
+        stability: 70
+    temperate:
+      early-summer:
+        temperature: hot hot hot hot hot warm warm warm cool cool
+        condition: clear clear clear fair fair fair drizzling drizzling overcast raining
+        stability: 70
+      summer:
+        temperature: hot hot hot hot hot warm warm warm cool cool
+        condition: clear clear clear fair fair fair drizzling drizzling overcast raining
+        stability: 70
+      early-spring:
+        temperature: cool cool cool cool cool warm warm warm warm warm
+        condition: clear clear clear fair fair fair drizzling drizzling overcast raining
+        stability: 70
+      spring:
+        temperature: cool cool cool cool cool warm warm warm warm warm
+        condition: clear clear clear fair fair fair drizzling drizzling overcast raining
+        stability: 70
+      early-fall:
+        temperature: cool cool cool cool cool cool cool freezing warm warm
+        condition: clear clear clear fair fair fair drizzling drizzling overcast raining
+        stability: 70
+      fall:
+        temperature: cool cool cool cool cool cool cool freezing warm warm
+        condition: clear clear clear fair fair fair drizzling drizzling overcast raining
+        stability: 70
+      early-winter:
+        temperature: cold cold cold cold cold cold cold cool cool freezing freezing
+        condition: clear clear clear fair fair fair flurrying flurrying overcast snowing
+        stability: 70
+      winter:
+        temperature: cold cold cold cold cold cold cold cool cool freezing freezing
+        condition: clear clear clear fair fair fair flurrying flurrying overcast snowing
+        stability: 70
+    mountain:
+      early-summer:
+        temperature: hot warm warm warm cool cool cool cool cold cold
+        condition: mountain-sunny mountain-sunny mountain-sunny mountain-sunny mountain-clear
+          mountain-clear mountain-clear mountain-clear  mountain-clear mountain-fair
+          mountain-fair mountain-drizzling mountain-overcast mountain-raining mountain-storming
+          mountain-storming mountain-storming mountain-storming mountain-storming
+        stability: 40
+      summer:
+        temperature: hot hot hot warm warm warm warm cool cool cool
+        condition: mountain-clear mountain-clear mountain-clear mountain-clear mountain-clear
+          mountain-clear mountain-clear mountain-fair mountain-fair mountain-drizzling
+          mountain-overcast mountain-raining mountain-storming mountain-storming mountain-storming
+          mountain-storming
+        stability: 70
+      early-spring:
+        temperature: warm warm cool cool cool cool cold cold cold cold
+        condition: mountain-sunny mountain-sunny mountain-sunny mountain-sunny mountain-clear
+          mountain-clear mountain-fair mountain-fair mountain-overcast mountain-misty
+          mountain-drizzling mountain-drizzling mountain-raining mountain-raining
+          mountain-raining mountain-storming mountain-sleeting mountain-sleeting mountain-dusting
+          mountain-flurrying mountain-snowing
+        stability: 30
+      spring:
+        temperature: warm warm warm warm warm cool cool cool cool cold
+        condition: mountain-sunny mountain-sunny mountain-sunny mountain-clear mountain-clear
+          mountain-fair mountain-fair mountain-overcast mountain-misty mountain-drizzling
+          mountain-drizzling mountain-raining mountain-storming mountain-sleeting
+          mountain-flurrying mountain-snowing
+        stability: 30
+      early-fall:
+        temperature: warm warm warm cool cool cool cool cold cold cold
+        condition: mountain-sunny mountain-sunny mountain-sunny mountain-clear mountain-clear
+          mountain-clear mountain-fair mountain-fair mountain-windy mountain-windy
+          mountain-windy mountain-overcast mountain-drizzling mountain-raining mountain-sleeting
+          mountain-storming mountain-dusting
+        stability: 70
+      fall:
+        temperature: warm warm cool cool cool cool cold cold cold cold
+        condition: mountain-sunny mountain-sunny mountain-clear mountain-clear mountain-clear
+          mountain-fair mountain-fair mountain-windy mountain-windy mountain-windy
+          mountain-overcast mountain-raining mountain-sleeting mountain-dusting mountain-dusting
+          mountain-flurrying mountain-snowing
+        stability: 50
+      early-winter:
+        temperature: warm cool cool cold cold cold cold cold cold cold
+        condition: mountain-sunny mountain-sunny mountain-clear mountain-clear mountain-fair
+          mountain-overcast mountain-windy mountain-sleeting mountain-dusting mountain-dusting
+          mountain-flurrying mountain-flurrying mountain-flurrying mountain-snowing
+          mountain-snowing mountain-snowing mountain-blizzard
+        stability: 50
+      winter:
+        temperature: cool cold cold cold cold cold cold cold cold cold
+        condition: mountain-sunny mountain-sunny mountain-clear mountain-clear mountain-fair
+          mountain-overcast mountain-windy mountain-dusting mountain-dusting mountain-flurrying
+          mountain-flurrying mountain-flurrying mountain-snowing mountain-snowing
+          mountain-snowing mountain-blizzard mountain-blizzard
+        stability: 70
+  conditions:
+  - clear
+  - fair
+  - misty
+  - overcast
+  - drizzling
+  - raining
+  - storming
+  - flurrying
+  - snowing
+  - mountain-sunny
+  - moutain-clear
+  - mountain-fair
+  - mountain-overcast
+  - mountain-windy
+  - mountain-misty
+  - mountain-drizzling
+  - mountain-raining
+  - mountain-storming
+  - mountain-sleeting
+  - mountain-dusting
+  - mountain-flurrying
+  - mountain-snowing
+  - mountain-blizzard
+  default_climate: mountain
+  descriptions:
+    clear: The skies are clear.
+    fair: The weather is fair.
+    misty: There's a mist in the air.
+    overcast: The skies are overcast.
+    drizzling: It's drizzling.
+    raining: It's raining.
+    storming: It's raining really hard.
+    flurrying: It's flurrying.
+    snowing: It's snowing.
+    mountain-sunny: The sun is bright against a brilliant blue sky, making the temperature
+      feel several degrees warmer.
+    mountain-clear: The skies are clear and breathtakingly blue, with only a few high,
+      white wispy clouds.
+    mountain-fair: A few clouds drift lazily along as a dry breeze blows through the
+      mountains.
+    mountain-misty: The clouds are thick and low. Tiny droplets of moisture cling
+      to everything.
+    mountain-overcast: The sky is thick and gray with clouds that hide the sun and
+      threaten worse weather.
+    mountain-drizzling: A steady, light mist drizzles downward, somewhere between
+      a heavy fog and a proper rain.
+    mountain-raining: Rain falls steadily from an overcast sky.
+    mountain-storming: Thick, dark clouds bring rain that comes in a heavy downpour.
+      Lightning streaks across the sky and thunder echoes against the mountains.
+    mountain-windy: The wind chases a few clouds high above the mountains. It blows
+      in gusts and spurts, making the temperature feel several degrees cooler.
+    mountain-sleeting: Heavy, wet snow and ice mix with rain in an unpleasant sleet.
+    mountain-dusting: Snow drifts through the sky off and on, leaving the ground coated
+      in a light dusting of white.
+    mountain-flurrying: Fluffy snowflakes drift lazily from the heavens, covering
+      everything in a blanket of white.
+    mountain-snowing: Snow falls steadily and thickly. It accumulates quickly on the
+      ground in a beautiful, dangerous blanket of white.
+    mountain-blizzard: Snow comes down in a white curtain that makes it impossible
+      to see far. The inches accumulate with dangerous swiftness.
+    hot_early-spring_morning: It is a hot spring morning.
+    hot_early-spring_day: It is a hot spring day.
+    hot_early-spring_evening: It is a hot spring evening.
+    hot_early-spring_night: It is a hot spring night.
+    hot_spring_morning: It is a hot spring morning.
+    hot_spring_day: It is a hot spring day.
+    hot_spring_evening: It is a hot spring evening.
+    hot_spring_night: It is a hot spring night.
+    hot_early-summer_morning: It is a hot summer morning.
+    hot_early-summer_day: It is a hot summer day.
+    hot_early-summer_evening: It is a hot summer evening.
+    hot_early-summer_night: It is a hot summer night.
+    hot_summer_morning: It is a hot summer morning.
+    hot_summer_day: It is a hot summer day.
+    hot_summer_evening: It is a hot summer evening.
+    hot_summer_night: It is a hot summer night.
+    hot_early-fall_morning: It is a hot fall morning.
+    hot_early-fall_day: It is a hot fall day.
+    hot_early-fall_evening: It is a hot fall evening.
+    hot_early-fall_night: It is a hot fall night.
+    hot_fall_morning: It is a hot fall morning.
+    hot_fall_day: It is a hot fall day.
+    hot_fall_evening: It is a hot fall evening.
+    hot_fall_night: It is a hot fall night.
+    hot_early-winter_morning: It is a hot winter morning.
+    hot_early-winter_day: It is a hot winter day.
+    hot_early-winter_evening: It is a hot winter evening.
+    hot_early-winter_night: It is a hot winter night.
+    hot_winter_morning: It is a hot winter morning.
+    hot_winter_day: It is a hot winter day.
+    hot_winter_evening: It is a hot winter evening.
+    hot_winter_night: It is a hot winter night.
+    warm_early-spring_morning: It is a warm spring morning.
+    warm_early-spring_day: It is a warm spring day.
+    warm_early-spring_evening: It is a warm spring evening.
+    warm_early-spring_night: It is a warm spring night.
+    warm_spring_morning: It is a warm spring morning.
+    warm_spring_day: It is a warm spring day.
+    warm_spring_evening: It is a warm spring evening.
+    warm_spring_night: It is a warm spring night.
+    warm_early-summer_morning: It is a warm summer morning.
+    warm_early-summer_day: It is a warm summer day.
+    warm_early-summer_evening: It is a warm summer evening.
+    warm_early-summer_night: It is a warm summer night.
+    warm_summer_morning: It is a warm summer morning.
+    warm_summer_day: It is a warm summer day.
+    warm_summer_evening: It is a warm summer evening.
+    warm_summer_night: It is a warm summer night.
+    warm_early-fall_morning: It is a warm fall morning.
+    warm_early-fall_day: It is a warm fall day.
+    warm_early-fall_evening: It is a warm fall evening.
+    warm_early-fall_night: It is a warm fall night.
+    warm_fall_morning: It is a warm fall morning.
+    warm_fall_day: It is a warm fall day.
+    warm_fall_evening: It is a warm fall evening.
+    warm_fall_night: It is a warm fall night.
+    warm_early-winter_morning: It is a warm winter morning.
+    warm_early-winter_day: It is a warm winter day.
+    warm_early-winter_evening: It is a warm winter evening.
+    warm_early-winter_night: It is a warm winter night.
+    warm_winter_morning: It is a warm winter morning.
+    warm_winter_day: It is a warm winter day.
+    warm_winter_evening: It is a warm winter evening.
+    warm_winter_night: It is a warm winter night.
+    cool_early-spring_morning: It is a cool spring morning.
+    cool_early-spring_day: It is a cool spring day.
+    cool_early-spring_evening: It is a cool spring evening.
+    cool_early-spring_night: It is a cool spring night.
+    cool_spring_morning: It is a cool spring morning.
+    cool_spring_day: It is a cool spring day.
+    cool_spring_evening: It is a cool spring evening.
+    cool_spring_night: It is a cool spring night.
+    cool_early-summer_morning: It is a cool summer morning.
+    cool_early-summer_day: It is a cool summer day.
+    cool_early-summer_evening: It is a cool summer evening.
+    cool_early-summer_night: It is a cool summer night.
+    cool_summer_morning: It is a cool summer morning.
+    cool_summer_day: It is a cool summer day.
+    cool_summer_evening: It is a cool summer evening.
+    cool_summer_night: It is a cool summer night.
+    cool_early-fall_morning: It is a cool fall morning.
+    cool_early-fall_day: It is a cool fall day.
+    cool_early-fall_evening: It is a cool fall evening.
+    cool_early-fall_night: It is a cool fall night.
+    cool_fall_morning: It is a cool fall morning.
+    cool_fall_day: It is a cool fall day.
+    cool_fall_evening: It is a cool fall evening.
+    cool_fall_night: It is a cool fall night.
+    cool_early-winter_morning: It is a cool winter morning.
+    cool_early-winter_day: It is a cool winter day.
+    cool_early-winter_evening: It is a cool winter evening.
+    cool_early-winter_night: It is a cool winter night.
+    cool_winter_morning: It is a cool winter morning.
+    cool_winter_day: It is a cool winter day.
+    cool_winter_evening: It is a cool winter evening.
+    cool_winter_night: It is a cool winter night.
+    cold_early-spring_morning: It is a cold spring morning.
+    cold_early-spring_day: It is a cold spring day.
+    cold_early-spring_evening: It is a cold spring evening.
+    cold_early-spring_night: It is a cold spring night.
+    cold_spring_morning: It is a cold spring morning.
+    cold_spring_day: It is a cold spring day.
+    cold_spring_evening: It is a cold spring evening.
+    cold_spring_night: It is a cold spring night.
+    cold_early-summer_morning: It is a cold summer morning.
+    cold_early-summer_day: It is a cold summer day.
+    cold_early-summer_evening: It is a cold summer evening.
+    cold_early-summer_night: It is a cold summer night.
+    cold_summer_morning: It is a cold summer morning.
+    cold_summer_day: It is a cold summer day.
+    cold_summer_evening: It is a cold summer evening.
+    cold_summer_night: It is a cold summer night.
+    cold_early-fall_morning: It is a cold fall morning.
+    cold_early-fall_day: It is a cold fall day.
+    cold_early-fall_evening: It is a cold fall evening.
+    cold_early-fall_night: It is a cold fall night.
+    cold_fall_morning: It is a cold fall morning.
+    cold_fall_day: It is a cold fall day.
+    cold_fall_evening: It is a cold fall evening.
+    cold_fall_night: It is a cold fall night.
+    cold_early-winter_morning: It is a cold winter morning.
+    cold_early-winter_day: It is a cold winter day.
+    cold_early-winter_evening: It is a cold winter evening.
+    cold_early-winter_night: It is a cold winter night.
+    cold_winter_morning: It is a cold winter morning.
+    cold_winter_day: It is a cold winter day.
+    cold_winter_evening: It is a cold winter evening.
+    cold_winter_night: It is a cold winter night.
+  temperatures:
+  - hot
+  - warm
+  - cool
+  - cold
+  weather_cron:
+    minute:
+    - 0

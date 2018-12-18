@@ -1,0 +1,89 @@
+---
+fs3skills:
+  action_skills:
+  - name: Alertness
+    desc: Awareness of your surroundings. Reaction in combat.
+    linked_attr: Perception
+    is_school: false
+  - name: Archery
+    desc: Shooting with a bow and arrow.
+    linked_attr: Reflexes
+    is_school: false
+  - name: Athletics
+    desc: General running, jumping, climbing, etc.
+    linked_attr: Brawn
+    is_school: false
+  - name: Brawl
+    desc: Unarmed fighting.
+    linked_attr: Brawn
+    is_school: false
+  - name: Composure
+    desc: Coolness under pressure. Keep going in combat.
+    linked_attr: Grit
+    is_school: false
+  - name: Firearms
+    desc: Shooting guns.
+    linked_attr: Reflexes
+    is_school: false
+  - name: Medicine
+    desc: Tending to the ill and injured.
+    linked_attr: Wits
+    specialties:
+    - Doctor
+    - Surgeon
+    - Nurse
+    - Medic
+    - First Aid
+    - Other
+    is_school: false
+  - name: Melee
+    desc: Fighting with hand-to-hand weapons.
+    linked_attr: Brawn
+    is_school: false
+  - name: Stealth
+    desc: Being sneaky.
+    linked_attr: Reflexes
+    is_school: false
+  - name: Survival
+    desc: Know-how and ability to survive in the wilderness.
+    linked_attr: Wits
+    is_school: false
+    # Magic Schools
+  - name: Air
+    desc: Magic focused on air, wind, and lightning.
+    linked_attr: Magic
+    is_school: true
+  - name: Corpus
+    desc: Magic focused on the body of sapient creatures.
+    linked_attr: Magic
+    is_school: true
+  - name: Earth
+    desc: Magic focused on earth, rock, and metal.
+    linked_attr: Magic
+    is_school: true
+  - name: Fire
+    desc: Magic focused on fire, heat, and light.
+    linked_attr: Magic
+    is_school: true
+  - name: Nature
+    desc: Magic focused on plants and non-sapient animals.
+    linked_attr: Magic
+    is_school: true
+  - name: Spirit
+    desc: Magic focused on the sapient mind, emotions, and spirit.
+    linked_attr: Magic
+    is_school: true
+  - name: Water
+    desc: Magic focused on water and ice.
+    linked_attr: Magic
+    is_school: true
+  - name: Will
+    desc: Magic focused on the physical world.
+    linked_attr: Magic
+    is_school: true
+
+
+
+  action_skills_blurb: 'Action Skills represent your ability in areas deemed important
+    for gameplay, as well as your ability in your Major and Minor Schools of magic.  Action Skills are rated from 0-8. See [FS3: Action Skills](http://aresmush.com/fs3/fs3-3/chargen/#action-skills)
+    for details.  '

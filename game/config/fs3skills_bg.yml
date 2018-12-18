@@ -1,0 +1,13 @@
+fs3skills:
+    bg_skills_blurb: "Background Skills represent arts, sports, hobbies, professions and any other skills not covered by Action Skills.  Background Skills have a descriptive rating.<br><br> Background Skills are free-form, so there is no specific list. You can pick anything from Singing to Dad Jokes. See [Background Skills](http://spiritlakemu.com/fs3skills/abilities) for details and suggestions."
+
+    background_skills:
+        "A skill learned on the job":  surveillance, investigation, cooking, bartending, programming, carpentry
+        "A skill learned on the streets": breaking and entering, conning, gambling
+        "A science": astronomy, biology, chemistry, geology, mathematics, physics
+        "A humanity": history, literature, psychology, philosophy, poetry
+        "A game": chess, roleplaying, poker
+        "An art": sculpting, painting, sketching, photography
+        "A form of expression": acting, singing, dancing, playing an instrument, writing
+        "A sport": baseball, football, gymnastics
+        "A craft or hobby": gardening, basketweaving, knitting

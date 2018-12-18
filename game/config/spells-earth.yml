@@ -1,0 +1,193 @@
+---
+spells:
+# Earth
+  #Level 1
+  Rock Dance:
+    name: 'Rock Dance'
+    level: 1
+    school: Earth
+    desc: Rock Dance desc
+    target_optional: false
+    is_revive: false
+    is_stun: false
+    roll: true
+  Create Crystal:
+    name: 'Create Crystal'
+    level: 1
+    school: Earth
+    desc: Create Crystal desc
+    target_optional: false
+    is_revive: false
+    is_stun: false
+    roll: true
+  #Level 2
+  Shape Stone:
+    name: 'Shape Stone'
+    level: 2
+    school: Earth
+    desc: Shape Stone desc
+    target_optional: false
+    is_revive: false
+    is_stun: false
+    roll: true
+  #Level 3
+  Skipping Stone:
+    name: 'Skipping Stone'
+    level: 3
+    school: Earth
+    desc: Skipping Stone desc
+    weapon: Skipping Stone
+    target_optional: true
+    target_num: 1
+    fs3_attack: true
+    is_revive: false
+    is_stun: false
+  Floating Earth:
+    name: 'Floating Earth'
+    level: 3
+    school: Earth
+    desc: Floating Earth desc
+    target_optional: false
+    is_revive: false
+    is_stun: false
+    roll: true
+  Earth Bolt:
+    name: 'Earth Bolt'
+    level: 3
+    school: Earth
+    desc: Earth Bolt desc
+    weapon: Earth Bolt
+    target_optional: true
+    target_num: 1
+    fs3_attack: true
+    is_revive: false
+    is_stun: false
+  Stone Slam:
+    name: 'Stone Slam'
+    level: 3
+    school: Earth
+    desc: Stone Slam desc
+    weapon: Stone Slam
+    target_optional: true
+    target_num: 1
+    fs3_attack: true
+    is_revive: false
+    is_stun: false
+  #Level 4 Earth
+  Potions:
+    name: 'Potions'
+    level: 4
+    school: Earth
+    desc: Potions desc
+  Diamond Weapon:
+    name: 'Diamond Weapon'
+    level: 4
+    school: Earth
+    desc: Diamond Weapon desc
+    target_optional: true
+    target_num: 1
+    is_revive: false
+    is_stun: false
+    weapon_specials: Diamond
+    rounds: 100
+    is_potion: true
+  Crystalline Armor:
+    name: 'Crystalline Armor'
+    level: 4
+    school: Earth
+    desc: Crystalline Armor desc
+    target_optional: false
+    is_revive: false
+    is_stun: false
+    armor: Crystalline
+    is_potion: true
+  Rock Skin:
+    name: 'Rock Skin'
+    level: 4
+    school: Earth
+    desc: Rock Skin desc
+    target_optional: false
+    target_optional: true
+    target_num: 1
+    is_revive: false
+    is_stun: false
+    armor: Rock Skin
+    weapon: Rock Skin
+    is_potion: true
+  #Level 5
+  Earth Shudder:
+    name: 'Earth Shudder'
+    level: 5
+    school: Earth
+    desc: Earth Shudder desc
+    target_optional: true
+    target_num: 1
+    fs3_attack: true
+    is_revive: false
+    is_stun: false
+    weapon: Earth Shudder
+  Stalagmite:
+    name: 'Stalagmite'
+    level: 5
+    school: Earth
+    desc: Stalagmite desc
+    target_optional: true
+    target_num: 1
+    fs3_attack: true
+    is_revive: false
+    is_stun: false
+    weapon: Stalagmite
+  #Level 6
+  Familiar:
+    name: Familiar
+    level: 6
+    school: Earth
+    desc: Familiar  desc
+    target_optional: false
+    is_revive: false
+    is_stun: false
+    roll: true
+  Stone Daggers:
+    name: Stone Daggers
+    level: 6
+    school: Earth
+    desc: Familiar  desc
+    target_optional: true
+    target_num: 1
+    fs3_attack: true
+    is_revive: false
+    is_stun: false
+    weapon: Stone Daggers
+  #Level 7
+  Exploding Earth:
+    name: Exploding Earth
+    level: 7
+    school: Earth
+    desc: Exploding Earth desc
+    target_optional: true
+    target_num: 3
+    fs3_attack: true
+    is_revive: false
+    is_stun: false
+    weapon: Exploding Earth
+  Energize Dimensional Anchor (Earth):
+    name: 'Dimensional Anchor'
+    level: 7
+    school: Earth
+    desc: Dimensional Anchor desc
+    target_optional: false
+    is_revive: false
+    is_stun: false
+    roll: true
+  #Level 8
+  Massive Quake:
+    name: 'Massive Quake'
+    level: 8
+    school: Earth
+    desc: Massive Quake
+    target_optional: true
+    target_num: 100
+    fs3_attack: true
+    is_revive: false
+    is_stun: false
+    weapon: Massive Quake

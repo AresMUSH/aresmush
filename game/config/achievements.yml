@@ -1,0 +1,14 @@
+---
+achievements:
+  types:
+    community: fa-users
+    portal: fa-globe
+    fs3: fa-cubes
+    story: fa-book
+    spell: fa-magic
+    potion: fa-flask
+    death: fa-skull-crossbones
+    plot: fa-book-open
+  shortcuts:
+    achievements: achievement
+  custom_achievements: {}

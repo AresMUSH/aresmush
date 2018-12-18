@@ -1327,3 +1327,37 @@
 2018-12-18 07:18:28 DEBUG - Room cleanup cron running: []. 
 2018-12-18 07:18:28 DEBUG - Room cleanup cron running: []. 
 2018-12-18 07:30:29 DEBUG - Upcoming event notifications. 
+2018-12-18 07:40:14 DEBUG - Cleaning up places. 
+2018-12-18 07:45:29 DEBUG - Empty scene cleanup. 
+2018-12-18 07:45:29 DEBUG - Room cleanup cron running: []. 
+2018-12-18 07:45:29 DEBUG - Room cleanup cron running: []. 
+2018-12-18 07:45:29 DEBUG - Upcoming event notifications. 
+2018-12-18 08:00:30 DEBUG - Upcoming event notifications. 
+2018-12-18 08:00:30 DEBUG - Updating weather. 
+2018-12-18 08:00:30 DEBUG - Offstage = none  
+2018-12-18 08:00:30 DEBUG - Grand Lake = mountain  
+2018-12-18 08:00:30 DEBUG - Season: early-winter 
+2018-12-18 08:00:30 DEBUG - Hash: {"temperature"=>"warm cool cool cold cold cold cold cold cold cold", "condition"=>"mountain-sunny mountain-sunny mountain-clear mountain-clear mountain-fair mountain-overcast mountain-windy mountain-sleeting mountain-dusting mountain-dusting mountain-flurrying mountain-flurrying mountain-flurrying mountain-snowing mountain-snowing mountain-snowing mountain-blizzard", "stability"=>50} 
+2018-12-18 08:00:30 DEBUG - Granby = mountain  
+2018-12-18 08:00:30 DEBUG - Season: early-winter 
+2018-12-18 08:00:30 DEBUG - Hash: {"temperature"=>"warm cool cool cold cold cold cold cold cold cold", "condition"=>"mountain-sunny mountain-sunny mountain-clear mountain-clear mountain-fair mountain-overcast mountain-windy mountain-sleeting mountain-dusting mountain-dusting mountain-flurrying mountain-flurrying mountain-flurrying mountain-snowing mountain-snowing mountain-snowing mountain-blizzard", "stability"=>50} 
+2018-12-18 08:00:30 DEBUG - Hot Sulphur Springs = mountain  
+2018-12-18 08:00:30 DEBUG - Season: early-winter 
+2018-12-18 08:00:30 DEBUG - Hash: {"temperature"=>"warm cool cool cold cold cold cold cold cold cold", "condition"=>"mountain-sunny mountain-sunny mountain-clear mountain-clear mountain-fair mountain-overcast mountain-windy mountain-sleeting mountain-dusting mountain-dusting mountain-flurrying mountain-flurrying mountain-flurrying mountain-snowing mountain-snowing mountain-snowing mountain-blizzard", "stability"=>50} 
+2018-12-18 08:00:30 DEBUG - Portals = temperate  
+2018-12-18 08:00:30 DEBUG - Season: early-winter 
+2018-12-18 08:00:30 DEBUG - Hash: {"temperature"=>"cold cold cold cold cold cold cold cool cool freezing freezing", "condition"=>"clear clear clear fair fair fair flurrying flurrying overcast snowing", "stability"=>70} 
+2018-12-18 08:00:30 DEBUG - default = mountain  
+2018-12-18 08:00:30 DEBUG - Season: early-winter 
+2018-12-18 08:00:30 DEBUG - Hash: {"temperature"=>"warm cool cool cold cold cold cold cold cold cold", "condition"=>"mountain-sunny mountain-sunny mountain-clear mountain-clear mountain-fair mountain-overcast mountain-windy mountain-sleeting mountain-dusting mountain-dusting mountain-flurrying mountain-flurrying mountain-flurrying mountain-snowing mountain-snowing mountain-snowing mountain-blizzard", "stability"=>50} 
+2018-12-18 08:00:30 DEBUG - Cleaning up locked exits. 
+2018-12-18 08:00:30 DEBUG - Recording game activity. 
+2018-12-18 08:15:31 DEBUG - Empty scene cleanup. 
+2018-12-18 08:15:31 DEBUG - Room cleanup cron running: []. 
+2018-12-18 08:15:31 DEBUG - Room cleanup cron running: []. 
+2018-12-18 08:15:31 DEBUG - Upcoming event notifications. 
+2018-12-18 08:16:09 DEBUG - Handling ConnectionEstablishedEvent. 
+2018-12-18 08:16:31 DEBUG - Handling ConnectionClosedEvent. 
+2018-12-18 08:18:31 DEBUG - Empty scene cleanup. 
+2018-12-18 08:18:31 DEBUG - Room cleanup cron running: []. 
+2018-12-18 08:18:31 DEBUG - Room cleanup cron running: []. 

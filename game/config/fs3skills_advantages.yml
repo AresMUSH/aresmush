@@ -1,0 +1,11 @@
+---
+fs3skills:
+  use_advantages: false
+  advantages_blurb: 'Advantages represent important things your character possesses
+    that are not skills.  Advantages are rated from 1-3. See [FS3: Advantages](http://aresmush.com/fs3/fs3-3/chargen/#advantages)
+    for details.'
+  advantages:
+  - name: Resources
+    desc: Wealth and other tangible possessions.
+  - name: Rank
+    desc: Rank or social status.

@@ -1,0 +1,15 @@
+---
+game: !ruby/hash:Sinatra::IndifferentHash
+  name: Spirit Lake
+  category: Supernatural
+  description: Set in the tiny Colorado town of Grand Lake, Spirit Lake is a game  that
+    explores what happens when magic re-enters the world. Grand Lake has long  been
+    known as the gateway to the Rockies. It turns out that it's also a gateway to
+    other worlds.  Portals have begun to open nearby, letting humans cross into other
+    worlds - and letting things from those worlds cross into ours. At the same time,
+    some have found themselves gifted with inexplicable powers that they don't understand
+    and don't know how to control. Abruptly, the world is magical again.
+  website: https://spiritlakemu.com
+  public_game: true
+  game_status: In Development
+  status: Beta

@@ -1,0 +1,230 @@
+---
+spells:
+
+# Water
+  #Level 1
+  Create Water:
+    name: Create Water
+    level: 1
+    school: Water
+    desc: Create Water desc
+    target_optional: false
+    is_revive: false
+    is_stun: false
+    roll: true
+  #Level 2
+  Shape Water:
+    name: Create Water
+    level: 2
+    school: Water
+    desc: Create Water desc
+    target_optional: false
+    is_revive: false
+    is_stun: false
+    roll: true
+  Shape Ice:
+    name:   Shape Ice
+    level: 2
+    school: Water
+    desc:  Shape Ice desc
+    target_optional: false
+    is_revive: false
+    is_stun: false
+    roll: true
+  Chilled Limbs :
+    name: Chilled Limbs
+    level: 2
+    school: Water
+    desc: Chilled Limbs  desc
+    target_optional: true
+    target_num: 1
+    is_revive: false
+    is_stun: false
+    defense_mod: -1
+    attack_mod: -1
+    is_potion: true
+    rounds: 1
+  Chill Touch:
+    name: Chill Touch
+    level: 2
+    school: Water
+    desc: Chill Touch desc
+    weapon: Chill Touch
+    target_optional: true
+    fs3_attack: true
+    is_revive: false
+    is_stun: false
+    is_potion: true
+  #Level 3
+  Water Breathing:
+    name: Water Breathing
+    level: 3
+    school: Water
+    desc: Water Breathing desc
+    target_optional: false
+    is_revive: false
+    is_stun: false
+    roll: true
+    is_potion: true
+  Water Walk:
+    name: Water Walk
+    level: 3
+    school: Water
+    desc: Water Walk desc
+    target_optional: false
+    is_revive: false
+    is_stun: false
+    roll: true
+    is_potion: true
+  Ice Talons:
+    name: Ice Talons
+    level: 3
+    school: Water
+    desc: Ice Talons desc
+    target_optional: true
+    fs3_attack: true
+    is_revive: false
+    is_stun: false
+    is_potion: true
+    weapon: Ice Talons
+  Water Cannon:
+    name: Water Cannon
+    level: 3
+    school: Water
+    desc: Water Cannon  desc
+    target_optional: true
+    fs3_attack: true
+    is_revive: false
+    is_stun: true
+    weapon: Stun (Water)
+  #Level 4 Water
+  "Potions (Water)":
+    name: 'Potions'
+    level: 4
+    school: Water
+    desc: Potions desc
+  Ice Armor:
+    name: 'Ice Armor'
+    level: 4
+    school: Water
+    desc: Ice Armor desc
+    target_optional: false
+    is_revive: false
+    is_stun: false
+    weapon: Ice Armor
+    armor: Ice
+    is_potion: true
+  Ice Weapon:
+    name: Ice Weapon
+    level: 4
+    school: Water
+    desc: Ice Weapon desc
+    target_optional: false
+    is_revive: false
+    is_stun: false
+    weapon_specials: Ice
+    rounds: 100
+    is_potion: true
+  Water Whip:
+    name: Water Whip
+    level: 4
+    school: Water
+    desc: Water Whip desc
+    target_optional: true
+    fs3_attack: true
+    is_revive: false
+    is_stun: false
+    weapon: Water Whip
+  Freeze Blast:
+    name: Freeze Blast
+    level: 4
+    school: Water
+    desc: Freeze Blast desc
+    target_optional: true
+    fs3_attack: true
+    is_revive: false
+    is_stun: false
+    weapon: Freeze Blast
+  #Level 5
+  Slick Ground:
+    name: Slick Ground
+    level: 5
+    school: Water
+    desc: Slick Ground desc
+    target_optional: true
+    fs3_attack: true
+    is_revive: false
+    is_stun: false
+    weapon: Slick Ground
+  Exploding Ice:
+    name: Exploding Ice
+    level: 5
+    school: Water
+    desc: Exploding Ice desc
+    target_optional: true
+    fs3_attack: true
+    is_revive: false
+    is_stun: false
+    weapon: Exploding Ice
+  #Level 6
+  Shatter:
+    name: Shatter
+    level: 6
+    school: Water
+    desc: Shatter desc
+    target_optional: true
+    fs3_attack: true
+    is_revive: false
+    is_stun: false
+    weapon: Shatter
+  "Familiar (Water)":
+    name: Familiar
+    level: 6
+    school: Water
+    desc: Familiar  desc
+    target_optional: false
+    is_revive: false
+    is_stun: false
+    roll: true
+  Liquid Form:
+    name: Liquid Form
+    level: 6
+    desc: Liquid Form desc
+    school: Water
+    target_optional: false
+    target_num: 1
+    is_revive: false
+    is_stun: false
+    roll: true
+    defense_mod: 10
+  #Level 7
+  Ice Storm:
+    name: Ice Storm
+    level: 7
+    school: Water
+    desc: Ice Storm desc
+    target_optional: true
+    fs3_attack: true
+    is_revive: false
+    is_stun: false
+    weapon: Ice Storm
+  Energize Dimensional Anchor (Water):
+    name: 'Dimensional Anchor'
+    level: 7
+    school: Water
+    desc: Dimensional Anchor desc
+    target_optional: false
+    is_revive: false
+    is_stun: false
+    roll: true
+  #Level 8
+  Land Of Ice:
+    name: Land Of Ice
+    level: 8
+    school: Water
+    desc: Land Of Ice desc
+    target_optional: true
+    fs3_attack: true
+    is_revive: false
+    is_stun: false
+    weapon: Land Of Ice

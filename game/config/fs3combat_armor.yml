@@ -1,0 +1,237 @@
+---
+fs3combat:
+  armor:
+    None:
+      description: In case you need to take off armor
+      is_magic: false
+      defense: 0
+      protection:
+        Nowhere: 0
+    Tough Hide:
+      description: Animal hide for quadrapeds
+      is_magic: false
+      defense: 1
+      protection:
+        Chest: 4
+        Rear Left Leg: 4
+        Read Right Leg: 4
+        Front Left Leg: 4
+        Front Right Leg: 4
+        Abdomen: 4
+        Head: 3
+        Neck: 3
+        Groin: 2
+    Tactical:
+      description: Military-Grade Kevlar Vest and Helmet
+      is_magic: false
+      defense: 0
+      protection:
+        Head: 7
+        Neck: 5
+        Chest: 8
+        Abdomen: 7
+    Chainmail:
+      description: Chainmail shirt & gambeson
+      is_magic: false
+      defense: 0
+      protection:
+        Chest: 8
+        Abdomen: 7
+        Left Arm: 8
+        Right Arm: 8
+      allowed_specials:
+      - Leather Helmet
+      - Metal Helmet
+      - Chainmail Coif
+    Plate:
+      description: Full plate armor with no helmet
+      is_magic: false
+      defense: -1
+      protection:
+        Chest: 9
+        Abdomen: 8
+        Left Arm: 9
+        Right Arm: 9
+        Right Leg: 7
+        Left Leg: 7
+      allowed_specials:
+      - Leather Helmet
+      - Metal Helmet
+      - Chainmail Coif
+    Leather:
+      description: Leather armor
+      is_magic: false
+      defense: 0
+      protection:
+        Chest: 7
+        Abdomen: 6
+        Left Arm: 7
+        Right Arm: 7
+      allowed_specials:
+      - Leather Helmet
+      - Metal Helmet
+      - Chainmail Coif
+    Police:
+      description: Police-Grade Kevlar Vest
+      is_magic: false
+      defense: 0
+      protection:
+        Chest: 7
+        Abdomen: 6
+      allowed_specials:
+      - Modern Helmet
+    Rock Skin:
+      description: Level 4 Earth spell
+      is_magic: true
+      defense: 0
+      protection:
+        Head: 8
+        Neck: 8
+        Chest: 8
+        Abdomen: 8
+        Left Leg: 8
+        Right Leg: 8
+        Groin: 8
+        Left Arm: 8
+        Right Arm: 8
+        Left Hand: 8
+        Right Hand: 8
+        Left Foot: 8
+        Right Foot: 8
+    Crystalline:
+      description: Level 4 Earth spell
+      is_magic: true
+      defense: 0
+      protection:
+        Head: 11
+        Neck: 11
+        Chest: 11
+        Abdomen: 11
+        Left Leg: 11
+        Right Leg: 11
+        Groin: 11
+        Left Arm: 11
+        Right Arm: 11
+        Left Hand: 11
+        Right Hand: 11
+        Left Foot: 11
+        Right Foot: 11
+    Crocodile:
+      description: Level 2 Nature spell
+      is_magic: true
+      defense: 0
+      protection:
+        Head: 4
+        Neck: 4
+        Chest: 4
+        Abdomen: 4
+        Left Leg: 4
+        Right Leg: 4
+        Groin: 4
+        Left Arm: 4
+        Right Arm: 4
+        Left Hand: 4
+        Right Hand: 4
+        Left Foot: 4
+        Right Foot: 4
+    Moth:
+      description: A moth.
+      is_magic: true
+      protection:
+        Head: 0
+        Neck: 0
+        Chest: 0
+        Abdomen: 0
+        Left Leg: 0
+        Right Leg: 0
+        Groin: 0
+        Left Arm: 0
+        Right Arm: 0
+        Left Hand: 0
+        Right Hand: 0
+        Left Foot: 0
+        Right Foot: 0
+      defense: 10
+    Jenu:
+      description: Level 6 Nature spell
+      is_magic: true
+      defense: 3
+      protection:
+        Head: 0
+    Ice:
+      description: Level 4 Water spell
+      is_magic: true
+      defense: 0
+      protection:
+        Head: 8
+        Neck: 8
+        Chest: 8
+        Abdomen: 8
+        Left Leg: 8
+        Right Leg: 8
+        Groin: 8
+        Left Arm: 8
+        Right Arm: 8
+        Left Hand: 8
+        Right Hand: 8
+        Left Foot: 8
+        Right Foot: 8
+    Telekinetic:
+      description: Level 4 Will spell
+      is_magic: true
+      defense: 0
+      protection:
+        Head: 11
+        Neck: 11
+        Chest: 11
+        Abdomen: 11
+        Left Leg: 11
+        Right Leg: 11
+        Groin: 11
+        Left Arm: 11
+        Right Arm: 11
+        Left Hand: 11
+        Right Hand: 11
+        Left Foot: 11
+        Right Foot: 11
+    Transmutation:
+      description: Level 6 Will spell
+      is_magic: true
+      defense: 0
+      protection:
+        Head: 14
+        Neck: 14
+        Chest: 14
+        Abdomen: 14
+        Left Leg: 14
+        Right Leg: 14
+        Groin: 14
+        Left Arm: 14
+        Right Arm: 14
+        Left Hand: 14
+        Right Hand: 14
+        Left Foot: 14
+        Right Foot: 14
+  armor specials:
+    Modern Helmet:
+      description: A modern combat or police helmet
+      is_magic: false
+      protection:
+        Head: 4
+    Leather Helmet:
+      description: A leather helmet
+      is_magic: false
+      protection:
+        Head: 3
+    Metal Helmet:
+      description: A leather helmet
+      is_magic: false
+      protection:
+        Head: 4
+    Chainmail Coif:
+      description: A chainmail coif that covers your head and neck, with a helmet
+        atop.
+      is_magic: false
+      protection:
+        Head: 5
+        Neck: 4
