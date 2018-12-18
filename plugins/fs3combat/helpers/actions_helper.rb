@@ -16,13 +16,13 @@ module AresMUSH
         FullautoAction
       when "pass"
         PassAction
-      when "spell"
+      when "spell1"
         SpellAction
-      when "spelltarget"
+      when "spelltarget1"
         SpellTargetAction
-      when "potion"
+      when "potion1"
         PotionAction
-      when "potiontarget"
+      when "potiontarget1"
         PotionTargetAction
       when "rally"
         RallyAction
