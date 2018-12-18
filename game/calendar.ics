@@ -2,10 +2,12 @@ BEGIN:VCALENDAR
 VERSION:2.0
 PRODID:-//hacksw/handcal//NONSGML v1.0//EN
 BEGIN:VEVENT
-UID:61fe4cb6-72d5-44da-9724-61511cbba256@Spirit Lake-spiritlakemu.com
-DTSTART:20181208T013000Z
-DTSTAMP:20181206T174510Z
-SUMMARY:The Crown Speaks
-DESCRIPTION:The Crown of Eight shares its secrets. Pls RSVP if you can come.
+UID:d216e043-e910-4136-a444-a031756f3fc6@Spirit Lake-spiritlakemu.com
+DTSTART:20181217T013000Z
+DTSTAMP:20181213T183436Z
+SUMMARY:Aftermath
+DESCRIPTION:Those who remain, react. 
+  
+  OOC: This will be largely set-up for Beta, and so there are a few things that Must Happen and a few characters who won't be here. I'm not gonna get spoilery, but if you want to know before Saturday's scene, feel free to page me and I'll spill. I don't want anything to be OOCly frustrating for folks, so if you're the sort who'd rather be prepared, just let me know. 
 END:VEVENT
 END:VCALENDAR
