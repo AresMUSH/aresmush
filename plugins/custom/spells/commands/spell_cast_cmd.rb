@@ -44,7 +44,7 @@ module AresMUSH
         return t('fs3combat.must_escape_first') if (enactor.combat && caster_combat.is_subdued?)
         if enactor.combat
 
-          return emit_failure t('custom.spell_ko') if self.caster_combat.is_ko
+          return t('custom.spell_ko') if self.caster_combat.is_ko
           return t('custom.dont_know_spell') if (!caster_combat.is_npc? &&  Custom.knows_spell?(caster, self.spell) == false && Custom.item_spell(caster) != self.spell)
 
 
