@@ -1,0 +1,30 @@
+---
+idle:
+  idle_exempt_roles:
+  - admin
+  - builder
+  - coder
+  - guest
+  monthly_reminder_cron:
+    date:
+    - 1
+    hour:
+    - 15
+    minute:
+    - 0
+  monthly_reminder_title: Monthly Chores
+  monthly_reminder: It's time to run the idle sweep!
+  reminder_category: MISC
+  use_roster: true
+  idle_category: Announcements
+  days_before_idle: 30
+  arrivals_category: New Arrivals
+  default_contact: Admin
+  roster_welcome_msg: Welcome!  You may wish to check your %xcnotes%xn and web portal
+    profile page for any notes left by the prior player.  Type %xhonstage%xn to go
+    forth and RP.
+  shortcuts:
+    idle/add: idle/action
+    roster/update: roster/add
+    roster/contact: roster/add
+    roster/notes: roster/note

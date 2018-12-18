@@ -1,0 +1,12 @@
+---
+server:
+  hostname: spiritlakemu.com
+  port: 4201
+  websocket_port: 4202
+  web_portal_port: 443
+  engine_api_port: 4203
+  ssl: true
+  private_key_file_path: ''
+  certificate_file_path: ''
+  use_https: false
+  bind_address: ''

@@ -1,0 +1,20 @@
+---
+website:
+  allow_html_in_markdown: true
+  character_gallery_group: Major School
+  character_gallery_subgroup: false
+  left_sidebar: false
+  max_upload_size_kb: 5000
+  portal_requires_registration: false
+  restricted_pages:
+  - home
+  sitemap_update_cron:
+    hour:
+    - 2
+    minute:
+    - 17
+  website_code_path: "/home/ares/ares-webportal"
+  wiki_aliases:
+    main: home
+  wiki_nav:
+  - Home

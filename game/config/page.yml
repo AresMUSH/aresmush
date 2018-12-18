@@ -1,0 +1,8 @@
+---
+page:
+  page_color: "%xg"
+  shortcuts:
+    p: page
+    page/lock: page/ignore
+    pagelock: page/ignore
+    tell: page

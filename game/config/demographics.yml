@@ -1,0 +1,89 @@
+---
+demographics:
+  census_fields:
+  - field: name
+    width: 20
+    title: Name
+  - field: demographic
+    width: 10
+    title: Gender
+    value: gender
+  - field: group
+    width: 20
+    title: Major School
+    value: Major School
+  - field: group
+    width: 20
+    title: Minor School
+    value: Minor School
+  demographics:
+  - actor
+  - hair
+  - eyes
+  - skin
+  - height
+  - physique
+  - fullname
+  - gender
+  - birthdate
+  disable_auto_shortcuts: false
+  editable_properties:
+  - fullname
+  - hair
+  - physique
+  groups:
+    Major School:
+      desc: The school of magic with which you have a major affinity.
+      values:
+        None: None
+        Air: Magic focused on air, wind, and lightning.
+        Corpus: Magic focused on the body of sentient creatures.
+        Earth: Magic focused on earth, rock, and metal.
+        Fire: Magic focused on fire, heat, and light.
+        Nature: Magic focused on plants and non-sentient animals.
+        Spirit: Magic focused on the sentient mind, emotions, and spirit.
+        Water: Magic focused on water and ice.
+        Will: Magic focused on the physical world.
+    Minor School:
+      desc: The school of magic with which you have a minor affinity.
+      values:
+        None: None
+        Air: Magic focused on air, wind, and lightning.
+        Corpus: Magic focused on the body of sentient creatures.
+        Earth: Magic focused on earth, rock, and metal.
+        Fire: Magic focused on fire, heat, and light.
+        Nature: Magic focused on plants and non-sentient animals.
+        Spirit: Magic focused on the sentient mind, emotions, and spirit.
+        Water: Magic focused on water and ice.
+        Will: Magic focused on the physical world.
+  help_text:
+    actor: See 'help actors'.
+    physique: Build/body type - athletic, wiry, slim, pudgy, etc.
+    gender: Male/Female/Other
+    hair: Hair color
+    eyes: Eye color
+    skin: Complexion
+    birthdate: Specify a date mm/dd/yyyy or use %xcage <years>.%xn
+    callsign: Callsign for pilots.  Non-pilots may leave blank or enter a nickname.
+  max_age: 65
+  min_age: 18
+  nickname_field: ''
+  nickname_format: "%{name} (%{nickname})"
+  required_properties:
+  - hair
+  - eyes
+  - skin
+  - height
+  - physique
+  - fullname
+  - gender
+  - birthdate
+  secret_prefs:
+    None: No secrets at all
+    Known: You know the secret about your character
+    GM: Only GMs know the secret about your character until it comes out in play
+  shortcuts:
+    groups: group
+    colonies: group colony
+    demographics: demographic
+  private_properties: {}

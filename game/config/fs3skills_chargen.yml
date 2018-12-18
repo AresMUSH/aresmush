@@ -1,0 +1,92 @@
+---
+fs3skills:
+  advantages_cost: 2
+  allow_unskilled_action_skills: true
+  free_backgrounds: 6
+  free_languages: 3
+  max_ap: 45
+  max_magic_rating: 1
+  max_attr_rating: 4
+  max_attrs_at_or_above:
+    '3': 4
+    '4': 2
+  max_points_on_action: 28
+  max_points_on_attrs: 13
+  max_skill_rating: 7
+  max_skills_at_or_above:
+    '5': 6
+    '6': 3
+    '7': 1
+  min_backgrounds: 3
+  starting_skills:
+    Everyone:
+      skills: 
+    Major School:
+      Air:
+        skills:
+          Magic: 1
+          Air: 2
+      Corpus:
+        skills:
+          Magic: 1
+          Corpus: 2
+      Earth:
+        skills:
+          Magic: 1
+          Earth: 2
+      Fire:
+        skills:
+          Magic: 1
+          Fire: 2
+      Nature:
+        skills:
+          Magic: 1
+          Nature: 2
+      Spirit:
+        skills:
+          Magic: 1
+          Spirit: 2
+      Water:
+        skills:
+          Magic: 1
+          Water: 2
+      Will:
+        skills:
+          Magic: 1
+          Will: 2
+    Minor School:
+      Air:
+        skills:
+          Magic: 1
+          Air: 1
+      Corpus:
+        skills:
+          Magic: 1
+          Corpus: 1
+      Earth:
+        skills:
+          Magic: 1
+          Earth: 1
+      Fire:
+        skills:
+          Magic: 1
+          Fire: 1
+      Nature:
+        skills:
+          Magic: 1
+          Nature: 1
+      Spirit:
+        skills:
+          Magic: 1
+          Spirit: 1
+      Water:
+        skills:
+          Magic: 1
+          Water: 1
+      Will:
+        skills:
+          Magic: 1
+          Will: 1
+  unusual_skills:
+  - Archery
+  - Magic

@@ -1,0 +1,100 @@
+---
+fs3combat:
+  allow_mounts: false
+  allow_vehicles: false
+  combatant_types:
+    Knight:
+      weapon: Sword
+      weapon_specials: 
+      armor: Plate
+      hitloc: Humanoid
+      defense_skill: Reflexes
+    Archer:
+      weapon: Bow
+      weapon_specials: 
+      armor: Leather
+      hitloc: Humanoid
+      defense_skill: Reflexes
+    Rogue:
+      weapon: Knife
+      weapon_specials: 
+      armor: Leather
+      hitloc: Humanoid
+      defense_skill: Reflexes
+    Swordsman:
+      weapon: Sword
+      weapon_specials: 
+      armor: Chainmail
+      hitloc: Humanoid
+      defense_skill: Reflexes
+    Observer:
+      hitloc: Humanoid
+    Modern Soldier:
+      weapon: Rifle
+      weapon_specials: 
+      armor: Tactical
+      hitloc: Humanoid
+      defense_skill: Reflexes
+    Unarmed Combatant:
+      weapon: Unarmed
+      armor: None
+      hitloc: Humanoid
+      defense_skill: Reflexes
+    Target:
+      hitloc: Target
+      weapon: Unarmed
+      defense_skill: None
+    Quadraped:
+      hitloc: Quadraped
+      weapon: Teeth
+      defense_skill: Reflexes
+    Serpent:
+      hitloc: Serpent
+      weapon: Teeth
+      defense_skill: Reflexes
+  default_type: Unarmed Combatant
+  shortcuts:
+    combat/skill: combat/summary
+    combat/skills: combat/summary
+    combat/slackers: combat/summary
+    combat/add: combat/join
+    combat/remove: combat/leave
+    combat/hitlocs: combat/hitloc
+    vehicles: vehicle
+    hospitals: hospital/list
+    healing: heal/list
+    mounts: mount
+    weapons: weapon
+    attack: combat/attack
+    combat/aoe: combat/explode
+    aoe: combat/explode
+    combat/stun: combat/suppress
+    stun: combat/suppress
+    newturn: combat/newturn
+    combat/cast: spell/cast
+    cast: spell/cast
+    castm: spell/castmulti
+    castmulti: spell/castmulti
+    spell/castm: spell/castmulti
+  stances:
+    Aggressive:
+      attack_mod: 2
+      defense_mod: -2
+    Reckless:
+      attack_mod: 4
+      defense_mod: -4
+    Normal:
+      attack_mod: 0
+      defense_mod: 0
+    Defensive:
+      attack_mod: -2
+      defense_mod: 2
+    Evasive:
+      attack_mod: -4
+      defense_mod: 4
+    Cover:
+      attack_mod: 0
+      defense_mod: 0
+    Hidden:
+      attack_mod: 0
+      defense_mod: 0

@@ -1,0 +1,232 @@
+---
+spells:
+# Nature
+  #Level 1
+  Create Bloom:
+    name: Create Bloom
+    level: 1
+    school: Nature
+    desc: Create Bloom
+    target_optional: false
+    is_revive: false
+    is_stun: false
+    roll: true
+  #Level 2
+  Shape Flora:
+    name: Shape Flora
+    level: 2
+    school: Nature
+    desc: Shape Flora
+    target_optional: false
+    is_revive: false
+    is_stun: false
+    roll: true
+  Natural Defenses Crocodile:
+    name: Natural Defenses Crocodile
+    level: 2
+    school: Nature
+    desc: Natural Defenses Crocodile
+    target_optional: false
+    is_revive: false
+    is_stun: false
+    armor: Crocodile
+  #Level 3
+  Entangle:
+    name: Entangle
+    level: 3
+    school: Nature
+    desc: Entangle
+    target_optional: true
+    fs3_attack: true
+    is_revive: false
+    is_stun: true
+    weapon: Stun (Nature)
+  Swarm:
+    name: Swarm
+    level: 3
+    school: Nature
+    desc: Swarm
+    target_optional: true
+    target_num: 1
+    fs3_attack: true
+    is_revive: false
+    is_stun: true
+    weapon: Stun (Nature)
+  Thorn Growth:
+    name: Thorn Growth
+    level: 3
+    school: Nature
+    desc: Thorn Growth
+    target_optional: true
+    fs3_attack: true
+    is_revive: false
+    is_stun: false
+    weapon: Thorn Growth
+  Calm Animal:
+    name: Calm Animal
+    level: 3
+    school: Nature
+    desc: Calm Animal
+    target_optional: true
+    target_num: 1
+    is_revive: false
+    is_stun: false
+    roll: true
+  #Level 4 Nature
+  "Potions (Nature)":
+    name: 'Potions'
+    level: 4
+    school: Nature
+    desc: Potions desc
+  Photosynthesis:
+    name: Photosynthesis
+    level: 4
+    school: Nature
+    desc: Photosynthesis
+    target_optional: false
+    is_revive: false
+    is_stun: false
+    heal_points: 7
+    is_potion: true
+  Animal Friendship:
+    name: Calm Animal
+    level: 4
+    school: Nature
+    desc: Calm Animal
+    target_optional: true
+    target_num: 1
+    is_revive: false
+    is_stun: false
+    roll: true
+  # Half Shift:
+  #   name: Half Shift
+  #   level: 4
+  #   school: Nature
+  #   desc: Calm Animal
+  #   target_optional: false
+  #   is_revive: false
+  #   is_stun: false
+  #   roll: true
+  'Half Shift (Jenu)':
+    name: Half Shift (Jenu)
+    level: 4
+    school: Nature
+    desc: Half Shift (Jenu)
+    target_optional: false
+    is_revive: false
+    is_stun: false
+    weapon: Jenu
+    armor: Jenu
+  Shield Of The Forest:
+    name: Shield of the Forest
+    level: 4
+    school: Nature
+    desc: Shield of the Forest
+    target_optional: true
+    target_num: 1
+    is_revive: false
+    is_stun: false
+    stance: cover
+    rounds: 1
+  Acid Spit:
+    name: Acid Spit
+    level: 4
+    school: Nature
+    desc: Acid Spit
+    target_optional: true
+    fs3_attack: true
+    is_revive: false
+    is_stun: false
+    weapon: Acid Spit
+
+  #Level 5
+  Wild Shape Moth:
+    name: Wild Shape
+    level: 5
+    school: Nature
+    desc: Wild Shape desc
+    target_optional: false
+    is_revive: false
+    is_stun: false
+    roll: true
+    armor: Moth
+  #Level 6
+  "Familiar (Nature)":
+    name: Familiar
+    level: 6
+    school: Nature
+    desc: Familiar  desc
+    target_optional: false
+    is_revive: false
+    is_stun: false
+    roll: true
+  Winged Flight:
+    name: Winged Flight
+    level: 6
+    school: Nature
+    desc: Winged Flight desc
+    target_optional: false
+    is_revive: false
+    is_stun: false
+    roll: true
+    defense_mod: 1
+    rounds: 100
+  Poison Puffs:
+    name: Poison Puffs
+    level: 6
+    school: Nature
+    desc: Poison Puffs desc
+    target_optional: true
+    fs3_attack: true
+    is_revive: false
+    is_stun: false
+    weapon: Poison Puffs
+  #Level 7
+  Sense Animals:
+    name: Sense Animals
+    level: 7
+    school: Nature
+    desc: Nature Clarity desc
+    target_optional: false
+    is_revive: false
+    is_stun: false
+    roll: true
+  
+  Greater Wild Shape:
+    name: Greater Wild Shape
+    level: 7
+    school: Nature
+    desc: Greater Wild Shape desc
+    target_optional: false
+    is_revive: false
+    is_stun: false
+    roll: true
+  Energize Dimensional Anchor (Nature):
+    name: 'Dimensional Anchor'
+    level: 7
+    school: Nature
+    desc: Dimensional Anchor desc
+    target_optional: false
+    is_revive: false
+    is_stun: false
+    roll: true
+  #Level 8
+  Massive Thorn Wall:
+    name: Massive Thorn Wall
+    level: 8
+    school: Nature
+    desc: Massive Thorn Wall desc
+    target_optional: false
+    is_revive: false
+    is_stun: false
+    roll: true
+  Baleful Polymorph:
+    name: Baleful Polymorph
+    level: 8
+    school: Nature
+    desc: Baleful Polymorph desc
+    target_optional: true
+    target_num: 1
+    is_revive: false
+    is_stun: false
+    roll: true

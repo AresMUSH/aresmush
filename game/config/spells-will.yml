@@ -1,0 +1,218 @@
+---
+spells:
+# Will
+  #Level 1
+  Mend:
+    name: Mend
+    level: 1
+    school: Will
+    desc: Mend desc
+    target_optional: false
+    is_revive: false
+    is_stun: false
+    roll: Will
+    is_potion: true
+  #Level 2
+  Minor Telekinesis:
+    name: 'Minor Telekinesis'
+    level: 2
+    school: Will
+    desc: Minor Telekinesis desc
+    target_optional: false
+    is_revive: false
+    is_stun: false
+    roll: Will
+  #Level 3
+  Telekinetic Hold:
+    name: 'Telekinetic Hold'
+    level: 3
+    school: Will
+    desc: Telekinetic Hold desc
+    target_optional: true
+    fs3_attack: true
+    is_revive: false
+    target_num: 1
+    is_stun: true
+    weapon: Stun (Will)
+  Intermediate Telekinesis:
+    name: 'Intermediate Telekinesis '
+    level: 3
+    school: Will
+    desc: Intermediate Telekinesis  desc
+    target_optional: false
+    is_revive: false
+    is_stun: false
+    roll: Will
+  Telekinetic Block:
+    name: 'Telekinetic Block '
+    level: 3
+    school: Will
+    desc: Telekinetic Block  desc
+    target_optional: true
+    target_num: 1
+    is_revive: false
+    stance: cover
+    rounds: 1
+  #Level 4 Will
+  "Potions (Will)":
+    name: 'Potions'
+    level: 4
+    school: Will
+    desc: Potions desc
+  Transform Weapon:
+    name: 'Transform Weapon'
+    level: 4
+    school: Will
+    desc: Transform Weapon desc
+    target_optional: false
+    is_revive: false
+    is_stun: false
+    is_potion: true
+    weapon_specials: Transform
+    rounds: 100
+  Telekinetic Armor:
+    name: 'Telekinetic Armor'
+    level: 4
+    school: Will
+    desc: Telekinetic Armor desc
+    target_optional: false
+    is_revive: false
+    is_stun: false
+    armor: Telekinetic
+    is_potion: true
+  Telekinetic Burst:
+    name: 'Telekinetic Burst'
+    level: 4
+    school: Will
+    desc: Telekinetic Burst desc
+    target_optional: true
+    fs3_attack: true
+    is_revive: false
+    is_stun: false
+    weapon: Telekinetic Burst
+  Major Telekinesis:
+    name: 'Major Telekinesis '
+    level: 4
+    school: Will
+    desc: Major Telekinesis  desc
+    target_optional: false
+    is_revive: false
+    is_stun: false
+    roll: true
+  #Level 5
+  Telekinetic Precision:
+    name: 'Telekinetic Precision '
+    level: 5
+    school: Will
+    desc: Telekinetic Precision desc
+    target_optional: false
+    is_revive: false
+    is_stun: false
+    roll: true
+  Levitate:
+    name: 'Levitate'
+    level: 5
+    school: Will
+    desc: Levitate desc
+    target_optional: true
+    target_num: 1
+    is_revive: false
+    is_stun: false
+    roll: true
+  #Level 6
+  "Familiar (Will)":
+    name: Familiar
+    level: 6
+    school: Will
+    desc: Familiar  desc
+    target_optional: false
+    is_revive: false
+    is_stun: false
+    roll: true
+  Massive Telekinesis:
+    name: 'Massive Telekinesis '
+    level: 6
+    school: Will
+    desc: Massive Telekinesis  desc
+    target_optional: false
+    is_revive: false
+    is_stun: false
+    roll: Will
+  Transmutation Armor:
+    name: 'Transmutation Armor'
+    level: 6
+    school: Will
+    desc: Transmutation Armor desc
+    target_optional: false
+    is_revive: false
+    is_stun: false
+    armor: Transmutation
+  #Level 7
+  Mass Telekinetic Burst:
+    name: 'Mass Telekinetic Burst'
+    level: 7
+    school: Will
+    desc: Mass Telekinetic Burst desc
+    target_optional: true
+    target_num: 3
+    fs3_attack: true
+    is_revive: false
+    is_stun: false
+    weapon: Mass Telekinetic Burst
+  Test:
+    name: 'Mass Flight'
+    level: 7
+    school: Will
+    desc: Mass Flight Burst desc
+    target_optional: true
+    target_num: 3
+    is_revive: false
+    is_stun: false
+    roll: true
+  Dimensional Anchor:
+    name: 'Dimensional Anchor'
+    level: 7
+    school: Will
+    desc: Dimensional Anchor desc
+    target_optional: false
+    is_revive: false
+    is_stun: false
+    roll: true
+  Energize Dimensional Anchor (Will):
+    name: 'Dimensional Anchor'
+    level: 7
+    school: Will
+    desc: Dimensional Anchor desc
+    target_optional: false
+    is_revive: false
+    is_stun: false
+    roll: true
+  Open Local Portal:
+    name: 'Open Local Portal'
+    level: 7
+    school: Will
+    desc: Open Local Portal desc
+    target_optional: false
+    is_revive: false
+    is_stun: false
+    roll: true
+
+  #Level 8
+  Microscopic Telekinesis:
+    name: 'Microscopic Telekinesis'
+    level: 8
+    school: Will
+    desc: Microscopic Telekinesis desc
+    target_optional: false
+    is_revive: false
+    is_stun: false
+    roll: true
+  Titanic Telekinesis:
+    name: 'Titanic Telekinesis'
+    level: 8
+    school: Will
+    desc: Titanic Telekinesis desc
+    target_optional: false
+    is_revive: false
+    is_stun: false
+    roll: true

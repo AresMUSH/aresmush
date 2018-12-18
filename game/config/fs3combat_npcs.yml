@@ -1,0 +1,34 @@
+---
+fs3combat:
+  npc_types:
+    One:
+      Default: 2
+      Wounds: 30
+    Two:
+      Default: 3
+      Wounds: 30
+    Three:
+      Default: 5
+      Wounds: 30
+    Four:
+      Default: 7
+      Wounds: 20
+    Five:
+      Default: 8
+      Wounds: 15
+    Six:
+      Default: 10
+      Wounds: 15
+    Seven:
+      Default: 11
+      Wounds: 0
+    Eight:
+      Default: 12
+      Wounds: -10
+    Nine:
+      Default: 14
+      Wounds: -10
+    Ten:
+      Default: 17
+      Wounds: -30
+  default_npc_type: Three

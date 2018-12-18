@@ -1,0 +1,23 @@
+---
+forum:
+  shortcuts:
+    bbs: forum
+    bbread: forum
+    bbscan: forum/scan
+    bbpost: forum/post
+    bbnext: forum/new
+    bbnew: forum/new
+    bbcatchup: forum/catchup
+    bbedit: forum/edit
+    bbreply: forum/reply
+    bbcomment: forum/reply
+    bbremove: forum/delete
+    bbmove: forum/move
+    bbs/remove: forum/delete
+    bbs/read: forum
+    bbnewgroup: forum/createboard
+    bbcleargroup: forum/deleteboard
+    bbarchive: forum/archive
+    bbs/desc: forum/describe
+    bbs/newgroup: forum/createboard
+    bb/new: forum/new

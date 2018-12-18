@@ -1,0 +1,231 @@
+---
+spells:
+# Corpus
+  #Level 1
+  "Breath Of Healing":
+    name: 'Breath of Healing'
+    level: 1
+    school: Corpus
+    desc: Breath of Healing desc
+    target_optional: true
+    is_revive: false
+    is_stun: false
+    heal_points: 1
+    is_potion: true
+  Graze:
+    name: 'Graze'
+    level: 1
+    school: Corpus
+    desc: Graze desc
+    target_optional: true
+    target_num: 1
+    is_revive: false
+    is_stun: false
+    roll: true
+    is_potion: true
+  #Level 2
+  "Touch Of Enfeeblement":
+    name: 'Touch of Enfeeblement'
+    level: 2
+    school: Corpus
+    desc: Touch of Enfeeblement desc
+    target_optional: true
+    target_num: 1
+    is_revive: false
+    is_stun: false
+    attack_mod: -1
+    defense_mod: -1
+    is_potion: true
+    rounds: 1
+  Minor Heal:
+    name: 'Minor Heal'
+    level: 2
+    school: Corpus
+    desc: Minor Heal desc
+    target_optional: true
+    target_num: 1
+    is_revive: false
+    is_stun: false
+    heal_points: 3
+    is_potion: true
+  #Level 3
+  Strength:
+    name: 'Strength'
+    level: 3
+    school: Corpus
+    desc: Strength desc
+    target_optional: false
+    is_revive: false
+    is_stun: false
+    weapon_specials: Strength
+    rounds: 100
+    is_potion: true
+  Flesh Wound:
+    name: 'Flesh Wound'
+    level: 3
+    school: Corpus
+    desc: Flesh Wound desc
+    target_optional: true
+    is_revive: false
+    is_stun: false
+    damage_desc: "Flesh Wound Spell"
+    damage_inflicted: FLESH
+    is_potion: true
+  Medium Heal:
+    name: 'Medium Heal'
+    level: 3
+    school: Corpus
+    desc: Medium Heal desc
+    target_optional: true
+    target_num: 1
+    is_revive: false
+    is_stun: false
+    heal_points: 7
+    is_potion: true
+  Endure Extreme Temperatures:
+    name: 'Endure Extreme Temperatures'
+    level: 3
+    school: Corpus
+    desc: Endure Extreme Temperatures desc
+    target_optional: false
+    is_revive: false
+    is_stun: false
+    roll: true
+    is_potion: true
+  #Level 4
+  "Potions (Corpus)":
+    name: 'Potions'
+    level: 4
+    school: Corpus
+    desc: Potions desc
+  Minor Group Heal:
+    name: 'Minor Group Heal'
+    level: 4
+    school: Corpus
+    desc: Minor Group Heal desc
+    target_num: 3
+    target_optional: true
+    is_revive: false
+    is_stun: false
+    heal_points: 3
+    is_potion: false
+  Impair:
+    name: 'Impair'
+    level: 4
+    school: Corpus
+    desc: Impair desc
+    target_optional: true
+    target_num: 1
+    is_revive: false
+    is_stun: false
+    roll: false
+    damage_inflicted: IMPAIR
+    damage_desc: "Impair Spell"
+  Agility:
+    name: 'Agility'
+    level: 4
+    school: Corpus
+    desc: Agility desc
+    target_optional: false
+    is_revive: false
+    is_stun: false
+    weapon_specials: Agility
+    defense_mod: +2
+    is_potion: true
+    rounds: 5
+  Vitality Weapon:
+    name: 'Vitality Weapon'
+    level: 4
+    school: Corpus
+    desc: Vitality Weapon desc
+    target_optional: true
+    target_num: 1
+    is_revive: false
+    is_stun: false
+    weapon_specials: Vitality
+    rounds: 100
+    heal_points: 3
+    is_potion: true
+  #Level 5
+  Grow Self:
+    name: 'Grow Self'
+    level: 5
+    school: Corpus
+    desc: Grow Self desc
+    target_optional: false
+    is_revive: false
+    is_stun: false
+    roll: true
+    weapon_specials: Grow
+    rounds: 6
+  Shrink Self:
+    name: 'Shrink Self'
+    level: 5
+    school: Corpus
+    desc: Shrink Self
+    target_optional: false
+    is_revive: false
+    is_stun: false
+    roll: true
+    weapon_specials: Shrink
+    rounds: 10
+  Revive:
+    name: Revive
+    level: 5
+    school: Corpus
+    desc: Revive desc
+    target_optional: true
+    is_revive: true
+    is_stun: false
+    target_num: 1
+  #Level 6
+  "Familiar (Corpus)":
+    name: Familiar
+    level: 6
+    school: Corpus
+    desc: Familiar  desc
+    target_optional: false
+    is_revive: false
+    is_stun: false
+    roll: true
+  Massive Heal:
+    name: Massive Heal
+    level: 6
+    school: Corpus
+    desc: Massive Heal desc
+    target_optional: true
+    target_num: 1
+    is_revive: false
+    is_stun: false
+    roll: false
+    heal_points: 17
+  #Level 7
+  Brink Of Death:
+    level: 7
+    school: Corpus
+    desc: Brink of Death desc
+    target_optional: true
+    is_revive: false
+    is_stun: false
+    roll: true
+    is_res: true
+  Group Revive:
+    level: 7
+    school: Corpus
+    desc: Group Revive desc
+    target_optional: true
+    target_num: 3
+    is_revive: true
+    is_stun: false
+    roll: false
+    is_res: false
+  Energize Dimensional Anchor (Corpus):
+    name: 'Dimensional Anchor'
+    level: 7
+    school: Corpus
+    desc: Dimensional Anchor desc
+    target_optional: false
+    is_revive: false
+    is_stun: false
+    roll: true
+  #Level 8
