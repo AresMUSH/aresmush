@@ -73,6 +73,13 @@ module AresMUSH
           end
         end
 
+        other_spells = []
+        spells.each do |s|
+          if s[:school] != minor_school && s[:school] != major_school
+            other_spells.concat [s]
+          end
+        end
+
 
 
 
@@ -148,6 +155,7 @@ module AresMUSH
           spells: spells,
           major_spells: major_spells,
           minor_spells: minor_spells,
+          other_spells: other_spells,
           major_school: major_school,
           minor_school: minor_school,
           roster_notes: char.idle_state == 'Roster' ? char.roster_notes : nil,
