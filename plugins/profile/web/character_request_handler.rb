@@ -45,6 +45,9 @@ module AresMUSH
         }
 
         #Spells
+        major_school = char.group("Major School")
+        minor_school = char.group("Minor School")
+
         def get_spell_list(list)
           list.to_a.sort_by { |a| a.level }.map { |a|
             {
@@ -55,6 +58,17 @@ module AresMUSH
         end
 
         spells = get_spell_list(char.spells_learned)
+
+        major_spells_list = []
+        spells.each do |s|
+          if s[:school] == major_school
+            major_spells_list.concat [s]
+          end
+        end
+
+
+
+
 
         if (Ranks.is_enabled?)
           groups << { name: t('profile.rank_title'), key: 'Rank', value: char.rank }
