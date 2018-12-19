@@ -66,11 +66,15 @@ module AresMUSH
           end
         end
 
-        minor_spells = []
-        spells.each do |s|
-          if s[:school] == minor_school
-            minor_spells.concat [s]
+        if minor_school != "None"
+          minor_spells = []
+          spells.each do |s|
+            if s[:school] == minor_school
+              minor_spells.concat [s]
+            end
           end
+        else
+          minor_spells = nil
         end
 
         other_spells = []
