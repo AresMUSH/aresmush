@@ -140,6 +140,7 @@ module AresMUSH
           demographics: demographics,
           groups: groups,
           spells: spells,
+          major_spells: major_spells_list,
           roster_notes: char.idle_state == 'Roster' ? char.roster_notes : nil,
           handle: char.handle ? char.handle.name : nil,
           status_message: Profile.get_profile_status_message(char),
