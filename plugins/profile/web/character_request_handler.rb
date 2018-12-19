@@ -59,13 +59,19 @@ module AresMUSH
 
         spells = get_spell_list(char.spells_learned)
 
-        major_spells_list = []
+        major_spells = []
         spells.each do |s|
           if s[:school] == major_school
-            major_spells_list.concat [s]
+            major_spells.concat [s]
           end
         end
 
+        minor_spells = []
+        spells.each do |s|
+          if s[:school] == minor_school
+            minor_spells.concat [s]
+          end
+        end
 
 
 
@@ -140,7 +146,10 @@ module AresMUSH
           demographics: demographics,
           groups: groups,
           spells: spells,
-          major_spells: major_spells_list,
+          major_spells: major_spells,
+          minor_spells: minor_spells,
+          major_school: major_school,
+          minor_school: minor_school,
           roster_notes: char.idle_state == 'Roster' ? char.roster_notes : nil,
           handle: char.handle ? char.handle.name : nil,
           status_message: Profile.get_profile_status_message(char),
