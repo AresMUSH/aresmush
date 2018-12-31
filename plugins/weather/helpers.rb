@@ -35,6 +35,11 @@ module AresMUSH
       
       climates = Global.read_config("weather", "climates") || {}
       climate_config = climates.select { |k, v| k.downcase == climate.downcase }.values.first
+      
+      if (!climate_config)
+        raise "Could not find climate configuration for #{climate}."
+      end
+      
       season_config = climate_config.select { |k, v| k.downcase == season.downcase }.values.first
 
       # Get the current weather
