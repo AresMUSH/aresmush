@@ -41,11 +41,10 @@ module AresMUSH
           # ensures that we use the attacker's melee weapon skill and not the defender's weapon
           margin = FS3Combat.determine_attack_margin(self.subduer, self.combatant)
           if (margin[:hit])
-          
             messages << t('fs3combat.escape_action_failed', :name => self.name, :target => self.subduer_name)
           else
-            self.reset_subdue
             messages << t('fs3combat.escape_action_success', :name => self.name, :target => self.subduer_name)
+            self.reset_subdue
           end
         end
         

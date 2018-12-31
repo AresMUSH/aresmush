@@ -24,6 +24,12 @@ module AresMUSH
       
       def resolve
         messages = []
+        
+        if (target.subdued_by == self.combatant)
+          messages << t('fs3combat.continues_subduing', :name => self.name, :target => print_target_names)
+          return messages
+        end
+        
         margin = FS3Combat.determine_attack_margin(self.combatant, target)
         if (margin[:hit])
           target.update(subdued_by: self.combatant)
