@@ -1,6 +1,6 @@
 ---
 toc: Communicating
-summary: Sending pivate chat messages.
+summary: Sending private chat messages.
 aliases:
 - tell
 - pm
