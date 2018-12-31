@@ -25,7 +25,7 @@ module AresMUSH
 
           page = WikiPage.find_by_name_or_id(page_name)
           if (!page)
-            return error_message
+            return "Page #{page_name} not found."
           end
                     
           page.current_version.text % vars

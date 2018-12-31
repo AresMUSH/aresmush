@@ -1,0 +1,23 @@
+<ul class="nav nav-tabs">
+  <li class="active"><a data-toggle="tab" href="#scenecontrol">+</a></li>
+{{#each types as |type|}}
+  <li><a data-toggle="tab" href="#{{type}}">{{type}}</a></li>
+{{/each}}
+</ul>
+
+<div class="tab-content">
+  <div id="scenecontrol" class="tab-pane fade in active">
+    <p>Select a scene type tab to browse scenes.</p>
+  </div>
+  
+{{#each scenes_by_type as |sbt|}}
+  <div id="{{sbt.name}}" class="tab-pane fade in">
+        {{#each sbt.scenes as |data|}}
+        <p><b><a href="{{data.page}}">{{data.title}}</a></b>
+          <br/>{{data.summary}}
+          <br/>{{data.participants}}</p>
+          <hr/>
+      {{/each}}
+  </div>
+{{/each}}
+</div>
