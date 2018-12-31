@@ -170,6 +170,8 @@ module AresMUSH
         return AddCombatantRequestHandler
       when "combatant"
         return GetCombatantRequestHandler
+      when "removeCombatant"
+        return RemoveCombatantRequestHandler
       when "updateCombatant"
         return UpdateCombatantRequestHandler
       when "combat"
