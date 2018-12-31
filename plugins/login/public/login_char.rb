@@ -36,9 +36,13 @@ module AresMUSH
       return t('validation.name_too_short') if (name.length < 2)
       return t('validation.name_contains_invalid_chars') if (name !~ /^[A-Za-z0-9\'\-]+$/)
       return t('validation.name_is_restricted') if Login.is_name_restricted?(name)
-      
+          
       found = Character.find_one_by_name(name)
-      return t('validation.char_name_taken') if (found && enactor && (enactor != found))
+      if (enactor)
+        return t('validation.char_name_taken') if (enactor != found)
+      else
+        return t('validation.char_name_taken') if found
+      end
       return nil
     end
     
