@@ -33,8 +33,9 @@ module AresMUSH
 
       season = ICTime.season(area)
       
-      climate_config = Global.read_config("weather", "climates", climate)
-      season_config = climate_config[season]
+      climates = Global.read_config("weather", "climates") || {}
+      climate_config = climates.select { |k, v| k.downcase == climate.downcase }.values.first
+      season_config = climate_config.select { |k, v| k.downcase == season.downcase }.values.first
 
       # Get the current weather
       weather = Weather.current_weather[area]
@@ -46,7 +47,7 @@ module AresMUSH
       end
 
       # Save the weather!
-      Weather.current_weather[area] = weather
+      Weather.current_weather[area.titlecase] = weather
     end
 
     def self.random_weather(season_config)
@@ -57,7 +58,9 @@ module AresMUSH
     end
     
     def self.climate_for_area(area)
-      Global.read_config("weather", "climate_for_area", area) || Global.read_config("weather", "default_climate")
+      area_climates = Global.read_config("weather", "climate_for_area") || {}
+      climate = area_climates.select { |k, v| k.downcase == area.downcase }.values.first
+      climate || Global.read_config("weather", "default_climate")
     end
   end
 end
