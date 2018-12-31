@@ -5,7 +5,6 @@ aliases:
 - load
 - unload
 - plugin
-- config
 - install
 - reload
 ---
@@ -30,16 +29,11 @@ Plugin code can be loaded and unloaded dynamically without restarting the server
 
 ## Loading Plugin Config
 
-You can also view and load the plugin configuration files.
+If you're changing the game configuration through the web portal, you will not need to reload the configuration.  If you are manually modifying config files on disk, you should use:
 
-`config` - Lists config sections
-`config <section>` - Views config variables for a section.
-`config <section>/<variable>` - Views a specific config variable.
 `load config` - Reloads configuration from disk.
 
-If you're getting weird configuration errors and are having trouble figuring out where the problem lies, you can run a complete check of your game config.
-
-`config/check`
+You can also view, debug and get additional information about config files.  See [Config](/help/config).
    
 ## Loading Locale Translations
 
