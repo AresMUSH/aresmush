@@ -99,10 +99,6 @@ blockquote {
 }
 
 @media only screen and (max-width: 700px) {
-    .collapse.in  {
-        width: 100%;
-        min-width: 100%;
-    }
 
     table {
         width: 100%;
@@ -126,6 +122,13 @@ blockquote {
 }
 
 @media screen and (min-width: 48em) {
+
+  .collapse.in  {
+      width: 100%;
+      min-width: 100%;
+      max-width: 100%;
+  }
+
   .school-text-wrapper:before {
     content: '';
     float: right;
@@ -247,7 +250,7 @@ code {
     border-radius: 0px 5px 5px 5px;
     top: -10px;
     position: relative;
-    width: fit-content;
+    width: 100%;
     min-width: 700px;
 }
 
