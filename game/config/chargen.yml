@@ -1,12 +1,7 @@
 ---
 chargen:
-  approval_message: Congratulations!  Your application has been approved.  Type %xhonstage%xn
-    to go forth and RP.  You may want to customize your character profile on the web
-    portal.
-  rejection_message: Sorry, your character could not be approved at the present time
-    for the reasons described below.  Please see %xhhelp app%xn for help making changes
-    and resubmitting, and contact the person handling your application if you have
-    any questions.
+  approval_message: Congratulations!  Your application has been approved. Check out the [Getting Started](/wiki/getting_started) guide for help finding a place to live, getting into RP, and more. We're glad to have you!
+  rejection_message: Sorry, your character could not be approved at the present time for the reasons described below.  You can make changes to your app on the web portal. Feel free to ask for help on the 'Questions' if you have any questions.
   post_approval_message: Please make sure they have a profile image for their log
     icon.
   welcome_message: Please welcome %{name}!
