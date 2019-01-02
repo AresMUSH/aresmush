@@ -1,6 +1,6 @@
 ---
 fs3skills:
-  max_luck: 4
+  max_luck: 6
   public_sheets: true
   roll_channel: FS3 Rolls
   shortcuts:

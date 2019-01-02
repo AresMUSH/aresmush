@@ -8,7 +8,7 @@ cookies:
     minute:
     - 0
   cookie_category: Cookie Awards
-  cookies_per_luck: 10
+  cookies_per_luck: 20
   shortcuts:
     cookies: cookie
     i: cookie/total
