@@ -21,6 +21,7 @@ scenes:
   - Event
   - Vignette
   - Journal
+  - OOC
   shortcuts:
     scenes: scene
     scene/close: scene/stop
