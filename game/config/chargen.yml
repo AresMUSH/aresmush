@@ -6,7 +6,7 @@ chargen:
   rejection_message: Sorry, your character could not be approved at the present timefor the reasons described below.  You can make changes to your app on the web portal. Feel free to ask for help on the Questions channel if you have any questions.
   post_approval_message: Please make sure they have a profile image for their log
     icon.
-  welcome_message: Please welcome %{name}, our latest character to be approved! %RMajor School: %{major school} %RMinor School: %{minor school}
+  welcome_message: 'Please welcome %{name}, our latest character to be approved! %RMajor School: %{major school} %RMinor School: %{minor school}'
   hooks_required: true
   arrivals_board: New Arrivals
   app_category: APP
