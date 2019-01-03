@@ -123,8 +123,8 @@ blockquote {
 @media screen and (min-width: 48em) {
 
   .collapse.in  {
-      width: 100%;
-      min-width: 100%;
+      width: fit-content;
+      min-width: 600px;
       max-width: 100%;
   }
 
@@ -261,9 +261,6 @@ code {
     margin-top: 50px;
 }
 
-.nav-tabs {
-  float:left;
-}
 
 /* Buttons */
 .btn {
