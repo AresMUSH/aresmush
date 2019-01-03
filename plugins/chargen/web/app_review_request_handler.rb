@@ -4,14 +4,14 @@ module AresMUSH
       def handle(request)
         enactor = request.enactor
         char = Character.find_one_by_name request.args[:id]
-        
+
         error = Website.check_login(request)
         return error if error
 
         if (!char)
           return { error: t('webportal.not_found') }
         end
-        
+
         if (!Chargen.can_approve?(enactor))
           return { error: t('dispatcher.not_allowed') }
         end
@@ -19,7 +19,7 @@ module AresMUSH
         if (char.is_approved?)
           return { error: t('chargen.already_approved') }
         end
-        
+
         job = char.approval_job
         if (!job)
           return { error: t('chargen.no_app_submitted') }
@@ -31,8 +31,9 @@ module AresMUSH
         desc_app = MushFormatter.format Describe.app_review(char)
         ranks_app = Ranks.is_enabled? ? MushFormatter.format(Ranks.app_review(char)): nil
         hooks_app = MushFormatter.format Chargen.hook_app_review(char)
-        
-        { 
+
+
+        {
           abilities: abilities_app,
           demographics: demographics_app,
           background: bg_app,
@@ -42,10 +43,9 @@ module AresMUSH
           name: char.name,
           id: char.id,
           job: job.id
+          secrets: char.secretpref
         }
       end
     end
   end
 end
-
-
