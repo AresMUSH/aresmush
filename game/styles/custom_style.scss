@@ -81,7 +81,6 @@ blockquote {
 
 .tab-content {
     margin-bottom: 15px;
-    margin-top: 50px;
 }
 
 .label-pill {
@@ -258,8 +257,8 @@ code {
     background: #343438;
 }
 
-.tab-content > p {
-    margin-bottom:50px;
+.tab-content > .active {
+    margin-top: 50px;
 }
 
 .nav-tabs {
