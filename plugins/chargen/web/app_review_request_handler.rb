@@ -42,7 +42,7 @@ module AresMUSH
           hooks: hooks_app,
           name: char.name,
           id: char.id,
-          job: job.id
+          job: job.id,
           secrets: char.secretpref
         }
       end
