@@ -1,5 +1,5 @@
 module AresMUSH
-  module Custom
+  module Rooms
     class BuildRequestCmd
     # build/request <room name>=<text>
       include CommandHandler
