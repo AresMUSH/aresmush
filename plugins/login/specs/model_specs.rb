@@ -31,6 +31,8 @@ module AresMUSH
     
     describe :check_name do
       before do
+        @found_char = double
+        allow(Character).to receive(:find_one_by_name).with("Charname") { nil }
         allow(Global).to receive(:read_config).with("names", "restricted") { ["barney"] }
       end
       
@@ -46,14 +48,24 @@ module AresMUSH
       end
       
       it "should fail if the char already exists" do
-        allow(Character).to receive(:found?).with("Charname") { true }
-        expect(Character.check_name("Charname")).to eq "validation.char_name_taken"
+        allow(Character).to receive(:find_one_by_name).with("Existing") { @found_char }
+        expect(Character.check_name("Existing")).to eq "validation.char_name_taken"
+      end
+      
+      it "should allow char to rename themselves the same" do
+        allow(Character).to receive(:find_one_by_name).with("Existing") { @found_char }
+        expect(Character.check_name("Existing", @found_char)).to be_nil
+      end
+
+      it "should not allow char to rename themselves the same as someone else" do
+        allow(Character).to receive(:find_one_by_name).with("Existing") { @found_char }
+        expect(Character.check_name("Existing", double)).to eq "validation.char_name_taken"
       end
       
       it "should return true if everything's ok" do
-        allow(Character).to receive(:found?).with("Charname") { false }
-        allow(Character).to receive(:found?).with("O'Malley") { false }
-        allow(Character).to receive(:found?).with("This-Char") { false }
+        allow(Character).to receive(:find_one_by_name).with("Charname") { nil }
+        allow(Character).to receive(:find_one_by_name).with("O'Malley") { nil }
+        allow(Character).to receive(:find_one_by_name).with("This-Char") { nil }
         expect(Character.check_name("Charname")).to be_nil
         expect(Character.check_name("O'Malley")).to be_nil
         expect(Character.check_name("This-Char")).to be_nil

@@ -32,11 +32,17 @@ module AresMUSH
     
     # Overrides the default engine name checking behavior.  Be sure not to have multiple
     # plugins trying to override this same method.
-    def self.check_name(name)
+    def self.check_name(name, enactor = nil)
       return t('validation.name_too_short') if (name.length < 2)
       return t('validation.name_contains_invalid_chars') if (name !~ /^[A-Za-z0-9\'\-]+$/)
-      return t('validation.name_is_restricted') if (Global.read_config("names", "restricted").include?(name.downcase))
-      return t('validation.char_name_taken') if (Character.found?(name))
+      return t('validation.name_is_restricted') if Login.is_name_restricted?(name)
+          
+      found = Character.find_one_by_name(name)
+      if (enactor)
+        return t('validation.char_name_taken') if (enactor != found)
+      else
+        return t('validation.char_name_taken') if found
+      end
       return nil
     end
     

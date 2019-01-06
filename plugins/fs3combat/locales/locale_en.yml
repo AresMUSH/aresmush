@@ -386,7 +386,7 @@ en:
         escape_action_success: "%{name} escapes from %{target}."
         escape_action_failed: "%{name} tries to escape from %{target} but is still subdued."
         must_escape_first: "Subdued characters must escape first."
-        
+        continues_subduing: "%{name} continues to subdue %{target}."
         
         # ----------------------------
         # AMMO / RELOAD

@@ -6,7 +6,7 @@ module AresMUSH
       attr_accessor :charname, :password
       
       def parse_args
-        self.charname = cmd.args ? titlecase_arg(cmd.args.before(" ")) : nil
+        self.charname = cmd.args ? trim_arg(cmd.args.before(" ")) : nil
         self.password = cmd.args ? cmd.args.after(" ") : nil
       end
       

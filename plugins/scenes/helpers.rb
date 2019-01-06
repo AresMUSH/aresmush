@@ -262,7 +262,7 @@ module AresMUSH
     end
     
     def self.update_pose_order(enactor, room)
-      room.update_pose_order(enactor.name.titlecase)
+      room.update_pose_order(enactor.name)
       Scenes.notify_next_person(room)
     end
 
