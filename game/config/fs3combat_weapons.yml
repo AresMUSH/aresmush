@@ -453,17 +453,17 @@ fs3combat:
 
   #Air
     #Level 4
-    Minor Suffocation:
+    Breathless:
       description: Level 4 Air spell
       is_magic: true
       skill: Air
-      lethality: -10
+      lethality: -20
       penetration: 50
       weapon_type: Explosive
       is_automatic: false
       recoil: 0
       damage_type: Physical
-      accuracy: 1
+      accuracy: 0
       has_shrapnel: false
       init_mod: 0
       allowed_specials:
@@ -501,17 +501,17 @@ fs3combat:
       allowed_specials:
       special_group: ranged
     #Level 7
-    Suffocate Enemy:
+    Suffocate:
       description: Level 7 Air spell
       is_magic: true
       skill: Air
-      lethality: 10
+      lethality: 5
       penetration: 50
       weapon_type: Ranged
       is_automatic: false
       recoil: 0
       damage_type: Physical
-      accuracy: 3
+      accuracy: 0
       has_shrapnel: false
       init_mod: 0
       allowed_specials:
@@ -797,13 +797,13 @@ fs3combat:
       description: Level 6 Nature spell
       is_magic: true
       skill: Nature
-      lethality: 10
+      lethality: 0
       penetration: 50
       weapon_type: Explosive
       is_automatic: false
       recoil: 0
       damage_type: Physical
-      accuracy: 2
+      accuracy: 0
       has_shrapnel: false
       init_mod: 0
       allowed_specials:
@@ -830,13 +830,13 @@ fs3combat:
       description: Level 3 Spirit spell
       is_magic: true
       skill: Spirit
-      lethality: -20
+      lethality: -25
       penetration: 50
       weapon_type: Ranged
       is_automatic: false
       recoil: 0
       damage_type: Physical
-      accuracy: 3
+      accuracy: 0
       has_shrapnel: false
       init_mod: 0
       allowed_specials:
