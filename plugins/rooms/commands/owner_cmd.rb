@@ -12,7 +12,7 @@ module AresMUSH
           self.owner_names = list_arg(args.arg2)
         else
           self.name = "here"
-          self.owner_names = !cmd.args ? nil : list(cmd.args)
+          self.owner_names = !cmd.args ? nil : list_arg(cmd.args)
         end
       end
 

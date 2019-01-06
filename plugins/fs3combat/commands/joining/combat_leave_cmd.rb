@@ -4,15 +4,17 @@ module AresMUSH
       include CommandHandler
       include NotAllowedWhileTurnInProgress
       
-      attr_accessor :name      
+      attr_accessor :names    
       
       def parse_args
-        self.name = cmd.args ? titlecase_arg(cmd.args) : enactor.name
+        self.names = cmd.args ? list_arg(cmd.args) : [enactor.name]
       end
 
       def handle
-        FS3Combat.with_a_combatant(self.name, client, enactor) do |combat, combatant|
-          FS3Combat.leave_combat(combat, combatant)
+        self.names.each do |name|
+          FS3Combat.with_a_combatant(name, client, enactor) do |combat, combatant|
+            FS3Combat.leave_combat(combat, combatant)
+          end
         end
       end
     end

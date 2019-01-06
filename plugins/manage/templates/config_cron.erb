@@ -1,0 +1,8 @@
+%lh
+%xh<%= t('manage.config_cron_title') %>%xn
+<% @crons.sort.each do |section, section_crons| %>
+<% section_crons.each do |name, cron| %>
+<%= left(section, 12 ) %> <%= left(name, 25) %> <%= cron %>
+<% end %>
+<% end %>
+%lf
