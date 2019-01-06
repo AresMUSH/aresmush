@@ -37,6 +37,7 @@ module AresMUSH
           return BuildCmd
         when "request"
           return BuildRequestCmd
+        end
       when "foyer"
         return FoyerCmd
       when "go"
