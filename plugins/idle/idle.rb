@@ -20,6 +20,8 @@ module AresMUSH
           return IdleExecuteCmd
         when "queue", nil
           return IdleQueueCmd
+        when "preview"
+          return IdlePreviewCmd
         when "remove"
           return IdleRemoveCmd
         when "set"

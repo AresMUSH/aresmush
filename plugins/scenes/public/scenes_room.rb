@@ -15,7 +15,8 @@ module AresMUSH
     
     def remove_from_pose_order(name)
       order = pose_order
-      order.delete name
+      key = order.keys.select { |k| k.downcase == name.downcase }.first
+      order.delete key
       update(pose_order: order)
     end
     

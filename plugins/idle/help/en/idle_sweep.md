@@ -28,6 +28,12 @@ There are several idle actions available:
 `idle/remove <name>` - Removes someone from the list.
 `idle/execute` - Takes care of the actions and posts a summary to the BBS.
 
+## Idle Preview
+
+You can get a preview of someone's recommended idle action, and view their lastwill.
+
+`idle/preview <name>` - View idle information without adding someone to the idle queue.
+  
 ## Setting Idle Status Directly
 
 `idle/set <name>=<status>` - Sets someone's status without running through the idle queue.
