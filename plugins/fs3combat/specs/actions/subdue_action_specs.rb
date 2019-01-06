@@ -43,6 +43,7 @@ module AresMUSH
           @target1 = double
           allow(@target1).to receive(:name) { "T1" }
           allow(@target1).to receive(:is_noncombatant?) { false }
+          allow(@target1).to receive(:subdued_by) { nil }
 
           allow(@combat).to receive(:find_combatant).with("Target1") { @target1 }
         end
@@ -66,6 +67,14 @@ module AresMUSH
           expect(@target1).to_not receive(:update)
           resolutions = @action.resolve
           expect(resolutions).to eq [ "fs3combat.subdue_action_failed" ]
+        end
+        
+        it "should continue subduing without rolling" do
+          @action = SubdueAction.new(@combatant, "target1")
+          @action.prepare
+          expect(@target1).to receive(:subdued_by) { @combatant }
+          resolutions = @action.resolve
+          expect(resolutions).to eq [ "fs3combat.continues_subduing" ]
         end
       end
     end

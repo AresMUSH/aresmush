@@ -8,6 +8,7 @@ aliases:
 - scene share
 - scene unshare
 - log
+- logs
 - scene sharing
 - scene spoof
 - scene edit

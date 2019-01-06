@@ -4,6 +4,7 @@ module AresMUSH
       return nil if !output
         
       text = format_output_for_html(output)
+      text = text.gsub(ANSI.reset, " #{ANSI.reset}")
       allow_html = Global.read_config('website', 'allow_html_in_markdown')
       html_formatter = AresMUSH::Website::WikiMarkdownFormatter.new(!allow_html, self)
       text = html_formatter.to_html text
