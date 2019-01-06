@@ -52,7 +52,7 @@ module AresMUSH
         :room_type => "OOC", 
         :area => offstage,
         :room_is_foyer => true,
-        :description => "This game does not have RP/TP Rooms, but you can accomplish the same thing with the scenes system.")
+        :description => "This game does not have RP/TP Rooms, but you can accomplish the same thing with the scenes system.  See %xchelp scenes%xn.")
 
       Exit.create(:name => "RP", :source => ooc_room, :dest => rp_room_hub)
       Exit.create(:name => "QR", :source => ooc_room, :dest => quiet_room)
