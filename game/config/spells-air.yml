@@ -125,16 +125,16 @@ spells:
     is_revive: false
     is_stun: false
     roll: true
-  Minor Suffocation:
-    name: 'Minor Suffocation'
+  Breathless:
+    name: Breathless
     level: 4
     school: Air
-    desc: Minor Suffocation desc
+    desc: Breathless desc
     target_optional: true
     fs3_attack: true
     is_revive: false
     is_stun: false
-    weapon: Minor Suffocation
+    weapon: Breathless
   Air Blast:
     name: 'Air Blast '
     level: 4
@@ -204,16 +204,16 @@ spells:
     is_stun: false
     roll: true
   #Level 7
-  Suffocate Enemy:
-    name: Suffocate Enemy
+  Suffocate:
+    name: Suffocate
     level: 7
     school: Air
-    desc: Suffocate Enemy  desc
+    desc: Suffocate  desc
     target_optional: true
     fs3_attack: true
     is_revive: false
     is_stun: false
-    weapon: Suffocate Enemy
+    weapon: Suffocate
   Energize Dimensional Anchor (Air):
     name: 'Dimensional Anchor'
     level: 7

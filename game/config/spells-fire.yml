@@ -11,8 +11,8 @@ spells:
     is_revive: false
     is_stun: false
     roll: true
-  Flashlight:
-    name: Flashlight
+  Light:
+    name: Light
     level: 1
     school: Fire
     desc: Flashlight desc
