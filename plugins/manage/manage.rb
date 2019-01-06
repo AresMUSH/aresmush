@@ -22,6 +22,8 @@ module AresMUSH
         case cmd.switch
         when "check"
           return ConfigCheckCmd
+        when "cron"
+          return ConfigCronCmd
         when nil
           if (cmd.args)
             return ConfigViewCmd

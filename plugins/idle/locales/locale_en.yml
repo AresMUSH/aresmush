@@ -17,6 +17,8 @@ en:
         previously_warned: "Previously idle warned."
         idle_post_subject: "Idle-Out Characters"
         idle_post_body: "The following characters have idled out or are in danger of doing so.%{report}"
+        not_eligible_for_idle: "This command can't be used on NPCs, roster characters and chracters exempt from the idle purge."
+        idle_preview: "%{name} last on %{last_on}.  Status: %{status}. Suggested idle action: %{idle_action}.  Last will: %{lastwill}"
         
         lastwill_set: "Last will instructions set."
         lastwill: "Your last will instructions are: %{will}."

@@ -14,6 +14,7 @@ en:
         game_config_invalid: "Something is wrong with one of your game's configuration files.  See http://aresmush.com/tutorials for troubleshooting help: %{error}"
         config_sections: "Config Sections"
         config_section: "Config Section: %{name}"
+        config_cron_title: "Configured Cron Jobs"
         invalid_config_section: "That config section does not exist."
         loading_plugin_please_wait: "Plugin '%{name}' loading.  Please wait..."
         invalid_plugin_name: "Plugin names may not contain spaces or special characters."
@@ -83,3 +84,4 @@ en:
         unstatue_message: "%{actor} has unlocked %{statue} (%{host}) from being a statue.   Reason:%R%{reason}"
         no_longer_statue: "You are no longer a statue.  Please play nice."
         cant_statue_admins: "You can't statue another admin."
+        

@@ -29,6 +29,12 @@ There are several idle actions available:
 `idle/remove <name>` - Removes someone from the list.
 `idle/execute` - Takes care of the actions and posts a summary to the BBS.
 
+## Idle Preview
+
+You can get a preview of someone's recommended idle action, and view their lastwill.
+
+`idle/preview <name>` - View idle information without adding someone to the idle queue.
+  
 ## Setting Idle Status Directly
 
 Sometimes you want to immediately idle someone out without going through the whole idle queue process.  You can do this with the `idle/set` command.  Only 'Dead' and 'Gone' are valid options here.  If you just want to mark someone as a NPC, use the [NPC](/help/npc) command.  To add or remove someone from the roster, use the [Roster](/help/manage_roster) commands.   You can also clear someone's idle status by setting it to 'None'.

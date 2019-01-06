@@ -1,6 +1,12 @@
 ---
 toc: Scenes
 summary: Keeping track of pose order.
+aliases:
+- pose_order
+- pose_nudge
+- pose_skip
+- pose_drop
+- pose_ordertype
 ---
 # Pose Order
 
@@ -12,9 +18,10 @@ By default, the system will nudge you when it's your turn to pose, according to 
 
 `pose/nudge <on, off or gag>`
 
-If someone's idle or passing, you can skip their turn.  As soon as they pose again, they'll jump in at their new spot.
+If someone's idle or passing, you can skip their turn.  As soon as they pose again, they'll jump in at their new spot.  You can also drop them from the scene completely.
 
 `pose/skip <name>`
+`pose/drop <name>`
 
 For large scenes, you can switch from regular order to 3-pose order, where people will be nudged after three other people have posed.
 

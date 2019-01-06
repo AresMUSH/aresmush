@@ -6,7 +6,7 @@ module AresMUSH
         searchText = (request.args[:searchText] || "").strip
         searchTag = (request.args[:searchTag] || "").strip
         
-        pages = WikiPage.all
+        pages = WikiPage.all.to_a
         
         if (!searchText.blank?)
           pages = pages.select { |p| "#{p.heading} #{p.text}" =~ /\b#{searchText}\b/i }

@@ -49,12 +49,14 @@ module AresMUSH
     
     def self.season(area)
       time = ICTime.ictime
+      # This gives a nuber like 102 (2nd day of Jan) or 427 (27th day of April)
       day_hash = time.month * 100 + time.mday
       case day_hash
-        when 101..401 then 'winter'
-        when 402..630 then 'spring'
-        when 701..930 then 'summer'
-        when 1001..1231 then 'fall'
+        when 101..319 then 'winter'
+        when 320..620 then 'spring'
+        when 621..922 then 'summer'
+        when 923..1220 then 'fall'
+        when 1221..1231 then 'winter'
       end
     end
   end

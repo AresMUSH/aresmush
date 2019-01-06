@@ -6,7 +6,7 @@ module AresMUSH
         Global.logger.error "Tried to send message to non-existent channel #{channel_name}."
         return
       end
-      Channels.emit_to_channel channel, message        
+      Channels.emit_to_channel channel, message  
     end
   end
 end
