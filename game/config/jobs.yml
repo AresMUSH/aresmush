@@ -3,6 +3,8 @@ jobs:
   categories:
     APP:
       color: "%xm"
+      roles:
+      - app staff
     BUILD:
       color: "%xr"
       roles:
@@ -21,18 +23,24 @@ jobs:
       color: "%xh"
     PLOT:
       color: "%xc"
+      roles:
+      - storyteller
     REQ:
       color: "%xw"
     SYS:
       color: "%xh"
     SPELL:
       color: "%xb"
+      roles:
+      - storyteller
     LUCK:
       color: "%xc"
+      roles:
+      - storyteller
   closed_status: DONE
   default_status: NEW
-  request_category: REQ
   luck_category: LUCK
+  request_category: REQ
   shortcuts:
     jobs/mine: job/filter mine
     jobs/active: job/filter active

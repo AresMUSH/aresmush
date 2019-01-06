@@ -919,6 +919,47 @@ blockquote {
 .label-pill {
   background-color: #A9353E; }
 
+.pinterest {
+  width: 400px;
+  float: right;
+  margin: 15px; }
+
+.clear {
+  clear: both; }
+
+@media only screen and (max-width: 700px) {
+  table {
+    width: 100%; }
+  .toc {
+    width: 100%; }
+  .topicbox {
+    width: 100%; } }
+
+.school-text-wrapper {
+  position: relative; }
+
+.school-pinterest {
+  height: 700px;
+  background: tomato; }
+
+@media screen and (min-width: 48em) {
+  .collapse.in {
+    width: fit-content;
+    min-width: 600px;
+    max-width: 100%; }
+  .school-text-wrapper:before {
+    content: '';
+    float: right;
+    display: block;
+    width: 300px;
+    height: 700px;
+    margin: 0 0 15px 15px; }
+  .school-pinterest {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 300px; } }
+
 .toc {
   border: 1px solid white;
   box-shadow: 5px 5px 5px #2A2E33;
@@ -1002,10 +1043,15 @@ code {
   padding: 10px;
   border-radius: 0px 5px 5px 5px;
   top: -10px;
-  position: relative; }
+  position: relative;
+  width: 100%;
+  min-width: 700px; }
 
 .nav-tabs > li > a {
   background: #343438; }
+
+.tab-content > .active {
+  margin-top: 50px; }
 
 /* Buttons */
 .btn {

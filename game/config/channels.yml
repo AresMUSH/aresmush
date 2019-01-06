@@ -7,9 +7,6 @@ channels:
     - 47
   default_channels:
   - Questions
-  - Chat
-  - RP Requests
-  - Big Scene
   end_marker: "]"
   shortcuts:
     chan: channel
@@ -27,3 +24,7 @@ channels:
     comtitle: channel/title
     channel/name: channel/rename
   start_marker: "["
+  approved_channels:
+    - Chat
+    - RP Requests
+    - Big Scene
