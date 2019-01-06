@@ -11,7 +11,7 @@ aliases:
 ---
 ##Newcomers to Grand Lake
 
-Those newly arrived in Grand Lake have a variety of options available to them. There are a number of inns, hotels, lodges, and B&Bs in town that cater to tourists. We suggest the PC-run Bramble House Inn, a small B&B on the lake.
+Those newly arrived in Grand Lake have a variety of options available to them. There are a number of inns, hotels, lodges, and B&Bs in town that cater to tourists. We suggest the PC-run Ivy House Inn, a small B&B on the lake.
 
 We are happy to build you a private room or give you ownership of a pre-existing room in any of these locations. Feel free to use the real Grand Lake as inspiration for locations.
 
