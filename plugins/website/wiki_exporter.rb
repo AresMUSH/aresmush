@@ -44,8 +44,10 @@ module AresMUSH
       end
       
       def self.export_index
+        mush_name = Global.read_config("game", "name")
         File.open(File.join(export_path, "index.html"), 'w') do |f|
-          text = '<div class="jumbotron">'
+          text = "<div class=\"alert alert-info\">This is an archive of the #{mush_name} web portal.  Some links may not function and wiki pages may not format perfectly, but you can access most of the information.</div>"
+          text << '<div class="jumbotron">'
           text << "<img src=\"game/uploads/theme_images/jumbotron.png\" />"
           welcome = Website.welcome_text
           text << "<p>#{welcome}</p>"
@@ -66,6 +68,8 @@ module AresMUSH
           index[page_name][:title] = s.date_title
           index[page_name][:summary] = s.summary
           index[page_name][:participants] = s.participant_names.join(", ")
+          index[page_name][:type] = s.scene_type
+          index[page_name][:page] = page_name
         
           File.open(File.join(export_path, page_name), 'w') do |f|
           
@@ -77,13 +81,16 @@ module AresMUSH
         end
         
         File.open(File.join(export_path, "scenes.html"), 'w') do |f|
-          text = "<h1>Scenes</h1>"
-          index.each do |page, data|
-            text << "<p><b><a href=\"#{page}\">#{data[:title]}</a></b>"
-            text << "<br/>#{data[:summary]}"
-            text << "<br/>#{data[:participants]}</p>"
-            text << "<hr/>"
-          end
+          
+          template = HandlebarsTemplate.new(File.join(AresMUSH.plugin_path, 'website', 'templates', 'wiki_scene_list.hbs'))
+          
+          
+          groups = index.group_by { |k, v| v[:type] }
+          scenes_by_type = groups.map { |k, v| { name: k, scenes: v.map { |page, data| data } }}
+          
+          text = template.render(types: groups.keys, scenes_by_type: scenes_by_type )
+          
+          
           f.puts format_wiki_template(text, "Scenes")
         end
         
@@ -109,9 +116,8 @@ module AresMUSH
         
         File.open(File.join(export_path, "wiki.html"), 'w') do |f|
           text = "<h1>Wiki</h1>"
-          text << "<p><b><a href=\"home.html\">Wiki Home</a></b></p>"
-          text << "<h2>All Pages</h2>"
           text << "<ul>"
+          text << "<li><b><a href=\"home.html\">Wiki Home</a></b></li>"
           index.each do |page, title|
             text << "<li><a href=\"#{page}\">#{title}</a>"
           end
@@ -157,9 +163,12 @@ module AresMUSH
             profile << "</div>"
             
             profile << '<div class="profile-tab">'
-            profile << render_partial(File.join(template_path, 'components', 'profile-gallery.hbs'), { char: response })
+            gallery = render_partial(File.join(template_path, 'components', 'profile-gallery.hbs'), { char: response })
+            gallery = gallery.gsub("<a href=\"index.html\">", "")
+            gallery = gallery.gsub("</a>", "")
+            profile << gallery
             profile << "</div>"
-            
+                        
             
             f.puts format_wiki_template(profile, c.name)
           end

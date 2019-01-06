@@ -12,3 +12,5 @@ The fate of idled-out characters is at the game admin's discretion, but we will 
 
 `lastwill` - Views your last will instructions.
 `lastwill <instructions>` - Sets your last will instructions.
+  
+Admin can view someone's lastwill as part of the idle sweep.  (See [Idle Sweep](/help/idle_sweep).)

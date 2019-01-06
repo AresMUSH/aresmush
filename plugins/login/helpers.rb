@@ -92,6 +92,13 @@ module AresMUSH
       Global.dispatcher.queue_event CharConnectedEvent.new(client, char.id)
     end
     
+    def self.is_name_restricted?(name)
+      return true if !name
+      restricted_names = Global.read_config("names", "restricted") || []
+      restricted_names = restricted_names.map { |r| r.downcase }
+      restricted_names.include?(name.downcase)  
+    end
+    
     # Can take awhile - call from an Engine.spawn
     def self.update_blacklist
       return if (!Global.read_config("sites", "ban_proxies"))

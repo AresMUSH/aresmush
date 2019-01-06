@@ -13,8 +13,7 @@ module AresMUSH
         client.program[:idle_queue] = {}
         
         Idle.active_chars.each do |c|
-          last_on = c.last_on
-          next if !last_on
+          last_on = c.last_on || Time.at(0)
           next if Idle.is_exempt?(c)
           next if c.is_npc?
           next if c.on_roster?

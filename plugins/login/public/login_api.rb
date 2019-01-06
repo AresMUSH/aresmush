@@ -27,6 +27,7 @@ module AresMUSH
     end
     
     def self.find_client(char)
+      return nil if !char
       Global.client_monitor.find_client(char)
     end
         
