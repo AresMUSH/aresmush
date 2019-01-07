@@ -38,38 +38,32 @@ module AresMUSH
           raise SystemExit.new
         end
 
-	engine_api_port = Global.read_config("server", "engine_api_port")
+        engine_api_port = Global.read_config("server", "engine_api_port")
         web = EngineApiLoader.new
         web.run(port: engine_api_port)
 
-	websocket_port = Global.read_config("server", "websocket_port")
+        websocket_port = Global.read_config("server", "websocket_port")
+        use_https = Global.read_config("server", "use_https")
 
-	if (Global.read_config("server", "ssl"))
-	  EventMachine::WebSocket.start(
-	    :host => host,
- 	    :port => websocket_port,
-  	    :secure => true,
-              :tls_options => {
-                :private_key_file => "/home/ares/ssl-cert/privkey.pem",
-      	        :cert_chain_file => "/home/ares/ssl-cert/fullchain.pem"
-              }) do |websocket|
-	    AresMUSH.with_error_handling(nil, "Web connection established") do
-              WebConnection.new(websocket) do |connection|
-                Global.client_monitor.connection_established(connection)
-              end
-            end
-	   end
-	else
-	  EventMachine::WebSocket.start(:host => host, :port => websocket_port) do |websocket|
+        websocket_options = {
+          :host => host,
+          :port => websocket_port,
+          :secure => use_https,
+          :tls_options => use_https ? {
+                :private_key_file => Global.read_config("server", "private_key_file_path"),
+      	        :cert_chain_file => Global.read_config("server", "certificate_file_path")
+                } : nil
+            }
+
+          EventMachine::WebSocket.start(websocket_options) do |websocket|
             AresMUSH.with_error_handling(nil, "Web connection established") do
               WebConnection.new(websocket) do |connection|
                 Global.client_monitor.connection_established(connection)
               end
             end
           end
-	end
 
-        Global.logger.info "Websocket started on #{host}:#{websocket_port}."
+        Global.logger.info "Websocket started with options #{websocket_options}."
         Global.logger.info "Server started on #{host}:#{port}."
         Global.dispatcher.queue_event GameStartedEvent.new
       end
