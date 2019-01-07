@@ -557,7 +557,7 @@ fs3combat:
       is_magic: true
       skill: Earth
       lethality: -10
-      penetration: 5
+      penetration: 4
       weapon_type: Explosive
       is_automatic: false
       recoil: 0
@@ -572,7 +572,7 @@ fs3combat:
       is_magic: true
       skill: Earth
       lethality: -5
-      penetration: 6
+      penetration: 5
       weapon_type: Ranged
       is_automatic: false
       recoil: 0
@@ -864,7 +864,7 @@ fs3combat:
       is_magic: true
       skill: Water
       lethality: -5
-      penetration: 6
+      penetration: 5
       weapon_type: Melee
       is_automatic: false
       recoil: 0
@@ -910,7 +910,7 @@ fs3combat:
       is_magic: true
       skill: Water
       lethality: -5
-      penetration: 7
+      penetration: 6
       weapon_type: Explosive
       is_automatic: false
       recoil: 0
@@ -925,7 +925,7 @@ fs3combat:
       description: Level 5 Water spell
       is_magic: true
       skill: Water
-      lethality: 20
+      lethality: 7
       penetration: 9
       weapon_type: Explosive
       is_automatic: false
@@ -977,7 +977,7 @@ fs3combat:
       is_automatic: true
       recoil: 0
       damage_type: Stun
-      accuracy: 3
+      accuracy: 1
       has_shrapnel: true
       init_mod: 0
       allowed_specials:

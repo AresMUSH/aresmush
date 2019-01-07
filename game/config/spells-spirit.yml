@@ -95,8 +95,9 @@ spells:
     target_optional: true
     target_num: 1
     is_revive: false
-    is_stun: false
-    roll: true
+    is_stun: true
+    roll: false
+    weapon: Stun (Spirit)
   Charmed:
     name: Charmed
     level: 3
@@ -105,8 +106,9 @@ spells:
     target_optional: true
     target_num: 1
     is_revive: false
-    is_stun: false
-    roll: true
+    is_stun: true
+    roll: false
+    weapon: Stun (Spirit)
   Minor Luck:
     name: Minor Luck
     level: 3
