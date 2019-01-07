@@ -1,18 +1,29 @@
 ---
 chargen:
-  approval_message: Congratulations!  Your application has been approved.  Check out the [Getting Started](/wiki/getting_started) guide for help finding a place to live, getting into RP, and more. We are glad to have you!
-  rejection_message: Sorry, your character could not be approved at the present timefor the reasons described below.  You can make changes to your app on the web portal. Feel free to ask for help on the Questions channel if you have any questions.
+  allow_web_submit: true
+  app_category: APP
+  app_hold_status: HOLD
+  app_resubmit_status: OPEN
+  approval_message: Congratulations!  Your application has been approved.  Check out
+    the [Getting Started](/wiki/getting_started) guide for help finding a place to
+    live, getting into RP, and more. We are glad to have you!
+  arrivals_board: New Arrivals
+  bg_blurb: 'You don''t need to write a novel. Just cover the basics: who you are,
+    why are you here, and is there anything noteworthy about you. Be sure to explain
+    any unusual skills.'
+  desc_blurb: You can set both your main description, visible when people look at
+    you, and a short description that shows your character at a glance.
+  hooks_blurb: RP Hooks are interesting things about your character that others can
+    hook into for RP. This could be an odd personality quirk, a reputation your character
+    has, or anything else that might inspire someone to connect with you. Looking
+    around at other character's sheets can be a good way to get inspiration for RP
+    Hooks.
+  hooks_required: true
   post_approval_message: Please make sure they have a profile image for their log
     icon.
-  welcome_message: 'Please welcome %{name}, our latest character to be approved! %RMajor School: %{major school} %RMinor School: %{minor school}'
-  hooks_required: true
-  arrivals_board: New Arrivals
-  app_category: APP
-  app_resubmit_status: OPEN
-  app_hold_status: HOLD
-  stages:
-    start:
-      tutorial: chargen.md
+  rejection_message: Sorry, your character could not be approved at the present timefor
+    the reasons described below.  You can make changes to your app on the web portal.
+    Feel free to ask for help on the Questions channel if you have any questions.
   shortcuts:
     chargen: cg
     cg/back: cg/prev
@@ -24,14 +35,8 @@ chargen:
     hooks: hook
     hook/delete: hook/remove
     hook/add: hook/set
-  bg_blurb: 'You don''t need to write a novel. Just cover the basics: who you are,
-    why are you here, and is there anything noteworthy about you. Be sure to explain
-    any unusual skills.'
-  hooks_blurb: RP Hooks are interesting things about your character that others can
-    hook into for RP. This could be an odd personality quirk, a reputation your character
-    has, or anything else that might inspire someone to connect with you. Looking
-    around at other character's sheets can be a good way to get inspiration for RP
-    Hooks.
-  desc_blurb: You can set both your main description, visible when people look at
-    you, and a short description that shows your character at a glance.
-  allow_web_submit: true
+  stages:
+    start:
+      tutorial: chargen.md
+  welcome_message: 'Please welcome %{name}, our latest character to be approved! Major
+    School: %{major school} Minor School: %{minor school}'
