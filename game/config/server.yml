@@ -1,12 +1,12 @@
 ---
 server:
+  bind_address: ''
+  certificate_file_path: "/etc/letsencrypt/live/spiritlakemu.com/fullchain.pem"
+  engine_api_port: 4203
   hostname: spiritlakemu.com
   port: 4201
-  websocket_port: 4202
-  web_portal_port: 443
-  engine_api_port: 4203
+  private_key_file_path: "/etc/letsencrypt/live/spiritlakemu.com/privkey.pem"
   ssl: true
-  private_key_file_path: ''
-  certificate_file_path: ''
-  use_https: false
-  bind_address: ''
+  use_https: true
+  web_portal_port: 443
+  websocket_port: 4202
