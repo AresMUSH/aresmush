@@ -135,16 +135,16 @@ spells:
     is_revive: false
     is_stun: false
     weapon: Water Whip
-  Freeze Blast:
-    name: Freeze Blast
+  Cone Of Cold:
+    name: Cone Of Cold
     level: 4
     school: Water
-    desc: Freeze Blast desc
+    desc: Cone Of Cold desc
     target_optional: true
     fs3_attack: true
     is_revive: false
     is_stun: false
-    weapon: Freeze Blast
+    weapon: Cone Of Cold
   #Level 5
   Slick Ground:
     name: Slick Ground
