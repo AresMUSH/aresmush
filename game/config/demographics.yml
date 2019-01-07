@@ -65,10 +65,11 @@ demographics:
     skin: Complexion
     birthdate: Specify a date mm/dd/yyyy or use %xcage <years>.%xn
     callsign: Callsign for pilots.  Non-pilots may leave blank or enter a nickname.
-  max_age: 65
+  max_age: 95
   min_age: 18
   nickname_field: ''
   nickname_format: "%{name} (%{nickname})"
+  private_properties: {}
   required_properties:
   - hair
   - eyes
@@ -86,4 +87,3 @@ demographics:
     groups: group
     colonies: group colony
     demographics: demographic
-  private_properties: {}

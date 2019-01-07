@@ -1,9 +1,9 @@
 ---
 fs3skills:
   allow_advantages_xp: false
-  days_between_learning: 0
+  days_between_learning: 30
   dots_beyond_chargen_max: 17
-  max_xp_hoard: 12
+  max_xp_hoard: 9
   periodic_xp: 3
   skills_requiring_training:
   - Archery

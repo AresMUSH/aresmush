@@ -52,7 +52,6 @@ module AresMUSH
       # This gives a nuber like 102 (2nd day of Jan) or 427 (27th day of April)
       day_hash = time.month * 100 + time.mday
       case day_hash
-<<<<<<< HEAD
         when 101..315 then 'winter'
         when 316..415 then 'early-spring'
         when 416..531 then 'spring'
@@ -61,13 +60,6 @@ module AresMUSH
         when 908..1015 then 'early-fall'
         when 1016..1120 then 'fall'
         when 1121..1231 then 'early-winter'
-=======
-        when 101..319 then 'winter'
-        when 320..620 then 'spring'
-        when 621..922 then 'summer'
-        when 923..1220 then 'fall'
-        when 1221..1231 then 'winter'
->>>>>>> upstream/master
       end
     end
   end
