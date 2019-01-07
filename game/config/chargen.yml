@@ -38,5 +38,5 @@ chargen:
   stages:
     start:
       tutorial: chargen.md
-  welcome_message: 'Please welcome %{name}, our latest character to be approved! \%RMajor
-    School: %{major school} \%RMinor School: %{minor school}'
+  welcome_message: 'Please welcome %{name}, our latest character to be approved! Major
+    School: %{major school} - Minor School: %{minor school}'
