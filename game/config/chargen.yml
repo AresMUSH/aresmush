@@ -6,7 +6,7 @@ chargen:
     icon.
   welcome_message: 'Please welcome %{name}, our latest character to be approved! %RMajor School: %{major school} %RMinor School: %{minor school}'
   hooks_required: true
-  arrivals_board: New Arrivals
+  arrivals_category: New Arrivals
   app_category: APP
   app_resubmit_status: OPEN
   app_hold_status: HOLD
