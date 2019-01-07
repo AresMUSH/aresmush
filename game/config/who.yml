@@ -9,13 +9,13 @@ who:
     width: 20
     title: Name
   - field: group
-    value: department
+    value: major school
     width: 16
-    title: Department
+    title: Major School
   - field: group
-    value: position
+    value: minor school
     width: 18
-    title: Position
+    title: Minor School
   - field: connected
     width: 7
     title: Conn
