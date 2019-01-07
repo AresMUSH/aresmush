@@ -473,7 +473,7 @@ fs3combat:
       is_magic: true
       skill: Air
       lethality: 0
-      penetration: 8
+      penetration: 7
       weapon_type: Ranged
       is_automatic: false
       recoil: 0
@@ -782,7 +782,7 @@ fs3combat:
       is_magic: true
       skill: Nature
       lethality: 0
-      penetration: 8
+      penetration: 7
       weapon_type: Ranged
       is_automatic: false
       recoil: 0
@@ -895,7 +895,7 @@ fs3combat:
       is_magic: true
       skill: Water
       lethality: 0
-      penetration: 8
+      penetration: 7
       weapon_type: Ranged
       is_automatic: false
       recoil: 0
@@ -905,7 +905,7 @@ fs3combat:
       init_mod: 0
       allowed_specials:
       special_group: ranged
-    Freeze Blast:
+    Cone Of Cold:
       description: Level 4 Water spell
       is_magic: true
       skill: Water
@@ -1005,7 +1005,7 @@ fs3combat:
       description: Level 4 Will spell
       is_magic: true
       skill: Will
-      lethality: -3
+      lethality: -5
       penetration: 8
       weapon_type: Ranged
       is_automatic: false
