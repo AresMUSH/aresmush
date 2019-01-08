@@ -469,6 +469,15 @@ h2 {
     letter-spacing: 1px;
 }
 
+.profile-gallery {
+    border-radius: 5px;
+    display: inline-block;
+    padding-left: 0px;
+    padding-right: 0px;
+    height: 200px;
+    margin: 10px;
+    border: 2px solid #dddddd6e;
+  }
 
 /* Log Pages */
 .log-wrap {
@@ -629,4 +638,8 @@ div.rating-alpha {
     background: #383A4F;
     color: #d1d2d3;
     overflow: hidden;
+}
+
+#ember823 {
+    height: fit-content;
 }
