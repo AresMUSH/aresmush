@@ -2,10 +2,7 @@
 weather:
   climate_for_area:
     Offstage: none
-    Grand Lake: mountain
-    Granby: mountain
-    Hot Sulphur Springs: mountain
-    Rocky Mountain National Park: mountain
+    Grand County: mountain
     Portals: temperate
   climates:
     polar:
