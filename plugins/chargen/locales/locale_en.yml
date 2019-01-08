@@ -7,25 +7,25 @@ en:
         app_approved: "You approve %{name}."
         app_rejected: "You reject %{name}."
         app_title: "App Review for %{name}"
-        
+
         not_set: "%xh%xr< Not set! >%xn"
         not_enough: "%xh%xr< Not Enough! >%xn"
         too_many: "%xh%xr< Too Many! >%xn"
         oops_missing: "%xh%xr< Oops! Missing %{missing} >%xn"
         ok: "%xh%xg< OK! >%xn"
         are_you_sure: "%xh%xy< Missing %{missing} >%xn"
-        
+
         review_summary: "%xrRed%xn issues will probably hold up your app.%R%xyYellow%xn may be OK if it suits your character."
-        
+
         background_title: "Background for %{name}"
-        
+
         not_started: "You haven't starget chargen yet.  Use chargen/start first."
         cant_go_back: "You are already on the first stage of Chargen."
         chargen_complete: "You have completed Chargen!"
         prev_page_footer: "<-- cg/prev"
         next_page_footer: "cg/next -->"
         error_loading_tutorial: "Error loading chargen tutorial.  Please try again later."
-        
+
         abilities_review_title:  "Abilities (help abilities)"
         demographics_review_title: "Demographics (help demographics)"
         misc_review_title: "Miscellaneous (help bg, help desc, help rank, help hooks)"
@@ -33,15 +33,15 @@ en:
         app_review_title: "Review (help apps)"
         goals_review_title: "Goals (help goals)"
         hook_review: "Checking for RP Hooks."
-        
+
         app_request: "Approval under review.  See %xhrequest %{job}%xn."
         app_job: "Approval under review.  See %xhjob %{job}%xn."
-        
-        approval_post_subject: "Welcome %{name}"
-        
+
+        approval_post_subject: "Set %{name}'s secrets"
+
         application_title: "App - %{name}"
         app_not_started: "Application not yet started."
-        
+
         cannot_edit_after_approval: "You can't change your background after you've been approved."
         cannot_edit_bg:  "You don't have permission to change that background."
         bg_set:  "Background set."
@@ -49,11 +49,11 @@ en:
         background_review: "Checking that you have a background."
         no_permission_to_view_bg: "You don't have permission to view that background."
         accidental_view_bg: "Pretty sure you meant to use bg/set."
-        
+
         app_job_submitted: "App submitted.%RNotes: %{notes}"
         app_job_resubmitted: "App re-submitted.%RNotes: %{notes}"
         app_job_unsubmitted: "App un-submitted."
-        
+
         app_confirm: "We suggest you review your app one final time using the 'app' command to check for issues before you submit.  Use 'app/confirm' if you're sure you're ready."
         app_submitted: "You submit your character for approval.  Staff should review your app within 24-48 hours."
         app_resubmitted: "You re-submit your character for approval.  You can check the status of your app using 'requests'."
@@ -61,24 +61,23 @@ en:
         app_job_problem: "There was a problem submitting your job.  Please contact the game admin."
 
         approval_reminder:  "NOTE!!! App responses will come back in the request system, not mail.  You can check the status of your app using 'requests'."
-                
+
         you_have_not_submitted_app: "You have not submitted your character for approval."
         no_app_submitted: "%{name} has not submitted their character for approval."
         app_job_updated: "Application job #%{num} '%{title}' updated."
-        
+
         cant_be_changed: "You can't use this command once you've been approved.  See 'help xp' for advancement commands."
         app_in_progress: "Unsubmit your character application if you need to make changes."
-        
+
         approved: "Approved"
         unapproved: "Not Yet Approved"
         npc: "NPC"
         rostered: "On Roster"
         idled_out: "Idled Out - %{status}"
         bg_page_title: "Background"
-                
+
         hooks_set: "RP hooks set."
         hook_not_found: "RP hook %{name} not found."
         hook_removed: "RP hook %{name} removed."
         hooks_added: "%{num} RP hooks added. (%{min} min)"
         hooks_title: "RP Hooks for %{name}"
-        
