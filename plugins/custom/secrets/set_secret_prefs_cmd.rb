@@ -14,14 +14,14 @@ module AresMUSH
         if self.preference == "None"
           enactor.update(secretpref: self.preference)
           client.emit_success "You have set your secret preference to #{self.preference}"
-        elsif self.preference == "Known"
+        elsif self.preference == "PC-created"
           enactor.update(secretpref: self.preference)
           client.emit_success "You have set your secret preference to #{self.preference}"
-        elsif self.preference == "GM"
+        elsif self.preference == "GM-created"
           enactor.update(secretpref: self.preference)
           client.emit_success "You have set your secret preference to #{self.preference}"
         else
-          client.emit_failure "That is not a secret preference. Use None, Known, or GM."
+          client.emit_failure "That is not a secret preference. Use None, PC-created, or GM-created."
         end
       end
 
