@@ -925,8 +925,8 @@ fs3combat:
       description: Level 5 Water spell
       is_magic: true
       skill: Water
-      lethality: 7
-      penetration: 9
+      lethality: 5
+      penetration: 8
       weapon_type: Explosive
       is_automatic: false
       recoil: 0
