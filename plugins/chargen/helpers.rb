@@ -166,8 +166,8 @@ module AresMUSH
         post_body)
 
       Jobs.create_job("PLOT",
-         t('chargen.approval_post_subject', :name => model.name),
-         "Set their secrets. Their secret pref is: #{model.secretpref}", 
+         t('chargen.approval_job_subject', :name => model.name),
+         "Set their secrets. Their secret pref is: #{model.secretpref}",
          Game.master.system_character)
 
        Global.dispatcher.queue_event CharApprovedEvent.new(Login.find_client(model), model.id)
