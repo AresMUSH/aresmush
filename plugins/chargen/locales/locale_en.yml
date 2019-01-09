@@ -37,7 +37,8 @@ en:
         app_request: "Approval under review.  See %xhrequest %{job}%xn."
         app_job: "Approval under review.  See %xhjob %{job}%xn."
 
-        approval_post_subject: "Set %{name}'s secrets"
+        approval_post_subject: "Welcome %{name}!"
+        approval_job_subject: "Set %{name}'s secrets"
 
         application_title: "App - %{name}"
         app_not_started: "Application not yet started."
