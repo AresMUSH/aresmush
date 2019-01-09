@@ -18,7 +18,7 @@ module AresMUSH
         case cmd.switch
         when "set"
           return SetSecretsCmd
-        else
+        when nil
           return SecretsCmd
         end
       end
