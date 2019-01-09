@@ -18,6 +18,8 @@ module AresMUSH
         case cmd.switch
         when "set"
           return SetSecretsCmd
+        when "preference"
+          return SetSecretPrefCmd
         when nil
           return SecretsCmd
         end
