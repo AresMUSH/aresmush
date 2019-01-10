@@ -1,6 +1,5 @@
 en:
     events:
-        events_title: "Events in the Next 14 Days"
         invalid_event: "That is not a valid event number."
         
         starts_at_title: "Starts At:"
@@ -22,4 +21,6 @@ en:
         not_signed_up: "You're not signed up for that event."
         signup_cancelled: "You cancel your signup for the event."
         
+        upcoming_events_title: "Events in the Next 14 Days"
+        all_events_title: "All Events"
         
