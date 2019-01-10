@@ -21,7 +21,8 @@ module AresMUSH
           group[:count] = chars.count
           group[:chars] = chars.sort_by { |c| c.name}
             .map { |c| {
-             name: c.name,
+             mushname: c.name,
+             name: Demographics.name_and_nickname(c),
              icon: Website.icon_for_char(c),
              groups: c.groups,
              rank: c.rank

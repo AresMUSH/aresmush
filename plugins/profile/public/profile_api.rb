@@ -5,6 +5,9 @@ module AresMUSH
       when 'demographic'
         char.demographic(value)
 
+      when 'age'
+        char.age
+        
       when 'status_color'
         Status.status_color(char.status)
 
