@@ -17,5 +17,5 @@
     ----------------|_|-------------------------------------------------
     Create <name> <password> to create a character.
     Connect <name> <password> to connect to your existing character.
-    Connect guest to connect as a guest.
+    Spirit Lake is currently full, and character creation is turned off.
     --------------------------------------------------------------------

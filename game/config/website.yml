@@ -2,12 +2,14 @@
 website:
   allow_html_in_markdown: true
   character_gallery_group: Major School
-  character_gallery_subgroup: Minor School
+  character_gallery_subgroup: nil
   left_sidebar: false
   max_upload_size_kb: 5000
   portal_requires_registration: false
   restricted_pages:
   - home
+  - policies
+  - admin
   sitemap_update_cron:
     hour:
     - 2
