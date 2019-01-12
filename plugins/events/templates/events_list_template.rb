@@ -2,10 +2,11 @@ module AresMUSH
   module Events
     class EventsListTemplate < ErbTemplateRenderer
              
-      attr_accessor :events
+      attr_accessor :events, :title
                      
-      def initialize(events, enactor)
+      def initialize(events, title, enactor)
         @events = events
+        @title = title
         @enactor = enactor
         super File.dirname(__FILE__) + "/events_list.erb"        
       end

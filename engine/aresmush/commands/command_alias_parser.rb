@@ -40,7 +40,7 @@ module AresMUSH
         root_and_switch = "#{cmd.root}"
       end
       
-      if (root_and_switch == "#{cmd.prefix}#{compare_str}")
+      if (root_and_switch == "#{compare_str}")
         return true
       else
         return false
