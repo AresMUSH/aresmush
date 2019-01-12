@@ -68,19 +68,23 @@ module AresMUSH
       return true
     end
       
-    def self.stop_scene(scene)
+    def self.stop_scene(scene, enactor)
       Global.logger.debug "Stopping scene #{scene.id}."
       return if scene.completed
       
       if (scene.room)
         scene.room.characters.each do |c|
           connected_client = Login.find_client(c)
-          if (connected_client)
-            connected_client.emit_ooc t('scenes.scene_ending')
-          end
         
           if (scene.temp_room)
             Rooms.send_to_ooc_room(connected_client, c)
+            message = t('scenes.scene_ending', :name => enactor.name)
+          else
+            message = t('scenes.scene_ending_public', :name => enactor.name)
+          end
+          
+          if (connected_client)
+            connected_client.emit_ooc message
           end
         end
         

@@ -36,7 +36,7 @@ module AresMUSH
             return { error: t('scenes.scene_already_completed')}
           end
           
-          Scenes.stop_scene(scene)
+          Scenes.stop_scene(scene, enactor)
           
         when "share"
           if (!scene.all_info_set?)

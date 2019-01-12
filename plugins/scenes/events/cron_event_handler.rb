@@ -39,7 +39,7 @@ module AresMUSH
             
             if (should_stop_empty_scene(r))
               Global.logger.debug("Stopping empty scene in #{r.name}")
-              Scenes.stop_scene(r.scene)
+              Scenes.stop_scene(r.scene, Game.master.system_character)
             end
           end
         end
