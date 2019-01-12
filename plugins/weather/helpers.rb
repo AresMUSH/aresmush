@@ -62,10 +62,17 @@ module AresMUSH
       { :condition => condition, :temperature => temperature }
     end
     
-    def self.climate_for_area(area)
+    def self.climate_for_area(area_name)
       area_climates = Global.read_config("weather", "climate_for_area") || {}
-      climate = area_climates.select { |k, v| k.downcase == area.downcase }.values.first
-      climate || Global.read_config("weather", "default_climate")
+      climate = area_climates.select { |k, v| k.downcase == area_name.downcase }.values.first
+      return climate if climate
+      
+      area = Area.find_one_by_name(area_name)
+      if (area && area.parent)
+        return Weather.climate_for_area(area.parent.name)
+      else
+        return Global.read_config("weather", "default_climate")
+      end
     end
   end
 end
