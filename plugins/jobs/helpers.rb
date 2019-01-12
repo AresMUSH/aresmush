@@ -171,5 +171,11 @@ module AresMUSH
       notification = t('jobs.updated_job', :number => job.id, :title => job.title, :name => enactor.name)
       Jobs.notify(job, notification, enactor)
     end
+    
+    def self.check_filter_type(filter)
+      types = ["ACTIVE", "MINE"].concat(Jobs.categories)
+      return t('jobs.invalid_filter_type', :names => types) if !types.include?(filter)
+      return nil
+    end
   end
 end
