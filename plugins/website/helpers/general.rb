@@ -17,7 +17,7 @@ module AresMUSH
       if request.enactor.is_valid_api_token?(token)
         return nil
       end
-      return { error: "Your session has expired.  Please log in again." } 
+      return { error: t('website.session_expired') } 
     end
     
     def self.get_file_info(file_path)

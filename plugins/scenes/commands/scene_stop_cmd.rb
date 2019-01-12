@@ -20,7 +20,7 @@ module AresMUSH
             return
           end
         
-          Scenes.stop_scene(scene)
+          Scenes.stop_scene(scene, enactor)
           client.emit_success t('scenes.scene_stopped', :id => scene.id)
         end
       end

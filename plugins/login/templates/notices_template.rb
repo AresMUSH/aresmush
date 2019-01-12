@@ -31,16 +31,8 @@ module AresMUSH
         return t('login.no_unread_requests')
       end
       
-      def show_events
-        @char.notices_events
-      end
-      
       def approval_notice
         Chargen.approval_job_notice(@char)
-      end
-      
-      def events
-        Events.upcoming_events
       end
       
       def start_datetime_local(event)

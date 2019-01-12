@@ -64,5 +64,5 @@ en:
         
         job_marked_unread: "You mark the job unread."
         
-        reboot_required:  "Your operating system is indicating that your server needs to be rebooted - probably to finish installing automatic updates.  Please restart the system (not just the game) at your earliest convenience."
+        reboot_required:  "Your operating system is indicating that your server needs to be rebooted - probably to finish installing automatic updates.  Please restart the server (not just the game) as soon as you can.  You may encounter performance or memory issues until this is done."
         

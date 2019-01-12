@@ -13,7 +13,9 @@ module AresMUSH
           status_values: Jobs.status_vals,
           category_values: Jobs.categories,
           request_category: Jobs.request_category,
-          is_job_admin: is_job_admin
+          is_job_admin: is_job_admin,
+          reboot_required_notice: Jobs.reboot_required_notice,
+          jobs_filter: enactor.jobs_filter
         }
       end
     end
