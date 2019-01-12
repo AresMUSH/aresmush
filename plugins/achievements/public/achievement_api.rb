@@ -25,6 +25,8 @@ module AresMUSH
       if (Achievements.is_enabled? && !Achievements.has_achievement?(char, name))
         Achievement.create(character: char, type: type, name: name, message: message)
 
+        Mail.send_mail([char.name], t('achievements.achievement_mail_subject'), t('achievements.achievement_mail_message', :message => message), nil)          
+        
         channel_name = Global.read_config("achievements", "announce_channel")
         if (!channel_name.blank?)
           notification = t('achievements.achievement_earned', :name => char.name, :message => message)
