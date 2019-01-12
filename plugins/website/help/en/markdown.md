@@ -43,6 +43,15 @@ Finally you can link to external pages.
 
 `[http://somewhere Link Title]`
 
+## Image Gallery
+
+You can include a gallery of images (similar to what appears on the character profile pages).  Just list the folder and filename, one per line.
+
+`[[gallery]]`
+`folder/image1.jpg`
+`folder/image2.jpg`
+`[[/gallery]]`
+
 ## Music Player
 
 The built-in music player (based on a WikiDot version by @Blu) lets you add the sound from a YouTube video to your page with a start/stop play button.  All you need is the YouTube video ID.
@@ -59,13 +68,13 @@ Collapsibles let you show and hide text with the click of a button.
 
 ## Pretty Images
 
-For a basic image, the regular markdown syntax will suffice:
+For a basic image, the regular markdown syntax will suffice.  Note that images live in the `game/uploads` folder.
 
-`![Image Alt Text](/misc/pic.jpg)`
+`![Image Alt Text](/game/uploads/misc/pic.jpg)`
 
 You can display images with some easy formatting options, including height, width and alignment (left, right or center).  All of the formatting options can be omitted.
 
-`[[image /misc/pic.jpg height=50px width=100px center]]`
+`[[image /game/uploads/pic.jpg height=50px width=100px center]]`
 
 
 ## Tables

@@ -89,7 +89,8 @@ class MarkdownToMURenderer < Redcarpet::Render::Base
 
   def header(text, header_level)
     line = "-" * (text.length)
-    "\n%xh#{text}%xn\n#{line}\n"
+    divider = header_level < 3 ? "\n#{line}\n" : ""
+    "\n%xh#{text}%xn#{divider}"
   end
 
   def hrule()

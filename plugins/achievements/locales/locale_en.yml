@@ -8,4 +8,6 @@ en:
       achievement_removed: "Achievement removed!"
       doesnt_have_achievement: "%{name} doesn't have that achievement."
       achievements_title: "Achievements for %{name}"
+      achievement_mail_subject: "Achievement Earned"
+      achievement_mail_message: "You have earned the achievement: %{message}"
       
