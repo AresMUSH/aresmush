@@ -3,8 +3,8 @@ login:
   activity_cron:
     minute:
     - 0
-  allow_creation: true
-  allow_web_registration: true
+  allow_creation: false
+  allow_web_registration: false
   blacklist_cron:
     day:
     - 1
@@ -13,9 +13,11 @@ login:
     - 3
     minute:
     - 0
-  creation_not_allowed_message: Come back January 9 to create a character.
+  creation_not_allowed_message: Sorry, Spirit Lake is full. Watch the website to see
+    when we're accepting applications again.
   guest_role: guest
-  login_not_allowed_message: Come back January 9 to look around or create a character.
+  login_not_allowed_message: Logins for unapproved characters is turned off at the
+    moment. Come back later!
   shortcuts:
     logout: quit
     con: connect

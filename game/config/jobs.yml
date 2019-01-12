@@ -37,6 +37,8 @@ jobs:
       color: "%xc"
       roles:
       - storyteller
+    PLAYER:
+      color: "%xy"
   closed_status: DONE
   default_status: NEW
   luck_category: LUCK

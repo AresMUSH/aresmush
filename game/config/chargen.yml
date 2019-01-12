@@ -21,9 +21,9 @@ chargen:
   hooks_required: true
   post_approval_message: Please make sure they have a profile image for their log
     icon.
-  rejection_message: Sorry, your character could not be approved at the present timefor
-    the reasons described below.  You can make changes to your app on the web portal.
-    Feel free to ask for help on the Questions channel if you have any questions.
+  rejection_message: Sorry, your character could not be approved at the present time
+    for the reasons described below.  You can make changes to your app on the web
+    portal. Feel free to ask for help on the Questions channel if you have any questions.
   shortcuts:
     chargen: cg
     cg/back: cg/prev

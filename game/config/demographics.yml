@@ -87,8 +87,10 @@ demographics:
   - birthdate
   secret_prefs:
     None: No secrets at all
-    Known: You know the secret about your character
-    GM: Only GMs know the secret about your character until it comes out in play
+    PC-created: You help GMs choose a secret for your character, which will be based
+      on your preferences.
+    GM-created: GMs will create the secret for your character without your input,
+      and you will not know it until it comes out in play.
   shortcuts:
     groups: group
     colonies: group colony
