@@ -22,17 +22,20 @@ module AresMUSH
           end
         end
         
-        Global.dispatcher.queue_timer(1, "Login notices", client) do 
-          template = NoticesTemplate.new(char)
-          client.emit template.render
-        end
-        
         if (char.onconnect_commands)
           char.onconnect_commands.each_with_index do |cmd, i|
-            Global.dispatcher.queue_timer(2 + i, "Login commands", client) do 
+            Global.dispatcher.queue_timer(i + 1, "Login commands", client) do 
               Global.dispatcher.queue_command(client, Command.new(cmd))
             end
           end
+          notice_delay = char.onconnect_commands.count * 2
+        else
+          notice_delay = 2
+        end
+        
+        Global.dispatcher.queue_timer(notice_delay, "Login notices", client) do 
+          template = NoticesTemplate.new(char)
+          client.emit template.render
         end
       end
     end

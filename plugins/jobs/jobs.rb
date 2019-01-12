@@ -107,6 +107,8 @@ module AresMUSH
         return JobDeleteReplyRequestHandler
       when "jobAssign"
         return JobAssignRequestHandler
+      when "jobsFilter"
+        return JobsFilterRequestHandler
       when "jobChangeData"
         return JobChangeDataRequestHandler
       when "jobOptions"

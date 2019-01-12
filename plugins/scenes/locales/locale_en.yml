@@ -20,7 +20,8 @@ en:
         grid_scene: "<%xhOn Grid%xn>"
         temproom_scene: "<%xhTemp Room%xn>"
         
-        scene_ending: "The scene has ended."
+        scene_ending: "%{name} has stopped this scene."
+        scene_ending_public: "%{name} has stopped this scene.  You can restart it at any time using scene/restart, but it will restart in a temp room and NOT in this room."
         scene_stopped: "The scene has ended.  To share the log, set the scene info (help scene info) and then use `scene/share %{id}` to share it."
         scene_not_specified: "You must either be in a room with an active scene, or specifiy a scene number for this command."
         scene_not_found: "Scene not found."
@@ -87,7 +88,7 @@ en:
         
         cant_restart_in_progress_scene: "You can't restart a scene that's already going."
         cant_restart_shared_scene: "You can't restart a scene that has been shared to the web portal.  Unshare it first."
-        scene_restarted: "Scene restarted."
+        scene_restarted: "Scene restarted.  NOTE: This restarts the scene in a temp room, so make sure everyone uses scene/join to rejoin it."
         scene_not_running: "That scene isn't running.  You'll need to restart it if you want to join it."
         
         nospoof_set: "You turn your 'nospoof' setting %{status}."
