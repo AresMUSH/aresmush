@@ -5,6 +5,7 @@ achievements:
     portal: fa-globe
     fs3: fa-cubes
     story: fa-book
+  announce_channel: ""
   shortcuts:
     achievements: achievement
   custom_achievements: {}
