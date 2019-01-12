@@ -7,10 +7,12 @@ module AresMUSH
     class MarkdownFinalizer
       def self.process(markdown)
         tabs = {}
+        gallery = []
         html = ""
         tab_name = nil
         toc = {}
         current_toc_level = nil
+        in_gallery = false
         coder = HTMLEntities.new
         
         markdown.split(/[\r\n]/).each do |line|
@@ -20,11 +22,25 @@ module AresMUSH
             html << "#{line}\n"                    
           elsif (line =~ /^(<p>)?(<br>)?\[\[tabview\]\]/)
             tabs = {}
+          elsif (line =~ /^(<p>)?(<br>)?\[\[gallery\]\]/)
+            gallery = []
+            in_gallery = true
           elsif (line =~ /^(<p>)?(<br>)?\[\[tab /)
             tab_name = line.after(" ").before("]")
             tabs[tab_name] = []
           elsif (line =~ /^(<p>)?(<br>)?\[\[\/tab\]\]/)
             tab_name = nil
+          elsif (line =~ /^(<p>)?(<br>)?\[\[\/gallery\]\]/)
+            in_gallery = false
+            
+            template = HandlebarsTemplate.new(File.join(AresMUSH.plugin_path, 'website', 'templates', 'image_gallery.hbs'))
+        
+            data = {
+              "gallery" => gallery
+            }
+        
+            html << template.render(data)     
+            
           elsif (line =~ /^(<p>)?(<br>)?\[\[\/tabview\]\]/)
             html << '<ul class="nav nav-tabs">'
             tabs.each_with_index do |(tab_name, tab_lines), i|
@@ -47,6 +63,8 @@ module AresMUSH
             html << '</div>'
           elsif (line =~ /^(<p>)?(<br>)?\[\[toc\]\]/)
             html << "$TOC_GOES_HERE_MARKER$"
+          elsif in_gallery
+            gallery << line.gsub("<br>", "").strip
           else
             if (line =~ /<h2>(.+)<\/h2>/)
               heading = coder.decode $1
