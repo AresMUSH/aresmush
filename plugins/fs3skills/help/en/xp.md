@@ -10,7 +10,7 @@ aliases:
 
 Experience Points (XP) are gained weekly to reflect what your character has been learning and/or practicing during that time.  You spend them to improve your abilities.  
 
-You earn 3 XP per week, and can store up to 9. You can learn skills and attributes once every 3 weeks, and spells once a week.
+You earn 3 XP per week, and can store up to 9. You can learn skills and attributes once every 4 weeks, and spells once a week.
 
 For more help with xp and learning costs, see the [XP Guide](http://spiritlakemu.com/wiki/xp).
 
