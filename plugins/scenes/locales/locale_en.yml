@@ -4,7 +4,7 @@ en:
         scene_set_cleared: "You clear the scene set in this room."
         scenes_title: "Scenes"
         date_title: "IC Date:"
-        scene_title: "Title: " 
+        scene_title: "Title: "
         scene_summary: "Summary: "
         players_title: "Players: "
         location_title: "Location: "
@@ -13,13 +13,13 @@ en:
         organizer_title: "Organized By: %{name}"
         organizer_deleted: "(Organizer Deleted)"
         last_activity: "Last Activity: "
-        
+
         whisper_emit: "%{name} whispers to %{target}, \"%{message}\""
         whisper_emit_header: "%xc%% Private whisper:%xn"
-        
+
         grid_scene: "<%xhOn Grid%xn>"
         temproom_scene: "<%xhTemp Room%xn>"
-        
+
         scene_ending: "%{name} has stopped this scene."
         scene_ending_public: "%{name} has stopped this scene.  You can restart it at any time using scene/restart, but it will restart in a temp room and NOT in this room."
         scene_stopped: "The scene has ended.  To share the log, set the scene info (help scene info) and then use `scene/share %{id}` to share it."
@@ -38,21 +38,21 @@ en:
         open: "Open"
         private: "Private"
         scene_already_going: "There's already a scene going in this room.  You have to stop it first."
-        private_scene_in_public_room: "Having a private scene on the public grid is poor form, unless of course you're in a private residence."
+        private_scene_in_public_room: "If you're having a private scene on the public grid, please do `scene/start<location name>=private` and use a temp room instead."
         amended_pose: "%{name} has amended %{pronoun} last pose."
         no_pose_found: "You haven't posed yet."
         deleted_pose: "%{name} has retracted %{pronoun} previous pose."
-        
+
         scene_types: "Available scene types are: %{types}."
         invalid_scene_type: "That is not a valid scene type.  Try one of these: %{types}."
         invalid_plot: "That is not a valid plot name or number."
         invalid_icdate_format: "Please use the form yyyy-mm-dd."
         cant_share_until_completed: "You can't share a scene until it's completed."
         grid_location_change_warning: "This is a grid room.  You can note a location change in the scene log, but new arrivals may think you're still in the original location.  It may be better to stop the scene and restart it in a temp room."
-        
+
         scene_delete_warn: "Your scene %{id} (title: %{title}) will be deleted in a few days if it it remains unshared."
         scene_delete_warn_subject: "Unshared Scene Deletion"
-        
+
         logging_not_enabled: "The scene log is not on."
         log_cleared: "You clear the scene log."
         scene_log_title: "Scene Log %{id}"
@@ -67,10 +67,10 @@ en:
         scene_char_removed: "%{name} has been removed from the scene."
         must_be_approved: "You can't start or join scenes until you're approved."
         cant_join_unlogged_scene: "Someone turned off the scene log for that scene, so you can't play from the web portal."
-        
+
         started_watching: "%{name} has joined the scene via the web portal."
         stopped_watching: "%{name} is no longer watching via the web portal."
-        
+
         scene_already_shared: "That scene is already shared."
         scene_not_shared: "That scene is not shared."
         no_scene_room: "That scene doesn't have a room to join.  That can happen if it's created from the web portal."
@@ -79,18 +79,18 @@ en:
 
         log_shared: "The log has been shared, and will now appear on the web portal."
         log_unshared: "The log is no longer being shared on the web portal."
-        
+
         scene_info_missing: "You can't share the log until all the scene info is set.  Title: %{title}, Location: %{location}, Type: %{type}, Summary: %{summary}."
-        
+
         cant_delete_in_progress_scene: "You can't delete a scene that's in progress.  Stop it first."
         cant_delete_shared_scene: "You can't delete a scene that has been shared to the web portal.  Unshare it first."
         scene_deleted: "Scene deleted."
-        
+
         cant_restart_in_progress_scene: "You can't restart a scene that's already going."
         cant_restart_shared_scene: "You can't restart a scene that has been shared to the web portal.  Unshare it first."
         scene_restarted: "Scene restarted.  NOTE: This restarts the scene in a temp room, so make sure everyone uses scene/join to rejoin it."
         scene_not_running: "That scene isn't running.  You'll need to restart it if you want to join it."
-        
+
         nospoof_set: "You turn your 'nospoof' setting %{status}."
         pemit_nospoof_from: "Private emit from %{name}:"
         emit_nospoof_from: "Emit from %{name}:"
@@ -99,7 +99,7 @@ en:
 
         quote_color_set: "You set your pose quotation color to %xn %{option}this%xn."
         quote_color_cleared: "Quotation color cleared."
-        
+
         pose_order_title: "Name                        Last Posed"
         pose_threeper_notice: "3-per pose order is in effect."
         pose_threeper_nudge: "3-per pose order is in effect.  You can pose again."
@@ -114,6 +114,6 @@ en:
         pose_order_mistake: "It seems like you meant to use pose/order instead."
         invalid_pose_order_type: "That is not a valid pose order type.  Try one of these: %{types}"
         pose_order_type_changed: "%{name} has changed the pose order type to %{type}."
-        
+
         edited_scene_pose: "%{name} has edited their pose: %{pose}."
         deleted_scene_pose: "%{name} has deleted their pose: %{pose}."
