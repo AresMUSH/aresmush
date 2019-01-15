@@ -8,7 +8,7 @@ module AresMUSH
     end
       
     def self.clear_place(char)
-      char.place.delete if char.place
+      char.update(place: nil)
     end
     
     def self.reset_place_if_moved(char)
