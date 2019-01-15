@@ -13,8 +13,9 @@ module AresMUSH
       end
 
       def handle
-        client.emit_success t('custom.spell_requested')    
-        Jobs.create_job("SPELL", spellname, spelldesc, enactor)
+        subj = "#{enactor.name} reqs #{spellname}"
+        client.emit_success t('custom.spell_requested')
+        Jobs.create_job("SPELL", subj, spelldesc, enactor)
       end
 
     end

@@ -12,6 +12,15 @@ module AresMUSH
 
     def self.get_cmd_handler(client, cmd, enactor)
 
+    #Plots
+    case cmd.root
+    when "plot"
+      case cmd.switch
+      when "propose"
+        return PlotProposeCmd
+      end
+    end
+
     #Secrets
       case cmd.root
       when "secrets"
