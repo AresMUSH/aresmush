@@ -20,6 +20,10 @@ module AresMUSH
         text
       end
       
+      def autolink(link, link_type)
+        "<a target=\"_blank\" href=\"#{link}\">#{link}</a>"
+      end
+      
       def wiki_url(text)
         
       end
