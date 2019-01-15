@@ -4,6 +4,7 @@ en:
       invalid_name: "%xrCharacter not found.%xn"
       updated_weapon_specials: "You have updated %{target}'s persistent weapon specials to %{specials}."
       luck_requested: "You have requested luck. Check your requests for updates."
+      plot_proposed: "You have proposed your plot. Check your requests for updates and responses."
         # ----------------------------
         # SCHOOLS
         # ----------------------------
