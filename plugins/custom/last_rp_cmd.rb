@@ -18,7 +18,11 @@ module AresMUSH
         chars.each do |c|
           char_name = c.name
           last_scene = Character.find_one_by_name(char_name).scenes_starring.sort_by { |s| s.date_shared }[1]
-          client.emit "#{char_name}: #{last_scene.date_shared}"
+          if last_scene
+            client.emit "#{char_name}: #{last_scene.date_shared}"
+          else
+            client.emit "#{char_name}: %xrNONE%xn"
+          end
         end
       end
 
