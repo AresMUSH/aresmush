@@ -19,7 +19,7 @@ module AresMUSH
           char_name = c.name
           last_scene = Character.find_one_by_name(char_name).scenes_starring.sort_by { |s| s.created_at }[0]
           if last_scene
-            client.emit "#{char_name}: #{last_scene.created_at}"
+            client.emit "#{last_scene.created_at} - #{char_name}"
           else
             client.emit "#{char_name}: %xrNONE%xn"
           end
