@@ -17,9 +17,9 @@ module AresMUSH
         chars = Chargen.approved_chars
         chars.each do |c|
           char_name = c.name
-          last_scene = Character.find_one_by_name(char_name).scenes_starring.sort_by { |s| s.created_at }[0]
+          last_scene = Character.find_one_by_name(char_name).scenes_starring.sort_by { |s| s.created_at }.reverse[0]
           if last_scene
-            client.emit "#{last_scene.created_at} - #{char_name}"
+            client.emit "#{last_scene.created_at} - #{char_name} - #{last_scene.title}" 
           else
             client.emit "#{char_name}: %xrNONE%xn"
           end
