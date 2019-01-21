@@ -8,8 +8,6 @@ aliases:
 - pose
 - emit
 - pemit
-- whisper
-- mutter
 - setpose
 ---
 # Posing
