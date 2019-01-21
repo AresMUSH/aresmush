@@ -17,7 +17,7 @@ module AresMUSH
       end
       
       def handle
-        search = VisibleTargetFinder.find(self.target, enactor)
+        search = AnyTargetFinder.find(self.target, enactor)
         if (self.detail)
           if (search.found?)
             show_detail(search.target, self.detail)
