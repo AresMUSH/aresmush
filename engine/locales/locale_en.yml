@@ -70,7 +70,7 @@ en:
         separator: '.'
 
     pages:
-        page_x_of_y: "%xhpage %{x} of %{y}"
+        page_x_of_y: "page %{x} of %{y}"
         not_that_many_pages: "There aren't that many pages."
         no_items: "There are no items to display."
         
