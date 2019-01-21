@@ -22,21 +22,8 @@ aliases:
 `emit Go Bob!` or `\Go Bob!` - Go Bob!
 `ooc I have a question.` or `'I have a question.` - <OOC> Bob says, "I have a question."
 
-## Private Emits
-
-The `pemit` command lets you make a private emit only to certain characters.  This will appear like an emit, but with an OOC notice in front telling who it came from.
-
-`pemit <list of names>=<message>` - Make a private emit.
-  
-You can also whisper to another character.  This is formatted like a 'say' (e.g. `whisper Cate=Hi!` - Bob whispers to Cate, "Hi!") but is only shown to the recipient.  The room doesn't see anything.
-
-`whisper <name>=<message>` - Whisper to someone.
-
-## Set Pose
-
-Storytellers can mark an emit as a set pose.  It will be set off with a border on the game, and highlighted in scene and wiki logs.
-
-`emit/set <set pose>`
+`pemit <list of names>=<message>` - Make a private emit with an OOC notice in front telling who it came from.
+`emit/set <set pose>` - Mark an emit as a set pose that will be set off with a border on the game, and highlighted in scene and wiki logs.
 
 ## Nospoof
 
