@@ -1,5 +1,5 @@
 class String
-    
+  
   def first(sep)
     parts = self.partition(sep)  # Returns [head, sep, tail]
     return parts[0]
@@ -17,12 +17,7 @@ class String
   
   def after(sep)
     self.rest(sep)  # Just an alias
-  end
-  
-  # Fairly crude - doesn't worry about helper words or anything.  Should suffice for MUSH purposes.
-  def titlecase
-    self.downcase.strip.gsub(/\b('?[a-z])/) { $1.capitalize }
-  end    
+  end 
   
   def code_gsub(find, replace)
     str = self

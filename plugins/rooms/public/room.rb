@@ -66,5 +66,17 @@ module AresMUSH
     def emit_ooc(message)
       self.clients.each { |c| c.emit_ooc message }
     end
+    
+    def emit_failure(message)
+      self.clients.each { |c| c.emit_failure message }
+    end
+    
+    def emit_success(message)
+      self.clients.each { |c| c.emit_success message }
+    end
+    
+    def emit_raw(message)
+      self.clients.each { |c| c.emit_raw message }
+    end
   end
 end
