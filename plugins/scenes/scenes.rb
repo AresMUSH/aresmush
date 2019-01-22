@@ -28,7 +28,7 @@ module AresMUSH
         end
       when "emit"
         case cmd.switch
-        when "set"
+        when "set", "gm"
           return SetPoseCmd
         else
           return PoseCmd
