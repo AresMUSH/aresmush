@@ -17,8 +17,8 @@ en:
         whisper_emit: "%{name} whispers to %{target}, \"%{message}\""
         whisper_emit_header: "%xc%% Private whisper:%xn"
         
-        grid_scene: "<%xhOn Grid%xn>"
-        temproom_scene: "<%xhTemp Room%xn>"
+        grid_scene: "On Grid"
+        temproom_scene: "Temp Room"
         
         scene_ending: "%{name} has stopped this scene."
         scene_ending_public: "%{name} has stopped this scene.  You can restart it at any time using scene/restart, but it will restart in a temp room and NOT in this room."
@@ -119,4 +119,3 @@ en:
         deleted_scene_pose: "%{name} has deleted their pose: %{pose}."
         
         trending_scenes_subject: "Popular Scenes This Week"
-        

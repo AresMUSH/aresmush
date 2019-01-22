@@ -18,7 +18,7 @@ module AresMUSH
       
       def handle
         if (self.mode == :active)
-          scenes = Scene.all.select { |s| !s.completed }.reverse
+          scenes = Scene.all.select { |s| !s.completed }.sort_by { |s| s.is_private? ? s.id.to_i + 1000 : s.id.to_i}
           template = SceneListTemplate.new(scenes, enactor)
         else
           
