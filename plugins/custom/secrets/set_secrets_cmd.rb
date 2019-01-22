@@ -23,8 +23,8 @@ module AresMUSH
 
 
       def handle
-        client.emit "#{self.target.name}'s current secrets: #{self.char.secrets}"
-        self.char.update(secrets: self.secrets)
+        client.emit "#{self.target.name}'s current secrets: #{self.target.secrets}"
+        self.target.update(secrets: self.secrets)
         client.emit_success "You set #{self.target.name}'s new secrets to #{self.secrets}"
       end
 
