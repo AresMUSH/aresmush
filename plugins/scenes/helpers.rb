@@ -128,6 +128,7 @@ module AresMUSH
     
     def self.set_scene_location(scene, location)
       matched_rooms = Room.find_by_name_and_area location
+      area = nil
       
       if (matched_rooms.count == 1)
         room = matched_rooms.first
@@ -135,6 +136,7 @@ module AresMUSH
           description = location
         else
           description = "%xh#{room.name}%xn%R#{room.description}"
+          area = room.area
         end
       else
         description = location
@@ -147,6 +149,7 @@ module AresMUSH
         #location = (location =~ /\//) ? location.after("/") : location
         scene.room.update(name: "Scene #{scene.id} - #{location}")
         scene.room.update(description: description)
+        scene.room.update(area: area)
       end
       
       return message
