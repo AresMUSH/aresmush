@@ -29,6 +29,7 @@ module AresMUSH
         title: request.args[:title],
         icdate: request.args[:icdate],
         shared: completed,
+        date_shared: completed ? Time.now : nil,
         completed: completed,
         plot: plot.blank? ? nil : Plot[plot],
         private_scene: completed ? false : (privacy == "Private"),
