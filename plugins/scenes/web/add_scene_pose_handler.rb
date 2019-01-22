@@ -7,6 +7,7 @@ module AresMUSH
         pose = request.args[:pose]
         pose_type = request.args[:pose_type]
         is_setpose = pose_type == 'setpose'
+        is_gmpose = pose_type == 'gm'
         is_ooc = pose_type == 'ooc'
         is_emit = pose_type == 'emit'
         
@@ -38,8 +39,11 @@ module AresMUSH
           is_ooc = true
           pose = pose.after(" ")
           pose = PoseFormatter.format(enactor.name, pose)
-        elsif (command == "scene/set" || command == "emit/set")
+        elsif (command == "scene/set" || command == "emit/set") 
           is_setpose = true
+          pose = pose.after(" ")
+        elsif (command == "emit/gm")
+          is_gmpose = true
           pose = pose.after(" ")
         elsif (command == "emit")
           pose = pose.after(" ")
@@ -52,10 +56,13 @@ module AresMUSH
           end
         end
         
-        Scenes.emit_pose(enactor, pose, is_emit, is_ooc, nil, is_setpose, scene.room)
+        Scenes.emit_pose(enactor, pose, is_emit, is_ooc, nil, is_setpose || is_gmpose, scene.room)
         
-        {
-        }
+        if (is_setpose && scene.room)
+          scene.room.update(scene_set: pose)
+        end
+        
+        {}
       end
     end
   end

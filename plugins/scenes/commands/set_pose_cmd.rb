@@ -12,6 +12,10 @@ module AresMUSH
       def handle        
         Places.reset_place_if_moved(enactor)
         Scenes.emit_setpose(enactor, self.pose)
+        
+        if (cmd.switch_is?("set"))
+          enactor_room.update(scene_set: pose)
+        end
       end
       
       def log_command

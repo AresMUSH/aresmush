@@ -252,7 +252,6 @@ module AresMUSH
         line = "%R%xh%xc%% #{'-'.repeat(75)}%xn%R"
         formatted_pose = "#{line}%R#{pose}%R#{line}"
         is_emit = true
-        room.update(scene_set: pose)
       end
       
       room.characters.each do |char|
