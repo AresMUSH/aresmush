@@ -61,7 +61,7 @@ module AresMUSH
           Forum.mark_read_for_player(author, new_post)
         end
                
-        author_name = client ? author.name : t('forum.system_author')
+        author_name = author ? author.name : t('forum.system_author')
         message = t('forum.new_post', :subject => subject, 
           :category => category.name, 
           :reference => new_post.reference_str,
