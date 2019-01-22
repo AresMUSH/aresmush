@@ -130,5 +130,9 @@ module AresMUSH
     def likes
       self.likers.count
     end
+    
+    def url
+      "#{Game.web_portal_url}/scene/#{self.id}"
+    end
   end
 end

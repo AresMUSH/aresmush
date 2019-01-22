@@ -117,3 +117,6 @@ en:
         
         edited_scene_pose: "%{name} has edited their pose: %{pose}."
         deleted_scene_pose: "%{name} has deleted their pose: %{pose}."
+        
+        trending_scenes_subject: "Popular Scenes This Week"
+        
