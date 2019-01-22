@@ -47,7 +47,7 @@ module AresMUSH
           title: scene.title,
           location: {
             name: scene.location,
-            description: scene.room ? Website.format_markdown_for_html(scene.room.description) : nil,
+            description: scene.room ? Website.format_markdown_for_html(scene.room.expanded_desc) : nil,
             scene_set: scene.room ? Website.format_markdown_for_html(scene.room.scene_set) : nil },
           completed: scene.completed,
           summary: scene.summary,
