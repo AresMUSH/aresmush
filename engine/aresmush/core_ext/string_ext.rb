@@ -17,6 +17,11 @@ class String
   
   def after(sep)
     self.rest(sep)  # Just an alias
+  end
+  
+  # Fairly crude - doesn't worry about helper words or anything.  Should suffice for MUSH purposes.
+  def titlecase
+    self.downcase.strip.gsub(/\b('?[a-z])/) { $1.capitalize }
   end 
   
   def code_gsub(find, replace)

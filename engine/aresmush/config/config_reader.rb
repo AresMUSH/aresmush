@@ -56,12 +56,6 @@ module AresMUSH
       ConfigReader.config_files.each do |file|
         load_config_file(file)
       end
-      
-      ActiveSupport::Inflector.inflections(:en) do |inflect|
-        Global.read_config("names", "acronyms").each do |acronym|
-          inflect.acronym acronym
-        end
-      end
     end   
     
     def validate_config_file(file)
