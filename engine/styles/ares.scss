@@ -595,6 +595,15 @@ HOME SCREEN
     text-align: center;
 }
 
+.jumbotron-image {
+  height: 250px;
+  max-width: 100%;
+  background: url('/game/uploads/theme_images/jumbotron.png');
+  background-size: cover;
+  background-position: center; 
+  margin: auto;
+}
+
 .jumbotron img {
    max-width: 70%;
    width: 400px;
