@@ -10,3 +10,4 @@ en:
         renamed_place: "%{name} renames %{old_name} to %{new_name}."
         place_deleted: "%{name} has deleted place %{name}."
         place_already_exists: "That place already exists."
+        place_title: "At %{place_name}"
