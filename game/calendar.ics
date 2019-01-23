@@ -2,13 +2,6 @@ BEGIN:VCALENDAR
 VERSION:2.0
 PRODID:-//hacksw/handcal//NONSGML v1.0//EN
 BEGIN:VEVENT
-UID:011db619-5297-40ea-93a9-dced166ee4a3@Spirit Lake-spiritlakemu.com
-DTSTART:20190113T000000Z
-DTSTAMP:20190108T164919Z
-SUMMARY:Name A Ranch Party
-DESCRIPTION:Heavy cream invitations, custom-made from a shop in Denver complete with handmade lace and a lacquered sprig of thyme, go out to all of the locals inviting them to a 'Ranch Naming Party' hosted by a 'Teagan Roberts Spencer' and 'Sebastian Miguel Andrade'. The address given is the old Andrade ranch. They do not ask for an RSVP. And I quote: 'Come as you are, go as you please. The world is free! #freedomofmovement #followingyourownmusic #teathymeranchparty'
-END:VEVENT
-BEGIN:VEVENT
 UID:8bf5b029-3af6-42f4-a791-75d1122f0f3a@Spirit Lake-spiritlakemu.com
 DTSTART:20190202T020000Z
 DTSTAMP:20190111T160439Z
@@ -24,16 +17,46 @@ DESCRIPTION:# Grand Opening!
   Majesty Arts is also **hiring** for the grand opening (seeking musical talent!) and for permanent associate positions. Please contact Amina Green.
 END:VEVENT
 BEGIN:VEVENT
-UID:ebde082e-9076-4a8d-93ca-75870ec1be47@Spirit Lake-spiritlakemu.com
-DTSTART:20190117T013000Z
-DTSTAMP:20190111T220259Z
-SUMMARY:Wolfsbane Festival
-DESCRIPTION:Townsfolk gather with warm drink, music, and merriment along with resident canines, who are released to play and run free a snow-encapsulated space. 
+UID:6c031a60-4cd1-4706-aace-a2a89eb5ac9f@Spirit Lake-spiritlakemu.com
+DTSTART:20190126T020000Z
+DTSTAMP:20190115T003936Z
+SUMMARY:Free Pie Friday
+DESCRIPTION:%RCome on down to Mac's Diner in Grand Marina and have a slice of pie on the house! Doesn't matter if you make a purchase or not. Just come on in out of the cold and settle in. Mac's has a small selection of Gluten Free pies as well now, so, what's not to love?!
+END:VEVENT
+BEGIN:VEVENT
+UID:f553fa58-b733-4316-86bb-f3ae3fc32643@Spirit Lake-spiritlakemu.com
+DTSTART:20190205T020000Z
+DTSTAMP:20190116T021928Z
+SUMMARY:Bowling Mixer!
+DESCRIPTION:%RSome of the Locals of Grand Lake are warming up to the New Comers. Reagan McFerrain, pie delivering ray of sunshine that she is has suggested a kind of event that might bring everyone together. Tossing balls down lanes! Ahem. A bowling mixer! This will take place at Grand Lakes Lanes.
   
-  Donated prizes, usually doggy merch from local crafters, are given out for accurately guessing the number of dogs present. ...unless you cheat and then everybody remembers that forever.
+  OOC: This is just a social scene to get some of the locals and the new faces together and get them to know each other better. Late arrivals are fine. Wander in and out as you like.
+END:VEVENT
+BEGIN:VEVENT
+UID:f88930c1-c9b0-4779-b38c-1c1fe33b5c5a@Spirit Lake-spiritlakemu.com
+DTSTART:20190129T020000Z
+DTSTAMP:20190118T172429Z
+SUMMARY:Pet-A-Palooza
+DESCRIPTION:
+  Seeing as Grand Lake has no shelter for domestic animals, about twice a year a few adoption groups make the drive out for a pet fair. Doggos? Kittehs? Burbs? Sneks? You betcha. There may even be guinea pigs and lizards. Basically anyything you could reasonably find at a rescue. Come find that special friend!
   
-  OOC: Don't stress if you can't make it or find large scenes too daunting to attend. If it becomes too large, I'll likely split things off into two separate scenes so prepare for that. Clutch your pearls or whatever you've got to do!
+  Disclaimer: This is being created as a purely social scene, HOWEVER staff is welcome to interject plot if it suits them. If players have PRP stuff they want to bring to it, please warn me in advance. :)
+  %RAll pet interactions should be emitted by those who attend and be presented in a reasonable fashion. No, you can't have a pet komodo dragon, or monkey, or emotional support velociraptor.
+END:VEVENT
+BEGIN:VEVENT
+UID:e7321dd3-8431-416e-ae41-5cc6f29efb90@Spirit Lake-spiritlakemu.com
+DTSTART:20190128T000000Z
+DTSTAMP:20190123T030231Z
+SUMMARY:In Honor Of Angus
+DESCRIPTION:Teagan is holding a funeral for a cow, to respect his life. The news of this is probably sure to get around quickly, especially since she's not going to be especially shameful about telling anyone and everyone she knows. No formal invitation this time, and it's alternatively at Sage & Thyme Ranch or Andrade Ranch, depending if you are local or a newcomer.
+END:VEVENT
+BEGIN:VEVENT
+UID:e3832c9d-ed3f-4f28-a451-f57a6f3385a0@Spirit Lake-spiritlakemu.com
+DTSTART:20190127T200000Z
+DTSTAMP:20190123T144423Z
+SUMMARY:Research at the Library (Limited Event)
+DESCRIPTION:Calgary, Jonathan, Danielle, and Cordelia find some information in the library.
   
-  +bbread 2/2 for Story Post
+  This event is limited to listed participants.
 END:VEVENT
 END:VCALENDAR

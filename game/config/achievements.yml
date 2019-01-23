@@ -12,3 +12,4 @@ achievements:
   shortcuts:
     achievements: achievement
   custom_achievements: {}
+  announce_channel: ''

@@ -27,6 +27,10 @@ jobs:
       - storyteller
     REQ:
       color: "%xw"
+    SECRET:
+      color: "%xc"
+      roles:
+      - storyteller
     SYS:
       color: "%xh"
     SPELL:

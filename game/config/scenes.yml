@@ -1,14 +1,13 @@
 ---
 scenes:
-  delete_unshared_scenes: false
-  idle_scene_timeout_days: 5
+  delete_unshared_scenes: true
+  idle_scene_timeout_days: 2
   include_pose_separator: false
   ooc_color: "%xc"
   room_cleanup_cron:
     minute:
     - 15
     - 45
-    - 18
   scene_types:
   - Social
   - Event
@@ -55,5 +54,5 @@ scenes:
     - 22
     minute:
     - 2
-  unshared_scene_deletion_days: 20
-  unshared_scene_warning_days: 13
+  unshared_scene_deletion_days: 90
+  unshared_scene_warning_days: 83
