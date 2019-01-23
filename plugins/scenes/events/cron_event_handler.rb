@@ -18,7 +18,8 @@ module AresMUSH
           end
         end
         
-        if (Global.read_config("scenes", "trending_scenes_category"))
+        trending_category = Global.read_config("scenes", "trending_scenes_category")
+        if (!trending_category.blank?)
           config = Global.read_config("scenes", "trending_scenes_cron")
           if Cron.is_cron_match?(config, event.time)
              Global.logger.debug "Trending scenes."

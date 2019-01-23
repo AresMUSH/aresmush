@@ -11,7 +11,8 @@ module AresMUSH
       end
       
       def characters(scene)
-        scene.participants.sort { |p| p.name }
+        scene.participants.select { |p| !p.who_hidden }
+           .sort_by { |p| p.name }
            .map { |p| p.room == scene.room ? p.name : "%xh%xx#{p.name}%xn"}
            .join(", ")
         
@@ -30,6 +31,7 @@ module AresMUSH
       end
       
       def last_activity(scene)
+        return "-" if !scene.last_activity
         TimeFormatter.format(Time.now - scene.last_activity)
       end
       
