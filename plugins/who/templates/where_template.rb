@@ -34,6 +34,10 @@ module AresMUSH
       end  
       
       def scene_room_name(char)
+        if (char.who_hidden)
+          return t('who.hidden')
+        end
+        
         name = Who.who_room_name(char)
         scene = char.room.scene
         if (scene)
@@ -75,10 +79,6 @@ module AresMUSH
          Demographics.name_and_nickname(char)
       end
        
-      def scene_room_name(char)
-        Who.who_room_name(char)
-      end
-      
       def room_name(char)
         room = char.room
         name = Who.who_room_name(char)
