@@ -26,6 +26,7 @@ module AresMUSH
     reference :scene_log, "AresMUSH::SceneLog"
     reference :plot, "AresMUSH::Plot"
     
+    set :invited, "AresMUSH::Character"
     set :watchers, "AresMUSH::Character"
     set :participants, "AresMUSH::Character"
     set :likers, "AresMUSH::Character"
