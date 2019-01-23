@@ -3,6 +3,11 @@ module AresMUSH
     class PoseCatcherCmd
       include CommandHandler
            
+      def check_quiet_room
+        return t('scenes.no_talking_quiet_room') if enactor_room == Game.master.quiet_room
+        return Scenes.check_restricted_ooc_chat(enactor)
+      end
+      
       def handle
         message = PoseFormatter.format(enactor_name, cmd.raw)
         is_emit = cmd.raw.start_with?("\\")

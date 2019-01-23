@@ -60,22 +60,27 @@ module AresMUSH
     end
     
     def emit(message)
+      return if self == Game.master.quiet_room
       self.clients.each { |c| c.emit message }
     end
 
     def emit_ooc(message)
+      return if self == Game.master.quiet_room
       self.clients.each { |c| c.emit_ooc message }
     end
     
     def emit_failure(message)
+      return if self == Game.master.quiet_room
       self.clients.each { |c| c.emit_failure message }
     end
     
     def emit_success(message)
+      return if self == Game.master.quiet_room
       self.clients.each { |c| c.emit_success message }
     end
     
     def emit_raw(message)
+      return if self == Game.master.quiet_room
       self.clients.each { |c| c.emit_raw message }
     end
   end

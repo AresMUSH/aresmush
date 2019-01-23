@@ -365,5 +365,12 @@ module AresMUSH
         end
       end
     end
+    
+    def self.check_restricted_ooc_chat(enactor)
+      lounge_channel = Global.read_config("scenes", "ooc_lounge_channel")
+      return nil if lounge_channel.blank?
+      return nil if enactor.room != Game.master.ooc_room
+      return t('scenes.no_talking_ooc_lounge', :channel => lounge_channel)
+    end
   end
 end

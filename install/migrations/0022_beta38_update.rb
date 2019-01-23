@@ -16,6 +16,7 @@ module AresMUSH
         config = DatabaseMigrator.read_config_file("scenes.yml")
         config['scenes']['trending_scenes_category'] = "Cookie Awards"
         config['scenes']['trending_scenes_cron'] = { 'hour' => [19], 'minute' => [15], 'day_of_week' => [ 'Mon' ] }
+        config['scenes']['ooc_lounge_channel'] = ''
         DatabaseMigrator.write_config_file("scenes.yml", config)    
   
         Global.logger.debug "Adding places marker config."
@@ -40,6 +41,14 @@ module AresMUSH
           if (s.shared && !s.date_shared)
             s.update(date_shared: s.created_at)
           end
+        end
+        
+        Global.logger.debug "Setting quiet room."
+        quiet_room = Room.find_one_by_name("Quiet Room")
+        if (quiet_room)
+          Game.master.update(quiet_room: quiet_room)
+        else
+          Global.logger.warn "Quiet room not found."
         end
       end
     end

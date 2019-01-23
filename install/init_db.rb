@@ -64,6 +64,7 @@ module AresMUSH
       game.welcome_room = welcome_room
       game.ic_start_room = ic_start_room
       game.ooc_room = ooc_room
+      game.quiet_room = quiet_room
       game.save
   
       admin_role = Role.create(name: "admin", is_restricted: true)

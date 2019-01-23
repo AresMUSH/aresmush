@@ -38,6 +38,8 @@ module AresMUSH
         before do
           allow(@event_char).to receive(:last_ip) { "127" }
           allow(@event_char).to receive(:last_hostname) { "localhost" }
+          allow(@event_char).to receive(:room) { @room }
+          allow(@room).to receive(:emit_success)
           allow(Login).to receive(:update_site_info) {}
           @login_events = CharConnectedEventHandler.new
           allow(@room_client).to receive(:emit_success)
@@ -50,8 +52,9 @@ module AresMUSH
           @login_events.on_event CharConnectedEvent.new(@event_client, @event_char_id)
         end
         
-        it "should announce the char if the client wants it" do
-          allow(Login).to receive(:wants_announce) { true }
+        it "should announce the char if the client wants it but is in a different room" do
+          expect(Login).to receive(:wants_announce).with(@room_char, @event_char) { true }
+          allow(@room_char).to receive(:room) { double }
           expect(@room_client).to receive(:emit_ooc).with("announce_char_connected")
           @login_events.on_event CharConnectedEvent.new(@event_client, @event_char_id)
         end
@@ -63,8 +66,7 @@ module AresMUSH
         end
         
         it "should announce the char in the room" do
-          allow(@event_char).to receive(:room) { @room }
-          expect(@room_client).to receive(:emit_success).with("announce_char_connected_here")
+          expect(@room).to receive(:emit_success).with("announce_char_connected_here")
           @login_events.on_event CharConnectedEvent.new(@event_client, @event_char_id)
         end
         
@@ -97,10 +99,13 @@ module AresMUSH
       describe :on_char_disconnected_event do
         before do
           @login_events = CharDisconnectedEventHandler.new
+          allow(@event_char).to receive(:room) { @room }
+          allow(@room).to receive(:emit_success)
         end
         
-        it "should announce the char if the client wants it" do
-          allow(Login).to receive(:wants_announce) { true }
+        it "should announce the char if the client wants it but is in a different room" do
+          expect(Login).to receive(:wants_announce).with(@room_char, @event_char) { true }
+          allow(@room_char).to receive(:room) { double }
           expect(@room_client).to receive(:emit_ooc).with("announce_char_disconnected")
           @login_events.on_event CharDisconnectedEvent.new(@event_client, @event_char_id)
         end
@@ -112,8 +117,7 @@ module AresMUSH
         end
 
         it "should announce the char in the room" do
-          allow(@event_char).to receive(:room) { @room }
-          expect(@room_client).to receive(:emit_success).with("announce_char_disconnected_here")
+          expect(@room).to receive(:emit_success).with("announce_char_disconnected_here")
           @login_events.on_event CharDisconnectedEvent.new(@event_client, @event_char_id)
         end
       end
