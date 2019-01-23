@@ -124,3 +124,6 @@ en:
         scene_char_uninvited: "You withdraw the invitation for %{name} to join the scene."
         scene_notify_invite: "%{name} has invited you to join their scene.  Use scene/join %{num} to join in."
         scene_notify_uninvited: "%{name} has withdrawn the invitation to join scene %{num}."
+        
+        no_talking_quiet_room: "Sssh.  This is the quiet room."
+        no_talking_ooc_lounge: "Chatting in the offstage lounge is disabled.  Please chat on the %{channel} channel so everyone can participate."
