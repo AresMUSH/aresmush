@@ -77,7 +77,7 @@ weather:
     mountain:
       early-summer:
         temperature: hot warm warm warm cool cool cool cool cold cold
-        condition: mountain-sunny mountain-sunny mountain-sunny mountain-sunny mountain-clear
+        condition: mountain-clear mountain-clear mountain-clear mountain-clear mountain-clear
           mountain-clear mountain-clear mountain-clear  mountain-clear mountain-fair
           mountain-fair mountain-drizzling mountain-overcast mountain-raining mountain-storming
           mountain-storming mountain-storming mountain-storming mountain-storming
@@ -91,7 +91,7 @@ weather:
         stability: 70
       early-spring:
         temperature: warm warm cool cool cool cool cold cold cold cold
-        condition: mountain-sunny mountain-sunny mountain-sunny mountain-sunny mountain-clear
+        condition: mountain-clear mountain-clear mountain-clear mountain-clear mountain-clear
           mountain-clear mountain-fair mountain-fair mountain-overcast mountain-misty
           mountain-drizzling mountain-drizzling mountain-raining mountain-raining
           mountain-raining mountain-storming mountain-sleeting mountain-sleeting mountain-dusting
@@ -99,35 +99,36 @@ weather:
         stability: 30
       spring:
         temperature: warm warm warm warm warm cool cool cool cool cold
-        condition: mountain-sunny mountain-sunny mountain-sunny mountain-clear mountain-clear
+        condition: mountain-clear mountain-clear mountain-clear mountain-clear mountain-clear
           mountain-fair mountain-fair mountain-overcast mountain-misty mountain-drizzling
           mountain-drizzling mountain-raining mountain-storming mountain-sleeting
           mountain-flurrying mountain-snowing
         stability: 30
       early-fall:
         temperature: warm warm warm cool cool cool cool cold cold cold
-        condition: mountain-sunny mountain-sunny mountain-sunny mountain-clear mountain-clear
-          mountain-clear mountain-fair mountain-fair mountain-windy mountain-windy
-          mountain-windy mountain-overcast mountain-drizzling mountain-raining mountain-sleeting
-          mountain-storming mountain-dusting
+        condition: |-
+          mountain-clear mountain-clear mountain-clear mountain-clear mountain-clear
+           mountain-clear mountain-fair mountain-fair mountain-windy mountain-windy
+           mountain-windy mountain-overcast mountain-drizzling mountain-raining
+           mountain-sleeting mountain-storming mountain-dusting
         stability: 70
       fall:
         temperature: warm warm cool cool cool cool cold cold cold cold
-        condition: mountain-sunny mountain-sunny mountain-clear mountain-clear mountain-clear
-          mountain-fair mountain-fair mountain-windy mountain-windy mountain-windy
-          mountain-overcast mountain-raining mountain-sleeting mountain-dusting mountain-dusting
-          mountain-flurrying mountain-snowing
+        condition: mountain-clear mountain-clear mountain-clear mountain-clear mountain-clear
+          mountain-clear mountain-fair mountain-fair mountain-windy mountain-windy
+          mountain-windy mountain-overcast mountain-raining mountain-sleeting mountain-dusting
+          mountain-dusting mountain-flurrying mountain-snowing
         stability: 50
       early-winter:
         temperature: warm cool cool cold cold cold cold cold cold cold
-        condition: mountain-sunny mountain-sunny mountain-clear mountain-clear mountain-fair
+        condition: mountain-clear mountain-clear mountain-clear mountain-clear mountain-fair
           mountain-overcast mountain-windy mountain-sleeting mountain-dusting mountain-dusting
           mountain-flurrying mountain-flurrying mountain-flurrying mountain-snowing
           mountain-snowing mountain-snowing mountain-blizzard
         stability: 50
       winter:
         temperature: cool cold cold cold cold cold cold cold cold cold
-        condition: mountain-sunny mountain-sunny mountain-clear mountain-clear mountain-fair
+        condition: mountain-clear mountain-clear mountain-clear mountain-clear mountain-fair
           mountain-overcast mountain-windy mountain-dusting mountain-dusting mountain-flurrying
           mountain-flurrying mountain-flurrying mountain-snowing mountain-snowing
           mountain-snowing mountain-blizzard mountain-blizzard
