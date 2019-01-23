@@ -22,7 +22,7 @@ module AresMUSH
         
         sent = Mail.send_mail(to_list.split(" "), subject, message, nil, enactor)
         if (!sent)
-          return { error: "website.unexpected_error" }
+          return { error: t("mail.error_sending_mail") }
         end
         
         {
