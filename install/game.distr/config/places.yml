@@ -1,5 +1,7 @@
 ---
 places:
+  start_marker: '['
+  end_marker: ']'
   places_cleanup_cron:
     minute:
     - 5
