@@ -18,7 +18,7 @@ module AresMUSH
         error = Website.check_login(request)
         return error if error
 
-        if (!Scenes.can_access_scene?(enactor, scene))
+        if (!Scenes.can_read_scene?(enactor, scene))
           return { error: t('scenes.access_not_allowed') }
         end
         
