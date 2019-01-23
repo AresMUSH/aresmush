@@ -24,7 +24,17 @@ module AresMUSH
         config['places']['end_marker'] = "]"
         DatabaseMigrator.write_config_file("places.yml", config)    
   
-  
+        Global.logger.debug "Moving portal requires registration."
+        config = DatabaseMigrator.read_config_file("website.yml")
+        require_reg = config['website']['portal_requires_registration']
+        config['website'].delete 'portal_requires_registration'
+        DatabaseMigrator.write_config_file("website.yml", config)    
+        
+        config = DatabaseMigrator.read_config_file("login.yml")
+        config['login']['portal_requires_registration'] = require_reg
+        config['login']['guest_disabled_message'] = ""
+        DatabaseMigrator.write_config_file("login.yml", config)    
+    
         Global.logger.debug "Setting share date on scenes."
         Scene.all.each do |s|
           if (s.shared && !s.date_shared)
