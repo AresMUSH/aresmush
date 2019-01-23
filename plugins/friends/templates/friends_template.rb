@@ -1,6 +1,5 @@
 module AresMUSH
   module Friends
-    # Template for an exit.
     class FriendsTemplate < ErbTemplateRenderer
             
       def initialize(enactor)
@@ -12,13 +11,21 @@ module AresMUSH
         @enactor.friendships.to_a.sort_by { |f| f.friend.name }
       end
       
-      def friend_name(friendship)
-        friendship.friend.name
+      def unlinked_friendships
+        @enactor.friendships.select { |f| !f.friend.handle }.sort_by { |f| f.friend.name }
+      end
+
+      def friend_note(friend)
+        friendship = @enactor.friendships.select { |f| f.friend == friend }
+        return friendship ? friendship.note : nil
       end
       
-      def friend_loc(friendship)
-        char = friendship.friend
-        Who.who_room_name(char)
+      def friend_name(friend)
+        friend.name
+      end
+      
+      def friend_loc(friend)
+        Who.who_room_name(friend)
       end
       
       def handle_friends
@@ -29,15 +36,14 @@ module AresMUSH
       def visible_alts(handle_name)
         handle = Handle.find_one_by_name(handle_name)
         visible_alts = AresCentral.alts_of(handle)
-        visible_alts.empty? ? nil : visible_alts.map { |a| a.name }.join(" ")
+        visible_alts.empty? ? nil : visible_alts
       end
       
-      def friend_last_on(friendship)
-        char = friendship.friend
-        if (Login.is_online?(char))
+      def friend_last_on(friend)
+        if (Login.is_online?(friend))
           connected = t('friends.connected')
         else
-          connected = OOCTime.local_long_timestr(@enactor, char.last_on)
+          connected = OOCTime.local_long_timestr(@enactor, friend.last_on)
         end
       end
       
