@@ -33,8 +33,7 @@ module AresMUSH
           time_left = (Custom.time_to_next_learn_spell(spell_learned) / 86400)
           if spell_learned.learning_complete
             client.emit_failure t('custom.already_know_spell', :spell => self.spell)
-          # elsif time_left > 0
-          #   client.emit_failure t('custom.cant_learn_yet', :spell => self.spell, :days => time_left.ceil)
+            client.emit_failure t('custom.cant_learn_yet', :spell => self.spell, :days => time_left.ceil)
           else
             client.emit_success t('custom.additional_learning', :spell => self.spell)
             xp_needed = spell_learned.xp_needed.to_i - 1
