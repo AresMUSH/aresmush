@@ -523,14 +523,18 @@ h2 {
 }
 
 .scene-log p {
-    margin: 2px 10px 10px 10px;
+    margin: 5px;
 }
 
 .scene-ooc-pose {
     margin-bottom: 10px;
-    padding: 10px 10px 10px 10px;
+    padding: 0px 10px 10px 10px;
 }
 
+.scene-pose-header {
+    padding-top: 10px;
+    margin-bottom: 10px;
+}
 
 .scene-journal {
     background-color: #DB5461;
