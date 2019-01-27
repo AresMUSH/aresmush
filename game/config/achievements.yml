@@ -1,5 +1,9 @@
 ---
 achievements:
+  announce_channel: Achievements
+  custom_achievements: {}
+  shortcuts:
+    achievements: achievement
   types:
     community: fa-users
     portal: fa-globe
@@ -9,7 +13,3 @@ achievements:
     potion: fa-flask
     death: fa-skull-crossbones
     plot: fa-book-open
-  shortcuts:
-    achievements: achievement
-  custom_achievements: {}
-  announce_channel: ''

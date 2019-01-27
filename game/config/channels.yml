@@ -1,5 +1,10 @@
 ---
 channels:
+  approved_channels:
+  - Chat
+  - RP Requests
+  - Big Scene
+  - Achievements
   clear_history_cron:
     hour:
     - 4
@@ -24,7 +29,3 @@ channels:
     comtitle: channel/title
     channel/name: channel/rename
   start_marker: "["
-  approved_channels:
-    - Chat
-    - RP Requests
-    - Big Scene

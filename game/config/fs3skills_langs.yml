@@ -7,6 +7,8 @@ fs3skills:
   languages:
   - name: Arabic
     desc: 
+  - name: Arapaho
+    desc: 
   - name: Cantonese
     desc: 
   - name: English
@@ -34,6 +36,8 @@ fs3skills:
   - name: Russian
     desc: 
   - name: Spanish
+    desc: 
+  - name: Ute
     desc: 
   starting_languages:
   - English
