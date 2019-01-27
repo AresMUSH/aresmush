@@ -173,7 +173,7 @@ module AresMUSH
     end
     
     def self.check_filter_type(filter)
-      types = ["ACTIVE", "MINE"].concat(Jobs.categories)
+      types = ["ACTIVE", "MINE", "ALL"].concat(Jobs.categories)
       return t('jobs.invalid_filter_type', :names => types) if !types.include?(filter)
       return nil
     end
