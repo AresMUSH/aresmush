@@ -10,3 +10,4 @@ events:
     events: event
     event/add: event/create
     event/remove: event/delete
+    cal: event
