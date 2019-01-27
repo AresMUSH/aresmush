@@ -12,14 +12,6 @@ scenes:
     - 22
     minute:
     - 2
-  trending_scenes_cron:
-    day_of_week:
-    - Mon
-    hour:
-    - 19
-    minute:
-    - 15
-  trending_scenes_category: "Cookie Awards"
   delete_unshared_scenes: false
   unshared_scene_warning_days: 13
   include_pose_separator: false
@@ -64,3 +56,11 @@ scenes:
     posebreak: autospace
   unshared_scene_deletion_days: 20
   idle_scene_timeout_days: 3
+  trending_scenes_category: Cookie Awards
+  trending_scenes_cron:
+    hour:
+    - 19
+    minute:
+    - 15
+    day_of_week:
+    - Mon
