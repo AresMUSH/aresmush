@@ -3,8 +3,6 @@ login:
   allow_web_registration: true
   guest_role: guest
   use_terms_of_service: true
-  portal_requires_registration: false
-  guest_disabled_message: ""
   activity_cron:
     minute:
     - 0
@@ -26,3 +24,5 @@ login:
   allow_creation: true
   login_not_allowed_message: ''
   creation_not_allowed_message: ''
+  portal_requires_registration: 
+  guest_disabled_message: ''
