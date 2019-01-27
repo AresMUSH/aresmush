@@ -16,7 +16,6 @@ module AresMUSH
         config = DatabaseMigrator.read_config_file("scenes.yml")
         config['scenes']['trending_scenes_category'] = "Cookie Awards"
         config['scenes']['trending_scenes_cron'] = { 'hour' => [19], 'minute' => [15], 'day_of_week' => [ 'Mon' ] }
-        config['scenes']['ooc_lounge_channel'] = ''
         DatabaseMigrator.write_config_file("scenes.yml", config)    
   
         Global.logger.debug "Adding places marker config."
@@ -35,8 +34,14 @@ module AresMUSH
         config['login']['portal_requires_registration'] = require_reg
         config['login']['guest_disabled_message'] = ""
         DatabaseMigrator.write_config_file("login.yml", config)    
+        
+        Global.logger.debug "Lounge channel and recall timeout."
+        config = DatabaseMigrator.read_config_file("channels.yml")
+        config['channels']['ooc_lounge_channel'] = ''
+        config['channels']['recall_timeout_days'] = 1
+        DatabaseMigrator.write_config_file("channels.yml", config)    
     
-        Global.logger.debug "Setting share date on scenes."
+        Global.logger.debug "Setting share date on web scenes."
         Scene.all.each do |s|
           if (s.shared && !s.date_shared)
             s.update(date_shared: s.created_at)
