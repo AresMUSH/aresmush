@@ -61,6 +61,7 @@ module AresMUSH
             char: { name: p.character.name, icon: Website.icon_for_char(p.character) }, 
             order: p.order, 
             id: p.id,
+            timestamp: OOCTime.local_long_timestr(enactor, p.created_at),
             is_setpose: p.is_setpose,
             is_system_pose: p.is_system_pose?,
             is_ooc: p.is_ooc,

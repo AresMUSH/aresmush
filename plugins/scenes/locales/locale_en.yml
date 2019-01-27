@@ -126,4 +126,4 @@ en:
         scene_notify_uninvited: "%{name} has withdrawn the invitation to join scene %{num}."
         
         no_talking_quiet_room: "Sssh.  This is the quiet room."
-        no_talking_ooc_lounge: "Chatting in the offstage lounge is disabled.  Please chat on the %{channel} channel so everyone can participate."
+        no_talking_ooc_lounge: "Chatting in the OOC lounge is sent to the %{channel} channel so everyone can participate.  Make sure you've joined and un-muted that channel if you want to chat here."
