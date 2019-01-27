@@ -160,6 +160,22 @@ fs3combat:
       init_mod: 0
       allowed_specials:
       special_group: ranged
+    Shotgun:
+      description: Shotgun meant for hunting
+      is_magic: false
+      skill: Firearms
+      lethality: 5
+      penetration: 4
+      weapon_type: Ranged
+      is_automatic: false
+      ammo: 0
+      recoil: 0
+      damage_type: Physical
+      accuracy: 1
+      has_shrapnel: false
+      init_mod: 0
+      allowed_specials:
+      special_group: ranged
     Rifle:
       description: Hunting Rifle
       is_magic: false
@@ -167,9 +183,9 @@ fs3combat:
       lethality: 0
       penetration: 6
       weapon_type: Ranged
-      is_automatic: true
+      is_automatic: false
       ammo: 0
-      recoil: 3
+      recoil: 0
       damage_type: Physical
       accuracy: 1
       has_shrapnel: false
