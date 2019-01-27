@@ -20,7 +20,7 @@ module AresMUSH
         
         message = Website.format_input_for_mush(message)
         
-        sent = Mail.send_mail(to_list.split(" "), subject, message, nil, enactor)
+        sent = Mail.send_mail(to_list, subject, message, nil, enactor)
         if (!sent)
           return { error: t("mail.error_sending_mail") }
         end
