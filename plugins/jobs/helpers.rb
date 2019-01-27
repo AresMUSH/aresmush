@@ -58,8 +58,10 @@ module AresMUSH
       case filter
       when "ALL"
         jobs = Job.all.select { |j| Jobs.can_access_category?(char, j.category) }
-      when "ACTIVE", nil
+      when "UNFINISHED", nil
         jobs = Job.all.select { |j| Jobs.can_access_category?(char, j.category) && (j.is_open? || j.is_unread?(char)) }
+      when "ACTIVE", nil
+        jobs = Job.all.select { |j| Jobs.can_access_category?(char, j.category) && (j.is_active? || j.is_unread?(char)) }
       when "MINE"
         jobs = char.assigned_jobs.select { |j| j.is_open? }
       else
@@ -173,7 +175,7 @@ module AresMUSH
     end
     
     def self.check_filter_type(filter)
-      types = ["ACTIVE", "MINE", "ALL"].concat(Jobs.categories)
+      types = ["ACTIVE", "MINE", "ALL", "UNFINISHED"].concat(Jobs.categories)
       return t('jobs.invalid_filter_type', :names => types) if !types.include?(filter)
       return nil
     end
