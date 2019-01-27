@@ -7,6 +7,8 @@ module AresMUSH
       before do
         @client = double
         @enactor = double
+        allow(@enactor).to receive(:ooc_name) { "Bob OOC" }
+        allow(@enactor).to receive(:name) { "Bob" }
         @handler = PoseCmd.new(@client, Command.new("pose a message"), @enactor)
         stub_translate_for_testing
       end
@@ -30,19 +32,19 @@ module AresMUSH
         it "should format an emit message" do
           @handler = PoseCmd.new(@client, Command.new("emit test"), @enactor)
           expect(PoseFormatter).to receive(:format).with("Bob", "\\test") { "formatted msg" }
-          expect(@handler.message).to eq "formatted msg"
+          expect(@handler.message("Bob")).to eq "formatted msg"
         end
 
         it "should format a say message" do
           @handler = PoseCmd.new(@client, Command.new("say test"), @enactor)
           expect(PoseFormatter).to receive(:format).with("Bob", "\"test") { "formatted msg" }
-          expect(@handler.message).to eq "formatted msg"
+          expect(@handler.message("Bob")).to eq "formatted msg"
         end
 
         it "should format a pose message" do
           @handler = PoseCmd.new(@client, Command.new("pose test"), @enactor)
           expect(PoseFormatter).to receive(:format).with("Bob", ":test") { "formatted msg" }
-          expect(@handler.message).to eq "formatted msg"
+          expect(@handler.message("Bob")).to eq "formatted msg"
         end
       end     
     end
