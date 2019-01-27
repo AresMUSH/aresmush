@@ -48,7 +48,8 @@ module AresMUSH
           tables: true,
           no_intra_emphasis: true,
           autolink: true,
-          fenced_code_blocks: true
+          fenced_code_blocks: true,
+          strikethrough: true
         }
             
         renderer = HTMLWithWikiExtensions.new(
