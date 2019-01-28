@@ -100,8 +100,8 @@ module AresMUSH
             Scenes.emit_pose(@enactor, "A pose", false, false, nil, true)
           end
           
-          it "should update the room's set pose" do
-            expect(@enactor_room).to receive(:update).with(:scene_set => "A pose")
+          it "should not update the room's set pose" do
+            expect(@enactor_room).to_not receive(:update).with(:scene_set => "A pose")
             Scenes.emit_pose(@enactor, "A pose", false, false, nil, true)
           end
           

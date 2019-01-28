@@ -49,12 +49,12 @@ module AresMUSH
     
     # Deprecated - use room.emit instead
     def self.emit_to_room(room, message)	
-       room.emit(message)
+      room.emit(message)
     end	
     
     # Deprecated - use room.emit_ooc instead
     def self.emit_ooc_to_room(room, message)	
-       room.emit_ooc(message)
+      room.emit_ooc(message)
     end
     
   end

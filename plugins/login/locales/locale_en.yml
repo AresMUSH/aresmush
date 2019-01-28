@@ -26,6 +26,7 @@ en:
        tos_agree: "Type %xctos/agree%xn to agree to these terms of service."
        maybe_you_meant_tour: "%xcIf you're trying to connect to a guest character, please type 'tour'.%xn"
        all_guests_taken:  "We're so sorry - all the guest characters are currently taken.  Please try again later."
+       no_guests: "This game has disabled guest characters."
        guest_name: "Your temporary guest character name is %{name}."       
        invalid_watch_option: "Valid watch options are: all, none, friends"
        watch_all: "You will now see connect/disconnect messages for all characters."
@@ -73,3 +74,4 @@ en:
        notice_config_on: "%{config} notices on."
        notice_config_off: "%{config} notices off."
        unrecognized_notice_config: "That is not a valid notices setting."
+       motd_set: "Login message of the day set."

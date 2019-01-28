@@ -42,6 +42,8 @@ A scene can either be open (anyone's invited) or private (only those invited sho
 `scene <#>.` - See a scene's information.
 `scene/join <#>` - Joins an open scene.
 `meetme <list of names>` - Invites others to join your private scene.
+`scene/invite <name>[=<scene num>]` - Invites someone to a private scene.
+`scene/uninvite <name>[=<scene num>]` - Withdraws an invitation.
 
 ## Setting Scene Info
 

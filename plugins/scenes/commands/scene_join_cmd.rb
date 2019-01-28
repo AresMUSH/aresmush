@@ -29,7 +29,7 @@ module AresMUSH
             Scenes.create_scene_temproom(scene)
           end
           
-          can_join = Scenes.can_access_scene?(enactor, scene) || !scene.private_scene        
+          can_join = Scenes.can_read_scene?(enactor, scene) || !scene.private_scene        
           if (!can_join)
             client.emit_failure t('scenes.scene_is_private')
             return

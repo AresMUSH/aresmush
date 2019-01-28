@@ -108,5 +108,16 @@ module AresMUSH
       tags << Mail.trashed_tag
       message.update(tags: tags)
     end
+    
+    def self.reply_list(msg, enactor, reply_all = false)
+      recipients = msg.author ? [msg.author.name ] : []
+      if (reply_all)
+        to_list = msg.to_list.split(" ")
+        to_list.delete enactor.name
+        recipients.concat to_list
+      end
+      recipients.uniq
+    end
+    
   end
 end

@@ -12,11 +12,12 @@ module AresMUSH
                   id: s.id,
                   title: s.title,
                   summary: s.summary,
-                  location: s.location,
+                  location: Scenes.can_read_scene?(enactor, s) ? s.location : t('scenes.private'),
                   icdate: s.icdate,
                   can_view: enactor && Scenes.can_read_scene?(enactor, s),
                   is_private: s.private_scene,
                   participants: Scenes.participants_and_room_chars(s)
+                      .select { |p| !p.who_hidden }
                       .sort_by { |p| p.name }
                       .map { |p| { 
                          name: p.name, 
@@ -26,7 +27,7 @@ module AresMUSH
                          last_posed: s.last_posed == p }},
                   scene_type: s.scene_type ? s.scene_type.titlecase : 'Unknown',
                   likes: s.likes,
-                  is_unread: enactor && Scenes.can_access_scene?(enactor, s) && s.participants.include?(enactor) && s.is_unread?(enactor),
+                  is_unread: enactor && Scenes.can_read_scene?(enactor, s) && s.participants.include?(enactor) && s.is_unread?(enactor),
                   updated: OOCTime.local_long_timestr(enactor, s.last_activity),
                   watching: Scenes.is_watching?(s, enactor),
                   participating: Scenes.is_participant?(s, enactor),

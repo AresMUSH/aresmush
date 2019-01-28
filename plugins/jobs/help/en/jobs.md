@@ -24,9 +24,12 @@ The Jobs system is used by the game administrators to track work requests and to
 `jobs/mine`, `jobs/active` - Shortcuts for the common filters.
 
 Valid filters are:
-* Active - Jobs that are open and/or have new activity since you last looked.  This is the default filter.
-* Mine - Jobs that are open and assigned to you.
-* (Category Name) - Jobs in the given category.
+
+* Active - Jobs that are active (not done or on hold) and/or have new activity since you last looked.  This is the default filter.
+* Mine - Active jobs assigned to you.
+* Unfinished - All jobs not marked done.
+* (Category Name) - Active jobs in the given category.
+* All - All jobs.
 
 ## Creating Jobs
 

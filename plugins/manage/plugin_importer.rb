@@ -3,7 +3,7 @@ module AresMUSH
     class PluginImporter
       def initialize(plugin_name)
         @tmp_dir = "/tmp/ares-extras"
-        @plugin_name = plugin_name
+        @plugin_name = (plugin_name || "").downcase
         @source_dir = File.join(@tmp_dir, "plugins", @plugin_name)
       end
         

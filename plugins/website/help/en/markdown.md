@@ -56,6 +56,8 @@ You can include a gallery of images (similar to what appears on the character pr
 
 The built-in music player (based on a WikiDot version by @Blu) lets you add the sound from a YouTube video to your page with a start/stop play button.  All you need is the YouTube video ID.
 
+Note: The music player only works on character pages.
+
 `[[musicplayer E5TsA6CHpII Description]]`
 
 ## Collapsible Text

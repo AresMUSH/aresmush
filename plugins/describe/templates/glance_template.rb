@@ -15,6 +15,14 @@ module AresMUSH
       def online_chars
         @room.characters.select { |c| Login.is_online?(c) }.sort_by { |c| c.name }
       end
+      
+      def chars
+        all_chars = online_chars
+        if (@room.scene)
+          all_chars.concat @room.scene.participants.to_a
+        end
+        all_chars.uniq
+      end
         
       def glance(char)
         glance_format = Global.read_config("describe", "glance_format")

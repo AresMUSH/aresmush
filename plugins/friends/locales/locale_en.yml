@@ -1,6 +1,6 @@
 en:
     friends:
-        friends_header: "Friends              Location                       Last On"
+        friends_header: "Friend               Location                       Last On"
         handle_friends_header: "Handle Friends With Alts On This Game"
         already_friend: "%{name} is already on your friends list."
         not_friend: "%{name} is not on your friends list."
