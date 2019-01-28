@@ -1,9 +1,9 @@
 module AresMUSH
-    module Txt 
+    module Txt
         class TxtSendCmd
             include CommandHandler
 # Possible commands... txt name=message; txt =message; txt name[/optional scene #]=<message>
-            
+
             attr_accessor :names, :message, :scene_id
 
         def parse_args
@@ -48,7 +48,7 @@ module AresMUSH
             return nil
         end
 
-      
+
         def handle
 
           OnlineCharFinder.with_online_chars(self.names, client) do |results|
@@ -57,19 +57,19 @@ module AresMUSH
             name = enactor.name
             message = self.message
             recipient_names = recipients.map { |r| r.name }
-  
-            sender_txt = t('txt.txt_to_sender', 
+
+            sender_txt = t('txt.txt_to_sender',
             :txt => Txt.format_txt_indicator(enactor),
-            :sender => enactor.name, 
-            :recipients => Txt.format_recipient_indicator(recipient_names), 
+            :sender => enactor.name,
+            :recipients => Txt.format_recipient_indicator(recipient_names),
             :message => message)
 
-            scene_txt = t('txt.txt_to_scene', 
+            scene_txt = t('txt.txt_to_scene',
             :txt => Txt.format_txt_indicator(enactor),
-            :sender => enactor.name, 
-            :recipients => Txt.format_recipient_indicator(recipient_names), 
+            :sender => enactor.name,
+            :recipients => Txt.format_recipient_indicator(recipient_names),
             :message => message )
-            
+
             locked = recipients.select { |c| c.page_ignored.include?(enactor) }
             if (locked.any?)
               locked_names = locked.map { |c| c.name }
@@ -83,18 +83,18 @@ module AresMUSH
                   client.emit_failure t('txt.scene_not_found')
                   return
                 end
-                
+
                 if (scene.completed)
                   client.emit_failure t('txt.scene_not_running')
                   return
                 end
-  
-                can_txt_scene = Scenes.can_access_scene?(enactor, scene)        
+
+                can_txt_scene = Scenes.can_edit_scene?(enactor, scene)
                 if (!can_txt_scene)
                   client.emit_failure t('txt.scene_no_access')
                   return
                 end
-  
+
                 Scenes.add_to_scene(scene, scene_txt)
 
                 if enactor.room.scene_id != self.scene_id
@@ -108,7 +108,7 @@ module AresMUSH
 
                 results.each do |r|
                   page_recipient(r.client, r.char, recipient_names, message)
-                end   
+                end
 
               end
             else
@@ -116,7 +116,7 @@ module AresMUSH
 
               results.each do |r|
                 page_recipient(r.client, r.char, recipient_names, message)
-              end   
+              end
 
             end
 
@@ -134,10 +134,10 @@ module AresMUSH
 
         def page_recipient(other_client, other_char, recipient_names, message)
 
-          recipient_txt = t('txt.txt_to_recipient', 
+          recipient_txt = t('txt.txt_to_recipient',
           :txt => Txt.format_txt_indicator(other_char),
-          :sender => enactor.name, 
-          :recipients => Txt.format_recipient_indicator(recipient_names), 
+          :sender => enactor.name,
+          :recipients => Txt.format_recipient_indicator(recipient_names),
           :message => message)
 
             if (other_char.page_do_not_disturb)
