@@ -36,9 +36,11 @@ You can change what jobs you see in the jobs list.  If you're a coder, you could
 
 Valid filters are:
 
-* Active - Jobs that are open and/or have new activity since you last looked.  This is the default filter.
-* Mine - Jobs that are open and assigned to you.
-* (Category Name) - Jobs in the given category.
+* Active - Jobs that are active (not done or on hold) and/or have new activity since you last looked.  This is the default filter.
+* Mine - Active jobs assigned to you.
+* Unfinished - All jobs not marked done.
+* (Category Name) - Active jobs in the given category.
+* All - All jobs.
 
 `jobs/filer <flter>` - Filters the jobs list.
 `jobs/mine`, `jobs/active` - Shortcuts for the common filters.

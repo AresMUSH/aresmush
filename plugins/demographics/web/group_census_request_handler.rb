@@ -8,6 +8,8 @@ module AresMUSH
 
         if (filter == 'Gender')
           groups = Chargen.approved_chars.group_by { |c| c.demographic(:gender)}
+        elsif (filter == 'Timezone')
+          groups = Chargen.approved_chars.group_by { |c| c.timezone}
         elsif (filter == 'Rank')
           groups = Chargen.approved_chars.group_by { |c| c.rank}
         else

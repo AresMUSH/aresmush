@@ -41,3 +41,9 @@ You can also view someone's email.
 You can change the terms of service in the configuration section of the game's web portal.  When you make substantial changes, you may want to require everyone to re-acknowledge the TOS.  You can reset all prior acknowledgements.
 
 `tos/reset` - Resets the terms of service acknowledgements.
+
+## Setting the Message of the Day
+
+You can set whether an important message appears on the notices screen (a 'message of the day').
+
+`notice/motd <message>` - Sets the message of the day.  Leave blank to clear it.

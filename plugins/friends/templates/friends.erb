@@ -1,16 +1,22 @@
 <%= header %>
 %xh<%= t('friends.friends_header') %>%xn
-<% friendships.each do |f| %>
+<%= divider %>
+<% handle_friends.each do |h| %>
+<% if visible_alts(h) %>
+%xh<%= left(h,20) %>%xn
+<% visible_alts(h).each do |f| %>
 <%= left(friend_name(f), 20) %> <%= left(friend_loc(f), 30) %> <%= friend_last_on(f) %> 
-<% if f.note %>
-     %xc<%= f.note %>%xn
+<% if friend_note(f) %>
+     <%= friend_note(f) %>
 <% end %>
 <% end %>
 <%= divider %>
-%xh<%= t('friends.handle_friends_header') %>%xn
-<% handle_friends.each do |h| %>
-<% if visible_alts(h) %>
-%xh<%= left(h,20) %> <%= visible_alts(h) %>
+<% end %>
+<% end %>
+<% unlinked_friendships.each do |f| %>
+<%= left(friend_name(f.friend), 20) %> <%= left(friend_loc(f.friend), 30) %> <%= friend_last_on(f.friend) %> 
+<% if f.note %>
+     %xc<%= f.note %>%xn
 <% end %>
 <% end %>
 <%= footer %>

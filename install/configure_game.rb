@@ -71,7 +71,6 @@ module AresMUSH
 
       mush_name = get_required_field "MUSH Name"
       game_desc = get_required_field "Game Description"
-      website = get_optional_field "Website"
       
       print "\nMUSH Category > "
       print "\nPick one:"
@@ -112,7 +111,7 @@ module AresMUSH
         "mush_name" => mush_name,
         "category" => category,
         "game_desc" => game_desc,
-        "website" => website,
+        "website" => '',
         "public_game" => false,
         "game_status" => 'In Development'
       }

@@ -58,7 +58,7 @@ module AresMUSH
       end
       
       def description
-        Describe::RoomDescBuilder.build(@room)
+        @room.expanded_desc
       end
       
       def ooc_time
