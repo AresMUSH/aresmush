@@ -15,7 +15,7 @@ module AresMUSH
         
         active_scenes = Scene.all.select { |s| !s.completed }
         if (enactor)
-          unread_scenes = active_scenes.select { |s| s.participants.include?(enactor) && Scenes.can_access_scene?(enactor, s) && s.is_unread?(enactor) }
+          unread_scenes = active_scenes.select { |s| s.participants.include?(enactor) && Scenes.can_read_scene?(enactor, s) && s.is_unread?(enactor) }
           .map { |s| {
             title: s.date_title,
             id: s.id

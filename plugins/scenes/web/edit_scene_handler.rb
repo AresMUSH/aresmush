@@ -12,7 +12,7 @@ module AresMUSH
         error = Website.check_login(request)
         return error if error
         
-        if (!Scenes.can_access_scene?(enactor, scene))
+        if (!Scenes.can_edit_scene?(enactor, scene))
           return { error: t('dispatcher.not_allowed') }
         end
         

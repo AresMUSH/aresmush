@@ -18,6 +18,8 @@ module AresMUSH
             return
           end
           template = CompleteCensusTemplate.new(paginator)
+        elsif (self.name == "Timezone" || self.name == "Timezones")
+          template = TimezoneCensusTemplate.new
         elsif (self.name == "Genders" || self.name == "Gender")
           template = GenderCensusTemplate.new
         elsif (Ranks.is_enabled? && (self.name == "Ranks" || self.name == "Rank"))

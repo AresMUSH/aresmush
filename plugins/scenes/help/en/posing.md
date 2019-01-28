@@ -21,7 +21,8 @@ aliases:
 `ooc I have a question.` or `'I have a question.` - <OOC> Bob says, "I have a question."
 
 `pemit <list of names>=<message>` - Make a private emit with an OOC notice in front telling who it came from.
-`emit/set <set pose>` - Mark an emit as a set pose that will be set off with a border on the game, and highlighted in scene and wiki logs.
+`emit/set <set pose>` - Mark an emit as a set pose that will be highlighted in scene and logs and stickied to the top of the scene.
+`emit/gm <gm pose>` - Mark an emit as a GM pose that will be highlighted in scene and logs.
 
 ## Nospoof
 

@@ -82,6 +82,8 @@ module AresMUSH
         return GetLogsRequestHandler
       when "log"
         return GetLogRequestHandler
+      when "webError"
+        return WebErrorRequestHandler
       
       ## TINKER
       when "getTinker"

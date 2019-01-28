@@ -37,7 +37,7 @@ en:
     db:
         object_not_found: Nothing found with that name.
         object_ambiguous: Multiple results found with that name.
-        no_char_online_found: "There are no characters online named %{name}."
+        no_char_online_found: "%{name} is not online, though they might be playing via the web portal."
         ambiguous_char_online: "There's more than one character online matching %{name}.  Please be more specific."
         
     
@@ -70,7 +70,7 @@ en:
         separator: '.'
 
     pages:
-        page_x_of_y: "%xhpage %{x} of %{y}"
+        page_x_of_y: "page %{x} of %{y}"
         not_that_many_pages: "There aren't that many pages."
         no_items: "There are no items to display."
         

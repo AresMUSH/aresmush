@@ -1,4 +1,8 @@
 <%= header %>
+<% if motd %>
+<%= center(motd, 78) %>
+
+<% end %>
 <%= mail %>
 <% alts.each do |a| %>
 <% if has_alt_mail(a) %>
