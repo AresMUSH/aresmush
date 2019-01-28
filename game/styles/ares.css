@@ -1164,9 +1164,28 @@ h2 {
   background-color: #3E7499; }
 
 .job-category-PLOT {
-  background-color: #345B5B; }
+  background-color: #477878; }
 
-/* Sidebar */
+.job-category-SECRET {
+  background-color: #3e5b5b; }
+
+.job-category-BUILD {
+  background-color: #640404;
+  color: white; }
+
+.job-category-CODE {
+  background-color: orange; }
+
+.job-category-SYS {
+  background-color: #5bc0de; }
+
+.job-category-PLAYER {
+  background-color: #fef64a; }
+
+.job-category-LUCK {
+  background-color: #068431; }
+
+#068431
 .sidebar-heading h2 {
   padding: 0px;
   color: #C2C1C2;
