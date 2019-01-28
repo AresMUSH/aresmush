@@ -1,0 +1,12 @@
+if [[ $# -eq 0 ]] ; then
+  echo 'Please specify the domain name of your certificate.'
+  exit 0
+fi
+
+mkdir /home/ares/certs
+sudo cp /etc/letsencrypt/live/$1/*.pem /home/ares/certs
+sudo echo "#!/bin/sh" > /home/ares/certs/update_certs.sh
+sudo echo -e "sudo cp /etc/letsencrypt/live/${1}/*.pem /home/ares/certs" > /home/ares/certs/update_certs.sh
+sudo chgrp -R ares /home/ares/certs
+sudo chmod -R 740 /home/ares/certs
+sudo certbot renew --deploy-hook /home/ares/certs/update_certs.sh

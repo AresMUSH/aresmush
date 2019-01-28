@@ -6,23 +6,11 @@ module AresMUSH
         scene = Scene[request.args[:id]]
         enactor = request.enactor
       
-        if (!scene)
-          return { error: t('webportal.not_found') }
-        end
-      
         error = Website.check_login(request, true)
         return error if error
 
-        if (!Scenes.can_read_scene?(enactor, scene))
-          return { error: t('scenes.scene_is_private') }
-        end
-      
-        if (scene.completed)
-          return { error: t('scenes.scene_already_completed') }
-        end
-      
         area_name = nil
-        if (scene.room)
+        if (scene && scene.room)
           area_name = scene.room.area_name
         end
         

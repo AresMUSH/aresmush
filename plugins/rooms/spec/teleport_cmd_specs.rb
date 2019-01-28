@@ -98,8 +98,11 @@ module AresMUSH
           before do
             other_char = double
             other_client = double
+            room1 = double
+            allow(room1).to receive(:name_upcase) { "ROOM1" }
             allow(Rooms).to receive(:find_destination) { [] }
             allow(@handler).to receive(:find_targets) { [ {:client => other_client, :char => other_char } ] }
+            allow(Room).to receive(:all) { [ room1 ]}
             allow(@client).to receive(:emit_failure)
           end  
           

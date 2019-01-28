@@ -20,6 +20,10 @@ module AresMUSH
         text
       end
       
+      def autolink(link, link_type)
+        "<a target=\"_blank\" href=\"#{link}\">#{link}</a>"
+      end
+      
       def wiki_url(text)
         
       end
@@ -44,7 +48,8 @@ module AresMUSH
           tables: true,
           no_intra_emphasis: true,
           autolink: true,
-          fenced_code_blocks: true
+          fenced_code_blocks: true,
+          strikethrough: true
         }
             
         renderer = HTMLWithWikiExtensions.new(

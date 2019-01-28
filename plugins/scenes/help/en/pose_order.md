@@ -14,7 +14,7 @@ Pose order tracking is a tool to help you keep track of whose turn it is.  It is
 
 `pose/order` - Shows the pose order of the room.
 
-By default, the system will nudge you when it's your turn to pose, according to the established pose order.  This notification will only happen after the first turn, when repose is on, and when at least three people are in a scene.  You can disable this notification or temporarily gag it until your next login.
+By default, the system will nudge you when it's your turn to pose, according to the established pose order.  This notification will only happen after the first turn, when repose is on.  You can disable this notification or temporarily gag it until your next login.
 
 `pose/nudge <on, off or gag>`
 

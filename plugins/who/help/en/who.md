@@ -13,9 +13,8 @@ The `who` command shows you which other players are connected to the game and in
 
 `who` - Shows the who list.
 `where` - Shows the who list including character locations.
-`hide` and `unhide` - Controls whether your location shows up on the who list.
-      There is no way in Ares to completely hide yourself from the who list or room
-      descriptions (i.e. no dark/hidden power.)
+`hide` and `unhide` - Controls whether your location shows up on the who list and live scene list.
+      There is no way in Ares to completely omit yourself from the who list or room descriptions (i.e. no dark power.)
 
 ## Who Status
 

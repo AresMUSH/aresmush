@@ -5,7 +5,6 @@ website:
   character_gallery_subgroup: Position
   left_sidebar: false
   max_upload_size_kb: 5000
-  portal_requires_registration: false
   restricted_pages:
   - home
   sitemap_update_cron:

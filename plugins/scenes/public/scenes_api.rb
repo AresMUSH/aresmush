@@ -42,5 +42,20 @@ module AresMUSH
         Scenes.handle_word_count_achievements(character, pose)
       end
     end
+    
+    def self.invite_to_scene(scene, char, enactor)
+      if (!scene.invited.include?(char))
+        scene.invited.add char
+      end
+      Login.emit_ooc_if_logged_in(char, t('scenes.scene_notify_invite', :name => enactor.name, :num => scene.id))        
+    end
+    
+    def self.uninvite_from_scene(scene, char, enactor)
+      if (scene.invited.include?(char))
+        scene.invited.delete char
+      end
+      Login.emit_ooc_if_logged_in(char, t('scenes.scene_notify_uninvited', :name => enactor.name, :num => scene.id))
+    end
+    
   end
 end
