@@ -28,7 +28,7 @@ module AresMUSH
         end
       when "emit"
         case cmd.switch
-        when "set"
+        when "set", "gm"
           return SetPoseCmd
         else
           return PoseCmd
@@ -78,6 +78,8 @@ module AresMUSH
           return SceneInfoCmd
         when "delete"
           return SceneDeleteCmd
+        when "invite", "uninvite"
+          return SceneInviteCmd
         when "undo"
           return SceneUndoCmd
         when "replace", "typo"

@@ -43,6 +43,9 @@ module AresMUSH
         event.start_time_standard
       end
       
+      def motd
+        Game.master.login_motd
+      end
     end
   end
 end

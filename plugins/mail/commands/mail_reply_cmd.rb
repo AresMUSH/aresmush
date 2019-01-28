@@ -38,21 +38,11 @@ module AresMUSH
       def reply_to(msg)
         Global.logger.debug("#{self.class.name} #{client} replying to message #{self.num} (#{msg.subject}).")
         subject = t('mail.reply_subject', :subject => msg.subject)
-        recipients = get_recipients(msg)
+        recipients = Mail.reply_list(msg, enactor, cmd.switch_is?("replyall"))
         
         if (Mail.send_mail(recipients, subject, body, client, enactor))
           client.emit_ooc t('mail.message_sent')
         end
-      end
-      
-      def get_recipients(msg)
-        recipients = [msg.author.name]
-        if (cmd.switch_is?("replyall"))
-          to_list = msg.to_list.split(" ")
-          to_list.delete enactor.name
-          recipients.concat to_list
-        end
-        recipients
       end
       
       def log_command

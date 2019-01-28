@@ -32,6 +32,12 @@ module AresMUSH
       self.status != "DONE"
     end
     
+    def is_active?
+      return false if self.status == "DONE"
+      return false if self.status == "HOLD"
+      return true
+    end
+    
     def created_date_str(char)
       OOCTime.local_long_timestr(char, self.created_at)
     end

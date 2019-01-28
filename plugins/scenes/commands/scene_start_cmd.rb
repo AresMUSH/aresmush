@@ -20,7 +20,7 @@ module AresMUSH
           self.privacy = titlecase_arg(args.arg2)
           self.temp = true
         else
-          self.location = enactor_room.name
+          self.location = titlecase_arg(cmd.args)
           self.privacy = "Private"
           self.temp = true
         end

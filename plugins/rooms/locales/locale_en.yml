@@ -9,7 +9,7 @@ en:
        nowhere: "Nowhere"
        cant_go_that_way: "You can't go that way."
        room_directory: "Room Directory"
-       invalid_teleport_destination: "That is not a valid teleport destination."
+       invalid_teleport_destination: "That is not a valid teleport destination.  Maybe you meant one of these: %{rooms}"
        you_are_teleported: "%{name} is teleporting you to a new location."
        cant_find_that_to_teleport: "Cannot find %{name} to teleport them."
        can_only_link_exits: You can only link exits.

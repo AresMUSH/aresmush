@@ -44,6 +44,11 @@ module AresMUSH
         end
       when "last"
         return LastCmd
+      when "notice"
+        case cmd.switch
+        when "motd"
+          return NoticeMotdCmd
+        end
       when "notices"
         return NoticesCmd
       when "onconnect"

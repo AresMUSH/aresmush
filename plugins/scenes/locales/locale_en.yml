@@ -17,8 +17,8 @@ en:
         whisper_emit: "%{name} whispers to %{target}, \"%{message}\""
         whisper_emit_header: "%xc%% Private whisper:%xn"
 
-        grid_scene: "<%xhOn Grid%xn>"
-        temproom_scene: "<%xhTemp Room%xn>"
+        grid_scene: "On Grid"
+        temproom_scene: "Temp Room"
 
         scene_ending: "%{name} has stopped this scene."
         scene_ending_public: "%{name} has stopped this scene.  You can restart it at any time using scene/restart, but it will restart in a temp room and NOT in this room."
@@ -117,3 +117,13 @@ en:
 
         edited_scene_pose: "%{name} has edited their pose: %{pose}."
         deleted_scene_pose: "%{name} has deleted their pose: %{pose}."
+
+        trending_scenes_subject: "Popular Scenes This Week"
+
+        scene_char_invited: "You invite %{name} to join the scene."
+        scene_char_uninvited: "You withdraw the invitation for %{name} to join the scene."
+        scene_notify_invite: "%{name} has invited you to join their scene.  Use scene/join %{num} to join in."
+        scene_notify_uninvited: "%{name} has withdrawn the invitation to join scene %{num}."
+
+        no_talking_quiet_room: "Sssh.  This is the quiet room."
+        no_talking_ooc_lounge: "Chatting in the OOC lounge is sent to the %{channel} channel so everyone can participate.  Make sure you've joined and un-muted that channel if you want to chat here."

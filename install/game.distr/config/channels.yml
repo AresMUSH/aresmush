@@ -27,3 +27,5 @@ channels:
     - 47
   approved_channels:
   - RP Requests
+  ooc_lounge_channel: ''
+  recall_timeout_days: 1

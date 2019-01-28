@@ -12,7 +12,7 @@ module AresMUSH
           return { error: t('webportal.not_found') }
         end
         
-        if (!scene.shared && !Scenes.can_access_scene?(enactor, scene))
+        if (!scene.shared && !Scenes.can_read_scene?(enactor, scene))
           return { error: t('dispatcher.not_allowed') }
         end
         

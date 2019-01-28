@@ -26,6 +26,7 @@ module AresMUSH
     reference :scene_log, "AresMUSH::SceneLog"
     reference :plot, "AresMUSH::Plot"
     
+    set :invited, "AresMUSH::Character"
     set :watchers, "AresMUSH::Character"
     set :participants, "AresMUSH::Character"
     set :likers, "AresMUSH::Character"
@@ -129,6 +130,10 @@ module AresMUSH
     
     def likes
       self.likers.count
+    end
+    
+    def url
+      "#{Game.web_portal_url}/scene/#{self.id}"
     end
   end
 end

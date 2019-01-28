@@ -14,7 +14,7 @@ aliases:
 `where/ic` - Only show people who are IC.
 `where/friends` - Only show where your friends are.
 `scenes` - Shows active scenes and who is in them.
-`hide` and `unhide` - Controls whether your location shows up on the who list.
+`hide` and `unhide` - Controls whether your location shows up on the who and live scenes lists.
 
 `who <search>` or `where <search>` - Search for characters whose name starts with or matches a particular string.
 

@@ -14,7 +14,7 @@ module AresMUSH
         end
         
         if (edit_mode)
-          if (!Scenes.can_access_scene?(enactor, scene))
+          if (!Scenes.can_read_scene?(enactor, scene))
             return { error: t('dispatcher.not_allowed') }
           end
         else          
