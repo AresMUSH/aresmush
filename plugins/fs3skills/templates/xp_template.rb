@@ -11,7 +11,7 @@ module AresMUSH
       end
               
       def display(a)
-        "#{a.name.ljust(20)} #{progress(a)} #{detail(a)} #{days_left(a)}"
+        "#{left(a.name, 20)} #{progress(a)} #{detail(a)} #{days_left(a)}"
       end
       
       def detail(a)

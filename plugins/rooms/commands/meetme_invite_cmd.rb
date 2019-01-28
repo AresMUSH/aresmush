@@ -41,6 +41,9 @@ module AresMUSH
               r.client.emit_ooc t('rooms.receive_meetme_invite', :name => enactor_name, :room => enactor_room.name)
               r.client.program[:meetme] = enactor.id
               success_names << invitee.name
+              if (enactor_room.scene)
+                Scenes.invite_to_scene(enactor_room.scene, invitee, enactor)
+              end
             end
           end
         end

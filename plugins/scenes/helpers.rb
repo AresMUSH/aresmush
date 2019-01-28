@@ -24,13 +24,7 @@ module AresMUSH
       return true if scene.owner == actor
       return true if !scene.is_private?
       return true if actor.room == scene.room
-      scene.participants.include?(actor)
-    end
-
-    def self.can_access_scene?(actor, scene)
-      return !scene.is_private? if !actor
-      return true if Scenes.can_manage_scene?(actor, scene)
-      return true if !scene.is_private?
+      return true if scene.invited.include?(actor)
       scene.participants.include?(actor)
     end
 
@@ -128,6 +122,7 @@ module AresMUSH
 
     def self.set_scene_location(scene, location)
       matched_rooms = Room.find_by_name_and_area location
+      area = nil
 
       if (matched_rooms.count == 1)
         room = matched_rooms.first
@@ -135,6 +130,7 @@ module AresMUSH
           description = location
         else
           description = "%xh#{room.name}%xn%R#{room.description}"
+          area = room.area
         end
       else
         description = location
@@ -147,6 +143,7 @@ module AresMUSH
         #location = (location =~ /\//) ? location.after("/") : location
         scene.room.update(name: "Scene #{scene.id} - #{location}")
         scene.room.update(description: description)
+        scene.room.update(area: area)
       end
 
       return message
@@ -249,7 +246,6 @@ module AresMUSH
         line = "%R%xh%xc%% #{'-'.repeat(75)}%xn%R"
         formatted_pose = "#{line}%R#{pose}%R#{line}"
         is_emit = true
-        room.update(scene_set: pose)
       end
 
       room.characters.each do |char|
@@ -368,6 +364,19 @@ module AresMUSH
           Achievements.award_achievement(char, "scene_participant_#{level}", 'story', message)
         end
       end
+    end
+
+    # Returns whether the message should be emitted to the actual room.
+    def self.send_to_ooc_chat_if_needed(enactor, client, message)
+      ooc_channel = Channels.ooc_lounge_channel
+      return true if ooc_channel.blank?
+      return true if enactor.room != Game.master.ooc_room
+
+      enabled = Channels.pose_to_channel_if_enabled(ooc_channel, enactor, message)
+      if (!enabled)
+        client.emit_failure t('scenes.no_talking_ooc_lounge', :channel => ooc_channel)
+      end
+      return false
     end
   end
 end

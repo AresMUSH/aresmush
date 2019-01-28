@@ -13,7 +13,18 @@ module AresMUSH
       end
 
       def handle
-        guest = Login.guests.sort_by{ |g| g.name }.select { |g| !Login.is_online?(g) }.first
+        guests = Login.guests
+        
+        if (guests.count == 0)
+          message = Global.read_config('login', 'guest_disabled_message')
+          if (message.blank?)
+            message = t('login.no_guests')
+          end
+          client.emit_failure message
+          return
+        end
+        
+        guest = guests.sort_by{ |g| g.name }.select { |g| !Login.is_online?(g) }.first
 
         if (!guest)
           client.emit_ooc t('login.all_guests_taken')

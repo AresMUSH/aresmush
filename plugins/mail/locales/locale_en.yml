@@ -54,3 +54,4 @@ en:
 
         sentmail_off: "You will no longer be automatically CC'd on messages you send."
         sentmail_on: "You will be automatically CC'd on messages you send.  You can see them with mail/sent."
+        error_sending_mail: "Error sending mail.  Check your 'to' list."

@@ -18,11 +18,11 @@ module AresMUSH
       
       def handle
         if (self.mode == :active)
-          scenes = Scene.all.select { |s| !s.completed }.reverse
+          scenes = Scene.all.select { |s| !s.completed }.sort_by { |s| s.is_private? ? s.id.to_i + 1000 : s.id.to_i}
           template = SceneListTemplate.new(scenes, enactor)
         else
           
-          scenes = Scene.all.select { |s| Scenes.can_access_scene?(enactor, s) }.sort_by { |s| s.id.to_i }.reverse
+          scenes = Scene.all.select { |s| Scenes.can_read_scene?(enactor, s) }.sort_by { |s| s.id.to_i }.reverse
           
           if (self.mode == :unshared)
             scenes = scenes.select { |s| !s.shared && s.participants.include?(enactor) }.sort_by { |s| s.id.to_i }.reverse

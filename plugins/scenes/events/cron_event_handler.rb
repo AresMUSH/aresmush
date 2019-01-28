@@ -18,6 +18,15 @@ module AresMUSH
           end
         end
 
+        trending_category = Global.read_config("scenes", "trending_scenes_category")
+        if (!trending_category.blank?)
+          config = Global.read_config("scenes", "trending_scenes_cron")
+          if Cron.is_cron_match?(config, event.time)
+             Global.logger.debug "Trending scenes."
+             post_trending_scenes
+          end
+        end
+
       end
 
       def clear_watchers
@@ -79,6 +88,20 @@ module AresMUSH
         idle_timeout = Global.read_config("scenes", "idle_scene_timeout_days")
         elapsed_days = (Time.now - last_activity) / 86400
         return (elapsed_days >= idle_timeout)
+      end
+
+      def post_trending_scenes
+        recent_scenes = Scene.all.select { |s| s.shared && s.likes > 0 && (Time.now - (s.date_shared || s.created_at) < 864000) }
+        trending = recent_scenes.sort_by { |s| -s.likes }[0, 10]
+
+        post = trending.each_with_index
+           .map { |s, i| "#{i+1}. #{(s.title || "").ljust(30)} #{s.url}"}
+           .join("%R")
+
+        Forum.system_post(
+          Global.read_config("scenes", "trending_scenes_category"),
+          t('scenes.trending_scenes_subject'),
+          post)
       end
     end
   end
