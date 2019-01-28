@@ -29,7 +29,8 @@ module AresMUSH
       def handle
         matched_rooms = Rooms.find_destination(self.destination, enactor, true)
         if (matched_rooms.count == 0)
-          client.emit_failure t('rooms.invalid_teleport_destination')
+          room_names = Room.all.select { |r| r.name_upcase =~ /#{self.destination.upcase}/ }.map { |r| r.name_and_area }.join(', ')
+          client.emit_failure t('rooms.invalid_teleport_destination', :rooms => room_names)
           return
         end
         

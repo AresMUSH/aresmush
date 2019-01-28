@@ -56,3 +56,11 @@ scenes:
     posebreak: autospace
   unshared_scene_deletion_days: 20
   idle_scene_timeout_days: 3
+  trending_scenes_category: Cookie Awards
+  trending_scenes_cron:
+    hour:
+    - 19
+    minute:
+    - 15
+    day_of_week:
+    - Mon

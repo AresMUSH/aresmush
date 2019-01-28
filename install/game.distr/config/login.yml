@@ -24,3 +24,5 @@ login:
   allow_creation: true
   login_not_allowed_message: ''
   creation_not_allowed_message: ''
+  portal_requires_registration: 
+  guest_disabled_message: ''

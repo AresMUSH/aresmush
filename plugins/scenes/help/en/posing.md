@@ -32,11 +32,12 @@ You can also whisper to another character.  This is formatted like a 'say' (e.g.
 
 `whisper <name>=<message>` - Whisper to someone.
 
-## Set Pose
+## Set and GM Poses
 
-Storytellers can mark an emit as a set pose.  It will be set off with a border on the game, and highlighted in scene and wiki logs.
+Storytellers can mark an emit as a set pose.  It will be set off with a border on the game, and highlighted in scene and wiki logs.  The scene set is stored and displayed alongside the room description.  A GM emit is similarly-highlighted, but it doesn't update the scene set.
 
 `emit/set <set pose>`
+`emit/gm <gm pose>`
 
 ## Nospoof
 
