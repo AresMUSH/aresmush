@@ -16,7 +16,7 @@ module AresMUSH
       end
 
       def friend_note(friend)
-        friendship = @enactor.friendships.select { |f| f.friend == friend }
+        friendship = @enactor.friendships.select { |f| f.friend == friend }.first
         return friendship ? friendship.note : nil
       end
       
