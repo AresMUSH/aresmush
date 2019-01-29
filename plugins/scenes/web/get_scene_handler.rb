@@ -8,16 +8,16 @@ module AresMUSH
 
         error = Website.check_login(request, true)
         return error if error
-        
+
         if (!scene)
           return { error: t('webportal.not_found') }
         end
-        
+
         if (edit_mode)
           if (!Scenes.can_read_scene?(enactor, scene))
             return { error: t('dispatcher.not_allowed') }
           end
-        else          
+        else
           if (!scene.shared)
             return { unshared: true }
           end
@@ -25,17 +25,18 @@ module AresMUSH
             scene.mark_read(enactor)
           end
         end
-        
+
         if (edit_mode)
-          log = scene.shared ? scene.scene_log.log : nil
-        else
-          log = Website.format_markdown_for_html(scene.scene_log.log)
+          can_edit = scene.shared ? Scenes.can_edit_scene?(enactor, scene) : Scenes.can_read_scene?(enactor, scene)
+          if (!can_edit)
+            return { error: t('dispatcher.not_allowed') }
+          end
         end
-        
+
         participants = scene.participants.to_a
             .sort_by {|p| p.name }
             .map { |p| { name: p.name, id: p.id, icon: Website.icon_for_char(p), is_ooc: p.is_admin? || p.is_playerbit?  }}
-            
+
         {
           id: scene.id,
           title: scene.title,
