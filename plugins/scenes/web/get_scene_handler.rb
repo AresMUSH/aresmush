@@ -31,7 +31,7 @@ module AresMUSH
           if (!can_edit)
             return { error: t('dispatcher.not_allowed') }
           end
-        end
+        
 
         participants = scene.participants.to_a
             .sort_by {|p| p.name }
