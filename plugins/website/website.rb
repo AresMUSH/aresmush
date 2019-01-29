@@ -68,6 +68,8 @@ module AresMUSH
         return GetWikiTagRequestHandler
 
       ## FILES
+      when "file"
+        return GetFileRequestHandler
       when "deleteFile"
         return FileDeleteRequestHandler
       when "files"
