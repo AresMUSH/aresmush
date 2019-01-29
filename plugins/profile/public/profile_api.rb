@@ -37,5 +37,12 @@ module AresMUSH
         char.handle ? "@#{char.handle.name}" : ""
       end
     end
+    
+    def self.get_player_tag(char)
+      player_tag = char.profile_tags.select { |t| t.start_with?("player") }.first
+      return nil if !player_tag
+      player_tag = player_tag.after(":")
+      player_tag.blank? ? nil : player_tag
+    end
   end
 end
