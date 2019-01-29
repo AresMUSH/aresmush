@@ -14,9 +14,10 @@ module AresMUSH
         end
 
         if (edit_mode)
-          if (!Scenes.can_read_scene?(enactor, scene))
-            return { error: t('dispatcher.not_allowed') }
-          end
+          can_edit = scene.shared ? Scenes.can_edit_scene?(enactor, scene) : Scenes.can_read_scene?(enactor, scene)
+           if (!can_edit)
+             return { error: t('dispatcher.not_allowed') }
+           end
         else
           if (!scene.shared)
             return { unshared: true }
@@ -27,11 +28,10 @@ module AresMUSH
         end
 
         if (edit_mode)
-          can_edit = scene.shared ? Scenes.can_edit_scene?(enactor, scene) : Scenes.can_read_scene?(enactor, scene)
-          if (!can_edit)
-            return { error: t('dispatcher.not_allowed') }
-          end
-        
+          log = scene.shared ? scene.scene_log.log : nil
+        else
+          log = Website.format_markdown_for_html(scene.scene_log.log)
+        end
 
         participants = scene.participants.to_a
             .sort_by {|p| p.name }
