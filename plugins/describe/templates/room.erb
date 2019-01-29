@@ -14,7 +14,7 @@
 <% end %>
 <% if logging_enabled %>
 
-%xy<%= center( t('describe.scene_log_active'), 78 )%>%xn
+%xy<%= center( t('describe.scene_log_active', :num => room.scene.id), 78 )%>%xn
 <% end %>
 <%= divider %>
 %xg<%= t('describe.players_title') %>%xn
