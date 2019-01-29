@@ -97,6 +97,7 @@ module AresMUSH
     def self.combat_spell_success(spell, die_result)
       spell_level = Global.read_config("spells", spell, "level")
       if spell_level == 1
+        return "%xrFAILS%xn" if die_result < 1
         return "%xgSUCCEEDS%xn"
       elsif spell_level == 2
         return "%xrFAILS%xn" if die_result < 1
