@@ -23,6 +23,10 @@ module AresMUSH
         enactor.spend_luck(1)
         message = t('fs3skills.luck_point_spent', :name => enactor_name, :reason => reason)
         enactor_room.emit_ooc message
+        if (enactor_room.scene)
+          Scenes.add_to_scene(enactor_room.scene, message)
+        end
+        
         Achievements.award_achievement(enactor, "fs3_luck_spent", 'fs3', "Spent a luck point.")
           
         category = Jobs.system_category
