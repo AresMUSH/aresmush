@@ -15,12 +15,10 @@ module AresMUSH
             add_alt(players, c.name, c)
           end
             
-          player_tag = c.profile_tags.select { |t| t.start_with?("player") }.first
+          player_tag = Profile.get_player_tag(c)
           next if !player_tag
-
-          player_tag = player_tag.after(":").titleize
           
-          add_alt(players, player_tag, c)
+          add_alt(players, player_tag.titleize, c)
         end
         
         players.sort.map { |name, alts| { name: name, alts: alts }}
