@@ -33,7 +33,7 @@ en:
        exits_title: "Exits:"
        no_way_out: "No way out!"
        
-       scene_log_active: "+++ The scene log is active in this room. +++"
+       scene_log_active: "+++ The scene log (%{num}) is active in this room. +++"
        watching_from_web: "(Via Web)"
        no_such_detail: "No such detail available."
        detail_deleted: "Detail deleted."
