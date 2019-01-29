@@ -62,5 +62,12 @@ module AresMUSH
       Global.read_config("secrets", "engine_api_keys") || []
     end
     
+    def self.can_edit_wiki_file?(actor, folder)
+      return false if !actor
+      wiki_admin = Website.can_manage_wiki?(actor)
+      own_folder = folder.upcase == actor.name_upcase
+      wiki_admin || own_folder
+    end
+    
   end
 end
