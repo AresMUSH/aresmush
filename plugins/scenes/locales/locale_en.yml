@@ -127,3 +127,8 @@ en:
         
         no_talking_quiet_room: "Sssh.  This is the quiet room."
         no_talking_ooc_lounge: "Chatting in the OOC lounge is sent to the %{channel} channel so everyone can participate.  Make sure you've joined and un-muted that channel if you want to chat here."
+        
+        invalid_home_option: "That is not a valid home option.  Try one of these: %{options}"
+        scene_home_set: "You will now go to %{option} when a temp room scene ends."
+        no_home_set: "You haven't set a home."
+        no_work_set: "You haven't set a workplace."
