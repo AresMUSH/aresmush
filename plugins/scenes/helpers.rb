@@ -71,7 +71,14 @@ module AresMUSH
           connected_client = Login.find_client(c)
         
           if (scene.temp_room)
-            Rooms.send_to_ooc_room(connected_client, c)
+            case c.scene_home
+            when 'home'
+              Rooms.send_to_home(connected_client, c)
+            when 'work'
+              Rooms.send_to_work(connected_client, c)
+            else
+              Rooms.send_to_ooc_room(connected_client, c)
+            end
             message = t('scenes.scene_ending', :name => enactor.name)
           else
             message = t('scenes.scene_ending_public', :name => enactor.name)
