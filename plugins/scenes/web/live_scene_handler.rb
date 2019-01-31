@@ -57,6 +57,7 @@ module AresMUSH
           participants: participants,
           scene_type: scene.scene_type ? scene.scene_type.titlecase : 'unknown',
           can_edit: enactor && Scenes.can_read_scene?(enactor, scene),
+          is_muted: enactor && scene.muters.include?(enactor),
           poses: scene.poses_in_order.map { |p| { 
             char: { name: p.character.name, icon: Website.icon_for_char(p.character) }, 
             order: p.order, 

@@ -164,7 +164,9 @@ module AresMUSH
       when "liveScenes"
         return LiveScenesRequestHandler        
       when "liveScene"
-        return LiveSceneRequestHandler   
+        return LiveSceneRequestHandler  
+      when "muteScene"
+        return MuteSceneRequestHandler 
       when "myScenes"
         return MyScenesRequestHandler     
       when "plots"

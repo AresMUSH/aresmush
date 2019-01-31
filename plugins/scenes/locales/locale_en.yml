@@ -132,3 +132,5 @@ en:
         scene_home_set: "You will now go to %{option} when a temp room scene ends."
         no_home_set: "You haven't set a home."
         no_work_set: "You haven't set a workplace."
+        
+        not_a_part_of_scene: "You are not participating in that scene."
