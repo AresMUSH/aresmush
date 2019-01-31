@@ -17,14 +17,6 @@ Inspired by the widely-loved [Myrrdin’s Bulletin Board System](http://www.firs
 
 > **Tip:** For all of the forum commands, you can specify either the category name or number.  Those familiar with Myrddin's BBS should find that the commands you're used to (bbread, bbpost, etc.) also work here.
 
-    +==~~~~~====~~~~====~~~~====~~~~=====~~~~=====~~~~====~~~~====~~~~====~~~~~==+
-      #       Name                        Description                         R/W
-    ------------------------------------------------------------------------------
-      1       Announcements               Important announcements.            rw   
-      2       Requests                    Questions, bugs or suggestions.     rw   
-      3       Cookie Awards                                                   rw   
-    +==~~~~~====~~~~====~~~~====~~~~=====~~~~=====~~~~====~~~~====~~~~====~~~~~==+
-
 The 'rw' on the end tells you whether you can read and/or write to that category.
 
 ## Reading Forums
@@ -37,6 +29,12 @@ To view topics in a category, you need to use the `forum` command with the categ
 
 `forum` - Lists available categories.
 `forum <category>` - Lists posts on the selected category.
+  
+## Hiding Categories
+
+If there are forum categories you don't use, you can hide them from the list and suppress notifications of new posts there.
+
+`forum/hide <category>` and `forum/unhide <category>` - Hide or show a category.
 
 ## Reading Topics
 
@@ -94,3 +92,9 @@ You cannot edit a reply once it's been posted, but you can delete it and try aga
 Forum administrators with the **can\_manage\_forum** permission are able to delete other people's replies.
 
 `forum/deletereply <category name or number>/<post number>=<reply number>` - Deletes a forum reply.
+  
+### Notifications
+
+When RPing, you may want to mute forum notifications.  This will last until your next login.
+
+`forum/mute` and `forum/unmute` - Mutes notifications until your next login.

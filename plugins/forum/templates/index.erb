@@ -2,10 +2,14 @@
 %xh<%= t('forum.categories_list_title') %>%xn
 <%= divider %>
 <% categories.each_with_index do |b, i| -%>
-<%= right(num(i), 3) -%>
+<%= right(b.category_index, 3) -%>
  <%= center(unread(b),5) -%>
  <%= left(b.name,27) -%>
  <%= left(b.description,33)  -%>
  <%= center(permission(b), 5) %>
+<% end %>
+<% if any_hidden? %>
+%ld
+<%= t('forum.hidden_categories_title') %> <%= hidden_categories %>
 <% end %>
 <%= footer %>
