@@ -14,7 +14,7 @@ module AresMUSH
         error = Website.check_login(request)
         return error if error
         
-        if (!enactor.is_approved?)
+        if (!Website.can_edit_wiki_file?(enactor, folder))
           return { error: t('dispatcher.not_allowed') }
         end
         

@@ -51,3 +51,10 @@ en:
         
         starting_archive: "Starting Forum archive.  Your posts will print out one by one with a short delay in-between to avoid spamming your client."
         too_much_for_archive: "That forum has too many posts for the automatic archive feature.  30 is the limit.  You'll have to read them manually or move some to another category temporarily and do the archive in stages.  Sorry."        
+
+
+        category_hidden: "Category %{name} is now hidden."
+        category_shown: "Category %{name} is now shown."
+        hidden_categories_title: "Hidden:"
+        forum_muted: "Forum notifications have been muted until your next login."
+        forum_unmuted: "Forum notifications have been unmuted."

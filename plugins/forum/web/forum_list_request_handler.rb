@@ -8,7 +8,7 @@ module AresMUSH
         error = Website.check_login(request, true)
         return error if error
         
-        BbsBoard.all_sorted
+        categories = Forum.visible_categories(enactor)
            .select { |b| Forum.can_read_category?(enactor, b) }
            .map { |b| {
              id: b.id,
@@ -17,7 +17,18 @@ module AresMUSH
              unread: enactor && b.has_unread?(enactor),
              last_post: get_last_post(b, enactor)
            }}
+           
+       hidden =Forum.hidden_categories(enactor)
+          .map { |b| {
+             id: b.id,
+             name: b.name   
+          }}
         
+          {
+            categories: categories,
+            hidden: hidden,
+            is_muted: Forum.is_forum_muted?(enactor)
+          }
       end
       
       def get_last_post(board, enactor)
