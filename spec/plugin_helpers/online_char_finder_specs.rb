@@ -62,13 +62,25 @@ module AresMUSH
         expect(result.error).to be_nil
       end
       
-      it "should return failure result if nothing found" do
-        allow(@char1).to receive(:name_upcase) { "ANNE" }
+      it "should return failure result if nothing found and char exists" do
+        allow(@char1).to receive(:name_upcase) { "BOB" }
         allow(@char1).to receive(:alias_upcase) { nil }
+        allow(@char2).to receive(:name_upcase) { "ANNA" }
+        allow(Character).to receive(:all) { [ @char1, @char2 ] }
         allow(@client_monitor).to receive(:logged_in) { {@client1 => @char1 }}
-        result = OnlineCharFinder.find("Bob")
+        result = OnlineCharFinder.find("Ann")
         expect(result.target).to be_nil
         expect(result.error).to eq "db.no_char_online_found"
+      end
+      
+      it "should return not found result if nothing found and char doesn't exist" do
+        allow(@char1).to receive(:name_upcase) { "BOB" }
+        allow(@char1).to receive(:alias_upcase) { nil }
+        allow(Character).to receive(:all) { [ ] }
+        allow(@client_monitor).to receive(:logged_in) { {@client1 => @char1 }}
+        result = OnlineCharFinder.find("X")
+        expect(result.target).to be_nil
+        expect(result.error).to eq "db.object_not_found"
       end
     end
     
