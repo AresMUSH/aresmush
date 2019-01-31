@@ -11,6 +11,15 @@ spells:
     is_revive: false
     is_stun: false
     roll: true
+  Beckon Tiny Animal:
+    name: Beckon Tiny Animal
+    level: 1
+    school: Nature
+    desc: One animal of diminutive size within range is compelled to approach the caster and linger nearby for the duration of the spell. The target retains all animal instincts and any acts of aggression towards it negate the spell.
+    target_optional: false
+    is_revive: false
+    is_stun: false
+    roll: true
   #Level 2
   Shape Flora:
     name: Shape Flora
@@ -191,7 +200,7 @@ spells:
     is_revive: false
     is_stun: false
     roll: true
-  
+
   Greater Wild Shape:
     name: Greater Wild Shape
     level: 7
