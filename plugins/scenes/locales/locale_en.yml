@@ -32,7 +32,7 @@ en:
         scene_about_to_join: "You will join the scene in a moment."
         access_not_allowed: "You do not have access to that scene."
         scene_already_completed: "That scene is already over."
-        announce_scene_start: "%{name} has started a new %xh%{privacy}%xH scene here."
+        announce_scene_start: "%{name} has started a new %xh%{privacy}%xH scene (%{num}) here."
         location_set: "Scene location changed:%R%R%{description}"
         scene_nag:  "There's no scene running here.  Starting a scene will activate repose and make it easy to share the scene with the web portal.  Just do `scene/start` if you want to start one."
         open: "Open"
