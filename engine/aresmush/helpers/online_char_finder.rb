@@ -19,7 +19,11 @@ module AresMUSH
       end
       
       if (online.count == 0)
-        return FindResult.new(nil, t('db.no_char_online_found', :name => name))
+        if (Character.all.select { |c| c.name_upcase.start_with?(name.upcase) }.first)
+          return FindResult.new(nil, t('db.no_char_online_found', :name => name))
+        else
+          return FindResult.new(nil, t('db.object_not_found', :name => name))
+        end
       elsif (online.count == 1)
         return FindResult.new(online.first, nil)
       end
