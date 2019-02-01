@@ -22,7 +22,7 @@ module AresMUSH
     def self.can_read_scene?(actor, scene)
       return !scene.is_private? if !actor
       return true if scene.owner == actor
-      return true if !scene.is_private?
+      return false if scene.is_private?
       return true if scene.watchable_scene
       return true if actor.room == scene.room
       return true if scene.invited.include?(actor)
