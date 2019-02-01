@@ -45,7 +45,7 @@ module AresMUSH
           color = "%xr"
         elsif scene.watchable_scene
           message = "Watchable"
-          color = "%xy"
+          color = "%xc"
         else
           message = t('scenes.open')
           color = "%xg"
