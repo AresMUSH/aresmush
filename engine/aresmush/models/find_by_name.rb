@@ -28,6 +28,10 @@ module AresMUSH
         find(name_upcase: name_or_id.upcase).to_a.select { |x| x }
       end
 
+      def named(name)
+        find_one_by_name(name)
+      end
+      
       def find_one_by_name(name)
         find_any_by_name(name).first
       end
