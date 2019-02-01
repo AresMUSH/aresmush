@@ -31,6 +31,7 @@ module AresMUSH
     set :participants, "AresMUSH::Character"
     set :likers, "AresMUSH::Character"
     set :readers, "AresMUSH::Character"
+    set :muters, "AresMUSH::Character"
     
     before_delete :delete_poses_and_log
     

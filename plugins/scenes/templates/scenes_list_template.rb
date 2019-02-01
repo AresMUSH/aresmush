@@ -19,6 +19,7 @@ module AresMUSH
       end
       
       def title(scene)
+        return "##{scene.id} <#{privacy(scene)}>" if scene.private_scene
         "##{scene.id} <#{privacy(scene)}> - #{scene.title || scene.location}"
       end
       
@@ -27,7 +28,7 @@ module AresMUSH
       end
       
       def location(scene)
-        "#{scene.location} (#{location_type(scene)})"
+        scene.private_scene ? t('scenes.private') : "#{scene.location} (#{location_type(scene)})"
       end
       
       def last_activity(scene)

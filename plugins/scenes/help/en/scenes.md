@@ -84,6 +84,10 @@ You should stop a scene when it's over.  Scenes with empty rooms will be stopped
 
 > **Tip:** Admins and characters with the `manage_scenes` permission can stop and delete other people's scenes.
 
+When a scene in a temp room stops, characters are normally sent back to the Offstage lounge.  You can instead choose to be sent to your character's home or workplace, if you've set one with the home or work command.
+
+`scene/home <home, work, ooc>` - Sets your scene home preference.
+
 ## Logging and Poses
 
 The scene system starts a scene log automatically.  To disable this, or for more help with scene logs, including the pose editing commands, see [Scene Logging](/help/logging).
