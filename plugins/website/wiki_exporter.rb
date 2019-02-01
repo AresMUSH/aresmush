@@ -56,9 +56,8 @@ module AresMUSH
         end
       end
       
-      def self.export_scenes
+      def self.build_scene_index(scenes)
         index = {}
-        scenes = Scene.shared_scenes.sort_by { |s| s.icdate }.reverse
         scenes.each do |s|
           puts "Parsing scene #{s.id} #{s.title}"
         
@@ -79,6 +78,11 @@ module AresMUSH
             f.puts render_template(File.join(template_path, 'scene.hbs'), { model: response }, s.date_title)
           end
         end
+        index
+      end
+      
+      def self.export_scenes
+        index = build_scene_index(Scene.shared_scenes.sort_by { |s| s.icdate }.reverse)
         
         File.open(File.join(export_path, "scenes.html"), 'w') do |f|
           
@@ -135,7 +139,13 @@ module AresMUSH
           page_name = "#{c.name}.html"
         
           File.open(File.join(export_path, page_name), 'w') do |f|
-            template = ExportHandlebarsTemplate.new(File.join(template_path, 'char.hbs'))
+            
+            index = build_scene_index(c.scenes_starring.sort_by { |s| s.icdate }.reverse)
+            groups = index.group_by { |k, v| v[:type] }
+            scenes_by_type = groups.map { |k, v| { name: k, scenes: v.map { |page, data| data } }}
+            template = HandlebarsTemplate.new(File.join(AresMUSH.plugin_path, 'website', 'templates', 'wiki_scene_list.hbs'))
+            scenes = template.render(types: groups.keys, scenes_by_type: scenes_by_type )
+
             request = WebRequest.new( { args: { id: c.id } } )
             response = Profile::CharacterRequestHandler.new.handle(request)
             
@@ -167,6 +177,10 @@ module AresMUSH
             gallery = gallery.gsub("<a href=\"index.html\">", "")
             gallery = gallery.gsub("</a>", "")
             profile << gallery
+            profile << "</div>"
+            
+            profile << '<div class="profile-tab">'
+            profile << scenes
             profile << "</div>"
                         
             

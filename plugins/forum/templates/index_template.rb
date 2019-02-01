@@ -6,13 +6,22 @@ module AresMUSH
       
       def initialize(char)
         @char = char
-        @categories = BbsBoard.all_sorted
+        @categories = Forum.visible_categories(char)
+        @hidden = Forum.hidden_categories(char)
         super File.dirname(__FILE__) + "/index.erb"
       end
       
       def num(index)
         "#{index+1}"
       end        
+      
+      def hidden_categories
+        @hidden.map { |h| "#{h.category_index}-#{h.name}" }.join(' ')
+      end
+      
+      def any_hidden?
+        @hidden.count > 0
+      end
       
       # Shows whether the character has read or write permissions
       # to the category. (e.g. rw or r-)

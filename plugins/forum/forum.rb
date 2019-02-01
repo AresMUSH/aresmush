@@ -32,9 +32,13 @@ module AresMUSH
       when "describe"
         return ForumDescCmd
       when "edit"
-        return ForumEditCmd        
+        return ForumEditCmd  
+      when "hide", "show"
+        return ForumHideCmd      
       when "move"
         return ForumMoveCmd
+      when "mute", "unmute"
+        return ForumMuteCmd
       when "new"
         return ForumNewCmd
       when "order"
@@ -66,6 +70,8 @@ module AresMUSH
       case event_name
       when "RoleDeletedEvent"
         return RoleDeletedEventHandler
+      when "CharDisconnectedEvent"
+        return CharDisconnectedEventHandler
       end
       
       nil
@@ -79,8 +85,12 @@ module AresMUSH
         return AddReplyRequestHandler
       when "forumCategory"
         return ForumCategoryRequestHandler
+      when "forumHide"
+        return ForumHideRequestHandler
       when "forumList"
         return ForumListRequestHandler
+      when "forumMute"
+        return ForumMuteRequestHandler
       when "forumTopic"
         return ForumTopicRequestHandler
       when "forumUnread"

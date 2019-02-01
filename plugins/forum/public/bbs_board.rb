@@ -36,6 +36,7 @@ module AresMUSH
     end
     
     def unread_posts(char)
+      return [] if Forum.is_category_hidden?(char, self)
       return [] if !Forum.can_read_category?(char, self)
       bbs_posts.select { |p| p.is_unread?(char) }
     end
@@ -43,7 +44,7 @@ module AresMUSH
     def has_unread?(char)
       !unread_posts(char).empty?
     end
-    
+        
     def self.all_sorted
       BbsBoard.all.sort_by(:order)
     end

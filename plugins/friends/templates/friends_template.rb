@@ -12,7 +12,7 @@ module AresMUSH
       end
       
       def unlinked_friendships
-        @enactor.friendships.select { |f| !f.friend.handle }.sort_by { |f| f.friend.name }
+        @enactor.friendships.select { |f| !handle_friends.include?(f.friend.handle) }.sort_by { |f| f.friend.name }
       end
 
       def friend_note(friend)

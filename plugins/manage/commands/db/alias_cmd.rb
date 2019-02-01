@@ -30,7 +30,7 @@ module AresMUSH
           end
           
           if (target.class == Character)
-            name_validation_msg = Character.check_name(self.alias)
+            name_validation_msg = Character.check_name(self.alias, target)
           else
             existing_exit = enactor_room.has_exit?(self.alias)
             if (existing_exit)
