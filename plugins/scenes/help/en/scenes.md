@@ -28,21 +28,21 @@ The scenes system:
 When you start a scene, you can create a temporary room or start one in the room you're in.  Temp rooms are automatically recycled when the scene ends.
 
 `scene/start` - Starts a scene in your current room.
-`scene/start [<area>/]<location name>=<private/open>` - Starts a scene in a temp room.
+`scene/start [<area>/]<location name>=<private/open/watchable>` - Starts a scene in a temp room.
 
 > **Tip:** If your location name matches a grid location, the desc will be copied over.  You can use Area/Room for the location name to distinguish between rooms with the same name in different areas.
 
-A scene can either be open (anyone's invited) or private (only those invited should join). Open scenes are visible on the web portal while active, and private scenes are not. You can set a scene private and still share the log afterwards.
+A scene can be open (anyone's invited), private (only those invited should join or view), or watchable (only those invited should join, but anyone can view on the web portal). Open and Watchable scenes are visible on the web portal while active, and Private scenes are not. You can set a scene Private and still share the log afterwards.
 
-`scene/privacy [<#>=]<private/open>` - Changes the privacy level.
+`scene/privacy [<#>=]<private/open/watchable>` - Changes the privacy level.
 
 ## Finding & Joining Scenes
 
 `scenes` - Lists active scenes.
 `scene <#>.` - See a scene's information.
 `scene/join <#>` - Joins an open scene.
-`meetme <list of names>` - Invites others to join your private scene.
-`scene/invite <name>[=<scene num>]` - Invites someone to a private scene.
+`meetme <list of names>` - Invites others to join your private or watchable scene.
+`scene/invite <name>[=<scene num>]` - Invites someone to a private or watchable scene.
 `scene/uninvite <name>[=<scene num>]` - Withdraws an invitation.
 
 ## Setting Scene Info
