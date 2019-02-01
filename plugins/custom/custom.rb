@@ -16,6 +16,18 @@ module AresMUSH
     when "lastrp"
       return LastRPCmd
     end
+    #Comps
+    case cmd.root
+    when "comp"
+      return CompGiveCmd
+    end
+    case cmd.root
+    when "comps"
+      return CompsReadCmd
+    end
+
+
+
     #Plots
     case cmd.root
     when "plot"
