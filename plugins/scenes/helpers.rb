@@ -32,7 +32,7 @@ module AresMUSH
     def self.can_join_scene?(actor, scene)
       return !scene.is_private? if !actor
       return true if scene.owner == actor
-      return true if (!scene.is_private? && !scene.watchable_scene)
+      return true if !scene.is_private?
       return true if actor.room == scene.room
       return true if scene.invited.include?(actor)
       scene.participants.include?(actor)
