@@ -5,7 +5,7 @@ module AresMUSH
       last_posed = scene.last_posed ? scene.last_posed.name : nil
       web_msg = "#{scene.id}|#{last_posed}|#{data}"
       Global.client_monitor.notify_web_clients(:new_scene_activity, web_msg) do |char|
-        Scenes.can_read_scene?(char, scene) && !Scenes.is_scene_muted?(char, scene)
+        Scenes.can_read_scene?(char, scene)
       end
     end
 
@@ -20,16 +20,6 @@ module AresMUSH
     end
 
     def self.can_read_scene?(actor, scene)
-      return !scene.is_private? if !actor
-      return true if scene.owner == actor
-      return false if scene.is_private?
-      return true if scene.watchable_scene
-      return true if actor.room == scene.room
-      return true if scene.invited.include?(actor)
-      scene.participants.include?(actor)
-    end
-
-    def self.can_join_scene?(actor, scene)
       return !scene.is_private? if !actor
       return true if scene.owner == actor
       return true if !scene.is_private?
@@ -81,14 +71,7 @@ module AresMUSH
           connected_client = Login.find_client(c)
 
           if (scene.temp_room)
-            case c.scene_home
-            when 'home'
-              Rooms.send_to_home(connected_client, c)
-            when 'work'
-              Rooms.send_to_work(connected_client, c)
-            else
-              Rooms.send_to_ooc_room(connected_client, c)
-            end
+            Rooms.send_to_ooc_room(connected_client, c)
             message = t('scenes.scene_ending', :name => enactor.name)
           else
             message = t('scenes.scene_ending_public', :name => enactor.name)
@@ -174,7 +157,7 @@ module AresMUSH
     end
 
     def self.is_valid_privacy?(privacy)
-      ["Public", "Open", "Private", "Watchable"].include?(privacy)
+      ["Public", "Open", "Private"].include?(privacy)
     end
 
     def self.with_a_scene(scene_id, client, &block)
@@ -394,11 +377,6 @@ module AresMUSH
         client.emit_failure t('scenes.no_talking_ooc_lounge', :channel => ooc_channel)
       end
       return false
-    end
-
-    def self.is_scene_muted?(char, scene)
-      return false if !char
-      return scene.muters.include?(char)
     end
   end
 end
