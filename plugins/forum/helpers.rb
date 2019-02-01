@@ -6,6 +6,12 @@ module AresMUSH
       actor.has_permission?("manage_forum")
     end
 
+    # NOTE: May return nil
+    def self.get_forum_prefs(char, category)
+      prefs = char.bbs_prefs
+      return prefs ? prefs.find(bbs_board_id: category.id).first : nil
+    end
+    
     def self.can_write_to_category?(char, category)
       return false if !category
       roles = category.write_roles.to_a
@@ -68,7 +74,9 @@ module AresMUSH
           :author => author_name)
                 
         Global.notifier.notify_ooc(:new_forum_post, message) do |char|
-          Forum.can_read_category?(char, category)
+          !Forum.is_forum_muted?(char) &&
+          Forum.can_read_category?(char, category) &&
+          !Forum.is_category_hidden?(char, category)
         end
 
         Forum.handle_forum_achievement(author, :post)
@@ -172,6 +180,25 @@ module AresMUSH
       end
       
       Achievements.award_achievement(char, type, 'community', message)
+    end
+    
+    def self.is_category_hidden?(char, category)
+      return false if !char
+      prefs = Forum.get_forum_prefs(char, category)
+      return prefs ? prefs.hidden : false
+    end
+    
+    def self.visible_categories(char)
+      BbsBoard.all_sorted.select { |b| !Forum.is_category_hidden?(char, b) }
+    end
+    
+    def self.hidden_categories(char)
+      BbsBoard.all_sorted.select { |b| Forum.is_category_hidden?(char, b) }
+    end
+    
+    def self.is_forum_muted?(char)
+      return false if !char
+      return char.is_forum_muted?
     end
   end
 end

@@ -5,7 +5,7 @@ module AresMUSH
       last_posed = scene.last_posed ? scene.last_posed.name : nil
       web_msg = "#{scene.id}|#{last_posed}|#{data}"
       Global.client_monitor.notify_web_clients(:new_scene_activity, web_msg) do |char|
-        Scenes.can_read_scene?(char, scene)
+        Scenes.can_read_scene?(char, scene) && !Scenes.is_scene_muted?(char, scene)
       end
     end
 
@@ -81,7 +81,14 @@ module AresMUSH
           connected_client = Login.find_client(c)
 
           if (scene.temp_room)
-            Rooms.send_to_ooc_room(connected_client, c)
+            case c.scene_home
+            when 'home'
+              Rooms.send_to_home(connected_client, c)
+            when 'work'
+              Rooms.send_to_work(connected_client, c)
+            else
+              Rooms.send_to_ooc_room(connected_client, c)
+            end
             message = t('scenes.scene_ending', :name => enactor.name)
           else
             message = t('scenes.scene_ending_public', :name => enactor.name)
@@ -387,6 +394,11 @@ module AresMUSH
         client.emit_failure t('scenes.no_talking_ooc_lounge', :channel => ooc_channel)
       end
       return false
+    end
+    
+    def self.is_scene_muted?(char, scene)
+      return false if !char
+      return scene.muters.include?(char)
     end
   end
 end

@@ -39,7 +39,7 @@ module AresMUSH
           
       found = Character.find_one_by_name(name)
       if (enactor)
-        return t('validation.char_name_taken') if (enactor != found)
+        return t('validation.char_name_taken') if (found && enactor != found)
       else
         return t('validation.char_name_taken') if found
       end

@@ -72,6 +72,8 @@ module AresMUSH
           return SceneCharCmd
         when "addpose"
           return SceneAddPoseCmd
+        when "home"
+          return SceneHomeCmd
         when "join"
           return SceneJoinCmd
         when "location", "privacy", "summary", "title", "type", "icdate", "plot"
@@ -162,7 +164,9 @@ module AresMUSH
       when "liveScenes"
         return LiveScenesRequestHandler        
       when "liveScene"
-        return LiveSceneRequestHandler   
+        return LiveSceneRequestHandler  
+      when "muteScene"
+        return MuteSceneRequestHandler 
       when "myScenes"
         return MyScenesRequestHandler     
       when "plots"

@@ -22,7 +22,23 @@ The Ares Forum provides MU-wide discussion topics, available in-game and on the 
 
 ## Reading Forums
 `forum` - Lists available categories.
-`forum <category>` - Lists posts on the selected category. (`forum 1` or `forum announcements`)
+`forum <category>` - Lists posts on the selected category.
+
+'rw' tells you whether you can read and/or write to that category.
+
+## Hiding Categories & Muting Notifications
+
+You can hide categories and mute notifications of new posts.
+
+`forum/hide <category>`  - Hide a category.
+`forum/unhide <category>` - Show a hidden category.
+`forum/mute` - Mutes all forum notifications until your next login.
+`forum/unmute` - Unutes notifications.
+
+## Reading Topics
+
+To read a specific topic, you use the category name/number and topic number.  To read the first message in the Announcements category, you could use `forum 1/1` or `forum announce/1`.
+
 `forum <category>/<topic #>` - Reads the selected topic.
 `forum/new` - Reads the first unread message on any category.
 `forum/catchup <category>` - Marks all unread messages in that category as read.

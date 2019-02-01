@@ -35,7 +35,7 @@ module AresMUSH
       def num(i)
         "#{i+1}"
       end
-      
+
       def unread(post)
         post.is_unread?(@enactor) ? t('forum.unread_marker') : " "
       end

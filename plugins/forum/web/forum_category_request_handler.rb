@@ -25,7 +25,7 @@ module AresMUSH
              title: p.subject,
              unread: enactor && p.is_unread?(enactor),
              date: p.created_date_str(enactor),
-             author: p.author_name,
+             author: p.author_name
            }}
            
          {
