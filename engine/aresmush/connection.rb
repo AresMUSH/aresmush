@@ -18,6 +18,7 @@ module AresMUSH
         @negotiator.send_naws_request
         @negotiator.send_charset_request
                 
+          
       rescue Exception => e
         Global.logger.warn "Could not decode IP address.  error=#{e} backtrace=#{e.backtrace[0,10]}"
         @ip_addr = "0.0.0.0"
@@ -40,6 +41,7 @@ module AresMUSH
     
     def send_data(msg)
       begin
+        ##telnet_debug(msg, "SEND")
         super msg
       rescue Exception => e
         Global.logger.warn "Could not send to connection:  error=#{e} backtrace=#{e.backtrace[0,10]}."
@@ -91,6 +93,8 @@ module AresMUSH
         end
         
         parts.each do |part|
+          ##telnet_debug(part, "RECV")
+          
           next if !part
           part = "#{part.chomp}\n"
           input = @negotiator.handle_input(part)
@@ -130,7 +134,7 @@ module AresMUSH
       stripped.gsub(/\^@/,"")
     end   
     
-    def telnet_debug(part)
+    def telnet_debug(part, prefix)
       chars = part.split("").map { |c| c.ord }
       
       special = {
@@ -170,7 +174,7 @@ module AresMUSH
 
       end
 
-      puts "---------------"
+      puts "#{prefix} ---------------"
       puts part.inspect
       puts output.join(" ")
       
