@@ -27,7 +27,7 @@ en:
         scene_not_found: "Scene not found."
         pose_added: "Pose added to scene."
         invalid_privacy: "Invalid privacy setting.  Please use 'open' or 'private'."
-        scene_is_private: "That scene is private.  You must get an invitation/meetme from one of the participants to join."
+        scene_is_private: "That scene is private or watchable.  You must get an invitation/meetme from one of the participants to join."
         scene_pending_join: "%{name} is about to join the scene."
         scene_about_to_join: "You will join the scene in a moment."
         access_not_allowed: "You do not have access to that scene."
