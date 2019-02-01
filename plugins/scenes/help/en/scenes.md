@@ -36,6 +36,9 @@ A scene can be open (anyone's invited), private (only those invited should join 
 
 `scene/privacy [<#>=]<private/open/watchable>` - Changes the privacy level.
 
+> **Tip:** Admins and Storytellers with the `manage_scenes` permission can stop and delete other people's scenes, as well as pose into Watchable or Open scenes. They cannot see or pose into Private scenes.
+
+
 ## Finding & Joining Scenes
 
 `scenes` - Lists active scenes.
@@ -64,7 +67,7 @@ You should stop a scene when it's over.  Scenes with empty rooms will be stopped
 `scene/delete <#>` - Deletes a scene.
 `scene/restart <#>` - Restarts a scene.
 
-> **Tip:** Admins and characters with the `manage_scenes` permission can stop and delete other people's scenes.
+> **Tip:** Admins and Storytellers with the `manage_scenes` permission can stop and delete other people's scenes.
 
 ## Logging and Poses
 
