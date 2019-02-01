@@ -8,7 +8,7 @@ module AresMUSH
         return error if error
         
         
-        Scene.all.select { |s| !s.completed }.sort { |s1, s2| sort_scene(s1, s2) }.reverse.map { |s| {
+        active = Scene.all.select { |s| !s.completed }.sort { |s1, s2| sort_scene(s1, s2) }.reverse.map { |s| {
                   id: s.id,
                   title: s.title,
                   summary: s.summary,
@@ -33,6 +33,21 @@ module AresMUSH
                   participating: Scenes.is_participant?(s, enactor),
                   last_posed: s.last_posed ? s.last_posed.name : nil
                 }}
+        if (enactor)        
+          unshared = enactor.unshared_scenes.sort_by { |s| s.id.to_i }.reverse.map { |s| {
+             title: s.date_title, 
+             people: s.participant_names.join(' '),
+             id: s.id }}
+        else 
+          unshared = nil
+        end
+        
+        {
+          active: active,
+          unshared: unshared,
+          unshared_warning_days: Global.read_config('scenes', 'unshared_scene_deletion_days')
+        }
+  
       end
       
       def sort_scene(s1, s2)

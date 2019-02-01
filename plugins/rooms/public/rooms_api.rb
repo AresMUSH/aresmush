@@ -33,6 +33,14 @@ module AresMUSH
     def self.send_to_ooc_room(client, char)
       Rooms.move_to(client, char, Game.master.ooc_room)
     end
+    
+    def self.send_to_home(client, char)
+      Rooms.move_to(client, char, char.room_home || Game.master.ooc_room)
+    end
+    
+    def self.send_to_work(client, char)
+      Rooms.move_to(client, char, char.room_work || Game.master.ooc_room)
+    end
       
     def self.ic_start_room
       Game.master.ic_start_room

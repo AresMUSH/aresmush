@@ -32,7 +32,7 @@ en:
         scene_about_to_join: "You will join the scene in a moment."
         access_not_allowed: "You do not have access to that scene."
         scene_already_completed: "That scene is already over."
-        announce_scene_start: "%{name} has started a new %xh%{privacy}%xH scene here."
+        announce_scene_start: "%{name} has started a new %xh%{privacy}%xH scene (%{num}) here."
         location_set: "Scene location changed:%R%R%{description}"
         scene_nag:  "There's no scene running here.  Starting a scene will activate repose and make it easy to share the scene with the web portal.  Just do `scene/start` if you want to start one."
         open: "Open"
@@ -127,3 +127,10 @@ en:
         
         no_talking_quiet_room: "Sssh.  This is the quiet room."
         no_talking_ooc_lounge: "Chatting in the OOC lounge is sent to the %{channel} channel so everyone can participate.  Make sure you've joined and un-muted that channel if you want to chat here."
+        
+        invalid_home_option: "That is not a valid home option.  Try one of these: %{options}"
+        scene_home_set: "You will now go to %{option} when a temp room scene ends."
+        no_home_set: "You haven't set a home."
+        no_work_set: "You haven't set a workplace."
+        
+        not_a_part_of_scene: "You are not participating in that scene."

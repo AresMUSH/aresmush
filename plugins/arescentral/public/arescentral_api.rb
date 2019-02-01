@@ -28,5 +28,16 @@ module AresMUSH
     def self.is_registered?
       !!Game.master.api_game_id
     end
+    
+    # Includes both handle linking and player tag linking.
+    def self.are_chars_linked?(char1, char2)
+      return true if AresCentral.is_alt?(char1, char2)
+      tag1 = Profile.get_player_tag(char1)
+      tag2 = Profile.get_player_tag(char2)
+      return false if !tag1
+      return false if !tag2
+      return tag1 == tag2
+    end
+    
   end
 end
