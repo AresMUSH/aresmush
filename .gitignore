@@ -42,3 +42,4 @@ killares
 .ftpconfig
 game/config/server.yml
 game/config/database.yml
+game/config/server.yml
