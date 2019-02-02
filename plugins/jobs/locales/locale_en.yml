@@ -25,7 +25,7 @@ en:
         announce_new_job:  "New Job! #%{number} \"%{title}\" submitted by %{name}."
         invalid_job_number: "That is not a valid request or job number."
         discussed_job: "%{name} has added an admin-only comment to job #%{number} \"%{title}\".  This will not be seen by the submitter.  To respond to them, use the job/respond command."
-        responded_to_job: "%{name} has responded to request #%{number} \"%{title}\" (https://spiritlakemu.com/job%{number})"."
+        responded_to_job: "%{name} has responded to request #%{number} \"%{title}\"."
         updated_job: "%{name} has updated job #%{number} \"%{title}\"."
         requests_cmd_hint: "Use the requests command to view your requests."
         request_use_respond: "I think you meant to respond to a request.  Use request/respond <#>=<msg>"
