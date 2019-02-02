@@ -2,7 +2,9 @@
 places:
   places_cleanup_cron:
     minute:
-    - 40
+    - 5
   same_place_color: "%xc%xB"
   shortcuts:
     places: place
+  start_marker: "("
+  end_marker: ")"
