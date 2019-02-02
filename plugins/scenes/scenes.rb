@@ -98,7 +98,7 @@ module AresMUSH
           return SceneLogCmd
         when "clearlog"
           return SceneLogClearCmd
-        when "startlog", "stoplog"
+        when "enablelog", "disablelog"
           return SceneLogEnableCmd
         when "share"
           return SceneShareCmd
