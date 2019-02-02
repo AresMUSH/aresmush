@@ -73,10 +73,10 @@ At any point during the scene, you can share the log.  This makes it visible on 
 `scene/share [scene #]` - Shares the log to the web portal.
 `scene/unshare [scene #]` - Unshares a log.
 
-## Clearing the Log
+## Disabling and Clearing the Log
 
-The log starts automatically when a scene is started.  If for some reason you don't want a scene logged, you can turn logging on and off.  You can also clear all poses from the log.
+The log starts automatically when a scene is started.  If for some reason you don't want a scene logged, you can turn disable the log.  This will clear the log and not log anything more in that scene.  You can later re-enable the log to start fresh with a new one.
 
-`scene/startlog [scene #]`
-`scene/stoplog [scene #]`
+`scene/disablelog [scene #]` - Note: This also clears any existing poses from the log.
 `scene/clearlog [scene #]`
+`scene/enablelog [scene #]` - Note: This starts the scene fresh.
