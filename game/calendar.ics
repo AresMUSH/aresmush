@@ -26,10 +26,53 @@ DESCRIPTION:%RSome of the Locals of Grand Lake are warming up to the New Comers.
   OOC: This is just a social scene to get some of the locals and the new faces together and get them to know each other better. Late arrivals are fine. Wander in and out as you like.
 END:VEVENT
 BEGIN:VEVENT
-UID:e7321dd3-8431-416e-ae41-5cc6f29efb90@Spirit Lake-spiritlakemu.com
-DTSTART:20190128T010000Z
-DTSTAMP:20190123T030231Z
-SUMMARY:In Honor Of Angus
-DESCRIPTION:Teagan is holding a funeral for a cow, to respect his life. The news of this is probably sure to get around quickly, especially since she's not going to be especially shameful about telling anyone and everyone she knows. No formal invitation this time, and it's alternatively at Sage & Thyme Ranch or Andrade Ranch, depending if you are local or a newcomer.
+UID:6a14b90e-6a28-4bef-98a8-57027f35bd18@Spirit Lake-spiritlakemu.com
+DTSTART:20190203T013000Z
+DTSTAMP:20190129T040814Z
+SUMMARY:Junebug Trailer Discotech
+DESCRIPTION:The disco ball has been installed on top of Erik's trailer with the help of Manny and Thora. Will it really repel a wolf? WHO KNOWS. Well, someone probably knows. But that person isn't Erik. Regardless, there will be a bar. It's BYOB.
+END:VEVENT
+BEGIN:VEVENT
+UID:8b45a365-02aa-469d-9fa9-49013b546b23@Spirit Lake-spiritlakemu.com
+DTSTART:20190206T000000Z
+DTSTAMP:20190129T215310Z
+SUMMARY:Werewolf Movie Night
+DESCRIPTION:There was talk of watching werewolf, or giant scary wolf, or maybe adorable dog that eats faces, movies. Quinn has decided that watching movies about these subjects is a very healthy, constructive way of dealing with the current werewolf scare. So she's going to host a movie night full of movies about these subjects. 
+  
+  Movies:
+  Brotherhood of the Wolf
+  Ginger Snaps
+  Teen Wolf
+  
+  (Potentially more, maybe less depending on how the night goes) 
+END:VEVENT
+BEGIN:VEVENT
+UID:91708095-c60d-4863-9bf9-8178d54a4f66@Spirit Lake-spiritlakemu.com
+DTSTART:20190209T010000Z
+DTSTAMP:20190129T221653Z
+SUMMARY:Weird Anonymous
+DESCRIPTION:Unofficial meeting of people who have experienced/are experiencing crazy shit. Please see the Nextdoor thread (10/14) for more info. It will be held at the church. If you are not on Nextdoor ICly, I'm sure we can figure out how to get you an IC invite!
+END:VEVENT
+BEGIN:VEVENT
+UID:50df9feb-c0c5-4b8e-8b0d-3a4c18ccbaa9@Spirit Lake-spiritlakemu.com
+DTSTART:20190212T010000Z
+DTSTAMP:20190131T165644Z
+SUMMARY:Grand Lake Polar Plunge!
+DESCRIPTION:It's not remotely safe, but that doesn't mean people don't love to it, and it's for a good cause.
+  
+  POLAR PLUNGING.
+  
+  Come take a plung at Spirit Lake. You never know, the depths might hold a secret or two waiting for you.
+  
+  This is a charitable event. All monetary proceeds will go towards buying suitable winter clothing for use in county shelters; all donations should be winterwear in useable condition.
+END:VEVENT
+BEGIN:VEVENT
+UID:94b86db1-ab78-41fc-a655-4343a2517eac@Spirit Lake-spiritlakemu.com
+DTSTART:20190205T010000Z
+DTSTAMP:20190202T014229Z
+SUMMARY:Lights, Camera, Action!
+DESCRIPTION:Ranger Beau is going up the Mountain to plant a few cameras where they can overlook the sight of the former Banyan tree that (half) the town has been talking about. This is a semi-private event meaning I am looking for 3-5 people who already know something about this IC and would likely be involved in such a mission. Park staff, police officers, scientists and anyone else with a good excuse IC. I work all weekend so I have to do this on Monday but if you're interested and looking for a hook IC mail me, maybe we can figure it out.
+  
+  P.S. I spent Luck for this scene! Woooo!
 END:VEVENT
 END:VCALENDAR
