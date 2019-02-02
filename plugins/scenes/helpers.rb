@@ -28,6 +28,15 @@ module AresMUSH
       scene.participants.include?(actor)
     end
 
+    def self.can_join_scene?(actor, scene)
+      return !scene.is_private? if !actor
+      return true if scene.owner == actor
+      return true if (!scene.is_private? && !scene.watchable_scene)
+      return true if actor.room == scene.room
+      return true if scene.invited.include?(actor)
+      scene.participants.include?(actor)
+    end
+
     def self.can_edit_scene?(actor, scene)
       return false if !actor
       return true if Scenes.can_manage_scene?(actor, scene)
@@ -157,7 +166,7 @@ module AresMUSH
     end
 
     def self.is_valid_privacy?(privacy)
-      ["Public", "Open", "Private"].include?(privacy)
+      ["Public", "Open", "Private", "Watchable"].include?(privacy)
     end
 
     def self.with_a_scene(scene_id, client, &block)
