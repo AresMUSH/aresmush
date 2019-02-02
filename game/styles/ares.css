@@ -470,6 +470,14 @@ HOME SCREEN
   font-weight: bold;
   text-align: center; }
 
+.jumbotron-image {
+  height: 250px;
+  max-width: 100%;
+  background: url("/game/uploads/theme_images/jumbotron.png");
+  background-size: cover;
+  background-position: center;
+  margin: auto; }
+
 .jumbotron img {
   max-width: 70%;
   width: 400px; }
@@ -760,6 +768,10 @@ CHAT SCREEN
   overflow-y: scroll;
   overflow-x: hidden; }
 
+.chat-box {
+  padding: 0px;
+  margin: 0px; }
+
 .chat-button {
   width: 100%; }
 
@@ -782,6 +794,9 @@ CHAT SCREEN
 /* -------------------------
 JOBS SCREEN
 ------------------------- */
+.job-filter {
+  margin-left: 10px; }
+
 .job-status {
   background-color: gray; }
 
@@ -803,12 +818,6 @@ JOBS SCREEN
 
 .job-category {
   background-color: gray; }
-
-.job-category-ACTIVE {
-  background-color: #3498DB; }
-
-.job-category-MINE {
-  background-color: #16A085; }
 
 .job-category-ALERT, .job-category-BUG {
   background-color: red;
@@ -1189,7 +1198,9 @@ h2 {
 .sidebar-heading h2 {
   padding: 0px;
   color: #C2C1C2;
-  border: 0px; }
+  border: 0px;
+  padding-bottom: 10px;
+  margin-top: 10px; }
 
 .sidebar-box {
   line-height: 1.5em; }
