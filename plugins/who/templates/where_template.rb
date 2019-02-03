@@ -65,7 +65,7 @@ module AresMUSH
           if (scene)
             if (scene.private_scene)
               append_to_group(groups['private'], room, name)
-            elsif (scene.watchable_scene)
+            elsif (scene.watchable_scene) 
               append_to_group(groups['private'], room, name)
             else
               append_to_group(groups['open'], room, name)
