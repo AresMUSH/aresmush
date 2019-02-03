@@ -46,9 +46,9 @@ module AresMUSH
         
         help_url = Help.topic_url('')
         text = formatter.to_mush(list.sort.join("\n"))
-        footer = t('help.command_help_footer', :url => help_url, :topic => self.topic)
-        template = BorderedDisplayTemplate.new text, t('help.command_help_title'), footer
-        client.emit template.render
+        #template = BorderedDisplayTemplate.new text
+        #client.emit template.render
+        client.emit "%lh#{text}%lf"
         
       end
       
