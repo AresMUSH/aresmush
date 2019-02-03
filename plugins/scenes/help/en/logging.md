@@ -1,5 +1,5 @@
 ---
-toc: Scenes
+toc: 4 - Writing the Story
 summary: Scene logging.
 aliases:
 - scene log

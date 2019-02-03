@@ -1,5 +1,5 @@
 ---
-toc: Character Creation
+toc: 3 - Creating a Character
 order: 3
 summary: Viewing character sheets.
 

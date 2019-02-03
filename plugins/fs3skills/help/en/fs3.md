@@ -1,5 +1,5 @@
 ---
-toc: FS3
+toc: Using FS3
 order: 1
 summary: Skills and Combat System
 ---

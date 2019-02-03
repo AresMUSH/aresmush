@@ -1,5 +1,5 @@
 ---
-toc: FS3 Combat
+toc: Using FS3
 summary: Participating in combat scenes.
 aliases:
 - vehicles
@@ -8,7 +8,6 @@ aliases:
 - vehicle
 - gear
 - mount
-order: 1
 ---
 # FS3 Combat
 

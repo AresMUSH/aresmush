@@ -1,5 +1,5 @@
 ---
-toc: Miscellaneous
+toc: Setting Up Your Client
 summary: Keeping your connection alive.
 ---
 # Keeping Your Connection Alive
