@@ -1,5 +1,5 @@
 ---
-toc: Miscellaneous
+toc: Formatting Text
 summary: Ansi colors.
 aliases:
 - color

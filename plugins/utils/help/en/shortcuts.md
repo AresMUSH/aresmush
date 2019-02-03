@@ -1,5 +1,5 @@
 ---
-toc: Miscellaneous
+toc: Utilities / Miscellaneous
 summary: Create your own command shortcuts.
 ---
 # Creating Command Shortcuts

@@ -1,5 +1,5 @@
 ---
-toc: Descriptions
+toc: ~admin~ Building
 summary: Expanding room descriptions by time and season.
 ---
 # Vistas

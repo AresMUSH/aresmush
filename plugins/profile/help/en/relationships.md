@@ -1,5 +1,5 @@
 ---
-toc: Community
+toc: Using Profiles
 summary: Tracking IC relationships.
 ---
 # Tracking IC Relationships

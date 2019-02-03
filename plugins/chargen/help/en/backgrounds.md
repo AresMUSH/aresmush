@@ -1,5 +1,5 @@
 ---
-toc: Character Creation
+toc: 3 - Creating a Character
 summary: Viewing and setting character backgrounds.
 aliases:
 - bio

@@ -2,9 +2,10 @@
 <% paginator.items.each do |section| %>
 %xg<%= section %>%xn
 <% section_topics(section).each do |title, data| %>
-     %xh<%= title.titleize %>%xn - <%= data['summary'] %> <%= topic_url(title) %>
+     %xh<%= title.titleize %>%xn - <%= data['summary'] %>
 <% end %>
 <% end %>
 <%= paginator.page_footer %>
 <%= t('help.pages_tip') %>
+<%= t('help.help_topic_footer', :url => help_url )%>
 <%= footer %>
