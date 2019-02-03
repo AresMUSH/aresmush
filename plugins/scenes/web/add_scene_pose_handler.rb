@@ -4,7 +4,7 @@ module AresMUSH
       def handle(request)
         scene = Scene[request.args[:id]]
         enactor = request.enactor
-        pose = request.args[:pose]
+        pose = (request.args[:pose] || "").chomp
         pose_type = request.args[:pose_type]
         is_setpose = pose_type == 'setpose'
         is_gmpose = pose_type == 'gm'
