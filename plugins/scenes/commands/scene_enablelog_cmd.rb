@@ -2,9 +2,9 @@ module AresMUSH
   module Scenes
     class SceneLogEnableCmd
       include CommandHandler
-      
+
       attr_accessor :scene_num, :option
-      
+
       def parse_args
         if (cmd.args)
           self.scene_num = integer_arg(cmd.args)
@@ -13,21 +13,26 @@ module AresMUSH
         end
         self.option = cmd.switch_is?("startlog")
       end
-           
+
       def handle
-        
-        Scenes.with_a_scene(self.scene_num, client) do |scene|          
+
+        if (!Scenes.can_join_scene?(enactor, Scene[self.scene_num]))
+          client.emit_failure t('dispatcher.not_allowed')
+          return
+        end
+
+        Scenes.with_a_scene(self.scene_num, client) do |scene|
 
           if (scene.completed)
             client.emit_failure t('scenes.scene_already_completed')
             return
           end
-          
+
           if (scene.room.room_type == "OOC")
             client.emit_failure t('scenes.no_scene_in_ooc_room')
             return
           end
-        
+
           if (self.option)
             if (scene.logging_enabled)
               client.emit_ooc t('scenes.logging_already_on')
