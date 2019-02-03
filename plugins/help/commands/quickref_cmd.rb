@@ -46,8 +46,6 @@ module AresMUSH
         
         help_url = Help.topic_url('')
         text = formatter.to_mush(list.sort.join("\n"))
-        #template = BorderedDisplayTemplate.new text
-        #client.emit template.render
         client.emit "%lh#{text}%lf"
         
       end
