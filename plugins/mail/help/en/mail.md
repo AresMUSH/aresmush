@@ -1,5 +1,5 @@
 ---
-toc: Communicating
+toc: 2 - Communicating
 summary: In-game mail system.
 ---
 # Mail

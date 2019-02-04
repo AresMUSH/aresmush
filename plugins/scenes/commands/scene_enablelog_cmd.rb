@@ -27,6 +27,11 @@ module AresMUSH
             client.emit_failure t('scenes.no_scene_in_ooc_room')
             return
           end
+
+          if (!Scenes.can_edit_scene?(enactor, scene))
+            client.emit_failure t('dispatcher.not_allowed')
+            return
+          end
         
           if (self.option)
             if (scene.logging_enabled)

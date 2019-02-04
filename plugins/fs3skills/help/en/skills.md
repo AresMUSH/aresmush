@@ -1,6 +1,7 @@
 ---
-toc: FS3
+toc: Using FS3
 summary: Choosing your character's skills.
+order: 2
 aliases:
 - reset
 - language

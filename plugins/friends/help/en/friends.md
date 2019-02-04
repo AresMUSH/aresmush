@@ -1,5 +1,5 @@
 ---
-toc: Community
+toc: Finding People
 summary: Interacting with your friends.
 ---
 # Friends

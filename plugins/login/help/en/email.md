@@ -1,5 +1,5 @@
 ---
-toc: Miscellaneous
+toc: Managing Your Account
 summary: Setting your email.
 ---
 # Email

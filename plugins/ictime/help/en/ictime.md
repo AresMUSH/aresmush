@@ -1,5 +1,5 @@
 ---
-toc: Time
+toc: Tracking Time
 summary: Viewing the IC date/time.
 ---
 # IC Time

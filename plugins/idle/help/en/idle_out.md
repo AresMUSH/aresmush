@@ -1,5 +1,5 @@
 ---
-toc: Character Creation
+toc: Utilities / Miscellaneous
 summary: What happens if you idle out.
 aliases:
 - lastwill

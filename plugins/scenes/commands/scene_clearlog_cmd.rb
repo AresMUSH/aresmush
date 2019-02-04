@@ -21,7 +21,12 @@ module AresMUSH
             client.emit_failure t('scenes.logging_not_enabled')
             return
           end
-        
+
+          if (!Scenes.can_manage_scene?(enactor, scene))
+            client.emit_failure t('dispatcher.not_allowed')
+            return
+          end
+                  
           scene.delete_poses_and_log
           if (scene.room)
             scene.room.emit_ooc t('scenes.log_cleared')

@@ -1,5 +1,5 @@
 ---
-toc: Character Creation
+toc: 3 - Creating a Character
 summary: Selecting pre-made characters from the roster.
 order: 2
 ---
