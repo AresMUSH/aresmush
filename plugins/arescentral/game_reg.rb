@@ -50,7 +50,7 @@ module AresMUSH
         name: game_config['name'], 
         category: game_config['category'],
         description: game_config['description'],
-        website: game_config["website"],
+        website: game_config["website"] || Game.web_portal_url,
         public_game: AresCentral.is_public_game?,
         status: game_config["status"],
         activity: Game.master.login_activity
