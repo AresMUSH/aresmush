@@ -48,11 +48,6 @@ Some abilities require specialization.  You can add or remove a specialty:
 
 `specialty/add <ability>=<specialty>` or `specialty/remove <ability>=<specialty>`
 
-## Adding RP Hooks
-
-See [Hooks](/help/hooks).
-
-
 ## Finding Other People With Skills
 
 If you're looking for a character with a specific skill, you can use the skill scan command.  It will list anyone with that skill above Everyman (or above Average for attributes).  People in your room are highlighted.
