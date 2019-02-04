@@ -18,7 +18,7 @@ module AresMUSH
 
     def self.knows_spell?(char, spell_name)
       spell_name = spell_name.titlecase
-      if char.spells_learned.select { |a| a.name == spell_name }.first
+      if char.spells_learned.select { |a| (a.name == spell_name && a.learning_complete == true) }.first
         return true
       else
         return false
