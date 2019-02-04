@@ -12,6 +12,15 @@ spells:
     is_stun: false
     roll: Will
     is_potion: true
+  Beginner Telekinesis:
+    name: 'Beginner Telekinesis'
+    level: 1
+    school: Will
+    desc: Minor Telekinesis desc
+    target_optional: false
+    is_revive: false
+    is_stun: false
+    roll: Will
   #Level 2
   Minor Telekinesis:
     name: 'Minor Telekinesis'
