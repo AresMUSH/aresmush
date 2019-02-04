@@ -43,3 +43,5 @@ killares
 game/config/server.yml
 game/config/database.yml
 game/config/server.yml
+install/game.distr/config/database.yml
+game/config/database.yml
