@@ -7,7 +7,7 @@ scenes:
   room_cleanup_cron:
     minute:
     - 15
-    - 45
+    - 46
   scene_types:
   - Social
   - Event
