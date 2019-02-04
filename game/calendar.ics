@@ -2,21 +2,6 @@ BEGIN:VCALENDAR
 VERSION:2.0
 PRODID:-//hacksw/handcal//NONSGML v1.0//EN
 BEGIN:VEVENT
-UID:8bf5b029-3af6-42f4-a791-75d1122f0f3a@Spirit Lake-spiritlakemu.com
-DTSTART:20190202T020000Z
-DTSTAMP:20190111T160439Z
-SUMMARY:Majesty Arts: Grand Opening
-DESCRIPTION:# Grand Opening!
-  
-  Majesty Arts welcomes the Grand Lake Community to a modestly elegant evening of art, culture, wine, and merriment. Catering will be provided by *The Cafe*. Entertainment is pending booking.
-  
-  ## Majesty Arts
-  Majesty Arts is a new artist co-op located on East Lake Ave, sharing space with *The Cafe*. We offer space for artists to display and sell their work, as well as a lounge for meetings, social events, and the like. If any are interested in joining the co-op, please contact Amina Green.
-  
-  ## Help Wanted!
-  Majesty Arts is also **hiring** for the grand opening (seeking musical talent!) and for permanent associate positions. Please contact Amina Green.
-END:VEVENT
-BEGIN:VEVENT
 UID:f553fa58-b733-4316-86bb-f3ae3fc32643@Spirit Lake-spiritlakemu.com
 DTSTART:20190205T020000Z
 DTSTAMP:20190116T021928Z
@@ -24,13 +9,6 @@ SUMMARY:Bowling Mixer!
 DESCRIPTION:%RSome of the Locals of Grand Lake are warming up to the New Comers. Reagan McFerrain, pie delivering ray of sunshine that she is has suggested a kind of event that might bring everyone together. Tossing balls down lanes! Ahem. A bowling mixer! This will take place at Grand Lakes Lanes.
   
   OOC: This is just a social scene to get some of the locals and the new faces together and get them to know each other better. Late arrivals are fine. Wander in and out as you like.
-END:VEVENT
-BEGIN:VEVENT
-UID:6a14b90e-6a28-4bef-98a8-57027f35bd18@Spirit Lake-spiritlakemu.com
-DTSTART:20190203T013000Z
-DTSTAMP:20190129T040814Z
-SUMMARY:Junebug Trailer Discotech
-DESCRIPTION:The disco ball has been installed on top of Erik's trailer with the help of Manny and Thora. Will it really repel a wolf? WHO KNOWS. Well, someone probably knows. But that person isn't Erik. Regardless, there will be a bar. It's BYOB.
 END:VEVENT
 BEGIN:VEVENT
 UID:8b45a365-02aa-469d-9fa9-49013b546b23@Spirit Lake-spiritlakemu.com
@@ -74,5 +52,18 @@ SUMMARY:Lights, Camera, Action!
 DESCRIPTION:Ranger Beau is going up the Mountain to plant a few cameras where they can overlook the sight of the former Banyan tree that (half) the town has been talking about. This is a semi-private event meaning I am looking for 3-5 people who already know something about this IC and would likely be involved in such a mission. Park staff, police officers, scientists and anyone else with a good excuse IC. I work all weekend so I have to do this on Monday but if you're interested and looking for a hook IC mail me, maybe we can figure it out.
   
   P.S. I spent Luck for this scene! Woooo!
+END:VEVENT
+BEGIN:VEVENT
+UID:cc6665f5-b192-4222-9652-9b0a80161077@Spirit Lake-spiritlakemu.com
+DTSTART:20190220T020000Z
+DTSTAMP:20190203T015120Z
+SUMMARY:Wine and Ouija Night
+DESCRIPTION:### Ready to join Ouija and Wine Club?
+  
+  Meet with a dynamic group of Grand Lake's most curious minds, dead 👻 and alive. Find out about your future, drink some spirits, and howl 🐺 at the **Snow Moon** 🌕.
+  
+  Questions, concerns, thoughts on life?
+  
+  Contact Green@MajestyArtsCo.op
 END:VEVENT
 END:VCALENDAR
