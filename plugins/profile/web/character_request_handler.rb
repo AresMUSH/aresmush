@@ -61,8 +61,10 @@ module AresMUSH
 
         major_spells = []
         spells.each do |s|
-        if (s[:school] == major_school && s[:learning_complete] == false)
-            major_spells.concat [s]
+          if s[:school] == major_school &&
+            if s[:learning_complete] == true
+              major_spells.concat [s]
+            end
           end
         end
 
