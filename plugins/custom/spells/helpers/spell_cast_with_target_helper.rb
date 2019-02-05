@@ -19,12 +19,24 @@ module AresMUSH
         heal_points = Global.read_config("spells", spell, "heal_points")
         if (wound)
           FS3Combat.heal(wound, heal_points)
-          room.emit t('custom.cast_heal', :name => caster.name, :spell => spell, :succeeds => succeeds, :target => target.name, :points => heal_points)
+          message = t('custom.cast_heal', :name => caster.name, :spell => spell, :succeeds => succeeds, :target => target.name, :points => heal_points)
+          room.emit message
+          if caster.room.scene
+            Scenes.add_to_scene(caster.room.scene, message)
+          end
         else
-          room.emit t('custom.cast_heal_no_effect', :name => caster.name, :spell => spell, :succeeds => succeeds, :target => target.name)
+          message = t('custom.cast_heal_no_effect', :name => caster.name, :spell => spell, :succeeds => succeeds, :target => target.name)
+          room.emit message
+          if caster.room.scene
+            Scenes.add_to_scene(caster.room.scene, message)
+          end
         end
       else
-        room.emit t('custom.casts_spell', :name => caster.name, :spell => spell, :succeeds => succeeds)
+        message = t('custom.casts_spell', :name => caster.name, :spell => spell, :succeeds => succeeds)
+        room.emit message
+        if caster.room.scene
+          Scenes.add_to_scene(caster.room.scene, message)
+        end
       end
     end
 
