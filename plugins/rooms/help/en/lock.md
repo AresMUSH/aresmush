@@ -13,4 +13,11 @@ If you're in an interior room (defined as one with an "O" out exit), you can loc
 
 These locks are temporary.  The game periodically clears the locks on empty rooms.
 
-Builders can also set up permanent role-based locks.  See [Building](/help/building).
+## Permanent Locks
+
+> **Permissions Required:** This command requires the Admin role or the 'build' permission.
+
+Builders can also lock exits to a list of roles - for instance if you had a "rebel" role you could lock a secret rebel exit to "rebel admin" so only rebels and admins could use it.  Role locks are not limited to interior rooms; any exit can be locked.
+
+`lock <exit>=<list of roles who are allowed in>`
+`unlock <exit>`

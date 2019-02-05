@@ -17,7 +17,7 @@ aliases:
 
 The MUSH grid consists of **Rooms** connected by **Exits**.  
 
-## Creating a Room
+## Building a Room
 
 You can create a room and optionally specify an outgoing exit (from your current room to the new one) and a return exit.
 
@@ -37,6 +37,8 @@ Once you have an exit, you can change the source or destination rooms that it's 
 
 > **Tip:** By default, the room description shows you the exit name and the name of its destionation, e.g. `[S] Town Square`.  You can change the destination name to something else just by giving the exit a short description using the `shortdesc` command (see [Descriptions](/help/descriptions)).
 
+For help with exit locks, see [Locks](/help/lock).
+
 ## Exit Aliases
 
 Ares has several navigational cues that make exit aliases largely unnecessary.  If you need them, though, Ares exits can have a *single* alias, which you can set using the alias command:
@@ -44,15 +46,6 @@ Ares has several navigational cues that make exit aliases largely unnecessary.  
 `alias <exit name>=<exit alias>`
 
 > **Tip:** Any exit named "O" is automatically aliased to "Out".  Also, if no specific 'out' exit exists, 'out' will simply take you out the first exit it can find.
-
-## Locking Exits
-
-> **Permissions Required:** This command requires the Admin role or the 'build' permission.
-
-Builders can also lock exits to a list of roles - for instance if you had a "rebel" role you could lock a secret rebel exit to "rebel admin" so only rebels and admins could use it.  Role locks are not limited to interior rooms; any exit can be locked.
-
-`lock <exit>=<list of roles who are allowed in>`
-`unlock <exit>`
 
 ## Finding Rooms
 
@@ -65,15 +58,9 @@ See the [Database Help](/help/database) file for more information.
 
 ## Special Rooms
 
-The game knows about three special rooms:  
-
-* The Welcome Room, where all new characters start.
-* The Offstage (or OOC) Room, where all characters go when they go offstage/ooc.
-* The IC Start room, where characters go the very first time they go onstage/ic.
+The game has several special rooms, including the welcome room, offstage/ooc lounge, quiet room, and IC start room.  You can rename these rooms, but you cannot delete them.
 
 The room where players go when they on onstage can be changed to any room with the command:  `icstart/set <room>`
-
-The welcome and offstage rooms cannot be moved or deleted, but you can rename them or update their descriptions as you see fit.
 
 ## Describing Rooms
 
