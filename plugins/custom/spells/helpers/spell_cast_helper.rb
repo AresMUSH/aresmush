@@ -49,27 +49,27 @@ module AresMUSH
 
     def self.cast_non_combat_heal(caster, spell, mod)
       succeeds = Custom.roll_noncombat_spell_success(caster, spell, mod)
-      client = Login.find_client(caster)
+      room = caster.room
       if succeeds == "%xgSUCCEEDS%xn"
         wound = FS3Combat.worst_treatable_wound(caster)
         heal_points = Global.read_config("spells", spell, "heal_points")
         if (wound)
           FS3Combat.heal(wound, heal_points)
           message = t('custom.cast_heal', :name => caster.name, :spell => spell, :succeeds => succeeds, :target => caster.name, :points => heal_points)
-          client.emit message
+          room.emit message
           if caster.room.scene
             Scenes.add_to_scene(caster.room.scene, message)
           end
         else
           message = t('custom.cast_heal_no_effect', :name => caster.name, :spell => spell, :succeeds => succeeds, :target => caster.name)
-          client.emit message
+          room.emit message
           if caster.room.scene
             Scenes.add_to_scene(caster.room.scene, message)
           end
         end
       else
         message = t('custom.casts_spell', :name => caster.name, :spell => spell, :succeeds => succeeds)
-        client.emit message
+        room.emit message
         if caster.room.scene
           Scenes.add_to_scene(caster.room.scene, message)
         end
