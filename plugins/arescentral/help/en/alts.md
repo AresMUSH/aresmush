@@ -1,5 +1,5 @@
 ---
-toc: Community
+toc: 3 - Creating a Character
 summary: Registering alternate characters.
 ---
 # Alternate Characters

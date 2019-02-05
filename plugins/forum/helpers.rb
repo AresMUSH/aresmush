@@ -108,7 +108,9 @@ module AresMUSH
       Forum.handle_forum_achievement(author, :reply)
       
       Global.notifier.notify_ooc(:new_forum_post, message) do |char|
-        Forum.can_read_category?(char, category)
+        !Forum.is_forum_muted?(char) &&
+        Forum.can_read_category?(char, category) &&
+        !Forum.is_category_hidden?(char, category)
       end
     end
     

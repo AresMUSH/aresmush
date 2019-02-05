@@ -32,7 +32,7 @@ module AresMUSH
           
           lines = md_contents.split("\n")            
           
-          footer = "%ld%R#{t('help.help_topic_footer', :url => help_url)}"
+          footer = "%ld%R#{t('help.help_topic_footer', :url => help_url)}%R#{t('help.quickref_tip')}"
           template = BorderedDisplayTemplate.new formatter.to_mush(md_contents), nil, footer
           client.emit template.render
           

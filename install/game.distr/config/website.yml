@@ -72,7 +72,8 @@ website:
       title: FS3 Combat Quick Reference <i class="fa fa-external-link-alt" aria-hidden="true">
       url: http://aresmush.com/fs3/fs3-3/combat-quickref
     - target: blank
-      title: FS3 Interactive Combat Walkthrough <i class="fa fa-external-link-alt" aria-hidden="true">
+      title: FS3 Interactive Combat Walkthrough <i class="fa fa-external-link-alt"
+        aria-hidden="true">
       url: http://aresmush.com/fs3/fs3-3/combat-walkthrough
   - title: Wiki
     menu:

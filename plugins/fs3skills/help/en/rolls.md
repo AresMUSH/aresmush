@@ -1,6 +1,7 @@
 ---
-toc: FS3
+toc: Using FS3
 summary: Making ability rolls.
+order: 3
 aliases:
 - opposed
 - roll

@@ -1,5 +1,5 @@
 ---
-toc: Miscellaneous
+toc: Utilities / Miscellaneous
 summary: Saving notes with your character.
 aliases:
 - set

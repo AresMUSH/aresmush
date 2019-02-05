@@ -68,7 +68,7 @@ module AresMUSH
             scene.delete
           elsif (elapsed_days > warn_days && !scene.deletion_warned)
             message = t('scenes.scene_delete_warn', :id => scene.id, :title => scene.title)
-            Mail.send_mail(scene.all_participant_names, t('scenes.scene_delete_warn_subject'), message, nil)
+            Mail.send_mail(scene.participant_names, t('scenes.scene_delete_warn_subject'), message, nil)
             scene.update(deletion_warned: true)
           end
         end

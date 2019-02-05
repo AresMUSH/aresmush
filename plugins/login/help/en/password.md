@@ -1,5 +1,5 @@
 ---
-toc: Miscellaneous
+toc: Managing Your Account
 summary: Changing your password.
 ---
 # Changing Your Password

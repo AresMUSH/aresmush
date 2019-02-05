@@ -1,5 +1,5 @@
 ---
-toc: Miscellaneous
+toc: Managing Your Account
 summary: Using an OOC-only 'player bit'.
 ---
 # Player Bits

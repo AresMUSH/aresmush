@@ -1,5 +1,5 @@
 ---
-toc: Miscellaneous
+toc: Utilities / Miscellaneous
 summary: Using the in-game calculator.
 aliases:
 - calculator

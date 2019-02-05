@@ -1,5 +1,5 @@
 ---
-toc: 1 - Getting Started
+toc: 2 - Communicating
 summary: Asking for help from the admin.
 ---
 # Requests

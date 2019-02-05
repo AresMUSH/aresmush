@@ -1,12 +1,12 @@
 ---
 toc: ~admin~ Managing the Game
-summary: Managing skills and luck.
+summary: Managing FS3 Skills.
 aliases:
 - ability set
 - xp award
 - xp undo
 ---
-# Managing FS3
+# Managing FS3 Skills
 
 > **Permission Required:** These commands require the Admin role or the permission: manage\_abilities
 
