@@ -12,6 +12,16 @@ spells:
     is_stun: false
     roll: true
     target_num: 1
+  Spark:
+    name: 'Spark'
+    level: 1
+    school: Air
+    desc: The caster creates a small electric current visible between two fingers. The electricity cannot be used to power anything more than 1.5 volts or cause more than static shock-like effects in individuals.
+    target_optional: true
+    is_revive: false
+    is_stun: false
+    roll: true
+    target_num: 1
   #Level 2
   Shape Air:
     name: 'Shape Air'
