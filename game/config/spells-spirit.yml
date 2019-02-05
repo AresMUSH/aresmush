@@ -21,6 +21,16 @@ spells:
     is_revive: false
     is_stun: false
     roll: true
+  Share Emotion:
+    name: Share Emotion
+    level: 1
+    school: Spirit
+    desc: Share single dominant emotion with a target within visual range of the caster.
+    target_optional: true
+    target_num: 1
+    is_revive: false
+    is_stun: false
+    roll: true
   #Level 2
   Beckon :
     name: Beckon
