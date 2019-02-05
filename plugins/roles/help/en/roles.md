@@ -1,18 +1,12 @@
 ---
 toc: ~admin~ Managing the Game
 summary: Managing roles.
-aliases:
-- adminnote
 ---
 # Roles
 
 > **Permission Required:** These commands require the Admin role.
 
-Game admins can manage what roles are available in the game and what people have those roles.  Some systems, like channels and forums, can be limited to people with certain roles.
-
-Roles control what permissions a character has.  Individual commands are limited to people with certain permissions. 
-
-See the [roles tutorial](http://aresmush.com/tutorials/manage/roles) for more details about how to use roles.
+Game admins can manage what roles are available in the game and what people have those roles.  Roles in turn grant permissions.  See the [roles tutorial](http://aresmush.com/tutorials/manage/roles) for more details about how to use roles.
 
 > **Tip:**  You can't assign individual permissions to characters.  Permissions are assigned to roles, which in turn are assigned to characters.
 
@@ -44,11 +38,3 @@ Once a role exists, you can add and remove permissions to it.
 
 `role/addpermission <role>=<permission>` - Adds a permission to a role.
 `role/removepermission <role>=<permission>` - Removes a permission from a role.
-
-## Admin Positions
-
-The `admin` command lists all game admins.  It automatically finds people based on whether they have one of the roles you have defined as an admin role in your game config.  
-
-You can also set a position to appear next to your name on the admins list, describing your role/position.
-
-`admin/position <position>` - Sets your position.

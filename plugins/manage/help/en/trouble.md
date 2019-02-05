@@ -1,5 +1,5 @@
 ---
-toc: Community
+toc: Utilities / Miscellaneous
 summary: Dealing with troublesome players.
 aliases:
 - ban

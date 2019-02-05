@@ -1,20 +1,19 @@
 ---
 toc: ~admin~ Coding
-summary: Managing plugins and config.
+summary: Managing plugins.
 aliases:
 - load
 - unload
 - plugin
-- install
 - reload
 ---
 # Managing Plugins
 
 > **Permission Required:** These commands require the Admin role or the manage\_game permission.
 
-Plugin code, help files, configuration files and translation (locale) files are all stored on disk on the server.  To make changes to these things, you need to edit them on disk and then tell the game to reload them using one of these management commands.
+Plugin code, help files, configuration files and translation (locale) files are all stored on disk on the server. 
 
-Reloading doesn't affect the game engine, which can only be updated by shutting down and restarting the game.  However, game engine updates are very rare.
+> Note: Reloading doesn't affect the game engine, which can only be updated by shutting down and restarting the game.
 
 ## Loading Plugin Code
 
@@ -29,11 +28,7 @@ Plugin code can be loaded and unloaded dynamically without restarting the server
 
 ## Loading Plugin Config
 
-If you're changing the game configuration through the web portal, you will not need to reload the configuration.  If you are manually modifying config files on disk, you should use:
-
-`load config` - Reloads configuration from disk.
-
-You can also view, debug and get additional information about config files.  See [Config](/help/config).
+You can also reload the game configuration.  See [Config](/help/config).
    
 ## Loading Locale Translations
 
@@ -52,11 +47,3 @@ When you've made changes to the web portal CSS files, you can update just the st
 If you aren't sure what all you need to load, you can reload all the plugins, the config and the translations all at once.
 
 `load all` - Reloads everything.
-
-## Installing New Plugins
-
-Several plugins are available in the [Ares Extras](https://github.com/AresMUSH/ares-extras/) repository, including officially-supported extensions and community contributions.  You can install them directly from the game:
-
-`plugin/install <name>`
-  
-> **Note:!** Many plugins require some additional manual install steps.  Be sure to check the README file associated with each plugin for detailed information on installation and configuration.

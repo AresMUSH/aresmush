@@ -69,7 +69,9 @@ module AresMUSH
     
     # Just announces that the websocket was closed.
     def connection_closed
-      @client.connection_closed        
+      if (@client)
+        @client.connection_closed        
+      end
     end
     
     def close_connection(dummy = nil)  # Dummy for compatibility with the other connection class.

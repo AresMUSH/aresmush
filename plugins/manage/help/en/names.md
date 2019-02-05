@@ -1,5 +1,5 @@
 ---
-toc: Character Creation
+toc: Managing Your Account
 summary: Setting your name and alias.
 aliases:
 - alias

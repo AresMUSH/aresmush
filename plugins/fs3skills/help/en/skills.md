@@ -1,6 +1,7 @@
 ---
-toc: FS3
+toc: Using FS3
 summary: Choosing your character's skills.
+order: 2
 aliases:
 - reset
 - language
@@ -46,11 +47,6 @@ There are two ways to adjust your abilities.  All abilities use the same command
 Some abilities require specialization.  You can add or remove a specialty:
 
 `specialty/add <ability>=<specialty>` or `specialty/remove <ability>=<specialty>`
-
-## Adding RP Hooks
-
-See [Hooks](/help/hooks).
-
 
 ## Finding Other People With Skills
 

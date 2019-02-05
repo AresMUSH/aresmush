@@ -1,5 +1,5 @@
 ---
-toc: Miscellaneous
+toc: Utilities / Miscellaneous
 summary: Sweeping a room to ensure privacy.
 ---
 # Sweeping a Room

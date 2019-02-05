@@ -1,5 +1,5 @@
 ---
-toc: Character Creation
+toc: 3 - Creating a Character
 summary: Submitting your character for approval.
 order: 3
 aliases:

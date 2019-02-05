@@ -1,5 +1,5 @@
 ---
-toc: Miscellaneous
+toc: Setting Up Your Client
 summary: Grabbing and editing text from the game.
 aliases:
 - grab

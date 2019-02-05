@@ -1,5 +1,5 @@
 ---
-toc: Miscellaneous
+toc: Setting Up Your Client
 summary: Making your terminal beep.
 aliases:
 - bell
