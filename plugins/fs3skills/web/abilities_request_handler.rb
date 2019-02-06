@@ -9,9 +9,9 @@ module AresMUSH
           linked_attr: a['linked_attr'],
           description: a['desc'],
           specialties: a['specialties'] ? a['specialties'].join(', ') : nil,
-        }}
-        languages = FS3Skills.languages.map { |a| { name: a['name'], description: a['desc'] } }
-        advantages = FS3Skills.advantages.map { |a| { name: a['name'], description: a['desc'] } }
+        }}.sort_by { |a| a['name'] }
+        languages = FS3Skills.languages.map { |a| { name: a['name'], description: a['desc'] } }.sort_by { |a| a['name'] }
+        advantages = FS3Skills.advantages.map { |a| { name: a['name'], description: a['desc'] } }.sort_by { |a| a['name'] }
         
         {
           attrs_blurb: Website.format_markdown_for_html(FS3Skills.attr_blurb),
