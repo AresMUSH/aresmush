@@ -20,7 +20,7 @@ module AresMUSH
             e.update(reminded: true)
           end
           
-          if (e.time_until_event < 0)
+          if (e.time_until_event < (0 - (30*60)))
             e.delete
           end
         end
