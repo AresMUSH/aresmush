@@ -59,7 +59,8 @@ module AresMUSH
           can_edit: enactor && Scenes.can_read_scene?(enactor, scene),
           is_muted: enactor && scene.muters.include?(enactor),
           poses: scene.poses_in_order.map { |p| { 
-            char: { name: p.character.name, icon: Website.icon_for_char(p.character) }, 
+            char: { name: p.character ? p.character.name : t('scenes.author_deleted'), 
+                    icon: Website.icon_for_char(p.character) }, 
             order: p.order, 
             id: p.id,
             timestamp: OOCTime.local_long_timestr(enactor, p.created_at),
