@@ -52,6 +52,10 @@ module AresMUSH
           return
         end
         
+        if self.location == 'Here'
+          self.location = enactor_room.name_and_area
+        end
+          
         scene = Scene.create(owner: enactor, 
             location: self.location, 
             private_scene: self.privacy == "Private",
