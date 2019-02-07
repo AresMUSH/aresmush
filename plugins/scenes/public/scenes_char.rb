@@ -8,6 +8,8 @@ module AresMUSH
     attribute :pose_word_count, :type => DataType::Integer
     attribute :scene_home
   
+    before_delete :remove_from_scenes
+    
     def autospace
       self.pose_autospace
     end
@@ -28,6 +30,12 @@ module AresMUSH
     
     def unshared_scenes
       Scene.all.select { |s| s.completed && !s.shared && s.participants.include?(self) }
+    end
+    
+    def remove_from_scenes
+      self.scenes_starring.each do |s|
+        s.participants.delete self
+      end
     end
   end
 end
