@@ -10,9 +10,7 @@ module AresMUSH
     end
     
     def delete_bbs_prefs
-      if self.bbs_prefs
-        self.bbs_prefs.destroy
-      end
+      self.bbs_prefs.each { |p| p.destroy }
     end
     
   end
