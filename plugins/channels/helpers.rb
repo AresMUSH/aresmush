@@ -1,6 +1,7 @@
 module AresMUSH
   module Channels
     def self.can_manage_channels?(actor)
+      return false if !actor
       actor.has_permission?("manage_channels")
     end
     
@@ -122,6 +123,7 @@ module AresMUSH
     
     def self.can_use_channel(char, channel)
       return true if channel.roles.empty?
+      return true if Channels.can_manage_channels?(char)
       return char.has_any_role?(channel.roles)
     end
     
