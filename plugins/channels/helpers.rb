@@ -7,6 +7,10 @@ module AresMUSH
     def self.get_channel_options(char, channel)
       char.channel_options.find(channel_id: channel.id).first
     end
+    
+    def self.recall_buffer_size
+      Global.read_config("channels", "recall_buffer_size") || 500
+    end
 
     def self.is_talk_cmd(enactor, cmd)
       return false if !enactor
