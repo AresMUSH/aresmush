@@ -66,9 +66,11 @@ module AresMUSH
             timestamp: OOCTime.local_long_timestr(enactor, p.created_at),
             is_setpose: p.is_setpose,
             is_system_pose: p.is_system_pose?,
+            restarted_scene_pose: p.restarted_scene_pose,
             is_ooc: p.is_ooc,
             raw_pose: p.pose,
-            can_edit: !p.is_system_pose? && p.can_edit?(enactor),
+            can_edit: p.can_edit?(enactor),
+            can_delete: p.restarted_scene_pose ? false : p.can_edit?(enactor),
             pose: Website.format_markdown_for_html(p.pose) }}
         }
       end
