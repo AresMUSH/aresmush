@@ -2,29 +2,6 @@ BEGIN:VCALENDAR
 VERSION:2.0
 PRODID:-//hacksw/handcal//NONSGML v1.0//EN
 BEGIN:VEVENT
-UID:f553fa58-b733-4316-86bb-f3ae3fc32643@Spirit Lake-spiritlakemu.com
-DTSTART:20190205T020000Z
-DTSTAMP:20190116T021928Z
-SUMMARY:Bowling Mixer!
-DESCRIPTION:%RSome of the Locals of Grand Lake are warming up to the New Comers. Reagan McFerrain, pie delivering ray of sunshine that she is has suggested a kind of event that might bring everyone together. Tossing balls down lanes! Ahem. A bowling mixer! This will take place at Grand Lakes Lanes.
-  
-  OOC: This is just a social scene to get some of the locals and the new faces together and get them to know each other better. Late arrivals are fine. Wander in and out as you like.
-END:VEVENT
-BEGIN:VEVENT
-UID:8b45a365-02aa-469d-9fa9-49013b546b23@Spirit Lake-spiritlakemu.com
-DTSTART:20190206T000000Z
-DTSTAMP:20190129T215310Z
-SUMMARY:Werewolf Movie Night
-DESCRIPTION:There was talk of watching werewolf, or giant scary wolf, or maybe adorable dog that eats faces, movies. Quinn has decided that watching movies about these subjects is a very healthy, constructive way of dealing with the current werewolf scare. So she's going to host a movie night full of movies about these subjects. 
-  
-  Movies:
-  Brotherhood of the Wolf
-  Ginger Snaps
-  Teen Wolf
-  
-  (Potentially more, maybe less depending on how the night goes) 
-END:VEVENT
-BEGIN:VEVENT
 UID:91708095-c60d-4863-9bf9-8178d54a4f66@Spirit Lake-spiritlakemu.com
 DTSTART:20190209T010000Z
 DTSTAMP:20190129T221653Z
@@ -45,15 +22,6 @@ DESCRIPTION:It's not remotely safe, but that doesn't mean people don't love to i
   This is a charitable event. All monetary proceeds will go towards buying suitable winter clothing for use in county shelters; all donations should be winterwear in useable condition.
 END:VEVENT
 BEGIN:VEVENT
-UID:94b86db1-ab78-41fc-a655-4343a2517eac@Spirit Lake-spiritlakemu.com
-DTSTART:20190205T010000Z
-DTSTAMP:20190202T014229Z
-SUMMARY:Lights, Camera, Action!
-DESCRIPTION:Ranger Beau is going up the Mountain to plant a few cameras where they can overlook the sight of the former Banyan tree that (half) the town has been talking about. This is a semi-private event meaning I am looking for 3-5 people who already know something about this IC and would likely be involved in such a mission. Park staff, police officers, scientists and anyone else with a good excuse IC. I work all weekend so I have to do this on Monday but if you're interested and looking for a hook IC mail me, maybe we can figure it out.
-  
-  P.S. I spent Luck for this scene! Woooo!
-END:VEVENT
-BEGIN:VEVENT
 UID:cc6665f5-b192-4222-9652-9b0a80161077@Spirit Lake-spiritlakemu.com
 DTSTART:20190220T020000Z
 DTSTAMP:20190203T015120Z
@@ -65,5 +33,25 @@ DESCRIPTION:### Ready to join Ouija and Wine Club?
   Questions, concerns, thoughts on life?
   
   Contact Green@MajestyArtsCo.op
+END:VEVENT
+BEGIN:VEVENT
+UID:e0513e6b-2340-47e7-87b4-1a10984b80f2@Spirit Lake-spiritlakemu.com
+DTSTART:20190302T020000Z
+DTSTAMP:20190208T011141Z
+SUMMARY:Tea and Sympathy
+DESCRIPTION:Lena is inviting lady friends to come have tea and bring baked goods. Preferably homemade, but bought will do in a pinch. Tea brews and nifty looking teapots welcome, and appropriate hats are encouraged. 
+  
+  (What constitutes an appropriate hat shall be left to the wearer.)
+END:VEVENT
+BEGIN:VEVENT
+UID:cc8b584a-0bb4-4fbc-ab55-a06967e9cc89@Spirit Lake-spiritlakemu.com
+DTSTART:20190219T020000Z
+DTSTAMP:20190208T044725Z
+SUMMARY:Self-Defense and Snickerdoodles
+DESCRIPTION:Worried about weird stuff lurking around the corner? Is there a creeper on your case? Come on down to the Grand Lake Exercise Center for an evening of self-defense instruction and fun. Bring your athletic wear and comfortable shoes.
+  
+  Disclaimer: Making a lot of noise tends to be a deterrent, but nothing replaces the buddy system. Be cool, look out for your friends.
+  
+  Cookies will be provided.
 END:VEVENT
 END:VCALENDAR

@@ -9,13 +9,14 @@ module AresMUSH
 
         if (enactor)
           if (Jobs.can_access_jobs?(enactor))
-            job_activity = enactor.unread_jobs.count
+            #job_activity = enactor.unread_jobs.count
           else
-            job_activity = enactor.unread_requests.count
+            #job_activity = enactor.unread_requests.count
           end
         else
           job_activity = nil
         end
+        job_activity = nil
 
         {
           timestamp: Time.now.getutc,
@@ -25,7 +26,7 @@ module AresMUSH
           recent_forum: Forum::RecentForumPostsRequestHandler.new.handle(request),
           happenings: Who::WhoRequestHandler.new.handle(request),
           unread_mail: enactor ? enactor.unread_mail.count : nil,
-          recent_changes: Website.get_recent_changes(true, 10),
+          recent_changes: [], #Website.get_recent_changes(true, 10),
           left_sidebar: Global.read_config('website', 'left_sidebar'),
           top_navbar: Global.read_config('website', 'top_navbar'),
           registration_required: Global.read_config("login", "portal_requires_registration"),
