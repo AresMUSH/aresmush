@@ -44,8 +44,11 @@ module AresMUSH
     def self.unshare_scene(enactor, scene)
       scene.update(shared: false)
       if (scene.scene_log)
-        Scenes.add_to_scene(scene, scene.scene_log.log, enactor)
-        scene.scene_log.delete
+        pose = Scenes.add_to_scene(scene, scene.scene_log.log, enactor)
+        if (pose)
+          pose.update(restarted_scene_pose: true)
+          scene.scene_log.delete
+        end
       end
     end
     

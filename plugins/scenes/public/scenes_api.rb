@@ -19,7 +19,7 @@ module AresMUSH
     end
     
     def self.add_to_scene(scene, pose, character = Game.master.system_character, is_setpose = nil, is_ooc = nil)
-      return if !scene.logging_enabled
+      return nil if !scene.logging_enabled
       
       scene_pose = ScenePose.create(pose: pose, character: character, scene: scene, is_setpose: is_setpose, is_ooc: is_ooc)
       if (!scene_pose.is_system_pose?)
@@ -41,6 +41,8 @@ module AresMUSH
       if (!is_ooc)
         Scenes.handle_word_count_achievements(character, pose)
       end
+      
+      return scene_pose
     end
     
     def self.invite_to_scene(scene, char, enactor)
