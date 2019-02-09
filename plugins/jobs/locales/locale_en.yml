@@ -66,3 +66,4 @@ en:
         
         reboot_required:  "Your operating system is indicating that your server needs to be rebooted - probably to finish installing automatic updates.  Please restart the server (not just the game) as soon as you can.  You may encounter performance or memory issues until this is done."
         
+        job_query: "%{name} has sent a request to %{target}:%R%{desc}"
