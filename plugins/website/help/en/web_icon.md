@@ -1,5 +1,5 @@
 ---
-toc: Web Portal
+toc: Using Profiles
 summary: Setting your web portal icon.
 aliases:
 - log icon
@@ -20,4 +20,4 @@ The following tips will help you get your icon showing up right:
 * Keep the face close to the top of the icon - don't leave a lot of empty space above the head.
 * Make sure there's room at the bottom for the name tag.
 
-Both the profile image and icon can be set by editing your [Character Profile](/help/web_profile).  You'll first need to upload the file to the [Files Repository](/help/web_files).  
+Both the profile image and icon can be set by editing your character profile.

@@ -1,5 +1,5 @@
 ---
-toc: Community
+toc: Utilities / Miscellaneous
 summary: Rewarding RP with cookies.
 aliases:
 - cookie

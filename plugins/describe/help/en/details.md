@@ -1,5 +1,5 @@
 ---
-toc: Descriptions
+toc: Looking at Things
 summary: Expanding descriptions with separate details.
 ---
 # Details

@@ -41,7 +41,7 @@ module AresMUSH
     
     def send_data(msg)
       begin
-        ##telnet_debug(msg, "SEND")
+        #telnet_debug(msg, "SEND")
         super msg
       rescue Exception => e
         Global.logger.warn "Could not send to connection:  error=#{e} backtrace=#{e.backtrace[0,10]}."
@@ -82,6 +82,12 @@ module AresMUSH
             @input_buf = ""
           end
           @input_buf << data
+          
+          if (@negotiator.is_control?(@input_buf))
+            #telnet_debug(@input_buf, "RECV")
+            @input_buf = @negotiator.handle_input(@input_buf)
+          end
+         
           return
         end
          
@@ -93,7 +99,7 @@ module AresMUSH
         end
         
         parts.each do |part|
-          ##telnet_debug(part, "RECV")
+          #telnet_debug(part, "RECV")
           
           next if !part
           part = "#{part.chomp}\n"
@@ -175,8 +181,7 @@ module AresMUSH
       end
 
       puts "#{prefix} ---------------"
-      puts part.inspect
-      puts output.join(" ")
+      puts "#{part.inspect.strip}#{output.join(" ")}"
       
     end
   end

@@ -1,5 +1,5 @@
 ---
-toc: Scenes
+toc: 4 - Writing the Story
 summary: Starting scenes.
 order: 2
 aliases:
@@ -52,6 +52,8 @@ A scene can be open (anyone's invited), private (only those invited should join 
 
 You can control several properties about the scene.  These are used for [Scene Logging](/help/logging) and to advise the participants about what's going on.
 
+You can see the current scene info by typing `scene <#>.`
+
 `scene/title [<#>=]<title>` - Sets the scene title.
 `scene/summary [<#>=]<summary>` - Sets the scene summary.
 `scene/icdate [<#>=]<icdate>` - Sets the scene IC date. Defaults to today's date.
@@ -75,4 +77,4 @@ When a scene in a temp room stops, characters are normally sent back to the Offs
 
 ## Logging and Poses
 
-The scene system starts a scene log automatically.  To disable this, or for more help with scene logs, including the pose editing commands, see [Scene Logging](/help/logging).
+The scene system starts a scene log automatically.  For more help, see [Scene Logging](/help/logging).
