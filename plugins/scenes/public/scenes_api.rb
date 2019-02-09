@@ -28,16 +28,8 @@ module AresMUSH
       
       scene.mark_unread(character)
                   
-      data = { 
-          char: { name: scene_pose.character.name, icon: Website.icon_for_char(scene_pose.character) }, 
-          order: scene_pose.order, 
-          is_setpose: scene_pose.is_setpose,
-          is_system_pose: scene_pose.is_system_pose?,
-          is_ooc: scene_pose.is_ooc,
-          pose: Website.format_markdown_for_html(scene_pose.pose) 
-        }.to_json
       scene.update(last_activity: Time.now)
-      Scenes.new_scene_activity(scene, data)
+      Scenes.new_scene_activity(scene, scene_pose)
       if (!is_ooc)
         Scenes.handle_word_count_achievements(character, pose)
       end

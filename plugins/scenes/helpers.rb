@@ -1,8 +1,13 @@
 module AresMUSH
   module Scenes
     
-    def self.new_scene_activity(scene, data = nil)
+    def self.new_scene_activity(scene, scene_pose = nil)
       last_posed = scene.last_posed ? scene.last_posed.name : nil
+      if (scene_pose)
+        data = Scenes.build_scene_pose_web_data(scene_pose, nil, true).to_json
+      else
+        data = nil
+      end
       web_msg = "#{scene.id}|#{last_posed}|#{data}"
       Global.client_monitor.notify_web_clients(:new_scene_activity, web_msg) do |char|
         Scenes.can_read_scene?(char, scene) && !Scenes.is_scene_muted?(char, scene)
@@ -13,7 +18,6 @@ module AresMUSH
       return false if !actor
       (scene.owner == actor) || actor.has_permission?("manage_scenes")
     end
-    
     
     def self.scene_types
       AresMUSH::Global.read_config('scenes', 'scene_types' )      
@@ -60,8 +64,7 @@ module AresMUSH
       scene.update(shared: true)
       scene.update(date_shared: Time.now)
       Scenes.create_log(scene)
-      Scenes.new_scene_activity(scene)
-      
+      Scenes.new_scene_activity(scene)      
       return true
     end
       
@@ -102,6 +105,7 @@ module AresMUSH
 
       scene.update(completed: true)
       scene.update(date_completed: Time.now)
+      
       Scenes.new_scene_activity(scene)
       scene.participants.each do |char|
         Scenes.handle_scene_participation_achievement(char)
@@ -434,6 +438,24 @@ module AresMUSH
     def self.is_unread?(scene, char)
       !(char.read_scenes || []).include?(scene.id)
     end
-    
+
+    def self.build_scene_pose_web_data(pose, viewer, live_update = false)
+      {
+        char: { name: pose.character ? pose.character.name : t('scenes.author_deleted'), 
+                icon: Website.icon_for_char(pose.character) }, 
+        order: pose.order, 
+        id: pose.id,
+        timestamp: OOCTime.local_long_timestr(viewer, pose.created_at),
+        is_setpose: pose.is_setpose,
+        is_system_pose: pose.is_system_pose?,
+        restarted_scene_pose: pose.restarted_scene_pose,
+        is_ooc: pose.is_ooc,
+        raw_pose: pose.pose,
+        can_edit: pose.can_edit?(viewer),
+        can_delete: pose.restarted_scene_pose ? false : pose.can_edit?(viewer),
+        pose: Website.format_markdown_for_html(pose.pose),
+        live_update: live_update
+      }
+    end
   end
 end
