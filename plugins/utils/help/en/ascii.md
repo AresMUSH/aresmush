@@ -1,5 +1,5 @@
 ---
-toc: Miscellaneous
+toc: Setting Up Your Client
 summary: ASCII Client Support
 aliases:
 - ascii

@@ -1,5 +1,5 @@
 ---
-toc: FS3
+toc: Using FS3
 summary: Using luck points.
 ---
 # FS3 - Luck

@@ -1,5 +1,5 @@
 ---
-toc: Scenes
+toc: 4 - Writing the Story
 summary: Making poses and emits more readable.
 aliases:
 - autospace

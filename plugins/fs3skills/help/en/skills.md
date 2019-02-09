@@ -1,6 +1,7 @@
 ---
-toc: FS3
+toc: Using FS3
 summary: Choosing your character's skills.
+order: 2
 aliases:
 - reset
 - language
@@ -31,3 +32,8 @@ This game uses the FS3 skills system, Third Edition.  The complete rulebook can 
 If you're looking for a character with a specific skill, you can use the skill scan command.  It will list anyone with that skill above Everyman (or above Average for attributes).  People in your room are highlighted.
 
 `skill/scan <name>`
+
+You can also see a census of the skills on game.
+`census skills action`
+`census skills background` (only shows those skills 3 or more people have)
+`census skills languages`

@@ -22,6 +22,9 @@ module AresMUSH
         Help.topic_url(name)
       end
       
+      def help_url
+        "#{web_portal_url}/help"
+      end
     end
   end
 end

@@ -20,16 +20,21 @@ module AresMUSH
     TTYPE = 24    # x18
     SGA = 3       # x3  Suppress Go Ahead
     
+    def is_control?(data)
+      chars = data.split("")
+      (chars.length >= 2 && chars[0].ord == INTERPRET_AS_CONTROL)
+    end
+    
     def handle_input(data)
       chars = data.split("")
 
-      return data if (chars.length < 2 || chars[0].ord != INTERPRET_AS_CONTROL)
+      return data if !self.is_control?(data)
             
-      # Get rid of the control code      
+      # Get rid of the IAC control code      
       chars.shift
       
       # Start of negotiation sequence
-      if (chars[0].ord == START_SUB_NEGOTIATION)
+      if (chars[0].ord == START_SUB_NEGOTIATION && chars.select { |c| c.ord ==  END_SUB_NEGOTIATION }.first )
         chars.shift # Ditch the sub-nego flag
           
         negotiation_options = []
@@ -42,7 +47,7 @@ module AresMUSH
           @connection.window_width = negotiation_options[2]
           @connection.window_height = negotiation_options[4]
         end       
-      elsif (chars[0].ord == WILL)
+      elsif (chars[0].ord == WILL && chars.length > 1)
         chars.shift  # Ditch the will code
         op = chars.shift.ord # The code being acknowledged
 
@@ -50,10 +55,10 @@ module AresMUSH
         if (op == CHARSET)
           send_telnet_control [ INTERPRET_AS_CONTROL, START_SUB_NEGOTIATION, CHARSET, REQUEST, 32, 'u'.ord, 't'.ord, 'f'.ord, '-'.ord, '8'.ord, INTERPRET_AS_CONTROL, END_SUB_NEGOTIATION ]
         end
-      elsif (chars[0].ord == WONT)
+      elsif (chars[0].ord == WONT && chars.length > 1)
         chars.shift # Ditch the won't code
         op = chars.shift.ord
-      elsif (chars[0].ord == DO)
+      elsif (chars[0].ord == DO && chars.length > 1)
         chars.shift # Ditch the do code
         op = chars.shift.ord
       elsif (chars[0].ord == NOP)

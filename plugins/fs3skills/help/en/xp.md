@@ -1,5 +1,5 @@
 ---
-toc: FS3
+toc: Using FS3
 summary: Improving your character with experience.
 aliases:
 - experience

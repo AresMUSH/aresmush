@@ -27,7 +27,7 @@ module AresMUSH
     end
     
     def unshared_scenes
-      Scene.all.select { |s| !s.shared && s.participants.include?(self) }
+      Scene.all.select { |s| s.completed && !s.shared && s.participants.include?(self) }
     end
   end
 end
