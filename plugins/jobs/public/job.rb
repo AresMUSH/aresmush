@@ -13,9 +13,7 @@ module AresMUSH
     reference :approval_char, "AresMUSH::Character"
 
     collection :job_replies, "AresMUSH::JobReply"
-    
-    set :readers, "AresMUSH::Character"
-    
+        
     index :category
 
     before_delete :delete_replies
@@ -25,7 +23,7 @@ module AresMUSH
     end
     
     def is_unread?(char)
-      !readers.include?(char)
+      Jobs.is_unread?(self, char)
     end
       
     def is_open?
