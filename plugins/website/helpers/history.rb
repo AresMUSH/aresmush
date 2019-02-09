@@ -1,21 +1,18 @@
 module AresMUSH
   module Website
-    def self.get_recent_changes(unique_only = false, limit = nil)
-      sixty_days_in_seconds = 86400 * 60
-      
-      recent_profiles = ProfileVersion.all.select { |p| Time.now - p.created_at < sixty_days_in_seconds }
-      recent_wiki = WikiPageVersion.all.select { |w| Time.now - w.created_at < sixty_days_in_seconds}
-           
-      
-      if (unique_only)
-         recent_profiles =  recent_profiles.sort_by { |p| p.created_at }
-           .reverse
-           .uniq { |p| p.character }
-          recent_wiki = recent_wiki.sort_by { |w| w.created_at }
-           .reverse
-           .uniq { |w| w.wiki_page }
-      end
-                
+    def self.get_recent_changes(unique_only = false, limit = 50)
+      recent_profiles = ProfileVersion.all
+         .to_a
+         .sort_by { |p| p.created_at }
+         .reverse[0..50]
+         .uniq { |p| p.character }
+         
+      recent_wiki = WikiPageVersion.all
+         .to_a
+         .sort_by { |p| p.created_at }
+         .reverse[0..50]
+         .uniq { |w| w.wiki_page }
+
       recent_changes = []
       recent_profiles.each do |p|
         recent_changes << {
@@ -41,13 +38,8 @@ module AresMUSH
       end
         
       recent_changes = recent_changes.sort_by { |r| r[:created_at] }.reverse
-      
-      if (limit)
-        recent_changes[0..limit]
-      else
-        recent_changes
-      end
-      
+      recent_changes[0..limit]
+
     end 
     
     
