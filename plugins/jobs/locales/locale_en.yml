@@ -6,7 +6,7 @@ en:
         commented_on_request: "%{name} has commented on request #%{number} '%{title}'."
         unread_marker: "(U)"
         deleted_author: "(Author Deleted)"
-        jobs_list_title: "   #        Cat    Status   Title              Submitter        Handled By"
+        jobs_list_title: "   #     Cat    Status  Title              Submitter        Handled By"
         unhandled: "-----"
         reply_title: "%xh%{name}%xn replied on %{date}:"
         admin_only: "(To Admins Only)"
