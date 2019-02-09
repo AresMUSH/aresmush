@@ -18,3 +18,4 @@ rooms:
     owners: owner
     location: room
     rooms: room
+    locations: room
