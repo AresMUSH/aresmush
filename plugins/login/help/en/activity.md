@@ -1,5 +1,5 @@
 ---
-toc: Community
+toc: Utilities / Miscellaneous
 summary: Viewing game activity.
 ---
 # Viewing Game Activity

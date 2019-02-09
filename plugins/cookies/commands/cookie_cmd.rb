@@ -19,7 +19,12 @@ module AresMUSH
           if (!result.found?)
             client.emit_failure(t('cookies.invalid_recipient', :name => name))
           else
-            Cookies.give_cookie(result.target, client, enactor)
+            error = Cookies.give_cookie(result.target, enactor)
+            if (error)
+              client.emit_failure error
+            else
+              client.emit_success t('cookies.cookie_given', :name => name)
+            end
           end
         end
       end

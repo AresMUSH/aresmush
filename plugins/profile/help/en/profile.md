@@ -1,5 +1,5 @@
 ---
-toc: Community
+toc: Using Profiles
 summary: Using character profiles.
 aliases:
 - finger

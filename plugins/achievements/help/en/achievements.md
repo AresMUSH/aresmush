@@ -1,5 +1,5 @@
 ---
-toc: Miscellaneous
+toc: Utilities / Miscellaneous
 summary: Character achievements.
 ---
 # Achievements

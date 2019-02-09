@@ -1,5 +1,5 @@
 ---
-toc: Miscellaneous
+toc: Finding People
 summary: Watching other characters connect.
 aliases:
 - last
