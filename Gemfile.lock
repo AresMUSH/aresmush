@@ -129,8 +129,5 @@ DEPENDENCIES
   thin (~> 1.7.2)
   timezone (~> 1.2.10)
 
-RUBY VERSION
-   ruby 2.5.1p57
-
 BUNDLED WITH
    1.16.3

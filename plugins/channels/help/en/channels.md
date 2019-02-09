@@ -1,5 +1,5 @@
 ---
-toc: Communicating
+toc: 2 - Communicating
 summary: Using the public chat channels.
 aliases:
 - chat
@@ -28,6 +28,10 @@ Channels are public forums for out-of-character communication.
 ## Who List & Announcements
 `channel/who <channel>` - Shows who's on the channel
 `channel/announce <channel>=<on/off>` - Turns connection messages on or off.
+
+## Recall
+
+`channel/recall <channel>[=<num messages>]` - Shows the last few messages on a channel.
 
 ## Reporting Abuse
 `channel/report <channel>=<explanation>`

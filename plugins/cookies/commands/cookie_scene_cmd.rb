@@ -20,10 +20,15 @@ module AresMUSH
           return
         end
         
-        client.emit_success t('cookies.giving_cookies_to_scene', :scene => scene.title)
+        client.emit_success t('cookies.giving_cookies_to_scene', :scene => scene.id)
         scene.participants.each do |c|
           if (c != enactor)
-            Cookies.give_cookie(c, client, enactor)
+            error = Cookies.give_cookie(c, enactor)
+            if (error)
+              client.emit_failure error
+            else
+              client.emit_success t('cookies.cookie_given', :name => c.name)
+            end
           end
         end
       end

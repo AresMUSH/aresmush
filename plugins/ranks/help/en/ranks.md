@@ -1,5 +1,5 @@
 ---
-toc: Character Creation
+toc: 3 - Creating a Character
 summary: Setting military/paramilitary ranks.
 ---
 # Ranks

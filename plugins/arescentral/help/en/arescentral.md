@@ -1,5 +1,5 @@
 ---
-toc: Community
+toc: ~admin~ Managing the Game
 summary: Connecting to the AresCentral social hub.
 aliases:
 - game

@@ -74,7 +74,7 @@ module AresMUSH
         return OutCmd
       when "owner"
         return OwnerCmd
-      when "rooms"
+      when "room"
         return RoomsCmd
       when "roomtype"
         return RoomTypeCmd
@@ -124,6 +124,8 @@ module AresMUSH
         return LocationsRequestHandler
       when "location"
         return LocationRequestHandler
+      when "searchLocations"
+        return SearchLocationsRequestHandler
       end
       nil
     end
