@@ -1157,6 +1157,9 @@ h2 {
 .job-status-HOLD {
   background-color: #A31B1B; }
 
+.job-status-ASANA {
+  background-color: #fa5858; }
+
 .job-status-OPEN {
   background-color: #448444; }
 
@@ -1316,7 +1319,7 @@ h2 {
   line-height: 1.6; }
 
 #live-scene-log p {
-  margin: 5px;
+  margin: 25px;
   line-height: 1.6; }
 
 .scene-log {

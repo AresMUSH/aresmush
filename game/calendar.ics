@@ -2,13 +2,6 @@ BEGIN:VCALENDAR
 VERSION:2.0
 PRODID:-//hacksw/handcal//NONSGML v1.0//EN
 BEGIN:VEVENT
-UID:91708095-c60d-4863-9bf9-8178d54a4f66@Spirit Lake-spiritlakemu.com
-DTSTART:20190209T010000Z
-DTSTAMP:20190129T221653Z
-SUMMARY:Weird Anonymous
-DESCRIPTION:Unofficial meeting of people who have experienced/are experiencing crazy shit. Please see the Nextdoor thread (10/14) for more info. It will be held at the church. If you are not on Nextdoor ICly, I'm sure we can figure out how to get you an IC invite!
-END:VEVENT
-BEGIN:VEVENT
 UID:50df9feb-c0c5-4b8e-8b0d-3a4c18ccbaa9@Spirit Lake-spiritlakemu.com
 DTSTART:20190212T010000Z
 DTSTAMP:20190131T165644Z
@@ -53,5 +46,16 @@ DESCRIPTION:Worried about weird stuff lurking around the corner? Is there a cree
   Disclaimer: Making a lot of noise tends to be a deterrent, but nothing replaces the buddy system. Be cool, look out for your friends.
   
   Cookies will be provided.
+END:VEVENT
+BEGIN:VEVENT
+UID:7f658bad-0f4e-4f7a-89ab-7116675c040b@Spirit Lake-spiritlakemu.com
+DTSTART:20190214T013000Z
+DTSTAMP:20190209T131655Z
+SUMMARY:Wolf Hunt (Closed Event)
+DESCRIPTION:Rangers and a few other interested parties go out to deal with the wolf. 
+  
+  This event is limited to Park Rangers and those who chose wolf hunting as their action way back when. 
+  
+  Wyatt, Beau, Asher, Andrew, Danielle, Reagan, Morgan
 END:VEVENT
 END:VCALENDAR
