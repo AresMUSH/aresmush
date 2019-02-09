@@ -4,6 +4,7 @@ summary: Managing player login info.
 aliases:
 - newpassword
 - pcreate
+- motd
 ---
 # Managing Login Information
 
