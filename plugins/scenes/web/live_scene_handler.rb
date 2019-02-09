@@ -58,20 +58,7 @@ module AresMUSH
           scene_type: scene.scene_type ? scene.scene_type.titlecase : 'unknown',
           can_edit: enactor && Scenes.can_read_scene?(enactor, scene),
           is_muted: enactor && scene.muters.include?(enactor),
-          poses: scene.poses_in_order.map { |p| { 
-            char: { name: p.character ? p.character.name : t('scenes.author_deleted'), 
-                    icon: Website.icon_for_char(p.character) }, 
-            order: p.order, 
-            id: p.id,
-            timestamp: OOCTime.local_long_timestr(enactor, p.created_at),
-            is_setpose: p.is_setpose,
-            is_system_pose: p.is_system_pose?,
-            restarted_scene_pose: p.restarted_scene_pose,
-            is_ooc: p.is_ooc,
-            raw_pose: p.pose,
-            can_edit: p.can_edit?(enactor),
-            can_delete: p.restarted_scene_pose ? false : p.can_edit?(enactor),
-            pose: Website.format_markdown_for_html(p.pose) }}
+          poses: scene.poses_in_order.map { |p| Scenes.build_scene_pose_web_data(p, enactor) }
         }
       end
     end
