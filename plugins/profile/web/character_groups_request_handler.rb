@@ -6,7 +6,7 @@ module AresMUSH
         group_key = Global.read_config("website", "character_gallery_group") || "Faction"
         npc_groups = Character.all.select { |c| c.is_npc? && !c.idled_out? }
            .group_by { |c| c.group(group_key) || "" }
-        char_groups = Chargen.approved_chars.group_by { |c| c.group(group_key) || "" }
+        char_groups = Chargen.approved_chars.group_by { |c| c.group(group_key) || "No #{group_key.titlecase}" }
         
         groups = []
         
