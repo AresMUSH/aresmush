@@ -308,19 +308,7 @@ module AresMUSH
       end
     end
     
-    def self.custom_format(pose, char, enactor, is_emit = false, is_ooc = false, place_name = nil)
-      nospoof = ""
-      if (is_emit && char.pose_nospoof)
-        nospoof = "%xc%% #{t('scenes.emit_nospoof_from', :name => enactor.name)}%xn%R"
-      end
-      
-      if (place_name)
-        same_place = (char.place ? char.place.name : nil) == place_name
-        place_title = Places.place_title(place_name, same_place)
-      else
-        place_title = is_ooc ? "" : enactor.place_title(char)
-      end
-      
+    def self.format_quote_color(pose, char, is_ooc)
       quote_color = char.pose_quote_color
       if (is_ooc || quote_color.blank?)
         colored_pose = pose
@@ -336,9 +324,41 @@ module AresMUSH
           end
         end
       end      
+      colored_pose
+    end
+    
+    def self.format_for_place(enactor, char, pose, is_ooc, place_name = nil)
+      # Override char's current place.
       
+      if (!place_name)
+        if (!enactor.place || is_ooc)
+          return pose
+        end
+        place_name = enactor.place.name
+      end
+      
+      same_place = (char.place ? char.place.name : nil) == place_name
+      place_title = Places.place_title(place_name, same_place)
+      place_prefix = Places.place_prefix(same_place)
+      
+      if (!place_title.blank?)
+        pose = pose.gsub("%R", "%R#{place_prefix} ")
+      end
+      
+      "#{place_title}#{pose}"
+    end
+    
+    def self.custom_format(pose, char, enactor, is_emit = false, is_ooc = false, place_name = nil)
+      nospoof = ""
+      if (is_emit && char.pose_nospoof)
+        nospoof = "%xc%% #{t('scenes.emit_nospoof_from', :name => enactor.name)}%xn%R"
+      end
+      
+      formatted_pose = Scenes.format_for_place(enactor, char, pose, is_ooc, place_name)
+      formatted_pose = Scenes.format_quote_color(formatted_pose, char, is_ooc)
+            
       autospace = Scenes.format_autospace(enactor, is_ooc ? char.page_autospace : char.pose_autospace)
-      "#{autospace}#{nospoof}#{place_title}#{colored_pose}"
+      "#{autospace}#{nospoof}#{formatted_pose}"
     end  
     
     def self.find_all_scene_links(scene)
@@ -393,5 +413,27 @@ module AresMUSH
       return false if !char
       return scene.muters.include?(char)
     end
+    
+    
+    def self.mark_read(scene, char)      
+      scenes = char.read_scenes || []
+      scenes << scene.id
+      char.update(read_scenes: scenes)
+    end
+    
+    def self.mark_unread(scene, except_for_char = nil)
+      chars = Character.all.select { |c| !Scenes.is_unread?(scene, c) }
+      chars.each do |char|
+        next if except_for_char && char == except_for_char
+        scenes = char.read_scenes || []
+        scenes.delete scene.id
+        char.update(read_scenes: scenes)
+      end
+    end
+    
+    def self.is_unread?(scene, char)
+      !(char.read_scenes || []).include?(scene.id)
+    end
+    
   end
 end
