@@ -45,8 +45,10 @@ Valid filters are:
 
 Jobs can be created by players using the `request` command, by coded systems (e.g. apps), or manually.
 
+`job/create <title>` - Creates a new job (REQ category)
 `job/create <category>=<title>/<description>` - Creates a new job
         Default categories are APP (Applications), BUILD (Building), CODE, MISC, RP and REQ (Request).
+`job/query <player>=<title>/<description>` - Submit a request on behalf of someone.
 
 ## Changing Job Status
 

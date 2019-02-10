@@ -17,6 +17,12 @@ module AresMUSH
           job_activity = nil
         end
         
+        if (enactor && enactor.token_secs_remaining < (8 * 60 * 60))
+          token_expiry_warning = TimeFormatter.format(enactor.token_secs_remaining)
+        else
+          token_expiry_warning = nil
+        end
+        
         {
           timestamp: Time.now.getutc,
           game: GetGameInfoRequestHandler.new.handle(request),
@@ -30,7 +36,8 @@ module AresMUSH
           top_navbar: Global.read_config('website', 'top_navbar'),
           registration_required: Global.read_config("login", "portal_requires_registration"),
           job_activity: job_activity,
-          jobs_admin: Jobs.can_access_jobs?(enactor)
+          jobs_admin: Jobs.can_access_jobs?(enactor),
+          token_expiry_warning: token_expiry_warning
         }
       end
     end

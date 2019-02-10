@@ -1,11 +1,16 @@
 module AresMUSH
   module Channels
     def self.can_manage_channels?(actor)
+      return false if !actor
       actor.has_permission?("manage_channels")
     end
     
     def self.get_channel_options(char, channel)
       char.channel_options.find(channel_id: channel.id).first
+    end
+    
+    def self.recall_buffer_size
+      Global.read_config("channels", "recall_buffer_size") || 500
     end
 
     def self.is_talk_cmd(enactor, cmd)
@@ -118,6 +123,7 @@ module AresMUSH
     
     def self.can_use_channel(char, channel)
       return true if channel.roles.empty?
+      return true if Channels.can_manage_channels?(char)
       return char.has_any_role?(channel.roles)
     end
     
