@@ -1,8 +1,10 @@
 module AresMUSH
   class Character
     
-    collection :jobs, "AresMUSH::Job", :author
     attribute :jobs_filter, :default => "ACTIVE"
+    attribute :read_jobs, :type => DataType::Array, :default => []
+
+    collection :jobs, "AresMUSH::Job", :author
     
     def has_unread_jobs?
       !unread_jobs.empty?

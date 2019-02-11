@@ -47,6 +47,8 @@ module AresMUSH
           return JobsNewCmd
         when "purge"
           return PurgeJobsCmd
+        when "query"
+          return CreateQueryJobCmd
         when "search"
           return JobSearchCmd
         when "status"
