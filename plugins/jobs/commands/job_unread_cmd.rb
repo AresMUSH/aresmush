@@ -9,7 +9,7 @@ module AresMUSH
       
       def handle
         Jobs.with_a_job(enactor, client, self.number) do |job|     
-          job.readers.delete enactor
+          Jobs.mark_unread(job, enactor)
           client.emit_success t('jobs.job_marked_unread')
         end
       end

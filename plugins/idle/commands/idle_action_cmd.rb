@@ -47,6 +47,9 @@ module AresMUSH
         ClassTargetFinder.with_a_character(self.name, client, enactor) do |model|
           client.program[:idle_queue][model.id] = self.action
           client.emit_success t('idle.idle_action_set', :name => self.name, :action => self.action)
+          if (self.action == 'Destroy' && model.is_approved?)
+            client.emit_failure t('idle.destroy_approved_warning')
+          end
         end
       end
     end
