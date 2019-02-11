@@ -22,7 +22,12 @@ module AresMUSH
           return DescCmd
         end
       when "shortdesc"
-        return ShortdescCmd
+        case cmd.switch
+        when "edit"
+          return DescEditCmd
+        when nil
+          return ShortdescCmd
+        end
       when "detail"
         case cmd.switch
         when "delete"

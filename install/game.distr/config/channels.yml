@@ -29,3 +29,4 @@ channels:
   - RP Requests
   ooc_lounge_channel: ''
   recall_timeout_days: 1
+  recall_buffer_size: 500

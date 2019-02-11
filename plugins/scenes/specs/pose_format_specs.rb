@@ -7,11 +7,13 @@ module AresMUSH
         before do
           @char = double
           @enactor = double
+          @place = double
+          
           allow(@enactor).to receive(:name) { "Bob" }
+          allow(@enactor).to receive(:place) { nil }
           allow(@char).to receive(:pose_quote_color) { nil }
           allow(@char).to receive(:pose_nospoof) { nil }
           allow(@char).to receive(:pose_autospace) { "" }
-          allow(@enactor).to receive(:place_title) { "" }
           allow(Scenes).to receive(:format_autospace) do |enactor, format|
             format
           end
@@ -19,75 +21,13 @@ module AresMUSH
           stub_translate_for_testing
         end
         
-        describe "colorize" do
-          before do
-            allow(@char).to receive(:pose_quote_color) { "%xh" }
-          end
-          
-          it "should handle no quote at front and end" do
-            pose = "The cat said, \"I'm going to jump over the brown fox.\"  And then he did.  \"Whee!\" he shouted."
-            expected = "The cat said, %xh\"I'm going to jump over the brown fox.\"%xn  And then he did.  %xh\"Whee!\"%xn he shouted."
-            expect(Scenes.custom_format(pose, @char, @enactor)).to eq expected
-          end
-          
-          it "should handle quote at front but not end" do
-            pose = "\"I'm going to jump over the brown fox,\" said the cat. And then he did.  \"Whee!\" he shouted."
-            expected = "%xh\"I'm going to jump over the brown fox,\"%xn said the cat. And then he did.  %xh\"Whee!\"%xn he shouted."
-            expect(Scenes.custom_format(pose, @char, @enactor)).to eq expected
-          end
-          
-          it "should handle quote at end but not front" do
-            pose = "The cat said, \"I'm going to jump over the brown fox.\"  And then he did.  \"Whee!\""
-            expected = "The cat said, %xh\"I'm going to jump over the brown fox.\"%xn  And then he did.  %xh\"Whee!\"%xn"
-            expect(Scenes.custom_format(pose, @char, @enactor)).to eq expected
-          end
-          
-          it "should handle quotes at both ends" do
-            pose = "\"I'm going to jump over the brown fox,\" said the cat. And then he did.  \"Whee!\""
-            expected = "%xh\"I'm going to jump over the brown fox,\"%xn said the cat. And then he did.  %xh\"Whee!\"%xn"
-            expect(Scenes.custom_format(pose, @char, @enactor)).to eq expected
-          end
-          
-          it "should handle more than two quotes" do
-            pose = "The cat said, \"Whee!\" and then \"Whoosh!\" and then \"Wow!\"."
-            expected = "The cat said, %xh\"Whee!\"%xn and then %xh\"Whoosh!\"%xn and then %xh\"Wow!\"%xn."
-            expect(Scenes.custom_format(pose, @char, @enactor)).to eq expected
-          end
-          
-          it "should handle a single quote randomly" do
-            pose = "The cat said, \"Whee! and then stopped."
-            # Quote gets lost but that's OK for now.
-            expected = "The cat said, Whee! and then stopped."
-            expect(Scenes.custom_format(pose, @char, @enactor)).to eq expected
-          end
-          
-          it "should handle no quotes" do
-            pose = "The cat said he was going to jump over the brown fox."
-            expect(Scenes.custom_format(pose, @char, @enactor)).to eq pose
-          end
-          
-          it "should not die if there's a missing quote" do
-            pose = "The cat said, \"Whee! and then \"Whoosh!\" and then \"Wow!\"."
-            # Quote gets lost but that's OK for now.
-            expected = "The cat said, %xh\"Whee! and then \"%xnWhoosh!%xh\" and then \"%xnWow!."
-            expect(Scenes.custom_format(pose, @char, @enactor)).to eq expected
-          end
-          
-          it "should not colorize an OOC remark" do
-            allow(@char).to receive(:page_autospace) { "" }
-            pose = "The cat said, \"Whee!\" and then \"Whoosh!\" and then \"Wow!\"."
-            expect(Scenes.custom_format(pose, @char, @enactor, false, true)).to eq pose
-          end
-          
-          it "should not colorize if color is blank" do
-            allow(@char).to receive(:pose_quote_color) { "" }
-            pose = "The cat said, \"Whee!\" and then \"Whoosh!\" and then \"Wow!\"."
-            expect(Scenes.custom_format(pose, @char, @enactor)).to eq pose
-          end
+        it "should format quote color" do
+          allow(Scenes).to receive(:format_quote_color).with("Test", @char, false) { "Colored Quotes" }
+          expect(Scenes.custom_format("Test", @char, @enactor)).to eq "Colored Quotes"
         end
-
+        
         it "should include place title if set" do
-          allow(@enactor).to receive(:place_title) { "xxx" }
+          allow(Scenes).to receive(:format_for_place).with(@enactor, @char, "Test", false, nil) { "xxxTest" }
           expect(Scenes.custom_format("Test", @char, @enactor)).to eq "xxxTest"
         end
                 
@@ -111,6 +51,75 @@ module AresMUSH
         it "should not include nospoof if not an emit" do
           allow(@char).to receive(:pose_nospoof) { true }
           expect(Scenes.custom_format("Test", @char, @enactor, false)).to eq "Test"
+        end
+      end
+      
+      describe :format_quote_color do
+        
+        before do
+          @char = double
+          allow(@char).to receive(:pose_quote_color) { "%xh" }
+        end
+        
+        it "should handle no quote at front and end" do
+          pose = "The cat said, \"I'm going to jump over the brown fox.\"  And then he did.  \"Whee!\" he shouted."
+          expected = "The cat said, %xh\"I'm going to jump over the brown fox.\"%xn  And then he did.  %xh\"Whee!\"%xn he shouted."
+          expect(Scenes.format_quote_color(pose, @char, false)).to eq expected
+        end
+        
+        it "should handle quote at front but not end" do
+          pose = "\"I'm going to jump over the brown fox,\" said the cat. And then he did.  \"Whee!\" he shouted."
+          expected = "%xh\"I'm going to jump over the brown fox,\"%xn said the cat. And then he did.  %xh\"Whee!\"%xn he shouted."
+          expect(Scenes.format_quote_color(pose, @char, false)).to eq expected
+        end
+        
+        it "should handle quote at end but not front" do
+          pose = "The cat said, \"I'm going to jump over the brown fox.\"  And then he did.  \"Whee!\""
+          expected = "The cat said, %xh\"I'm going to jump over the brown fox.\"%xn  And then he did.  %xh\"Whee!\"%xn"
+          expect(Scenes.format_quote_color(pose, @char, false)).to eq expected
+        end
+        
+        it "should handle quotes at both ends" do
+          pose = "\"I'm going to jump over the brown fox,\" said the cat. And then he did.  \"Whee!\""
+          expected = "%xh\"I'm going to jump over the brown fox,\"%xn said the cat. And then he did.  %xh\"Whee!\"%xn"
+          expect(Scenes.format_quote_color(pose, @char, false)).to eq expected
+        end
+        
+        it "should handle more than two quotes" do
+          pose = "The cat said, \"Whee!\" and then \"Whoosh!\" and then \"Wow!\"."
+          expected = "The cat said, %xh\"Whee!\"%xn and then %xh\"Whoosh!\"%xn and then %xh\"Wow!\"%xn."
+          expect(Scenes.format_quote_color(pose, @char, false)).to eq expected
+        end
+        
+        it "should handle a single quote randomly" do
+          pose = "The cat said, \"Whee! and then stopped."
+          # Quote gets lost but that's OK for now.
+          expected = "The cat said, Whee! and then stopped."
+          expect(Scenes.format_quote_color(pose, @char, false)).to eq expected
+        end
+        
+        it "should handle no quotes" do
+          pose = "The cat said he was going to jump over the brown fox."
+          expect(Scenes.format_quote_color(pose, @char, false)).to eq pose
+        end
+        
+        it "should not die if there's a missing quote" do
+          pose = "The cat said, \"Whee! and then \"Whoosh!\" and then \"Wow!\"."
+          # Quote gets lost but that's OK for now.
+          expected = "The cat said, %xh\"Whee! and then \"%xnWhoosh!%xh\" and then \"%xnWow!."
+          expect(Scenes.format_quote_color(pose, @char, false)).to eq expected
+        end
+        
+        it "should not colorize an OOC remark" do
+          allow(@char).to receive(:page_autospace) { "" }
+          pose = "The cat said, \"Whee!\" and then \"Whoosh!\" and then \"Wow!\"."
+          expect(Scenes.format_quote_color(pose, @char, true)).to eq pose
+        end
+        
+        it "should not colorize if color is blank" do
+          allow(@char).to receive(:pose_quote_color) { "" }
+          pose = "The cat said, \"Whee!\" and then \"Whoosh!\" and then \"Wow!\"."
+          expect(Scenes.format_quote_color(pose, @char, false)).to eq pose
         end
       end
     end
