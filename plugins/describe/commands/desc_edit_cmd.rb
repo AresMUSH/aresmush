@@ -4,9 +4,10 @@ module AresMUSH
     class DescEditCmd
       include CommandHandler
       
-      attr_accessor :target
+      attr_accessor :target, :shortdesc
       
       def parse_args
+        self.shortdesc = cmd.root_is?("shortdesc")
         self.target = trim_arg(cmd.args)
       end
       
@@ -16,7 +17,8 @@ module AresMUSH
       
       def handle
         AnyTargetFinder.with_any_name_or_id(self.target, client, enactor) do |model|
-          Utils.grab client, enactor, "#{cmd.root} #{self.target}=#{model.description}"
+          desc = self.shortdesc ? model.shortdesc : model.description
+          Utils.grab client, enactor, "#{cmd.root} #{self.target}=#{desc}"
         end
       end
         

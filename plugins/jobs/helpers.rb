@@ -132,10 +132,6 @@ module AresMUSH
       Jobs.notify(job, notification, enactor)
     end
     
-    def self.mark_read(job, char)      
-      job.readers.add char
-    end
-    
     def self.open_requests(char)
       char.jobs.select { |r| r.is_open? || r.is_unread?(char) }
     end
@@ -145,13 +141,8 @@ module AresMUSH
     end
         
     def self.notify(job, message, author, notify_submitter = true)
-      job.readers.each do |r| 
-        if (r != job.author || notify_submitter)
-          job.readers.delete r
-        end
-      end
-      
-      job.readers.add author
+      Jobs.mark_unread(job, notify_submitter ? job.author : nil)
+      Jobs.mark_read(job, author)
 
       Global.notifier.notify_ooc(:job_update, message) do |char|
         char && (Jobs.can_access_category?(char, job.category) || notify_submitter && char == job.author)
@@ -179,5 +170,26 @@ module AresMUSH
       return t('jobs.invalid_filter_type', :names => types) if !types.include?(filter)
       return nil
     end
+    
+    def self.mark_read(job, char)      
+      jobs = char.read_jobs || []
+      jobs << job.id
+      char.update(read_jobs: jobs)
+    end
+    
+    def self.mark_unread(job, except_for_char = nil)
+      chars = Character.all.select { |c| !Jobs.is_unread?(job, c) }
+      chars.each do |char|
+        next if except_for_char && char == except_for_char
+        jobs = char.read_jobs || []
+        jobs.delete job.id
+        char.update(read_jobs: jobs)
+      end
+    end
+    
+    def self.is_unread?(job, char)
+      !(char.read_jobs || []).include?(job.id)
+    end
+    
   end
 end

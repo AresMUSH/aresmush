@@ -6,30 +6,11 @@ module AresMUSH
       attr_accessor :title, :description, :category
       
       def parse_args
-        if (cmd.args !~ /\//)
-          args = cmd.parse_args(ArgParser.arg1_equals_arg2)
+          args = cmd.parse_args(ArgParser.arg1_equals_arg2_slash_arg3)
           
           self.title = trim_arg(args.arg1) || cmd.args
-
-          # If first arg is a category, then second arg is the title
-          if (Jobs.categories.include?(title.upcase))
-            self.description = "--"
-            self.category = self.title
-            self.title = trim_arg(args.arg2)
-          else            
-            self.description = args.arg2 || "--"
-            self.category = Jobs.request_category
-          end
-        else          
-          if (cmd.args =~ /^[^=\/]+=[^\/=]+\/.+/)
-            args = cmd.parse_args(/(?<category>[^\=]+)=(?<title>[^\/]+)\/(?<description>.+)/)
-          else
-            args = cmd.parse_args(/(?<category>[^\/]+)\/(?<title>[^\=]+)\=(?<description>.+)/)
-          end
-          self.category = args.category ? trim_arg(args.category.upcase) : nil
-          self.title = trim_arg(args.title)
-          self.description = args.description
-        end        
+          self.category = upcase_arg(args.arg2) || Jobs.request_category
+          self.description = args.arg3 || "---"
       end
       
       def required_args

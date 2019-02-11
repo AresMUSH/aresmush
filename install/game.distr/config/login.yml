@@ -21,6 +21,7 @@ login:
     conn: connect
     kick: boot
     password/change: password/set
+    motd: notice/motd
   allow_creation: true
   login_not_allowed_message: ''
   creation_not_allowed_message: ''
