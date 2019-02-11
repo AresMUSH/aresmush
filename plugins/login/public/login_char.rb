@@ -62,7 +62,12 @@ module AresMUSH
     
     def set_login_token
       self.update(login_api_token: "#{SecureRandom.uuid}")
-      self.update(login_api_token_expiry: Time.now + (86400 * 30))
+      # 30 days, plus 8 hours so it doesn't expire during their prime-time
+      self.update(login_api_token_expiry: Time.now + (86400 * 30) + (60*60*8))
+    end
+    
+    def token_secs_remaining
+      self.login_api_token_expiry - Time.now
     end
     
   end  

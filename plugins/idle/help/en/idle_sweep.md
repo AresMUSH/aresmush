@@ -8,7 +8,6 @@ summary: Idle sweeping old characters.
 
 ## Idle Sweep
 
-**Tip:** We recommend that you **not** destroy idled-out players once they've been approved.  They're part of the IC world.  They might come back, and allowing their name to be re-used can cause confusion, especially when it comes to profile pages, etc.
 
 `idle/start` - Builds up a list of idle players.
 `idle` - Review everyone's actions.
@@ -33,7 +32,7 @@ There are several idle actions available:
 You can get a preview of someone's recommended idle action, and view their lastwill.
 
 `idle/preview <name>` - View idle information without adding someone to the idle queue.
-  
+
 ## Setting Idle Status Directly
 
 `idle/set <name>=<status>` - Sets someone's status without running through the idle queue.
