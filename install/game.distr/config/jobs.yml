@@ -51,5 +51,6 @@ jobs:
     job/open: job/handle
     job/mine: job/filter mine
     job/active: job/filter active
+    job/all: job/filter all
     job/deletecomment: job/deletereply
     job/category: job/cat

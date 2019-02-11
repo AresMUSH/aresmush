@@ -70,11 +70,11 @@ website:
       url: http://aresmush.com/fs3/fs3-3
     - target: blank
       title: FS3 Combat Quick Reference <i class="fa fa-external-link-alt" aria-hidden="true">
-      url: http://aresmush.com/fs3/fs3-3/combat-quickref
+      url: http://aresmush.com/fs3/fs3-3/combat-quickref.html
     - target: blank
       title: FS3 Interactive Combat Walkthrough <i class="fa fa-external-link-alt"
         aria-hidden="true">
-      url: http://aresmush.com/fs3/fs3-3/combat-walkthrough
+      url: http://aresmush.com/fs3/fs3-3/combat-walkthrough.html
   - title: Wiki
     menu:
     - page: wiki

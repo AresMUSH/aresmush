@@ -8,8 +8,7 @@ module AresMUSH
     reference :author, "AresMUSH::Character"
     reference :bbs_board, "AresMUSH::BbsBoard"
     collection :bbs_replies, "AresMUSH::BbsReply"
-    set :readers, "AresMUSH::Character"
-    
+
     index :bbs_board
     
     before_delete :delete_replies
@@ -35,7 +34,7 @@ module AresMUSH
     end
     
     def is_unread?(char)
-      !readers.include?(char)
+      Forum.is_unread?(self, char)
     end
     
     def is_public?
@@ -43,11 +42,11 @@ module AresMUSH
     end
     
     def mark_read(char)
-      readers.add char
+      Forum.mark_read(self, char)
     end
     
     def mark_unread
-      readers.each { |r| readers.delete r }
+      Forum.mark_unread(self)
     end
     
     def reference_str
