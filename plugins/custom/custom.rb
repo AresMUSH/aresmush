@@ -12,20 +12,20 @@ module AresMUSH
 
     def self.get_cmd_handler(client, cmd, enactor)
 
-    case cmd.root
-    when "lastrp"
-      return LastRPCmd
-    end
-    #Plots
-    case cmd.root
-    when "plot"
-      case cmd.switch
-      when "propose"
-        return PlotProposeCmd
+      case cmd.root
+      when "lastrp"
+        return LastRPCmd
       end
-    end
+      #Plots
+      case cmd.root
+      when "plot"
+        case cmd.switch
+        when "propose"
+          return PlotProposeCmd
+        end
+      end
 
-    #Secrets
+      #Secrets
       case cmd.root
       when "secrets"
         case cmd.switch
@@ -46,7 +46,7 @@ module AresMUSH
           return GMSecretsCmd
         end
       end
-    #Items
+      #Items
       case cmd.root
       when "items"
         return ItemsCmd
@@ -66,7 +66,7 @@ module AresMUSH
           return GiveItemCmd
         end
       end
-    #Potions
+      #Potions
       case cmd.root
       when "potion"
         case cmd.switch
@@ -90,7 +90,7 @@ module AresMUSH
       when "potions"
         return PotionsCmd
       end
-    #Spells
+      #Spells
       case cmd.root
       when "spell"
         case cmd.switch
@@ -125,7 +125,7 @@ module AresMUSH
       when "spells"
         return SpellsCmd
       end
-    #Schools
+      #Schools
       case cmd.root
       when "school"
         case cmd.switch
@@ -135,7 +135,7 @@ module AresMUSH
           return SchoolsCmd
         end
       end
-    #Death
+      #Death
       case cmd.root
       when "death"
         case cmd.switch
@@ -151,8 +151,6 @@ module AresMUSH
           return LuckRequestCmd
         end
       end
-
-
       return nil
     end
   end
