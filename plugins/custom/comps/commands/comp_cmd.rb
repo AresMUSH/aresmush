@@ -18,15 +18,14 @@ module AresMUSH
 
       def handle
         date = Time.now.strftime("%Y-%m-%d")
-        client.emit date
 
         Comps.create(date: date, character: self.target, comp_msg: self.comp, from: enactor.name)
 
-        client.emit_success t('custom.left_comp', :from => enactor.name)
+        client.emit_success t('custom.left_comp', :name => self.target.name)
         message = t('custom.has_left_comp', :from => enactor.name)
         Login.emit_if_logged_in self.target, message
 
-        # Cookies.give_cookie(self.target, client, enactor)
+        Cookies.give_cookie(self.target, enactor)
       end
 
     end
