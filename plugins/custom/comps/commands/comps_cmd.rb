@@ -9,15 +9,19 @@ module AresMUSH
       end
 
       def handle
-        comps = Character.named(self.target_name).comps
-        paginator = Paginator.paginate(comps, cmd.page, 15)
+        ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
+         comps = model.comps.to_a.reverse
+         paginator = Paginator.paginate(comps, cmd.page, 5)
 
-        if (paginator.out_of_bounds?)
-          client.emit_failure paginator.out_of_bounds_msg
-        else
-          template = CompsTemplate.new(paginator)
-          client.emit template.render
-        end
+         if (paginator.out_of_bounds?)
+           client.emit_failure paginator.out_of_bounds_msg
+         else
+           template = CompsTemplate.new(model, paginator)
+           client.emit template.render
+          end
+       end
+
+
 
       end
 
