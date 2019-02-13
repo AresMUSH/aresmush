@@ -9,43 +9,18 @@ module AresMUSH
         return nil
       end
 
-      def get_spell_list(list)
-        list.to_a.sort_by { |a| a.level }.map { |a|
-          {
-            name: a.name,
-            level: a.level,
-            school: a.school
-            }}
-      end
 
 
 
       def handle
+        spells = []
         char = enactor
-        spells = get_spell_list(char.spells_learned)
-
-        spells.each do |s|
-          client.emit s.name
+        spells_learned = char.spells_learned.select { |l| l.learning_complete }
+        spells_learned.each do |s|
+          spells << s.name
         end
 
-        major_school = char.group("Major School")
-
-        minor_school = char.group("Minor School")
-
-        major_spells_list = []
-        spells.each do |s|
-          if s[:school] == major_school
-            major_spells_list.concat [s]
-          end
-        end
-        client.emit major_spells_list
-
-        # major_spells = get_spell_list(major_spells_list)
-
-        major_spells_list.each do |s|
-          client.emit s.name
-        end
-
+        client.emit spells
 
 
 

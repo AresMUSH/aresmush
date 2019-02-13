@@ -1,5 +1,5 @@
 ---
-toc: Scenes
+toc: 4 - Writing the Story
 summary: Keeping track of pose order.
 aliases:
 - pose_order

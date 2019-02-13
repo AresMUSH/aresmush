@@ -32,6 +32,10 @@ module AresMUSH
         Custom.item_spell(char)
       end
 
+      def time_left_before_learn(spell)
+        spell_learned = Custom.find_spell_learned(char, spell)
+        (Custom.time_to_next_learn_spell(spell_learned) / 86400).ceil
+      end
 
 
     end

@@ -108,7 +108,9 @@ module AresMUSH
       Forum.handle_forum_achievement(author, :reply)
       
       Global.notifier.notify_ooc(:new_forum_post, message) do |char|
-        Forum.can_read_category?(char, category)
+        !Forum.is_forum_muted?(char) &&
+        Forum.can_read_category?(char, category) &&
+        !Forum.is_category_hidden?(char, category)
       end
     end
     
@@ -199,6 +201,25 @@ module AresMUSH
     def self.is_forum_muted?(char)
       return false if !char
       return char.is_forum_muted?
+    end
+    
+    def self.is_unread?(post, char)
+      posts = (char.forum_read_posts || [])
+      !posts.include?(post.id)
+    end
+    
+    def self.mark_read(post, char)
+      posts = (char.forum_read_posts || []) << post.id
+      char.update(forum_read_posts: posts)
+    end
+    
+    def self.mark_unread(post)
+      chars = Character.all.select { |c| !Forum.is_unread?(post, c) }
+      chars.each do |char|
+        posts = char.forum_read_posts || []
+        posts.delete post.id
+        char.update(forum_read_posts: posts)
+      end
     end
   end
 end

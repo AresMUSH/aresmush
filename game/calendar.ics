@@ -2,34 +2,60 @@ BEGIN:VCALENDAR
 VERSION:2.0
 PRODID:-//hacksw/handcal//NONSGML v1.0//EN
 BEGIN:VEVENT
-UID:8bf5b029-3af6-42f4-a791-75d1122f0f3a@Spirit Lake-spiritlakemu.com
-DTSTART:20190202T020000Z
-DTSTAMP:20190111T160439Z
-SUMMARY:Majesty Arts: Grand Opening
-DESCRIPTION:# Grand Opening!
+UID:50df9feb-c0c5-4b8e-8b0d-3a4c18ccbaa9@Spirit Lake-spiritlakemu.com
+DTSTART:20190212T010000Z
+DTSTAMP:20190131T165644Z
+SUMMARY:Grand Lake Polar Plunge!
+DESCRIPTION:It's not remotely safe, but that doesn't mean people don't love to it, and it's for a good cause.
   
-  Majesty Arts welcomes the Grand Lake Community to a modestly elegant evening of art, culture, wine, and merriment. Catering will be provided by *The Cafe*. Entertainment is pending booking.
+  POLAR PLUNGING.
   
-  ## Majesty Arts
-  Majesty Arts is a new artist co-op located on East Lake Ave, sharing space with *The Cafe*. We offer space for artists to display and sell their work, as well as a lounge for meetings, social events, and the like. If any are interested in joining the co-op, please contact Amina Green.
+  Come take a plung at Spirit Lake. You never know, the depths might hold a secret or two waiting for you.
   
-  ## Help Wanted!
-  Majesty Arts is also **hiring** for the grand opening (seeking musical talent!) and for permanent associate positions. Please contact Amina Green.
+  This is a charitable event. All monetary proceeds will go towards buying suitable winter clothing for use in county shelters; all donations should be winterwear in useable condition.
 END:VEVENT
 BEGIN:VEVENT
-UID:f553fa58-b733-4316-86bb-f3ae3fc32643@Spirit Lake-spiritlakemu.com
-DTSTART:20190205T020000Z
-DTSTAMP:20190116T021928Z
-SUMMARY:Bowling Mixer!
-DESCRIPTION:%RSome of the Locals of Grand Lake are warming up to the New Comers. Reagan McFerrain, pie delivering ray of sunshine that she is has suggested a kind of event that might bring everyone together. Tossing balls down lanes! Ahem. A bowling mixer! This will take place at Grand Lakes Lanes.
+UID:cc6665f5-b192-4222-9652-9b0a80161077@Spirit Lake-spiritlakemu.com
+DTSTART:20190220T020000Z
+DTSTAMP:20190203T015120Z
+SUMMARY:Wine and Ouija Night
+DESCRIPTION:### Ready to join Ouija and Wine Club?
   
-  OOC: This is just a social scene to get some of the locals and the new faces together and get them to know each other better. Late arrivals are fine. Wander in and out as you like.
+  Meet with a dynamic group of Grand Lake's most curious minds, dead 👻 and alive. Find out about your future, drink some spirits, and howl 🐺 at the **Snow Moon** 🌕.
+  
+  Questions, concerns, thoughts on life?
+  
+  Contact Green@MajestyArtsCo.op
 END:VEVENT
 BEGIN:VEVENT
-UID:e7321dd3-8431-416e-ae41-5cc6f29efb90@Spirit Lake-spiritlakemu.com
-DTSTART:20190128T010000Z
-DTSTAMP:20190123T030231Z
-SUMMARY:In Honor Of Angus
-DESCRIPTION:Teagan is holding a funeral for a cow, to respect his life. The news of this is probably sure to get around quickly, especially since she's not going to be especially shameful about telling anyone and everyone she knows. No formal invitation this time, and it's alternatively at Sage & Thyme Ranch or Andrade Ranch, depending if you are local or a newcomer.
+UID:e0513e6b-2340-47e7-87b4-1a10984b80f2@Spirit Lake-spiritlakemu.com
+DTSTART:20190302T020000Z
+DTSTAMP:20190208T011141Z
+SUMMARY:Tea and Sympathy
+DESCRIPTION:Lena is inviting lady friends to come have tea and bring baked goods. Preferably homemade, but bought will do in a pinch. Tea brews and nifty looking teapots welcome, and appropriate hats are encouraged. 
+  
+  (What constitutes an appropriate hat shall be left to the wearer.)
+END:VEVENT
+BEGIN:VEVENT
+UID:cc8b584a-0bb4-4fbc-ab55-a06967e9cc89@Spirit Lake-spiritlakemu.com
+DTSTART:20190219T020000Z
+DTSTAMP:20190208T044725Z
+SUMMARY:Self-Defense and Snickerdoodles
+DESCRIPTION:Worried about weird stuff lurking around the corner? Is there a creeper on your case? Come on down to the Grand Lake Exercise Center for an evening of self-defense instruction and fun. Bring your athletic wear and comfortable shoes.
+  
+  Disclaimer: Making a lot of noise tends to be a deterrent, but nothing replaces the buddy system. Be cool, look out for your friends.
+  
+  Cookies will be provided.
+END:VEVENT
+BEGIN:VEVENT
+UID:7f658bad-0f4e-4f7a-89ab-7116675c040b@Spirit Lake-spiritlakemu.com
+DTSTART:20190214T013000Z
+DTSTAMP:20190209T131655Z
+SUMMARY:Wolf Hunt (Closed Event)
+DESCRIPTION:Rangers and a few other interested parties go out to deal with the wolf. 
+  
+  This event is limited to Park Rangers and those who chose wolf hunting as their action way back when. 
+  
+  Wyatt, Beau, Asher, Andrew, Danielle, Reagan, Morgan
 END:VEVENT
 END:VCALENDAR

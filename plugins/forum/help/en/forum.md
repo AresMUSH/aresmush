@@ -1,5 +1,5 @@
 ---
-toc: Communicating
+toc: 2 - Communicating
 summary: Reading the discussion forums.
 aliases:
 - bulletin board
@@ -7,7 +7,6 @@ aliases:
 - bbpost
 - bbmisc
 - bbreply
-- bbedit
 - board
 - bbs
 - reply
@@ -23,6 +22,7 @@ The Ares Forum provides MU-wide discussion topics, available in-game and on the 
 ## Reading Forums
 `forum` - Lists available categories.
 `forum <category>` - Lists posts on the selected category.
+`forum <category>/<topic #>` - Reads the selected topic.
 
 'rw' tells you whether you can read and/or write to that category.
 
@@ -42,6 +42,9 @@ To read a specific topic, you use the category name/number and topic number.  To
 `forum <category>/<topic #>` - Reads the selected topic.
 `forum/new` - Reads the first unread message on any category.
 `forum/catchup <category>` - Marks all unread messages in that category as read.
+
+> Tip:  If you link your characters to a [Player Handle](/help/handles), the game will automatically mark a post as read on all your characters when you read it on one.
+
 
 ## Writing & Editing Posts
 

@@ -1,5 +1,5 @@
 ---
-toc: Community
+toc: Using Profiles
 summary: Tracking IC relationships.
 ---
 # Tracking IC Relationships
@@ -12,8 +12,8 @@ You can add and edit relationships on the web portal or in-game.  See [Editing Y
 
 `relationships` - Sees your relationships.
 `relationships <name>` - Sees someone else's relationships.
-`relationship/add <name>=<category>/<details.` - Adds a relationship.
-`relationship/update <name>=<category>/<details.` - Updates a relationship.
+`relationship/add <name>=<category>/<details>` - Adds a relationship.
+`relationship/update <name>=<category>/<details>` - Updates a relationship.
 `relationship/delete <name>` - Deletes a relationship.
 
 ## Organizing Relationships

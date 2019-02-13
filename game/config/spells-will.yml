@@ -12,6 +12,25 @@ spells:
     is_stun: false
     roll: Will
     is_potion: true
+  Deface:
+    name: Deface
+    level: 1
+    school: Will
+    desc: Make simple or cosmetic damage to an object. For example, cause a one inch rip or crack, add a small spot of tarnish or dirt, or make a scratch of no more than a few inches.
+    target_optional: false
+    is_revive: false
+    is_stun: false
+    roll: Will
+    is_potion: true
+  Beginner Telekinesis:
+    name: 'Beginner Telekinesis'
+    level: 1
+    school: Will
+    desc: Minor Telekinesis desc
+    target_optional: false
+    is_revive: false
+    is_stun: false
+    roll: Will
   #Level 2
   Minor Telekinesis:
     name: 'Minor Telekinesis'

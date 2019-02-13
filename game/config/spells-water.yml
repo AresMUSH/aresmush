@@ -12,6 +12,15 @@ spells:
     is_revive: false
     is_stun: false
     roll: true
+  Minor Fog:
+    name: Minor Fog
+    level: 1
+    school: Water
+    desc: A cloud of fog fills a small area, no greater than five cubic feet. The fog may creep along the ground or cling near the caster's skin.
+    target_optional: false
+    is_revive: false
+    is_stun: false
+    roll: true
   #Level 2
   Shape Water:
     name: Create Water

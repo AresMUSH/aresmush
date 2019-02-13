@@ -33,8 +33,12 @@ Valid filters are:
 
 ## Creating Jobs
 
+Jobs can be created by players using the `request` command, by coded systems (e.g. apps), or manually.
+
+`job/create <title>` - Creates a new job (REQ category)
 `job/create <category>=<title>/<description>` - Creates a new job
-        Categories are APP (Applications), BUILD (Building), CODE, MISC, PLOT, SPELL, and REQ (Request).
+        Default categories are APP (Applications), BUILD (Building), CODE, MISC, RP and REQ (Request).
+`job/query <player>=<title>/<description>` - Submit a request on behalf of someone.
 
 ## Changing Job Status
 
@@ -43,7 +47,7 @@ Valid filters are:
 `job/cat <#>=<category>`
 `job/status <#>=<status>`
 `job/title <#>=<title>`
-        Status values are NEW, OPEN, HOLD (job on hold) and DONE.  
+        Status values are NEW, OPEN, HOLD (job on hold) and DONE.
 
 ## Adding Job Comments
 `job/discuss <#>=<comment>` - Comments on a job (only admins may view)
@@ -52,20 +56,14 @@ Valid filters are:
 
 `job/mail <#>=<recipients>/<message>` - Sets a response (admins and submitter may view) on the job and sends that response in mail to the recipients.
 
+Admins can convert a mail message into a job.
+
+`mail/job <#>` - Turns a mail message into a job request.
+
 ## Closing Jobs
 `job/close <#>` - Closes a job
 `job/close <#>=<message>` - Closes a job with a comment to the original submitter.
 
 ## Old  Jobs
-Closed jobs in Ares are not archived to a BBS, as they are in some other systems.  Instead they stay around in the jobs system forever (or until you manually purge them).  This allows you to reopen and easily find old jobs.
 
-`jobs/all` - Lists all jobs, even closed ones.
-
-`jobs/search <category>=<value>` - Searches old jobs
-        Category to search may be 'title' or 'submitter'.
-
-If you run out of database space or want to archive your jobs offline, you can log the closed ones to a file and purge them.
-
-`jobs/backup` - Prints out closed jobs, which you can save to a log file.
-`jobs/purge` - Deletes all closed jobs.
-`job/delete <#>` - Deletes a particular job.
+For help finding old jobs, see [Jobs Archive](/help/jobs_archive).

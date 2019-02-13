@@ -14,7 +14,7 @@ body {
 }
 
 .container-fluid {
-    background: #1A1B1C;
+    background: #101015;
 }
 
 pre {
@@ -182,6 +182,35 @@ blockquote {
 .panel {
     background: inherit;
 }
+
+.ooc {
+  background: #d6a09c9c;
+  padding: 10px 10px 5px 10px;
+  border-radius: 10px;
+  margin: 5px;
+  width: fit-content;
+  border: 2px solid #d1d2d3;
+  font-size: 90%;
+  font-style: italic;
+}
+
+.note {
+    background: #d1d2d324;
+    padding: 15px;
+    margin: 5px;
+    border-bottom: 2px solid white;
+    border-top: 2px solid white;
+}
+
+.isinlibrary {
+  background: #314254;
+  padding: 15px;
+  border-radius: 10px;
+  border: solid 2px white;
+  margin: 20px;
+  width: fit-content;
+}
+
 
 .topboxes {
    width: 100%;
@@ -370,6 +399,9 @@ h2 {
     background-color: #A31B1B;
 }
 
+.job-status-ASANA {
+    background-color: #fa5858;
+}
 
 .job-status-OPEN {
     background-color: #448444;
@@ -573,9 +605,18 @@ h2 {
   line-height: 1.6;
 }
 
-#live-scene-log p {
-  margin: 5px;
+.scene-pose p {
+  margin: 15px 35px;
   line-height: 1.6;
+}
+
+.scene-ooc-pose p {
+  margin: 5px;
+
+}
+
+#live-scene-log {
+    max-height: 700px;
 }
 
 .scene-log {

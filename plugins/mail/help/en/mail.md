@@ -1,10 +1,10 @@
 ---
-toc: Communicating
+toc: 2 - Communicating
 summary: In-game mail system.
 ---
 # Mail
 
-The **Mail System** lets you send messages to players who are not online, similiar to email.
+The **Mail System** lets you send messages to players who are not online, similar to email.
 
 ## Reading Mail
 `mail` - View your inbox.

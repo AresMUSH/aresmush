@@ -29,3 +29,5 @@ channels:
     comtitle: channel/title
     channel/name: channel/rename
   start_marker: "["
+  ooc_lounge_channel: ''
+  recall_timeout_days: 1

@@ -13,7 +13,9 @@ scenes:
   - Event
   - Vignette
   - Journal
+  - Text
   - OOC
+  - Meme
   shortcuts:
     scenes: scene
     scene/close: scene/stop
@@ -47,6 +49,14 @@ scenes:
     repose: scene/repose
     scene/set: emit/set
     posebreak: autospace
+  trending_scenes_category: Cookie Awards
+  trending_scenes_cron:
+    hour:
+    - '08'
+    minute:
+    - 0
+    day_of_week:
+    - Mon
   unshared_scene_cleanup_cron:
     day_of_week:
     - Fri
