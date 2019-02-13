@@ -10,8 +10,8 @@ class Comps < Ohm::Model
   include ObjectModel
 
   index :character
-  attribute :date, :type => Ohm::DataTypes::DataType::Time, :default => Time.now
   reference :character, "AresMUSH::Character"
-  attribute :comp
+  attribute :comp_msg
+  attribute :from
 
 end
