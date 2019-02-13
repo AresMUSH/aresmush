@@ -20,10 +20,8 @@ module AresMUSH
     case cmd.root
     when "comp"
       return CompGiveCmd
-    end
-    case cmd.root
     when "comps"
-      return CompsReadCmd
+      return CompsCmd
     end
 
 
@@ -163,7 +161,6 @@ module AresMUSH
           return LuckRequestCmd
         end
       end
-
 
       return nil
     end
