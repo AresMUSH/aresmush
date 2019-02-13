@@ -23,6 +23,17 @@ spells:
     is_stun: false
     roll: true
     is_potion: true
+  Minor Allergy:
+    name: 'Minor Allergy'
+    level: 1
+    school: Corpus
+    desc: Cause a target to have a mild allergic reaction such as sneezing, a small itchy spot on the skin, mildly itchy eyes, or minor congestion. Treatment with antihistamines or other medicines that affect symptoms are effective against this spell.
+    target_optional: true
+    target_num: 1
+    is_revive: false
+    is_stun: false
+    roll: true
+    is_potion: true
   #Level 2
   "Touch Of Enfeeblement":
     name: 'Touch of Enfeeblement'

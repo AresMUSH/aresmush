@@ -16,3 +16,6 @@ rooms:
     room/area: area/set
     map: area
     owners: owner
+    location: room
+    rooms: room
+    locations: room

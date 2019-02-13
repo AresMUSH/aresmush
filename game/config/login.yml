@@ -27,3 +27,5 @@ login:
     password/change: password/set
     pcreate: create/reserve
   use_terms_of_service: false
+  portal_requires_registration: false
+  guest_disabled_message: ''

@@ -1,11 +1,16 @@
 module AresMUSH
   module Scenes
 
-    def self.new_scene_activity(scene, data = nil)
+    def self.new_scene_activity(scene, scene_pose = nil)
       last_posed = scene.last_posed ? scene.last_posed.name : nil
+      if (scene_pose)
+        data = Scenes.build_scene_pose_web_data(scene_pose, nil, true).to_json
+      else
+        data = nil
+      end
       web_msg = "#{scene.id}|#{last_posed}|#{data}"
       Global.client_monitor.notify_web_clients(:new_scene_activity, web_msg) do |char|
-        Scenes.can_read_scene?(char, scene) && !Scenes.is_scene_muted?(char, scene)
+        Scenes.can_read_scene?(char, scene)
       end
     end
 
@@ -13,7 +18,6 @@ module AresMUSH
       return false if !actor
       (scene.owner == actor) || actor.has_permission?("manage_scenes")
     end
-
 
     def self.scene_types
       AresMUSH::Global.read_config('scenes', 'scene_types' )
@@ -23,7 +27,6 @@ module AresMUSH
       return !scene.is_private? if !actor
       return true if scene.owner == actor
       return true if !scene.is_private?
-      return true if scene.watchable_scene
       return true if actor.room == scene.room
       return true if scene.invited.include?(actor)
       scene.participants.include?(actor)
@@ -54,8 +57,11 @@ module AresMUSH
     def self.unshare_scene(enactor, scene)
       scene.update(shared: false)
       if (scene.scene_log)
-        Scenes.add_to_scene(scene, scene.scene_log.log, enactor)
-        scene.scene_log.delete
+        pose = Scenes.add_to_scene(scene, scene.scene_log.log, enactor)
+        if (pose)
+          pose.update(restarted_scene_pose: true)
+          scene.scene_log.delete
+        end
       end
     end
 
@@ -68,7 +74,6 @@ module AresMUSH
       scene.update(date_shared: Time.now)
       Scenes.create_log(scene)
       Scenes.new_scene_activity(scene)
-
       return true
     end
 
@@ -109,6 +114,7 @@ module AresMUSH
 
       scene.update(completed: true)
       scene.update(date_completed: Time.now)
+
       Scenes.new_scene_activity(scene)
       scene.participants.each do |char|
         Scenes.handle_scene_participation_achievement(char)
@@ -315,19 +321,7 @@ module AresMUSH
       end
     end
 
-    def self.custom_format(pose, char, enactor, is_emit = false, is_ooc = false, place_name = nil)
-      nospoof = ""
-      if (is_emit && char.pose_nospoof)
-        nospoof = "%xc%% #{t('scenes.emit_nospoof_from', :name => enactor.name)}%xn%R"
-      end
-
-      if (place_name)
-        same_place = (char.place ? char.place.name : nil) == place_name
-        place_title = Places.place_title(place_name, same_place)
-      else
-        place_title = is_ooc ? "" : enactor.place_title(char)
-      end
-
+    def self.format_quote_color(pose, char, is_ooc)
       quote_color = char.pose_quote_color
       if (is_ooc || quote_color.blank?)
         colored_pose = pose
@@ -343,9 +337,41 @@ module AresMUSH
           end
         end
       end
+      colored_pose
+    end
+
+    def self.format_for_place(enactor, char, pose, is_ooc, place_name = nil)
+      # Override char's current place.
+
+      if (!place_name)
+        if (!enactor.place || is_ooc)
+          return pose
+        end
+        place_name = enactor.place.name
+      end
+
+      same_place = (char.place ? char.place.name : nil) == place_name
+      place_title = Places.place_title(place_name, same_place)
+      place_prefix = Places.place_prefix(same_place)
+
+      if (!place_title.blank?)
+        pose = pose.gsub("%R", "%R#{place_prefix} ")
+      end
+
+      "#{place_title}#{pose}"
+    end
+
+    def self.custom_format(pose, char, enactor, is_emit = false, is_ooc = false, place_name = nil)
+      nospoof = ""
+      if (is_emit && char.pose_nospoof)
+        nospoof = "%xc%% #{t('scenes.emit_nospoof_from', :name => enactor.name)}%xn%R"
+      end
+
+      formatted_pose = Scenes.format_for_place(enactor, char, pose, is_ooc, place_name)
+      formatted_pose = Scenes.format_quote_color(formatted_pose, char, is_ooc)
 
       autospace = Scenes.format_autospace(enactor, is_ooc ? char.page_autospace : char.pose_autospace)
-      "#{autospace}#{nospoof}#{place_title}#{colored_pose}"
+      "#{autospace}#{nospoof}#{formatted_pose}"
     end
 
     def self.find_all_scene_links(scene)
@@ -395,10 +421,50 @@ module AresMUSH
       end
       return false
     end
-    
+
     def self.is_scene_muted?(char, scene)
       return false if !char
       return scene.muters.include?(char)
+    end
+
+
+    def self.mark_read(scene, char)
+      scenes = char.read_scenes || []
+      scenes << scene.id
+      char.update(read_scenes: scenes)
+    end
+
+    def self.mark_unread(scene, except_for_char = nil)
+      chars = Character.all.select { |c| !Scenes.is_unread?(scene, c) }
+      chars.each do |char|
+        next if except_for_char && char == except_for_char
+        scenes = char.read_scenes || []
+        scenes.delete scene.id
+        char.update(read_scenes: scenes)
+      end
+    end
+
+    def self.is_unread?(scene, char)
+      !(char.read_scenes || []).include?(scene.id)
+    end
+
+    def self.build_scene_pose_web_data(pose, viewer, live_update = false)
+      {
+        char: { name: pose.character ? pose.character.name : t('scenes.author_deleted'),
+                icon: Website.icon_for_char(pose.character) },
+        order: pose.order,
+        id: pose.id,
+        timestamp: OOCTime.local_long_timestr(viewer, pose.created_at),
+        is_setpose: pose.is_setpose,
+        is_system_pose: pose.is_system_pose?,
+        restarted_scene_pose: pose.restarted_scene_pose,
+        is_ooc: pose.is_ooc,
+        raw_pose: pose.pose,
+        can_edit: pose.can_edit?(viewer),
+        can_delete: pose.restarted_scene_pose ? false : pose.can_edit?(viewer),
+        pose: Website.format_markdown_for_html(pose.pose),
+        live_update: live_update
+      }
     end
   end
 end

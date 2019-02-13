@@ -9,6 +9,7 @@ module AresMUSH
     attribute :is_ooc, :type => DataType::Boolean
     attribute :order
     attribute :pose_type
+    attribute :restarted_scene_pose, :type => DataType::Boolean
     
     def sort_order
       self.order ? self.order.to_i : self.id.to_i
@@ -28,6 +29,7 @@ module AresMUSH
     
     def can_edit?(actor)
       return false if !actor
+      return false if self.is_system_pose?
       return true if Scenes.can_manage_scene?(actor, self.scene)
       return true if actor == self.character
       return false

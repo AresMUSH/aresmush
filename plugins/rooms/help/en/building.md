@@ -33,6 +33,8 @@ You can create additional exits using the 'open' command, and link exits to diff
 
 > **Tip:** By default, the room description shows you the exit name and the name of its destionation, e.g. `[S] Town Square`.  You can change the destination name to something else just by giving the exit a short description using the `shortdesc` command (see [Descriptions](/help/descriptions)).
 
+For help with exit locks, see [Locks](/help/lock).
+
 ## Exit Aliases
 
 Ares has several navigational cues that make exit aliases largely unnecessary.  If you need them, though, Ares exits can have a *single* alias, which you can set using the alias command:
@@ -40,13 +42,6 @@ Ares has several navigational cues that make exit aliases largely unnecessary.  
 `alias <exit name>=<exit alias>`
 
 > **Tip:** Any exit named "O" is automatically aliased to "Out".  Also, if no specific 'out' exit exists, 'out' will simply take you out the first exit it can find.
-
-## Locking Exits
-
-Exits can be locked to a list of roles.
-
-`lock <exit>=<list of roles allowed in>`
-`unlock <exit>`
 
 ## Finding Rooms
 
@@ -68,15 +63,9 @@ Normally a room will show the destination name for exits (e.g. `[O] Town Square`
 
 ## Special Rooms
 
-The game knows about three special rooms:
-
-* The Welcome Room, where all new characters start.
-* The Offstage (or OOC) Room, where all characters go when they go offstage/ooc.
-* The IC Start room, where characters go the very first time they go onstage/ic.
+The game has several special rooms, including the welcome room, offstage/ooc lounge, quiet room, and IC start room.  You can rename these rooms, but you cannot delete them.
 
 The room where players go when they on onstage can be changed to any room with the command:  `icstart/set <room>`
-
-The welcome and offstage rooms cannot be moved or deleted, but you can rename them or update their descriptions as you see fit.
 
 ## Describing Rooms
 

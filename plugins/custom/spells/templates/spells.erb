@@ -54,7 +54,9 @@
 <% if a.school == major_school %>
 <%= left( a.name, 30 ) -%>
 <%= left( a.level, 10) -%>
-<%=  a.xp_needed %>
+<%=  left( a.xp_needed, 5) -%>
+<%= ((7 * 86400) - (Time.now - a.last_learned).ceil)/ 86400 -%>
+<%=  " days before you can learn"%>
     <% end %>
   <% end %>
 <% end %>
@@ -66,7 +68,9 @@
 <% if a.school == minor_school %>
 <%= left( a.name, 30 ) -%>
 <%= left( a.level, 10) -%>
-<%=  a.xp_needed %>
+<%=  left( a.xp_needed, 5) -%>
+<%= ((7 * 86400) - (Time.now - a.last_learned).ceil)/ 86400 -%>
+<%=  " days before you can learn"%>
     <% end %>
   <% end %>
 <% end %>

@@ -67,6 +67,8 @@ jobs:
       color: "%xb"
     HOLD:
       color: "%xx%xh"
+    ASANA:
+      color: "%xm"
     DONE:
       color: "%xy"
   system_category: SYS
