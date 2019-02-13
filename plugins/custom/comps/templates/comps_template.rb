@@ -6,6 +6,7 @@ module AresMUSH
       def initialize(char, paginator)
          @char = char
          @paginator = paginator
+         super File.dirname(__FILE__) + "/comps.erb"
       end
 
       # def initialize(char)
