@@ -1,0 +1,10 @@
+%lh
+<%= t('custom.comps_title', :name => char.name.upcase) %>
+<% paginator.page_items.each do |a| -%>
+<%= "From " -%>
+<%=  a.from -%>
+<%= right(a.created_at.strftime("%Y-%m-%d"), 68 ) %>
+<%=  a.comp_msg %>
+
+<% end %>
+<%= paginator.page_footer %>
