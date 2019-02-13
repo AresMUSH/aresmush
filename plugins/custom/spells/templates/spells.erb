@@ -69,7 +69,7 @@
 <% if a.school == minor_school %>
 <%= left( a.name, 30 ) -%>
 <%= left( a.level, 10) -%>
-<%=  left( a.xp_needed, 5) -%>
+<%=  left( a.xp_needed, 15) -%>
 <%=  "Learn again in " -%>
 <%= (((7 * 86400) - (Time.now - a.last_learned)) / 86400).ceil  -%>
 <%=  " days" %>
