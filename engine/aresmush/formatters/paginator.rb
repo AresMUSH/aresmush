@@ -33,6 +33,7 @@ module AresMUSH
   end
   
   module Paginator
+    # @return [PaginateResults]
     def self.paginate(items, page, items_per_page)
       page_index = page - 1
       if (page_index < 0)

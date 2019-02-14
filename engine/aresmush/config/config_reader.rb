@@ -58,6 +58,8 @@ module AresMUSH
       end
     end   
     
+    private
+    
     def validate_config_file(file)
       begin
         AresMUSH::YamlExtensions.yaml_hash(file)

@@ -1,4 +1,5 @@
 module AresMUSH  
+  # @engineinternal true
   class Bootstrapper 
     
     attr_reader :server, :db, :ares_logger, :locale, :config_reader, :plugin_manager, :help_reader, :boot_options

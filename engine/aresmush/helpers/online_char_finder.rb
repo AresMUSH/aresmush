@@ -1,4 +1,6 @@
 module AresMUSH
+  # Searches for online characters. Uses partial name matches.  Resulting 'target' will be an 
+  # OnlineCharResult contianing both the character and their client.
   class OnlineCharResult
     attr_accessor :client, :char
     def initialize(client, char)
@@ -8,6 +10,7 @@ module AresMUSH
   end
   
   class OnlineCharFinder
+    # @return [FindResult] Where FindResult's 'target' is an OnlineCharResult
     def self.find(name)
       online = Global.client_monitor.logged_in
           .select { |other_client, other_char| exact_match?(other_char, name)}
@@ -30,6 +33,7 @@ module AresMUSH
       FindResult.new(nil, t('db.ambiguous_char_online', :name => name))
     end
 
+    # @yieldparam result [OnlineCharResult] 
     def self.with_an_online_char(name, client, &block)
       result = self.find(name)
               
@@ -41,6 +45,7 @@ module AresMUSH
       yield result.target
     end
         
+    # @yieldparam results [OnlineCharResult]
     def self.with_online_chars(names, client, &block)
       to_clients = []
       names.each do |name|

@@ -59,6 +59,8 @@ module AresMUSH
       end
     end
     
+    protected
+    
     ### IMPORTANT!!!  Do not call from outside of the dispatcher.
     ### Use queue_command if you need to queue up a command to process
     def on_command(client, cmd)
