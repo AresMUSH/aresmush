@@ -64,7 +64,10 @@ module AresMUSH
       scene.update(shared: true)
       scene.update(date_shared: Time.now)
       Scenes.create_log(scene)
-      Scenes.new_scene_activity(scene)      
+      Scenes.new_scene_activity(scene)    
+      
+      Global.dispatcher.queue_event SceneSharedEvent.new(scene.id)
+      
       return true
     end
       
