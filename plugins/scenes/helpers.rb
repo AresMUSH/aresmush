@@ -421,7 +421,7 @@ module AresMUSH
     
     def self.mark_read(scene, char)      
       scenes = char.read_scenes || []
-      scenes << scene.id
+      scenes << scene.id.to_s
       char.update(read_scenes: scenes)
     end
     
@@ -430,13 +430,13 @@ module AresMUSH
       chars.each do |char|
         next if except_for_char && char == except_for_char
         scenes = char.read_scenes || []
-        scenes.delete scene.id
+        scenes.delete scene.id.to_s
         char.update(read_scenes: scenes)
       end
     end
     
     def self.is_unread?(scene, char)
-      !(char.read_scenes || []).include?(scene.id)
+      !(char.read_scenes || []).include?(scene.id.to_s)
     end
 
     def self.build_scene_pose_web_data(pose, viewer, live_update = false)
