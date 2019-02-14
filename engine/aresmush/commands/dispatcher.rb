@@ -59,10 +59,9 @@ module AresMUSH
       end
     end
     
-    protected
-    
     ### IMPORTANT!!!  Do not call from outside of the dispatcher.
     ### Use queue_command if you need to queue up a command to process
+    # @engineinternal true
     def on_command(client, cmd)
       @handled = false
       with_error_handling(client, cmd) do
@@ -95,6 +94,7 @@ module AresMUSH
 
     ### IMPORTANT!!!  Do not call from outside of the dispatcher.
     ### Use queue_event if you need to queue up an event
+    # @engineinternal true
     def on_event(event)
       begin
         event_name = event.class.to_s.gsub("AresMUSH::", "")
@@ -117,6 +117,7 @@ module AresMUSH
     end
 
     ### IMPORTANT!!!  Do not call from outside of the event machine reactor loop!
+    # @engineinternal true
     def on_web_request(request)
       handled = false
       AresMUSH.with_error_handling(nil, "Web Request") do

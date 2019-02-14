@@ -104,8 +104,7 @@ module AresMUSH
     end
     
     
-    protected
-    
+    # @engineinternal true
     def handle_input(input)
       begin
         self.last_activity = Time.now
@@ -126,15 +125,18 @@ module AresMUSH
     end
 
     # Responds to a disconnect from any sort of source - socket error, client-initated, etc.
+    # @engineinternal true
     def connection_closed
       Global.client_monitor.connection_closed self
     end
 
     # Do not cache the character object!  It will get stale and out of date.
+    # @engineinternal true
     def char
       find_char
     end
     
+    # @engineinternal true
     def web_char_id
       @connection.web_char_id
     end
