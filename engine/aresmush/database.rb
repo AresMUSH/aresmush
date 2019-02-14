@@ -1,17 +1,11 @@
 module AresMUSH  
+  # @engineinternal true
   class Database
 
     def self.build_url(host_and_port, password)
       "redis://:#{password}@#{host_and_port}"
     end
-    
-    def redis_host
-    end
-    
-    def redis_url
-      
-    end
-    
+
     def load_config
       password = Global.read_config("secrets", "database", "password")
       host_and_port = Global.read_config("database", "url")

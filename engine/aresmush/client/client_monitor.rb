@@ -45,25 +45,6 @@ module AresMUSH
       end
     end
 
-    def connection_established(connection)
-      begin
-        client = @client_factory.create_client(connection)
-        @clients << client
-        client.connected
-        Global.dispatcher.queue_event ConnectionEstablishedEvent.new(client)
-      rescue Exception => e
-        Global.logger.debug "Error establishing connection Error: #{e.inspect}. \nBacktrace: #{e.backtrace[0,10]}"
-      end
-    end
-    
-    def connection_closed(client)
-      @clients.delete client
-      Global.dispatcher.queue_event ConnectionClosedEvent.new(client)
-      if (client.logged_in?)
-        Global.dispatcher.queue_event CharDisconnectedEvent.new(client, client.char.id)
-      end        
-    end
-    
     def logged_in_clients
       @clients.select { |c| c.logged_in? }
     end
@@ -81,5 +62,27 @@ module AresMUSH
     def find_client(char)
       @clients.select { |c| c.char_id == char.id }.first
     end
+    
+    protected
+
+    def connection_established(connection)
+      begin
+        client = @client_factory.create_client(connection)
+        @clients << client
+        client.connected
+        Global.dispatcher.queue_event ConnectionEstablishedEvent.new(client)
+      rescue Exception => e
+        Global.logger.debug "Error establishing connection Error: #{e.inspect}. \nBacktrace: #{e.backtrace[0,10]}"
+      end
+    end
+        
+    def connection_closed(client)
+      @clients.delete client
+      Global.dispatcher.queue_event ConnectionClosedEvent.new(client)
+      if (client.logged_in?)
+        Global.dispatcher.queue_event CharDisconnectedEvent.new(client, client.char.id)
+      end        
+    end
+    
   end
 end

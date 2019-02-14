@@ -91,6 +91,21 @@ module AresMUSH
       end
     end
     
+    def find_char
+      @char_id ? Character[@char_id] : nil
+    end
+    
+    def logged_in?
+      @char_id
+    end
+    
+    def reset_program
+      @program = {}
+    end
+    
+    
+    protected
+    
     def handle_input(input)
       begin
         self.last_activity = Time.now
@@ -120,18 +135,6 @@ module AresMUSH
       find_char
     end
     
-    def find_char
-      @char_id ? Character[@char_id] : nil
-    end
-    
-    def logged_in?
-      @char_id
-    end
-    
-    def reset_program
-      @program = {}
-    end
-
     def web_char_id
       @connection.web_char_id
     end

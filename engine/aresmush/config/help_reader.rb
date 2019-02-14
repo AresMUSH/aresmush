@@ -23,6 +23,8 @@ module AresMUSH
       end
     end
     
+    protected
+    
     def load_help_file(file, plugin)      
       plugin_title = plugin ? plugin.downcase : ""
       

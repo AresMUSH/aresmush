@@ -4,6 +4,8 @@ module AresMUSH
       @client_id = 0
     end
     
+    private
+    
     def create_client(connection)
       @client_id = @client_id + 1   
       client = Client.new(@client_id, connection)       
