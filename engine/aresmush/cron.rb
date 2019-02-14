@@ -12,8 +12,8 @@ module AresMUSH
       return true
     end
     
-    protected
     
+    # @engineinternal true
     def self.raise_event
       tick = Time.now
       if (!Cron.last_tick || Cron.last_tick.min != tick.min)
@@ -21,6 +21,8 @@ module AresMUSH
         Cron.last_tick = tick
       end
     end
+
+    private
     
     def self.test_match(cron_component, time_component, component_type)
       return true if !cron_component

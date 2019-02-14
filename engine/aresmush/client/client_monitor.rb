@@ -63,8 +63,7 @@ module AresMUSH
       @clients.select { |c| c.char_id == char.id }.first
     end
     
-    protected
-
+    # @engineinternal true
     def connection_established(connection)
       begin
         client = @client_factory.create_client(connection)
@@ -76,6 +75,7 @@ module AresMUSH
       end
     end
         
+    # @engineinternal true
     def connection_closed(client)
       @clients.delete client
       Global.dispatcher.queue_event ConnectionClosedEvent.new(client)
