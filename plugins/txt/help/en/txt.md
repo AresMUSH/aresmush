@@ -1,23 +1,30 @@
 ---
 toc: Playing the Game
-summary: How to send HoloTxts.
+summary: How to send texts.
 aliases:
-- holotxt
 - text
+- Texting
+- texts
 ---
 
-# Holonet Text Messaging aka HoloTxt
-This command is to be used for In-Character communication. A HoloTxt is sent over the planetary HoloNet, from one person to another, via datapad of whatever sort. This works much like real-life texting.
+## Texting from the Web-Portal
+There is a "Send Txt" button on any active scene in the web-portal. Texting into a scene will send a message in-game, if the character is connected. Otherwise, it will just send a text into the scene.
 
-> Note: HoloTxts are not perfectly secure! This is a well-known fact in-game. Txting can be monitored staff for RP purposes.
+`<name>=<message>` - Send a message to a person from the webportal. If the recipient isn't already a participant in the scene, this will add them.
 
-`txt <target>=<message>` - Send a message to target.
-`txt =<message>` - Send a message to your last target.
+> Keep in mind that someone who's not logged in won't know they've been texted in a scene unless they check! Be courteous!
 
-`txt <target>/<scene #>=<message>` - Send a text to a target + log it into a scene.
+## Commands
+`txt <name> [<name> <name>]=<message>` - Send a message to name(s).
+`txt <name> [<name> <name>]/<scene #>=<message>` - Send a text to name + log it in a scene. If the recipient isn't already a participant in the scene, this will add them.
 
-`txt/color <color>` - Color the (Txt) prefix. Use ansi color format for this, ex: \%xh\%xr for red highlight, \%xh\%xg for green highlight.
+`txt [=]<message>` - Send a message to your last text target + last scene.
+
+`txt/reply` - See who last texted you.
+`txt/reply <message>` - Reply to the last text (including all recipients + scene, if there is one)
+
+`txt/newscene <name> [<name> <name>]=<message>` - Starts a new scene + sends a message to those names + the scene.
+
+`txt/color <color>` - Color the (TXT to <name>) prefix. Use ansi color format for this, ex: \%xh\%xr for red highlight, \%xh\%xg for green highlight.
 
 > If you do not wish to receive txts (in general, or from a specific person), the `page/ignore <name>=<on/off>` and `page/dnd <on/off>` commands will block txts as well.
-
-(More commands are planned! But for now, this is what we got.)
