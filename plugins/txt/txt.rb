@@ -16,11 +16,23 @@ module AresMUSH
           case cmd.switch
           when "color"
             return TxtColorCmd
+          when "newscene"
+            return TxtNewSceneCmd
+          when "reply"
+            return TxtReplyCmd
           when nil
             return TxtSendCmd
           end
         end
       return nil
+    end
+
+    def self.get_web_request_handler(request)
+      case request.cmd
+      when "addTxt"
+        return AddTxtRequestHandler
+      end
+      nil
     end
   end
 end
