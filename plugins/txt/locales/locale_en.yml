@@ -7,13 +7,13 @@ en:
       recipient_do_not_disturb: "%{name} is set 'do not disturb' right now.  Please try your page again later."
       target_offline_no_scene: "%{name} is not connected and you did not specify a scene."
 
-      txt_to_sender: "%{txt} %xh%{sender}%xn: %{message} %xn"
-      txt_to_recipient: "%{txt} %xh%{sender}%xn: %{message} %xn"
+      txt_to_sender: "%{txt} %{sender}%xn: %{message} %xn"
+      txt_to_recipient: "%{txt} %{sender}%xn: %{message} %xn"
       txt_to_recipient_with_scene: "%{txt} %xh%{sender}%xn: %{message} %xx%xh(Scene %{scene_id})%xn"
 
       recipient_added_to_scene: "That text has added %{name} to the scene participants list."
-      txt_to_scene_with_recipient: "%{txt}  %xh%xw%%{sender}%xn: %{message}%xn"
-      txt_to_scene_no_recipient: "%{txt}  %xh%xw%%{sender}%xn: %{message}%xn"
+      txt_to_scene_with_recipient: "%{txt} %xh%xw %{sender}%xn: %{message}%xn"
+      txt_to_scene_no_recipient: "%{txt} %xh%xw %{sender}%xn: %{message}%xn"
       # txt_to_sender: "%{txt} %{sender}: %{message} %xh%xx(To: %{recipients})"
       # txt_to_recipient: "%{txt} %{sender}: %{message} %xh%xx(To: %{recipients})"
       # txt_to_recipient_with_scene: "%{txt} %{sender}: %{message} %xh%xx(To: %{recipients}) (Scene %{scene_id})"
