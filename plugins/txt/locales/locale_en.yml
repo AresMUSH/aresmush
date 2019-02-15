@@ -12,8 +12,8 @@ en:
       txt_to_recipient_with_scene: "%{txt} %xh%{sender}%xn: %{message} %xx%xh(Scene %{scene_id})%xn"
 
       recipient_added_to_scene: "That text has added %{name} to the scene participants list."
-      txt_to_scene_with_recipient: "%{txt} %{sender}: %{message}%xn"
-      txt_to_scene_no_recipient: "%{txt} %{sender}: %{message}%xn"
+      txt_to_scene_with_recipient: "%{txt}  %xh%xw%%{sender}%xn: %{message}%xn"
+      txt_to_scene_no_recipient: "%{txt}  %xh%xw%%{sender}%xn: %{message}%xn"
       # txt_to_sender: "%{txt} %{sender}: %{message} %xh%xx(To: %{recipients})"
       # txt_to_recipient: "%{txt} %{sender}: %{message} %xh%xx(To: %{recipients})"
       # txt_to_recipient_with_scene: "%{txt} %{sender}: %{message} %xh%xx(To: %{recipients}) (Scene %{scene_id})"
@@ -27,7 +27,7 @@ en:
       no_one_to_reply_to: "Looks like noone's txt'd you recently. Sorry."
       reply_scene: "Last txt came from: %{names}; Scene: %{scene}"
       reply: "Last txt came from: %{names}"
-      
+
       recipient_indicator: "%{recipients}"
 
       txt_indicator: "%{color}%{start_marker}TXT to %{recipients}%{color}%{end_marker}%xn"
@@ -41,4 +41,3 @@ en:
       incorrect_format: "That's not the correct format. Please use `name(s)=message`"
 
       txt_new_scene_target_missing: "Please specify a target and message. Ex: txt/newscene Name=Message"
-    
