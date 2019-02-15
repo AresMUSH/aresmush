@@ -34,6 +34,7 @@ You can use slashes for italics too:
 You can use wikidot style links to link to a page on the wiki:
 
 `[[[Wiki Page Name]]]`
+`[[[char:Bob]]]`
 
 Category text will automatically be trimmed from the link title (e.g. theme:overview will simply be shown as 'Overview') but you can also specify a completely different link title:
 

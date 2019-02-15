@@ -56,7 +56,7 @@ module AresMUSH
           is_private: scene.private_scene,
           participants: participants,
           scene_type: scene.scene_type ? scene.scene_type.titlecase : 'unknown',
-          can_edit: enactor && Scenes.can_read_scene?(enactor, scene),
+          can_edit: enactor && Scenes.can_edit_scene?(enactor, scene),
           is_muted: enactor && scene.muters.include?(enactor),
           poses: scene.poses_in_order.map { |p| Scenes.build_scene_pose_web_data(p, enactor) }
         }
