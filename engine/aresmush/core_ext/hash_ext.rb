@@ -14,7 +14,7 @@ class Hash
       self.merge_recursively(file_data)
     rescue Exception => ex
       # Turn mysterious YAML errors into something a little more useful.
-      raise "Error reading YAML from #{file_path}.  See the Troubleshooting YAML tutorial http://aresmush.com/tutorials/code/yaml/ for help: #{ex}"
+      raise "Error reading YAML from #{file_path}.  See the Troubleshooting YAML tutorial http://aresmush.com/tutorials/code/yaml.html for help: #{ex}"
     end
   end
   
