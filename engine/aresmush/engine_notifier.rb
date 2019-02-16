@@ -1,21 +1,20 @@
 module AresMUSH  
+  # trigger_block is a block that tells whether a particular web client
+  # should receive a notification based on their character.  
+  # 
+  # If you want everyone to receive the notice, pass a block that always
+  # returns true.
+  #     notify(type, msg) do |char|
+  #        true
+  #     end
+  #
+  # If you want to only notify clients that can do something, pass a block
+  # that checks a method based on the character.
+  #
+  #    notify(type, msg) do |char|
+  #        char.can_do_something?
+  #    end
   class EngineNotifier
-    
-    # trigger_block is a block that tells whether a particular web client
-    # should receive a notification based on their character.  
-    # 
-    # If you want everyone to receive the notice, pass a block that always
-    # returns true.
-    #     notify(type, msg) do |char|
-    #        true
-    #     end
-    #
-    # If you want to only notify clients that can do something, pass a block
-    # that checks a method based on the character.
-    #
-    #    notify(type, msg) do |char|
-    #        char.can_do_something?
-    #    end
     
     def notify(type, msg, &trigger_block)
       Global.client_monitor.emit msg, &trigger_block

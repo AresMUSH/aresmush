@@ -18,8 +18,8 @@ If you prefer to manage your relationships in-game, you can do so.
 
 `relationships` - Sees your relationships.
 `relationships <name>` - Sees someone else's relationships.
-`relationship/add <name>=<category>/<details.` - Adds a relationship.
-`relationship/update <name>=<category>/<details.` - Updates a relationship.
+`relationship/add <name>=<category>/<details>` - Adds a relationship.
+`relationship/update <name>=<category>/<details>` - Updates a relationship.
 `relationship/delete <name>` - Deletes a relationship.
 
 ## Organizing Relationships

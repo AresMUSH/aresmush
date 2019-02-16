@@ -1,5 +1,7 @@
 module AresMUSH
+  # Searches objects (Characters/Exits/Rooms) by name or ID.
   class AnyTargetFinder
+    # @return [FindResult]
     def self.find(name_or_id, char)
       find_result = VisibleTargetFinder.find(name_or_id, char)
       
@@ -16,6 +18,7 @@ module AresMUSH
       SingleResultSelector.select(contents)
     end
     
+    # @yieldparam model [Character, Room, Exit]
     def self.with_any_name_or_id(name, client, char, &block)
       result = AnyTargetFinder.find(name, char)
       

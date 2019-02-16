@@ -22,7 +22,7 @@ module AresMUSH
             id: message.id,
             subject: message.subject,
             to_list: message.to_list,
-            reply_all:  Mail.reply_list(message, enactor, true).join(" "),
+            reply_all:  Mail.reply_list(message, enactor, true),
             from: message.author_name,
             created: message.created_date_str(enactor),
             tags: message.tags,
