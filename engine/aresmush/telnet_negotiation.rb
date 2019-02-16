@@ -1,4 +1,5 @@
 module AresMUSH
+  # @engineinternal true
   class TelnetNegotiation
     
     def initialize(connection)

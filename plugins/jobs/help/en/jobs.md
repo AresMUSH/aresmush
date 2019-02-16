@@ -38,7 +38,7 @@ Valid filters are:
 * (Category Name) - Active jobs in the given category.
 * All - All jobs.
 
-`jobs/filer <flter>` - Filters the jobs list.
+`jobs/filter <flter>` - Filters the jobs list.
 `jobs/mine`, `jobs/active`, `jobs/all` - Shortcuts for the common filters.
 
 ## Creating Jobs

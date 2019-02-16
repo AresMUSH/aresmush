@@ -1,5 +1,6 @@
 module AresMUSH
 
+  # @engineinternal true
   class WebConnection
     attr_accessor :websocket, :ip_addr, :ready_callback
     attr_reader :client, :web_char_id, :webclient
@@ -15,7 +16,7 @@ module AresMUSH
     def ping
       # No-Op for web clients.
     end
-    
+        
     def connection_opened(handshake)
       begin
         @ip_addr = get_ip

@@ -27,11 +27,11 @@ module AresMUSH
                          last_posed: s.last_posed == p }},
                   scene_type: s.scene_type ? s.scene_type.titlecase : 'Unknown',
                   likes: s.likes,
-                  is_unread: enactor && Scenes.can_read_scene?(enactor, s) && s.participants.include?(enactor) && s.is_unread?(enactor),
-                  updated: OOCTime.local_long_timestr(enactor, s.last_activity),
+                  is_unread: can_read?(enactor, s) && s.participants.include?(enactor) && s.is_unread?(enactor),
+                  updated: can_read?(enactor, s) ? OOCTime.local_long_timestr(enactor, s.last_activity) : nil,
                   watching: Scenes.is_watching?(s, enactor),
                   participating: Scenes.is_participant?(s, enactor),
-                  last_posed: s.last_posed ? s.last_posed.name : nil
+                  last_posed: can_read?(enactor, s) && s.last_posed ? s.last_posed.name : nil
                 }}
         if (enactor)        
           unshared = enactor.unshared_scenes.sort_by { |s| s.id.to_i }.reverse.map { |s| {
@@ -48,6 +48,10 @@ module AresMUSH
           unshared_warning_days: Global.read_config('scenes', 'unshared_scene_deletion_days')
         }
   
+      end
+      
+      def can_read?(enactor, s)
+        enactor && Scenes.can_read_scene?(enactor, s)
       end
       
       def sort_scene(s1, s2)

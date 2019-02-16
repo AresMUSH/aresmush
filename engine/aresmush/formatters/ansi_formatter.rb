@@ -1,5 +1,6 @@
 module AresMUSH
-  class AnsiFormatter    
+  class AnsiFormatter  
+    # @engineinternal true  
     def self.ansi_code_map
       {
         "x" => ANSI.black,
@@ -35,6 +36,8 @@ module AresMUSH
       }
     end
     
+    # @engineinternal true  
+
     def self.fansi_downgrade_map
       {
          "0" => "#{ANSI.black}",
