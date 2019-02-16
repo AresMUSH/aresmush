@@ -5,7 +5,7 @@
 %xh<%= t('scenes.scenes_title')%>%xn
 
 <% paginator.page_items.each do |scene| %>
-<%= scene.id %> - <<%= privacy(scene) %>> <%= scene.title %> (<%= characters(scene) %>)
+<%= scene.id %><%= unshared(scene) %> - <<%= privacy(scene) %>> <%= scene.title %> (<%= characters(scene) %>)
 <% end %>
 
 <%= paginator.page_footer %>

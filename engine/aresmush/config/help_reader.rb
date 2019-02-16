@@ -23,6 +23,7 @@ module AresMUSH
       end
     end
     
+    # @engineinternal true
     def load_help_file(file, plugin)      
       plugin_title = plugin ? plugin.downcase : ""
       
@@ -85,6 +86,7 @@ module AresMUSH
       File.join(AresMUSH.game_path, "help") 
     end
     
+    # @engineinternal true
     def help_files(locale)
       search = File.join(game_help_path, locale, "**.md")
       Dir[search]

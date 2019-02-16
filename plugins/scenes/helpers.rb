@@ -64,7 +64,10 @@ module AresMUSH
       scene.update(shared: true)
       scene.update(date_shared: Time.now)
       Scenes.create_log(scene)
-      Scenes.new_scene_activity(scene)      
+      Scenes.new_scene_activity(scene)    
+      
+      Global.dispatcher.queue_event SceneSharedEvent.new(scene.id)
+      
       return true
     end
       
@@ -421,7 +424,7 @@ module AresMUSH
     
     def self.mark_read(scene, char)      
       scenes = char.read_scenes || []
-      scenes << scene.id
+      scenes << scene.id.to_s
       char.update(read_scenes: scenes)
     end
     
@@ -430,19 +433,20 @@ module AresMUSH
       chars.each do |char|
         next if except_for_char && char == except_for_char
         scenes = char.read_scenes || []
-        scenes.delete scene.id
+        scenes.delete scene.id.to_s
         char.update(read_scenes: scenes)
       end
     end
     
     def self.is_unread?(scene, char)
-      !(char.read_scenes || []).include?(scene.id)
+      !(char.read_scenes || []).include?(scene.id.to_s)
     end
 
     def self.build_scene_pose_web_data(pose, viewer, live_update = false)
       {
         char: { name: pose.character ? pose.character.name : t('scenes.author_deleted'), 
-                icon: Website.icon_for_char(pose.character) }, 
+                icon: Website.icon_for_char(pose.character),
+                id: pose.character ? pose.character.id : 0 }, 
         order: pose.order, 
         id: pose.id,
         timestamp: OOCTime.local_long_timestr(viewer, pose.created_at),

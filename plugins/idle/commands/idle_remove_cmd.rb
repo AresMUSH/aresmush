@@ -4,14 +4,14 @@ module AresMUSH
     class IdleRemoveCmd
       include CommandHandler
       
-      attr_accessor :name
+      attr_accessor :names
       
       def parse_args
-        self.name = titlecase_arg(cmd.args)
+        self.names = list_arg(cmd.args)
       end
       
       def required_args
-        [ self.name ]
+        [ self.names ]
       end
       
       def check_can_manage
@@ -25,9 +25,11 @@ module AresMUSH
       end
       
       def handle
-        ClassTargetFinder.with_a_character(self.name, client, enactor) do |model|
-          client.program[:idle_queue].delete model.id
-          client.emit_success t('idle.idle_removed', :name => self.name)
+        self.names.each do |name|
+          ClassTargetFinder.with_a_character(name, client, enactor) do |model|
+            client.program[:idle_queue].delete model.id
+            client.emit_success t('idle.idle_removed', :name => model.name)
+          end
         end
       end
     end

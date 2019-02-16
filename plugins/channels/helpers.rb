@@ -22,7 +22,7 @@ module AresMUSH
     end
     
     def self.find_common_channels(channels, other_char)
-      their_channels = other_char.channels
+      their_channels = Channels.active_channels(other_char)
       intersection = channels.to_a & their_channels.to_a
       intersection = intersection.select { |c| Channels.announce_enabled?(other_char, c) }
       if (intersection.empty?)
@@ -247,6 +247,10 @@ module AresMUSH
         Channels.emit_to_channel channel, t('channels.joined_channel', :name => char.name)
         
         return nil
+    end
+    
+    def self.active_channels(char)
+      char.channels.select { |c| !Channels.is_muted?(char, c) }
     end
   end
 end
