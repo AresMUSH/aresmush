@@ -163,7 +163,7 @@ module AresMUSH
         puts "!!!!!!!"
         puts "Your Ares web portal directory can't be found, or there's a problem accessing it."
         puts "In order to set up your search engine, you'll need to manually edit the robots file."
-        puts "See https://aresmush.com/tutorials/config/website/ for details."
+        puts "See https://aresmush.com/tutorials/config/website.html for details."
         puts "!!!!!!!"
       end
      
