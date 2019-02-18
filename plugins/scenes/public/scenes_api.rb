@@ -55,7 +55,7 @@ module AresMUSH
       scene = Scene.create(owner: enactor,
           location: location,
           private_scene: private_scene,
-          watchable_scene: watchable_scene
+          watchable_scene: watchable_scene,
           scene_type: scene_type,
           temp_room: temp_room,
           icdate: ICTime.ictime.strftime("%Y-%m-%d"))
