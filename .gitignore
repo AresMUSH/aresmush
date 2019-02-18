@@ -12,6 +12,8 @@ errors.txt
 
 # Generated files
 # -----------------------------
+.yardoc
+doc/
 wiki_export
 calendar.ics
 .sass-cache

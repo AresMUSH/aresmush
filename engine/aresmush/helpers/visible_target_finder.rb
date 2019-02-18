@@ -1,5 +1,8 @@
 module AresMUSH
+  # Searches for a target (haracter/room/exit) with a given name in the viewer's room.
+  # Handles special keywords 'me' and 'here'.
   class VisibleTargetFinder
+    # @return [FindResult]
     def self.find(name, viewer)
       name = name.upcase
       return FindResult.new(viewer, nil) if (name == "ME")
@@ -22,6 +25,8 @@ module AresMUSH
       SingleResultSelector.select(contents)
     end
     
+    # @yieldparam model [Character, Room, Exit] The object that was found.
+    # @note Failure message will be emitted and block will not run if an object with that name is not found in the room.
     def self.with_something_visible(name, client, viewer, &block)
       result = VisibleTargetFinder.find(name, viewer)
       

@@ -47,6 +47,7 @@ module AresMUSH
               Idle.idle_cleanup(idle_char)
             when "Warn"
               Global.logger.debug "#{idle_char.name} idle warned."
+              Mail.send_mail([idle_char.name], t('idle.idle_warning_subject'), Global.read_config("idle", "idle_warn_msg"), nil)          
               idle_char.update(idle_warned: true)
             else
               Global.logger.debug "#{idle_char.name} idle status set to: #{action}."
