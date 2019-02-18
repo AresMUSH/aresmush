@@ -43,13 +43,14 @@ module AresMUSH
       def handle
 
         private_scene = self.privacy == "Private"
+        watchable_scene = self.privacy == "Watchable"
 
         if (!self.temp && enactor_room.room_type == "OOC")
           client.emit_failure t('scenes.no_scene_in_ooc_room')
           return
         end
 
-        if (enactor_room.scene)
+        if (enactor_room.scene && !self.temp)
           client.emit_failure t('scenes.scene_already_going')
           return
         end
@@ -58,13 +59,15 @@ module AresMUSH
           self.location = enactor_room.name_and_area
         end
 
-        scene = Scene.create(owner: enactor,
-            location: self.location,
-            private_scene: self.privacy == "Private",
-            watchable_scene: self.privacy == "Watchable",
-            scene_type: Scenes.scene_types.first,
-            temp_room: self.temp,
-            icdate: ICTime.ictime.strftime("%Y-%m-%d"))
+        scene = Scenes.start_scene(enactor, self.location, private_scene, watchable_scene, Scenes.scene_types.first, self.temp)
+
+        # scene = Scene.create(owner: enactor,
+        #     location: self.location,
+        #     private_scene: self.privacy == "Private",
+        #     watchable_scene: self.privacy == "Watchable",
+        #     scene_type: Scenes.scene_types.first,
+        #     temp_room: self.temp,
+        #     icdate: ICTime.ictime.strftime("%Y-%m-%d"))
 
         Global.logger.info "Scene #{scene.id} started by #{enactor.name} in #{self.temp ? 'temp room' : enactor_room.name}."
 
