@@ -1,3 +1,4 @@
+# @engineinternal true
 class MarkdownToMURenderer < Redcarpet::Render::Base
   # Methods where the first argument is the text content
   [

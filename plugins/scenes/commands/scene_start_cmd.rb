@@ -42,6 +42,8 @@ module AresMUSH
 
       def handle
 
+        private_scene = self.privacy == "Private"
+
         if (!self.temp && enactor_room.room_type == "OOC")
           client.emit_failure t('scenes.no_scene_in_ooc_room')
           return
@@ -67,13 +69,7 @@ module AresMUSH
         Global.logger.info "Scene #{scene.id} started by #{enactor.name} in #{self.temp ? 'temp room' : enactor_room.name}."
 
         if (self.temp)
-          room = Scenes.create_scene_temproom(scene)
-          Rooms.move_to(client, enactor, room)
-        else
-          room = enactor_room
-          room.update(scene: scene)
-          scene.update(room: room)
-          room.emit_ooc t('scenes.announce_scene_start', :privacy => self.privacy, :name => enactor_name, :num => scene.id)
+          Rooms.move_to(client, enactor, scene.room)
         end
       end
     end

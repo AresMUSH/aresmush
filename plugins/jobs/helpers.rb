@@ -173,7 +173,7 @@ module AresMUSH
     
     def self.mark_read(job, char)      
       jobs = char.read_jobs || []
-      jobs << job.id
+      jobs << job.id.to_s
       char.update(read_jobs: jobs)
     end
     
@@ -182,13 +182,13 @@ module AresMUSH
       chars.each do |char|
         next if except_for_char && char == except_for_char
         jobs = char.read_jobs || []
-        jobs.delete job.id
+        jobs.delete job.id.to_s
         char.update(read_jobs: jobs)
       end
     end
     
     def self.is_unread?(job, char)
-      !(char.read_jobs || []).include?(job.id)
+      !(char.read_jobs || []).include?(job.id.to_s)
     end
     
   end

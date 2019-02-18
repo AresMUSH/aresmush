@@ -32,23 +32,5 @@ module AresMUSH
       template = LineWithTextTemplate.new(text)
       template.render
     end
-    
-    # This works with Erubis templates; now depracated.
-    def one_line(&block)
-      str = capture(&block)
-      @output << str.gsub(/\n/, "")
-      @output << "\n" if str.ends_with? "\n"
-      return ""
-    end
-  
-    # This works with Erubis templates; now depracated.
-    def capture(*args)
-      old_buffer = @output
-      @output = ""
-      yield(*args)
-      new_buffer = @output
-      @output  = old_buffer
-      new_buffer
-    end
   end
 end
