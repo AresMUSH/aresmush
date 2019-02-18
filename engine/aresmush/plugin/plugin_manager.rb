@@ -64,7 +64,7 @@ module AresMUSH
       end
       @plugins << plugin_module
     end
-    
+        
     def load_plugin_locale(plugin_module)
       Global.locale.locale_order.each do |locale|
         file = File.join(plugin_module.plugin_dir, "locales", "locale_#{locale}.yml")
@@ -73,12 +73,11 @@ module AresMUSH
         end
       end
     end
-
+    
     def config_files(plugin_module)
       search = File.join(plugin_module.plugin_dir, "config_**.yml")
       Dir[search]
     end
-
         
     def help_files(plugin_module, locale)
       search = File.join(plugin_module.plugin_dir, "help", locale, "**.md")

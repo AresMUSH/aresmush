@@ -1,4 +1,5 @@
 module Ohm
+  # @engineinternal true
   class Model
     def update_attributes(atts)
       atts.each do |att, val| 

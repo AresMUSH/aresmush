@@ -1,4 +1,5 @@
 module AresMUSH
+  # @engineinternal true
   class JsonArgs
     attr_accessor :values
       

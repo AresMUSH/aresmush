@@ -2,14 +2,6 @@ module AresMUSH
   module Cron
     mattr_accessor :last_tick
     
-    def self.raise_event
-      tick = Time.now
-      if (!Cron.last_tick || Cron.last_tick.min != tick.min)
-        Global.dispatcher.on_event CronEvent.new(tick)
-        Cron.last_tick = tick
-      end
-    end
-    
     def self.is_cron_match?(cron_spec, time)
       return false if !cron_spec
       return false if cron_spec.keys.count == 0
@@ -19,6 +11,18 @@ module AresMUSH
       return false if !test_match(cron_spec["minute"], time.min, :min)
       return true
     end
+    
+    
+    # @engineinternal true
+    def self.raise_event
+      tick = Time.now
+      if (!Cron.last_tick || Cron.last_tick.min != tick.min)
+        Global.dispatcher.on_event CronEvent.new(tick)
+        Cron.last_tick = tick
+      end
+    end
+
+    private
     
     def self.test_match(cron_component, time_component, component_type)
       return true if !cron_component

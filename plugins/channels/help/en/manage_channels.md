@@ -15,6 +15,7 @@ Channel administrators can add or remove characters from a channel:
 ## Creating and Deleting Channels
 `channel/create <channel>`
 `channel/delete <channel>`
+`channel/rename <channel>=<new name>` - Be cautious renaming channels since peoples' aliases may no longer make sense.
 
 ## Channel Appearance
 `channel/describe <channel>=<description>`
