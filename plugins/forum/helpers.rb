@@ -205,11 +205,11 @@ module AresMUSH
     
     def self.is_unread?(post, char)
       posts = (char.forum_read_posts || [])
-      !posts.include?(post.id)
+      !posts.include?(post.id.to_s)
     end
     
     def self.mark_read(post, char)
-      posts = (char.forum_read_posts || []) << post.id
+      posts = (char.forum_read_posts || []) << post.id.to_s
       char.update(forum_read_posts: posts)
     end
     
@@ -217,7 +217,7 @@ module AresMUSH
       chars = Character.all.select { |c| !Forum.is_unread?(post, c) }
       chars.each do |char|
         posts = char.forum_read_posts || []
-        posts.delete post.id
+        posts.delete post.id.to_s
         char.update(forum_read_posts: posts)
       end
     end

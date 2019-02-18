@@ -91,6 +91,20 @@ module AresMUSH
       end
     end
     
+    def find_char
+      @char_id ? Character[@char_id] : nil
+    end
+    
+    def logged_in?
+      @char_id
+    end
+    
+    def reset_program
+      @program = {}
+    end
+    
+    
+    # @engineinternal true
     def handle_input(input)
       begin
         self.last_activity = Time.now
@@ -111,27 +125,18 @@ module AresMUSH
     end
 
     # Responds to a disconnect from any sort of source - socket error, client-initated, etc.
+    # @engineinternal true
     def connection_closed
       Global.client_monitor.connection_closed self
     end
 
     # Do not cache the character object!  It will get stale and out of date.
+    # @engineinternal true
     def char
       find_char
     end
     
-    def find_char
-      @char_id ? Character[@char_id] : nil
-    end
-    
-    def logged_in?
-      @char_id
-    end
-    
-    def reset_program
-      @program = {}
-    end
-
+    # @engineinternal true
     def web_char_id
       @connection.web_char_id
     end

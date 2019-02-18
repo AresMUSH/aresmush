@@ -49,3 +49,5 @@ en:
         roster_url_hint: "The roster can be viewed more easily on the web portal: %{url}."
 
         destroy_approved_warning: "WARNING! Destroying approved characters is not advised. See help idle sweep for details."
+
+        idle_warning_subject: "Idle Warning"

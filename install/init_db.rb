@@ -27,8 +27,8 @@ module AresMUSH
         :area => offstage,
         :description => "Welcome!%R%R" + 
         "New to MUSHing?  Visit http://aresmush.com/mush-101/ for an interactive tutorial.%R%R" +
-        "New to Ares?  http://aresmush.com/ares-for-vets for a quick intro geared towards veteran players.%R%R" +
-        "You may need to configure your MUSH client to take full advantage of Ares' features.  See https://aresmush.com/clients/ for details.%R%R" +
+        "New to Ares?  http://aresmush.com/tutorials/play/ares-for-vets.html for a quick intro geared towards veteran players.%R%R" +
+        "You may need to configure your MUSH client to take full advantage of Ares' features.  See https://aresmush.com/clients.html for details.%R%R" +
         "Type %xcchannels%xn for a list of available chat channels and the commands to speak on them.")
 
       ic_start_room = Room.create(
