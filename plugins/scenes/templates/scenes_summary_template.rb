@@ -22,6 +22,10 @@ module AresMUSH
         message = scene.private_scene ? t('scenes.private') : t('scenes.open')
         "#{color}#{message}%xn"
       end
+      
+      def unshared(scene)
+        scene.shared ? ' ' : '*'
+      end
     end
   end
 end

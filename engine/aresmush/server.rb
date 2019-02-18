@@ -2,6 +2,7 @@ require 'eventmachine'
 require 'em-websocket'
 
 module AresMUSH
+  # @engineinternal true
   class Server
     def start
       EventMachine.error_handler{ |e|

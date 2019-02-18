@@ -1,4 +1,5 @@
 module AresMUSH
+  # @engineinternal true
   class AresLogger
     
     attr_accessor :logger
