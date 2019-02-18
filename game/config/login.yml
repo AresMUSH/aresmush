@@ -26,6 +26,7 @@ login:
     kick: boot
     password/change: password/set
     pcreate: create/reserve
+    motd: notice/motd
   use_terms_of_service: false
   portal_requires_registration: false
   guest_disabled_message: ''
