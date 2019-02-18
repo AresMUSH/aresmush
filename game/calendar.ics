@@ -2,19 +2,6 @@ BEGIN:VCALENDAR
 VERSION:2.0
 PRODID:-//hacksw/handcal//NONSGML v1.0//EN
 BEGIN:VEVENT
-UID:50df9feb-c0c5-4b8e-8b0d-3a4c18ccbaa9@Spirit Lake-spiritlakemu.com
-DTSTART:20190212T010000Z
-DTSTAMP:20190131T165644Z
-SUMMARY:Grand Lake Polar Plunge!
-DESCRIPTION:It's not remotely safe, but that doesn't mean people don't love to it, and it's for a good cause.
-  
-  POLAR PLUNGING.
-  
-  Come take a plung at Spirit Lake. You never know, the depths might hold a secret or two waiting for you.
-  
-  This is a charitable event. All monetary proceeds will go towards buying suitable winter clothing for use in county shelters; all donations should be winterwear in useable condition.
-END:VEVENT
-BEGIN:VEVENT
 UID:cc6665f5-b192-4222-9652-9b0a80161077@Spirit Lake-spiritlakemu.com
 DTSTART:20190220T020000Z
 DTSTAMP:20190203T015120Z
@@ -48,14 +35,41 @@ DESCRIPTION:Worried about weird stuff lurking around the corner? Is there a cree
   Cookies will be provided.
 END:VEVENT
 BEGIN:VEVENT
-UID:7f658bad-0f4e-4f7a-89ab-7116675c040b@Spirit Lake-spiritlakemu.com
-DTSTART:20190214T013000Z
-DTSTAMP:20190209T131655Z
-SUMMARY:Wolf Hunt (Closed Event)
-DESCRIPTION:Rangers and a few other interested parties go out to deal with the wolf. 
+UID:62f04f7c-5044-43a3-9327-bde7cff07a3e@Spirit Lake-spiritlakemu.com
+DTSTART:20190216T013000Z
+DTSTAMP:20190209T230541Z
+SUMMARY:Better Magic Through YouTube
+DESCRIPTION:Through the Weirdo Network, Hester puts it about that she has something that might be related to more effectively working Tricks. BYOB. Location TBD.
+END:VEVENT
+BEGIN:VEVENT
+UID:08816e65-af69-4cdd-8d81-5635e3b89309@Spirit Lake-spiritlakemu.com
+DTSTART:20190217T020000Z
+DTSTAMP:20190211T234156Z
+SUMMARY:Bar Room Blitz
+DESCRIPTION:Tempers are heating up as tourists spend money to come up to Grand Lake and cannot manage to get out and ski, snowboard, snowshoe, sled, or... well, much of anything. Things come to a head in Grumpies, where someone takes a swing and a bar brawl breaks out. Please sign up so that I can arrange enough dirty tourists to threaten people.
+END:VEVENT
+BEGIN:VEVENT
+UID:0c57a306-5b63-4c92-9a3e-2852b16e79db@Spirit Lake-spiritlakemu.com
+DTSTART:20190217T200000Z
+DTSTAMP:20190212T232338Z
+SUMMARY:Stitch 'n Bitch at Postscript Books
+DESCRIPTION:Come do crafts in the bookshop! Technically I haven't asked the owner for permission but I'm sure it'll be fine. Non-crafters welcome provided you bring snacks.
+  Text me if you need more info. [Thora's #]
+END:VEVENT
+BEGIN:VEVENT
+UID:e75e03be-0d3f-4972-842b-cec50686d7d3@Spirit Lake-spiritlakemu.com
+DTSTART:20190217T220000Z
+DTSTAMP:20190214T150814Z
+SUMMARY:Magic Working Group
+DESCRIPTION:William is inviting anyone interested in looking deeper into the recent events and developments to the church to organize a working group. This group will work together to pool their knowledge and actions.
   
-  This event is limited to Park Rangers and those who chose wolf hunting as their action way back when. 
-  
-  Wyatt, Beau, Asher, Andrew, Danielle, Reagan, Morgan
+  In this initial meeting, we'll work on getting familiar with each other, deciding how best to organize ourselves, and discussing potential areas for further research.
+END:VEVENT
+BEGIN:VEVENT
+UID:ef89ec79-b7ef-42b4-8f7d-4992dcbd9992@Spirit Lake-spiritlakemu.com
+DTSTART:20190221T010000Z
+DTSTAMP:20190215T050507Z
+SUMMARY:Shirts Vs Skins
+DESCRIPTION:Grand Lake Center pick-up basketball at its best. One team will be wearing no shirts, the other team will be wearing shirts plastered to them with sweat. Come participate, come watch/ogle, enjoy. Some of the audience promise to try to recreate Middle Park High cheers.
 END:VEVENT
 END:VCALENDAR
