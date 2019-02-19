@@ -21,6 +21,17 @@ spells:
     is_revive: false
     is_stun: false
     roll: true
+  Object Whisper:
+    name: Object Whisper
+    level: 1
+    school: Spirit
+    desc: Caster hears a random, uncontrollable thought (no more than a short sentence of up to 10 words) from an object held by a sapient creature in the past 48 hours. Successive casts on the same object yield the same sentence. When possible, the sentence should be chosen by a GM.
+    target_optional: false
+    target_num: 0
+    is_revive: false
+    is_stun: false
+    is_potion: true
+    roll: true
   Share Emotion:
     name: Share Emotion
     level: 1
