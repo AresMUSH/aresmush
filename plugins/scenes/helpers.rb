@@ -10,7 +10,7 @@ module AresMUSH
       end
       web_msg = "#{scene.id}|#{last_posed}|#{data}"
       Global.client_monitor.notify_web_clients(:new_scene_activity, web_msg) do |char|
-        Scenes.can_read_scene?(char, scene)
+        Scenes.can_read_scene?(char, scene) && !Scenes.is_scene_muted?(char, scene)
       end
     end
 
