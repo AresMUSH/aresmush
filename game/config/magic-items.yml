@@ -36,3 +36,7 @@ magic-items:
   Band Of The Unseen:
     name: Band of the Unseen
     desc: A slender golden armband, the magical item is embossed with a depiction of the antagonist god Set. He is represented traditionally here. The only variation is the brightly colored blindfold that's been tied over his eyes. When worn in the open or beneath one's clothes, the armband acts as a blockade against intrusions from the Spirit school by those who would do the wearer ill. Magic users with friendly or sincerely good intentions are not protected against.
+  Bane of Elegast:
+    name: Bane of Elegast
+    desc: Crafted to hide from the legendary king and warlord, the broken chain allows anyone who carries it to cast Invisible, the Level 5 Fire spell. It currently resides in Silver's stomach after he swallowed it and fled retribution from the queen of Immeasurable Autumn, a faerie kingdom
+    spell: Invisible
