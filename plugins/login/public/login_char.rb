@@ -66,6 +66,10 @@ module AresMUSH
       self.update(login_api_token_expiry: Time.now + (86400 * 30) + (60*60*8))
     end
     
+    def extend_login_token
+      self.update(login_api_token_expiry: Time.now + (86400 * 30) + (60*60*8))
+    end
+    
     def token_secs_remaining
       self.login_api_token_expiry - Time.now
     end
