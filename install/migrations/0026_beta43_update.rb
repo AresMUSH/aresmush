@@ -19,9 +19,9 @@ module AresMUSH
         config['plugins']['config_help_links'] = 
         {
           'ffg' => 'https://github.com/AresMUSH/ares-extras/tree/master/plugins/ffg',
-          'fate' => 'https://github.com/AresMUSH/ares-extras/tree/master/plugins/fate'
-          'cortex' => 'https://github.com/AresMUSH/ares-extras/tree/master/plugins/cortex'
-          'prefs' => 'https://github.com/AresMUSH/ares-extras/tree/master/plugins/prefs'
+          'fate' => 'https://github.com/AresMUSH/ares-extras/tree/master/plugins/fate',
+          'cortex' => 'https://github.com/AresMUSH/ares-extras/tree/master/plugins/cortex',
+          'prefs' => 'https://github.com/AresMUSH/ares-extras/tree/master/plugins/prefs',
           'traits' => 'https://github.com/AresMUSH/ares-extras/tree/master/plugins/traits'
         }
         DatabaseMigrator.write_config_file("plugins.yml", config)  
