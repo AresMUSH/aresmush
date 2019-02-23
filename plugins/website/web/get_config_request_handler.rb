@@ -25,10 +25,13 @@ module AresMUSH
             lines = [v.to_yaml.split(/[\n\r]/).count + 1, 25].min
             config[k] = { key: k, value: v, new_value: v, lines: lines }
           end
+          
+          help_link = (Global.read_config('plugins', 'config_help_links') || {})[section]
+          help_link = help_link || "https://aresmush.com/tutorials/config/#{section}.html"
         
-          { file: file, config:  config, valid: true }
+          { file: file, config:  config, valid: true, help: help_link }
         rescue Exception => ex
-          { file: file, valid: false }
+          { file: file, valid: false, help: help_link }
         end
       end
     end
