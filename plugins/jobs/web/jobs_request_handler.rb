@@ -10,10 +10,13 @@ module AresMUSH
         
         job_admin = Jobs.can_access_jobs?(enactor)
         if (job_admin)
-          jobs = Jobs.filtered_jobs(enactor).reverse
-        else
-          jobs = Jobs.open_requests(enactor).sort_by { |j| j.created_at }.reverse
+          jobs = Jobs.filtered_jobs(enactor)
+        else 
+          jobs = []
         end
+        
+        jobs.concat Jobs.open_requests(enactor)
+        jobs = jobs.uniq.sort_by { |j| j.created_at }.reverse
         
         jobs.map { |j| {
             id: j.id,
