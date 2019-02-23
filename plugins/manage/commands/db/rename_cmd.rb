@@ -23,7 +23,12 @@ module AresMUSH
             return
           end
         
-          name_validation_msg = model.class.check_name(self.name, model)
+          if (model.class == Character)
+            name_validation_msg = model.class.check_name(self.name, model)
+          else
+            name_validation_msg = model.class.check_name(self.name)
+          end
+          
           if (name_validation_msg)
             client.emit_failure(name_validation_msg)
             return
