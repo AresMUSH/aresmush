@@ -17,6 +17,8 @@ module AresMUSH
         
         if (char.login_token_expired?)
           char.set_login_token
+        else
+          char.extend_login_token
         end
         
         {
