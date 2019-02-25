@@ -235,3 +235,12 @@ spells:
     is_revive: false
     is_stun: false
     roll: true
+  Massive Telekinetic Barrier:
+    name: 'Massive Telekinetic Barrier'
+    level: 8
+    school: Will
+    desc: An invisible, protective sphere is created in a 50 yard radius from the caster in all directions. Anything that attempts to cross the spell's boundary is deflected and the caster can open and close doorways through the barrier at will.
+    target_optional: false
+    is_revive: false
+    is_stun: false
+    roll: true
