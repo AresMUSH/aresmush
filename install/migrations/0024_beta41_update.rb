@@ -43,15 +43,20 @@ module AresMUSH
         end
         BbsPost.all.each do |post|
           post.readers.each do |reader|
+            next if !reader
             Forum.mark_read(post, reader)
           end
           post.readers.replace []
         end
         Job.all.each do |job|
           job.readers.each do |reader|
+            next if !reader
             Jobs.mark_read(job, reader)
           end
           job.readers.replace []
+        end
+        Scene.all.each do |scene|
+          scene.readers.replace []
         end
       end
     end

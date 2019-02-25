@@ -13,5 +13,5 @@ en:
         max_upload_kb: "Max file size is %{kb}."
         config_error: "There was a problem loading your config YAML for %{file}.  See http://aresmush.com/tutorials for troubleshooting help: %{error}"
         tinker_error: "There was a problem with the tinker code: %{error}"
-        redeploying_website: "Redeploying web portal.  This may take a couple minutes."
-        portal_deployed: "Web portal deployed: %{output}"
+        redeploying_website: "Redeploying web portal.  This may take a couple minutes.  You'll see a message when it's done."
+        portal_deployed: "Web portal deployed: %{output}%RDone!"
