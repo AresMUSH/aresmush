@@ -28,7 +28,8 @@ module AresMUSH
           @char = double
           allow(Global).to receive(:read_config).with("fs3skills", "max_points_on_attrs") { 14 }
           allow(Global).to receive(:read_config).with("fs3skills", "max_points_on_action") { 10 }
-          allow(Global).to receive(:read_config).with("fs3skills", "dots_beyond_chargen_max") { 1 }
+          allow(Global).to receive(:read_config).with("fs3skills", "attr_dots_beyond_chargen_max") { 1 }
+          allow(Global).to receive(:read_config).with("fs3skills", "action_dots_beyond_chargen_max") { 2 }
           allow(FS3Skills).to receive(:get_ability_type).with("Firearms") { :action }
         end
         
@@ -39,7 +40,7 @@ module AresMUSH
         
         it "should return false if char is at max in action already" do
           expect(FS3Skills).to receive(:xp_needed).with("Firearms", 4) { 4 }
-          allow(FS3Skills::AbilityPointCounter).to receive(:points_on_action).with(@char) { 11 }
+          allow(FS3Skills::AbilityPointCounter).to receive(:points_on_action).with(@char) { 12 }
           expect(FS3Skills.check_can_learn(@char, "Firearms", 4)).to eq "fs3skills.max_ability_points_reached"
         end
         
