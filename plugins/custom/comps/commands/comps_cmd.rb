@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 module AresMUSH
   module Custom
     class CompsCmd
@@ -28,3 +29,35 @@ module AresMUSH
     end
   end
 end
+=======
+module AresMUSH
+  module Custom
+    class CompsCmd
+      include CommandHandler
+      attr_accessor :target_name
+
+      def parse_args
+         self.target_name = cmd.args ? titlecase_arg(cmd.args) : enactor_name
+      end
+
+      def handle
+        ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
+         comps = model.comps.to_a.reverse
+         paginator = Paginator.paginate(comps, cmd.page, 5)
+
+         if (paginator.out_of_bounds?)
+           client.emit_failure paginator.out_of_bounds_msg
+         else
+           template = CompsTemplate.new(model, paginator)
+           client.emit template.render
+          end
+       end
+
+
+
+      end
+
+    end
+  end
+end
+>>>>>>> 46fa0d75499f1ee394365d6780cfea5e50e1af96

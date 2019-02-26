@@ -14,7 +14,7 @@ module AresMUSH
     def self.format_output_for_html(output)
       return nil if !output
         
-      AresMUSH::MushFormatter.format output, false
+      AresMUSH::MushFormatter.format output, true
     end
       
     # Takes something from a text box and replaces carriage returns with %r's for MUSH.

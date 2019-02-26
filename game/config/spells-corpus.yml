@@ -23,6 +23,17 @@ spells:
     is_stun: false
     roll: true
     is_potion: true
+  Minor Allergy:
+    name: 'Minor Allergy'
+    level: 1
+    school: Corpus
+    desc: Cause a target to have a mild allergic reaction such as sneezing, a small itchy spot on the skin, mildly itchy eyes, or minor congestion. Treatment with antihistamines or other medicines that affect symptoms are effective against this spell.
+    target_optional: true
+    target_num: 1
+    is_revive: false
+    is_stun: false
+    roll: true
+    is_potion: true
   #Level 2
   "Touch Of Enfeeblement":
     name: 'Touch of Enfeeblement'
@@ -219,6 +230,17 @@ spells:
     is_stun: false
     roll: false
     is_res: false
+  Incorporeal:
+    level: 7
+    school: Corpus
+    desc: The caster temporarily transforms their physical body into an incorporeal state. For the spell's duration, the caster can enter or pass through solid objects including lifeforms as easily as one might pass through air. While incorporeal, the caster cannot breathe, effectively limiting their ability to remain incorporeal or act according to how long they can hold their breath. Base speed and mode of movement remain the same.
+    target_optional: false
+    target_num: 1
+    is_revive: false
+    is_stun: false
+    roll: false
+    is_res: false
+    defense_mod: 20
   Energize Dimensional Anchor (Corpus):
     name: 'Dimensional Anchor'
     level: 7
@@ -229,3 +251,12 @@ spells:
     is_stun: false
     roll: true
   #Level 8
+  Meld:
+    name: Meld
+    level: 8
+    school: Corpus
+    desc: The caster melds their physical form with an inanimate object with the same or greater mass as their body. While melded, the caster can see and hear what transpires around them, but cannot effect it in any way. They cannot cast magic, speak, or move, and are only detectable through appropriate magic means such as Spirit or Corpus magic.
+    target_optional: false
+    is_revive: false
+    is_stun: false
+    roll: true

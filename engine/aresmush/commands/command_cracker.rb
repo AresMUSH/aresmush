@@ -1,4 +1,5 @@
 module AresMUSH
+  # @engineinternal true
   class CommandCracker
     
     # Decodes commands in the standard form:

@@ -1,0 +1,1 @@
+engine/aresmush/models/ares_model.rb engine/aresmush/**/*.rb plugins/*/public/*.rb -e yard_extensions.rb --query "@engineinternal.text != 'true'" --tag engineinternal

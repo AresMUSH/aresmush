@@ -1,5 +1,6 @@
 module AresMUSH
 
+  # @engineinternal true
   class Connection < EventMachine::Connection
     attr_accessor :window_width, :window_height
     attr_reader :ip_addr, :client

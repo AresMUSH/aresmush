@@ -58,6 +58,7 @@ module AresMUSH
       end
     end   
     
+    # @engineinternal true
     def validate_config_file(file)
       begin
         AresMUSH::YamlExtensions.yaml_hash(file)
@@ -66,6 +67,7 @@ module AresMUSH
       end
     end
     
+    # @engineinternal true
     def load_config_file(file)
       Global.logger.debug "Loading config from #{file}."
       begin 

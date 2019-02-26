@@ -5,6 +5,9 @@ en:
       updated_weapon_specials: "You have updated %{target}'s persistent weapon specials to %{specials}."
       luck_requested: "You have requested luck. Check your requests for updates."
       plot_proposed: "You have proposed your plot. Check your requests for updates and responses."
+      comps_title: "%{name}'S COMPS"
+      left_comp: "You have left a comp for %{name}."
+      has_left_comp: "%xc%{from} has left you a comp. Type `comps` to see it.%xn"
         # ----------------------------
         # SCHOOLS
         # ----------------------------
@@ -45,6 +48,7 @@ en:
         # ----------------------------
         # SPELL CASTING
         # ----------------------------
+      cant_cast_on_web: "Sorry, you can't cast that spell on the web portal."
       cant_force_cast: "You can't force someone to cast a spell outside of combat."
       already_cast: "%xr You have already cast a spell or used a potion this turn. Wait until a new turn starts to take an action.%xn"
       spell_ko: "You cannot cast a spell while Knocked Out."

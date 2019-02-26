@@ -60,6 +60,7 @@ jobs:
     job/mine: job/filter mine
     job/active: job/filter active
     job/deletecomment: job/deletereply
+    job/all: job/filter all
   status:
     NEW:
       color: "%xg"
