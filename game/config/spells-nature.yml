@@ -30,6 +30,15 @@ spells:
     is_revive: false
     is_stun: false
     roll: true
+  Ripen:
+    name: Ripen
+    level: 2
+    school: Nature
+    desc: Encourage an already existing berry, nut, or fruit-bearing plant to produce a small amount of edible food, no more than a handful, even out of season.
+    target_optional: false
+    is_revive: false
+    is_stun: false
+    roll: true
   Natural Defenses Crocodile:
     name: Natural Defenses Crocodile
     level: 2
@@ -107,6 +116,27 @@ spells:
     is_revive: false
     is_stun: false
     roll: true
+  Vigor Surge:
+    name: Vigor Surge
+    level: 4
+    school: Nature
+    desc: The caster temporarily increases the vigor of an animal of any size. For an hour, the animal has more energy, gains a minor amount of strength, and recovers more quickly from exhaustion or minor injury. With repeated use over weeks, the animal's health will improve permanently within natural limits. The spell cannot prevent injuries or provide any healing to existing injuries.
+    target_optional: false
+    target_num: 0
+    is_revive: false
+    is_stun: false
+    roll: true
+  Heal Animal:
+    name: 'Heal Animal'
+    level: 4
+    school: Nature
+    desc: Provide a middling amount of healing magic to a non-sapient target's most severe treatable wound, speeding their healing by up to nearly a week and restoring some of their vigor.
+    target_optional: true
+    target_num: 1
+    is_revive: false
+    is_stun: false
+    heal_points: 7
+    is_potion: false
   # Half Shift:
   #   name: Half Shift
   #   level: 4
@@ -159,6 +189,15 @@ spells:
     is_stun: false
     roll: true
     armor: Moth
+  Germinate:
+    name: Germinate
+    level: 5
+    school: Nature
+    desc: Grow any kind of plant from a seed that will reach maturity within a matter of minutes. It may bloom, but will not produce fruit without either more time or magic. There must be sufficient and appropriate resources for the plant to grow.
+    target_optional: false
+    is_revive: false
+    is_stun: false
+    roll: true
   #Level 6
   "Familiar (Nature)":
     name: Familiar
@@ -180,6 +219,15 @@ spells:
     roll: true
     defense_mod: 1
     rounds: 100
+  Mass Calm Animal:
+    name: Mass Calm Animal
+    level: 6
+    school: Nature
+    desc: Render up to six animals docile and harmless. Acts of aggression towards the animal negate the spell.
+    target_optional: false
+    is_revive: false
+    is_stun: false
+    roll: true
   Poison Puffs:
     name: Poison Puffs
     level: 6
@@ -200,7 +248,15 @@ spells:
     is_revive: false
     is_stun: false
     roll: true
-
+  Druid's Wood:
+    name: Druid's Wood
+    level: 7
+    school: Nature
+    desc: The caster may summon a forest, no larger than 600 square yards, populated with the trees, shrubs, and grasses local to the area. The trees may not exceed three hundred feet in height. The plants must have ample space and soil to grow. The plants may be grown in any pattern the caster chooses.
+    target_optional: false
+    is_revive: false
+    is_stun: false
+    roll: true
   Greater Wild Shape:
     name: Greater Wild Shape
     level: 7

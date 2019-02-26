@@ -61,7 +61,7 @@ module AresMUSH
       
     
   
-      puts "\nGreat.  Now we'll gather some server information.  See http://aresmush.com/tutorials/install/install-game for help with these options."
+      puts "\nGreat.  Now we'll gather some server information.  See http://aresmush.com/tutorials/install/install-game.html for help with these options."
   
       server_host = get_required_field "Server hostname (ex: yourmush.aresmush.com or an IP)"
       server_port = get_optional_field "Server telnet port", "4201"
@@ -163,7 +163,7 @@ module AresMUSH
         puts "!!!!!!!"
         puts "Your Ares web portal directory can't be found, or there's a problem accessing it."
         puts "In order to set up your search engine, you'll need to manually edit the robots file."
-        puts "See https://aresmush.com/tutorials/config/website/ for details."
+        puts "See https://aresmush.com/tutorials/config/website.html for details."
         puts "!!!!!!!"
       end
      

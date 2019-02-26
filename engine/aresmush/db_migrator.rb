@@ -1,4 +1,5 @@
 module AresMUSH
+  # @engineinternal true
   class DatabaseMigrator
     attr_accessor :messages
     
