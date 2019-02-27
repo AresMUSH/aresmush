@@ -176,8 +176,7 @@ weather:
       mountains.
     mountain-misty: The clouds are thick and low. Tiny droplets of moisture cling
       to everything.
-    mountain-overcast: The sky is thick and gray with clouds that hide the sun and
-      threaten worse weather.
+    mountain-overcast: The sky is thick and gray with clouds that threaten worse weather.
     mountain-drizzling: A steady, light mist drizzles downward, somewhere between
       a heavy fog and a proper rain.
     mountain-raining: Rain falls steadily from an overcast sky.
