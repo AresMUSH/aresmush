@@ -22,6 +22,7 @@ en:
         patient_must_pass: "Patients must pass in order to be treated."
         cant_treat_while_fighting: "%{healer} attempts to treat %{patient} but they're moving around too much."
         cant_treat_self: "You can't treat yourself!"
+        cant_treat_npc: "You can't treat an NPC. Sorry!"
         no_treatable_wounds: "%{healer} attempts to treat %{patient}. They have no treatable wounds, but they are no longer dying."
         target_has_no_treatable_wounds: "%{name} has no treatable wounds, but they are no longer dying."
         use_combat_treat_instead: "You cannot use this command in combat.  Use combat/treat instead."
