@@ -12,15 +12,19 @@ magic-items:
     name: Rosewing
     desc: 'An 8 3/4" long magic wand made of Oak with inlaid Rose Quartz detailing and a Pink Sapphire hilt ornament carved into a sharp many-pointed star. All spells cast with this magic device manifest with benign twinkling specks of blush-colored light. Gives +1 to spellcasting.'
     spell_mod: 1
+    spell: nil
   Soul Stone Ring:
     name: Soul Stone Ring
     desc: A pair of thick bronze rings each set with a single round opalescent stone. The stone changes color to indicate shifts in the emotional status of whoever sports its mate. When worn, the magic infused in the object allows the user to experience the other wearer's condition for his or her self. An excellent way to keep tabs on allies, loved ones, and mortal enemies.
+    spell: nil
   Skofnung:
     name: Skofnung
     desc: Ragnar's magical sword with a soul inside.
+    spell: nil
   Konvaskr:
     name: Konvaskr
     desc: A flying ship that really needs a better desc.
+    spell: nil
   Horn Of Uktena:
     name: Horn Of Uktena
     desc: A bit of worn horn that allows the bearer to cast %xBPhotosynthesis%xn.
@@ -36,6 +40,7 @@ magic-items:
   Band Of The Unseen:
     name: Band of the Unseen
     desc: A slender golden armband, the magical item is embossed with a depiction of the antagonist god Set. He is represented traditionally here. The only variation is the brightly colored blindfold that's been tied over his eyes. When worn in the open or beneath one's clothes, the armband acts as a blockade against intrusions from the Spirit school by those who would do the wearer ill. Magic users with friendly or sincerely good intentions are not protected against.
+    spell: nil
   Bane of Elegast:
     name: Bane of Elegast
     desc: Crafted to hide from the legendary king and warlord, the broken chain allows anyone who carries it to cast Invisible, the Level 5 Fire spell. It currently resides in Silver's stomach after he swallowed it and fled retribution from the queen of Immeasurable Autumn, a faerie kingdom
