@@ -18,13 +18,14 @@ module AresMUSH
       
       def handle
         Jobs.with_a_job(enactor, client, self.number) do |job|  
-          Mail.send_mail(self.names, t('jobs.mail_job_title', :title => job.title), self.message, client, enactor)
           display_names = self.names.join(" ")
-          
-          # Create an admin-only comment for the mail   
-          Jobs.comment(job, enactor, t('jobs.mail_comment', :names => display_names, :message => self.message), true)
-          
-          client.emit_success t('jobs.mail_sent', :names => display_names)
+          mail_sent = Mail.send_mail(self.names, t('jobs.mail_job_title', :title => job.title), self.message, client, enactor)
+
+          if (mail_sent)
+            # Create an admin-only comment for the mail   
+            Jobs.comment(job, enactor, t('jobs.mail_comment', :names => display_names, :message => self.message), true)
+            client.emit_success t('jobs.mail_sent', :names => display_names)
+          end
         end
       end
     end
