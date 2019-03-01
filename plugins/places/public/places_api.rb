@@ -18,7 +18,7 @@ module AresMUSH
     def self.place_suffix(same_place)
       color = Global.read_config("places", "same_place_color")
       end_marker = Global.read_config("places", "end_marker") || ']'
-      same_place ? "#{color}+#{end_marker}%xn" : "-#{end_marker}%xn"
+      same_place ? "#{color}+#{end_marker}%xn" : "%xh%xx-#{end_marker}%xn"
     end
     
       

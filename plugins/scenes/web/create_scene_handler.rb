@@ -67,9 +67,10 @@ module AresMUSH
           scene.participants.each do |char|
             Scenes.handle_scene_participation_achievement(char)
           end
+        else
+          Scenes.create_scene_temproom(scene)
         end
       
-        Scenes.create_scene_temproom(scene)
         
         { id: scene.id }
       end
