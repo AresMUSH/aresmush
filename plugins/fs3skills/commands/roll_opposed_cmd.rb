@@ -10,8 +10,8 @@ module AresMUSH
         args = cmd.parse_args( /(?<name1>[^\/]+)\/(?<str1>.+) vs (?<name2>[^\/]+)?\/?(?<str2>.+)/ )
         self.roll_str1 = titlecase_arg(args.str1)
         self.roll_str2 = titlecase_arg(args.str2)
-        self.name1 = trim_arg(args.name1)
-        self.name2 = trim_arg(args.name2)
+        self.name1 = titlecase_arg(args.name1)
+        self.name2 = titlecase_arg(args.name2)
       end
 
       def required_args
