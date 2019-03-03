@@ -7,7 +7,6 @@ module AresMUSH
         if Cron.is_cron_match?(config, event.time)
           Global.logger.debug "Empty scene cleanup."
           clear_rooms
-          clear_watchers
         end
         
         if (Global.read_config("scenes", "delete_unshared_scenes"))
@@ -26,11 +25,6 @@ module AresMUSH
              post_trending_scenes
           end
         end
-        
-      end
-
-      def clear_watchers
-        Scene.all.each { |s| s.watchers.replace([]) }
       end
       
       def clear_rooms
