@@ -37,5 +37,13 @@ module AresMUSH
       time_format = Global.read_config("datetime", "time_format")
       "#{date_format} #{time_format}"
     end
+    
+    def self.server_timestr(time = Time.now)
+      timezone = Global.read_config("datetime", "server_timezone")
+      format = Global.read_config("datetime", "time_format")
+      formatted_time = l(time, format: format)
+      
+      "#{formatted_time.strip} #{timezone}"
+    end
   end
 end

@@ -35,6 +35,7 @@ module AresMUSH
           left_sidebar: Global.read_config('website', 'left_sidebar'),
           top_navbar: Global.read_config('website', 'top_navbar'),
           registration_required: Global.read_config("login", "portal_requires_registration"),
+          server_time: OOCTime.server_timestr,
           job_activity: job_activity,
           jobs_admin: Jobs.can_access_jobs?(enactor),
           token_expiry_warning: token_expiry_warning
