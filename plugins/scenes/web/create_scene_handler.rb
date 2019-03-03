@@ -43,7 +43,7 @@ module AresMUSH
         participant_names.each do |p|
           participant = Character.find_one_by_name(p.strip)
           if (participant)
-            scene.participants.add participant
+            Scenes.add_participant(scene, participant)
           end
         end
       
