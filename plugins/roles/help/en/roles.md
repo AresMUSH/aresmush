@@ -6,7 +6,7 @@ summary: Managing roles.
 
 > **These commands require the Admin role.**
 
-Game admins can manage what roles are available in the game and what people have those roles.  Roles in turn grant permissions.  See the [roles tutorial](http://aresmush.com/tutorials/manage/roles) for more details about how to use roles.
+Game admins can manage what roles are available in the game and what people have those roles.  Roles in turn grant permissions.  See the [roles tutorial](http://aresmush.com/tutorials/manage/roles.html) for more details about how to use roles.
 
 **Tip:**  You can't assign individual permissions to characters.  Permissions are assigned to roles, which in turn are assigned to characters.
 
