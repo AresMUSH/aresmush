@@ -1,297 +1,516 @@
----
 spells:
-# Nature
-  #Level 1
-  Create Bloom:
-    name: Create Bloom
-    level: 1
-    school: Nature
-    desc: Create Bloom
-    target_optional: false
-    is_revive: false
-    is_stun: false
-    roll: true
   Beckon Tiny Animal:
-    name: Beckon Tiny Animal
+
+    available: true
+    casting_time: 1 round
+    desc: One animal of diminutive size within range is compelled to approach the
+      caster and linger nearby for the duration of the spell. The target retains all
+      animal instincts and any acts of aggression towards it negate the spell.
+    duration: 10 minutes
+    is_revive: false
+    is_stun: false
     level: 1
+    line_of_sight: false
+    multi_target: false
+    name: Beckon Tiny Animal
+    notes: ''
+    range: Short
+    roll: true
     school: Nature
-    desc: One animal of diminutive size within range is compelled to approach the caster and linger nearby for the duration of the spell. The target retains all animal instincts and any acts of aggression towards it negate the spell.
     target_optional: false
+  Create Bloom:
+
+    available: true
+    casting_time: 1 round
+    desc: Cause a flowering plant to grow and bloom from a seed.
+    duration: 10 minutes
     is_revive: false
     is_stun: false
+    level: 1
+    line_of_sight: true
+    multi_target: false
+    name: Create Bloom
+    notes: ''
+    range: Short
     roll: true
-  #Level 2
-  Shape Flora:
-    name: Shape Flora
-    level: 2
     school: Nature
-    desc: Shape Flora
     target_optional: false
-    is_revive: false
-    is_stun: false
-    roll: true
-  Ripen:
-    name: Ripen
-    level: 2
-    school: Nature
-    desc: Encourage an already existing berry, nut, or fruit-bearing plant to produce a small amount of edible food, no more than a handful, even out of season.
-    target_optional: false
-    is_revive: false
-    is_stun: false
-    roll: true
   Natural Defenses Crocodile:
-    name: Natural Defenses Crocodile
-    level: 2
-    school: Nature
+    armor: Crocodile
     desc: Natural Defenses Crocodile
-    target_optional: false
     is_revive: false
     is_stun: false
-    armor: Crocodile
-  #Level 3
-  Entangle:
-    name: Entangle
-    level: 3
+    level: 2
+    name: Natural Defenses Crocodile
     school: Nature
-    desc: Entangle
+    target_optional: false
+  Ripen:
+
+    available: false
+    casting_time: 1 round
+    desc: Encourage an already existing berry, nut, or fruit-bearing plant to produce
+      a small amount of edible food, no more than a handful, even out of season.
+
+    is_revive: false
+    is_stun: false
+    level: 2
+    line_of_sight: true
+    multi_target: false
+    name: Ripen
+    notes: ''
+    range: Touch
+    roll: true
+    school: Nature
+    target_optional: false
+  Shape Flora:
+    area: 5 cubic feet
+    available: true
+    casting_time: 1 round
+    desc: Cause pre-existing flexible vegetation such as vines and grasses to form
+      into simple non-weaponized shapes that animate at your direction. Can include
+      accelerating growth by up to 30 days in the span of a few seconds.
+    duration: 1 hour
+    is_revive: false
+    is_stun: false
+    level: 2
+    line_of_sight: true
+    multi_target: false
+    name: Shape Flora
+    notes: ''
+    range: Short
+    roll: true
+    school: Nature
+    target_optional: false
+  Calm Animal:
+
+    available: true
+    casting_time: 1 round
+    desc: Render an animal docile and harmless. Acts of aggression towards the animal
+      negate the spell.
+    duration: 1 hour
+    is_revive: false
+    is_stun: false
+    level: 3
+    line_of_sight: true
+    multi_target: false
+    name: Calm Animal
+    notes: ''
+    range: Short
+    roll: true
+    school: Nature
+    target_num: 1
     target_optional: true
+  Entangle:
+
+    available: true
+    casting_time: 1 round
+    desc: The caster immobolizes one target with vines anchored to the ground or other
+      structural surroundings.
+
     fs3_attack: true
     is_revive: false
     is_stun: true
+    level: 3
+    line_of_sight: true
+    multi_target: false
+    name: Entangle
+    notes: ''
+    range: Short
+    school: Nature
+    target_optional: true
     weapon: Stun (Nature)
   Swarm:
-    name: Swarm
-    level: 3
-    school: Nature
-    desc: Swarm
-    target_optional: true
-    target_num: 1
+
+    available: true
+    casting_time: 1 round
+    desc: 'Control a group of angry insects, encouraging them to attack a single enemy.
+      Overcome, the enemy is unable to take any action this round. %R%R
+
+
+      Behavior of swarm after the caster''s control dissipates is subject to GM discretion.'
+
     fs3_attack: true
     is_revive: false
     is_stun: true
+    level: 3
+    line_of_sight: false
+    multi_target: false
+    name: Swarm
+    notes: Configured without the damage aspect.
+    range: Short
+    school: Nature
+    target_num: 1
+    target_optional: true
     weapon: Stun (Nature)
   Thorn Growth:
-    name: Thorn Growth
-    level: 3
-    school: Nature
-    desc: Thorn Growth
-    target_optional: true
+    area: 10 yard radius
+    available: true
+    casting_time: 1 round
+    desc: Ground-covering vegetation grows sharp thorns in an area you can see, doing
+      damage to up to 3 targets.
+
     fs3_attack: true
     is_revive: false
     is_stun: false
-    weapon: Thorn Growth
-  Calm Animal:
-    name: Calm Animal
     level: 3
+    line_of_sight: true
+    multi_target: true
+    name: Thorn Growth
+    notes: ''
+    range: Short
     school: Nature
-    desc: Calm Animal
     target_optional: true
-    target_num: 1
+    weapon: Thorn Growth
+  Acid Spit:
+
+    available: true
+    casting_time: 1 round
+    desc: The caster spits out a stream of corrosive acid at a target, dealing damage.
+
+    fs3_attack: true
     is_revive: false
     is_stun: false
-    roll: true
-  #Level 4 Nature
-  "Potions (Nature)":
-    name: 'Potions'
     level: 4
+    line_of_sight: true
+    multi_target: false
+    name: Acid Spit
+    notes: ''
+    range: Short
     school: Nature
-    desc: Potions desc
-  Photosynthesis:
-    name: Photosynthesis
-    level: 4
-    school: Nature
-    desc: Photosynthesis
-    target_optional: false
-    is_revive: false
-    is_stun: false
-    heal_points: 7
-    is_potion: true
+    target_optional: true
+    weapon: Acid Spit
   Animal Friendship:
+
+    available: true
+    casting_time: 1 round
+    desc: 'The caster may befriend and converse openly with members of their favored
+      genus for a short time. Animals react favorably to the caster, but maintain
+      their animal instincts and intelligence. '
+    duration: 3 hours
+    is_revive: false
+    is_stun: false
+    level: 4
+    line_of_sight: false
+    multi_target: false
     name: Calm Animal
-    level: 4
+    notes: ''
+    range: Short
+    roll: true
     school: Nature
-    desc: Calm Animal
-    target_optional: true
     target_num: 1
+    target_optional: true
+  Half Shift (Jenu):
+    armor: Jenu
+    desc: Half Shift (Jenu)
     is_revive: false
     is_stun: false
-    roll: true
-  Vigor Surge:
-    name: Vigor Surge
     level: 4
+    name: Half Shift (Jenu)
     school: Nature
-    desc: The caster temporarily increases the vigor of an animal of any size. For an hour, the animal has more energy, gains a minor amount of strength, and recovers more quickly from exhaustion or minor injury. With repeated use over weeks, the animal's health will improve permanently within natural limits. The spell cannot prevent injuries or provide any healing to existing injuries.
     target_optional: false
-    target_num: 0
-    is_revive: false
-    is_stun: false
-    roll: true
+    weapon: Jenu
   Heal Animal:
-    name: 'Heal Animal'
-    level: 4
-    school: Nature
-    desc: Provide a middling amount of healing magic to a non-sapient target's most severe treatable wound, speeding their healing by up to nearly a week and restoring some of their vigor.
-    target_optional: true
-    target_num: 1
-    is_revive: false
-    is_stun: false
+
+    available: false
+    casting_time: 1 round
+    desc: Provide a middling amount of healing magic to a non-sapient target's most
+      severe treatable wound, speeding their healing by up to nearly a week and restoring
+      some of their vigor.
+
     heal_points: 7
     is_potion: false
-  # Half Shift:
-  #   name: Half Shift
-  #   level: 4
-  #   school: Nature
-  #   desc: Calm Animal
-  #   target_optional: false
-  #   is_revive: false
-  #   is_stun: false
-  #   roll: true
-  'Half Shift (Jenu)':
-    name: Half Shift (Jenu)
-    level: 4
-    school: Nature
-    desc: Half Shift (Jenu)
-    target_optional: false
     is_revive: false
     is_stun: false
-    weapon: Jenu
-    armor: Jenu
-  Shield Of The Forest:
-    name: Shield of the Forest
     level: 4
+    line_of_sight: true
+    multi_target: false
+    name: Heal Animal
+    notes: ''
+    range: Short
     school: Nature
-    desc: Shield of the Forest
-    target_optional: true
     target_num: 1
-    is_revive: false
-    is_stun: false
-    stance: cover
-    rounds: 1
-  Acid Spit:
-    name: Acid Spit
-    level: 4
-    school: Nature
-    desc: Acid Spit
     target_optional: true
-    fs3_attack: true
-    is_revive: false
-    is_stun: false
-    weapon: Acid Spit
+  Photosynthesis:
 
-  #Level 5
-  Wild Shape Moth:
-    name: Wild Shape
-    level: 5
-    school: Nature
-    desc: Wild Shape desc
-    target_optional: false
+    available: true
+    casting_time: 1 round
+    desc: The cells in the caster's body are charged by light, allowing them to speed
+      their healing by up to nearly a week and restore some of their vigor. Provides
+      a middling amount of healing magic to the caster's most severe treatable wound.
+
+    heal_points: 7
+    is_potion: true
     is_revive: false
     is_stun: false
-    roll: true
-    armor: Moth
-  Germinate:
-    name: Germinate
-    level: 5
+    level: 4
+    line_of_sight: false
+    multi_target: false
+    name: Photosynthesis
+    notes: Needs description update to match other heals. Should probably make it
+      so it doesn't require a target in the code.
+    range: Self
     school: Nature
-    desc: Grow any kind of plant from a seed that will reach maturity within a matter of minutes. It may bloom, but will not produce fruit without either more time or magic. There must be sufficient and appropriate resources for the plant to grow.
     target_optional: false
+  Potions (Nature):
+    desc: Potions desc
+    level: 4
+    name: Potions
+    school: Nature
+  Shield Of The Forest:
+
+    available: false
+    casting_time: 1 round
+    desc: 'Swiftly grow a barrier that protects the caster or their target by placing
+      them in <a href="https://www.aresmush.com/fs3/fs3-3/combat/#stance" style="color:
+      #A7C6DA" target="_blank">cover</a> for one round.'
+    duration: 1 round
     is_revive: false
     is_stun: false
-    roll: true
-  #Level 6
-  "Familiar (Nature)":
-    name: Familiar
-    level: 6
+    level: 4
+    line_of_sight: true
+    multi_target: false
+    name: Shield of the Forest
+    notes: ''
+    range: Short
+    rounds: 1
     school: Nature
-    desc: Familiar  desc
-    target_optional: false
-    is_revive: false
-    is_stun: false
-    roll: true
-  Winged Flight:
-    name: Winged Flight
-    level: 6
-    school: Nature
-    desc: Winged Flight desc
-    target_optional: false
-    is_revive: false
-    is_stun: false
-    roll: true
-    defense_mod: 1
-    rounds: 100
-  Mass Calm Animal:
-    name: Mass Calm Animal
-    level: 6
-    school: Nature
-    desc: Render up to six animals docile and harmless. Acts of aggression towards the animal negate the spell.
-    target_optional: false
-    is_revive: false
-    is_stun: false
-    roll: true
-  Poison Puffs:
-    name: Poison Puffs
-    level: 6
-    school: Nature
-    desc: Poison Puffs desc
+    stance: cover
+    target_num: 1
     target_optional: true
+  Vigor Surge:
+
+    available: false
+    casting_time: 1 round
+    desc: The caster temporarily increases the vigor of an animal of any size. For
+      an hour, the animal has more energy, gains a minor amount of strength, and recovers
+      more quickly from exhaustion or minor injury. With repeated use over weeks,
+      the animal's health will improve permanently within natural limits. The spell
+      cannot prevent injuries or provide any healing to existing injuries.
+
+    is_revive: false
+    is_stun: false
+    level: 4
+    line_of_sight: true
+    multi_target: false
+    name: Vigor Surge
+    notes: ''
+    range: Touch
+    roll: true
+    school: Nature
+    target_num: 0
+    target_optional: false
+  Germinate:
+
+    available: false
+    casting_time: 1 round
+    desc: Grow any kind of plant from a seed that will reach maturity within a matter
+      of minutes. It may bloom, but will not produce fruit without either more time
+      or magic. There must be sufficient and appropriate resources for the plant to
+      grow.
+
+    is_revive: false
+    is_stun: false
+    level: 5
+    line_of_sight: true
+    multi_target: false
+    name: Germinate
+    notes: ''
+    range: Short
+    roll: true
+    school: Nature
+    target_optional: false
+  Wild Shape Moth:
+    armor: Moth
+    desc: Wild Shape desc
+    is_revive: false
+    is_stun: false
+    level: 5
+    name: Wild Shape
+    roll: true
+    school: Nature
+    target_optional: false
+  Familiar (Nature):
+    desc: Familiar  desc
+    is_revive: false
+    is_stun: false
+    level: 6
+    name: Familiar
+    roll: true
+    school: Nature
+    target_optional: false
+  Mass Calm Animal:
+
+    available: false
+    casting_time: 1 round
+    desc: Render up to six animals docile and harmless. Acts of aggression towards
+      the animal negate the spell.
+
+    is_revive: false
+    is_stun: false
+    level: 6
+    line_of_sight: true
+    multi_target: false
+    name: Mass Calm Animal
+    notes: ''
+    range: Short
+    roll: true
+    school: Nature
+    target_optional: false
+  Poison Puffs:
+    area: 10 yard radius
+    available: false
+    casting_time: 1 round
+    desc: Grow an area of mushrooms in an area that you can see. As they grow, they
+      release a poisonous gas into the surrounding air, affecting up to 3 targets.
+    duration: 1 round
     fs3_attack: true
     is_revive: false
     is_stun: false
-    weapon: Poison Puffs
-  #Level 7
-  Sense Animals:
-    name: Sense Animals
-    level: 7
+    level: 6
+    line_of_sight: true
+    multi_target: true
+    name: Poison Puffs
+    notes: ''
+    range: Long
     school: Nature
-    desc: Nature Clarity desc
-    target_optional: false
-    is_revive: false
-    is_stun: false
-    roll: true
-  Druid's Wood:
-    name: Druid's Wood
-    level: 7
-    school: Nature
-    desc: The caster may summon a forest, no larger than 600 square yards, populated with the trees, shrubs, and grasses local to the area. The trees may not exceed three hundred feet in height. The plants must have ample space and soil to grow. The plants may be grown in any pattern the caster chooses.
-    target_optional: false
-    is_revive: false
-    is_stun: false
-    roll: true
-  Greater Wild Shape:
-    name: Greater Wild Shape
-    level: 7
-    school: Nature
-    desc: Greater Wild Shape desc
-    target_optional: false
-    is_revive: false
-    is_stun: false
-    roll: true
-  Energize Dimensional Anchor (Nature):
-    name: 'Dimensional Anchor'
-    level: 7
-    school: Nature
-    desc: Dimensional Anchor desc
-    target_optional: false
-    is_revive: false
-    is_stun: false
-    roll: true
-  #Level 8
-  Massive Thorn Wall:
-    name: Massive Thorn Wall
-    level: 8
-    school: Nature
-    desc: Massive Thorn Wall desc
-    target_optional: false
-    is_revive: false
-    is_stun: false
-    roll: true
-  Baleful Polymorph:
-    name: Baleful Polymorph
-    level: 8
-    school: Nature
-    desc: Baleful Polymorph desc
     target_optional: true
-    target_num: 1
+    weapon: Poison Puffs
+  Winged Flight:
+
+    available: false
+    casting_time: 1 round
+    defense_mod: 1
+    desc: 'The caster grows wings large enough to carry them in flight.The wings allow
+      them to travel at a speed of up to 65 mph. %R%R
+
+      Practiced casters can obtain excellent maneuverability with their wings, making
+      it easy for them to engage in combat and giving them an edge to their ability
+      to dodge.%R%R
+
+      Should the spell duration expire while the caster is still aloft, they plummet
+      to the ground.
+
+
+'
+    duration: 1 hour
     is_revive: false
     is_stun: false
+    level: 6
+    line_of_sight: false
+    multi_target: false
+    name: Winged Flight
+    notes: "Oh my god, so this and probably other spells require me to come up with
+      a way to keep some mods for more than a turn. \n\nActually, let's do armor for
+      that. Armor specials."
+    range: Self
     roll: true
+    rounds: 100
+    school: Nature
+    target_optional: false
+  Energize Dimensional Anchor (Nature):
+
+    available: true
+    casting_time: 2 minutes
+    desc: Provide necessary magical energy of the appropriate School to a Dimensional
+      Anchor spell, enabling the linked casters to permanently close an interdimensional
+      portal.
+
+    is_revive: false
+    is_stun: false
+    level: 7
+    line_of_sight: false
+    multi_target: false
+    name: Dimensional Anchor
+    notes: ''
+    range: Touch
+    roll: true
+    school: Nature
+    target_optional: false
+  Druid's Wood:
+
+    available: false
+    casting_time: 1 round
+    desc: The caster may summon a forest, no larger than 600 square yards, populated
+      with the trees, shrubs, and grasses local to the area. The trees may not exceed
+      three hundred feet in height. The plants must have ample space and soil to grow.
+      The plants may be grown in any pattern the caster chooses.
+
+    is_revive: false
+    is_stun: false
+    level: 7
+    line_of_sight: true
+    multi_target: false
+    name: Druid's Wood
+    notes: ''
+    range: Long
+    roll: true
+    school: Nature
+    target_optional: false
+  Greater Wild Shape:
+
+    available: true
+    casting_time: 1 round
+    desc: Caster chooses any alternate form from a specified animal family. They retain
+      the ability to cast spells and speak while in wild shape in addition to being
+      able to communicate with other animals of that family. They may revert back
+      to human form at will.
+    duration: 1 hour
+    is_revive: false
+    is_stun: false
+    level: 7
+    line_of_sight: false
+    multi_target: false
+    name: Greater Wild Shape
+    notes: ''
+    range: Self
+    roll: true
+    school: Nature
+    target_optional: false
+  Sense Animals:
+    desc: Nature Clarity desc
+    is_revive: false
+    is_stun: false
+    level: 7
+    name: Sense Animals
+    roll: true
+    school: Nature
+    target_optional: false
+  Baleful Polymorph:
+
+    available: true
+    casting_time: 1 round
+    desc: A single target, willing or unwilling, is permanently transformed into a
+      harmless animal or plant of caster's choosing and removed from battle. %R%RAt
+      GM discretion, 'Familiar' rules apply concerning the target's communication
+      capabilities such as empathy or telepathy.
+    duration: Permanent
+    is_revive: false
+    is_stun: false
+    level: 8
+    line_of_sight: true
+    multi_target: false
+    name: Baleful Polymorph
+    notes: ''
+    range: Short
+    roll: true
+    school: Nature
+    target_num: 1
+    target_optional: true
+  Massive Thorn Wall:
+    area: 1,000 yards long, 25 yards thick, 25 yards tall
+    available: false
+    casting_time: 1 round
+    desc: Create a massive wall of thorns. Can be created in any shape, and the caster
+      can open and close doorways through the wall at will.
+    duration: 24 hours
+    is_revive: false
+    is_stun: false
+    level: 8
+    line_of_sight: false
+    multi_target: false
+    name: Massive Thorn Wall
+    notes: ''
+    range: Long
+    roll: true
+    school: Nature
+    target_optional: false

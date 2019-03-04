@@ -1,262 +1,450 @@
----
 spells:
-# Corpus
-  #Level 1
-  "Breath Of Healing":
-    name: 'Breath of Healing'
-    level: 1
-    school: Corpus
-    desc: Breath of Healing desc
-    target_optional: true
-    is_revive: false
-    is_stun: false
+  Breath Of Healing:
+    available: true
+    casting_time: 1 round
+    desc: Provide a minute amount of healing magic to a target's most severe treatable
+      wound, speeding their healing by up to a day and restoring some of their vigor.
     heal_points: 1
     is_potion: true
+    is_revive: false
+    is_stun: false
+    level: 1
+    line_of_sight: false
+    multi_target: false
+    name: Breath of Healing
+    notes: ''
+    range: Touch
+    school: Corpus
+    target_optional: true
   Graze:
-    name: 'Graze'
-    level: 1
-    school: Corpus
-    desc: Graze desc
-    target_optional: true
-    target_num: 1
+    available: true
+    casting_time: 1 round
+    desc: Give a touched target a minor injury.
+    is_potion: true
     is_revive: false
     is_stun: false
+    level: 1
+    line_of_sight: false
+    multi_target: false
+    name: Graze
+    notes: ''
+    range: Touch
     roll: true
-    is_potion: true
+    school: Corpus
+    target_num: 1
+    target_optional: true
   Minor Allergy:
-    name: 'Minor Allergy'
+    available: true
+    casting_time: 1 round
+    desc: Cause a target to have a mild allergic reaction such as sneezing, a small
+      itchy spot on the skin, mildly itchy eyes, or minor congestion. Treatment with
+      antihistamines or other medicines that affect symptoms are effective against
+      this spell.
+    duration: 10 minutes
+    is_potion: true
+    is_revive: false
+    is_stun: false
     level: 1
-    school: Corpus
-    desc: Cause a target to have a mild allergic reaction such as sneezing, a small itchy spot on the skin, mildly itchy eyes, or minor congestion. Treatment with antihistamines or other medicines that affect symptoms are effective against this spell.
-    target_optional: true
-    target_num: 1
-    is_revive: false
-    is_stun: false
+    line_of_sight: false
+    multi_target: false
+    name: Minor Allergy
+    notes: ''
+    range: Touch
     roll: true
-    is_potion: true
-  #Level 2
-  "Touch Of Enfeeblement":
-    name: 'Touch of Enfeeblement'
-    level: 2
     school: Corpus
-    desc: Touch of Enfeeblement desc
-    target_optional: true
     target_num: 1
-    is_revive: false
-    is_stun: false
-    attack_mod: -1
-    defense_mod: -1
-    is_potion: true
-    rounds: 1
+    target_optional: true
   Minor Heal:
-    name: 'Minor Heal'
-    level: 2
-    school: Corpus
-    desc: Minor Heal desc
-    target_optional: true
-    target_num: 1
-    is_revive: false
-    is_stun: false
+    available: true
+    casting_time: 1 round
+    desc: Provide a minor amount of healing magic to a target's most severe treatable
+      wound, speeding their healing by up to a couple of days and restoring some of
+      their vigor.
+    duration: 1 round
     heal_points: 3
     is_potion: true
-  #Level 3
-  Strength:
-    name: 'Strength'
-    level: 3
-    school: Corpus
-    desc: Strength desc
-    target_optional: false
     is_revive: false
     is_stun: false
-    weapon_specials: Strength
-    rounds: 100
-    is_potion: true
-  Flesh Wound:
-    name: 'Flesh Wound'
-    level: 3
+    level: 2
+    line_of_sight: true
+    multi_target: false
+    name: Minor Heal
+    notes: ''
+    range: Short
     school: Corpus
-    desc: Flesh Wound desc
-    target_optional: true
-    is_revive: false
-    is_stun: false
-    damage_desc: "Flesh Wound Spell"
-    damage_inflicted: FLESH
-    is_potion: true
-  Medium Heal:
-    name: 'Medium Heal'
-    level: 3
-    school: Corpus
-    desc: Medium Heal desc
-    target_optional: true
     target_num: 1
+    target_optional: true
+  Touch Of Enfeeblement:
+    attack_mod: -1
+    available: true
+    casting_time: 1 round
+    defense_mod: -1
+    desc: 'Target loses their strength, becoming physically weak and fatigued. '
+    duration: 1 round
+    is_potion: true
     is_revive: false
     is_stun: false
+    level: 2
+    line_of_sight: true
+    multi_target: false
+    name: Touch of Enfeeblement
+    notes: ''
+    range: Touch
+    rounds: 1
+    school: Corpus
+    target_num: 1
+    target_optional: true
+  Endure Extreme Temperatures:
+    available: true
+    casting_time: 1 round
+    desc: The caster suffers no harm from being in an extremely hot or cold environment.
+    duration: 10 minutes
+    is_potion: true
+    is_revive: false
+    is_stun: false
+    level: 3
+    line_of_sight: false
+    multi_target: false
+    name: Endure Extreme Temperatures
+    notes: Needs limitations as to how hot and how cold
+    range: Self
+    roll: true
+    school: Corpus
+    target_optional: false
+  Flesh Wound:
+    available: false
+    casting_time: 1 round
+    damage_desc: Flesh Wound Spell
+    damage_inflicted: FLESH
+    desc: Inflict a flesh wound, slowing an enemy down. %R%RSpell ignores target's
+      armor.
+    is_potion: true
+    is_revive: false
+    is_stun: false
+    level: 3
+    line_of_sight: false
+    multi_target: false
+    name: Flesh Wound
+    notes: ''
+    range: Short
+    school: Corpus
+    target_optional: true
+  Medium Heal:
+    available: true
+    casting_time: 1 round
+    desc: Provide a middling amount of healing magic to a target's most severe treatable
+      wound, speeding their healing by up to nearly a week and restoring some of their
+      vigor.
     heal_points: 7
     is_potion: true
-  Endure Extreme Temperatures:
-    name: 'Endure Extreme Temperatures'
+    is_revive: false
+    is_stun: false
     level: 3
+    line_of_sight: true
+    multi_target: false
+    name: Medium Heal
+    notes: ''
+    range: Short
     school: Corpus
-    desc: Endure Extreme Temperatures desc
-    target_optional: false
-    is_revive: false
-    is_stun: false
-    roll: true
-    is_potion: true
-  #Level 4
-  "Potions (Corpus)":
-    name: 'Potions'
-    level: 4
-    school: Corpus
-    desc: Potions desc
-  Minor Group Heal:
-    name: 'Minor Group Heal'
-    level: 4
-    school: Corpus
-    desc: Minor Group Heal desc
-    target_num: 3
+    target_num: 1
     target_optional: true
+  Strength:
+    available: true
+    casting_time: 1 round
+    desc: The caster's strength is improved, and they hit harder when attacking, increasing
+      their damage.
+    duration: 1 hour
+    is_potion: true
     is_revive: false
     is_stun: false
+    level: 3
+    line_of_sight: false
+    multi_target: false
+    name: Strength
+    notes: Should only apply to melee weapons, right?
+    range: Self
+    rounds: 100
+    school: Corpus
+    target_optional: false
+    weapon_specials: Strength
+  Agility:
+    available: false
+    casting_time: 1 round
+    defense_mod: 2
+    desc: The caster's reflexes are improved, increasing their defensive abilities
+      and their reaction speed.
+    duration: 5 rounds
+    is_potion: true
+    is_revive: false
+    is_stun: false
+    level: 4
+    line_of_sight: false
+    multi_target: false
+    name: Agility
+    notes: 'Defense mod is static for 5 rounds, but +1 initiative stays in place. '
+    range: Self
+    rounds: 5
+    school: Corpus
+    target_optional: false
+    weapon_specials: Agility
+  Impair:
+    available: true
+    casting_time: 1 round
+    damage_desc: Impair Spell
+    damage_inflicted: IMPAIR
+    desc: Inflict an impaired wound, making it difficult for an enemy to use the affected
+      body part. %R%RSpell ignores target's armor.
+    is_revive: false
+    is_stun: false
+    level: 4
+    line_of_sight: true
+    multi_target: false
+    name: Impair
+    notes: Desc on this probably needs fixed to match others.  Also needs tested to
+      see if level is appropriate
+    range: Short
+    roll: false
+    school: Corpus
+    target_num: 1
+    target_optional: true
+  Minor Group Heal:
+    area: 10 yard radius
+    available: true
+    casting_time: 1 round
+    desc: 'Provide a minor amount of healing magic to the most severe treatable wound
+      of up to three targets the caster can see, speeding their healing by up to a
+      couple of days and restoring some of their vigor. '
     heal_points: 3
     is_potion: false
-  Impair:
-    name: 'Impair'
+    is_revive: false
+    is_stun: false
     level: 4
+    line_of_sight: true
+    multi_target: true
+    name: Minor Group Heal
+    notes: ''
+    range: Short
     school: Corpus
-    desc: Impair desc
+    target_num: 3
     target_optional: true
-    target_num: 1
-    is_revive: false
-    is_stun: false
-    roll: false
-    damage_inflicted: IMPAIR
-    damage_desc: "Impair Spell"
-  Agility:
-    name: 'Agility'
+  Potions (Corpus):
+    desc: Potions desc
     level: 4
+    name: Potions
     school: Corpus
-    desc: Agility desc
-    target_optional: false
-    is_revive: false
-    is_stun: false
-    weapon_specials: Agility
-    defense_mod: +2
-    is_potion: true
-    rounds: 5
   Vitality Weapon:
-    name: 'Vitality Weapon'
-    level: 4
-    school: Corpus
-    desc: Vitality Weapon desc
-    target_optional: true
-    target_num: 1
-    is_revive: false
-    is_stun: false
-    weapon_specials: Vitality
-    rounds: 100
+    available: true
+    casting_time: 1 round
+    desc: Augment one specified pre-existing weapon with the forces of life and death
+      themselves. It does slightly more damage, and when cast, a small amount of healing
+      energy is restored to the wielder.
+    duration: 3 hours
     heal_points: 3
     is_potion: true
-  #Level 5
+    is_revive: false
+    is_stun: false
+    level: 4
+    line_of_sight: false
+    multi_target: false
+    name: Vitality Weapon
+    notes: I want this to work so bad, but I'm just not sure it can without a TON
+      of custom code.  Maybe we can just dumb it down so that casting it gives you
+      a little healing boost.
+    range: Touch
+    rounds: 100
+    school: Corpus
+    target_num: 1
+    target_optional: true
+    weapon_specials: Vitality
   Grow Self:
-    name: 'Grow Self'
-    level: 5
-    school: Corpus
-    desc: Grow Self desc
-    target_optional: false
+    available: false
+    casting_time: 1 round
+    desc: "The caster instantly enlarges their own body, multiplying their height and weight by 3. %R%RIf there is insufficient space for growth, the
+      caster increases to the maximum possible size and makes a brawn check to burst
+      any enclosures. %R%RAll equipment worn or carried by a creature is similarly
+      enlarged by the spell.  Any item that leaves the caster's possession instantly
+      returns to its normal size."
+    duration: 5 rounds
     is_revive: false
     is_stun: false
+    level: 5
+    line_of_sight: false
+    multi_target: false
+    name: Grow Self
+    range: Self
     roll: true
-    weapon_specials: Grow
     rounds: 6
-  Shrink Self:
-    name: 'Shrink Self'
-    level: 5
     school: Corpus
-    desc: Shrink Self
     target_optional: false
-    is_revive: false
-    is_stun: false
-    roll: true
-    weapon_specials: Shrink
-    rounds: 10
+    weapon_specials: Grow
   Revive:
-    name: Revive
+    available: false
+    casting_time: 1 round
+    desc: 'Return a knocked out comrade to the fight.'
+    is_revive: true
+    is_stun: false
     level: 5
+    line_of_sight: true
+    multi_target: false
+    name: Revive
+    notes: ''
+    range: Short
     school: Corpus
-    desc: Revive desc
-    target_optional: true
-    is_revive: true
-    is_stun: false
     target_num: 1
-  #Level 6
-  "Familiar (Corpus)":
-    name: Familiar
-    level: 6
+    target_optional: true
+  Shrink Self:
+    available: false
+    casting_time: 1 round
+    desc: "The caster\u2019s height and weight is divided by 8. All equipment worn
+      or carried by a creature is similarly reduced by the spell. Any item that leaves
+      the caster\u2019s possession instantly returns to its normal size."
+    duration: 5 rounds
+    is_revive: false
+    is_stun: false
+    level: 5
+    line_of_sight: false
+    multi_target: false
+    name: Shrink Self
+    notes: 'Really shouldn''t apply weapon special unless roll succeeds. '
+    range: Self
+    roll: true
+    rounds: 10
     school: Corpus
+    target_optional: false
+    weapon_specials: Shrink
+  Familiar (Corpus):
     desc: Familiar  desc
-    target_optional: false
     is_revive: false
     is_stun: false
-    roll: true
-  Massive Heal:
-    name: Massive Heal
     level: 6
-    school: Corpus
-    desc: Massive Heal desc
-    target_optional: true
-    target_num: 1
-    is_revive: false
-    is_stun: false
-    roll: false
-    heal_points: 17
-  #Level 7
-  Brink Of Death:
-    level: 7
-    school: Corpus
-    desc: Brink of Death desc
-    target_optional: true
-    is_revive: false
-    is_stun: false
+    name: Familiar
     roll: true
-    is_res: true
-  Group Revive:
-    level: 7
     school: Corpus
-    desc: Group Revive desc
+    target_optional: false
+  Massive Heal:
+    available: false
+    casting_time: 1 round
+    desc: Provide a massive amount of healing magic to a target's treatable wound,
+      speeding their natural healing by several weeks and restoring some of their
+      vigor.
+    heal_points: 17
+    is_revive: false
+    is_stun: false
+    level: 6
+    line_of_sight: true
+    multi_target: false
+    name: Massive Heal
+    notes: ''
+    range: Long
+    roll: false
+    school: Corpus
+    target_num: 1
     target_optional: true
-    target_num: 3
+  Brink Of Death:
+    available: false
+    casting_time: 1 round
+    desc: 'Return someone who has died in the last 30 seconds to life at the cost
+      of the caster''s own stamina.  %R%R
+
+
+      A revived target is unable to return to the fight without further healing. They
+      are both incapacitated and suffering from spell fatigue.%R%R
+
+
+
+      The caster is unable to fight or cast spells for 24 hours.%R%R
+
+      <i>Costs two luck to cast.</i>'
+    is_res: true
+    is_revive: false
+    is_stun: false
+    level: 7
+    line_of_sight: false
+    multi_target: false
+    name: Brink Of Death
+    notes: ''
+    range: Touch
+    roll: true
+    school: Corpus
+    target_optional: true
+  Energize Dimensional Anchor (Corpus):
+    available: false
+    casting_time: 2 minutes
+    desc: Provide necessary magical energy of the appropriate School to a Dimensional
+      Anchor spell, enabling the linked casters to permanently close an interdimensional
+      portal.
+    is_revive: false
+    is_stun: false
+    level: 7
+    line_of_sight: false
+    multi_target: false
+    name: Dimensional Anchor
+    notes: ''
+    range: Touch
+    roll: true
+    school: Corpus
+    target_optional: false
+  Group Revive:
+    area: 15 yard radius
+    available: false
+    casting_time: 1 round
+    desc: Return up to three knocked out comrades to the fight.
+    is_res: false
     is_revive: true
     is_stun: false
+    level: 7
+    line_of_sight: true
+    multi_target: true
+    name: Group Revive
+    notes: ''
+    range: Long
     roll: false
-    is_res: false
+    school: Corpus
+    target_num: 3
+    target_optional: true
   Incorporeal:
-    level: 7
-    school: Corpus
-    desc: The caster temporarily transforms their physical body into an incorporeal state. For the spell's duration, the caster can enter or pass through solid objects including lifeforms as easily as one might pass through air. While incorporeal, the caster cannot breathe, effectively limiting their ability to remain incorporeal or act according to how long they can hold their breath. Base speed and mode of movement remain the same.
-    target_optional: false
-    target_num: 1
-    is_revive: false
-    is_stun: false
-    roll: false
-    is_res: false
+    available: false
+    casting_time: 1 Round
     defense_mod: 20
-  Energize Dimensional Anchor (Corpus):
-    name: 'Dimensional Anchor'
+    desc: 'The caster temporarily transforms their physical body into an incorporeal
+      state. For the spell''s duration, the caster can enter or pass through solid
+      objects including lifeforms as easily as one might pass through air.
+
+
+      While incorporeal, the caster cannot breathe, effectively limiting their ability
+      to remain incorporeal or act according to how long they can hold their breath.
+      Base speed and mode of movement remain the same.'
+    duration: 5 minutes
+    is_res: false
+    is_revive: false
+    is_stun: false
     level: 7
+    line_of_sight: false
+    multi_target: false
+    name: Incorporeal
+    notes: ''
+    range: Self
+    roll: false
     school: Corpus
-    desc: Dimensional Anchor desc
+    target_num: 1
     target_optional: false
-    is_revive: false
-    is_stun: false
-    roll: true
-  #Level 8
   Meld:
-    name: Meld
-    level: 8
-    school: Corpus
-    desc: The caster melds their physical form with an inanimate object with the same or greater mass as their body. While melded, the caster can see and hear what transpires around them, but cannot effect it in any way. They cannot cast magic, speak, or move, and are only detectable through appropriate magic means such as Spirit or Corpus magic.
-    target_optional: false
+    available: false
+    casting_time: 1 round
+    desc: The caster melds their physical form with an inanimate object with the same
+      or greater mass as their body. While melded, the caster can see and hear what
+      transpires around them, but cannot effect it in any way. They cannot cast magic,
+      speak, or move, and are only detectable through appropriate magic means such
+      as Spirit or Corpus magic.
+    duration: 24 hours
     is_revive: false
     is_stun: false
+    level: 8
+    line_of_sight: false
+    multi_target: false
+    name: Meld
+    notes: ''
+    range: Self
     roll: true
+    school: Corpus
+    target_optional: false

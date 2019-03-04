@@ -1,193 +1,320 @@
----
 spells:
-# Earth
-  #Level 1
-  Rock Dance:
-    name: 'Rock Dance'
-    level: 1
-    school: Earth
-    desc: Rock Dance desc
-    target_optional: false
-    is_revive: false
-    is_stun: false
-    roll: true
   Create Crystal:
-    name: 'Create Crystal'
+
+    available: true
+    casting_time: 1 round
+    desc: The caster is able to create a permanent shard of crystal of moderate value.
+      The shard may be no larger than 2 inches, but may be very hard and sharp. Colors
+      may vary.
+    
+    is_revive: false
+    is_stun: false
     level: 1
+    line_of_sight: true
+    multi_target: false
+    name: Create Crystal
+    notes: ''
+    range: Short
+    roll: true
     school: Earth
-    desc: Create Crystal desc
     target_optional: false
+  Rock Dance:
+
+    available: true
+    casting_time: 1 round
+    desc: Send half a dozen pebbles and stones smaller than your fist dancing according
+      to your will.
+    duration: 10 minutes
     is_revive: false
     is_stun: false
+    level: 1
+    line_of_sight: true
+    multi_target: false
+    name: Rock Dance
+    notes: ''
+    range: Short
     roll: true
-  #Level 2
+    school: Earth
+    target_optional: false
   Shape Stone:
-    name: 'Shape Stone'
+
+    available: true
+    casting_time: 1 round
+    desc: Cause up to 5 lbs of preexisting rock or stone to form into simple non-weaponized
+      shapes that animate at your direction.
+    duration: 1 hour
+    is_revive: false
+    is_stun: false
     level: 2
-    school: Earth
-    desc: Shape Stone desc
-    target_optional: false
-    is_revive: false
-    is_stun: false
+    line_of_sight: true
+    multi_target: false
+    name: Shape Stone
+    notes: '''non weaponized'' seems like an OOC limiter rather than something IC.
+      Can we find a better way to limit this?'
+    range: Short
     roll: true
-  #Level 3
-  Skipping Stone:
-    name: 'Skipping Stone'
-    level: 3
     school: Earth
-    desc: Skipping Stone desc
-    weapon: Skipping Stone
-    target_optional: true
-    target_num: 1
-    fs3_attack: true
-    is_revive: false
-    is_stun: false
-  Floating Earth:
-    name: 'Floating Earth'
-    level: 3
-    school: Earth
-    desc: Floating Earth desc
     target_optional: false
-    is_revive: false
-    is_stun: false
-    roll: true
   Earth Bolt:
-    name: 'Earth Bolt'
+    area: Direct line from caster, 5 yards wide
+    available: true
+    casting_time: 1 round
+    desc: Geomantic force travels through the earth in a straight line, causing rocks
+      to fly into the air and hit up to 3 creatures along its path for one round.
+
+    fs3_attack: true
+    is_revive: false
+    is_stun: false
     level: 3
+    line_of_sight: true
+    multi_target: true
+    name: Earth Bolt
+    notes: ''
+    range: Short
     school: Earth
-    desc: Earth Bolt desc
+    target_num: 1
+    target_optional: true
     weapon: Earth Bolt
-    target_optional: true
-    target_num: 1
-    fs3_attack: true
+  Floating Earth:
+    area: 5 yard radius
+    available: false
+    casting_time: 1 round
+    desc: Create a chunk of earth capable of bearing weight up to 250 lbs and propelling
+      itself through the air at speeds up to 35 mph. Must remain in range or it dissipates.
+    duration: 1 hour
     is_revive: false
     is_stun: false
-  Stone Slam:
-    name: 'Stone Slam'
     level: 3
+    line_of_sight: true
+    multi_target: false
+    name: Floating Earth
+    notes: ''
+    range: Short
+    roll: true
     school: Earth
-    desc: Stone Slam desc
+    target_optional: false
+  Skipping Stone:
+    desc: Skipping Stone desc
+    fs3_attack: true
+    is_revive: false
+    is_stun: false
+    level: 3
+    name: Skipping Stone
+    school: Earth
+    target_num: 1
+    target_optional: true
+    weapon: Skipping Stone
+  Stone Slam:
+
+    available: true
+    casting_time: 1 round
+    desc: Slam a stone the size of a basketball into an opponent with force.
+
+    fs3_attack: true
+    is_revive: false
+    is_stun: false
+    level: 3
+    line_of_sight: true
+    multi_target: false
+    name: Stone Slam
+    notes: ''
+    range: Short
+    school: Earth
+    target_num: 1
+    target_optional: true
     weapon: Stone Slam
-    target_optional: true
-    target_num: 1
-    fs3_attack: true
-    is_revive: false
-    is_stun: false
-  #Level 4 Earth
-  Potions:
-    name: 'Potions'
-    level: 4
-    school: Earth
-    desc: Potions desc
-  Diamond Weapon:
-    name: 'Diamond Weapon'
-    level: 4
-    school: Earth
-    desc: Diamond Weapon desc
-    target_optional: true
-    target_num: 1
-    is_revive: false
-    is_stun: false
-    weapon_specials: Diamond
-    rounds: 100
-    is_potion: true
   Crystalline Armor:
-    name: 'Crystalline Armor'
-    level: 4
-    school: Earth
-    desc: Crystalline Armor desc
-    target_optional: false
-    is_revive: false
-    is_stun: false
+
     armor: Crystalline
+    available: false
+    casting_time: 1 round
+    desc: The caster's skin becomes as hard as densely formed crystal to increase
+      defenses significantly. Colors may vary.
+    duration: 3 hours
     is_potion: true
-  Rock Skin:
-    name: 'Rock Skin'
-    level: 4
-    school: Earth
-    desc: Rock Skin desc
-    target_optional: false
-    target_optional: true
-    target_num: 1
     is_revive: false
     is_stun: false
-    armor: Rock Skin
-    weapon: Rock Skin
-    is_potion: true
-  #Level 5
-  Earth Shudder:
-    name: 'Earth Shudder'
-    level: 5
+    level: 4
+    line_of_sight: false
+    multi_target: false
+    name: Crystalline Armor
+    notes: ''
+    range: Self
     school: Earth
-    desc: Earth Shudder desc
-    target_optional: true
+    target_optional: false
+  Diamond Weapon:
+
+    available: false
+    casting_time: 1 round
+    desc: Augment one specified pre-existing weapon with diamond, making it far sharper
+      and increasing its penetration.
+    duration: 3 hours
+    is_potion: true
+    is_revive: false
+    is_stun: false
+    level: 4
+    line_of_sight: false
+    multi_target: false
+    name: Diamond Weapon
+    notes: ''
+    range: Touch
+    rounds: 100
+    school: Earth
     target_num: 1
+    target_optional: true
+    weapon_specials: Diamond
+  Potions:
+    desc: Potions desc
+    level: 4
+    name: Potions
+    school: Earth
+  Rock Skin:
+
+    armor: Rock Skin
+    available: true
+    casting_time: 1 round
+    desc: Caster weaponizes and protects their own body by augmenting it with stone
+      and rock. Increases defenses slightly and adds a blunt weapon.
+    duration: 3 hours
+    is_potion: true
+    is_revive: false
+    is_stun: false
+    level: 4
+    line_of_sight: false
+    multi_target: false
+    name: Rock Skin
+    notes: ''
+    range: Self
+    school: Earth
+    target_num: 1
+    target_optional: true
+    weapon: Rock Skin
+  Earth Shudder:
+    area: 10 yard radius
+    available: false
+    casting_time: 1 round
+    desc: Cause the earth to shudder, distracting up to 3 enemies within its range
+      and giving them a penalty to attack and defense.
+    duration: 1 round
     fs3_attack: true
     is_revive: false
     is_stun: false
+    level: 5
+    line_of_sight: true
+    multi_target: true
+    name: Earth Shudder
+    notes: ''
+    range: Long
+    school: Earth
+    target_num: 1
+    target_optional: true
     weapon: Earth Shudder
   Stalagmite:
-    name: 'Stalagmite'
+
+    available: false
+    casting_time: 1 round
+    desc: A jagged piece of earth juts up beneath an enemy, doing damage.
+
+    fs3_attack: true
+    is_revive: false
+    is_stun: false
     level: 5
+    line_of_sight: true
+    multi_target: false
+    name: Stalagmite
+    notes: ''
+    range: Long
     school: Earth
-    desc: Stalagmite desc
-    target_optional: true
     target_num: 1
-    fs3_attack: true
-    is_revive: false
-    is_stun: false
+    target_optional: true
     weapon: Stalagmite
-  #Level 6
   Familiar:
+    desc: Familiar  desc
+    is_revive: false
+    is_stun: false
+    level: 6
     name: Familiar
-    level: 6
-    school: Earth
-    desc: Familiar  desc
-    target_optional: false
-    is_revive: false
-    is_stun: false
     roll: true
+    school: Earth
+    target_optional: false
   Stone Daggers:
-    name: Stone Daggers
+
+    available: false
+    casting_time: 1 round
+    desc: A myriad of tiny, sharp stone daggers spring from the earth and fly toward
+      the target with speed and force, automatically seeking weak spots in the foe's
+      armor.
+
+    fs3_attack: true
+    is_revive: false
+    is_stun: false
     level: 6
+    line_of_sight: true
+    multi_target: false
+    name: Stone Daggers
+    notes: ''
+    range: Long
     school: Earth
-    desc: Familiar  desc
-    target_optional: true
     target_num: 1
-    fs3_attack: true
-    is_revive: false
-    is_stun: false
+    target_optional: true
     weapon: Stone Daggers
-  #Level 7
-  Exploding Earth:
-    name: Exploding Earth
-    level: 7
-    school: Earth
-    desc: Exploding Earth desc
-    target_optional: true
-    target_num: 3
-    fs3_attack: true
-    is_revive: false
-    is_stun: false
-    weapon: Exploding Earth
   Energize Dimensional Anchor (Earth):
-    name: 'Dimensional Anchor'
-    level: 7
-    school: Earth
-    desc: Dimensional Anchor desc
-    target_optional: false
+
+    available: false
+    casting_time: 2 minutes
+    desc: Provide necessary magical energy of the appropriate School to a Dimensional
+      Anchor spell, enabling the linked casters to permanently close an interdimensional
+      portal.
+
     is_revive: false
     is_stun: false
+    level: 7
+    line_of_sight: false
+    multi_target: false
+    name: Dimensional Anchor
+    notes: ''
+    range: Touch
     roll: true
-  #Level 8
-  Massive Quake:
-    name: 'Massive Quake'
-    level: 8
     school: Earth
-    desc: Massive Quake
-    target_optional: true
-    target_num: 100
+    target_optional: false
+  Exploding Earth:
+    area: 15 yard radius
+    available: false
+    casting_time: 1 round
+    desc: A ball of jagged earth and stone flies toward a point the caster can see,
+      exploding on impact and hitting up to 3 targets.
+
     fs3_attack: true
     is_revive: false
     is_stun: false
+    level: 7
+    line_of_sight: true
+    multi_target: true
+    name: Exploding Earth
+    notes: ''
+    range: Long
+    school: Earth
+    target_num: 3
+    target_optional: true
+    weapon: Exploding Earth
+  Massive Quake:
+    area: Up to 1 square mile
+    available: false
+    casting_time: 1 round
+    desc: Make the earth quake in a location that you can see. It levels structures
+      and causes jagged pieces of earth to rise at random, doing immense damage to
+      anything in its radius.
+
+    fs3_attack: true
+    is_revive: false
+    is_stun: false
+    level: 8
+    line_of_sight: true
+    multi_target: true
+    name: Massive Quake
+    notes: ''
+    range: Massive
+    school: Earth
+    target_num: 100
+    target_optional: true
     weapon: Massive Quake
