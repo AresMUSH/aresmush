@@ -133,7 +133,7 @@ spells:
     school: Air
     target_num: 1
     target_optional: true
-    weapon: Stun
+    weapon: Stun (Air)
   Whispering Wind:
     available: true
     casting_time: 1 round, plus additional rounds to listen at GM's discretion.
@@ -189,7 +189,7 @@ spells:
     range: Short
     school: Air
     target_optional: true
-    weapon: Stun
+    weapon: Stun (Air)
   Air Scooter:
     area: 5 yard radius
     available: true
