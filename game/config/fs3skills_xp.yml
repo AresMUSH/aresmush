@@ -44,3 +44,5 @@ fs3skills:
     - 4
     minute:
     - 0
+  attr_dots_beyond_chargen_max: 17
+  action_dots_beyond_chargen_max: 17

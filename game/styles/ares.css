@@ -1327,6 +1327,23 @@ h2 {
 .log-icon-title-container {
   width: 125px; }
 
+.log-icon {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  margin-left: auto;
+  margin-right: auto;
+  display: block; }
+
+.small-profile-icon {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  -moz-border-radius: 25px;
+  -webkit-border-radius: 25px;
+  border-radius: 25px;
+  margin: 2px; }
+
 .char-icon-container {
   padding: 0px; }
 
