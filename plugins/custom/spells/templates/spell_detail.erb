@@ -47,16 +47,26 @@
 <% end %>
 <% if attack_mod || defense_mod || lethal_mod || spell_mod %>
 <%=  "%xhMod(s):%xn " -%>
+<% if attack_mod %>
 <%=  attack_mod %><%= " attack " -%>
+<% else %>
+<%= "" %>
 <% end %>
 <% if defense_mod %>
 <%=  defense_mod %><%= " defense " -%>
+<% else %>
+<%= "" %>
 <% end %>
 <% if lethal_mod %>
 <%=  lethal_mod  %><%= " lethality " -%>
+<% else %>
+<%= "" %>
 <% end %>
 <% if spell_mod %>
 <%=  spell_mod %><%= " spell " %>
+<% else %>
+<%= "" %>
+<% end %>
 <% end %>
 <% if heal %>
 <%=  "%xhHeal points:%xn " -%>
@@ -68,5 +78,20 @@
 <%=  " (for more details, do `weapon " -%>
 <%=  weapon -%>
 <%=  "`)" %>
+<% end %>
+<% if weapon_specials %>
+<%=  "%xhWeapon Specials:%xn " -%>
+<%=  weapon_specials %>
+<% end %>
+<% if armor %>
+<%=  "%xhArmor:%xn " -%>
+<%=  armor -%>
+<%=  " (for more details, do `armor " -%>
+<%=  armor -%>
+<%=  "`)" %>
+<% end %>
+<% if armor_specials %>
+<%=  "%xhArmor Specials:%xn " -%>
+<%=  armor_specials %>
 <% end %>
 <%= footer %>
