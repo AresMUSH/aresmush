@@ -498,7 +498,7 @@ module AresMUSH
         is_private: scene.private_scene,
         participants: participants,
         scene_type: scene.scene_type ? scene.scene_type.titlecase : 'unknown',
-        can_join: Scenes.can_join_scene?(enactor, scene),
+        can_join: Scenes.can_join_scene?(viewer, scene),
         can_edit: viewer && Scenes.can_edit_scene?(viewer, scene),
         is_watching: viewer && scene.watchers.include?(viewer),
         is_unread: scene.is_unread?(viewer),
