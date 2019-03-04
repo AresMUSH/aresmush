@@ -7,3 +7,4 @@ manage:
     nuke: destroy
     wall: announce
     about: version
+    update: upgrade
