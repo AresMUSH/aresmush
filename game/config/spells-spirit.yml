@@ -1,370 +1,638 @@
----
 spells:
-# Spirit
-  #Level 1
   Locate Object:
+    available: true
+    casting_time: 1 round
+    desc: The caster is able to sense the direction of an object they have physically
+      encountered.
+    duration: 10 minutes
+    is_revive: false
+    is_stun: false
+    level: 1
+    line_of_sight: false
+    multi_target: false
     name: Locate Object
-    level: 1
+    notes: ''
+    range: Short
+    roll: true
     school: Spirit
-    desc: Locate Object
     target_optional: false
-    is_revive: false
-    is_stun: false
-    roll: true
-  Share Image:
-    name: Share Image
-    level: 1
-    school: Spirit
-    desc: Share Image
-    target_optional: true
-    target_num: 1
-    is_revive: false
-    is_stun: false
-    roll: true
   Object Whisper:
+    available: true
+    casting_time: 1 round
+    desc: 'Caster hears a random, uncontrollable thought (no more than a short sentence
+      of up to 10 words) from an object held by a sapient creature in the past 48
+      hours. Successive casts on the same object yield the same sentence.
+
+
+      When possible, the sentence should be chosen by a GM.'
+    is_potion: true
+    is_revive: false
+    is_stun: false
+    level: 1
+    line_of_sight: true
+    multi_target: false
     name: Object Whisper
-    level: 1
+    notes: ''
+    range: Touch
+    roll: true
     school: Spirit
-    desc: Caster hears a random, uncontrollable thought (no more than a short sentence of up to 10 words) from an object held by a sapient creature in the past 48 hours. Successive casts on the same object yield the same sentence. When possible, the sentence should be chosen by a GM.
-    target_optional: false
     target_num: 0
-    is_revive: false
-    is_stun: false
-    is_potion: true
-    roll: true
-  Share Emotion:
-    name: Share Emotion
-    level: 1
-    school: Spirit
-    desc: Share single dominant emotion with a target within visual range of the caster.
-    target_optional: true
-    target_num: 1
-    is_revive: false
-    is_stun: false
-    roll: true
-  #Level 2
-  Beckon :
-    name: Beckon
-    level: 2
-    school: Spirit
-    desc: Beckon
     target_optional: false
+  Share Emotion:
+    available: true
+    casting_time: 1 round
+    desc: Share a single dominant emotion with a target within visual range of the
+      caster.
+    duration: 10 minutes
     is_revive: false
     is_stun: false
+    level: 1
+    line_of_sight: true
+    multi_target: false
+    name: Share Emotion
+    notes: ''
+    range: Short
     roll: true
-  Telepathic Correspondance:
-    name: Telepathic Correspondance
-    level: 2
     school: Spirit
-    desc: Telepathic Correspondance
-    target_optional: true
     target_num: 1
+    target_optional: true
+  Share Image:
+    available: true
+    casting_time: 1 round
+    desc: 'The caster can share a still mental image with another person via telepathy. '
+    duration: 10 minutes
     is_revive: false
     is_stun: false
+    level: 1
+    line_of_sight: false
+    multi_target: false
+    name: Share Image
+    notes: ''
+    range: Long
     roll: true
+    school: Spirit
+    target_num: 1
+    target_optional: true
+  Beckon:
+    available: true
+    casting_time: 1 round
+    desc: You create the ghostly image of a hand (or anything small and representative
+      of the caster) which you can send to find anyone. The hand leads that person
+      back to you if they are willing to follow.
+    duration: 1 hour
+    is_revive: false
+    is_stun: false
+    level: 2
+    line_of_sight: false
+    multi_target: false
+    name: Beckon
+    notes: ''
+    range: Long
+    roll: true
+    school: Spirit
+    target_optional: false
   Comprehend Languages:
-    name: Comprehend Languages
+    available: true
+    casting_time: 1 round
+    desc: 'The target is able to comprehend any spoken or written language for the
+      duration of the spell. This does not apply to text written in code.'
+    duration: 24 hours
+    is_potion: true
+    is_revive: false
+    is_stun: false
     level: 2
-    school: Spirit
-    desc: Comprehend Languages
-    target_optional: true
-    target_num: 1
-    is_revive: false
-    is_stun: false
+    line_of_sight: false
+    multi_target: false
+    name: Comprehend Languages
+    notes: ''
+    range: Touch
     roll: true
-    is_potion: true
-  #Level 3
-  Flagging Spirits:
-    name: Flagging Spirits
-    level: 3
     school: Spirit
-    desc: Flagging Spirits desc
-    target_optional: true
-    fs3_attack: true
-    is_revive: false
-    is_stun: true
-    weapon: Stun (Spirit)
-  Minor Jinx:
-    name: Minor Jinx
-    level: 3
-    school: Spirit
-    desc: Minor Jinx
-    target_optional: true
     target_num: 1
+    target_optional: true
+  Telepathic Correspondance:
+    available: true
+    casting_time: 1 round
+    desc: Hold a telepathic conversation with one person at a time. Initial casting
+      requires concentration, after which this spell remains in effect without requiring
+      maintenance or taking up your action during a round.
+    duration: 1 hour
     is_revive: false
     is_stun: false
-    attack_mod: -1
-    defense_mod: -1
-    spell_mod: -1
-    is_potion: true
-    rounds: 2
-  Emotional Aura:
-    name: Emotional Aura
-    level: 3
-    school: Spirit
-    desc: Emotional Aura
-    target_optional: true
-    target_num: 1
-    is_revive: false
-    is_stun: false
+    level: 2
+    line_of_sight: false
+    multi_target: false
+    name: Telepathic Correspondance
+    notes: ''
+    range: Long
     roll: true
+    school: Spirit
+    target_num: 1
+    target_optional: true
   Awaken Terror:
-    name: Awaken Terror
-    level: 3
-    school: Spirit
-    desc: Awaken Terror
-    target_optional: true
-    target_num: 1
+    available: false
+    casting_time: 1 round
+    desc: Target becomes afraid of the caster and attempts to flee to the nearest
+      place they could safely hide. They will not move in the direction of the caster
+      for the duration of the spell unless forced.
     is_revive: false
     is_stun: true
+    level: 3
+    line_of_sight: true
+    multi_target: false
+    name: Awaken Terror
+    notes: ''
+    range: Short
     roll: false
+    school: Spirit
+    target_num: 1
+    target_optional: true
     weapon: Stun (Spirit)
   Charmed:
-    name: Charmed
-    level: 3
-    school: Spirit
-    desc: Charmed
-    target_optional: true
-    target_num: 1
+    available: false
+    casting_time: 1 round
+    desc: Target becomes charmed by the caster and attempts to move toward them. They
+      are neutral toward all parties and will neither aid nor attack while under the
+      spell. The spell is broken if they are hit by an attack.
     is_revive: false
     is_stun: true
-    roll: false
-    weapon: Stun (Spirit)
-  Minor Luck:
-    name: Minor Luck
     level: 3
+    line_of_sight: true
+    multi_target: false
+    name: Charmed
+    notes: ''
+    range: Short
+    roll: false
     school: Spirit
-    desc: Minor Luck
-    target_optional: true
     target_num: 1
+    target_optional: true
+    weapon: Stun (Spirit)
+  Emotional Aura:
+    available: true
+    casting_time: 1 round
+    desc: One target becomes outlined in light visible only to the caster. The color
+      of the light corresponds to the target's current emotional status. Requires
+      line of sight.
+    duration: 1 round
     is_revive: false
     is_stun: false
-    attack_mod: 1
-    defense_mod: 1
-    spell_mod: 1
-    is_potion: true
-    rounds: 2
-  Mind Bolt:
-    name: Mind Bolt
     level: 3
+    line_of_sight: true
+    multi_target: false
+    name: Emotional Aura
+    notes: ''
+    range: Short
+    roll: true
     school: Spirit
-    desc: Mind Bolt
+    target_num: 1
     target_optional: true
+  Flagging Spirits:
+    available: false
+    casting_time: 1 round
+    desc: Target loses their will to fight.
+    fs3_attack: true
+    is_revive: false
+    is_stun: true
+    level: 3
+    line_of_sight: true
+    multi_target: false
+    name: Flagging Spirits
+    notes: ''
+    range: Short
+    school: Spirit
+    target_optional: true
+    weapon: Stun (Spirit)
+  Mass Awaken Terror:
+    desc: Mass Awaken Terror
+    is_revive: false
+    is_stun: false
+    level: 3
+    name: Mass Awaken Terror
+    roll: true
+    school: Spirit
+    target_num: 3
+    target_optional: true
+  Mind Bolt:
+    available: false
+    casting_time: 1 round
+    desc: The caster delivers a minor assault on the thought pathways of any one sapient
+      creature, doing damage.
     fs3_attack: true
     is_revive: false
     is_stun: false
-    weapon: Mind Bolt
-  #Level 4 Spirit
-  "Potions (Spirit)":
-    name: 'Potions'
-    level: 4
-    school: Spirit
-    desc: Potions desc
-  Telepathic Reading:
-    name: Telepathic Reading
-    level: 4
-    school: Spirit
-    desc: Telepathic Reading
-    target_optional: true
-    target_num: 1
-    is_revive: false
-    is_stun: false
-    roll: true
-  Group Comprehend Languages:
-    name: Group Comprehend Languages
-    level: 4
-    school: Spirit
-    desc: Group Comprehend Languages
-    target_optional: true
-    target_num: 3
-    is_revive: false
-    is_stun: false
-    roll: true
-    is_potion: true
-  Spirit Of Pacifism:
-    name: Spirit of Pacifism
-    level: 4
-    school: Spirit
-    desc: Spirit of Pacifism
-    target_optional: false
-    is_revive: false
-    is_stun: false
-    roll: true
-    is_potion: true
-  Spell Fatigue Heal:
-    name: Spell Fatigue Heal
-    level: 4
-    school: Spirit
-    desc: Spell Fatigue Heal
-    target_optional: true
-    target_num: 1
-    is_revive: false
-    is_stun: false
-    roll: true
-    is_potion: true
-  #Level 5
-  Medium Jinx:
-    name: Medium Jinx
-    level: 5
-    school: Spirit
-    desc: Medium Jinx
-    target_optional: true
-    target_num: 1
-    is_revive: false
-    is_stun: false
-    defense_mod: -2
-    attack_mod: -2
-    spell_mod: -2
-    rounds: 3
-  Simple Command:
-    name: Simple Command
-    level: 5
-    school: Spirit
-    desc: Simple Command
-    target_optional: true
-    target_num: 3
-    is_revive: false
-    is_stun: false
-    roll: true
-  Medium Luck:
-    name: Medium Luck
-    level: 5
-    school: Spirit
-    desc: Medium Luck
-    target_optional: true
-    target_num: 1
-    is_revive: false
-    is_stun: false
-    defense_mod: 2
-    attack_mod: 2
-    spell_mod: 2
-    rounds: 3
-  Commune With Local Spirit:
-    name: Commune with Local Spirit
-    level: 5
-    school: Spirit
-    desc: Commune with Local Spirit
-    target_optional: true
-    target_num: 1
-    is_revive: false
-    is_stun: false
-    roll: true
-  Memory Dive:
-    name: Memory Dive
-    level: 5
-    school: Spirit
-    desc: Memory Dive
-    target_optional: true
-    target_num: 1
-    is_revive: false
-    is_stun: false
-    roll: true
-  Pass Unseen:
-    name: Pass Unseen
-    level: 5
-    school: Spirit
-    desc: Pass Unseen
-    target_optional: false
-    is_revive: false
-    is_stun: false
-    roll: true
-  #Level 6
-  "Familiar (Spirit)":
-    name: Familiar
-    level: 6
-    school: Spirit
-    desc: Familiar  desc
-    target_optional: false
-    is_revive: false
-    is_stun: false
-    roll: true
-  Rewrite Memory:
-    name: Rewrite Memory
-    level: 6
-    school: Spirit
-    desc: Rewrite Memory desc
-    target_optional: true
-    target_num: 1
-    is_revive: false
-    is_stun: false
-    roll: true
-  Sleep:
-    name: Sleep
-    level: 6
-    school: Spirit
-    desc: Sleep desc
-    target_optional: true
-    target_num: 1
-    is_revive: false
-    #Even though this kind of is, it does not use the subdue code
-    is_stun: false
-    roll: true
-  #Level 7
-  Energize Dimensional Anchor (Spirit):
-    name: 'Dimensional Anchor'
-    level: 7
-    school: Spirit
-    desc: Dimensional Anchor desc
-    target_optional: false
-    is_revive: false
-    is_stun: false
-    roll: true
-  Clarity:
-    name: Clarity
-    level: 7
-    school: Spirit
-    desc: Clarity desc
-    target_optional: false
-    is_revive: false
-    is_stun: false
-    roll: true
-  Dreamtrap:
-    name: Dreamtrap
-    level: 7
-    school: Spirit
-    desc: Dreamtrap desc
-    target_optional: true
-    is_revive: false
-    is_stun: false
-    roll: true
-    target_num: 1
-  Rewrite History:
-    name: Rewrite History
-    level: 7
-    school: Spirit
-    desc: Rewrite History desc
-    target_optional: true
-    target_num: 1
-    is_revive: false
-    is_stun: false
-    roll: true
-  Mass Awaken Terror:
-    name: Mass Awaken Terror
     level: 3
+    line_of_sight: true
+    multi_target: false
+    name: Mind Bolt
+    notes: ''
+    range: Short
     school: Spirit
-    desc: Mass Awaken Terror
     target_optional: true
-    target_num: 3
+    weapon: Mind Bolt
+  Minor Jinx:
+    attack_mod: -1
+    available: true
+    casting_time: 1 round
+    defense_mod: -1
+    desc: "The target's chance of botching their intended action increases slightly. "
+    duration: 2 rounds
+    is_potion: true
     is_revive: false
     is_stun: false
-    roll: true
-  #Level 8
-  Heirloom Object:
-    name: Heirloom Object
-    level: 8
+    level: 3
+    line_of_sight: true
+    multi_target: false
+    name: Minor Jinx
+    notes: ''
+    range: Short
+    rounds: 2
     school: Spirit
-    desc: Heirloom Object desc
-    target_optional: false
-    is_revive: false
-    is_stun: false
-    roll: true
-  Curse Of Twilight:
-    name: Curse of Twilight
-    level: 8
-    school: Spirit
-    desc: Curse of Twilight desc
-    target_optional: true
+    spell_mod: -1
     target_num: 1
+    target_optional: true
+  Minor Luck:
+    attack_mod: 1
+    available: true
+    casting_time: 1 round
+    defense_mod: 1
+    desc: The target's chance of succeeding in their intended action is improved slightly.
+    duration: 2 rounds
+    is_potion: true
     is_revive: false
     is_stun: false
+    level: 3
+    line_of_sight: true
+    multi_target: false
+    name: Minor Luck
+    notes: ''
+    range: Short
+    rounds: 2
+    school: Spirit
+    spell_mod: 1
+    target_num: 1
+    target_optional: true
+  Group Comprehend Languages:
+    available: true
+    casting_time: 1 round
+    desc: "Up to 4 targets of the caster's choice are able to comprehend any spoken
+      or written language for the duration of the spell. This does not apply to text
+      written in code."
+    duration: 24 hours
+    is_potion: true
+    is_revive: false
+    is_stun: false
+    level: 4
+    line_of_sight: false
+    multi_target: true
+    name: Group Comprehend Languages
+    notes: ''
+    range: Short
     roll: true
+    school: Spirit
+    target_num: 3
+    target_optional: true
+  Potions (Spirit):
+    desc: Potions desc
+    level: 4
+    name: Potions
+    school: Spirit
+  Spell Fatigue Heal:
+    available: false
+    casting_time: 1 round
+    desc: Heal a target of spell fatigue. Cannot be cast on oneself.
+    is_potion: true
+    is_revive: false
+    is_stun: false
+    level: 4
+    line_of_sight: true
+    multi_target: false
+    name: Spell Fatigue Heal
+    notes: ''
+    range: Short
+    roll: true
+    school: Spirit
+    target_num: 1
+    target_optional: true
+  Spirit Of Pacifism:
+    available: false
+    casting_time: 1 round
+    desc: So long as the caster does not attack or block, they are not seen as an
+      viable threat or target by aggressors. They are not immune to unintended AoE
+      attacks.
+    duration: 10 minutes
+    is_potion: true
+    is_revive: false
+    is_stun: false
+    level: 4
+    line_of_sight: false
+    multi_target: false
+    name: Spirit of Pacifism
+    notes: ''
+    range: Self
+    roll: true
+    school: Spirit
+    target_optional: false
+  Telepathic Reading:
+    available: true
+    casting_time: 1 round
+    desc: Read someone's surface thoughts.
+    duration: 30 minutes
+    is_revive: false
+    is_stun: false
+    level: 4
+    line_of_sight: false
+    multi_target: false
+    name: Telepathic Reading
+    notes: ''
+    range: Short
+    roll: true
+    school: Spirit
+    target_num: 1
+    target_optional: true
+  Commune With Local Spirit:
+    available: true
+    casting_time: 1 round to conjure, 1 round per question.
+    desc: 'You may contact a <a href="http://spiritlakemu.com/wiki/creatures#spirits-and-ghosts"
+      style="color: #A7C6DA" target="_blank">spirit</a> and ask it one question per
+      round. The spirit s knowledge is limited to matters within its immediate area
+      or expertise.'
+    duration: 15 minutes
+    is_revive: false
+    is_stun: false
+    level: 5
+    line_of_sight: false
+    multi_target: false
+    name: Commune with Local Spirit
+    notes: ''
+    range: Short
+    roll: true
+    school: Spirit
+    target_num: 1
+    target_optional: true
+  Medium Jinx:
+    attack_mod: -2
+    available: false
+    casting_time: 1 round
+    defense_mod: -2
+    desc: "The target's chance of botching their intended action increases slightly
+      more. "
+    duration: 3 rounds
+    is_revive: false
+    is_stun: false
+    level: 5
+    line_of_sight: true
+    multi_target: false
+    name: Medium Jinx
+    notes: ''
+    range: Long
+    rounds: 3
+    school: Spirit
+    spell_mod: -2
+    target_num: 1
+    target_optional: true
+  Medium Luck:
+    attack_mod: 2
+    available: true
+    casting_time: 1 round
+    defense_mod: 2
+    desc: The target's chance of succeeding in their intended action is improved slightly
+      more.
+    duration: 3 rounds
+    is_revive: false
+    is_stun: false
+    level: 5
+    line_of_sight: true
+    multi_target: false
+    name: Medium Luck
+    notes: ''
+    range: Long
+    rounds: 3
+    school: Spirit
+    spell_mod: 2
+    target_num: 1
+    target_optional: true
+  Memory Dive:
+    available: true
+    casting_time: '1+ rounds at GM\u2019s discretion. '
+    desc: 'Search someone\u2019s memory for specific events. '
+    duration: 30 minutes
+    is_revive: false
+    is_stun: false
+    level: 5
+    line_of_sight: false
+    multi_target: false
+    name: Memory Dive
+    notes: ''
+    range: Short
+    roll: true
+    school: Spirit
+    target_num: 1
+    target_optional: true
+  Pass Unseen:
+    available: false
+    casting_time: 1 round
+    desc: "The caster's presence is completely ignored by all thinking beings or creatures. %R%RThere is no physical change, the mind simply rejects any sensory signs of the caster for the duration of the spell. Large disruptions or sudden violence by the caster will break the spell."
+    duration: 10 minutes
+    is_revive: false
+    is_stun: false
+    level: 5
+    line_of_sight: false
+    multi_target: false
+    name: Pass Unseen
+    notes: ''
+    range: Self
+    roll: true
+    school: Spirit
+    target_optional: false
+  Simple Command:
+    available: true
+    casting_time: 1 round
+    desc: 'Implant a one-word command in a target''s mind.They cannot be commanded
+      to harm themselves.%R%R Unless they have psionic powers themselves, they
+      must follow the command. If they do have psionic powers, they roll Spirit vs
+      the caster''s Spirit.  '
+    duration: 5 minutes
+    is_revive: false
+    is_stun: false
+    level: 5
+    line_of_sight: true
+    multi_target: false
+    name: Simple Command
+    notes: ''
+    range: Short
+    roll: true
+    school: Spirit
+    target_num: 3
+    target_optional: true
+  Familiar (Spirit):
+    desc: Familiar  desc
+    is_revive: false
+    is_stun: false
+    level: 6
+    name: Familiar
+    roll: true
+    school: Spirit
+    target_optional: false
+  Rewrite Memory:
+    available: true
+    casting_time: 1 round to cast, additional rounds for rewriting at GM's discretion,
+      up to 6
+    desc: Rewrite or remove someone's memory of an  event, up to 1 hour long.
+    duration: 30 minutes
+    is_revive: false
+    is_stun: false
+    level: 6
+    line_of_sight: false
+    multi_target: false
+    name: Rewrite Memory
+    notes: ''
+    range: Short
+    roll: true
+    school: Spirit
+    target_num: 1
+    target_optional: true
+  Sleep:
+    available: false
+    casting_time: 1 round
+    desc: The target becomes overwhelmed by the desire to sleep and falls unconscious.
+      They are only awoken if attacked or if an ally uses a round to attempt to awaken
+      them.
+    duration: 15 minutes
+    is_revive: false
+    is_stun: false
+    level: 6
+    line_of_sight: false
+    multi_target: false
+    name: Sleep
+    notes: ''
+    range: Short
+    roll: true
+    school: Spirit
+    target_num: 1
+    target_optional: true
+  Clarity:
+    available: true
+    casting_time: 1 round
+    desc: 'The caster extends their senses to all beings within range. While their
+      body lies senseless and incapacitated, they see and feel everything sensed by
+      every sapient creature in that area. They can identify the presence, quantity,
+      and location of non-sapient creatures.%R%R
+
+      The caster can choose to absorb all experiences at a surface level, or focus
+      their attention on up to five individuals at a time for more details.'
+    duration: 15 minutes
+    is_revive: false
+    is_stun: false
+    level: 7
+    line_of_sight: false
+    multi_target: false
+    name: Clarity
+    notes: ''
+    range: Long
+    roll: true
+    school: Spirit
+    target_optional: false
+  Energize Dimensional Anchor (Spirit):
+    available: false
+    casting_time: 2 minutes
+    desc: Provide necessary magical energy of the appropriate School to a Dimensional
+      Anchor spell, enabling the linked casters to permanently close an interdimensional
+      portal.
+    is_revive: false
+    is_stun: false
+    level: 7
+    line_of_sight: false
+    multi_target: false
+    name: Dimensional Anchor
+    notes: ''
+    range: Touch
+    roll: true
+    school: Spirit
+    target_optional: false
+  Dreamtrap:
+    available: false
+    casting_time: 1 round
+    desc: The caster puts their their target to sleep (if awake) and draws them into
+      a dream. The caster has control of the dream and its events, although they may
+      allow the target's subconscious to fill in details. While in the dream, all
+      encounters seem real, though physical damage in the dream world is imaginary
+      and vanishes upon awakening.
+    duration: 2 hours
+    is_revive: false
+    is_stun: false
+    level: 7
+    line_of_sight: false
+    multi_target: false
+    name: Dreamtrap
+    notes: ''
+    range: Short
+    roll: true
+    school: Spirit
+    target_num: 1
+    target_optional: true
+  Rewrite History:
+    available: false
+    casting_time: 1 round to cast, plus additional rounds at GM's discretion according
+      to complexity of the rewrite.
+    desc: "Permanently rewrite the mind of the target, changing or replacing any and
+      all memories. %R%RThe target\u2019s mind, in conjunction with the spell,
+      will fill in the gaps and discrepancies, glossing over irregularities."
+    is_revive: false
+    is_stun: false
+    level: 7
+    line_of_sight: false
+    multi_target: false
+    name: Rewrite History
+    notes: ''
+    range: Short
+    roll: true
+    school: Spirit
+    target_num: 1
+    target_optional: true
+  Curse Of Twilight:
+    available: false
+    casting_time: 1 round
+    desc: The target of the spell is forgotten by those who know them. They are not
+      unseen, but are treated as strangers, any reference to who they were denied.
+      Any new connections forged are reset at twilight of each day.
+    duration: 1 year and 1 day
+    is_revive: false
+    is_stun: false
+    level: 8
+    line_of_sight: true
+    multi_target: false
+    name: Curse of Twilight
+    notes: ''
+    range: Short
+    roll: true
+    school: Spirit
+    target_num: 1
+    target_optional: true
+  Heirloom Object:
+    available: true
+    casting_time: 3 hours
+    desc: "The caster is capable of concealing a fragment of their spirit and binding
+      it to an inanimate object. If the caster is killed, their full spirit enters
+      the object after 60 seconds.%R%R\n\nUsing this spell does not harm the caster.
+      Though it may contain a portion of the caster's spirit, they have no awareness
+      of the object once leaving its presence. %R%R\n\nThe object may be stored
+      anywhere, but there must be an open portal path between the caster and the object
+      within 60 seconds of death in order for the spirit to enter the object. Otherwise,
+      they are killed.%R%R\n\nOnce their full spirit has entered the object, the
+      caster exists as a sapient object. They are incapable of movement but retain
+      their spell casting abilities. Any who hold the trinket can freely converse
+      with the caster via telepathy.%R%R\n\nIf the object is destroyed, so is
+      that piece of the caster\u2019s spirit. If the object is destroyed after the
+      caster fully inhabits it, the caster dies permanently.%R%R\n<i>Costs one
+      luck to cast.</i>"
+    is_revive: false
+    is_stun: false
+    level: 8
+    line_of_sight: false
+    multi_target: false
+    name: Heirloom Object
+    notes: ''
+    range: Touch
+    roll: true
+    school: Spirit
+    target_optional: false

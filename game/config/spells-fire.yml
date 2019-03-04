@@ -1,197 +1,353 @@
----
 spells:
-## Fire
-  #Level 1
   Fire Starter:
+
+    available: true
+    casting_time: 1 round
+    desc: Create a flame the size of a ligher.
+    duration: 10 minutes
+    is_revive: false
+    is_stun: false
+    level: 1
+    line_of_sight: true
+    multi_target: false
     name: Fire Starter
-    level: 1
-    school: Fire
-    desc: Fire Starter desc
-    target_optional: false
-    is_revive: false
-    is_stun: false
+    notes: ''
+    range: Short
     roll: true
+    school: Fire
+    target_optional: false
   Light:
-    name: Light
+
+    available: true
+    casting_time: 1 round
+    desc: Create a beam of light equivilent to 300 lumens (a small LED flashlight).
+    duration: 10 minutes
+    is_revive: false
+    is_stun: false
     level: 1
-    school: Fire
-    desc: Flashlight desc
-    target_optional: false
-    is_revive: false
-    is_stun: false
+    line_of_sight: true
+    multi_target: false
+    name: Light
+    notes: ''
+    range: Short
     roll: true
-  #Level 2
-  Shape Fire:
-    name: Shape Fire
-    level: 2
     school: Fire
-    desc: Shape Fire desc
     target_optional: false
-    is_revive: false
-    is_stun: false
-    roll: true
   Blur Image:
-    name: Blur Image
-    level: 2
-    school: Fire
-    desc: Blur Image desc
-    target_optional: false
-    is_revive: false
-    is_stun: false
+
+    available: true
+    casting_time: 1 round
     defense_mod: 1
+    desc: Through a trick of light, the caster bolsters their defense by making themselves
+      more difficult to target for a round.
+    duration: 2 rounds
     is_potion: true
-    rounds: 2
-  Shape Light:
-    name: Shape Light
+    is_revive: false
+    is_stun: false
     level: 2
+    line_of_sight: false
+    multi_target: false
+    name: Blur Image
+    notes: ''
+    range: Self
+    rounds: 2
     school: Fire
-    desc: Shape Light desc
     target_optional: false
+  Shape Fire:
+    area: 5 cubic feet
+    available: true
+    casting_time: 1 round
+    desc: The caster is able to influence flames they can see and that fit within
+      a 5-foot cube.
+    duration: 1 hour
     is_revive: false
     is_stun: false
+    level: 2
+    line_of_sight: true
+    multi_target: false
+    name: Shape Fire
+    notes: ''
+    range: Short
     roll: true
-  #Level 3
-  Hot Hands:
-    name: Hot Hands
-    level: 3
     school: Fire
-    desc: Hot Hands desc
-    target_optional: true
-    fs3_attack: true
+    target_optional: false
+  Shape Light:
+    area: 5 cubic feet
+    available: true
+    casting_time: 1 round
+    desc: Cause ambient light to form into simple non-weaponized shapes and colors
+      that animate at your direction. Any intelligent creature could identify any
+      images made with this spell as crude and artificial.
+    duration: 1 hour
     is_revive: false
     is_stun: false
-    weapon: Hot Hands
-    is_potion: true
+    level: 2
+    line_of_sight: true
+    multi_target: false
+    name: Shape Light
+    notes: ''
+    range: Short
+    roll: true
+    school: Fire
+    target_optional: false
   Endure Fire:
-    name: Endure Fire
+
+    available: true
+    casting_time: 1 round
+    desc: Caster is immune to fire and the negative effects of extreme heat.
+    duration: 10 minutes
+    is_potion: true
+    is_revive: false
+    is_stun: false
     level: 3
+    line_of_sight: false
+    multi_target: false
+    name: Endure Fire
+    notes: Needs limitations as to how hot and how cold
+    range: Self
+    roll: true
     school: Fire
-    desc: Endure Fire desc
     target_optional: false
+  Hot Hands:
+
+    available: true
+    casting_time: 1 round
+    desc: The caster's fingertips become red hot and capable of inflicting burn damage
+      on touch.
+    duration: 1 round
+    fs3_attack: true
+    is_potion: true
     is_revive: false
     is_stun: false
-    roll: true
-    is_potion: true
-  #Level 4 Fire
-  "Potions (Fire)":
-    name: 'Potions'
-    level: 4
+    level: 3
+    line_of_sight: false
+    multi_target: false
+    name: Hot Hands
+    notes: ''
+    range: Touch
     school: Fire
-    desc: Potions desc
+    target_optional: true
+    weapon: Hot Hands
   Fire Weapon:
-    name: Fire Weapon
-    level: 4
-    school: Fire
-    desc: Fire Weapon desc
-    target_optional: true
-    target_num: 1
-    is_revive: false
-    is_stun: false
-    weapon_specials: Fire
-    rounds: 100
+
+    available: true
+    casting_time: 1 round
+    desc: Augment one specified pre-existing weapon with dancing flames, increasing
+      its damage.
+    duration: 3 hours
     is_potion: true
-  Flame Burst:
-    name: Flame Burst
+    is_revive: false
+    is_stun: false
     level: 4
+    line_of_sight: false
+    multi_target: false
+    name: Fire Weapon
+    notes: ''
+    range: Touch
+    rounds: 100
     school: Fire
-    desc: Hot Hands desc
+    target_num: 1
     target_optional: true
+    weapon_specials: Fire
+  Flame Burst:
+
+    available: true
+    casting_time: 1 round
+    desc: The caster hurls a ball of swirling flames at a single target.
+
     fs3_attack: true
     is_revive: false
     is_stun: false
+    level: 4
+    line_of_sight: true
+    multi_target: false
+    name: Flame Burst
+    notes: ''
+    range: Short
+    school: Fire
+    target_num: 1
+    target_optional: true
     weapon: Flame Burst
-    target_num: 1
-  #Level 5
+  Potions (Fire):
+    desc: Potions desc
+    level: 4
+    name: Potions
+    school: Fire
   Flares:
+    area: 10 yard radius
+    available: true
+    casting_time: 1 round
+    desc: Colorful flares explode outwards from central points. The bursts of intense
+      heat sear through anything in their path, affecting up to 3 targets.
+
+    fs3_attack: true
+    is_revive: false
+    is_stun: false
+    level: 5
+    line_of_sight: true
+    multi_target: true
     name: Flares
-    level: 5
+    notes: ''
+    range: Long
     school: Fire
-    desc: Flares desc
-    target_optional: true
-    fs3_attack: true
-    is_revive: false
-    is_stun: false
-    weapon: Flares
     target_num: 3
+    target_optional: true
+    weapon: Flares
   Invisible:
-    name: Invisible
+
+    available: true
+    casting_time: 1 round
+    desc: 'The caster bends light around the target''s form, making them invisible
+      and effectively  <a href="https://www.aresmush.com/fs3/fs3-3/combat/#stance"
+      style="color: #A7C6DA" target="_blank">hidden.</a> The caster may end the spell
+      at any time.'
+    duration: 5 minutes
+    is_revive: false
+    is_stun: false
     level: 5
-    school: Fire
-    desc: Shape Light desc
-    target_optional: true
-    target_num: 1
-    is_revive: false
-    is_stun: false
-    stance: hidden
+    line_of_sight: true
+    multi_target: false
+    name: Invisible
+    notes: ''
+    range: Short
     rounds: 30
-  #Level 6
-  "Familiar (Fire)":
-    name: Familiar
-    level: 6
     school: Fire
+    stance: hidden
+    target_num: 1
+    target_optional: true
+  Familiar (Fire):
     desc: Familiar  desc
-    target_optional: false
     is_revive: false
     is_stun: false
-    roll: true
-  Pyre:
-    name: Pyre
     level: 6
-    school: Fire
-    desc: Pyre desc
-    target_optional: true
-    fs3_attack: true
-    is_revive: false
-    target_num: 1
-    is_stun: false
-    weapon: Pyre
-  #Level 7
-  Complex Illusion:
-    name: Complex Illusion
-    level: 7
-    school: Fire
-    desc: Complex Illusion desc
-    target_optional: true
-    target_num: 1
-    is_revive: false
-    is_stun: false
+    name: Familiar
     roll: true
-  "Phoenix's Healing Flames":
-    name: Phoenix's Healing Flames
-    level: 7
     school: Fire
-    desc: Phoenix's Healing Flames desc
-    is_revive: false
-    is_stun: false
-    roll: false
-    target_optional: true
-    target_num: 1
-  Energize Dimensional Anchor (Fire):
-    name: 'Dimensional Anchor'
-    level: 7
-    school: Fire
-    desc: Dimensional Anchor desc
     target_optional: false
-    is_revive: false
-    is_stun: false
-    roll: true
-  #Level 8
-  Firestorm:
-    name: Firestorm
-    level: 8
-    school: Fire
-    desc: Firestorm desc
-    target_optional: true
-    target_num: 10
+  Pyre:
+
+    available: true
+    casting_time: 1 round
+    desc: 'Gouts of flame are summoned up from the ground, engulfing the target.
+
+'
+
     fs3_attack: true
     is_revive: false
     is_stun: false
-    weapon: Firestorm
-  "Phoenix's Last Flight":
-    name: Phoenix's Last Flight"
-    level: 8
+    level: 6
+    line_of_sight: true
+    multi_target: false
+    name: Pyre
+    notes: ''
+    range: Long
     school: Fire
-    desc: Phoenix's Last Flight" desc
+    target_num: 1
+    target_optional: true
+    weapon: Pyre
+  Complex Illusion:
+    area: 10 yard radius
+    available: true
+    casting_time: 1 minute
+    desc: 'Create a complicated, convincing visual illusion that fools most observers.
+      The illusion can be quite large, with many moving parts, such as a forest scene
+      or a busy street. Can be used to <a href="https://www.aresmush.com/fs3/fs3-3/combat/#stance"
+      style="color: #A7C6DA" target="_blank">hide</a> groups.%R%RThose with enhanced
+      senses such as smell, hearing, or psionic abilities are more likely to identify
+      the scene as an illusion according to its content, and may do so with an appropriate
+      roll.'
+    duration: 15 minutes
     is_revive: false
     is_stun: false
+    level: 7
+    line_of_sight: true
+    multi_target: false
+    name: Complex Illusion
+    notes: ''
+    range: Short
+    roll: true
+    school: Fire
+    target_num: 1
+    target_optional: true
+  Energize Dimensional Anchor (Fire):
+
+    available: true
+    casting_time: 2 minutes
+    desc: Provide necessary magical energy of the appropriate School to a Dimensional
+      Anchor spell, enabling the linked casters to permanently close an interdimensional
+      portal.
+
+    is_revive: false
+    is_stun: false
+    level: 7
+    line_of_sight: false
+    multi_target: false
+    name: Dimensional Anchor
+    notes: ''
+    range: Touch
+    roll: true
+    school: Fire
+    target_optional: false
+  Phoenix's Healing Flames:
+
+    available: true
+    casting_time: 1 round
+    desc: A knocked out target is overtaken by flames and reduced to ashes. From beneath
+      those ashes, they are revived and able to return to the fight. %R%RA revived
+      target has no wounds and no spell fatigue.%R%R A magic user who knows this
+      spell is automatically consumed and revived when they themselves can no longer
+      fight. This takes 1 round after they are knocked out.
+
+    is_revive: false
+    is_stun: false
+    level: 7
+    line_of_sight: true
+    multi_target: false
+    name: Phoenix's Healing Flames
+    notes: This can work, but needs more coding to remove wounds.
+    range: Long
+    roll: false
+    school: Fire
+    target_num: 1
+    target_optional: true
+  Firestorm:
+    area: Up to 1 square mile
+    available: true
+    casting_time: 1 round
+    desc: Call down a massive storm of fire on a place that you can see. It consumes
+      most things in its path, doing immense damage.
+
+    fs3_attack: true
+    is_revive: false
+    is_stun: false
+    level: 8
+    line_of_sight: true
+    multi_target: true
+    name: Firestorm
+    notes: ''
+    range: Massive
+    school: Fire
+    target_num: 10
+    target_optional: true
+    weapon: Firestorm
+  Phoenix's Last Flight:
+
+    available: true
+    casting_time: 1 round
+    desc: "A target who has died in the last 60 seconds is overtaken by flames and
+      reduced to ashes. From beneath those ashes, they are revived. %R%RA revived
+      target is unable to return to the fight without further healing. They are both
+      incapacitated and suffering from spell fatigue.%R%R A magic user who knows
+      this spell is automatically consumed and revived when they themselves fall.
+      \n%R%R\n<i>Costs two luck to cast.</i>"
+
     is_res: true
+    is_revive: false
+    is_stun: false
+    level: 8
+    line_of_sight: true
+    multi_target: false
+    name: Phoenix's Last Flight"
+    notes: Needs coded
+    range: Long
+    school: Fire
