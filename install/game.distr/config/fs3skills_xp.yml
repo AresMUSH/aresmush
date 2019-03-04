@@ -12,7 +12,7 @@ fs3skills:
     minute:
     - 0
   attr_dots_beyond_chargen_max: 2
-  action_dots_beyond_chargen_max: 4
+  action_dots_beyond_chargen_max: 3
   skills_requiring_training:
   - Demolitions
   - Gunnery

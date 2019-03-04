@@ -23,7 +23,7 @@ module AresMUSH
 
       scene_pose = ScenePose.create(pose: pose, character: character, scene: scene, is_setpose: is_setpose, is_ooc: is_ooc)
       if (!scene_pose.is_system_pose?)
-        scene.participants.add character
+        Scenes.add_participant(scene, character)
       end
 
       scene.mark_unread(character)
