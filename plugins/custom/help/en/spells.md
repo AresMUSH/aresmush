@@ -5,6 +5,8 @@ summary: Learning & casting spells
 # Spells
 `spells [<name>]` - See a list of your spells or someone else's spells, including spells you are learning.
 
+`spell <spell>` - See the details of a spell.
+
 `spell/cast <spell>` - Cast a spell on yourself, the environment, or an object.
 `spell/cast <spell>=<target>[<target> <target>]` - Cast a spell on one or more targets.
 
