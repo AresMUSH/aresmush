@@ -1,246 +1,469 @@
----
 spells:
-# Will
-  #Level 1
-  Mend:
-    name: Mend
-    level: 1
-    school: Will
-    desc: Mend desc
-    target_optional: false
-    is_revive: false
-    is_stun: false
-    roll: Will
-    is_potion: true
-  Deface:
-    name: Deface
-    level: 1
-    school: Will
-    desc: Make simple or cosmetic damage to an object. For example, cause a one inch rip or crack, add a small spot of tarnish or dirt, or make a scratch of no more than a few inches.
-    target_optional: false
-    is_revive: false
-    is_stun: false
-    roll: Will
-    is_potion: true
   Beginner Telekinesis:
-    name: 'Beginner Telekinesis'
-    level: 1
-    school: Will
-    desc: Minor Telekinesis desc
-    target_optional: false
-    is_revive: false
-    is_stun: false
-    roll: Will
-  #Level 2
-  Minor Telekinesis:
-    name: 'Minor Telekinesis'
-    level: 2
-    school: Will
-    desc: Minor Telekinesis desc
-    target_optional: false
-    is_revive: false
-    is_stun: false
-    roll: Will
-  #Level 3
-  Telekinetic Hold:
-    name: 'Telekinetic Hold'
-    level: 3
-    school: Will
-    desc: Telekinetic Hold desc
-    target_optional: true
-    fs3_attack: true
-    is_revive: false
-    target_num: 1
-    is_stun: true
-    weapon: Stun (Will)
-  Intermediate Telekinesis:
-    name: 'Intermediate Telekinesis '
-    level: 3
-    school: Will
-    desc: Intermediate Telekinesis  desc
-    target_optional: false
-    is_revive: false
-    is_stun: false
-    roll: Will
-  Telekinetic Block:
-    name: 'Telekinetic Block '
-    level: 3
-    school: Will
-    desc: Telekinetic Block  desc
-    target_optional: true
-    target_num: 1
-    is_revive: false
-    stance: cover
-    rounds: 1
-  #Level 4 Will
-  "Potions (Will)":
-    name: 'Potions'
-    level: 4
-    school: Will
-    desc: Potions desc
-  Transform Weapon:
-    name: 'Transform Weapon'
-    level: 4
-    school: Will
-    desc: Transform Weapon desc
-    target_optional: false
-    is_revive: false
-    is_stun: false
-    is_potion: true
-    weapon_specials: Transform
-    rounds: 100
-  Telekinetic Armor:
-    name: 'Telekinetic Armor'
-    level: 4
-    school: Will
-    desc: Telekinetic Armor desc
-    target_optional: false
-    is_revive: false
-    is_stun: false
-    armor: Telekinetic
-    is_potion: true
-  Telekinetic Burst:
-    name: 'Telekinetic Burst'
-    level: 4
-    school: Will
-    desc: Telekinetic Burst desc
-    target_optional: true
-    fs3_attack: true
-    is_revive: false
-    is_stun: false
-    weapon: Telekinetic Burst
-  Major Telekinesis:
-    name: 'Major Telekinesis '
-    level: 4
-    school: Will
-    desc: Major Telekinesis  desc
-    target_optional: false
-    is_revive: false
-    is_stun: false
-    roll: true
-  #Level 5
-  Telekinetic Precision:
-    name: 'Telekinetic Precision '
-    level: 5
-    school: Will
-    desc: Telekinetic Precision desc
-    target_optional: false
-    is_revive: false
-    is_stun: false
-    roll: true
-  Levitate:
-    name: 'Levitate'
-    level: 5
-    school: Will
-    desc: Levitate desc
-    target_optional: true
-    target_num: 1
-    is_revive: false
-    is_stun: false
-    roll: true
-  #Level 6
-  "Familiar (Will)":
-    name: Familiar
-    level: 6
-    school: Will
-    desc: Familiar  desc
-    target_optional: false
-    is_revive: false
-    is_stun: false
-    roll: true
-  Massive Telekinesis:
-    name: 'Massive Telekinesis '
-    level: 6
-    school: Will
-    desc: Massive Telekinesis  desc
-    target_optional: false
-    is_revive: false
-    is_stun: false
-    roll: Will
-  Transmutation Armor:
-    name: 'Transmutation Armor'
-    level: 6
-    school: Will
-    desc: Transmutation Armor desc
-    target_optional: false
-    is_revive: false
-    is_stun: false
-    armor: Transmutation
-  #Level 7
-  Mass Telekinetic Burst:
-    name: 'Mass Telekinetic Burst'
-    level: 7
-    school: Will
-    desc: Mass Telekinetic Burst desc
-    target_optional: true
-    target_num: 3
-    fs3_attack: true
-    is_revive: false
-    is_stun: false
-    weapon: Mass Telekinetic Burst
-  Test:
-    name: 'Mass Flight'
-    level: 7
-    school: Will
-    desc: Mass Flight Burst desc
-    target_optional: true
-    target_num: 3
-    is_revive: false
-    is_stun: false
-    roll: true
-  Dimensional Anchor:
-    name: 'Dimensional Anchor'
-    level: 7
-    school: Will
-    desc: Dimensional Anchor desc
-    target_optional: false
-    is_revive: false
-    is_stun: false
-    roll: true
-  Energize Dimensional Anchor (Will):
-    name: 'Dimensional Anchor'
-    level: 7
-    school: Will
-    desc: Dimensional Anchor desc
-    target_optional: false
-    is_revive: false
-    is_stun: false
-    roll: true
-  Open Local Portal:
-    name: 'Open Local Portal'
-    level: 7
-    school: Will
-    desc: Open Local Portal desc
-    target_optional: false
-    is_revive: false
-    is_stun: false
-    roll: true
 
-  #Level 8
-  Microscopic Telekinesis:
-    name: 'Microscopic Telekinesis'
-    level: 8
-    school: Will
-    desc: Microscopic Telekinesis desc
-    target_optional: false
+    available: true
+    casting_time: 1 round, plus additional rounds to manipulate at GM's discretion
+    desc: The caster is able to slowly lift and manipulate 1 pound of material almost
+      as if with their hands. This manipulation is not precise and cannot travel above
+      2 mph.
+    duration: 10 minutes
     is_revive: false
     is_stun: false
-    roll: true
-  Titanic Telekinesis:
-    name: 'Titanic Telekinesis'
-    level: 8
+    level: 1
+    line_of_sight: true
+    multi_target: false
+    name: Beginner Telekinesis
+    notes: ''
+    range: Short
+    roll: Will
     school: Will
-    desc: Titanic Telekinesis desc
     target_optional: false
+  Deface:
+
+    available: true
+    casting_time: 1 round
+    desc: 'Make simple or cosmetic damage to an object.
+
+      <br><br>
+
+      For example, cause a one inch rip or crack, add a small spot of tarnish or dirt,
+      or make a scratch of no more than a few inches.'
+
+    is_potion: true
     is_revive: false
     is_stun: false
+    level: 1
+    line_of_sight: false
+    multi_target: false
+    name: Deface
+    notes: ''
+    range: Touch
+    roll: Will
+    school: Will
+    target_optional: false
+  Mend:
+
+    available: true
+    casting_time: 1 round
+    desc: Make simple or cosmetic repairs on an object.<br><br>For example, repair
+      a one inch rip or crack, remove a small spot of tarnish or dirt, or fix a scratch
+      of no more than a few inches.
+
+    is_potion: true
+    is_revive: false
+    is_stun: false
+    level: 1
+    line_of_sight: false
+    multi_target: false
+    name: Mend
+    notes: ''
+    range: Touch
+    roll: Will
+    school: Will
+    target_optional: false
+  Minor Telekinesis:
+
+    available: true
+    casting_time: 1 round, plus additional rounds to manipulate at GM's discretion
+    desc: The caster is able to slowly lift and manipulate 5 pounds of material almost
+      as if with their hands. This manipulation is not precise and cannot travel above
+      10 mph.
+    duration: 1 hour
+    is_revive: false
+    is_stun: false
+    level: 2
+    line_of_sight: false
+    multi_target: false
+    name: Minor Telekinesis
+    notes: ''
+    range: Short
+    roll: Will
+    school: Will
+    target_optional: false
+  Intermediate Telekinesis:
+
+    available: true
+    casting_time: 1 round, plus additional rounds for movement at the GM's discretion
+    desc: The caster can lift and move an object weighing up to 100 lbs at will from
+      a distance. This manipulation is not precise and cannot travel above 25 mph.
+    duration: 1 hour
+    is_revive: false
+    is_stun: false
+    level: 3
+    line_of_sight: false
+    multi_target: false
+    name: 'Intermediate Telekinesis '
+    notes: ''
+    range: Short
+    roll: Will
+    school: Will
+    target_optional: false
+  Telekinetic Block:
+
+    available: true
+    casting_time: 1 round
+    desc: 'Deflect attacks directed against you or a single comrade with a telekinetic
+      wall, effectively putting the target in  <a href="https://www.aresmush.com/fs3/fs3-3/combat/#stance"
+      style="color: #A7C6DA" target="_blank">cover.</a>'
+    duration: 1 round
+    is_revive: false
+    level: 3
+    line_of_sight: true
+    multi_target: false
+    name: 'Telekinetic Block '
+    notes: ''
+    range: Short
+    rounds: 1
+    school: Will
+    stance: cover
+    target_num: 1
+    target_optional: true
+  Telekinetic Hold:
+
+    available: true
+    casting_time: 1 round
+    desc: Subdue an enemy with telekinetic strength, disabling them for one round.
+
+    fs3_attack: true
+    is_revive: false
+    is_stun: true
+    level: 3
+    line_of_sight: true
+    multi_target: false
+    name: Telekinetic Hold
+    notes: ''
+    range: Short
+    school: Will
+    target_num: 1
+    target_optional: true
+    weapon: Stun (Will)
+  Major Telekinesis:
+
+    available: true
+    casting_time: 1 round, plus additional rounds for movement at the GM's discretion
+    desc: The caster can lift and move an object or person weighing up to 250 lbs
+      at will from a distance. This manipulation is not precise and cannot travel
+      above 35 mph.
+    duration: 1 hour
+    is_revive: false
+    is_stun: false
+    level: 4
+    line_of_sight: false
+    multi_target: false
+    name: 'Major Telekinesis '
+    notes: ''
+    range: Short
     roll: true
+    school: Will
+    target_optional: false
+  Potions (Will):
+    desc: Potions desc
+    level: 4
+    name: Potions
+    school: Will
+  Telekinetic Armor:
+
+    armor: Telekinetic
+    available: true
+    casting_time: 1 round
+    desc: A telekinetic shield envelops the caster's body, acting as armor.
+    duration: 3 hours
+    is_potion: true
+    is_revive: false
+    is_stun: false
+    level: 4
+    line_of_sight: false
+    multi_target: false
+    name: Telekinetic Armor
+    notes: ''
+    range: Self
+    school: Will
+    target_optional: false
+  Telekinetic Burst:
+
+    available: false
+    casting_time: 1 round
+    desc: The caster lashes out with a blunt telekinetic attack, dealing damage to
+      an opponent. On a hit, the opponent is pushed backwards 1-10 ft.
+
+    fs3_attack: true
+    is_revive: false
+    is_stun: false
+    level: 4
+    line_of_sight: true
+    multi_target: false
+    name: Telekinetic Burst
+    notes: ''
+    range: Short
+    school: Will
+    target_optional: true
+    weapon: Telekinetic Burst
+  Transform Weapon:
+
+    available: false
+    casting_time: 1 round
+    desc: Transform any weapon into a more powerful version of itself.
+    duration: 3 hours
+    is_potion: true
+    is_revive: false
+    is_stun: false
+    level: 4
+    line_of_sight: false
+    multi_target: false
+    name: Transform Weapon
+    notes: ''
+    range: Touch
+    rounds: 100
+    school: Will
+    target_optional: false
+    weapon_specials: Transform
+  Levitate:
+    desc: Levitate desc
+    is_revive: false
+    is_stun: false
+    level: 5
+    name: Levitate
+    roll: true
+    school: Will
+    target_num: 1
+    target_optional: true
+  Telekinetic Precision:
+
+    available: false
+    casting_time: 1 round, plus additional rounds to manipulate at GM's discretion
+    desc: 'Manipulate small objects with great precision. Objects may range in size
+      from 1 mm  to 5 cm.<br><br>
+
+
+      Manipulation requires knowledge. The caster cannot use telekinesis to pick locks
+      without lockpicking knowledge, or to load a gun without firearms knowledge.'
+    duration: 1 hour
+    is_revive: false
+    is_stun: false
+    level: 5
+    line_of_sight: false
+    multi_target: false
+    name: 'Telekinetic Precision '
+    notes: ''
+    range: Short
+    roll: true
+    school: Will
+    target_optional: false
+  Familiar (Will):
+    desc: Familiar  desc
+    is_revive: false
+    is_stun: false
+    level: 6
+    name: Familiar
+    roll: true
+    school: Will
+    target_optional: false
+  Massive Telekinesis:
+    area: 15 yard radius
+    available: true
+    casting_time: 1 round, plus additional rounds for movement at the GM's discretion
+    desc: 'Move an object weighing up to 5 tons. This is imprecise, and objects move
+      at a speed inverse to their weight. Smaller objects may move up to 35 mph; larger
+      objects move 15 mph.
+
+'
+    duration: 1 hour
+    is_revive: false
+    is_stun: false
+    level: 6
+    line_of_sight: false
+    multi_target: false
+    name: 'Massive Telekinesis '
+    notes: ''
+    range: Long
+    roll: Will
+    school: Will
+    target_optional: false
+  Transmutation Armor:
+
+    armor: Transmutation
+    available: false
+    casting_time: 1 round
+    desc: Transforms the caster's clothing into formidable armor.
+    duration: 8 hours
+    is_revive: false
+    is_stun: false
+    level: 6
+    line_of_sight: false
+    multi_target: false
+    name: Transmutation Armor
+    notes: This probably shouldn't cover the whole body? Maybe a use for armor specials.
+    range: Self
+    school: Will
+    target_optional: false
+  Dimensional Anchor:
+
+    available: true
+    casting_time: 2 minutes
+    desc: 'With the aid of at least one other caster of the appropriate School, become
+      an Anchor for the closing of a dimensional portal. May require additional casters
+      according to the portal''s magical energies.
+
+      <br> <br>
+
+      Travel, perception, and attacks through the targeted interdimensional portal
+      are reduced as the Anchor forces the portal to shrink. Once the spell is completed,
+      the portal is completely closed and the effect is permanent.'
+
+    is_revive: false
+    is_stun: false
+    level: 7
+    line_of_sight: false
+    multi_target: false
+    name: Dimensional Anchor
+    notes: ''
+    range: Touch
+    roll: true
+    school: Will
+    target_optional: false
+  Energize Dimensional Anchor (Will):
+
+    available: true
+    casting_time: 2 minutes
+    desc: Provide necessary magical energy of the appropriate School to a Dimensional
+      Anchor spell, enabling the linked casters to permanently close an interdimensional
+      portal.
+
+    is_revive: false
+    is_stun: false
+    level: 7
+    line_of_sight: false
+    multi_target: false
+    name: Dimensional Anchor
+    notes: ''
+    range: Touch
+    roll: true
+    school: Will
+    target_optional: false
+  Test:
+    desc: Mass Flight Burst desc
+    is_revive: false
+    is_stun: false
+    level: 7
+    name: Mass Flight
+    roll: true
+    school: Will
+    target_num: 3
+    target_optional: true
+  Mass Telekinetic Burst:
+    area: 15 yard radius
+    available: false
+    casting_time: 1 round
+    desc: 'The caster lashes out with a blunt telekinetic attack, dealing damage to
+      up to three targets. On a hit, the targets are pushed backwards 1-10 ft.
+
+'
+
+    fs3_attack: true
+    is_revive: false
+    is_stun: false
+    level: 7
+    line_of_sight: true
+    multi_target: true
+    name: Mass Telekinetic Burst
+    notes: ''
+    range: Long
+    school: Will
+    target_num: 3
+    target_optional: true
+    weapon: Mass Telekinetic Burst
+  Open Local Portal:
+
+    available: false
+    casting_time: 5 minutes
+    desc: 'The caster opens a permanent portal to a location in the same dimensional
+      world they are currently in. They must have two of the following in order to
+      open a portal to a location:<br><br>
+
+      <ul>
+
+      <li>Personal knowledge of the portal''s opening point. They have visited it
+      themselves and can remember the location.</li>
+
+      <li>The ability to see someone else''s memory of the location.</li>
+
+      <li>Exact GPS coordinates of the portal''s opening point.</li>
+
+      <li>A realistic depiction of the portal''s location, created in the last six
+      months. A recent photograph, life-like drawing, painting, etc.</li>'
+
+    is_revive: false
+    is_stun: false
+    level: 7
+    line_of_sight: false
+    multi_target: false
+    name: Open Local Portal
+    notes: ''
+    range: Touch
+    roll: true
+    school: Will
+    target_optional: false
   Massive Telekinetic Barrier:
-    name: 'Massive Telekinetic Barrier'
-    level: 8
-    school: Will
-    desc: An invisible, protective sphere is created in a 50 yard radius from the caster in all directions. Anything that attempts to cross the spell's boundary is deflected and the caster can open and close doorways through the barrier at will.
-    target_optional: false
+    area: 100 yard sphere
+    available: true
+    casting_time: 1 round
+    desc: An invisible, protective sphere is created in a 50 yard radius from the
+      caster in all directions. Anything that attempts to cross the spell's boundary
+      is deflected and the caster can open and close doorways through the barrier
+      at will.
+    duration: 12 hours
     is_revive: false
     is_stun: false
+    level: 8
+    line_of_sight: false
+    multi_target: false
+    name: Massive Telekinetic Barrier
+    notes: ''
+    range: Self
     roll: true
+    school: Will
+    target_optional: false
+  Microscopic Telekinesis:
+
+    available: false
+    casting_time: 1 round, plus additional rounds to manipulate at GM's discretion
+    desc: 'Manipulate microscopic objects with great precision. Objects may range
+      in size from 1 micrometer  to 1 milimeter.<br><br>
+
+
+      Manipulation requires knowledge. The caster cannot use telekinesis to vanquish
+      disease without exact medical knowledge, or to repair fine machinery without
+      engineering knowledge.'
+    duration: 1 hour
+    is_revive: false
+    is_stun: false
+    level: 8
+    line_of_sight: false
+    multi_target: false
+    name: Microscopic Telekinesis
+    notes: ''
+    range: Touch
+    roll: true
+    school: Will
+    target_optional: false
+  Titanic Telekinesis:
+    area: 30 yard cube
+    available: false
+    casting_time: 1 round, plus additional rounds for movement at the GM's discretion
+    desc: 'Move an object weighing up to 100 tons. This is imprecise, and objects
+      move at a speed inverse to their weight. Smaller objects may move up to 35 mph;
+      larger objects move a yard per minute.
+
+'
+    duration: 1 hour
+    is_revive: false
+    is_stun: false
+    level: 8
+    line_of_sight: false
+    multi_target: false
+    name: Titanic Telekinesis
+    notes: ''
+    range: Long
+    roll: true
+    school: Will
+    target_optional: false
