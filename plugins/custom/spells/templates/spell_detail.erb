@@ -1,0 +1,72 @@
+<%= header %>
+<% if potion  %>
+<%=  "%xh" -%>
+<%=  name -%>
+<%=  "%xn" -%>
+<%=  left( " (potion)" , 43 ) -%>
+<% else %>
+<%=  "%xh" -%>
+<%=  left( name , 57 ) -%>
+<%=  "%xn" -%>
+<% end %>
+<%=  "Level "  -%>
+<%=  level  -%>
+<%= " " -%>
+<%=  school   -%>
+<%= " spell"  %>
+<% if !available  %>
+<%=  "%xrTHIS SPELL IS NOT AVAILABLE TO LEARN%xn" %>
+<% end %>
+
+<%=  desc %>
+
+<%=  "%xhCast time:%xn " -%>
+<%= left( casting_time , 40)-%>
+<% if duration %>
+<%=  "%xhDuration:%xn " -%>
+<%= duration %>
+<% else %>
+<%=  "" %>
+<% end %>
+<%=  "%xhRange:%xn " -%>
+<% if los  %>
+<%= range -%>
+<%=  left(" (requires line of sight)" , 40)-%>
+<% else %>
+<%= left( range , 40 ) -%>
+<% end %>
+<% if area %>
+<%=  "%xhArea%xn " -%>
+<%= area %>
+<% else %>
+<%= "" %>
+<% end %>
+<% if targets %>
+<%=  "%xhTargets:%xn " -%>
+<%=  targets %>
+<% end %>
+<% if attack_mod || defense_mod || lethal_mod || spell_mod %>
+<%=  "%xhMod(s):%xn " -%>
+<%=  attack_mod %><%= " attack " -%>
+<% end %>
+<% if defense_mod %>
+<%=  defense_mod %><%= " defense " -%>
+<% end %>
+<% if lethal_mod %>
+<%=  lethal_mod  %><%= " lethality " -%>
+<% end %>
+<% if spell_mod %>
+<%=  spell_mod %><%= " spell " %>
+<% end %>
+<% if heal %>
+<%=  "%xhHeal points:%xn " -%>
+<%=  heal %>
+<% end %>
+<% if weapon %>
+<%=  "%xhWeapon:%xn " -%>
+<%=  weapon -%>
+<%=  " (for more details, do `weapon " -%>
+<%=  weapon -%>
+<%=  "`)" %>
+<% end %>
+<%= footer %>
