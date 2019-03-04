@@ -12,13 +12,13 @@ module AresMUSH
 
     def self.get_cmd_handler(client, cmd, enactor)
 
-     
+
 
     case cmd.root
     when "lastrp"
       return LastRPCmd
     end
-      
+
     #Comps
     case cmd.root
     when "comp"
@@ -37,8 +37,6 @@ module AresMUSH
         return PlotProposeCmd
       end
     end
-
-
 
       #Secrets
       case cmd.root
@@ -108,31 +106,33 @@ module AresMUSH
       #Spells
       case cmd.root
       when "spell"
-        case cmd.switch
-        when "request"
-          return SpellRequestCmd
-        when "mod"
-          return SpellModCmd
-        when "modis"
-          return SpellModIsCmd
-        when "cast"
-          if cmd.args.include?("=")
-            return SpellCastWithTargetCmd
-          else
-            return SpellCastCmd
+        if (cmd.args)
+          return SpellDetailCmd
+        else          
+          case cmd.switch
+          when "request"
+            return SpellRequestCmd
+          when "mod"
+            return SpellModCmd
+          when "modis"
+            return SpellModIsCmd
+          when "cast"
+            if cmd.args.include?("=")
+              return SpellCastWithTargetCmd
+            else
+              return SpellCastCmd
+            end
+          when "learn"
+            return SpellLearnCmd
+          when "discard"
+            return SpellDiscardCmd
+          when "add"
+            return SpellAddCmd
+          when "remove"
+            return SpellRemoveCmd
+          when "hascast"
+            return SpellHascastCmd
           end
-        when "castmulti"
-          return SpellCastWithMultiTargetCmd
-        when "learn"
-          return SpellLearnCmd
-        when "discard"
-          return SpellDiscardCmd
-        when "add"
-          return SpellAddCmd
-        when "remove"
-          return SpellRemoveCmd
-        when "hascast"
-          return SpellHascastCmd
         end
 
       end
