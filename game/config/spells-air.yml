@@ -1,246 +1,429 @@
----
 spells:
-# Air
-  #Level 1
   Gust:
-    name: 'Gust'
-    level: 1
-    school: Air
-    desc: Gust desc
-    target_optional: false
+    available: true
+    casting_time: 1 round
+    desc: Create a brief gust of wind capable of blowing a door shut.
+    duration: 10 minutes
     is_revive: false
     is_stun: false
+    level: 1
+    line_of_sight: false
+    multi_target: false
+    name: Gust
+    notes: ''
+    range: Short
     roll: true
+    school: Air
     target_num: 1
+    target_optional: false
   Spark:
-    name: 'Spark'
+    available: true
+    casting_time: 1 round
+    desc: The caster creates a small electric current visible between two fingers.
+      The electricity cannot be used to power anything more than 1.5 volts or cause
+      more than static shock-like effects in individuals.
+    duration: 10 minutes
+    is_revive: false
+    is_stun: false
     level: 1
-    school: Air
-    desc: The caster creates a small electric current visible between two fingers. The electricity cannot be used to power anything more than 1.5 volts or cause more than static shock-like effects in individuals.
-    target_optional: true
-    is_revive: false
-    is_stun: false
+    line_of_sight: false
+    multi_target: false
+    name: Spark
+    notes: ''
+    range: Touch
     roll: true
+    school: Air
     target_num: 1
-  #Level 2
-  Shape Air:
-    name: 'Shape Air'
-    level: 2
-    school: Air
-    desc: Shape Air desc
-    target_optional: false
-    is_revive: false
-    is_stun: false
-    roll: true
-  Wavering Aim:
-    name: 'Wavering Aim'
-    level: 2
-    school: Air
-    desc: Wavering Aim desc
-    is_stun: false
-    target_optional: false
-    is_revive: false
-    attack_mod: -1
-    rounds: 2
+    target_optional: true
   Cloud Cover:
-    name: 'Cloud Cover'
+    area: 5 ft radius
+    available: true
+    casting_time: 1 round
+    desc: 'Misty vapor gathers around you. It is stationary once created, and can
+      be dispersed by a strong wind. The vapor obscures all sight in a 5 ft radius,
+      effectively making anyone in its midst <a href="https://www.aresmush.com/fs3/fs3-3/combat/#stance"
+      style="color: #A7C6DA" target="_blank">hidden</a> while standing still.'
+    duration: 15 minutes
+    is_potion: true
+    is_revive: false
+    is_stun: false
     level: 2
-    school: Air
-    desc: Cloud Cover desc
-    target_optional: true
-    target_num: 1
-    is_revive: false
-    is_stun: false
-    stance: Hidden
+    line_of_sight: false
+    multi_target: false
+    name: Cloud Cover
+    notes: ''
+    range: Self
     rounds: 90
-    is_potion: true
-  #Level 3
-  Whispering Wind :
-    name: 'Whispering Wind '
-    level: 3
     school: Air
-    desc: Whispering Wind desc
-    target_optional: false
-    is_revive: false
-    is_stun: false
-    roll: true
-  Wind Wall:
-    name: 'Wind Wall'
-    level: 3
-    school: Air
-    desc: Wind Wall  desc
-    target_optional: true
+    stance: Hidden
     target_num: 1
+    target_optional: true
+  Shape Air:
+    area: 10 cubic feet
+    available: true
+    casting_time: 1 round
+    desc: The caster can move and shape up to 10 cubic feet of gaseous substances.
+      The caster can control the flow, density, and dispersion of a gaseous substance
+      to form breathable bubbles in water, draw the oxygen away from a flame, or push
+      poisonous gases away.
+    duration: 1 hour
     is_revive: false
     is_stun: false
-    stance: cover
-    rounds: 1
+    level: 2
+    line_of_sight: false
+    multi_target: false
+    name: Shape Air
+    notes: ''
+    range: Short
+    roll: true
+    school: Air
+    target_optional: false
+  Wavering Aim:
+    attack_mod: -1
+    available: true
+    casting_time: 1 round
+    desc: 'Create a blast of air that makes it difficult for a single opponent to
+      aim. '
+    duration: 2 rounds
+    is_revive: false
+    is_stun: false
+    level: 2
+    line_of_sight: true
+    multi_target: false
+    name: Wavering Aim
+    notes: ''
+    range: Short
+    rounds: 2
+    school: Air
+    target_optional: false
   Electric Surge:
-    name: 'Electric Surge'
-    level: 3
-    school: Air
-    desc: Electric Surge desc
-    target_optional: false
+    available: false
+    casting_time: 1 round
+    desc: Start and power or disrupt the operation of any electrical machine or object
+      requiring 1000 watts or less (a powerful desktop computer). Disruption is permanent
+      unless the machine is restarted.
+    duration: 30 minutes
+    is_potion: true
     is_revive: false
     is_stun: false
+    level: 3
+    line_of_sight: false
+    multi_target: false
+    name: Electric Surge
+    notes: ''
+    range: Touch
     roll: true
-    is_potion: true
+    school: Air
+    target_optional: false
   Shock:
-    name: 'Shock'
-    level: 3
-    school: Air
-    desc: Shock desc
-    target_optional: true
-    target_num: 1
+    available: true
+    casting_time: 1 round
+    desc: Shock an opponent with a burst of electricity, stunning them for one round.
     fs3_attack: true
-    is_revive: false
-    is_stun: true
-    roll: false
     is_potion: false
-    weapon: Stun
-  #Level 4
-  "Potions (Air)":
-    name: 'Potions'
-    level: 4
+    is_revive: false
+    is_stun: true
+    level: 3
+    line_of_sight: true
+    multi_target: false
+    name: Shock
+    notes: Need to figure out if I can add damage, otherwise change desc.
+    range: Short
+    roll: false
     school: Air
-    desc: Potions desc
-  Lightning Weapon :
-    name: 'Lightning Weapon '
-    level: 4
-    school: Air
-    desc: Lightning Weapon  desc
-    target_optional: true
     target_num: 1
-    is_revive: false
-    is_stun: false
-    weapon_specials: Lightning
-    rounds: 100
-    is_potion: true
-  Air Walk:
-    name: 'Air Walk '
-    level: 4
-    school: Air
-    desc: Air Walk  desc
-    target_optional: false
-    is_revive: false
-    is_stun: false
-    roll: true
-    is_potion: true
-  Steady Wind:
-    name: 'Steady Wind '
-    level: 4
-    school: Air
-    desc: Steady Wind desc
-    target_optional: false
-    is_revive: false
-    is_stun: false
-    roll: true
-  Breathless:
-    name: Breathless
-    level: 4
-    school: Air
-    desc: Breathless desc
     target_optional: true
-    fs3_attack: true
+    weapon: Stun (Air)
+  Whispering Wind:
+    available: true
+    casting_time: 1 round, plus additional rounds to listen at GM's discretion.
+    desc: Use sound carried on the wind to overhear targets at a distance of up to
+      one mile (1.6 km) for as long as you can maintain your concentration. You must
+      know the direction of your target to focus the wind.
+    duration: 10 minutes
     is_revive: false
     is_stun: false
-    weapon: Breathless
+    level: 3
+    line_of_sight: false
+    multi_target: false
+    name: 'Whispering Wind '
+    notes: ''
+    range: Long
+    roll: true
+    school: Air
+    target_optional: false
+  Wind Wall:
+    available: true
+    casting_time: 1 round
+    desc: 'Deflect ranged projectile attacks directed against you or a single comrade
+      with a gust wind, effectively putting the target in  <a href="https://www.aresmush.com/fs3/fs3-3/combat/#stance"
+      style="color: #A7C6DA" target="_blank">cover.</a>'
+    duration: 1 round
+    is_revive: false
+    is_stun: false
+    level: 3
+    line_of_sight: true
+    multi_target: false
+    name: Wind Wall
+    notes: ''
+    range: Short
+    rounds: 1
+    school: Air
+    stance: cover
+    target_num: 1
+    target_optional: true
   Air Blast:
-    name: 'Air Blast '
-    level: 4
-    school: Air
-    desc: Air Blast  desc
-    target_optional: true
+    area: 5 ft radius
+    available: false
+    casting_time: 1 round
+    desc: Create a powerful blast of wind that knocks an enemy back 5 yards, stunning
+      them.
     fs3_attack: true
     is_revive: false
     is_stun: true
-    weapon: Stun
+    level: 4
+    line_of_sight: true
+    multi_target: false
+    name: 'Air Blast '
+    notes: ''
+    range: Short
+    school: Air
+    target_optional: true
+    weapon: Stun (Air)
   Air Scooter:
-    name: 'Air Scooter'
-    level: 4
-    school: Air
-    desc: Air Scooter desc
-    target_optional: false
+    area: 5 yard radius
+    available: true
+    casting_time: 1 round
+    desc: Create a bubble of air capable of bearing up to 250 lbs and traveling in
+      any direction up to 60 mph. The bubble can act as a seal against liquid and
+      gas for up to 1 minute. Must remain in range or it dissipates.
+    duration: 1 hour
     is_revive: false
     is_stun: false
-    roll: true
-  Still Winds:
-    name: 'Still Winds'
     level: 4
+    line_of_sight: true
+    multi_target: false
+    name: Air Scooter
+    notes: ''
+    range: Short
+    roll: true
     school: Air
-    desc: Still Winds desc
     target_optional: false
+  Air Walk:
+    available: true
+    casting_time: 1 round
+    desc: 'Tread air as if walking on solid ground. Moving upward is similar to walking
+      up a hill. '
+    duration: 1 hour
+    is_potion: true
     is_revive: false
     is_stun: false
+    level: 4
+    line_of_sight: false
+    multi_target: false
+    name: 'Air Walk '
+    notes: ''
+    range: Self
     roll: true
+    school: Air
+    target_optional: false
+  Breathless:
+    area: 10 ft radius
+    available: false
+    casting_time: 1 round
+    desc: 'Draw all oxygen from an area, dousing any flames present and creating oxygen
+      deprivation for up to 3 air-breathing creatures of your choice caught in its
+      range. '
+    duration: 1 round
+    fs3_attack: true
+    is_revive: false
+    is_stun: false
+    level: 4
+    line_of_sight: false
+    multi_target: true
+    name: Breathless
+    notes: ''
+    range: Short
+    school: Air
+    target_optional: true
+    weapon: Breathless
   Lightning Bolt:
-    name: 'Lightning Bolt'
+    available: true
+    casting_time: 1 round
+    desc: The caster calls a bolt of lightning from the sky, striking a target and
+      causing damage.
+    fs3_attack: true
+    is_revive: false
+    is_stun: false
     level: 4
+    line_of_sight: true
+    multi_target: false
+    name: Lightning Bolt
+    notes: ''
+    range: Short
+    require_target: true
     school: Air
-    desc: Lightning Bolt desc
-    require_target: yes
-    is_revive: false
-    is_stun: false
-    fs3_attack: true
     weapon: Lightning Bolt
-  #Level 5
+  Lightning Weapon:
+    available: true
+    casting_time: 1 round
+    desc: Augment one specified pre-existing weapon with crackling electricity, increasing
+      its damage.
+    duration: 3 hours
+    is_potion: true
+    is_revive: false
+    is_stun: false
+    level: 4
+    line_of_sight: false
+    multi_target: false
+    name: 'Lightning Weapon '
+    notes: Weapon special config'd, but needs the stun portion
+    range: Touch
+    rounds: 100
+    school: Air
+    target_num: 1
+    target_optional: true
+    weapon_specials: Lightning
+  Potions (Air):
+    desc: Potions desc
+    level: 4
+    name: Potions
+    school: Air
+  Steady Wind:
+    area: 15 yard radius
+    available: true
+    casting_time: 1 round
+    desc: Create a steady wind capable of blowing up to 30 mph.
+    duration: 2 hours
+    is_revive: false
+    is_stun: false
+    level: 4
+    line_of_sight: false
+    multi_target: false
+    name: 'Steady Wind '
+    notes: ''
+    range: Short
+    roll: true
+    school: Air
+    target_optional: false
+  Still Winds:
+    area: 15 yard radius
+    available: false
+    casting_time: 1 round
+    desc: Quiet any wind into complete stillness.
+    duration: 1 hour
+    is_revive: false
+    is_stun: false
+    level: 4
+    line_of_sight: false
+    multi_target: false
+    name: Still Winds
+    notes: ''
+    range: Short
+    roll: true
+    school: Air
+    target_optional: false
   Blow Object:
-    name: 'Blow Object'
+    available: true
+    casting_time: 1 round
+    desc: Blow a nearby object weighing between 300 and 500 lbs toward a target. The
+      object blows in a straight line from its original position in a direction of
+      the caster's choosing.
+    fs3_attack: true
+    is_revive: false
+    is_stun: false
     level: 5
+    line_of_sight: true
+    multi_target: false
+    name: Blow Object
+    notes: ''
+    range: Long
     school: Air
-    desc: Blow Object desc
     target_optional: true
-    fs3_attack: true
-    is_revive: false
-    is_stun: false
     weapon: Blow Object
-  #Level 6
-  "Familiar (Air)":
-    name: Familiar
-    level: 6
-    school: Air
+  Familiar (Air):
     desc: Familiar  desc
-    target_optional: false
     is_revive: false
     is_stun: false
-    roll: true
-  Wind Rider:
-    name: Wind Rider
     level: 6
-    school: Air
-    desc: Wind Rider  desc
-    target_optional: false
-    is_revive: false
-    is_stun: false
+    name: Familiar
     roll: true
-  #Level 7
-  Suffocate:
-    name: Suffocate
-    level: 7
     school: Air
-    desc: Suffocate  desc
-    target_optional: true
-    fs3_attack: true
+    target_optional: false
+  Wind Rider:
+    available: true
+    casting_time: 1 round
+    desc: 'The caster conjures wind to ride in filght. The wind can carry them at
+      a speed of up to 200 mph. They can stay aloft easily and hover in midair, but
+      cannot deftly maneuver while in flight. They can cast spells and use ranged
+      weapons, but gain  -2 attack and -2 defense modifiers when making melee attacks.%R%R
+
+
+      Should the spell duration expire while the caster is still aloft, the magic
+      fails slowly, lowering the caster safely to the ground.'
+    duration: 1 hour
     is_revive: false
     is_stun: false
-    weapon: Suffocate
+    level: 6
+    line_of_sight: false
+    multi_target: false
+    name: Wind Rider
+    notes: ''
+    range: Self
+    roll: true
+    school: Air
+    target_optional: false
   Energize Dimensional Anchor (Air):
-    name: 'Dimensional Anchor'
-    level: 7
-    school: Air
-    desc: Dimensional Anchor desc
-    target_optional: false
+    available: true
+    casting_time: 2 minutes
+    desc: Provide necessary magical energy of the appropriate School to a Dimensional
+      Anchor spell, enabling the linked casters to permanently close an interdimensional
+      portal.
     is_revive: false
     is_stun: false
+    level: 7
+    line_of_sight: false
+    multi_target: false
+    name: Dimensional Anchor
+    notes: ''
+    range: Touch
     roll: true
-  #Level 8
-  Tempest:
-    name: Tempest
-    level: 8
     school: Air
-    desc: Tempest desc
-    target_optional: true
+    target_optional: false
+  Suffocate:
+    available: true
+    casting_time: 1 round
+    desc: Draw the air from the lungs of a target, making it impossible for them to
+      breathe. %R%RDoes not affect enemies who do not breathe air.
     fs3_attack: true
     is_revive: false
     is_stun: false
+    level: 7
+    line_of_sight: true
+    multi_target: false
+    name: Suffocate
+    notes: ''
+    range: Long
+    school: Air
+    target_optional: true
+    weapon: Suffocate
+  Tempest:
+    area: Up to 1 square mile
+    available: true
+    casting_time: 1 round
+    desc: Summon a hurricane-like storm with an eye positioned in a location of the
+      spellcaster's choosing. The storm does immense damage to the surrounding area,
+      ripping trees and foliage and unsecured items from the ground and whipping them
+      into a whirling fury.
+    fs3_attack: true
+    is_revive: false
+    is_stun: false
+    level: 8
+    line_of_sight: true
+    multi_target: true
+    name: Tempest
+    notes: ''
+    range: Massive
+    school: Air
+    target_optional: true
     weapon: Tempest
