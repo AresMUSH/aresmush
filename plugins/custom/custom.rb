@@ -106,36 +106,33 @@ module AresMUSH
       #Spells
       case cmd.root
       when "spell"
-        if (cmd.args)
-          return SpellDetailCmd
-        else          
-          case cmd.switch
-          when "request"
-            return SpellRequestCmd
-          when "mod"
-            return SpellModCmd
-          when "modis"
-            return SpellModIsCmd
-          when "cast"
-            if cmd.args.include?("=")
-              return SpellCastWithTargetCmd
-            else
-              return SpellCastCmd
-            end
-          when "learn"
-            return SpellLearnCmd
-          when "discard"
-            return SpellDiscardCmd
-          when "add"
-            return SpellAddCmd
-          when "remove"
-            return SpellRemoveCmd
-          when "hascast"
-            return SpellHascastCmd
+        case cmd.switch
+        when "request"
+          return SpellRequestCmd
+        when "mod"
+          return SpellModCmd
+        when "modis"
+          return SpellModIsCmd
+        when "cast"
+          if cmd.args.include?("=")
+            return SpellCastWithTargetCmd
+          else
+            return SpellCastCmd
           end
+        when "learn"
+          return SpellLearnCmd
+        when "discard"
+          return SpellDiscardCmd
+        when "add"
+          return SpellAddCmd
+        when "remove"
+          return SpellRemoveCmd
+        when "hascast"
+          return SpellHascastCmd
         end
-
+        return SpellDetailCmd
       end
+
       case cmd.root
       when "spells"
         return SpellsCmd
