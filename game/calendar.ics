@@ -2,17 +2,6 @@ BEGIN:VCALENDAR
 VERSION:2.0
 PRODID:-//hacksw/handcal//NONSGML v1.0//EN
 BEGIN:VEVENT
-UID:e0513e6b-2340-47e7-87b4-1a10984b80f2@Spirit Lake-spiritlakemu.com
-DTSTART:20190302T020000Z
-DTSTAMP:20190208T011141Z
-SUMMARY:Tea and Sympathy
-DESCRIPTION:Lena is inviting ALL friends to come have tea and bring baked goods. Preferably homemade, but bought will do in a pinch. Tea brews and nifty looking teapots welcome, and appropriate hats are encouraged. 
-  
-  Anyone who wants to show up is welcome. Hats still encouraged. 
-  
-  (What constitutes an appropriate hat shall be left to the wearer.)
-END:VEVENT
-BEGIN:VEVENT
 UID:663f73b6-0e7d-44ce-9eb2-3eddcedb2d41@Spirit Lake-spiritlakemu.com
 DTSTART:20190303T020000Z
 DTSTAMP:20190220T225551Z
@@ -29,15 +18,6 @@ DESCRIPTION:An invitation for those amongst us with a Knack for Nature, and inte
   (OOC: If you have a Level 1 Nature spell you want a chance to try for the first time, this is definitely the event for you!)
 END:VEVENT
 BEGIN:VEVENT
-UID:bed74eac-b5e0-48db-8642-be7a83d60742@Spirit Lake-spiritlakemu.com
-DTSTART:20190224T220000Z
-DTSTAMP:20190221T192343Z
-SUMMARY:A Tiny Funeral (Private)
-DESCRIPTION:**Please Note**: This is a private, invite only event. 
-  
-  Matt & Ben will be saying goodbye to their best wolf bro, Tiny Herbert Conan, with some friends.
-END:VEVENT
-BEGIN:VEVENT
 UID:01603890-c1cb-4e05-91a8-a13bc3f1d8cc@Spirit Lake-spiritlakemu.com
 DTSTART:20190303T220000Z
 DTSTAMP:20190222T001816Z
@@ -47,21 +27,65 @@ DESCRIPTION:Weirdos are invited to Trinity Church for an afternoon of showing of
   OOC: Please RSVP if you think you're going to come. If this reaches a certain mass I might split the scene into two rooms.
 END:VEVENT
 BEGIN:VEVENT
-UID:5e53276a-fce1-420a-8103-0754fb0fc8db@Spirit Lake-spiritlakemu.com
-DTSTART:20190227T010000Z
-DTSTAMP:20190223T230459Z
-SUMMARY:A Spirit Coven
-DESCRIPTION:A private meeting for those who have been experiencing magic focused on matters of the mind to discuss the very particular concerns and scariness that comes with it.
-  
-  Apologies that I couldn't manage a time where everyone indicated they could attend! There was a number of people. Word of this is being spread quietly ICly, but if you've got a Spirit Major or Minor and need to get hooked in, feel free to ping me and we can figure it out.
+UID:de48f2aa-c521-406c-9588-b68dd3263f06@Spirit Lake-spiritlakemu.com
+DTSTART:20190310T003000Z
+DTSTAMP:20190226T170028Z
+SUMMARY:Pyromancer Story Circle
+DESCRIPTION:An outdoor gathering for the Fire-inclined. Expect a bonfire, s'mores, hot beverages, and discussion about what it means to be able to set yourself and others on fire.
 END:VEVENT
 BEGIN:VEVENT
-UID:39ef2f26-f75d-4ba4-83e7-9bf7b30c429a@Spirit Lake-spiritlakemu.com
-DTSTART:20190226T010000Z
-DTSTAMP:20190224T025049Z
-SUMMARY:Corpus Corps
-DESCRIPTION:Erik invites fellow body trick (corpus school) folks to come meet at his trailer. It's the one with the disco ball on top.
+UID:e06d16f5-86d6-4893-be4d-dad5131152d5@Spirit Lake-spiritlakemu.com
+DTSTART:20190313T190000Z
+DTSTAMP:20190227T220932Z
+SUMMARY:Movie Night #1
+DESCRIPTION:This is for Boondock Saints & Pulp Fiction
+END:VEVENT
+BEGIN:VEVENT
+UID:07e72925-3cc8-441c-b82e-d59003190770@Spirit Lake-spiritlakemu.com
+DTSTART:20190317T010000Z
+DTSTAMP:20190227T221159Z
+SUMMARY:Movie Night #2
+DESCRIPTION:Breakfast Club, Sixteen Candles, Dirty Dancing. 
   
-  OOC: Setting it up for 6pm MST/8pm EST, we'll wing it and if needed do things slow on the portal too~ 
+  Bring your own ice cream and cookies. 
+END:VEVENT
+BEGIN:VEVENT
+UID:09fadb3b-ec69-443d-bfe1-8a249b933967@Spirit Lake-spiritlakemu.com
+DTSTART:20190321T230000Z
+DTSTAMP:20190227T221554Z
+SUMMARY:Movie Night #3
+DESCRIPTION:Deadpool 1 & 2
+  
+  Bring Mexican food and tequila. 
+END:VEVENT
+BEGIN:VEVENT
+UID:174ae8e1-2857-4c30-b17f-0306f50530cb@Spirit Lake-spiritlakemu.com
+DTSTART:20190313T010000Z
+DTSTAMP:20190227T223712Z
+SUMMARY:A Rocking Good Time
+DESCRIPTION:Diego is taking at least one car full of people down to Granby to the Granby Sports Complex to hit the climbing wall. All are invited OOCly, ICly, the invite list is currently Diego, Dani, and Marisol, so chat with one of us if you want an IC invite (or just assume you got one if you're friends). Experienced climbers and novices alike welcome.
+END:VEVENT
+BEGIN:VEVENT
+UID:5ac5fc1d-5654-4362-8821-ef754831279c@Spirit Lake-spiritlakemu.com
+DTSTART:20190306T010000Z
+DTSTAMP:20190228T191055Z
+SUMMARY:Drone Portal Diving (Closed Event)
+DESCRIPTION:A handful of folk travel up the mountain to camp out and hope the portal opens so they can fly a drone through it. 
+  
+  ICly, you'll travel up Monday and spend Monday night and most of Tuesday on the mountain. In tents. Tuesday evening we'll do some drone flying. 
+END:VEVENT
+BEGIN:VEVENT
+UID:3019dc82-e602-48bc-baae-e7f395341108@Spirit Lake-spiritlakemu.com
+DTSTART:20190315T010000Z
+DTSTAMP:20190301T042846Z
+SUMMARY:Shirts Vs Skins Ii: The Ogling
+DESCRIPTION:More pick-up basketball! If we have more than 10 people who want to play, we'll do subs. Come to show off your character's bod, or to ogle all the bods being shown off.
+END:VEVENT
+BEGIN:VEVENT
+UID:338604e3-b188-4373-b6ce-636fd6a0ac10@Spirit Lake-spiritlakemu.com
+DTSTART:20190309T010000Z
+DTSTAMP:20190302T223410Z
+SUMMARY:House Party At Cc's
+DESCRIPTION:There's a party at Cara's house and if you have ANY degrees of separation, you can assume you've been invited. BYOB, BYODATE.
 END:VEVENT
 END:VCALENDAR
