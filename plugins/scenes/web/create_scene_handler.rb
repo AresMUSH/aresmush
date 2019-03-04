@@ -43,7 +43,7 @@ module AresMUSH
         participant_names.each do |p|
           participant = Character.find_one_by_name(p.strip)
           if (participant)
-            scene.participants.add participant
+            Scenes.add_participant(scene, participant)
           end
         end
       
@@ -67,9 +67,10 @@ module AresMUSH
           scene.participants.each do |char|
             Scenes.handle_scene_participation_achievement(char)
           end
+        else
+          Scenes.create_scene_temproom(scene)
         end
       
-        Scenes.create_scene_temproom(scene)
         
         { id: scene.id }
       end
