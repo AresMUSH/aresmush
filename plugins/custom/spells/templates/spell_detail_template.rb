@@ -82,6 +82,22 @@ module AresMUSH
         Global.read_config("spells", spell, "weapon")
       end
 
+      def weapon_specials
+        Global.read_config("spells", spell, "weapon_specials")
+      end
+
+      def armor
+        Global.read_config("spells", spell, "armor")
+      end
+
+      def armor_specials
+        Global.read_config("spells", spell, "armor_specials")
+      end
+
+
+
+
+
     end
   end
 end
