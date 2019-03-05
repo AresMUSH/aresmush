@@ -1,6 +1,5 @@
 spells:
   Beckon Tiny Animal:
-
     available: true
     casting_time: 1 round
     desc: One animal of diminutive size within range is compelled to approach the
@@ -19,7 +18,6 @@ spells:
     school: Nature
     target_optional: false
   Create Bloom:
-
     available: true
     casting_time: 1 round
     desc: Cause a flowering plant to grow and bloom from a seed.
@@ -44,13 +42,27 @@ spells:
     name: Natural Defenses Crocodile
     school: Nature
     target_optional: false
+  Repel Tiny Animal:
+    available: true
+    casting_time: 1 round
+    desc: One animal of diminutive size within range is compelled to distance themselves from the caster and stay away for the duration of the spell. The target retains all animal instincts and any acts of aggression towards it negate the spell.
+    duration: 10 minutes
+    is_revive: false
+    is_stun: false
+    level: 1
+    line_of_sight: true
+    multi_target: false
+    name: Repel Tiny Animal
+    notes: ''
+    range: Short
+    roll: true
+    school: Nature
+    target_optional: false
   Ripen:
-
     available: false
     casting_time: 1 round
     desc: Encourage an already existing berry, nut, or fruit-bearing plant to produce
       a small amount of edible food, no more than a handful, even out of season.
-
     is_revive: false
     is_stun: false
     level: 2
