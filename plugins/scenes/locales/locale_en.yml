@@ -115,8 +115,8 @@ en:
         invalid_pose_order_type: "That is not a valid pose order type.  Try one of these: %{types}"
         pose_order_type_changed: "%{name} has changed the pose order type to %{type}."
         
-        edited_scene_pose: "%{name} has edited their pose: %{pose}."
-        deleted_scene_pose: "%{name} has deleted their pose: %{pose}."
+        edited_scene_pose: "%{name} has edited their pose: %xn%R%{pose}."
+        deleted_scene_pose: "%{name} has deleted their pose: %xn%R%{pose}."
         
         trending_scenes_subject: "Popular Scenes This Week"
         
