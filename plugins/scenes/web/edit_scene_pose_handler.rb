@@ -25,17 +25,7 @@ module AresMUSH
         
         Global.logger.debug "Scene #{scene.id} pose #{scene_pose.id} edited by #{enactor.name}."
         
-        scene_pose.update(pose: pose_text)
-        
-        if (notify)
-          message = t('scenes.edited_scene_pose', :name => enactor.name, :pose => pose_text)
-        
-          if (scene.room)
-            scene.room.emit_ooc message
-          end
-          
-          Scenes.add_to_scene(scene, Website.format_markdown_for_html(message), Game.master.system_character, false, true)
-        end
+        Scenes.edit_pose(scene, scene_pose, pose_text, enactor, notify)
         
         { pose: Website.format_markdown_for_html(pose_text) }
       end

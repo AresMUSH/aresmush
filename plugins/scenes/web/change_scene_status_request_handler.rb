@@ -43,6 +43,10 @@ module AresMUSH
             return { error: Scenes.info_missing_message(scene)}
           end
           
+          if (scene.shared)
+            return { error:  t('scenes.scene_already_shared') }
+          end
+          
           Scenes.share_scene(scene)
           
         when "unshare"
