@@ -32,27 +32,9 @@ module AresMUSH
             
           last_pose.update(pose: self.pose)
           
-          self.emit_replacement(enactor, client)
-          
-          if (!self.silent)
-            scene.room.characters.each do |char|
-              other_client = Login.find_client(char)
-              next if !other_client
-              next if char == enactor
-              self.emit_replacement(char, other_client)
-            end
-          end
+          Scenes.edit_pose(scene, last_pose, self.pose, enactor, !self.silent)
         end
       end
-      
-      def emit_replacement(char, other_client)
-        message = t('scenes.amended_pose', :name => enactor_name,
-                      :pronoun => Demographics.possessive_pronoun(enactor) )
-        alert = "%xr*** #{message} ***%xn"
-        formatted_pose = Scenes.colorize_quotes enactor, self.pose, char
-        other_client.emit "#{alert}#{formatted_pose}"
-      end
-      
     end
   end
 end
