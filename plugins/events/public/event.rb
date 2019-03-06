@@ -78,11 +78,7 @@ module AresMUSH
     end
     
     def start_time_standard
-      timezone = Global.read_config("datetime", "server_timezone")
-      format = Global.read_config("datetime", "time_format")
-      formatted_time = l(self.starts, format: format)
-      
-      "#{formatted_time.strip} #{timezone}"
+      OOCTime.server_timestr(self.starts)
     end
     
     def start_datetime_standard

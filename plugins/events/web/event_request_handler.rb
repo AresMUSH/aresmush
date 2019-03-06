@@ -52,6 +52,7 @@ module AresMUSH
           date_entry_format: Global.read_config("datetime", 'date_entry_format_help').upcase,
           start_datetime_local: event.start_datetime_local(request.enactor),
           start_time_standard: event.start_time_standard,
+          server_time: OOCTime.server_timestr
         }
         
       end

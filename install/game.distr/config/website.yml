@@ -22,6 +22,8 @@ website:
     - divider: true
     - page: scenes-live
       title: Active Scenes
+    - page: scenes-play
+      title: My Scenes
     - page: scene-create
       title: Start New Scene
     - divider: true

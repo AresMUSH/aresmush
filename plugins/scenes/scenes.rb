@@ -159,14 +159,14 @@ module AresMUSH
         return EditPlotRequestHandler
       when "editScene"
         return EditSceneRequestHandler
+      when "joinScene"
+        return JoinSceneRequestHandler
       when "likeScene"
         return LikeSceneRequestHandler
       when "liveScenes"
         return LiveScenesRequestHandler        
       when "liveScene"
         return LiveSceneRequestHandler  
-      when "muteScene"
-        return MuteSceneRequestHandler 
       when "myScenes"
         return MyScenesRequestHandler     
       when "plots"
@@ -187,6 +187,8 @@ module AresMUSH
         return SearchScenesRequestHandler
       when "unwatchScene"
         return UnwatchSceneRequestHandler
+      when "watchScene"
+        return WatchSceneRequestHandler
       end
       nil
     end

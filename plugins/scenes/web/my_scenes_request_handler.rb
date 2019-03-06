@@ -9,12 +9,8 @@ module AresMUSH
           return []
         end
         
-        Scene.all.select { |s| !s.completed && Scenes.is_participant?(s, enactor) }.map { |s|
-          {
-            id: s.id,
-            title: s.title,
-            is_unread: s.is_unread?(enactor)
-          }
+        Scene.all.select { |s| !s.completed && Scenes.is_watching?(s, enactor) }.map { |s|
+          Scenes.build_live_scene_web_data(s, enactor)
         }
         
       end

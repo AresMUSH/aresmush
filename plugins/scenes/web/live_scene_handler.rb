@@ -33,33 +33,7 @@ module AresMUSH
 
         end
         
-        participants = Scenes.participants_and_room_chars(scene)
-            .sort_by {|p| p.name }
-            .map { |p| { 
-              name: p.name, 
-              id: p.id, 
-              icon: Website.icon_for_char(p), 
-              is_ooc: p.is_admin? || p.is_playerbit?,
-              online: Login.is_online?(p)  }}
-            
-        {
-          id: scene.id,
-          title: scene.title,
-          location: {
-            name: scene.location,
-            description: scene.room ? Website.format_markdown_for_html(scene.room.expanded_desc) : nil,
-            scene_set: scene.room ? Website.format_markdown_for_html(scene.room.scene_set) : nil },
-          completed: scene.completed,
-          summary: scene.summary,
-          tags: scene.tags,
-          icdate: scene.icdate,
-          is_private: scene.private_scene,
-          participants: participants,
-          scene_type: scene.scene_type ? scene.scene_type.titlecase : 'unknown',
-          can_edit: enactor && Scenes.can_edit_scene?(enactor, scene),
-          is_muted: enactor && scene.muters.include?(enactor),
-          poses: scene.poses_in_order.map { |p| Scenes.build_scene_pose_web_data(p, enactor) }
-        }
+        Scenes.build_live_scene_web_data(scene, enactor)
       end
     end
   end

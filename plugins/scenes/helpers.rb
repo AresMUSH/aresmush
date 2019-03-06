@@ -10,7 +10,7 @@ module AresMUSH
       end
       web_msg = "#{scene.id}|#{last_posed}|#{data}"
       Global.client_monitor.notify_web_clients(:new_scene_activity, web_msg) do |char|
-        Scenes.can_read_scene?(char, scene) && !Scenes.is_scene_muted?(char, scene)
+        Scenes.can_read_scene?(char, scene) && Scenes.is_watching?(scene, char)
       end
     end
     
@@ -59,6 +59,11 @@ module AresMUSH
     def self.share_scene(scene)
       if (!scene.all_info_set?)
         return false
+      end
+      
+      if (scene.shared)
+        Global.logger.warn "Attempt to share an already-shared scene."
+        return
       end
       
       scene.update(shared: true)
@@ -129,12 +134,21 @@ module AresMUSH
     
     def self.is_watching?(scene, char)
       return false if !char
-      return true if char == scene.owner
-      return Scenes.is_participant?(scene, char) || scene.watchers.include?(char)
+      scene.watchers.include?(char)
     end
     
     def self.is_participant?(scene, char)
       Scenes.participants_and_room_chars(scene).include?(char)
+    end
+    
+    def self.add_participant(scene, char)
+      if (!scene.participants.include?(char))
+        scene.participants.add char
+      end
+      
+      if (!scene.watchers.include?(char))
+        scene.watchers.add char
+      end
     end
     
     def self.set_scene_location(scene, location)
@@ -193,11 +207,13 @@ module AresMUSH
     end    
     
     def self.create_log(scene)
+      old_text = ""
       if (scene.scene_log)
+        old_text = "#{scene.scene_log.log}\n"
         scene.scene_log.delete
       end
       log = Scenes.build_log_text(scene)
-      scene_log = SceneLog.create(scene: scene, log: log)
+      scene_log = SceneLog.create(scene: scene, log: "#{old_text}#{log}")
       scene.update(scene_log: scene_log)
       scene.scene_poses.each { |p| p.delete }  
     end
@@ -416,12 +432,6 @@ module AresMUSH
       return false
     end
     
-    def self.is_scene_muted?(char, scene)
-      return false if !char
-      return scene.muters.include?(char)
-    end
-    
-    
     def self.mark_read(scene, char)      
       scenes = char.read_scenes || []
       scenes << scene.id.to_s
@@ -435,6 +445,20 @@ module AresMUSH
         scenes = char.read_scenes || []
         scenes.delete scene.id.to_s
         char.update(read_scenes: scenes)
+      end
+    end
+    
+    def self.edit_pose(scene, scene_pose, new_text, enactor, notify)
+      scene_pose.update(pose: new_text)
+      
+      if (notify)
+        message = t('scenes.edited_scene_pose', :name => enactor.name, :pose => new_text)
+      
+        if (scene.room)
+          scene.room.emit_ooc message
+        end
+        
+        Scenes.add_to_scene(scene, message, Game.master.system_character, false, true)
       end
     end
     
@@ -459,6 +483,37 @@ module AresMUSH
         can_delete: pose.restarted_scene_pose ? false : pose.can_edit?(viewer),
         pose: Website.format_markdown_for_html(pose.pose),
         live_update: live_update
+      }
+    end
+    
+    def self.build_live_scene_web_data(scene, viewer)
+      participants = Scenes.participants_and_room_chars(scene)
+          .sort_by {|p| p.name }
+          .map { |p| { 
+            name: p.name, 
+            id: p.id, 
+            icon: Website.icon_for_char(p), 
+            is_ooc: p.is_admin? || p.is_playerbit?,
+            online: Login.is_online?(p)  }}
+          
+      {
+        id: scene.id,
+        title: scene.title,
+        location: {
+          name: scene.location,
+          description: scene.room ? Website.format_markdown_for_html(scene.room.expanded_desc) : nil,
+          scene_set: scene.room ? Website.format_markdown_for_html(scene.room.scene_set) : nil },
+        completed: scene.completed,
+        summary: scene.summary,
+        tags: scene.tags,
+        icdate: scene.icdate,
+        is_private: scene.private_scene,
+        participants: participants,
+        scene_type: scene.scene_type ? scene.scene_type.titlecase : 'unknown',
+        can_edit: viewer && Scenes.can_edit_scene?(viewer, scene),
+        is_watching: viewer && scene.watchers.include?(viewer),
+        is_unread: scene.is_unread?(viewer),
+        poses: scene.poses_in_order.map { |p| Scenes.build_scene_pose_web_data(p, viewer) }
       }
     end
   end

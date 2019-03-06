@@ -15,7 +15,7 @@ There are two ways to interact with the game.
 
 You can start with the game's integrated website, known as the **Web Portal**.  Through the Web Portal, you can read the game's story, learn about the setting and the characters, and participate in the game community through discussion forums and live chat.  
 
-The Web Portal is great for information gathering, but to access *all* of the game's features you'll need to connect to the game server through a **MUSH client**.  There are [dedicated MUSH client apps](http://www.aresmush.com/clients) you can install on your PC/Mac or mobile device, or you can use the game's built-in web client to play through the web browser.  
+The Web Portal is great for information gathering, but to access *all* of the game's features you'll need to connect to the game server through a **MUSH client**.  There are [dedicated MUSH client apps](http://www.aresmush.com/clients.html) you can install on your PC/Mac or mobile device, or you can use the game's built-in web client to play through the web browser.  
 
 > If you've already connected through a MUSH client, type `website` to find the address of the Web Portal.   If you're reading this on the Web Portal, the home page should give you the address to input into your MUSH client.  On the Web Portal, go to 'Play -> Play via Web Client' to open the built-in web client.
 
