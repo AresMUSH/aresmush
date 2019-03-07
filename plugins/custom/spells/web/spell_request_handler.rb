@@ -1,14 +1,20 @@
 module AresMUSH
   module Custom
     class SpellsRequestHandler
+
       def handle(request)
-        spell_list = Global.read_config("spells")
+        all_spells = Global.read_config("spells")
         school = request.args['school'].titlecase || ""
-        spell_list = spell_list.select { |name, data|  data['school'] == 'Air' }
-        spells = build_list(spell_list)
+        school_spells = all_spells.select { |name, data|  data['school'] == school }
+        spells = build_list(school_spells)
+        spells_by_level = spells.group_by { |s| s[:level] }
+        # spells.each do |s|
+        #   Global.logger.debug s[:level]
+        # end
+        # Global.logger.debug "Levels: #{level_list}"
 
         {
-          spells: spells.group_by { |s| s['level'] }
+          spells: spells_by_level
         }
 
       end
