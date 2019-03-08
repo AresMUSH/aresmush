@@ -12,9 +12,14 @@ module AresMUSH
         #   Global.logger.debug s[:level]
         # end
         # Global.logger.debug "Levels: #{level_list}"
+        blurb = Global.read_config("schools", school, "blurb")
+
 
         {
-          spells: spells_by_level
+          spells: spells_by_level,
+          title: school,
+          blurb: blurb,
+          pinterest: school
         }
 
       end
