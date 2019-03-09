@@ -18,6 +18,8 @@ module AresMUSH
         return t('fs3skills.not_enough_xp') if enactor.xp <= 0
         return t('custom.too_many_spells') if Custom.count_spells_total(enactor) >= 30
         return t('custom.need_previous_level') if Custom.previous_level_spell?(enactor, self.spell) == false
+        return t('custom.learning_too_many_spells') if Custom.count_spells_learning(enactor) > 1
+
         if enactor.groups.values.include? self.school
           return nil
         else
@@ -33,8 +35,8 @@ module AresMUSH
           time_left = (Custom.time_to_next_learn_spell(spell_learned) / 86400)
           if spell_learned.learning_complete
             client.emit_failure t('custom.already_know_spell', :spell => self.spell)
-          elsif time_left > 0
-            client.emit_failure t('custom.cant_learn_yet', :spell => self.spell, :days => time_left.ceil)
+          # elsif time_left > 0
+          #   client.emit_failure t('custom.cant_learn_yet', :spell => self.spell, :days => time_left.ceil)
           else
             client.emit_success t('custom.additional_learning', :spell => self.spell)
             xp_needed = spell_learned.xp_needed.to_i - 1
