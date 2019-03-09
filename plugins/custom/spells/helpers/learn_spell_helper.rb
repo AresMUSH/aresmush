@@ -6,6 +6,11 @@ module AresMUSH
       spells_learned.count
     end
 
+    def self.count_spells_learning(char)
+      spells_learned = char.spells_learned.select { |l| !l.learning_complete }
+      spells_learned.count
+    end
+
     #Gives time in seconds
     def self.time_to_next_learn_spell(spell)
       (7 * 86400) - (Time.now - spell.last_learned)
