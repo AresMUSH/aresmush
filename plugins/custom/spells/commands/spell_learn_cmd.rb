@@ -18,7 +18,7 @@ module AresMUSH
         return t('fs3skills.not_enough_xp') if enactor.xp <= 0
         return t('custom.too_many_spells') if Custom.count_spells_total(enactor) >= 30
         return t('custom.need_previous_level') if Custom.previous_level_spell?(enactor, self.spell) == false
-        return t('custom.learning_too_many_spells') if Custom.count_spells_learning(enactor) > 1
+        return t('custom.learning_too_many_spells') if (Custom.count_spells_learning(enactor) > 1 && !Custom.find_spell_learned(enactor, self.spell))
 
         if enactor.groups.values.include? self.school
           return nil
