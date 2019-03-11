@@ -283,6 +283,7 @@ spells:
     target_num: 1
     target_optional: true
     weapon_specials: Lightning
+    weapon: Spell
   Potions (Air):
     desc: Potions desc
     level: 4
