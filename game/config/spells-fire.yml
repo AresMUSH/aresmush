@@ -1,6 +1,5 @@
 spells:
   Fire Starter:
-
     available: true
     casting_time: 1 round
     desc: Create a flame the size of a ligher.
@@ -17,7 +16,6 @@ spells:
     school: Fire
     target_optional: false
   Light:
-
     available: true
     casting_time: 1 round
     desc: Create a beam of light equivilent to 300 lumens (a small LED flashlight).
@@ -33,8 +31,24 @@ spells:
     roll: true
     school: Fire
     target_optional: false
+  Snuff Flame:
+    available: true
+    casting_time: 1 round
+    desc: Extinguish a flame the size of a lighter.
+    duration:
+    is_revive: false
+    is_stun: false
+    level: 1
+    line_of_sight: true
+    multi_target: false
+    name: Fire Starter
+    notes: ''
+    range: Short
+    roll: true
+    school: Fire
+    target_optional: false
+  #Level 2
   Blur Image:
-
     available: true
     casting_time: 1 round
     defense_mod: 1
@@ -149,6 +163,7 @@ spells:
     target_num: 1
     target_optional: true
     weapon_specials: Fire
+    weapon: Spell
   Flame Burst:
 
     available: true

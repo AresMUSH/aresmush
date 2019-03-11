@@ -167,6 +167,7 @@ spells:
     school: Corpus
     target_optional: false
     weapon_specials: Strength
+    weapon: Spell
   Agility:
     available: false
     casting_time: 1 round
@@ -187,6 +188,7 @@ spells:
     school: Corpus
     target_optional: false
     weapon_specials: Agility
+    weapon: Spell
   Impair:
     available: true
     casting_time: 1 round
@@ -256,6 +258,7 @@ spells:
     target_num: 1
     target_optional: true
     weapon_specials: Vitality
+    weapon: Spell
   Grow Self:
     available: false
     casting_time: 1 round
@@ -277,6 +280,7 @@ spells:
     school: Corpus
     target_optional: false
     weapon_specials: Grow
+    weapon: Spell
   Revive:
     available: false
     casting_time: 1 round
@@ -312,6 +316,7 @@ spells:
     school: Corpus
     target_optional: false
     weapon_specials: Shrink
+    weapon: Spell
   Familiar (Corpus):
     desc: Familiar  desc
     is_revive: false
