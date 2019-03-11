@@ -253,17 +253,16 @@ spells:
     school: Water
     target_optional: false
     weapon_specials: Ice
+    weapon: Spell
   Potions (Water):
     desc: Potions desc
     level: 4
     name: Potions
     school: Water
   Water Whip:
-
     available: false
     casting_time: 1 round
     desc: Caster creates a whip out of water, lashing out at a target and doing damage.
-
     fs3_attack: true
     is_revive: false
     is_stun: false

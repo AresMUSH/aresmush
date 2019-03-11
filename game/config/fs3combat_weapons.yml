@@ -59,7 +59,7 @@ fs3combat:
     Diamond:
       description: Level 4 Earth spell
       is_magic: true
-      Penetration: 3
+      penetration: 3
     Fire:
       description: Level 4 Fire spell
       is_magic: true
@@ -76,6 +76,19 @@ fs3combat:
       lethality: 3
       penetration: 1
   weapons:
+    Spell:
+      description: Spell with no stats to make it easier to grab special stats.
+      is_magic: true
+      skill: Athletics
+      lethality: 0
+      penetration: 0
+      weapon_type: Suppressive
+      is_automatic: false
+      recoil: 0
+      damage_type: Stun
+      accuracy: 0
+      has_shrapnel: false
+      init_mod: 0
     Flash Grenade:
       description: 'Hand Grenade which blinds/deafens most targets for 5 secs '
       is_magic: false
@@ -131,7 +144,7 @@ fs3combat:
       accuracy: 0
       has_shrapnel: false
       init_mod: 0
-      allowed_specials: 
+      allowed_specials:
       special_group: ranged
     Shotgun:
       description: Shotgun meant for hunting
@@ -147,7 +160,7 @@ fs3combat:
       accuracy: 1
       has_shrapnel: false
       init_mod: 0
-      allowed_specials: 
+      allowed_specials:
       special_group: ranged
     Rifle:
       description: Hunting Rifle
@@ -163,7 +176,7 @@ fs3combat:
       accuracy: 1
       has_shrapnel: false
       init_mod: 0
-      allowed_specials: 
+      allowed_specials:
       special_group: ranged
     Tazer:
       description: Stun gun
@@ -336,7 +349,7 @@ fs3combat:
       accuracy: 0
       has_shrapnel: false
       init_mod: 0
-      allowed_specials: 
+      allowed_specials:
     Stun (Corpus):
       description: Stun spell
       is_magic: true
@@ -350,7 +363,7 @@ fs3combat:
       accuracy: 0
       has_shrapnel: false
       init_mod: 0
-      allowed_specials: 
+      allowed_specials:
     Stun (Earth):
       description: Stun spell
       is_magic: true
@@ -364,7 +377,7 @@ fs3combat:
       accuracy: 0
       has_shrapnel: false
       init_mod: 0
-      allowed_specials: 
+      allowed_specials:
     Stun (Fire):
       description: Stun spell
       is_magic: true
@@ -378,7 +391,7 @@ fs3combat:
       accuracy: 0
       has_shrapnel: false
       init_mod: 0
-      allowed_specials: 
+      allowed_specials:
     Stun (Nature):
       description: Stun spell
       is_magic: true
@@ -392,7 +405,7 @@ fs3combat:
       accuracy: 0
       has_shrapnel: false
       init_mod: 0
-      allowed_specials: 
+      allowed_specials:
     Stun (Spirit):
       description: Stun spell
       is_magic: true
@@ -406,7 +419,7 @@ fs3combat:
       accuracy: 0
       has_shrapnel: false
       init_mod: 0
-      allowed_specials: 
+      allowed_specials:
     Stun (Water):
       description: Stun spell
       is_magic: true
@@ -420,7 +433,7 @@ fs3combat:
       accuracy: 0
       has_shrapnel: false
       init_mod: 0
-      allowed_specials: 
+      allowed_specials:
     Stun (Will):
       description: Stun spell
       is_magic: true
@@ -434,7 +447,7 @@ fs3combat:
       accuracy: 0
       has_shrapnel: false
       init_mod: 0
-      allowed_specials: 
+      allowed_specials:
     Breathless:
       description: Level 4 Air spell
       is_magic: true
@@ -448,7 +461,7 @@ fs3combat:
       accuracy: 0
       has_shrapnel: false
       init_mod: 0
-      allowed_specials: 
+      allowed_specials:
       special_group: ranged
     Lightning Bolt:
       description: Level 4 Air spell
@@ -463,7 +476,7 @@ fs3combat:
       accuracy: 0
       has_shrapnel: false
       init_mod: 0
-      allowed_specials: 
+      allowed_specials:
       special_group: ranged
     Blow Object:
       description: Level 5 Air spell
@@ -478,7 +491,7 @@ fs3combat:
       accuracy: 0
       has_shrapnel: false
       init_mod: 0
-      allowed_specials: 
+      allowed_specials:
       special_group: ranged
     Suffocate:
       description: Level 7 Air spell
@@ -493,7 +506,7 @@ fs3combat:
       accuracy: 0
       has_shrapnel: false
       init_mod: 0
-      allowed_specials: 
+      allowed_specials:
       special_group: ranged
     Tempest:
       description: Level 8 Air spell
@@ -508,7 +521,7 @@ fs3combat:
       accuracy: 4
       has_shrapnel: true
       init_mod: 0
-      allowed_specials: 
+      allowed_specials:
       special_group: ranged
     Skipping Stone:
       description: Level 3 Earth spell
@@ -523,7 +536,7 @@ fs3combat:
       accuracy: 2
       has_shrapnel: false
       init_mod: 0
-      allowed_specials: 
+      allowed_specials:
       special_group: ranged
     Earth Bolt:
       description: Level 3 Earth spell
@@ -538,7 +551,7 @@ fs3combat:
       accuracy: 2
       has_shrapnel: true
       init_mod: 0
-      allowed_specials: 
+      allowed_specials:
       special_group: ranged
     Stone Slam:
       description: Level 3 Earth spell
@@ -553,7 +566,7 @@ fs3combat:
       accuracy: 2
       has_shrapnel: false
       init_mod: 0
-      allowed_specials: 
+      allowed_specials:
       special_group: ranged
     Rock Skin:
       description: Level 4 Earth spell
@@ -568,7 +581,7 @@ fs3combat:
       accuracy: 0
       has_shrapnel: false
       init_mod: 0
-      allowed_specials: 
+      allowed_specials:
       special_group: Melee
     Earth Shudder:
       description: Level 5 Earth spell
@@ -583,7 +596,7 @@ fs3combat:
       accuracy: 3
       has_shrapnel: false
       init_mod: 0
-      allowed_specials: 
+      allowed_specials:
     Stalagmite:
       description: Level 5 Earth spell
       is_magic: true
@@ -597,7 +610,7 @@ fs3combat:
       accuracy: 1
       has_shrapnel: false
       init_mod: 0
-      allowed_specials: 
+      allowed_specials:
       special_group: ranged
     Stone Daggers:
       description: Level 6 Earth spell
@@ -612,7 +625,7 @@ fs3combat:
       accuracy: 0
       has_shrapnel: false
       init_mod: 0
-      allowed_specials: 
+      allowed_specials:
       special_group: ranged
     Exploding Earth:
       description: Level 7 Earth spell
@@ -627,7 +640,7 @@ fs3combat:
       accuracy: 1
       has_shrapnel: true
       init_mod: 0
-      allowed_specials: 
+      allowed_specials:
       special_group: ranged
     Massive Quake:
       description: Level 8 Earth spell
@@ -642,7 +655,7 @@ fs3combat:
       accuracy: 4
       has_shrapnel: true
       init_mod: 0
-      allowed_specials: 
+      allowed_specials:
       special_group: ranged
     Hot Hands:
       description: Level 3 Fire spell
@@ -657,7 +670,7 @@ fs3combat:
       accuracy: 3
       has_shrapnel: false
       init_mod: 0
-      allowed_specials: 
+      allowed_specials:
       special_group: Melee
     Flame Burst:
       description: Level 4 Fire spell
@@ -672,7 +685,7 @@ fs3combat:
       accuracy: 0
       has_shrapnel: false
       init_mod: 0
-      allowed_specials: 
+      allowed_specials:
       special_group: ranged
     Flares:
       description: Level 5 Fire spell
@@ -687,7 +700,7 @@ fs3combat:
       accuracy: 1
       has_shrapnel: false
       init_mod: 0
-      allowed_specials: 
+      allowed_specials:
       special_group: ranged
     Pyre:
       description: Level 6 Fire spell
@@ -702,7 +715,7 @@ fs3combat:
       accuracy: 0
       has_shrapnel: false
       init_mod: 0
-      allowed_specials: 
+      allowed_specials:
       special_group: ranged
     Firestorm:
       description: Level 8 Fire spell
@@ -717,7 +730,7 @@ fs3combat:
       accuracy: 4
       has_shrapnel: true
       init_mod: 0
-      allowed_specials: 
+      allowed_specials:
       special_group: ranged
     Thorn Growth:
       description: Level 3 Nature spell
@@ -732,7 +745,7 @@ fs3combat:
       accuracy: 0
       has_shrapnel: false
       init_mod: 0
-      allowed_specials: 
+      allowed_specials:
       special_group: ranged
     Acid Spit:
       description: Level 4 Nature spell
@@ -747,7 +760,7 @@ fs3combat:
       accuracy: 0
       has_shrapnel: false
       init_mod: 0
-      allowed_specials: 
+      allowed_specials:
       special_group: ranged
     Poison Puffs:
       description: Level 6 Nature spell
@@ -762,7 +775,7 @@ fs3combat:
       accuracy: 0
       has_shrapnel: false
       init_mod: 0
-      allowed_specials: 
+      allowed_specials:
       special_group: ranged
     Jenu:
       description: Form for Half Shift spell
@@ -777,7 +790,7 @@ fs3combat:
       accuracy: 0
       has_shrapnel: false
       init_mod: 0
-      allowed_specials: 
+      allowed_specials:
       special_group: Melee
     Mind Bolt:
       description: Level 3 Spirit spell
@@ -792,7 +805,7 @@ fs3combat:
       accuracy: 0
       has_shrapnel: false
       init_mod: 0
-      allowed_specials: 
+      allowed_specials:
       special_group: ranged
     Chill Touch:
       description: Level 2 Water spell
@@ -807,7 +820,7 @@ fs3combat:
       accuracy: 0
       has_shrapnel: false
       init_mod: 0
-      allowed_specials: 
+      allowed_specials:
       special_group: Melee
     Ice Talons:
       description: Level 3 Water spell
@@ -822,7 +835,7 @@ fs3combat:
       accuracy: 0
       has_shrapnel: false
       init_mod: 0
-      allowed_specials: 
+      allowed_specials:
       special_group: Melee
     Ice Armor:
       description: Level 4 Water spell
@@ -837,7 +850,7 @@ fs3combat:
       accuracy: 0
       has_shrapnel: false
       init_mod: 0
-      allowed_specials: 
+      allowed_specials:
       special_group: Melee
     Water Whip:
       description: Level 4 Water spell
@@ -852,7 +865,7 @@ fs3combat:
       accuracy: 0
       has_shrapnel: false
       init_mod: 0
-      allowed_specials: 
+      allowed_specials:
       special_group: ranged
     Cone Of Cold:
       description: Level 4 Water spell
@@ -867,7 +880,7 @@ fs3combat:
       accuracy: 0
       has_shrapnel: true
       init_mod: 0
-      allowed_specials: 
+      allowed_specials:
       special_group: ranged
     Exploding Ice:
       description: Level 5 Water spell
@@ -882,7 +895,7 @@ fs3combat:
       accuracy: 1
       has_shrapnel: true
       init_mod: 0
-      allowed_specials: 
+      allowed_specials:
       special_group: ranged
     Slick Ground:
       description: Level 5 Water spell
@@ -897,7 +910,7 @@ fs3combat:
       accuracy: 3
       has_shrapnel: false
       init_mod: 0
-      allowed_specials: 
+      allowed_specials:
     Shatter:
       description: Level 6 Ice spell
       is_magic: true
@@ -911,7 +924,7 @@ fs3combat:
       damage_type: Physical
       has_shrapnel: false
       init_mod: 0
-      allowed_specials: 
+      allowed_specials:
       special_group: ranged
     Ice Storm:
       description: Level 7 Water spell
@@ -926,7 +939,7 @@ fs3combat:
       accuracy: 1
       has_shrapnel: true
       init_mod: 0
-      allowed_specials: 
+      allowed_specials:
       special_group: ranged
       Land Of Ice:
         description: Level 8 Water spell
@@ -941,7 +954,7 @@ fs3combat:
         accuracy: 4
         has_shrapnel: true
         init_mod: 0
-        allowed_specials: 
+        allowed_specials:
         special_group: ranged
     Telekinetic Burst:
       description: Level 4 Will spell
@@ -956,7 +969,7 @@ fs3combat:
       accuracy: 0
       has_shrapnel: false
       init_mod: 0
-      allowed_specials: 
+      allowed_specials:
       special_group: ranged
     Mass Telekinetic Burst:
       description: Level 7 Will spell
@@ -971,5 +984,5 @@ fs3combat:
       accuracy: 1
       has_shrapnel: false
       init_mod: 0
-      allowed_specials: 
+      allowed_specials:
       special_group: ranged

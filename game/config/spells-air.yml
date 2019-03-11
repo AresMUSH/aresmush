@@ -41,8 +41,7 @@ spells:
     casting_time: 1 round
     desc: 'Misty vapor gathers around you. It is stationary once created, and can
       be dispersed by a strong wind. The vapor obscures all sight in a 5 ft radius,
-      effectively making anyone in its midst <a href="https://www.aresmush.com/fs3/fs3-3/combat/#stance"
-      style="color: #A7C6DA" target="_blank">hidden</a> while standing still.'
+      effectively making anyone in its midst [hidden](https://www.aresmush.com/fs3/fs3-3/combat/#stance) while standing still.'
     duration: 15 minutes
     is_potion: true
     is_revive: false
@@ -284,6 +283,7 @@ spells:
     target_num: 1
     target_optional: true
     weapon_specials: Lightning
+    weapon: Spell
   Potions (Air):
     desc: Potions desc
     level: 4
