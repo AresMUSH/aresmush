@@ -217,6 +217,7 @@ spells:
     school: Will
     target_optional: false
     weapon_specials: Transform
+    weapon: Spell
   Levitate:
     desc: Levitate desc
     is_revive: false

@@ -6,7 +6,7 @@ spells:
     desc: The caster is able to create a permanent shard of crystal of moderate value.
       The shard may be no larger than 2 inches, but may be very hard and sharp. Colors
       may vary.
-    
+
     is_revive: false
     is_stun: false
     level: 1
@@ -163,6 +163,7 @@ spells:
     target_num: 1
     target_optional: true
     weapon_specials: Diamond
+    weapon: Spell
   Potions:
     desc: Potions desc
     level: 4
