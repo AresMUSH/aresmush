@@ -10,33 +10,37 @@ module AresMUSH
       Global.read_config("custom", "shortcuts")
     end
 
+    def self.get_web_request_handler(request)
+      case request.cmd
+      when "spells"
+        return SpellsRequestHandler
+      end
+      nil
+    end
+
     def self.get_cmd_handler(client, cmd, enactor)
 
-
-
-    case cmd.root
-    when "lastrp"
-      return LastRPCmd
-    end
-
-    #Comps
-    case cmd.root
-    when "comp"
-      return CompGiveCmd
-    when "comps"
-      return CompsCmd
-    end
-
-
-
-    #Plots
-    case cmd.root
-    when "plot"
-      case cmd.switch
-      when "propose"
-        return PlotProposeCmd
+      case cmd.root
+      when "lastrp"
+        return LastRPCmd
       end
-    end
+
+      #Comps
+      case cmd.root
+      when "comp"
+        return CompGiveCmd
+      when "comps"
+        return CompsCmd
+      end
+
+      #Plots
+      case cmd.root
+      when "plot"
+        case cmd.switch
+        when "propose"
+          return PlotProposeCmd
+        end
+      end
 
       #Secrets
       case cmd.root
