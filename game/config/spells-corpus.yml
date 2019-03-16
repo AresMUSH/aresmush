@@ -16,6 +16,7 @@ spells:
     range: Touch
     school: Corpus
     target_optional: true
+    target_num: 1
   Graze:
     available: true
     casting_time: 1 round
