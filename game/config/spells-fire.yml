@@ -140,6 +140,7 @@ spells:
     notes: ''
     range: Touch
     school: Fire
+    target_num: 1
     target_optional: true
     weapon: Hot Hands
   Fire Weapon:

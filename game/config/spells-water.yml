@@ -55,6 +55,7 @@ spells:
     notes: ''
     range: Touch
     school: Water
+    target_num: 1
     target_optional: true
     weapon: Chill Touch
   Chilled Limbs:
@@ -133,7 +134,8 @@ spells:
     notes: ''
     range: Self
     school: Water
-    target_optional: true
+
+    target_optional: false
     weapon: Ice Talons
   Water Breathing:
 
@@ -171,6 +173,7 @@ spells:
     notes: ''
     range: Short
     school: Water
+    target_num: 1
     target_optional: true
     weapon: Stun (Water)
   Water Walk:
@@ -209,6 +212,7 @@ spells:
     notes: ''
     range: Short
     school: Water
+    target_num: 3
     target_optional: true
     weapon: Cone Of Cold
   Ice Armor:
@@ -273,6 +277,7 @@ spells:
     notes: ''
     range: Short
     school: Water
+    target_num: 1
     target_optional: true
     weapon: Water Whip
   Exploding Ice:
@@ -292,6 +297,7 @@ spells:
     notes: ''
     range: Long
     school: Water
+    target_num: 3
     target_optional: true
     weapon: Exploding Ice
   Slick Ground:
@@ -311,6 +317,7 @@ spells:
     notes: ''
     range: Long
     school: Water
+    target_num: 3
     target_optional: true
     weapon: Slick Ground
   Familiar (Water):
@@ -365,6 +372,7 @@ spells:
     notes: ''
     range: Long
     school: Water
+    target_num: 1
     target_optional: true
     weapon: Shatter
   Energize Dimensional Anchor (Water):
@@ -403,6 +411,7 @@ spells:
     notes: ''
     range: Long
     school: Water
+    target_num: 3
     target_optional: true
     weapon: Ice Storm
   Land Of Ice:
@@ -423,5 +432,6 @@ spells:
     notes: ''
     range: Massive
     school: Water
+    target_num: 100
     target_optional: true
     weapon: Land Of Ice

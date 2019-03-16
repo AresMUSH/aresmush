@@ -129,6 +129,7 @@ spells:
     notes: ''
     range: Short
     school: Nature
+    target_num: 1
     target_optional: true
     weapon: Stun (Nature)
   Swarm:
@@ -171,6 +172,7 @@ spells:
     notes: ''
     range: Short
     school: Nature
+    target_num: 3
     target_optional: true
     weapon: Thorn Growth
   Acid Spit:
@@ -189,6 +191,7 @@ spells:
     notes: ''
     range: Short
     school: Nature
+    target_num: 1
     target_optional: true
     weapon: Acid Spit
   Animal Friendship:
@@ -385,6 +388,7 @@ spells:
     notes: ''
     range: Long
     school: Nature
+    target_num: 3
     target_optional: true
     weapon: Poison Puffs
   Winged Flight:

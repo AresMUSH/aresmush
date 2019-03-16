@@ -129,6 +129,7 @@ spells:
     notes: ''
     range: Short
     school: Corpus
+    target_num: 1
     target_optional: true
   Medium Heal:
     available: true
@@ -372,6 +373,7 @@ spells:
     range: Touch
     roll: true
     school: Corpus
+    target_num: 1
     target_optional: true
   Energize Dimensional Anchor (Corpus):
     available: false

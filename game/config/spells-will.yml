@@ -196,6 +196,7 @@ spells:
     notes: ''
     range: Short
     school: Will
+    target_num: 1
     target_optional: true
     weapon: Telekinetic Burst
   Transform Weapon:
