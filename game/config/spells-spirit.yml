@@ -200,6 +200,7 @@ spells:
     notes: ''
     range: Short
     school: Spirit
+    target_num: 1
     target_optional: true
     weapon: Stun (Spirit)
   Mass Awaken Terror:
@@ -227,6 +228,7 @@ spells:
     notes: ''
     range: Short
     school: Spirit
+    target_num: 1
     target_optional: true
     weapon: Mind Bolt
   Minor Jinx:
