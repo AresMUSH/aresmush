@@ -104,33 +104,7 @@ blockquote {
   clear: both;
 }
 
-/* Mobile */
-@media only screen and (max-width: 700px) {
 
-    table {
-        width: 100%;
-    }
-
-    .toc {
-        width: 100%;
-    }
-    .topicbox {
-        width: 100%;
-    }
-
-    .body-wrap {
-      padding: 5px 0px 0px 5px;
-    }
-
-    .scene-log p {
-      margin: 15px 0px 15px 0px;
-    }
-
-    .scene-pose p {
-    margin: 15px 5px;
-  }
-  
-}
 
 .school-text-wrapper {
   position: relative;
@@ -792,4 +766,32 @@ div.rating-alpha {
 
 #ember823 {
     height: fit-content;
+}
+
+/* Mobile */
+@media only screen and (max-width: 700px) {
+
+    table {
+        width: 100%;
+    }
+
+    .toc {
+        width: 100%;
+    }
+    .topicbox {
+        width: 100%;
+    }
+
+    .body-wrap {
+      padding: 5px 0px 0px 5px;
+    }
+
+    .scene-log p {
+      margin: 15px 0px 15px 0px;
+    }
+
+    .scene-pose p {
+      margin: 15px 5px;
+  }
+
 }
