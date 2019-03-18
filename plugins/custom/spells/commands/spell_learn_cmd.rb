@@ -41,6 +41,7 @@ module AresMUSH
             client.emit_success t('custom.additional_learning', :spell => self.spell)
             xp_needed = spell_learned.xp_needed.to_i - 1
             spell_learned.update(xp_needed: xp_needed)
+            spell_learned.update(last_learned: Time.now)
             FS3Skills.modify_xp(enactor, -1)
             if xp_needed < 1
               spell_learned.update(learning_complete: true)
