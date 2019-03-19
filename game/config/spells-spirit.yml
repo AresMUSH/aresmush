@@ -91,25 +91,7 @@ spells:
     roll: true
     school: Spirit
     target_optional: false
-  Comprehend Languages:
-    available: true
-    casting_time: 1 round
-    desc: 'The target is able to comprehend any spoken or written language for the
-      duration of the spell. This does not apply to text written in code.'
-    duration: 24 hours
-    is_potion: true
-    is_revive: false
-    is_stun: false
-    level: 2
-    line_of_sight: false
-    multi_target: false
-    name: Comprehend Languages
-    notes: ''
-    range: Touch
-    roll: true
-    school: Spirit
-    target_num: 1
-    target_optional: true
+
   Telepathic Correspondence:
     available: true
     casting_time: 1 round
@@ -129,6 +111,7 @@ spells:
     school: Spirit
     target_num: 1
     target_optional: true
+    #Level 3
   Awaken Terror:
     available: false
     casting_time: 1 round
@@ -167,6 +150,25 @@ spells:
     target_num: 1
     target_optional: true
     weapon: Stun (Spirit)
+  Comprehend Languages:
+    available: true
+    casting_time: 1 round
+    desc: 'The target is able to comprehend any spoken or written language for the
+      duration of the spell. This does not apply to text written in code.'
+    duration: 24 hours
+    is_potion: true
+    is_revive: false
+    is_stun: false
+    level: 3
+    line_of_sight: false
+    multi_target: false
+    name: Comprehend Languages
+    notes: ''
+    range: Touch
+    roll: true
+    school: Spirit
+    target_num: 1
+    target_optional: true
   Emotional Aura:
     available: true
     casting_time: 1 round
