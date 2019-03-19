@@ -512,7 +512,7 @@ module AresMUSH
         scene_type: scene.scene_type ? scene.scene_type.titlecase : 'unknown',
         can_edit: viewer && Scenes.can_edit_scene?(viewer, scene),
         is_watching: viewer && scene.watchers.include?(viewer),
-        is_unread: scene.is_unread?(viewer),
+        is_unread: viewer && scene.is_unread?(viewer),
         poses: scene.poses_in_order.map { |p| Scenes.build_scene_pose_web_data(p, viewer) }
       }
     end
