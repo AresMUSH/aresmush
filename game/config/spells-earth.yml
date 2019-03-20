@@ -164,11 +164,12 @@ spells:
     target_optional: true
     weapon_specials: Diamond
     weapon: Spell
-  Potions:
-    desc: Potions desc
+  Potions (Earth):
+    desc: The caster has learned the art of potion-making and can craft potions in any school. This is not a spell in the same sense of most, but rather an art learned through study. It takes time, effort, and materials to brew a potion.
     level: 4
-    name: Potions
+    name: Potions (Earth)
     school: Earth
+    available: true
   Rock Skin:
 
     armor: Rock Skin
@@ -229,15 +230,19 @@ spells:
     target_num: 1
     target_optional: true
     weapon: Stalagmite
-  Familiar:
-    desc: Familiar  desc
+  Familiar (Earth):
+    desc: A familiar is a spirit associated or allied with a school of magic that has taken residence in a physical vessel with the shape of an animal. It functions as a companion, assistant, and guardian. <br><br>Familiars may be capable of some or all of the following: sharing telepathic or empathic communication, providing knowledge of the arcane, sharing senses, lending physical aid as spies or fighters, delivering spells at a distance of up to three miles.
     is_revive: false
     is_stun: false
     level: 6
-    name: Familiar
+    name: Familiar (Earth)
     roll: true
     school: Earth
     target_optional: false
+    casting_time: 3 hours
+    range: Short
+    line_of_sight: true
+    available: true
   Stone Daggers:
 
     available: false

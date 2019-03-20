@@ -33,15 +33,7 @@ spells:
     roll: true
     school: Nature
     target_optional: false
-  Natural Defenses Crocodile:
-    armor: Crocodile
-    desc: Natural Defenses Crocodile
-    is_revive: false
-    is_stun: false
-    level: 2
-    name: Natural Defenses Crocodile
-    school: Nature
-    target_optional: false
+
   Repel Tiny Animal:
     available: true
     casting_time: 1 round
@@ -58,6 +50,43 @@ spells:
     roll: true
     school: Nature
     target_optional: false
+    #Level 2
+  Natural Defenses Crocodile:
+    available: false
+    armor: Crocodile
+    desc: Natural Defenses Crocodile
+    is_revive: false
+    is_stun: false
+    level: 2
+    name: Natural Defenses Crocodile
+    school: Nature
+    target_optional: false
+  Natural Defenses:
+    available: false
+    desc: The caster grows natural defenses from a specific animal. These take the form of armored skin, spines, etc. Animal is from the same genus each time the spell is cast. Protection should be <= 4.
+    is_revive: false
+    is_stun: false
+    level: 2
+    name: Natural Defenses
+    school: Nature
+    range: Self
+    effect: armor
+    duration: 15 minutes
+    target_optional: false
+    is_potion: true
+  Natural Weaponry:
+    available: false
+    desc: The caster grows natural weaponry from a specific animal for the purpose of attack. These take the form of non-venomous fangs, claws, horns etc. Animal is from the same genus each time the spell is cast. Penetration should be < 4.
+    is_revive: false
+    is_stun: false
+    level: 2
+    name: Natural Weaponry
+    school: Nature
+    range: Self
+    effect: Damage
+    duration: 15 minutes
+    target_optional: false
+    is_potion: true
   Ripen:
     available: false
     casting_time: 1 round
@@ -267,10 +296,11 @@ spells:
     school: Nature
     target_optional: false
   Potions (Nature):
-    desc: Potions desc
+    desc: The caster has learned the art of potion-making and can craft potions in any school. This is not a spell in the same sense of most, but rather an art learned through study. It takes time, effort, and materials to brew a potion.
     level: 4
-    name: Potions
+    name: Potions (Nature)
     school: Nature
+    available: true
   Shield Of The Forest:
 
     available: false
@@ -344,8 +374,22 @@ spells:
     roll: true
     school: Nature
     target_optional: false
+  Wild Shape:
+    desc: Caster chooses any alternate form from a specified animal genus. They lose the ability to cast spells and speak while in wild shape but can communicate with other animals of that genus. They may revert back to human form at will.
+    is_revive: false
+    is_stun: false
+    level: 5
+    name: Wild Shape
+    roll: true
+    school: Nature
+    target_optional: false
+    range: Self
+    duration: 3 hours
+    casting_time: 1 round
+    effect: transformation
   Familiar (Nature):
-    desc: Familiar  desc
+
+    desc: A familiar is a spirit associated or allied with a school of magic that has taken residence in a physical vessel with the shape of an animal. It functions as a companion, assistant, and guardian. <br><br>Familiars may be capable of some or all of the following: sharing telepathic or empathic communication, providing knowledge of the arcane, sharing senses, lending physical aid as spies or fighters, delivering spells at a distance of up to three miles.
     is_revive: false
     is_stun: false
     level: 6
@@ -353,6 +397,10 @@ spells:
     roll: true
     school: Nature
     target_optional: false
+    casting_time: 3 hours
+    range: Short
+    line_of_sight: true
+    available: true
   Mass Calm Animal:
 
     available: false
@@ -463,7 +511,6 @@ spells:
     school: Nature
     target_optional: false
   Greater Wild Shape:
-
     available: true
     casting_time: 1 round
     desc: Caster chooses any alternate form from a specified animal family. They retain
