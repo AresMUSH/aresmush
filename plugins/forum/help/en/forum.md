@@ -50,7 +50,7 @@ To read a specific topic, you use the category name/number and topic number.  To
 
 `forum/post <category>=<title>/<body>` - Creates a new topic.
 
-`forum/edit <category>/<post #>=<new text>` - Replaces post text with the new text.
+`forum/edit <category>/<post #>=<new title>/<new body>` - Replaces post text with the new text.
 `forum/edit <category>/<post #>` - Grabs the existing post text into your input buffer.
 
 `forum/reply <category name or number>/<topic number>=<reply>` - Replies to a forum topic.
