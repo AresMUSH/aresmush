@@ -234,7 +234,7 @@ spells:
   Potions (Corpus):
     desc: The caster has learned the art of potion-making and can craft potions in any school. This is not a spell in the same sense of most, but rather an art learned through study. It takes time, effort, and materials to brew a potion.
     level: 4
-    name: Potions (Corpus):
+    name: Potions (Corpus)
     school: Corpus
     available: true
   Vitality Weapon:
