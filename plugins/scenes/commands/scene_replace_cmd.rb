@@ -22,7 +22,7 @@ module AresMUSH
       def handle        
         Scenes.with_a_scene(self.scene_num, client) do |scene|
 
-          all_poses = scene.scene_poses.select { |p| p.character == enactor && !p.is_ooc }
+          all_poses = scene.poses_in_order.select { |p| p.character == enactor && !p.is_ooc }
           last_pose = all_poses[-1]
 
           if (!last_pose)
