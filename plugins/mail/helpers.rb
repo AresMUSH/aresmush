@@ -15,6 +15,14 @@ module AresMUSH
     def self.archive_tag
       "Archive"
     end
+    
+    def self.start_marker
+      Global.read_config('mail', 'start_marker') || '['
+    end
+    
+    def self.end_marker
+      Global.read_config('mail', 'end_marker') || ']'
+    end
         
     def self.all_tags(char)
       all_tags = []
