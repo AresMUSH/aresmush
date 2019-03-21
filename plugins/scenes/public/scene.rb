@@ -46,7 +46,7 @@ module AresMUSH
     end
     
     def last_posed
-      last_pose = self.scene_poses.to_a[-1]
+      last_pose = self.poses_in_order.to_a[-1]
       last_pose ? last_pose.character : nil
     end
     
