@@ -48,6 +48,8 @@ module AresMUSH
           return MailNewCmd
         when "reply", "replyall"
           return MailReplyCmd
+        when "report"
+          return MailReportCmd
         when "review"
           return MailReviewCmd
         when "sentmail"
