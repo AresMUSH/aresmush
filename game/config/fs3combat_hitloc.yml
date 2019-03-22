@@ -288,6 +288,95 @@ fs3combat:
       - Head
       critical_areas:
       - Left Flank
+
+    Tree:
+      areas:
+        Trunk:
+        - Trunk
+        - Trunk
+        - Trunk
+        - Right Branches
+        - Right Branches
+        - Left Branches
+        - Left Branches
+        - Upper Branches
+        - Upper Branches
+        Right Branches:
+        - Right Branches
+        - Right Branches
+        - Right Branches
+        - Left Branches
+        - Left Branches
+        - Upper Branches
+        - Upper Branches
+        - Trunk
+        - Trunk
+        Left Branches:
+        - Left Branches
+        - Left Branches
+        - Left Branches
+        - Upper Branches
+        - Upper Branches
+        - Right Branches
+        - Right Branches
+        - Trunk
+        - Trunk
+        Upper Branches:
+        - Upper Branches
+        - Upper Branches
+        - Upper Branches
+        - Left Branches
+        - Left Branches
+        - Right Branches
+        - Right Branches
+        - Trunk
+        - Trunk
+      vital_areas:
+      - Trunk
+      critical_areas:
+    Plant:
+      areas:
+        Stem:
+        - Stem
+        - Stem
+        - Left Vines
+        - Left Vines
+        - Flower
+        - Flower
+        - Right Vines
+        - Right Vines
+        Right Vines:
+        - Right Vines
+        - Left Vines
+        - Left Vines
+        - Flower
+        - Flower
+        - Right Vines
+        - Right Vines
+        - Stem
+        Left Vines:
+        - Left Vines
+        - Left Vines
+        - Left Vines
+        - Flower
+        - Flower
+        - Right Vines
+        - Right Vines
+        - Stem
+        Flower:
+        - Flower
+        - Flower
+        - Flower
+        - Left Vines
+        - Left Vines
+        - Right Vines
+        - Right Vines
+        - Stem
+        - Stem
+      vital_areas:
+      - Stem
+      critical_areas:
+      - Flower
     Fighter:
       areas:
         Body:
