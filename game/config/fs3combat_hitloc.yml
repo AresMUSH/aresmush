@@ -288,7 +288,6 @@ fs3combat:
       - Head
       critical_areas:
       - Left Flank
-
     Tree:
       areas:
         Trunk:
@@ -334,6 +333,7 @@ fs3combat:
       vital_areas:
       - Trunk
       critical_areas:
+      - Trunk
     Plant:
       areas:
         Stem:
