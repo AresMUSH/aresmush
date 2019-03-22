@@ -21,10 +21,7 @@ spells:
     casting_time: 1 round
     desc: 'Caster hears a random, uncontrollable thought (no more than a short sentence
       of up to 10 words) from an object held by a sapient creature in the past 48
-      hours. Successive casts on the same object yield the same sentence.
-
-
-      When possible, the sentence should be chosen by a GM.'
+      hours. Successive casts on the same object yield the same sentence.  When possible, the sentence should be chosen by a GM.'
     is_potion: true
     is_revive: false
     is_stun: false
@@ -41,8 +38,7 @@ spells:
   Share Emotion:
     available: true
     casting_time: 1 round
-    desc: Share a single dominant emotion with a target within visual range of the
-      caster.
+    desc: Share a single dominant emotion with a target within visual range of the caster. See [this list](https://en.wikipedia.org/wiki/Contrasting_and_categorization_of_emotions#Parrott%27s_emotions_by_groups) for emotions. 
     duration: 10 minutes
     is_revive: false
     is_stun: false
@@ -172,9 +168,9 @@ spells:
   Emotional Aura:
     available: true
     casting_time: 1 round
-    desc: One target becomes outlined in light visible only to the caster. The color
+    desc: 'One target becomes outlined in light visible only to the caster. The color
       of the light corresponds to the target's current emotional status. Requires
-      line of sight.
+      line of sight. See [this list](https://en.wikipedia.org/wiki/Contrasting_and_categorization_of_emotions#Parrott%27s_emotions_by_groups) for emotions'.
     duration: 1 round
     is_revive: false
     is_stun: false
