@@ -170,7 +170,7 @@ spells:
     casting_time: 1 round
     desc: 'One target becomes outlined in light visible only to the caster. The color
       of the light corresponds to the target's current emotional status. Requires
-      line of sight. See [this list](https://en.wikipedia.org/wiki/Contrasting_and_categorization_of_emotions#Parrott%27s_emotions_by_groups) for emotions.'
+      line of sight.'
     duration: 1 round
     is_revive: false
     is_stun: false
