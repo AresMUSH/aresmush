@@ -5,25 +5,25 @@ fs3combat:
   combatant_types:
     Knight:
       weapon: Sword
-      weapon_specials: 
+      weapon_specials:
       armor: Plate
       hitloc: Humanoid
       defense_skill: Reflexes
     Archer:
       weapon: Bow
-      weapon_specials: 
+      weapon_specials:
       armor: Leather
       hitloc: Humanoid
       defense_skill: Reflexes
     Rogue:
       weapon: Knife
-      weapon_specials: 
+      weapon_specials:
       armor: Leather
       hitloc: Humanoid
       defense_skill: Reflexes
     Swordsman:
       weapon: Sword
-      weapon_specials: 
+      weapon_specials:
       armor: Chainmail
       hitloc: Humanoid
       defense_skill: Reflexes
@@ -31,7 +31,7 @@ fs3combat:
       hitloc: Humanoid
     Modern Soldier:
       weapon: Rifle
-      weapon_specials: 
+      weapon_specials:
       armor: Tactical
       hitloc: Humanoid
       defense_skill: Reflexes
@@ -51,6 +51,16 @@ fs3combat:
     Serpent:
       hitloc: Serpent
       weapon: Teeth
+      defense_skill: Reflexes
+    Plant:
+      hitloc: Plant
+      weapon: Club
+      armor: Tough Hide
+      defense_skill: Reflexes
+    Tree:
+      hitloc: Tree
+      weapon: Club
+      armor: Tough Hide
       defense_skill: Reflexes
   default_type: Unarmed Combatant
   shortcuts:
