@@ -165,12 +165,10 @@ spells:
     school: Spirit
     target_num: 1
     target_optional: true
-  Emotional Aura:
+  'Emotional Aura':
     available: true
     casting_time: 1 round
-    desc: 'One target becomes outlined in light visible only to the caster. The color
-      of the light corresponds to the target's current emotional status. Requires
-      line of sight.'
+    desc: 'One target becomes outlined in light visible only to the caster. The color of the light corresponds to the target's current emotional status. Requires line of sight.'
     duration: 1 round
     is_revive: false
     is_stun: false
