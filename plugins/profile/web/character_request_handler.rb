@@ -113,7 +113,6 @@ module AresMUSH
           profile_image: Website.get_file_info(char.profile_image),
           demographics: demographics,
           groups: groups,
-          roster_notes: char.idle_state == 'Roster' ? char.roster_notes : nil,
           handle: char.handle ? char.handle.name : nil,
           status_message: Profile.get_profile_status_message(char),
           tags: char.profile_tags,
@@ -130,11 +129,24 @@ module AresMUSH
           fs3: fs3,
           files: files,
           last_profile_version: char.last_profile_version ? char.last_profile_version.id : nil,
-          achievements: Achievements.is_enabled? ? Achievements.build_achievements(char) : nil
+          achievements: Achievements.is_enabled? ? Achievements.build_achievements(char) : nil,
+          
+          roster: self.build_roster_info(char),
+          idle_notes: char.idle_notes ? Website.format_markdown_for_html(char.idle_notes) : nil,
+          
         }
       end
       
-      
+      def build_roster_info(char)
+        return nil if !char.on_roster?
+        
+        {
+          notes: char.roster_notes ? Website.format_markdown_for_html(char.roster_notes) : nil,
+          previously_played: char.roster_played,
+          app_required: char.roster_restricted,
+          contact: char.roster_contact
+        }
+      end
     end
   end
 end

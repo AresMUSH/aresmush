@@ -28,6 +28,7 @@ There are several idle actions available:
         You can also use idle/gone, idle/warn, etc.
 `idle/remove <list of names>` - Removes someone from the list.
 `idle/execute` - Takes care of the actions and posts a summary to the BBS.
+`idle/note <name>=<note>` - Adds a note about what happened to them.
 
 ## Idle Preview
 

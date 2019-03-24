@@ -18,6 +18,8 @@ module AresMUSH
           return IdleActionCmd
         when "execute"
           return IdleExecuteCmd
+        when "note"
+          return IdleNotesCmd
         when "queue", nil
           return IdleQueueCmd
         when "preview"
