@@ -21,11 +21,15 @@ module AresMUSH
           end
         
           old_pose = last_pose.pose
-            
+          pose_id = last_pose.id
+          
           last_pose.delete
           message = t('scenes.deleted_pose', :name => enactor_name,
                         :pronoun => Demographics.possessive_pronoun(enactor))
           
+          data = { id: pose_id }.to_json
+          Scenes.new_scene_activity(scene, :pose_deleted, data)
+
           scene.room.emit "%xr*** #{message} ***%xn"
         end
       end

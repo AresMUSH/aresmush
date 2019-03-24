@@ -1,14 +1,9 @@
 module AresMUSH
   module Scenes
     
-    def self.new_scene_activity(scene, scene_pose = nil)
+    def self.new_scene_activity(scene, activity_type, data)
       last_posed = scene.last_posed ? scene.last_posed.name : nil
-      if (scene_pose)
-        data = Scenes.build_scene_pose_web_data(scene_pose, nil, true).to_json
-      else
-        data = nil
-      end
-      web_msg = "#{scene.id}|#{last_posed}|#{data}"
+      web_msg = "#{scene.id}|#{last_posed}|#{activity_type}|#{data}"
       Global.client_monitor.notify_web_clients(:new_scene_activity, web_msg) do |char|
         Scenes.can_read_scene?(char, scene) && Scenes.is_watching?(scene, char)
       end
@@ -42,7 +37,7 @@ module AresMUSH
       Scenes.create_scene_temproom(scene)
       scene.update(completed: false)
       Scenes.set_scene_location(scene, scene.location)
-      Scenes.new_scene_activity(scene)
+      Scenes.new_scene_activity(scene, :status_changed, nil)
     end
     
     def self.unshare_scene(enactor, scene)
@@ -54,6 +49,7 @@ module AresMUSH
           scene.scene_log.delete
         end
       end
+      Scenes.new_scene_activity(scene, :status_changed, nil)
     end
     
     def self.share_scene(scene)
@@ -69,7 +65,7 @@ module AresMUSH
       scene.update(shared: true)
       scene.update(date_shared: Time.now)
       Scenes.create_log(scene)
-      Scenes.new_scene_activity(scene)    
+      Scenes.new_scene_activity(scene, :status_changed, nil)  
       
       Global.dispatcher.queue_event SceneSharedEvent.new(scene.id)
       
@@ -114,7 +110,7 @@ module AresMUSH
       scene.update(completed: true)
       scene.update(date_completed: Time.now)
       
-      Scenes.new_scene_activity(scene)
+      Scenes.new_scene_activity(scene, :status_changed, nil)
       scene.participants.each do |char|
         Scenes.handle_scene_participation_achievement(char)
       end
@@ -176,6 +172,9 @@ module AresMUSH
         scene.room.update(description: description)
         scene.room.update(area: area)
       end
+      
+      data = Scenes.build_location_web_data(scene).to_json
+      Scenes.new_scene_activity(scene, :location_updated, data)
       
       return message
     end
@@ -459,7 +458,16 @@ module AresMUSH
         end
         
         Scenes.add_to_scene(scene, message, Game.master.system_character, false, true)
+        
       end
+
+      data = { id: scene_pose.id, 
+               pose: Website.format_markdown_for_html(new_text),
+               raw_pose: new_text }.to_json
+      Scenes.new_scene_activity(scene, :pose_updated, data)
+      
+      Global.logger.debug("Scene #{scene.id} pose #{scene_pose.id} edited by #{enactor ? enactor.name : 'Anonymous'}.")
+      
     end
     
     def self.is_unread?(scene, char)
@@ -499,10 +507,7 @@ module AresMUSH
       {
         id: scene.id,
         title: scene.title,
-        location: {
-          name: scene.location,
-          description: scene.room ? Website.format_markdown_for_html(scene.room.expanded_desc) : nil,
-          scene_set: scene.room ? Website.format_markdown_for_html(scene.room.scene_set) : nil },
+        location: Scenes.build_location_web_data(scene),
         completed: scene.completed,
         summary: scene.summary,
         tags: scene.tags,
@@ -514,6 +519,14 @@ module AresMUSH
         is_watching: viewer && scene.watchers.include?(viewer),
         is_unread: viewer && scene.is_unread?(viewer),
         poses: scene.poses_in_order.map { |p| Scenes.build_scene_pose_web_data(p, viewer) }
+      }
+    end
+    
+    def self.build_location_web_data(scene)
+      {
+        name: scene.location,
+        description: scene.room ? Website.format_markdown_for_html(scene.room.expanded_desc) : nil,
+        scene_set: scene.room ? Website.format_markdown_for_html(scene.room.scene_set) : nil
       }
     end
   end

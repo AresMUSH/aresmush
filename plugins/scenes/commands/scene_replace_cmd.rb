@@ -16,7 +16,7 @@ module AresMUSH
       end
       
       def log_command
-        # Don't log poses
+        # Don't log full command for message privacy
       end
       
       def handle        
@@ -31,7 +31,6 @@ module AresMUSH
           end
             
           last_pose.update(pose: self.pose)
-          
           Scenes.edit_pose(scene, last_pose, self.pose, enactor, !self.silent)
         end
       end
