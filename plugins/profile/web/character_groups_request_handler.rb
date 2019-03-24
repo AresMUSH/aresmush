@@ -47,13 +47,13 @@ module AresMUSH
           }
         end
         
-        idle_chars = Character.all.select { |c| c.idled_state == 'Gone' }.sort_by { |c| c.name }.map { |c| {
+        idle_chars = Character.all.select { |c| c.idle_state == 'Gone' }.sort_by { |c| c.name }.map { |c| {
                       name: c.name,
                       icon: Website.icon_for_char(c)
                       }
                     }
 
-        dead_chars = Character.all.select { |c| c.idled_state == 'Dead' }.sort_by { |c| c.name }.map { |c| {
+        dead_chars = Character.all.select { |c| c.idle_state == 'Dead' }.sort_by { |c| c.name }.map { |c| {
                       name: c.name,
                       icon: Website.icon_for_char(c)
                       }
