@@ -9,6 +9,11 @@ module AresMUSH
         return nil
       end
       
+      def check_can_manage
+        return nil if Idle.can_idle_sweep?(enactor)
+        return t('dispatcher.not_allowed')
+      end
+      
       def handle
         template = IdleQueueTemplate.new(client.program[:idle_queue], enactor)
         client.emit template.render

@@ -17,6 +17,12 @@ module AresMUSH
         config['scenes']['shortcuts']['pose/skip'] = 'pose/drop'
         DatabaseMigrator.write_config_file("scenes.yml", config)  
         
+        
+        Global.logger.debug "Adding idle notes shortcut."
+        config = DatabaseMigrator.read_config_file("idle.yml")
+        config['idle']['shortcuts']['idle/notes'] = 'idle/note'
+        DatabaseMigrator.write_config_file("idle.yml", config)  
+        
       end
     end
   end
