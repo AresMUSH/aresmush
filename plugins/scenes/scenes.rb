@@ -45,8 +45,6 @@ module AresMUSH
           end
         when "drop"
           return PoseDropCmd
-        when "skip"
-          return PoseSkipCmd
         when "nudge"
           return PoseNudgeCmd
         when "order"

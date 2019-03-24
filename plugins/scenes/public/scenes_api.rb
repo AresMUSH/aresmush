@@ -29,8 +29,10 @@ module AresMUSH
       scene.mark_unread(character)
                   
       scene.update(last_activity: Time.now)
-      data = Scenes.build_scene_pose_web_data(scene_pose, nil, true).to_json
-      Scenes.new_scene_activity(scene, :new_pose, data)
+      data = Scenes.build_scene_pose_web_data(scene_pose, nil, true)
+      data[:pose_order] = Scenes.build_pose_order_web_data(scene)
+
+      Scenes.new_scene_activity(scene, :new_pose, data.to_json)
       if (!is_ooc)
         Scenes.handle_word_count_achievements(character, pose)
       end

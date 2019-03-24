@@ -301,31 +301,31 @@ module AresMUSH
     def self.notify_next_person(room)
         
       poses = room.sorted_pose_order
-      poses.each do |name, time|
-        char = Character.find_one_by_name(name)
-        client = Login.find_client(char)
-        if (!char || !client || char.room != room)
-          room.remove_from_pose_order(name)
-        end
-      end
-          
-      poses = room.sorted_pose_order
       return if poses.count < 2
  
       if (room.pose_order_type == '3-per')
         poses.reverse.each_with_index do |(name, time), i|
           next if i < 3
           char = Character.find_one_by_name(name)
-          if (char.pose_nudge && !char.pose_nudge_muted)
-            Login.emit_ooc_if_logged_in char, t('scenes.pose_threeper_nudge')
+          if (!char)
+            room.remove_from_pose_order(name)
+          end
+          client = Login.find_client(char)
+          if (client && char.room == room && char.pose_nudge && !char.pose_nudge_muted)
+            client.emit_ooc t('scenes.pose_threeper_nudge')
           end
         end
       else
         next_up_name = poses.first[0]
         char = Character.find_one_by_name(next_up_name)
-
-        if (char.pose_nudge && !char.pose_nudge_muted)
-          Login.emit_ooc_if_logged_in char, t('scenes.pose_your_turn')      
+        if (!char)
+          room.remove_from_pose_order(name)
+        end
+        client = Login.find_client(char)
+        if (client && char.room == room && char.pose_nudge && !char.pose_nudge_muted)
+          client.emit_ooc t('scenes.pose_your_turn')      
+        else
+          room.emit_ooc t('scenes.next_pose_offline', :name => name)
         end
       end
     end
@@ -473,6 +473,10 @@ module AresMUSH
     def self.is_unread?(scene, char)
       !(char.read_scenes || []).include?(scene.id.to_s)
     end
+    
+    def self.format_last_posed(time)
+      TimeFormatter.format(Time.now - Time.parse(time))
+    end
 
     def self.build_scene_pose_web_data(pose, viewer, live_update = false)
       {
@@ -518,6 +522,7 @@ module AresMUSH
         can_edit: viewer && Scenes.can_edit_scene?(viewer, scene),
         is_watching: viewer && scene.watchers.include?(viewer),
         is_unread: viewer && scene.is_unread?(viewer),
+        pose_order: Scenes.build_pose_order_web_data(scene),
         poses: scene.poses_in_order.map { |p| Scenes.build_scene_pose_web_data(p, viewer) }
       }
     end
@@ -529,5 +534,14 @@ module AresMUSH
         scene_set: scene.room ? Website.format_markdown_for_html(scene.room.scene_set) : nil
       }
     end
+    
+    def self.build_pose_order_web_data(scene)
+      scene.room.sorted_pose_order.map { |name, time| 
+        {
+         name: name,
+         time:  Scenes.format_last_posed(time)
+         }}
+    end
+    
   end
 end
