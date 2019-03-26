@@ -13,7 +13,7 @@ fs3skills:
   - Melee
   xp_costs:
     language:
-      '0': 1
+      '0': 2
       '1': 4
       '2': 12
     action:
