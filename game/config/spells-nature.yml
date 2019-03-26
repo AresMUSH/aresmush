@@ -62,7 +62,7 @@ spells:
     school: Nature
     target_optional: false
   Natural Defenses:
-    available: false
+    available: true
     desc: The caster grows natural defenses from a specific animal. These take the form of armored skin, spines, etc. Animal is from the same genus each time the spell is cast. Protection should be <= 4.
     is_revive: false
     is_stun: false
