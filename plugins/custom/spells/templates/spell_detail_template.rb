@@ -71,7 +71,7 @@ module AresMUSH
       end
 
       def lethal_mod
-        Global.read_config("spells", spell, "attack_mod")
+        Global.read_config("spells", spell, "lethal_mod")
       end
 
       def spell_mod
