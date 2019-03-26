@@ -1,6 +1,6 @@
 spells:
+  #Level 1
   Beginner Telekinesis:
-
     available: true
     casting_time: 1 round, plus additional rounds to manipulate at GM's discretion
     desc: The caster is able to slowly lift and manipulate 1 pound of material almost
@@ -19,16 +19,11 @@ spells:
     school: Will
     target_optional: false
   Deface:
-
     available: true
     casting_time: 1 round
-    desc: 'Make simple or cosmetic damage to an object.
-
-      <br><br>
-
+    desc: 'Make simple or cosmetic damage to an object.   <br><br>
       For example, cause a one inch rip or crack, add a small spot of tarnish or dirt,
       or make a scratch of no more than a few inches.'
-
     is_potion: true
     is_revive: false
     is_stun: false
@@ -42,13 +37,11 @@ spells:
     school: Will
     target_optional: false
   Mend:
-
     available: true
     casting_time: 1 round
     desc: Make simple or cosmetic repairs on an object.<br><br>For example, repair
       a one inch rip or crack, remove a small spot of tarnish or dirt, or fix a scratch
       of no more than a few inches.
-
     is_potion: true
     is_revive: false
     is_stun: false
@@ -61,8 +54,26 @@ spells:
     roll: Will
     school: Will
     target_optional: false
+  #Level 2
+  Fling:
+    available: true
+    casting_time: 1 round
+    desc: Fling a small object under half a pound at a target.
+    fs3_attack: true
+    is_revive: false
+    is_stun: false
+    level: 2
+    line_of_sight: true
+    multi_target: false
+    name: Fling
+    notes: ''
+    range: Short
+    school: Will
+    target_num: 1
+    target_optional: true
+    weapon: Fling
+    effect: Damage
   Minor Telekinesis:
-
     available: true
     casting_time: 1 round, plus additional rounds to manipulate at GM's discretion
     desc: The caster is able to slowly lift and manipulate 5 pounds of material almost
@@ -80,8 +91,26 @@ spells:
     roll: Will
     school: Will
     target_optional: false
+  Nudge Aim:
+    available: true
+    casting_time: 1 round
+    desc: Telekinetically shove a single opponent's weapon, making it difficult for them to aim.
+    fs3_attack: false
+    is_revive: false
+    is_stun: false
+    level: 2
+    line_of_sight: true
+    multi_target: false
+    name: Nudge Aim
+    notes: ''
+    range: Short
+    school: Will
+    target_num: 1
+    target_optional: true
+    effect: Debuff
+    attack_mod: -1    
+  #Level 3
   Intermediate Telekinesis:
-
     available: true
     casting_time: 1 round, plus additional rounds for movement at the GM's discretion
     desc: The caster can lift and move an object weighing up to 100 lbs at will from
@@ -99,7 +128,6 @@ spells:
     school: Will
     target_optional: false
   Telekinetic Block:
-
     available: true
     casting_time: 1 round
     desc: 'Deflect attacks directed against you or a single comrade with a telekinetic
@@ -119,11 +147,9 @@ spells:
     target_num: 1
     target_optional: true
   Telekinetic Hold:
-
     available: true
     casting_time: 1 round
     desc: Subdue an enemy with telekinetic strength, disabling them for one round.
-
     fs3_attack: true
     is_revive: false
     is_stun: true
@@ -138,7 +164,6 @@ spells:
     target_optional: true
     weapon: Stun (Will)
   Major Telekinesis:
-
     available: true
     casting_time: 1 round, plus additional rounds for movement at the GM's discretion
     desc: The caster can lift and move an object or person weighing up to 250 lbs
@@ -163,7 +188,6 @@ spells:
     school: Will
     available: true
   Telekinetic Armor:
-
     armor: Telekinetic
     available: true
     casting_time: 1 round
@@ -181,12 +205,10 @@ spells:
     school: Will
     target_optional: false
   Telekinetic Burst:
-
     available: false
     casting_time: 1 round
     desc: The caster lashes out with a blunt telekinetic attack, dealing damage to
       an opponent. On a hit, the opponent is pushed backwards 1-10 ft.
-
     fs3_attack: true
     is_revive: false
     is_stun: false
@@ -201,7 +223,6 @@ spells:
     target_optional: true
     weapon: Telekinetic Burst
   Transform Weapon:
-
     available: false
     casting_time: 1 round
     desc: Transform any weapon into a more powerful version of itself.
