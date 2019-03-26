@@ -12,6 +12,10 @@ module AresMUSH
           weapon_specials = Global.read_config("spells", s[:name], "weapon_specials")
           armor = Global.read_config("spells", s[:name], "armor")
           armor_specials = Global.read_config("spells", s, "armor_specials")
+          attack = Global.read_config("spells", s[:name], "attack_mod")
+          lethal = Global.read_config("spells", s[:name], "lethal_mod")
+          spell = Global.read_config("spells", s[:name], "spell_mod")
+          defense = Global.read_config("spells", s[:name], "defense_mod")
           if s[:level] == 8
             s[:level_8] = true
             s[:xp] = 13
@@ -51,6 +55,9 @@ module AresMUSH
             s[:weapon_special_init] = FS3Combat.weapon_stat(weapon_special, "init_mod")
             s[:weapon_special_accuracy] = FS3Combat.weapon_stat(weapon_special, "accuracy")
           end
+          if (attack || defense || lethal || spell)
+            s[:mod] = true
+          end
           protection = FS3Combat.armor_stat(armor, "protection")
           if protection
             protection = protection["Chest"]
@@ -58,7 +65,7 @@ module AresMUSH
           s[:armor_protection] = protection
           s[:armor_defense] = FS3Combat.armor_stat(armor, "defense")
           if s[:targets] == nil
-            
+
           elsif s[:targets] == 1
             s[:single_target] = true
           elsif s[:targets] > 1
