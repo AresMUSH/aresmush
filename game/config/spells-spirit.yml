@@ -22,8 +22,6 @@ spells:
     desc: 'Caster hears a random, uncontrollable thought (no more than a short sentence
       of up to 10 words) from an object held by a sapient creature in the past 48
       hours. Successive casts on the same object yield the same sentence.
-
-
       When possible, the sentence should be chosen by a GM.'
     is_potion: true
     is_revive: false
@@ -73,6 +71,7 @@ spells:
     school: Spirit
     target_num: 1
     target_optional: true
+  #Level 2
   Beckon:
     available: true
     casting_time: 1 round
@@ -95,8 +94,7 @@ spells:
   Telepathic Correspondence:
     available: true
     casting_time: 1 round
-    desc: Hold a telepathic conversation with one person at a time. Initial casting
-      requires concentration, after which this spell remains in effect without requiring
+    desc: Cast a spell on a target that enables the caster to hold a telepathic conversation with one person at a time. Initial casting requires concentration, after which this spell remains in effect without requiring
       maintenance or taking up your action during a round.
     duration: 1 hour
     is_revive: false
