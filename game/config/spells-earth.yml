@@ -19,7 +19,6 @@ spells:
     school: Earth
     target_optional: false
   Rock Dance:
-
     available: true
     casting_time: 1 round
     desc: Send half a dozen pebbles and stones smaller than your fist dancing according
@@ -37,11 +36,9 @@ spells:
     school: Earth
     target_optional: false
   Shape Stone:
-
     available: true
     casting_time: 1 round
-    desc: Cause up to 5 lbs of preexisting rock or stone to form into simple non-weaponized
-      shapes that animate at your direction.
+    desc: Cause pre-existing rock or stone that could fit within a 1-foot cube to form into simple non-weaponized shapes that animate at your direction.
     duration: 1 hour
     is_revive: false
     is_stun: false
