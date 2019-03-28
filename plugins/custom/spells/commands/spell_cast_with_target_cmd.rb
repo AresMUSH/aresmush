@@ -97,7 +97,7 @@ module AresMUSH
 
       def handle
       #Reading Config Files
-
+        rounds = Global.read_config("spells", self.spell, "rounds")
         heal_points = Global.read_config("spells", self.spell, "heal_points")
         weapon = Global.read_config("spells", self.spell, "weapon")
         fs3_attack = Global.read_config("spells", self.spell, "fs3_attack")
@@ -112,7 +112,7 @@ module AresMUSH
               FS3Combat.set_weapon(enactor, caster_combat, weapon)
               weapon_type = FS3Combat.weapon_stat(caster_combat.weapon, "weapon_type")
               if is_stun
-                FS3Combat.set_action(client, enactor, enactor.combat, caster_combat, FS3Combat::SubdueAction, target_name)
+                FS3Combat.set_action(client, enactor, enactor.combat, caster_combat, FS3Combat::SpellStunAction, self.action_args)
               elsif weapon_type == "Explosive"
                 FS3Combat.set_action(client, enactor, enactor.combat, caster_combat, FS3Combat::ExplodeAction, target_name)
               elsif weapon_type == "Suppressive"
