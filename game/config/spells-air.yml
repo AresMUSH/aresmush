@@ -122,7 +122,8 @@ spells:
     is_potion: false
     is_revive: false
     is_stun: true
-    level: 3
+    rounds: 1
+    level: 1
     line_of_sight: true
     multi_target: false
     name: Shock
@@ -180,6 +181,7 @@ spells:
     fs3_attack: true
     is_revive: false
     is_stun: true
+    rounds: 1
     level: 4
     line_of_sight: true
     multi_target: false

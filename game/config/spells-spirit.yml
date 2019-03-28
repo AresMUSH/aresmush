@@ -118,7 +118,8 @@ spells:
       for the duration of the spell unless forced.
     is_revive: false
     is_stun: true
-    level: 3
+    rounds: 3
+    level: 1
     line_of_sight: true
     multi_target: false
     name: Awaken Terror
@@ -137,6 +138,7 @@ spells:
       spell. The spell is broken if they are hit by an attack.
     is_revive: false
     is_stun: true
+    rounds: 1
     level: 3
     line_of_sight: true
     multi_target: false
@@ -193,6 +195,7 @@ spells:
     fs3_attack: true
     is_revive: false
     is_stun: true
+    rounds: 1
     level: 3
     line_of_sight: true
     multi_target: false
