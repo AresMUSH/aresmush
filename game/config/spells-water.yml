@@ -91,7 +91,7 @@ spells:
     level: 2
     line_of_sight: true
     multi_target: false
-    name: Create Water
+    name: Shape Water
     notes: ''
     range: Short
     roll: true
