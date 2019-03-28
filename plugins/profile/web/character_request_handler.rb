@@ -52,7 +52,8 @@ module AresMUSH
             {
               name: a.name,
               level: a.level,
-              school: a.school
+              school: a.school,
+              learned: a.learning_complete
               }}
         end
 
@@ -60,7 +61,7 @@ module AresMUSH
 
         major_spells = []
         spells.each do |s|
-          if s[:school] == major_school
+          if (s[:school] == major_school && s[:learned])
             major_spells.concat [s]
           end
         end
@@ -68,7 +69,7 @@ module AresMUSH
         if minor_school != "None"
           minor_spells = []
           spells.each do |s|
-            if s[:school] == minor_school
+            if (s[:school] == minor_school && s[:learned])
               minor_spells.concat [s]
             end
           end
