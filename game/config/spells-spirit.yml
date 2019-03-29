@@ -90,7 +90,23 @@ spells:
     roll: true
     school: Spirit
     target_optional: false
-
+  Dampen Emotion:
+    available: true
+    casting_time: 1 round
+    desc: Reduce the strength of the most dominant emotion that the target is feeling. For example, anger may be suppressed into annoyance, joy into serenity, or grief into sadness.
+    duration: 10 minutes
+    is_revive: false
+    is_stun: false
+    level: 2
+    line_of_sight: true
+    multi_target: false
+    name: Dampen Emotion
+    notes: ''
+    range: Short
+    roll: true
+    school: Spirit
+    target_optional: true
+    target_num: 1
   Telepathic Correspondence:
     available: true
     casting_time: 1 round

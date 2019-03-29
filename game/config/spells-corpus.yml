@@ -17,6 +17,24 @@ spells:
     school: Corpus
     target_optional: true
     target_num: 1
+  Eye Color:
+    available: true
+    casting_time: 1 round
+    desc: The caster can change the color of their eyes to any naturally occurring hue for a duration of up to one hour.
+    duration: 10 minutes
+    is_potion: true
+    is_revive: false
+    is_stun: false
+    level: 1
+    line_of_sight: false
+    multi_target: false
+    name: Eye Color
+    notes: ''
+    range: Self
+    roll: true
+    school: Corpus
+    target_num: 1
+    target_optional: false
   Graze:
     available: true
     casting_time: 1 round
@@ -55,6 +73,7 @@ spells:
     school: Corpus
     target_num: 1
     target_optional: true
+#Level Two
   Minor Heal:
     available: true
     casting_time: 1 round
@@ -112,6 +131,8 @@ spells:
     roll: true
     school: Corpus
     target_optional: false
+
+
   Flesh Wound:
     available: false
     casting_time: 1 round
