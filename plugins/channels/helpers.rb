@@ -69,6 +69,7 @@ module AresMUSH
     end
     
     def self.emit_to_channel(channel, original_msg, title = nil)
+      original_msg = "#{original_msg}".gsub(/%R/i, " ")
       channel.add_to_history "#{title} #{original_msg}"
       channel.characters.each do |c|
         if (!Channels.is_muted?(c, channel))
