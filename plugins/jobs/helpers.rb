@@ -141,12 +141,18 @@ module AresMUSH
     end
         
     def self.notify(job, message, author, notify_submitter = true)
-      Jobs.mark_unread(job, notify_submitter ? job.author : nil)
+      Jobs.mark_unread(job, notify_submitter ? nil : job.author)
       Jobs.mark_read(job, author)
-
-      Global.notifier.notify_ooc(:job_update, message) do |char|
+      
+      Global.client_monitor.emit_ooc(message) do |char|
         char && (Jobs.can_access_category?(char, job.category) || notify_submitter && char == job.author)
-      end      
+      end
+            
+      data = "#{job.id}|#{message}"
+      Global.client_monitor.notify_web_clients(:job_update, data) do |char|
+        char && (Jobs.can_access_category?(char, job.category) || notify_submitter && char == job.author)
+      end
+            
     end
     
     def self.reboot_required_notice

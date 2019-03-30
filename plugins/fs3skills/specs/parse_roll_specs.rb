@@ -31,7 +31,12 @@ module AresMUSH
       end
 
       describe :can_parse_roll_params do
+        before do
+          allow(FS3Skills).to receive(:get_ability_type) { :action }
+        end
+        
         it "should handle attribute by itself" do
+          allow(FS3Skills).to receive(:get_ability_type).with("A") { :attribute }
           params = FS3Skills.parse_roll_params("A")
           check_params(params, "A", 0, nil)
         end
@@ -79,6 +84,12 @@ module AresMUSH
         it "should handle bad string with negative ruling attr" do
           params = FS3Skills.parse_roll_params("A-B+2")
           expect(params).to be_nil
+        end
+        
+        it "should swap attr and ability if backwards" do
+          allow(FS3Skills).to receive(:get_ability_type).with("Y") { :attribute }
+          params = FS3Skills.parse_roll_params("Y+X")
+          check_params(params, "X", 0, "Y")
         end
 
         it "should handle bad string with a non-digit modifier" do

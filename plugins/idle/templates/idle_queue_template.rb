@@ -29,6 +29,11 @@ module AresMUSH
         char.idle_lastwill
       end
       
+      def idle_notes(entry)
+        char = entry[:char]
+        char.idle_notes
+      end
+      
       def last_on(entry)
         char = entry[:char]
         str = OOCTime.local_short_timestr(@enactor, char.last_on)

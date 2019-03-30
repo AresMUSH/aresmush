@@ -16,13 +16,13 @@ module AresMUSH
       end
       
       def log_command
-        # Don't log poses
+        # Don't log full command for message privacy
       end
       
       def handle        
         Scenes.with_a_scene(self.scene_num, client) do |scene|
 
-          all_poses = scene.scene_poses.select { |p| p.character == enactor && !p.is_ooc }
+          all_poses = scene.poses_in_order.select { |p| p.character == enactor && !p.is_ooc }
           last_pose = all_poses[-1]
 
           if (!last_pose)
@@ -31,7 +31,6 @@ module AresMUSH
           end
             
           last_pose.update(pose: self.pose)
-          
           Scenes.edit_pose(scene, last_pose, self.pose, enactor, !self.silent)
         end
       end
