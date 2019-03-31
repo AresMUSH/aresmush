@@ -81,14 +81,7 @@ module AresMUSH
           connected_client = Login.find_client(c)
         
           if (scene.temp_room)
-            case c.scene_home
-            when 'home'
-              Rooms.send_to_home(connected_client, c)
-            when 'work'
-              Rooms.send_to_work(connected_client, c)
-            else
-              Rooms.send_to_ooc_room(connected_client, c)
-            end
+            Scenes.send_home_from_scene(c)
             message = t('scenes.scene_ending', :name => enactor.name)
           else
             message = t('scenes.scene_ending_public', :name => enactor.name)
@@ -476,6 +469,22 @@ module AresMUSH
     
     def self.format_last_posed(time)
       TimeFormatter.format(Time.now - Time.parse(time))
+    end
+    
+    def self.leave_scene(scene, char)
+      scene.watchers.delete char
+      scene.room.remove_from_pose_order(char.name)   
+    end
+    
+    def self.send_home_from_scene(char)
+      case char.scene_home
+      when 'home'
+        Rooms.send_to_home(char)
+      when 'work'
+        Rooms.send_to_work(char)
+      else
+        Rooms.send_to_ooc_room(char)
+      end
     end
 
     def self.build_scene_pose_web_data(pose, viewer, live_update = false)
