@@ -1,6 +1,8 @@
 ---
 toc: ~admin~ Managing the Game
 summary: Idle sweeping old characters.
+aliases:
+- manage_idle
 ---
 # Idle Sweeping Old Characters
 
