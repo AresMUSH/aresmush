@@ -7,7 +7,7 @@ module AresMUSH
       
       def self.parse(matches)
         input = matches[3]
-        "<div #{input}>"
+        "<div #{input}><p>"
       end
     end
     
@@ -17,7 +17,7 @@ module AresMUSH
       end
       
       def self.parse(matches)
-        "</div>"
+        "</p></div>"
       end
     end
   end

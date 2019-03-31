@@ -5,6 +5,7 @@ en:
         idle_not_started: "Idle sweep not started."
         idle_action_set: "%{name}'s idle action is now %{action}."
         idle_removed: "%{name} removed from idle queue."
+        idle_notes_updated: "Idle notes updated."
         invalid_action: "Not a valid idle action.  Try one of these: %{actions}"
 
         idle_roster: "Added to roster"

@@ -13,7 +13,7 @@ module AresMUSH
         return error if error
         
         if (FS3Combat.is_enabled?)
-          damage = char.damage.map { |d| {
+          damage = char.damage.to_a.sort { |d| d.created_at }.map { |d| {
             date: d.ictime_str,
             description: d.description,
             severity: Website.format_markdown_for_html(FS3Combat.display_severity(d.initial_severity))
