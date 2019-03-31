@@ -45,8 +45,6 @@ module AresMUSH
           end
         when "drop"
           return PoseDropCmd
-        when "skip"
-          return PoseSkipCmd
         when "nudge"
           return PoseNudgeCmd
         when "order"
@@ -82,6 +80,8 @@ module AresMUSH
           return SceneDeleteCmd
         when "invite", "uninvite"
           return SceneInviteCmd
+        when "leave"
+          return SceneLeaveCmd
         when "undo"
           return SceneUndoCmd
         when "replace", "typo"

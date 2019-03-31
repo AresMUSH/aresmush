@@ -22,9 +22,7 @@ module AresMUSH
         if (!scene_pose.can_edit?(enactor))
           return { error: t('dispatcher.not_allowed') }
         end
-        
-        Global.logger.debug "Scene #{scene.id} pose #{scene_pose.id} edited by #{enactor.name}."
-        
+                
         Scenes.edit_pose(scene, scene_pose, pose_text, enactor, notify)
         
         { pose: Website.format_markdown_for_html(pose_text) }

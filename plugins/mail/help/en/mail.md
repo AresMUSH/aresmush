@@ -62,3 +62,9 @@ You can delete mail messages.  Technically this doesn't delete it right away, bu
 Instead of deleting a mail message, you can archive it.
 
 `mail/archive <#>` - Clears current tags and applies the Archive tag instead.
+
+## Reporting Offensive Mails
+
+You can report an offensive mail to the game admin.
+
+`mail/report <#>=<explanation>` - Reports an offensive mail message.

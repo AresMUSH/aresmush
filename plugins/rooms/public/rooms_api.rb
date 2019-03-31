@@ -30,15 +30,18 @@ module AresMUSH
       Rooms.move_to(client, char, Game.master.welcome_room)
     end
 
-    def self.send_to_ooc_room(client, char)
+    def self.send_to_ooc_room(char)
+      client = Login.find_client(char)
       Rooms.move_to(client, char, Game.master.ooc_room)
     end
     
-    def self.send_to_home(client, char)
+    def self.send_to_home(char)
+      client = Login.find_client(char)
       Rooms.move_to(client, char, char.room_home || Game.master.ooc_room)
     end
     
-    def self.send_to_work(client, char)
+    def self.send_to_work(char)
+      client = Login.find_client(char)
       Rooms.move_to(client, char, char.room_work || Game.master.ooc_room)
     end
       
