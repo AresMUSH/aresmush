@@ -11,11 +11,16 @@ module AresMUSH
         error = Website.check_login(request)
         return error if error
         
+        job_admin = Jobs.can_access_jobs?(enactor)
         
         if (submitter_name)
           submitter = Character.named(submitter_name)
           if (!submitter)
             return { error: t('webportal.not_found') }
+          end
+          
+          if (!job_admin && submitter.name != enactor.name)
+            return { error: t('jobs.cannot_submit_from_someone_else') }
           end
         else
           submitter = enactor
