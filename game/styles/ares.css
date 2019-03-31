@@ -939,16 +939,15 @@ blockquote {
   float: right;
   margin: 15px; }
 
+.spell_card {
+  background: #383A4F;
+  padding: 15px;
+  border: 2px solid white;
+  border-radius: 14px;
+  margin: 15px; }
+
 .clear {
   clear: both; }
-
-@media only screen and (max-width: 700px) {
-  table {
-    width: 100%; }
-  .toc {
-    width: 100%; }
-  .topicbox {
-    width: 100%; } }
 
 .school-text-wrapper {
   position: relative; }
@@ -1365,11 +1364,11 @@ h2 {
   background-color: #DB5461; }
 
 .scene-log p {
-  margin: 25px;
+  margin: 35px 35px 35px 0px;
   line-height: 1.6; }
 
 .scene-pose p {
-  margin: 15px 35px;
+  margin: 35px 35px 35px 0px;
   line-height: 1.6; }
 
 .scene-ooc-pose p {
@@ -1452,14 +1451,45 @@ div.rating-alpha {
   color: #999999;
   font-size: 85%; }
 
+.timestamp-tip {
+  color: #999999;
+  font-style: italic;
+  font-size: 85%;
+  margin: 15px 5px 0px 5px; }
+
+.chat-text p {
+  margin: 0px 5px;
+  border-bottom: 1px solid #414141;
+  padding-bottom: 10px;
+  padding: 0px 0px 15px 0px; }
+
 .chat-button-active {
   color: #d1d2d3;
   background-color: #333; }
 
 .chat-button {
-  background: #383A4F;
-  color: #d1d2d3;
-  overflow: hidden; }
+  background: none;
+  color: inherit;
+  overflow: hidden;
+  border: 0px;
+  text-align: initial;
+  font-size: 95%;
+  width: 100%; }
 
 #ember823 {
   height: fit-content; }
+
+/* Mobile */
+@media only screen and (max-width: 700px) {
+  table {
+    width: 100%; }
+  .toc {
+    width: 100%; }
+  .topicbox {
+    width: 100%; }
+  .body-wrap {
+    padding: 5px 0px 0px 5px; }
+  .scene-log p {
+    margin: 15px 0px 15px 0px; }
+  .scene-pose p {
+    margin: 15px 5px; } }
