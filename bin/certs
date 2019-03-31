@@ -4,9 +4,11 @@ if [[ $# -eq 0 ]] ; then
 fi
 
 mkdir /home/ares/certs
-sudo cp /etc/letsencrypt/live/$1/*.pem /home/ares/certs
+sudo cp /etc/letsencrypt/live/$1/fullchain.pem.pem /home/ares/certs
+sudo cp /etc/letsencrypt/live/$1/privkey.pem.pem /home/ares/certs
 sudo echo "#!/bin/sh" > /home/ares/certs/update_certs.sh
-sudo echo -e "sudo cp /etc/letsencrypt/live/${1}/*.pem /home/ares/certs" > /home/ares/certs/update_certs.sh
+sudo echo -e "sudo cp /etc/letsencrypt/live/${1}/fullchain.pem /home/ares/certs" > /home/ares/certs/update_certs.sh
+sudo echo -e "sudo cp /etc/letsencrypt/live/${1}/privkey.pem /home/ares/certs" >> /home/ares/certs/update_certs.sh
 sudo chown -R ares /home/ares/certs
 sudo chgrp -R ares /home/ares/certs
 sudo chmod -R 740 /home/ares/certs

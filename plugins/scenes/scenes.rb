@@ -80,6 +80,8 @@ module AresMUSH
           return SceneDeleteCmd
         when "invite", "uninvite"
           return SceneInviteCmd
+        when "leave"
+          return SceneLeaveCmd
         when "undo"
           return SceneUndoCmd
         when "replace", "typo"

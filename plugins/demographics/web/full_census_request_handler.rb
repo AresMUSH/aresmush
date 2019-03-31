@@ -12,8 +12,9 @@ module AresMUSH
         
         chars.each do |c|
           char_data = {}
-          char_data['icon'] = Website.icon_for_char(c)
-          char_data['mushname'] = c.name
+          char_data['char'] = {
+               name: c.name,
+               icon:  Website.icon_for_char(c)  }
           fields.each do |field_config|
             field = field_config["field"]
             title = field_config["title"]
