@@ -73,7 +73,12 @@ module AresMUSH
       when "out"
         return OutCmd
       when "owner"
-        return OwnerCmd
+        case cmd.switch
+        when "list"
+          return OwnerListCmd
+        when nil
+          return OwnerCmd
+        end
       when "room"
         return RoomsCmd
       when "roomtype"

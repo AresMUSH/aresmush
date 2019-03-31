@@ -27,6 +27,8 @@ en:
 
        owners_set: "You set the room's owners."
        owners_cleared: "You remove the room's owners."
+       no_room_owners_found: "No rooms with owners found."
+       owners_title: "Room Owners"
        
        grid_set: "You set the room's grid coordinates."
        grid_cleared: "You clear the room's grid coordinates."

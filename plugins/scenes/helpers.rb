@@ -1,14 +1,9 @@
 module AresMUSH
   module Scenes
 
-    def self.new_scene_activity(scene, scene_pose = nil)
+    def self.new_scene_activity(scene, activity_type, data)
       last_posed = scene.last_posed ? scene.last_posed.name : nil
-      if (scene_pose)
-        data = Scenes.build_scene_pose_web_data(scene_pose, nil, true).to_json
-      else
-        data = nil
-      end
-      web_msg = "#{scene.id}|#{last_posed}|#{data}"
+      web_msg = "#{scene.id}|#{last_posed}|#{activity_type}|#{data}"
       Global.client_monitor.notify_web_clients(:new_scene_activity, web_msg) do |char|
         Scenes.can_read_scene?(char, scene) && Scenes.is_watching?(scene, char)
       end
@@ -51,7 +46,7 @@ module AresMUSH
       Scenes.create_scene_temproom(scene)
       scene.update(completed: false)
       Scenes.set_scene_location(scene, scene.location)
-      Scenes.new_scene_activity(scene)
+      Scenes.new_scene_activity(scene, :status_changed, nil)
     end
 
     def self.unshare_scene(enactor, scene)
@@ -63,6 +58,7 @@ module AresMUSH
           scene.scene_log.delete
         end
       end
+      Scenes.new_scene_activity(scene, :status_changed, nil)
     end
 
     def self.share_scene(scene)
@@ -70,10 +66,15 @@ module AresMUSH
         return false
       end
 
+      if (scene.shared)
+        Global.logger.warn "Attempt to share an already-shared scene."
+        return
+      end
+
       scene.update(shared: true)
       scene.update(date_shared: Time.now)
       Scenes.create_log(scene)
-      Scenes.new_scene_activity(scene)
+      Scenes.new_scene_activity(scene, :status_changed, nil)
 
       Global.dispatcher.queue_event SceneSharedEvent.new(scene.id)
 
@@ -89,14 +90,7 @@ module AresMUSH
           connected_client = Login.find_client(c)
 
           if (scene.temp_room)
-            case c.scene_home
-            when 'home'
-              Rooms.send_to_home(connected_client, c)
-            when 'work'
-              Rooms.send_to_work(connected_client, c)
-            else
-              Rooms.send_to_ooc_room(connected_client, c)
-            end
+            Scenes.send_home_from_scene(c)
             message = t('scenes.scene_ending', :name => enactor.name)
           else
             message = t('scenes.scene_ending_public', :name => enactor.name)
@@ -118,7 +112,7 @@ module AresMUSH
       scene.update(completed: true)
       scene.update(date_completed: Time.now)
 
-      Scenes.new_scene_activity(scene)
+      Scenes.new_scene_activity(scene, :status_changed, nil)
       scene.participants.each do |char|
         Scenes.handle_scene_participation_achievement(char)
       end
@@ -181,6 +175,9 @@ module AresMUSH
         scene.room.update(area: area)
       end
 
+      data = Scenes.build_location_web_data(scene).to_json
+      Scenes.new_scene_activity(scene, :location_updated, data)
+
       return message
     end
 
@@ -211,11 +208,13 @@ module AresMUSH
     end
 
     def self.create_log(scene)
+      old_text = ""
       if (scene.scene_log)
+        old_text = "#{scene.scene_log.log}\n"
         scene.scene_log.delete
       end
       log = Scenes.build_log_text(scene)
-      scene_log = SceneLog.create(scene: scene, log: log)
+      scene_log = SceneLog.create(scene: scene, log: "#{old_text}#{log}")
       scene.update(scene_log: scene_log)
       scene.scene_poses.each { |p| p.delete }
     end
@@ -304,31 +303,31 @@ module AresMUSH
     def self.notify_next_person(room)
 
       poses = room.sorted_pose_order
-      poses.each do |name, time|
-        char = Character.find_one_by_name(name)
-        client = Login.find_client(char)
-        if (!char || !client || char.room != room)
-          room.remove_from_pose_order(name)
-        end
-      end
-
-      poses = room.sorted_pose_order
       return if poses.count < 2
 
       if (room.pose_order_type == '3-per')
         poses.reverse.each_with_index do |(name, time), i|
           next if i < 3
           char = Character.find_one_by_name(name)
-          if (char.pose_nudge && !char.pose_nudge_muted)
-            Login.emit_ooc_if_logged_in char, t('scenes.pose_threeper_nudge')
+          if (!char)
+            room.remove_from_pose_order(name)
+          end
+          client = Login.find_client(char)
+          if (client && char.room == room && char.pose_nudge && !char.pose_nudge_muted)
+            client.emit_ooc t('scenes.pose_threeper_nudge')
           end
         end
       else
         next_up_name = poses.first[0]
         char = Character.find_one_by_name(next_up_name)
-
-        if (char.pose_nudge && !char.pose_nudge_muted)
-          Login.emit_ooc_if_logged_in char, t('scenes.pose_your_turn')
+        if (!char)
+          room.remove_from_pose_order(name)
+        end
+        client = Login.find_client(char)
+        if (client && char.room == room && char.pose_nudge && !char.pose_nudge_muted)
+          client.emit_ooc t('scenes.pose_your_turn')
+        else
+          room.emit_ooc t('scenes.next_pose_offline', :name => name)
         end
       end
     end
@@ -450,8 +449,51 @@ module AresMUSH
       end
     end
 
+    def self.edit_pose(scene, scene_pose, new_text, enactor, notify)
+      scene_pose.update(pose: new_text)
+
+      if (notify)
+        message = t('scenes.edited_scene_pose', :name => enactor.name, :pose => new_text)
+
+        if (scene.room)
+          scene.room.emit_ooc message
+        end
+
+        Scenes.add_to_scene(scene, message, Game.master.system_character, false, true)
+
+      end
+
+      data = { id: scene_pose.id,
+               pose: Website.format_markdown_for_html(new_text),
+               raw_pose: new_text }.to_json
+      Scenes.new_scene_activity(scene, :pose_updated, data)
+
+      Global.logger.debug("Scene #{scene.id} pose #{scene_pose.id} edited by #{enactor ? enactor.name : 'Anonymous'}.")
+
+    end
+
     def self.is_unread?(scene, char)
       !(char.read_scenes || []).include?(scene.id.to_s)
+    end
+
+    def self.format_last_posed(time)
+      TimeFormatter.format(Time.now - Time.parse(time))
+    end
+
+    def self.leave_scene(scene, char)
+      scene.watchers.delete char
+      scene.room.remove_from_pose_order(char.name)
+    end
+
+    def self.send_home_from_scene(char)
+      case char.scene_home
+      when 'home'
+        Rooms.send_to_home(char)
+      when 'work'
+        Rooms.send_to_work(char)
+      else
+        Rooms.send_to_ooc_room(char)
+      end
     end
 
     def self.build_scene_pose_web_data(pose, viewer, live_update = false)
@@ -487,10 +529,7 @@ module AresMUSH
       {
         id: scene.id,
         title: scene.title,
-        location: {
-          name: scene.location,
-          description: scene.room ? Website.format_markdown_for_html(scene.room.expanded_desc) : nil,
-          scene_set: scene.room ? Website.format_markdown_for_html(scene.room.scene_set) : nil },
+        location: Scenes.build_location_web_data(scene),
         completed: scene.completed,
         summary: scene.summary,
         tags: scene.tags,
@@ -501,9 +540,27 @@ module AresMUSH
         can_join: Scenes.can_join_scene?(viewer, scene),
         can_edit: viewer && Scenes.can_edit_scene?(viewer, scene),
         is_watching: viewer && scene.watchers.include?(viewer),
-        is_unread: scene.is_unread?(viewer),
+        is_unread: viewer && scene.is_unread?(viewer),
+        pose_order: Scenes.build_pose_order_web_data(scene),
         poses: scene.poses_in_order.map { |p| Scenes.build_scene_pose_web_data(p, viewer) }
       }
     end
+
+    def self.build_location_web_data(scene)
+      {
+        name: scene.location,
+        description: scene.room ? Website.format_markdown_for_html(scene.room.expanded_desc) : nil,
+        scene_set: scene.room ? Website.format_markdown_for_html(scene.room.scene_set) : nil
+      }
+    end
+
+    def self.build_pose_order_web_data(scene)
+      scene.room.sorted_pose_order.map { |name, time|
+        {
+         name: name,
+         time:  Scenes.format_last_posed(time)
+         }}
+    end
+
   end
 end
