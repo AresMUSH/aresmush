@@ -10,6 +10,7 @@ module AresMUSH
           chars = Chargen.approved_chars
           if (select == "include_staff")
             chars.concat Roles.all_staff
+            chars.concat Character.all.select { |c| c.is_npc? }
             chars << Game.master.system_character
           end
         end

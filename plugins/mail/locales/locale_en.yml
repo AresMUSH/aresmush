@@ -55,3 +55,7 @@ en:
         sentmail_off: "You will no longer be automatically CC'd on messages you send."
         sentmail_on: "You will be automatically CC'd on messages you send.  You can see them with mail/sent."
         error_sending_mail: "Error sending mail.  Check your 'to' list."
+        
+        mail_reported_body: "%{reporter} has reported an offensive mail message from %{name}.%R%RReason:%R"
+        mail_reported_title: "Mail Reported"
+        mail_reported:  "Thank you.  A report has been created using the mail as evidence."

@@ -15,6 +15,12 @@ module AresMUSH
         
         if (cmd.switch_is?("set"))
           enactor_room.update(scene_set: pose)
+          
+          scene = enactor_room.scene
+          if (scene)
+            data = Scenes.build_location_web_data(scene).to_json
+            Scenes.new_scene_activity(scene, :location_updated, data)
+          end
         end
       end
       
