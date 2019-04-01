@@ -312,13 +312,13 @@ module AresMUSH
         next_up_name = poses.first[0]
         char = Character.find_one_by_name(next_up_name)
         if (!char)
-          room.remove_from_pose_order(name)
+          room.remove_from_pose_order(next_up_name)
         end
         client = Login.find_client(char)
         if (client && char.room == room && char.pose_nudge && !char.pose_nudge_muted)
           client.emit_ooc t('scenes.pose_your_turn')      
         else
-          room.emit_ooc t('scenes.next_pose_offline', :name => name)
+          room.emit_ooc t('scenes.next_pose_offline', :name => next_up_name)
         end
       end
     end
