@@ -11,4 +11,4 @@ You can shut down the game using the `shutdown` command.  To restart it requires
 
 `shutdown [<optional announcement>]` - Shuts down the game.
 
-See [Shutting Down and Restarting the Game](https://aresmush.com/tutorials/manage/shutdown/) for detailed instructions.
+See [Shutting Down and Restarting the Game](https://aresmush.com/tutorials/manage/shutdown.html) for detailed instructions.

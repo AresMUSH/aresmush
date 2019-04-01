@@ -12,7 +12,7 @@ module AresMUSH
       def handle        
         Scenes.with_a_scene(self.scene_num, client) do |scene|
          
-          all_poses = scene.scene_poses.select { |p| p.character == enactor }
+          all_poses = scene.poses_in_order.select { |p| p.character == enactor && !p.is_ooc }
           last_pose = all_poses[-1]
 
           if (!last_pose)
@@ -21,11 +21,15 @@ module AresMUSH
           end
         
           old_pose = last_pose.pose
-            
+          pose_id = last_pose.id
+          
           last_pose.delete
           message = t('scenes.deleted_pose', :name => enactor_name,
                         :pronoun => Demographics.possessive_pronoun(enactor))
           
+          data = { id: pose_id }.to_json
+          Scenes.new_scene_activity(scene, :pose_deleted, data)
+
           scene.room.emit "%xr*** #{message} ***%xn"
         end
       end

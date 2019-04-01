@@ -54,6 +54,7 @@ scenes:
     repose: scene/repose
     scene/set: emit/set
     posebreak: autospace
+    pose/skip: pose/drop
   unshared_scene_deletion_days: 20
   idle_scene_timeout_days: 3
   trending_scenes_category: Cookie Awards

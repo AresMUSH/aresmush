@@ -33,7 +33,7 @@ module AresMUSH
           char_name: char.name,
           text: version.text.gsub('\r\n', '<br/>'),
           diff: diff,
-          versions:  all_versions.map { |v| { id: v.id, created: v.created_at, author: v.author_name }},
+          versions:  all_versions.reverse.map { |v| { id: v.id, created: v.created_at, author: v.author_name }},
           current_version: version.id
         }
       end

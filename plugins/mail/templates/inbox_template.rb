@@ -55,9 +55,16 @@ module AresMUSH
       def tags(msg)
         unread = msg.read ? "-" : t('mail.unread_marker')
         trashed = msg.tags.include?(Mail.trashed_tag) ? t('mail.trashed_marker') : "-"
-        " (#{unread}#{trashed})  "
+        " #{start_marker}#{unread}#{trashed}#{end_marker}  "
       end
 
+      def start_marker
+        Mail.start_marker
+      end
+
+      def end_marker
+        Mail.end_marker
+      end
     end
   end
 end

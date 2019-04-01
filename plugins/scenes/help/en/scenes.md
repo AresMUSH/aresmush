@@ -48,6 +48,10 @@ A scene can be open (anyone's invited), private (only those invited should join 
 `scene/invite <name>[=<scene num>]` - Invites someone to a private or watchable scene.
 `scene/uninvite <name>[=<scene num>]` - Withdraws an invitation.
 
+You can leave a scene by exiting the room or going offstage or by using the scene/leave command to return to your designated scene/home (described in Stopping a Scene below).
+
+`scene/leave` - Leaves a scene and returns to your designated scene home location.
+
 ## Setting Scene Info
 
 You can control several properties about the scene.  These are used for [Scene Logging](/help/logging) and to advise the participants about what's going on.

@@ -810,7 +810,20 @@ SCENES SCREEN
     border: 1px solid #eee;
     align: center; 
 }
-    
+
+.scene-pose-order {
+  padding-left: 10px;
+}
+
+.scene-pose-order .hint {
+  padding-left: 0px;
+}
+
+.your-pose-order {
+  font-weight: bold;
+  color: green;  
+}
+
 /* -------------------------
 CHARACTERS SCREEN
 ------------------------- */
