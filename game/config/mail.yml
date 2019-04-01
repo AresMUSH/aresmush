@@ -8,3 +8,5 @@ mail:
     mail/folder: mail/filter
     mail/fo: mail/filter
     mail/file: mail/archive
+  end_marker: "]"
+  start_marker: "["

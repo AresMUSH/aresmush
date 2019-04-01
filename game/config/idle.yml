@@ -32,6 +32,7 @@ idle:
     roster/update: roster/add
     roster/contact: roster/add
     roster/notes: roster/note
+    idle/notes: idle/note
   use_roster: true
   idle_warn_msg: You haven't played in awhile and your character is in danger of idling
     out.

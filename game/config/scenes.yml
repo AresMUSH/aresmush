@@ -50,6 +50,7 @@ scenes:
     repose: scene/repose
     scene/set: emit/set
     posebreak: autospace
+    pose/skip: pose/drop
   trending_scenes_category: Cookie Awards
   trending_scenes_cron:
     hour:
