@@ -30,7 +30,9 @@ If you don't want to be bothered by pages at all, you can mark yourself as 'do n
 
 ## Blocking & Monitoring Pages
 
-If someone is annoying you so much you feel the need to block them, you should report them to the game admin.  But while you're waiting for them to deal with it, you can block the harasser by ignoring them. You can also enable page monitoring.  This will keep track of the last couple dozen pages to and from that person.  The other person will not be notified that you are logging pages.  
+If someone is harassing you via pages, you can enable page monitoring.  This will keep track of the last couple dozen pages to and from *just* that person.  The other person will *not* be notified that you are logging pages.
+
+Once you have the pages logged, you can bring the matter to the game admin's attention using the page report feature.  The pages from the log will automatically be included as an official, verifiable log.  You can report someone more than once if the problem happens again.
 
 `page/ignore <name>=<on or off>`
 `page/monitor` - Shows who you're monitoring.

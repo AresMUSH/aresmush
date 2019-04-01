@@ -24,14 +24,18 @@ module AresMUSH
         Global.logger.debug "Scene #{scene.id} pose #{scene_pose.id} deleted by #{enactor.name}."
         
         pose_text = scene_pose.pose
+        pose_id = scene_pose.id
         scene_pose.delete
         
         message = t('scenes.deleted_scene_pose', :name => enactor.name, :pose => pose_text)
         
         if (scene.room)
           scene.room.emit_ooc message
-        end
-        
+        end                
+                
+        data = { id: pose_id }.to_json
+        Scenes.new_scene_activity(scene, :pose_deleted, data)
+
         Scenes.add_to_scene(scene, Website.format_markdown_for_html(message), Game.master.system_character, false, true)
         
         {}

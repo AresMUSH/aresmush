@@ -6,13 +6,12 @@ module AresMUSH
       modifier = roll_params.modifier || 0
 
       linked_attr = roll_params.linked_attr || FS3Skills.get_linked_attr(ability)
-      
-      skill_rating = FS3Skills.ability_rating(char, ability)
       ability_type = FS3Skills.get_ability_type(ability)
+      skill_rating = FS3Skills.ability_rating(char, ability)
       
-      # Language and advantage doubles dice except 0 = 0
+      # Language and advantage doubles dice
       if (ability_type == :language || ability_type == :advantage)
-        skill_rating = skill_rating == 0 ? 0 : skill_rating * 2
+        skill_rating = skill_rating * 2
       # Background doubles dice, but an untrained one defaults to everyman (1)
       elsif (ability_type == :background)
         skill_rating = skill_rating == 0 ? 1 : skill_rating * 2
@@ -57,6 +56,14 @@ module AresMUSH
       ability = match[:ability].strip
       modifier = match[:modifier].nil? ? 0 : match[:modifier].gsub(/\s+/, "").to_i
       linked_attr = match[:linked_attr].nil? ? nil : match[:linked_attr][1..-1].strip
+      
+      # If they entered the attr and ability backwards, swap them
+      ability_type = FS3Skills.get_ability_type(ability)
+      if (ability_type == :attribute && linked_attr)
+        tmp = ability
+        ability = linked_attr
+        linked_attr = tmp
+      end
       
       return RollParams.new(ability, modifier, linked_attr)
     end

@@ -2,8 +2,12 @@ echo "Exporting default language settings."
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
-echo "Starting game engine."
 bundle install
+
+echo "Running database updates."
+bundle exec rake migrate
+
+echo "Starting game engine."
 nohup bundle exec rake startares[$*] > /dev/null 2>errors.txt&
 export ARES_PID=$!
 

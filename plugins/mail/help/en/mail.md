@@ -31,6 +31,8 @@ Ares also supports MUX-style mail composition, which lets you write your mail in
 `mail/review <name>` - Shows messages you've sent to someone.
 `mail/unsend <name>/<#>` - Unsends a message if it hasn't already been read.
 
+`mail/report <#>=<explanation>` - Reports an offensive mail message.
+
 ## Organizing  Mail
 
 Ares mail uses `tags`, which are labels used to organize your mail.  You can make your own custom tags to organize your messages. There are also several special tags:

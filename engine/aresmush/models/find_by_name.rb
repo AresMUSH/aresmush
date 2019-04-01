@@ -11,8 +11,8 @@ module AresMUSH
       #end
     
       def find_any_by_id(id)
-        prefix = id.after("#").before("-")
-        if (prefix == self.dbref_prefix)
+        prefix = id.after("#").before("-") || ""
+        if (prefix.downcase == self.dbref_prefix.downcase)
           return [self[id.after("-")]]
         else
           return []
