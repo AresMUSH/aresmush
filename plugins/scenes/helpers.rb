@@ -317,8 +317,6 @@ module AresMUSH
         client = Login.find_client(char)
         if (client && char.room == room && char.pose_nudge && !char.pose_nudge_muted)
           client.emit_ooc t('scenes.pose_your_turn')      
-        else
-          room.emit_ooc t('scenes.next_pose_offline', :name => next_up_name)
         end
       end
     end
