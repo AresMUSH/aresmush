@@ -6,40 +6,42 @@ fs3skills:
     for details.'
   languages:
   - name: Arabic
-    desc: 
+    desc:
   - name: Arapaho
-    desc: 
+    desc:
   - name: Cantonese
-    desc: 
+    desc:
   - name: English
-    desc: 
+    desc:
   - name: French
-    desc: 
+    desc:
   - name: German
-    desc: 
+    desc:
   - name: Greek
-    desc: 
+    desc:
   - name: Hebrew
-    desc: 
+    desc:
   - name: Hindi
-    desc: 
+    desc:
   - name: Irish
-    desc: 
+    desc:
   - name: Italian
-    desc: 
+    desc:
   - name: Japanese
-    desc: 
+    desc:
   - name: Latin
-    desc: 
+    desc:
   - name: Mandarin
-    desc: 
+    desc:
   - name: Portugese
-    desc: 
+    desc:
   - name: Russian
-    desc: 
+    desc:
+  - name: Soitos
+    desc:
   - name: Spanish
-    desc: 
+    desc:
   - name: Ute
-    desc: 
+    desc:
   starting_languages:
   - English
