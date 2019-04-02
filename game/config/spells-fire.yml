@@ -283,8 +283,7 @@ spells:
     casting_time: 1 minute
     desc: 'Create a complicated, convincing visual illusion that fools most observers.
       The illusion can be quite large, with many moving parts, such as a forest scene
-      or a busy street. Can be used to <a href="https://www.aresmush.com/fs3/fs3-3/combat/#stance"
-      style="color: #A7C6DA" target="_blank">hide</a> groups.%R%RIt may be identified as an illusion with a roll of the caster's Fire vs the observer's Alertness-5. Those with enhanced senses such as smell, hearing, or psionic abilities are more likely to identify the subject as an illusion according to its content and range, and GMs may choose to adjust the modification as appropriate.'
+      or a busy street. Can be used to hide groups.%R%RIt may be identified as an illusion with a roll of the caster's Fire vs the observer's Alertness-5. Those with enhanced senses such as smell, hearing, or psionic abilities are more likely to identify the subject as an illusion according to its content and range, and GMs may choose to adjust the modification as appropriate.'
     duration: 15 minutes
     is_revive: false
     is_stun: false
