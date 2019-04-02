@@ -402,7 +402,7 @@ spells:
   Lightning Strike:
     available: true
     casting_time: 1 round
-    desc:A streak of powerful lightning plunges from the sky to strike a target, doing damage.
+    desc: A streak of powerful lightning plunges from the sky to strike a target, doing damage.
     is_revive: false
     is_stun: false
     level: 7
