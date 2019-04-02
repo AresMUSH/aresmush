@@ -508,6 +508,21 @@ fs3combat:
       init_mod: 0
       allowed_specials:
       special_group: ranged
+    Lightning Strike:
+      description: Level 7 Air spell
+      is_magic: true
+      skill: Air
+      lethality: 20
+      penetration: 13
+      weapon_type: Ranged
+      is_automatic: false
+      recoil: 0
+      damage_type: Physical
+      accuracy: 0
+      has_shrapnel: false
+      init_mod: 0
+      allowed_specials:
+      special_group: ranged
     Tempest:
       description: Level 8 Air spell
       is_magic: true

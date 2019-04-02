@@ -104,7 +104,6 @@ spells:
     school: Fire
     target_optional: false
   Endure Fire:
-
     available: true
     casting_time: 1 round
     desc: Caster is immune to fire and the negative effects of extreme heat.
@@ -122,7 +121,6 @@ spells:
     school: Fire
     target_optional: false
   Hot Hands:
-
     available: true
     casting_time: 1 round
     desc: The caster's fingertips become red hot and capable of inflicting burn damage
@@ -142,8 +140,8 @@ spells:
     target_num: 1
     target_optional: true
     weapon: Hot Hands
+  #Level 4
   Fire Weapon:
-
     available: true
     casting_time: 1 round
     desc: Augment one specified pre-existing weapon with dancing flames, increasing
@@ -165,11 +163,9 @@ spells:
     weapon_specials: Fire
     weapon: Spell
   Flame Burst:
-
     available: true
     casting_time: 1 round
     desc: The caster hurls a ball of swirling flames at a single target.
-
     fs3_attack: true
     is_revive: false
     is_stun: false
@@ -189,13 +185,30 @@ spells:
     name: Potions (Fire)
     school: Fire
     available: true
+  Simple Illusion:
+    area: 5 cubic feet
+    available: true
+    casting_time: 1 minute (6 rounds)
+    desc: Create a convincing illusion of a single subject that fools most observers. It is able to animate at the caster's discretion. The illusion cannot be larger than 3 cubic yards. It may be identified as an illusion with a roll of the caster's Fire vs the observer's Alertness-5. Those with enhanced senses such as smell, hearing, or psionic abilities are more likely to identify the subject as an illusion according to its content and range, and GMs may choose to adjust the modification as appropriate.
+    duration: 10 minutes
+    is_revive: false
+    is_stun: false
+    level: 4
+    line_of_sight: true
+    multi_target: false
+    name: Simple Illusion
+    notes: ''
+    range: Short
+    roll: true
+    school: Fire
+    target_optional: false
+  #Level 5
   Flares:
     area: 10 yard radius
     available: true
     casting_time: 1 round
     desc: Colorful flares explode outwards from central points. The bursts of intense
       heat sear through anything in their path, affecting up to 3 targets.
-
     fs3_attack: true
     is_revive: false
     is_stun: false
@@ -210,7 +223,6 @@ spells:
     target_optional: true
     weapon: Flares
   Invisible:
-
     available: true
     casting_time: 1 round
     desc: 'The caster bends light around the target''s form, making them invisible
@@ -272,10 +284,7 @@ spells:
     desc: 'Create a complicated, convincing visual illusion that fools most observers.
       The illusion can be quite large, with many moving parts, such as a forest scene
       or a busy street. Can be used to <a href="https://www.aresmush.com/fs3/fs3-3/combat/#stance"
-      style="color: #A7C6DA" target="_blank">hide</a> groups.%R%RThose with enhanced
-      senses such as smell, hearing, or psionic abilities are more likely to identify
-      the scene as an illusion according to its content, and may do so with an appropriate
-      roll.'
+      style="color: #A7C6DA" target="_blank">hide</a> groups.%R%RIt may be identified as an illusion with a roll of the caster's Fire vs the observer's Alertness-5. Those with enhanced senses such as smell, hearing, or psionic abilities are more likely to identify the subject as an illusion according to its content and range, and GMs may choose to adjust the modification as appropriate.'
     duration: 15 minutes
     is_revive: false
     is_stun: false

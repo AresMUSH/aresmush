@@ -381,6 +381,7 @@ spells:
     roll: true
     school: Air
     target_optional: false
+  #Level 7
   Energize Dimensional Anchor (Air):
     available: true
     casting_time: 2 minutes
@@ -398,6 +399,25 @@ spells:
     roll: true
     school: Air
     target_optional: false
+  Lightning Strike:
+    available: true
+    casting_time: 1 round
+    desc:A streak of powerful lightning plunges from the sky to strike a target, doing damage.
+    is_revive: false
+    is_stun: false
+    level: 7
+    line_of_sight: true
+    fs3_attack: true
+    range: long
+    multi_target: false
+    name: Lightning Strike
+    notes: ''
+    range: Long
+    roll: true
+    school: Air
+    target_optional: true
+    target_num: 1
+    weapon: Lightning Strike
   Suffocate:
     available: true
     casting_time: 1 round
