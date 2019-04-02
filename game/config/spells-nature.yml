@@ -374,6 +374,18 @@ spells:
     roll: true
     school: Nature
     target_optional: false
+  Wild Shape Crocodile:
+    armor: Crocodile
+    desc: Wild Shape desc
+    is_revive: false
+    is_stun: false
+    level: 5
+    name: Wild Shape
+    roll: true
+    school: Nature
+    target_optional: false
+    range: Self
+    weapon: Claws
   Wild Shape:
     desc: Caster chooses any alternate form from a specified animal genus. They lose the ability to cast spells and speak while in wild shape but can communicate with other animals of that genus. They may revert back to human form at will.
     is_revive: false
