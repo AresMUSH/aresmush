@@ -257,13 +257,9 @@ spells:
     line_of_sight: true
     available: true
   Pyre:
-
     available: true
     casting_time: 1 round
-    desc: 'Gouts of flame are summoned up from the ground, engulfing the target.
-
-'
-
+    desc: 'Gouts of flame are summoned up from the ground, engulfing the target.'
     fs3_attack: true
     is_revive: false
     is_stun: false
@@ -278,12 +274,12 @@ spells:
     target_optional: true
     weapon: Pyre
   Complex Illusion:
-    area: 10 yard radius
+    area: '10 yard radius'
     available: true
     casting_time: 1 minute
-    desc: 'Create a complicated, convincing visual illusion that fools most observers.
+    desc: Create a complicated, convincing visual illusion that fools most observers.
       The illusion can be quite large, with many moving parts, such as a forest scene
-      or a busy street. Can be used to hide groups.%R%RIt may be identified as an illusion with a roll of the caster's Fire vs the observer's Alertness-5. Those with enhanced senses such as smell, hearing, or psionic abilities are more likely to identify the subject as an illusion according to its content and range, and GMs may choose to adjust the modification as appropriate.'
+      or a busy street. Can be used to hide groups.%R%RIt may be identified as an illusion with a roll of the caster's Fire vs the observer's Alertness-5. Those with enhanced senses such as smell, hearing, or psionic abilities are more likely to identify the subject as an illusion according to its content and range, and GMs may choose to adjust the modification as appropriate.
     duration: 15 minutes
     is_revive: false
     is_stun: false
