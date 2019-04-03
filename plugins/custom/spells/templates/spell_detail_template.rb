@@ -78,6 +78,10 @@ module AresMUSH
         Global.read_config("spells", spell, "spell_mod")
       end
 
+      def rounds
+        Global.read_config("spells", spell, "rounds")
+      end
+
       def weapon
         Global.read_config("spells", spell, "weapon")
       end
