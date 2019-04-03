@@ -5,7 +5,11 @@ module AresMUSH
       ability = FS3Combat.weapon_stat(combatant.weapon, "skill")
       accuracy_mod = FS3Combat.weapon_stat(combatant.weapon, "accuracy")
       special_mod = combatant.attack_mod
-      item_attack_mod  = Custom.item_attack_mod(combatant.associated_model)
+      if !combatant.is_npc?
+        item_attack_mod  = Custom.item_attack_mod(combatant.associated_model)
+      else
+        item_attack_mod = 0
+      end      
       damage_mod = combatant.total_damage_mod
       stance_mod = combatant.attack_stance_mod
       stress_mod = combatant.stress
