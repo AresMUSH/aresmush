@@ -74,7 +74,7 @@ module AresMUSH
         combatant.update(defense_mod_counter: combatant.defense_mod_counter - 1)
       end
 
-      if combatant.attack_mod_counter == 0 && combatant.spell_mod != 0
+      if combatant.attack_mod_counter == 0 && combatant.attack_mod != 0
         FS3Combat.emit_to_combat combatant.combat, t('custom.mod_wore_off', :name => combatant.name, :type => "attack", :mod => combatant.attack_mod), nil, true
         combatant.update(attack_mod: 0)
         combatant.log "#{combatant.name} resetting attack mod to #{combatant.attack_mod}."
