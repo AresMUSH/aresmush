@@ -5,6 +5,9 @@ module AresMUSH
     #SPELLS
     attribute :spell_mod, :type => DataType::Integer, :default => 0
     attribute :has_cast, :type => DataType::Boolean, :default => false
+    attribute :magic_stun, :type => DataType::Boolean, :default => false
+    attribute :magic_stun_spell
+    attribute :magic_stun_counter, :type => DataType::Integer, :default => 0
     attribute :death_count, :type => DataType::Integer, :default => 0
     attribute :spell_weapon_effects, :type => DataType::Hash, :default => {}
     attribute :spell_armor_effects, :type => DataType::Hash, :default => {}
@@ -86,7 +89,7 @@ module AresMUSH
     end
 
     def is_subdued?
-      self.subdued_by && self.subdued_by.is_subduing?(self)
+      self.subdued_by && (self.subdued_by.is_subduing?(self) || self.magic_stun)
     end
 
     def is_subduing?(target)

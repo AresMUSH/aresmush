@@ -18,6 +18,8 @@ module AresMUSH
         PassAction
       when "spell1"
         SpellAction
+      when "stun"
+        SpellStunAction
       when "spelltarget1"
         SpellTargetAction
       when "potion1"
@@ -54,8 +56,24 @@ module AresMUSH
         combatant.update(action_klass: nil)
       end
 
+      Global.logger.debug "#{combatant.name} Subdued? #{combatant.is_subdued?}"
+
       if (!combatant.is_subdued?)
         combatant.update(subdued_by: nil)
+      end
+
+      Global.logger.debug "#{combatant.name} Counter: #{combatant.magic_stun_counter} Stun #{combatant.magic_stun}"
+
+      if (combatant.magic_stun_counter == 0 && combatant.magic_stun)
+        FS3Combat.emit_to_combat combatant.combat, t('fs3combat.stun_wore_off', :name => combatant.name), nil, true
+        combatant.update(magic_stun: false)
+        target.update(magic_stun_spell: nil)
+        combatant.log "#{combatant.name} is no longer magically stunned."
+      elsif (combatant.magic_stun_counter > 0 && combatant.magic_stun)
+        combatant.update(magic_stun_counter: combatant.magic_stun_counter - 1)
+        subduer = combatant.subdued_by
+        Global.logger.debug "Subdued by: #{subduer} "
+        FS3Combat.emit_to_combat combatant.combat, t('fs3combat.still_stunned', :name => combatant.name, :stunned_by => subduer.name, :rounds => combatant.magic_stun_counter), nil, true
       end
 
       if combatant.lethal_mod_counter == 0 && combatant.damage_lethality_mod != 0
@@ -363,6 +381,23 @@ module AresMUSH
       target.log "Determined mount damage: tough=#{toughness} roll=#{roll}"
 
       roll <= 0
+    end
+
+    def self.determine_magic_stun_escape_margin(combatant, target)
+      spell = target.magic_stun_spell
+      school = Global.read_config("spells", spell, "school")
+
+      attack_roll =  combatant.roll_ability(school, 0)
+      defense_roll = target.roll_ability("Composure", 0)
+      attacker_net_successes = attack_roll - defense_roll
+      if attacker_net_successes > 0
+        hit = false
+      else
+        hit = true
+      end
+      {
+        hit: hit
+      }
     end
 
     # Returns { hit: true/false, attacker_net_successes: #, message: explains miss reason }

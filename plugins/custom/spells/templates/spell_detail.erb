@@ -45,6 +45,10 @@
 <%=  "%xhTargets:%xn " -%>
 <%=  targets %>
 <% end %>
+<% if rounds %>
+<%=  "%xhRounds:%xn " -%>
+<%=  rounds %>
+<% end %>
 <% if attack_mod || defense_mod || lethal_mod || spell_mod %>
 <%=  "%xhMod(s):%xn " -%>
 <% if attack_mod %>
