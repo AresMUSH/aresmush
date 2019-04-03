@@ -44,9 +44,10 @@ magic-items:
     name: Bane of Elegast
     desc: Crafted to hide from the legendary king and warlord, the broken chain allows anyone who carries it to cast Invisible, the Level 5 Fire spell. It currently resides in Silver's stomach after he swallowed it and fled retribution from the queen of Immeasurable Autumn, a faerie kingdom
     spell: Invisible
-  Monkey's Gift:
-    name: Monkey's Gift
-    desc: Not an actual object, but instead an effect Asher experiences. This item cannot be given away.
+  Huxian's Gift:
+    name: Huxian's Gift
+    desc: Not an actual object, but instead an effect Asher experiences. Those around him experience the inverse: long term exposure leads to a slow sapping of energy and eventually, exhaustion. In his presence, others experience a negative modifier to their actions. This item cannot be given away.
     spell_mod: 4
-    weapon_specials: Monkey's Gift
-    armor_specials: Monkey's Gift
+    attack_mod: 4
+    weapon_specials: Huxian's Gift
+    armor_specials: Huxian's Gift

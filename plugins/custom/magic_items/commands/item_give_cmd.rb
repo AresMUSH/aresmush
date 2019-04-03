@@ -24,7 +24,7 @@ module AresMUSH
       def handle
         self.other_client = Login.find_client(target)
 
-        MagicItems.create(name: item.name, character: self.target, desc: item.desc, weapon_specials: item.weapon_specials, armor_specials: item.armor_specials, spell: item.spell, item_spell_mod: item.item_spell_mod)
+        MagicItems.create(name: item.name, character: self.target, desc: item.desc, weapon_specials: item.weapon_specials, armor_specials: item.armor_specials, spell: item.spell, item_spell_mod: item.item_spell_mod, item_attack_mod: item.item_attack_mod)
 
         self.item.delete
 

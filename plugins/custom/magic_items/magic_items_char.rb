@@ -15,4 +15,5 @@ end
     attribute :weapon_specials
     attribute :armor_specials
     attribute :item_spell_mod
+    attribute :item_attack_mod
   end

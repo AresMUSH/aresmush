@@ -5,6 +5,7 @@ module AresMUSH
       ability = FS3Combat.weapon_stat(combatant.weapon, "skill")
       accuracy_mod = FS3Combat.weapon_stat(combatant.weapon, "accuracy")
       special_mod = combatant.attack_mod
+      item_attack_mod  = Custom.item_attack_mod(combatant.associated_model)
       damage_mod = combatant.total_damage_mod
       stance_mod = combatant.attack_stance_mod
       stress_mod = combatant.stress
@@ -20,9 +21,9 @@ module AresMUSH
         mount_mod = 0
       end
 
-      combatant.log "Attack roll for #{combatant.name} ability=#{ability} aiming=#{aiming_mod} mod=#{mod} accuracy=#{accuracy_mod} damage=#{damage_mod} stance=#{stance_mod} mount=#{mount_mod} luck=#{luck_mod} stress=#{stress_mod} special=#{special_mod} distract=#{distraction_mod}"
+      combatant.log "Attack roll for #{combatant.name} ability=#{ability} aiming=#{aiming_mod} mod=#{mod} accuracy=#{accuracy_mod} damage=#{damage_mod} stance=#{stance_mod} mount=#{mount_mod} luck=#{luck_mod} stress=#{stress_mod} special=#{special_mod} item_attack=#{item_attack_mod} distract=#{distraction_mod}"
 
-      mod = mod.to_i + accuracy_mod.to_i + damage_mod.to_i + stance_mod.to_i + aiming_mod.to_i + luck_mod.to_i - stress_mod.to_i + special_mod.to_i - distraction_mod.to_i + mount_mod.to_i
+      mod = mod.to_i + accuracy_mod.to_i + damage_mod.to_i + stance_mod.to_i + aiming_mod.to_i + luck_mod.to_i - stress_mod.to_i + special_mod.to_i + item_attack_mod.to_i - distraction_mod.to_i + mount_mod.to_i
 
 
       combatant.roll_ability(ability, mod)
@@ -151,20 +152,20 @@ module AresMUSH
         nil
       end
     end
-    
-    def self.update_combatant(combat, combatant, enactor, team, stance, 
+
+    def self.update_combatant(combat, combatant, enactor, team, stance,
       weapon, selected_weapon_specials, armor, selected_armor_specials, npc_level)
-      
+
       if (team != combatant.team)
         combatant.update(team: team)
         FS3Combat.emit_to_combat combat, t('fs3combat.team_set', :name => combatant.name, :team => team ), FS3Combat.npcmaster_text(combatant.name, enactor)
       end
-      
+
       if (stance != combatant.stance)
         combatant.update(stance: stance)
         FS3Combat.emit_to_combat combat, t('fs3combat.stance_changed', :name => combatant.name, :poss => combatant.poss_pronoun, :stance => stance), FS3Combat.npcmaster_text(combatant.name, enactor)
       end
-      
+
       allowed_specials = FS3Combat.weapon_stat(weapon, "allowed_specials") || []
       weapon_specials = []
       selected_weapon_specials.each do |name|
@@ -174,12 +175,12 @@ module AresMUSH
           return t('fs3combat.invalid_weapon_special', :special => name)
         end
       end
-      
+
       if (combatant.weapon_name != weapon || combatant.weapon_specials != weapon_specials)
         FS3Combat.set_weapon(enactor, combatant, weapon, weapon_specials)
       end
-      
-      
+
+
       allowed_specials = FS3Combat.armor_stat(armor, "allowed_specials") || []
       armor_specials = []
       selected_armor_specials.each do |name|
@@ -189,15 +190,15 @@ module AresMUSH
           return t('fs3combat.invalid_armor_special', :special => name)
         end
       end
-            
+
       if (armor != combatant.armor_name || combatant.armor_specials != armor_specials)
         FS3Combat.set_armor(enactor, combatant, armor, armor_specials)
       end
-      
+
       if (combatant.is_npc? && combatant.npc.level != npc_level)
         combatant.npc.update(level: npc_level)
       end
-      
+
       return nil
     end
   end
