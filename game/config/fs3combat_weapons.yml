@@ -75,6 +75,11 @@ fs3combat:
       accuracy: 1
       lethality: 3
       penetration: 1
+    Huxian's Gift:
+      description: Magical item
+      is_magic: true
+      accuracy: 4
+      init_mod: 4 
   weapons:
     Spell:
       description: Spell with no stats to make it easier to grab special stats.

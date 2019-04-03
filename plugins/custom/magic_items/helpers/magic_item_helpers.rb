@@ -50,5 +50,15 @@ module AresMUSH
       end
     end
 
+    def self.item_attack_mod(char)
+      item_name = char.magic_item_equipped
+      if item_name == "None"
+        0
+      else
+        item = self.find_item(char, item_name)
+        item.item_attack_mod
+      end
+    end
+
   end
 end
