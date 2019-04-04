@@ -155,9 +155,8 @@ spells:
   Wind Wall:
     available: true
     casting_time: 1 round
-    desc: 'Deflect ranged projectile attacks directed against you or a single comrade
-      with a gust wind, effectively putting the target in  <a href="https://www.aresmush.com/fs3/fs3-3/combat/#stance"
-      style="color: #A7C6DA" target="_blank">cover.</a>'
+    desc: "Deflect ranged projectile attacks directed against you or a single comrade
+      with a gust wind, effectively putting the target in [cover](https://www.aresmush.com/fs3/fs3-3/combat/#stance)."
     duration: 1 round
     is_revive: false
     is_stun: false
@@ -348,7 +347,7 @@ spells:
     target_optional: true
     weapon: Blow Object
   Familiar (Air):
-    desc:' A familiar is a spirit associated or allied with a school of magic that has taken residence in a physical vessel with the shape of an animal. It functions as a companion, assistant, and guardian. <br><br>Familiars may be capable of some or all of the following: sharing telepathic or empathic communication, providing knowledge of the arcane, sharing senses, lending physical aid as spies or fighters, delivering spells at a distance of up to three miles.'
+    desc: "A familiar is a spirit associated or allied with a school of magic that has taken residence in a physical vessel with the shape of an animal. It functions as a companion, assistant, and guardian. \n\nFamiliars may be capable of some or all of the following: sharing telepathic or empathic communication, providing knowledge of the arcane, sharing senses, lending physical aid as spies or fighters, delivering spells at a distance of up to three miles."
     is_revive: false
     is_stun: false
     level: 6
@@ -363,14 +362,12 @@ spells:
   Wind Rider:
     available: true
     casting_time: 1 round
-    desc: 'The caster conjures wind to ride in filght. The wind can carry them at
+    desc: "The caster conjures wind to ride in filght. The wind can carry them at
       a speed of up to 200 mph. They can stay aloft easily and hover in midair, but
       cannot deftly maneuver while in flight. They can cast spells and use ranged
-      weapons, but gain  -2 attack and -2 defense modifiers when making melee attacks.%R%R
-
-
+      weapons, but gain  -2 attack and -2 defense modifiers when making melee attacks.\n\n
       Should the spell duration expire while the caster is still aloft, the magic
-      fails slowly, lowering the caster safely to the ground.'
+      fails slowly, lowering the caster safely to the ground."
     duration: 1 hour
     is_revive: false
     is_stun: false
@@ -423,8 +420,8 @@ spells:
   Suffocate:
     available: true
     casting_time: 1 round
-    desc: Draw the air from the lungs of a target, making it impossible for them to
-      breathe. %R%RDoes not affect enemies who do not breathe air.
+    desc: "Draw the air from the lungs of a target, making it impossible for them to
+      breathe. \n\nDoes not affect enemies who do not breathe air."
     fs3_attack: true
     is_revive: false
     is_stun: false
