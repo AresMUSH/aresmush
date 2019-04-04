@@ -43,7 +43,7 @@ spells:
     desc: 'Caster hears a random, uncontrollable thought (no more than a short sentence
       of up to 10 words) from an object held by a sapient creature in the past 48
       hours. Successive casts on the same object yield the same sentence.
-      When possible, the sentence should be chosen by a GM.'
+      When possible, the sentence should be chosen by a GM or someone other than the caster.'
     is_potion: true
     is_revive: false
     is_stun: false
@@ -394,10 +394,9 @@ spells:
   Commune With Local Spirit:
     available: true
     casting_time: 1 round to conjure, 1 round per question.
-    desc: 'You may contact a <a href="http://spiritlakemu.com/wiki/creatures#spirits-and-ghosts"
-      style="color: #A7C6DA" target="_blank">spirit</a> and ask it one question per
+    desc: "You may contact a [spirit](http://spiritlakemu.com/wiki/creatures#spirits-and-ghosts) and ask it one question per
       round. The spirit s knowledge is limited to matters within its immediate area
-      or expertise.'
+      or expertise"
     duration: 15 minutes
     is_revive: false
     is_stun: false
@@ -455,8 +454,8 @@ spells:
     target_optional: true
   Memory Dive:
     available: true
-    casting_time: '1+ rounds at GM\u2019s discretion. '
-    desc: 'Search someone\u2019s memory for specific events. '
+    casting_time: "1+ rounds at GM\u2019s discretion."
+    desc: "Search someone\u2019s memory for specific events."
     duration: 30 minutes
     is_revive: false
     is_stun: false
@@ -473,7 +472,7 @@ spells:
   Pass Unseen:
     available: false
     casting_time: 1 round
-    desc: "The caster's presence is completely ignored by all thinking beings or creatures. %R%RThere is no physical change, the mind simply rejects any sensory signs of the caster for the duration of the spell. Large disruptions or sudden violence by the caster will break the spell."
+    desc: "The caster's presence is completely ignored by all thinking beings or creatures. \n\nThere is no physical change, the mind simply rejects any sensory signs of the caster for the duration of the spell. Large disruptions or sudden violence by the caster will break the spell."
     duration: 10 minutes
     is_revive: false
     is_stun: false
@@ -489,10 +488,10 @@ spells:
   Simple Command:
     available: true
     casting_time: 1 round
-    desc: 'Implant a one-word command in a target''s mind.They cannot be commanded
-      to harm themselves.%R%R Unless they have psionic powers themselves, they
+    desc: "Implant a one-word command in a target''s mind.They cannot be commanded
+      to harm themselves.\n\n Unless they have psionic powers themselves, they
       must follow the command. If they do have psionic powers, they roll Spirit vs
-      the caster''s Spirit.  '
+      the caster''s Spirit.  "
     duration: 5 minutes
     is_revive: false
     is_stun: false
@@ -555,13 +554,13 @@ spells:
   Clarity:
     available: true
     casting_time: 1 round
-    desc: 'The caster extends their senses to all beings within range. While their
+    desc: "The caster extends their senses to all beings within range. While their
       body lies senseless and incapacitated, they see and feel everything sensed by
       every sapient creature in that area. They can identify the presence, quantity,
-      and location of non-sapient creatures.%R%R
+      and location of non-sapient creatures.\n\n
 
       The caster can choose to absorb all experiences at a surface level, or focus
-      their attention on up to five individuals at a time for more details.'
+      their attention on up to five individuals at a time for more details."
     duration: 15 minutes
     is_revive: false
     is_stun: false
@@ -617,7 +616,7 @@ spells:
     casting_time: 1 round to cast, plus additional rounds at GM's discretion according
       to complexity of the rewrite.
     desc: "Permanently rewrite the mind of the target, changing or replacing any and
-      all memories. %R%RThe target\u2019s mind, in conjunction with the spell,
+      all memories. \n\nThe target\u2019s mind, in conjunction with the spell,
       will fill in the gaps and discrepancies, glossing over irregularities."
     is_revive: false
     is_stun: false
@@ -655,18 +654,17 @@ spells:
     casting_time: 3 hours
     desc: "The caster is capable of concealing a fragment of their spirit and binding
       it to an inanimate object. If the caster is killed, their full spirit enters
-      the object after 60 seconds.%R%R\n\nUsing this spell does not harm the caster.
+      the object after 60 seconds.\n\nUsing this spell does not harm the caster.
       Though it may contain a portion of the caster's spirit, they have no awareness
-      of the object once leaving its presence. %R%R\n\nThe object may be stored
+      of the object once leaving its presence. \n\nThe object may be stored
       anywhere, but there must be an open portal path between the caster and the object
       within 60 seconds of death in order for the spirit to enter the object. Otherwise,
-      they are killed.%R%R\n\nOnce their full spirit has entered the object, the
+      they are killed.\n\nOnce their full spirit has entered the object, the
       caster exists as a sapient object. They are incapable of movement but retain
       their spell casting abilities. Any who hold the trinket can freely converse
-      with the caster via telepathy.%R%R\n\nIf the object is destroyed, so is
+      with the caster via telepathy.\n\nIf the object is destroyed, so is
       that piece of the caster\u2019s spirit. If the object is destroyed after the
-      caster fully inhabits it, the caster dies permanently.%R%R\n<i>Costs one
-      luck to cast.</i>"
+      caster fully inhabits it, the caster dies permanently."
     is_revive: false
     is_stun: false
     level: 8

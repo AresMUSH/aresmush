@@ -138,8 +138,8 @@ spells:
     casting_time: 1 round
     damage_desc: Flesh Wound Spell
     damage_inflicted: FLESH
-    desc: Inflict a flesh wound, slowing an enemy down. %R%RSpell ignores target's
-      armor.
+    desc: "Inflict a flesh wound, slowing an enemy down. \n\nSpell ignores target's
+      armor."
     is_potion: true
     is_revive: false
     is_stun: false
@@ -217,8 +217,8 @@ spells:
     casting_time: 1 round
     damage_desc: Impair Spell
     damage_inflicted: IMPAIR
-    desc: Inflict an impaired wound, making it difficult for an enemy to use the affected
-      body part. %R%RSpell ignores target's armor.
+    desc: "Inflict an impaired wound, making it difficult for an enemy to use the affected
+      body part. \n\nSpell ignores target's armor."
     is_revive: false
     is_stun: false
     level: 4
@@ -286,11 +286,7 @@ spells:
   Grow Self:
     available: false
     casting_time: 1 round
-    desc: "The caster instantly enlarges their own body, multiplying their height and weight by 3. %R%RIf there is insufficient space for growth, the
-      caster increases to the maximum possible size and makes a brawn check to burst
-      any enclosures. %R%RAll equipment worn or carried by a creature is similarly
-      enlarged by the spell.  Any item that leaves the caster's possession instantly
-      returns to its normal size."
+    desc: "The caster instantly enlarges their own body, multiplying their height and weight by 3. \n\nIf there is insufficient space for growth, the caster increases to the maximum possible size and makes a brawn check to burst any enclosures. \n\nAll equipment worn or carried by a creature is similarly enlarged by the spell.  Any item that leaves the caster's possession instantly returns to its normal size."
     duration: 5 rounds
     is_revive: false
     is_stun: false
@@ -376,18 +372,11 @@ spells:
   Brink Of Death:
     available: false
     casting_time: 1 round
-    desc: 'Return someone who has died in the last 30 seconds to life at the cost
-      of the caster''s own stamina.  %R%R
-
-
+    desc: "Return someone who has died in the last 30 seconds to life at the cost
+      of the caster''s own stamina.  \n\n
       A revived target is unable to return to the fight without further healing. They
-      are both incapacitated and suffering from spell fatigue.%R%R
-
-
-
-      The caster is unable to fight or cast spells for 24 hours.%R%R
-
-      <i>Costs two luck to cast.</i>'
+      are both incapacitated and suffering from spell fatigue.\n\n
+      The caster is unable to fight or cast spells for 24 hours.\n\n"
     is_res: true
     is_revive: false
     is_stun: false

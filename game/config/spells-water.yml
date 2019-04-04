@@ -4,10 +4,10 @@ spells:
     available: true
     casting_time: 1 round
     desc: "Draw up to 2 gallons of clean drinking water from the moisture in the air\u2014possibly
-      creating a downpour or filling many small receptacles.%R%R\n\nThe water
+      creating a downpour or filling many small receptacles.\n\nThe water
       is generally reflective of the temperature in which it is created, but it is
       always liquid on creation. The temperature around it may freeze or heat the
-      water after creation.\n\n"
+      water after creation."
 
     is_revive: false
     is_stun: false
@@ -323,7 +323,7 @@ spells:
     target_optional: true
     weapon: Slick Ground
   Familiar (Water):
-    desc: 'A familiar is a spirit associated or allied with a school of magic that has taken residence in a physical vessel with the shape of an animal. It functions as a companion, assistant, and guardian. <br><br>Familiars may be capable of some or all of the following: sharing telepathic or empathic communication, providing knowledge of the arcane, sharing senses, lending physical aid as spies or fighters, delivering spells at a distance of up to three miles.'
+    desc: "A familiar is a spirit associated or allied with a school of magic that has taken residence in a physical vessel with the shape of an animal. It functions as a companion, assistant, and guardian. \n\nFamiliars may be capable of some or all of the following: sharing telepathic or empathic communication, providing knowledge of the arcane, sharing senses, lending physical aid as spies or fighters, delivering spells at a distance of up to three miles."
     is_revive: false
     is_stun: false
     level: 6
@@ -340,12 +340,10 @@ spells:
     available: false
     casting_time: 1 round
     defense_mod: 10
-    desc: 'The caster''s body becomes clear liquid and cannot be hit by attacks.%R%R
-
-
+    desc: "The caster''s body becomes clear liquid and cannot be hit by attacks.\n\n
       While in liquid form, the caster can pass through small holes or narrow openings,
       even mere cracks, with anything they were carrying at the time the spell was
-      cast.  '
+      cast.  "
     duration: 5 rounds
     is_revive: false
     is_stun: false

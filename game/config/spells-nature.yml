@@ -163,9 +163,9 @@ spells:
 
     available: true
     casting_time: 1 round
-    desc: 'Control a group of angry insects, encouraging them to attack a single enemy.
-      Overcome, the enemy is unable to take any action this round. %R%R
-      Behavior of swarm after the caster''s control dissipates is subject to GM discretion.'
+    desc: "Control a group of angry insects, encouraging them to attack a single enemy.
+      Overcome, the enemy is unable to take any action this round. \n\n
+      Behavior of swarm after the caster''s control dissipates is subject to GM discretion."
 
     fs3_attack: true
     is_revive: false
@@ -304,8 +304,7 @@ spells:
     available: false
     casting_time: 1 round
     desc: 'Swiftly grow a barrier that protects the caster or their target by placing
-      them in <a href="https://www.aresmush.com/fs3/fs3-3/combat/#stance" style="color:
-      #A7C6DA" target="_blank">cover</a> for one round.'
+      them in [cover](https://www.aresmush.com/fs3/fs3-3/combat/#stance) for one round.'
     duration: 1 round
     is_revive: false
     is_stun: false
@@ -399,7 +398,7 @@ spells:
     effect: transformation
   Familiar (Nature):
 
-    desc: 'A familiar is a spirit associated or allied with a school of magic that has taken residence in a physical vessel with the shape of an animal. It functions as a companion, assistant, and guardian. <br><br>Familiars may be capable of some or all of the following: sharing telepathic or empathic communication, providing knowledge of the arcane, sharing senses, lending physical aid as spies or fighters, delivering spells at a distance of up to three miles.'
+    desc: "A familiar is a spirit associated or allied with a school of magic that has taken residence in a physical vessel with the shape of an animal. It functions as a companion, assistant, and guardian. \n\nFamiliars may be capable of some or all of the following: sharing telepathic or empathic communication, providing knowledge of the arcane, sharing senses, lending physical aid as spies or fighters, delivering spells at a distance of up to three miles."
     is_revive: false
     is_stun: false
     level: 6
@@ -454,18 +453,15 @@ spells:
     available: false
     casting_time: 1 round
     defense_mod: 1
-    desc: 'The caster grows wings large enough to carry them in flight.The wings allow
-      them to travel at a speed of up to 65 mph. %R%R
+    desc: "The caster grows wings large enough to carry them in flight.The wings allow
+      them to travel at a speed of up to 65 mph. \n\n
 
       Practiced casters can obtain excellent maneuverability with their wings, making
       it easy for them to engage in combat and giving them an edge to their ability
-      to dodge.%R%R
+      to dodge.\n\n
 
       Should the spell duration expire while the caster is still aloft, they plummet
-      to the ground.
-
-
-'
+      to the ground."
     duration: 1 hour
     is_revive: false
     is_stun: false
@@ -552,10 +548,10 @@ spells:
 
     available: true
     casting_time: 1 round
-    desc: A single target, willing or unwilling, is permanently transformed into a
-      harmless animal or plant of caster's choosing and removed from battle. %R%RAt
+    desc: "A single target, willing or unwilling, is permanently transformed into a
+      harmless animal or plant of caster's choosing and removed from battle. \n\nAt
       GM discretion, 'Familiar' rules apply concerning the target's communication
-      capabilities such as empathy or telepathy.
+      capabilities such as empathy or telepathy."
     duration: Permanent
     is_revive: false
     is_stun: false

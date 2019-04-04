@@ -21,9 +21,9 @@ spells:
   Deface:
     available: true
     casting_time: 1 round
-    desc: 'Make simple or cosmetic damage to an object.   <br><br>
+    desc: "Make simple or cosmetic damage to an object.   \n\n
       For example, cause a one inch rip or crack, add a small spot of tarnish or dirt,
-      or make a scratch of no more than a few inches.'
+      or make a scratch of no more than a few inches."
     is_potion: true
     is_revive: false
     is_stun: false
@@ -39,9 +39,9 @@ spells:
   Mend:
     available: true
     casting_time: 1 round
-    desc: Make simple or cosmetic repairs on an object.<br><br>For example, repair
+    desc: "Make simple or cosmetic repairs on an object.\n\nFor example, repair
       a one inch rip or crack, remove a small spot of tarnish or dirt, or fix a scratch
-      of no more than a few inches.
+      of no more than a few inches."
     is_potion: true
     is_revive: false
     is_stun: false
@@ -131,8 +131,7 @@ spells:
     available: true
     casting_time: 1 round
     desc: 'Deflect attacks directed against you or a single comrade with a telekinetic
-      wall, effectively putting the target in  <a href="https://www.aresmush.com/fs3/fs3-3/combat/#stance"
-      style="color: #A7C6DA" target="_blank">cover.</a>'
+      wall, effectively putting the target in [cover](https://www.aresmush.com/fs3/fs3-3/combat/#stance).'
     duration: 1 round
     is_revive: false
     level: 3
@@ -256,12 +255,10 @@ spells:
 
     available: false
     casting_time: 1 round, plus additional rounds to manipulate at GM's discretion
-    desc: 'Manipulate small objects with great precision. Objects may range in size
-      from 1 mm  to 5 cm.<br><br>
-
-
+    desc: "Manipulate small objects with great precision. Objects may range in size
+      from 1 mm  to 5 cm.\n\n
       Manipulation requires knowledge. The caster cannot use telekinesis to pick locks
-      without lockpicking knowledge, or to load a gun without firearms knowledge.'
+      without lockpicking knowledge, or to load a gun without firearms knowledge."
     duration: 1 hour
     is_revive: false
     is_stun: false
@@ -275,7 +272,7 @@ spells:
     school: Will
     target_optional: false
   Familiar (Will):
-    desc: 'A familiar is a spirit associated or allied with a school of magic that has taken residence in a physical vessel with the shape of an animal. It functions as a companion, assistant, and guardian. <br><br>Familiars may be capable of some or all of the following: sharing telepathic or empathic communication, providing knowledge of the arcane, sharing senses, lending physical aid as spies or fighters, delivering spells at a distance of up to three miles.'
+    desc: "A familiar is a spirit associated or allied with a school of magic that has taken residence in a physical vessel with the shape of an animal. It functions as a companion, assistant, and guardian. \n\nFamiliars may be capable of some or all of the following: sharing telepathic or empathic communication, providing knowledge of the arcane, sharing senses, lending physical aid as spies or fighters, delivering spells at a distance of up to three miles."
     is_revive: false
     is_stun: false
     level: 6
@@ -326,19 +323,12 @@ spells:
     school: Will
     target_optional: false
   Dimensional Anchor:
-
     available: true
     casting_time: 2 minutes
-    desc: 'With the aid of at least one other caster of the appropriate School, become
+    desc: "With the aid of at least one other caster of the appropriate School, become
       an Anchor for the closing of a dimensional portal. May require additional casters
-      according to the portal''s magical energies.
-
-      <br> <br>
-
-      Travel, perception, and attacks through the targeted interdimensional portal
-      are reduced as the Anchor forces the portal to shrink. Once the spell is completed,
-      the portal is completely closed and the effect is permanent.'
-
+      according to the portal''s magical energies. \n\n Travel, perception, and attacks through the targeted interdimensional portal are reduced as the Anchor forces the portal to shrink. Once the spell is completed,
+      the portal is completely closed and the effect is permanent."
     is_revive: false
     is_stun: false
     level: 7
@@ -384,10 +374,7 @@ spells:
     available: false
     casting_time: 1 round
     desc: 'The caster lashes out with a blunt telekinetic attack, dealing damage to
-      up to three targets. On a hit, the targets are pushed backwards 1-10 ft.
-
-'
-
+      up to three targets. On a hit, the targets are pushed backwards 1-10 ft.'
     fs3_attack: true
     is_revive: false
     is_stun: false
@@ -402,25 +389,17 @@ spells:
     target_optional: true
     weapon: Mass Telekinetic Burst
   Open Local Portal:
-
     available: false
     casting_time: 5 minutes
-    desc: 'The caster opens a permanent portal to a location in the same dimensional
+    desc: "The caster opens a permanent portal to a location in the same dimensional
       world they are currently in. They must have two of the following in order to
-      open a portal to a location:<br><br>
-
-      <ul>
-
-      <li>Personal knowledge of the portal''s opening point. They have visited it
-      themselves and can remember the location.</li>
-
-      <li>The ability to see someone else''s memory of the location.</li>
-
-      <li>Exact GPS coordinates of the portal''s opening point.</li>
-
-      <li>A realistic depiction of the portal''s location, created in the last six
-      months. A recent photograph, life-like drawing, painting, etc.</li>'
-
+      open a portal to a location:\n\n
+      * Personal knowledge of the portal''s opening point. They have visited it
+      themselves and can remember the location.\n
+      * The ability to see someone else''s memory of the location.\n
+      * Exact GPS coordinates of the portal''s opening point.\n
+      * A realistic depiction of the portal''s location, created in the last six
+      months. A recent photograph, life-like drawing, painting, etc.\n"
     is_revive: false
     is_stun: false
     level: 7
@@ -456,13 +435,11 @@ spells:
 
     available: false
     casting_time: 1 round, plus additional rounds to manipulate at GM's discretion
-    desc: 'Manipulate microscopic objects with great precision. Objects may range
-      in size from 1 micrometer  to 1 milimeter.<br><br>
-
-
+    desc: "Manipulate microscopic objects with great precision. Objects may range
+      in size from 1 micrometer  to 1 milimeter.\n\n
       Manipulation requires knowledge. The caster cannot use telekinesis to vanquish
       disease without exact medical knowledge, or to repair fine machinery without
-      engineering knowledge.'
+      engineering knowledge."
     duration: 1 hour
     is_revive: false
     is_stun: false
