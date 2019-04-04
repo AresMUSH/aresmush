@@ -252,8 +252,7 @@ spells:
     target_num: 1
     target_optional: true
   Telekinetic Precision:
-
-    available: false
+    available: true
     casting_time: 1 round, plus additional rounds to manipulate at GM's discretion
     desc: "Manipulate small objects with great precision. Objects may range in size
       from 1 mm  to 5 cm.\n\n
@@ -389,7 +388,7 @@ spells:
     target_optional: true
     weapon: Mass Telekinetic Burst
   Open Local Portal:
-    available: false
+    available: true
     casting_time: 5 minutes
     desc: "The caster opens a permanent portal to a location in the same dimensional
       world they are currently in. They must have two of the following in order to
@@ -458,9 +457,7 @@ spells:
     casting_time: 1 round, plus additional rounds for movement at the GM's discretion
     desc: 'Move an object weighing up to 100 tons. This is imprecise, and objects
       move at a speed inverse to their weight. Smaller objects may move up to 35 mph;
-      larger objects move a yard per minute.
-
-'
+      larger objects move a yard per minute.'
     duration: 1 hour
     is_revive: false
     is_stun: false
