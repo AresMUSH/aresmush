@@ -90,7 +90,7 @@ module AresMUSH
         {
           spells: spells_by_level,
           title: school,
-          blurb: blurb,
+          blurb: Website.format_markdown_for_html(blurb),
           pinterest: school
         }
 
@@ -101,7 +101,7 @@ module AresMUSH
         hash.sort.map { |name, data| {
           key: name,
           name: name.titleize,
-          desc: data['desc'],
+          desc: Website.format_markdown_for_html(data['desc']),
           available: data['available'],
           level: data['level'],
           school: data['school'],
