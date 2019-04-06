@@ -15,7 +15,7 @@ module AresMUSH
           request_category: Jobs.request_category,
           is_job_admin: is_job_admin,
           reboot_required_notice: Jobs.reboot_required_notice,
-          jobs_filter: enactor.jobs_filter
+          jobs_filter: enactor.jobs_filter || "ACTIVE"
         }
       end
     end

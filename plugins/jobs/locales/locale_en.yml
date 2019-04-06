@@ -60,6 +60,7 @@ en:
         
         job_filter_active: "Jobs Filter: %xh%x![%{filter}]%xn"
         job_filter_tip: "Use %xcjobs/filter <filter>%xn to view a different set of jobs."
+        request_filter_tip: "Use %xcrequests/active%xn or %xcrequests/all%xn to view a different set of requests."
         invalid_filter_type: "That is not a valid filter type.  Try one of these: %{names}"
         
         job_marked_unread: "You mark the job unread."
