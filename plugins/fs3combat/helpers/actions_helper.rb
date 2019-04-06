@@ -67,7 +67,7 @@ module AresMUSH
       if (combatant.magic_stun_counter == 0 && combatant.magic_stun)
         FS3Combat.emit_to_combat combatant.combat, t('fs3combat.stun_wore_off', :name => combatant.name), nil, true
         combatant.update(magic_stun: false)
-        target.update(magic_stun_spell: nil)
+        combatant.update(magic_stun_spell: nil)
         combatant.log "#{combatant.name} is no longer magically stunned."
       elsif (combatant.magic_stun_counter > 0 && combatant.magic_stun)
         combatant.update(magic_stun_counter: combatant.magic_stun_counter - 1)
