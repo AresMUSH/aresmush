@@ -9,10 +9,22 @@ module AresMUSH
     attribute :is_ooc, :type => DataType::Boolean
     attribute :order
     attribute :pose_type
+    attribute :is_deleted, :type => DataType::Boolean
     attribute :restarted_scene_pose, :type => DataType::Boolean
+    attribute :history, :type => DataType::Array, :default => []
+    
+    def move_to_history
+      entries = self.history || []
+      entries << "#{Time.now} #{character ? character.name : 'Author Deleted'} -- #{pose}"
+      self.update(history: entries)
+    end
     
     def sort_order
       self.order ? self.order.to_i : self.id.to_i
+    end
+    
+    def is_deleted?
+      self.is_deleted
     end
     
     def is_setpose?
