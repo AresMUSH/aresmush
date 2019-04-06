@@ -23,7 +23,7 @@ module AresMUSH
           old_pose = last_pose.pose
           pose_id = last_pose.id
           
-          last_pose.delete
+          last_pose.update(is_deleted: true)
           message = t('scenes.deleted_pose', :name => enactor_name,
                         :pronoun => Demographics.possessive_pronoun(enactor))
 

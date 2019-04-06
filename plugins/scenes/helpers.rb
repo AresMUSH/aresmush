@@ -11,7 +11,7 @@ module AresMUSH
     
     def self.can_manage_scene?(actor, scene)
       return false if !actor
-      (scene.owner == actor) || actor.has_permission?("manage_scenes")
+      actor.has_permission?("manage_scenes")
     end
     
     def self.scene_types
@@ -29,6 +29,7 @@ module AresMUSH
     
     def self.can_edit_scene?(actor, scene)
       return false if !actor
+      return true if scene.owner == actor
       return true if Scenes.can_manage_scene?(actor, scene)
       scene.participants.include?(actor)
     end
@@ -317,8 +318,6 @@ module AresMUSH
         client = Login.find_client(char)
         if (client && char.room == room && char.pose_nudge && !char.pose_nudge_muted)
           client.emit_ooc t('scenes.pose_your_turn')      
-        else
-          room.emit_ooc t('scenes.next_pose_offline', :name => next_up_name)
         end
       end
     end
@@ -441,6 +440,7 @@ module AresMUSH
     end
     
     def self.edit_pose(scene, scene_pose, new_text, enactor, notify)
+      scene_pose.move_to_history
       scene_pose.update(pose: new_text)
       
       if (notify)
