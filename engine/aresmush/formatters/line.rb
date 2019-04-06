@@ -1,6 +1,8 @@
 module AresMUSH
   class Line
-    def self.show(id = "h")
+    def self.show(id = "h", screen_reader = false)
+      return "" if screen_reader
+      
       case id.downcase
       when "h"
         id = "header"

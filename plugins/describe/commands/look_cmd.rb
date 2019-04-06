@@ -3,35 +3,37 @@ module AresMUSH
     class LookCmd
       include CommandHandler
       
-      attr_accessor :target, :detail
+      attr_accessor :targets
       
       def parse_args
-        if (cmd.args =~ /\//)
-          args = cmd.parse_args(ArgParser.arg1_slash_arg2)
-          self.target = trim_arg(args.arg1)
-          self.detail = titlecase_arg(args.arg2)          
-        else
-          self.target = trim_arg(cmd.args) || 'here'
-          self.detail = nil
-        end
+        self.targets = list_arg(cmd.args, ',') || ['here']
       end
       
       def handle
-        search = AnyTargetFinder.find(self.target, enactor)
-        if (self.detail)
-          if (search.found?)
-            show_detail(search.target, self.detail)
+        self.targets.each do |target|
+          if (target =~ /\//)
+            detail = target.after('/')
+            target = target.before('/')
           else
-            client.emit_failure search.error
+            detail = nil
           end
-        else
-           if (search.found?)
-             show_desc(search.target)
-           else
-             show_detail(enactor_room, self.target)
-           end
+          
+          search = AnyTargetFinder.find(target, enactor)
+          if (detail)
+            if (search.found?)
+              show_detail(search.target, detail)
+            else
+              client.emit_failure search.error
+            end
+          else
+             if (search.found?)
+               show_desc(search.target)
+             else
+               show_detail(enactor_room, target)
+             end
+          end
         end
-      end   
+      end
       
       def show_desc(model)
         template = Describe.desc_template(model, enactor)

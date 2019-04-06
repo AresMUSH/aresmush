@@ -3,6 +3,7 @@ module AresMUSH
 
     # Expects /help/d ability name and numeric rating
     def self.set_ability(client, char, ability_name, rating)
+      ability_name = ability_name ? ability_name.titleize : nil
       error = FS3Skills.check_ability_name(ability_name)
       if (error)
         if (client)

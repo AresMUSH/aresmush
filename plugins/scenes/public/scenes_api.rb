@@ -69,6 +69,7 @@ module AresMUSH
       else
         room = enactor.room
         room.update(scene: scene)
+        room.update(pose_order: {})
         scene.update(room: room)
         room.emit_ooc t('scenes.announce_scene_start', :privacy => private_scene ? "Private" : "Open", :name => enactor.name, :num => scene.id)
       end

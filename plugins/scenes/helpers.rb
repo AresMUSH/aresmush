@@ -11,7 +11,7 @@ module AresMUSH
     
     def self.can_manage_scene?(actor, scene)
       return false if !actor
-      (scene.owner == actor) || actor.has_permission?("manage_scenes")
+      actor.has_permission?("manage_scenes")
     end
     
     def self.scene_types
@@ -29,6 +29,7 @@ module AresMUSH
     
     def self.can_edit_scene?(actor, scene)
       return false if !actor
+      return true if scene.owner == actor
       return true if Scenes.can_manage_scene?(actor, scene)
       scene.participants.include?(actor)
     end
@@ -312,13 +313,11 @@ module AresMUSH
         next_up_name = poses.first[0]
         char = Character.find_one_by_name(next_up_name)
         if (!char)
-          room.remove_from_pose_order(name)
+          room.remove_from_pose_order(next_up_name)
         end
         client = Login.find_client(char)
         if (client && char.room == room && char.pose_nudge && !char.pose_nudge_muted)
           client.emit_ooc t('scenes.pose_your_turn')      
-        else
-          room.emit_ooc t('scenes.next_pose_offline', :name => name)
         end
       end
     end
@@ -441,6 +440,7 @@ module AresMUSH
     end
     
     def self.edit_pose(scene, scene_pose, new_text, enactor, notify)
+      scene_pose.move_to_history
       scene_pose.update(pose: new_text)
       
       if (notify)
@@ -545,6 +545,7 @@ module AresMUSH
     end
     
     def self.build_pose_order_web_data(scene)
+      return {} if !scene.room
       scene.room.sorted_pose_order.map { |name, time| 
         {
          name: name,

@@ -52,7 +52,7 @@ module AresMUSH
       send_data data.to_json.to_s
     end
     
-    def send_formatted(msg, enable_fansi = false, ascii_mode = false)
+    def send_formatted(msg, color_mode = "FANSI", ascii_mode = false, screen_reader = false)
        # Strip out < and > - may need to strip other things in the future
       formatted = MushFormatter.format(msg, false).gsub(/</, '&lt;').gsub(/>/, '&gt;')
       

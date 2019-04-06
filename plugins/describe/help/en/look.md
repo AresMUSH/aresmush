@@ -12,7 +12,9 @@ The `look` command is used to look around.  You can also look at a particular ob
 
 `look <name>`
 `look`  (shortcut for looking at 'here')
-`look <name>/<detail>` - Looks at a detail on something.
+`look <name>/<detail>` - Looks at a detail on something. (see [Details](/help/details)
+
+You can also specify a list of things to look at, separated by commas.  For example:  `look here/photos,here/big sign`.
 
 ## Glancing
 

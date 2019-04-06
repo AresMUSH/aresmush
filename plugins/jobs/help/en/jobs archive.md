@@ -1,6 +1,9 @@
 ---
 toc: ~admin~ Managing the Game
 summary: Old jobs archive.
+aliases:
+- job_search
+- jobs_search
 ---
 # Jobs Archive
 
