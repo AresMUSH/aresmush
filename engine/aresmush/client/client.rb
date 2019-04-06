@@ -44,9 +44,14 @@ module AresMUSH
       self.char.ascii_mode_enabled
     end
     
-    def enable_fansi
+    def color_mode
+      return "FANSI" if !@char_id
+      self.char.color_mode
+    end
+    
+    def screen_reader
       return false if !@char_id
-      self.char.fansi_on
+      self.char.screen_reader
     end
     
     def beep
@@ -54,19 +59,19 @@ module AresMUSH
     end
     
     def emit(msg)
-      @connection.send_formatted "#{msg}", enable_fansi, ascii_mode
+      @connection.send_formatted "#{msg}", color_mode, ascii_mode, screen_reader
     end 
     
     def emit_ooc(msg)
-      @connection.send_formatted "%xc%% #{msg}%xn", enable_fansi, ascii_mode
+      @connection.send_formatted "%xc%% #{msg}%xn", color_mode, ascii_mode, screen_reader
     end
 
     def emit_success(msg)
-      @connection.send_formatted "%xg%% #{msg}%xn", enable_fansi, ascii_mode
+      @connection.send_formatted "%xg%% #{msg}%xn", color_mode, ascii_mode, screen_reader
     end
 
     def emit_failure(msg)
-      @connection.send_formatted "%xr%% #{msg}%xn", enable_fansi, ascii_mode
+      @connection.send_formatted "%xr%% #{msg}%xn", color_mode, ascii_mode, screen_reader
     end
     
     def emit_raw(msg)
