@@ -39,13 +39,13 @@ module AresMUSH
         end
         
         jobs = jobs.sort_by { |j| j.created_at }
-        paginator = Paginator.paginate(jobs, cmd.page, 20)        
-        template = JobsListTemplate.new(enactor, paginator)
+        paginator = Paginator.paginate(jobs, cmd.page, 9999)        
+        template = JobsListTemplate.new(enactor, paginator, t('jobs.job_filter_tip'))
         if (paginator.out_of_bounds?)
           template = BorderedDisplayTemplate.new t('pages.not_that_many_pages')
           client.emit template.render
         else
-          template = JobsListTemplate.new(enactor, paginator)
+          template = JobsListTemplate.new(enactor, paginator, t('jobs.job_filter_tip'))
           client.emit template.render
         end        
       end
