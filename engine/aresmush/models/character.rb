@@ -8,6 +8,8 @@ module AresMUSH
     attribute :alias
     attribute :alias_upcase
     attribute :fansi_on, :default => true
+    attribute :color_mode, :default => "FANSI"
+    attribute :screen_reader
     attribute :is_statue
     attribute :password_hash
 
