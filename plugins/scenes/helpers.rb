@@ -531,7 +531,7 @@ module AresMUSH
         can_edit: viewer && Scenes.can_edit_scene?(viewer, scene),
         is_watching: viewer && scene.watchers.include?(viewer),
         is_unread: viewer && scene.is_unread?(viewer),
-        pose_order: scene.completed ? {} : Scenes.build_pose_order_web_data(scene),
+        pose_order: Scenes.build_pose_order_web_data(scene),
         poses: scene.poses_in_order.map { |p| Scenes.build_scene_pose_web_data(p, viewer) }
       }
     end
@@ -545,6 +545,7 @@ module AresMUSH
     end
     
     def self.build_pose_order_web_data(scene)
+      return {} if !scene.room
       scene.room.sorted_pose_order.map { |name, time| 
         {
          name: name,
