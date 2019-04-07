@@ -32,6 +32,10 @@ module AresMUSH
             
           last_pose.update(pose: self.pose)
           Scenes.edit_pose(scene, last_pose, self.pose, enactor, !self.silent)
+          
+          if (self.silent)
+            client.emit_ooc t('scenes.typo_scene_pose', :pose => self.pose)
+          end
         end
       end
     end
