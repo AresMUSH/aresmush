@@ -117,6 +117,7 @@ en:
         
         edited_scene_pose: "%{name} has edited their pose: %xn%R%{pose}"
         deleted_scene_pose: "%{name} has deleted their pose: %{pose}"
+        typo_scene_pose: "You fix the typo in the log:%R%{pose}"
         
         trending_scenes_subject: "Popular Scenes This Week"
         
