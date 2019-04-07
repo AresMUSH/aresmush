@@ -1,6 +1,7 @@
 ---
 utils:
   shortcuts:
+    colors: color
     think: echo
     "@@": keepalive
     "@": keepalive

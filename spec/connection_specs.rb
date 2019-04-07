@@ -19,7 +19,7 @@ module AresMUSH
     
     describe :send_formatted do
       it "should format the message before sending" do
-        expect(MushFormatter).to receive(:format).with("test", true) { "TEST" }
+        expect(MushFormatter).to receive(:format).with("test", "FANSI", false) { "TEST" }
         expect(@connection).to receive(:send_data).with("TEST")
         @connection.send_formatted("test")
       end

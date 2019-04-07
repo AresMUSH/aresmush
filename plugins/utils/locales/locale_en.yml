@@ -15,11 +15,13 @@ en:
     ansi:
         colors_title: "ANSI Colors"
         x_or_c: "See 'help ansi' for help using colors."
-        fansi_set: "FANSI extended color support is now %{option}."
+        color_mode_set: "Color mode set to %{option}."
+        invalid_color_mode: "Invalid color mode.  Try one of these: %{modes}."
     ascii:
         ascii_mode_set: "ASCII-only mode is now %{option}."
     utils:
         no_set_cmd: "AresMUSH has no set command.  There are individual commands to set various things.  Try searching the help files with `help <topic>` or ask for help."
+        screen_reader_set: "Screen reader mode is now %{option}."
     dice:
         too_many_dice: "You can't roll that many dice."
         no_zero_dice: "You can't roll zero dice."

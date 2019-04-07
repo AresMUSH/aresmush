@@ -69,8 +69,8 @@ module AresMUSH
         case cmd.switch
         when "respond"
           return RequestCommentCmd
-        when "all"
-          return ListRequestsCmd
+        when "filter"
+          return RequestFilterCmd
         when "create"
           return CreateRequestCmd
         when "mail"

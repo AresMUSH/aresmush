@@ -15,7 +15,11 @@ module AresMUSH
           jobs = []
         end
         
-        jobs.concat Jobs.open_requests(enactor)
+        if (enactor.jobs_filter == "ALL")
+          jobs.concat enactor.jobs.to_a 
+        else
+          jobs.concat Jobs.open_requests(enactor)
+        end          
         jobs = jobs.uniq.sort_by { |j| j.created_at }.reverse
         
         jobs.map { |j| {
