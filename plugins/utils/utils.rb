@@ -18,8 +18,12 @@ module AresMUSH
         return AsciiCmd
       when "beep"
         return BeepCmd
-      when "colors"
-        return ColorsCmd
+      when "color"
+        if (cmd.args)
+          return ColorModeCmd
+        else
+          return ColorsCmd
+        end
       when "dice"
         return DiceCmd
       when "echo"
@@ -29,7 +33,7 @@ module AresMUSH
           return EditPasswordCmd
         end
       when "fansi"
-        return FansiCmd
+        return ColorModeCmd
       when "math"
         return MathCmd
       when "note"
@@ -45,6 +49,8 @@ module AresMUSH
         return RecallCmd
       when "save"
         return SaveCmd
+      when "screenreader"
+        return ScreenReaderCmd
       when "set"
         return SetCatcherCmd
       when "shortcuts"

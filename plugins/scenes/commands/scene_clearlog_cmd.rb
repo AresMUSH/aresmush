@@ -22,7 +22,7 @@ module AresMUSH
             return
           end
 
-          if (!Scenes.can_manage_scene?(enactor, scene))
+          if (!Scenes.can_edit_scene?(enactor, scene))
             client.emit_failure t('dispatcher.not_allowed')
             return
           end

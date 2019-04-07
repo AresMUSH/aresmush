@@ -11,7 +11,7 @@ module AresMUSH
     
     def self.can_manage_scene?(actor, scene)
       return false if !actor
-      (scene.owner == actor) || actor.has_permission?("manage_scenes")
+      actor.has_permission?("manage_scenes")
     end
     
     def self.scene_types
@@ -29,6 +29,7 @@ module AresMUSH
     
     def self.can_edit_scene?(actor, scene)
       return false if !actor
+      return true if scene.owner == actor
       return true if Scenes.can_manage_scene?(actor, scene)
       scene.participants.include?(actor)
     end
@@ -439,6 +440,7 @@ module AresMUSH
     end
     
     def self.edit_pose(scene, scene_pose, new_text, enactor, notify)
+      scene_pose.move_to_history
       scene_pose.update(pose: new_text)
       
       if (notify)
@@ -529,7 +531,7 @@ module AresMUSH
         can_edit: viewer && Scenes.can_edit_scene?(viewer, scene),
         is_watching: viewer && scene.watchers.include?(viewer),
         is_unread: viewer && scene.is_unread?(viewer),
-        pose_order: scene.completed ? {} : Scenes.build_pose_order_web_data(scene),
+        pose_order: Scenes.build_pose_order_web_data(scene),
         poses: scene.poses_in_order.map { |p| Scenes.build_scene_pose_web_data(p, viewer) }
       }
     end
@@ -543,6 +545,7 @@ module AresMUSH
     end
     
     def self.build_pose_order_web_data(scene)
+      return {} if !scene.room
       scene.room.sorted_pose_order.map { |name, time| 
         {
          name: name,

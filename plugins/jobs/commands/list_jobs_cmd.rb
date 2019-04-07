@@ -13,7 +13,7 @@ module AresMUSH
         jobs =  Jobs.filtered_jobs(enactor)
         paginator = Paginator.paginate(jobs, cmd.page, 20)
         filter = enactor.jobs_filter
-        template = JobsListTemplate.new(enactor, paginator, filter)
+        template = JobsListTemplate.new(enactor, paginator, t('jobs.job_filter_tip'), filter)
         client.emit template.render
       end
     end
