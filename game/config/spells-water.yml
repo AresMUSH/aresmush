@@ -83,8 +83,7 @@ spells:
     area: 5 cubic feet
     available: true
     casting_time: 1 round
-    desc: Cause preexisting water that could fit within a 5-foot cube to form into
-      simple non-weaponized shapes that animate at your direction.
+    desc: "For the duration of the spell, the caster can influence up to 5 cubic feet of preexisting water, moving and shaping it into simple non-weaponized shapes that animates at their direction. The caster can control the flow, density, and dispersion of water to form dry spots, move puddles, or reroute small streams. When the spell ends, the water returns to its natural state in its current location."
     duration: 1 hour
     is_revive: false
     is_stun: false
@@ -101,9 +100,7 @@ spells:
     area: 1 cubic foot
     available: true
     casting_time: 1 round
-    desc: Ice is at your disposal. On a whim, you may create ice that can fit into
-      a 1-foot cube and form it into simple non-weaponized shapes that animate at
-      your direction.
+    desc: "For the duration of the spell, the caster can create or inpfluence up to 1 cubic foot of ice and form it into simple non-weaponized shapes that animate at their direction. Ice returns to its natural - but not necessarily original - state when the spell ends. If the ice was created from water, it will remain ice until it naturally melts."
     duration: 1 hour
     is_revive: false
     is_stun: false
