@@ -1,14 +1,14 @@
 module AresMUSH
   class SubstitutionFormatter
     
-    def self.format(str, enable_fansi = true)
+    def self.format(str, color_mode = "FANSI", screen_reader = false)
 
       # Do the lines first in case they themselves have special chars in them
       # One crazy regex for efficiency's sake.  Looks for codes not preceded by a 
       # single backslash.
-      str = str.gsub(/((?<!\\)%[l][hfdp12])/i) { |match| Line.show( match[2..-1] )}
+      str = str.gsub(/((?<!\\)%[l][hfdp12])/i) { |match| Line.show( match[2..-1], screen_reader )}
 
-      tokens = tokenize(str, enable_fansi)
+      tokens = tokenize(str, color_mode)
 
       new_str = ""
       tokens.each do |t|
@@ -77,7 +77,7 @@ module AresMUSH
       }
     end
     
-    def self.tokenize(str, enable_fansi = true)
+    def self.tokenize(str, color_mode = "FANSI")
       str = "#{str}"
       code_regex = /
       (?<!\\)  # Not preceded by backslash
@@ -109,12 +109,12 @@ module AresMUSH
       tokens = []
       splits = str.split(code_regex)
       splits.each do |s| 
-        tokens << token_for_substr(s, enable_fansi)
+        tokens << token_for_substr(s, color_mode)
       end
       tokens
     end
 
-    def self.token_for_substr(str, enable_fansi = true)
+    def self.token_for_substr(str, color_mode = "FANSI")
       case str
       when nil, ""
         return { :len => 0, :str => "", :raw => str }
@@ -128,12 +128,12 @@ module AresMUSH
         return { :len => 1, :str => "\\", :raw => str }
       when "%x!", "%X!", "%c!", "%C!"
         ansi = "#{RandomColorizer.random_color}"
-        return { :len => 0, :str => AnsiFormatter.get_code(ansi, enable_fansi), :raw => str }
+        return { :len => 0, :str => AnsiFormatter.get_code(ansi, color_mode), :raw => str }
       end
 
       # Might be an ansi code
       if (str.start_with?("%"))
-        ansi = AnsiFormatter.get_code(str, enable_fansi)
+        ansi = AnsiFormatter.get_code(str, color_mode)
         if (ansi)
           return { :len => 0, :str => ansi, :raw => str }
         end
@@ -155,7 +155,7 @@ module AresMUSH
         elsif (str =~ /\[ansi\((.+)\,(.+)\)\]/)
           raw_codes = $1.each_char.map { |c| "%x#{c}" }
           tmp = format($2)
-          ansi = raw_codes.map { |c| AnsiFormatter.get_code(c, enable_fansi) }.join
+          ansi = raw_codes.map { |c| AnsiFormatter.get_code(c, color_mode) }.join
           return { :len => $2.length, :str => "#{ansi}#{tmp}#{ANSI.reset}", :raw => "#{raw_codes.join}#{tmp}%xn"}
         end
       end

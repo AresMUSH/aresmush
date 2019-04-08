@@ -1,6 +1,6 @@
 module AresMUSH
   module Utils
-    class FansiCmd
+    class ScreenReaderCmd
       include CommandHandler
 
       attr_accessor :option
@@ -18,8 +18,8 @@ module AresMUSH
       end
       
       def handle
-        enactor.update(fansi_on: self.option.is_on?)
-        client.emit_success t('ansi.fansi_set', :option => self.option)
+        enactor.update(screen_reader: self.option.is_on?)
+        client.emit_success t('utils.screen_reader_set', :option => self.option)
       end
     end
   end

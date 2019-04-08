@@ -68,7 +68,7 @@ module AresMUSH
     end
 
     def poses_in_order
-      scene_poses.to_a.sort_by { |p| p.sort_order }
+      scene_poses.select { |p| !p.is_deleted? }.sort_by { |p| p.sort_order }
     end
 
     def delete_poses_and_log

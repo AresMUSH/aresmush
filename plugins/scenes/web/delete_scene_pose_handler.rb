@@ -25,7 +25,7 @@ module AresMUSH
         
         pose_text = scene_pose.pose
         pose_id = scene_pose.id
-        scene_pose.delete
+        scene_pose.update(is_deleted: true)
         
         message = t('scenes.deleted_scene_pose', :name => enactor.name, :pose => pose_text)
         
