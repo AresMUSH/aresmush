@@ -2,38 +2,6 @@ BEGIN:VCALENDAR
 VERSION:2.0
 PRODID:-//hacksw/handcal//NONSGML v1.0//EN
 BEGIN:VEVENT
-UID:bcf3b6ae-51a8-4874-be49-000fd898bf68@Spirit Lake-spiritlakemu.com
-DTSTART:20190403T000000Z
-DTSTAMP:20190324T215758Z
-SUMMARY:Battleground Trip (Private)
-DESCRIPTION:This is for a small team to go up to the battleground site to do some surveys and info gathering. If someone really has an interest in being involved that hasn't already been contacted, please let me (Dani) know and we'll see what we can work out! 
-END:VEVENT
-BEGIN:VEVENT
-UID:d7660689-4649-44e7-be9d-1869c9ff3318@Spirit Lake-spiritlakemu.com
-DTSTART:20190407T210000Z
-DTSTAMP:20190325T030427Z
-SUMMARY:Will Work Group
-DESCRIPTION:Practice meeting for the Will School-inclined. Both major and minors welcome. Manny spreads the word through the  usual places. There'll be discussion of the implications of what they've accomplished, exchanges of tips and Tricks, and maybe a game or two. 
-END:VEVENT
-BEGIN:VEVENT
-UID:2c9ec15e-c985-4492-b57b-29f1b2e02b9a@Spirit Lake-spiritlakemu.com
-DTSTART:20190406T000000Z
-DTSTAMP:20190327T221249Z
-SUMMARY:Wolf Apocalypse Grand Finale
-DESCRIPTION:Resistance and Establishment clash over newcomers. Mid-conflict, an OUTSIDE THREAT attacks, resulting in a massive battle. Will they team up? Three-sided battle? Is this the end of the Grand Lake Mages?!?!
-  
-  Please RSVP if you plan to attend, as this will involve combat.
-END:VEVENT
-BEGIN:VEVENT
-UID:c0e99e15-4d3c-432a-be5f-310e8c4e0ad5@Spirit Lake-spiritlakemu.com
-DTSTART:20190405T003000Z
-DTSTAMP:20190328T035619Z
-SUMMARY:AU: A Bizarre Bazaar
-DESCRIPTION:It is May 1st, and the isolated mountain town of Grand Lake turns into a glorious bazaar that attracts visitors near and far -- some as far as other worlds. Grand Lake natives put up tents or expand their shops to sell the most unusual wares -- bottled magic, talking flowers, glass baubles that give wishes, and other marvelous things.
-  
-  In this alternate universe, come and be a vendor or come a be someone to buy something strange.
-END:VEVENT
-BEGIN:VEVENT
 UID:202def3b-e435-41ea-8725-26c2014baf6a@Spirit Lake-spiritlakemu.com
 DTSTART:20190409T000000Z
 DTSTAMP:20190330T181006Z
@@ -42,5 +10,21 @@ DESCRIPTION:Miss Luna will be doing her bi-monthly podcast on the Realm of the D
   
   Note: People will be able to ask questions, call in, all that good stuff. 
   
+END:VEVENT
+BEGIN:VEVENT
+UID:b6279cec-3d92-4de7-a9b7-5e63c534b37c@Spirit Lake-spiritlakemu.com
+DTSTART:20190409T003000Z
+DTSTAMP:20190402T193333Z
+SUMMARY:Post-BB Drinks
+DESCRIPTION:Off-camming the bball, going right to the drinking part! Come out to The Bar for drinks after a night of pick-up basketball! We'll do some rolls to decide who won and otherwise just be social. 
+  
+  
+END:VEVENT
+BEGIN:VEVENT
+UID:ddae7bf3-c19e-4210-99ea-50bb8532de50@Spirit Lake-spiritlakemu.com
+DTSTART:20190411T000000Z
+DTSTAMP:20190408T015754Z
+SUMMARY:Corpus Meet Up #2
+DESCRIPTION:A super vague note in the UL encourages people with corpus magic to come hang out at Erik's place and practice in a way that probably possibly won't hurt anyone. It's totally safe. Maybe. Bring band aids?
 END:VEVENT
 END:VCALENDAR
