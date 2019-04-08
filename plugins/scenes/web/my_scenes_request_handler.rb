@@ -5,11 +5,15 @@ module AresMUSH
         enactor = request.enactor
         
         error = Website.check_login(request)
-        if (error)
-          return []
+        return error if error
+        
+        my_scenes = Scene.all.select { |s| !s.completed && Scenes.is_watching?(s, enactor) }
+        
+        my_scenes.each do |scene|
+          scene.mark_read(enactor)
         end
         
-        Scene.all.select { |s| !s.completed && Scenes.is_watching?(s, enactor) }.map { |s|
+        my_scenes.map { |s|
           Scenes.build_live_scene_web_data(s, enactor)
         }
         
