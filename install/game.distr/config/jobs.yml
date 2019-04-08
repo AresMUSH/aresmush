@@ -54,3 +54,5 @@ jobs:
     job/all: job/filter all
     job/deletecomment: job/deletereply
     job/category: job/cat
+    request/all: request/filter all
+    request/active: request/filter active

@@ -23,14 +23,16 @@ module AresMUSH
           old_pose = last_pose.pose
           pose_id = last_pose.id
           
-          last_pose.delete
+          last_pose.update(is_deleted: true)
           message = t('scenes.deleted_pose', :name => enactor_name,
                         :pronoun => Demographics.possessive_pronoun(enactor))
-          
+
+          Scenes.add_to_scene(scene, message, Game.master.system_character, false, true)
+          scene.room.emit_ooc message
+
           data = { id: pose_id }.to_json
           Scenes.new_scene_activity(scene, :pose_deleted, data)
 
-          scene.room.emit "%xr*** #{message} ***%xn"
         end
       end
     end

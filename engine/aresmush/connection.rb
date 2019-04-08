@@ -49,13 +49,13 @@ module AresMUSH
       end
     end
     
-    def send_formatted(msg, enable_fansi = true, ascii_mode = false)
+    def send_formatted(msg, color_mode = "FANSI", ascii_mode = false, screen_reader = false)
       if (ascii_mode)
         msg = msg.gsub(/[\u201c\u201d]/, '"')
                  .gsub(/[\u2018\u2019]/, "'")
                  .encode("ASCII", invalid: :replace, undef: :replace, replace: '?')
       end
-      send_data MushFormatter.format(msg, enable_fansi)
+      send_data MushFormatter.format(msg, color_mode, screen_reader)
     end
     
     def close_connection(after_writing = false)

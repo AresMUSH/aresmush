@@ -27,6 +27,11 @@ module AresMUSH
             return
           end
 
+          if (!Scenes.can_edit_scene?(enactor, scene))
+            client.emit_failure t('dispatcher.not_allowed')
+            return
+          end
+
           scene.delete_poses_and_log
           if (scene.room)
             scene.room.emit_ooc t('scenes.log_cleared')

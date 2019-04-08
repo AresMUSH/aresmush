@@ -17,8 +17,14 @@ module AresMUSH
       end
       
       it "should do MUSH substitutions" do
-        expect(SubstitutionFormatter).to receive(:format).with("msg", true) { "xmsg" }
+        expect(SubstitutionFormatter).to receive(:format).with("msg", "FANSI", false) { "xmsg" }
         msg = MushFormatter.format("msg")
+        expect_msg("xmsg", msg)
+      end
+      
+      it "should pass along color and screen reader mode options to substitution format" do
+        expect(SubstitutionFormatter).to receive(:format).with("msg", "ANSI", true) { "xmsg" }
+        msg = MushFormatter.format("msg", "ANSI", true)
         expect_msg("xmsg", msg)
       end
       

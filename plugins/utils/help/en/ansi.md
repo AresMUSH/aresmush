@@ -11,9 +11,9 @@ You create a color in Ares using either \%x or \%c followed by the color code.  
 
 For example: \%xgGreen\%xn makes %xgGreen%xn.
 
-Ares supports the standard Penn/Tiny color codes (g, b, c, etc.) as well as extended codes for FANSI support (http://www.fansi.org).  FANSI allows 256 colors, but it its not supported on all clients.  If your client does not support FANSI codes, you can turn off those colors.
+Ares supports the standard Penn/Tiny color codes (g, b, c, etc.) as well as extended codes for FANSI support (http://www.fansi.org).  FANSI allows 256 colors, but it its not supported on all clients.
 
-`fansi <on or off>` - Turns extended FANSI colors on or off.
+`colors <fansi, ansi, none>` - Changes what colors you see. You can choose FANSI (256 colors), regular ansi (16 colors), or none.
 `colors` - View all color codes as they appear in your client.
 
 Ansi codes can be nested within each other.
