@@ -38,7 +38,7 @@ spells:
   Shape Stone:
     available: true
     casting_time: 1 round
-    desc: Cause pre-existing rock or stone that could fit within a 1-foot cube to form into simple non-weaponized shapes that animate at your direction.
+    desc: "For the duration of the spell, the caster can cause up to 1 cubic foot of pre-existing rock or stone to form into simple non-weaponized shapes that animate at their direction. Rock or stone returns to its natural - but not necessarily original - state when the spell ends. "
     duration: 1 hour
     is_revive: false
     is_stun: false

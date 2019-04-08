@@ -71,7 +71,7 @@ spells:
     area: 5 cubic feet
     available: true
     casting_time: 1 round
-    desc: The caster can influence flames that fit within a 5-foot cube, forming them into simple non-weaponized shapes that animate at their direction.
+    desc: "For the duration of the spell, the caster can influence up to 5 cubic feet of flames, forming them into simple non-weaponized shapes that animate at their direction. Within the size limit, they can make flames grow or snuff them out entirely. When the spell ends, the flames return to their natural state in their current location."
     duration: 1 hour
     is_revive: false
     is_stun: false
@@ -88,9 +88,7 @@ spells:
     area: 5 cubic feet
     available: true
     casting_time: 1 round
-    desc: Cause ambient light to form into simple non-weaponized shapes and colors
-      that animate at your direction. Any intelligent creature could identify any
-      images made with this spell as crude and artificial.
+    desc: "For the duration of the spell, the caster can cause ambient light to form into simple non-weaponized shapes and colors that animate at their direction. The shapes must form a single continuous image and do not include fine details, although they can be three dimensional and may be as large as 5 cubic feet.  Any intelligent creature can identify images made with this spell as artificial."
     duration: 1 hour
     is_revive: false
     is_stun: false

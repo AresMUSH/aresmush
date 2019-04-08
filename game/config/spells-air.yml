@@ -61,10 +61,8 @@ spells:
     area: 10 cubic feet
     available: true
     casting_time: 1 round
-    desc: The caster can move and shape up to 10 cubic feet of gaseous substances.
-      The caster can control the flow, density, and dispersion of a gaseous substance
-      to form breathable bubbles in water, draw the oxygen away from a flame, or push
-      poisonous gases away.
+    desc: "For the duration of the spell, the caster can move and shape up to 10 cubic feet of gaseous substances. The caster can control the flow, density, and dispersion of a gaseous substance to form breathable bubbles in water, draw the oxygen away from a flame, or push poisonous gases away."
+
     duration: 1 hour
     is_revive: false
     is_stun: false
