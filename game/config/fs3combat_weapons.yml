@@ -79,7 +79,7 @@ fs3combat:
       description: Magical item
       is_magic: true
       accuracy: 4
-      init_mod: 4 
+      init_mod: 4
   weapons:
     Spell:
       description: Spell with no stats to make it easier to grab special stats.
@@ -248,7 +248,7 @@ fs3combat:
       is_magic: false
       skill: Melee
       lethality: -5
-      penetration: 2
+      penetration: 3
       weapon_type: Melee
       is_automatic: false
       recoil: 0
@@ -262,7 +262,7 @@ fs3combat:
       is_magic: false
       skill: Melee
       lethality: -5
-      penetration: 3
+      penetration: 4
       weapon_type: Melee
       is_automatic: false
       recoil: 0
