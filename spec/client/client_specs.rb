@@ -24,51 +24,57 @@ module AresMUSH
     end
 
     describe :emit do
-      it "should send the message to the connection with fansi enabled if char has it turned on" do
-        char = double
+      before do
+        @char = double
         @client.char_id = 5
-        allow(@client).to receive(:char) { char }
-        allow(char).to receive(:fansi_on) { true }
-        allow(char).to receive(:ascii_mode_enabled) { false }
-        expect(@connection).to receive(:send_formatted).with("Hi", true, false)
+        allow(@client).to receive(:char) { @char }
+        allow(@char).to receive(:color_mode) { "FANSI" }
+        allow(@char).to receive(:ascii_mode_enabled) { false }
+        allow(@char).to receive(:screen_reader) { false }
+      end
+      
+      it "should send the message to the connection with default options" do
+        expect(@connection).to receive(:send_formatted).with("Hi", "FANSI", false, false)
         @client.emit "Hi"
       end
       
-      it "should send the message to the connection with ASCII enabled if char has it turned on" do
-        char = double
-        @client.char_id = 5
-        allow(@client).to receive(:char) { char }
-        allow(char).to receive(:fansi_on) { false }
-        allow(char).to receive(:ascii_mode_enabled) { true }
-        expect(@connection).to receive(:send_formatted).with("Hi", false, true)
+      it "should send the message to the connection with ASCII enabled" do
+        allow(@char).to receive(:ascii_mode_enabled) { true }
+        expect(@connection).to receive(:send_formatted).with("Hi", "FANSI", true, false)
         @client.emit "Hi"
       end
-    end
-        
-    describe :emit do
-      it "should send the message to the connection" do
-        expect(@connection).to receive(:send_formatted).with("Hi", false, false)
+      
+      it "should send the message to the connection with screen reader enabled" do
+        allow(@char).to receive(:screen_reader) { true }
+        expect(@connection).to receive(:send_formatted).with("Hi", "FANSI", false, true)
         @client.emit "Hi"
       end
+      
+      it "should send the message to the connection with a different color mode" do
+        allow(@char).to receive(:color_mode) { "ANSI" }
+        expect(@connection).to receive(:send_formatted).with("Hi", "ANSI", false, false)
+        @client.emit "Hi"
+      end
+     
     end
 
     describe :emit_ooc do
       it "should send the message with yellow ansi tags and %% prefix" do
-        expect(@connection).to receive(:send_formatted).with("%xc%% OOC%xn", false, false)
+        expect(@connection).to receive(:send_formatted).with("%xc%% OOC%xn", "FANSI", false, false)
         @client.emit_ooc "OOC"
       end
     end    
     
     describe :emit_success do
       it "should send the message with green ansi tags and %% prefix" do
-        expect(@connection).to receive(:send_formatted).with("%xg%% Yay%xn", false, false)
+        expect(@connection).to receive(:send_formatted).with("%xg%% Yay%xn", "FANSI", false, false)
         @client.emit_success "Yay"
       end
     end
 
     describe :emit_failure do
       it "sends the message with green ansi tags and %% prefix" do
-        expect(@connection).to receive(:send_formatted).with("%xr%% Boo%xn", false, false)
+        expect(@connection).to receive(:send_formatted).with("%xr%% Boo%xn", "FANSI", false, false)
         @client.emit_failure "Boo"
       end
     end

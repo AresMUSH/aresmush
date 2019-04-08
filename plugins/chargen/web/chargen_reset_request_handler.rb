@@ -16,7 +16,10 @@ module AresMUSH
         return { error: error } if error
         
         Chargen.save_char(char, chargen_data)
-        FS3Skills.reset_char(nil, char)
+        
+        if FS3Skills.is_enabled?
+          FS3Skills.reset_char(nil, char)
+        end
         
         {          
         }

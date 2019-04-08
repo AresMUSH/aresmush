@@ -2,13 +2,13 @@ module AresMUSH
 
   class MushFormatter
 
-    def self.format(msg, enable_fansi = true)
+    def self.format(msg, color_mode = "FANSI", screen_reader = false)
       # Take escaped backslashes out of the equation for a moment because
       # they throw the other formatters off.
       msg = msg.gsub(/%\\/, "~ESCBS~")
 
       # Do substitutions
-      msg = SubstitutionFormatter.format(msg, enable_fansi)
+      msg = SubstitutionFormatter.format(msg, color_mode, screen_reader)
 
       # Unescape %'s
       msg = msg.gsub("\\%", "%")
