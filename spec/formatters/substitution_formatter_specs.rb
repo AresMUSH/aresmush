@@ -27,28 +27,33 @@ module AresMUSH
       end
 
       it "should replace %lh with header" do
-        allow(Line).to receive(:show).with("h") { "---" }
+        allow(Line).to receive(:show).with("h", false) { "---" }
         expect(SubstitutionFormatter.format("Test%lhTest")).to eq "Test---Test"
       end    
 
       it "should replace %lf with footer" do
-        allow(Line).to receive(:show).with("f") { "---" }
+        allow(Line).to receive(:show).with("f", false) { "---" }
         expect(SubstitutionFormatter.format("Test%lfTest")).to eq "Test---Test"
       end    
 
       it "should replace %ld with divider" do
-        allow(Line).to receive(:show).with("d") { "---" }
+        allow(Line).to receive(:show).with("d", false) { "---" }
         expect(SubstitutionFormatter.format("Test%ldTest")).to eq "Test---Test"
       end    
 
       it "should replace %lp with plain line" do
-        allow(Line).to receive(:show).with("p") { "---" }
+        allow(Line).to receive(:show).with("p", false) { "---" }
         expect(SubstitutionFormatter.format("Test%lpTest")).to eq "Test---Test"
       end  
       
       it "should replace %LP with plain line (case doesn't matter)" do
-        allow(Line).to receive(:show).with("P") { "---" }
+        allow(Line).to receive(:show).with("P", false) { "---" }
         expect(SubstitutionFormatter.format("Test%LPTest")).to eq "Test---Test"
+      end   
+      
+      it "should omit a line if screen reader mode enabled" do
+        allow(Line).to receive(:show).with("d", true) { "" }
+        expect(SubstitutionFormatter.format("Test%ldTest", "ANSI", true)).to eq "TestTest"
       end    
       
       it "should replace %x! with a random color" do
@@ -83,6 +88,11 @@ module AresMUSH
       it "should replace ansi() with ansi codes" do
         expect(SubstitutionFormatter.format("[ansi(hcB,A)]")).to eq ANSI.bold + ANSI.cyan + ANSI.on_blue + "A" + ANSI.reset
       end
+      
+      it "should pass on color mode to ansi formatter" do
+        allow(AnsiFormatter).to receive(:get_code).with("%xb", "ANSI") { "blue" }
+        expect(SubstitutionFormatter.format("Test%xbTest", "ANSI")).to eq "TestblueTest"
+      end  
       
       it "should not replace an escaped linebreak or space" do
         expect(SubstitutionFormatter.format("Test\\%bblank\\%Rline")).to eq "Test\\%bblank\\%Rline"
