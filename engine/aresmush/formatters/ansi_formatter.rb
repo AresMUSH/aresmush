@@ -37,6 +37,40 @@ module AresMUSH
     end
     
     # @engineinternal true  
+    def self.grayscale_code_map
+      {
+        "x" => ANSI.black,
+        "r" => "",
+        "g" => "",
+        "y" => "",
+        "b" => "",
+        "m" => "",
+        "c" => "",
+        "w" => ANSI.white,
+
+        "X" => ANSI.on_black,
+        "R" => "",
+        "G" => "",
+        "Y" => "",
+        "B" => "",
+        "M" => "",
+        "C" => "",
+        "W" => ANSI.on_white,
+        
+        "u" => ANSI.underline,
+        "h" => ANSI.bold,
+        "i" => ANSI.inverse,
+
+        "U" => ANSI.underline_off,
+        "I" => ANSI.reveal,  # Should be inverse_off but there appears to be a bug in the ANSI lib.
+        "H" => ANSI.bold_off,
+
+        "n" => ANSI.reset,
+        "N" => ANSI.reset
+      }
+    end
+      
+    # @engineinternal true  
 
     def self.fansi_downgrade_map
       {
@@ -307,29 +341,33 @@ module AresMUSH
     
     # Given a string like %xb or %c102, returns the appropriate ansified string, 
     # or nil if ansi code is not valid.
-    def self.get_code(str, enable_fansi = true)
+    def self.get_code(str, color_mode = "FANSI")
       matches = /^%(?<control>[XxCc])(?<code>.+)/.match(str)
       return nil if !matches
-      
+        
       control = matches[:control]
       code = matches[:code]
+
+      code_map = color_mode == "NONE" ? grayscale_code_map : ansi_code_map
       
-      if (ansi_code_map.has_key?(code))
-        return ansi_code_map[code]
+      if (code_map.has_key?(code))
+        return code_map[code]
       elsif (code.to_i > 0 && code.to_i < 257)
-        if (enable_fansi)
+        if (color_mode == "FANSI")
           if (control == "X" || control == "C")
             return "\e[48;5;#{code}m"
           else
             return "\e[38;5;#{code}m"
           end
-        else
+        elsif (color_mode == "ANSI")
           downgrade = fansi_downgrade_map[code.to_s] || 0
           if (control == "X" || control == "C")
             return "#{ANSI.inverse}#{downgrade}"
           else
             return "#{downgrade}"
           end
+        else
+          return ""
         end
       else
         return nil
