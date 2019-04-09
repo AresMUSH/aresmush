@@ -2,8 +2,8 @@
 toc: 4 - Writing the Story
 summary: Setting and viewing plot preferences.
 aliases:
-- plot preferences
-- plot prefs
+- plot_preferences
+- plot_prefs
 ---
 #Plot Preferences
 Plot preferences are a tool meant to help player GMs run PRPs.
