@@ -42,6 +42,17 @@ module AresMUSH
         end
       end
 
+      #PlotPrefs
+      case cmd.root
+      when "plotprefs"
+        case cmd.switch
+        when "set"
+          return PlotPrefsSetCmd
+        when nil
+          return PlotPrefsViewCmd
+        end
+      end
+
       #Secrets
       case cmd.root
       when "secrets"

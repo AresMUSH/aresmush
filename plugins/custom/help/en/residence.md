@@ -1,5 +1,5 @@
 ---
-toc: Getting Started
+toc: 3 - Creating a Character
 summary: Where to live and how to get a residence.
 aliases:
 - house
@@ -8,6 +8,7 @@ aliases:
 - cottage
 - cottages
 - inn
+- live
 ---
 ##Newcomers to Grand Lake
 
