@@ -630,6 +630,26 @@ spells:
     school: Spirit
     target_num: 1
     target_optional: true
+  #Level 8
+  Binding Oath:
+    available: false
+    casting_time: 1 round
+    desc: "The caster specifies a contract which the target agrees to. Upon agreement, the magical oath is sealed./n/n
+    Either party breaking the oath results in an instant impairment of their mental facilities and the loss of all memories since the moment the oath was enacted. Their 'Wits' and 'Perception' are lowered to 1, and they are incapable of higher-level mental tasks such as complicated mathematics, science, and reading. Mentally, they will be capable at the level of a three year old./n/n
+    Memories return sporadically over the course of six months. Cognitive development a year, eventually returning the oath breaker's mental facilities to what they were before."
+    is_revive: false
+    is_stun: false
+    level: 8
+    line_of_sight: true
+    multi_target: false
+    name: Binding Oath
+    notes: ''
+    range: Short
+    roll: true
+    school: Spirit
+    target_num: 1
+    target_optional: true
+
   Curse Of Twilight:
     available: false
     casting_time: 1 round
