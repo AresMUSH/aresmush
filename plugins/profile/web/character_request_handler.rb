@@ -174,6 +174,7 @@ module AresMUSH
           background: show_background ? Website.format_markdown_for_html(char.background) : nil,
           description: Website.format_markdown_for_html(char.description),
           rp_hooks: Website.format_markdown_for_html(char.rp_hooks),
+          plot_prefs: Website.format_markdown_for_html(char.plot_prefs),
           desc: char.description,
           playerbit: char.is_playerbit?,
           fs3: fs3,
