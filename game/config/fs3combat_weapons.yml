@@ -961,21 +961,21 @@ fs3combat:
       init_mod: 0
       allowed_specials:
       special_group: ranged
-      Land Of Ice:
-        description: Level 8 Water spell
-        is_magic: true
-        skill: Water
-        lethality: 45
-        penetration: 20
-        weapon_type: Explosive
-        is_automatic: false
-        recoil: 0
-        damage_type: Physical
-        accuracy: 4
-        has_shrapnel: true
-        init_mod: 0
-        allowed_specials:
-        special_group: ranged
+    Land Of Ice:
+      description: Level 8 Water spell
+      is_magic: true
+      skill: Water
+      lethality: 45
+      penetration: 20
+      weapon_type: Explosive
+      is_automatic: false
+      recoil: 0
+      damage_type: Physical
+      accuracy: 4
+      has_shrapnel: true
+      init_mod: 0
+      allowed_specials:
+      special_group: ranged
     Fling:
       description: Level 2 Will spell
       is_magic: true
