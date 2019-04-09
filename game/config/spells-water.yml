@@ -415,6 +415,23 @@ spells:
     target_num: 3
     target_optional: true
     weapon: Ice Storm
+  Ice Wall:
+    area: 20 yards long, 5 yards thick, 10 yards tall
+    available: false
+    casting_time: 1 round
+    desc: "The caster summons a single, solid wall of ice no greater than 20 yards long, 5 yards thick, 10 yards tall. It remains until melted or destroyed."
+    fs3_attack: false
+    is_revive: false
+    is_stun: false
+    level: 7
+    line_of_sight: true
+    multi_target: false
+    name: Ice Wall
+    notes: ''
+    range: Long
+    school: Water
+    effect: Defense
+  #Level 8
   Land Of Ice:
     area: Up to 1 square mile
     available: false
