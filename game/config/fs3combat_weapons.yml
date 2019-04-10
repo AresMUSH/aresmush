@@ -78,8 +78,8 @@ fs3combat:
     Huxian's Gift:
       description: Magical item
       is_magic: true
-      accuracy: 4
-      init_mod: 4
+      accuracy: 2
+      init_mod: 2
   weapons:
     Spell:
       description: Spell with no stats to make it easier to grab special stats.
