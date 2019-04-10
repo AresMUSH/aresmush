@@ -5,7 +5,7 @@ spells:
     casting_time: 1 round
     defense_mod: -1
     desc: "Attempts made in Asher's presence suffer a negative modifier. "
-    duration: 2 rounds
+    duration: 100 rounds
     is_potion: true
     is_revive: false
     is_stun: false
@@ -15,7 +15,7 @@ spells:
     name: Huxian's Curse
     notes: ''
     range: Short
-    rounds: 2
+    rounds: 100
     school: Spirit
     spell_mod: -1
     target_num: 20
