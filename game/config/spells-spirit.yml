@@ -18,7 +18,7 @@ spells:
     rounds: 2
     school: Spirit
     spell_mod: -1
-    target_num: 1
+    target_num: 20
     target_optional: true
   Locate Object:
     available: true
