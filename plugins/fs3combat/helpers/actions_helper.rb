@@ -52,9 +52,9 @@ module AresMUSH
         combatant.update(aim_target: nil)
       end
       #Reset action unless they're subduing
-      if combatant.action_klass != "AresMUSH::FS3Combat::SubdueAction"
-        combatant.update(action_klass: nil)
-      end
+      # if combatant.action_klass != "AresMUSH::FS3Combat::SubdueAction"
+      #   combatant.update(action_klass: nil)
+      # end
 
       Global.logger.debug "#{combatant.name} Subdued? #{combatant.is_subdued?}"
 
