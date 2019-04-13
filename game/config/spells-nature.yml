@@ -107,7 +107,7 @@ spells:
     area: 5 cubic feet
     available: true
     casting_time: 1 round
-    desc: "For the duration of the spell, the caster can cause up to 5 cubic feet of pre-existing flexible vegetation such as vines and grasses to form into simple non-weaponized shapes that animate at their direction. Can include accelerating growth by up to 30 days in the span of a few seconds. Flora returns to its natural - but not necessarily original - state when the spell ends." 
+    desc: "For the duration of the spell, the caster can cause up to 5 cubic feet of pre-existing flexible vegetation such as vines and grasses to form into simple non-weaponized shapes that animate at their direction. Can include accelerating growth by up to 30 days in the span of a few seconds. Flora returns to its natural - but not necessarily original - state when the spell ends."
     duration: 1 hour
     is_revive: false
     is_stun: false
@@ -146,7 +146,7 @@ spells:
     fs3_attack: true
     is_revive: false
     is_stun: true
-    level: 1
+    level: 3
     line_of_sight: true
     multi_target: false
     name: Entangle
