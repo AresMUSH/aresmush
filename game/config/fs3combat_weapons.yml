@@ -274,7 +274,7 @@ fs3combat:
     Car:
       description: Hitting things with a car.
       is_magic: false
-      skill: Alterness
+      skill: Altertness
       lethality: 5
       penetration: 4
       weapon_type: Melee
