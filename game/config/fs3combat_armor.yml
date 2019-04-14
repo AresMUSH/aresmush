@@ -116,6 +116,24 @@ fs3combat:
         Right Hand: 11
         Left Foot: 11
         Right Foot: 11
+    Natural Defenses:
+      description: Level 2 Nature spell
+      is_magic: false
+      defense: 0
+      protection:
+        Head: 4
+        Neck: 4
+        Chest: 4
+        Abdomen: 4
+        Left Leg: 4
+        Right Leg: 4
+        Groin: 4
+        Left Arm: 4
+        Right Arm: 4
+        Left Hand: 4
+        Right Hand: 4
+        Left Foot: 4
+        Right Foot: 4
     Crocodile:
       description: Level 2 Nature spell
       is_magic: true
