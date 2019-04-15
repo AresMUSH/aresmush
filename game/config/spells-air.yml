@@ -121,7 +121,7 @@ spells:
     is_revive: false
     is_stun: true
     rounds: 1
-    level: 1
+    level: 3
     line_of_sight: true
     multi_target: false
     name: Shock
