@@ -13,7 +13,7 @@ module AresMUSH
         combatant.update(death_count: 4  )
         FS3Combat.emit_to_combat(combatant.combat, t('custom.died', :name => combatant.name), npcmaster = nil, add_to_scene = true)
         combatant.character.update(dead: true)
-        Custom.handle_has_died_achievement(enactor)
+        Custom.handle_has_died_achievement(combatant.associated_model)
       end
     end
 
