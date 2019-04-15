@@ -134,6 +134,7 @@ fs3combat:
         Right Hand: 4
         Left Foot: 4
         Right Foot: 4
+
     Crocodile:
       description: Level 2 Nature spell
       is_magic: true
@@ -176,6 +177,24 @@ fs3combat:
       defense: 3
       protection:
         Head: 0
+    Bark Skin:
+      description: Level 3 Nature spell
+      is_magic: true
+      defense: 0
+      protection:
+        Head: 6
+        Neck: 6
+        Chest: 6
+        Abdomen: 6
+        Left Leg: 6
+        Right Leg: 6
+        Groin: 6
+        Left Arm: 6
+        Right Arm: 6
+        Left Hand: 6
+        Right Hand: 6
+        Left Foot: 6
+        Right Foot: 6 
     Ice:
       description: Level 4 Water spell
       is_magic: true
