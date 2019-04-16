@@ -49,7 +49,7 @@ module AresMUSH
         {
           id: scene.id,
           title: scene.date_title,
-          log: AresMUSH::MushFormatter.format(log, false)
+          log: AresMUSH::MushFormatter.format(log)
         }
       end
     end
