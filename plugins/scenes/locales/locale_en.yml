@@ -137,3 +137,4 @@ en:
         not_a_part_of_scene: "You are not participating in that scene."
         author_deleted: "(Author Deleted)"
         left_scene: "You leave the scene."
+        web_scene_started: "You start a new scene (%{num}).  You can join the scene using `scene/join %{num}` or find it on the web portal's active scenes page."

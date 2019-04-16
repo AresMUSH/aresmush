@@ -36,7 +36,7 @@ module AresMUSH
                     selected: (c.armor_specials || []).include?(k)
                   }},
                   stance: c.stance,
-                  npc_skill:  c.npc.level 
+                  npc_skill:  c.npc.level
               }
             end
             

@@ -106,6 +106,8 @@ module AresMUSH
           return SceneUnshareCmd
         when "unshared"
           return ScenesCmd
+        when "webstart"
+          return SceneWebStartCmd
         end
       end
       
@@ -129,6 +131,8 @@ module AresMUSH
         return PoseEventHandler
       when "CharConnectedEvent"
         return CharConnectedEventHandler
+      when "CharDeletedEvent"
+        return CharDeletedEventHandler
       end
       nil
     end

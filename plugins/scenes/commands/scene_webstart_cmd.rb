@@ -1,28 +1,21 @@
 module AresMUSH
   module Scenes
-    class SceneStartCmd
+    class SceneWebStartCmd
       include CommandHandler
       
-      attr_accessor :location, :privacy, :temp
+      attr_accessor :location, :privacy
       
-      # scene/start (no args) -->  Here/privacy based on room
       # scene/start (location) -->  Temproom/private
       # scene/start (location)=(privacy) --> Temproom with privacy setting
       
       def parse_args
-        if (!cmd.args)
-          self.location = enactor_room.name
-          self.privacy = enactor_room.room_type == "IC" ? "Open" : "Private"
-          self.temp = false
-        elsif (cmd.args =~ /=/)
+        if (cmd.args =~ /=/)
           args = cmd.parse_args(ArgParser.arg1_equals_arg2)
           self.location = titlecase_arg(args.arg1)
           self.privacy = titlecase_arg(args.arg2)
-          self.temp = true
         else
           self.location = titlecase_arg(cmd.args)
           self.privacy = "Private"
-          self.temp = true
         end
       end
       
@@ -44,25 +37,13 @@ module AresMUSH
         
         private_scene = self.privacy == "Private"
         
-        if (!self.temp && enactor_room.room_type == "OOC")
-          client.emit_failure t('scenes.no_scene_in_ooc_room')
-          return
-        end
-        
         if self.location == 'Here'
           self.location = enactor_room.name_and_area
         end
-                
-        if (enactor_room.scene && !self.temp)
-          client.emit_failure t('scenes.scene_already_going')
-          return
-        end
           
-        scene = Scenes.start_scene(enactor, self.location, private_scene, Scenes.scene_types.first, self.temp)
+        scene = Scenes.start_scene(enactor, self.location, private_scene, Scenes.scene_types.first, true)
+        client.emit_success t('scenes.web_scene_started', :num => scene.id)
         
-        if (self.temp)
-          Rooms.move_to(client, enactor, scene.room)
-        end
       end
     end
   end
