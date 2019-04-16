@@ -105,7 +105,10 @@ module AresMUSH
       char.update(shortdesc: Website.format_input_for_mush(chargen_data[:shortdesc]))
       
       if FS3Skills.is_enabled?
-        FS3Skills.save_char(char, chargen_data)
+        error = FS3Skills.save_char(char, chargen_data)
+        if (error)
+          alerts << error
+        end
       end
       
       return alerts
