@@ -18,6 +18,12 @@ module AresMUSH
   
     attribute :onconnect_commands, :type => DataType::Array, :default => []
   
+    before_delete :notify_char_deleted
+    
+    def notify_char_deleted
+      Global.dispatcher.queue_event CharDeletedEvent.new(self.id)
+    end
+    
     def is_guest?
       self.has_any_role?(Login.guest_role)
     end

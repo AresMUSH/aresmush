@@ -11,18 +11,9 @@ module AresMUSH
     index :name_upcase
     
     before_save :save_upcase_name
-    before_delete :clear_char_roles
     
     def save_upcase_name
       self.name_upcase = self.name.upcase
-    end
-    
-    def clear_char_roles
-      Character.all.each do |c|
-        if (c.roles.include?(self))
-          c.roles.delete self
-        end
-      end
     end
     
     def has_permission?(name)
