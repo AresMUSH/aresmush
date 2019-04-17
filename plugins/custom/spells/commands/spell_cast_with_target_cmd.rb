@@ -138,7 +138,7 @@ module AresMUSH
             end
           elsif roll
             if Custom.knows_spell?(caster, self.spell)
-              Custom.cast_noncombat_roll_spell_with_target(self.caster, self.target, self.spell, self.mod)
+              Custom.cast_noncombat_roll_spell_with_target(self.caster, self.target_name, self.spell, self.mod)
               Custom.handle_spell_cast_achievement(self.caster)
             else
               client.emit_failure t('custom.dont_know_spell')
