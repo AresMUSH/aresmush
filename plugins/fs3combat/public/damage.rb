@@ -1,5 +1,5 @@
 module AresMUSH
-  
+
   class Damage < Ohm::Model
     include ObjectModel
 
@@ -11,7 +11,7 @@ module AresMUSH
     attribute :description
     attribute :is_stun, :type => DataType::Boolean
     attribute :is_mock, :type => DataType::Boolean
-  
+
     reference :character, "AresMUSH::Character"
     reference :npc, "AresMUSH::Npc"
     reference :vehicle, "AresMUSH::Vehicle"
@@ -19,14 +19,14 @@ module AresMUSH
     def is_stun?
       is_stun
     end
-  
+
     def is_treatable?
       return false if self.healed
-      time_to_go = (4 * 3600) - (Time.now - self.created_at)
+      time_to_go = (72 * 3600) - (Time.now - self.created_at)
       return true if time_to_go > 0
       return false
     end
-  
+
     def wound_mod
       config = Global.read_config("fs3combat", "damage_mods")
       mod = config[self.current_severity]
