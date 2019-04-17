@@ -81,21 +81,21 @@ module AresMUSH
     def self.spell_xp_needed(spell)
       level = Global.read_config("spells", spell, "level")
       if level == 1
-        xp_needed = 2
+        xp_needed = 1
       elsif level == 2
-        xp_needed = 3
+        xp_needed = 2
       elsif level == 3
-        xp_needed = 4
+        xp_needed = 3
       elsif level == 4
-        xp_needed = 5
+        xp_needed = 4
       elsif level == 5
-        xp_needed = 6
+        xp_needed = 5
       elsif level == 6
-        xp_needed = 7
+        xp_needed = 6
       elsif level == 7
-        xp_needed = 8
+        xp_needed = 7
       elsif level == 8
-        xp_needed = 12
+        xp_needed = 13
       end
     end
 
