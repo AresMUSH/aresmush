@@ -114,6 +114,7 @@ spells:
     school: Corpus
     target_num: 1
     target_optional: true
+  #Level 3
   Endure Extreme Temperatures:
     available: true
     casting_time: 1 round
@@ -131,8 +132,6 @@ spells:
     roll: true
     school: Corpus
     target_optional: false
-
-
   Flesh Wound:
     available: false
     casting_time: 1 round
@@ -171,6 +170,18 @@ spells:
     school: Corpus
     target_num: 1
     target_optional: true
+  Remove Cosmetic Scar:
+    available: true
+    casting_time: 1 round
+    desc: "The caster repairs a small area (no more than six square inches) of cosmetic scarring on a target. The spell is unable to affect deeper tissue or heal structural scar damage."
+    is_potion: true
+    level: 3
+    name: Endure Extreme Temperatures
+    notes: Needs limitations as to how hot and how cold
+    range: Touch
+    roll: true
+    school: Corpus
+    target_optional: false
   Strength:
     available: true
     casting_time: 1 round

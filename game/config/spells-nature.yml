@@ -51,19 +51,24 @@ spells:
     school: Nature
     target_optional: false
     #Level 2
-  Natural Defenses Crocodile:
-    available: false
-    armor: Crocodile
-    desc: Natural Defenses Crocodile
-    is_revive: false
-    is_stun: false
+  Camouflage:
+    available: true
+    casting_time: 1 round
+    desc: "In a natural environment, the caster grows a camouflaged covering suitable to their location. The caster is effectively [hidden](https://www.aresmush.com/fs3/fs3-3/combat/#stance) while standing still."
+    duration: 15 minutes
     level: 2
-    name: Natural Defenses Crocodile
+    is_potion: true
+    line_of_sight: true
+    multi_target: false
+    name: Camouflage
+    notes: ''
+    range: Self
+    roll: false
     school: Nature
-    target_optional: false
+    stance: Hidden
   Natural Defenses:
     available: true
-    desc: The caster grows natural defenses from a specific animal. These take the form of armored skin, spines, etc. Animal is from the same genus each time the spell is cast. Protection should be <= 4.
+    desc: The caster grows natural defenses from a specific animal. These take the form of armored skin, spines, etc. Animal is from the same genus each time the spell is cast.
     is_revive: false
     is_stun: false
     level: 2
@@ -74,6 +79,8 @@ spells:
     duration: 15 minutes
     target_optional: false
     is_potion: true
+    armor: Natural Defenses
+    casting_time: 1 round
   Natural Weaponry:
     available: false
     desc: The caster grows natural weaponry from a specific animal for the purpose of attack. These take the form of non-venomous fangs, claws, horns etc. Animal is from the same genus each time the spell is cast. Penetration should be < 4.
@@ -87,6 +94,7 @@ spells:
     duration: 15 minutes
     target_optional: false
     is_potion: true
+    casting_time: 1 round
   Ripen:
     available: false
     casting_time: 1 round
@@ -131,6 +139,7 @@ spells:
       name: Bark Skin
       school: Nature
       target_optional: false
+      casting_time: 1 round
   Calm Animal:
     available: true
     casting_time: 1 round
@@ -149,6 +158,7 @@ spells:
     school: Nature
     target_num: 1
     target_optional: true
+
   Entangle:
     available: true
     casting_time: 1 round
@@ -209,6 +219,19 @@ spells:
     target_num: 3
     target_optional: true
     weapon: Thorn Growth
+
+  Track Animal:
+    available: false
+    casting_time: 1 round
+    desc: "The caster can sense whether any animals of a chosen genus has been within 100 yards of their current position within the last hour. If they sense a target, they are able to track the location of an individual animal for the duration of the spell."
+    duration: 15 minutes
+    level: 3
+    name: Track Animal
+    notes: ''
+    range: Long
+    roll: true
+    school: Nature
+  #Level 4
   Acid Spit:
 
     available: true

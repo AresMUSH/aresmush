@@ -346,7 +346,7 @@ fs3combat:
       special_group: Melee
     Skofnung:
       description: Ragnar's magical sword
-      is_magic: false
+      is_magic: true
       skill: Melee
       lethality: 10
       penetration: 12
@@ -470,6 +470,7 @@ fs3combat:
       has_shrapnel: false
       init_mod: 0
       allowed_specials:
+  #AIR
     Breathless:
       description: Level 4 Air spell
       is_magic: true
@@ -560,6 +561,7 @@ fs3combat:
       init_mod: 0
       allowed_specials:
       special_group: ranged
+  #EARTH
     Skipping Stone:
       description: Level 3 Earth spell
       is_magic: true
@@ -570,7 +572,7 @@ fs3combat:
       is_automatic: false
       recoil: 0
       damage_type: Physical
-      accuracy: 2
+      accuracy: 0
       has_shrapnel: false
       init_mod: 0
       allowed_specials:
@@ -600,7 +602,7 @@ fs3combat:
       is_automatic: false
       recoil: 0
       damage_type: Physical
-      accuracy: 2
+      accuracy: 0
       has_shrapnel: false
       init_mod: 0
       allowed_specials:
@@ -694,6 +696,23 @@ fs3combat:
       init_mod: 0
       allowed_specials:
       special_group: ranged
+    #FIRE
+    #Level 3 Fire
+    Flame Dart:
+      description: Level 3 Fire spell
+      is_magic: true
+      skill: Fire
+      lethality: -5
+      penetration: 5
+      weapon_type: Ranged
+      is_automatic: false
+      recoil: 0
+      damage_type: Physical
+      accuracy: 0
+      has_shrapnel: false
+      init_mod: 0
+      allowed_specials:
+      special_group: ranged
     Hot Hands:
       description: Level 3 Fire spell
       is_magic: true
@@ -709,6 +728,7 @@ fs3combat:
       init_mod: 0
       allowed_specials:
       special_group: Melee
+    #Level 4 Fire
     Flame Burst:
       description: Level 4 Fire spell
       is_magic: true
@@ -724,6 +744,7 @@ fs3combat:
       init_mod: 0
       allowed_specials:
       special_group: ranged
+    #Level 5 Fire
     Flares:
       description: Level 5 Fire spell
       is_magic: true

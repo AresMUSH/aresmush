@@ -118,6 +118,21 @@ spells:
     roll: true
     school: Fire
     target_optional: false
+  Flame Dart:
+    available: true
+    casting_time: 1 round
+    desc: "Launches a single small, flaming projectile at a target, doing damage."
+    fs3_attack: true
+    level: 3
+    line_of_sight: true
+    name: Flame Dart
+    notes: ''
+    range: Short
+    school: Fire
+    target_num: 1
+    target_optional: true
+    weapon: Flame Darts
+    effect: Damage
   Hot Hands:
     available: true
     casting_time: 1 round
