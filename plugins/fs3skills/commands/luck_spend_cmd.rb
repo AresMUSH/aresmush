@@ -31,7 +31,7 @@ module AresMUSH
 
         job_message = t('custom.spent_luck', :name => enactor.name, :reason => self.reason)
         category = Global.read_config("jobs", "luck_category")
-        Jobs.create_job(category, t('custom.spent_luck_title', :name => enactor.name), job_message, enactor)
+        Jobs.create_job(category, t('custom.spent_luck_title', :name => enactor.name, :reason => self.reason), job_message, enactor)
 
         Global.logger.info "#{enactor_name} spent luck on #{reason}."
       end
