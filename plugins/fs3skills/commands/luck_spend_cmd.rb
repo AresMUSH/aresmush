@@ -26,12 +26,12 @@ module AresMUSH
         if (enactor_room.scene)
           Scenes.add_to_scene(enactor_room.scene, message)
         end
-        
+
         Achievements.award_achievement(enactor, "fs3_luck_spent", 'fs3', "Spent a luck point.")
 
         job_message = t('custom.spent_luck', :name => enactor.name, :reason => self.reason)
         category = Global.read_config("jobs", "luck_category")
-        Jobs.create_job(category, t('custom.spent_luck_title', :name => enactor.name), job_message, Game.master.system_character)
+        Jobs.create_job(category, t('custom.spent_luck_title', :name => enactor.name), job_message, enactor)
 
         Global.logger.info "#{enactor_name} spent luck on #{reason}."
       end
