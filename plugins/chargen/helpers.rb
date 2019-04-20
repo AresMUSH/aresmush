@@ -148,7 +148,9 @@ module AresMUSH
          t('chargen.approval_post_subject', :name => model.name), 
          Global.read_config("chargen", "post_approval_message"), 
          Game.master.system_character)
-         
+      
+       Chargen.custom_approval(model)
+       
        Global.dispatcher.queue_event CharApprovedEvent.new(Login.find_client(model), model.id)
          
        return nil
