@@ -12,7 +12,7 @@ module AresMUSH
                   id: s.id,
                   title: s.title,
                   summary: s.summary,
-                  location: Scenes.can_read_scene?(enactor, s) ? s.location : t('scenes.private'),
+                  location: (Scenes.can_read_scene?(enactor, s) || s.location == "Text") ? s.location : t('scenes.private'),
                   icdate: s.icdate,
                   can_view: enactor && Scenes.can_read_scene?(enactor, s),
                   can_join: Scenes.can_join_scene?(enactor, s),
