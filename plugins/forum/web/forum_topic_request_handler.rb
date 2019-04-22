@@ -16,7 +16,7 @@ module AresMUSH
         
         category = topic.bbs_board
         if (!Forum.can_read_category?(enactor, category))
-          return { error: t('webportal.missing_required_fields' )}
+          return { error: t('forum.cannot_access_category' )}
         end
         
         if (enactor)
@@ -29,7 +29,9 @@ module AresMUSH
             name: r.author_name,
             icon: r.author ? Website.icon_for_char(r.author) : nil },
             message: Website.format_markdown_for_html(r.message),
-            date: r.created_date_str(enactor)
+            raw_message: r.message,
+            date: r.created_date_str(enactor),
+            can_edit: Forum.can_edit_post?(enactor, r)
           }
         }
         
@@ -44,9 +46,10 @@ module AresMUSH
                name: topic.author_name,
                icon: topic.author ? Website.icon_for_char(topic.author) : nil },
              message: Website.format_markdown_for_html(topic.message),
+             raw_message: topic.message,
              replies: replies,
-             can_reply: Forum.can_write_to_category?(enactor, category)
-             
+             can_reply: Forum.can_write_to_category?(enactor, category),
+             can_edit: Forum.can_edit_post?(enactor, topic)
         }
       end
     end
