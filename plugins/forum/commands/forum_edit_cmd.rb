@@ -34,20 +34,7 @@ module AresMUSH
           if (!self.new_text)
             Utils.grab client, enactor, "forum/edit #{self.category_name}/#{self.num}=#{post.subject}/#{post.message}"
           else
-            post.update(message: self.new_text)
-            post.update(subject: self.subject)
-            post.mark_unread
-            notification = t('forum.new_edit', :subject => post.subject, 
-              :category => category.name, 
-              :reference => post.reference_str,
-              :author => enactor_name)
-            
-            Global.notifier.notify_ooc(:forum_edited, notification) do |char|
-              Forum.can_read_category?(char, category)
-            end
-            
-            Forum.mark_read_for_player(enactor, post)
-            
+            Forum.edit_post(post, enactor, self.subject, self.new_text)
           end
         end
       end
