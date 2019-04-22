@@ -58,9 +58,11 @@ module AresMUSH
           end
           
           if (success)
+            message = t('scenes.scene_info_updated_announce', :name => enactor_name, 
+              :value => self.value, :setting => self.setting)
+            Scenes.add_to_scene(scene, message)
             if (scene.room)
-              scene.room.emit_ooc t('scenes.scene_info_updated_announce', :name => enactor_name, 
-                :value => self.value, :setting => self.setting)
+              scene.room.emit_ooc message
             end
             if (enactor_room != scene.room)
               client.emit_success t('scenes.scene_info_updated')
@@ -124,16 +126,10 @@ module AresMUSH
       def set_location(scene)
         message = Scenes.set_scene_location(scene, self.value)
         
-        if (scene.room)
-          scene.room.emit message
-          if (!scene.temp_room)
-            client.emit_failure t('scenes.grid_location_change_warning')
-          end
+        if (scene.room && !scene.temp_room)
+          client.emit_failure t('scenes.grid_location_change_warning')
         end
         
-        if (scene.room != enactor_room)
-          client.emit_ooc message
-        end
         return true
       end
       

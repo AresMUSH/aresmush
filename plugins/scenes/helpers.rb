@@ -159,7 +159,6 @@ module AresMUSH
       
       scene.update(location: location)
 
-      message = t('scenes.location_set', :description => description)
       if (scene.temp_room && scene.room)
         #location = (location =~ /\//) ? location.after("/") : location
         scene.room.update(name: "Scene #{scene.id} - #{location}")
@@ -169,8 +168,6 @@ module AresMUSH
       
       data = Scenes.build_location_web_data(scene).to_json
       Scenes.new_scene_activity(scene, :location_updated, data)
-      
-      return message
     end
     
     def self.info_missing_message(scene)
