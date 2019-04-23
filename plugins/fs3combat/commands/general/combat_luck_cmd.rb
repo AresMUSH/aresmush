@@ -32,6 +32,9 @@ module AresMUSH
               return
             end
           end
+          job_message = t('custom.spent_luck', :name => enactor.name, :reason => self.reason)
+          category = Global.read_config("jobs", "luck_category")
+          Jobs.create_job(category, t('custom.spent_luck_title', :name => enactor.name, :reason => "combat: #{self.reason}"), job_message, enactor)
 
           combatant.update(luck: self.reason)
 
