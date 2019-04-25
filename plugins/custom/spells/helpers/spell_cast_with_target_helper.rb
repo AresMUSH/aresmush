@@ -8,9 +8,17 @@ module AresMUSH
       success = Custom.roll_noncombat_spell_success(caster, spell, mod)
       target_num = Global.read_config("spells", spell, "target_num")
       targets = Custom.parse_spell_roll_targets(name_string, target_num)
-      names = targets.map { |t| t.name }
-      print_names = names.join(" ")
-      enactor_room.emit t('custom.casts_noncombat_spell_with_target', :name => caster.name, :target => print_names, :spell => spell, :mod => mod, :succeeds => success)
+      Global.logger.debug "Targets: #{targets}"
+
+      if targets == t('custom.too_many_targets')
+        enactor_room.emit t('custom.too_many_targets', :spell => spell, :num => target_num)
+      elsif targets == "no_target"
+        enactor_room.emit "%xrThat is not a character.%xn"
+      else
+        names = targets.map { |t| t.name }
+        print_names = names.join(", ")
+        enactor_room.emit t('custom.casts_noncombat_spell_with_target', :name => caster.name, :target => print_names, :spell => spell, :mod => mod, :succeeds => success)
+      end
     end
 
     def self.parse_spell_roll_targets(name_string, target_num)
@@ -19,13 +27,18 @@ module AresMUSH
       targets = []
       target_names.each do |name|
         target = Character.named(name)
-        return t('custom.not_character', :name => name) if !target
+        return "no_target" if !target
         targets << target
       end
       targets = targets
-      return t('custom.too_many_targets') if (targets.count > target_num)
+      if (targets.count > target_num)
+        return t('custom.too_many_targets')
+      else
+        return targets
+      end
+
       Global.logger.debug "Target count: #{targets.count} target num #{target_num}"
-      return targets
+
     end
 
     def self.cast_non_combat_heal_with_target(caster, target, spell, mod)
