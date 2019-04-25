@@ -59,5 +59,16 @@ module AresMUSH
       
       backup_path
     end
+    
+    def self.restore_config(file)
+      begin
+        default_config = DatabaseMigrator.read_distr_config_file(file)
+        DatabaseMigrator.write_config_file(file, default_config)    
+        error = Manage.reload_config
+        return error
+      rescue Exception => ex
+        return ex.message
+      end
+    end
   end
 end

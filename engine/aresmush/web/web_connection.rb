@@ -54,7 +54,7 @@ module AresMUSH
     
     def send_formatted(msg, color_mode = "FANSI", ascii_mode = false, screen_reader = false)
        # Strip out < and > - may need to strip other things in the future
-      formatted = MushFormatter.format(msg, false).gsub(/</, '&lt;').gsub(/>/, '&gt;')
+      formatted = MushFormatter.format(msg, color_mode).gsub(/</, '&lt;').gsub(/>/, '&gt;')
       
       data = {
         type: "notification",

@@ -105,7 +105,10 @@ module AresMUSH
       char.update(shortdesc: Website.format_input_for_mush(chargen_data[:shortdesc]))
       
       if FS3Skills.is_enabled?
-        FS3Skills.save_char(char, chargen_data)
+        error = FS3Skills.save_char(char, chargen_data)
+        if (error)
+          alerts << error
+        end
       end
       
       return alerts
@@ -145,7 +148,9 @@ module AresMUSH
          t('chargen.approval_post_subject', :name => model.name), 
          Global.read_config("chargen", "post_approval_message"), 
          Game.master.system_character)
-         
+      
+       Chargen.custom_approval(model)
+       
        Global.dispatcher.queue_event CharApprovedEvent.new(Login.find_client(model), model.id)
          
        return nil

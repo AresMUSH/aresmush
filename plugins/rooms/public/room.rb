@@ -36,8 +36,9 @@ module AresMUSH
     end
     
     def self.find_by_name_and_area(search, enactor_room = nil)
+      search = search || ""
       return [enactor_room] if search == "here" && enactor_room
-      Room.all.select { |r| r.format_room_name_for_area_match(search) == (search || "").upcase }
+      Room.all.select { |r| r.format_room_name_for_area_match(search).start_with?(search.upcase) }
     end
     
     def format_room_name_for_area_match(search)
