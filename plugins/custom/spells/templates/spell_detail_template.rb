@@ -83,7 +83,13 @@ module AresMUSH
       end
 
       def weapon
-        Global.read_config("spells", spell, "weapon")
+        weapon = Global.read_config("spells", spell, "weapon")
+        if weapon == "Spell"
+          return nil
+          Global.logger.debug "Spell weapon"
+        else
+          return weapon
+        end
       end
 
       def weapon_specials
