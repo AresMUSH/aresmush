@@ -1,5 +1,5 @@
 module AresMUSH
-  module Txt 
+  module Txt
       class TxtNewSceneCmd
         include CommandHandler
 
@@ -34,8 +34,8 @@ module AresMUSH
         end
       end
 
-      scene = Scene.create(owner: enactor, 
-            location: "Text", 
+      scene = Scene.create(owner: enactor,
+            location: "Text",
             private_scene: "Private",
             scene_type: "Text",
             temp_room: true,
@@ -44,11 +44,22 @@ module AresMUSH
       Scenes.create_scene_temproom(scene)
 
       Global.logger.info "Scene #{scene.id} started by #{enactor.name} in Temp Txt Room."
-      
+
       # Checks if the names are valid. If so, starts a scene.
       Global.dispatcher.queue_command(client, Command.new("txt #{self.names_raw}/#{scene.id}=#{self.message}"))
 
       scene.participants.add enactor
+
+      self.names.each do |name|
+        char = Character.named(name)
+        if (!scene.participants.include?(char))
+          scene.participants.add char
+        end
+        if (!scene.watchers.include?(char))
+          scene.watchers.add char
+        end
+      end
+
     end
   end
   end
