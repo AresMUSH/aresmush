@@ -79,7 +79,13 @@ module AresMUSH
                             Rooms.emit_ooc_to_room scene_room,t('txt.recipient_added_to_scene',
                             :name => result.name )
 
-                            scene.participants.add result
+                            if (!scene.participants.include?(result))
+                              scene.participants.add result
+                            end
+
+                            if (!scene.watchers.include?(result))
+                              scene.watchers.add result
+                            end                            
                         end
                     end
 

@@ -109,7 +109,16 @@ module AresMUSH
                 :name => result.name )
               end
 
-              self.scene.participants.add result
+              self.names.each do |name|
+                char = Character.named(name)
+                if (!scene.participants.include?(char))
+                  scene.participants.add char
+                end
+                if (!scene.watchers.include?(char))
+                  scene.watchers.add char
+                end
+              end
+
             end
           end
         end
