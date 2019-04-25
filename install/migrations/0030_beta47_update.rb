@@ -2,7 +2,7 @@ module AresMUSH
   module Migrations
     class MigrationBeta47Update
       def require_restart
-        false
+        true
       end
       
       def migrate
