@@ -54,7 +54,7 @@ module AresMUSH
     
     # Checks to make sure an ability name doesn't have any funky characters in it.
     def self.check_ability_name(ability)
-      return t('fs3skills.no_special_characters') if (ability =~ /[\|\<\>\%\\\$]/)
+      return t('fs3skills.no_special_characters') if (ability =~ /[+-.,\[\]?;:'"<>%\\$=\|]/)
       return nil
     end
     
