@@ -35,6 +35,7 @@ spells:
     school: Air
     target_num: 1
     target_optional: true
+  #Level 2
   Cloud Cover:
     area: 5 ft radius
     available: true

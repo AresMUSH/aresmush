@@ -1,12 +1,10 @@
 spells:
   Create Crystal:
-
     available: true
     casting_time: 1 round
     desc: The caster is able to create a permanent shard of crystal of moderate value.
       The shard may be no larger than 2 inches, but may be very hard and sharp. Colors
       may vary.
-
     is_revive: false
     is_stun: false
     level: 1
@@ -35,6 +33,24 @@ spells:
     roll: true
     school: Earth
     target_optional: false
+  #Level 2
+  Dustup:
+    attack_mod: -1
+    available: false
+    casting_time: 1 round
+    defense_mod: -1
+    desc: "The caster kicks up a small cloud of dirt around a target, briefly obscuring their vision and making it harder for them to attack or defend."
+    duration: 1 round
+    level: 2
+    line_of_sight: true
+    name: Chilled Limbs
+    notes: ''
+    range: Short
+    rounds: 1
+    school: Earth
+    target_num: 1
+    target_optional: true
+    effect: Debuff
   Shape Stone:
     available: true
     casting_time: 1 round

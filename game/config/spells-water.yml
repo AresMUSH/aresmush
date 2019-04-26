@@ -8,7 +8,6 @@ spells:
       is generally reflective of the temperature in which it is created, but it is
       always liquid on creation. The temperature around it may freeze or heat the
       water after creation."
-
     is_revive: false
     is_stun: false
     level: 1
@@ -38,12 +37,11 @@ spells:
     roll: true
     school: Water
     target_optional: false
+  #Level 2
   Chill Touch:
-
     available: true
     casting_time: 1 round
     desc: Caster delivers minor cold damage via touch.
-
     fs3_attack: true
     is_potion: true
     is_revive: false
@@ -59,16 +57,12 @@ spells:
     target_optional: true
     weapon: Chill Touch
   Chilled Limbs:
-
     attack_mod: -1
     available: false
     casting_time: 1 round
     defense_mod: -1
-    desc: 'Chill someone''s limbs, making it difficult for them to move effectively. '
+    desc: "Chill someone's limbs, making it difficult for them to move effectively. "
     duration: 1 round
-    is_potion: true
-    is_revive: false
-    is_stun: false
     level: 2
     line_of_sight: true
     multi_target: false
