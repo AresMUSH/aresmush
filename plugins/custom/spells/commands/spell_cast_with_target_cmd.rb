@@ -122,7 +122,7 @@ module AresMUSH
               end
             end
           else
-            FS3Combat.set_action(client, enactor, enactor.combat, caster_combat, FS3Combat::SpellTargetAction, self.action_args)
+            FS3Combat.set_action(client, enactor, enactor.combat, caster_combat, FS3Combat::SpellAction, self.action_args)
           end
           if !caster_combat.is_npc?
             Custom.handle_spell_cast_achievement(self.caster)

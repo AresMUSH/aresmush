@@ -7,16 +7,16 @@ module AresMUSH
       attr_accessor :names, :action_args, :combat_command
 
       def parse_args
-        if (cmd.args =~ /\//)
-          self.names = InputFormatter.titlecase_arg(cmd.args.before("/"))
-          self.action_args = cmd.args.after("/")
-        elsif (cmd.args && one_word_command)
-          self.names = InputFormatter.titlecase_arg(cmd.args)
-          self.action_args = ""
-        else
-          self.names = enactor.name
-          self.action_args = cmd.args
-        end
+       if (cmd.args =~ /\=/)
+         self.names = InputFormatter.titlecase_arg(cmd.args.before("="))
+         self.action_args = cmd.args.after("=")
+       elsif (cmd.args && one_word_command)
+         self.names = InputFormatter.titlecase_arg(cmd.args)
+         self.action_args = ""
+       else
+         self.names = enactor.name
+         self.action_args = cmd.args
+       end
 
         self.names = self.names ? self.names.split(/[ ,]/) : nil
 

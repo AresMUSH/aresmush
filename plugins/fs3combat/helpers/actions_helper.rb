@@ -56,13 +56,18 @@ module AresMUSH
       #   combatant.update(action_klass: nil)
       # end
 
-      Global.logger.debug "#{combatant.name} Subdued? #{combatant.is_subdued?}"
-
       if (!combatant.is_subdued?)
         combatant.update(subdued_by: nil)
       end
 
-      Global.logger.debug "#{combatant.name} Counter: #{combatant.magic_stun_counter} Stun #{combatant.magic_stun}"
+      if (combatant.mind_shield_counter == 0 && combatant.mind_shield > 0)
+        FS3Combat.emit_to_combat combatant.combat, t('custom.mind_shield_wore_off', :name => combatant.name), nil, true
+        combatant.update(mind_shield: 0)
+        combatant.log "#{combatant.name} no longer has a Mind Shield."
+      elsif (combatant.mind_shield_counter > 0 && combatant.mind_shield > 0)
+        combatant.update(mind_shield_counter: combatant.mind_shield_counter - 1)
+      end
+      Global.logger.debug "#{combatant.name} COUNTER: #{combatant.mind_shield_counter} "
 
       if (combatant.magic_stun_counter == 0 && combatant.magic_stun)
         FS3Combat.emit_to_combat combatant.combat, t('fs3combat.stun_wore_off', :name => combatant.name), nil, true
@@ -72,7 +77,6 @@ module AresMUSH
       elsif (combatant.magic_stun_counter > 0 && combatant.magic_stun)
         combatant.update(magic_stun_counter: combatant.magic_stun_counter - 1)
         subduer = combatant.subdued_by
-        Global.logger.debug "Subdued by: #{subduer} "
         FS3Combat.emit_to_combat combatant.combat, t('fs3combat.still_stunned', :name => combatant.name, :stunned_by => subduer.name, :rounds => combatant.magic_stun_counter), nil, true
       end
 
@@ -169,7 +173,7 @@ module AresMUSH
         if (!combatant.is_npc? && Custom.knows_spell?(combatant.associated_model, "Phoenix's Healing Flames"))
           combatant.update(is_ko: false)
           combatant.update(death_count: 0)
-          Global.logger.info "Phoenix's Healing Flames: Setting #{combatant.name}'s KO to #{combatant.is_ko}."
+          combatant.log "Phoenix's Healing Flames: Setting #{combatant.name}'s KO to #{combatant.is_ko}."
           combatant.update(action_klass: "AresMUSH::FS3Combat::SpellAction")
           combatant.update(action_args: "#{combatant.name}/Phoenix's Healing Flames")
           Custom.delete_all_untreated_damage(combatant.associated_model)
