@@ -7,6 +7,7 @@ aliases:
 - roomtype
 - zone
 - owner
+- foyer
 ---
 # Room Setup
 

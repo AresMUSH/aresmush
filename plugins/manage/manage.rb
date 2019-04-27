@@ -24,6 +24,8 @@ module AresMUSH
           return ConfigCheckCmd
         when "cron"
           return ConfigCronCmd
+        when "restore"
+          return ConfigRestoreCmd
         when nil
           if (cmd.args)
             return ConfigViewCmd
@@ -101,6 +103,13 @@ module AresMUSH
         return CronEventHandler
       end
       nil
+    end
+    
+    def self.get_web_request_handler(request)
+      case request.cmd
+      when "restoreConfig"
+        return RestoreConfigRequestHandler
+      end
     end
   end
 end

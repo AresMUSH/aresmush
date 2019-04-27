@@ -86,3 +86,6 @@ en:
         no_longer_statue: "You are no longer a statue.  Please play nice."
         cant_statue_admins: "You can't statue another admin."
         
+        config_restored: "Config file %{name} restored to defaults."
+        error_restoring_config: "There was a problem restoring the config file.  Check the name.  Error: %{error}"
+        

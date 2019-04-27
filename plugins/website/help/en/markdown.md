@@ -44,6 +44,26 @@ Finally you can link to external pages.
 
 `[http://somewhere Link Title]`
 
+## Images
+
+For a basic image, the regular markdown syntax will suffice.  Note that images live in the `game/uploads` folder.
+
+`![Image Alt Text](/game/uploads/misc/pic.jpg)`
+
+You can display images with some easy formatting options, including height, width and alignment (left, right or center) and a url to link to.  All of the formatting options can be omitted.
+
+`[[image /game/uploads/pic.jpg height=50px width=100px url=http://google.com center]]`
+
+
+## Tables
+
+You can use the extended table syntax for easy tables.
+
+`| Title 1 | Title 2 | `
+`|-----    |-----    | `
+`| Text    | Text    | `
+
+
 ## Image Gallery
 
 You can include a gallery of images (similar to what appears on the character profile pages).  Just list the folder and filename, one per line.
@@ -69,25 +89,6 @@ Collapsibles let you show and hide text with the click of a button.
 `[[collapsible button text]]`
 `Text you want to show and hide.`
 `[[/collapsible]]`
-
-## Pretty Images
-
-For a basic image, the regular markdown syntax will suffice.  Note that images live in the `game/uploads` folder.
-
-`![Image Alt Text](/game/uploads/misc/pic.jpg)`
-
-You can display images with some easy formatting options, including height, width and alignment (left, right or center).  All of the formatting options can be omitted.
-
-`[[image /game/uploads/pic.jpg height=50px width=100px center]]`
-
-
-## Tables
-
-You can use the extended table syntax for easy tables.
-
-`| Title 1 | Title 2 | `
-`|-----    |-----    | `
-`| Text    | Text    | `
 
 ## Scene, Page and Character Lists
 

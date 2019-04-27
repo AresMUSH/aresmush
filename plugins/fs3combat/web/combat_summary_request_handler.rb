@@ -29,6 +29,7 @@ module AresMUSH
                   armor: c.armor,
                   ammo: c.ammo ? "(#{c.ammo})" : '',
                   damage_boxes: (-c.total_damage_mod).ceil.times.map { |d| d },
+                  damage: c.associated_model.damage.select { |d| !d.healed }.map { |d| "#{d.current_severity} - #{d.description}" },
                   vehicle: c.vehicle ? "#{c.vehicle.name} #{c.piloting ? 'Pilot' : 'Passenger'}" : "" ,
                   stance: c.stance,
                   action: c.action ? c.action.print_action_short : "",
