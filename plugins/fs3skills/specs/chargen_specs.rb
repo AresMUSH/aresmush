@@ -23,15 +23,14 @@ module AresMUSH
           
           # For aesthetic reasons
           expect(FS3Skills.check_ability_name("X:.[]|Y")).to eq "fs3skills.no_special_characters"
+          
+          # Because folks on older clients can't see them properly.
+          expect(FS3Skills.check_ability_name("XñY")).to eq "fs3skills.no_special_characters"
         end
         
         it "should allow spaces and underlines" do
           expect(FS3Skills.check_ability_name("X Y")).to be_nil
           expect(FS3Skills.check_ability_name("X_Y")).to be_nil
-        end
-        
-        it "should allow international chars" do
-          expect(FS3Skills.check_ability_name("XñY")).to be_nil
         end
       end
       
