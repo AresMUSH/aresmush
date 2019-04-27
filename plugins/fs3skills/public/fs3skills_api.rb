@@ -102,13 +102,16 @@ module AresMUSH
       skills
     end
     
-    def self.save_char(char, chargen_data)
+    def self.save_char(char, chargen_data)      
       (chargen_data[:fs3][:fs3_attributes] || []).each do |k, v|
-        FS3Skills.set_ability(nil, char, k, v.to_i)
+        status = FS3Skills.set_ability(nil, char, k, v.to_i)
+        return t('fs3skills.error_saving_ability', :name => k) if !status
       end
 
       (chargen_data[:fs3][:fs3_action_skills] || []).each do |k, v|
-        FS3Skills.set_ability(nil, char, k, v.to_i)
+        status = FS3Skills.set_ability(nil, char, k, v.to_i)
+        return t('fs3skills.error_saving_ability', :name => k) if !status
+        
         ability = FS3Skills.find_ability(char, k)
         if (ability)
           specs = (chargen_data[:fs3][:fs3_specialties] || {})[k] || []
@@ -117,16 +120,20 @@ module AresMUSH
       end
     
       (chargen_data[:fs3][:fs3_backgrounds] || []).each do |k, v|
-        FS3Skills.set_ability(nil, char, k, v.to_i)
+        status = FS3Skills.set_ability(nil, char, k, v.to_i)
+        return t('fs3skills.error_saving_ability', :name => k) if !status
       end
     
       (chargen_data[:fs3][:fs3_languages] || []).each do |k, v|
-        FS3Skills.set_ability(nil, char, k, v.to_i)
+        status = FS3Skills.set_ability(nil, char, k, v.to_i)
+        return t('fs3skills.error_saving_ability', :name => k) if !status
       end
     
       (chargen_data[:fs3][:fs3_advantages] || []).each do |k, v|
-        FS3Skills.set_ability(nil, char, k, v.to_i)
+        status = FS3Skills.set_ability(nil, char, k, v.to_i)
+        return t('fs3skills.error_saving_ability', :name => k) if !status
       end
+      return nil
     end
   end
 end

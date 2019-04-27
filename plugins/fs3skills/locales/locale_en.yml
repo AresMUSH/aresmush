@@ -32,6 +32,7 @@ en:
         min_rating_is: "You can't lower that ability any lower."
         invalid_rating: That is not a valid ability rating.
         no_special_characters: "Ability names may not contain special characters."
+        error_saving_ability: "There was a problem saving %{name}.  Check the ability name and rating.  Ability names may not contain special characters."
         
         ability_not_found: "Ability not found."
         invalid_specialty_skill: "That skill cannot have a specialty."

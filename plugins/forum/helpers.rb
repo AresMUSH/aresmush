@@ -35,6 +35,7 @@ module AresMUSH
             
     def self.can_edit_post?(char, post)
       return false if !post
+      return false if !char
       post.authored_by?(char) || can_manage_forum?(char)
     end
     
@@ -219,6 +220,46 @@ module AresMUSH
         posts = char.forum_read_posts || []
         posts.delete post.id.to_s
         char.update(forum_read_posts: posts)
+      end
+    end
+    
+    def self.edit_post(post, enactor, subject, message)
+      post.update(message: message)
+      post.update(subject: subject)
+      post.mark_unread
+      category = post.bbs_board
+      notification = t('forum.new_edit', :subject => post.subject, 
+        :category => category.name, 
+        :reference => post.reference_str,
+        :author => enactor.name)
+      
+      Global.notifier.notify_ooc(:forum_edited, notification) do |char|
+        Forum.can_read_category?(char, category)
+      end
+      
+      Forum.mark_read_for_player(enactor, post)
+    end
+    
+    def self.edit_reply(reply, enactor, message)
+      reply.update(message: message)
+      post = reply.bbs_post
+      post.mark_unread
+      category = post.bbs_board
+      notification = t('forum.new_reply_edit', :subject => post.subject, 
+        :category => category.name, 
+        :reference => post.reference_str,
+        :author => enactor.name)
+      
+      Global.notifier.notify_ooc(:forum_edited, notification) do |char|
+        Forum.can_read_category?(char, category)
+      end
+      
+      Forum.mark_read_for_player(enactor, post)
+    end
+    
+    def self.catchup_category(enactor, category)
+      category.unread_posts(enactor).each do |p|
+        Forum.mark_read_for_player(enactor, p)
       end
     end
   end

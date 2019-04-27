@@ -23,7 +23,7 @@ module AresMUSH
             return
           end
           
-          if (!model.details.has_key?(self.name))
+          if (!model.vistas.has_key?(self.name))
             client.emit_failure t('describe.no_such_vista', :name => self.name)
             return
           end
