@@ -11,7 +11,7 @@ module AresMUSH
         else
           self.scene_num = enactor_room.scene ? enactor_room.scene.id : nil
         end
-        self.option = cmd.switch_is?("startlog")
+        self.option = cmd.switch_is?("enablelog")
       end
            
       def handle
