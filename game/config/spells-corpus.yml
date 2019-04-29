@@ -185,21 +185,15 @@ spells:
   Strength:
     available: true
     casting_time: 1 round
-    desc: The caster's strength is improved, and they hit harder when attacking, increasing
-      their damage.
+    desc: The caster's strength is improved, and they hit harder when attacking, increasing their damage.
     duration: 1 hour
     is_potion: true
-    is_revive: false
-    is_stun: false
     level: 3
-    line_of_sight: false
-    multi_target: false
     name: Strength
     notes: Should only apply to melee weapons, right?
     range: Self
     rounds: 100
     school: Corpus
-    target_optional: false
     weapon_specials: Strength
     weapon: Spell
   Agility:
