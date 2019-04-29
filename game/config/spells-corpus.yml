@@ -328,18 +328,12 @@ spells:
       or carried by a creature is similarly reduced by the spell. Any item that leaves
       the caster\u2019s possession instantly returns to its normal size."
     duration: 5 rounds
-    is_revive: false
-    is_stun: false
     level: 5
-    line_of_sight: false
-    multi_target: false
     name: Shrink Self
     notes: 'Really shouldn''t apply weapon special unless roll succeeds. '
     range: Self
-    roll: true
     rounds: 10
     school: Corpus
-    target_optional: false
     weapon_specials: Shrink
     weapon: Spell
   Familiar (Corpus):
