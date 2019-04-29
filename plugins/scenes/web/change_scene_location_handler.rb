@@ -23,13 +23,7 @@ module AresMUSH
         
         Global.logger.debug "Scene #{scene.id} location changed to #{location} by #{enactor.name}."
         
-        message = Scenes.set_scene_location(scene, location)
-        
-        if (scene.room)
-          scene.room.emit message
-        end
-        
-        Scenes.add_to_scene(scene, message, Game.master.system_character)
+        Scenes.set_scene_location(scene, location, enactor)
         
         {
         }
