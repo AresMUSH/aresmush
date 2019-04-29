@@ -254,7 +254,7 @@ spells:
   Telekinetic Precision:
     available: true
     casting_time: 1 round, plus additional rounds to manipulate at GM's discretion
-    desc: "Manipulate small objects with great precision. Objects may range in size
+    desc: "The caster can manipulate a small object with great precision. Objects may range in size
       from 1 mm  to 5 cm.\n\n
       Manipulation requires knowledge. The caster cannot use telekinesis to pick locks
       without lockpicking knowledge, or to load a gun without firearms knowledge."
@@ -287,7 +287,7 @@ spells:
     area: 15 yard radius
     available: true
     casting_time: 1 round, plus additional rounds for movement at the GM's discretion
-    desc: 'Move an object weighing up to 5 tons. This is imprecise, and objects move
+    desc: 'The caster can move an object weighing up to 5 tons. This is imprecise, and objects move
       at a speed inverse to their weight. Smaller objects may move up to 35 mph; larger
       objects move 15 mph.
 
@@ -434,7 +434,7 @@ spells:
 
     available: false
     casting_time: 1 round, plus additional rounds to manipulate at GM's discretion
-    desc: "Manipulate microscopic objects with great precision. Objects may range
+    desc: "The caster can manipulate microscopic objects with great precision. Objects may range
       in size from 1 micrometer  to 1 milimeter.\n\n
       Manipulation requires knowledge. The caster cannot use telekinesis to vanquish
       disease without exact medical knowledge, or to repair fine machinery without

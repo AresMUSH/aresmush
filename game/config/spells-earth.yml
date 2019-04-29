@@ -36,7 +36,7 @@ spells:
   #Level 2
   Dustup:
     attack_mod: -1
-    available: false
+    available: true
     casting_time: 1 round
     defense_mod: -1
     desc: "The caster kicks up a small cloud of dirt around a target, briefly obscuring their vision and making it harder for them to attack or defend."
