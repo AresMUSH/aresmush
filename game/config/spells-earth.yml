@@ -43,7 +43,7 @@ spells:
     duration: 1 round
     level: 2
     line_of_sight: true
-    name: Chilled Limbs
+    name: Dustup
     notes: ''
     range: Short
     rounds: 1
