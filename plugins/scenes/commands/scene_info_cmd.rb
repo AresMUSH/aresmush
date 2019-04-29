@@ -124,7 +124,7 @@ module AresMUSH
       end
       
       def set_location(scene)
-        message = Scenes.set_scene_location(scene, self.value)
+        Scenes.set_scene_location(scene, self.value, enactor)
         
         if (scene.room && !scene.temp_room)
           client.emit_failure t('scenes.grid_location_change_warning')
