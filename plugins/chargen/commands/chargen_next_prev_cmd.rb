@@ -17,10 +17,7 @@ module AresMUSH
       
       def check_can_advance
         return t('chargen.not_started') if !enactor.chargen_stage
-        
-        if (self.offset > 0)
-          Chargen.can_advance?(enactor)
-        end
+        return nil
       end
       
       def handle

@@ -64,6 +64,8 @@ website:
     menu:
     - page: fs3skills-abilities
       title: Abilities List
+    - page: groups
+      title: Groups List
     - page: fs3combat-gear
       title: Gear List
     - divider: true

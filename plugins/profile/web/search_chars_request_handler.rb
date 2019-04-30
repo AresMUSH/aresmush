@@ -7,6 +7,7 @@ module AresMUSH
         searchDemographics = request.args[:searchDemographics] || {}
         searchTag = (request.args[:searchTag] || "").strip
         searchName = (request.args[:searchName] || "").strip
+        searchRelation = (request.args[:searchRelation] || "").strip
         
         chars = Chargen.approved_chars
         
@@ -35,6 +36,10 @@ module AresMUSH
           chars = chars.select { |p| p.profile_tags.include?(searchTag.downcase) }
         end
 
+        if (!searchRelation.blank?)
+          chars = chars.select { |c| c.relationships.keys.map { |k| k.downcase}.include?(searchRelation.downcase) }
+        end
+        
         chars.sort_by { |c| c.name }.map { |c| {
                           id: c.id,
                           name: c.name,

@@ -168,7 +168,6 @@ module AresMUSH
 
       scene.update(location: location)
 
-      message = t('scenes.location_set', :description => description)
       if (scene.temp_room && scene.room)
         #location = (location =~ /\//) ? location.after("/") : location
         scene.room.update(name: "Scene #{scene.id} - #{location}")
@@ -178,8 +177,6 @@ module AresMUSH
 
       data = Scenes.build_location_web_data(scene).to_json
       Scenes.new_scene_activity(scene, :location_updated, data)
-
-      return message
     end
 
     def self.info_missing_message(scene)
@@ -314,8 +311,12 @@ module AresMUSH
             room.remove_from_pose_order(name)
           end
           client = Login.find_client(char)
-          if (client && char.room == room && char.pose_nudge && !char.pose_nudge_muted)
-            client.emit_ooc t('scenes.pose_threeper_nudge')
+          if (client && char.pose_nudge && !char.pose_nudge_muted)
+            if (char.room == room)
+              client.emit_ooc t('scenes.pose_your_turn')
+            elsif (room.scene)
+              client.emit_ooc t('scenes.pose_threeper_nudge_other_scene', :scene => room.scene.id)
+            end
           end
         end
       else
@@ -325,8 +326,12 @@ module AresMUSH
           room.remove_from_pose_order(next_up_name)
         end
         client = Login.find_client(char)
-        if (client && char.room == room && char.pose_nudge && !char.pose_nudge_muted)
-          client.emit_ooc t('scenes.pose_your_turn')
+        if (client && char.pose_nudge && !char.pose_nudge_muted)
+          if (char.room == room)
+            client.emit_ooc t('scenes.pose_your_turn')
+          elsif (room.scene)
+            client.emit_ooc t('scenes.pose_your_turn_other_scene', :scene => room.scene.id)
+          end
         end
       end
     end
