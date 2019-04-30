@@ -1,7 +1,7 @@
 module AresMUSH
   class Character
     attribute :utils_edit_prefix, :default => "FugueEdit >"
-    attribute :utils_saved_text, :type => DataType::Array
+    attribute :utils_saved_text, :type => DataType::Array, :default => []
     attribute :notes, :type => DataType::Hash, :default => {}
     attribute :ascii_mode_enabled, :type => DataType::Boolean, :default => false
     

@@ -29,8 +29,9 @@ To delete a topic completely, including all of its replies, use the delete comma
 
 `forum/delete <category>/<post #>` - Deletes a topic
   
-## Deleting Replies
+## Editing Replies
 
-You cannot edit a reply once it's been posted, but you can delete it and try again.
+You can edit and delete forum replies.
 
-`forum/deletereply <category name or number>/<post number>=<reply number>` - Deletes a forum reply.
+`forum/editreply <category name or number>/<post number>/<reply number>/<new text>` - Edits a reply.
+`forum/deletereply <category name or number>/<post number>/<reply number>` - Deletes a forum reply.
