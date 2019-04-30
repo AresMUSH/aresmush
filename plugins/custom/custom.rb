@@ -14,6 +14,10 @@ module AresMUSH
       case request.cmd
       when "spells"
         return SpellsRequestHandler
+      when "schools"
+        return SchoolsRequestHandler
+      when "searchSpells"
+        return SearchSpellsRequestHandler
       end
       nil
     end

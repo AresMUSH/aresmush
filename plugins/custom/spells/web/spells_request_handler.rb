@@ -4,9 +4,7 @@ module AresMUSH
 
       def handle(request)
         all_spells = Global.read_config("spells")
-        school = request.args['school'].titlecase || ""
-        school_spells = all_spells.select { |name, data|  data['school'] == school }
-        spells = build_list(school_spells)
+        spells = build_list(all_spells)
         spells.each do |s|
           weapon = Global.read_config("spells", s[:name], "weapon")
           weapon_specials = Global.read_config("spells", s[:name], "weapon_specials")
@@ -71,27 +69,13 @@ module AresMUSH
           elsif s[:targets] > 1
             s[:multi_target] = true
           end
-          # Global.logger.debug "target nums: #{s[:targets]}"
-          # Global.logger.debug "spell: #{s[:name]} armor: #{armor} protection: #{protection} defense: #{defense}"
-          # Global.logger.debug "spell: #{s[:name]} weapon special: #{weapon_special} lethality: #{weapon_special_lethality}"
-          # Global.logger.debug "spell: #{s}"
-          # Global.logger.debug "spell: #{s[:name]} level 8: #{s[:level_8]} level: #{s[:level]}"
         end
 
         spells_by_level = spells.group_by { |s| s[:level] }
-        # spells.each do |s|
-        #   Global.logger.debug "Weapon Types #{s[:weapon_type]}
-        # end
-
-        # Global.logger.debug "spells: #{spells}"
-        blurb = Global.read_config("schools", school, "blurb")
-
 
         {
           spells: spells_by_level,
-          title: school,
-          blurb: Website.format_markdown_for_html(blurb),
-          pinterest: school
+          title: "All Spells",
         }
 
       end
