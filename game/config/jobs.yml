@@ -61,6 +61,8 @@ jobs:
     job/active: job/filter active
     job/deletecomment: job/deletereply
     job/all: job/filter all
+    request/all: request/filter all
+    request/active: request/filter active
   status:
     NEW:
       color: "%xg"

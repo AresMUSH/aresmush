@@ -9,3 +9,4 @@ utils:
     note/update: note/add
     die: dice
     notes: note
+    colors: color
