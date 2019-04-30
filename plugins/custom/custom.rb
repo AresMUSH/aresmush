@@ -16,6 +16,8 @@ module AresMUSH
         return SpellsRequestHandler
       when "schools"
         return SchoolsRequestHandler
+      when "searchSpells"
+        return SearchSpellsRequestHandler
       end
       nil
     end
