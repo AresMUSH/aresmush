@@ -131,7 +131,7 @@ spells:
     school: Fire
     target_num: 1
     target_optional: true
-    weapon: Flame Darts
+    weapon: Flame Dart
     effect: Damage
   Hot Hands:
     available: true
