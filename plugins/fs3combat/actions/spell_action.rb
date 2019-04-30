@@ -1,7 +1,7 @@
 module AresMUSH
   module FS3Combat
     class SpellAction < CombatAction
-      attr_accessor  :spell, :target, :names
+      attr_accessor  :spell, :target, :names, :target_optional
 
       def prepare
         if (self.action_args =~ /\//)
@@ -12,16 +12,27 @@ module AresMUSH
           self.spell = self.action_args
 
         end
+        self.target_optional = Global.read_config("spells", self.spell, "target_optional")
 
         error = self.parse_targets(self.names)
         return error if error
 
-        return t('fs3combat.only_one_target') if (self.targets.count > 1)
+        num = Global.read_config("spells", self.spell, "target_num")
+        if self.target_optional
+          return t('custom.too_many_targets', :spell => self.spell, :num => num) if (self.targets.count > num)
+        end
+
       end
 
       def print_action
-        msg = t('custom.spell_action_msg_long', :name => self.name, :spell => self.spell, :target => print_target_names)
-        msg
+
+        if self.target_optional
+          msg = t('custom.spell_target_action_msg_long', :name => self.name, :spell => self.spell, :target => print_target_names)
+          msg
+        else
+          msg = t('custom.spell_action_msg_long', :name => self.name, :spell => self.spell, :target => print_target_names)
+          msg
+        end
       end
 
       def print_action_short
@@ -49,7 +60,14 @@ module AresMUSH
           target_optional = Global.read_config("spells", self.spell, "target_optional")
           roll = Global.read_config("spells", self.spell, "roll")
 
-
+          #Roll
+          if roll
+            if target_optional
+              messages.concat [t('custom.spell_target_resolution_msg', :name => self.name, :spell => self.spell, :target => print_target_names, :succeeds => succeeds)]
+            else
+              messages.concat [t('custom.spell_resolution_msg', :name => self.name, :spell => self.spell, :succeeds => succeeds)]
+            end
+          end
 
 
           targets.each do |target|
@@ -66,7 +84,7 @@ module AresMUSH
             end
 
             #Equip Weapon
-            if weapon
+            if (weapon && weapon != "Spell")
               FS3Combat.set_weapon(combatant, target, weapon)
               if armor
 
@@ -165,15 +183,7 @@ module AresMUSH
               messages.concat [t('custom.cast_stance', :name => self.name, :target => print_target_names, :spell => self.spell, :succeeds => succeeds, :stance => stance)]
             end
 
-            #Roll
-            if roll
-              succeeds = Custom.roll_combat_spell_success(self.combatant, self.spell)
-              if target_optional
-                messages.concat [t('custom.spell_target_resolution_msg', :name => self.name, :spell => self.spell, :target => print_target_names, :succeeds => succeeds)]
-              else
-                messages.concat [t('custom.spell_resolution_msg', :name => self.name, :spell => self.spell, :succeeds => succeeds)]
-              end
-            end
+
 
           end
         elsif self.spell == "Phoenix's Healing Flames"

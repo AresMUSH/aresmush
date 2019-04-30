@@ -6,7 +6,7 @@ module AresMUSH
       special = Global.read_config("spells", spell, "weapon_specials")
       weapon = combatant.weapon.before("+")
       weapon_specials = combatant.spell_weapon_effects
-      Global.logger.info "Combatant's old weapon effects: #{combatant.spell_weapon_effects}"
+
 
       if combatant.spell_weapon_effects.has_key?(weapon)
         old_weapon_specials = weapon_specials[weapon]
@@ -15,7 +15,7 @@ module AresMUSH
         weapon_specials[weapon] = {special => rounds}
       end
       combatant.update(spell_weapon_effects:weapon_specials)
-      Global.logger.info "Combatant's weapon effects: #{combatant.spell_weapon_effects}"
+
     end
 
     def self.spell_armor_effects(combatant, spell)
@@ -24,7 +24,7 @@ module AresMUSH
       weapon = combatant.armor.before("+")
       weapon_specials = combatant.spell_armor_effects
 
-      Global.logger.info "Combatant's old armor effects: #{combatant.spell_armor_effects}"
+
 
       if combatant.spell_armor_effects.has_key?(armor)
         old_armor_specials = armor_specials[armor]
@@ -33,7 +33,7 @@ module AresMUSH
         armor_specials[armor] = {special => rounds}
       end
       combatant.update(spell_armor_effects:armor_specials)
-      Global.logger.info "Combatant's armor effects: #{combatant.spell_armor_effects}"
+
     end
 
 
@@ -74,6 +74,30 @@ module AresMUSH
           Scenes.add_to_scene(caster.room.scene, message)
         end
       end
+    end
+
+    def self.roll_mind_shield(target, caster)
+      shield_strength = target.mind_shield
+      successes = caster.roll_ability("Spirit")
+      delta = shield_strength - successes
+      if caster.combat
+        combat = caster.combat
+        combat.log "#{caster.name} rolling Spirit vs #{target.name}'s Mind Shield (strength #{shield_strength}): #{successes} successes."
+      end
+
+      if (shield_strength <=0 && successes <= 0)
+        return "shield"
+      end
+
+      case delta
+      when 0..99
+        return "shield"
+      when -99..-1
+        return "caster"
+      end
+
+
+
     end
 
 
