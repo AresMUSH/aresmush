@@ -8,9 +8,8 @@ module AresMUSH
         searchSchool = (request.args[:searchSchool] || "").strip
         searchEffect = (request.args[:searchEffect] || "").strip
         searchDesc = (request.args[:searchDesc] || "").strip
-        searchAvailable = (request.args[:searchAvailable] || "").to_i
-        searchPotion = (request.args[:searchPotion] || "").to_i
-        Global.logger.debug "Available: #{searchAvailable}"
+        searchAvailable = (request.args[:searchAvailable] || "")
+        searchPotion = (request.args[:searchPotion] || "")
 
         all_spells = Global.read_config("spells")
         spells = build_list(all_spells)
@@ -85,37 +84,30 @@ module AresMUSH
         # spells = spells.group_by { |s| s[:level] }
 
         if (!searchName.blank?)
-          Global.logger.debug "Name: #{searchName}"
           spells = spells.select { |s| s[:name] =~ /\b#{searchName}\b/i }
         end
 
         if searchLevel != 0
-          Global.logger.debug "Level: #{searchLevel}"
           spells = spells.select { |s| s[:level] == searchLevel }
         end
 
         if (!searchSchool.blank?)
-          Global.logger.debug "School: #{searchSchool}"
           spells = spells.select { |s| s[:school] =~ /\b#{searchSchool}\b/i }
         end
 
         if (!searchEffect.blank?)
-          Global.logger.debug "Effect: #{searchEffect}"
           spells = spells.select { |s| s[:effect] =~ /\b#{searchEffect}\b/i }
         end
 
         if (!searchDesc.blank?)
-          Global.logger.debug "Desc: #{searchDesc}"
           spells = spells.select { |s| s[:desc] =~ /\b#{searchDesc}\b/i }
         end
 
-        if searchAvailable != 0
-          Global.logger.debug "Available: #{searchAvailable}"
+        if searchAvailable == "true"
           spells = spells.select { |s| s[:available] == true }
         end
 
-        if searchPotion != 0
-          Global.logger.debug "Potion: #{searchPotion}"
+        if searchPotion == "true"
           spells = spells.select { |s| s[:potion] == true }
         end
 
