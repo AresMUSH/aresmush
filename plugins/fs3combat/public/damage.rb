@@ -30,7 +30,7 @@ module AresMUSH
     def wound_mod
       config = Global.read_config("fs3combat", "damage_mods")
       mod = config[self.current_severity]
-      mod = mod / 3 if self.healed
+      mod = mod / 3.0 if self.healed
       mod
     end
   end

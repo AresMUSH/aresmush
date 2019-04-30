@@ -28,7 +28,8 @@ The scenes system:
 When you start a scene, you can create a temporary room or start one in the room you're in.  Temp rooms are automatically recycled when the scene ends.
 
 `scene/start` - Starts a scene in your current room.
-`scene/start [<area>/]<location name>=<private/open/watchable>` - Starts a scene in a temp room.
+`scene/start [<area>/]<location name>=<private/open>` - Starts a scene in a temp room.
+`scene/webstart [<area>/]<location name>=<private/open>` - Starts a scene that you intend to play on the web, and doesn't move you there.
 
 > **Tip:** If your location name matches a grid location, the desc will be copied over.  You can use Area/Room for the location name to distinguish between rooms with the same name in different areas.
 

@@ -16,4 +16,4 @@ Those with the proper permissions can award XP.
 
 If someone accidentally spends XP on the wrong skill, you can use the 'undo' command.  This will refund them 1XP and reset the learning time on the incorrect skill.  If the XP had resulted in a skill raising a level, this command will reduce the skill level.
 
-`xp/undo <name>=<ability>` - Undo an accidentaly XP expenditure.
+`xp/undo <name>=<ability>` - Undo an accidental XP expenditure.

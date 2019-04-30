@@ -16,6 +16,7 @@ For more help with xp and learning costs, see the [XP Guide](http://spiritlakemu
 
 `learn <ability>` - Spends XP to learn an ability.
 `xp` - Shows your progress towards the next rating level.
+`xp/costs` - Reviews XP costs.
 
 `spell/learn <spell>` - Spends XP to learn a spell
 `spells` - Shows spells you are learning and how much XP is still needed.

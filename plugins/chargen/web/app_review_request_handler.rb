@@ -32,6 +32,8 @@ module AresMUSH
         ranks_app = Ranks.is_enabled? ? MushFormatter.format(Ranks.app_review(char)): nil
         hooks_app = MushFormatter.format Chargen.hook_app_review(char)
 
+        custom_review = Chargen.custom_app_review(char)
+        custom_app = custom_review ? MushFormatter.format(custom_review) : nil
 
         {
           abilities: abilities_app,
@@ -43,7 +45,9 @@ module AresMUSH
           name: char.name,
           id: char.id,
           job: job.id,
-          secrets: char.secretpref
+          secrets: char.secretpref,
+          custom: custom_app
+
         }
       end
     end

@@ -34,6 +34,10 @@ If you're getting weird configuration errors and are having trouble figuring out
 
 `config/check`
 
+If one of your config files is messed up, you can restore it to the defaults using:
+
+`config/restore <file>` (e.g. config/restore website.yml)
+
 ## Viewing Cron Jobs
 
 You can also get a summary of what cron jobs have been configured.  Note: This will find all of the standard Ares cron jobs.  If you have added custom code, make sure your cron config settings have the word "cron" in their name.
