@@ -33,7 +33,7 @@ module AresMUSH
         scene.update(title: request.args[:title])
         scene.update(icdate: request.args[:icdate])
         scene.update(plot: Plot[request.args[:plot_id]])
-        Global.logger.debug "ARGS: #{request.args[:privacy]}"
+
         if (!scene.completed)
           scene.update(private_scene: request.args[:privacy] == "Private")
           scene.update(watchable_scene: request.args[:privacy] == "Watchable")
