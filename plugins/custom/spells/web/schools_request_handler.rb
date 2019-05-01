@@ -72,19 +72,9 @@ module AresMUSH
           elsif s[:targets] > 1
             s[:multi_target] = true
           end
-          # Global.logger.debug "target nums: #{s[:targets]}"
-          # Global.logger.debug "spell: #{s[:name]} armor: #{armor} protection: #{protection} defense: #{defense}"
-          # Global.logger.debug "spell: #{s[:name]} weapon special: #{weapon_special} lethality: #{weapon_special_lethality}"
-          # Global.logger.debug "spell: #{s}"
-          # Global.logger.debug "spell: #{s[:name]} level 8: #{s[:level_8]} level: #{s[:level]}"
         end
 
         spells_by_level = spells.group_by { |s| s[:level] }
-        # spells.each do |s|
-        #   Global.logger.debug "Weapon Types #{s[:weapon_type]}
-        # end
-
-        # Global.logger.debug "spells: #{spells}"
         blurb = Global.read_config("schools", school, "blurb")
 
 
@@ -121,7 +111,8 @@ module AresMUSH
           weapon: data['weapon'],
           armor: data['armor'],
           armor_specials: data['armor_specials'],
-          weapon_specials: data['weapon_specials']
+          weapon_specials: data['weapon_specials'],
+          effect: data['effect']
 
           }
         }
