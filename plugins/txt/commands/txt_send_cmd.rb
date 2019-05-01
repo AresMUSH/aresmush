@@ -83,47 +83,52 @@ module AresMUSH
         end
 
         # Check if the people are real. If so, and if scene, add to scene + emit to scene.
-        self.names.each do |name|
-          result = Character.named(name)
 
-          if !result
+        recipients = []
+        self.names.each do |name|
+          char = Character.named(name)
+
+          if !char
             client.emit_failure t('txt.no_such_character')
-            return
+          else
+            recipients.concat [char.name]
           end
 
+
+
           if self.scene
-            can_txt_scene = Scenes.can_join_scene?(result, self.scene)
+            can_txt_scene = Scenes.can_join_scene?(char, self.scene)
             if (!can_txt_scene)
-              Scenes.add_to_scene(scene, t('txt.recipient_added_to_scene', :name => result.name ),
+              Scenes.add_to_scene(scene, t('txt.recipient_added_to_scene', :name => char.name ),
               enactor, nil, true )
               Global.logger.debug "ENACTOR: #{enactor.name}"
 
               scene_room = self.scene.room
               Rooms.emit_ooc_to_room scene_room,t('txt.recipient_added_to_scene',
-              :name => result.name )
+              :name => char.name )
 
               if (enactor.room == self.scene.room)
                 nil
               else
                 client.emit_success t('txt.recipient_added_to_scene',
-                :name => result.name )
+                :name =>char.name )
               end
 
-              self.names.each do |name|
-                char = Character.named(name)
-                if (!scene.participants.include?(char))
-                  scene.participants.add char
-                end
-                if (!scene.watchers.include?(char))
-                  scene.watchers.add char
-                end
+              if (!scene.participants.include?(char))
+                scene.participants.add char
               end
 
+              if (!scene.watchers.include?(char))
+                scene.watchers.add char
+              end
             end
           end
         end
 
-        recipient_names = InputFormatter.titlecase_arg(Txt.format_recipient_indicator(self.names))
+        Global.logger.debug "RECIPIENTS: #{recipients}"
+
+        recipient_names = Txt.format_recipient_indicator(recipients)
+
 
         if self.scene
           scene_txt = t('txt.txt_to_scene_with_recipient',
@@ -186,7 +191,7 @@ module AresMUSH
           client.emit self.sender_txt
         end
 
-        enactor.update(txt_last: self.names)
+        enactor.update(txt_last: recipients)
         enactor.update(txt_scene: self.scene_id)
 
         # Text monitoring. Emits txts to channel. Set to FALSE to turn off.

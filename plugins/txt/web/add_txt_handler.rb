@@ -59,37 +59,54 @@ module AresMUSH
                 end
 
                 names_raw = InputFormatter.titlecase_arg(names_raw)
+                names_array = names_raw.split(/ /)
+                Global.logger.debug "NAMES Array1: #{names_array}"
+                names_raw = []
+                names_array.each do |name|
+                  char = Character.named(name)
+                  if !char
+                    return { error: t('txt.no_such_character') }
+                  else
+                    names_raw.concat [char.name]
+                  end
+                end
+                names_raw = names_raw.join(" ")
+                Global.logger.debug "NAMES RAW: #{names_raw}"
+
 
                 scene_room = scene.room
 
                 if !names.empty?
+                  recipients = []
                     names.each do |name|
-                        result = Character.named(name)
+                        char = Character.named(name)
 
-                        if !result
-                            return { error: t('txt.no_such_character') }
+                        if !char
+                          return { error: t('txt.no_such_character') }
+                        else
+                          recipients.concat [char.name]
                         end
 
-                        can_txt_scene = Scenes.can_join_scene?(result, scene)
+                        can_txt_scene = Scenes.can_join_scene?(char, scene)
                         if (!can_txt_scene)
                             Scenes.add_to_scene(scene, t('txt.recipient_added_to_scene',
-                            :name => result.name ),
+                            :name => char.name ),
                             enactor, nil, true )
 
                             Rooms.emit_ooc_to_room scene_room,t('txt.recipient_added_to_scene',
-                            :name => result.name )
+                            :name => char.name )
 
-                            if (!scene.participants.include?(result))
-                              scene.participants.add result
+                            if (!scene.participants.include?(char))
+                              scene.participants.add char
                             end
 
-                            if (!scene.watchers.include?(result))
-                              scene.watchers.add result
+                            if (!scene.watchers.include?(char))
+                              scene.watchers.add char
                             end
                         end
                     end
 
-                    names_plus = names << enactor.name
+                    names_plus = recipients << enactor.name
 
                     names_plus.each do |name|
                         result = OnlineCharFinder.find(name)
@@ -144,9 +161,9 @@ module AresMUSH
 
                 Rooms.emit_ooc_to_room scene_room,room_txt
 
-                names.delete(enactor.name)
+                recipients.delete(enactor.name)
 
-                enactor.update(txt_last_scene: names)
+                enactor.update(txt_last_scene: recipients)
 
                 Scenes.add_to_scene(scene, self.scene_txt, enactor)
 
