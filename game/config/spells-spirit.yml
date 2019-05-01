@@ -7,13 +7,9 @@ spells:
     desc: "Attempts made in Asher's presence suffer a negative modifier. "
     duration: 100 rounds
     is_potion: true
-    is_revive: false
-    is_stun: false
     level: 1
     line_of_sight: true
-    multi_target: false
     name: Huxian's Curse
-    notes: ''
     range: Short
     rounds: 100
     school: Spirit
@@ -23,24 +19,19 @@ spells:
   Locate Object:
     available: true
     casting_time: 1 round
-    desc: The caster is able to sense the direction of an object they have physically
-      encountered.
+    desc: The caster is able to sense the direction of an object they have physically encountered.
     duration: 10 minutes
-    is_revive: false
-    is_stun: false
+    effect: Other
     level: 1
-    line_of_sight: false
-    multi_target: false
     name: Locate Object
-    notes: ''
     range: Short
     roll: true
     school: Spirit
-    target_optional: false
   Object Whisper:
     available: true
     casting_time: 1 round
     desc: "Caster hears a random, uncontrollable thought (no more than a short sentence of up to 10 words) from an object held by a sapient creature in the past 48 hours. Successive casts on the same object yield the same sentence. When possible, the sentence should be chosen by a GM or someone other than the caster."
+    effect: Communication
     is_potion: true
     level: 1
     line_of_sight: true
@@ -49,13 +40,12 @@ spells:
     roll: true
     school: Spirit
     target_num: 0
-    target_optional: false
-    effect: Psionic
   Share Emotion:
     available: true
     casting_time: 1 round
     desc: Share a single dominant emotion with a target within visual range of the caster.
     duration: 10 minutes
+    effect: Psionic
     level: 1
     line_of_sight: true
     name: Share Emotion
@@ -64,12 +54,12 @@ spells:
     school: Spirit
     target_num: 1
     target_optional: true
-    effect: Psionic
   Share Image:
     available: true
     casting_time: 1 round
     desc: 'The caster can share a still mental image with another person via telepathy.'
     duration: 10 minutes
+    effect: Psionic
     level: 1
     name: Share Image
     range: Long
@@ -77,16 +67,15 @@ spells:
     school: Spirit
     target_num: 1
     target_optional: true
-    effect: Psionic
   #Level 2
   Beckon:
     available: true
     casting_time: 1 round
     desc: "You create the ghostly image of a hand (or anything small and of the caster) which you can send to find anyone. The hand leads that person back to you if they are willing to follow."
     duration: 1 hour
+    effect: Communication
     level: 2
     name: Beckon
-    notes: ''
     range: Long
     roll: true
     school: Spirit
@@ -95,6 +84,7 @@ spells:
     casting_time: 1 round
     desc: "Reduce the strength of the most dominant emotion that the target is feeling. For example, anger may be suppressed into annoyance, joy into serenity, or grief into sadness."
     duration: 10 minutes
+    effect: Psionic
     level: 2
     line_of_sight: true
     name: Dampen Emotion
@@ -103,13 +93,12 @@ spells:
     school: Spirit
     target_optional: true
     target_num: 1
-    effect: Psionic
   Telepathic Correspondence:
     available: true
     casting_time: 1 round
     desc: "Cast a spell on a target that enables the caster to hold a telepathic conversation with one person at a time. Initial casting requires concentration, after which this spell remains in effect without requiring maintenance or taking up your action during a round."
     duration: 1 hour
-    is_revive: false
+    effect: Psionic
     level: 2
     name: Telepathic Correspondance
     range: Long
@@ -122,6 +111,7 @@ spells:
     available: false
     casting_time: 1 round
     desc: Target becomes afraid of the caster and attempts to flee to the nearest place they could safely hide. They will not move in the direction of the caster for the duration of the spell unless forced.
+    effect: Stun
     is_stun: true
     rounds: 1
     level: 3
@@ -136,6 +126,7 @@ spells:
     available: false
     casting_time: 1 round
     desc: Target becomes charmed by the caster and attempts to move toward them. They are neutral toward all parties and will neither aid nor attack while under the spell. The spell is broken if they are hit by an attack.
+    effect: Stun
     is_stun: true
     rounds: 1
     level: 3
@@ -151,6 +142,7 @@ spells:
     casting_time: 1 round
     desc: 'The target is able to comprehend any spoken or written language for the duration of the spell. This does not apply to text written in code.'
     duration: 24 hours
+    effect: Communication
     is_potion: true
     level: 3
     name: Comprehend Languages
@@ -164,6 +156,7 @@ spells:
     casting_time: 1 round
     desc: One target becomes outlined in light visible only to the caster. The color of the light corresponds to the target's current emotional status.
     duration: 1 round
+    effect: Psionic
     level: 3
     line_of_sight: true
     name: Emotional Aura
@@ -177,6 +170,7 @@ spells:
     available: false
     casting_time: 1 round
     desc: Target loses their will to fight.
+    effect: Stun
     fs3_attack: true
     is_stun: true
     rounds: 1
@@ -188,11 +182,11 @@ spells:
     target_num: 1
     target_optional: true
     weapon: Stun (Spirit)
-
   Mind Bolt:
     available: false
     casting_time: 1 round
     desc: The caster delivers a minor assault on the thought pathways of any one sapient creature, doing damage.
+    effect: Damage
     fs3_attack: true
     level: 3
     line_of_sight: true
@@ -209,6 +203,7 @@ spells:
     defense_mod: -1
     desc: "The target's chance of botching their intended action increases slightly. "
     duration: 2 rounds
+    effect: Debuff
     is_potion: true
     level: 3
     line_of_sight: true
@@ -226,6 +221,7 @@ spells:
     defense_mod: 1
     desc: The target's chance of succeeding in their intended action is improved slightly.
     duration: 2 rounds
+    effect: Buff
     is_potion: true
     level: 3
     line_of_sight: true
@@ -241,9 +237,9 @@ spells:
     casting_time: 1 round
     desc: "Up to 4 targets of the caster's choice are able to comprehend any spoken or written language for the duration of the spell. This does not apply to text written in code."
     duration: 24 hours
+    effect: Communication
     is_potion: true
     level: 4
-    multi_target: true
     name: Group Comprehend Languages
     range: Short
     roll: true
@@ -255,6 +251,7 @@ spells:
     available: false
     casting_time: 1 round
     desc: "Cast a protective psionic shield on a target. The strength of the shield is determined by the caster's Spirit roll. When the target is targetted by another psionic spell, the opposing caster rolls Spirit vs the strength of the shield to determine whether the spell succeeds, or whether the mind shield holds."
+    effect: Defense
     level: 4
     line_of_sight: true
     name: Mind Shield
@@ -265,14 +262,15 @@ spells:
     duration: 5 minutes (30 rounds)
     rounds: 30
   Potions (Spirit):
-    desc: Potions desc
+    desc: The caster has learned the art of potion-making and can craft potions in any school. This is not a spell in the same sense of most, but rather an art learned through study. It takes time, effort, and materials to brew a potion.
     level: 4
-    name: Potions
+    name: Potions (Spirit)
     school: Spirit
   Spell Fatigue Heal:
     available: false
     casting_time: 1 round
     desc: Heal a target of spell fatigue. Cannot be cast on oneself.
+    effect: Heal
     is_potion: true
     level: 4
     line_of_sight: true
@@ -287,6 +285,7 @@ spells:
     casting_time: 1 round
     desc: So long as the caster does not attack or block, they are not seen as an viable threat or target by aggressors. They are not immune to unintended AoE attacks.
     duration: 10 minutes
+    effect: Defense
     is_potion: true
     level: 4
     name: Spirit of Pacifism
@@ -301,7 +300,6 @@ spells:
     effect: Psionic
     level: 4
     name: Telepathic Reading
-    notes: ''
     range: Short
     roll: true
     school: Spirit
@@ -312,6 +310,7 @@ spells:
     casting_time: 1 round to conjure, 1 round per question.
     desc: "You may contact a [spirit](http://spiritlakemu.com/wiki/creatures#spirits-and-ghosts) and ask it one question per      round. The spirit s knowledge is limited to matters within its immediate area or expertise"
     duration: 15 minutes
+    effect: Communication
     level: 5
     name: Commune with Local Spirit
     range: Short
@@ -325,6 +324,7 @@ spells:
     defense_mod: -2
     desc: "The target's chance of botching their intended action increases slightly more."
     duration: 3 rounds
+    effect: Debuff
     level: 5
     line_of_sight: true
     name: Medium Jinx
@@ -341,6 +341,7 @@ spells:
     defense_mod: 2
     desc: "The target's chance of succeeding in their intended action is improved slightly more."
     duration: 3 rounds
+    effect: Buff
     level: 5
     line_of_sight: true
     name: Medium Luck
@@ -368,6 +369,7 @@ spells:
     casting_time: 1 round
     desc: "The caster's presence is completely ignored by all thinking beings or creatures. \n\nThere is no physical change, the mind simply rejects any sensory signs of the caster for the duration of the spell. Large disruptions or sudden violence by the caster will break the spell."
     duration: 10 minutes
+    effect: Defense
     level: 5
     name: Pass Unseen
     range: Self
@@ -388,13 +390,21 @@ spells:
     target_num: 3
     target_optional: true
   Familiar (Spirit):
-    desc: Familiar  desc
+    desc: "A familiar is a spirit associated or allied with a school of magic that has taken residence in a physical vessel with the shape of an animal. It functions as a companion, assistant, and guardian. \n\nFamiliars may be capable of some or all of the following: sharing telepathic or empathic communication, providing knowledge of the arcane, sharing senses, lending physical aid as spies or fighters, delivering spells at a distance of up to three miles."
+    effect: Other
     level: 6
     name: Familiar
     roll: true
     school: Spirit
+    casting_time: 3 hours
+    range: Short
+    line_of_sight: true
+    available: true
   Mass Awaken Terror:
-    desc: Mass Awaken Terror
+    available: false
+    desc: Targets become afraid of the caster and attempt to flee to the nearest place they could safely hide. They will not move in the direction of the caster or attack for the duration of the spell unless forced.
+    effect: Stun
+    is_stun: true
     level: 6
     name: Mass Awaken Terror
     roll: true
@@ -419,6 +429,7 @@ spells:
     casting_time: 1 round
     desc: The target becomes overwhelmed by the desire to sleep and falls unconscious. They are only awoken if attacked or if an ally uses a round to attempt to awaken them.
     duration: 15 minutes
+    effect: Stun
     is_stun: true
     level: 6
     name: Sleep
@@ -431,9 +442,10 @@ spells:
   Clarity:
     available: true
     casting_time: 1 round
-    desc: "The caster extends their senses to all beings within range. While their  body lies senseless and incapacitated, they see and feel everything sensed by every sapient creature in that area. They can identify the presence, quantity, and location of non-sapient creatures.\n\n
+    desc: "The caster extends their senses to all beings within range. While their  body lies senseless and incapacitated, they see and feel everything sensed by every sapient creature in that area. They can also identify the presence, quantity, and location of non-sapient creatures.\n\n
     The caster can choose to absorb all experiences at a surface level, or focus their attention on up to five individuals at a time for more details."
     duration: 15 minutes
+    effect: Communication
     level: 7
     name: Clarity
     range: Long
@@ -488,7 +500,6 @@ spells:
     school: Spirit
     target_num: 1
     target_optional: true
-
   Curse Of Twilight:
     available: false
     casting_time: 1 round
@@ -512,4 +523,3 @@ spells:
     range: Touch
     roll: true
     school: Spirit
-    target_optional: false

@@ -3,54 +3,35 @@ spells:
     area: 1-5 ft radius
     available: true
     casting_time: 1 round
-    desc: "Draw up to 2 gallons of clean drinking water from the moisture in the air\u2014possibly
-      creating a downpour or filling many small receptacles.\n\nThe water
-      is generally reflective of the temperature in which it is created, but it is
-      always liquid on creation. The temperature around it may freeze or heat the
-      water after creation."
-    is_revive: false
-    is_stun: false
+    desc: "Draw up to 2 gallons of clean drinking water from the moisture in the air\u2014possibly creating a downpour or filling many small receptacles.\n\nThe water is generally reflective of the temperature in which it is created, but it is always liquid on creation. The temperature around it may freeze or heat the water after creation."
+    effect: Creation
     level: 1
-    line_of_sight: false
-    multi_target: false
     name: Create Water
-    notes: ''
     range: Short
     roll: true
     school: Water
-    target_optional: false
   Minor Fog:
     area: 5 cubic feet
     available: true
     casting_time: 1 round
-    desc: A cloud of fog fills a small area, no greater than five cubic feet. The
-      fog may creep along the ground or cling near the caster's skin.
+    desc: A cloud of fog fills a small area, no greater than five cubic feet. The fog may creep along the ground or cling near the caster's skin.
     duration: 10 minutes
-    is_revive: false
-    is_stun: false
+    effect: Creation
     level: 1
-    line_of_sight: false
-    multi_target: false
     name: Minor Fog
-    notes: ''
     range: Short
     roll: true
     school: Water
-    target_optional: false
   #Level 2
   Chill Touch:
     available: true
     casting_time: 1 round
     desc: Caster delivers minor cold damage via touch.
+    effect: Damage
     fs3_attack: true
     is_potion: true
-    is_revive: false
-    is_stun: false
     level: 2
-    line_of_sight: false
-    multi_target: false
     name: Chill Touch
-    notes: ''
     range: Touch
     school: Water
     target_num: 1
@@ -63,11 +44,10 @@ spells:
     defense_mod: -1
     desc: "Chill someone's limbs, making it difficult for them to move effectively. "
     duration: 1 round
+    effect: Debuf
     level: 2
     line_of_sight: true
-    multi_target: false
     name: Chilled Limbs
-    notes: ''
     range: Short
     rounds: 1
     school: Water
@@ -79,195 +59,137 @@ spells:
     casting_time: 1 round
     desc: "For the duration of the spell, the caster can influence up to 5 cubic feet of preexisting water, moving and shaping it into simple non-weaponized shapes that animates at their direction. The caster can control the flow, density, and dispersion of water to form dry spots, move puddles, or reroute small streams. When the spell ends, the water returns to its natural state in its current location."
     duration: 1 hour
-    is_revive: false
-    is_stun: false
+    effect: Creation
     level: 2
     line_of_sight: true
-    multi_target: false
     name: Shape Water
-    notes: ''
     range: Short
     roll: true
     school: Water
-    target_optional: false
   Shape Ice:
     area: 1 cubic foot
     available: true
     casting_time: 1 round
     desc: "For the duration of the spell, the caster can create or inpfluence up to 1 cubic foot of ice and form it into simple non-weaponized shapes that animate at their direction. Ice returns to its natural - but not necessarily original - state when the spell ends. If the ice was created from water, it will remain ice until it naturally melts."
     duration: 1 hour
-    is_revive: false
-    is_stun: false
+    effect: Creation
     level: 2
     line_of_sight: true
-    multi_target: false
     name: Shape Ice
-    notes: ''
     range: Short
     roll: true
     school: Water
-    target_optional: false
   Ice Talons:
-
     available: false
     casting_time: 1 round
-    desc: The caster's fingertips become ice talons capable of inflicting damage.
-      Talons can be broken off and thrown for a ranged attack.
+    desc: The caster's fingertips become ice talons capable of inflicting damage. Talons can be broken off and thrown for a ranged attack.
     duration: 1 round
+    effect: Creation
     fs3_attack: true
     is_potion: true
-    is_revive: false
-    is_stun: false
     level: 3
-    line_of_sight: false
-    multi_target: false
     name: Ice Talons
-    notes: ''
     range: Self
     school: Water
-
-    target_optional: false
     weapon: Ice Talons
   Water Breathing:
-
     available: false
     casting_time: 1 round
-    desc: Create a bubble of air in water, drawing oxygen from the surrounding water
-      to replenish your breathing supply underwater.
+    desc: Create a bubble of air in water, drawing oxygen from the surrounding water to replenish your breathing supply underwater.
     duration: 1 hour
+    effect: Other
     is_potion: true
-    is_revive: false
-    is_stun: false
     level: 3
-    line_of_sight: false
-    multi_target: false
     name: Water Breathing
-    notes: ''
     range: Self
     roll: true
     school: Water
-    target_optional: false
   Water Cannon:
-
     available: false
     casting_time: 1 round
-    desc: The caster blasts a target with a powerful water attack, knocking them off
-      their feet and incapacitating them for one round.
-
+    desc: The caster blasts a target with a powerful water attack, knocking them off their feet and incapacitating them for one round.
+    effect: Stun
     fs3_attack: true
-    is_revive: false
     is_stun: true
     rounds: 1
     level: 3
     line_of_sight: true
-    multi_target: false
     name: Water Cannon
-    notes: ''
     range: Short
     school: Water
     target_num: 1
     target_optional: true
     weapon: Stun (Water)
   Water Walk:
-
     available: true
     casting_time: 1 round
     desc: The caster may tread on a liquid surface as if on solid ground.
     duration: 1 hour
+    effect: Travel
     is_potion: true
-    is_revive: false
-    is_stun: false
     level: 3
-    line_of_sight: false
-    multi_target: false
     name: Water Walk
-    notes: ''
     range: Self
     roll: true
     school: Water
-    target_optional: false
   Cone Of Cold:
     area: 5 ft maximum width
     available: true
     casting_time: 1 round
-    desc: Frigid cold emanaes from the caster's hand and extends outward in a cone
-      shape, doing minor cold damage to up to 3 targets. As the ice hits, it explodes,doing
-      additional shrapnel damage.
-
+    desc: Frigid cold emanaes from the caster's hand and extends outward in a cone shape, doing minor cold damage to up to 3 targets. As the ice hits, it explodes, doing additional shrapnel damage.
+    effect: AOE Damage
     fs3_attack: true
-    is_revive: false
-    is_stun: false
     level: 4
     line_of_sight: true
-    multi_target: true
     name: Cone Of Cold
-    notes: ''
     range: Short
     school: Water
     target_num: 3
     target_optional: true
     weapon: Cone Of Cold
   Ice Armor:
-
     armor: Ice
     available: true
     casting_time: 1 round
-    desc: Caster weaponizes and protects their own body by augmenting it with thick
-      sheets of ice that form into talons capping each finger. Increases defenses
-      slightly and adds a bladed weapon.
+    desc: Caster weaponizes and protects their own body by augmenting it with thick sheets of ice that form into talons capping each finger. Increases defenses slightly and adds a bladed weapon.
     duration: 3 hours
+    effect: Armor
     is_potion: true
-    is_revive: false
-    is_stun: false
     level: 4
-    line_of_sight: false
-    multi_target: false
     name: Ice Armor
-    notes: ''
     range: Self
     school: Water
-    target_optional: false
     weapon: Ice Armor
   Ice Weapon:
-
     available: true
     casting_time: 1 round
-    desc: Augment one specified pre-existing weapon with a fine coating of freezing
-      ice. Though largely useless against armor, this weapon does incredible damage
-      against unprotected skin, even through normal clothing.
+    desc: Augment one specified pre-existing weapon with a fine coating of freezing ice. Though largely useless against armor, this weapon does incredible damage against unprotected skin, even through normal clothing.
     duration: 3 hours
+    effect: Buff
     is_potion: true
-    is_revive: false
-    is_stun: false
     level: 4
-    line_of_sight: false
-    multi_target: false
     name: Ice Weapon
-    notes: ''
     range: Touch
     rounds: 100
     school: Water
-    target_optional: false
     weapon_specials: Ice
     weapon: Spell
   Potions (Water):
+    available: true
     desc: The caster has learned the art of potion-making and can craft potions in any school. This is not a spell in the same sense of most, but rather an art learned through study. It takes time, effort, and materials to brew a potion.
+    effect: Other
     level: 4
     name: Potions (Water)
     school: Water
-    available: true
   Water Whip:
     available: false
     casting_time: 1 round
     desc: Caster creates a whip out of water, lashing out at a target and doing damage.
+    effect: Damage
     fs3_attack: true
-    is_revive: false
-    is_stun: false
     level: 4
     line_of_sight: true
-    multi_target: false
     name: Water Whip
-    notes: ''
     range: Short
     school: Water
     target_num: 1
@@ -277,17 +199,12 @@ spells:
     area: 10 yard radius
     available: false
     casting_time: 1 round
-    desc: Send a ball of ice hurtling at a point the caster can see. It explodes into
-      jagged shards on impact, hitting up to 3 targets.
-
+    desc: Send a ball of ice hurtling at a point the caster can see. It explodes into jagged shards on impact, hitting up to 3 targets.
+    effect: AOE Damage
     fs3_attack: true
-    is_revive: false
-    is_stun: false
     level: 5
     line_of_sight: true
-    multi_target: true
     name: Exploding Ice
-    notes: ''
     range: Long
     school: Water
     target_num: 3
@@ -297,113 +214,78 @@ spells:
     area: 10 yard radius
     available: false
     casting_time: 1 round
-    desc: Coat the ground in slick ice, making footing difficult up to 3 opponents
-      and giving them a penalty to attack and defense.
+    desc: Coat the ground in slick ice, making footing difficult up to 3 opponents and giving them a penalty to attack and defense.
     duration: 1 round
+    effect: Debuff
     fs3_attack: true
-    is_revive: false
-    is_stun: false
     level: 5
     line_of_sight: true
-    multi_target: true
     name: Slick Ground
-    notes: ''
     range: Long
     school: Water
     target_num: 3
     target_optional: true
     weapon: Slick Ground
   Familiar (Water):
+    available: true
     desc: "A familiar is a spirit associated or allied with a school of magic that has taken residence in a physical vessel with the shape of an animal. It functions as a companion, assistant, and guardian. \n\nFamiliars may be capable of some or all of the following: sharing telepathic or empathic communication, providing knowledge of the arcane, sharing senses, lending physical aid as spies or fighters, delivering spells at a distance of up to three miles."
-    is_revive: false
-    is_stun: false
+    effect: Other
     level: 6
     name: Familiar (Water)
     roll: true
     school: Water
-    target_optional: false
     casting_time: 3 hours
     range: Short
     line_of_sight: true
-    available: true
   Liquid Form:
-
     available: false
     casting_time: 1 round
     defense_mod: 10
-    desc: "The caster''s body becomes clear liquid and cannot be hit by attacks.\n\n
-      While in liquid form, the caster can pass through small holes or narrow openings,
-      even mere cracks, with anything they were carrying at the time the spell was
-      cast.  "
+    desc: "The caster's body becomes clear liquid and cannot be hit by attacks.\n\n While in liquid form, the caster can pass through small holes or narrow openings, even mere cracks, with anything they were carrying at the time the spell was cast.  "
     duration: 5 rounds
-    is_revive: false
-    is_stun: false
+    effect: Defense
     level: 6
-    line_of_sight: false
-    multi_target: false
     name: Liquid Form
-    notes: ''
     range: Self
     roll: true
     rounds: 4
     school: Water
     target_num: 1
-    target_optional: false
   Shatter:
-
     available: false
     casting_time: 1 round
-    desc: Ice encases a portion of a target's body completely, cooling it rapidly
-      and doing immense damage. In extreme cases, limbs may freeze completely, or
-      even shatter.
-
+    desc: Ice encases a portion of a target's body completely, cooling it rapidly and doing immense damage. In extreme cases, limbs may freeze completely, or even shatter.
+    effect: Damage
     fs3_attack: true
-    is_revive: false
-    is_stun: false
     level: 6
     line_of_sight: true
-    multi_target: false
     name: Shatter
-    notes: ''
     range: Long
     school: Water
     target_num: 1
     target_optional: true
     weapon: Shatter
   Energize Dimensional Anchor (Water):
-
     available: false
     casting_time: 2 minutes
-    desc: Provide necessary magical energy of the appropriate School to a Dimensional
-      Anchor spell, enabling the linked casters to permanently close an interdimensional
-      portal.
-
-    is_revive: false
-    is_stun: false
+    desc: Provide necessary magical energy of the appropriate School to a Dimensional Anchor spell, enabling the linked casters to permanently close an interdimensional portal.
+    effect: Travel
     level: 7
-    line_of_sight: false
-    multi_target: false
     name: Dimensional Anchor
-    notes: ''
     range: Touch
     roll: true
     school: Water
-    target_optional: false
   Ice Storm:
     area: 20 yard radius
     available: false
     casting_time: 1 round
-    desc: Jagged shards of ice fall from the sky, doing damage to up to 3 targets
-      within its range. When they hit, they explode, doing further shrapnel damage.
+    desc: Jagged shards of ice fall from the sky, doing damage to up to 3 targets within its range. When they hit, they explode, doing further shrapnel damage.
     duration: 1 round
+    effect: AOE Damage
     fs3_attack: true
-    is_revive: false
-    is_stun: false
     level: 7
     line_of_sight: true
-    multi_target: true
     name: Ice Storm
-    notes: ''
     range: Long
     school: Water
     target_num: 3
@@ -414,14 +296,11 @@ spells:
     available: false
     casting_time: 1 round
     desc: "The caster summons a single, solid wall of ice no greater than 20 yards long, 5 yards thick, 10 yards tall. It remains until melted or destroyed."
+    effect: Defense
     fs3_attack: false
-    is_revive: false
-    is_stun: false
     level: 7
     line_of_sight: true
-    multi_target: false
     name: Ice Wall
-    notes: ''
     range: Long
     school: Water
     effect: Defense
@@ -430,18 +309,12 @@ spells:
     area: Up to 1 square mile
     available: false
     casting_time: 1 round
-    desc: Rapidly drop the temperature of an area you can see, causing all moisture
-      to freeze. Jagged balls of ice form in mid air and explode, adding to the damage
-      done to anyone in its path.
-
+    desc: Rapidly drop the temperature of an area you can see, causing all moisture to freeze. Jagged balls of ice form in mid air and explode, adding to the damage done to anyone in its path.
+    effect: AOE Damage
     fs3_attack: true
-    is_revive: false
-    is_stun: false
     level: 8
     line_of_sight: true
-    multi_target: true
     name: Land Of Ice
-    notes: ''
     range: Massive
     school: Water
     target_num: 100

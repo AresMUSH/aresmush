@@ -287,7 +287,6 @@ fs3combat:
       init_mod: 0
       allowed_specials:
       special_group: melee
-
     Club:
       description: Mace/club/baton/chair leg etc
       is_magic: false
@@ -790,6 +789,22 @@ fs3combat:
       init_mod: 0
       allowed_specials:
       special_group: ranged
+    #Nature
+    Natural Weaponry:
+      description: Level 2 Nature spell
+      is_magic: true
+      skill: Nature
+      lethality: -10
+      penetration: 4
+      weapon_type: Melee
+      is_automatic: false
+      recoil: 0
+      damage_type: Physical
+      accuracy: 0
+      has_shrapnel: false
+      init_mod: 0
+      allowed_specials:
+      special_group: melee
     Thorn Growth:
       description: Level 3 Nature spell
       is_magic: true

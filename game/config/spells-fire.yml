@@ -4,129 +4,98 @@ spells:
     casting_time: 1 round
     desc: Create a flame the size of a ligher.
     duration: 10 minutes
-    is_revive: false
-    is_stun: false
+    effect: Creation
     level: 1
     line_of_sight: true
-    multi_target: false
     name: Fire Starter
-    notes: ''
     range: Short
     roll: true
     school: Fire
-    target_optional: false
   Light:
     available: true
     casting_time: 1 round
     desc: Create a beam of light equivilent to 300 lumens (a small LED flashlight).
     duration: 10 minutes
-    is_revive: false
-    is_stun: false
+    effect: Creation
     level: 1
     line_of_sight: true
-    multi_target: false
     name: Light
-    notes: ''
     range: Short
     roll: true
     school: Fire
-    target_optional: false
   Snuff Flame:
     available: true
     casting_time: 1 round
     desc: Extinguish a flame the size of a lighter.
-    duration:
-    is_revive: false
-    is_stun: false
+    effect: Other
     level: 1
     line_of_sight: true
-    multi_target: false
     name: Fire Starter
-    notes: ''
     range: Short
     roll: true
     school: Fire
-    target_optional: false
   #Level 2
   Blur Image:
     available: true
     casting_time: 1 round
     defense_mod: 1
-    desc: Through a trick of light, the caster bolsters their defense by making themselves
-      more difficult to target for a round.
+    desc: Through a trick of light, the caster bolsters their defense by making themselves more difficult to target for a round.
     duration: 2 rounds
+    effect: Buff
     is_potion: true
-    is_revive: false
-    is_stun: false
     level: 2
-    line_of_sight: false
-    multi_target: false
     name: Blur Image
-    notes: ''
     range: Self
     rounds: 2
     school: Fire
-    target_optional: false
   Shape Fire:
     area: 5 cubic feet
     available: true
     casting_time: 1 round
     desc: "For the duration of the spell, the caster can influence up to 5 cubic feet of flames, forming them into simple non-weaponized shapes that animate at their direction. Within the size limit, they can make flames grow or snuff them out entirely. When the spell ends, the flames return to their natural state in their current location."
     duration: 1 hour
-    is_revive: false
-    is_stun: false
+    effect: Creation
     level: 2
     line_of_sight: true
-    multi_target: false
     name: Shape Fire
-    notes: ''
     range: Short
     roll: true
     school: Fire
-    target_optional: false
   Shape Light:
     area: 5 cubic feet
     available: true
     casting_time: 1 round
     desc: "For the duration of the spell, the caster can cause ambient light to form into simple non-weaponized shapes and colors that animate at their direction. The shapes must form a single continuous image and do not include fine details, although they can be three dimensional and may be as large as 5 cubic feet.  Any intelligent creature can identify images made with this spell as artificial."
     duration: 1 hour
-    is_revive: false
-    is_stun: false
+    effect: Illusion
     level: 2
     line_of_sight: true
-    multi_target: false
     name: Shape Light
-    notes: ''
     range: Short
     roll: true
     school: Fire
-    target_optional: false
   Endure Fire:
     available: true
     casting_time: 1 round
-    desc: Caster is immune to fire and the negative effects of extreme heat.
+    desc: Caster is immune to fire and the negative effects of extreme heat up to 2,012 °F (1,110 °C).
     duration: 10 minutes
+    effect: Buff
     is_potion: true
-    is_revive: false
-    is_stun: false
     level: 3
-    line_of_sight: false
-    multi_target: false
     name: Endure Fire
     notes: Needs limitations as to how hot and how cold
     range: Self
     roll: true
     school: Fire
-    target_optional: false
   Flame Dart:
     available: true
     casting_time: 1 round
     desc: "Launches a single small, flaming projectile at a target, doing damage."
+    effect: Damage
     fs3_attack: true
     level: 3
     line_of_sight: true
     name: Flame Dart
-    notes: ''
     range: Short
     school: Fire
     target_num: 1
@@ -136,18 +105,12 @@ spells:
   Hot Hands:
     available: true
     casting_time: 1 round
-    desc: The caster's fingertips become red hot and capable of inflicting burn damage
-      on touch.
-    duration: 1 round
+    desc: The caster's fingertips become red hot and capable of inflicting burn damage on touch.
+    effect: Damage
     fs3_attack: true
     is_potion: true
-    is_revive: false
-    is_stun: false
     level: 3
-    line_of_sight: false
-    multi_target: false
     name: Hot Hands
-    notes: ''
     range: Touch
     school: Fire
     target_num: 1
@@ -157,17 +120,12 @@ spells:
   Fire Weapon:
     available: true
     casting_time: 1 round
-    desc: Augment one specified pre-existing weapon with dancing flames, increasing
-      its damage.
+    desc: Augment one specified pre-existing weapon with dancing flames, increasing its damage.
     duration: 3 hours
+    effect: Buff
     is_potion: true
-    is_revive: false
-    is_stun: false
     level: 4
-    line_of_sight: false
-    multi_target: false
     name: Fire Weapon
-    notes: ''
     range: Touch
     rounds: 100
     school: Fire
@@ -179,14 +137,11 @@ spells:
     available: true
     casting_time: 1 round
     desc: The caster hurls a ball of swirling flames at a single target.
+    effect: Damage
     fs3_attack: true
-    is_revive: false
-    is_stun: false
     level: 4
     line_of_sight: true
-    multi_target: false
     name: Flame Burst
-    notes: ''
     range: Short
     school: Fire
     target_num: 1
@@ -194,6 +149,7 @@ spells:
     weapon: Flame Burst
   Potions (Fire):
     desc: The caster has learned the art of potion-making and can craft potions in any school. This is not a spell in the same sense of most, but rather an art learned through study. It takes time, effort, and materials to brew a potion.
+    effect: Other
     level: 4
     name: Potions (Fire)
     school: Fire
@@ -202,34 +158,26 @@ spells:
     area: 5 cubic feet
     available: true
     casting_time: 1 minute (6 rounds)
-    desc: Create a convincing illusion of a single subject that fools most observers. It is able to animate at the caster's discretion. The illusion cannot be larger than 3 cubic yards. It may be identified as an illusion with a roll of the caster's Fire vs the observer's Alertness-5. Those with enhanced senses such as smell, hearing, or psionic abilities are more likely to identify the subject as an illusion according to its content and range, and GMs may choose to adjust the modification as appropriate.
+    desc: "Create a convincing illusion of a single subject that fools most observers. It is able to animate at the caster's discretion. The illusion cannot be larger than 3 cubic yards.\n\n The image may be identified as an illusion with a roll of the caster's Fire vs the observer's Alertness-5. Those with enhanced senses such as smell, hearing, or psionic abilities are more likely to identify the subject as an illusion according to its content and range, and GMs may choose to adjust the modification as appropriate."
     duration: 10 minutes
-    is_revive: false
-    is_stun: false
+    effect: Illusion
     level: 4
     line_of_sight: true
-    multi_target: false
     name: Simple Illusion
-    notes: ''
     range: Short
     roll: true
     school: Fire
-    target_optional: false
   #Level 5
   Flares:
     area: 10 yard radius
     available: true
     casting_time: 1 round
-    desc: Colorful flares explode outwards from central points. The bursts of intense
-      heat sear through anything in their path, affecting up to 3 targets.
+    desc: Colorful flares explode outwards from central points. The bursts of intense heat sear through anything in their path, affecting up to 3 targets.
+    effect: AOE Damage
     fs3_attack: true
-    is_revive: false
-    is_stun: false
     level: 5
     line_of_sight: true
-    multi_target: true
     name: Flares
-    notes: ''
     range: Long
     school: Fire
     target_num: 3
@@ -238,17 +186,12 @@ spells:
   Invisible:
     available: true
     casting_time: 1 round
-    desc: "The caster bends light around the target''s form, making them invisible
-      and effectively [hidden.](https://www.aresmush.com/fs3/fs3-3/combat/#stance) The caster may end the spell
-      at any time."
+    desc: "The caster bends light around the target''s form, making them invisible and effectively [hidden.](https://www.aresmush.com/fs3/fs3-3/combat/#stance) The caster may end the spell at any time."
     duration: 5 minutes
-    is_revive: false
-    is_stun: false
+    effect: Defense
     level: 5
     line_of_sight: true
-    multi_target: false
     name: Invisible
-    notes: ''
     range: Short
     rounds: 30
     school: Fire
@@ -257,13 +200,11 @@ spells:
     target_optional: true
   Familiar (Fire):
     desc: "A familiar is a spirit associated or allied with a school of magic that has taken residence in a physical vessel with the shape of an animal. It functions as a companion, assistant, and guardian. \n\nFamiliars may be capable of some or all of the following: sharing telepathic or empathic communication, providing knowledge of the arcane, sharing senses, lending physical aid as spies or fighters, delivering spells at a distance of up to three miles."
-    is_revive: false
-    is_stun: false
+    effect: Other
     level: 6
     name: Familiar (Fire)
     roll: true
     school: Fire
-    target_optional: false
     casting_time: 3 hours
     range: Short
     line_of_sight: true
@@ -272,14 +213,11 @@ spells:
     available: true
     casting_time: 1 round
     desc: 'Gouts of flame are summoned up from the ground, engulfing the target.'
+    effect: Damage
     fs3_attack: true
-    is_revive: false
-    is_stun: false
     level: 6
     line_of_sight: true
-    multi_target: false
     name: Pyre
-    notes: ''
     range: Long
     school: Fire
     target_num: 1
@@ -289,56 +227,34 @@ spells:
     area: '10 yard radius'
     available: true
     casting_time: 1 minute
-    desc: "Create a complicated, convincing visual illusion that fools most observers.
-      The illusion can be quite large, with many moving parts, such as a forest scene
-      or a busy street. Can be used to hide groups.\n\nIt may be identified as an illusion with a roll of the caster's Fire vs the observer's Alertness-5. Those with enhanced senses such as smell, hearing, or psionic abilities are more likely to identify the subject as an illusion according to its content and range, and GMs may choose to adjust the modification as appropriate."
+    desc: "Create a complicated, convincing visual illusion that fools most observers. The illusion can be quite large, with many moving parts, such as a forest scene or a busy street. Can be used to hide groups.\n\nThe image may be identified as an illusion with a roll of the caster's Fire vs the observer's Alertness-5. Those with enhanced senses such as smell, hearing, or psionic abilities are more likely to identify the subject as an illusion according to its content and range, and GMs may choose to adjust the modification as appropriate."
     duration: 15 minutes
-    is_revive: false
-    is_stun: false
+    effect: Illusion
     level: 7
     line_of_sight: true
-    multi_target: false
     name: Complex Illusion
-    notes: ''
     range: Short
     roll: true
     school: Fire
     target_num: 1
     target_optional: true
   Energize Dimensional Anchor (Fire):
-
     available: true
     casting_time: 2 minutes
-    desc: Provide necessary magical energy of the appropriate School to a Dimensional
-      Anchor spell, enabling the linked casters to permanently close an interdimensional
-      portal.
-
-    is_revive: false
-    is_stun: false
+    desc: Provide necessary magical energy of the appropriate School to a Dimensional Anchor spell, enabling the linked casters to permanently close an interdimensional portal.
+    effect: Travel
     level: 7
-    line_of_sight: false
-    multi_target: false
     name: Dimensional Anchor
-    notes: ''
     range: Touch
     roll: true
     school: Fire
-    target_optional: false
   Phoenix's Healing Flames:
-
     available: true
     casting_time: 1 round
-    desc: "A knocked out target is overtaken by flames and reduced to ashes. From beneath
-      those ashes, they are revived and able to return to the fight. \n\nA revived
-      target has no wounds and no spell fatigue.\n\n A magic user who knows this
-      spell is automatically consumed and revived when they themselves can no longer
-      fight. This takes 1 round after they are knocked out."
-
-    is_revive: false
-    is_stun: false
+    desc: "A knocked out target is overtaken by flames and reduced to ashes. From beneath those ashes, they are revived and able to return to the fight. \n\nA revived target has no wounds and no spell fatigue.\n\n A magic user who knows this spell is automatically consumed and revived when they themselves can no longer fight. This takes 1 round after they are knocked out."
+    effect: Revive
     level: 7
     line_of_sight: true
-    multi_target: false
     name: Phoenix's Healing Flames
     notes: This can work, but needs more coding to remove wounds.
     range: Long
@@ -350,39 +266,28 @@ spells:
     area: Up to 1 square mile
     available: true
     casting_time: 1 round
-    desc: Call down a massive storm of fire on a place that you can see. It consumes
-      most things in its path, doing immense damage.
-
+    desc: Call down a massive storm of fire on a place that you can see. It consumes most things in its path, doing immense damage.
+    effect: AOE Damage
     fs3_attack: true
-    is_revive: false
-    is_stun: false
     level: 8
     line_of_sight: true
-    multi_target: true
     name: Firestorm
-    notes: ''
     range: Massive
     school: Fire
-    target_num: 10
+    target_num: 100
     target_optional: true
     weapon: Firestorm
   Phoenix's Last Flight:
-
     available: true
     casting_time: 1 round
-    desc: "A target who has died in the last 60 seconds is overtaken by flames and
-      reduced to ashes. From beneath those ashes, they are revived. \n\nA revived
-      target is unable to return to the fight without further healing. They are both
-      incapacitated and suffering from spell fatigue.\n\n A magic user who knows
-      this spell is automatically consumed and revived when they themselves fall."
-
+    desc: "A target who has died in the last 60 seconds is overtaken by flames and reduced to ashes. From beneath those ashes, they are revived. \n\nA revived target is unable to return to the fight without further healing. They are both incapacitated and suffering from spell fatigue.\n\n A magic user who knows this spell is automatically consumed and revived when they themselves fall."
+    effect: Resurrection
     is_res: true
-    is_revive: false
-    is_stun: false
     level: 8
     line_of_sight: true
-    multi_target: false
     name: Phoenix's Last Flight"
     notes: Needs coded
     range: Long
     school: Fire
+    target_num: 1
+    target_optional: true
