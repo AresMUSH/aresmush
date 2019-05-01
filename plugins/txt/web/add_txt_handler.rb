@@ -59,8 +59,8 @@ module AresMUSH
                 end
 
                 names_raw = InputFormatter.titlecase_arg(names_raw)
+                #Making 'Names Raw' take actual character names instead of aliases.
                 names_array = names_raw.split(/ /)
-                Global.logger.debug "NAMES Array1: #{names_array}"
                 names_raw = []
                 names_array.each do |name|
                   char = Character.named(name)
@@ -71,7 +71,7 @@ module AresMUSH
                   end
                 end
                 names_raw = names_raw.join(" ")
-                Global.logger.debug "NAMES RAW: #{names_raw}"
+
 
 
                 scene_room = scene.room
