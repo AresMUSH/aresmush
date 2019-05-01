@@ -94,9 +94,9 @@ module AresMUSH
           if self.scene
             can_txt_scene = Scenes.can_join_scene?(result, self.scene)
             if (!can_txt_scene)
-              Scenes.add_to_scene(scene, t('txt.recipient_added_to_scene',
-              :name => result.name ),
-              character = Game.master.system_character, nil, true )
+              Scenes.add_to_scene(scene, t('txt.recipient_added_to_scene', :name => result.name ),
+              enactor, nil, true )
+              Global.logger.debug "ENACTOR: #{enactor.name}"
 
               scene_room = self.scene.room
               Rooms.emit_ooc_to_room scene_room,t('txt.recipient_added_to_scene',
@@ -133,7 +133,7 @@ module AresMUSH
           :message => message,
           :scene_id => self.scene_id )
 
-          Scenes.add_to_scene(self.scene, scene_txt)
+          Scenes.add_to_scene(self.scene, scene_txt, enactor)
 
           scene_room = self.scene.room
           Rooms.emit_ooc_to_room scene_room,scene_txt

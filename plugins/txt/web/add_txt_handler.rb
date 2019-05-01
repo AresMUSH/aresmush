@@ -74,7 +74,7 @@ module AresMUSH
                         if (!can_txt_scene)
                             Scenes.add_to_scene(scene, t('txt.recipient_added_to_scene',
                             :name => result.name ),
-                            character = Game.master.system_character, nil, true )
+                            enactor, nil, true )
 
                             Rooms.emit_ooc_to_room scene_room,t('txt.recipient_added_to_scene',
                             :name => result.name )
@@ -85,7 +85,7 @@ module AresMUSH
 
                             if (!scene.watchers.include?(result))
                               scene.watchers.add result
-                            end                            
+                            end
                         end
                     end
 
@@ -148,7 +148,7 @@ module AresMUSH
 
                 enactor.update(txt_last_scene: names)
 
-                Scenes.add_to_scene(scene, self.scene_txt, Game.master.system_character)
+                Scenes.add_to_scene(scene, self.scene_txt, enactor)
 
                 {
                 }
