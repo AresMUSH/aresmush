@@ -100,9 +100,8 @@ weather:
       spring:
         temperature: warm warm warm warm warm cool cool cool cool cold
         condition: mountain-clear mountain-clear mountain-clear mountain-clear mountain-clear
-          mountain-fair mountain-fair mountain-overcast mountain-misty mountain-drizzling
+          mountain-fair mountain-fair mountain-fair mountain-overcast mountain-overcast mountain-misty mountain-drizzling
           mountain-drizzling mountain-raining mountain-storming mountain-sleeting
-          mountain-flurrying mountain-snowing
         stability: 30
       early-fall:
         temperature: warm warm warm cool cool cool cool cold cold cold
@@ -144,7 +143,7 @@ weather:
   - flurrying
   - snowing
   - mountain-sunny
-  - moutain-clear
+  - mountain-clear
   - mountain-fair
   - mountain-overcast
   - mountain-windy
