@@ -93,6 +93,22 @@ spells:
     school: Spirit
     target_optional: true
     target_num: 1
+  Restful Sleep:
+    available: false
+    casting_time: 1 round
+    desc: "Cast a spell on a target that helps ease the mind toward sleep. Falling asleep becomes easy. For the duration, sleep is undisturbed by natural dreams, letting the target rest easy. When the spell is ended, sleep becomes natural and continues or is ended according to natural means.\n\n
+    Has no noticeable effect on those who do not attempt to sleep."
+    duration: 1 hour
+    effect: Other
+    is_potion: true
+    level: 2
+    line_of_sight: true
+    name: Restful Sleep
+    range: Touch
+    roll: true
+    school: Spirit
+    target_optional: true
+    target_num: 1
   Telepathic Correspondence:
     available: true
     casting_time: 1 round
@@ -262,6 +278,7 @@ spells:
     duration: 5 minutes (30 rounds)
     rounds: 30
   Potions (Spirit):
+    available: true
     desc: The caster has learned the art of potion-making and can craft potions in any school. This is not a spell in the same sense of most, but rather an art learned through study. It takes time, effort, and materials to brew a potion.
     level: 4
     name: Potions (Spirit)
