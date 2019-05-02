@@ -101,7 +101,6 @@ module AresMUSH
             if (!can_txt_scene)
               Scenes.add_to_scene(scene, t('txt.recipient_added_to_scene', :name => char.name ),
               enactor, nil, true )
-              Global.logger.debug "ENACTOR: #{enactor.name}"
 
               scene_room = self.scene.room
               Rooms.emit_ooc_to_room scene_room,t('txt.recipient_added_to_scene',
@@ -125,7 +124,7 @@ module AresMUSH
           end
         end
 
-        Global.logger.debug "RECIPIENTS: #{recipients}"
+
 
         recipient_names = Txt.format_recipient_indicator(recipients)
 
