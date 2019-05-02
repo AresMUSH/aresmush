@@ -1,13 +1,38 @@
 ---
 magic-items:
-  Test:
-    name: Test
-    desc: Testing
-    weapon_specials: Sparring
+  Band Of The Unseen:
+    name: Band of the Unseen
+    desc: A slender golden armband, the magical item is embossed with a depiction of the antagonist god Set. He is represented traditionally here. The only variation is the brightly colored blindfold that's been tied over his eyes. When worn in the open or beneath one's clothes, the armband acts as a blockade against intrusions from the Spirit school by those who would do the wearer ill. Magic users with friendly or sincerely good intentions are not protected against.
+  Bane of Elegast:
+    name: Bane of Elegast
+    desc: Crafted to hide from the legendary king and warlord, the broken chain allows anyone who carries it to cast Invisible, the Level 5 Fire spell. It currently resides in Silver's stomach after he swallowed it and fled retribution from the queen of Immeasurable Autumn, a faerie kingdom
+    spell: Invisible
   Blessing Of Wisakedjak:
     name: Blessing Of Wisakedjak
     desc: A six-point deer antler with one tip jaggedly broken off. The base is wrapped and bound in leather that ends in a loop, perfect for attaching to a belt. It grants its owner the ability to cast %xBHalf Shift (Jenu)%xn, allowing them to transform a portion of their body into a Jenu.
     spell: Half Shift (Jenu)
+  Eye Of The Serpent:
+    name: Eye Of The Serpent
+    desc: A briliant diamond the size of a child's fist. It allows the bearer to cast %xBClarity%xn.
+    spell: Clarity
+  Eye Of Apepnet:
+    name: Eye Of Apepnet
+    desc: The eye is a perfect orb, larger than the size of a closed fist, composed of a freckled gold stone. It is preserved in an eternally seeing state with its diamond shaped pupil large and black as night. To look upon it for too long is unnerving as if the great snake still watches one's movements. It is cool to the touch. Allows the possessor to cast %xBDreamtrap%xn on a target.
+    spell: Dreamtrap
+  Horn Of Uktena:
+    name: Horn Of Uktena
+    desc: A bit of worn horn that allows the bearer to cast %xBPhotosynthesis%xn.
+    spell: Photosynthesis
+  Huxian's Gift:
+    name: Huxian's Gift
+    desc: 'Not an actual object, but instead an effect Asher experiences that provides a boost to his energy and a positive modifier to his actions. Those around him experience the inverse: long term exposure leads to a slow sapping of energy and eventually, exhaustion. In his presence, others experience a negative modifier to their actions. This item cannot be given away.'
+    spell_mod: 2
+    attack_mod: 2
+    weapon_specials: Huxian's Gift
+    armor_specials: Huxian's Gift
+  Konvaskr:
+    name: Konvaskr
+    desc: A flying ship that really needs a better desc.
   Raven's Blessing:
     name: Raven's Blessing
     desc:  Strung together with stiff cords and bird bones, the necklace hangs loose and just below the collarbone. The bones are bleached white and decorated with little carvings. Adhered to the bones are short, slim raven feathers. The pendant is a bird skull, but the brow has been hollowed out and set with a dull black stone that doesn't reflect any light. It grants the wearer the ability to cast Group Comprehend Languages
@@ -22,32 +47,7 @@ magic-items:
   Skofnung:
     name: Skofnung
     desc: Ragnar's magical sword with a soul inside.
-  Konvaskr:
-    name: Konvaskr
-    desc: A flying ship that really needs a better desc.
-  Horn Of Uktena:
-    name: Horn Of Uktena
-    desc: A bit of worn horn that allows the bearer to cast %xBPhotosynthesis%xn.
-    spell: Photosynthesis
-  Eye Of The Serpent:
-    name: Eye Of The Serpent
-    desc: A briliant diamond the size of a child's fist. It allows the bearer to cast %xBClarity%xn.
-    spell: Clarity
-  Eye Of Apepnet:
-    name: Eye Of Apepnet
-    desc: The eye is a perfect orb, larger than the size of a closed fist, composed of a freckled gold stone. It is preserved in an eternally seeing state with its diamond shaped pupil large and black as night. To look upon it for too long is unnerving as if the great snake still watches one's movements. It is cool to the touch. Allows the possessor to cast %xBDreamtrap%xn on a target.
-    spell: Dreamtrap
-  Band Of The Unseen:
-    name: Band of the Unseen
-    desc: A slender golden armband, the magical item is embossed with a depiction of the antagonist god Set. He is represented traditionally here. The only variation is the brightly colored blindfold that's been tied over his eyes. When worn in the open or beneath one's clothes, the armband acts as a blockade against intrusions from the Spirit school by those who would do the wearer ill. Magic users with friendly or sincerely good intentions are not protected against.
-  Bane of Elegast:
-    name: Bane of Elegast
-    desc: Crafted to hide from the legendary king and warlord, the broken chain allows anyone who carries it to cast Invisible, the Level 5 Fire spell. It currently resides in Silver's stomach after he swallowed it and fled retribution from the queen of Immeasurable Autumn, a faerie kingdom
-    spell: Invisible
-  Huxian's Gift:
-    name: Huxian's Gift
-    desc: 'Not an actual object, but instead an effect Asher experiences that provides a boost to his energy and a positive modifier to his actions. Those around him experience the inverse: long term exposure leads to a slow sapping of energy and eventually, exhaustion. In his presence, others experience a negative modifier to their actions. This item cannot be given away.'
-    spell_mod: 2
-    attack_mod: 2
-    weapon_specials: Huxian's Gift
-    armor_specials: Huxian's Gift
+  Spear:
+    name: Spear
+    desc: This spear is 5 feet in length with a smooth, oiled shaft that is decorated in ogham runes along one side. It has a simple, but sharp spearhead, and allows its bearer to cast Track Animal.
+    spell: Track Animal
