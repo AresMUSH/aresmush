@@ -27,6 +27,7 @@ module AresMUSH
             title: j.title,
             unread: j.is_unread?(enactor),
             created: j.created_date_str(enactor),
+            short_created: j.created_date_short_str(enactor),
             category: j.category,
             status: j.status,
             author: j.author_name,
