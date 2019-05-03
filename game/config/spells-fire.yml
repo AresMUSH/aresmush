@@ -74,6 +74,7 @@ spells:
     range: Short
     roll: true
     school: Fire
+  #Level 3
   Endure Fire:
     available: true
     casting_time: 1 round
@@ -116,6 +117,20 @@ spells:
     target_num: 1
     target_optional: true
     weapon: Hot Hands
+  Laser Zap:
+    available: false
+    casting_time: 1 round
+    desc: The caster creates an amplified ray of light and focuses the laser on a target to burn them.
+    effect: Damage
+    fs3_attack: true
+    level: 3
+    name: Laser Zap
+    range: Short
+    line_of_sight: true
+    school: Fire
+    target_num: 1
+    target_optional: true
+    weapon: Laser Zap
   #Level 4
   Fire Weapon:
     available: true

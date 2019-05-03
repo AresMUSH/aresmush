@@ -1,0 +1,657 @@
+---
+fs3combat:
+  weapon specials:
+    Lightning:
+      description: Level 4 Air spell
+      is_magic: true
+      lethality: 5
+    Strength:
+      description: Level 3 Corpus spell
+      is_magic: true
+      lethality: -5
+      penetration: 5
+    Agility:
+      description: Level 4 Corpus spell
+      is_magic: true
+      init_mod: 1
+    Vitality:
+      description: Level 4 Corpus spells
+      is_magic: true
+      lethality: 3
+    Grow:
+      description: Level 4 Corpus spell
+      is_magic: true
+      lethality: 15
+      penetration: 5
+    Shrink:
+      description: Level 4 Corpus spell
+      is_magic: true
+      lethality: -20
+      penetration: -5
+      init_mod: 1
+    Diamond:
+      description: Level 4 Earth spell
+      is_magic: true
+      penetration: 3
+    Fire:
+      description: Level 4 Fire spell
+      is_magic: true
+      lethality: 5
+    Ice:
+      description: Level 4 Ice spell
+      is_magic: true
+      lethality: 10
+      penetration: -4
+    Transform:
+      description: Level 4 Will spell
+      is_magic: true
+      accuracy: 1
+      lethality: 3
+      penetration: 1
+    Huxian's Gift:
+      description: Magical item
+      is_magic: true
+      accuracy: 2
+      init_mod: 2
+  weapons:
+    #General
+    Spell:
+      description: Spell with no stats to make it easier to grab special stats.
+      is_magic: true
+      skill: Athletics
+      lethality: 0
+      penetration: 0
+      weapon_type: Suppressive
+      recoil: 0
+      damage_type: Stun
+      accuracy: 0
+      init_mod: 0
+    Stun (Air):
+      description: Stun spell
+      is_magic: true
+      skill: Air
+      lethality: 0
+      penetration: 0
+      weapon_type: Melee
+      recoil: 0
+      damage_type: Physical
+      accuracy: 0
+      init_mod: 0
+    Stun (Corpus):
+      description: Stun spell
+      is_magic: true
+      skill: Corpus
+      lethality: 0
+      penetration: 0
+      weapon_type: Melee
+      recoil: 0
+      damage_type: Physical
+      accuracy: 0
+      init_mod: 0
+    Stun (Earth):
+      description: Stun spell
+      is_magic: true
+      skill: Earth
+      lethality: 0
+      penetration: 0
+      weapon_type: Melee
+      recoil: 0
+      damage_type: Physical
+      accuracy: 0
+      init_mod: 0
+    Stun (Fire):
+      description: Stun spell
+      is_magic: true
+      skill: Fire
+      lethality: 0
+      penetration: 0
+      weapon_type: Melee
+      recoil: 0
+      damage_type: Physical
+      accuracy: 0
+      init_mod: 0
+    Stun (Nature):
+      description: Stun spell
+      is_magic: true
+      skill: Nature
+      lethality: 0
+      penetration: 0
+      weapon_type: Melee
+      recoil: 0
+      damage_type: Physical
+      accuracy: 0
+      init_mod: 0
+    Stun (Spirit):
+      description: Stun spell
+      is_magic: true
+      skill: Spirit
+      lethality: 0
+      penetration: 0
+      weapon_type: Melee
+      recoil: 0
+      damage_type: Physical
+      accuracy: 0
+      init_mod: 0
+    Stun (Water):
+      description: Stun spell
+      is_magic: true
+      skill: Water
+      lethality: 0
+      penetration: 0
+      weapon_type: Melee
+      recoil: 0
+      damage_type: Physical
+      accuracy: 0
+      init_mod: 0
+    Stun (Will):
+      description: Stun spell
+      is_magic: true
+      skill: Will
+      lethality: 0
+      penetration: 0
+      weapon_type: Melee
+      recoil: 0
+      damage_type: Physical
+      accuracy: 0
+      init_mod: 0
+  #Level 1
+  #Level 2
+    Chill Touch:
+      description: Level 2 Water spell
+      is_magic: true
+      skill: Water
+      lethality: -10
+      penetration: 4
+      weapon_type: Melee
+      recoil: 0
+      damage_type: Physical
+      accuracy: 0
+      init_mod: 0
+      special_group: Melee
+    Fling:
+      description: Level 2 Will spell
+      is_magic: true
+      skill: Will
+      lethality: -15
+      penetration: 3
+      weapon_type: Ranged
+      recoil: 0
+      damage_type: Physical
+      accuracy: 0
+      init_mod: 0
+      special_group: Ranged
+    Natural Weaponry:
+      description: Level 2 Nature spell
+      is_magic: true
+      skill: Nature
+      lethality: -10
+      penetration: 4
+      weapon_type: Melee
+      recoil: 0
+      damage_type: Physical
+      accuracy: 0
+      init_mod: 0
+      special_group: Melee
+  #Level 3
+    Earth Bolt:
+      description: Level 3 Earth spell
+      is_magic: true
+      skill: Earth
+      lethality: -10
+      penetration: 4
+      weapon_type: Explosive
+      recoil: 0
+      damage_type: Physical
+      accuracy: 2
+      has_shrapnel: true
+      init_mod: 0
+      special_group: Ranged
+    Flame Dart:
+      description: Level 3 Fire spell
+      is_magic: true
+      skill: Fire
+      lethality: -5
+      penetration: 5
+      weapon_type: Ranged
+      recoil: 0
+      damage_type: Physical
+      accuracy: 0
+      init_mod: 0
+      special_group: Ranged
+    Hot Hands:
+      description: Level 3 Fire spell
+      is_magic: true
+      skill: Fire
+      lethality: -5
+      penetration: 6
+      weapon_type: Melee
+      recoil: 0
+      damage_type: Physical
+      accuracy: 3
+      init_mod: 0
+      special_group: Melee
+    Ice Talons:
+      description: Level 3 Water spell
+      is_magic: true
+      skill: Water
+      lethality: -5
+      penetration: 5
+      weapon_type: Melee
+      recoil: 0
+      damage_type: Physical
+      accuracy: 0
+      init_mod: 0
+      special_group: Melee
+    Laser Zap:
+      description: Level 3 Fire spell
+      is_magic: true
+      skill: Fire
+      lethality: -5
+      penetration: 5
+      weapon_type: Ranged
+      recoil: 0
+      damage_type: Physical
+      accuracy: 0
+      init_mod: 0
+      special_group: Ranged
+    Mind Bolt:
+      description: Level 3 Spirit spell
+      is_magic: true
+      skill: Spirit
+      lethality: -25
+      penetration: 50
+      weapon_type: Ranged
+      recoil: 0
+      damage_type: Physical
+      accuracy: 0
+      init_mod: 0
+      special_group: Ranged
+    Stone Slam:
+      description: Level 3 Earth spell
+      is_magic: true
+      skill: Earth
+      lethality: -5
+      penetration: 5
+      weapon_type: Ranged
+      recoil: 0
+      damage_type: Physical
+      accuracy: 0
+      init_mod: 0
+      special_group: Ranged
+    Thorn Growth:
+      description: Level 3 Nature spell
+      is_magic: true
+      skill: Nature
+      lethality: -10
+      penetration: 4
+      weapon_type: Explosive
+      recoil: 0
+      damage_type: Physical
+      accuracy: 0
+      init_mod: 0
+      special_group: Ranged
+  #Level 4
+    Acid Spit:
+      description: Level 4 Nature spell
+      is_magic: true
+      skill: Nature
+      lethality: 0
+      penetration: 7
+      weapon_type: Ranged
+      recoil: 0
+      damage_type: Physical
+      accuracy: 0
+      init_mod: 0
+      special_group: Ranged
+    Breathless:
+      description: Level 4 Air spell
+      is_magic: true
+      skill: Air
+      lethality: -20
+      penetration: 50
+      weapon_type: Explosive
+      recoil: 0
+      damage_type: Physical
+      accuracy: 0
+      init_mod: 0
+      special_group: Ranged
+    Cone Of Cold:
+      description: Level 4 Water spell
+      is_magic: true
+      skill: Water
+      lethality: -5
+      penetration: 6
+      weapon_type: Explosive
+      recoil: 0
+      damage_type: Physical
+      accuracy: 0
+      has_shrapnel: true
+      init_mod: 0
+      special_group: Ranged
+    Flame Burst:
+      description: Level 4 Fire spell
+      is_magic: true
+      skill: Fire
+      lethality: 0
+      penetration: 7
+      weapon_type: Ranged
+      recoil: 0
+      damage_type: Physical
+      accuracy: 0
+      init_mod: 0
+      special_group: Ranged
+    Ice Armor:
+      description: Level 4 Water spell
+      is_magic: true
+      skill: Water
+      lethality: 0
+      penetration: 6
+      weapon_type: Melee
+      recoil: 0
+      damage_type: Physical
+      accuracy: 0
+      init_mod: 0
+      special_group: Melee
+    Jenu:
+      description: Form for Half Shift spell
+      is_magic: true
+      skill: Strength
+      lethality: 5
+      penetration: 5
+      weapon_type: Melee
+      recoil: 0
+      damage_type: Physical
+      accuracy: 0
+      init_mod: 0
+      special_group: Melee
+    Lightning Bolt:
+      description: Level 4 Air spell
+      is_magic: true
+      skill: Air
+      lethality: 0
+      penetration: 7
+      weapon_type: Ranged
+      recoil: 0
+      damage_type: Physical
+      accuracy: 0
+      init_mod: 0
+      special_group: Ranged
+    Telekinetic Burst:
+      description: Level 4 Will spell
+      is_magic: true
+      skill: Will
+      lethality: -5
+      penetration: 8
+      weapon_type: Ranged
+      recoil: 0
+      damage_type: Physical
+      accuracy: 0
+      init_mod: 0
+      special_group: Ranged
+    Rock Skin:
+      description: Level 4 Earth spell
+      is_magic: true
+      skill: Earth
+      lethality: 5
+      penetration: 6
+      weapon_type: Melee
+      recoil: 0
+      damage_type: Physical
+      accuracy: 0
+      init_mod: 0
+      special_group: Melee
+    Water Whip:
+      description: Level 4 Water spell
+      is_magic: true
+      skill: Water
+      lethality: 0
+      penetration: 7
+      weapon_type: Ranged
+      recoil: 0
+      damage_type: Physical
+      accuracy: 0
+      init_mod: 0
+      special_group: Ranged
+  #Level 5
+    Blow Object:
+      description: Level 5 Air spell
+      is_magic: true
+      skill: Air
+      lethality: 12
+      penetration: 9
+      weapon_type: Ranged
+      recoil: 0
+      damage_type: Physical
+      accuracy: 0
+      init_mod: 0
+      special_group: Ranged
+    Earth Shudder:
+      description: Level 5 Earth spell
+      is_magic: true
+      skill: Earth
+      lethality: 0
+      penetration: 0
+      weapon_type: Suppressive
+      is_automatic: true
+      recoil: 0
+      damage_type: Stun
+      accuracy: 3
+      init_mod: 0
+    Exploding Ice:
+      description: Level 5 Water spell
+      is_magic: true
+      skill: Water
+      lethality: 5
+      penetration: 8
+      weapon_type: Explosive
+      recoil: 0
+      damage_type: Physical
+      accuracy: 1
+      has_shrapnel: true
+      init_mod: 0
+      special_group: Ranged
+    Flares:
+      description: Level 5 Fire spell
+      is_magic: true
+      skill: Fire
+      lethality: 7
+      penetration: 9
+      weapon_type: Explosive
+      recoil: 0
+      damage_type: Physical
+      accuracy: 1
+      init_mod: 0
+      special_group: Ranged
+    Slick Ground:
+      description: Level 5 Water spell
+      is_magic: true
+      skill: Water
+      lethality: 0
+      penetration: 0
+      weapon_type: Suppressive
+      is_automatic: true
+      recoil: 0
+      damage_type: Stun
+      accuracy: 3
+      init_mod: 0
+    Stalagmite:
+      description: Level 5 Earth spell
+      is_magic: true
+      skill: Earth
+      lethality: 10
+      penetration: 10
+      weapon_type: Ranged
+      recoil: 0
+      damage_type: Physical
+      accuracy: 1
+      init_mod: 0
+      special_group: Ranged
+  #Level 6
+    Poison Puffs:
+      description: Level 6 Nature spell
+      is_magic: true
+      skill: Nature
+      lethality: 0
+      penetration: 50
+      weapon_type: Explosive
+      recoil: 0
+      damage_type: Physical
+      accuracy: 0
+      init_mod: 0
+      special_group: Ranged
+    Pyre:
+      description: Level 6 Fire spell
+      is_magic: true
+      skill: Fire
+      lethality: 15
+      penetration: 12
+      weapon_type: Ranged
+      recoil: 0
+      damage_type: Physical
+      accuracy: 0
+      init_mod: 0
+      special_group: Ranged
+    Shatter:
+      description: Level 6 Ice spell
+      is_magic: true
+      skill: Water
+      accuracy: 1
+      lethality: 18
+      penetration: 10
+      weapon_type: Ranged
+      recoil: 0
+      damage_type: Physical
+      init_mod: 0
+      special_group: Ranged
+    Stone Daggers:
+      description: Level 6 Earth spell
+      is_magic: true
+      skill: Earth
+      lethality: 15
+      penetration: 12
+      weapon_type: Ranged
+      is_automatic: true
+      recoil: 0
+      damage_type: Stun
+      accuracy: 0
+      init_mod: 0
+      special_group: Ranged
+  #Level 7
+    Exploding Earth:
+      description: Level 7 Earth spell
+      is_magic: true
+      skill: Earth
+      lethality: 15
+      penetration: 13
+      weapon_type: Explosive
+      is_automatic: true
+      recoil: 0
+      damage_type: Stun
+      accuracy: 1
+      has_shrapnel: true
+      init_mod: 0
+      special_group: Ranged
+    Ice Storm:
+      description: Level 7 Water spell
+      is_magic: true
+      skill: Water
+      lethality: 15
+      penetration: 13
+      weapon_type: Explosive
+      is_automatic: true
+      recoil: 0
+      damage_type: Stun
+      accuracy: 1
+      has_shrapnel: true
+      init_mod: 0
+      special_group: Ranged
+    Lightning Strike:
+      description: Level 7 Air spell
+      is_magic: true
+      skill: Air
+      lethality: 20
+      penetration: 13
+      weapon_type: Ranged
+      recoil: 0
+      damage_type: Physical
+      accuracy: 0
+      init_mod: 0
+      special_group: Ranged
+    Mass Telekinetic Burst:
+      description: Level 7 Will spell
+      is_magic: true
+      skill: Will
+      lethality: 15
+      penetration: 13
+      weapon_type: Explosive
+      is_automatic: true
+      recoil: 0
+      damage_type: Stun
+      accuracy: 1
+      init_mod: 0
+      special_group: Ranged
+    Suffocate:
+      description: Level 7 Air spell
+      is_magic: true
+      skill: Air
+      lethality: 5
+      penetration: 50
+      weapon_type: Ranged
+      recoil: 0
+      damage_type: Physical
+      accuracy: 0
+      init_mod: 0
+      special_group: Ranged
+  #Level 8
+    Firestorm:
+      description: Level 8 Fire spell
+      is_magic: true
+      skill: Fire
+      lethality: 45
+      penetration: 20
+      weapon_type: Explosive
+      recoil: 0
+      damage_type: Physical
+      accuracy: 4
+      has_shrapnel: true
+      init_mod: 0
+      special_group: Ranged
+    Land Of Ice:
+      description: Level 8 Water spell
+      is_magic: true
+      skill: Water
+      lethality: 45
+      penetration: 20
+      weapon_type: Explosive
+      recoil: 0
+      damage_type: Physical
+      accuracy: 4
+      has_shrapnel: true
+      init_mod: 0
+      special_group: Ranged
+    Massive Quake:
+      description: Level 8 Earth spell
+      is_magic: true
+      skill: Earth
+      lethality: 45
+      penetration: 20
+      weapon_type: Explosive
+      recoil: 0
+      damage_type: Physical
+      accuracy: 4
+      has_shrapnel: true
+      init_mod: 0
+      special_group: Ranged
+    Tempest:
+      description: Level 8 Air spell
+      is_magic: true
+      skill: Air
+      lethality: 45
+      penetration: 2
+      weapon_type: Explosive
+      recoil: 0
+      damage_type: Physical
+      accuracy: 4
+      has_shrapnel: true
+      init_mod: 0
+      special_group: Ranged

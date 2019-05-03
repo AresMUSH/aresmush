@@ -58,7 +58,7 @@ module AresMUSH
         is_revive = Global.read_config("spells", self.spell, "is_revive")
         target_names = target_name.split(" ").map { |n| InputFormatter.titlecase_arg(n) }
         if enactor.combat
-          return emit_failure t('custom.spell_ko') if self.caster_combat.is_ko
+          return t('custom.spell_ko') if self.caster_combat.is_ko
           return t('custom.dont_know_spell') if (!caster_combat.is_npc? &&  Custom.knows_spell?(caster, self.spell) == false && Custom.item_spell(caster) != self.spell)
 
           target_names.each do |name|
