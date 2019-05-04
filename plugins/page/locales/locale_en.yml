@@ -20,7 +20,7 @@ en:
         
         ignore_added: "%{name} has been added to your page ignore list."
         ignore_removed: "%{name} has been removed from your page ignore list."
-        cant_page_ignored: "You can't page %{names} because you're on their ignore list."
+        cant_page_ignored: "You can't page %{name}."
 
         monitor_started: "You start monitoring pages to/from %{name}."
         monitor_stopped: "You stop monitoring pages to/from %{name}."
@@ -31,3 +31,6 @@ en:
         page_reported_body: "%{reporter} has reported an issue with the following pages from %{name}.%R%RReason:%R"
         
         page_monitoring: "Page Monitoring"
+        web_page_notification: "New private message from %{name}."
+        recipient_is_offline: "%{name} is offline, but can get the message next time they're on."
+        cant_page_just_yourself: "You can't page just yourself.  Maybe try the 'echo' command instead."

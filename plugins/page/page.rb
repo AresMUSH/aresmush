@@ -48,8 +48,18 @@ module AresMUSH
       case event_name
       when "CharDeletedEvent"
         return CharDeleteddEventHandler
+      when "CronEvent"
+        return CronEventHandler
       end
       
+      nil
+    end
+    
+    def self.get_web_request_handler(request)
+      case request.cmd
+      when "pageIndex"
+        return PageIndexRequestHandler
+      end
       nil
     end
     

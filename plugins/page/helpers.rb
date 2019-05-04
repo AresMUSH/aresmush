@@ -8,7 +8,8 @@ module AresMUSH
       :color => Page.page_color(char) )
     end
     
-    def self.format_recipient_indicator(names)
+    def self.format_recipient_indicator(recipients)
+      names = recipients.sort_by { |r| r.name }.map { |r| Login.is_online?(r) ? r.name : "#{[r.name]}" }
       return t('page.recipient_indicator', :recipients => names.join(" "))
     end
     
@@ -28,7 +29,10 @@ module AresMUSH
     
   
     def self.send_afk_message(client, other_client, other_char)
-      if (other_char.is_afk)
+      if (!other_client)
+        #client.emit_ooc t('page.recipient_is_offline', :name => other_char.name)
+        return
+      elsif (other_char.is_afk)
         afk_message = ""
         if (other_char.afk_display)
           afk_message = "(#{other_char.afk_display})"
@@ -48,6 +52,61 @@ module AresMUSH
       char.page_color || Global.read_config("page", "page_color")
     end
     
+    # Client may be nil if sent via portal.
+    def self.send_page(enactor, recipients, message, client)
+      message = PoseFormatter.format(enactor.name_and_alias, message)
+      everyone = [enactor].concat(recipients).uniq
+      thread_name = Page.generate_thread_name(everyone)
+    
+      # Send to the enactor.
+      if (client)
+        client.emit t('page.to_sender', 
+          :pm => Page.format_page_indicator(enactor),
+          :autospace => Scenes.format_autospace(enactor, enactor.page_autospace), 
+          :recipients => Page.format_recipient_indicator(recipients), 
+          :message => message)
+      end
+
+      PageMessage.create(author: enactor, character: enactor, message: message, thread_name: thread_name, is_read: true)
+      
+      # Send to the recipients.
+      
+      recipients.each do |recipient|
+        recipient_client = Login.find_client(recipient)
+        if (recipient_client)
+          recipient_client.emit t('page.to_recipient', 
+            :pm => Page.format_page_indicator(recipient),
+            :autospace => Scenes.format_autospace(enactor, recipient.page_autospace), 
+            :recipients => Page.format_recipient_indicator(recipients), 
+            :message => message)
+        end
+        if (client)
+          Page.send_afk_message(client, recipient_client, recipient)
+        end
+        
+        if (recipient != enactor)
+          PageMessage.create(author: enactor, character: recipient, message: message, thread_name: thread_name)
+        end
+      end
+      
+      Global.notifier.notify_ooc(:new_pm, t('page.web_page_notification', :name => enactor.name)) do |char|
+         char && recipients.include?(char) && char != enactor
+      end
+    end
+    
+    def self.generate_thread_name(chars)
+      chars.sort { |c| c.id.to_i }.map { |c| c.id }.join("_")
+    end
+    
+    def self.chars_for_thread(thread_name)
+      ids = thread_name.split('_')
+      names = []
+      ids.each do |id|
+        char = Character[id]
+        names << char ? char.name : nil
+      end
+      names
+    end
   end
 
 end

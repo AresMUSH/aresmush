@@ -6,7 +6,7 @@ module AresMUSH
     attribute :page_color
     attribute :page_monitor, :type => DataType::Hash, :default => {}
     set :page_ignored, "AresMUSH::Character"
-    
+    collection :page_messages, "AresMUSH::PageMessage"
     
     def is_monitoring?(char)
       return false if !page_monitor
