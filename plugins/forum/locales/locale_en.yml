@@ -44,7 +44,6 @@ en:
         reply: "%xhReply by %{author} on %{date}%xn%r%{reply}"
         reply_title: "%xh%{name}%xn replied on %{date}"
         
-        deleted_author: "(Author Deleted)"
         system_author: "AresMUSH"
         
         reply_deleted: "Reply deleted."
