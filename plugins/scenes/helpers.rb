@@ -141,7 +141,7 @@ module AresMUSH
       end
     end
     
-    def self.set_scene_location(scene, location, enactor)
+    def self.set_scene_location(scene, location, enactor = nil)
       matched_rooms = Room.find_by_name_and_area location
       area = nil
       
@@ -169,12 +169,14 @@ module AresMUSH
       data = Scenes.build_location_web_data(scene).to_json
       Scenes.new_scene_activity(scene, :location_updated, data)
       
-      message = t('scenes.location_set', :name => enactor.name, :location => location)
-      if (scene.room)
-        scene.room.emit_ooc message
-      end
+      if (enactor)
+        message = t('scenes.location_set', :name => enactor.name, :location => location)
+        if (scene.room)
+          scene.room.emit_ooc message
+        end
       
-      Scenes.add_to_scene(scene, message, Game.master.system_character)
+        Scenes.add_to_scene(scene, message, Game.master.system_character, false, true)
+      end
       
     end
     
