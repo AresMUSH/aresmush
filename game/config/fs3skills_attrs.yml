@@ -1,0 +1,20 @@
+---
+fs3skills:
+  default_linked_attr: Wits
+  attributes_blurb: 'Attributes represent basic abilities that everyone has to some
+    extent. Attributes boost related skills, and come into play when no skill directly
+    applies.  Attributes are rated from 1-4. See [FS3: Attributes](http://aresmush.com/fs3/fs3-3/chargen/#attributes)
+    for details.'
+  attributes:
+  - name: Reflexes
+    desc: Reflexes, dexterity, and hand-eye coordination.
+  - name: Brawn
+    desc: Physical strength and toughness.
+  - name: Wits
+    desc: Practical intelligence, inventiveness and creativity.
+  - name: Grit
+    desc: Willpower and determination.
+  - name: Perception
+    desc: Senses and general awareness.
+  - name: Presence
+    desc: Charisma and beauty.

@@ -1,0 +1,12 @@
+---
+fs3combat:
+  vehicles:
+    Viper:
+      description: Viper space fighter
+      pilot_skill: Piloting
+      toughness: 0
+      hitloc_chart: Fighter
+      armor: Viper
+      weapons:
+      - Kew
+      dodge: 1

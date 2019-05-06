@@ -1,0 +1,38 @@
+---
+fs3skills:
+  language_blurb: 'Languages represent your ability to speak and read other languages.  Languages
+    have a descriptive rating.   See [FS3: Languages](http://aresmush.com/fs3/fs3-3/chargen/#languages)
+    for details.'
+  languages:
+  - name: English
+  - name: Arabic
+  - name: Cantonese
+  - name: French
+  - name: German
+  - name: Greek
+  - name: Hebrew
+  - name: Hindi
+  - name: Irish
+  - name: Italian
+  - name: Japanese
+  - name: Sign Language
+  - name: Latin
+  - name: Mandarin
+  - name: Portugese
+  - name: Russian
+  - name: Spanish
+  - name: R'lyehian
+    desc: The language of the Old ones.
+  - name: Hungarian
+  - name: Romany
+  - name: Turkish
+  - name: Old Gaelic
+    desc: The ancient version of Irish.
+  - name: Druidic Cant
+    desc: Secret language of the Druids.
+  - name: Egyptian
+    desc: Not the modern, heiroglyphics.
+  - name: Enochian
+    desc: Angelic Language, langauge of magic.
+  starting_languages:
+  - English

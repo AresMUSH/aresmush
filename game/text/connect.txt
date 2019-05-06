@@ -1,0 +1,25 @@
+%x105------------------------------------------------------------------------------%xn
+%x96   _-_,         ,                ,  ,,          %xn        %x105+--------------------+%xn
+%x96     //        ||               ||  ||          %xn        %x105|%xn We are a gothic    %x105|%xn
+%x96     || \\/\\ =||=  /'\\       =||= ||/\\  _-_  %xn        %x105|%xn modern horror game %x105|%xn
+%x96    ~|| || ||  ||  || ||        ||  || || || \\ %xn        %x105|%xn game set in the    %x105|%xn
+%x96     || || ||  ||  || ||        ||  || || ||/   %xn        %x105|%xn fictional city of  %x105|%xn
+%x96   _-_, \\ \\  \\, \\,/         \\, \\ |/ \\,/  %xn        %x105|%xn Gotham.            %x105|%xn
+%x96                                      _/        %xn        %x105+--------------------+%xn
+                                                             
+                                                                
+%x96   -_____                ,,                           %xn        %x105+--------------+%xn
+%x96     ' | -,    _         ||                           %xn        %x105|%xn In the dark, %x105|%xn
+%x96    /| |  |`  < \, ,._-_ ||/\ \\/\\  _-_   _-_,  _-_, %xn        %x105|%xn there are    %x105|%xn
+%x96    || |==||  /-||  ||   ||_< || || || \\ ||_.  ||_.  %xn        %x105|%xn whispers.    %x105|%xn
+%x96   ~|| |  |, (( ||  ||   || | || || ||/    ~ ||  ~ || %xn        %x105+--------------+%xn
+%x96    ~-____,   \/\\  \\,  \\,\ \\ \\ \\,/  ,-_-  ,-_-  %xn
+%x96   (            %xn                                      Game Rated at least '%xr%xhR%xn'.
+%x105------------------------------------------------------------------------------%xn
+Connecting to an existing character: %xw%xhconnect%xn <%xh%xwname%xn> <%xh%xwpassword%xn>
+Creating a new character:            %xw%xhcreate%xn <%xh%xwname%xn> <%xh%xwpassword%xn>
+See whom is online:                  %xh%xwWHO%xn
+%x105------------------------------------------------------------------------------%xn
+
+
+

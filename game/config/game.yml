@@ -1,0 +1,9 @@
+---
+game: !ruby/hash:Sinatra::IndifferentHash
+  name: Into the Darkness
+  category: Supernatural
+  description: TBD
+  website: https://intothedarkness.aresmush.com
+  public_game: true
+  game_status: In Development
+  status: Alpha

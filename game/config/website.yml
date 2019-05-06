@@ -1,0 +1,126 @@
+---
+website:
+  allow_html_in_markdown: true
+  character_gallery_group: Alignment
+  character_gallery_subgroup: Calling
+  left_sidebar: false
+  max_upload_size_kb: 5000
+  restricted_pages:
+  - home
+  sitemap_update_cron:
+    hour:
+    - 2
+    minute:
+    - 17
+  top_navbar:
+  - title: Play
+    menu:
+    - page: chargen
+      title: Create a Character
+    - page: roster
+      title: Pre-Made Characters
+    - divider: true
+    - page: scenes-live
+      title: Active Scenes
+    - page: scenes-play
+      title: My Scenes
+    - page: scene-create
+      title: Start New Scene
+    - divider: true
+    - page: who
+      title: Who's Online
+    - page: chat
+      title: Chat
+    - page: forum
+      title: Forum
+    - divider: true
+    - page: play
+      title: Play via Web Client
+  - title: Directory
+    menu:
+    - page: characters
+      title: Characters
+    - page: scenes
+      title: Scenes
+    - page: plots
+      title: Plots
+    - divider: true
+    - page: players
+      title: Players
+    - page: census
+      title: Census
+    - page: actors
+      title: Actors
+    - page: roster
+      title: Roster
+    - page: locations
+      title: Locations
+    - page: combats
+      title: Combats
+    - divider: true
+    - page: files
+      title: Files
+  - title: System
+    menu:
+    - page: wiki-page
+      title: Alignment List
+      id: alignments
+    - page: wiki-page
+      title: Calling List
+      id: callings
+    - divider: true
+    - page: wiki-page
+      title: Attributes
+      id: attributes
+    - page: wiki-page
+      title: Assets
+      id: assets
+    - page: wiki-page
+      title: Complications
+      id: complications
+    - page: wiki-page
+      title: Shadow Assets
+      id: shadow_assets
+    - page: wiki-page
+      title: Skills
+      id: skills
+  - title: Wiki
+    menu:
+    - page: wiki
+      title: Home
+    - divider: true
+    - page: wiki-create
+      title: Create New Page
+    - page: wiki-all
+      title: All Pages
+    - page: search-wiki
+      title: Search Wiki
+    - page: wiki-tags
+      title: Tags
+    - page: recent-changes
+      title: Recent Changes
+    - divider: true
+    - page: files
+      title: Files
+    - page: help-topic
+      id: markdown
+      title: Markdown Reference
+  - title: Help
+    menu:
+    - page: jobs
+      title: Requests
+    - divider: true
+    - page: help
+      title: Game Help
+    - page: search-wiki
+      title: Search
+    - page: help-topic
+      id: markdown
+      title: Markdown Reference
+    - divider: true
+    - target: blank
+      title: MUSH 101 Tutorial <i class="fa fa-external-link-alt" aria-hidden="true">
+      url: https://aresmush.com/mush-101/
+  website_code_path: "/home/ares/ares-webportal"
+  wiki_aliases:
+    main: home

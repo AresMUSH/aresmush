@@ -1,0 +1,12 @@
+---
+utils:
+  shortcuts:
+    colors: color
+    think: echo
+    "@@": keepalive
+    "@": keepalive
+    shortcut/remove: shortcut/delete
+    note/remove: note/delete
+    note/update: note/add
+    die: dice
+    notes: note

@@ -1,0 +1,19 @@
+---
+fs3skills:
+  bg_skills_blurb: 'Background Skills represent arts, sports, hobbies, professions
+    and any other skills not covered by Action Skills.  Background Skills have a descriptive
+    rating.   See [FS3: Background Skills](http://aresmush.com/fs3/fs3-3/chargen/#background-skills)
+    for details.  Background Skills are free-form, so there is no specific list. You
+    can pick anything from Singing to Underwater Basketweaving.  The list below is
+    just some ideas.'
+  background_skills:
+    Sciences: astronomy, biology, chemistry, geology, mathematics, physics, etc.
+    Humanities: history, literature, psychology, philosophy, poetry, etc.
+    Professions: cook, waitress, bartender, accountant, programmer, carpenter, brewer,
+      blacksmith, etc.
+    Games: chess, roleplaying, poker, etc.
+    Arts: sculpting, painting, sketching, photography, etc.
+    Expression: acting, singing, dancing, playing an instrument, writing, etc.
+    Sports: baseball, football, gymnastics, etc.
+    Hobbies: gardening, basketweaving, knitting, etc.
+    Trivia: detective novels, game show hosts, etc.

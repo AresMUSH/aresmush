@@ -1,0 +1,9 @@
+---
+fs3combat:
+  treat_skill: Medicine
+  healing_skill: Medicine
+  recovery_skill: Brawn
+  initiative_skill: Alertness
+  composure_skill: Composure
+  default_defense_skill: Reflexes
+  strength_skill: Brawn

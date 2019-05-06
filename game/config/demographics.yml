@@ -1,0 +1,92 @@
+---
+demographics:
+  census_fields:
+  - field: name
+    width: 28
+    title: Name
+  - field: demographic
+    width: 10
+    title: Gender
+    value: gender
+  - field: group
+    width: 20
+    title: Calling
+    value: Calling
+  - field: group
+    width: 20
+    title: Alignment
+    value: Alignment
+  demographics:
+  - actor
+  - hair
+  - eyes
+  - skin
+  - height
+  - physique
+  - fullname
+  - gender
+  - birthdate
+  - shadowname
+  disable_auto_shortcuts: false
+  editable_properties:
+  - fullname
+  - hair
+  - physique
+  groups:
+    Alignment:
+      desc: Which way do you go?
+      values:
+        White: You are the consumate good guy.
+        Gray: You walk the thin line between good and bad.
+    Calling:
+      desc: What type of character you are, generally?
+      values:
+        Champion: Defenders of the world.
+        Grace: Nobles, Diplomats.
+        Mender: Healers & Builders.
+        Seeker: Hunters of Seekers, bringers of Truth.
+        Troubadour: Artists and Inspirers of Awesome.
+        Wisemen: Spiritually Strong, Wise person.
+    Motivation:
+      desc: What do you want?
+      values:
+        Destiny: You were chosen for something greater.
+        Honor: For the hoarde!
+        Revenge: My name is Inigo Montoya. You killed my father. Prepare to die.
+        Power: One simply can't have enough of it.
+        Love: I would do anything for love.
+        Friendship: Just call me, and I'll be there.
+        Knowledge: Knowledge is power.
+        Greed: I need all the stuff. ALL OF IT.
+        Duty: I swear, by the moon and the stars.
+        Family: We are family.
+  help_text:
+    actor: "%xcactor/set <actor>%xn - See 'help actors'."
+    physique: "%xcphysique <build/body type>%xn - athletic, wiry, slim, pudgy, etc."
+    gender: "%xcgender <male/female/other>%xn"
+    hair: "%xchair <hair color>%xn"
+    eyes: "%xceyes <eye color>%xn"
+    skin: "%xcskin <complexion>%xn"
+    birthdate: "%xcbirthdate <mm/dd/yyy>%xn or %xcage <years>%xn"
+    shadowname: "%xcshadowname <name>%xn"
+  max_age: 65
+  min_age: 16
+  nickname_field: shadowname
+  nickname_format: "%{name} (%{nickname})"
+  private_properties: []
+  required_properties:
+  - actor
+  - hair
+  - eyes
+  - skin
+  - height
+  - physique
+  - fullname
+  - gender
+  - birthdate
+  shortcuts:
+    groups: group
+    alignments: group alignment
+    callings: group calling
+    demographics: demographic
+    birthday: birthdate

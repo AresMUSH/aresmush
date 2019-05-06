@@ -1,0 +1,24 @@
+---
+who:
+  where_style: scene
+  who_fields:
+  - field: status
+    width: 7
+    title: Status
+  - field: name
+    width: 20
+    title: Name
+  - field: group
+    value: alignment
+    width: 16
+    title: Alignment
+  - field: group
+    value: calling
+    width: 18
+    title: Calling
+  - field: connected
+    width: 7
+    title: Conn
+  - field: idle
+    width: 4
+    title: Idle

@@ -1,0 +1,22 @@
+---
+fs3combat:
+  magix: 
+  restore_sanity_cron:
+    hour:
+    - 0
+    - 2
+    - 4
+    - '08'
+    - 10
+    - 12
+    - 14
+    - 16
+    - 18
+    - 20
+    - 22
+    minute:
+    - 12
+  restore_will_cron:
+    minute:
+    - 0
+    - 30
