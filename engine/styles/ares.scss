@@ -968,13 +968,7 @@ CHAT SCREEN
 ------------------------- */
 
 #chat-window {
-    height: 400px;
-    overflow-y: scroll;
-    overflow-x: hidden;
-}
-
-#page-window {
-    height: 400px;
+    max-height: 400px;
     overflow-y: scroll;
     overflow-x: hidden;
 }

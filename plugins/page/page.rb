@@ -57,10 +57,9 @@ module AresMUSH
     
     def self.get_web_request_handler(request)
       case request.cmd
-      when "pageIndex"
-        return PageIndexRequestHandler
+      when "sendPage"
+        return SendPageRequestHandler
       end
-      nil
     end
     
   end
