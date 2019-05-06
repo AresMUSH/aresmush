@@ -1,2 +1,3 @@
 ---
-fs3magix: {}
+fs3magix:
+  days_between_learning: 60
