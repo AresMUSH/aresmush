@@ -8,6 +8,12 @@ module AresMUSH
     set :page_ignored, "AresMUSH::Character"
     collection :page_messages, "AresMUSH::PageMessage"
     
+    before_delete :delete_pages
+    
+    def delete_pages
+      self.page_messages.each { |p| p.delete }
+    end
+    
     def is_monitoring?(char)
       return false if !page_monitor
       page_monitor.has_key?(char.name)
