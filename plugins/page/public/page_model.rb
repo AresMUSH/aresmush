@@ -7,14 +7,5 @@ module AresMUSH
     
     attribute :thread_name
     attribute :message
-    attribute :is_read, :type => DataType::Boolean
-    
-    def is_read?
-      self.is_read
-    end
-    
-    def is_unread?
-      !self.is_read
-    end
   end
 end

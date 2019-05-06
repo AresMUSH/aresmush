@@ -81,7 +81,7 @@ module AresMUSH
           :message => message)
       end
 
-      PageMessage.create(author: enactor, character: enactor, message: message, thread_name: thread_name, is_read: true)
+      PageMessage.create(author: enactor, character: enactor, message: message, thread_name: thread_name)
       
       # Send to the recipients.
       
