@@ -1,6 +1,6 @@
 ---
 toc: FS3Magix
-summary: Credits
+summary: A list of who helped make this possible.
 ---
 # FS3Magix - Credits
 

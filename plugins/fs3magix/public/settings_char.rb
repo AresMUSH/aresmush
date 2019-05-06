@@ -5,8 +5,7 @@ module AresMUSH
     collection :fs3_magix_spells_learned, "AresMUSH::SpellsLearned"
 
   # Attributes -- attributes.
-    attribute :fs3_magix_equipped_1, :default => "None"
-    attribute :fs3_magix_equipped_2, :default => "None"
+    attribute :fs3_magix_equipped, :default => "None"
     attribute :fs3_magix_spells_cast, :type => DataType::Integer
     attribute :fs3_magix_achievement_spells_learned, :type => DataType::Integer
     attribute :fs3_magix_last_learned, :type => Ohm::DataTypes::DataType::Time, :default => Time.now
