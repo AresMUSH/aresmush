@@ -37,13 +37,14 @@ module AresMUSH
         enactor.page_messages
            .to_a
            .group_by { |p| p.thread_name }
-           .sort_by { |name, group_pages | Page.thread_title(name) }
+           .sort_by { |name, group_pages | Page.thread_title(name, enactor) }
            .each do |name, group_pages |
              chars = Page.chars_for_thread(name)
+             recipients = chars.select { |c| c != enactor }
              sorted_pages = group_pages.sort_by { |p| p.created_at }
              channels << {
                key: name,
-               title: chars.sort_by { |c| c.name }.map { |c| c.name }.join(", "),
+               title: recipients.sort_by { |c| c.name }.map { |c| c.name }.join(", "),
                enabled: true,
                allowed: true,
                muted: false,

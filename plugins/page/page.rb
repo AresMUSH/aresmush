@@ -23,12 +23,10 @@ module AresMUSH
         when "ignore"
           return PageIgnoreCmd
         when "log"
-          return PageLogCmd
-        when "monitor"
           if (cmd.args)
-            return PageMonitorCmd
+            return PageLogCmd
           else
-            return PageListMonitorCmd
+            return PageLogIndexCmd
           end
         when "report"
           return PageReportCmd
