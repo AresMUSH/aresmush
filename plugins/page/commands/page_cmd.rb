@@ -44,7 +44,7 @@ module AresMUSH
         self.names.each do |name|
           char = Character.find_one_by_name(name)
           if (!char)
-            client.emit_failure t('page.invalid_recipient', :name)
+            client.emit_failure t('page.invalid_recipient', :name => name)
             return
           end
           

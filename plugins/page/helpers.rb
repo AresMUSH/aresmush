@@ -89,13 +89,17 @@ module AresMUSH
         end
       end
       
-      Global.notifier.notify_ooc(:new_pm, t('page.web_page_notification', :name => enactor.name)) do |char|
-         char && recipients.include?(char) && char != enactor
+      title = Page.chars_for_thread(thread_name).map { |c| c.name }.join(", ")
+      notification = "#{thread_name}|#{title}|#{Website.format_markdown_for_html(message)}"
+      Global.client_monitor.notify_web_clients(:new_chat, notification) do |char|
+         char && (recipients.include?(char) || char == enactor)
       end
+      
+      thread_name
     end
     
     def self.generate_thread_name(chars)
-      chars.sort { |c| c.id.to_i }.map { |c| c.id }.join("_")
+      chars.sort_by { |c| c.id.to_i }.map { |c| c.id }.join("_")
     end
     
     def self.chars_for_thread(thread_name)
@@ -106,6 +110,11 @@ module AresMUSH
         names << char ? char.name : nil
       end
       names
+    end
+    
+    def self.thread_title(thread_name)
+      chars = Page.chars_for_thread(thread_name)
+      chars.map { |c| c.name }.join(", ")
     end
   end
 
