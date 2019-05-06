@@ -1,0 +1,15 @@
+---
+en:
+  prefs:
+      prefs_title: "RP Preferences for %{name}"
+      pref_set: "Preference set."
+      pref_removed: "Preference removed."
+      invalid_setting: "That is not a valid preference setting.  Use +, - or ~."
+      invalid_category: "That is not a valid category.  Try one of these: %{cats}"
+      prefs_filter_title: "RP Preferences - %{category}"
+      notes_cleared: "Preference notes cleared."
+      notes_set: "Preference notes set."
+      notes_title: "Notes"
+      prefs_yes: "I'm Down (+)"
+      prefs_maybe: "Let's See (~)"
+      prefs_no: "Not Happening (-)"

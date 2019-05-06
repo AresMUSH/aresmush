@@ -1,0 +1,23 @@
+%lh
+%xn<%= t('prefs.prefs_title', :name => name )%>%xn
+
+<%= line_with_text t('prefs.prefs_yes') %>
+<% positive.each do |name, data| %>
+%xh<%= left(name, 15) %>%xn <%= note(data) %>
+<% end %>
+
+<%= line_with_text t('prefs.prefs_maybe') %>
+<% maybe.each do |name, data| %>
+%xh<%= left(name, 15) %>%xn <%= note(data) %>
+<% end %>
+
+<%= line_with_text t('prefs.prefs_no') %>
+<% negative.each do |name, data| %>
+%xh<%= left(name, 15) %>%xn <%= note(data) %>
+<% end %>
+<% if char.prefs_notes %>
+
+<%= line_with_text t('prefs.notes_title')%>
+<%= char.prefs_notes %>
+<% end %>
+%ld

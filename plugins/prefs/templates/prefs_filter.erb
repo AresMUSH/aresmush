@@ -1,0 +1,23 @@
+%lh
+%xn<%= t('prefs.prefs_filter_title', :category => category )%>%xn
+<% if !positive.empty? %>
+<%= line_with_text t('prefs.prefs_yes') %>
+<% positive.each do |entry| %>
+<%= left(entry[:name], 15) %> <%= entry[:note] %>
+<% end %>
+<% end %>
+<% if !maybe.empty? %>
+
+<%= line_with_text t('prefs.prefs_maybe') %>
+<% maybe.each do |entry| %>
+<%= left(entry[:name], 15) %> <%= entry[:note] %>
+<% end %>
+<% end %>
+<% if !negative.empty? %>
+
+<%= line_with_text t('prefs.prefs_no') %>
+<% negative.each do |entry| %>
+<%= left(entry[:name], 15) %> <%= entry[:note] %>
+<% end %>
+<% end %>
+%lf
