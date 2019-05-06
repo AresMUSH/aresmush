@@ -27,6 +27,7 @@ fs3skills:
     - Surgeon
     - Nurse
     - Medic
+    - First Aid
     - Other
   - name: Melee
     desc: Fighting with fists, knives, and hand-to-hand weapons.
