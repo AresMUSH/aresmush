@@ -47,7 +47,7 @@ magic-items:
   Skofnung:
     name: Skofnung
     desc: Ragnar's magical sword with a soul inside.
-  Spear:
-    name: Spear
+  Spear of the Hunt:
+    name: Spear of the Hunt
     desc: This spear is 5 feet in length with a smooth, oiled shaft that is decorated in ogham runes along one side. It has a simple, but sharp spearhead, and allows its bearer to cast Track Animal.
     spell: Track Animal
