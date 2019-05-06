@@ -58,15 +58,7 @@ module AresMUSH
           end
           
           if (success)
-            message = t('scenes.scene_info_updated_announce', :name => enactor_name, 
-              :value => self.value, :setting => self.setting)
-            Scenes.add_to_scene(scene, message)
-            if (scene.room)
-              scene.room.emit_ooc message
-            end
-            if (enactor_room != scene.room)
-              client.emit_success t('scenes.scene_info_updated')
-            end
+            client.emit_success t('scenes.scene_info_updated')
           end
         end
       end
