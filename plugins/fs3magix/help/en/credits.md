@@ -4,4 +4,4 @@ summary: A list of who helped make this possible.
 ---
 # FS3Magix - Credits
 
-The Magix system is heavily inspired by Tat @ Spirit Lake Magic system with a few additional modifications.
+The Magix system is heavily inspired by Tat @ [Spirit Lake Magic](https://spiritlakemu.com/) system with a few additional modifications.
