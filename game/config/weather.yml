@@ -38,25 +38,41 @@ weather:
         condition: clear clear clear fair fair fair flurrying flurrying overcast snowing
         stability: 70
     gotham:
+      early-summer:
+        temperature: hot hot hot hot hot warm warm warm cool cool
+        condition: clear clear clear fair fair fair drizzling drizzling overcast raining
+        stability: 40
       summer:
         temperature: hot hot hot hot hot warm warm warm cool cool
         condition: clear clear clear fair fair fair drizzling drizzling overcast raining
         stability: 70
+      early-spring:
+        temperature: cool cool cool cool cool warm warm warm warm warm
+        condition: clear clear clear fair fair fair drizzling drizzling overcast raining
+        stability: 40
       spring:
         temperature: cool cool cool cool cool warm warm warm warm warm
         condition: clear clear clear fair fair fair drizzling drizzling overcast raining
         stability: 70
+      early-fall:
+        temperature: cool cool cool cool cool cool cool freezing warm warm
+        condition: clear clear clear fair fair fair drizzling drizzling overcast raining
+        stability: 40
       fall:
-        temperature: cool cool cool cool cold cold cold freezing warm warm
+        temperature: cool cool cool cool cool cool cool freezing warm warm
         condition: clear clear drizzling snowing fair fair flurrying drizzling overcast
-          raining
+      raining
         stability: 70
+      early-winter:
+        temperature: cold cold cold cold cold cold cold cool freezing freezing freezing
+        condition: clear clear clear fair fair fair flurrying flurrying overcast snowing
+        stability: 40
       winter:
-        temperature: cold cold cold cold freezing freezing freezing freezing freezing
-          freezing
-        condition: clear fair fair flurrying flurrying flurrying overcast snowing
-          snowing snowing
+        temperature: cold cold cold cold freezing freezing freezing freezing freezing freezing
+        condition: clear fair fair flurrying flurrying flurrying overcast snowing snowing
+      snowing
         stability: 70
+
   conditions:
   - clear
   - fair
