@@ -262,6 +262,19 @@ spells:
     school: Spirit
     target_num: 3
     target_optional: true
+  Share Sensation:
+    available: false
+    casting_time: 1 round
+    desc: "The caster shares any specific physical sensation that they are currently feeling with a target."
+    effect: Psionic
+    level: 3
+    name: Share Sensation
+    range: Short
+    roll: true
+    school: Spirit
+    target_num: 1
+    target_optional: true
+    effect: Psionic
   #Level 4
   Mind Shield:
     available: false
