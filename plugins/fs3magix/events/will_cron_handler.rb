@@ -5,6 +5,7 @@ module AresMUSH
         config = Global.read_config("fs3magix", "will_cron")
         return if !Cron.is_cron_match?(config, event.time)
         Global.logger.debug "Time for restoration of will."
+        Custom.channel_alert("Running Will Restoration.")
       end
     end
   end
