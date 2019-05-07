@@ -17,8 +17,7 @@ fs3magix:
     - 22
     minute:
     - 12
- will_cron:
-   minute:
-     - 00
-     - 30
-     
+  will_cron:
+    minute:
+    - 6
+    - 36
