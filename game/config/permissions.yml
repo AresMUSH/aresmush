@@ -2,8 +2,161 @@
 permissions:
   permission_list:
   - name: login
-    type: System
-    desc: Allows the character in question to log on to the game.
+    category: System
+    desc: Gives access to login to the game.
+    is_new: false
+  - name: go_home
+    category: System
+    desc: Gives access to the 'home' command.
+    is_new: false
+  - name: channel_title
+    category: System
+    desc: Allows setting of a channel title.
+    is_new: true
+  - name: view_bgs
+    category: System
+    desc: Allows user to view another's background.
+    is_new: false
+  - name: desc_anything
+    category: System
+    desc: Allows user to describe anything.
+    is_new: false
+  - name: desc_places
+    category: System
+    desc: Allows user to describe rooms.
+    is_new: false
   - name: manage_abilities
-    type: FS3
-    desc: Allows the user to manage various aspects of the FS3 system.
+    category: Admin
+    desc: Manages various aspects of the FS3 System.
+    is_new: false
+  - name: access_jobs
+    category: Admin
+    desc: Gives access to Admin Inteface for Jobs.
+    is_new: false
+  - name: manage_achievements
+    category: Admin
+    desc: Grants access to managing achievements.
+    is_new: false
+  - name: manage_channels
+    category: Admin
+    desc: Grants access to managing channels.
+    is_new: false
+  - name: manage_apps
+    category: Admin
+    desc: Grants access to the approvals system.
+    is_new: false
+  - name: manage_demographics
+    desc: Grants access to setting basic demographics.
+    category: Admin
+    is_new: false
+  - name: manage_groups
+    category: Admin
+    desc: Grants the ability to set a group.
+    is_new: true
+  - name: manage_events
+    category: Admin
+    desc: Grants access to managing events.
+    is_new: false
+  - name: manage_forum
+    category: Admin
+    desc: Grants access to managing the forums.
+    is_new: false
+  - name: manage_combat
+    category: Admin
+    desc: Grants access to manage combat.
+    is_new: false
+  - name: build
+    category: System
+    desc: Grants access to the building commands.
+    is_new: false
+  - name: manage_magix
+    category: Admin
+    desc: Grants access to managing magix.
+    is_new: true
+  - name: manage_luck
+    category: Admin
+    desc: Grants access to managing the luck system.
+    is_new: true
+  - name: manage_idle
+    category: Admin
+    desc: Grants access to the idle sweep system.
+    is_new: false
+  - name: manage_roster
+    category: Admin
+    desc: Grants access to managing the roster.
+    is_new: false
+  - name: manage_login
+    category: Admin
+    desc: Grants access to managing the login system.
+    is_new: false
+  - name: manage_game
+    category: Admin
+    desc: Grants access to various server commands.
+    is_new: false
+  - name: announce
+    category: System
+    desc: Allows user to use the announce system.
+    is_new: false
+  - name: manage_ranks
+    category: Admin
+    desc: Grants access to managing ranks.
+    is_new: false
+  - name: teleport
+    category: System
+    desc: Allows user to use the 'teleport' command.
+    is_new: false
+  - name: manage_scenes
+    category: Admin
+    desc: Grants access to managing the scene system.
+    is_new: false
+  - name: set_duty
+    category: Admin
+    desc: Allows the admin to set their duty status.
+    is_new: false
+  - name: manage_status
+    category: Admin
+    is_new: false
+    desc: Grants access to managing the status system.
+  - name: tinker
+    category: Admin
+    desc: Grants access to the tinker system.
+    is_new: false
+  - name: manage_notes
+    category: Admin
+    desc: Grants access to the admin note system.
+    is_new: false
+  - name: manage_weather
+    category: Admin
+    desc: Grants access to managing the weather system.
+    is_new: false
+  - name: manage_wiki
+    category: Admin
+    desc: Grants access to editing the wiki.
+    is_new: false
+  - name: can_hide
+    category: System
+    desc: Grants the ability to hide in who/where.
+    is_new: true
+  - name: view_sheets
+    category: System
+    desc: Allows user to view another's sheet.
+    is_new: false
+  - name: boot
+    category: System
+    desc: Allows user to boot another user.
+    is_new: false
+  - name: manage_sanity
+    category: Admin
+    desc: Grants access to managing sanity.
+    is_new: true
+  - name: manage_will
+    category: Admin
+    desc: Grants access to managing will.
+    is_new: true
+  - name: manage_inventory
+    category: Admin
+    desc: Grants access to managing the gear system.
+    is_new: true
+  shortcuts:
+    permission: permissions
+    perm: permissions

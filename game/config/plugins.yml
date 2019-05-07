@@ -1,13 +1,13 @@
 ---
 plugins:
-  disabled_plugins:
-  - ranks
   config_help_links:
     ffg: https://github.com/AresMUSH/ares-extras/tree/master/plugins/ffg
     fate: https://github.com/AresMUSH/ares-extras/tree/master/plugins/fate
     cortex: https://github.com/AresMUSH/ares-extras/tree/master/plugins/cortex
     prefs: https://github.com/AresMUSH/ares-extras/tree/master/plugins/prefs
     traits: https://github.com/AresMUSH/ares-extras/tree/master/plugins/traits
+  disabled_plugins:
+  - ranks
   optional_plugins:
   - achievements
   - chargen
@@ -18,3 +18,4 @@ plugins:
   - ranks
   - weather
   - fs3magix
+  - permissions
