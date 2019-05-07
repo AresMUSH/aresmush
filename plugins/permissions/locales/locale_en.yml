@@ -3,4 +3,4 @@ en:
   permissions:
     invald_permission: "%{permissions} is not a valid permission."
     permission_title: "Master Permissions List"
-    permission_header: "Permission           Category   Description"
+    header: "Permission           Category   Description"
