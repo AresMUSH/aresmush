@@ -4,3 +4,4 @@ en:
     invald_permission: "%{permissions} is not a valid permission."
     permission_title: "Master Permissions List"
     header: "%xh%xwNew Permission           Category   Description%xn"
+    footer_bar: "(*) is a new permission."
