@@ -1,2 +1,9 @@
 ---
-permissions: {}
+permissions:
+  permission_list:
+  - name: login
+    type: System
+    desc: Allows the character in question to log on to the game.
+  - name: manage_abilities
+    type: FS3
+    desc: Allows the user to manage various aspects of the FS3 system.
