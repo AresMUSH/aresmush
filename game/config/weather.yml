@@ -60,8 +60,7 @@ weather:
         stability: 40
       fall:
         temperature: cool cool cool cool cool cool cool freezing warm warm
-        condition: clear clear drizzling snowing fair fair flurrying drizzling overcast
-      raining
+        condition: clear clear drizzling snowing fair fair flurrying drizzling overcast raining
         stability: 70
       early-winter:
         temperature: cold cold cold cold cold cold cold cool freezing freezing freezing
@@ -69,8 +68,7 @@ weather:
         stability: 40
       winter:
         temperature: cold cold cold cold freezing freezing freezing freezing freezing freezing
-        condition: clear fair fair flurrying flurrying flurrying overcast snowing snowing
-      snowing
+        condition: clear fair fair flurrying flurrying flurrying overcast snowing snowing snowing
         stability: 70
 
   conditions:
