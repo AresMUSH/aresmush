@@ -1,6 +1,6 @@
 <%= line_with_text t('permissions.permission_title') -%>
 
-<% data[:permissions].each.sort_by { |a| a['name']} do |a| %>
+<% data[:permissions].each do |a| %>
 <%= left( a['name'], 20)  %> <% left( a['category'], 10) %> <%= a['desc'] %>
 <% end %>
 
