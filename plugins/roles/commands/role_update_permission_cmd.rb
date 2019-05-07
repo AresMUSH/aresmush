@@ -34,7 +34,7 @@ module AresMUSH
           permissions.delete(self.permission)
           role.update(permissions: permissions)
         else
-          if Permissions.is_permssion?(self.permission)
+          if Permissions.is_permission?(self.permission)
             role.add_permission self.permission
           else
             client.emit_failure t('permissions.invald_permission', :perms => self.permission)
