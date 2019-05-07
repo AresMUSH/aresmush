@@ -2,7 +2,7 @@ module AresMUSH
   module Roles
     def self.all_roles
       role_list = Role.all.map { |r| r.name }
-      role_list.sort
+      role_list.sort_by { |r| r.name}
     end
 
     def self.restricted_roles
