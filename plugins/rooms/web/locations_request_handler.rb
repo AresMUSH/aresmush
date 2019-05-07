@@ -24,7 +24,7 @@ module AresMUSH
         {
           id: area.id,
           name: area.name,
-          children: area.children.map { |a| build_directory(a) }
+          children: area.children.to_a.sort_by { |a| a.name }.map { |a| build_directory(a) }
         }
       end
       

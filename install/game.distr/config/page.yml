@@ -9,3 +9,11 @@ page:
     pm: page
   page_start_marker: "<"
   page_end_marker: ">"
+  page_deletion_days: 14
+  page_deletion_cron:
+    day_of_week:
+    - Wed
+    hour:
+    - 3
+    minute:
+    - 40

@@ -564,7 +564,7 @@ module AresMUSH
       scene.room.sorted_pose_order.map { |name, time| 
         {
          name: name,
-         time:  Scenes.format_last_posed(time)
+         time: Time.parse(time).rfc2822
          }}
     end
     

@@ -1,13 +1,11 @@
 <%= header %>
 %xh<%= t('idle.roster_title') %>%xn
 
-%xh<%= t('idle.roster_column_titles') %>%xn
+%B%B%B%xh<% fields.each do |f| %><%= show_title(f) %> <% end %><%= t('idle.roster_column_titles') %>%xn
 <% paginator.items.each do |r| %>
-<%= left( name(r), 20 ) -%>
-<%= center( r.roster_played.yesno, 5 ) -%>
-<%= center( r.demographic('gender'), 13 ) -%>
-<%= left( r.group("Position"), 20 ) -%>
-<%= left( r.group("Faction"), 20 ) %>
+<%= left( restricted(r), 3 ) -%>
+<% fields.each do |f| %><%= show_field(r, f) -%> <% end %> <%= -%>
+<%= center( r.roster_played.yesno, 5 ) %>
    <% if r.roster_notes %><%= r.roster_notes %>%R<% end %>
 <% end %>
 <%= paginator.page_footer %>
