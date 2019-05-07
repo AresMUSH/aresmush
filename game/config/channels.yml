@@ -2,6 +2,7 @@
 channels:
   approved_channels:
   - RP Requests
+  - Chat
   clear_history_cron:
     hour:
     - 4
@@ -9,8 +10,8 @@ channels:
     - 47
   default_channels:
   - Questions
-  end_marker: ">"
-  ooc_lounge_channel: ''
+  end_marker: "]"
+  ooc_lounge_channel: Ooc Chatter
   recall_buffer_size: 500
   recall_timeout_days: 1
   shortcuts:
@@ -28,4 +29,4 @@ channels:
     delcom: channel/leave
     comtitle: channel/title
     channel/name: channel/rename
-  start_marker: "<"
+  start_marker: "["

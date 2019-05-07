@@ -17,7 +17,9 @@ fs3skills:
     '6': 1
   min_backgrounds: 4
   starting_skills:
-    Everyone: 
+    Everyone:
+      skills:
+        Occultism: 0
   unusual_skills:
   - Piloting
   - Gunnery

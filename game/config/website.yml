@@ -62,28 +62,23 @@ website:
       title: Files
   - title: System
     menu:
-    - page: wiki-page
-      title: Alignment List
-      id: alignments
-    - page: wiki-page
-      title: Calling List
-      id: callings
+    - page: fs3skills-abilities
+      title: Abilities List
+    - page: groups
+      title: Groups List
+    - page: fs3combat-gear
+      title: Gear List
     - divider: true
-    - page: wiki-page
-      title: Attributes
-      id: attributes
-    - page: wiki-page
-      title: Assets
-      id: assets
-    - page: wiki-page
-      title: Complications
-      id: complications
-    - page: wiki-page
-      title: Shadow Assets
-      id: shadow_assets
-    - page: wiki-page
-      title: Skills
-      id: skills
+    - target: blank
+      title: FS3 Player's Guide <i class="fa fa-external-link-alt" aria-hidden="true">
+      url: http://aresmush.com/fs3/fs3-3
+    - target: blank
+      title: FS3 Combat Quick Reference <i class="fa fa-external-link-alt" aria-hidden="true">
+      url: http://aresmush.com/fs3/fs3-3/combat-quickref.html
+    - target: blank
+      title: FS3 Interactive Combat Walkthrough <i class="fa fa-external-link-alt"
+        aria-hidden="true">
+      url: http://aresmush.com/fs3/fs3-3/combat-walkthrough.html
   - title: Wiki
     menu:
     - page: wiki
