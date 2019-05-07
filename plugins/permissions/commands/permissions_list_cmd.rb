@@ -3,7 +3,7 @@ module AresMUSH
     class PermissionsListCmd
       include CommandHandler
       def handle
-        PermissionPageTemplate.new("/attributes.erb", Permissions.permissions)
+        PermissionPageTemplate.new("/permissions.erb", Permissions.permissions)
         client.emit template.render
       end
     end
