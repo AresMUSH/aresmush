@@ -12,7 +12,8 @@ module AresMUSH
     end
 
     def self.get_cmd_handler(client, cmd, enactor)
-      case cmd.root
+      return nil if !cmd.root_is?("permissions")
+      case cmd.switch
       when nil
         return PermissionsListCmd
       end
