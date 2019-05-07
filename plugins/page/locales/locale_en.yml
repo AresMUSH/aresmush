@@ -2,7 +2,7 @@ en:
     page:
         target_missing: "Who do you want to page?"
         target_not_found: "%{name} is not someone you can page."
-        recipient_indicator: "(to %{recipients}) "
+        recipient_indicator: "%xh%xx(to %{recipients})%xn "
         page_indicator: "%{color}%{start_marker}PM%{end_marker}%xn"
         to_sender: "%{autospace}%{pm} %{recipients}%{message}"
         to_recipient: "%{autospace}%{pm} %{recipients}%{message}"
@@ -10,7 +10,7 @@ en:
         invalid_recipient: "%{name} is not someone you can page."
         recipient_is_afk: "%{name} is AFK and may not respond right away. %{message}"
         afk_status: "AFK"
-        offline_status: "Offline"
+        offline_status: "OFF"
         recipient_is_idle: "%{name} is %{time} idle and may be AFK."
         do_not_disturb_set: "You turn your 'do not disturb' status %{status}."
         recipient_do_not_disturb: "%{name} is set 'do not disturb' right now.  Please try your page again later."
