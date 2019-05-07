@@ -6,7 +6,7 @@ module AresMUSH
           handle_sanity_check
         end
 
-        if (Cron.is_cron_match?(Global.read_config("fs3matrix", "will_cron"), event.time))
+        if (Cron.is_cron_match?(Global.read_config("fs3magix", "will_cron"), event.time))
           handle_will_restoration
         end
       end
