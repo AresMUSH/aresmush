@@ -17,7 +17,8 @@ module AresMUSH
             return
           end
           list = Role.all.map { |r| print_role(char, r) }
-          template = BorderedListTemplate.new list, t('roles.assigned_roles', :name => char.name)
+          sorted = list.sort
+          template = BorderedListTemplate.new sorted, t('roles.assigned_roles', :name => char.name)
           client.emit template.render
         end
       end
