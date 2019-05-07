@@ -1,5 +1,8 @@
 module AresMUSH
   module Permissions
+    def self.is_enabled?
+      !Global.plugin_manager.is_disabled?("permissions")
+    end
     def self.permissions
       Global.read_config("permissions", "permission_list").sort_by { |a| a['name']}
     end
@@ -13,6 +16,11 @@ module AresMUSH
     end
     def self.permissions_names
       permissions.map { |a| a['name'].titlecase }
+    end
+    def self.is_permission?(name)
+      config = Permissions.permissions.find { |s| s["name"].upcase == name.upcase }
+      return false if (!config)
+      return true if (config)
     end
     def self.permissions_config(name)
       config = Permissions.permissions.find { |s| s["name"].upcase == name.upcase }
