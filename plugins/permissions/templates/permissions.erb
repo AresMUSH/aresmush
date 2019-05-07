@@ -2,6 +2,6 @@
 <%= t('permissions.header') -%>
 
 <% data[:permissions].each do |a| %>
-<%= left( a['name'], 20)  %> <%= left( a['category'], 10) %> <%= a['desc'] %>
+<%= center( return "(*)" if a['is_new'], 3) %> <%= left( a['name'], 20)  %> <%= left( a['category'], 10) %> <%= a['desc'] %>
 <% end %>
 <%= footer %>
