@@ -20,13 +20,13 @@ module AresMUSH
     
     def unread_jobs
       return [] if !Jobs.can_access_jobs?(self)
-      Job.all.select { |j| !Jobs.check_job_access(self, j) && j.is_unread?(self) }
+      staff_jobs = Job.all.select { |j| !Jobs.check_job_access(self, j) && j.is_unread?(self) }
+      their_jobs = self.unread_requests
+      
+      return staff_jobs.concat(their_jobs).uniq
     end
     
     def unread_requests
-      if (Jobs.can_access_jobs?(self))
-        return []
-      end
       self.jobs.select { |r| r.is_unread?(self) }
     end
   end

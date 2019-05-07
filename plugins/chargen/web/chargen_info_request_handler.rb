@@ -25,7 +25,7 @@ module AresMUSH
           
           groups['rank'] = {
             name: 'Rank',
-            desc: Global.read_config('ranks', 'rank_blurb'),
+            desc: Global.read_config('chargen', 'rank_blurb'),
             values: ranks
           }
         end
