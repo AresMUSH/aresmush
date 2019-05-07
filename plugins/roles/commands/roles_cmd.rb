@@ -25,7 +25,7 @@ module AresMUSH
 
       def print_role(char, r)
         has_role = char.has_role?(r) ? '(%xg+%xn)' : '(%xr-%xn)'
-        "#{has_role} #{r.name} - #{r.permissions.join(', ') }"
+        "#{has_role} #{r.name} - #{r.permissions.sort.join(', ') }"
       end
     end
   end
