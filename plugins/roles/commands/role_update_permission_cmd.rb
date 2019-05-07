@@ -36,12 +36,13 @@ module AresMUSH
         else
           if Permissions.is_permission?(self.permission)
             role.add_permission self.permission
+            client.emit_success t('roles.role_permissions_updated')
           else
             client.emit_failure t('permissions.invald_permission', :perms => self.permission)
           end
         end
 
-        client.emit_success t('roles.role_permissions_updated')
+
       end
     end
   end
