@@ -18,4 +18,4 @@ You can manually override the weather.  This will take effect until the next aut
 
 ## Credits
 
-The idea for how to modify the weather into an 8 season system came from `Tat @ Spirit Lake`[Spirit Lake MU](https://spiritlakemu.com)
+The idea for how to modify the weather into an 8 season system came from `Tat @ [Spirit Lake MU]`(https://spiritlakemu.com)
