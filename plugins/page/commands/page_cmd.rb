@@ -34,53 +34,33 @@ module AresMUSH
       end
       
       def handle
-        OnlineCharFinder.with_online_chars(self.names, client) do |results|
-          recipients = results.map { |result| result.char }
-          
-          locked = recipients.select { |c| c.page_ignored.include?(enactor) }
-          if (locked.any?)
-            locked_names = locked.map { |c| c.name }
-            client.emit_failure t('page.cant_page_ignored', :names => locked_names.join(" "))
+        recipients = []
+        
+        if self.names.count == 1 && self.names[0].upcase == enactor.name_upcase
+          client.emit_failure t('page.cant_page_just_yourself')
+          return
+        end
+        
+        self.names.each do |name|
+          char = Character.find_one_by_name(name)
+          if (!char)
+            client.emit_failure t('page.invalid_recipient', :name => name)
             return
           end
           
-          name = enactor.name_and_alias
-          message = PoseFormatter.format(name, self.message)
-          recipient_names = recipients.map { |r| r.name }
-        
-          client.emit t('page.to_sender', 
-            :pm => Page.format_page_indicator(enactor),
-            :autospace => Scenes.format_autospace(enactor, enactor.page_autospace), 
-            :recipients => Page.format_recipient_indicator(recipient_names), 
-            :message => message)
-          results.each do |r|
-            page_recipient(r.client, r.char, recipient_names, message)
+          if (char.page_ignored.include?(enactor))
+            client.emit_failure t('page.cant_page_ignored', :name => name)
+            return
           end
           
-          enactor.update(last_paged: self.names)
+          if (char != enactor)
+            recipients << char
+          end
         end
-      end
       
-      def page_recipient(other_client, other_char, recipient_names, message)
-        if (other_char.page_do_not_disturb)
-          client.emit_ooc t('page.recipient_do_not_disturb', :name => other_char.name)
-        else          
-          other_client.emit t('page.to_recipient', 
-            :pm => Page.format_page_indicator(other_char),
-            :autospace => Scenes.format_autospace(enactor, other_char.page_autospace), 
-            :recipients => Page.format_recipient_indicator(recipient_names), 
-            :message => message)
-          Page.send_afk_message(client, other_client, other_char)
-        end
+        Page.send_page(enactor, recipients, self.message, client)
         
-        
-        if (other_char.is_monitoring?(enactor))
-          Page.add_to_monitor(other_char, enactor.name, message)
-        end
-        
-        if (enactor.is_monitoring?(other_char))
-          Page.add_to_monitor(enactor, other_char.name, message)
-        end
+        enactor.update(last_paged: self.names)
       end
       
       def log_command

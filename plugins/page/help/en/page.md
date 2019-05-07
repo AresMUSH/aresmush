@@ -17,8 +17,7 @@ Pages are private messages sent between players.  You can page any number of peo
 
 ## Automatic AFK Notice
 
-If you are very idle or marked Away From the Keyboard, people paging you will be notified that you may not respond right away.  You can control the specific message they receive using the 'afk' command.
-
+If you are very idle or marked Away From the Keyboard, people paging you will be notified that you may not respond right away.
 
 ## Page Format
 
@@ -26,6 +25,13 @@ You can customize the appearance of pages by changing the color (see [Colors](/h
 
 `page/autospace <text before pages>`
 `page/color <ansi code>`
+
+## Reviewing Pages
+
+You can review pages you've sent and received.  Conversations time out after a game-specified period of time to prevent database clutter.
+
+`page/log` - Shows available conversations.
+`page/log <names>` - Reviews a conversation.
 
 ## Blocking Pages
 
@@ -37,13 +43,12 @@ If you don't want to be bothered by pages at all, you can mark yourself as 'do n
 
 `page/dnd <on or off>`
 
-## Monitoring Pages
+## Reporting Pages
 
-If someone is harassing you via pages, you can enable page monitoring.  This will keep track of the last couple dozen pages to and from *just* that person.  The other person will *not* be notified that you are logging pages.  
+If someone is harassing you via pages, you can report them.  
 
-Once you have the pages logged, you can bring the matter to the game admin's attention using the page report feature.  The pages from the log will automatically be included as an official, verifiable log.  You can report someone more than once if the problem happens again.
+This will automatically include a copy of the pages you select (from page/log) in your report. For example, page/report Bob=12-15/Terrible words!
 
-`page/monitor` - Shows who you're monitoring.
-`page/monitor <name>=<on or off>` - Starts or stops monitoring pages from someone.
-`page/log <name>` - Review your page log with someone.  This is what will be included if you report them.
-`page/report <name>=<reason>` - Creates a report, including your page log with that person as evidence.
+If the conversation involved multiple players, include all the names from the page/log conversation title in the report.  For example, page/report Bob Mary=12-15/Bob said terrible words!
+
+`page/report <conversation>=<range>/<reason>` - Creates a report.  

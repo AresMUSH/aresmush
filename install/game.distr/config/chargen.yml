@@ -72,3 +72,6 @@ chargen:
   - hooks %{name}
   - sheet %{name}
   allow_web_submit: true
+  groups_blurb: Groups determine your character's affiliations.
+  demographics_blurb: Demographics record your basic character info.
+  rank_blurb: "Military rank."

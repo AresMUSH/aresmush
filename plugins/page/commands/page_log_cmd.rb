@@ -3,25 +3,29 @@ module AresMUSH
     class PageLogCmd
       include CommandHandler
 
-      attr_accessor :name
+      attr_accessor :names
       
       def parse_args
-        self.name = titlecase_arg(cmd.args)
-      end
-      
-      def required_args
-        [ self.name ]
+        self.names = cmd.args.gsub(',', ' ').split(' ')
+        client.emit self.names
       end
       
       def handle
-        ClassTargetFinder.with_a_character(self.name, client, enactor) do |model|
-          if (enactor.is_monitoring?(model))            
-            template = BorderedListTemplate.new enactor.page_monitor[model.name], t('page.page_log_title', :name => model.name)
-            client.emit template.render
-          else
-            client.emit_failure t('page.not_monitored', :name => self.name)
+        chars = []
+        self.names.each do |name|
+          char = Character.named(name)
+          if (!char)
+            client.emit_failure t('page.invalid_recipient', :name => name)
+            return
           end
+          chars << char
         end
+        
+        thread = Page.generate_thread_name([enactor].concat(chars))
+        pages = enactor.page_messages.select { |p| p.thread_name == thread }.sort_by { |p| p.created_at }
+        
+        template = PageLogTemplate.new(enactor, pages, chars)
+        client.emit template.render
       end
     end
   end

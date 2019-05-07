@@ -23,12 +23,10 @@ module AresMUSH
         when "ignore"
           return PageIgnoreCmd
         when "log"
-          return PageLogCmd
-        when "monitor"
           if (cmd.args)
-            return PageMonitorCmd
+            return PageLogCmd
           else
-            return PageListMonitorCmd
+            return PageLogIndexCmd
           end
         when "report"
           return PageReportCmd
@@ -48,9 +46,18 @@ module AresMUSH
       case event_name
       when "CharDeletedEvent"
         return CharDeleteddEventHandler
+      when "CronEvent"
+        return CronEventHandler
       end
       
       nil
+    end
+    
+    def self.get_web_request_handler(request)
+      case request.cmd
+      when "sendPage"
+        return SendPageRequestHandler
+      end
     end
     
   end

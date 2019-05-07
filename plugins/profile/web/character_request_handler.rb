@@ -74,7 +74,7 @@ module AresMUSH
         
         scenes_starring = char.scenes_starring
         
-        scenes = scenes_starring.sort_by { |s| s.date_shared || s.created_at }.reverse
+        scenes = scenes_starring.sort_by { |s| s.icdate || s.created_at }.reverse
              .map { |s| {
                       id: s.id,
                       title: s.title,
