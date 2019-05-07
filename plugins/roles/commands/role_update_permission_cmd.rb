@@ -33,6 +33,7 @@ module AresMUSH
           permissions = role.permissions
           permissions.delete(self.permission)
           role.update(permissions: permissions)
+          client.emit_success t('roles.role_permissions_updated')          
         else
           if Permissions.is_permission?(self.permission)
             role.add_permission self.permission
