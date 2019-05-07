@@ -1,7 +1,7 @@
 module AresMUSH
   module Permissions
     def self.permissions
-      Global.read_config("permissions", "permission_list").map { |a| a['name'].titlecase }
+      Global.read_config("permissions", "permission_list")
     end
     def self.get_permission_desc(metadata_list, name)
       entry = metadata_list.select { |m| m['name'].upcase == name.upcase }.first
