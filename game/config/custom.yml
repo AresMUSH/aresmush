@@ -1,3 +1,5 @@
 ---
 custom:
   shortcuts: {}
+  alert_channel:
+  - System
