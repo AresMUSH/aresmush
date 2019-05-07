@@ -1,5 +1,5 @@
 <%= line_with_text t('permissions.permission_title') %>
-<%= %xh%xw t('permissions.header')%xn -%>
+<%= t('permissions.header') -%>
 
 <% data[:permissions].each do |a| %>
 <%= left( a['name'], 20)  %> <%= left( a['category'], 10) %> <%= a['desc'] %>
