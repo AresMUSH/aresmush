@@ -13,12 +13,12 @@ module AresMUSH
       recipients.sort_by { |r| r.name }.each do |r|
         client = Login.find_client(r)
         if (!client)
-          names << "#{r.name}%xh%xx<#{t('page.offline_status')}>%xn"
+          names << "#{r.name}<#{t('page.offline_status')}>"
         elsif (r.is_afk?)
-          names << "#{r.name}%xh%xx<#{t('page.afk_status')}>%xn"
+          names << "#{r.name}<#{t('page.afk_status')}>"
         elsif Status.is_idle?(client)
           time = TimeFormatter.format(client.idle_secs)
-          names << "#{r.name}%xh%xx<#{time}>%xn"
+          names << "#{r.name}<#{time}>"
         else
           names << r.name
         end
