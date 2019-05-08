@@ -1,5 +1,5 @@
 %lh
-%xh<%= t('page.page_log_title', :name => names) %>%xn
+%xh<%= t('page.page_review_title', :name => names) %>%xn
 
 <% @pages.each_with_index do |p, i| %>
 <%= left("#{i+1}. ", 4) %> [<%= time(p) %>] <%= p.message %>

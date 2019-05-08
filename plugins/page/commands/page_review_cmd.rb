@@ -1,6 +1,6 @@
 module AresMUSH
   module Page
-    class PageLogCmd
+    class PageReviewCmd
       include CommandHandler
 
       attr_accessor :names

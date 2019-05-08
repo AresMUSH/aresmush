@@ -10,6 +10,7 @@ module AresMUSH
         config = DatabaseMigrator.read_config_file("page.yml")
         config['page']['page_deletion_days'] = 14
         config['page']['page_deletion_cron'] = { 'day_of_week' => ['Wed'], 'hour' => [03], 'minute' => [40] }
+        config['page']['shortcuts']['page/log'] = 'page/review'
         DatabaseMigrator.write_config_file("page.yml", config)  
                 
         Global.logger.debug "Update forum shortcuts."

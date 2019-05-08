@@ -1,6 +1,6 @@
 module AresMUSH
   module Page
-    class PageLogIndexCmd
+    class PageReviewIndexCmd
       include CommandHandler
 
       def handle
@@ -9,7 +9,7 @@ module AresMUSH
              .group_by { |p| p.thread_name }
              .map { |name, group_pages | Page.thread_title(name, enactor) }
              .sort
-         template = BorderedListTemplate.new list, t('page.page_log_index_title')
+         template = BorderedListTemplate.new list, t('page.page_review_index_title')
          client.emit template.render          
       end
     end
