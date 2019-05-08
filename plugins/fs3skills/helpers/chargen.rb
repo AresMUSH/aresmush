@@ -101,6 +101,7 @@ module AresMUSH
       char.fs3_background_skills.each { |s| s.delete }
       char.fs3_languages.each { |s| s.delete }
       char.fs3_advantages.each { |s| s.delete }
+      char.fs3_magix_arts.each { |s| s.delete }
 
       languages = Global.read_config("fs3skills", "starting_languages")
       if (languages)
@@ -116,6 +117,12 @@ module AresMUSH
           FS3Skills.set_ability(client, char, a, 1)
         else
           FS3Skills.set_ability(client, char, a, 2)
+        end
+      end
+
+      client.emit_ooc t('fs3magix.reset_arts') if client
+      FS3Skills.magix_arts_names.each do |a|
+          FS3Skills.set_ability(client, char, a, 0)
         end
       end
 
