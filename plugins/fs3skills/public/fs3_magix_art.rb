@@ -1,7 +1,7 @@
 module AresMUSH
   class FS3MagixArt < Ohm::Model
     include ObjectModel
-    include LearnableAbility
+    include LearnableMagix
 
     reference :character, "AresMUSH::Character"
     attribute :name
