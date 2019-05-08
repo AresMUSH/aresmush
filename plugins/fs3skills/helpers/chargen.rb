@@ -23,6 +23,8 @@ module AresMUSH
         case ability_type
         when :action
           ability = FS3ActionSkill.create(character: char, name: ability_name, rating: rating)
+        when :magix
+          ability = FS3MagixArt.create(character: char, name: ability_name, rating: rating)
         when :background
           ability = FS3BackgroundSkill.create(character: char, name: ability_name, rating: rating)
         when :language
@@ -66,7 +68,7 @@ module AresMUSH
         else
           min_rating = 1
         end
-      when :background, :language, :advantage
+      when :background, :language, :advantage, :magix
         min_rating = 0
       when :attribute
         min_rating = 1
@@ -78,6 +80,8 @@ module AresMUSH
       case ability_type
       when :action
         max_rating = Global.read_config("fs3skills", "max_skill_rating")
+      when :magix
+        max_rating = Global.read_config("fs3magix", "max_magix_rating")
       when :background, :language, :advantage
         max_rating = 3
       when :attribute
@@ -120,7 +124,6 @@ module AresMUSH
         end
       end
 
-      client.emit_ooc t('fs3magix.reset_arts') if client
       FS3Skills.magix_arts_names.each do |a|
           FS3Skills.set_ability(client, char, a, 0)
         end

@@ -3,7 +3,7 @@ module AresMUSH
     def self.can_manage_abilities?(actor)
       actor.has_permission?("manage_abilities")
     end
-    
+
     def self.can_view_sheets?(actor)
       return true if Global.read_config("fs3skills", "public_sheets")
       return false if !actor
@@ -13,50 +13,58 @@ module AresMUSH
     def self.attrs
       Global.read_config("fs3skills", "attributes")
     end
-    
+
     def self.action_skills
       Global.read_config("fs3skills", "action_skills")
-    end 
-    
+    end
+
+    def self.magix
+      Global.read_config("fs3magix", "magix_arts_list")
+    end
+
     def self.languages
       Global.read_config("fs3skills", "languages")
     end
-    
+
     def self.advantages
       return {} if !FS3Skills.use_advantages?
       Global.read_config("fs3skills", "advantages")
     end
-    
+
     def self.use_advantages?
       Global.read_config("fs3skills", "use_advantages")
     end
-    
+
     def self.background_skills
       Global.read_config("fs3skills", "background_skills")
     end
-    
+
     def self.get_ability_desc(metadata_list, name)
       entry = metadata_list.select { |m| m['name'].upcase == name.upcase }.first
       entry ? entry['desc'] : nil
     end
-    
+
     def self.get_ability_specialties(metadata_list, name)
       entry = metadata_list.select { |m| m['name'].upcase == name.upcase }.first
       entry ? entry['specialties'] : nil
     end
-    
+
     def self.attr_names
       attrs.map { |a| a['name'].titlecase }
     end
-    
+
     def self.advantage_names
       advantages.map { |a| a['name'].titlecase }
     end
-    
+
     def self.action_skill_names
       action_skills.map { |a| a['name'].titlecase }
     end
-    
+
+    def self.magix_arts_names
+      magix.map { |a| a['name'].titlecase }
+    end
+
     def self.language_names
       languages.map { |l| l['name'].titlecase }
     end
@@ -68,27 +76,38 @@ module AresMUSH
       end
       config
     end
-    
+
+    def self.magix_arts_config(name)
+      config = FS3Skills.magix.find { |s| s["name"].upcase == name.upcase }
+      if (!config)
+        raise "Error in magix arts configuration -- magix art #{name} not found."
+      end
+      config
+    end
+
     def self.attr_blurb
       Global.read_config("fs3skills", "attributes_blurb")
     end
-    
+
     def self.action_blurb
       Global.read_config("fs3skills", "action_skills_blurb")
     end
-    
+
     def self.bg_blurb
       Global.read_config("fs3skills", "bg_skills_blurb")
     end
-    
+
     def self.language_blurb
       Global.read_config("fs3skills", "language_blurb")
     end
-    
+
     def self.advantages_blurb
       Global.read_config("fs3skills", "advantages_blurb")
     end
-    
+
+    def self.magix_blurb
+      Global.read_config("fs3magix", "magix_blurb")
+    end
     # Returns the type (attribute, action, etc) for a skill being rolled.
     def self.get_ability_type(ability)
       ability = ability.titlecase
@@ -100,19 +119,21 @@ module AresMUSH
         return :language
       elsif (advantage_names.include?(ability))
         return :advantage
+      elsif (magix_names.include?(ability))
+        return :magix
       else
         return :background
-      end        
+      end
     end
-    
+
     private
-    
+
     def self.add_to_hash(hash, char, skill)
       if (hash[skill.name])
         hash[skill.name] << "#{char.name}:#{skill.rating}"
       else
         hash[skill.name] = ["#{char.name}:#{skill.rating}"]
       end
-    end  
+    end
   end
 end

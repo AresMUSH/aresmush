@@ -55,6 +55,8 @@ module AresMUSH
       text << "%r"
       text << FS3Skills.ability_rating_review(char)
       text << "%r"
+      text << FS3Skills.magix_rating_review(char)
+      text << "%r"
       text << FS3Skills.backgrounds_review(char)
       text << "%r%r"
       text << FS3Skills.starting_language_review(char)
@@ -86,6 +88,11 @@ module AresMUSH
 
         elsif (skill_type == "Background")
           c.fs3_background_skills.each do |a|
+            add_to_hash(skills, c, a)
+          end
+
+        elsif (skill_type == "Magix Art")
+          c.fs3_magix_arts.each do |a|
             add_to_hash(skills, c, a)
           end
 
