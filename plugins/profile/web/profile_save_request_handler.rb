@@ -6,10 +6,6 @@ module AresMUSH
         enactor = request.enactor
         char = Character[request.args[:id]]
 
-        if (!enactor)
-          return { error: t('webportal.login_required') }
-        end
-        
         error = Website.check_login(request)
         return error if error
         
