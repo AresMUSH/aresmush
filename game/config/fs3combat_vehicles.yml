@@ -1,12 +1,52 @@
 ---
 fs3combat:
   vehicles:
-    Viper:
-      description: Viper space fighter
-      pilot_skill: Piloting
+    Sports Car:
+      description: 'Such as: Viper, Porsche, Corvette, Camaro'
+      pilot_skill: Driving
       toughness: 0
-      hitloc_chart: Fighter
-      armor: Viper
-      weapons:
-      - Kew
+      armor: LightVehicle
+      hitloc_chart: Car
       dodge: 1
+    Sedan:
+      description: 'Such as: Camary, Focus, Most BMW, Cross-Overs.'
+      pilot_skill: Driving
+      toughness: 0
+      armor: BasicVehicle
+      hitloc_chart: Car
+      dodge: 0
+    Tactical SUV:
+      description: 'Such as: Hummer, Jeeps'
+      pilot_skill: Driving
+      toughness: 1
+      armor: HeavyVehicle
+      hitloc_chart: Car
+      dodge: -1
+    Sports Bike:
+      description: 'Such as: Yamaha, Suzuki, Honda, Some Ducati, Some Harley Davidsons.'
+      pilot_skill: Driving
+      toughness: -3
+      armor: Motorcycle
+      hitloc_chart: Motorcycle
+      dodge: 3
+    Cruising Bike:
+      description: 'Such as: Harley Davidson, Some Ducati, Some Hondas, Spyders'
+      pilot_skill: Driving
+      toughness: -3
+      armor: Motorcycle
+      hitloc_chart: Motorcycle
+      dodge: 2
+    Small Truck:
+      description: 'Such as: Rangers, Ridgelines, Tacomas'
+      pilot_skill: Driving
+      toughness: 0
+      armor: BasicVehicle
+      hitloc_chart: Truck
+      dodge: 0
+    Large Truck:
+      description: 'Such as: F-150, F-1500, Dualies'
+      pilot_skill: Driving
+      toughness: 1
+      armor: HeavyVehicle
+      hitloc_chart: Truck
+      dodge: -1

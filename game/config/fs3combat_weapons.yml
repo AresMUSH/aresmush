@@ -1,9 +1,59 @@
 ---
 fs3combat:
+  weapon specials:
+    Ap:
+      description: Armor Piercing Rounds
+      penetration: 2
+    Bipod:
+      description: Bipod Brace
+      recoil: -3
+    Scope:
+      description: Sniper scope
+      accuracy: 2
+    Buckshot:
+      description: Shotgun pellets
+      accuracy: 3
+      penetration: -2
+    Sparring:
+      description: Padded sparring equipment
+      lethality: -50
+    Two Handed:
+      description: Modified larger sword size.
+      lethality: 15
+      init_mod: -2
+      penetration: 2
+      accuracy: -1
+    Shortened Blade:
+      description: A short sword variant.
+      lethality: -20
+      init_mod: 2
+      penetration: -1
+      accuracy: 1
+    Barbed:
+      description: The whip has thorns or barbs.
+      penetration: 1
+      lethality: 5
+      damage_type: Physical
+    Bladed:
+      description: The whip has a blade at the end.
+      penetration: 4
+      lethality: 35
+      damage_type: Physical
+      init_mod: -1
+    Explosive Tip:
+      description: An exploding arrow head.
+      penetration: -1
+      lethality: 10
+      has_shrapnel: true
+    Razor Tip:
+      description: An arrow designed to hunt and kill.
+      lethality: 40
+      penetration: 3
+      accuracy: 1
   weapons:
     Flash Grenade:
       description: Flashbang Hand Grenade which blinds/deafens human targets for 5
-        secs.  No effect on Centurions.
+        secs.
       skill: Athletics
       lethality: 0
       penetration: 8
@@ -46,45 +96,6 @@ fs3combat:
       penetration: 8
       weapon_type: Explosive
       is_automatic: false
-      recoil: 0
-      damage_type: Physical
-      accuracy: 0
-      has_shrapnel: true
-      init_mod: 0
-    Missile:
-      description: Guided Anti-Vehicle Missile
-      skill: Gunnery
-      lethality: 80
-      penetration: 17
-      weapon_type: Ranged
-      is_automatic: false
-      ammo: 2
-      recoil: 0
-      damage_type: Physical
-      accuracy: 3
-      has_shrapnel: false
-      init_mod: 0
-    Talons:
-      description: Unguided Anti-Vehicle Rockets
-      skill: Gunnery
-      lethality: 0
-      penetration: 9
-      weapon_type: Ranged
-      is_automatic: false
-      ammo: 20
-      recoil: 0
-      damage_type: Physical
-      accuracy: 0
-      has_shrapnel: false
-      init_mod: 0
-    Rocket:
-      description: Unguided Anti-Personnel Rocket
-      skill: Gunnery
-      lethality: 40
-      penetration: 8
-      weapon_type: Explosive
-      is_automatic: false
-      ammo: 4
       recoil: 0
       damage_type: Physical
       accuracy: 0
@@ -244,6 +255,22 @@ fs3combat:
       accuracy: 0
       has_shrapnel: false
       init_mod: 0
+    Sword:
+      description: Standard Long Sword/Katana
+      skill: Melee
+      lethality: 70
+      penetration: 5
+      weapon_type: Melee
+      is_automatic: false
+      recoil: 0
+      damage_type: Physical
+      accuracy: 0
+      has_shrapnel: false
+      init_mod: 1
+      allowed_specials:
+      - Shortened Blade
+      - Two Handed
+      - Sparring
     Unarmed:
       description: Unarmed
       skill: Melee
@@ -258,18 +285,6 @@ fs3combat:
       init_mod: 0
       allowed_specials:
       - Sparring
-    Ecm:
-      description: ECM Package
-      skill: Gunnery
-      lethality: 0
-      penetration: 0
-      weapon_type: Suppressive
-      is_automatic: false
-      recoil: 0
-      damage_type: Physical
-      accuracy: 0
-      has_shrapnel: false
-      init_mod: 0
     Hmg:
       description: Heavy machinegun.
       skill: Firearms
@@ -286,45 +301,32 @@ fs3combat:
       allowed_specials:
       - Ap
       - Bipod
-    Kew:
-      description: KEW Assault Cannon.  This is a chain gun and always burst fires,
-        so that's factored into the damage.
-      skill: Gunnery
-      lethality: 0
-      penetration: 9
+    Whip:
+      description: Whips, Flails & Chains.
+      skill: Athletics
+      lethality: 15
+      penetration: 0
       weapon_type: Ranged
       is_automatic: false
-      recoil: 0
-      damage_type: Physical
-      accuracy: 0
+      damage_type: Stun
       has_shrapnel: false
-      init_mod: 0
-    Cannon:
-      description: Tank cannon.
-      skill: Gunnery
+      init_mod: 1
+      allowed_specials:
+      - Barbed
+      - Bladed
+    Bow:
+      description: A bow used for Archery.
+      skill: Archery
       lethality: 0
-      penetration: 23
-      weapon_type: Ranged
+      penetration: 5
       is_automatic: false
-      recoil: 0
+      weapon_type: Ranged
+      ammo: 20
       damage_type: Physical
-      accuracy: 0
       has_shrapnel: false
       init_mod: 0
-  weapon specials:
-    Ap:
-      description: Armor Piercing Rounds
-      penetration: 2
-    Bipod:
-      description: Bipod Brace
-      recoi: -3
-    Scope:
-      description: Sniper scope
-      accuracy: 2
-    Buckshot:
-      description: Shotgun pellets
-      accuracy: 3
-      penetration: -2
-    Sparring:
-      description: Padded sparring equipment
-      lethality: -50
+      accuracy: 0
+      allowed_specials:
+      - Explosive Tip
+      - AP
+      - Razor Tip

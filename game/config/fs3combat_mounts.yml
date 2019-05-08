@@ -6,6 +6,6 @@ fs3combat:
       toughness: 4
       mod_vs_unmounted: 1
     War Horse:
-      description: An armored war horse
+      description: An armored war horse such as a Police horse.
       toughness: 7
       mod_vs_unmounted: 2

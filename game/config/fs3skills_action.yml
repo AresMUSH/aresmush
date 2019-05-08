@@ -47,6 +47,12 @@ fs3skills:
   - name: Occultism
     desc: The study of magical things.
     linked_attr: Wits
+  - name: Archery
+    desc: Skill with Bows & Crossbows.
+    linked_attr: Reflexes
+  - name: Driving
+    desc: The ability to drive a car, motorcycle, car.
+    linked_attr: Reflexes
   action_skills_blurb: 'Action Skills represent your ability in areas deemed important
     for gameplay.  Action Skills are rated from 0-8. See [FS3: Action Skills](http://aresmush.com/fs3/fs3-3/chargen/#action-skills)
     for details.'
