@@ -37,6 +37,10 @@ module AresMUSH
           { 'field' => 'group', 'width' => 20, 'title' => 'Position', 'value' => 'Position' }
         ]
         DatabaseMigrator.write_config_file("idle.yml", config)  
+        
+        Character.all.each do |c|
+          c.update(read_page_threads: [])
+        end
       end
     end
   end

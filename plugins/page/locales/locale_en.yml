@@ -25,8 +25,9 @@ en:
         ignore_removed: "%{name} has been removed from your page ignore list."
         cant_page_ignored: "You can't page %{name}."
 
-        page_review_title: "PMs with %{name}"
+        page_review_title: "PMs with %{title}"
         page_review_index_title: "PM Conversations"
+        invalid_thread: "No PM conversation with those characters was found."
         invalid_report_range: "Invalid page range.  Specify numbers from the page/log entries, like 2-10."
         log_reported: "Thank you.  A report has been created using your page log with %{name} as evidence.  The page log has been reset and you can report this person again if needed."
         page_reported_title: "Pages Reported"

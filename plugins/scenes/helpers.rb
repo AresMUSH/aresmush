@@ -504,7 +504,7 @@ module AresMUSH
 
     def self.build_scene_pose_web_data(pose, viewer, live_update = false)
       {
-        char: { name: pose.character ? pose.character.name : t('scenes.author_deleted'), 
+        char: { name: pose.character ? pose.character.name : t('global.deleted_character'), 
                 icon: Website.icon_for_char(pose.character),
                 id: pose.character ? pose.character.id : 0 }, 
         order: pose.order, 
