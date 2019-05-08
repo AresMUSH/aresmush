@@ -10,6 +10,11 @@ module AresMUSH
           description: a['desc'],
           specialties: a['specialties'] ? a['specialties'].join(', ') : nil,
         }}
+        magix = FS3Magix.magix_arts_list.sort_by { |a| a['name'] }.map { |a| {
+          name: a['name'].titleize,
+          linked_attr: a['linked_attr'],
+          description: a['desc'],
+          }}
         languages = FS3Skills.languages.sort_by { |a| a['name'] }.map { |a| { name: a['name'], description: a['desc'] } }
         advantages = FS3Skills.advantages.sort_by { |a| a['name'] }.map { |a| { name: a['name'], description: a['desc'] } }
 
