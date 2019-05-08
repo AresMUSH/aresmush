@@ -27,7 +27,7 @@ module AresMUSH
 
       def action_skills
         list = []
-        @char.fs3_action_skills.sort_by(:magix).each_with_index do |a, i|
+        @char.fs3_action_skills.sort_by(:name, :order => "Alpha").each_with_index do |a, i|
           magix = Global.read_config("fs3magix", "magix_arts")
           if !magix.include? a.name
             if a.rating_name != "Unskilled"
