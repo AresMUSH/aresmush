@@ -4,24 +4,31 @@ fs3skills:
   - name: Alertness
     desc: Noticing things and being aware of your surroundings.
     linked_attr: Perception
+    is_magix: false
   - name: Athletics
     desc: General running, jumping, climbing, etc.
     linked_attr: Brawn
+    is_magix: false
   - name: Composure
     desc: Coolness under pressure.
     linked_attr: Grit
+    is_magix: false
   - name: Demolitions
     desc: Blowing stuff up.
     linked_attr: Wits
+    is_magix: false
   - name: Firearms
     desc: Shooting guns.
     linked_attr: Reflexes
+    is_magix: false
   - name: Gunnery
     desc: Vehicle/special weapons (cannons, rockets/missiles, ECM packages).
     linked_attr: Reflexes
+    is_magix: false
   - name: Medicine
     desc: Tending to the ill and injured.
     linked_attr: Wits
+    is_magix: false
     specialties:
     - Doctor
     - Surgeon
@@ -32,27 +39,34 @@ fs3skills:
   - name: Melee
     desc: Fighting with fists, knives, and hand-to-hand weapons.
     linked_attr: Brawn
+    is_magix: false
   - name: Piloting
     desc: Piloting things other than a car.
     linked_attr: Reflexes
+    is_magix: false
     specialties:
     - Boats
     - Helicopters
   - name: Stealth
+    is_magix: false
     desc: Being sneaky.
     linked_attr: Reflexes
   - name: Technician
     desc: General mechanics/electronics and fixing things.
     linked_attr: Wits
+    is_magix: false
   - name: Occultism
     desc: The study of magical things.
     linked_attr: Wits
+    is_magix: false
   - name: Archery
     desc: Skill with Bows & Crossbows.
     linked_attr: Reflexes
+    is_magix: false
   - name: Driving
     desc: The ability to drive a car, motorcycle, car.
     linked_attr: Reflexes
+    is_magix: false
   action_skills_blurb: 'Action Skills represent your ability in areas deemed important
     for gameplay.  Action Skills are rated from 0-8. See [FS3: Action Skills](http://aresmush.com/fs3/fs3-3/chargen/#action-skills)
     for details.'
