@@ -22,3 +22,7 @@ en:
       give_item: "You have given %{target} %{item}."
       item_has_been_given: "%{name} has given you %{item}. Type `items` to see details."
       unequip_first: "You can't given away items you have equipped. Do `item/unequip %{item}` first."
+     # ----------------------------------------
+     # Titles & Such
+     # ----------------------------------------
+      magix_title: "Magix Arts"
