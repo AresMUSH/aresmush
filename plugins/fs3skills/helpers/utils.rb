@@ -119,7 +119,7 @@ module AresMUSH
         return :language
       elsif (advantage_names.include?(ability))
         return :advantage
-      elsif (magix_names.include?(ability))
+      elsif (magix_arts_names.include?(ability))
         return :magix
       else
         return :background
