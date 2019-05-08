@@ -36,7 +36,6 @@ module AresMUSH
       def magix
        list = []
         @char.fs3_magix_arts.sort_by(:name, :order => "Alpha").each_with_index do |a, i|
-            if a.rating_name != "Unskilled"
               list << format_skill(a, i)
             end
         end
