@@ -9,6 +9,12 @@ module AresMUSH
         if (Cron.is_cron_match?(Global.read_config("fs3magix", "will_cron"), event.time))
           handle_will_restoration
         end
+
+        if (Cron.is_cron_match?(Global.read_config("fs3magix", "will_cron"), event.time))
+          handle_will_restoration
+        end
+
+
       end
       def handle_will_restoration
         Global.logger.debug "Time for restoration of will."
