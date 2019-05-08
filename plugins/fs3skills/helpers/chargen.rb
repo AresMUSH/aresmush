@@ -112,7 +112,7 @@ module AresMUSH
 
       client.emit_ooc t('fs3skills.reset_attributes') if client
       FS3Skills.attr_names.each do |a|
-        FS3Skills.set_ability(client, char, a, 1)
+        FS3Skills.set_ability(client, char, a, 2)
       end
 
       FS3Skills.action_skill_names.each do |a|
