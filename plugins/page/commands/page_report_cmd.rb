@@ -7,7 +7,7 @@ module AresMUSH
       
       def parse_args
         args = cmd.parse_args(ArgParser.arg1_equals_arg2_slash_arg3)
-        self.names = args.arg1 ? args.arg1.gsub(',', ' ').split(' ') : []
+        self.names = list_arg(args.arg1)
         self.range = args.arg2
         self.reason = args.arg3
       end
@@ -17,19 +17,12 @@ module AresMUSH
       end
       
       def handle
-        chars = []
-        self.names.each do |name|
-          char = Character.named(name)
-          if (!char)
-            client.emit_failure t('page.invalid_recipient', :name => name)
-            return
-          end
-          chars << char
+        thread = Page.thread_for_names(self.names.concat(enactor_name).uniq)
+        if (!thread)
+          client.emit_failure t('page.invalid_thread')
+          return
         end
-        
-        thread = Page.generate_thread_name([enactor].concat(chars))
-        pages = enactor.page_messages.select { |p| p.thread_name == thread }.sort_by { |p| p.created_at }
-        
+                
         from_page = self.range.before("-").to_i - 1
         to_page = self.range.after("-").to_i - 1
         
@@ -38,7 +31,7 @@ module AresMUSH
           return
         end
         
-        template = PageLogTemplate.new(enactor, pages[from_page..to_page], chars)
+        template = PageReviewTemplate.new(enactor, thread, thread.sorted_messages[from_page..to_page], chars)
         log = template.render
         
         body = t('page.page_reported_body', :name => chars.map { |c| c.name }.join, :reporter => enactor_name)

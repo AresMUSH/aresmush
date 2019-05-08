@@ -34,30 +34,25 @@ module AresMUSH
           }
         end
         
-        enactor.page_messages
+        enactor.page_threads
            .to_a
-           .group_by { |p| p.thread_name }
-           .sort_by { |name, group_pages | Page.thread_title(name, enactor) }
-           .each do |name, group_pages |
-             chars = Page.chars_for_thread(name)
-             recipients = chars.select { |c| c != enactor }
-             sorted_pages = group_pages.sort_by { |p| p.created_at }
+           .sort_by { |t| t.title_without_viewer(enactor) }
+           .each do |t|
              channels << {
-               key: name,
-               title: recipients.sort_by { |c| c.name }.map { |c| c.name }.join(", "),
+               key: t.id,
+               title: t.title_without_viewer(enactor),
                enabled: true,
                allowed: true,
                muted: false,
                is_page: true,
-               last_activity: sorted_pages[-1].created_at,
-               who: chars.map { |c| {
+               last_activity: t.sorted_messages.to_a[-1].created_at,
+               who: t.characters.map { |c| {
                 name: c.name,
                 ooc_name: c.ooc_name,
                 icon: Website.icon_for_char(c),
                 muted: false
                }},
-               messages: sorted_pages.map { |p| {
-                  from: p.character ? p.character.name : t('global.deleted_character'),
+               messages: t.sorted_messages.map { |p| {
                   message: Website.format_markdown_for_html(p.message),
                   timestamp: OOCTime.local_long_timestr(enactor, p.created_at)
                   }}

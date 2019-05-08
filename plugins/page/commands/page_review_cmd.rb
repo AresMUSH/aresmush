@@ -6,25 +6,18 @@ module AresMUSH
       attr_accessor :names
       
       def parse_args
-        self.names = cmd.args.gsub(',', ' ').split(' ')
+        self.names = list_arg(cmd.args)
         client.emit self.names
       end
       
       def handle
-        chars = []
-        self.names.each do |name|
-          char = Character.named(name)
-          if (!char)
-            client.emit_failure t('page.invalid_recipient', :name => name)
-            return
-          end
-          chars << char
+        thread = Page.thread_for_names(self.names.concat([enactor_name]).uniq)
+        if (!thread)
+          client.emit_failure t('page.invalid_thread')
+          return
         end
         
-        thread = Page.generate_thread_name([enactor].concat(chars))
-        pages = enactor.page_messages.select { |p| p.thread_name == thread }.sort_by { |p| p.created_at }
-        
-        template = PageLogTemplate.new(enactor, pages, chars)
+        template = PageReviewTemplate.new(enactor, thread, thread.sorted_messages)
         client.emit template.render
       end
     end

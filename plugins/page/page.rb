@@ -57,6 +57,8 @@ module AresMUSH
       case request.cmd
       when "sendPage"
         return SendPageRequestHandler
+      when "markPageThreadRead"
+        return MarkThreadReadRequestHandler
       end
     end
     
