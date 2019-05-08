@@ -97,7 +97,7 @@ module AresMUSH
         linebreak = i % 2 == 1 ? "" : "%r"
         rating_text = "#{s.rating_name}"
         rating_dots = "#{s.print_rating}"
-        "#{linebreak}#{left(name, 16)} #{left(linked_attr, 3)} #{left(rating_dogs, 11)}      "
+        "#{linebreak}#{left(name, 16)} #{left(linked_attr, 3)} #{left(rating_dots, 11)}      "
       end
 
       def format_magix(s, i, show_linked_attr = false)
