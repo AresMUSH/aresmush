@@ -87,8 +87,8 @@ module AresMUSH
       def format_attr(a, i)
         name = "%xh#{a.name}:%xn"
         linebreak = i % 2 == 1 ? "" : "%r"
-        rating_text = "#{a.rating_name} #{a.print_rating}"
-        "#{linebreak}#{left(name, 16)} #{left(rating_text,20)}"
+        rating_text = "#{a.print_rating}"
+        "#{linebreak}#{left(name, 16)} #{right(rating_text,20)}"
       end
 
       def format_skill(s, i, show_linked_attr = false)
@@ -97,7 +97,7 @@ module AresMUSH
         linebreak = i % 2 == 1 ? "" : "%r"
         rating_text = "#{s.rating_name}"
         rating_dots = "#{s.print_rating}"
-        "#{linebreak}#{left(name, 16)} #{left(linked_attr, 3)} #{left(rating_text, 11)} #{right(rating_dots, 8)}"
+        "#{linebreak}#{left(name, 16)} #{left(linked_attr, 3)} #{right(rating_dots, 11)}"
       end
 
       def format_magix(s, i, show_linked_attr = false)
@@ -106,7 +106,7 @@ module AresMUSH
         linebreak = i % 2 == 1 ? "" : "%r"
         rating_text = "#{s.rating_name}"
         rating_dots = "#{s.print_rating}"
-        "#{linebreak}#{left(name, 16)} #{left(linked_attr, 3)} #{left(rating_text, 11)} #{right(rating_dots, 8)}"
+        "#{linebreak}#{left(name, 16)} #{left(linked_attr, 3)} #{right(rating_dots, 11)}"
       end
 
       def print_linked_attr(skill)
