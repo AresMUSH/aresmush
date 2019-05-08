@@ -1,6 +1,81 @@
 ---
 fs3magix:
   days_between_learning: 60
+  magix_arts:
+  - Elemental Air
+  - Elemental Fire
+  - Elemental Water
+  - Elemental Earth
+  - Witch Fire
+  - Necromancy
+  - Communion
+  - Gateway
+  - Divination
+  - Transfiguration
+  - Glamouring
+  - Creation
+  - Curse
+  - Enchantment
+  magix_arts_list:
+  - name: Communion
+    desc: The magic of calling, summoning or contacting the others.
+    is_magix: true
+    linked_attr: Enlightenment
+  - name: Creation
+    desc: The ability to create or modify things.
+    is_magix: true
+    linked_attr: Enlightenment
+  - name: Curse
+    desc: The ability to create or destroy curses.
+    is_magix: true
+    linked_attr: Enlightenment
+  - name: Enchantment
+    desc: The ability to temporary or permanently imbue magic into items.
+    is_magix: true
+    linked_attr: Enlightenment
+  - name: Elemental Air
+    desc: The ability to invoke the element of air.
+    is_magix: true
+    linked_attr: Enlightenment
+  - name: Elemental Fire
+    desc: The ability to invoke the element of fire.
+    is_magix: true
+    linked_attr: Enlightenment
+  - name: Elemental Water
+    desc: The ability to invoke the element of water.
+    is_magix: true
+    linked_attr: Enlightenment
+  - name: Elemental Earth
+    desc: The ability to invoke the element of earth.
+    is_magix: true
+    linked_attr: Enlightenment
+  - name: Witch Fire
+    desc: The ability to invoke and manipulate witch fire.
+    is_magix: true
+    linked_attr: Enlightenment
+  - name: Transfiguration
+    desc: The ability to change parts or all of the body.
+    is_magix: true
+    linked_attr: Enlightenment
+  - name: Necromancy
+    desc: The ability to commune with the dead and raise them.
+    is_magix: true
+    linked_attr: Enlightenment
+  - name: Gateway
+    linked_attr: Enlightenment
+    desc: The ability to open gateways, teleport or otherwise travel.
+    is_magix: true
+  - name: Glamouring
+    desc: The ability to charm or manipulate others emotions or mind.
+    is_magix: true
+    linked_attr: Enlightenment
+  - name: Divination
+    desc: The ability to augment a natural sense or sense through unnatural means.
+    is_magix: true
+    linked_attr: Enlightenment
+  magix_blurb: 'Magix Arts represent your skill in casting spells of the specified
+    type. '
+  max_magix_rating: 8
   sanity_cron:
     hour:
     - 0

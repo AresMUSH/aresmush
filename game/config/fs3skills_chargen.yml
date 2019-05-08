@@ -20,6 +20,8 @@ fs3skills:
     Everyone:
       skills:
         Occultism: 0
+      attributes:
+        Enlightenment: 0
   unusual_skills:
   - Piloting
   - Gunnery
