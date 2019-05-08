@@ -5,19 +5,18 @@
 <%= a -%>
 <% end %>
 
-<%= line_with_text t('fs3magix.magix_title') %>
-<% magix.each do |a| -%>
-<%= a -%>
-<% end %>
-
 <%= line_with_text t('fs3skills.action_skills_title') %>
 <% action_skills.each do |a| -%>
 <%= a -%>
 <% end %>
 
 <% if specialties %>
-
 %xh<%= t('fs3skills.specialties_title') %>%xn <%= specialties %>
+<% end %>
+
+<%= line_with_text t('fs3magix.magix_title') %>
+<% magix.each do |a| -%>
+<%= a -%>
 <% end %>
 
 <%= line_with_text t('fs3skills.background_skills_title') %>
