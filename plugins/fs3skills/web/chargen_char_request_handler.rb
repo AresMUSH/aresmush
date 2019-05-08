@@ -21,7 +21,7 @@ module AresMUSH
         {
           fs3_attributes: get_ability_list(char, char.fs3_attributes, :attribute),
           fs3_action_skills: get_ability_list(char, char.fs3_action_skills, :action),
-          fs3_magix_arts: get_ability_list(char,char.fs3_magix_arts, :magix)
+          fs3_magix_arts: get_ability_list(char,char.fs3_magix_arts, :magix),
           fs3_backgrounds: get_ability_list(char, char.fs3_background_skills, :background),
           fs3_languages: get_ability_list(char, char.fs3_languages, :language),
           fs3_advantages: get_ability_list(char, char.fs3_advantages, :advantage),
@@ -43,7 +43,7 @@ module AresMUSH
           starting_rating_name = t('fs3skills.everyman_rating')
         when :magix
           metadata = FS3Magix.magix_arts_list
-          starting_rating = 1
+          starting_rating = 0
           starting_rating_name = t('fs3skills.unskilled_rating')
         when :language
           metadata = FS3Skills.languages
