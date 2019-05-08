@@ -27,7 +27,7 @@ module AresMUSH
 
       def action_skills
         list = []
-        @char.fs3_action_skills.sort_by(:schools).each_with_index do |a, i|
+        @char.fs3_action_skills.sort_by(:magix).each_with_index do |a, i|
           magix = Global.read_config("fs3magix", "magix_arts")
           if !magix.include? a.name
             if a.rating_name != "Unskilled"
@@ -41,7 +41,7 @@ module AresMUSH
       def magix
        list = []
         @char.fs3_action_skills.sort_by(:magix).each_with_index do |a, i|
-          if (a.name == "Elemental Air") || (a.name == "Witch Fire") || (a.name == "Elemental Earth") || (a.name =="Elemental Fire") || (a.name == "Curse") || (a.name == "Necromancy") || (a.name == "Elemental Water") || (a.name == "Glamouring") || (a.name == "Gateway") || (a.name == "Communion") || (a.name == "Transfiguration") || (a.name == "Creation")
+          if (a.name == "Elemental Air") || (a.name == "Witch Fire") || (a.name == "Elemental Earth") || (a.name =="Elemental Fire") || (a.name == "Curse") || (a.name == "Necromancy") || (a.name == "Elemental Water") || (a.name == "Glamouring") || (a.name == "Gateway") || (a.name == "Communion") || (a.name == "Transfiguration") || (a.name == "Creation") || (a.name == "Enchantment")
             if a.rating_name != "Unskilled"
               list << format_attr(a, i)
             end
