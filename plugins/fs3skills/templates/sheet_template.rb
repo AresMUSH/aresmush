@@ -54,7 +54,7 @@ module AresMUSH
       def languages
         list = []
         @char.fs3_languages.sort_by(:name, :order => "ALPHA").each_with_index do |l, i|
-          list << format_skill(l, i)
+          list << format_language(l, i)
         end
         list
       end
@@ -62,7 +62,7 @@ module AresMUSH
       def advantages
         list = []
         @char.fs3_advantages.sort_by(:name, :order => "ALPHA").each_with_index do |l, i|
-          list << format_skill(l, i)
+          list << format_language(l, i)
         end
         list
       end
@@ -87,11 +87,19 @@ module AresMUSH
       def format_attr(a, i)
         name = "%xh#{a.name}:%xn"
         linebreak = i % 2 == 1 ? "" : "%r"
-        rating_text = "#{a.print_rating}"
+        rating_text = "#{a.rating_name}"
         "#{linebreak}#{left(name, 16)} #{right(rating_text,20)}"
       end
 
       def format_skill(s, i, show_linked_attr = true)
+        name = "%xh#{s.name}:%xn"
+        linked_attr = show_linked_attr ? print_linked_attr(s) : ""
+        linebreak = i % 2 == 1 ? "" : "%r"
+        rating_text = "#{s.rating_name}#{linked_attr}"
+        "#{linebreak}#{left(name, 16)} #{left(rating_text, 20)}"
+      end
+
+      def format_language(s, i, show_linked_attr = false)
         name = "%xh#{s.name}:%xn"
         linked_attr = show_linked_attr ? print_linked_attr(s) : ""
         linebreak = i % 2 == 1 ? "" : "%r"
