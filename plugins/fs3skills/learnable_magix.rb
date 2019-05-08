@@ -13,7 +13,7 @@ module AresMUSH
 
     def learn
       update(fs3_last_magix: Time.now)
-      update(fs3_xp: self.xp + 1)
+      update(fs3_xp: self.fs3_xp + 1)
     end
 
     def xp_needed
@@ -21,7 +21,7 @@ module AresMUSH
     end
 
     def learning_complete
-      self.xp >= self.xp_needed
+      self.fs3_xp >= self.xp_needed
     end
 
     def can_learn?
