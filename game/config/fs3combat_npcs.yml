@@ -4,25 +4,73 @@ fs3combat:
   npc_types:
     Goon:
       Default: 4
+      Wounds: 20
+    Ranged Goon:
+      Default: 4
       Firearms: 6
-      Gunnery: 6
+      Archery: 6
+      Wounds: 20
+    Melee Goon:
+      Default: 4
       Melee: 6
-      Wounds: 30
+      Athletics: 6
+      Wounds: 15
+    Magix Goon:
+      Default: 4
+      Occultism: 7
+      Stealth: 5
+      Wounds: 20
     Henchman:
       Default: 6
+      Wounds: 10
+    Magix Henchman:
+      Default: 6
+      Occultism: 9
+      Stealth: 7
+      Wounds: 10
+    Ranged Henchman:
+      Default: 6
       Firearms: 8
-      Gunnery: 8
+      Archery: 8
+      Wounds: 10
+    Melee Henchman:
+      Default: 6
       Melee: 8
-      Wounds: 20
+      Athletics: 8
+      Wounds: 5
     Miniboss:
       Default: 9
+      Wounds: 0
+    Ranged Miniboss:
+      Default: 9
+      Archery: 11
       Firearms: 11
-      Gunnery: 11
+      Wounds: 0
+    Magix Miniboss:
+      Default: 9
+      Occultism: 12
+      Stealth: 10
+      Wounds: 0
+    Melee Miniboss:
+      Default: 9
+      Athletics: 11
       Melee: 11
-      Wounds: 15
+      Wounds: -5
     Boss:
       Default: 11
+      Wounds: -5
+    Ranged Boss:
+      Default: 11
       Firearms: 13
-      Gunnery: 13
+      Archery: 13
+      Wounds: -5
+    Magix Boss:
+      Default: 11
+      Occultism: 14
+      Stealth: 12
+      Wounds: -5
+    Melee Boss:
+      Default: 11
       Melee: 13
-      Wounds: 0
+      Athletics: 13
+      Wounds: -10

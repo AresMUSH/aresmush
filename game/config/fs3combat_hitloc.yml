@@ -320,3 +320,160 @@ fs3combat:
       - Rider
       crew_areas:
       - Rider
+  Quadraped:
+      areas:
+        Chest:
+        - Rear Left Leg
+        - Rear Right Leg
+        - Front Left Leg
+        - Front Right Leg
+        - Abdomen
+        - Abdomen
+        - Head
+        - Chest
+        - Chest
+        - Chest
+        Rear Left Leg:
+        - Chest
+        - Rear Right Leg
+        - Rear Right Leg
+        - Rear Right Leg
+        - Abdomen
+        - Abdomen
+        - Abdomen
+        - Rear Left Leg
+        - Rear Left Leg
+        - Rear Left Leg
+        Rear Right Leg:
+        - Chest
+        - Rear Left Leg
+        - Rear Left Leg
+        - Rear Left Leg
+        - Abdomen
+        - Abdomen
+        - Rear Right Leg
+        - Rear Right Leg
+        - Rear Right Leg
+        - Rear Right Leg
+        Groin:
+        - Abdomen
+        - Abdomen
+        - Abdomen
+        - Rear Left Leg
+        - Rear Right Leg
+        - Rear Left Leg
+        - Rear Right Leg
+        - Groin
+        - Groin
+        - Groin
+        Front Left Leg:
+        - Head
+        - Chest
+        - Chest
+        - Chest
+        - Abdomen
+        - Abdomen
+        - Front Left Leg
+        - Front Left Leg
+        - Front Left Leg
+        - Front Left Leg
+        Front Right Leg:
+        - Head
+        - Chest
+        - Chest
+        - Abdomen
+        - Abdomen
+        - Abdomen
+        - Front Right Leg
+        - Front Right Leg
+        - Front Right Leg
+        - Front Right Leg
+        Head:
+        - Front Right Leg
+        - Front Right Leg
+        - Front Left Leg
+        - Chest
+        - Chest
+        - Neck
+        - Neck
+        - Head
+        - Head
+        - Head
+        Neck:
+        - Front Right Leg
+        - Front Right Leg
+        - Front Left Leg
+        - Chest
+        - Chest
+        - Head
+        - Head
+        - Neck
+        - Neck
+        - Neck
+        Abdomen:
+        - Rear Left Leg
+        - Rear Right Leg
+        - Rear Left Leg
+        - Rear Right Leg
+        - Chest
+        - Chest
+        - Chest
+        - Abdomen
+        - Abdomen
+        - Abdomen
+      vital_areas:
+      - Chest
+      - Abdomen
+      critical_areas:
+      - Head
+      - Neck
+      - Groin
+Serpent:
+      areas:
+        Head:
+        - Right Flank
+        - Right Flank
+        - Right Flank
+        - Left Flank
+        - Left Flank
+        - Left Flank
+        - Head
+        - Head
+        - Head
+        - Head
+        Right Flank:
+        - Tail
+        - Tail
+        - Tail
+        - Head
+        - Head
+        - Left Flank
+        - Left Flank
+        - Right Flank
+        - Right Flank
+        - Right Flank
+        Left Flank:
+        - Tail
+        - Tail
+        - Tail
+        - Head
+        - Head
+        - Right Flank
+        - Right Flank
+        - Left Flank
+        - Left Flank
+        - Left Flank
+        Tail:
+        - Right Flank
+        - Right Flank
+        - Right Flank
+        - Left Flank
+        - Left Flank
+        - Left Flank
+        - Tail
+        - Tail
+        - Tail
+      vital_areas:
+      - Head
+      critical_areas:
+      - Left Flank

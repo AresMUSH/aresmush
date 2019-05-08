@@ -22,8 +22,100 @@ fs3combat:
         Abdomen: 6
       allowed_specials:
       - Helmet
+    BasicVehicle:
+      description: A standard vehicle.
+      defense: 0
+      protection:
+        Wheel: 7
+        Cab: 10
+        Engine: 11
+        Body: 10
+        Bed: 9
+        Trunk: 10
+      allowed_specials:
+      - Bullet Proof
+      - Run Flat
+    LightVehicle:
+      description: A light vehicle.
+      defense: -1
+      protection:
+        Wheel: 7
+        Cab: 8
+        Engine: 9
+        Body: 9
+        Bed: 7
+        Trunk: 8
+      allowed_specials:
+      - Run Flat
+    HeavyVehicle:
+      description: A heavy vehicle.
+      defense: 1
+      protection:
+        Wheel: 7
+        Cab: 13
+        Engine: 14
+        Body: 13
+        Bed: 12
+        Trunk: 13
+      allowed_specials:
+      - Bullet Proof
+      - Armor Plated
+      - Run Flat
+    Motorcycle:
+      description: A motorcycle.
+      defense: -2
+      protection:
+        Wheel: 7
+        Chassis: 7
+      allowed_specials:
+      - Run Flat
+    Tough Hide:
+      description: Animal hide for quadrapeds
+      defense: 1
+      protection:
+        Chest: 4
+        Rear Left Leg: 4
+        Read Right Leg: 4
+        Front Left Leg: 4
+        Front Right Leg: 4
+        Abdomen: 4
+        Head: 3
+        Neck: 3
+        Groin: 2
+    Leather:
+      description: Leather armor
+      defense: 0
+      protection:
+        Chest: 7
+        Abdomen: 6
+        Left Arm: 7
+        Right Arm: 7
+      allowed_specials:
+      - Leather Helmet
   armor specials:
     Helmet:
       description: A helmet
       protection:
         Head: 4
+    Bullet Proof:
+      description: Equipped Vehicle for Bullet Proofing.
+      protection:
+        Cab: 5
+        Engine: 5
+        Body: 5
+        Trunk: 5
+    Armor Plated:
+      description: Equipped Vehicle with extra armor.
+      protection:
+        Cab: 8
+        Engine: 8
+        Body: 8
+        Trunk: 8
+    Run Flat:
+      description: Wheels equipped to run flat.
+      protection:
+        Wheel: 11
+    Leather Helmet:
+      description: A leather helmet
+      protection:
+        Head: 3
