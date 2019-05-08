@@ -125,11 +125,7 @@ module AresMUSH
       end
 
       FS3Skills.magix_arts_names.each do |a|
-        if a == "Enlightenment"
           FS3Skills.set_ability(client, char, a, 0)
-        else
-          FS3Skills.set_ability(client, char, a, 0)
-        end
       end
 
 
