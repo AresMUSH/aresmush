@@ -38,8 +38,7 @@ module AresMUSH
             if a.rating_name != "Unskilled"
               list << format_skill(a, i)
             end
-         end
-        list
+            list
       end
 
       def background_skills
