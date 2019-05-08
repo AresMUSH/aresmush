@@ -58,7 +58,9 @@ module AresMUSH
       
       # Create the db entry
       thread = Page.find_thread(everyone)
-      if (!thread)
+      if (thread)
+        Page.mark_thread_unread(thread)
+      else
         thread = PageThread.create
         everyone.each do |c|
           thread.characters.add c
@@ -141,6 +143,11 @@ module AresMUSH
         threads.delete thread.id.to_s
         char.update(read_page_threads: threads)
       end
+    end
+    
+    def self.has_unread_page_threads?(char)
+      return false if !char
+      char.page_threads.any? { |t| Page.is_thread_unread?(t, char) }
     end
   end
 

@@ -6,9 +6,8 @@ module AresMUSH
       def handle
          list = enactor.page_threads
              .to_a
-             .map { |t| t.title_without_viewer(enactor) }
-             .sort
-         template = BorderedListTemplate.new list, t('page.page_review_index_title')
+             .sort_by { |t| t.title_without_viewer(enactor) }
+         template = PageReviewIndexTemplate.new enactor, list
          client.emit template.render          
       end
     end

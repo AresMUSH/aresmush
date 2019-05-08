@@ -17,6 +17,7 @@ module AresMUSH
           return
         end
         
+        Page.mark_thread_read(thread, enactor)
         template = PageReviewTemplate.new(enactor, thread, thread.sorted_messages)
         client.emit template.render
       end

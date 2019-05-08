@@ -1,0 +1,7 @@
+%lh
+%xh<%= t('page.page_review_index_title') %>%xn
+
+<% @threads.each do |t| %>
+<%= unread_marker(t) %> <%= title(t) %>
+<% end %>
+%lf
