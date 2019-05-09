@@ -75,7 +75,7 @@ module AresMUSH
     # Check if the character has the stat.
     def self.has_ability(char, ability_name)
       ability = FS3Skills.find_ability(char, ability_name)
-      ability ? 1 : 0
+      ability > 0 ? 1 : 0
     end
 
     # Dice they roll, including related attribute
