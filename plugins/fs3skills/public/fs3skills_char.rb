@@ -26,14 +26,14 @@ module AresMUSH
       self.fs3_luck
     end
 
-    def sanity_max
+    def get_max_sanity
       grit = FS3Skills.ability_rating(self, "Grit")
       comp = FS3Skills.ability_rating(self, "Composure")
       adv = FS3Skills.ability_rating(self, "Clarity")
       value = (grit + comp + adv)
       value
     end
-    
+
     def xp
       self.fs3_xp
     end
