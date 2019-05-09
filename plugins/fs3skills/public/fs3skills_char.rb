@@ -68,14 +68,14 @@ module AresMUSH
       self.update(fs3_sanity: base_sanity)
     end
 
-    def get_base_sanity(self)
+    def self.get_base_sanity(self)
       grit = FS3Skills.ability_rating(self, "Grit") * 2
       adv = FS3Skills.has_ability(self, "Iron Will")
       adv_rating = adv ? FS3Skills.ability_rating(self, "Iron Will") : 0
       (grit + adv_rating)
     end
 
-    def get_base_sanity(self)
+    def self.get_base_sanity(self)
       grit = FS3Skills.ability_rating(self, "Grit")
       comp = FS3Skills.ability_rating(self, "Composure")
       adv = FS3Skills.has_ability(self, "Clarity")
