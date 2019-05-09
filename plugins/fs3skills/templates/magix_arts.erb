@@ -1,0 +1,9 @@
+<%= header %>
+<%= magix_blurb %>
+
+<% data[:magix].each do |a| %>
+<%= left( a['name'], 14 ) %> <%= a['desc'] %>
+<% end %>
+
+<%= page_footer %>
+<%= footer %>
