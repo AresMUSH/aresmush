@@ -121,6 +121,7 @@ en:
         will_title: "Will:"
         sanity_title: "Sanity:"
 
+        misc_title: "Miscellaneous Stats"
         attributes_title: "Attributes"
         action_skills_title: "Action Skills"
         background_skills_title: "Background Skills"
