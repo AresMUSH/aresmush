@@ -104,6 +104,7 @@ en:
         luck_point_spent: "%{name} spends a luck point on %{reason}."
         luck_job_title: "Luck Spent - %{name}"
         display_luck: "%{curr}/%{max}"
+        display_xp: "%{curr}/%{max}"
         # ------------------------------------------------------
         # SHEET
         # ------------------------------------------------------

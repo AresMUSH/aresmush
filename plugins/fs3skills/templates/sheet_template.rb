@@ -21,6 +21,10 @@ module AresMUSH
         Global.read_config("fs3skills", "max_luck")
       end
 
+      def xp_max
+        Global.read_config("fs3skills", "max_xp_hoard")
+      end
+
       def attrs
        list = []
         @char.fs3_attributes.sort_by(:name, :order => "ALPHA").each_with_index do |a, i|
