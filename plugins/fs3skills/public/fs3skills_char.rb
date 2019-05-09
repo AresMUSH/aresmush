@@ -34,6 +34,13 @@ module AresMUSH
       value
     end
 
+    def get_max_will
+      grit = FS3Skills.ability_rating(self, "Grit")
+      adv = FS3Skills.ability_rating(self, "Iron Will")
+      value = grit + grit + adv
+      value
+    end
+
     def xp
       self.fs3_xp
     end

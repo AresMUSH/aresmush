@@ -118,6 +118,8 @@ en:
 
         xp_title: "Experience:"
         luck_title: "Luck Points:"
+        will_title: "Will:"
+        sanity_title: "Sanity:"
 
         attributes_title: "Attributes"
         action_skills_title: "Action Skills"
