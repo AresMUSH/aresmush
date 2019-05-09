@@ -14,7 +14,7 @@ module AresMUSH
       end
 
       def sanity_max
-        FS3Skills.get_base_sanity
+        @char.get_base_sanity
       end
 
       def luck
