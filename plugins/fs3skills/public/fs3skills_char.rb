@@ -2,6 +2,8 @@ module AresMUSH
   class Character
     attribute :fs3_xp, :type => DataType::Integer, :default => 0
     attribute :fs3_luck, :type => DataType::Float, :default => 1
+    attribute :fs3_will, :type => DataType::Float, :default => 0
+    attribute :fs3_sanity, :type => DataType::Float, :default => 0
 
     collection :fs3_attributes, "AresMUSH::FS3Attribute"
     collection :fs3_action_skills, "AresMUSH::FS3ActionSkill"
@@ -28,6 +30,14 @@ module AresMUSH
       self.fs3_xp
     end
 
+    def will
+      self.fs3_will
+    end
+
+    def sanity
+      self.fs3_sanity
+    end
+
     def award_luck(amount)
       FS3Skills.modify_luck(self, amount)
     end
@@ -46,6 +56,31 @@ module AresMUSH
 
     def reset_xp
       self.update(fs3_xp: 0)
+    end
+
+    def reset_will
+      base_will = FS3Skills.get_base_will(self)
+      self.update(fs3_will: base_will)
+    end
+
+    def reset_sanity
+      base_sanity = FS3Skills.get_base_sanity(self)
+      self.update(fs3_sanity: base_sanity)
+    end
+
+    def get_base_sanity(self)
+      grit = FS3Skills.ability_rating(self, "Grit") * 2
+      adv = FS3Skills.has_ability(self, "Iron Will")
+      adv_rating = adv ? FS3Skills.ability_rating(self, "Iron Will") : 0
+      (grit + adv_rating)
+    end
+
+    def get_base_sanity(self)
+      grit = FS3Skills.ability_rating(self, "Grit")
+      comp = FS3Skills.ability_rating(self, "Composure")
+      adv = FS3Skills.has_ability(self, "Clarity")
+      adv_rating = adv ? FS3Skills.ability_rating(self, "Clarity") : 0
+      (grit + adv_rating + comp)
     end
 
     def roll_ability(ability, mod = 0)
