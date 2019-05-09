@@ -36,7 +36,7 @@ module AresMUSH
         FS3Skills.language_blurb
       end
 
-      def lang_blurb
+      def magix_blurb
         FS3Magix.magix_blurb
       end
 
