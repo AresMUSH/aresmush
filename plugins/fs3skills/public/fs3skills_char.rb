@@ -30,7 +30,7 @@ module AresMUSH
       grit = FS3Skills.ability_rating(self, "Grit")
       comp = FS3Skills.ability_rating(self, "Composure")
       adv = FS3Skills.ability_rating(self, "Clarity")
-      value = (grit + comp + adv)
+      value = grit  comp  adv
       value
     end
 
