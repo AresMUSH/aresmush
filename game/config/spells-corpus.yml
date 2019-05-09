@@ -241,7 +241,7 @@ spells:
     weapon_specials: Grow
     weapon: Spell
   Revive:
-    available: false
+    available: true
     casting_time: 1 round
     desc: 'Return a knocked out comrade to the fight.'
     effect: Revive
