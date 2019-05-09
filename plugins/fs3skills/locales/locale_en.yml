@@ -103,7 +103,7 @@ en:
         #    other: "%{name} spends %{count} luck points!"
         luck_point_spent: "%{name} spends a luck point on %{reason}."
         luck_job_title: "Luck Spent - %{name}"
-
+        display_luck: "%{curr}/%{max}"
         # ------------------------------------------------------
         # SHEET
         # ------------------------------------------------------

@@ -38,5 +38,5 @@
 
 <% end %>
 
-%xh<%= t('fs3skills.xp_title') %>%xn <%= left( char.xp, 30 ) %> %xh<%= t('fs3skills.luck_title') %>%xn <%= luck / luck_max %>
+%xh<%= t('fs3skills.xp_title') %>%xn <%= left( char.xp, 30 ) %> %xh<%= t('fs3skills.luck_title') %>%xn <%= t('fs3skills.display_luck, :curr => luck, :max => luck_max) %>
 %lf
