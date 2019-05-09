@@ -104,7 +104,8 @@ module AresMUSH
         linked_attr = show_linked_attr ? print_linked_attr(s) : ""
         linebreak = i % 2 == 1 ? "" : "%r"
         rating_text = "#{s.rating_name}#{linked_attr}"
-        "#{linebreak}#{left(name, 16)} #{left(rating_text, 20)}"
+        has_stat = FS3Skills.has_ability(char,s.name)
+        "#{linebreak}#{left(name, 16)} #{has_stat} #{left(rating_text, 20)}"
       end
 
       def format_language(s, i, show_linked_attr = false)
