@@ -13,6 +13,10 @@ module AresMUSH
         Chargen.approval_status(@char)
       end
 
+      def sanity_max
+        FS3Skills.get_base_clarity
+      end
+
       def luck
         @char.luck.floor
       end
