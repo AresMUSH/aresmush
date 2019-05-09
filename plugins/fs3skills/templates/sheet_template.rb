@@ -21,6 +21,14 @@ module AresMUSH
         @char.get_max_will
       end
 
+      def will_curr
+        will_max - @char.will
+      end
+
+      def sanity_curr
+        sanity_max - @char.sanity
+      end
+
       def luck
         @char.luck.floor
       end
