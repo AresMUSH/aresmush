@@ -17,6 +17,10 @@ module AresMUSH
         @char.luck.floor
       end
 
+      def luck_max
+        FS3Skills.max_luck
+      end
+
       def attrs
        list = []
         @char.fs3_attributes.sort_by(:name, :order => "ALPHA").each_with_index do |a, i|
