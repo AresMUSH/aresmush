@@ -26,6 +26,7 @@ module AresMUSH
       self.demographics.each { |k, v| profile_text << "\n#{k}: #{v}"}
       self.groups.each { |k, v| profile_text << "\n#{k}: #{v}"}
       self.profile.each { |k, v| profile_text << "\n\n#{k}\n------\n#{v}"}
+      pp self.relationships
       self.relationships.each { |k, v| profile_text << "\n\n#{k}: #{v['category']}\n------\n#{v['relationship']}"}
       profile_text
     end
