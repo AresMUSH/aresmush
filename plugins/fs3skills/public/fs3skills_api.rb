@@ -72,6 +72,11 @@ module AresMUSH
       ability ? ability.rating : 0
     end
 
+    # Check if the character has the stat.
+    def self.has_ability(char, ability_name)
+      FS3Skills.ability_rating(char, ability_name) > 0
+    end
+    
     # Dice they roll, including related attribute
     def self.dice_rolled(char, ability)
       FS3Skills.dice_to_roll_for_ability(char, RollParams.new(ability))
