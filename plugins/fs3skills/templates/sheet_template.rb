@@ -17,6 +17,10 @@ module AresMUSH
         @char.get_max_sanity
       end
 
+      def will_max
+        @char.get_max_will
+      end
+
       def luck
         @char.luck.floor
       end
