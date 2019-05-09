@@ -18,7 +18,7 @@ module AresMUSH
       end
 
       def luck_max
-        FS3Skills.max_luck
+        Global.read_config("fs3skills", "max_luck")
       end
 
       def attrs
