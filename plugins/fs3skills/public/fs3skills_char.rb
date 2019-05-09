@@ -26,6 +26,14 @@ module AresMUSH
       self.fs3_luck
     end
 
+    def sanity_max
+      grit = FS3Skills.ability_rating(self, "Grit")
+      comp = FS3Skills.ability_rating(self, "Composure")
+      adv = FS3Skills.ability_rating(self, "Clarity")
+      value = (grit + comp + adv)
+      value
+    end
+    
     def xp
       self.fs3_xp
     end
@@ -56,31 +64,6 @@ module AresMUSH
 
     def reset_xp
       self.update(fs3_xp: 0)
-    end
-
-    def reset_will
-      base_will = FS3Skills.get_base_will(self)
-      self.update(fs3_will: base_will)
-    end
-
-    def reset_sanity
-      base_sanity = FS3Skills.get_base_sanity(self)
-      self.update(fs3_sanity: base_sanity)
-    end
-
-    def get_base_will
-      grit = FS3Skills.ability_rating(self, "Grit") * 2
-      adv = FS3Skills.has_ability(self, "Iron Will")
-      adv_rating = adv ? FS3Skills.ability_rating(self, "Iron Will") : 0
-      (grit + adv_rating)
-    end
-
-    def get_base_sanity
-      grit = FS3Skills.ability_rating(self, "Grit")
-      comp = FS3Skills.ability_rating(self, "Composure")
-      adv = FS3Skills.has_ability(self, "Clarity")
-      adv_rating = adv ? FS3Skills.ability_rating(self, "Clarity") : 0
-      (grit + adv_rating + comp)
     end
 
     def roll_ability(ability, mod = 0)

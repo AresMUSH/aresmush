@@ -14,7 +14,7 @@ module AresMUSH
       end
 
       def sanity_max
-        @char.get_base_sanity
+        @char.get_max_sanity
       end
 
       def luck
