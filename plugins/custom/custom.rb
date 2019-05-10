@@ -14,6 +14,10 @@ module AresMUSH
       case request.cmd
       when "spells"
         return SpellsRequestHandler
+      when "schools"
+        return SchoolsRequestHandler
+      when "searchSpells"
+        return SearchSpellsRequestHandler
       end
       nil
     end
@@ -23,6 +27,14 @@ module AresMUSH
       case cmd.root
       when "lastrp"
         return LastRPCmd
+      end
+
+      case cmd.root
+      when "mindshield"
+        case cmd.switch
+        when "off"
+          return MindshieldOffCmd
+        end
       end
 
       #Comps
