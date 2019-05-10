@@ -1,6 +1,89 @@
 ---
 fs3combat:
   hitloc:
+    Death Cap:
+      areas:
+        Trunk:
+        - Left Leg
+        - Right Leg
+        - Left Arm
+        - Right Arm
+        - Head
+        - Trunk
+        - Trunk
+        - Trunk
+        Left Leg:
+        - Trunk
+        - Right Foot
+        - Right Leg
+        - Left Foot
+        - Left Leg
+        - Left Leg
+        - Left Leg
+        Right Leg:
+        - Trunk
+        - Left Foot
+        - Left Leg
+        - Left Leg
+        - Trunk
+        - Trunk
+        - Right Foot
+        - Right Leg
+        - Right Leg
+        - Right Leg
+        Left Hand:
+        - Trunk
+        - Trunk
+        - Trunk
+        - Left Arm
+        - Left Arm
+        - Left Arm
+        - Left Hand
+        - Left Hand
+        - Left Hand
+        Right Hand:
+        - Trunk
+        - Trunk
+        - Right Arm
+        - Right Arm
+        - Right Arm
+        - Left Hand
+        - Left Hand
+        - Left Hand
+        Left Arm:
+        - Head
+        - Trunk
+        - Trunk
+        - Trunk
+        - Left Hand
+        - Left Hand
+        - Left Arm
+        - Left Arm
+        - Left Hand
+        Right Arm:
+        - Head
+        - Trunk
+        - Trunk
+        - Trunk
+        - Right Hand
+        - Right Hand
+        - Right Arm
+        - Right Arm
+        - Right Hand
+        Head:
+        - Right Arm
+        - Right Arm
+        - Left Arm
+        - Left Arm
+        - Trunk
+        - Trunk
+        - Head
+        - Head
+        - Head
+      vital_areas:
+      - Trunk
+      critical_areas:
+      - Head
     Humanoid:
       areas:
         Chest:
@@ -131,6 +214,49 @@ fs3combat:
       - Head
       - Neck
       - Groin
+    Plant:
+      areas:
+        Stem:
+        - Stem
+        - Stem
+        - Left Vines
+        - Left Vines
+        - Flower
+        - Flower
+        - Right Vines
+        - Right Vines
+        Right Vines:
+        - Right Vines
+        - Left Vines
+        - Left Vines
+        - Flower
+        - Flower
+        - Right Vines
+        - Right Vines
+        - Stem
+        Left Vines:
+        - Left Vines
+        - Left Vines
+        - Left Vines
+        - Flower
+        - Flower
+        - Right Vines
+        - Right Vines
+        - Stem
+        Flower:
+        - Flower
+        - Flower
+        - Flower
+        - Left Vines
+        - Left Vines
+        - Right Vines
+        - Right Vines
+        - Stem
+        - Stem
+      vital_areas:
+      - Stem
+      critical_areas:
+      - Flower
     Quadraped:
       areas:
         Chest:
@@ -330,457 +456,8 @@ fs3combat:
         - Right Branches
         - Trunk
         - Trunk
-      vital_areas:
-      - Trunk
-      critical_areas:
-      - Trunk
-    Plant:
-      areas:
-        Stem:
-        - Stem
-        - Stem
-        - Left Vines
-        - Left Vines
-        - Flower
-        - Flower
-        - Right Vines
-        - Right Vines
-        Right Vines:
-        - Right Vines
-        - Left Vines
-        - Left Vines
-        - Flower
-        - Flower
-        - Right Vines
-        - Right Vines
-        - Stem
-        Left Vines:
-        - Left Vines
-        - Left Vines
-        - Left Vines
-        - Flower
-        - Flower
-        - Right Vines
-        - Right Vines
-        - Stem
-        Flower:
-        - Flower
-        - Flower
-        - Flower
-        - Left Vines
-        - Left Vines
-        - Right Vines
-        - Right Vines
-        - Stem
-        - Stem
-      vital_areas:
-      - Stem
-      critical_areas:
-      - Flower
-    Fighter:
-      areas:
-        Body:
-        - Controls
-        - Tail
-        - Weapon
-        - Wing
-        - Wing
-        - Cockpit
-        - Nose
-        - Body
-        - Body
-        - Body
-        Engine:
-        - Controls
-        - Wing
-        - Weapon
-        - Body
-        - Body
-        - Tail
-        - Tail
-        - Engine
-        - Engine
-        - Engine
-        Tail:
-        - Controls
-        - Wing
-        - Weapon
-        - Body
-        - Body
-        - Engine
-        - Engine
-        - Tail
-        - Tail
-        - Tail
-        Wing:
-        - Controls
-        - Cockpit
-        - Weapon
-        - Body
-        - Body
-        - Tail
-        - Tail
-        - Wing
-        - Wing
-        - Wing
-        Weapon:
-        - Controls
-        - Controls
-        - Body
-        - Body
-        - Wing
-        - Wing
-        - Wing
-        - Weapon
-        - Weapon
-        - Weapon
-        Nose:
-        - Controls
-        - Weapon
-        - Wing
-        - Wing
-        - Cockpit
-        - Body
-        - Body
-        - Nose
-        - Nose
-        - Nose
-        Cockpit:
-        - Controls
-        - Weapon
-        - Wing
-        - Body
-        - Body
-        - Nose
-        - Nose
-        - Cockpit
-        - Cockpit
-        - Cockpit
-        Controls:
-        - Cockpit
-        - Weapon
-        - Wing
-        - Body
-        - Body
-        - Nose
-        - Nose
-        - Controls
-        - Controls
-        - Controls
-      vital_areas:
-      - Body
-      - Engine
-      critical_areas:
-      - Cockpit
-      - Controls
-      crew_areas:
-      - Cockpit
-    Transport:
-      areas:
-        Body:
-        - Controls
-        - Tail
-        - Weapon
-        - Wing
-        - Wing
-        - Cockpit
-        - Nose
-        - Body
-        - Body
-        - Body
-        Engine:
-        - Controls
-        - Wing
-        - Weapon
-        - Body
-        - Body
-        - Tail
-        - Tail
-        - Engine
-        - Engine
-        - Engine
-        Tail:
-        - Controls
-        - Wing
-        - Weapon
-        - Body
-        - Body
-        - Engine
-        - Engine
-        - Tail
-        - Tail
-        - Tail
-        Wing:
-        - Controls
-        - Cockpit
-        - Weapon
-        - Body
-        - Body
-        - Tail
-        - Tail
-        - Wing
-        - Wing
-        - Wing
-        Weapon:
-        - Controls
-        - Controls
-        - Body
-        - Body
-        - Wing
-        - Wing
-        - Wing
-        - Weapon
-        - Weapon
-        - Weapon
-        Nose:
-        - Controls
-        - Weapon
-        - Wing
-        - Wing
-        - Cockpit
-        - Body
-        - Body
-        - Nose
-        - Nose
-        - Nose
-        Cockpit:
-        - Controls
-        - Weapon
-        - Wing
-        - Body
-        - Body
-        - Nose
-        - Nose
-        - Cockpit
-        - Cockpit
-        - Cockpit
-        Controls:
-        - Cockpit
-        - Weapon
-        - Wing
-        - Body
-        - Body
-        - Nose
-        - Nose
-        - Controls
-        - Controls
-        - Controls
-        Cabin:
-        - Controls
-        - Tail
-        - Weapon
-        - Wing
-        - Wing
-        - Cockpit
-        - Nose
-        - Cabin
-        - Cabin
-        - Cabin
-      vital_areas:
-      - Body
-      - Engine
-      critical_areas:
-      - Cockpit
-      - Controls
-      crew_areas:
-      - Cockpit
-      - Cabin
-    Truck:
-      areas:
-        Body:
-        - Wheel
-        - Bed
-        - Bed
-        - Engine
-        - Cab
-        - Cab
-        - Body
-        - Body
-        - Body
-        - Body
-        Engine:
-        - Wheel
-        - Wheel
-        - Cab
-        - Cab
-        - Body
-        - Body
-        - Engine
-        - Engine
-        - Engine
-        - Engine
-        Cab:
-        - Wheel
-        - Bed
-        - Engine
-        - Engine
-        - Body
-        - Body
-        - Body
-        - Cab
-        - Cab
-        - Cab
-        Bed:
-        - Cab
-        - Wheel
-        - Engine
-        - Engine
-        - Body
-        - Body
-        - Body
-        - Bed
-        - Bed
-        - Bed
-        Wheel:
-        - Cab
-        - Cab
-        - Engine
-        - Engine
-        - Body
-        - Body
-        - Wheel
-        - Wheel
-        - Wheel
-        - Wheel
-      vital_areas:
-      - Body
-      - Wheel
-      critical_areas:
-      - Cab
-      - Engine
-      crew_areas:
-      - Cab
-      - Bed
-    Tank:
-      areas:
-        Body:
-        - Track
-        - Track
-        - Engine
-        - Engine
-        - Weapon
-        - Weapon
-        - Body
-        - Body
-        - Body
-        - Body
-        Engine:
-        - Track
-        - Track
-        - Weapon
-        - Weapon
-        - Body
-        - Body
-        - Engine
-        - Engine
-        - Engine
-        - Engine
-        Weapon:
-        - Track
-        - Track
-        - Engine
-        - Engine
-        - Body
-        - Body
-        - Body
-        - Weapon
-        - Weapon
-        - Weapon
-        Track:
-        - Weapon
-        - Weapon
-        - Engine
-        - Engine
-        - Body
-        - Body
-        - Track
-        - Track
-        - Track
-        - Track
-        Side:
-        - Weapon
-        - Track
-        - Track
-        - Body
-        - Body
-        - Body
-        - Side
-        - Side
-        - Side
-        - Side
-        Cabin:
-        - Side
-        - Side
-        - Track
-        - Track
-        - Body
-        - Body
-        - Body
-        - Cabin
-        - Cabin
-        - Cabin
-      vital_areas:
-      - Body
-      - Track
-      - Side
-      critical_areas:
-      - Weapon
-      - Engine
-      crew_areas:
-      - Cabin
-    Aa Battery:
-      areas:
-        Weapon:
-        - Crew
-        - Body
-        - Body
-        - Body
-        - Controls
-        - Controls
-        - Controls
-        - Weapon
-        - Weapon
-        - Weapon
-        Controls:
-        - Crew
-        - Weapon
-        - Weapon
-        - Weapon
-        - Body
-        - Body
-        - Body
-        - Controls
-        - Controls
-        - Controls
-        Body:
-        - Controls
-        - Controls
-        - Controls
-        - Crew
-        - Weapon
-        - Weapon
-        - Weapon
-        - Body
-        - Body
-        - Body
-        Crew:
-        - Weapon
-        - Weapon
-        - Body
-        - Body
-        - Controls
-        - Controls
-        - Controls
-        - Crew
-        - Crew
-        - Crew
-      vital_areas:
-      - Body
-      critical_areas:
-      - Controls
-      - Weapon
-      crew_areas:
-      - Crew
+      vital_areas: []
+      critical_areas: []
     Target:
       areas:
         Bullseye:
