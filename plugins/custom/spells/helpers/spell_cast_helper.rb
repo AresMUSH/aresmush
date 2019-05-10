@@ -37,48 +37,80 @@ module AresMUSH
     end
 
 
-    def self.cast_noncombat_spell(caster, spell, mod)
-      enactor_room = caster.room
-      success = Custom.roll_noncombat_spell_success(caster, spell, mod)
-      message = t('custom.casts_noncombat_spell', :name => caster.name, :spell => spell, :mod => mod, :succeeds => success)
-      enactor_room.emit message
-      if enactor_room.scene
-        Scenes.add_to_scene(enactor_room.scene, message)
+    def self.cast_noncombat_spell(caster, name_string, spell, mod)
+      target_num = Global.read_config("spells", spell, "target_num")
+      targets = Custom.parse_spell_targets(name_string, target_num)
+
+      if targets == t('custom.too_many_targets')
+        caster.client.emit_failure t('custom.too_many_targets', :spell => spell, :num => target_num)
+      elsif targets == "no_target"
+        caster.client.emit_failure "%xrThat is not a character.%xn"
+      else
+        names = targets.map { |t| t.name }
+        print_names = names.join(", ")
+        message = t('custom.casts_noncombat_spell_with_target', :name => caster.name, :target => print_names, :spell => spell, :mod => mod, :succeeds => "%xgSUCCEEDS%xn")
+        Global.logger.debug "PRINTING"
+      end
+      caster.room.emit message
+      if caster.room.scene
+        Scenes.add_to_scene(caster.room.scene, message)
       end
     end
 
-    def self.cast_non_combat_heal(caster, spell, mod)
-      succeeds = Custom.roll_noncombat_spell_success(caster, spell, mod)
-      room = caster.room
-      if succeeds == "%xgSUCCEEDS%xn"
-        wound = FS3Combat.worst_treatable_wound(caster)
-        heal_points = Global.read_config("spells", spell, "heal_points")
-        if (wound)
-          FS3Combat.heal(wound, heal_points)
-          message = t('custom.cast_heal', :name => caster.name, :spell => spell, :succeeds => succeeds, :target => caster.name, :points => heal_points)
-          room.emit message
-          if caster.room.scene
-            Scenes.add_to_scene(caster.room.scene, message)
-          end
-        else
-          message = t('custom.cast_heal_no_effect', :name => caster.name, :spell => spell, :succeeds => succeeds, :target => caster.name)
-          room.emit message
-          if caster.room.scene
-            Scenes.add_to_scene(caster.room.scene, message)
-          end
-        end
+    def self.parse_spell_targets(name_string, target_num)
+      return t('fs3combat.no_targets_specified') if (!name_string)
+      target_names = name_string.split(" ").map { |n| InputFormatter.titlecase_arg(n) }
+      targets = []
+      target_names.each do |name|
+        target = Character.named(name)
+        return "no_target" if !target
+        targets << target
+      end
+      targets = targets
+      if (targets.count > target_num)
+        return t('custom.too_many_targets')
       else
-        message = t('custom.casts_spell', :name => caster.name, :spell => spell, :succeeds => succeeds)
-        room.emit message
-        if caster.room.scene
-          Scenes.add_to_scene(caster.room.scene, message)
-        end
+        return targets
+      end
+    end
+
+    def self.cast_noncombat_heal(caster, target, spell, mod)
+      room = caster.room
+      wound = FS3Combat.worst_treatable_wound(target)
+      heal_points = Global.read_config("spells", spell, "heal_points")
+
+      if (wound)
+        FS3Combat.heal(wound, heal_points)
+        message = t('custom.cast_heal', :name => caster.name, :spell => spell, :succeeds => "%xgSUCCEEDS%xn", :target => target.name, :points => heal_points)
+      else
+        message = t('custom.cast_heal_no_effect', :name => caster.name, :spell => spell, :succeeds => "%xgSUCCEEDS%xn", :target => target.name)
+      end
+      room.emit message
+      if room.scene
+        Scenes.add_to_scene(room.scene, message)
+      end
+    end
+
+    def self.cast_noncombat_mind_shield(caster, target)
+      shield_strength = caster.roll_ability("Spirit")
+      Global.logger.debug "Strength: #{shield_strength[:successes]}"
+      target.update(mind_shield: shield_strength[:successes])
+
+      message = t('custom.cast_mindshield', :name => caster.name, :spell => "Mind Shield", :succeeds => "%xgSUCCEEDS%xn", :target =>  target.name)
+      room = caster.room
+      room.emit message
+      if room.scene
+        Scenes.add_to_scene(room.scene, message)
       end
     end
 
     def self.roll_mind_shield(target, caster)
       shield_strength = target.mind_shield
-      successes = caster.roll_ability("Spirit")
+      if caster.combat
+        successes = caster.roll_ability("Spirit")
+      else
+        successes = caster.roll_ability("Spirit")[:successes]
+      end
       delta = shield_strength - successes
       if caster.combat
         combat = caster.combat
