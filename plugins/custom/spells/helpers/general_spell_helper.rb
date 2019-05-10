@@ -165,7 +165,7 @@ module AresMUSH
         if !d.healed
           d.delete
         end
-        Global.logger.info "Phoenix's Healing Flames deleting #{char.name}'s' damage."
+        Global.logger.info "Phoenix's Healing Flames deleting #{char.name}'s damage."
       end
     end
 
