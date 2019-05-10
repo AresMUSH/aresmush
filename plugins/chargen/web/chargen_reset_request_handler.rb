@@ -18,7 +18,7 @@ module AresMUSH
         Chargen.save_char(char, chargen_data)
         
         if FS3Skills.is_enabled?
-          FS3Skills.reset_char(nil, char)
+          FS3Skills.reset_char(char)
         end
         
         {          
