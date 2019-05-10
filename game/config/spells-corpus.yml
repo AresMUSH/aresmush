@@ -94,9 +94,23 @@ spells:
     is_potion: true
     level: 3
     name: Endure Extreme Temperatures
-    notes: Needs limitations as to how hot and how cold
     range: Self
     roll: true
+    school: Corpus
+  Drowsy:
+    available: false
+    casting_time: 1 round
+    desc: Make a target suddenly feel extremely drowsy and cause them to briefly fall asleep. In combat, they are stunned them for one round. In other situations, they remain asleep until they are woken or wake naturally.
+    duration: 1 round
+    effect: Stun
+    is_stun: true
+    level: 3
+    line_of_sight: true
+    name: Drowsy
+    range: Short
+    rounds: 1
+    target_num: 1
+    target_optional: true
     school: Corpus
   Flesh Wound:
     available: false
