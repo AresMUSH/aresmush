@@ -26,7 +26,7 @@ module AresMUSH
       end
       
       def submitter(job)
-        !job.author ? t('jobs.deleted_author') : job.author.name
+        !job.author ? t('global.deleted_character') : job.author.name
       end
       
       def unread_status(job)

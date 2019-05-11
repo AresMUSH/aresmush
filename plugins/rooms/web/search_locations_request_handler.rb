@@ -11,7 +11,6 @@ module AresMUSH
         if (!searchName.blank?)
           rooms = rooms.select { |r| r.name =~ /#{searchName}/i }
         end
-        pp searchDesc
         if (!searchDesc.blank?)
           rooms = rooms.select { |r| r.description =~ /#{searchDesc}/i }
         end

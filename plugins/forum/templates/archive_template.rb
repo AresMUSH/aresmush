@@ -16,11 +16,11 @@ module AresMUSH
       end
       
       def author(post)
-        !post.author ? t('forum.deleted_author') : post.author.name
+        !post.author ? t('global.deleted_character') : post.author.name
       end
       
       def reply_title(reply)
-        rauthor = !reply.author ? t('forum.deleted_author') : reply.author.name
+        rauthor = !reply.author ? t('global.deleted_character') : reply.author.name
         rdate = OOCTime.local_long_timestr(@enactor, reply.created_at)
         t('forum.reply_title', :name => rauthor, :date => rdate)
       end

@@ -974,7 +974,7 @@ CHAT SCREEN
 }
 
 .chat-box {
-  padding: 0px;
+  padding: 3px;
   margin: 0px;
 }
 .chat-button {
@@ -1066,6 +1066,14 @@ OTHER
     padding:15px;
 }
 
+
+.xp-progress {
+  max-width: 200px;
+  width: 200px;
+  display: inline-block;
+  margin-bottom: 5px;
+}
+
 /*.char-scene-list li:before { content: "\2666  "; }*/
 
 @media (max-width:992px)  { 
@@ -1092,7 +1100,6 @@ OTHER
     padding-left: 0px;
     padding-right: 0px;
 }
-
 
 .body-row 
 {

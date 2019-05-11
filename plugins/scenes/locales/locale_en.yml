@@ -33,7 +33,7 @@ en:
         access_not_allowed: "You do not have access to that scene."
         scene_already_completed: "That scene is already over."
         announce_scene_start: "%{name} has started a new %xh%{privacy}%xH scene (%{num}) here."
-        location_set: "Scene location changed:%R%R%{description}"
+        location_set: "%{name} changed the scene location to %{location}."
         scene_nag:  "There's no scene running here.  Starting a scene will activate repose and make it easy to share the scene with the web portal.  Just do `scene/start` if you want to start one."
         open: "Open"
         private: "Private"
@@ -137,6 +137,5 @@ en:
         no_work_set: "You haven't set a workplace."
         
         not_a_part_of_scene: "You are not participating in that scene."
-        author_deleted: "(Author Deleted)"
         left_scene: "You leave the scene."
         web_scene_started: "You start a new scene (%{num}).  You can join the scene using `scene/join %{num}` or find it on the web portal's active scenes page."

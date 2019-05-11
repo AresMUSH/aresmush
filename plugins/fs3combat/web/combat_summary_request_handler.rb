@@ -27,6 +27,7 @@ module AresMUSH
                   is_ko: c.is_ko,
                   weapon: c.weapon,
                   armor: c.armor,
+                  is_npc: c.is_npc?,
                   ammo: c.ammo ? "(#{c.ammo})" : '',
                   damage_boxes: (-c.total_damage_mod).ceil.times.map { |d| d },
                   damage: c.associated_model.damage.select { |d| !d.healed }.map { |d| "#{d.current_severity} - #{d.description}" },
