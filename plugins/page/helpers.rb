@@ -14,6 +14,8 @@ module AresMUSH
         client = Login.find_client(r)
         if (!client)
           names << "#{r.name}<#{t('page.offline_status')}>"
+        elsif (r.page_do_not_disturb)
+          names << "#{r.name}<#{t('page.dnd_status')}>"
         elsif (r.is_afk?)
           names << "#{r.name}<#{t('page.afk_status')}>"
         elsif Status.is_idle?(client)
@@ -82,7 +84,7 @@ module AresMUSH
       # Send to the recipients.
       recipients.each do |recipient|
         recipient_client = Login.find_client(recipient)
-        if (recipient_client)
+        if (recipient_client && !recipient.page_do_not_disturb)
           recipient_client.emit t('page.to_recipient', 
             :pm => Page.format_page_indicator(recipient),
             :autospace => Scenes.format_autospace(enactor, recipient.page_autospace), 
