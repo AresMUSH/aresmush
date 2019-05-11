@@ -22,7 +22,7 @@ en:
         fluent_rating: "Fluent"
         
         # Chargen Values Set
-        attribute_set: "Attribute '%{name} is now %{rating}."
+        attribute_set: "Attribute '%{name}' is now %{rating}."
         action_set: "Action Skill '%{name}' is now %{rating}."
         language_set: "Language '%{name}' is now %{rating}."
         advantage_set: "Advantage '%{name}' is now %{rating}."
@@ -30,9 +30,9 @@ en:
         admin_ability_set: "You set %{name}'s %{ability_name} ability (%{ability_type}) to %{rating}."
         max_rating_is: "You can't raise that ability any higher."
         min_rating_is: "You can't lower that ability any lower."
-        invalid_rating: That is not a valid ability rating.
+        invalid_rating: That is not a valid ability rating.  You have to use a number.
         no_special_characters: "Ability names may not contain special characters."
-        error_saving_ability: "There was a problem saving %{name}.  Check the ability name and rating.  Ability names may not contain special characters."
+        error_saving_ability: "There was a problem saving %{name}: %{error}"
         
         ability_not_found: "Ability not found."
         invalid_specialty_skill: "That skill cannot have a specialty."
@@ -43,7 +43,7 @@ en:
         specialty_already_exists: "%{name} already has that specialty."
         
         # Reset
-        reset_complete: "Reset complete.  Note that nothing comes for free, so even default items cost character points."
+        reset_complete: "Your abilities have been reset to default values based on your groups.  Note that nothing comes for free, so even default items cost character points."
         reset_for_group: "Setting default skills for %{group}."
         reset_languages: "Setting default languages."
         reset_group_notes: "Notes for %{group}: %{notes}"

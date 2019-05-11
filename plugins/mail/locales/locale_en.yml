@@ -1,8 +1,5 @@
 en:
     mail:
-        deleted_author: "(Author Deleted)"
-        deleted_recipient: "(Recipient Deleted)"
-        
         unread_marker: "%xyU%xn"
         trashed_marker: "%xx%xhX%xn"
         

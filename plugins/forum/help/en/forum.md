@@ -22,11 +22,11 @@ The 'rw' on the end tells you whether you can read and/or write to that category
 
 The forum has a variety of categories, each with a different purpose.  You can see the list of categories and their descriptions.
 
-To view topics in a category, you need to use the `forum` command with the category name or number.  For example: to read the announcements category you could use either `forum 1` or `forum announcements`.
+To view topics in a category, you need to use the `forum` command with the category name or number.  For example: to read the announcements category you could use either `forum 1` or `forum announcements`.  You can also read a range of topics at once, e.g. forum 1/2-3.
 
 `forum` - Lists available categories.
 `forum <category>` - Lists posts on the selected category.
-`forum <category>/<topic #>` - Reads the selected topic.
+`forum <category>/<topic #>` - Reads the selected topic.  
   
 ## Hiding Categories
 

@@ -7,7 +7,7 @@ module AresMUSH
 
         Global.logger.debug "Cleaning up locked exits."
 
-        locked_exits = Exit.all.select { |e| !e.lock_keys.empty?}
+        locked_exits = Exit.all.select { |e| e.lock_keys == Rooms.interior_lock }
         locked_exits.each do |e|
           if (e.dest.clients.count == 0)
             Global.logger.debug "Unlocking #{e.name} automatically."

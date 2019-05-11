@@ -19,13 +19,13 @@ module AresMUSH
           
           group_config[Ranks.rank_group]['values'].each do |k, v|
             Ranks.allowed_ranks_for_group(k).each do |r|
-              ranks << { name: 'Rank', value: r }
+              ranks << { name: 'Rank', value: r, desc: k }
             end
           end
           
           groups['rank'] = {
             name: 'Rank',
-            desc: 'Military rank.',
+            desc: Global.read_config('chargen', 'rank_blurb'),
             values: ranks
           }
         end
@@ -45,6 +45,8 @@ module AresMUSH
           bg_blurb: Website.format_markdown_for_html(Global.read_config("chargen", "bg_blurb")),
           hooks_blurb: Website.format_markdown_for_html(Global.read_config("chargen", "hooks_blurb")),
           desc_blurb: Website.format_markdown_for_html(Global.read_config("chargen", "desc_blurb")),
+          groups_blurb: Website.format_markdown_for_html(Global.read_config("chargen", "groups_blurb")),
+          demographics_blurb: Website.format_markdown_for_html(Global.read_config("chargen", "demographics_blurb")),
           allow_web_submit: Global.read_config("chargen", "allow_web_submit")
         }
       end

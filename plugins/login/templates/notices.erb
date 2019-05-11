@@ -3,16 +3,16 @@
 <%= motd %>
 
 <% end %>
-<%= mail %>
+<% notices.each do |notice| %>
+<%= notice %>
+<% end %>
 <% alts.each do |a| %>
-<% if has_alt_mail(a) %>
-<%= t('login.alt_unread_mail', :name => a.name) %>
+<% if has_alt_mail?(a) || has_alt_pages?(a) %>
+<%= t('login.alt_unread_messages', :name => a.name) %>
 <% end %>
 <% end %>
-<%= forum %>
-<%= jobs_or_requests %>
 <% if approval_notice %>
 
-%xh%xM<%= approval_notice %>%xn
+%xh<%= approval_notice %>%xn
 <% end %>
 <%= footer %>

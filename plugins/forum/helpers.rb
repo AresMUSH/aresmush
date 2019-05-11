@@ -151,7 +151,7 @@ module AresMUSH
     def self.with_a_post(category_name, num, client, enactor, &block)
       with_a_category(category_name, client, enactor) do |category|
         
-        if (!num.is_integer?)
+        if (!"#{num}".is_integer?)
           client.emit_failure t('forum.invalid_post_number')
           return
         end

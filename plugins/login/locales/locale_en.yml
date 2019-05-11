@@ -45,14 +45,17 @@ en:
        
        # Notices
        notices_title: "Notices"
-       unread_mail: "- You have %xh%xmunread mail%xn messages.  %xh%xx(mail/new)%xn"
+       unread_mail: "- You have %xh%xmunread mail%xn messages. %xh%xx(mail/new)%xn"
        no_unread_mail: "- No unread mail."
        unread_forum: "- There are %xh%xmnew forum%xn posts.  %xh%xx(forum/new)%xn"
        no_unread_forum: "- No new forum posts."
        unread_requests: "- There is new activity on your %xhrequests%xn. %xh%xx(requests)%xn"
        unread_jobs: "- There are %xh%xmunread jobs%xn. %xh%xx(jobs/new)%xn"
+       unread_pages: "- You have %xh%xmunread pages%xn. %xh%xx(page/review)%xn"
+       no_unread_pages: "- No unread pages."
        no_unread_requests: "- No unread requests or jobs."
-       alt_unread_mail: "- %{name} has %xh%xmunread mail%xn."
+       alt_unread_messages: "- %{name} has %xh%xmunread messages%xn."
+       all_caught_up: "- No new messages or forum posts to read."
        
        tos_reset: "You have reset everyone's terms of service acknowledgement."
        login_restricted: "This game has restricted logins.  %{reason}"

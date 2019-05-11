@@ -29,7 +29,12 @@ module AresMUSH
           return
         end
       
-        FS3Skills.set_ability(client, enactor, self.name, new_rating)
+        error = FS3Skills.set_ability(enactor, self.name, new_rating)
+        if (error)
+          client.emit_failure error
+        else
+          client.emit_success FS3Skills.ability_raised_text(enactor, self.name)
+        end
       end
     end
   end

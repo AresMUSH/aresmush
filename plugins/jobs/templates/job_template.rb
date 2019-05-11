@@ -16,7 +16,7 @@ module AresMUSH
       end
       
       def submitted_by
-        !@job.author ? t('jobs.deleted_author') : @job.author.name        
+        !@job.author ? t('global.deleted_character') : @job.author.name        
       end
       
       def submitted_on
@@ -33,7 +33,7 @@ module AresMUSH
       
       # Title above each reply showing the reply author and date
       def reply_title(reply)
-        name = !reply.author ? t('jobs.deleted_author') : reply.author.name
+        name = !reply.author ? t('global.deleted_character') : reply.author.name
         date = OOCTime.local_long_timestr(@enactor, reply.created_at)
         t('jobs.reply_title', :name => name, :date => date)
       end
