@@ -50,7 +50,13 @@ module AresMUSH
             return
           end
           
-          FS3Skills.set_ability(client, model, self.ability_name, new_rating)
+          error = FS3Skills.set_ability(model, self.ability_name, new_rating)
+          if (error)
+            client.emit_failure error
+          else
+            client.emit_success FS3Skills.ability_raised_text(model, self.ability_name)
+          end
+          
         end
       end
     end

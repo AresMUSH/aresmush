@@ -19,6 +19,7 @@ module AresMUSH
     
     def self.chars_with_role(name)
       role = Role.find_one_by_name(name)
+      return [] if !role
       Character.all.select { |c| c.roles.include?(role) }
     end
   end

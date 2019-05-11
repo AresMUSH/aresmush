@@ -15,9 +15,9 @@ forum:
     bbmove: forum/move
     bbs/remove: forum/delete
     bbs/read: forum
-    bbnewgroup: forum/createboard
-    bbcleargroup: forum/deleteboard
+    bbnewgroup: forum/createcat
+    bbcleargroup: forum/deletecat
     bbarchive: forum/archive
     bbs/desc: forum/describe
-    bbs/newgroup: forum/createboard
+    bbs/newgroup: forum/createcat
     bb/new: forum/new

@@ -53,6 +53,13 @@ module AresMUSH
       self.update(messages: new_messages)
     end      
     
+    def last_activity
+      return nil if !self.messages
+      last_message = self.messages[-1]
+      return nil if !last_message
+      return last_message['timestamp']
+    end
+    
     def self.find_one_with_partial_match(name)
       channel = Channel.find_one_by_name(name)
       

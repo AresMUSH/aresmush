@@ -175,5 +175,31 @@ module AresMUSH
                    
        return nil
      end
+     
+     def self.build_app_review_info(char)
+       abilities_app = FS3Skills.is_enabled? ? MushFormatter.format(FS3Skills.app_review(char)) : nil
+       demographics_app = MushFormatter.format Demographics.app_review(char)
+       bg_app = MushFormatter.format Chargen.bg_app_review(char)
+       desc_app = MushFormatter.format Describe.app_review(char)
+       ranks_app = Ranks.is_enabled? ? MushFormatter.format(Ranks.app_review(char)): nil
+       hooks_app = MushFormatter.format Chargen.hook_app_review(char)
+
+       custom_review = Chargen.custom_app_review(char)
+       custom_app = custom_review ? MushFormatter.format(custom_review) : nil
+
+       { 
+         abilities: abilities_app,
+         demographics: demographics_app,
+         background: bg_app,
+         desc: desc_app,
+         ranks: ranks_app,
+         hooks: hooks_app,
+         name: char.name,
+         id: char.id,
+         job: char.approval_job ? job.id : nil,
+         custom: custom_app,
+         allow_web_submit: Global.read_config("chargen", "allow_web_submit")
+       }
+     end
   end
 end
