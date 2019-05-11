@@ -4,21 +4,18 @@ module AresMUSH
       def handle(request)
         enactor = request.enactor
         message = request.args[:message]
-        thread = request.args[:thread]
+        thread_id = request.args[:thread_id]
         names = request.args[:names]
-        
-        if (!enactor)
-          return { error: t('webportal.login_required') }
-        end
         
         error = Website.check_login(request)
         return error if error
 
-        if (thread)
-          recipients = Page.chars_for_thread(thread)
-          if (recipients.any? { |r| !r })
-            return { error: t('page.cannot_continue_conversation') }
+        if (thread_id)
+          thread = PageThread[thread_id]
+          if (!thread)
+            return { error: t('page.invalid_thread') }
           end
+          recipients = thread.characters.select { |c| c != enactor }
         else
           recipients = []
           names.each do |name|

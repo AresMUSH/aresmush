@@ -104,13 +104,13 @@ module AresMUSH
     
     def self.save_char(char, chargen_data)      
       (chargen_data[:fs3][:fs3_attributes] || []).each do |k, v|
-        status = FS3Skills.set_ability(nil, char, k, v.to_i)
-        return t('fs3skills.error_saving_ability', :name => k) if !status
+        error = FS3Skills.set_ability(char, k, v.to_i)
+        return t('fs3skills.error_saving_ability', :name => k, :error => error) if error
       end
 
       (chargen_data[:fs3][:fs3_action_skills] || []).each do |k, v|
-        status = FS3Skills.set_ability(nil, char, k, v.to_i)
-        return t('fs3skills.error_saving_ability', :name => k) if !status
+        error = FS3Skills.set_ability(char, k, v.to_i)
+        return t('fs3skills.error_saving_ability', :name => k, :error => error) if error
         
         ability = FS3Skills.find_ability(char, k)
         if (ability)
@@ -120,18 +120,18 @@ module AresMUSH
       end
     
       (chargen_data[:fs3][:fs3_backgrounds] || []).each do |k, v|
-        status = FS3Skills.set_ability(nil, char, k, v.to_i)
-        return t('fs3skills.error_saving_ability', :name => k) if !status
+        error = FS3Skills.set_ability(char, k, v.to_i)
+        return t('fs3skills.error_saving_ability', :name => k, :error => error) if error
       end
     
       (chargen_data[:fs3][:fs3_languages] || []).each do |k, v|
-        status = FS3Skills.set_ability(nil, char, k, v.to_i)
-        return t('fs3skills.error_saving_ability', :name => k) if !status
+        error = FS3Skills.set_ability(char, k, v.to_i)
+        return t('fs3skills.error_saving_ability', :name => k, :error => error) if error
       end
     
       (chargen_data[:fs3][:fs3_advantages] || []).each do |k, v|
-        status = FS3Skills.set_ability(nil, char, k, v.to_i)
-        return t('fs3skills.error_saving_ability', :name => k) if !status
+        error = FS3Skills.set_ability(char, k, v.to_i)
+        return t('fs3skills.error_saving_ability', :name => k, :error => error) if error
       end
       return nil
     end

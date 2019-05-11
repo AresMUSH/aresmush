@@ -22,11 +22,11 @@ module AresMUSH
           return PageDoNotDisturbCmd
         when "ignore"
           return PageIgnoreCmd
-        when "log"
+        when "review"
           if (cmd.args)
-            return PageLogCmd
+            return PageReviewCmd
           else
-            return PageLogIndexCmd
+            return PageReviewIndexCmd
           end
         when "report"
           return PageReportCmd
@@ -57,6 +57,8 @@ module AresMUSH
       case request.cmd
       when "sendPage"
         return SendPageRequestHandler
+      when "markPageThreadRead"
+        return MarkThreadReadRequestHandler
       end
     end
     

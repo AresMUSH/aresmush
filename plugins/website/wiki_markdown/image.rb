@@ -14,7 +14,6 @@ module AresMUSH
         align = ""
         url = ""
         options = input.split(' ')
-        pp options
         options.each do |opt|
           option_name = opt.before('=') || ""
           option_value = opt.after('=') || ""

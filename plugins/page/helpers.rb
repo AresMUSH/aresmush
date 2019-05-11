@@ -26,21 +26,6 @@ module AresMUSH
       return t('page.recipient_indicator', :recipients => names.join(", "))
     end
     
-    def self.add_to_monitor(char, monitor_name, message)
-      monitor = char.page_monitor
-        
-      if (!monitor[monitor_name])
-        monitor[monitor_name] = []
-      end
-        
-      if (monitor[monitor_name].count > 30)
-        monitor[monitor_name].shift
-      end
-      monitor[monitor_name] << "#{Time.now} #{message}"
-      char.update(page_monitor: monitor)
-    end
-    
-  
     def self.send_afk_message(client, other_client, other_char)
       if (!other_client)
         #client.emit_ooc t('page.recipient_is_offline', :name => other_char.name)
@@ -69,9 +54,21 @@ module AresMUSH
     def self.send_page(enactor, recipients, message, client)
       message = PoseFormatter.format(enactor.name_and_alias, message)
       everyone = [enactor].concat(recipients).uniq
-      thread_name = Page.generate_thread_name(everyone)
       recipient_names = Page.format_recipient_indicator(recipients)
       
+      # Create the db entry
+      thread = Page.find_thread(everyone)
+      if (thread)
+        Page.mark_thread_unread(thread)
+      else
+        thread = PageThread.create
+        everyone.each do |c|
+          thread.characters.add c
+        end
+      end
+      
+      PageMessage.create(author: enactor, message: message, page_thread: thread)
+            
       # Send to the enactor.
       if (client)
         client.emit t('page.to_sender', 
@@ -80,11 +77,9 @@ module AresMUSH
           :recipients => recipient_names, 
           :message => message)
       end
-
-      PageMessage.create(author: enactor, character: enactor, message: message, thread_name: thread_name)
+      Page.mark_thread_read(thread, enactor)
       
       # Send to the recipients.
-      
       recipients.each do |recipient|
         recipient_client = Login.find_client(recipient)
         if (recipient_client)
@@ -93,20 +88,17 @@ module AresMUSH
             :autospace => Scenes.format_autospace(enactor, recipient.page_autospace), 
             :recipients => recipient_names, 
             :message => message)
+          Page.mark_thread_read(thread, recipient)
         end
         #if (client)
         #  Page.send_afk_message(client, recipient_client, recipient)
         #end
-        
-        if (recipient != enactor)
-          PageMessage.create(author: enactor, character: recipient, message: message, thread_name: thread_name)
-        end
       end
-      
+            
       Global.dispatcher.spawn("Page notification", nil) do
         everyone.each do |char|    
-          title = Page.thread_title(thread_name, char)
-          notification = "#{thread_name}|#{title}|#{Website.format_markdown_for_html(message)}"
+          title = thread.title_without_viewer(char)
+          notification = "#{thread.id}|#{title}|#{Website.format_markdown_for_html(message)}"
           clients = Global.client_monitor.clients.select { |client| client.web_char_id == char.id }
           clients.each do |client|
             client.web_notify :new_page, notification
@@ -114,26 +106,48 @@ module AresMUSH
         end
       end
         
-      thread_name
+      thread.key
     end
     
-    def self.generate_thread_name(chars)
-      chars.sort_by { |c| c.id.to_i }.map { |c| c.id }.join("_")
+    def self.find_thread(chars)
+      PageThread.all.select { |t| (t.characters.map { |c| c.id }.sort == chars.map { |c| c.id }.sort) }.first
     end
     
-    def self.chars_for_thread(thread_name)
-      ids = thread_name.split('_')
-      names = []
-      ids.each do |id|
-        char = Character[id]
-        names << char ? char.name : nil
+    def self.thread_for_names(names)
+      chars = []
+      names.each do |name|
+        char = Character.named(name)
+        if (!char)
+          return nil
+        end      
+        chars << char
       end
-      names
+      Page.find_thread(chars)
     end
     
-    def self.thread_title(thread_name, enactor)
-      chars = Page.chars_for_thread(thread_name)
-      chars.select { |c| c != enactor }.map { |c| c.name }.join(", ")
+    def self.is_thread_unread?(thread, char)
+      !(char.read_page_threads || []).include?(thread.id.to_s)
+    end
+    
+    def self.mark_thread_read(thread, char)      
+      threads = char.read_page_threads || []
+      threads << thread.id.to_s
+      char.update(read_page_threads: threads)
+    end
+    
+    def self.mark_thread_unread(thread, except_for_char = nil)
+      chars = Character.all.select { |c| !Page.is_thread_unread?(thread, c) }
+      chars.each do |char|
+        next if except_for_char && char == except_for_char
+        threads = char.read_page_threads || []
+        threads.delete thread.id.to_s
+        char.update(read_page_threads: threads)
+      end
+    end
+    
+    def self.has_unread_page_threads?(char)
+      return false if !char
+      char.page_threads.any? { |t| Page.is_thread_unread?(t, char) }
     end
   end
 

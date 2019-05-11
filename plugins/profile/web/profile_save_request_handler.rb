@@ -6,10 +6,6 @@ module AresMUSH
         enactor = request.enactor
         char = Character[request.args[:id]]
 
-        if (!enactor)
-          return { error: t('webportal.login_required') }
-        end
-        
         error = Website.check_login(request)
         return error if error
         
@@ -43,10 +39,10 @@ module AresMUSH
         
         relationships = {}
         (request.args[:relationships] || {}).each do |name, data|
-          relationships[name.titleize] = {
-            relationship: Website.format_input_for_mush(data['text']),
-            order: data['order'].blank? ? nil : data['order'].to_i,
-            category: data['category'].blank? ? "Associates" : data['category'].titleize
+          relationships[name] = {
+            'relationship' => Website.format_input_for_mush(data['text']),
+            'order' => data['order'].blank? ? nil : data['order'].to_i,
+            'category' => data['category'].blank? ? "Associates" : data['category'].titleize
             }
         end
         
