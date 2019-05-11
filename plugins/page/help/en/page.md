@@ -41,15 +41,13 @@ You can customize the appearance of pages by changing the color (see [Colors](/h
 
 ## Blocking and Reporting Pages
 
-If someone is harassing you via pages, you can report them.  This will automatically include a copy of the pages you select (from page/review) in your report. For example, page/report Bob=12-15/Terrible words!
-
-If the conversation involved multiple players, include all the names from the page/log conversation title in the report.  For example, page/report Bob Mary=12-15/Bob said terrible words!
-
-`page/report <conversation>=<range>/<reason>` - Creates a report.  
-
-While you're waiting for the game admin to deal with it, you can block the harasser by ignoring them.
+You can block pages from someone you don't want to hear from.
 
 `page/ignore <name>=<on or off>`
+
+If someone is harassing you in pages, you can report them.  This will automatically include a copy of the pages you select (from page/review) in your report. For example, page/report Bob=12-15/Terrible things!  You have to use the full conversation title in the report if it involves multiple people.  For example, page/report Bob Mary=12-15/Bob said terrible things!
+
+`page/report <conversation>=<range>/<reason>` - Creates a report.  
 
 ## Do Not Disturb Mode
 
