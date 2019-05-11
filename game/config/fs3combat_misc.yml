@@ -57,6 +57,9 @@ fs3combat:
       weapon: Club
       armor: Tough Hide
       defense_skill: Reflexes
+    Deathcap:
+      hitloc: Deathcap
+      weapon: Club
     Tree:
       hitloc: Tree
       weapon: Club
