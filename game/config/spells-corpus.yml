@@ -53,6 +53,19 @@ spells:
     target_num: 1
     target_optional: true
 #Level Two
+  Change Hair:
+    available: true
+    casting_time: 1 round
+    desc: "The caster can alter the color, texture, or length of hair for a duration of up to one hour. The spell can add up to an inch to already-existing hair."
+    duration: 1 hour
+    effect: Transformation
+    is_potion: true
+    level: 1
+    name: Change Hair
+    range: Touch
+    roll: true
+    school: Corpus
+    target_num: 1
   Minor Heal:
     available: true
     casting_time: 1 round
