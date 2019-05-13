@@ -85,7 +85,7 @@ module AresMUSH
         if caster.room.scene
           Scenes.add_to_scene(caster.room.scene, msg)
         end
-      end      
+      end
     end
 
     def self.parse_spell_targets(name_string, target_num)
@@ -105,7 +105,7 @@ module AresMUSH
       end
     end
 
-    def self.cast_noncombat_heal(caster, name_string, spell, mod)
+    def self.cast_non_combat_heal(caster, name_string, spell, mod)
       room = caster.room
       target_num = Global.read_config("spells", spell, "target_num")
       heal_points = Global.read_config("spells", spell, "heal_points")
