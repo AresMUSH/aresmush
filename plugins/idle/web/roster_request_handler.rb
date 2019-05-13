@@ -6,7 +6,7 @@ module AresMUSH
         group = Global.read_config("website", "character_gallery_group") || "Faction"
         chars = Character.all.select { |c| c.on_roster? }.group_by { |c| c.group(group) || "" }
         
-        fields = Global.read_config("demographics", "census_fields").select { |f| f['field'] != 'name' }
+        fields = Global.read_config("idle", "roster_fields").select { |f| f['field'] != 'name' }
         titles = fields.map { |f| f['title'] }
         
         roster = []

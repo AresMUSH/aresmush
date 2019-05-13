@@ -49,8 +49,12 @@ module AresMUSH
     
     def self.ability_raised_text(char, ability_name)
       ability = FS3Skills.find_ability(char, ability_name)
-      ability_type = FS3Skills.get_ability_type(ability_name)
-      t("fs3skills.#{ability_type}_set", :name => ability.name, :rating => ability.rating_name)
+      if (ability)
+        ability_type = FS3Skills.get_ability_type(ability_name)
+        t("fs3skills.#{ability_type}_set", :name => ability.name, :rating => ability.rating_name)
+      else
+        t("fs3skills.ability_removed", :name => ability_name)
+      end
     end
     
     def self.get_min_rating(ability_type)
