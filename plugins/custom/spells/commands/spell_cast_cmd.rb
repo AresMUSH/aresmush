@@ -96,7 +96,7 @@ module AresMUSH
           if roll
             Custom.cast_noncombat_spell(self.caster, nil, self.spell, self.mod)
           elsif heal_points
-            Custom.cast_non_combat_heal(self.caster, self.spell, self.mod)
+            Custom.cast_non_combat_heal(self.caster, self.caster, self.spell, self.mod)
           else
             client.emit_failure t('custom.not_in_combat')
           end
