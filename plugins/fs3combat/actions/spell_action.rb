@@ -207,14 +207,15 @@ module AresMUSH
               if roll
                 # succeeds = Custom.roll_combat_spell_success(self.combatant, self.spell)
 
-                if target
+                if target == combatant
+                  messages.concat [t('custom.spell_resolution_msg', :name => self.name, :spell => self.spell, :succeeds => succeeds)]                  
+                else
                   if effect == "Psionic"
                     messages.concat [t('custom.mind_shield_failed', :name => self.name, :spell => self.spell, :target => print_target_names, :succeeds => succeeds)]
                   else
                     messages.concat [t('custom.spell_target_resolution_msg', :name => self.name, :spell => self.spell, :target => print_target_names, :succeeds => succeeds)]
                   end
-                else
-                  messages.concat [t('custom.spell_resolution_msg', :name => self.name, :spell => self.spell, :succeeds => succeeds)]
+
                 end
               end
             #End Psionic Protection Rolls
