@@ -43,7 +43,7 @@ en:
       potion_stance_target: "%{name} uses a %xM%{potion}%xn potion on %{target}, changing their stance to %{stance}."
       potion_mod: "%{name} uses a %xM%{potion}%xn potion, giving them a %{mod} %{type} modification."
       potion_mod_target: "%{name} uses a %xM%{potion}%xn potion on %{target}, giving them a %{mod} %{type} modification."
-      not_character: "%xrThat is not a character.%xn"
+      not_character: "%xr%{name} is not a character.%xn"
 
         # ----------------------------
         # SPELL CASTING

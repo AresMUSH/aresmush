@@ -81,6 +81,10 @@ module AresMUSH
             end
           end
         else
+          target_names.each do |name|
+            target = Character.named(name)
+            return t('custom.not_character', :name => name) if !target
+          end
           return t('custom.dont_know_spell') if (Custom.knows_spell?(caster, self.spell) == false && Custom.item_spell(caster) != spell)
         end
 
