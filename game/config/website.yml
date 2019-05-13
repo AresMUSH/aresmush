@@ -1,18 +1,32 @@
 ---
 website:
   allow_html_in_markdown: true
-  character_gallery_group: Faction
-  character_gallery_subgroup: Position
+  character_gallery_group: Major School
+  character_gallery_subgroup: nil
   left_sidebar: false
   max_upload_size_kb: 5000
   restricted_pages:
   - home
+  - policies
+  - admin
   sitemap_update_cron:
     hour:
     - 2
     minute:
     - 17
   top_navbar:
+  - title: About Us
+    menu:
+    - page: wiki-about_us
+      title: About Spirit Lake
+    - page: wiki-world_intro
+      title: World Intro
+    - page: wiki-policies
+      title: Policies
+    - page: wiki-join_us
+      title: Join Us
+    - page: wiki-staff
+      title: Staff Team
   - title: Play
     menu:
     - page: chargen
