@@ -27,6 +27,7 @@ en:
         language_set: "Language '%{name}' is now %{rating}."
         advantage_set: "Advantage '%{name}' is now %{rating}."
         background_set: "Background Skill '%{name}' is now %{rating}."
+        ability_removed: "Ability '%{name}' removed."
         admin_ability_set: "You set %{name}'s %{ability_name} ability (%{ability_type}) to %{rating}."
         max_rating_is: "You can't raise that ability any higher."
         min_rating_is: "You can't lower that ability any lower."
