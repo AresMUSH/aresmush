@@ -243,8 +243,7 @@ module AresMUSH
       default_targets.delete(attacking_team)
       team_targets = combat.team_targets[attacking_team.to_s] || default_targets
 
-      possible_targets = combat.active_combatants.select { |t| team_targets.include?(t.team) &&
-                                                               t.stance != "Hidden"}
+      possible_targets = combat.active_combatants.select { |t| team_targets.include?(t.team) && t.stance != "Hidden"}
       possible_targets.shuffle.first
     end
 
