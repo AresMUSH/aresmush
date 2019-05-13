@@ -15,7 +15,7 @@ module AresMUSH
       end
       
       def values
-        self.group['values']
+        self.group['values'].sort
       end
       
     end

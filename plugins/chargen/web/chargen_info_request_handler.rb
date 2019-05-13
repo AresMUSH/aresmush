@@ -9,7 +9,7 @@ module AresMUSH
           groups[type.downcase] = {
             name: type,
             desc: data['desc'],
-            values: (data['values'] || {}).map { |name, desc| { name: type.titleize, value: name, desc: desc } },
+            values: (data['values'] || {}).sort_by { |name, desc| name }.map { |name, desc| { name: type.titleize, value: name, desc: desc } },
             freeform: !data['values']
           }
         end
