@@ -196,7 +196,7 @@ module AresMUSH
          hooks: hooks_app,
          name: char.name,
          id: char.id,
-         job: char.approval_job ? job.id : nil,
+         job: char.approval_job ? char.approval_job.id : nil,
          custom: custom_app,
          allow_web_submit: Global.read_config("chargen", "allow_web_submit")
        }
