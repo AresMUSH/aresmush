@@ -96,6 +96,7 @@ module AresMUSH
       end
 
       def handle
+
       #Reading Config Files
         rounds = Global.read_config("spells", self.spell, "rounds")
         heal_points = Global.read_config("spells", self.spell, "heal_points")
@@ -129,22 +130,48 @@ module AresMUSH
           end
 
         else
-          if heal_points
-            if Custom.knows_spell?(caster, self.spell)
-              Custom.cast_non_combat_heal_with_target(self.caster, self.target, self.spell, self.mod)
-              Custom.handle_spell_cast_achievement(self.caster)
+          Global.logger.debug "cast_with_target"
+        #NonCombat
+          effect = Global.read_config("spells", self.spell, "effect")
+          success = Custom.roll_noncombat_spell_success(self.caster, self.spell, self.mod)
+          if success == "%xgSUCCEEDS%xn"
+
+            if roll
+              if (effect == "Psionic" && target.mind_shield > 0 && Custom.roll_mind_shield(self.target, self.caster) == "shield")
+                message = t('custom.mind_shield_held', :name => self.caster.name, :spell => self.spell, :target => self.target.name)
+                if enactor.room.scene
+                  Scenes.add_to_scene(enactor.room.scene, message)
+                end
+                off_msg = t('custom.turn_mind_shield_off', :name => self.target.name)
+                message = "#{message}%R#{off_msg}"
+                enactor.room.emit message
+              elsif (effect == "Psionic" && target.mind_shield > 0)
+                message = t('custom.mind_shield_failed', :name => self.caster.name, :spell => self.spell, :target => self.target.name)
+                if enactor.room.scene
+                  Scenes.add_to_scene(enactor.room.scene, message)
+                end
+                off_msg = t('custom.turn_mind_shield_off', :name => self.target.name)
+                message = "#{message}%R#{off_msg}"
+                enactor.room.emit message
+              else
+                Custom.cast_noncombat_spell(self.caster, self.target_name, self.spell, self.mod)
+              end
+
+            elsif heal_points
+              Custom.cast_noncombat_heal(self.caster, self.target, self.spell, self.mod)
+            elsif self.spell == "Mind Shield"
+              Custom.cast_noncombat_mind_shield(self.caster, self.target)
             else
-              client.emit_failure t('custom.dont_know_spell')
+              client.emit_failure t('custom.not_in_combat')
             end
-          elsif roll
-            if Custom.knows_spell?(caster, self.spell)
-              Custom.cast_noncombat_roll_spell_with_target(self.caster, self.target_name, self.spell, self.mod)
-              Custom.handle_spell_cast_achievement(self.caster)
-            else
-              client.emit_failure t('custom.dont_know_spell')
-            end
+            Custom.handle_spell_cast_achievement(self.caster)
           else
-            client.emit_failure t('custom.not_in_combat')
+            #Spell doesn't succeed
+            message = t('custom.casts_spell', :name => self.caster.name, :spell => self.spell, :succeeds => success)
+            self.caster.room.emit message
+            if self.caster.room.scene
+              Scenes.add_to_scene(self.caster.room.scene, message)
+            end
           end
         end
 

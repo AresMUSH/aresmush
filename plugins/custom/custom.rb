@@ -29,6 +29,14 @@ module AresMUSH
         return LastRPCmd
       end
 
+      case cmd.root
+      when "mindshield"
+        case cmd.switch
+        when "off"
+          return MindshieldOffCmd
+        end
+      end
+
       #Comps
       case cmd.root
       when "comp"

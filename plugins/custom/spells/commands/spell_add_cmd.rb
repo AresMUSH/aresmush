@@ -20,12 +20,13 @@ module AresMUSH
       def check_errors
         return t('custom.invalid_name') if !self.target
         return t('custom.not_spell') if !Custom.is_spell?(self.spell)
+        return t('custom.already_know_spell', :spell => self.spell) if Custom.find_spell_learned(self.target, self.spell)
         if self.target.groups.values.include? self.school
           return nil
         else
           client.emit t('custom.wrong_school_check', :name => self.target.name)
         end
-        return t('custom.already_know_spell') if Custom.find_spell_learned(self.target, self.spell)
+
         return nil
 
       end
