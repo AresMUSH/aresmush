@@ -150,7 +150,7 @@ module AresMUSH
       end
     end
 
-    def self.set_scene_location(scene, location)
+    def self.set_scene_location(scene, location, enactor = nil)
       matched_rooms = Room.find_by_name_and_area location
       area = nil
 
@@ -177,6 +177,16 @@ module AresMUSH
 
       data = Scenes.build_location_web_data(scene).to_json
       Scenes.new_scene_activity(scene, :location_updated, data)
+
+      if (enactor)
+        message = t('scenes.location_set', :name => enactor.name, :location => location)
+        if (scene.room)
+          scene.room.emit_ooc message
+        end
+
+        Scenes.add_to_scene(scene, message, Game.master.system_character, false, true)
+      end
+
     end
 
     def self.info_missing_message(scene)
@@ -503,7 +513,7 @@ module AresMUSH
 
     def self.build_scene_pose_web_data(pose, viewer, live_update = false)
       {
-        char: { name: pose.character ? pose.character.name : t('scenes.author_deleted'),
+        char: { name: pose.character ? pose.character.name : t('global.deleted_character'),
                 icon: Website.icon_for_char(pose.character),
                 id: pose.character ? pose.character.id : 0 },
         order: pose.order,
@@ -564,7 +574,7 @@ module AresMUSH
       scene.room.sorted_pose_order.map { |name, time|
         {
          name: name,
-         time:  Scenes.format_last_posed(time)
+         time: Time.parse(time).rfc2822
          }}
     end
 

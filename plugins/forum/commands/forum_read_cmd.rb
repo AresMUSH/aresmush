@@ -31,13 +31,28 @@ module AresMUSH
           return
         end
         
-        Forum.with_a_post(self.category_name, self.num, client, enactor) do |category, post|      
+        if (self.num =~ /\-/)          
+          start_post = self.num.before('-').to_i
+          end_post = self.num.after('-').to_i
+          
+          if (start_post <= 0 || end_post <= 0 || start_post > end_post)
+            client.emit_failure t('forum.invalid_post_number')
+            return
+          end
+          posts = *(start_post..end_post)
+        else
+          posts = [self.num]
+        end
+        
+        posts.each do |num|
+          Forum.with_a_post(self.category_name, num, client, enactor) do |category, post|      
 
-          template = PostTemplate.new(category, post, enactor)
-          client.emit template.render
+            template = PostTemplate.new(category, post, enactor)
+            client.emit template.render
 
-          Forum.mark_read_for_player(enactor, post)
-          client.program[:last_forum_post] = post
+            Forum.mark_read_for_player(enactor, post)
+            client.program[:last_forum_post] = post
+          end
         end
       end      
     end

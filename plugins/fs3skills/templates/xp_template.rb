@@ -21,7 +21,7 @@ module AresMUSH
       end
       
       def days_left(a)
-        time_left = (a.time_to_next_learn / 86400).ceil
+        time_left = FS3Skills.days_to_next_learn(a)
         message = time_left == 0 ? t('fs3skills.xp_days_now') : t('fs3skills.xp_days', :days => time_left)
         center(message, 13)
       end

@@ -9,26 +9,62 @@ module AresMUSH
         super File.dirname(__FILE__) + "/notices.erb"
       end
       
-      def mail
-        @char.has_unread_mail? ? t('login.unread_mail') : t('login.no_unread_mail')
+      def notices
+        messages = []
+        if (has_unread_mail?)
+          messages << t('login.unread_mail')
+        end
+        if (has_unread_pages?)
+          messages << t('login.unread_pages')
+        end
+        if (has_unread_requests?)
+          messages << t('login.unread_requests')
+        end
+        if (has_unread_forum?)
+          messages << t('login.unread_forum')
+        end
+        if (has_unread_jobs?)
+          messages << t('login.unread_jobs')
+        end
+        
+        if (messages.empty?)
+          messages << t('login.all_caught_up')
+        end
+        
+        messages
+      end
+        
+      
+      def has_unread_mail?
+        @char.has_unread_mail?
       end
       
       def alts
         AresCentral.alts(@char).select { |a| a != @char }
       end
       
-      def has_alt_mail(alt)
+      def has_alt_mail?(alt)
         alt.has_unread_mail?
       end
       
-      def forum
-        Forum.has_unread_forum_posts?(@char) ? t('login.unread_forum') : t('login.no_unread_forum')
+      def has_alt_pages?(alt)
+        Page.has_unread_page_threads?(@char)
       end
       
-      def jobs_or_requests
-        return t('login.unread_requests') if @char.has_unread_requests?
-        return t('login.unread_jobs') if @char.has_unread_jobs?
-        return t('login.no_unread_requests')
+      def has_unread_forum?
+        Forum.has_unread_forum_posts?(@char)
+      end
+      
+      def has_unread_jobs?
+        @char.has_unread_jobs?
+      end
+      
+      def has_unread_requests?
+        @char.has_unread_requests?
+      end
+      
+      def has_unread_pages?
+        Page.has_unread_page_threads?(@char)
       end
       
       def approval_notice

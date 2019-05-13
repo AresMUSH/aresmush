@@ -34,7 +34,13 @@ module AresMUSH
             ability.update(last_learned: nil)
           else
             new_rating = ability.rating - 1
-            FS3Skills.set_ability(client, model, self.skill, new_rating)
+            error = FS3Skills.set_ability(model, self.skill, new_rating)
+            if (error)
+              client.emit_failure error
+            else
+              client.emit_success FS3Skills.ability_raised_text(model, self.skill)
+            end
+            
             ability = FS3Skills.find_ability(model, self.skill)
             if (ability)
               new_xp = (FS3Skills.xp_needed(self.skill, new_rating) || 1) - 1

@@ -19,7 +19,7 @@ module AresMUSH
       end
       
       def author
-        !@original.author ? t('mail.deleted_author') : @original.author.name
+        !@original.author ? t('global.deleted_character') : @original.author.name
       end
     end
   end

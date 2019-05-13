@@ -24,6 +24,10 @@ module AresMUSH
       key ? costs[key] : nil
     end
 
+    def self.days_to_next_learn(ability)
+      (ability.time_to_next_learn / 86400).ceil
+    end
+
     def self.check_can_learn(char, ability_name, rating)
       return t('fs3skills.cant_raise_further_with_xp') if self.xp_needed(ability_name, rating) == nil
 
@@ -52,49 +56,44 @@ module AresMUSH
       return (skills_requiring_training.include?(ability.name) && ability.rating <= 2)
     end
 
-    def self.learn_ability(client, char, name)
+    def self.learn_ability(char, name)
+      return t('fs3skills.not_enough_xp') if char.xp <= 0
+
       ability = FS3Skills.find_ability(char, name)
 
       ability_type = FS3Skills.get_ability_type(name)
       if (ability_type == :advantage && !Global.read_config("fs3skills", "allow_advantages_xp"))
-        client.emit_failure t('fs3skills.cant_learn_advantages_xp')
-        return
+        return t('fs3skills.cant_learn_advantages_xp')
       end
 
       if (!ability)
-        FS3Skills.set_ability(client, char, name, 1)
+        FS3Skills.set_ability(char, name, 1)
       else
 
         error = FS3Skills.check_can_learn(char, name, ability.rating)
         if (error)
-          client.emit_failure error
-          return
+          return error
         end
 
         if (!ability.can_learn?)
-          time_left = ability.time_to_next_learn / 86400
-          client.emit_failure t('fs3skills.cant_raise_yet', :days => time_left.ceil)
-          return
+          time_left = FS3Skills.days_to_next_learn(ability)
+          return t('fs3skills.cant_raise_yet', :days => time_left)
         end
 
         ability.learn
         if (ability.learning_complete)
           ability.update(xp: 0)
-          FS3Skills.set_ability(client, char, name, ability.rating + 1)
+          FS3Skills.set_ability(char, name, ability.rating + 1)
           message = t('fs3skills.xp_raised_job', :name => char.name, :ability => name, :rating => ability.rating + 1)
           category = Jobs.system_category
           Jobs.create_job(category, t('fs3skills.xp_job_title', :name => char.name), message, Game.master.system_character)
-        else
-          client.emit_success t('fs3skills.xp_spent', :name => name)
         end
 
-        if (FS3Skills.skill_requires_training(ability))
-          client.emit_ooc t('fs3skills.skill_requires_training', :name => name)
-        end
       end
 
 
       FS3Skills.modify_xp(char, -1)
+      return nil
     end
   end
 end

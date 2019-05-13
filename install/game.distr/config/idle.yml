@@ -25,6 +25,22 @@ idle:
   roster_welcome_msg: Welcome!  You may wish to check your %xcnotes%xn and web portal
     profile page for any notes left by the prior player.  Type %xhonstage%xn to go
     forth and RP.
+  roster_fields:
+  - field: name
+    width: 20
+    title: Name
+  - field: demographic
+    width: 10
+    title: Gender
+    value: gender
+  - field: group
+    width: 15
+    title: Faction
+    value: Faction
+  - field: group
+    width: 15
+    title: Position
+    value: Position
   shortcuts:
     idle/add: idle/action
     roster/update: roster/add
