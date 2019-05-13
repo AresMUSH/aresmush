@@ -90,7 +90,9 @@ module AresMUSH
 
     def self.parse_spell_targets(name_string, target_num)
       return t('fs3combat.no_targets_specified') if (!name_string)
+      Global.logger.debug "Name string: #{name_string}"
       target_names = name_string.split(" ").map { |n| InputFormatter.titlecase_arg(n) }
+      Global.logger.debug "target names: #{target_names}"
       targets = []
       target_names.each do |name|
         target = Character.named(name)
@@ -107,6 +109,7 @@ module AresMUSH
 
     def self.cast_non_combat_heal(caster, name_string, spell, mod)
       room = caster.room
+      client = Login.find_client(caster)
       target_num = Global.read_config("spells", spell, "target_num")
       heal_points = Global.read_config("spells", spell, "heal_points")
 
@@ -117,24 +120,25 @@ module AresMUSH
       end
 
       if targets == t('custom.too_many_targets')
-        caster.client.emit_failure t('custom.too_many_targets', :spell => spell, :num => target_num)
+        client.emit_failure t('custom.too_many_targets', :spell => spell, :num => target_num)
       elsif targets == "no_target"
-        caster.client.emit_failure "%xrThat is not a character.%xn"
+        client.emit_failure "%xrThat is not a character.%xn"
       elsif targets == "None"
         target = caster
-      end
+      else
 
-      targets.each do |target|
-        wound = FS3Combat.worst_treatable_wound(target)
-        if (wound)
-          FS3Combat.heal(wound, heal_points)
-          message = t('custom.cast_heal', :name => caster.name, :spell => spell, :succeeds => "%xgSUCCEEDS%xn", :target => target.name, :points => heal_points)
-        else
-          message = t('custom.cast_heal_no_effect', :name => caster.name, :spell => spell, :succeeds => "%xgSUCCEEDS%xn", :target => target.name)
-        end
-        room.emit message
-        if room.scene
-          Scenes.add_to_scene(room.scene, message)
+        targets.each do |target|
+          wound = FS3Combat.worst_treatable_wound(target)
+          if (wound)
+            FS3Combat.heal(wound, heal_points)
+            message = t('custom.cast_heal', :name => caster.name, :spell => spell, :succeeds => "%xgSUCCEEDS%xn", :target => target.name, :points => heal_points)
+          else
+            message = t('custom.cast_heal_no_effect', :name => caster.name, :spell => spell, :succeeds => "%xgSUCCEEDS%xn", :target => target.name)
+          end
+          room.emit message
+          if room.scene
+            Scenes.add_to_scene(room.scene, message)
+          end
         end
       end
     end
