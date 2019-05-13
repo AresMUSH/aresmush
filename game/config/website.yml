@@ -17,14 +17,21 @@ website:
   top_navbar:
   - title: About Us
     menu:
-    - page: wiki-about_us
+    - page: wiki-page
       title: About Spirit Lake
-    - page: wiki-world_intro
+      id: about_us
+    - page: wiki-page
       title: World Intro
-    - page: wiki-policies
+      id: world_intro
+    - page: wiki-page
       title: Policies
-    - page: wiki-join_us
+      id: policies
+    - page: wiki-page
       title: Join Us
+      id: join_us
+    - page: wiki-page
+      title: Staff Team
+      id: staff
   - title: Play
     menu:
     - page: chargen
