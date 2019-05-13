@@ -49,6 +49,8 @@ module AresMUSH
       if targets == t('custom.too_many_targets')
         caster.client.emit_failure t('custom.too_many_targets', :spell => spell, :num => target_num)
       elsif targets == "no_target"
+        Global.logger.debug "Caster: #{caster}"
+        Global.logger.debug "Caster name: #{caster.name}"
         caster.client.emit_failure "%xrThat is not a character.%xn"
       elsif targets == "None"
         message = t('custom.casts_noncombat_spell', :name => caster.name, :spell => spell, :mod => mod, :succeeds => success)
