@@ -12,7 +12,7 @@ module AresMUSH
     end
     
     def author_name
-      !self.author ? t('forum.deleted_author') : self.author.name
+      !self.author ? t('global.deleted_character') : self.author.name
     end
     
     def created_date_str(char)

@@ -9,8 +9,8 @@ module AresMUSH
       end
 
       def handle
-        FS3Skills.reset_char(client, enactor)        
-        client.emit_ooc t('fs3skills.reset_complete')
+        FS3Skills.reset_char(enactor)        
+        client.emit_success t('fs3skills.reset_complete')
       end
     end
   end

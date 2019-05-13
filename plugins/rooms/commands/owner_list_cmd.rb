@@ -20,7 +20,6 @@ module AresMUSH
         else
           rooms = Room.find_by_name_and_area self.name, enactor_room
         end
-        pp "XX"
 
         list = rooms.select { |r| r.room_owners.any? }
              .map { |r| "#{r.name}: #{r.room_owners.map { |o| o.name }.join(', ')}" }

@@ -6,8 +6,7 @@ summary: Scheduling game events.
 
 The events system is an in-game calendar that lets you schedule events.
 
-`events`  - Lists upcoming events (within the next 14 days)
-`events/all` - Lists all upcoming events
+`events`  - Lists upcoming events
 `event <#>` - Views an event
 
 Events are color coded based on how close they are.

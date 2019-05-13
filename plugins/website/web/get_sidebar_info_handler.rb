@@ -38,7 +38,8 @@ module AresMUSH
           server_time: OOCTime.server_timestr,
           job_activity: job_activity,
           jobs_admin: Jobs.can_access_jobs?(enactor),
-          token_expiry_warning: token_expiry_warning
+          token_expiry_warning: token_expiry_warning,
+          unread_pages: Page.has_unread_page_threads?(enactor)
         }
       end
     end

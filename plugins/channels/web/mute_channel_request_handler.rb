@@ -7,10 +7,6 @@ module AresMUSH
         channel = Channel.find_one_by_name(channel_name)
         mute = (request.args[:mute] || "").to_bool
         
-        if (!enactor)
-          return { error: t('webportal.login_required') }
-        end
-        
         error = Website.check_login(request)
         return error if error
                 

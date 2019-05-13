@@ -64,10 +64,10 @@ website:
     menu:
     - page: fs3skills-abilities
       title: Abilities List
-    - page: groups
-      title: Groups List
     - page: fs3combat-gear
       title: Gear List
+    - page: groups
+      title: Groups List
     - divider: true
     - target: blank
       title: FS3 Player's Guide <i class="fa fa-external-link-alt" aria-hidden="true">

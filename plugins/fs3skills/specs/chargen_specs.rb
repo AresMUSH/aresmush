@@ -80,16 +80,14 @@ module AresMUSH
           allow(FS3Skills).to receive(:check_rating) { nil }
           allow(FS3Skills).to receive(:check_ability_name) { nil }
           
-          @client = double
           @char = double
         end
           
         it "should error if abiliy name invalid" do 
           allow(FS3Skills).to receive(:check_ability_name) { "an error" }
-          expect(@client).to receive(:emit_failure).with("an error")
-          FS3Skills.set_ability(@client, @char, "Firearms", 4)
+          error = FS3Skills.set_ability(@char, "Firearms", 4)
+          expect(error).to eq("an error")
         end
-        
         
         context "success" do
           before do
@@ -97,34 +95,21 @@ module AresMUSH
             allow(@char).to receive(:id) { 1 }
             allow(FS3Skills).to receive(:find_ability).with(@char, "Firearms") { @ability }
             allow(@ability).to receive(:update)
-            allow(@client).to receive(:emit_success)
             allow(@char).to receive(:name) { "Bob" }
             allow(@ability).to receive(:rating_name) { "X" }
           end
         
-          it "should emit one message for changing your own ability" do
-            allow(@client).to receive(:char_id) { 1 }
-            expect(@client).to receive(:emit_success).with("fs3skills.action_set")
-            FS3Skills.set_ability(@client, @char, "Firearms", 4)
-          end
-        
-          it "should emit a different message for changing someone else's ability" do
-            allow(@client).to receive(:char_id) { 2 }
-            expect(@client).to receive(:emit_success).with("fs3skills.admin_ability_set")
-            FS3Skills.set_ability(@client, @char, "Firearms", 4)
-          end
-          
           it "should update an existing ability" do
-            allow(@client).to receive(:char_id) { 2 }
             expect(@ability).to receive(:update).with(rating: 4)
-            FS3Skills.set_ability(@client, @char, "Firearms", 4)
+            error = FS3Skills.set_ability(@char, "Firearms", 4)
+            expect(error).to be_nil
           end
 
           it "should create a new ability" do
-            allow(@client).to receive(:char_id) { 2 }
             allow(FS3Skills).to receive(:find_ability).with(@char, "Firearms") { nil }
             expect(FS3ActionSkill).to receive(:create).with(character: @char, name: "Firearms", rating: 4) { @ability }
-            FS3Skills.set_ability(@client, @char, "Firearms", 4)
+            error = FS3Skills.set_ability(@char, "Firearms", 4)
+            expect(error).to be_nil
           end
         end
       end

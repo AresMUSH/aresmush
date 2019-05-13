@@ -83,6 +83,8 @@ module AresMUSH
         return AddSceneSpellRequestHandler
       when "charSpells"
         return CharSpellsRequestHandler
+      when "learnAbility"
+        return LearnAbilityRequestHandler
       end
       nil
     end
