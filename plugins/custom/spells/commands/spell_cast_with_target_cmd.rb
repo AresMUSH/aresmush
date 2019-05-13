@@ -141,7 +141,7 @@ module AresMUSH
             if roll
               Custom.cast_noncombat_spell(self.caster, self.target_name, self.spell, self.mod)
             elsif heal_points
-              Custom.cast_noncombat_heal(self.caster, self.target_name, self.spell, self.mod)
+              Custom.cast_non_combat_heal(self.caster, self.target_name, self.spell, self.mod)
             elsif self.spell == "Mind Shield"
               Custom.cast_noncombat_mind_shield(self.caster, self.target)
             else
