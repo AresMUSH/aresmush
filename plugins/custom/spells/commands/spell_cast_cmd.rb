@@ -94,7 +94,7 @@ module AresMUSH
         else
           #Roll NonCombat
           if roll
-            Custom.cast_noncombat_spell(self.caster, self.spell, self.mod)
+            Custom.cast_noncombat_spell(self.caster, nil, self.spell, self.mod)
           elsif heal_points
             Custom.cast_non_combat_heal(self.caster, self.spell, self.mod)
           else

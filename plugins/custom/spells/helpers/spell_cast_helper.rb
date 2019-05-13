@@ -39,17 +39,22 @@ module AresMUSH
 
     def self.cast_noncombat_spell(caster, name_string, spell, mod)
       target_num = Global.read_config("spells", spell, "target_num")
-      targets = Custom.parse_spell_targets(name_string, target_num)
+      if name_string != nil
+        targets = Custom.parse_spell_targets(name_string, target_num)
+      else
+        targets = "None"
+      end
 
       if targets == t('custom.too_many_targets')
         caster.client.emit_failure t('custom.too_many_targets', :spell => spell, :num => target_num)
       elsif targets == "no_target"
         caster.client.emit_failure "%xrThat is not a character.%xn"
+      elsif targets == "None"
+        message = t('custom.casts_noncombat_spell', :name => caster.name, :spell => spell, :mod => mod, :succeeds => "%xgSUCCEEDS%xn")
       else
         names = targets.map { |t| t.name }
         print_names = names.join(", ")
         message = t('custom.casts_noncombat_spell_with_target', :name => caster.name, :target => print_names, :spell => spell, :mod => mod, :succeeds => "%xgSUCCEEDS%xn")
-        Global.logger.debug "PRINTING"
       end
       caster.room.emit message
       if caster.room.scene
