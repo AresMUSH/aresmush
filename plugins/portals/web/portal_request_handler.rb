@@ -3,7 +3,7 @@ module AresMUSH
     class PortalRequestHandler
       def handle(request)
         Global.logger.debug "Request: #{request}"
-        portal = Portal.find_one_by_name request.args[:id]
+        portal = Portal.find_one_by_name(request.args[:id])
         Global.logger.debug "Portal: #{portal}"
         enactor = request.enactor
 
@@ -20,11 +20,12 @@ module AresMUSH
           all_schools: portal.all_schools,
           creatures: portal.creatures,
           npcs: portal.npcs,
-          gms: portal.gms,
+          gms: portal.gms.to_a,
           location: portal.location,
           description: portal.description,
           trivia: portal.trivia,
-          events: portal.events
+          events: portal.events,
+          id: portal.id
         }
       end
 
