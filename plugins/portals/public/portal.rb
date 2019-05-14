@@ -27,8 +27,8 @@ module AresMUSH
     end
 
     def self.find_one_by_name(name_or_id)
-      char = Character[name_or_id]
-      return char if char
+      portal = Portal[name_or_id]
+      return portal if portal
 
       find_any_by_name(name_or_id).first
     end
