@@ -20,6 +20,10 @@ module AresMUSH
     end
 
     def self.get_web_request_handler(request)
+      case request.cmd
+      when "portal"
+        return PortalRequestHandler
+      end
       nil
     end
 
