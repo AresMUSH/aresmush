@@ -23,6 +23,8 @@ module AresMUSH
       case request.cmd
       when "portal"
         return PortalRequestHandler
+      when "portalEdit"
+        return PortalEditRequestHandler
       end
       nil
     end
