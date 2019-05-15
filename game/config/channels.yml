@@ -1,0 +1,32 @@
+---
+channels:
+  default_channels:
+  - Questions
+  - Chat
+  end_marker: ">"
+  shortcuts:
+    chan: channel
+    channels: channel
+    comlist: channel
+    clist: channel
+    channel/describe: channel/desc
+    channel/gag: channel/mute
+    channel/ungag: channel/unmute
+    channel/add: channel/create
+    channel/on: channel/join
+    channel/off: channel/leave
+    addcom: channel/join
+    delcom: channel/leave
+    comtitle: channel/title
+    channel/name: channel/rename
+  start_marker: "<"
+  clear_history_cron:
+    hour:
+    - 4
+    minute:
+    - 47
+  approved_channels:
+  - RP Requests
+  ooc_lounge_channel: ''
+  recall_timeout_days: 1
+  recall_buffer_size: 500

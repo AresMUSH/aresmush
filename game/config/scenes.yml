@@ -1,0 +1,67 @@
+---
+scenes:
+  room_cleanup_cron:
+    minute:
+    - 15
+    - 45
+  ooc_color: "%xc"
+  unshared_scene_cleanup_cron:
+    day_of_week:
+    - Fri
+    hour:
+    - 22
+    minute:
+    - 2
+  delete_unshared_scenes: false
+  unshared_scene_warning_days: 13
+  include_pose_separator: false
+  scene_types:
+  - Social
+  - Event
+  - Vignette
+  shortcuts:
+    scenes: scene
+    scene/close: scene/stop
+    scene/date: scene/icdate
+    scene/end: scene/stop
+    scene/name: scene/title
+    scene/info: scene
+    scene/rename: scene/title
+    repose/log: repose/all
+    repose/reset: repose/clear
+    repose/gag: repose/nudge mute
+    logs: scene
+    log/on: scene/startlog
+    log/off: scene/stoplog
+    log/clear: scene/clearlog
+    log/undo: scene/undo
+    scene/emit: emit/set
+    scene/proxy: scene/spoof
+    scene/amend: scene/replace
+    pose/undo: scene/undo
+    pose/replace: scene/replace
+    scene/deletechar: scene/removechar
+    pose/notify: pose/nudge
+    pose/remove: pose/drop
+    po: pose
+    me: pose
+    whisp: whisper
+    mutter: whisper
+    repose/nudge: pose/nudge
+    repose/notify: pose/notify
+    repose/drop: pose/drop
+    repose/order: pose/order
+    repose: scene/repose
+    scene/set: emit/set
+    posebreak: autospace
+    pose/skip: pose/drop
+  unshared_scene_deletion_days: 20
+  idle_scene_timeout_days: 3
+  trending_scenes_category: Cookie Awards
+  trending_scenes_cron:
+    hour:
+    - 19
+    minute:
+    - 15
+    day_of_week:
+    - Mon

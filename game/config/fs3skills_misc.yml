@@ -1,0 +1,14 @@
+---
+fs3skills:
+  max_luck: 3
+  public_sheets: true
+  roll_channel: FS3 Rolls
+  shortcuts:
+    spec: specialty
+    sheet2: profile
+    skills: abilities
+    attributes: abilities
+    languages: abilities
+    practice: learn
+    train: learn
+    xp/raise: learn

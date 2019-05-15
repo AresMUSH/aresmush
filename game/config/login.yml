@@ -1,0 +1,29 @@
+---
+login:
+  allow_web_registration: true
+  guest_role: guest
+  use_terms_of_service: true
+  activity_cron:
+    minute:
+    - 0
+  blacklist_cron:
+    day:
+    - 1
+    - 15
+    hour:
+    - 3
+    minute:
+    - 0
+  shortcuts:
+    logout: quit
+    con: connect
+    newpassword: password/reset
+    conn: connect
+    kick: boot
+    password/change: password/set
+    motd: notice/motd
+  allow_creation: true
+  login_not_allowed_message: ''
+  creation_not_allowed_message: ''
+  portal_requires_registration: 
+  guest_disabled_message: ''

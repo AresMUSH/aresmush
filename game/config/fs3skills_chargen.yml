@@ -1,0 +1,117 @@
+---
+fs3skills:
+  allow_unskilled_action_skills: false
+  free_backgrounds: 6
+  free_languages: 3
+  max_ap: 40
+  max_attr_rating: 4
+  max_attrs_at_or_above:
+    3: 4
+    4: 2
+  max_points_on_action: 28
+  max_points_on_attrs: 12
+  max_skill_rating: 7
+  max_skills_at_or_above:
+    5: 3
+    6: 2
+    7: 1
+  min_backgrounds: 2
+  starting_skills:
+    Everyone:
+      skills:
+        Alertness: 2
+        Athletics: 2
+        Composure: 2
+        Firearms: 2
+        Medicine: 2
+        Melee: 2
+    Position:
+      Viper Pilot:
+        skills:
+          Piloting: 3
+          Gunnery: 3
+        specialties:
+          Piloting:
+          - Viper
+          - Raptor
+      Raptor Pilot:
+        skills:
+          Piloting: 3
+          Gunnery: 3
+        specialties:
+          Piloting:
+          - Raptor
+      Raptor ECO:
+        skills:
+          Piloting: 3
+          Gunnery: 3
+        specialties:
+          Piloting:
+          - Raptor
+      Rifleman:
+        skills:
+          Firearms: 3
+          Melee: 3
+      Combat Medic:
+        skills:
+          Firearms: 3
+          Medicine: 3
+        specialties:
+          Medicine:
+          - Medic
+      Combat Engineer:
+        skills:
+          Demolitions: 3
+          Firearms: 3
+      Gunner:
+        skills:
+          Firearms: 3
+          Gunnery: 3
+      Recon:
+        skills:
+          Firearms: 3
+          Stealth: 3
+      Technician:
+        skills:
+          Technician: 3
+      Doctor:
+        skills:
+          Medicine: 3
+        specialties:
+          Medicine:
+          - Doctor
+      Nurse:
+        skills:
+          Medicine: 3
+        specialties:
+          Medicine:
+          - Nurse
+      Corpsman:
+        skills:
+          Medicine: 3
+        specialties:
+          Medicine:
+          - Medic
+      Medical Staff:
+        skills:
+          Medicine: 3
+        specialties:
+          Medicine:
+          - Other
+      Deck Crew:
+        skills:
+          Technician: 3
+    Colony:
+      Tauron:
+        skills:
+          Tauran: 3
+      Leonis:
+        skills:
+          Leonese: 3
+  unusual_skills:
+  - Celtan
+  - Scorpian
+  - Sagittaran
+  - Gemenese
+  - Demolitions
+  advantages_cost: 2

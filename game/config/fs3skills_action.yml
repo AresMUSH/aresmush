@@ -1,0 +1,50 @@
+---
+fs3skills:
+  action_skills:
+  - name: Alertness
+    desc: Noticing things and being aware of your surroundings.
+    linked_attr: Perception
+  - name: Athletics
+    desc: General running, jumping, climbing, etc.
+    linked_attr: Brawn
+  - name: Composure
+    desc: Coolness under pressure.
+    linked_attr: Grit
+  - name: Demolitions
+    desc: Blowing stuff up.
+    linked_attr: Wits
+  - name: Firearms
+    desc: Shooting guns.
+    linked_attr: Reflexes
+  - name: Gunnery
+    desc: Vehicle/special weapons (cannons, rockets/missiles, ECM packages).
+    linked_attr: Reflexes
+  - name: Medicine
+    desc: Tending to the ill and injured.
+    linked_attr: Wits
+    specialties:
+    - Doctor
+    - Surgeon
+    - Nurse
+    - Medic
+    - Other
+  - name: Melee
+    desc: Fighting with fists, knives, and hand-to-hand weapons.
+    linked_attr: Brawn
+  - name: Piloting
+    desc: Flying air and spacecraft.
+    linked_attr: Reflexes
+    specialties:
+    - Viper
+    - Raptor
+    - Freighter
+    - Other
+  - name: Stealth
+    desc: Being sneaky.
+    linked_attr: Reflexes
+  - name: Technician
+    desc: General mechanics/electronics and fixing things.
+    linked_attr: Wits
+  action_skills_blurb: 'Action Skills represent your ability in areas deemed important
+    for gameplay.  Action Skills are rated from 0-8. See [FS3: Action Skills](http://aresmush.com/fs3/fs3-3/chargen/#action-skills)
+    for details.'

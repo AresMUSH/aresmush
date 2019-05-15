@@ -1,0 +1,12 @@
+game:
+    name: "Into the Darkness"
+
+    category: Other
+    
+    description: "TBD"
+    
+    website: ""
+        
+    public_game: false
+    
+    game_status: In Development

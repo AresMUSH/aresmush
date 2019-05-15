@@ -1,0 +1,19 @@
+---
+status:
+  colors:
+    IC: "%xr"
+    OOC: "%xh"
+    NPC: "%xh"
+    AFK: "%xy"
+    NEW: "%xg"
+    ADM: "%xb"
+  minutes_before_idle: 120
+  minutes_before_idle_disconnect: 300
+  afk_cron:
+    minute:
+    - 20
+  shortcuts:
+    ic: onstage
+    afk on: afk
+    afk/on: afk
+    afk/off: afk off

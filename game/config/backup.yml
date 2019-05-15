@@ -1,0 +1,9 @@
+---
+backup:
+  backup_type: local
+  backups_to_keep: 5
+  backup_cron:
+    hour:
+    - 11
+    minute:
+    - 25

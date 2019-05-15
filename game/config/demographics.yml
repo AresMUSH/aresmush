@@ -1,0 +1,111 @@
+---
+demographics:
+  min_age: 18
+  max_age: 65
+  required_properties:
+  - actor
+  - hair
+  - eyes
+  - skin
+  - height
+  - physique
+  - fullname
+  - gender
+  - birthdate
+  nickname_field: callsign
+  nickname_format: "%{name} (%{nickname})"
+  disable_auto_shortcuts: false
+  editable_properties:
+  - fullname
+  - hair
+  - physique
+  - callsign
+  - gender
+  demographics:
+  - actor
+  - hair
+  - eyes
+  - skin
+  - height
+  - physique
+  - fullname
+  - gender
+  - birthdate
+  - callsign
+  groups:
+    Faction:
+      desc: Military faction.
+      values:
+        Navy: Join the fleet, see the worlds.
+        Marines: Semper fi.
+    Department:
+      desc: The ship is divided into several departments.  See the wiki for details.
+      values:
+        Air Wing: Viper and Raptor crews and deckhands. (Officers and Enlisted)
+        Marines: Boots on the ground. (Enlisted only)
+        Support: Support personnel - Deck crew, medical. (Officers and Enlisted)
+    Colony:
+      desc: Your character's home world.
+      values:
+        Aerilon: Bread basket of the colonies.
+        Aquaria: Cold, harsh world popular with tourists.
+        Canceron: Crowded and hot, a developing nation.
+        Caprica: Rich center of colonial culture and industry.
+        Gemenon: Fundamentalist religion and isolationist people.
+        Leonis: Old imperialist empire in decline, still known for culture and fashion.
+        Libran: Neutral colony renowned for fostering inter-colonial cooperation.
+        Picon: Water world famous for its beaches and strong navy.
+        Sagittaron: Poor colony, oft-exploited, now carved into several protectorates.
+        Scorpia: Lush jungles and bitter clan warfare. Home to shipyards constructing
+          the Battlestars.
+        Tauron: An up-and-coming socialist republic with a strong agricultural base
+          and developing industries.
+        Virgon: A monarchy in decline, clinging to old traditions.
+    Position:
+      desc: Job.
+      values:
+        Viper Pilot: Navy Viper pilot.
+        Raptor Pilot: Navy Raptor pilot.
+        Raptor ECO: Navy Raptor Electronic Countermeasures Officer
+        Rifleman: Marine rifleman.
+        Gunner: Marine support/heavy weapons specialist.
+        Combat Engineer: Marine demolitions, construction, maintenance.
+        Recon: Marine scout.
+        Combat Medic: Marine medic.
+        Doctor: Navy doc.
+        Nurse: Navy nurse.
+        Corpsman: Navy medic.
+        Medical Support: Other medical personnel.
+        Deck Crew: Air wing support/maintenance personnel.
+        Other: Any other position.
+  shortcuts:
+    groups: group
+    colonies: group colony
+    demographics: demographic
+    birthday: birthdate
+  help_text:
+    actor: "%xcactor <actor>%xn - See 'help actors'."
+    physique: "%xcphysique <build/body type>%xn - athletic, wiry, slim, pudgy, etc."
+    gender: "%xcgender <male/female/other>%xn"
+    hair: "%xchair <hair color>%xn"
+    eyes: "%xceyes <eye color>%xn"
+    skin: "%xcskin <complexion>%xn"
+    birthdate: "%xcbirthdate <mm/dd/yyy>%xn or %xcage <years>%xn"
+    callsign: "%xccallsign <callsign>%xn - Non-pilots may leave blank or enter a nickname."
+  census_fields:
+  - field: name
+    width: 28
+    title: Name
+  - field: demographic
+    width: 10
+    title: Gender
+    value: gender
+  - field: group
+    width: 20
+    title: Faction
+    value: Faction
+  - field: group
+    width: 20
+    title: Position
+    value: Position
+  private_properties: []

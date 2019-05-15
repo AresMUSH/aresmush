@@ -1,0 +1,23 @@
+---
+fs3skills:
+  language_blurb: 'Languages represent your ability to speak and read other languages.  Languages
+    have a descriptive rating.   See [FS3: Languages](http://aresmush.com/fs3/fs3-3/chargen/#languages)
+    for details.'
+  starting_languages:
+  - Standard
+  languages:
+  - name: Standard
+    desc: Spoken across the colonies.
+  - name: Gemenese
+    desc: Dead language known by academics and religious scholars.
+  - name: Leonese
+    desc: Official language of Leonis, also spoken in parts of Libran, Sagittaron
+      and Scorpia.
+  - name: Scorpian
+    desc: Spoken in some parts of Scorpia.
+  - name: Tauran
+    desc: Official language of Tauron.
+  - name: Sagittaran
+    desc: Tribal language of Sagittaron.
+  - name: Celtan
+    desc: Spoken in some places on Virgon's moon, Hibernia.
