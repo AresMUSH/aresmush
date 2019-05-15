@@ -5,16 +5,21 @@ module AresMUSH
     attribute :name
     attribute :name_upcase
     index :name_upcase
-    attribute :primary_school
+    attribute :primary_school, :type => DataType::Hash, :default => {}
     attribute :all_schools, :type => DataType::Array, :default => []
-    attribute :creatures, :type => DataType::Array, :default => []
-    attribute :npcs, :type => DataType::Array, :default => []
-    attribute :gms, :type => DataType::Array, :default => []
+    attribute :creatures
+    attribute :npcs
     attribute :location
     attribute :description
     attribute :trivia
     attribute :events
+    attribute :pinterest
 
+    set :gms, "AresMUSH::Character"
+
+    def gm_names
+      self.gmd.sort { |gm| gm.name }.map { |gm| gm.name }
+    end
 
     def self.find_any_by_name(name_or_id)
       return [] if !name_or_id
