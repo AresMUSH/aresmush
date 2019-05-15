@@ -25,6 +25,8 @@ module AresMUSH
         return PortalRequestHandler
       when "portalEdit"
         return PortalEditRequestHandler
+      when "getSchools"
+        return GetSchoolsRequestHandler
       end
       nil
     end
