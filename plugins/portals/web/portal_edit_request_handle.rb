@@ -41,12 +41,19 @@ module AresMUSH
           all_schools_names.each do |school|
             school_name = Global.read_config("schools", school, "name")
             id = Global.read_config("schools", school, "id")
-            Global.logger.debug "AllSchools: #{all_schools}"
             new_school = [{:name => school_name, :id => id}]
             all_schools.concat new_school
-            Global.logger.debug "AllSchool: #{all_schools}"
           end
           portal.update(all_schools: all_schools)
+
+
+          school_name = request.args[:primary_school].to_s
+          id = Global.read_config("schools", request.args[:primary_school], "id")
+          Global.logger.debug "School Name #{school_name}"
+          Global.logger.debug "School ID #{id}"
+          primary_school = {:name => school_name, :id => id}
+          Global.logger.debug "Primary School #{primary_school}"
+          portal.update(primary_school: primary_school)
 
 
 
@@ -54,7 +61,6 @@ module AresMUSH
           Global.logger.debug "all_schools #{request.args[:all_schools]}"
 
           portal.update(name: request.args[:name])
-          portal.update(primary_school: request.args[:primary_school])
           portal.update(creatures: request.args[:creatures])
           portal.update(npcs: request.args[:npcs])
           portal.update(location: request.args[:location])
