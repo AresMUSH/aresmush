@@ -2,11 +2,11 @@ en:
     describe:
        desc_set: "You set the description on %{name}."
        shortdesc_set: "You set the short description on %{name}."
-       
+
        nowhere: Nowhere
        empty: "Empty!"
        no_exits: "No exits!"
-       
+
        outfit_does_not_exist: "Outfit %{name} does not exist."
        outfit_set: "Outfit set."
        outfit_deleted: "Outfit deleted."
@@ -14,25 +14,25 @@ en:
        your_outfits: "Your Outfits"
        outfits_worn: "You wear the outfits."
        outfits_only_one_word: "Outfits may only have one-word names."
-       
+
        looked_at_you: "%{name} looked at you."
-       
+
        afk: AFK
        idle: Idle
-       
-       beginner_tag: Beginner
-       admin_tag: Admin
-       
+
+       beginner_tag: Newbie
+       admin_tag: Staff
+
        description_review: "Checking you have a description set."
        locked: "LOCKED"
-       
+
        scene_set_title: "Scene Set:"
-       
+
        played_by: "Played By:"
        players_title: "Characters:"
        exits_title: "Exits:"
        no_way_out: "No way out!"
-       
+
        scene_log_active: "+++ The scene log (%{num}) is active in this room. +++"
        watching_from_web: "(Via Web)"
        no_such_detail: "No such detail available."
@@ -45,12 +45,11 @@ en:
        foyer_room_free: "%xgOpen%xn"
        foyer_room_status: "%xhFoyer Exits%xn"
        foyer_room_in_use: "%xy%xhIn Use%xn"
-       
+
        vistas_only_rooms: "Vistas are only for rooms."
        no_such_vista: "No such vista available."
        vista_deleted: "Vista deleted."
        vista_set: "Vista set."
        vistas_title: "Vistas for %{name}"
-       
+
        notify_set: "You turn the notifications when someone looks at you %{status}."
-       

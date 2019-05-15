@@ -7,32 +7,34 @@ module AresMUSH
     attribute :is_on_duty, :type => DataType::Boolean, :default => true
     attribute :is_playerbit, :type => DataType::Boolean
     attribute :is_npc, :type => DataType::Boolean
-    
+
     def is_afk?
       is_afk
     end
-    
+
     def is_npc?
       is_npc
     end
-    
+
     def is_on_duty?
       is_on_duty
     end
-    
+
     def is_playerbit?
       is_playerbit
     end
-    
+
     def is_ic?
       self.room.room_type == "IC" || self.room.room_type == "RPR"
     end
-    
+
     def status
       # AFK trumps all
       return "AFK" if self.is_afk?
       # Admins can be on duty or OOC
-      return "ADM" if self.is_admin? && self.is_on_duty?
+      return "STF" if self.is_staff? && self.is_on_duty?
+      # Guest Trumps all statuses.
+      return "GST" if self.is_guest?
       return "OOC" if Status.can_be_on_duty?(self)
       # Playerbits are always OOC
       return "OOC" if self.is_playerbit
@@ -45,7 +47,7 @@ module AresMUSH
       # Otherwise use room type
       self.room.room_type
     end
-    
+
     def afk_display
       self.is_afk? ? self.afk_message : ""
     end

@@ -15,3 +15,7 @@ The current IC weather for your area shows up in room descriptions, but you can 
 You can manually override the weather.  This will take effect until the next automatic weather change.
 
 `weather/set <area>=<temperature>/<weather condition>`
+
+## Credits
+
+The idea for how to modify the weather into an 8 season system came from `Tat @ [Spirit Lake MU]`(https://spiritlakemu.com)
