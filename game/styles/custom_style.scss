@@ -100,6 +100,30 @@ blockquote {
   margin: 15px;
 }
 
+.portal-card-heading {
+  font-size: 20px;
+  font-weight: bold;
+  padding: 10px;
+  text-align: left;
+  background-color: #314254;
+  border-bottom: 4px solid #293038;
+  border-radius: 12px 12px 0px 0px;
+}
+
+.portal-card {
+  background: #404B56;
+  border: 2px solid #293038;
+  border-radius: 14px;
+  margin: 15px 0px 15px;
+  width: fit-content;
+}
+
+.portal-card-body {
+  padding: 15px;
+  line-height: 2;
+
+}
+
 .clear {
   clear: both;
 }
