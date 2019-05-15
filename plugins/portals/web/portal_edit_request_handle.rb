@@ -6,6 +6,7 @@ module AresMUSH
         portal = Portal.find_one_by_name(request.args[:id])
         Global.logger.debug "Edit Portal: #{portal}"
         Global.logger.debug "Edit PortalID: #{portal.id}"
+        Global.logger.debug "PrimarySchoolArgs: #{request.args[:primary_school]}"
         enactor = request.enactor
 
         if (!portal)
@@ -23,18 +24,37 @@ module AresMUSH
 
           gm_names = request.args[:gms] || []
           portal.gms.replace []
+
           gm_names.each do |gm|
             gm = Character.find_one_by_name(gm.strip)
             if (gm)
               if (!portal.gms.include?(gm))
-                portal.gms.concat [gm]
+                Portals.add_gm(portal, gm)
               end
             end
           end
 
+
+          all_schools_names = request.args[:all_schools] || []
+          portal.all_schools.replace []
+          all_schools = []
+          all_schools_names.each do |school|
+            school_name = Global.read_config("schools", school, "name")
+            id = Global.read_config("schools", school, "id")
+            Global.logger.debug "AllSchools: #{all_schools}"
+            new_school = [{:name => school_name, :id => id}]
+            all_schools.concat new_school
+            Global.logger.debug "AllSchool: #{all_schools}"
+          end
+          portal.update(all_schools: all_schools)
+
+
+
+          Global.logger.debug "gms #{request.args[:gms]}"
+          Global.logger.debug "all_schools #{request.args[:all_schools]}"
+
           portal.update(name: request.args[:name])
           portal.update(primary_school: request.args[:primary_school])
-          portal.update(all_schools: request.args[:all_schools])
           portal.update(creatures: request.args[:creatures])
           portal.update(npcs: request.args[:npcs])
           portal.update(location: request.args[:location])
