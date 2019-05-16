@@ -141,7 +141,7 @@ module AresMUSH
       end
 
       def element
-        @char.group("Element of Harmony") || "Unknown"
+        @char.group("Guiding Element") || "Unknown"
       end
 
       def callname
