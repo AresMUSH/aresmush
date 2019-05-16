@@ -166,3 +166,4 @@ en:
         mind_title: "Mind:"
         body_title: "Body:"
         sheet_header: "%{game} Sheet - %{name}"
+        status_title: "Approval Status:"

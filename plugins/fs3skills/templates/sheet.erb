@@ -3,7 +3,7 @@
 
 %xh<%= left( t('fs3skills.truename_title'), 16) %>%xn <%= left( truename, 19 ) %> %xh<%= left(t('fs3skills.element_title'),16) %>%xn <%= element -%>
 
-%xh<%= left( t('fs3skills.birthdate_title'), 16) %>%xn <%= left( t('fs3skills.display_age', :dob => dateofbirth, :age => age), 19 ) %> %xh
+%xh<%= left( t('fs3skills.birthdate_title'), 16) %>%xn <%= left( t('fs3skills.display_age', :dob => dateofbirth, :age => age), 19 ) %> %xh<%= left(t('fs3skills.status_title'),16) %>%xn <%= approval_status -%>
 
 <%= line_with_text t('fs3skills.attributes_title') -%>
 <% attrs.each do |a| -%>
