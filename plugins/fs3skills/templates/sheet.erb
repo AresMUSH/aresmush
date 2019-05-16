@@ -1,5 +1,11 @@
-%lh
-%xh<%= char.name %>%xn <%= center( approval_status, 23 ) %>
+<%= line_with_text t("fs3skills.sheet_header", :name => char.name, :game => game_name) -%>
+
+%xh<%= left( t('fs3skills.callname_title'), 16) %>%xn <%= left( callname, 19 ) %> %xh<%= left(t('fs3skills.origin_title'),16) %>%xn <%= origin -%>
+
+%xh<%= left( t('fs3skills.truename_title'), 16) %>%xn <%= left( truename, 19 ) %> %xh<%= left(t('fs3skills.element_title'),16) %>%xn <%= element -%>
+
+%xh<%= left( t('fs3skills.birthdate_title'), 16) %>%xn <%= left( t('fs3skills.display_age', :dob => dateofbirth, :age => age), 19 ) %> %xh
+
 <%= line_with_text t('fs3skills.attributes_title') -%>
 <% attrs.each do |a| -%>
 <%= a -%>
