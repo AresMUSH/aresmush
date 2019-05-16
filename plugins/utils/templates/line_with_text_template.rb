@@ -17,7 +17,7 @@ module AresMUSH
     end
 
     def textcolor
-      Global.read_config("skin","line_with_text_text_color") || "%xh%xw"
+      Global.read_config("skin","line_with_text_text_color") || "%x15"
     end
 
     def color
