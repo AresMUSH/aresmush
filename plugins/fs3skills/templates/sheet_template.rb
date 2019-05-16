@@ -82,11 +82,13 @@ module AresMUSH
         spec.map { |spec, ability| "#{spec} (#{ability})"}.join(", ")
       end
 
-      def format_attr(a, i)
-        name = "%xh#{a.name}:%xn"
-        linebreak = i % 2 == 1 ? "" : "%r"
-        rating_text = "#{a.rating_name}"
-        "#{linebreak}#{left(name, 16)} #{left(rating_text,20)}"
+      def format_attr(s, i, show_linked_attr = false)
+          name = "%xh#{s.name}:%xn"
+          linked_attr = show_linked_attr ? print_linked_attr(s) : "   "
+          linebreak = i % 2 == 1 ? "" : "%r"
+          rating_text = "#{s.rating_name}"
+          rating = "%xh#{s.print_rating}%xn"
+          "#{linebreak}#{left(name, 16)} [#{rating}] #{linked_attr} #{left(rating_text,12)}"
       end
 
 
