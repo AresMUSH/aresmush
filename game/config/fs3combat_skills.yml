@@ -1,9 +1,9 @@
 ---
 fs3combat:
-  treat_skill: Medicine
-  healing_skill: Medicine
-  recovery_skill: Brawn
-  initiative_skill: Alertness
   composure_skill: Composure
   default_defense_skill: Reflexes
+  healing_skill: Doctoring
+  initiative_skill: Observation
+  recovery_skill: Brawn
   strength_skill: Brawn
+  treat_skill: Doctoring

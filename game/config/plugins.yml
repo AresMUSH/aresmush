@@ -1,6 +1,7 @@
 ---
 plugins:
-  disabled_plugins: []
+  disabled_plugins:
+  - ranks
   config_help_links:
     ffg: https://github.com/AresMUSH/ares-extras/tree/master/plugins/ffg
     fate: https://github.com/AresMUSH/ares-extras/tree/master/plugins/fate

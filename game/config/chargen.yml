@@ -1,11 +1,19 @@
 ---
 chargen:
+  allow_web_submit: true
   app_category: APP
   app_hold_status: HOLD
   app_resubmit_status: OPEN
+  app_review_commands:
+  - app %{name}
+  - profile %{name}
+  - bg %{name}
+  - hooks %{name}
+  - sheet %{name}
   approval_message: Congratulations!  Your application has been approved.  Type %xhonstage%xn
     to go forth and RP.  You may want to customize your character profile on the web
     portal.
+  arrivals_category: New Arrivals
   bg_blurb: 'You don''t need to write a novel. Just cover the basics: who you are,
     why are you here, and is there anything noteworthy about you. Be sure to explain
     any unusual skills.'
@@ -64,11 +72,3 @@ chargen:
     review:
       help: apps
   welcome_message: Please welcome %{name}, our latest %{position} to be approved!
-  arrivals_category: New Arrivals
-  app_review_commands:
-  - app %{name}
-  - profile %{name}
-  - bg %{name}
-  - hooks %{name}
-  - sheet %{name}
-  allow_web_submit: true

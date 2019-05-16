@@ -1,97 +1,5 @@
 ---
 demographics:
-  min_age: 18
-  max_age: 65
-  required_properties:
-  - actor
-  - hair
-  - eyes
-  - skin
-  - height
-  - physique
-  - fullname
-  - gender
-  - birthdate
-  nickname_field: callsign
-  nickname_format: "%{name} (%{nickname})"
-  disable_auto_shortcuts: false
-  editable_properties:
-  - fullname
-  - hair
-  - physique
-  - callsign
-  - gender
-  demographics:
-  - actor
-  - hair
-  - eyes
-  - skin
-  - height
-  - physique
-  - fullname
-  - gender
-  - birthdate
-  - callsign
-  groups:
-    Faction:
-      desc: Military faction.
-      values:
-        Navy: Join the fleet, see the worlds.
-        Marines: Semper fi.
-    Department:
-      desc: The ship is divided into several departments.  See the wiki for details.
-      values:
-        Air Wing: Viper and Raptor crews and deckhands. (Officers and Enlisted)
-        Marines: Boots on the ground. (Enlisted only)
-        Support: Support personnel - Deck crew, medical. (Officers and Enlisted)
-    Colony:
-      desc: Your character's home world.
-      values:
-        Aerilon: Bread basket of the colonies.
-        Aquaria: Cold, harsh world popular with tourists.
-        Canceron: Crowded and hot, a developing nation.
-        Caprica: Rich center of colonial culture and industry.
-        Gemenon: Fundamentalist religion and isolationist people.
-        Leonis: Old imperialist empire in decline, still known for culture and fashion.
-        Libran: Neutral colony renowned for fostering inter-colonial cooperation.
-        Picon: Water world famous for its beaches and strong navy.
-        Sagittaron: Poor colony, oft-exploited, now carved into several protectorates.
-        Scorpia: Lush jungles and bitter clan warfare. Home to shipyards constructing
-          the Battlestars.
-        Tauron: An up-and-coming socialist republic with a strong agricultural base
-          and developing industries.
-        Virgon: A monarchy in decline, clinging to old traditions.
-    Position:
-      desc: Job.
-      values:
-        Viper Pilot: Navy Viper pilot.
-        Raptor Pilot: Navy Raptor pilot.
-        Raptor ECO: Navy Raptor Electronic Countermeasures Officer
-        Rifleman: Marine rifleman.
-        Gunner: Marine support/heavy weapons specialist.
-        Combat Engineer: Marine demolitions, construction, maintenance.
-        Recon: Marine scout.
-        Combat Medic: Marine medic.
-        Doctor: Navy doc.
-        Nurse: Navy nurse.
-        Corpsman: Navy medic.
-        Medical Support: Other medical personnel.
-        Deck Crew: Air wing support/maintenance personnel.
-        Other: Any other position.
-  shortcuts:
-    groups: group
-    colonies: group colony
-    demographics: demographic
-    birthday: birthdate
-  help_text:
-    actor: "%xcactor <actor>%xn - See 'help actors'."
-    physique: "%xcphysique <build/body type>%xn - athletic, wiry, slim, pudgy, etc."
-    gender: "%xcgender <male/female/other>%xn"
-    hair: "%xchair <hair color>%xn"
-    eyes: "%xceyes <eye color>%xn"
-    skin: "%xcskin <complexion>%xn"
-    birthdate: "%xcbirthdate <mm/dd/yyy>%xn or %xcage <years>%xn"
-    callsign: "%xccallsign <callsign>%xn - Non-pilots may leave blank or enter a nickname."
   census_fields:
   - field: name
     width: 28
@@ -108,4 +16,79 @@ demographics:
     width: 20
     title: Position
     value: Position
+  demographics:
+  - actor
+  - mane
+  - eyes
+  - coat
+  - height
+  - physique
+  - gender
+  - birthdate
+  - truename
+  - cutiemark
+  disable_auto_shortcuts: false
+  editable_properties:
+  - physique
+  groups:
+    Origin:
+      desc: What Type of character are you?
+      values:
+        Earth Pony: The most common pony, the salt of the earth.
+        Pegasus: The winged masters of the sky and weather.
+        Unicorn: The masters of magic.
+        Deer: The guardians of the winter and joy.
+        Alicorn: A rare breed of pony, not the uber-magical ones.
+        Dragon: One of the magical dragons.
+        Kitsune: A spiritually adept trickster.
+        Griffon: Part Eagle, Part Lion, all attitude.
+        Zebra: Masters of Knowledge, alchemist extraordinaire.
+        Crystal Pony: The crystal version of an Earth Pony.
+        Hippogriff: Half Pony, Half Eagle all coolness.
+        Bat Pony: Nocturnal Ponies with wings of a bat.
+        Breezie: A fairy-like mini-pony, no bigger than a humming bird.
+        Seapony: Half Pony, Half Fish, all voice. The Musical Ponies of the Sea.
+    Element Of Harmony:
+      desc: Which element of harmony are you attuned to?
+      values:
+        Honesty: 
+        Kindness: 
+        Laughter: 
+        Generosity: 
+        Loyalty: 
+        Magic: 
+        Strength: 
+        Healing: 
+        Hope: 
+        Beauty: 
+        Bravery: 
+        Sorcery: 
+  help_text:
+    actor: "%xcactor <voice actor>%xn - See 'help actors'."
+    physique: "%xcphysique <build/body type>%xn - athletic, wiry, slim, pudgy, etc."
+    gender: "%xcgender <male/female/other>%xn"
+    mane: "%xmane <mane color>%xn"
+    eyes: "%xceyes <eye color>%xn"
+    coat: "%xccoat <coat>%xn"
+    birthdate: "%xcbirthdate <mm/dd/yyy>%xn or %xcage <years>%xn"
+    truename: "%xctruename <truename>%xn - This is the full version of your name."
+  max_age: 65
+  min_age: 8
+  nickname_field: truename
+  nickname_format: "%{nickname} (%{name})"
   private_properties: []
+  required_properties:
+  - actor
+  - mane
+  - eyes
+  - coat
+  - height
+  - physique
+  - gender
+  - birthdate
+  - truename
+  - cutiemark
+  shortcuts:
+    groups: group
+    demographics: demographic
+    birthday: birthdate

@@ -9,13 +9,13 @@ who:
     width: 20
     title: Name
   - field: group
-    value: department
+    value: Origin
     width: 16
-    title: Department
+    title: Origin
   - field: group
-    value: position
+    value: element of harmony
     width: 18
-    title: Position
+    title: Element of Harmony
   - field: connected
     width: 7
     title: Conn

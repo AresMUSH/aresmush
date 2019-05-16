@@ -69,10 +69,6 @@ permissions:
     category: System
     desc: Grants access to the building commands.
     is_new: false
-  - name: manage_magix
-    category: Admin
-    desc: Grants access to managing magix.
-    is_new: true
   - name: manage_luck
     category: Admin
     desc: Grants access to managing the luck system.
@@ -145,18 +141,10 @@ permissions:
     category: System
     desc: Allows user to boot another user.
     is_new: false
-  - name: manage_sanity
-    category: Admin
-    desc: Grants access to managing sanity.
+  - name: manage_lesson
+    desc: Grants approver access to the lesson system.
     is_new: true
-  - name: manage_will
-    category: Admin
-    desc: Grants access to managing will.
-    is_new: true
-  - name: manage_inventory
-    category: Admin
-    desc: Grants access to managing the gear system.
-    is_new: true
+    category: System
   shortcuts:
     permission: permissions
     perm: permissions

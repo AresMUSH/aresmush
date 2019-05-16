@@ -1,50 +1,73 @@
 ---
 fs3skills:
   action_skills:
-  - name: Alertness
-    desc: Noticing things and being aware of your surroundings.
+  - name: Acrobatics
+    desc: The art of being able to maintain balance, flexibility and tumble when needed.
+    linked_attr: Reflexes
+  - name: Deception
+    desc: The art of making someone believe you when you aren't being entirely honest.
+    linked_attr: Presence
+  - name: Disguise
+    desc: The art of concealing your identity for anonymity's sake.
+    linked_attr: Presence
+  - name: Artistry
+    desc: The art of knowing what is right, artistically.
     linked_attr: Perception
-  - name: Athletics
-    desc: General running, jumping, climbing, etc.
-    linked_attr: Brawn
   - name: Composure
-    desc: Coolness under pressure.
+    desc: The art of maintaining your emotions, despite your external situation.
     linked_attr: Grit
-  - name: Demolitions
-    desc: Blowing stuff up.
-    linked_attr: Wits
-  - name: Firearms
-    desc: Shooting guns.
-    linked_attr: Reflexes
-  - name: Gunnery
-    desc: Vehicle/special weapons (cannons, rockets/missiles, ECM packages).
-    linked_attr: Reflexes
-  - name: Medicine
-    desc: Tending to the ill and injured.
-    linked_attr: Wits
-    specialties:
-    - Doctor
-    - Surgeon
-    - Nurse
-    - Medic
-    - Other
-  - name: Melee
-    desc: Fighting with fists, knives, and hand-to-hand weapons.
+  - name: Athletics
+    desc: The art of being able to do physical activities better, such as running,
+      flying, swimming, climbing or anything else.
     linked_attr: Brawn
-  - name: Piloting
-    desc: Flying air and spacecraft.
-    linked_attr: Reflexes
-    specialties:
-    - Viper
-    - Raptor
-    - Freighter
-    - Other
-  - name: Stealth
-    desc: Being sneaky.
-    linked_attr: Reflexes
-  - name: Technician
-    desc: General mechanics/electronics and fixing things.
+  - name: Counselling
+    desc: The art of providing much needed mental and emotional relief.
     linked_attr: Wits
+  - name: Cowpony
+    desc: The art of basic survival skills.
+    linked_attr: Wits
+  - name: Investigation
+    desc: The art of finding hidden or obscured things or ponies.
+    linked_attr: Wits
+  - name: Observation
+    desc: The Art of passively noticing things with your natural senses.
+    linked_attr: Perception
+  - name: Doctoring
+    desc: The Art of being able to diagnos, treat and if need be perform surgery.
+    linked_attr: Wits
+  - name: Tinker
+    desc: The art of crafting things that require more than basic skills.
+    linked_attr: Wits
+  - name: Performance
+    desc: The art of performing with one of the accepted genre.
+    linked_attr: Presence
+  - name: Markspony
+    desc: The art of being able to strike a target at range.
+    linked_attr: Reflexes
+  - name: Navigator
+    desc: The art of finding your way.
+    linked_attr: Wits
+  - name: Spellcasting
+    desc: The art of being able to cast magic easier than others.
+    linked_attr: Wits
+  - name: Academics
+    desc: The art of knowing history, law, literature and other scholarly things.
+    linked_attr: Wits
+  - name: Larceny
+    desc: The art of the scoundrel.
+    linked_attr: Reflexes
+  - name: Socializing
+    desc: The art of knowing all the right things, people and actions in society.
+    linked_attr: Presence
+  - name: Stealth
+    desc: The art of going without notice.
+    linked_attr: Reflexes
+  - name: Fighting
+    desc: The art of using bare hoof fighting.
+    linked_attr: Brawn
+  - name: Hoof Weapons
+    desc: The Art of using melee short range weapons.
+    linked_attr: Brawn
   action_skills_blurb: 'Action Skills represent your ability in areas deemed important
     for gameplay.  Action Skills are rated from 0-8. See [FS3: Action Skills](http://aresmush.com/fs3/fs3-3/chargen/#action-skills)
     for details.'
