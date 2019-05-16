@@ -2,7 +2,10 @@ module AresMUSH
   module Creatures
     class CreateCreatureRequestHandler
       def handle(request)
+
         enactor = request.enactor
+
+        Global.logger.debug "REquest: #{request.args.to_a} "
 
         error = Website.check_login(request)
         return error if error
@@ -11,10 +14,33 @@ module AresMUSH
           return { error: t('dispatcher.not_allowed') }
         end
 
-        if (request.args[:name].blank?)
-          return { error: t('webportal.missing_required_fields') }
-        end
+        # if (request.args[:name].blank?)
+        #   return { error: t('webportal.missing_required_fields') }
+        # end
 
+
+
+
+
+        sapient = (request.args[:sapient] || "").to_bool
+
+
+
+        creature = Creature.create(
+          name: request.args[:name],
+          pinterest: request.args[:pinterest],
+          found: request.args[:found],
+          sapient: sapient,
+          language: request.args[:language],
+          traits: request.args[:traits],
+          society: request.args[:society],
+          magical_abilities: request.args[:magical_abilities],
+          events: request.args[:events]
+        )
+        { id: creature.id }
+
+
+        Global.logger.debug "Creature #{creature.id} (#{creature.name})created by #{enactor.name}."
 
 
         major_school_name = request.args[:major_school]
@@ -28,25 +54,6 @@ module AresMUSH
         minor_school = {:name => minor_school_name, :id => id}
         creature.update(minor_school: minor_school)
 
-        sapient = (request.args[:sapient] || "").to_bool
-
-
-
-        creature = Creature.create(
-          name: request.args[:name],
-          major_school: major_school,
-          minor_school: minor_school,
-          pinterest: request.args[:pinterest],
-          found: request.args[:found],
-          sapient: sapient,
-          language: request.args[:language],
-          traits: request.args[:traits],
-          society: request.args[:society],
-          magical_abilities: request.args[:magical_abilities],
-          events: request.args[:events]
-        )
-
-        Global.logger.debug "Creature #{creature.id} (#{creature.name})created by #{enactor.name}."
 
         gm_names = request.args[:gms] || []
         creature.gms.replace []
@@ -60,7 +67,7 @@ module AresMUSH
           end
         end
 
-        { id: creature.id }
+
       end
     end
   end
