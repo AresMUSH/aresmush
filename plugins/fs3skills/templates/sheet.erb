@@ -3,36 +3,36 @@
 <%= line_with_text t('fs3skills.attributes_title') -%>
 <% attrs.each do |a| -%>
 <%= a -%>
-<% end %>
+<% end -%>
 
 
 <%= line_with_text t('fs3skills.action_skills_title') -%>
 <% action_skills.each do |a| -%>
 <%= a -%>
-<% end %>
+<% end -%>
 
 <% if specialties %>
 
 %xh<%= t('fs3skills.specialties_title') %>%xn <%= specialties %>
-<% end %>
+<% end -%>
 
 <%= line_with_text t('fs3skills.background_skills_title') -%>
 <% background_skills.each do |b| -%>
 <%= b -%>
-<% end %>
+<% end -%>
 
 <%= line_with_text t('fs3skills.spells_title') -%>
 <% spells.each do |s| -%>
 <%= s -%>
-<% end %>
+<% end -%>
 
 <% if use_advantages %>
 <%= line_with_text t('fs3skills.advantages_title') -%>
 <% advantages.each do |a| -%>
 <%= a -%>
-<% end %>
+<% end -%>
 
-<% end %>
+<% end -%>
 
 %xh<%= t('fs3skills.xp_title') %>%xn <%= left( char.xp, 30 ) %> %xh<%= t('fs3skills.luck_title') %>%xn <%= luck %>
 %lf
