@@ -37,7 +37,7 @@ module AresMUSH
           magical_abilities: request.args[:magical_abilities],
           events: request.args[:events]
         )
-        { id: creature.id }
+
 
 
         Global.logger.debug "Creature #{creature.id} (#{creature.name})created by #{enactor.name}."
@@ -67,7 +67,7 @@ module AresMUSH
           end
         end
 
-
+        { id: creature.id }
       end
     end
   end
