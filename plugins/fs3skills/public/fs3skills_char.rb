@@ -2,10 +2,10 @@ module AresMUSH
   class Character
     attribute :fs3_xp, :type => DataType::Integer, :default => 0
     attribute :fs3_luck, :type => DataType::Float, :default => 1
-    # Valor, Willpower & Fortitude all use this variable as a Negative to the total.
+    # Valor & Mana all use this variable as a Negative to the total.
     attribute :fs3_valor, :type => DataType::Integer, :default => 0
-    attribute :fs3_willpower, :type => DataType::Integer, :default => 0
-    attribute :fs3_fortitude, :type => DataType::Integer, :default => 0
+    attribute :fs3_mana, :type => DataType::Integer, :default => 0
+
 
     collection :fs3_attributes, "AresMUSH::FS3Attribute"
     collection :fs3_action_skills, "AresMUSH::FS3ActionSkill"
@@ -28,12 +28,8 @@ module AresMUSH
       self.fs3_valor
     end
 
-    def willpower_dmg
-      self.fs3_willpower
-    end
-
-    def fortitude_dmg
-      self.fs3_fortitude
+    def mana_dmg
+      self.fs3_mana
     end
 
     def luck
