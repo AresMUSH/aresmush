@@ -128,7 +128,7 @@ module AresMUSH
 
       def print_linked_attr(skill)
         apt = FS3Skills.get_linked_attr(skill.name)
-        !apt ? "" : " %xh%xx#{apt[0..2].upcase}%xn"
+        !apt ? "" : "%xh%xx#{apt[0..2].upcase}%xn"
       end
 
       def dateofbirth
