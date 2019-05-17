@@ -21,7 +21,7 @@ module AresMUSH
         all_schools = portal.all_schools.to_a
 
 
-
+        Global.logger.debug "Desc #{portal.description}"
 
 
         {
@@ -40,7 +40,7 @@ module AresMUSH
           trivia: Website.format_markdown_for_html(portal.trivia),
           edit_events:  Website.format_input_for_html(portal.events),
           events: Website.format_markdown_for_html(portal.events),
-          edit_society:  Website.format_input_for_html(portal.edit_society),
+          edit_society:  Website.format_input_for_html(portal.society),
           society: Website.format_markdown_for_html(portal.society),
           id: portal.id,
           pinterest: portal.pinterest
