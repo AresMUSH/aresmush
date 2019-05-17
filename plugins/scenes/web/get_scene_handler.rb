@@ -33,12 +33,11 @@ module AresMUSH
           log = Website.format_markdown_for_html(scene.scene_log.log)
         end
 
+
         participants = scene.participants.to_a
             .sort_by {|p| p.name }
             .map { |p| { name: p.name, id: p.id, icon: Website.icon_for_char(p), is_ooc: p.is_admin? || p.is_playerbit?  }}
 
-
-        Global.logger.debug "Can join: #{Scenes.can_join_scene?(enactor, scene)}"
 
         {
           id: scene.id,

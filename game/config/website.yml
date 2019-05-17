@@ -119,6 +119,10 @@ website:
     menu:
     - page: spells
       title: Spells
+    - page: portals
+      title: Portals
+    - page: creatures
+      title: Creatures
     - page: characters
       title: Characters
     - divider: true

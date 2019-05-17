@@ -100,6 +100,32 @@ blockquote {
   margin: 15px;
 }
 
+.portal-card-heading {
+  font-size: 20px;
+  font-weight: bold;
+  padding: 10px;
+  text-align: left;
+  background-color: #314254;
+  border-bottom: 4px solid #293038;
+  border-radius: 12px 12px 0px 0px;
+}
+
+.portal-card {
+  background: #404B56;
+  border: 2px solid #293038;
+  border-radius: 14px;
+  margin: 15px 0px 15px;
+  width: intrinsic;           /* Safari/WebKit uses a non-standard name */
+  width: -moz-max-content;    /* Firefox/Gecko */
+  width: -webkit-max-content; /* Chrome */
+}
+
+.portal-card-body {
+  padding: 15px;
+  line-height: 2;
+
+}
+
 .clear {
   clear: both;
 }
@@ -224,11 +250,10 @@ blockquote {
 }
 
 .infobox {
-   margin: 15px;
+   margin: 15px 15px 0px 5px;
    width: 350px;
-   float: left;
-   border-radius: 5px;
-   border: 2px solid;
+   border-radius: 10px;
+   border: 2px solid #293038;
 }
 
 .infobox-body {
@@ -240,6 +265,7 @@ blockquote {
 .infobox-heading {
     background-color: #314254;
     border-bottom: 4px solid #293038;
+    border-radius: 8px 8px 0px 0px;
 }
 
 .infobox-title-text {
