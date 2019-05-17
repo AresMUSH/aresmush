@@ -17,9 +17,9 @@ module AresMUSH
 
     set :gms, "AresMUSH::Character"
 
-    # def gm_names
-    #   self.gmd.sort { |gm| gm.name }.map { |gm| gm.name }
-    # end
+    def gm_names
+      self.gmd.sort { |gm| gm.name }.map { |gm| gm.name }
+    end
 
     def self.find_any_by_name(name_or_id)
       return [] if !name_or_id
