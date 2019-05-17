@@ -5,8 +5,6 @@ module AresMUSH
 
         enactor = request.enactor
 
-        Global.logger.debug "REquest: #{request.args.to_a} "
-
         error = Website.check_login(request)
         return error if error
 
@@ -20,7 +18,13 @@ module AresMUSH
 
 
 
+        major_school_name = request.args[:major_school]
+        major_school_id = Global.read_config("schools", request.args[:major_school], "id")
+        major_school = {:name => major_school_name, :id => major_school_id}
 
+        minor_school_name = request.args[:minor_school]
+        minor_school_id = Global.read_config("schools", request.args[:minor_school], "id")
+        minor_school = {:name => minor_school_name, :id => minor_school_id}
 
         sapient = (request.args[:sapient] || "").to_bool
 
@@ -35,24 +39,14 @@ module AresMUSH
           traits: request.args[:traits],
           society: request.args[:society],
           magical_abilities: request.args[:magical_abilities],
-          events: request.args[:events]
+          events: request.args[:events],
+          major_school: major_school,
+          minor_school: minor_school
         )
 
 
 
         Global.logger.debug "Creature #{creature.id} (#{creature.name})created by #{enactor.name}."
-
-
-        major_school_name = request.args[:major_school]
-        id = Global.read_config("schools", request.args[:major_school], "id")
-        major_school = {:name => major_school_name, :id => id}
-        creature.update(major_school: major_school)
-
-
-        minor_school_name = request.args[:minor_school]
-        id = Global.read_config("schools", request.args[:minor_school], "id")
-        minor_school = {:name => minor_school_name, :id => id}
-        creature.update(minor_school: minor_school)
 
 
         gm_names = request.args[:gms] || []

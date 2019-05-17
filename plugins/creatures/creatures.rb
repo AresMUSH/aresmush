@@ -23,12 +23,12 @@ module AresMUSH
       case request.cmd
       when "creature"
         return CreatureRequestHandler
+      when "creatures"
+        return CreaturesRequestHandler
       when "creatureEdit"
         return CreatureEditRequestHandler
       when "creatureCreate"
         return CreateCreatureRequestHandler
-      when "getSchools"
-        return GetSchoolsRequestHandler
       end
       nil
     end
