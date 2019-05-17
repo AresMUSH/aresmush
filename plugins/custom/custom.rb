@@ -18,6 +18,8 @@ module AresMUSH
         return SchoolsRequestHandler
       when "searchSpells"
         return SearchSpellsRequestHandler
+      when "getSchools"
+        return GetSchoolsRequestHandler
       end
       nil
     end
