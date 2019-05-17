@@ -58,6 +58,7 @@ module AresMUSH
           portal.update(description: request.args[:description])
           portal.update(trivia: request.args[:trivia])
           portal.update(events: request.args[:events])
+          portal.update(society: request.args[:society])
           {}
       end
     end

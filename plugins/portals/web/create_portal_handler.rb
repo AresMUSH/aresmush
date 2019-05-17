@@ -14,9 +14,11 @@ module AresMUSH
           return { error: t('dispatcher.not_allowed') }
         end
 
-        # if (request.args[:name].blank?)
-        #   return { error: t('webportal.missing_required_fields') }
-        # end
+        [ :name, :primary_school ].each do |field|
+          if (request.args[field].blank?)
+            return { error: t('webportal.missing_required_fields') }
+          end
+        end
 
 
 
@@ -53,11 +55,12 @@ module AresMUSH
           description: request.args[:description],
           events: request.args[:events],
           trivia: request.args[:trivia],
+          society: request.args[:society],
         )
 
 
 
-        Global.logger.debug "Portal #{portal.id} (#{portal.name})created by #{enactor.name}."
+        Global.logger.debug "Portal #{portal.id} (#{portal.name}) created by #{enactor.name}."
 
 
         gm_names = request.args[:gms] || []

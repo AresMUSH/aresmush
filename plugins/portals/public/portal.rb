@@ -14,6 +14,7 @@ module AresMUSH
     attribute :trivia
     attribute :events
     attribute :pinterest
+    attribute :society
 
     set :gms, "AresMUSH::Character"
 

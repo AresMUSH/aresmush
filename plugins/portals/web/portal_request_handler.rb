@@ -40,6 +40,8 @@ module AresMUSH
           trivia: Website.format_markdown_for_html(portal.trivia),
           edit_events:  Website.format_input_for_html(portal.events),
           events: Website.format_markdown_for_html(portal.events),
+          edit_society:  Website.format_input_for_html(portal.edit_society),
+          society: Website.format_markdown_for_html(portal.society),
           id: portal.id,
           pinterest: portal.pinterest
         }
