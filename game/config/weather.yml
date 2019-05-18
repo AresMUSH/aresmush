@@ -31,3 +31,5 @@ weather:
   weather_cron:
     minute:
     - 0
+    - 20
+    - 40
