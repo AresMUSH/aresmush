@@ -27,7 +27,7 @@ module AresMUSH
       condition = weather[:condition]
 
       # Use the weather name in the translation file - like weather.snow
-      weather_desc = Global.read_config("weather", "descriptions_#{climate}", "#{temperature}_#{condition}_#{time_of_day}")
+      weather_desc = Global.read_config("weather", "descriptions_#{climate}", "#{season}_#{temperature}_#{condition}_#{time_of_day}")
     end
   end
 end
