@@ -3,16 +3,16 @@ weather:
   # ---------- Type of Weather ------
   #  + clear
   #  + fair
-  #  - misty
-  #  - overcast
-  #  - drizzling
-  #  - raining
-  #  - storming
+  #  + misty
+  #  + overcast
+  #  + drizzling
+  #  + raining
+  #  + storming
   #  + flurrying
   #  + snowing
   #  + dusting
   #  + windy
-  #  + blizzard
+  #  - blizzard
   #  + sleeting
   #  - saltrain
   #  - algaebloom
@@ -23,24 +23,24 @@ weather:
   #  + morning
   #  + night
   # ------------ Temperatures --------
-  #  - hot
-  #  - cool
+  #  + hot
+  #  + cool
   #  + cold
   #  + bitter
-  #  - warm
+  #  + warm
   climates:
     temperate:
       winter:
-        temperature: cold cold cold cold cold cold cold cool cool cool bitter bitter bitter bitter bitter bitter bitter bitter bitter bitter
-        condition: clear clear fair fair misty overcast overcast flurrying flurrying flurrying snowing snowing snowing dusting dusting windy blizzard blizzard sleeting sleeting
+        temperature: cold cold cold cold cold cold cold cold bitter cool
+        condition: clear clear fair fair misty overcast overcast flurrying flurrying flurrying snowing snowing snowing snowing dusting dusting windy sleeting sleeting sleeting
         stability: 50
       spring:
-        temperature: cold cool cool
+        temperature: cool cool cool warm cold
         condition: clear clear clear clear clear fair fair fair fair misty misty misty overcast overcast windy windy windy dusting dusting snowing
         stability: 70
       summer:
-        temperature: warm cool cool cool cool
-        condition: clear fair windy overcast misty
+        temperature: warm warm warm warm hot hot hot hot cool cool
+        condition: clear clear clear fair fair fair windy overcast misty storming raining
         stability: 80
       fall:
         temperature: cool cool cool cool cold cold cold cold bitter warm
