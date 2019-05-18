@@ -7,10 +7,15 @@ fs3skills:
   max_xp_hoard: 5
   periodic_xp: 1
   skills_requiring_training:
-  - Demolitions
-  - Gunnery
-  - Medicine
-  - Piloting
+    - Counselling
+    - Doctoring
+    - Fighting
+    - Hoof Weapons
+    - Larceny
+    - Markspony
+    - Navigator
+    - Spellcasting
+    - Tinker
   xp_costs:
     language:
       '0': 1
