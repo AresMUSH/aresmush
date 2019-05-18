@@ -24,66 +24,80 @@ fs3skills:
       skills: {}
     Origin:
       alicorn:
-        Spellcasting: 3
-        Socializing: 3
-        Athletics: 3
+        skills:
+         Spellcasting: 3
+         Socializing: 3
+         Athletics: 3
       bat pony:
-        Stealth: 3
-        Athletics: 3
-        Larceny: 2
-        Disguise: 2
+        skills:
+         Stealth: 3
+         Athletics: 3
+         Larceny: 2
+         Disguise: 2
       breezie:
-        Socializing: 3
-        Spellcasting: 2
-        Artistry: 3
-        Performance: 2
+        skills:
+         Socializing: 3
+         Spellcasting: 2
+         Artistry: 3
+         Performance: 2
       crystal pony:
-        Composure: 3
-        Academics: 2
-        Tinker: 3
-        Counselling: 2
+        skills:
+         Composure: 3
+         Academics: 2
+         Tinker: 3
+         Counselling: 2
       deer:
-        Tinker: 4
-        Artistry: 3
-        Athletics: 2
+        skills:
+         Tinker: 4
+         Artistry: 3
+         Athletics: 2
       dragon:
-        Academics: 3
-        Observation: 3
-        Spellcasting: 3
+        skills:
+         Academics: 3
+         Observation: 3
+         Spellcasting: 3
       earth pony:
-        Tinker: 2
-        Cowpony: 2
-        Composure: 2
-        Athletics: 3
+        skills:
+         Tinker: 2
+         Cowpony: 2
+         Composure: 2
+         Athletics: 3
       griffon:
-        Athletics: 3
-        Composure: 3
-        Fighting: 3
+        skills:
+         Athletics: 3
+         Composure: 3
+         Fighting: 3
       hippogriff:
-        Athletics: 3
-        Composure: 3
-        Cowpony: 3
+        skills:
+         Athletics: 3
+         Composure: 3
+         Cowpony: 3
       kitsune:
-        Larceny: 3
-        Deception: 3
-        Socializing: 3
+        skills:
+         Larceny: 3
+         Deception: 3
+         Socializing: 3
       pegasus:
-        Athletics: 3
-        Cowpony: 3
-        Acrobatics: 3
+        skills:
+         Athletics: 3
+         Cowpony: 3
+         Acrobatics: 3
       seapony:
-        Spellcasting: 3
-        Socializing: 3
-        Performance: 3
+        skills:
+         Spellcasting: 3
+         Socializing: 3
+         Performance: 3
       unicorn:
-        Spellcasting: 3
-        Academics: 3
-        Composure: 3
+        skills:
+         Spellcasting: 3
+         Academics: 3
+         Composure: 3
       zebra:
-        Academics: 3
-        Cowpony: 3
-        Observation: 2
-        Investigation: 2
+        skills:
+         Academics: 3
+         Cowpony: 3
+         Observation: 2
+         Investigation: 2
   unusual_skills:
     - Counselling
     - Doctoring
