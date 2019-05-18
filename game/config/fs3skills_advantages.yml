@@ -11,7 +11,7 @@ fs3skills:
     for?:
       - Alicorn
       - Unicorn
-  - name: "Arcane Talent, Improved"
+  - name: "Arcane Talent II"
     tier: 2
     pre: "Arcane Talent"
     desc: Gain a moderate bonus (+2) to checks using magic or spells.
@@ -20,7 +20,7 @@ fs3skills:
   - name: Artifice
     desc: Gain a slight bonus (+1) to checks creating single use magical items or potions.
     tier: 1
-  - name: "Artifice, Improved"
+  - name: "Artifice II"
     desc: Gain a moderate bonus (+2) to checks creating single use magical items or potions.
     tier: 2
     pre: "Artifice"
@@ -31,10 +31,10 @@ fs3skills:
       - Zebra
       - Crystal Pony
       - Dragon
-  - name: "Artifice, Greater"
+  - name: "Artifice III"
     desc: Gain a significant bonus (+3) to checks creating single use magical items or potions.
     tier: 3
-    pre: "Artifice, Improved"
+    pre: "Artifice II"
     for?:
       - Unicorn
       - Zebra
@@ -44,11 +44,11 @@ fs3skills:
   - name: Blaster Caster
     desc: "When casting a spell roll 1d4 and lower the mana cost by that amount. If the number would lower to a negative number, you gain that much mana."
     tier: 1
-  - name: "Blaster Caster, Improved"
+  - name: "Blaster Caster II"
     desc: "When casting a spell roll 1d6 and lower the mana cost by that amount. If the number would lower to a negative number, you gain that much mana."
     tier: 2
     pre: "Blaster Caster"
-  - name: "Blaster Caster, Greater"
+  - name: "Blaster Caster III"
     desc: "When casting a spell roll 2d6 and lower the mana cost by that amount. If the number would lower to a negative number, you gain that much mana."
     tier: 3
-    pre: "Blaster Caster, Improved"
+    pre: "Blaster Caster II"
