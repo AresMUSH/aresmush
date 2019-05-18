@@ -57,402 +57,402 @@ weather:
        fall_bitter_dusting_morning : "The ground has a light dusting of snow, as the sun's morning light dances on the mountain's peeks on this bitterly cold morning."
        fall_bitter_dusting_night : "The pale moonlight reflects stoically on the mountain's light dusting of snow on this bitter fall evening."
 
-       fall_bitter_fair_day : fall_bitter_fair_day_desc
-       fall_bitter_fair_evening : fall_bitter_fair_evening_desc
-       fall_bitter_fair_morning : fall_bitter_fair_morning_desc
-       fall_bitter_fair_night : fall_bitter_fair_night_desc
-
-       fall_bitter_flurrying_day : fall_bitter_flurrying_day_desc
-       fall_bitter_flurrying_evening : fall_bitter_flurrying_evening_desc
-       fall_bitter_flurrying_morning : fall_bitter_flurrying_morning_desc
-       fall_bitter_flurrying_night : fall_bitter_flurrying_night_desc
-
-       fall_bitter_misty_day : fall_bitter_misty_day_desc
-       fall_bitter_misty_evening : fall_bitter_misty_evening_desc
-       fall_bitter_misty_morning : fall_bitter_misty_morning_desc
-       fall_bitter_misty_night : fall_bitter_misty_night_desc
-
-       fall_bitter_overcast_day : fall_bitter_overcast_day_desc
-       fall_bitter_overcast_evening : fall_bitter_overcast_evening_desc
-       fall_bitter_overcast_morning : fall_bitter_overcast_morning_desc
-       fall_bitter_overcast_night : fall_bitter_overcast_night_desc
-
-       fall_bitter_snowing_day : fall_bitter_snowing_day_desc
-       fall_bitter_snowing_evening : fall_bitter_snowing_evening_desc
-       fall_bitter_snowing_morning : fall_bitter_snowing_morning_desc
-       fall_bitter_snowing_night : fall_bitter_snowing_night_desc
-
-       fall_cold_clear_day : fall_cold_clear_day_desc
-       fall_cold_clear_evening : fall_cold_clear_evening_desc
-       fall_cold_clear_morning : fall_cold_clear_morning_desc
-       fall_cold_clear_night : fall_cold_clear_night_desc
-
-       fall_cold_dusting_day : fall_cold_dusting_day_desc
-       fall_cold_dusting_evening : fall_cold_dusting_evening_desc
-       fall_cold_dusting_morning : fall_cold_dusting_morning_desc
-       fall_cold_dusting_night : fall_cold_dusting_night_desc
-
-       fall_cold_fair_day : fall_cold_fair_day_desc
-       fall_cold_fair_evening : fall_cold_fair_evening_desc
-       fall_cold_fair_morning : fall_cold_fair_morning_desc
-       fall_cold_fair_night : fall_cold_fair_night_desc
-
-       fall_cold_flurrying_day : fall_cold_flurrying_day_desc
-       fall_cold_flurrying_evening : fall_cold_flurrying_evening_desc
-       fall_cold_flurrying_morning : fall_cold_flurrying_morning_desc
-       fall_cold_flurrying_night : fall_cold_flurrying_night_desc
-
-       fall_cold_misty_day : fall_cold_misty_day_desc
-       fall_cold_misty_evening : fall_cold_misty_evening_desc
-       fall_cold_misty_morning : fall_cold_misty_morning_desc
-       fall_cold_misty_night : fall_cold_misty_night_desc
-
-       fall_cold_overcast_day : fall_cold_overcast_day_desc
-       fall_cold_overcast_evening : fall_cold_overcast_evening_desc
-       fall_cold_overcast_morning : fall_cold_overcast_morning_desc
-       fall_cold_overcast_night : fall_cold_overcast_night_desc
-
-       fall_cold_snowing_day : fall_cold_snowing_day_desc
-       fall_cold_snowing_evening : fall_cold_snowing_evening_desc
-       fall_cold_snowing_morning : fall_cold_snowing_morning_desc
-       fall_cold_snowing_night : fall_cold_snowing_night_desc
-
-       fall_cool_clear_day : fall_cool_clear_day_desc
-       fall_cool_clear_evening : fall_cool_clear_evening_desc
-       fall_cool_clear_morning : fall_cool_clear_morning_desc
-       fall_cool_clear_night : fall_cool_clear_night_desc
-
-       fall_cool_dusting_day : fall_cool_dusting_day_desc
-       fall_cool_dusting_evening : fall_cool_dusting_evening_desc
-       fall_cool_dusting_morning : fall_cool_dusting_morning_desc
-       fall_cool_dusting_night : fall_cool_dusting_night_desc
-
-       fall_cool_fair_day : fall_cool_fair_day_desc
-       fall_cool_fair_evening : fall_cool_fair_evening_desc
-       fall_cool_fair_morning : fall_cool_fair_morning_desc
-       fall_cool_fair_night : fall_cool_fair_night_desc
-
-       fall_cool_flurrying_day : fall_cool_flurrying_day_desc
-       fall_cool_flurrying_evening : fall_cool_flurrying_evening_desc
-       fall_cool_flurrying_morning : fall_cool_flurrying_morning_desc
-       fall_cool_flurrying_night : fall_cool_flurrying_night_desc
-
-       fall_cool_misty_day : fall_cool_misty_day_desc
-       fall_cool_misty_evening : fall_cool_misty_evening_desc
-       fall_cool_misty_morning : fall_cool_misty_morning_desc
-       fall_cool_misty_night : fall_cool_misty_night_desc
-
-       fall_cool_overcast_day : fall_cool_overcast_day_desc
-       fall_cool_overcast_evening : fall_cool_overcast_evening_desc
-       fall_cool_overcast_morning : fall_cool_overcast_morning_desc
-       fall_cool_overcast_night : fall_cool_overcast_night_desc
-
-       fall_cool_snowing_day : fall_cool_snowing_day_desc
-       fall_cool_snowing_evening : fall_cool_snowing_evening_desc
-       fall_cool_snowing_morning : fall_cool_snowing_morning_desc
-       fall_cool_snowing_night : fall_cool_snowing_night_desc
-
-       fall_warm_clear_day : fall_warm_clear_day_desc
-       fall_warm_clear_evening : fall_warm_clear_evening_desc
-       fall_warm_clear_morning : fall_warm_clear_morning_desc
-       fall_warm_clear_night : fall_warm_clear_night_desc
-
-       fall_warm_dusting_day : fall_warm_dusting_day_desc
-       fall_warm_dusting_evening : fall_warm_dusting_evening_desc
-       fall_warm_dusting_morning : fall_warm_dusting_morning_desc
-       fall_warm_dusting_night : fall_warm_dusting_night_desc
-
-       fall_warm_fair_day : fall_warm_fair_day_desc
-       fall_warm_fair_evening : fall_warm_fair_evening_desc
-       fall_warm_fair_morning : fall_warm_fair_morning_desc
-       fall_warm_fair_night : fall_warm_fair_night_desc
-
-       fall_warm_flurrying_day : fall_warm_flurrying_day_desc
-       fall_warm_flurrying_evening : fall_warm_flurrying_evening_desc
-       fall_warm_flurrying_morning : fall_warm_flurrying_morning_desc
-       fall_warm_flurrying_night : fall_warm_flurrying_night_desc
-
-       fall_warm_misty_day : fall_warm_misty_day_desc
-       fall_warm_misty_evening : fall_warm_misty_evening_desc
-       fall_warm_misty_morning : fall_warm_misty_morning_desc
-       fall_warm_misty_night : fall_warm_misty_night_desc
-
-       fall_warm_overcast_day : fall_warm_overcast_day_desc
-       fall_warm_overcast_evening : fall_warm_overcast_evening_desc
-       fall_warm_overcast_morning : fall_warm_overcast_morning_desc
-       fall_warm_overcast_night : fall_warm_overcast_night_desc
-
-       fall_warm_snowing_day : fall_warm_snowing_day_desc
-       fall_warm_snowing_evening : fall_warm_snowing_evening_desc
-       fall_warm_snowing_morning : fall_warm_snowing_morning_desc
-       fall_warm_snowing_night : fall_warm_snowing_night_desc
-
-       summer_cool_clear_day : summer_cool_clear_day_desc
-       summer_cool_clear_evening : summer_cool_clear_evening_desc
-       summer_cool_clear_morning : summer_cool_clear_morning_desc
-       summer_cool_clear_night : summer_cool_clear_night_desc
-
-       summer_cool_fair_day : summer_cool_fair_day_desc
-       summer_cool_fair_evening : summer_cool_fair_evening_desc
-       summer_cool_fair_morning : summer_cool_fair_morning_desc
-       summer_cool_fair_night : summer_cool_fair_night_desc
-
-       summer_cool_misty_day : summer_cool_misty_day_desc
-       summer_cool_misty_evening : summer_cool_misty_evening_desc
-       summer_cool_misty_morning : summer_cool_misty_morning_desc
-       summer_cool_misty_night : summer_cool_misty_night_desc
-
-       summer_cool_overcast_day : summer_cool_overcast_day_desc
-       summer_cool_overcast_evening : summer_cool_overcast_evening_desc
-       summer_cool_overcast_morning : summer_cool_overcast_morning_desc
-       summer_cool_overcast_night : summer_cool_overcast_night_desc
-
-       summer_cool_windy_day : summer_cool_windy_day_desc
-       summer_cool_windy_evening : summer_cool_windy_evening_desc
-       summer_cool_windy_morning : summer_cool_windy_morning_desc
-       summer_cool_windy_night : summer_cool_windy_night_desc
-
-       summer_warm_clear_day : summer_warm_clear_day_desc
-       summer_warm_clear_evening : summer_warm_clear_evening_desc
-       summer_warm_clear_morning : summer_warm_clear_morning_desc
-       summer_warm_clear_night : summer_warm_clear_night_desc
-
-       summer_warm_fair_day : summer_warm_fair_day_desc
-       summer_warm_fair_evening : summer_warm_fair_evening_desc
-       summer_warm_fair_morning : summer_warm_fair_morning_desc
-       summer_warm_fair_night : summer_warm_fair_night_desc
-
-       summer_warm_misty_day : summer_warm_misty_day_desc
-       summer_warm_misty_evening : summer_warm_misty_evening_desc
-       summer_warm_misty_morning : summer_warm_misty_morning_desc
-       summer_warm_misty_night : summer_warm_misty_night_desc
-
-       summer_warm_overcast_day : summer_warm_overcast_day_desc
-       summer_warm_overcast_evening : summer_warm_overcast_evening_desc
-       summer_warm_overcast_morning : summer_warm_overcast_morning_desc
-       summer_warm_overcast_night : summer_warm_overcast_night_desc
-
-       summer_warm_windy_day : summer_warm_windy_day_desc
-       summer_warm_windy_evening : summer_warm_windy_evening_desc
-       summer_warm_windy_morning : summer_warm_windy_morning_desc
-       summer_warm_windy_night : summer_warm_windy_night_desc
-
-       spring_cold_clear_day : spring_cold_clear_day_desc
-       spring_cold_clear_evening : spring_cold_clear_evening_desc
-       spring_cold_clear_morning : spring_cold_clear_morning_desc
-       spring_cold_clear_night : spring_cold_clear_night_desc
-
-       spring_cold_dusting_day : spring_cold_dusting_day_desc
-       spring_cold_dusting_evening : spring_cold_dusting_evening_desc
-       spring_cold_dusting_morning : spring_cold_dusting_morning_desc
-       spring_cold_dusting_night : spring_cold_dusting_night_desc
-
-       spring_cold_fair_day : spring_cold_fair_day_desc
-       spring_cold_fair_evening : spring_cold_fair_evening_desc
-       spring_cold_fair_morning : spring_cold_fair_morning_desc
-       spring_cold_fair_night : spring_cold_fair_night_desc
-
-       spring_cold_misty_day : spring_cold_misty_day_desc
-       spring_cold_misty_evening : spring_cold_misty_evening_desc
-       spring_cold_misty_morning : spring_cold_misty_morning_desc
-       spring_cold_misty_night : spring_cold_misty_night_desc
-
-       spring_cold_overcast_day : spring_cold_overcast_day_desc
-       spring_cold_overcast_evening : spring_cold_overcast_evening_desc
-       spring_cold_overcast_morning : spring_cold_overcast_morning_desc
-       spring_cold_overcast_night : spring_cold_overcast_night_desc
-
-       spring_cold_snowing_day : spring_cold_snowing_day_desc
-       spring_cold_snowing_evening : spring_cold_snowing_evening_desc
-       spring_cold_snowing_morning : spring_cold_snowing_morning_desc
-       spring_cold_snowing_night : spring_cold_snowing_night_desc
-
-       spring_cold_windy_day : spring_cold_windy_day_desc
-       spring_cold_windy_evening : spring_cold_windy_evening_desc
-       spring_cold_windy_morning : spring_cold_windy_morning_desc
-       spring_cold_windy_night : spring_cold_windy_night_desc
-
-       spring_cool_clear_day : spring_cool_clear_day_desc
-       spring_cool_clear_evening : spring_cool_clear_evening_desc
-       spring_cool_clear_morning : spring_cool_clear_morning_desc
-       spring_cool_clear_night : spring_cool_clear_night_desc
-
-       spring_cool_dusting_day : spring_cool_dusting_day_desc
-       spring_cool_dusting_evening : spring_cool_dusting_evening_desc
-       spring_cool_dusting_morning : spring_cool_dusting_morning_desc
-       spring_cool_dusting_night : spring_cool_dusting_night_desc
-
-       spring_cool_fair_day : spring_cool_fair_day_desc
-       spring_cool_fair_evening : spring_cool_fair_evening_desc
-       spring_cool_fair_morning : spring_cool_fair_morning_desc
-       spring_cool_fair_night : spring_cool_fair_night_desc
-
-       spring_cool_misty_day : spring_cool_misty_day_desc
-       spring_cool_misty_evening : spring_cool_misty_evening_desc
-       spring_cool_misty_morning : spring_cool_misty_morning_desc
-       spring_cool_misty_night : spring_cool_misty_night_desc
-
-       spring_cool_overcast_day : spring_cool_overcast_day_desc
-       spring_cool_overcast_evening : spring_cool_overcast_evening_desc
-       spring_cool_overcast_morning : spring_cool_overcast_morning_desc
-       spring_cool_overcast_night : spring_cool_overcast_night_desc
-
-       spring_cool_snowing_day : spring_cool_snowing_day_desc
-       spring_cool_snowing_evening : spring_cool_snowing_evening_desc
-       spring_cool_snowing_morning : spring_cool_snowing_morning_desc
-       spring_cool_snowing_night : spring_cool_snowing_night_desc
-
-       spring_cool_windy_day : spring_cool_windy_day_desc
-       spring_cool_windy_evening : spring_cool_windy_evening_desc
-       spring_cool_windy_morning : spring_cool_windy_morning_desc
-       spring_cool_windy_night : spring_cool_windy_night_desc
-
-       winter_bitter_blizzard_day : winter_bitter_blizzard_day_desc
-       winter_bitter_blizzard_evening : winter_bitter_blizzard_evening_desc
-       winter_bitter_blizzard_morning : winter_bitter_blizzard_morning_desc
-       winter_bitter_blizzard_night : winter_bitter_blizzard_night_desc
-
-       winter_bitter_clear_day : winter_bitter_clear_day_desc
-       winter_bitter_clear_evening : winter_bitter_clear_evening_desc
-       winter_bitter_clear_morning : winter_bitter_clear_morning_desc
-       winter_bitter_clear_night : winter_bitter_clear_night_desc
-
-       winter_bitter_dusting_day : winter_bitter_dusting_day_desc
-       winter_bitter_dusting_evening : winter_bitter_dusting_evening_desc
-       winter_bitter_dusting_morning : winter_bitter_dusting_morning_desc
-       winter_bitter_dusting_night : winter_bitter_dusting_night_desc
-
-       winter_bitter_fair_day : winter_bitter_fair_day_desc
-       winter_bitter_fair_evening : winter_bitter_fair_evening_desc
-       winter_bitter_fair_morning : winter_bitter_fair_morning_desc
-       winter_bitter_fair_night : winter_bitter_fair_night_desc
-
-       winter_bitter_flurrying_day : winter_bitter_flurrying_day_desc
-       winter_bitter_flurrying_evening : winter_bitter_flurrying_evening_desc
-       winter_bitter_flurrying_morning : winter_bitter_flurrying_morning_desc
-       winter_bitter_flurrying_night : winter_bitter_flurrying_night_desc
-
-       winter_bitter_misty_day : winter_bitter_misty_day_desc
-       winter_bitter_misty_evening : winter_bitter_misty_evening_desc
-       winter_bitter_misty_morning : winter_bitter_misty_morning_desc
-       winter_bitter_misty_night : winter_bitter_misty_night_desc
-
-       winter_bitter_overcast_day : winter_bitter_overcast_day_desc
-       winter_bitter_overcast_evening : winter_bitter_overcast_evening_desc
-       winter_bitter_overcast_morning : winter_bitter_overcast_morning_desc
-       winter_bitter_overcast_night : winter_bitter_overcast_night_desc
-
-       winter_bitter_sleeting_day : winter_bitter_sleeting_day_desc
-       winter_bitter_sleeting_evening : winter_bitter_sleeting_evening_desc
-       winter_bitter_sleeting_morning : winter_bitter_sleeting_morning_desc
-       winter_bitter_sleeting_night : winter_bitter_sleeting_night_desc
-
-       winter_bitter_snowing_day : winter_bitter_snowing_day_desc
-       winter_bitter_snowing_evening : winter_bitter_snowing_evening_desc
-       winter_bitter_snowing_morning : winter_bitter_snowing_morning_desc
-       winter_bitter_snowing_night : winter_bitter_snowing_night_desc
-
-       winter_bitter_windy_day : winter_bitter_windy_day_desc
-       winter_bitter_windy_evening : winter_bitter_windy_evening_desc
-       winter_bitter_windy_morning : winter_bitter_windy_morning_desc
-       winter_bitter_windy_night : winter_bitter_windy_night_desc
-
-       winter_cold_blizzard_day : winter_cold_blizzard_day_desc
-       winter_cold_blizzard_evening : winter_cold_blizzard_evening_desc
-       winter_cold_blizzard_morning : winter_cold_blizzard_morning_desc
-       winter_cold_blizzard_night : winter_cold_blizzard_night_desc
-
-       winter_cold_clear_day : winter_cold_clear_day_desc
-       winter_cold_clear_evening : winter_cold_clear_evening_desc
-       winter_cold_clear_morning : winter_cold_clear_morning_desc
-       winter_cold_clear_night : winter_cold_clear_night_desc
-
-       winter_cold_dusting_day : winter_cold_dusting_day_desc
-       winter_cold_dusting_evening : winter_cold_dusting_evening_desc
-       winter_cold_dusting_morning : winter_cold_dusting_morning_desc
-       winter_cold_dusting_night : winter_cold_dusting_night_desc
-
-       winter_cold_fair_day : winter_cold_fair_day_desc
-       winter_cold_fair_evening : winter_cold_fair_evening_desc
-       winter_cold_fair_morning : winter_cold_fair_morning_desc
-       winter_cold_fair_night : winter_cold_fair_night_desc
-
-       winter_cold_flurrying_day : winter_cold_flurrying_day_desc
-       winter_cold_flurrying_evening : winter_cold_flurrying_evening_desc
-       winter_cold_flurrying_morning : winter_cold_flurrying_morning_desc
-       winter_cold_flurrying_night : winter_cold_flurrying_night_desc
-
-       winter_cold_misty_day : winter_cold_misty_day_desc
-       winter_cold_misty_evening : winter_cold_misty_evening_desc
-       winter_cold_misty_morning : winter_cold_misty_morning_desc
-       winter_cold_misty_night : winter_cold_misty_night_desc
-
-       winter_cold_overcast_day : winter_cold_overcast_day_desc
-       winter_cold_overcast_evening : winter_cold_overcast_evening_desc
-       winter_cold_overcast_morning : winter_cold_overcast_morning_desc
-       winter_cold_overcast_night : winter_cold_overcast_night_desc
-
-       winter_cold_sleeting_day : winter_cold_sleeting_day_desc
-       winter_cold_sleeting_evening : winter_cold_sleeting_evening_desc
-       winter_cold_sleeting_morning : winter_cold_sleeting_morning_desc
-       winter_cold_sleeting_night : winter_cold_sleeting_night_desc
-
-       winter_cold_snowing_day : winter_cold_snowing_day_desc
-       winter_cold_snowing_evening : winter_cold_snowing_evening_desc
-       winter_cold_snowing_morning : winter_cold_snowing_morning_desc
-       winter_cold_snowing_night : winter_cold_snowing_night_desc
-
-       winter_cold_windy_day : winter_cold_windy_day_desc
-       winter_cold_windy_evening : winter_cold_windy_evening_desc
-       winter_cold_windy_morning : winter_cold_windy_morning_desc
-       winter_cold_windy_night : winter_cold_windy_night_desc
-
-       winter_cool_blizzard_day : winter_cool_blizzard_day_desc
-       winter_cool_blizzard_evening : winter_cool_blizzard_evening_desc
-       winter_cool_blizzard_morning : winter_cool_blizzard_morning_desc
-       winter_cool_blizzard_night : winter_cool_blizzard_night_desc
-
-       winter_cool_clear_day : winter_cool_clear_day_desc
-       winter_cool_clear_evening : winter_cool_clear_evening_desc
-       winter_cool_clear_morning : winter_cool_clear_morning_desc
-       winter_cool_clear_night : winter_cool_clear_night_desc
-
-       winter_cool_dusting_day : winter_cool_dusting_day_desc
-       winter_cool_dusting_evening : winter_cool_dusting_evening_desc
-       winter_cool_dusting_morning : winter_cool_dusting_morning_desc
-       winter_cool_dusting_night : winter_cool_dusting_night_desc
-
-       winter_cool_fair_day : winter_cool_fair_day_desc
-       winter_cool_fair_evening : winter_cool_fair_evening_desc
-       winter_cool_fair_morning : winter_cool_fair_morning_desc
-       winter_cool_fair_night : winter_cool_fair_night_desc
-
-       winter_cool_flurrying_day : winter_cool_flurrying_day_desc
-       winter_cool_flurrying_evening : winter_cool_flurrying_evening_desc
-       winter_cool_flurrying_morning : winter_cool_flurrying_morning_desc
-       winter_cool_flurrying_night : winter_cool_flurrying_night_desc
-
-       winter_cool_misty_day : winter_cool_misty_day_desc
-       winter_cool_misty_evening : winter_cool_misty_evening_desc
-       winter_cool_misty_morning : winter_cool_misty_morning_desc
-       winter_cool_misty_night : winter_cool_misty_night_desc
-
-       winter_cool_overcast_day : winter_cool_overcast_day_desc
-       winter_cool_overcast_evening : winter_cool_overcast_evening_desc
-       winter_cool_overcast_morning : winter_cool_overcast_morning_desc
-       winter_cool_overcast_night : winter_cool_overcast_night_desc
-
-       winter_cool_sleeting_day : winter_cool_sleeting_day_desc
-       winter_cool_sleeting_evening : winter_cool_sleeting_evening_desc
-       winter_cool_sleeting_morning : winter_cool_sleeting_morning_desc
-       winter_cool_sleeting_night : winter_cool_sleeting_night_desc
-
-       winter_cool_snowing_day : winter_cool_snowing_day_desc
-       winter_cool_snowing_evening : winter_cool_snowing_evening_desc
-       winter_cool_snowing_morning : winter_cool_snowing_morning_desc
-       winter_cool_snowing_night : winter_cool_snowing_night_desc
-
-       winter_cool_windy_day : winter_cool_windy_day_desc
-       winter_cool_windy_evening : winter_cool_windy_evening_desc
-       winter_cool_windy_morning : winter_cool_windy_morning_desc
-       winter_cool_windy_night : winter_cool_windy_night_desc
+       fall_bitter_fair_day : fall_bitter_fair_day_desc_mountain
+       fall_bitter_fair_evening : fall_bitter_fair_evening_desc_mountain
+       fall_bitter_fair_morning : fall_bitter_fair_morning_desc_mountain
+       fall_bitter_fair_night : fall_bitter_fair_night_desc_mountain
+
+       fall_bitter_flurrying_day : fall_bitter_flurrying_day_desc_mountain
+       fall_bitter_flurrying_evening : fall_bitter_flurrying_evening_desc_mountain
+       fall_bitter_flurrying_morning : fall_bitter_flurrying_morning_desc_mountain
+       fall_bitter_flurrying_night : fall_bitter_flurrying_night_desc_mountain
+
+       fall_bitter_misty_day : fall_bitter_misty_day_desc_mountain
+       fall_bitter_misty_evening : fall_bitter_misty_evening_desc_mountain
+       fall_bitter_misty_morning : fall_bitter_misty_morning_desc_mountain
+       fall_bitter_misty_night : fall_bitter_misty_night_desc_mountain
+
+       fall_bitter_overcast_day : fall_bitter_overcast_day_desc_mountain
+       fall_bitter_overcast_evening : fall_bitter_overcast_evening_desc_mountain
+       fall_bitter_overcast_morning : fall_bitter_overcast_morning_desc_mountain
+       fall_bitter_overcast_night : fall_bitter_overcast_night_desc_mountain
+
+       fall_bitter_snowing_day : fall_bitter_snowing_day_desc_mountain
+       fall_bitter_snowing_evening : fall_bitter_snowing_evening_desc_mountain
+       fall_bitter_snowing_morning : fall_bitter_snowing_morning_desc_mountain
+       fall_bitter_snowing_night : fall_bitter_snowing_night_desc_mountain
+
+       fall_cold_clear_day : fall_cold_clear_day_desc_mountain
+       fall_cold_clear_evening : fall_cold_clear_evening_desc_mountain
+       fall_cold_clear_morning : fall_cold_clear_morning_desc_mountain
+       fall_cold_clear_night : fall_cold_clear_night_desc_mountain
+
+       fall_cold_dusting_day : fall_cold_dusting_day_desc_mountain
+       fall_cold_dusting_evening : fall_cold_dusting_evening_desc_mountain
+       fall_cold_dusting_morning : fall_cold_dusting_morning_desc_mountain
+       fall_cold_dusting_night : fall_cold_dusting_night_desc_mountain
+
+       fall_cold_fair_day : fall_cold_fair_day_desc_mountain
+       fall_cold_fair_evening : fall_cold_fair_evening_desc_mountain
+       fall_cold_fair_morning : fall_cold_fair_morning_desc_mountain
+       fall_cold_fair_night : fall_cold_fair_night_desc_mountain
+
+       fall_cold_flurrying_day : fall_cold_flurrying_day_desc_mountain
+       fall_cold_flurrying_evening : fall_cold_flurrying_evening_desc_mountain
+       fall_cold_flurrying_morning : fall_cold_flurrying_morning_desc_mountain
+       fall_cold_flurrying_night : fall_cold_flurrying_night_desc_mountain
+
+       fall_cold_misty_day : fall_cold_misty_day_desc_mountain
+       fall_cold_misty_evening : fall_cold_misty_evening_desc_mountain
+       fall_cold_misty_morning : fall_cold_misty_morning_desc_mountain
+       fall_cold_misty_night : fall_cold_misty_night_desc_mountain
+
+       fall_cold_overcast_day : fall_cold_overcast_day_desc_mountain
+       fall_cold_overcast_evening : fall_cold_overcast_evening_desc_mountain
+       fall_cold_overcast_morning : fall_cold_overcast_morning_desc_mountain
+       fall_cold_overcast_night : fall_cold_overcast_night_desc_mountain
+
+       fall_cold_snowing_day : fall_cold_snowing_day_desc_mountain
+       fall_cold_snowing_evening : fall_cold_snowing_evening_desc_mountain
+       fall_cold_snowing_morning : fall_cold_snowing_morning_desc_mountain
+       fall_cold_snowing_night : fall_cold_snowing_night_desc_mountain
+
+       fall_cool_clear_day : fall_cool_clear_day_desc_mountain
+       fall_cool_clear_evening : fall_cool_clear_evening_desc_mountain
+       fall_cool_clear_morning : fall_cool_clear_morning_desc_mountain
+       fall_cool_clear_night : fall_cool_clear_night_desc_mountain
+
+       fall_cool_dusting_day : fall_cool_dusting_day_desc_mountain
+       fall_cool_dusting_evening : fall_cool_dusting_evening_desc_mountain
+       fall_cool_dusting_morning : fall_cool_dusting_morning_desc_mountain
+       fall_cool_dusting_night : fall_cool_dusting_night_desc_mountain
+
+       fall_cool_fair_day : fall_cool_fair_day_desc_mountain
+       fall_cool_fair_evening : fall_cool_fair_evening_desc_mountain
+       fall_cool_fair_morning : fall_cool_fair_morning_desc_mountain
+       fall_cool_fair_night : fall_cool_fair_night_desc_mountain
+
+       fall_cool_flurrying_day : fall_cool_flurrying_day_desc_mountain
+       fall_cool_flurrying_evening : fall_cool_flurrying_evening_desc_mountain
+       fall_cool_flurrying_morning : fall_cool_flurrying_morning_desc_mountain
+       fall_cool_flurrying_night : fall_cool_flurrying_night_desc_mountain
+
+       fall_cool_misty_day : fall_cool_misty_day_desc_mountain
+       fall_cool_misty_evening : fall_cool_misty_evening_desc_mountain
+       fall_cool_misty_morning : fall_cool_misty_morning_desc_mountain
+       fall_cool_misty_night : fall_cool_misty_night_desc_mountain
+
+       fall_cool_overcast_day : fall_cool_overcast_day_desc_mountain
+       fall_cool_overcast_evening : fall_cool_overcast_evening_desc_mountain
+       fall_cool_overcast_morning : fall_cool_overcast_morning_desc_mountain
+       fall_cool_overcast_night : fall_cool_overcast_night_desc_mountain
+
+       fall_cool_snowing_day : fall_cool_snowing_day_desc_mountain
+       fall_cool_snowing_evening : fall_cool_snowing_evening_desc_mountain
+       fall_cool_snowing_morning : fall_cool_snowing_morning_desc_mountain
+       fall_cool_snowing_night : fall_cool_snowing_night_desc_mountain
+
+       fall_warm_clear_day : fall_warm_clear_day_desc_mountain
+       fall_warm_clear_evening : fall_warm_clear_evening_desc_mountain
+       fall_warm_clear_morning : fall_warm_clear_morning_desc_mountain
+       fall_warm_clear_night : fall_warm_clear_night_desc_mountain
+
+       fall_warm_dusting_day : fall_warm_dusting_day_desc_mountain
+       fall_warm_dusting_evening : fall_warm_dusting_evening_desc_mountain
+       fall_warm_dusting_morning : fall_warm_dusting_morning_desc_mountain
+       fall_warm_dusting_night : fall_warm_dusting_night_desc_mountain
+
+       fall_warm_fair_day : fall_warm_fair_day_desc_mountain
+       fall_warm_fair_evening : fall_warm_fair_evening_desc_mountain
+       fall_warm_fair_morning : fall_warm_fair_morning_desc_mountain
+       fall_warm_fair_night : fall_warm_fair_night_desc_mountain
+
+       fall_warm_flurrying_day : fall_warm_flurrying_day_desc_mountain
+       fall_warm_flurrying_evening : fall_warm_flurrying_evening_desc_mountain
+       fall_warm_flurrying_morning : fall_warm_flurrying_morning_desc_mountain
+       fall_warm_flurrying_night : fall_warm_flurrying_night_desc_mountain
+
+       fall_warm_misty_day : fall_warm_misty_day_desc_mountain
+       fall_warm_misty_evening : fall_warm_misty_evening_desc_mountain
+       fall_warm_misty_morning : fall_warm_misty_morning_desc_mountain
+       fall_warm_misty_night : fall_warm_misty_night_desc_mountain
+
+       fall_warm_overcast_day : fall_warm_overcast_day_desc_mountain
+       fall_warm_overcast_evening : fall_warm_overcast_evening_desc_mountain
+       fall_warm_overcast_morning : fall_warm_overcast_morning_desc_mountain
+       fall_warm_overcast_night : fall_warm_overcast_night_desc_mountain
+
+       fall_warm_snowing_day : fall_warm_snowing_day_desc_mountain
+       fall_warm_snowing_evening : fall_warm_snowing_evening_desc_mountain
+       fall_warm_snowing_morning : fall_warm_snowing_morning_desc_mountain
+       fall_warm_snowing_night : fall_warm_snowing_night_desc_mountain
+
+       summer_cool_clear_day : summer_cool_clear_day_desc_mountain
+       summer_cool_clear_evening : summer_cool_clear_evening_desc_mountain
+       summer_cool_clear_morning : summer_cool_clear_morning_desc_mountain
+       summer_cool_clear_night : summer_cool_clear_night_desc_mountain
+
+       summer_cool_fair_day : summer_cool_fair_day_desc_mountain
+       summer_cool_fair_evening : summer_cool_fair_evening_desc_mountain
+       summer_cool_fair_morning : summer_cool_fair_morning_desc_mountain
+       summer_cool_fair_night : summer_cool_fair_night_desc_mountain
+
+       summer_cool_misty_day : summer_cool_misty_day_desc_mountain
+       summer_cool_misty_evening : summer_cool_misty_evening_desc_mountain
+       summer_cool_misty_morning : summer_cool_misty_morning_desc_mountain
+       summer_cool_misty_night : summer_cool_misty_night_desc_mountain
+
+       summer_cool_overcast_day : summer_cool_overcast_day_desc_mountain
+       summer_cool_overcast_evening : summer_cool_overcast_evening_desc_mountain
+       summer_cool_overcast_morning : summer_cool_overcast_morning_desc_mountain
+       summer_cool_overcast_night : summer_cool_overcast_night_desc_mountain
+
+       summer_cool_windy_day : summer_cool_windy_day_desc_mountain
+       summer_cool_windy_evening : summer_cool_windy_evening_desc_mountain
+       summer_cool_windy_morning : summer_cool_windy_morning_desc_mountain
+       summer_cool_windy_night : summer_cool_windy_night_desc_mountain
+
+       summer_warm_clear_day : summer_warm_clear_day_desc_mountain
+       summer_warm_clear_evening : summer_warm_clear_evening_desc_mountain
+       summer_warm_clear_morning : summer_warm_clear_morning_desc_mountain
+       summer_warm_clear_night : summer_warm_clear_night_desc_mountain
+
+       summer_warm_fair_day : summer_warm_fair_day_desc_mountain
+       summer_warm_fair_evening : summer_warm_fair_evening_desc_mountain
+       summer_warm_fair_morning : summer_warm_fair_morning_desc_mountain
+       summer_warm_fair_night : summer_warm_fair_night_desc_mountain
+
+       summer_warm_misty_day : summer_warm_misty_day_desc_mountain
+       summer_warm_misty_evening : summer_warm_misty_evening_desc_mountain
+       summer_warm_misty_morning : summer_warm_misty_morning_desc_mountain
+       summer_warm_misty_night : summer_warm_misty_night_desc_mountain
+
+       summer_warm_overcast_day : summer_warm_overcast_day_desc_mountain
+       summer_warm_overcast_evening : summer_warm_overcast_evening_desc_mountain
+       summer_warm_overcast_morning : summer_warm_overcast_morning_desc_mountain
+       summer_warm_overcast_night : summer_warm_overcast_night_desc_mountain
+
+       summer_warm_windy_day : summer_warm_windy_day_desc_mountain
+       summer_warm_windy_evening : summer_warm_windy_evening_desc_mountain
+       summer_warm_windy_morning : summer_warm_windy_morning_desc_mountain
+       summer_warm_windy_night : summer_warm_windy_night_desc_mountain
+
+       spring_cold_clear_day : spring_cold_clear_day_desc_mountain
+       spring_cold_clear_evening : spring_cold_clear_evening_desc_mountain
+       spring_cold_clear_morning : spring_cold_clear_morning_desc_mountain
+       spring_cold_clear_night : spring_cold_clear_night_desc_mountain
+
+       spring_cold_dusting_day : spring_cold_dusting_day_desc_mountain
+       spring_cold_dusting_evening : spring_cold_dusting_evening_desc_mountain
+       spring_cold_dusting_morning : spring_cold_dusting_morning_desc_mountain
+       spring_cold_dusting_night : spring_cold_dusting_night_desc_mountain
+
+       spring_cold_fair_day : spring_cold_fair_day_desc_mountain
+       spring_cold_fair_evening : spring_cold_fair_evening_desc_mountain
+       spring_cold_fair_morning : spring_cold_fair_morning_desc_mountain
+       spring_cold_fair_night : spring_cold_fair_night_desc_mountain
+
+       spring_cold_misty_day : spring_cold_misty_day_desc_mountain
+       spring_cold_misty_evening : spring_cold_misty_evening_desc_mountain
+       spring_cold_misty_morning : spring_cold_misty_morning_desc_mountain
+       spring_cold_misty_night : spring_cold_misty_night_desc_mountain
+
+       spring_cold_overcast_day : spring_cold_overcast_day_desc_mountain
+       spring_cold_overcast_evening : spring_cold_overcast_evening_desc_mountain
+       spring_cold_overcast_morning : spring_cold_overcast_morning_desc_mountain
+       spring_cold_overcast_night : spring_cold_overcast_night_desc_mountain
+
+       spring_cold_snowing_day : spring_cold_snowing_day_desc_mountain
+       spring_cold_snowing_evening : spring_cold_snowing_evening_desc_mountain
+       spring_cold_snowing_morning : spring_cold_snowing_morning_desc_mountain
+       spring_cold_snowing_night : spring_cold_snowing_night_desc_mountain
+
+       spring_cold_windy_day : spring_cold_windy_day_desc_mountain
+       spring_cold_windy_evening : spring_cold_windy_evening_desc_mountain
+       spring_cold_windy_morning : spring_cold_windy_morning_desc_mountain
+       spring_cold_windy_night : spring_cold_windy_night_desc_mountain
+
+       spring_cool_clear_day : spring_cool_clear_day_desc_mountain
+       spring_cool_clear_evening : spring_cool_clear_evening_desc_mountain
+       spring_cool_clear_morning : spring_cool_clear_morning_desc_mountain
+       spring_cool_clear_night : spring_cool_clear_night_desc_mountain
+
+       spring_cool_dusting_day : spring_cool_dusting_day_desc_mountain
+       spring_cool_dusting_evening : spring_cool_dusting_evening_desc_mountain
+       spring_cool_dusting_morning : spring_cool_dusting_morning_desc_mountain
+       spring_cool_dusting_night : spring_cool_dusting_night_desc_mountain
+
+       spring_cool_fair_day : spring_cool_fair_day_desc_mountain
+       spring_cool_fair_evening : spring_cool_fair_evening_desc_mountain
+       spring_cool_fair_morning : spring_cool_fair_morning_desc_mountain
+       spring_cool_fair_night : spring_cool_fair_night_desc_mountain
+
+       spring_cool_misty_day : spring_cool_misty_day_desc_mountain
+       spring_cool_misty_evening : spring_cool_misty_evening_desc_mountain
+       spring_cool_misty_morning : spring_cool_misty_morning_desc_mountain
+       spring_cool_misty_night : spring_cool_misty_night_desc_mountain
+
+       spring_cool_overcast_day : spring_cool_overcast_day_desc_mountain
+       spring_cool_overcast_evening : spring_cool_overcast_evening_desc_mountain
+       spring_cool_overcast_morning : spring_cool_overcast_morning_desc_mountain
+       spring_cool_overcast_night : spring_cool_overcast_night_desc_mountain
+
+       spring_cool_snowing_day : spring_cool_snowing_day_desc_mountain
+       spring_cool_snowing_evening : spring_cool_snowing_evening_desc_mountain
+       spring_cool_snowing_morning : spring_cool_snowing_morning_desc_mountain
+       spring_cool_snowing_night : spring_cool_snowing_night_desc_mountain
+
+       spring_cool_windy_day : spring_cool_windy_day_desc_mountain
+       spring_cool_windy_evening : spring_cool_windy_evening_desc_mountain
+       spring_cool_windy_morning : spring_cool_windy_morning_desc_mountain
+       spring_cool_windy_night : spring_cool_windy_night_desc_mountain
+
+       winter_bitter_blizzard_day : winter_bitter_blizzard_day_desc_mountain
+       winter_bitter_blizzard_evening : winter_bitter_blizzard_evening_desc_mountain
+       winter_bitter_blizzard_morning : winter_bitter_blizzard_morning_desc_mountain
+       winter_bitter_blizzard_night : winter_bitter_blizzard_night_desc_mountain
+
+       winter_bitter_clear_day : winter_bitter_clear_day_desc_mountain
+       winter_bitter_clear_evening : winter_bitter_clear_evening_desc_mountain
+       winter_bitter_clear_morning : winter_bitter_clear_morning_desc_mountain
+       winter_bitter_clear_night : winter_bitter_clear_night_desc_mountain
+
+       winter_bitter_dusting_day : winter_bitter_dusting_day_desc_mountain
+       winter_bitter_dusting_evening : winter_bitter_dusting_evening_desc_mountain
+       winter_bitter_dusting_morning : winter_bitter_dusting_morning_desc_mountain
+       winter_bitter_dusting_night : winter_bitter_dusting_night_desc_mountain
+
+       winter_bitter_fair_day : winter_bitter_fair_day_desc_mountain
+       winter_bitter_fair_evening : winter_bitter_fair_evening_desc_mountain
+       winter_bitter_fair_morning : winter_bitter_fair_morning_desc_mountain
+       winter_bitter_fair_night : winter_bitter_fair_night_desc_mountain
+
+       winter_bitter_flurrying_day : winter_bitter_flurrying_day_desc_mountain
+       winter_bitter_flurrying_evening : winter_bitter_flurrying_evening_desc_mountain
+       winter_bitter_flurrying_morning : winter_bitter_flurrying_morning_desc_mountain
+       winter_bitter_flurrying_night : winter_bitter_flurrying_night_desc_mountain
+
+       winter_bitter_misty_day : winter_bitter_misty_day_desc_mountain
+       winter_bitter_misty_evening : winter_bitter_misty_evening_desc_mountain
+       winter_bitter_misty_morning : winter_bitter_misty_morning_desc_mountain
+       winter_bitter_misty_night : winter_bitter_misty_night_desc_mountain
+
+       winter_bitter_overcast_day : winter_bitter_overcast_day_desc_mountain
+       winter_bitter_overcast_evening : winter_bitter_overcast_evening_desc_mountain
+       winter_bitter_overcast_morning : winter_bitter_overcast_morning_desc_mountain
+       winter_bitter_overcast_night : winter_bitter_overcast_night_desc_mountain
+
+       winter_bitter_sleeting_day : winter_bitter_sleeting_day_desc_mountain
+       winter_bitter_sleeting_evening : winter_bitter_sleeting_evening_desc_mountain
+       winter_bitter_sleeting_morning : winter_bitter_sleeting_morning_desc_mountain
+       winter_bitter_sleeting_night : winter_bitter_sleeting_night_desc_mountain
+
+       winter_bitter_snowing_day : winter_bitter_snowing_day_desc_mountain
+       winter_bitter_snowing_evening : winter_bitter_snowing_evening_desc_mountain
+       winter_bitter_snowing_morning : winter_bitter_snowing_morning_desc_mountain
+       winter_bitter_snowing_night : winter_bitter_snowing_night_desc_mountain
+
+       winter_bitter_windy_day : winter_bitter_windy_day_desc_mountain
+       winter_bitter_windy_evening : winter_bitter_windy_evening_desc_mountain
+       winter_bitter_windy_morning : winter_bitter_windy_morning_desc_mountain
+       winter_bitter_windy_night : winter_bitter_windy_night_desc_mountain
+
+       winter_cold_blizzard_day : winter_cold_blizzard_day_desc_mountain
+       winter_cold_blizzard_evening : winter_cold_blizzard_evening_desc_mountain
+       winter_cold_blizzard_morning : winter_cold_blizzard_morning_desc_mountain
+       winter_cold_blizzard_night : winter_cold_blizzard_night_desc_mountain
+
+       winter_cold_clear_day : winter_cold_clear_day_desc_mountain
+       winter_cold_clear_evening : winter_cold_clear_evening_desc_mountain
+       winter_cold_clear_morning : winter_cold_clear_morning_desc_mountain
+       winter_cold_clear_night : winter_cold_clear_night_desc_mountain
+
+       winter_cold_dusting_day : winter_cold_dusting_day_desc_mountain
+       winter_cold_dusting_evening : winter_cold_dusting_evening_desc_mountain
+       winter_cold_dusting_morning : winter_cold_dusting_morning_desc_mountain
+       winter_cold_dusting_night : winter_cold_dusting_night_desc_mountain
+
+       winter_cold_fair_day : winter_cold_fair_day_desc_mountain
+       winter_cold_fair_evening : winter_cold_fair_evening_desc_mountain
+       winter_cold_fair_morning : winter_cold_fair_morning_desc_mountain
+       winter_cold_fair_night : winter_cold_fair_night_desc_mountain
+
+       winter_cold_flurrying_day : winter_cold_flurrying_day_desc_mountain
+       winter_cold_flurrying_evening : winter_cold_flurrying_evening_desc_mountain
+       winter_cold_flurrying_morning : winter_cold_flurrying_morning_desc_mountain
+       winter_cold_flurrying_night : winter_cold_flurrying_night_desc_mountain
+
+       winter_cold_misty_day : winter_cold_misty_day_desc_mountain
+       winter_cold_misty_evening : winter_cold_misty_evening_desc_mountain
+       winter_cold_misty_morning : winter_cold_misty_morning_desc_mountain
+       winter_cold_misty_night : winter_cold_misty_night_desc_mountain
+
+       winter_cold_overcast_day : winter_cold_overcast_day_desc_mountain
+       winter_cold_overcast_evening : winter_cold_overcast_evening_desc_mountain
+       winter_cold_overcast_morning : winter_cold_overcast_morning_desc_mountain
+       winter_cold_overcast_night : winter_cold_overcast_night_desc_mountain
+
+       winter_cold_sleeting_day : winter_cold_sleeting_day_desc_mountain
+       winter_cold_sleeting_evening : winter_cold_sleeting_evening_desc_mountain
+       winter_cold_sleeting_morning : winter_cold_sleeting_morning_desc_mountain
+       winter_cold_sleeting_night : winter_cold_sleeting_night_desc_mountain
+
+       winter_cold_snowing_day : winter_cold_snowing_day_desc_mountain
+       winter_cold_snowing_evening : winter_cold_snowing_evening_desc_mountain
+       winter_cold_snowing_morning : winter_cold_snowing_morning_desc_mountain
+       winter_cold_snowing_night : winter_cold_snowing_night_desc_mountain
+
+       winter_cold_windy_day : winter_cold_windy_day_desc_mountain
+       winter_cold_windy_evening : winter_cold_windy_evening_desc_mountain
+       winter_cold_windy_morning : winter_cold_windy_morning_desc_mountain
+       winter_cold_windy_night : winter_cold_windy_night_desc_mountain
+
+       winter_cool_blizzard_day : winter_cool_blizzard_day_desc_mountain
+       winter_cool_blizzard_evening : winter_cool_blizzard_evening_desc_mountain
+       winter_cool_blizzard_morning : winter_cool_blizzard_morning_desc_mountain
+       winter_cool_blizzard_night : winter_cool_blizzard_night_desc_mountain
+
+       winter_cool_clear_day : winter_cool_clear_day_desc_mountain
+       winter_cool_clear_evening : winter_cool_clear_evening_desc_mountain
+       winter_cool_clear_morning : winter_cool_clear_morning_desc_mountain
+       winter_cool_clear_night : winter_cool_clear_night_desc_mountain
+
+       winter_cool_dusting_day : winter_cool_dusting_day_desc_mountain
+       winter_cool_dusting_evening : winter_cool_dusting_evening_desc_mountain
+       winter_cool_dusting_morning : winter_cool_dusting_morning_desc_mountain
+       winter_cool_dusting_night : winter_cool_dusting_night_desc_mountain
+
+       winter_cool_fair_day : winter_cool_fair_day_desc_mountain
+       winter_cool_fair_evening : winter_cool_fair_evening_desc_mountain
+       winter_cool_fair_morning : winter_cool_fair_morning_desc_mountain
+       winter_cool_fair_night : winter_cool_fair_night_desc_mountain
+
+       winter_cool_flurrying_day : winter_cool_flurrying_day_desc_mountain
+       winter_cool_flurrying_evening : winter_cool_flurrying_evening_desc_mountain
+       winter_cool_flurrying_morning : winter_cool_flurrying_morning_desc_mountain
+       winter_cool_flurrying_night : winter_cool_flurrying_night_desc_mountain
+
+       winter_cool_misty_day : winter_cool_misty_day_desc_mountain
+       winter_cool_misty_evening : winter_cool_misty_evening_desc_mountain
+       winter_cool_misty_morning : winter_cool_misty_morning_desc_mountain
+       winter_cool_misty_night : winter_cool_misty_night_desc_mountain
+
+       winter_cool_overcast_day : winter_cool_overcast_day_desc_mountain
+       winter_cool_overcast_evening : winter_cool_overcast_evening_desc_mountain
+       winter_cool_overcast_morning : winter_cool_overcast_morning_desc_mountain
+       winter_cool_overcast_night : winter_cool_overcast_night_desc_mountain
+
+       winter_cool_sleeting_day : winter_cool_sleeting_day_desc_mountain
+       winter_cool_sleeting_evening : winter_cool_sleeting_evening_desc_mountain
+       winter_cool_sleeting_morning : winter_cool_sleeting_morning_desc_mountain
+       winter_cool_sleeting_night : winter_cool_sleeting_night_desc_mountain
+
+       winter_cool_snowing_day : winter_cool_snowing_day_desc_mountain
+       winter_cool_snowing_evening : winter_cool_snowing_evening_desc_mountain
+       winter_cool_snowing_morning : winter_cool_snowing_morning_desc_mountain
+       winter_cool_snowing_night : winter_cool_snowing_night_desc_mountain
+
+       winter_cool_windy_day : winter_cool_windy_day_desc_mountain
+       winter_cool_windy_evening : winter_cool_windy_evening_desc_mountain
+       winter_cool_windy_morning : winter_cool_windy_morning_desc_mountain
+       winter_cool_windy_night : winter_cool_windy_night_desc_mountain

@@ -48,227 +48,227 @@ weather:
         condition: clear clear clear clear clear fair fair fair fair fair overcast overcast misty misty misty dusting dusting snowing flurrying flurrying
         stability: 70
   descriptions_underwater:
-       fall_cool_clear_day : fall_cool_clear_day_desc
-       fall_cool_clear_evening : fall_cool_clear_evening_desc
-       fall_cool_clear_morning : fall_cool_clear_morning_desc
-       fall_cool_clear_night : fall_cool_clear_night_desc
+       fall_cool_clear_day : fall_cool_clear_day_desc_underwater
+       fall_cool_clear_evening : fall_cool_clear_evening_desc_underwater
+       fall_cool_clear_morning : fall_cool_clear_morning_desc_underwater
+       fall_cool_clear_night : fall_cool_clear_night_desc_underwater
 
-       fall_cool_dusting_day : fall_cool_dusting_day_desc
-       fall_cool_dusting_evening : fall_cool_dusting_evening_desc
-       fall_cool_dusting_morning : fall_cool_dusting_morning_desc
-       fall_cool_dusting_night : fall_cool_dusting_night_desc
+       fall_cool_dusting_day : fall_cool_dusting_day_desc_underwater
+       fall_cool_dusting_evening : fall_cool_dusting_evening_desc_underwater
+       fall_cool_dusting_morning : fall_cool_dusting_morning_desc_underwater
+       fall_cool_dusting_night : fall_cool_dusting_night_desc_underwater
 
-       fall_cool_fair_day : fall_cool_fair_day_desc
-       fall_cool_fair_evening : fall_cool_fair_evening_desc
-       fall_cool_fair_morning : fall_cool_fair_morning_desc
-       fall_cool_fair_night : fall_cool_fair_night_desc
+       fall_cool_fair_day : fall_cool_fair_day_desc_underwater
+       fall_cool_fair_evening : fall_cool_fair_evening_desc_underwater
+       fall_cool_fair_morning : fall_cool_fair_morning_desc_underwater
+       fall_cool_fair_night : fall_cool_fair_night_desc_underwater
 
-       fall_cool_flurrying_day : fall_cool_flurrying_day_desc
-       fall_cool_flurrying_evening : fall_cool_flurrying_evening_desc
-       fall_cool_flurrying_morning : fall_cool_flurrying_morning_desc
-       fall_cool_flurrying_night : fall_cool_flurrying_night_desc
+       fall_cool_flurrying_day : fall_cool_flurrying_day_desc_underwater
+       fall_cool_flurrying_evening : fall_cool_flurrying_evening_desc_underwater
+       fall_cool_flurrying_morning : fall_cool_flurrying_morning_desc_underwater
+       fall_cool_flurrying_night : fall_cool_flurrying_night_desc_underwater
 
-       fall_cool_misty_day : fall_cool_misty_day_desc
-       fall_cool_misty_evening : fall_cool_misty_evening_desc
-       fall_cool_misty_morning : fall_cool_misty_morning_desc
-       fall_cool_misty_night : fall_cool_misty_night_desc
+       fall_cool_misty_day : fall_cool_misty_day_desc_underwater
+       fall_cool_misty_evening : fall_cool_misty_evening_desc_underwater
+       fall_cool_misty_morning : fall_cool_misty_morning_desc_underwater
+       fall_cool_misty_night : fall_cool_misty_night_desc_underwater
 
-       fall_cool_overcast_day : fall_cool_overcast_day_desc
-       fall_cool_overcast_evening : fall_cool_overcast_evening_desc
-       fall_cool_overcast_morning : fall_cool_overcast_morning_desc
-       fall_cool_overcast_night : fall_cool_overcast_night_desc
+       fall_cool_overcast_day : fall_cool_overcast_day_desc_underwater
+       fall_cool_overcast_evening : fall_cool_overcast_evening_desc_underwater
+       fall_cool_overcast_morning : fall_cool_overcast_morning_desc_underwater
+       fall_cool_overcast_night : fall_cool_overcast_night_desc_underwater
 
-       fall_cool_snowing_day : fall_cool_snowing_day_desc
-       fall_cool_snowing_evening : fall_cool_snowing_evening_desc
-       fall_cool_snowing_morning : fall_cool_snowing_morning_desc
-       fall_cool_snowing_night : fall_cool_snowing_night_desc
+       fall_cool_snowing_day : fall_cool_snowing_day_desc_underwater
+       fall_cool_snowing_evening : fall_cool_snowing_evening_desc_underwater
+       fall_cool_snowing_morning : fall_cool_snowing_morning_desc_underwater
+       fall_cool_snowing_night : fall_cool_snowing_night_desc_underwater
 
-       fall_warm_clear_day : fall_warm_clear_day_desc
-       fall_warm_clear_evening : fall_warm_clear_evening_desc
-       fall_warm_clear_morning : fall_warm_clear_morning_desc
-       fall_warm_clear_night : fall_warm_clear_night_desc
+       fall_warm_clear_day : fall_warm_clear_day_desc_underwater
+       fall_warm_clear_evening : fall_warm_clear_evening_desc_underwater
+       fall_warm_clear_morning : fall_warm_clear_morning_desc_underwater
+       fall_warm_clear_night : fall_warm_clear_night_desc_underwater
 
-       fall_warm_dusting_day : fall_warm_dusting_day_desc
-       fall_warm_dusting_evening : fall_warm_dusting_evening_desc
-       fall_warm_dusting_morning : fall_warm_dusting_morning_desc
-       fall_warm_dusting_night : fall_warm_dusting_night_desc
+       fall_warm_dusting_day : fall_warm_dusting_day_desc_underwater
+       fall_warm_dusting_evening : fall_warm_dusting_evening_desc_underwater
+       fall_warm_dusting_morning : fall_warm_dusting_morning_desc_underwater
+       fall_warm_dusting_night : fall_warm_dusting_night_desc_underwater
 
-       fall_warm_fair_day : fall_warm_fair_day_desc
-       fall_warm_fair_evening : fall_warm_fair_evening_desc
-       fall_warm_fair_morning : fall_warm_fair_morning_desc
-       fall_warm_fair_night : fall_warm_fair_night_desc
+       fall_warm_fair_day : fall_warm_fair_day_desc_underwater
+       fall_warm_fair_evening : fall_warm_fair_evening_desc_underwater
+       fall_warm_fair_morning : fall_warm_fair_morning_desc_underwater
+       fall_warm_fair_night : fall_warm_fair_night_desc_underwater
 
-       fall_warm_flurrying_day : fall_warm_flurrying_day_desc
-       fall_warm_flurrying_evening : fall_warm_flurrying_evening_desc
-       fall_warm_flurrying_morning : fall_warm_flurrying_morning_desc
-       fall_warm_flurrying_night : fall_warm_flurrying_night_desc
+       fall_warm_flurrying_day : fall_warm_flurrying_day_desc_underwater
+       fall_warm_flurrying_evening : fall_warm_flurrying_evening_desc_underwater
+       fall_warm_flurrying_morning : fall_warm_flurrying_morning_desc_underwater
+       fall_warm_flurrying_night : fall_warm_flurrying_night_desc_underwater
 
-       fall_warm_misty_day : fall_warm_misty_day_desc
-       fall_warm_misty_evening : fall_warm_misty_evening_desc
-       fall_warm_misty_morning : fall_warm_misty_morning_desc
-       fall_warm_misty_night : fall_warm_misty_night_desc
+       fall_warm_misty_day : fall_warm_misty_day_desc_underwater
+       fall_warm_misty_evening : fall_warm_misty_evening_desc_underwater
+       fall_warm_misty_morning : fall_warm_misty_morning_desc_underwater
+       fall_warm_misty_night : fall_warm_misty_night_desc_underwater
 
-       fall_warm_overcast_day : fall_warm_overcast_day_desc
-       fall_warm_overcast_evening : fall_warm_overcast_evening_desc
-       fall_warm_overcast_morning : fall_warm_overcast_morning_desc
-       fall_warm_overcast_night : fall_warm_overcast_night_desc
+       fall_warm_overcast_day : fall_warm_overcast_day_desc_underwater
+       fall_warm_overcast_evening : fall_warm_overcast_evening_desc_underwater
+       fall_warm_overcast_morning : fall_warm_overcast_morning_desc_underwater
+       fall_warm_overcast_night : fall_warm_overcast_night_desc_underwater
 
-       fall_warm_snowing_day : fall_warm_snowing_day_desc
-       fall_warm_snowing_evening : fall_warm_snowing_evening_desc
-       fall_warm_snowing_morning : fall_warm_snowing_morning_desc
-       fall_warm_snowing_night : fall_warm_snowing_night_desc
+       fall_warm_snowing_day : fall_warm_snowing_day_desc_underwater
+       fall_warm_snowing_evening : fall_warm_snowing_evening_desc_underwater
+       fall_warm_snowing_morning : fall_warm_snowing_morning_desc_underwater
+       fall_warm_snowing_night : fall_warm_snowing_night_desc_underwater
 
-       summer_cool_algaebloom_day : summer_cool_algaebloom_day_desc
-       summer_cool_algaebloom_evening : summer_cool_algaebloom_evening_desc
-       summer_cool_algaebloom_morning : summer_cool_algaebloom_morning_desc
-       summer_cool_algaebloom_night : summer_cool_algaebloom_night_desc
+       summer_cool_algaebloom_day : summer_cool_algaebloom_day_desc_underwater
+       summer_cool_algaebloom_evening : summer_cool_algaebloom_evening_desc_underwater
+       summer_cool_algaebloom_morning : summer_cool_algaebloom_morning_desc_underwater
+       summer_cool_algaebloom_night : summer_cool_algaebloom_night_desc_underwater
 
-       summer_cool_clear_day : summer_cool_clear_day_desc
-       summer_cool_clear_evening : summer_cool_clear_evening_desc
-       summer_cool_clear_morning : summer_cool_clear_morning_desc
-       summer_cool_clear_night : summer_cool_clear_night_desc
+       summer_cool_clear_day : summer_cool_clear_day_desc_underwater
+       summer_cool_clear_evening : summer_cool_clear_evening_desc_underwater
+       summer_cool_clear_morning : summer_cool_clear_morning_desc_underwater
+       summer_cool_clear_night : summer_cool_clear_night_desc_underwater
 
-       summer_cool_fair_day : summer_cool_fair_day_desc
-       summer_cool_fair_evening : summer_cool_fair_evening_desc
-       summer_cool_fair_morning : summer_cool_fair_morning_desc
-       summer_cool_fair_night : summer_cool_fair_night_desc
+       summer_cool_fair_day : summer_cool_fair_day_desc_underwater
+       summer_cool_fair_evening : summer_cool_fair_evening_desc_underwater
+       summer_cool_fair_morning : summer_cool_fair_morning_desc_underwater
+       summer_cool_fair_night : summer_cool_fair_night_desc_underwater
 
-       summer_warm_algaebloom_day : summer_warm_algaebloom_day_desc
-       summer_warm_algaebloom_evening : summer_warm_algaebloom_evening_desc
-       summer_warm_algaebloom_morning : summer_warm_algaebloom_morning_desc
-       summer_warm_algaebloom_night : summer_warm_algaebloom_night_desc
+       summer_warm_algaebloom_day : summer_warm_algaebloom_day_desc_underwater
+       summer_warm_algaebloom_evening : summer_warm_algaebloom_evening_desc_underwater
+       summer_warm_algaebloom_morning : summer_warm_algaebloom_morning_desc_underwater
+       summer_warm_algaebloom_night : summer_warm_algaebloom_night_desc_underwater
 
-       summer_warm_clear_day : summer_warm_clear_day_desc
-       summer_warm_clear_evening : summer_warm_clear_evening_desc
-       summer_warm_clear_morning : summer_warm_clear_morning_desc
-       summer_warm_clear_night : summer_warm_clear_night_desc
+       summer_warm_clear_day : summer_warm_clear_day_desc_underwater
+       summer_warm_clear_evening : summer_warm_clear_evening_desc_underwater
+       summer_warm_clear_morning : summer_warm_clear_morning_desc_underwater
+       summer_warm_clear_night : summer_warm_clear_night_desc_underwater
 
-       summer_warm_fair_day : summer_warm_fair_day_desc
-       summer_warm_fair_evening : summer_warm_fair_evening_desc
-       summer_warm_fair_morning : summer_warm_fair_morning_desc
-       summer_warm_fair_night : summer_warm_fair_night_desc
+       summer_warm_fair_day : summer_warm_fair_day_desc_underwater
+       summer_warm_fair_evening : summer_warm_fair_evening_desc_underwater
+       summer_warm_fair_morning : summer_warm_fair_morning_desc_underwater
+       summer_warm_fair_night : summer_warm_fair_night_desc_underwater
 
-       spring_cold_algaebloom_day : spring_cold_algaebloom_day_desc
-       spring_cold_algaebloom_evening : spring_cold_algaebloom_evening_desc
-       spring_cold_algaebloom_morning : spring_cold_algaebloom_morning_desc
-       spring_cold_algaebloom_night : spring_cold_algaebloom_night_desc
+       spring_cold_algaebloom_day : spring_cold_algaebloom_day_desc_underwater
+       spring_cold_algaebloom_evening : spring_cold_algaebloom_evening_desc_underwater
+       spring_cold_algaebloom_morning : spring_cold_algaebloom_morning_desc_underwater
+       spring_cold_algaebloom_night : spring_cold_algaebloom_night_desc_underwater
 
-       spring_cold_clear_day : spring_cold_clear_day_desc
-       spring_cold_clear_evening : spring_cold_clear_evening_desc
-       spring_cold_clear_morning : spring_cold_clear_morning_desc
-       spring_cold_clear_night : spring_cold_clear_night_desc
+       spring_cold_clear_day : spring_cold_clear_day_desc_underwater
+       spring_cold_clear_evening : spring_cold_clear_evening_desc_underwater
+       spring_cold_clear_morning : spring_cold_clear_morning_desc_underwater
+       spring_cold_clear_night : spring_cold_clear_night_desc_underwater
 
-       spring_cold_fair_day : spring_cold_fair_day_desc
-       spring_cold_fair_evening : spring_cold_fair_evening_desc
-       spring_cold_fair_morning : spring_cold_fair_morning_desc
-       spring_cold_fair_night : spring_cold_fair_night_desc
+       spring_cold_fair_day : spring_cold_fair_day_desc_underwater
+       spring_cold_fair_evening : spring_cold_fair_evening_desc_underwater
+       spring_cold_fair_morning : spring_cold_fair_morning_desc_underwater
+       spring_cold_fair_night : spring_cold_fair_night_desc_underwater
 
-       spring_cold_murky_day : spring_cold_murky_day_desc
-       spring_cold_murky_evening : spring_cold_murky_evening_desc
-       spring_cold_murky_morning : spring_cold_murky_morning_desc
-       spring_cold_murky_night : spring_cold_murky_night_desc
+       spring_cold_murky_day : spring_cold_murky_day_desc_underwater
+       spring_cold_murky_evening : spring_cold_murky_evening_desc_underwater
+       spring_cold_murky_morning : spring_cold_murky_morning_desc_underwater
+       spring_cold_murky_night : spring_cold_murky_night_desc_underwater
 
-       spring_cold_saltrain_day : spring_cold_saltrain_day_desc
-       spring_cold_saltrain_evening : spring_cold_saltrain_evening_desc
-       spring_cold_saltrain_morning : spring_cold_saltrain_morning_desc
-       spring_cold_saltrain_night : spring_cold_saltrain_night_desc
+       spring_cold_saltrain_day : spring_cold_saltrain_day_desc_underwater
+       spring_cold_saltrain_evening : spring_cold_saltrain_evening_desc_underwater
+       spring_cold_saltrain_morning : spring_cold_saltrain_morning_desc_underwater
+       spring_cold_saltrain_night : spring_cold_saltrain_night_desc_underwater
 
-       spring_cool_algaebloom_day : spring_cool_algaebloom_day_desc
-       spring_cool_algaebloom_evening : spring_cool_algaebloom_evening_desc
-       spring_cool_algaebloom_morning : spring_cool_algaebloom_morning_desc
-       spring_cool_algaebloom_night : spring_cool_algaebloom_night_desc
+       spring_cool_algaebloom_day : spring_cool_algaebloom_day_desc_underwater
+       spring_cool_algaebloom_evening : spring_cool_algaebloom_evening_desc_underwater
+       spring_cool_algaebloom_morning : spring_cool_algaebloom_morning_desc_underwater
+       spring_cool_algaebloom_night : spring_cool_algaebloom_night_desc_underwater
 
-       spring_cool_clear_day : spring_cool_clear_day_desc
-       spring_cool_clear_evening : spring_cool_clear_evening_desc
-       spring_cool_clear_morning : spring_cool_clear_morning_desc
-       spring_cool_clear_night : spring_cool_clear_night_desc
+       spring_cool_clear_day : spring_cool_clear_day_desc_underwater
+       spring_cool_clear_evening : spring_cool_clear_evening_desc_underwater
+       spring_cool_clear_morning : spring_cool_clear_morning_desc_underwater
+       spring_cool_clear_night : spring_cool_clear_night_desc_underwater
 
-       spring_cool_fair_day : spring_cool_fair_day_desc
-       spring_cool_fair_evening : spring_cool_fair_evening_desc
-       spring_cool_fair_morning : spring_cool_fair_morning_desc
-       spring_cool_fair_night : spring_cool_fair_night_desc
+       spring_cool_fair_day : spring_cool_fair_day_desc_underwater
+       spring_cool_fair_evening : spring_cool_fair_evening_desc_underwater
+       spring_cool_fair_morning : spring_cool_fair_morning_desc_underwater
+       spring_cool_fair_night : spring_cool_fair_night_desc_underwater
 
-       spring_cool_murky_day : spring_cool_murky_day_desc
-       spring_cool_murky_evening : spring_cool_murky_evening_desc
-       spring_cool_murky_morning : spring_cool_murky_morning_desc
-       spring_cool_murky_night : spring_cool_murky_night_desc
+       spring_cool_murky_day : spring_cool_murky_day_desc_underwater
+       spring_cool_murky_evening : spring_cool_murky_evening_desc_underwater
+       spring_cool_murky_morning : spring_cool_murky_morning_desc_underwater
+       spring_cool_murky_night : spring_cool_murky_night_desc_underwater
 
-       spring_cool_saltrain_day : spring_cool_saltrain_day_desc
-       spring_cool_saltrain_evening : spring_cool_saltrain_evening_desc
-       spring_cool_saltrain_morning : spring_cool_saltrain_morning_desc
-       spring_cool_saltrain_night : spring_cool_saltrain_night_desc
+       spring_cool_saltrain_day : spring_cool_saltrain_day_desc_underwater
+       spring_cool_saltrain_evening : spring_cool_saltrain_evening_desc_underwater
+       spring_cool_saltrain_morning : spring_cool_saltrain_morning_desc_underwater
+       spring_cool_saltrain_night : spring_cool_saltrain_night_desc_underwater
 
-       spring_warm_algaebloom_day : spring_warm_algaebloom_day_desc
-       spring_warm_algaebloom_evening : spring_warm_algaebloom_evening_desc
-       spring_warm_algaebloom_morning : spring_warm_algaebloom_morning_desc
-       spring_warm_algaebloom_night : spring_warm_algaebloom_night_desc
+       spring_warm_algaebloom_day : spring_warm_algaebloom_day_desc_underwater
+       spring_warm_algaebloom_evening : spring_warm_algaebloom_evening_desc_underwater
+       spring_warm_algaebloom_morning : spring_warm_algaebloom_morning_desc_underwater
+       spring_warm_algaebloom_night : spring_warm_algaebloom_night_desc_underwater
 
-       spring_warm_clear_day : spring_warm_clear_day_desc
-       spring_warm_clear_evening : spring_warm_clear_evening_desc
-       spring_warm_clear_morning : spring_warm_clear_morning_desc
-       spring_warm_clear_night : spring_warm_clear_night_desc
+       spring_warm_clear_day : spring_warm_clear_day_desc_underwater
+       spring_warm_clear_evening : spring_warm_clear_evening_desc_underwater
+       spring_warm_clear_morning : spring_warm_clear_morning_desc_underwater
+       spring_warm_clear_night : spring_warm_clear_night_desc_underwater
 
-       spring_warm_fair_day : spring_warm_fair_day_desc
-       spring_warm_fair_evening : spring_warm_fair_evening_desc
-       spring_warm_fair_morning : spring_warm_fair_morning_desc
-       spring_warm_fair_night : spring_warm_fair_night_desc
+       spring_warm_fair_day : spring_warm_fair_day_desc_underwater
+       spring_warm_fair_evening : spring_warm_fair_evening_desc_underwater
+       spring_warm_fair_morning : spring_warm_fair_morning_desc_underwater
+       spring_warm_fair_night : spring_warm_fair_night_desc_underwater
 
-       spring_warm_murky_day : spring_warm_murky_day_desc
-       spring_warm_murky_evening : spring_warm_murky_evening_desc
-       spring_warm_murky_morning : spring_warm_murky_morning_desc
-       spring_warm_murky_night : spring_warm_murky_night_desc
+       spring_warm_murky_day : spring_warm_murky_day_desc_underwater
+       spring_warm_murky_evening : spring_warm_murky_evening_desc_underwater
+       spring_warm_murky_morning : spring_warm_murky_morning_desc_underwater
+       spring_warm_murky_night : spring_warm_murky_night_desc_underwater
 
-       spring_warm_saltrain_day : spring_warm_saltrain_day_desc
-       spring_warm_saltrain_evening : spring_warm_saltrain_evening_desc
-       spring_warm_saltrain_morning : spring_warm_saltrain_morning_desc
-       spring_warm_saltrain_night : spring_warm_saltrain_night_desc
+       spring_warm_saltrain_day : spring_warm_saltrain_day_desc_underwater
+       spring_warm_saltrain_evening : spring_warm_saltrain_evening_desc_underwater
+       spring_warm_saltrain_morning : spring_warm_saltrain_morning_desc_underwater
+       spring_warm_saltrain_night : spring_warm_saltrain_night_desc_underwater
 
-       winter_cold_clear_day : winter_cold_clear_day_desc
-       winter_cold_clear_evening : winter_cold_clear_evening_desc
-       winter_cold_clear_morning : winter_cold_clear_morning_desc
-       winter_cold_clear_night : winter_cold_clear_night_desc
+       winter_cold_clear_day : winter_cold_clear_day_desc_underwater
+       winter_cold_clear_evening : winter_cold_clear_evening_desc_underwater
+       winter_cold_clear_morning : winter_cold_clear_morning_desc_underwater
+       winter_cold_clear_night : winter_cold_clear_night_desc_underwater
 
-       winter_cold_fair_day : winter_cold_fair_day_desc
-       winter_cold_fair_evening : winter_cold_fair_evening_desc
-       winter_cold_fair_morning : winter_cold_fair_morning_desc
-       winter_cold_fair_night : winter_cold_fair_night_desc
+       winter_cold_fair_day : winter_cold_fair_day_desc_underwater
+       winter_cold_fair_evening : winter_cold_fair_evening_desc_underwater
+       winter_cold_fair_morning : winter_cold_fair_morning_desc_underwater
+       winter_cold_fair_night : winter_cold_fair_night_desc_underwater
 
-       winter_cold_murky_day : winter_cold_murky_day_desc
-       winter_cold_murky_evening : winter_cold_murky_evening_desc
-       winter_cold_murky_morning : winter_cold_murky_morning_desc
-       winter_cold_murky_night : winter_cold_murky_night_desc
+       winter_cold_murky_day : winter_cold_murky_day_desc_underwater
+       winter_cold_murky_evening : winter_cold_murky_evening_desc_underwater
+       winter_cold_murky_morning : winter_cold_murky_morning_desc_underwater
+       winter_cold_murky_night : winter_cold_murky_night_desc_underwater
 
-       winter_cold_saltrain_day : winter_cold_saltrain_day_desc
-       winter_cold_saltrain_evening : winter_cold_saltrain_evening_desc
-       winter_cold_saltrain_morning : winter_cold_saltrain_morning_desc
-       winter_cold_saltrain_night : winter_cold_saltrain_night_desc
+       winter_cold_saltrain_day : winter_cold_saltrain_day_desc_underwater
+       winter_cold_saltrain_evening : winter_cold_saltrain_evening_desc_underwater
+       winter_cold_saltrain_morning : winter_cold_saltrain_morning_desc_underwater
+       winter_cold_saltrain_night : winter_cold_saltrain_night_desc_underwater
 
-       winter_cold_saltstorm_day : winter_cold_saltstorm_day_desc
-       winter_cold_saltstorm_evening : winter_cold_saltstorm_evening_desc
-       winter_cold_saltstorm_morning : winter_cold_saltstorm_morning_desc
-       winter_cold_saltstorm_night : winter_cold_saltstorm_night_desc
+       winter_cold_saltstorm_day : winter_cold_saltstorm_day_desc_underwater
+       winter_cold_saltstorm_evening : winter_cold_saltstorm_evening_desc_underwater
+       winter_cold_saltstorm_morning : winter_cold_saltstorm_morning_desc_underwater
+       winter_cold_saltstorm_night : winter_cold_saltstorm_night_desc_underwater
 
-       winter_cool_clear_day : winter_cool_clear_day_desc
-       winter_cool_clear_evening : winter_cool_clear_evening_desc
-       winter_cool_clear_morning : winter_cool_clear_morning_desc
-       winter_cool_clear_night : winter_cool_clear_night_desc
+       winter_cool_clear_day : winter_cool_clear_day_desc_underwater
+       winter_cool_clear_evening : winter_cool_clear_evening_desc_underwater
+       winter_cool_clear_morning : winter_cool_clear_morning_desc_underwater
+       winter_cool_clear_night : winter_cool_clear_night_desc_underwater
 
-       winter_cool_fair_day : winter_cool_fair_day_desc
-       winter_cool_fair_evening : winter_cool_fair_evening_desc
-       winter_cool_fair_morning : winter_cool_fair_morning_desc
-       winter_cool_fair_night : winter_cool_fair_night_desc
+       winter_cool_fair_day : winter_cool_fair_day_desc_underwater
+       winter_cool_fair_evening : winter_cool_fair_evening_desc_underwater
+       winter_cool_fair_morning : winter_cool_fair_morning_desc_underwater
+       winter_cool_fair_night : winter_cool_fair_night_desc_underwater
 
-       winter_cool_murky_day : winter_cool_murky_day_desc
-       winter_cool_murky_evening : winter_cool_murky_evening_desc
-       winter_cool_murky_morning : winter_cool_murky_morning_desc
-       winter_cool_murky_night : winter_cool_murky_night_desc
+       winter_cool_murky_day : winter_cool_murky_day_desc_underwater
+       winter_cool_murky_evening : winter_cool_murky_evening_desc_underwater
+       winter_cool_murky_morning : winter_cool_murky_morning_desc_underwater
+       winter_cool_murky_night : winter_cool_murky_night_desc_underwater
 
-       winter_cool_saltrain_day : winter_cool_saltrain_day_desc
-       winter_cool_saltrain_evening : winter_cool_saltrain_evening_desc
-       winter_cool_saltrain_morning : winter_cool_saltrain_morning_desc
-       winter_cool_saltrain_night : winter_cool_saltrain_night_desc
+       winter_cool_saltrain_day : winter_cool_saltrain_day_desc_underwater
+       winter_cool_saltrain_evening : winter_cool_saltrain_evening_desc_underwater
+       winter_cool_saltrain_morning : winter_cool_saltrain_morning_desc_underwater
+       winter_cool_saltrain_night : winter_cool_saltrain_night_desc_underwater
 
-       winter_cool_saltstorm_day : winter_cool_saltstorm_day_desc
-       winter_cool_saltstorm_evening : winter_cool_saltstorm_evening_desc
-       winter_cool_saltstorm_morning : winter_cool_saltstorm_morning_desc
-       winter_cool_saltstorm_night : winter_cool_saltstorm_night_desc
+       winter_cool_saltstorm_day : winter_cool_saltstorm_day_desc_underwater
+       winter_cool_saltstorm_evening : winter_cool_saltstorm_evening_desc_underwater
+       winter_cool_saltstorm_morning : winter_cool_saltstorm_morning_desc_underwater
+       winter_cool_saltstorm_night : winter_cool_saltstorm_night_desc_underwater
