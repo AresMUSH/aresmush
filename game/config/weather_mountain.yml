@@ -47,15 +47,15 @@ weather:
         condition: clear clear clear clear clear fair fair fair fair fair overcast overcast misty misty misty dusting dusting snowing flurrying flurrying
         stability: 70
   descriptions_mountain:
-       fall_bitter_clear_day : fall_bitter_clear_day_desc
-       fall_bitter_clear_evening : fall_bitter_clear_evening_desc
-       fall_bitter_clear_morning : fall_bitter_clear_morning_desc
-       fall_bitter_clear_night : fall_bitter_clear_night_desc
+       fall_bitter_clear_day : "The fall air on the mountain is bitterly cold, despite it being a clear day with sunshine."
+       fall_bitter_clear_evening : "The fall air on the mountain has a harsh bitterness to it, as a clear night starts to descend on the mountain."
+       fall_bitter_clear_morning : "It is a bitterly cold fall morning, the sun is rising and the sky is clear."
+       fall_bitter_clear_night : "The bitterness of this cold fall night is only accented by the clearness of the skies above."
 
-       fall_bitter_dusting_day : fall_bitter_dusting_day_desc
-       fall_bitter_dusting_evening : fall_bitter_dusting_evening_desc
-       fall_bitter_dusting_morning : fall_bitter_dusting_morning_desc
-       fall_bitter_dusting_night : fall_bitter_dusting_night_desc
+       fall_bitter_dusting_day : "The gentle dusting of snow on the mountain accents the bitter cold of the day."
+       fall_bitter_dusting_evening : "The wind gently tosses the light dusting of snow around the mountain and through the air during the bitter evening."
+       fall_bitter_dusting_morning : "The ground has a light dusting of snow, as the sun's morning light dances on the mountain's peeks on this bitterly cold morning."
+       fall_bitter_dusting_night : "The pale moonlight reflects stoically on the mountain's light dusting of snow on this bitter fall evening."
 
        fall_bitter_fair_day : fall_bitter_fair_day_desc
        fall_bitter_fair_evening : fall_bitter_fair_evening_desc
