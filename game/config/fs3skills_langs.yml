@@ -1,10 +1,8 @@
 ---
 fs3skills:
-  language_blurb: 'Languages represent your ability to speak and read other languages.  Languages
-    have a descriptive rating.   See [FS3: Languages](http://aresmush.com/fs3/fs3-3/chargen/#languages)
-    for details.'
+  language_blurb: 'Languages represent your ability to speak and read other languages.'
   starting_languages:
-  - Standard
+  - English
   languages:
   - name: English
     desc: The Only language.
