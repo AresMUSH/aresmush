@@ -254,57 +254,57 @@ fs3skills:
       - Griffon
     desc: "Each month you start with 2 extra points of Valor."
     tier: 2
- - name: Noble Soul III
-   pre:
-     - Noble Soul II
-   for?:
-     - Alicorn
-     - Earth Pony
-   desc: "Each month you start with 2+1d4 extra points of Valor."
-   tier: 3
-- name: Reflective Protection
-  desc: "When in any stance other than Aggressive or Reckless, you may spend 1 valor to halve the damage you take."
-  tier: 1
-  for?:
-    - Crystal Pony
-  crystal_races: true
-- name: Reflective Protection II
-  desc: "You may extend this to any member on your team."
-  tier: 2
-  pre:
-    - Reflective Protection
-- name: Resonant Recovery
-  desc: "When you spend Valor to heal yourself, you may double the healing effect."
-  tier: 1
-  for?:
-    - Crystal Pony
-    - Earth Pony
-  crystal_races: true
-- name: Royal Canterlot Voice
-  desc: "Gain a slight bonus (+1) to all Socializing, Deception or Counselling checks."
-  tier: 1
-- name: Royal Canterlot Voice II
-  desc: "Gain a moderate bonus (+2) to all rolls that use Presence."
-  tier: 2
-  for?:
-    - Alicorn
-  pre:
-    - Royal Canterlot Voice
-- name: Findy
+  - name: Noble Soul III
+    pre:
+      - Noble Soul II
+    for?:
+      - Alicorn
+      - Earth Pony
+    desc: "Each month you start with 2+1d4 extra points of Valor."
+    tier: 3
+  - name: Reflective Protection
+    desc: "When in any stance other than Aggressive or Reckless, you may spend 1 valor to halve the damage you take."
+    tier: 1
+    for?:
+      - Crystal Pony
+    crystal_races: true
+  - name: Reflective Protection II
+    desc: "You may extend this to any member on your team."
+    tier: 2
+    pre:
+      - Reflective Protection
+  - name: Resonant Recovery
+    desc: "When you spend Valor to heal yourself, you may double the healing effect."
+    tier: 1
+    for?:
+      - Crystal Pony
+      - Earth Pony
+    crystal_races: true
+  - name: Royal Canterlot Voice
+    desc: "Gain a slight bonus (+1) to all Socializing, Deception or Counselling checks."
+    tier: 1
+  - name: Royal Canterlot Voice II
+    desc: "Gain a moderate bonus (+2) to all rolls that use Presence."
+    tier: 2
+    for?:
+      - Alicorn
+    pre:
+      - Royal Canterlot Voice
+  - name: Findy
   desc: "Pronounced "Fin-Dee" as in Handy. Gain a slight bonus (+1) on any non-combat roll where your fins would be a significant advantage."
   tier: 1
   for?:
     - SeaPony
-- name: Share & Care
+  - name: Share & Care
   desc: "You may spend your valor for other ponies. This allows them to receive the benefits."
   tier: 1
-- name: Signature Move
+  - name: Signature Move
   desc: "You have a spell like ability that you may use by spending 1 valor or the appropriate Mana."
   tier: 3
-- name: Skill Mastery
+  - name: Skill Mastery
   desc: "When rolling any action skill outside of combat, gain a stack of skill mastery, for every successful roll. Each stack adds a +1 to the overall die pool, to a maximum of your Wits. Each stack is for that specific skill, and they expire when either you fail a roll or an 24 hours RL has passed."
   tier: 3
-- name: Sorcery
+  - name: Sorcery
   desc: "You have trained in the mystic arts of sorcery. Your maximum level of spell you can cast is equal to 3."
   tier: 1
   for?:
@@ -312,12 +312,12 @@ fs3skills:
     - Kitsune
     - Zebra
     - Deer
-- name: Sorcery II
+  - name: Sorcery II
   desc: "Your maximum level of spell you can cast is now equal to 5."
   tier: 2
   pre:
     - Sorcery
-- name: Sorcery III
+  - name: Sorcery III
   desc: "Your maximum level of spell you can cast is now equal to 7."
   for?:
     - Dragon
@@ -325,7 +325,7 @@ fs3skills:
   pre:
     - Sorcery II
   tier: 3
-- name: Special Purpose
+  - name: Special Purpose
   desc: "This ties to your cutie mark. By having this advantage, you have a cutie mark. You gain a slight bonus (+1) to any rolls involving your special purpose."
   tier: 1
   for?:
@@ -338,7 +338,7 @@ fs3skills:
     - Seapony
     - Unicorn
     - Zebra
-- name: Speedster
+  - name: Speedster
   tier: 1
   desc: "You may spend 1 valor to double your speed for a round."
   for?:
@@ -349,40 +349,40 @@ fs3skills:
     - Hippogriff
     - Griffon
     - Pegasus
-- name: Squirrel Speak
+  - name: Squirrel Speak
   tier: 1
   desc: "You understand the language of the animals, though you can't speak it."
-- name: Covert Ops
+  - name: Covert Ops
   desc: "When you are hiding or concealed, or in one of the appropriate stances, you gain a slight bonus (+1) to your stealth or defense rolls."
   for?:
     - Bat Pony
     - Kitsune
   tier: 1
-- name: Improved Telekinesis
+  - name: Improved Telekinesis
   tier: 1
   desc: "You may now use Telekinesis on more than a single object."
   for?:
     - Alicorn
     - Unicorn
-- name: Improved Teleinesis II
+  - name: Improved Teleinesis II
   tier: 2
   pre:
     - Improved Telekinesis
   desc: "You may now use telekinesis on several heavy objects."
-- name: Weather Patrol
+  - name: Weather Patrol
   tier: 1
   for?:
     - Pegasus
     - Deer
   desc: "You may now manipulate currently existing weather conditions, by making the appropriate check. Deer may only affect winter weather, such as snow."
-- name: Weather Patrol II
+  - name: Weather Patrol II
   pre:
     - Weather Patrol
   for?:
     - Pegasus
   tier: 2
   desc: "You may now also create weather conditions."
-- name: Wingdy
+  - name: Wingdy
   desc: "Gain a slight bonus (+1) on any non-combat roll where your wings would be a significant advantage."
   for?:
     - Alicorn
@@ -393,7 +393,7 @@ fs3skills:
     - Hippogriff
     - Pegasus
   tier: 1
-- name: Crystal Variant
+  - name: Crystal Variant
   desc: "You are a Crystal Version of your base origin."
   tier: 2
   for?:
@@ -401,14 +401,14 @@ fs3skills:
     - Unicorn
     - Seapony
     - Bat Pony
-- name: Wizardry
+  - name: Wizardry
   for?:
     - Alicorn
     - Breezie
     - Unicorn
   desc: "You are able to use the most powerful magics with relative ease. Your maximum spell level is 5."
   tier: 1
-- name: Wizardry II
+  - name: Wizardry II
   pre:
     - Wizardry
   for?:
@@ -416,12 +416,12 @@ fs3skills:
     - Unicorn
   desc: "Your maximum spell level is now 8."
   tier: 3
-- name: Deep Magix
+  - name: Deep Magix
   desc: "You are able to use Deep Magix."
   tier: 3
   pre:
     - Ascended Being
-- name: Ascended Being
+  - name: Ascended Being
   desc: "You have evolved to a more powerful being, for all Ponies, this ascension is to An Alicorn, but the royal versions. For Kitsune this is to an Inari. For Deer this is to a Reindeer. For a Breezie, this evolves them to a Flutter Pony."
   for?:
     - Alicorn
@@ -436,17 +436,17 @@ fs3skills:
     - Unicorn
     - Zebra
   tier: 3
-- name: Shoobedoo
+  - name: Shoobedoo
   desc: "You are able to sing magix. Your maximum level of spell you can sing is equal to 3."
   tier: 1
   for?:
     - Seapony
-- name: Shoobedoo II
+  - name: Shoobedoo II
   desc: "Your maximum level of spell you can sing is now equal to 5."
   tier: 2
   pre:
     - Shoobedoo
-- name: Shoobedoo III
+  - name: Shoobedoo III
   desc: "Your maximum level of spell you can sing is now equal to 7."
   pre:
     - Shoobedoo II
