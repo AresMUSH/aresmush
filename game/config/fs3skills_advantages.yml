@@ -1,7 +1,5 @@
 ---
 fs3skills:
-  advantages_blurb: 'Advantages represent important things your character possesses that are not skills.  Advantages are rated from 1-3. See [FS3: Advantages](http://aresmush.com/fs3/fs3-3/chargen/#advantages) for details.'
-  use_advantages: true
   advantages:
   - name: Arcane Talent
     desc: Gain a slight bonus (+1) to checks using magic or spells.
@@ -449,3 +447,5 @@ fs3skills:
   pre:
     - Shoobedoo II
   tier: 3
+  advantages_blurb: 'Advantages represent important things your character possesses that are not skills.  Advantages are rated from 1-3. See [FS3: Advantages](http://aresmush.com/fs3/fs3-3/chargen/#advantages) for details.'
+  use_advantages: true
