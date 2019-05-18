@@ -13,7 +13,8 @@ fs3skills:
       - Unicorn
   - name: "Arcane Talent II"
     tier: 2
-    pre: "Arcane Talent"
+    pre:
+      - Arcane Talent
     desc: Gain a moderate bonus (+2) to checks using magic or spells.
     for?:
       - Unicorn
@@ -23,7 +24,8 @@ fs3skills:
   - name: "Artifice II"
     desc: Gain a moderate bonus (+2) to checks creating single use magical items or potions.
     tier: 2
-    pre: "Artifice"
+    pre:
+      - Artifice
     crystal_races: true
     for?:
       - Alicorn
@@ -34,7 +36,8 @@ fs3skills:
   - name: "Artifice III"
     desc: Gain a significant bonus (+3) to checks creating single use magical items or potions.
     tier: 3
-    pre: "Artifice II"
+    pre:
+      - Artifice II
     for?:
       - Unicorn
       - Zebra
@@ -47,8 +50,192 @@ fs3skills:
   - name: "Blaster Caster II"
     desc: "When casting a spell roll 1d6 and lower the mana cost by that amount. If the number would lower to a negative number, you gain that much mana."
     tier: 2
-    pre: "Blaster Caster"
+    pre:
+      - Blaster Caster
   - name: "Blaster Caster III"
     desc: "When casting a spell roll 2d6 and lower the mana cost by that amount. If the number would lower to a negative number, you gain that much mana."
     tier: 3
-    pre: "Blaster Caster II"
+    pre:
+      - Blaster Caster II
+  - name: Bloodhound
+    desc: Gain a slight bonus (+1) to checks involving finding or following scents.
+    for?:
+      - Griffon
+      - Hippogriff
+      - Kitsune
+    tier: 1
+  - name: Bloodhound II
+    desc: Gain a moderate bonus (+2) to checks involving finding or following scents.
+    pre:
+      - Bloodhound
+    tier: 2
+  - name: Chaotic Magic
+    desc: "When declared, before casting a spell, roll 1d6. On a roll of 2 or 3, the spell will cost no mana to cast. On a roll of 4, double the mana cost of the spell. On a roll of 5, triple the cost of the spell. On a roll of 6, treat all dice rolled for the effect to have rolled the max die value. On a roll of 1, the cost in mana is paid and the spell fails."
+    tier: 2
+  - name: Dire Straits
+    tier: 3
+    desc: "Once per scene, you may invoke this advantage. When you do, you can invoke any effect as if you spent a point of luck, without spending any luck."
+  - name: Doormat to Dynamo
+    tier: 1
+    desc: "Once per week, you may expend a point of Valor to invoke a cumulative bonus of +1, to a max of +3 on any single roll type. For example, casting a specific spell."
+    type: Stack
+  - name: Doormat to Dynamo II
+    tier: 2
+    type: Stack
+    desc: "Gain another use of the Doormat to Dynamo Advantage."
+    pre:
+      - Doormat to Dynamo
+  - name: Doormat to Dynamo III
+    tier: 3
+    type: Stack
+    desc: "Gain another use of the Doormat to Dynamo Advantage"
+    pre:
+      - Doormat to Dynamo II
+  - name: Dragon Heart
+    desc: "You may now use a fire attack. You gain immunity to non-magical fire."
+    tier: 1
+    for?:
+      - Dragon
+  - name: Freezing Heart
+    desc: "Instead of Fire, you can use an Ice attack. You gain immunity to non-magical cold."
+    pre:
+      - Dragon Heart
+    tier: 3
+  - name: Shocking Heart
+    desc: "Instead of fire, you can use a Lightning Attack. You gain immunity to non-magical electrical/lightning."
+    pre:
+      - Dragon Heart
+    tier: 3
+  - name: Eagle Eye
+    desc: "You gain a slight bonus (+1) to all checks centering on visual observation and awareness, as long as there is good lighting."
+    tier: 1
+    for?:
+      - Griffon
+      - Hippogriff
+  - name: Eagle Eye II
+    desc: "You gain a moderate bonus (+2) to all checks centering on visual observation and awareness, as long as their is good lighting."
+    pre:
+      - Eagle Eye
+    tier: 2
+  - name: Eagle Eye III
+    desc: "You gain a moderate bonus (+2) to all checks centering on visual observation and awareness. You may now see in perfect darkness."
+    tier: 3
+    pre:
+      - Eagle Eye II
+  - name: Echo-Location
+    desc: "You may use sound to see in a full 360 degrees using sound. While you can only make out shapes of physical things, you can do so even when blinded."
+    tier: 1
+    for?:
+      - Seapony
+      - Bat Pony
+  - name: Exotic Lore
+    desc: "Once per week, you may add a significant bonus (+3) to an action skill which has a rating of Everyman or Unskilled."
+    tier: 1
+  - name: Exotic Lore II
+    tier: 2
+    pre:
+      - Exotic Lore
+    for?:
+      - Kitsune
+      - Zebra
+    desc: "Gain another use of Exotic Lore."
+  - name: Exotic Lore III
+    desc: "Gain another use of Exotic Lore."
+    for?:
+      - Zebra
+    tier: 3
+    pre:
+      - Exotic Lore II
+  - name: Improved Flight
+    desc: "You gain a slight bonus (+1) to any flying checks."
+    tier: 1
+    for?:
+      - Alicorn
+      - Bat Pony
+      - Dragon
+      - Griffon
+      - Hippogriff
+      - Pegasus
+  - name: Gifted
+    desc: "Once per week, you can automatically succeed on an any non-combat Action Skill check."
+    tier: 1
+  - name: Gifted II
+    desc: "Gain another use of Gifted."
+    pre:
+      - Gifted
+    tier: 2
+  - name: Gifted III
+    desc: "Gain another use of Gifted."
+    tier: 3
+    pre:
+      - Gifted II
+  - name: Great & Powerful
+    desc: "You have an uncanny skill with magic. You gain +1 spell for every rank above Competent in Spellcasting."
+    tier: 2
+    pre:
+      - Wizardy
+      - Sorcery
+      - Magix
+      - Shoobedoo
+  - name: Industrious
+    desc: "When using a non-magical tool, you gain a slight bonus (+1) to the action."
+    tier: 1
+    for?:
+      - Earth Pony
+      - Deer
+  - name: Industrious II
+    desc: "When using a non-magical tool, you gain a moderate bonus (+2) to the action."
+    pre:
+      - Industrious
+    tier: 2
+  - name: It's All Coming Back
+    tier: 3
+    for?:
+      - Crystal Pony
+    crystal_races: true
+    desc: "Once per month, you can expend 2 Valor and 1 luck to automatically increase any action skill by 1 rank, as if you completed the learning process. This may not be used on any skill that is rated Great or Higher."
+  - name: Land Lubber
+    for?:
+      - Sea Pony
+    tier: 1
+    desc: "You are able to breath water and air equally."
+  - name: Team Work
+    tier: 1
+    desc: "You are geared to work in a team. Any Team Work action, benefits from your presence twice."
+  - name: Lucky
+    tier: 1
+    desc: "Increase the maximum amount of luck you can store by +1 (8 total)."
+  - name: Lucky II
+    tier: 2
+    desc: "Increase the maximum amount of luck you can store by +2 (9 total)."
+    pre:
+      - Lucky
+  - name: Lucky III
+    tier: 3
+    desc: "Increase the maximum amount of luck you can store by +3 (10 total)."
+    pre:
+      - Lucky II
+  - name: Magix
+    tier: 1
+    desc: "You dabble in spell casting. The maximum level of spell you can learn is 2."
+    for?:
+      - Bat Pony
+      - Griffon
+      - Hippogriff
+  - name: Magix II
+    pre:
+      - Magix
+    desc: "You have dabbled for a bit in spell casting. The maximum level of spell you can learn is 4."
+    tier: 2
+  - name: Mighty Roar
+    for?:
+      - Griffon
+      - Dragon
+    desc: "You can roar loudly and proudly. This roar can inspire fear in your enemies. Roll 1d4 and apply that as a negative to their next roll. You must spend 1 Valor."
+    tier: 1
+  - name: Mind Over Matter
+    desc: "You gain a bonus based on your Grit. If your Grit is 2 or less, gain a slight bonus (+1). If your Grit is 3 or 4, gain a moderate bonus (+2). If your Grit is 5 gain a significant bonus (+3). This bonus is applied to your first damage check of any combat."
+    tier: 3
+    for?:
+      - Earth Pony
+        
