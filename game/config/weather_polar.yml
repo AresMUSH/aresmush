@@ -36,15 +36,15 @@ weather:
         stability: 50
       spring:
         temperature: cold
-        condition: clear clear clear clear clear fair fair fair fair misty misty misty overcast overcast windy windy windy dusting dusting snowing
+        condition: clear clear clear clear clear fair fair fair fair windy windy windy dusting dusting snowing
         stability: 70
       summer:
         temperature: cool
-        condition: clear fair windy overcast misty
+        condition: clear fair windy
         stability: 80
       fall:
         temperature: cool cool cold cold bitter
-        condition: clear clear clear clear clear fair fair fair fair fair overcast overcast misty misty misty dusting dusting snowing flurrying flurrying
+        condition: clear clear clear clear clear fair fair fair fair fair dusting dusting snowing flurrying flurrying
         stability: 70
   descriptions_polar:
        fall_bitter_clear_day : fall_bitter_clear_day_desc
@@ -66,16 +66,6 @@ weather:
        fall_bitter_flurrying_evening : fall_bitter_flurrying_evening_desc
        fall_bitter_flurrying_morning : fall_bitter_flurrying_morning_desc
        fall_bitter_flurrying_night : fall_bitter_flurrying_night_desc
-
-       fall_bitter_misty_day : fall_bitter_misty_day_desc
-       fall_bitter_misty_evening : fall_bitter_misty_evening_desc
-       fall_bitter_misty_morning : fall_bitter_misty_morning_desc
-       fall_bitter_misty_night : fall_bitter_misty_night_desc
-
-       fall_bitter_overcast_day : fall_bitter_overcast_day_desc
-       fall_bitter_overcast_evening : fall_bitter_overcast_evening_desc
-       fall_bitter_overcast_morning : fall_bitter_overcast_morning_desc
-       fall_bitter_overcast_night : fall_bitter_overcast_night_desc
 
        fall_bitter_snowing_day : fall_bitter_snowing_day_desc
        fall_bitter_snowing_evening : fall_bitter_snowing_evening_desc
@@ -102,16 +92,6 @@ weather:
        fall_cold_flurrying_morning : fall_cold_flurrying_morning_desc
        fall_cold_flurrying_night : fall_cold_flurrying_night_desc
 
-       fall_cold_misty_day : fall_cold_misty_day_desc
-       fall_cold_misty_evening : fall_cold_misty_evening_desc
-       fall_cold_misty_morning : fall_cold_misty_morning_desc
-       fall_cold_misty_night : fall_cold_misty_night_desc
-
-       fall_cold_overcast_day : fall_cold_overcast_day_desc
-       fall_cold_overcast_evening : fall_cold_overcast_evening_desc
-       fall_cold_overcast_morning : fall_cold_overcast_morning_desc
-       fall_cold_overcast_night : fall_cold_overcast_night_desc
-
        fall_cold_snowing_day : fall_cold_snowing_day_desc
        fall_cold_snowing_evening : fall_cold_snowing_evening_desc
        fall_cold_snowing_morning : fall_cold_snowing_morning_desc
@@ -137,16 +117,6 @@ weather:
        fall_cool_flurrying_morning : fall_cool_flurrying_morning_desc
        fall_cool_flurrying_night : fall_cool_flurrying_night_desc
 
-       fall_cool_misty_day : fall_cool_misty_day_desc
-       fall_cool_misty_evening : fall_cool_misty_evening_desc
-       fall_cool_misty_morning : fall_cool_misty_morning_desc
-       fall_cool_misty_night : fall_cool_misty_night_desc
-
-       fall_cool_overcast_day : fall_cool_overcast_day_desc
-       fall_cool_overcast_evening : fall_cool_overcast_evening_desc
-       fall_cool_overcast_morning : fall_cool_overcast_morning_desc
-       fall_cool_overcast_night : fall_cool_overcast_night_desc
-
        fall_cool_snowing_day : fall_cool_snowing_day_desc
        fall_cool_snowing_evening : fall_cool_snowing_evening_desc
        fall_cool_snowing_morning : fall_cool_snowing_morning_desc
@@ -161,16 +131,6 @@ weather:
        summer_cool_fair_evening : summer_cool_fair_evening_desc
        summer_cool_fair_morning : summer_cool_fair_morning_desc
        summer_cool_fair_night : summer_cool_fair_night_desc
-
-       summer_cool_misty_day : summer_cool_misty_day_desc
-       summer_cool_misty_evening : summer_cool_misty_evening_desc
-       summer_cool_misty_morning : summer_cool_misty_morning_desc
-       summer_cool_misty_night : summer_cool_misty_night_desc
-
-       summer_cool_overcast_day : summer_cool_overcast_day_desc
-       summer_cool_overcast_evening : summer_cool_overcast_evening_desc
-       summer_cool_overcast_morning : summer_cool_overcast_morning_desc
-       summer_cool_overcast_night : summer_cool_overcast_night_desc
 
        summer_cool_windy_day : summer_cool_windy_day_desc
        summer_cool_windy_evening : summer_cool_windy_evening_desc
@@ -191,16 +151,6 @@ weather:
        spring_cold_fair_evening : spring_cold_fair_evening_desc
        spring_cold_fair_morning : spring_cold_fair_morning_desc
        spring_cold_fair_night : spring_cold_fair_night_desc
-
-       spring_cold_misty_day : spring_cold_misty_day_desc
-       spring_cold_misty_evening : spring_cold_misty_evening_desc
-       spring_cold_misty_morning : spring_cold_misty_morning_desc
-       spring_cold_misty_night : spring_cold_misty_night_desc
-
-       spring_cold_overcast_day : spring_cold_overcast_day_desc
-       spring_cold_overcast_evening : spring_cold_overcast_evening_desc
-       spring_cold_overcast_morning : spring_cold_overcast_morning_desc
-       spring_cold_overcast_night : spring_cold_overcast_night_desc
 
        spring_cold_snowing_day : spring_cold_snowing_day_desc
        spring_cold_snowing_evening : spring_cold_snowing_evening_desc
