@@ -46,7 +46,7 @@ weather:
         temperature: cool cool cool cool cold cold cold cold bitter warm
         condition: clear clear clear clear clear fair fair fair fair fair overcast overcast misty misty misty dusting dusting snowing flurrying flurrying
         stability: 70
-  descriptions_mountain:
+  descriptions_polar:
     bitter_fair_day: bitter_fair_day
     bitter_fair_evening: bitter_fair_evening
     bitter_fair_night: bitter_fair_night
