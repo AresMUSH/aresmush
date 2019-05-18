@@ -292,7 +292,7 @@ fs3skills:
       pre:
        - Royal Canterlot Voice
     - name: Findy
-      desc: "Pronounced "Fin-Dee" as in Handy. Gain a slight bonus (+1) on any non-combat roll where your fins would be a significant advantage."
+      desc: "Pronounced 'Fin-Dee' as in Handy. Gain a slight bonus (+1) on any non-combat roll where your fins would be a significant advantage."
       tier: 1
       for?:
        - SeaPony
