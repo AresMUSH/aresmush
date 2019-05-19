@@ -153,7 +153,7 @@ en:
         # ------------------------------------------------------
         # My Stuff
         # ------------------------------------------------------
-        spells_title: "Spells"
+        spells_title: "Known Spell List"
         callname_title: "Call Name:"
         truename_title: "True Name:"
         birthdate_title: "Birthdate:"
@@ -167,3 +167,7 @@ en:
         body_title: "Body:"
         sheet_header: "%{game} Sheet - %{name}"
         status_title: "Approval Status:"
+        valor_title: "Valor:"
+        mana_title: "Mana:"
+        misc_title: "Miscellaneous:"
+        pool_display: "%{curr}/%{max}"

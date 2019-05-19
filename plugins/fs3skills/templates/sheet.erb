@@ -38,6 +38,8 @@
 <% end -%>
 
 <% end -%>
+<%= line_with_text t('fs3skills.misc_title') -%>
 
-%xh<%= t('fs3skills.xp_title') %>%xn <%= left( char.xp, 30 ) %> %xh<%= t('fs3skills.luck_title') %>%xn <%= luck %>
+%xh<%= t('fs3skills.valor_title') %>%xn <%= left( t('fs3skills.pool_display', :curr => valor_curr, :max => valor_max), 30 ) %> %xh<%= t('fs3skills.mana_title') %>%xn <%= left( t('fs3skills.pool_display', :curr => mana_curr, :max => mana_max), 30 ) %>
+%xh<%= t('fs3skills.xp_title') %>%xn <%= left( t('fs3skills.pool_display', :curr => char.xp, :max => xp_max), 30 ) %> %xh<%= t('fs3skills.luck_title') %>%xn <%= t('fs3skills.pool_display', :curr => luck, :max => luck_max) %>
 %lf

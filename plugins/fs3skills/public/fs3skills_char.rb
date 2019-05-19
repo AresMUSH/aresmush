@@ -5,6 +5,7 @@ module AresMUSH
     # Valor & Mana all use this variable as a Negative to the total.
     attribute :fs3_valor, :type => DataType::Integer, :default => 0
     attribute :fs3_mana, :type => DataType::Integer, :default => 0
+    attribute :fs3_bonus_valor, :type => DataType::Integer, :default => 0
 
 
     collection :fs3_attributes, "AresMUSH::FS3Attribute"

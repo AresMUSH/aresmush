@@ -60,7 +60,7 @@ module AresMUSH
       def advantages
         list = []
         @char.fs3_advantages.sort_by(:name, :order => "ALPHA").each_with_index do |l, i|
-          list << format_adv_bg(l, i)
+          list << format_language(l, i)
         end
         list
       end
@@ -166,6 +166,41 @@ module AresMUSH
         Global.read_config("game","name")
       end
 
+      def xp_max
+        Global.read_config("FS3Skills","max_xp_hoard")
+      end
+
+      def luck_max
+        Global.read_config("FS3Skills","max_luck")
+      end
+
+      def valor_max
+        attr = FS3Skills.ability_rating(@char,"Presence") + FS3Skills.ability_rating(@char,"Grit")
+        adv = char.fs3_bonus_valor
+        max = adv + attr
+        max == 0 ? "1" : max
+      end
+
+      def valor_curr
+        max = valor_max
+        dmg = char.fs3_valor
+        cur = max - dmg
+        dmg
+      end
+
+      def mana_max
+        attr = FS3Skills.ability_rating(@char,"Presence") + FS3Skills.ability_rating(@char,"Grit") + FS3Skills.ability_rating(@char,"Wits") + FS3Skills.ability_rating(@char,"Reflexes") + FS3Skills.ability_rating(@char,"Perception") + FS3Skills.ability_rating(@char,"Brawn")
+        adv = 0
+        max = adv + attr
+        max == 0 ? "1" : max
+      end
+
+      def mana_curr
+        max = mana_max
+        dmg = char.fs3_mana
+        cur = max - dmg
+        dmg
+      end
     end
   end
 end
