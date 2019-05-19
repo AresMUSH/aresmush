@@ -1,3 +1,349 @@
 ---
 fs3skills:
-  days_between_learning_spells: 17
+  days_between_learning_spells: 60
+  use_potions: true
+  use_fatigue: true
+  cast_skill: Spellcasting
+  effect_types:
+    - Illusion
+    - Buff
+    - Creation
+    - Damage
+    - Other
+    - Transformation
+    - AOE Damage
+    - Defense
+    - Summon
+    - Travel
+    - Revive
+    - Heal
+    - Resurrection
+    - Stun
+  spells:
+    Bad Hair Day:
+      name: Bad Hair Day
+      level:
+    Cloud Walker:
+      name: Cloud Walker
+      level:
+    Emergency Teleport:
+      name: Emergency Teleport
+      level:
+    Fireworks Picture Show:
+      name: Fireworks Picture Show
+      level:
+    Flashy Teleport:
+      name: Flashy Teleport
+      level:
+    Dress-Up:
+      name: Dress-Up
+      level:
+    Improvised Dress-Up:
+      name: Improvised Dress-Up
+      level:
+    Gem Seeker:
+      name: Gem Seeker
+      level:
+    Instant Manliness:
+      name: Insant Manliness
+      level:
+    Light:
+      name: Light
+      level:
+    Light Form:
+      name: Light Form
+      level:
+    Lip Zip:
+      name: Lip Zip
+      level:
+    Magic Surge:
+      name: Magic Surge
+      level:
+    Magical Holding:
+      name: Magical Holding
+      level:
+    Magical Melody:
+      name: Magical Melody
+      level:
+    Mend Hair:
+      name: Mend Hair
+      level:
+    Mend Wood:
+      name: Mend Wood
+      level:
+    Mouse Mount:
+      name: Mouse Mount
+      level:
+    Mist Form:
+      name: Mist Form
+      level:
+    No Food For You:
+      name: No Food For You
+      level:
+    Rope Charmer:
+      name: Rope Charmer
+      level:
+    Small Area Teleport:
+      name: Small Area Teleport
+      level:
+    Spread Your Wings:
+      name: Spread Your Wings
+      level:
+    Summon Door:
+      name: Summon Door
+      level:
+    Summon Storm Cloud:
+      name: Summon Storm Cloud
+      level:
+    Throwback:
+      name: Throwback
+      level:
+    Thunderbolt:
+      name: Thunderbolt
+      level:
+    Topiary:
+      level:
+      name: Topiary
+    Transmute Self:
+      level:
+      name: Transmute Self
+    Up The Sleeve:
+      name: Up The Sleeve
+      level:
+    Vegetable Carriage:
+      name: Vegetable Carriage
+      level:
+    'Warp Flame, Lesser':
+      name: "Warp Flame, Lesser"
+      level:
+    'You, Robot':
+      name: "You, Robot"
+      level:
+    Animate Toy:
+      name: Animate Toy
+      level:
+    Arrest Movement:
+      name: Arrest Movement
+      level:
+    Break Chains:
+      name: Break Chains
+      level:
+    Cloak Of Bats:
+      name: Cloak Of Bats
+      level:
+    Create Darkness:
+      name: Create Darkness
+      level:
+    Enthrall:
+      name: Enthrall
+      level:
+    Failsafe Spell:
+      name: Failsafe Spell
+      level:
+    Fire Of Friendship:
+      name: Fire Of Friendship
+      level:
+    Force Bolt:
+      name: Force Bolt
+      level:
+    'Force Shield, Greater':
+      name: "Force Sheild, Greater"
+      level:
+    'Force Shield, Lesser':
+      name: "Force Sheild, Lesser"
+      level:
+    Group Teleport:
+      name: Group Teleport
+      level:
+    Kindle Love:
+      name: Kindle Love
+      level:
+    Levitation:
+      name: Levitation
+      level:
+    Lockdown:
+      name: Lockdown
+      level:
+    Magic Beam:
+      name: Magic Beam
+      level:
+    Mass Repair:
+      name: Mass Repair
+      level:
+    Mind Restoration:
+      name: Mind Restoration
+      level:
+    Moonwalker:
+      name: Moonwalker
+      level:
+    Move The Heavens:
+      name: Move The Heavens
+      level: 9
+    Mystic Image:
+      name: Mystic Image
+      level:
+    Mystic Mist:
+      name: Mystic Mist
+      level:
+    Rejuvenation:
+      name: Rejuvenation
+      level:
+    Scry Speak:
+      name: Scry Speak
+      level:
+    Scrying:
+      name: Scrying
+      level:
+    Speed Read:
+      name: Speed Read
+      level:
+    Summon Couch:
+      name: Summon Couch
+      level:
+    Sunbeam:
+      name: Sunbeam
+      level:
+    Telekinetic Throw:
+      name: Telekinetic Throw
+      level:
+    Teleport Other:
+      name: Teleport Other
+      level:
+    Turn Back The Clock:
+      name: Turn Back The Clock
+      level:
+    'Want It, Need It':
+      name: "Want It, Need It"
+      level:
+    'Warp Flame, Greater':
+      name: "Warp Flame, Greater"
+      level:
+    Age Spell:
+      name: Age Spell
+      level:
+    Agony:
+      name: Agony
+      level:
+    Alarm Barrier:
+      name: Alarm Barrier
+      level:
+    Apples To Oranges:
+      name: Apples To Oranges
+      level:
+    Arcane Cartography:
+      name: Arcane Cartography
+      level:
+    Arcane Trap:
+      name: Arcane Trap
+      level:
+    Banishment:
+      name: Banishment
+      level:
+    Creeping Shadow:
+      name: Creeping Shadow
+      level:
+    Crystal Heart:
+      name: Crystal Heart
+      level:
+    Crystal Prison:
+      name: Crystal Prison
+      level:
+    'Dance, Puppet, Dance':
+      name: "Dance, Puppet, Dance"
+      level:
+    Dancing Door:
+      name: Dancing Door
+      level:
+    Dark Crystal:
+      name: Dark Crystal
+      level:
+    Dark Infection:
+      name: Dark Infection
+      level:
+    Darkest Despair:
+      level:
+      name: Darkest Despair
+    Dreamwalk:
+      name: Dreamwalk
+      level:
+    Gravity Shift:
+      name: Gravity Shift
+      level:
+    Horn Fuse:
+      level:
+      name: Horn Fuse
+    Flying Zoo:
+      name: Flying Zoo
+      level:
+    Lingering Despair:
+      name: Lingering Despair
+      level:
+    Mute Button:
+      name: Mute Button
+      level:
+    Pimp My Ride:
+      name: Pimp My Ride
+      level:
+    Refill:
+      name: Refill
+      level:
+    Releasing Spell:
+      name: Releasing Spell
+      level:
+    Smokescreen:
+      name: Smokescreen
+      level:
+    Snowfall:
+      name: Snowfall
+      level:
+    Summon Instruments:
+      name: Summon Instruments
+      level:
+    Summon Parasprite:
+      level:
+      name: Summon Parasprite
+    Tickle Torture:
+      name: Tickle Torture
+      level:
+    Water Walking:
+      name: Water Walking
+      level:
+    Weather Control:
+      name: Weather Control
+      level:
+    Wild Growth:
+      name: Wild Growth
+      level:
+    Astral Projection:
+      name: Astral Projection
+      level:
+    Freeze Ray:
+      name: Freeze Ray
+      level:
+    Inspiration Manifestation:
+      name: Inspiration Manifestation
+      level:
+    Jewels Of Radiance:
+      name: Jewels Of Radiance
+      level:
+    Kindle:
+      name: Kindle
+      level:
+    Magic-Alchemical Catalyst:
+      name: Magic-Alchemical Catalyst
+      level:
+    Magical Entroy:
+      name: Magical Entropy
+      level:
+    Null-Magic Barrier:
+      name: Null-Magic Barrier
+      level:
+    Paralyzing Blastwave:
+      name: Paralyzing Blastwave
+      level:
+    Racial Transmutation:
+      name: Racial Transmutation
+      level:
+    Transformation Ritual:
+      name: Transformation Ritual
+      level: 

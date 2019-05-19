@@ -116,7 +116,7 @@ module AresMUSH
           linked_attr = show_linked_attr ? print_linked_attr(s) : "   "
           linebreak = i % 2 == 1 ? "" : "%r"
           rating_text = "#{s.level}"
-          "#{linebreak}[#{rating_text}] #{left(name, 34)}"
+          "#{linebreak}[#{rating_text}] #{left(name, 32)}"
       end
 
       def format_language(s, i, show_linked_attr = false)
