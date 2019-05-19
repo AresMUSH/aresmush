@@ -167,11 +167,11 @@ module AresMUSH
       end
 
       def xp_max
-        Global.read_config("FS3Skills","max_xp_hoard")
+        Global.read_config("fs3skills","max_xp_hoard")
       end
 
       def luck_max
-        Global.read_config("FS3Skills","max_luck")
+        Global.read_config("fs3skills","max_luck")
       end
 
       def valor_max
