@@ -1,13 +1,13 @@
 module AresMUSH
   class FS3Spell < Ohm::Model
     include ObjectModel
-    include LearnableAbility
+    include LearnableSpellAbility
 
     reference :character, "AresMUSH::Character"
     attribute :name
-    attribute :level, :type => DataType::Integer, :default => 0
+    attribute :rating, :type => DataType::Integer, :default => 0
 
-    index :level
+    index :rating
     index :name
   end
 end
