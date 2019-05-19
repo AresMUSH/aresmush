@@ -198,6 +198,18 @@ module AresMUSH
         cur = max - dmg
         cur
       end
+
+      def heart
+        (FS3Skills.ability_rating(@char,"Presence") + FS3Skills.ability_rating(@char,"Grit")) / 2
+      end
+
+      def mind
+        (FS3Skills.ability_rating(@char,"Wits") + FS3Skills.ability_rating(@char,"Perception") ) / 2
+      end
+
+      def body
+        (FS3Skills.ability_rating(@char,"Brawn") + FS3Skills.ability_rating(@char,"Reflexes") ) / 2
+      end
     end
   end
 end
