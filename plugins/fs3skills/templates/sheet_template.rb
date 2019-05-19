@@ -185,7 +185,7 @@ module AresMUSH
         max = valor_max
         dmg = char.fs3_valor
         cur = max - dmg
-        dmg
+        cur
       end
 
       def mana_max
@@ -199,7 +199,7 @@ module AresMUSH
         max = mana_max
         dmg = char.fs3_mana
         cur = max - dmg
-        dmg
+        cur
       end
     end
   end
