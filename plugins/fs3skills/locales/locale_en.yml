@@ -171,3 +171,5 @@ en:
         mana_title: "Mana:"
         misc_title: "Miscellaneous:"
         pool_display: "%{curr}/%{max}"
+        derived_title: "Derived Attributes"
+        derived_display: "%{left(name, 16)} [%{rating}]      %{left(rating_text,12)}""
