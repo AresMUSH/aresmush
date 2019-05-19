@@ -15,11 +15,13 @@ module AresMUSH
         char.fs3_advantages.find(name: ability_name).first
       when :language
         char.fs3_languages.find(name: ability_name).first
+      when :spell
+        char.fs3_spells.find(name: ability_name).first
       else
         nil
       end
     end
-    
+
     def self.get_linked_attr(ability_name)
       case FS3Skills.get_ability_type(ability_name)
       when :action
@@ -27,6 +29,8 @@ module AresMUSH
         return config["linked_attr"]
       when :attribute
         return nil
+      when :spell
+        return "Presence"
       else
         return Global.read_config("fs3skills", "default_linked_attr")
       end

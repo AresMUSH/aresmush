@@ -6,6 +6,7 @@ module AresMUSH
     attribute :fs3_valor, :type => DataType::Integer, :default => 0
     attribute :fs3_mana, :type => DataType::Integer, :default => 0
     attribute :fs3_bonus_valor, :type => DataType::Integer, :default => 0
+    attribute :fs3_trained_mana, :type => DataType::Integer, :default => 0
 
 
     collection :fs3_attributes, "AresMUSH::FS3Attribute"
