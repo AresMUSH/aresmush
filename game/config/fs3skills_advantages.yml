@@ -7,7 +7,7 @@ fs3skills:
       for?:
        - Alicorn
        - Unicorn
-    - name: "Arcane Talent II"
+    - name: "Arcane Talent 2"
       tier: 2
       pre:
        - Arcane Talent
@@ -17,7 +17,7 @@ fs3skills:
     - name: Artifice
       desc: Gain a slight bonus (+1) to checks creating single use magical items or potions.
       tier: 1
-    - name: "Artifice II"
+    - name: "Artifice 2"
       desc: Gain a moderate bonus (+2) to checks creating single use magical items or potions.
       tier: 2
       pre:
@@ -29,11 +29,11 @@ fs3skills:
        - Zebra
        - Crystal Pony
        - Dragon
-    - name: "Artifice III"
+    - name: "Artifice 3"
       desc: Gain a significant bonus (+3) to checks creating single use magical items or potions.
       tier: 3
       pre:
-       - Artifice II
+       - Artifice 2
       for?:
        - Unicorn
        - Zebra
@@ -43,16 +43,16 @@ fs3skills:
     - name: Blaster Caster
       desc: "When casting a spell roll 1d4 and lower the mana cost by that amount. If the number would lower to a negative number, you gain that much mana."
       tier: 1
-    - name: "Blaster Caster II"
+    - name: "Blaster Caster 2"
       desc: "When casting a spell roll 1d6 and lower the mana cost by that amount. If the number would lower to a negative number, you gain that much mana."
       tier: 2
       pre:
        - Blaster Caster
-    - name: "Blaster Caster III"
+    - name: "Blaster Caster 3"
       desc: "When casting a spell roll 2d6 and lower the mana cost by that amount. If the number would lower to a negative number, you gain that much mana."
       tier: 3
       pre:
-       - Blaster Caster II
+       - Blaster Caster 2
     - name: Bloodhound
       desc: Gain a slight bonus (+1) to checks involving finding or following scents.
       for?:
@@ -60,7 +60,7 @@ fs3skills:
        - Hippogriff
        - Kitsune
       tier: 1
-    - name: Bloodhound II
+    - name: Bloodhound 2
       desc: Gain a moderate bonus (+2) to checks involving finding or following scents.
       pre:
        - Bloodhound
@@ -80,18 +80,18 @@ fs3skills:
       tier: 1
       desc: "Once per week, you may expend a point of Valor to invoke a cumulative bonus of +1, to a max of +3 on any single roll type. For example, casting a specific spell."
       type: Stack
-    - name: Doormat to Dynamo II
+    - name: Doormat to Dynamo 2
       tier: 2
       type: Stack
       desc: "Gain another use of the Doormat to Dynamo Advantage."
       pre:
        - Doormat to Dynamo
-    - name: Doormat to Dynamo III
+    - name: Doormat to Dynamo 3
       tier: 3
       type: Stack
       desc: "Gain another use of the Doormat to Dynamo Advantage"
       pre:
-       - Doormat to Dynamo II
+       - Doormat to Dynamo 2
     - name: Dragon Heart
       desc: "You may now use a fire attack. You gain immunity to non-magical fire."
       tier: 1
@@ -113,16 +113,16 @@ fs3skills:
       for?:
        - Griffon
        - Hippogriff
-    - name: Eagle Eye II
+    - name: Eagle Eye 2
       desc: "You gain a moderate bonus (+2) to all checks centering on visual observation and awareness, as long as their is good lighting."
       pre:
        - Eagle Eye
       tier: 2
-    - name: Eagle Eye III
+    - name: Eagle Eye 3
       desc: "You gain a moderate bonus (+2) to all checks centering on visual observation and awareness. You may now see in perfect darkness."
       tier: 3
       pre:
-       - Eagle Eye II
+       - Eagle Eye 2
     - name: Echo-Location
       desc: "You may use sound to see in a full 360 degrees using sound. While you can only make out shapes of physical things, you can do so even when blinded."
       tier: 1
@@ -132,7 +132,7 @@ fs3skills:
     - name: Exotic Lore
       desc: "Once per week, you may add a significant bonus (+3) to an action skill which has a rating of Everyman or Unskilled."
       tier: 1
-    - name: Exotic Lore II
+    - name: Exotic Lore 2
       tier: 2
       pre:
        - Exotic Lore
@@ -140,13 +140,13 @@ fs3skills:
        - Kitsune
        - Zebra
       desc: "Gain another use of Exotic Lore."
-    - name: Exotic Lore III
+    - name: Exotic Lore 3
       desc: "Gain another use of Exotic Lore."
       for?:
        - Zebra
       tier: 3
       pre:
-       - Exotic Lore II
+       - Exotic Lore 2
     - name: Improved Flight
       desc: "You gain a slight bonus (+1) to any flying checks."
       tier: 1
@@ -160,16 +160,16 @@ fs3skills:
     - name: Gifted
       desc: "Once per week, you can automatically succeed on an any non-combat Action Skill check."
       tier: 1
-    - name: Gifted II
+    - name: Gifted 2
       desc: "Gain another use of Gifted."
       pre:
        - Gifted
       tier: 2
-    - name: Gifted III
+    - name: Gifted 3
       desc: "Gain another use of Gifted."
       tier: 3
       pre:
-       - Gifted II
+       - Gifted 2
     - name: Great & Powerful
       desc: "You have an uncanny skill with magic. You gain +1 spell for every rank above Competent in Spellcasting."
       tier: 2
@@ -184,7 +184,7 @@ fs3skills:
       for?:
        - Earth Pony
        - Deer
-    - name: Industrious II
+    - name: Industrious 2
       desc: "When using a non-magical tool, you gain a moderate bonus (+2) to the action."
       pre:
        - Industrious
@@ -206,16 +206,16 @@ fs3skills:
     - name: Lucky
       tier: 1
       desc: "Increase the maximum amount of luck you can store by +1 (8 total)."
-    - name: Lucky II
+    - name: Lucky 2
       tier: 2
       desc: "Increase the maximum amount of luck you can store by +2 (9 total)."
       pre:
        - Lucky
-    - name: Lucky III
+    - name: Lucky 3
       tier: 3
       desc: "Increase the maximum amount of luck you can store by +3 (10 total)."
       pre:
-       - Lucky II
+       - Lucky 2
     - name: Magix
       tier: 1
       desc: "You dabble in spell casting. The maximum level of spell you can learn is 2."
@@ -223,7 +223,7 @@ fs3skills:
        - Bat Pony
        - Griffon
        - Hippogriff
-    - name: Magix II
+    - name: Magix 2
       pre:
        - Magix
       desc: "You have dabbled for a bit in spell casting. The maximum level of spell you can learn is 4."
@@ -245,7 +245,7 @@ fs3skills:
     - name: Noble Soul
       desc: "Each month you start with 1 extra point of Valor."
       tier: 1
-    - name: Noble Soul II
+    - name: Noble Soul 2
       pre:
        - Noble Soul
       for?:
@@ -255,9 +255,9 @@ fs3skills:
        - Griffon
       desc: "Each month you start with 2 extra points of Valor."
       tier: 2
-    - name: Noble Soul III
+    - name: Noble Soul 3
       pre:
-       - Noble Soul II
+       - Noble Soul 2
       for?:
        - Alicorn
        - Earth Pony
@@ -269,7 +269,7 @@ fs3skills:
       for?:
        - Crystal Pony
       crystal_races: true
-    - name: Reflective Protection II
+    - name: Reflective Protection 2
       desc: "You may extend this to any member on your team."
       tier: 2
       pre:
@@ -284,7 +284,7 @@ fs3skills:
     - name: Royal Canterlot Voice
       desc: "Gain a slight bonus (+1) to all Socializing, Deception or Counselling checks."
       tier: 1
-    - name: Royal Canterlot Voice II
+    - name: Royal Canterlot Voice 2
       desc: "Gain a moderate bonus (+2) to all rolls that use Presence."
       tier: 2
       for?:
@@ -313,18 +313,18 @@ fs3skills:
        - Kitsune
        - Zebra
        - Deer
-    - name: Sorcery II
+    - name: Sorcery 2
       desc: "Your maximum level of spell you can cast is now equal to 5."
       tier: 2
       pre:
        - Sorcery
-    - name: Sorcery III
+    - name: Sorcery 3
       desc: "Your maximum level of spell you can cast is now equal to 7."
       for?:
        - Dragon
        - Kitsune
       pre:
-       - Sorcery II
+       - Sorcery 2
       tier: 3
     - name: Special Purpose
       desc: "This ties to your cutie mark. By having this advantage, you have a cutie mark. You gain a slight bonus (+1) to any rolls involving your special purpose."
@@ -365,7 +365,7 @@ fs3skills:
       for?:
        - Alicorn
        - Unicorn
-    - name: Improved Telekinesis II
+    - name: Improved Telekinesis 2
       tier: 2
       pre:
        - Improved Telekinesis
@@ -376,7 +376,7 @@ fs3skills:
        - Pegasus
        - Deer
       desc: "You may now manipulate currently existing weather conditions, by making the appropriate check. Deer may only affect winter weather, such as snow."
-    - name: Weather Patrol II
+    - name: Weather Patrol 2
       pre:
        - Weather Patrol
       for?:
@@ -409,7 +409,7 @@ fs3skills:
        - Unicorn
       desc: "You are able to use the most powerful magics with relative ease. Your maximum spell level is 5."
       tier: 1
-    - name: Wizardry II
+    - name: Wizardry 2
       pre:
        - Wizardry
       for?:
@@ -442,15 +442,15 @@ fs3skills:
       tier: 1
       for?:
        - Seapony
-    - name: Shoobedoo II
+    - name: Shoobedoo 2
       desc: "Your maximum level of spell you can sing is now equal to 5."
       tier: 2
       pre:
        - Shoobedoo
-    - name: Shoobedoo III
+    - name: Shoobedoo 3
       desc: "Your maximum level of spell you can sing is now equal to 7."
       pre:
-       - Shoobedoo II
+       - Shoobedoo 2
       tier: 3
   advantages_blurb: 'Advantages represent important things your character possesses that are not skills. Unlike skills, advantages are not ranked, rather they are have or have-nots.'
   use_advantages: true
