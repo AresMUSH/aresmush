@@ -147,13 +147,12 @@ module AresMUSH
       else
         school = "Magic"
         cast_mod = FS3Skills.ability_rating(caster, "Magic") * 2
-        Global.logger.debug "Mod: #{mod}"
-        Global.logger.debug "Cast Mod: #{cast_mod}"
         mod = mod.to_i + cast_mod
       end
 
       spell_mod = Custom.item_spell_mod(caster)
       total_mod = mod.to_i + spell_mod.to_i
+      Global.logger.info "#{caster.name} rolling #{school} to cast #{spell}. Mod=#{mod} Item Mod=#{spell_mod} Off-school cast mod=#{cast_mod}"
       roll = caster.roll_ability(school, total_mod)
       die_result = roll[:successes]
       succeeds = Custom.combat_spell_success(spell, die_result)
