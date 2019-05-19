@@ -11,7 +11,7 @@
 <% end -%>
 
 <%= line_with_text t('fs3skills.derived_title') -%>
-<% t('fs3skills.derived_display', :name => "Body", :rating => FS3Attribute.print_rating['body'], :rating_name => FS3Attribute.rating['body'] ) -%>
+<% t('fs3skills.derived_display', :name => "Body", :rating => FS3Skills.FS3Attribute.print_rating['body'], :rating_name => FS3Skills.FS3Attribute.rating['body'] ) -%>
 
 <%= line_with_text t('fs3skills.action_skills_title') -%>
 <% action_skills.each do |a| -%>
