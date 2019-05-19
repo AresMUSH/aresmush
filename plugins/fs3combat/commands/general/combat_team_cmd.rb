@@ -7,8 +7,8 @@ module AresMUSH
       attr_accessor :names, :team
 
       def parse_args
-        if (cmd.args =~ /\//)
-          args = cmd.parse_args( /(?<arg1>[^\/]+)\/(?<arg2>[^\=]+)\=?(?<arg3>.+)?/)
+        if (cmd.args =~ /=/)
+          args = cmd.parse_args(ArgParser.arg1_equals_arg2)
           self.names = titlecase_list_arg(args.arg1)
           self.team = trim_arg(args.arg2).to_i
         else
