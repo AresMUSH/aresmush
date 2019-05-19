@@ -106,11 +106,11 @@ module AresMUSH
       char.fs3_languages.each { |s| s.delete }
       char.fs3_advantages.each { |s| s.delete }
       char.fs3_spells.each { |s| s.delete }
-      char.fs3_valor = 0
-      char.fs3_xp = 0
-      char.fs3_bonus_valor = 0
-      char.fs3_trained_mana = 0
-      
+      char.update(fs3_valor: 0)
+      char.update(fs3_xp: 0)
+      char.update(fs3_bonus_valor: 0)
+      char.update(fs3_trained_valor: 0)
+
 
       languages = Global.read_config("fs3skills", "starting_languages")
       if (languages)
