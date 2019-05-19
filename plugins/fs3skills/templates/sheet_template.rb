@@ -182,10 +182,7 @@ module AresMUSH
       end
 
       def valor_curr
-        max = valor_max
-        dmg = char.fs3_valor
-        cur = max - dmg
-        cur
+        char.fs3_valor
       end
 
       def mana_max
