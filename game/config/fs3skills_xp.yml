@@ -7,15 +7,15 @@ fs3skills:
   max_xp_hoard: 5
   periodic_xp: 1
   skills_requiring_training:
-    - Counselling
-    - Doctoring
-    - Fighting
-    - Hoof Weapons
-    - Larceny
-    - Markspony
-    - Navigator
-    - Spellcasting
-    - Tinker
+  - Counselling
+  - Doctoring
+  - Fighting
+  - Hoof Weapons
+  - Larceny
+  - Markspony
+  - Navigator
+  - Spellcasting
+  - Tinker
   xp_costs:
     language:
       '0': 1
@@ -42,6 +42,15 @@ fs3skills:
       '0': 1
       '1': 4
       '2': 12
+    spell:
+      '0': 8
+      '1': 16
+      '2': 24
+      '3': 32
+      '4': 40
+      '5': 48
+      '6': 56
+      '7': 64
   xp_cron:
     day_of_week:
     - Sat

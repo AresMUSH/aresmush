@@ -1,6 +1,8 @@
 ---
 plugins:
   disabled_plugins:
+  - fs3combat
+  - fs3skills
   - ranks
   config_help_links:
     ffg: https://github.com/AresMUSH/ares-extras/tree/master/plugins/ffg
