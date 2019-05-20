@@ -1,7 +1,7 @@
 module AresMUSH
   class FS3Spell < Ohm::Model
     include ObjectModel
-    include LearnableSpellAbility
+    include LearnableAbility
 
     reference :character, "AresMUSH::Character"
     attribute :name
