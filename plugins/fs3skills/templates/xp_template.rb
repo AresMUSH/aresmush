@@ -14,10 +14,6 @@ module AresMUSH
         "#{left(a.name, 34)} #{progress(a)} #{detail(a)} #{days_left(a)}"
       end
 
-      def display_spell(a)
-        "#{left(a.name, 34)} #{progress(a)} #{detail(a)} #{days_left_spell(a)}"
-      end
-
       def detail(a)
         can_raise = !FS3Skills.check_can_learn(@char, a.name, a.rating)
         status = can_raise ? "(#{a.xp}/#{a.xp_needed})" : "(---)"
