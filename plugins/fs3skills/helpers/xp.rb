@@ -11,7 +11,7 @@ module AresMUSH
       char.update(fs3_xp: xp)
     end
 
-    def self.days_between_learning
+    def self.days_between_learning(ability_name)
       ability_type = FS3Skills.get_ability_type(ability_name)
       if ability_type == :spell
         Global.read_config("fs3skills","days_between_learning_spells")
