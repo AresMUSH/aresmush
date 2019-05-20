@@ -30,12 +30,6 @@ module AresMUSH
         center(message, 13)
       end
 
-      def days_left_spell(a)
-        time_left = FS3Skills.days_to_next_learn(a)
-        message = time_left == 0 ? t('fs3skills.xp_days_now') : t('fs3skills.xp_days', :days => time_left)
-        center(message, 13)
-      end
-
       def unlearned_spells
         stats = @char.fs3_spells.sort_by(:name, :order => "Alpha")
         filtered = stats.select{ |x,_| x.is_learned == false}
