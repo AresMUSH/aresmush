@@ -30,7 +30,7 @@ module AresMUSH
     end
 
     def self.days_to_next_learn(ability)
-      (ability.time_to_next_learn / 86400).ceil
+      (ability.time_to_next_learn(ability) / 86400).ceil
     end
 
     def self.check_can_learn(char, ability_name, rating)
