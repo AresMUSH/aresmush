@@ -194,7 +194,7 @@ fs3combat:
         Left Hand: 6
         Right Hand: 6
         Left Foot: 6
-        Right Foot: 6 
+        Right Foot: 6
     Ice:
       description: Level 4 Water spell
       is_magic: true
@@ -275,4 +275,4 @@ fs3combat:
     Huxian's Gift:
       description: Magical item
       is_magic: true
-      defense: 2
+      defense: 3
