@@ -2,36 +2,52 @@ module AresMUSH
   module FS3Skills
     # Template for an exit.
     class XpTemplate < ErbTemplateRenderer
-        
+
       attr_accessor :char
-          
+
       def initialize(char)
         @char = char
-        super File.dirname(__FILE__) + "/xp.erb"        
+        super File.dirname(__FILE__) + "/xp.erb"
       end
-              
+
       def display(a)
-        "#{left(a.name, 20)} #{progress(a)} #{detail(a)} #{days_left(a)}"
+        "#{left(a.name, 34)} #{progress(a)} #{detail(a)} #{days_left(a)}"
       end
-      
+
+      def display_spell(a)
+        "#{left(a.name, 34)} #{progress(a)} #{detail(a)} #{days_left_spell(a)}"
+      end
+
       def detail(a)
         can_raise = !FS3Skills.check_can_learn(@char, a.name, a.rating)
         status = can_raise ? "(#{a.xp}/#{a.xp_needed})" : "(---)"
         status.ljust(16)
       end
-      
+
       def days_left(a)
         time_left = FS3Skills.days_to_next_learn(a)
         message = time_left == 0 ? t('fs3skills.xp_days_now') : t('fs3skills.xp_days', :days => time_left)
         center(message, 13)
       end
-      
+
+      def days_left_spell(a)
+        time_left = FS3Skills.days_to_next_learn(a)
+        message = time_left == 0 ? t('fs3skills.xp_days_now') : t('fs3skills.xp_days', :days => time_left)
+        center(message, 13)
+      end
+
+      def unlearned_spells
+        stats = @char.fs3_spells.sort_by(:name, :order => "Alpha")
+        filtered = stats.select{ |x,_| x.is_learned == false}
+        filtered
+      end
+
       def progress(a)
         can_raise = !FS3Skills.check_can_learn(@char, a.name, a.rating)
         return ".........." if !can_raise
         ProgressBarFormatter.format(a.xp, a.xp_needed)
       end
-      
+
     end
   end
 end
