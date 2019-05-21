@@ -28,6 +28,7 @@ module AresMUSH
       end
     end
   end
+end
   def level
     self.console_level
   end
