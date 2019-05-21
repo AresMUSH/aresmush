@@ -18,8 +18,8 @@ module AresMUSH
     collection :console_companion, "AresMUSH::ConsoleCompanion"
     collection :console_status, "AresMUSH::ConsoleStatus"
 
-  end
-  before_delete :delete_abilities
+
+    before_delete :delete_abilities
 
   def delete_abilities
     [ self.console_patience, self.console_attributes, self.console_skills, self.console_inventory,  self.console_equipped, self.console_huntlog, self.console_questlog, self.console_companion, self.console_status,].each do |list|
