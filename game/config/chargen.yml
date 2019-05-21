@@ -72,3 +72,6 @@ chargen:
     review:
       help: apps
   welcome_message: Please welcome %{name}, our latest %{position} to be approved!
+  groups_blurb: Groups determine your character's affiliations.
+  demographics_blurb: Demographics record your basic character info.
+  rank_blurb: Military rank.

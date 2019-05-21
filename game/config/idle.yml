@@ -23,16 +23,20 @@ idle:
   reminder_category: MISC
   roster_fields:
   - field: name
-    width: 20
+    width: 28
     title: Name
   - field: demographic
     width: 10
     title: Gender
     value: gender
   - field: group
-    width: 15
-    title: Species Origin
-    value: origin
+    width: 20
+    title: Faction
+    value: Faction
+  - field: group
+    width: 20
+    title: Position
+    value: Position
   roster_welcome_msg: Welcome!  You may wish to check your %xcnotes%xn and web portal
     profile page for any notes left by the prior player.  Type %xhonstage%xn to go
     forth and RP.

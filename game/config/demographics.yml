@@ -48,6 +48,8 @@ demographics:
         Bat Pony: Nocturnal Ponies with wings of a bat.
         Breezie: A fairy-like mini-pony, no bigger than a humming bird.
         Seapony: Half Pony, Half Fish, all voice. The Musical Ponies of the Sea.
+        Tortoise: Slow and wise, long lived like the dragons. These are not the teenage
+          mutant kind.
     Element Of Harmony:
       desc: Which element of harmony are you attuned to?
       values:
