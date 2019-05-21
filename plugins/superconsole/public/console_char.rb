@@ -69,8 +69,8 @@ module AresMUSH
         yellow + gray
       end
       def show_bars
-        health_bar
-        mana_bar
+        health_bar +
+        mana_bar +
         stamina_bar
       end
   end
