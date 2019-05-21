@@ -66,7 +66,7 @@ module AresMUSH
         leftnum = left.to_f.floor
         yellow = unused.repeat(leftnum)
         gray = used.repeat(dmgnum)
-        yello + gray
+        yellow + gray
       end
       def show_bars
         health_bar
