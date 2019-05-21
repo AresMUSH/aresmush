@@ -28,6 +28,9 @@ module AresMUSH
        end
      end
   end
+   def level
+     self.console_level || 1
+   end
    def health_bar
       unused = "%X1 %xn"
       used = "%X242 %xn"
