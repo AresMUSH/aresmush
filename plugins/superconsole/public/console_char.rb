@@ -20,33 +20,22 @@ module AresMUSH
 
 
     before_delete :delete_abilities
-
     def delete_abilities
-      [ self.console_patience, self.console_attributes, self.console_skills, self.console_inventory,  self.console_equipped, self.console_huntlog, self.console_questlog, self.console_companion, self.console_status,].each do |list|
+      [ self.console_patience, self.console_attributes, self.console_skills, self.console_inventory, self.console_equipped, self.console_huntlog, self.console_questlog, self.console_companion, self.console_status ].each do |list|
         list.each do |a|
-         a.delete
+          a.delete
+        end
       end
     end
-   end
-   def level
-    self.console_level
-   end
-   def race
-    self.group("Race") || "Unknown"
-   end
-   def class
-    self.group("Class") || "Unknown"
-   end
-   def profession
-    self.group("Profession") || "Unknown"
-   end
-   def self.health_bar
-    unused = "%X1 %xn"
-    used = "%X242 %xn"
-    dmg = self.console_dmg_health / 2
-    left = (100 - dmg) / 2
-    good = unused.floor.repeat(left)
-    bad = used.floor.repeat(dmg)
-    good + bad
-   end
+
+  end
+    def health_bar
+      unused = "%X1 %xn"
+      used = "%X242 %xn"
+      dmg = self.console_dmg_health / 2
+      left = (100 - dmg) / 2
+      good = unused.floor.repeat(left)
+      bad = used.floor.repeat(dmg)
+      good + bad
+    end
 end
