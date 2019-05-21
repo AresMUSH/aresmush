@@ -48,27 +48,34 @@ demographics:
     Class:
       desc: What role do you take in the world.
       values:
-        Archer: The masters of the bow.
-        Adventurer: Jack of All Trades, masters of none.
-        Bard: Masters of Songs and Support.
-        Berserker: Masters of letting their rage shine.
-        Black Mage: Destructive Masters of Magic.
-        Calculator: Masters of Logic and Magic.
-        Chemist: Mix Masters.
-        Dark Knight: Masters of the Brooding.
-        Dragoon: Masters of the Sky and Spear.
-        Fighter: The kill machines.
-        Geomancer: Masters of Terrain.
-        Mechanist: Masters of Magi-Tek.
-        Monk: I know kung-fu.
-        Mystic Knight: Spellblade Masters.
-        Ninja: Much better than Pirates.
-        Red Mage: The middle road mage.
-        Summoner: Pikachu! I choose you!
-        Thief: You had a wallet. Had.
-        Time Mage: I make the Time Warp, not do it.
-        Trainer: Sit Ubu sit.
-        White Mage: The Master of Healers.
+        Guardian: "Role: Tanker"
+        Samurai: "Role: Vanguard"
+        Monk: "Role: Front Line"
+        Assassin: "Role: Sniper/Front Line"
+        Swashbuckler: "Role: Vanguard/Front Line"
+        Bard: "Role: Vanguard/Support"
+        Cleric: "Role: Support"
+        Druid: "Role: Front Line/Support"
+        Kannagi: "Role: Ranged/Support"
+        Sorcerer: "Role: Ranged"
+        Summoner: "Role: Ranged/Front Line/Vanguard"
+        Enchanter: "Role: Crowd Control"
+        Scout: "Role: Advanced Recon"
+    Job:
+      desc: What do you do when you aren't in the Dark?
+      values:
+        Alchemist: "Potions and Brews."
+        Weaponsmith: "Craft & Repair Weapons."
+        Armorer: "Craft & Repair Metal Armor."
+        Chef: "Cook stat enhancing meals."
+        Scavenger: "Find any and everything you can."
+        Harvester: "Harvest material components."
+        Artificer: "Craft & Repair Magical Accessories."
+        Animal Trainer: "Breed, Raise, Train companions."
+        Tailor: "Craft & Repair Cloth/Leather Armor."
+        Apprentice: "Learn a little from everyone."
+        Merchant: "Masters of the Economy."
+        Sigilmancer: "Rune Engravers & Tattooists."
   help_text:
     actor: "%xcactor <voice actor>%xn - See 'help actors'."
     physique: "%xcphysique <build/body type>%xn - athletic, wiry, slim, pudgy, etc."
