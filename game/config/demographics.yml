@@ -18,79 +18,85 @@ demographics:
     value: Position
   demographics:
   - actor
-  - mane
+  - hair
   - eyes
-  - coat
+  - skin
   - height
   - physique
   - gender
   - birthdate
-  - truename
-  - cutiemark
+  - nickname
   disable_auto_shortcuts: false
   editable_properties:
   - physique
+  - hair
+  - nickname
   groups:
-    Origin:
-      desc: What Type of character are you?
+    Race:
+      desc: What race are you?
       values:
-        Earth Pony: The most common pony, the salt of the earth.
-        Pegasus: The winged masters of the sky and weather.
-        Unicorn: The masters of magic.
-        Deer: The guardians of the winter and joy.
-        Alicorn: A rare breed of pony, not the uber-magical ones.
-        Dragon: One of the magical dragons.
-        Kitsune: A spiritually adept trickster.
-        Griffon: Part Eagle, Part Lion, all attitude.
-        Zebra: Masters of Knowledge, alchemist extraordinaire.
-        Crystal Pony: The crystal version of an Earth Pony.
-        Hippogriff: Half Pony, Half Eagle all coolness.
-        Bat Pony: Nocturnal Ponies with wings of a bat.
-        Breezie: A fairy-like mini-pony, no bigger than a humming bird.
-        Seapony: Half Pony, Half Fish, all voice. The Musical Ponies of the Sea.
-        Tortoise: Slow and wise, long lived like the dragons. These are not the teenage
-          mutant kind.
-    Element Of Harmony:
-      desc: Which element of harmony are you attuned to?
+        Human: The run of the mill human.
+        Dwarf: Stout and Strong.
+        Elf: Pointy Ears, Woodlands & Magic.
+        Moogle: Cute little marshmallows.
+        TaruTaru: Child-like magical powerhouses.
+        Half-Orc: Half-Human, Half-Orc, all angry.
+        Kitsune: Human/Fox Spirit Hybrids.
+        NekoJin: Human/Cat Spirit Hybrids.
+        KumaJin: Human/Panda Spirit Hybrids.
+        Viera: Bunny Eared woodland people.
+    Class:
+      desc: What role do you take in the world.
       values:
-        Honesty: 
-        Kindness: 
-        Laughter: 
-        Generosity: 
-        Loyalty: 
-        Magic: 
-        Strength: 
-        Healing: 
-        Hope: 
-        Beauty: 
-        Bravery: 
-        Sorcery: 
+        Archer: The masters of the bow.
+        Adventurer: Jack of All Trades, masters of none.
+        Bard: Masters of Songs and Support.
+        Berserker: Masters of letting their rage shine.
+        Black Mage: Destructive Masters of Magic.
+        Calculator: Masters of Logic and Magic.
+        Chemist: Mix Masters.
+        Dark Knight: Masters of the Brooding.
+        Dragoon: Masters of the Sky and Spear.
+        Fighter: The kill machines.
+        Geomancer: Masters of Terrain.
+        Mechanist: Masters of Magi-Tek.
+        Monk: I know kung-fu.
+        Mystic Knight: Spellblade Masters.
+        Ninja: Much better than Pirates.
+        Red Mage: The middle road mage.
+        Summoner: Pikachu! I choose you!
+        Thief: You had a wallet. Had.
+        Time Mage: I make the Time Warp, not do it.
+        Trainer: Sit Ubu sit.
+        White Mage: The Master of Healers.
   help_text:
     actor: "%xcactor <voice actor>%xn - See 'help actors'."
     physique: "%xcphysique <build/body type>%xn - athletic, wiry, slim, pudgy, etc."
     gender: "%xcgender <male/female/other>%xn"
-    mane: "%xmane <mane color>%xn"
+    hair: "%xhair <hair color>%xn"
     eyes: "%xceyes <eye color>%xn"
-    coat: "%xccoat <coat>%xn"
+    coat: "%xcskin <skin color>%xn"
     birthdate: "%xcbirthdate <mm/dd/yyy>%xn or %xcage <years>%xn"
-    truename: "%xctruename <truename>%xn - This is the full version of your name."
+    nickname: "%xcnickname <nickname>%xn - This is what people might call you that
+      know you."
   max_age: 65
   min_age: 8
-  nickname_field: truename
+  nickname_field: nickname
   nickname_format: "%{nickname} (%{name})"
   private_properties: []
   required_properties:
   - actor
-  - mane
+  - hair
   - eyes
-  - coat
+  - skin
   - height
   - physique
   - gender
   - birthdate
-  - truename
-  - cutiemark
+  - nickname
   shortcuts:
     groups: group
     demographics: demographic
     birthday: birthdate
+    races: group race
+    classes: group class

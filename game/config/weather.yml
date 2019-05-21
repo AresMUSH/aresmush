@@ -2,11 +2,7 @@
 weather:
   climate_for_area:
     Offstage: none
-    Winterhorne Mountain: mountain
-    Horseshoe Bay: temperate
-    Harmonia: temperate
-    The Delve: polar
-    Hippocia: underwater
+    Garden Vale: temperate
   conditions:
   - clear
   - fair
