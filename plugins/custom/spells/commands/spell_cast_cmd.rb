@@ -47,9 +47,6 @@ module AresMUSH
           return t('custom.spell_ko') if self.caster_combat.is_ko
           return t('custom.dont_know_spell') if (!caster_combat.is_npc? &&  Custom.knows_spell?(caster, self.spell) == false && Custom.item_spell(caster) != self.spell)
 
-
-
-
           # Prevent badly config's spells from completely breaking combat by equipping non-existant gear
           weapon = Global.read_config("spells", self.spell, "weapon")
           return t('fs3combat.invalid_weapon') if (weapon && !FS3Combat.weapon(weapon))
@@ -70,13 +67,9 @@ module AresMUSH
             armor_allowed_specials = FS3Combat.armor_stat(self.caster_combat.armor, "allowed_specials") || []
             return t('custom.cant_cast_on_gear', :spell => self.spell, :target => self.caster_combat.name, :gear => "armor") if !armor_allowed_specials.include?(armor_specials_str)
           end
-
         else
           return t('custom.dont_know_spell') if (Custom.knows_spell?(caster, self.spell) == false && Custom.item_spell(caster) != spell)
-
         end
-
-
         return nil
       end
 
@@ -91,23 +84,30 @@ module AresMUSH
           if !caster_combat.is_npc?
             Custom.handle_spell_cast_achievement(self.caster)
           end
+
         else
           #Roll NonCombat
-          if roll
-            Custom.cast_noncombat_spell(self.caster, nil, self.spell, self.mod)
-          elsif heal_points
-            Custom.cast_non_combat_heal(self.caster, self.caster.name, self.spell, self.mod)
+          success = Custom.roll_noncombat_spell_success(self.caster, self.spell, self.mod)
+          if success == "%xgSUCCEEDS%xn"
+            if roll
+              Custom.cast_noncombat_spell(self.caster, nil, self.spell, self.mod)
+              Custom.handle_spell_cast_achievement(self.caster)
+            elsif heal_points
+              Custom.cast_non_combat_heal(self.caster, self.caster.name, self.spell, self.mod)
+              Custom.handle_spell_cast_achievement(self.caster)
+            else
+              client.emit_failure t('custom.not_in_combat')
+            end
           else
-            client.emit_failure t('custom.not_in_combat')
+            message = t('custom.casts_noncombat_spell', :name => caster.name, :spell => spell, :mod => mod, :succeeds => success)
+            self.caster.room.emit message
+            if self.caster.room.scene
+              Scenes.add_to_scene(self.caster.room.scene, message)
+            end
           end
-          Custom.handle_spell_cast_achievement(self.caster)
 
         end
-
       end
-
-
-
 
     end
   end

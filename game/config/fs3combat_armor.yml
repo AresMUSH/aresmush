@@ -292,4 +292,4 @@ fs3combat:
     Huxian's Gift:
       description: Magical item
       is_magic: true
-      defense: 2
+      defense: 3

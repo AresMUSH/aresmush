@@ -26,8 +26,8 @@ magic-items:
   Huxian's Gift:
     name: Huxian's Gift
     desc: 'Not an actual object, but instead an effect Asher experiences that provides a boost to his energy and a positive modifier to his actions. Those around him experience the inverse: long term exposure leads to a slow sapping of energy and eventually, exhaustion. In his presence, others experience a negative modifier to their actions. This item cannot be given away.'
-    spell_mod: 2
-    attack_mod: 2
+    spell_mod: 3
+    attack_mod: 3
     weapon_specials: Huxian's Gift
     armor_specials: Huxian's Gift
   Konvaskr:

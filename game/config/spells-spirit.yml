@@ -1,9 +1,9 @@
 spells:
   Huxian's Curse:
-    attack_mod: -1
+    attack_mod: -2
     available: false
     casting_time: 1 round
-    defense_mod: -1
+    defense_mod: -2
     desc: "Attempts made in Asher's presence suffer a negative modifier. "
     duration: 100 rounds
     is_potion: true
@@ -13,7 +13,7 @@ spells:
     range: Short
     rounds: 100
     school: Spirit
-    spell_mod: -1
+    spell_mod: -2
     target_num: 20
     target_optional: true
   Locate Object:
