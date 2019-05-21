@@ -45,6 +45,33 @@ module AresMUSH
       red + gray
     end
 
+    def mana_bar
+       unused = "%X26 %xn"
+       used = "%X242 %xn"
+       dmg = self.console_dmg_mana / 2
+       left = (100 - dmg) / 2
+       dmgnum = dmg.to_f.floor
+       leftnum = left.to_f.floor
+       blue = unused.repeat(leftnum)
+       gray = used.repeat(dmgnum)
+       blue + gray
+     end
 
+     def stamina_bar
+        unused = "%X1 %xn"
+        used = "%X142 %xn"
+        dmg = self.console_dmg_stamina / 2
+        left = (100 - dmg) / 2
+        dmgnum = dmg.to_f.floor
+        leftnum = left.to_f.floor
+        yellow = unused.repeat(leftnum)
+        gray = used.repeat(dmgnum)
+        yello + gray
+      end
+      def show_bars
+        health_bar
+        mana_bar
+        stamina_bar
+      end
   end
 end
