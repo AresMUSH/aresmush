@@ -9,13 +9,17 @@ demographics:
     title: Gender
     value: gender
   - field: group
-    width: 20
-    title: Faction
-    value: Faction
+    value: Race
+    width: 10
+    title: Race
   - field: group
-    width: 20
-    title: Position
-    value: Position
+    value: Class
+    width: 15
+    title: Class
+  - field: group
+    value: Profession
+    width: 15
+    title: Profession
   demographics:
   - actor
   - hair
