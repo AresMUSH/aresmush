@@ -61,7 +61,7 @@ demographics:
         Summoner: "Role: Ranged/Front Line/Vanguard"
         Enchanter: "Role: Crowd Control"
         Scout: "Role: Advanced Recon"
-    Job:
+    Profession:
       desc: What do you do when you aren't in the Dark?
       values:
         Alchemist: "Potions and Brews."
@@ -107,3 +107,4 @@ demographics:
     birthday: birthdate
     races: group race
     classes: group class
+    professions: group profession
