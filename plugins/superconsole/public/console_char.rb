@@ -58,8 +58,8 @@ module AresMUSH
      end
 
      def stamina_bar
-        unused = "%X1 %xn"
-        used = "%X142 %xn"
+        unused = "%X142 %xn"
+        used = "%X242 %xn"
         dmg = self.console_dmg_stamina / 2
         left = (100 - dmg) / 2
         dmgnum = dmg.to_f.floor
