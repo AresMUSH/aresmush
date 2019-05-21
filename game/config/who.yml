@@ -16,6 +16,10 @@ who:
     value: Class
     width: 15
     title: Class
+  - field: group
+    value: Profession
+    width: 8
+    title: Profession
   - field: connected
     width: 7
     title: Conn
