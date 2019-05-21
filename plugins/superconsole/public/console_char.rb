@@ -42,7 +42,7 @@ module AresMUSH
       leftnum = left.to_f.floor
       good = dmg.repeat(leftnum)
       bad = used.repeat(dmgnum)
-      good + bad
+      "#{dmg} #{dmgnum} #{left} #{leftnum}"
     end
 
 
