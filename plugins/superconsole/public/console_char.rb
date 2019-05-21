@@ -40,7 +40,9 @@ module AresMUSH
       left = (100 - dmg) / 2
       dmgnum = dmg.to_f.floor
       leftnum = left.to_f.floor
-      unused.repeat(leftnum) used.repeat(dmgnum)
+      red = unused.repeat(leftnum)
+      gray = used.repeat(dmgnum)
+      red + gray
     end
 
 
