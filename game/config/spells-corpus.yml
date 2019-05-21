@@ -160,7 +160,7 @@ spells:
     effect: Heal
     is_potion: true
     level: 3
-    name: Endure Extreme Temperatures
+    name: Remove Cosmetic Scar
     notes: Needs limitations as to how hot and how cold
     range: Touch
     roll: true
@@ -197,6 +197,19 @@ spells:
     school: Corpus
     weapon_specials: Agility
     weapon: Spell
+  Exoskeleton:
+    armor: Exoskeleton
+    available: false
+    casting_time: 1 round
+    desc: Caster weaponizes and protects their own body by growing an exoskeleton. A bone sword grows as an extension of one hand.
+    duration: 3 hours
+    effect: Armor
+    is_potion: true
+    level: 4
+    name: Exoskeleton
+    range: Self
+    school: Corpus
+    weapon: Exoskeleton
   Impair:
     available: true
     casting_time: 1 round

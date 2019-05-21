@@ -277,7 +277,7 @@ spells:
     effect: Psionic
   #Level 4
   Mind Shield:
-    available: false
+    available: true
     casting_time: 1 round
     desc: "Cast a protective psionic shield on a target. The strength of the shield is determined by the caster's Spirit roll. When the target is targetted by another psionic spell, the opposing caster rolls Spirit vs the strength of the shield to determine whether the spell succeeds, or whether the mind shield holds."
     effect: Defense
