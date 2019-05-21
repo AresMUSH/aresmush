@@ -1,0 +1,29 @@
+---
+superconsole:
+  max_hoard_patience: 6
+  power_level_cooldown_days: 30
+  patience_actions:
+    - name: Quick Solve
+      desc: Solve a puzzle that has been placed in your way.
+      cost: 1
+    - name: Quick Battle
+      desc: Instantly win a battle with no loss of pools.
+      cost: 1
+    - name: Restore at Save Point
+      desc: Instantly revive at the Soul Crystal.
+      cost: 1
+    - name: Travel to Entrance
+      desc: Instantly travel to the entrance of the Dark.
+      cost: 1
+    - name: Superior Looting
+      desc: "Completely loot the area, discover any hidden items."
+      cost: 1
+    - name: Power Level
+      desc: Increase level by 1.
+      cost: 2
+    - name: Safe Travels
+      desc: "Restore party's health and mana instantly, as if at a save point."
+      cost: 3
+    - name: Fast Travel
+      desc: "Instantly travel to the last trigger point in the Dark."
+      cost: 2
