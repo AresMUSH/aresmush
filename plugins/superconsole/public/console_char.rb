@@ -38,4 +38,7 @@ module AresMUSH
       bad = used.floor.repeat(dmg)
       good + bad
     end
+    def self.show_health
+      health_bar
+    end
 end
