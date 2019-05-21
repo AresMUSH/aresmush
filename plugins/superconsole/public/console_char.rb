@@ -38,13 +38,11 @@ module AresMUSH
       used = "%X242 %xn"
       dmg = self.console_dmg_health / 2
       left = (100 - dmg) / 2
-      good = unused.floor.repeat(left)
-      bad = used.floor.repeat(dmg)
+      good = dmg.repeat(left.floor)
+      bad = used.repeat(dmg.floor)
       good + bad
     end
 
-    def self.show_health
-      health_bar
-    end
+
   end
 end
