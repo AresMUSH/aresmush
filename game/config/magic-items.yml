@@ -11,6 +11,9 @@ magic-items:
     name: Blessing Of Wisakedjak
     desc: A six-point deer antler with one tip jaggedly broken off. The base is wrapped and bound in leather that ends in a loop, perfect for attaching to a belt. It grants its owner the ability to cast %xBHalf Shift (Jenu)%xn, allowing them to transform a portion of their body into a Jenu.
     spell: Half Shift (Jenu)
+  Chilled Pitcher:
+    name: Chilled Pitcher
+    desc: A glass pitcher which chills any liquid poured into it.
   Eye Of The Serpent:
     name: Eye Of The Serpent
     desc: A briliant diamond the size of a child's fist. It allows the bearer to cast %xBClarity%xn.
@@ -19,6 +22,10 @@ magic-items:
     name: Eye Of Apepnet
     desc: The eye is a perfect orb, larger than the size of a closed fist, composed of a freckled gold stone. It is preserved in an eternally seeing state with its diamond shaped pupil large and black as night. To look upon it for too long is unnerving as if the great snake still watches one's movements. It is cool to the touch. Allows the possessor to cast %xBDreamtrap%xn on a target.
     spell: Dreamtrap
+  Guilt-Weighted Gloves:
+    name: Guilt-Weighted Gloves
+    desc: Fancy purple satin gloves with slightly fraying gold embroidery along the palm and knuckles. These gloves provide a bonus to lethality
+    weapon_specials: Guilt-Weighted Gloves
   Horn Of Uktena:
     name: Horn Of Uktena
     desc: A bit of worn horn that allows the bearer to cast %xBPhotosynthesis%xn.

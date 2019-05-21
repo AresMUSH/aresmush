@@ -1,33 +1,9 @@
 ---
 fs3combat:
   weapon specials:
-    Lightning:
-      description: Level 4 Air spell
-      is_magic: true
-      lethality: 5
-    Strength:
-      description: Level 3 Corpus spell
-      is_magic: true
-      lethality: -5
-      penetration: 5
     Agility:
       description: Level 4 Corpus spell
       is_magic: true
-      init_mod: 1
-    Vitality:
-      description: Level 4 Corpus spells
-      is_magic: true
-      lethality: 3
-    Grow:
-      description: Level 4 Corpus spell
-      is_magic: true
-      lethality: 15
-      penetration: 5
-    Shrink:
-      description: Level 4 Corpus spell
-      is_magic: true
-      lethality: -20
-      penetration: -5
       init_mod: 1
     Diamond:
       description: Level 4 Earth spell
@@ -37,22 +13,51 @@ fs3combat:
       description: Level 4 Fire spell
       is_magic: true
       lethality: 5
+    Grow:
+      description: Level 4 Corpus spell
+      is_magic: true
+      lethality: 15
+      penetration: 5
+    Guilt-Weighted Gloves:
+      description: Magic item
+      is_magic: true
+      lethality: 5
+    Huxian's Gift:
+      description: Magical item
+      is_magic: true
+      accuracy: 3
+      init_mod: 3
     Ice:
       description: Level 4 Ice spell
       is_magic: true
       lethality: 10
-      penetration: -4
+      penetration: -4 
+    Lightning:
+      description: Level 4 Air spell
+      is_magic: true
+      lethality: 5
+    Shrink:
+      description: Level 4 Corpus spell
+      is_magic: true
+      lethality: -20
+      penetration: -5
+      init_mod: 1
+    Strength:
+      description: Level 3 Corpus spell
+      is_magic: true
+      lethality: -5
+      penetration: 5
     Transform:
       description: Level 4 Will spell
       is_magic: true
       accuracy: 1
       lethality: 3
       penetration: 1
-    Huxian's Gift:
-      description: Magical item
+    Vitality:
+      description: Level 4 Corpus spells
       is_magic: true
-      accuracy: 3
-      init_mod: 3
+      lethality: 3
+
   weapons:
     #General
     Spell:
