@@ -27,8 +27,8 @@ module AresMUSH
           if (wound)
             FS3Combat.heal(wound, 1)
           end
-          
-          job_message = t('custom.spent_luck', :name => enactor.name, :reason => self.reason)
+
+          job_message = t('custom.spent_luck', :name => enactor.name, :reason => "combat/hero")
           category = Global.read_config("jobs", "luck_category")
           Jobs.create_job(category, t('custom.spent_luck_title', :name => enactor.name, :reason => "combat/hero"), job_message, enactor)
 
