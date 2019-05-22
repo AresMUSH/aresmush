@@ -66,6 +66,8 @@ module AresMUSH
           portal.update(other_creatures: request.args[:other_creatures].blank? ? nil : request.args[:other_creatures])
           portal.update(npcs: request.args[:npcs].blank? ? nil : request.args[:npcs])
           portal.update(location: request.args[:location].blank? ? nil : request.args[:location])
+          portal.update(latitude: request.args[:latitude].blank? ? nil : request.args[:latitude])
+          portal.update(longitude: request.args[:longitude].blank? ? nil : request.args[:longitude])
           portal.update(description: request.args[:description].blank? ? nil : request.args[:description])
           portal.update(trivia: request.args[:trivia].blank? ? nil : request.args[:trivia])
           portal.update(events: request.args[:events].blank? ? nil : request.args[:events])
