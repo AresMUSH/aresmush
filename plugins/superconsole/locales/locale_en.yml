@@ -5,4 +5,4 @@ en:
     # Sheet Stuff
     #--------------------------------------------
     sheet_error: "You are not allowed to view that sheet."
-    sheet_header: "#{game} -- #{name}"
+    sheet_header: "%{game} -- %{name}"
