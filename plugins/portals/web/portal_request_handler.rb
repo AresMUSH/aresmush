@@ -45,7 +45,9 @@ module AresMUSH
           edit_society:  Website.format_input_for_html(portal.society),
           society: Website.format_markdown_for_html(portal.society),
           id: portal.id,
-          pinterest: portal.pinterest
+          pinterest: portal.pinterest,
+          longitude: portal.longitude,
+          latitude: portal.latitude
         }
       end
 

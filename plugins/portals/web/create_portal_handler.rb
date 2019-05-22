@@ -35,9 +35,10 @@ module AresMUSH
         school_id = Global.read_config("schools", school_name, "id")
         primary_school = {:name => school_name, :id => school_id}
 
+        Global.logger.debug "Name #{request.args[:name]}"
+
         portal = Portal.create(
           name: request.args[:name],
-
           pinterest: request.args[:pinterest],
           all_schools: all_schools,
           primary_school: primary_school,
@@ -47,7 +48,9 @@ module AresMUSH
           description: request.args[:description],
           events: request.args[:events],
           trivia: request.args[:trivia],
-          society: request.args[:society]
+          society: request.args[:society],
+          latitude: request.args[:latitude],
+          longitude: request.args[:longitude]
         )
 
         Global.logger.debug "Portal #{portal.id} (#{portal.name}) created by #{enactor.name}."
@@ -65,14 +68,11 @@ module AresMUSH
         end
 
         creature_ids = request.args[:creatures] || []
-        portal.creatures.replace []
 
         creature_ids.each do |creature|
           creature = Creature.find_one_by_name(creature.strip)
           if (creature)
-            if (!portal.creatures.include?(creature))
-              Portals.add_creature(portal, creature)
-            end
+            Portals.add_creature(portal, creature)
           end
         end
 

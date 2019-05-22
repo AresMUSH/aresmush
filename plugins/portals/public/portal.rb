@@ -16,8 +16,11 @@ module AresMUSH
     attribute :events
     attribute :pinterest
     attribute :society
+    attribute :longitude
+    attribute :latitude
     before_save :save_upcase
 
+    collection :scenes, "AresMUSH::Scene"
     set :gms, "AresMUSH::Character"
     set :creatures, "AresMUSH::Creature"
 

@@ -26,13 +26,13 @@ module AresMUSH
     collection :scene_poses, "AresMUSH::ScenePose"
     reference :scene_log, "AresMUSH::SceneLog"
     reference :plot, "AresMUSH::Plot"
+    reference :creature, "AresMUSH::Creature"
+    reference :portal, "AresMUSH::Portal"
 
     set :invited, "AresMUSH::Character"
     set :watchers, "AresMUSH::Character"
     set :participants, "AresMUSH::Character"
     set :likers, "AresMUSH::Character"
-    set :portals, "AresMUSH::Portal"
-    set :creatures, "AresMUSH::Creature"
 
     before_delete :delete_poses_and_log
 

@@ -18,7 +18,7 @@ module AresMUSH
     attribute :found
     before_save :save_upcase
 
-
+    collection :scenes, "AresMUSH::Scene"
     set :gms, "AresMUSH::Character"
     set :portals, "AresMUSH::Portal"
 

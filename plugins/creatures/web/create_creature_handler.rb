@@ -46,7 +46,7 @@ module AresMUSH
 
 
 
-        Global.logger.debug "Creature #{creature.id} (#{creature.name})created by #{enactor.name}."
+        Global.logger.debug "Creature #{creature.id} (#{creature.name}) created by #{enactor.name}."
 
 
         gm_names = request.args[:gms] || []
@@ -67,9 +67,7 @@ module AresMUSH
         portal_ids.each do |portal|
           portal = Portal.find_one_by_name(portal.strip)
           if (portal)
-            if (!creature.portals.include?(portal))
-              Creatures.add_portal(creature, portal)
-            end
+            Creatures.add_portal(creature, portal)
           end
         end
 
