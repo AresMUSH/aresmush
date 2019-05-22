@@ -25,10 +25,6 @@ permissions:
     category: System
     desc: Allows user to describe rooms.
     is_new: false
-  - name: manage_abilities
-    category: Admin
-    desc: Manages various aspects of the FS3 System.
-    is_new: false
   - name: access_jobs
     category: Admin
     desc: Gives access to Admin Inteface for Jobs.
@@ -69,10 +65,6 @@ permissions:
     category: System
     desc: Grants access to the building commands.
     is_new: false
-  - name: manage_luck
-    category: Admin
-    desc: Grants access to managing the luck system.
-    is_new: true
   - name: manage_idle
     category: Admin
     desc: Grants access to the idle sweep system.
@@ -141,10 +133,30 @@ permissions:
     category: System
     desc: Allows user to boot another user.
     is_new: false
-  - name: manage_lesson
-    desc: Grants approver access to the lesson system.
+  - name: manage_level
+    category: Admin
+    desc: Allows user to change levels of PCs.
     is_new: true
-    category: System
+  - name: manage_learn
+    desc: Allows the user to manage learning of skills.
+    category: Admin
+    is_new: true
+  - name: manage_quests
+    desc: Allows user to manage the quest system.
+    category: Admin
+    is_new: true
+  - name: manage_inventory
+    category: Admin
+    desc: Allows user to manage the inventory system.
+    is_new: true
+  - name: manage_guilds
+    desc: Allows user to manage Guilds.
+    category: Admin
+    is_new: true
+  - name: manage_economy
+    category: Admin
+    desc: Allows the user to manage the Economy System.
+    is_new: true
   shortcuts:
     permission: permissions
     perm: permissions

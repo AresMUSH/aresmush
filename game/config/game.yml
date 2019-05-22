@@ -1,12 +1,8 @@
+---
 game:
-    name: "Into the Darkness"
-
-    category: Other
-    
-    description: "TBD"
-    
-    website: ""
-        
-    public_game: false
-    
-    game_status: In Development
+  category: Other
+  description: A dungeon crawl style game inspired by both Anime & Final Fantasy.
+  game_status: In Development
+  name: Into the Darkness
+  public_game: true
+  website: https://intothedarkness.aresmush.com
