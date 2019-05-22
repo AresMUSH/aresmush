@@ -18,7 +18,7 @@ module AresMUSH
       return nil
     end
 
-    def set_favor(c,a,v)
+    def set_favor(c,a)
       ability_name = a.titlecase
       ability_type = SuperConsole.get_ability_type(a)
       if ability_type == attribute
