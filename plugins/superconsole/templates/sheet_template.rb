@@ -44,5 +44,6 @@ module AresMUSH
 #        rating = "%xh#{a.print_rating}%xn"
 #        "#{linebreak}#{left(name, 16)} [#{rating}] #{linked_attr} #{left(rating_text,12)}"
 #      end
+    end
   end
 end
