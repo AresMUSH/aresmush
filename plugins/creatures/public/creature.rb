@@ -16,8 +16,9 @@ module AresMUSH
     attribute :pinterest
     attribute :found
 
+
     set :gms, "AresMUSH::Character"
-    # set :portals, "AresMUSH::Portals"
+    set :portals, "AresMUSH::Portal"
 
     def self.find_any_by_name(name_or_id)
       return [] if !name_or_id
