@@ -17,3 +17,6 @@ en:
     marker_cleared: "Level Cleared:"
     marker_oversoul_type: "Oversoul Type:"
     marker_level_cleared: "Max Level Cleared:"
+    # ----- Attributes Section ------
+    header_attributes: "Attributes"
+    marker_stat: "%{stat}:"

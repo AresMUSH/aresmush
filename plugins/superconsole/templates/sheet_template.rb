@@ -57,23 +57,24 @@ module AresMUSH
 # Sheet Attribute Section
 
 # --------------------------------------------
-#      def attrs
-#       list = []
-#        @char.fs3_attributes.sort_by(:name, :order => "ALPHA").each_with_index do |a, i|
-#          list << format_attr(a, i)
-#        end
-#        list
-#      end
+      def attrs
+       list = []
+        @char.console_attributes.sort_by(:name, :order => "ALPHA").each_with_index do |a, i|
+          list << format_attr(a, i)
+        end
+        list
+      end
 
 
-#      def format_attr(a, i, show_linked_attr = false)
-#        name = "%xh#{a.name}:%xn"
-#        linked_attr = show_linked_attr ? print_linked_attr(a) : "   "
-#        linebreak = i % 2 == 1 ? "" : "%r"
-#        rating_text = "#{a.rating_name}"
-#        rating = "%xh#{a.print_rating}%xn"
-#        "#{linebreak}#{left(name, 16)} [#{rating}] #{linked_attr} #{left(rating_text,12)}"
-#      end
+      def format_attr(a, i)
+        name = "%xh#{a.name}:%xn"
+        linebreak = i % 3 == 1 ? "" : "%r"
+        bigger = i % 3 == 1 ? 13 : 14
+        rating_text = "#{a.rating_name}"
+        rating = "#{a.rating}"
+        "#{linebreak}#{left(name, bigger)} #{left(rating_text,12)}"
+      end
+
     end
   end
 end
