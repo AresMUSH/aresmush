@@ -30,11 +30,11 @@ module AresMUSH
         case ability_type
         when :attribute
           case field
-          when rating
+          when "rating"
             ability.update(rating: value)
-          when favored
+          when "favored"
             ability.update(favored: value)
-          when unfavored
+          when "unfavored"
             ability.update(unfavored: value)
           else
             t('superconsole.update_error_attribute', :name => ability_name, :field => field)
