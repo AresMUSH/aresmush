@@ -70,7 +70,6 @@ module AresMUSH
         name = "%xh#{a.name}:%xn"
         linebreak = i % 3 == 1 ? "" : "%r"
         bigger = i % 3 == 1 ? 13 : 14
-        rating_text = "#{a.rating_name}"
         rating = "#{a.rating}"
         "#{linebreak}#{left(name, bigger)} #{left(rating,12)}"
       end
