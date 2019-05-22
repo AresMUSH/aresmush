@@ -46,6 +46,12 @@ module AresMUSH
           type
         end
       end
+      def guild
+        "Uknown"
+      end
+      def level_cleared
+        "0"
+      end
 # --------------------------------------------
 # --------------------------------------------
 # Sheet Attribute Section
