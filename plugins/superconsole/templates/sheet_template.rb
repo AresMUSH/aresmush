@@ -22,6 +22,30 @@ module AresMUSH
       def approval_status
         Chargen.approval_status(@char)
       end
+      def class
+        @char.demographic("Class") || "Unknown"
+      end
+      def profession
+        @char.demographic("Profession") || "Unknown"
+      end
+      def race
+        @char.demographic("Race") || "Unknown"
+      end
+      def age
+        age = @char.age
+        age == 0 ? "--" : age
+      end
+      def level
+        @char.console_level
+      end
+      def oversoul_type
+        type = @char.console_oversoul_type
+        if type == nil
+          "Unknown"
+        else
+          type
+        end
+      end
 # --------------------------------------------
 # --------------------------------------------
 # Sheet Attribute Section
