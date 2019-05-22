@@ -39,6 +39,8 @@ module AresMUSH
           else
             t('superconsole.update_error_attribute', :name => ability_name, :field => field)
         end
+        t('superconsole.set_ability', :name => ability_name)
+      end
       else
         t('superconsole.set_ability', :name => ability_name)
       end
