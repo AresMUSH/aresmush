@@ -7,7 +7,7 @@ module AresMUSH
     index :name_upcase
     attribute :primary_school, :type => DataType::Hash, :default => {}
     attribute :all_schools, :type => DataType::Array, :default => []
-    attribute :creatures
+    attribute :other_creatures
     attribute :npcs
     attribute :location
     attribute :description
@@ -17,6 +17,7 @@ module AresMUSH
     attribute :society
 
     set :gms, "AresMUSH::Character"
+    set :creatures, "AresMUSH::Creature"
 
     def gm_names
       self.gmd.sort { |gm| gm.name }.map { |gm| gm.name }

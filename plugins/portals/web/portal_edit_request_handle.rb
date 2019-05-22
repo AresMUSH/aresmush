@@ -30,6 +30,18 @@ module AresMUSH
             end
           end
 
+          creature_ids = request.args[:creatures] || []
+          portal.creatures.replace []
+
+          creature_ids.each do |creature|
+            creature = Creature.find_one_by_name(creature.strip)
+            if (creature)
+              if (!portal.creatures.include?(creature))
+                Portals.add_creature(portal, creature)
+              end
+            end
+          end
+
 
           all_schools_names = request.args[:all_schools] || []
           portal.all_schools.replace []
@@ -52,7 +64,7 @@ module AresMUSH
 
           portal.update(name: request.args[:name])
           portal.update(pinterest: request.args[:pinterest])
-          portal.update(creatures: request.args[:creatures])
+          portal.update(other_creatures: request.args[:other_creatures])
           portal.update(npcs: request.args[:npcs])
           portal.update(location: request.args[:location])
           portal.update(description: request.args[:description])

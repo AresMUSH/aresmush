@@ -17,6 +17,10 @@ module AresMUSH
             .sort_by {|gm| gm.name }
             .map { |gm| { name: gm.name, id: gm.id, is_ooc: gm.is_admin? || gm.is_playerbit?  }}
 
+        creatures = portal.creatures.to_a
+            .sort_by {|creature| creature.name }
+            .map { |creature| { name: creature.name, id: creature.id }}
+
 
         all_schools = portal.all_schools.to_a
 
@@ -28,11 +32,12 @@ module AresMUSH
           name: portal.name,
           primary_school: portal.primary_school,
           all_schools: all_schools,
-          edit_creatures: Website.format_input_for_html(portal.creatures),
-          creatures: Website.format_markdown_for_html(portal.creatures),
+          edit_other_creatures: Website.format_input_for_html(portal.other_creatures),
+          other_creatures: Website.format_markdown_for_html(portal.other_creatures),
           edit_npcs:  Website.format_input_for_html(portal.npcs),
           npcs: Website.format_markdown_for_html(portal.npcs),
           gms: gms,
+          creatures: creatures,          
           location: portal.location,
           edit_desc: Website.format_input_for_html(portal.description),
           description: Website.format_markdown_for_html(portal.description),
