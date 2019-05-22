@@ -35,6 +35,23 @@ module AresMUSH
       end
     end
 
+    def self.set_unfavor(c,a)
+      ability_name = a.titlecase
+      ability_type = SuperConsole.get_ability_type(a)
+      ab = SuperConsole.find_ability(c,a)
+      if ability_type == :attribute
+        if ab.unfavored == true
+          ab.update(unfavored: false)
+        elsif ab.unfavored == false
+          ab.update(unfavored: true)
+        else
+          nil
+        end
+      else
+        "You can only mark attributes as unfavored."
+      end
+    end
+
     def self.get_ability_type(ability)
       ability = ability.titlecase
       if (attr_names.include?(ability))
