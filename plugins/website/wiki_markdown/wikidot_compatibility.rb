@@ -52,6 +52,8 @@ module AresMUSH
           "<a href=\"/portal/#{url.after(':')}\">#{link}</a>"
         elsif (url.start_with?("creature:"))
           "<a href=\"/creature/#{url.after(':')}\">#{link}</a>"
+        elsif (url.start_with?("school:"))
+          "<a href=\"/school/#{url.after(':')}\">#{link}</a>"
         else
           if (url =~ /\#/)
             anchor = url.after("#")
