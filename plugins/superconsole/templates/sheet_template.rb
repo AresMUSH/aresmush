@@ -72,7 +72,7 @@ module AresMUSH
         spacebreak = i % 3 == 2 ? "" : " "
         bigger = i % 3 == 1 ? 13 : 12
         rating = "#{a.rating}"
-        "#{linebreak}#{left(name, bigger)} #{left(rating,12)}#{spacebreak}"
+        "#{linebreak}#{left(name, bigger)} #{right(rating,12)}#{spacebreak}"
       end
 
     end
