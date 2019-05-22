@@ -4,7 +4,7 @@
 %xh<%= left( t('superconsole.marker_profession'), 18) %>%xn <%= right( profession, 19 ) %>  %xh<%= left( t('superconsole.marker_level'), 18) %>%xn <%= right( level, 19 ) %>
 %xh<%= left( t('superconsole.marker_guild'), 18) %>%xn <%= right( guild, 19 ) %>  %xh<%= left( t('superconsole.marker_level_cleared'), 18) %>%xn <%= right( level_cleared, 19 ) %>
 %xh<%= left(" ", 18) %>%xn <%= right( " ", 19 ) %>  %xh<%= left( t('superconsole.marker_oversoul_type'), 18) %>%xn <%= right( oversoul_type, 19 ) %>
-<%= line_with_text t("superconsole.header_attributes") %>
+<%= line_with_text t("superconsole.header_attributes") -%>
 <% attrs.each do |a| -%>
 <%= a -%>
 <% end %>
