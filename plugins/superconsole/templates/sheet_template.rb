@@ -72,7 +72,7 @@ module AresMUSH
         bigger = i % 3 == 1 ? 13 : 14
         rating_text = "#{a.rating_name}"
         rating = "#{a.rating}"
-        "#{linebreak}#{left(name, bigger)} #{left(rating_text,12)}"
+        "#{linebreak}#{left(name, bigger)} #{left(rating,12)}"
       end
 
     end
