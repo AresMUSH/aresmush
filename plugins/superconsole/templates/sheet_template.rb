@@ -47,7 +47,7 @@ module AresMUSH
         end
       end
       def guild
-        "Uknown"
+        "Unknown"
       end
       def level_cleared
         "0"
