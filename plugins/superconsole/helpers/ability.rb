@@ -41,6 +41,7 @@ module AresMUSH
         end
       else
         t('superconsole.set_ability', :name => ability_name)
+      end
     end
 
 
