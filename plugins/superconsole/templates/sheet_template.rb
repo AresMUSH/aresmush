@@ -77,7 +77,7 @@ module AresMUSH
 
       def format_attr(a, i)
         name = "%xh#{a.name}:%xn"
-        linebreak = i % 2 == 1 ? "" : "%r"
+        linebreak = i % 2 == 1 && i != 0 ? "" : "%r"
         spacebreak = i % 2 == 0 ? "  " : ""
         status = favor_status(a)
         rating = "#{a.rating}"
