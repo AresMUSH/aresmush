@@ -22,7 +22,7 @@ module AresMUSH
       def approval_status
         Chargen.approval_status(@char)
       end
-      def class
+      def char_class
         @char.demographic("Class") || "Unknown"
       end
       def profession
