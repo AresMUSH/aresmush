@@ -68,11 +68,11 @@ module AresMUSH
 
       def format_attr(a, i)
         name = "%xh#{a.name}:%xn"
-        linebreak = i % 3 == 1 || 2 ? "" : "%r"
-        spacebreak = i % 3 == 2 ? "" : " "
-        bigger = i % 3 == 1 ? 13 : 12
+        linebreak = i % 2 == 1 ? "" : "%r"
+        spacebreak = i % 2 == 0 ? "  " : ""
+        status = return "+" if a.favored && !a.unfavored || return "-" if !a.favored && a.unfavored || return " " if !a.favored && !a.unfavored
         rating = "#{a.rating}"
-        "#{linebreak}#{left(name, 12)} #{right(rating,12)}#{spacebreak}"
+        "#{linebreak}[#{status}] #{left(name, 12)} #{right(rating,21)}#{spacebreak}"
       end
 
     end
