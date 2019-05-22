@@ -76,6 +76,30 @@ module AresMUSH
         tags = (request.args[:tags] || []).map { |t| t.downcase }.select { |t| !t.blank? }
         scene.update(tags: tags.map { |t| t.downcase })
 
+        creature_ids = request.args[:creatures] || []
+        scene.creatures.replace []
+        creature_ids.each do |creature|
+          creature = Creature.find_one_by_name(creature.strip)
+          if (creature)
+            if (!scene.creatures.include?(creature))
+              Scenes.add_creature(scene, creature)
+            end
+          end
+        end
+
+        portal_ids = request.args[:portals] || []
+        scene.portals.replace []
+
+        portal_ids.each do |portal|
+          portal = Portal.find_one_by_name(portal.strip)
+          if (portal)
+            if (!scene.portals.include?(portal))
+              Scenes.add_portal(scene, portal)
+            end
+          end
+        end
+
+
         {}
       end
     end

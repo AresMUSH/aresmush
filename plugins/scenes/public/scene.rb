@@ -31,6 +31,8 @@ module AresMUSH
     set :watchers, "AresMUSH::Character"
     set :participants, "AresMUSH::Character"
     set :likers, "AresMUSH::Character"
+    set :portals, "AresMUSH::Portal"
+    set :creatures, "AresMUSH::Creature"
 
     before_delete :delete_poses_and_log
 
