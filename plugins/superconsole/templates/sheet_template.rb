@@ -1,0 +1,48 @@
+module AresMUSH
+  module SuperConsole
+    class SheetTemplate < ErbTemplateRenderer
+
+      attr_accessor :char
+
+      def initialize(char, client)
+        @char = char
+        super File.dirname(__FILE__) + "/sheet.erb"
+      end
+# --------------------------------------------
+# General Sheet Items
+      def game_name
+        Global.read_config("game","name")
+      end
+# --------------------------------------------
+
+# --------------------------------------------
+# Sheet Info Section
+
+
+      def approval_status
+        Chargen.approval_status(@char)
+      end
+# --------------------------------------------
+# --------------------------------------------
+# Sheet Attribute Section
+
+# --------------------------------------------
+#      def attrs
+#       list = []
+#        @char.fs3_attributes.sort_by(:name, :order => "ALPHA").each_with_index do |a, i|
+#          list << format_attr(a, i)
+#        end
+#        list
+#      end
+
+
+#      def format_attr(a, i, show_linked_attr = false)
+#        name = "%xh#{a.name}:%xn"
+#        linked_attr = show_linked_attr ? print_linked_attr(a) : "   "
+#        linebreak = i % 2 == 1 ? "" : "%r"
+#        rating_text = "#{a.rating_name}"
+#        rating = "%xh#{a.print_rating}%xn"
+#        "#{linebreak}#{left(name, 16)} [#{rating}] #{linked_attr} #{left(rating_text,12)}"
+#      end
+  end
+end
