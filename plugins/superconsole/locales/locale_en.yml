@@ -1,6 +1,12 @@
 ---
 en:
   superconsole:
+    # -------------------------------------------
+    # Error Nessages
+    # -------------------------------------------
+    no_special_characters: "Stat names may not contain special characters."
+    set_ability: "You must use the set ability command for %{name}."
+    update_error_attribute: "%{field} is not a valid entry for %{name} to update."
     #--------------------------------------------
     # Sheet Stuff
     #--------------------------------------------
