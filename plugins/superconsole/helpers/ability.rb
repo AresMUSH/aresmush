@@ -21,7 +21,7 @@ module AresMUSH
     def self.set_favor(c,a)
       ability_name = a.titlecase
       ability_type = SuperConsole.get_ability_type(a)
-      if ability_type == attribute
+      if ability_type == :attribute
         if a.favored == true
           a.update(favored: false)
         elsif a.favored == false
