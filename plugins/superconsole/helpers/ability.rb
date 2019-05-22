@@ -24,8 +24,8 @@ module AresMUSH
       if (error)
         return error
       end
-      ability_type = FS3Skills.get_ability_type(ability_name)
-      ability = FS3Skills.find_ability(char, ability_name)
+      ability_type = SuperConsole.get_ability_type(ability_name)
+      ability = SuperConsole.find_ability(char, ability_name)
       if (ability)
         case ability_type
         when :attribute
