@@ -60,6 +60,9 @@ module AresMUSH
           id = Global.read_config("schools", request.args[:primary_school], "id")
           primary_school = {:name => school_name, :id => id}
           portal.update(primary_school: primary_school)
+          Global.logger.debug "Lat #{request.args[:latitude]}"
+          Global.logger.debug "Long #{request.args[:longitude]}"
+
 
           portal.update(name: request.args[:name])
           portal.update(pinterest: request.args[:pinterest].blank? ? nil : request.args[:pinterest])
