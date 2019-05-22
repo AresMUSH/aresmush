@@ -1,0 +1,181 @@
+---
+superconsole:
+  max_base_attribute_value: 99
+  min_base_attribute_value: 1
+  default_attributes_profession: nil
+  default_attributes_race:
+    dwarf:
+      Vitality: 2
+      Speed: -2
+      Strength: 1
+    elf:
+      Magic: 2
+      Speed: 1
+      Vitality: -1
+      Strength: -1
+    half-orc:
+      Strength: 2
+      Vitality: 2
+      Intelligence: -3
+    kitsune:
+      Speed: 1
+      Magic: 2
+      Strength: -1
+      Vitality: -1
+    kumajin:
+      Strength: 1
+      Speed: -1
+      Magic: 1
+      Spirit: 1
+      Accuracy: -1
+    moogle:
+      Magic: 3
+      Strength: -2
+    nekojin:
+      Speed: 2
+      Luck: 2
+      Strength: -2
+      Vitality: -1
+    tarutaru:
+      Magic: 4
+      Speed: -2
+      Vitality: -2
+      Spirit: 1
+    viera:
+      Speed: 3
+      Strength: -1
+      Vitality: -1
+ default_attributes_class:
+    assassin:
+      Strength: 5
+      Accuracy: 5
+      Speed: 12
+      Vitality: 6
+      Intelligence: 4
+      Spirit: 4
+      Magic: 4
+      Luck: 12
+    bard:
+      Strength: 6
+      Accuracy: 6
+      Speed: 6
+      Vitality: 5
+      Spirit: 10
+      Magic: 8
+      Luck: 6
+    cleric:
+      Strength: 3
+      Accuracy: 3
+      Speed: 3
+      Vitality: 5
+      Intelligence: 7
+      Spirit: 10
+      Magic: 12
+      Luck: 7
+    druid:
+      Strength: 6
+      Accuracy: 6
+      Speed: 5
+      Vitality: 7
+      Intelligence: 6
+      Spirit: 8
+      Magic: 9
+      Luck: 6
+    enchanter:
+      Strength: 3
+      Accuracy: 3
+      Speed: 5
+      Vitality: 5
+      Intelligence: 12
+      Spirit: 5
+      Magic: 11
+      Luck: 6
+    guardian:
+      Strength: 10
+      Accuracy: 5
+      Speed: 8
+      Vitality: 10
+      Intelligence: 3
+      Spirit: 5
+      Magic: 3
+      Luck: 8
+    kannagi:
+      Strength: 3
+      Accuracy: 7
+      Speed: 7
+      Vitality: 6
+      Intelligence: 7
+      Spirit: 8
+      Magic: 10
+      Luck: 6
+    monk:
+      Strength: 8
+      Accuracy: 3
+      Speed: 8
+      Vitality: 8
+      Intelligence: 5
+      Spirit: 4
+      Magic: 9
+      Luck: 7
+    samurai:
+      Strength: 12
+      Accuracy: 3
+      Speed: 5
+      Vitality: 8
+      Intelligence: 5
+      Spirit: 4
+      Magic: 6
+      Luck: 7
+    scout:
+      Strength: 8
+      Accuracy: 6
+      Speed: 10
+      Vitality: 5
+      Intelligence: 8
+      Spirit: 4
+      Magic: 4
+      Luck: 12
+    sorcerer:
+      Strength: 3
+      Accuracy: 5
+      Speed: 6
+      Vitality: 5
+      Intelligence: 9
+      Spirit: 5
+      Magic: 12
+      Luck: 7
+    summoner:
+      Strength: 4
+      Accuracy: 5
+      Speed: 3
+      Vitality: 3
+      Intelligence: 6
+      Spirit: 10
+      Magic: 12
+      Luck: 9
+    swashbuckler:
+      Strength: 10
+      Accuracy: 3
+      Speed: 9
+      Vitality: 9
+      Intelligence: 4
+      Spirit: 7
+      Magic: 3
+      Luck: 9
+  attributes:
+  - name: Strength
+    desc: "Determines your ability to hit in hand-to-hand or melee combat and dish out that damage."
+  - name: Speed
+    desc: "Determines how fast you act, and your ability to hit with ranged weapons, that are muscle powered, as well as dish out that damage."
+  - name: Vitality
+    desc: "Determines your max health bar value and influences your Max Stamina bar value."
+  - name: Intelligence
+    desc: "Determines some of your magical resistance to damaging effects."
+  - name: Spirit
+    desc: "Determines some of your magical resistance to status effects. Determines your overall social interactions and influences your Max Stamina bar value."
+  - name: Magic
+    desc: "Determines your max mana bar and how effective your spell casting is."
+  - name: Luck
+    desc: "Determines your ability to evade attacks of all types. This also is useful for stealth and things that relate to chance."
+  - name: Accuracy
+    desc: "Determines your ability to hit with self-propelled ranged weapons and dish out that damage."
