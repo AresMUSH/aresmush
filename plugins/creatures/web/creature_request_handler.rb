@@ -2,9 +2,9 @@ module AresMUSH
   module Creatures
     class CreatureRequestHandler
       def handle(request)
-        Global.logger.debug "Request: #{request}"
+        Global.logger.debug "Creature request handler"
+        Global.logger.debug "Request: #{request.args.to_a}"
         creature = Creature.find_one_by_name(request.args[:id])
-        Global.logger.debug "creature: #{creature}"
         enactor = request.enactor
 
         if (!creature)

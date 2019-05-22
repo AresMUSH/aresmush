@@ -1,6 +1,7 @@
 module AresMUSH
   class Creature < Ohm::Model
     include ObjectModel
+    include FindByName
 
     attribute :name
     attribute :name_upcase
@@ -15,10 +16,15 @@ module AresMUSH
     attribute :events
     attribute :pinterest
     attribute :found
+    before_save :save_upcase
 
 
     set :gms, "AresMUSH::Character"
     set :portals, "AresMUSH::Portal"
+
+    def save_upcase
+      self.name_upcase = self.name ? self.name.upcase : nil
+    end
 
     def self.find_any_by_name(name_or_id)
       return [] if !name_or_id
