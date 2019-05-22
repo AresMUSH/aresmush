@@ -30,7 +30,7 @@ module AresMUSH
 
 
    def level
-     self.console_level || 1
+     self.console_level == 0 ? 1 : self.console_level
    end
 
    def health_bar
