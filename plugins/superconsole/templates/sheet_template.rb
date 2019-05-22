@@ -67,9 +67,9 @@ module AresMUSH
 
       def favor_status(a)
         if a.favored == true
-          "+"
+          "%x10+%xn"
         elsif a.unfavored == true
-          "-"
+          "%x9-%xn"
         else
           " "
         end
