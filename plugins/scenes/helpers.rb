@@ -1,6 +1,18 @@
 module AresMUSH
   module Scenes
 
+    def self.add_creature(scene, creature)
+      if (!scene.creatures.include?(creature))
+        scene.creatures.add creature
+      end
+    end
+
+    def self.add_portal(scene, portal)
+      if (!scene.portals.include?(portal))
+        scene.portals.add portal
+      end
+    end
+
     def self.new_scene_activity(scene, activity_type, data)
       last_posed = scene.last_posed ? scene.last_posed.name : nil
       web_msg = "#{scene.id}|#{last_posed}|#{activity_type}|#{data}"

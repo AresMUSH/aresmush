@@ -38,6 +38,14 @@ module AresMUSH
             .sort_by {|p| p.name }
             .map { |p| { name: p.name, id: p.id, icon: Website.icon_for_char(p), is_ooc: p.is_admin? || p.is_playerbit?  }}
 
+        creatures = scene.creatures.to_a
+            .sort_by {|creature| creature.name }
+            .map { |creature| { name: creature.name, id: creature.id }}
+
+        portals = scene.portals.to_a
+            .sort_by {|portal| portal.name }
+            .map { |portal| { name: portal.name, id: portal.id }}
+
 
         {
           id: scene.id,
@@ -53,6 +61,8 @@ module AresMUSH
           scene_type: scene.scene_type ? scene.scene_type.titlecase : 'unknown',
           log: log,
           plot: scene.plot ? { title: scene.plot.title, id: scene.plot.id } : nil,
+          portals: portals,
+          creatures: creatures,
           related_scenes: scene.related_scenes.map { |r| { title: r.date_title, id: r.id }},
           can_edit: enactor && Scenes.can_edit_scene?(enactor, scene),
           can_join: Scenes.can_join_scene?(enactor, scene),
