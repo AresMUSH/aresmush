@@ -69,9 +69,9 @@ module AresMUSH
       def format_attr(a, i)
         name = "%xh#{a.name}:%xn"
         linebreak = i % 3 == 0 ? "" : "%r"
-        bigger = i % 3  == 2 ? 14 : 13
+        bigger = i % 3 == 2 ? 14 : 13
         rating = "#{a.rating}"
-        "#{linebreak}#{left(name, bigger)} #{left(rating,12)}"
+        "#{linebreak}#{left(name, bigger)} i #{left(rating,12)}"
       end
 
     end
