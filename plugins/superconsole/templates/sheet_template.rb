@@ -23,13 +23,13 @@ module AresMUSH
         Chargen.approval_status(@char)
       end
       def char_class
-        @char.demographic("Class") || "Unknown"
+        @char.group("class") || "Unknown"
       end
       def profession
-        @char.demographic("Profession") || "Unknown"
+        @char.group("profession") || "Unknown"
       end
       def race
-        @char.demographic("Race") || "Unknown"
+        @char.group("race") || "Unknown"
       end
       def age
         age = @char.age
