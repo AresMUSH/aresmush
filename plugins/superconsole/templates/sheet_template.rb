@@ -65,12 +65,21 @@ module AresMUSH
         list
       end
 
+      def favor_status(a)
+        if a.favored == true
+          "+"
+        elsif a.unfavored == true
+          "-"
+        else
+          " "
+        end
+      end
 
       def format_attr(a, i)
         name = "%xh#{a.name}:%xn"
         linebreak = i % 2 == 1 ? "" : "%r"
         spacebreak = i % 2 == 0 ? "  " : ""
-        status = return "+" if a.favored && !a.unfavored || return "-" if !a.favored && a.unfavored || return " " if !a.favored && !a.unfavored
+        status = favor_status(a)
         rating = "#{a.rating}"
         "#{linebreak}[#{status}] #{left(name, 12)} #{right(rating,21)}#{spacebreak}"
       end
