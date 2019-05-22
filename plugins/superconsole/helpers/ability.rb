@@ -28,7 +28,7 @@ module AresMUSH
       ability = SuperConsole.find_ability(char, ability_name)
       if (ability)
         case ability_type
-        when attribute
+        when "attribute"
           case field
           when "rating"
             ability.update(rating: value)
