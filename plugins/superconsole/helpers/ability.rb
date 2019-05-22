@@ -18,34 +18,21 @@ module AresMUSH
       return nil
     end
 
-    def self.update_ability(char,ability_name,field,value)
-      ability_name = ability_name ? ability_name.titleize : nil
-      error = SuperConsole.check_ability_name(ability_name)
-      if (error)
-        return error
-      end
-      ability_type = SuperConsole.get_ability_type(ability_name)
-      ability = SuperConsole.find_ability(char, ability_name)
-      if (ability)
-        case ability_type
-        when "attribute"
-          case field
-          when "rating"
-            ability.update(rating: value)
-          when "favored"
-            ability.update(favored: value)
-          when "unfavored"
-            ability.update(unfavored: value)
-          else
-            t('superconsole.update_error_attribute', :name => ability_name, :field => field)
+    def set_favor(c,a,v)
+      ability_name = a.titlecase
+      ability_type = SuperConsole.get_ability_type(a)
+      if ability_type == attribute
+        if a.favored == true
+          a.update(favored: false)
+        elsif a.favored == false
+          a.update(favored: true)
+        else
+          nil
         end
-        t('superconsole.set_ability', :name => ability_name)
-      end
       else
-        t('superconsole.set_ability', :name => ability_name)
+        "You can only mark attributes as favored."
       end
     end
-
 
     def self.get_ability_type(ability)
       ability = ability.titlecase
