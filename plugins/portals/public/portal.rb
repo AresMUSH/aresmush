@@ -1,13 +1,14 @@
 module AresMUSH
   class Portal < Ohm::Model
     include ObjectModel
+    include FindByName
 
     attribute :name
     attribute :name_upcase
     index :name_upcase
     attribute :primary_school, :type => DataType::Hash, :default => {}
     attribute :all_schools, :type => DataType::Array, :default => []
-    attribute :creatures
+    attribute :other_creatures
     attribute :npcs
     attribute :location
     attribute :description
@@ -15,12 +16,18 @@ module AresMUSH
     attribute :events
     attribute :pinterest
     attribute :society
+    before_save :save_upcase
 
     set :gms, "AresMUSH::Character"
+    set :creatures, "AresMUSH::Creature"
 
-    def gm_names
-      self.gmd.sort { |gm| gm.name }.map { |gm| gm.name }
+    def save_upcase
+      self.name_upcase = self.name ? self.name.upcase : nil
     end
+
+    # def gm_names
+    #   self.gmd.sort { |gm| gm.name }.map { |gm| gm.name }
+    # end
 
     def self.find_any_by_name(name_or_id)
       return [] if !name_or_id

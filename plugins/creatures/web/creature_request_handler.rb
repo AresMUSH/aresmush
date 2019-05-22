@@ -2,9 +2,9 @@ module AresMUSH
   module Creatures
     class CreatureRequestHandler
       def handle(request)
-        Global.logger.debug "Request: #{request}"
+        Global.logger.debug "Creature request handler"
+        Global.logger.debug "Request: #{request.args.to_a}"
         creature = Creature.find_one_by_name(request.args[:id])
-        Global.logger.debug "creature: #{creature}"
         enactor = request.enactor
 
         if (!creature)
@@ -15,15 +15,9 @@ module AresMUSH
             .sort_by {|gm| gm.name }
             .map { |gm| { name: gm.name, id: gm.id, is_ooc: gm.is_admin? || gm.is_playerbit?  }}
 
-        # if creature.portals
-        #   portals = creature.portals.to_a
-        #     .sort_by {|portal| portal.name }
-        #     .map { |portal| { name: portal.name, id: portal.id}}
-        # else
-        #   portals = nil
-        # end
-
-
+        portals = creature.portals.to_a
+            .sort_by {|portal| portal.name }
+            .map { |portal| { name: portal.name, id: portal.id }}
 
         if creature.sapient
           sapient = "Sapient"
@@ -38,7 +32,7 @@ module AresMUSH
           minor_school: creature.minor_school,
           gms: gms,
           found: creature.found,
-          # portals: portals,
+          portals: portals,
           sapient: sapient,
           id: creature.id,
           pinterest: creature.pinterest,

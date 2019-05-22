@@ -20,8 +20,6 @@ module AresMUSH
           end
         end
 
-
-
         all_schools_names = request.args[:all_schools]
         all_schools = []
         if all_schools_names
@@ -33,35 +31,26 @@ module AresMUSH
           end
         end
 
-        Global.logger.debug "All schools: #{all_schools} "
-
-
         school_name = request.args[:primary_school].to_s
         school_id = Global.read_config("schools", school_name, "id")
         primary_school = {:name => school_name, :id => school_id}
 
-        Global.logger.debug "Primary schools: #{school_name}"
-        Global.logger.debug "Primary schools: #{school_id}"
-        # Global.logger.debug "Primary schools: #{primary_school} "
-
         portal = Portal.create(
           name: request.args[:name],
+
           pinterest: request.args[:pinterest],
           all_schools: all_schools,
           primary_school: primary_school,
-          creatures: request.args[:creatures],
+          other_creatures: request.args[:other_creatures],
           npcs: request.args[:npcs],
           location: request.args[:location],
           description: request.args[:description],
           events: request.args[:events],
           trivia: request.args[:trivia],
-          society: request.args[:society],
+          society: request.args[:society]
         )
 
-
-
         Global.logger.debug "Portal #{portal.id} (#{portal.name}) created by #{enactor.name}."
-
 
         gm_names = request.args[:gms] || []
         portal.gms.replace []
@@ -71,6 +60,18 @@ module AresMUSH
           if (gm)
             if (!portal.gms.include?(gm))
               Portals.add_gm(portal, gm)
+            end
+          end
+        end
+
+        creature_ids = request.args[:creatures] || []
+        portal.creatures.replace []
+
+        creature_ids.each do |creature|
+          creature = Creature.find_one_by_name(creature.strip)
+          if (creature)
+            if (!portal.creatures.include?(creature))
+              Portals.add_creature(portal, creature)
             end
           end
         end

@@ -4,6 +4,7 @@ module AresMUSH
       def handle(request)
         portal = Portal.find_one_by_name(request.args[:id])
         enactor = request.enactor
+        Global.logger.debug "Portal edit handler"
 
         if (!portal)
           return { error: t('webportal.not_found') }
@@ -30,17 +31,29 @@ module AresMUSH
             end
           end
 
-
-          all_schools_names = request.args[:all_schools] || []
-          portal.all_schools.replace []
-          all_schools = []
-          all_schools_names.each do |school|
-            school_name = Global.read_config("schools", school, "name")
-            id = Global.read_config("schools", school, "id")
-            new_school = [{:name => school_name, :id => id}]
-            all_schools.concat new_school
+          creature_ids = request.args[:creatures] || []
+          portal.creatures.replace []
+          creature_ids.each do |creature|
+            creature = Creature.find_one_by_name(creature.strip)
+            if (creature)
+              if (!portal.creatures.include?(creature))
+                Portals.add_creature(portal, creature)
+              end
+            end
           end
-          portal.update(all_schools: all_schools)
+
+          if !request.args[:all_schools].blank?
+            all_schools_names = request.args[:all_schools] || []
+            portal.all_schools.replace []
+            all_schools = []
+            all_schools_names.each do |school|
+              school_name = Global.read_config("schools", school, "name")
+              id = Global.read_config("schools", school, "id")
+              new_school = [{:name => school_name, :id => id}]
+              all_schools.concat new_school
+            end
+            portal.update(all_schools: all_schools)
+          end
 
 
           school_name = request.args[:primary_school].to_s
@@ -48,17 +61,15 @@ module AresMUSH
           primary_school = {:name => school_name, :id => id}
           portal.update(primary_school: primary_school)
 
-
-
           portal.update(name: request.args[:name])
-          portal.update(pinterest: request.args[:pinterest])
-          portal.update(creatures: request.args[:creatures])
-          portal.update(npcs: request.args[:npcs])
-          portal.update(location: request.args[:location])
-          portal.update(description: request.args[:description])
-          portal.update(trivia: request.args[:trivia])
-          portal.update(events: request.args[:events])
-          portal.update(society: request.args[:society])
+          portal.update(pinterest: request.args[:pinterest].blank? ? nil : request.args[:pinterest])
+          portal.update(other_creatures: request.args[:other_creatures].blank? ? nil : request.args[:other_creatures])
+          portal.update(npcs: request.args[:npcs].blank? ? nil : request.args[:npcs])
+          portal.update(location: request.args[:location].blank? ? nil : request.args[:location])
+          portal.update(description: request.args[:description].blank? ? nil : request.args[:description])
+          portal.update(trivia: request.args[:trivia].blank? ? nil : request.args[:trivia])
+          portal.update(events: request.args[:events].blank? ? nil : request.args[:events])
+          portal.update(society: request.args[:society].blank? ? nil : request.args[:society])
           {}
       end
     end
