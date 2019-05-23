@@ -13,6 +13,22 @@ module AresMUSH
         end
 
 
+        scenes_starring = Scene.portal_scenes(portal)
+
+        scenes = scenes_starring.sort_by { |s| s.icdate || s.created_at }.reverse
+             .map { |s| {
+                      id: s.id,
+                      title: s.title,
+                      summary: s.summary,
+                      location: s.location,
+                      icdate: s.icdate,
+                      participants: s.participants.to_a.sort_by { |p| p.name }.map { |p| { name: p.name, id: p.id, icon: Website.icon_for_char(p) }},
+                      scene_type: s.scene_type ? s.scene_type.titlecase : 'Unknown',
+                      likes: s.likes
+
+                    }
+                  }
+
 
         gms = portal.gms.to_a
             .sort_by {|gm| gm.name }
@@ -47,7 +63,8 @@ module AresMUSH
           id: portal.id,
           pinterest: portal.pinterest,
           longitude: portal.longitude,
-          latitude: portal.latitude
+          latitude: portal.latitude,
+          scenes: scenes
         }
       end
 
