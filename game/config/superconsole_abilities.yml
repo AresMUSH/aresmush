@@ -1,0 +1,493 @@
+---
+superconsole:
+  chargen_points: 60
+  abilities:
+    assassin:
+      1:
+        - Sneak Attack
+      5:
+        - Stealth
+      10:
+        - Dodge
+      15:
+        - Ambush
+      20:
+        - Two-Weapon Strike
+      30:
+        - Death Blow
+      40:
+        - Shadow Strike
+      50:
+        - Magic Resistance
+      65:
+        - Doomed Strike
+      95:
+        - Invisibility
+      99:
+        - Critical Striker
+    bard:
+      1:
+        - Chant
+        - Hero's Ballad
+        - Sound Blast
+      5:
+        - Musical Attack
+      10:
+        - Too Loud!
+        - Entrancing Melody
+        - Rallying Cry
+      15:
+        - Universal Tips
+      20:
+        - Requiem
+        - Song of Life
+        - Song of Silence
+      30:
+        - Battle Song
+      40:
+        - Love Song
+        - Fast Beat
+      50:
+        - Underestimation
+      65:
+        - Seismic Subwoofer
+        - Song of Power
+      80:
+        - Unsung Melody
+      95:
+        - Secret Resonance
+      99:
+        - Double Song
+    cleric:
+      1:
+        - Cure
+        - Purify
+        - Armor
+        - Sense
+      5:
+        - Turn
+      10:
+        - Negate Magic
+        - Cure 2
+        - Holy
+        - Tiny
+      15:
+        - Chain Healing
+        - Rebuke
+      20:
+        - Cure 3
+        - Dispel
+        - Life
+        - Reflect
+      30:
+        - Sanctify
+      40:
+        - Holy 2
+        - Cure 4
+        - Restore
+        - Wall
+      50:
+        - Everybody Loves You
+      65:
+        - Relife
+        - Life 2
+        - Divinity
+      80:
+        - Mana Bonus
+      95:
+        - Critical Casting
+      99:
+        - Double Heal
+    druid:
+      1:
+        - Flight
+        - Quake
+        - Sandstorm
+        - Nature's Touch
+      5:
+        - Nature Resistance
+        - Scout Totem Form
+      10:
+        - Cure
+        - Sense
+        - Purify
+      15:
+        - Terrain Attack
+      20:
+        - Eagle Flight
+        - Flash Flood
+        - Quake 2
+        - Quicksand
+        - Stairs
+        - Nature's Fury
+      30:
+        - Warrior Totem Form
+      40:
+        - Earth Resistance
+        - Fire Resistance
+        - Water Resistance
+        - Air Resistance
+      50:
+        - Primal Totem Form
+      65:
+        - Lava Gout
+        - Mother Nature
+        - Planet's Embrace
+        - Richter
+      80:
+        - Lighting Resistance
+        - Cold Resistance
+        - Gravity Resistance
+        - Sonic Resistance
+      95:
+        - Nature's Blessing
+      99:
+        - Elemental Immunity
+        - Darkness Resistance
+        - Holy Resistance
+    enchanter:
+      1:
+        - Regenerate
+        - Haste
+        - Agility Up
+        - Power Up
+        - Armor Up
+        - Mana Bolt
+        - Mana Missile
+      5:
+        - Danger Sense
+        - Know Thy Enemy
+      10:
+        - Mana Absorb
+        - Pacify
+        - Haste
+        - Slow
+        - Mana Cannon
+        - Demi
+      15:
+        - Gravity Well
+      20:
+        - Haste 2
+        - Comet Strike
+        - Demi 2
+        - Eject
+        - Exit
+      30:
+        - Critical Up
+        - Damage Up
+        - Mana Regen
+        - Slow 2
+      40:
+        - Age
+        - Demi 3
+        - Mana Flare
+        - Rewind
+        - Time Stop
+      50:
+        - Auto-Reboot
+        - Skip One!
+      65:
+        - Meteor
+        - Mana Storm
+        - Blackhole
+        - Nullify Aggression
+      80:
+        - Swift Action
+      95:
+        - Preperation Counts!
+      99:
+        - Redo
+    guardian:
+      1:
+        - Two-Handed Strike
+        - Swift Strike
+      5:
+        - Cover
+        - Sheild Bash
+      10:
+        - Guard
+        - Taunting Aura
+      15:
+        - Massive Damage
+      20:
+        - Critical Striking
+      30:
+        - Crosscut
+        - Hold The Line
+      40:
+        - Endurance
+      50:
+        - HP Bonus
+      65:
+        - Weapons Master
+      80:
+        - Combat Awareness
+      95:
+        - Spirit Blessing
+      99:
+        - Unavoidable Strike
+        - Invulnerability
+    kannagi:
+      1:
+        - Aero
+        - Dark
+        - Fire
+        - Holy
+      5:
+        - Balance Aura
+      10:
+        - Cure
+        - Bless
+        - Mana Blast
+        - Spiritual Defense
+        - Shadow Step
+      15:
+        - Shadowy Aspect
+      20:
+        - Areo 2
+        - Fire 2
+        - Dark 2
+        - Holy 2
+        - Mana Cannon
+      30:
+        - Luminous Aspect
+      40:
+        - Healing Surge
+        - Death Surge
+        - Bless 2
+      50:
+        - White
+        - Void
+        - Tornado
+        - Flare
+        - Mana Storm
+      65:
+        - Life 2
+      80:
+        - MP Bonus
+      95:
+        - Ancient Power
+      99:
+        - Master of Life & Death
+    monk:
+      1:
+        - Unarmed Master
+      5:
+        - Focused Blow
+      10:
+        - Chi Restoration
+      15:
+        - Chi Touch
+        - First Gate
+      20:
+        - Furious Beatdown
+        - Second Gate
+      30:
+        - Counter Attack
+        - Third Gate
+      40:
+        - Durability
+        - Fourth Gate
+      50:
+        - Iron Skin
+        - Fifth Gate
+      65:
+        - Steel Muscles
+        - Sixth Gate
+      80:
+        - Focused Mind
+        - Seventh Gate
+      95:
+        - Combat Awareness
+        - Eighth Gate
+      99:
+        - Turbo
+        - Divine Awakening
+    samurai:
+      1:
+        - Sword Mastery
+      5:
+        - Shikai
+        - Barrier Aura
+      10:
+        - Sword Block
+      15:
+        - Second Shikai
+      20:
+        - Samurai's Duty
+      30:
+        - Combat Awareness
+        - Flame Blade
+        - Wind Blade
+        - Water Blade
+        - Cold Blade
+        - Holy Blade
+        - Shadow Blade
+        - True Steel Blade
+        - Savage Blade
+      40:
+        - Focus Aura
+      50:
+        - Bankai
+      65:
+        - Flame Blade 2
+        - Wind Blade 2
+        - Water Blade 2
+        - Cold Blade 2
+        - Holy Blade 2
+        - Shadow Blade 2
+        - True Steel Blade 2
+        - Savage Blade 2
+      80:
+        - Offering to Yojimbo
+      95:
+        - Honor's Favor
+      99:
+        - Undeniable Righteousness
+    scout:
+      1:
+        - Track
+      5:
+        - Combat Awareness
+      10:
+        - Magical Perception
+      15:
+        - Swift Feet
+      20:
+        - Loot Master
+      30:
+        - First Aid
+        - Leaf
+        - Accuracy Up
+        - Defense Up
+      40:
+        - Bow Mastery
+      50:
+        - Swift Arrow
+        - Fire Arrow
+        - Cold Arrow
+        - Shocking Arrow
+      65:
+        - Stealth
+      80:
+        - Stealth Aura
+      95:
+        - Scout's Key
+      99:
+        - Critical Shots
+    sorcerer:
+      1:
+        - Fire
+        - Aero
+        - Bolt
+        - Ice
+        - Quake
+        - Dark
+      5:
+        - Fire Glyph
+        - Aero Glyph
+        - Bolt Glyph
+        - Ice Glyph
+        - Quake Glyph
+        - Dark Glyph
+      10:
+        - Bio
+        - Frog
+        - Sleep
+        - Confuse
+      15:
+        - Empower Spell
+        - Bio Glyph
+      20:
+        - Fire 2
+        - Aero 2
+        - Bolt 2
+        - Ice 2
+        - Quake 2
+        - Dark 2
+        - Drain
+        - Bio 2
+      30:
+        - Redirect Magic
+      40:
+        - Fire 3
+        - Aero 3
+        - Bolt 3
+        - Ice 3
+        - Quake 3
+        - Dark 3
+        - Stone
+        - Absorb
+      50:
+        - Ritual Circle
+        - Mana Sheild
+        - Counter Spell
+      65:
+        - Flare
+        - Glacier
+        - Lumiaire
+        - Richter
+        - Typhoon
+        - Void
+      80:
+        - Double Cast
+      95:
+        - Swift Cast
+      99:
+        - Master of Magic
+    summoner:
+      1:
+        - Forge Contract
+        - Call
+      5:
+        - Release
+      10:
+        - Summon
+      15:
+        - Empower Call
+      20:
+        - Extend Summon
+      30:
+        - Emergency Summon
+      40:
+        - Grand Summon
+      50:
+        - Mana Bonus
+      65:
+        - Double Summon
+      80:
+        - Sustain Summon
+      95:
+        - This one goes to eleven
+      99:
+        - Contract Synergy
+    swashbuckler:
+      1:
+        - Two-Weapon Fighting
+      5:
+        - Swagger
+      10:
+        - Lethal Weapons
+        - Where's the Loot?
+      15:
+        - Dead-Eye
+        - Charming Rapport
+      20:
+        - Silencing Strike
+      30:
+        - Critical Striker
+        - Whirling Dervish
+      40:
+        - Increased Critical
+      50:
+        - Leeching Weapon
+        - Extended Reach
+      65:
+        - Surgical Strikes
+      80:
+        - Flurry Strikes
+      95:
+        - Chain Attacks
+      99:
+        - Ghost on the Field
+        
