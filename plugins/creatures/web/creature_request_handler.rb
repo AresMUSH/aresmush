@@ -11,6 +11,24 @@ module AresMUSH
           return { error: t('webcreature.not_found') }
         end
 
+        scenes_starring = Scene.creature_scenes(creature)
+
+        scenes = scenes_starring.sort_by { |s| s.icdate || s.created_at }.reverse
+             .map { |s| {
+                      id: s.id,
+                      title: s.title,
+                      summary: s.summary,
+                      location: s.location,
+                      icdate: s.icdate,
+                      participants: s.participants.to_a.sort_by { |p| p.name }.map { |p| { name: p.name, id: p.id, icon: Website.icon_for_char(p) }},
+                      scene_type: s.scene_type ? s.scene_type.titlecase : 'Unknown',
+                      likes: s.likes
+
+                    }
+                  }
+
+
+
         gms = creature.gms.to_a
             .sort_by {|gm| gm.name }
             .map { |gm| { name: gm.name, id: gm.id, is_ooc: gm.is_admin? || gm.is_playerbit?  }}
@@ -24,7 +42,6 @@ module AresMUSH
         else
           sapient = "Non Sapient"
         end
-
 
         {
           name: creature.name,
@@ -45,6 +62,7 @@ module AresMUSH
           magical_abilities: Website.format_markdown_for_html(creature.magical_abilities),
           edit_events:  Website.format_input_for_html(creature.events),
           events: Website.format_markdown_for_html(creature.events),
+          scenes: scenes
         }
       end
 
