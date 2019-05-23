@@ -26,8 +26,9 @@ module AresMUSH
     collection :scene_poses, "AresMUSH::ScenePose"
     reference :scene_log, "AresMUSH::SceneLog"
     reference :plot, "AresMUSH::Plot"
-    reference :creature, "AresMUSH::Creature"
-    reference :portal, "AresMUSH::Portal"
+
+    set :creatures, "AresMUSH::Creature"
+    set :portals, "AresMUSH::Portal"
 
     set :invited, "AresMUSH::Character"
     set :watchers, "AresMUSH::Character"
@@ -42,6 +43,14 @@ module AresMUSH
 
     def self.scenes_starring(char)
       Scene.all.select { |s| s.shared && s.participants.include?(char) }
+    end
+
+    def self.creature_scenes(creature)
+      Scene.all.select { |s| s.shared && s.creatures.include?(creature) }
+    end
+
+    def self.portal_scenes(portal)
+      Scene.all.select { |s| s.shared && s.portals.include?(portal) }
     end
 
     def is_private?
