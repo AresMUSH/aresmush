@@ -9,8 +9,51 @@ module AresMUSH
       attrs.map { |a| a['name'].titlecase }
     end
 
+    def self.abilities
+      Global.read_config("superconsole", "abilities")
+    end
+
+    def self.abilities_name
+      abilities.map { |a| a['name'].titlecase}
+    end
+
+    def self.get_min_rating(ability_type)
+      case ability_type
+      when :ability
+        min_rating = 0
+      when :attribute
+        min_rating = 1
+      end
+      min_rating
+    end
+
     def self.set_ability(char, ability_name, rating)
-      ConsoleAttribute.create(character: char, name: ability_name, rating: rating, favored: false, unfavored: false)
+      ability_name = ability_name ? ability_name.titleize : nil
+      error = SuperConsole.check_ability_name(ability_name)
+      if (error)
+        return error
+      end
+      ability_type = SuperConsole.get_ability_type(ability_name)
+
+      min_rating = SuperConsole.get_min_rating(ability_type)
+      ability = SuperConsole.find_ability(char, ability_name)
+
+      if (ability)
+        ability.update(rating: rating)
+      else
+        case ability_type
+        when :attribute
+          ability = ConsoleAttribute.create(character: char, name: ability_name, rating: rating, favored: false, unfavored: false)
+        when :ability
+          ability = ConsoleAbility.create(character: char, name: ability_name, rating: 1, acquired: char.level, masterpoints: 0, learnpoints: 0, learnable: true)
+        end
+      end
+      if (rating == min_rating)
+        if (ability && (ability_type == :ability))
+          ability.delete
+        end
+      end
+      return nil
     end
 
     def self.check_ability_name(ability)
@@ -56,6 +99,8 @@ module AresMUSH
       ability = ability.titlecase
       if (attr_names.include?(ability))
         return :attribute
+      elsif (abilities_name.include?(ability))
+        return :ability
       else
         nil
       end
@@ -67,6 +112,8 @@ module AresMUSH
       case ability_type
       when :attribute
         char.console_attributes.find(name: ability_name).first
+      when :ability
+        char.console_skills.find(name: ability_name).first
       else
         nil
       end
