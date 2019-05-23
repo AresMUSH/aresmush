@@ -25,6 +25,17 @@ spells:
     target_num: 1
     target_optional: true
   #Level 2
+  Adjust Volume:
+    available: false
+    casting_time: 1 round
+    desc: "For the duration of the spell, the caster can amplify or decrease the volume of the sound coming from a target. Sounds cannot be made louder than 100 db (a loud vehicle, a train whistle, a hand drill), nor can sounds be made softer than 30 db (a quiet whisper)."
+    duration: 1 hour
+    effect: Creation
+    level: 2
+    name: Adjust Volume
+    range: Short
+    roll: true
+    school: Air
   Cloud Cover:
     area: 5 ft radius
     available: true
@@ -66,6 +77,7 @@ spells:
     range: Short
     rounds: 2
     school: Air
+  #Level 3
   Electric Surge:
     available: false
     casting_time: 1 round
@@ -122,6 +134,7 @@ spells:
     stance: cover
     target_num: 1
     target_optional: true
+  #Level 4
   Air Blast:
     area: 5 ft radius
     available: false
@@ -179,6 +192,17 @@ spells:
     target_num: 1
     target_optional: true
     weapon: Breathless
+  Create Sound:
+    available: true
+    casting_time: 1 round
+    desc: 'For the duration of the spell, the caster can vibrate the air to create simple sounds. These sounds can be a single noise, a melody, or a short sentence of up to fifteen, one-syllable words. Sound created cannot be louder than 100 db (a loud vehicle, a train whistle, a hand drill).'
+    duration: 10 minutes
+    effect: Illusion
+    level: 4
+    name: Create Sound
+    range: Short
+    roll: true
+    school: Air
   Lightning Bolt:
     available: true
     casting_time: 1 round
