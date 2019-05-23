@@ -4,5 +4,8 @@ module AresMUSH
       return false if !actor
       actor.has_permission?("view_sheets")
     end
+    def can_set_stats(actor)
+      actor.has_permission?("manage_stats")
+    end
   end
 end

@@ -38,6 +38,7 @@ superconsole:
       Accuracy: 6
       Speed: 6
       Vitality: 5
+      Intelligence: 6
       Spirit: 10
       Magic: 8
       Luck: 6
@@ -140,6 +141,73 @@ superconsole:
       Spirit: 7
       Magic: 3
       Luck: 9
+  favored_stats_class:
+    assassin:
+      - Speed
+      - Luck
+    bard:
+      - Spirit
+      - Magic
+    cleric:
+      - Magic
+      - Spirit
+    druid:
+      - Vitality
+      - Spirit
+    enchanter:
+      - Intelligence
+      - Magic
+    guardian:
+      - Strength
+      - Speed
+    kannagi:
+      - Magic
+      - Spirit
+    monk:
+      - Strength
+      - Luck
+    samurai:
+      - Vitality
+      - Magic
+    scout:
+      - Speed
+      - Luck
+    sorcerer:
+      - Intelligence
+      - Magic
+    summoner:
+      - Magic
+      - Spirit
+    swashbuckler:
+      - Strength
+      - Vitality
+  unfavored_stats_class:
+    assassin:
+      - Intelligence
+    bard:
+      - Strength
+    cleric:
+      - Vitality
+    druid:
+      - Strength
+    enchanter:
+      - Vitality
+    guardian:
+      - Intelligence
+    kannagi:
+      - Speed
+    monk:
+      - Intelligence
+    samurai:
+      - Luck
+    scout:
+      - Spirit
+    sorcerer:
+      - Strength
+    summoner:
+      - Vitality
+    swashbuckler:
+      - Accuracy
   default_attributes_profession: {}
   default_attributes_race:
     dwarf:
