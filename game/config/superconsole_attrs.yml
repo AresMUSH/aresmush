@@ -253,4 +253,4 @@ superconsole:
       Vitality: -1
   max_base_attribute_value: 99
   min_base_attribute_value: 1
-  chargen_points: 60
+  chargen_points_attrs: 60

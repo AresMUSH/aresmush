@@ -1,6 +1,5 @@
 ---
 superconsole:
-  chargen_points: 60
   abilities:
     assassin:
       1:
@@ -490,4 +489,3 @@ superconsole:
         - Chain Attacks
       99:
         - Ghost on the Field
-        
