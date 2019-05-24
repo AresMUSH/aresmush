@@ -15,7 +15,7 @@ module AresMUSH
       else
         nil
       end
-      ab['max_rating']
+      ab['max_learn']
     end
 
 
