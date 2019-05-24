@@ -18,7 +18,13 @@ module AresMUSH
       ab
     end
 
-
+    def self.get_max_learn_adj(c,a)
+      base = SuperConsole.get_max_default_learn(a)
+      arch = char.groups("Archetype") || "Unknown"
+      listing = arch + "_favored"
+      favor = Global.read_config("superconsole","abilities",listing).find { |s| s['name'].upcase == a.upcase}['a'] || false
+      favor
+    end
 
     def self.attr_names
       attrs.map { |a| a['name'].titlecase }

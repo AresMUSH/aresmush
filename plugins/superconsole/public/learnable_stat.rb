@@ -3,9 +3,11 @@ module AresMUSH
 
     def get_max_learn(c,a)
       type = SuperConsole.get_ability_type(a)
-      ability = SuperConsole.get_value(a,max_learn)
+      ability = SuperConsole.get_max_default_learn(c,a)
       ability
     end
+
+
     def on_success(c,a)
       ability_type = SuperConsole.get_ability_type(a)
       ability = SuperConsole.find_ability(c,a)

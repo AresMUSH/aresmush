@@ -1,3 +1,5 @@
 ---
 superconsole:
   abilities:
+    - name: Testing
+      max_rating: 15
