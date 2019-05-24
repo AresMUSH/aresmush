@@ -20,15 +20,21 @@ module AresMUSH
 
     def self.get_max_learn_adj(c,a)
       base = SuperConsole.get_max_default_learn(a)
-      arch = c.group("archetype") || "Unknown"
-      listing = "#{arch.downcase}_favored"
-      favor = Global.read_config("superconsole", "#{listing}").find { |s| s['name'].upcase == a.upcase}
-      status = favor['status']
-      if (favor) && favor == true
-        base - (base * 0.25)
-      else
+      type = SuperConsole.get_ability_type(a)
+      case type
+      when :attribute
         base
-      end
+      else
+       arch = c.group("archetype") || "Unknown"
+       listing = "#{arch.downcase}_favored"
+       favor = Global.read_config("superconsole", "#{listing}").find { |s| s['name'].upcase == a.upcase}
+       status = favor['status']
+       if (favor) && favor == true
+         base - (base * 0.25)
+       else
+         base
+       end
+     end
     end
 
     def self.attr_names
