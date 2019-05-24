@@ -1,7 +1,7 @@
 module AresMUSH
   class ConsoleAbility < Ohm::Model
     include ObjectModel
-    include LearnableStat
+    
 
     reference :character, "AresMUSH::Character"
     attribute :name
