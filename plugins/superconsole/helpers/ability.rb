@@ -9,13 +9,13 @@ module AresMUSH
       type = SuperConsole.get_ability_type(a)
       case :type
       when :attribute
-        ab = SuperConsole.attrs.find { |s| s['name'].upcase == a.upcase}
+        ab = SuperConsole.attrs.find { |s| s['name'].upcase == a.upcase}['max_learn']
       when :ability
-        ab = SuperConsole.abilities.find { |s| s['name'].upcase == a.upcase}
+        ab = SuperConsole.abilities.find { |s| s['name'].upcase == a.upcase}['max_learn']
       else
         nil
       end
-      ab['max_learn']
+      ab
     end
 
 
