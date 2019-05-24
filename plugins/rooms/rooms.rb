@@ -71,8 +71,10 @@ module AresMUSH
         case cmd.switch
         when "list"
           return OwnerListCmd
+        when "set"
+          return OwnerSetCmd
         when nil
-          return OwnerCmd
+          return OwnerListCmd
         end
       when "room"
         return RoomsCmd
