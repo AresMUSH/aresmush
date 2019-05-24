@@ -49,6 +49,7 @@ module AresMUSH
         char.update(rp_hooks: Website.format_input_for_mush(request.args[:rp_hooks]))
         char.update(relationships: relationships)
         char.update(bg_shared: request.args[:bg_shared].to_bool)
+        char.update(idle_lastwill: Website.format_input_for_mush(request.args[:lastwill]))
         
         
         ## DO PROFILE LAST SO IT TRIGGERS THE SOURCE HISTORY UPDATE
