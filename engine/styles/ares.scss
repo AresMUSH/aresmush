@@ -593,6 +593,7 @@ HOME SCREEN
     background-color: $background-color;
     font-weight: bold;
     text-align: center;
+    padding-bottom: 20px;
 }
 
 .jumbotron-image {
@@ -628,6 +629,17 @@ HOME SCREEN
 .splash-heading {
     text-align: center;
     padding-bottom: 10px;
+}
+
+.jumbotron .splash {
+  padding-top: 20px;
+  text-align: left;
+  margin: auto;
+  width: 80%;
+}
+
+.jumbotron .splash p {
+  font-size: 1.25em;
 }
 
 /* -------------------------
