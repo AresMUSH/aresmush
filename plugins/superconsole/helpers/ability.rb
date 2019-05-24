@@ -15,7 +15,7 @@ module AresMUSH
       else
         nil
       end
-      ab['v']
+      ab[v]
     end
 
 
