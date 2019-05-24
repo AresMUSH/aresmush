@@ -168,7 +168,7 @@ spells:
   Strength:
     available: true
     casting_time: 1 round
-    desc: 'The caster's strength is increased. They can lift up to an additional 150 lbs, and they hit harder when attacking.'
+    desc: The caster's strength is improved, and they hit harder when attacking, increasing their damage.
     duration: 1 hour
     effect: Buff
     is_potion: true
