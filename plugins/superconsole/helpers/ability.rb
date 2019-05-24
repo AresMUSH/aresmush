@@ -24,7 +24,7 @@ module AresMUSH
       listing = "#{arch.downcase}_favored"
       favor = Global.read_config("superconsole", "#{listing}").find { |s| s['name'].upcase == a.upcase}
       status = favor['status']
-      if (status) && favor == true
+      if (favor) && favor == true
         base - (base * 0.25)
       else
         base
