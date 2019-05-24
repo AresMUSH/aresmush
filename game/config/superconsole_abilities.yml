@@ -489,3 +489,34 @@ superconsole:
         - Chain Attacks
       99:
         - Ghost on the Field
+  abilities_list:
+    - name: Death Blow
+      class:
+        - Assassin
+      desc: nil
+      max_rating: 1
+      rol: nil
+    - name: Dodge
+      class:
+        - Assassin
+      desc: nil
+      max_rating: 5
+      rol: nil
+    - name: Sneak Attack
+      class:
+        - Assassin
+      desc: nil
+      max_rating: 5
+      roll: nil
+    - name: Stealth
+      class:
+        - Assassin
+      desc: nil
+      max_rating: 5
+      rol: nil
+    - name: Two-Weapon Strike
+      class:
+        - Assassin
+      desc: nil
+      max_rating: 1
+      rol: nil

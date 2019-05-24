@@ -24,6 +24,15 @@ superconsole:
     desc: Determines your ability to hit with self-propelled ranged weapons and dish
       out that damage.
   default_attributes_class:
+    supporter:
+      Strength: 3
+      Accuracy: 3
+      Speed: 3
+      Vitality: 10
+      Intelligence: 4
+      Spirit: 6
+      Magic: 6
+      Luck: 12
     assassin:
       Strength: 5
       Accuracy: 5
@@ -142,6 +151,9 @@ superconsole:
       Magic: 3
       Luck: 9
   favored_stats_class:
+    supporter:
+      - Vitality
+      - Luck
     assassin:
       - Speed
       - Luck
@@ -182,6 +194,8 @@ superconsole:
       - Strength
       - Vitality
   unfavored_stats_class:
+    supporter:
+      - Speed
     assassin:
       - Intelligence
     bard:
@@ -247,6 +261,10 @@ superconsole:
       Speed: -2
       Vitality: -2
       Spirit: 1
+    tarum:
+      Magic: 1
+      Vitality: 1
+      Speed: -1
     viera:
       Speed: 3
       Strength: -1

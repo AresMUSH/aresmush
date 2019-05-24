@@ -49,6 +49,7 @@ demographics:
         NekoJin: Human/Cat Spirit Hybrids.
         KumaJin: Human/Panda Spirit Hybrids.
         Viera: Bunny Eared woodland people.
+        Tarum: Half-Human, Half-TaruTaru.
     Class:
       desc: What role do you take in the world.
       values:
@@ -65,6 +66,7 @@ demographics:
         Summoner: "Role: Ranged/Front Line/Vanguard"
         Enchanter: "Role: Crowd Control"
         Scout: "Role: Advanced Recon"
+        Supporter: "Role: Non-Combat Support"
     Profession:
       desc: What do you do when you aren't in the Dark?
       values:

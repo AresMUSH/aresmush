@@ -10,7 +10,7 @@ module AresMUSH
     end
 
     def self.abilities
-      Global.read_config("superconsole", "abilities")
+      Global.read_config("superconsole", "abilities_list")
     end
 
     def self.abilities_name
