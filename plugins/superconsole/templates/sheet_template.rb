@@ -25,8 +25,8 @@ module AresMUSH
       def char_class
         @char.group("class") || "Unknown"
       end
-      def profession
-        @char.group("profession") || "Unknown"
+      def archetype
+        @char.group("archetype") || "Unknown"
       end
       def race
         @char.group("race") || "Unknown"

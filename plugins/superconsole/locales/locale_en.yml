@@ -15,7 +15,7 @@ en:
     # ----- Information Section -----
     marker_level: "Level:"
     marker_race: "Race:"
-    marker_profession: "Profession:"
+    marker_archetype: "Archetype:"
     marker_class: "Class:"
     marker_age: "Age:"
     marker_guild: "Guild:"
