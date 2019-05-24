@@ -1,4 +1,5 @@
 ---
 superconsole:
   sniper_favored:
-    Testing: true
+    - name: Testing
+      status: true
