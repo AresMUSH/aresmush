@@ -82,7 +82,8 @@ module AresMUSH
         spacebreak = i % 2 == 0 ? "  " : ""
         status = favor_status(a)
         rating = "#{a.rating}"
-        "#{lb2}[#{left(status,2)}] #{left(name, 12)} #{right(rating,20)}#{spacebreak}"
+        format_status = "[#{status}]"
+        "#{lb2} #{left(format_status,4)} #{left(name, 12)} #{right(rating,20)}#{spacebreak}"
       end
 
       def abils_learned
@@ -113,7 +114,7 @@ module AresMUSH
         status = "#{a.acquired}"
         rating = "#{a.rating}"
         format_status = "[#{status}]"
-        "#{lb2}#{left(status,4)} #{left(name, 12)} #{right(rating,20)}#{spacebreak}"
+        "#{lb2}#{left(format_status,4)} #{left(name, 12)} #{right(rating,20)}#{spacebreak}"
       end
     end
   end
