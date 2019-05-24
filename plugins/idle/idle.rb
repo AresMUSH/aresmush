@@ -71,6 +71,8 @@ module AresMUSH
       case request.cmd
       when "roster"
         return RosterRequestHandler
+      when "claimRoster"
+        return ClaimRosterRequestHandler
       end
       nil
     end

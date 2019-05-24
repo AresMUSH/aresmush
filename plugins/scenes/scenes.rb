@@ -169,6 +169,8 @@ module AresMUSH
         return LiveScenesRequestHandler        
       when "liveScene"
         return LiveSceneRequestHandler  
+      when "markSceneRead"
+        return MarkSceneReadRequestHandler
       when "myScenes"
         return MyScenesRequestHandler     
       when "plots"
