@@ -16,10 +16,6 @@ demographics:
     value: Class
     width: 15
     title: Class
-  - field: group
-    value: Profession
-    width: 15
-    title: Profession
   demographics:
   - actor
   - hair
@@ -53,35 +49,9 @@ demographics:
     Class:
       desc: What role do you take in the world.
       values:
-        Guardian: "Role: Tanker"
-        Samurai: "Role: Vanguard"
-        Monk: "Role: Front Line"
-        Assassin: "Role: Sniper/Front Line"
-        Swashbuckler: "Role: Vanguard/Front Line"
-        Bard: "Role: Vanguard/Support"
-        Cleric: "Role: Support"
-        Druid: "Role: Front Line/Support"
-        Kannagi: "Role: Ranged/Support"
-        Sorcerer: "Role: Ranged"
-        Summoner: "Role: Ranged/Front Line/Vanguard"
-        Enchanter: "Role: Crowd Control"
-        Scout: "Role: Advanced Recon"
-        Supporter: "Role: Non-Combat Support"
-    Profession:
-      desc: What do you do when you aren't in the Dark?
-      values:
-        Alchemist: "Potions and Brews."
-        Weaponsmith: "Craft & Repair Weapons."
-        Armorer: "Craft & Repair Metal Armor."
-        Chef: "Cook stat enhancing meals."
-        Scavenger: "Find any and everything you can."
-        Harvester: "Harvest material components."
-        Artificer: "Craft & Repair Magical Accessories."
-        Animal Trainer: "Breed, Raise, Train companions."
-        Tailor: "Craft & Repair Cloth/Leather Armor."
-        Apprentice: "Learn a little from everyone."
-        Merchant: "Masters of the Economy."
-        Sigilmancer: "Rune Engravers & Tattooists."
+        Adventurer: You delve deep into The Dark for fame and glory.
+        Supporter: You assist and travel into The Dark.
+        Citizen: You avoid The Dark, maybe a merchant or a crafter.
   help_text:
     actor: "%xcactor <voice actor>%xn - See 'help actors'."
     physique: "%xcphysique <build/body type>%xn - athletic, wiry, slim, pudgy, etc."
@@ -113,4 +83,3 @@ demographics:
     birthday: birthdate
     races: group race
     classes: group class
-    professions: group profession

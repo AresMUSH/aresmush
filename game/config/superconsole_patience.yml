@@ -18,9 +18,6 @@ superconsole:
     - name: Superior Looting
       desc: "Completely loot the area, discover any hidden items."
       cost: 1
-    - name: Power Level
-      desc: Increase level by 1.
-      cost: 2
     - name: Safe Travels
       desc: "Restore party's health and mana instantly, as if at a save point."
       cost: 3

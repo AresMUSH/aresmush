@@ -10,7 +10,7 @@ module AresMUSH
     end
 
     def self.abilities
-      Global.read_config("superconsole", "abilities_list")
+      Global.read_config("superconsole", "abilities")
     end
 
     def self.abilities_name
@@ -43,9 +43,9 @@ module AresMUSH
       else
         case ability_type
         when :attribute
-          ability = ConsoleAttribute.create(character: char, name: ability_name, rating: rating, favored: false, unfavored: false)
+          ability = ConsoleAttribute.create(character: char, name: ability_name, rating: rating, masterpoints: 0, learnpoints: 0, learnable: true)
         when :ability
-          ability = ConsoleAbility.create(character: char, name: ability_name, rating: 1, acquired: char.level, masterpoints: 0, learnpoints: 0, learnable: true)
+          ability = ConsoleAbility.create(character: char, name: ability_name, rating: rating, masterpoints: 0, learnpoints: 0, learnable: true)
         end
       end
       if (rating == min_rating)

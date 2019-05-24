@@ -10,16 +10,12 @@ who:
     title: Name
   - field: group
     value: Race
-    width: 10
+    width: 14
     title: Race
   - field: group
     value: Class
-    width: 15
+    width: 19
     title: Class
-  - field: group
-    value: Profession
-    width: 8
-    title: Profession
   - field: connected
     width: 7
     title: Conn

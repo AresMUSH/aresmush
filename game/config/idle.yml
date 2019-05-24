@@ -37,10 +37,6 @@ idle:
     value: Class
     width: 15
     title: Class
-  - field: group
-    value: Profession
-    width: 15
-    title: Profession
   roster_welcome_msg: Welcome!  You may wish to check your %xcnotes%xn and web portal
     profile page for any notes left by the prior player.  Type %xhonstage%xn to go
     forth and RP.
