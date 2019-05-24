@@ -8,6 +8,7 @@ aliases:
 - zone
 - owner
 - foyer
+- owners
 ---
 # Room Setup
 

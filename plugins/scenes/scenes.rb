@@ -131,8 +131,6 @@ module AresMUSH
         return PoseEventHandler
       when "CharConnectedEvent"
         return CharConnectedEventHandler
-      when "CharDeletedEvent"
-        return CharDeletedEventHandler
       end
       nil
     end
