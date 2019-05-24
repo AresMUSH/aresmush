@@ -15,7 +15,8 @@ module AresMUSH
       else
         nil
       end
-      ab[v]
+      stat = ab.find { |s| s['name'].upcase == a.upcase}
+      stat[v]
     end
 
 
