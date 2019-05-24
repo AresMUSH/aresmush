@@ -5,6 +5,21 @@ module AresMUSH
       Global.read_config("superconsole", "attributes")
     end
 
+    def get_value(a,v)
+      type = SuperConsole.get_ability_type(a)
+      case :type
+      when :attribute
+        ab = SuperConsole.attrs
+      when :ability
+        ab = SuperConsole.abilities
+      else
+        nil
+      end
+      ab['v']
+    end
+
+
+
     def self.attr_names
       attrs.map { |a| a['name'].titlecase }
     end
@@ -61,39 +76,6 @@ module AresMUSH
       return nil
     end
 
-    def self.set_favor(c,a)
-      ability_name = a.titlecase
-      ability_type = SuperConsole.get_ability_type(a)
-      ab = SuperConsole.find_ability(c,a)
-      if ability_type == :attribute
-        if ab.favored == true
-          ab.update(favored: false)
-        elsif ab.favored == false
-          ab.update(favored: true)
-        else
-          nil
-        end
-      else
-        "You can only mark attributes as favored."
-      end
-    end
-
-    def self.set_unfavor(c,a)
-      ability_name = a.titlecase
-      ability_type = SuperConsole.get_ability_type(a)
-      ab = SuperConsole.find_ability(c,a)
-      if ability_type == :attribute
-        if ab.unfavored == true
-          ab.update(unfavored: false)
-        elsif ab.unfavored == false
-          ab.update(unfavored: true)
-        else
-          nil
-        end
-      else
-        "You can only mark attributes as unfavored."
-      end
-    end
 
     def self.get_ability_type(ability)
       ability = ability.titlecase

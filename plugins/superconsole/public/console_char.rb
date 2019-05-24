@@ -1,6 +1,6 @@
 module AresMUSH
   class Character
-    attribute :console_level, :type => DataType::Integer, :default => 1
+    attribute :console_level, :type => DataType::Integer, :default => 0
     attribute :console_experience, :type => DataType::Integer, :default => 0
     attribute :console_dmg_health, :type => DataType::Integer, :default => 0
     attribute :console_dmg_mana, :type => DataType::Integer, :default => 0
@@ -17,7 +17,7 @@ module AresMUSH
     collection :console_questlog, "AresMUSH::ConsoleQuestLog"
     collection :console_companion, "AresMUSH::ConsoleCompanion"
     collection :console_status, "AresMUSH::ConsoleStatus"
-
+    collection :console_recipes, "AresMUSH::ConsoleRecipe"
 
     before_delete :delete_abilities
    def delete_abilities

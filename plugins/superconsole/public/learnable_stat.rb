@@ -1,32 +1,37 @@
 module AresMUSH
   module LearnableStat
+
+    def get_max_learn(c,a)
+      type = SuperConsole.get_ability_type(a)
+      ability = SuperConsole.get_value(a,max_learn)
+      ability
+    end
     def on_success(c,a)
       ability_type = SuperConsole.get_ability_type(a)
       ability = SuperConsole.find_ability(c,a)
       learn_pool = ability.learnpoints
       new = learn_pool + 1
-      max = 100
+      max = SuperConsole.get_max_learn(c,a)
       rating = ability.rating
+      max_rating = SuperConsole.get_max_rating(c,a)
       new_rating = rating + 1
      if new_rating == 1
-       if new == 100
+       if new == max
          ability.update(learnpoints: 0)
          ability.update(rating: new_rating)
-         ability.update(acquired: char.level)
-       elsif new > 100
+       elsif new > max
          ability.update(learnpoints: (new - max))
          ability.update(rating: new_rating)
-         ability.update(acquired: char.level)
        end
-     elsif new_rating < 5
-        if new == 100
+     elsif new_rating < max_rating
+        if new == max
           ability.update(learnpoints: 0)
           ability.update(rating: new_rating)
-        elsif new > 100
+        elsif new > max
           ability.update(learnpoints: (new - max))
           ability.update(rating: new_rating)
         end
-      elsif new_rating == 5
+      elsif new_rating == max_rating
         ability.update(learnpoints: 0)
         ability.update(rating: new_rating)
         ability.update(learnable: false)
@@ -37,28 +42,27 @@ module AresMUSH
       ability = SuperConsole.find_ability(c,a)
       learn_pool = ability.learnpoints
       new = learn_pool + 5
-      max = 100
+      max = SuperConsole.get_max_learn(c,a)
       rating = ability.rating
+      max_rating = SuperConsole.get_max_rating(c,a)
       new_rating = rating + 1
      if new_rating == 1
-       if new == 100
+       if new == max
          ability.update(learnpoints: 0)
          ability.update(rating: new_rating)
-         ability.update(acquired: char.level)
-       elsif new > 100
+       elsif new > max
          ability.update(learnpoints: (new - max))
          ability.update(rating: new_rating)
-         ability.update(acquired: char.level)
        end
      elsif new_rating < 5
-        if new == 100
+        if new == max
           ability.update(learnpoints: 0)
           ability.update(rating: new_rating)
-        elsif new > 100
+        elsif new > max
           ability.update(learnpoints: (new - max))
           ability.update(rating: new_rating)
         end
-      elsif new_rating == 5
+      elsif new_rating == max_rating
         ability.update(learnpoints: 0)
         ability.update(rating: new_rating)
         ability.update(learnable: false)
@@ -69,7 +73,7 @@ module AresMUSH
       ability = SuperConsole.find_ability(c,a)
       learn_pool = ability.learnpoints
       new = learn_pool - 1
-      max = 100
+      max = SuperConsole.get_max_learn(c,a)
        if new < 0
          ability.update(learnpoints: 0)
        else
@@ -81,7 +85,7 @@ module AresMUSH
       ability = SuperConsole.find_ability(c,a)
       learn_pool = ability.learnpoints
       new = learn_pool - 5
-      max = 100
+      max = SuperConsole.get_max_learn(c,a)
        if new < 0
          ability.update(learnpoints: 0)
        else

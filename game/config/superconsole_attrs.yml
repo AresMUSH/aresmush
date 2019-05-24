@@ -4,24 +4,32 @@ superconsole:
   - name: Strength
     desc: Determines your ability to hit in hand-to-hand or melee combat and dish
       out that damage.
+    max_learn: 1000
   - name: Speed
     desc: Determines how fast you act, and your ability to hit with ranged weapons,
       that are muscle powered, as well as dish out that damage.
+    max_learn: 1000
   - name: Vitality
     desc: Determines your max health bar value and influences your Max Stamina bar
       value.
+    max_learn: 1000
   - name: Intelligence
     desc: Determines some of your magical resistance to damaging effects.
+    max_learn: 1000
   - name: Spirit
     desc: Determines some of your magical resistance to status effects. Determines
       your overall social interactions and influences your Max Stamina bar value.
+    max_learn: 1000
   - name: Magic
     desc: Determines your max mana bar and how effective your spell casting is.
+    max_learn: 1000
   - name: Luck
     desc: Determines your ability to evade attacks of all types. This also is useful
       for stealth and things that relate to chance.
+    max_learn: 1000
   - name: Accuracy
     desc: Determines your ability to hit with self-propelled ranged weapons and dish
       out that damage.
+    max_learn: 1000
   max_base_attribute_value: 99
   min_base_attribute_value: 1
