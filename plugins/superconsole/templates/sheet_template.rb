@@ -113,7 +113,7 @@ module AresMUSH
         spacebreak = i % 2 == 0 ? "  " : ""
         status = "#{a.acquired}"
         rating = "#{a.rating}"
-        format_status = "[#{status}]"
+        format_status = "[%xw#{status}%xn]"
         "#{lb2} #{left(format_status,4)} #{left(name, 12)} #{right(rating,19)}#{spacebreak}"
       end
     end
