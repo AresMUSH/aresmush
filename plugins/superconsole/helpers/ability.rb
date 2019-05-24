@@ -7,7 +7,7 @@ module AresMUSH
 
     def self.get_max_default_learn(a)
       type = SuperConsole.get_ability_type(a)
-      case :type
+      case type
       when :attribute
         ab = SuperConsole.attrs.find { |s| s['name'].upcase == a.upcase}['max_learn']
       when :ability
