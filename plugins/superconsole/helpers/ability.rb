@@ -5,7 +5,7 @@ module AresMUSH
       Global.read_config("superconsole", "attributes")
     end
 
-    def self.get_max_default_rating(a,v)
+    def self.get_max_default_learn(a)
       type = SuperConsole.get_ability_type(a)
       case :type
       when :attribute
