@@ -34,8 +34,11 @@ module AresMUSH
     end
     
     def remove_from_scenes
-      self.scenes_starring.each do |s|
-        s.participants.delete self
+      Scene.all.each do |s|
+        Database.remove_from_set s.participants, self
+        Database.remove_from_set s.invited, self
+        Database.remove_from_set s.watchers, self
+        Database.remove_from_set s.likers, self
       end
     end
   end
