@@ -82,9 +82,38 @@ module AresMUSH
         spacebreak = i % 2 == 0 ? "  " : ""
         status = favor_status(a)
         rating = "#{a.rating}"
-        "#{lb2}[#{status}] #{left(name, 12)} #{right(rating,21)}#{spacebreak}"
+        "#{lb2}[#{left(status,2)}] #{left(name, 12)} #{right(rating,20)}#{spacebreak}"
       end
 
+      def abils_learned
+       list = []
+       stats = @char.console_skills.sort_by(:name, :order => "Alpha")
+       filtered = stats.select{ |x,_| x.learned == true}
+            filtered.each_with_index do |a, i|
+            list << format_skill(a, i)
+        end
+              list
+      end
+
+      def abils_learning
+       list = []
+       stats = @char.console_skills.sort_by(:name, :order => "Alpha")
+       filter = stats.select{ |x,_| x.learned == false}
+       filtered = filter.select{ |x,_| x.learnpoints >= 1}
+            filtered.each_with_index do |a, i|
+            list << format_skill(a, i)
+        end
+              list
+      end
+      def format_skill(a, i)
+        name = "%xh#{a.name}:%xn"
+        linebreak = i % 2 == 1 ? "" : "%r"
+        lb2 = i == 0 ? "" : "#{linebreak}"
+        spacebreak = i % 2 == 0 ? "  " : ""
+        status = "#{a.acquired}"
+        rating = "#{a.rating}"
+        "#{lb2}[#{left(status,2)}] #{left(name, 12)} #{right(rating,20)}#{spacebreak}"
+      end
     end
   end
 end

@@ -26,3 +26,5 @@ en:
     # ----- Attributes Section ------
     header_attributes: "Attributes"
     marker_stat: "%{stat}:"
+    header_learned: "Known Skills & Abilities"
+    header_learning: "Learning Skills & Abilities"
