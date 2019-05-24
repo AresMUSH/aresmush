@@ -5,7 +5,7 @@ module AresMUSH
       Global.read_config("superconsole", "attributes")
     end
 
-    def self.get_value(a,v)
+    def self.get_max_default_rating(a,v)
       type = SuperConsole.get_ability_type(a)
       case :type
       when :attribute
@@ -15,7 +15,7 @@ module AresMUSH
       else
         nil
       end
-      ab.v
+      ab['max_rating']
     end
 
 
