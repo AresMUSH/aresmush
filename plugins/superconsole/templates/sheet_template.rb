@@ -83,7 +83,7 @@ module AresMUSH
         status = favor_status(a)
         rating = "#{a.rating}"
         format_status = "[#{status}]"
-        "#{lb2} #{left(format_status,4)} #{left(name, 12)} #{right(rating,20)}#{spacebreak}"
+        "#{lb2} #{left(format_status,4)} #{left(name, 12)} #{right(rating,19)}#{spacebreak}"
       end
 
       def abils_learned
@@ -114,7 +114,7 @@ module AresMUSH
         status = "#{a.acquired}"
         rating = "#{a.rating}"
         format_status = "[#{status}]"
-        "#{lb2}#{left(format_status,4)} #{left(name, 12)} #{right(rating,20)}#{spacebreak}"
+        "#{lb2} #{left(format_status,4)} #{left(name, 12)} #{right(rating,19)}#{spacebreak}"
       end
     end
   end
