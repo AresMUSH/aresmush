@@ -10,6 +10,7 @@ module AresMUSH
     attribute :masterpoints, :type => DataType::Integer, :default => 0
     attribute :learnpoints, :type => DataType::Integer, :default => 0
     attribute :learnable, :type => DataType::Boolean, :default => true
+    attribute :learned, :type => DataType::Boolean, :default => false
 
     index :acquired
     index :name
