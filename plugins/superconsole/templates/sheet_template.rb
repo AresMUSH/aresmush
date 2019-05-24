@@ -111,7 +111,7 @@ module AresMUSH
         linebreak = i % 2 == 1 ? "" : "%r"
         lb2 = i == 0 ? "" : "#{linebreak}"
         spacebreak = i % 2 == 0 ? "  " : ""
-        status = "#{a.acquired}"
+        status = a.learned == false ? " " : "#{a.acquired}"
         rating = "#{a.rating}"
         format_status = "[%xw#{status}%xn]"
         "#{lb2} #{left(format_status,4)} #{left(name, 12)} #{right(rating,19)}#{spacebreak}"
