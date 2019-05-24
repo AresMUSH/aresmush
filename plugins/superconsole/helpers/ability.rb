@@ -23,11 +23,7 @@ module AresMUSH
       arch = c.group("archetype") || "Unknown"
       listing = arch.downcase + "_favored"
       favor = Global.read_config("superconsole", "#{listing}").find { |s| s['name'].upcase == a.upcase}["'#{a}'"] || false
-      Global.logger.debug "base: #{base}"
-      Global.logger.debug "arch: #{arch}"
-      Global.logger.debug "listing: #{listing}"
-      Global.logger.debug "favor: #{favor}"
-      favor.to_s
+      favor
     end
 
     def self.attr_names
