@@ -22,7 +22,8 @@ module AresMUSH
       base = SuperConsole.get_max_default_learn(a)
       arch = c.group("archetype") || "Unknown"
       listing = arch + "_favored"
-      favor = Global.read_config("superconsole","abilities",listing).find { |s| s['name'].upcase == a.upcase}['a'] || false
+      cfg = Global.read_config("superconsole","abilities",listing)
+      favor = cfg.find { |s| s['name'].upcase == a.upcase}['a'] || false
       Global.logger.debug "base: #{base}"
       Global.logger.debug "arch: #{arch}"
       Global.logger.debug "listing: #{listing}"
