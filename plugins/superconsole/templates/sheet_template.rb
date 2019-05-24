@@ -65,25 +65,13 @@ module AresMUSH
         list
       end
 
-      def favor_status(a)
-        if a.favored == true
-          "%x10+%xn"
-        elsif a.unfavored == true
-          "%x9-%xn"
-        else
-          " "
-        end
-      end
-
       def format_attr(a, i)
         name = "%xh#{a.name}:%xn"
         linebreak = i % 2 == 1 ? "" : "%r"
         lb2 = i == 0 ? "" : "#{linebreak}"
         spacebreak = i % 2 == 0 ? "  " : ""
-        status = favor_status(a)
         rating = "#{a.rating}"
-        format_status = "[#{status}]"
-        "#{lb2} #{left(format_status,4)} #{left(name, 12)} #{right(rating,19)}#{spacebreak}"
+        "#{lb2}#{left(name, 17)} #{right(rating,19)}#{spacebreak}"
       end
 
       def abils_learned
@@ -113,8 +101,7 @@ module AresMUSH
         spacebreak = i % 2 == 0 ? "  " : ""
         status = a.learned == false ? " " : "#{a.acquired}"
         rating = "#{a.rating}"
-        format_status = "[%xw#{status}%xn]"
-        "#{lb2} #{left(format_status,4)} #{left(name, 12)} #{right(rating,19)}#{spacebreak}"
+        "#{lb2}#{left(name, 17)} #{right(rating,19)}#{spacebreak}"
       end
     end
   end

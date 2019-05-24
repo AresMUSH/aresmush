@@ -52,7 +52,19 @@ demographics:
         Adventurer: You delve deep into The Dark for fame and glory.
         Supporter: You assist and travel into The Dark.
         Citizen: You avoid The Dark, maybe a merchant or a crafter.
-  help_text:
+    Archetype:
+      desc: Define your role?
+      values:
+        Spellcaster: You tend to try and focus on magical damage.
+        Guardian: You tend to focus on defense vs attack.
+        Striker: You tend to focus on melee attack vs defense.
+        Sniper: You tend to focus on ranged attack vs defense.
+        Scout: You focus on stealthy approaches vs combat approaches.
+        Supporter: You focus on support style magics.
+        Merchant: You focus on the economy via sale and purchase of goods.
+        Crafter: You focus on building items with the salvage from The Dark.
+        Scavenger: You focus on finding stuff in The Dark.
+help_text:
     actor: "%xcactor <voice actor>%xn - See 'help actors'."
     physique: "%xcphysique <build/body type>%xn - athletic, wiry, slim, pudgy, etc."
     gender: "%xcgender <male/female/other>%xn"
@@ -83,3 +95,4 @@ demographics:
     birthday: birthdate
     races: group race
     classes: group class
+    archetypes: group archetype
