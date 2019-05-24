@@ -5,7 +5,7 @@ module AresMUSH
       Global.read_config("superconsole", "attributes")
     end
 
-    def get_value(a,v)
+    def self.get_value(a,v)
       type = SuperConsole.get_ability_type(a)
       case :type
       when :attribute
