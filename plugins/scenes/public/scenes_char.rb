@@ -30,7 +30,7 @@ module AresMUSH
     end
     
     def unshared_scenes
-      Scene.all.select { |s| s.completed && !s.shared && s.participants.include?(self) }
+      Scene.all.select { |s| s.completed && !s.shared && (s.participants.include?(self) || s.owner == self) }
     end
     
     def remove_from_scenes
