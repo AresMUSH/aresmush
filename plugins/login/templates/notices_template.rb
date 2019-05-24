@@ -48,7 +48,7 @@ module AresMUSH
       end
       
       def has_alt_pages?(alt)
-        Page.has_unread_page_threads?(@char)
+        Page.has_unread_page_threads?(alt)
       end
       
       def has_unread_forum?

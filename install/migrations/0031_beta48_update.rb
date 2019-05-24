@@ -8,7 +8,7 @@ module AresMUSH
       def migrate
         Global.logger.debug "New page config."
         config = DatabaseMigrator.read_config_file("page.yml")
-        config['page']['page_deletion_days'] = 60
+        config['page']['page_deletion_days'] = 90
         config['page']['page_deletion_cron'] = { 'day_of_week' => ['Wed'], 'hour' => [03], 'minute' => [40] }
         config['page']['shortcuts']['page/log'] = 'page/review'
         DatabaseMigrator.write_config_file("page.yml", config)  
