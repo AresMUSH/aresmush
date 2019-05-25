@@ -24,9 +24,11 @@ en:
     marker_cleared: "Level Cleared:"
     marker_oversoul_type: "Oversoul Type:"
     marker_level_cleared: "Max Level Cleared:"
+    marker_health: "Health Bar:"
     # ----- Attributes Section ------
     header_attributes: "Attributes"
     marker_stat: "%{stat}:"
     header_learned: "Known Skills & Abilities"
     header_learning: "Learning Skills & Abilities"
     header_learn_label: "       %x15 Stat Name                          Rank Learning Points     %xn"
+    header_pools: "Pools"

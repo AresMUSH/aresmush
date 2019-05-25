@@ -66,7 +66,7 @@ module AresMUSH
       end
 
       def format_attr(a, i)
-        name = "%xh#{a.name}:%xn"
+        name = "%x15#{a.name}:%xn"
         linebreak = i % 2 == 1 ? "" : "%r"
         lb2 = i == 0 ? "" : "#{linebreak}"
         spacebreak = i % 2 == 0 ? "  " : ""
@@ -95,12 +95,22 @@ module AresMUSH
               list
       end
       def format_skill(a, i)
-        name = "%xh#{a.name}:%xn"
+        name = "%x15#{a.name}:%xn"
         linebreak = i % 2 == 1 ? "" : "%r"
         lb2 = i == 0 ? "" : "#{linebreak}"
         spacebreak = i % 2 == 0 ? "  " : ""
         rating = "#{a.rating}"
         "#{lb2}#{left(name, 34)} #{right(rating,3)}#{spacebreak}"
+      end
+
+      def health_pool_bar
+        self.health_bar
+      end
+      def mana_pool_bar
+        self.mana_bar
+      end
+      def stamina_pool_bar
+        self.stamina_bar
       end
     end
   end
