@@ -71,7 +71,7 @@ module AresMUSH
         lb2 = i == 0 ? "" : "#{linebreak}"
         spacebreak = i % 2 == 0 ? "  " : ""
         rating = "#{a.rating}"
-        "#{lb2}#{left(name, 34)} #{right(rating,2)}#{spacebreak}"
+        "#{lb2}#{left(name, 34)} #{right(rating,3)}#{spacebreak}"
       end
 
       def abils_learned
@@ -101,7 +101,7 @@ module AresMUSH
         spacebreak = i % 2 == 0 ? "  " : ""
         status = a.learned == false ? " " : "#{a.acquired}"
         rating = "#{a.rating}"
-        "#{lb2}#{left(name, 34)} #{right(rating,2)}#{spacebreak}"
+        "#{lb2}#{left(name, 34)} #{right(rating,3)}#{spacebreak}"
       end
     end
   end
