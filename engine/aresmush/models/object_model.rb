@@ -54,7 +54,7 @@ module ObjectModel
   def dbref
     "##{self.class.dbref_prefix}-#{self.id}"
   end
-      
+  
   def print_json
     JSON.pretty_generate( Hash[self.attributes.sort] )
     #json = JSON.pretty_generate( Hash[self.attributes.sort] )

@@ -53,7 +53,7 @@ module AresMUSH
           plot: scene.plot ? { title: scene.plot.title, id: scene.plot.id } : nil,
           related_scenes: scene.related_scenes.map { |r| { title: r.date_title, id: r.id }},
           can_edit: enactor && Scenes.can_edit_scene?(enactor, scene),
-          can_delete: enactor && enactor.is_admin?,
+          can_delete: Scenes.can_delete_scene?(enactor, scene),
           has_liked: enactor && scene.has_liked?(enactor),
           likes: scene.likes
         }

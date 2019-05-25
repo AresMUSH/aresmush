@@ -34,9 +34,9 @@ module AresMUSH
             end
           end
         rescue Exception => ex
-          Global.logger.error "Couldn't start the game: error=#{ex} backtrace=#{ex.backtrace[0,10]}"
+          Global.logger.fatal "Couldn't start the game: error=#{ex} backtrace=#{ex.backtrace[0,10]}"
           EventMachine.stop_event_loop
-          raise SystemExit.new
+          exit 1
         end
         
         engine_api_port = Global.read_config("server", "engine_api_port")
@@ -55,7 +55,8 @@ module AresMUSH
       	        :cert_chain_file => Global.read_config("server", "certificate_file_path")
                 } : nil
             }
-            
+          
+        begin     
           EventMachine::WebSocket.start(websocket_options) do |websocket|
             AresMUSH.with_error_handling(nil, "Web connection established") do
               WebConnection.new(websocket) do |connection|
@@ -63,6 +64,11 @@ module AresMUSH
               end
             end
           end
+        rescue Exception => ex
+          Global.logger.fatal "Couldn't start the websocket server: error=#{ex} backtrace=#{ex.backtrace[0,10]}"
+          EventMachine.stop_event_loop
+          exit 1
+        end
            
         Global.logger.info "Websocket started with options #{websocket_options}."
         Global.logger.info "Server started on #{host}:#{port}."

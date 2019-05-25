@@ -131,8 +131,6 @@ module AresMUSH
         return PoseEventHandler
       when "CharConnectedEvent"
         return CharConnectedEventHandler
-      when "CharDeletedEvent"
-        return CharDeletedEventHandler
       end
       nil
     end
@@ -171,6 +169,8 @@ module AresMUSH
         return LiveScenesRequestHandler        
       when "liveScene"
         return LiveSceneRequestHandler  
+      when "markSceneRead"
+        return MarkSceneReadRequestHandler
       when "myScenes"
         return MyScenesRequestHandler     
       when "plots"

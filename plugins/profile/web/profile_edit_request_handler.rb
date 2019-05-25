@@ -67,7 +67,8 @@ module AresMUSH
           files: files, 
           profile_image: char.profile_image ? Website.get_file_info(char.profile_image) : nil,
           profile_icon: char.profile_icon ? Website.get_file_info(char.profile_icon) : nil,
-          bg_shared: char.bg_shared
+          bg_shared: char.bg_shared,
+          lastwill: Website.format_input_for_html(char.idle_lastwill),
           
         }
       end
