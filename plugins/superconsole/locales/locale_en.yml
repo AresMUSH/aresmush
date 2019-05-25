@@ -29,3 +29,4 @@ en:
     marker_stat: "%{stat}:"
     header_learned: "Known Skills & Abilities"
     header_learning: "Learning Skills & Abilities"
+    header_learn_label: "        Stat Name                         Rank Learning Points     "

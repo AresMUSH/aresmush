@@ -50,7 +50,7 @@ module AresMUSH
           canlearn = "%x9-%xn"
           learning = " %x10MAXED%xn ".center(20,'-')
         end
-        "[#{canlearn}] (#{has_learned}) #{left(name, 34)} #{right(rating,3)} #{learning}"
+        "[#{canlearn}] (#{has_learned}) #{left(name, 34)} #{right(rating,4)} #{left(learning,20)}"
       end
     end
   end
