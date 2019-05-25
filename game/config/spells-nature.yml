@@ -74,7 +74,7 @@ spells:
     range: Self
     weapon: Natural Weaponry
   Ripen:
-    available: false
+    available: true
     casting_time: 1 round
     desc: Encourage an already existing berry, nut, or fruit-bearing plant to produce a small amount of edible food, no more than a handful, even out of season.
     effect: Creation
@@ -365,7 +365,7 @@ spells:
     target_optional: true
     weapon: Poison Puffs
   Winged Flight:
-    available: false
+    available: true
     casting_time: 1 round
     defense_mod: 1
     desc: "The caster grows wings large enough to carry them in flight.The wings allow them to travel at a speed of up to 65 mph. \n\n Practiced casters can obtain excellent maneuverability with their wings, making it easy for them to engage in combat and giving them an edge to their ability to dodge.\n\n Should the spell duration expire while the caster is still aloft, they plummet to the ground."
@@ -409,6 +409,7 @@ spells:
     roll: true
     school: Nature
   Sense Animals:
+    available: true
     desc: "The caster extends their senses to all non-sapient creatures within range. While their body lies senseless and incapacitated, they see and feel everything sensed by every non-sapient creature in that area. They can also identify the presence, quantity, and location of sapient creatures.\n\nThe caster can choose to absorb all experiences at a surface level, or focus their attention on up to five individuals at a time for more details."
     effect: Communication
     level: 7
