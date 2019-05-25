@@ -28,6 +28,11 @@ module AresMUSH
       end
     end
 
+
+   def can_view_sheets?
+     self.has_permission?("view_sheets")
+   end
+   
    def is_quick_learner
      self.has_ability(self, "Quick Growth")
    end
