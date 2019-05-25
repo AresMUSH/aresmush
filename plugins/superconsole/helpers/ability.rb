@@ -32,10 +32,11 @@ module AresMUSH
        basemod = Global.read_config("superconsole","favored_modifier") || 0.25
        learnmod = c.is_quick_learner? ? 0.5 : 0
        if (favor) && favor == true
-         base - (base * (basemod + learnmod))
+         mod = base - (base * (basemod + learnmod))
        else
-         base - (base * learnmod)
+        mod = base - (base * learnmod)
        end
+       mod.floor
      end
     end
 
