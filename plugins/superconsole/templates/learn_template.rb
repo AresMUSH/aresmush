@@ -38,12 +38,12 @@ module AresMUSH
 
       def abils_learning
        list = []
-       player = @char.console_skills.sort_by(:name, :order => "Alpha").each_with_index do |a, i|
+       @char.console_skills.sort_by(:name, :order => "Alpha").each_with_index do |a, i|
             list << format_skill_learn(a, i)
         end
               list
       end
-      
+
       def format_skill_learn(a, i)
         name = "%xh#{a.name}:%xn"
         lp = a.learnpoints
