@@ -157,6 +157,10 @@ permissions:
     category: Admin
     desc: Allows the user to manage the Economy System.
     is_new: true
+  - name: manage_stats
+    category: Admin
+    desc: Allows the user to manipulate the stats of characters.
+    is_new: true
   shortcuts:
     permission: permissions
     perm: permissions
