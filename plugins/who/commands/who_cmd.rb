@@ -18,7 +18,10 @@ module AresMUSH
         if (self.search)
           online_chars = online_chars.select { |char| char.name =~ /^#{self.search}/ }
         end
-        template = WhoTemplate.new online_chars
+        
+        
+        
+        template = WhoTemplate.new online_chars, web_chars
         client.emit template.render
       end      
     end

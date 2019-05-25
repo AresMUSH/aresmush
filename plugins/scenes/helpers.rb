@@ -536,6 +536,7 @@ module AresMUSH
             name: p.name, 
             id: p.id, 
             icon: Website.icon_for_char(p), 
+            status: Website.activity_status(p),
             is_ooc: p.is_admin? || p.is_playerbit?,
             online: Login.is_online?(p)  }}
           
