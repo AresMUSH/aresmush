@@ -24,7 +24,7 @@ module AresMUSH
         1
       elsif rating.between?(11,20)
         2
-      elsif rating.between?(31,40)
+      elsif rating.between?(21,40)
         3
       elsif rating.between?(41,70)
         4
@@ -34,7 +34,7 @@ module AresMUSH
         10
       end
     end
-    
+
     def self.get_max_learn_adj(c,a)
       base = SuperConsole.get_max_default_learn(a)
       type = SuperConsole.get_ability_type(a)
