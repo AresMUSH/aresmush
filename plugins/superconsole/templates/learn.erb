@@ -1,13 +1,13 @@
 <%= line_with_text t("superconsole.sheet_header", :name => char.name, :game => game_name) %>
 
 <%= line_with_text t("superconsole.header_attributes") -%>
-<%= t("superconsole.header_learn_label") -%>
+<%= t("superconsole.header_learn_label") %>
 <% attrs.each do |a| %>
 <%= a %>
 <% end %>
 
 <%= line_with_text t("superconsole.header_learning") -%>
-<%= t("superconsole.header_learn_label") -%>
+<%= t("superconsole.header_learn_label") %>
 <% abils_learning.each do |a| %>
 <%= a %>
 <% end %>
