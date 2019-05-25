@@ -44,6 +44,10 @@ module AresMUSH
         end
       end
     end
+    
+    def web_clients
+      @clients.select { |c| c.web_char_id }
+    end
 
     def logged_in_clients
       @clients.select { |c| c.logged_in? }
@@ -61,6 +65,10 @@ module AresMUSH
     
     def find_client(char)
       @clients.select { |c| c.char_id == char.id }.first
+    end
+    
+    def find_web_client(char)
+      @clients.select { |c| c.web_char_id == char.id }.sort_by { |c| c.idle_secs }.first
     end
     
     # @engineinternal true

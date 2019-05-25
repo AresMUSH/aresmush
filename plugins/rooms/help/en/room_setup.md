@@ -8,6 +8,7 @@ aliases:
 - zone
 - owner
 - foyer
+- owners
 ---
 # Room Setup
 
@@ -39,5 +40,5 @@ The `roomtype` property ties in with the 'status' system, to tell whether someon
 
 By default, only people with builder privileges can modify the description on a room.  However, builders can assign 'owners' to a room, who are also allowed to describe it.
 
-`owners [<room name>=]<list of names>` - Sets room owners.  Leave blank to reset.
-`owners/list [<room or character name>]` - Searches for room owners.  Leave blank to use current room.
+`owners [<room or character name>]` - Searches for room owners.  Leave blank to use current room.
+`owners/set [<room name>=]<list of names>` - Sets room owners.  Leave blank to reset.

@@ -87,8 +87,6 @@ module AresMUSH
         
                     }
                   }
-        #        }
-        #      }
         
         show_background = (char.on_roster? || char.bg_shared || Chargen.can_view_bgs?(enactor)) && !char.background.blank?
 

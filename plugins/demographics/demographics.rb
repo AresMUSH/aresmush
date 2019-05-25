@@ -91,6 +91,8 @@ module AresMUSH
         return GroupCensusRequestHandler
       when "censusTypes"
         return CensusTypesRequestHandler
+      when "groupInfo"
+        return GroupInfoRequestHandler
       end
       nil
     end

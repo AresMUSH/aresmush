@@ -582,7 +582,20 @@ GENERAL UTILITIES
     margin-right: 0;
 }
 
+.icon-status-web-active {
+  border: 3px solid #a5a509;
+  border-radius: 30px;
+}
 
+.icon-status-game-active {
+  border: 3px solid #176109;
+  border-radius: 30px;
+}
+
+.icon-status-inactive {
+  border: 3px solid #ccc;
+  border-radius: 30px;
+}
 
 /* -------------------------
 HOME SCREEN
@@ -593,6 +606,7 @@ HOME SCREEN
     background-color: $background-color;
     font-weight: bold;
     text-align: center;
+    padding-bottom: 20px;
 }
 
 .jumbotron-image {
@@ -628,6 +642,17 @@ HOME SCREEN
 .splash-heading {
     text-align: center;
     padding-bottom: 10px;
+}
+
+.jumbotron .splash {
+  padding-top: 20px;
+  text-align: left;
+  margin: auto;
+  width: 80%;
+}
+
+.jumbotron .splash p {
+  font-size: 1.25em;
 }
 
 /* -------------------------

@@ -5,6 +5,7 @@ module AresMUSH
     before_delete :delete_channel_options
     
     def delete_channel_options
+      Channel.all.each { |c| Database.remove_from_set(c.characters, self) }
       channel_options.each { |c| c.delete }
     end
     
