@@ -38,7 +38,7 @@ module AresMUSH
 
       def abils_learning
        list = []
-       char.console_skills.sort_by(:name, :order => "Alpha").each_with_index do |a, i|
+       @char.console_skills.sort_by(:name, :order => "Alpha").each_with_index do |a, i|
             list << format_skill_learn(a, i)
         end
         list
@@ -51,7 +51,7 @@ module AresMUSH
         percent = (lp/lpn) * 100
         canlearn = a.learnable ? "%xg+%xn" : "%xr-%xn"
         rating = "#{a.rating}"
-        "[#{canlearn}] #{left(name, 34)} #{right(rating,3)} #{percent}% #{lp}/#{lpn}"
+        " #{left(name, 34)} #{right(rating,3)} #{percent}% #{lp}/#{lpn}"
       end
     end
   end
