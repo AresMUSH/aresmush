@@ -1,6 +1,6 @@
 module AresMUSH
   module Rooms
-    class OwnerCmd
+    class OwnerSetCmd
       include CommandHandler
 
       attr_accessor :name, :owner_names

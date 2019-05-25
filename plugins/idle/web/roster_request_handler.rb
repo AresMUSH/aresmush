@@ -55,6 +55,7 @@ module AresMUSH
           
           {
             name: char.name,
+            id: char.id,
             fullname: char.demographic(:fullname),
             military_name: Ranks.military_name(char),
             fields: fields,
