@@ -99,7 +99,6 @@ module AresMUSH
         linebreak = i % 2 == 1 ? "" : "%r"
         lb2 = i == 0 ? "" : "#{linebreak}"
         spacebreak = i % 2 == 0 ? "  " : ""
-        status = a.learned == false ? " " : "#{a.acquired}"
         rating = "#{a.rating}"
         "#{lb2}#{left(name, 34)} #{right(rating,3)}#{spacebreak}"
       end
