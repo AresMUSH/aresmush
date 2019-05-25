@@ -38,6 +38,11 @@ module AresMUSH
       return nil if !char
       Global.client_monitor.find_client(char)
     end
+    
+    def self.find_web_client(char)
+      return nil if !char
+      Global.client_monitor.find_web_client(char)
+    end
         
     def self.emit_if_logged_in(char, message)
       client = find_client(char)

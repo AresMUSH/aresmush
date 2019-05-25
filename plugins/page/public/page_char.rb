@@ -16,6 +16,9 @@ module AresMUSH
         
     def delete_pages
       self.page_threads.each { |p| p.delete }
+      Character.all.each do |c|
+        Database.remove_from_set c.page_ignored, self
+      end
     end
     
     def is_monitoring?(char)

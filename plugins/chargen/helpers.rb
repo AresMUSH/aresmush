@@ -99,6 +99,7 @@ module AresMUSH
       end
       
       char.update(cg_background: Website.format_input_for_mush(chargen_data[:background]))
+      char.update(idle_lastwill: Website.format_input_for_mush(chargen_data[:lastwill]))
       
       char.update(rp_hooks: Website.format_input_for_mush(chargen_data[:rp_hooks]))
       char.update(description: Website.format_input_for_mush(chargen_data[:desc]))
