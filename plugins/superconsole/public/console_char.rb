@@ -28,11 +28,11 @@ module AresMUSH
       end
     end
 
-   def is_quick_learner?
-     self.has_ability?(self, "Quick Growth")
+   def is_quick_learner
+     self.has_ability(self, "Quick Growth")
    end
 
-   def has_ability?(char, ability_name)
+   def has_ability(char, ability_name)
      ab = SuperConsole.find_ability(char, ability_name)
      if (!ab)
        0
