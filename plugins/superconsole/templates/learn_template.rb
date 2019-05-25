@@ -46,10 +46,10 @@ module AresMUSH
           canlearn = "%xg+%xn"
           learning = "#{percent}% #{lr}/#{lpp}"
         else
-          canlearn = "xr-%xn"
+          canlearn = "%xr-%xn"
           learning = "-".repeat(20)
         end
-        "[#{canlearn}] #{left(name, 34)} #{right(rating,3)}#{learning}"
+        "[#{canlearn}] #{left(name, 34)} #{right(rating,3)} #{learning}"
       end
     end
   end
