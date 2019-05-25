@@ -14,7 +14,11 @@ module AresMUSH
     def self.get_cmd_handler(client, cmd, enactor)
         case cmd.root
         when "sheet"
+         if (cmd.switch_is?("learning"))
+           return SheetLearnCMD
+         else
            return SheetCmd
+         end
         else
           nil
         end
