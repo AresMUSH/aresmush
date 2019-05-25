@@ -64,6 +64,7 @@ demographics:
         Merchant: You focus on the economy via sale and purchase of goods.
         Crafter: You focus on building items with the salvage from The Dark.
         Scavenger: You focus on finding stuff in The Dark.
+        Controller: "You focus on controlling the crowds, mana, health, or anything."
   help_text:
     actor: "%xcactor <voice actor>%xn - See 'help actors'."
     physique: "%xcphysique <build/body type>%xn - athletic, wiry, slim, pudgy, etc."
