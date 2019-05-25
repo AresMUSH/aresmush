@@ -35,9 +35,9 @@ module AresMUSH
    def has_ability(char, ability_name)
      ab = SuperConsole.find_ability(char, ability_name)
      if (!ab)
-       0
+       false
      else
-       1
+       true
      end
    end
 
