@@ -47,11 +47,11 @@ module AresMUSH
       def format_skill_learn(a, i)
         name = "%xh#{a.name}:%xn"
         lp = a.learnpoints
-        lpn = SuperConsole.get_max_learn_adj(@char,a.name)
+        lpn = Custom.commify(SuperConsole.get_max_learn_adj(@char,a.name))
         percent = lp == 0 ? 0 : ((lp/lpn) * 100)
         canlearn = a.learnable ? "%xg+%xn" : "%xr-%xn"
         rating = "#{a.rating}"
-        learning = a.learnable ? " #{percent}% #{lp}/#{lpn.number_with_delimiter}" : ""
+        learning = a.learnable ? " #{percent}% #{lp}/#{lpn}" : ""
         "[#{canlearn}] #{left(name, 34)} #{right(rating,3)}#{learning}"
       end
     end
