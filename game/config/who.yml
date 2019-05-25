@@ -13,9 +13,9 @@ who:
     width: 14
     title: Race
   - field: group
-    value: Class
+    value: Archetype
     width: 19
-    title: Class
+    title: Archetype
   - field: connected
     width: 7
     title: Conn
