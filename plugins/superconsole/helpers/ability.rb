@@ -18,12 +18,29 @@ module AresMUSH
       ab
     end
 
+    def self.get_attr_learn(c,a)
+      rating = SuperConsole.ability_rating(c,a)
+      if rating.between?(1,10)
+        1
+      elsif rating.between?(11,20)
+        2
+      elsif rating.between?(31,40)
+        3
+      elsif rating.between?(41,70)
+        4
+      elsif rating.between?(71,90)
+        5
+      elsif rating.between?(91,100)
+        10
+      end
+    end
+    
     def self.get_max_learn_adj(c,a)
       base = SuperConsole.get_max_default_learn(a)
       type = SuperConsole.get_ability_type(a)
       case type
       when :attribute
-        levelmod = c.level >= 3 ? a.rating : 1
+        levelmod = SuperConsole.get_attr_learn(c,a)
         base * levelmod
       else
        arch = c.group("archetype") || "Unknown"
