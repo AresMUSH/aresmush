@@ -25,6 +25,8 @@ en:
     marker_oversoul_type: "Oversoul Type:"
     marker_level_cleared: "Max Level Cleared:"
     marker_health: "Health Bar:"
+    marker_mana: "Mana Bar:"
+    marker_stamina: "Stamina Bar:"
     # ----- Attributes Section ------
     header_attributes: "Attributes"
     marker_stat: "%{stat}:"
