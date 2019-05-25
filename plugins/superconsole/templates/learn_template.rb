@@ -41,7 +41,7 @@ module AresMUSH
        @char.console_skills.sort_by(:name, :order => "Alpha").each_with_index do |a, i|
             list << format_skill_learn(a, i)
         end
-              list
+        list
       end
 
       def format_skill_learn(a, i)
