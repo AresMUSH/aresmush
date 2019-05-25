@@ -36,19 +36,22 @@ module AresMUSH
         "[#{canlearn}] #{left(name, 34)} #{right(rating,3)} #{percent}% #{lp}/#{lpn}"
       end
 
-      def abils_learned
-       list = []
-       stats = @char.console_skills.sort_by(:name, :order => "Alpha")
-       filtered = stats.select{ |x,_| x.learned == true}
-            filtered.each_with_index do |a, i|
-            list << format_skill(a, i)
+      def abils_list
+        a = @char.console_skills
+        b = SuperConsole.abilities_name
+        b.each do |k,v|
+          if (!a.has_key?(k))
+            a[k] = v
+          end
         end
-              list
       end
 
       def abils_learning
        list = []
-       @char.console_skills.sort_by(:name, :order => "Alpha").each_with_index do |a, i|
+       player = @char.console_skills.sort_by(:name, :order => "Alpha")
+       ab_names = SuperConsole.abilities_name
+
+       masterlist.each_with_index do |a, i|
             list << format_skill_learn(a, i)
         end
               list
