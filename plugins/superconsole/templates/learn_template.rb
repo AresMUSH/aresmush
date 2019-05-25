@@ -51,7 +51,8 @@ module AresMUSH
         percent = lp == 0 ? 0 : ((lp/lpn) * 100)
         canlearn = a.learnable ? "%xg+%xn" : "%xr-%xn"
         rating = "#{a.rating}"
-        "[#{canlearn}] #{left(name, 34)} #{right(rating,3)} #{percent}% #{lp}/#{lpn}"
+        learning = a.learnable ? " #{percent}% #{lp}/#{lpn}" : ""
+        "[#{canlearn}] #{left(name, 34)} #{right(rating,3)}"
       end
     end
   end
