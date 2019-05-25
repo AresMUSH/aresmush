@@ -96,9 +96,9 @@ module AresMUSH
       return nil
     end
 
-    def self.list_master
+    def self.list_master(c)
       list = {}
-      @char.console_skills.each do |ability|
+      c.console_skills.each do |ability|
         list[ability.name] = ability.name
         list[ability.rating] = ability.rating
         list[ability.learnpoints] = ability.learnpoints
