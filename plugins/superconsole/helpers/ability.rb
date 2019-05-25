@@ -96,6 +96,9 @@ module AresMUSH
       return nil
     end
 
+    def list_master
+      list = {}
+      @char.console_skills
 
     def self.get_ability_type(a)
       ability = a.titlecase
