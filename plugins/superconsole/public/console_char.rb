@@ -29,15 +29,15 @@ module AresMUSH
     end
 
 
-   def can_view_sheets?
+   def self.can_view_sheets?
      self.has_permission?("view_sheets")
    end
-   
-   def is_quick_learner
+
+   def self.is_quick_learner
      self.has_ability(self, "Quick Growth")
    end
 
-   def has_ability(char, ability_name)
+   def self.has_ability(char, ability_name)
      ab = SuperConsole.find_ability(char, ability_name)
      if (!ab)
        false
