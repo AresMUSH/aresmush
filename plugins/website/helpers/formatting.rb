@@ -46,5 +46,18 @@ module AresMUSH
       char = Character.find_one_by_name(name)
       Website.icon_for_char(char)
     end
+    
+    def self.activity_status(char)
+      client = Login.find_client(char)
+      if (client)
+        return Status.is_idle?(client) ? 'inactive' : 'game-active'
+      end
+      client = Login.find_web_client(char)
+      if (!client)
+        return 'offline'
+      end
+      
+      return Status.is_idle?(client) ? 'inactive' : 'web-active'
+    end
   end
 end

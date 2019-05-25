@@ -582,7 +582,20 @@ GENERAL UTILITIES
     margin-right: 0;
 }
 
+.icon-status-web-active {
+  border: 3px solid #a5a509;
+  border-radius: 30px;
+}
 
+.icon-status-game-active {
+  border: 3px solid #176109;
+  border-radius: 30px;
+}
+
+.icon-status-inactive {
+  border: 3px solid #ccc;
+  border-radius: 30px;
+}
 
 /* -------------------------
 HOME SCREEN

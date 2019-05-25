@@ -23,6 +23,7 @@ module AresMUSH
                          name: p.name, 
                          id: p.id, 
                          icon: Website.icon_for_char(p), 
+                         status: Website.activity_status(p),
                          online: Login.is_online?(p),
                          last_posed: s.last_posed == p }},
                   scene_type: s.scene_type ? s.scene_type.titlecase : 'Unknown',
