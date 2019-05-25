@@ -2,7 +2,7 @@ module AresMUSH
   module SuperConsole
    module LearnableStat
 
-    def get_max_learn(c,a)
+    def self.get_max_learn(c,a)
       type = SuperConsole.get_ability_type(a)
       ability = SuperConsole.get_max_default_learn(c,a)
       ability
