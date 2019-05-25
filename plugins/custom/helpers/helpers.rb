@@ -9,8 +9,8 @@ module AresMUSH
     def self.wrap(s, width=78)
       s.gsub(/(.{1,#{width}})(\s+|\Z)/, "\\1\n")
     end
-    def self.number_with_delimiter(number, delimiter=",")
-      number.to_s.gsub(/(\d)(?=(\d\d\d)+(?!\d))/, “\1#{delimiter}”)
+    def self.commify(v)
+      (s=v.to_s;x=s.length;s).rjust(x+(3-(x%3))).scan(/.{3}/).join(’,’).strip
     end
   end
 end
