@@ -11,7 +11,7 @@ module AresMUSH
       end
 
       def check_permission
-        return nil if self.is_admin?
+        return nil if enactor.is_admin?
         return t('superconsole.learn_error')
       end
 
