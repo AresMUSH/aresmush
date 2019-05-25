@@ -35,20 +35,20 @@ module AresMUSH
       end
 
       def format_stat(a, i)
-        name = "%xh#{a.name}:%xn"
+        name = "%x15#{a.name}:%xn"
         rating = "#{a.rating}"
-        has_learned = a.learned ? "%xgk%xn" : "%xru%xn"
+        has_learned = a.learned ? "%x10k%xn" : "%x9u%xn"
         if a.learnable
           lp = a.learnpoints
           lr = "#{lp}".length > 3 ? Custom.commify(lp) : lp
           lpn = SuperConsole.get_max_learn_adj(@char,"#{a.name}")
           lpp = "#{lpn}".length > 3 ? Custom.commify(lpn) : lpn
           percent = ((lp/lpn) * 100).floor
-          canlearn = "%xg+%xn"
+          canlearn = "%x10+%xn"
           learning = "#{percent}% #{lr}/#{lpp}"
         else
-          canlearn = "%xr-%xn"
-          learning = " MAXED ".center(20,'-')
+          canlearn = "%x9-%xn"
+          learning = " %x10MAXED%xn ".center(20,'-')
         end
         "[#{canlearn}] (#{has_learned}) #{left(name, 34)} #{right(rating,3)} #{learning}"
       end
