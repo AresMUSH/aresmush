@@ -28,7 +28,19 @@ module AresMUSH
       end
     end
 
+   def self.is_quick_learner?
+     self.has_ability?(self, "Quick Growth")
+   end
 
+   def self.has_ability?(char, ability_name)
+     ab = SuperConsole.find_ability(char, ability_name)
+     if (!ab)
+       0
+     else
+       1
+     end
+   end
+   
    def level
      self.console_level == 0 ? 1 : self.console_level
    end

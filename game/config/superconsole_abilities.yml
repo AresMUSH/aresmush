@@ -1,5 +1,133 @@
 ---
 superconsole:
   abilities:
-    - name: Testing
-      max_rating: 15
+    # ----- Weapon Mastery Abilities: 5000 learn default.
+    - name: Swordsman
+      type: Development Ability
+      max_rating: 1
+      max_learn: 5000
+      desc:
+      trigger: Grows upon successful attacks/defenses with a sword type weapon.
+      level_req: 1
+    - name: Archer
+      type: Development Ability
+      max_rating: 1
+      max_learn: 5000
+      level_req: 1
+      desc:
+      trigger: Grows upon successful attacks/defenses with a bow type weapon.
+    - name: Gunslinger
+      level_req: 1
+      type: Development Ability
+      max_rating: 1
+      max_learn: 5000
+      desc:
+      trigger: Grows upon successful attacks/defenses with a gun type weapon.
+    - name: Hammer Time
+      type: Development Ability
+      level_req: 1
+      max_rating: 1
+      max_learn: 5000
+      trigger: Grows upon successful attacks/defenses with hammer/mace type weapons.
+      desc:
+    - name: Dagger Dueler
+      type: Development Ability
+      level_req: 1
+      max_rating: 1
+      max_learn: 5000
+      trigger: Grows upon successful attacks/defenses with dagger/knife type weapons.
+      desc:
+    - name: Baton Twirler
+      type: Development Ability
+      level_req: 1
+      max_rating: 1
+      max_learn: 5000
+      trigger: Grows upon successful attacks/defenses with staff/rod type weapons.
+      desc:
+    - name: Whip Cracker
+      type: Development Ability
+      level_req: 1
+      max_rating: 1
+      max_learn: 6000
+      trigger: Grows upon successful attacks/defenses with whip type weapons.
+      desc:
+    - name: Spearman
+      type: Development Ability
+      level_req: 1
+      max_rating: 1
+      max_learn: 5000
+      trigger: Grows upon successful attacks/defenses with spear type weapons.
+      desc:
+    - name: Wand Waver
+      type: Development Ability
+      level_req: 1
+      max_rating: 1
+      max_learn: 5000
+      trigger: Grows upon successful attacks/defenses with wand type weapons.
+      desc:
+    - name: Bareknuckle Brawler
+      level_req: 1
+      type: Development Ability
+      max_rating: 1
+      max_learn: 4000
+      trigger: Grows upon successful attacks/defenses while unarmed.
+      desc:
+    # ----- Combat Enhancement Abilities:
+    - name: Initiative
+      type: Development Ability
+      level_req: 1
+      max_rating: 5
+      max_learn: 2500
+      trigger: Grows when you gain the initiative in combat.
+      desc:
+    - name: Magical Resistance
+      type: Development Ability
+      level_req: 1
+      max_rating: 1
+      max_learn: 5000
+      trigger: Grows when you survive magical attacks.
+      desc:
+    - name: Abnormal Resistance
+      type: Development Ability
+      level_req: 1
+      max_rating: 5
+      max_learn: 100
+      trigger: Grows when you survive poison attacks.
+      desc:
+    - name: Treatment
+      type: Development Ability
+      level_req: 0
+      max_rating: 1
+      max_learn: 2500
+      trigger: Grows when you successfully use a first aid kit.
+      desc:
+    # ----- Archetype Booster Abilities: 10000 Learn.
+    - name: Mage
+      type: Development Ability
+      level_req: 2
+      max_rating: 1
+      max_learn: 10000
+      trigger: Grows when you successfully cast/resist magic.
+      desc: (Spellcaster/Support)
+    - name: Hunter
+      type: Development Ability
+      level_req: 2
+      max_rating: 1
+      max_learn: 10000
+      trigger: Grows when you strike down enough of a type of monsters.
+      desc: (Striker)
+    - name: Strong Defense
+      type: Development Ability
+      level_req: 2
+      max_rating: 1
+      max_learn: 10000
+      trigger: Grows when you successfully defend any attack.
+      desc: (Guardian)
+    # -----
+    - name: Quick Growth
+      type: Skill
+      level_req: 0
+      max_rating: 1
+      max_learn: 1
+      trigger: Grows ONLY when several skills get unlocked within a short span of time.
+      desc:

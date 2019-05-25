@@ -1,5 +1,14 @@
 ---
 superconsole:
-  sniper_favored:
-    - name: Testing
+  spellcaster_favored:
+    - name: Mage
+      status: true
+  supporter_favored:
+    - name: Mage
+      status: true
+  striker_favored:
+    - name: Hunter
+      status: true
+  guardian_favored:
+    - name: Strong Defense
       status: true

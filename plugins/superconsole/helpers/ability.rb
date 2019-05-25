@@ -29,10 +29,12 @@ module AresMUSH
        listing = "#{arch.downcase}_favored"
        favor = Global.read_config("superconsole", "#{listing}").find { |s| s['name'].upcase == a.upcase}
        status = favor['status']
+       basemod = Global.read_config("superconsole","favored_modifier") || 0.25
+       learnmod = c.is_quick_learner? ? 0.5 : 0
        if (favor) && favor == true
-         base - (base * 0.25)
+         base - (base * (basemod + learnmod))
        else
-         base
+         base + learnmod
        end
      end
     end
