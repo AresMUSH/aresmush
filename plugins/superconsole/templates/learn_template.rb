@@ -31,7 +31,7 @@ module AresMUSH
         linebreak = "%r"
         lb2 = i == 0 ? "" : "#{linebreak}"
         lp = "#{a.learnpoints}"
-        lpn = SuperConsole.get_max_learn_adj(@char,a)
+        lpn = SuperConsole.get_max_learn_adj(@char,a.name)
         canlearn = a.learnable ? "%xg+%xn" : "%xr-%xn"
         rating = "#{a.rating}"
         "#{lb2}[#{canlearn}] #{left(name, 34)} #{right(rating,3)} #{lp}/#{lpn}"
