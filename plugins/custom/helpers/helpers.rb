@@ -10,7 +10,7 @@ module AresMUSH
       s.gsub(/(.{1,#{width}})(\s+|\Z)/, "\\1\n")
     end
     def self.commify(v)
-      (s=v.to_s;x=s.length;s).rjust(x+(3-(x%3))).scan(/.{3}/).join(’,’).strip
+      (s=v.to_s;x=s.length;s).rjust(x+(3-(x%3))).scan(/.{3}/).join(",").strip
     end
   end
 end
