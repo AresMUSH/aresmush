@@ -30,10 +30,11 @@ module AresMUSH
         name = "%xh#{a.name}:%xn"
         lp = a.learnpoints
         lpn = SuperConsole.get_max_learn_adj(@char,a.name)
+        lpp = Custom.commify(lpn)
         percent = (lp/lpn) * 100
         canlearn = a.learnable ? "%xg+%xn" : "%xr-%xn"
         rating = "#{a.rating}"
-        "[#{canlearn}] #{left(name, 34)} #{right(rating,3)} #{percent}% #{lp}/#{lpn}"
+        "[#{canlearn}] #{left(name, 34)} #{right(rating,3)} #{percent}% #{lp}/#{lpp}"
       end
 
       def abils_learning
@@ -47,11 +48,12 @@ module AresMUSH
       def format_skill_learn(a, i)
         name = "%xh#{a.name}:%xn"
         lp = a.learnpoints
-        lpn = Custom.commify(SuperConsole.get_max_learn_adj(@char,a.name))
+        lpn = SuperConsole.get_max_learn_adj(@char,a.name)
+        lpp = Custom.commify(lpn)
         percent = lp == 0 ? 0 : ((lp/lpn) * 100)
         canlearn = a.learnable ? "%xg+%xn" : "%xr-%xn"
         rating = "#{a.rating}"
-        learning = a.learnable ? " #{percent}% #{lp}/#{lpn}" : ""
+        learning = a.learnable ? " #{percent}% #{lp}/#{lpp}" : ""
         "[#{canlearn}] #{left(name, 34)} #{right(rating,3)}#{learning}"
       end
     end
