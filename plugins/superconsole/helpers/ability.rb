@@ -96,26 +96,6 @@ module AresMUSH
       return nil
     end
 
-    def self.list_master(c)
-      list = {}
-      player = c.console_skills.to_a
-      player.each do |ability|
-        list[ability.name] = ability.name
-        list[ability.rating] = ability.rating
-        list[ability.learnpoints] = ability.learnpoints
-        list[ability.learnable] = ability.learnable
-        list[ability.masterpoints] = ability.masterpoints
-      end
-      SuperConsole.abilities_name.each do |config|
-        list[config[:name]] = config.name
-        list[config[:rating]] = 0
-        list[config[:learnpoints]] = 0
-        list[config[:learnable]] = true
-        list[config[:masterpoints]] = 0
-     end
-     list
-    end
-
     def self.get_ability_type(a)
       ability = a.titlecase
       if (attr_names.include?(ability))
