@@ -96,7 +96,7 @@ module AresMUSH
       return nil
     end
 
-    def list_master
+    def selflist_master
       list = {}
       @char.console_skills.each do |ability|
         list[ability.name] = ability.name
@@ -112,7 +112,7 @@ module AresMUSH
         list[config[:learnable]] = true
         list[config[:masterpoints]] = 0
      end
-  end
+    end
 
     def self.get_ability_type(a)
       ability = a.titlecase
