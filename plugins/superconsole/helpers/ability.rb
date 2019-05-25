@@ -98,7 +98,8 @@ module AresMUSH
 
     def self.list_master(c)
       list = {}
-      c.console_skills.each do |ability|
+      player = c.console_skills.to_a
+      player.each do |ability|
         list[ability.name] = ability.name
         list[ability.rating] = ability.rating
         list[ability.learnpoints] = ability.learnpoints
