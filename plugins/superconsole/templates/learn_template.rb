@@ -37,6 +37,7 @@ module AresMUSH
       def format_stat(a, i)
         name = "%xh#{a.name}:%xn"
         rating = "#{a.rating}"
+        has_learned = a.learned ? "%xgk%xn" : "%xru%xn"
         if a.learnable
           lp = a.learnpoints
           lr = "#{lp}".length > 3 ? Custom.commify(lp) : lp
@@ -49,7 +50,7 @@ module AresMUSH
           canlearn = "%xr-%xn"
           learning = "-".repeat(20)
         end
-        "[#{canlearn}] #{left(name, 34)} #{right(rating,3)} #{learning}"
+        "[#{canlearn}] (#{has_learned}) #{left(name, 34)} #{right(rating,3)} #{learning}"
       end
     end
   end
