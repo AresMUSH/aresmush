@@ -1,5 +1,6 @@
 module AresMUSH
-  module LearnableStat
+  module SuperConsole
+   module LearnableStat
 
     def get_max_learn(c,a)
       type = SuperConsole.get_ability_type(a)
@@ -95,4 +96,5 @@ module AresMUSH
        end
     end
   end
+ end
 end
