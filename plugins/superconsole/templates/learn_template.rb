@@ -14,45 +14,6 @@ module AresMUSH
         Global.read_config("game","name")
       end
 # --------------------------------------------
-
-# --------------------------------------------
-# Sheet Info Section
-
-
-      def approval_status
-        Chargen.approval_status(@char)
-      end
-      def char_class
-        @char.group("class") || "Unknown"
-      end
-      def archetype
-        @char.group("archetype") || "Unknown"
-      end
-      def race
-        @char.group("race") || "Unknown"
-      end
-      def age
-        age = @char.age
-        age == 0 ? "--" : age
-      end
-      def level
-        @char.console_level
-      end
-      def oversoul_type
-        type = @char.console_oversoul_type
-        if type == nil
-          "Unknown"
-        else
-          type
-        end
-      end
-      def guild
-        "Unknown"
-      end
-      def level_cleared
-        "0"
-      end
-# --------------------------------------------
 # --------------------------------------------
 # Sheet Attribute Section
 
@@ -60,18 +21,20 @@ module AresMUSH
       def attrs
        list = []
         @char.console_attributes.sort_by(:name, :order => "ALPHA").each_with_index do |a, i|
-          list << format_attr(a, i)
+          list << format_attr_learn(a, i)
         end
         list
       end
 
-      def format_attr(a, i)
+      def format_attr_learn(a, i)
         name = "%xh#{a.name}:%xn"
-        linebreak = i % 2 == 1 ? "" : "%r"
+        linebreak = "%r"
         lb2 = i == 0 ? "" : "#{linebreak}"
-        spacebreak = i % 2 == 0 ? "  " : ""
+        lp = "#{a.learnpoints}"
+        lpn = SuperConsole.get_max_learn_adj(@char,a)
+        canlearn = a.learnable ? "%xg+%xn" : "%xr-%xn"
         rating = "#{a.rating}"
-        "#{lb2}#{left(name, 34)} #{right(rating,3)}#{spacebreak}"
+        "#{lb2}[#{canlearn}] #{left(name, 34)} #{right(rating,3)} #{lp}/#{lpn}"
       end
 
       def abils_learned
