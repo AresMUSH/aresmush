@@ -1,17 +1,12 @@
 <%= line_with_text t("superconsole.sheet_header", :name => char.name, :game => game_name) %>
-%xh<%= left( t('superconsole.marker_race'), 18) %>%xn <%= right( race, 19 ) %>  %xh<%= left( t('superconsole.marker_status'), 18) %>%xn <%= right( approval_status, 19 ) %>
-%xh<%= left( t('superconsole.marker_class'), 18) %>%xn <%= right( char_class, 19 ) %>  %xh<%= left( t('superconsole.marker_age'), 18) %>%xn <%= right( age, 19 ) %>
-%xh<%= left( t('superconsole.marker_archetype'), 18) %>%xn <%= right( archetype, 19 ) %>  %xh<%= left( t('superconsole.marker_level'), 18) %>%xn <%= right( level, 19 ) %>
-%xh<%= left( t('superconsole.marker_guild'), 18) %>%xn <%= right( guild, 19 ) %>  %xh<%= left( t('superconsole.marker_level_cleared'), 18) %>%xn <%= right( level_cleared, 19 ) %>
-%xh<%= left(" ", 18) %>%xn <%= right( " ", 19 ) %>  %xh<%= left( t('superconsole.marker_oversoul_type'), 18) %>%xn <%= right( oversoul_type, 19 ) %>
 <%= line_with_text t("superconsole.header_attributes") -%>
-<% attrs.each do |a| -%>
-<%= a -%>
+<% attrs.each do |a| %>
+<%= a %>
 <% end %>
 
-<%= line_with_text t("superconsole.header_learned") -%>
-<% abils_learned.each do |a| -%>
-<%= a -%>
+<%= line_with_text t("superconsole.header_learning") -%>
+<% abils_learning.each do |a| %>
+<%= a %>
 <% end %>
 
 %lf
