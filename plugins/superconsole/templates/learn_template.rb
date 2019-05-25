@@ -29,9 +29,9 @@ module AresMUSH
       def format_attr_learn(a, i)
         name = "%xh#{a.name}:%xn"
         lp = a.learnpoints
-        lr = Custom.commify(lp)
+        lr = lp.length > 3 ? Custom.commify(lp) : lp
         lpn = SuperConsole.get_max_learn_adj(@char,a.name)
-        lpp = Custom.commify(lpn)
+        lpp = lpn.length > 3 ? Custom.commify(lpn) : lpn
         percent = (lp/lpn) * 100
         canlearn = a.learnable ? "%xg+%xn" : "%xr-%xn"
         rating = "#{a.rating}"
@@ -49,9 +49,9 @@ module AresMUSH
       def format_skill_learn(a, i)
         name = "%xh#{a.name}:%xn"
         lp = a.learnpoints
-        lr = Custom.commify(lp)
+        lr = lp.length > 3 ? Custom.commify(lp) : lp
         lpn = SuperConsole.get_max_learn_adj(@char,a.name)
-        lpp = Custom.commify(lpn)
+        lpp = lpn.length > 3 ? Custom.commify(lpn) : lpn
         percent = lp == 0 ? 0 : ((lp/lpn) * 100)
         canlearn = a.learnable ? "%xg+%xn" : "%xr-%xn"
         rating = "#{a.rating}"
