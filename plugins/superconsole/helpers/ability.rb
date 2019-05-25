@@ -31,7 +31,7 @@ module AresMUSH
        status = favor['status']
        basemod = Global.read_config("superconsole","favored_modifier") || 0.25
        learnmod = if c.is_quick_learner then 0.5 else 0.0 end
-       if (favor) && favor == true
+       if (favor) && status == true
         mod = base - (base * (basemod + learnmod))
        else
         mod = base - (base * learnmod)
