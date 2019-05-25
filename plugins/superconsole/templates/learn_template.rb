@@ -21,38 +21,26 @@ module AresMUSH
       def attrs
        list = []
         @char.console_attributes.sort_by(:name, :order => "ALPHA").each_with_index do |a, i|
-          list << format_attr_learn(a, i)
+          list << format_stat(a, i)
         end
         list
-      end
-
-      def format_attr_learn(a, i)
-        name = "%xh#{a.name}:%xn"
-        lp = a.learnpoints
-        lr = "#{lp}".length > 3 ? Custom.commify(lp) : lp
-        lpn = SuperConsole.get_max_learn_adj(@char,a.name)
-        lpp = "#{lpn}".length > 3 ? Custom.commify(lpn) : lpn
-        percent = (lp/lpn) * 100
-        canlearn = a.learnable ? "%xg+%xn" : "%xr-%xn"
-        rating = "#{a.rating}"
-        "[#{canlearn}] #{left(name, 34)} #{right(rating,3)} #{percent}% #{lr}/#{lpp}"
       end
 
       def abils_learning
        list = []
        @char.console_skills.sort_by(:name, :order => "Alpha").each_with_index do |a, i|
-            list << format_skill_learn(a, i)
+            list << format_stat(a, i)
         end
         list
       end
 
-      def format_skill_learn(a, i)
+      def format_stat(a, i)
         name = "%xh#{a.name}:%xn"
         lp = a.learnpoints
         lr = "#{lp}".length > 3 ? Custom.commify(lp) : lp
         lpn = SuperConsole.get_max_learn_adj(@char,a.name)
         lpp = "#{lpn}".length > 3 ? Custom.commify(lpn) : lpn
-        percent = ((lp/lpn) * 100)
+        percent = lpn > 0 ? ((lp/lpn) * 100) : 0
         canlearn = a.learnable ? "%xg+%xn" : "%xr-%xn"
         rating = "#{a.rating}"
         learning = a.learnable ? " #{percent}% #{lr}/#{lpp}" : ""
