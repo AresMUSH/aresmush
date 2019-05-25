@@ -23,7 +23,8 @@ module AresMUSH
       type = SuperConsole.get_ability_type(a)
       case type
       when :attribute
-        base
+        levelmod = c.level >= 3 ? a.rating : 1
+        base * levelmod
       else
        arch = c.group("archetype") || "Unknown"
        listing = "#{arch.downcase}_favored"
