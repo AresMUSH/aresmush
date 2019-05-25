@@ -97,8 +97,8 @@ module AresMUSH
     end
 
 
-    def self.get_ability_type(ability)
-      ability = ability.titlecase
+    def self.get_ability_type(a)
+      ability = a.titlecase
       if (attr_names.include?(ability))
         return :attribute
       elsif (abilities_name.include?(ability))
