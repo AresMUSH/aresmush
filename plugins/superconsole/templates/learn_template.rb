@@ -40,7 +40,7 @@ module AresMUSH
         lr = "#{lp}".length > 3 ? Custom.commify(lp) : lp
         lpn = SuperConsole.get_max_learn_adj(@char,a.name)
         lpp = "#{lpn}".length > 3 ? Custom.commify(lpn) : lpn
-        percent = lpn > 0 ? ((lp/lpn) * 100) : 0
+        percent = lpn == 0 ? 0 : ((lp/lpn) * 100).floor
         canlearn = a.learnable ? "%xg+%xn" : "%xr-%xn"
         rating = "#{a.rating}"
         learning = a.learnable ? " #{percent}% #{lr}/#{lpp}" : ""
