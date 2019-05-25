@@ -4,10 +4,10 @@
 <%= divider %>
 <% if values %>
 <% values.each do |name, desc| %>
-<%= left(name.titlecase, 20) -%>
+<%= left(name.titlecase, 15) -%>
  <%= desc %>
 <% end %>
 <% else %>
 <%= t('demographics.open_ended_group') %>
 <% end %>
-<%= footer %> 
+<%= footer %>
