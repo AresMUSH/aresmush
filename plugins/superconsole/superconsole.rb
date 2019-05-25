@@ -15,7 +15,7 @@ module AresMUSH
         case cmd.root
         when "sheet"
          if (cmd.switch_is?("learn"))
-           return SheetLearnCMD
+           return SheetLearnCmd
          else
            return SheetCmd
          end
