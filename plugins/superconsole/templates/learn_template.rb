@@ -48,7 +48,7 @@ module AresMUSH
           learning = "#{percent}% #{lr}/#{lpp}"
         else
           canlearn = "%xr-%xn"
-          learning = center(- "MAXED" -,20,-)
+          learning = " MAXED ".center(20,-)
         end
         "[#{canlearn}] (#{has_learned}) #{left(name, 34)} #{right(rating,3)} #{learning}"
       end
