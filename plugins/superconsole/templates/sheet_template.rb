@@ -104,13 +104,13 @@ module AresMUSH
       end
 
       def health_pool_bar
-        self.health_bar
+        @char.health_bar
       end
       def mana_pool_bar
-        self.mana_bar
+        @char.mana_bar
       end
       def stamina_pool_bar
-        self.stamina_bar
+        @char.stamina_bar
       end
     end
   end
