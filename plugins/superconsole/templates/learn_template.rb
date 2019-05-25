@@ -48,7 +48,7 @@ module AresMUSH
 
       def abils_learning
        list = []
-       SuperConsole.abilities.sort_by(:name, :order => "Alpha").each_with_index do |a, i|
+       @char.console_skills.sort_by(:name, :order => "Alpha").each_with_index do |a, i|
             list << format_skill_learn(a, i)
         end
               list
