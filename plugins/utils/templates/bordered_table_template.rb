@@ -15,7 +15,7 @@ module AresMUSH
       items_per_line = 78 / column_width
       count = 0
       current_line = ""
-      
+            
       list.each do |i|
         if (count % items_per_line == 0)
           @lines << current_line
@@ -23,6 +23,10 @@ module AresMUSH
         end
         current_line << i.truncate(column_width - 1).ljust(column_width)
         count = count + 1
+      end
+      
+      if (list.count % items_per_line != 0)
+        @lines << current_line
       end
       
       super File.dirname(__FILE__) + "/bordered_table.erb"

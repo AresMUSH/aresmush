@@ -1,6 +1,6 @@
 module AresMUSH
   module Scenes
-    class DeleteSceneRequestHandler
+    class MarkSceneReadRequestHandler
       def handle(request)
         scene = Scene[request.args[:id]]
         enactor = request.enactor
@@ -12,15 +12,13 @@ module AresMUSH
         error = Website.check_login(request)
         return error if error
         
-        if (!Scenes.can_delete_scene?(enactor, scene))
-          return { error: t('dispatcher.not_allowed') }
+        if (!Scenes.can_read_scene?(enactor, scene))
+          return { error: t('scenes.scene_is_private') }
         end
-        
-        Global.logger.debug "Scene #{scene.id} deleted by #{enactor.name}."
-        
-        scene.delete
-        {
-        }
+       
+        scene.mark_read(enactor)
+       
+        {}
       end
     end
   end
