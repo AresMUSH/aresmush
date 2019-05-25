@@ -27,18 +27,18 @@ idle:
     forth and RP.
   roster_fields:
   - field: name
-    width: 20
+    width: 28
     title: Name
   - field: demographic
     width: 10
     title: Gender
     value: gender
   - field: group
-    width: 15
+    width: 20
     title: Faction
     value: Faction
   - field: group
-    width: 15
+    width: 20
     title: Position
     value: Position
   shortcuts:
