@@ -52,7 +52,7 @@ module AresMUSH
         canlearn = a.learnable ? "%xg+%xn" : "%xr-%xn"
         rating = "#{a.rating}"
         learning = a.learnable ? " #{percent}% #{lp}/#{lpn}" : ""
-        "[#{canlearn}] #{left(name, 34)} #{right(rating,3)}"
+        "[#{canlearn}] #{left(name, 34)} #{right(rating,3)}#{learnable}"
       end
     end
   end
