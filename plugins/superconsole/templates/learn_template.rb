@@ -28,13 +28,12 @@ module AresMUSH
 
       def format_attr_learn(a, i)
         name = "%xh#{a.name}:%xn"
-        linebreak = "%r"
-        lb2 = i == 0 ? "" : "#{linebreak}"
         lp = "#{a.learnpoints}"
         lpn = SuperConsole.get_max_learn_adj(@char,a.name)
+        percent = (lp/lpn) * 100
         canlearn = a.learnable ? "%xg+%xn" : "%xr-%xn"
         rating = "#{a.rating}"
-        "#{lb2}[#{canlearn}] #{left(name, 34)} #{right(rating,3)} #{lp}/#{lpn}"
+        "[#{canlearn}] #{left(name, 34)} #{right(rating,3)} #{percent}% #{lp}/#{lpn}"
       end
 
       def abils_learned
