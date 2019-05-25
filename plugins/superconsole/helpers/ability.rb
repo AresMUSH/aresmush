@@ -112,6 +112,7 @@ module AresMUSH
         list[config[:learnable]] = true
         list[config[:masterpoints]] = 0
      end
+     list
     end
 
     def self.get_ability_type(a)
