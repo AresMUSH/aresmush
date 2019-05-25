@@ -34,7 +34,7 @@ module AresMUSH
        if (favor) && favor == true
          base - (base * (basemod + learnmod))
        else
-         base + learnmod
+         base - (base * learnmod)
        end
      end
     end
