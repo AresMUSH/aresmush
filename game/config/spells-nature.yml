@@ -10,6 +10,18 @@ spells:
     range: Short
     roll: true
     school: Nature
+  Bioluminescence:
+    available: true
+    casting_time: 1 round
+    desc: The caster causes up to a 3 square foot portion of their body to glow in a single phosphorescent color. The light is dim, equivalent to a small candle flame (12 lumens).
+    duration: 10 minutes
+    effect: Creation
+    is_potion: true
+    level: 1
+    name: Bioluminescence
+    range: Touch
+    roll: true
+    school: Nature
   Create Bloom:
     available: true
     casting_time: 1 round
