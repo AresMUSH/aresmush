@@ -27,6 +27,7 @@ en:
     marker_health: "Health Bar:"
     marker_mana: "Mana Bar:"
     marker_stamina: "Stamina Bar:"
+    marker_limit: "Oversoul Bar:"
     # ----- Attributes Section ------
     header_attributes: "Attributes"
     marker_stat: "%{stat}:"

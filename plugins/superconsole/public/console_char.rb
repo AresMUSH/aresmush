@@ -11,6 +11,7 @@ module AresMUSH
     attribute :console_pool_mana, :type => DataType::Integer, :default => 30
     attribute :console_pool_stamina, :type => DataType::Integer, :default => 30
     attribute :console_cgen, :type => DataType::Integer, :default => 0
+    attribute :console_pool_limit, :type => DataType::Integer, :default => 0
 
     collection :console_patience, "AresMUSH::ConsolePatience"
     collection :console_attributes, "AresMUSH::ConsoleAttribute"
@@ -52,6 +53,18 @@ module AresMUSH
    def health_stat
      self.console_pool_health.to_i
    end
+
+   def limit_bar
+      unused = "%X166 %xn"
+      used = "%X242 %xn"
+      dmg = self.console_pool_limit / 2
+      left = (100 - dmg) / 2
+      dmgnum = dmg.to_f.floor
+      leftnum = left.to_f.floor
+      orange = unused.repeat(dmgnum)
+      gray = used.repeat(leftnum)
+      gray + orange
+    end
 
    def health_bar
       unused = "%X1 %xn"

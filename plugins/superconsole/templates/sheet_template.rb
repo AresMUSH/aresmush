@@ -112,6 +112,12 @@ module AresMUSH
       def stamina_pool_bar
         @char.stamina_bar
       end
+      def limit_pool_bar
+        @char.limit_bar
+      end
+      def limit_max
+        100
+      end
       def stamina_max
         base = Global.read_config("superconsole","base_stamina")
         vit = SuperConsole.find_ability(@char,"Vitality").rating
