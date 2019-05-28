@@ -48,6 +48,10 @@ module AresMUSH
      self.console_level == 0 ? 1 : self.console_level
    end
 
+   def health_stat
+     self.console_poll_health
+   end
+
    def health_bar
       unused = "%X1 %xn"
       used = "%X242 %xn"

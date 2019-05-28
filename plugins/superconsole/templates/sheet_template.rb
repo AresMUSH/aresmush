@@ -113,10 +113,10 @@ module AresMUSH
         @char.stamina_bar
       end
       def health_max
-        @char.console_pool_health
+        @char.health_stat
       end
       def pretty_health
-        hp = health_max
+        hp = self.health_max
         len = "#{hp}".length
         if len > 3
           Custom.commify(hp)
