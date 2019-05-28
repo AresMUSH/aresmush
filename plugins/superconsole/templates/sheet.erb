@@ -16,6 +16,6 @@
 
 <%= line_with_text t("superconsole.header_pools") -%>
 %x15<%= left( t('superconsole.marker_health'), 18) %>%xn <%= left(health_pool_bar,52) %> <%= right(pretty_health,6) %>
-%x15<%= left( t('superconsole.marker_mana'), 18) %>%xn <%= mana_pool_bar %>
-%x15<%= left( t('superconsole.marker_stamina'), 18) %>%xn <%= stamina_pool_bar %>
+%x15<%= left( t('superconsole.marker_mana'), 18) %>%xn <%= left(mana_pool_bar,52) %> <%= right(pretty_mana,6) %>
+%x15<%= left( t('superconsole.marker_stamina'), 18) %>%xn <%= left(stamina_pool_bar,52) %> <%= right(pretty_stamina,6) %>
 %lf

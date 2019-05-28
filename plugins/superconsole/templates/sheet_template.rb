@@ -112,6 +112,28 @@ module AresMUSH
       def stamina_pool_bar
         @char.stamina_bar
       end
+      def stamina_max
+        base = 30
+        vit = SuperConsole.find_ability(@char,"Vitality").rating
+        spi = SuperConsole.find_ability(@char,"Spirit").rating
+        lvl = @char.level
+        avg = ((vit + spi) / 2).floor
+        vitdbl = avg * 2
+        hplvl = lvl * vitdbl
+        basehp = 30 + vit
+        modhp = 0
+        hplvl + basehp + modhp
+      end
+      def mana_max
+        base = 30
+        vit = SuperConsole.find_ability(@char,"Magic").rating
+        lvl = @char.level
+        vitdbl = vit * 2
+        hplvl = lvl * vitdbl
+        basehp = 30 + vit
+        modhp = 0
+        hplvl + basehp + modhp
+      end
       def health_max
         base = 30
         vit = SuperConsole.find_ability(@char,"Vitality").rating
@@ -121,6 +143,24 @@ module AresMUSH
         basehp = 30 + vit
         modhp = 0
         hplvl + basehp + modhp
+      end
+      def pretty_stamina
+        hp = stamina_max
+        len = "#{hp}".length
+        if len > 3
+          Custom.commify(hp)
+        else
+          hp
+        end
+      end
+      def pretty_mana
+        hp = mana_max
+        len = "#{hp}".length
+        if len > 3
+          Custom.commify(hp)
+        else
+          hp
+        end
       end
       def pretty_health
         hp = health_max
