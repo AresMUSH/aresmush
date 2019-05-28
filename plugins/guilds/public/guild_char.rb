@@ -10,7 +10,7 @@ module AresMUSH
       end
      end
     end # def delete_guilds
-    def guilds(name)
+    def guilds
       self.guilds[name.downcase]
     end # def guild
     def guildrank(name,guild)

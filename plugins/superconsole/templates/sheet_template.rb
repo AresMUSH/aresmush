@@ -47,7 +47,7 @@ module AresMUSH
         end
       end
       def guild
-        guild = Guilds.guilds(@char).first
+        guild = @char.guilds.first
         if (!guild)
           "Unknown"
         else
