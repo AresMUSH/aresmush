@@ -1,0 +1,53 @@
+---
+superconsole:
+  strong_bonus: 0.50
+  weak_bonus: 0.50 
+  elements:
+    - name: Fire
+      strong: Ice
+      weak:
+        - Umbral
+        - Nature
+    - name: Ice
+      strong: Lightning
+      weak: Fire
+    - name: Earth
+      strong: Air
+      weak:
+        - Umbral
+        - Water
+    - name: Air
+      strong: Sound
+      weak:
+        - Umbral
+        - Earth
+    - name: Lightning
+      strong: Water
+      weak: Ice
+    - name: Radiance
+      strong: Umbral
+      weak: Gravity
+    - name: Umbral
+      strong:
+        - Earth
+        - Fire
+        - Air
+        - Water
+      weak: Radiance
+    - name: Water
+      strong: Earth
+      weak:
+        - Umbral
+        - Lightning
+    - name: Poison
+      strong: Nature
+      weak: Sound
+    - name: Sound
+      strong: Poison
+      weak: Air
+    - name: Gravity
+      strong: Radiance
+      weak: Umbral
+    - name: Nature
+      strong: Fire
+      weak: Poison
