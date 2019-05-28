@@ -120,7 +120,7 @@ module AresMUSH
         hpmod + hppool
       end
       def pretty_health
-        hp = SuperConsole.health_max
+        hp = health_max
         len = "#{hp}".length
         if len > 3
           Custom.commify(hp)
