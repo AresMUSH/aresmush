@@ -112,6 +112,21 @@ module AresMUSH
       def stamina_pool_bar
         @char.stamina_bar
       end
+      def health_max
+        vit = @char.find_ability(@char,"Vitality")
+        vitr = vit.rating
+        hpmod = (vitr * 2) * @char.level
+        hppool = @char.console_pool_health
+        hpmod + hppool
+      end
+      def pretty_health
+        hp = health_max
+        if hp.length >3
+          Custom.commify(hp)
+        else
+          hp
+        end
+      end
     end
   end
 end
