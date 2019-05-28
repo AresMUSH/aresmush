@@ -11,7 +11,7 @@ module AresMUSH
      end
     end # def delete_guilds
     def guilds
-      self.guilds[name.downcase]
+      self.guilds.sort_by(:name, :order => "ALPHA").map { |a| a.name }
     end # def guild
     def guildrank(name,guild)
 
