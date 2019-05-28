@@ -227,6 +227,17 @@ fs3combat:
       accuracy: 0
       init_mod: 0
       special_group: Melee
+    Axe:
+      description: Axe of any type
+      skill: Melee
+      lethality: 0
+      penetration: 5
+      weapon_type: Melee
+      recoil: 0
+      damage_type: Physical
+      accuracy: 0
+      init_mod: 0
+      special_group: Melee
     Skofnung:
       description: Ragnar's magical sword
       is_magic: true

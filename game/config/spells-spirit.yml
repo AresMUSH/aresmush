@@ -276,6 +276,19 @@ spells:
     target_optional: true
     effect: Psionic
   #Level 4
+  Group Telepathic Correspondence:
+    available: false
+    casting_time: 1 round
+    desc: 'Up to 4 targets, including the caster, are able to hold a telepathic conversation together. All targets are part of a single conversation for the duration of the spell. Initial casting requires concentration, after which this spell remains in effect without requiring maintenance or taking up your action during a round.'
+    duration: 1 hour
+    effect: Psionic
+    level: 4
+    name: Group Telepathic Correspondence:
+    range: Long
+    roll: true
+    school: Spirit
+    target_num: 4
+    target_optional: true
   Mind Shield:
     available: true
     casting_time: 1 round
