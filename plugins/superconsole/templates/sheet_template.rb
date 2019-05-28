@@ -113,34 +113,34 @@ module AresMUSH
         @char.stamina_bar
       end
       def stamina_max
-        base = 30
+        base = Global.read_config("superconsole","base_stamina")
         vit = SuperConsole.find_ability(@char,"Vitality").rating
         spi = SuperConsole.find_ability(@char,"Spirit").rating
         lvl = @char.level
         avg = ((vit + spi) / 4).floor
         vitdbl = avg * 2
         hplvl = lvl * vitdbl
-        basehp = 30 + avg
+        basehp = base + avg
         modhp = 0
         hplvl + basehp + modhp
       end
       def mana_max
-        base = 30
+        base = Global.read_config("superconsole","base_mana")
         vit = SuperConsole.find_ability(@char,"Magic").rating
         lvl = @char.level
         vitdbl = vit * 2
         hplvl = lvl * vitdbl
-        basehp = 30 + vit
+        basehp = base + vit
         modhp = 0
         hplvl + basehp + modhp
       end
       def health_max
-        base = 30
+        base = Global.read_config("superconsole","base_health")
         vit = SuperConsole.find_ability(@char,"Vitality").rating
         lvl = @char.level
         vitdbl = vit * 2
         hplvl = lvl * vitdbl
-        basehp = 30 + vit
+        basehp = base + vit
         modhp = 0
         hplvl + basehp + modhp
       end
