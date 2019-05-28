@@ -120,7 +120,7 @@ module AresMUSH
         avg = ((vit + spi) / 2).floor
         vitdbl = avg * 2
         hplvl = lvl * vitdbl
-        basehp = 30 + vit
+        basehp = 30 + avg
         modhp = 0
         hplvl + basehp + modhp
       end
