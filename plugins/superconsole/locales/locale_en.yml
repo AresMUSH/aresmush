@@ -34,3 +34,10 @@ en:
     header_learning: "Learning Skills & Abilities"
     header_learn_label: "       %x15 Stat Name                          Rank Learning Points     %xn"
     header_pools: "Pools"
+    # ----- Chargen Stuff -----
+    approved: "Approved"
+    unapproved: "Not Yet Approved"
+    npc: "NPC"
+    rostered: "On Roster"
+    idled_out: "Idled Out - %{status}"
+    bg_page_title: "Background"

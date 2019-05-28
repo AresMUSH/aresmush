@@ -20,7 +20,7 @@ module AresMUSH
 
 
       def approval_status
-        Chargen.approval_status(@char)
+        SuperConsole.approval_status(@char)
       end
       def char_class
         @char.group("class") || "Unknown"
