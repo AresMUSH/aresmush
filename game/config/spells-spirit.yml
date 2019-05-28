@@ -283,7 +283,7 @@ spells:
     duration: 1 hour
     effect: Psionic
     level: 4
-    name: Group Telepathic Correspondence:
+    name: Group Telepathic Correspondence
     range: Long
     roll: true
     school: Spirit
