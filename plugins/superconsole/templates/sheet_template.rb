@@ -47,7 +47,12 @@ module AresMUSH
         end
       end
       def guild
-        "Unknown"
+        guild = Guild.guilds(@char).first
+        if (!guild)
+          "Unknown"
+        else
+          guild.titlecase
+        end
       end
       def level_cleared
         "0"
