@@ -113,10 +113,17 @@ module AresMUSH
         @char.stamina_bar
       end
       def health_max
-        @char.health_stat
+        base = 30
+        vit = SuperConsole.find_ability(@char,"Vitality").rating
+        lvl = @char.level
+        vitdbl = vit * 2
+        hplvl = lvl * vitdbl
+        basehp = 30 + vit
+        modhp = 0
+        hplvl + basehp + modhp
       end
       def pretty_health
-        hp = @char.health_stat
+        hp = @char.health_max
         len = "#{hp}".length
         if len > 3
           Custom.commify(hp)
