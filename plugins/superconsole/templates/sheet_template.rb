@@ -117,7 +117,7 @@ module AresMUSH
         vit = SuperConsole.find_ability(@char,"Vitality").rating
         spi = SuperConsole.find_ability(@char,"Spirit").rating
         lvl = @char.level
-        avg = ((vit + spi) / 2).floor
+        avg = ((vit + spi) / 4).floor
         vitdbl = avg * 2
         hplvl = lvl * vitdbl
         basehp = 30 + avg
