@@ -49,7 +49,7 @@ module AresMUSH
    end
 
    def health_stat
-     self.console_pool_health
+     self.console_pool_health.to_i
    end
 
    def health_bar
