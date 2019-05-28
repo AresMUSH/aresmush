@@ -3,3 +3,4 @@ superconsole:
   base_mana: 30
   base_health: 30
   base_stamina: 30
+  cgen_points: 24
