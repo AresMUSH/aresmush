@@ -116,7 +116,7 @@ module AresMUSH
         @char.health_stat
       end
       def pretty_health
-        hp = self.health_max
+        hp = @char.health_stat
         len = "#{hp}".length
         if len > 3
           Custom.commify(hp)
