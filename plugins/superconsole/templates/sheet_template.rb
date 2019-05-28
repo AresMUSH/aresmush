@@ -113,7 +113,7 @@ module AresMUSH
         @char.stamina_bar
       end
       def health_max
-        vit = @char.find_ability(@char,"Vitality")
+        vit = SuperConsole.find_ability(@char,"Vitality")
         vitr = vit.rating
         hpmod = (vitr * 2) * @char.level
         hppool = @char.console_pool_health
