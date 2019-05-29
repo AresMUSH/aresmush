@@ -7,7 +7,7 @@ module AresMUSH
         error = Website.check_login(request, true)
         return error if error
 
-        chars = Chargen.approved_chars
+        chars = Chargen.approved_chars.sort_by { |c| c.name}
 
 
         secrets = []
