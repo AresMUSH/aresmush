@@ -1,5 +1,5 @@
 module AresMUSH
-  module Demographics
+  module Guilds
     class GuildsCmd
       include CommandHandler
 
