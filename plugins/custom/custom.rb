@@ -75,6 +75,8 @@ module AresMUSH
           return SetSecretsCmd
         when "preference"
           return SetSecretPrefCmd
+        when "setplot"
+          return SetSecretsPlotCmd
         when nil
           return SecretsCmd
         end

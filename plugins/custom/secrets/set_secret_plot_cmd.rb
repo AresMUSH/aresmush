@@ -1,6 +1,6 @@
 module AresMUSH
   module Custom
-    class SetSecretsCmd
+    class SetSecretsPlotCmd
       include CommandHandler
 # `secrets/setplot <name>=<secret_plot>/` - Set a secret's plot on a character.
 
@@ -19,6 +19,7 @@ module AresMUSH
 
       def check_errors
         return t('db.object_not_found') if !self.target
+        return "Must use a plot number." if self.secret_plot.to_i == 0
       end
 
 
