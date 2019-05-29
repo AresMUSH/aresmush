@@ -1,2 +1,13 @@
 ---
-guilds: {}
+guilds:
+  master_list:
+    - name: Testing Guild
+      abbr: TG
+      type: Familia
+  guild_types:
+    - name: Familia
+      desc: "A guild founded by a god or goddess to uncover the secrets of the dark."
+    - name: Traditional
+      desc: "A group of adventurers and supporters for their own goals and reasons."
+    - name: Society
+      desc: "A group of people that form together under the auspice of a unifying goal."
