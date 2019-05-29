@@ -5,7 +5,7 @@ module AresMUSH
 
       def handle
         guilds_list = Guilds.all_guilds
-        template = GuildsListTemplate.new guilds
+        template = GuildsListTemplate.new guilds_list
         client.emit template.render
       end
     end
