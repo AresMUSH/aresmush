@@ -23,7 +23,8 @@ module AresMUSH
 
 
       def handle
-        self.target.update(secret_plot: self.secret_plot)client.emit_success "You set #{self.target.name}'s secret plot to #{self.target.secret_plot}"
+        self.target.update(secret_plot: self.secret_plot)
+        client.emit_success "You set #{self.target.name}'s secret plot to #{self.target.secret_plot}"
       end
 
     end
