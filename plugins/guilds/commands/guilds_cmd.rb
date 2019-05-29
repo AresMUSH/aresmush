@@ -4,8 +4,8 @@ module AresMUSH
       include CommandHandler
 
       def handle
-        guilds_list = Guilds.all_guilds.sort
-        template = GuildsListTemplate.new guilds_list
+        guilds = Guilds.all_guilds.sort
+        template = GuildsListTemplate.new guilds
         client.emit template.render
       end
     end
