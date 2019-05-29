@@ -2,14 +2,15 @@ module AresMUSH
   module Custom
     class SetSecretsCmd
       include CommandHandler
-# `secrets/set <name>=<secret>` - Set a secret on a character.
+# `secrets/set <name>=<secret_name>/<secret_summary>` - Set a secret on a character.
 
-      attr_accessor :secrets, :target
+      attr_accessor :secret_name, :secret_summary, :target
 
         def parse_args
-          args = cmd.parse_args(ArgParser.arg1_equals_arg2)
+          args = cmd.parse_args(ArgParser.arg1_equals_arg2_slash_arg3)
           self.target = Character.find_one_by_name(args.arg1)
-          self.secrets = trim_arg(args.arg2)
+          self.secret_name = trim_arg(args.arg2)
+          self.secret_summary = args.arg3
         end
 
       def check_can_set
@@ -23,9 +24,10 @@ module AresMUSH
 
 
       def handle
-        client.emit "#{self.target.name}'s current secrets: #{self.target.secrets}"
-        self.target.update(secrets: self.secrets)
-        client.emit_success "You set #{self.target.name}'s new secrets to #{self.secrets}"
+        client.emit "#{self.target.name}'s current secrets: %R#{self.target.secret_name}%R#{self.target.secret_summary}"
+        self.target.update(secret_name: self.secret_name)
+        self.target.update(secret_summary: self.secret_summary)
+        client.emit_success "You set #{self.target.name}'s new secrets to: %R#{self.target.secret_name}%R#{self.target.secret_summary}"
       end
 
     end
