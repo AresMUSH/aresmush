@@ -12,3 +12,4 @@ You can set your secret preferences during CG to let admin know whether you're i
 ## Admin Commands
 
 `secrets/set <name>=<secret name>/<secret_summary>` - Set a secret on a character.
+`secrets/setplot <name>=<secret_plot>/` - Set a secret's plot on a character

@@ -177,6 +177,7 @@ module AresMUSH
           plot_prefs: Website.format_markdown_for_html(char.plot_prefs),
           secret_name: char.secret_name,
           secret_summary: char.secret_summary,
+          secret_plot: char.secret_plot,
           desc: char.description,
           playerbit: char.is_playerbit?,
           fs3: fs3,
