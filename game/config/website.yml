@@ -115,6 +115,8 @@ website:
     - page: wiki-page
       title: Player Run Plots
       id: player_run_plots
+    - page: secrets
+      title: Secrets
   - title: Directory
     menu:
     - page: spells
