@@ -4,7 +4,7 @@ module AresMUSH
       include CommandHandler
 # `secrets/setplot <name>=<secret_plot>/` - Set a secret's plot on a character.
 
-      attr_accessor :secret_plot :target
+      attr_accessor :secret_plot, :target
 
         def parse_args
           args = cmd.parse_args(ArgParser.arg1_equals_arg2)
