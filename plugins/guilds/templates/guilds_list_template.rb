@@ -4,8 +4,8 @@ module AresMUSH
 
       attr_accessor :guilds
 
-      def initialize(guilds_list)
-        @guilds = guilds_list
+      def initialize(guilds)
+        @guilds = guilds
         super File.dirname(__FILE__) + "/guilds_list.erb"
       end
     end
