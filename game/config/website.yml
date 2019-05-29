@@ -57,7 +57,7 @@ website:
       id: getting_started
     - page: wiki-page
       title: Guides
-      id: tag/guide
+      id: guide
     - page: help
       title: Help
     - divider: true
