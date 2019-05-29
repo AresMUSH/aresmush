@@ -1,8 +1,8 @@
 <%= header %>
 %xh<%= t('guilds.title') %>%xn
 <%= divider %>
-<% guilds[:guilds].each do |a| %>
-<%= left( a['name'], 14 ) %> <%= a['desc'] %>
+<% guilds.each do |name, data| %>
+<%= left(name, 15) -%>
+ <%= data['desc'] %>
 <% end %>
-
 <%= footer %>
