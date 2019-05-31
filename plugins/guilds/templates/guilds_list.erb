@@ -3,7 +3,7 @@
 <%= divider %>
 <% guilds.each do |data| %>
 <% if data['is_public'] == true %>
-%x10<%= left("+", 1) -%>%xn
+" "
 <% else %>
 %x9<%= left("-", 1) -%>%xn
 <% end %>
@@ -11,6 +11,6 @@
 <%= left(data['name'], 15) -%>
 <%= left(data['type'],15) -%>
 <%= left(data['status'],20) -%>
-<%= left(data['desc'],15) -%>
+<%= left(data['desc'],15) %>
 <% end %>
 <%= footer %>
