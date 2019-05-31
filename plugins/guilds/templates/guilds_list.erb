@@ -3,9 +3,9 @@
 <%= divider %>
 <% guilds.each do |data| %>
 <% if data['is_public'] == true %>
-<%= left(t(%x10+%xn), 1) -%>
+<%= left(%x10+%xn, 1) -%>
 <% else %>
-<%= left(t(%x9-%xn), 1) -%>
+<%= left(%x9-%xn, 1) -%>
 <% end %>
 <%= left(data['abbr'], 4) -%>
 <%= left(data['name'], 15) -%>
