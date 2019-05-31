@@ -1,5 +1,5 @@
 module AresMUSH
-  class GuildObj < Ohm::Model
+  class GuildMember < Ohm::Model
     include ObjectModel
 
     reference :character, "AresMUSH::Character"

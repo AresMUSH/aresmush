@@ -1,6 +1,6 @@
 module AresMUSH
   class Character
-    collection :guilds, "AresMUSH::GuildObj"
+    collection :guilds, "AresMUSH::GuildMember"
 
     before_delete :delete_guilds
     def delete_guilds
