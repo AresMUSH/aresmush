@@ -4,7 +4,7 @@ module AresMUSH
       include CommandHandler
 
       def handle
-        guilds = Guilds.all_guilds.sort_by { |key| key }
+        guilds = Guilds.all_guilds.sort_by { |key, value| value }
         template = GuildsListTemplate.new guilds
         client.emit template.render
       end
