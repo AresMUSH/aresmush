@@ -2,11 +2,7 @@
 %xh<%= t('guilds.title') %>%xn
 <%= divider %>
 <% guilds.each do |data| %>
-<% if data['is_public'] == true -%>
- 
-<% else %>
-%x9<%= left("-", 1) -%>%xn
-<% end %>
+<% if data['is_public'] == true t('guilds.blank') else t('guilds.private_icon') -%>
 <%= left(data['abbr'], 4) -%>
 <%= left(data['name'], 15) -%>
 <%= left(data['type'],15) -%>

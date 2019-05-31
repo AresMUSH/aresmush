@@ -2,3 +2,5 @@
 en:
   guilds:
     title: "Master Guilds List"
+    blank: " "
+    private_icon: "%x9-%xn"
