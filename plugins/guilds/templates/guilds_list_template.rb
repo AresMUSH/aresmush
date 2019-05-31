@@ -2,7 +2,7 @@ module AresMUSH
   module Guilds
     class GuildsListTemplate < ErbTemplateRenderer
 
-      attr_accessor :data
+      attr_accessor :guilds
 
       def initialize(data)
         @guilds = data
