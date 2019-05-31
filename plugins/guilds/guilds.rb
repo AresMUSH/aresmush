@@ -15,6 +15,21 @@ module AresMUSH
       case cmd.root
       when "guilds"
         return GuildsCmd
+      when "guild"
+        case cmd.switch
+        when "add"
+          return GuildAddCmd
+        when "rem"
+          return GuildRemCmd
+        when "promote"
+          return GuildPromoteCmd
+        when "demote"
+          return GuildDemoteCmd
+        when "ranktitle"
+          return GuildRankTitleCmd
+        else
+          return GuildsCmd
+        end
       else
         nil
       end
