@@ -4,7 +4,7 @@ module AresMUSH
        Global.read_config("guilds", "master_list") || {}
     end
     def self.is_member?(c,g)
-      true
+      false
     end # def is_member?
   end
 end
