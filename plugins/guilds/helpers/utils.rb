@@ -12,10 +12,10 @@ module AresMUSH
       end
     end # def is_member?
     def self.add_member(g,c)
-      guild = Guild.find_one_by_name(g).first
+      guild = Guild.find(name: g).first
       members = guild.members.push(c)
       guild.update(members: members)
-      GuildMember.create(character: c,name: g,rank: 1,title: "Member")      
+      GuildMember.create(character: c,name: g,rank: 1,title: "Member")
     end # def add_member
   end
 end
