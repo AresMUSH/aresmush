@@ -13,7 +13,7 @@ module AresMUSH
     end # def is_member?
     def self.add_member(guild_name,character)
       guild = Guild.find_one_by_name(guild_name)
-      members = guild.members.push(ccharacter)
+      members = guild.members.push(character)
       guild.update(members: members)
       GuildMember.create(character: character,name: guild_name,rank: 1,title: "Member")
     end # def add_member
