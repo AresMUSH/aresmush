@@ -4,6 +4,15 @@ guilds:
     - name: Testing Guild
       abbr: TG
       type: Familia
+      status: Actively Recruiting
+      is_public: true
+      desc: A guild for testing.
+    - name: Folly's Fun
+      abbr: FF
+      type: Society
+      is_public: false
+      desc: A group of people planning world domination.
+      status: Invitation Only      
   guild_types:
     - name: Familia
       desc: "A guild founded by a god or goddess to uncover the secrets of the dark."
