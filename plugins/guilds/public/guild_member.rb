@@ -4,7 +4,7 @@ module AresMUSH
 
     reference :character, "AresMUSH::Character"
     attribute :name
-    attribute :ranking, :type => DataType::Integer, :default => 0
+    attribute :rank, :type => DataType::Integer, :default => 0
     attribute :title
 
 
