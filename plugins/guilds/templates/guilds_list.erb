@@ -2,8 +2,8 @@
 %xh<%= t('guilds.title') %>%xn
 <%= divider %>
 <% guilds.each do |data| %>
-<% if data['is_public'] == true %>
-" "
+<% if data['is_public'] == true -%>
+ 
 <% else %>
 %x9<%= left("-", 1) -%>%xn
 <% end %>
