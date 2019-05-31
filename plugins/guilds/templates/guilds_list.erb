@@ -2,7 +2,8 @@
 %xh<%= t('guilds.title') %>%xn
 <%= divider %>
 <% guilds.each do |data| %>
+<%= left(data['abbr'], 3) -%>
 <%= left(data['name'], 15) -%>
- <%= data['type'] %>
+ <%= left(data['type'],15) %>
 <% end %>
 <%= footer %>
