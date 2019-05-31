@@ -3,6 +3,6 @@
 <%= divider %>
 <% guilds.each do |name, data| %>
 <%= left(name, 15) -%>
- <%= data.type %>
+ <%= data['type'] %>
 <% end %>
 <%= footer %>
