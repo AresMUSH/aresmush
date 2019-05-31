@@ -16,5 +16,8 @@ module AresMUSH
     def guildrank(name,guild)
 
     end # def guildrank
+    def self.is_member?
+      true
+    end # def is_member?
   end # Class Character
 end # Module AresMUSH

@@ -7,7 +7,7 @@ module AresMUSH
         guilds = []
         list = Guilds.all_guilds.sort_by { |key| key['name'] }
         list.each do |a|
-          if a['is_public'] == true || enactor.is_admin?
+          if a['is_public'] == true || enactor.is_admin? || Guilds.is_member?(enactor,a['name'])
             guilds << a
           end
         end
