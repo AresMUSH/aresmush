@@ -4,4 +4,4 @@ en:
     title: "Master Guilds List"
     blank: " "
     private_icon: "%x9-%xn"
-    list_header: "%x15  Abbr Guild Name                Guild Type      Guild Recruiting Status%xn"
+    list_header: "..%x15Abbr%xn.%x15Guild Name%xn...............%x15Guild Type%xn......%x15Guild Recruiting Status%xn"
