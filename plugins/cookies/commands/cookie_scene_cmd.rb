@@ -13,19 +13,21 @@ module AresMUSH
         end
       end
       
-      def required_args
-        [ self.scene_num ]
-      end
-      
       def handle
-        scene = Scene[scene_num]
-        if (!scene)
-          client.emit_failure(t('cookies.invalid_scene'))
-          return
+        if (self.scene_num)
+          scene = Scene[scene_num]
+          if (!scene)
+            client.emit_failure(t('cookies.invalid_scene'))
+            return
+          end
+          chars = scene.participants
+          message = t('cookies.giving_cookies_to_scene', :scene => scene.id)
+        else
+          chars = enactor_room.characters.select { |c| c != enactor && Login.is_online?(c) }
+          message = t('cookies.giving_cookies_to_room')
         end
-        
-        client.emit_success t('cookies.giving_cookies_to_scene', :scene => scene.id)
-        scene.participants.each do |c|
+        client.emit_success message
+        chars.each do |c|
           if (c != enactor)
             error = Cookies.give_cookie(c, enactor)
             if (error)
