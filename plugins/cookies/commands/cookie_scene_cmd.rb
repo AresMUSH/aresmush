@@ -6,7 +6,11 @@ module AresMUSH
       attr_accessor :scene_num
       
       def parse_args
-        self.scene_num = integer_arg(cmd.args)
+        if (cmd.args)
+          self.scene_num = integer_arg(cmd.args)
+        else
+          self.scene_num = enactor_room.scene ? enactor_room.scene.id : nil
+        end
       end
       
       def required_args
