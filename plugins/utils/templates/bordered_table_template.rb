@@ -25,9 +25,9 @@ module AresMUSH
         count = count + 1
       end
       
-      if (list.count % items_per_line != 0)
+#      if (list.count % items_per_line != 0)
         @lines << current_line
-      end
+#      end
       
       super File.dirname(__FILE__) + "/bordered_table.erb"
     end

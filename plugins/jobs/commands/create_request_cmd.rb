@@ -22,7 +22,7 @@ module AresMUSH
           return
         end
         
-        if (!enactor.is_approved? && enactor.jobs.select { |j| j.is_open? }.count >= 5)
+        if (!enactor.is_approved? && enactor.requests.select { |j| j.is_open? }.count >= 5)
           client.emit_failure t('jobs.too_many_jobs_open')
           return
         end
