@@ -7,10 +7,15 @@ module AresMUSH
         
         delete_days = Global.read_config('page', 'page_deletion_days')
         
+        Global.logger.debug "Clearing old pages."
         PageMessage.all.each do |msg|
           elapsed_days = (Time.now - msg.created_at) / 86400
           if (elapsed_days > delete_days)
+            thread = msg.page_thread
             msg.delete
+            if (thread.page_messages.count == 0)
+              thread.delete
+            end
           end
         end
       end

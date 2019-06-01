@@ -119,6 +119,7 @@ module AresMUSH
     def self.check_job_access(enactor, job, allow_author = false)
       if (allow_author)
         return nil if enactor == job.author
+        return nil if job.participants.include?(enactor)
       end
       return t('dispatcher.not_allowed') if !Jobs.can_access_jobs?(enactor)
       return t('jobs.cant_access_category') if !Jobs.can_access_category?(enactor, job.category)
@@ -133,7 +134,7 @@ module AresMUSH
     end
     
     def self.open_requests(char)
-      char.jobs.select { |r| r.is_open? || r.is_unread?(char) }
+      char.requests.select { |r| r.is_open? || r.is_unread?(char) }
     end
     
     def self.closed_status

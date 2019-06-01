@@ -4,6 +4,7 @@ module AresMUSH
       def handle(request)
         enactor = request.enactor
         category = (request.args[:category] || "").upcase
+        participant_ids = request.args[:participants]
         title = request.args[:title]
         description = request.args[:description]
         submitter_name = request.args[:submitter]
@@ -31,6 +32,16 @@ module AresMUSH
           return {error: job[:error] }
         end
         job = result[:job]
+        
+        if (participant_ids)
+          participant_ids.each do |p|
+            participant = Character[p]
+            if (!participant)
+              return { error: t('dispatcher.not_found') }
+            end
+            job.participants.add participant
+          end
+        end
         
         {
           id: job.id
