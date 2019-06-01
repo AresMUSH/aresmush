@@ -14,7 +14,7 @@ module AresMUSH
         if (job_admin)
           jobs = Jobs.filtered_jobs(enactor, "ALL")
         else
-          jobs = enactor.jobs.to_a
+          jobs = enactor.requests.to_a
         end
         
         if (!searchTitle.blank?)

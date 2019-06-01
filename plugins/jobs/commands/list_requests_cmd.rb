@@ -6,7 +6,7 @@ module AresMUSH
       def handle
         
         requests = enactor.jobs_filter == "ALL" ?
-          enactor.jobs.to_a : 
+          enactor.requests.to_a : 
           Jobs.open_requests(enactor)
 
         requests = requests.sort_by { |r| r.created_at }

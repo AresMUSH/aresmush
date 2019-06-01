@@ -13,3 +13,4 @@ en:
         cookies_total: "You have received %{cookies} cookies since joining the game."
         invalid_scene: "Scene not found."
         giving_cookies_to_scene: "You give cookies to everyone in scene %{scene}."
+        giving_cookies_to_room: "You give cookies to everyone here."

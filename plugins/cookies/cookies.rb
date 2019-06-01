@@ -14,9 +14,7 @@ module AresMUSH
       return nil if !cmd.root_is?("cookie")
       
       case cmd.switch
-      when "here"
-        return CookieHereCmd
-      when "scene"
+      when "scene", "here"
         return CookieSceneCmd
       when "total"
         return CookiesTotalCmd

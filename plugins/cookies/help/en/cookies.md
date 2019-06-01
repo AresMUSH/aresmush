@@ -13,7 +13,6 @@ Cookies are a fun way to appreciate your fellow players for playing with you.  W
 Cookies are not meant to be particularly impactful.  You may get recognized on the weekly "top cookie earner" bbpost, if your game has it set up.  If your game is using the FS3 system, you will also get a fraction of a luck point per cookie received, up to a certain limit each week.  
 
 `cookie <list of names>` - Give a cookie.
-`cookie/here` - Give cookies to everyone in the room (handy for big scenes).
-`cookis/scene <scene number>` - Gives cookies to everyone in a scene (handy if you forget to cookie before people start leaving).
+`cookis/scene [<scene number>]` - Gives cookies to everyone in a scene (handy for big scenes, or if you forget to cookie before people start leaving).  You can leave off the scene number to use a scene you're in.
 `cookies` - Sees cookies you have given out this week.
 `cookies/total` - Shows how many cookies you've ever gotten.
