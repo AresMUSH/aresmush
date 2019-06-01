@@ -6,6 +6,8 @@ module AresMUSH
 
     collection :jobs, "AresMUSH::Job", :author
     
+    before_delete :delete_job_participation
+    
     def has_unread_jobs?
       !unread_jobs.empty?
     end
@@ -27,7 +29,17 @@ module AresMUSH
     end
     
     def unread_requests
-      self.jobs.select { |r| r.is_unread?(self) }
+      self.requests.select { |r| r.is_unread?(self) }
+    end
+    
+    def requests
+      self.jobs.to_a.concat(Job.all.select { |j| j.participants.include?(self) })
+    end
+    
+    def delete_job_participation
+      Job.all.each do |j|
+        Database.remove_from_set j.participants, self
+      end
     end
   end
 end

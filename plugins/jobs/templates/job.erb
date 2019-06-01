@@ -1,12 +1,12 @@
 <%= header %>
 %xh<%= center( title, 78 ) %>%xn
 
-%xh<%= left( t('jobs.category_title'), 15 ) %>%xn <%= job.category %>    
+%xh<%= left( t('jobs.category_title'), 15 ) %>%xn <%= category_color %><%= job.category %>%xn
 %xh<%= left( t('jobs.submitted_by_title'), 15 ) %>%xn <%= left( submitted_by, 20 ) -%>
 %xh<%= left( t('jobs.submitted_on_title'), 15 ) %>%xn <%= submitted_on %> 
-%xh<%= left( t('jobs.status_title'), 15 ) %>%xn <%= left( job.status, 20) -%>
+%xh<%= left( t('jobs.other_participants_title'), 15 ) %>%xn <%= participants %>
+%xh<%= left( t('jobs.status_title'), 15 ) %>%xn <%= status_color %><%= left( job.status, 20) %>%xn <% -%>
 %xh<%= left( t('jobs.handled_by_title'), 15 ) %>%xn <%= handled_by %>
-
 %xh<%= t('jobs.description') %>%xn
 <%= job.description %>
 <% replies.each_with_index do |r, index| -%> 
