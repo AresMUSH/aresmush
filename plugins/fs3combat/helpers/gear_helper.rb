@@ -77,9 +77,11 @@ module AresMUSH
 
         if (stat == "protection")
           areas = value.keys | special_value.keys
+          armor = {}
           areas.each do |a|
-            value[a] = (value[a] || 0) + (special_value[a] || 0)
+            armor[a] = (value[a] || 0) + (special_value[a] || 0)
           end
+          return armor
         else
           value = value + special_value
         end
