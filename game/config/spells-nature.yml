@@ -214,7 +214,7 @@ spells:
     duration: 3 hours
     effect: Communication
     level: 4
-    name: Calm Animal
+    name: Animal Friendship
     range: Short
     roll: true
     school: Nature
