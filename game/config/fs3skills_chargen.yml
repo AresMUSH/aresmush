@@ -5,7 +5,7 @@ fs3skills:
   free_backgrounds: 6
   free_languages: 3
   max_ap: 45
-  max_magic_rating: 1
+  max_magic_rating: 2
   max_attr_rating: 4
   max_attrs_at_or_above:
     '3': 4
@@ -20,72 +20,72 @@ fs3skills:
   min_backgrounds: 3
   starting_skills:
     Everyone:
-      skills: 
+      skills:
     Major School:
       Air:
         skills:
-          Magic: 1
+          Magic: 2
           Air: 2
       Corpus:
         skills:
-          Magic: 1
+          Magic: 2
           Corpus: 2
       Earth:
         skills:
-          Magic: 1
+          Magic: 2
           Earth: 2
       Fire:
         skills:
-          Magic: 1
+          Magic: 2
           Fire: 2
       Nature:
         skills:
-          Magic: 1
+          Magic: 2
           Nature: 2
       Spirit:
         skills:
-          Magic: 1
+          Magic: 2
           Spirit: 2
       Water:
         skills:
-          Magic: 1
+          Magic: 2
           Water: 2
       Will:
         skills:
-          Magic: 1
+          Magic: 2
           Will: 2
     Minor School:
       Air:
         skills:
-          Magic: 1
+          Magic: 2
           Air: 1
       Corpus:
         skills:
-          Magic: 1
+          Magic: 2
           Corpus: 1
       Earth:
         skills:
-          Magic: 1
+          Magic: 2
           Earth: 1
       Fire:
         skills:
-          Magic: 1
+          Magic: 2
           Fire: 1
       Nature:
         skills:
-          Magic: 1
+          Magic: 2
           Nature: 1
       Spirit:
         skills:
-          Magic: 1
+          Magic: 2
           Spirit: 1
       Water:
         skills:
-          Magic: 1
+          Magic: 2
           Water: 1
       Will:
         skills:
-          Magic: 1
+          Magic: 2
           Will: 1
   unusual_skills:
   - Archery
