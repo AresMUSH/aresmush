@@ -19,3 +19,5 @@ Supported commands include:
     git pull
     git status
     git diff
+
+`git/load` - Shortcut for a `git pull` followed by a `load all`.

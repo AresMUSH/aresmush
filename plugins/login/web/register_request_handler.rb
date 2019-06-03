@@ -32,6 +32,7 @@ module AresMUSH
         char.name = name
         char.change_password(pw)
         char.room = Game.master.welcome_room
+        char.last_on = Time.now
         char.set_login_token
       
         if (Login.terms_of_service)

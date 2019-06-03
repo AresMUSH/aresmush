@@ -26,6 +26,7 @@ Areas are automatically created when you assign an area to a room using `area/se
 `area/create <name>[=<description>]` - Creates a new area.
 `area/update <name>=<description>` - Updates an existing area.  Leave description blank to clear it.
 `area/delete <name>` - Deletes an area.
+`area/rename <name>=<new name>` - Renames an area.  You can use this to change capitalization on the name as well as changing the name itself.
 
 If your client supports the [Edit Feature](/help/edit), you can use the edit command to grab an area description into the input buffer.
 
