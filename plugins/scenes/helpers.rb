@@ -55,6 +55,13 @@ module AresMUSH
       scene.participants.include?(actor)
     end
 
+    def self.can_delete_scene?(actor, scene)
+      return false if !actor
+      return true if (scene.owner == actor) && scene.participants.count == 0
+      return true if Scenes.can_manage_scene?(actor, scene)
+      return false
+    end
+
     def self.restart_scene(scene)
       Scenes.create_scene_temproom(scene)
       scene.update(completed: false)
@@ -550,6 +557,7 @@ module AresMUSH
             name: p.name,
             id: p.id,
             icon: Website.icon_for_char(p),
+            status: Website.activity_status(p),
             is_ooc: p.is_admin? || p.is_playerbit?,
             online: Login.is_online?(p)  }}
 
@@ -566,6 +574,7 @@ module AresMUSH
         scene_type: scene.scene_type ? scene.scene_type.titlecase : 'unknown',
         can_join: Scenes.can_join_scene?(viewer, scene),
         can_edit: viewer && Scenes.can_edit_scene?(viewer, scene),
+        can_delete: Scenes.can_delete_scene?(viewer, scene),
         is_watching: viewer && scene.watchers.include?(viewer),
         is_unread: viewer && scene.is_unread?(viewer),
         pose_order: Scenes.build_pose_order_web_data(scene),

@@ -40,6 +40,13 @@ Jobs can be created by players using the `request` command, by coded systems (e.
         Default categories are APP (Applications), BUILD (Building), CODE, MISC, RP and REQ (Request).
 `job/query <player>=<title>/<description>` - Submit a request on behalf of someone.
 
+## Multi-Character Jobs
+
+You can add multiple participants to a single job.  All participants will be able to see and comment upon the job.
+
+`job/addparticipant <#>=<name>`
+`job/removeparticipant <#>=<name>`
+
 ## Changing Job Status
 
 `job/assign <#>=<player>`

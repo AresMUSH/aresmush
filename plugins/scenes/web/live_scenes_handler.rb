@@ -25,6 +25,7 @@ module AresMUSH
                          name: p.name,
                          id: p.id,
                          icon: Website.icon_for_char(p),
+                         status: Website.activity_status(p),
                          online: Login.is_online?(p),
                          last_posed: s.last_posed == p }},
                   scene_type: s.scene_type ? s.scene_type.titlecase : 'Unknown',
@@ -47,7 +48,7 @@ module AresMUSH
         {
           active: active,
           unshared: unshared,
-          unshared_warning_days: Global.read_config('scenes', 'unshared_scene_deletion_days')
+          unshared_deletion_days: Global.read_config('scenes', 'unshared_scene_deletion_days')
         }
 
       end

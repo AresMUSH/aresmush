@@ -15,7 +15,7 @@ en:
         status_title: "Status:"
         submitted_by_title: "Submitted By:"
         submitted_on_title: "Submitted On:"
-        handled_by_title: "Handled By"
+        handled_by_title: "Handled By:"
         description: "Description:"
         replies: "Replies:"
         too_many_jobs_open: "Unapproved characters are limited in how many requests they can have open at once.  Please try again once some of your jobs have been handled."
@@ -68,3 +68,10 @@ en:
 
         job_query: "%{name} has sent a request to %{target}:%R%{desc}"
         cannot_submit_from_someone_else: "You don't have permission to submit a request on behalf of someone else."
+
+        participant_added: "Participant added."
+        participant_removed: "Participant removed."
+        participant_already_exists: "%{name} is already participating in that job."
+        participant_doesnt_exist: "%{name} is not participating in that job."
+        participants_updated: "%{name} has updated the participants on job %{num}."
+        other_participants_title: "Participants:"

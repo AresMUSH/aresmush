@@ -17,6 +17,8 @@ module AresMUSH
       case cmd.root
       when "job"
         case cmd.switch
+        when "addparticipant", "removeparticipant"
+          return JobChangeParticipantCmd
         when "all"
           return ListJobsCmd
         when "backup"
@@ -67,6 +69,8 @@ module AresMUSH
 
       when "request"
         case cmd.switch
+        when "addparticipant", "removeparticipant"
+          return JobChangeParticipantCmd
         when "all"
           return ListRequestsCmd
         when "respond"
@@ -101,6 +105,8 @@ module AresMUSH
         return JobsRequestHandler
       when "job"
         return JobRequestHandler
+      when "jobChangeParticipants"
+        return JobChangeParticipantsRequestHandler
       when "jobCreate"
         return JobCreateRequestHandler
       when "jobReply"

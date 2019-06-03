@@ -13,6 +13,7 @@ module AresMUSH
     reference :approval_char, "AresMUSH::Character"
 
     collection :job_replies, "AresMUSH::JobReply"
+    set :participants, "AresMUSH::Character"
 
     index :category
 
