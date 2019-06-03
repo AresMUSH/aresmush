@@ -130,7 +130,9 @@ blockquote {
   clear: both;
 }
 
-
+.collapse.in {
+    background: #1A1B1C;
+  }
 
 .school-text-wrapper {
   position: relative;
@@ -777,27 +779,27 @@ div.rating-alpha {
     margin: 15px 5px 0px 5px;
 }
 
-.chat-text p {
-    margin: 0px 5px;
-    border-bottom: 1px solid #414141;
-    padding-bottom: 10px;
-    padding: 0px 0px 15px 0px;
-}
-
-.chat-button-active {
-    color: #d1d2d3;
-    background-color: #333;
-}
-
-.chat-button {
-    background: none;
-    color: inherit;
-    overflow: hidden;
-    border: 0px;
-    text-align: initial;
-    font-size: 95%;
-    width: 100%;
-}
+// .chat-text p {
+//     margin: 0px 5px;
+//     border-bottom: 1px solid #414141;
+//     padding-bottom: 10px;
+//     padding: 0px 0px 15px 0px;
+// }
+//
+// .chat-button-active {
+//     color: #d1d2d3;
+//     background-color: #333;
+// }
+//
+// .chat-button {
+//     background: none;
+//     color: inherit;
+//     overflow: hidden;
+//     border: 0px;
+//     text-align: initial;
+//     font-size: 95%;
+//     width: 100%;
+// }
 
 #ember823 {
     height: fit-content;
