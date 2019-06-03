@@ -683,9 +683,6 @@ h2 {
   font-size: 90%;
 }
 
-#sceneMenuCollapse {
-  max-width: 200px;
-}
 
 #live-scene-log {
     max-height: 575px;
@@ -869,6 +866,10 @@ div.rating-alpha {
   .dropdown-toggle{
     color: #778dc0;
   }
+
+  .dropdown-menu > li > a {
+    color: #d1d2d3;
+  }
     .body-wrap {
       padding: 5px 0px 0px 5px;
     }
@@ -879,6 +880,10 @@ div.rating-alpha {
 
     .scene-pose p {
       margin: 15px 5px;
+  }
+
+  .scenes-tip {
+    display: none;
   }
 
 }
