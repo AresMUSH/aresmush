@@ -21,10 +21,7 @@ module AresMUSH
         spells = []
         spells_learned = char.spells_learned.select { |l| l.learning_complete }
         spells_learned.each do |s|
-          roll = Global.read_config("spells", s.name, "roll")
-          if roll
-            spells << s.name
-          end
+          spells << s.name
         end
 
         return spells
