@@ -30,6 +30,8 @@ module AresMUSH
           return RoomAreaCmd
         when "parent"
           return AreaParentCmd
+        when "rename"
+          return AreaRenameCmd
         end
       when "build"
         return BuildCmd

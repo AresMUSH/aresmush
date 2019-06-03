@@ -1004,6 +1004,8 @@ CHAT SCREEN
 }
 .chat-button {
   width: 100%;
+  white-space:normal !important;
+  word-wrap: break-word; 
 }
 
 .timestamp-tip {
