@@ -99,6 +99,7 @@ module AresMUSH
       end
 
       char.update(cg_background: Website.format_input_for_mush(chargen_data[:background]))
+      char.update(idle_lastwill: Website.format_input_for_mush(chargen_data[:lastwill]))
 
       char.update(rp_hooks: Website.format_input_for_mush(chargen_data[:rp_hooks]))
       char.update(description: Website.format_input_for_mush(chargen_data[:desc]))
@@ -176,7 +177,7 @@ module AresMUSH
 
        return nil
      end
-     
+
      def self.build_app_review_info(char)
        abilities_app = FS3Skills.is_enabled? ? MushFormatter.format(FS3Skills.app_review(char)) : nil
        demographics_app = MushFormatter.format Demographics.app_review(char)
@@ -188,7 +189,7 @@ module AresMUSH
        custom_review = Chargen.custom_app_review(char)
        custom_app = custom_review ? MushFormatter.format(custom_review) : nil
 
-       { 
+       {
          abilities: abilities_app,
          demographics: demographics_app,
          background: bg_app,

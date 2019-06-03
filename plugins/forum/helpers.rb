@@ -46,7 +46,13 @@ module AresMUSH
       end
     end    
       
-
+    def self.notify(category, type, message)
+      Global.notifier.notify_ooc(type, message) do |char|
+        !Forum.is_forum_muted?(char) &&
+        Forum.can_read_category?(char, category) &&
+        !Forum.is_category_hidden?(char, category)
+      end
+    end
     
     # Client may be nil for automated bbposts.  Otherwise it will be used
     # to emit error messages.
@@ -73,13 +79,8 @@ module AresMUSH
           :category => category.name, 
           :reference => new_post.reference_str,
           :author => author_name)
-                
-        Global.notifier.notify_ooc(:new_forum_post, message) do |char|
-          !Forum.is_forum_muted?(char) &&
-          Forum.can_read_category?(char, category) &&
-          !Forum.is_category_hidden?(char, category)
-        end
-
+        
+        Forum.notify(category, :new_forum_post, message)
         Forum.handle_forum_achievement(author, :post)
         
         new_post
@@ -107,12 +108,7 @@ module AresMUSH
         :author => author.name)
       
       Forum.handle_forum_achievement(author, :reply)
-      
-      Global.notifier.notify_ooc(:new_forum_post, message) do |char|
-        !Forum.is_forum_muted?(char) &&
-        Forum.can_read_category?(char, category) &&
-        !Forum.is_category_hidden?(char, category)
-      end
+      Forum.notify(category, :new_forum_post, message)
     end
     
     # Important: Client may actually be nil here for a system-initiated bbpost.
@@ -233,10 +229,7 @@ module AresMUSH
         :reference => post.reference_str,
         :author => enactor.name)
       
-      Global.notifier.notify_ooc(:forum_edited, notification) do |char|
-        Forum.can_read_category?(char, category)
-      end
-      
+      Forum.notify(category, :forum_edited, notification)
       Forum.mark_read_for_player(enactor, post)
     end
     
@@ -250,10 +243,7 @@ module AresMUSH
         :reference => post.reference_str,
         :author => enactor.name)
       
-      Global.notifier.notify_ooc(:forum_edited, notification) do |char|
-        Forum.can_read_category?(char, category)
-      end
-      
+      Forum.notify(category, :forum_edited, notification)
       Forum.mark_read_for_player(enactor, post)
     end
     

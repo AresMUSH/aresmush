@@ -49,6 +49,11 @@ module AresMUSH
             admin_only: r.admin_only,
             id: r.id
           }},
+          participants: job.participants.map { |p| {
+            name: p.name,
+            icon: Website.icon_for_char(p),
+            id: p.id
+          }},
           job_admins: job_admins.map { |c|  {
             id: c.id,
             name: c.name

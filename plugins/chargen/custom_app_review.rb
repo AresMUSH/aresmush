@@ -1,17 +1,24 @@
 module AresMUSH
   module Chargen
     def self.custom_app_review(char)
-            
+
+      magic = FS3Skills.ability_rating(char, "Magic")
+      if magic > 2
+        msg = "%xrYour Magic attribute cannot be higher than 2.%xn"
+      end
+
+      return Chargen.format_review_status "Checking Magic.", msg
+
       # If you don't want to have any custom app review steps, return nil
-      return nil
-            
-      # Otherwise, return a message to display.  Here's an example of how to 
-      # give an alert if the character has chosen an invalid position for their 
+      # return nil
+
+      # Otherwise, return a message to display.  Here's an example of how to
+      # give an alert if the character has chosen an invalid position for their
       # faction.
       #
       #  faction = char.group("Faction")
       #  position = char.group("Position")
-      #  
+      #
       #  if (position == "Knight" && faction != "Noble")
       #    msg = "%xrOnly nobles can be knights.%xn"
       #  else
@@ -20,7 +27,7 @@ module AresMUSH
       #
       #  return Chargen.format_review_status "Checking groups.", msg
       #
-      # You can also use other built-in chargen status messages, like t('chargen.not_set').  
+      # You can also use other built-in chargen status messages, like t('chargen.not_set').
       # See https://www.aresmush.com/tutorials/config/chargen.html for details.
     end
   end

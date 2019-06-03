@@ -65,21 +65,26 @@ module AresMUSH
       begin
         game = Game.master
       rescue Exception => e
-        raise "Error connecting to database. Check your database configuration."
+        Global.logger.fatal "Error connecting to database. Check your database configuration: #{e.inspect}"
+        exit 1
       end
       
-      
       @server.start
+      
       sleep
     end
     
     def handle_exit(exception)
       if (exception.kind_of?(SystemExit))
-        Global.logger.info "Normal shutdown."
+        if (exception.status == 0)
+          Global.logger.info "Normal shutdown."
+        else
+          Global.logger.warn "Abnormal shutdown.  See if there are any errors above."
+        end
       elsif (!exception)
         Global.logger.info "Shutting down."
       else
-        Global.logger.fatal "Abnormal shutdown.  \nLast exception: (#{exception.inspect})\nBacktrace: \n#{exception.backtrace[0,10]}"
+        Global.logger.fatal "Game crash.  \nLast exception: (#{exception.inspect})\nBacktrace: \n#{exception.backtrace[0,10]}"
       end
     end
     

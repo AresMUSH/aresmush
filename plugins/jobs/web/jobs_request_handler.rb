@@ -16,7 +16,7 @@ module AresMUSH
         end
 
         if (enactor.jobs_filter == "ALL")
-          jobs.concat enactor.jobs.to_a
+          jobs.concat enactor.requests.to_a
         else
           jobs.concat Jobs.open_requests(enactor)
         end

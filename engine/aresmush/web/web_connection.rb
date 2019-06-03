@@ -87,6 +87,8 @@ module AresMUSH
       begin
         json_input = JSON.parse(data)
         
+        @client.last_activity = Time.now
+        
         if (json_input["type"] == "input")
           @client.handle_input(json_input["message"] + "\r\n")        
         elsif (json_input["type"] == "identify")
