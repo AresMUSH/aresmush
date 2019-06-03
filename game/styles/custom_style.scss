@@ -25,10 +25,10 @@ textarea {
      background-color: white;
 }
 
-::-webkit-scrollbar {
-    width: 9px;
-    background-color: white;
-}
+// ::-webkit-scrollbar {
+//     width: 9px;
+//     background-color: white;
+// }
 
 input[type="text"] {
 	background:white;
@@ -130,10 +130,6 @@ blockquote {
   clear: both;
 }
 
-.collapse.in {
-    background: #1A1B1C;
-  }
-
 .school-text-wrapper {
   position: relative;
 }
@@ -145,11 +141,11 @@ blockquote {
 
 @media screen and (min-width: 48em) {
 
-  .collapse.in  {
-      width: fit-content;
-      min-width: 600px;
-      max-width: 100%;
-  }
+  // .collapse.in  {
+  //     width: fit-content;
+  //     min-width: 600px;
+  //     max-width: 100%;
+  // }
 
   .school-text-wrapper:before {
     content: '';
@@ -167,18 +163,18 @@ blockquote {
   }
 }
 
-.toc {
-    border:1px solid white;
-    box-shadow: 5px 5px 5px #2A2E33;
-    padding: 15px;
-    width: max-content;
-    max-width: 300px;
-    float: right;
-    font-variant: all-small-caps;
-    margin: 15px;
-    background: #314254;
-    border-radius: 8px;
-}
+// .toc {
+//     border:1px solid white;
+//     box-shadow: 5px 5px 5px #2A2E33;
+//     padding: 15px;
+//     width: max-content;
+//     max-width: 300px;
+//     float: right;
+//     font-variant: all-small-caps;
+//     margin: 15px;
+//     background: #314254;
+//     border-radius: 8px;
+// }
 
 
 .ansi-blue-bg {
@@ -314,12 +310,11 @@ code {
 
 .collapse.in {
     background: #383A4F;
-    padding: 10px;
-    border-radius: 0px 5px 5px 5px;
-    top: -10px;
+    // padding: 10px;
+    border-radius: 5px;
+    // top: -10px;
     position: relative;
     width: fit-content;
-    min-width: 700px;
 }
 
 .nav-tabs > li > a {
@@ -332,10 +327,16 @@ code {
 
 
 /* Buttons */
-.btn {
-    font-size:12px;
-    padding:10px;
-    line-height:1px;
+// .btn {
+//     font-size:12px;
+//     padding:10px;
+//     line-height:1px;
+// }
+
+.btn-default {
+  background: #38394f;
+  color: #d1d2d3;
+  border: 0px;
 }
 
 .btn-primary {
@@ -676,6 +677,12 @@ h2 {
 
 }
 
+.scenes-tip {
+  padding: 15px;
+  font-style: italic;
+  font-size: 90%;
+}
+
 #live-scene-log {
     max-height: 575px;
 }
@@ -767,51 +774,77 @@ div.rating-alpha {
    border-radius: 10px;
 }
 
-// .chat-timestamp {
-//     color: #999999;
-//     font-size: 85%;
-// }
-//
-// .timestamp-tip {
-//     color: #999999;
-//     font-style: italic;
-//     font-size: 85%;
-//     margin: 15px 5px 0px 5px;
-// }
 
-// .chat-text p {
-//     margin: 0px 5px;
-//     border-bottom: 1px solid #414141;
-//     padding-bottom: 10px;
-//     padding: 0px 0px 15px 0px;
-// }
-//
-// .chat-button-active {
-//     color: #d1d2d3;
-//     background-color: #333;
-// }
-//
-// .chat-button {
-//     background: none;
-//     color: inherit;
-//     overflow: hidden;
-//     border: 0px;
-//     text-align: initial;
-//     font-size: 95%;
-//     width: 100%;
-// }
 
-// #ember823 {
-//     height: fit-content;
-// }
-//
-// #ember731 {
-//   padding: 5px;
-// }
+.chat-timestamp {
+    color: #999999;
+    font-size: 85%;
+}
+
+.timestamp-tip {
+    color: #999999;
+    font-style: italic;
+    font-size: 85%;
+    margin: 15px 5px 0px 5px;
+}
+
+.chat-text p {
+    margin: 0px 5px;
+    border-bottom: 1px solid #414141;
+    padding-bottom: 10px;
+    padding: 0px 0px 15px 0px;
+}
+
+.chat-button-active {
+    color: #1a1a1c;
+    background-color: #cacaca;
+}
+
+.chat-button:hover {
+  background-color: red;
+
+}
+
+.chat-button:active{
+  background-color: blue;
+}
+
+.chat-button:focus{
+  color: #1a1a1c;
+  background-color: #b8b9c3;
+  outline: red;
+}
+
+.chat-button {
+    // background: #38394f;
+    // color: #d1d2d3;
+    border: 0px;
+    font-size: 95%;
+}
+
+#channelMenuCollapse {
+  background: #38394f;
+}
+
+.chat-button:hover{
+  background-color: #b8b9c3;
+  color: #1a1a1c;
+}
+
+#ember823 {
+    height: fit-content;
+}
+
+#ember731 {
+  padding: 5px;
+}
 
 /* Mobile */
 @media only screen and (max-width: 700px) {
 
+  .navbar-collapse.in {
+    float: right;
+  }
     table {
         width: 100%;
     }
@@ -823,6 +856,15 @@ div.rating-alpha {
         width: 100%;
     }
 
+    #channelMenuCollapse {
+      background: #ffffff;
+      color: #1a1a1c;
+      top: -4px;
+    }
+
+  .dropdown-toggle{
+    color: #778dc0;
+  }
     .body-wrap {
       padding: 5px 0px 0px 5px;
     }
