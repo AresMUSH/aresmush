@@ -61,6 +61,20 @@ module AresMUSH
       end
     end
 
+    def self.higher_level_spell?(char, spell_name)
+      spell_name = spell_name.titlecase
+      spell_level = Custom.find_spell_level(char, spell_name)
+      school = Custom.find_spell_school(char, spell_name)
+      level_above = spell_level.to_i + 1
+      spells_learned =  char.spells_learned.to_a
+
+      if spells_learned.any? {|s| s.level == level_above && s.school == school && s.learning_complete == true}
+        return true
+      else
+        return false
+      end
+    end
+
     def self.can_discard?(char, spell)
       level = spell.level
       school = spell.school

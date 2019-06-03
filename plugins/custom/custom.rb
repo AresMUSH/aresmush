@@ -154,6 +154,8 @@ module AresMUSH
           end
         when "learn"
           return SpellLearnCmd
+        when "luck"
+          return SpellLuckCmd
         when "discard"
           return SpellDiscardCmd
         when "add"
