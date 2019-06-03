@@ -89,14 +89,12 @@ module AresMUSH
           #Roll NonCombat
           success = Custom.roll_noncombat_spell_success(self.caster, self.spell, self.mod)
           if success == "%xgSUCCEEDS%xn"
-            if roll
-              Custom.cast_noncombat_spell(self.caster, nil, self.spell, self.mod)
-              Custom.handle_spell_cast_achievement(self.caster)
-            elsif heal_points
+            if heal_points
               Custom.cast_non_combat_heal(self.caster, self.caster.name, self.spell, self.mod)
               Custom.handle_spell_cast_achievement(self.caster)
             else
-              client.emit_failure t('custom.not_in_combat')
+              Custom.cast_noncombat_spell(self.caster, nil, self.spell, self.mod)
+              Custom.handle_spell_cast_achievement(self.caster)
             end
           else
             message = t('custom.casts_noncombat_spell', :name => caster.name, :spell => spell, :mod => mod, :succeeds => success)

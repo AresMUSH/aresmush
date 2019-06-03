@@ -138,14 +138,12 @@ module AresMUSH
           effect = Global.read_config("spells", self.spell, "effect")
           success = Custom.roll_noncombat_spell_success(self.caster, self.spell, self.mod)
           if success == "%xgSUCCEEDS%xn"
-            if roll
-              Custom.cast_noncombat_spell(self.caster, self.target_name, self.spell, self.mod)
-            elsif heal_points
+            if heal_points
               Custom.cast_non_combat_heal(self.caster, self.target_name, self.spell, self.mod)
             elsif self.spell == "Mind Shield"
               Custom.cast_noncombat_mind_shield(self.caster, self.target)
             else
-              client.emit_failure t('custom.not_in_combat')
+              Custom.cast_noncombat_spell(self.caster, self.target_name, self.spell, self.mod)
             end
             Custom.handle_spell_cast_achievement(self.caster)
           else
