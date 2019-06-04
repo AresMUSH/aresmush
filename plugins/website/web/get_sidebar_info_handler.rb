@@ -9,9 +9,9 @@ module AresMUSH
 
         if (enactor)
           if (Jobs.can_access_jobs?(enactor))
-            #job_activity = enactor.unread_jobs.count
+            job_activity = enactor.unread_jobs.count
           else
-            #job_activity = enactor.unread_requests.count
+            job_activity = enactor.unread_requests.count
           end
         else
           job_activity = nil
