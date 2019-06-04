@@ -43,7 +43,7 @@ module AresMUSH
         levelmod = SuperConsole.get_attr_learn(c,a)
         base * levelmod
       else
-       if a.titlecase == ("Item Control" || "Weapon Control" || "Armor Control")
+       if a.titlecase == "Item Control" || a.titlecase == "Weapon Control" || a.titlecase == "Armor Control"
          levelmod = SuperConsole.get_attr_learn(c,a)
          base * levelmod
        else
