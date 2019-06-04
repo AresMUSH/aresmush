@@ -14,6 +14,8 @@ module AresMUSH
      char_level + max_level
    end
    def self.max_level_cleared(l)
+     val = 0
+     l = l.to_i
      if l.between?(1,10)
        val = l
      elsif l.between?(11,20)
