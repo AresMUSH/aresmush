@@ -182,6 +182,9 @@ module AresMUSH
           hp
         end
       end
+      def power_rating
+        0
+      end
     end
   end
 end
