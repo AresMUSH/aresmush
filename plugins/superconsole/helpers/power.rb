@@ -7,7 +7,7 @@ module AresMUSH
      0
    end
    def self.power_attr(char)
-     pnts = char.console_attributes.inject(0) { |count, a| (count + a.rating) * 2 }
+     pnts = char.console_attributes.inject(0) { |count, a| count + (a.rating * 2) }
      pnts
    end
    def self.power_level(char)
