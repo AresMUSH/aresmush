@@ -55,7 +55,7 @@ module AresMUSH
         end
       end
       def level_cleared
-        "0"
+        @char.max_cleared
       end
 # --------------------------------------------
 # --------------------------------------------
