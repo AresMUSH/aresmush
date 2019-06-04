@@ -12,6 +12,7 @@ module AresMUSH
     attribute :console_pool_stamina, :type => DataType::Integer, :default => 30
     attribute :console_cgen, :type => DataType::Integer, :default => 0
     attribute :console_pool_limit, :type => DataType::Integer, :default => 0
+    attribute :console_max_level, :type => DataType::Integer, :default => 1
 
     collection :console_patience, "AresMUSH::ConsolePatience"
     collection :console_attributes, "AresMUSH::ConsoleAttribute"
