@@ -27,7 +27,7 @@ module AresMUSH
      elsif l.between?(71,90)
        val = l * 5
      elsif l.between?(91,100)
-       val = l * 10
+       val = l * 6
      end
      max = val * 50
      max
