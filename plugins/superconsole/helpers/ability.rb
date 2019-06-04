@@ -43,20 +43,25 @@ module AresMUSH
         levelmod = SuperConsole.get_attr_learn(c,a)
         base * levelmod
       else
-       arch = c.group("archetype") || "Unknown"
-       listing = "#{arch.downcase}_favored"
-       favor = Global.read_config("superconsole", "#{listing}").find { |s| s['name'].upcase == a.upcase}
-       status = (!favor) ?  false : favor['status']
-       basemod = Global.read_config("superconsole","favored_modifier") || 0.25
-       learnmod = if c.is_quick_learner then 0.5 else 0.0 end
-       if (favor) && status == true
-        mod = base - (base * (basemod + learnmod))
+       if a.titlecase == ("Item Control" || "Weapon Control" || "Armor Control")
+         levelmod = SuperConsole.get_attr_learn(c,a)
+         base * levelmod
        else
-        mod = base - (base * learnmod)
-       end
+        arch = c.group("archetype") || "Unknown"
+        listing = "#{arch.downcase}_favored"
+        favor = Global.read_config("superconsole", "#{listing}").find { |s| s['name'].upcase == a.upcase}
+        status = (!favor) ?  false : favor['status']
+        basemod = Global.read_config("superconsole","favored_modifier") || 0.25
+        learnmod = if c.is_quick_learner then 0.5 else 0.0 end
+        if (favor) && status == true
+         mod = base - (base * (basemod + learnmod))
+        else
+         mod = base - (base * learnmod)
+        end
        mod.floor
      end
-    end
+   end
+ end
 
     def self.attr_names
       attrs.map { |a| a['name'].titlecase }
