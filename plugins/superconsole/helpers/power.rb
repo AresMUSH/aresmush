@@ -8,7 +8,7 @@ module AresMUSH
    end
    def self.power_level(char)
      lvl = char.level
-     lvl * 1000
+     lvl * 100
    end
    def self.power_gear(char)
      0

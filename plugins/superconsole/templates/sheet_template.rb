@@ -188,7 +188,12 @@ module AresMUSH
         gear = SuperConsole.power_gear(@char)
         lvl = SuperConsole.power_level(@char)
         ttl = attr + abil + gear + lvl
-        ttl || 0
+        len = "#{ttl}".length
+        if len > 3
+          Custom.commify(ttl)
+        else
+          ttl
+        end
       end
     end
   end
