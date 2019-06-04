@@ -612,7 +612,6 @@ h2 {
 
 .log-box {
     color: $dark-words-color;
-    width: fit-content;
 }
 
 // Scenes
@@ -677,6 +676,9 @@ h2 {
     border-radius: 10px;
     padding-left: 40px;
     background: #35353a;
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.49);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.49);
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.49);
 }
 
 .scene-ooc-pose {
