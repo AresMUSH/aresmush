@@ -8,7 +8,7 @@ module AresMUSH
    end
    def self.power_level(char)
      lvl = char.level
-     mlvl = char.console_max_level
+     mlvl = char.console_max_level.to_i
      char_level = lvl * 100
      max_level = SuperConsole.max_level_cleared(mlvl)
      char_level + max_level
