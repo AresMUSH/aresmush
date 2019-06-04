@@ -12,13 +12,13 @@ module AresMUSH
         c.emit msg
       end
     end
-    
+
     def emit_all_ooc(msg)
       @clients.each do |c|
         c.emit_ooc msg
       end
     end
-    
+
     def emit(msg, &trigger_block)
       @clients.each do |c|
         if ( yield c.char )
@@ -26,7 +26,7 @@ module AresMUSH
         end
       end
     end
-    
+
     def emit_ooc(msg)
       @clients.each do |c|
         if ( yield c.char )
@@ -34,17 +34,17 @@ module AresMUSH
         end
       end
     end
-    
+
     def notify_web_clients(type, msg, &trigger_block)
       Global.dispatcher.spawn("Notifying web clients", nil) do
-        @clients.each do |c|    
+        @clients.each do |c|
           if ( yield Character[c.web_char_id] )
             c.web_notify type, msg
           end
         end
       end
     end
-    
+
     def web_clients
       @clients.select { |c| c.web_char_id }
     end
@@ -52,7 +52,7 @@ module AresMUSH
     def logged_in_clients
       @clients.select { |c| c.logged_in? }
     end
-    
+
     def logged_in
       players = {}
       @clients.each do |c|
@@ -62,15 +62,15 @@ module AresMUSH
       end
       players
     end
-    
+
     def find_client(char)
       @clients.select { |c| c.char_id == char.id }.first
     end
-    
+
     def find_web_client(char)
       @clients.select { |c| c.web_char_id == char.id }.sort_by { |c| c.idle_secs }.first
     end
-    
+
     # @engineinternal true
     def connection_established(connection)
       begin
@@ -82,15 +82,15 @@ module AresMUSH
         Global.logger.debug "Error establishing connection Error: #{e.inspect}. \nBacktrace: #{e.backtrace[0,10]}"
       end
     end
-        
+
     # @engineinternal true
     def connection_closed(client)
       @clients.delete client
       Global.dispatcher.queue_event ConnectionClosedEvent.new(client)
       if (client.logged_in?)
         Global.dispatcher.queue_event CharDisconnectedEvent.new(client, client.char.id)
-      end        
+      end
     end
-    
+
   end
 end
