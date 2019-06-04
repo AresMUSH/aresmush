@@ -25,10 +25,10 @@ textarea {
      background-color: white;
 }
 
-// ::-webkit-scrollbar {
-//     width: 9px;
-//     background-color: white;
-// }
+::-webkit-scrollbar {
+    width: 9px;
+    background-color: white;
+}
 
 input[type="text"] {
 	background:white;
@@ -163,18 +163,18 @@ blockquote {
   }
 }
 
-// .toc {
-//     border:1px solid white;
-//     box-shadow: 5px 5px 5px #2A2E33;
-//     padding: 15px;
-//     width: max-content;
-//     max-width: 300px;
-//     float: right;
-//     font-variant: all-small-caps;
-//     margin: 15px;
-//     background: #314254;
-//     border-radius: 8px;
-// }
+.toc {
+    border:1px solid white;
+    box-shadow: 5px 5px 5px #2A2E33;
+    padding: 15px;
+    width: max-content;
+    max-width: 300px;
+    float: right;
+    font-variant: all-small-caps;
+    margin: 15px;
+    background: #314254;
+    border-radius: 8px;
+}
 
 
 .ansi-blue-bg {
@@ -198,6 +198,11 @@ blockquote {
 #ember624 {
   width: 150px;
 }
+}
+
+#searchFields {
+  width: 95%;
+  padding: 15px;
 }
 
 .panel-body {
@@ -297,6 +302,11 @@ blockquote {
 
 .hint {
 	padding-top: 5px;
+  color: #b3b0b0;
+}
+
+.alert a {
+  color: #3a6d8e;
 }
 
 code {
@@ -327,21 +337,26 @@ code {
 
 
 /* Buttons */
-// .btn {
-//     font-size:12px;
-//     padding:10px;
-//     line-height:1px;
-// }
+.btn {
+    font-size:12px;
+    padding: 4px 10px;
+    // line-height:1px;
+}
 
 .btn-default {
-  background: #38394f;
-  color: #d1d2d3;
+  background: #ecedef;
+  color: #1a1a1c;
   border: 0px;
 }
 
 .btn-primary {
     background-color: #555;
     border-color: #383A4F;
+}
+
+.btn-warning {
+  background-color: #d09747;
+  border-color: #d09747;
 }
 
 .btn-collapse {
@@ -435,6 +450,10 @@ h2 {
     border-color: #1A1B1C;
 }
 
+.label-danger {
+    background-color: #A9353E;
+}
+
 /* Jobs */
 .job-status-HOLD {
     background-color: #A31B1B;
@@ -487,6 +506,7 @@ h2 {
 
 .job-category-PLAYER{
     background-color: #fef64a;
+    color: black;
 }
 
 .job-category-LUCK{
@@ -592,6 +612,7 @@ h2 {
 
 .log-box {
     color: $dark-words-color;
+    width: fit-content;
 }
 
 // Scenes
@@ -639,6 +660,10 @@ h2 {
     padding: 0px;
 }
 
+.your-pose-order {
+    color: #95d895;
+}
+
 .scene-pose {
     padding: 0px;
     margin: 10px 10px 20px 10px
@@ -675,6 +700,18 @@ h2 {
 .scene-ooc-pose p {
   margin: 5px;
 
+}
+
+.scene-communication {
+  background: #6f5bde;
+}
+
+.scene-ooc {
+  background: #ea7d51;
+}
+
+.scene-meme {
+  background: #a50472;
 }
 
 .scenes-tip {
@@ -797,8 +834,8 @@ div.rating-alpha {
 }
 
 .chat-button-active {
-    color: #1a1a1c;
-    background-color: #cacaca;
+    color: #1a1a1c !important;
+    background-color: #ecedef !important;
 }
 
 .chat-button:hover {
@@ -813,12 +850,11 @@ div.rating-alpha {
 .chat-button:focus{
   color: #1a1a1c;
   background-color: #b8b9c3;
-  outline: red;
 }
 
 .chat-button {
-    // background: #38394f;
-    // color: #d1d2d3;
+    background: #38394f;
+    color: #d1d2d3;
     border: 0px;
     font-size: 95%;
 }
