@@ -1,5 +1,8 @@
 module AresMUSH
   module SuperConsole
+   def self.power_misc(char)
+     0
+   end
    def self.power_abil(char)
      0
    end
