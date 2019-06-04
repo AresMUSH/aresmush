@@ -51,6 +51,10 @@ module AresMUSH
      self.console_level
    end
 
+   def max_cleared
+     self.console_max_level
+   end
+
    def health_stat
      self.console_pool_health.to_i
    end
