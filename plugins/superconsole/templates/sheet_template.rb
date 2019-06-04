@@ -183,7 +183,12 @@ module AresMUSH
         end
       end
       def power_rating
-        0
+        attr = SuperConsole.power_attr(@char)
+        abil = SuperConsole.power_abil(@char)
+        gear = SuperConsole.power_gear(@char)
+        lvl = SuperConsole.power_level(@char)
+        ttl = attr + abil + gear + lvl
+        ttl || 0
       end
     end
   end
