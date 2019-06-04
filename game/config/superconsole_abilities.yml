@@ -1,6 +1,24 @@
 ---
 superconsole:
   abilities:
+    - name: Item Control
+      type: Core Ability
+      max_rating: 99
+      max_learn: 100
+      desc: "The ability to use higher level items."
+      trigger: Grows everytime an item is used of level or less. Cannot critical use.
+    - name: Armor Control
+      type: Core Ability
+      max_rating: 99
+      max_learn: 100
+      desc: "The ability to use higher level armors."
+      trigger: Grows everytime armor is worn of level or less in combat. Cannot critical use.
+    - name: Weapon Control
+      type: Core Ability
+      max_rating: 99
+      max_learn: 100
+      desc: "The ability to use higher level weapons."
+      trigger: Grows everytime a weapon is used of level or less. Cannot critical use.
     # ----- Weapon Mastery Abilities: 5000 learn default.
     - name: Swordsman
       type: Development Ability
