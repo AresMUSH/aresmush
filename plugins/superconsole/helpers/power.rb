@@ -27,7 +27,8 @@ module AresMUSH
      elsif l.between?(91,100)
        val = l * 10
      end
-     val * 50
+     max = val * 50
+     max
    end
    def self.power_gear(char)
      0
