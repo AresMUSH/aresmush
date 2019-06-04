@@ -22,9 +22,9 @@ module AresMUSH
        val = l * 3
      elsif l.between?(41,70)
        val = l * 4
-     elsif rating.between?(71,90)
+     elsif l.between?(71,90)
        val = l * 5
-     elsif rating.between?(91,100)
+     elsif l.between?(91,100)
        val = l * 10
      end
      val * 50
