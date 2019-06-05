@@ -1,6 +1,11 @@
 module AresMUSH
   module SuperConsole
    def self.power_misc(char)
+     oversoul = SuperConsole.power_oversoul(char)
+     ttl = oversoul
+     ttl
+   end
+   def self.power_oversoul(char)
      0
    end
    def self.power_abil(char)
