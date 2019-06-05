@@ -140,8 +140,8 @@ module AresMUSH
           if success == "%xgSUCCEEDS%xn"
             if heal_points
               Custom.cast_non_combat_heal(self.caster, self.target_name, self.spell, self.mod)
-            elsif self.spell == "Mind Shield"
-              Custom.cast_noncombat_mind_shield(self.caster, self.target)
+            elsif (self.spell == "Mind Shield" || self.spell == "Endure Fire" || self.spell == "Endure Cold")
+              Custom.cast_noncombat_shield(self.caster, self.caster, self.spell)
             else
               Custom.cast_noncombat_spell(self.caster, self.target_name, self.spell, self.mod)
             end

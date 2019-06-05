@@ -4,14 +4,13 @@ module AresMUSH
     attribute :spells_cast, :type => DataType::Integer
     attribute :achievement_spells_learned, :type => DataType::Integer
     attribute :mind_shield, :type => DataType::Integer, :default => 0
-
+    attribute :endure_fire, :type => DataType::Integer, :default => 0
+    attribute :endure_cold, :type => DataType::Integer, :default => 0
   end
 end
 
 class SpellsLearned < Ohm::Model
   include ObjectModel
-
-
   attribute :name
   index :name
   attribute :last_learned, :type => Ohm::DataTypes::DataType::Time, :default => Time.now

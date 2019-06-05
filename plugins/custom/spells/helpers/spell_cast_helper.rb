@@ -59,7 +59,7 @@ module AresMUSH
         targets.each do |target|
           Global.logger.debug "Target: #{target.name} #{target.mind_shield}"
           if (effect == "Psionic" && target.mind_shield > 0)
-            held = Custom.roll_mind_shield(target, caster) == "shield"
+            held = Custom.roll_shield(target, caster, "Mind Shield") == "shield"
             Global.logger.debug "HELD: #{held}"
             if held
               message = t('custom.mind_shield_held', :name => caster.name, :spell => spell, :target => target.name)
@@ -143,12 +143,22 @@ module AresMUSH
       end
     end
 
-    def self.cast_noncombat_mind_shield(caster, target)
-      shield_strength = caster.roll_ability("Spirit")
-      Global.logger.info "Mind Shield Strength on #{target.name} set to #{shield_strength[:successes]}."
-      target.update(mind_shield: shield_strength[:successes])
+    def self.cast_noncombat_shield(caster, target, spell)
+      school = Global.read_config("spells", spell, "school")
+      shield_strength = caster.roll_ability(school)
+      Global.logger.info "#{spell} Strength on #{target.name} set to #{shield_strength[:successes]}."
+      if spell == "Mind Shield"
+        target.update(mind_shield: shield_strength[:successes])
+        type = "psionic"
+      elsif spell == "Endure Fire"
+        target.update(endure_fire: shield_strength[:successes])
+        type = "fire"
+      elsif spell == "Endure Cold"
+        target.update(endure_cold: shield_strength[:successes])
+        type = "ice"
+      end
 
-      message = t('custom.cast_mindshield', :name => caster.name, :spell => "Mind Shield", :succeeds => "%xgSUCCEEDS%xn", :target =>  target.name)
+      message = t('custom.cast_shield', :name => caster.name, :spell => spell, :succeeds => "%xgSUCCEEDS%xn", :target =>  target.name, :type => type)
       room = caster.room
       room.emit message
       if room.scene
@@ -156,17 +166,18 @@ module AresMUSH
       end
     end
 
-    def self.roll_mind_shield(target, caster)
+    def self.roll_shield(target, caster, spell)
       shield_strength = target.mind_shield
+      school = Global.read_config("spells", spell, "school")
       if caster.combat
-        successes = caster.roll_ability("Spirit")
+        successes = caster.roll_ability(school)
       else
-        successes = caster.roll_ability("Spirit")[:successes]
+        successes = caster.roll_ability(school)[:successes]
       end
       delta = shield_strength - successes
       if caster.combat
         combat = caster.combat
-        combat.log "#{caster.name} rolling Spirit vs #{target.name}'s Mind Shield (strength #{shield_strength}): #{successes} successes."
+        combat.log "#{caster.name} rolling #{school} vs #{target.name}'s #{spell} (strength #{shield_strength}): #{successes} successes."
       end
 
       if (shield_strength <=0 && successes <= 0)
