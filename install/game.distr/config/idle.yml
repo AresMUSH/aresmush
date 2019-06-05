@@ -8,6 +8,7 @@ idle:
   monthly_reminder_cron:
     date:
     - 1
+    - 14
     hour:
     - 15
     minute:
