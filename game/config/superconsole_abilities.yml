@@ -5,11 +5,13 @@ superconsole:
       type: Core Ability
       max_rating: 99
       max_learn: 100
+      power: 2
       desc: "The ability to use higher level items."
       trigger: Grows everytime an item is used of level or less. Cannot critical use.
     - name: Armor Control
       type: Core Ability
       max_rating: 99
+      power: 2
       max_learn: 100
       desc: "The ability to use higher level armors."
       trigger: Grows everytime armor is worn of level or less in combat. Cannot critical use.
@@ -17,6 +19,7 @@ superconsole:
       type: Core Ability
       max_rating: 99
       max_learn: 100
+      power: 2
       desc: "The ability to use higher level weapons."
       trigger: Grows everytime a weapon is used of level or less. Cannot critical use.
     # ----- Weapon Mastery Abilities: 5000 learn default.
@@ -24,6 +27,7 @@ superconsole:
       type: Development Ability
       max_rating: 1
       max_learn: 5000
+      power: 350
       desc:
       trigger: Grows upon successful attacks/defenses with a sword type weapon.
       level_req: 1
@@ -39,6 +43,7 @@ superconsole:
       type: Development Ability
       max_rating: 1
       max_learn: 5000
+      power: 350
       desc:
       trigger: Grows upon successful attacks/defenses with a gun type weapon.
     - name: Hammer Time
@@ -51,6 +56,7 @@ superconsole:
     - name: Dagger Dueler
       type: Development Ability
       level_req: 1
+      power: 350
       max_rating: 1
       max_learn: 5000
       trigger: Grows upon successful attacks/defenses with dagger/knife type weapons.
@@ -59,6 +65,7 @@ superconsole:
       type: Development Ability
       level_req: 1
       max_rating: 1
+      power: 350
       max_learn: 5000
       trigger: Grows upon successful attacks/defenses with staff/rod type weapons.
       desc:
@@ -67,6 +74,7 @@ superconsole:
       level_req: 1
       max_rating: 1
       max_learn: 6000
+      power: 400
       trigger: Grows upon successful attacks/defenses with whip type weapons.
       desc:
     - name: Spearman
@@ -74,6 +82,7 @@ superconsole:
       level_req: 1
       max_rating: 1
       max_learn: 5000
+      power: 350
       trigger: Grows upon successful attacks/defenses with spear type weapons.
       desc:
     - name: Wand Waver
@@ -81,6 +90,7 @@ superconsole:
       level_req: 1
       max_rating: 1
       max_learn: 5000
+      power: 350
       trigger: Grows upon successful attacks/defenses with wand type weapons.
       desc:
     - name: Bareknuckle Brawler
@@ -88,6 +98,7 @@ superconsole:
       type: Development Ability
       max_rating: 1
       max_learn: 4000
+      power: 300
       trigger: Grows upon successful attacks/defenses while unarmed.
       desc:
     # ----- Combat Enhancement Abilities:
@@ -96,12 +107,14 @@ superconsole:
       level_req: 1
       max_rating: 5
       max_learn: 2500
+      power: 75
       trigger: Grows when you gain the initiative in combat.
       desc:
     - name: Magical Resistance
       type: Development Ability
       level_req: 1
       max_rating: 1
+      power: 500
       max_learn: 5000
       trigger: Grows when you survive magical attacks.
       desc:
@@ -109,6 +122,7 @@ superconsole:
       type: Development Ability
       level_req: 1
       max_rating: 5
+      power: 25
       max_learn: 100
       trigger: Grows when you survive poison attacks.
       desc:
@@ -116,6 +130,7 @@ superconsole:
       type: Development Ability
       level_req: 0
       max_rating: 1
+      power: 150
       max_learn: 2500
       trigger: Grows when you successfully use a first aid kit.
       desc:
@@ -124,6 +139,7 @@ superconsole:
       type: Development Ability
       level_req: 2
       max_rating: 1
+      power: 1000
       max_learn: 10000
       trigger: Grows when you successfully cast/resist magic.
       desc: (Spellcaster/Support)
@@ -131,12 +147,14 @@ superconsole:
       type: Development Ability
       level_req: 2
       max_rating: 1
+      power: 1000
       max_learn: 10000
       trigger: Grows when you strike down enough of a type of monsters.
       desc: (Striker)
     - name: Strong Defense
       type: Development Ability
       level_req: 2
+      power: 1000
       max_rating: 1
       max_learn: 10000
       trigger: Grows when you successfully defend any attack.
@@ -145,6 +163,7 @@ superconsole:
     - name: Quick Growth
       type: Skill
       level_req: 0
+      power: 1500
       max_rating: 1
       max_learn: 1
       trigger: Grows ONLY when several skills get unlocked within a short span of time.
