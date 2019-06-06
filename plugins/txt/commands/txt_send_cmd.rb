@@ -157,8 +157,12 @@ module AresMUSH
             client.emit self.txt
           end
 
-          enactor.update(txt_last: recipients)
+          Global.logger.debug "#{recipient_names}"
+          enactor.update(txt_last: list_arg(recipient_names))
           enactor.update(txt_scene: self.scene_id)
+          Global.logger.debug "Just after enactor updates."
+
+
 
 
 
