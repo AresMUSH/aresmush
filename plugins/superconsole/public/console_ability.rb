@@ -1,7 +1,7 @@
 module AresMUSH
   class ConsoleAbility < Ohm::Model
     include ObjectModel
-    
+
 
     reference :character, "AresMUSH::Character"
     attribute :name
@@ -12,5 +12,9 @@ module AresMUSH
     attribute :learned, :type => DataType::Boolean, :default => false
 
     index :name
+
+    def total
+
+    end # def total
   end
 end
