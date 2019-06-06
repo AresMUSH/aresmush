@@ -4,7 +4,7 @@ module AresMUSH
           include CommandHandler
 # Possible commands... txt name=message; txt =message; txt name[/optional scene #]=<message>
 
-          attr_accessor :names, :message, :scene_id, :scene, :txt, :online_char, :txt_recipient
+          attr_accessor :names, :message, :scene_id, :scene, :txt, :txt_recipient
 
         def parse_args
           if (!cmd.args)
@@ -75,12 +75,11 @@ module AresMUSH
           recipients = []
           self.names.each do |name|
             char = Character.named(name)
-            self.online_char = OnlineCharFinder.find(name)
 
             if !char
               client.emit_failure t('txt.no_such_character')
               return
-            elsif (!self.online_char && !self.scene)
+            elsif (!Login.is_online?(char) && !self.scene)
               client.emit_failure t('txt.target_offline_no_scene', :name => name )
               return
             else
@@ -137,7 +136,7 @@ module AresMUSH
           :message => message)
           #To recipients
           recipients.each do |char|
-            if OnlineCharFinder.find(char.name)
+            if Login.is_online?(char)
               recipient = char
 
               if recipient.page_ignored.include?(enactor)
@@ -157,17 +156,10 @@ module AresMUSH
             client.emit self.txt
           end
 
-          Global.logger.debug "#{recipient_names}"
           enactor.update(txt_last: list_arg(recipient_names))
           enactor.update(txt_scene: self.scene_id)
-          Global.logger.debug "Just after enactor updates."
-
-
-
-
 
       end
-
     end
   end
 end
