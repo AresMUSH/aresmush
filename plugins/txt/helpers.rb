@@ -37,9 +37,10 @@ module AresMUSH
 
         txt_received = "#{recipient_names}" + " #{sender.name}"
         txt_received.slice! "#{recipient.name}"
-
+        Global.logger.debug "Just before updates."
         recipient.update(txt_received: (txt_received.squish))
         recipient.update(txt_received_scene: scene_id)
+        Global.logger.debug "Just after updates."
       end
 
 
