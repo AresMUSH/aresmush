@@ -61,13 +61,28 @@ module AresMUSH
       end
 
       if (combatant.mind_shield_counter == 0 && combatant.mind_shield > 0)
-        FS3Combat.emit_to_combat combatant.combat, t('custom.mind_shield_wore_off', :name => combatant.name), nil, true
+        FS3Combat.emit_to_combat combatant.combat, t('custom.shield_wore_off', :name => combatant.name, :spell => "Mind Shield"), nil, true
         combatant.update(mind_shield: 0)
         combatant.log "#{combatant.name} no longer has a Mind Shield."
       elsif (combatant.mind_shield_counter > 0 && combatant.mind_shield > 0)
         combatant.update(mind_shield_counter: combatant.mind_shield_counter - 1)
       end
-      Global.logger.debug "#{combatant.name} COUNTER: #{combatant.mind_shield_counter} "
+
+      if (combatant.endure_fire_counter == 0 && combatant.endure_fire > 0)
+        FS3Combat.emit_to_combat combatant.combat, t('custom.shield_wore_off', :name => combatant.name, :spell => "Endure Fire"), nil, true
+        combatant.update(endure_fire: 0)
+        combatant.log "#{combatant.name} can no longer Endure Fire."
+      elsif (combatant.endure_fire_counter > 0 && combatant.endure_fire > 0)
+        combatant.update(endure_fire_counter: combatant.endure_fire_counter - 1)
+      end
+
+      if (combatant.endure_cold_counter == 0 && combatant.endure_cold > 0)
+        FS3Combat.emit_to_combat combatant.combat, t('custom.shield_wore_off', :name => combatant.name, :spell => "Endure Cold"), nil, true
+        combatant.update(endure_cold: 0)
+        combatant.log "#{combatant.name} can no longer Endure Cold."
+      elsif (combatant.endure_cold_counter > 0 && combatant.endure_cold > 0)
+        combatant.update(endure_cold_counter: combatant.endure_cold6_counter - 1)
+      end
 
       if (combatant.magic_stun_counter == 0 && combatant.magic_stun)
         FS3Combat.emit_to_combat combatant.combat, t('fs3combat.stun_wore_off', :name => combatant.name), nil, true

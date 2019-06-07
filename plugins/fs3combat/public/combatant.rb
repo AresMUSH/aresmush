@@ -18,6 +18,10 @@ module AresMUSH
     attribute :stance_counter, :type => DataType::Integer, :default => 0
     attribute :mind_shield, :type => DataType::Integer, :default => 0
     attribute :mind_shield_counter, :type => DataType::Integer, :default => 0
+    attribute :endure_fire, :type => DataType::Integer, :default => 0
+    attribute :endure_fire_counter, :type => DataType::Integer, :default => 0
+    attribute :endure_cold, :type => DataType::Integer, :default => 0
+    attribute :endure_cold_counter, :type => DataType::Integer, :default => 0
 
     attribute :action_klass
     attribute :action_args
