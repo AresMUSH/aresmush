@@ -84,13 +84,14 @@ spells:
     is_potion: true
     level: 3
     name: Endure Fire
-    notes: Needs limitations as to how hot and how cold
     range: Self
     roll: true
     school: Fire
+    rounds: 60
   Flame Dart:
     available: true
     casting_time: 1 round
+    damage_type: Fire
     desc: "Launches a single small, flaming projectile at a target, doing damage."
     effect: Damage
     fs3_attack: true
@@ -102,10 +103,10 @@ spells:
     target_num: 1
     target_optional: true
     weapon: Flame Dart
-    effect: Damage
   Hot Hands:
     available: true
     casting_time: 1 round
+    damage_type: Fire
     desc: The caster's fingertips become red hot and capable of inflicting burn damage on touch.
     effect: Damage
     fs3_attack: true
@@ -151,6 +152,7 @@ spells:
   Flame Burst:
     available: true
     casting_time: 1 round
+    damage_type: Fire
     desc: The caster hurls a ball of swirling flames at a single target.
     effect: Damage
     fs3_attack: true
@@ -187,6 +189,7 @@ spells:
     area: 10 yard radius
     available: true
     casting_time: 1 round
+    damage_type: Fire
     desc: Colorful flares explode outwards from central points. The bursts of intense heat sear through anything in their path, affecting up to 3 targets.
     effect: AOE Damage
     fs3_attack: true
@@ -227,6 +230,7 @@ spells:
   Pyre:
     available: true
     casting_time: 1 round
+    damage_type: Fire
     desc: 'Gouts of flame are summoned up from the ground, engulfing the target.'
     effect: Damage
     fs3_attack: true
@@ -281,6 +285,7 @@ spells:
     area: Up to 1 square mile
     available: true
     casting_time: 1 round
+    damage_type: Fire
     desc: Call down a massive storm of fire on a place that you can see. It consumes most things in its path, doing immense damage.
     effect: AOE Damage
     fs3_attack: true
