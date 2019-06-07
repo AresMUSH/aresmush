@@ -75,7 +75,6 @@ module AresMUSH
 
       def handle
       #Reading Config Files
-        roll = Global.read_config("spells", self.spell, "roll")
         heal_points = Global.read_config("spells", self.spell, "heal_points")
 
         if self.caster.combat
