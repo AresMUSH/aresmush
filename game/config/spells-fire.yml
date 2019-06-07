@@ -85,7 +85,6 @@ spells:
     level: 3
     name: Endure Fire
     range: Self
-    roll: true
     school: Fire
     rounds: 60
   Flame Dart:

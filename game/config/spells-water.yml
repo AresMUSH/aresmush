@@ -91,7 +91,6 @@ spells:
     level: 3
     name: Endure Cold
     range: Self
-    roll: true
     school: Water
     rounds: 60
   Ice Talons:
