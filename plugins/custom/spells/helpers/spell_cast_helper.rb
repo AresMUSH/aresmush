@@ -41,6 +41,7 @@ module AresMUSH
       success = "%xgSUCCEEDS%xn"
       target_num = Global.read_config("spells", spell, "target_num")
       effect = Global.read_config("spells", spell, "effect")
+      damage_type = Global.read_config("spells", self.spell, "damage_type")
       client = Login.find_client(caster)
       if name_string != nil
         targets = Custom.parse_spell_targets(name_string, target_num)
@@ -57,16 +58,26 @@ module AresMUSH
       else
         names = []
         targets.each do |target|
-          Global.logger.debug "Target: #{target.name} #{target.mind_shield}"
           if (effect == "Psionic" && target.mind_shield > 0)
             held = Custom.roll_shield(target, caster, "Mind Shield") == "shield"
-            Global.logger.debug "HELD: #{held}"
             if held
-              message = t('custom.mind_shield_held', :name => caster.name, :spell => spell, :target => target.name)
-              Global.logger.debug message
+              message = t('custom.shield_held', :name => caster.name, :spell => spell, :target => target.name, :shield => "Mind Shield")
             else
-              message = t('custom.mind_shield_failed', :name => caster.name, :spell => spell, :target => target.name)
-              Global.logger.debug message
+              message = t('custom.shield_failed', :name => caster.name, :spell => spell, :target => target.name, :shield => "Mind Shield")
+            end
+          elsif (damage_type == "Fire" && target.endure_fire > 0)
+            held = Custom.roll_shield(target, caster, "Endure Fire") == "shield"
+            if held
+              message = t('custom.shield_held', :name => caster.name, :spell => spell, :target => target.name, :shield => "Endure Fire")
+            else
+              message = t('custom.shield_failed', :name => caster.name, :spell => spell, :target => target.name, :shield => "Endure Fire")
+            end
+          elsif (damage_type == "Cold" && target.endure_cold > 0)
+            held = Custom.roll_shield(target, caster, "Endure Cold") == "shield"
+            if held
+              message = t('custom.shield_held', :name => caster.name, :spell => spell, :target => target.name, :shield => "Endure Cold")
+            else
+              message = t('custom.shield_failed', :name => caster.name, :spell => spell, :target => target.name, :shield => "Endure Cold")
             end
           else
             names.concat [target.name]
