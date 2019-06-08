@@ -110,15 +110,17 @@ spells:
     roll: true
     school: Nature
   #Level 3
-    Bark Skin:
-      available: true
-      armor: Bark Skin
-      desc: "The caster grows defensive bark from a specific woody plant over their skin. Plant is from the same genus each time the spell is cast."
-      effect: Armor
-      level: 2
-      name: Bark Skin
-      school: Nature
-      casting_time: 1 round
+  Bark Skin:
+    available: true
+    armor: Bark Skin
+    desc: "The caster grows defensive bark from a woody plant over their skin. Plant is from the same genus each time the spell is cast."
+    effect: Armor
+    level: 3
+    name: Bark Skin
+    is_potion: true
+    range: self
+    school: Nature
+    casting_time: 1 round
   Calm Animal:
     available: true
     casting_time: 1 round

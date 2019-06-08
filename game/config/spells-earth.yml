@@ -79,6 +79,19 @@ spells:
     range: Short
     roll: true
     school: Earth
+  Stone Fists:
+    available: false
+    casting_time: 1 round
+    desc: The caster's hands become stone fists capable of inflicting damage.
+    duration: 1 round
+    effect: Damage
+    fs3_attack: true
+    is_potion: true
+    level: 3
+    name: Stone Fists
+    range: Self
+    school: Earth
+    weapon: Stone Fists
   Stone Slam:
     available: true
     casting_time: 1 round
