@@ -202,7 +202,7 @@ module AresMUSH
       delta = shield_strength - successes
 
       if caster.combat
-        caster.log "#{shield.upcase}: #{caster.name} rolling #{school} vs #{target.name}'s #{spell} (strength #{shield_strength}): #{successes} successes."
+        caster.log "#{shield.upcase}: #{caster.name} rolling #{school} vs #{target.name}'s #{shield} (strength #{shield_strength}): #{successes} successes."
       end
 
       if (shield_strength <=0 && successes <= 0)
