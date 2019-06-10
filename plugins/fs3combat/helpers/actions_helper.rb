@@ -288,22 +288,12 @@ module AresMUSH
         severity = -30
       end
 
-      damage_type = Global.read_config("spells", weapon, "damage_type")
-      if (damage_type == "Fire" && combatant.endure_fire > 0)
-        endure_fire_mod = -25
-        endure_cold_mod = 0
-      elsif (damage_type == "Cold" && combatant.endure_cold > 0)
-        endure_cold_mod = -25
-        endure_fire_mod = 0
-      else
-        endure_cold_mod = 0
-        endure_fire_mod = 0
-      end
+
 
       npc = combatant.is_npc? ? combatant.npc.wound_modifier : 0
       npc_mod = combatant.damage_lethality_mod + npc
 
-      total = random + severity + lethality + mod + npc_mod + endure_fire_mod + endure_cold_mod
+      total = random + severity + lethality + mod + npc_mod
 
       if (total < FS3Combat.damage_table["GRAZE"])
         damage = "GRAZE"
@@ -316,7 +306,7 @@ module AresMUSH
       end
 
       combatant.log "Determined damage: loc=#{hitloc} sev=#{severity} wpn=#{weapon}" +
-      " lth=#{lethality} npc=#{npc_mod} mod=#{mod} endure_fire_mod=#{endure_fire_mod} endure_cold_mod=#{endure_cold_mod} rand=#{random} total=#{total} dmg=#{damage}"
+      " lth=#{lethality} npc=#{npc_mod} mod=#{mod}  rand=#{random} total=#{total} dmg=#{damage}"
 
       damage
     end
@@ -561,8 +551,20 @@ module AresMUSH
         melee_damage_mod = [(strength_roll - 1) * 5, 0].max
       end
 
-      total_damage_mod = hit_mod + melee_damage_mod + attack_luck_mod - defense_luck_mod - armor
-      target.log "Damage modifiers: attack_luck=#{attack_luck_mod} hit=#{hit_mod} melee=#{melee_damage_mod} defense_luck=#{defense_luck_mod} armor=#{armor} total=#{total_damage_mod}"
+      damage_type = Global.read_config("spells", weapon, "damage_type")
+      if (damage_type == "Fire" && target.endure_fire > 0)
+        endure_fire_mod = -25
+        endure_cold_mod = 0
+      elsif (damage_type == "Cold" && target.endure_cold > 0)
+        endure_cold_mod = -25
+        endure_fire_mod = 0
+      else
+        endure_cold_mod = 0
+        endure_fire_mod = 0
+      end
+
+      total_damage_mod = hit_mod + melee_damage_mod + attack_luck_mod - defense_luck_mod - armor + endure_fire_mod + endure_cold_mod
+      target.log "Damage modifiers: attack_luck=#{attack_luck_mod} hit=#{hit_mod} melee=#{melee_damage_mod} defense_luck=#{defense_luck_mod} armor=#{armor} endure_fire_mod=#{endure_fire_mod} endure_cold_mod=#{endure_cold_mod} total=#{total_damage_mod}"
 
 
       damage = FS3Combat.determine_damage(target, hitloc, weapon, total_damage_mod, crew_hit)
