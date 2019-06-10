@@ -178,21 +178,37 @@ module AresMUSH
     end
 
     def self.roll_shield(target, caster, spell)
-      shield_strength = target.mind_shield
+      damage_type = Global.read_config("spells", spell, "damage_type")
+      effect = Global.read_config("spells", spell, "effect")
       school = Global.read_config("spells", spell, "school")
+
+      if damage_type == "Fire"
+        shield_strength = target.endure_fire
+        shield = "Endure Fire"
+      elsif damage_type == "Cold"
+        shield_strength = target.endure_fire
+        shield = "Endure Cold"
+      elsif effect == "Psionic"
+        shield_strength = target.mind_shield
+        shield = "Mind Shield"
+      end
+
       if caster.combat
         successes = caster.roll_ability(school)
       else
         successes = caster.roll_ability(school)[:successes]
       end
+
       delta = shield_strength - successes
+
       if caster.combat
-        combat = caster.combat
-        combat.log "#{caster.name} rolling #{school} vs #{target.name}'s #{spell} (strength #{shield_strength}): #{successes} successes."
+        caster.log "#{shield.upcase}: #{caster.name} rolling #{school} vs #{target.name}'s #{spell} (strength #{shield_strength}): #{successes} successes."
       end
 
       if (shield_strength <=0 && successes <= 0)
         return "shield"
+      else
+        return "failed"
       end
 
       case delta

@@ -77,11 +77,11 @@ module AresMUSH
             if (effect == "Psionic" && target.mind_shield > 0 && Custom.roll_shield(target, combatant, self.spell) == "shield")
                messages.concat [t('custom.shield_held', :name => self.name, :spell => self.spell, :shield => "Mind Shield", :target => print_target_names)]
 
-            elsif (damage_type == "Fire" && target.endure_fire > 0 && Custom.roll_shield(target, combatant, self.spell) == "shield")
-              messages.concat [t('custom.shield_held', :name => self.name, :spell => self.spell, :shield =>  "Endure Fire", :target => print_target_names)]
-
-            elsif (damage_type == "Cold" && target.endure_cold > 0 && Custom.roll_shield(target, combatant, self.spell) == "shield")
-              messages.concat [t('custom.shield_held', :name => self.name, :spell => self.spell, :shield => "Endure Cold", :target => print_target_names)]
+            # elsif (damage_type == "Fire" && target.endure_fire > 0 && Custom.roll_shield(target, combatant, self.spell) == "shield")
+            #   messages.concat [t('custom.shield_held', :name => self.name, :spell => self.spell, :shield =>  "Endure Fire", :target => print_target_names)]
+            #
+            # elsif (damage_type == "Cold" && target.endure_cold > 0 && Custom.roll_shield(target, combatant, self.spell) == "shield")
+            #   messages.concat [t('custom.shield_held', :name => self.name, :spell => self.spell, :shield => "Endure Cold", :target => print_target_names)]
 
             else
                #Psionic Protection
@@ -92,27 +92,32 @@ module AresMUSH
 
                  target.update(mind_shield_counter: rounds)
 
+                 combatant.log "Setting #{combatant.name}'s Mind Shield to #{shield_strength}"
+
                  messages.concat [t('custom.cast_shield', :name => self.name, :spell => self.spell, :succeeds => succeeds, :target =>  print_target_names, :type => "psionic")]
               end
 
               #Fire Protection
              if self.spell == "Endure Fire"
                shield_strength = combatant.roll_ability("Fire")
-               target.update(endure_fire: shield_strength)
+               target.update(target: shield_strength)
                rounds = Global.read_config("spells", self.spell, "rounds")
 
                 target.update(endure_fire_counter: rounds)
+                combatant.log "Setting #{target.name}'s Endure Fire to #{shield_strength}"
 
                 messages.concat [t('custom.cast_shield', :name => self.name, :spell => self.spell, :succeeds => succeeds, :target =>  print_target_names, :type => "fire")]
              end
 
              #Cold Protection
             if self.spell == "Endure Cold"
-              shield_strength = combatant.roll_ability("Cold")
+              shield_strength = combatant.roll_ability("Water")
               target.update(endure_cold: shield_strength)
               rounds = Global.read_config("spells", self.spell, "rounds")
 
                target.update(endure_cold_counter: rounds)
+
+               combatant.log "Setting #{target.name}'s Endure Cold to #{shield_strength}"
 
                messages.concat [t('custom.cast_shield', :name => self.name, :spell => self.spell, :succeeds => succeeds, :target =>  print_target_names, :type => "cold")]
             end
@@ -241,10 +246,10 @@ module AresMUSH
                 else
                   if effect == "Psionic"
                     messages.concat [t('custom.shield_failed', :name => self.name, :spell => "self.spell", :shield => "Mind Shield", :target => print_target_names, :succeeds => succeeds)]
-                  elsif damage_type == "Fire"
-                    messages.concat [t('custom.shield_failed', :name => self.name, :spell => "self.spell", :shield => "Endure Fire", :target => print_target_names, :succeeds => succeeds)]
-                  elsif damage_type == "Cold"
-                    messages.concat [t('custom.shield_failed', :name => self.name, :spell => "self.spell", :shield => "Endure Cold", :target => print_target_names, :succeeds => succeeds)]
+                  # elsif damage_type == "Fire"
+                  #   messages.concat [t('custom.shield_failed', :name => self.name, :spell => "self.spell", :shield => "Endure Fire", :target => print_target_names, :succeeds => succeeds)]
+                  # elsif damage_type == "Cold"
+                  #   messages.concat [t('custom.shield_failed', :name => self.name, :spell => "self.spell", :shield => "Endure Cold", :target => print_target_names, :succeeds => succeeds)]
                   else
                     messages.concat [t('custom.spell_target_resolution_msg', :name => self.name, :spell => self.spell, :target => print_target_names, :succeeds => succeeds)]
                   end
