@@ -3,8 +3,16 @@ module AresMUSH
 
     def self.terms_of_service
       use_tos = Global.read_config("login", "use_terms_of_service") 
-      tos_filename = "game/text/tos.txt"
-      return use_tos ? File.read(tos_filename, :encoding => "UTF-8") : nil
+      return nil if !use_tos
+      
+      begin
+        tos_filename = "game/text/tos.txt"
+        tos_text = File.read(tos_filename, :encoding => "UTF-8")
+      rescue Exception => ex
+        Global.logger.warn "Can't read terms of service file: #{ex}"
+        tos_text = t('login.cant_read_tos_text')
+      end
+      return tos_text
     end
     
     # Checks to see if either the IP or hostname is a match with the specified string.
@@ -29,6 +37,11 @@ module AresMUSH
     def self.find_client(char)
       return nil if !char
       Global.client_monitor.find_client(char)
+    end
+    
+    def self.find_web_client(char)
+      return nil if !char
+      Global.client_monitor.find_web_client(char)
     end
         
     def self.emit_if_logged_in(char, message)

@@ -1,0 +1,97 @@
+$darker-background:#444;
+$dark-background:#222;
+$dark-border: #6b6b6b;
+$text-on-dark: #ccc;
+
+.log-box, 
+.profile-box,
+ul.dropdown-menu,
+.nav > li > a:hover, 
+.nav > li > a:focus,
+.nav .open > a, 
+.nav .open > a:hover, 
+.nav .open > a:focus 
+.nav .open > a,
+.ember-power-select-search,
+.table-striped > tbody > tr:nth-of-type(odd),
+button {
+ background-color: $darker-background;
+}
+
+.dropdown-menu > li > a {
+  color: $text-on-dark;
+  background-color: $darker-background;
+}
+
+.ember-basic-dropdown-trigger,
+.ember-power-select-option,
+.ember-power-select-dropdown.ember-basic-dropdown-content {
+  background-color: $darker-background;
+  color: $text-on-dark;
+  border-color: $dark-border;
+}
+
+.ember-power-select-option[aria-current="true"],
+.ember-power-select-option[aria-selected="true"] {
+  color: $darker-background;
+}
+
+.markdown-editor,
+.fs3-divider {
+  background-color: $dark-background;
+}
+
+.btn-default {
+  background-color: $darker-background;
+  border-color: $darker-background;
+  color: $text-on-dark;
+}
+
+textarea, input {
+  background-color: $darker-background;
+  border: 1px solid $dark-border;
+}
+
+.alert-info {
+  background-color: #21759e;
+  border-color: #21759e;
+  color: $text-on-dark;
+}
+
+.alert-success {
+  background-color: #4d8834;
+  border-color: #4d8834;
+  color: $text-on-dark;
+}
+
+.btn-success {
+  background-color: #327332;
+  border-color: #2e692e;
+}
+
+.panel-default > .panel-heading {
+  background-color: $darker-background;
+  border-color: $darker-background;
+  color: $text-on-dark;
+}
+
+.nav-tabs,
+.nav-tabs>li>a, 
+.nav-tabs > li.active > a {
+  border-color: $dark-border;
+  
+}
+
+.nav-tabs>li>a:hover, 
+.nav-tabs>li>a:focus,
+.nav-tabs > li.active > a:hover, 
+.nav-tabs > li.active > a:focus { 
+  border-color: $dark-border;
+  background-color: #ccc;
+  color: #fff;
+}
+
+
+blockquote {
+  background-color: $dark-background;
+}

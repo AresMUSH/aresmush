@@ -24,7 +24,16 @@ module AresMUSH
       end
       
       def handle
-        FS3Skills.learn_ability(client, enactor, self.name)
+        error = FS3Skills.learn_ability(enactor, self.name)
+        if (error)
+          client.emit_failure error
+        else
+          client.emit_success t('fs3skills.xp_spent', :name => self.name)
+          
+          if (FS3Skills.skill_requires_training(FS3Skills.find_ability(enactor, self.name)))
+            client.emit_ooc t('fs3skills.skill_requires_training', :name => self.name)
+          end
+        end
       end
     end
   end

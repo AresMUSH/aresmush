@@ -39,6 +39,14 @@ module AresMUSH
         Chargen.hook_app_review(@char)
       end
       
+      def custom
+        Chargen.custom_app_review(@char)
+      end
+      
+      def show_custom
+        !!custom
+      end
+      
      
       def job_info
         job = @char.approval_job

@@ -23,6 +23,8 @@ module AresMUSH
         return ForumDeleteCategoryConfirmCmd
       when "createcat"
         return ForumCreateCategoryCmd
+      when "editreply"
+        return ForumEditReplyCmd
       when "delete"
         return ForumDeleteCmd
       when "deletereply"
@@ -85,6 +87,16 @@ module AresMUSH
         return AddReplyRequestHandler
       when "forumCategory"
         return ForumCategoryRequestHandler
+      when "forumCatchup"
+        return ForumCatchupRequestHandler
+      when "forumEditReply"
+        return ForumEditReplyRequestHandler
+      when "forumEditTopic"
+        return ForumEditTopicRequestHandler
+      when "forumDeleteReply"
+        return ForumDeleteReplyRequestHandler
+      when "forumDeleteTopic"
+        return ForumDeleteTopicRequestHandler
       when "forumHide"
         return ForumHideRequestHandler
       when "forumList"

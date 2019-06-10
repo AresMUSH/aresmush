@@ -19,6 +19,15 @@ module AresMUSH
         Global.logger.fatal("Error loading database config.  Please check your dabase configuration and installation requirements: #{e}.")      
         raise e
       end      
-    end       
+    end  
+  
+    # This removes the object from a set, usually before it's being deleted.
+    # For example:  Database.remove_from_set(channel.characters, some_char) will remove the
+    # character from a channel's list of characters, if present.
+    def self.remove_from_set(set, obj)
+      if set.include?(obj)
+        set.delete obj
+      end
+    end     
   end
 end

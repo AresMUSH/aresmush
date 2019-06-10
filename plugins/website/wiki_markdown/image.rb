@@ -12,6 +12,7 @@ module AresMUSH
         style = ""
         source = ""
         align = ""
+        url = ""
         options = input.split(' ')
         options.each do |opt|
           option_name = opt.before('=') || ""
@@ -26,6 +27,8 @@ module AresMUSH
             align = opt.strip
           when 'source', 'src'
             source = option_value.strip
+          when 'url', 'link'
+            url = option_value.strip
           else
             source = opt.strip
           end
@@ -36,12 +39,17 @@ module AresMUSH
           source = "/game/uploads/#{source}"
         end
         
+        if url.blank?
+          url = source
+        end
+        
         template = HandlebarsTemplate.new(File.join(AresMUSH.plugin_path, 'website', 'templates', 'image.hbs'))
         
         data = {
           "source" => source,
           "style" => style, 
-          "align" => align
+          "align" => align,
+          "url" => url
         }
         
         template.render(data)        

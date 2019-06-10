@@ -58,13 +58,7 @@ module AresMUSH
           end
           
           if (success)
-            if (scene.room)
-              scene.room.emit_ooc t('scenes.scene_info_updated_announce', :name => enactor_name, 
-                :value => self.value, :setting => self.setting)
-            end
-            if (enactor_room != scene.room)
-              client.emit_success t('scenes.scene_info_updated')
-            end
+            client.emit_success t('scenes.scene_info_updated')
           end
         end
       end
@@ -82,6 +76,9 @@ module AresMUSH
         end
         
         scene.update(private_scene: is_private)
+        if (is_private)
+          scene.watchers.replace []
+        end
         return true
       end
         
@@ -122,18 +119,12 @@ module AresMUSH
       end
       
       def set_location(scene)
-        message = Scenes.set_scene_location(scene, self.value)
+        Scenes.set_scene_location(scene, self.value, enactor)
         
-        if (scene.room)
-          scene.room.emit message
-          if (!scene.temp_room)
-            client.emit_failure t('scenes.grid_location_change_warning')
-          end
+        if (scene.room && !scene.temp_room)
+          client.emit_failure t('scenes.grid_location_change_warning')
         end
         
-        if (scene.room != enactor_room)
-          client.emit_ooc message
-        end
         return true
       end
       

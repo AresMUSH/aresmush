@@ -12,7 +12,7 @@ module AresMUSH
         error = Website.check_login(request)
         return error if error
         
-        if (!enactor.is_admin?)
+        if (!Scenes.can_delete_scene?(enactor, scene))
           return { error: t('dispatcher.not_allowed') }
         end
         

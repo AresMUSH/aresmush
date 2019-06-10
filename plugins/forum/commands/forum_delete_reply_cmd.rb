@@ -6,10 +6,10 @@ module AresMUSH
       attr_accessor :category_name, :post_num, :reply_num
 
       def parse_args        
-        args = cmd.parse_args(ArgParser.arg1_slash_arg2_equals_arg3)
-        self.category_name = trim_arg(args.arg1)
-        self.post_num = trim_arg(args.arg2)
-        self.reply_num = args.arg3 ? args.arg3.to_i : 0
+        args = cmd.parse_args( /(?<name>[^\/]+)\/(?<post_num>[^\/]+)\/(?<reply_num>[^\/]+)/)
+        self.category_name = trim_arg(args.name)
+        self.post_num = trim_arg(args.post_num)
+        self.reply_num = integer_arg(args.reply_num)
       end
       
       def required_args

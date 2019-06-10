@@ -34,6 +34,13 @@ module AresMUSH
       scene.participants.include?(actor)
     end
     
+    def self.can_delete_scene?(actor, scene)
+      return false if !actor
+      return true if (scene.owner == actor) && scene.participants.count == 0
+      return true if Scenes.can_manage_scene?(actor, scene)
+      return false
+    end
+    
     def self.restart_scene(scene)
       Scenes.create_scene_temproom(scene)
       scene.update(completed: false)
@@ -141,7 +148,7 @@ module AresMUSH
       end
     end
     
-    def self.set_scene_location(scene, location)
+    def self.set_scene_location(scene, location, enactor = nil)
       matched_rooms = Room.find_by_name_and_area location
       area = nil
       
@@ -159,7 +166,6 @@ module AresMUSH
       
       scene.update(location: location)
 
-      message = t('scenes.location_set', :description => description)
       if (scene.temp_room && scene.room)
         #location = (location =~ /\//) ? location.after("/") : location
         scene.room.update(name: "Scene #{scene.id} - #{location}")
@@ -170,7 +176,15 @@ module AresMUSH
       data = Scenes.build_location_web_data(scene).to_json
       Scenes.new_scene_activity(scene, :location_updated, data)
       
-      return message
+      if (enactor)
+        message = t('scenes.location_set', :name => enactor.name, :location => location)
+        if (scene.room)
+          scene.room.emit_ooc message
+        end
+      
+        Scenes.add_to_scene(scene, message, Game.master.system_character, false, true)
+      end
+      
     end
     
     def self.info_missing_message(scene)
@@ -305,8 +319,12 @@ module AresMUSH
             room.remove_from_pose_order(name)
           end
           client = Login.find_client(char)
-          if (client && char.room == room && char.pose_nudge && !char.pose_nudge_muted)
-            client.emit_ooc t('scenes.pose_threeper_nudge')
+          if (client && char.pose_nudge && !char.pose_nudge_muted)
+            if (char.room == room)
+              client.emit_ooc t('scenes.pose_your_turn')
+            elsif (room.scene)
+              client.emit_ooc t('scenes.pose_threeper_nudge_other_scene', :scene => room.scene.id)
+            end
           end
         end
       else
@@ -316,8 +334,12 @@ module AresMUSH
           room.remove_from_pose_order(next_up_name)
         end
         client = Login.find_client(char)
-        if (client && char.room == room && char.pose_nudge && !char.pose_nudge_muted)
-          client.emit_ooc t('scenes.pose_your_turn')      
+        if (client && char.pose_nudge && !char.pose_nudge_muted)
+          if (char.room == room)
+            client.emit_ooc t('scenes.pose_your_turn')
+          elsif (room.scene)
+            client.emit_ooc t('scenes.pose_your_turn_other_scene', :scene => room.scene.id)
+          end
         end
       end
     end
@@ -489,7 +511,7 @@ module AresMUSH
 
     def self.build_scene_pose_web_data(pose, viewer, live_update = false)
       {
-        char: { name: pose.character ? pose.character.name : t('scenes.author_deleted'), 
+        char: { name: pose.character ? pose.character.name : t('global.deleted_character'), 
                 icon: Website.icon_for_char(pose.character),
                 id: pose.character ? pose.character.id : 0 }, 
         order: pose.order, 
@@ -514,6 +536,7 @@ module AresMUSH
             name: p.name, 
             id: p.id, 
             icon: Website.icon_for_char(p), 
+            status: Website.activity_status(p),
             is_ooc: p.is_admin? || p.is_playerbit?,
             online: Login.is_online?(p)  }}
           
@@ -529,6 +552,7 @@ module AresMUSH
         participants: participants,
         scene_type: scene.scene_type ? scene.scene_type.titlecase : 'unknown',
         can_edit: viewer && Scenes.can_edit_scene?(viewer, scene),
+        can_delete: Scenes.can_delete_scene?(viewer, scene),
         is_watching: viewer && scene.watchers.include?(viewer),
         is_unread: viewer && scene.is_unread?(viewer),
         pose_order: Scenes.build_pose_order_web_data(scene),
@@ -549,7 +573,7 @@ module AresMUSH
       scene.room.sorted_pose_order.map { |name, time| 
         {
          name: name,
-         time:  Scenes.format_last_posed(time)
+         time: Time.parse(time).rfc2822
          }}
     end
     

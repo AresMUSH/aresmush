@@ -22,13 +22,11 @@ module AresMUSH
           return PageDoNotDisturbCmd
         when "ignore"
           return PageIgnoreCmd
-        when "log"
-          return PageLogCmd
-        when "monitor"
+        when "review"
           if (cmd.args)
-            return PageMonitorCmd
+            return PageReviewCmd
           else
-            return PageListMonitorCmd
+            return PageReviewIndexCmd
           end
         when "report"
           return PageReportCmd
@@ -43,5 +41,24 @@ module AresMUSH
           
        nil
     end
+    
+    def self.get_event_handler(event_name) 
+      case event_name
+      when "CronEvent"
+        return CronEventHandler
+      end
+      
+      nil
+    end
+    
+    def self.get_web_request_handler(request)
+      case request.cmd
+      when "sendPage"
+        return SendPageRequestHandler
+      when "markPageThreadRead"
+        return MarkThreadReadRequestHandler
+      end
+    end
+    
   end
 end

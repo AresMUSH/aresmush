@@ -6,6 +6,7 @@ en:
         or: "or"
         done: "Done!"
         ok: "OK"
+        deleted_character: "(Deleted)"
 
     date:
         # Don't forget the nil at the beginning; there's no such thing as a 0th month

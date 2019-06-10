@@ -66,11 +66,11 @@ module AresMUSH
       end
       
       def foyer_exits
-        @room.exits.select { |e| e.name.is_integer? }.sort_by { |e| e.name }
+        @room.exits.select { |e| e.dest && e.name.is_integer? }.sort_by { |e| e.name }
       end
       
       def non_foyer_exits
-        @room.exits.select { |e| !e.name.is_integer? }.sort_by { |e| e.name }
+        @room.exits.select { |e| !e.name.is_integer? || !e.dest }.sort_by { |e| e.name }
       end
       
      

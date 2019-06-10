@@ -33,7 +33,7 @@ en:
         roster_title: "Character Roster"
         contact_required: "You need to talk to this character's contact person before you can claim them."
         roster_updated: "Roster updated."
-        roster_column_titles: "Name               Played?  Gender    Position            Faction"
+        roster_column_titles: "Played?"
         not_on_roster: "%{name} is not on the roster."
         removed_from_roster: "%{name} has been removed from the roster."
         played_before: "Previously Played?:"

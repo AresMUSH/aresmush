@@ -35,6 +35,7 @@ module AresMUSH
             
     def self.can_edit_post?(char, post)
       return false if !post
+      return false if !char
       post.authored_by?(char) || can_manage_forum?(char)
     end
     
@@ -45,7 +46,13 @@ module AresMUSH
       end
     end    
       
-
+    def self.notify(category, type, message)
+      Global.notifier.notify_ooc(type, message) do |char|
+        !Forum.is_forum_muted?(char) &&
+        Forum.can_read_category?(char, category) &&
+        !Forum.is_category_hidden?(char, category)
+      end
+    end
     
     # Client may be nil for automated bbposts.  Otherwise it will be used
     # to emit error messages.
@@ -72,13 +79,8 @@ module AresMUSH
           :category => category.name, 
           :reference => new_post.reference_str,
           :author => author_name)
-                
-        Global.notifier.notify_ooc(:new_forum_post, message) do |char|
-          !Forum.is_forum_muted?(char) &&
-          Forum.can_read_category?(char, category) &&
-          !Forum.is_category_hidden?(char, category)
-        end
-
+        
+        Forum.notify(category, :new_forum_post, message)
         Forum.handle_forum_achievement(author, :post)
         
         new_post
@@ -106,12 +108,7 @@ module AresMUSH
         :author => author.name)
       
       Forum.handle_forum_achievement(author, :reply)
-      
-      Global.notifier.notify_ooc(:new_forum_post, message) do |char|
-        !Forum.is_forum_muted?(char) &&
-        Forum.can_read_category?(char, category) &&
-        !Forum.is_category_hidden?(char, category)
-      end
+      Forum.notify(category, :new_forum_post, message)
     end
     
     # Important: Client may actually be nil here for a system-initiated bbpost.
@@ -150,7 +147,7 @@ module AresMUSH
     def self.with_a_post(category_name, num, client, enactor, &block)
       with_a_category(category_name, client, enactor) do |category|
         
-        if (!num.is_integer?)
+        if (!"#{num}".is_integer?)
           client.emit_failure t('forum.invalid_post_number')
           return
         end
@@ -219,6 +216,40 @@ module AresMUSH
         posts = char.forum_read_posts || []
         posts.delete post.id.to_s
         char.update(forum_read_posts: posts)
+      end
+    end
+    
+    def self.edit_post(post, enactor, subject, message)
+      post.update(message: message)
+      post.update(subject: subject)
+      post.mark_unread
+      category = post.bbs_board
+      notification = t('forum.new_edit', :subject => post.subject, 
+        :category => category.name, 
+        :reference => post.reference_str,
+        :author => enactor.name)
+      
+      Forum.notify(category, :forum_edited, notification)
+      Forum.mark_read_for_player(enactor, post)
+    end
+    
+    def self.edit_reply(reply, enactor, message)
+      reply.update(message: message)
+      post = reply.bbs_post
+      post.mark_unread
+      category = post.bbs_board
+      notification = t('forum.new_reply_edit', :subject => post.subject, 
+        :category => category.name, 
+        :reference => post.reference_str,
+        :author => enactor.name)
+      
+      Forum.notify(category, :forum_edited, notification)
+      Forum.mark_read_for_player(enactor, post)
+    end
+    
+    def self.catchup_category(enactor, category)
+      category.unread_posts(enactor).each do |p|
+        Forum.mark_read_for_player(enactor, p)
       end
     end
   end

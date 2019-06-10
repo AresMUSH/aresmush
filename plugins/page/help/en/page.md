@@ -11,14 +11,26 @@ aliases:
 ---
 # Pages
 
-Pages are private messages sent between players.  You can page any number of people at once, and use the standard pose formats in the message (like : and ;).
+Pages are private messages sent between players.  You can page any number of people at once, and use the standard pose formats in the message (like : and ;).  You can also send and receive pages via the web portal.
 
 `page <list of names>=<message>`
 
-## Automatic AFK Notice
+## Page Review
 
-If you are very idle or marked Away From the Keyboard, people paging you will be notified that you may not respond right away.  You can control the specific message they receive using the 'afk' command.
+You can review pages you've missed, including ones that happened when you were offline. You will be notified of missed pages when you log in.
 
+> Note: Conversations are automatically deleted (after 60 days by default) to prevent database clutter. 
+
+`page/review` - Shows available conversations.
+`page/review <names>` - Reviews a conversation.
+  
+## Page Status Indicators
+
+When you page someone who's offline/AFK/etc in-game, it will alert you to their status.
+
+    <PM> (to Faraday<AFK>) Cate says, "Hiya"
+
+AFK = Away from Keyboard; OFF = Offline; DND = Do not disturb; a time like 2h indicates they're idle
 
 ## Page Format
 
@@ -27,23 +39,18 @@ You can customize the appearance of pages by changing the color (see [Colors](/h
 `page/autospace <text before pages>`
 `page/color <ansi code>`
 
-## Blocking Pages
+## Blocking and Reporting Pages
 
-If someone is annoying you so much you feel the need to block them, you should report them to the game admin.  But while you're waiting for them to deal with it, you can block the harasser by ignoring them.
+You can block pages from someone you don't want to hear from.
 
 `page/ignore <name>=<on or off>`
 
-If you don't want to be bothered by pages at all, you can mark yourself as 'do not disturb' and incoming pages will be blocked with a message to the sender.
+If someone is harassing you in pages, you can report them.  This will automatically include a copy of the pages you select (from page/review) in your report. For example, page/report Bob=12-15/Terrible things!  You have to use the full conversation title in the report if it involves multiple people.  For example, page/report Bob Mary=12-15/Bob said terrible things!
+
+`page/report <conversation>=<range>/<reason>` - Creates a report.  
+
+## Do Not Disturb Mode
+
+Do not disturb mode prevents your MUSH client window from seeing pages while you're RPing.  You'll still see a notification of the missed pages the next time you log in, and can review them with page/review.  Do not disturb does not affect pages received on the web portal.
 
 `page/dnd <on or off>`
-
-## Monitoring Pages
-
-If someone is harassing you via pages, you can enable page monitoring.  This will keep track of the last couple dozen pages to and from *just* that person.  The other person will *not* be notified that you are logging pages.  
-
-Once you have the pages logged, you can bring the matter to the game admin's attention using the page report feature.  The pages from the log will automatically be included as an official, verifiable log.  You can report someone more than once if the problem happens again.
-
-`page/monitor` - Shows who you're monitoring.
-`page/monitor <name>=<on or off>` - Starts or stops monitoring pages from someone.
-`page/log <name>` - Review your page log with someone.  This is what will be included if you report them.
-`page/report <name>=<reason>` - Creates a report, including your page log with that person as evidence.

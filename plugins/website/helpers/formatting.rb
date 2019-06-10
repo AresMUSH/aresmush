@@ -14,7 +14,7 @@ module AresMUSH
     def self.format_output_for_html(output)
       return nil if !output
         
-      AresMUSH::MushFormatter.format output, true
+      AresMUSH::MushFormatter.format output
     end
       
     # Takes something from a text box and replaces carriage returns with %r's for MUSH.
@@ -45,6 +45,19 @@ module AresMUSH
     def self.icon_for_name(name)
       char = Character.find_one_by_name(name)
       Website.icon_for_char(char)
+    end
+    
+    def self.activity_status(char)
+      client = Login.find_client(char)
+      if (client)
+        return Status.is_idle?(client) ? 'inactive' : 'game-active'
+      end
+      client = Login.find_web_client(char)
+      if (!client)
+        return 'offline'
+      end
+      
+      return Status.is_idle?(client) ? 'inactive' : 'web-active'
     end
   end
 end

@@ -106,6 +106,8 @@ module AresMUSH
           return SceneUnshareCmd
         when "unshared"
           return ScenesCmd
+        when "webstart"
+          return SceneWebStartCmd
         end
       end
       
@@ -167,6 +169,8 @@ module AresMUSH
         return LiveScenesRequestHandler        
       when "liveScene"
         return LiveSceneRequestHandler  
+      when "markSceneRead"
+        return MarkSceneReadRequestHandler
       when "myScenes"
         return MyScenesRequestHandler     
       when "plots"

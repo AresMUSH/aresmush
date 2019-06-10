@@ -13,6 +13,7 @@ module AresMUSH
     reference :approval_char, "AresMUSH::Character"
 
     collection :job_replies, "AresMUSH::JobReply"
+    set :participants, "AresMUSH::Character"
         
     index :category
 
@@ -41,7 +42,7 @@ module AresMUSH
     end
     
     def author_name
-      !self.author ? t('jobs.deleted_author') : self.author.name
+      !self.author ? t('global.deleted_character') : self.author.name
     end
     
   end

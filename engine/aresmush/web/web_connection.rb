@@ -54,7 +54,7 @@ module AresMUSH
     
     def send_formatted(msg, color_mode = "FANSI", ascii_mode = false, screen_reader = false)
        # Strip out < and > - may need to strip other things in the future
-      formatted = MushFormatter.format(msg, false).gsub(/</, '&lt;').gsub(/>/, '&gt;')
+      formatted = MushFormatter.format(msg, color_mode).gsub(/</, '&lt;').gsub(/>/, '&gt;')
       
       data = {
         type: "notification",
@@ -86,6 +86,8 @@ module AresMUSH
     def receive_data(data)
       begin
         json_input = JSON.parse(data)
+        
+        @client.last_activity = Time.now
         
         if (json_input["type"] == "input")
           @client.handle_input(json_input["message"] + "\r\n")        

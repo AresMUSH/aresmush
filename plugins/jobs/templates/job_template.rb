@@ -16,7 +16,7 @@ module AresMUSH
       end
       
       def submitted_by
-        !@job.author ? t('jobs.deleted_author') : @job.author.name        
+        !@job.author ? t('global.deleted_character') : @job.author.name        
       end
       
       def submitted_on
@@ -31,9 +31,14 @@ module AresMUSH
         "#{@job.id} - #{@job.title}"
       end
       
+      def participants
+        return t('global.none') if @job.participants.empty?
+        @job.participants.map { |p| p.name }.sort.join(", ")
+      end
+      
       # Title above each reply showing the reply author and date
       def reply_title(reply)
-        name = !reply.author ? t('jobs.deleted_author') : reply.author.name
+        name = !reply.author ? t('global.deleted_character') : reply.author.name
         date = OOCTime.local_long_timestr(@enactor, reply.created_at)
         t('jobs.reply_title', :name => name, :date => date)
       end
@@ -41,6 +46,15 @@ module AresMUSH
       # Shows a warning if the reply is only visible to admins.
       def reply_admin_only(reply)
         reply.admin_only? ? "%xb#{t('jobs.admin_only')}%xn " : ""
+      end
+      
+      
+      def status_color
+        Jobs.status_color(@job.status)
+      end
+      
+      def category_color
+        Jobs.category_color(@job.category)
       end
     end
   end

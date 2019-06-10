@@ -43,11 +43,4 @@ You can award luck points.
 
 ## Managing XP
 
-You can award XP and view someone's XP display.
-
-`xp/award <name>=<# of XP>/<reason>` - Awards XP.
-`xp <name>` - Views someone's XP progress.
-
-If someone accidentally spends XP on the wrong skill, you can use the 'undo' command.  This will refund them 1XP and reset the learning time on the incorrect skill.  If the XP had resulted in a skill raising a level, this command will reduce the skill level.
-
-`xp/undo <name>=<ability>` - Undo an accidentaly XP expenditure.
+See [Manage XP](/help/manage_xp).

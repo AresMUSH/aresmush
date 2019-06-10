@@ -14,6 +14,7 @@ For more help with xp, see the [FS3 Player's Guide](http://aresmush.com/fs3/fs3-
 
 `learn <ability>` - Spends XP to learn an ability.
 `xp` - Shows your progress towards the next rating level.
+`xp/costs` - Reviews XP costs.
 
 > **Tip:** If you ever mess up an XP spend, like by typing the wrong skill name, an admin can help you reset it.
 

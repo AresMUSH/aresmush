@@ -36,6 +36,7 @@ module AresMUSH
           created: job.created_date_str(enactor),
           is_open: job.is_open?,
           is_job_admin: is_job_admin,
+          is_category_admin: Jobs.can_access_category?(enactor, job.category),
           is_approval_job: job.author && !job.author.is_approved? && (job.author.approval_job == job),
           author: { name: job.author_name, id: job.author ? job.author.id : nil, icon: Website.icon_for_char(job.author) },
           assigned_to: job.assigned_to ? { name: job.assigned_to.name, icon: Website.icon_for_char(job.assigned_to) } : nil,
@@ -47,6 +48,11 @@ module AresMUSH
             created: r.created_date_str(enactor),
             admin_only: r.admin_only,
             id: r.id
+          }},
+          participants: job.participants.map { |p| {
+            name: p.name,
+            icon: Website.icon_for_char(p),
+            id: p.id
           }},
           job_admins: job_admins.map { |c|  { 
             id: c.id, 

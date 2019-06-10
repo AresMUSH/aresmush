@@ -6,7 +6,7 @@ module AresMUSH
       attr_accessor :location, :privacy, :temp
       
       # scene/start (no args) -->  Here/privacy based on room
-      # scene/start (location) -->  Temproom named same as here/private
+      # scene/start (location) -->  Temproom/private
       # scene/start (location)=(privacy) --> Temproom with privacy setting
       
       def parse_args

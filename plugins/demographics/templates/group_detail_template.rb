@@ -11,11 +11,18 @@ module AresMUSH
       end      
       
       def description
-        self.group['desc' ]
+        self.group['desc']
+      end
+      
+      def wiki
+        page = self.group['wiki']
+        if (!page.blank?)
+          "#{Game.web_portal_url}/wiki/#{page}"
+        end
       end
       
       def values
-        self.group['values']
+        self.group['values'].sort
       end
       
     end
