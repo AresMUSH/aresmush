@@ -57,7 +57,7 @@ module AresMUSH
         paginator = Paginator.paginate(scenes, page, scenes_per_page)
         
         if (paginator.out_of_bounds?)
-          return { scenes: {}, pages: nil }
+          return { scenes: [], pages: nil }
         end
         
         {
