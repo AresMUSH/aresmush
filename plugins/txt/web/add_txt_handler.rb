@@ -109,7 +109,8 @@ module AresMUSH
                     names_plus = recipients << enactor.name
 
                     names_plus.each do |name|
-                        result = OnlineCharFinder.find(name)
+                      char = Character.named(name)
+                        result = Login.is_online?(char)
 
                         if (!result.found?)
                             nil
