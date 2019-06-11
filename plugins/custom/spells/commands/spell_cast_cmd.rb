@@ -94,6 +94,7 @@ module AresMUSH
               Custom.cast_noncombat_shield(self.caster, self.caster, self.spell)
             else
               Custom.cast_noncombat_spell(self.caster, nil, self.spell, self.mod)
+              Global.logger.debug "SPELL: #{self.spell}"
             end
             Custom.handle_spell_cast_achievement(self.caster)
           else
