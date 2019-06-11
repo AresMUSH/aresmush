@@ -8,6 +8,7 @@ summary: Learning & casting spells
 `spell/cast <spell>[+/-mod]` - Cast a spell on yourself, the environment, or an object.
 `spell/cast <spell>=<target>[<target> <target>][+/-mod]` - Cast a spell on one or more targets.
 Mods only work outside of combat. In combat, use `spell/mod`.
+`shield/off <shield>` - Out of combat, turn off a shield such as Mind Shield, Endure Fire, or Endure Cold.
 
 `spell/cast <npc>/<spell>[=<target>]` - Make NPCs and other combatants cast in combat.
 
@@ -29,3 +30,4 @@ Out of combat, you can add +mod to the end of your spell to cast using a modifie
 ## Admin commands
 `spell/add <name>=<spell>` - Add a spell to someone's spell list without spending XP.
 `spell/remove <name>=<spell>` - Remove a spell from someone's spell list.
+`shield/off <name>=<shield>` - Out of combat, turn off someone's shield such as Mind Shield, Endure Fire, or Endure Cold.
