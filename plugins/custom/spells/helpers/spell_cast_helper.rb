@@ -41,7 +41,7 @@ module AresMUSH
       success = "%xgSUCCEEDS%xn"
       target_num = Global.read_config("spells", spell, "target_num")
       effect = Global.read_config("spells", spell, "effect")
-      damage_type = Global.read_config("spells", self.spell, "damage_type")
+      damage_type = Global.read_config("spells", spell, "damage_type")
       client = Login.find_client(caster)
       if name_string != nil
         targets = Custom.parse_spell_targets(name_string, target_num)
@@ -59,21 +59,21 @@ module AresMUSH
         names = []
         targets.each do |target|
           if (effect == "Psionic" && target.mind_shield > 0)
-            held = Custom.roll_shield(target, caster, "Mind Shield") == "shield"
+            held = Custom.roll_shield(target, caster, spell) == "shield"
             if held
               message = t('custom.shield_held', :name => caster.name, :spell => spell, :target => target.name, :shield => "Mind Shield")
             else
-              message = t('custom.shield_failed', :name => caster.name, :spell => spell, :target => target.name, :shield => "Mind Shield")
+              message = t('custom.mind_shield_failed', :name => caster.name, :spell => spell, :target => target.name, :shield => "Mind Shield")
             end
           elsif (damage_type == "Fire" && target.endure_fire > 0)
-            held = Custom.roll_shield(target, caster, "Endure Fire") == "shield"
+            held = Custom.roll_shield(target, caster, spell) == "shield"
             if held
               message = t('custom.shield_held', :name => caster.name, :spell => spell, :target => target.name, :shield => "Endure Fire")
             else
               message = t('custom.shield_failed', :name => caster.name, :spell => spell, :target => target.name, :shield => "Endure Fire")
             end
           elsif (damage_type == "Cold" && target.endure_cold > 0)
-            held = Custom.roll_shield(target, caster, "Endure Cold") == "shield"
+            held = Custom.roll_shield(target, caster, spell) == "shield"
             if held
               message = t('custom.shield_held', :name => caster.name, :spell => spell, :target => target.name, :shield => "Endure Cold")
             else
@@ -101,9 +101,7 @@ module AresMUSH
 
     def self.parse_spell_targets(name_string, target_num)
       return t('fs3combat.no_targets_specified') if (!name_string)
-      Global.logger.debug "Name string: #{name_string}"
       target_names = name_string.split(" ").map { |n| InputFormatter.titlecase_arg(n) }
-      Global.logger.debug "target names: #{target_names}"
       targets = []
       target_names.each do |name|
         target = Character.named(name)
@@ -203,13 +201,15 @@ module AresMUSH
 
       if caster.combat
         caster.log "#{shield.upcase}: #{caster.name} rolling #{school} vs #{target.name}'s #{shield} (strength #{shield_strength}): #{successes} successes."
+      else
+        Global.logger.info "#{shield.upcase}: #{caster.name} rolling #{school} vs #{target.name}'s #{shield} (strength #{shield_strength}): #{successes} successes."
       end
 
-      if (shield_strength <=0 && successes <= 0)
-        return "shield"
-      else
-        return "failed"
-      end
+      # if (shield_strength <=0 && successes <= 0)
+      #   return "shield"
+      # else
+      #   return "failed"
+      # end
 
       case delta
       when 0..99
@@ -217,6 +217,7 @@ module AresMUSH
       when -99..-1
         return "caster"
       end
+
     end
 
   end

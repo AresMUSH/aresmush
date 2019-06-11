@@ -12,6 +12,8 @@ summary: Learning & casting spells
 
 `spell/cast <npc>/<spell>[=<target>]` - Make NPCs and other combatants cast in combat.
 
+`shield/off <shield>` - Out of combat, turn off a protective shield such as Mind Shield, Endure Fire, or Endure Cold.
+
 **Tip**: You can use `cast` instead of `spell/cast`
 
 `combat/luck spell` - Spend Luck to gain a +3 dice bonus to your spellcasting for one round.

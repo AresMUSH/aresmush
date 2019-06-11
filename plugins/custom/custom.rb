@@ -34,10 +34,10 @@ module AresMUSH
       end
 
       case cmd.root
-      when "mindshield"
+      when "shield"
         case cmd.switch
         when "off"
-          return MindshieldOffCmd
+          return ShieldOffCmd
         end
       end
 
@@ -154,6 +154,8 @@ module AresMUSH
           end
         when "learn"
           return SpellLearnCmd
+        when "luck"
+          return SpellLuckCmd
         when "discard"
           return SpellDiscardCmd
         when "add"
