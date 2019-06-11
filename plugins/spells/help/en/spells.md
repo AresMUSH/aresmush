@@ -16,8 +16,9 @@ Mods only work outside of combat. In combat, use `spell/mod`.
 `combat/luck spell` - Spend Luck to gain a +3 dice bonus to your spellcasting for one round.
 Out of combat, you can add +mod to the end of your spell to cast using a modifier.
 
-`spell/learn` <spell> - Spends 1 XP to work toward learning a spell.
-`spell/discard` <spell> - Discards a spell. You do not recover any XP, so be sure before doing this.
+`spell/luck <spell>` - Spend 2 luck to remove a week from a spell's learn time and learn it again immediately.
+`spell/learn <spell>`  - Spends 1 XP to work toward learning a spell.
+`spell/discard <spell>`  - Discards a spell. You do not recover any XP, so be sure before doing this.
 
 `spell/request <spell name>=<description>` - Request that a new spell be created. See [Creating Spells](http://spiritlakemu.com/wiki/magic_system) for more information.
 

@@ -38,7 +38,6 @@ module AresMUSH
 
 
     def self.cast_noncombat_spell(caster, name_string, spell, mod)
-      Global.logger.debug "SPELL: #{spell}"
       success = "%xgSUCCEEDS%xn"
       target_num = Global.read_config("spells", spell, "target_num")
       effect = Global.read_config("spells", spell, "effect")

@@ -93,8 +93,7 @@ module AresMUSH
             elsif (self.spell == "Mind Shield" || self.spell == "Endure Fire" || self.spell == "Endure Cold")
               Custom.cast_noncombat_shield(self.caster, self.caster, self.spell)
             else
-              Custom.cast_noncombat_spell(self.caster, nil, self.spell, self.mod)
-              Global.logger.debug "SPELL: #{self.spell}"
+              Custom.cast_noncombat_spell(self.caster, nil, self.spell, self.mod)              
             end
             Custom.handle_spell_cast_achievement(self.caster)
           else
