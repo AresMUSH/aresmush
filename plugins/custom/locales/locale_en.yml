@@ -127,6 +127,10 @@ en:
       removed_spell: "You have removed the %{spell} spell from %{name}."
       use_school_version: "Be sure to specify the school for this spell. IE, spell/learn Potions (Fire) or Familiar (Air)"
       request_spell: "To learn this spell, please spell/request the specific animal you would like. We will create a custom spell for you to learn."
+      need_higher_level: "You must have a spell of the next level before you can spend luck to reduce the learn time of %{spell}."
+      only_1_xp_needed: "You only have 1 XP left to spend on this spell. You cannot reduce the learn time further."
+      reduce_spell_learn_time: "You reduce the learn time of %{spell} by a week. You can `spell/learn` to learn it again."
+      reduce_spell_learn_time_job: "%{name} reduced the learn time of %{spell} by a week."
 
       # ----------------------------
       # FS3 COMBAT SPELL
