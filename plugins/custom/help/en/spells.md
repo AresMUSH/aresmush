@@ -19,8 +19,9 @@ summary: Learning & casting spells
 `combat/luck spell` - Spend Luck to gain a +3 dice bonus to your spellcasting for one round.
 Out of combat, you can add +mod to the end of your spell to cast using a modifier.
 
-`spell/learn` <spell> - Spends 1 XP to work toward learning a spell.
-`spell/discard` <spell> - Discards a spell. You do not recover any XP, so be sure before doing this.
+`spell/learn <spell>` - Spends 1 XP to work toward learning a spell.
+`spell/luck <spell>` - Spend 2 luck to remove a week's learning time from a spell.
+`spell/discard <spell>`  - Discards a spell. You do not recover any XP, so be sure before doing this.
 
 `spell/request <spell name>=<description>` - Request that a new spell be created. See [Creating Spells](http://spiritlakemu.com/wiki/magic_system) for more information.
 
@@ -31,3 +32,4 @@ Out of combat, you can add +mod to the end of your spell to cast using a modifie
 ## Admin commands
 `spell/add <name>=<spell>` - Add a spell to someone's spell list without spending XP.
 `spell/remove <name>=<spell>` - Remove a spell from someone's spell list.
+`shield/off <name>=<shield>` - Out of combat, turn off a protective shield such as Mind Shield, Endure Fire, or Endure Cold.
