@@ -13,7 +13,7 @@ module AresMUSH
         [ self.reason ]
       end
       
-      def checK_luck
+      def check_luck
         return t('fs3skills.not_enough_points') if enactor.luck < 1
         return nil
       end
