@@ -75,7 +75,6 @@ module AresMUSH
 
       def handle
       #Reading Config Files
-        roll = Global.read_config("spells", self.spell, "roll")
         heal_points = Global.read_config("spells", self.spell, "heal_points")
 
         if self.caster.combat
@@ -91,11 +90,12 @@ module AresMUSH
           if success == "%xgSUCCEEDS%xn"
             if heal_points
               Custom.cast_non_combat_heal(self.caster, self.caster.name, self.spell, self.mod)
-              Custom.handle_spell_cast_achievement(self.caster)
+            elsif (self.spell == "Mind Shield" || self.spell == "Endure Fire" || self.spell == "Endure Cold")
+              Custom.cast_noncombat_shield(self.caster, self.caster, self.spell)
             else
               Custom.cast_noncombat_spell(self.caster, nil, self.spell, self.mod)
-              Custom.handle_spell_cast_achievement(self.caster)
             end
+            Custom.handle_spell_cast_achievement(self.caster)
           else
             message = t('custom.casts_noncombat_spell', :name => caster.name, :spell => spell, :mod => mod, :succeeds => success)
             self.caster.room.emit message

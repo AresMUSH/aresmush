@@ -26,6 +26,7 @@ spells:
   Chill Touch:
     available: true
     casting_time: 1 round
+    damage_type: Cold
     desc: Caster delivers minor cold damage via touch.
     effect: Damage
     fs3_attack: true
@@ -79,6 +80,19 @@ spells:
     range: Short
     roll: true
     school: Water
+  #Level 3
+  Endure Cold:
+    available: true
+    casting_time: 1 round
+    desc: Caster is immune to the negative effects of extreme cold.
+    duration: 10 minutes
+    effect: Buff
+    is_potion: true
+    level: 3
+    name: Endure Cold
+    range: Self
+    school: Water
+    rounds: 60
   Ice Talons:
     available: false
     casting_time: 1 round
@@ -132,10 +146,12 @@ spells:
     range: Self
     roll: true
     school: Water
+  #Level 4
   Cone Of Cold:
     area: 5 ft maximum width
     available: true
     casting_time: 1 round
+    damage_type: Cold
     desc: Frigid cold emanaes from the caster's hand and extends outward in a cone shape, doing minor cold damage to up to 3 targets. As the ice hits, it explodes, doing additional shrapnel damage.
     effect: AOE Damage
     fs3_attack: true
@@ -154,6 +170,7 @@ spells:
     desc: Caster weaponizes and protects their own body by augmenting it with thick sheets of ice that form into talons capping each finger. Increases defenses slightly and adds a bladed weapon.
     duration: 3 hours
     effect: Armor
+    damage_type: Cold
     is_potion: true
     level: 4
     name: Ice Armor
@@ -199,6 +216,7 @@ spells:
     area: 10 yard radius
     available: false
     casting_time: 1 round
+    damage_type: Cold
     desc: Send a ball of ice hurtling at a point the caster can see. It explodes into jagged shards on impact, hitting up to 3 targets.
     effect: AOE Damage
     fs3_attack: true
@@ -254,6 +272,7 @@ spells:
   Shatter:
     available: false
     casting_time: 1 round
+    damage_type: Cold
     desc: Ice encases a portion of a target's body completely, cooling it rapidly and doing immense damage. In extreme cases, limbs may freeze completely, or even shatter.
     effect: Damage
     fs3_attack: true
@@ -279,6 +298,7 @@ spells:
     area: 20 yard radius
     available: false
     casting_time: 1 round
+    damage_type: Cold
     desc: Jagged shards of ice fall from the sky, doing damage to up to 3 targets within its range. When they hit, they explode, doing further shrapnel damage.
     duration: 1 round
     effect: AOE Damage
@@ -309,6 +329,7 @@ spells:
     area: Up to 1 square mile
     available: false
     casting_time: 1 round
+    damage_type: Cold
     desc: Rapidly drop the temperature of an area you can see, causing all moisture to freeze. Jagged balls of ice form in mid air and explode, adding to the damage done to anyone in its path.
     effect: AOE Damage
     fs3_attack: true
