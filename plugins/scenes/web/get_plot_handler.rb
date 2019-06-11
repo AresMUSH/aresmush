@@ -41,7 +41,10 @@ module AresMUSH
           description: description,
           start_date: plot.start_date,
           end_date: plot.end_date,
-          scenes: scenes,
+          scenes: {
+            scenes: scenes,
+            pages: [ 1 ]
+          },
           storyteller: { name: storyteller.name, id: storyteller.id, icon: Website.icon_for_char(storyteller) }
         }
       end
