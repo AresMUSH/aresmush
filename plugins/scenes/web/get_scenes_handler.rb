@@ -35,7 +35,7 @@ module AresMUSH
         paginator = Paginator.paginate(scenes, page, scenes_per_page)
         
         if (paginator.out_of_bounds?)
-          return { scenes: [], pages: 1 }
+          return { scenes: [], pages: [1] }
         end
         
         {
