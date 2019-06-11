@@ -9,6 +9,12 @@ module AresMUSH
         self.name = titlecase_arg(cmd.args)
       end
       
+      def check_type
+        types = Demographics.census_types
+        return t('demographics.invalid_census_type', :types => types.join(',')) if !types.include?(self.name)
+        return nil
+      end
+      
       def handle   
         chars = Chargen.approved_chars
         if (!self.name)
@@ -24,14 +30,6 @@ module AresMUSH
           template = GenderCensusTemplate.new
         elsif (Ranks.is_enabled? && (self.name == "Ranks" || self.name == "Rank"))
           template = RankCensusTemplate.new
-        elsif (FS3Skills.is_enabled? && self.name.start_with?("Skill"))
-          type = self.name.after(" ").titlecase
-          types = [ 'Action', 'Background', 'Language' ]
-          if (!types.include?(type))
-            client.emit_failure t('demographics.invalid_skill_census_type', :types => types.join(","))
-            return
-          end
-          template = SkillsCensusTemplate.new(type)
         else
           group = Demographics.get_group(self.name)
           if (!group)
