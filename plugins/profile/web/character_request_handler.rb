@@ -72,22 +72,6 @@ module AresMUSH
         }}
         
         
-        scenes_starring = char.scenes_starring
-        
-        scenes = scenes_starring.sort_by { |s| s.icdate || s.created_at }.reverse
-             .map { |s| {
-                      id: s.id,
-                      title: s.title,
-                      summary: s.summary,
-                      location: s.location,
-                      icdate: s.icdate,
-                      participants: s.participants.to_a.sort_by { |p| p.name }.map { |p| { name: p.name, id: p.id, icon: Website.icon_for_char(p) }},
-                      scene_type: s.scene_type ? s.scene_type.titlecase : 'Unknown',
-                      likes: s.likes
-        
-                    }
-                  }
-        
         show_background = (char.on_roster? || char.bg_shared || Chargen.can_view_bgs?(enactor)) && !char.background.blank?
 
         
@@ -117,7 +101,6 @@ module AresMUSH
           can_manage: enactor && Profile.can_manage_char_profile?(enactor, char),
           profile: profile,
           relationships: relationships,
-          scenes: scenes,
           profile_gallery: (char.profile_gallery || {}).map { |g| Website.get_file_info(g) },
           background: show_background ? Website.format_markdown_for_html(char.background) : nil,
           description: Website.format_markdown_for_html(char.description),

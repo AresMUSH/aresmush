@@ -2,12 +2,12 @@ module AresMUSH
   module Page
     class PageReviewTemplate < ErbTemplateRenderer
       
-      attr_accessor :thread, :enactor, :messages
+      attr_accessor :thread, :enactor, :paginator
       
-      def initialize(enactor, thread, messages)
+      def initialize(enactor, thread, paginator)
         @enactor = enactor
         @thread = thread
-        @messages = messages
+        @paginator = paginator
         super File.dirname(__FILE__) + "/page_review.erb"
       end
 
