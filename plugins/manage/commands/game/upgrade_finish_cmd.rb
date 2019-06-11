@@ -9,7 +9,7 @@ module AresMUSH
       end
       
       def handle
-        ['load all', 'migrate', 'website/deploy'].each do |command|
+        ['load all', 'migrate', 'load config', 'website/deploy'].each do |command|
           Global.dispatcher.queue_command(client, Command.new(command))
         end
       end

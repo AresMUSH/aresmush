@@ -36,7 +36,7 @@ module AresMUSH
     
     def self.can_delete_scene?(actor, scene)
       return false if !actor
-      return true if (scene.owner == actor) && scene.participants.count == 0
+      return true if (scene.owner == actor && (scene.scene_poses.count == 0) && !scene.scene_log)
       return true if Scenes.can_manage_scene?(actor, scene)
       return false
     end
