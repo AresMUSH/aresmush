@@ -16,9 +16,12 @@ module AresMUSH
         before do 
           specials = {
             "Helmet" => { "defense" => 2, "protection" => { "Head" => 2 } },
-            "Cup" => { "protection" => { "Groin" => 2 } } }
+            "Cup" => { "protection" => { "Groin" => 2 } },
+            "Defenseless" => { "protection" => { "Chest" => 2 } }  
+          }
+          armor = { "defense" => 1, "protection" => { "Head" => 1, "Body" => 4 } }
           allow(FS3Combat).to receive(:armor_specials) { specials }
-          allow(FS3Combat).to receive(:armor).with("Military") { { "defense" => 1, "protection" => { "Head" => 1, "Body" => 4 } } }
+          allow(FS3Combat).to receive(:armor).with("Military") { armor }
         end
         
         it "should return nil if armor not found" do
@@ -26,11 +29,22 @@ module AresMUSH
           expect(FS3Combat.armor_stat("Police", "protection")).to be_nil
         end
         
+        it "should return nil if no stat" do
+          expect(FS3Combat.armor_stat("Military", "foo")).to be_nil
+        end
+        
         it "should add special protection together" do
           protection = FS3Combat.armor_stat("Military+Helmet+Cup", "protection")
           expect(protection['Head']).to eq 3
           expect(protection['Body']).to eq 4
           expect(protection['Groin']).to eq 2
+        end
+        
+        it "should not affect the underlying protection values in the config" do
+          protection = FS3Combat.armor_stat("Military+Helmet+Cup", "protection")
+          expect(protection['Head']).to eq 3
+          protection = FS3Combat.armor_stat("Military", "protection")
+          expect(protection['Head']).to eq 1
         end
         
         it "should add other stats" do
