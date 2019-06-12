@@ -19,7 +19,7 @@ module AresMUSH
         
         demographics = {}
         
-        Demographics.basic_demographics.each do |d| 
+        Demographics.all_demographics.select { |d| d != 'birthdate' }.each do |d| 
           demographics[d.downcase] = 
             {
               name: d.titleize,
@@ -57,7 +57,6 @@ module AresMUSH
           id: char.id,
           chargen_locked: char.chargen_locked,
           name: char.name,
-          fullname: char.demographic(:fullname),
           demographics: demographics,
           groups: groups,
           background: Website.format_input_for_html(char.background),

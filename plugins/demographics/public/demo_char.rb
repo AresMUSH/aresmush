@@ -9,6 +9,10 @@ module AresMUSH
       Demographics.calculate_age(demographic(:birthdate))
     end
     
+    def fullname
+      self.demographic('full name') || self.name
+    end
+    
     def demographic(key)
       name = key.to_s.downcase
       return self.birthdate if name == "birthdate"

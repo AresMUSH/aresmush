@@ -34,7 +34,6 @@ module AresMUSH
         
         
         demographics << { name: t('profile.age_title'), key: 'Age', value: char.age }
-        demographics << { name: t('profile.birthdate_title'), key: 'Birthdate', value: char.demographic(:birthdate)}
         
         groups = Demographics.all_groups.keys.sort.map { |g| 
           {
@@ -88,7 +87,7 @@ module AresMUSH
           name: char.name,
           name_and_nickname: Demographics.name_and_nickname(char),
           all_fields: all_fields,
-          fullname: char.demographic(:fullname),
+          fullname: char.fullname,
           military_name: Ranks.military_name(char),
           icon: Website.icon_for_char(char),
           profile_image: Website.get_file_info(char.profile_image),
