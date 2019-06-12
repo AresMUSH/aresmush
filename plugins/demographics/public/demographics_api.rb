@@ -6,7 +6,6 @@ module AresMUSH
       basic_demographics = Demographics.all_demographics.map { |d| d }
       basic_demographics.delete 'birthdate'
       basic_demographics.delete 'fullname'
-      basic_demographics.delete 'actor'
       basic_demographics
     end
     

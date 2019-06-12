@@ -14,10 +14,6 @@ module AresMUSH
         @char.demographic(:fullname)
       end
       
-      def actor
-        @char.actor
-      end
-      
       def website
         game_site = Game.web_portal_url
         "#{game_site}/char:#{@char.name}"

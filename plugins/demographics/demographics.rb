@@ -31,15 +31,6 @@ module AresMUSH
     def self.get_cmd_handler(client, cmd, enactor)
       
       case cmd.root
-      when "actor"
-        case cmd.switch
-        when "set"
-          return ActorSetCmd
-        when "search"
-          return ActorSearchCmd
-        else
-          return ActorCatcherCmd
-        end
       when "actors"
         case cmd.switch
         when "set"

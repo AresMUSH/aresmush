@@ -17,17 +17,19 @@ module AresMUSH
       
       def handle   
         chars = Chargen.approved_chars
+        paginator = Paginator.paginate(chars.sort_by { |c| c.name }, cmd.page, 20)
+        if (paginator.out_of_bounds?)
+          client.emit_failure paginator.out_of_bounds_msg
+          return
+        end
         if (!self.name)
-          paginator = Paginator.paginate(chars.sort_by { |c| c.name }, cmd.page, 20)
-          if (paginator.out_of_bounds?)
-            client.emit_failure paginator.out_of_bounds_msg
-            return
-          end
           template = CompleteCensusTemplate.new(paginator)
         elsif (self.name == "Timezone" || self.name == "Timezones")
           template = TimezoneCensusTemplate.new
         elsif (self.name == "Genders" || self.name == "Gender")
           template = GenderCensusTemplate.new
+        elsif (self.name == "Actors" || self.name == "Actor")
+          template = ActorsCensusTemplate.new(paginator)
         elsif (Ranks.is_enabled? && (self.name == "Ranks" || self.name == "Rank"))
           template = RankCensusTemplate.new
         else

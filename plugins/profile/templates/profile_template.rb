@@ -62,10 +62,6 @@ module AresMUSH
         alt_list.join(" ")
       end
       
-      def played_by
-        @char.actor
-      end
-      
       def hooks        
         formatter = MarkdownFormatter.new
         formatter.to_mush @char.rp_hooks
