@@ -39,7 +39,8 @@ module AresMUSH
           job_activity: job_activity,
           jobs_admin: Jobs.can_access_jobs?(enactor),
           token_expiry_warning: token_expiry_warning,
-          unread_pages: Page.has_unread_page_threads?(enactor)
+          unread_pages: Page.has_unread_page_threads?(enactor),
+          motd: Game.master.login_motd ? Website.format_markdown_for_html(Game.master.login_motd) : nil
         }
       end
     end

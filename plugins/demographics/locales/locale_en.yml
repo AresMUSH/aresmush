@@ -29,7 +29,8 @@ en:
         other_noun: person
         
         demo_review: Checking all demographics are set.
-        gender_set_to_other: "< Gender is set to 'Other'.  Is that correct? >"
+        gender_set_to_other: "< Gender is set to 'Other'.  Just making sure that's intentional. >"
+        duplicate_played_by: "< That played by is already taken. >"
         icon_set: "Icon set."
         
         group_types_title: "Group Types"

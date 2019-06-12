@@ -19,13 +19,13 @@ module AresMUSH
     end
     
     def self.military_name(char)
-      fullname = char.demographic(:fullname) || char.name
+      fullname = char.fullname
       
       return fullname if !Ranks.is_enabled?
       
       first_name = fullname.first(" ")
-      last_name = fullname.rest(" ")
-      rank_str = char.rank ? "#{char.rank} " : ""
+      last_name = fullname.split(" ").reverse.first
+      rank_str = char.rank.blank? ? "" : "#{char.rank} "
       callsign = char.demographic(:callsign)
       callsign_str =  callsign.blank? ? "" : "\"#{callsign}\" "
       "#{rank_str}#{first_name} #{callsign_str}#{last_name}"

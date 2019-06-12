@@ -31,6 +31,10 @@ module AresMUSH
         age == 0 ? "" : age
       end
 
+      def age_separator
+        visible_demographics.count % 2 == 0 ? "%R" : ""
+      end
+      
       def birthdate
         dob = @char.demographic(:birthdate)
         !dob ? "" : ICTime.ic_datestr(dob)
