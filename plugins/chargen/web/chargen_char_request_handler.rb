@@ -28,7 +28,6 @@ module AresMUSH
         end
         
         demographics['age'] = { name: t('profile.age_title'), value: char.birthdate ? OOCTime.format_date_for_entry(char.birthdate) : char.age }
-        demographics['actor'] = { name: t('profile.actor_title'), value: char.demographic(:actor)}
         
         groups = {}
         
