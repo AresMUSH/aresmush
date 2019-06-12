@@ -15,8 +15,7 @@ module AresMUSH
         
         enactor.update(jobs_filter: filter)
                 
-        {
-        }
+        JobsRequestHandler.new.handle(request)
       end
     end
   end
