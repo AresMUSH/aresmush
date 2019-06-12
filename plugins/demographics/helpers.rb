@@ -30,8 +30,8 @@ module AresMUSH
         types << 'Gender'
       end
       types << 'Timezone'
-      if (Demographics.all_demographics.include?('actor'))
-        types << 'Actor'
+      if (Demographics.all_demographics.include?('played by'))
+        types << 'Played By'
       end
       if (Ranks.is_enabled?)
         types << 'Rank'

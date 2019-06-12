@@ -14,8 +14,8 @@ module AresMUSH
         Profile.get_profile_status_message(@char)
       end
       
-      def basic_demographics
-        Demographics.visible_demographics(@char, @enactor).sort
+      def visible_demographics
+        Demographics.visible_demographics(@char, @enactor)
       end
       
       def demographic(d)

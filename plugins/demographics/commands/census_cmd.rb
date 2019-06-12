@@ -28,7 +28,7 @@ module AresMUSH
           template = TimezoneCensusTemplate.new
         elsif (self.name == "Genders" || self.name == "Gender")
           template = GenderCensusTemplate.new
-        elsif (self.name == "Actors" || self.name == "Actor")
+        elsif (self.name == "Played By")
           template = ActorsCensusTemplate.new(paginator)
         elsif (Ranks.is_enabled? && (self.name == "Ranks" || self.name == "Rank"))
           template = RankCensusTemplate.new
