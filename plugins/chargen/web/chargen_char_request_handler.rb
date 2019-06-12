@@ -19,7 +19,7 @@ module AresMUSH
         
         demographics = {}
         
-        Demographics.basic_demographics.sort.each do |d| 
+        Demographics.basic_demographics.each do |d| 
           demographics[d.downcase] = 
             {
               name: d.titleize,

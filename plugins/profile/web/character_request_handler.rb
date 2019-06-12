@@ -24,7 +24,7 @@ module AresMUSH
         all_fields['age'] = char.age
 
 
-        demographics = Demographics.visible_demographics(char, enactor).sort.each.map { |d| 
+        demographics = Demographics.visible_demographics(char, enactor).each.map { |d| 
             {
               name: d.titleize,
               key: d.titleize,

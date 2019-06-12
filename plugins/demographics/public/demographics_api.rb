@@ -10,7 +10,8 @@ module AresMUSH
     end
     
     def self.public_demographics
-      demographics = Demographics.basic_demographics
+      # Use map here to clone it.
+      demographics = Demographics.basic_demographics.map { |d| d }
       Demographics.private_demographics.each do |d|
         demographics.delete d
       end
@@ -20,7 +21,8 @@ module AresMUSH
     def self.visible_demographics(char, viewer)
       show_all = viewer && (viewer == char || viewer.has_permission?("manage_demographics"))
 
-      demographics = Demographics.basic_demographics
+      # Use map here to clone it.
+      demographics = Demographics.basic_demographics.map { |d| d }
 
       if (!show_all)
         Demographics.private_demographics.each do |d|
@@ -65,10 +67,6 @@ module AresMUSH
         if (!char.demographic(property))
           missing << t('chargen.oops_missing', :missing => property)
         end
-      end
-      
-      if (char.demographic(:gender) == "other")
-        missing << "%xy%xh#{t('demographics.gender_set_to_other')}%xn"
       end
       
       age_error = Demographics.check_age(char.age)

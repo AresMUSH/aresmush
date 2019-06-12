@@ -9,10 +9,6 @@ module AresMUSH
       Demographics.calculate_age(demographic(:birthdate))
     end
     
-    def actor
-      demographic(:actor) || t('demographics.actor_not_set')
-    end
-    
     def demographic(key)
       name = key.to_s.downcase
       return self.birthdate if name == "birthdate"

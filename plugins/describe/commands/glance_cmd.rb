@@ -4,7 +4,7 @@ module AresMUSH
       include CommandHandler
       
       def handle
-        template = GlanceTemplate.new(enactor_room)
+        template = GlanceTemplate.new(enactor_room, enactor)
         client.emit template.render
       end        
     end

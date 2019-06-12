@@ -26,7 +26,7 @@ module AresMUSH
       
       def build_profile(char, field_config)
         demographics = {}
-        Demographics.basic_demographics.sort.each { |d| 
+        Demographics.visible_demographics(char, nil).each { |d| 
             demographics[d.downcase] = char.demographic(d)
           }
         
