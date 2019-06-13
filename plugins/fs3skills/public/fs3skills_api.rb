@@ -142,10 +142,12 @@ module AresMUSH
       regular_luck = Global.read_config('fs3skills', 'base_luck_for_scene')
       
       scene.participants.each do |p|
+        next if p == char
+        
         days_old = (Time.now - p.created_at) / 86400
         # First-Time RP Bonus
          if (!luck_tracker.has_key?(p.id))
-          luck_tracker[p.id] = [ scene.id ]
+          luck_tracker[p.id] = 1
           # Newbie Bonus
           if (days_old < 30)
             luck_for_scene += regular_luck * 3
@@ -154,20 +156,18 @@ module AresMUSH
           end
         # Diminising returns for the same person
         else
-          if (!luck_tracker[p.id].include?(scene.id))
-            num_scenes = luck_tracker[p.id].count
-            if (num_scenes > 50)
-              divider = 4
-            elsif (num_scenes > 25)
-              divider = 3
-            elsif (num_scenes > 10)
-              divider = 2
-            else
-              divider = 1
-            end
-            luck_tracker[p.id] << scene.id
-            luck_for_scene += (regular_luck / divider)
+          num_scenes = luck_tracker[p.id]
+          if (num_scenes > 50)
+            multiplier = 0.25
+          elsif (num_scenes > 25)
+            multiplier = 0.5
+          elsif (num_scenes > 10)
+            multiplier = 0.75
+          else
+            multiplier = 1
           end
+          luck_tracker[p.id] = luck_tracker[p.id] + 1
+          luck_for_scene += (regular_luck * multiplier )
         end
       end
       
