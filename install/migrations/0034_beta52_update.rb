@@ -18,12 +18,18 @@ module AresMUSH
       
       def migrate
         
-        Global.logger.debug "Deleting cookie awards."
+        Global.logger.debug "Deleting cookie awards and initializing luck."
         CookieAward.all.each { |c| c.delete }
         Character.all.each do |c|
           c.update(fs3_cookie_archive: c.total_cookies)
           c.update(total_cookies: nil)
+          c.update(fs3_scene_luck: {})
         end
+        
+        config = DatabaseMigrator.read_config_file("fs3skills_misc.yml")
+        config['fs3skills']['base_luck_for_scene'] = 0.1
+        DatabaseMigrator.write_config_file("fs3skills_misc.yml", config)
+                
         
         Global.logger.debug "Removing actors from web menu."
         config = DatabaseMigrator.read_config_file("website.yml")

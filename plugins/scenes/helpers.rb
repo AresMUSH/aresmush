@@ -44,6 +44,7 @@ module AresMUSH
     def self.restart_scene(scene)
       Scenes.create_scene_temproom(scene)
       scene.update(completed: false)
+      scene.update(was_restarted: true)
       Scenes.set_scene_location(scene, scene.location)
       Scenes.new_scene_activity(scene, :status_changed, nil)
     end
@@ -112,8 +113,14 @@ module AresMUSH
       scene.update(date_completed: Time.now)
       
       Scenes.new_scene_activity(scene, :status_changed, nil)
-      scene.participants.each do |char|
-        Scenes.handle_scene_participation_achievement(char)
+      
+      if (!scene.was_restarted)
+        scene.participants.each do |char|
+          Scenes.handle_scene_participation_achievement(char)
+          if (FS3Skills.is_enabled?)
+            FS3Skills.luck_for_scene(char, scene)
+          end
+        end
       end
     end    
     
