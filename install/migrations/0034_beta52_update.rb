@@ -1,4 +1,15 @@
 module AresMUSH  
+  class CookieAward < Ohm::Model
+    include ObjectModel
+    
+    reference :giver, "AresMUSH::Character"
+    reference :recipient, "AresMUSH::Character"
+  end
+  
+  class Character
+    attribute :total_cookies
+  end
+  
   module Migrations
     class MigrationBeta52Update
       def require_restart
@@ -6,6 +17,14 @@ module AresMUSH
       end
       
       def migrate
+        
+        Global.logger.debug "Deleting cookie awards."
+        CookieAward.all.each { |c| c.delete }
+        Character.all.each do |c|
+          c.update(fs3_cookie_archive: c.total_cookies)
+          c.update(total_cookies: nil)
+        end
+        
         Global.logger.debug "Removing actors from web menu."
         config = DatabaseMigrator.read_config_file("website.yml")
         menu = config['website']['top_navbar']
@@ -19,10 +38,17 @@ module AresMUSH
         DatabaseMigrator.write_config_file("website.yml", config)
       end
       
+      Global.logger.debug "Add inventory shortcuts."
+      config = DatabaseMigrator.read_config_file("utils.yml")
+      ['i', 'in', 'inv'].each do |sc|
+        config['utils']['shortcuts'][sc] = "echo %% There's no inventory system here."
+      end
+      DatabaseMigrator.write_config_file("utils.yml", config)  
+            
       Global.logger.debug "Update actor shortcut and property names."
       config = DatabaseMigrator.read_config_file("demographics.yml")
       config['demographics']['shortcuts']['actors'] = 'census played by'
-      
+      config['demographics']['shortcuts']['actor'] = 'demographic/set played by='
       ['editable_properties', 'required_properties', 'demographics', 'private_properties'].each do |section|
         new_section = []
         config['demographics'][section].each do |item|

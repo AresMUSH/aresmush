@@ -13,8 +13,9 @@ module AresMUSH
       
       sc = {}
       Demographics.all_demographics.each do |d|
-        if (d != 'birthdate' && d != 'actor')
-          sc[d] = "demographic/set #{d}="
+        shortname = d.gsub(/\s+/, '')
+        if (shortname != 'birthdate')
+          sc[shortname] = "demographic/set #{d}="
         end
       end
       Demographics.all_groups.keys.map { |g| g.downcase}.each do |g|
