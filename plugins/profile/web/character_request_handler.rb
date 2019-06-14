@@ -99,6 +99,7 @@ module AresMUSH
           can_manage: enactor && Profile.can_manage_char_profile?(enactor, char),
           profile: profile,
           relationships: relationships,
+          last_online: OOCTime.local_long_timestr(enactor, char.last_on),
           profile_gallery: (char.profile_gallery || {}).map { |g| Website.get_file_info(g) },
           background: show_background ? Website.format_markdown_for_html(char.background) : nil,
           description: Website.format_markdown_for_html(char.description),

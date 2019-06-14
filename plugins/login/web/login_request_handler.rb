@@ -21,6 +21,10 @@ module AresMUSH
           char.extend_login_token
         end
         
+        if (char.handle)
+          AresCentral.sync_handle(char)
+        end
+        
         {
           token: char.login_api_token,
           name: char.name,

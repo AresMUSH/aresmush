@@ -54,7 +54,11 @@ module AresMUSH
           @char = Character.new(fs3_luck: 2, fs3_scene_luck: {})
           @scene = double
           @base_luck = 0.1
-          allow(Global).to receive(:read_config).with("fs3skills", "base_luck_for_scene") { @base_luck }
+          allow(Global).to receive(:read_config).with("fs3skills", "luck_for_scene") { {
+            0 => @base_luck,
+            10 => @base_luck * 0.75,
+            25 => @base_luck * 0.5
+          } }
         end
         
         it "should give a bonus for RPing with a newbie" do
@@ -96,6 +100,17 @@ module AresMUSH
           expect(@scene).to receive(:participants) { [oldbie] }
           expect(@char).to receive(:award_luck).with( @base_luck * 0.75 )
           expect(@char).to receive(:update).with( { :fs3_scene_luck => { 111 => 12 } } )
+          FS3Skills.luck_for_scene(@char, @scene)
+        end
+        
+        it "should reduce luck if more than 25 scenes" do
+          oldbie = double
+          allow(oldbie).to receive(:created_at) { Time.now - 86400*90 }
+          allow(oldbie).to receive(:id) { 111 }
+          @char.fs3_scene_luck = { 111 => 26 }
+          expect(@scene).to receive(:participants) { [oldbie] }
+          expect(@char).to receive(:award_luck).with( @base_luck * 0.5 )
+          expect(@char).to receive(:update).with( { :fs3_scene_luck => { 111 => 27 } } )
           FS3Skills.luck_for_scene(@char, @scene)
         end
         

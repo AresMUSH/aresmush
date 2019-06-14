@@ -118,6 +118,10 @@ module AresMUSH
         return LoginInfoRequestHandler
       when "register"
         return RegisterRequestHandler
+      when "changePassword"
+        return ChangePasswordRequestHandler
+      when "accountInfo"
+        return AccountInfoRequestHandler
       end
       nil
     end
