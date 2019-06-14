@@ -139,7 +139,8 @@ module AresMUSH
     def self.luck_for_scene(char, scene)
       luck_for_scene = 0
       luck_tracker = char.fs3_scene_luck
-      regular_luck = Global.read_config('fs3skills', 'base_luck_for_scene')
+      luck_config = Global.read_config('fs3skills', 'luck_for_scene') || {}
+      regular_luck = luck_config[0] || 0.1
       
       scene.participants.each do |p|
         next if p == char
@@ -157,17 +158,14 @@ module AresMUSH
         # Diminising returns for the same person
         else
           num_scenes = luck_tracker[p.id]
-          if (num_scenes > 50)
-            multiplier = 0.25
-          elsif (num_scenes > 25)
-            multiplier = 0.5
-          elsif (num_scenes > 10)
-            multiplier = 0.75
-          else
-            multiplier = 1
+          luck_for_participant = regular_luck
+          luck_config.each do |scene_threshold, luck|
+            if (num_scenes > scene_threshold)
+              luck_for_participant = luck
+            end
           end
+          luck_for_scene += luck_for_participant
           luck_tracker[p.id] = luck_tracker[p.id] + 1
-          luck_for_scene += (regular_luck * multiplier )
         end
       end
       
