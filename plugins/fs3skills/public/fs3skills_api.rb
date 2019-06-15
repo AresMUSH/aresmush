@@ -160,7 +160,7 @@ module AresMUSH
           num_scenes = luck_tracker[p.id]
           luck_for_participant = regular_luck
           luck_config.each do |scene_threshold, luck|
-            if (num_scenes > scene_threshold)
+            if (num_scenes > scene_threshold.to_i)
               luck_for_participant = luck
             end
           end
