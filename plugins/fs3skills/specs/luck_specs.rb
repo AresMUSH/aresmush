@@ -55,9 +55,9 @@ module AresMUSH
           @scene = double
           @base_luck = 0.1
           allow(Global).to receive(:read_config).with("fs3skills", "luck_for_scene") { {
-            0 => @base_luck,
-            10 => @base_luck * 0.75,
-            25 => @base_luck * 0.5
+            '0' => @base_luck,
+            '10' => @base_luck * 0.75,
+            '25' => @base_luck * 0.5
           } }
         end
         
