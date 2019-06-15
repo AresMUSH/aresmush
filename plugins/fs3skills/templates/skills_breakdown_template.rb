@@ -1,13 +1,13 @@
 module AresMUSH
-  module Demographics
-    class SkillsCensusTemplate < ErbTemplateRenderer
+  module FS3Skills
+    class SkillsBreakdownTemplate < ErbTemplateRenderer
             
       attr_accessor :skills, :type
       
       def initialize(type)
         self.type = type
         self.skills = FS3Skills.skills_census(type)
-        super File.dirname(__FILE__) + "/skills_census.erb"
+        super File.dirname(__FILE__) + "/skills_breakdown.erb"
       end
       
       def people_skills(people)

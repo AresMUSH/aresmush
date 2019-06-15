@@ -46,6 +46,8 @@ module AresMUSH
         return GetPlayersRequestHandler
       when "player"
         return GetPlayerRequestHandler
+      when "linkHandle"
+        return HandleLinkRequestHandler
       end
       nil
     end

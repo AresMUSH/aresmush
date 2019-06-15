@@ -1,7 +1,7 @@
 en:
     demographics:
         actor_not_set: None Set
-        actors_title: Actors
+        actors_title: Played By List
         actor_taken: That actor is already taken.
 
         admin_property_set: "You set %{name}'s %{property} to %{value}."
@@ -29,7 +29,8 @@ en:
         other_noun: person
         
         demo_review: Checking all demographics are set.
-        gender_set_to_other: "< Gender is set to 'Other'.  Is that correct? >"
+        gender_set_to_other: "< Gender is set to 'Other'.  Just making sure that's intentional. >"
+        duplicate_played_by: "< That played by is already taken. >"
         icon_set: "Icon set."
         
         group_types_title: "Group Types"
@@ -47,6 +48,7 @@ en:
         skill_census_title: "Skill Census - %{type} Skills"
         rank_census_title: "Rank Census"
         invalid_skill_census_type: "Invalid skill census type.  Try one of these: %{types}."
+        invalid_census_type: "Invalid census type.  Try one of these: %{types}."
         
         census_types: "Census Types"
         census_groups: "Census Groups Available"
