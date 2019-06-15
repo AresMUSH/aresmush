@@ -49,8 +49,6 @@ website:
       route: players
     - title: Census
       route: census
-    - title: Actors
-      route: actors
     - title: Roster
       route: roster
     - title: Locations
