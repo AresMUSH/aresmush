@@ -24,7 +24,7 @@ module AresMUSH
         all_fields['age'] = char.age
 
 
-        demographics = Demographics.visible_demographics(char, enactor).sort.each.map { |d| 
+        demographics = Demographics.visible_demographics(char, enactor).each.map { |d| 
             {
               name: d.titleize,
               key: d.titleize,
@@ -34,8 +34,6 @@ module AresMUSH
         
         
         demographics << { name: t('profile.age_title'), key: 'Age', value: char.age }
-        demographics << { name: t('profile.birthdate_title'), key: 'Birthdate', value: char.demographic(:birthdate)}
-        demographics << { name: t('profile.actor_title'), key: 'Actor', value: char.demographic(:actor)}
         
         groups = Demographics.all_groups.keys.sort.map { |g| 
           {
@@ -89,7 +87,7 @@ module AresMUSH
           name: char.name,
           name_and_nickname: Demographics.name_and_nickname(char),
           all_fields: all_fields,
-          fullname: char.demographic(:fullname),
+          fullname: char.fullname,
           military_name: Ranks.military_name(char),
           icon: Website.icon_for_char(char),
           profile_image: Website.get_file_info(char.profile_image),
@@ -101,6 +99,7 @@ module AresMUSH
           can_manage: enactor && Profile.can_manage_char_profile?(enactor, char),
           profile: profile,
           relationships: relationships,
+          last_online: OOCTime.local_long_timestr(enactor, char.last_on),
           profile_gallery: (char.profile_gallery || {}).map { |g| Website.get_file_info(g) },
           background: show_background ? Website.format_markdown_for_html(char.background) : nil,
           description: Website.format_markdown_for_html(char.description),

@@ -24,7 +24,7 @@ module AresMUSH
         profile = {}
         relationships = {}
         
-        Global.read_config('demographics')['editable_properties'].sort.each do |d| 
+        Global.read_config('demographics')['editable_properties'].each do |d| 
           demographics[d.downcase] = 
             {
               name: d.titlecase,
@@ -54,7 +54,6 @@ module AresMUSH
         {
           id: char.id,
           name: char.name,
-          fullname: char.demographic(:fullname),
           demographics: demographics,
           background: Website.format_input_for_html(char.background),
           rp_hooks: Website.format_input_for_html(char.rp_hooks),

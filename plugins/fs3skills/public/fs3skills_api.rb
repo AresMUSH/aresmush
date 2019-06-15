@@ -135,5 +135,44 @@ module AresMUSH
       end
       return nil
     end
+    
+    def self.luck_for_scene(char, scene)
+      luck_for_scene = 0
+      luck_tracker = char.fs3_scene_luck
+      luck_config = Global.read_config('fs3skills', 'luck_for_scene') || {}
+      regular_luck = luck_config[0] || 0.1
+      
+      scene.participants.each do |p|
+        next if p == char
+        
+        days_old = (Time.now - p.created_at) / 86400
+        # First-Time RP Bonus
+         if (!luck_tracker.has_key?(p.id))
+          luck_tracker[p.id] = 1
+          # Newbie Bonus
+          if (days_old < 30)
+            luck_for_scene += regular_luck * 3
+          else
+            luck_for_scene += regular_luck * 2
+          end
+        # Diminising returns for the same person
+        else
+          num_scenes = luck_tracker[p.id]
+          luck_for_participant = regular_luck
+          luck_config.each do |scene_threshold, luck|
+            if (num_scenes > scene_threshold)
+              luck_for_participant = luck
+            end
+          end
+          luck_for_scene += luck_for_participant
+          luck_tracker[p.id] = luck_tracker[p.id] + 1
+        end
+      end
+      
+      if (luck_for_scene > 0)
+        char.award_luck(luck_for_scene)
+        char.update(fs3_scene_luck: luck_tracker)
+      end
+    end
   end
 end

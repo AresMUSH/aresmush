@@ -43,6 +43,6 @@ The where command has a few modes to help you narrow down what you see.
 
 ## Who Is Someone?
 
-The whois command lets you quickly look up a person's fullname and other info based on part of their full name, MU* character name or a nickname such as a callsign (if enabled).
+The whois command lets you quickly look up a person's full name and other info based on part of their full name, MU* character name or a nickname such as a callsign (if enabled).
 
 `whois <name>`

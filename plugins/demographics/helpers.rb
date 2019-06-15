@@ -26,8 +26,13 @@ module AresMUSH
     
     def self.census_types
       types = Demographics.all_groups.keys.map { |t| t.titlecase }
-      types << 'Gender'
+      if (Demographics.all_demographics.include?('gender'))
+        types << 'Gender'
+      end
       types << 'Timezone'
+      if (Demographics.all_demographics.include?('played by'))
+        types << 'Played By'
+      end
       if (Ranks.is_enabled?)
         types << 'Rank'
       end

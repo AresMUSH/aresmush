@@ -14,8 +14,8 @@ module AresMUSH
         Profile.get_profile_status_message(@char)
       end
       
-      def basic_demographics
-        Demographics.visible_demographics(@char, @enactor).sort
+      def visible_demographics
+        Demographics.visible_demographics(@char, @enactor)
       end
       
       def demographic(d)
@@ -31,6 +31,10 @@ module AresMUSH
         age == 0 ? "" : age
       end
 
+      def age_separator
+        visible_demographics.count % 2 == 0 ? "%R" : ""
+      end
+      
       def birthdate
         dob = @char.demographic(:birthdate)
         !dob ? "" : ICTime.ic_datestr(dob)
@@ -60,10 +64,6 @@ module AresMUSH
         alt_list = AresCentral.alts(@char).map { |c| c.name }
         alt_list.delete(@char.name)
         alt_list.join(" ")
-      end
-      
-      def played_by
-        @char.actor
       end
       
       def hooks        

@@ -2,6 +2,8 @@ module AresMUSH
   class Character
     attribute :fs3_xp, :type => DataType::Integer, :default => 0
     attribute :fs3_luck, :type => DataType::Float, :default => 1
+    attribute :fs3_cookie_archive, :type => DataType::Integer, :default => 0
+    attribute :fs3_scene_luck, :type => DataType::Hash, :default => {}
     
     collection :fs3_attributes, "AresMUSH::FS3Attribute"
     collection :fs3_action_skills, "AresMUSH::FS3ActionSkill"

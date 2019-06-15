@@ -1,43 +1,31 @@
 module AresMUSH
   module Demographics
     
-    def self.basic_demographics
-      # Use map here to clone it.
-      basic_demographics = Demographics.all_demographics.map { |d| d }
-      basic_demographics.delete 'birthdate'
-      basic_demographics.delete 'fullname'
-      basic_demographics.delete 'actor'
-      basic_demographics
-    end
-    
     def self.public_demographics
-      demographics = Demographics.basic_demographics
-      Demographics.private_demographics.each do |d|
-        demographics.delete d
-      end
+      demographics = Demographics.all_demographics.select { |d| !Demographics.is_public_demographic?(d) }
       demographics
     end
     
     def self.visible_demographics(char, viewer)
       show_all = viewer && (viewer == char || viewer.has_permission?("manage_demographics"))
 
-      demographics = Demographics.basic_demographics
-
-      if (!show_all)
-        Demographics.private_demographics.each do |d|
-          demographics.delete d
-        end
+      if (show_all)
+        Demographics.all_demographics
+      else
+        Demographics.public_demographics
       end
-      
-      demographics
     end
-            
+          
+    def self.is_public_demographic?(name)
+      Demographics.private_demographics.include?(name)
+    end
+      
     def self.required_demographics
-      Global.read_config("demographics", "required_properties")
+      Global.read_config("demographics", "required_properties") || []
     end
 
     def self.private_demographics
-      Global.read_config("demographics", "private_properties")
+      Global.read_config("demographics", "private_properties") || []
     end
     
     def self.name_and_nickname(char)
@@ -68,13 +56,21 @@ module AresMUSH
         end
       end
       
-      if (char.demographic(:gender) == "other")
-        missing << "%xy%xh#{t('demographics.gender_set_to_other')}%xn"
-      end
-      
       age_error = Demographics.check_age(char.age)
       if (age_error)
         missing << "%xr%xh< #{age_error}> %xn"
+      end
+      
+      if (char.demographic(:gender) == "other")
+        missing << "%xy%xh#{t('demographics.gender_set_to_other')}%xn"
+      end
+            
+      played_by = char.demographic('played by')
+      if (played_by)
+        duplicate_pb = Chargen.approved_chars.any? { |c| c.demographic('played by') == played_by }
+        if (duplicate_pb)
+          missing << "%xr%xh#{t('demographics.duplicate_played_by')}%xn"
+        end
       end
       
       Demographics.all_groups.keys.each do |g|
