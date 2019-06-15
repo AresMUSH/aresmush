@@ -74,7 +74,11 @@ module AresMUSH
       armor = FS3Combat.armor(name)
       return nil if !armor
 
-      value = armor[stat]
+      if (stat == "protection")
+        value = armor[stat].dup
+      else
+        value = armor[stat]
+      end
       return nil if !value
 
       # Special handling for protection because it's a hash itself

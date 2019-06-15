@@ -18,7 +18,6 @@ module AresMUSH
             if item['page']
               item['route'] = item['page']
               item.delete 'page'
-              pp "Updated: #{item}"
             end
             new_submenu['menu'] << item
           end

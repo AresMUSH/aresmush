@@ -125,10 +125,6 @@ module AresMUSH
       board.write_roles.add admin_role
       board.save
       
-      board = BbsBoard.create(name: "Cookie Awards", order: 3)
-      board.write_roles.add approved_role
-      board.save
-      
       board = BbsBoard.create(name: "New Arrivals", order: 4)
       board.write_roles.add approved_role
       board.save

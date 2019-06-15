@@ -10,3 +10,6 @@ utils:
     note/update: note/add
     die: dice
     notes: note
+    i: echo %% There's no inventory system here.
+    in: echo %% There's no inventory system here.
+    inv: echo %% There's no inventory system here.

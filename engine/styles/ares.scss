@@ -104,6 +104,11 @@ code {
     border: none;
 }
 
+.inline-block {
+  display: inline-block;
+}
+
+
 /* -------------------------
 NAVIGATION
 ------------------------- */
@@ -988,6 +993,9 @@ input[type='file'] {
   color: transparent;
 }
 
+.combat-danage {
+  color: red;
+}
 /* -------------------------
 CHAT SCREEN
 ------------------------- */
