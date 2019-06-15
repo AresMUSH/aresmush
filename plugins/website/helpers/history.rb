@@ -1,6 +1,7 @@
 module AresMUSH
   module Website
     def self.get_recent_changes(unique_only = false, limit = 50)
+      return []
 
       recent_profiles = ProfileVersion.all
          .to_a
