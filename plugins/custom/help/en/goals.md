@@ -3,7 +3,7 @@ toc: Character Creation
 summary: Setting goals.
 ---
 # Goals
-This command lets you record your character's goals.  Goals are only visible to yourself and staff, and may be changed at any time. These will be important.
+This command lets you record your character's goals.  Goals are only visible to yourself and staff, and may be changed at any time. These will be nice.
 
 `goals` - Show you own goals.
 `goals/set <goals>` - Sets your goals.
