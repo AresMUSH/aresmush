@@ -5,12 +5,15 @@ summary: Using luck points.
 # FS3 - Luck
 Luck Points are special points that you can spend in various ways to perform better in combat, avoid death, increase your chance in rolls, create potions, increase your chance to stumble on plot points, and more.
 
-They can be earned via [cookies](/help/cookies) for RP, as well as through various OOC work such as GMing scenes or updating the wiki. Players can bank up to 6 Luck Points at a time.
+Luck is awarded for participation in scenes.  You get a fraction of a luck point for each participant.  There are bonuses for RPing with someone for the first time, and for RPing with a new player.  There are diminishing returns if you always RP with the same people.  Admins can also issue luck as rewards.
+
+Luck is also award for various OOC work such as GMing scenes or updating the wiki. Players can bank up to 6 Luck Points at a time.
 
 `luck/request <reason>` - Requests earned luck be awarded.
 `luck/spend <reason>` - Spends luck outside of combat.
     See [Combat Luck](/help/combat) for combat-related luck commands.
 `potion/create <potion>` - Spends luck to create a potion.
+`spell/luck <spell>` - Reduce the learning time of a spell by a week.
 
 See [Luck](http://spiritlakemu.com/wiki/luck_points) for more information on how to earn Luck Points and how you can spend them.
 

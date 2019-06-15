@@ -1,35 +1,24 @@
-
 module AresMUSH
   module Tinker
     class TinkerCmd
       include CommandHandler
-        attr_accessor :name, :armor, :specials, :major_spells
+
       def check_can_manage
         return t('dispatcher.not_allowed') if !enactor.has_permission?("tinker")
         return nil
       end
 
-
-
-
       def handle
-        spells = []
-        char = enactor
-        spells_learned = char.spells_learned.select { |l| l.learning_complete }
-        spells_learned.each do |s|
-          spells << s.name
+
+        Global.logger.debug "Update actor shortcut and property names."
+        config = DatabaseMigrator.read_config_file("utils.yml")
+        ['i', 'in', 'inv'].each do |sc|
+          config['utils']['shortcuts'][sc] = "echo %% There's no inventory system here."
         end
+        DatabaseMigrator.write_config_file("utils.yml", config)
 
-        client.emit spells
-
-
-
-
+        client.emit_success "Done!"
       end
-
-
-
-
 
     end
   end

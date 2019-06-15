@@ -1,11 +1,12 @@
 module AresMUSH
   class PaginateResults
-    attr_accessor :current_page, :total_pages, :items
+    attr_accessor :current_page, :total_pages, :items, :starting_index
     
-    def initialize(current_page, total_pages, items)
+    def initialize(current_page, total_pages, items, starting_index)
       @current_page = current_page
       @total_pages = total_pages
       @items = items
+      @starting_index = starting_index
     end
     
     def page_items
@@ -48,7 +49,7 @@ module AresMUSH
         total_pages = total_pages + 1
       end
       
-      return PaginateResults.new(page, total_pages, page_batch)
+      return PaginateResults.new(page, total_pages, page_batch, offset)
     end
   end
 end

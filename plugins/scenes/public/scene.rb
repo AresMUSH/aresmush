@@ -18,6 +18,7 @@ module AresMUSH
     attribute :location
     attribute :summary
     attribute :shared
+    attribute :was_restarted, :type => DataType::Boolean, :default => false
     attribute :logging_enabled, :type => DataType::Boolean, :default => true
     attribute :deletion_warned, :type => DataType::Boolean, :default => false
     attribute :icdate
