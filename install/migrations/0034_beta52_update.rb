@@ -91,6 +91,10 @@ module AresMUSH
       end
       Game.master.update(recent_changes: recent)
       
+      Global.logger.debug "Adding recent scenes"
+      recent = Scene.shared_scenes.sort_by { |s| s.date_shared || s.created_at }.reverse[0..29] || []
+      Game.master.update(recent_scenes: recent.map { |r| r.id })
+      
       Global.logger.debug "Removing cookies plugin dir."
       FileUtils.remove_dir(File.join(AresMUSH.root_path, "plugins/cookies"))
       

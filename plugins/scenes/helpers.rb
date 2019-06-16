@@ -58,6 +58,7 @@ module AresMUSH
           scene.scene_log.delete
         end
       end
+      Scenes.remove_recent_scene(scene)
       Scenes.new_scene_activity(scene, :status_changed, nil)
     end
     
@@ -74,10 +75,11 @@ module AresMUSH
       scene.update(shared: true)
       scene.update(date_shared: Time.now)
       Scenes.create_log(scene)
+      Scenes.add_recent_scene(scene)
+      
       Scenes.new_scene_activity(scene, :status_changed, nil)  
-      
       Global.dispatcher.queue_event SceneSharedEvent.new(scene.id)
-      
+            
       return true
     end
       
@@ -584,5 +586,30 @@ module AresMUSH
          }}
     end
     
+    def self.recent_scenes
+      recent = []
+      (Game.master.recent_scenes || []).each do |id|
+        scene = Scene[id]
+        if (scene)
+          recent << scene
+        end
+      end
+      recent
+    end
+    
+    def self.remove_recent_scene(scene)
+      recent = Game.master.recent_scenes
+      recent.delete scene.id
+       Game.master.update(recent_scenes: recent)
+    end
+    
+    def self.add_recent_scene(scene)
+      recent = Game.master.recent_scenes
+      recent << scene.id
+      if (recent.count > 30)
+        recent.shift
+      end
+      Game.master.update(recent_scenes: recent)
+    end
   end
 end
