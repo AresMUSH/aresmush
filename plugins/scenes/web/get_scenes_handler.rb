@@ -44,6 +44,7 @@ module AresMUSH
                   title: s.title,
                   summary: s.summary,
                   location: s.location,
+                  date_shared: s.date_shared,
                   icdate: s.icdate,
                   participants: s.participants.to_a.sort_by { |p| p.name }.map { |p| { name: p.name, id: p.id, icon: Website.icon_for_char(p) }},
                   scene_type: s.scene_type ? s.scene_type.titlecase : 'Unknown',
