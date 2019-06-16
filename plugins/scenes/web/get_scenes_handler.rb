@@ -13,25 +13,15 @@ module AresMUSH
             return { error: t('webportal.not_found') }
           end
           scenes = char.scenes_starring.sort_by { |s| s.date_shared || s.created_at }.reverse
-        else  
-          scenes = Scene.shared_scenes.sort_by { |s| s.date_shared || s.created_at }.reverse
+        elsif (filter == 'Recent')
+          scenes = Scenes.recent_scenes
+        elsif (filter == 'Popular')
+          scenes = Scene.shared_scenes.select { |s| s.likes > 0 }.sort_by { |s| s.likes }.reverse
+        else # scene type filter
+          scenes = Scene.shared_scenes.select { |s| s.scene_type == filter }.sort_by { |s| s.date_shared || s.created_at }.reverse
         end
         
         scenes_per_page = 30
-        
-        case filter
-        when "Recent"
-          scenes = scenes[0..(scenes_per_page - 1)]
-        when "Popular"
-          scenes = scenes.select { |s| s.likes > 0 }
-                         .sort_by { |s| s.likes }.reverse[0..(scenes_per_page - 1)]
-        when "All"
-          # Already set.
-        else
-          # Scene type filter
-          scenes = scenes.select { |s| s.scene_type == filter }
-        end
-        
         paginator = Paginator.paginate(scenes, page, scenes_per_page)
         
         if (paginator.out_of_bounds?)

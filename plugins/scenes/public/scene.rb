@@ -40,7 +40,8 @@ module AresMUSH
     index :date_shared
     
     def self.shared_scenes
-      Scene.all.select { |s| s.shared }
+      #Scene.all.select { |s| s.shared }
+      Scene.find(shared: true)
     end
     
     def self.scenes_starring(char)

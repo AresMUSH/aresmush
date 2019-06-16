@@ -1,7 +1,7 @@
 module AresMUSH
   module Website
     def self.add_to_recent_changes(type, id)
-      changes = Game.master.recent_changes
+      changes = Game.master.recent_changes || []
       if (changes.count > 99)
         changes.shift
       end
@@ -10,7 +10,7 @@ module AresMUSH
     end
     
     def self.recent_changes(unique_only = false, limit = 50)
-      all_changes = Game.master.recent_changes
+      all_changes = Game.master.recent_changes || []
       changes = []
       
       if (unique_only)
@@ -27,10 +27,12 @@ module AresMUSH
       end
       
       changes[0..limit].map { |c| Website.get_recent_change_details(c) }
+         .select { |c| c[:change_type] != 'deleted' }
     end
     
     def self.get_recent_change_details(change)
       if (change['type'] == 'char')
+        return { change_type: 'deleted' } if !p
         p = ProfileVersion[change['id']]
         {
           title: p.character.name,
@@ -43,6 +45,7 @@ module AresMUSH
         }
       else
         w = WikiPageVersion[change['id']]
+        return { change_type: 'deleted' } if !w
         {
           title: w.wiki_page.heading,
           id: w.id,

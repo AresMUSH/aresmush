@@ -177,8 +177,6 @@ module AresMUSH
         return PlotsRequestHandler
       when "plot"
         return PlotRequestHandler
-      when "recentScenes"
-        return RecentScenesRequestHandler
       when "scene"
         return GetSceneRequestHandler
       when "scenes"
