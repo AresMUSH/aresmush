@@ -263,7 +263,7 @@ spells:
     target_num: 3
     target_optional: true
   Share Sensation:
-    available: false
+    available: true
     casting_time: 1 round
     desc: "The caster shares any specific physical sensation that they are currently feeling with a target."
     effect: Psionic
