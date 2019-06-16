@@ -1,22 +1,38 @@
 module AresMUSH
   module Website
-    def self.get_recent_changes(unique_only = false, limit = 50)
+    def self.add_to_recent_changes(type, id)
+      changes = Game.master.recent_changes
+      if (changes.count > 99)
+        changes.shift
+      end
+      changes << { 'type' => type, 'id' => id }
+      Game.master.update(recent_changes: changes)
+    end
+    
+    def self.recent_changes(unique_only = false, limit = 50)
+      all_changes = Game.master.recent_changes
+      changes = []
       
-      recent_profiles = ProfileVersion.all
-         .to_a
-         .sort_by { |p| p.created_at }
-         .reverse[0..50]
-         .uniq { |p| p.character }
-
-      recent_wiki = WikiPageVersion.all
-         .to_a
-         .sort_by { |p| p.created_at }
-         .reverse[0..50]
-         .uniq { |w| w.wiki_page }
-
-      recent_changes = []
-      recent_profiles.each do |p|
-        recent_changes << {
+      if (unique_only)
+        found = []
+        all_changes.each do |c|
+          key = c['title']
+          if (!found.include?(key))
+            found << key
+            changes << c
+          end
+        end
+      else
+        changes = all_changes
+      end
+      
+      changes[0..limit].map { |c| Website.get_recent_change_details(c) }
+    end
+    
+    def self.get_recent_change_details(change)
+      if (change['type'] == 'char')
+        p = ProfileVersion[change['id']]
+        {
           title: p.character.name,
           id: p.id,
           change_type: 'char',
@@ -25,9 +41,9 @@ module AresMUSH
           name: p.character.name,
           author: p.author_name
         }
-      end
-      recent_wiki.each do |w|
-        recent_changes << {
+      else
+        w = WikiPageVersion[change['id']]
+        {
           title: w.wiki_page.heading,
           id: w.id,
           change_type: 'wiki',
@@ -37,10 +53,6 @@ module AresMUSH
           author: w.author_name
         }
       end
-        
-      recent_changes = recent_changes.sort_by { |r| r[:created_at] }.reverse
-      recent_changes[0..limit]
-    end 
-    
+    end
   end
 end
