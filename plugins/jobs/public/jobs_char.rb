@@ -22,7 +22,7 @@ module AresMUSH
     
     def unread_jobs
       return [] if !Jobs.can_access_jobs?(self)
-      staff_jobs = Job.all.select { |j| !Jobs.check_job_access(self, j) && j.is_unread?(self) }
+      staff_jobs = Job.open_jobs.select { |j| !Jobs.check_job_access(self, j) && j.is_unread?(self) }
       their_jobs = self.unread_requests
       
       return staff_jobs.concat(their_jobs).uniq
@@ -33,7 +33,7 @@ module AresMUSH
     end
     
     def requests
-      self.jobs.to_a.concat(Job.all.select { |j| j.participants.include?(self) })
+      self.jobs.to_a.concat(Job.open_jobs.select { |j| j.participants.include?(self) })
     end
     
     def delete_job_participation

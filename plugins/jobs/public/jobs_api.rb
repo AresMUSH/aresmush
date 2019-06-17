@@ -33,6 +33,7 @@ module AresMUSH
     end
     
     def self.close_job(enactor, job, message = nil)
+      job.update(date_closed: Time.now)
       Jobs.change_job_status(enactor, job, Jobs.closed_status, message)
     end
     
