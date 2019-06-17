@@ -12,6 +12,7 @@ channels:
     - 47
   default_channels:
   - Questions
+  - Brainstorming
   end_marker: "]"
   shortcuts:
     chan: channel
