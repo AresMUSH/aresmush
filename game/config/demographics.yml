@@ -37,6 +37,7 @@ demographics:
   - hair
   - physique
   - job
+  - actor
   groups:
     Major School:
       desc: The school of magic with which you have a major affinity.
