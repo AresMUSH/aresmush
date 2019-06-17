@@ -57,7 +57,7 @@ website:
       id: getting_started
     - route: wiki-page
       title: Guides
-      id: guide
+      id: guides
     - route: help
       title: Help
     - divider: true
@@ -126,17 +126,17 @@ website:
     - route: creatures
       title: Creatures
     - route: characters
-    #   title: Characters
-    # - divider: true
-    # - route: players
-    #   title: Players
-    # - route: census
-    #   title: Census
-    # - route: locations
-    #   title: Locations
-    # - divider: true
-    # - route: files
-    #   title: Files
+      title: Characters
+    - divider: true
+    - route: players
+      title: Players
+    - route: census
+      title: Census
+    - route: locations
+      title: Locations
+    - divider: true
+    - route: files
+      title: Files
   - title: System
     menu:
     - route: wiki-page
