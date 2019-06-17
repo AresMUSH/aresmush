@@ -68,7 +68,7 @@ spells:
     weapon: Earth Bolt
   Floating Earth:
     area: 5 yard radius
-    available: false
+    available: true
     casting_time: 1 round
     desc: Create a chunk of earth capable of bearing weight up to 250 lbs and propelling itself through the air at speeds up to 35 mph. Must remain in range or it dissipates.
     duration: 1 hour
@@ -173,7 +173,7 @@ spells:
   #Level 5
   Earth Shudder:
     area: 10 yard radius
-    available: false
+    available: true
     casting_time: 1 round
     desc: Cause the earth to shudder, distracting up to 3 enemies within its range
      and giving them a penalty to attack and defense.
@@ -202,6 +202,7 @@ spells:
     target_num: 1
     target_optional: true
     weapon: Stalagmite
+  #Level 6
   Familiar (Earth):
     desc: "A familiar is a spirit associated or allied with a school of magic that has taken residence in a physical vessel with the shape of an animal. It functions as a companion, assistant, and guardian. \n\nFamiliars may be capable of some or all of the following: sharing telepathic or empathic communication, providing knowledge of the arcane, sharing senses, lending physical aid as spies or fighters, delivering spells at a distance of up to three miles."
     effect: Other
