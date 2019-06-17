@@ -17,153 +17,153 @@ website:
   top_navbar:
   - title: About Us
     menu:
-    - page: wiki-page
+    - route: wiki-page
       title: About Spirit Lake
       id: about_us
-    - page: wiki-page
+    - route: wiki-page
       title: World Intro
       id: world_intro
-    - page: wiki-page
+    - route: wiki-page
       title: Policies
       id: policies
-    - page: wiki-page
+    - route: wiki-page
       title: Join Us
       id: join_us
-    - page: wiki-page
+    - route: wiki-page
       title: Staff Team
       id: staff
   - title: Play
     menu:
-    - page: chargen
+    - route: chargen
       title: Create a Character
-    - page: roster
+    - route: roster
       title: Pre-Made Characters
     - divider: true
-    - page: scenes-live
+    - route: scenes-live
       title: Active Scenes
-    - page: scenes-play
+    - route: scenes-play
       title: My Scenes
-    - page: scene-create
+    - route: scene-create
       title: Start New Scene
-    - page: combats
+    - route: combats
       title: Combats
     - divider: true
-    - page: play
+    - route: play
       title: Play via Web Client
   - title: Game
     menu:
-    - page: wiki-page
+    - route: wiki-page
       title: Getting Started
       id: getting_started
-    - page: wiki-page
+    - route: wiki-page
       title: Guides
       id: guide
-    - page: help
+    - route: help
       title: Help
     - divider: true
-    - page: chat
+    - route: chat
       title: Chat
-    - page: forum
+    - route: forum
       title: Forum
-    - page: events
+    - route: events
       title: Events
-    - page: jobs
+    - route: jobs
       title: Requests
-    - page: who
+    - route: who
       title: Who's Online
   - title: World
     menu:
-    - page: wiki-page
+    - route: wiki-page
       title: Grand Lake
       id: grand_lake
-    - page: wiki-page
+    - route: wiki-page
       title: Magic
       id: magic
-    - page: wiki-page
+    - route: wiki-page
       title: Schools
       id: schools
-    - page: wiki-page
+    - route: wiki-page
       title: Magical Items
       id: magical_items
-    - page: wiki-page
+    - route: wiki-page
       title: Magical Orders
       id: magical_orders
-    - page: wiki-page
+    - route: wiki-page
       title: Portals
       id: portals
-    - page: wiki-page
+    - route: wiki-page
       title: Creatures
       id: creatures
-    - page: wiki-page
+    - route: wiki-page
       title: Familiars
       id: familiars
   - title: Story
     menu:
-    - page: characters
+    - route: characters
       title: Characters
-    - page: scenes
+    - route: scenes
       title: Scenes
-    - page: plots
+    - route: plots
       title: Plots
     - divider: true
-    - page: wiki-page
+    - route: wiki-page
       title: Under-Library
       id: underlibrary
-    - page: wiki-page
+    - route: wiki-page
       title: Hooks & Hopes
       id: hooks__amp__hopes
-    - page: wiki-page
+    - route: wiki-page
       title: Player Run Plots
       id: player_run_plots
-    - page: secrets
+    - route: secrets
       title: Secrets
   - title: Directory
     menu:
-    - page: spells
+    - route: spells
       title: Spells
-    - page: portals
+    - route: portals
       title: Portals
-    - page: creatures
+    - route: creatures
       title: Creatures
-    - page: characters
+    - route: characters
       title: Characters
     - divider: true
-    - page: players
+    - route: players
       title: Players
-    - page: census
+    - route: census
       title: Census
-    - page: actors
+    - route: actors
       title: Actors
-    - page: locations
+    - route: locations
       title: Locations
     - divider: true
-    - page: files
+    - route: files
       title: Files
   - title: System
     menu:
-    - page: wiki-page
+    - route: wiki-page
       title: Combat Guide
       id: combat_guide
-    - page: wiki-page
+    - route: wiki-page
       title: Combat Organizer's Guide
       id: combat_org_guide
-    - page: wiki-page
+    - route: wiki-page
       title: Magic System
       id: magic_system
-    - page: wiki-page
+    - route: wiki-page
       title: Luck Points
       id: luck_points
-    - page: wiki-page
+    - route: wiki-page
       title: XP
       id: xp
     - divider: true
-    - page: fs3skills-abilities
+    - route: fs3skills-abilities
       title: Abilities List
-    - page: fs3combat-gear
+    - route: fs3combat-gear
       title: Gear List
-    - page: spells
+    - route: spells
       title: Spell List
-    - page: groups
+    - route: groups
       title: Groups List
     - divider: true
     - target: blank
