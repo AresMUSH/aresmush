@@ -7,6 +7,8 @@ module AresMUSH
     attribute :description
     attribute :category
     attribute :status
+    attribute :is_open
+    attribute :date_closed
     
     reference :author, "AresMUSH::Character"
     reference :assigned_to, "AresMUSH::Character"
@@ -16,7 +18,8 @@ module AresMUSH
     set :participants, "AresMUSH::Character"
         
     index :category
-
+    index :is_open
+    
     before_delete :delete_replies
     
     def delete_replies
@@ -43,6 +46,10 @@ module AresMUSH
     
     def author_name
       !self.author ? t('global.deleted_character') : self.author.name
+    end
+    
+    def self.open_jobs
+      Job.find(is_open: "true")
     end
     
   end

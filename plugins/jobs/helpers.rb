@@ -15,7 +15,7 @@ module AresMUSH
     end
     
     def self.closed_jobs
-      Job.all.select { |j| !j.is_open? }
+      Job.open_jobs.select { |j| j.is_closed? }
     end
     
     def self.can_access_category?(actor, category)
@@ -59,15 +59,15 @@ module AresMUSH
       when "ALL"
         jobs = Job.all.select { |j| Jobs.can_access_category?(char, j.category) }
       when "UNFINISHED", nil
-        jobs = Job.all.select { |j| Jobs.can_access_category?(char, j.category) && (j.is_open? || j.is_unread?(char)) }
+        jobs = Job.open_jobs.select { |j| Jobs.can_access_category?(char, j.category) && (j.is_open? || j.is_unread?(char)) }
       when "ACTIVE", nil
-        jobs = Job.all.select { |j| Jobs.can_access_category?(char, j.category) && (j.is_active? || j.is_unread?(char)) }
+        jobs = Job.open_jobs.select { |j| Jobs.can_access_category?(char, j.category) && (j.is_active? || j.is_unread?(char)) }
       when "MINE"
         jobs = char.assigned_jobs.select { |j| j.is_open? }
       when "UNREAD"
         jobs = char.unread_jobs
       else
-        jobs = Job.find(category: char.jobs_filter.upcase).select { |j| Jobs.can_access_category?(char, j.category) && j.is_open? }
+        jobs = Job.open_jobs.select { |j| j.category == char.jobs_filter.upcase && Jobs.can_access_category?(char, j.category) && j.is_open? }
       end
 
       jobs = jobs || []

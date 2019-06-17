@@ -95,6 +95,23 @@ module AresMUSH
       recent = Scene.shared_scenes.sort_by { |s| s.date_shared || s.created_at }.reverse[0..29] || []
       Game.master.update(recent_scenes: recent.map { |r| r.id })
       
+      Global.logger.debug "Archiving old jobs."
+      Job.all.each do |j|
+        if (j.is_open?)
+          j.update(is_open: true)
+        else
+          j.update(date_closed: Time.now)
+          j.update(is_open: false)
+        end
+      end
+        
+      Global.logger.debug "Add job config."
+      config = DatabaseMigrator.read_config_file("jobs.yml")
+      config['jobs']['shortcuts']['job/unread'] = 'job/filter unread'
+      config['jobs']['archive_job_days'] = 10
+      DatabaseMigrator.write_config_file("jobs.yml", config)  
+         
+         
       Global.logger.debug "Removing cookies plugin dir."
       FileUtils.remove_dir(File.join(AresMUSH.root_path, "plugins/cookies"))
       
