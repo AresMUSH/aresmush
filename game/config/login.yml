@@ -29,5 +29,4 @@ login:
     motd: notice/motd
   use_terms_of_service: false
   portal_requires_registration: false
-  guest_disabled_message: 'Sorry, Spirit Lake is full. Watch the website to see
-  when we're accepting applications again.'
+  guest_disabled_message: ''
