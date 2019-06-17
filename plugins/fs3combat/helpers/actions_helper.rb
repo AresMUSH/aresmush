@@ -450,7 +450,9 @@ module AresMUSH
       attacker_net_successes = attack_roll - defense_roll
       stopped_by_cover = target.stance == "Cover" ? FS3Combat.stopped_by_cover?(attacker_net_successes, combatant) : false
       hit = false
-      stopped_by_shield = FS3Combat.stopped_by_shield?(combatant.weapon, target, combatant)
+      if (target.mind_shield > 0 || target.endure_fire > 0 || target.endure_cold > 0 )
+        stopped_by_shield = FS3Combat.stopped_by_shield?(combatant.weapon, target, combatant)
+      end
       weapon_type = FS3Combat.weapon_stat(combatant.weapon, "weapon_type")
       hit_mount = FS3Combat.hit_mount?(combatant, target, attacker_net_successes, mount_hit)
 
