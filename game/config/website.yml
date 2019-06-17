@@ -121,24 +121,24 @@ website:
     menu:
     - page: spells
       title: Spells
-    - page: portals
-      title: Portals
-    - page: creatures
-      title: Creatures
-    - page: characters
-      title: Characters
-    - divider: true
-    - page: players
-      title: Players
-    - page: census
-      title: Census
-    - page: actors
-      title: Actors
-    - page: locations
-      title: Locations
-    - divider: true
-    - page: files
-      title: Files
+    # - page: portals
+    #   title: Portals
+    # - page: creatures
+    #   title: Creatures
+    # - page: characters
+    #   title: Characters
+    # - divider: true
+    # - page: players
+    #   title: Players
+    # - page: census
+    #   title: Census
+    # - page: actors
+    #   title: Actors
+    # - page: locations
+    #   title: Locations
+    # - divider: true
+    # - page: files
+    #   title: Files
   - title: System
     menu:
     - page: wiki-page
