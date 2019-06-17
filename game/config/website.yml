@@ -132,8 +132,6 @@ website:
       title: Players
     - route: census
       title: Census
-    - route: actors
-      title: Actors
     - route: locations
       title: Locations
     - divider: true
