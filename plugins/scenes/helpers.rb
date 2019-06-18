@@ -134,7 +134,7 @@ module AresMUSH
       scene.update(date_completed: Time.now)
 
       Scenes.new_scene_activity(scene, :status_changed, nil)
-      
+
       if (!scene.was_restarted)
         scene.participants.each do |char|
           Scenes.handle_scene_participation_achievement(char)
@@ -377,14 +377,20 @@ module AresMUSH
       if (is_ooc || quote_color.blank?)
         colored_pose = pose
       else
-        matches = pose.scan(/([^"]+)?("[^"]+")?/)
+        quote_matches = pose.scan(/([^"]+)?("[^"]+")?/)
         colored_pose = ""
-        matches.each do |m|
+        quote_matches.each do |m|
           if (m[0])
             colored_pose << "#{m[0]}"
           end
           if (m[1])
             colored_pose << "#{quote_color}#{m[1]}%xn"
+          end
+        end
+        tepe_matches = pose.scan(/([^<]+)?(<<[^>]+>>)?/)
+        tepe_matches.each do |m|
+          if (m[1])
+            colored_pose.sub! m[1], "#{quote_color}#{m[1]}%xn"
           end
         end
       end
