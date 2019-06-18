@@ -82,7 +82,7 @@ module AresMUSH
       end
       
       def self.export_scenes
-        index = build_scene_index(Scene.shared_scenes.sort_by { |s| s.icdate }.reverse)
+        index = build_scene_index(Scene.shared_scenes.to_a.sort_by { |s| s.icdate }.reverse)
         
         File.open(File.join(export_path, "scenes.html"), 'w') do |f|
           

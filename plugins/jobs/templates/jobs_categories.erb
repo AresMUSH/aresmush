@@ -1,0 +1,13 @@
+<%= header %>
+%xh<%= t('jobs.jobs_category_list_title') %>%xn
+<%= divider %>
+<% categories.each do |cat| %>
+<% if can_access_category?(cat) %>
+<%= left(cat.name, 15) %> <%= roles(cat) %>
+<% end %>
+<% end %>
+<% if reboot_text %>
+%ld
+%xh%xr<%= reboot_text %>%xn
+<% end %>
+<%= footer %>

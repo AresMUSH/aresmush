@@ -16,13 +16,17 @@ module AresMUSH
         end
         
         case enactor.jobs_filter
-        when "ALL"
-          jobs.concat enactor.requests.to_a 
+          
+        when "ACTIVE", "MINE", "UNFINISHED"
+          jobs.concat Jobs.open_requests(enactor)
         when "UNREAD"
           jobs.concat enactor.unread_requests
-        else
-          jobs.concat Jobs.open_requests(enactor)
-        end          
+        when "ALL"
+          jobs.concat enactor.requests.to_a 
+        else # Category filter
+          jobs.concat Jobs.open_requests(enactor).select { |j| j.job_category.name == enactor.jobs_filter}
+        end
+        
         jobs = jobs.uniq.sort_by { |j| j.created_at }.reverse
         
         paginator = Paginator.paginate(jobs, page, 30)

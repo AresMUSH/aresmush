@@ -25,6 +25,8 @@ module AresMUSH
           return JobsBackupCmd
         when "cat"
           return ChangeCategoryCmd
+        when "catlist"
+          return ListJobCaegoriesCmd
         when "catchup"
           return JobsCatchupCmd
         when "discuss", "respond"

@@ -34,13 +34,10 @@ module AresMUSH
     
     before_delete :delete_poses_and_log
     
-    index :created_at
     index :shared
     index :completed
-    index :date_shared
     
     def self.shared_scenes
-      #Scene.all.select { |s| s.shared }
       Scene.find(shared: true)
     end
     

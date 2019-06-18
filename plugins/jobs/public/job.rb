@@ -11,11 +11,13 @@ module AresMUSH
     reference :author, "AresMUSH::Character"
     reference :assigned_to, "AresMUSH::Character"
     reference :approval_char, "AresMUSH::Character"
-
+    reference :job_category, "AresMUSH::JobCategory"
+    
     collection :job_replies, "AresMUSH::JobReply"
     set :participants, "AresMUSH::Character"
         
     index :category
+    index :status
 
     before_delete :delete_replies
     
