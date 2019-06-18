@@ -97,8 +97,10 @@ en:
         autospace_set: "Poses will now look like this:%xn%RA pose.%r%{option}Another pose."
         autospace_cleared: "You will no longer see anything between poses."
 
-        quote_color_set: "You set your pose quotation color to %xn %{option}this%xn."
+        quote_color_set: "You set your pose quotation color to %xn%{option}this%xn."
         quote_color_cleared: "Quotation color cleared."
+        tepe_color_set: "You set your pose telepathy color to %xn%{option}this%xn."
+        tepe_color_cleared: "Telepathy color cleared."
 
         pose_order_title: "Name                        Last Posed"
         pose_threeper_notice: "3-per pose order is in effect."

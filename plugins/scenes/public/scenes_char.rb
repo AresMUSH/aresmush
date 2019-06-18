@@ -3,36 +3,37 @@ module AresMUSH
     attribute :pose_nospoof, :type => DataType::Boolean
     attribute :pose_autospace, :default => "%r"
     attribute :pose_quote_color
+    attribute :pose_tepe_color
     attribute :pose_nudge, :type => DataType::Boolean, :default => true
     attribute :pose_nudge_muted, :type => DataType::Boolean
     attribute :pose_word_count, :type => DataType::Integer
     attribute :scene_home
     attribute :read_scenes, :type => DataType::Array, :default => []
-  
+
     before_delete :remove_from_scenes
-    
+
     def autospace
       self.pose_autospace
     end
-    
+
     def autospace=(value)
       self.update(pose_autospace: value)
     end
-    
+
     def last_posed
       last_pose_time = self.room.pose_order[self.name]
       return nil if !last_pose_time
       TimeFormatter.format(Time.now - Time.parse(last_pose_time))
     end
-    
+
     def scenes_starring
       Scene.scenes_starring(self)
     end
-    
+
     def unshared_scenes
       Scene.all.select { |s| s.completed && !s.shared && (s.participants.include?(self) || s.owner == self) }
     end
-    
+
     def remove_from_scenes
       Scene.all.each do |s|
         Database.remove_from_set s.participants, self

@@ -24,3 +24,4 @@ The autospace command automatically inserts a blank line or other symbol between
 You can also have Ares colorize text between quotes in poses, to make quotations more visible.  The color code can be found in the `colors` command.  You can also combine colors, so \%xb\%xh will make it bold and blue.
 
 `quotecolor <ansi color code>` - Sets your quotation color.  Leave blank to clear it.
+`tepecolor <ansi color code>` - Sets your telepathy color.  Leave blank to clear it.

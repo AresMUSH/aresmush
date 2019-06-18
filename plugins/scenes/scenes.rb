@@ -6,11 +6,11 @@ module AresMUSH
     def self.plugin_dir
       File.dirname(__FILE__)
     end
- 
+
     def self.shortcuts
       Global.read_config("scenes", "shortcuts")
     end
- 
+
     def self.get_cmd_handler(client, cmd, enactor)
       case cmd.root
       when "autospace"
@@ -52,10 +52,13 @@ module AresMUSH
         when "ordertype"
           return PoseOrderTypeCmd
         end
-        
+
       when "quotecolor"
         return QuoteColorCmd
-      
+
+      when "tepecolor"
+        return TepeColorCmd
+
       when "scene"
         case cmd.switch
         when "all"
@@ -110,7 +113,7 @@ module AresMUSH
           return SceneWebStartCmd
         end
       end
-      
+
       if (cmd.raw.start_with?("\"") ||
           cmd.raw.start_with?("\\") ||
           cmd.raw.start_with?(":") ||
@@ -119,11 +122,11 @@ module AresMUSH
           cmd.raw.start_with?(";"))
         return PoseCatcherCmd
       end
-      
+
       nil
     end
 
-    def self.get_event_handler(event_name) 
+    def self.get_event_handler(event_name)
       case event_name
       when "CronEvent"
         return CronEventHandler
@@ -134,7 +137,7 @@ module AresMUSH
       end
       nil
     end
-    
+
     def self.get_web_request_handler(request)
       case request.cmd
       when "addScenePose"
@@ -166,13 +169,13 @@ module AresMUSH
       when "likeScene"
         return LikeSceneRequestHandler
       when "liveScenes"
-        return LiveScenesRequestHandler        
+        return LiveScenesRequestHandler
       when "liveScene"
-        return LiveSceneRequestHandler  
+        return LiveSceneRequestHandler
       when "markSceneRead"
         return MarkSceneReadRequestHandler
       when "myScenes"
-        return MyScenesRequestHandler     
+        return MyScenesRequestHandler
       when "plots"
         return PlotsRequestHandler
       when "plot"

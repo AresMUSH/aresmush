@@ -374,6 +374,7 @@ module AresMUSH
 
     def self.format_quote_color(pose, char, is_ooc)
       quote_color = char.pose_quote_color
+      tepe_color = char.pose_tepe_color
       if (is_ooc || quote_color.blank?)
         colored_pose = pose
       else
@@ -390,7 +391,7 @@ module AresMUSH
         tepe_matches = pose.scan(/([^<]+)?(<<[^>]+>>)?/)
         tepe_matches.each do |m|
           if (m[1])
-            colored_pose.sub! m[1], "#{quote_color}#{m[1]}%xn"
+            colored_pose.sub! m[1], "#{tepe_color}#{m[1]}%xn"
           end
         end
       end
