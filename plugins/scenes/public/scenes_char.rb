@@ -3,7 +3,7 @@ module AresMUSH
     attribute :pose_nospoof, :type => DataType::Boolean
     attribute :pose_autospace, :default => "%r"
     attribute :pose_quote_color
-    attribute :pose_tepe_color
+    attribute :pose_tepe_color, :default => "%xh"
     attribute :pose_nudge, :type => DataType::Boolean, :default => true
     attribute :pose_nudge_muted, :type => DataType::Boolean
     attribute :pose_word_count, :type => DataType::Integer
