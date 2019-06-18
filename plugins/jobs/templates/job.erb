@@ -1,7 +1,7 @@
 <%= header %>
 %xh<%= center( title, 78 ) %>%xn
 
-%xh<%= left( t('jobs.category_title'), 15 ) %>%xn <%= category_color %><%= job.category %>%xn
+%xh<%= left( t('jobs.category_title'), 15 ) %>%xn <%= category_color %><%= job.job_category.name %>%xn
 %xh<%= left( t('jobs.submitted_by_title'), 15 ) %>%xn <%= left( submitted_by, 20 ) -%>
 %xh<%= left( t('jobs.submitted_on_title'), 15 ) %>%xn <%= submitted_on %> 
 %xh<%= left( t('jobs.other_participants_title'), 15 ) %>%xn <%= participants %>

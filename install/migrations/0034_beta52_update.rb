@@ -92,8 +92,28 @@ module AresMUSH
       Game.master.update(recent_changes: recent)
       
       Global.logger.debug "Adding recent scenes"
-      recent = Scene.shared_scenes.sort_by { |s| s.date_shared || s.created_at }.reverse[0..29] || []
+      recent = Scene.shared_scenes.to_a.sort_by { |s| s.date_shared || s.created_at }.reverse[0..29] || []
+      Scene.all.each do |s|
+        s.update(completed: s.completed) # Trigger indexing
+        s.update(shared: s.shared)
+      end
       Game.master.update(recent_scenes: recent.map { |r| r.id })
+      
+      
+      Global.logger.debug "Creating job category objects."
+      categories = Global.read_config("jobs", "categories").keys.map { |c| c.upcase }
+      categories.each do |cat|
+        cat_model = JobCategory.create(name: cat.titlecase, alias: cat)
+        Job.find(category: cat).each do |j|
+          j.update(job_category: cat_model)
+          j.update(status: j.status) # Triggers the indexing
+        end
+      end
+        
+      Global.logger.debug "Add job config."
+      config = DatabaseMigrator.read_config_file("jobs.yml")
+      config['jobs']['shortcuts']['job/unread'] = "job/filter unread"
+      DatabaseMigrator.write_config_file("jobs.yml", config)  
       
       Global.logger.debug "Removing cookies plugin dir."
       FileUtils.remove_dir(File.join(AresMUSH.root_path, "plugins/cookies"))

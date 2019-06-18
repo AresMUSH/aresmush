@@ -7,7 +7,7 @@ module AresMUSH
     end
     
     def self.categories
-      Global.read_config("jobs", "categories").keys.map { |c| c.upcase }
+      JobCategory.all.map { |j| j.name }
     end
     
     def self.status_vals
@@ -20,15 +20,12 @@ module AresMUSH
     
     def self.can_access_category?(actor, category)
       return true if actor.is_admin?
-      return false if !Jobs.can_access_jobs?(actor)
-      cats = Global.read_config("jobs", "categories")
-      roles = cats[category.upcase]['roles']
-      return false if !roles      
-      actor.has_any_role?(roles)
+      return false if !Jobs.can_access_jobs?(actor)    
+      actor.has_any_role?(category.roles)
     end
 
     def self.visible_replies(actor, job)
-      if (Jobs.can_access_category?(actor, job.category))
+      if (Jobs.can_access_category?(actor, job.job_category))
         job.job_replies.to_a
       else
         job.job_replies.select { |r| !r.admin_only}
@@ -51,26 +48,40 @@ module AresMUSH
       return config[key]["color"]
     end
     
+    def self.accessible_jobs(char, category_filter = nil)
+      jobs = []
+      if (category_filter)
+        categories = JobCategory.all.select{ |j| category_filter.include?(j.name) && Jobs.can_access_category?(char, j) }
+      else
+        categories = JobCategory.all.select{ |j| Jobs.can_access_category?(char, j) }
+      end
+      
+      categories.each do |j|
+        jobs = jobs.concat(j.jobs.to_a)
+      end
+      jobs
+    end
+    
     def self.filtered_jobs(char, filter = nil)
       if (!filter)
         filter = char.jobs_filter
       end
+            
       case filter
-      when "ALL"
-        jobs = Job.all.select { |j| Jobs.can_access_category?(char, j.category) }
-      when "UNFINISHED", nil
-        jobs = Job.all.select { |j| Jobs.can_access_category?(char, j.category) && (j.is_open? || j.is_unread?(char)) }
-      when "ACTIVE", nil
-        jobs = Job.all.select { |j| Jobs.can_access_category?(char, j.category) && (j.is_active? || j.is_unread?(char)) }
+      when "ACTIVE"
+        jobs = Jobs.accessible_jobs(char).select { |j| j.is_active? || j.is_unread?(char) }
       when "MINE"
         jobs = char.assigned_jobs.select { |j| j.is_open? }
+      when "UNFINISHED"
+        jobs = Jobs.accessible_jobs(char).select { |j| j.is_open? }
       when "UNREAD"
         jobs = char.unread_jobs
-      else
-        jobs = Job.find(category: char.jobs_filter.upcase).select { |j| Jobs.can_access_category?(char, j.category) && j.is_open? }
+      when "ALL"
+        jobs = Jobs.accessible_jobs(char)
+      else # Category filter
+        jobs = Jobs.accessible_jobs(char, [ filter ]).select { |j| j.is_active? || j.is_unread?(char) }
       end
-
-      jobs = jobs || []
+        
       jobs.sort_by { |j| j.created_at }
     end
     
@@ -124,7 +135,7 @@ module AresMUSH
         return nil if job.participants.include?(enactor)
       end
       return t('dispatcher.not_allowed') if !Jobs.can_access_jobs?(enactor)
-      return t('jobs.cant_access_category') if !Jobs.can_access_category?(enactor, job.category)
+      return t('jobs.cant_access_category') if !Jobs.can_access_category?(enactor, job.job_category)
       return nil
     end
           
@@ -149,18 +160,18 @@ module AresMUSH
       
       if (!notify_submitter)
         submitter = job.author
-        if (submitter && !Jobs.can_access_category?(submitter, job.category))
+        if (submitter && !Jobs.can_access_category?(submitter, job.job_category))
           Jobs.mark_read(job, submitter)
         end
       end
       
       Global.client_monitor.emit_ooc(message) do |char|
-        char && (Jobs.can_access_category?(char, job.category) || notify_submitter && char == job.author)
+        char && (Jobs.can_access_category?(char, job.job_category) || notify_submitter && char == job.author)
       end
             
       data = "#{job.id}|#{message}"
       Global.client_monitor.notify_web_clients(:job_update, data) do |char|
-        char && (Jobs.can_access_category?(char, job.category) || notify_submitter && char == job.author)
+        char && (Jobs.can_access_category?(char, job.job_category) || notify_submitter && char == job.author)
       end
             
     end

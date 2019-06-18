@@ -54,7 +54,7 @@ module AresMUSH
       end
       
       def category_color
-        Jobs.category_color(@job.category)
+        Jobs.category_color(@job.job_category.name)
       end
     end
   end

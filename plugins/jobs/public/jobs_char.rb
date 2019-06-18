@@ -2,6 +2,10 @@ module AresMUSH
   class Character
     
     attribute :jobs_filter, :default => "ACTIVE"
+    attribute :jobs_general_filter, :default => "ACTIVE"
+    attribute :jobs_category_filter
+    attribute :jobs_status_filter
+    
     attribute :read_jobs, :type => DataType::Array, :default => []
 
     collection :jobs, "AresMUSH::Job", :author
@@ -22,7 +26,8 @@ module AresMUSH
     
     def unread_jobs
       return [] if !Jobs.can_access_jobs?(self)
-      staff_jobs = Job.all.select { |j| !Jobs.check_job_access(self, j) && j.is_unread?(self) }
+      read_jobs = self.read_jobs || []
+      staff_jobs = Jobs.accessible_jobs(self).select { |j| !read_jobs.include?(j.id) }
       their_jobs = self.unread_requests
       
       return staff_jobs.concat(their_jobs).uniq
