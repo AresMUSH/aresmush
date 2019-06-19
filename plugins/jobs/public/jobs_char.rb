@@ -2,9 +2,6 @@ module AresMUSH
   class Character
     
     attribute :jobs_filter, :default => "ACTIVE"
-    attribute :jobs_general_filter, :default => "ACTIVE"
-    attribute :jobs_category_filter
-    attribute :jobs_status_filter
     
     attribute :read_jobs, :type => DataType::Array, :default => []
 

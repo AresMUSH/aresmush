@@ -6,6 +6,11 @@ module AresMUSH
       actor.has_permission?("access_jobs")
     end
     
+    def self.can_manage_jobs?(actor)
+      return false if !actor
+      actor.has_permission?("manage_jobs")
+    end
+    
     def self.categories
       JobCategory.all.map { |j| j.name }
     end
@@ -32,12 +37,11 @@ module AresMUSH
       end
     end
     
-    def self.category_color(category)
-      return "" if !category
-      config = Global.read_config("jobs", "categories")
-      key = config.keys.find { |k| k.downcase == category.downcase }
-      reutrn "%xh" if !key
-      return config[key]["color"]
+    def self.category_color(category_name)
+      return "" if !(category_name)
+      category = JobCategory.named(category_name)
+      reutrn "%xh" if !category
+      return category.color
     end
     
     def self.status_color(status)
@@ -48,7 +52,7 @@ module AresMUSH
       return config[key]["color"]
     end
     
-    def self.accessible_jobs(char, category_filter = nil)
+    def self.accessible_jobs(char, category_filter = nil, include_archive = false)
       jobs = []
       if (category_filter)
         categories = JobCategory.all.select{ |j| category_filter.include?(j.name) && Jobs.can_access_category?(char, j) }
@@ -56,8 +60,15 @@ module AresMUSH
         categories = JobCategory.all.select{ |j| Jobs.can_access_category?(char, j) }
       end
       
-      categories.each do |j|
-        jobs = jobs.concat(j.jobs.to_a)
+      categories.each do |cat|
+        if (include_archive)
+          jobs = jobs.concat(cat.jobs.to_a)
+        else
+          active_statuses = Jobs.status_vals.select { |s| s != Jobs.archived_status }
+          active_statuses.each do |status|
+            jobs = jobs.concat(cat.jobs.find(status: status).to_a)
+          end
+        end
       end
       jobs
     end
@@ -111,6 +122,21 @@ module AresMUSH
       yield job
     end
     
+    def self.with_a_category(name, client, char, &block)
+      category = JobCategory.named(name)
+      if (!category)
+        client.emit_failure t('jobs.invalid_category', :categories => Jobs.categories.join(", "))
+        return
+      end
+      
+      if !Jobs.can_access_category?(char, category)
+        client.emit_failure t('jobs.cant_access_category')
+        return
+      end
+      
+      yield category
+    end
+    
     def self.comment(job, author, message, admin_only)
       JobReply.create(:author => author, 
         :job => job,
@@ -141,7 +167,7 @@ module AresMUSH
           
     def self.assign(job, assignee, enactor)
       job.update(assigned_to: assignee)
-      job.update(status: "OPEN")
+      job.update(status: Jobs.open_status)
       notification = t('jobs.job_assigned', :number => job.id, :title => job.title, :assigner => enactor.name, :assignee => assignee.name)
       Jobs.notify(job, notification, enactor)
     end
@@ -150,8 +176,20 @@ module AresMUSH
       char.requests.select { |r| r.is_open? || r.is_unread?(char) }
     end
     
-    def self.closed_status
-      Global.read_config("jobs", "closed_status")
+    def self.closed_statuses
+      Global.read_config("jobs", "closed_statuses")
+    end
+    
+    def self.active_statuses
+      Global.read_config("jobs", "active_statuses")
+    end
+    
+    def self.archived_status
+      Global.read_config("jobs", "archived_status")
+    end
+    
+    def self.open_status
+      Global.read_config("jobs", "open_status")
     end
         
     def self.notify(job, message, author, notify_submitter = true)
@@ -186,8 +224,9 @@ module AresMUSH
       Jobs.notify(job, notification, enactor)
     end
         
-    def self.change_job_category(enactor, job, category)
-      job.update(category: category)
+    def self.change_job_category(enactor, job, category_name)
+      category = JobCategory.named(category_name)
+      job.update(job_category: category)
       notification = t('jobs.updated_job', :number => job.id, :title => job.title, :name => enactor.name)
       Jobs.notify(job, notification, enactor)
     end

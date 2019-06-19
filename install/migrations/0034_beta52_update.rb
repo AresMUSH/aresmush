@@ -101,10 +101,10 @@ module AresMUSH
       
       
       Global.logger.debug "Creating job category objects."
-      categories = Global.read_config("jobs", "categories").keys.map { |c| c.upcase }
-      categories.each do |cat|
-        cat_model = JobCategory.create(name: cat.titlecase, alias: cat)
-        Job.find(category: cat).each do |j|
+      categories = Global.read_config("jobs", "categories")
+      categories.each do |name, data|
+        cat_model = JobCategory.create(name: name.upcase, color: data['color'])
+        Job.find(category: name.upcase).each do |j|
           j.update(job_category: cat_model)
           j.update(status: j.status) # Triggers the indexing
         end
@@ -113,8 +113,20 @@ module AresMUSH
       Global.logger.debug "Add job config."
       config = DatabaseMigrator.read_config_file("jobs.yml")
       config['jobs']['shortcuts']['job/unread'] = "job/filter unread"
+      config['jobs']['archive_job_days'] = 10
+      config['jobs']['archive_cron'] = { 'day_of_week' => ['Sun'], 'hour' => [04], 'minute' => [18] }
+      config['jobs']['status']['ARCHIVED'] = { 'color' => "%xx%xh" }
+      config['jobs']['closed_statuses'] = [ 'DONE', 'ARCHIVED' ]
+      config['jobs']['active_statuses'] = [ 'NEW', 'OPEN' ]
+      config['jobs']['open_status'] = 'OPEN'      
       DatabaseMigrator.write_config_file("jobs.yml", config)  
       
+      Global.logger.debug "Archiving old jobs."
+      Job.find(status: 'DONE').each do |j|
+          j.update(date_closed: Time.now)
+          j.update(status: 'ARCHIVED')
+      end         
+         
       Global.logger.debug "Removing cookies plugin dir."
       FileUtils.remove_dir(File.join(AresMUSH.root_path, "plugins/cookies"))
       

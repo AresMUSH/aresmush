@@ -10,7 +10,7 @@ module AresMUSH
       job = Job.create(:author => author, 
         :title => title, 
         :description => description, 
-        :category => category,
+        :job_category => JobCategory.named(category),
         :status => Global.read_config("jobs", "default_status"))
         
       message = t('jobs.announce_new_job', :number => job.id, :title => job.title, :name => author.name)
@@ -20,7 +20,7 @@ module AresMUSH
     end
     
     def self.change_job_status(enactor, job, status, message = nil)
-      if (status == Jobs.closed_status)
+      if (Jobs.closed_statuses.include?(status))
         status_message = t('jobs.closed_job', :name => enactor.name, :status => status)
       else
         status_message = t('jobs.changed_job_status', :name => enactor.name, :status => status)
@@ -33,7 +33,8 @@ module AresMUSH
     end
     
     def self.close_job(enactor, job, message = nil)
-      Jobs.change_job_status(enactor, job, Jobs.closed_status, message)
+      job.update(date_closed: Time.now)
+      Jobs.change_job_status(enactor, job, Jobs.closed_statuses.first, message)
     end
     
     def self.request_category
