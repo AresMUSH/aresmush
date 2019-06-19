@@ -36,7 +36,8 @@ module AresMUSH
     
     def self.can_delete_scene?(actor, scene)
       return false if !actor
-      return true if (scene.owner == actor && (scene.scene_poses.count == 0) && !scene.scene_log)
+      real_poses = scene.scene_poses.select { |p| !p.is_ooc }
+      return true if (scene.owner == actor && (real_poses.count == 0) && !scene.scene_log)
       return true if Scenes.can_manage_scene?(actor, scene)
       return false
     end
@@ -587,14 +588,7 @@ module AresMUSH
     end
     
     def self.recent_scenes
-      recent = []
-      (Game.master.recent_scenes || []).each do |id|
-        scene = Scene[id]
-        if (scene)
-          recent << scene
-        end
-      end
-      recent
+      (Game.master.recent_scenes || []).map { |id| Scene[id] }.select { |s| s }
     end
     
     def self.remove_recent_scene(scene)
@@ -605,9 +599,10 @@ module AresMUSH
     
     def self.add_recent_scene(scene)
       recent = Game.master.recent_scenes
-      recent << scene.id
+      recent.unshift(scene.id)
+      recent = recent.uniq
       if (recent.count > 30)
-        recent.shift
+        recent.pop
       end
       Game.master.update(recent_scenes: recent)
     end

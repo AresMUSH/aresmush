@@ -1,11 +1,11 @@
 module AresMUSH
   module Website
-    def self.add_to_recent_changes(type, id)
+    def self.add_to_recent_changes(type, id, name)
       changes = Game.master.recent_changes || []
+      changes.unshift({ 'type' => type, 'id' => id, 'name' => name })
       if (changes.count > 99)
-        changes.shift
+        changes.pop
       end
-      changes << { 'type' => type, 'id' => id }
       Game.master.update(recent_changes: changes)
     end
     
@@ -16,7 +16,7 @@ module AresMUSH
       if (unique_only)
         found = []
         all_changes.each do |c|
-          key = c['title']
+          key = c['name']
           if (!found.include?(key))
             found << key
             changes << c

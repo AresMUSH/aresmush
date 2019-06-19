@@ -17,6 +17,8 @@ module AresMUSH
           scenes = Scenes.recent_scenes
         elsif (filter == 'Popular')
           scenes = Scene.shared_scenes.select { |s| s.likes > 0 }.sort_by { |s| s.likes }.reverse
+        elsif (filter == 'All')
+          scenes = Scene.shared_scenes.sort_by { |s| s.date_shared || s.created_at }.reverse
         else # scene type filter
           scenes = Scene.shared_scenes.select { |s| s.scene_type == filter }.sort_by { |s| s.date_shared || s.created_at }.reverse
         end
