@@ -19,9 +19,7 @@ module AresMUSH
     def self.get_recent_forum_posts_web_data(enactor)
       posts = Game.master.recent_forum_posts.map { |f| BbsPost[f] }
           .select { |f| f }
-          .select { |f| Forum.can_read_category?(enactor, f.bbs_board) }
-          .sort_by { |f| f.last_updated }
-          .reverse[0..6]
+          .select { |f| Forum.can_read_category?(enactor, f.bbs_board) }[0..6]
       
       recent = []
     

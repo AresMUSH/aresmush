@@ -38,7 +38,7 @@ module AresMUSH
     index :completed
     
     def self.shared_scenes
-      Scene.find(shared: true)
+      Scene.find(shared: true).to_a
     end
     
     def self.scenes_starring(char)

@@ -34,7 +34,7 @@ module AresMUSH
 
         page.update(tags: tags, title: title, name: name, locked_by: nil)
         version = WikiPageVersion.create(wiki_page: page, text: text, character: enactor)
-        Website.add_to_recent_changes('wiki', version.id)
+        Website.add_to_recent_changes('wiki', version.id, page.name)
         
         Achievements.award_achievement(enactor, "wiki_edit", 'portal', "Edited a wiki page.")
         
