@@ -22,24 +22,13 @@ module AresMUSH
         else
           token_expiry_warning = nil
         end
-        
-        recent = Scenes.recent_scenes[0..9].map { |s| {
-                id: s.id,
-                title: s.title,
-                summary: s.summary,
-                location: s.location,
-                icdate: s.icdate,
-                participants: s.participants.to_a.sort_by { |p| p.name }.map { |p| { name: p.name, id: p.id, icon: Website.icon_for_char(p) }},
-                scene_type: s.scene_type ? s.scene_type.titlecase : 'unknown',
-      
-              }}
-        
+                
         {
           timestamp: Time.now.getutc,
           game: GetGameInfoRequestHandler.new.handle(request),
           upcoming_events: Events::UpcomingEventsRequestHandler.new.handle(request),
-          recent_scenes: recent,
-          recent_forum: Forum::RecentForumPostsRequestHandler.new.handle(request),
+          recent_scenes: Scenes.get_recent_scenes_web_data,
+          recent_forum: Forum.get_recent_forum_posts_web_data,(enactor)
           happenings: Who::WhoRequestHandler.new.handle(request),
           unread_mail: enactor ? enactor.unread_mail.count : nil,
           recent_changes: Website.recent_changes(true, 10),
