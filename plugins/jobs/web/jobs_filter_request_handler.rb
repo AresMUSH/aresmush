@@ -7,10 +7,10 @@ module AresMUSH
         
         error = Website.check_login(request)
         return error if error
-
+        
         error = Jobs.check_filter_type(filter)
         if (error)
-          return { error: error }
+            return { error: error }
         end
         
         enactor.update(jobs_filter: filter)

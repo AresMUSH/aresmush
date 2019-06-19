@@ -80,7 +80,7 @@ module AresMUSH
       end
       
       def post_trending_scenes
-        recent_scenes = Scene.all.select { |s| s.shared && s.likes > 0 && (Time.now - (s.date_shared || s.created_at) < 864000) }
+        recent_scenes = Scenes.recent_scenes.select { |s| s.likes > 0 && (Time.now - (s.date_shared || s.created_at) < 864000) }
         trending = recent_scenes.sort_by { |s| -s.likes }[0, 10]
         
         return if trending.count < 1

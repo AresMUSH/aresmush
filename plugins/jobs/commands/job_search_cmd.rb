@@ -23,16 +23,15 @@ module AresMUSH
   
       def handle
         if (self.category == "title")
-          jobs = Job.all.select { |j| Jobs.can_access_category?(enactor, j.category) && (j.title =~ /#{self.value}/i) }
+          jobs = Jobs.accessible_jobs(enactor).select { |j| j.title =~ /#{self.value}/i }
         elsif (self.category == "submitter")
-          result = ClassTargetFinder.find(self.value, Character, enactor)
-          if (result.found?)
-            jobs = Job.find(author_id: result.target.id).select { |j| Jobs.can_access_category?(enactor, j.category)}
+          submitter = Character.named(self.value)
+          if (submitter)
+            jobs = Jobs.accessible_jobs(enactor).select { |j| j.author == submitter }
           else
             client.emit_failure t('db.object_not_found')
             return
           end
-          
         else
           client.emit_failure t('jobs.invalid_search_category')
           return
