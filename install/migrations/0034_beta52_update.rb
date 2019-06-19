@@ -83,6 +83,10 @@ module AresMUSH
         c.update_demographic('fullname', nil)
       end
       
+      ### ------------------------------------------------------------------------------------
+      ### SL START
+      ### ------------------------------------------------------------------------------------
+
       Global.logger.debug "Adding recent changes."
       recent = []
       find_recent_changes(false, 100).each do |r|
@@ -98,6 +102,10 @@ module AresMUSH
         s.update(shared: s.shared)
       end
       Game.master.update(recent_scenes: recent.map { |r| r.id })
+      
+      Global.logger.debug "Adding recent forum posts"
+      recent = BbsPost.all.sort_by { |p| p.last_updated }.reverse[0..29] || []
+      Game.master.update(recent_forum_posts: recent.map { |r| r.id })
       
       
       Global.logger.debug "Creating job category objects."
@@ -126,6 +134,10 @@ module AresMUSH
           j.update(date_closed: Time.now)
           j.update(status: 'ARCHIVED')
       end         
+
+      ### ------------------------------------------------------------------------------------
+      ### SL END
+      ### ------------------------------------------------------------------------------------
          
       Global.logger.debug "Removing cookies plugin dir."
       FileUtils.remove_dir(File.join(AresMUSH.root_path, "plugins/cookies"))
