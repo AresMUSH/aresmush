@@ -37,7 +37,7 @@ jobs:
     DONE:
       color: "%xy"
   default_status: NEW
-  closed_status: DONE
+  closed_statuses: DONE
   request_category: REQ
   system_category: SYS
   trouble_category: ALERT

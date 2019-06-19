@@ -171,6 +171,26 @@ module AresMUSH
       home = WikiPage.create(name: "home")
       WikiPageVersion.create(wiki_page: home, text: "Wiki home page", character: Game.master.system_character)
       
+      puts "Creating job categories."
+      
+      categories = {
+        'APP' => "%xm",
+        'BUILD' => "%xy",
+        'BUG' => "%xr",
+        'CODE' => "%xy",
+        'ALERT' => "%xr",
+        'MISC' => "%xh",
+        'PLOT' => "%xc",
+        'REQ' => "%xm",
+        'RP' => "%xc",
+        'SYS' => "%xh"
+      }
+     
+      categories.each do |name, color|
+        JobCategory.creat(name: name, color: color)
+      end
+          
+      
       puts "Install complete."
     end
   end

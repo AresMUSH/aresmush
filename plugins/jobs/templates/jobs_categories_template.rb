@@ -14,19 +14,17 @@ module AresMUSH
       end
       
       def roles(cat)
-        if (cat.roles.empty?)
-          read_roles = t('jobs.job_admin_only')
-        else 
-          read_roles = cat.roles.map { |r| r.name.titlecase }.join(", ")
-        end
+        roles = [ t('jobs.job_admin_only') ]
+        roles.concat cat.roles.map { |r| r.name.titlecase }
+        roles.join(", ")
       end     
       
+      def category_color(cat)
+        Jobs.category_color(cat.name)
+      end
       
       def can_access_category?(cat)
-        if (cat.roles.empty?)
-          return @enactor.is_admin?
-        end
-        @enactor.has_any_role?(cat.roles)
+        Jobs.can_access_category?(@enactor, cat)
       end
       
       def reboot_text
