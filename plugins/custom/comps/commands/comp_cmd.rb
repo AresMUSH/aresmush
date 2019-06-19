@@ -25,7 +25,7 @@ module AresMUSH
         message = t('custom.has_left_comp', :from => enactor.name)
         Login.emit_if_logged_in self.target, message
 
-        FS3Skills.modify_luck(self.target, 0.05)
+        FS3Skills.modify_luck(self.target, 0.1)
       end
 
     end
