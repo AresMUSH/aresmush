@@ -15,7 +15,8 @@ module AresMUSH
           jobs = []
         end
         
-        case enactor.jobs_filter
+        filter = enactor.jobs_filter || "ACTIVE"
+        case filter
           
         when "ACTIVE", "MINE", "UNFINISHED"
           jobs.concat Jobs.open_requests(enactor)
@@ -32,11 +33,11 @@ module AresMUSH
         paginator = Paginator.paginate(jobs, page, 30)
         
         if (paginator.out_of_bounds?)
-          return { jobs: [], pages: [1] }
+          return { jobs: [], pages: [1], jobs_filter: filter }
         end
         
         {
-          jobs_filter: enactor.jobs_filter || "ACTIVE",
+          jobs_filter: filter,
           jobs: paginator.page_items.map { |j| {
             id: j.id,
             title: j.title,

@@ -25,7 +25,7 @@ module AresMUSH
         Game.master.update(recent_scenes: recent.map { |r| r.id })
       
         Global.logger.debug "Adding recent forum posts"
-        recent = BbsPost.all.sort_by { |p| p.last_updated }.reverse[0..29] || []
+        recent = BbsPost.all.to_a.sort_by { |p| p.last_updated }.reverse[0..29] || []
         Game.master.update(recent_forum_posts: recent.map { |r| r.id })
       
       
