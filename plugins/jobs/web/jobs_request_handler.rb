@@ -18,8 +18,10 @@ module AresMUSH
         filter = enactor.jobs_filter || "ACTIVE"
         case filter
           
-        when "ACTIVE", "MINE", "UNFINISHED"
+        when "MINE", "UNFINISHED"
           jobs.concat Jobs.open_requests(enactor)
+        when "ACTIVE"
+          jobs.concat Jobs.open_requests(enactor).select { |j| j.is_active? }
         when "UNREAD"
           jobs.concat enactor.unread_requests
         when "ALL"
