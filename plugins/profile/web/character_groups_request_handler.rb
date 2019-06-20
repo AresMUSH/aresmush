@@ -60,7 +60,7 @@ module AresMUSH
                       }
                     }
 
-        unplayed_chars = Character.all.select { |c| c.unplayed == true }.sort_by { |c| c.name }.map { |c| {
+        unplayed_chars = Character.all.select { |c| c.idle_state == 'Unplayed' }.sort_by { |c| c.name }.map { |c| {
                       name: c.name,
                       icon: Website.icon_for_char(c)
                       }

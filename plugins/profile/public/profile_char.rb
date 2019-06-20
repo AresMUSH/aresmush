@@ -8,7 +8,6 @@ module AresMUSH
     attribute :profile_gallery, :type => DataType::Array, :default => []
     attribute :profile_last_edited, :type => DataType::Time
     attribute :profile_tags, :type => DataType::Array, :default => []
-    attribute :unplayed, :type => DataType::Boolean, :default => false
 
     collection :profile_versions, "AresMUSH::ProfileVersion"
 
