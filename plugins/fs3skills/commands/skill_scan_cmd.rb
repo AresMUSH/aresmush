@@ -15,11 +15,9 @@ module AresMUSH
       end
 
       def handle
-        Global.logger.debug "Name: #{self.name}"
         type = self.name.titlecase
         types = [ 'Action', 'Background', 'Language' ]
         if (types.include?(type))
-          Global.logger.debug "Name included. Type: #{type}"
           template = SkillsCensusTemplate.new(type)
           client.emit template.render
         else
