@@ -38,8 +38,11 @@ module AresMUSH
 
     before_delete :delete_poses_and_log
 
+    index :shared
+    index :completed
+
     def self.shared_scenes
-      Scene.all.select { |s| s.shared }
+      Scene.find(shared: true).to_a
     end
 
     def self.scenes_starring(char)

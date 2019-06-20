@@ -6,8 +6,13 @@ module AresMUSH
       actor.has_permission?("access_jobs")
     end
     
+    def self.can_manage_jobs?(actor)
+      return false if !actor
+      actor.has_permission?("manage_jobs")
+    end
+    
     def self.categories
-      Global.read_config("jobs", "categories").keys.map { |c| c.upcase }
+      JobCategory.all.map { |j| j.name }
     end
     
     def self.status_vals
@@ -20,27 +25,23 @@ module AresMUSH
     
     def self.can_access_category?(actor, category)
       return true if actor.is_admin?
-      return false if !Jobs.can_access_jobs?(actor)
-      cats = Global.read_config("jobs", "categories")
-      roles = cats[category.upcase]['roles']
-      return false if !roles      
-      actor.has_any_role?(roles)
+      return false if !Jobs.can_access_jobs?(actor)    
+      actor.has_any_role?(category.roles)
     end
 
     def self.visible_replies(actor, job)
-      if (Jobs.can_access_category?(actor, job.category))
+      if (Jobs.can_access_category?(actor, job.job_category))
         job.job_replies.to_a
       else
         job.job_replies.select { |r| !r.admin_only}
       end
     end
     
-    def self.category_color(category)
-      return "" if !category
-      config = Global.read_config("jobs", "categories")
-      key = config.keys.find { |k| k.downcase == category.downcase }
-      reutrn "%xh" if !key
-      return config[key]["color"]
+    def self.category_color(category_name)
+      return "" if !(category_name)
+      category = JobCategory.named(category_name)
+      reutrn "%xh" if !category
+      return category.color
     end
     
     def self.status_color(status)
@@ -51,26 +52,47 @@ module AresMUSH
       return config[key]["color"]
     end
     
+    def self.accessible_jobs(char, category_filter = nil, include_archive = false)
+      jobs = []
+      if (category_filter)
+        categories = JobCategory.all.select{ |j| category_filter.include?(j.name) && Jobs.can_access_category?(char, j) }
+      else
+        categories = JobCategory.all.select{ |j| Jobs.can_access_category?(char, j) }
+      end
+      
+      categories.each do |cat|
+        if (include_archive)
+          jobs = jobs.concat(cat.jobs.to_a)
+        else
+          active_statuses = Jobs.status_vals.select { |s| s != Jobs.archived_status }
+          active_statuses.each do |status|
+            jobs = jobs.concat(cat.jobs.find(status: status).to_a)
+          end
+        end
+      end
+      jobs
+    end
+    
     def self.filtered_jobs(char, filter = nil)
       if (!filter)
         filter = char.jobs_filter
       end
+            
       case filter
-      when "ALL"
-        jobs = Job.all.select { |j| Jobs.can_access_category?(char, j.category) }
-      when "UNFINISHED", nil
-        jobs = Job.all.select { |j| Jobs.can_access_category?(char, j.category) && (j.is_open? || j.is_unread?(char)) }
-      when "ACTIVE", nil
-        jobs = Job.all.select { |j| Jobs.can_access_category?(char, j.category) && (j.is_active? || j.is_unread?(char)) }
+      when "ACTIVE"
+        jobs = Jobs.accessible_jobs(char).select { |j| j.is_active? || j.is_unread?(char) }
       when "MINE"
         jobs = char.assigned_jobs.select { |j| j.is_open? }
+      when "UNFINISHED"
+        jobs = Jobs.accessible_jobs(char).select { |j| j.is_open? }
       when "UNREAD"
         jobs = char.unread_jobs
-      else
-        jobs = Job.find(category: char.jobs_filter.upcase).select { |j| Jobs.can_access_category?(char, j.category) && j.is_open? }
+      when "ALL"
+        jobs = Jobs.accessible_jobs(char)
+      else # Category filter
+        jobs = Jobs.accessible_jobs(char, [ filter ]).select { |j| j.is_active? || j.is_unread?(char) }
       end
-
-      jobs = jobs || []
+        
       jobs.sort_by { |j| j.created_at }
     end
     
@@ -100,6 +122,21 @@ module AresMUSH
       yield job
     end
     
+    def self.with_a_category(name, client, char, &block)
+      category = JobCategory.named(name)
+      if (!category)
+        client.emit_failure t('jobs.invalid_category', :categories => Jobs.categories.join(", "))
+        return
+      end
+      
+      if !Jobs.can_access_category?(char, category)
+        client.emit_failure t('jobs.cant_access_category')
+        return
+      end
+      
+      yield category
+    end
+    
     def self.comment(job, author, message, admin_only)
       JobReply.create(:author => author, 
         :job => job,
@@ -124,13 +161,13 @@ module AresMUSH
         return nil if job.participants.include?(enactor)
       end
       return t('dispatcher.not_allowed') if !Jobs.can_access_jobs?(enactor)
-      return t('jobs.cant_access_category') if !Jobs.can_access_category?(enactor, job.category)
+      return t('jobs.cant_access_category') if !Jobs.can_access_category?(enactor, job.job_category)
       return nil
     end
           
     def self.assign(job, assignee, enactor)
       job.update(assigned_to: assignee)
-      job.update(status: "OPEN")
+      job.update(status: Jobs.open_status)
       notification = t('jobs.job_assigned', :number => job.id, :title => job.title, :assigner => enactor.name, :assignee => assignee.name)
       Jobs.notify(job, notification, enactor)
     end
@@ -139,8 +176,20 @@ module AresMUSH
       char.requests.select { |r| r.is_open? || r.is_unread?(char) }
     end
     
-    def self.closed_status
-      Global.read_config("jobs", "closed_status")
+    def self.closed_statuses
+      Global.read_config("jobs", "closed_statuses")
+    end
+    
+    def self.active_statuses
+      Global.read_config("jobs", "active_statuses")
+    end
+    
+    def self.archived_status
+      Global.read_config("jobs", "archived_status")
+    end
+    
+    def self.open_status
+      Global.read_config("jobs", "open_status")
     end
         
     def self.notify(job, message, author, notify_submitter = true)
@@ -149,18 +198,18 @@ module AresMUSH
       
       if (!notify_submitter)
         submitter = job.author
-        if (submitter && !Jobs.can_access_category?(submitter, job.category))
+        if (submitter && !Jobs.can_access_category?(submitter, job.job_category))
           Jobs.mark_read(job, submitter)
         end
       end
       
       Global.client_monitor.emit_ooc(message) do |char|
-        char && (Jobs.can_access_category?(char, job.category) || notify_submitter && char == job.author)
+        char && (Jobs.can_access_category?(char, job.job_category) || notify_submitter && char == job.author)
       end
             
       data = "#{job.id}|#{message}"
       Global.client_monitor.notify_web_clients(:job_update, data) do |char|
-        char && (Jobs.can_access_category?(char, job.category) || notify_submitter && char == job.author)
+        char && (Jobs.can_access_category?(char, job.job_category) || notify_submitter && char == job.author)
       end
             
     end
@@ -175,8 +224,9 @@ module AresMUSH
       Jobs.notify(job, notification, enactor)
     end
         
-    def self.change_job_category(enactor, job, category)
-      job.update(category: category)
+    def self.change_job_category(enactor, job, category_name)
+      category = JobCategory.named(category_name)
+      job.update(job_category: category)
       notification = t('jobs.updated_job', :number => job.id, :title => job.title, :name => enactor.name)
       Jobs.notify(job, notification, enactor)
     end

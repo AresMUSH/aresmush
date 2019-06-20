@@ -33,7 +33,8 @@ module AresMUSH
     def set_profile(new_profile, enactor)
       self.update(profile: new_profile)
       self.update(profile_last_edited: Time.now)
-      ProfileVersion.create(character: self, text: build_profile_version, author: enactor)
+      version = ProfileVersion.create(character: self, text: build_profile_version, author: enactor)
+      Website.add_to_recent_changes('char', version.id, char.name)
     end
   end
   

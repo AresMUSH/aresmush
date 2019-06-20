@@ -125,8 +125,12 @@ module AresMUSH
       board.write_roles.add admin_role
       board.save
       
-      board = BbsBoard.create(name: "New Arrivals", order: 4)
+      board = BbsBoard.create(name: "New Arrivals", order: 3)
       board.write_roles.add approved_role
+      board.save
+      
+      board = BbsBoard.create(name: "Trending Scenes", order: 4)
+      board.write_roles.add admin_role
       board.save
   
       channel = AresMUSH::Channel.create(name: "Chat", 
@@ -166,6 +170,26 @@ module AresMUSH
       
       home = WikiPage.create(name: "home")
       WikiPageVersion.create(wiki_page: home, text: "Wiki home page", character: Game.master.system_character)
+      
+      puts "Creating job categories."
+      
+      categories = {
+        'APP' => "%xm",
+        'BUILD' => "%xy",
+        'BUG' => "%xr",
+        'CODE' => "%xy",
+        'ALERT' => "%xr",
+        'MISC' => "%xh",
+        'PLOT' => "%xc",
+        'REQ' => "%xm",
+        'RP' => "%xc",
+        'SYS' => "%xh"
+      }
+     
+      categories.each do |name, color|
+        JobCategory.creat(name: name, color: color)
+      end
+          
       
       puts "Install complete."
     end

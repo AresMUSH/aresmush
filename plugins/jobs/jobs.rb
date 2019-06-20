@@ -25,8 +25,18 @@ module AresMUSH
           return JobsBackupCmd
         when "cat"
           return ChangeCategoryCmd
+        when "categories"
+          return ListJobCaegoriesCmd
+        when "categorycolor"
+          return JobCategoryColorCmd
+        when "categoryroles"
+          return JobCategoryRolesCmd
+        when "createcategory"
+          return CreateJobCategoryCmd
         when "catchup"
           return JobsCatchupCmd
+        when "deletecategory"
+          return DeleteJobCategoryCmd
         when "discuss", "respond"
           return JobCommentCmd
         when "close"
@@ -51,6 +61,8 @@ module AresMUSH
           return PurgeJobsCmd
         when "query"
           return CreateQueryJobCmd
+        when "renamecategory"
+          return RenameJobCategoryCmd
         when "search"
           return JobSearchCmd
         when "status"
@@ -96,7 +108,12 @@ module AresMUSH
     end
 
     def self.get_event_handler(event_name)
-      nil
+      case event_name
+      when "CronEvent"
+        return JobArchiveCronHandler
+      else
+        return nil
+      end
     end
 
     def self.get_web_request_handler(request)

@@ -52,6 +52,7 @@ module AresMUSH
           scenes = scenes.select { |s| s.location =~ /\b#{searchLocation}\b/i }
         end
         
+        scenes = scenes.sort_by { |s| s.date_shared || s.created_at }.reverse
         scenes_per_page = 30
         
         paginator = Paginator.paginate(scenes, page, scenes_per_page)
@@ -62,11 +63,12 @@ module AresMUSH
         
         {
           
-        scenes: paginator.page_items.sort_by { |s| s.date_shared || s.created_at }.reverse.map { |s| {
+        scenes: paginator.page_items.map { |s| {
                           id: s.id,
                           title: s.title,
                           summary: s.summary,
                           location: s.location,
+                          date_shared: s.date_shared,
                           icdate: s.icdate,
                           participants: s.participants.to_a.sort_by { |p| p.name }.map { |p| { name: p.name, id: p.id, icon: Website.icon_for_char(p) }},
                           scene_type: s.scene_type ? s.scene_type.titlecase : 'Unknown',
