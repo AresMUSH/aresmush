@@ -15,31 +15,38 @@ module AresMUSH
           jobs = []
         end
 
-        case enactor.jobs_filter
-        when "ALL"
-          jobs.concat enactor.requests.to_a
+        filter = enactor.jobs_filter || "ACTIVE"
+        case filter
+
+        when "MINE", "UNFINISHED"
+          jobs.concat Jobs.open_requests(enactor)
+        when "ACTIVE"
+          jobs.concat Jobs.open_requests(enactor).select { |j| j.is_active? }
         when "UNREAD"
           jobs.concat enactor.unread_requests
-        else
-          jobs.concat Jobs.open_requests(enactor)
+        when "ALL"
+          jobs.concat enactor.requests.to_a
+        else # Category filter
+          jobs.concat Jobs.open_requests(enactor).select { |j| j.job_category.name == enactor.jobs_filter}
         end
+
         jobs = jobs.uniq.sort_by { |j| j.created_at }.reverse
 
         paginator = Paginator.paginate(jobs, page, 30)
 
         if (paginator.out_of_bounds?)
-          return { jobs: [], pages: [1] }
+          return { jobs: [], pages: [1], jobs_filter: filter }
         end
 
         {
-          jobs_filter: enactor.jobs_filter || "ACTIVE",
+          jobs_filter: filter,
           jobs: paginator.page_items.map { |j| {
             id: j.id,
             title: j.title,
             unread: j.is_unread?(enactor),
             created: j.created_date_str(enactor),
+            category: j.job_category.name,
             short_created: j.created_date_short_str(enactor),
-            category: j.category,
             status: j.status,
             author: j.author_name,
             assigned_to: j.assigned_to ? j.assigned_to.name : "--"

@@ -9,14 +9,6 @@ module AresMUSH
       end
 
       def handle
-
-        Global.logger.debug "Update actor shortcut and property names."
-        config = DatabaseMigrator.read_config_file("utils.yml")
-        ['i', 'in', 'inv'].each do |sc|
-          config['utils']['shortcuts'][sc] = "echo %% There's no inventory system here."
-        end
-        DatabaseMigrator.write_config_file("utils.yml", config)
-
         client.emit_success "Done!"
       end
 

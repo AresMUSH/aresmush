@@ -26,7 +26,8 @@ module AresMUSH
         end
       
         page = WikiPage.create(tags: tags, title: title, name: name)
-        WikiPageVersion.create(wiki_page: page, text: text, character: enactor)
+        version = WikiPageVersion.create(wiki_page: page, text: text, character: enactor)
+        Website.add_to_recent_changes('wiki', version.id, page.name)
         
         Achievements.award_achievement(enactor, "wiki_create", 'portal', "Created a wiki page.")
         

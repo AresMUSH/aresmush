@@ -27,9 +27,13 @@ module AresMUSH
         end
         
         config = DatabaseMigrator.read_config_file("fs3skills_misc.yml")
-        config['fs3skills']['base_luck_for_scene'] = 0.1
+        config['fs3skills']['luck_for_scene'] = {
+          0 => 0.1,
+          10 => 0.075,
+          25 => 0.05,
+          50 => 0.025
+        }
         DatabaseMigrator.write_config_file("fs3skills_misc.yml", config)
-                
         
         Global.logger.debug "Removing actors from web menu."
         config = DatabaseMigrator.read_config_file("website.yml")
@@ -75,9 +79,11 @@ module AresMUSH
       Character.all.each do |c|
         c.update_demographic('played by', c.demographic('actor'))
         c.update_demographic('full name', c.demographic('fullname'))
-        c.update_demographic('actor', nil)
-        c.update_demographic('fullname', nil)
       end
+      
+      Global.logger.debug "Removing cookies plugin dir."
+      FileUtils.remove_dir(File.join(AresMUSH.root_path, "plugins/cookies"))
+      
     end
   end
 end
