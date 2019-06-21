@@ -1,6 +1,6 @@
 module AresMUSH
   class WebRequest
-    attr_accessor :json
+    attr_accessor :json, :ip_addr, :hostname
     
     def initialize(json)
       @json = json
