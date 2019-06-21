@@ -59,6 +59,8 @@ module AresMUSH
     end
       
     def self.login_char(char, client)
+      char.update(login_failures: 0)
+
       # Handle reconnect
       existing_client = Login.find_client(char)
       client.char_id = char.id
