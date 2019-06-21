@@ -6,10 +6,9 @@ module AresMUSH
         char = Character[event.char_id]
         
         first_login = !char.last_ip
-        Login.update_site_info(client, char)
+        Login.update_site_info(client.ip_addr, client.hostname, char)
 
         Global.logger.info("Character Connected: #{char.name} #{char.last_ip} #{char.last_hostname}")
-        
         if (first_login)
           Login.check_for_suspect(char)
         end

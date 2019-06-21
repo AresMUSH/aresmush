@@ -30,7 +30,7 @@ module AresMUSH
       end
       
       def check_banned
-        return t('login.site_blocked') if Login.is_banned?(client)
+        return t('login.site_blocked') if Login.is_banned?(client.ip_addr, client.hostname)
         return nil
       end
       

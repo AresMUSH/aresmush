@@ -1,0 +1,11 @@
+<%= header %>
+%xh<%= t('jobs.jobs_category_list_title') %>%xn
+<%= divider %>
+<% categories.each do |cat| %>
+<%= category_color(cat) %><%= left(cat.name, 15) %>%xn <%= roles(cat) %>
+<% end %>
+<% if reboot_text %>
+%ld
+%xh%xr<%= reboot_text %>%xn
+<% end %>
+<%= footer %>
