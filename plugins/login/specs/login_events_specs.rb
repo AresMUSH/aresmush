@@ -29,7 +29,8 @@ module AresMUSH
         @event_client = double
         allow(@event_char).to receive(:name) { "Bob" }
         allow(@event_char).to receive(:room) { nil }    
-
+        allow(@event_client).to receive(:ip_addr) { "IP" }
+        allow(@event_client).to receive(:hostname) { "HOST" }
         @event_char_id = 111
         allow(Character).to receive(:[]).with(@event_char_id) { @event_char }
       end
@@ -48,7 +49,7 @@ module AresMUSH
         end
         
         it "should update the site info" do
-          expect(Login).to receive(:update_site_info).with(@event_client, @event_char) {}
+          expect(Login).to receive(:update_site_info).with("IP", "HOST", @event_char) {}
           @login_events.on_event CharConnectedEvent.new(@event_client, @event_char_id)
         end
         
