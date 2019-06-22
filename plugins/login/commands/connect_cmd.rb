@@ -24,75 +24,34 @@ module AresMUSH
         return nil
       end
 
-      def check_banned
-        return t('login.site_blocked') if Login.is_banned?(client)
-        return nil
-      end
-            
       def handle
         return if self.charname.downcase == "guest"
-        
 
         ClassTargetFinder.with_a_character(self.charname, client, enactor) do |char|
   
-          if (!Login.can_login?(char))
-            client.emit_failure t('login.login_restricted', :reason => Login.restricted_login_message)
-            return
-          end
+          result = Login.check_login(char, self.password, client.ip_addr, client.hostname)
           
-          if (char.is_statue?)
-            client.emit_failure t('dispatcher.you_are_statue')
+          if result[:status] == 'unlocked'
+            client.emit_ooc t('login.temp_password_set', :password => self.password)
+          elsif result[:status] == 'error'
+            client.emit_failure result[:error]
             return
           end
-  
-          if (char.login_failures > 5)
-            temp_reset = false
             
-            if (char.handle && AresCentral.is_registered?)
-              AresMUSH.with_error_handling(client, "AresCentral forgotten password.") do
-                Global.logger.info "Checking AresCentral for forgotten password."
-      
-                connector = AresCentral::AresConnector.new
-                response = connector.reset_password(char.handle.handle_id, self.password, char.id.to_s)
-      
-                if (response.is_success? && response.data["matched"])
-                  client.emit_ooc t('login.temp_password_set', :password => self.password)
-                  char.change_password self.password
-      	      	  char.update(login_failures: 0)
-                  temp_reset = true                  
-                end
-              end
-            end
+          terms_of_service = Login.terms_of_service
+          if (terms_of_service)
             
-            if (!temp_reset)
-              Global.logger.info "#{self.charname} locked due to repeated login failures."
-              client.emit_failure(t('login.password_locked'))
+            if (!char.terms_of_service_acknowledged  && !client.program[:tos_accepted])
+              client.program[:login_cmd] = cmd
+              template = BorderedDisplayTemplate.new "#{terms_of_service}%r#{t('login.tos_agree')}"
+              client.emit template.render
               return
             end
-          end
-            
-          if (!char.compare_password(password))
-            Global.logger.info "Failed login attempt #{char.login_failures} to #{self.charname} from #{client.ip_addr}."
-            char.update(login_failures: char.login_failures + 1)
-            client.emit_failure(t('login.password_incorrect'))
-            return 
-          end
-
-          terms_of_service = Login.terms_of_service
-          if (terms_of_service && !char.terms_of_service_acknowledged  && !client.program[:tos_accepted])
-            client.program[:login_cmd] = cmd
-            template = BorderedDisplayTemplate.new "#{terms_of_service}%r#{t('login.tos_agree')}"
-            client.emit template.render
-            return
+            char.update(terms_of_service_acknowledged: Time.now)
           end
         
           client.program.delete(:login_cmd)
           
-          if (terms_of_service)
-            char.update(terms_of_service_acknowledged: Time.now)
-          end
-          
-          char.update(login_failures: 0)
           Login.login_char(char, client)          
         end
       end

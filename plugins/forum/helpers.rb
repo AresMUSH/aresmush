@@ -80,6 +80,7 @@ module AresMUSH
           :reference => new_post.reference_str,
           :author => author_name)
         
+        Forum.add_recent_post(new_post)
         Forum.notify(category, :new_forum_post, message)
         Forum.handle_forum_achievement(author, :post)
         
@@ -107,6 +108,7 @@ module AresMUSH
         :reference => post.reference_str,
         :author => author.name)
       
+      Forum.add_recent_post(post)
       Forum.handle_forum_achievement(author, :reply)
       Forum.notify(category, :new_forum_post, message)
     end
@@ -229,6 +231,7 @@ module AresMUSH
         :reference => post.reference_str,
         :author => enactor.name)
       
+      Forum.add_recent_post(post)
       Forum.notify(category, :forum_edited, notification)
       Forum.mark_read_for_player(enactor, post)
     end
@@ -243,6 +246,7 @@ module AresMUSH
         :reference => post.reference_str,
         :author => enactor.name)
       
+      Forum.add_recent_post(post)
       Forum.notify(category, :forum_edited, notification)
       Forum.mark_read_for_player(enactor, post)
     end
@@ -251,6 +255,16 @@ module AresMUSH
       category.unread_posts(enactor).each do |p|
         Forum.mark_read_for_player(enactor, p)
       end
+    end
+    
+    def self.add_recent_post(post)
+      recent = Game.master.recent_forum_posts
+      recent.unshift(post.id)
+      recent = recent.uniq
+      if (recent.count > 100)
+        recent.pop
+      end
+      Game.master.update(recent_forum_posts: recent)
     end
   end
 end

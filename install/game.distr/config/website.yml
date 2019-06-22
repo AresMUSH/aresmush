@@ -110,6 +110,8 @@ website:
     - id: markdown
       title: Markdown Reference
       route: help-topic
+    - title: Terms of Service
+      route: tos
     - divider: true
     - target: blank
       title: MUSH 101 Tutorial <i class="fa fa-external-link-alt" aria-hidden="true">

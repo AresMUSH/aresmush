@@ -11,10 +11,13 @@ module AresMUSH
         @found_char = double
         @client = double
         allow(@client).to receive(:ip_addr) { "" }
+        allow(@client).to receive(:hostname) { "" }
         allow(@found_char).to receive(:login_failures) { 0 }
         allow(@found_char).to receive(:is_statue?) { false }
+        allow(@found_char).to receive(:name) { "" }
+        allow(@found_char).to receive(:handle) { nil }
         allow(@client).to receive(:logged_in?) { false }
-        
+        allow(Login).to receive(:is_banned?) { false }
         @handler = ConnectCmd.new(@client, Command.new("connect Bob password"), nil)
       end
       

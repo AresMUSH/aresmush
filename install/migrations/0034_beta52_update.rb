@@ -83,7 +83,11 @@ module AresMUSH
       end
       
       Global.logger.debug "Removing cookies plugin dir."
-      FileUtils.remove_dir(File.join(AresMUSH.root_path, "plugins/cookies"))
+      cookies_dir = File.join(AresMUSH.root_path, "plugins/cookies")
+      if (File.exist?(cookies_dir))
+        FileUtils.remove_dir(cookies_dir)
+      end
+      
     end
   end
 end
