@@ -119,6 +119,8 @@ module AresMUSH
       case request.cmd
       when "restoreConfig"
         return RestoreConfigRequestHandler
+      when "upgrade"
+        return UpgradeRequestHandler
       end
     end
   end
