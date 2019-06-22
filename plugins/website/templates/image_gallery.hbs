@@ -1,8 +1,8 @@
        <div>
-       {{#each gallery as |file|}}
+       {{#each gallery as |galleryItem|}}
        
          <div class="thumbnail-gallery">
-         <a href="/file/{{file}}"> <img src="/game/uploads/{{file}}" class="thumbnail"/> </a>
+         <a href="/file/{{galleryItem}}"> <img src="/game/uploads/{{galleryItem}}" class="thumbnail"/> </a>
          </div>
        {{/each}}
        </div>
