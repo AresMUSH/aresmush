@@ -9,17 +9,17 @@ module AresMUSH
       end
       
       def handle
-        Manage.announce t('manage.database_upgrade_in_progress')
-        
-        begin
-          migrator = AresMUSH::DatabaseMigrator.new
-          migrator.migrate(:online)
-        rescue Exception => e
-          Global.logger.debug "Error loading plugin: #{e}  backtrace=#{e.backtrace[0,10]}"
-          client.emit_failure t('manage.error_running_migrations', :error => e)
+        migrator = DatabaseMigrator.new
+        if (migrator.restart_required?)
+          client.emit_ooc t('manage.restart_required')
+          return
         end
         
-        Manage.announce t('manage.database_upgrade_complete')
+        error = Manage.run_migrations
+        if (error)
+          client.emit_failure error
+        end
+        # There was a global emit already so no need to re-emit if everything OK
       end
     end
   end
