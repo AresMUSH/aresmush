@@ -248,6 +248,20 @@ spells:
     spell_mod: 1
     target_num: 1
     target_optional: true
+  #Level 4\
+  Detect Magic:
+    available: false
+    casting_time: 1 round
+    desc: "The caster senses whether magic is affecting or being performed by a sapient targetThey are able to identify the magic's School, its specific affect(s), its range, and targets if applicable.\n\nGMs should provide the name of the spell if the caster would be aware of it."
+    effect: Psionic
+    level: 4
+    line_of_sight: true
+    name: Detect Magic
+    range: Short
+    roll: true
+    school: Spirit
+    target_num: 1
+    target_optional: true
   Group Comprehend Languages:
     available: true
     casting_time: 1 round
