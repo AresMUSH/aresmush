@@ -7,6 +7,8 @@ module AresMUSH
         
         if (!enable_registration)
           return { message: t('login.web_registration_disabled') }
+        elsif (Login.is_banned?(request.ip_addr, request.hostname))
+          return { error: t('login.site_blocked') }
         end
               
         name = request.args[:name]
@@ -34,7 +36,8 @@ module AresMUSH
         char.room = Game.master.welcome_room
         char.last_on = Time.now
         char.set_login_token
-      
+        Login.update_site_info(request.ip_addr, request.hostname, char)
+        
         if (Login.terms_of_service)
           char.update(terms_of_service_acknowledged: Time.now)
         end

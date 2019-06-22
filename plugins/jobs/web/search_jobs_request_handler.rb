@@ -12,7 +12,7 @@ module AresMUSH
         
         job_admin = Jobs.can_access_jobs?(enactor)
         if (job_admin)
-          jobs = Jobs.filtered_jobs(enactor, "ALL")
+          jobs = Jobs.accessible_jobs(enactor)
         else
           jobs = enactor.requests.to_a
         end

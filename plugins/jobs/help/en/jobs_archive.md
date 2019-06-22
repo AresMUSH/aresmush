@@ -4,12 +4,14 @@ summary: Old jobs archive.
 aliases:
 - job_search
 - jobs_search
+- job_archive
+- jobs_archive
 ---
 # Jobs Archive
 
 Closed jobs in Ares are not archived to a BBS, as they are in some other systems.  Instead they stay around in the jobs system forever (or until you manually purge them).  This allows you to reopen and easily find old jobs.
 
-`jobs/all` - Lists all jobs, even closed ones.
+Closed jobs will automatically be archived after a specified number of days.  This allows other staffers a chance to read the final job comment before the job is archived.  Archived jobs can 
 
 `jobs/search <category>=<value>` - Searches old jobs
         Category to search may be 'title' or 'submitter'.

@@ -34,9 +34,10 @@ module AresMUSH
       listener.is_friend?(connector)
     end
     
-    def self.update_site_info(client, char)
-      char.update(last_ip: client.ip_addr)
-      char.update(last_hostname: client.hostname ? client.hostname.downcase : nil)
+    def self.update_site_info(ip_addr, hostname, char)
+      hostname = hostname ? hostname.downcase : nil
+      char.update(last_ip: ip_addr)
+      char.update(last_hostname: hostname)
       char.update(last_on: Time.now)
     end
     
@@ -55,7 +56,7 @@ module AresMUSH
       end
     end
     
-    def self.is_banned?(client)
+    def self.is_banned?(ip_addr, hostname)
       suspects = Global.read_config("sites", "banned") || []
       
       if (Global.read_config("sites", "ban_proxies"))
@@ -68,11 +69,10 @@ module AresMUSH
             
       return false if suspects.empty?
       
-      ip = client.ip_addr
-      hostname = client.hostname ? client.hostname.downcase : ""
+      hostname = hostname ? hostname.downcase : "" 
       
       suspects.each do |s|
-        if (Login.is_site_match?(ip, hostname, s, s))
+        if (Login.is_site_match?(ip_addr, hostname, s, s))
           return true
         end
       end
@@ -111,6 +111,48 @@ module AresMUSH
           f.puts blacklist
         end
       end
+    end
+    
+    def self.check_login(char, password, ip_addr, hostname)
+      if (!Login.can_login?(char))
+        return { status: 'error', error: t('login.login_restricted', :reason => Login.restricted_login_message) }
+      end
+      
+      if (char.is_statue?)
+        return { status: 'error', error: t('dispatcher.you_are_statue') }
+      end
+
+      if (Login.is_banned?(ip_addr, hostname))
+        return { status: 'error',  error: t('login.site_blocked') }
+      end
+
+      if (char.handle && AresCentral.is_registered?)
+        AresMUSH.with_error_handling(nil, "AresCentral forgotten password.") do
+          Global.logger.info "Checking AresCentral for forgotten password."
+
+          connector = AresCentral::AresConnector.new
+          response = connector.reset_password(char.handle.handle_id, password, char.id.to_s)
+
+          if (response.is_success? && response.data["matched"])
+            char.change_password password
+	      	  char.update(login_failures: 0)
+            return { status: 'unlocked' }
+          end
+        end
+      end
+      
+      if (char.login_failures > 5)
+        Global.logger.info "#{char.name} locked due to repeated login failures."
+        return { status: 'error', error: t('login.password_locked') }
+      end
+        
+      if (!char.compare_password(password))
+        Global.logger.info "Failed login attempt #{char.login_failures} to #{char.name} from #{ip_addr}."
+        char.update(login_failures: char.login_failures + 1)
+        return { status: 'error', error: t('login.password_incorrect') }
+      end
+      
+      return { status: 'ok' }
     end
   end
 end
