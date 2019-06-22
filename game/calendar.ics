@@ -2,55 +2,17 @@ BEGIN:VCALENDAR
 VERSION:2.0
 PRODID:-//hacksw/handcal//NONSGML v1.0//EN
 BEGIN:VEVENT
-UID:0c2546c9-7915-42c9-94e9-90e55da398fd@Spirit Lake-spiritlakemu.com
-DTSTART:20190502T003000Z
-DTSTAMP:20190416T222806Z
-SUMMARY:The Battle of Calan Mai
-DESCRIPTION:It is the annual bonfire celebrations for May Day!
-  
-  But when does anything go as planned in Grand Lake?
+UID:1882657a-5876-4236-acc4-549938512b7b@Spirit Lake-spiritlakemu.com
+DTSTART:20190624T003000Z
+DTSTAMP:20190616T003124Z
+SUMMARY:Hunting a Creature
+DESCRIPTION:I'll take up to 6 who RSVP. Priority goes to those who filled out the WiG (Joel, Diego, Cara, Isao, Danielle). Pls RSVP by Wednesday, June 19.
 END:VEVENT
 BEGIN:VEVENT
-UID:f9e7797a-45de-40ff-835d-09a6854f11ef@Spirit Lake-spiritlakemu.com
-DTSTART:20190427T010000Z
-DTSTAMP:20190418T231643Z
-SUMMARY:Congrats, We Mostly Lived
-DESCRIPTION:A message spreads through the Weird network: come down to the Monte lands on Friday the 26th for some BBQ out in the training field to celebrate everyone being mostly in one piece. It's BYOB. And your dogs too, dogs are also invited. 
-END:VEVENT
-BEGIN:VEVENT
-UID:e01ee037-526b-49dc-b604-928850d0a793@Spirit Lake-spiritlakemu.com
-DTSTART:20190507T003000Z
-DTSTAMP:20190421T185939Z
-SUMMARY:Weird Town Hall
-DESCRIPTION:It's not really a town hall. There's no politician, and no authority.
-  
-  But it's probably time for another meeting of people who know what might be coming, and want to be more prepared to deal with it. Details about agenda items to come, so people can show up prepared.
-END:VEVENT
-BEGIN:VEVENT
-UID:790f7e53-2ea2-4a54-ac11-5b3b32e2fa47@Spirit Lake-spiritlakemu.com
-DTSTART:20190508T003000Z
-DTSTAMP:20190423T161938Z
-SUMMARY:Firebug Workshop
-DESCRIPTION:A note is left in the Under-Library that anyone with Fire inclinations should come to <OOC: LOCATION TO BE DETERMINED> to talk and practice Fire magic.
-  
-  OOC: This was the time that worked for MOST everyone. Some folks have hard stop times, so we will start on or close to 6:30pm MST -- maybe before if we're all ready to go.
-END:VEVENT
-BEGIN:VEVENT
-UID:87e78c19-dcd0-4eb0-b741-6d951b77e038@Spirit Lake-spiritlakemu.com
-DTSTART:20190512T003000Z
-DTSTAMP:20190424T172453Z
-SUMMARY:Rebuild Grand Lake Benefit Concert
-DESCRIPTION:Benefit concert at Timeo's Theater Bar in Denver! Proceeds go to help fund efforts to repair Grand Lake after their wildlife disaster. Enjoy listening to LIVE music from local Colorado bands and special guest MALIK. Bands will be playing small sets with breaks in between all night long! Drinks and pizza available at the bar. Doors open at 6pm and close at 2am. Tickets are $25.00 Advance, $35.00 at Door, and $50.00 Premium Seating.
-  
-END:VEVENT
-BEGIN:VEVENT
-UID:a4b3fa68-1173-40cb-a1ae-be35155033da@Spirit Lake-spiritlakemu.com
-DTSTART:20190503T010000Z
-DTSTAMP:20190427T001014Z
-SUMMARY:Plant World: The Return To Plant World
-DESCRIPTION:It's the return to plant world for: Thora, Olive and Matt! 
-  
-  Plus the first two random people that sign up! 
-  
+UID:3908456f-26ce-4771-b083-85439c2413e7@Spirit Lake-spiritlakemu.com
+DTSTART:20190622T003000Z
+DTSTAMP:20190620T031053Z
+SUMMARY:Olive's Birthday!
+DESCRIPTION:Renting out the whole Huntington House Tavern for Olive's birthday! All her friends are invited, spread the word! Open Bar. Buffet table of American Cuisine. Vegetarian and Gluten Free options available. (For the love of god, someone help decorate the place beforehand, do not leave DeLuz in charge of that.)
 END:VEVENT
 END:VCALENDAR

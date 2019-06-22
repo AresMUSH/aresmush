@@ -60,6 +60,12 @@ module AresMUSH
                       }
                     }
 
+        unplayed_chars = Character.all.select { |c| c.idle_state == 'Unplayed' }.sort_by { |c| c.name }.map { |c| {
+                      name: c.name,
+                      icon: Website.icon_for_char(c)
+                      }
+                    }
+
 
         {
           group_names: group_names.each_with_index.map { |g, index| {
@@ -69,7 +75,8 @@ module AresMUSH
           }},
           groups: groups,
           idle: idle_chars,
-          dead: dead_chars
+          dead: dead_chars,
+          unplayed: unplayed_chars
         }
       end
     end

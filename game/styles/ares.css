@@ -81,6 +81,9 @@ code {
   margin: 0px;
   border: none; }
 
+.inline-block {
+  display: inline-block; }
+
 /* -------------------------
 NAVIGATION
 ------------------------- */
@@ -462,13 +465,26 @@ GENERAL UTILITIES
   margin-left: auto;
   margin-right: 0; }
 
+.icon-status-web-active {
+  border: 3px solid #a5a509;
+  border-radius: 30px; }
+
+.icon-status-game-active {
+  border: 3px solid #176109;
+  border-radius: 30px; }
+
+.icon-status-inactive {
+  border: 3px solid #ccc;
+  border-radius: 30px; }
+
 /* -------------------------
 HOME SCREEN
 ------------------------- */
 .jumbotron {
   background-color: #1A1B1C;
   font-weight: bold;
-  text-align: center; }
+  text-align: center;
+  padding-bottom: 20px; }
 
 .jumbotron-image {
   height: 250px;
@@ -496,6 +512,15 @@ HOME SCREEN
 .splash-heading {
   text-align: center;
   padding-bottom: 10px; }
+
+.jumbotron .splash {
+  padding-top: 20px;
+  text-align: left;
+  margin: auto;
+  width: 80%; }
+
+.jumbotron .splash p {
+  font-size: 1.25em; }
 
 /* -------------------------
 PLAY SCREEN
@@ -770,6 +795,9 @@ ul.char-ability-list {
 input[type='file'] {
   color: transparent; }
 
+.combat-danage {
+  color: red; }
+
 /* -------------------------
 CHAT SCREEN
 ------------------------- */
@@ -779,11 +807,13 @@ CHAT SCREEN
   overflow-x: hidden; }
 
 .chat-box {
-  padding: 0px;
+  padding: 3px;
   margin: 0px; }
 
 .chat-button {
-  width: 100%; }
+  width: 100%;
+  white-space: normal !important;
+  word-wrap: break-word; }
 
 .timestamp-tip {
   color: #999999;
@@ -851,6 +881,12 @@ OTHER
 .small-who-icon {
   float: left;
   padding: 15px; }
+
+.xp-progress {
+  max-width: 200px;
+  width: 200px;
+  display: inline-block;
+  margin-bottom: 5px; }
 
 /*.char-scene-list li:before { content: "\2666  "; }*/
 @media (max-width: 992px) {
@@ -956,6 +992,31 @@ blockquote {
   border-radius: 14px;
   margin: 15px; }
 
+.portal-card-heading {
+  font-size: 20px;
+  font-weight: bold;
+  padding: 10px;
+  text-align: left;
+  background-color: #314254;
+  border-bottom: 4px solid #293038;
+  border-radius: 12px 12px 0px 0px; }
+
+.portal-card {
+  background: #404B56;
+  border: 2px solid #293038;
+  border-radius: 14px;
+  margin: 15px 0px 15px;
+  width: intrinsic;
+  /* Safari/WebKit uses a non-standard name */
+  width: -moz-max-content;
+  /* Firefox/Gecko */
+  width: -webkit-max-content;
+  /* Chrome */ }
+
+.portal-card-body {
+  padding: 15px;
+  line-height: 2; }
+
 .clear {
   clear: both; }
 
@@ -967,10 +1028,6 @@ blockquote {
   background: tomato; }
 
 @media screen and (min-width: 48em) {
-  .collapse.in {
-    width: fit-content;
-    min-width: 600px;
-    max-width: 100%; }
   .school-text-wrapper:before {
     content: '';
     float: right;
@@ -1012,6 +1069,10 @@ blockquote {
   .ember-power-select-trigger #ember624 {
     width: 150px; }
 
+#searchFields {
+  width: 95%;
+  padding: 15px; }
+
 .panel-body {
   background: #1A1B1C; }
 
@@ -1051,12 +1112,17 @@ blockquote {
   overflow: hidden;
   margin-bottom: 20px; }
 
-.infobox {
-  margin: 15px;
+.creature-box {
+  margin: 15px 15px 0px 5px;
   width: 350px;
-  float: left;
-  border-radius: 5px;
-  border: 2px solid; }
+  border-radius: 10px;
+  border: 2px solid #293038; }
+
+.infobox {
+  margin: 15px 15px 0px 5px;
+  width: 350px;
+  border-radius: 10px;
+  border: 2px solid #293038; }
 
 .infobox-body {
   background: #404B56;
@@ -1065,7 +1131,8 @@ blockquote {
 
 .infobox-heading {
   background-color: #314254;
-  border-bottom: 4px solid #293038; }
+  border-bottom: 4px solid #293038;
+  border-radius: 8px 8px 0px 0px; }
 
 .infobox-title-text {
   font-size: 20px;
@@ -1086,7 +1153,11 @@ blockquote {
   float: right; }
 
 .hint {
-  padding-top: 5px; }
+  padding-top: 5px;
+  color: #b3b0b0; }
+
+.alert a {
+  color: #3a6d8e; }
 
 code {
   background: #c5c6d0;
@@ -1097,28 +1168,33 @@ code {
 
 .collapse.in {
   background: #383A4F;
-  padding: 10px;
-  border-radius: 0px 5px 5px 5px;
-  top: -10px;
+  border-radius: 5px;
   position: relative;
-  width: fit-content;
-  min-width: 700px; }
+  width: fit-content; }
 
 .nav-tabs > li > a {
   background: #343438; }
 
 .tab-content > .active {
-  margin-top: 50px; }
+  margin-top: 5px; }
 
 /* Buttons */
 .btn {
   font-size: 12px;
-  padding: 10px;
-  line-height: 1px; }
+  padding: 4px 10px; }
+
+.btn-default {
+  background: #ecedef;
+  color: #1a1a1c;
+  border: 0px; }
 
 .btn-primary {
   background-color: #555;
   border-color: #383A4F; }
+
+.btn-warning {
+  background-color: #d09747;
+  border-color: #d09747; }
 
 .btn-collapse {
   font-size: 15px;
@@ -1195,6 +1271,9 @@ h2 {
   background-color: #1A1B1C;
   border-color: #1A1B1C; }
 
+.label-danger {
+  background-color: #A9353E; }
+
 /* Jobs */
 .job-status-HOLD {
   background-color: #A31B1B; }
@@ -1234,7 +1313,8 @@ h2 {
   background-color: #5bc0de; }
 
 .job-category-PLAYER {
-  background-color: #fef64a; }
+  background-color: #fef64a;
+  color: black; }
 
 .job-category-LUCK {
   background-color: #068431; }
@@ -1242,9 +1322,9 @@ h2 {
 #068431
 .sidebar-heading h2 {
   padding: 0px;
-  color: #C2C1C2;
+  padding-bottom: 5px !important;
+  color: #afadad;
   border: 0px;
-  padding-bottom: 10px;
   margin-top: 10px; }
 
 .sidebar-box {
@@ -1255,6 +1335,10 @@ h2 {
   color: #d1d2d3;
   font-size: 16px;
   line-height: 1.5em; }
+
+.jumbotron .splash {
+  font-size: 11px;
+  font-style: italic; }
 
 .jumbotron-tagline {
   display: none; }
@@ -1356,9 +1440,24 @@ h2 {
 .char-icon-container {
   padding: 0px; }
 
+.your-pose-order {
+  color: #95d895; }
+
 .scene-pose {
   padding: 0px;
   margin: 10px 10px 20px 10px; }
+
+.scene-set-pose {
+  margin-left: 25px;
+  border: 0px;
+  color: #c7d2d3;
+  padding: 5px;
+  border-radius: 10px;
+  padding-left: 40px;
+  background: #35353a;
+  -webkit-box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.3);
+  box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.3); }
 
 .scene-ooc-pose {
   margin-bottom: 10px;
@@ -1383,6 +1482,20 @@ h2 {
 
 .scene-ooc-pose p {
   margin: 5px; }
+
+.scene-communication {
+  background: #6f5bde; }
+
+.scene-ooc {
+  background: #ea7d51; }
+
+.scene-meme {
+  background: #a50472; }
+
+.scenes-tip {
+  padding: 15px;
+  font-style: italic;
+  font-size: 90%; }
 
 #live-scene-log {
   max-height: 575px; }
@@ -1474,32 +1587,64 @@ div.rating-alpha {
   padding: 0px 0px 15px 0px; }
 
 .chat-button-active {
-  color: #d1d2d3;
-  background-color: #333; }
+  color: #1a1a1c !important;
+  background-color: #ecedef !important; }
+
+.chat-button:hover {
+  background-color: red; }
+
+.chat-button:active {
+  background-color: blue; }
+
+.chat-button:focus {
+  color: #1a1a1c;
+  background-color: #b8b9c3; }
 
 .chat-button {
-  background: none;
-  color: inherit;
-  overflow: hidden;
+  background: #38394f;
+  color: #d1d2d3;
   border: 0px;
-  text-align: initial;
-  font-size: 95%;
-  width: 100%; }
+  font-size: 95%; }
+
+#channelMenuCollapse {
+  background: #38394f; }
+
+.chat-button:hover {
+  background-color: #b8b9c3;
+  color: #1a1a1c; }
 
 #ember823 {
   height: fit-content; }
 
+#ember731 {
+  padding: 5px; }
+
 /* Mobile */
 @media only screen and (max-width: 700px) {
+  .navbar-collapse.in {
+    float: right; }
   table {
     width: 100%; }
   .toc {
     width: 100%; }
   .topicbox {
     width: 100%; }
+  #channelMenuCollapse {
+    background: #ffffff;
+    color: #1a1a1c;
+    top: -4px; }
+  .chat-button {
+    background: #ecedef;
+    color: unset; }
+  .dropdown-toggle {
+    color: #778dc0; }
+  .dropdown-menu > li > a {
+    color: #d1d2d3; }
   .body-wrap {
     padding: 5px 0px 0px 5px; }
   .scene-log p {
     margin: 15px 0px 15px 0px; }
   .scene-pose p {
-    margin: 15px 5px; } }
+    margin: 15px 5px; }
+  .scenes-tip {
+    display: none; } }
