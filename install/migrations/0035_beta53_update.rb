@@ -38,7 +38,7 @@ module AresMUSH
             j.update(status: j.status) # Triggers the indexing
           end
           roles = (data['roles'] || []).map { |r| Role.named(r) }.select { |r| r }
-          cat_model.update(roles: roles)
+          cat_model.roles.replace(roles)
         end
         
         Global.logger.debug "Add job config."
