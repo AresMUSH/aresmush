@@ -22,7 +22,6 @@ module AresMUSH
       return nil if !scene.logging_enabled
       
       scene_pose = ScenePose.create(pose: pose, character: character, scene: scene, is_setpose: is_setpose, is_ooc: is_ooc, place_name: place_name ? place_name : character.place_name)
-      pp scene_pose.inspect
       if (!scene_pose.is_system_pose?)
         Scenes.add_participant(scene, character)
       end

@@ -19,16 +19,11 @@ module AresMUSH
         
         place = Places.find_place(enactor, place_name)
       
-        if (place)
-          scene.room.emit_ooc t('places.place_joined', :name => enactor.name, :place_name => place_name)
-          enactor.update(place: place)
-        else
+        if (!place)
           place = Place.create(name: place_name, room: enactor.room)
-          enactor.update(place: place)
-          scene.room.emit_ooc t('places.place_created', :name => enactor.name, :place_name => place_name)
         end
         
-        
+        Places.join_place(enactor, place)
         
         {}
       end
