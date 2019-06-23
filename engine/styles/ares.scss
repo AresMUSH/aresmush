@@ -358,6 +358,13 @@ mark {
   z-index: 3000;
 }
 
+.table-striped > tbody > tr:nth-of-type(odd)    {
+          text-color: #ffffff;
+}
+.table-striped > tbody > tr:nth-of-type(even) {
+         text-color: #ffffff;
+}
+
 /* -------------------------
 GOOGLE SEARCH OVERRIDES
 ------------------------- */
