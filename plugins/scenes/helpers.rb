@@ -551,6 +551,14 @@ module AresMUSH
             status: Website.activity_status(p),
             is_ooc: p.is_admin? || p.is_playerbit?,
             online: Login.is_online?(p)  }}
+      
+        places = scene.room.places.to_a.sort_by { |p| p.name }.map { |p| {
+          name: p.name,
+          chars: p.characters.map { |c| {
+            name: c.name,
+            icon: Website.icon_for_char(c)
+          }}
+        }}
           
       {
         id: scene.id,
@@ -568,7 +576,7 @@ module AresMUSH
         is_watching: viewer && scene.watchers.include?(viewer),
         is_unread: viewer && scene.is_unread?(viewer),
         pose_order: Scenes.build_pose_order_web_data(scene),
-        places: scene.room.places.to_a.sort_by { |p| p.name }.map { |p| { name: p.name, chars: p.characters.map { |c| c.name }} },
+        places: places,
         poses: scene.poses_in_order.map { |p| Scenes.build_scene_pose_web_data(p, viewer) }
       }
     end
