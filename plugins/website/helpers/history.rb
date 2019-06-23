@@ -32,8 +32,8 @@ module AresMUSH
     
     def self.get_recent_change_details(change)
       if (change['type'] == 'char')
-        return { change_type: 'deleted' } if !p
         p = ProfileVersion[change['id']]
+        return { change_type: 'deleted' } if !p
         {
           title: p.character.name,
           id: p.id,
