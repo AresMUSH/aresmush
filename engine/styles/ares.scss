@@ -359,12 +359,11 @@ mark {
 }
 
 .table-striped > tbody > tr:nth-of-type(odd)    {
-          text-color: #ffffff;
+          background: #333;
 }
 .table-striped > tbody > tr:nth-of-type(even) {
-         text-color: #ffffff;
+          text-decoration-color: #ffffff
 }
-
 /* -------------------------
 GOOGLE SEARCH OVERRIDES
 ------------------------- */
