@@ -8,7 +8,7 @@ module AresMUSH
       
       def parse_args
         args = cmd.parse_args(ArgParser.arg1_equals_arg2)
-        self.handle_name = trim_arg(args.arg1)
+        self.handle_name = titlecase_arg(args.arg1)
         self.link_code = trim_arg(args.arg2)
       end
 
@@ -26,33 +26,12 @@ module AresMUSH
         return nil
       end
       
-      def check_is_registered
-        return t('arescentral.game_not_registered') if !AresCentral.is_registered?
-        return nil
-      end
-
-      
       def handle
-        # Strip off the @ a thte front if they made one.
-        self.handle_name.sub!(/^@/, '')
-        
-        AresMUSH.with_error_handling(client, "Linking char to AresCentral handle.") do
-          Global.logger.info "Linking #{enactor.name} to #{self.handle_name}."
-        
-          connector = AresCentral::AresConnector.new
-          response = connector.link_char(self.handle_name, self.link_code, enactor.name, enactor.id.to_s)
-        
-          if (response.is_success?)
-            handle = Handle.create(name: response.data["handle_name"], 
-                handle_id: response.data["handle_id"],
-                character: enactor)
-            enactor.update(handle: handle)
-            client.emit_success t('arescentral.link_successful', :handle => self.handle_name)
-            
-            Achievements.award_achievement(enactor, "handle_linked", 'community', "Linked a character to a player handle.")
-          else
-            client.emit_failure t('arescentral.link_failed', :error => response.error_str)
-          end   
+        error = AresCentral.link_handle(enactor, self.handle_name, self.link_code)
+        if (error)
+          client.emit_failure error
+        else
+          client.emit_success t('arescentral.link_successful', :handle => self.handle_name)
         end     
       end      
     end

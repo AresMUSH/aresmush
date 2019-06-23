@@ -3,14 +3,10 @@
 <% if approval_status %>%xg<%= center(approval_status, 78) %>%xn
 <% end -%>
 <%= divider %>
-%xh<%= left( t('profile.fullname_title'), 12 ) %>%xn <%= left( demographic(:fullname), 25 ) -%>
-%xh<%= left( t('profile.actor_title'), 12 ) %>%xn <%= left( demographic(:actor), 25 ) -%>
-<% basic_demographics.each_with_index do |d, i| %>
+<% visible_demographics.each_with_index do |d, i| %>
 <% if i % 2 == 0 %>%R<% end %>%xh<%= left( "#{d.titlecase}", 12 ) %>%xn <%= left( demographic(d), 25 ) -%>
 <% end %>
-
-%xh<%= left( t('profile.age_title'), 12 ) %>%xn <%= left( age, 25 ) -%>
-%xh<%= left( t('profile.birthdate_title'), 12 ) %>%xn <%= left( birthdate, 25 ) %>
+<%= age_separator %>%xh<%= left( t('profile.age_title'), 12 ) %>%xn <%= left( age, 25 ) %>
 %xh<%= left( t('profile.wiki_title'), 12) %>%xn <%= wiki %>
 <%= divider -%>
 <% groups.each_with_index do |g, i| %>

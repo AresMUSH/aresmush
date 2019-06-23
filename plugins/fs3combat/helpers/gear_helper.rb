@@ -61,14 +61,18 @@ module AresMUSH
       armor = FS3Combat.armor(name)
       return nil if !armor
       
-      value = armor[stat]
+      if (stat == "protection")
+        value = armor[stat].dup
+      else
+        value = armor[stat]
+      end
       return nil if !value
             
       # Special handling for protection because it's a hash itself
       special_names = name_with_specials.after("+")
       special_names = special_names ? special_names.split("+") : []
       specials = FS3Combat.armor_specials
-    
+      
       special_names.each do |s|
         special = specials[s]
         next if !special

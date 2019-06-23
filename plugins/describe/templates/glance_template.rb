@@ -4,10 +4,11 @@ module AresMUSH
     class GlanceTemplate < ErbTemplateRenderer
       include CharDescTemplateFields
       
-      attr_accessor :room
+      attr_accessor :room, :enactor
                      
-      def initialize(room)
+      def initialize(room, enactor)
         @room = room
+        @enactor = enactor
         super File.dirname(__FILE__) + "/glance.erb"        
       end
       
@@ -30,7 +31,7 @@ module AresMUSH
           name: char.name, 
           age: char.age,
           gender_noun: Demographics.gender_noun(char) }
-        Demographics.basic_demographics.each do |k|
+        Demographics.visible_demographics(char, @enactor).each do |k|
           glance_args[k.downcase.to_sym] = (char.demographic(k) || "-").downcase
           glance_args["#{k.downcase}_title".to_sym] = (char.demographic(k) || "-").titlecase
         end

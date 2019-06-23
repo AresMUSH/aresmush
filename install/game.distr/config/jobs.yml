@@ -1,32 +1,5 @@
 ---
 jobs:
-  categories:
-    APP:
-      color: "%xm"
-    BUILD:
-      color: "%xy"
-      roles:
-      - builder
-    BUG:
-      color: "%xr"
-      roles:
-      - coder
-    CODE:
-      color: "%xy"
-      roles:
-      - coder
-    ALERT:
-      color: "%xr"
-    MISC:
-      color: "%xh"
-    PLOT:
-      color: "%xc"
-    REQ:
-      color: "%xm"
-    RP:
-      color: "%xc"
-    SYS:
-      color: "%xh"
   status:
     NEW:
       color: "%xg"
@@ -36,8 +9,25 @@ jobs:
       color: "%xx%xh"
     DONE:
       color: "%xy"
+    ARCHIVED:
+      color: "%xx%xh"
+  archive_job_days: 10
+  archive_cron:
+    hour:
+    - 04
+    minute:
+    - 18
+    day_of_week:
+    - Sun    
+  active_statuses:
+    - NEW
+    - OPEN
+  closed_statuses:
+    - DONE
+    - ARCHIVED
   default_status: NEW
-  closed_status: DONE
+  open_status: OPEN
+  archived_status: ARCHIVED
   request_category: REQ
   system_category: SYS
   trouble_category: ALERT
@@ -52,6 +42,7 @@ jobs:
     job/mine: job/filter mine
     job/active: job/filter active
     job/all: job/filter all
+    job/unread: job/filter unread
     job/deletecomment: job/deletereply
     job/category: job/cat
     request/all: request/filter all

@@ -140,6 +140,8 @@ You can use includes like templates, creating consistent formatting easily acros
 
 In the page, `%{foo}` will be replaced with "Foo Value".  Be sure to put only one variable per line, and start the line with |.
 
+Note:  If the page you're including has an actual % in it, you'll need to format it as two percents (%%) otherwise the variable processing will get confused.
+
 ## Table of Contents
 
 You can include an auto-generated table of contents with level 2 and 3 headers.  (Level 1 is excluded because it's always the page title.)

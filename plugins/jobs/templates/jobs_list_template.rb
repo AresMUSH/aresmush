@@ -18,7 +18,7 @@ module AresMUSH
       end
       
       def category_color(job)
-        Jobs.category_color(job.category)
+        Jobs.category_color(job.job_category.name)
       end
      
       def handler(job)

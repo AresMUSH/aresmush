@@ -7,7 +7,6 @@ module AresMUSH
       
       def parse_args
         self.names = list_arg(cmd.args)
-        client.emit self.names
       end
       
       def handle
@@ -18,7 +17,14 @@ module AresMUSH
         end
         
         Page.mark_thread_read(thread, enactor)
-        template = PageReviewTemplate.new(enactor, thread, thread.sorted_messages)
+        
+        paginator = Paginator.paginate(thread.sorted_messages, cmd.page, 25)
+        if (paginator.out_of_bounds?)
+          client.emit_failure paginator.out_of_bounds_msg
+          return
+        end
+        
+        template = PageReviewTemplate.new(enactor, thread, paginator)
         client.emit template.render
       end
     end

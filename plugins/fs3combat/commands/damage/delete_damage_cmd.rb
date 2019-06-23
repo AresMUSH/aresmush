@@ -18,31 +18,29 @@ module AresMUSH
       def handle
         target = FS3Combat.find_named_thing(self.name, enactor)
             
+        if (!target)
+          client.emit_failure t('db.object_not_found')
+          return
+        end
+        
         if !FS3Combat.can_inflict_damage(enactor, target)
           client.emit_failure t('dispatcher.not_allowed') 
           return nil
         end
       
-        if (target)
-          damage = target.damage
-          if (self.num < 1 || damage.count < self.num)
-            client.emit_failure t('fs3combat.invalid_damage_number')
-            return
-          end
-          wound = damage.to_a[self.num - 1]
-          
-          Global.logger.info "Damage deleted on #{target.name}: old=#{wound.description} #{wound.current_severity}"
-          
-          wound.delete
-          
-          client.emit_success t('fs3combat.damage_deleted') 
-        else 
-          client.emit_failure t('db.object_not_found')
+        damage = target.damage
+        if (self.num < 1 || damage.count < self.num)
+          client.emit_failure t('fs3combat.invalid_damage_number')
+          return
         end
+        wound = damage.to_a[self.num - 1]
+          
+        Global.logger.info "Damage deleted on #{target.name}: old=#{wound.description} #{wound.current_severity}"
+          
+        wound.delete
+          
+        client.emit_success t('fs3combat.damage_deleted') 
       end
-      
-
-      
     end
   end
 end
