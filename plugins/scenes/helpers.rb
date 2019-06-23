@@ -284,6 +284,7 @@ module AresMUSH
       log
     end
 
+    # Place name overrides whatever place the character is in.
     def self.emit_pose(enactor, pose, is_emit, is_ooc, place_name = nil, system_pose = false, room = nil)
       room = room || enactor.room
       formatted_pose = pose
@@ -304,7 +305,7 @@ module AresMUSH
         client.emit Scenes.custom_format(formatted_pose, char, enactor, is_emit, is_ooc, place_name)
       end
 
-      Global.dispatcher.queue_event PoseEvent.new(enactor, pose, is_emit, is_ooc, system_pose, room)
+      Global.dispatcher.queue_event PoseEvent.new(enactor, pose, is_emit, is_ooc, system_pose, room, place_name)
       
       if (!is_ooc && room.room_type != "OOC")
           Scenes.update_pose_order(enactor, room)
@@ -530,6 +531,7 @@ module AresMUSH
         is_setpose: pose.is_setpose,
         is_system_pose: pose.is_system_pose?,
         restarted_scene_pose: pose.restarted_scene_pose,
+        place_name: pose.place_name,
         is_ooc: pose.is_ooc,
         raw_pose: pose.pose,
         can_edit: pose.can_edit?(viewer),
@@ -566,6 +568,7 @@ module AresMUSH
         is_watching: viewer && scene.watchers.include?(viewer),
         is_unread: viewer && scene.is_unread?(viewer),
         pose_order: Scenes.build_pose_order_web_data(scene),
+        places: scene.room.places.to_a.sort_by { |p| p.name }.map { |p| { name: p.name, chars: p.characters.map { |c| c.name }} },
         poses: scene.poses_in_order.map { |p| Scenes.build_scene_pose_web_data(p, viewer) }
       }
     end
