@@ -359,10 +359,10 @@ mark {
 }
 
 .table-striped > tbody > tr:nth-of-type(odd)    {
-          text-color: #ffffff;
+          background-color: #333;
 }
 .table-striped > tbody > tr:nth-of-type(even) {
-         text-color: #ffffff;
+          text-decoration-color: #ffffff
 }
 
 /* -------------------------
