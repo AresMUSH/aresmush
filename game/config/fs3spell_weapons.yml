@@ -348,7 +348,7 @@ fs3combat:
     Exoskeleton:
       description: Level 4 Corpus spell
       is_magic: true
-      skill: Corpus
+      skill: Melee
       lethality: 0
       penetration: 5
       weapon_type: Melee
