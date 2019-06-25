@@ -3,7 +3,7 @@ module AresMUSH
   module Migrations
     class MigrationBeta53Update
       def require_restart
-        false
+        true
       end
       
       def migrate
@@ -17,15 +17,15 @@ module AresMUSH
         Game.master.update(recent_changes: recent)
       
         Global.logger.debug "Adding recent scenes"
-        recent = Scene.shared_scenes.to_a.sort_by { |s| s.date_shared || s.created_at }.reverse[0..29] || []
+        recent = Scene.shared_scenes.to_a.sort_by { |s| s.date_shared || s.created_at }.reverse[0..29]
+        Game.master.update(recent_scenes: recent.map { |r| r.id })
         Scene.all.each do |s|
           s.update(completed: s.completed) # Trigger indexing
           s.update(shared: s.shared)
         end
-        Game.master.update(recent_scenes: recent.map { |r| r.id })
       
         Global.logger.debug "Adding recent forum posts"
-        recent = BbsPost.all.to_a.sort_by { |p| p.last_updated }.reverse[0..29] || []
+        recent = BbsPost.all.to_a.sort_by { |p| p.last_updated }.reverse[0..29]
         Game.master.update(recent_forum_posts: recent.map { |r| r.id })
       
       
@@ -37,6 +37,8 @@ module AresMUSH
             j.update(job_category: cat_model)
             j.update(status: j.status) # Triggers the indexing
           end
+          roles = (data['roles'] || []).map { |r| Role.named(r) }.select { |r| r }
+          cat_model.roles.replace(roles)
         end
         
         Global.logger.debug "Add job config."
@@ -48,14 +50,17 @@ module AresMUSH
         config['jobs']['closed_statuses'] = [ 'DONE', 'ARCHIVED' ]
         config['jobs']['active_statuses'] = [ 'NEW', 'OPEN' ]
         config['jobs']['open_status'] = 'OPEN'      
+        config['jobs']['archived_status'] = 'ARCHIVED'
+        
         DatabaseMigrator.write_config_file("jobs.yml", config)  
       
         Global.logger.debug "Archiving old jobs."
         Job.find(status: 'DONE').each do |j|
           j.update(date_closed: Time.now)
           j.update(status: 'ARCHIVED')
-        end         
-
+        end
+        
+        Role.named("Coder").add_permission("tinker")
       end
     
       def find_recent_changes(unique_only = false, limit = 50)

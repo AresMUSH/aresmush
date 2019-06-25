@@ -59,6 +59,7 @@ module AresMUSH
       config = DatabaseMigrator.read_config_file("demographics.yml")
       config['demographics']['shortcuts']['actors'] = 'census played by'
       config['demographics']['shortcuts']['actor'] = 'demographic/set played by='
+      config['demographics']['shortcuts']['fullname'] = 'demographic/set full name='
       ['editable_properties', 'required_properties', 'demographics', 'private_properties'].each do |section|
         new_section = []
         config['demographics'][section].each do |item|
@@ -82,7 +83,10 @@ module AresMUSH
       end
       
       Global.logger.debug "Removing cookies plugin dir."
-      FileUtils.remove_dir(File.join(AresMUSH.root_path, "plugins/cookies"))
+      cookies_dir = File.join(AresMUSH.root_path, "plugins/cookies")
+      if (File.exist?(cookies_dir))
+        FileUtils.remove_dir(cookies_dir)
+      end
       
     end
   end

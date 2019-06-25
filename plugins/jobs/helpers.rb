@@ -114,10 +114,17 @@ module AresMUSH
     
     def self.with_a_request(client, enactor, number, &block)
       job = Job[number]
-      if (!job || job.author != enactor)
+      if (!job)
         client.emit_failure t('jobs.invalid_job_number')
         return
       end
+      
+      error = Jobs.check_job_access(enactor, job, true)
+      if (error)
+        client.emit_failure error
+        return
+      end
+      
       
       yield job
     end
