@@ -60,6 +60,19 @@ module AresMUSH
         combatant.update(subdued_by: nil)
       end
 
+      if (combatant.stance_counter == 0 && combatant.stance_spell)
+        stance = Global.read_config("spells", combatant.stance_spell, "stance")
+        if stance == "cover"
+          stance = "in cover"
+        end
+        FS3Combat.emit_to_combat combatant.combat, t('custom.stance_wore_off', :name => combatant.name, :spell => combatant.stance_spell, :stance => stance), nil, true
+        combatant.log "#{combatant.name} #{combatant.stance_spell} wore off."
+        combatant.update(stance_spell: nil)
+        combatant.update(stance: "Normal")
+      elsif (combatant.stance_counter > 0 && combatant.stance_spell)
+        combatant.update(stance_counter: combatant.stance_counter - 1)
+      end
+
       if (combatant.mind_shield_counter == 0 && combatant.mind_shield > 0)
         FS3Combat.emit_to_combat combatant.combat, t('custom.shield_wore_off', :name => combatant.name, :spell => "Mind Shield"), nil, true
         combatant.update(mind_shield: 0)
@@ -264,6 +277,7 @@ module AresMUSH
 
     def self.set_action(client, enactor, combat, combatant, action_klass, args)
       action = action_klass.new(combatant, args)
+
       error = action.prepare
       if (error)
         client.emit_failure error

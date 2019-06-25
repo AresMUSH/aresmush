@@ -22,21 +22,31 @@ module AresMUSH
           return t('custom.too_many_targets', :spell => self.spell, :num => num) if (self.targets.count > num)
         end
 
+        # targets.each do |target|
+        #   wound = FS3Combat.worst_treatable_wound(target.associated_model)
+        #   if (!wound)
+        #     return t('fs3combat.target_has_no_treatable_wounds', :name => target.name)
+        #   else
+        #     # return nil
+        #   end
+        # end
+
+
       end
 
       def print_action
 
         if self.target_optional
-          msg = t('custom.spell_target_action_msg_long', :name => self.name, :spell => self.spell, :target => print_target_names)
+          msg = t('custom.spell_target_action_msg_long', :name => self.name, :spell => self.spell, :targets => print_target_names)
           msg
         else
-          msg = t('custom.spell_action_msg_long', :name => self.name, :spell => self.spell, :target => print_target_names)
+          msg = t('custom.spell_action_msg_long', :name => self.name, :spell => self.spell, :targets => print_target_names)
           msg
         end
       end
 
       def print_action_short
-        t('custom.spell_target_action_msg_short', :target => print_target_names)
+        t('custom.spell_target_action_msg_short', :targets => print_target_names)
       end
 
       def resolve
@@ -61,6 +71,7 @@ module AresMUSH
           roll = Global.read_config("spells", self.spell, "roll")
           effect = Global.read_config("spells", self.spell, "effect")
           damage_type = Global.read_config("spells", self.spell, "damage_type")
+          rounds = Global.read_config("spells", self.spell, "rounds")
 
           targets.each do |target|
             #Attacks against shields
@@ -78,38 +89,29 @@ module AresMUSH
               if self.spell == "Mind Shield"
                 shield_strength = combatant.roll_ability("Spirit")
                 target.update(mind_shield: shield_strength)
-                rounds = Global.read_config("spells", self.spell, "rounds")
+                target.update(mind_shield_counter: rounds)
 
-                 target.update(mind_shield_counter: rounds)
-
-                 combatant.log "Setting #{combatant.name}'s Mind Shield to #{shield_strength}"
-
-                 messages.concat [t('custom.cast_shield', :name => self.name, :spell => self.spell, :succeeds => succeeds, :target =>  print_target_names, :type => "psionic")]
+                combatant.log "Setting #{combatant.name}'s Mind Shield to #{shield_strength}"
+                messages.concat [t('custom.cast_shield', :name => self.name, :spell => self.spell, :succeeds => succeeds, :target =>  print_target_names, :type => "psionic")]
               end
 
-              #Fire Protection
+            #Fire Protection
              if self.spell == "Endure Fire"
-               shield_strength = combatant.roll_ability("Fire")
-               target.update(target: shield_strength)
-               rounds = Global.read_config("spells", self.spell, "rounds")
-
-                target.update(endure_fire_counter: rounds)
-                combatant.log "Setting #{target.name}'s Endure Fire to #{shield_strength}"
-
-                messages.concat [t('custom.cast_shield', :name => self.name, :spell => self.spell, :succeeds => succeeds, :target =>  print_target_names, :type => "fire")]
+              shield_strength = combatant.roll_ability("Fire")
+              target.update(target: shield_strength)
+              target.update(endure_fire_counter: rounds)
+              combatant.log "Setting #{target.name}'s Endure Fire to #{shield_strength}"
+              messages.concat [t('custom.cast_shield', :name => self.name, :spell => self.spell, :succeeds => succeeds, :target =>  print_target_names, :type => "fire")]
              end
 
-             #Cold Protection
+            #Cold Protection
             if self.spell == "Endure Cold"
               shield_strength = combatant.roll_ability("Water")
               target.update(endure_cold: shield_strength)
-              rounds = Global.read_config("spells", self.spell, "rounds")
+              target.update(endure_cold_counter: rounds)
 
-               target.update(endure_cold_counter: rounds)
-
-               combatant.log "Setting #{target.name}'s Endure Cold to #{shield_strength}"
-
-               messages.concat [t('custom.cast_shield', :name => self.name, :spell => self.spell, :succeeds => succeeds, :target =>  print_target_names, :type => "cold")]
+              combatant.log "Setting #{target.name}'s Endure Cold to #{shield_strength}"
+              messages.concat [t('custom.cast_shield', :name => self.name, :spell => self.spell, :succeeds => succeeds, :target =>  print_target_names, :type => "cold")]
             end
 
               #Healing
@@ -141,9 +143,7 @@ module AresMUSH
               #Equip Weapon Specials
               if weapon_specials_str
                 Custom.spell_weapon_effects(self.combatant, self.spell)
-
                 weapon = self.combatant.weapon.before("+")
-
                 FS3Combat.set_weapon(nil, target, weapon, [weapon_specials_str])
 
                 if heal_points
@@ -168,8 +168,6 @@ module AresMUSH
                 messages.concat [t('custom.casts_spell', :name => self.name, :spell => self.spell, :succeeds => succeeds)]
               end
 
-
-
               #Reviving
               if is_revive
                 target.update(is_ko: false)
@@ -184,7 +182,6 @@ module AresMUSH
                 FS3Combat.emit_to_combatant target, t('custom.been_resed', :name => self.name)
               end
 
-
               #Inflict Damage
               if damage_inflicted
                 FS3Combat.inflict_damage(target.associated_model, damage_inflicted, damage_desc)
@@ -194,28 +191,24 @@ module AresMUSH
 
               #Apply Mods
               if lethal_mod
-                rounds = Global.read_config("spells", self.spell, "rounds")
                 target.update(lethal_mod_counter: rounds)
                 target.update(damage_lethality_mod: lethal_mod)
                 messages.concat [t('custom.cast_mod', :name => self.name, :spell => self.spell, :succeeds => succeeds, :target =>  print_target_names, :mod => lethal_mod, :type => "lethality")]
               end
 
               if attack_mod
-                rounds = Global.read_config("spells", self.spell, "rounds")
                 target.update(attack_mod_counter: rounds)
                 target.update(attack_mod: attack_mod)
                 messages.concat [t('custom.cast_mod', :name => self.name, :spell => self.spell, :succeeds => succeeds, :target =>  print_target_names, :mod => attack_mod, :type => "attack")]
               end
 
               if defense_mod
-                rounds = Global.read_config("spells", self.spell, "rounds")
                 target.update(defense_mod_counter: rounds)
                 target.update(defense_mod: defense_mod)
                 messages.concat [t('custom.cast_mod', :name => self.name, :spell => self.spell, :succeeds => succeeds, :target =>  print_target_names, :mod => defense_mod, :type => "defense")]
               end
 
               if spell_mod
-                rounds = Global.read_config("spells", self.spell, "rounds")
                 target.update(spell_mod_counter: rounds)
                 target.update(spell_mod: spell_mod)
                 messages.concat [t('custom.cast_mod', :name => self.name, :spell => self.spell, :succeeds => succeeds, :target =>  print_target_names, :mod => spell_mod, :type => "spell")]
@@ -224,7 +217,9 @@ module AresMUSH
               #Change Stance
               if stance
                 target.update(stance: stance)
-                messages.concat [t('custom.cast_stance', :name => self.name, :target => print_target_names, :spell => self.spell, :succeeds => succeeds, :stance => stance)]
+                target.update(stance_counter: rounds)
+                target.update(stance_spell: self.spell)
+                messages.concat [t('custom.cast_stance', :name => self.name, :target => print_target_names, :spell => self.spell, :succeeds => succeeds, :stance => stance, :rounds => rounds)]
               end
 
               #Roll
@@ -236,27 +231,21 @@ module AresMUSH
                 else
                   if effect == "Psionic"
                     messages.concat [t('custom.shield_failed', :name => self.name, :spell => "self.spell", :shield => "Mind Shield", :target => print_target_names, :succeeds => succeeds)]
-                  # elsif damage_type == "Fire"
-                  #   messages.concat [t('custom.shield_failed', :name => self.name, :spell => "self.spell", :shield => "Endure Fire", :target => print_target_names, :succeeds => succeeds)]
-                  # elsif damage_type == "Cold"
-                  #   messages.concat [t('custom.shield_failed', :name => self.name, :spell => "self.spell", :shield => "Endure Cold", :target => print_target_names, :succeeds => succeeds)]
                   else
                     messages.concat [t('custom.spell_target_resolution_msg', :name => self.name, :spell => self.spell, :target => print_target_names, :succeeds => succeeds)]
                   end
 
                 end
               end
-            #End Psionic Protection Rolls
+            #End Protection Rolls
             end
-
-
           #End targets.each do  (if spell succeeds)
           end
         elsif self.spell == "Phoenix's Healing Flames"
           messages.concat [t('custom.cast_phoenix_heal', :name => self.name, :spell => self.spell, :succeeds => "%xgSUCCEEDS%xn")]
         else
           #Spell fails
-          messages.concat [t('custom.spell_target_resolution_msg', :name => self.name, :spell => spell, :target => print_target_names, :succeeds => succeeds)]
+          messages.concat [t('custom.spell_target_resolution_msg', :name => self.name, :spell => spell, :targets => print_target_names, :succeeds => succeeds)]
         end
         level = Global.read_config("spells", self.spell, "level")
         if level == 8

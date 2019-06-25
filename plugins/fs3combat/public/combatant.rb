@@ -16,6 +16,7 @@ module AresMUSH
     attribute :attack_mod_counter, :type => DataType::Integer, :default => 0
     attribute :defense_mod_counter, :type => DataType::Integer, :default => 0
     attribute :stance_counter, :type => DataType::Integer, :default => 0
+    attribute :stance_spell
     attribute :mind_shield, :type => DataType::Integer, :default => 0
     attribute :mind_shield_counter, :type => DataType::Integer, :default => 0
     attribute :endure_fire, :type => DataType::Integer, :default => 0

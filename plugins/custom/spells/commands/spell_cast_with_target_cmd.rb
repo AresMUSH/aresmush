@@ -34,8 +34,6 @@ module AresMUSH
           self.caster = enactor
           self.target = FS3Combat.find_named_thing(self.target_name, self.caster)
 
-
-
           #Returns combatant
           if enactor.combat
             combat = enactor.combat
@@ -53,7 +51,6 @@ module AresMUSH
         require_target = Global.read_config("spells", self.spell, "require_target")
         target_optional = Global.read_config("spells", self.spell, "target_optional")
         return t('custom.no_target') if (!require_target && !target_optional)
-        heal_points = Global.read_config("spells", self.spell, "heal_points")
         is_res = Global.read_config("spells", self.spell, "is_res")
         is_revive = Global.read_config("spells", self.spell, "is_revive")
         target_names = target_name.split(" ").map { |n| InputFormatter.titlecase_arg(n) }
@@ -101,7 +98,6 @@ module AresMUSH
       end
 
       def handle
-
       #Reading Config Files
         rounds = Global.read_config("spells", self.spell, "rounds")
         heal_points = Global.read_config("spells", self.spell, "heal_points")
