@@ -9,6 +9,7 @@ module AresMUSH
       end
       
       def handle
+        client.emit_success "No special characters!" if ("D'angeline" !~ /^D'|^[\w\s]+$/)
         client.emit_success "Done!"
       end
 
