@@ -67,12 +67,12 @@ module AresMUSH
         applied_migrations << migration_name
         
         Global.logger.info "Migration #{migration_name} applied."
+
+        File.open(self.applied_migrations_path, 'w') do |file|
+          file.write applied_migrations.join("\n")
+        end
       end
 
-      File.open(self.applied_migrations_path, 'w') do |file|
-        file.write applied_migrations.join("\n")
-      end
-      
       Global.logger.info "Migrations complete."
     end
       
