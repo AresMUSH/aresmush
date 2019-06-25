@@ -36,7 +36,7 @@ module AresMUSH
       end
 
       def print_action_short
-        t('custom.spell_action_msg_short')
+        t('custom.spell_target_action_msg_short', :target => print_target_names)
       end
 
       def resolve
@@ -61,16 +61,6 @@ module AresMUSH
           roll = Global.read_config("spells", self.spell, "roll")
           effect = Global.read_config("spells", self.spell, "effect")
           damage_type = Global.read_config("spells", self.spell, "damage_type")
-
-          #Roll
-          # if roll
-          #   if target_optional
-          #     messages.concat [t('custom.spell_target_resolution_msg', :name => self.name, :spell => self.spell, :target => print_target_names, :succeeds => succeeds)]
-          #   else
-          #     messages.concat [t('custom.spell_resolution_msg', :name => self.name, :spell => self.spell, :succeeds => succeeds)]
-          #   end
-          # end
-
 
           targets.each do |target|
             #Attacks against shields

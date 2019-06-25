@@ -12,7 +12,7 @@ module AresMUSH
         end
 
 
-
+        rounds = Global.read_config("spells", self.spell, "rounds")
         weapon_type = FS3Combat.weapon_stat(self.combatant.weapon, "weapon_type")
         return t('fs3combat.subdue_uses_melee') if weapon_type != "Melee"
 
@@ -26,11 +26,12 @@ module AresMUSH
       end
 
       def print_action
-        t('fs3combat.stun_action_msg_long', :name => self.name, :target => print_target_names)
+        msg = t('custom.spell_target_action_msg_long', :name => self.name, :spell => self.spell, :targets => print_target_names)
+        msg
       end
 
       def print_action_short
-        t('fs3combat.stun_action_msg_short', :target => print_target_names)
+        t('custom.spell_target_action_msg_short', :targets => print_target_names)
       end
 
       def resolve
@@ -44,17 +45,15 @@ module AresMUSH
             target.update(magic_stun: true)
             rounds = Global.read_config("spells", self.spell, "rounds")
 
-            #Rounds + 1, otherwise the newturn it casts in will count as a round.
-            target.update(magic_stun_counter: rounds.to_i + 1)
+            target.update(magic_stun_counter: rounds.to_i)
             target.update(magic_stun_spell: spell)
             target.update(action_klass: nil)
             target.update(action_args: nil)
-            messages << t('fs3combat.stun_action_success', :name => self.name, :target => print_target_names)
+            messages << t('custom.spell_resolution_msg', :name => self.name, :spell => self.spell, :succeeds => "%xgSUCCEEDS%xn")
           else
-            messages << t('fs3combat.stun_action_failed', :name => self.name, :target => print_target_names)
+            messages << t('custom.spell_target_resolution_msg', :name => self.name, :spell => spell, :targets => print_target_names, :succeeds => "%xrFAILS%xn")
           end
         end
-
         messages
       end
     end

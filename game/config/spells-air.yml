@@ -95,7 +95,6 @@ spells:
     casting_time: 1 round
     desc: Shock an opponent with a burst of electricity, stunning them for one round.
     effect: Stun
-    fs3_attack: true
     is_stun: true
     rounds: 1
     level: 3
@@ -141,7 +140,6 @@ spells:
     casting_time: 1 round
     desc: Create a powerful blast of wind that knocks an enemy back 5 yards, stunning them.
     effect: Stun
-    fs3_attack: true
     is_stun: true
     rounds: 1
     level: 4

@@ -60,6 +60,7 @@ module AresMUSH
         if enactor.combat
           return t('custom.spell_ko') if self.caster_combat.is_ko
           return t('custom.dont_know_spell') if (!caster_combat.is_npc? &&  Custom.knows_spell?(caster, self.spell) == false && Custom.item_spell(caster) != self.spell)
+          return t('fs3combat.must_escape_first') if caster_combat.is_subdued?
 
           target_names.each do |name|
             target = enactor.combat.find_combatant(name)
@@ -116,9 +117,7 @@ module AresMUSH
               FS3Combat.emit_to_combat caster_combat.combat, t('custom.will_cast_fs3_attack', :name => caster_combat.name, :spell => spell, :target => target_name), nil, true
               FS3Combat.set_weapon(enactor, caster_combat, weapon)
               weapon_type = FS3Combat.weapon_stat(caster_combat.weapon, "weapon_type")
-              if is_stun
-                FS3Combat.set_action(client, enactor, enactor.combat, caster_combat, FS3Combat::SpellStunAction, self.action_args)
-              elsif weapon_type == "Explosive"
+              if weapon_type == "Explosive"
                 FS3Combat.set_action(client, enactor, enactor.combat, caster_combat, FS3Combat::ExplodeAction, target_name)
               elsif weapon_type == "Suppressive"
                 FS3Combat.set_action(client, enactor, enactor.combat, caster_combat, FS3Combat::SuppressAction, target_name)
@@ -126,6 +125,9 @@ module AresMUSH
                 FS3Combat.set_action(client, enactor, enactor.combat, caster_combat, FS3Combat::AttackAction, target_name)
               end
             end
+          elsif is_stun
+            FS3Combat.set_weapon(enactor, caster_combat, weapon)
+            FS3Combat.set_action(client, enactor, enactor.combat, caster_combat, FS3Combat::SpellStunAction, self.action_args)
           else
             FS3Combat.set_action(client, enactor, enactor.combat, caster_combat, FS3Combat::SpellAction, self.action_args)
           end

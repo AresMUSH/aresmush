@@ -140,7 +140,6 @@ spells:
     casting_time: 1 round
     desc: The caster immobolizes one target with vines anchored to the ground or other structural surroundings.
     effect: Stun
-    fs3_attack: true
     is_stun: true
     level: 3
     line_of_sight: true
@@ -156,7 +155,6 @@ spells:
     casting_time: 1 round
     desc: "Control a group of angry insects, encouraging them to attack a single enemy. Overcome, the enemy is unable to take any action this round. \n\n Behavior of swarm after the caster''s control dissipates is subject to GM discretion."
     effect: Stun
-    fs3_attack: true
     is_stun: true
     rounds: 1
     level: 3

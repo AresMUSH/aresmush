@@ -123,7 +123,6 @@ spells:
     casting_time: 1 round
     desc: The caster blasts a target with a powerful water attack, knocking them off their feet and incapacitating them for one round.
     effect: Stun
-    fs3_attack: true
     is_stun: true
     rounds: 1
     level: 3

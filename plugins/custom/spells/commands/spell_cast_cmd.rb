@@ -46,6 +46,7 @@ module AresMUSH
 
           return t('custom.spell_ko') if self.caster_combat.is_ko
           return t('custom.dont_know_spell') if (!caster_combat.is_npc? &&  Custom.knows_spell?(caster, self.spell) == false && Custom.item_spell(caster) != self.spell)
+          return t('fs3combat.must_escape_first') if caster_combat.is_subdued?
 
           # Prevent badly config's spells from completely breaking combat by equipping non-existant gear
           weapon = Global.read_config("spells", self.spell, "weapon")
@@ -93,7 +94,7 @@ module AresMUSH
             elsif (self.spell == "Mind Shield" || self.spell == "Endure Fire" || self.spell == "Endure Cold")
               Custom.cast_noncombat_shield(self.caster, self.caster, self.spell)
             else
-              Custom.cast_noncombat_spell(self.caster, nil, self.spell, self.mod)              
+              Custom.cast_noncombat_spell(self.caster, nil, self.spell, self.mod)
             end
             Custom.handle_spell_cast_achievement(self.caster)
           else
