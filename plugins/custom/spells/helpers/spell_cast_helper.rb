@@ -179,16 +179,23 @@ module AresMUSH
       damage_type = Global.read_config("spells", spell, "damage_type")
       effect = Global.read_config("spells", spell, "effect")
       school = Global.read_config("spells", spell, "school")
+      Global.logger.debug "Effect: #{effect}"
+      Global.logger.debug "Fire: #{target.endure_fire}"
+      Global.logger.debug "Mind: #{target.endure_fire}"
+      Global.logger.debug "Cold: #{target.endure_fire}"
 
       if damage_type == "Fire"
         shield_strength = target.endure_fire
         shield = "Endure Fire"
       elsif damage_type == "Cold"
-        shield_strength = target.endure_fire
+        shield_strength = target.endure_cold
         shield = "Endure Cold"
       elsif effect == "Psionic"
         shield_strength = target.mind_shield
         shield = "Mind Shield"
+      else
+        shield_strength = 0
+        shield = "None"
       end
 
       if caster.combat
@@ -196,6 +203,10 @@ module AresMUSH
       else
         successes = caster.roll_ability(school)[:successes]
       end
+
+      Global.logger.debug "Strength: #{shield_strength}"
+      Global.logger.debug "Successes: #{successes}"
+
 
       delta = shield_strength - successes
 
