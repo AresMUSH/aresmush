@@ -3,35 +3,35 @@ demographics:
   min_age: 18
   max_age: 65
   required_properties:
-  - actor
+  - played by
   - hair
   - eyes
   - skin
   - height
   - physique
-  - fullname
+  - full name
   - gender
   - birthdate
   nickname_field: callsign
   nickname_format: "%{name} (%{nickname})"
   disable_auto_shortcuts: false
   editable_properties:
-  - fullname
-  - hair
-  - physique
+  - full name
   - callsign
   - gender
+  - hair
+  - physique
   demographics:
-  - actor
+  - full name
+  - callsign
+  - gender
   - hair
   - eyes
   - skin
   - height
   - physique
-  - fullname
-  - gender
+  - played by
   - birthdate
-  - callsign
   groups:
     Faction:
       desc: Military faction.
@@ -87,6 +87,8 @@ demographics:
     colonies: group colony
     demographics: demographic
     birthday: birthdate
+    actors: census played by
+    actor: demographic/set played by=
   help_text:
     actor: "%xcactor <actor>%xn - See 'help actors'."
     physique: "%xcphysique <build/body type>%xn - athletic, wiry, slim, pudgy, etc."

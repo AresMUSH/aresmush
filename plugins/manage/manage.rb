@@ -94,7 +94,12 @@ module AresMUSH
       when "unload"
         return UnloadPluginCmd
       when "upgrade"
-        return UpgradeCmd
+        case cmd.switch
+        when "finish"
+          return UpgradeFinishCmd
+        when "start", nil
+          return UpgradeStartCmd
+        end
       when "version"
         return VersionCmd
       end

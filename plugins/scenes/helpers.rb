@@ -36,7 +36,8 @@ module AresMUSH
     
     def self.can_delete_scene?(actor, scene)
       return false if !actor
-      return true if (scene.owner == actor) && scene.participants.count == 0
+      real_poses = scene.scene_poses.select { |p| !p.is_ooc }
+      return true if (scene.owner == actor && (real_poses.count == 0) && !scene.scene_log)
       return true if Scenes.can_manage_scene?(actor, scene)
       return false
     end
@@ -44,6 +45,7 @@ module AresMUSH
     def self.restart_scene(scene)
       Scenes.create_scene_temproom(scene)
       scene.update(completed: false)
+      scene.update(was_restarted: true)
       Scenes.set_scene_location(scene, scene.location)
       Scenes.new_scene_activity(scene, :status_changed, nil)
     end
@@ -57,6 +59,7 @@ module AresMUSH
           scene.scene_log.delete
         end
       end
+      Scenes.remove_recent_scene(scene)
       Scenes.new_scene_activity(scene, :status_changed, nil)
     end
     
@@ -73,10 +76,11 @@ module AresMUSH
       scene.update(shared: true)
       scene.update(date_shared: Time.now)
       Scenes.create_log(scene)
+      Scenes.add_recent_scene(scene)
+      
       Scenes.new_scene_activity(scene, :status_changed, nil)  
-      
       Global.dispatcher.queue_event SceneSharedEvent.new(scene.id)
-      
+            
       return true
     end
       
@@ -112,8 +116,14 @@ module AresMUSH
       scene.update(date_completed: Time.now)
       
       Scenes.new_scene_activity(scene, :status_changed, nil)
-      scene.participants.each do |char|
-        Scenes.handle_scene_participation_achievement(char)
+      
+      if (!scene.was_restarted)
+        scene.participants.each do |char|
+          Scenes.handle_scene_participation_achievement(char)
+          if (FS3Skills.is_enabled?)
+            FS3Skills.luck_for_scene(char, scene)
+          end
+        end
       end
     end    
     
@@ -577,5 +587,24 @@ module AresMUSH
          }}
     end
     
+    def self.recent_scenes
+      (Game.master.recent_scenes || []).map { |id| Scene[id] }.select { |s| s }
+    end
+    
+    def self.remove_recent_scene(scene)
+      recent = Game.master.recent_scenes
+      recent.delete scene.id
+       Game.master.update(recent_scenes: recent)
+    end
+    
+    def self.add_recent_scene(scene)
+      recent = Game.master.recent_scenes
+      recent.unshift(scene.id)
+      recent = recent.uniq
+      if (recent.count > 30)
+        recent.pop
+      end
+      Game.master.update(recent_scenes: recent)
+    end
   end
 end

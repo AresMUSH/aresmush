@@ -17,6 +17,7 @@ module AresMUSH
     attribute :location
     attribute :summary
     attribute :shared
+    attribute :was_restarted, :type => DataType::Boolean, :default => false
     attribute :logging_enabled, :type => DataType::Boolean, :default => true
     attribute :deletion_warned, :type => DataType::Boolean, :default => false
     attribute :icdate
@@ -33,8 +34,11 @@ module AresMUSH
     
     before_delete :delete_poses_and_log
     
+    index :shared
+    index :completed
+    
     def self.shared_scenes
-      Scene.all.select { |s| s.shared }
+      Scene.find(shared: true).to_a
     end
     
     def self.scenes_starring(char)

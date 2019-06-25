@@ -13,7 +13,7 @@ en:
         handle_no_longer_linked: "This character was unlinked from AresCentral and is no longer associated with your handle."
         setting_preference_on_linked_char: "Handle preferences are managed on AresCentral.  Your setting will be wiped out the next time your character is synced with AresCentral."
         
-        trouble_syncing_handle: "There was a problem synchronizing your handle preferences with AresCentral.  It will be synced again the next time you connect."
+        trouble_syncing_handle: "There was a problem synchronizing your handle preferences with AresCentral.  This probably means AresCentral is down for maintenance.  We'll try again the next time you connect."
         
         game_already_registered: "This game is already registered with AresCentral.  If you're having trouble with your game directory information, please ask for help on the forums."
         game_registered: "You register this game with AresCentral.  Note: The game will only appear in the directory if you have the game marked as public in the game configuration."

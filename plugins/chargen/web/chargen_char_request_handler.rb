@@ -19,7 +19,7 @@ module AresMUSH
         
         demographics = {}
         
-        Demographics.basic_demographics.sort.each do |d| 
+        Demographics.all_demographics.select { |d| d != 'birthdate' }.each do |d| 
           demographics[d.downcase] = 
             {
               name: d.titleize,
@@ -28,7 +28,6 @@ module AresMUSH
         end
         
         demographics['age'] = { name: t('profile.age_title'), value: char.birthdate ? OOCTime.format_date_for_entry(char.birthdate) : char.age }
-        demographics['actor'] = { name: t('profile.actor_title'), value: char.demographic(:actor)}
         
         groups = {}
         
@@ -58,7 +57,6 @@ module AresMUSH
           id: char.id,
           chargen_locked: char.chargen_locked,
           name: char.name,
-          fullname: char.demographic(:fullname),
           demographics: demographics,
           groups: groups,
           background: Website.format_input_for_html(char.background),
