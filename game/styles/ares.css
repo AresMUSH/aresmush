@@ -859,6 +859,10 @@ JOBS SCREEN
 .job-category {
   background-color: gray; }
 
+.job-category-general {
+  background-color: white;
+  border: 1px solid gray; }
+
 .job-category-ALERT, .job-category-BUG {
   background-color: red;
   color: white; }

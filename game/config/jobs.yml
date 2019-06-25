@@ -1,5 +1,16 @@
 ---
 jobs:
+  active_statuses:
+  - NEW
+  - OPEN
+  archive_cron:
+    day_of_week:
+    - Sun
+    hour:
+    - 4
+    minute:
+    - 18
+  archive_job_days: 10
   categories:
     APP:
       color: "%xm"
@@ -44,8 +55,12 @@ jobs:
     PLAYER:
       color: "%xy"
   closed_status: DONE
+  closed_statuses:
+  - DONE
+  - ARCHIVED
   default_status: NEW
   luck_category: LUCK
+  open_status: OPEN
   request_category: REQ
   shortcuts:
     jobs/mine: job/filter mine
@@ -63,6 +78,7 @@ jobs:
     job/all: job/filter all
     request/all: request/filter all
     request/active: request/filter active
+    job/unread: job/filter unread
   status:
     NEW:
       color: "%xg"
@@ -74,5 +90,8 @@ jobs:
       color: "%xm"
     DONE:
       color: "%xy"
+    ARCHIVED:
+      color: "%xx%xh"
   system_category: SYS
   trouble_category: ALERT
+  archived_status: ARCHIVED
