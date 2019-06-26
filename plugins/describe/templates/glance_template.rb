@@ -32,6 +32,7 @@ module AresMUSH
           age: char.age,
           gender_noun: Demographics.gender_noun(char) }
         Demographics.visible_demographics(char, @enactor).each do |k|
+          next if k == 'birthdate'
           glance_args[k.downcase.to_sym] = (char.demographic(k) || "-").downcase
           glance_args["#{k.downcase}_title".to_sym] = (char.demographic(k) || "-").titlecase
         end

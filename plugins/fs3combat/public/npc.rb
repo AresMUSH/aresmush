@@ -28,7 +28,14 @@ module AresMUSH
     
     def ability_rating(ability)
       stats = FS3Combat.npc_type(self.level)
-      stats[ability] || stats["Default"]   
+      rating = stats[ability]
+      default = stats["Default"] || 4
+      return rating if rating
+      if (FS3Skills.get_ability_type(ability) == :attribute)
+        return (default / 2).floor
+      else
+        return default
+      end
     end
     
     def wound_modifier

@@ -552,6 +552,7 @@ module AresMUSH
             is_ooc: p.is_admin? || p.is_playerbit?,
             online: Login.is_online?(p)  }}
       
+      if (scene.room)
         places = scene.room.places.to_a.sort_by { |p| p.name }.map { |p| {
           name: p.name,
           chars: p.characters.map { |c| {
@@ -559,6 +560,9 @@ module AresMUSH
             icon: Website.icon_for_char(c)
           }}
         }}
+      else
+        places = nil
+      end
           
       {
         id: scene.id,

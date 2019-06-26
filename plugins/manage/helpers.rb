@@ -74,7 +74,7 @@ module AresMUSH
     def self.start_upgrade
       Global.logger.debug "Starting upgrade."
       upgrade_path = File.join AresMUSH.root_path, "bin", "upgrade"
-      #`#{upgrade_script_path} 2>&1`
+      `#{upgrade_script_path} 2>&1`
     end
     
     def self.finish_upgrade
