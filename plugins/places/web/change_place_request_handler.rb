@@ -10,6 +10,10 @@ module AresMUSH
           return { error: t('webportal.not_found') }
         end
         
+        if (scene.completed)
+          return { error: t('places.scene_already_completed') }
+        end
+        
         error = Website.check_login(request)
         return error if error
 

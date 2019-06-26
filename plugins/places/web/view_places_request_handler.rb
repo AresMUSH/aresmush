@@ -11,6 +11,10 @@ module AresMUSH
         error = Website.check_login(request, false)
         return error if error
 
+        if (scene.completed)
+          return { error: t('places.scene_already_completed') }
+        end
+        
         places = scene.room.places.to_a.sort_by { |p| p.name }.map { |p| {
           name: p.name,
           chars: p.characters.map { |c| {
