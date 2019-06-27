@@ -76,5 +76,18 @@ module AresMUSH
       return scene
     end
     
+    def self.get_recent_scenes_web_data
+      Scenes.recent_scenes[0..9].map { |s| {
+                      id: s.id,
+                      title: s.title,
+                      summary: s.summary,
+                      location: s.location,
+                      icdate: s.icdate,
+                      participants: s.participants.to_a.sort_by { |p| p.name }.map { |p| { name: p.name, id: p.id, icon: Website.icon_for_char(p) }},
+                      scene_type: s.scene_type ? s.scene_type.titlecase : 'unknown',
+      
+                    }}
+    end
+    
   end
 end

@@ -12,8 +12,3 @@ There's also a census to see a breakdown of characters by various groups or char
 
 `census/types` - See what census view types are available.
 `census <type>` - Views a census.
-
-FS3 games can also see a report of characters' skills.
-
-`census skills <type>` - Shows a summary of skills.  Type can be Action, Background or Language.
-

@@ -12,4 +12,4 @@ sudo echo -e "sudo cp /etc/letsencrypt/live/${1}/privkey.pem /home/ares/certs" >
 sudo chown -R ares /home/ares/certs
 sudo chgrp -R ares /home/ares/certs
 sudo chmod -R 740 /home/ares/certs
-sudo certbot renew --deploy-hook /home/ares/certs/update_certs.sh
+sudo certbot renew --force-renewal --deploy-hook /home/ares/certs/update_certs.sh

@@ -6,7 +6,7 @@ summary: Managing character demographics.
 
 > **Permission Required:** These commands require the Admin role or the permission: manage\_demographics
 
-You can set any of the basic character demographics (fullname, gender, etc.) on another character.
+You can set any of the basic character demographics (full name, gender, etc.) on another character.
 
 `demographic <name>=<field>/<value>`
 
