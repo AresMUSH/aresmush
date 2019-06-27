@@ -17,7 +17,11 @@ module AresMUSH
           free_backgrounds:  Global.read_config('fs3skills', 'free_backgrounds'),
           advantages_cost: Global.read_config("fs3skills", "advantages_cost"),
           max_ap: Global.read_config('fs3skills', 'max_ap'),
-          
+          max_dots_action: FS3Skills.max_dots_in_action,
+          max_dots_attrs: FS3Skills.max_dots_in_attrs,
+          xp_costs: Global.read_config('fs3skills', 'xp_costs'),
+          allow_advantages_xp: Global.read_config('fs3skills', 'allow_advantages_xp'),
+          use_advantages: Global.read_config('fs3skills', 'use_advantages')
         } 
       end
     end

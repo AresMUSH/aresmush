@@ -50,11 +50,6 @@ module AresMUSH
       
       return max >= new_total ? nil : t('fs3skills.max_ability_points_reached')
     end
-
-    def self.skill_requires_training(ability)
-      skills_requiring_training = Global.read_config("fs3skills", "skills_requiring_training")
-      return (skills_requiring_training.include?(ability.name) && ability.rating <= 2)
-    end
     
     def self.learn_ability(char, name)
       return t('fs3skills.not_enough_xp') if char.xp <= 0
@@ -94,6 +89,18 @@ module AresMUSH
       
       FS3Skills.modify_xp(char, -1)       
       return nil
+    end
+    
+    def self.max_dots_in_action
+      base = Global.read_config("fs3skills", 'max_points_on_action') || 0
+      extra = Global.read_config("fs3skills", 'action_dots_beyond_chargen_max') || 0
+      base + extra
+    end
+    
+    def self.max_dots_in_attrs
+      base = (Global.read_config("fs3skills", 'max_points_on_attrs') || 0) / 2
+      extra = Global.read_config("fs3skills", 'attr_dots_beyond_chargen_max') || 0
+      base + extra
     end
   end
 end
