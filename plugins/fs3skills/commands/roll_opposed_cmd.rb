@@ -52,13 +52,13 @@ module AresMUSH
         results = FS3Skills.opposed_result_title(self.name1, successes1, self.name2, successes2)
           
         message = t('fs3skills.opposed_roll_result', 
-        :name1 => !model1 ? t('fs3skills.npc', :name => self.name1) : model1.name,
-        :name2 => !model2 ? t('fs3skills.npc', :name => self.name2) : model2.name,
-        :roll1 => self.roll_str1,
-        :roll2 => self.roll_str2,
-        :dice1 => FS3Skills.print_dice(die_result1),
-        :dice2 => FS3Skills.print_dice(die_result2),
-        :result => results)  
+           :name1 => !model1 ? t('fs3skills.npc', :name => self.name1) : model1.name,
+           :name2 => !model2 ? t('fs3skills.npc', :name => self.name2) : model2.name,
+           :roll1 => self.roll_str1,
+           :roll2 => self.roll_str2,
+           :dice1 => FS3Skills.print_dice(die_result1),
+           :dice2 => FS3Skills.print_dice(die_result2),
+           :result => results)  
           
         FS3Skills.emit_results message, client, enactor_room, false
       end

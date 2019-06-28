@@ -5,17 +5,20 @@ module AresMUSH
                 
         filter = request.args[:filter] || "Recent"
         page = (request.args[:page] || "1").to_i
-        type = request.args[:type]
         char_name_or_id = request.args[:char_id]
         
-        if (type)
+        # Special limited filter for related scenes list
+        if (filter == 'Related')
           return {
-            scenes: Scene.shared_scenes.sort_by { |s| s.date_shared || s.created_at }.reverse.map { |s| {
-            id: s.id,
-            title: s.title
+            scenes: Scene.shared_scenes.sort_by { |s| s.date_shared || s.created_at }
+            .reverse.map { |s| {
+              id: s.id,
+              title: s.title
             }}
           }
-        elsif (char_name_or_id)
+        end
+            
+        if (char_name_or_id)
           char = Character.find_one_by_name(char_name_or_id)
           if (!char)
             return { error: t('webportal.not_found') }
