@@ -270,6 +270,16 @@ spells:
     name: Potions (Nature)
     school: Nature
     available: true
+  Regress Growth:
+    available: false
+    casting_time: 1 round
+    desc: Causes up to three plants each up to 3 cubic feet in size to regress back from mature state to an inert seed, spore or other starting form within a matter of minutes.
+    effect: Other
+    level: 4
+    line_of_sight: true
+    name: Regress Growth
+    range: Short
+    school: Nature    
   Shield Of The Forest:
     available: false
     casting_time: 1 round
