@@ -52,7 +52,6 @@ module AresMUSH
       Scenes.create_scene_temproom(scene)
       scene.update(completed: false)
       scene.update(was_restarted: true)
-      Scenes.set_scene_location(scene, scene.location)
       Scenes.new_scene_activity(scene, :status_changed, nil)
     end
     
@@ -256,8 +255,13 @@ module AresMUSH
       scene.poses_in_order.to_a.each do |pose|
         next if pose.is_ooc
         
-        formatted_pose = pose.pose || ""
+        if (pose.place_name)
+          formatted_pose = "*At #{pose.place_name}*:\n#{pose.pose}"
+        else
+          formatted_pose = "#{pose.pose}"
+        end
         formatted_pose = formatted_pose.gsub(/</, '&lt;').gsub(/>/, '&gt;').gsub(/%r/i, "\n").gsub(/%t/i, "  ")
+                
                 
         formatted_pose = formatted_pose.split("\n").map { |line| line.strip }.join("\n")
                 

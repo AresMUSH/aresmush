@@ -17,6 +17,7 @@ module AresMUSH
         Global.logger.debug "Creating login cleanup cron."
         config = DatabaseMigrator.read_config_file("login.yml")
         config['login']['notice_cleanup_cron'] = { 'day' => [18], 'hour' => [02], 'minute' => [19] }
+        config['login']['notice_timeout_days'] = 60
         DatabaseMigrator.write_config_file("login.yml", config)
         
         Global.logger.debug "Update fullname shortcut."
