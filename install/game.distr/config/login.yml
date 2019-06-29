@@ -14,6 +14,13 @@ login:
     - 3
     minute:
     - 0
+  notice_cleanup_cron:
+    day:
+    - 18
+    hour:
+    - 2
+    minute: 
+    - 19
   shortcuts:
     logout: quit
     con: connect
