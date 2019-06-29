@@ -23,8 +23,14 @@ module AresMUSH
       
       return fullname if !Ranks.is_enabled?
       
-      first_name = fullname.first(" ")
-      last_name = fullname.split(" ").reverse.first
+      names = fullname.split(" ")
+      if names.count == 1
+        first_name = names[0]
+        last_name = ""
+      else
+        first_name = names[0]
+        last_name = names[-1]
+      end
       rank_str = char.rank.blank? ? "" : "#{char.rank} "
       callsign = char.demographic(:callsign)
       callsign_str =  callsign.blank? ? "" : "\"#{callsign}\" "

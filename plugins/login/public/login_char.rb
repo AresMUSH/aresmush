@@ -18,9 +18,16 @@ module AresMUSH
   
     attribute :onconnect_commands, :type => DataType::Array, :default => []
   
-    before_delete :notify_char_deleted
+    collection :login_notices, "AresMUSH::LoginNotice"
     
-    def notify_char_deleted
+    before_delete :cleanup_login
+    
+    def unread_notifications
+      self.login_notices.find(is_unread: true)
+    end
+    
+    def cleanup_login
+      self.login_notices.each { |n| n.delete }
       Global.dispatcher.queue_event CharDeletedEvent.new(self.id)
     end
     

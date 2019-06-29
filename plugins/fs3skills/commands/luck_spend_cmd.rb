@@ -19,20 +19,7 @@ module AresMUSH
       end
       
       def handle
-        
-        enactor.spend_luck(1)
-        message = t('fs3skills.luck_point_spent', :name => enactor_name, :reason => reason)
-        enactor_room.emit_ooc message
-        if (enactor_room.scene)
-          Scenes.add_to_scene(enactor_room.scene, message)
-        end
-        
-        Achievements.award_achievement(enactor, "fs3_luck_spent", 'fs3', "Spent a luck point.")
-          
-        category = Jobs.system_category
-        Jobs.create_job(category, t('fs3skills.luck_job_title', :name => enactor_name), message, Game.master.system_character)
-        
-        Global.logger.info "#{enactor_name} spent luck on #{reason}."
+        FS3Skills.spend_luck(enactor, self.reason, enactor_room.scene)
       end
     end
   end

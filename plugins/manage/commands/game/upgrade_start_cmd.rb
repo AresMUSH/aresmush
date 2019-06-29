@@ -10,8 +10,9 @@ module AresMUSH
       
       def handle
         Global.dispatcher.spawn("Upgrade action.", client) do
-          output = `/home/ares/aresmush/bin/upgrade 2>&1`
+          output = Manage.start_upgrade
           client.emit_success t('manage.upgrade_output', :output => output)
+          client.emit_success t('manage.upgrade_continue')
         end
       end
     end

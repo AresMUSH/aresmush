@@ -3,15 +3,15 @@
           <h3>{{title}}</h3>
           
          
-          {{#each chars as |c|}}
+          {{#each chars as |char|}}
     
           <div class="profile-gallery">
               <div class="char-icon-container">
     
               <div class="log-icon-container">
-                  <a href="/char/{{c.name}}">
-                     {{#if c.icon}}
-                      <img class="log-icon" src="/game/uploads/{{c.icon}}" />
+                  <a href="/char/{{char.name}}">
+                     {{#if char.icon}}
+                      <img class="log-icon" src="/game/uploads/{{char.icon}}" />
                      {{else}}
                      <img class="log-icon" src="/theme_images/noicon.png" />
                      {{/if}}
@@ -20,7 +20,7 @@
 
               <div class="log-icon-title-container">
                   <div class="log-icon-title">
-                   {{c.name}}
+                   {{char.name}}
                   </div>
               </div>
 

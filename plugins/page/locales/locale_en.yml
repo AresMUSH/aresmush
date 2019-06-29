@@ -39,3 +39,5 @@ en:
         recipient_is_offline: "%{name} is offline, but can get the message next time they're on."
         cant_page_just_yourself: "You can't page just yourself.  Maybe try the 'echo' command instead."
         cannot_continue_conversation: "You cannot continue this conversation because one of the characters no longer exists."
+        
+        new_pm: "%{name} sent you a private message."
