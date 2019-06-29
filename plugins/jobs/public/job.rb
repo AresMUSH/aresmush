@@ -46,6 +46,17 @@ module AresMUSH
       !self.author ? t('global.deleted_character') : self.author.name
     end
 
+    def all_parties
+      parties = []
+      if (self.author)
+        parties << self.author
+      end
+      parties.concat self.participants.to_a
+      if (self.assigned_to)
+        parties << self.assigned_to
+      end
+      parties
+    end
     
   end
 end
