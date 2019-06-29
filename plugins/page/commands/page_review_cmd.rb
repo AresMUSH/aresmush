@@ -18,7 +18,7 @@ module AresMUSH
         
         Page.mark_thread_read(thread, enactor)
         
-        paginator = Paginator.paginate(thread.sorted_messages, cmd.page, 25)
+        paginator = Paginator.paginate(thread.sorted_messages.reverse, cmd.page, 25)
         if (paginator.out_of_bounds?)
           client.emit_failure paginator.out_of_bounds_msg
           return

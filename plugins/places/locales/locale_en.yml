@@ -11,3 +11,5 @@ en:
         place_deleted: "%{name} has deleted place %{name}."
         place_already_exists: "That place already exists."
         place_title: "At %{place_name}"
+        cant_change_places_in_another_room: "You can only join places when your character (in-game) is in the scene's room."
+        scene_already_completed: "That scene is already completed."
