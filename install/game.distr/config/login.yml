@@ -21,6 +21,7 @@ login:
     - 2
     minute: 
     - 19
+  notice_timeout_days: 60
   shortcuts:
     logout: quit
     con: connect
