@@ -111,6 +111,9 @@ module AresMUSH
       Forum.add_recent_post(post)
       Forum.handle_forum_achievement(author, :reply)
       Forum.notify(category, :new_forum_post, message)
+      if (post.author)
+        Login.notify(post.author, :forum, t('forum.new_forum_activity', :subject => post.subject), "#{category.id}|#{post.id}")
+      end
     end
     
     # Important: Client may actually be nil here for a system-initiated bbpost.
@@ -249,6 +252,9 @@ module AresMUSH
       Forum.add_recent_post(post)
       Forum.notify(category, :forum_edited, notification)
       Forum.mark_read_for_player(enactor, post)
+      if (post.author)
+        Login.notify(post.author, :forum, t('forum.new_forum_activity', :subject => post.subject), "#{category.id}|#{post.id}")
+      end
     end
     
     def self.catchup_category(enactor, category)

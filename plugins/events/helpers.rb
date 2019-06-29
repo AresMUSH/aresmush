@@ -57,25 +57,16 @@ module AresMUSH
       description: desc,
       character: enactor)
         
-      message = t('events.event_created', :title => event.title,
-        :starts => event.start_datetime_standard, :name => enactor.name)
+      Website.add_to_recent_changes('event', event.id, title)
         
-      Global.notifier.notify_ooc(:event_created, message) do |char|
-        true
-      end
-
       Events.events_updated
       Events.handle_event_achievement(enactor)
       return event
     end
    
     def self.delete_event(event, enactor)
+      Website.add_to_recent_changes('event', event.id, event.title)
       event.delete
-      message = t('events.event_deleted', :title => event.title,
-        :starts => event.start_time_standard, :name => enactor.name)
-      Global.notifier.notify_ooc(:event_deleted, message) do |char|
-        true
-      end
       Events.events_updated
     end
    
@@ -84,12 +75,7 @@ module AresMUSH
       event.update(starts: datetime)
       event.update(description: desc)
      
-      message = t('events.event_updated', :title => event.title,
-        :starts => event.start_datetime_standard, :name => enactor.name)
-      
-      Global.notifier.notify_ooc(:event_updated, message) do |char|
-        true
-      end
+      Website.add_to_recent_changes('event', event.id, title)
       Events.events_updated
     end
    

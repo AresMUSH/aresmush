@@ -19,6 +19,7 @@ module AresMUSH
     end
     
     def self.announce(msg)
+      # Doesn't use notify_ooc because the prompt includes the %%
       Global.notifier.notify(:announcement, t('manage.announce', :message => msg)) do |char|
         true
       end
