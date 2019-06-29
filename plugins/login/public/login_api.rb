@@ -59,6 +59,8 @@ module AresMUSH
     end
       
     def self.login_char(char, client)
+      char.update(login_failures: 0)
+
       # Handle reconnect
       existing_client = Login.find_client(char)
       client.char_id = char.id
@@ -80,6 +82,16 @@ module AresMUSH
       char.update(login_api_token: '')
       char.update(login_api_token_expiry: Time.now - 86400*5)
       password
+    end
+    
+    def self.notify(char, type, message, data)
+      # Check for duplicate notification
+      key = "#{type}|#{message}|#{data}"
+      return if char.login_notices.find(is_unread: true).any? { |n| "#{n.type}|#{n.message}|#{n.data}" == key }
+      LoginNotice.create(character: char, type: type, message: message, data: data)
+      Global.client_monitor.notify_web_clients(:notification_update, "#{char.unread_notifications.count}") do |c|
+        c == char 
+      end
     end
   end
 end

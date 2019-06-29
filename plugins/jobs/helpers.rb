@@ -114,10 +114,17 @@ module AresMUSH
     
     def self.with_a_request(client, enactor, number, &block)
       job = Job[number]
-      if (!job || job.author != enactor)
+      if (!job)
         client.emit_failure t('jobs.invalid_job_number')
         return
       end
+      
+      error = Jobs.check_job_access(enactor, job, true)
+      if (error)
+        client.emit_failure error
+        return
+      end
+      
       
       yield job
     end
@@ -196,6 +203,8 @@ module AresMUSH
       Jobs.mark_unread(job)
       Jobs.mark_read(job, author)
       
+      # Submitter would normally be excluded, but if they can access the category we actually 
+      # want to include them.
       if (!notify_submitter)
         submitter = job.author
         if (submitter && !Jobs.can_access_category?(submitter, job.job_category))
@@ -212,6 +221,9 @@ module AresMUSH
         char && (Jobs.can_access_category?(char, job.job_category) || notify_submitter && char == job.author)
       end
             
+      job.all_parties.each do |p|
+        Login.notify(p, :job, t('jobs.new_job_activity', :num => job.id), job.id)
+      end
     end
     
     def self.reboot_required_notice

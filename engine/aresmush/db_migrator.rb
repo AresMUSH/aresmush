@@ -40,6 +40,24 @@ module AresMUSH
       Global.logger.info "Applying initial migrations."
     end
     
+    def restart_required?
+      required = false
+      applied_migrations = self.read_applied_migrations
+      self.available_migrations.each do |file|
+        migration_name = File.basename(file, ".rb")
+        next if applied_migrations.include?(migration_name)
+
+        load file
+        migrator_class = find_migrator_class(migration_name)
+        migrator = migrator_class.new
+        
+        if (migrator.require_restart)
+          required = true
+        end
+      end
+      required
+    end
+    
     def migrate(mode)
       self.messages = []
       applied_migrations = self.read_applied_migrations
@@ -59,7 +77,7 @@ module AresMUSH
         migrator = migrator_class.new
         
         if (migrator.require_restart && mode == :online)
-          raise "Migration #{migration_name} requires a restart.  You can't run it while the game is running.  Shut down and use bin/migrate instead."
+          raise "Migration #{migration_name} requires a restart.  You can't run it while the game is running.  Shut down and restart the game."
         end
         
         migrator.migrate
@@ -67,12 +85,12 @@ module AresMUSH
         applied_migrations << migration_name
         
         Global.logger.info "Migration #{migration_name} applied."
+
+        File.open(self.applied_migrations_path, 'w') do |file|
+          file.write applied_migrations.join("\n")
+        end
       end
 
-      File.open(self.applied_migrations_path, 'w') do |file|
-        file.write applied_migrations.join("\n")
-      end
-      
       Global.logger.info "Migrations complete."
     end
       

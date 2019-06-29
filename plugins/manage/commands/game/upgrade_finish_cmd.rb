@@ -9,8 +9,17 @@ module AresMUSH
       end
       
       def handle
-        ['load all', 'migrate', 'load config', 'website/deploy'].each do |command|
-          Global.dispatcher.queue_command(client, Command.new(command))
+        migrator = DatabaseMigrator.new
+        if (migrator.restart_required?)
+          client.emit_ooc t('manage.restart_required')
+          return
+        end
+        
+        error = Manage.finish_upgrade
+        if (error)
+          client.emit_failure error
+        else
+          client.emit_success t('global.done')
         end
       end
     end

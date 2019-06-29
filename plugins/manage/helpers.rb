@@ -70,5 +70,73 @@ module AresMUSH
         return ex.message
       end
     end
+    
+    def self.start_upgrade
+      Global.logger.debug "Starting upgrade."
+      upgrade_path = File.join AresMUSH.root_path, "bin", "upgrade"
+      `#{upgrade_script_path} 2>&1`
+    end
+    
+    def self.finish_upgrade
+      Global.logger.debug "Finishing upgrade."
+      Manage.load_all
+      
+      error = Manage.run_migrations
+      if (error)
+        return error
+      end
+      
+      Global.config_reader.load_game_config
+      Website.deploy_portal
+      return nil
+    end
+    
+    def self.load_all
+      begin
+        # Make sure everything is valid before we start.
+        Global.config_reader.validate_game_config          
+      rescue Exception => ex
+        return t('manage.game_config_invalid', :error => ex)
+      end
+      
+      Global.plugin_manager.all_plugin_folders.each do |load_target|
+        begin
+          Global.plugin_manager.unload_plugin(load_target)
+        rescue SystemNotFoundException
+          # Swallow this error.  Just means you're loading a plugin for the very first time.
+        end
+      end
+      Global.config_reader.load_game_config
+      Global.plugin_manager.all_plugin_folders.each do |load_target|
+        begin
+          Global.plugin_manager.load_plugin(load_target)                      
+        rescue SystemNotFoundException => e
+          return t('manage.plugin_not_found', :name => load_target)
+        rescue Exception => e
+          Global.logger.debug "Error loading plugin: #{e}  backtrace=#{e.backtrace[0,10]}"
+          return t('manage.error_loading_plugin', :name => load_target, :error => e)
+        end
+      end
+      Help.reload_help
+      Global.locale.reload
+      Website.rebuild_css
+      Global.dispatcher.queue_event ConfigUpdatedEvent.new
+      return nil
+    end
+      
+    def self.run_migrations
+      Manage.announce t('manage.database_upgrade_in_progress')
+      error = nil
+      begin
+        migrator = AresMUSH::DatabaseMigrator.new
+        migrator.migrate(:online)
+      rescue Exception => e
+        Global.logger.debug "Error loading plugin: #{e}  backtrace=#{e.backtrace[0,10]}"
+        error = t('manage.error_running_migrations', :error => e)
+      end
+      
+      Manage.announce t('manage.database_upgrade_complete')
+      return error
+    end
   end
 end

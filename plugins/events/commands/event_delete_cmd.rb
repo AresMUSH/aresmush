@@ -18,7 +18,8 @@ module AresMUSH
         Events.with_an_event(self.num, client, enactor) do |event| 
           
           if (Events.can_manage_event(enactor, event))
-            Events.delete_event(event, enactor)             
+            Events.delete_event(event, enactor)  
+            client.emit_success t('events.event_deleted')           
            else
              client.emit_failure t('dispatcher.not_allowed')
            end 

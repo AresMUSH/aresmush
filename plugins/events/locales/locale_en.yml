@@ -6,9 +6,9 @@ en:
         who_title: "Organizer:"
         where_title: "Where:"
         
-        event_deleted: "%{name} has deleted event %{title}."
-        event_updated: "%{name} has updated event %{title} - %{starts}."
-        event_created: "%{name} has created a new event: %{title} - %{starts}."
+        event_deleted: "Event deleted."
+        event_updated: "Event updated."
+        event_created: "Event created."
         
         invalid_event_date: "Invalid event date format.  The date needs to be in this form: %{format_str}"
         
@@ -24,3 +24,5 @@ en:
         upcoming_events_title: "Events in the Next 14 Days"
         all_events_title: "All Events"
         
+        event_deleted_notification: "Event %{title} has been deleted."
+        event_updated_notification: "Event %{title} has been updated."

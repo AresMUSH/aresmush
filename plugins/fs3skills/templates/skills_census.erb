@@ -1,0 +1,12 @@
+<%= header %>
+%xh<%= t('fs3skills.skill_census_title', :type => self.type) %>%xn
+<%= divider %>
+
+<% skills.each do |name, people| %>
+%xh<%= name %>%xn
+<% people_skills(people).sort.each do |rating, names|  %>
+   <%= rating %>: <%= names.join(', ') %>
+<% end %>
+
+<% end %>
+<%= footer %> 

@@ -25,6 +25,7 @@ module AresMUSH
         end
         
         Events.create_event(enactor, self.title, datetime, desc)
+        client.emit_success t('events.event_created')           
       end
     end
   end

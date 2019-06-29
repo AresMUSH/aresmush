@@ -5,8 +5,7 @@ en:
         
         message_sent: "Mail sent."
         message_forwarded: "Mail forwarded."
-        new_mail: "New mail from %{from}: %xh%{subject}%xn. %xh%xx(mail/new)%xn"
-        web_new_mail: "New mail from %{from}: %{subject}."
+        new_mail: "New mail from %{from}: %xh%{subject}%xn."
         invalid_message_number: "That is not a valid message number."
         invalid_recipient: "%{name} is not a valid recipient."
         message_deleted: "Message '%{subject}' is marked as trash."
