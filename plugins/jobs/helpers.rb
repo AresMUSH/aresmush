@@ -221,13 +221,7 @@ module AresMUSH
         char && (Jobs.can_access_category?(char, job.job_category) || notify_submitter && char == job.author)
       end
             
-      if (job.author)
-        Login.notify(job.author, :job, t('jobs.new_job_activity', :num => job.id), job.id)
-      end
-      if (job.assigned_to)
-        Login.notify(job.assigned_to, :job, t('jobs.new_job_activity', :num => job.id), job.id)
-      end
-      job.participants.each do |p|
+      job.all_parties.each do |p|
         Login.notify(p, :job, t('jobs.new_job_activity', :num => job.id), job.id)
       end
     end

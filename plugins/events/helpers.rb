@@ -65,7 +65,11 @@ module AresMUSH
     end
    
     def self.delete_event(event, enactor)
-      Website.add_to_recent_changes('event', event.id, event.title)
+      title = event.title
+      Website.add_to_recent_changes('event', event.id, title)
+      event.signups.each do |s|
+        Login.notify(s.character, :event_deleted, t('events.event_deleted_notification', :title => title), "")
+      end
       event.delete
       Events.events_updated
     end
@@ -77,6 +81,10 @@ module AresMUSH
      
       Website.add_to_recent_changes('event', event.id, title)
       Events.events_updated
+            
+      event.signups.each do |s|
+        Login.notify(s.character, :event, t('events.event_updated_notification', :title => title), event.id)
+      end
     end
    
     def self.format_timestamp(time)

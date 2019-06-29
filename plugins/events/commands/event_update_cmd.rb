@@ -28,6 +28,7 @@ module AresMUSH
              end
           
              Events.update_event(event, enactor, title, datetime, desc)
+             client.emit_success t('events.event_updated')           
            else
              client.emit_failure t('dispatcher.not_allowed')
            end 
