@@ -81,7 +81,7 @@ module AresMUSH
           :author => author_name)
         
         Forum.add_recent_post(new_post)
-        Forum.notify(post, category, :new_forum_post, message)
+        Forum.notify(new_post, category, :new_forum_post, message)
         Forum.handle_forum_achievement(author, :post)
         
         new_post
