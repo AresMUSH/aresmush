@@ -6,7 +6,7 @@ summary: Using server-side version control.
 
 > **Permission Required:** These commands require the Coder role.
 
-The "git" command is used to access the server's version control commands.  See the aresmush.com tutorial on "Using GitHub" for more information about how this can work.
+The "git" command is used to access the server's version control commands.  See the aresmush.com tutorial on [Using GitHub](https://aresmush.com/tutorials/code/git.html) for more information about how this works.
 
 `git <command>` - Issues a git command to the server.  
 
