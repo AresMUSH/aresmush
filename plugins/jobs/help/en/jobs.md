@@ -6,11 +6,11 @@ aliases:
 ---
 # Jobs
 
-The Jobs system is used by the game administrators to track work requests and to-do items.  Players can submit their own requests.
+The Jobs system is used by the game administrators to track work requests and to-do items.  Players can submit their own requests with the [request](/help/requests) command.
 
-> **Permissions Requred:** Working with jobs requires the access_jobs permission.
+> **Permissions Requred:** Working with jobs requires the access_jobs permission.  Some games will have multiple staff roles with limited access to certain categories.  For example - builders may only be able to access the 'BUILD' category.
 
-> Note:  Some games will have multiple staff roles with limited access to certain categories.  For example - builders may only be able to access the 'BUILD' category.  You can still create jobs in other categories, but they are treated as _requests_ (see [Requests](/help/request)).
+For a general overview of using jobs, see the aresmush.com [Jobs tutorial](https://aresmush.com/tutorials/manage/jobs.html).
 
 ## Viewing  Jobs
 
