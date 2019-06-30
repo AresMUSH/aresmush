@@ -37,6 +37,7 @@ en:
         objects_reloaded: "Database objects refreshed."
         git_output: "Git command output: %{output}"
         upgrade_output: "Upgrade started. Output: %{output}"
+        upgrade_conflict_warning: "There seem to be conflicts between your code and the latest Ares code.  Check the output above for 'CONFLICT' warnings and resolve them.  Then you can use `upgrade/finish` to complete the upgrade."
         upgrade_continue: "Check the output above to see if there are any CONFLICT warnings you need to resolve. If there are no conflicts (or you've resolved them), you can use `upgrade/finish` to complete the upgrade."
         restart_required: "This upgrade requires a game restart. See the 'restarting the game' tutorial on aresmush.com for help."
         invalid_git_command: "Invalid git command.  Only a limited subset of commands are supported: %{commands}"
