@@ -8,7 +8,7 @@ aliases:
 
 > **Permission Required:** These commands require the Admin role or the manage\_game permission.
 
-Several plugins are available in the [Ares Extras](https://github.com/AresMUSH/ares-extras/) repository, including officially-supported extensions and community contributions.  You can install them directly from the game:
+Several plugins are available in the [Ares Extras](https://aresmush.com/tutorials/code/extras.html) repository, including officially-supported extensions and community contributions.  You can install them directly from the game:
 
 `plugin/install <name>`
   

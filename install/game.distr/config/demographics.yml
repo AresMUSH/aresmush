@@ -89,6 +89,7 @@ demographics:
     birthday: birthdate
     actors: census played by
     actor: demographic/set played by=
+    fullname: demographic/set full name=
   help_text:
     actor: "%xcactor <actor>%xn - See 'help actors'."
     physique: "%xcphysique <build/body type>%xn - athletic, wiry, slim, pudgy, etc."

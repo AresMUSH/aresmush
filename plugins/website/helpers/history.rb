@@ -16,7 +16,7 @@ module AresMUSH
       if (unique_only)
         found = []
         all_changes.each do |c|
-          key = c['name']
+          key = "#{c['name']}#{c['type']}"
           if (!found.include?(key))
             found << key
             changes << c
@@ -27,13 +27,13 @@ module AresMUSH
       end
       
       changes[0..limit].map { |c| Website.get_recent_change_details(c) }
-         .select { |c| c[:change_type] != 'deleted' }
     end
     
     def self.get_recent_change_details(change)
-      if (change['type'] == 'char')
-        return { change_type: 'deleted' } if !p
+     case change['type']
+     when 'char'
         p = ProfileVersion[change['id']]
+        return { change_type: 'deleted', title: "Character #{change['name']} deleted."} if !p
         {
           title: p.character.name,
           id: p.id,
@@ -43,17 +43,27 @@ module AresMUSH
           name: p.character.name,
           author: p.author_name
         }
-      else
+      when 'wiki'
         w = WikiPageVersion[change['id']]
-        return { change_type: 'deleted' } if !w
+        return { change_type: 'deleted', title: "Wiki Page #{change['name']} deleted."} if !w
         {
           title: w.wiki_page.heading,
           id: w.id,
           change_type: 'wiki',
-          created_at: w.created_at,
           created: OOCTime.local_long_timestr(nil, w.created_at),
           name: w.wiki_page.name,
           author: w.author_name
+        }
+      when 'event'
+        event = Event[change['id']]
+        return { change_type: 'deleted', title: "Event #{change['name']} deleted."} if !event
+        {
+          title: event.title,
+          id: event.id,
+          change_type: 'event',
+          created: OOCTime.local_long_timestr(nil, event.updated_at),
+          name: event.title,
+          author: "System"
         }
       end
     end

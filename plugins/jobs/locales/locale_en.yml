@@ -85,3 +85,5 @@ en:
         job_category_roles_set: "Job category roles set."
         category_already_exists: "That category already exists."
         only_delete_empty_categories: "You can only delete empty categories. Move the jobs to a different category first."
+        
+        new_job_activity: "New activity in job %{num}."

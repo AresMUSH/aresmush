@@ -21,6 +21,7 @@ module AresMUSH
       recipients = recipients.uniq
       
       to_list = recipients.map { |r| r.name }.join(" ")
+      notification = t('mail.new_mail', :from => author.name, :subject => subject)
       
       recipients.each do |r|
         delivery = MailMessage.create(subject: subject, body: body, author: author, to_list: to_list, character: r)
@@ -36,9 +37,10 @@ module AresMUSH
           tags << Mail.inbox_tag
         end
         delivery.update(tags: tags)  
+        Login.notify(r, :mail, notification, delivery.id)
       end
       
-      Global.notifier.notify_ooc(:new_mail, t('mail.new_mail', :from => author.name, :subject => subject)) do |char|
+      Global.notifier.notify_ooc(:new_mail, notification) do |char|
          char && recipients.include?(char) && char != author
       end
       

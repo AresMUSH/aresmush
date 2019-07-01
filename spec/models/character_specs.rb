@@ -9,6 +9,51 @@ module AresMUSH
       stub_translate_for_testing
     end
     
+    describe :find_any_by_name do 
+      it "should return nothing if no name specified" do
+        expect(Character.find_any_by_name(nil)).to eq []
+      end
+      
+      it "should find a result by db search" do
+        found = double
+        allow(Character).to receive(:find) { found }
+        allow(found).to receive(:union) { [found] }
+        expect(Character.find_any_by_name("name")).to eq [found]
+      end
+      
+      it "should search partial name match if no exact match found" do
+        found = double
+        char1 = double
+        allow(Character).to receive(:find) { found }
+        allow(found).to receive(:union) { [] }
+        allow(Character).to receive(:all) { [char1] }
+        allow(char1).to receive(:name_upcase) { "BOB" }
+        expect(Character.find_any_by_name("bo")).to eq [char1]
+      end
+      
+      it "should only count partial name match if unambiguous match found" do
+        found = double
+        char1 = double
+        char2 = double
+        allow(Character).to receive(:find) { found }
+        allow(found).to receive(:union) { [] }
+        allow(Character).to receive(:all) { [char1, char2] }
+        allow(char1).to receive(:name_upcase) { "BOB" }
+        allow(char2).to receive(:name_upcase) { "BARB" }
+        expect(Character.find_any_by_name("b")).to eq []
+      end
+      
+      it "should return empty if no match found" do
+        found = double
+        char1 = double
+        allow(Character).to receive(:find) { found }
+        allow(found).to receive(:union) { [] }
+        allow(Character).to receive(:all) { [char1] }
+        allow(char1).to receive(:name_upcase) { "BOB" }
+        expect(Character.find_any_by_name("x")).to eq []
+      end
+    end
+    
     describe :found? do
       it "should return true if there is an existing char" do
         allow(Character).to receive(:find_one_by_name).with("Bob") { double }
@@ -16,7 +61,7 @@ module AresMUSH
       end
       
       it "should return false if no char exists" do
-        allow(Character).to receive(:find_one_by_name).with("Bob") { false }
+        allow(Character).to receive(:find_one_by_name).with("Bob") { nil }
         expect(Character.found?("Bob")).to be false
       end
     end 

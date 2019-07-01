@@ -12,12 +12,7 @@ fs3skills:
     minute:
     - 0
   attr_dots_beyond_chargen_max: 2
-  action_dots_beyond_chargen_max: 3
-  skills_requiring_training:
-  - Demolitions
-  - Gunnery
-  - Medicine
-  - Piloting
+  action_dots_beyond_chargen_max: 5
   xp_costs:
     language:
       0: 1
