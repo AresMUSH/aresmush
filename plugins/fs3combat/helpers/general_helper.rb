@@ -55,14 +55,22 @@ module AresMUSH
     def self.emit_to_combat(combat, message, npcmaster = nil, scene_pose = false)
       message = message + "#{npcmaster}"
       combat.log(message)
-      combat.combatants.each { |c| FS3Combat.emit_to_combatant(c, message) }
-      
-      if (combat.scene)
+
+      if (combat.scene && !combat.scene.completed)
         if (scene_pose)
           Scenes.add_to_scene(combat.scene, message)
         else
           Scenes.add_to_scene(combat.scene, message, Game.master.system_character, false, true)
         end
+      end
+      
+      web_msg = "#{combat.id}|#{Website.format_markdown_for_html(message)}"
+       Global.client_monitor.notify_web_clients(:combat_activity, web_msg) do |c|
+         c && c.combatant && c.combatant.combat == combat
+      end
+
+      combat.combatants.each do |combatant|
+        FS3Combat.emit_to_combatant(combatant, message)
       end
     end
       
@@ -187,13 +195,13 @@ module AresMUSH
           end
       
           combat.log "---- Resolutions ----"
-      
-          combat = enactor.combat
           combat.active_combatants.each { |c| FS3Combat.reset_for_new_turn(c) }
           # This will reset their action if it's no longer valid.  Do this after everyone's been KO'd.
           combat.active_combatants.each { |c| c.action }
     
           FS3Combat.emit_to_combat combat, t('fs3combat.new_turn', :name => enactor.name)
+        rescue Exception => ex
+          Global.logger.error "Error in combat turn: #{ex}"
         ensure
           combat.update(turn_in_progress: false)
         end
@@ -209,21 +217,7 @@ module AresMUSH
           { 
             team: team,
             combatants: members.map { |c| 
-              {
-                id: c.id,
-                name: c.name,
-                is_ko: c.is_ko,
-                weapon: c.weapon,
-                armor: c.armor,
-                is_npc: c.is_npc?,
-                ammo: c.ammo ? "(#{c.ammo})" : '',
-                damage_boxes: ([-c.total_damage_mod.floor, 5].min).times.map { |d| d },
-                damage: c.associated_model.damage.select { |d| !d.healed }.map { |d| "#{d.current_severity} - #{d.description}" },
-                vehicle: c.vehicle ? "#{c.vehicle.name} #{c.piloting ? 'Pilot' : 'Passenger'}" : "" ,
-                stance: c.stance,
-                action: c.action ? c.action.print_action_short : "",
-                can_edit: can_manage || (viewer && viewer.name == c.name)
-              }
+              FS3Combat.build_combatant_web_data(combat, c, viewer)
             }
           }
         }
@@ -236,6 +230,27 @@ module AresMUSH
         combatant_types: FS3Combat.combatant_types.keys,
         teams: teams,
         in_combat: viewer && viewer.combat == combat
+      }
+    end
+    
+    def self.build_combatant_web_data(combat, combatant, viewer)
+      can_manage = FS3Combat.can_manage_combat?(viewer, combat)
+
+      {
+        id: combatant.id,
+        name: combatant.name,
+        is_ko: combatant.is_ko,
+        weapon: combatant.weapon,
+        armor: combatant.armor,
+        is_npc: combatant.is_npc?,
+        team: combatant.team,
+        ammo: combatant.ammo ? "(#{combatant.ammo})" : '',
+        damage_boxes: ([-combatant.total_damage_mod.floor, 5].min).times.map { |d| d },
+        damage: combatant.associated_model.damage.select { |d| !d.healed }.map { |d| "#{d.current_severity} - #{d.description}" },
+        vehicle: combatant.vehicle ? "#{combatant.vehicle.name} #{combatant.piloting ? 'Pilot' : 'Passenger'}" : "" ,
+        stance: combatant.stance,
+        action: combatant.action ? combatant.action.print_action_short : "",
+        can_edit: can_manage || (viewer && viewer.name == combatant.name)
       }
     end
   end
