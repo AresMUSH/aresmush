@@ -16,6 +16,10 @@ module AresMUSH
         if (Cron.is_cron_match?(Global.read_config("login", "blacklist_cron"), event.time))
           do_blacklist_cron
         end
+        
+        if (Cron.is_cron_match?(Global.read_config("login", "notice_cleanup_cron"), event.time))
+          do_notice_cleanup_cron
+        end
       end
       
       def do_activity_cron
@@ -53,6 +57,14 @@ module AresMUSH
         Global.dispatcher.spawn("Updating rhost blacklist", nil) do
           Login.update_blacklist
         end
+      end
+      
+      def do_notice_cleanup_cron
+        Global.logger.debug "Cleaning up old notices"
+        timeout_days = Global.read_config('login', 'notice_timeout_days') || 60
+        old_notices = LoginNotice.all.select { |n| (Time.now - n.created_at) > 86400 * timeout_days } 
+        Global.logger.debug "Deleting #{old_notices.count} old notices."
+        old_notices.each { |n| n.delete }
       end
       
     end

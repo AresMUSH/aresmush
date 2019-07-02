@@ -5,6 +5,7 @@ module AresMUSH
     reference :character, "AresMUSH::Character"
     reference :scene, "AresMUSH::Scene"
     attribute :pose
+    attribute :place_name
     attribute :is_setpose, :type => DataType::Boolean
     attribute :is_ooc, :type => DataType::Boolean
     attribute :order

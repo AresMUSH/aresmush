@@ -14,10 +14,20 @@ module AresMUSH
         [ self.name ]
       end
 
+      def check_permission
+        return nil if FS3Skills.can_view_sheets?(enactor)
+        return nil if Global.read_config("fs3skills", "public_sheets")
+        return t('fs3skills.no_permission_to_view_sheet')
+      end
+
       def handle
+        Global.logger.debug "Name: #{self.name}"
         type = self.name.titlecase
-        types = [ 'Action', 'Background', 'Language' ]
+        types = [ 'Action', 'Background', 'Language', 'Bg' ]
         if (types.include?(type))
+          if (type == 'Bg')
+            type = 'Background'
+          end
           template = SkillsCensusTemplate.new(type)
           client.emit template.render
         else

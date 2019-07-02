@@ -3,6 +3,8 @@ module AresMUSH
     class DownloadSceneRequestHandler
       def handle(request)
         scene = Scene[request.args[:id]]
+        show_ooc = (request.args[:show_ooc] || "false").to_bool
+        show_system = (request.args[:show_system] || "true").to_bool
         enactor = request.enactor
 
         error = Website.check_login(request, true)
@@ -40,11 +42,17 @@ module AresMUSH
         else
           text = ""
           scene.poses_in_order.each do |p|
-            next if (p.is_ooc)
+            next if (p.is_ooc && !show_ooc)
             next if (p.is_deleted?)
             
-            if (p.is_system_pose?)
-              text << "&lt;System&gt; #{p.pose}\n\n"
+            if (p.is_ooc)
+              if (show_ooc)
+                text << "&lt;OOC&gt; #{p.pose}\n\n"
+              end
+            elsif (p.is_system_pose?)
+              if (show_system)
+                text << "&lt;System&gt; #{p.pose}\n\n"
+              end
             elsif (p.is_setpose?)
               text << "#{line}\n"
               text << "#{p.pose}\n"
@@ -65,7 +73,9 @@ module AresMUSH
         {
           id: scene.id,
           title: scene.date_title,
-          log: AresMUSH::MushFormatter.format(log)
+          log: AresMUSH::MushFormatter.format(log),
+          completed: scene.completed,
+          shared: scene.shared
         }
       end
     end

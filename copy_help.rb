@@ -76,7 +76,7 @@ end
 minimal_boot
 
 
-help_dir = "/Users/lynn/Documents/ares/help/#{filename_friendly_help_version}"
+help_dir = "/Users/lynn/Documents/ares-docs/help/#{filename_friendly_help_version}"
 if (!Dir.exist?(help_dir))
   Dir.mkdir help_dir
 end
@@ -124,7 +124,7 @@ AresMUSH::Help.toc.keys.sort.each do |toc|
 end
 
 
-File.open("/Users/lynn/Documents/ares/ares/partials/help_#{filename_friendly_help_version}.md", 'w') do |file|
+File.open("/Users/lynn/Documents/ares-docs/_includes/help_#{filename_friendly_help_version}.md", 'w') do |file|
   file.puts "*AresMUSH version #{help_version}*"
   file.puts "[Version #{help_version} Home](/help/#{filename_friendly_help_version}/)"
   
