@@ -55,7 +55,10 @@ module AresMUSH
               client.emit_failure t('fs3combat.must_escape_first') 
               next
             end
-            FS3Combat.set_action(client, enactor, combat, combatant, action_klass, self.action_args)
+            error = FS3Combat.set_action(enactor, combat, combatant, action_klass, self.action_args)
+            if (error)
+              client.emit_failure error
+            end
           end
         end
       end

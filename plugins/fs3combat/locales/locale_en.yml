@@ -96,6 +96,9 @@ en:
         new_passenger: "%{name} is now a passenger in %{vehicle}."
         disembarks_vehicle: "%{name} disembarks from %{vehicle}."
                     
+        already_combat_for_scene: "There's already a combat going on in that scene."
+        combat_scene_started: "%{name} has started a combat for this scene."
+        
         # ----------------------------
         # GENERAL
         # ----------------------------

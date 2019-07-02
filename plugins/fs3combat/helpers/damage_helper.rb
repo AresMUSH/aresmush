@@ -7,7 +7,7 @@ module AresMUSH
     end
     
     def self.can_manage_damage?(actor)
-      actor.has_permission?("manage_combat")
+      actor && actor.has_permission?("manage_combat")
     end
 
     def self.can_setup_hospitals?(actor)

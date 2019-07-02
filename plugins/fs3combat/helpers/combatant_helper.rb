@@ -153,7 +153,7 @@ module AresMUSH
     end
     
     def self.update_combatant(combat, combatant, enactor, team, stance, 
-      weapon, selected_weapon_specials, armor, selected_armor_specials, npc_level)
+      weapon, selected_weapon_specials, armor, selected_armor_specials, npc_level, action, action_args)
       
       if (team != combatant.team)
         combatant.update(team: team)
@@ -196,6 +196,19 @@ module AresMUSH
       
       if (combatant.is_npc? && combatant.npc.level != npc_level)
         combatant.npc.update(level: npc_level)
+      end
+      
+      current_action = FS3Combat.find_action_name(combatant.action_klass)
+      if (current_action != action || action_args != combatant.action_args)
+        new_action_klass = FS3Combat.find_action_klass(action)
+        new_action = new_action_klass.new(combatant, action_args)
+        error = new_action.prepare
+        if (error)
+          return error
+        end
+        combatant.update(action_klass: new_action_klass)
+        combatant.update(action_args: action_args)
+        FS3Combat.emit_to_combat combat, "#{new_action.print_action}", FS3Combat.npcmaster_text(combatant.name, enactor)
       end
       
       return nil

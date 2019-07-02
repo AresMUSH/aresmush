@@ -37,6 +37,8 @@ module AresMUSH
           }},
           stance: combatant.stance,
           team: combatant.team,
+          action: FS3Combat.find_action_name(combatant.action_klass),
+          action_args: combatant.action_args,
           npc_skill: combatant.is_npc? ? combatant.npc.level : nil,
           combat: combatant.combat.id,
           options: {
@@ -45,7 +47,8 @@ module AresMUSH
             armor_specials:  AresMUSH::FS3Combat.armor_specials.keys,
             armor: AresMUSH::FS3Combat.armors.keys,
             stances: FS3Combat.stances.keys,
-            npc_skills: FS3Combat.npc_type_names
+            npc_skills: FS3Combat.npc_type_names,
+            actions: FS3Combat.action_klass_map.keys
           }
         }
       end
