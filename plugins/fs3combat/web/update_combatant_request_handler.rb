@@ -40,8 +40,10 @@ module AresMUSH
           .select { |k, a| (a[:selected] || "").to_bool }
           .map { |k, a| a[:name] }
         npc_level = request.args[:npc_skill]
+        vehicle = request.args[:vehicle] || ''
+        passenger_type = request.args[:passenger_type] || 'none'
         
-        error = FS3Combat.update_combatant(combat, combatant, enactor, team, stance, weapon, selected_weapon_specials, armor, selected_armor_specials, npc_level, action, action_args)
+        error = FS3Combat.update_combatant(combat, combatant, enactor, team, stance, weapon, selected_weapon_specials, armor, selected_armor_specials, npc_level, action, action_args, vehicle, passenger_type)
         
         if (error)
           return { error: error }
