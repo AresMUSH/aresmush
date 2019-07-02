@@ -19,11 +19,12 @@ module AresMUSH
           return { error: t('fs3combat.already_in_combat', :name => name) }
         end
         
-        FS3Combat.join_combat(combat, name, combatant_type, enactor, nil)
+        combatant = FS3Combat.join_combat(combat, name, combatant_type, enactor, nil)
+        if (!combatant) 
+          return { error: t('fs3combat.already_in_combat', :name => name) }
+        end
         
-        
-        {
-        }
+        {}
       end
     end
   end

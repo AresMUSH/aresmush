@@ -62,6 +62,8 @@ module AresMUSH
         if (pose)
           pose.update(restarted_scene_pose: true)
           scene.scene_log.delete
+        else 
+          Global.logger.warn "Problem adding restarted scene pose."
         end
       end
       Scenes.remove_recent_scene(scene)

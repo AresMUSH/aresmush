@@ -25,8 +25,8 @@ module AresMUSH
         combat = Combat.create(:organizer => enactor, :is_real => true, scene: scene)
         FS3Combat.join_combat(combat, enactor.name, "Observer", enactor, nil)
         
-        Scenes.add_to_scene(scene, t('fs3combat.combat_scene_started', :name => enactor.name), Game.master.system_character)
-        
+         FS3Combat.emit_to_combat(combat, t('fs3combat.combat_scene_started', :name => enactor.name))
+                
         {
           id: combat.id
         }
