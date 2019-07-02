@@ -28,8 +28,6 @@ module AresMUSH
         scene_type: request.args[:scene_type],
         title: request.args[:title],
         icdate: request.args[:icdate],
-        shared: completed,
-        date_shared: completed ? Time.now : nil,
         completed: completed,
         plot: plot.blank? ? nil : Plot[plot],
         private_scene: completed ? false : (privacy == "Private"),
@@ -79,13 +77,9 @@ module AresMUSH
           end
         end
 
+        Scenes.add_to_scene(scene, request.args[:log], enactor)
         if (completed)
-          log = SceneLog.create(scene: scene, log: request.args[:log])
-          scene.update(scene_log: log)
-
-          scene.participants.each do |char|
-            Scenes.handle_scene_participation_achievement(char)
-          end
+          Scenes.share_scene(scene)
         else
           Scenes.create_scene_temproom(scene)
         end

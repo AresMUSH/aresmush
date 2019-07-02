@@ -31,5 +31,32 @@ module AresMUSH
         return Global.read_config("fs3skills", "default_linked_attr")
       end
     end
+    
+    def self.skills_census(skill_type)
+      skills = {}
+      Chargen.approved_chars.each do |c|
+        
+        if (skill_type == "Action")
+          c.fs3_action_skills.each do |a|
+            add_to_hash(skills, c, a)
+          end
+
+        elsif (skill_type == "Background")
+          c.fs3_background_skills.each do |a|
+            add_to_hash(skills, c, a)
+          end
+
+        elsif (skill_type == "Language")
+          c.fs3_languages.each do |a|
+            add_to_hash(skills, c, a)
+          end
+        else
+          raise "Invalid skill type selected for skill census: #{skill_type}"
+        end
+      end
+      skills = skills.select { |name, people| people.count > 2 }
+      skills = skills.sort_by { |name, people| [0-people.count, name] }
+      skills
+    end
   end
 end

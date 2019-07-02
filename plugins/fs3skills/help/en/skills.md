@@ -29,7 +29,7 @@ This game uses the FS3 skills system, Third Edition.  The complete rulebook can 
 
 ## Finding Other People With Skills
 
-If you're looking for a character with a specific skill, you can use the skill scan command.  It will list anyone with that skill above Everyman (or above Average for attributes).  People in your room are highlighted.
+If you're looking for a character with a specific skill, you can use the skill scan command (if the game has enabled visible sheets).  It will list anyone with that skill above Everyman (or above Average for attributes).  People in your room are highlighted.  You can also see a summary of people within the different skill categories.
 
-`skill/scan <name>`
-`skill/scan <type>` - Show everyone's rating for a type of skill (action, background, language). Background only shows those skills 3 or more people have.
+`skill/scan <specific skill name>` - Find people with that skill.
+`skill/scan <action, background, language>` - Summarize peoples' skill levels. Only skills held by 2 or more people are shown to cut down on spam.

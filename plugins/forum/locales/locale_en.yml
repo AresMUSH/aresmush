@@ -30,19 +30,20 @@ en:
         category_renamed: "Category renamed."
         scan_title: "Unread Posts"
         
-        new_post: "%xnNew forum post %xh%{subject}%xn %{reference} posted to %xh%{category}%xn by %{author}. %xh%xx(forum/new)%xn" 
+        new_post: "%xnNew forum post %xh%{subject}%xn %{reference} posted to %xh%{category}%xn by %{author}." 
         web_new_post: "New forum post: %{subject} by %{author}."
 
-        new_reply: "%xn%{author} replied to forum post %xh%{subject}%xn %{reference} on %xh%{category}%xn. %xh%xx(forum/new)%xn"
+        new_reply: "%xn%{author} replied to forum post %xh%{subject}%xn %{reference} on %xh%{category}%xn."
         web_new_reply: "New forum reply: %{subject} by %{author}."
 
-        new_edit: "%xn%{author} edited forum post %xh%{subject}%xn %{reference} on %xh%{category}%xn. %xh%xx(forum/new)%xn"
-        new_reply_edit: "%xn%{author} edited their reply to forum post %xh%{subject}%xn %{reference} on %xh%{category}%xn. %xh%xx(forum/new)%xn"
+        new_edit: "%xn%{author} edited forum post %xh%{subject}%xn %{reference} on %xh%{category}%xn."
+        new_reply_edit: "%xn%{author} edited their reply to forum post %xh%{subject}%xn %{reference} on %xh%{category}%xn."
         caught_up: "All posts on %{category} marked as read."
         caught_up_all: "All posts marked as read."
         no_new_posts: "There are no new posts to read."
         reply: "%xhReply by %{author} on %{date}%xn%r%{reply}"
         reply_title: "%xh%{name}%xn replied on %{date}"
+        new_forum_reply: "New reply in forum post %{subject}."
         
         system_author: "AresMUSH"
         

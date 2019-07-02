@@ -46,7 +46,7 @@ module AresMUSH
       end
     end    
       
-    def self.notify(category, type, message)
+    def self.notify(post, category, type, message)
       Global.notifier.notify_ooc(type, message) do |char|
         !Forum.is_forum_muted?(char) &&
         Forum.can_read_category?(char, category) &&
@@ -81,7 +81,7 @@ module AresMUSH
           :author => author_name)
         
         Forum.add_recent_post(new_post)
-        Forum.notify(category, :new_forum_post, message)
+        Forum.notify(new_post, category, :new_forum_post, message)
         Forum.handle_forum_achievement(author, :post)
         
         new_post
@@ -110,7 +110,12 @@ module AresMUSH
       
       Forum.add_recent_post(post)
       Forum.handle_forum_achievement(author, :reply)
-      Forum.notify(category, :new_forum_post, message)
+      Forum.notify(post, category, :new_forum_reply, message)
+            
+      if (post.author && author != post.author)
+        Login.notify(post.author, :forum, t('forum.new_forum_reply', :subject => post.subject), "#{category.id}|#{post.id}")
+      end
+      
     end
     
     # Important: Client may actually be nil here for a system-initiated bbpost.
@@ -232,7 +237,7 @@ module AresMUSH
         :author => enactor.name)
       
       Forum.add_recent_post(post)
-      Forum.notify(category, :forum_edited, notification)
+      Forum.notify(post, category, :forum_edited, notification)
       Forum.mark_read_for_player(enactor, post)
     end
     
@@ -247,7 +252,7 @@ module AresMUSH
         :author => enactor.name)
       
       Forum.add_recent_post(post)
-      Forum.notify(category, :forum_edited, notification)
+      Forum.notify(post, category, :forum_edited, notification)
       Forum.mark_read_for_player(enactor, post)
     end
     

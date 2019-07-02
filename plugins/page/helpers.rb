@@ -96,7 +96,13 @@ module AresMUSH
         #  Page.send_afk_message(client, recipient_client, recipient)
         #end
       end
-            
+
+      everyone.each do |char| 
+        next if char == enactor   
+        Login.notify(char, :pm, t('page.new_pm', :name => enactor.name), thread.id)
+      end
+      
+      # Can't use notify_web_clients here because the notification is different for each person.
       Global.dispatcher.spawn("Page notification", nil) do
         everyone.each do |char|    
           title = thread.title_without_viewer(char)
