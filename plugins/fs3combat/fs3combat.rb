@@ -180,6 +180,8 @@ module AresMUSH
         return CombatsRequestHandler
       when "combatSetup"
         return CombatSetupRequestHandler
+      when "newCombatTurn"
+        return NewCombatTurnRequestHandler
       when "saveCombatSetup"
         return SaveCombatSetupRequestHandler
       when "combatLog"
@@ -188,6 +190,8 @@ module AresMUSH
         return GearListRequestHandler
       when "gearDetail"
         return GearDetailRequestHandler
+      when "startCombat"
+        return StartCombatRequestHandler
       end
     end
   end

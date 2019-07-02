@@ -573,7 +573,9 @@ module AresMUSH
       else
         places = nil
       end
-          
+         
+      combat = FS3Combat.is_enabled? ? FS3Combat.combat_for_scene(scene) : nil
+      
       {
         id: scene.id,
         title: scene.title,
@@ -590,8 +592,11 @@ module AresMUSH
         is_watching: viewer && scene.watchers.include?(viewer),
         is_unread: viewer && scene.is_unread?(viewer),
         pose_order: Scenes.build_pose_order_web_data(scene),
+        combat: combat ? combat.id : nil,
         places: places,
-        poses: scene.poses_in_order.map { |p| Scenes.build_scene_pose_web_data(p, viewer) }
+        poses: scene.poses_in_order.map { |p| Scenes.build_scene_pose_web_data(p, viewer) },
+        fs3_enabled: FS3Skills.is_enabled?,
+        fs3combat_enabled: FS3Combat.is_enabled?
       }
     end
     

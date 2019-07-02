@@ -1,28 +1,29 @@
 module AresMUSH
   module FS3Combat
-    class RemoveCombatantRequestHandler
+    class NewCombatTurnRequestHandler
       def handle(request)
         id = request.args[:id]
-        name = request.args[:name]
         enactor = request.enactor
-
+        
         error = Website.check_login(request)
         return error if error
         
         combat = Combat[id]
         if (!combat)
-          return { error: t('webportal.not_found') }
+          return { error: t('fs3combat.invalid_combat_number') }
         end
-
-        combatant = combat.find_combatant(name)
-        can_manage = FS3Combat.can_manage_combat?(enactor, combat) || (enactor.name == combatant.name)
         
+        can_manage = enactor && (enactor == combat.organizer || enactor.is_admin?)
         if (!can_manage)
           return { error: t('dispatcher.not_allowed') }
+        end        
+
+        if (combat.turn_in_progress)
+          return { error: t('fs3combat.turn_in_progress') }
         end
 
-        FS3Combat.leave_combat(combat, combatant)
-        
+        FS3Combat.new_turn(enactor, combat)
+                    
         {
         }
       end
