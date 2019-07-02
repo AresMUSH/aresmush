@@ -6,17 +6,17 @@ module AresMUSH
         searchSubmitter = (request.args[:searchSubmitter] || "").strip
         searchTitle = (request.args[:searchTitle] || "").strip
         enactor = request.enactor
-        
+
         error = Website.check_login(request)
         return error if error
-        
+
         job_admin = Jobs.can_access_jobs?(enactor)
         if (job_admin)
-          jobs = Jobs.accessible_jobs(enactor, [], true)
+          jobs = Jobs.accessible_jobs(enactor, nil, true)
         else
           jobs = enactor.requests.to_a
         end
-        
+
         if (!searchTitle.blank?)
           jobs = jobs.select { |j| j.title =~ /\b#{searchTitle}\b/i }
         end
@@ -24,12 +24,12 @@ module AresMUSH
         if (!searchText.blank?)
           jobs = jobs.select { |j| "#{j.description} #{Jobs.visible_replies(enactor, j).map { |r| r.message }.join(' ')}" =~ /\b#{searchText}\b/i }
         end
-        
+
         if (!searchSubmitter.blank?)
           jobs = jobs.select { |j| j.author && (j.author.name.upcase == searchSubmitter.upcase) }
         end
-                
-        
+
+
         jobs.sort_by { |j| j.created_at }.reverse.map { |j| {
             id: j.id,
             title: j.title,
@@ -40,7 +40,7 @@ module AresMUSH
             author: j.author_name,
             assigned_to: j.assigned_to ? j.assigned_to.name : "--"
           }}
-        
+
       end
     end
   end
