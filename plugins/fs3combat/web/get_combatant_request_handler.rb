@@ -39,6 +39,8 @@ module AresMUSH
           team: combatant.team,
           action: FS3Combat.find_action_name(combatant.action_klass),
           action_args: combatant.action_args,
+          vehicle: combatant.vehicle ? combatant.vehicle.name : "" ,
+          passenger_type: combatant.vehicle ? (combatant.piloting ? 'pilot' : 'passenger') : 'none',
           npc_skill: combatant.is_npc? ? combatant.npc.level : nil,
           combat: combatant.combat.id,
           options: {

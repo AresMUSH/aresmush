@@ -38,7 +38,9 @@ module AresMUSH
                   stance: c.stance,
                   npc_skill:  c.npc.level,
                   action: FS3Combat.find_action_name(c.action_klass),
-                  action_args: c.action_args
+                  action_args: c.action_args,
+                  vehicle: c.vehicle ? c.vehicle.name : "" ,
+                  passenger_type: c.vehicle ? (c.piloting ? 'pilot' : 'passenger') : 'none'
                   
               }
             end
