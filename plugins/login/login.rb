@@ -122,6 +122,8 @@ module AresMUSH
         return ChangePasswordRequestHandler
       when "accountInfo"
         return AccountInfoRequestHandler
+      when "loginNotices"
+        return LoginNoticesRequestHandler
       end
       nil
     end

@@ -18,10 +18,10 @@ module AresMUSH
       autospace_str.gsub(/\%n/i, Demographics.name_and_nickname(enactor))
     end
     
-    def self.add_to_scene(scene, pose, character = Game.master.system_character, is_setpose = nil, is_ooc = nil)
+    def self.add_to_scene(scene, pose, character = Game.master.system_character, is_setpose = nil, is_ooc = nil, place_name = nil)
       return nil if !scene.logging_enabled
       
-      scene_pose = ScenePose.create(pose: pose, character: character, scene: scene, is_setpose: is_setpose, is_ooc: is_ooc)
+      scene_pose = ScenePose.create(pose: pose, character: character, scene: scene, is_setpose: is_setpose, is_ooc: is_ooc, place_name: place_name ? place_name : character.place_name)
       if (!scene_pose.is_system_pose?)
         Scenes.add_participant(scene, character)
       end

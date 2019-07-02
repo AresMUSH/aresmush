@@ -7,20 +7,41 @@ module AresMUSH
         page = (request.args[:page] || "1").to_i
         char_name_or_id = request.args[:char_id]
         
+        # Special limited filter for related scenes list
+        if (filter == 'Related')
+          return {
+            scenes: Scene.shared_scenes.sort_by { |s| s.date_shared || s.created_at }
+            .reverse.map { |s| {
+              id: s.id,
+              title: s.title
+            }}
+          }
+        end
+            
         if (char_name_or_id)
           char = Character.find_one_by_name(char_name_or_id)
           if (!char)
             return { error: t('webportal.not_found') }
           end
-          scenes = char.scenes_starring.sort_by { |s| s.date_shared || s.created_at }.reverse
-        elsif (filter == 'Recent')
-          scenes = Scenes.recent_scenes
-        elsif (filter == 'Popular')
-          scenes = Scene.shared_scenes.select { |s| s.likes > 0 }.sort_by { |s| s.likes }.reverse
-        elsif (filter == 'All')
-          scenes = Scene.shared_scenes.sort_by { |s| s.date_shared || s.created_at }.reverse
+          
+          if (filter == 'Recent')
+            scenes = char.scenes_starring.sort_by { |s| s.date_shared || s.created_at }.reverse[0..20]
+          else
+            scenes = char.scenes_starring.sort_by { |s| s.icdate || s.created_at }.reverse
+          end
+        else
+          if (filter == 'Recent')
+            scenes = Scenes.recent_scenes
+          else
+            scenes = Scene.shared_scenes.sort_by { |s| s.date_shared || s.created_at }.reverse
+          end
+        end
+        if (filter == 'Popular')
+          scenes = scenes.select { |s| s.likes > 0 }.sort_by { |s| s.likes }.reverse
+        elsif (filter == 'All' || filter == 'Recent')
+          # No additional filtering.
         else # scene type filter
-          scenes = Scene.shared_scenes.select { |s| s.scene_type == filter }.sort_by { |s| s.date_shared || s.created_at }.reverse
+          scenes = scenes.select { |s| s.scene_type == filter }
         end
         
         scenes_per_page = 30

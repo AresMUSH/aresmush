@@ -81,6 +81,8 @@ module AresMUSH
         return AddSceneRollRequestHandler
       when "learnAbility"
         return LearnAbilityRequestHandler
+      when"spendLuck"
+        return SpendLuckRequestHandler
       end
       nil
     end

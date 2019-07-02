@@ -75,33 +75,6 @@ module AresMUSH
       FS3Skills.dice_to_roll_for_ability(char, RollParams.new(ability))
     end    
     
-    def self.skills_census(skill_type)
-      skills = {}
-      Chargen.approved_chars.each do |c|
-        
-        if (skill_type == "Action")
-          c.fs3_action_skills.each do |a|
-            add_to_hash(skills, c, a)
-          end
-
-        elsif (skill_type == "Background")
-          c.fs3_background_skills.each do |a|
-            add_to_hash(skills, c, a)
-          end
-
-        elsif (skill_type == "Language")
-          c.fs3_languages.each do |a|
-            add_to_hash(skills, c, a)
-          end
-        else
-          raise "Invalid skill type selected for skill census: #{skill_type}"
-        end
-      end
-      skills = skills.select { |name, people| people.count > 2 }
-      skills = skills.sort_by { |name, people| [0-people.count, name] }
-      skills
-    end
-    
     def self.save_char(char, chargen_data)      
       (chargen_data[:fs3][:fs3_attributes] || []).each do |k, v|
         error = FS3Skills.set_ability(char, k, v.to_i)

@@ -15,7 +15,7 @@ aliases:
 
 > **Permission Required:** These commands require the Admin role or the build permission.
 
-The MUSH grid consists of **Rooms** connected by **Exits**.  
+For a general overview of building in Ares, see the aresmush.com [Building tutorial](https://aresmush.com/tutorials/manage/building.html).
 
 ## Building a Room
 
