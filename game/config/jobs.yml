@@ -3,6 +3,7 @@ jobs:
   active_statuses:
   - NEW
   - OPEN
+  - ASANA
   archive_cron:
     day_of_week:
     - Sun
@@ -11,6 +12,7 @@ jobs:
     minute:
     - 18
   archive_job_days: 10
+  archived_status: ARCHIVED
   categories:
     APP:
       color: "%xm"
@@ -94,4 +96,3 @@ jobs:
       color: "%xx%xh"
   system_category: SYS
   trouble_category: ALERT
-  archived_status: ARCHIVED

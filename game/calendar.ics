@@ -2,17 +2,17 @@ BEGIN:VCALENDAR
 VERSION:2.0
 PRODID:-//hacksw/handcal//NONSGML v1.0//EN
 BEGIN:VEVENT
-UID:1882657a-5876-4236-acc4-549938512b7b@Spirit Lake-spiritlakemu.com
-DTSTART:20190624T003000Z
-DTSTAMP:20190616T003124Z
-SUMMARY:Hunting a Creature
-DESCRIPTION:I'll take up to 6 who RSVP. Priority goes to those who filled out the WiG (Joel, Diego, Cara, Isao, Danielle). Pls RSVP by Wednesday, June 19.
+UID:9c25c268-cfac-4095-a3de-a09cb382e88d@Spirit Lake-spiritlakemu.com
+DTSTART:20190706T000000Z
+DTSTAMP:20190701T005835Z
+SUMMARY:Fourth of July!
+DESCRIPTION:BBQ and Fireworks, Grand Lake style.
 END:VEVENT
 BEGIN:VEVENT
-UID:3908456f-26ce-4771-b083-85439c2413e7@Spirit Lake-spiritlakemu.com
-DTSTART:20190622T003000Z
-DTSTAMP:20190620T031053Z
-SUMMARY:Olive's Birthday!
-DESCRIPTION:Renting out the whole Huntington House Tavern for Olive's birthday! All her friends are invited, spread the word! Open Bar. Buffet table of American Cuisine. Vegetarian and Gluten Free options available. (For the love of god, someone help decorate the place beforehand, do not leave DeLuz in charge of that.)
+UID:b26615bd-482f-423a-a785-32243f7adc8e@Spirit Lake-spiritlakemu.com
+DTSTART:20190702T003000Z
+DTSTAMP:20190701T221543Z
+SUMMARY:Joel's Canada Day BBQ
+DESCRIPTION:In deference to his half-Canadian heritage, Joel is holding a small BBQ in his backyard. BYOB. There will be puppies (not for BBQing). It's fair to assume you heard about it through the grapevine if you don't know Joel. 
 END:VEVENT
 END:VCALENDAR
