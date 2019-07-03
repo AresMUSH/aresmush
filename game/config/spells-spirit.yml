@@ -291,7 +291,7 @@ spells:
     effect: Psionic
   #Level 4
   Group Telepathic Correspondence:
-    available: false
+    available: true
     casting_time: 1 round
     desc: "Up to 4 targets, including the caster, are able to hold a telepathic conversation together. All targets are part of a single conversation for the duration of the spell. Initial casting requires concentration, after which this spell remains in effect without requiring maintenance or taking up your action during a round."
     duration: 1 hour
@@ -574,6 +574,19 @@ spells:
     school: Spirit
     target_num: 1
     target_optional: true
+  Dispel All Magic:
+    available: false
+    casting_time: 1 round
+    desc: "Caster removes magical effects from a target. They are able to differentiate between the effects of different spells, and can remove all magical effects or choose the spells to remove. They cannot remove a portion of a spell's effect."
+    effect: Psionic
+    level: 8
+    line_of_sight: true
+    name: Dispel All Magic
+    range: Short
+    roll: true
+    school: Spirit
+    target_num: 1
+    target_optional: true
   Heirloom Object:
     available: true
     casting_time: 3 hours
@@ -581,5 +594,40 @@ spells:
     level: 8
     name: Heirloom Object
     range: Touch
+    roll: true
+    school: Spirit
+  Restore Magic:
+    available: false
+    casting_time: 10 minutes
+    desc: "The caster restores a target's access to magic. They must have previously been capable of magic to benefit from this spell."
+    duration: Permanent
+    level: 8
+    line_of_sight: true
+    name: Restore Magic
+    range: Short
+    roll: true
+    school: Spirit
+  Sever Magic:
+    available: false
+    casting_time: 10 minutes
+    desc: "The caster removes a target's access to magic."
+    duration: Permanent
+    effect: Psionic
+    level: 8
+    line_of_sight: true
+    name: Sever Magic
+    range: Short
+    roll: true
+    school: Spirit
+  Siphon Of Spirit:
+    available: false
+    casting_time: 3 hours
+    desc: "A target siphons the magic of those around them in order to increase their power, while simultaneously decreasing the power of others.\n\nThe target receives a bonus to spellcasting and mental abilities that increases as they learn (mod=highest spell level), while those within physical range and those with a significant emotional connection to the target receive a negative modifier to spellcasting and mental abilities, up to -2."
+    duration: Permanent
+    effect: Buff
+    level: 8
+    line_of_sight: true
+    name: Siphon Of Spirit
+    range: Short
     roll: true
     school: Spirit

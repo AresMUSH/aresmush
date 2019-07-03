@@ -306,6 +306,7 @@ spells:
     school: Corpus
     weapon_specials: Shrink
     weapon: Spell
+  #Level 6
   Familiar (Corpus):
     desc: 'A familiar is a spirit associated or allied with a school of magic that has taken residence in a physical vessel with the shape of an animal. It functions as a companion, assistant, and guardian. Familiars may be capable of some or all of the following: sharing telepathic or empathic communication, providing knowledge of the arcane, sharing senses, lending physical aid as spies or fighters, delivering spells at a distance of up to three miles.'
     effect: Other
@@ -331,6 +332,7 @@ spells:
     school: Corpus
     target_num: 1
     target_optional: true
+  #Level 7
   Brink Of Death:
     available: false
     casting_time: 1 round
@@ -385,6 +387,22 @@ spells:
     roll: false
     school: Corpus
     target_num: 1
+  Miasma:
+    attack_mod: -3
+    available: true
+    casting_time: 1 Round
+    defense_mod: -3
+    desc: "The caster draws contaminants, decay, and disease into a targets' body, filling their throat and mouth with unpalatable noxious vapors. The miasma spreads to up to two targets nearby. All targets feel ill, which saps them of their strength and vitality for a period of time."
+    duration: 5 minutes
+    effect: Debuff
+    level: 7
+    line_of_sight: true
+    name: Miasma
+    range: Long
+    rounds: 3
+    school: Corpus
+    target_num: 3
+    target_optional: true
   #Level 8
   Elaborate Shapeshift:
     available: false
@@ -409,3 +427,15 @@ spells:
     range: Self
     roll: true
     school: Corpus
+  Siphon Of Body:
+    available: false
+    casting_time: 3 hours
+    desc: "A target siphons the magic of those around them in order to increase their power, while simultaneously decreasing the power of others.\n\nThe target receives a bonus to physical abilities that increases as they learn magic (mod=highest spell level), while those within physical range and those with a significant emotional connection to the target receive a negative modifier to physical abilities, up to -2."
+    duration: Permanent
+    effect: Buff
+    level: 8
+    line_of_sight: true
+    name: Siphon Of Body
+    range: Short
+    roll: true
+    school: Spirit

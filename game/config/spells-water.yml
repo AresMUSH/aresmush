@@ -213,7 +213,7 @@ spells:
     weapon: Water Whip
   Exploding Ice:
     area: 10 yard radius
-    available: false
+    available: true
     casting_time: 1 round
     damage_type: Cold
     desc: Send a ball of ice hurtling at a point the caster can see. It explodes into jagged shards on impact, hitting up to 3 targets.
@@ -229,7 +229,7 @@ spells:
     weapon: Exploding Ice
   Slick Ground:
     area: 10 yard radius
-    available: false
+    available: true
     casting_time: 1 round
     desc: Coat the ground in slick ice, making footing difficult up to 3 opponents and giving them a penalty to attack and defense.
     duration: 1 round
@@ -255,7 +255,7 @@ spells:
     range: Short
     line_of_sight: true
   Liquid Form:
-    available: false
+    available: true
     casting_time: 1 round
     defense_mod: 10
     desc: "The caster's body becomes clear liquid and cannot be hit by attacks.\n\n While in liquid form, the caster can pass through small holes or narrow openings, even mere cracks, with anything they were carrying at the time the spell was cast.  "

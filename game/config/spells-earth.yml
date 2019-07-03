@@ -159,7 +159,7 @@ spells:
     weapon: Rock Skin
   Seismic Sense:
     area: 5 yard radius
-    available: false
+    available: true
     casting_time: 1 round
     desc: For the duration of the spell, the caster can detect vibrations in the ground to roughly perceive objects, people, and other aspects of their environment within 10 yards of their person. Vibrations can be sensed underground, past objects that would normally block line of sight, and through invisibility, darkness or any other conditions that effect eyesight. The caster is not required to make perception checks to notice hidden beings within range. Cannot be used on things that have no physical contact with the ground.
     duration: 10 minutes
