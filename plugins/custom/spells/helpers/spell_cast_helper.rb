@@ -1,6 +1,10 @@
 module AresMUSH
   module Custom
 
+    def self.spell_shields
+      ["Mind Shield", "Endure Fire", "Endure Cold"]
+    end
+
     def self.spell_weapon_effects(combatant, spell)
       rounds = Global.read_config("spells", spell, "rounds")
       special = Global.read_config("spells", spell, "weapon_specials")
@@ -87,15 +91,9 @@ module AresMUSH
         msg = t('custom.casts_noncombat_spell_with_target', :name => caster.name, :target => print_names, :spell => spell, :mod => mod, :succeeds => success)
       end
       if message
-        caster.room.emit message
-        if caster.room.scene
-          Scenes.add_to_scene(caster.room.scene, message)
-        end
+        return message
       elsif print_names
-        caster.room.emit msg
-        if caster.room.scene
-          Scenes.add_to_scene(caster.room.scene, msg)
-        end
+        return msg
       end
     end
 
@@ -144,10 +142,7 @@ module AresMUSH
           else
             message = t('custom.cast_heal_no_effect', :name => caster.name, :spell => spell, :succeeds => "%xgSUCCEEDS%xn", :target => target.name)
           end
-          room.emit message
-          if room.scene
-            Scenes.add_to_scene(room.scene, message)
-          end
+          return message
         end
       end
     end
@@ -168,11 +163,7 @@ module AresMUSH
       end
 
       message = t('custom.cast_shield', :name => caster.name, :spell => spell, :succeeds => "%xgSUCCEEDS%xn", :target =>  target.name, :type => type)
-      room = caster.room
-      room.emit message
-      if room.scene
-        Scenes.add_to_scene(room.scene, message)
-      end
+      return message
     end
 
     def self.roll_shield(target, caster, spell)

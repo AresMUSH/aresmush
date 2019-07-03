@@ -90,20 +90,20 @@ module AresMUSH
           success = Custom.roll_noncombat_spell_success(self.caster, self.spell, self.mod)
           if success == "%xgSUCCEEDS%xn"
             if heal_points
-              Custom.cast_non_combat_heal(self.caster, self.caster.name, self.spell, self.mod)
-            elsif (self.spell == "Mind Shield" || self.spell == "Endure Fire" || self.spell == "Endure Cold")
-              Custom.cast_noncombat_shield(self.caster, self.caster, self.spell)
+                message = Custom.cast_non_combat_heal(self.caster, self.caster.name, self.spell, self.mod)
+            elsif Custom.spell_shields.include?(self.spell)
+                message = Custom.cast_noncombat_shield(self.caster, self.caster, self.spell)
             else
-              Custom.cast_noncombat_spell(self.caster, nil, self.spell, self.mod)
+                message = Custom.cast_noncombat_spell(self.caster, nil, self.spell, self.mod)
             end
             Custom.handle_spell_cast_achievement(self.caster)
           else
             message = t('custom.casts_noncombat_spell', :name => caster.name, :spell => spell, :mod => mod, :succeeds => success)
+          end
             self.caster.room.emit message
             if self.caster.room.scene
               Scenes.add_to_scene(self.caster.room.scene, message)
             end
-          end
 
         end
       end
