@@ -15,7 +15,7 @@ module AresMUSH
         return t('fs3skills.not_enough_points') if enactor.luck < 1
         return t('custom.use_school_version') if (self.spell == "Potions" || self.spell == "Familiar")
         return t('custom.not_spell') if !Custom.is_spell?(self.spell)
-        return t('custom.need_higher_level', :spell => self.spell) if Custom.higher_level_spell?(enactor, self.spell) == false
+        # return t('custom.need_higher_level', :spell => self.spell) if Custom.higher_level_spell?(enactor, self.spell) == false
         spell_learned = Custom.find_spell_learned(enactor, self.spell)
         return t('custom.only_1_xp_needed') if spell_learned.xp_needed.to_i == 1
         if enactor.groups.values.include? self.school
