@@ -53,7 +53,7 @@ module AresMUSH
           error = FS3Combat.update_combatant(combat, combatant, enactor, team, stance, weapon, selected_weapon_specials, armor, selected_armor_specials, npc_level, action, action_args, vehicle, passenger_type)
         
           if (error)
-            return { error: error }
+            return { error: "Error saving #{combatant.name}: #{error}" }
           end
         end
                     

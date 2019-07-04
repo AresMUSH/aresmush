@@ -200,8 +200,16 @@ module AresMUSH
           combat.active_combatants.each { |c| c.action }
     
           FS3Combat.emit_to_combat combat, t('fs3combat.new_turn', :name => enactor.name)
+          
+          combat_data = FS3Combat.build_combat_web_data(combat, nil)
+          
+          web_msg = "#{combat.id}|#{combat_data[:teams].to_json}"
+           Global.client_monitor.notify_web_clients(:new_combat_turn, web_msg) do |c|
+             c && c.combatant && c.combatant.combat == combat
+          end
+          
         rescue Exception => ex
-          Global.logger.error "Error in combat turn: #{ex}"
+          Global.logger.error "Error in combat turn: #{ex} #{ex.backtrace[0,10]}"
         ensure
           combat.update(turn_in_progress: false)
         end

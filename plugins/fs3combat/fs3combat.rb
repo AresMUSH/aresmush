@@ -192,6 +192,8 @@ module AresMUSH
         return GearDetailRequestHandler
       when "startCombat"
         return StartCombatRequestHandler
+      when "stopCombat"
+        return StopCombatRequestHandler
       end
     end
   end
