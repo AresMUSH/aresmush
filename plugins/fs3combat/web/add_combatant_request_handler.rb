@@ -5,7 +5,7 @@ module AresMUSH
         id = request.args[:id]
         enactor = request.enactor
         combatant_type = request.args[:combatant_type] || FS3Combat.default_combatant_type
-        name = request.args[:name]
+        name = (request.args[:name] || "").titlecase
         
         error = Website.check_login(request)
         return error if error
@@ -24,7 +24,7 @@ module AresMUSH
           return { error: t('fs3combat.already_in_combat', :name => name) }
         end
         
-        FS3Combat.build_combatant_web_data(combat, combatant, enactor)
+        FS3Combat.build_combatant_summary_data(combat, combatant, enactor)
       end
     end
   end
