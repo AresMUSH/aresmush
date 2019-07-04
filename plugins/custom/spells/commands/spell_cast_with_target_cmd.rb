@@ -48,9 +48,8 @@ module AresMUSH
       def check_errors
         return t('custom.not_character') if !caster
         return t('custom.not_spell') if !self.spell_list.include?(self.spell)
-        require_target = Global.read_config("spells", self.spell, "require_target")
         target_optional = Global.read_config("spells", self.spell, "target_optional")
-        return t('custom.no_target') if (!require_target && !target_optional)
+        return t('custom.doesnt_use_target') if !target_optional
         is_res = Global.read_config("spells", self.spell, "is_res")
         is_revive = Global.read_config("spells", self.spell, "is_revive")
         target_names = target_name.split(" ").map { |n| InputFormatter.titlecase_arg(n) }
@@ -137,21 +136,22 @@ module AresMUSH
           success = Custom.roll_noncombat_spell_success(self.caster, self.spell, self.mod)
           if success == "%xgSUCCEEDS%xn"
             if heal_points
-              Custom.cast_non_combat_heal(self.caster, self.target_name, self.spell, self.mod)
-            elsif (self.spell == "Mind Shield" || self.spell == "Endure Fire" || self.spell == "Endure Cold")
-              Custom.cast_noncombat_shield(self.caster, self.caster, self.spell)
+              message = Custom.cast_non_combat_heal(self.caster, self.target_name, self.spell, self.mod)
+            elsif Custom.spell_shields.include?(self.spell)
+              message = Custom.cast_noncombat_shield(self.caster, self.target, self.spell, self.mod)
             else
-              Custom.cast_noncombat_spell(self.caster, self.target_name, self.spell, self.mod)
+              message = Custom.cast_noncombat_spell(self.caster, self.target_name, self.spell, self.mod)
+
             end
             Custom.handle_spell_cast_achievement(self.caster)
           else
             #Spell doesn't succeed
             message = t('custom.casts_spell', :name => self.caster.name, :spell => self.spell, :succeeds => success)
+          end
             self.caster.room.emit message
             if self.caster.room.scene
               Scenes.add_to_scene(self.caster.room.scene, message)
             end
-          end
         end
 
       end
