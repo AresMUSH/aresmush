@@ -92,7 +92,7 @@ module AresMUSH
             if heal_points
                 message = Custom.cast_non_combat_heal(self.caster, self.caster.name, self.spell, self.mod)
             elsif Custom.spell_shields.include?(self.spell)
-                message = Custom.cast_noncombat_shield(self.caster, self.caster, self.spell)
+                message = Custom.cast_noncombat_shield(self.caster, self.caster, self.spell, self.mod)
             else
                 message = Custom.cast_noncombat_spell(self.caster, nil, self.spell, self.mod)
             end

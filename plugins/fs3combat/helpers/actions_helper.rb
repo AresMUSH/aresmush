@@ -103,9 +103,10 @@ module AresMUSH
         combatant.update(magic_stun_spell: nil)
         combatant.log "#{combatant.name} is no longer magically stunned."
       elsif (combatant.magic_stun_counter > 0 && combatant.magic_stun)
+        subduer = combatant.subdued_by
         FS3Combat.emit_to_combat combatant.combat, t('fs3combat.still_stunned', :name => combatant.name, :stunned_by => subduer.name, :rounds => combatant.magic_stun_counter), nil, true
         combatant.update(magic_stun_counter: combatant.magic_stun_counter - 1)
-        subduer = combatant.subdued_by
+
       end
 
       if combatant.lethal_mod_counter == 0 && combatant.damage_lethality_mod != 0

@@ -138,16 +138,16 @@ module AresMUSH
           wound = FS3Combat.worst_treatable_wound(target)
           if (wound)
             FS3Combat.heal(wound, heal_points)
-            message = t('custom.cast_heal', :name => caster.name, :spell => spell, :succeeds => "%xgSUCCEEDS%xn", :target => target.name, :points => heal_points)
+            message = t('custom.cast_heal', :name => caster.name, :spell => spell, :mod => mod, :succeeds => "%xgSUCCEEDS%xn", :target => target.name, :points => heal_points)
           else
-            message = t('custom.cast_heal_no_effect', :name => caster.name, :spell => spell, :succeeds => "%xgSUCCEEDS%xn", :target => target.name)
+            message = t('custom.cast_heal_no_effect', :name => caster.name, :spell => spell, :mod => mod, :succeeds => "%xgSUCCEEDS%xn", :target => target.name)
           end
           return message
         end
       end
     end
 
-    def self.cast_noncombat_shield(caster, target, spell)
+    def self.cast_noncombat_shield(caster, target, spell, mod)
       school = Global.read_config("spells", spell, "school")
       shield_strength = caster.roll_ability(school)
       Global.logger.info "#{spell} Strength on #{target.name} set to #{shield_strength[:successes]}."
@@ -162,7 +162,7 @@ module AresMUSH
         type = "ice"
       end
 
-      message = t('custom.cast_shield', :name => caster.name, :spell => spell, :succeeds => "%xgSUCCEEDS%xn", :target =>  target.name, :type => type)
+      message = t('custom.cast_shield', :name => caster.name, :spell => spell, :mod => mod, :succeeds => "%xgSUCCEEDS%xn", :target =>  target.name, :type => type)
       return message
     end
 
@@ -194,10 +194,6 @@ module AresMUSH
       else
         successes = caster.roll_ability(school)[:successes]
       end
-
-      Global.logger.debug "Strength: #{shield_strength}"
-      Global.logger.debug "Successes: #{successes}"
-
 
       delta = shield_strength - successes
 

@@ -9,10 +9,12 @@ module AresMUSH
         target_name = request.args[:target_name]
         mod = request.args[:mod]
 
+        if !target_name.blank?
           target = Character.named(target_name)
-          # if !target
-          #   return { error: "That is not a character." }
-          # end
+          if !target
+            return { error: "That is not a character." }
+          end
+        end
 
 
 
@@ -31,22 +33,20 @@ module AresMUSH
           return { error: t('scenes.scene_already_completed') }
         end
 
-        Global.logger.debug "Is spell? #{Custom.is_spell?(spell_string)}"
-
         if !Custom.is_spell?(spell_string)
-          return { error: "That is not a spell." }
+          return { error: t('custom.not_spell') }
         else
           spell = spell_string
         end
 
         if !Custom.knows_spell?(enactor, spell)
-          return { error: "You don't know that spell." }
+          return { error:  t('custom.dont_know_spell') }
         end
 
         heal_points = Global.read_config("spells", spell, "heal_points")
         success = Custom.roll_noncombat_spell_success(enactor, spell, mod)
 
-        if !target
+        if target_name.blank?
           if success == "%xgSUCCEEDS%xn"
             if heal_points
               message = Custom.cast_non_combat_heal(caster, caster.name, spell, mod)
@@ -61,6 +61,11 @@ module AresMUSH
 
           end
         else
+          target_optional = Global.read_config("spells", spell, "target_optional")
+          if !target_optional
+            return { error: t('custom.doesnt_use_target') }
+          end
+
           if success == "%xgSUCCEEDS%xn"
             if heal_points
               message = Custom.cast_non_combat_heal(caster, target_name, spell, mod)

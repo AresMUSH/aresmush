@@ -48,9 +48,8 @@ module AresMUSH
       def check_errors
         return t('custom.not_character') if !caster
         return t('custom.not_spell') if !self.spell_list.include?(self.spell)
-        require_target = Global.read_config("spells", self.spell, "require_target")
         target_optional = Global.read_config("spells", self.spell, "target_optional")
-        return t('custom.no_target') if (!require_target && !target_optional)
+        return t('custom.doesnt_use_target') if !target_optional
         is_res = Global.read_config("spells", self.spell, "is_res")
         is_revive = Global.read_config("spells", self.spell, "is_revive")
         target_names = target_name.split(" ").map { |n| InputFormatter.titlecase_arg(n) }
@@ -139,7 +138,7 @@ module AresMUSH
             if heal_points
               message = Custom.cast_non_combat_heal(self.caster, self.target_name, self.spell, self.mod)
             elsif Custom.spell_shields.include?(self.spell)
-              message = Custom.cast_noncombat_shield(self.caster, self.caster, self.spell)
+              message = Custom.cast_noncombat_shield(self.caster, self.target, self.spell, self.mod)
             else
               message = Custom.cast_noncombat_spell(self.caster, self.target_name, self.spell, self.mod)
 
