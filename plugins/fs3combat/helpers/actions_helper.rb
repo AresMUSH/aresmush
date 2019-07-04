@@ -359,6 +359,8 @@ module AresMUSH
     end
       
     def self.attack_target(combatant, target, mod = 0, called_shot = nil, crew_hit = false, mount_hit = false)
+      return [ t('fs3combat.has_no_target', :name => combatant.name) ] if !target
+      
       # If targeting a passenger, adjust target to the pilot instead.  Unless of course there isn't one.
       if (target.riding_in && target.riding_in.pilot)
         target = target.riding_in.pilot

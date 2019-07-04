@@ -24,7 +24,7 @@ module AresMUSH
           return { error: t('fs3combat.already_in_combat', :name => name) }
         end
         
-        {}
+        FS3Combat.build_combatant_web_data(combat, combatant, enactor)
       end
     end
   end
