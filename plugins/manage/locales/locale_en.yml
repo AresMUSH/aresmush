@@ -22,7 +22,7 @@ en:
         load_all_complete: "Load complete."
         log_file_title: "Log File"
         plugin_installed: "Plugin %{name} has been installed.  Please check the readme file at %{url} for any additional instructions."
-        error_installing_plugin: "Error installing plugin %{name}.  Please check the log file for details."
+        error_installing_plugin: "Error installing plugin %{name}.  Error: %{error}."
         plugins: "Plugins"
         
         shutdown: "Shutdown by %{name}."
@@ -92,3 +92,6 @@ en:
         config_restored: "Config file %{name} restored to defaults."
         error_restoring_config: "There was a problem restoring the config file.  Check the name.  Error: %{error}"
         
+        starting_them_install: "Starting theme installation."
+        error_installing_theme: "Error installing theme %{name}. Error: %{error}"
+        theme_installed: "Theme %{name} installed. Please check the readme file at %{url} for any additional instructions."
