@@ -201,15 +201,19 @@ module AresMUSH
       
       current_action = FS3Combat.find_action_name(combatant.action_klass)
       if (current_action != action || action_args != combatant.action_args)
-        new_action_klass = FS3Combat.find_action_klass(action)
-        new_action = new_action_klass.new(combatant, action_args)
-        error = new_action.prepare
-        if (error)
-          return error
+        if (action == "ai action")
+          FS3Combat.ai_action(combat, combatant, enactor)
+        else
+          new_action_klass = FS3Combat.find_action_klass(action)
+          new_action = new_action_klass.new(combatant, action_args)
+          error = new_action.prepare
+          if (error)
+            return error
+          end
+          combatant.update(action_klass: new_action_klass)
+          combatant.update(action_args: action_args)
+          FS3Combat.emit_to_combat combat, "#{new_action.print_action}", FS3Combat.npcmaster_text(combatant.name, enactor)
         end
-        combatant.update(action_klass: new_action_klass)
-        combatant.update(action_args: action_args)
-        FS3Combat.emit_to_combat combat, "#{new_action.print_action}", FS3Combat.npcmaster_text(combatant.name, enactor)
       end
       
       current_passenger_type = combatant.vehicle ? (combatant.piloting ? 'pilot' : 'passenger') : 'none'

@@ -225,7 +225,7 @@ module AresMUSH
           { 
             team: team,
             combatants: members.map { |c| 
-              FS3Combat.build_combatant_web_data(combat, c, viewer)
+              FS3Combat.build_combatant_summary_data(combat, c, viewer)
             }
           }
         }
@@ -241,7 +241,7 @@ module AresMUSH
       }
     end
     
-    def self.build_combatant_web_data(combat, combatant, viewer)
+    def self.build_combatant_summary_data(combat, combatant, viewer)
       can_manage = FS3Combat.can_manage_combat?(viewer, combat)
 
       {

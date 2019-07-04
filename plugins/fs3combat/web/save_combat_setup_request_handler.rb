@@ -13,11 +13,6 @@ module AresMUSH
           return { error: t('fs3combat.invalid_combat_number') }
         end
         
-        can_manage = FS3Combat.can_manage_combat?(enactor, combat)
-        if (!can_manage)
-          return { error: t('dispatcher.not_allowed') }
-        end        
-
         if (combat.turn_in_progress)
           return { error: t('fs3combat.turn_in_progress') }
         end

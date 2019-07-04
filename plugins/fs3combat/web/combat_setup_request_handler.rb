@@ -19,6 +19,8 @@ module AresMUSH
         end        
         
         combatants = {}
+        actions = FS3Combat.action_klass_map.keys.sort
+        actions.unshift "ai action"
         
         combat.active_combatants.select { |c| c.is_npc? }.sort_by { |c| c.name }.each do |c|
           combatants[c.id] = { 
@@ -44,7 +46,7 @@ module AresMUSH
                   
               }
             end
-            
+        
         {
           id: id,
           organizer: combat.organizer.name,
@@ -52,13 +54,13 @@ module AresMUSH
           combatant_types: FS3Combat.combatant_types.keys,
           combatants: combatants,
           options: {
-            weapons: AresMUSH::FS3Combat.weapons.keys,
-            weapon_specials: AresMUSH::FS3Combat.weapon_specials.keys,
-            armor_specials:  AresMUSH::FS3Combat.armor_specials.keys,
-            armor: AresMUSH::FS3Combat.armors.keys,
+            weapons: AresMUSH::FS3Combat.weapons.keys.sort,
+            weapon_specials: AresMUSH::FS3Combat.weapon_specials.keys.sort,
+            armor_specials:  AresMUSH::FS3Combat.armor_specials.keys.sort,
+            armor: AresMUSH::FS3Combat.armors.keys.sort,
             stances: FS3Combat.stances.keys,
             npc_skills: FS3Combat.npc_type_names,
-            actions: FS3Combat.action_klass_map.keys
+            actions: actions
             
           }
         }
