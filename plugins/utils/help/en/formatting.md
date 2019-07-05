@@ -38,4 +38,4 @@ Ares in general doesn't support functions the way you're used to from MUSHCode. 
     [center(<text>,<length>,<optional padding string>)] - center text
     [left(<text>,<length>,<optional padding string>)] - left align text
     [right(<text>,<length>,<optional padding string>)] - right a lign text
-    \[ansi(<code>,<text>)] - ansify text
+    \[ansi(<code>,<text>)] - ansify text (without the backslash)

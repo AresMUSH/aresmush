@@ -15,11 +15,8 @@ module AresMUSH
           return { error: t('webportal.not_found') }
         end
         
-        can_manage = (enactor == combatant.combat.organizer) || enactor.is_admin? || (enactor.name == combatant.name)
-        
-        if (!can_manage)
-          return { error: t('dispatcher.not_allowed') }
-        end
+        actions = FS3Combat.action_klass_map.keys.sort
+        actions.unshift "ai action"
           
         {
           id: combatant.id,
@@ -37,15 +34,20 @@ module AresMUSH
           }},
           stance: combatant.stance,
           team: combatant.team,
+          action: FS3Combat.find_action_name(combatant.action_klass),
+          action_args: combatant.action_args,
+          vehicle: combatant.vehicle ? combatant.vehicle.name : "" ,
+          passenger_type: combatant.vehicle ? (combatant.piloting ? 'pilot' : 'passenger') : 'none',
           npc_skill: combatant.is_npc? ? combatant.npc.level : nil,
           combat: combatant.combat.id,
           options: {
-            weapons: AresMUSH::FS3Combat.weapons.keys,
-            weapon_specials: AresMUSH::FS3Combat.weapon_specials.keys,
-            armor_specials:  AresMUSH::FS3Combat.armor_specials.keys,
-            armor: AresMUSH::FS3Combat.armors.keys,
+            weapons: AresMUSH::FS3Combat.weapons.keys.sort,
+            weapon_specials: AresMUSH::FS3Combat.weapon_specials.keys.sort,
+            armor_specials:  AresMUSH::FS3Combat.armor_specials.keys.sort,
+            armor: AresMUSH::FS3Combat.armors.keys.sort,
             stances: FS3Combat.stances.keys,
-            npc_skills: FS3Combat.npc_type_names
+            npc_skills: FS3Combat.npc_type_names,
+            actions: actions
           }
         }
       end

@@ -6,11 +6,11 @@ aliases:
 ---
 # Jobs
 
-The Jobs system is used by the game administrators to track work requests and to-do items.  Players can submit their own requests.
+The Jobs system is used by the game administrators to track work requests and to-do items.  Players can submit their own requests with the [request](/help/requests) command.
 
-> **Permissions Requred:** Working with jobs requires the access_jobs permission.
+> **Permissions Requred:** Working with jobs requires the access_jobs permission.  Some games will have multiple staff roles with limited access to certain categories.  For example - builders may only be able to access the 'BUILD' category.
 
-> Note:  Some games will have multiple staff roles with limited access to certain categories.  For example - builders may only be able to access the 'BUILD' category.  You can still create jobs in other categories, but they are treated as _requests_ (see [Requests](/help/request)).
+For a general overview of using jobs, see the aresmush.com [Jobs tutorial](https://aresmush.com/tutorials/manage/jobs.html).
 
 ## Viewing  Jobs
 
@@ -30,14 +30,7 @@ You can change what jobs you see in the jobs list.  If you're a coder, you could
 
 > **Tip:** Your job filter is remembered when you log out.
 
-Valid filters are:
-
-* Active - Jobs that are active (not done or on hold) and/or have new activity since you last looked.  This is the default filter.
-* Mine - Active jobs assigned to you.
-* Unfinished - All jobs not marked done.
-* Unread - Jobs with new activity.
-* (Category Name) - Active jobs in the given category.
-* All - All jobs.
+Valid filters are: active, mine, unfinished, unread, all, or a specific category name
 
 `jobs/filter <flter>` - Filters the jobs list.
 `jobs/mine`, `jobs/active`, `jobs/all` - Shortcuts for the common filters.
@@ -65,7 +58,6 @@ You can change various attributes about the job, including its status and who it
 `job/assign <#>=<player>`                  `job/handle <#>` 
 `job/status <#>=<status>`                  `job/cat <#>=<category>` 
 `job/title <#>=<title>`   
-        Default status values are NEW, OPEN, HOLD (job on hold) and DONE.  
 
 ## Adding Job Comments
 

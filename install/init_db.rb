@@ -187,7 +187,7 @@ module AresMUSH
       }
      
       categories.each do |name, color|
-        JobCategory.creat(name: name, color: color)
+        JobCategory.create(name: name, color: color)
       end
           
       

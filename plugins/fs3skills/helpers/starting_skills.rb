@@ -2,7 +2,7 @@ module AresMUSH
   module FS3Skills
     module StartingSkills
       def self.config
-        Global.read_config("fs3skills", "starting_skills")
+        Global.read_config("fs3skills", "starting_skills") || {}
       end
       
       def self.get_skills_for_char(char)
