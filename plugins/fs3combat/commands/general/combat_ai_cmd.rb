@@ -43,7 +43,10 @@ module AresMUSH
             end
             
             if (!target.blank?)
-              FS3Combat.set_action(client, enactor, combat, combatant, FS3Combat::AttackAction, target)
+              error = FS3Combat.set_action(enactor, combat, combatant, FS3Combat::AttackAction, target)
+              if (error)
+                client.emit_failure error
+              end
             else
               npcs << combatant
             end
@@ -54,7 +57,7 @@ module AresMUSH
         end
                 
         npcs.each_with_index do |c, i|
-          FS3Combat.ai_action(combat, client, c, enactor)
+          FS3Combat.ai_action(combat, c, enactor)
         end
       end
     end

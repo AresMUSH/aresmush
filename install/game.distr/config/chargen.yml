@@ -36,9 +36,11 @@ chargen:
     hook/add: hook/set
   stages:
     start:
-      tutorial: chargen.md
+      title: "Chargen Commands"
+      text: "You can do chargen either on the Web Portal (help web portal) or in-game.  They both have the same information - it's just a matter of preference.%R%RIf you choose to use the in-game chargen, the %xccg%xn command will walk you through the necessary steps.%R%RYou can go back and forth through the steps of chargen as much as you want using %xccg/next%xn and %xccg/prev%xn."
     app:
-      tutorial: app command.md
+      title: "App Review"
+      text: The `app` command is your friend during chargen.  It will alert you to things you may have forgotten to set.  %xrred%xn issues will almost certainly prevent your character from being approved (like forgetting to set your eye color).  %xyYellow%xn issues are warnings; they might actually be OK if it fits the character concept.
     sheet:
       help: sheets
     demographics:
@@ -62,7 +64,8 @@ chargen:
     lastwill:
       help: idle_out
     review:
-      help: apps
+      title: "App Submission"
+      text: "You've completed chargen!  Review your app one more time, and use `app/submit [<optional notes>]` to submit your character when ready.  The admins will make sure it's a good fit for the game's theme, that the skills are reasonable given the background, and that you haven't missed anything important in chargen. See `help apps` for additional help on the app review process."
   welcome_message: Please welcome %{name}, our latest %{position} to be approved!
   arrivals_category: New Arrivals
   app_review_commands:

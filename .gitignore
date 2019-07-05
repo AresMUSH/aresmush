@@ -37,6 +37,7 @@ killares
 # Website file storage
 # -----------------------------
 /game/uploads
+/theme_archive
 
 # Game directory
 # -----------------------------

@@ -9,7 +9,7 @@ module AresMUSH
       end
       
       def handle
-        output = `git load 2>&1`
+        output = `git pull 2>&1`
         client.emit_success t('manage.git_output', :output => output)
         client.emit_ooc t('manage.load_all')
         error = Manage.load_all

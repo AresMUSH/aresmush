@@ -12,16 +12,7 @@ The idle system lets you sweep the database for players who haven't logged in fo
 
 ## Idle Sweep
 
-There are several idle actions available:
-
-    Destroy - Get rid of them.  This is the default for unapproved characters.
-    Gone - Mark that they've left the IC area.
-    NPC - Mark that they're a NPC. 
-    Dead - Mark that they're dead.
-    Roster - Put them on the roster.
-    Warn - Notify them they're in danger of idling out.  This is the default for approved characters.
-
-> **Tip:** We recommend that you **not** destroy idled-out players once they've been approved.  They're part of the IC world.  They might come back, and allowing their name to be re-used can cause confusion.  Plus, removing them will make all messages from them appear from "Author Deleted" and will remove them from scenes.  Database space should really not be an issue.
+See the [idle sweep tutorial](https://aresmush.com/tutorials/manage/idle.html) for an overview of how the idle sweep works and some important tips.
 
 `idle/start` - Builds up a list of idle players.
 `idle` - Review everyone's actions.
