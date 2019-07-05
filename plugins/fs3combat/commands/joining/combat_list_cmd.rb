@@ -14,7 +14,8 @@ module AresMUSH
       def format_combat(combat)
         combatants = combat.combatants.map { |c| c.name }.join(" ")
         num = combat.id.to_s
-        "#{num.ljust(3)} #{combat.organizer.name.ljust(15)} #{combatants}"
+        scene_id = combat.scene ? combat.scene.id : ""
+        "#{num.ljust(3)} #{scene_id.ljust(5)} #{combat.organizer.name.ljust(15)} #{combatants}"
       end
     end
   end

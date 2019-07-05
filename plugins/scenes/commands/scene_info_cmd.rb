@@ -38,9 +38,6 @@ module AresMUSH
             
           when "icdate"
             success = set_icdate(scene)
-          
-          when "plot"
-            success = set_plot(scene)
             
           when "title"
             scene.update(title: self.value)
@@ -90,22 +87,6 @@ module AresMUSH
         end
         
         scene.update(scene_type: self.value)
-        return true
-      end
-
-      def set_plot(scene)
-        plot_num = self.value.to_i
-        plot = Plot[plot_num]
-        if (!plot)
-          plot = Plot.all.first { |p| p.title.upcase == self.value.upcase }
-        end
-        
-        if (!plot)
-          client.emit_failure t('scenes.invalid_plot')
-          return false
-        end
-        
-        scene.update(plot: plot)
         return true
       end
 

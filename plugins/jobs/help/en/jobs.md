@@ -30,14 +30,7 @@ You can change what jobs you see in the jobs list.  If you're a coder, you could
 
 > **Tip:** Your job filter is remembered when you log out.
 
-Valid filters are:
-
-* Active - Jobs that are active (not done or on hold) and/or have new activity since you last looked.  This is the default filter.
-* Mine - Active jobs assigned to you.
-* Unfinished - All jobs not marked done.
-* Unread - Jobs with new activity.
-* (Category Name) - Active jobs in the given category.
-* All - All jobs.
+Valid filters are: active, mine, unfinished, unread, all, or a specific category name
 
 `jobs/filter <flter>` - Filters the jobs list.
 `jobs/mine`, `jobs/active`, `jobs/all` - Shortcuts for the common filters.
@@ -65,7 +58,6 @@ You can change various attributes about the job, including its status and who it
 `job/assign <#>=<player>`                  `job/handle <#>` 
 `job/status <#>=<status>`                  `job/cat <#>=<category>` 
 `job/title <#>=<title>`   
-        Default status values are NEW, OPEN, HOLD (job on hold) and DONE.  
 
 ## Adding Job Comments
 

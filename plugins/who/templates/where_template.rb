@@ -35,7 +35,7 @@ module AresMUSH
       
       def scene_room_name(char)
         if (char.who_hidden)
-          return t('who.hidden')
+          return "      #{t('who.hidden')}"
         end
         
         name = Who.who_room_name(char)
