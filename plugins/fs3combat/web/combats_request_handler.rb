@@ -5,6 +5,7 @@ module AresMUSH
         Combat.all.map { |c| {
           id: c.id,
           organizer: c.organizer.name,
+          scene: c.scene ? c.scene.id : nil,
           participants: c.combatants.select { |c| !c.is_npc? }.map { |c| c.name }
         }}
       end

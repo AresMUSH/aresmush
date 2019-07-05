@@ -7,8 +7,8 @@ module AresMUSH
       
       def parse_args
         args = cmd.parse_args(ArgParser.arg1_slash_optional_arg2)
-        self.section = trim_arg(args.arg1)
-        self.subsection = trim_arg(args.arg2)
+        self.section = downcase_arg(args.arg1)
+        self.subsection = downcase_arg(args.arg2)
       end
       
       def check_section_exists

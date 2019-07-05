@@ -9,11 +9,11 @@ aliases:
 ---
 # Character Applications
 
-This game uses an Applications system for character approvals.  As you are going through character creation, you can review your application.  The system will flag common issues.
+This game uses an Applications system for character approvals.  The `app` command is your friend during chargen.  It will alert you to things you may have forgotten to set.  %xrred%xn issues will almost certainly prevent your character from being approved (like forgetting to set your eye color).  %xyYellow%xn issues are warnings; they might actually be OK if it fits the character concept.
 
 `app` - Shows a summary of your character application and any issues.
 
-Once you're happy with your character, you can submit it for review.  Application admins will make sure it's a good fit for the game's theme, that the skills are reasonable given the background, and that you haven't missed anything important in chargen.
+Once you're happy with your character, you can submit it for review.  Game admin will make sure it's a good fit for the game's theme, that the skills are reasonable given the background, and that you haven't missed anything important in chargen.
 
 `app/submit [<optional notes about your app>]` - Submits your application.
 

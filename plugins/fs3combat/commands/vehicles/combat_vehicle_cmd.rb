@@ -45,14 +45,15 @@ module AresMUSH
           self.vehicle = combatant.vehicle.name
         end
         
-        vehicle = FS3Combat.find_or_create_vehicle(combat, self.vehicle) 
-            
-        if (!vehicle)
-          client.emit_failure t('fs3combat.invalid_vehicle_name')
-          return
-        end
-        
         self.names.each do |name|
+        
+          vehicle = FS3Combat.find_or_create_vehicle(combat, self.vehicle) 
+            
+          if (!vehicle)
+            client.emit_failure t('fs3combat.invalid_vehicle_name')
+            return
+          end
+        
           FS3Combat.with_a_combatant(name, client, enactor) do |combat, combatant|
 
             if (combatant.mount_type)
