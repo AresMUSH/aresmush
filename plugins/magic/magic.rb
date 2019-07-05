@@ -12,6 +12,11 @@ module AresMUSH
     end
 
     def self.get_cmd_handler(client, cmd, enactor)
+      #Spells
+      # case cmd.root
+      # when "spell"
+      #   return SpellDetailCmd
+      # end
       nil
     end
 
@@ -23,6 +28,12 @@ module AresMUSH
     end
 
     def self.get_web_request_handler(request)
+      case request.cmd
+      when "spells"
+        return SpellsRequestHandler
+      when "schools"
+        return SchoolsRequestHandler
+      end
       nil
     end
 

@@ -1,5 +1,5 @@
 module AresMUSH
-  module Custom
+  module Magic
     class SpellDetailTemplate < ErbTemplateRenderer
 
 
@@ -24,10 +24,6 @@ module AresMUSH
 
       def effect
         Global.read_config("spells", spell, "effect")
-      end
-
-      def damage_type
-        Global.read_config("spells", spell, "damage_type")
       end
 
       def level

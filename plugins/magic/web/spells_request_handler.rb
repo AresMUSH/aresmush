@@ -1,13 +1,11 @@
 module AresMUSH
-  module Custom
-    class SchoolsRequestHandler
+  module Magic
+    class SpellsRequestHandler
 
       def handle(request)
+        Global.logger.debug "CALLING CORRECT HANDLER."
         all_spells = Global.read_config("spells")
-        school = request.args['school'].titlecase || ""
-        Global.logger.debug school
-        school_spells = all_spells.select { |name, data|  data['school'] == school }
-        spells = build_list(school_spells)
+        spells = build_list(all_spells)
         spells.each do |s|
           weapon = Global.read_config("spells", s[:name], "weapon")
           weapon_specials = Global.read_config("spells", s[:name], "weapon_specials")
@@ -75,14 +73,10 @@ module AresMUSH
         end
 
         spells_by_level = spells.group_by { |s| s[:level] }
-        blurb = Global.read_config("schools", school, "blurb")
-
 
         {
           spells: spells_by_level,
-          title: school,
-          blurb: Website.format_markdown_for_html(blurb),
-          pinterest: school
+          title: "All Spells",
         }
 
       end

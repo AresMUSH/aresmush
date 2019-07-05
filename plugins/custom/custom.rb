@@ -12,10 +12,10 @@ module AresMUSH
 
     def self.get_web_request_handler(request)
       case request.cmd
-      when "spells"
-        return SpellsRequestHandler
-      when "schools"
-        return SchoolsRequestHandler
+      # when "spells"
+      #   return SpellsRequestHandler
+      # when "schools"
+      #   return SchoolsRequestHandler
       when "searchSpells"
         return SearchSpellsRequestHandler
       when "getSchools"
