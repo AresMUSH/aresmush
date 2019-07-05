@@ -152,6 +152,13 @@ module AresMUSH
       end
     end
     
+    def self.change_team(combat, combatant, enactor, team)
+      combatant.update(team: team)
+      name = combatant.name
+      message = t('fs3combat.team_set', :name => name, :team => team)
+      FS3Combat.emit_to_combat combat, message, FS3Combat.npcmaster_text(name, enactor)
+    end
+    
     def self.update_combatant(combat, combatant, enactor, team, stance, 
       weapon, selected_weapon_specials, armor, selected_armor_specials, npc_level, action, action_args,
       vehicle_name, passenger_type)

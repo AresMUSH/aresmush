@@ -22,11 +22,12 @@ module AresMUSH
         actions = FS3Combat.action_klass_map.keys.sort
         actions.unshift "ai action"
         
-        combat.active_combatants.select { |c| c.is_npc? }.sort_by { |c| c.name }.each do |c|
+        combat.active_combatants.sort_by { |c| c.name }.each do |c|
           combatants[c.id] = { 
                   id: c.id,
                   team: c.team,
                   name: c.name,
+                  is_npc: c.is_npc?,
                   weapon: c.weapon_name,
                   weapon_specials: AresMUSH::FS3Combat.weapon_specials.keys.map { |k| {
                     name: k,
@@ -38,7 +39,7 @@ module AresMUSH
                     selected: (c.armor_specials || []).include?(k)
                   }},
                   stance: c.stance,
-                  npc_skill:  c.npc.level,
+                  npc_skill:  c.is_npc? ? c.npc.level : nil,
                   action: FS3Combat.find_action_name(c.action_klass),
                   action_args: c.action_args,
                   vehicle: c.vehicle ? c.vehicle.name : "" ,

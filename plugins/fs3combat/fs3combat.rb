@@ -184,6 +184,8 @@ module AresMUSH
         return NewCombatTurnRequestHandler
       when "saveCombatSetup"
         return SaveCombatSetupRequestHandler
+      when "saveCombatTeams"
+        return SaveCombatTeamsRequestHandler
       when "combatLog"
         return CombatLogRequestHandler
       when "gear"
