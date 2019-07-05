@@ -22,8 +22,19 @@ module AresMUSH
       
       def tutorial
         tutorial_file = @stage["tutorial"]
-        contents = tutorial_file ? Chargen.read_tutorial(tutorial_file) : nil
-        contents ? @markdown.to_mush(contents) : nil
+        if (tutorial_file)
+          contents = Chargen.read_tutorial(tutorial_file)
+          return @markdown.to_mush(contents)
+        end
+        
+        text = @stage["text"]
+        title = @stage["title"]
+        return nil if !text
+        
+        if (title)
+          text = "# #{title}\n\n#{text}"
+        end
+        @markdown.to_mush text
       end
       
       def help

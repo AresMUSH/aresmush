@@ -1,34 +1,38 @@
 module AresMUSH
   module FS3Combat
+    
+    def self.action_klass_map
+      {
+        "aim" => AimAction,
+        "attack" => AttackAction,
+        "distract" => DistractAction,
+        "escape" => EscapeAction,
+        "explode" => ExplodeAction,
+        "fullauto" => FullautoAction,
+        "pass" => PassAction,
+        "rally" => RallyAction,
+        "reload" => ReloadAction,
+        "treat" => TreatAction,
+        "subdue" => SubdueAction,
+        "suppress" => SuppressAction
+      }
+    end
+    
     def self.find_action_klass(name)
-      case name
-      when "aim"
-        AimAction
-      when "attack"
-        AttackAction
-      when "distract"
-        DistractAction
-      when "escape"
-        EscapeAction
-      when "explode"
-        ExplodeAction
-      when "fullauto"
-        FullautoAction
-      when "pass"
-        PassAction
-      when "rally"
-        RallyAction
-      when "reload"
-        ReloadAction
-      when "treat"
-        TreatAction
-      when "subdue"
-        SubdueAction
-      when "suppress"
-        SuppressAction
-      else
-        nil
+      FS3Combat.action_klass_map[name]
+    end
+    
+    def self.find_action_name(klass)
+      if (klass.class == String)
+        klass = FS3Combat.const_get(klass)
       end
+      
+      FS3Combat.action_klass_map.each do |name, value|
+        if (value == klass)
+          return name
+        end
+      end
+      return nil
     end
     
     def self.damage_table
@@ -128,11 +132,11 @@ module AresMUSH
       roll
     end
         
-    def self.ai_action(combat, client, combatant, enactor = nil)
+    def self.ai_action(combat, combatant, enactor = nil)
       if (combatant.is_subdued?)
-        FS3Combat.set_action(client, nil, combat, combatant, FS3Combat::EscapeAction, "")
+        FS3Combat.set_action(enactor, combat, combatant, FS3Combat::EscapeAction, "")
       elsif (!FS3Combat.check_ammo(combatant, 1))
-        FS3Combat.set_action(client, nil, combat, combatant, FS3Combat::ReloadAction, "")
+        FS3Combat.set_action(enactor, combat, combatant, FS3Combat::ReloadAction, "")
       else
         target = FS3Combat.find_ai_target(combat, combatant)
         if (target)
@@ -145,9 +149,9 @@ module AresMUSH
           else
             action_klass = FS3Combat::AttackAction
           end
-          FS3Combat.set_action(client, enactor, combat, combatant, action_klass, target.name)
+          FS3Combat.set_action(enactor, combat, combatant, action_klass, target.name)
         else
-          FS3Combat.set_action(client, enactor, combat, combatant, FS3Combat::PassAction, "")
+          FS3Combat.set_action(enactor, combat, combatant, FS3Combat::PassAction, "")
         end
       end   
     end
@@ -163,12 +167,11 @@ module AresMUSH
       possible_targets.shuffle.first
     end
     
-    def self.set_action(client, enactor, combat, combatant, action_klass, args)
+    def self.set_action(enactor, combat, combatant, action_klass, args)
       action = action_klass.new(combatant, args)
       error = action.prepare
       if (error)
-        client.emit_failure error
-        return
+        return error
       end
       combatant.update(action_klass: action_klass)
       combatant.update(action_args: args)
@@ -356,6 +359,8 @@ module AresMUSH
     end
       
     def self.attack_target(combatant, target, mod = 0, called_shot = nil, crew_hit = false, mount_hit = false)
+      return [ t('fs3combat.has_no_target', :name => combatant.name) ] if !target
+      
       # If targeting a passenger, adjust target to the pilot instead.  Unless of course there isn't one.
       if (target.riding_in && target.riding_in.pilot)
         target = target.riding_in.pilot

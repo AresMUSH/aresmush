@@ -57,7 +57,7 @@ en:
         # ----------------------------
         
         active_combats: "Active Combats"
-        active_combats_titlebar: "#   Organizer       Participants"
+        active_combats_titlebar: "#   Scene Organizer       Participants"
         invalid_combat_type: "That is no a valid combat type.  Try one of these: %{types}."
         summary_title: "Combatant       Act/Pose   Skill    Weapon           Armor            Stance"
         hud_subtitle: "%xhCombatant           Damage    Weapon(ammo)             Action(stance)%xn"
@@ -96,6 +96,9 @@ en:
         new_passenger: "%{name} is now a passenger in %{vehicle}."
         disembarks_vehicle: "%{name} disembarks from %{vehicle}."
                     
+        already_combat_for_scene: "There's already a combat going on in that scene."
+        combat_scene_started: "%{name} has started a combat for this scene."
+        
         # ----------------------------
         # GENERAL
         # ----------------------------
@@ -315,6 +318,7 @@ en:
         
         attack_stopped_by_armor: "%{name} attacks %{target} with %{weapon}.  Stopped by ARMOR on %{hitloc}."
         reduced_by_armor:  "(Reduced by ARMOR)"
+        has_no_target: "%{name} tries to attack but has no target."
         
         crew_hit: "CREW HIT!"
 

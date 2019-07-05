@@ -1,11 +1,10 @@
 module AresMUSH
   module FS3Combat
-    class RemoveCombatantRequestHandler
+    class StopCombatRequestHandler
       def handle(request)
         id = request.args[:id]
-        name = request.args[:name]
         enactor = request.enactor
-
+        
         error = Website.check_login(request)
         return error if error
         
@@ -14,14 +13,16 @@ module AresMUSH
           return { error: t('webportal.not_found') }
         end
 
-        combatant = combat.find_combatant(name)
-        can_manage = FS3Combat.can_manage_combat?(enactor, combat) || (enactor.name == combatant.name)
-        
-        if (!can_manage)
+        if (!FS3Combat.can_manage_combat?(enactor, combat))
           return { error: t('dispatcher.not_allowed') }
         end
 
-        FS3Combat.leave_combat(combat, combatant)
+        if (combat.turn_in_progress)
+          return { error: t('fs3combat.turn_in_progress') }
+        end
+        
+        FS3Combat.emit_to_combat combat, t('fs3combat.combat_stopped_by', :name => enactor.name)
+        combat.delete
         
         {
         }
