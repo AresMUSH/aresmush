@@ -12,6 +12,8 @@ Luck is also award for various OOC work such as GMing scenes or updating the wik
 `luck/request <reason>` - Requests earned luck be awarded.
 `luck/spend <reason>` - Spends luck outside of combat.
     See [Combat Luck](/help/combat) for combat-related luck commands.
+`luck/give <name>=<reason>` - Give someone one of your luck points.
+`luck/record [<name>]` - See a record of all luck given to a character.
 `potion/create <potion>` - Spends luck to create a potion.
 `spell/luck <spell>` - Reduce the learning time of a spell by a week.
 
