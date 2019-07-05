@@ -5,14 +5,11 @@ plugins:
   optional_plugins:
   - achievements
   - chargen
-  - cookies
   - events
   - fs3combat
   - fs3skills
   - ranks
   - weather
-  - achievements
-  - achievements
   config_help_links:
     ffg: https://github.com/AresMUSH/ares-extras/tree/master/plugins/ffg
     fate: https://github.com/AresMUSH/ares-extras/tree/master/plugins/fate

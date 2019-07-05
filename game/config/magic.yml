@@ -1,0 +1,5 @@
+---
+magic:
+  shield_cron:
+    hour:
+    - 02
