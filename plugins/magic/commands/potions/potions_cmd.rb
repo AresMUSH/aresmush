@@ -1,9 +1,9 @@
-module AresMUSH    
-  module Custom
+module AresMUSH
+  module Magic
     class PotionsCmd
       include CommandHandler
       attr_accessor :target_name
-  
+
       def parse_args
          self.target_name = cmd.args ? titlecase_arg(cmd.args) : enactor_name
       end

@@ -3,7 +3,7 @@ module AresMUSH
     collection :potions_has, "AresMUSH::PotionsHas"
     collection :potions_creating, "AresMUSH::PotionsCreating"
     #DO NOT USE THIS, IT IS ONLY HERE TO FIX THE ERROR KILLING NESSIE AND ALL RELATED THINGS.
-    attribute :creating_potions
+    # attribute :creating_potions
     attribute :potions_used, :type => DataType::Integer
     attribute :potions_made, :type => DataType::Integer
 

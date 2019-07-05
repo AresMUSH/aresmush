@@ -17,13 +17,34 @@ module AresMUSH
       # when "spell"
       #   return SpellDetailCmd
       # end
+      #POTIONS
+      #Potions
+      case cmd.root
+      when "potion"
+        case cmd.switch
+        when "create"
+          return CreatePotionCmd
+        when "update"
+          return UpdatePotionCmd
+        when "give"
+          return GivePotionCmd
+        when "add"
+          return PotionAddCmd
+        when "use"
+          if cmd.args.include?("=")
+            return PotionUseWithTargetCmd
+          else
+            return PotionUseCmd
+          end
+        end
+      end
       nil
     end
 
     def self.get_event_handler(event_name)
       case event_name
       when "CronEvent"
-        return ShieldCronHandler
+        return CronEventHandler
       end
     end
 

@@ -1,5 +1,5 @@
 module AresMUSH
-  module Custom
+  module Magic
     class PotionUseCmd
     #potion/use <potion>
       include CommandHandler
@@ -39,7 +39,7 @@ module AresMUSH
       end
 
       def check_errors
-        return t('custom.not_character') if !caster
+        return t('magic.invalid_name') if !caster
       end
 
       def handle
@@ -49,9 +49,9 @@ module AresMUSH
 
         if self.caster.combat
           if self.caster_combat.is_ko
-            client.emit_failure t('custom.spell_ko')
-          elsif (!caster_combat.is_npc? &&  !Custom.find_potion_has(caster, self.potion_name) )
-              client.emit_failure t('custom.dont_have_potion')
+            client.emit_failure t('magic.spell_ko')
+          elsif (!caster_combat.is_npc? &&  !Magic.find_potion_has(caster, self.potion_name) )
+              client.emit_failure t('magic.dont_have_potion')
           else
             FS3Combat.set_action(client, enactor, enactor.combat, caster_combat, FS3Combat::PotionAction, self.spell)
 
@@ -60,16 +60,16 @@ module AresMUSH
         elsif
           #Roll NonCombat
           if roll
-            Custom.potion_noncombat_spell(self.caster, self.spell)
+            Magic.potion_noncombat_spell(self.caster, self.spell)
           elsif heal_points
-            Custom.potion_non_combat_heal(self.caster, self.spell)
+            Magic.potion_non_combat_heal(self.caster, self.spell)
           else
-            client.emit_failure t('custom.not_in_combat')
+            client.emit_failure t('magic.not_in_combat')
           end
 
         end
 
-        Custom.handle_potions_used_achievement(caster)
+        Magic.handle_potions_used_achievement(caster)
       end
 
 

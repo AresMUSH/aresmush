@@ -112,26 +112,26 @@ module AresMUSH
           return GiveItemCmd
         end
       end
-      #Potions
-      case cmd.root
-      when "potion"
-        case cmd.switch
-        when "create"
-          return CreatePotionCmd
-        when "update"
-          return UpdatePotionCmd
-        when "give"
-          return GivePotionCmd
-        when "add"
-          return PotionAddCmd
-        when "use"
-          if cmd.args.include?("=")
-            return PotionUseWithTargetCmd
-          else
-            return PotionUseCmd
-          end
-        end
-      end
+      # #Potions
+      # case cmd.root
+      # when "potion"
+      #   case cmd.switch
+      #   when "create"
+      #     return CreatePotionCmd
+      #   when "update"
+      #     return UpdatePotionCmd
+      #   when "give"
+      #     return GivePotionCmd
+      #   when "add"
+      #     return PotionAddCmd
+      #   when "use"
+      #     if cmd.args.include?("=")
+      #       return PotionUseWithTargetCmd
+      #     else
+      #       return PotionUseCmd
+      #     end
+      #   end
+      # end
       case cmd.root
       when "potions"
         return PotionsCmd

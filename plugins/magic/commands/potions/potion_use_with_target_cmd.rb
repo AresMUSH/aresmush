@@ -1,5 +1,5 @@
 module AresMUSH
-  module Custom
+  module Magic
     class PotionUseWithTargetCmd
     #potion/use <potion>=<target>
       include CommandHandler
@@ -50,7 +50,7 @@ module AresMUSH
       end
 
       def check_errors
-        return t('custom.invalid_name') if !self.target
+        return t('magic.invalid_name') if !self.target
       end
 
       def handle
@@ -59,25 +59,25 @@ module AresMUSH
         heal_points = Global.read_config("spells", self.spell, "heal_points")
         if self.caster.combat
           if self.caster_combat.is_ko
-            client.emit_failure t('custom.spell_ko')
-          elsif (!caster_combat.is_npc? &&  !Custom.find_potion_has(caster, self.potion_name))
-            client.emit_failure t('custom.dont_have_potion')
+            client.emit_failure t('magic.spell_ko')
+          elsif (!caster_combat.is_npc? &&  !Magic.find_potion_has(caster, self.potion_name))
+            client.emit_failure t('magic.dont_have_potion')
           else
             FS3Combat.set_action(client, enactor, enactor.combat, caster_combat, FS3Combat::PotionTargetAction, self.action_args)
           end
 
         else
           if heal_points
-            if Custom.knows_spell?(caster, self.spell)
-              Custom.potion_non_combat_heal_with_target(self.caster, self.target, self.spell)
+            if Magic.knows_spell?(caster, self.spell)
+              Magic.potion_non_combat_heal_with_target(self.caster, self.target, self.spell)
             else
-              client.emit_failure t('custom.dont_know_spell')
+              client.emit_failure t('magic.dont_know_spell')
             end
           else
-            client.emit_failure t('custom.not_in_combat')
+            client.emit_failure t('magic.not_in_combat')
           end
         end
-        Custom.handle_potions_used_achievement(caster)
+        Magic.handle_potions_used_achievement(caster)
 
 
       end

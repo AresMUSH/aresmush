@@ -1,5 +1,5 @@
 module AresMUSH
-  module Custom
+  module Magic
 
     def self.is_potion?(spell)
       spell_name = spell.titlecase
@@ -17,8 +17,8 @@ module AresMUSH
           hours_to_creation = p.hours_to_creation.to_i - 1
           if hours_to_creation < 1
             PotionsHas.create(name: p.name, character: char)
-            message = t('custom.potion_completed', :potion => p.name)
-            Mail.send_mail([char.name], t('custom.potion_completed_subj', :potion => p.name), message, nil)
+            message = t('magic.potion_completed', :potion => p.name)
+            Mail.send_mail([char.name], t('magic.potion_completed_subj', :potion => p.name), message, nil)
             p.delete
           else
             p.update(hours_to_creation: hours_to_creation)
