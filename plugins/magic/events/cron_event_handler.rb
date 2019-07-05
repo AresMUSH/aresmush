@@ -1,15 +1,24 @@
 module AresMUSH
   module Magic
-    class ShieldCronHandler
+    class CronEventHandler
 
       def on_event(event)
-        config = Global.read_config("magic", "shield_cron")
-        return if !Cron.is_cron_match?(config, event.time)
+        shield_cron = Global.read_config("magic", "shield_cron")
+        if Cron.is_cron_match?(shield_cron, event.time)
+          Global.logger.debug "Non-combat magic shields expiring."
 
-        Global.logger.debug "Non-combat magic shields expiring."
+          Character.all.each do |c|
+            Magic.shields_expire(c)
+          end
+        end
 
-        Character.all.each do |c|
-          Magic.shields_expire(c)
+        potion_cron = Global.read_config("magic", "potion_cron")
+        if Cron.is_cron_match?(potion_cron, event.time)
+          Global.logger.debug "Potion creation time updating"
+
+          Character.all.each do |c|
+            Custom.update_potion_hours(c)
+          end
         end
 
       end

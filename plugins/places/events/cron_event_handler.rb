@@ -8,10 +8,6 @@ module AresMUSH
 
         Global.logger.debug "Cleaning up places."
 
-        Character.all.each do |c|
-          Custom.update_potion_hours(c)
-        end
-
         Place.all.each do |p|
           if (p.characters.empty?)
             p.delete

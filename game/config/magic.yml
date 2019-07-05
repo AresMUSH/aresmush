@@ -3,3 +3,6 @@ magic:
   shield_cron:
     hour:
     - 02
+  potion_cron:
+    minute:
+    - 5
