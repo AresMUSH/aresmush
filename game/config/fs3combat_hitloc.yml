@@ -473,3 +473,209 @@ fs3combat:
         - Bullsye
       vital_areas: []
       critical_areas: []
+    Insect:
+      areas:
+        Left Leg:
+        - Thorax
+        - Rear Right Leg
+        - Rear Right Leg
+        - Rear Right Leg
+        - Abdomen
+        - Abdomen
+        - Abdomen
+        - Rear Left Leg
+        - Rear Left Leg
+        - Rear Left Leg
+        Right Leg:
+        - Thorax
+        - Rear Right Leg
+        - Rear Right Leg
+        - Rear Right Leg
+        - Abdomen
+        - Abdomen
+        - Abdomen
+        - Rear Left Leg
+        - Rear Left Leg
+        - Rear Left Leg
+        Rear Left Leg:
+        - Thorax
+        - Rear Right Leg
+        - Rear Right Leg
+        - Rear Right Leg
+        - Abdomen
+        - Abdomen
+        - Abdomen
+        - Rear Left Leg
+        - Rear Left Leg
+        - Rear Left Leg
+        Rear Right Leg:
+        - Thorax
+        - Rear Left Leg
+        - Rear Left Leg
+        - Rear Left Leg
+        - Abdomen
+        - Abdomen
+        - Rear Right Leg
+        - Rear Right Leg
+        - Rear Right Leg
+        - Rear Right Leg
+        Front Left Leg:
+        - Head
+        - Thorax
+        - Thorax
+        - Thorax
+        - Abdomen
+        - Abdomen
+        - Front Left Leg
+        - Front Left Leg
+        - Front Left Leg
+        - Front Left Leg
+        Front Right Leg:
+        - Head
+        - Thorax
+        - Thorax
+        - Abdomen
+        - Abdomen
+        - Abdomen
+        - Front Right Leg
+        - Front Right Leg
+        - Front Right Leg
+        - Front Right Leg
+        Head:
+        - Front Right Leg
+        - Front Right Leg
+        - Front Left Leg
+        - Thorax
+        - Thorax
+        - Head
+        - Head
+        - Head
+        Abdomen:
+        - Rear Left Leg
+        - Rear Right Leg
+        - Rear Left Leg
+        - Rear Right Leg
+        - Chest
+        - Chest
+        - Chest
+        - Abdomen
+        - Abdomen
+        - Abdomen
+      vital_areas:
+      - Abdomen
+      critical_areas:
+      - Thorax
+    FlyingInsect:
+      areas:
+        Left Leg:
+        - Thorax
+        - Rear Right Leg
+        - Rear Right Leg
+        - Rear Right Leg
+        - Abdomen
+        - Abdomen
+        - Abdomen
+        - Rear Left Leg
+        - Rear Left Leg
+        - Rear Left Leg
+        Right Leg:
+        - Thorax
+        - Rear Right Leg
+        - Rear Right Leg
+        - Rear Right Leg
+        - Abdomen
+        - Abdomen
+        - Abdomen
+        - Rear Left Leg
+        - Rear Left Leg
+        - Rear Left Leg
+        Rear Left Leg:
+        - Thorax
+        - Rear Right Leg
+        - Rear Right Leg
+        - Rear Right Leg
+        - Abdomen
+        - Abdomen
+        - Abdomen
+        - Rear Left Leg
+        - Rear Left Leg
+        - Rear Left Leg
+        Rear Right Leg:
+        - Thorax
+        - Rear Left Leg
+        - Rear Left Leg
+        - Rear Left Leg
+        - Abdomen
+        - Abdomen
+        - Rear Right Leg
+        - Rear Right Leg
+        - Rear Right Leg
+        - Rear Right Leg
+        Front Left Leg:
+        - Head
+        - Thorax
+        - Thorax
+        - Thorax
+        - Abdomen
+        - Abdomen
+        - Front Left Leg
+        - Front Left Leg
+        - Front Left Leg
+        - Front Left Leg
+        Front Right Leg:
+        - Head
+        - Thorax
+        - Thorax
+        - Abdomen
+        - Abdomen
+        - Abdomen
+        - Front Right Leg
+        - Front Right Leg
+        - Front Right Leg
+        - Front Right Leg
+        Right Wing:
+        - Head
+        - Thorax
+        - Thorax
+        - Abdomen
+        - Abdomen
+        - Right Wing
+        - Right Wing
+        - Right Wing
+        - Front Right Leg
+        - Front Right Leg
+        Left Wing:
+        - Head
+        - Thorax
+        - Thorax
+        - Abdomen
+        - Abdomen
+        - Left Wing
+        - Left Wing
+        - Left Wing
+        - Front Left Leg
+        - Front Left Leg        
+        Head:
+        - Front Right Leg
+        - Front Right Leg
+        - Front Left Leg
+        - Thorax
+        - Thorax
+        - Head
+        - Head
+        - Head
+        Abdomen:
+        - Rear Left Leg
+        - Rear Right Leg
+        - Rear Left Leg
+        - Rear Right Leg
+        - Chest
+        - Chest
+        - Chest
+        - Abdomen
+        - Abdomen
+        - Abdomen
+      vital_areas:
+      - Abdomen
+      critical_areas:
+      - Thorax
