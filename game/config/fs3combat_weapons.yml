@@ -151,7 +151,7 @@ fs3combat:
     Poison Stinger:
       description: Poison Insect stinger
       skill: Melee
-      lethality: 15
+      lethality: 10
       penetration: 4
       weapon_type: Melee
       recoil: 0
