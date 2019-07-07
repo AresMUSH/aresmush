@@ -1,6 +1,10 @@
 ---
 fs3combat:
   npc_types:
+    Default: 2
+    Reflexes: 1
+    Wounds: 60
+    Zero:
     One:
       Default: 2
       Reflexes: 1
