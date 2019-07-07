@@ -21,11 +21,11 @@ fs3combat:
       armor: Tough Hide
       hitloc: Insect
       defense_skill: Reflexes
-    FlyingInsect:
+    Flying Insect:
       weapon: Stinger
       weapon_specials:
       armor: Tough Hide
-      hitloc: Insect
+      hitloc: FlyingInsect
       defense_skill: Reflexes
     Rogue:
       weapon: Knife
