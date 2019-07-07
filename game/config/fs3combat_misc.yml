@@ -18,7 +18,7 @@ fs3combat:
     Insect:
       weapon: Teeth
       weapon_specials:
-      armor: Tough Hide
+      armor: None
       hitloc: Insect
       defense_skill: Reflexes
     Flying Insect:
