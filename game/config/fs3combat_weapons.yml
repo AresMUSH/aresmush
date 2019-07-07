@@ -148,6 +148,17 @@ fs3combat:
       accuracy: 0
       init_mod: 0
       special_group: Ranged
+    Poison Stinger:
+      description: Poison Insect stinger
+      skill: Melee
+      lethality: 15
+      penetration: 4
+      weapon_type: Melee
+      recoil: 0
+      damage_type: Physical
+      accuracy: 0
+      init_mod: 0
+      special_group: Melee
     Claws:
       description: Animal or creature claws
       skill: Melee
@@ -164,6 +175,17 @@ fs3combat:
       skill: Melee
       lethality: 0
       penetration: 6
+      weapon_type: Melee
+      recoil: 0
+      damage_type: Physical
+      accuracy: 0
+      init_mod: 0
+      special_group: Melee
+    Stinger:
+      description: Insect stinger
+      skill: Melee
+      lethality: 0
+      penetration: 4
       weapon_type: Melee
       recoil: 0
       damage_type: Physical
