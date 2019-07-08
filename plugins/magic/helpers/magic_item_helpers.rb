@@ -1,5 +1,5 @@
 module AresMUSH
-  module Custom
+  module Magic
 
     def self.is_item?(item)
       item_name = item.titlecase

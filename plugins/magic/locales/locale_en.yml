@@ -16,6 +16,7 @@ en:
         # ----------------------------
         # POTIONS
         # ----------------------------
+      use_combat_potion: "Use combat/potion while you are in combat."
       potions_title: "%{name}'S POTIONS"
       potions_creating_title: "Potions Currently Creating"
       potions_has_title: "Potions Inventory"
@@ -30,7 +31,6 @@ en:
       give_potion: "You have given %{target} a %{potion} potion."
       given_potion: "%{name} has given you a %{potion} potion."
       given_potion_subj: "%{potion} recieved"
-      potion_not_in_combat: "You must be in combat to use that potion."
       potion_ko: "You cannot use a potion while Knocked Out."
       use_potion: "%{name} uses a %xM%{potion}%xn potion."
       use_potion_target: "%{name} uses a %xM%{potion}%xn potion on %{target}."
@@ -57,9 +57,11 @@ en:
       casts_noncombat_spell_with_target: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{succeeds}."
       # will_cast_spell: "%{name} will cast %xB%{spell}%xn."
       will_cast_fs3_attack: "%{name} will cast %xB%{spell}%xn on %{target} this turn."
-      cast_heal: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{succeeds}. %{target} receives up to %{points} points of healing to a wound."
+      cast_heal: "%{name} casts %xB%{spell}%xn%{mod} and %{succeeds}. They receive up to %{points} points of healing to a wound."
+      cast_heal_target: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{succeeds}. %{target} receives up to %{points} points of healing to a wound."
       cast_ko_heal: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{succeeds}. %{target} receives up to %{points} points of healing to a wound and they are no longer dying."
-      cast_heal_no_effect: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{succeeds}, but they have no healable wounds. The spell has no effect."
+      cast_heal_no_effect: "%{name} casts %xB%{spell}%xn%{mod} and %{succeeds}, but they have no healable wounds. The spell has no effect."
+      cast_heal_no_effect_target: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{succeeds}, but they have no healable wounds. The spell has no effect."
       cast_shield: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{succeeds}. They are protected against %{type} attacks."
       shield_failed: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{target}'s %{shield} failed to stop it. %{name} %xgSUCCEEDS%xn, but the damage is reduced."
       mind_shield_failed: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{target}'s %{shield} failed to stop it. %{name} %xgSUCCEEDS%xn."

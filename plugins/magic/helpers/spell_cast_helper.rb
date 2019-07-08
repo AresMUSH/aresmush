@@ -35,54 +35,48 @@ module AresMUSH
     end
 
 
-    def self.cast_noncombat_spell(caster, name_string, spell, mod)
+    def self.cast_noncombat_spell(caster, name_string, spell, mod = nil, is_potion = false)
       success = "%xgSUCCEEDS%xn"
       target_num = Global.read_config("spells", spell, "target_num")
       effect = Global.read_config("spells", spell, "effect")
       damage_type = Global.read_config("spells", spell, "damage_type")
       client = Login.find_client(caster)
       if name_string != nil
-        targets = Custom.parse_spell_targets(name_string, target_num)
+        targets = Magic.parse_spell_targets(name_string, target_num)
       else
         targets = "None"
       end
 
-      if targets == t('custom.too_many_targets')
-        client.emit_failure t('custom.too_many_targets', :spell => spell, :num => target_num)
+      if targets == t('magic.too_many_targets')
+        client.emit_failure t('magic.too_many_targets', :spell => spell, :num => target_num)
       elsif targets == "no_target"
         client.emit_failure "%xrThat is not a character.%xn"
       elsif targets == "None"
-        message = t('custom.casts_noncombat_spell', :name => caster.name, :spell => spell, :mod => mod, :succeeds => success)
+        if is_potion
+          message = t('magic.use_potion', :name => caster.name, :potion => spell)
+        else
+          message = t('magic.casts_noncombat_spell', :name => caster.name, :spell => spell, :mod => mod, :succeeds => success)
+        end
       else
         names = []
         targets.each do |target|
-          if (effect == "Psionic" && target.mind_shield > 0)
-            held = Custom.roll_shield(target, caster, spell) == "shield"
-            if held
-              message = t('custom.shield_held', :name => caster.name, :spell => spell, :target => target.name, :shield => "Mind Shield")
+          if ((effect == "Psionic" || damage_type == "Fire" || damage_type == "Cold") && !is_potion)
+            message = Magic.check_spell_vs_shields(target, caster, spell, mod, is)
+            if message
+              return message
             else
-              message = t('custom.mind_shield_failed', :name => caster.name, :spell => spell, :target => target.name, :shield => "Mind Shield")
-            end
-          elsif (damage_type == "Fire" && target.endure_fire > 0)
-            held = Custom.roll_shield(target, caster, spell) == "shield"
-            if held
-              message = t('custom.shield_held', :name => caster.name, :spell => spell, :target => target.name, :shield => "Endure Fire")
-            else
-              message = t('custom.shield_failed', :name => caster.name, :spell => spell, :target => target.name, :shield => "Endure Fire")
-            end
-          elsif (damage_type == "Cold" && target.endure_cold > 0)
-            held = Custom.roll_shield(target, caster, spell) == "shield"
-            if held
-              message = t('custom.shield_held', :name => caster.name, :spell => spell, :target => target.name, :shield => "Endure Cold")
-            else
-              message = t('custom.shield_failed', :name => caster.name, :spell => spell, :target => target.name, :shield => "Endure Cold")
+              names.concat [target.name]
             end
           else
             names.concat [target.name]
           end
         end
         print_names = names.join(", ")
-        msg = t('custom.casts_noncombat_spell_with_target', :name => caster.name, :target => print_names, :spell => spell, :mod => mod, :succeeds => success)
+        if is_potion
+         msg = t('magic.use_potion_target', :name => caster.name, :potion => spell, :target => print_names)
+       else
+         msg = t('magic.casts_noncombat_spell_with_target', :name => caster.name, :target => print_names, :spell => spell, :mod => mod, :succeeds => success)
+       end
       end
       if message
         return message
@@ -102,39 +96,60 @@ module AresMUSH
       end
       targets = targets
       if (targets.count > target_num)
-        return t('custom.too_many_targets')
+        return t('magic.too_many_targets')
       else
         return targets
       end
     end
 
-    def self.cast_non_combat_heal(caster, name_string, spell, mod)
+    def self.cast_non_combat_heal(caster, name_string, spell, mod = nil, is_potion = false)
       room = caster.room
       client = Login.find_client(caster)
       target_num = Global.read_config("spells", spell, "target_num")
       heal_points = Global.read_config("spells", spell, "heal_points")
 
       if name_string != nil
-        targets = Custom.parse_spell_targets(name_string, target_num)
+        targets = Magic.parse_spell_targets(name_string, target_num)
       else
-        targets = "None"
+        targets = [caster]
       end
 
-      if targets == t('custom.too_many_targets')
-        client.emit_failure t('custom.too_many_targets', :spell => spell, :num => target_num)
+      if targets == t('magic.too_many_targets')
+        client.emit_failure t('magic.too_many_targets', :spell => spell, :num => target_num)
       elsif targets == "no_target"
         client.emit_failure "%xrThat is not a character.%xn"
-      elsif targets == "None"
-        target = caster
       else
-
         targets.each do |target|
           wound = FS3Combat.worst_treatable_wound(target)
           if (wound)
             FS3Combat.heal(wound, heal_points)
-            message = t('custom.cast_heal', :name => caster.name, :spell => spell, :mod => mod, :succeeds => "%xgSUCCEEDS%xn", :target => target.name, :points => heal_points)
+            if is_potion
+              if caster.name == target.name
+                message = t('magic.potion_heal', :name => caster.name, :potion => spell, :points => heal_points)
+              else
+                message = t('magic.potion_heal_target', :name => caster.name, :potion => spell, :target => target.name, :points => heal_points)
+              end
+            else
+              if caster.name == target.name
+                message = t('magic.cast_heal', :name => caster.name, :spell => spell, :mod => mod, :succeeds => "%xgSUCCEEDS%xn", :points => heal_points)
+              else
+                message = t('magic.cast_heal_target', :name => caster.name, :spell => spell, :mod => mod, :succeeds => "%xgSUCCEEDS%xn", :target => target.name, :points => heal_points)
+              end
+            end
           else
-            message = t('custom.cast_heal_no_effect', :name => caster.name, :spell => spell, :mod => mod, :succeeds => "%xgSUCCEEDS%xn", :target => target.name)
+            if is_potion
+              if caster.name == target.name
+                message = t('magic.potion_heal', :name => caster.name, :potion => spell, :points => heal_points)
+              else
+                message = message = t('magic.potion_heal_no_effect_target', :name => caster.name, :potion => spell, :target => target.name)
+              end
+            else
+              if caster.name == target.name
+                message = t('magic.cast_heal_no_effect', :name => caster.name, :spell => spell, :mod => mod, :succeeds => "%xgSUCCEEDS%xn")
+              else
+                message = t('magic.cast_heal_no_effect_target', :name => caster.name, :spell => spell, :mod => mod, :succeeds => "%xgSUCCEEDS%xn", :target => target.name)
+              end
+            end
           end
           return message
         end
@@ -156,11 +171,11 @@ module AresMUSH
         type = "ice"
       end
 
-      message = t('custom.cast_shield', :name => caster.name, :spell => spell, :mod => mod, :succeeds => "%xgSUCCEEDS%xn", :target =>  target.name, :type => type)
+      message = t('magic.cast_shield', :name => caster.name, :spell => spell, :mod => mod, :succeeds => "%xgSUCCEEDS%xn", :target =>  target.name, :type => type)
       return message
     end
 
-    
+
 
   end
 end

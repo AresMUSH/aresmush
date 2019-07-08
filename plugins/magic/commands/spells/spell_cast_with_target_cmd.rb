@@ -1,5 +1,5 @@
 module AresMUSH
-  module Custom
+  module Magic
     class SpellCastWithTargetCmd
       include CommandHandler
       attr_accessor :name, :target, :target_name, :target_combat, :spell, :spell_list, :caster, :caster_combat, :action_args, :mod
@@ -46,43 +46,43 @@ module AresMUSH
       end
 
       def check_errors
-        return t('custom.not_character') if !caster
-        return t('custom.not_spell') if !self.spell_list.include?(self.spell)
+        return t('magic.not_character') if !caster
+        return t('magic.not_spell') if !self.spell_list.include?(self.spell)
         target_optional = Global.read_config("spells", self.spell, "target_optional")
-        return t('custom.doesnt_use_target') if !target_optional
+        return t('magic.doesnt_use_target') if !target_optional
         is_res = Global.read_config("spells", self.spell, "is_res")
         is_revive = Global.read_config("spells", self.spell, "is_revive")
         target_names = target_name.split(" ").map { |n| InputFormatter.titlecase_arg(n) }
         if enactor.combat
-          return t('custom.spell_ko') if self.caster_combat.is_ko
-          return t('custom.dont_know_spell') if (!caster_combat.is_npc? &&  Custom.knows_spell?(caster, self.spell) == false && Custom.item_spell(caster) != self.spell)
+          return t('magic.spell_ko') if self.caster_combat.is_ko
+          return t('magic.dont_know_spell') if (!caster_combat.is_npc? &&  Magic.knows_spell?(caster, self.spell) == false && Magic.item_spell(caster) != self.spell)
           return t('fs3combat.must_escape_first') if caster_combat.is_subdued?
 
           target_names.each do |name|
             target = enactor.combat.find_combatant(name)
             return t('fs3combat.not_in_combat', :name => name) if !target
-            return t('custom.not_dead', :target => target.name) if (is_res && !target.associated_model.dead)
-            return t('custom.not_ko', :target => target.name) if (is_revive && !target.is_ko)
+            return t('magic.not_dead', :target => target.name) if (is_res && !target.associated_model.dead)
+            return t('magic.not_ko', :target => target.name) if (is_revive && !target.is_ko)
             #Check that weapon specials can be added to weapon
             weapon_specials_str = Global.read_config("spells", self.spell, "weapon_specials")
             if weapon_specials_str
               weapon_special_group = FS3Combat.weapon_stat(target.weapon, "special_group") || ""
               weapon_allowed_specials = Global.read_config("fs3combat", "weapon special groups", weapon_special_group) || []
-              return t('custom.cant_cast_on_gear', :spell => self.spell, :target => target.name, :gear => "weapon") if !weapon_allowed_specials.include?(weapon_specials_str.downcase)
+              return t('magic.cant_cast_on_gear', :spell => self.spell, :target => target.name, :gear => "weapon") if !weapon_allowed_specials.include?(weapon_specials_str.downcase)
             end
             #Check that armor specials can be added to weapon
             armor_specials_str = Global.read_config("spells", self.spell, "armor_specials")
             if armor_specials_str
               armor_allowed_specials = FS3Combat.armor_stat(target.armor, "allowed_specials") || []
-              return t('custom.cant_cast_on_gear', :spell => self.spell, :target => target.name, :gear => "armor") if !armor_allowed_specials.include?(armor_specials_str)
+              return t('magic.cant_cast_on_gear', :spell => self.spell, :target => target.name, :gear => "armor") if !armor_allowed_specials.include?(armor_specials_str)
             end
           end
         else
           target_names.each do |name|
             target = Character.named(name)
-            return t('custom.not_character', :name => name) if !target
+            return t('magic.not_character', :name => name) if !target
           end
-          return t('custom.dont_know_spell') if (Custom.knows_spell?(caster, self.spell) == false && Custom.item_spell(caster) != spell)
+          return t('magic.dont_know_spell') if (Magic.knows_spell?(caster, self.spell) == false && Magic.item_spell(caster) != spell)
         end
 
 
@@ -91,7 +91,7 @@ module AresMUSH
         armor = Global.read_config("spells", self.spell, "armor")
         return t('fs3combat.invalid_armor') if (armor && !FS3Combat.armor(armor))
 
-        return t('custom.caster_should_not_equal_target') if (self.caster.combat && self.caster_combat == self.target_combat)
+        return t('magic.caster_should_not_equal_target') if (self.caster.combat && self.caster_combat == self.target_combat)
 
         return nil
       end
@@ -109,7 +109,7 @@ module AresMUSH
 
           if fs3_attack
             if weapon
-              FS3Combat.emit_to_combat caster_combat.combat, t('custom.will_cast_fs3_attack', :name => caster_combat.name, :spell => spell, :target => target_name), nil, true
+              FS3Combat.emit_to_combat caster_combat.combat, t('magic.will_cast_fs3_attack', :name => caster_combat.name, :spell => spell, :target => target_name), nil, true
               FS3Combat.set_weapon(enactor, caster_combat, weapon)
               weapon_type = FS3Combat.weapon_stat(caster_combat.weapon, "weapon_type")
               if weapon_type == "Explosive"
@@ -127,26 +127,26 @@ module AresMUSH
             FS3Combat.set_action(client, enactor, enactor.combat, caster_combat, FS3Combat::SpellAction, self.action_args)
           end
           if !caster_combat.is_npc?
-            Custom.handle_spell_cast_achievement(self.caster)
+            Magic.handle_spell_cast_achievement(self.caster)
           end
 
         else
         #NonCombat
           effect = Global.read_config("spells", self.spell, "effect")
-          success = Custom.roll_noncombat_spell_success(self.caster, self.spell, self.mod)
+          success = Magic.roll_noncombat_spell_success(self.caster, self.spell, self.mod)
           if success == "%xgSUCCEEDS%xn"
             if heal_points
-              message = Custom.cast_non_combat_heal(self.caster, self.target_name, self.spell, self.mod)
-            elsif Custom.spell_shields.include?(self.spell)
-              message = Custom.cast_noncombat_shield(self.caster, self.target, self.spell, self.mod)
+              message = Magic.cast_non_combat_heal(self.caster, self.target_name, self.spell, self.mod)
+            elsif Magic.spell_shields.include?(self.spell)
+              message = Magic.cast_noncombat_shield(self.caster, self.target, self.spell, self.mod)
             else
-              message = Custom.cast_noncombat_spell(self.caster, self.target_name, self.spell, self.mod)
+              message = Magic.cast_noncombat_spell(self.caster, self.target_name, self.spell, self.mod)
 
             end
-            Custom.handle_spell_cast_achievement(self.caster)
+            Magic.handle_spell_cast_achievement(self.caster)
           else
             #Spell doesn't succeed
-            message = t('custom.casts_spell', :name => self.caster.name, :spell => self.spell, :succeeds => success)
+            message = t('magic.casts_spell', :name => self.caster.name, :spell => self.spell, :succeeds => success)
           end
             self.caster.room.emit message
             if self.caster.room.scene

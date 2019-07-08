@@ -1,5 +1,5 @@
 module AresMUSH
-  module Custom
+  module Magic
     class SpellCastCmd
     #spell/cast <spell>
       include CommandHandler
@@ -38,14 +38,14 @@ module AresMUSH
       end
 
       def check_errors
-        return t('custom.not_character') if !caster
-        return t('custom.not_spell') if !self.spell_list.include?(self.spell)
-        return t('custom.cant_force_cast') if (self.caster != enactor && !enactor.combatant)
+        return t('magic.not_character') if !caster
+        return t('magic.not_spell') if !self.spell_list.include?(self.spell)
+        return t('magic.cant_force_cast') if (self.caster != enactor && !enactor.combatant)
         return t('fs3combat.must_escape_first') if (enactor.combat && caster_combat.is_subdued?)
         if enactor.combat
 
-          return t('custom.spell_ko') if self.caster_combat.is_ko
-          return t('custom.dont_know_spell') if (!caster_combat.is_npc? &&  Custom.knows_spell?(caster, self.spell) == false && Custom.item_spell(caster) != self.spell)
+          return t('magic.spell_ko') if self.caster_combat.is_ko
+          return t('magic.dont_know_spell') if (!caster_combat.is_npc? &&  Magic.knows_spell?(caster, self.spell) == false && Magic.item_spell(caster) != self.spell)
           return t('fs3combat.must_escape_first') if caster_combat.is_subdued?
 
           # Prevent badly config's spells from completely breaking combat by equipping non-existant gear
@@ -59,17 +59,17 @@ module AresMUSH
           if weapon_specials_str
             weapon_special_group = FS3Combat.weapon_stat(self.caster_combat.weapon, "special_group") || ""
             weapon_allowed_specials = Global.read_config("fs3combat", "weapon special groups", weapon_special_group) || []
-            return t('custom.cant_cast_on_gear', :spell => self.spell, :target => self.caster_combat.name, :gear => "weapon") if !weapon_allowed_specials.include?(weapon_specials_str.downcase)
+            return t('magic.cant_cast_on_gear', :spell => self.spell, :target => self.caster_combat.name, :gear => "weapon") if !weapon_allowed_specials.include?(weapon_specials_str.downcase)
           end
 
           #Check that armor specials can be added to weapon
           armor_specials_str = Global.read_config("spells", self.spell, "armor_specials")
           if armor_specials_str
             armor_allowed_specials = FS3Combat.armor_stat(self.caster_combat.armor, "allowed_specials") || []
-            return t('custom.cant_cast_on_gear', :spell => self.spell, :target => self.caster_combat.name, :gear => "armor") if !armor_allowed_specials.include?(armor_specials_str)
+            return t('magic.cant_cast_on_gear', :spell => self.spell, :target => self.caster_combat.name, :gear => "armor") if !armor_allowed_specials.include?(armor_specials_str)
           end
         else
-          return t('custom.dont_know_spell') if (Custom.knows_spell?(caster, self.spell) == false && Custom.item_spell(caster) != spell)
+          return t('magic.dont_know_spell') if (Magic.knows_spell?(caster, self.spell) == false && Magic.item_spell(caster) != spell)
         end
         return nil
       end
@@ -82,23 +82,23 @@ module AresMUSH
           FS3Combat.set_action(client, enactor, enactor.combat, caster_combat, FS3Combat::SpellAction, self.spell)
 
           if !caster_combat.is_npc?
-            Custom.handle_spell_cast_achievement(self.caster)
+            Magic.handle_spell_cast_achievement(self.caster)
           end
 
         else
           #Roll NonCombat
-          success = Custom.roll_noncombat_spell_success(self.caster, self.spell, self.mod)
+          success = Magic.roll_noncombat_spell_success(self.caster, self.spell, self.mod)
           if success == "%xgSUCCEEDS%xn"
             if heal_points
-                message = Custom.cast_non_combat_heal(self.caster, self.caster.name, self.spell, self.mod)
-            elsif Custom.spell_shields.include?(self.spell)
-                message = Custom.cast_noncombat_shield(self.caster, self.caster, self.spell, self.mod)
+                message = Magic.cast_non_combat_heal(self.caster, self.caster.name, self.spell, self.mod)
+            elsif Magic.spell_shields.include?(self.spell)
+                message = Magic.cast_noncombat_shield(self.caster, self.caster, self.spell, self.mod)
             else
-                message = Custom.cast_noncombat_spell(self.caster, nil, self.spell, self.mod)
+                message = Magic.cast_noncombat_spell(self.caster, nil, self.spell, self.mod)
             end
-            Custom.handle_spell_cast_achievement(self.caster)
+            Magic.handle_spell_cast_achievement(self.caster)
           else
-            message = t('custom.casts_noncombat_spell', :name => caster.name, :spell => spell, :mod => mod, :succeeds => success)
+            message = t('magic.casts_noncombat_spell', :name => caster.name, :spell => spell, :mod => mod, :succeeds => success)
           end
             self.caster.room.emit message
             if self.caster.room.scene

@@ -24,6 +24,37 @@ module AresMUSH
         char.update(endure_cold: 0)
     end
 
+    def self.check_spell_vs_shields(target, caster, spell, mod = nil)
+      effect = Global.read_config("spells", spell, "effect")
+      damage_type = Global.read_config("spells", spell, "damage_type")
+
+      if (effect == "Psionic" && target.mind_shield > 0)
+        held = Custom.roll_shield(target, caster, spell) == "shield"
+        if held
+          message = t('custom.shield_held', :name => caster.name, :spell => spell, :mod => mod, :target => target.name, :shield => "Mind Shield")
+        else
+          message = t('custom.mind_shield_failed', :name => caster.name, :spell =>  spell, :mod => mod, :target => target.name, :shield => "Mind Shield")
+        end
+      elsif (damage_type == "Fire" && target.endure_fire > 0)
+        held = Custom.roll_shield(target, caster, spell) == "shield"
+        if held
+          message = t('custom.shield_held', :name => caster.name, :spell => spell, :mod => mod, :target => target.name, :shield => "Endure Fire")
+        else
+          message = t('custom.shield_failed', :name => caster.name, :spell => spell, :mod => mod, :target => target.name, :shield => "Endure Fire")
+        end
+      elsif (damage_type == "Cold" && target.endure_cold > 0)
+        held = Custom.roll_shield(target, caster, spell) == "shield"
+        if held
+          message = t('custom.shield_held', :name => caster.name, :spell => spell, :mod => mod, :target => target.name, :shield => "Endure Cold")
+        else
+          message = t('custom.shield_failed', :name => caster.name, :spell => spell, :mod => mod, :target => target.name, :shield => "Endure Cold")
+        end
+      else
+        message = nil
+      end
+      return message
+    end
+
     def self.roll_shield(target, caster, spell)
       damage_type = Global.read_config("spells", spell, "damage_type")
       effect = Global.read_config("spells", spell, "effect")
@@ -61,19 +92,12 @@ module AresMUSH
         Global.logger.info "#{shield.upcase}: #{caster.name} rolling #{school} vs #{target.name}'s #{shield} (strength #{shield_strength}): #{successes} successes."
       end
 
-      # if (shield_strength <=0 && successes <= 0)
-      #   return "shield"
-      # else
-      #   return "failed"
-      # end
-
       case delta
       when 0..99
         return "shield"
       when -99..-1
         return "caster"
       end
-
     end
 
   end
