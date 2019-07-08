@@ -5,4 +5,4 @@ magic:
     - 02
   potion_cron:
     minute:
-    - 5
+    - 00

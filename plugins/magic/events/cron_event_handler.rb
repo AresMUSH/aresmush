@@ -1,6 +1,6 @@
 module AresMUSH
   module Magic
-    class CronEventHandler
+    class MagicCronEventHandler
 
       def on_event(event)
         shield_cron = Global.read_config("magic", "shield_cron")
