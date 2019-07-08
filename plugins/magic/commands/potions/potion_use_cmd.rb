@@ -12,15 +12,11 @@ module AresMUSH
          self.potion_name = titlecase_arg(args.arg1)
          self.potion = Magic.find_potion_has(caster, self.potion_name)
          self.target_name_arg = titlecase_arg(args.arg2)
-         Global.logger.debug "Target args #{target_name_arg}"
          if target_name_arg
            self.target = Character.named(target_name_arg)
          else
            self.target = self.caster
          end
-
-         Global.logger.debug "Target #{target}"
-
 
         #   if (cmd.args =~ /\//)
         #   #Forcing NPC or PC to use potion

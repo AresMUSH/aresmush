@@ -12,7 +12,7 @@ module AresMUSH
 
     def self.get_cmd_handler(client, cmd, enactor)
       case cmd.root
-      when"damage"
+      when "damage"
          case cmd.switch
          when "inflict"
            return InflictDamageCmd
@@ -55,6 +55,8 @@ module AresMUSH
          else
            return MountsListCmd
          end
+       when "potion"
+         return CombatPotionCmd
        when "vehicle"
          if (cmd.args)
            return VehicleDetailCmd

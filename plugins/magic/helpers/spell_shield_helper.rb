@@ -55,6 +55,27 @@ module AresMUSH
       return message
     end
 
+    def self.stopped_by_shield?(spell, target, combatant)
+      damage_type = Global.read_config("spells", spell, "damage_type")
+      roll_shield = Magic.roll_shield(target, combatant, spell)
+      if roll_shield == "shield"
+        if (damage_type == "Fire" && target.endure_fire > 0)
+          return "Endure Fire Held"
+        elsif (damage_type == "Cold" && target.endure_cold > 0)
+          return "Endure Cold Held"
+        end
+
+      elsif roll_shield == "failed"
+        if (damage_type == "Fire" && target.endure_fire > 0)
+          return "Endure Fire Failed"
+        elsif (damage_type == "Cold" && target.endure_cold > 0)
+          return "Endure Cold Failed"
+        end
+      else
+        return false
+      end
+    end
+
     def self.roll_shield(target, caster, spell)
       damage_type = Global.read_config("spells", spell, "damage_type")
       effect = Global.read_config("spells", spell, "effect")

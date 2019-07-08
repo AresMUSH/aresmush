@@ -22,10 +22,8 @@ module AresMUSH
         SpellStunAction
       when "spelltarget1"
         SpellTargetAction
-      when "potion1"
+      when "potion"
         PotionAction
-      when "potiontarget1"
-        PotionTargetAction
       when "rally"
         RallyAction
       when "reload"
@@ -199,13 +197,13 @@ module AresMUSH
           FS3Combat.emit_to_combat combatant.combat, t('fs3combat.is_killed', :name => combatant.name, :damaged_by => damaged_by), nil, true
         end
 
-        if (!combatant.is_npc? && Custom.knows_spell?(combatant.associated_model, "Phoenix's Healing Flames"))
+        if (!combatant.is_npc? && Magic.knows_spell?(combatant.associated_model, "Phoenix's Healing Flames"))
           combatant.update(is_ko: false)
           combatant.update(death_count: 0)
           combatant.log "Phoenix's Healing Flames: Setting #{combatant.name}'s KO to #{combatant.is_ko}."
           combatant.update(action_klass: "AresMUSH::FS3Combat::SpellAction")
           combatant.update(action_args: "#{combatant.name}/Phoenix's Healing Flames")
-          Custom.delete_all_untreated_damage(combatant.associated_model)
+          Magic.delete_all_untreated_damage(combatant.associated_model)
         end
       end
     end
@@ -386,27 +384,6 @@ module AresMUSH
       result
     end
 
-    def self.stopped_by_shield?(spell, target, combatant)
-      damage_type = Global.read_config("spells", spell, "damage_type")
-      roll_shield = Custom.roll_shield(target, combatant, spell)
-      if roll_shield == "shield"
-        if (damage_type == "Fire" && target.endure_fire > 0)
-          return "Endure Fire Held"
-        elsif (damage_type == "Cold" && target.endure_cold > 0)
-          return "Endure Cold Held"
-        end
-
-      elsif roll_shield == "failed"
-        if (damage_type == "Fire" && target.endure_fire > 0)
-          return "Endure Fire Failed"
-        elsif (damage_type == "Cold" && target.endure_cold > 0)
-          return "Endure Cold Failed"
-        end
-      else
-        return false
-      end
-    end
-
     def self.hit_mount?(attacker, defender, attacker_net_successes, mount_hit)
       return false if !defender.mount_type
 
@@ -465,8 +442,8 @@ module AresMUSH
       attacker_net_successes = attack_roll - defense_roll
       stopped_by_cover = target.stance == "Cover" ? FS3Combat.stopped_by_cover?(attacker_net_successes, combatant) : false
       hit = false
-      if (target.mind_shield > 0 || target.endure_fire > 0 || target.endure_cold > 0 )
-        stopped_by_shield = FS3Combat.stopped_by_shield?(combatant.weapon, target, combatant)
+      if ((target.mind_shield > 0 || target.endure_fire > 0 || target.endure_cold > 0 ) && Magic.is_magic_weapon(weapon))
+        stopped_by_shield = Magic.stopped_by_shield?(combatant.weapon, target, combatant)
       end
       weapon_type = FS3Combat.weapon_stat(combatant.weapon, "weapon_type")
       hit_mount = FS3Combat.hit_mount?(combatant, target, attacker_net_successes, mount_hit)

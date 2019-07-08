@@ -20,6 +20,21 @@ module AresMUSH
       end
     end
 
+    def self.set_magic_item_weapon_specials(combatant, specials)
+      if !combatant.npc
+        item_specials = Magic.item_weapon_specials(combatant.associated_model)
+      else
+        item_specials = nil
+      end
+
+      if !combatant.npc && combatant.associated_model.magic_item_equipped && specials && item_specials
+        specials.concat [item_specials]
+      elsif !combatant.npc && combatant.associated_model.magic_item_equipped && item_specials
+        specials = [item_specials]
+      end
+      return specials
+    end
+
     def self.item_armor_specials(char)
       item_name = char.magic_item_equipped
       if item_name == "None"
@@ -29,6 +44,21 @@ module AresMUSH
         item.armor_specials
       end
     end
+
+    def self.set_magic_item_armor_specials(combatant, specials)
+      if !combatant.npc
+        item_specials = Magic.item_armor_specials(combatant.associated_model)
+      end
+      if !combatant.npc && specials && combatant.associated_model.magic_item_equipped && item_specials
+        specials.concat [item_specials]
+      elsif !combatant.npc && combatant.associated_model.magic_item_equipped && item_specials
+        specials = [item_specials]
+      else
+        specials = nil
+      end
+      return specials
+    end
+
 
     def self.item_spell(char)
       item_name = char.magic_item_equipped
