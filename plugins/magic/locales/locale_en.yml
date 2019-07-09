@@ -50,6 +50,7 @@ en:
         # ----------------------------
       # cant_force_cast: "You can't force someone to cast a spell outside of combat."
       # already_cast: "%xr You have already cast a spell or used a potion this turn. Wait until a new turn starts to take an action.%xn"
+      use_combat_spell: "Use combat/spell when you are in combat."
       spell_ko: "You cannot cast a spell while Knocked Out."
       casts_spell: "%{name} casts %xB%{spell}%xn%{mod} and %{succeeds}."
       casts_spell_on_target: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{succeeds}."

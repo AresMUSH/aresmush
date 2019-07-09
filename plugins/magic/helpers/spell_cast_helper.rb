@@ -61,7 +61,7 @@ module AresMUSH
         names = []
         targets.each do |target|
           if ((effect == "Psionic" || damage_type == "Fire" || damage_type == "Cold") && !is_potion)
-            message = Magic.check_spell_vs_shields(target, caster, spell, mod, is)
+            message = Magic.check_spell_vs_shields(target, caster, spell, mod)
             if message
               return message
             else
@@ -161,7 +161,7 @@ module AresMUSH
       shield_strength = caster.roll_ability(school)
       Global.logger.info "#{spell} Strength on #{target.name} set to #{shield_strength[:successes]}."
       if spell == "Mind Shield"
-        target.update(mind_shield: shield_strength[:successes])
+        # target.update(mind_shield: shield_strength[:successes])
         type = "psionic"
       elsif spell == "Endure Fire"
         target.update(endure_fire: shield_strength[:successes])

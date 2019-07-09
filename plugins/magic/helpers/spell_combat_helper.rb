@@ -24,7 +24,27 @@ module AresMUSH
 
       successes = combatant.roll_ability(school, mod)
       return successes
-
     end
+
+    def self.cast_mind_shield(combatant, target, spell, rounds)
+      shield_strength = combatant.roll_ability("Spirit")
+      target.update(mind_shield: shield_strength)
+      target.update(mind_shield_counter: rounds)
+
+      combatant.log "Setting #{combatant.name}'s Mind Shield to #{shield_strength}"
+      message = [t('magic.cast_shield', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target =>  target.name, :type => "psionic")]
+      return message
+    end
+
+    def self.cast_endure_fire(combatant, target, spell, rounds)
+      shield_strength = combatant.roll_ability("Fire")
+      target.update(target: shield_strength)
+      target.update(endure_fire_counter: rounds)
+      combatant.log "Setting #{target.name}'s Endure Fire to #{shield_strength}"
+      message = [t('magic.cast_shield', :name => combatant.name, :spell => spell, :mod => "", :succeeds => succeeds, :target =>  target.name, :type => "fire")]
+      return message
+    end
+
+
   end
 end

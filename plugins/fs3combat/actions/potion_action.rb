@@ -32,11 +32,7 @@ module AresMUSH
       end
 
       def print_action_short
-        if self.has_target
-          t('magic.potion_action_target_msg_short', :target => print_target_names)
-        else
-          t('magic.potion_action_msg_short')
-        end
+        t('magic.potion_action_target_msg_short', :target => print_target_names)  
       end
 
       def resolve

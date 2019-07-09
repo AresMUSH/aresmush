@@ -16,7 +16,7 @@ module AresMUSH
         FullautoAction
       when "pass"
         PassAction
-      when "spell1"
+      when "spell"
         SpellAction
       when "stun"
         SpellStunAction

@@ -1,17 +1,19 @@
 module AresMUSH
   module FS3Combat
     class SpellAction < CombatAction
-      attr_accessor  :spell, :target, :names, :target_optional
+      attr_accessor  :spell, :target, :names, :target_optional, :has_target
 
       def prepare
         if (self.action_args =~ /\//)
-          self.names = self.action_args.before("/")
-          self.spell = self.action_args.after("/")
+          self.spell = self.action_args.before("/")
+          self.names = self.action_args.after("/")
+          self.has_target = true
         else
           self.names = self.name
           self.spell = self.action_args
-
         end
+        self.spell = self.spell.titlecase
+
         self.target_optional = Global.read_config("spells", self.spell, "target_optional")
 
         error = self.parse_targets(self.names)
@@ -21,22 +23,15 @@ module AresMUSH
         if self.target_optional
           return t('magic.too_many_targets', :spell => self.spell, :num => num) if (self.targets.count > num)
         end
-
-        # targets.each do |target|
-        #   wound = FS3Combat.worst_treatable_wound(target.associated_model)
-        #   if (!wound)
-        #     return t('fs3combat.target_has_no_treatable_wounds', :name => target.name)
-        #   else
-        #     # return nil
-        #   end
-        # end
-
+        spell_list = Global.read_config("spells")
+        return t('magic.not_spell') if !spell_list.include?(self.spell)
+        return t('magic.dont_know_spell') if (Magic.knows_spell?(combatant.associated_model, self.spell) == false && Magic.item_spell(combatant.associated_model) != spell)
 
       end
 
       def print_action
 
-        if self.target_optional
+        if self.has_target
           msg = t('magic.spell_target_action_msg_long', :name => self.name, :spell => self.spell, :targets => print_target_names)
           msg
         else
@@ -78,30 +73,18 @@ module AresMUSH
             if (effect == "Psionic" && target.mind_shield > 0 && Magic.roll_shield(target, combatant, self.spell) == "shield")
                messages.concat [t('magic.shield_held', :name => self.name, :spell => self.spell, :shield => "Mind Shield", :target => print_target_names)]
 
-            # elsif (damage_type == "Fire" && target.endure_fire > 0 && Magic.roll_shield(target, combatant, self.spell) == "shield")
-            #   messages.concat [t('magic.shield_held', :name => self.name, :spell => self.spell, :shield =>  "Endure Fire", :target => print_target_names)]
-            #
-            # elsif (damage_type == "Cold" && target.endure_cold > 0 && Magic.roll_shield(target, combatant, self.spell) == "shield")
-            #   messages.concat [t('magic.shield_held', :name => self.name, :spell => self.spell, :shield => "Endure Cold", :target => print_target_names)]
 
             else
               #Psionic Protection
               if self.spell == "Mind Shield"
-                shield_strength = combatant.roll_ability("Spirit")
-                target.update(mind_shield: shield_strength)
-                target.update(mind_shield_counter: rounds)
-
-                combatant.log "Setting #{combatant.name}'s Mind Shield to #{shield_strength}"
-                messages.concat [t('magic.cast_shield', :name => self.name, :spell => self.spell, :mod => "", :succeeds => succeeds, :target =>  print_target_names, :type => "psionic")]
+                message = Magic.cast_mind_shield(combatant, target, self.spell, rounds)
+                messages.concat message
               end
 
             #Fire Protection
              if self.spell == "Endure Fire"
-              shield_strength = combatant.roll_ability("Fire")
-              target.update(target: shield_strength)
-              target.update(endure_fire_counter: rounds)
-              combatant.log "Setting #{target.name}'s Endure Fire to #{shield_strength}"
-              messages.concat [t('magic.cast_shield', :name => self.name, :spell => self.spell, :mod => "", :succeeds => succeeds, :target =>  print_target_names, :type => "fire")]
+               message = Magic.cast_endure_fire(combatant, target, self.spell, rounds)
+               messages.concat message
              end
 
             #Cold Protection
