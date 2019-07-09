@@ -12,14 +12,6 @@ module AresMUSH
     end
 
     def self.get_cmd_handler(client, cmd, enactor)
-      # #COMBAT
-      # case cmd.root
-      # when "combat"
-      #   case cmd.switch
-      #   when "potion"
-      #     return CombatPotionCmd
-      #   end
-      # end
 
       #ITEMS
       case cmd.root
@@ -47,11 +39,11 @@ module AresMUSH
       when "potion"
         case cmd.switch
         when "create"
-          return CreatePotionCmd
+          return PotionCreateCmd
         when "update"
-          return UpdatePotionCmd
+          return PotionUpdateCmd
         when "give"
-          return GivePotionCmd
+          return PotionGiveCmd
         when "add"
           return PotionAddCmd
         when "use"
@@ -65,16 +57,42 @@ module AresMUSH
       case cmd.root
       when "spell"
         case cmd.switch
+        when "request"
+          return SpellRequestCmd
+        when "mod"
+          return SpellModCmd
+        when "modis"
+          return SpellModIsCmd
         when "cast"
-          if cmd.args.include?("=")
-            return SpellCastWithTargetCmd
-          else
-            return SpellCastCmd
-          end
+          return SpellCastCmd
+        when "learn"
+          return SpellLearnCmd
+        when "luck"
+          return SpellLuckCmd
+        when "discard"
+          return SpellDiscardCmd
+        when "add"
+          return SpellAddCmd
+        when "remove"
+          return SpellRemoveCmd
+        when "hascast"
+          return SpellHascastCmd
         end
+        # return SpellDetailCmd
       end
 
+      case cmd.root
+      when "spells"
+        return SpellsCmd
+      end
 
+      case cmd.root
+      when "shield"
+        case cmd.switch
+        when "off"
+          return ShieldOffCmd
+        end
+      end
 
       nil
     end

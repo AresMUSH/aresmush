@@ -1,5 +1,5 @@
 module AresMUSH
-  module Custom
+  module Magic
     class SpellModIsCmd
     #spell/modis <name>
       include CommandHandler
@@ -10,7 +10,7 @@ module AresMUSH
       end
 
       def check_permission
-        return t('fs3combat.only_organizer_can_do') if combat.organizer != enactor          
+        return t('fs3combat.only_organizer_can_do') if combat.organizer != enactor
       end
 
       def handle

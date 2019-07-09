@@ -1,6 +1,6 @@
 module AresMUSH
   module Magic
-    class GivePotionCmd
+    class PotionGiveCmd
       include CommandHandler
 # potion/give <name>=<number> - Give a potion to someone.
       attr_accessor :char, :potion, :target, :potion_name, :other_client

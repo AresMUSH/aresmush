@@ -17,35 +17,6 @@ module AresMUSH
          else
            self.target = self.caster
          end
-
-        #   if (cmd.args =~ /\//)
-        #   #Forcing NPC or PC to use potion
-        #   args = cmd.parse_args(/(?<arg1>[^\/]+)\/(?<arg2>[^\+]+)/)
-        #   combat = enactor.combat
-        #   caster_name = titlecase_arg(args.arg1)
-        #   #Returns char or NPC
-        #   self.caster = FS3Combat.find_named_thing(caster_name, enactor)
-        #   #Returns combatant
-        #   if enactor.combat
-        #     self.caster_combat = combat.find_combatant(caster_name)
-        #     self.potion_name = titlecase_arg(args.arg2)
-        #   end
-        # else
-        #    args = cmd.parse_args(/(?<arg1>[^\+]+)\+?(?<arg2>.+)?/)
-        #    #Returns char or NPC
-        #    caster_name = enactor.name
-        #    self.caster = enactor
-        #    self.potion_name = titlecase_arg(args.arg1)
-        #
-        #    #Returns combatant
-        #    if enactor.combat
-        #      self.caster_combat = enactor.combatant
-        #    end
-        #   end
-        #   self.potion = Magic.find_potion_has(caster, self.potion_name)
-        #   Global.logger.debug "Potion: #{potion} #{potion.name}"
-        #   arg_array = [caster_name, potion_name]
-        #   self.args = arg_array.join("/")
       end
 
       def check_errors

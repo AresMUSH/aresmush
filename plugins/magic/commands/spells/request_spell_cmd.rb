@@ -1,5 +1,5 @@
 module AresMUSH
-  module Custom
+  module Magic
     class SpellRequestCmd
     # spell/request <spell name>=<text>
       include CommandHandler
@@ -14,7 +14,7 @@ module AresMUSH
 
       def handle
         subj = "#{enactor.name} reqs #{spellname}"
-        client.emit_success t('custom.spell_requested')
+        client.emit_success t('magic.spell_requested')
         Jobs.create_job("SPELL", subj, spelldesc, enactor)
       end
 

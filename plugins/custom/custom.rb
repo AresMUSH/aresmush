@@ -33,13 +33,13 @@ module AresMUSH
         return LastRPCmd
       end
 
-      case cmd.root
-      when "shield"
-        case cmd.switch
-        when "off"
-          return ShieldOffCmd
-        end
-      end
+      # case cmd.root
+      # when "shield"
+      #   case cmd.switch
+      #   when "off"
+      #     return ShieldOffCmd
+      #   end
+      # end
 
       #Comps
       case cmd.root
@@ -146,12 +146,12 @@ module AresMUSH
       #     return SpellModCmd
       #   when "modis"
       #     return SpellModIsCmd
-      #   # when "cast"
-      #   #   if cmd.args.include?("=")
-      #   #     return SpellCastWithTargetCmd
-      #   #   else
-      #   #     return SpellCastCmd
-      #   #   end
+      #   when "cast"
+      #     if cmd.args.include?("=")
+      #       return SpellCastWithTargetCmd
+      #     else
+      #       return SpellCastCmd
+      #     end
       #   when "learn"
       #     return SpellLearnCmd
       #   when "luck"
@@ -168,10 +168,10 @@ module AresMUSH
       #   return SpellDetailCmd
       # end
 
-      case cmd.root
-      when "spells"
-        return SpellsCmd
-      end
+      # case cmd.root
+      # when "spells"
+      #   return SpellsCmd
+      # end
       #Schools
       case cmd.root
       when "school"

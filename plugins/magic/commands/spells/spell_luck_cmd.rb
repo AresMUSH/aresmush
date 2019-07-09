@@ -1,5 +1,5 @@
 module AresMUSH
-  module Custom
+  module Magic
     class SpellLuckCmd
       #spell/luck <spell>
       include CommandHandler
@@ -13,33 +13,33 @@ module AresMUSH
 
       def check_errors
         return t('fs3skills.not_enough_points') if enactor.luck < 1
-        return t('custom.use_school_version') if (self.spell == "Potions" || self.spell == "Familiar")
-        return t('custom.not_spell') if !Custom.is_spell?(self.spell)
-        return t('custom.need_higher_level', :spell => self.spell) if Custom.higher_level_spell?(enactor, self.spell) == false
-        spell_learned = Custom.find_spell_learned(enactor, self.spell)
-        return t('custom.only_1_xp_needed') if spell_learned.xp_needed.to_i == 1
+        return t('magic.use_school_version') if (self.spell == "Potions" || self.spell == "Familiar")
+        return t('magic.not_spell') if !Magic.is_spell?(self.spell)
+        return t('magic.need_higher_level', :spell => self.spell) if Magic.higher_level_spell?(enactor, self.spell) == false
+        spell_learned = Magic.find_spell_learned(enactor, self.spell)
+        return t('magic.only_1_xp_needed') if spell_learned.xp_needed.to_i == 1
         if enactor.groups.values.include? self.school
           return nil
         else
-          return t('custom.wrong_school')
+          return t('magic.wrong_school')
         end
         return nil
       end
 
       def handle
-        spell_learned = Custom.find_spell_learned(enactor, self.spell)
+        spell_learned = Magic.find_spell_learned(enactor, self.spell)
         if spell_learned
           if spell_learned.learning_complete
-            client.emit_failure t('custom.already_know_spell', :spell => self.spell)
+            client.emit_failure t('magic.already_know_spell', :spell => self.spell)
           else
-            message = t('custom.reduce_spell_learn_time', :spell => self.spell)
+            message = t('magic.reduce_spell_learn_time', :spell => self.spell)
 
             enactor.spend_luck(2)
             Achievements.award_achievement(enactor, "fs3_luck_spent", 'fs3', "Spent a luck point.")
 
-            job_message = t('custom.reduce_spell_learn_time_job', :name => enactor.name, :spell => self.spell)
+            job_message = t('magic.reduce_spell_learn_time_job', :name => enactor.name, :spell => self.spell)
             category = Global.read_config("jobs", "luck_category")
-            Jobs.create_job(category, t('custom.spent_luck_title', :name => enactor.name, :reason => "reducing the learn time of #{self.spell}."), job_message, enactor)
+            Jobs.create_job(category, t('magic.spent_luck_title', :name => enactor.name, :reason => "reducing the learn time of #{self.spell}."), job_message, enactor)
             Global.logger.info "#{enactor_name} spent luck to reduce the learn time of #{self.spell}."
 
             new_learn_time = spell_learned.last_learned - 604800
@@ -47,7 +47,7 @@ module AresMUSH
 
           end
         else
-          client.emit_failure t('custom.not_learning_spell', :spell => self.spell)
+          client.emit_failure t('magic.not_learning_spell', :spell => self.spell)
         end
 
       end

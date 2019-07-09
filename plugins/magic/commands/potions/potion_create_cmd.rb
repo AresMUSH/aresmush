@@ -1,6 +1,6 @@
 module AresMUSH
   module Magic
-    class CreatePotionCmd
+    class PotionCreateCmd
       include CommandHandler
 # potion/create <name> - Create a potion.
 

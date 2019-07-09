@@ -1,6 +1,6 @@
 module AresMUSH
   module Magic
-    class UpdatePotionCmd
+    class PotionUpdateCmd
       include CommandHandler
       # potion/update <name>=<number>/<hours> - Updates a potion's hours to creation
 

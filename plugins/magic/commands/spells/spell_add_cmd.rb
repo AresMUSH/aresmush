@@ -1,5 +1,5 @@
 module AresMUSH
-  module Custom
+  module Magic
     class SpellAddCmd
       #spell/add <name>=<spell>
       include CommandHandler
@@ -18,13 +18,13 @@ module AresMUSH
       end
 
       def check_errors
-        return t('custom.invalid_name') if !self.target
-        return t('custom.not_spell') if !Custom.is_spell?(self.spell)
-        return t('custom.already_know_spell', :spell => self.spell) if Custom.find_spell_learned(self.target, self.spell)
+        return t('magic.invalid_name') if !self.target
+        return t('magic.not_spell') if !Magic.is_spell?(self.spell)
+        return t('magic.already_know_spell', :spell => self.spell) if Magic.find_spell_learned(self.target, self.spell)
         if self.target.groups.values.include? self.school
           return nil
         else
-          client.emit t('custom.wrong_school_check', :name => self.target.name)
+          client.emit t('magic.wrong_school_check', :name => self.target.name)
         end
 
         return nil
@@ -33,7 +33,7 @@ module AresMUSH
 
       def handle
         SpellsLearned.create(name: self.spell, last_learned: Time.now, level: self.spell_level, school: self.school, character: target, xp_needed: 0, learning_complete: true)
-        client.emit_success t('custom.added_spell', :spell => self.spell, :name => self.target.name)
+        client.emit_success t('magic.added_spell', :spell => self.spell, :name => self.target.name)
       end
 
     end

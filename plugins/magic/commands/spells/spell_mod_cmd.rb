@@ -1,5 +1,5 @@
 module AresMUSH
-  module Custom
+  module Magic
     class SpellModCmd
     #spell/mod <name>=<mod>
       include CommandHandler
@@ -18,7 +18,7 @@ module AresMUSH
       end
 
       def check_errors
-        return t('custom.invalid_name') if !target_combat
+        return t('magic.invalid_name') if !target_combat
       end
 
       def handle

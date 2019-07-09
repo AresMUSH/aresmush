@@ -1,5 +1,5 @@
 module AresMUSH
-  module Custom
+  module Magic
     class SpellsCmd
       include CommandHandler
       attr_accessor :target_name
