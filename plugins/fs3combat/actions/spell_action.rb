@@ -45,35 +45,53 @@ module AresMUSH
       end
 
       def resolve
+        armor = Global.read_config("spells", self.spell, "armor")
+        armor_specials_str = Global.read_config("spells", self.spell, "armor_specials")
+        attack_mod = Global.read_config("spells", self.spell, "attack_mod")
+        damage_inflicted = Global.read_config("spells", self.spell, "damage_inflicted")
+        damage_desc = Global.read_config("spells", spell, "damage_desc")
+        damage_type = Global.read_config("spells", self.spell, "damage_type")
+        defense_mod = Global.read_config("spells", self.spell, "defense_mod")
+        effect = Global.read_config("spells", self.spell, "effect")
+        fs3_attack = Global.read_config("spells", self.spell, "fs3_attack")
+        heal_points = Global.read_config("spells", self.spell, "heal_points")
+        is_revive = Global.read_config("spells", self.spell, "is_revive")
+        is_res = Global.read_config("spells", self.spell, "is_res")
+        is_stun = Global.read_config("spells", self.spell, "is_stun")
+        lethal_mod = Global.read_config("spells", self.spell, "lethal_mod")
+        roll = Global.read_config("spells", self.spell, "roll")
+        rounds = Global.read_config("spells", self.spell, "rounds")
+        spell_mod = Global.read_config("spells", self.spell, "spell_mod")
+        stance = Global.read_config("spells", self.spell, "stance")
+        target_optional = Global.read_config("spells", self.spell, "target_optional")
+        weapon = Global.read_config("spells", self.spell, "weapon")
+        weapon_specials_str = Global.read_config("spells", self.spell, "weapon_specials")
+        weapon_type = FS3Combat.weapon_stat(self.combatant.weapon, "weapon_type")
+
+
         succeeds = Magic.roll_combat_spell_success(self.combatant, self.spell)
         messages = []
+
+        targets.each do |target|
+          #Stun
+          if is_stun
+            message = Magic.cast_stun(self.combatant, target, self.spell, rounds)
+            messages.concat message
+          end
+
+          #Explosions
+          if weapon_type == "Explosive"
+            message = Magic.cast_explosion(self.combatant, target, self.spell, self.margin)
+            messages.concat message
+          end
+        end
+
         if succeeds == "%xgSUCCEEDS%xn"
-          weapon = Global.read_config("spells", self.spell, "weapon")
-          weapon_specials_str = Global.read_config("spells", self.spell, "weapon_specials")
-          armor = Global.read_config("spells", self.spell, "armor")
-          armor_specials_str = Global.read_config("spells", self.spell, "armor_specials")
-          heal_points = Global.read_config("spells", self.spell, "heal_points")
-          is_revive = Global.read_config("spells", self.spell, "is_revive")
-          is_res = Global.read_config("spells", self.spell, "is_res")
-          damage_inflicted = Global.read_config("spells", self.spell, "damage_inflicted")
-          damage_desc = Global.read_config("spells", spell, "damage_desc")
-          lethal_mod = Global.read_config("spells", self.spell, "lethal_mod")
-          attack_mod = Global.read_config("spells", self.spell, "attack_mod")
-          defense_mod = Global.read_config("spells", self.spell, "defense_mod")
-          spell_mod = Global.read_config("spells", self.spell, "spell_mod")
-          stance = Global.read_config("spells", self.spell, "stance")
-          target_optional = Global.read_config("spells", self.spell, "target_optional")
-          roll = Global.read_config("spells", self.spell, "roll")
-          effect = Global.read_config("spells", self.spell, "effect")
-          damage_type = Global.read_config("spells", self.spell, "damage_type")
-          rounds = Global.read_config("spells", self.spell, "rounds")
 
           targets.each do |target|
-            #Attacks against shields
+            #Attacks against Mind Shield (other shields handled in damage rolls)
             if (effect == "Psionic" && target.mind_shield > 0 && Magic.roll_shield(target, combatant, self.spell) == "shield")
                messages.concat [t('magic.shield_held', :name => self.name, :spell => self.spell, :mod => "", :shield => "Mind Shield", :target => print_target_names)]
-
-
             else
               #Psionic Protection
               if self.spell == "Mind Shield"

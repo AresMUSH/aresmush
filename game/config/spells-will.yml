@@ -108,6 +108,7 @@ spells:
     casting_time: 1 round
     desc: Subdue an enemy with telekinetic strength, disabling them for one round.
     effect: Stun
+    fs3_attack: true
     is_stun: true
     rounds: 1
     level: 3

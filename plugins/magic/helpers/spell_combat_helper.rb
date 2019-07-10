@@ -104,28 +104,28 @@ module AresMUSH
     def self.cast_lethal_mod(combatant, target, spell, rounds, lethal_mod)
       target.update(lethal_mod_counter: rounds)
       target.update(damage_lethality_mod: lethal_mod)
-      message = [t('magic.cast_mod', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target =>  target.name, :mod => lethal_mod, :type => "lethality")]
+      message = [t('magic.cast_mod', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target =>  target.name, :mod_type => lethal_mod, :type => "lethality")]
       return message
     end
 
     def self.cast_attack_mod(combatant, target, spell, rounds, attack_mod)
       target.update(attack_mod_counter: rounds)
       target.update(attack_mod: attack_mod)
-      message = [t('magic.cast_mod', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target =>  target.name, :mod => attack_mod, :type => "attack")]
+      message = [t('magic.cast_mod', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target =>  target.name, :mod_type => attack_mod, :type => "attack")]
       return message
     end
 
     def self.cast_defense_mod(combatant, target, spell, rounds, defense_mod)
       target.update(defense_mod_counter: rounds)
       target.update(defense_mod: defense_mod)
-      message = [t('magic.cast_mod', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target =>  target.name, :mod => defense_mod, :type => "defense")]
+      message = [t('magic.cast_mod', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target =>  target.name, :mod_type => defense_mod, :type => "defense")]
       return message
     end
 
     def self.cast_spell_mod(combatant, target, spell, rounds, spell_mod)
       target.update(spell_mod_counter: rounds)
       target.update(spell_mod: spell_mod)
-      message = [t('magic.cast_mod', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target =>  target.name, :mod => spell_mod, :type => "spell")]
+      message = [t('magic.cast_mod', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target =>  target.name, :mod_type => spell_mod, :type => "spell")]
       return message
     end
 
@@ -146,6 +146,46 @@ module AresMUSH
           message = [t('magic.spell_target_resolution_msg', :name => combatant.name, :spell => spell, :mod => "", :target => target.name, :succeeds => "%xgSUCCEEDS%xn")]
         end
       end
+    end
+
+    def self.cast_stun(combatant, target, spell, rounds)
+      Global.logger.debug "COMBATANT #{combatant}"
+      Global.logger.debug "TARGET #{target}"
+      margin = FS3Combat.determine_attack_margin(combatant, target)
+      Global.logger.debug "MARGIN #{margin}"
+      if (margin[:hit])
+        target.update(subdued_by: combatant)
+        target.update(magic_stun: true)
+        target.update(magic_stun_counter: rounds.to_i)
+        target.update(magic_stun_spell: spell)
+        target.update(action_klass: nil)
+        target.update(action_args: nil)
+        message = [t('magic.cast_stun', :name => combatant.name, :spell => spell, :mod => "", :target => target.name, :succeeds => "%xgSUCCEEDS%xn", :rounds => rounds)]
+      else
+        message = [t('magic.casts_spell_on_target', :name => self.name, :target => target.name, :succeeds => "%xrFAILS%xn")]
+      end
+      return message
+    end
+
+    def self.cast_explosion(combatant, target, spell)
+      messages = []
+      margin = FS3Combat.determine_attack_margin(combatant, target)
+      if (margin[:hit])
+        attacker_net_successes = margin[:attacker_net_successes]
+        messages.concat FS3Combat.resolve_attack(combatant, combatant.name, target, combatant.weapon, attacker_net_successes)
+        max_shrapnel = [ 5, attacker_net_successes + 2 ].min
+      else
+        messages << margin[:message]
+        max_shrapnel = 2
+      end
+
+      if (FS3Combat.weapon_stat(combatant.weapon, "has_shrapnel"))
+        shrapnel = rand(max_shrapnel)
+        shrapnel.times.each do |s|
+          messages.concat FS3Combat.resolve_attack(nil, combatant.name, target, "Shrapnel")
+        end
+      end
+      return messages
     end
 
 
