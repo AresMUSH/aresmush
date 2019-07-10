@@ -3,6 +3,14 @@ module AresMUSH
 
     def self.knows_spell?(char, spell_name)
       spell_name = spell_name.titlecase
+      Global.logger.debug "Name: #{char.name}"
+
+      if char.combat && char.npc
+        return true
+      elsif char.combat && !char.npc
+        char = char.associated_model
+      end
+
       if char.spells_learned.select { |a| (a.name == spell_name && a.learning_complete == true) }.first
         return true
       else

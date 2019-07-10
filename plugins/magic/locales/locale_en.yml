@@ -77,7 +77,7 @@ en:
       not_ko: "%{target} is not knocked out."
       cast_revive: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{succeeds}, reviving %{target} so they can rejoin the fight."
       been_revived: "%xgYou have been revived by %{name}. You will be able to take an action next turn.%xn"
-      cast_damage: "%{name} casts %xB%{spell}%xn% on %{target} and %{succeeds}, giving %{target} a wound."
+      cast_damage: "%{name} casts %xB%{spell}%xn on %{target} and %{succeeds}, giving %{target} a wound."
       cast_res: "%{name} casts %xB%{spell}%xn on %{target} and %{succeeds}. They have been snatched from death's grip."
       been_resed: "%xgYou have been resurrected by %{name}. You are both incapacitated and suffering from spell fatigue, and cannot act without further healing.%xn"
       raised_dead: "%xB%{name} has raised %{target} from the dead.%xn"
@@ -131,10 +131,10 @@ en:
       # ----------------------------
       # FS3 COMBAT SPELL
       # ----------------------------
-      spell_target_action_msg_short: "Spell %{targets}"
-      spell_target_action_msg_long: "%{name} will cast %xB%{spell}%xn on %{targets} this turn."
+      spell_target_action_msg_short: "Spell %{target}"
+      spell_target_action_msg_long: "%{name} will cast %xB%{spell}%xn on %{target} this turn."
       # spell_stun_action_msg_long: "%{name} will cast %xB%{spell}%xn on %{targets} this turn."
-      spell_target_resolution_msg: "%{name} casts %xB%{spell}%xn on %{targets} and %{succeeds}."
+      spell_target_resolution_msg: "%{name} casts %xB%{spell}%xn on %{target} and %{succeeds}."
       spell_action_msg_short: "Spell"
       spell_action_msg_long: "%{name} will cast %xB%{spell}%xn this turn."
       spell_resolution_msg: "%{name} casts %xB%{spell}%xn and %{succeeds}."

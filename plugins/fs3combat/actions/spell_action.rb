@@ -25,23 +25,23 @@ module AresMUSH
         end
         spell_list = Global.read_config("spells")
         return t('magic.not_spell') if !spell_list.include?(self.spell)
-        return t('magic.dont_know_spell') if (Magic.knows_spell?(combatant.associated_model, self.spell) == false && Magic.item_spell(combatant.associated_model) != spell)
+        return t('magic.dont_know_spell') if (Magic.knows_spell?(combatant, self.spell) == false && Magic.item_spell(combatant.associated_model) != spell)
 
       end
 
       def print_action
 
         if self.has_target
-          msg = t('magic.spell_target_action_msg_long', :name => self.name, :spell => self.spell, :targets => print_target_names)
+          msg = t('magic.spell_target_action_msg_long', :name => self.name, :spell => self.spell, :target => print_target_names)
           msg
         else
-          msg = t('magic.spell_action_msg_long', :name => self.name, :spell => self.spell, :targets => print_target_names)
+          msg = t('magic.spell_action_msg_long', :name => self.name, :spell => self.spell, :target => print_target_names)
           msg
         end
       end
 
       def print_action_short
-        t('magic.spell_target_action_msg_short', :targets => print_target_names)
+        t('magic.spell_target_action_msg_short', :target => print_target_names)
       end
 
       def resolve
@@ -71,7 +71,7 @@ module AresMUSH
           targets.each do |target|
             #Attacks against shields
             if (effect == "Psionic" && target.mind_shield > 0 && Magic.roll_shield(target, combatant, self.spell) == "shield")
-               messages.concat [t('magic.shield_held', :name => self.name, :spell => self.spell, :shield => "Mind Shield", :target => print_target_names)]
+               messages.concat [t('magic.shield_held', :name => self.name, :spell => self.spell, :mod => "", :shield => "Mind Shield", :target => print_target_names)]
 
 
             else
@@ -81,37 +81,22 @@ module AresMUSH
                 messages.concat message
               end
 
-            #Fire Protection
-             if self.spell == "Endure Fire"
-               message = Magic.cast_endure_fire(combatant, target, self.spell, rounds)
-               messages.concat message
-             end
+              #Fire Protection
+               if self.spell == "Endure Fire"
+                 message = Magic.cast_endure_fire(combatant, target, self.spell, rounds)
+                 messages.concat message
+               end
 
-            #Cold Protection
-            if self.spell == "Endure Cold"
-              shield_strength = combatant.roll_ability("Water")
-              target.update(endure_cold: shield_strength)
-              target.update(endure_cold_counter: rounds)
-
-              combatant.log "Setting #{target.name}'s Endure Cold to #{shield_strength}"
-              messages.concat [t('magic.cast_shield', :name => self.name, :spell => self.spell, :mod => "", :succeeds => succeeds, :target =>  print_target_names, :type => "cold")]
-            end
+              #Cold Protection
+              if self.spell == "Endure Cold"
+                message = Magic.cast_endure_cold(combatant, target, self.spell, rounds)
+                messages.concat message
+              end
 
               #Healing
               if heal_points
-                wound = FS3Combat.worst_treatable_wound(target.associated_model)
-
-                if (wound)
-                  if target.death_count > 0
-                    messages.concat [t('magic.cast_ko_heal', :name => self.name, :spell => spell, :mod => "", :succeeds => succeeds, :target => target.name, :points => heal_points)]
-                  else
-                    messages.concat [t('magic.cast_heal', :name => self.name, :spell => spell, :mod => "", :succeeds => succeeds, :target => target.name, :points => heal_points)]
-                  end
-                  FS3Combat.heal(wound, heal_points)
-                else
-                   messages.concat [t('magic.cast_heal_no_effect', :name => self.name, :spell => spell, :mod => "", :succeeds => succeeds, :target => print_target_names)]
-                end
-                target.update(death_count: 0  )
+                message = Magic.cast_combat_heal(combatant, target, self.spell, rounds)
+                messages.concat message
               end
 
               #Equip Weapon
@@ -147,80 +132,61 @@ module AresMUSH
 
               #Equip Armor Specials
               if armor_specials_str
-                armor_specials = armor_specials_str ? armor_specials_str.split('+') : nil
-                FS3Combat.set_armor(combatant, target, target.armor, armor_specials)
-                messages.concat [t('magic.casts_spell', :name => self.name, :spell => self.spell, :mod => "", :succeeds => succeeds)]
+                message = Magic.cast_armor_specials(combatant, target, self.spell, rounds)
+                messages.concat message
               end
 
               #Reviving
               if is_revive
-                target.update(is_ko: false)
-                messages.concat [t('magic.cast_res', :name => self.name, :spell => self.spell, :mod => "", :succeeds => succeeds, :target => print_target_names)]
-                FS3Combat.emit_to_combatant target, t('magic.been_resed', :name => self.name)
+                message = Magic.cast_revive(combatant, target, self.spell)
+                messages.concat message
               end
 
               #Ressurrection
               if is_res
-                Magic.undead(target.associated_model)
-                messages.concat [t('magic.cast_res', :name => self.name, :spell => self.spell, :mod => "", :succeeds => succeeds, :target => print_target_names)]
-                FS3Combat.emit_to_combatant target, t('magic.been_resed', :name => self.name)
+                message = Magic.cast_resurrection(combatant, target, self.spell)
+                messages.concat message
               end
 
               #Inflict Damage
               if damage_inflicted
-                FS3Combat.inflict_damage(target.associated_model, damage_inflicted, damage_desc)
-                target.update(freshly_damaged: true)
-                messages.concat [t('magic.cast_damage', :name => self.name, :spell => self.spell, :mod => "", :succeeds => succeeds, :target => print_target_names, :damage_desc => spell.downcase)]
+                message = Magic.cast_inflict_damage(combatant, target, self.spell, damage_inflicted, damage_desc)
+                messages.concat message
               end
 
               #Apply Mods
               if lethal_mod
-                target.update(lethal_mod_counter: rounds)
-                target.update(damage_lethality_mod: lethal_mod)
-                messages.concat [t('magic.cast_mod', :name => self.name, :spell => self.spell, :mod => "", :succeeds => succeeds, :target =>  print_target_names, :mod => lethal_mod, :type => "lethality")]
+                message = Magic.cast_lethal_mod(combatant, target, spell, rounds, lethal_mod)
+                messages.concat message
               end
 
               if attack_mod
-                target.update(attack_mod_counter: rounds)
-                target.update(attack_mod: attack_mod)
-                messages.concat [t('magic.cast_mod', :name => self.name, :spell => self.spell, :mod => "THIS", :succeeds => succeeds, :target =>  print_target_names, :mod => attack_mod, :type => "attack")]
+                message = Magic.cast_attack_mod(combatant, target, spell, rounds, attack_mod)
+                messages.concat message
               end
 
               if defense_mod
-                target.update(defense_mod_counter: rounds)
-                target.update(defense_mod: defense_mod)
-                messages.concat [t('magic.cast_mod', :name => self.name, :spell => self.spell, :mod => "", :succeeds => succeeds, :target =>  print_target_names, :mod => defense_mod, :type => "defense")]
+                message = Magic.cast_defense_mod(combatant, target, spell, rounds, defense_mod)
+                messages.concat message
               end
 
               if spell_mod
-                target.update(spell_mod_counter: rounds)
-                target.update(spell_mod: spell_mod)
-                messages.concat [t('magic.cast_mod', :name => self.name, :spell => self.spell, :mod => "", :succeeds => succeeds, :target =>  print_target_names, :mod => spell_mod, :type => "spell")]
+                message = Magic.cast_spell_mod(combatant, target, spell, rounds, spell_mod)
+                messages.concat message
               end
 
               #Change Stance
               if stance
-                target.update(stance: stance)
-                target.update(stance_counter: rounds)
-                target.update(stance_spell: self.spell)
-                messages.concat [t('magic.cast_stance', :name => self.name, :target => print_target_names, :mod => "", :spell => self.spell, :succeeds => succeeds, :stance => stance, :rounds => rounds)]
+                message = Magic.cast_stance(combatant, target, spell, rounds, stance)
+                messages.concat message
               end
 
               #Roll
               if roll
-                # succeeds = Magic.roll_combat_spell_success(self.combatant, self.spell)
-
-                if target == combatant
-                  messages.concat [t('magic.spell_resolution_msg', :name => self.name, :spell => self.spell, :mod => "", :succeeds => succeeds)]
-                else
-                  if effect == "Psionic"
-                    messages.concat [t('magic.shield_failed', :name => self.name, :spell => "self.spell", :mod => "", :shield => "Mind Shield", :target => print_target_names, :succeeds => succeeds)]
-                  else
-                    messages.concat [t('magic.spell_target_resolution_msg', :name => self.name, :spell => self.spell, :mod => "", :target => print_target_names, :succeeds => succeeds)]
-                  end
-
-                end
+                message = Magic.cast_combat_roll(combatant, target, spell, effect)
+                messages.concat message
               end
+
             #End Protection Rolls
             end
           #End targets.each do  (if spell succeeds)
@@ -229,7 +195,7 @@ module AresMUSH
           messages.concat [t('magic.cast_phoenix_heal', :name => self.name, :spell => self.spell, :succeeds => "%xgSUCCEEDS%xn")]
         else
           #Spell fails
-          messages.concat [t('magic.spell_target_resolution_msg', :name => self.name, :spell => spell, :targets => print_target_names, :succeeds => succeeds)]
+          messages.concat [t('magic.spell_target_resolution_msg', :name => self.name, :spell => spell, :target => print_target_names, :succeeds => succeeds)]
         end
         level = Global.read_config("spells", self.spell, "level")
         if level == 8

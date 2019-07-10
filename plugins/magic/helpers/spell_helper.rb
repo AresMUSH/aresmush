@@ -90,19 +90,19 @@ module AresMUSH
       end
     end
 
-    def self.roll_combat_spell_success(caster_combat, spell)
-      if caster_combat.npc
+    def self.roll_combat_spell_success(caster_combatant, spell)
+      if caster_combatant.npc
         school = Global.read_config("spells", spell, "school")
         mod = 0
-      elsif Magic.knows_spell?(caster_combat.associated_model, spell)
+      elsif Magic.knows_spell?(caster_combatant, spell)
         school = Global.read_config("spells", spell, "school")
         mod = 0
       else
         school = "Magic"
-        mod = FS3Skills.ability_rating(caster_combat.associated_model, "Magic") * 2
+        mod = FS3Skills.ability_rating(caster_combatant.associated_model, "Magic") * 2
       end
 
-      die_result = Magic.roll_combat_spell(caster_combat, caster_combat, school, mod)
+      die_result = Magic.roll_combat_spell(caster_combatant, caster_combatant, school, mod)
       succeeds = Magic.combat_spell_success(spell, die_result)
     end
 

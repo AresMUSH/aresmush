@@ -29,25 +29,25 @@ module AresMUSH
       damage_type = Global.read_config("spells", spell, "damage_type")
 
       if (effect == "Psionic" && target.mind_shield > 0)
-        held = Custom.roll_shield(target, caster, spell) == "shield"
+        held = Magic.roll_shield(target, caster, spell) == "shield"
         if held
-          message = t('custom.shield_held', :name => caster.name, :spell => spell, :mod => mod, :target => target.name, :shield => "Mind Shield")
+          message = t('magic.shield_held', :name => caster.name, :spell => spell, :mod => mod, :target => target.name, :shield => "Mind Shield")
         else
-          message = t('custom.mind_shield_failed', :name => caster.name, :spell =>  spell, :mod => mod, :target => target.name, :shield => "Mind Shield")
+          message = t('magic.mind_shield_failed', :name => caster.name, :spell =>  spell, :mod => mod, :target => target.name, :shield => "Mind Shield")
         end
       elsif (damage_type == "Fire" && target.endure_fire > 0)
-        held = Custom.roll_shield(target, caster, spell) == "shield"
+        held = Magic.roll_shield(target, caster, spell) == "shield"
         if held
-          message = t('custom.shield_held', :name => caster.name, :spell => spell, :mod => mod, :target => target.name, :shield => "Endure Fire")
+          message = t('magic.shield_held', :name => caster.name, :spell => spell, :mod => mod, :target => target.name, :shield => "Endure Fire")
         else
-          message = t('custom.shield_failed', :name => caster.name, :spell => spell, :mod => mod, :target => target.name, :shield => "Endure Fire")
+          message = t('magic.shield_failed', :name => caster.name, :spell => spell, :mod => mod, :target => target.name, :shield => "Endure Fire")
         end
       elsif (damage_type == "Cold" && target.endure_cold > 0)
-        held = Custom.roll_shield(target, caster, spell) == "shield"
+        held = Magic.roll_shield(target, caster, spell) == "shield"
         if held
-          message = t('custom.shield_held', :name => caster.name, :spell => spell, :mod => mod, :target => target.name, :shield => "Endure Cold")
+          message = t('magic.shield_held', :name => caster.name, :spell => spell, :mod => mod, :target => target.name, :shield => "Endure Cold")
         else
-          message = t('custom.shield_failed', :name => caster.name, :spell => spell, :mod => mod, :target => target.name, :shield => "Endure Cold")
+          message = t('magic.shield_failed', :name => caster.name, :spell => spell, :mod => mod, :target => target.name, :shield => "Endure Cold")
         end
       else
         message = nil
