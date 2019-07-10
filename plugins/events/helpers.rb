@@ -57,8 +57,8 @@ module AresMUSH
       description: desc,
       character: enactor)
         
-      Website.add_to_recent_changes('event', event.id, title)
-        
+      
+      Channels.announce_notification(t('events.event_created_notification', :name => enactor.name, :title => title))
       Events.events_updated
       Events.handle_event_achievement(enactor)
       return event
@@ -66,10 +66,11 @@ module AresMUSH
    
     def self.delete_event(event, enactor)
       title = event.title
-      Website.add_to_recent_changes('event', event.id, title)
+      message = t('events.event_deleted_notification', :name => enactor.name, :title => title)
       event.signups.each do |s|
-        Login.notify(s.character, :event_deleted, t('events.event_deleted_notification', :title => title), "")
+        Login.notify(s.character, :event_deleted, message, "")
       end
+      Channels.announce_notification(message)
       event.delete
       Events.events_updated
     end
@@ -79,12 +80,12 @@ module AresMUSH
       event.update(starts: datetime)
       event.update(description: desc)
      
-      Website.add_to_recent_changes('event', event.id, title)
       Events.events_updated
-            
+      message = t('events.event_updated_notification', :name => enactor.name, :title => title)
       event.signups.each do |s|
-        Login.notify(s.character, :event, t('events.event_updated_notification', :title => title), event.id)
+        Login.notify(s.character, :event, mesage, event.id)
       end
+      Channels.announce_notification(message)
     end
    
     def self.format_timestamp(time)

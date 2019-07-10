@@ -56,5 +56,6 @@ module AresMUSH
     def category_index
       BbsBoard.all_sorted.index(self) + 1
     end
+    
   end
 end

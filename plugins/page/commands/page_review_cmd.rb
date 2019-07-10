@@ -9,6 +9,11 @@ module AresMUSH
         self.names = list_arg(cmd.args)
       end
       
+      def check_guest
+        return t('dispatcher.not_allowed') if enactor.has_any_role?("guest")
+        return nil
+      end
+      
       def handle
         thread = Page.thread_for_names(self.names.concat([enactor_name]).uniq)
         if (!thread)

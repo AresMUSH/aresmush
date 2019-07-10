@@ -82,6 +82,8 @@ en:
         days: "%{time}d"
         am: "am"
         pm: "pm"
+        formats:
+          default: "%Y/%m/%d"        
               
         
     api:
