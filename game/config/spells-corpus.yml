@@ -343,7 +343,6 @@ spells:
     level: 7
     name: Brink Of Death
     range: Touch
-    roll: true
     school: Corpus
     target_num: 1
     target_optional: true
