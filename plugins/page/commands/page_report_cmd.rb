@@ -17,7 +17,8 @@ module AresMUSH
       end
       
       def handle
-        thread = Page.thread_for_names(self.names.concat(enactor_name).uniq)
+        self.names << enactor_name
+        thread = Page.thread_for_names(self.names.uniq)
         if (!thread)
           client.emit_failure t('page.invalid_thread')
           return
@@ -31,14 +32,9 @@ module AresMUSH
           return
         end
         
-        template = PageReviewTemplate.new(enactor, thread, thread.sorted_messages[from_page..to_page], chars)
-        log = template.render
-        
-        body = t('page.page_reported_body', :name => chars.map { |c| c.name }.join, :reporter => enactor_name)
-        body << self.reason
-        body << "%R"
-        body << log
-        Jobs.create_job(Jobs.trouble_category, t('page.page_reported_title'), body, Game.master.system_character)
+        messages = thread.sorted_messages[from_page..to_page]
+        Page.report_page_abuse(enactor, thread, messages, self.reason)
+        client.emit_success t('page.pages_reported')
         
       end
     end

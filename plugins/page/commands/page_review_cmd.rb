@@ -23,13 +23,12 @@ module AresMUSH
         
         Page.mark_thread_read(thread, enactor)
         
-        paginator = Paginator.paginate(thread.sorted_messages.reverse, cmd.page, 25)
-        if (paginator.out_of_bounds?)
-          client.emit_failure paginator.out_of_bounds_msg
-          return
-        end
+        messages = thread.sorted_messages
+        total_messages = messages.count
+        start_message = [ (total_messages - 50), 0 ].max
+        list = messages[start_message, total_messages]       
         
-        template = PageReviewTemplate.new(enactor, thread, paginator)
+        template = PageReviewTemplate.new(enactor, thread, list, start_message)
         client.emit template.render
       end
     end
