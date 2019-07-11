@@ -13,10 +13,7 @@ module AresMUSH
             
             message = t('events.event_starting_soon', :title => e.title,
                :starts => e.start_time_standard)
-               
-            Global.notifier.notify_ooc(:event_starting, message) do |char|
-              true
-            end
+            Channels.announce_notification(message)
             e.update(reminded: true)
           end
           

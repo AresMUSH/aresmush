@@ -34,6 +34,7 @@ module AresMUSH
                      unread: enactor && p.is_unread?(enactor),
                      date: p.created_date_str(enactor),
                      author: p.author_name,
+                     last_activity: p.last_activity_time_str(enactor)
                    }}
       end
     end

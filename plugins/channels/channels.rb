@@ -100,6 +100,8 @@ module AresMUSH
         return LeaveChannelRequestHandler
       when "muteChannel"
         return MuteChannelRequestHandler
+      when "reportChat"
+        return ReportChatRequestHandler
       end
     end
     

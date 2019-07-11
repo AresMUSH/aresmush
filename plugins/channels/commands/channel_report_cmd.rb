@@ -17,17 +17,8 @@ module AresMUSH
       
       def handle
         Channels.with_an_enabled_channel(self.name, client, enactor) do |channel|
-          messages = channel.messages.map { |m| "  [#{OOCTime.local_long_timestr(enactor, m['timestamp'])}] #{channel.display_name} #{m['message']}"}.join("%R")
-
-          body = t('channels.channel_reported_body', :name => channel.name, :reporter => enactor_name)
-          body << self.reason
-          body << "%R-------%R"
-          body << messages
-
-          Jobs.create_job(Jobs.trouble_category, t('channels.channel_reported_title'), body, Game.master.system_character)
+          Channels.report_channel_abuse(enactor, channel, channel.messages.last(50), self.reason) 
           client.emit_success t('channels.channel_reported')
-          
-          
         end
       end
     end  
