@@ -22,6 +22,13 @@ module AresMUSH
         config['channels']['announce_channel'] = 'Game'
         config = DatabaseMigrator.write_config_file("channels.yml", config)
         
+        Channel.all.each do |c|
+          messages = c.messages
+          messages.each do |m|
+            m['id'] = SecureRandom.uuid
+          end
+          c.update(messages: messages)
+        end
       end 
     end
   end
