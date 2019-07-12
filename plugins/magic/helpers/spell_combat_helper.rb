@@ -27,125 +27,246 @@ module AresMUSH
     end
 
     def self.cast_mind_shield(combatant, target, spell, rounds)
-      shield_strength = combatant.roll_ability("Spirit")
-      target.update(mind_shield: shield_strength)
-      target.update(mind_shield_counter: rounds)
-
-      combatant.log "Setting #{combatant.name}'s Mind Shield to #{shield_strength}"
-      message = [t('magic.cast_shield', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target =>  target.name, :type => "psionic")]
+      succeeds = Magic.roll_combat_spell_success(combatant, spell)
+      if succeeds == "%xgSUCCEEDS%xn"
+        shield_strength = combatant.roll_ability("Spirit")
+        target.update(mind_shield: shield_strength)
+        target.update(mind_shield_counter: rounds)
+        combatant.log "Setting #{combatant.name}'s Mind Shield to #{target.mind_shield}"
+        message = [t('magic.cast_shield', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target =>  target.name, :type => "psionic")]
+      else
+        message = [t('magic.spell_target_resolution_msg', :name =>  combatant.name, :spell => spell, :target => target.name, :succeeds => succeeds)]
+      end
       return message
     end
 
     def self.cast_endure_fire(combatant, target, spell, rounds)
-      shield_strength = combatant.roll_ability("Fire")
-      target.update(target: shield_strength)
-      target.update(endure_fire_counter: rounds)
-      combatant.log "Setting #{target.name}'s Endure Fire to #{shield_strength}"
-      message = [t('magic.cast_shield', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target =>  target.name, :type => "fire")]
+      succeeds = Magic.roll_combat_spell_success(combatant, spell)
+      if succeeds == "%xgSUCCEEDS%xn"
+        shield_strength = combatant.roll_ability("Fire")
+        target.update(endure_fire: shield_strength)
+        target.update(endure_fire_counter: rounds)
+        combatant.log "Setting #{target.name}'s Endure Fire to #{target.endure_fire}"
+        message = [t('magic.cast_shield', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target =>  target.name, :type => "fire")]
+      else
+        message = [t('magic.spell_target_resolution_msg', :name =>  combatant.name, :spell => spell, :target => target.name, :succeeds => succeeds)]
+      end
       return message
     end
 
     def self.cast_endure_cold(combatant, target, spell, rounds)
-      shield_strength = combatant.roll_ability("Water")
-      target.update(target: shield_strength)
-      target.update(endure_fire_counter: rounds)
-      combatant.log "Setting #{target.name}'s Endure Cold to #{shield_strength}"
-      message = [t('magic.cast_shield', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target =>  target.name, :type => "cold")]
+      succeeds = Magic.roll_combat_spell_success(combatant, spell)
+      if succeeds == "%xgSUCCEEDS%xn"
+        shield_strength = combatant.roll_ability("Water")
+        target.update(endure_cold: shield_strength)
+        target.update(endure_cold_counter: rounds)
+        combatant.log "Setting #{target.name}'s Endure Cold to #{target.endure_cold}"
+        message = [t('magic.cast_shield', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target =>  target.name, :type => "cold")]
+      else
+        message = [t('magic.spell_target_resolution_msg', :name => combatant.name, :spell => spell, :target => target.name, :succeeds => succeeds)]
+      end
       return message
     end
 
     def self.cast_combat_heal(combatant, target, spell, heal_points)
-      wound = FS3Combat.worst_treatable_wound(target.associated_model)
-      if (wound)
+      succeeds = Magic.roll_combat_spell_success(combatant, spell)
+      if succeeds == "%xgSUCCEEDS%xn"
+        wound = FS3Combat.worst_treatable_wound(target.associated_model)
         if target.death_count > 0
           message = [t('magic.cast_ko_heal', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target => target.name, :points => heal_points)]
         else
           message = [t('magic.cast_heal', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target => target.name, :points => heal_points)]
         end
         FS3Combat.heal(wound, heal_points)
+        target.update(death_count: 0  )
       else
-         message = [t('magic.cast_heal_no_effect', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target => target.name)]
+        message = [t('magic.spell_target_resolution_msg', :name =>  combatant.name, :spell => spell, :target => target.name, :succeeds => succeeds)]
       end
-      target.update(death_count: 0  )
+      return message
+    end
+
+    def self.cast_weapon(combatant, target, spell, weapon)
+      succeeds = Magic.roll_combat_spell_success(combatant, spell)
+      if succeeds == "%xgSUCCEEDS%xn"
+        armor = Global.read_config("spells", spell, "armor")
+        FS3Combat.set_weapon(combatant, target, weapon)
+        if armor
+          message = []
+        else
+          message = [t('magic.casts_spell', :name => combatant.name, :spell => spell, :mod => "", :succeeds => succeeds)]
+        end
+      else
+        message = [t('magic.spell_target_resolution_msg', :name =>  combatant.name, :spell => spell, :target => target.name, :succeeds => succeeds)]
+      end
       return message
     end
 
     def self.cast_weapon_specials(combatant, target, spell, weapon_specials_str)
+      succeeds = Magic.roll_combat_spell_success(combatant, spell)
+      if succeeds == "%xgSUCCEEDS%xn"
+        heal_points = Global.read_config("spells", spell, "heal_points")
+        lethal_mod = Global.read_config("spells", spell, "lethal_mod")
+        defense_mod = Global.read_config("spells", spell, "defense_mod")
+        spell_mod = Global.read_config("spells", spell, "spell_mod")
+        Magic.spell_weapon_effects(combatant, spell)
+        attack_mod = Global.read_config("spells", spell, "attack_mod")
 
+        weapon = combatant.weapon.before("+")
+        FS3Combat.set_weapon(nil, target, weapon, [weapon_specials_str])
+
+        if heal_points
+          message = []
+        elsif lethal_mod || defense_mod || attack_mod || spell_mod
+          message = []
+        else
+          message = [t('magic.casts_spell', :name => combatant.name, :spell => spell, :mod => "", :succeeds => succeeds)]
+        end
+      else
+        message = [t('magic.spell_target_resolution_msg', :name =>  combatant.name, :spell => spell, :target => target.name, :succeeds => succeeds)]
+      end
+    end
+
+    def self.cast_armor(combatant, target, spell, armor)
+      succeeds = Magic.roll_combat_spell_success(combatant, spell)
+      if succeeds == "%xgSUCCEEDS%xn"
+        FS3Combat.set_armor(combatant, target, armor)
+        message = [t('magic.casts_spell', :name => combatant.name, :spell => spell, :mod => "", :succeeds => succeeds)]
+      else
+        message = [t('magic.spell_target_resolution_msg', :name =>  combatant.name, :spell => spell, :target => target.name, :succeeds => succeeds)]
+      end
+      return message
     end
 
     def self.cast_armor_specials(combatant, target, spell, armor_specials_str)
-      armor_specials = armor_specials_str ? armor_specials_str.split('+') : nil
-      FS3Combat.set_armor(combatant, target, target.armor, armor_specials)
-      message = [t('magic.casts_spell', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn")]
+      succeeds = Magic.roll_combat_spell_success(combatant, spell)
+      if succeeds == "%xgSUCCEEDS%xn"
+        armor_specials = armor_specials_str ? armor_specials_str.split('+') : nil
+        FS3Combat.set_armor(combatant, target, target.armor, armor_specials)
+        message = [t('magic.casts_spell', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn")]
+      else
+        message = [t('magic.spell_target_resolution_msg', :name =>  combatant.name, :spell => spell, :target => target.name, :succeeds => succeeds)]
+      end
+      return message
     end
 
     def self.cast_revive(combatant, target, spell)
-      target.update(is_ko: false)
-      FS3Combat.emit_to_combatant target, t('magic.been_revive', :name => combatant.name)
-      message = [t('magic.cast_revive', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target => target.name)]
+      succeeds = Magic.roll_combat_spell_success(combatant, spell)
+      if succeeds == "%xgSUCCEEDS%xn"
+        target.update(is_ko: false)
+        FS3Combat.emit_to_combatant target, t('magic.been_revive', :name => combatant.name)
+        message = [t('magic.cast_revive', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target => target.name)]
+      else
+        message = [t('magic.spell_target_resolution_msg', :name => combatant.name, :spell => spell, :target => target.name, :succeeds => succeeds)]
+      end
       return message
     end
 
     def self.cast_resurrection(combatant, target, spell)
-      Custom.undead(target.associated_model)
-      message = [t('magic.cast_res', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target => target.name)]
-      FS3Combat.emit_to_combatant target, t('magic.been_resed', :name => combatant.name)
+      succeeds = Magic.roll_combat_spell_success(combatant, spell)
+      if succeeds == "%xgSUCCEEDS%xn"
+        Custom.undead(target.associated_model)
+        message = [t('magic.cast_res', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target => target.name)]
+        FS3Combat.emit_to_combatant target, t('magic.been_resed', :name => combatant.name)
+      else
+        message = [t('magic.spell_target_resolution_msg', :name =>  combatant.name, :spell => spell, :target => target.name, :succeeds => succeeds)]
+      end
       return message
     end
 
     def self.cast_inflict_damage(combatant, target, spell, damage_inflicted, damage_desc)
-      FS3Combat.inflict_damage(target.associated_model, damage_inflicted, damage_desc)
-      target.update(freshly_damaged: true)
-      message = [t('magic.cast_damage', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target => target.name, :damage_desc => spell.downcase)]
+      succeeds = Magic.roll_combat_spell_success(combatant, spell)
+      if succeeds == "%xgSUCCEEDS%xn"
+        FS3Combat.inflict_damage(target.associated_model, damage_inflicted, damage_desc)
+        target.update(freshly_damaged: true)
+        message = [t('magic.cast_damage', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target => target.name, :damage_desc => spell.downcase)]
+      else
+        message = [t('magic.spell_target_resolution_msg', :name => name, :spell => spell, :target => target.name, :succeeds => succeeds)]
+      end
       return message
     end
 
     def self.cast_lethal_mod(combatant, target, spell, rounds, lethal_mod)
-      target.update(lethal_mod_counter: rounds)
-      target.update(damage_lethality_mod: lethal_mod)
-      message = [t('magic.cast_mod', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target =>  target.name, :mod => lethal_mod, :type => "lethality")]
+      succeeds = Magic.roll_combat_spell_success(combatant, spell)
+      if succeeds == "%xgSUCCEEDS%xn"
+        target.update(lethal_mod_counter: rounds)
+        target.update(damage_lethality_mod: lethal_mod)
+        message = [t('magic.cast_mod', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target =>  target.name, :mod => lethal_mod, :type => "lethality")]
+      else
+        message = [t('magic.spell_target_resolution_msg', :name =>  combatant.name, :spell => spell, :target => target.name, :succeeds => succeeds)]
+      end
       return message
     end
 
     def self.cast_attack_mod(combatant, target, spell, rounds, attack_mod)
-      target.update(attack_mod_counter: rounds)
-      target.update(attack_mod: attack_mod)
-      message = [t('magic.cast_mod', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target =>  target.name, :mod => attack_mod, :type => "attack")]
+      succeeds = Magic.roll_combat_spell_success(combatant, spell)
+      if succeeds == "%xgSUCCEEDS%xn"
+        target.update(attack_mod_counter: rounds)
+        target.update(attack_mod: attack_mod)
+        message = [t('magic.cast_mod', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target =>  target.name, :mod => attack_mod, :type => "attack")]
+      else
+        message = [t('magic.spell_target_resolution_msg', :name =>  combatant.name, :spell => spell, :target => target.name, :succeeds => succeeds)]
+      end
       return message
     end
 
     def self.cast_defense_mod(combatant, target, spell, rounds, defense_mod)
-      target.update(defense_mod_counter: rounds)
-      target.update(defense_mod: defense_mod)
-      message = [t('magic.cast_mod', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target =>  target.name, :mod => defense_mod, :type => "defense")]
+      succeeds = Magic.roll_combat_spell_success(combatant, spell)
+      if succeeds == "%xgSUCCEEDS%xn"
+        target.update(defense_mod_counter: rounds)
+        target.update(defense_mod: defense_mod)
+        message = [t('magic.cast_mod', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target =>  target.name, :mod => defense_mod, :type => "defense")]
+      else
+        message = [t('magic.spell_target_resolution_msg', :name =>  combatant.name, :spell => spell, :target => target.name, :succeeds => succeeds)]
+      end
       return message
     end
 
     def self.cast_spell_mod(combatant, target, spell, rounds, spell_mod)
-      target.update(spell_mod_counter: rounds)
-      target.update(spell_mod: spell_mod)
-      message = [t('magic.cast_mod', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target =>  target.name, :mod => spell_mod, :type => "spell")]
+      succeeds = Magic.roll_combat_spell_success(combatant, spell)
+      if succeeds == "%xgSUCCEEDS%xn"
+        target.update(spell_mod_counter: rounds)
+        target.update(spell_mod: spell_mod)
+        message = [t('magic.cast_mod', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target =>  target.name, :mod => spell_mod, :type => "spell")]
+      else
+        message = [t('magic.spell_target_resolution_msg', :name =>  combatant.name, :spell => spell, :target => target.name, :succeeds => succeeds)]
+      end
       return message
     end
 
     def self.cast_stance(combatant, target, spell, rounds, stance)
-      target.update(stance: stance)
-      target.update(stance_counter: rounds)
-      target.update(stance_spell: spell)
-      message = [t('magic.cast_stance', :name => combatant.name, :target => target.name, :mod => "", :spell => spell, :succeeds => "%xgSUCCEEDS%xn", :stance => stance, :rounds => rounds)]
+      succeeds = Magic.roll_combat_spell_success(combatant, spell)
+      if succeeds == "%xgSUCCEEDS%xn"
+        target.update(stance: stance)
+        target.update(stance_counter: rounds)
+        target.update(stance_spell: spell)
+        message = [t('magic.cast_stance', :name => combatant.name, :target => target.name, :mod => "", :spell => spell, :succeeds => "%xgSUCCEEDS%xn", :stance => stance, :rounds => rounds)]
+      else
+        message = [t('magic.spell_target_resolution_msg', :name =>  combatant.name, :spell => spell, :target => target.name, :succeeds => succeeds)]
+      end
+      return message
     end
 
     def self.cast_combat_roll(combatant, target, spell, effect)
-      if target == combatant
-        message = [t('magic.spell_resolution_msg', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn")]
-      else
-        if effect == "Psionic"
-          message = [t('magic.shield_failed', :name => combatant.name, :spell => spell, :mod => "", :shield => "Mind Shield", :target => target.name, :succeeds => "%xgSUCCEEDS%xn")]
+      succeeds = Magic.roll_combat_spell_success(combatant, spell)
+      if succeeds == "%xgSUCCEEDS%xn"
+        if target == combatant
+          message = [t('magic.spell_resolution_msg', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn")]
         else
-          message = [t('magic.spell_target_resolution_msg', :name => combatant.name, :spell => spell, :mod => "", :target => target.name, :succeeds => "%xgSUCCEEDS%xn")]
+          if effect == "Psionic" && target.mind_shield > 0
+            shield_held = Magic.roll_shield(target, combatant, spell) == "shield"
+            if shield_held
+               message = [t('magic.shield_held', :name => combatant.name, :spell => spell, :mod => "", :shield => "Mind Shield", :target => target.name)]
+            else
+              message = [t('magic.mind_shield_failed', :name => combatant.name, :spell => spell, :mod => "", :shield => "Mind Shield", :target => target.name, :succeeds => "%xgSUCCEEDS%xn")]
+            end
+          else
+            message = [t('magic.spell_target_resolution_msg', :name => combatant.name, :spell => spell, :mod => "", :target => target.name, :succeeds => "%xgSUCCEEDS%xn")]
+          end
         end
+      else
+        message = [t('magic.spell_target_resolution_msg', :name =>  combatant.name, :spell => spell, :target => target.name, :succeeds => succeeds)]
       end
+      return message
     end
 
     def self.cast_stun(combatant, target, spell, rounds)
@@ -159,7 +280,7 @@ module AresMUSH
         target.update(action_args: nil)
         message = [t('magic.cast_stun', :name => combatant.name, :spell => spell, :mod => "", :target => target.name, :succeeds => "%xgSUCCEEDS%xn", :rounds => rounds)]
       else
-        message = [t('magic.casts_spell_on_target', :name => self.name, :target => target.name, :succeeds => "%xrFAILS%xn")]
+        message = [t('magic.casts_spell_on_target', :name => combatant.name, :spell => spell, :mod => "", :target => target.name, :succeeds => "%xrFAILS%xn")]
       end
       return message
     end
@@ -195,12 +316,11 @@ module AresMUSH
       combatant.log "#{combatant.name} suppressing #{target.name} with #{spell}.  atk=#{attack_roll} def=#{defense_roll}"
       if (margin >= 0)
         target.add_stress(margin + 2)
-        message = [t('fs3combat.suppress_successful_msg', :name => combatant.name, :target => target.name, :weapon => combatant.weapon)]
+        message = [t('fs3combat.suppress_successful_msg', :name => combatant.name, :target => target.name, :weapon => "%xB#{combatant.weapon}%xn")]
       else
-        message = [t('magic.casts_spell_on_target', :name => self.name, :target => target.name, :succeeds => "%xrFAILS%xn")]
+        message = [t('magic.casts_spell_on_target', :name => combatant.name, :spell => spell, :mod => "", :target => target.name, :succeeds => "%xrFAILS%xn")]
       end
       return message
-
     end
 
 

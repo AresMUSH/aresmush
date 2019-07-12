@@ -442,9 +442,9 @@ module AresMUSH
       attacker_net_successes = attack_roll - defense_roll
       stopped_by_cover = target.stance == "Cover" ? FS3Combat.stopped_by_cover?(attacker_net_successes, combatant) : false
       hit = false
-      if ((target.mind_shield > 0 || target.endure_fire > 0 || target.endure_cold > 0 ) && Magic.is_magic_weapon(weapon))
-        stopped_by_shield = Magic.stopped_by_shield?(combatant.weapon, target, combatant)
-      end
+
+      stopped_by_shield = Magic.stopped_by_shield?(combatant.weapon, target, combatant)
+
       weapon_type = FS3Combat.weapon_stat(combatant.weapon, "weapon_type")
       hit_mount = FS3Combat.hit_mount?(combatant, target, attacker_net_successes, mount_hit)
 
@@ -583,9 +583,9 @@ module AresMUSH
 
       damage_type = Global.read_config("spells", weapon, "damage_type")
       if (damage_type == "Fire" && target.endure_fire > 0)
-        messages.concat [t('custom.shield_failed', :name => attacker.name, :spell => weapon, :shield => "Endure Fire", :target => target.name)]
+        messages.concat [t('custom.shield_failed', :name => attacker.name, :spell => weapon, :mod => "", :shield => "Endure Fire", :target => target.name)]
       elsif (damage_type == "Cold" && target.endure_cold > 0)
-        messages.concat [t('custom.shield_failed', :name => attacker.name, :spell => weapon, :shield => "Endure Cold", :target => target.name)]
+        messages.concat [t('custom.shield_failed', :name => attacker.name, :spell => weapon, :mod => "", :shield => "Endure Cold", :target => target.name)]
       end
 
 

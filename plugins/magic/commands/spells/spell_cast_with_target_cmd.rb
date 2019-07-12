@@ -63,7 +63,7 @@ module AresMUSH
             return t('fs3combat.not_in_combat', :name => name) if !target
             return t('magic.not_dead', :target => target.name) if (is_res && !target.associated_model.dead)
             return t('magic.not_ko', :target => target.name) if (is_revive && !target.is_ko)
-            #Check that weapon specials can be added to weapon
+            Check that weapon specials can be added to weapon
             weapon_specials_str = Global.read_config("spells", self.spell, "weapon_specials")
             if weapon_specials_str
               weapon_special_group = FS3Combat.weapon_stat(target.weapon, "special_group") || ""

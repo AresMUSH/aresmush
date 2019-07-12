@@ -124,17 +124,9 @@ module AresMUSH
           if (wound)
             FS3Combat.heal(wound, heal_points)
             if is_potion
-              if caster.name == target.name
-                message = t('magic.potion_heal', :name => caster.name, :potion => spell, :points => heal_points)
-              else
-                message = t('magic.potion_heal_target', :name => caster.name, :potion => spell, :target => target.name, :points => heal_points)
-              end
+              message = t('magic.potion_heal', :name => caster.name, :potion => spell, :target => target.name, :points => heal_points)
             else
-              if caster.name == target.name
-                message = t('magic.cast_heal', :name => caster.name, :spell => spell, :mod => mod, :succeeds => "%xgSUCCEEDS%xn", :points => heal_points)
-              else
-                message = t('magic.cast_heal_target', :name => caster.name, :spell => spell, :mod => mod, :succeeds => "%xgSUCCEEDS%xn", :target => target.name, :points => heal_points)
-              end
+              message = t('magic.cast_heal', :name => caster.name, :spell => spell, :mod => mod, :succeeds => "%xgSUCCEEDS%xn", :target => target.name, :points => heal_points)
             end
           else
             if is_potion
@@ -144,11 +136,7 @@ module AresMUSH
                 message = message = t('magic.potion_heal_no_effect_target', :name => caster.name, :potion => spell, :target => target.name)
               end
             else
-              if caster.name == target.name
-                message = t('magic.cast_heal_no_effect', :name => caster.name, :spell => spell, :mod => mod, :succeeds => "%xgSUCCEEDS%xn")
-              else
-                message = t('magic.cast_heal_no_effect_target', :name => caster.name, :spell => spell, :mod => mod, :succeeds => "%xgSUCCEEDS%xn", :target => target.name)
-              end
+              message = t('magic.cast_heal_no_effect', :name => caster.name, :spell => spell, :target => target.name, :mod => mod, :succeeds => "%xgSUCCEEDS%xn")            
             end
           end
           return message

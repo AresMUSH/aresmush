@@ -20,21 +20,16 @@ module AresMUSH
       else
         self.target_name = self.target_name_arg
       end
-
-      Global.logger.debug "TARGET: #{target.name}"
-      Global.logger.debug "SPELL #{spell}"
     end
 
       def check_errors
-        target_optional = Global.read_config("spells", self.spell, "target_optional")
-        Global.logger.debug "TARGET_OPTIONAL #{target_optional}"
-
-        return t('magic.doesnt_use_target') if (self.target_name_arg && target_optional.nil?)
         return t('magic.use_combat_spell') if caster.combat
-        return "That is the wrong format. Try spell/cast <spell>/<target>." if (cmd.args =~ /\=/)
         spell_list = Global.read_config("spells")
         return t('magic.not_spell') if !spell_list.include?(self.spell)
         return t('magic.dont_know_spell') if (Magic.knows_spell?(caster, self.spell) == false && Magic.item_spell(caster) != spell)
+        target_optional = Global.read_config("spells", self.spell, "target_optional")
+        return t('magic.doesnt_use_target') if (self.target_name_arg && target_optional.nil?)
+        return "That is the wrong format. Try spell/cast <spell>/<target>." if (cmd.args =~ /\=/)
         return nil
       end
 
