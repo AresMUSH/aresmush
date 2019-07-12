@@ -54,10 +54,12 @@ module AresMUSH
             message = t('magic.casts_noncombat_spell_with_target', :name => caster.name, :spell => spell, :mod => mod, :target => self.target_name, :succeeds => success)
           end
         end
-        self.caster.room.emit message
+        message.each do |message|
+          self.caster.room.emit message
 
-        if self.caster.room.scene
-          Scenes.add_to_scene(self.caster.room.scene, message)
+          if self.caster.room.scene
+            Scenes.add_to_scene(self.caster.room.scene, message)
+          end
         end
       end
 

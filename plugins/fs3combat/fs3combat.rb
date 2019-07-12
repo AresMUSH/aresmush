@@ -55,8 +55,6 @@ module AresMUSH
          else
            return MountsListCmd
          end
-       when "potion"
-         return CombatPotionCmd
        when "vehicle"
          if (cmd.args)
            return VehicleDetailCmd
