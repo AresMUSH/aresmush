@@ -22,8 +22,9 @@ module AresMUSH
         return t('magic.dont_have_potion') if (!combatant.is_npc? && !self.potion)
         return t('fs3combat.only_one_target') if (self.targets.count > 1)
         targets.each do |target|
+          heal_points = Global.read_config("spells", self.spell, "heal_points")
           wound = FS3Combat.worst_treatable_wound(target.associated_model)
-          return t('magic.no_healable_wounds', :target => target.name) if wound.blank?
+          return t('magic.no_healable_wounds', :target => target.name) if (heal_points && wound.blank?)
         end
         return nil
       end

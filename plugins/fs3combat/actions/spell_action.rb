@@ -33,7 +33,8 @@ module AresMUSH
           return t('magic.not_dead', :target => target.name) if (is_res && !target.associated_model.dead)
           return t('magic.not_ko', :target => target.name) if (is_revive && !target.is_ko)
           wound = FS3Combat.worst_treatable_wound(target.associated_model)
-          return t('magic.no_healable_wounds', :target => target.name) if wound.blank?
+          heal_points = Global.read_config("spells", self.spell, "heal_points")
+          return t('magic.no_healable_wounds', :target => target.name) if (heal_points && wound.blank?)
           # Check that weapon specials can be added to weapon
           weapon_specials_str = Global.read_config("spells", self.spell, "weapon_specials")
           if weapon_specials_str
