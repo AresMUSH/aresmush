@@ -69,151 +69,165 @@ module AresMUSH
         weapon_type = FS3Combat.weapon_stat(self.combatant.weapon, "weapon_type")
 
 
-        succeeds = Magic.roll_combat_spell_success(self.combatant, self.spell)
+
         messages = []
 
-        targets.each do |target|
-          #Stun
-          if is_stun
-            message = Magic.cast_stun(self.combatant, target, self.spell, rounds)
-            messages.concat message
+        if (fs3_attack || is_stun)
+          #Weapon
+          if (weapon && weapon != "Spell")
+            FS3Combat.set_weapon(combatant, combatant, weapon)
           end
-
-          #Explosions
-          if weapon_type == "Explosive"
-            message = Magic.cast_explosion(self.combatant, target, self.spell, self.margin)
-            messages.concat message
-          end
-        end
-
-        if succeeds == "%xgSUCCEEDS%xn"
 
           targets.each do |target|
-            #Attacks against Mind Shield (other shields handled in damage rolls)
-            if (effect == "Psionic" && target.mind_shield > 0 && Magic.roll_shield(target, combatant, self.spell) == "shield")
-               messages.concat [t('magic.shield_held', :name => self.name, :spell => self.spell, :mod => "", :shield => "Mind Shield", :target => print_target_names)]
-            else
-              #Psionic Protection
-              if self.spell == "Mind Shield"
-                message = Magic.cast_mind_shield(combatant, target, self.spell, rounds)
-                messages.concat message
-              end
-
-              #Fire Protection
-               if self.spell == "Endure Fire"
-                 message = Magic.cast_endure_fire(combatant, target, self.spell, rounds)
-                 messages.concat message
-               end
-
-              #Cold Protection
-              if self.spell == "Endure Cold"
-                message = Magic.cast_endure_cold(combatant, target, self.spell, rounds)
-                messages.concat message
-              end
-
-              #Healing
-              if heal_points
-                message = Magic.cast_combat_heal(combatant, target, self.spell, rounds)
-                messages.concat message
-              end
-
-              #Equip Weapon
-              if (weapon && weapon != "Spell")
-                FS3Combat.set_weapon(combatant, target, weapon)
-                if armor
-
-                else
-                  messages.concat [t('magic.casts_spell', :name => self.name, :spell => self.spell, :mod => "", :succeeds => succeeds)]
-                end
-              end
-
-              #Equip Weapon Specials
-              if weapon_specials_str
-                Magic.spell_weapon_effects(self.combatant, self.spell)
-                weapon = self.combatant.weapon.before("+")
-                FS3Combat.set_weapon(nil, target, weapon, [weapon_specials_str])
-
-                if heal_points
-
-                elsif lethal_mod || defense_mod || attack_mod || spell_mod
-
-                else
-                  messages.concat [t('magic.casts_spell', :name => self.name, :spell => self.spell, :mod => "", :succeeds => succeeds)]
-                end
-              end
-
-              #Equip Armor
-              if armor
-                FS3Combat.set_armor(combatant, target, armor)
-                messages.concat [t('magic.casts_spell', :name => self.name, :spell => self.spell, :mod => "", :succeeds => succeeds)]
-              end
-
-              #Equip Armor Specials
-              if armor_specials_str
-                message = Magic.cast_armor_specials(combatant, target, self.spell, rounds)
-                messages.concat message
-              end
-
-              #Reviving
-              if is_revive
-                message = Magic.cast_revive(combatant, target, self.spell)
-                messages.concat message
-              end
-
-              #Ressurrection
-              if is_res
-                message = Magic.cast_resurrection(combatant, target, self.spell)
-                messages.concat message
-              end
-
-              #Inflict Damage
-              if damage_inflicted
-                message = Magic.cast_inflict_damage(combatant, target, self.spell, damage_inflicted, damage_desc)
-                messages.concat message
-              end
-
-              #Apply Mods
-              if lethal_mod
-                message = Magic.cast_lethal_mod(combatant, target, spell, rounds, lethal_mod)
-                messages.concat message
-              end
-
-              if attack_mod
-                message = Magic.cast_attack_mod(combatant, target, spell, rounds, attack_mod)
-                messages.concat message
-              end
-
-              if defense_mod
-                message = Magic.cast_defense_mod(combatant, target, spell, rounds, defense_mod)
-                messages.concat message
-              end
-
-              if spell_mod
-                message = Magic.cast_spell_mod(combatant, target, spell, rounds, spell_mod)
-                messages.concat message
-              end
-
-              #Change Stance
-              if stance
-                message = Magic.cast_stance(combatant, target, spell, rounds, stance)
-                messages.concat message
-              end
-
-              #Roll
-              if roll
-                message = Magic.cast_combat_roll(combatant, target, spell, effect)
-                messages.concat message
-              end
-
-            #End Protection Rolls
+            #Stun
+            if is_stun
+              message = Magic.cast_stun(self.combatant, target, self.spell, rounds)
+              messages.concat message
             end
-          #End targets.each do  (if spell succeeds)
+
+            #Attacks
+            if weapon_type == "Explosive"
+              message = Magic.cast_explosion(self.combatant, target, self.spell)
+              messages.concat message
+            elsif weapon_type == "Suppressive"
+              message = Magic.cast_suppress(self.combatant, target, self.spell)
+              messages.concat message
+            else
+              messages.concat FS3Combat.attack_target(combatant, target, mod = 0, called_shot = nil, crew_hit = false, mount_hit = false)
+            end
+
           end
-        elsif self.spell == "Phoenix's Healing Flames"
-          messages.concat [t('magic.cast_phoenix_heal', :name => self.name, :spell => self.spell, :succeeds => "%xgSUCCEEDS%xn")]
         else
-          #Spell fails
-          messages.concat [t('magic.spell_target_resolution_msg', :name => self.name, :spell => spell, :target => print_target_names, :succeeds => succeeds)]
+          succeeds = Magic.roll_combat_spell_success(self.combatant, self.spell)
+          if succeeds == "%xgSUCCEEDS%xn"
+            targets.each do |target|
+              #Attacks against Mind Shield (other shields handled in damage rolls)
+              if (effect == "Psionic" && target.mind_shield > 0 && Magic.roll_shield(target, combatant, self.spell) == "shield")
+                 messages.concat [t('magic.shield_held', :name => self.name, :spell => self.spell, :mod => "", :shield => "Mind Shield", :target => print_target_names)]
+              else
+
+                #Psionic Protection
+                if self.spell == "Mind Shield"
+                  message = Magic.cast_mind_shield(combatant, target, self.spell, rounds)
+                  messages.concat message
+                end
+
+                #Fire Protection
+                 if self.spell == "Endure Fire"
+                   message = Magic.cast_endure_fire(combatant, target, self.spell, rounds)
+                   messages.concat message
+                 end
+
+                #Cold Protection
+                if self.spell == "Endure Cold"
+                  message = Magic.cast_endure_cold(combatant, target, self.spell, rounds)
+                  messages.concat message
+                end
+
+                #Healing
+                if heal_points
+                  message = Magic.cast_combat_heal(combatant, target, self.spell, rounds)
+                  messages.concat message
+                end
+
+                #Equip Weapon
+                if (weapon && weapon != "Spell")
+                  FS3Combat.set_weapon(combatant, target, weapon)
+                  if armor
+
+                  else
+                    messages.concat [t('magic.casts_spell', :name => self.name, :spell => self.spell, :mod => "", :succeeds => succeeds)]
+                  end
+                end
+
+                #Equip Weapon Specials
+                if weapon_specials_str
+                  Magic.spell_weapon_effects(self.combatant, self.spell)
+                  weapon = self.combatant.weapon.before("+")
+                  FS3Combat.set_weapon(nil, target, weapon, [weapon_specials_str])
+
+                  if heal_points
+
+                  elsif lethal_mod || defense_mod || attack_mod || spell_mod
+
+                  else
+                    messages.concat [t('magic.casts_spell', :name => self.name, :spell => self.spell, :mod => "", :succeeds => succeeds)]
+                  end
+                end
+
+                #Equip Armor
+                if armor
+                  FS3Combat.set_armor(combatant, target, armor)
+                  messages.concat [t('magic.casts_spell', :name => self.name, :spell => self.spell, :mod => "", :succeeds => succeeds)]
+                end
+
+                #Equip Armor Specials
+                if armor_specials_str
+                  message = Magic.cast_armor_specials(combatant, target, self.spell, rounds)
+                  messages.concat message
+                end
+
+                #Reviving
+                if is_revive
+                  message = Magic.cast_revive(combatant, target, self.spell)
+                  messages.concat message
+                end
+
+                #Ressurrection
+                if is_res
+                  message = Magic.cast_resurrection(combatant, target, self.spell)
+                  messages.concat message
+                end
+
+                #Inflict Damage
+                if damage_inflicted
+                  message = Magic.cast_inflict_damage(combatant, target, self.spell, damage_inflicted, damage_desc)
+                  messages.concat message
+                end
+
+                #Apply Mods
+                if lethal_mod
+                  message = Magic.cast_lethal_mod(combatant, target, spell, rounds, lethal_mod)
+                  messages.concat message
+                end
+
+                if attack_mod
+                  message = Magic.cast_attack_mod(combatant, target, spell, rounds, attack_mod)
+                  messages.concat message
+                end
+
+                if defense_mod
+                  message = Magic.cast_defense_mod(combatant, target, spell, rounds, defense_mod)
+                  messages.concat message
+                end
+
+                if spell_mod
+                  message = Magic.cast_spell_mod(combatant, target, spell, rounds, spell_mod)
+                  messages.concat message
+                end
+
+                #Change Stance
+                if stance
+                  message = Magic.cast_stance(combatant, target, spell, rounds, stance)
+                  messages.concat message
+                end
+
+                #Roll
+                if roll
+                  message = Magic.cast_combat_roll(combatant, target, spell, effect)
+                  messages.concat message
+                end
+
+              #End Protection Rolls
+              end
+            #End targets.each do for non FS3 spells (if spell succeeds)
+            end
+          elsif self.spell == "Phoenix's Healing Flames"
+            messages.concat [t('magic.cast_phoenix_heal', :name => self.name, :spell => self.spell, :succeeds => "%xgSUCCEEDS%xn")]
+          else
+            #Spell fails
+            messages.concat [t('magic.spell_target_resolution_msg', :name => self.name, :spell => spell, :target => print_target_names, :succeeds => succeeds)]
+          end
         end
         level = Global.read_config("spells", self.spell, "level")
         if level == 8

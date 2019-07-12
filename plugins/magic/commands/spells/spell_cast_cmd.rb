@@ -20,9 +20,16 @@ module AresMUSH
       else
         self.target_name = self.target_name_arg
       end
+
+      Global.logger.debug "TARGET: #{target.name}"
+      Global.logger.debug "SPELL #{spell}"
     end
 
       def check_errors
+        target_optional = Global.read_config("spells", self.spell, "target_optional")
+        Global.logger.debug "TARGET_OPTIONAL #{target_optional}"
+
+        return t('magic.doesnt_use_target') if (self.target_name_arg && target_optional.nil?)
         return t('magic.use_combat_spell') if caster.combat
         return "That is the wrong format. Try spell/cast <spell>/<target>." if (cmd.args =~ /\=/)
         spell_list = Global.read_config("spells")
@@ -32,6 +39,7 @@ module AresMUSH
       end
 
       def handle
+
         heal_points = Global.read_config("spells", self.spell, "heal_points")
         success = Magic.roll_noncombat_spell_success(self.caster, self.spell, self.mod)
 
@@ -45,7 +53,11 @@ module AresMUSH
           end
           Magic.handle_spell_cast_achievement(self.caster)
         else
-          message = t('magic.casts_noncombat_spell', :name => caster.name, :spell => spell, :mod => mod, :succeeds => success)
+          if !self.target_name_arg
+            message = t('magic.casts_noncombat_spell', :name => caster.name, :spell => spell, :mod => mod, :succeeds => success)
+          else
+            message = t('magic.casts_noncombat_spell_with_target', :name => caster.name, :spell => spell, :mod => mod, :target => self.target_name, :succeeds => success)
+          end
         end
         self.caster.room.emit message
 

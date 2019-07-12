@@ -104,28 +104,28 @@ module AresMUSH
     def self.cast_lethal_mod(combatant, target, spell, rounds, lethal_mod)
       target.update(lethal_mod_counter: rounds)
       target.update(damage_lethality_mod: lethal_mod)
-      message = [t('magic.cast_mod', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target =>  target.name, :mod_type => lethal_mod, :type => "lethality")]
+      message = [t('magic.cast_mod', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target =>  target.name, :mod => lethal_mod, :type => "lethality")]
       return message
     end
 
     def self.cast_attack_mod(combatant, target, spell, rounds, attack_mod)
       target.update(attack_mod_counter: rounds)
       target.update(attack_mod: attack_mod)
-      message = [t('magic.cast_mod', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target =>  target.name, :mod_type => attack_mod, :type => "attack")]
+      message = [t('magic.cast_mod', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target =>  target.name, :mod => attack_mod, :type => "attack")]
       return message
     end
 
     def self.cast_defense_mod(combatant, target, spell, rounds, defense_mod)
       target.update(defense_mod_counter: rounds)
       target.update(defense_mod: defense_mod)
-      message = [t('magic.cast_mod', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target =>  target.name, :mod_type => defense_mod, :type => "defense")]
+      message = [t('magic.cast_mod', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target =>  target.name, :mod => defense_mod, :type => "defense")]
       return message
     end
 
     def self.cast_spell_mod(combatant, target, spell, rounds, spell_mod)
       target.update(spell_mod_counter: rounds)
       target.update(spell_mod: spell_mod)
-      message = [t('magic.cast_mod', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target =>  target.name, :mod_type => spell_mod, :type => "spell")]
+      message = [t('magic.cast_mod', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target =>  target.name, :mod => spell_mod, :type => "spell")]
       return message
     end
 
@@ -149,10 +149,7 @@ module AresMUSH
     end
 
     def self.cast_stun(combatant, target, spell, rounds)
-      Global.logger.debug "COMBATANT #{combatant}"
-      Global.logger.debug "TARGET #{target}"
       margin = FS3Combat.determine_attack_margin(combatant, target)
-      Global.logger.debug "MARGIN #{margin}"
       if (margin[:hit])
         target.update(subdued_by: combatant)
         target.update(magic_stun: true)
@@ -187,6 +184,26 @@ module AresMUSH
       end
       return messages
     end
+
+    def self.cast_suppress(combatant, target, spell)
+      Global.logger.debug "CASTING SUPPRESS"
+      composure = Global.read_config("fs3combat", "composure_skill")
+      attack_roll = FS3Combat.roll_attack(combatant, target)
+      defense_roll = target.roll_ability(composure)
+      margin = attack_roll - defense_roll
+
+      combatant.log "#{combatant.name} suppressing #{target.name} with #{spell}.  atk=#{attack_roll} def=#{defense_roll}"
+      if (margin >= 0)
+        target.add_stress(margin + 2)
+        message = [t('fs3combat.suppress_successful_msg', :name => combatant.name, :target => target.name, :weapon => combatant.weapon)]
+      else
+        message = [t('magic.casts_spell_on_target', :name => self.name, :target => target.name, :succeeds => "%xrFAILS%xn")]
+      end
+      return message
+
+    end
+
+
 
 
   end

@@ -1,5 +1,5 @@
 module AresMUSH
-  module Custom
+  module Magic
     class SpellRemoveCmd
       #spell/remove <name>=<spell>
       include CommandHandler
@@ -9,20 +9,20 @@ module AresMUSH
         args = cmd.parse_args(ArgParser.arg1_equals_arg2)
         self.target = Character.find_one_by_name(args.arg1)
         self.spell = titlecase_arg(args.arg2)
-        self.spell_learned = Custom.find_spell_learned(self.target, self.spell)
+        self.spell_learned = Magic.find_spell_learned(self.target, self.spell)
       end
 
       def check_errors
         return nil if FS3Skills.can_manage_abilities?(enactor)
         return t('dispatcher.not_allowed')
-        return t('custom.not_spell') if !Custom.is_spell?(self.spell)
-        return t('custom.dont_know_spell') if !Custom.find_spell_learned(self.target, self.spell)
+        return t('magic.not_spell') if !Magic.is_spell?(self.spell)
+        return t('magic.dont_know_spell') if !Magic.find_spell_learned(self.target, self.spell)
         return nil
       end
 
       def handle
         self.spell_learned.delete
-        client.emit_success t('custom.removed_spell', :spell => self.spell, :name => self.target.name)
+        client.emit_success t('magic.removed_spell', :spell => self.spell, :name => self.target.name)
       end
 
     end

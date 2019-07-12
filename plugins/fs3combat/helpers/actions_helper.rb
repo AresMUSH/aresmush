@@ -197,7 +197,7 @@ module AresMUSH
           FS3Combat.emit_to_combat combatant.combat, t('fs3combat.is_killed', :name => combatant.name, :damaged_by => damaged_by), nil, true
         end
 
-        if (!combatant.associated_model.npc && Magic.knows_spell?(combatant, "Phoenix's Healing Flames"))
+        if (!combatant.is_npc? && Magic.knows_spell?(combatant, "Phoenix's Healing Flames"))
           combatant.update(is_ko: false)
           combatant.update(death_count: 0)
           combatant.log "Phoenix's Healing Flames: Setting #{combatant.name}'s KO to #{combatant.is_ko}."
