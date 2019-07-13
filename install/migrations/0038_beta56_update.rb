@@ -22,6 +22,7 @@ module AresMUSH
         config['channels']['announce_channel'] = 'Game'
         config = DatabaseMigrator.write_config_file("channels.yml", config)
         
+        Global.logger.debug "Adding ids to channel recall messages."
         Channel.all.each do |c|
           messages = c.messages
           messages.each do |m|
@@ -29,6 +30,11 @@ module AresMUSH
           end
           c.update(messages: messages)
         end
+        
+        Global.logger.debug "Default icon blurb."
+        config = DatabaseMigrator.read_config_file("chargen.yml")
+        config['chargen']['icon_blurb'] = "Your profile icon appears in scenes and the character gallery to show your character at a glance. Providing a profile icon is optional. You can upload additional character images once you're approved."
+        config = DatabaseMigrator.write_config_file("chargen.yml", config)
       end 
     end
   end
