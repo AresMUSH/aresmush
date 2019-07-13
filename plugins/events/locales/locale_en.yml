@@ -27,3 +27,7 @@ en:
         event_deleted_notification: "%{name} has deleted event '%{title}'."
         event_updated_notification: "%{name} has updated event '%{title}'."
         event_created_notification: "%{name} has created event '%{title}'."
+        
+        event_updated_change: "%{title} updated."
+        event_deleted_change: "%{title} deleted."
+        event_created_change: "%{title} created."
