@@ -36,6 +36,10 @@ module AresMUSH
 
       #POTIONS
       case cmd.root
+      when "potions"
+        return PotionsCmd
+      end
+      case cmd.root
       when "potion"
         case cmd.switch
         when "create"

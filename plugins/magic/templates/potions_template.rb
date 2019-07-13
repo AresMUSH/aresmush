@@ -1,5 +1,5 @@
 module AresMUSH
-  module Custom
+  module Magic
     class PotionsTemplate < ErbTemplateRenderer
       attr_accessor :char
 

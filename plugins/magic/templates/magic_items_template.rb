@@ -1,5 +1,5 @@
 module AresMUSH
-  module Custom
+  module Magic
     class MagicItemsTemplate < ErbTemplateRenderer
       attr_accessor :char
 
@@ -18,6 +18,10 @@ module AresMUSH
         else
           "None"
         end
+      end
+
+      def potions_has
+        format_two_per_line @char.potions_has
       end
 
       def length
