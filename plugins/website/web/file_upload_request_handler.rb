@@ -19,7 +19,7 @@ module AresMUSH
         
         is_wiki_admin = Website.can_manage_wiki?(enactor)
         extension = File.extname(name)
-        pp extension
+
         if (!is_wiki_admin && !['.png', '.jpg'].include?(extension))
           return { error: t('webportal.only_upload_images') }
         end
@@ -56,6 +56,8 @@ module AresMUSH
         
         
         File.open(path, 'wb') {|f| f.write Base64.decode64(data.after(',')) }
+        
+        Website.add_to_recent_changes('file', t('webportal.file_uploaded', :name => "#{folder}/#{name}"), { name: name, folder: folder }, enactor.name)
         
         {
           name: name,
