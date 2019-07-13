@@ -197,6 +197,20 @@ spells:
     school: Corpus
     weapon_specials: Agility
     weapon: Spell
+  Diagnose:
+    available: false
+    casting_time: 1 round
+    desc: "Caster can diagnose diseases, injuries, and other physical ailments or conditions in a target with accuracy. The caster is able to pinpoint exactly what the conditions are, where they are located, and their scope. While it can sense the symptoms and manifestations of a malady caused by magic, it cannot sense the magical effects or determine the magical cause.\n\nObtaining GM-provided information via the casting of this spell does not cost Luck."
+    duration: 5 rounds
+    effect: Other
+    is_potion: true
+    level: 5
+    name: Diagnose
+    range: Touch
+    roll: true
+    school: Corpus
+    target_optional: true
+    target_num: 1
   Exoskeleton:
     armor: Exoskeleton
     available: false
