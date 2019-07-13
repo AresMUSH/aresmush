@@ -38,6 +38,10 @@ module AresMUSH
         
         Global.logger.debug "Clearing out zombie friends."
         Friendship.all.select { |f| !f.friend }.each { |f| f.delete }
+        
+        Global.logger.debug "Clearing recent changes."
+        Game.master.update(recent_changes: [])
+        
       end 
     end
   end
