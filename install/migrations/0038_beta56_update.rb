@@ -35,6 +35,9 @@ module AresMUSH
         config = DatabaseMigrator.read_config_file("chargen.yml")
         config['chargen']['icon_blurb'] = "Your profile icon appears in scenes and the character gallery to show your character at a glance. Providing a profile icon is optional. You can upload additional character images once you're approved."
         config = DatabaseMigrator.write_config_file("chargen.yml", config)
+        
+        Global.logger.debug "Clearing out zombie friends."
+        Friendship.all.select { |f| !f.friend }.each { |f| f.delete }
       end 
     end
   end
