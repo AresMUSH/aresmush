@@ -49,9 +49,9 @@ module AresMUSH
           Magic.handle_spell_cast_achievement(self.caster)
         else
           if !self.target_name_arg
-            message = t('magic.casts_noncombat_spell', :name => caster.name, :spell => spell, :mod => mod, :succeeds => success)
+            message = [t('magic.casts_noncombat_spell', :name => caster.name, :spell => spell, :mod => mod, :succeeds => success)]
           else
-            message = t('magic.casts_noncombat_spell_with_target', :name => caster.name, :spell => spell, :mod => mod, :target => self.target_name, :succeeds => success)
+            message = [t('magic.casts_noncombat_spell_with_target', :name => caster.name, :spell => spell, :mod => mod, :target => self.target_name, :succeeds => success)]
           end
         end
         message.each do |message|
