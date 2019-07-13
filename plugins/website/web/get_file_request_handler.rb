@@ -15,6 +15,10 @@ module AresMUSH
         
         path = File.join(folder, name)
         
+        if (!File.exists?( File.join(AresMUSH.website_uploads_path, path)))
+          return { error: t('webportal.not_found') }
+        end
+        
         {
           name: name,
           folder: folder,

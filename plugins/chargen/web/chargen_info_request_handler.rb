@@ -18,6 +18,7 @@ module AresMUSH
           hooks_blurb: Website.format_markdown_for_html(Global.read_config("chargen", "hooks_blurb")),
           desc_blurb: Website.format_markdown_for_html(Global.read_config("chargen", "desc_blurb")),
           groups_blurb: Website.format_markdown_for_html(Global.read_config("chargen", "groups_blurb")),
+          icon_blurb: Website.format_markdown_for_html(Global.read_config("chargen", "icon_blurb")),
           demographics_blurb: Website.format_markdown_for_html(Global.read_config("chargen", "demographics_blurb")),
           lastwill_blurb: Website.format_markdown_for_html(Global.read_config("chargen", "lastwill_blurb")),
           allow_web_submit: Global.read_config("chargen", "allow_web_submit")

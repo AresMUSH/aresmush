@@ -22,6 +22,8 @@ module AresMUSH
           return { error: t('webportal.not_found') }
         end
         
+        Website.add_to_recent_changes('file', t('webportal.file_deleted', :name => "#{folder}/#{name}"), { name: name, folder: folder }, enactor.name)
+        
         File.delete(path)
         
         {
