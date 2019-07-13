@@ -25,6 +25,9 @@ module AresMUSH
             end
           end
           scene.scene_log.update(log: request.args[:log])
+          
+          Website.add_to_recent_changes('scene', t('scenes.scene_updated', :title => scene.title), { id: scene.id }, enactor.name)
+          
         end
         
         scene.update(location: request.args[:location])

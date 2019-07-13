@@ -26,6 +26,7 @@ module AresMUSH
           }},
           messages: Channels.is_on_channel?(enactor, c) ? c.messages.map { |m| {
             message: Website.format_markdown_for_html(m['message']),
+            id: m['id'],
             timestamp: OOCTime.local_long_timestr(enactor, m['timestamp']) }} : nil,
           }
         end
@@ -51,6 +52,7 @@ module AresMUSH
                }},
                messages: t.sorted_messages.map { |p| {
                   message: Website.format_markdown_for_html(p.message),
+                  id: p.id,
                   timestamp: OOCTime.local_long_timestr(enactor, p.created_at)
                   }}
             }

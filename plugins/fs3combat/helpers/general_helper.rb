@@ -254,6 +254,7 @@ module AresMUSH
         team: combatant.team,
         ammo: combatant.ammo ? "(#{combatant.ammo})" : '',
         damage_boxes: ([-combatant.total_damage_mod.floor, 5].min).times.map { |d| d },
+        wound_display: combatant.associated_model.damage.map { |d| "#{d.current_severity} #{d.description}"}.join("\n"),
         damage: combatant.associated_model.damage.select { |d| !d.healed }.map { |d| "#{d.current_severity} - #{d.description}" },
         vehicle: combatant.vehicle ? "#{combatant.vehicle.name} #{combatant.piloting ? 'Pilot' : 'Passenger'}" : "" ,
         stance: combatant.stance,
