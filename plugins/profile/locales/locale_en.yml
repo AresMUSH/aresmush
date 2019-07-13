@@ -58,3 +58,5 @@ en:
         char_not_approved: "This character is not yet approved."
         
         extra_profile_info: "Also see %xchooks <name>%xn, %xcsheet <name>%xn and %xcrelationships <name>%xn."
+        
+        profile_updated: "%{name} updated."

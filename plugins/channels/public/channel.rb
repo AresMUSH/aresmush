@@ -46,7 +46,7 @@ module AresMUSH
     
     def add_to_history(msg)
       return if !self.recall_enabled
-      new_messages = (self.messages << { message: msg, timestamp: DateTime.now })
+      new_messages = (self.messages << { message: msg, timestamp: DateTime.now, id: SecureRandom.uuid })
       if (new_messages.count > Channels.recall_buffer_size)
         new_messages.shift
       end

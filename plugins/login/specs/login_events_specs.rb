@@ -92,7 +92,7 @@ module AresMUSH
         end
         
         it "should announce the char" do
-          expect(notifier).to receive(:notify_ooc).with(:char_created, "announce_char_created")
+          expect(Channels).to receive(:announce_notification).with("announce_char_created")
           @login_events.on_event CharCreatedEvent.new(@event_client, @event_char_id)
         end
       end

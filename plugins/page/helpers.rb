@@ -157,6 +157,16 @@ module AresMUSH
       return false if !char
       char.page_threads.any? { |t| Page.is_thread_unread?(t, char) }
     end
+    
+    def self.report_page_abuse(enactor, thread, messages, reason)
+      log = messages.map { |m| "  [#{OOCTime.local_long_timestr(enactor, m.created_at)}] #{m.message}"}.join("%R")
+      
+      body = t('page.page_reported_body', :name => thread.title_without_viewer(enactor), :reporter => enactor.name)
+      body << reason
+      body << "%R"
+      body << log
+      Jobs.create_job(Jobs.trouble_category, t('page.page_reported_title'), body, Game.master.system_character)
+    end
   end
 
 end
