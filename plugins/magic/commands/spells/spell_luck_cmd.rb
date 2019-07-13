@@ -41,6 +41,7 @@ module AresMUSH
             category = Global.read_config("jobs", "luck_category")
             Jobs.create_job(category, t('magic.spent_luck_title', :name => enactor.name, :reason => "reducing the learn time of #{self.spell}."), job_message, enactor)
             Global.logger.info "#{enactor_name} spent luck to reduce the learn time of #{self.spell}."
+            client.emit_success job_message
 
             new_learn_time = spell_learned.last_learned - 604800
             spell_learned.update(last_learned: new_learn_time)
