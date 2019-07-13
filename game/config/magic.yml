@@ -3,3 +3,9 @@ magic:
   shield_cron:
     hour:
     - 02
+  potion_cron:
+    minute:
+    - 00
+  shortcuts:
+    combat/cast: combat/spell
+    cast: spell/cast

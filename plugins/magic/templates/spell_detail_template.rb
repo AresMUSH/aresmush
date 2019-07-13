@@ -26,6 +26,10 @@ module AresMUSH
         Global.read_config("spells", spell, "effect")
       end
 
+      def damage_type
+        Global.read_config("spells", spell, "damage_type")
+      end
+
       def level
         Global.read_config("spells", spell, "level")
       end

@@ -167,14 +167,7 @@ module AresMUSH
     def self.set_weapon(enactor, combatant, weapon, specials = nil)
 
       # Set weapon specials gained from equipped magical items
-      if !combatant.npc
-        item_specials = Custom.item_weapon_specials(combatant.associated_model)
-      end
-      if !combatant.npc && combatant.associated_model.magic_item_equipped && specials && item_specials
-        specials.concat [item_specials]
-      elsif !combatant.npc && combatant.associated_model.magic_item_equipped && item_specials
-        specials = [item_specials]
-      end
+      specials = Magic.set_magic_item_weapon_specials(combatant, specials)
 
       # Set weapon specials gained from spells
       if specials && combatant.spell_weapon_effects[weapon]
@@ -199,15 +192,8 @@ module AresMUSH
     end
 
     def self.set_armor(enactor, combatant, armor, specials = nil)
-      # Set armor specials gained from equipped magical items
-      if !combatant.npc &&
-        item_specials = Custom.item_armor_specials(combatant.associated_model)
-      end
-      if !combatant.npc && specials && combatant.associated_model.magic_item_equipped && item_specials
-        specials.concat [item_specials]
-      elsif !combatant.npc && combatant.associated_model.magic_item_equipped && item_specials
-        specials = [item_specials]
-      end
+
+      specials = Magic.set_magic_item_armor_specials(combatant, specials)
 
       # Set armor specials gained from spells
       if specials && combatant.spell_armor_effects[armor]

@@ -1,5 +1,5 @@
 module AresMUSH
-  module Custom
+  module Magic
     class SpellsTemplate < ErbTemplateRenderer
       attr_accessor :char
 
@@ -9,7 +9,7 @@ module AresMUSH
       end
 
       def spell_count
-        Custom.count_spells_total(char)
+        Magic.count_spells_total(char)
       end
 
       def spells_learned
@@ -29,14 +29,17 @@ module AresMUSH
       end
 
       def item_spell
-        Custom.item_spell(char)
+        Magic.item_spell(char)
       end
 
       def time_left_before_learn(spell)
-        spell_learned = Custom.find_spell_learned(char, spell)
-        (Custom.time_to_next_learn_spell(spell_learned) / 86400).ceil
+        spell_learned = Magic.find_spell_learned(char, spell)
+        (Magic.time_to_next_learn_spell(spell_learned) / 86400).ceil
       end
 
+      def xp
+        char.xp
+      end
 
     end
   end

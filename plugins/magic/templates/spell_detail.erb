@@ -22,6 +22,10 @@
 
 <%= "%xhEffect:%xn "-%>
 <%= effect %>
+<% if damage_type %>
+<%=  "%xhDamage Type:%xn " -%>
+<%= damage_type %>
+<% end %>
 <%=  "%xhCast time:%xn " -%>
 <%= left( casting_time , 40)-%>
 <% if duration %>
@@ -30,9 +34,6 @@
 <% else %>
 <%=  "" %>
 <% end %>
-<% if damage_type %>
-<%=  "%xhDamage Type:%xn " -%>
-<%= damage_type %>
 <%=  "%xhRange:%xn " -%>
 <% if los  %>
 <%= range -%>

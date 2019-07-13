@@ -16,16 +16,14 @@ module AresMUSH
         FullautoAction
       when "pass"
         PassAction
-      when "spell1"
+      when "spell"
         SpellAction
       when "stun"
         SpellStunAction
       when "spelltarget1"
         SpellTargetAction
-      when "potion1"
+      when "potion"
         PotionAction
-      when "potiontarget1"
-        PotionTargetAction
       when "rally"
         RallyAction
       when "reload"
@@ -74,7 +72,7 @@ module AresMUSH
       end
 
       if (combatant.mind_shield_counter == 0 && combatant.mind_shield > 0)
-        FS3Combat.emit_to_combat combatant.combat, t('custom.shield_wore_off', :name => combatant.name, :spell => "Mind Shield"), nil, true
+        FS3Combat.emit_to_combat combatant.combat, t('custom.shield_wore_off', :name => combatant.name, :shield => "Mind Shield"), nil, true
         combatant.update(mind_shield: 0)
         combatant.log "#{combatant.name} no longer has a Mind Shield."
       elsif (combatant.mind_shield_counter > 0 && combatant.mind_shield > 0)
@@ -82,7 +80,7 @@ module AresMUSH
       end
 
       if (combatant.endure_fire_counter == 0 && combatant.endure_fire > 0)
-        FS3Combat.emit_to_combat combatant.combat, t('custom.shield_wore_off', :name => combatant.name, :spell => "Endure Fire"), nil, true
+        FS3Combat.emit_to_combat combatant.combat, t('custom.shield_wore_off', :name => combatant.name, :shield => "Endure Fire"), nil, true
         combatant.update(endure_fire: 0)
         combatant.log "#{combatant.name} can no longer Endure Fire."
       elsif (combatant.endure_fire_counter > 0 && combatant.endure_fire > 0)
@@ -90,7 +88,7 @@ module AresMUSH
       end
 
       if (combatant.endure_cold_counter == 0 && combatant.endure_cold > 0)
-        FS3Combat.emit_to_combat combatant.combat, t('custom.shield_wore_off', :name => combatant.name, :spell => "Endure Cold"), nil, true
+        FS3Combat.emit_to_combat combatant.combat, t('custom.shield_wore_off', :name => combatant.name, :shield => "Endure Cold"), nil, true
         combatant.update(endure_cold: 0)
         combatant.log "#{combatant.name} can no longer Endure Cold."
       elsif (combatant.endure_cold_counter > 0 && combatant.endure_cold > 0)
@@ -199,13 +197,13 @@ module AresMUSH
           FS3Combat.emit_to_combat combatant.combat, t('fs3combat.is_killed', :name => combatant.name, :damaged_by => damaged_by), nil, true
         end
 
-        if (!combatant.is_npc? && Custom.knows_spell?(combatant.associated_model, "Phoenix's Healing Flames"))
+        if (!combatant.is_npc? && Magic.knows_spell?(combatant, "Phoenix's Healing Flames"))
           combatant.update(is_ko: false)
           combatant.update(death_count: 0)
           combatant.log "Phoenix's Healing Flames: Setting #{combatant.name}'s KO to #{combatant.is_ko}."
           combatant.update(action_klass: "AresMUSH::FS3Combat::SpellAction")
           combatant.update(action_args: "#{combatant.name}/Phoenix's Healing Flames")
-          Custom.delete_all_untreated_damage(combatant.associated_model)
+          Magic.delete_all_untreated_damage(combatant.associated_model)
         end
       end
     end
@@ -386,27 +384,6 @@ module AresMUSH
       result
     end
 
-    def self.stopped_by_shield?(spell, target, combatant)
-      damage_type = Global.read_config("spells", spell, "damage_type")
-      roll_shield = Custom.roll_shield(target, combatant, spell)
-      if roll_shield == "shield"
-        if (damage_type == "Fire" && target.endure_fire > 0)
-          return "Endure Fire Held"
-        elsif (damage_type == "Cold" && target.endure_cold > 0)
-          return "Endure Cold Held"
-        end
-
-      elsif roll_shield == "failed"
-        if (damage_type == "Fire" && target.endure_fire > 0)
-          return "Endure Fire Failed"
-        elsif (damage_type == "Cold" && target.endure_cold > 0)
-          return "Endure Cold Failed"
-        end
-      else
-        return false
-      end
-    end
-
     def self.hit_mount?(attacker, defender, attacker_net_successes, mount_hit)
       return false if !defender.mount_type
 
@@ -465,9 +442,9 @@ module AresMUSH
       attacker_net_successes = attack_roll - defense_roll
       stopped_by_cover = target.stance == "Cover" ? FS3Combat.stopped_by_cover?(attacker_net_successes, combatant) : false
       hit = false
-      if (target.mind_shield > 0 || target.endure_fire > 0 || target.endure_cold > 0 )
-        stopped_by_shield = FS3Combat.stopped_by_shield?(combatant.weapon, target, combatant)
-      end
+
+      stopped_by_shield = Magic.stopped_by_shield?(combatant.weapon, target, combatant)
+
       weapon_type = FS3Combat.weapon_stat(combatant.weapon, "weapon_type")
       hit_mount = FS3Combat.hit_mount?(combatant, target, attacker_net_successes, mount_hit)
 
@@ -490,9 +467,9 @@ module AresMUSH
       elsif (stopped_by_cover)
         message = t('fs3combat.attack_hits_cover', :name => combatant.name, :target => target.name, :weapon => weapon)
       elsif stopped_by_shield == "Endure Fire Held"
-        message = t('custom.shield_held', :name => combatant.name, :spell => combatant.weapon, :shield => "Endure Fire", :target => target.name)
+        message = t('custom.shield_held', :name => combatant.name, :spell => combatant.weapon, :mod => "", :shield => "Endure Fire", :target => target.name)
       elsif stopped_by_shield == "Endure Cold Held"
-        message = t('custom.shield_held', :name => combatant.name, :spell => combatant.weapon, :shield => "Endure Cold", :target => target.name)
+        message = t('custom.shield_held', :name => combatant.name, :spell => combatant.weapon, :mod => "", :shield => "Endure Cold", :target => target.name)
       elsif (attacker_net_successes < 0)
         # Only can evade when being attacked by melee or when in a vehicle.
         if (weapon_type == 'Melee' || target.is_in_vehicle?)
@@ -606,9 +583,9 @@ module AresMUSH
 
       damage_type = Global.read_config("spells", weapon, "damage_type")
       if (damage_type == "Fire" && target.endure_fire > 0)
-        messages.concat [t('custom.shield_failed', :name => attacker.name, :spell => weapon, :shield => "Endure Fire", :target => target.name)]
+        messages.concat [t('custom.shield_failed', :name => attacker.name, :spell => weapon, :mod => "", :shield => "Endure Fire", :target => target.name)]
       elsif (damage_type == "Cold" && target.endure_cold > 0)
-        messages.concat [t('custom.shield_failed', :name => attacker.name, :spell => weapon, :shield => "Endure Cold", :target => target.name)]
+        messages.concat [t('custom.shield_failed', :name => attacker.name, :spell => weapon, :mod => "", :shield => "Endure Cold", :target => target.name)]
       end
 
 

@@ -165,6 +165,8 @@ spells:
     range: Touch
     roll: true
     school: Corpus
+    target_num: 1
+    target_optional: true
   Strength:
     available: true
     casting_time: 1 round
@@ -357,7 +359,6 @@ spells:
     level: 7
     name: Brink Of Death
     range: Touch
-    roll: true
     school: Corpus
     target_num: 1
     target_optional: true

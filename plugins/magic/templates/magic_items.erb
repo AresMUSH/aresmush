@@ -1,0 +1,17 @@
+%lh
+<%= t('magic.magic_items_title', :name => char.name.upcase) -%>
+<%= right( "Equipped: ", 55 - length ) -%>
+<%= equipped_item %>
+<% magic_items.each do |a| -%>
+
+<%= "%xh" %><%= a.name %><%= "%xn" %>
+<%= a.desc -%>
+
+<% end %>
+
+<%= line_with_text t('magic.potions_has_title') -%>
+<% potions_has.each do |a| -%>
+<%= a -%>
+<% end %>
+
+%lf

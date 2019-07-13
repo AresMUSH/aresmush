@@ -1,31 +1,44 @@
 module AresMUSH
   module FS3Combat
     class PotionAction < CombatAction
-      attr_accessor  :spell, :target, :names, :potion
+      attr_accessor  :spell, :target, :names, :potion, :has_target
       def prepare
+
         if (self.action_args =~ /\//)
           #Uses 'spell' instead of potion for easy c/p. Spell == potion.
-          self.names = self.action_args.before("/")
-          self.spell = self.action_args.after("/")
+          self.spell = self.action_args.before("/")
+          self.names = self.action_args.after("/")
+          self.has_target = true
         else
           self.names = self.name
           self.spell = self.action_args
         end
 
-
+        self.spell = self.spell.titlecase
+        self.potion = Magic.find_potion_has(combatant.associated_model, self.spell)
 
         error = self.parse_targets(self.names)
         return error if error
-
+        return t('magic.dont_have_potion') if (!combatant.is_npc? && !self.potion)
         return t('fs3combat.only_one_target') if (self.targets.count > 1)
+        targets.each do |target|
+          heal_points = Global.read_config("spells", self.spell, "heal_points")
+          wound = FS3Combat.worst_treatable_wound(target.associated_model)
+          return t('magic.no_healable_wounds', :target => target.name) if (heal_points && wound.blank?)
+        end
+        return nil
       end
 
       def print_action
-        msg = t('custom.potion_action_msg_long', :name => self.name, :potion => self.spell)
+        if self.has_target
+          msg = t('magic.potion_action_target_msg_long', :name => self.name, :potion => self.spell, :target => print_target_names)
+        else
+          msg = t('magic.potion_action_msg_long', :name => self.name, :potion => self.spell)
+        end
       end
 
       def print_action_short
-        t('custom.potion_action_msg_short')
+        t('magic.potion_action_target_msg_short', :target => print_target_names)
       end
 
       def resolve
@@ -41,6 +54,7 @@ module AresMUSH
         spell_mod = Global.read_config("spells", self.spell, "spell_mod")
         stance = Global.read_config("spells", self.spell, "stance")
         roll = Global.read_config("spells", self.spell, "roll")
+        rounds = Global.read_config("spells", self.spell, "rounds")
 
         succeeds = "%xgSUCCEEDS%xn"
 
@@ -50,93 +64,136 @@ module AresMUSH
           if heal_points
             wound = FS3Combat.worst_treatable_wound(target.associated_model)
             if (wound)
+              if target.death_count > 0
+                messages.concat [t('magic.potion_ko_heal', :name => self.name, :potion => self.spell, :points => heal_points)]
+              else
+                messages.concat [t('magic.potion_heal', :name => self.name, :potion => self.spell, :points => heal_points)]
+              end
               FS3Combat.heal(wound, heal_points)
-              messages.concat [t('custom.potion_heal', :name => self.name, :potion => self.spell, :points => heal_points)]
             else
-               messages.concat [t('custom.potion_heal_no_effect', :name => self.name, :potion => self.spell)]
+               messages.concat [t('magic.potion_heal_no_effect', :name => self.name, :potion => self.spell)]
             end
+            target.update(death_count: 0  )
           end
 
           #Equip Weapon
-          if weapon
+          if (weapon && weapon != "Spell")
             FS3Combat.set_weapon(combatant, target, weapon)
             if armor
 
             else
-              messages.concat [t('custom.use_potion', :name => self.name, :potion => self.spell)]
+              if target.name == combatant.name
+                messages.concat [t('magic.use_potion', :name => self.name, :potion => self.spell)]
+              else
+                messages.concat [t('magic.use_potion_target', :name => self.name, :target => target.name, :potion => self.spell)]
+              end
             end
           end
 
           #Equip Weapon Specials
           if weapon_specials_str
-            weapon_specials = weapon_specials_str ? weapon_specials_str.split('+') : nil
-            FS3Combat.set_weapon(combatant, target, target.weapon, weapon_specials)
+            Magic.spell_weapon_effects(self.combatant, self.spell)
+            weapon = self.combatant.weapon.before("+")
+            FS3Combat.set_weapon(nil, target, weapon, [weapon_specials_str])
             if heal_points
 
             elsif lethal_mod || defense_mod || attack_mod || spell_mod
 
             else
-              messages.concat [t('custom.use_potion', :name => self.name, :potion => self.spell)]
+              if target.name == combatant.name
+                messages.concat [t('magic.use_potion', :name => self.name, :potion => self.spell)]
+              else
+                messages.concat [t('magic.use_potion_target', :name => self.name, :target => target.name, :potion => self.spell)]
+              end
             end
           end
 
           #Equip Armor
           if armor
             FS3Combat.set_armor(combatant, target, armor)
-            messages.concat [t('custom.use_potion', :name => self.name, :potion => self.spell)]
+            if target.name == combatant.name
+              messages.concat [t('magic.use_potion', :name => self.name, :potion => self.spell)]
+            else
+              messages.concat [t('magic.use_potion_target', :name => self.name, :target => target.name, :potion => self.spell)]
+            end
           end
 
           #Equip Armor Specials
           if armor_specials_str
             armor_specials = armor_specials_str ? armor_specials_str.split('+') : nil
             FS3Combat.set_armor(combatant, target, target.armor, armor_specials)
-            messages.concat [t('custom.use_potion', :name => self.name, :potion => self.spell)]
+            if target.name == combatant.name
+              messages.concat [t('magic.use_potion', :name => self.name, :potion => self.spell)]
+            else
+              messages.concat [t('magic.use_potion_target', :name => self.name, :target => target.name, :potion => self.spell)]
+            end
           end
 
 
           #Apply Mods
           if lethal_mod
-            current_mod = target.damage_lethality_mod
-            new_mod = current_mod + lethal_mod
-            target.update(damage_lethality_mod: new_mod)
-            messages.concat  [t('custom.potion_mod', :name => self.name, :potion => self.spell, :mod => target.damage_lethality_mod, :type => "lethality")]
+            target.update(lethal_mod_counter: rounds)
+            target.update(damage_lethality_mod: lethal_mod)
+            if target.name == combatant.name
+              messages.concat  [t('magic.potion_mod', :name => self.name, :potion => self.spell, :mod => target.damage_lethality_mod, :type => "lethality")]
+            else
+              messages.concat  [t('magic.potion_mod_target', :name => self.name, :potion => self.spell, :target => target.name, :mod => target.damage_lethality_mod, :type => "lethality")]
+            end
           end
 
           if attack_mod
-            current_mod = target.attack_mod
-            new_mod = current_mod + attack_mod
-            target.update(attack_mod: new_mod)
-            messages.concat  [t('custom.potion_mod', :name => self.name, :potion => self.spell, :mod => target.attack_mod, :type => "attack")]
+            target.update(attack_mod_counter: rounds)
+            target.update(attack_mod: attack_mod)
+            if target.name == combatant.name
+              messages.concat  [t('magic.potion_mod', :name => self.name, :potion => self.spell, :mod => target.attack_mod, :type => "attack")]
+            else
+              messages.concat  [t('magic.potion_mod_target', :name => self.name, :potion => self.spell, :target => target.name, :mod => target.attack_mod, :type => "attack")]
+            end
           end
 
           if defense_mod
-            current_mod = target.defense_mod
-            new_mod = current_mod + defense_mod
-            target.update(defense_mod: new_mod)
-            messages.concat [t('custom.potion_mod', :name => self.name, :potion => self.spell, :mod => target.defense_mod, :type => "defense")]
+            target.update(defense_mod_counter: rounds)
+            target.update(defense_mod: defense_mod)
+            if target.name == combatant.name
+              messages.concat  [t('magic.potion_mod', :name => self.name, :potion => self.spell, :mod => target.defense_mod, :type => "defense")]
+            else
+              messages.concat  [t('magic.potion_mod_target', :name => self.name, :potion => self.spell, :target => target.name, :mod => target.defense_mod, :type => "defense")]
+            end
           end
 
           if spell_mod
-            current_mod = target.spell_mod
-            new_mod = current_mod + spell_mod
-            target.update(spell_mod: new_mod)
-            messages.concat  [t('custom.potion_mod', :name => self.name, :potion => self.spell, :mod => target.spell_mod, :type => "spell")]
+            target.update(spell_mod_counter: rounds)
+            target.update(spell_mod: spell_mod)
+            if target.name == combatant.name
+              messages.concat  [t('magic.potion_mod', :name => self.name, :potion => self.spell, :mod => target.spell_mod, :type => "spell")]
+            else
+              messages.concat  [t('magic.potion_mod_target', :name => self.name, :potion => self.spell, :target => target.name, :mod => target.spell_mod, :type => "spell")]
+            end
           end
 
           #Change Stance
           if stance
             target.update(stance: stance)
-            messages.concat [t('custom.potion_stance', :name => self.name, :potion => self.spell, :stance => stance)]
+            target.update(stance_counter: rounds)
+            target.update(stance_spell: self.spell)
+            if target.name == combatant.name
+              messages.concat [t('magic.potion_stance', :name => self.name, :potion => self.spell, :stance => stance, :rounds => rounds)]
+            else
+              messages.concat [t('magic.potion_stance_target', :name => self.name, :potion => self.spell, :target => target.name, :stance => stance, :rounds => rounds)]
+            end
           end
 
           #Roll
           if roll
-            succeeds = Custom.roll_combat_spell_success(self.combatant, self.spell)
-            messages.concat [t('custom.potion_resolution_msg', :name => self.name, :potion => self.spell)]
+            if target.name == combatant.name
+              messages.concat [t('magic.use_potion', :name => self.name, :potion => self.spell)]
+            else
+              messages.concat [t('magic.use_potion_target', :name => self.name, :target => target.name, :potion => self.spell)]
+            end
           end
 
           if !combatant.is_npc?
-            potion = Custom.find_potion_has(combatant.associated_model, self.spell)
+            potion = Magic.find_potion_has(combatant.associated_model, self.spell)
             potion.delete
           end
 

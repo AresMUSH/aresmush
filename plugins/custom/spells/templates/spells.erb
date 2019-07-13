@@ -1,7 +1,7 @@
 %lh
-<%= left( t('custom.spells_title', :name => char.name.upcase) , 65 ) -%>
+<%= left( t('magic.spells_title', :name => char.name.upcase) , 65 ) -%>
 <%=  spell_count -%><%= "/30 spells" %>
-<%= t('custom.spells_header') %>
+<%= t('magic.spells_header') %>
 <% if major_school %>
 <%= line_with_text major_school %>
 <% spell_list.each_with_index do |a, index| -%>
@@ -43,9 +43,12 @@
 
 
 <% if spells_learned.any? {|s| s.learning_complete == false}  %>
-<%=  t('custom.learning_spells_title', :name => char.name.upcase) %>
+<%=  t('magic.learning_spells_title', :name => char.name.upcase) %>
 
-<%= t('custom.spells_learning_header') %>
+<%= t('magic.spells_learning_header') -%>
+<%= "(" -%>
+<% char.xp -%>
+<%= " XP)" %>
 <% if spells_learned.any? {|s| s.school == major_school && s.learning_complete == false}  %>
 <%= line_with_text major_school %>
 <% end %>

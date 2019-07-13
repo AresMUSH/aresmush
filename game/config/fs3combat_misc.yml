@@ -91,16 +91,8 @@ fs3combat:
     mounts: mount
     weapons: weapon
     attack: combat/attack
-    combat/aoe: combat/explode
-    aoe: combat/explode
     combat/stun: combat/suppress
-    stun: combat/suppress
     newturn: combat/newturn
-    combat/cast: spell/cast
-    cast: spell/cast
-    castm: spell/castmulti
-    castmulti: spell/castmulti
-    spell/castm: spell/castmulti
   stances:
     Aggressive:
       attack_mod: 2

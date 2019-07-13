@@ -108,6 +108,7 @@ spells:
     casting_time: 1 round
     desc: Subdue an enemy with telekinetic strength, disabling them for one round.
     effect: Stun
+    fs3_attack: true
     is_stun: true
     rounds: 1
     level: 3
@@ -242,6 +243,20 @@ spells:
     range: Touch
     roll: true
     school: Will
+  Mass Flight:
+    available: true
+    casting_time: 1 round
+    desc: "Confers the power of flight upon up to 3 targeted creatures. Each recipient of the spell must remain within 30 feet of at least one other recipient, or the spell ends for the creature that is separated from the others."
+    duration: 30 minutes
+    effect: Travel
+    level: 7
+    line_of_sight: true
+    name: Mass Flight
+    range: Short
+    roll: true
+    school: Will
+    target_num: 3
+    target_optional: true
   Mass Telekinetic Burst:
     area: 15 yard radius
     available: false

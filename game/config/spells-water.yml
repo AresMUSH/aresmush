@@ -145,6 +145,7 @@ spells:
     range: Self
     roll: true
     school: Water
+    target_num: 1
   #Level 4
   Cone Of Cold:
     area: 5 ft maximum width
