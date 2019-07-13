@@ -52,9 +52,9 @@ module AresMUSH
         return t('magic.invalid_name')
       elsif targets == "None"
         if is_potion
-          message = t('magic.use_potion', :name => caster.name, :potion => spell)
+          message = [t('magic.use_potion', :name => caster.name, :potion => spell)]
         else
-          message = t('magic.casts_noncombat_spell', :name => caster.name, :spell => spell, :mod => mod, :succeeds => success)
+          message = [t('magic.casts_noncombat_spell', :name => caster.name, :spell => spell, :mod => mod, :succeeds => success)]
         end
       else
         messages = []
