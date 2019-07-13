@@ -17,7 +17,7 @@ module AresMUSH
           Global.logger.debug "Potion creation time updating"
 
           Character.all.each do |c|
-            Custom.update_potion_hours(c)
+            Magic.update_potion_hours(c)
           end
         end
 
