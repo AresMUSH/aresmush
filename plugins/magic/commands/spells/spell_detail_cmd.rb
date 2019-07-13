@@ -17,9 +17,10 @@ module AresMUSH
         return nil
       end
 
+
       def handle
-        template = SpellDetailTemplate.new(name)
-        client.emit template.render
+           template = SpellDetailTemplate.new(name)
+           client.emit template.render
       end
 
     end

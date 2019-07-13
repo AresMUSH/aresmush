@@ -82,7 +82,7 @@ module AresMUSH
         when "hascast"
           return SpellHascastCmd
         end
-        # return SpellDetailCmd
+        return SpellDetailCmd
       end
 
       case cmd.root
