@@ -16,6 +16,8 @@ module AresMUSH
         if (!enactor.is_admin?)
           return { error: t('dispatcher.not_allowed') }
         end
+
+        Website.add_to_recent_changes('wiki', t('webportal.wiki_deleted', :name => page.title), { version_id: 0, page_name: page.name }, enactor.name)
           
         page.delete
         

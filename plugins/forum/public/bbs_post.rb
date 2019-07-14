@@ -68,5 +68,14 @@ module AresMUSH
     def created_date_str_short(char)
       OOCTime.local_short_timestr(char, self.created_at)
     end
+    
+    def last_activity_time_str(viewer)
+      elapsed = Time.now - self.last_updated
+      if (elapsed < 86400 * 30)
+        TimeFormatter.format(elapsed)
+      else
+        OOCTime.local_short_timestr(viewer, self.last_updated)
+      end
+    end
   end
 end

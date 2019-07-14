@@ -21,7 +21,7 @@ You can create and edit your own events.  Characters with the `manage_events` pe
 
 > Note: When creating and editing events, times must be specified in the **server's** timezone.  This will be automatically converted to local time for anyone who has their timezone set.
 
-`event/create <title>=<date and time>/<description>`
+`event/create <title>=<date and time>/<description>` - Creates an event. Default date format is 2/1/2019 6:54pm.
 `event/edit <#>` - Grabs the current event into your edit buffer (see help edit)
 `event/update <#>=<title>/<date and time>/<description>`
 `event/delete <#>`
