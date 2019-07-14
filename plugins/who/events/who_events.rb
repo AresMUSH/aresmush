@@ -12,9 +12,7 @@ module AresMUSH
           
           Achievements.award_achievement(char, "who_record_broken", 'community', "Broke the online record.")
           
-          Global.notifier.notify_ooc(:who_record, t('who.new_online_record', :count => count)) do |char|
-            true
-          end
+          Channels.announce_notification t('who.new_online_record', :count => count)
         end
       end      
     end

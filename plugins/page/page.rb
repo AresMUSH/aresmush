@@ -57,6 +57,8 @@ module AresMUSH
         return SendPageRequestHandler
       when "markPageThreadRead"
         return MarkThreadReadRequestHandler
+      when "reportPage"
+        return ReportPageRequestHandler
       end
     end
     

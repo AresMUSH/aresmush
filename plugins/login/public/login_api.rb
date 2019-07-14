@@ -88,7 +88,8 @@ module AresMUSH
       # Check for duplicate notification
       key = "#{type}|#{message}|#{data}"
       return if char.login_notices.find(is_unread: true).any? { |n| "#{n.type}|#{n.message}|#{n.data}" == key }
-      LoginNotice.create(character: char, type: type, message: message, data: data)
+      unread = !Login.is_online?(char)
+      LoginNotice.create(character: char, type: type, message: message, data: data, is_unread: unread)
       Global.client_monitor.notify_web_clients(:notification_update, "#{char.unread_notifications.count}") do |c|
         c == char 
       end

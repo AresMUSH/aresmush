@@ -63,3 +63,5 @@ en:
         char_removed_from_channel: "You remove %{char} from channel %{channel}."
         force_added: "You have been added to channel %{channel} by %{char}."
         force_removed: "You have been removed from channel %{channel} by %{char}."
+        
+        more_on_portal: "Full channel history is available on the web portal."
