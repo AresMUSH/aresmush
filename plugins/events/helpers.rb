@@ -86,7 +86,7 @@ module AresMUSH
       Events.events_updated
       message = t('events.event_updated_notification', :name => enactor.name, :title => title)
       event.signups.each do |s|
-        Login.notify(s.character, :event, message, event.id)
+        Login.notify(s.character, :event, message, event.id) 
       end
       Channels.announce_notification(message)
       Website.add_to_recent_changes('event', t('events.event_updated_change', :title => title), { id: event.id }, enactor.name)
