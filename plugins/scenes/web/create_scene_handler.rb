@@ -5,7 +5,8 @@ module AresMUSH
         enactor = request.enactor
         plot = request.args[:plot_id]
         completed = (request.args[:completed] || "").to_bool
-        privacy = request.args[:privacy]
+        privacy = request.args[:privacy] || "Private"
+        log = request.args[:log] || ""
 
         error = Website.check_login(request)
         return error if error
@@ -78,6 +79,10 @@ module AresMUSH
         end
 
         Scenes.add_to_scene(scene, request.args[:log], enactor)
+
+        if (!log.blank?)
+          Scenes.add_to_scene(scene, log, enactor)
+        end
         if (completed)
           Scenes.share_scene(scene)
         else

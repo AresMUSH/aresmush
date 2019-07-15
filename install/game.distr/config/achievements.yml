@@ -1,6 +1,5 @@
 ---
 achievements:
-  announce_channel: ''
   custom_achievements: {}
   shortcuts:
     achievements: achievement

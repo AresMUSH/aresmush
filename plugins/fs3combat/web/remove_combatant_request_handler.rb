@@ -3,18 +3,19 @@ module AresMUSH
     class RemoveCombatantRequestHandler
       def handle(request)
         id = request.args[:id]
+        name = request.args[:name]
         enactor = request.enactor
 
         error = Website.check_login(request)
         return error if error
         
-        combatant = Combatant[id]
-        if (!combatant)
+        combat = Combat[id]
+        if (!combat)
           return { error: t('webportal.not_found') }
         end
 
-        combat = combatant.combat
-        can_manage = (enactor == combat.organizer) || enactor.is_admin? || (enactor.name == combatant.name)
+        combatant = combat.find_combatant(name)
+        can_manage = FS3Combat.can_manage_combat?(enactor, combat) || (enactor.name == combatant.name)
         
         if (!can_manage)
           return { error: t('dispatcher.not_allowed') }

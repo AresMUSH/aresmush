@@ -6,22 +6,32 @@ module AresMUSH
         enactor = request.enactor
         name = (request.args[:name] || "").downcase
         allow_overwrite = request.args[:allow_overwrite] ? request.args[:allow_overwrite] : false
-        folder = request.args[:folder] || ""
+        folder = (request.args[:folder] || "").downcase
         size_kb = (request.args[:size_kb] || "").to_i
         data = request.args[:data]
         
         error = Website.check_login(request)
         return error if error
         
-        if (!enactor.is_approved?)
-          return { error: t('dispatcher.not_allowed') }
-        end
-      
         if (name.blank? || folder.blank?)
           return { error: t('webportal.missing_required_fields') }
         end
         
-        if (folder && folder.downcase == "theme_images" && !enactor.is_admin?)
+        is_wiki_admin = Website.can_manage_wiki?(enactor)
+        extension = File.extname(name)
+
+        if (!is_wiki_admin && !['.png', '.jpg'].include?(extension))
+          return { error: t('webportal.only_upload_images') }
+        end
+        
+        # Unapproved chars can only update their own profile image.
+        if (!enactor.is_approved?)
+          name = "profile#{extension}"
+          folder = "#{enactor.name.downcase}"
+          allow_overwrite = true
+        end
+        
+        if (folder && folder.downcase == "theme_images" && !is_wiki_admin)
           return { error: t('webportal.theme_locked_to_admin') }
         end
         
@@ -47,8 +57,11 @@ module AresMUSH
         
         File.open(path, 'wb') {|f| f.write Base64.decode64(data.after(',')) }
         
+        Website.add_to_recent_changes('file', t('webportal.file_uploaded', :name => "#{folder}/#{name}"), { name: name, folder: folder }, enactor.name)
+        
         {
-          name: name
+          name: name,
+          folder: folder
         }
       end
     end

@@ -154,7 +154,7 @@ module AresMUSH
           profile_gallery: (char.profile_gallery || {}).map { |g| Website.get_file_info(g) },
           background: show_background ? Website.format_markdown_for_html(char.background) : nil,
           description: Website.format_markdown_for_html(char.description),
-          rp_hooks: Website.format_markdown_for_html(char.rp_hooks),
+          rp_hooks: char.rp_hooks ? Website.format_markdown_for_html(char.rp_hooks) : '',
           plot_prefs: Website.format_markdown_for_html(char.plot_prefs),
           secret_name: char.secret_name,
           secret_summary: char.secret_summary,

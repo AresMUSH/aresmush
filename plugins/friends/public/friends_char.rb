@@ -6,6 +6,7 @@ module AresMUSH
     
     def delete_friendships
       self.friendships.each { |f| f.delete }
+      self.friends_of.each { |f| f.delete }
     end
     
     def is_friend?(potential_friend)

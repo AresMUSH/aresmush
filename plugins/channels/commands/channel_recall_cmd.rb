@@ -8,7 +8,7 @@ module AresMUSH
       def parse_args
         args = cmd.parse_args(ArgParser.arg1_equals_optional_arg2)
         self.name = args.arg1
-        self.num_messages = integer_arg(args.arg2) || 25
+        self.num_messages = integer_arg(args.arg2) || 50
       end
       
       def required_args
@@ -17,7 +17,7 @@ module AresMUSH
       
       def check_number
         return t('channels.invalid_recall_limit') if self.num_messages < 1
-        return t('channels.invalid_recall_limit') if self.num_messages > 25
+        return t('channels.invalid_recall_limit') if self.num_messages > 50
         return nil
       end
       
@@ -27,7 +27,9 @@ module AresMUSH
           start_message = [ (total_messages - self.num_messages), 0 ].max
           messages = channel.messages[start_message, total_messages]
           list = messages.map { |m| " [#{OOCTime.local_long_timestr(enactor, m['timestamp'])}] #{channel.display_name}  #{m['message']}"}
-          template = BorderedListTemplate.new list, t('channels.recall_history', :name => channel.display_name(false))
+          template = BorderedListTemplate.new list, 
+              t('channels.recall_history', :name => channel.display_name(false)), 
+              "%R%ld%R#{t('channels.more_on_portal')}"
           client.emit template.render
         end
       end

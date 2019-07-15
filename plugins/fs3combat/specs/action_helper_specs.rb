@@ -266,14 +266,14 @@ module AresMUSH
         
         it "should choose reload if out of ammo" do
           expect(FS3Combat).to receive(:check_ammo).with(@combatant, 1) { false }
-          expect(FS3Combat).to receive(:set_action).with(@client, nil, @combat, @combatant, FS3Combat::ReloadAction, "")
-          FS3Combat.ai_action(@combat, @client, @combatant)
+          expect(FS3Combat).to receive(:set_action).with(nil, @combat, @combatant, FS3Combat::ReloadAction, "")
+          FS3Combat.ai_action(@combat, @combatant)
         end
         
         it "should choose escape if subdued" do
           allow(@combatant).to receive(:is_subdued?) { true }
-          expect(FS3Combat).to receive(:set_action).with(@client, nil, @combat, @combatant, FS3Combat::EscapeAction, "")
-          FS3Combat.ai_action(@combat, @client, @combatant)
+          expect(FS3Combat).to receive(:set_action).with(nil, @combat, @combatant, FS3Combat::EscapeAction, "")
+          FS3Combat.ai_action(@combat, @combatant)
         end
 
         describe "attack" do
@@ -291,28 +291,28 @@ module AresMUSH
                    
           it "should attack a random target" do
             expect(FS3Combat).to receive(:find_ai_target).with(@combat, @combatant) { @target2 }
-            expect(FS3Combat).to receive(:set_action).with(@client, nil, @combat, @combatant, FS3Combat::AttackAction, "Bob")
-            FS3Combat.ai_action(@combat, @client, @combatant)
+            expect(FS3Combat).to receive(:set_action).with(nil, @combat, @combatant, FS3Combat::AttackAction, "Bob")
+            FS3Combat.ai_action(@combat, @combatant)
           end
           
           it "should do nothing if no valid target found" do
             expect(FS3Combat).to receive(:find_ai_target).with(@combat, @combatant) { nil }
-            expect(FS3Combat).to receive(:set_action).with(@client, nil, @combat, @combatant, FS3Combat::PassAction, "")
-            FS3Combat.ai_action(@combat, @client, @combatant)
+            expect(FS3Combat).to receive(:set_action).with(nil, @combat, @combatant, FS3Combat::PassAction, "")
+            FS3Combat.ai_action(@combat, @combatant)
           end
           
           it "should use the explode action for explosive weapons" do
             expect(FS3Combat).to receive(:weapon_stat).with("Rifle", "weapon_type") { "Explosive" }            
-            expect(FS3Combat).to receive(:set_action).with(@client, nil, @combat, @combatant, FS3Combat::ExplodeAction, "Bob")
+            expect(FS3Combat).to receive(:set_action).with(nil, @combat, @combatant, FS3Combat::ExplodeAction, "Bob")
 
-            FS3Combat.ai_action(@combat, @client, @combatant)
+            FS3Combat.ai_action(@combat, @combatant)
           end
           
           it "should use the suppress action for suppressive weapons" do
             expect(FS3Combat).to receive(:weapon_stat).with("Rifle", "weapon_type") { "Suppressive" }            
-            expect(FS3Combat).to receive(:set_action).with(@client, nil, @combat, @combatant, FS3Combat::SuppressAction, "Bob")
+            expect(FS3Combat).to receive(:set_action).with(nil, @combat, @combatant, FS3Combat::SuppressAction, "Bob")
 
-            FS3Combat.ai_action(@combat, @client, @combatant)
+            FS3Combat.ai_action(@combat, @combatant)
           end
           
         end

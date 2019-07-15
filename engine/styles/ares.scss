@@ -112,6 +112,7 @@ code {
 .ember-basic-dropdown-content {
   z-index: 3001;
 }
+
 /* -------------------------
 NAVIGATION
 ------------------------- */
@@ -996,8 +997,15 @@ input[type='file'] {
   color: transparent;
 }
 
-.combat-danage {
+.combat-damage {
   color: red;
+}
+
+#combat-log {
+  max-height: 100px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  margin: 5px;
 }
 /* -------------------------
 CHAT SCREEN
@@ -1019,6 +1027,10 @@ CHAT SCREEN
   word-wrap: break-word;
 }
 
+.chat-report {
+  max-height: 200px;
+   overflow-y: scroll;
+}
 .timestamp-tip {
   color: $faded-text-color;
   font-style: italic;
