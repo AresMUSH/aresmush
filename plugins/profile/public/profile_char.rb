@@ -32,13 +32,15 @@ module AresMUSH
     end
 
     def set_profile(new_profile, enactor)
-      if (self.profile == new_profile)
-        return
-      end
       self.update(profile: new_profile)
       self.update(profile_last_edited: Time.now)
-      version = ProfileVersion.create(character: self, text: build_profile_version, author: enactor)
-      Website.add_to_recent_changes('char', version.id, self.name)
+
+      history_text = build_profile_version
+      if (last_profile_version && last_profile_version.text == history_text)
+        return
+      end
+      version = ProfileVersion.create(character: self, text: history_text, author: enactor)
+      Website.add_to_recent_changes('char', t('profile.profile_updated', :name => self.name), { version_id: version.id, char_name: self.name }, enactor.name)
     end
   end
 

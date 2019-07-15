@@ -91,6 +91,8 @@ module AresMUSH
         return ShutdownCmd
       when "statue", "unstatue"
         return StatueCmd
+      when "theme"
+        return ThemeInstallCmd
       when "unload"
         return UnloadPluginCmd
       when "upgrade"

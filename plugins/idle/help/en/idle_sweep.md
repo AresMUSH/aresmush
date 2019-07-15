@@ -10,6 +10,7 @@ aliases:
 
 ## Idle Sweep
 
+See the [idle sweep tutorial](https://aresmush.com/tutorials/manage/idle.html) for an overview of how the idle sweep works and some important tips.
 
 `idle/start` - Builds up a list of idle players.
 `idle` - Review everyone's actions.

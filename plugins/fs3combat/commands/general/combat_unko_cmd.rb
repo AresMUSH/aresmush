@@ -24,7 +24,7 @@ module AresMUSH
 
           combatant.update(is_ko: false)
           combatant.update(death_count: 0  )
-          client.emit_success t('fs3combat.is_no_longer_koed', :name => self.name)
+          FS3Combat.emit_to_combat combatant.combat, t('fs3combat.is_no_longer_koed', :name => combatant.name), nil, true
         end
       end
     end

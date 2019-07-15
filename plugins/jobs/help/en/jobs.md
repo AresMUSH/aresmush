@@ -24,14 +24,7 @@ For a general overview of using jobs, see the aresmush.com [Jobs tutorial](https
 `jobs/filter <fliter>` - Filters the jobs list.
 `jobs/mine`, `jobs/active` - Shortcuts for the common filters.
 
-Valid filters are:
-
-* Active - Jobs that are active (not done or on hold) and/or have new activity since you last looked.  This is the default filter.
-* Mine - Active jobs assigned to you.
-* Unfinished - All jobs not marked done.
-* Unread - Jobs with new activity.
-* (Category Name) - Active jobs in the given category.
-* All - All jobs.
+Valid filters are: active, mine, unfinished, unread, all, or a specific category name
 
 ## Creating Jobs
 

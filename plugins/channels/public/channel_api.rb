@@ -26,5 +26,12 @@ module AresMUSH
       Channels.emit_to_channel channel, message, options.title
       return true
     end
+    
+    def self.announce_notification(notification)
+      channel_name = Global.read_config("channels", "announce_channel")
+      if (!channel_name.blank?)
+        Channels.send_to_channel(channel_name, notification)
+      end
+    end
   end
 end
