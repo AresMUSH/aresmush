@@ -12,6 +12,8 @@ module AresMUSH
         "pass" => PassAction,
         "rally" => RallyAction,
         "reload" => ReloadAction,
+        "spell" => SpellAction,
+        "potion" => PotionAction,
         "treat" => TreatAction,
         "subdue" => SubdueAction,
         "suppress" => SuppressAction
