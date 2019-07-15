@@ -9,14 +9,7 @@ module AresMUSH
         target_name = request.args[:target_name]
         mod = request.args[:mod]
 
-        if !target_name.blank?
-          target = Character.named(target_name)
-          if !target
-            return { error: "That is not a character." }
-          end
-        else
-          target = enactor
-        end
+
 
 
         if (!scene)
@@ -38,6 +31,18 @@ module AresMUSH
           return { error: t('magic.not_spell') }
         else
           spell = spell_string
+        end
+
+        if !target_name.blank?
+          Global.logger.debug "Target_name: #{target_name}"
+          target_num = Global.read_config("spells", spell, "target_num")
+          target = Magic.parse_spell_targets(target_name, target_num)
+          Global.logger.debug "Target: #{target}"
+          if target == "no_target"
+            return { error: t('magic.invalid_name') }
+          end
+        else
+          target = enactor
         end
 
         if !Magic.knows_spell?(enactor, spell)
@@ -65,7 +70,12 @@ module AresMUSH
           if target_name.nil?
             message = [t('magic.casts_spell', :name => caster.name, :spell => spell, :mod => mod, :succeeds => success)]
           else
-            message = [t('magic.casts_spell_with_target', :name => caster.name, :spell => spell, :mod => mod, :target => target_name, :succeeds => success)]
+            names = []
+            target.each do |target|
+              names.concat [target.name]
+            end
+            names = names.join(", ")
+            message = [t('magic.casts_spell_with_target', :name => caster.name, :spell => spell, :mod => mod, :target => names, :succeeds => success)]
           end
         end
         Global.logger.debug "Target name: #{target_name} "
