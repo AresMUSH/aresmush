@@ -253,5 +253,16 @@ module AresMUSH
     def self.active_channels(char)
       char.channels.select { |c| !Channels.is_muted?(char, c) }
     end
+    
+    def self.report_channel_abuse(enactor, channel, messages, reason) 
+      messages = messages.map { |m| "  [#{OOCTime.local_long_timestr(enactor, m['timestamp'])}] #{channel.display_name} #{m['message']}"}.join("%R")
+
+      body = t('channels.channel_reported_body', :name => channel.name, :reporter => enactor.name)
+      body << reason
+      body << "%R-------%R"
+      body << messages
+
+      Jobs.create_job(Jobs.trouble_category, t('channels.channel_reported_title'), body, Game.master.system_character)
+    end
   end
 end

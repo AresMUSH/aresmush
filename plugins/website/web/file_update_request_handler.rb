@@ -47,6 +47,9 @@ module AresMUSH
         
         FileUtils.mv(path, new_path)
         
+        Website.add_to_recent_changes('file', t('webportal.file_moved', :name => "#{folder}/#{name}"), { name: new_name, folder: new_folder }, enactor.name)
+        
+        
         {
           path: new_path.gsub(AresMUSH.website_uploads_path, ''),
           folder: new_folder,

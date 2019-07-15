@@ -6,9 +6,9 @@ chargen:
   approval_message: Congratulations!  Your application has been approved.  Type %xhonstage%xn
     to go forth and RP.  You may want to customize your character profile on the web
     portal.
-  bg_blurb: 'You don''t need to write a novel. Just cover the basics: who you are,
-    why are you here, and is there anything noteworthy about you. Be sure to explain
-    any unusual skills.'
+  bg_blurb: A background is your character's backstory or history.  You don''t need to write a novel. 
+    Just cover the basics--who you are, why are you here, and anything noteworthy 
+    about you. Be sure to explain any unusual skills.
   desc_blurb: You can set both your main description, visible when people look at
     you, and a short description that shows your character at a glance.
   hooks_blurb: RP Hooks are interesting things about your character that others can
@@ -16,6 +16,9 @@ chargen:
     has, or anything else that might inspire someone to connect with you. Looking
     around at other character's sheets can be a good way to get inspiration for RP
     Hooks.
+  icon_blurb: Your profile icon appears in scenes and the character gallery to show your character
+    at a glance. Providing a profile icon is optional. You can upload additional character images
+    once you're approved.
   hooks_required: true
   post_approval_message: Please make sure they have a profile image for their log
     icon.
@@ -36,9 +39,11 @@ chargen:
     hook/add: hook/set
   stages:
     start:
-      tutorial: chargen.md
+      title: "Chargen Commands"
+      text: "You can do chargen either on the Web Portal (help web portal) or in-game.  They both have the same information - it's just a matter of preference.%R%RIf you choose to use the in-game chargen, the %xccg%xn command will walk you through the necessary steps.%R%RYou can go back and forth through the steps of chargen as much as you want using %xccg/next%xn and %xccg/prev%xn."
     app:
-      tutorial: app command.md
+      title: "App Review"
+      text: The `app` command is your friend during chargen.  It will alert you to things you may have forgotten to set.  %xrred%xn issues will almost certainly prevent your character from being approved (like forgetting to set your eye color).  %xyYellow%xn issues are warnings; they might actually be OK if it fits the character concept.
     sheet:
       help: sheets
     demographics:
@@ -62,7 +67,8 @@ chargen:
     lastwill:
       help: idle_out
     review:
-      help: apps
+      title: "App Submission"
+      text: "You've completed chargen!  Review your app one more time, and use `app/submit [<optional notes>]` to submit your character when ready.  The admins will make sure it's a good fit for the game's theme, that the skills are reasonable given the background, and that you haven't missed anything important in chargen. See `help apps` for additional help on the app review process."
   welcome_message: Please welcome %{name}, our latest %{position} to be approved!
   arrivals_category: New Arrivals
   app_review_commands:
@@ -74,5 +80,5 @@ chargen:
   allow_web_submit: true
   groups_blurb: Groups determine your character's affiliations.
   demographics_blurb: Demographics record your basic character info.
-  lastwill_blurb: "The fate of idled-out characters is at the game admin's discretion, but you can register a preference with your character's 'last will'."
+  lastwill_blurb: "The fate of idled-out characters is at the game admin's discretion, but you can register a preference with your character's 'last will'. You may ask to be killed off, or turned into a NPC, or whatever."
   rank_blurb: Military rank.
