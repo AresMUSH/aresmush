@@ -47,14 +47,14 @@ module AresMUSH
         targets = "None"
       end
       if targets == "too_many_targets"
-        return t('magic.too_many_targets', :spell => spell, :num => target_num)
+        return [t('magic.too_many_targets', :spell => spell, :num => target_num)]
       elsif targets == "no_target"
-        return t('magic.invalid_name')
+        return [t('magic.invalid_name')]
       elsif targets == "None"
         if is_potion
           message = t('magic.use_potion', :name => caster.name, :potion => spell)
         else
-          message = t('magic.casts_noncombat_spell', :name => caster.name, :spell => spell, :mod => mod, :succeeds => success)
+          message = t('magic.casts_spell', :name => caster.name, :spell => spell, :mod => mod, :succeeds => success)
         end
       else
         messages = []
@@ -73,7 +73,7 @@ module AresMUSH
         if is_potion
          msg = [t('magic.use_potion_target', :name => caster.name, :potion => spell, :target => print_names)]
        else
-         msg = [t('magic.casts_noncombat_spell_with_target', :name => caster.name, :target => print_names, :spell => spell, :mod => mod, :succeeds => success)]
+         msg = [t('magic.casts_spell_with_target', :name => caster.name, :target => print_names, :spell => spell, :mod => mod, :succeeds => success)]
        end
       end
       if message
@@ -113,9 +113,9 @@ module AresMUSH
         targets = [caster]
       end
       if targets == "too_many_targets"
-        return t('magic.too_many_targets', :spell => spell, :num => target_num)
+        return [t('magic.too_many_targets', :spell => spell, :num => target_num)]
       elsif targets == "no_target"
-        return t('magic.invalid_name')
+        return [t('magic.invalid_name')]
       else
         messages = []
         targets.each do |target|
@@ -159,7 +159,7 @@ module AresMUSH
         type = "ice"
       end
 
-      message = t('magic.cast_shield', :name => caster.name, :spell => spell, :mod => mod, :succeeds => "%xgSUCCEEDS%xn", :target =>  target.name, :type => type)
+      message = [t('magic.cast_shield', :name => caster.name, :spell => spell, :mod => mod, :succeeds => "%xgSUCCEEDS%xn", :target =>  target.name, :type => type)]
       return message
     end
 

@@ -1,5 +1,5 @@
 module AresMUSH
-  module Custom
+  module Magic
     class CharSpellsRequestHandler
       def handle(request)
         char = Character.find_one_by_name request.args[:id]
@@ -19,11 +19,11 @@ module AresMUSH
         end
 
         spells = []
-        char.spells_learned.each do |list|
-          list.each do |s|
-            spells << s.name
-          end
+        spells_learned = char.spells_learned.select { |l| l.learning_complete }
+        spells_learned.each do |s|
+          spells << s.name
         end
+        spells = spells.sort
 
         return spells
       end

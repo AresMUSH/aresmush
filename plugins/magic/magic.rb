@@ -114,6 +114,16 @@ module AresMUSH
         return SpellsRequestHandler
       when "schools"
         return SchoolsRequestHandler
+      when "searchSpells"
+        return SearchSpellsRequestHandler
+      when "getSchools"
+        return GetSchoolsRequestHandler
+      when "getSecrets"
+        return GetSecretsRequestHandler
+      when "addSceneSpell"
+        return AddSceneSpellRequestHandler
+      when "charSpells"
+        return CharSpellsRequestHandler
       end
       nil
     end

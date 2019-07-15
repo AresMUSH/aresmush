@@ -1,5 +1,5 @@
 module AresMUSH
-  module Custom
+  module Magic
     class GetSchoolsRequestHandler
       def handle(request)
         schools = Global.read_config("schools")

@@ -1,5 +1,5 @@
 module AresMUSH
-  module Custom
+  module Magic
     class SearchSpellsRequestHandler
       def handle(request)
         Global.logger.debug "REQUEST: #{request}"
