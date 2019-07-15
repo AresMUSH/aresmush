@@ -13,6 +13,7 @@ channels:
   default_channels:
   - Questions
   - Brainstorming
+  - Game
   end_marker: "]"
   shortcuts:
     chan: channel
