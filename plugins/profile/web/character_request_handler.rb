@@ -116,6 +116,13 @@ module AresMUSH
 
         show_background = (char.on_roster? || char.bg_shared || Chargen.can_view_bgs?(enactor)) && !char.background.blank?
 
+        if char.lore_hook_type == "Item"
+          item = true
+        elsif char.lore_hook_type == "Pet"
+          pet = char.lore_hook_name.gsub(" Pet","")
+        elsif char.lore_hook_type == "Ancestry"
+          ancestry = char.lore_hook_name.gsub(" Ancestry","")
+        end
 
         files = Profile.character_page_files(char)
         files = files.map { |f| Website.get_file_info(f) }
@@ -156,9 +163,11 @@ module AresMUSH
           description: Website.format_markdown_for_html(char.description),
           rp_hooks: char.rp_hooks ? Website.format_markdown_for_html(char.rp_hooks) : '',
           plot_prefs: Website.format_markdown_for_html(char.plot_prefs),
-          secret_name: char.secret_name,
-          secret_summary: char.secret_summary,
-          secret_plot: char.secret_plot,
+          lore_hook_name: char.lore_hook_name,
+          lore_hook_desc: char.lore_hook_desc,
+          lore_hook_item: item,
+          lore_hook_pet: pet,
+          lore_hook_ancestry: ancestry,
           desc: char.description,
           playerbit: char.is_playerbit?,
           fs3: fs3,

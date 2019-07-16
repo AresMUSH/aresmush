@@ -1,0 +1,15 @@
+---
+toc: Character Creation
+summary: Setting Lore Hook preferences.
+---
+# Lore Kooks
+Lore Hooks are bits of fun lore that are unique to you.
+
+You can set your Lore Hook preferences during CG to let admin know what sort of hook you would like. You can choose Magical Creature Ancestry, Magical Creature Pet, or Magical Item.
+
+Each hook comes with a brief lore write-up that your character can discover through exploration or research, as well as tangible effects you can RP around. [Lore Hooks](/lore-hooks) are visible on the web portal.
+
+## Admin Commands
+
+`lorehook/set <name>=<lore hook name>/<lore hook desc>` - Set a lore hook on a character. <name> should be <creature> Ancestry, <creature> Pet, or <magical item>
+`lorehook/type <name>=<lore hook type>` - Set a lore hook's type on a character. Types are ancestry, pet, or item.
