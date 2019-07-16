@@ -11,10 +11,12 @@ module AresMUSH
     attribute :other_creatures
     attribute :npcs
     attribute :location
+    attribute :location_known, :type => DataType::Boolean, :default => false
     attribute :description
     attribute :trivia
     attribute :events
     attribute :pinterest
+    attribute :rp_suggestions
     attribute :society
     attribute :longitude
     attribute :latitude

@@ -9,6 +9,7 @@ module AresMUSH
         portals.sort_by { |c| c.name }.map { |c| {
                   id: c.id,
                   name: c.name,
+                  location_known: c.location_known
                   # icon: Website.icon_for_char(c)
                 }}
 

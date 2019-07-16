@@ -55,26 +55,25 @@ module AresMUSH
             portal.update(all_schools: all_schools)
           end
 
+Global.logger.debug "Location known? #{request.args[:location_known]}"
 
           school_name = request.args[:primary_school].to_s
           id = Global.read_config("schools", request.args[:primary_school], "id")
           primary_school = {:name => school_name, :id => id}
           portal.update(primary_school: primary_school)
-          Global.logger.debug "Lat #{request.args[:latitude]}"
-          Global.logger.debug "Long #{request.args[:longitude]}"
-
-
           portal.update(name: request.args[:name])
           portal.update(pinterest: request.args[:pinterest].blank? ? nil : request.args[:pinterest])
           portal.update(other_creatures: request.args[:other_creatures].blank? ? nil : request.args[:other_creatures])
           portal.update(npcs: request.args[:npcs].blank? ? nil : request.args[:npcs])
           portal.update(location: request.args[:location].blank? ? nil : request.args[:location])
+          portal.update(location_known: request.args[:location_known])
           portal.update(latitude: request.args[:latitude].blank? ? nil : request.args[:latitude])
           portal.update(longitude: request.args[:longitude].blank? ? nil : request.args[:longitude])
           portal.update(description: request.args[:description].blank? ? nil : request.args[:description])
           portal.update(trivia: request.args[:trivia].blank? ? nil : request.args[:trivia])
           portal.update(events: request.args[:events].blank? ? nil : request.args[:events])
           portal.update(society: request.args[:society].blank? ? nil : request.args[:society])
+          portal.update(rp_suggestions: request.args[:rp_suggestions].blank? ? nil : request.args[:rp_suggestions])
           {}
       end
     end

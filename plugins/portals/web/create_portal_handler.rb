@@ -5,8 +5,6 @@ module AresMUSH
 
         enactor = request.enactor
 
-        Global.logger.debug "Request: #{request.args.to_a} "
-
         error = Website.check_login(request)
         return error if error
 
@@ -35,8 +33,6 @@ module AresMUSH
         school_id = Global.read_config("schools", school_name, "id")
         primary_school = {:name => school_name, :id => school_id}
 
-        Global.logger.debug "Name #{request.args[:name]}"
-
         portal = Portal.create(
           name: request.args[:name],
           pinterest: request.args[:pinterest],
@@ -45,12 +41,14 @@ module AresMUSH
           other_creatures: request.args[:other_creatures],
           npcs: request.args[:npcs],
           location: request.args[:location],
+          location_known: request.args[:location_known],
           description: request.args[:description],
           events: request.args[:events],
           trivia: request.args[:trivia],
           society: request.args[:society],
           latitude: request.args[:latitude],
-          longitude: request.args[:longitude]
+          longitude: request.args[:longitude],
+          rp_suggestions: request.args[:rp_suggestions]
         )
 
         Global.logger.debug "Portal #{portal.id} (#{portal.name}) created by #{enactor.name}."
