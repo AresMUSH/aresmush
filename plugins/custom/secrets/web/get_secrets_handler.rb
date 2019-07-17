@@ -2,7 +2,6 @@ module AresMUSH
   module Custom
     class GetSecretsRequestHandler
       def handle(request)
-        Global.logger.debug "Hitting the handler"
 
         error = Website.check_login(request, true)
         return error if error

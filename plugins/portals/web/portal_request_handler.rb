@@ -2,10 +2,8 @@ module AresMUSH
   module Portals
     class PortalRequestHandler
       def handle(request)
-        Global.logger.debug "Portal request handler"
-        Global.logger.debug "Request: #{request.args.to_a}"
+
         portal = Portal.find_one_by_name(request.args[:id])
-        Global.logger.debug "Portal: #{portal.name} #{portal.id}"
         enactor = request.enactor
 
         if (!portal)

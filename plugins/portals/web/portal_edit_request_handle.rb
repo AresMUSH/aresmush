@@ -4,7 +4,6 @@ module AresMUSH
       def handle(request)
         portal = Portal.find_one_by_name(request.args[:id])
         enactor = request.enactor
-        Global.logger.debug "Portal edit handler"
 
         if (!portal)
           return { error: t('webportal.not_found') }
@@ -54,7 +53,6 @@ module AresMUSH
             end
             portal.update(all_schools: all_schools)
           end
-Global.logger.debug "Society: #{request.args[:society]}"
           school_name = request.args[:primary_school].to_s
           id = Global.read_config("schools", request.args[:primary_school], "id")
           primary_school = {:name => school_name, :id => id}
