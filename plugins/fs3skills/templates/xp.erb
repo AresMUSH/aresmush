@@ -18,5 +18,11 @@
 <%= display(a) %>
 <% end %>
 
+<% if show_advantages %>
+<% char.fs3_advantages.each do |a| %>
+<%= display(a) %>
+<% end %>
+<% end %>
+
 <%= t('fs3skills.xp_title') %> <%= char.xp %>
 <%= footer %>
