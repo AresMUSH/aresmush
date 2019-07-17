@@ -118,8 +118,6 @@ module AresMUSH
         return SearchSpellsRequestHandler
       when "getSchools"
         return GetSchoolsRequestHandler
-      when "getSecrets"
-        return GetSecretsRequestHandler
       when "addSceneSpell"
         return AddSceneSpellRequestHandler
       when "charSpells"
