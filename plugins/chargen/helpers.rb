@@ -112,7 +112,7 @@ module AresMUSH
         end
       end
 
-      char.update(secretpref: chargen_data[:secretpref][:value])
+      # char.update(secretpref: chargen_data[:secretpref][:value])
       return alerts
     end
 
