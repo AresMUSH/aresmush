@@ -17,7 +17,7 @@ module AresMUSH
           return { error: t('dispatcher.not_allowed') }
         end
 
-        Global.logger.debug "Portal #{portal.id} (#{portal.name} Portal) edited by #{enactor.name}."
+        Global.logger.info "Portal #{portal.id} (#{portal.name} Portal) edited by #{enactor.name}."
 
           gm_names = request.args[:gms] || []
           portal.gms.replace []
@@ -54,9 +54,7 @@ module AresMUSH
             end
             portal.update(all_schools: all_schools)
           end
-
-Global.logger.debug "Location known? #{request.args[:location_known]}"
-
+Global.logger.debug "Society: #{request.args[:society]}"
           school_name = request.args[:primary_school].to_s
           id = Global.read_config("schools", request.args[:primary_school], "id")
           primary_school = {:name => school_name, :id => id}
