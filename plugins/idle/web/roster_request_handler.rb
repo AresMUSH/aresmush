@@ -36,7 +36,6 @@ module AresMUSH
           
         demographics['age'] = char.age
         demographics['birthdate'] = char.demographic(:birthdate)
-        demographics['actor'] = char.demographic(:actor)
         
         groups = {}
         
