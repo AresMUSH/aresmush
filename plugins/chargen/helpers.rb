@@ -146,10 +146,10 @@ module AresMUSH
         t('chargen.approval_post_subject', :name => model.name),
         post_body)
 
-      Jobs.create_job("SECRET",
-         t('chargen.approval_job_subject', :name => model.name),
-         "Set their secrets. Their secret pref is: #{model.secretpref}",
-         Game.master.system_character)
+      # Jobs.create_job("SECRET",
+      #    t('chargen.approval_job_subject', :name => model.name),
+      #    "Set their secrets. Their secret pref is: #{model.secretpref}",
+      #    Game.master.system_character)
 
        Chargen.custom_approval(model)
 
