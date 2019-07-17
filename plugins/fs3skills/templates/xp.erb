@@ -19,8 +19,12 @@
 <% end %>
 
 <% if show_advantages %>
+<% if allow_advantages_xp %>
 <% char.fs3_advantages.each do |a| %>
 <%= display(a) %>
+<% end %>
+<% else %>
+<%= t('fs3skills.cant_learn_advantages_xp') %>
 <% end %>
 <% end %>
 
