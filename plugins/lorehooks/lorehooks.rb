@@ -19,6 +19,8 @@ module AresMUSH
           return LoreHookSetCmd
         when "type"
           return LoreHookTypeCmd
+        when "preference"
+          return LoreHookPrefCmd
         end
       end
       nil
@@ -29,7 +31,7 @@ module AresMUSH
     end
 
     def self.get_web_request_handler(request)
-      case request.cmd      
+      case request.cmd
       when "getLoreHooks"
         return GetLoreHooksRequestHandler
       end
