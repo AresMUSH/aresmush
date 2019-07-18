@@ -34,7 +34,7 @@ en:
         scene_already_completed: "That scene is already over."
         announce_scene_start: "%{name} has started a new %xh%{privacy}%xH scene (%{num}) here."
         location_set: "%{name} changed the scene location to %{location}."
-        scene_nag:  "There's no scene running here.  Starting a scene will activate repose and make it easy to share the scene with the web portal.  Just do `scene/start` if you want to start one."
+        scene_nag:  "There's no scene running here.  Starting a scene will enable repose, playing from the web portal, and other features.  Just do `scene/start` if you want to start one."
         open: "Open"
         private: "Private"
         scene_already_going: "There's already a scene going in this room.  You have to stop it first."

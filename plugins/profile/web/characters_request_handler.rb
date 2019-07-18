@@ -15,7 +15,7 @@ module AresMUSH
           end
         end
 
-        chars.sort_by { |c| c.name }.map { |c| {
+        chars.uniq.sort_by { |c| c.name }.map { |c| {
                   id: c.id,
                   name: c.name,
                   icon: Website.icon_for_char(c)
