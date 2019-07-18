@@ -1,4 +1,4 @@
 ---
 en:
   creatures:
-    webcreature_not_found: "Creature not found."
+    creature_not_found: "Creature not found."
