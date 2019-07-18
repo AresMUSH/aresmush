@@ -7,15 +7,13 @@ module AresMUSH
 
       def parse_args
         args = cmd.parse_args(ArgParser.arg1_equals_arg2)
-        self.char = titlecase_arg(args.arg1)
+        target_name = titlecase_arg(args.arg1)
         self.item_name = titlecase_arg(args.arg2)
-        self.item = Magic.find_item(enactor, item_name)
-        self.target = Character.find_one_by_name(self.char)
-
+        self.target = Character.find_one_by_name(target_name)
       end
 
       def check_errors
-        return t('magic.dont_have_item') if !item
+        return t('magic.dont_have_item') if !enactor.magic_items.include?(self.item_name)
         return t('magic.not_character') if !self.target
         return t('magic.unequip_first', :item => item.name) if item_name == enactor.magic_item_equipped
         return nil
@@ -24,12 +22,16 @@ module AresMUSH
       def handle
         self.other_client = Login.find_client(target)
 
-        MagicItems.create(name: item.name, character: self.target, desc: item.desc, weapon_specials: item.weapon_specials, armor_specials: item.armor_specials, spell: item.spell, item_spell_mod: item.item_spell_mod, item_attack_mod: item.item_attack_mod)
+        target_magic_items = self.target.magic_items
+        target_magic_items.concat [self.item_name]
+        self.target.update(magic_items: target_magic_items)
 
-        self.item.delete
+        enactor_magic_items = enactor.magic_items
+        enactor_magic_items.delete_at(enactor_magic_items.index(self.item_name))
+        enactor.update(magic_items: enactor_magic_items)
 
-        client.emit_success t('magic.give_item', :target => target.name, :item => item.name)
 
+        client.emit_success t('magic.give_item', :target => target.name, :item => item_name)
 
         message = t('magic.given_magic_item', :name => enactor.name, :item => item_name)
         Login.emit_if_logged_in self.target, message
