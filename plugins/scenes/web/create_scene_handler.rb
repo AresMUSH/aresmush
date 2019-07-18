@@ -78,11 +78,10 @@ module AresMUSH
           end
         end
 
-        Scenes.add_to_scene(scene, request.args[:log], enactor)
-
         if (!log.blank?)
           Scenes.add_to_scene(scene, log, enactor)
         end
+
         if (completed)
           Scenes.share_scene(scene)
         else
