@@ -57,6 +57,7 @@ echo "rvm use 2.6.3" >> "${HOME_DIR}/.profile"
 echo -e "${ARES_INSTALL_TEXT} Install gem bundler for dependencies."
 
 gem install bundler
+gem install rake
 
 # #########################################################################################
 
