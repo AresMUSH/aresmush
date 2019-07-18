@@ -19,6 +19,8 @@ module AresMUSH
       case cmd.switch
       when "set"
         return WeatherChangeCmd
+      when "reset"
+        return WeatherResetCmd
       when nil
         return WeatherCmd
       end

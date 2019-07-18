@@ -2,7 +2,7 @@
 <% categories.each do |category, relations| %>
 %xh%x!<%= category %>%xn
 <%= divider %>
-<% relations.sort.each do |name, data| %>
+<% sorted_relationships(relations).each do |name, data| %>
 %xh<%= name %>:%xn <%= data['relationship'] %>
 
 <% end %>
