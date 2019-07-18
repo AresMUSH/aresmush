@@ -28,14 +28,11 @@ module AresMUSH
         storyteller_names = request.args[:storytellers] || []
         plot.storytellers.replace []
 
-        Global.logger.debug "Names: #{storyteller_names}"
-
         storyteller_names.each do |storyteller|
           storyteller = Character.find_one_by_name(storyteller.strip)
           if (storyteller)
             if (!plot.storytellers.include?(storyteller))
               Scenes.add_storyteller(plot, storyteller)
-              Global.logger.debug "Adding: #{storyteller.name} "
             end
           end
         end
