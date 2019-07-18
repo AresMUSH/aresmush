@@ -16,7 +16,7 @@ module AresMUSH
         before do
           allow(Channel).to receive(:find_one_by_name).with("pub") { @channel }
           allow(Channels).to receive(:is_on_channel?) { false }
-          allow(Channels).to receive(:can_use_channel) { true }
+          allow(Channels).to receive(:can_join_channel?) { true }
           allow(Channels).to receive(:get_channel_options) { @options }
         end
         
@@ -26,7 +26,7 @@ module AresMUSH
         end
         
         it "should fail if can't access channel" do
-          expect(Channels).to receive(:can_use_channel).with(@char, @channel) { false }
+          expect(Channels).to receive(:can_join_channel?).with(@char, @channel) { false }
           expect(Channels.join_channel(@channel, @char, nil)).to eq 'channels.cant_use_channel'
         end
         

@@ -21,7 +21,9 @@ module AresMUSH
     
     def alias_hint
       hints = []
-      self.aliases.each do |a|
+      list = self.aliases
+      list << self.channel.name
+      list.each do |a|
         hints << "%xh#{t('channels.channel_alias_hint', :alias => a)}%xH"
       end
       hint_text = hints.join(" #{t('global.or')} ")

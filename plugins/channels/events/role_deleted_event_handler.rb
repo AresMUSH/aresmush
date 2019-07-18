@@ -2,13 +2,10 @@ module AresMUSH
   module Channels    
     class RoleDeletedEventHandler
       def on_event(event)
+        role_id = event.role_id
         Channel.all.each do |channel|
-          channel.roles.each do |r|
-            if (r.id == event.role_id)
-              Global.logger.debug "Deleting role from channel #{channel.name}."
-              channel.roles.delete r
-            end
-          end
+          channel.talk_roles.replace(channel.talk_roles.select { |r| r.id != role_id })
+          channel.join_roles.replace(channel.join_roles.select { |r| r.id != role_id })
         end
       end
     end

@@ -56,6 +56,11 @@ module AresMUSH
           return
         end
         
+        if (!Channels.can_talk_on_channel?(enactor, self.channel))
+          client.emit_failure t('channels.cant_talk_on_channel')
+          return
+        end
+        
         if (Channels.is_muted?(enactor, self.channel))
           client.emit_failure t('channels.cant_talk_when_muted')
           return          

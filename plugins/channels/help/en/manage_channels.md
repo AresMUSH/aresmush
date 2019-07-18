@@ -36,7 +36,8 @@ You can control who is allowed to use a channel by assigning roles to it.  Only 
 
 If you change the roles for an existing channel, anyone who no longer has permission to be there will automatically leave the channel.
 
-`channel/roles <channel>=<roles>` - Use commas to separate multiple roles.  Use "none" to clear existing roles.
+`channel/joinroles <channel>=<roles>` - Use commas to separate multiple roles.  Use "none" to clear existing roles.
+`channel/talkroles <channel>=<roles>` - Use commas to separate multiple roles.  Use "none" to clear existing roles.
 
 ## Default Aliases
 
