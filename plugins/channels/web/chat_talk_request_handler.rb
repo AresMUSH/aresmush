@@ -12,7 +12,11 @@ module AresMUSH
         if (!channel)
           return { error: t('webportal.not_found') }
         end
-
+                
+        if (!Channels.can_talk_on_channel?(enactor, channel))
+          return { error:  t('channels.cant_talk_on_channel') }
+        end
+ 
         options = Channels.get_channel_options(enactor, channel)
         message = Channels.pose_to_channel channel, enactor.ooc_name, message, options.title   
         

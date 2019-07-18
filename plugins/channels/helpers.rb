@@ -122,10 +122,16 @@ module AresMUSH
       return nil
     end
     
-    def self.can_use_channel(char, channel)
-      return true if channel.roles.empty?
+    def self.can_join_channel?(char, channel)
+      return true if channel.join_roles.empty?
       return true if Channels.can_manage_channels?(char)
-      return char.has_any_role?(channel.roles)
+      return char.has_any_role?(channel.join_roles)
+    end
+    
+    def self.can_talk_on_channel?(char, channel)
+      return true if channel.talk_roles.empty?
+      return true if Channels.can_manage_channels?(char)
+      return char.has_any_role?(channel.talk_roles)
     end
     
     def self.with_an_enabled_channel(name, client, enactor, &block)
@@ -226,7 +232,7 @@ module AresMUSH
           return t('channels.already_on_channel')
         end
         
-        if (!Channels.can_use_channel(char, channel))
+        if (!Channels.can_join_channel?(char, channel))
           return t('channels.cant_use_channel')
         end
         

@@ -162,7 +162,8 @@ module AresMUSH
         description: "Admin business.",
         color: "%xr")
       channel.default_alias = [ 'a', 'ad', 'adm' ]
-      channel.roles.add admin_role
+      channel.join_roles.add admin_role
+      channel.talk_roles.add admin_role
       channel.save
   
   
