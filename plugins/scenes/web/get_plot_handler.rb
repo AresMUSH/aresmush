@@ -36,7 +36,7 @@ module AresMUSH
 
             storytellers = plot.storytellers.to_a
                 .sort_by {|storyteller| storyteller.name }
-                .map { |storyteller| { name: storyteller.name, id: storyteller.id, is_ooc: storyteller.is_admin? || storyteller.is_playerbit?  }}
+                .map { |storyteller| { name: storyteller.name, id: storyteller.id, icon: Website.icon_for_char(storyteller), is_ooc: storyteller.is_admin? || storyteller.is_playerbit?  }}
 
         {
           id: plot.id,
