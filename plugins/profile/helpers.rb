@@ -6,7 +6,7 @@ module AresMUSH
     end
     
     def self.category_order(char, category)
-      char.relationships_category_order.index(category) || (category[0] || "1").ord
+      char.relationships_category_order.map { |r| r.upcase }.index(category.upcase) || (category[0] || "1").ord
     end
     
     def self.can_manage_char_profile?(actor, char)
