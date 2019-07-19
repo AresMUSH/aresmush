@@ -23,7 +23,12 @@ module AresMUSH
       def tutorial
         tutorial_file = @stage["tutorial"]
         if (tutorial_file)
-          contents = Chargen.read_tutorial(tutorial_file)
+          begin
+            contents = Chargen.read_tutorial(tutorial_file)
+          rescue Exception => ex
+            Global.logger.warn "Error loading chargen tutorial #{tutorial_file}: #{ex}."
+            contents = "%xr#{t('chargen.help_file_missing', :name => tutorial_file)}%xn"
+          end
           return @markdown.to_mush(contents)
         end
         
@@ -39,7 +44,12 @@ module AresMUSH
       
       def help
         help_file = @stage["help"]
-        contents = help_file ? Help.get_help(help_file) : nil
+        begin
+          contents = help_file ? Help.get_help(help_file) : nil
+        rescue Exception => ex
+          Global.logger.warn "Error loading chargen help file #{help_file}: #{ex}."
+          contents = "%xr#{t('chargen.help_file_missing', :name => help_file)}%xn"
+        end
         contents ? @markdown.to_mush(contents) : nil 
       end
       
