@@ -36,7 +36,7 @@ module AresMUSH
           enactor.update(lore_hook_pref: self.preference)
           client.emit_success "You have set your Lore Hook preference to #{self.preference}"
         else
-          client.emit_failure "That is not a Lore Hook preference. Use one of the followig: #{preferences.join(", ")}."
+          client.emit_failure "That is not a Lore Hook preference. Use one of the following: #{preferences.join(", ")}."
         end
       end
 
