@@ -9,6 +9,7 @@ You can set your Lore Hook preferences during CG to let admin know what sort of 
 
 Each hook comes with a brief lore write-up that your character can discover through exploration or research, as well as tangible effects you can RP around. [Lore Hooks](/lore-hooks) are visible on the web portal.
 
+## Commands
 `lorehook/preference <type>` - Set your lore hook preference.  Types are ancestry, pet, or item. You can also chose 'none' for no hook or 'storyteller' to have STs choose for you.
 `lorehook/preference <name>` - View someone's lore hook preference.
 
