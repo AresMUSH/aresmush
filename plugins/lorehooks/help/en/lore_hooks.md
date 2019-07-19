@@ -15,6 +15,5 @@ Each hook comes with a brief lore write-up that your character can discover thro
 See the [Guide to Lore Hooks](https://tinyurl.com/y6zgez98) for more info on each type of hook.
 
 ## Admin Commands
-
 `lorehook/set <name>=<lore hook name>/<lore hook desc>` - Set a lore hook on a character. <name> should be `<creature> Ancestry`, `<creature> Pet`, or `<magical item>`
 `lorehook/type <name>=<lore hook type>` - Set a lore hook's type on a character. Types are ancestry, pet, or item.
