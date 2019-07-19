@@ -7,7 +7,13 @@ module AresMUSH
       attr_accessor :preference, :target
 
       def parse_args
-        self.target = Character.named(cmd.args)
+        target_name = titlecase_arg(cmd.args)
+        if target_name == "All"
+          self.target = "All"
+        else
+          self.target = Character.named(target_name)
+        end
+
         if !self.target
           self.preference = titlecase_arg(cmd.args)
         end
@@ -16,7 +22,16 @@ module AresMUSH
       def handle
         preferences = ["None", "Item", "Pet", "Ancestry", "Storyteller"]
         if self.target
-          client.emit_success "#{self.target.name}'s Lore Hook Preference: #{self.target.lore_hook_pref}"
+          if self.target == "All"
+            client.emit "Lore Hook Preferences for All Characters"
+            chars = Chargen.approved_chars
+            chars.each do |c|
+              preference = c.lore_hook_pref
+              client.emit "#{c.name}: #{preference}"
+            end
+          else
+            client.emit_success "#{self.target.name}'s Lore Hook Preference: #{self.target.lore_hook_pref}"
+          end
         elsif preferences.include?(self.preference)
           enactor.update(lore_hook_pref: self.preference)
           client.emit_success "You have set your Lore Hook preference to #{self.preference}"
