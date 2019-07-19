@@ -24,7 +24,7 @@ module AresMUSH
         if self.target
           if self.target == "All"
             client.emit "Lore Hook Preferences for All Characters"
-            chars = Chargen.approved_chars
+            chars = Chargen.approved_chars.sort
             chars.each do |c|
               preference = c.lore_hook_pref
               client.emit "#{c.name}: #{preference}"

@@ -12,6 +12,8 @@ Each hook comes with a brief lore write-up that your character can discover thro
 ## Commands
 `lorehook/preference <type>` - Set your lore hook preference.  Types are ancestry, pet, or item. You can also chose 'none' for no hook or 'storyteller' to have STs choose for you.
 `lorehook/preference <name>` - View someone's lore hook preference.
+`lorehook/preference all` - View everyone's lore hook preference.
+
 
 See the [Guide to Lore Hooks](https://tinyurl.com/y6zgez98) for more info on each type of hook.
 
