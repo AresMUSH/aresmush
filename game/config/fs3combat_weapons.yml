@@ -151,7 +151,7 @@ fs3combat:
     Poison Stinger:
       description: Poison Insect stinger
       skill: Melee
-      lethality: 10
+      lethality: 0
       penetration: 4
       weapon_type: Melee
       recoil: 0
@@ -184,8 +184,19 @@ fs3combat:
     Stinger:
       description: Insect stinger
       skill: Melee
-      lethality: 0
-      penetration: 4
+      lethality: -10
+      penetration: 3
+      weapon_type: Melee
+      recoil: 0
+      damage_type: Physical
+      accuracy: 0
+      init_mod: 0
+      special_group: Melee
+    Bug Bite:
+      description: Mild bug bites
+      skill: Melee
+      lethality: -25
+      penetration: 2
       weapon_type: Melee
       recoil: 0
       damage_type: Physical
@@ -193,7 +204,7 @@ fs3combat:
       init_mod: 0
       special_group: Melee
     Teeth:
-      description: Animal or creature teet
+      description: Animal or creature teeth
       skill: Melee
       lethality: -5
       penetration: 4
