@@ -77,6 +77,8 @@ module AresMUSH
       case request.cmd
       when "abilities"
         return AbilitiesRequestHandler
+      when "addSceneRoll"
+        return AddSceneRollRequestHandler
       when "learnAbility"
         return LearnAbilityRequestHandler
       when"spendLuck"
