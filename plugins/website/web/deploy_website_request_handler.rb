@@ -11,7 +11,7 @@ module AresMUSH
           return { error: t('dispatcher.not_allowed') }
         end
                 
-        Website.deploy_portal(enactor, true)
+        Website.redeploy_portal(enactor, true)
         
         {
           message:  Website.format_markdown_for_html(t('webportal.redeploying_website'))
