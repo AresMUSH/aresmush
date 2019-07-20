@@ -184,6 +184,7 @@ en:
         use_suppress_command: "Use the combat/suppress command for this weapon."
         weapon_specials:  "Available Weapon Specials"
         invalid_gear_type: "Invalid gear type."
+        attack_with_missing_weapon: "COMBAT ERROR: Weapon %{name} does not exist. Check game config."
         
         # ----------------------------
         # ARMOR

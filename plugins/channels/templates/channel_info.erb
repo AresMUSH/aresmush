@@ -1,0 +1,11 @@
+<%= header %>
+<%= display_name %>
+
+%xh<%= t('channels.announce_logins_title') %>%xn <%= announce %>
+%xh<%= t('channels.can_join_title') %>%xn <%= join_roles %>
+%xh<%= t('channels.can_talk_title') %>%xn <%= talk_roles %>
+
+<% if aliases %>
+<%= @channel.color %><%= aliases %>%xn
+<% end %>
+<%= footer %>

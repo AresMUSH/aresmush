@@ -3,18 +3,13 @@
 <%= divider %>
 <% channels.each do |c| %>
 <%= channel_on_indicator(c) -%>
- <%= left(channel_name(c),25) -%>
- <%= left(c.description,25) -%>
- <%= channel_announce(c) -%>
-   <%= channel_roles(c) %>
-<% end %>
-<%= divider %>
-%xh<%= t('channels.channel_aliases') %>%xn
-
-<% channels.each do |c| %>
-<% if is_on_channel?(c) %>
-<%= c.color %><%= channel_alias(c) %>%xn
-<% end %>
+ <%= left(channel_name(c),20) -%>
+ <% if is_on_channel?(c) %>
+ <%= c.color %><%= left(channel_alias(c), 15) %>%xn<%= '' -%>
+ <% else %>
+ <%= left('', 15) -%>
+ <% end %>
+ <%= c.description %>
 <% end %>
 
 <%= t('channels.alias_notice') %>

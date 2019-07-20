@@ -6,7 +6,7 @@ module AresMUSH
       attr_accessor :list
 
       def parse_args
-        self.list = cmd.args
+        self.list = list_arg(cmd.args, ',')
       end
       
       def required_args
@@ -14,14 +14,13 @@ module AresMUSH
       end
       
       def check_for_commas
-        return t('profile.relationships_use_commas') if self.list !~ /,/
+        return t('profile.relationships_use_commas') if self.list.length == 0
         return nil
       end
       
       def handle
-        categories = self.list.split(',')
-        enactor.update(relationships_category_order: categories)
-        client.emit_success t('profile.relationships_order', :categories => categories.join(","))
+        enactor.update(relationships_category_order: self.list)
+        client.emit_success t('profile.relationships_order', :categories => self.list.join(","))
       end
     end
   end

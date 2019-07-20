@@ -2,8 +2,8 @@ module AresMUSH
   # @engineinternal true
   class CommandAliasParser
     def self.substitute_aliases(enactor, cmd, shortcut_config)
-      if (!cmd.args && !cmd.switch && enactor && enactor.room && enactor.room.has_exit?(cmd.root))
-        cmd.args = cmd.root
+      if (!cmd.args && !cmd.switch && enactor && enactor.room && enactor.room.has_exit?(cmd.raw))
+        cmd.args = cmd.raw
         cmd.root = "go"
         return
       end      

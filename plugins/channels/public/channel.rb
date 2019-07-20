@@ -14,6 +14,8 @@ module AresMUSH
     
     index :name_upcase
     
+    set :join_roles, "AresMUSH::Role"
+    set :talk_roles, "AresMUSH::Role"
     set :roles, "AresMUSH::Role"
     set :characters, "AresMUSH::Character"
 
