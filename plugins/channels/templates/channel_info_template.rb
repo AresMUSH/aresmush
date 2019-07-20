@@ -28,7 +28,11 @@ module AresMUSH
       
       def aliases
         options = Channels.get_channel_options(@enactor, @channel)
-        options.alias_hint
+        if (options)
+          options.alias_hint
+        else
+          nil
+        end
       end      
     end
   end
