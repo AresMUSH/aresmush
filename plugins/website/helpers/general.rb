@@ -41,13 +41,24 @@ module AresMUSH
     end
     
     def self.deploy_portal(client = nil)
+      Website.redeploy_portal(nil, false)
+    end
+    
+    def self.redeploy_portal(enactor, from_web)
       Global.dispatcher.spawn("Deploying website", nil) do
         Website.rebuild_css
         install_path = Global.read_config('website', 'website_code_path')
         Dir.chdir(install_path) do
           output = `bin/deploy 2>&1`
           Global.logger.info "Deployed web portal: #{output}"
-          client.emit_ooc t('webportal.portal_deployed', :output => output) if client
+          message = t('webportal.portal_deployed', :output => output)
+          if (from_web)
+            Global.client_monitor.notify_web_clients(:manage_activity, Website.format_markdown_for_html(message)) do |c|
+               c && c == enactor
+            end
+          elsif (enactor) # Enactor should always be specified except in the backwards-compatibility example.
+            Login.emit_ooc_if_logged_in enactor, message
+          end
         end
       end
     end

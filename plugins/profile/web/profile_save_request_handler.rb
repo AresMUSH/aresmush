@@ -51,6 +51,8 @@ module AresMUSH
         char.update(bg_shared: request.args[:bg_shared].to_bool)
         char.update(idle_lastwill: Website.format_input_for_mush(request.args[:lastwill]))
         
+        relation_category_order = (request.args[:relationships_category_order] || "").split(',')
+        char.update(relationships_category_order: relation_category_order)
         
         ## DO PROFILE LAST SO IT TRIGGERS THE SOURCE HISTORY UPDATE
         profile = {}

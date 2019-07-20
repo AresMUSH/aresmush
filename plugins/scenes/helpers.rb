@@ -631,7 +631,7 @@ module AresMUSH
     
     def self.add_recent_scene(scene)
       recent = Game.master.recent_scenes
-      recent.unshift(scene.id)
+      recent.unshift("#{scene.id}")
       recent = recent.uniq
       if (recent.count > 30)
         recent.pop

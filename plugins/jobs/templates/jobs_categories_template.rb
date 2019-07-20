@@ -26,10 +26,6 @@ module AresMUSH
       def can_access_category?(cat)
         Jobs.can_access_category?(@enactor, cat)
       end
-      
-      def reboot_text
-        Jobs.reboot_required_notice
-      end
     end
   end
 end
