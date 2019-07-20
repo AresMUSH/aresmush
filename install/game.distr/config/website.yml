@@ -102,7 +102,7 @@ website:
     - title: Files
       route: files
     - id: markdown
-      title: Markdown Reference
+      title: Editing Help
       route: help-topic
   - title: Help
     menu:

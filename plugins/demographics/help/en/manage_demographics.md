@@ -16,12 +16,6 @@ Use the special birthday command to set someone else's age or birthdate.
 
 `birthdate <name>=<birthdate>`
 
-## Setting Actor
-
-Use the special actor command to set someone else's actor.
-
-`actor <name>=<actor name>`
-
 ## Setting Groups
 
 You can also set group information.

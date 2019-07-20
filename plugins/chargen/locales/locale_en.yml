@@ -82,3 +82,4 @@ en:
         hooks_added: "%{num} RP hooks added. (%{min} min)"
         hooks_title: "RP Hooks for %{name}"
         
+        help_file_missing: "Ooops!  One of the chargen help files (%{name}) seems to be missing.  Please tell the game admin."

@@ -23,6 +23,11 @@ module AresMUSH
          when nil
            return DamageCmd
          end
+       when "gear"
+         case cmd.switch
+         when "check"
+           return GearCheckCmd
+         end
        when "treat"
          return TreatCmd
        when "armor"

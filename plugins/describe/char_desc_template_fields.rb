@@ -11,7 +11,7 @@ module AresMUSH
     end
     
     def actor(char)
-      char.demographic(:actor)
+      char.demographic('played by')
     end
     
   end

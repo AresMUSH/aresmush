@@ -86,6 +86,12 @@ module AresMUSH
         end
         text
       end
+      
+      def reboot_text
+        return nil if !@char.is_admin?
+        Jobs.reboot_required_notice
+      end
+      
     end
   end
 end
