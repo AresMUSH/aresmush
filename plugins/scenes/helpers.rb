@@ -13,6 +13,12 @@ module AresMUSH
       end
     end
 
+    def self.add_storyteller(plot, char)
+      if (!plot.storytellers.include?(char))
+        plot.storytellers.add char
+      end
+    end
+
     def self.new_scene_activity(scene, activity_type, data)
       last_posed = scene.last_posed ? scene.last_posed.name : nil
       web_msg = "#{scene.id}|#{last_posed}|#{activity_type}|#{data}"

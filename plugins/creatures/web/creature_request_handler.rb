@@ -2,13 +2,11 @@ module AresMUSH
   module Creatures
     class CreatureRequestHandler
       def handle(request)
-        Global.logger.debug "Creature request handler"
-        Global.logger.debug "Request: #{request.args.to_a}"
         creature = Creature.find_one_by_name(request.args[:id])
         enactor = request.enactor
 
         if (!creature)
-          return { error: t('webcreature.not_found') }
+          return { error: t('creatures.creature_not_found') }
         end
 
         scenes_starring = Scene.creature_scenes(creature)

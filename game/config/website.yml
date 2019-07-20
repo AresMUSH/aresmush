@@ -118,8 +118,8 @@ website:
     - route: wiki-page
       title: Player Run Plots
       id: player_run_plots
-    - route: secrets
-      title: Secrets
+    - route: lore-hooks
+      title: Lore Hooks
   - title: Directory
     menu:
     - route: spells
