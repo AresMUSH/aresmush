@@ -368,7 +368,7 @@ spells:
     desc: "The caster convinces a sapient target's mind of sensory input (a smell, taste, sound, texture, and/or temperature) to trick their senses into believing it is real. The target’s mind, in conjunction with the spell, will fill in the gaps and discrepancies, glossing over irregularities. Cannot be used to convey words or intelligible speech to the target.\n\nThose with Spirit are more likely to identify the senses as false, and may attempt to do so with a roll of the caster's Spirit vs the observer's Spirit-5."
     duration: 5 minutes
     effect: Psionic
-    level: 3
+    level: 4
     name: Trick Senses
     range: Short
     roll: true
