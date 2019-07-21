@@ -178,6 +178,7 @@ en:
         weapon_title_has_shrapnel: "Has Shrapnel:" 
         weapon_title_reload_turns: "Reload Time:"
         weapon_title_allowed_specials: "Allowed Specials:"
+        weapon_title_init_mod: "Initiative Mod:"
         weapon_title_skill: "Skill:"
         invalid_weapon_special: "%{special} is not a valid special for that weapon."
         use_explode_command: "Use the combat/explode command for this weapon."

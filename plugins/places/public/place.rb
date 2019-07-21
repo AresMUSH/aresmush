@@ -4,7 +4,7 @@ module AresMUSH
     include ObjectModel
     include FindByName
     
-    collection :characters, "AresMUSH::Character"
+    set :characters, "AresMUSH::Character"
     reference :room, "AresMUSH::Room"
     
     attribute :name
