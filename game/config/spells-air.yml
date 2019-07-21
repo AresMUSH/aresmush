@@ -78,6 +78,18 @@ spells:
     rounds: 2
     school: Air
   #Level 3
+  Air Walk:
+    available: true
+    casting_time: 1 round
+    desc: 'Tread air as if walking on solid ground. Moving upward is similar to walking up a hill. '
+    duration: 1 hour
+    effect: Travel
+    is_potion: true
+    level: 3
+    name: 'Air Walk '
+    range: Self
+    roll: true
+    school: Air
   Electric Surge:
     available: false
     casting_time: 1 round
@@ -163,18 +175,7 @@ spells:
     range: Short
     roll: true
     school: Air
-  Air Walk:
-    available: true
-    casting_time: 1 round
-    desc: 'Tread air as if walking on solid ground. Moving upward is similar to walking up a hill. '
-    duration: 1 hour
-    effect: Travel
-    is_potion: true
-    level: 4
-    name: 'Air Walk '
-    range: Self
-    roll: true
-    school: Air
+
   Breathless:
     area: 10 ft radius
     available: false
