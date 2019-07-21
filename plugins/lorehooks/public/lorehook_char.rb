@@ -3,6 +3,6 @@ module AresMUSH
     attribute :lore_hook_name
     attribute :lore_hook_desc
     attribute :lore_hook_type
-    attribute :lore_hook_pref, :default => "None"
+    attribute :lore_hook_pref
   end
 end
