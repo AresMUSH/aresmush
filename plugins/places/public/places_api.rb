@@ -22,23 +22,19 @@ module AresMUSH
     end
     
       
-    def self.clear_place(char)
-      char.update(place: nil)
-    end
-    
-    def self.reset_place_if_moved(char)
-      if (char.place && char.place.room != char.room)
-        char.upate(place: nil)
+    def self.clear_place(char, current_room)
+      current_room.places.each do |p|
+        p.characters.delete char
       end
     end
       
-    def self.find_place(char, place_name)
+    def self.find_place(room, place_name)
       return nil if !place_name
       
-      place = char.room.places.find(name_upcase: place_name.upcase).first
+      place = room.places.find(name_upcase: place_name.upcase).first
       return place if place
       
-      char.room.places.select { |p| p.name_upcase.start_with?(place_name.upcase) }.first
+      room.places.select { |p| p.name_upcase.start_with?(place_name.upcase) }.first
     end
   end
 end

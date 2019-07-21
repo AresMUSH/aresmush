@@ -50,7 +50,7 @@ module AresMUSH
           
           it "should format with color and <OOC> tag" do
             allow(@enactor_room).to receive(:characters) { [ @char1 ] }
-            expect(Scenes).to receive(:custom_format).with("%xb<OOC>%xn A pose", @char1, @enactor, false, true, nil)
+            expect(Scenes).to receive(:custom_format).with("%xb<OOC>%xn A pose", @enactor_room, @char1, @enactor, false, true, nil)
             Scenes.emit_pose(@enactor, "A pose", false, true)
           end
 
@@ -79,7 +79,7 @@ module AresMUSH
           
           it "should format a set pose with bracketed lines" do
             allow(@enactor_room).to receive(:characters) { [ @char1 ] }
-            expect(Scenes).to receive(:custom_format).with("%R%xh%xc%% #{'-'.repeat(75)}%xn%R%RA pose%R%R%xh%xc%% #{'-'.repeat(75)}%xn%R", @char1, @enactor, true, false, nil)
+            expect(Scenes).to receive(:custom_format).with("%R%xh%xc%% #{'-'.repeat(75)}%xn%R%RA pose%R%R%xh%xc%% #{'-'.repeat(75)}%xn%R", @enactor_room, @char1, @enactor, true, false, nil)
             Scenes.emit_pose(@enactor, "A pose", false, false, nil, true)
           end
           
@@ -111,7 +111,7 @@ module AresMUSH
           
           it "should format a regular pose normally" do
             allow(@enactor_room).to receive(:characters) { [ @char1 ] }
-            expect(Scenes).to receive(:custom_format).with("A pose", @char1, @enactor, false, false, nil)
+            expect(Scenes).to receive(:custom_format).with("A pose", @enactor_room, @char1, @enactor, false, false, nil)
             Scenes.emit_pose(@enactor, "A pose", false, false, nil, false)
           end
           
@@ -140,7 +140,7 @@ module AresMUSH
           
           it "should use the place name in formatting" do
             allow(@enactor_room).to receive(:characters) { [ @char1 ] }
-            expect(Scenes).to receive(:custom_format).with("A pose", @char1, @enactor, false, false, "A place")
+            expect(Scenes).to receive(:custom_format).with("A pose", @enactor_room, @char1, @enactor, false, false, "A place")
             Scenes.emit_pose(@enactor, "A pose", false, false, "A place", false)
           end
         end
@@ -156,7 +156,7 @@ module AresMUSH
           
           it "should format a regular pose normally" do
             allow(@scene_room).to receive(:characters) { [ @char1 ] }
-            expect(Scenes).to receive(:custom_format).with("A pose", @char1, @enactor, false, false, nil)
+            expect(Scenes).to receive(:custom_format).with("A pose", @scene_room, @char1, @enactor, false, false, nil)
             Scenes.emit_pose(@enactor, "A pose", false, false, nil, false, @scene_room)
           end
           

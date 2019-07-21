@@ -46,6 +46,8 @@ module AresMUSH
         return ChangePlaceRequestHandler   
       when "viewPlaces" 
         return ViewPlacesRequestHandler
+      when "leavePlace"
+        return LeavePlaceRequestHandler
       end
       nil
     end
