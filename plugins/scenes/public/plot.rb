@@ -5,6 +5,7 @@ module AresMUSH
     attribute :title
     attribute :description
     attribute :summary
+    attribute :completed, :type => DataType::Boolean
     
     reference :storyteller, "AresMUSH::Character"
     collection :scenes, "AresMUSH::Scene"
@@ -21,6 +22,10 @@ module AresMUSH
     def end_date
       last_scene = self.sorted_scenes[-1]
       last_scene ? last_scene.icdate : nil
+    end
+    
+    def is_open?
+      !self.completed
     end
   end
 end

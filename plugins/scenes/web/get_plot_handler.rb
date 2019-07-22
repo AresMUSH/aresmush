@@ -41,6 +41,7 @@ module AresMUSH
           description: description,
           start_date: plot.start_date,
           end_date: plot.end_date,
+          completed: plot.completed,
           scenes: {
             scenes: scenes,
             pages: [ 1 ]
