@@ -63,8 +63,7 @@ module AresMUSH
       if item_name == "None"
         nil
       else
-        item = self.find_item(char, item_name)
-        item.spell
+        Global.read_config("magic-items", item_name, "spell")
       end
     end
 
