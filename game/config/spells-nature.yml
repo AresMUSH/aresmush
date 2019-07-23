@@ -150,6 +150,21 @@ spells:
     target_optional: true
     weapon: Stun (Nature)
     rounds: 1
+  Shield Of The Forest:
+    available: false
+    casting_time: 1 round
+    desc: 'Swiftly grow a barrier that protects the caster or their target by placing them in [cover](https://www.aresmush.com/fs3/fs3-3/combat/#stance) for one round.'
+    duration: 1 round
+    effect: Defense
+    level: 3
+    line_of_sight: true
+    name: Shield of the Forest
+    range: Short
+    rounds: 3
+    school: Nature
+    stance: cover
+    target_num: 1
+    target_optional: true
   Swarm:
     available: true
     casting_time: 1 round
@@ -281,21 +296,7 @@ spells:
     name: Regress Growth
     range: Short
     school: Nature
-  Shield Of The Forest:
-    available: false
-    casting_time: 1 round
-    desc: 'Swiftly grow a barrier that protects the caster or their target by placing them in [cover](https://www.aresmush.com/fs3/fs3-3/combat/#stance) for one round.'
-    duration: 1 round
-    effect: Defense
-    level: 4
-    line_of_sight: true
-    name: Shield of the Forest
-    range: Short
-    rounds: 3
-    school: Nature
-    stance: cover
-    target_num: 1
-    target_optional: true
+
   Vigor Surge:
     available: false
     casting_time: 1 round
