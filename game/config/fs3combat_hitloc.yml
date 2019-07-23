@@ -58,7 +58,7 @@ fs3combat:
         - Right Hand
         - Right Hand
         - Right Hand
-        Left Arm:        
+        Left Arm:
         - Head
         - Trunk
         - Trunk
@@ -70,9 +70,6 @@ fs3combat:
         - Left Arm
         - Left Arm
         Right Arm:
-        - Right Arm
-        - Right Arm
-        - Right Arm
         - Head
         - Trunk
         - Trunk
@@ -80,6 +77,9 @@ fs3combat:
         - Right Hand
         - Right Hand
         - Right Hand
+        - Right Arm
+        - Right Arm
+        - Right Arm
         Head:
         - Right Arm
         - Right Arm
@@ -160,9 +160,9 @@ fs3combat:
         - Right Arm
         - Right Arm
         - Right Arm
-        - Left Hand
-        - Left Hand
-        - Left Hand
+        - Right Hand
+        - Right Hand
+        - Right Hand
         Left Arm:
         - Head
         - Chest
@@ -173,7 +173,7 @@ fs3combat:
         - Left Hand
         - Left Arm
         - Left Arm
-        - Left Hand
+        - Left Arm
         Right Arm:
         - Head
         - Chest
@@ -184,7 +184,7 @@ fs3combat:
         - Right Hand
         - Right Arm
         - Right Arm
-        - Right Hand
+        - Right Arm
         Head:
         - Right Arm
         - Right Arm
@@ -228,42 +228,39 @@ fs3combat:
     Plant:
       areas:
         Stem:
-        - Stem
-        - Stem
-        - Stem
-        - Stem
         - Left Vines
         - Left Vines
         - Flower
         - Flower
         - Right Vines
         - Right Vines
+        - Stem
+        - Stem
+        - Stem
+        - Stem
         Right Vines:
         - Right Vines
         - Left Vines
         - Left Vines
         - Flower
         - Flower
-        - Right Vines
-        - Right Vines
-        - Right Vines
-        - Right Vines
         - Stem
+        - Right Vines
+        - Right Vines
+        - Right Vines
+        - Right Vines
         Left Vines:
-        - Left Vines
-        - Left Vines
-        - Left Vines
-        - Left Vines
-        - Left Vines
         - Flower
         - Flower
         - Right Vines
         - Right Vines
         - Stem
+        - Left Vines
+        - Left Vines
+        - Left Vines
+        - Left Vines
+        - Left Vines
         Flower:
-        - Flower
-        - Flower
-        - Flower
         - Left Vines
         - Left Vines
         - Left Vines
@@ -271,6 +268,9 @@ fs3combat:
         - Right Vines
         - Stem
         - Stem
+        - Flower
+        - Flower
+        - Flower
       vital_areas:
       - Stem
       critical_areas:
@@ -436,20 +436,17 @@ fs3combat:
     Tree:
       areas:
         Trunk:
-        - Trunk
-        - Trunk
-        - Trunk
-        - Trunk
         - Right Branches
         - Right Branches
         - Left Branches
         - Left Branches
         - Upper Branches
         - Upper Branches
+        - Trunk
+        - Trunk
+        - Trunk
+        - Trunk
         Right Branches:
-        - Right Branches
-        - Right Branches
-        - Right Branches
         - Left Branches
         - Left Branches
         - Upper Branches
@@ -457,10 +454,10 @@ fs3combat:
         - Upper Branches
         - Trunk
         - Trunk
+        - Right Branches
+        - Right Branches
+        - Right Branches
         Left Branches:
-        - Left Branches
-        - Left Branches
-        - Left Branches
         - Upper Branches
         - Upper Branches
         - Upper Branches
@@ -468,10 +465,10 @@ fs3combat:
         - Right Branches
         - Trunk
         - Trunk
+        - Left Branches
+        - Left Branches
+        - Left Branches
         Upper Branches:
-        - Upper Branches
-        - Upper Branches
-        - Upper Branches
         - Left Branches
         - Left Branches
         - Left Branches
@@ -479,6 +476,9 @@ fs3combat:
         - Right Branches
         - Trunk
         - Trunk
+        - Upper Branches
+        - Upper Branches
+        - Upper Branches
       vital_areas: []
       critical_areas: []
     Target:
@@ -493,33 +493,33 @@ fs3combat:
         - Ring 2
         - Ring 1
         - Ring 1
-        - Bullsye
+        - Bullseye
       vital_areas: []
       critical_areas: []
     Insect:
       areas:
         Left Leg:
         - Thorax
-        - Rear Right Leg
-        - Rear Right Leg
-        - Rear Right Leg
+        - Right Leg
+        - Right Leg
+        - Right Leg
         - Abdomen
         - Abdomen
         - Abdomen
-        - Rear Left Leg
-        - Rear Left Leg
-        - Rear Left Leg
+        - Left Leg
+        - Left Leg
+        - Left Leg
         Right Leg:
         - Thorax
-        - Rear Right Leg
-        - Rear Right Leg
-        - Rear Right Leg
+        - Right Leg
+        - Right Leg
+        - Right Leg
         - Abdomen
         - Abdomen
         - Abdomen
-        - Rear Left Leg
-        - Rear Left Leg
-        - Rear Left Leg
+        - Left Leg
+        - Left Leg
+        - Left Leg
         Rear Left Leg:
         - Thorax
         - Rear Right Leg
@@ -592,26 +592,26 @@ fs3combat:
       areas:
         Left Leg:
         - Thorax
-        - Rear Right Leg
-        - Rear Right Leg
-        - Rear Right Leg
+        - Right Leg
+        - Right Leg
+        - Right Leg
         - Abdomen
         - Abdomen
         - Abdomen
-        - Rear Left Leg
-        - Rear Left Leg
-        - Rear Left Leg
+        - Left Leg
+        - Left Leg
+        - Left Leg
         Right Leg:
         - Thorax
-        - Rear Right Leg
-        - Rear Right Leg
-        - Rear Right Leg
+        - Right Leg
+        - Right Leg
+        - Right Leg
         - Abdomen
         - Abdomen
         - Abdomen
-        - Rear Left Leg
-        - Rear Left Leg
-        - Rear Left Leg
+        - Left Leg
+        - Left Leg
+        - Left Leg
         Rear Left Leg:
         - Thorax
         - Rear Right Leg
@@ -662,22 +662,22 @@ fs3combat:
         - Thorax
         - Abdomen
         - Abdomen
-        - Right Wing
-        - Right Wing
-        - Right Wing
         - Front Right Leg
         - Front Right Leg
+        - Right Wing
+        - Right Wing
+        - Right Wing
         Left Wing:
         - Head
         - Thorax
         - Thorax
         - Abdomen
         - Abdomen
-        - Left Wing
-        - Left Wing
-        - Left Wing
         - Front Left Leg
         - Front Left Leg
+        - Left Wing
+        - Left Wing
+        - Left Wing        
         Head:
         - Front Right Leg
         - Front Right Leg
