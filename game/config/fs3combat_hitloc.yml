@@ -511,15 +511,15 @@ fs3combat:
         - Left Leg
         Right Leg:
         - Thorax
-        - Right Leg
-        - Right Leg
-        - Right Leg
         - Abdomen
         - Abdomen
         - Abdomen
         - Left Leg
         - Left Leg
         - Left Leg
+        - Right Leg
+        - Right Leg
+        - Right Leg
         Rear Left Leg:
         - Thorax
         - Rear Right Leg
@@ -568,6 +568,8 @@ fs3combat:
         - Front Right Leg
         - Front Right Leg
         - Front Left Leg
+        - Abdomen
+        - Abdomen
         - Thorax
         - Thorax
         - Head
@@ -603,15 +605,15 @@ fs3combat:
         - Left Leg
         Right Leg:
         - Thorax
-        - Right Leg
-        - Right Leg
-        - Right Leg
         - Abdomen
         - Abdomen
         - Abdomen
         - Left Leg
         - Left Leg
         - Left Leg
+        - Right Leg
+        - Right Leg
+        - Right Leg
         Rear Left Leg:
         - Thorax
         - Rear Right Leg
@@ -677,7 +679,7 @@ fs3combat:
         - Front Left Leg
         - Left Wing
         - Left Wing
-        - Left Wing        
+        - Left Wing
         Head:
         - Front Right Leg
         - Front Right Leg
