@@ -225,6 +225,41 @@ fs3combat:
       - Head
       - Neck
       - Groin
+    Octopus:
+      areas:
+        Mantle:
+        - Arm
+        - Arm
+        - Arm
+        - Arm
+        - Arm
+        - Arm
+        - Head
+        - Mantle
+        - Mantle
+        - Mantle
+        Head:
+        - Arm
+        - Arm
+        - Arm
+        - Arm
+        - Arm
+        - Arm
+        - Mantle
+        - Mantle
+        - Head
+        - Head
+        Arm:
+        - Mantle
+        - Mantle
+        - Head
+        - Head
+        - Arm
+        - Arm
+        - Arm
+        - Arm
+        - Arm
+        - Arm        
     Plant:
       areas:
         Stem:

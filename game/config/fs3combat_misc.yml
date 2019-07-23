@@ -3,18 +3,22 @@ fs3combat:
   allow_mounts: false
   allow_vehicles: false
   combatant_types:
-    Knight:
-      weapon: Sword
-      weapon_specials:
-      armor: Plate
-      hitloc: Humanoid
-      defense_skill: Reflexes
     Archer:
       weapon: Bow
       weapon_specials:
       armor: Leather
       hitloc: Humanoid
       defense_skill: Reflexes
+    Deathcap:
+      hitloc: Deathcap
+      weapon: Club
+    Knight:
+      weapon: Sword
+      weapon_specials:
+      armor: Plate
+      hitloc: Humanoid
+      defense_skill: Reflexes
+
     Insect:
       weapon: Teeth
       weapon_specials:
@@ -39,29 +43,20 @@ fs3combat:
       armor: Chainmail
       hitloc: Humanoid
       defense_skill: Reflexes
-    Observer:
-      hitloc: Humanoid
     Modern Soldier:
       weapon: Rifle
       weapon_specials:
       armor: Tactical
       hitloc: Humanoid
       defense_skill: Reflexes
-    Unarmed Combatant:
-      weapon: Unarmed
-      armor: None
+    Observer:
       hitloc: Humanoid
+    Octopus:
+      hitloc: Octopus
+      weapon: Beak
       defense_skill: Reflexes
-    Target:
-      hitloc: Target
-      weapon: Unarmed
-      defense_skill: None
     Quadraped:
       hitloc: Quadraped
-      weapon: Teeth
-      defense_skill: Reflexes
-    Serpent:
-      hitloc: Serpent
       weapon: Teeth
       defense_skill: Reflexes
     Plant:
@@ -69,13 +64,23 @@ fs3combat:
       weapon: Club
       armor: Tough Hide
       defense_skill: Reflexes
-    Deathcap:
-      hitloc: Deathcap
-      weapon: Club
+    Serpent:
+      hitloc: Serpent
+      weapon: Teeth
+      defense_skill: Reflexes
+    Target:
+      hitloc: Target
+      weapon: Unarmed
+      defense_skill: None
     Tree:
       hitloc: Tree
       weapon: Club
       armor: Tough Hide
+      defense_skill: Reflexes
+    Unarmed Combatant:
+      weapon: Unarmed
+      armor: None
+      hitloc: Humanoid
       defense_skill: Reflexes
   default_type: Unarmed Combatant
   shortcuts:
