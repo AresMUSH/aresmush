@@ -8,14 +8,19 @@ fs3combat:
         - Right Leg
         - Left Arm
         - Right Arm
+        - Left Arm
+        - Head
         - Head
         - Trunk
         - Trunk
         - Trunk
         Left Leg:
         - Trunk
+        - Trunk
         - Right Foot
         - Right Leg
+        - Right Leg
+        - Left Foot
         - Left Foot
         - Left Leg
         - Left Leg
@@ -38,6 +43,7 @@ fs3combat:
         - Left Arm
         - Left Arm
         - Left Arm
+        - Left Arm
         - Left Hand
         - Left Hand
         - Left Hand
@@ -47,9 +53,11 @@ fs3combat:
         - Right Arm
         - Right Arm
         - Right Arm
-        - Left Hand
-        - Left Hand
-        - Left Hand
+        - Right Arm
+        - Right Arm
+        - Right Hand
+        - Right Hand
+        - Right Hand
         Left Arm:
         - Head
         - Trunk
@@ -57,6 +65,7 @@ fs3combat:
         - Trunk
         - Left Hand
         - Left Hand
+        - Left Arm
         - Left Arm
         - Left Arm
         - Left Hand
@@ -69,12 +78,14 @@ fs3combat:
         - Right Hand
         - Right Arm
         - Right Arm
+        - Right Arm
         - Right Hand
         Head:
         - Right Arm
         - Right Arm
         - Left Arm
         - Left Arm
+        - Trunk
         - Trunk
         - Trunk
         - Head
@@ -219,6 +230,8 @@ fs3combat:
         Stem:
         - Stem
         - Stem
+        - Stem
+        - Stem
         - Left Vines
         - Left Vines
         - Flower
@@ -233,8 +246,12 @@ fs3combat:
         - Flower
         - Right Vines
         - Right Vines
+        - Right Vines
+        - Right Vines
         - Stem
         Left Vines:
+        - Left Vines
+        - Left Vines
         - Left Vines
         - Left Vines
         - Left Vines
@@ -247,6 +264,7 @@ fs3combat:
         - Flower
         - Flower
         - Flower
+        - Left Vines
         - Left Vines
         - Left Vines
         - Right Vines
@@ -654,7 +672,7 @@ fs3combat:
         - Left Wing
         - Left Wing
         - Front Left Leg
-        - Front Left Leg        
+        - Front Left Leg
         Head:
         - Front Right Leg
         - Front Right Leg
