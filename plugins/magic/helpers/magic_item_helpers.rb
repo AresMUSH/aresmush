@@ -6,8 +6,8 @@ module AresMUSH
       is_item = Global.read_config("magic-items", item_name)
     end
 
-    def self.find_item (char, item_name)
-      char.magic_items.select { |a| a.name == item_name }.first
+    def self.item_desc(item)
+      Global.read_config("magic-items", item, "desc")
     end
 
     def self.item_weapon_specials(char)
@@ -15,8 +15,7 @@ module AresMUSH
       if item_name == "None"
         nil
       else
-        item = self.find_item(char, item_name)
-        item.weapon_specials
+        Global.read_config("magic-items", item_name, "weapon_specials")
       end
     end
 
@@ -40,8 +39,7 @@ module AresMUSH
       if item_name == "None"
         nil
       else
-        item = self.find_item(char, item_name)
-        item.armor_specials
+        Global.read_config("magic-items", item_name, "armor_specials")
       end
     end
 
@@ -65,8 +63,7 @@ module AresMUSH
       if item_name == "None"
         nil
       else
-        item = self.find_item(char, item_name)
-        item.spell
+        Global.read_config("magic-items", item_name, "spell")
       end
     end
 
@@ -75,8 +72,7 @@ module AresMUSH
       if item_name == "None"
         0
       else
-        item = self.find_item(char, item_name)
-        item.item_spell_mod
+        Global.read_config("magic-items", item_name, "spell_mod")
       end
     end
 
@@ -85,8 +81,7 @@ module AresMUSH
       if item_name == "None"
         0
       else
-        item = self.find_item(char, item_name)
-        item.item_attack_mod
+        Global.read_config("magic-items", item_name, "attack_mod")
       end
     end
 

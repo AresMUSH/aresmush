@@ -23,16 +23,10 @@ module AresMUSH
       end
 
       def handle
-        #Reading Config
-        weapon_specials = Global.read_config("magic-items", self.item_name, "weapon_specials")
-        armor_specials = Global.read_config("magic-items", self.item_name, "armor_specials")
-        spell_mod = Global.read_config("magic-items", self.item_name, "spell_mod")
-        attack_mod = Global.read_config("magic-items", self.item_name, "attack_mod")
-        spell = Global.read_config("magic-items", self.item_name, "spell")
-        desc = Global.read_config("magic-items", self.item_name, "desc")
 
-
-        MagicItems.create(name: self.item_name, character: self.target, desc: desc, weapon_specials: weapon_specials, armor_specials: armor_specials, spell: spell, item_spell_mod: spell_mod, item_attack_mod: attack_mod)
+        target_magic_items = self.target.magic_items
+        target_magic_items.concat [self.item_name]
+        self.target.update(magic_items: target_magic_items)
 
         client.emit_success t('magic.added_item', :item => self.item_name, :target => target.name)
 

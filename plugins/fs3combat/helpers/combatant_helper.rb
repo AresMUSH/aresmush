@@ -15,6 +15,7 @@ module AresMUSH
       stress_mod = combatant.stress
       aiming_mod = (combatant.is_aiming? && (combatant.aim_target == combatant.action.target)) ? 3 : 0
       luck_mod = (combatant.luck == "Attack") ? 3 : 0
+      spell_luck_mod = (combatant.luck == "Spell") ? 3 : 0
       distraction_mod = combatant.distraction
 
       if (combatant.mount_type && !target.mount_type)
@@ -25,7 +26,7 @@ module AresMUSH
         mount_mod = 0
       end
 
-      combatant.log "Attack roll for #{combatant.name} ability=#{ability} aiming=#{aiming_mod} mod=#{mod} accuracy=#{accuracy_mod} damage=#{damage_mod} stance=#{stance_mod} mount=#{mount_mod} luck=#{luck_mod} stress=#{stress_mod} special=#{special_mod} item_attack=#{item_attack_mod} distract=#{distraction_mod}"
+      combatant.log "Attack roll for #{combatant.name} ability=#{ability} aiming=#{aiming_mod} mod=#{mod} accuracy=#{accuracy_mod} damage=#{damage_mod} stance=#{stance_mod} mount=#{mount_mod} attack_luck=#{luck_mod} spell_luck=#{spell_luck_mod} stress=#{stress_mod} special=#{special_mod} item_attack=#{item_attack_mod} distract=#{distraction_mod}"
 
       mod = mod.to_i + accuracy_mod.to_i + damage_mod.to_i + stance_mod.to_i + aiming_mod.to_i + luck_mod.to_i - stress_mod.to_i + special_mod.to_i + item_attack_mod.to_i - distraction_mod.to_i + mount_mod.to_i
 

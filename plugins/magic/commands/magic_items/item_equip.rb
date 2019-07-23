@@ -3,41 +3,22 @@ module AresMUSH
     class ItemEquipCmd
     #item/equip <item>
       include CommandHandler
-      attr_accessor :caster, :caster_name, :item_name
+      attr_accessor :item_name
 
-      # Using 'caster' even though it should probably be user or something just for variable consistency with helpers.
       def parse_args
-          if (cmd.args =~ /\//)
-          #Forcing NPC or PC to equip item
-          args = cmd.parse_args(/(?<arg1>[^\/]+)\/(?<arg2>[^\+]+)/)
-          combat = enactor.combat
-          caster_name = titlecase_arg(args.arg1)
-          #Returns char or NPC
-          self.caster = FS3Combat.find_named_thing(caster_name, enactor)
-          self.item_name = titlecase_arg(args.arg2)
-
-        else
-           args = cmd.parse_args(/(?<arg1>[^\+]+)\+?(?<arg2>.+)?/)
-           #Returns char or NPC
-           self.caster = enactor
-           self.item_name = titlecase_arg(args.arg1)
-
-          end
+        self.item_name = titlecase_arg(cmd.args)
       end
 
       def check_errors
-        return t('magic.not_character') if !caster
-        return t('item_not_owned') if !Magic.find_item(caster, item_name)
+        return t('magic.dont_have_item') if !enactor.magic_items.include?(self.item_name)
       end
 
       def handle
-        item = Magic.find_item(enactor, item_name)
-        caster.update(magic_item_equipped: item_name)
-        client.emit_success t('magic.item_equipped', :item => caster.magic_item_equipped)
+        enactor.update(magic_item_equipped: self.item_name)
+        client.emit_success t('magic.item_equipped', :item => enactor.magic_item_equipped)
         message = "Equipped a magic item."
-        Achievements.award_achievement(caster, "equipped_magic_item", 'magic', message)
+        Achievements.award_achievement(enactor, "equipped_magic_item", 'magic', message)
       end
-
 
     end
   end

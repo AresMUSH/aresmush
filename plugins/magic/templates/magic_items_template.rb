@@ -9,7 +9,17 @@ module AresMUSH
       end
 
       def magic_items
-        @char.magic_items
+        list = []
+        @char.magic_items.each.each do |item|
+          list << format_items(item)
+        end
+        list
+      end
+
+      def format_items(item)
+        name = item
+        desc = Magic.item_desc(item)
+        "#{name}%r#{desc}%r"
       end
 
       def equipped_item
