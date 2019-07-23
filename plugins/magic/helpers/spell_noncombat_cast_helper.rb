@@ -1,6 +1,23 @@
 module AresMUSH
   module Magic
 
+    def self.roll_noncombat_spell_success(caster, spell, mod = nil)
+      if Magic.knows_spell?(caster, spell)
+        school = Global.read_config("spells", spell, "school")
+      else
+        school = "Magic"
+        cast_mod = FS3Skills.ability_rating(caster, "Magic") * 2
+        mod = mod.to_i + cast_mod
+      end
+
+      spell_mod = Magic.item_spell_mod(caster)
+      total_mod = mod.to_i + spell_mod.to_i
+      Global.logger.info "#{caster.name} rolling #{school} to cast #{spell}. Mod=#{mod} Item Mod=#{spell_mod} Off-school cast mod=#{cast_mod}"
+      roll = caster.roll_ability(school, total_mod)
+      die_result = roll[:successes]
+      succeeds = Magic.spell_success(spell, die_result)
+    end
+
     def self.spell_weapon_effects(combatant, spell)
       rounds = Global.read_config("spells", spell, "rounds")
       special = Global.read_config("spells", spell, "weapon_specials")

@@ -87,6 +87,7 @@ module AresMUSH
         rounds = Global.read_config("spells", self.spell, "rounds")
         spell_mod = Global.read_config("spells", self.spell, "spell_mod")
         stance = Global.read_config("spells", self.spell, "stance")
+        school = Global.read_config("spells", self.spell, "school")
         target_optional = Global.read_config("spells", self.spell, "target_optional")
         weapon = Global.read_config("spells", self.spell, "weapon")
         weapon_specials_str = Global.read_config("spells", self.spell, "weapon_specials")
@@ -100,7 +101,7 @@ module AresMUSH
           end
 
           weapon_type = FS3Combat.weapon_stat(self.combatant.weapon, "weapon_type")
-
+          #Spells roll for success individually because they only do one thing, and need to use different measures of success.
           targets.each do |target|
 
             #Stun
@@ -120,111 +121,121 @@ module AresMUSH
 
           end
         else
-          targets.each do |target|
-            # #Attacks against shields
-            # if (effect == "Psionic" && target.mind_shield > 0 && Magic.roll_shield(target, combatant, self.spell) == "shield")
-            #    messages.concat [t('magic.shield_held', :name => self.name, :spell => self.spell, :mod => "", :shield => "Mind Shield", :target => print_target_names)]
-            #  end
+          succeeds = Magic.roll_combat_spell_success(combatant, spell)
+          #Spells here do not roll for success individually because they may do more than one thing and so need one success roll.
+          Global.logger.debug "Succeeds #{succeeds}"
+          if succeeds == "%xgSUCCEEDS%xn"
 
-            #Psionic Protection
-            if self.spell == "Mind Shield"
-              message = Magic.cast_mind_shield(combatant, target, self.spell, rounds)
-              messages.concat message
+            targets.each do |target|
+
+              #Psionic Protection
+              if self.spell == "Mind Shield"
+                message = Magic.cast_mind_shield(combatant, target, self.spell, rounds)
+                messages.concat message
+              end
+
+              #Fire Protection
+               if self.spell == "Endure Fire"
+                 message = Magic.cast_endure_fire(combatant, target, self.spell, rounds)
+                 messages.concat message
+               end
+
+              #Cold Protection
+              if self.spell == "Endure Cold"
+                message = Magic.cast_endure_cold(combatant, target, self.spell, rounds)
+                messages.concat message
+              end
+
+              #Healing
+              if heal_points
+                message = Magic.cast_combat_heal(combatant, target, self.spell, heal_points)
+                messages.concat message
+              end
+
+              #Equip Weapon
+              if (weapon && weapon != "Spell")
+                Global.logger.debug "Casting Weapon"
+                message = Magic.cast_weapon(combatant, target, self.spell, weapon)
+                Global.logger.debug "Weapon Message: #{message}"
+                messages.concat message
+              end
+
+              #Equip Weapon Specials
+              if weapon_specials_str
+                message = Magic.cast_weapon_specials(combatant, target, self.spell, weapon_specials_str)
+                messages.concat message
+              end
+
+              #Equip Armor
+              Global.logger.debug "Casting Armor"
+              if armor
+                message = Magic.cast_armor(combatant, target, self.spell, armor)
+                Global.logger.debug "Armor Message: #{message}"
+                messages.concat message
+              end
+
+              #Equip Armor Specials
+              if armor_specials_str
+                message = Magic.cast_armor_specials(combatant, target, self.spell, rounds)
+                messages.concat message
+              end
+
+              #Reviving
+              if is_revive
+                message = Magic.cast_revive(combatant, target, self.spell)
+                messages.concat message
+              end
+
+              #Ressurrection
+              if is_res
+                message = Magic.cast_resurrection(combatant, target, self.spell)
+                messages.concat message
+              end
+
+              #Inflict Damage
+              if damage_inflicted
+                message = Magic.cast_inflict_damage(combatant, target, self.spell, damage_inflicted, damage_desc)
+                messages.concat message
+              end
+
+              #Apply Mods
+              if lethal_mod
+                message = Magic.cast_lethal_mod(combatant, target, spell, rounds, lethal_mod)
+                messages.concat message
+              end
+
+              if attack_mod
+                message = Magic.cast_attack_mod(combatant, target, spell, rounds, attack_mod)
+                messages.concat message
+              end
+
+              if defense_mod
+                message = Magic.cast_defense_mod(combatant, target, spell, rounds, defense_mod)
+                messages.concat message
+              end
+
+              if spell_mod
+                message = Magic.cast_spell_mod(combatant, target, spell, rounds, spell_mod)
+                messages.concat message
+              end
+
+              #Change Stance
+              if stance
+                message = Magic.cast_stance(combatant, target, spell, rounds, stance)
+                messages.concat message
+              end
+
+              #Roll
+              if roll
+                message = Magic.cast_combat_roll(combatant, target, spell, effect)
+                messages.concat message
+              end
+            #End targets.each do for non FS3 spells (if spell succeeds)
             end
-
-            #Fire Protection
-             if self.spell == "Endure Fire"
-               message = Magic.cast_endure_fire(combatant, target, self.spell, rounds)
-               messages.concat message
-             end
-
-            #Cold Protection
-            if self.spell == "Endure Cold"
-              message = Magic.cast_endure_cold(combatant, target, self.spell, rounds)
-              messages.concat message
-            end
-
-            #Healing
-            if heal_points
-              message = Magic.cast_combat_heal(combatant, target, self.spell, heal_points)
-              messages.concat message
-            end
-
-            #Equip Weapon
-            if (weapon && weapon != "Spell")
-              message = Magic.cast_weapon(combatant, target, self.spell, weapon)
-              messages.concat message
-            end
-
-            #Equip Weapon Specials
-            if weapon_specials_str
-              message = Magic.cast_weapon_specials(combatant, target, self.spell, weapon_specials_str)
-              messages.concat message
-            end
-
-            #Equip Armor
-            if armor
-              message = Magic.cast_armor(combatant, target, self.spell, armor)
-              messages.concat message
-            end
-
-            #Equip Armor Specials
-            if armor_specials_str
-              message = Magic.cast_armor_specials(combatant, target, self.spell, rounds)
-              messages.concat message
-            end
-
-            #Reviving
-            if is_revive
-              message = Magic.cast_revive(combatant, target, self.spell)
-              messages.concat message
-            end
-
-            #Ressurrection
-            if is_res
-              message = Magic.cast_resurrection(combatant, target, self.spell)
-              messages.concat message
-            end
-
-            #Inflict Damage
-            if damage_inflicted
-              message = Magic.cast_inflict_damage(combatant, target, self.spell, damage_inflicted, damage_desc)
-              messages.concat message
-            end
-
-            #Apply Mods
-            if lethal_mod
-              message = Magic.cast_lethal_mod(combatant, target, spell, rounds, lethal_mod)
-              messages.concat message
-            end
-
-            if attack_mod
-              message = Magic.cast_attack_mod(combatant, target, spell, rounds, attack_mod)
-              messages.concat message
-            end
-
-            if defense_mod
-              message = Magic.cast_defense_mod(combatant, target, spell, rounds, defense_mod)
-              messages.concat message
-            end
-
-            if spell_mod
-              message = Magic.cast_spell_mod(combatant, target, spell, rounds, spell_mod)
-              messages.concat message
-            end
-
-            #Change Stance
-            if stance
-              message = Magic.cast_stance(combatant, target, spell, rounds, stance)
-              messages.concat message
-            end
-
-            #Roll
-            if roll
-              message = Magic.cast_combat_roll(combatant, target, spell, effect)
-              messages.concat message
-            end
-          #End targets.each do for non FS3 spells (if spell succeeds)
+          #Spell fails
+          else
+            messages.concat [t('magic.spell_target_resolution_msg', :name =>  combatant.name, :spell => self.spell, :target => print_target_names, :succeeds => "%xrFAILS%xn")]
+          #End spell rolls
           end
         # elsif self.spell == "Phoenix's Healing Flames"
         #   messages.concat [t('magic.cast_phoenix_heal', :name => self.name, :spell => self.spell, :succeeds => "%xgSUCCEEDS%xn")]

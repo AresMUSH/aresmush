@@ -56,10 +56,7 @@ module AresMUSH
       FS3Combat.armor_stat(gear, "is_magic")
     end
 
-
-
-
-    def self.combat_spell_success(spell, die_result)
+    def self.spell_success(spell, die_result)
       spell_level = Global.read_config("spells", spell, "level")
       if spell_level == 1
         return "%xrFAILS%xn" if die_result < 1
@@ -90,39 +87,7 @@ module AresMUSH
       end
     end
 
-    def self.roll_combat_spell_success(caster_combatant, spell)
-      if caster_combatant.npc
-        school = Global.read_config("spells", spell, "school")
-        mod = 0
-      elsif Magic.knows_spell?(caster_combatant, spell)
-        school = Global.read_config("spells", spell, "school")
-        mod = 0
-      else
-        school = "Magic"
-        mod = FS3Skills.ability_rating(caster_combatant.associated_model, "Magic") * 2
-      end
-
-      die_result = Magic.roll_combat_spell(caster_combatant, caster_combatant, school, mod)
-      succeeds = Magic.combat_spell_success(spell, die_result)
-    end
-
-    def self.roll_noncombat_spell_success(caster, spell, mod = nil)
-      if Magic.knows_spell?(caster, spell)
-        school = Global.read_config("spells", spell, "school")
-      else
-        school = "Magic"
-        cast_mod = FS3Skills.ability_rating(caster, "Magic") * 2
-        mod = mod.to_i + cast_mod
-      end
-
-      spell_mod = Magic.item_spell_mod(caster)
-      total_mod = mod.to_i + spell_mod.to_i
-      Global.logger.info "#{caster.name} rolling #{school} to cast #{spell}. Mod=#{mod} Item Mod=#{spell_mod} Off-school cast mod=#{cast_mod}"
-      roll = caster.roll_ability(school, total_mod)
-      die_result = roll[:successes]
-      succeeds = Magic.combat_spell_success(spell, die_result)
-    end
-
+    
     def self.delete_all_untreated_damage(char)
       damage = char.damage
       damage.each do |d|
