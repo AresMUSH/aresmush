@@ -58,10 +58,7 @@ fs3combat:
         - Right Hand
         - Right Hand
         - Right Hand
-        Left Arm:
-        - Left Arm
-        - Left Arm
-        - Left Arm
+        Left Arm:        
         - Head
         - Trunk
         - Trunk
@@ -69,6 +66,9 @@ fs3combat:
         - Left Hand
         - Left Hand
         - Left Hand
+        - Left Arm
+        - Left Arm
+        - Left Arm
         Right Arm:
         - Right Arm
         - Right Arm
