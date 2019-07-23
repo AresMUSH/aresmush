@@ -15,7 +15,7 @@ module AresMUSH
       end
 
       def check_if_spell
-        return t('custom.do_spell_learn') if Custom.is_spell?(self.name)
+        return t('magic.do_spell_learn') if Magic.is_spell?(self.name)
       end
 
       def check_chargen_locked
