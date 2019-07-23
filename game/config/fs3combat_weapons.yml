@@ -216,7 +216,7 @@ fs3combat:
       special_group: Melee
     Car:
       description: Hitting things with a car.
-      skill: Altertness
+      skill: Alertness
       lethality: 5
       penetration: 4
       weapon_type: Melee

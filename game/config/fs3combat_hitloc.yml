@@ -59,26 +59,26 @@ fs3combat:
         - Right Hand
         - Right Hand
         Left Arm:
+        - Left Arm
+        - Left Arm
+        - Left Arm
         - Head
         - Trunk
         - Trunk
         - Trunk
         - Left Hand
         - Left Hand
-        - Left Arm
-        - Left Arm
-        - Left Arm
         - Left Hand
         Right Arm:
+        - Right Arm
+        - Right Arm
+        - Right Arm
         - Head
         - Trunk
         - Trunk
         - Trunk
         - Right Hand
         - Right Hand
-        - Right Arm
-        - Right Arm
-        - Right Arm
         - Right Hand
         Head:
         - Right Arm
@@ -428,6 +428,7 @@ fs3combat:
         - Tail
         - Tail
         - Tail
+        - Tail
       vital_areas:
       - Head
       critical_areas:
@@ -435,6 +436,7 @@ fs3combat:
     Tree:
       areas:
         Trunk:
+        - Trunk
         - Trunk
         - Trunk
         - Trunk
@@ -452,12 +454,14 @@ fs3combat:
         - Left Branches
         - Upper Branches
         - Upper Branches
+        - Upper Branches
         - Trunk
         - Trunk
         Left Branches:
         - Left Branches
         - Left Branches
         - Left Branches
+        - Upper Branches
         - Upper Branches
         - Upper Branches
         - Right Branches
@@ -468,6 +472,7 @@ fs3combat:
         - Upper Branches
         - Upper Branches
         - Upper Branches
+        - Left Branches
         - Left Branches
         - Left Branches
         - Right Branches
@@ -677,6 +682,8 @@ fs3combat:
         - Front Right Leg
         - Front Right Leg
         - Front Left Leg
+        - Front Left Leg
+        - Thorax
         - Thorax
         - Thorax
         - Head
