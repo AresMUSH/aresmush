@@ -15,17 +15,20 @@ module AresMUSH
       end
       
       def channel_roles(channel)
-        channel.roles.map {|r| r.name}.join(" ")
+        talk = channel.talk_roles.empty? ? t("channels.everyone") : channel.talk_roles.map {|r| r.name}.join(" ")
+        join = channel.join_roles.empty? ? t("channels.everyone") : channel.join_roles.map {|r| r.name}.join(" ")
+
+        "#{join} / #{talk}"
       end
       
       def channel_announce(channel)
         announce = Channels.announce_enabled?(@enactor, channel)
-        announce ? " +   " : " -   "
+        announce ? "+" : " -   "
       end
       
       def channel_on_indicator(channel)
         return "(X)" if Channels.is_muted?(@enactor, channel)
-        is_on_channel?(channel) ? "(+)" : "(-)"
+        is_on_channel?(channel) ? "(+)" : "( )"
       end
       
       def is_on_channel?(channel)
@@ -34,7 +37,7 @@ module AresMUSH
       
       def channel_alias(channel)
         options = Channels.get_channel_options(@enactor, channel)
-        options.alias_hint
+        (options.aliases || []).join(", ")
       end      
     end
   end

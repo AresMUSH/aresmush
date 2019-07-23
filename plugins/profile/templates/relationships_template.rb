@@ -12,6 +12,10 @@ module AresMUSH
       def categories
         Profile.relationships_by_category(@char)
       end
+      
+      def sorted_relationships(relations)
+        relations.sort_by { |name, data| [ data['order'] || 99, name ] }
+      end
     end
   end
 end

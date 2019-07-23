@@ -74,16 +74,24 @@ module AresMUSH
       def handle
         Channels.with_a_channel(name, client) do |channel|
         
-          channel.roles.each { |r| channel.roles.delete r }
+          if (cmd.switch_is?("joinroles"))
+            channel.join_roles.each { |r| channel.join_roles.delete r }
           
-          roles.each do |r|
-            roles.each { |r| channel.roles.add Role.find_one_by_name(r) }
+            roles.each do |r|
+              roles.each { |r| channel.join_roles.add Role.find_one_by_name(r) }
+            end
+          else
+            channel.talk_roles.each { |r| channel.talk_roles.delete r }
+          
+            roles.each do |r|
+              roles.each { |r| channel.talk_roles.add Role.find_one_by_name(r) }
+            end
           end
         
           Channels.emit_to_channel channel, t('channels.roles_changed_by', :name => enactor_name)
         
           channel.characters.each do |c|
-            if (!Channels.can_use_channel(c, channel))
+            if (!Channels.can_join_channel?(c, channel))
               Channels.leave_channel(c, channel)
             end
           end

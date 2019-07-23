@@ -26,7 +26,8 @@ Channel administrators can add or remove characters from a channel:
 ## Roles
 Control who is allowed to use a channel. If you change the roles for an existing channel, anyone who no longer has permission will automatically leave the channel.
 
-`channel/roles <channel>=<roles>` - Use commas to separate multiple roles.  Use "none" to clear existing roles.
+`channel/joinroles <channel>=<roles>` - Use commas to separate multiple roles.  Use "none" to clear existing roles.
+`channel/talkroles <channel>=<roles>` - Use commas to separate multiple roles.  Use "none" to clear existing roles.
 
 ## Default Aliases
 The game automatically uses the first letters of the channel name for its default aliases.  You can specify a list of space-separated names: 'c ch cha' for the chat channel.

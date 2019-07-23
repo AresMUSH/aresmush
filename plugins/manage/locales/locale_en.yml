@@ -39,7 +39,7 @@ en:
         upgrade_output: "Upgrade started. Output: %{output}"
         upgrade_conflict_warning: "There seem to be conflicts between your code and the latest Ares code.  Check the output above for 'CONFLICT' warnings and resolve them.  Then you can use `upgrade/finish` to complete the upgrade."
         upgrade_continue: "Check the output above to see if there are any CONFLICT warnings you need to resolve. If there are no conflicts (or you've resolved them), you can use `upgrade/finish` to complete the upgrade."
-        restart_required: "This upgrade requires a game restart.  Use the `shutdown` command to shut down the game and then restart it as described in https://aresmush.com/tutorials/manage/start.html."
+        restart_required: "This upgrade requires a game restart.  Use the `shutdown` command or Admin->Manage on the web portal to shut down the game and then restart it as described in https://aresmush.com/tutorials/manage/start.html."
         invalid_git_command: "Invalid git command.  Only a limited subset of commands are supported: %{commands}"
         database_upgrade_in_progress: "Database upgrade in progress.  Please stand by."
         database_upgrade_complete: "Database upgrade complete.  Carry on."

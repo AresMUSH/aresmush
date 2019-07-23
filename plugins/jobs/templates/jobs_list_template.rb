@@ -33,10 +33,6 @@ module AresMUSH
         job.is_unread?(@char) ? t('jobs.unread_marker') : ""
       end
       
-      def reboot_text
-        Jobs.reboot_required_notice
-      end
-      
       def jobs_footer
         page = " #{@paginator.page_marker} "
         filter = " #{t('jobs.job_filter_active', :filter => @filter)} "

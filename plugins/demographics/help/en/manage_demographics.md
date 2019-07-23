@@ -12,6 +12,8 @@ You can set any of the basic character demographics (full name, gender, etc.) on
 
 `birthdate <name>=<birthdate>`
 
-`actor <name>=<actor name>`
+## Setting Groups
+
+You can also set group information.
 
 `group/set <char>=<type>/<value>` - Sets a character's value for a group type.

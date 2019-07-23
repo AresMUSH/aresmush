@@ -12,6 +12,7 @@ The current IC weather for your area shows up in room descriptions, but you can 
 
 > **Required Permissions:** This command requires the Admin role or the manage_weather permission.
 
-You can manually override the weather.  This will take effect until the next automatic weather change.
+You can manually override the weather.  This will take effect until the next automatic weather change.  You can also force the weather to change to something new in all areas with a weather reset.
 
-`weather/set <area>=<temperature>/<weather condition>`
+`weather/set <area>=<temperature>/<weather condition>` - Sets a specific weather.
+`weather/reset` - Updates weather in all areas.

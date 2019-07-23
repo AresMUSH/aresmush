@@ -49,11 +49,22 @@ module AresMUSH
       it "should substitute the go command if an exit is matched and there are no args" do
         cmd = Command.new("E")
         room = double
-        allow(room).to receive(:has_exit?).with("e") { true }
+        allow(room).to receive(:has_exit?).with("E") { true }
         allow(@enactor).to receive(:room) { room }
         CommandAliasParser.substitute_aliases(@enactor, cmd, @shortcuts)
         expect(cmd.root).to eq "go"
-        expect(cmd.args).to eq "e"
+        expect(cmd.args).to eq "E"
+        expect(cmd.switch).to be_nil
+      end
+      
+      it "should substitute the go command if an exit with a number is matched" do
+        cmd = Command.new("E1")
+        room = double
+        allow(room).to receive(:has_exit?).with("E1") { true }
+        allow(@enactor).to receive(:room) { room }
+        CommandAliasParser.substitute_aliases(@enactor, cmd, @shortcuts)
+        expect(cmd.root).to eq "go"
+        expect(cmd.args).to eq "E1"
         expect(cmd.switch).to be_nil
       end
       

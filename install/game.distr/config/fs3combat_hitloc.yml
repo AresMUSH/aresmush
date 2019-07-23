@@ -66,9 +66,9 @@ fs3combat:
         - Right Arm
         - Right Arm
         - Right Arm
-        - Left Hand
-        - Left Hand
-        - Left Hand
+        - Right Hand
+        - Right Hand
+        - Right Hand
         Left Arm:
         - Head
         - Chest
@@ -79,7 +79,7 @@ fs3combat:
         - Left Hand
         - Left Arm
         - Left Arm
-        - Left Hand
+        - Left Arm
         Right Arm:
         - Head
         - Chest
@@ -90,7 +90,7 @@ fs3combat:
         - Right Hand
         - Right Arm
         - Right Arm
-        - Right Hand
+        - Right Arm
         Head:
         - Right Arm
         - Right Arm
@@ -547,6 +547,6 @@ fs3combat:
         - Ring 2
         - Ring 1
         - Ring 1
-        - Bullsye
+        - Bullseye
       vital_areas: []
       critical_areas: []

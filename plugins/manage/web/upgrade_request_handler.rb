@@ -11,20 +11,19 @@ module AresMUSH
           return { error: t('dispatcher.not_allowed') }
         end
 
-        Manage.start_upgrade
+        message = Manage.start_upgrade
+        Global.client_monitor.notify_web_clients(:manage_activity, Website.format_markdown_for_html(message)) do |c|
+           c == enactor
+        end        
         
         migrator = DatabaseMigrator.new
         if (migrator.restart_required?)
-          return { restart_required: true }
+          return { message: t('manage.restart_required') }
         end
-        
-        error = Manage.finish_upgrade
-        if (error)
-          return { error: error }
-        end
-        
+
+       message = Manage.finish_upgrade(enactor, true)
        {
-         restart_required: false
+         message:  Website.format_markdown_for_html(message)
        }
       end
     end

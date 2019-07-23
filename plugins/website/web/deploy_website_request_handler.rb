@@ -10,10 +10,13 @@ module AresMUSH
         if (!Manage.can_manage_game?(enactor))
           return { error: t('dispatcher.not_allowed') }
         end
+                
+        Website.redeploy_portal(enactor, true)
         
-        Website.deploy_portal
+        {
+          message:  Website.format_markdown_for_html(t('webportal.redeploying_website'))
+        }
         
-        { }
       end
     end
   end

@@ -33,7 +33,8 @@ module AresMUSH
             backgrounds: get_xp_list(char, char.fs3_background_skills),
             languages: get_xp_list(char, char.fs3_languages),
             advantages: get_xp_list(char, char.fs3_advantages),
-            xp_points: char.fs3_xp
+            xp_points: char.fs3_xp,
+            allow_advantages_xp: Global.read_config("fs3skills", "allow_advantages_xp")
           }
         else
           xp = nil
