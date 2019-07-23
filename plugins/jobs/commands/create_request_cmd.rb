@@ -17,7 +17,7 @@ module AresMUSH
       
       def handle
         
-        if self.title.to_i != 0
+        if (self.title =~ /^\d+$/)
           client.emit_failure t('jobs.request_use_respond')
           return
         end

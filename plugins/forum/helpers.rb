@@ -264,7 +264,7 @@ module AresMUSH
     
     def self.add_recent_post(post)
       recent = Game.master.recent_forum_posts
-      recent.unshift(post.id)
+      recent.unshift("#{post.id}")
       recent = recent.uniq
       if (recent.count > 100)
         recent.pop

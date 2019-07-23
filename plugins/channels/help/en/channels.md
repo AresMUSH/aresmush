@@ -9,6 +9,7 @@ aliases:
 Channels are public forums for out-of-character communication.
 
 `channels` - Lists channels and their descriptions
+`channel/info <name>` - Shows detailed info for a channel.
 **Tip:** Some channels are restricted.  You can only use them if you have one of the roles listed in the 'Restricted To' column.
 
 `channel/join <channel>[=<alias>]` - Joins a channel.
