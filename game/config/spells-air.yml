@@ -140,7 +140,7 @@ spells:
     line_of_sight: true
     name: Wind Wall
     range: Short
-    rounds: 1
+    rounds: 3
     school: Air
     stance: cover
     target_num: 1

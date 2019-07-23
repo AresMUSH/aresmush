@@ -291,7 +291,7 @@ spells:
     line_of_sight: true
     name: Shield of the Forest
     range: Short
-    rounds: 1
+    rounds: 3
     school: Nature
     stance: cover
     target_num: 1

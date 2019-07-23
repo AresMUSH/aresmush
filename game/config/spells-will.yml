@@ -98,7 +98,7 @@ spells:
     line_of_sight: true
     name: 'Telekinetic Block '
     range: Short
-    rounds: 1
+    rounds: 3
     school: Will
     stance: cover
     target_num: 1

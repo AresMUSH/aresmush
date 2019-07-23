@@ -306,7 +306,7 @@ spells:
   Mind Shield:
     available: true
     casting_time: 1 round
-    desc: "Cast a protective psionic shield on a target. The strength of the shield is determined by the caster's Spirit roll. When the target is targetted by another psionic spell, the opposing caster rolls Spirit vs the strength of the shield to determine whether the spell succeeds, or whether the mind shield holds."
+    desc: "Cast a protective psionic shield on a target. The strength of the shield is determined by the caster's Spirit roll. When the target is targetted by another psionic spell, the opposing caster rolls Spirit vs the strength of the shield to determine whether the spell succeeds, or whether the mind shield holds. If the opposing spell bypasses the shield, the shield raises an alarm which informs the target that a psionic spell of some sort has been successfully cast on them."
     effect: Defense
     level: 4
     line_of_sight: true
@@ -315,8 +315,8 @@ spells:
     school: Spirit
     target_num: 1
     target_optional: true
-    duration: 5 minutes (30 rounds)
-    rounds: 30
+    duration: 30 minutes
+    rounds: 180
   Potions (Spirit):
     available: true
     desc: The caster has learned the art of potion-making and can craft potions in any school. This is not a spell in the same sense of most, but rather an art learned through study. It takes time, effort, and materials to brew a potion.
