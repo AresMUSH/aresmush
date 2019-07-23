@@ -259,8 +259,12 @@ fs3combat:
         - Arm
         - Arm
         - Arm
-        - Arm        
-    Plant:
+        - Arm
+      vital_areas:
+      - Mantle
+      critical_areas:
+      - Head
+  Plant:
       areas:
         Stem:
         - Left Vines
