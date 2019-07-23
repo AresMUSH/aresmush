@@ -384,7 +384,7 @@ fs3combat:
     Jenu:
       description: Form for Half Shift spell
       is_magic: true
-      skill: Strength
+      skill: Athletics
       lethality: 5
       penetration: 5
       weapon_type: Melee
