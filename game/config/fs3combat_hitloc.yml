@@ -264,7 +264,7 @@ fs3combat:
       - Mantle
       critical_areas:
       - Head
-  Plant:
+    Plant:
       areas:
         Stem:
         - Left Vines
