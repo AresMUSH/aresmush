@@ -4,27 +4,19 @@ en:
 
       txt_target_missing: "Beep boop: To whom shall I send this message?"
       cant_txt_ignored: "You can't txt %{names} because you're on their ignore list."
-      recipient_do_not_disturb: "%{name} is set 'do not disturb' right now.  Please try your page again later."
+      recipient_do_not_disturb: "%{name} is set 'do not disturb' right now.  Please try your text again later."
       target_offline_no_scene: "%{name} is not connected and you did not specify a scene."
 
-      txt_to_sender: "%{txt} %{sender}%xn: %{message} %xn"
-      txt_to_recipient: "%{txt} %{sender}%xn: %{message} %xn"
+      txt_to_sender: "%{txt} %{sender}%xn: %{message}%xn"
+      txt_to_recipient: "%{txt} %{sender}%xn: %{message}%xn"
       txt_to_recipient_with_scene: "%{txt} %xh%{sender}%xn: %{message} %xx%xh(Scene %{scene_id})%xn"
 
       recipient_added_to_scene: "That text has added %{name} to the scene participants list."
       txt_to_scene_with_recipient: "%{txt} %xh%xw %{sender}%xn: %{message}%xn"
       txt_to_scene_no_recipient: "%{txt} %xh%xw %{sender}%xn: %{message}%xn"
-      # txt_to_sender: "%{txt} %{sender}: %{message} %xh%xx(To: %{recipients})"
-      # txt_to_recipient: "%{txt} %{sender}: %{message} %xh%xx(To: %{recipients})"
-      # txt_to_recipient_with_scene: "%{txt} %{sender}: %{message} %xh%xx(To: %{recipients}) (Scene %{scene_id})"
-
-      # recipient_added_to_scene: "Your text has added %{name} to the scene participants list."
-      # txt_to_scene_with_recipient: "%{txt} %{sender}: %{message} %xh%xx(To: %{recipients}) (Scene %{scene_id})"
-      # txt_to_scene_no_recipient: "%{txt} %{sender}: %{message} %xh%xx(Scene %{scene_id})"
-
       no_such_character: "No character found by that name."
 
-      no_one_to_reply_to: "Looks like noone's txt'd you recently. Sorry."
+      no_one_to_reply_to: "Looks like no one's txt'd you recently. Sorry."
       reply_scene: "Last txt came from: %{names}; Scene: %{scene}"
       reply: "Last txt came from: %{names}"
 
