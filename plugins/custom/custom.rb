@@ -10,21 +10,6 @@ module AresMUSH
       Global.read_config("custom", "shortcuts")
     end
 
-    def self.get_web_request_handler(request)
-      case request.cmd
-      # when "spells"
-      #   return SpellsRequestHandler
-      # when "schools"
-      #   return SchoolsRequestHandler
-      when "searchSpells"
-        return SearchSpellsRequestHandler
-      when "getSchools"
-        return GetSchoolsRequestHandler
-      when "getSecrets"
-        return GetSecretsRequestHandler
-      end
-      nil
-    end
 
     def self.get_cmd_handler(client, cmd, enactor)
 
