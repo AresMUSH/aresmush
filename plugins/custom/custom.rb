@@ -11,18 +11,18 @@ module AresMUSH
     end
 
     def self.get_web_request_handler(request)
-      # case request.cmd
+      case request.cmd
       # when "spells"
       #   return SpellsRequestHandler
       # when "schools"
       #   return SchoolsRequestHandler
-      # when "searchSpells"
-      #   return SearchSpellsRequestHandler
-      # when "getSchools"
-      #   return GetSchoolsRequestHandler
-      # when "getSecrets"
-      #   return GetSecretsRequestHandler
-      # end
+      when "searchSpells"
+        return SearchSpellsRequestHandler
+      when "getSchools"
+        return GetSchoolsRequestHandler
+      when "getSecrets"
+        return GetSecretsRequestHandler
+      end
       nil
     end
 
