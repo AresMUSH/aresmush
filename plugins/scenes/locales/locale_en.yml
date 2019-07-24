@@ -20,7 +20,7 @@ en:
         grid_scene: "On Grid"
         temproom_scene: "Temp Room"
 
-        scene_ending: "%{name} has stopped this scene.  %xcDon't forget to comp or cookie your RP partners, if you like!%xn"
+        scene_ending: "%{name} has stopped this scene.  %xcDon't forget to comp your RP partners if you like!%xn"
         scene_ending_public: "%{name} has stopped this scene.  You can restart it at any time using scene/restart, but it will restart in a temp room and NOT in this room.  %xcDon't forget to comp RP partners, if you like!%xn"
         scene_stopped: "The scene has ended.  To share the log, set the scene info (help scene info) and then use `scene/share %{id}` to share it. %xcDon't forget to comp your RP partners, if you like!%xn"
         scene_not_specified: "You must either be in a room with an active scene, or specifiy a scene number for this command."
