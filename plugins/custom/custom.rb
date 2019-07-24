@@ -16,13 +16,13 @@ module AresMUSH
       #   return SpellsRequestHandler
       # when "schools"
       #   return SchoolsRequestHandler
-      when "searchSpells"
-        return SearchSpellsRequestHandler
-      when "getSchools"
-        return GetSchoolsRequestHandler
-      when "getSecrets"
-        return GetSecretsRequestHandler
-      end
+      # when "searchSpells"
+      #   return SearchSpellsRequestHandler
+      # when "getSchools"
+      #   return GetSchoolsRequestHandler
+      # when "getSecrets"
+      #   return GetSecretsRequestHandler
+      # end
       nil
     end
 
