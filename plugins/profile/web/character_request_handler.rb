@@ -117,11 +117,11 @@ module AresMUSH
         show_background = (char.on_roster? || char.bg_shared || Chargen.can_view_bgs?(enactor)) && !char.background.blank?
 
         if char.lore_hook_type == "Item"
-          item = true
+          item = char.lore_hook_name ? true : false
         elsif char.lore_hook_type == "Pet"
-          pet = char.lore_hook_name.gsub(" Pet","")
+          pet = char.lore_hook_name ? char.lore_hook_name.gsub(" Pet","") : false
         elsif char.lore_hook_type == "Ancestry"
-          ancestry = char.lore_hook_name.gsub(" Ancestry","")
+          ancestry = char.lore_hook_name ? char.lore_hook_name.gsub(" Ancestry","") : false
         end
 
         files = Profile.character_page_files(char)
