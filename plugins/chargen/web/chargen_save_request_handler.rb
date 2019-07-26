@@ -4,7 +4,6 @@ module AresMUSH
       def handle(request)
         char = request.enactor
         chargen_data = request.args[:char]
-        Global.logger.debug "Chargen Data #{chargen_data}"
 
         if (!char)
           return { error: t('webportal.login_required') }
