@@ -3,29 +3,36 @@ module AresMUSH
     class CompGiveCmd
       #comp <name>=<text>
       include CommandHandler
-      attr_accessor :target, :comp
+      attr_accessor :targets, :comp, :target_names
 
       def parse_args
        args = cmd.parse_args(ArgParser.arg1_equals_arg2)
-       self.target = Character.named(args.arg1)
-       self.comp = args.arg2
-      end
+       self.target_names = args.arg1.split(" ").map { |n| InputFormatter.titlecase_arg(n) }
 
-      def check_errors
-        return t('custom.invalid_name') if !self.target
-        return nil
+       self.targets = []
+        self.target_names.each do |name|
+         target = Character.named(name)
+         return  t('custom.invalid_name') if !target
+         self.targets << target
+       end
+       #
+       # self.target = Character.named(args.arg1)
+       self.comp = args.arg2
       end
 
       def handle
         date = Time.now.strftime("%Y-%m-%d")
+        targets.each do |target|
+          Comps.create(date: date, character: target, comp_msg: self.comp, from: enactor.name)
+          FS3Skills.modify_luck(target, 0.05)
+          message = t('custom.has_left_comp', :from => enactor.name)
+          Login.emit_if_logged_in target, message
+        end
 
-        Comps.create(date: date, character: self.target, comp_msg: self.comp, from: enactor.name)
+        client.emit_success t('custom.left_comp', :name =>  self.target_names.join(", "))
 
-        client.emit_success t('custom.left_comp', :name => self.target.name)
-        message = t('custom.has_left_comp', :from => enactor.name)
-        Login.emit_if_logged_in self.target, message
 
-        FS3Skills.modify_luck(self.target, 0.05)
+
       end
 
     end
