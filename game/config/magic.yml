@@ -11,3 +11,9 @@ magic:
   shortcuts:
     combat/cast: combat/spell
     cast: spell/cast
+  lore_hook_prefs:
+    None: No Lore Hook at all
+    Item: A magical item comes into your posession.
+    Pet: A magical creature takes a shine to you and decides to stay.
+    Ancestry: Somewhere in your family tree, your bloodline became crossed with that of a Magical Creature.
+    Storyteller: Let Storytellers decide your Lore Hook.

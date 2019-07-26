@@ -7,7 +7,13 @@ module AresMUSH
         secret_config.each do |k, v|
           secret_prefs << { desc: v, value: k }
         end
-        
+
+        lore_hook_config = Global.read_config('magic', 'lore_hook_prefs')
+        lore_hook_prefs = []
+        lore_hook_config.each do |k, v|
+          lore_hook_prefs << { desc: v, value: k }
+        end
+
         if (FS3Skills.is_enabled?)
           fs3 = FS3Skills::ChargenInfoRequestHandler.new.handle(request)
         else
@@ -18,6 +24,7 @@ module AresMUSH
           fs3: fs3,
           group_options: Demographics::GroupInfoRequestHandler.new.handle(request),
           secret_prefs: secret_prefs,
+          lore_hook_prefs: lore_hook_prefs,
           demographics: Demographics.public_demographics.map { |d| d.titlecase },
           date_format: Global.read_config("datetime", "date_entry_format_help"),
           bg_blurb: Website.format_markdown_for_html(Global.read_config("chargen", "bg_blurb")),

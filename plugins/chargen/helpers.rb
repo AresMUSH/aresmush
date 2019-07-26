@@ -111,7 +111,7 @@ module AresMUSH
           alerts << error
         end
       end
-
+      char.update(lore_hook_pref: chargen_data[:lore_hook_pref][:value])
       # char.update(secretpref: chargen_data[:secretpref][:value])
       return alerts
     end
