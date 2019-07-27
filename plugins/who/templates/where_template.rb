@@ -8,9 +8,10 @@ module AresMUSH
     
       attr_accessor :online_chars, :scene_groups
     
-      def initialize(online_chars)
+      def initialize(online_chars, client)
         @online_chars = online_chars
         @scene_groups = build_scene_groups
+        @client = client
         
         
         case (Global.read_config("who", "where_style"))

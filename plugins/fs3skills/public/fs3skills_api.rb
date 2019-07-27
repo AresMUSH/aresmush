@@ -75,15 +75,20 @@ module AresMUSH
       FS3Skills.dice_to_roll_for_ability(char, RollParams.new(ability))
     end    
     
-    def self.save_char(char, chargen_data)      
+    def self.save_char(char, chargen_data)
+      alerts = []
       (chargen_data[:fs3][:fs3_attributes] || []).each do |k, v|
         error = FS3Skills.set_ability(char, k, v.to_i)
-        return t('fs3skills.error_saving_ability', :name => k, :error => error) if error
+        if (error)
+          alerts << t('fs3skills.error_saving_ability', :name => k, :error => error)
+        end
       end
 
       (chargen_data[:fs3][:fs3_action_skills] || []).each do |k, v|
         error = FS3Skills.set_ability(char, k, v.to_i)
-        return t('fs3skills.error_saving_ability', :name => k, :error => error) if error
+        if (error)
+          alerts << t('fs3skills.error_saving_ability', :name => k, :error => error)
+        end
         
         ability = FS3Skills.find_ability(char, k)
         if (ability)
@@ -94,19 +99,25 @@ module AresMUSH
     
       (chargen_data[:fs3][:fs3_backgrounds] || []).each do |k, v|
         error = FS3Skills.set_ability(char, k, v.to_i)
-        return t('fs3skills.error_saving_ability', :name => k, :error => error) if error
+        if (error)
+          alerts << t('fs3skills.error_saving_ability', :name => k, :error => error)
+        end
       end
     
       (chargen_data[:fs3][:fs3_languages] || []).each do |k, v|
         error = FS3Skills.set_ability(char, k, v.to_i)
-        return t('fs3skills.error_saving_ability', :name => k, :error => error) if error
+        if (error)
+          alerts << t('fs3skills.error_saving_ability', :name => k, :error => error)
+        end
       end
     
       (chargen_data[:fs3][:fs3_advantages] || []).each do |k, v|
         error = FS3Skills.set_ability(char, k, v.to_i)
-        return t('fs3skills.error_saving_ability', :name => k, :error => error) if error
+        if (error)
+          alerts << t('fs3skills.error_saving_ability', :name => k, :error => error)
+        end
       end
-      return nil
+      return alerts
     end
     
     def self.luck_for_scene(char, scene)
