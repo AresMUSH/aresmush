@@ -117,6 +117,9 @@ module AresMUSH
         Profile.general_field(char, field, value)
       end
        
+      def section_line(title)
+        @client.screen_reader ? title : line_with_text(title)
+      end
     end 
   end
 end
