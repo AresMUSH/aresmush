@@ -6,6 +6,7 @@ module AresMUSH
     attribute :description
     attribute :summary
     attribute :completed, :type => DataType::Boolean
+    attribute :content_warning
     
     reference :storyteller, "AresMUSH::Character"
     collection :scenes, "AresMUSH::Scene"

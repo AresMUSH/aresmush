@@ -22,6 +22,7 @@ module AresMUSH
     attribute :deletion_warned, :type => DataType::Boolean, :default => false
     attribute :icdate
     attribute :tags, :type => DataType::Array, :default => []
+    attribute :content_warning
     
     collection :scene_poses, "AresMUSH::ScenePose"
     reference :scene_log, "AresMUSH::SceneLog"
