@@ -153,7 +153,17 @@ module AresMUSH
     
     def self.set_weapon(enactor, combatant, weapon, specials = nil)
       max_ammo = weapon ? FS3Combat.weapon_stat(weapon, "ammo") : 0
-      combatant.update(weapon_name: weapon ? weapon.titlecase : "Unarmed")
+      weapon = weapon ? weapon.titlecase : "Unarmed"
+      prior_ammo = combatant.prior_ammo || {}
+      
+      if (weapon && prior_ammo[weapon])
+        max_ammo = prior_ammo[weapon]
+      end
+      if (combatant.weapon_name)
+        prior_ammo[combatant.weapon_name] = combatant.ammo
+        combatant.update(prior_ammo: prior_ammo)
+      end
+      combatant.update(weapon_name: weapon)
       combatant.update(weapon_specials: specials ? specials.map { |s| s.titlecase }.uniq : [])
       combatant.update(ammo: max_ammo)
       combatant.update(max_ammo: max_ammo)
