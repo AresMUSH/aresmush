@@ -32,6 +32,7 @@ module AresMUSH
         
         scene.update(location: request.args[:location])
         scene.update(summary: request.args[:summary])
+        scene.update(content_warning: request.args[:content_warning])
         scene.update(scene_type: request.args[:scene_type])
         scene.update(title: request.args[:title])
         scene.update(icdate: request.args[:icdate])
