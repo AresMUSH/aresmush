@@ -46,6 +46,8 @@ module AresMUSH
           category: data['category'],
           key: index,
           order: data['order'],
+          is_npc: data['is_npc'],
+          npc_image: data['npc_image'],
           text: Website.format_input_for_html(data['relationship'])
         }}
         

@@ -42,7 +42,9 @@ module AresMUSH
           relationships[name] = {
             'relationship' => Website.format_input_for_mush(data['text']),
             'order' => data['order'].blank? ? nil : data['order'].to_i,
-            'category' => data['category'].blank? ? "Associates" : data['category'].titleize
+            'category' => data['category'].blank? ? "Associates" : data['category'].titleize,
+            'is_npc' => (data['is_npc'] || "").to_bool,
+            'npc_image' => data['npc_image'].blank? ? nil : data['npc_image']
             }
         end
         
