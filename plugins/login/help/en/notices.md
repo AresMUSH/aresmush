@@ -12,4 +12,4 @@ When you log in, you'll be alerted if you have any personal notifications. This 
 
 `notices` - Shows notifications
 
-Viewing your notifications will automatically mark them as read. You'll still see them, but you won't be pestered about the same activity the next time you log in.
+Viewing your notifications will automatically mark them as read. You can still view 'read' notifications with the notices command, but you won't be alerted about them when you log in.
