@@ -1,18 +1,13 @@
 ---
-toc: Utilities / Miscellaneous
-summary: Notices and commands on login.
+toc: Getting Started
+summary: Notifications
 aliases:
-- aconnect
-- onconnect
+- notifications
+- notices
 ---
 
-You always see the notices screen when you connect, which shows you a summary of important messages and what's new to read on the game (like mail or forum posts).  If you miss it, you can see it again:
+When you log in, you'll be alerted if you have any personal notifications. This includes mail messages, private messages (pages) you missed when you were offline, replies to your requests or jobs you're handling, and activity in your scenes. You can review your notifications in detail:
 
-`notices` - Shows login notices.
+`notices` - Shows notifications
 
-You can optionally run additional commands when you first connect, after the notices.  Players may want to do this to automatically say a channel greeting, or run 'who' or 'jobs' when they connect.
-
-`onconnect` - View your onconnect commands
-`onconnect <comma-separated list of commands to run when you connect>`
-`onconnect/edit` - Grabs your onconnect commands into your input buffer (see [Edit Feature](/help/edit)).
-`onconnect/clear` - Reset your onconnect list
+Viewing your notifications will automatically mark them as read. You'll still see them, but you won't be pestered about the same activity the next time you log in.
