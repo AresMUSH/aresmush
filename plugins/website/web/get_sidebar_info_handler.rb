@@ -16,8 +16,23 @@ module AresMUSH
         
         if (enactor)
           notifications = enactor.unread_notifications.count
+          if (enactor.handle)
+            alts = AresCentral.alts(enactor).select { |alt| alt != enactor }
+            
+            if (alts.any?)
+              alts = alts.map { |alt| {
+                name: alt.name,
+                id: alt.id
+                }}
+            else
+              alts = nil
+            end
+          else
+            alts = nil
+          end
         else
           notifications = 0
+          alts = nil
         end
         
         {
@@ -35,7 +50,8 @@ module AresMUSH
           jobs_admin: Jobs.can_access_jobs?(enactor),
           token_expiry_warning: token_expiry_warning,
           motd: Game.master.login_motd ? Website.format_markdown_for_html(Game.master.login_motd) : nil,
-          notification_count: notifications == 0 ? nil : notifications
+          notification_count: notifications == 0 ? nil : notifications,
+          alts: alts
         }
       end
     end

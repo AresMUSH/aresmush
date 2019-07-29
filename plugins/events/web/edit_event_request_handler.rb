@@ -7,6 +7,7 @@ module AresMUSH
         time = request.args[:time]
         title = request.args[:title]
         desc = request.args[:description]
+        warning = request.args[:content_warning]
         enactor = request.enactor
         
         event = Event[event_id.to_i]
@@ -37,8 +38,8 @@ module AresMUSH
           format_help = Global.read_config("datetime", "date_and_time_entry_format_help")
           return { error: t('events.invalid_event_date', :format_str => format_help ) }
         end
-              
-        Events.update_event(event, enactor, title, datetime, Website.format_input_for_mush(desc))
+
+        Events.update_event(event, enactor, title, datetime, Website.format_input_for_mush(desc), Website.format_input_for_mush(warning))
         
         {}
       end

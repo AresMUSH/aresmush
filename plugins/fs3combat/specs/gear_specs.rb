@@ -137,6 +137,8 @@ module AresMUSH
           allow(@combatant).to receive(:action=)
           allow(@combatant).to receive(:weapon)
           allow(@combatant).to receive(:weapon_specials)
+          allow(@combatant).to receive(:prior_ammo) { nil }
+          allow(@combatant).to receive(:weapon_name) { nil }
         end
 
         it "should pretty up the weapon and specials if set" do
@@ -169,6 +171,32 @@ module AresMUSH
           expect(FS3Combat).to receive(:emit_to_combat).with(@combat, "fs3combat.weapon_changed", "npcmaster")
           FS3Combat.set_weapon(@enactor, @combatant, "rifle", [ "s1", "s2" ])
         end
+        
+        it "should set ammo to previous used ammo if there is one" do
+          expect(FS3Combat).to receive(:weapon_stat).with("rifle", "ammo") { 22 }
+          expect(@combatant).to receive(:prior_ammo) { { "Rifle" => 17 } }
+          expect(@combatant).to receive(:update).with(ammo: 17)
+          FS3Combat.set_weapon(@enactor, @combatant, "rifle", nil)
+        end
+
+        it "should set ammo to max ammo if there isn't one" do
+          expect(FS3Combat).to receive(:weapon_stat).with("rifle", "ammo") { 22 }
+          expect(@combatant).to receive(:prior_ammo) { { "Pistol" => 7 } }
+          expect(@combatant).to receive(:update).with(ammo: 22)
+          FS3Combat.set_weapon(@enactor, @combatant, "rifle", nil)
+        end
+        
+        it "should save their prior ammo" do
+          expect(FS3Combat).to receive(:weapon_stat).with("rifle", "ammo") { 22 }
+          expect(@combatant).to receive(:weapon_name) { "Pistol" }.twice
+          expect(@combatant).to receive(:ammo) { 7 }
+          expect(@combatant).to receive(:prior_ammo) { { "KEW" => 77 } }
+          expect(@combatant).to receive(:update).with(ammo: 22)
+          expect(@combatant).to receive(:update).with(max_ammo: 22)
+          expect(@combatant).to receive(:update).with(prior_ammo: { "KEW" => 77, "Pistol" => 7 })
+          FS3Combat.set_weapon(@enactor, @combatant, "rifle", nil)
+        end
+        
       end
     end
   end

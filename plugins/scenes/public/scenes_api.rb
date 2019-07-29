@@ -9,8 +9,8 @@ module AresMUSH
       Scenes.emit_pose(enactor, pose, true, false, nil, true)
     end
     
-    def self.colorize_quotes(enactor, pose, recipient)
-      Scenes.custom_format(pose, recipient, enactor)
+    def self.colorize_quotes(room, enactor, pose, recipient)
+      Scenes.custom_format(pose, room, recipient, enactor)
     end
     
     def self.format_autospace(enactor, autospace_str)
@@ -21,7 +21,7 @@ module AresMUSH
     def self.add_to_scene(scene, pose, character = Game.master.system_character, is_setpose = nil, is_ooc = nil, place_name = nil)
       return nil if !scene.logging_enabled
       
-      scene_pose = ScenePose.create(pose: pose, character: character, scene: scene, is_setpose: is_setpose, is_ooc: is_ooc, place_name: place_name ? place_name : character.place_name)
+      scene_pose = ScenePose.create(pose: pose, character: character, scene: scene, is_setpose: is_setpose, is_ooc: is_ooc, place_name: place_name ? place_name : character.place_name(scene.room))
       if (!scene_pose.is_system_pose?)
         Scenes.add_participant(scene, character)
       end
@@ -82,6 +82,7 @@ module AresMUSH
                       title: s.title,
                       summary: s.summary,
                       location: s.location,
+                      content_warning: s.content_warning,
                       icdate: s.icdate,
                       participants: s.participants.to_a.sort_by { |p| p.name }.map { |p| { name: p.name, id: p.id, icon: Website.icon_for_char(p) }},
                       scene_type: s.scene_type ? s.scene_type.titlecase : 'unknown',

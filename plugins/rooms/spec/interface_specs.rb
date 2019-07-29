@@ -53,7 +53,7 @@ module AresMUSH
         end
         
         it "should clear out their place" do
-          expect(Places).to receive(:clear_place).with(@char) {}
+          expect(Places).to receive(:clear_place).with(@char, @old_room) {}
           Rooms.move_to(@client, @char, @new_room)
         end
       end

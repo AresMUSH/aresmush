@@ -51,6 +51,11 @@ module ObjectModel
     super(attrs)
   end
   
+  # Alias for delete
+  def destroy
+    self.delete
+  end
+  
   def dbref
     "##{self.class.dbref_prefix}-#{self.id}"
   end

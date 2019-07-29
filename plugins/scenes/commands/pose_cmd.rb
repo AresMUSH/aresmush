@@ -13,7 +13,6 @@ module AresMUSH
           client.emit_failure t('scenes.pose_order_mistake')
           return
         end
-        Places.reset_place_if_moved(enactor)
         emit_to_room = Scenes.send_to_ooc_chat_if_needed(enactor, client, message(enactor.ooc_name))
         if emit_to_room
           Scenes.emit_pose(enactor, message(enactor_name), cmd.root_is?("emit"), cmd.root_is?("ooc"))

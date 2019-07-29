@@ -2,9 +2,8 @@
 toc: ~admin~ Managing the Game
 summary: Managing FS3 Skills.
 aliases:
-- ability set
-- xp award
-- xp undo
+- manage_abilities
+- manage_fs3
 ---
 # Managing FS3 Skills
 
@@ -37,9 +36,7 @@ You can also adjust specialties:
 
 ## Awarding Luck
 
-You can award luck points.
-
-`luck/award <name>=<number of luck points>/<reason>`
+See [Manage Luck](/help/manage_luck).
 
 ## Managing XP
 
