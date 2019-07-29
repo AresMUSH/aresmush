@@ -58,7 +58,7 @@ module AresMUSH
       character: enactor,
       content_warning: warning)
         
-      Channels.announce_notification(t('events.event_created_notification', :name => enactor.name, :title => title))
+      Channels.announce_notification(t('events.event_created_notification', :title => title))
       Events.events_updated
       Events.handle_event_achievement(enactor)
       return event
@@ -66,7 +66,7 @@ module AresMUSH
    
     def self.delete_event(event, enactor)
       title = event.title
-      message = t('events.event_deleted_notification', :name => enactor.name, :title => title)
+      message = t('events.event_deleted_notification', :title => title)
       event.signups.each do |s|
         Login.notify(s.character, :event_deleted, message, "")
       end
@@ -83,7 +83,7 @@ module AresMUSH
       event.update(content_warning: warning)
      
       Events.events_updated
-      message = t('events.event_updated_notification', :name => enactor.name, :title => title)
+      message = t('events.event_updated_notification', :title => title)
       event.signups.each do |s|
         Login.notify(s.character, :event, message, event.id)
       end
