@@ -56,6 +56,7 @@ module AresMUSH
                   id: s.id,
                   title: s.title,
                   summary: s.summary,
+                  content_warning: s.content_warning,
                   location: s.location,
                   date_shared: s.date_shared,
                   icdate: s.icdate,

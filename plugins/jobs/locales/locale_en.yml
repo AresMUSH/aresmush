@@ -87,3 +87,4 @@ en:
         only_delete_empty_categories: "You can only delete empty categories. Move the jobs to a different category first."
         
         new_job_activity: "New activity in job %{num}."
+        job_query_created: "Job %{job}: %{title} has been created for you."

@@ -8,9 +8,10 @@ module AresMUSH
     
       attr_accessor :online_chars, :scene_groups
     
-      def initialize(online_chars)
+      def initialize(online_chars, client)
         @online_chars = online_chars
         @scene_groups = build_scene_groups
+        @client = client
         
         
         case (Global.read_config("who", "where_style"))
@@ -116,6 +117,9 @@ module AresMUSH
         Profile.general_field(char, field, value)
       end
        
+      def section_line(title)
+        @client.screen_reader ? title : line_with_text(title)
+      end
     end 
   end
 end

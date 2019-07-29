@@ -12,4 +12,7 @@ You always see the notices screen when you connect, which shows you a summary of
 
 You can optionally run additional commands when you first connect, after the notices.  Players may want to do this to automatically say a channel greeting, or run 'who' or 'jobs' when they connect.
 
+`onconnect` - View your onconnect commands
 `onconnect <comma-separated list of commands to run when you connect>`
+`onconnect/edit` - Grabs your onconnect commands into your input buffer (see [Edit Feature](/help/edit)).
+`onconnect/clear` - Reset your onconnect list

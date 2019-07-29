@@ -63,7 +63,8 @@ module AresMUSH
           relationships: relationships.sort_by { |name, data| [ data['order'] || 99, name ] }
              .map { |name, data| {
                name: name,
-               icon: Website.icon_for_name(name),
+               is_npc: data['is_npc'],
+               icon: data['npc_image'] || Website.icon_for_name(name),
                text: Website.format_markdown_for_html(data['relationship'])
              }
            }

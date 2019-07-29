@@ -53,7 +53,18 @@ module AresMUSH
       when "notices"
         return NoticesCmd
       when "onconnect"
-        return OnConnectCmd
+        case cmd.switch
+        when "clear"
+          return OnConnectCmd
+        when "edit"
+          return OnConnectEditCmd
+        else
+          if (cmd.args)
+            return OnConnectCmd
+          else
+            return OnConnectViewCmd
+          end
+        end
       when "password"
         case cmd.switch
         when "reset"

@@ -108,6 +108,8 @@ website:
     menu:
     - title: Requests
       route: jobs
+    - title: Account
+      route: account
     - divider: true
     - title: Game Help
       route: help

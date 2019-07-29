@@ -44,7 +44,8 @@ en:
        no_auto_login_time_expired:  "You have not been automatically connected to your character because your session has expired.  Please refresh the page and log in again."
        
        # Notices
-       notices_title: "Notices"
+       notices_title: "Notifications"
+       motd_title: "Message of the Day:"
        unread_mail: "- You have %xh%xmunread mail%xn messages. %xh%xx(mail/new)%xn"
        no_unread_mail: "- No unread mail."
        unread_forum: "- There are %xh%xmnew forum%xn posts.  %xh%xx(forum/new)%xn"
@@ -54,8 +55,9 @@ en:
        unread_pages: "- You have %xh%xmunread pages%xn. %xh%xx(page/review)%xn"
        no_unread_pages: "- No unread pages."
        no_unread_requests: "- No unread requests or jobs."
-       alt_unread_messages: "- %{name} has %xh%xmunread messages%xn."
-       all_caught_up: "- No new messages or forum posts to read."
+       alt_unread_messages: "%{name} has unread messages."
+       all_caught_up: "No new notifications."
+       you_have_unread_notices: "You have %{count} unread notices. %xh%xx(notices)%xn"
        
        tos_reset: "You have reset everyone's terms of service acknowledgement."
        login_restricted: "This game has restricted logins.  %{reason}"
@@ -73,6 +75,7 @@ en:
        onconnect_commands_set: "Commands to run on connect set."
        onconnect_commands_cleared: "Commands to run on connect cleared."
        too_many_onconnect_commands: "You can only set five startup commands."
+       onconnect_commands: "Commands to run on connect: %{commands}"
        
        notice_config_on: "%{config} notices on."
        notice_config_off: "%{config} notices off."
@@ -80,3 +83,5 @@ en:
        motd_set: "Login message of the day set."
        
        cant_read_tos_text: "%xrTerms of Service Missing%xn%R%RThere was a problem reading the game's terms of service file.  Please contact staff for more information."
+       
+       only_switch_arescentral_alts: "You can only switch between your AresCentral alts."

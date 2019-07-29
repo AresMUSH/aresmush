@@ -14,6 +14,7 @@ en:
         invalid_recall_number: "That is not a valid number."
     ansi:
         colors_title: "ANSI Colors"
+        colors_subtitle: "Foreground Example          Background Example          ANSI-only"
         x_or_c: "See 'help ansi' for help using colors."
         color_mode_set: "Color mode set to %{option}."
         invalid_color_mode: "Invalid color mode.  Try one of these: %{modes}."

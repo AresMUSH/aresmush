@@ -18,8 +18,10 @@ module AresMUSH
         
         if (edit_mode)
           description = Website.format_input_for_html(event.description)
+          content_warning = Website.format_input_for_html(event.content_warning)
         else
           description = Website.format_markdown_for_html(event.description)
+          content_warning = event.content_warning
         end
         
         if (enactor)
@@ -52,6 +54,7 @@ module AresMUSH
           date_entry_format: Global.read_config("datetime", 'date_entry_format_help').upcase,
           start_datetime_local: event.start_datetime_local(request.enactor),
           start_time_standard: event.start_time_standard,
+          content_warning: content_warning,
           server_time: OOCTime.server_timestr
         }
         
