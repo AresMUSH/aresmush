@@ -7,10 +7,10 @@ module AresMUSH
       Global.client_monitor.notify_web_clients(:new_scene_activity, web_msg) do |char|
         Scenes.can_read_scene?(char, scene) && Scenes.is_watching?(scene, char)
       end
-      message = t('scenes.new_scene_activity', :id => scene.id)
+      message = t('scenes.new_scene_activity')
       scene.watchers.each do |w|
         if (last_posed != w.name)
-          Login.notify(w, :scene, message, scene.id)
+          Login.notify(w, :scene, message, "")
         end
       end
     end
@@ -314,7 +314,7 @@ module AresMUSH
       room.characters.each do |char|
         client = Login.find_client(char)
         next if !client
-        client.emit Scenes.custom_format(formatted_pose, char, enactor, is_emit, is_ooc, place_name)
+        client.emit Scenes.custom_format(formatted_pose, room, char, enactor, is_emit, is_ooc, place_name)
       end
 
       Global.dispatcher.queue_event PoseEvent.new(enactor, pose, is_emit, is_ooc, system_pose, room, place_name)
@@ -386,17 +386,17 @@ module AresMUSH
       colored_pose
     end
     
-    def self.format_for_place(enactor, char, pose, is_ooc, place_name = nil)
+    def self.format_for_place(room, enactor, char, pose, is_ooc, place_name = nil)
       # Override char's current place.
       
       if (!place_name)
-        if (!enactor.place || is_ooc)
+        if (!enactor.place(room) || is_ooc)
           return pose
         end
-        place_name = enactor.place.name
+        place_name = enactor.place_name(room)
       end
       
-      same_place = (char.place ? char.place.name : nil) == place_name
+      same_place = (char.place(room) ? char.place(room).name : nil) == place_name
       place_title = Places.place_title(place_name, same_place)
       place_prefix = Places.place_prefix(same_place)
       
@@ -406,14 +406,14 @@ module AresMUSH
       
       "#{place_title}#{pose}"
     end
-    
-    def self.custom_format(pose, char, enactor, is_emit = false, is_ooc = false, place_name = nil)
+
+    def self.custom_format(pose, room, char, enactor, is_emit = false, is_ooc = false, place_name = nil)
       nospoof = ""
       if (is_emit && char.pose_nospoof)
         nospoof = "%xc%% #{t('scenes.emit_nospoof_from', :name => enactor.name)}%xn%R"
       end
       
-      formatted_pose = Scenes.format_for_place(enactor, char, pose, is_ooc, place_name)
+      formatted_pose = Scenes.format_for_place(room, enactor, char, pose, is_ooc, place_name)
       formatted_pose = Scenes.format_quote_color(formatted_pose, char, is_ooc)
             
       autospace = Scenes.format_autospace(enactor, is_ooc ? char.page_autospace : char.pose_autospace)
@@ -584,6 +584,7 @@ module AresMUSH
         location: Scenes.build_location_web_data(scene),
         completed: scene.completed,
         summary: scene.summary,
+        content_warning: scene.content_warning,
         tags: scene.tags,
         icdate: scene.icdate,
         is_private: scene.private_scene,

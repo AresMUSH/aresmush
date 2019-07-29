@@ -1,22 +1,14 @@
 <%= header %>
+%xh<%= t('login.notices_title') %>%xn
 <% if motd %>
-<%= motd %>
+
+%xh<%= t('login.motd_title') %>%xn <%= motd %>
 
 <% end %>
-<% notices.each do |notice| %>
-<%= notice %>
-<% end %>
-<% alts.each do |a| %>
-<% if has_alt_mail?(a) || has_alt_pages?(a) %>
-<%= t('login.alt_unread_messages', :name => a.name) %>
-<% end %>
-<% end %>
-<% if approval_notice %>
 
-%xh<%= approval_notice %>%xn
+<% paginator.page_items.each do |notice| %>
+<%= notice_unread(notice) %> %xh%xx<%= left(notice_hint(notice), 10) %>%xn <%= left(notice.message,38) %> <%= notice_timestamp(notice) %>
 <% end %>
-<% if reboot_text %>
-%ld
-%xh%xr<%= reboot_text %>%xn
-<% end %>
+
+<%= paginator.page_footer %>
 <%= footer %>

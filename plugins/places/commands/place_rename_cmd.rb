@@ -16,10 +16,15 @@ module AresMUSH
       end
             
       def handle
-        place = Places.find_place(enactor, self.old_name)
+        place = Places.find_place(enactor_room, self.old_name)
       
         if (!place)
           client.emit_failure t('places.place_doesnt_exist')
+          return
+        end
+        
+        if (Places.find_place(enactor_room, self.new_name))
+          client.emit_failure t('places.place_already_exists')
           return
         end
         

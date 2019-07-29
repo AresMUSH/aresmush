@@ -8,5 +8,9 @@ module AresMUSH
     
     reference :character, "AresMUSH::Character"
     index :is_unread
+    
+    def is_unread?
+      self.is_unread
+    end
   end
 end

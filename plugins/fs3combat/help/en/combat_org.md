@@ -42,6 +42,7 @@ This is a quick reference for combat organizer commands.   You may also want to 
 `combat/attackmod <name>=<modifier>` - Gives the combatant a modifier to attack
 `combat/defensemod <name>=<modifier>` - Gives the combatant a modifier to defend
 `combat/lethalmod <name>=<modifier>` - Gives the combatant a modifier to lethality on damage TAKEN
+`combat/ammo <name>=<ammo>` - Adjusts remaining ammo.
 
 `combat/transfer <name>` - Transfer organizer powers to another person in combat.
 

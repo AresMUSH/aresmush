@@ -106,9 +106,9 @@ module AresMUSH
       char.update(profile_image: chargen_data[:profile_image])
       
       if FS3Skills.is_enabled?
-        error = FS3Skills.save_char(char, chargen_data)
-        if (error)
-          alerts << error
+        errors = FS3Skills.save_char(char, chargen_data)
+        if (errors.any?)
+          alerts.concat errors
         end
       end
       

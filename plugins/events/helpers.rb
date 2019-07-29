@@ -51,13 +51,14 @@ module AresMUSH
       end
     end
     
-    def self.create_event(enactor, title, datetime, desc)
+    def self.create_event(enactor, title, datetime, desc, warning = nil)
       event = Event.create(title: title, 
       starts: datetime, 
       description: desc,
-      character: enactor)
+      character: enactor,
+      content_warning: warning)
         
-      Channels.announce_notification(t('events.event_created_notification', :name => enactor.name, :title => title))
+      Channels.announce_notification(t('events.event_created_notification', :title => title))
       Events.events_updated
       Events.handle_event_achievement(enactor)
       return event
@@ -65,7 +66,7 @@ module AresMUSH
    
     def self.delete_event(event, enactor)
       title = event.title
-      message = t('events.event_deleted_notification', :name => enactor.name, :title => title)
+      message = t('events.event_deleted_notification', :title => title)
       event.signups.each do |s|
         Login.notify(s.character, :event_deleted, message, "")
       end
@@ -75,13 +76,14 @@ module AresMUSH
       Events.events_updated
     end
    
-    def self.update_event(event, enactor, title, datetime, desc)
+    def self.update_event(event, enactor, title, datetime, desc, warning = nil)
       event.update(title: title)
       event.update(starts: datetime)
       event.update(description: desc)
+      event.update(content_warning: warning)
      
       Events.events_updated
-      message = t('events.event_updated_notification', :name => enactor.name, :title => title)
+      message = t('events.event_updated_notification', :title => title)
       event.signups.each do |s|
         Login.notify(s.character, :event, message, event.id)
       end

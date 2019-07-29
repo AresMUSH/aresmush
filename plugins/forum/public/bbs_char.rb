@@ -12,7 +12,7 @@ module AresMUSH
     end
   
     def delete_bbs_prefs
-      self.bbs_prefs.each { |p| p.destroy }
+      self.bbs_prefs.each { |p| p.delete }
     end
   end
 end

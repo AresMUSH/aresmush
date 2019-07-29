@@ -65,7 +65,6 @@ module AresMUSH
       self.available_migrations.each do |file|
         migration_name = File.basename(file, ".rb")
         if applied_migrations.include?(migration_name)
-          Global.logger.info "Migration #{migration_name} already applied."
           next
         end
         
