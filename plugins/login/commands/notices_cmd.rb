@@ -13,6 +13,9 @@ module AresMUSH
         
         template = NoticesTemplate.new(enactor, paginator)
         client.emit template.render
+        
+        enactor.unread_notifications.each { |n| n.update(is_unread: false)}
+        
       end
     end
   end
