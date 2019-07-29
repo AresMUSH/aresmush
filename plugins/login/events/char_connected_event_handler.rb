@@ -32,7 +32,7 @@ module AresMUSH
         end
         
         Global.dispatcher.queue_timer(notice_delay, "Login notices", client) do 
-          template = NoticesTemplate.new(char)
+          template = NoticesSummaryTemplate.new(char)
           client.emit template.render
         end
       end
