@@ -6,6 +6,8 @@ aliases:
 - onconnect
 ---
 
+# Running Commands on Login
+
 You can optionally run additional commands when you first connect. Often players will want to view the 'where' list immediately upon login, or 'forum/scan' to see unread forum posts. Admins may want to scan the jobs board automatically on login.
 
 `onconnect` - View your onconnect commands
