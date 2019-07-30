@@ -54,6 +54,7 @@ module AresMUSH
           completed: scene.completed,
           shared: scene.shared,
           summary: scene.summary,
+          content_warning: scene.content_warning,
           tags: scene.tags,
           icdate: scene.icdate,
           participants: participants,

@@ -26,6 +26,7 @@ module AresMUSH
         scene = Scene.create(
         location: request.args[:location],
         summary: request.args[:summary],
+        content_warning: request.args[:content_warning],
         scene_type: request.args[:scene_type],
         title: request.args[:title],
         icdate: request.args[:icdate],

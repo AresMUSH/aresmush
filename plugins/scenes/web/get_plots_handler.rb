@@ -8,6 +8,8 @@ module AresMUSH
                   summary: Website.format_markdown_for_html(p.summary),
                   start_date: p.start_date,
                   end_date: p.end_date,
+                  completed: p.completed,
+                  content_warning: p.content_warning,
                   storyteller: get_storyteller(p)
                 }}
       end

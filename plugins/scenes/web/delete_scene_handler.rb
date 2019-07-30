@@ -16,6 +16,10 @@ module AresMUSH
           return { error: t('dispatcher.not_allowed') }
         end
         
+        if (!scene.completed)
+         return { error: t('scenes.cant_delete_in_progress_scene') }
+        end
+        
         Global.logger.debug "Scene #{scene.id} deleted by #{enactor.name}."
         
         scene.delete

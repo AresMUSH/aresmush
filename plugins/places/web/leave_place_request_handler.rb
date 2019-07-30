@@ -1,10 +1,9 @@
 module AresMUSH
   module Places
-    class ChangePlaceRequestHandler
+    class LeavePlaceRequestHandler
       def handle(request)
         scene = Scene[request.args[:scene_id]]
         enactor = request.enactor
-        place_name = (request.args[:place_name] || "").titlecase
         
         if (!scene)
           return { error: t('webportal.not_found') }
@@ -17,13 +16,11 @@ module AresMUSH
         error = Website.check_login(request)
         return error if error
 
-        place = Places.find_place(scene.room, place_name)
+        place = enactor.place(scene.room)
       
-        if (!place)
-          place = Place.create(name: place_name, room: enactor.room)
+        if (place)
+          Places.leave_place(enactor, place)
         end
-        
-        Places.join_place(enactor, place)
         
         {}
       end

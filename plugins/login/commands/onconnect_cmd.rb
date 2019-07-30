@@ -3,9 +3,10 @@ module AresMUSH
     class OnConnectCmd
       include CommandHandler
       
-      attr_accessor :commands
+      attr_accessor :commands, :clear
       
       def parse_args
+        self.clear = cmd.switch_is?('clear')
         self.commands = list_arg(cmd.args, ",") || []
       end
       
@@ -15,7 +16,7 @@ module AresMUSH
       end
 
       def handle      
-        if (self.commands.empty?)
+        if (self.clear)
           enactor.update(onconnect_commands: [])
           client.emit_success t('login.onconnect_commands_cleared')
         else

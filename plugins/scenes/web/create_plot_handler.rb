@@ -25,8 +25,8 @@ module AresMUSH
         plot = Plot.create(
           title: request.args[:title],
           description: request.args[:description],
-          storyteller: storyteller,
-          summary: request.args[:summary]
+          summary: request.args[:summary],
+          content_warning: request.args[:content_warning]
         )
 
         Global.logger.debug "Plot #{plot.id} created by #{enactor.name}."

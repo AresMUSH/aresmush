@@ -15,7 +15,6 @@ module AresMUSH
           room = double
           allow(@enactor).to receive(:room) { room }
           allow(@enactor).to receive(:name) { "Bob" }
-          allow(Places).to receive(:reset_place_if_moved)
           expect(PoseFormatter).to receive(:format).with("Bob", ":test") { "Bob test"}
           expect(PoseFormatter).to receive(:format).with("Bob OOC", ":test") { "Bob OOC test"}
           expect(Scenes).to receive(:emit_pose).with(@enactor, "Bob test", false, false)

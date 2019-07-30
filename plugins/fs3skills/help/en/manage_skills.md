@@ -2,9 +2,8 @@
 toc: ~admin~ Managing the Game
 summary: Managing FS3 Skills.
 aliases:
-- ability set
-- xp award
-- xp undo
+- manage_abilities
+- manage_fs3
 ---
 # Managing FS3 Skills
 
@@ -25,4 +24,4 @@ Roll results can be sent to a channel.  Storytellers can join that channel in or
 
 ## Awarding Luck & XP
 
-See [Manage XP](/help/manage_xp).
+See [Manage XP](/help/manage_xp) and [Manage Luck](/help/manage_luck).

@@ -2,96 +2,44 @@ module AresMUSH
   module Login
     class NoticesTemplate < ErbTemplateRenderer
 
-      attr_accessor :char
+      attr_accessor :char, :paginator
             
-      def initialize(char)
+      def initialize(char, paginator)
         @char = char
+        @paginator = paginator
         super File.dirname(__FILE__) + "/notices.erb"
       end
+            
+      def notice_unread(notice)
+        notice.is_unread? ? "%xh(U)%xn" : "   "
+      end
       
-      def notices
-        messages = []
-        if (has_unread_mail?)
-          messages << t('login.unread_mail')
+      def notice_hint(notice)
+        case notice.type
+        when 'pm'
+          "pm/review"
+        when 'mail'
+          "mail/new"
+        when 'forum'
+          "forum/new"
+        when 'event'
+          "events"
+        when 'scene'
+          "website"
+        when 'job'
+          Jobs.can_access_jobs?(@char) ? "jobs/new" : "requests"
+        else
+          ""
         end
-        if (has_unread_pages?)
-          messages << t('login.unread_pages')
-        end
-        if (has_unread_requests?)
-          messages << t('login.unread_requests')
-        end
-        if (has_unread_forum?)
-          messages << t('login.unread_forum')
-        end
-        if (has_unread_jobs?)
-          messages << t('login.unread_jobs')
-        end
-        
-        if (messages.empty?)
-          messages << t('login.all_caught_up')
-        end
-        
-        messages
-      end
-        
-      
-      def has_unread_mail?
-        @char.has_unread_mail?
       end
       
-      def alts
-        AresCentral.alts(@char).select { |a| a != @char }
-      end
-      
-      def has_alt_mail?(alt)
-        alt.has_unread_mail?
-      end
-      
-      def has_alt_pages?(alt)
-        Page.has_unread_page_threads?(alt)
-      end
-      
-      def has_unread_forum?
-        Forum.has_unread_forum_posts?(@char)
-      end
-      
-      def has_unread_jobs?
-        @char.has_unread_jobs?
-      end
-      
-      def has_unread_requests?
-        @char.has_unread_requests?
-      end
-      
-      def has_unread_pages?
-        Page.has_unread_page_threads?(@char)
-      end
-      
-      def approval_notice
-        Chargen.approval_job_notice(@char)
-      end
-      
-      def start_datetime_local(event)
-        event.start_datetime_local(@char)
-      end
-      
-      def start_time_standard(event)
-        event.start_time_standard
+      def notice_timestamp(notice)
+        OOCTime.local_long_timestr(@char, notice.created_at)
       end
       
       def motd
-        text = Game.master.login_motd
-        if (text && text.length < 78)
-          text = center(text, 78)
-        end
-        text
+        Game.master.login_motd
       end
-      
-      def reboot_text
-        return nil if !@char.is_admin?
-        Jobs.reboot_required_notice
-      end
-      
     end
   end
 end

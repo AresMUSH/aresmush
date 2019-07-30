@@ -228,6 +228,23 @@ module AresMUSH
       end
     end
     
+    def self.notify_for_query(author, job)
+      message = t('jobs.job_query_created', :job => job.id, :title => job.title)
+      Global.notifier.notify_ooc(:job_message, message) do |char|
+        char && char == author
+      end
+      data = "#{job.id}|#{message}"
+      Global.client_monitor.notify_web_clients(:job_update, data) do |char|
+        char && char == author
+      end
+      
+      jobs = author.read_jobs || []
+      jobs.delete job.id.to_s
+      author.update(read_jobs: jobs)
+      
+      Login.notify(author, :job, t('jobs.new_job_activity', :num => job.id), job.id)
+    end
+    
     def self.reboot_required_notice
       File.exist?('/var/run/reboot-required') ? t('jobs.reboot_required') : nil
     end

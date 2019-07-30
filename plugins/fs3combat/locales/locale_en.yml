@@ -182,6 +182,7 @@ en:
         weapon_title_has_shrapnel: "Has Shrapnel:"
         weapon_title_reload_turns: "Reload Time:"
         weapon_title_allowed_specials: "Allowed Specials:"
+        weapon_title_init_mod: "Initiative Mod:"
         weapon_title_skill: "Skill:"
         weapon_title_is_magic: "Magic?"
         weapon_title_special_group: "Group for specials:"

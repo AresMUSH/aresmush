@@ -1,6 +1,8 @@
 ---
 toc: ~admin~ Managing the Game
 summary: Managing FS3 Luck.
+aliases:
+- luck_award
 ---
 # Managing FS3 Luck
 
