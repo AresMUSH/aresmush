@@ -25,8 +25,23 @@ idle:
   monthly_reminder_title: Idle Sweep
   reminder_category: MISC
   roster_welcome_msg: Welcome!  You may wish to check your %xcnotes%xn and web portal
-    profile page for any notes left by the prior player.  Check out the [Getting Started](/wiki/getting_started)
-    guide for some tips on getting started on Spirit Lake.
+    profile page for any notes left by the prior player.  Check out the [Getting Started](/wiki/getting_started) guide for some tips on getting started on Spirit Lake.
+  roster_fields:
+  - field: name
+    width: 20
+    title: Name
+  - field: demographic
+    width: 10
+    title: Gender
+    value: gender
+  - field: group
+    width: 17
+    title: Major School
+    value: Major School
+  - field: group
+    width: 17
+    title: Minor School
+    value: Minor School
   shortcuts:
     idle/add: idle/action
     roster/update: roster/add
