@@ -47,5 +47,5 @@ chargen:
   stages:
     start:
       tutorial: chargen.md
-  welcome_message: 'Please welcome %{name}, our latest character to be approved! Major
-    School: %{major school} - Minor School: %{minor school}'
+  welcome_message: "Please welcome %{name}, our latest character to be approved! \n\nMajor
+    School: %{major school} \nMinor School: %{minor school}\n\nRP Hooks:\n%{rp_hooks}"
