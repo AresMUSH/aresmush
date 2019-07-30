@@ -20,11 +20,11 @@ chargen:
   Although Grand Lake seems to have an abnormally high population of magic users, not all character will be natives. Those who are not are drawn to Grand Lake via dreams. Vague at first, the dreams grow increasingly explicit. They feature images of the Rocky Mountains and Grand Lake, along with an unmistakable sense that answers lie there. Later dreams may include an outright calling, a whisper that tells you to come join the others in Grand Lake. The dreams are largely hopeful, but some may sense an ominous undercurrent (before it's too late) in their dreams."
   desc_blurb: You can set both your main description, visible when people look at
     you, and a short description that shows your character at a glance.
-  hooks_blurb: RP Hooks are interesting things about your character that others can
+  hooks_blurb: "RP Hooks are interesting things about your character that others can
     hook into for RP. This could be an odd personality quirk, a reputation your character
     has, or anything else that might inspire someone to connect with you. Looking
     around at other character's sheets can be a good way to get inspiration for RP
-    Hooks.
+    Hooks.\n\nYour RP Hooks will also show in the welcome message posted to the forum, so everyone gets a snapshot of who your character is."
   hooks_required: true
   icon_blurb: "Upload an optional picture for your character icon. Square images work best."
   lastwill_blurb: "If you would like to register a preference on what happens if you ever idle out, you can fill out your lastwill here.  You could leave your character's fate up to someone else, or specify that they be killed off or sent away.\n\nYou can fill out or change your lastwill at any time on game using the `lastwill` command."
