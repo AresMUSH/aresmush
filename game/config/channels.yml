@@ -6,6 +6,7 @@ channels:
   - Big Scene
   - Achievements
   - Questions
+  - Plotting
   clear_history_cron:
     hour:
     - 4
