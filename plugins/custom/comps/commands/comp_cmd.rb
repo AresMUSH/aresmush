@@ -10,7 +10,7 @@ module AresMUSH
 
        if args.arg1.is_integer?
          self.scene_id = args.arg1
-         client.emit "Number"
+
        else
         self.target_names = args.arg1.split(" ").map { |n| InputFormatter.titlecase_arg(n) }
         self.targets = []
@@ -38,6 +38,7 @@ module AresMUSH
           self.target_names = []
           self.scene.participants.each do |target|
             if target == enactor
+
             else
               Comps.create(date: date, character: target, comp_msg: self.comp, from: enactor.name)
               FS3Skills.modify_luck(target, 0.05)
