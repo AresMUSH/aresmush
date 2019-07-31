@@ -184,7 +184,7 @@ spells:
     weapon: Spell
   #Level 4
   Agility:
-    available: false
+    available: true
     casting_time: 1 round
     defense_mod: 2
     desc: The caster's reflexes are improved, increasing their defensive abilities and their reaction speed.
@@ -310,7 +310,7 @@ spells:
     target_num: 1
     target_optional: true
   Shrink Self:
-    available: false
+    available: true
     casting_time: 1 round
     desc: "The caster\u2019s height and weight is divided by 8. All equipment worn or carried by a creature is similarly reduced by the spell. Any item that leaves the caster\u2019s possession instantly returns to its normal size."
     duration: 5 rounds
@@ -349,7 +349,7 @@ spells:
     target_num: 1
     target_optional: true
   Revenant:
-    available: false
+    available: true
     casting_time: 1 round
     desc: A sapient creature who has died in the last 30 seconds is reanimated and bound to do the caster's bidding. Its mind remains dead, but it can perform simple tasks and come to the caster's aid in battle. It cannot cast spells. When the spell ends, the revenant returns to its dead state.
     effect: Other
@@ -361,7 +361,7 @@ spells:
     school: Corpus
   #Level 7
   Brink Of Death:
-    available: false
+    available: true
     casting_time: 1 round
     desc: "Return someone who has died in the last 30 seconds to life at the cost of the caster''s own stamina.  \n\n A revived target is unable to return to the fight without further healing. They are both incapacitated and suffering from spell fatigue.\n\n
     The caster is unable to fight or cast spells for 24 hours.\n\n"
@@ -374,7 +374,7 @@ spells:
     target_num: 1
     target_optional: true
   Energize Dimensional Anchor (Corpus):
-    available: false
+    available: true
     casting_time: 2 minutes
     desc: Provide necessary magical energy of the appropriate School to a Dimensional Anchor spell, enabling the linked casters to permanently close an interdimensional portal.
     effect: Travel
@@ -385,7 +385,7 @@ spells:
     school: Corpus
   Group Revive:
     area: 15 yard radius
-    available: false
+    available: true
     casting_time: 1 round
     desc: Return up to three knocked out comrades to the fight.
     effect: Revive

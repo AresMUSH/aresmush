@@ -300,7 +300,7 @@ spells:
     school: Nature
     available: true
   Regress Growth:
-    available: false
+    available: true
     casting_time: 1 round
     desc: Causes up to three plants each up to 3 cubic feet in size to regress back from mature state to an inert seed, spore or other starting form within a matter of minutes.
     effect: Other

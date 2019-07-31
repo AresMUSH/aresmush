@@ -250,7 +250,7 @@ spells:
     target_optional: true
   #Level 4
   Detect Magic:
-    available: false
+    available: true
     casting_time: 1 round
     desc: "The caster senses whether magic is affecting or being performed by a sapient targetThey are able to identify the magic's School, its specific affect(s), its range, and targets if applicable.\n\nGMs should provide the name of the spell if the caster would be aware of it."
     effect: Psionic

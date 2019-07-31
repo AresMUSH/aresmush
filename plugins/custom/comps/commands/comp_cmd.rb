@@ -37,11 +37,14 @@ module AresMUSH
         if self.scene_id
           self.target_names = []
           self.scene.participants.each do |target|
-            Comps.create(date: date, character: target, comp_msg: self.comp, from: enactor.name)
-            FS3Skills.modify_luck(target, 0.05)
-            message = t('custom.has_left_comp', :from => enactor.name)
-            Login.emit_if_logged_in target, message
-            self.target_names << target.name
+            if target == enactor
+            else
+              Comps.create(date: date, character: target, comp_msg: self.comp, from: enactor.name)
+              FS3Skills.modify_luck(target, 0.05)
+              message = t('custom.has_left_comp', :from => enactor.name)
+              Login.emit_if_logged_in target, message
+              self.target_names << target.name
+            end
           end
           client.emit_success t('custom.left_comp', :name =>  self.target_names.join(", "))
         else
