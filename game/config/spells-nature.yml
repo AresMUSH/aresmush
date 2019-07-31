@@ -267,6 +267,19 @@ spells:
     school: Nature
     target_num: 1
     target_optional: true
+  Thermal Sense:
+    area: 10 yards
+    available: false
+    casting_time: 1 round
+    desc: "The caster is able to sense slight changes in the ambient temperature around themselves, sensing where the temperature differs from the ambient temperature of the air or other surroundings. This allows them to roughly perceive objects, people, and other aspects of their environment via thermal imaging within 10 yards of their person.\n\nThermal differences can be sensed despite invisibility, darkness, and other conditions that obscure eyesight, but cannot be sensed beyond cover that blocks heat rays. The caster is not required to make perception checks to notice thermal changes within range."
+    duration: 10 minutes
+    effect: Other
+    level: 4
+    name: Thermal Sense
+    range: Short
+    school: Nature
+    target_num: 1
+    target_optional: true
   Photosynthesis:
     available: true
     casting_time: 1 round
