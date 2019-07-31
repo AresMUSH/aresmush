@@ -544,6 +544,18 @@ spells:
     school: Spirit
     target_num: 1
     target_optional: true
+  Manifest Spirit:
+    available: false
+    casting_time: 5 minutes
+    desc: "Caster calls forth a local spirit. The spirit manifests as a visible presence able to communicate and physically interact with the world in their immediate area. The spirit's knowledge is limited to matters within its location or personal expertise. If the spirit possessed magical abilities in life, it is capable of casting known spells of level 5 or below."
+    duration: 15 minutes
+    effect: Psionic
+    level: 7
+    line_of_sight: true
+    name: Manifest Spirit
+    range: Short
+    roll: true
+    school: Spirit
   Rewrite History:
     available: false
     casting_time: "1 round to cast, plus additional rounds at GM's discretion according to complexity of the rewrite."

@@ -335,7 +335,7 @@ spells:
     line_of_sight: true
     available: true
   Massive Heal:
-    available: false
+    available: true
     casting_time: 1 round
     desc: Provide a massive amount of healing magic to a target's treatable wound, speeding their natural healing by several weeks and restoring some of their vigor.
     effect: Heal
@@ -348,6 +348,17 @@ spells:
     school: Corpus
     target_num: 1
     target_optional: true
+  Revenant:
+    available: false
+    casting_time: 1 round
+    desc: A sapient creature who has died in the last 30 seconds is reanimated and bound to do the caster's bidding. Its mind remains dead, but it can perform simple tasks and come to the caster's aid in battle. It cannot cast spells. When the spell ends, the revenant returns to its dead state.
+    effect: Other
+    level: 6
+    line_of_sight: true
+    name: Revenant
+    range: Short
+    roll: true
+    school: Corpus
   #Level 7
   Brink Of Death:
     available: false
