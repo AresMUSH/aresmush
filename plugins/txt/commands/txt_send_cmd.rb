@@ -160,6 +160,10 @@ module AresMUSH
           enactor.update(txt_scene: self.scene_id)
 
       end
+
+      def log_command
+        # Don't log texts
+      end
     end
   end
 end
