@@ -61,7 +61,7 @@ module AresMUSH
       if name_string != nil
         targets = Magic.parse_spell_targets(name_string, target_num)
       else
-        targets = "None"
+        targets = []
       end
 
       if targets == "too_many_targets"
