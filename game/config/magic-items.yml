@@ -7,7 +7,7 @@ magic-items:
     name: Bane of Elegast
     desc: Crafted to hide from the legendary king and warlord, the broken chain allows anyone who carries it to cast Invisible, the Level 5 Fire spell. It currently resides in Silver's stomach after he swallowed it and fled retribution from the queen of Immeasurable Autumn, a faerie kingdom
     spell: Invisible
-  Bracelet of Repel:
+  Bracelet Of Repel:
     name: Beaded Bracelet
     desc: "Upon a leather cord with a silver clasp, several wooden beads are strung. Each of the beads, walnut coloured, bear letters inscribed in Soitos. The letters look as though they’ve been soldered into the wood, charred and dark.\n\nThose who know the language will recognise the word ‘depart’."
     spell: Repel Tiny Animal
