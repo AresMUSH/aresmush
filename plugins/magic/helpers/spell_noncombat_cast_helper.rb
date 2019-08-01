@@ -63,11 +63,12 @@ module AresMUSH
       else
         targets = "None"
       end
+
       if targets == "too_many_targets"
         return [t('magic.too_many_targets', :spell => spell, :num => target_num)]
       elsif targets == "no_target"
         return [t('magic.invalid_name')]
-      elsif targets == "None"
+      elsif targets == []
         if is_potion
           message = t('magic.use_potion', :name => caster.name, :potion => spell)
         else

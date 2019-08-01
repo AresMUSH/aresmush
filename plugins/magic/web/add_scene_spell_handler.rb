@@ -9,9 +9,6 @@ module AresMUSH
         target_name = request.args[:target_name]
         mod = request.args[:mod]
 
-
-
-
         if (!scene)
           return { error: t('webportal.not_found') }
         end
@@ -34,15 +31,12 @@ module AresMUSH
         end
 
         if !target_name.blank?
-          Global.logger.debug "Target_name: #{target_name}"
           target_num = Global.read_config("spells", spell, "target_num")
-          target = Magic.parse_spell_targets(target_name, target_num)
-          Global.logger.debug "Target: #{target}"
           if target == "no_target"
             return { error: t('magic.invalid_name') }
           end
         else
-          target = enactor
+          target = [enactor]
         end
 
         if !Magic.knows_spell?(enactor, spell)
@@ -67,7 +61,7 @@ module AresMUSH
           end
           Magic.handle_spell_cast_achievement(caster)
         else
-          if target_name.nil?
+          if target_name.blank?
             message = [t('magic.casts_spell', :name => caster.name, :spell => spell, :mod => mod, :succeeds => success)]
           else
             names = []
@@ -78,7 +72,6 @@ module AresMUSH
             message = [t('magic.casts_spell_with_target', :name => caster.name, :spell => spell, :mod => mod, :target => names, :succeeds => success)]
           end
         end
-        Global.logger.debug "Target name: #{target_name} "
         message.each do |msg|
           Scenes.add_to_scene(scene, msg)
 

@@ -3,9 +3,9 @@ module AresMUSH
 
     def self.knows_spell?(char_or_combatant, spell_name)
       spell_name = spell_name.titlecase
-      if char_or_combatant.combat && char_or_combatant.is_npc?
+      if (char_or_combatant.class == Combatant && char_or_combatant.is_npc?)
         return true
-      elsif char_or_combatant.combat && !char_or_combatant.is_npc?
+      elsif (char_or_combatant.class == Combatant && !char_or_combatant.is_npc?)
         char = char_or_combatant.associated_model
       else
         char = char_or_combatant
