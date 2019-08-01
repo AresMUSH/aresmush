@@ -2,6 +2,7 @@ module AresMUSH
   module Magic
     class CharSpellsRequestHandler
       def handle(request)
+        Global.logger.debug "It's hitting this."
         char = Character.find_one_by_name request.args[:id]
         enactor = request.enactor
 
