@@ -30,6 +30,11 @@ module AresMUSH
           spell = spell_string
         end
 
+        target_optional = Global.read_config("spells", spell, "target_optional")
+        if (!target_optional && !target_name.blank?)
+          return { error: t('magic.doesnt_use_target') }
+        end
+
         if !target_name.blank?
           target_num = Global.read_config("spells", spell, "target_num")
           if target == "no_target"
@@ -37,16 +42,14 @@ module AresMUSH
           end
         else
           target = [enactor]
+          target_name = nil
         end
 
         if !Magic.knows_spell?(enactor, spell)
           return { error:  t('magic.dont_know_spell') }
         end
 
-        target_optional = Global.read_config("spells", spell, "target_optional")
-        if (!target_optional && !target_name.blank?)
-          return { error: t('magic.doesnt_use_target') }
-        end
+
 
         heal_points = Global.read_config("spells", spell, "heal_points")
         success = Magic.roll_noncombat_spell_success(enactor, spell, mod)
