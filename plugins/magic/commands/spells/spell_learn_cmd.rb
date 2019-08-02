@@ -12,6 +12,7 @@ module AresMUSH
       end
 
       def check_errors
+        return "What spell do you want to learn?" if !self.spell
         return t('magic.use_school_version') if (self.spell == "Potions" || self.spell == "Familiar")
         return t('magic.request_spell') if (self.spell == "Natural Weaponry" || self.spell == "Natural Defense" || self.spell == "Wild Shape" || self.spell == "Greater Wild Shape" || self.spell == "Half Shift")
         return t('magic.not_spell') if !Magic.is_spell?(self.spell)
