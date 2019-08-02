@@ -206,7 +206,7 @@ spells:
     duration: 5 rounds
     effect: Other
     is_potion: true
-    level: 5
+    level: 4
     name: Diagnose
     range: Touch
     roll: true
@@ -282,6 +282,22 @@ spells:
     target_optional: true
     weapon_specials: Vitality
     weapon: Spell
+  #Level 5
+  Disable:
+    available: false
+    casting_time: 1 round
+    desc: Subdue an enemy by paralyzing their limbs, immobilizing them briefly.
+    duration: 2 rounds
+    effect: Stun
+    is_stun: true
+    level: 5
+    line_of_sight: true
+    name: Disable
+    range: Long
+    rounds: 2
+    target_num: 1
+    target_optional: true
+    school: Corpus
   Grow Self:
     available: false
     casting_time: 1 round
