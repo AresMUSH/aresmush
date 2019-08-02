@@ -14,6 +14,7 @@ Each hook comes with a brief lore write-up that your character can discover thro
 `lorehook/preference <name>` - View someone's lore hook preference.
 `lorehook/preference all` - View everyone's lore hook preference.
 
+If you have further preferences, you can list them in your plot preferences on your character page. Generally, STs will create something that we think will be interesting for your character and that fits into the story, but we'll keep preferences in mind where possible.
 
 See the [Guide to Lore Hooks](https://tinyurl.com/y6zgez98) for more info on each type of hook.
 
