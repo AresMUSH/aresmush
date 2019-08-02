@@ -6,6 +6,7 @@ achievements:
     achievements: achievement
   types:
     community: fa-users
+    comp: fa-hand-holding-heart
     portal: fa-globe
     fs3: fa-cubes
     story: fa-book

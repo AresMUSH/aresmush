@@ -57,7 +57,7 @@ module AresMUSH
           end
           client.emit_success t('custom.left_comp', :name =>  self.target_names.join(", "))
         end
-
+        Custom.handle_comps_given_achievement(enactor)
 
 
 
