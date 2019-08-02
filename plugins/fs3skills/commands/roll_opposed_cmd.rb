@@ -4,7 +4,7 @@ module AresMUSH
     class OpposedRollCmd
       include CommandHandler
       
-      attr_accessor :name1, :name2, :roll_str1, :roll_str2
+      attr_accessor :name1, :name2, :roll_str1, :roll_str2, :private_roll
 
       def parse_args
         args = cmd.parse_args( /(?<name1>[^\/]+)\/(?<str1>.+) vs (?<name2>[^\/]+)?\/?(?<str2>.+)/ )
@@ -12,6 +12,7 @@ module AresMUSH
         self.roll_str2 = titlecase_arg(args.str2)
         self.name1 = titlecase_arg(args.name1)
         self.name2 = titlecase_arg(args.name2)
+        self.private_roll = cmd.switch_is?("private")
       end
 
       def required_args
@@ -60,7 +61,7 @@ module AresMUSH
            :dice2 => FS3Skills.print_dice(die_result2),
            :result => results)  
           
-        FS3Skills.emit_results message, client, enactor_room, false
+        FS3Skills.emit_results message, client, enactor_room, self.private_roll
       end
     end
   end
