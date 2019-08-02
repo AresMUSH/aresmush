@@ -7,6 +7,6 @@ game: !ruby/hash:Sinatra::IndifferentHash
 
     SPIRIT LAKE IS CURRENTLY FULL AND CHARACTER CREATION IS CLOSED.
   website: https://spiritlakemu.com
-  public_game: true
+  public_game: false
   game_status: In Development
   status: Beta
