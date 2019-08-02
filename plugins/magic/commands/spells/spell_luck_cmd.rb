@@ -16,7 +16,8 @@ module AresMUSH
         return t('magic.use_school_version') if (self.spell == "Potions" || self.spell == "Familiar")
         return t('magic.not_spell') if !Magic.is_spell?(self.spell)
         return t('magic.need_higher_level', :spell => self.spell) if Magic.higher_level_spell?(enactor, self.spell) == false
-        spell_learned = Magic.find_spell_learned(enactor, self.spell)
+        spell_learned = Magic.find_spell_learned(enactor, self.spell) 
+        return  t('magic.not_learning_spell', :spell => self.spell) if !spell_learned
         return t('magic.only_1_xp_needed') if spell_learned.xp_needed.to_i == 1
         if enactor.groups.values.include? self.school
           return nil
