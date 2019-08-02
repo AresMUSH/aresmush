@@ -37,7 +37,7 @@ module AresMUSH
         
         max_upload_kb = Global.read_config("website", "max_upload_size_kb")
         if (size_kb > max_upload_kb)
-          return { error: t('webportal.max_upload_size', :kb => max_upload_kb) }
+          return { error: t('webportal.max_upload_kb', :kb => max_upload_kb) }
         end
         
         name = AresMUSH::Website::FilenameSanitizer.sanitize name

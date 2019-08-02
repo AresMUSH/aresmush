@@ -14,7 +14,8 @@ module AresMUSH
       end
       
       def check_option
-        return nil if self.option == 'all' || self.option == 'none' || self.option == 'friends'
+        options = [ 'all', 'none', 'friends', 'new' ]
+        return nil if options.include?(self.option)
         t('login.invalid_watch_option')
       end
       
@@ -26,6 +27,8 @@ module AresMUSH
           client.emit_success t('login.watch_none')
         elsif (self.option == "friends")
           client.emit_success t('login.watch_friends')
+        elsif (self.option == 'new')
+          client.emit_success t('login.watch_new')
         end
       end
     end
