@@ -36,7 +36,27 @@ module AresMUSH
         end
         
         can_edit = enactor && enactor.is_approved? && !lock_info && ( Website.can_manage_wiki?(enactor) || !restricted_page )
-                    
+            
+        breadcrumbs = []
+        breadcrumbs << { title: "Home", url: "home" }
+        if (page.name =~ /:/)
+          page_category = page.name.before(':')
+          if (page_category)
+            cat_page = WikiPage.named(page_category)
+            if (!cat_page)
+              cat_page = WikiPage.named("#{page_category}s")
+            end
+            if (cat_page)
+              breadcrumbs << { title: cat_page.heading, url: cat_page.name }
+            else
+              breadcrumbs << { title: page_category.titleize, url: nil }
+            end
+          end
+        end
+        if (page.name != 'home')
+          breadcrumbs << { title: page.heading, url: nil }
+        end
+        
         {
           id: page.id,
           heading: page.heading,
@@ -48,6 +68,7 @@ module AresMUSH
           can_delete: enactor && enactor.is_admin? && !restricted_page,
           can_edit: can_edit,
           current_version_id: page.current_version.id,
+          breadcrumbs: breadcrumbs,
           can_change_name: can_edit
         }
       end

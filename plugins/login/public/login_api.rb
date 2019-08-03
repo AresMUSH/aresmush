@@ -85,11 +85,14 @@ module AresMUSH
     end
     
     def self.notify(char, type, message, data)
+      # Don't notify if they're active right now on the game.
+      status = Website.activity_status(char)
+      return if status == 'game-active' || status == 'web-active'
+      
       # Check for duplicate notification
       key = "#{type}|#{message}|#{data}"
       return if char.login_notices.find(is_unread: true).any? { |n| "#{n.type}|#{n.message}|#{n.data}" == key }
-      unread = !Login.is_online?(char)
-      LoginNotice.create(character: char, type: type, message: message, data: data, is_unread: unread)
+      LoginNotice.create(character: char, type: type, message: message, data: data, is_unread: true)
       Global.client_monitor.notify_web_clients(:notification_update, "#{char.unread_notifications.count}") do |c|
         c == char 
       end

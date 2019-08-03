@@ -79,6 +79,11 @@ module AresMUSH
     
     def self.finish_upgrade(enactor, from_web)
       Global.logger.debug "Finishing upgrade."
+      
+      if (AresMUSH.version != Website.webportal_version)
+        return t('manage.mismatched_versions')
+      end
+      
       Manage.load_all
       
       error = Manage.run_migrations

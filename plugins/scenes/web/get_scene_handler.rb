@@ -29,8 +29,10 @@ module AresMUSH
         
         if (edit_mode)
           log = scene.shared ? scene.scene_log.log : nil
+          summary = Website.format_input_for_html(scene.summary)
         else
           log = Website.format_markdown_for_html(scene.scene_log.log)
+          summary = Website.format_markdown_for_html(scene.summary)
         end
         
         participants = scene.participants.to_a
@@ -43,7 +45,7 @@ module AresMUSH
           location: scene.location,
           completed: scene.completed,
           shared: scene.shared,
-          summary: scene.summary,
+          summary: summary,
           content_warning: scene.content_warning,
           tags: scene.tags,
           icdate: scene.icdate,

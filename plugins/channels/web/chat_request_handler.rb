@@ -45,7 +45,7 @@ module AresMUSH
                muted: false,
                is_page: true,
                is_unread: Page.is_thread_unread?(t, enactor),
-               last_activity: t.sorted_messages.to_a[-1].created_at,
+               last_activity: t.last_activity,
                who: t.characters.map { |c| {
                 name: c.name,
                 ooc_name: c.ooc_name,
