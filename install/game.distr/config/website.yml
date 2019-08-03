@@ -4,7 +4,8 @@ website:
   character_gallery_group: Faction
   character_gallery_subgroup: Position
   left_sidebar: false
-  max_upload_size_kb: 5000
+  max_upload_size_kb: 300
+  max_folder_size_kb: 2000
   restricted_pages:
   - home
   sitemap_update_cron:
