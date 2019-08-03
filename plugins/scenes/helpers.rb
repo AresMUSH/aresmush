@@ -7,10 +7,12 @@ module AresMUSH
       Global.client_monitor.notify_web_clients(:new_scene_activity, web_msg) do |char|
         Scenes.can_read_scene?(char, scene) && Scenes.is_watching?(scene, char)
       end
-      message = t('scenes.new_scene_activity')
-      scene.watchers.each do |w|
-        if (last_posed != w.name)
-          Login.notify(w, :scene, message, "")
+      if (activity_type =~ /pose/)
+        message = t('scenes.new_scene_activity')
+        scene.watchers.each do |w|
+          if (last_posed != w.name)
+            Login.notify(w, :scene, message, "")
+          end
         end
       end
     end
