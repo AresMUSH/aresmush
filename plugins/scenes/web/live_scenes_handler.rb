@@ -11,7 +11,7 @@ module AresMUSH
         active = Scene.all.select { |s| !s.completed }.sort { |s1, s2| sort_scene(s1, s2) }.reverse.map { |s| {
                   id: s.id,
                   title: s.title,
-                  summary: s.summary,
+                  summary: Website.format_markdown_for_html(s.summary),
                   content_warning: s.content_warning,
                   location: Scenes.can_read_scene?(enactor, s) ? s.location : t('scenes.private'),
                   icdate: s.icdate,

@@ -55,7 +55,7 @@ module AresMUSH
            scenes: paginator.page_items.map { |s| {
                   id: s.id,
                   title: s.title,
-                  summary: s.summary,
+                  summary: Website.format_markdown_for_html(s.summary),
                   content_warning: s.content_warning,
                   location: s.location,
                   date_shared: s.date_shared,

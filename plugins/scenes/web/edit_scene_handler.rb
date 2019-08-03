@@ -31,7 +31,7 @@ module AresMUSH
         end
         
         scene.update(location: request.args[:location])
-        scene.update(summary: request.args[:summary])
+        scene.update(summary: Website.format_input_for_mush(request.args[:summary]))
         scene.update(content_warning: request.args[:content_warning])
         scene.update(scene_type: request.args[:scene_type])
         scene.update(title: request.args[:title])
