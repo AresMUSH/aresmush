@@ -11,7 +11,9 @@ module AresMUSH
       def handle
          list = enactor.page_threads
              .to_a
-             .sort_by { |t| t.title_without_viewer(enactor) }
+             .sort_by { |t| [ Page.is_thread_unread?(t, enactor) ? 1 : 0, t.last_activity ] }
+             .reverse
+             
          template = PageReviewIndexTemplate.new enactor, list
          client.emit template.render          
       end
