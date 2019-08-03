@@ -583,7 +583,7 @@ module AresMUSH
         title: scene.title,
         location: Scenes.build_location_web_data(scene),
         completed: scene.completed,
-        summary: scene.summary,
+        summary: Website.format_markdown_for_html(scene.summary),
         content_warning: scene.content_warning,
         tags: scene.tags,
         icdate: scene.icdate,
