@@ -80,5 +80,10 @@ module AresMUSH
       wiki_admin || own_folder
     end
     
+    def self.folder_size_kb(folder)
+      files = Dir["#{folder}/*"].select { |f| File.file?(f) }
+      files.sum { |f| File.size(f) } / 1000
+    end
+    
   end
 end
