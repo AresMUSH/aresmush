@@ -49,6 +49,7 @@ module AresMUSH
         Website.rebuild_css
         install_path = Global.read_config('website', 'website_code_path')
         Dir.chdir(install_path) do
+
           output = `bin/deploy 2>&1`
           Global.logger.info "Deployed web portal: #{output}"
           message = t('webportal.portal_deployed', :output => output)
@@ -80,5 +81,16 @@ module AresMUSH
       wiki_admin || own_folder
     end
     
+    def self.folder_size_kb(folder)
+      files = Dir["#{folder}/*"].select { |f| File.file?(f) }
+      files.sum { |f| File.size(f) } / 1000
+    end
+    
+    def self.webportal_version
+      install_path = Global.read_config('website', 'website_code_path')
+      version_path = File.join(install_path, 'public', 'scripts', 'aresweb_version.js')
+      version = File.read(version_path)
+      version = version.gsub('var aresweb_version = "', '').gsub('";', '').chomp
+    end
   end
 end

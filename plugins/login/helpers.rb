@@ -30,6 +30,7 @@ module AresMUSH
     def self.wants_announce(listener, connector)
       return false if !listener
       return true if listener.login_watch == "all"
+      return true if listener.login_watch == "new" && connector.status == "NEW"
       return false if listener.login_watch == "none"
       listener.is_friend?(connector)
     end
