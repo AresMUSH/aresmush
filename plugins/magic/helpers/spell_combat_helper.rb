@@ -17,7 +17,6 @@ module AresMUSH
         item_spell_mod = 0
       end
 
-
       combatant.log "Spell roll for #{combatant.name} school=#{school} mod=#{mod} spell_mod=#{spell_mod} item_spell_mod=#{item_spell_mod} accuracy=#{accuracy_mod} damage=#{damage_mod} stance=#{stance_mod} attack_luck=#{attack_luck_mod} spell_luck=#{spell_luck_mod} stress=#{stress_mod} special=#{special_mod} distract=#{distraction_mod}"
 
       mod = mod.to_i + item_spell_mod.to_i + spell_mod.to_i + accuracy_mod.to_i + damage_mod.to_i  + stance_mod.to_i  + attack_luck_mod.to_i  + spell_luck_mod.to_i - stress_mod.to_i  + special_mod.to_i - distraction_mod.to_i
@@ -27,6 +26,7 @@ module AresMUSH
     end
 
     def self.roll_combat_spell_success(caster_combatant, spell)
+      #spell mods live in roll_combat_spell
       if caster_combatant.npc
         school = Global.read_config("spells", spell, "school")
         mod = 0
@@ -200,8 +200,8 @@ module AresMUSH
       return message
     end
 
-    def self.cast_stun(combatant, target, spell, rounds)
-      margin = FS3Combat.determine_attack_margin(combatant, target)
+    def self.cast_stun(combatant, target, spell, rounds, mod)
+      margin = FS3Combat.determine_attack_margin(combatant, target, mod = mod)
       if (margin[:hit])
         target.update(subdued_by: combatant)
         target.update(magic_stun: true)
@@ -216,9 +216,9 @@ module AresMUSH
       return message
     end
 
-    def self.cast_explosion(combatant, target, spell)
+    def self.cast_explosion(combatant, target, spell, mod)
       messages = []
-      margin = FS3Combat.determine_attack_margin(combatant, target)
+      margin = FS3Combat.determine_attack_margin(combatant, target, mod = mod)
       if (margin[:hit])
         attacker_net_successes = margin[:attacker_net_successes]
         messages.concat FS3Combat.resolve_attack(combatant, combatant.name, target, combatant.weapon, attacker_net_successes)
@@ -237,13 +237,13 @@ module AresMUSH
       return messages
     end
 
-    def self.cast_suppress(combatant, target, spell)
+    def self.cast_suppress(combatant, target, spell, mod)
       composure = Global.read_config("fs3combat", "composure_skill")
-      attack_roll = FS3Combat.roll_attack(combatant, target)
+      attack_roll = FS3Combat.roll_attack(combatant, target, mod = mod)
       defense_roll = target.roll_ability(composure)
       margin = attack_roll - defense_roll
 
-      combatant.log "#{combatant.name} suppressing #{target.name} with #{spell}.  atk=#{attack_roll} def=#{defense_roll}"
+      combatant.log "#{combatant.name} suppressing #{target.name} with #{spell}.  atk=#{attack_roll} atk_mod=#{mod} def=#{defense_roll} "
       if (margin >= 0)
         target.add_stress(margin + 2)
         message = [t('fs3combat.suppress_successful_msg', :name => combatant.name, :target => target.name, :weapon => "%xB#{combatant.weapon}%xn")]

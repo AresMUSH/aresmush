@@ -103,27 +103,30 @@ module AresMUSH
           weapon_type = FS3Combat.weapon_stat(self.combatant.weapon, "weapon_type")
           #Spells roll for success individually because they only do one thing, and need to use different measures of success.
           targets.each do |target|
+            item_spell_mod  = Magic.item_spell_mod(self.combatant.associated_model)
+            spell_mod = self.combatant.spell_mod
+            mod = item_spell_mod + spell_mod
+            combatant.log "Casting #{self.spell}: item_spell_mod=#{item_spell_mod} spell_mod=#{spell_mod} total_mod=#{mod}"
 
             #Stun
             if is_stun
-              message = Magic.cast_stun(self.combatant, target, self.spell, rounds)
+              message = Magic.cast_stun(self.combatant, target, self.spell, rounds, mod)
               messages.concat message
             #Attacks
             elsif weapon_type == "Explosive"
-              message = Magic.cast_explosion(self.combatant, target, self.spell)
+              message = Magic.cast_explosion(self.combatant, target, self.spell, mod)
               messages.concat message
             elsif weapon_type == "Suppressive"
-              message = Magic.cast_suppress(self.combatant, target, self.spell)
+              message = Magic.cast_suppress(self.combatant, target, self.spell, mod)
               messages.concat message
             else
-              messages.concat FS3Combat.attack_target(combatant, target, mod = 0, called_shot = nil, crew_hit = false, mount_hit = false)
+              messages.concat FS3Combat.attack_target(combatant, target, mod = mod, called_shot = nil, crew_hit = false, mount_hit = false)
             end
 
           end
         else
           succeeds = Magic.roll_combat_spell_success(combatant, spell)
           #Spells here do not roll for success individually because they may do more than one thing and so need one success roll.
-          Global.logger.debug "Succeeds #{succeeds}"
           if succeeds == "%xgSUCCEEDS%xn"
 
             targets.each do |target|
@@ -154,9 +157,7 @@ module AresMUSH
 
               #Equip Weapon
               if (weapon && weapon != "Spell")
-                Global.logger.debug "Casting Weapon"
                 message = Magic.cast_weapon(combatant, target, self.spell, weapon)
-                Global.logger.debug "Weapon Message: #{message}"
                 messages.concat message
               end
 
@@ -167,10 +168,8 @@ module AresMUSH
               end
 
               #Equip Armor
-              Global.logger.debug "Casting Armor"
               if armor
                 message = Magic.cast_armor(combatant, target, self.spell, armor)
-                Global.logger.debug "Armor Message: #{message}"
                 messages.concat message
               end
 
