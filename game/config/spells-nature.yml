@@ -235,25 +235,6 @@ spells:
     school: Nature
     target_num: 1
     target_optional: true
-  Half Shift (Jenu):
-    available: false
-    armor: Jenu
-    desc: Half Shift (Jenu)
-    level: 4
-    name: Half Shift (Jenu)
-    school: Nature
-    weapon: Jenu
-  Half Shift:
-    available: false
-    casting_time: 1 round
-    desc: "The caster transforms up to half their body into a chosen non-sapient creature, giving them a hybrid form that carries advantages of both the creature and their original form.\n\n Creature is from the same genus each time the spell is cast."
-    duration: 1 hour
-    effect: Transformation
-    level: 4
-    name: Half Shift
-    range: Self
-    roll: true
-    school: Nature
   Heal Animal:
     available: false
     casting_time: 1 round
@@ -383,6 +364,7 @@ spells:
     duration: 3 hours
     casting_time: 1 round
     effect: transformation
+  #Level 6
   Familiar (Nature):
     desc: "A familiar is a spirit associated or allied with a school of magic that has taken residence in a physical vessel with the shape of an animal. It functions as a companion, assistant, and guardian. \n\nFamiliars may be capable of some or all of the following: sharing telepathic or empathic communication, providing knowledge of the arcane, sharing senses, lending physical aid as spies or fighters, delivering spells at a distance of up to three miles."
     effect: Other
@@ -394,6 +376,25 @@ spells:
     range: Short
     line_of_sight: true
     available: true
+  Half Shift (Jenu):
+    available: false
+    armor: Jenu
+    desc: Half Shift (Jenu)
+    level: 6
+    name: Half Shift (Jenu)
+    school: Nature
+    weapon: Jenu
+  Half Shift:
+    available: false
+    casting_time: 1 round
+    desc: "The caster transforms up to half their body into a chosen non-sapient creature, giving them a hybrid form that carries advantages of both the creature and their original form.\n\n Creature is from the same genus each time the spell is cast."
+    duration: 1 hour
+    effect: Transformation
+    level: 6
+    name: Half Shift
+    range: Self
+    roll: true
+    school: Nature
   Mass Calm Animal:
     available: false
     casting_time: 1 round
