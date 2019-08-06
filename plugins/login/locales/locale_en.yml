@@ -32,6 +32,7 @@ en:
        watch_all: "You will now see connect/disconnect messages for all characters."
        watch_none: "You will not see any connect/disconnect messages."
        watch_friends: "You will now see connect/disconnect messages for just your friends."
+       watch_new: "You will now see connect/disconnect messages for new players."
        disconnected_by_reconnect: "You are being disconnected because you connected from another location."
        site_blocked: "Your site has been blocked from this game."
        suspect_login_title: "Suspicious Login"

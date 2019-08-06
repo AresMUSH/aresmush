@@ -95,3 +95,5 @@ en:
         starting_them_install: "Starting theme installation."
         error_installing_theme: "Error installing theme %{name}. Error: %{error}"
         theme_installed: "Theme %{name} installed. Please check the readme file at %{url} for any additional instructions."
+        
+        mismatched_versions: "Your game and webportal versions are mismatched.  Maybe something went awry with the upgrade."
