@@ -368,6 +368,7 @@ spells:
     available: true
     casting_time: 1 round
     desc: A sapient creature who has died in the last 30 seconds is reanimated and bound to do the caster's bidding. Its mind remains dead, but it can perform simple tasks and come to the caster's aid in battle. It cannot cast spells. When the spell ends, the revenant returns to its dead state.
+    duration: 10 minutes
     effect: Other
     level: 6
     line_of_sight: true
@@ -435,7 +436,7 @@ spells:
     casting_time: 1 Round
     defense_mod: -3
     desc: "The caster draws contaminants, decay, and disease into a targets' body, filling their throat and mouth with unpalatable noxious vapors. The miasma spreads to up to two targets nearby. All targets feel ill, which saps them of their strength and vitality for a period of time."
-    duration: 5 minutes
+    duration: 3 rounds
     effect: Debuff
     level: 7
     line_of_sight: true
