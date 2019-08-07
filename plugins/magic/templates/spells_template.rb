@@ -32,15 +32,33 @@ module AresMUSH
         Magic.item_spell(char)
       end
 
-      def time_left_before_learn(spell)
-        spell_learned = Magic.find_spell_learned(char, spell)
-        (Magic.time_to_next_learn_spell(spell_learned) / 86400).ceil
+      def days_left(spell)
+        time_left = Magic.days_to_next_learn_spell(spell)
+        message = time_left <= 0 ? t('fs3skills.xp_days_now') : t('fs3skills.xp_days', :days => time_left)
+        center(message, 13)
+      end
+
+      def detail(spell)
+        total_xp_needed = Magic.spell_xp_needed(spell.name)
+        xp = total_xp_needed - spell.xp_needed
+        detail = "(#{xp}/#{total_xp_needed})"
+        detail.ljust(10)
+      end
+
+      def progress(spell)
+        total_xp_needed = Magic.spell_xp_needed(spell.name)
+        Global.logger.debug "Total: #{total_xp_needed} "
+        xp = total_xp_needed - spell.xp_needed
+        ProgressBarFormatter.format(spell.xp_needed, total_xp_needed)
+      end
+
+      def display(spell)
+        "#{left(spell.name, 30)} #{spell.level} #{right(progress(spell), 18)} #{detail(spell)} #{days_left(spell)}"
       end
 
       def xp
         char.xp
       end
-
 
     end
   end

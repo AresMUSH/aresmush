@@ -40,6 +40,11 @@ module AresMUSH
       (7 * 86400) - (Time.now - spell.last_learned)
     end
 
+    def self.days_to_next_learn_spell(spell)
+      time = Magic.time_to_next_learn_spell(spell)
+      (time / 86400).ceil
+    end
+
     def self.find_spell_learned(char, spell_name)
       spell_name = spell_name.titlecase
       char.spells_learned.select { |a| a.name == spell_name }.first
