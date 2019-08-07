@@ -12,10 +12,11 @@ module AresMUSH
         args = cmd.parse_args(ArgParser.arg1_equals_arg2)
         if (args.arg1 && (args.arg1.include?("http://") || args.arg1.include?("https://")) )
           self.names = []
+        else
+          self.names = list_arg(args.arg1)
+          self.names_raw = trim_arg(args.arg1)
+          self.message = trim_arg(args.arg2)
         end
-        self.names = list_arg(args.arg1)
-        self.names_raw = trim_arg(args.arg1)
-        self.message = trim_arg(args.arg2)
       end
     end
 
@@ -34,12 +35,7 @@ module AresMUSH
         end
       end
 
-      scene = Scene.create(owner: enactor,
-            location: "Text",
-            private_scene: "Private",
-            scene_type: "Text",
-            temp_room: true,
-            icdate: ICTime.ictime.strftime("%Y-%m-%d"))
+      scene = Scenes.start_scene(enactor, "Text", true, false, "Text", true)
 
       Scenes.create_scene_temproom(scene)
 
