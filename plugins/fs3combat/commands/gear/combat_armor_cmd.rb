@@ -28,7 +28,7 @@ module AresMUSH
 
       def check_valid_armor
         return t('fs3combat.invalid_armor') if !FS3Combat.armor(self.armor)
-        return t('custom.cast_to_use') if Custom.is_magic_armor(self.armor)
+        return t('custom.cast_to_use') if Magic.is_magic_armor(self.armor)
         return nil
       end
 
