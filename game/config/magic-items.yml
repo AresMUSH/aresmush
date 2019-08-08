@@ -6,26 +6,31 @@ magic-items:
   Bane of Elegast:
     name: Bane of Elegast
     desc: Crafted to hide from the legendary king and warlord, the broken chain allows anyone who carries it to cast Invisible, the Level 5 Fire spell. It currently resides in Silver's stomach after he swallowed it and fled retribution from the queen of Immeasurable Autumn, a faerie kingdom
-    spell: Invisible
+    spells:
+    - Invisible
   Bracelet Of Repel:
     name: Beaded Bracelet
     desc: "Upon a leather cord with a silver clasp, several wooden beads are strung. Each of the beads, walnut coloured, bear letters inscribed in Soitos. The letters look as though they’ve been soldered into the wood, charred and dark.\n\nThose who know the language will recognise the word ‘depart’."
-    spell: Repel Tiny Animal
+    spells:
+    - Repel Tiny Animal
   Blessing Of Wisakedjak:
     name: Blessing Of Wisakedjak
     desc: A six-point deer antler with one tip jaggedly broken off. The base is wrapped and bound in leather that ends in a loop, perfect for attaching to a belt. It grants its owner the ability to cast %xBHalf Shift (Jenu)%xn, allowing them to transform a portion of their body into a Jenu.
-    spell: Half Shift (Jenu)
+    spells:
+    - Half Shift (Jenu)
   Chilled Pitcher:
     name: Chilled Pitcher
     desc: A glass pitcher which chills any liquid poured into it.
   Eye Of The Serpent:
     name: Eye Of The Serpent
     desc: A briliant diamond the size of a child's fist. It allows the bearer to cast %xBClarity%xn.
-    spell: Clarity
+    spells:
+    - Clarity
   Eye Of Apepnet:
     name: Eye Of Apepnet
     desc: The eye is a perfect orb, larger than the size of a closed fist, composed of a freckled gold stone. It is preserved in an eternally seeing state with its diamond shaped pupil large and black as night. To look upon it for too long is unnerving as if the great snake still watches one's movements. It is cool to the touch. Allows the possessor to cast %xBDreamtrap%xn on a target.
-    spell: Dreamtrap
+    spells:
+    - Dreamtrap
   Guilt-Weighted Gloves:
     name: Guilt-Weighted Gloves
     desc: Fancy purple satin gloves with slightly fraying gold embroidery along the palm and knuckles. These gloves provide a bonus to lethality
@@ -33,7 +38,8 @@ magic-items:
   Horn Of Uktena:
     name: Horn Of Uktena
     desc: A bit of worn horn that allows the bearer to cast %xBPhotosynthesis%xn.
-    spell: Photosynthesis
+    spells:
+    - Photosynthesis
   Huxian's Gift:
     name: Huxian's Gift
     desc: 'Not an actual object, but instead an effect Asher experiences that provides a boost to his energy and a positive modifier to his actions. Those around him experience the inverse: long term exposure leads to a slow sapping of energy and eventually, exhaustion. In his presence, others experience a negative modifier to their actions. This item cannot be given away.'
@@ -47,7 +53,8 @@ magic-items:
   Raven's Blessing:
     name: Raven's Blessing
     desc:  Strung together with stiff cords and bird bones, the necklace hangs loose and just below the collarbone. The bones are bleached white and decorated with little carvings. Adhered to the bones are short, slim raven feathers. The pendant is a bird skull, but the brow has been hollowed out and set with a dull black stone that doesn't reflect any light. It grants the wearer the ability to cast Group Comprehend Languages
-    spell: Group Comprehend Languages
+    spells:
+    - Group Comprehend Languages
   Rosewing:
     name: Rosewing
     desc: 'An 8 3/4" long magic wand made of Oak with inlaid Rose Quartz detailing and a Pink Sapphire hilt ornament carved into a sharp many-pointed star. All spells cast with this magic device manifest with benign twinkling specks of blush-colored light. Gives +1 to spellcasting.'
@@ -61,4 +68,5 @@ magic-items:
   Spear Of The Hunt:
     name: Spear of the Hunt
     desc: This spear is 5 feet in length with a smooth, oiled shaft that is decorated in ogham runes along one side. It has a simple, but sharp spearhead, and allows its bearer to cast Track Animal.
-    spell: Track Animal
+    spells:
+    - Track Animal

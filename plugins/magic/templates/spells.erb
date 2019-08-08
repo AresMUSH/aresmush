@@ -4,11 +4,11 @@
 <%= t('magic.spells_header') %>
 <% if major_school %>
 <%= line_with_text major_school %>
-<% spell_list.each_with_index do |a, index| -%>
-<% if a.learning_complete %>
-<% if a.school == major_school %>
-<%= left( a.name, 30 ) -%>
-<%= left( a.level, 40 ) %>
+<% spell_list.each do |spell| -%>
+<% if spell.learning_complete %>
+<% if spell.school == major_school %>
+<%= left( spell.name, 30 ) -%>
+<%= left( spell.level, 40 ) %>
 <% end %>
 <% end %>
 <% end %>
@@ -16,26 +16,27 @@
 
 <% if minor_school %>
 <%= line_with_text minor_school %>
-<% spell_list.each_with_index do |a, index| -%>
-<% if a.learning_complete %>
-<% if a.school == minor_school %>
-<%= left( a.name, 30 ) -%>
-<%= left( a.level, 40 ) %>
+<% spell_list.each do |spell| -%>
+<% if spell.learning_complete %>
+<% if spell.school == minor_school %>
+<%= left( spell.name, 30 ) -%>
+<%= left( spell.level, 40 ) %>
 <% end %>
 <% end %>
 <% end %>
 <% end %>
 
 <%= line_with_text "Other Spells" %>
-<% if item_spell -%>
-<%= item_spell %>
+<% if item_spells -%>
+<% item_spells.each do |spell| %>
+<%= item_spell_display(spell) %>
 <% end -%>
-<% spell_list.each_with_index do |a, index| -%>
-<% if a.learning_complete %>
-<% if a.school != minor_school %>
-<% if a.school != major_school %>
-<%= left( a.name, 30 ) -%>
-<%= left( a.level, 40 ) %>
+<% end -%>
+<% spell_list.each do |spell| -%>
+<% if spell.learning_complete %>
+<% if spell.school != minor_school %>
+<% if spell.school != major_school %>
+<%= other_spell_display(spell) %>
 <% end %>
 <% end %>
 <% end %>

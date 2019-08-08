@@ -22,7 +22,7 @@ module AresMUSH
 
         spell_list = Global.read_config("spells")
         return t('magic.not_spell') if !spell_list.include?(self.spell)
-        return t('magic.dont_know_spell') if (Magic.knows_spell?(combatant, self.spell) == false && Magic.item_spell(combatant.associated_model) != spell)
+        return t('magic.dont_know_spell') if (Magic.knows_spell?(combatant, self.spell) == false && !Magic.item_spells(combatant.associated_model).include?(spell))
         num = Global.read_config("spells", self.spell, "target_num")
         return t('magic.too_many_targets', :spell => self.spell, :num => num) if (self.targets.count > num) if self.target_optional
         return t('magic.doesnt_use_target') if (self.target_optional.nil? && self.names != self.name)

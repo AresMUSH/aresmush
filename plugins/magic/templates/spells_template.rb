@@ -28,8 +28,20 @@ module AresMUSH
         char.group("Minor School")
       end
 
-      def item_spell
-        Magic.item_spell(char)
+      def item_spells
+        Magic.item_spells(char)
+      end
+
+      def item_spell_display(spell)
+        level = Global.read_config("spells", spell, "level")
+        school = Global.read_config("spells", spell, "school")
+        "#{left( spell, 29 )} Level #{level} #{school} spell"
+      end
+
+      def other_spell_display(spell)
+        level = Global.read_config("spells", spell.name, "level")
+        school = Global.read_config("spells", spell.name, "school")
+        "#{left( spell.name, 29 )} Level #{level} #{school} spell"
       end
 
       def days_left(spell)
