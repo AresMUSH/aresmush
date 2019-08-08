@@ -12,6 +12,11 @@ module AresMUSH
       def handle        
         Scenes.with_a_scene(self.scene_num, client) do |scene|
          
+          if (scene.completed)
+            client.emit_failure t('scenes.scene_already_completed')
+            return
+          end
+         
           all_poses = scene.poses_in_order.select { |p| p.character == enactor && !p.is_ooc }
           last_pose = all_poses[-1]
 
