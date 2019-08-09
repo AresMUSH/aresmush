@@ -5,9 +5,11 @@ module AresMUSH
       
       def handle
         
-        unread = []
+        unread = {}
         BbsBoard.all_sorted.each do |b|
-          unread.concat b.unread_posts(enactor)
+          posts = b.unread_posts(enactor)
+          next if posts.empty?
+          unread[b] = posts.count
         end
         
         if (unread.empty?)
@@ -15,11 +17,13 @@ module AresMUSH
           return
         end
         
-        list = unread.map { |u| "#{u.reference_str} #{u.bbs_board.name} - #{u.subject}"}
+        #text = unread.map { |board, count|  t('forum.scan_summary', :num => board.order, :name => board.name, :count => count) }
+        #.join(", ")
+        #client.emit_ooc text
         
-        
+        list = unread.map { |board, count| "#{board.order}. #{board.name.ljust(25)} #{t('forum.scan_count', :count => count)}" }
         template = BorderedListTemplate.new list, t('forum.scan_title')
-        client.emit template.render
+         client.emit template.render
       end
     end
   end
