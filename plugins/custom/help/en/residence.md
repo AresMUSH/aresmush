@@ -23,6 +23,7 @@ To get a room, do `build/request <room name>=<details>`. Include where it should
 So you were new, but you've decided to stick around. Great! Grand Lake is a small town with a sluggish real estate market and no apartment complexes to speak of. That means that it can be hard to find a good place to live.
 
 Some options:
+
 * Stay on at the Bunkhouse, a B&B or a hotel, if you can afford it.
 * Buy a mobile home. There's a small trailer park in Grand Lake, and it's cheaper than a house.
 * Buy an RV. There are several campgrounds with RV hook-ups for less than a house costs. Of course, it gets cold in the winter.
