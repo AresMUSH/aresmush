@@ -641,5 +641,51 @@ module AresMUSH
       end
       Game.master.update(recent_scenes: recent)
     end
+    
+    def self.parse_web_pose(pose, enactor, pose_type)
+      is_setpose = pose_type == 'setpose'
+      is_gmpose = pose_type == 'gm'
+      is_ooc = pose_type == 'ooc'
+      
+      command = ((pose.split(" ").first) || "").downcase
+      is_emit = false
+      if (command == "ooc")
+        is_ooc = true
+        pose = pose.after(" ")
+        pose = PoseFormatter.format(enactor.name, pose)
+      elsif (command == "scene/set")
+        is_setpose = true
+        is_emit = true
+        pose = pose.after(" ")
+      elsif (command == "emit/set") 
+        is_setpose = true
+        is_emit = true
+        pose = pose.after(" ")
+      elsif (command == "emit/gm")
+        is_gmpose = true
+        is_emit = true
+        pose = pose.after(" ")
+      elsif (command == "emit")
+        is_emit = true
+        pose = pose.after(" ")
+      else
+        markers = PoseFormatter.pose_markers
+        markers.delete "\""
+        markers.delete "'"
+        if (pose.start_with?(*markers) || is_ooc)
+          pose = PoseFormatter.format(enactor.name, pose)
+        else 
+          is_emit = true
+        end
+      end
+      
+      {
+        pose: pose,
+        is_emit: is_emit,
+        is_ooc: is_ooc,
+        is_setpose: is_setpose,
+        is_gmpose: is_gmpose
+      }
+    end
   end
 end
