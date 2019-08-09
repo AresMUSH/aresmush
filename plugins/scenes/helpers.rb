@@ -439,7 +439,7 @@ module AresMUSH
     end
     
     def self.handle_scene_participation_achievement(char)
-      scenes = char.scenes_starring
+      scenes = Scene.all.select { |s| s.completed && s.participants.include?(char) }
       count = scenes.count
         
       Scenes.scene_types.each do |type|
