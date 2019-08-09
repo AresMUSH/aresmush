@@ -58,7 +58,7 @@ fs3combat:
       is_magic: true
       lethality: 3
 
-  weapons:
+  weapons: 
     #General
     Spell:
       description: Spell with no stats to make it easier to grab special stats.

@@ -70,3 +70,20 @@ magic-items:
     desc: This spear is 5 feet in length with a smooth, oiled shaft that is decorated in ogham runes along one side. It has a simple, but sharp spearhead, and allows its bearer to cast Track Animal.
     spells:
     - Track Animal
+  #LORE HOOKS
+  #Calgary's Hook
+  Hell's Revenant:
+    name: Hell's Revenant
+    desc: "A single-edged Chinese longsword with a cleaver-like tip. Made of black steel with han-like letters, the lettering illuminates as bright as flame when the owner casts its spells. Its hilt is long, also black, shaped like a femur, and only charred remnants of the original handle remain. At its end is a thin ring in the visage of a horrifying demon. Allows the bearer to cast %xBLight%xn and %xBAwaken Terror%xn."
+    spells:
+    - Light
+    - Awaken Terror
+    spell_mod: 1
+  #Elke's Hook
+  Dragon Visage:
+    name: Dragon Visage
+    attack_mod: 1
+    desc: "A tang dao, a type of Chinese saber similar in shape and size to a katana. The blade is colored a deep red and subtle, creamy, wavy lines, like haman, can be seen across its surface. Before the hilt is a raised design, also cream colored, in the shape of a dragon's head with a long snout. The guard is circular and made from red steel with a lighter hue than the blade. Its grip is wrapped in a solid piece of black leather, twined with a pale cloth wrapping, and bound tight to the surface. A little longer than normal, the grip can accommodate two hands. The pommel is a quarter-circle, as red as the blade, and inlaid with etchings that have been filled with ivory. A single character resides in the middle of the pommel's face: Harmony. Allows the bearer to cast %xBIntermediate Telekinesis%xn"
+    spells:
+    - Intermediate Telekinesis
+    armor_specials: Dragon Visage

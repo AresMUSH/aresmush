@@ -202,6 +202,10 @@ module AresMUSH
 
     def self.cast_stun(combatant, target, spell, rounds, mod)
       margin = FS3Combat.determine_attack_margin(combatant, target, mod = mod)
+      if target == combatant
+        message = ["%xrYou can't stun yourself%xn"]
+        return message
+      end
       if (margin[:hit])
         target.update(subdued_by: combatant)
         target.update(magic_stun: true)

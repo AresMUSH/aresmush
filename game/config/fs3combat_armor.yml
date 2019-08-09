@@ -289,6 +289,11 @@ fs3combat:
       protection:
         Head: 5
         Neck: 4
+    #ITEMS
+    Dragon Visage:
+      description: Magical item
+      is_magic: true
+      defense: 1
     Huxian's Gift:
       description: Magical item
       is_magic: true
