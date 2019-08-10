@@ -97,10 +97,19 @@ module AresMUSH
         end
       end
     
+      new_bg_skills = []
       (chargen_data[:fs3][:fs3_backgrounds] || []).each do |k, v|
         error = FS3Skills.set_ability(char, k, v.to_i)
         if (error)
           alerts << t('fs3skills.error_saving_ability', :name => k, :error => error)
+        end
+        new_bg_skills << k
+      end
+      
+      # Remove any BG skills that they no longer have
+      char.fs3_background_skills.each do |bg|
+        if (!new_bg_skills.include?(bg.name))
+          FS3Skills.set_ability(char, bg.name, 0)
         end
       end
     
