@@ -80,8 +80,10 @@ en:
        
        notice_config_on: "%{config} notices on."
        notice_config_off: "%{config} notices off."
+       notices_caught_up: "You mark all notices as read."
        unrecognized_notice_config: "That is not a valid notices setting."
        motd_set: "Login message of the day set."
+       alt_unread_notices: "%{name} has unread notifications."
        
        cant_read_tos_text: "%xrTerms of Service Missing%xn%R%RThere was a problem reading the game's terms of service file.  Please contact staff for more information."
        

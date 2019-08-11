@@ -5,8 +5,8 @@
 <% end %>
 <%= unread_notices %>
 <% alts.each do |a| %>
-<% if has_alt_mail?(a) || has_alt_pages?(a) %>
-<%= t('login.alt_unread_messages', :name => a.name) %>
+<% if has_alt_notices?(a) %>
+<%= t('login.alt_unread_notices', :name => a.name) %>
 <% end %>
 <% end %>
 <% if approval_notice %>

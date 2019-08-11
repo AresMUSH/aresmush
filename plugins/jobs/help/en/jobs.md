@@ -14,7 +14,7 @@ For a general overview of using jobs, see the aresmush.com [Jobs tutorial](https
 
 ## Viewing  Jobs
 
-The jobs list shows you the jobs.
+The jobs list shows you the jobs.  You can also just see a quick summary of unread ones, which you may want to put into your [onconnect](/help/onconnect).
 
 `jobs` - Lists jobs
 `job <#>` - Views a job.

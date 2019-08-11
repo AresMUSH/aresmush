@@ -43,7 +43,7 @@ module AresMUSH
         if (show_sheet)
           {
             attributes: get_ability_list(char.fs3_attributes),
-            action_skills: get_ability_list(char.fs3_action_skills),
+            action_skills: get_ability_list(char.fs3_action_skills, true),
             backgrounds: get_ability_list(char.fs3_background_skills),
             languages: get_ability_list(char.fs3_languages),
             advantages: get_ability_list(char.fs3_advantages),
@@ -61,12 +61,13 @@ module AresMUSH
         end
       end
     
-      def get_ability_list(list)        
+      def get_ability_list(list, include_specs = false)        
         list.to_a.sort_by { |a| a.name }.map { |a| 
           { 
             name: a.name, 
             rating: a.rating, 
-            rating_name: a.rating_name
+            rating_name: a.rating_name,
+            specialties: include_specs ? a.specialties.join(", ") : nil
           }}
       end
       

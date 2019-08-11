@@ -134,7 +134,8 @@ module AresMUSH
       Achievements.award_achievement(model, "created_character", 'story', "Created a character.")
       
       welcome_message = Global.read_config("chargen", "welcome_message")
-      welcome_message_args = { name: model.name }
+      welcome_message_args = { name: model.name, rp_hooks: model.rp_hooks || t('global.none') }
+      
       Demographics.all_groups.keys.each do |k|
         welcome_message_args[k.downcase.to_sym] = model.group(k)
       end
@@ -144,7 +145,6 @@ module AresMUSH
         Global.read_config("chargen", "arrivals_category"),
         t('chargen.approval_post_subject', :name => model.name), 
         post_body)
-        
       Jobs.create_job(Global.read_config("chargen", "app_category"), 
          t('chargen.approval_post_subject', :name => model.name), 
          Global.read_config("chargen", "post_approval_message"), 

@@ -30,6 +30,10 @@ module AresMUSH
         Page.has_unread_page_threads?(alt)
       end
       
+      def has_alt_notices?(alt)
+        alt.unread_notifications.count > 0
+      end
+      
       def approval_notice
         Chargen.approval_job_notice(@char)
       end

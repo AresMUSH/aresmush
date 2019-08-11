@@ -31,7 +31,7 @@ module AresMUSH
         ClassTargetFinder.with_a_character(self.name, client, enactor) do |model|        
           
           if (self.rank.blank?)
-            enactor.update(ranks_rank: nil)
+            model.update(ranks_rank: nil)
             client.emit_success t('ranks.rank_cleared')
           else
             error = Ranks.set_rank(model, self.rank, Ranks.can_manage_ranks?(enactor))
