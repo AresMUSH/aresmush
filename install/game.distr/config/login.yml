@@ -19,7 +19,7 @@ login:
     - 18
     hour:
     - 2
-    minute: 
+    minute:
     - 19
   notice_timeout_days: 60
   shortcuts:

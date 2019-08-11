@@ -59,6 +59,8 @@ module AresMUSH
                   }}
             }
           end
+
+        Login.mark_notices_read(enactor, :pm)
                  
         channels
       end

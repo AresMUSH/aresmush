@@ -81,7 +81,7 @@ module AresMUSH
     end
     
     def self.guest_role
-      Global.read_config("login", "guest_role")
+      Global.read_config("login", "guest_role").to_s
     end
         
     def self.guests

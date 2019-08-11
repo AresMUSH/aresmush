@@ -113,6 +113,10 @@ code {
   z-index: 3001;
 }
 
+.modal-content {
+  background-color: $background-color;
+}
+
 /* -------------------------
 NAVIGATION
 ------------------------- */
@@ -702,7 +706,6 @@ CHARGEN SCREEN
     background-color: $border-color;
 }
 
-
 /* -------------------------
 SCENES SCREEN
 ------------------------- */
@@ -911,8 +914,19 @@ CHARACTERS SCREEN
     background-image:url('/game/uploads/theme_images/box-bg.png');
 }
 
-ul.char-ability-list { 
-  list-style-type: square;  
+table.char-ability-list { 
+  width: 100%;
+}
+
+.char-ability-title {
+  font-size: 1.5em;
+  background-color: $primary-color;
+  padding: .1em 1.2em;
+  color: $primary-words-color;
+  font-weight: normal;
+  border: 3px solid $primary-outline-color;
+  letter-spacing: 0.1em;
+  margin: 20px 0px 10px 0px;
 }
 
 .profile-image {

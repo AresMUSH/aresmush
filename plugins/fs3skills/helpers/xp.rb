@@ -62,7 +62,10 @@ module AresMUSH
       end
       
       if (!ability)
-        FS3Skills.set_ability(char, name, 1)
+        error = FS3Skills.set_ability(char, name, 1)
+        if (error)
+          return error
+        end
       else
         
         error = FS3Skills.check_can_learn(char, name, ability.rating)
@@ -76,9 +79,9 @@ module AresMUSH
         end
         
         ability.learn
+        
         if (ability.learning_complete)
-          ability.update(xp: 0)
-          FS3Skills.set_ability(char, name, ability.rating + 1)
+          ability.update(xp: 0, rating: ability.rating + 1)
           message = t('fs3skills.xp_raised_job', :name => char.name, :ability => name, :rating => ability.rating + 1)
           category = Jobs.system_category
           Jobs.create_job(category, t('fs3skills.xp_job_title', :name => char.name), message, Game.master.system_character)        

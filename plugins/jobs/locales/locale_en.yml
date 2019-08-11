@@ -88,3 +88,4 @@ en:
         
         new_job_activity: "New activity in job %{num}."
         job_query_created: "Job %{job}: %{title} has been created for you."
+        scan_summary: "%{count} unread jobs."

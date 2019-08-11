@@ -91,7 +91,7 @@ demographics:
     actor: demographic/set played by=
     fullname: demographic/set full name=
   help_text:
-    actor: "%xcactor <actor>%xn - See 'help actors'."
+    playedby: "%xcplayedby <actor>%xn - The actor/actress depicting your character."
     physique: "%xcphysique <build/body type>%xn - athletic, wiry, slim, pudgy, etc."
     gender: "%xcgender <male/female/other>%xn"
     hair: "%xchair <hair color>%xn"

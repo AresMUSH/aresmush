@@ -15,6 +15,11 @@ module AresMUSH
         [ self.name ]
       end
       
+      def check_permission
+        return t('dispatcher.not_allowed') if !enactor.has_permission?('set_comtitle')
+        return nil
+      end
+      
       def handle
         Channels.with_an_enabled_channel(self.name, client, enactor) do |channel|
           options = Channels.get_channel_options(enactor, channel)
