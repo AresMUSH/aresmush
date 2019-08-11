@@ -30,6 +30,10 @@ module AresMUSH
           current_signup = nil
         end
 
+        if (enactor)
+          Login.mark_notices_read(enactor, :event, event.id)
+        end
+
         signups = event.ordered_signups.map { |s| 
           {
             char: {

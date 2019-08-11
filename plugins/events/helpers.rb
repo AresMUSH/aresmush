@@ -68,7 +68,7 @@ module AresMUSH
       title = event.title
       message = t('events.event_deleted_notification', :title => title)
       event.signups.each do |s|
-        Login.notify(s.character, :event_deleted, message, "")
+        Login.notify(s.character, :event, message, event.id)
       end
       Channels.announce_notification(message)
 

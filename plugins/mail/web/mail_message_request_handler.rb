@@ -9,14 +9,14 @@ module AresMUSH
         return error if error
 
         if (!message)
-          return { error: t('db.object_not_found') }
+          return { error: t('webportal.not_found') }
         end
         
         if (message.character != enactor)
           return { error: t('dispatcher.not_allowed') }
         end
         
-        message.mark_read
+        Mail.mark_read(message)
         
        {
             id: message.id,

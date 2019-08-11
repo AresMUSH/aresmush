@@ -30,6 +30,8 @@ module AresMUSH
           if (!Scenes.is_watching?(scene, enactor))
             scene.watchers.add enactor
           end
+          
+          Login.mark_notices_read(enactor, :scene, scene.id)
 
         end
         

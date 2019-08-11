@@ -17,6 +17,25 @@ module AresMUSH
             char.update(onconnect_commands: cmds)
           end
         end
+        
+        Global.logger.debug "Adding reference id to notifications"
+        LoginNotice.all.each do |n|
+          case n.type
+          when "event", "mail", "job" 
+            if (n.data.blank?)
+              n.delete
+            else
+              n.update(reference_id: n.data)
+            end
+          when "forum"
+            post = n.data ? n.data.after('|') : ""
+            if (post.blank?)
+              n.delete
+            else
+              n.update(reference_id: post)
+            end
+          end
+        end
       end 
     end
   end
