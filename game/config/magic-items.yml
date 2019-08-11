@@ -57,7 +57,7 @@ magic-items:
     - Group Comprehend Languages
   Rosewing:
     name: Rosewing
-    desc: 'An 8 3/4 inch-long magic wand made of oak with inlaid rose quartz detailing. A pink sapphire hilt ornament has been carved into a sharp, many-pointed star that tops the wand. Gives +1 to spellcasting.'
+    desc: 'Just under nine inches, the slender wand of oak is beautifully polished with age. Delicate rose quartz is inlaid along the length of it in intricate designs, and it's topped with a sharp, many-pointed star of pink sapphire. Gives +1 to spellcasting.'
     spell_mod: 1
   Soul Stone Ring:
     name: Soul Stone Ring
