@@ -272,6 +272,7 @@ module AresMUSH
       jobs = char.read_jobs || []
       jobs << job.id.to_s
       char.update(read_jobs: jobs)
+      Login.mark_notices_read(char, :job, job.id)
     end
     
     def self.mark_unread(job)

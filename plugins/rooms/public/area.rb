@@ -6,6 +6,7 @@ module AresMUSH
     attribute :name
     attribute :name_upcase
     attribute :description
+    attribute :summary
   
     index :name_upcase
     
@@ -23,6 +24,10 @@ module AresMUSH
     
     def save_upcase
       self.name_upcase = self.name ? self.name.upcase : nil
+    end
+    
+    def full_name
+      self.parent ? "#{self.parent.full_name} - #{self.name}" : self.name
     end
   end
 end

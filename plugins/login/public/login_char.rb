@@ -16,7 +16,7 @@ module AresMUSH
     
     attribute :notices_events, :type => DataType::Boolean, :default => true
   
-    attribute :onconnect_commands, :type => DataType::Array, :default => []
+    attribute :onconnect_commands, :type => DataType::Array, :default => [ 'forum/scan' ]
   
     collection :login_notices, "AresMUSH::LoginNotice"
     

@@ -100,6 +100,11 @@ module AresMUSH
       end
       
       def set_location(scene)
+        if (scene.completed)
+          client.emit_failure t('scenes.scene_already_completed')
+          return false
+        end
+
         Scenes.set_scene_location(scene, self.value, enactor)
         
         if (scene.room && !scene.temp_room)
