@@ -8,10 +8,10 @@ module AresMUSH
         Scenes.can_read_scene?(char, scene) && Scenes.is_watching?(scene, char)
       end
       if (activity_type =~ /pose/)
-        message = t('scenes.new_scene_activity')
+        message = t('scenes.new_scene_activity', :id => scene.id)
         scene.watchers.each do |w|
           if (last_posed != w.name)
-            Login.notify(w, :scene, message, "")
+            Login.notify(w, :scene, message, scene.id, "", false)
           end
         end
       end
@@ -474,6 +474,7 @@ module AresMUSH
       scenes = char.read_scenes || []
       scenes << scene.id.to_s
       char.update(read_scenes: scenes)
+      Login.mark_notices_read(char, :scene, scene.id)
     end
     
     def self.mark_unread(scene, except_for_char = nil)

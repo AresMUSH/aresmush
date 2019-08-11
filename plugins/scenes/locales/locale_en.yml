@@ -140,5 +140,5 @@ en:
         left_scene: "You leave the scene."
         web_scene_started: "You start a new scene (%{num}).  You can join the scene using `scene/join %{num}` or find it on the web portal's active scenes page."
         
-        new_scene_activity: "New activity in your scenes."
+        new_scene_activity: "New activity in scene %{id}."
         scene_updated: "%{title} updated."
