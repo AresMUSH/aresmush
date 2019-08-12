@@ -142,6 +142,9 @@ module AresMUSH
     def self.cast_inflict_damage(combatant, target, spell, damage_inflicted, damage_desc)
       FS3Combat.inflict_damage(target.associated_model, damage_inflicted, damage_desc)
       target.update(freshly_damaged: true)
+      damaged_by = target.damaged_by
+      damaged_by << combatant.name
+      target.update(damaged_by: damaged_by.uniq)
       message = [t('magic.cast_damage', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target => target.name, :damage_desc => spell.downcase)]
       return message
     end
