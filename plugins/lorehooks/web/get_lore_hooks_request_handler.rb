@@ -15,13 +15,13 @@ module AresMUSH
           if c.lore_hook_type == "Item"
             item = c.lore_hook_name
           elsif c.lore_hook_type == "Pet"
-            if c.lorehook_name.include?("Pet")
+            if c.lore_hook_name.include?("Pet")
               pet = c.lore_hook_name.gsub(" Pet","")
             else
               pet = c.lore_hook_name
             end
           elsif c.lore_hook_type == "Ancestry"
-            if c.lorehook_name.include?("Ancestry")
+            if c.lore_hook_name.include?("Ancestry")
               ancestry = c.lore_hook_name.gsub(" Ancestry","")
             else
               ancestry = c.lore_hook_name
