@@ -15,13 +15,13 @@ login:
     minute:
     - 0
   notice_cleanup_cron:
-    # day:
-    # - 18
+    day:
+    - 18
     hour:
     - 07
     minute:
     - 32
-  notice_timeout_days: 6
+  notice_timeout_days: 60
   shortcuts:
     logout: quit
     con: connect
