@@ -63,6 +63,8 @@ module AresMUSH
           return CreateQueryJobCmd
         when "renamecategory"
           return RenameJobCategoryCmd
+        when "scan"
+          return JobScanCmd
         when "search"
           return JobSearchCmd
         when "status"

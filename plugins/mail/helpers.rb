@@ -127,5 +127,10 @@ module AresMUSH
       recipients.uniq
     end
     
+    def self.mark_read(message)
+      message.mark_read
+      Login.mark_notices_read(message.character, :mail, message.id)
+    end
+    
   end
 end

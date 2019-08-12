@@ -16,6 +16,7 @@ module AresMUSH
           content_warning: e.content_warning
         }}
         
+        
         {
           events: events,
           calendar_url: "#{AresMUSH::Game.web_portal_url}/events/ical"

@@ -9,7 +9,8 @@ module AresMUSH
     end
     
     def self.group_rank_config(group)
-      Global.read_config("ranks", "ranks", group)
+      all_groups = Global.read_config("ranks", "ranks")
+      all_groups.select { |k, v| k.upcase == group.upcase}.values.first
     end
     
     def self.all_ranks_for_group(group)
