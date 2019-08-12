@@ -13,6 +13,8 @@ module AresMUSH
              .to_a
              .sort_by { |t| [ Page.is_thread_unread?(t, enactor) ? 1 : 0, t.last_activity ] }
              .reverse
+
+         Login.mark_notices_read(enactor, :pm)
              
          template = PageReviewIndexTemplate.new enactor, list
          client.emit template.render          

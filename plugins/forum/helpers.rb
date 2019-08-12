@@ -44,6 +44,7 @@ module AresMUSH
       AresCentral.alts(char).each do |alt|
         post.mark_read(alt)
       end
+      Login.mark_notices_read(char, :forum, post.id)
     end    
       
     def self.notify(post, category, type, message)
@@ -113,7 +114,7 @@ module AresMUSH
       Forum.notify(post, category, :new_forum_reply, message)
             
       if (post.author && author != post.author)
-        Login.notify(post.author, :forum, t('forum.new_forum_reply', :subject => post.subject), "#{category.id}|#{post.id}")
+        Login.notify(post.author, :forum, t('forum.new_forum_reply', :subject => post.subject), post.id, "#{category.id}|#{post.id}")
       end
       
     end

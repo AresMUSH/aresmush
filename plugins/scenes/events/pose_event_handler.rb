@@ -5,7 +5,7 @@ module AresMUSH
         enactor = Character[event.enactor_id]
         room = Room[event.room_id]
         scene = room.scene
-        if (scene)
+        if (scene && !scene.completed)
           Scenes.add_to_scene(scene, event.pose, enactor, event.is_setpose, event.is_ooc, event.place_name)
         elsif (room.scene_nag && room.room_type != "OOC")
           room.emit_ooc t('scenes.scene_nag')

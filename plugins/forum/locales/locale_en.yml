@@ -29,6 +29,8 @@ en:
         post_moved: "Post moved."
         category_renamed: "Category renamed."
         scan_title: "Unread Posts"
+        scan_summary: "%{count} unread posts on %{name}(%{num})"
+        scan_count: "%{count} unread posts"
         
         new_post: "%xnNew forum post %xh%{subject}%xn %{reference} posted to %xh%{category}%xn by %{author}." 
         web_new_post: "New forum post: %{subject} by %{author}."

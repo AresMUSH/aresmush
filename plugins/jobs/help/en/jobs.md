@@ -12,7 +12,10 @@ The Jobs system is used by the game administrators to track work requests and to
 
 For a general overview of using jobs, see the aresmush.com [Jobs tutorial](https://aresmush.com/tutorials/manage/jobs.html).
 
-## Viewing Jobs
+## Viewing  Jobs
+
+The jobs list shows you the jobs.  You can also just see a quick summary of unread ones, which you may want to put into your [onconnect](/help/onconnect).
+
 `jobs` - Lists jobs
 `job <#>` - Views a job.
 `jobs/all` - Shows all jobs, even old ones.  Add a number after 'all' to see additional pages (e.g. jobs/all2, jobs/all3, etc.)

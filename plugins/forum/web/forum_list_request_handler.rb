@@ -24,6 +24,7 @@ module AresMUSH
              name: b.name   
           }}
         
+          
           {
             categories: categories,
             hidden: hidden,

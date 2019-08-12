@@ -14,6 +14,7 @@ fs3skills:
     skills: abilities
     attributes: abilities
     languages: abilities
+    advantages: abilities
     practice: learn
     train: learn
     xp/raise: learn

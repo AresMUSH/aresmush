@@ -9,23 +9,22 @@ module AresMUSH
         
         {
           can_manage: Rooms.can_build?(enactor),
-          directory: Rooms.top_level_areas.map { |a| build_directory(a) },
+          directory: Area.all.to_a.sort_by { |a| a.full_name }.map{ |area|
+            {
+              id: area.id,
+              name: area.full_name,
+              summary: area.summary ? Website.format_markdown_for_html(area.summary) : "",
+              children: area.children.to_a.sort_by { |a| a.name }.map { |a| { id: a.id, name: a.name } },
+              rooms: area.rooms.map { |r| { name: r.name, id: r.id } }
+            }
+          },
           orphan_rooms: Room.all.select { |r| is_orphan?(r) }.sort_by { |r| r.name }.map { |r| 
              { 
                name: r.name,
                id: r.id,
-               name_and_area: r.name_and_area,
-               description: r.description ? Website.format_markdown_for_html(r.description) : ""
+               name_and_area: r.name_and_area
              }}
           }
-      end
-      
-      def build_directory(area)
-        {
-          id: area.id,
-          name: area.name,
-          children: area.children.to_a.sort_by { |a| a.name }.map { |a| build_directory(a) }
-        }
       end
       
       def is_orphan?(room)
