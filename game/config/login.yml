@@ -20,8 +20,8 @@ login:
     hour:
     - 07
     minute:
-    - 27
-  notice_timeout_days: 7
+    - 32
+  notice_timeout_days: 6
   shortcuts:
     logout: quit
     con: connect
