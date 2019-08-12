@@ -28,7 +28,7 @@ website:
       id: policies
     - route: wiki-page
       title: Join Us
-      id: join_us
+      id: guides:join_us
     - route: wiki-page
       title: Staff Team
       id: staff
