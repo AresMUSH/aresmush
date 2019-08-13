@@ -4,6 +4,7 @@ roles:
   - admin
   - app staff
   - storyteller
+  - builder
   default_roles:
   - everyone
   restricted_roles:
