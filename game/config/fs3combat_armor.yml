@@ -80,42 +80,9 @@ fs3combat:
         Abdomen: 6
       allowed_specials:
       - Modern Helmet
-    Rock Skin:
-      description: Level 4 Earth spell
-      is_magic: true
-      defense: 0
-      protection:
-        Head: 8
-        Neck: 8
-        Chest: 8
-        Abdomen: 8
-        Left Leg: 8
-        Right Leg: 8
-        Groin: 8
-        Left Arm: 8
-        Right Arm: 8
-        Left Hand: 8
-        Right Hand: 8
-        Left Foot: 8
-        Right Foot: 8
-    Crystalline:
-      description: Level 4 Earth spell
-      is_magic: true
-      defense: 0
-      protection:
-        Head: 11
-        Neck: 11
-        Chest: 11
-        Abdomen: 11
-        Left Leg: 11
-        Right Leg: 11
-        Groin: 11
-        Left Arm: 11
-        Right Arm: 11
-        Left Hand: 11
-        Right Hand: 11
-        Left Foot: 11
-        Right Foot: 11
+
+#SPELLS
+  #LEVEL 2
     Natural Defenses:
       description: Level 2 Nature spell
       is_magic: false
@@ -134,48 +101,7 @@ fs3combat:
         Right Hand: 4
         Left Foot: 4
         Right Foot: 4
-    Crocodile:
-      description: Level 2 Nature spell
-      is_magic: true
-      defense: 0
-      protection:
-        Head: 4
-        Neck: 4
-        Chest: 4
-        Abdomen: 4
-        Left Leg: 4
-        Right Leg: 4
-        Groin: 4
-        Left Arm: 4
-        Right Arm: 4
-        Left Hand: 4
-        Right Hand: 4
-        Left Foot: 4
-        Right Foot: 4
-    Moth:
-      description: A moth.
-      is_magic: true
-      protection:
-        Head: 0
-        Neck: 0
-        Chest: 0
-        Abdomen: 0
-        Left Leg: 0
-        Right Leg: 0
-        Groin: 0
-        Left Arm: 0
-        Right Arm: 0
-        Left Hand: 0
-        Right Hand: 0
-        Left Foot: 0
-        Right Foot: 0
-      defense: 10
-    Jenu:
-      description: Level 6 Nature spell
-      is_magic: true
-      defense: 3
-      protection:
-        Head: 0
+  #LEVEL 3
     Bark Skin:
       description: Level 3 Nature spell
       is_magic: true
@@ -194,6 +120,25 @@ fs3combat:
         Right Hand: 6
         Left Foot: 6
         Right Foot: 6
+  #LEVEL 4
+    Crystalline:
+      description: Level 4 Earth spell
+      is_magic: true
+      defense: 0
+      protection:
+        Head: 11
+        Neck: 11
+        Chest: 11
+        Abdomen: 11
+        Left Leg: 11
+        Right Leg: 11
+        Groin: 11
+        Left Arm: 11
+        Right Arm: 11
+        Left Hand: 11
+        Right Hand: 11
+        Left Foot: 11
+        Right Foot: 11
     Exoskeleton:
       description: Level 4 Corpus spell
       is_magic: true
@@ -230,6 +175,24 @@ fs3combat:
         Right Hand: 8
         Left Foot: 8
         Right Foot: 8
+    Rock Skin:
+      description: Level 4 Earth spell
+      is_magic: true
+      defense: 0
+      protection:
+        Head: 8
+        Neck: 8
+        Chest: 8
+        Abdomen: 8
+        Left Leg: 8
+        Right Leg: 8
+        Groin: 8
+        Left Arm: 8
+        Right Arm: 8
+        Left Hand: 8
+        Right Hand: 8
+        Left Foot: 8
+        Right Foot: 8
     Telekinetic:
       description: Level 4 Will spell
       is_magic: true
@@ -248,6 +211,69 @@ fs3combat:
         Right Hand: 11
         Left Foot: 11
         Right Foot: 11
+  #LEVEL 5
+    #WILD SHAPE
+    Crocodile:
+      description: Wild Shape Crocodile
+      is_magic: true
+      defense: 0
+      protection:
+        Head: 4
+        Neck: 4
+        Chest: 4
+        Abdomen: 4
+        Left Leg: 4
+        Right Leg: 4
+        Groin: 4
+        Left Arm: 4
+        Right Arm: 4
+        Left Hand: 4
+        Right Hand: 4
+        Left Foot: 4
+        Right Foot: 4
+    Falcon:
+      description: Wild Shape Falcon
+      is_magic: true
+      protection:
+        Head: 0
+        Neck: 0
+        Chest: 0
+        Abdomen: 0
+        Left Leg: 0
+        Right Leg: 0
+        Groin: 0
+        Left Arm: 0
+        Right Arm: 0
+        Left Hand: 0
+        Right Hand: 0
+        Left Foot: 0
+        Right Foot: 0
+      defense: 1
+    Moth:
+      description: Wild Shape Moth
+      is_magic: true
+      protection:
+        Head: 0
+        Neck: 0
+        Chest: 0
+        Abdomen: 0
+        Left Leg: 0
+        Right Leg: 0
+        Groin: 0
+        Left Arm: 0
+        Right Arm: 0
+        Left Hand: 0
+        Right Hand: 0
+        Left Foot: 0
+        Right Foot: 0
+      defense: 10
+    #LEVEL 6
+    Jenu:
+      description: Level 6 Nature spell
+      is_magic: true
+      defense: 3
+      protection:
+        Head: 0
     Transmutation:
       description: Level 6 Will spell
       is_magic: true
@@ -289,7 +315,7 @@ fs3combat:
       protection:
         Head: 5
         Neck: 4
-    #ITEMS
+    #ITEM ARMOR SPECIALS
     Dragon Visage:
       description: Magical item
       is_magic: true

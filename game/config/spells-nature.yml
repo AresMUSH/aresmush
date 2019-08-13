@@ -314,38 +314,48 @@ spells:
     range: Short
     roll: true
     school: Nature
-  Wild Shape Moth:
-    available: false
-    armor: Moth
-    desc: Wild Shape desc
-    level: 5
-    name: Wild Shape
-    roll: true
-    school: Nature
-  Wild Shape Crocodile:
-    available: false
-    armor: Crocodile
-    desc: Wild Shape desc
-    level: 5
-    name: Wild Shape
-    roll: true
-    school: Nature
-    range: Self
-    weapon: Claws
   Wild Shape Bear:
     available: true
     armor: Tough Hide
-    desc: Wild Shape desc
+    desc: Wild Shape Bear
     level: 5
     name: Wild Shape
     roll: true
     school: Nature
     range: Self
     weapon: Claws
+  Wild Shape Crocodile:
+    available: false
+    armor: Crocodile
+    desc: Wild Shape Crocodile
+    level: 5
+    name: Wild Shape
+    roll: true
+    school: Nature
+    range: Self
+    weapon: Claws
+  Wild Shape Falcon:
+    available: true
+    armor: Falcon
+    desc: Wild Shape Falcon
+    level: 5
+    name: Wild Shape
+    roll: true
+    school: Nature
+    range: Self
+    weapon: Claws
+  Wild Shape Moth:
+    available: false
+    armor: Moth
+    desc: Wild Shape Moth
+    level: 5
+    name: Wild Shape
+    roll: true
+    school: Nature
   Wild Shape Wolf:
     available: true
     armor: Tough Hide
-    desc: Wild Shape desc
+    desc: Wild Shape Wolf
     level: 5
     name: Wild Shape
     roll: true
