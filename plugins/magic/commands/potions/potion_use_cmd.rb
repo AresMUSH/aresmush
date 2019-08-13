@@ -25,7 +25,8 @@ module AresMUSH
         return t('magic.dont_have_potion') if !self.potion
         return t('magic.invalid_name') if (self.target_name_arg && !self.target)
         wound = FS3Combat.worst_treatable_wound(self.target)
-        return t('magic.no_healable_wounds', :target => target.name) if wound.blank?
+        heal_points = Global.read_config("spells", self.potion_name, "heal_points")
+        return t('magic.no_healable_wounds', :target => target.name) if (wound.blank? && heal_points)
       end
 
       def handle
