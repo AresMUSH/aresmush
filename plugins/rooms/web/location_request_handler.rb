@@ -3,47 +3,58 @@ module AresMUSH
     class LocationRequestHandler
       def handle(request)
         id = request.args[:id]
+        edit_mode = (request.args[:edit_mode] || "").to_bool
         enactor = request.enactor
         
         error = Website.check_login(request, true)
         return error if error
         
-        area = Area[id]
-        if (!area)
+        room = Room[id]
+        if (!room)
           return { error: t('webportal.not_found') }
         end
         
+        if (room.room_owners.any?)
+          owners = room.room_owners.map { |o| {
+            name: o.name, 
+            icon: Website.icon_for_char(o)
+            }}
+        else
+          owners = nil
+        end
+        
+        if (edit_mode) 
+           desc = Website.format_input_for_html(room.description)
+        else
+          desc = room.description ? Website.format_markdown_for_html(room.description) : ""
+        end        
+        
+        if (room.area)
+          area = {
+            name: room.area.name,
+            id: room.area.id,
+            full_name: room.area.full_name
+          }
+        else
+          area = nil
+        end
+        
+        
         {
-          area: build_area_definition(area),
-          can_manage: Rooms.can_build?(enactor),
-          directory: Rooms.top_level_areas.map { |a| build_directory(a) }
+          name: room.name,
+          description: desc,
+          owners: owners,
+          area: area,
+          name_and_area: room.name_and_area,
+          destinations: room.exits.select { |e| e.dest }.map { |e| 
+            { 
+            name: e.dest.name, 
+            id: e.dest.id
+            }},
+          can_manage: Rooms.can_build?(enactor)
         }
       end
       
-      def build_area_definition(area)
-        { 
-          name: area.name,
-          id: area.id,
-          parent: area.parent ? { name: area.parent.name, id: area.parent.id } : nil,
-          description: area.description ? Website.format_markdown_for_html(area.description) : "",
-          locations: area.rooms.to_a.sort_by { |r| r.name }.map { |r| {
-            name: r.name,
-            id: r.id,
-            name_and_area: r.name_and_area,
-            description: r.description ? Website.format_markdown_for_html(r.description) : ""
-            }},
-          children: area.sorted_children.map { |a| build_area_definition(a) }
-        }
-      end
-        
-      def build_directory(area)
-        {
-          id: area.id,
-          name: area.name,
-          children: area.children.map { |a| build_directory(a) }
-        }
-      end
-        
     end
   end
 end

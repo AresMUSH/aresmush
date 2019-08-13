@@ -28,7 +28,7 @@ website:
       id: policies
     - route: wiki-page
       title: Join Us
-      id: join_us
+      id: guides:join_us
     - route: wiki-page
       title: Staff Team
       id: staff
@@ -54,7 +54,7 @@ website:
     menu:
     - route: wiki-page
       title: Getting Started
-      id: getting_started
+      id: guides:getting_started
     - route: wiki-page
       title: Guides
       id: guides
@@ -117,7 +117,7 @@ website:
       id: hooks__amp__hopes
     - route: wiki-page
       title: Player Run Plots
-      id: player_run_plots
+      id: guides:player_run_plots
     - route: lore-hooks
       title: Lore Hooks
   - title: Directory
@@ -144,10 +144,10 @@ website:
     menu:
     - route: wiki-page
       title: Combat Guide
-      id: combat_guide
+      id: guides:combat_guide
     - route: wiki-page
       title: Combat Organizer's Guide
-      id: combat_org_guide
+      id: guides:combat_org_guide
     - route: wiki-page
       title: Magic System
       id: magic_system

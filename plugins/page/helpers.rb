@@ -99,7 +99,7 @@ module AresMUSH
 
       everyone.each do |char| 
         next if char == enactor   
-        Login.notify(char, :pm, t('page.new_pm'), "")
+        Login.notify(char, :pm, t('page.new_pm', :thread => thread.title_without_viewer(char)), thread.id, "", false)
       end
       
       # Can't use notify_web_clients here because the notification is different for each person.

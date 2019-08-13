@@ -72,7 +72,7 @@ module AresMUSH
               names.concat [target.name]
             end
             names = names.join(", ")
-            message = [t('magic.casts_spell_with_target', :name => caster.name, :spell => spell, :mod => mod, :target => names, :succeeds => success)]
+            message = [t('magic.casts_spell_on_target', :name => caster.name, :spell => spell, :mod => mod, :target => names, :succeeds => success)]
           end
         end
         message.each do |msg|

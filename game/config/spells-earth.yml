@@ -185,7 +185,7 @@ spells:
     name: Earth Shudder
     range: Long
     school: Earth
-    target_num: 1
+    target_num: 3
     target_optional: true
     weapon: Earth Shudder
   Stalagmite:

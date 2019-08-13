@@ -19,6 +19,12 @@ module AresMUSH
             client.emit_failure t('dispatcher.not_allowed')
             return
           end
+          
+          if (scene.completed)
+            client.emit_failure t('scenes.scene_already_completed')
+            return
+          end
+          
         
           Scenes.stop_scene(scene, enactor)
           client.emit_success t('scenes.scene_stopped', :id => scene.id)

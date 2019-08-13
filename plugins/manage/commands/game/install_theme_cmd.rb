@@ -6,7 +6,7 @@ module AresMUSH
       attr_accessor :name
       
       def parse_args
-        self.name = trim_arg(cmd.args)
+        self.name = downcase_arg(cmd.args)
       end
       
       def required_args
@@ -21,7 +21,11 @@ module AresMUSH
       def handle        
         begin
           client.emit_ooc t('manage.starting_them_install')
-          url = "https://github.com/AresMUSH/ares-extras/tree/master/themes/#{self.name}"
+          if (self.name == 'default')
+            url = "https://aresmush.com/tutorials/config/website.html"
+          else
+            url = "https://github.com/AresMUSH/ares-extras/tree/master/themes/#{self.name}"
+          end
           importer = AresMUSH::Manage::ThemeImporter.new(self.name)
           importer.import
           Website.rebuild_css

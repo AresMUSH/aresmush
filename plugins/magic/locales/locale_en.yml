@@ -52,7 +52,7 @@ en:
       use_combat_spell: "Use combat/spell when you are in combat."
       spell_ko: "You cannot cast a spell while Knocked Out."
       casts_spell: "%{name} casts %xB%{spell}%xn%{mod} and %{succeeds}."
-      casts_spell_with_target: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{succeeds}."
+      casts_spell_on_target: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{succeeds}."
       # will_cast_spell: "%{name} will cast %xB%{spell}%xn."
       will_cast_fs3_attack: "%{name} will cast %xB%{spell}%xn on %{target} this turn."
       cast_heal: "%{name} casts %xB%{spell}%xn%{mod} and %{succeeds}. %{target} receives up to %{points} points of healing to a wound."
@@ -124,6 +124,7 @@ en:
       need_higher_level: "You must have a spell of the next level before you can spend luck to reduce the learn time of %{spell}."
       only_1_xp_needed: "You only have 1 XP left to spend on this spell. You cannot reduce the learn time further."
       reduce_spell_learn_time: "You reduce the learn time of %{spell} by a week. You can `spell/learn` to learn it again."
+      can_learn_now: "You can learn that spell now - no need to spend luck!"
       reduce_spell_learn_time_job: "%{name} reduced the learn time of %{spell} by a week."
 
       # ----------------------------

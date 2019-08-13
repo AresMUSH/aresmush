@@ -4,6 +4,7 @@ module AresMUSH
     attribute :type
     attribute :message
     attribute :data
+    attribute :reference_id
     attribute :is_unread, :type => DataType::Boolean, :default => true
     
     reference :character, "AresMUSH::Character"

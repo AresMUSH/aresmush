@@ -32,6 +32,11 @@ module AresMUSH
             return
           end
 
+          if (scene.shared)
+            client.emit_failure t('scenes.scene_already_shared')
+            return
+          end
+
           scene.delete_poses_and_log
           if (scene.room)
             scene.room.emit_ooc t('scenes.log_cleared')

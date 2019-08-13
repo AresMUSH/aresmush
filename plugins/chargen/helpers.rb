@@ -135,7 +135,8 @@ module AresMUSH
       Achievements.award_achievement(model, "created_character", 'story', "Created a character.")
 
       welcome_message = Global.read_config("chargen", "welcome_message")
-      welcome_message_args = { name: model.name, rp_hooks: model.rp_hooks }
+      welcome_message_args = { name: model.name, rp_hooks: model.rp_hooks || t('global.none') }
+
       Demographics.all_groups.keys.each do |k|
         welcome_message_args[k.downcase.to_sym] = model.group(k)
       end

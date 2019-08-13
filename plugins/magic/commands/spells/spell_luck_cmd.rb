@@ -12,11 +12,12 @@ module AresMUSH
       end
 
       def check_errors
+        spell_learned = Magic.find_spell_learned(enactor, self.spell)
+        return t('magic.can_learn_now') if Magic.days_to_next_learn_spell(spell_learned) < 1
         return t('fs3skills.not_enough_points') if enactor.luck < 1
         return t('magic.use_school_version') if (self.spell == "Potions" || self.spell == "Familiar")
         return t('magic.not_spell') if !Magic.is_spell?(self.spell)
-        return t('magic.need_higher_level', :spell => self.spell) if Magic.higher_level_spell?(enactor, self.spell) == false
-        spell_learned = Magic.find_spell_learned(enactor, self.spell) 
+        return t('magic.need_higher_level', :spell => self.spell) if Magic.higher_level_spell?(enactor, self.spell) == false        
         return  t('magic.not_learning_spell', :spell => self.spell) if !spell_learned
         return t('magic.only_1_xp_needed') if spell_learned.xp_needed.to_i == 1
         if enactor.groups.values.include? self.school

@@ -2,6 +2,7 @@ module AresMUSH
   class Character
     
     def place(room)
+      return nil if !room
       room.places.select { |p| p.characters.include?(self) }.first
     end
     

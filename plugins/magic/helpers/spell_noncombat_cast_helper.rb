@@ -91,7 +91,7 @@ module AresMUSH
         if is_potion
          msg = [t('magic.use_potion_target', :name => caster.name, :potion => spell, :target => print_names)]
        else
-         msg = [t('magic.casts_spell_with_target', :name => caster.name, :target => print_names, :spell => spell, :mod => mod, :succeeds => success)]
+         msg = [t('magic.casts_spell_on_target', :name => caster.name, :target => print_names, :spell => spell, :mod => mod, :succeeds => success)]
        end
       end
       if message
