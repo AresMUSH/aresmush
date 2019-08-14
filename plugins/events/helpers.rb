@@ -117,5 +117,19 @@ module AresMUSH
     def self.handle_event_achievement(char)
         Achievements.award_achievement(char, "event_created", 'community', "Scheduled an event.")
     end
+    
+    def self.cancel_signup(event, name, enactor)
+      if (name != enactor.name && !Events.can_manage_event(enactor, event))
+        return t('dispatcher.not_allowed')
+      end
+      
+      signup = event.signups.select { |s| s.character.name == name }.first
+      if (!signup)
+        return t('events.not_signed_up', :name => name)
+      end
+      
+      signup.delete
+      return nil
+    end
   end
 end
