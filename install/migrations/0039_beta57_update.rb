@@ -8,6 +8,7 @@ module AresMUSH
       
       def migrate
         
+        Global.logger.debug "Splitting channel roles into join/talk."
         Channel.all.each do |c|
           c.roles.each do |r|
             c.join_roles.add r
