@@ -3,7 +3,16 @@ module AresMUSH
     
     def self.is_restricted_wiki_page?(page)
       restricted_pages = Global.read_config("website", "restricted_pages") || ['home']
-      restricted_pages.map { |p| WikiPage.sanitize_page_name(p.downcase) }.include?(page.name.downcase)
+      restricted_pages.each do |p|
+        if (p =~ /.+\:\*/) 
+          category = WikiPage.sanitize_page_name(p.before(':'))
+          return true if category == page.category
+        else
+          restrict = WikiPage.sanitize_page_name(p)
+          return true if restrict == page.name
+        end
+      end
+      false
     end
     
     def self.can_manage_wiki?(actor)
