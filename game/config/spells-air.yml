@@ -134,7 +134,7 @@ spells:
     available: true
     casting_time: 1 round
     desc: "Deflect ranged projectile attacks directed against you or a single comrade with a gust wind, effectively putting the target in [cover](https://www.aresmush.com/fs3/fs3-3/combat/#stance)."
-    duration: 1 round
+    duration: 3 rounds
     effect: Defense
     level: 3
     line_of_sight: true
