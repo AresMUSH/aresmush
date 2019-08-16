@@ -318,9 +318,17 @@ fs3combat:
     #ITEM ARMOR SPECIALS
     Dragon Visage:
       description: Magical item
-      is_magic: true
+      is_magic: false
       defense: 1
     Huxian's Gift:
       description: Magical item
       is_magic: true
       defense: 3
+    Tarian Y Tir:
+      description: Magical Item
+      protection:
+        Left Arm: 7
+        Left Hand: 7
+        Chest: 7
+        Abdomen: 7
+        Groin: 7
