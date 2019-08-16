@@ -177,6 +177,22 @@ spells:
     school: Will
     weapon_specials: Transform
     weapon: Spell
+  #LEVEL 5
+  Group Telekinetic Block:
+    available: true
+    casting_time: 1 round
+    desc: "Deflect attacks directed against up to three targets with a telekinetic wall, effectively putting the targets in [cover](https://www.aresmush.com/fs3/fs3-3/combat/#stance)."
+    duration: 4 rounds
+    effect: Defense
+    level: 5
+    line_of_sight: true
+    name: 'Group Telekinetic Block '
+    range: Long
+    rounds: 4
+    school: Will
+    stance: cover
+    target_num: 3
+    target_optional: true
   Telekinetic Precision:
     available: true
     casting_time: 1 round, plus additional rounds to manipulate at GM's discretion
@@ -188,6 +204,7 @@ spells:
     range: Short
     roll: true
     school: Will
+  #LEVEL 6
   Familiar (Will):
     desc: "A familiar is a spirit associated or allied with a school of magic that has taken residence in a physical vessel with the shape of an animal. It functions as a companion, assistant, and guardian. \n\nFamiliars may be capable of some or all of the following: sharing telepathic or empathic communication, providing knowledge of the arcane, sharing senses, lending physical aid as spies or fighters, delivering spells at a distance of up to three miles."
     effect: Other
@@ -222,6 +239,20 @@ spells:
     name: Transmutation Armor
     notes: This probably shouldn't cover the whole body? Maybe a use for armor specials.
     range: Self
+    school: Will
+  #LEVEL 7
+  Being of Force:
+    area: 15 yard radius
+    available: true
+    casting_time: 10 minutes, plus additional rounds for commands
+    desc: "The caster creates a being of pure Will. The being is capable of any Will abilities of level 5 or below. It can be actively directed by its master via a short command of up to four words. A command is in effect until countered by the caster or until the being is dispelled or defeated. Giving a new command takes a turn.\n\nWhile active, the being requires a significant amount of Will energy, and its creator casts Will spells with a -1 modifier.\n\n In combat, the being should be represented by an NPC of level five."
+    duration: 30 minutes
+    effect: Other
+    level: 6
+    line_of_sight: true
+    name: 'Being of Force '
+    range: Short
+    roll: Will
     school: Will
   Dimensional Anchor:
     available: true

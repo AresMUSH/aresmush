@@ -87,3 +87,9 @@ magic-items:
     spells:
     - Intermediate Telekinesis
     armor_specials: Dragon Visage
+  #Jonathan's Hook
+  Sacred Ibis Idol:
+    name: Sacred Ibis Idol
+    desc: "A small statue of an African Sacred Ibis, able to fit in the palm of a hand. The ibis is reclined gracefully, positioned to sit atop its long, dark legs on a rectangular base. Its head and the tips of its wings are painted a deep ebony, while the rest of the feathered body glimmers with gold. The idol allows the bearer to contact Thoth, the Egyptian god of wisdom, and gives the bearer the ability to cast %xBTelepathic Link%xn"
+    spells:
+    - Telepathic Link

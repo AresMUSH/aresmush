@@ -277,6 +277,24 @@ spells:
     target_num: 1
     target_optional: true
     weapon: Blow Object
+  Sonic Blast:
+    available: false
+    attack_mod: -2
+    casting_time: 1 round
+    desc: The target is blasted by an intense burst of sound, leaving them disoriented. For a short time, it is more difficult for the them to take their intended actions.
+    defense_mod: -2
+    duration: 3 rounds
+    effect: Debuff
+    level: 5
+    line_of_sight: true
+    name: Sonic Blast
+    range: Long
+    rounds: 3
+    school: Air
+    spell_mod: -2
+    target_num: 1
+    target_optional: true
+  #LEVEL 6
   Familiar (Air):
     desc: "A familiar is a spirit associated or allied with a school of magic that has taken residence in a physical vessel with the shape of an animal. It functions as a companion, assistant, and guardian. \n\nFamiliars may be capable of some or all of the following: sharing telepathic or empathic communication, providing knowledge of the arcane, sharing senses, lending physical aid as spies or fighters, delivering spells at a distance of up to three miles."
     effect: Other

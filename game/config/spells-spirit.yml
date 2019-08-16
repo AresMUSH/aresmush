@@ -460,6 +460,20 @@ spells:
     school: Spirit
     target_num: 3
     target_optional: true
+  Telepathic Link:
+    area: 150 mile radius
+    available: true
+    casting_time: 1 round
+    desc: "Form a telepathic link with another sapient being that, while active, allows communication over long distances."
+    duration: 2 hours
+    effect: Psionic
+    level: 5
+    name: Telepathic Link
+    range: Short
+    roll: true
+    school: Spirit
+    target_optional: true
+    target_num: 1
   Familiar (Spirit):
     desc: "A familiar is a spirit associated or allied with a school of magic that has taken residence in a physical vessel with the shape of an animal. It functions as a companion, assistant, and guardian. \n\nFamiliars may be capable of some or all of the following: sharing telepathic or empathic communication, providing knowledge of the arcane, sharing senses, lending physical aid as spies or fighters, delivering spells at a distance of up to three miles."
     effect: Other
