@@ -90,6 +90,7 @@ demographics:
     actors: census played by
     actor: demographic/set played by=
     fullname: demographic/set full name=
+    playedby: demographic/set played by=
   help_text:
     playedby: "%xcplayedby <actor>%xn - The actor/actress depicting your character."
     physique: "%xcphysique <build/body type>%xn - athletic, wiry, slim, pudgy, etc."
@@ -99,6 +100,7 @@ demographics:
     skin: "%xcskin <complexion>%xn"
     birthdate: "%xcbirthdate <mm/dd/yyy>%xn or %xcage <years>%xn"
     callsign: "%xccallsign <callsign>%xn - Non-pilots may leave blank or enter a nickname."
+    fullname: "%xcfullname <name>%xn - Your character's full name."
   census_fields:
   - field: name
     width: 28
