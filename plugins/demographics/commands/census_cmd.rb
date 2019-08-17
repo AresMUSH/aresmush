@@ -3,21 +3,28 @@ module AresMUSH
     class CensusCmd
       include CommandHandler
       
-      attr_accessor :name
+      attr_accessor :name, :page
      
       def parse_args
         self.name = titlecase_arg(cmd.args)
+        self.page = cmd.page
+        if (self.name && self.name =~ /\d$/)
+          matches = /(?<name>.+)(?<page>[\d]+)$/.match(self.name)
+          self.name = matches[:name]
+          self.page = matches[:page].to_i
+        end 
       end
       
       def check_type
         types = Demographics.census_types
+        return nil if !self.name
         return t('demographics.invalid_census_type', :types => types.join(',')) if !types.include?(self.name)
         return nil
       end
       
       def handle   
         chars = Chargen.approved_chars
-        paginator = Paginator.paginate(chars.sort_by { |c| c.name }, cmd.page, 20)
+        paginator = Paginator.paginate(chars.sort_by { |c| c.name }, self.page, 20)
         if (paginator.out_of_bounds?)
           client.emit_failure paginator.out_of_bounds_msg
           return
