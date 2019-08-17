@@ -22,6 +22,7 @@ idle:
   default_contact: Admin
   idle_warn_msg: You haven't played in awhile and your character is in danger of idling
     out.
+  roster_arrival_msg: "%{name} has been claimed off the roster.\n\nPosition: %{position}\n\nRP Hooks:\n%{rp_hooks}"
   roster_welcome_msg: Welcome!  You may wish to check your %xcnotes%xn and web portal
     profile page for any notes left by the prior player.  Type %xhonstage%xn to go
     forth and RP.
