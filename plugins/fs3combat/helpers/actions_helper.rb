@@ -324,7 +324,7 @@ module AresMUSH
       
       if (attack_roll <= 0)
         message = t('fs3combat.attack_missed', :name => combatant.name, :target => target.name, :weapon => weapon)
-      elsif (called_shot && (attacker_net_successes < 2))
+      elsif (called_shot && (attacker_net_successes > 0) && (attacker_net_successes < 2))
         message = t('fs3combat.attack_near_miss', :name => combatant.name, :target => target.name, :weapon => weapon)
       elsif (hit_mount)
         mount_ko = FS3Combat.resolve_mount_ko(target)
