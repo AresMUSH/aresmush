@@ -16,7 +16,7 @@ module AresMUSH
       when 1
         return "%xg@%xn"
       when 2
-        return "%xg@xy@%xn"
+        return "%xg@%xy@%xn"
       when 3
         return "%xg@%xy@%xr@%xn"
       end

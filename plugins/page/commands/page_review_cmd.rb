@@ -22,6 +22,7 @@ module AresMUSH
         end
         
         Page.mark_thread_read(thread, enactor)
+        Login.mark_notices_read(enactor, :pm)
         
         messages = thread.sorted_messages
         total_messages = messages.count

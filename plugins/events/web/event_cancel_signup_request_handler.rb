@@ -6,19 +6,20 @@ module AresMUSH
         comment = request.args[:comment]
         enactor = request.enactor
         
+        error = Website.check_login(request)
+        return error if error
+        
+        cancel_name = request.args[:name] || enactor.name
         event = Event[event_id.to_i]
         if (!event)
           return { error: t('webportal.not_found') }
         end
         
-        error = Website.check_login(request)
-        return error if error
-              
-        signup = event.signups.select { |s| s.character == enactor }.first
-        if (signup)
-          signup.delete
+        error = Events.cancel_signup(event, cancel_name, enactor)
+        if (error)
+          return { error: error }
         end
-        
+           
         {}
       end
     end

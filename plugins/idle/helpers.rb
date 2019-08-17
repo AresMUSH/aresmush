@@ -83,10 +83,14 @@ module AresMUSH
        forum_category = Global.read_config("idle", "arrivals_category")
        return if !forum_category
        return if forum_category.blank?
-     
+
+       arrival_message = Global.read_config("idle", "roster_arrival_msg")
+       arrival_message_args = Chargen.welcome_message_args(model)
+       post_body = arrival_message % arrival_message_args
+      
        Forum.post(forum_category, 
        t('idle.roster_post_subject'), 
-       t('idle.roster_post_body', :name => model.name), 
+       post_body, 
        Game.master.system_character)
          
        return { password: password }

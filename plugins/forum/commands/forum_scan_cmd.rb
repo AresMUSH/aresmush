@@ -21,7 +21,7 @@ module AresMUSH
         #.join(", ")
         #client.emit_ooc text
         
-        list = unread.map { |board, count| "#{board.order}. #{board.name.ljust(25)} #{t('forum.scan_count', :count => count)}" }
+        list = unread.map { |board, count| "#{board.category_index}. #{board.name.ljust(25)} #{t('forum.scan_count', :count => count)}" }
         template = BorderedListTemplate.new list, t('forum.scan_title')
          client.emit template.render
       end

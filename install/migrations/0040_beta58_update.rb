@@ -11,6 +11,7 @@ module AresMUSH
       end
       
       def migrate
+        Global.logger.debug "Clearing old place references."
         Character.all.each { |c| c.update(place: nil) }
       end 
     end
