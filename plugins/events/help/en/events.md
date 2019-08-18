@@ -32,4 +32,5 @@ You can indicate your interest in an event by signing up (aka RSVP-ing) for it. 
 
 `event/signup <#>=<comment>` - Sign up for an event.  If already signed up, this command can be used to change your comment.
 `event/cancel <#>` - Removes your signup.
+`event/cancel <#>=<name>` - Removes someone's signup (organizers only)
 

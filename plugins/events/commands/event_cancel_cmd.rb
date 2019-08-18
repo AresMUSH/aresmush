@@ -4,27 +4,27 @@ module AresMUSH
     class EventCancelCmd
       include CommandHandler
       
-      attr_accessor :num
+      attr_accessor :num, :name
       
       def parse_args
-        self.num = integer_arg(cmd.args)
+        args = cmd.parse_args(ArgParser.arg1_equals_optional_arg2)
+        self.num = integer_arg(args.arg1)
+        self.name = args.arg2 ? titlecase_arg(args.arg2) : enactor_name
       end
       
       def required_args
-        [ self.num ]
+        [ self.num, self.name ]
       end
       
       def handle
         Events.with_an_event(self.num, client, enactor) do |event| 
-          signup = event.signups.select { |s| s.character == enactor }.first
-          if (!signup)
-            client.emit_failure t('events.not_signed_up')
-            return
+          
+          error = Events.cancel_signup(event, self.name, enactor)
+          if (error)
+            client.emit_failure error
+          else
+            client.emit_success t('events.signup_cancelled', :name => self.name)
           end
-          
-          signup.delete
-          client.emit_success t('events.signup_cancelled')
-          
         end
       end
     end
