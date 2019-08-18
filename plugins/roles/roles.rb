@@ -49,5 +49,14 @@ module AresMUSH
       end
       nil
     end
+    
+    def self.get_web_request_handler(request)
+      case request.cmd
+      when "admins"
+        return AdminsRequestHandler
+      else
+        return nil
+      end
+    end
   end
 end

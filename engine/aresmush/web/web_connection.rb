@@ -46,7 +46,7 @@ module AresMUSH
           notification_type: type,
           message: message,
           character: @web_char_id,
-          timestamp: OOCTime.local_long_timestr(nil, Time.now)
+          timestamp: Time.now.rfc2822
         }
       }
       send_data data.to_json.to_s

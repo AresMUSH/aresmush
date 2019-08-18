@@ -714,6 +714,26 @@ module AresMUSH
           expect(result[:message]).to eq "fs3combat.attack_hits_mount"
           expect(result[:hit]).to eq false
         end
+        
+        it "should be a near miss if attacker doesn't get enough success for called shot" do
+          allow(FS3Combat).to receive(:weapon_stat).with("Rifle", "weapon_type") { "Ranged" }
+          allow(FS3Combat).to receive(:roll_attack) { 2 }
+          allow(FS3Combat).to receive(:roll_defense) { 1 }
+          allow(@target).to receive(:is_in_vehicle?) { false }
+          result = FS3Combat.determine_attack_margin(@combatant, @target, 0, "Head")
+          expect(result[:message]).to eq "fs3combat.attack_near_miss"
+          expect(result[:hit]).to eq false
+        end
+        
+        it "should be a clean if called shot but attacker missed" do
+          allow(FS3Combat).to receive(:weapon_stat).with("Rifle", "weapon_type") { "Melee" }
+          allow(FS3Combat).to receive(:roll_attack) { 2 }
+          allow(FS3Combat).to receive(:roll_defense) { 3 }
+          allow(@target).to receive(:is_in_vehicle?) { false }
+          result = FS3Combat.determine_attack_margin(@combatant, @target, 0, "Head")
+          expect(result[:message]).to eq "fs3combat.attack_dodged"
+          expect(result[:hit]).to eq false
+        end
 
         it "should be hit if the attacker wins" do
           allow(FS3Combat).to receive(:roll_attack) { 4 }

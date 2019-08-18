@@ -50,6 +50,8 @@ website:
     - divider: true
     - title: Players
       route: players
+    - title: Game Admin
+      route: admins
     - title: Census
       route: census
     - title: Roster
