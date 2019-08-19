@@ -30,3 +30,4 @@ Note: When creating and editing events, times must be specified in the **server'
 
 `event/signup <#>=<comment>` - Sign up for an event.  If already signed up, this command can be used to change your comment.
 `event/cancel <#>` - Removes your signup.
+`event/cancel <#>=<name>` - Removes someone's signup (organizers only)

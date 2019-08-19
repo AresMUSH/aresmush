@@ -22,5 +22,19 @@ module AresMUSH
       return [] if !role
       Character.all.select { |c| c.roles.include?(role) }
     end
+    
+    def self.admins_by_role
+      admins = {}
+      roles = Global.read_config("roles", "admin_list_roles")
+      roles.each do |r|
+        chars = Roles.chars_with_role(r)
+        
+        # Omit the special system chars.
+        chars.delete Game.master.system_character
+        chars.delete Game.master.master_admin
+        admins[r] = chars
+      end
+      admins
+    end
   end
 end
