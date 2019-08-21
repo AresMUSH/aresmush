@@ -243,7 +243,7 @@ spells:
   #LEVEL 7
   Being of Force:
     area: 15 yard radius
-    available: true
+    available: false
     casting_time: 10 minutes, plus additional rounds for commands
     desc: "The caster creates a being of pure Will. The being is capable of any Will abilities of level 5 or below. It can be actively directed by its master via a short command of up to four words. A command is in effect until countered by the caster or until the being is dispelled or defeated. Giving a new command takes a turn.\n\nWhile active, the being requires a significant amount of Will energy, and its creator casts Will spells with a -1 modifier.\n\n In combat, the being should be represented by an NPC of level five."
     duration: 30 minutes
