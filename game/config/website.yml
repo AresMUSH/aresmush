@@ -4,7 +4,8 @@ website:
   character_gallery_group: Major School
   character_gallery_subgroup: nil
   left_sidebar: false
-  max_upload_size_kb: 5000
+  max_upload_size_kb: 500
+  max_folder_size_kb: 2000
   restricted_pages:
   - home
   - policies
