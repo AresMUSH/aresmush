@@ -5,7 +5,7 @@ website:
   character_gallery_subgroup: nil
   left_sidebar: false
   max_upload_size_kb: 500
-  # max_folder_size_kb: 3000
+  max_folder_size_kb: 3000
   restricted_pages:
   - home
   - policies
