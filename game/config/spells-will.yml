@@ -150,7 +150,7 @@ spells:
     range: Self
     school: Will
   Telekinetic Burst:
-    available: false
+    available: true
     casting_time: 1 round
     desc: The caster lashes out with a blunt telekinetic attack, dealing damage to an opponent. On a hit, the opponent is pushed backwards 1-10 ft.
     effect: Damage

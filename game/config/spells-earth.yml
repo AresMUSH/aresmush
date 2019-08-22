@@ -120,7 +120,7 @@ spells:
     range: Self
     school: Earth
   Diamond Weapon:
-    available: false
+    available: true
     casting_time: 1 round
     desc: Augment one specified pre-existing weapon with diamond, making it far sharper and increasing its penetration.
     duration: 3 hours

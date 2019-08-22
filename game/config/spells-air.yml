@@ -148,7 +148,7 @@ spells:
   #Level 4
   Air Blast:
     area: 5 ft radius
-    available: false
+    available: true
     casting_time: 1 round
     desc: Create a powerful blast of wind that knocks an enemy back 5 yards, stunning them.
     effect: Stun
@@ -178,7 +178,7 @@ spells:
 
   Breathless:
     area: 10 ft radius
-    available: false
+    available: true
     casting_time: 1 round
     desc: 'Draw all oxygen from an area, dousing any flames present and creating oxygen deprivation for up to 3 air-breathing creatures of your choice caught in its range. '
     duration: 1 round
@@ -253,7 +253,7 @@ spells:
     school: Air
   Still Winds:
     area: 15 yard radius
-    available: false
+    available: true
     casting_time: 1 round
     desc: Quiet any wind into complete stillness.
     duration: 1 hour
