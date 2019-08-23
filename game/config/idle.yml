@@ -15,11 +15,9 @@ idle:
   monthly_reminder_cron:
     date:
     - 1
-    - 7
     - 15
-    - 21
     hour:
-    - 15
+    - 01
     minute:
     - 0
   monthly_reminder_title: Idle Sweep
