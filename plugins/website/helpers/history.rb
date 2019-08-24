@@ -4,7 +4,7 @@ module AresMUSH
       changes = Game.master.recent_changes || []
       change_data = { 'type' => type, 
         'data' => data, 
-        'message' => message, 
+        'message' => message.last(50), 
         'author' => author_name, 
         'timestamp' => Time.now 
       }
