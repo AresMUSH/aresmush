@@ -143,7 +143,6 @@ module AresMUSH
       sc = {}
       plugins.each do |p|
         begin
-          plugin_shortcuts = p.shortcuts
           if (p.shortcuts)
             sc.merge! p.shortcuts
           end
@@ -152,6 +151,21 @@ module AresMUSH
         end
       end
       sc
+    end
+    
+    def achievements
+      achieve = {}
+      plugins.each do |p|
+        begin
+          next if !p.respond_to?(:achievements)
+          if (p.achievements)
+            achieve.merge! p.achievements
+          end
+        rescue Exception => ex
+          Global.logger.error "Error parsing achievements: #{p} #{ex}"
+        end
+      end
+      achieve
     end
     
     private    
