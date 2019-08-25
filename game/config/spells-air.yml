@@ -26,7 +26,7 @@ spells:
     target_optional: true
   #Level 2
   Adjust Volume:
-    available: false
+    available: true
     casting_time: 1 round
     desc: "For the duration of the spell, the caster can amplify or decrease the volume of the sound coming from a target. Sounds cannot be made louder than 100 db (a loud vehicle, a train whistle, a hand drill), nor can sounds be made softer than 30 db (a quiet whisper)."
     duration: 1 hour
@@ -91,7 +91,7 @@ spells:
     roll: true
     school: Air
   Electric Surge:
-    available: false
+    available: true
     casting_time: 1 round
     desc: "Start and power or disrupt the operation of any electrical machine or object requiring 1000 watts or less (a powerful desktop computer). Disruption is permanent unless the machine is restarted."
     duration: 30 minutes

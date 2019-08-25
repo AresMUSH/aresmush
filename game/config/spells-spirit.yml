@@ -139,7 +139,7 @@ spells:
     target_optional: true
     weapon: Stun (Spirit)
   Charmed:
-    available: false
+    available: true
     casting_time: 1 round
     desc: Target becomes charmed by the caster and attempts to move toward them. They are neutral toward all parties and will neither aid nor attack while under the spell. The spell is broken if they are hit by an attack.
     effect: Stun

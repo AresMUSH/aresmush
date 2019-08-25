@@ -199,7 +199,7 @@ spells:
     name: Potions (Water)
     school: Water
   Water Whip:
-    available: false
+    available: true
     casting_time: 1 round
     desc: Caster creates a whip out of water, lashing out at a target and doing damage.
     effect: Damage
@@ -270,7 +270,7 @@ spells:
     school: Water
     target_num: 1
   Shatter:
-    available: false
+    available: true
     casting_time: 1 round
     damage_type: Cold
     desc: Ice encases a portion of a target's body completely, cooling it rapidly and doing immense damage. In extreme cases, limbs may freeze completely, or even shatter.

@@ -80,7 +80,7 @@ spells:
     roll: true
     school: Earth
   Stone Fists:
-    available: false
+    available: true
     casting_time: 1 round
     desc: The caster's hands become stone fists capable of inflicting damage.
     duration: 1 round
