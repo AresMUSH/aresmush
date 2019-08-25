@@ -10,7 +10,17 @@ module AresMUSH
     def self.shortcuts
       Global.read_config("scenes", "shortcuts")
     end
- 
+    
+    def self.achievements
+      list = Global.read_config("scenes", "achievements")
+      
+      # Automatically add achievements for the various scene types.
+      Scenes.scene_types.each do |type|
+        list["scene_participant_#{type}"] = { 'type' => 'story', 'message' => "Participated in a #{type} scene." }
+      end
+      list
+    end
+    
     def self.get_cmd_handler(client, cmd, enactor)
       case cmd.root
       when "autospace"

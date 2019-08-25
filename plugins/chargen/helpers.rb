@@ -131,7 +131,7 @@ module AresMUSH
 
       model.update(approval_job: nil)
                       
-      Achievements.award_achievement(model, "created_character", 'story', "Created a character.")
+      Achievements.award_achievement(model, "created_character")
       
       welcome_message = Global.read_config("chargen", "welcome_message")
       welcome_message_args = Chargen.welcome_message_args(model)

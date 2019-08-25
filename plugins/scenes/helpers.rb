@@ -431,9 +431,8 @@ module AresMUSH
     def self.handle_word_count_achievements(char, pose)
       [ 1000, 2000, 5000, 10000, 25000, 50000, 100000, 250000, 500000 ].each do |count|
         pretty_count = count.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse
-        message = "Wrote #{pretty_count} words in scenes."
         if (char.pose_word_count >= count)
-          Achievements.award_achievement(char, "word_count_#{count}", 'story', message)
+          Achievements.award_achievement(char, "word_count", count)
         end
       end
     end
@@ -444,15 +443,13 @@ module AresMUSH
         
       Scenes.scene_types.each do |type|
         if (scenes.any? { |s| s.scene_type == type })
-          message = "Participated in a #{type} scene."
-          Achievements.award_achievement(char, "scene_participant_#{type.downcase}", 'story', message)
+          Achievements.award_achievement(char, "scene_participant_#{type.downcase}")
         end
       end
         
       [ 1, 10, 20, 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000 ].each do |level|
         if ( count >= level )
-          message = "Participated in #{level} #{level == 1 ? 'scene' : 'scenes'}."
-          Achievements.award_achievement(char, "scene_participant_#{level}", 'story', message)
+          Achievements.award_achievement(char, "scene_participant", count)
         end
       end
     end
