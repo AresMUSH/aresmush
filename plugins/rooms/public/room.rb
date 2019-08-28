@@ -11,6 +11,12 @@ module AresMUSH
     set :room_owners, "AresMUSH::Character"
     reference :area, "AresMUSH::Area"
     
+    before_delete :clear_exits
+    
+    def clear_exits
+      self.exits.each { |e| e.delete }
+    end
+    
     def grid_x
       self.room_grid_x
     end
