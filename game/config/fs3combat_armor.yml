@@ -249,6 +249,24 @@ fs3combat:
         Left Foot: 0
         Right Foot: 0
       defense: 1
+    Lynx:
+      description: Wild Shape Lynx
+      is_magic: true
+      protection:
+        Head: 0
+        Neck: 0
+        Chest: 0
+        Abdomen: 0
+        Left Leg: 0
+        Right Leg: 0
+        Groin: 0
+        Left Arm: 0
+        Right Arm: 0
+        Left Hand: 0
+        Right Hand: 0
+        Left Foot: 0
+        Right Foot: 0
+      defense: 2
     Moth:
       description: Wild Shape Moth
       is_magic: true
