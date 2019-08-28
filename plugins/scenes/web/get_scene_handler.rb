@@ -24,6 +24,7 @@ module AresMUSH
           end
           if (enactor)
             scene.mark_read(enactor)
+            Login.mark_notices_read(enactor, :scene, scene.id)
           end
         end
         
