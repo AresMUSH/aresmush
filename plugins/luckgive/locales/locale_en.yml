@@ -3,6 +3,7 @@ en:
   luckgive:
     invalid_name: "%xrCharacter not found.%xn"
     not_enough_luck: "You don't have any luck to give."
+    max_luck: "%{name} already has the maximum amount of luck."
     given_luck: "You have given %{name} a luck point."
     received_luck: "%{from} has given you a luck point."
     luck_record_title: "LUCK GIVEN TO %{name}"
