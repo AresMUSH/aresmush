@@ -344,6 +344,15 @@ spells:
     school: Nature
     range: Self
     weapon: Claws
+  Wild Shape Lynx:
+    available: false
+    armor: Lynx
+    desc: Wild Shape Lynx
+    level: 5
+    name: Wild Shape Lynx
+    roll: true
+    school: Nature
+    weapon: Claws
   Wild Shape Moth:
     available: false
     armor: Moth
