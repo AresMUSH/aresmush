@@ -3,11 +3,24 @@ module AresMUSH
   module Migrations
     class MigrationBeta62Update
       def require_restart
-        false
+        true
       end
       
       def migrate
         
+        Global.logger.debug "FS3 incapable level XP."
+        config = DatabaseMigrator.read_config_file("fs3skills_xp.yml")
+        config['fs3skills']['xp_costs']['action'][0] = 1
+        config = DatabaseMigrator.write_config_file("fs3skills_xp.yml", config)
+               
+        Global.logger.debug "FS3 incapable rename."
+        if (!config['fs3skills']['allow_incapable_action_skills'] )
+          config = DatabaseMigrator.read_config_file("fs3skills_chargen.yml")
+          config['fs3skills']['allow_incapable_action_skills'] = config['fs3skills']['allow_unskilled_action_skills']
+          config['fs3skills'].delete 'allow_unskilled_action_skills'
+          config = DatabaseMigrator.write_config_file("fs3skills_chargen.yml", config)
+        end
+                               
         Global.logger.debug "Achievements."
         config = DatabaseMigrator.read_config_file("achievements.yml")
         if (!config['achievements']['achievements'])
