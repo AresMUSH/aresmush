@@ -14,7 +14,7 @@ module AresMUSH
       def check_errors
         return "What spell do you want to learn?" if !self.spell
         return t('magic.use_school_version') if (self.spell == "Potions" || self.spell == "Familiar")
-        return t('magic.request_spell') if (self.spell == "Natural Weaponry" || self.spell == "Natural Defense" || self.spell == "Wild Shape" || self.spell == "Greater Wild Shape" || self.spell == "Half Shift")
+        return t('magic.request_spell') if (self.spell == "Wild Shape" || self.spell == "Greater Wild Shape" || self.spell == "Half Shift")
         return t('magic.not_spell') if !Magic.is_spell?(self.spell)
         return t('fs3skills.not_enough_xp') if enactor.xp <= 0
         return t('magic.too_many_spells') if Magic.count_spells_total(enactor) >= 30

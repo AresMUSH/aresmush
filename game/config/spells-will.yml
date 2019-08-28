@@ -107,6 +107,7 @@ spells:
     available: true
     casting_time: 1 round
     desc: Subdue an enemy with telekinetic strength, disabling them for one round.
+    duration: 1 round
     effect: Stun
     fs3_attack: true
     is_stun: true
@@ -164,7 +165,7 @@ spells:
     target_optional: true
     weapon: Telekinetic Burst
   Transform Weapon:
-    available: false
+    available: true
     casting_time: 1 round
     desc: Transform any weapon into a more powerful version of itself.
     duration: 3 hours
