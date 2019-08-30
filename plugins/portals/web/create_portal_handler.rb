@@ -74,6 +74,8 @@ module AresMUSH
           end
         end
 
+        Website.add_to_recent_changes('portal', t('portals.portal_created', :name => portal.name), { id: portal.id }, enactor.name)
+
         { id: portal.id }
 
       end

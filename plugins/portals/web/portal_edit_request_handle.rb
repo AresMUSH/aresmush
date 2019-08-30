@@ -70,6 +70,8 @@ module AresMUSH
           portal.update(events: request.args[:events].blank? ? nil : request.args[:events])
           portal.update(society: request.args[:society].blank? ? nil : request.args[:society])
           portal.update(rp_suggestions: request.args[:rp_suggestions].blank? ? nil : request.args[:rp_suggestions])
+          Website.add_to_recent_changes('portal', t('portals.portal_updated', :name => portal.name), { id: portal.id }, enactor.name)
+
           {}
       end
     end

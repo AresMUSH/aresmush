@@ -70,6 +70,8 @@ module AresMUSH
           creature.update(society: request.args[:society].blank? ? nil : request.args[:society])
           creature.update(magical_abilities: request.args[:magical_abilities].blank? ? nil : request.args[:magical_abilities])
           creature.update(events: request.args[:events].blank? ? nil : request.args[:events])
+          Website.add_to_recent_changes('creature', t('creatures.creature_updated', :name => creature.name), { id: creature.id }, enactor.name)
+
           {}
       end
     end

@@ -71,6 +71,8 @@ module AresMUSH
           end
         end
 
+        Website.add_to_recent_changes('creature', t('creatures.creature_created', :name => creature.name), { id: creature.id }, enactor.name)
+
         { id: creature.id }
       end
     end

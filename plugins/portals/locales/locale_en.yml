@@ -1,0 +1,5 @@
+---
+en:
+  portals:
+    portal_created: "%{name} created."
+    portal_updated: "%{name} updated."
