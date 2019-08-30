@@ -2,10 +2,10 @@
 fs3skills:
   max_luck: 6
   luck_for_scene:
-    0: 0.1
-    10: 0.075
-    25: 0.05
-    50: 0.025
+    0: 0.075
+    10: 0.05
+    25: 0.025
+    50: 0.015
   public_sheets: true
   roll_channel: FS3 Rolls
   shortcuts:
