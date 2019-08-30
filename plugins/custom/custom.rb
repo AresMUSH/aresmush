@@ -27,12 +27,12 @@ module AresMUSH
       # end
 
       #Comps
-      case cmd.root
-      when "comp"
-        return CompGiveCmd
-      when "comps"
-        return CompsCmd
-      end
+      # case cmd.root
+      # when "comp"
+      #   return CompGiveCmd
+      # when "comps"
+      #   return CompsCmd
+      # end
 
       #Plots
       case cmd.root
