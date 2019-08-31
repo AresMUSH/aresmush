@@ -21,6 +21,8 @@ module AresMUSH
         return "%xg@%xy@%xr@%xn"
       when 4
         return "%xg@%xy@%xr@%xb@%xn"
+	  when 5
+        return "%xg@%xy@%xr@%xb@%xn"
       end
     end
     
@@ -35,6 +37,8 @@ module AresMUSH
       when 3
         return t('fs3skills.good_rating')
       when 4
+        return t('fs3skills.exceptional_rating')
+	  when 5
         return t('fs3skills.exceptional_rating')
       end
     end
