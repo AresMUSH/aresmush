@@ -73,6 +73,13 @@ module AresMUSH
           "wiki_create" => { 'type' => 'portal', 'message' => "Created a wiki page." },
           "wiki_edit" => { 'type' => 'portal', 'message' => "Edited a wiki page." }
         })
+        
+        if (File.exist(File.join(AresMUSH.game_dir, 'config', 'cookies.yml')))
+          set_achievements('cookies.yml', 'cookies', {
+            "cookie_given" => { 'type' => 'community', 'message' => "Gave a cookie." },
+            "cookie_received" => { 'type' => 'community', 'message' => "Received %{count} cookies." }
+          })
+        end
 
         Character.all.each do |c|
           c.achievements.each do |achievement|
@@ -94,6 +101,12 @@ module AresMUSH
                 Achievements.award_achievement(c, 'scene_participant', count)
                 achievement.delete
               end
+            end
+            
+            if (achievement.name =~ /cookie_received_/)
+              count = achievement.name.split('_').last.to_i
+              Achievements.award_achievement(c, 'cookie_received', count)
+              achievement.delete
             end
           end
         end
