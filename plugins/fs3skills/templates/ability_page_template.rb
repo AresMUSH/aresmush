@@ -35,7 +35,25 @@ module AresMUSH
       def lang_blurb
         FS3Skills.language_blurb
       end
-      
+
+      def languages
+        lines = []
+        column_width = 18
+        items_per_line = 78 / column_width
+        count = 0
+        current_line = ""
+            
+        @data[:skills].each do |i|
+          if (count % items_per_line == 0)
+            lines << current_line
+            current_line = ""
+          end
+        current_line << i['name'].truncate(column_width - 1).ljust(column_width)
+        count = count + 1
+        end
+
+       lines.join "\n"
+      end
     end
   end
 end
