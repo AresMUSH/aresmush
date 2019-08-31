@@ -10,3 +10,7 @@ events:
     - 15
     - 30
     - 45
+  achievements:
+    event_created:
+      type: community
+      message: Scheduled an event.

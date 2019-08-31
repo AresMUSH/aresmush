@@ -71,6 +71,8 @@ website:
       route: fs3combat-gear
     - title: Groups List
       route: groups
+    - title: Achievements
+      route: achievements
     - title: Skill Limits
       route: fs3-limits
     - title: XP Costs
@@ -130,3 +132,10 @@ website:
   website_code_path: "/home/ares/ares-webportal"
   wiki_aliases:
     main: home
+  achievements:
+    wiki_create:
+      type: portal
+      message: Created a wiki page.
+    wiki_edit:
+      type: portal
+      message: Edited a wiki page.
