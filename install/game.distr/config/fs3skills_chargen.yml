@@ -4,7 +4,7 @@ fs3skills:
   free_backgrounds: 6
   free_languages: 3
   max_ap: 40
-  max_attr_rating: 4
+  max_attr_rating: 5
   max_attrs_at_or_above:
     3: 4
     4: 2
