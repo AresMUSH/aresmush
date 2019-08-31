@@ -37,14 +37,13 @@ module AresMUSH
           port: Global.read_config('server', 'port'),
           description: Global.read_config('game', 'description'),
           website_welcome: Website.welcome_text,
-          onlineCount: Global.client_monitor.logged_in.count,
           ictime: ICTime.ic_datestr(ICTime.ictime),
           gcse_search_id: search_id,
           scene_start_date: ICTime.ictime.strftime("%Y-%m-%d"),
           unread_scenes_count: unread_scenes.count,
           date_entry_format: Global.read_config("datetime", 'date_entry_format_help').upcase,
           disabled_plugins: disabled,
-          who_count: Global.client_monitor.logged_in.count,
+          whos_online: Who.web_who_report,
           scene_count: active_scenes.count,
           roster_enabled: Idle.roster_enabled?
         } 
