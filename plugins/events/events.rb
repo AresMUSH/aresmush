@@ -9,7 +9,11 @@ module AresMUSH
     def self.shortcuts
       Global.read_config("events", "shortcuts")
     end
- 
+    
+    def self.achievements
+      Global.read_config('events', 'achievements')
+    end
+    
     def self.get_cmd_handler(client, cmd, enactor)
       case cmd.root
       when "event"

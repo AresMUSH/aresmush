@@ -35,7 +35,7 @@ module AresMUSH
     def rating_name
       case rating
       when 0
-        return t('fs3skills.unskilled_rating')
+        return t('fs3skills.incapable_rating')
       when 1
         return t('fs3skills.everyman_rating')
       when 2
