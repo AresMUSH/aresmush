@@ -44,7 +44,9 @@ module AresMUSH
       if (!scene.invited.include?(char))
         scene.invited.add char
       end
-      Login.emit_ooc_if_logged_in(char, t('scenes.scene_notify_invite', :name => enactor.name, :num => scene.id))        
+      message = t('scenes.scene_notify_invite', :name => enactor.name, :num => scene.id)
+      Login.emit_ooc_if_logged_in(char, message)        
+      Login.notify(char, :scene, message, scene.id)
     end
     
     def self.uninvite_from_scene(scene, char, enactor)
@@ -63,7 +65,9 @@ module AresMUSH
           icdate: ICTime.ictime.strftime("%Y-%m-%d"))
 
       Global.logger.info "Scene #{scene.id} started by #{enactor.name} in #{temp_room ? 'temp room' : enactor.room.name}."
-          
+
+      scene.watchers.add enactor
+                
       if (temp_room)
         room = Scenes.create_scene_temproom(scene)
       else

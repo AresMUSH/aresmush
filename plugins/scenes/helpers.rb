@@ -160,6 +160,12 @@ module AresMUSH
     def self.add_participant(scene, char)
       if (!scene.participants.include?(char))
         scene.participants.add char
+        
+        if (!scene.completed)
+          message = t('scenes.scene_notify_added_to_scene', :num => scene.id)
+          Login.notify(char, :scene, message, scene.id)
+          Login.emit_ooc_if_logged_in char, message
+        end
       end
       
       if (!scene.watchers.include?(char))
@@ -601,7 +607,23 @@ module AresMUSH
         fs3_enabled: FS3Skills.is_enabled?,
         fs3combat_enabled: FS3Combat.is_enabled?
       }
-    end
+    end    
+    
+    def self.build_scene_summary_web_data(scene)
+      {
+        id: scene.id,
+        title: scene.title,
+        summary: Website.format_markdown_for_html(scene.summary),
+        content_warning: scene.content_warning,
+        date_shared: scene.date_shared,
+        location: scene.location,
+        icdate: scene.icdate,
+        likes: scene.likes,
+        participants: scene.participants.to_a.sort_by { |p| p.name }.map { |p| 
+          { name: p.name, id: p.id, icon: Website.icon_for_char(p) }},
+        scene_type: scene.scene_type ? scene.scene_type.titlecase : 'Unknown',
+        }
+      end
     
     def self.build_location_web_data(scene)
       {
