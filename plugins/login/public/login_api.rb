@@ -84,8 +84,8 @@ module AresMUSH
       password
     end
     
-    def self.notify(char, type, message, reference_id, data = "", notify_if_offline = true)
-      unless notify_if_offline
+    def self.notify(char, type, message, reference_id, data = "", notify_if_online = true)
+      unless notify_if_online
         status = Website.activity_status(char)
         return if status == 'game-active' || status == 'web-active'
       end
