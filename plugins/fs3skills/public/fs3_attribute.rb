@@ -20,9 +20,9 @@ module AresMUSH
       when 3
         return "%xg@%xy@%xr@%xn"
       when 4
-        return "%xg@%xy@%xr@%xb@%xn"
+        return "%xg@%xy@%xy@%xy@%xn"
 	  when 5
-        return "%xg@%xy@%xr@%xb@%xy@%xn"
+        return "%xg@%xb@%xb@%xb@%xb@%xn"
       end
     end
     
