@@ -96,3 +96,7 @@ chargen:
     but you can register a preference with your character's 'last will'. You may ask
     to be killed off, or turned into a NPC, or whatever.
   rank_blurb: Military rank.
+  achievements:
+    created_character:
+      type: story
+      message: Created a character.
