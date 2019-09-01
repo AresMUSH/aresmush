@@ -8,14 +8,9 @@ module AresMUSH
       
       def migrate
         
-        Global.logger.debug "FS3 incapable level XP."
-        config = DatabaseMigrator.read_config_file("fs3skills_xp.yml")
-        config['fs3skills']['xp_costs']['action'][0] = 1
-        config = DatabaseMigrator.write_config_file("fs3skills_xp.yml", config)
-               
         Global.logger.debug "FS3 incapable rename."
-        if (!config['fs3skills']['allow_incapable_action_skills'] )
-          config = DatabaseMigrator.read_config_file("fs3skills_chargen.yml")
+        config = DatabaseMigrator.read_config_file("fs3skills_chargen.yml")
+        if (!config['fs3skills']['allow_unskilled_action_skills'] )
           config['fs3skills']['allow_incapable_action_skills'] = config['fs3skills']['allow_unskilled_action_skills']
           config['fs3skills'].delete 'allow_unskilled_action_skills'
           config = DatabaseMigrator.write_config_file("fs3skills_chargen.yml", config)
@@ -74,7 +69,7 @@ module AresMUSH
           "wiki_edit" => { 'type' => 'portal', 'message' => "Edited a wiki page." }
         })
         
-        if (File.exist(File.join(AresMUSH.game_dir, 'config', 'cookies.yml')))
+        if (File.exist?(File.join(AresMUSH.game_path, 'config', 'cookies.yml')))
           set_achievements('cookies.yml', 'cookies', {
             "cookie_given" => { 'type' => 'community', 'message' => "Gave a cookie." },
             "cookie_received" => { 'type' => 'community', 'message' => "Received %{count} cookies." }
