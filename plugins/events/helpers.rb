@@ -48,6 +48,12 @@ module AresMUSH
         signup.update(comment: comment)
       else
         EventSignup.create(event: event, character: char, comment: comment)
+        organizer = event.character
+        if (organizer)
+          message = t('events.signup_added', :title => event.title, :name => char.name)
+          Login.notify(organizer, :event, message, event.id)
+          Login.emit_ooc_if_logged_in organizer, message
+        end
       end
     end
     
@@ -115,7 +121,7 @@ module AresMUSH
     end
     
     def self.handle_event_achievement(char)
-        Achievements.award_achievement(char, "event_created", 'community', "Scheduled an event.")
+        Achievements.award_achievement(char, "event_created")
     end
     
     def self.cancel_signup(event, name, enactor)
@@ -128,7 +134,15 @@ module AresMUSH
         return t('events.not_signed_up', :name => name)
       end
       
+      organizer = event.character
+      if (organizer)
+        message = t('events.signup_removed', :title => event.title, :name => signup.character.name)
+        Login.notify(organizer, :event, message, event.id)
+        Login.emit_ooc_if_logged_in organizer, message
+      end
+      
       signup.delete
+      
       return nil
     end
   end

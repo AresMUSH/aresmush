@@ -5,12 +5,21 @@ module AresMUSH
       return actor.has_permission?("manage_achievements")
     end
     
-    def self.has_achievement?(char, name)
-      char.achievements.any? { |a| a.name == name }
+    def self.all_achievements
+      Global.plugin_manager.achievements
     end
     
-    def self.custom_achievement_data(achievement)
-      data = Global.read_config("achievements", "custom_achievements")
+    def self.has_achievement?(char, name, count = 0)
+      achievement = char.achievements.select { |a| a.name == name }.first
+      return false if !achievement
+      if (count > 0)
+        return achievement.count >= count
+      end
+      return true
+    end
+    
+    def self.achievement_data(achievement)
+      data = Achievements.all_achievements
       data.select { |k, v| k.downcase == achievement.downcase }.values.first
     end
   end  

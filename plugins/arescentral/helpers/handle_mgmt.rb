@@ -60,7 +60,7 @@ module AresMUSH
               character: char)
           char.update(handle: handle)
           
-          Achievements.award_achievement(char, "handle_linked", 'community', "Linked a character to a player handle.")
+          Achievements.award_achievement(char, 'handle_linked')
           return nil
         else
           return t('arescentral.link_failed', :error => response.error_str)

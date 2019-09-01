@@ -23,14 +23,6 @@ module AresMUSH
         expect(PoseFormatter.format("Bob", ";'s cat.")).to eq "cat"
       end
 
-      it "should parse an emit for a string starting with a backslash" do
-        expect(PoseFormatter.format("Bob", "\\Whee")).to eq "Whee"
-      end
-
-      it "should parse an emit for a string starting with a backslash and space" do
-        expect(PoseFormatter.format("Bob", "\\ Whee")).to eq "Whee"
-      end
-      
       it "should default to a say" do
         allow(Locale).to receive(:translate).with("object.say", :name => "Bob", :msg => "Hello.") { "hi" }
         expect(PoseFormatter.format("Bob", "Hello.")).to eq "hi"

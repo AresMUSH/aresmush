@@ -52,19 +52,7 @@ module AresMUSH
         end
         
         {
-           scenes: paginator.page_items.map { |s| {
-                  id: s.id,
-                  title: s.title,
-                  summary: Website.format_markdown_for_html(s.summary),
-                  content_warning: s.content_warning,
-                  location: s.location,
-                  date_shared: s.date_shared,
-                  icdate: s.icdate,
-                  participants: s.participants.to_a.sort_by { |p| p.name }.map { |p| { name: p.name, id: p.id, icon: Website.icon_for_char(p) }},
-                  scene_type: s.scene_type ? s.scene_type.titlecase : 'Unknown',
-                  likes: s.likes
-        
-                }},
+           scenes: paginator.page_items.map { |s| Scenes.build_scene_summary_web_data(s) },
             pages: paginator.total_pages.times.to_a.map { |i| i+1 }
         }
       end

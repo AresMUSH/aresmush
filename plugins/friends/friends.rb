@@ -9,6 +9,10 @@ module AresMUSH
     def self.shortcuts
       Global.read_config("friends", "shortcuts")
     end
+    
+    def self.achievements
+      Global.read_config('friends', 'achievements')
+    end
  
     def self.get_cmd_handler(client, cmd, enactor)
       return nil if !cmd.root_is?("friend")

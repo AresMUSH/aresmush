@@ -60,7 +60,7 @@ module AresMUSH
     def self.get_min_rating(ability_type)
       case ability_type
       when :action
-        if (Global.read_config('fs3skills', 'allow_unskilled_action_skills'))
+        if (Global.read_config('fs3skills', 'allow_incapable_action_skills'))
           min_rating = 0
         else
           min_rating = 1
@@ -101,7 +101,7 @@ module AresMUSH
       char.fs3_languages.each { |s| s.delete }
       char.fs3_advantages.each { |s| s.delete }
         
-      languages = Global.read_config("fs3skills", "starting_languages")
+      languages = Global.read_config("fs3skills", "starting_languages") || []
       if (languages)
         languages.each do |l|
           FS3Skills.set_ability(char, l, 3)
