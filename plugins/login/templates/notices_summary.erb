@@ -1,0 +1,20 @@
+<%= header %>
+<% if motd %>
+%xh<%= t('login.motd_title') %>%xn <%= motd %>
+
+<% end %>
+<%= unread_notices %>
+<% alts.each do |a| %>
+<% if has_alt_notices?(a) %>
+<%= t('login.alt_unread_notices', :name => a.name) %>
+<% end %>
+<% end %>
+<% if approval_notice %>
+
+%xh<%= approval_notice %>%xn
+<% end %>
+<% if reboot_text %>
+%ld
+%xh%xr<%= reboot_text %>%xn
+<% end %>
+<%= footer %>

@@ -27,8 +27,10 @@ module AresMUSH
         
         plot.update(storyteller: storyteller)
         plot.update(summary: request.args[:summary])
+        plot.update(content_warning: request.args[:content_warning])
         plot.update(title: request.args[:title])
         plot.update(description: request.args[:description])
+        plot.update(completed: (request.args[:completed] || "").to_bool)
         {}
       end
     end

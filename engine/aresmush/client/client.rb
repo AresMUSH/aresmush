@@ -63,15 +63,18 @@ module AresMUSH
     end 
     
     def emit_ooc(msg)
-      @connection.send_formatted "%xc%% #{msg}%xn", color_mode, ascii_mode, screen_reader
+      prefix = screen_reader ? "#{t('global.system')}:" : "%%" 
+      @connection.send_formatted "%xc#{prefix} #{msg}%xn", color_mode, ascii_mode, screen_reader
     end
 
     def emit_success(msg)
-      @connection.send_formatted "%xg%% #{msg}%xn", color_mode, ascii_mode, screen_reader
+      prefix = screen_reader ? "#{t('global.system')}:" : "%%" 
+      @connection.send_formatted "%xg#{prefix} #{msg}%xn", color_mode, ascii_mode, screen_reader
     end
 
     def emit_failure(msg)
-      @connection.send_formatted "%xr%% #{msg}%xn", color_mode, ascii_mode, screen_reader
+      prefix = screen_reader ? "#{t('global.system')}:" : "%%" 
+      @connection.send_formatted "%xr#{prefix} #{msg}%xn", color_mode, ascii_mode, screen_reader
     end
     
     def emit_raw(msg)

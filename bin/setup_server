@@ -40,7 +40,7 @@ apt-get install -y ruby-bundler
 # #########################################################################################
 
 echo -e "${ARES_INSTALL_TEXT} Need ruby dev for local gems."
-apt-get install -y ruby-all-dev
+apt-get install -y ruby-dev
 
 # #########################################################################################
 

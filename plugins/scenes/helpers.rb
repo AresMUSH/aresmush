@@ -7,10 +7,12 @@ module AresMUSH
       Global.client_monitor.notify_web_clients(:new_scene_activity, web_msg) do |char|
         Scenes.can_read_scene?(char, scene) && Scenes.is_watching?(scene, char)
       end
-      message = t('scenes.new_scene_activity', :id => scene.id)
-      scene.watchers.each do |w|
-        if (last_posed != w.name)
-          Login.notify(w, :scene, message, scene.id)
+      if (activity_type =~ /pose/)
+        message = t('scenes.new_scene_activity', :id => scene.id)
+        scene.watchers.each do |w|
+          if (last_posed != w.name)
+            Login.notify(w, :scene, message, scene.id, "", false)
+          end
         end
       end
     end
@@ -158,6 +160,12 @@ module AresMUSH
     def self.add_participant(scene, char)
       if (!scene.participants.include?(char))
         scene.participants.add char
+        
+        if (!scene.completed)
+          message = t('scenes.scene_notify_added_to_scene', :num => scene.id)
+          Login.notify(char, :scene, message, scene.id)
+          Login.emit_ooc_if_logged_in char, message
+        end
       end
       
       if (!scene.watchers.include?(char))
@@ -314,7 +322,7 @@ module AresMUSH
       room.characters.each do |char|
         client = Login.find_client(char)
         next if !client
-        client.emit Scenes.custom_format(formatted_pose, char, enactor, is_emit, is_ooc, place_name)
+        client.emit Scenes.custom_format(formatted_pose, room, char, enactor, is_emit, is_ooc, place_name)
       end
 
       Global.dispatcher.queue_event PoseEvent.new(enactor, pose, is_emit, is_ooc, system_pose, room, place_name)
@@ -386,17 +394,17 @@ module AresMUSH
       colored_pose
     end
     
-    def self.format_for_place(enactor, char, pose, is_ooc, place_name = nil)
+    def self.format_for_place(room, enactor, char, pose, is_ooc, place_name = nil)
       # Override char's current place.
       
       if (!place_name)
-        if (!enactor.place || is_ooc)
+        if (!enactor.place(room) || is_ooc)
           return pose
         end
-        place_name = enactor.place.name
+        place_name = enactor.place_name(room)
       end
       
-      same_place = (char.place ? char.place.name : nil) == place_name
+      same_place = (char.place(room) ? char.place(room).name : nil) == place_name
       place_title = Places.place_title(place_name, same_place)
       place_prefix = Places.place_prefix(same_place)
       
@@ -406,14 +414,14 @@ module AresMUSH
       
       "#{place_title}#{pose}"
     end
-    
-    def self.custom_format(pose, char, enactor, is_emit = false, is_ooc = false, place_name = nil)
+
+    def self.custom_format(pose, room, char, enactor, is_emit = false, is_ooc = false, place_name = nil)
       nospoof = ""
       if (is_emit && char.pose_nospoof)
         nospoof = "%xc%% #{t('scenes.emit_nospoof_from', :name => enactor.name)}%xn%R"
       end
       
-      formatted_pose = Scenes.format_for_place(enactor, char, pose, is_ooc, place_name)
+      formatted_pose = Scenes.format_for_place(room, enactor, char, pose, is_ooc, place_name)
       formatted_pose = Scenes.format_quote_color(formatted_pose, char, is_ooc)
             
       autospace = Scenes.format_autospace(enactor, is_ooc ? char.page_autospace : char.pose_autospace)
@@ -429,28 +437,25 @@ module AresMUSH
     def self.handle_word_count_achievements(char, pose)
       [ 1000, 2000, 5000, 10000, 25000, 50000, 100000, 250000, 500000 ].each do |count|
         pretty_count = count.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse
-        message = "Wrote #{pretty_count} words in scenes."
         if (char.pose_word_count >= count)
-          Achievements.award_achievement(char, "word_count_#{count}", 'story', message)
+          Achievements.award_achievement(char, "word_count", count)
         end
       end
     end
     
     def self.handle_scene_participation_achievement(char)
-      scenes = char.scenes_starring
+      scenes = Scene.all.select { |s| s.completed && s.participants.include?(char) }
       count = scenes.count
         
       Scenes.scene_types.each do |type|
         if (scenes.any? { |s| s.scene_type == type })
-          message = "Participated in a #{type} scene."
-          Achievements.award_achievement(char, "scene_participant_#{type.downcase}", 'story', message)
+          Achievements.award_achievement(char, "scene_participant_#{type.downcase}")
         end
       end
         
       [ 1, 10, 20, 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000 ].each do |level|
         if ( count >= level )
-          message = "Participated in #{level} #{level == 1 ? 'scene' : 'scenes'}."
-          Achievements.award_achievement(char, "scene_participant_#{level}", 'story', message)
+          Achievements.award_achievement(char, "scene_participant", count)
         end
       end
     end
@@ -472,6 +477,7 @@ module AresMUSH
       scenes = char.read_scenes || []
       scenes << scene.id.to_s
       char.update(read_scenes: scenes)
+      Login.mark_notices_read(char, :scene, scene.id)
     end
     
     def self.mark_unread(scene, except_for_char = nil)
@@ -583,7 +589,8 @@ module AresMUSH
         title: scene.title,
         location: Scenes.build_location_web_data(scene),
         completed: scene.completed,
-        summary: scene.summary,
+        summary: Website.format_markdown_for_html(scene.summary),
+        content_warning: scene.content_warning,
         tags: scene.tags,
         icdate: scene.icdate,
         is_private: scene.private_scene,
@@ -600,7 +607,23 @@ module AresMUSH
         fs3_enabled: FS3Skills.is_enabled?,
         fs3combat_enabled: FS3Combat.is_enabled?
       }
-    end
+    end    
+    
+    def self.build_scene_summary_web_data(scene)
+      {
+        id: scene.id,
+        title: scene.title,
+        summary: Website.format_markdown_for_html(scene.summary),
+        content_warning: scene.content_warning,
+        date_shared: scene.date_shared,
+        location: scene.location,
+        icdate: scene.icdate,
+        likes: scene.likes,
+        participants: scene.participants.to_a.sort_by { |p| p.name }.map { |p| 
+          { name: p.name, id: p.id, icon: Website.icon_for_char(p) }},
+        scene_type: scene.scene_type ? scene.scene_type.titlecase : 'Unknown',
+        }
+      end
     
     def self.build_location_web_data(scene)
       {
@@ -631,12 +654,58 @@ module AresMUSH
     
     def self.add_recent_scene(scene)
       recent = Game.master.recent_scenes
-      recent.unshift(scene.id)
+      recent.unshift("#{scene.id}")
       recent = recent.uniq
       if (recent.count > 30)
         recent.pop
       end
       Game.master.update(recent_scenes: recent)
+    end
+    
+    def self.parse_web_pose(pose, enactor, pose_type)
+      is_setpose = pose_type == 'setpose'
+      is_gmpose = pose_type == 'gm'
+      is_ooc = pose_type == 'ooc'
+      
+      command = ((pose.split(" ").first) || "").downcase
+      is_emit = false
+      if (command == "ooc")
+        is_ooc = true
+        pose = pose.after(" ")
+        pose = PoseFormatter.format(enactor.name, pose)
+      elsif (command == "scene/set")
+        is_setpose = true
+        is_emit = true
+        pose = pose.after(" ")
+      elsif (command == "emit/set") 
+        is_setpose = true
+        is_emit = true
+        pose = pose.after(" ")
+      elsif (command == "emit/gm")
+        is_gmpose = true
+        is_emit = true
+        pose = pose.after(" ")
+      elsif (command == "emit")
+        is_emit = true
+        pose = pose.after(" ")
+      else
+        markers = PoseFormatter.pose_markers
+        markers.delete "\""
+        markers.delete "'"
+        if (pose.start_with?(*markers) || is_ooc)
+          pose = PoseFormatter.format(enactor.name, pose)
+        else 
+          is_emit = true
+        end
+      end
+      
+      {
+        pose: pose,
+        is_emit: is_emit,
+        is_ooc: is_ooc,
+        is_setpose: is_setpose,
+        is_gmpose: is_gmpose
+      }
     end
   end
 end

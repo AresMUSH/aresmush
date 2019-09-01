@@ -8,6 +8,7 @@ module AresMUSH
         return error if error
         
         my_scenes = Scene.all.select { |s| !s.completed && Scenes.is_watching?(s, enactor) }.sort_by { |s| s.id }
+        Login.mark_notices_read(enactor, :scene)
         
         my_scenes.map { |s|
           Scenes.build_live_scene_web_data(s, enactor)

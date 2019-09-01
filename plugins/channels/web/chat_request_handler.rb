@@ -14,7 +14,8 @@ module AresMUSH
           key: c.name.downcase,
           title: c.name,
           enabled: Channels.is_on_channel?(enactor, c),
-          allowed: Channels.can_use_channel(enactor, c),
+          can_join: Channels.can_join_channel?(enactor, c),
+          can_talk: Channels.can_talk_on_channel?(enactor, c),
           muted: Channels.is_muted?(enactor, c),
           last_activity: c.last_activity,
           is_page: false,
@@ -39,11 +40,12 @@ module AresMUSH
                key: t.id,
                title: t.title_without_viewer(enactor),
                enabled: true,
-               allowed: true,
+               can_join: true,
+               can_talk: true,
                muted: false,
                is_page: true,
                is_unread: Page.is_thread_unread?(t, enactor),
-               last_activity: t.sorted_messages.to_a[-1].created_at,
+               last_activity: t.last_activity,
                who: t.characters.map { |c| {
                 name: c.name,
                 ooc_name: c.ooc_name,
@@ -57,6 +59,8 @@ module AresMUSH
                   }}
             }
           end
+
+        Login.mark_notices_read(enactor, :pm)
                  
         channels
       end

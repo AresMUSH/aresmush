@@ -4,7 +4,8 @@ website:
   character_gallery_group: Faction
   character_gallery_subgroup: Position
   left_sidebar: false
-  max_upload_size_kb: 5000
+  max_upload_size_kb: 300
+  max_folder_size_kb: 2000
   restricted_pages:
   - home
   sitemap_update_cron:
@@ -49,6 +50,8 @@ website:
     - divider: true
     - title: Players
       route: players
+    - title: Game Admin
+      route: admins
     - title: Census
       route: census
     - title: Roster
@@ -68,6 +71,8 @@ website:
       route: fs3combat-gear
     - title: Groups List
       route: groups
+    - title: Achievements
+      route: achievements
     - title: Skill Limits
       route: fs3-limits
     - title: XP Costs
@@ -102,12 +107,14 @@ website:
     - title: Files
       route: files
     - id: markdown
-      title: Markdown Reference
+      title: Editing Help
       route: help-topic
   - title: Help
     menu:
     - title: Requests
       route: jobs
+    - title: Account
+      route: account
     - divider: true
     - title: Game Help
       route: help
@@ -125,3 +132,10 @@ website:
   website_code_path: "/home/ares/ares-webportal"
   wiki_aliases:
     main: home
+  achievements:
+    wiki_create:
+      type: portal
+      message: Created a wiki page.
+    wiki_edit:
+      type: portal
+      message: Edited a wiki page.

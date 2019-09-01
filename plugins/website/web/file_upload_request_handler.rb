@@ -36,8 +36,8 @@ module AresMUSH
         end
         
         max_upload_kb = Global.read_config("website", "max_upload_size_kb")
-        if (size_kb > max_upload_kb)
-          return { error: t('webportal.max_upload_size', :kb => max_upload_kb) }
+        if (size_kb > max_upload_kb && !is_wiki_admin)
+          return { error: t('webportal.max_upload_kb', :kb => max_upload_kb) }
         end
         
         name = AresMUSH::Website::FilenameSanitizer.sanitize name
@@ -47,6 +47,13 @@ module AresMUSH
         if (!Dir.exist?(folder_path))
           Dir.mkdir(folder_path)
         end
+        
+        folder_size_kb = Website.folder_size_kb(folder_path)
+        max_folder_kb = Global.read_config("website", "max_folder_size_kb")
+        if (folder_size_kb + size_kb > max_folder_kb && !is_wiki_admin)
+          return { error: t('webportal.max_folder_size_kb', :kb => max_folder_kb) }
+        end
+        
         
         path = File.join(folder_path, name)
         

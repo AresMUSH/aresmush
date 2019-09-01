@@ -84,7 +84,7 @@ fs3combat:
       penetration: 8
       weapon_type: Explosive
       is_automatic: false
-      ammo: 4
+      Ammo: 4
       recoil: 0
       damage_type: Physical
       accuracy: 0

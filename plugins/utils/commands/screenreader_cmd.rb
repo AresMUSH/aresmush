@@ -20,6 +20,7 @@ module AresMUSH
       def handle
         enactor.update(screen_reader: self.option.is_on?)
         client.emit_success t('utils.screen_reader_set', :option => self.option)
+        AresCentral.warn_if_setting_linked_preference(client, enactor)
       end
     end
   end

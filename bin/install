@@ -50,13 +50,14 @@ rvm use ruby-2.6.3
 echo -e "${ARES_INSTALL_TEXT} Ensure proper Ruby version used at startup."
 
 echo "source /home/ares/.rvm/scripts/rvm" >> "${HOME_DIR}/.profile"
-echo "rvm use 2.6.0" >> "${HOME_DIR}/.profile"
+echo "rvm use 2.6.3" >> "${HOME_DIR}/.profile"
 
 # #########################################################################################
 
 echo -e "${ARES_INSTALL_TEXT} Install gem bundler for dependencies."
 
 gem install bundler
+gem install rake
 
 # #########################################################################################
 

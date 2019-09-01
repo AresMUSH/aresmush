@@ -42,7 +42,9 @@ module AresMUSH
           relationships[name] = {
             'relationship' => Website.format_input_for_mush(data['text']),
             'order' => data['order'].blank? ? nil : data['order'].to_i,
-            'category' => data['category'].blank? ? "Associates" : data['category'].titleize
+            'category' => data['category'].blank? ? "Associates" : data['category'].titleize,
+            'is_npc' => (data['is_npc'] || "").to_bool,
+            'npc_image' => data['npc_image'].blank? ? nil : data['npc_image']
             }
         end
         
@@ -51,6 +53,8 @@ module AresMUSH
         char.update(bg_shared: request.args[:bg_shared].to_bool)
         char.update(idle_lastwill: Website.format_input_for_mush(request.args[:lastwill]))
         
+        relation_category_order = (request.args[:relationships_category_order] || "").split(',')
+        char.update(relationships_category_order: relation_category_order)
         
         ## DO PROFILE LAST SO IT TRIGGERS THE SOURCE HISTORY UPDATE
         profile = {}
@@ -59,7 +63,7 @@ module AresMUSH
         end
         char.set_profile(profile, enactor)
         
-        Achievements.award_achievement(enactor, "profile_edit", 'portal', "Edited your character profile.")
+        Achievements.award_achievement(enactor, "profile_edit")
         
         
         {    

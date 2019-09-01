@@ -3,7 +3,16 @@ module AresMUSH
     
     def self.is_restricted_wiki_page?(page)
       restricted_pages = Global.read_config("website", "restricted_pages") || ['home']
-      restricted_pages.map { |p| WikiPage.sanitize_page_name(p.downcase) }.include?(page.name.downcase)
+      restricted_pages.each do |p|
+        if (p =~ /.+\:\*/) 
+          category = WikiPage.sanitize_page_name(p.before(':'))
+          return true if category == page.category
+        else
+          restrict = WikiPage.sanitize_page_name(p)
+          return true if restrict == page.name
+        end
+      end
+      false
     end
     
     def self.can_manage_wiki?(actor)
@@ -41,13 +50,25 @@ module AresMUSH
     end
     
     def self.deploy_portal(client = nil)
+      Website.redeploy_portal(nil, false)
+    end
+    
+    def self.redeploy_portal(enactor, from_web)
       Global.dispatcher.spawn("Deploying website", nil) do
         Website.rebuild_css
         install_path = Global.read_config('website', 'website_code_path')
         Dir.chdir(install_path) do
+
           output = `bin/deploy 2>&1`
           Global.logger.info "Deployed web portal: #{output}"
-          client.emit_ooc t('webportal.portal_deployed', :output => output) if client
+          message = t('webportal.portal_deployed', :output => output)
+          if (from_web)
+            Global.client_monitor.notify_web_clients(:manage_activity, Website.format_markdown_for_html(message)) do |c|
+               c && c == enactor
+            end
+          elsif (enactor) # Enactor should always be specified except in the backwards-compatibility example.
+            Login.emit_ooc_if_logged_in enactor, message
+          end
         end
       end
     end
@@ -69,5 +90,16 @@ module AresMUSH
       wiki_admin || own_folder
     end
     
+    def self.folder_size_kb(folder)
+      files = Dir["#{folder}/*"].select { |f| File.file?(f) }
+      files.sum { |f| File.size(f) } / 1000
+    end
+    
+    def self.webportal_version
+      install_path = Global.read_config('website', 'website_code_path')
+      version_path = File.join(install_path, 'public', 'scripts', 'aresweb_version.js')
+      version = File.read(version_path)
+      version = version.gsub('var aresweb_version = "', '').gsub('";', '').chomp
+    end
   end
 end

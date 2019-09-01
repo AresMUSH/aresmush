@@ -23,6 +23,7 @@ module AresMUSH
               char.update(pose_autospace: response.data["autospace"])
               char.update(timezone: response.data["timezone"])
               char.update(ascii_mode_enabled: response.data["ascii_only"])
+              char.update(screen_reader: response.data["screen_reader"])
               char.handle.update(friends: response.data["friends"])
               return nil
             else
@@ -59,7 +60,7 @@ module AresMUSH
               character: char)
           char.update(handle: handle)
           
-          Achievements.award_achievement(char, "handle_linked", 'community', "Linked a character to a player handle.")
+          Achievements.award_achievement(char, 'handle_linked')
           return nil
         else
           return t('arescentral.link_failed', :error => response.error_str)

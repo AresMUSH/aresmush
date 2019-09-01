@@ -26,7 +26,8 @@ module AresMUSH
           title: request.args[:title],
           storyteller: storyteller,
           description: request.args[:description],
-          summary: request.args[:summary]
+          summary: request.args[:summary],
+          content_warning: request.args[:content_warning]
         )
               
         Global.logger.debug "Plot #{plot.id} created by #{enactor.name}."

@@ -2,10 +2,11 @@ module AresMUSH
   module FS3Skills
     class SheetTemplate < ErbTemplateRenderer
       
-      attr_accessor :char
+      attr_accessor :char, :client
       
       def initialize(char, client)
         @char = char
+        @client = client
         super File.dirname(__FILE__) + "/sheet.erb"
       end
      
@@ -78,7 +79,7 @@ module AresMUSH
         name = "%xh#{a.name}:%xn"
         linebreak = i % 2 == 1 ? "" : "%r"
         rating_text = "#{a.rating_name}"
-        "#{linebreak}#{left(name, 16)} #{left(rating_text,20)}"
+        "#{linebreak}#{left(name, 14)} #{left(a.print_rating, 8)} #{left(rating_text,16)}"
       end
       
       def format_skill(s, i, show_linked_attr = false)
@@ -86,12 +87,16 @@ module AresMUSH
         linked_attr = show_linked_attr ? print_linked_attr(s) : ""
         linebreak = i % 2 == 1 ? "" : "%r"
         rating_text = "#{s.rating_name}#{linked_attr}"
-        "#{linebreak}#{left(name, 16)} #{left(rating_text, 20)}"
+        "#{linebreak}#{left(name, 14)} #{left(s.print_rating, 8)} #{left(rating_text, 16)}"
       end
       
       def print_linked_attr(skill)
         apt = FS3Skills.get_linked_attr(skill.name)
         !apt ? "" : " %xh%xx(#{apt[0..2].upcase})%xn"
+      end
+      
+      def section_line(title)
+        @client.screen_reader ? title : line_with_text(title)
       end
     end
   end

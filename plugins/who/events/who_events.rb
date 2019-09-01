@@ -10,8 +10,6 @@ module AresMUSH
           game.update(online_record: count)
           Global.logger.info("Online Record Now: #{count}")
           
-          Achievements.award_achievement(char, "who_record_broken", 'community', "Broke the online record.")
-          
           Channels.announce_notification t('who.new_online_record', :count => count)
         end
       end      

@@ -6,5 +6,6 @@ module AresMUSH
     attribute :type
     attribute :name
     attribute :message
+    attribute :count, :type => DataType::Integer
   end
 end

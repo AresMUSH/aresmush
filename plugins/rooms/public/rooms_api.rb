@@ -5,7 +5,7 @@ module AresMUSH
       current_room = char.room
       if (current_room)
         Status.update_last_ic_location(char)
-        Places.clear_place(char)
+        Places.clear_place(char, current_room)
       end
       
       if (exit_name)

@@ -8,7 +8,7 @@ en:
         left_place: "%{name} leaves place %{place_name}."
         not_in_place: "You are not at a place."
         renamed_place: "%{name} renames %{old_name} to %{new_name}."
-        place_deleted: "%{name} has deleted place %{name}."
+        place_deleted: "%{name} has deleted place %{place_name}."
         place_already_exists: "That place already exists."
         place_title: "At %{place_name}"
         cant_change_places_in_another_room: "You can only join places when your character (in-game) is in the scene's room."

@@ -77,8 +77,13 @@ module AresMUSH
       `#{upgrade_script_path} 2>&1`
     end
     
-    def self.finish_upgrade
+    def self.finish_upgrade(enactor, from_web)
       Global.logger.debug "Finishing upgrade."
+      
+      if (AresMUSH.version != Website.webportal_version)
+        return t('manage.mismatched_versions')
+      end
+      
       Manage.load_all
       
       error = Manage.run_migrations
@@ -87,8 +92,8 @@ module AresMUSH
       end
       
       Global.config_reader.load_game_config
-      Website.deploy_portal
-      return nil
+      Website.redeploy_portal(enactor, from_web)
+      return t('webportal.redeploying_website')
     end
     
     def self.load_all

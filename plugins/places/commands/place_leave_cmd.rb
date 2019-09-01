@@ -3,15 +3,15 @@ module AresMUSH
     class PlaceLeaveCmd
       include CommandHandler
       
-      def check_in_place
-        return t('places.not_in_place') if !enactor.place
-        return nil
-      end
-      
       def handle
-        place_name = enactor.place.name
-        enactor.update(place: nil)
-        enactor_room.emit_ooc t('places.left_place', :name => enactor.name, :place_name => place_name)
+        place = enactor.place(enactor_room)
+        
+        if (!place)
+          client.emit_failure t('places.not_in_place')
+          return
+        end
+        
+        Places.leave_place(enactor, place)
       end
     end
   end

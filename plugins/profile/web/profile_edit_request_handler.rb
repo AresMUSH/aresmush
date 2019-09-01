@@ -40,11 +40,14 @@ module AresMUSH
           }
         }
         
-        relationships = char.relationships.sort.each_with_index.map { |(name, data), index| {
+        relationships = char.relationships.sort_by { |name, data| [ data['category'], data['order'] || 99, name ] }
+          .each_with_index.map { |(name, data), index| {
           name: name,
           category: data['category'],
           key: index,
           order: data['order'],
+          is_npc: data['is_npc'],
+          npc_image: data['npc_image'],
           text: Website.format_input_for_html(data['relationship'])
         }}
         
@@ -60,6 +63,7 @@ module AresMUSH
           desc: Website.format_input_for_html(char.description),
           shortdesc: char.shortdesc ? char.shortdesc : '',
           relationships: relationships,
+          relationships_category_order: char.relationships_category_order.join(","),
           profile: profile,
           gallery: (char.profile_gallery || {}).map { |f| Website.get_file_info(f) },
           tags: char.profile_tags,

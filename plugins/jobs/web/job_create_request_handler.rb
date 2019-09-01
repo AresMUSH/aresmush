@@ -42,6 +42,9 @@ module AresMUSH
             job.participants.add participant
           end
         end
+        if (submitter_name && submitter.name != enactor.name)
+          Jobs.notify_for_query(submitter, job)
+        end
         
         {
           id: job.id

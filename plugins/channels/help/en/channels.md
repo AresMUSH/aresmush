@@ -16,6 +16,7 @@ Channels are public forums for out-of-character communication.  Each game will h
 You can see available channels and their descriptions using the `channels` command.  This also tells you at a glance what channels you've joined and what commands are used to talk on them, which we'll discuss in a moment.
 
 `channels` - Lists channels and their descriptions
+`channel/info <name>` - Shows detailed info for a channel.
 
 ## Joining and Leaving Channels
 

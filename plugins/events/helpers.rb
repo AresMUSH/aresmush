@@ -48,18 +48,23 @@ module AresMUSH
         signup.update(comment: comment)
       else
         EventSignup.create(event: event, character: char, comment: comment)
+        organizer = event.character
+        if (organizer)
+          message = t('events.signup_added', :title => event.title, :name => char.name)
+          Login.notify(organizer, :event, message, event.id)
+          Login.emit_ooc_if_logged_in organizer, message
+        end
       end
     end
     
-    def self.create_event(enactor, title, datetime, desc)
+    def self.create_event(enactor, title, datetime, desc, warning = nil)
       event = Event.create(title: title, 
       starts: datetime, 
       description: desc,
-      character: enactor)
+      character: enactor,
+      content_warning: warning)
         
-      Website.add_to_recent_changes('event', t('events.event_created_change', :title => title), { id: event.id }, enactor.name)
-      
-      Channels.announce_notification(t('events.event_created_notification', :name => enactor.name, :title => title))
+      Channels.announce_notification(t('events.event_created_notification', :title => title))
       Events.events_updated
       Events.handle_event_achievement(enactor)
       return event
@@ -67,30 +72,28 @@ module AresMUSH
    
     def self.delete_event(event, enactor)
       title = event.title
-      message = t('events.event_deleted_notification', :name => enactor.name, :title => title)
+      message = t('events.event_deleted_notification', :title => title)
       event.signups.each do |s|
-        Login.notify(s.character, :event_deleted, message, "")
+        Login.notify(s.character, :event, message, event.id)
       end
       Channels.announce_notification(message)
-      Website.add_to_recent_changes('event', t('events.event_deleted_change', :title => title), { id: event.id }, enactor.name)
-      
+
       event.delete
       Events.events_updated
     end
    
-    def self.update_event(event, enactor, title, datetime, desc)
+    def self.update_event(event, enactor, title, datetime, desc, warning = nil)
       event.update(title: title)
       event.update(starts: datetime)
       event.update(description: desc)
+      event.update(content_warning: warning)
      
       Events.events_updated
-      message = t('events.event_updated_notification', :name => enactor.name, :title => title)
+      message = t('events.event_updated_notification', :title => title)
       event.signups.each do |s|
-        Login.notify(s.character, :event, mesage, event.id)
+        Login.notify(s.character, :event, message, event.id)
       end
       Channels.announce_notification(message)
-      Website.add_to_recent_changes('event', t('events.event_updated_change', :title => title), { id: event.id }, enactor.name)
-      
     end
    
     def self.format_timestamp(time)
@@ -118,7 +121,29 @@ module AresMUSH
     end
     
     def self.handle_event_achievement(char)
-        Achievements.award_achievement(char, "event_created", 'community', "Scheduled an event.")
+        Achievements.award_achievement(char, "event_created")
+    end
+    
+    def self.cancel_signup(event, name, enactor)
+      if (name != enactor.name && !Events.can_manage_event(enactor, event))
+        return t('dispatcher.not_allowed')
+      end
+      
+      signup = event.signups.select { |s| s.character.name == name }.first
+      if (!signup)
+        return t('events.not_signed_up', :name => name)
+      end
+      
+      organizer = event.character
+      if (organizer)
+        message = t('events.signup_removed', :title => event.title, :name => signup.character.name)
+        Login.notify(organizer, :event, message, event.id)
+        Login.emit_ooc_if_logged_in organizer, message
+      end
+      
+      signup.delete
+      
+      return nil
     end
   end
 end

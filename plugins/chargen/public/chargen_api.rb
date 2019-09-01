@@ -87,5 +87,14 @@ module AresMUSH
     def self.approved_chars
       Idle.active_chars.select { |c| c.is_approved? }
     end
+    
+    def self.welcome_message_args(model)
+      args = { name: model.name, rp_hooks: model.rp_hooks || t('global.none') }
+      
+      Demographics.all_groups.keys.each do |k|
+        args[k.downcase.to_sym] = model.group(k)
+      end
+      args
+    end
   end
 end

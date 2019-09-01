@@ -5,31 +5,38 @@ module AresMUSH
       !Global.plugin_manager.is_disabled?("achievements")
     end
     
-    def self.award_achievement(char, name, type = nil, message = nil)
-      return if char.is_admin? || char.is_npc? || char.is_guest?
+    def self.award_achievement(char, name, count = 0)
+      return nil if !Achievements.is_enabled?
+      return nil if char.is_admin? || char.is_npc? || char.is_guest?
       
-      achievement_data = Achievements.custom_achievement_data(name)
-      if (achievement_data)
-        if (!type)
-          type = achievement_data['type']
-        end
-        if (!message)
-          message = achievement_data['message']
-        end
+      achievement_details = Achievements.achievement_data(name)          
+      if (!achievement_details)
+        return t('achievements.invalid_achievement')
       end
+      
+      type = achievement_details['type']
+      message = achievement_details['message']
       
       if (!type || !message)
         raise "Invalid achievement details.  Missing name or message."
       end
       
-      if (Achievements.is_enabled? && !Achievements.has_achievement?(char, name))
-        Achievement.create(character: char, type: type, name: name, message: message)
+      if (!Achievements.has_achievement?(char, name, count))
+        message = message % { count: count }
+        achievement = char.achievements.select { |a| a.name == name }.first
+        
+        if (achievement)
+          achievement.update(count: count, message: message)
+        else
+          Achievement.create(character: char, type: type, name: name, message: message, count: count)
+        end
 
         Mail.send_mail([char.name], t('achievements.achievement_mail_subject'), t('achievements.achievement_mail_message', :message => message), nil)          
         
         notification = t('achievements.achievement_earned', :name => char.name, :message => message)
         Channels.announce_notification(notification)
       end
+      return nil
     end
     
     def self.achievements_list(char)
@@ -54,7 +61,7 @@ module AresMUSH
           end
         end
       end
-      data.sort_by { |name, data| data[:type] }
+      data.sort_by { |name, data| [ data[:type], data[:message] ] }
     end
    
     def self.build_achievements(player)

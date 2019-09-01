@@ -51,9 +51,25 @@ module AresMUSH
           return NoticeMotdCmd
         end
       when "notices"
-        return NoticesCmd
+        case cmd.switch
+        when "catchup"
+          return NoticesCatchupCmd
+        else
+          return NoticesCmd
+        end
       when "onconnect"
-        return OnConnectCmd
+        case cmd.switch
+        when "clear"
+          return OnConnectCmd
+        when "edit"
+          return OnConnectEditCmd
+        else
+          if (cmd.args)
+            return OnConnectCmd
+          else
+            return OnConnectViewCmd
+          end
+        end
       when "password"
         case cmd.switch
         when "reset"
@@ -125,6 +141,8 @@ module AresMUSH
         return AccountInfoRequestHandler
       when "loginNotices"
         return LoginNoticesRequestHandler
+      when "markNotificationsRead"
+        return LoginNoticesMarkReadRequestHandler
       end
       nil
     end

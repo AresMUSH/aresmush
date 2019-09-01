@@ -22,6 +22,11 @@ module AresMUSH
     def sorted_messages
       self.page_messages.to_a.sort_by { |p| p.created_at }
     end
+    
+    def last_activity
+      last_message = self.sorted_messages.to_a[-1]
+      last_message ? last_message.created_at : DateTime.new
+    end
   end
   
   class PageMessage < Ohm::Model

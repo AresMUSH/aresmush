@@ -29,6 +29,8 @@ module AresMUSH
             client.emit_failure result[:error]
           else
             client.emit_success t('jobs.job_created')
+            job = result[:job]
+            Jobs.notify_for_query(model, job)
           end
         end
       end

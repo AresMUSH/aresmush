@@ -10,6 +10,7 @@ module AresMUSH
     attribute :mount_type
     attribute :weapon_specials, :type => DataType::Array, :default => []
     attribute :armor_specials, :type => DataType::Array, :default => []
+    attribute :prior_ammo, :type => DataType::Hash, :default => {}
     attribute :stance, :default => "Normal"
     attribute :armor_name
     attribute :is_ko, :type => DataType::Boolean

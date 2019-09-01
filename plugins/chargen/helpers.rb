@@ -106,9 +106,9 @@ module AresMUSH
       char.update(profile_image: chargen_data[:profile_image])
       
       if FS3Skills.is_enabled?
-        error = FS3Skills.save_char(char, chargen_data)
-        if (error)
-          alerts << error
+        errors = FS3Skills.save_char(char, chargen_data)
+        if (errors.any?)
+          alerts.concat errors
         end
       end
       
@@ -131,20 +131,16 @@ module AresMUSH
 
       model.update(approval_job: nil)
                       
-      Achievements.award_achievement(model, "created_character", 'story', "Created a character.")
+      Achievements.award_achievement(model, "created_character")
       
       welcome_message = Global.read_config("chargen", "welcome_message")
-      welcome_message_args = { name: model.name }
-      Demographics.all_groups.keys.each do |k|
-        welcome_message_args[k.downcase.to_sym] = model.group(k)
-      end
+      welcome_message_args = Chargen.welcome_message_args(model)
       post_body = welcome_message % welcome_message_args
       
       Forum.system_post(
         Global.read_config("chargen", "arrivals_category"),
         t('chargen.approval_post_subject', :name => model.name), 
         post_body)
-        
       Jobs.create_job(Global.read_config("chargen", "app_category"), 
          t('chargen.approval_post_subject', :name => model.name), 
          Global.read_config("chargen", "post_approval_message"), 

@@ -32,6 +32,14 @@ module AresMUSH
         ProgressBarFormatter.format(a.xp, a.xp_needed)
       end
       
+      def show_advantages
+        Global.read_config("fs3skills", "use_advantages")
+      end
+      
+      def allow_advantages_xp
+        Global.read_config("fs3skills", "allow_advantages_xp")
+      end
+      
     end
   end
 end

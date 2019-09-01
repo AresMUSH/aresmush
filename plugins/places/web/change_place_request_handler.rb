@@ -17,11 +17,7 @@ module AresMUSH
         error = Website.check_login(request)
         return error if error
 
-        if (scene.room != enactor.room)
-          return { error: t('places.cant_change_places_in_another_room') }
-        end
-        
-        place = Places.find_place(enactor, place_name)
+        place = Places.find_place(scene.room, place_name)
       
         if (!place)
           place = Place.create(name: place_name, room: enactor.room)

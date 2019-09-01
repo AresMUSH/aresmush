@@ -123,7 +123,7 @@ module AresMUSH
     
     describe :center do
       it "should truncate if the string is too long" do
-        expect(SubstitutionFormatter.center("A%xc%xhGB%xnC", 2)).to eq "A%xc%xhG%xnC"
+        expect(SubstitutionFormatter.center("A%xc%xhGB%xnC", 2)).to eq "A%xc%xhG%xn"
       end
       
       it "should pad if the string is too short" do
@@ -133,7 +133,7 @@ module AresMUSH
 
     describe :left do
       it "should truncate if the string is too long" do
-        expect(SubstitutionFormatter.left("A%xc%xhGB%xnC", 2)).to eq "A%xc%xhG%xnC"
+        expect(SubstitutionFormatter.left("A%xc%xhGB%xnC", 2)).to eq "A%xc%xhG%xn"
       end
       
       it "should pad if the string is too short" do
@@ -143,11 +143,16 @@ module AresMUSH
       it "should pad if the string is just right" do
         expect(SubstitutionFormatter.left("%xrABC%xn", 3)).to eq "%xrABC%xn"
       end
+      
+      it "should truncate properly with ansi" do
+        str = "Faraday replied to forum post %xhTest New%xn (1/1) on %xhAnnouncements%xn. %xx%xh(forum/new)%xn"
+        expect(SubstitutionFormatter.left(str, 10)).to eq "Faraday re"
+      end
     end 
 
     describe :right do
       it "should truncate if the string is too long" do
-        expect(SubstitutionFormatter.right("A%xc%xhGB%xnC", 2)).to eq "A%xc%xhG%xnC"
+        expect(SubstitutionFormatter.right("A%xc%xhGB%xnC", 2)).to eq "A%xc%xhG%xn"
       end
       
       it "should pad if the string is too short" do
@@ -157,7 +162,7 @@ module AresMUSH
             
     describe :truncate do 
       it "should truncate a string that's too long" do
-        expect(SubstitutionFormatter.truncate("A%xc%xhGB%xnC", 2)).to eq "A%xc%xhG%xnC"
+        expect(SubstitutionFormatter.truncate("A%xc%xhGB%xnC", 2)).to eq "A%xc%xhG%xn"
       end
       
       it "should do nothing for a string that's shorter than allowed" do

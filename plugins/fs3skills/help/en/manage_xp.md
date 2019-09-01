@@ -2,8 +2,8 @@
 toc: ~admin~ Managing the Game
 summary: Managing skills and luck.
 aliases:
-- xp award
-- xp undo
+- xp_award
+- xp_undo
 ---
 # Managing FS3 XP
 

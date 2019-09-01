@@ -8,9 +8,15 @@ module AresMUSH
         
         Global.logger.debug "Cleaning up places."
         
+        
         Place.all.each do |p|
           if (p.characters.empty?)
             p.delete
+          else
+            room = p.room
+            if (!room.scene && room.clients.empty?)
+              p.delete
+            end
           end
         end
       end

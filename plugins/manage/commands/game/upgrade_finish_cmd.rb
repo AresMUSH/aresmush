@@ -15,12 +15,8 @@ module AresMUSH
           return
         end
         
-        error = Manage.finish_upgrade
-        if (error)
-          client.emit_failure error
-        else
-          client.emit_success t('global.done')
-        end
+        message = Manage.finish_upgrade(enactor, false)
+        client.emit_ooc message
       end
     end
   end

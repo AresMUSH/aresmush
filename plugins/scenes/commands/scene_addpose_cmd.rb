@@ -29,6 +29,11 @@ module AresMUSH
             return
           end
           
+          if (scene.completed)
+            client.emit_failure t('scenes.scene_already_completed')
+            return
+          end
+          
           Scenes.add_to_scene(scene, self.pose, enactor)
           client.emit_success t('scenes.pose_added', :pose => self.pose )          
         end

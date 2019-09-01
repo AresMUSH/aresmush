@@ -9,6 +9,8 @@ module AresMUSH
       end
     end
     
+    # Note: This finds ALL characters registered to the same handle, so the character 
+    # you're asking about is included in the resulting list.
     def self.alts(char)
       return [] if !char.handle
       Character.find_by_handle(char.handle).select { |c| c }

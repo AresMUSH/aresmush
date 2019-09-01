@@ -12,3 +12,7 @@ profile:
     relationship/remove: relationship/delete
     relationship/update: relationship/add
     relationship/set: relationship/add
+  achievements:
+    profile_edit:
+      type: portal
+      message: Edited your character profile.

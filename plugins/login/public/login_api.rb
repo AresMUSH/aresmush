@@ -84,14 +84,32 @@ module AresMUSH
       password
     end
     
-    def self.notify(char, type, message, data)
+    def self.notify(char, type, message, reference_id, data = "", notify_if_online = true)
+      unless notify_if_online
+        status = Website.activity_status(char)
+        return if status == 'game-active' || status == 'web-active'
+      end
+      
       # Check for duplicate notification
-      key = "#{type}|#{message}|#{data}"
-      return if char.login_notices.find(is_unread: true).any? { |n| "#{n.type}|#{n.message}|#{n.data}" == key }
-      unread = !Login.is_online?(char)
-      LoginNotice.create(character: char, type: type, message: message, data: data, is_unread: unread)
+      key = "#{type}|#{message}|#{reference_id}"
+      return if char.login_notices.find(is_unread: true).any? { |n| "#{n.type}|#{n.message}|#{n.reference_id}" == key }
+      LoginNotice.create(character: char, type: type, message: message, data: data, reference_id: reference_id, is_unread: true)
       Global.client_monitor.notify_web_clients(:notification_update, "#{char.unread_notifications.count}") do |c|
         c == char 
+      end
+    end
+    
+    def self.mark_notices_read(char, type, reference_id = nil)
+      return if !char
+      
+      if (reference_id)
+        notices = char.login_notices.find(is_unread: true).select { |n| n.type == "#{type}" && n.reference_id == "#{reference_id}"}
+      else
+        notices = char.login_notices.find(is_unread: true).select { |n| n.type == "#{type}" }
+      end
+      
+      notices.each do |n|
+        n.update(is_unread: false)
       end
     end
   end

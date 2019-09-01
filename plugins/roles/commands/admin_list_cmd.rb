@@ -4,16 +4,7 @@ module AresMUSH
       include CommandHandler
             
       def handle
-        admins_by_role = {}
-        roles = Global.read_config("roles", "admin_list_roles")
-        roles.each do |r|
-          chars = Roles.chars_with_role(r)
-          
-          # Omit the special system chars.
-          chars.delete Game.master.system_character
-          chars.delete Game.master.master_admin
-          admins_by_role[r] = chars
-        end
+        admins_by_role = Roles.admins_by_role
         template = AdminTemplate.new(admins_by_role)
         client.emit template.render
       end

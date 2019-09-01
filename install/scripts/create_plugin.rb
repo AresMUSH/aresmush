@@ -12,6 +12,12 @@ module AresMUSH
     exit
   end
   
+  config_file_path = File.join(AresMUSH.game_path, "config", "#{name}.yml")
+  if (File.exist?(config_file_path))
+    puts "Creating that plugin would overwrite an existing config file.  Choose a different name."
+    exit
+  end
+  
   if (name !~ /^[a-z0-9]+$/)
     puts "Plugin names may only contain lowercase letters and numbers."
     exit

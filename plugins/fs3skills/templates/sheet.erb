@@ -1,12 +1,12 @@
 %lh
 %xh<%= char.name %>%xn <%= center( approval_status, 23 ) %>
-<%= line_with_text t('fs3skills.attributes_title') -%>
+<%= section_line t('fs3skills.attributes_title') -%>
 <% attrs.each do |a| -%>
 <%= a -%>
 <% end %> 
 
 
-<%= line_with_text t('fs3skills.action_skills_title') -%>
+<%= section_line t('fs3skills.action_skills_title') -%>
 <% action_skills.each do |a| -%>
 <%= a -%>
 <% end %> 
@@ -16,19 +16,20 @@
 %xh<%= t('fs3skills.specialties_title') %>%xn <%= specialties %>
 <% end %>
 
-<%= line_with_text t('fs3skills.background_skills_title') -%>
+<%= section_line t('fs3skills.background_skills_title') -%>
 <% background_skills.each do |b| -%>
 <%= b -%>
 <% end %> 
 
 
-<%= line_with_text t('fs3skills.languages_title') -%>
+<%= section_line t('fs3skills.languages_title') -%>
 <% languages.each do |l| -%>
 <%= l -%>
 <% end %> 
 
 <% if use_advantages %>
-<%= line_with_text t('fs3skills.advantages_title') -%>
+
+<%= section_line t('fs3skills.advantages_title') -%>
 <% advantages.each do |a| -%>
 <%= a -%>
 <% end %>

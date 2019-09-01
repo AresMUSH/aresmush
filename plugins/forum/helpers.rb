@@ -44,6 +44,7 @@ module AresMUSH
       AresCentral.alts(char).each do |alt|
         post.mark_read(alt)
       end
+      Login.mark_notices_read(char, :forum, post.id)
     end    
       
     def self.notify(post, category, type, message)
@@ -82,7 +83,7 @@ module AresMUSH
         
         Forum.add_recent_post(new_post)
         Forum.notify(new_post, category, :new_forum_post, message)
-        Forum.handle_forum_achievement(author, :post)
+        Achievements.award_achievement(author, "forum_post")
         
         new_post
       end
@@ -109,11 +110,11 @@ module AresMUSH
         :author => author.name)
       
       Forum.add_recent_post(post)
-      Forum.handle_forum_achievement(author, :reply)
+      Achievements.award_achievement(author, "forum_reply")
       Forum.notify(post, category, :new_forum_reply, message)
             
       if (post.author && author != post.author)
-        Login.notify(post.author, :forum, t('forum.new_forum_reply', :subject => post.subject), "#{category.id}|#{post.id}")
+        Login.notify(post.author, :forum, t('forum.new_forum_reply', :subject => post.subject), post.id, "#{category.id}|#{post.id}")
       end
       
     end
@@ -174,18 +175,6 @@ module AresMUSH
         
         yield category, post
       end
-    end
-    
-    def self.handle_forum_achievement(char, type)
-      if (type == :reply)
-        message = "Replied to a forum post."
-        type = "forum_reply"
-      else
-        message = "Created a forum post."
-        type = "forum_post"
-      end
-      
-      Achievements.award_achievement(char, type, 'community', message)
     end
     
     def self.is_category_hidden?(char, category)
@@ -264,7 +253,7 @@ module AresMUSH
     
     def self.add_recent_post(post)
       recent = Game.master.recent_forum_posts
-      recent.unshift(post.id)
+      recent.unshift("#{post.id}")
       recent = recent.uniq
       if (recent.count > 100)
         recent.pop
