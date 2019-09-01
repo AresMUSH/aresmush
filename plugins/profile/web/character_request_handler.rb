@@ -70,8 +70,13 @@ module AresMUSH
            }
         }}
         
+        can_manage = enactor && Profile.can_manage_char_profile?(enactor, char)
         
-        show_background = (char.on_roster? || char.bg_shared || Chargen.can_view_bgs?(enactor)) && !char.background.blank?
+        if (char.background.blank?)
+          show_background = false
+        else
+          show_background = can_manage || char.on_roster? || char.bg_shared || Chargen.can_view_bgs?(enactor)
+        end
 
         
         files = Profile.character_page_files(char)
@@ -97,7 +102,7 @@ module AresMUSH
           handle: char.handle ? char.handle.name : nil,
           status_message: Profile.get_profile_status_message(char),
           tags: char.profile_tags,
-          can_manage: enactor && Profile.can_manage_char_profile?(enactor, char),
+          can_manage: can_manage,
           profile: profile,
           relationships: relationships,
           last_online: OOCTime.local_long_timestr(enactor, char.last_on),

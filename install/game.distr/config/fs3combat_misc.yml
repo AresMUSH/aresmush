@@ -89,3 +89,10 @@ fs3combat:
     healing: heal/list
     weapons: weapon
     mounts: mount
+  achievements:
+    fs3_hero:
+      type: fs3
+      message: Heroed from a knockout.
+    fs3_joined_combat:
+      type: fs3
+      message: Joined %{count} combats.

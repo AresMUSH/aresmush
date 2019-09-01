@@ -11,6 +11,10 @@ module AresMUSH
       Global.read_config("forum", "shortcuts")
     end
  
+    def self.achievements
+      Global.read_config('forum', 'achievements')
+    end
+    
     def self.get_cmd_handler(client, cmd, enactor)
       return nil if !cmd.root_is?("forum")
       

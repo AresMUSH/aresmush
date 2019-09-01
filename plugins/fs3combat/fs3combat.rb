@@ -10,6 +10,10 @@ module AresMUSH
       Global.read_config("fs3combat", "shortcuts")
     end
  
+    def self.achievements
+      Global.read_config('fs3combat', 'achievements')
+    end
+ 
     def self.get_cmd_handler(client, cmd, enactor)
       case cmd.root
       when"damage"

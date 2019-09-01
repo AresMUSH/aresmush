@@ -21,7 +21,7 @@ en:
         temproom_scene: "Temp Room"
         
         scene_ending: "%{name} has stopped this scene."
-        scene_ending_public: "%{name} has stopped this scene.  You can restart it at any time using scene/restart, but it will restart in a temp room and NOT in this room."
+        scene_ending_public: "%{name} has stopped this scene.  You can restart it at any time, but it will restart in a temp room and NOT in this room."
         scene_stopped: "The scene has ended.  To share the log, set the scene info (help scene info) and then use `scene/share %{id}` to share it."
         scene_not_specified: "You must either be in a room with an active scene, or specifiy a scene number for this command."
         scene_not_found: "Scene not found."
@@ -125,8 +125,9 @@ en:
         
         scene_char_invited: "You invite %{name} to join the scene."
         scene_char_uninvited: "You withdraw the invitation for %{name} to join the scene."
-        scene_notify_invite: "%{name} has invited you to join their scene.  Use scene/join %{num} to join in."
+        scene_notify_invite: "You have been invited to scene %{num}.  Use scene/join %{num} to join in."
         scene_notify_uninvited: "%{name} has withdrawn the invitation to join scene %{num}."
+        scene_notify_added_to_scene: "You have been added to scene %{num}."
         
         no_talking_quiet_room: "Sssh.  This is the quiet room."
         no_talking_ooc_lounge: "Chatting in the OOC lounge is sent to the %{channel} channel so everyone can participate.  Make sure you've joined and un-muted that channel if you want to chat here."
