@@ -76,7 +76,7 @@ module AresMUSH
           })
         end
 
-        Manage.reload_config
+        Global.config_reader.load_game_config
         
         Character.all.each do |c|
           c.achievements.each do |achievement|
