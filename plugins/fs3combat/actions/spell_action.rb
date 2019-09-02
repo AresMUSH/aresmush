@@ -103,8 +103,8 @@ module AresMUSH
           weapon_type = FS3Combat.weapon_stat(self.combatant.weapon, "weapon_type")
           #Spells roll for success individually because they only do one thing, and need to use different measures of success.
           targets.each do |target|
-            item_spell_mod  = Magic.item_spell_mod(self.combatant.associated_model)
-            spell_mod = self.combatant.spell_mod
+            item_spell_mod  = Magic.item_spell_mod(self.combatant.associated_model) || 0
+            spell_mod = self.combatant.spell_mod || 0
             mod = item_spell_mod + spell_mod
             combatant.log "Casting #{self.spell}: item_spell_mod=#{item_spell_mod} spell_mod=#{spell_mod} total_mod=#{mod}"
 
