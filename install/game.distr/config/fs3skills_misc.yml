@@ -1,7 +1,7 @@
 ---
 fs3skills:
   max_luck: 3
-  luck_for_scene: 
+  luck_for_scene:
     0: 0.1
     10: 0.075
     25: 0.05
@@ -18,3 +18,10 @@ fs3skills:
     practice: learn
     train: learn
     xp/raise: learn
+  achievements:
+    fs3_luck_spent:
+      type: fs3
+      message: Spent a luck point.
+    fs3_roll:
+      type: fs3
+      message: Rolled a skill.

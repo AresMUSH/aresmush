@@ -19,7 +19,7 @@ module AresMUSH
           end
 
           enactor.spend_luck(1)
-          Achievements.award_achievement(enactor, "fs3_hero", 'fs3', "Heroed from a knockout.")
+          Achievements.award_achievement(enactor, "fs3_hero")
 
           combatant.update(is_ko: false)
           combatant.update(death_count: 0  )

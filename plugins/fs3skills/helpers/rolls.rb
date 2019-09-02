@@ -12,7 +12,7 @@ module AresMUSH
       dice = FS3Skills.dice_to_roll_for_ability(char, roll_params)
       roll = FS3Skills.roll_dice(dice)
       Global.logger.info "#{char.name} rolling #{roll_params} dice=#{dice} result=#{roll}"
-      Achievements.award_achievement(char, "fs3_roll", 'fs3', "Rolled a skill.")
+      Achievements.award_achievement(char, "fs3_roll")
       roll
     end
     

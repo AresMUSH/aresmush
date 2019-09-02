@@ -9,9 +9,22 @@ module AresMUSH
       end
       
       def handle
-        message = PoseFormatter.format(enactor_name, cmd.raw)
-        is_emit = cmd.raw.start_with?("\\")
-        is_ooc = cmd.raw.start_with?("'") || cmd.raw.start_with?(">")
+        is_emit = false
+        is_ooc = false
+        
+        if (cmd.raw.start_with?("\\"))
+          message = cmd.raw.after("\\")
+          is_emit = true
+        elsif (cmd.raw.start_with?("'"))
+          message = PoseFormatter.format(enactor_name, cmd.raw.after("'"))
+          is_ooc = true
+        elsif (cmd.raw.start_with?(">"))
+          message =  PoseFormatter.format(enactor_name, cmd.raw.after(">"))
+          is_ooc = true
+        else
+          message = PoseFormatter.format(enactor_name, cmd.raw)
+        end
+        
 
         emit_to_room = Scenes.send_to_ooc_chat_if_needed(enactor, client, PoseFormatter.format(enactor.ooc_name, cmd.raw))
         if (emit_to_room)

@@ -83,7 +83,7 @@ module AresMUSH
         
         Forum.add_recent_post(new_post)
         Forum.notify(new_post, category, :new_forum_post, message)
-        Forum.handle_forum_achievement(author, :post)
+        Achievements.award_achievement(author, "forum_post")
         
         new_post
       end
@@ -110,7 +110,7 @@ module AresMUSH
         :author => author.name)
       
       Forum.add_recent_post(post)
-      Forum.handle_forum_achievement(author, :reply)
+      Achievements.award_achievement(author, "forum_reply")
       Forum.notify(post, category, :new_forum_reply, message)
             
       if (post.author && author != post.author)
@@ -175,18 +175,6 @@ module AresMUSH
         
         yield category, post
       end
-    end
-    
-    def self.handle_forum_achievement(char, type)
-      if (type == :reply)
-        message = "Replied to a forum post."
-        type = "forum_reply"
-      else
-        message = "Created a forum post."
-        type = "forum_post"
-      end
-      
-      Achievements.award_achievement(char, type, 'community', message)
     end
     
     def self.is_category_hidden?(char, category)

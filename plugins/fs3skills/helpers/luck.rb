@@ -23,10 +23,10 @@ module AresMUSH
         char.room.emit_ooc message
       end
 
-      Achievements.award_achievement(char, "fs3_luck_spent", 'fs3', "Spent a luck point.")
+      Achievements.award_achievement(char, "fs3_luck_spent")
 
-      category = Global.read_config('jobs', 'luck_category' )
-      Jobs.create_job(category, t('fs3skills.luck_job_title', :name => char.name, :reason => reason), message, char)
+      category = Jobs.system_category
+      Jobs.create_job(category, t('fs3skills.luck_job_title', :name => char.name, :reason => reason), message, Game.master.system_character)
 
       Global.logger.info "#{char.name} spent luck on #{reason}."
     end

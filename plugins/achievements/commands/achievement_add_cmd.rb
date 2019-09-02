@@ -26,14 +26,12 @@ module AresMUSH
             return
           end
           
-          achievement_details = Achievements.custom_achievement_data(self.achievement_name)          
-          if (!achievement_details)
-            client.emit_failure t('achievements.invalid_achievement')
-            return
+          error = Achievements.award_achievement(model, self.achievement_name)
+          if (error)
+            client.emit_failure error
+          else
+            client.emit_success t('achievements.achievement_added')
           end
-          
-          Achievements.award_achievement(model, self.achievement_name)
-          client.emit_success t('achievements.achievement_added')
         end
       end
     end

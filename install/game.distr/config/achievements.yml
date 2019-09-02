@@ -1,6 +1,5 @@
 ---
 achievements:
-  custom_achievements: {}
   shortcuts:
     achievements: achievement
   types:
@@ -8,3 +7,7 @@ achievements:
     portal: fa-globe
     fs3: fa-cubes
     story: fa-book
+  achievements:
+    test_achieve:
+      type: community
+      message: Testing.

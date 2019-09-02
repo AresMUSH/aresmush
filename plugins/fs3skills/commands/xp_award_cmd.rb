@@ -9,7 +9,7 @@ module AresMUSH
       def parse_args
         args = cmd.parse_args(ArgParser.arg1_equals_arg2)
         self.name = trim_arg(args.arg1)
-        self.xp = trim_arg(args.arg2)
+        self.xp = integer_arg(args.arg2)
       end
 
       def required_args
@@ -18,7 +18,7 @@ module AresMUSH
       
       def check_xp
         return nil if !self.xp
-        return t('fs3skills.invalid_xp_award') if !self.xp.is_integer?
+        return t('fs3skills.invalid_xp_award') if self.xp == 0
         return nil
       end
       
@@ -29,7 +29,7 @@ module AresMUSH
       
       def handle
         ClassTargetFinder.with_a_character(self.name, client, enactor) do |model|
-          model.award_xp self.xp.to_i
+          model.award_xp self.xp
           Global.logger.info "#{self.xp} XP Awarded by #{enactor_name} to #{model.name}"
           client.emit_success t('fs3skills.xp_awarded', :name => model.name, :xp => self.xp)
         end

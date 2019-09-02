@@ -3,8 +3,6 @@ fs3skills:
   language_blurb: 'Languages represent your ability to speak and read other languages.  Languages
     have a descriptive rating.   See [FS3: Languages](https://aresmush.com/fs3/fs3-3/chargen.html#languages)
     for details.'
-  starting_languages:
-  - Standard
   languages:
   - name: Standard
     desc: Spoken across the colonies.
@@ -21,3 +19,5 @@ fs3skills:
     desc: Tribal language of Sagittaron.
   - name: Celtan
     desc: Spoken in some places on Virgon's moon, Hibernia.
+  starting_languages:
+  - Standard
