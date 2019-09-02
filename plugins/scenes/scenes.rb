@@ -12,7 +12,7 @@ module AresMUSH
     end
     
     def self.achievements
-      list = Global.read_config("scenes", "achievements")
+      list = Global.read_config("scenes", "achievements") || {}
       
       # Automatically add achievements for the various scene types.
       Scenes.scene_types.each do |type|
