@@ -455,7 +455,7 @@ module AresMUSH
         
       [ 1, 10, 20, 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000 ].each do |level|
         if ( count >= level )
-          Achievements.award_achievement(char, "scene_participant", count)
+          Achievements.award_achievement(char, "scene_participant", level)
         end
       end
     end
