@@ -10,7 +10,7 @@ module AresMUSH
         
         Global.logger.debug "FS3 incapable rename."
         config = DatabaseMigrator.read_config_file("fs3skills_chargen.yml")
-        if (!config['fs3skills']['allow_unskilled_action_skills'] )
+        if (!config['fs3skills']['allow_incapable_action_skills'] )
           config['fs3skills']['allow_incapable_action_skills'] = config['fs3skills']['allow_unskilled_action_skills']
           config['fs3skills'].delete 'allow_unskilled_action_skills'
           config = DatabaseMigrator.write_config_file("fs3skills_chargen.yml", config)
