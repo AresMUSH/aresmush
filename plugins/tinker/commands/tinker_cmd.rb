@@ -22,6 +22,7 @@ module AresMUSH
               Achievements.award_achievement(c, 'gave_comps', count)
               achievement.delete
             end
+          end
 
 
 
