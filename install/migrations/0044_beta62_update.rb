@@ -76,6 +76,8 @@ module AresMUSH
           })
         end
 
+        Global.config_reader.load_game_config
+        
         Character.all.each do |c|
           c.achievements.each do |achievement|
             if (achievement.name =~ /fs3_joined_combat_/)
