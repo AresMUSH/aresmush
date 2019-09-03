@@ -16,8 +16,7 @@ module AresMUSH
       def handle
         enactor.update(magic_item_equipped: self.item_name)
         client.emit_success t('magic.item_equipped', :item => enactor.magic_item_equipped)
-        message = "Equipped a magic item."
-        Achievements.award_achievement(enactor, "equipped_magic_item", 'magic', message)
+        Achievements.award_achievement(enactor, "equipped_magic_item")
       end
 
     end

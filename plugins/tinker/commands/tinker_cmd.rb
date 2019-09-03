@@ -11,29 +11,35 @@ module AresMUSH
       def handle
         Character.all.each do |c|
           c.achievements.each do |achievement|
-            if (achievement.name =~ /fs3_joined_combat_/)
+            if (achievement.name =~ /has_died_/)
               count = achievement.name.split('_').last.to_i
-              Achievements.award_achievement(c, 'fs3_joined_combat', count)
+              Achievements.award_achievement(c, 'has_died', count)
               achievement.delete
             end
 
-            if (achievement.name =~ /word_count_/)
+            if (achievement.name =~ /made_potions_/)
               count = achievement.name.split('_').last.to_i
-              Achievements.award_achievement(c, 'word_count', count)
+              Achievements.award_achievement(c, 'potions_made', count)
               achievement.delete
             end
 
-            if (achievement.name =~ /scene_participant_/)
+            if (achievement.name =~ /used_potions_/)
               count = achievement.name.split('_').last.to_i
               if (count > 0)
-                Achievements.award_achievement(c, 'scene_participant', count)
+                Achievements.award_achievement(c, 'potions_used', count)
                 achievement.delete
               end
             end
 
-            if (achievement.name =~ /cookie_received_/)
+            if (achievement.name =~ /learned_spells_/)
               count = achievement.name.split('_').last.to_i
-              Achievements.award_achievement(c, 'cookie_received', count)
+              Achievements.award_achievement(c, 'spells_learned', count)
+              achievement.delete
+            end
+
+            if (achievement.name =~ /cast_spells_/)
+              count = achievement.name.split('_').last.to_i
+              Achievements.award_achievement(c, 'spells_cast', count)
               achievement.delete
             end
           end

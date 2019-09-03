@@ -30,3 +30,6 @@ magic:
     spells_cast:
       type: spell
       message: Cast %{count} spells.
+    equipped_magic_item:
+      type: spell
+      message: "Equipped a magic item."
