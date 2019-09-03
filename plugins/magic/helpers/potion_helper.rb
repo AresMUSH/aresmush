@@ -36,28 +36,28 @@ module AresMUSH
 
     def self.handle_potions_made_achievement(char)
       char.update(potions_made: char.potions_made + 1)
-      [ 1, 10, 20, 50, 100 ].each do |count|
+      [ 1, 10, 20, 50, 100, 200 ].each do |count|
         if (char.potions_made >= count)
-          if (count == 1)
-            message = "Made a potion."
-          else
-            message = "Made #{count} potions."
-          end
-          Achievements.award_achievement(char, "made_potions_#{count}", 'potion', message)
+          # if (count == 1)
+          #   message = "Made a potion."
+          # else
+          #   message = "Made #{count} potions."
+          # end
+          Achievements.award_achievement(char, "potions_made", count)
         end
       end
     end
 
     def self.handle_potions_used_achievement(char)
       char.update(potions_used: char.potions_used + 1)
-      [ 1, 10, 20, 50, 100 ].each do |count|
+      [ 1, 10, 20, 50, 100, 200 ].each do |count|
         if (char.potions_used >= count)
-          if (count == 1)
-            message = "Used a potion."
-          else
-            message = "Used #{count} potions."
-          end
-          Achievements.award_achievement(char, "used_potions_#{count}", 'potion', message)
+          # if (count == 1)
+          #   message = "Used a potion."
+          # else
+          #   message = "Used #{count} potions."
+          # end
+          Achievements.award_achievement(char, "potions_used", count)
         end
       end
     end
