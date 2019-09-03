@@ -146,7 +146,7 @@ spells:
     armor: Rock Skin
     available: true
     casting_time: 1 round
-    desc: Caster weaponizes and protects their own body by augmenting it with stone and rock. 
+    desc: Caster weaponizes and protects their own body by augmenting it with stone and rock.
     duration: 3 hours
     effect: Armor
     is_potion: true
@@ -224,7 +224,7 @@ spells:
     fs3_attack: true
     is_stun: true
     rounds: 5
-    level: 3
+    level: 6
     line_of_sight: true
     name: Quicksand
     range: Short
