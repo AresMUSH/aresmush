@@ -1,7 +1,0 @@
----
-en:
-  comps:
-    comps_title: "%{name}'S COMPS"
-    left_comp: "You have left a comp for %{name}."
-    has_left_comp: "%xc%{from} has left you a comp. Type `comps` to see it.%xn"
-    invalid_name: "That is not a character."
