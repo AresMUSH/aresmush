@@ -9,6 +9,8 @@ module AresMUSH
         vs_roll2 = request.args[:vs_roll2] || ""
         vs_name1 = request.args[:vs_name1] || ""
         vs_name2 = request.args[:vs_name2] || ""
+        pc_name = request.args[:pc_name] || ""
+        pc_skill = request.args[:pc_skill] || ""
         
         if (!scene)
           return { error: t('webportal.not_found') }
@@ -25,6 +27,9 @@ module AresMUSH
           return { error: t('scenes.scene_already_completed') }
         end
         
+        # ------------------
+        # VS ROLL
+        # ------------------
         if (!vs_roll1.blank?)
           result = ClassTargetFinder.find(vs_name1, Character, enactor)
           model1 = result.target
@@ -60,7 +65,26 @@ module AresMUSH
              :dice1 => FS3Skills.print_dice(die_result1),
              :dice2 => FS3Skills.print_dice(die_result2),
              :result => results)  
-             
+
+        # ------------------
+        # PC ROLL
+        # ------------------
+        elsif (!pc_name.blank?)
+          char = Character.find_one_by_name(pc_name) || enactor
+          roll = FS3Skills.parse_and_roll(char, pc_skill)
+          roll_result = FS3Skills.get_success_level(roll)
+          success_title = FS3Skills.get_success_title(roll_result)
+          message = t('fs3skills.simple_roll_result', 
+            :name => char.name,
+            :roll => pc_skill,
+            :dice => FS3Skills.print_dice(roll),
+            :success => success_title
+            )
+            
+        # ------------------
+        # SELF ROLL
+        # ------------------
+        
         else
           roll = FS3Skills.parse_and_roll(enactor, roll_str)
           roll_result = FS3Skills.get_success_level(roll)

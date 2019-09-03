@@ -26,7 +26,7 @@ module AresMUSH
           if (!combatant.luck)
             if (enactor.luck >= 1)
               enactor.spend_luck(1)
-              Achievements.award_achievement(enactor, "fs3_luck_spent", 'fs3', "Spent a luck point.")
+              Achievements.award_achievement(enactor, "fs3_luck_spent")
             else
               client.emit_failure t('fs3combat.no_luck')
               return

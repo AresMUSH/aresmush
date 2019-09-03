@@ -65,3 +65,10 @@ scenes:
     - 15
     day_of_week:
     - Mon
+  achievements:
+    word_count:
+      type: story
+      message: Wrote %{count} words in scenes.
+    scene_participant:
+      type: story
+      message: Participated in %{count} scenes.

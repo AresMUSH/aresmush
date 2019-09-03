@@ -12,7 +12,11 @@ module AresMUSH
     def self.shortcuts
       {}
     end
- 
+    
+    def self.achievements
+      Global.read_config('website', 'achievements')
+    end
+    
     def self.init_plugin
       Website.rebuild_css
     end

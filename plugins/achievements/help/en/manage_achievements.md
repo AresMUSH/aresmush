@@ -6,11 +6,9 @@ summary: Managing achievements.
 
 > **Permission Required:** These commands require the Admin role or the permission: manage\_achievements
 
-If you define custom achievements, you can award and remove them manually.
+You can manually add and remove achievements.  
 
-> Note: You can remove standard achievements but not award them.  
-
-`achievement/add <character>=<achievement_name>` - Adds an achievement.
+`achievement/add <character>=<achievement_name>` - Adds an achievement.  This currently does not work for counted achievements (like participated in X scenes)
 `achievement/remove <character>=<achievement_name>` - Removes an achievement.
   
 You'll see the internal achievement names listed on `achievements <char>` when you view them with an admin char.  For example: If the achievement says, "Participated in a Social scene.  **(scene\_participant\_social)**", then you would use scene\_participant\_social to remove the achievement.

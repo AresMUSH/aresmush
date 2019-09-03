@@ -17,3 +17,16 @@ magic:
     Pet: A magical creature takes a shine to you and decides to stay.
     Ancestry: Somewhere in your family tree, your bloodline became crossed with that of a Magical Creature.
     Storyteller: Let Storytellers decide your Lore Hook.
+  achievements:
+    potions_made:
+      type: potion
+      message: Made %{count} potions.
+    potions_used:
+      type: potion
+      message: Used %{count} potions.
+    spells_learned:
+      type: spell
+      message: Learned %{count} spells.
+    spells_cast:
+      type: spell
+      message: Cast %{count} spells.

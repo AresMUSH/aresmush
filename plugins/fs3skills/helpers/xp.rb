@@ -8,6 +8,7 @@ module AresMUSH
       max_xp = Global.read_config("fs3skills", "max_xp_hoard")
       xp = char.xp + amount
       xp = [max_xp, xp].min
+      xp = [0, xp].max
       char.update(fs3_xp: xp)
     end
 

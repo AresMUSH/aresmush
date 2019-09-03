@@ -10,6 +10,9 @@ module AresMUSH
       Global.read_config("custom", "shortcuts")
     end
 
+    def self.achievements
+      Global.read_config('custom', 'achievements')
+    end
 
     def self.get_cmd_handler(client, cmd, enactor)
 
