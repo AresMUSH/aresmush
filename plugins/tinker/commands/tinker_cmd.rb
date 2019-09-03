@@ -11,11 +11,11 @@ module AresMUSH
       def handle
         Character.all.each do |c|
           c.achievements.each do |achievement|
-            if (achievement.name =~ /has_died_/)
-              count = achievement.name.split('_').last.to_i
-              Achievements.award_achievement(c, 'has_died', count)
-              achievement.delete
-            end
+            # if (achievement.name =~ /has_died_/)
+            #   count = achievement.name.split('_').last.to_i
+            #   Achievements.award_achievement(c, 'has_died', count)
+            #   achievement.delete
+            # end
 
             if (achievement.name =~ /made_potions_/)
               count = achievement.name.split('_').last.to_i
