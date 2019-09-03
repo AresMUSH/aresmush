@@ -30,8 +30,7 @@ module AresMUSH
         
         it "should format an emit message" do
           @handler = PoseCmd.new(@client, Command.new("emit test"), @enactor)
-          expect(PoseFormatter).to receive(:format).with("Bob", "\\test") { "formatted msg" }
-          expect(@handler.message("Bob")).to eq "formatted msg"
+          expect(@handler.message("Bob")).to eq "test"
         end
 
         it "should format a say message" do

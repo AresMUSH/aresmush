@@ -22,7 +22,7 @@ module AresMUSH
       
       def message(name)
         if (cmd.root_is?("emit"))
-          return PoseFormatter.format(name, "\\#{cmd.args}")
+          return cmd.args
         elsif (cmd.root_is?("pose"))
           return PoseFormatter.format(name, ":#{cmd.args}")
         elsif (cmd.root_is?("ooc"))

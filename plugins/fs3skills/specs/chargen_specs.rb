@@ -9,7 +9,7 @@ module AresMUSH
         allow(FS3Skills).to receive(:action_skill_names) { [ "Firearms", "Demolitions" ] }
         allow(FS3Skills).to receive(:advantage_names) { [ "Rank" ] }
         allow(FS3Skills).to receive(:language_names) { [ "English", "Spanish" ] }
-        allow(Global).to receive(:read_config).with("fs3skills", "allow_unskilled_action_skills") { false }
+        allow(Global).to receive(:read_config).with("fs3skills", "allow_incapable_action_skills") { false }
         stub_translate_for_testing
       end
       
@@ -42,8 +42,8 @@ module AresMUSH
           expect(FS3Skills.check_rating("Basketweaving", -1)).to eq "fs3skills.min_rating_is"
         end
         
-        it "should allow unskilled for min rating if configured" do
-          allow(Global).to receive(:read_config).with("fs3skills", "allow_unskilled_action_skills") { true }
+        it "should allow incapable for min rating if configured" do
+          allow(Global).to receive(:read_config).with("fs3skills", "allow_incapable_action_skills") { true }
           expect(FS3Skills.check_rating("Brawn", 0)).to eq "fs3skills.min_rating_is"
         end
         

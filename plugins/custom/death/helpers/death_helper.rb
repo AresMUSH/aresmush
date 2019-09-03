@@ -29,12 +29,12 @@ module AresMUSH
       char.update(has_died: char.has_died + 1)
       [ 1, 10, 20, 50, 100 ].each do |count|
         if (char.has_died >= count)
-          if (count == 1)
-            message = "Has died."
-          else
-            message = "Has died #{count} times."
-          end
-          Achievements.award_achievement(char, "has_died_#{count}", 'death', message)
+          # if (count == 1)
+          #   message = "Has died."
+          # else
+          #   message = "Has died #{count} times."
+          # end
+          Achievements.award_achievement(char, "has_died", count)
         end
       end
     end

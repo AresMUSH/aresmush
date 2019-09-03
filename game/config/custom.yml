@@ -4,3 +4,7 @@ custom:
     schools: school
     hascast: spell/hascast
     text: txt
+  achievements:
+    has_died:
+      type: death
+      message:
