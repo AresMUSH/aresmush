@@ -9,12 +9,38 @@ module AresMUSH
       end
 
       def handle
-        client.emit "Lore Hooks All Characters"
-        chars = Chargen.approved_chars
-        chars.each do |c|
+        Character.all.each do |c|
+          c.achievements.each do |achievement|
+            if (achievement.name =~ /fs3_joined_combat_/)
+              count = achievement.name.split('_').last.to_i
+              Achievements.award_achievement(c, 'fs3_joined_combat', count)
+              achievement.delete
+            end
 
-          client.emit "#{c.name}: #{c.lore_hook_type} - #{c.lore_hook_name} %R#{c.lore_hook_desc}"
+            if (achievement.name =~ /word_count_/)
+              count = achievement.name.split('_').last.to_i
+              Achievements.award_achievement(c, 'word_count', count)
+              achievement.delete
+            end
+
+            if (achievement.name =~ /scene_participant_/)
+              count = achievement.name.split('_').last.to_i
+              if (count > 0)
+                Achievements.award_achievement(c, 'scene_participant', count)
+                achievement.delete
+              end
+            end
+
+            if (achievement.name =~ /cookie_received_/)
+              count = achievement.name.split('_').last.to_i
+              Achievements.award_achievement(c, 'cookie_received', count)
+              achievement.delete
+            end
+          end
         end
+
+
+
       end
 
     end
