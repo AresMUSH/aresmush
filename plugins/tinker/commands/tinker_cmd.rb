@@ -17,33 +17,12 @@ module AresMUSH
             #   achievement.delete
             # end
 
-            if (achievement.name =~ /made_potions_/)
+            if (achievement.name =~ /gave_comps_/)
               count = achievement.name.split('_').last.to_i
-              Achievements.award_achievement(c, 'potions_made', count)
+              Achievements.award_achievement(c, 'gave_comps', count)
               achievement.delete
             end
 
-            if (achievement.name =~ /used_potions_/)
-              count = achievement.name.split('_').last.to_i
-              if (count > 0)
-                Achievements.award_achievement(c, 'potions_used', count)
-                achievement.delete
-              end
-            end
-
-            if (achievement.name =~ /learned_spells_/)
-              count = achievement.name.split('_').last.to_i
-              Achievements.award_achievement(c, 'spells_learned', count)
-              achievement.delete
-            end
-
-            if (achievement.name =~ /cast_spells_/)
-              count = achievement.name.split('_').last.to_i
-              Achievements.award_achievement(c, 'spells_cast', count)
-              achievement.delete
-            end
-          end
-        end
 
 
 
