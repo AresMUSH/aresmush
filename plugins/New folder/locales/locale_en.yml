@@ -1,0 +1,7 @@
+---
+en:
+  compliments:
+    comps_title: "%{name}'S COMPLIMENTS"
+    left_comp: "You have left a comp for %{name}."
+    has_left_comp: "%xc%{from} has left you a comp. Type `comps` to see it.%xn"
+    invalid_name: "That is not a character."
