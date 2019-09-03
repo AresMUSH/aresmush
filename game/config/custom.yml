@@ -7,4 +7,4 @@ custom:
   achievements:
     has_died:
       type: death
-      message:
+      message: Has died %{count} time(s).
