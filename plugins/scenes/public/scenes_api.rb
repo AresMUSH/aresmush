@@ -20,6 +20,7 @@ module AresMUSH
     
     def self.add_to_scene(scene, pose, character = Game.master.system_character, is_setpose = nil, is_ooc = nil, place_name = nil)
       return nil if !scene.logging_enabled
+      return nil if !pose
       
       scene_pose = ScenePose.create(pose: pose, character: character, scene: scene, is_setpose: is_setpose, is_ooc: is_ooc, place_name: place_name ? place_name : character.place_name(scene.room))
       if (!scene_pose.is_system_pose?)
@@ -34,7 +35,8 @@ module AresMUSH
 
       Scenes.new_scene_activity(scene, :new_pose, data.to_json)
       if (!is_ooc)
-        Scenes.handle_word_count_achievements(character, pose)
+        character.update(pose_word_count: character.pose_word_count + pose.split.count)
+        Scenes.handle_word_count_achievements(character)
       end
       
       return scene_pose
