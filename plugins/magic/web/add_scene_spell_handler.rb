@@ -6,8 +6,11 @@ module AresMUSH
         enactor = request.enactor
         caster = request.enactor
         spell_string = request.args[:spell_string]
-        target_name = request.args[:target_name]
+        target_name_arg = request.args[:target_name]
         mod = request.args[:mod]
+        if !target_name_arg.blank?
+          has_target = true
+        end
 
         if (!scene)
           return { error: t('webportal.not_found') }
@@ -27,52 +30,47 @@ module AresMUSH
         if !Magic.is_spell?(spell_string)
           return { error: t('magic.not_spell') }
         else
-          spell = spell_string
+          spell = spell_string.titlecase
         end
 
         target_optional = Global.read_config("spells", spell, "target_optional")
-        if (!target_optional && !target_name.blank?)
+        if (!target_optional && !target_name_arg.blank?)
           return { error: t('magic.doesnt_use_target') }
         end
 
-        if !target_name.blank?
+        if !target_name_arg.blank?
           target_num = Global.read_config("spells", spell, "target_num")
-          # if target == "no_target"
-          #   return { error: t('magic.invalid_name') }
-          # end
+          target_name_string = target_name_arg
         else
-          target = [enactor]
-          target_name = nil
+          target_name_string = enactor.name
         end
 
         if !Magic.knows_spell?(enactor, spell)
           return { error:  t('magic.dont_know_spell') }
         end
 
-
-
         heal_points = Global.read_config("spells", spell, "heal_points")
         success = Magic.roll_noncombat_spell_success(enactor, spell, mod)
+        print_names = Magic.print_target_names(target_name_string)
 
         if success == "%xgSUCCEEDS%xn"
           if heal_points
-            message = Magic.cast_non_combat_heal(caster, target_name, spell, mod)
+            message = Magic.cast_non_combat_heal(caster, target_name_string, spell, mod)
           elsif Magic.spell_shields.include?(spell)
-            message = Magic.cast_noncombat_shield(caster, target, spell, mod)
+            message = Magic.cast_noncombat_shield(caster, target_name_string, spell, mod)
           else
-            message = Magic.cast_noncombat_spell(caster, target_name, spell, mod)
+            if has_target
+              message = Magic.cast_noncombat_spell(caster, target_name_string, spell, mod)
+            else
+              message = Magic.cast_noncombat_spell(caster, target_name_string=nil, spell, mod)
+            end
           end
           Magic.handle_spell_cast_achievement(caster)
         else
-          if target_name.blank?
+          if target_name_arg.blank?
             message = [t('magic.casts_spell', :name => caster.name, :spell => spell, :mod => mod, :succeeds => success)]
           else
-            names = []
-            target.each do |target|
-              names.concat [target.name]
-            end
-            names = names.join(", ")
-            message = [t('magic.casts_spell_on_target', :name => caster.name, :spell => spell, :mod => mod, :target => names, :succeeds => success)]
+            message = [t('magic.casts_spell_on_target', :name => caster.name, :spell => spell, :mod => mod, :target => print_names, :succeeds => success)]
           end
         end
         message.each do |msg|
