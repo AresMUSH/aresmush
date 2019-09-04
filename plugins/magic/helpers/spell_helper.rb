@@ -28,7 +28,7 @@ module AresMUSH
           # else
           #   message = "Cast #{count} spells."
           # end
-          Achievements.award_achievement(char, "spells_cast", count, message)
+          Achievements.award_achievement(char, "spells_cast", count)
         end
       end
     end
