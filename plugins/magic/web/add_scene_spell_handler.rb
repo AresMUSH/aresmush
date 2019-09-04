@@ -37,9 +37,9 @@ module AresMUSH
 
         if !target_name.blank?
           target_num = Global.read_config("spells", spell, "target_num")
-          if target == "no_target"
-            return { error: t('magic.invalid_name') }
-          end
+          # if target == "no_target"
+          #   return { error: t('magic.invalid_name') }
+          # end
         else
           target = [enactor]
           target_name = nil

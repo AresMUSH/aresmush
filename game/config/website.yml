@@ -100,8 +100,6 @@ website:
       id: familiars
   - title: Story
     menu:
-    - route: characters
-      title: Characters
     - route: scenes
       title: Scenes
     - route: plots
@@ -138,6 +136,8 @@ website:
       title: Census
     - route: locations
       title: Locations
+    - route: achievements
+      title: Achievements
     - divider: true
     - route: files
       title: Files
