@@ -16,7 +16,6 @@ module AresMUSH
 
 
         self.target_optional = Global.read_config("spells", self.spell, "target_optional")
-
         error = self.parse_targets(self.names)
         return error if error
 
@@ -103,7 +102,11 @@ module AresMUSH
           weapon_type = FS3Combat.weapon_stat(self.combatant.weapon, "weapon_type")
           #Spells roll for success individually because they only do one thing, and need to use different measures of success.
           targets.each do |target|
-            item_spell_mod  = Magic.item_spell_mod(self.combatant.associated_model) || 0
+            if !combatant.is_npc?
+              item_spell_mod  = Magic.item_spell_mod(self.combatant.associated_model) || 0
+            else
+              item_spell_mod = 0
+            end
             spell_mod = self.combatant.spell_mod || 0
             mod = item_spell_mod + spell_mod
             combatant.log "Casting #{self.spell}: item_spell_mod=#{item_spell_mod} spell_mod=#{spell_mod} total_mod=#{mod}"
