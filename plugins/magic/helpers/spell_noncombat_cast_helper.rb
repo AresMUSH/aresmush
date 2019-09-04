@@ -54,7 +54,7 @@ module AresMUSH
 
     def self.cast_noncombat_spell(caster, name_string, spell, mod = nil, is_potion = false)
       success = "%xgSUCCEEDS%xn"
-      target_num = Global.read_config("spells", spell, "target_num")
+      target_num = Global.read_config("spells", spell, "target_num") || 1
       effect = Global.read_config("spells", spell, "effect")
       damage_type = Global.read_config("spells", spell, "damage_type")
       client = Login.find_client(caster)
@@ -63,7 +63,7 @@ module AresMUSH
       else
         targets = []
       end
-
+      messages = []
       if targets == "too_many_targets"
         return [t('magic.too_many_targets', :spell => spell, :num => target_num)]
       elsif targets == "no_target"
@@ -71,17 +71,21 @@ module AresMUSH
       elsif targets == []
         if is_potion
           message = t('magic.use_potion', :name => caster.name, :potion => spell)
+          messages.concat [message]
         else
           message = t('magic.casts_spell', :name => caster.name, :spell => spell, :mod => mod, :succeeds => success)
+          messages.concat [message]
         end
       else
-        messages = []
+
         names = []
         targets.each do |target|
           if ((effect == "Psionic" || damage_type == "Fire" || damage_type == "Cold") && !is_potion)
             message = Magic.check_spell_vs_shields(target, caster, spell, mod)
             if !message
               names.concat [target.name]
+            else
+              messages.concat [message]
             end
           else
             names.concat [target.name]
@@ -89,16 +93,13 @@ module AresMUSH
         end
         print_names = names.join(", ")
         if is_potion
-         msg = [t('magic.use_potion_target', :name => caster.name, :potion => spell, :target => print_names)]
-       else
-         msg = [t('magic.casts_spell_on_target', :name => caster.name, :target => print_names, :spell => spell, :mod => mod, :succeeds => success)]
-       end
-      end
-      if message
-        message = [message]
-        return message
-      elsif print_names
-        return msg
+          message = [t('magic.use_potion_target', :name => caster.name, :potion => spell, :target => print_names)]
+          messages.concat message
+        else
+          message = [t('magic.casts_spell_on_target', :name => caster.name, :target => print_names, :spell => spell, :mod => mod, :succeeds => success)]
+          messages.concat message
+        end
+        return messages
       end
     end
 
@@ -118,6 +119,19 @@ module AresMUSH
         return targets
       end
     end
+
+    def self.print_target_names(name_string)
+      target_names = name_string.split(" ").map { |n| InputFormatter.titlecase_arg(n) }
+      print_names = []
+      target_names.each do |name|
+        target = Character.named(name)
+        return "no_target" if !target
+        print_names << target.name
+      end
+      print_names = print_names.join(", ")
+      return print_names
+    end
+
 
     def self.cast_non_combat_heal(caster, name_string, spell, mod = nil, is_potion = false)
       room = caster.room
@@ -162,25 +176,41 @@ module AresMUSH
       end
     end
 
-    def self.cast_noncombat_shield(caster, target, spell, mod)
+    def self.cast_noncombat_shield(caster, name_string, spell, mod)
       school = Global.read_config("spells", spell, "school")
       shield_strength = caster.roll_ability(school)
-      Global.logger.info "#{spell} Strength on #{target.name} set to #{shield_strength[:successes]}."
-      if spell == "Mind Shield"
-        # target.update(mind_shield: shield_strength[:successes])
-        type = "psionic"
-      elsif spell == "Endure Fire"
-        target.update(endure_fire: shield_strength[:successes])
-        type = "fire"
-      elsif spell == "Endure Cold"
-        target.update(endure_cold: shield_strength[:successes])
-        type = "ice"
+      target_num = Global.read_config("spells", spell, "target_num")
+
+      if name_string != nil
+        targets = Magic.parse_spell_targets(name_string, target_num)
+      else
+        targets = [caster]
       end
 
-      message = [t('magic.cast_shield', :name => caster.name, :spell => spell, :mod => mod, :succeeds => "%xgSUCCEEDS%xn", :target =>  target.name, :type => type)]
-      return message
+      if targets == "too_many_targets"
+        return [t('magic.too_many_targets', :spell => spell, :num => target_num)]
+      elsif targets == "no_target"
+        return [t('magic.invalid_name')]
+      else
+        messages = []
+        targets.each do |target|
+          if spell == "Mind Shield"
+            # target.update(mind_shield: shield_strength[:successes])
+            type = "psionic"
+          elsif spell == "Endure Fire"
+            target.update(endure_fire: shield_strength[:successes])
+            type = "fire"
+          elsif spell == "Endure Cold"
+            target.update(endure_cold: shield_strength[:successes])
+            type = "ice"
+          end
+          Global.logger.info "#{spell} Strength on #{target.name} set to #{shield_strength[:successes]}."
+          message = [t('magic.cast_shield', :name => caster.name, :spell => spell, :mod => mod, :succeeds => "%xgSUCCEEDS%xn", :target =>  target.name, :type => type)]
+          messages.concat message
+        end
+      end
+      return messages
     end
-
 
 
   end
