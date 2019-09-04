@@ -11,6 +11,7 @@ module AresMUSH
       
       achievement_details = Achievements.achievement_data(name)          
       if (!achievement_details)
+        Global.logger.warn "Achievement not found: #{name}"
         return t('achievements.invalid_achievement')
       end
       
@@ -18,7 +19,7 @@ module AresMUSH
       message = achievement_details['message']
       
       if (!type || !message)
-        raise "Invalid achievement details.  Missing name or message."
+        raise "Invalid achievement details for #{name}.  Missing type or message."
       end
       
       if (!Achievements.has_achievement?(char, name, count))

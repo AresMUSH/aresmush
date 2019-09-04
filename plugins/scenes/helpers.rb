@@ -434,9 +434,8 @@ module AresMUSH
       links1.to_a.concat(links2.to_a)
     end 
     
-    def self.handle_word_count_achievements(char, pose)
+    def self.handle_word_count_achievements(char)
       [ 1000, 2000, 5000, 10000, 25000, 50000, 100000, 250000, 500000 ].each do |count|
-        pretty_count = count.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse
         if (char.pose_word_count >= count)
           Achievements.award_achievement(char, "word_count", count)
         end
