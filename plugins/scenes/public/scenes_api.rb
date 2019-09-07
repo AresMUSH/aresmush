@@ -35,8 +35,7 @@ module AresMUSH
 
       Scenes.new_scene_activity(scene, :new_pose, data.to_json)
       if (!is_ooc)
-        character.update(pose_word_count: character.pose_word_count + pose.split.count)
-        Scenes.handle_word_count_achievements(character)
+        Scenes.handle_word_count_achievements(character, pose)
       end
       
       return scene_pose
