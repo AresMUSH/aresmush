@@ -167,7 +167,7 @@ module AresMUSH
         return nil if enactor == job.author
         return nil if job.participants.include?(enactor)
       end
-      return t('dispatcher.not_allowed') if !Jobs.can_access_jobs?(enactor)
+      return t('jobs.cant_view_job') if !Jobs.can_access_jobs?(enactor)
       return t('jobs.cant_access_category') if !Jobs.can_access_category?(enactor, job.job_category)
       return nil
     end

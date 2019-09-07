@@ -4,7 +4,7 @@ module AresMUSH
       include CommandHandler
     
       def check_can_access
-        return t('dispatcher.not_allowed') if !Jobs.can_access_jobs?(enactor)
+        return t('jobs.cant_access_jobs') if !Jobs.can_access_jobs?(enactor)
         return nil
       end
       

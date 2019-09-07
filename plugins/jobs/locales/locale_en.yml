@@ -90,3 +90,6 @@ en:
         new_job_activity: "New activity in job %{num}."
         job_query_created: "Job %{job}: %{title} has been created for you."
         scan_summary: "%{count} unread jobs."
+        
+        cant_access_jobs: "Only job admin can use the job commands.  Try 'request' instead."
+        cant_view_job: "You don't have permission to view that job."
