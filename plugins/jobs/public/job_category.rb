@@ -7,6 +7,7 @@ module AresMUSH
     attribute :name
     attribute :name_upcase
     attribute :color
+    attribute :template
     
     set :roles, "AresMUSH::Role"
     collection :jobs, "AresMUSH::Job"

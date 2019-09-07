@@ -81,6 +81,7 @@ en:
         category_deleted: "Job category deleted."
         category_created: "Job category created."
         category_color_set: "Job category color set."
+        category_template_set: "Job category template set."
         invalid_category_role: "%{name} is not a valid role for a job category."
         job_category_roles_set: "Job category roles set."
         category_already_exists: "That category already exists."
