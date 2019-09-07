@@ -6,7 +6,7 @@ module AresMUSH
           category.roles.each do |r|
             if (r.id == event.role_id)
               Global.logger.debug "Deleting role from job category #{category.name}."
-              category.read_roles.delete r
+              category.roles.delete r
             end
           end
         end
