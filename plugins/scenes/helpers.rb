@@ -157,11 +157,11 @@ module AresMUSH
       Scenes.participants_and_room_chars(scene).include?(char)
     end
     
-    def self.add_participant(scene, char)
+    def self.add_participant(scene, char, enactor)
       if (!scene.participants.include?(char))
         scene.participants.add char
         
-        if (!scene.completed)
+        if (!scene.completed && char != enactor)
           message = t('scenes.scene_notify_added_to_scene', :num => scene.id)
           Login.notify(char, :scene, message, scene.id)
           Login.emit_ooc_if_logged_in char, message
