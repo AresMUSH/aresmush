@@ -100,6 +100,29 @@ module AresMUSH
         allow(DateTime).to receive(:now) { DateTime.new(2014, 01, 3) } # 2 days elapsed from 1/1 -> 1/3
         expect(ICTime.ictime).to eq DateTime.new(2114, 01, 5)
       end
+
+      it "should handle a time ratio across years" do
+        allow(Global).to receive(:read_config).with("ictime", "hour_offset") { 0 } 
+        allow(Global).to receive(:read_config).with("ictime", "day_offset") { 0 } 
+        allow(Global).to receive(:read_config).with("ictime", "year_offset") { 100 } 
+        allow(Global).to receive(:read_config).with("ictime", "time_ratio") { 2 } 
+        allow(Global).to receive(:read_config).with("ictime", "game_start_date") { "12/20/2014" } 
+
+        allow(DateTime).to receive(:now) { DateTime.new(2014, 12, 27) } # 7 days elapsed from 12/20 -> 12/27 means 14 days IC
+        expect(ICTime.ictime).to eq DateTime.new(2115, 1, 3)
+      end      
+
+      it "should handle a time ratio across years plus a day offset" do
+        allow(Global).to receive(:read_config).with("ictime", "hour_offset") { 0 } 
+        allow(Global).to receive(:read_config).with("ictime", "day_offset") { 2 } 
+        allow(Global).to receive(:read_config).with("ictime", "year_offset") { 100 } 
+        allow(Global).to receive(:read_config).with("ictime", "time_ratio") { 2 } 
+        allow(Global).to receive(:read_config).with("ictime", "game_start_date") { "12/20/2014" } 
+
+        allow(DateTime).to receive(:now) { DateTime.new(2014, 12, 27) } # 7 days elapsed from 12/20 -> 12/27 means 14 days IC
+        expect(ICTime.ictime).to eq DateTime.new(2115, 1, 5)
+      end      
+
       
     end
   end
