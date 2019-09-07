@@ -28,6 +28,11 @@ module AresMUSH
             end
           end
         end
+        
+        Global.logger.debug "AresCentral now uses https."
+        config = DatabaseMigrator.read_config_file("arescentral.yml")
+        config['arescentral']['arescentral_url'] = 'https://arescentral.aresmush.com'
+        DatabaseMigrator.write_config_file("arescentral.yml", config)
       end 
     end
   end
