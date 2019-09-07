@@ -75,66 +75,8 @@ module AresMUSH
             "cookie_received" => { 'type' => 'community', 'message' => "Received %{count} cookies." }
           })
         end
-        
-        Character.all.each do |c|
-          c.achievements.each do |achievement|
-            if (achievement.name =~ /fs3_joined_combat_/)
-              count = achievement.name.split('_').last.to_i
-              award_achievement(c, 'fs3_joined_combat', count)
-              achievement.delete
-            end
-
-            if (achievement.name =~ /word_count_/)
-              count = achievement.name.split('_').last.to_i
-              award_achievement(c, 'word_count', count)
-              achievement.delete
-            end
-
-            if (achievement.name =~ /scene_participant_/)
-              count = achievement.name.split('_').last.to_i
-              if (count > 0)
-                award_achievement(c, 'scene_participant', count)
-                achievement.delete
-              end
-            end
-            
-            if (achievement.name =~ /cookie_received_/)
-              count = achievement.name.split('_').last.to_i
-              award_achievement(c, 'cookie_received', count)
-              achievement.delete
-            end
-          end
-        end
       end 
-      
-      def award_achievement(char, name, count)
-        return nil if !Achievements.is_enabled?
-        return nil if char.is_admin? || char.is_npc? || char.is_guest?
-      
-        achievement_details = Achievements.achievement_data(name)          
-        if (!achievement_details)
-          raise "Achievement #{name} not found."
-        end
-      
-        type = achievement_details['type']
-        message = achievement_details['message']
-      
-        if (!type || !message)
-          raise "Invalid achievement details for #{name}.  Missing type or message."
-        end
-      
-        if (!Achievements.has_achievement?(char, name, count))
-          message = message % { count: count }
-          achievement = char.achievements.select { |a| a.name == name }.first
-        
-          if (achievement)
-            achievement.update(count: count, message: message)
-          else
-            Achievement.create(character: char, type: type, name: name, message: message, count: count)
-          end
-        end
-      end
-      
+
       def set_achievements(filename, section, data)
         config = DatabaseMigrator.read_config_file(filename)
         if (!config[section]['achievements'])
