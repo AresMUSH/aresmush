@@ -42,16 +42,16 @@ module AresMUSH
               return
             end
             job.participants.add model
-            client.emit_success t('jobs.participant_added')
-            Jobs.notify(job, t('jobs.participants_updated', :name => enactor.name, :num => job.id), enactor)
+            message = t('jobs.participant_added', :name => enactor.name, :num => job.id, :participant => model.name)
+            Jobs.notify(job, message, enactor)
           else
             if (!job.participants.include?(model))
               client.emit_failure t('jobs.participant_doesnt_exist', :name => model.name)
               return
             end
             job.participants.delete model
-            client.emit_success t('jobs.participant_removed')
-            Jobs.notify(job, t('jobs.participants_updated', :name => enactor.name, :num => job.id), enactor)
+            message = t('jobs.participant_removed', :name => enactor.name, :num => job.id, :participant => model.name)
+            Jobs.notify(job, message, enactor)
           end
         end
         
