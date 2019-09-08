@@ -9,16 +9,6 @@ module AresMUSH
       end
       
       def handle
-      new_changes = []
-      Game.master.recent_changes.each do |change|
-        case change['type'] 
-        when 'wiki'
-         new_changes << { type: 'wiki', message: "#{change['name']} updated.", data: { page_name: change['name'], version_id: change['id'] } }
-        when 'char'
-          new_changes << { type: 'char', message: "#{change['name']} updated.", data: { char_name: change['name'], version_id: change['id'] } }
-        end
-      end
-        Game.master.update(recent_changes: new_changes)
         client.emit_success "Done!"
       end
 
