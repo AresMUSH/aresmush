@@ -2,7 +2,7 @@ module AresMUSH
   module Describe
     class RoomDescBuilder
       def self.build(room)
-        desc = room.description || ""
+        desc = "#{room.description}"
 
         time_of_day = ICTime.time_of_day(room.area_name).titleize
         if (room.vistas && room.vistas.has_key?(time_of_day))

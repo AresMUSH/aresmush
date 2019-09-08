@@ -17,20 +17,18 @@ module AresMUSH
       end
       
       def check_can_access
-        return t('dispatcher.not_allowed') if !Jobs.can_access_jobs?(enactor)
+        return t('jobs.cant_access_jobs') if !Jobs.can_access_jobs?(enactor)
         return nil
       end
       
       def handle
         ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
           message = t('jobs.job_query', :name => enactor_name, :target => model.name, :desc => self.description)
-          result = Jobs.create_job(Jobs.request_category, self.title, message, model)
+          result = Jobs.create_job(Jobs.request_category, self.title, message, model, true)
           if (!result[:error].nil?)
             client.emit_failure result[:error]
           else
             client.emit_success t('jobs.job_created')
-            job = result[:job]
-            Jobs.notify_for_query(model, job)
           end
         end
       end

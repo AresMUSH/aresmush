@@ -16,7 +16,7 @@ module AresMUSH
       def roles(cat)
         roles = [ t('jobs.job_admin_only') ]
         roles.concat cat.roles.map { |r| r.name.titlecase }
-        roles.join(", ")
+        roles.uniq.join(", ")
       end     
       
       def category_color(cat)

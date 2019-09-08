@@ -81,7 +81,11 @@ chargen:
         make sure it's a good fit for the game's theme, that the skills are reasonable
         given the background, and that you haven't missed anything important in chargen.
         See `help apps` for additional help on the app review process.
-  welcome_message: "Please welcome %{name}, our latest %{position} to be approved!\n\nRP Hooks:\n%{rp_hooks}"
+  welcome_message: |-
+    Please welcome %{name}, our latest %{position} to be approved!
+
+    RP Hooks:
+    %{rp_hooks}
   arrivals_category: New Arrivals
   app_review_commands:
   - app %{name}
