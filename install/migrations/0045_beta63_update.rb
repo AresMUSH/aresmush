@@ -27,6 +27,10 @@ module AresMUSH
               achievement.delete
             end
           end
+          
+          scenes = Scene.all.select { |s| s.completed && s.participants.include?(c) }
+          c.update(scene_participation_count: scenes.count)
+          
         end
         
         Global.logger.debug "AresCentral now uses https."
