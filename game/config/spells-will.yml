@@ -194,6 +194,18 @@ spells:
     stance: cover
     target_num: 3
     target_optional: true
+  Multiple Telekinesis:
+    area: 15 yard radius
+    available: true
+    casting_time: 1 round, plus additional rounds for movement at the GM's discretion
+    desc: 'The caster can lift and move up to five objects weighing up to 100 lbs total. The more items they manipulate, the less precise their manipulation is. A single item can be manipulated with good precision, but manipulating three items is imprecise, and more than three items can only be manipulated with rudimentary control such as broad movements through the air. Objects cannot be smaller than 5cm or travel above 25 mph.'
+    duration: 1 hour
+    effect: Other
+    level: 5
+    name: Multiple Telekinesis
+    range: Short
+    roll: true
+    school: Will
   Telekinetic Precision:
     available: true
     casting_time: 1 round, plus additional rounds to manipulate at GM's discretion
