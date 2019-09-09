@@ -437,7 +437,7 @@ module AresMUSH
     end 
     
     def self.handle_word_count_achievements(char, pose)
-      character.update(pose_word_count: character.pose_word_count + "#{pose}".split.count)
+      char.update(pose_word_count: char.pose_word_count + "#{pose}".split.count)
       [ 1000, 2000, 5000, 10000, 25000, 50000, 100000, 250000, 500000 ].reverse.each do |count|
         if (char.pose_word_count >= count)
           Achievements.award_achievement(char, "word_count", count)
