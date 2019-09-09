@@ -27,7 +27,9 @@ module AresMUSH
           submitter = enactor
         end
 
-        result = Jobs.create_job(category, title, description, submitter)
+        notify_author = submitter_name && submitter.name != enactor.name
+        
+        result = Jobs.create_job(category, title, description, submitter, notify_author)
         if (result[:error])
           return {error: job[:error] }
         end
@@ -41,9 +43,7 @@ module AresMUSH
             end
             job.participants.add participant
           end
-        end
-        if (submitter_name && submitter.name != enactor.name)
-          Jobs.notify_for_query(submitter, job)
+          Jobs.notify(job, t('jobs.participants_updated', :name => enactor.name, :num => job.id), enactor)
         end
         
         {

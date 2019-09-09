@@ -28,6 +28,8 @@ en:
         discussed_job: "%{name} has added an admin-only comment to job #%{number} \"%{title}\".  This will not be seen by the submitter.  To respond to them, use the job/respond command."
         responded_to_job: "%{name} has responded to job #%{number} \"%{title}\"."
         updated_job: "%{name} has updated job #%{number} \"%{title}\"."
+        updated_job_title: "%{name} has updated the title of job #%{number} \"%{title}\"."
+        updated_job_category: "%{name} has updated the category of job #%{number} \"%{title}\"."
         requests_cmd_hint: "Use the requests command to view your requests."
         request_use_respond: "I think you meant to respond to a request.  Use request/respond <#>=<msg>"
         
@@ -70,10 +72,10 @@ en:
         job_query: "%{name} has sent a request to %{target}:%R%{desc}"
         cannot_submit_from_someone_else: "You don't have permission to submit a request on behalf of someone else."
         
-        participant_added: "Participant added."
-        participant_removed: "Participant removed."
         participant_already_exists: "%{name} is already participating in that job."
         participant_doesnt_exist: "%{name} is not participating in that job."
+        participant_added: "%{name} has added %{participant} to job %{num}."
+        participant_removed: "%{name} has removed %{participant} from job %{num}."
         participants_updated: "%{name} has updated the participants on job %{num}."
         other_participants_title: "Participants:"
         
@@ -81,6 +83,7 @@ en:
         category_deleted: "Job category deleted."
         category_created: "Job category created."
         category_color_set: "Job category color set."
+        category_template_set: "Job category template set."
         invalid_category_role: "%{name} is not a valid role for a job category."
         job_category_roles_set: "Job category roles set."
         category_already_exists: "That category already exists."
@@ -89,3 +92,6 @@ en:
         new_job_activity: "New activity in job %{num}."
         job_query_created: "Job %{job}: %{title} has been created for you."
         scan_summary: "%{count} unread jobs."
+        
+        cant_access_jobs: "Only job admin can use the job commands.  Try 'request' instead."
+        cant_view_job: "You don't have permission to view that job."

@@ -128,7 +128,7 @@ module AresMUSH
       
       if (!scene.was_restarted)
         scene.participants.each do |char|
-          Scenes.handle_scene_participation_achievement(char)
+          Scenes.handle_scene_participation_achievement(char, scene)
           if (FS3Skills.is_enabled?)
             FS3Skills.luck_for_scene(char, scene)
           end
@@ -157,11 +157,11 @@ module AresMUSH
       Scenes.participants_and_room_chars(scene).include?(char)
     end
     
-    def self.add_participant(scene, char)
+    def self.add_participant(scene, char, enactor)
       if (!scene.participants.include?(char))
         scene.participants.add char
         
-        if (!scene.completed)
+        if (!scene.completed && char != enactor)
           message = t('scenes.scene_notify_added_to_scene', :num => scene.id)
           Login.notify(char, :scene, message, scene.id)
           Login.emit_ooc_if_logged_in char, message
@@ -209,6 +209,8 @@ module AresMUSH
       
         Scenes.add_to_scene(scene, message, Game.master.system_character, false, true)
       end
+      
+      
       
     end
     
@@ -435,27 +437,22 @@ module AresMUSH
     end 
     
     def self.handle_word_count_achievements(char, pose)
-      [ 1000, 2000, 5000, 10000, 25000, 50000, 100000, 250000, 500000 ].each do |count|
-        pretty_count = count.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse
+      character.update(pose_word_count: character.pose_word_count + "#{pose}".split.count)
+      [ 1000, 2000, 5000, 10000, 25000, 50000, 100000, 250000, 500000 ].reverse.each do |count|
         if (char.pose_word_count >= count)
           Achievements.award_achievement(char, "word_count", count)
+          break
         end
       end
     end
     
-    def self.handle_scene_participation_achievement(char)
-      scenes = Scene.all.select { |s| s.completed && s.participants.include?(char) }
-      count = scenes.count
-        
-      Scenes.scene_types.each do |type|
-        if (scenes.any? { |s| s.scene_type == type })
-          Achievements.award_achievement(char, "scene_participant_#{type.downcase}")
-        end
-      end
-        
-      [ 1, 10, 20, 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000 ].each do |level|
-        if ( count >= level )
+    def self.handle_scene_participation_achievement(char, scene)
+      char.update(scene_participation_count: char.scene_participation_count + 1)
+      Achievements.award_achievement(char, "scene_participant_#{scene.scene_type.downcase}")
+      [ 1, 10, 20, 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000 ].reverse.each do |level|
+        if ( char.scene_participation_count >= level )
           Achievements.award_achievement(char, "scene_participant", level)
+          break
         end
       end
     end
