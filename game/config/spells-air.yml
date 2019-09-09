@@ -239,6 +239,19 @@ spells:
     name: Potions (Air)
     school: Air
     available: true
+  Sound Bubble:
+    area: 5 ft radius
+    available: false
+    casting_time: 1 round
+    desc: Create a bubble up to 10 ft in diameter centered on a target that functions as a barrier which sound cannot pass through. Inside the boundary of the bubble sound can be heard normally, but no noise from within the bubble can be heard outside it and no noise from the outside world can be heard by those within the bubble.
+    duration: 10 minutes
+    effect: Communication
+    level: 4
+    line_of_sight: true
+    name: Sound Bubble
+    range: Short
+    roll: true
+    school: Air
   Steady Wind:
     area: 15 yard radius
     available: true
