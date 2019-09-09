@@ -10,6 +10,18 @@ spells:
     range: Short
     roll: true
     school: Earth
+  Glitterdust:
+    available: true
+    attack_mod: -1
+    casting_time: 1 round
+    desc: A puff of prismatic mineral particles overtakes a target, acting as a temporary irritant to the eyes and respiratory system.
+    effect: Debuff
+    level: 1
+    line_of_sight: true
+    name: Glitterdust
+    range: Short
+    roll: true
+    school: Earth
   Rock Dance:
     available: true
     casting_time: 1 round
