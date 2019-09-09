@@ -79,6 +79,14 @@ magic-items:
     - Light
     - Awaken Terror
     spell_mod: 1
+  #Dimas's Hook
+  Flask Of Good Spirits:
+    name: Flask of Good Spirits
+    desc: "A hip flask made of some material that resembles frosted white glass, seemingly delicate, but blown through a technique and magics perfected by the sylphs of Stochieion. It shall never crack or scape, and can be dropped or dashed against a wall and still remain intact. The bears an inscription in Soitos which, when translated, reads: “Drink and know good conversation, good fortune, and good spirits.” It allows the bearer to cast %xBShare Emotion%xn, %xBMinor Luck%xn, and %xBTelepathic Correspondence%xn."
+    spells:
+    - Share Emotion
+    - Minor Luck
+    - Telepathic Correspondence
   #Elke's Hook
   Dragon Visage:
     name: Dragon Visage
@@ -93,12 +101,26 @@ magic-items:
     desc: "Gold in color, the coin is much harder than it has any right to be. The face is beaten and left rough, and there are several chinks across its edge. It will still spin, barely, but it's likely to fall over after just a few turns. About the size of a half dollar, the designs on both faces have faded considerably over time. Around the edge of both sides is a Celtic weave, tight and slim, that's broken in places. On one face is a triskele bound together by a circular weave that touches the ancient symbol's outer edges. Large, it occupies nearly the entire face of the golden coin. On the other side is a woman in profile. Clothed in flowing robes, she's flanked by a wolf, or perhaps a dog, but many of the details on that side have faded with time, or have been chipped free. Allows the bearer to cast %xBMedium Luck%xn"
     spells:
     - Medium Luck
-  weapon_specials: Aos Si Coin
+    weapon_specials: Aos Si Coin
+  #Grace's Hook
+  Dice Of Apate:
+    name: Dice of Apate
+    desc: Shaped from a rare, opalescent Stochieion stone, this pair of six-sided dice have been worn smooth with use, a sign of their ancient age. Notched dots on each side indicate the count. A favorite in games of chance, it is not common knowledge that the dice allow the bearer to cast %xBTrick Senses%xn and %xBEmotional Aura%xn.
+    spells:
+    - Trick Senses
+    - Emotional Aura
+  #Jamie's Hook
+  Nakama's Touch:
+    name: "Nakama's Touch"
+    desc: "A slender wand, about a foot in length, lovingly shaped from a soft, stone-like material colored in shifting whites and browns and pinks. Upon closer inspection, it is not made of stone at all, but of the seashells that decorate so much of the beaches of Takutaima. Shaped and melded together. Its surface is etched with symbols that resemble tiny, stylized waves, done in a design not unlike that common in the islands of Polynesia. A single, bluish crystal is attached to one end. Amidst the symbols are carved faint words in Soitos which translate to: “Nakama's Touch. The seas defend one with a worthy heart.” The wand is enchanted enable its bearer to cast %xBWater Whip%xn and %xBWater Breathing%xn."
+    spells:
+    - Water Whip
+    - Water Breathing
   #Joel's Hook
   Tarian Y Tir:
     name: Tarian Y Tir
     desc: "Five and a half feet tall, the center of this oval shield bears a polished, gnarled knot with bark still clinging to the surface. Wooden planks have been bound together, riveted, and rimmed tightly with hard leather. They've aged and weathered to a color approaching black rather than their original deep brown. The wood is left unpolished, and apart from a deep gouge down its center that looks as if it may have once split the shield in two, the knot has no noticeable nicks or cuts. A simple, chipped painting of a bear's head in profile is painted on the surface in Celtic blue. Her neck ends in a circular curl like a triskele's, and an elaborate Celtic knot is painted in fading silver behind her. A painted silver Celtic weave follows the leather rim around the shield. The paint has faded considerably over time and large sections have flaked away. Beneath the bear's head, runes read:\nProtect the land, protect the people.\nCherish, always, what is,\nOur boughs bring forth the fruit of what will be.\nGives the bearer the ability to cast %xBGroup Telekinetic Block%xn."
-    armor_specials:  Joel's Shield
+    armor_specials: Tarian Y Tir
     spells:
     - Group Telekinetic Block
   #Jonathan's Hook
@@ -107,11 +129,18 @@ magic-items:
     desc: "A small statue of an African Sacred Ibis, able to fit in the palm of a hand. The ibis is reclined gracefully, positioned to sit atop its long, dark legs on a rectangular base. Its head and the tips of its wings are painted a deep ebony, while the rest of the feathered body glimmers with gold. The idol allows the bearer to contact Thoth, the Egyptian god of wisdom, and gives the bearer the ability to cast %xBTelepathic Link%xn"
     spells:
     - Telepathic Link
-    #Summer's Hook
-    Pilot’s Watch:
-      name: Pilot’s Watch
-      desc: "A slightly battered, silver wristwatch. It has a large onyx face that matches its black leather band. The winding crown is oversized in the way common of pilot watches. The dial is large and luminescent, so the wearer can quickly and easily tell time in both good and bad weather and for day or night flights. It has a few extra bezel markings to assist with calculations like fuel burn and wind correction angles. Gives the bearer the ability to cast %xBWind Wall%xn and %xBShape Air%xn."
-      spells:
-      - Wind Wall
-      - Shape Air
-      spell_mod: 1
+  #Olive's Hook
+  Ring Of Nolawyn:
+    name: Ring of Nolawyn
+    desc: A ring made from silver and set with a brilliant round opalescent stone in the center, the band is not a single stretch of metal but fashioned to look like two aged and intertwined branches complete with small leaves. By the hand of a detailed craftsman, delicate lines have been etched into the materials to create the appearance of real bark. The Ring of Nolawyn is an ancient Feynthorn relic that allows the wearer to cast %xBInvisibile%xn and once belonged to the Old Tree, Valyll, before being passed on to Olive Roots in return for her selfless assistance to the Velathari.
+    spells:
+    - Invisible
+    armor_specials: Ring of Nolawyn
+  #Summer's Hook
+  Pilot’s Watch:
+    name: Pilot’s Watch
+    desc: "A slightly battered, silver wristwatch. It has a large onyx face that matches its black leather band. The winding crown is oversized in the way common of pilot watches. The dial is large and luminescent, so the wearer can quickly and easily tell time in both good and bad weather and for day or night flights. It has a few extra bezel markings to assist with calculations like fuel burn and wind correction angles. Gives the bearer the ability to cast %xBWind Wall%xn and %xBShape Air%xn."
+    spells:
+    - Wind Wall
+    - Shape Air
+    spell_mod: 1

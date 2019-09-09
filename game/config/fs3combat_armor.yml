@@ -342,6 +342,10 @@ fs3combat:
       description: Magical item
       is_magic: true
       defense: 3
+    Ring of Nolawyn:
+      description: Magical item
+      is_magic: true
+      defense: 1
     Tarian Y Tir:
       description: Magical Item
       protection:
