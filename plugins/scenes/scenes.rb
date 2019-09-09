@@ -16,7 +16,7 @@ module AresMUSH
       
       # Automatically add achievements for the various scene types.
       Scenes.scene_types.each do |type|
-        list["scene_participant_#{type}"] = { 'type' => 'story', 'message' => "Participated in a #{type} scene." }
+        list["scene_participant_#{type.downcase}"] = { 'type' => 'story', 'message' => "Participated in a #{type} scene." }
       end
       list
     end

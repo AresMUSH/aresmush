@@ -25,19 +25,15 @@ You can create a room and optionally specify an outgoing exit (from your current
 
 ## Creating Exits
 
-You can create additional exits using the 'open' command, and link exits to different rooms.  You can use the room database ID or a name (as long as the name is unambiguous).
+You can create additional exits using the 'open' command, and link exits to different rooms.  You can use the room database ID or a name (as long as the name is unambiguous).  See "Finding Rooms and Exits" below for more info on database IDs.
 
 `open <exit>[=<destination>]` - Creates an exit.
 
-Once you have an exit, you can change the source or destination rooms that it's linked to.  
+Once you have an exit, you can change the source or destination rooms that it's linked to.  These commands accept an exit name or database ID. You'll need to use the ID if there are multiple exits in the room with the same name.  See "Finding Rooms and Exits" below for more info on database IDs.
 
 `link <exit>=<destination>` - Links an exit to a room.
 `link/source <exit>=<source>` - Changes the exit's source.  The destination will be the current room.
 `unlink <exit>` - Unlinks an exit from its destination.
-
-> **Tip:** By default, the room description shows you the exit name and the name of its destionation, e.g. `[S] Town Square`.  You can change the destination name to something else just by giving the exit a short description using the `shortdesc` command (see [Descriptions](/help/descriptions)).
-
-For help with exit locks, see [Locks](/help/lock).
 
 ## Exit Aliases
 
@@ -47,14 +43,33 @@ Ares has several navigational cues that make exit aliases largely unnecessary.  
 
 > **Tip:** Any exit named "O" is automatically aliased to "Out".  Also, if no specific 'out' exit exists, 'out' will simply take you out the first exit it can find.
 
-## Finding Rooms
+## Exit Descriptions
 
-If you lose track of rooms you've created, you may need to use the database commands to find them again.  You can also use the database commands to destroy rooms or exits.  
+By default, the room description shows you the exit name and the name of its destination, e.g. `[S] Town Square`.  You can change the destination name to something else just by giving the exit a short description.
+
+`shortdesc <exit name>=<short description>`
+
+## Locked Exits
+
+For help with exit locks, see [Locks](/help/lock).
+
+## Finding Rooms and Exits
+
+If you lose track of rooms you've created, you may need to use these search commands to find them again.
 
 `rooms`- Lists all rooms
 `rooms <search>` - Search for rooms.
+  
+Sometimes you'll also need to know the database ID for an exit in your room.
 
-See the [Database Help](/help/database) file for more information.
+`exits` - Lists all exits in your current room.
+
+## Destroying Rooms and Exits
+
+The destroy command will destroy a room or exit.  You can use 'here' or the name of the object.  If you accidentally create multiple exits with the same name in a single room, you'll need to use the database ID instead.  See "Finding Rooms and Exits" above.
+
+`destroy here` - Destroys the room you're in and all its outgoing exits.  Incoming exits become unlinked.
+`destroy <name or id>` - Destroys a room or exit by name or ID
 
 ## Special Rooms
 
