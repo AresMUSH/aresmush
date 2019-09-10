@@ -11,5 +11,9 @@ module AresMUSH
       self.source && self.source.room_owners.include?(char)
     end
     
+    def destination_name
+      !self.dest ? t('describe.nowhere') : self.dest.name
+    end
+    
   end
 end

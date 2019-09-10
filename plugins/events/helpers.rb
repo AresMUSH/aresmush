@@ -66,7 +66,7 @@ module AresMUSH
 
       Channels.announce_notification(t('events.event_created_notification', :title => title))
       Events.events_updated
-      Events.handle_event_achievement(enactor)
+      Achievements.award_achievement(enactor, "event_created")
       return event
     end
 
@@ -120,29 +120,25 @@ module AresMUSH
       end
     end
 
-    def self.handle_event_achievement(char)
-        Achievements.award_achievement(char, "event_created")
-    end
-    
     def self.cancel_signup(event, name, enactor)
       if (name != enactor.name && !Events.can_manage_event(enactor, event))
         return t('dispatcher.not_allowed')
       end
-      
+
       signup = event.signups.select { |s| s.character.name == name }.first
       if (!signup)
         return t('events.not_signed_up', :name => name)
       end
-      
+
       organizer = event.character
       if (organizer)
         message = t('events.signup_removed', :title => event.title, :name => signup.character.name)
         Login.notify(organizer, :event, message, event.id)
         Login.emit_ooc_if_logged_in organizer, message
       end
-      
+
       signup.delete
-      
+
       return nil
     end
   end

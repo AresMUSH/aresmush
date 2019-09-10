@@ -46,6 +46,12 @@ module AresMUSH
       days_away > 0 && days_away < days
     end
     
+    def is_signed_up?(char)
+      return nil if !char
+      return true if self.character == char
+      return self.signups.any? { |e| e.character == char }
+    end
+    
     def is_past?
       time_until_event < 0
     end    
