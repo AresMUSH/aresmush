@@ -31,7 +31,7 @@ module AresMUSH
           end
           
           if (self.add_char)
-            Scenes.add_participant(scene, char)
+            Scenes.add_participant(scene, char, enactor)
             client.emit_success t('scenes.scene_char_added', :name => char.name)            
           else
             if (scene.participants.include?(char))

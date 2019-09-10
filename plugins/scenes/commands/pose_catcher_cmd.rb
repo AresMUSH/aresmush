@@ -12,9 +12,12 @@ module AresMUSH
         is_emit = false
         is_ooc = false
         
-        if (cmd.raw.start_with?("\\"))
-          message = cmd.raw.after("\\")
+        if (cmd.raw.start_with?("\\\\"))
+          message = cmd.raw.after("\\\\")
           is_emit = true
+        elsif (cmd.raw.start_with?("\\"))
+            message = cmd.raw.after("\\")
+            is_emit = true
         elsif (cmd.raw.start_with?("'"))
           message = PoseFormatter.format(enactor_name, cmd.raw.after("'"))
           is_ooc = true

@@ -17,7 +17,7 @@ aliases:
 `say Hello!` or `"Hello!` - Bob says, "Hello!"
 `pose waves.` or `:waves.` - Bob waves.
 `;'s hair is black.` - Bob's hair is black.
-`emit Go Bob!` or `\Go Bob!` - Go Bob!
+`emit Go Bob!` or `\Go Bob!` or `\\Go Bob!` - Go Bob!
 `ooc I have a question.` or `'I have a question.` - <OOC> Bob says, "I have a question."
 
 `pemit <list of names>=<message>` - Make a private emit with an OOC notice in front telling who it came from.
