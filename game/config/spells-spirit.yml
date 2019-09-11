@@ -142,7 +142,7 @@ spells:
     available: true
     casting_time: 1 round
     desc: Target becomes charmed by the caster and attempts to move toward them. They are neutral toward all parties and will neither aid nor attack while under the spell. The spell is broken if they are hit by an attack.
-    effect: Stun
+    effect: Psionic
     is_stun: true
     rounds: 1
     level: 3
@@ -219,7 +219,7 @@ spells:
     defense_mod: -1
     desc: "The target's chance of botching their intended action increases slightly. "
     duration: 2 rounds
-    effect: Debuff
+    effect: Psionic
     is_potion: true
     level: 3
     line_of_sight: true
