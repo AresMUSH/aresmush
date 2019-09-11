@@ -170,6 +170,7 @@ module AresMUSH
       specials = Magic.set_magic_item_weapon_specials(combatant, specials)
 
       # Set weapon specials gained from spells
+
       if specials && combatant.spell_weapon_effects[weapon]
         spell_specials = combatant.spell_weapon_effects[weapon].keys
         specials = specials.concat spell_specials
@@ -180,22 +181,22 @@ module AresMUSH
       max_ammo = weapon ? FS3Combat.weapon_stat(weapon, "ammo") : 0
       weapon = weapon ? weapon.titlecase : "Unarmed"
       prior_ammo = combatant.prior_ammo || {}
-      
+
       if (weapon && prior_ammo[weapon])
         max_ammo = prior_ammo[weapon]
       end
+
       if (combatant.weapon_name)
         prior_ammo[combatant.weapon_name] = combatant.ammo
         combatant.update(prior_ammo: prior_ammo)
       end
+
       combatant.update(weapon_name: weapon)
       combatant.update(weapon_specials: specials ? specials.map { |s| s.titlecase }.uniq : [])
       combatant.update(ammo: max_ammo)
       combatant.update(max_ammo: max_ammo)
       combatant.update(action_klass: nil)
       combatant.update(action_args: nil)
-      Global.logger.debug "Real saved spell thingy post-updates:  #{Combatant[combatant.id].spell_weapon_effects}"
-
       message = t('fs3combat.weapon_changed', :name => combatant.name,
         :weapon => combatant.weapon)
       FS3Combat.emit_to_combat combatant.combat, message, FS3Combat.npcmaster_text(combatant.name, enactor)
