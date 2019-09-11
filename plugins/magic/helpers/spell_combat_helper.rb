@@ -42,6 +42,36 @@ module AresMUSH
       succeeds = Magic.spell_success(spell, die_result)
     end
 
+    def self.set_spell_weapon_effects(combatant, spell)
+      rounds = Global.read_config("spells", spell, "rounds")
+      special = Global.read_config("spells", spell, "weapon_specials")
+      weapon = combatant.weapon.before("+")
+      weapon_specials = combatant.spell_weapon_effects
+
+      if combatant.spell_weapon_effects.has_key?(weapon)
+        old_weapon_specials = weapon_specials[weapon]
+        weapon_specials[weapon] = old_weapon_specials.merge!( special => rounds)
+      else
+        weapon_specials[weapon] = {special => rounds}
+      end
+      combatant.update(spell_weapon_effects: weapon_specials)
+    end
+
+    def self.spell_armor_effects(combatant, spell)
+      rounds = Global.read_config("spells", spell, "rounds")
+      special = Global.read_config("spells", spell, "armor_specials")
+      weapon = combatant.armor.before("+")
+      weapon_specials = combatant.spell_armor_effects
+
+      if combatant.spell_armor_effects.has_key?(armor)
+        old_armor_specials = armor_specials[armor]
+        armor_specials[armor] = old_armor_specials.merge!( special => rounds)
+      else
+        armor_specials[armor] = {special => rounds}
+      end
+      combatant.update(spell_armor_effects:armor_specials)
+    end
+
     def self.cast_mind_shield(combatant, target, spell, rounds)
       shield_strength = combatant.roll_ability("Spirit")
       target.update(mind_shield: shield_strength)
@@ -97,12 +127,11 @@ module AresMUSH
       lethal_mod = Global.read_config("spells", spell, "lethal_mod")
       defense_mod = Global.read_config("spells", spell, "defense_mod")
       spell_mod = Global.read_config("spells", spell, "spell_mod")
-      Magic.spell_weapon_effects(combatant, spell)
+      Magic.set_spell_weapon_effects(target, spell)
       attack_mod = Global.read_config("spells", spell, "attack_mod")
 
       weapon = combatant.weapon.before("+")
-      FS3Combat.set_weapon(nil, target, weapon, [weapon_specials_str])
-
+      FS3Combat.set_weapon(enactor = nil, target, weapon, [weapon_specials_str])
       if heal_points
         message = []
       elsif lethal_mod || defense_mod || attack_mod || spell_mod
