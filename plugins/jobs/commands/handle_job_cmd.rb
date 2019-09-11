@@ -7,7 +7,7 @@ module AresMUSH
       
       def parse_args
         if (cmd.args =~ /\=/)
-          args = cmd.parse_args(ArgParser.arg1_equals_arg2)
+          args = cmd.parse_args(ArgParser.arg1_equals_optional_arg2)
           self.number = trim_arg(args.arg1)
           self.assignee = trim_arg(args.arg2)
         else
@@ -22,12 +22,16 @@ module AresMUSH
       
       def handle
         Jobs.with_a_job(enactor, client, self.number) do |job|
-          ClassTargetFinder.with_a_character(self.assignee, client, enactor) do |target|
-            if (!Jobs.can_access_jobs?(target))
-              client.emit_failure t('jobs.cannot_handle_jobs')
-              return
+          if (self.assignee)
+            ClassTargetFinder.with_a_character(self.assignee, client, enactor) do |target|
+              if (!Jobs.can_access_jobs?(target))
+                client.emit_failure t('jobs.cannot_handle_jobs')
+                return
+              end
+              Jobs.assign(job, target, enactor)
             end
-            Jobs.assign(job, target, enactor)
+          else
+            job.update(assigned_to: nil)
           end
         end
       end
