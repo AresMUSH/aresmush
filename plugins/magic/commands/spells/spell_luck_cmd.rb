@@ -17,7 +17,7 @@ module AresMUSH
         return t('fs3skills.not_enough_points') if enactor.luck < 1
         return t('magic.use_school_version') if (self.spell == "Potions" || self.spell == "Familiar")
         return t('magic.not_spell') if !Magic.is_spell?(self.spell)
-        return t('magic.need_higher_level', :spell => self.spell) if Magic.higher_level_spell?(enactor, self.spell) == false        
+        return t('magic.need_higher_level', :spell => self.spell) if Magic.higher_level_spell?(enactor, self.spell) == false
         return  t('magic.not_learning_spell', :spell => self.spell) if !spell_learned
         return t('magic.only_1_xp_needed') if spell_learned.xp_needed.to_i == 1
         if enactor.groups.values.include? self.school
@@ -37,7 +37,7 @@ module AresMUSH
             message = t('magic.reduce_spell_learn_time', :spell => self.spell)
 
             enactor.spend_luck(2)
-            Achievements.award_achievement(enactor, "fs3_luck_spent", 'fs3', "Spent a luck point.")
+            Achievements.award_achievement(enactor, "fs3_luck_spent")
 
             job_message = t('magic.reduce_spell_learn_time_job', :name => enactor.name, :spell => self.spell)
             category = Global.read_config("jobs", "luck_category")
