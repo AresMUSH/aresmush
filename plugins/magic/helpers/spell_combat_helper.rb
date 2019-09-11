@@ -132,13 +132,13 @@ module AresMUSH
       lethal_mod = Global.read_config("spells", spell, "lethal_mod")
       defense_mod = Global.read_config("spells", spell, "defense_mod")
       spell_mod = Global.read_config("spells", spell, "spell_mod")
-      Magic.set_spell_weapon_effects(combatant, spell)
-      Global.logger.debug "spell_weapon_effects after set call #{combatant.spell_weapon_effects}"
+      Magic.set_spell_weapon_effects(target, spell)
+      Global.logger.debug "spell_weapon_effects for #{target.id} #{target.name} after set call #{target.spell_weapon_effects}"
       attack_mod = Global.read_config("spells", spell, "attack_mod")
 
       weapon = combatant.weapon.before("+")
-      FS3Combat.set_weapon(nil, target, weapon, [weapon_specials_str])
-      Global.logger.debug "spell_weapon_effects after set weapon #{combatant.spell_weapon_effects}"
+      FS3Combat.set_weapon(enactor = nil, target, weapon, [weapon_specials_str])
+      Global.logger.debug "spell_weapon_effects after set weapon #{target.spell_weapon_effects}"
       if heal_points
         message = []
       elsif lethal_mod || defense_mod || attack_mod || spell_mod
@@ -146,7 +146,7 @@ module AresMUSH
       else
         message = [t('magic.casts_spell', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn")]
       end
-      Global.logger.debug "spell_weapon_effects at end of cast_weapon_specials #{combatant.spell_weapon_effects}"
+      Global.logger.debug "spell_weapon_effects at end of cast_weapon_specials #{target.spell_weapon_effects}"
     end
 
     def self.cast_armor(combatant, target, spell, armor)
