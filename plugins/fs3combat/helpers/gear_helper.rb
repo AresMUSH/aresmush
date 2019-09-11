@@ -165,10 +165,11 @@ module AresMUSH
     end
 
     def self.set_weapon(enactor, combatant, weapon, specials = nil)
-
+      Global.logger.debug "Specials #{specials}"
+      Global.logger.debug "spell_weapon_effects for #{combatant.id} #{combatant.name} in set weapon #{combatant.spell_weapon_effects}"
       # Set weapon specials gained from equipped magical items
       specials = Magic.set_magic_item_weapon_specials(combatant, specials)
-
+      Global.logger.debug "Specials2 #{specials}"
       # Set weapon specials gained from spells
 
       if specials && combatant.spell_weapon_effects[weapon]
