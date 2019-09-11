@@ -401,7 +401,7 @@ fs3combat:
       special_group: Ranged
     Ice Armor:
       description: Level 4 Water spell
-      is_magic: true
+      is_magic: false
       skill: Melee
       lethality: 0
       penetration: 6
