@@ -63,6 +63,20 @@ spells:
     range: Short
     roll: true
     school: Earth
+  Tremor:
+    attack_mod: -1
+    available: false
+    casting_time: 1 round
+    desc: "The earth shudders beneath a target's feet, making it difficult for them to aim."
+    duration: 2 rounds.
+    effect: Debuff
+    level: 2
+    line_of_sight: true
+    name: Tremor
+    range: Short
+    rounds: 2
+    school: Earth    
+  #Level 3
   Earth Bolt:
     area: Direct line from caster, 5 yards wide
     available: true
