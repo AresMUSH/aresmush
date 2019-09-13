@@ -68,3 +68,10 @@ scenes:
     - 2
   unshared_scene_deletion_days: 90
   unshared_scene_warning_days: 83
+  achievements:
+    word_count:
+      type: story
+      message: Wrote %{count} words in scenes.
+    scene_participant:
+      type: story
+      message: Participated in %{count} scenes.
