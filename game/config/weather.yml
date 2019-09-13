@@ -106,10 +106,7 @@ weather:
       early-fall:
         temperature: warm warm warm cool cool cool cool cold cold cold
         condition: |-
-          mountain-clear mountain-clear mountain-clear mountain-clear mountain-clear
-           mountain-clear mountain-fair mountain-fair mountain-windy mountain-windy
-           mountain-windy mountain-overcast mountain-drizzling mountain-raining
-           mountain-sleeting mountain-storming mountain-dusting
+          mountain-clear mountain-clear mountain-clear mountain-clear mountain-clear mountain-clear mountain-fair mountain-fair mountain-windy mountain-windy mountain-windy mountain-overcast mountain-drizzling mountain-raining mountain-sleeting mountain-storming mountain-dusting
         stability: 70
       fall:
         temperature: warm warm cool cool cool cool cold cold cold cold
