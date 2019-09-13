@@ -167,15 +167,13 @@ weather:
     storming: It's raining really hard.
     flurrying: It's flurrying.
     snowing: It's snowing.
-    mountain-sunny: The sun is bright against a brilliant blue sky, making the temperature
-      feel several degrees warmer.
-    mountain-clear: The skies are clear and breathtakingly blue, with only a few high,
+    mountain-clear: The skies are breathtakingly clear, with only a few high,
       white wispy clouds.
     mountain-fair: A few clouds drift lazily along as a dry breeze blows through the
       mountains.
     mountain-misty: The clouds are thick and low. Tiny droplets of moisture cling
       to everything.
-    mountain-overcast: The sky is thick and gray with clouds that threaten worse weather.
+    mountain-overcast: The sky is thick and gray with clouds.
     mountain-drizzling: A steady, light mist drizzles downward, somewhere between
       a heavy fog and a proper rain.
     mountain-raining: Rain falls steadily from an overcast sky.
@@ -188,8 +186,7 @@ weather:
       in a light dusting of white.
     mountain-flurrying: Fluffy snowflakes drift lazily from the heavens, covering
       everything in a blanket of white.
-    mountain-snowing: Snow falls steadily and thickly. It accumulates quickly on the
-      ground in a beautiful, dangerous blanket of white.
+    mountain-snowing: Snow falls steadily and thickly, accumulating in a beautiful blanket of white.
     mountain-blizzard: Snow comes down in a white curtain that makes it impossible
       to see far. The inches accumulate with dangerous swiftness.
     hot_early-spring_morning: It is a hot spring morning.
