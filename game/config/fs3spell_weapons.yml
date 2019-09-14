@@ -218,7 +218,7 @@ fs3combat:
     Natural Weaponry:
       description: Level 2 Nature spell
       is_magic: true
-      skill: Nature
+      skill: Brawl
       lethality: -10
       penetration: 4
       weapon_type: Melee
@@ -226,7 +226,7 @@ fs3combat:
       damage_type: Physical
       accuracy: 0
       init_mod: 0
-      special_group: Brawl
+      special_group: Melee
   #Level 3
     Earth Bolt:
       description: Level 3 Earth spell
@@ -244,7 +244,7 @@ fs3combat:
     Stone Fists:
       description: Level 3 Earth spell
       is_magic: true
-      skill: Melee
+      skill: Brawl
       lethality: 0
       penetration: 5
       weapon_type: Melee
@@ -252,7 +252,7 @@ fs3combat:
       damage_type: Physical
       accuracy: 0
       init_mod: 0
-      special_group: Brawl
+      special_group: Melee
     Flame Dart:
       description: Level 3 Fire spell
       is_magic: true
@@ -268,7 +268,7 @@ fs3combat:
     Hot Hands:
       description: Level 3 Fire spell
       is_magic: true
-      skill: Fire
+      skill: Brawl
       lethality: -5
       penetration: 6
       weapon_type: Melee
@@ -276,11 +276,11 @@ fs3combat:
       damage_type: Physical
       accuracy: 3
       init_mod: 0
-      special_group: Brawl
+      special_group: Melee
     Ice Talons:
       description: Level 3 Water spell
       is_magic: true
-      skill: Melee
+      skill: Brawl
       lethality: -5
       penetration: 5
       weapon_type: Melee
@@ -288,7 +288,7 @@ fs3combat:
       damage_type: Physical
       accuracy: 0
       init_mod: 0
-      special_group: Brawl
+      special_group: Melee
     Laser Zap:
       description: Level 3 Fire spell
       is_magic: true
@@ -402,7 +402,7 @@ fs3combat:
     Ice Armor:
       description: Level 4 Water spell
       is_magic: false
-      skill: Melee
+      skill: Brawl
       lethality: 0
       penetration: 6
       weapon_type: Melee
@@ -410,7 +410,7 @@ fs3combat:
       damage_type: Physical
       accuracy: 0
       init_mod: 0
-      special_group: Brawl
+      special_group: Melee
     Jenu:
       description: Form for Half Shift spell
       is_magic: true
@@ -450,7 +450,7 @@ fs3combat:
     Rock Skin:
       description: Level 4 Earth spell
       is_magic: true
-      skill: Melee
+      skill: Brawl
       lethality: 5
       penetration: 6
       weapon_type: Melee
@@ -458,7 +458,7 @@ fs3combat:
       damage_type: Physical
       accuracy: 0
       init_mod: 0
-      special_group: Brawl
+      special_group: Melee
     Water Whip:
       description: Level 4 Water spell
       is_magic: true
