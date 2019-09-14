@@ -6,4 +6,4 @@ backup:
     minute:
     - 25
   backup_type: local
-  backups_to_keep: 12
+  backups_to_keep: 8
