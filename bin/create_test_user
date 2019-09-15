@@ -1,3 +1,9 @@
+if [[ $EUID == 0 ]]; then
+   echo "This script should not be run as root.  Log out and log back in with your ares user." 
+   exit 1
+fi
+
+
 export ARES_INSTALL_TEXT="<\033[0;32mINSTALL\033[0m>"
 
 echo -e "${ARES_INSTALL_TEXT} Create an ares test user"
