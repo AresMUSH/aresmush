@@ -1,2 +1,7 @@
+if [[ $EUID == 0 ]]; then
+   echo "This script should not be run as root.  Log out and log back in with your ares user." 
+   exit 1
+fi
+
 bundle install
 bundle exec rake migrate
