@@ -123,6 +123,8 @@ module AresMUSH
 
       scene.update(completed: true)
       scene.update(date_completed: Time.now)
+      scene.invited.replace []
+      scene.watchers.replace []
       
       Scenes.new_scene_activity(scene, :status_changed, nil)
       
