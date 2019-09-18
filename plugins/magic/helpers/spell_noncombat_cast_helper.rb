@@ -201,18 +201,17 @@ module AresMUSH
           elsif spell == "Endure Fire"
             target.update(endure_fire: shield_strength)
             type = "fire"
-            puts "Target: #{target.name} Shield: #{shield_strength} Endure: #{target.endure_fire}"
           elsif spell == "Endure Cold"
             target.update(endure_cold: shield_strength)
             type = "ice"
           end
           Global.logger.info "#{spell} strength on #{target.name} set to #{shield_strength}."
-          puts "Target: #{target.name} Shield: #{shield_strength} Endure: #{target.endure_fire}"
+          puts "1 Target: #{target.name} Shield: #{shield_strength} Set to: #{target.mind_shield}"
           message = [t('magic.cast_shield', :name => caster_name, :spell => spell, :mod => mod, :succeeds => "%xgSUCCEEDS%xn", :target =>  target.name, :type => type)]
           messages.concat message
         end
       end
-    puts "Target: #{caster.name} Shield: #{shield_strength} Endure: #{caster.endure_fire}"
+    puts "2 Target: #{caster.name} Shield: #{shield_strength} Endure: #{caster.mind_shield}"
       return messages
     end
 
