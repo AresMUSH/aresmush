@@ -41,17 +41,13 @@ module AresMUSH
           if heal_points
             message = Magic.cast_non_combat_heal(enactor.name, self.target_name_string, self.spell, self.mod)
           elsif Magic.spell_shields.include?(self.spell)
+            puts "BEFORE msg Target: #{enactor.name}  Shield: #{enactor.mind_shield}"
             message = Magic.cast_noncombat_shield(enactor.name, self.target_name_string, self.spell, self.mod, success[:result])
+            puts "After Msg Target: #{enactor.name}  Shield: #{enactor.mind_shield}"
           else
             message = Magic.cast_noncombat_spell(enactor.name, self.target_name_string, self.spell, self.mod, success[:result])
-            puts "Triggering this"
           end
-          tar = Character.named("Nessie")
-          puts "BEFORE Target: #{tar.name}  Endure: #{tar.endure_fire}"
           Magic.handle_spell_cast_achievement(enactor)
-          tar = Character.named("Nessie")
-          puts "AFTER Target: #{tar.name}  Endure: #{tar.endure_fire}"
-
         else
           if !self.has_target
             message = [t('magic.casts_spell', :name => caster_name, :spell => spell, :mod => mod, :succeeds => success[:succeeds])]
