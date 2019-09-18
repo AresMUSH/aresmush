@@ -109,6 +109,21 @@ spells:
     range: Short
     roll: true
     school: Nature
+  Sling Barb:
+    available: false
+    casting_time: 1 round
+    desc: Caster grows a natural barb from any flora in the surrounding environment and flings it at target.
+    effect: Damage
+    fs3_attack: true
+    level: 2
+    line_of_sight: true
+    name: Sling Barb
+    range: Short
+    school: Nature
+    target_num: 1
+    target_optional: true
+    weapon: Sling Barb
+    effect: Damage
   #Level 3
   Bark Skin:
     available: true
