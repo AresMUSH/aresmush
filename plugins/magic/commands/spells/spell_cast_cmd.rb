@@ -16,7 +16,6 @@ module AresMUSH
           self.target_name_string = titlecase_arg(args.target)
           self.has_target = true
         end
-        Global.logger.debug "Name string #{self.target_name_string}"
       end
 
       def check_errors
@@ -33,25 +32,31 @@ module AresMUSH
       def handle
         heal_points = Global.read_config("spells", self.spell, "heal_points")
         print_names = Magic.print_target_names(self.target_name_string)
-        success = Magic.roll_noncombat_spell_success(enactor, self.spell, self.mod)
+        success = Magic.roll_noncombat_spell_success(enactor.name, self.spell, self.mod, dice = nil)
 
-        if success == "%xgSUCCEEDS%xn"
-          if heal_points
-            message = Magic.cast_non_combat_heal(enactor, self.target_name_string, self.spell, self.mod)
-          elsif Magic.spell_shields.include?(self.spell)
-            message = Magic.cast_noncombat_shield(enactor, self.target_name_string, self.spell, self.mod)
-          else
-            if !self.has_target
-              self.target_name_string = nil
-            end
-            message = Magic.cast_noncombat_spell(enactor, self.target_name_string, self.spell, self.mod)
+        if success[:succeeds] == "%xgSUCCEEDS%xn"
+          if !self.has_target
+            self.target_name_string = nil
           end
+          if heal_points
+            message = Magic.cast_non_combat_heal(enactor.name, self.target_name_string, self.spell, self.mod)
+          elsif Magic.spell_shields.include?(self.spell)
+            message = Magic.cast_noncombat_shield(enactor.name, self.target_name_string, self.spell, self.mod, success[:result])
+          else
+            message = Magic.cast_noncombat_spell(enactor.name, self.target_name_string, self.spell, self.mod, success[:result])
+            puts "Triggering this"
+          end
+          tar = Character.named("Nessie")
+          puts "BEFORE Target: #{tar.name}  Endure: #{tar.endure_fire}"
           Magic.handle_spell_cast_achievement(enactor)
+          tar = Character.named("Nessie")
+          puts "AFTER Target: #{tar.name}  Endure: #{tar.endure_fire}"
+
         else
           if !self.has_target
-            message = [t('magic.casts_spell', :name => enactor.name, :spell => spell, :mod => mod, :succeeds => success)]
+            message = [t('magic.casts_spell', :name => caster_name, :spell => spell, :mod => mod, :succeeds => success[:succeeds])]
           else
-            message = [t('magic.casts_spell_on_target', :name => enactor.name, :spell => spell, :mod => mod, :target => print_names, :succeeds => success)]
+            message = [t('magic.casts_spell_on_target', :name => caster_name, :spell => spell, :mod => mod, :target => print_names, :succeeds => success[:succeeds])]
           end
         end
         message.each do |msg|
@@ -60,6 +65,7 @@ module AresMUSH
             Scenes.add_to_scene(enactor.room.scene, msg)
           end
         end
+
       end
 
     end

@@ -73,6 +73,8 @@ module AresMUSH
           return SpellModIsCmd
         when "cast"
           return SpellCastCmd
+        when "npc"
+          return SpellNPCCmd
         when "learn"
           return SpellLearnCmd
         when "luck"
