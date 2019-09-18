@@ -120,6 +120,19 @@ spells:
     target_num: 1
     target_optional: true
     weapon: Stun (Will)
+  #Level 4
+  Alter Object:
+    available: false
+    casting_time: 1 round
+    duration: 10 minutes
+    desc: "For the duration of the spell, the caster can reshape up to 2 cubic feet of non-living material. The caster can make simple, non-weaponized shapes that animate at their direction out of the material. The density and composition of the material does not change, but its rough shape can be altered, which also allows for repairs or damage to an object. Material returns to its natural, but not necessarily original, state when the spell ends.\n\nIn combat, damaging a weapon enough to disable it takes 3-5 rounds, at the GM's discretion."
+    effect: Creation
+    is_potion: false
+    level: 1
+    name: Alter Object
+    range: Short
+    roll: Will
+    school: Will
   Major Telekinesis:
     available: true
     casting_time: 1 round, plus additional rounds for movement at the GM's discretion

@@ -227,6 +227,18 @@ fs3combat:
       accuracy: 0
       init_mod: 0
       special_group: Melee
+    Sling Barb:
+      description: Level 2 Nature spell
+      is_magic: true
+      skill: Nature
+      lethality: -15
+      penetration: 3
+      weapon_type: Ranged
+      recoil: 0
+      damage_type: Physical
+      accuracy: 0
+      init_mod: 0
+      special_group: Ranged
   #Level 3
     Earth Bolt:
       description: Level 3 Earth spell
