@@ -37,10 +37,12 @@ module AresMUSH
           end
         end
         
-        Global.logger.debug "Reset default log size."
+        Global.logger.debug "Reset default scene idle timeout."
         config = DatabaseMigrator.read_config_file("scenes.yml")
-        config['scenes']['idle_scene_timeout_days'] = 7
-        DatabaseMigrator.write_config_file("scenes.yml", config)
+        if config['scenes']['idle_scene_timeout_days'] == 3
+          config['scenes']['idle_scene_timeout_days'] = 7
+          DatabaseMigrator.write_config_file("scenes.yml", config)
+        end
         
         
       end 
