@@ -132,7 +132,6 @@ spells:
     damage_inflicted: FLESH
     desc: "Inflict a flesh wound, slowing an enemy down. \n\nSpell ignores target's armor."
     effect: Damage
-    is_potion: true
     level: 3
     name: Flesh Wound
     range: Short
