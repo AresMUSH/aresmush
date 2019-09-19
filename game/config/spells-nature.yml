@@ -74,7 +74,7 @@ spells:
     armor: Natural Defenses
     casting_time: 1 round
   Natural Weaponry:
-    available: false
+    available: true
     casting_time: 1 round
     desc: The caster grows natural weaponry from a specific animal for the purpose of attack. These take the form of non-venomous fangs, claws, horns etc. Animal is from the same genus each time the spell is cast.
     duration: 15 minutes

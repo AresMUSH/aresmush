@@ -19,7 +19,7 @@ module AresMUSH
         error = self.parse_targets(self.names)
         return error if error
 
-        Global.logger.debug "Magic Items Spells #{Magic.item_spells(combatant.associated_model)}"
+        
 
         spell_list = Global.read_config("spells")
         return t('magic.not_spell') if !spell_list.include?(self.spell)
