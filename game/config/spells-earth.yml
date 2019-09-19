@@ -77,6 +77,8 @@ spells:
     range: Short
     rounds: 2
     school: Earth
+    target_optional: true
+    target_num: 1
   #Level 3
   Earth Bolt:
     area: Direct line from caster, 5 yards wide
