@@ -41,18 +41,16 @@ module AresMUSH
           if heal_points
             message = Magic.cast_non_combat_heal(enactor.name, self.target_name_string, self.spell, self.mod)
           elsif Magic.spell_shields.include?(self.spell)
-            puts "BEFORE msg Target: #{enactor.name}  Shield: #{enactor.mind_shield}"
-            message = Magic.cast_noncombat_shield(enactor.name, self.target_name_string, self.spell, self.mod, success[:result])
-            puts "After Msg Target: #{enactor.name}  Shield: #{enactor.mind_shield}"
+            message = Magic.cast_noncombat_shield(enactor, enactor.name, self.target_name_string, self.spell, self.mod, success[:result])
           else
             message = Magic.cast_noncombat_spell(enactor.name, self.target_name_string, self.spell, self.mod, success[:result])
           end
           Magic.handle_spell_cast_achievement(enactor)
         else
           if !self.has_target
-            message = [t('magic.casts_spell', :name => caster_name, :spell => spell, :mod => mod, :succeeds => success[:succeeds])]
+            message = [t('magic.casts_spell', :name => enactor.name, :spell => spell, :mod => mod, :succeeds => success[:succeeds])]
           else
-            message = [t('magic.casts_spell_on_target', :name => caster_name, :spell => spell, :mod => mod, :target => print_names, :succeeds => success[:succeeds])]
+            message = [t('magic.casts_spell_on_target', :name => enactor.name, :spell => spell, :mod => mod, :target => print_names, :succeeds => success[:succeeds])]
           end
         end
         message.each do |msg|

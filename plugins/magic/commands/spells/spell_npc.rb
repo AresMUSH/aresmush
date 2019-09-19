@@ -39,7 +39,7 @@ module AresMUSH
           if heal_points
             message = Magic.cast_non_combat_heal(self.npc, self.target_name_string, self.spell, mod = nil)
           elsif Magic.spell_shields.include?(self.spell)
-            message = Magic.cast_noncombat_shield(self.npc, self.target_name_string, self.spell, mod = nil, success[:result])
+            message = Magic.cast_noncombat_shield("npc", self.npc, self.target_name_string, self.spell, mod = nil, success[:result])
           else
             if !self.has_target
               self.target_name_string = nil
@@ -50,6 +50,9 @@ module AresMUSH
           if !self.has_target
             message = [t('magic.casts_spell', :name => self.npc, :spell => spell, :mod => mod, :succeeds => success[:succeeds])]
           else
+            if print_names == "no_target"
+              print_names = self.npc
+            end
             message = [t('magic.casts_spell_on_target', :name => self.npc, :spell => spell, :mod => mod, :target => print_names, :succeeds => success[:succeeds])]
           end
         end
