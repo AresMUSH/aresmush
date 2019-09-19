@@ -19,12 +19,14 @@ module AresMUSH
         error = self.parse_targets(self.names)
         return error if error
 
-        
+
 
         spell_list = Global.read_config("spells")
         return t('magic.not_spell') if !spell_list.include?(self.spell)
-        item_spells = Magic.item_spells(combatant.associated_model) || []
-        return t('magic.dont_know_spell') if (Magic.knows_spell?(combatant, self.spell) == false && !item_spells.include?(spell))
+        if !combatant.is_npc?
+          item_spells = Magic.item_spells(combatant.associated_model) || []
+          return t('magic.dont_know_spell') if (Magic.knows_spell?(combatant, self.spell) == false && !item_spells.include?(spell))
+        end
         num = Global.read_config("spells", self.spell, "target_num")
         return t('magic.too_many_targets', :spell => self.spell, :num => num) if (self.targets.count > num) if self.target_optional
         return t('magic.doesnt_use_target') if (self.target_optional.nil? && self.names != self.name)
