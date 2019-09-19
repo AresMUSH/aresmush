@@ -438,7 +438,7 @@ spells:
   Pass Unseen:
     available: false
     casting_time: 1 round
-    desc: "The caster's presence is completely ignored by all thinking beings or creatures. \n\nThere is no physical change, the mind simply rejects any sensory signs of the caster for the duration of the spell. Large disruptions or sudden violence by the caster will break the spell."
+    desc: "The caster's presence is completely ignored by all thinking beings or creatures. \n\nThere is no physical change, the mind simply rejects any sensory signs of the caster for the duration of the spell. Large disruptions or sudden violence by the caster will break the spell. Other Spirit users may see through the spell with a successful roll of the caster's Spirit vs their Spirit-1. A draw goes to the caster."
     duration: 10 minutes
     effect: Defense
     level: 5
