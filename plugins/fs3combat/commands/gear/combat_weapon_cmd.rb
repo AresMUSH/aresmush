@@ -18,7 +18,7 @@ module AresMUSH
           self.weapon = titlecase_arg(args.arg1)
           specials_str = titlecase_arg(args.arg2)
         end
-
+        puts "WORKING"
         self.specials = specials_str ? specials_str.split('+') : nil
       end
 
@@ -38,11 +38,14 @@ module AresMUSH
 
       def check_valid_weapon
         return t('fs3combat.invalid_weapon') if !FS3Combat.weapon(self.weapon)
-        return t('magic.cast_to_use') if Magic.is_magic_weapon(self.weapon)
         return nil
       end
 
       def handle
+
+        if Magic.is_magic_weapon(self.weapon)
+          FS3Combat.emit_to_combat(enactor.combat, t('magic.cast_to_use', :name => self.weapon))
+        end
         self.names.each do |name|
           FS3Combat.with_a_combatant(name, client, enactor) do |combat, combatant|
             FS3Combat.set_weapon(enactor, combatant, self.weapon, self.specials)

@@ -21,3 +21,7 @@ Temporary NPCs can cast any spell and use any potion. Be wise about doing so. It
 ## Rolling for NPCs
 
 For NPCs, you can specify a skill rating (e.g. roll 4).  Note that the code automatically factors in an average attribute.
+
+## Spells Out of Combat
+
+`spell/npc <npc>/<dice>=<spell>[/<target> <target>]` - Have an NPC cast a spell. NPCs can cast any spell. The dice chosen should reflect their Magic attribute + their School rating.

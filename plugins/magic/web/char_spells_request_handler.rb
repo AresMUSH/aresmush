@@ -23,6 +23,10 @@ module AresMUSH
         spells_learned.each do |s|
           spells << s.name
         end
+        item_spells = Magic.item_spells(char)
+        item_spells.each do |s|
+          spells << s
+        end
         spells = spells.sort
 
         return spells

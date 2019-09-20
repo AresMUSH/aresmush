@@ -18,9 +18,9 @@ summary: Learning & casting spells
 `spell/cast <spell>[+/-mod]` - Cast a spell on yourself, the environment, or an object.
 `spell/cast <spell>[+/-mod]/<target>[<target> <target>]` - Cast a spell on one or more targets.
 **Tip**: You can use `cast` instead of `spell/cast`
+`spell/npc <npc>/<dice>=<spell>[/<target> <target>]` - Have an NPC cast a spell. NPCs can cast any spell. The dice chosen should reflect their Magic attribute + their School rating.
 
 `shield/off <shield>` - Out of combat, turn off a protective shield such as Mind Shield, Endure Fire, or Endure Cold.
-
 
 `combat/spell <spell>` - Cast a spell on yourself, the environment, or an object in combat.
 `combat/spell <spell>/<target>[<target> <target>]` - Cast a spell on one or more targets in combat.
