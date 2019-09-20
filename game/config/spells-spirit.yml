@@ -1,21 +1,21 @@
 spells:
-  Huxian's Curse:
-    attack_mod: -2
-    available: false
-    casting_time: 1 round
-    defense_mod: -2
-    desc: "Attempts made in Asher's presence suffer a negative modifier. "
-    duration: 100 rounds
-    is_potion: true
-    level: 1
-    line_of_sight: true
-    name: Huxian's Curse
-    range: Short
-    rounds: 100
-    school: Spirit
-    spell_mod: -2
-    target_num: 20
-    target_optional: true
+  # Huxian's Curse:
+  #   attack_mod: -2
+  #   available: false
+  #   casting_time: 1 round
+  #   defense_mod: -2
+  #   desc: "Attempts made in Asher's presence suffer a negative modifier. "
+  #   duration: 100 rounds
+  #   is_potion: true
+  #   level: 1
+  #   line_of_sight: true
+  #   name: Huxian's Curse
+  #   range: Short
+  #   rounds: 100
+  #   school: Spirit
+  #   spell_mod: -2
+  #   target_num: 20
+  #   target_optional: true
   Locate Object:
     available: true
     casting_time: 1 round
@@ -44,6 +44,7 @@ spells:
     available: true
     casting_time: 1 round
     desc: Share a single dominant emotion with a target within visual range of the caster.
+    damage_type: Psionic
     duration: 10 minutes
     effect: Psionic
     level: 1
@@ -58,6 +59,7 @@ spells:
     available: true
     casting_time: 1 round
     desc: 'The caster can share a still mental image with another person via telepathy.'
+    damage_type: Psionic
     duration: 10 minutes
     effect: Psionic
     level: 1
@@ -72,6 +74,7 @@ spells:
     available: true
     casting_time: 1 round
     desc: "You create the ghostly image of a hand (or anything small and of the caster) which you can send to find anyone. The hand leads that person back to you if they are willing to follow."
+    damage_type: Psionic
     duration: 1 hour
     effect: Communication
     level: 2
@@ -83,6 +86,7 @@ spells:
     available: true
     casting_time: 1 round
     desc: "Reduce the strength of the most dominant emotion that the target is feeling. For example, anger may be suppressed into annoyance, joy into serenity, or grief into sadness."
+    damage_type: Psionic
     duration: 10 minutes
     effect: Psionic
     level: 2
@@ -99,6 +103,7 @@ spells:
     desc: "Cast a spell on a target that helps ease the mind toward sleep. Falling asleep becomes easy. For the duration, sleep is undisturbed by natural dreams, letting the target rest easy. When the spell is ended, sleep becomes natural and continues or is ended according to natural means.\n\n
     Has no noticeable effect on those who do not attempt to sleep."
     duration: 1 hour
+    damage_type: Psionic
     effect: Other
     is_potion: true
     level: 2
@@ -113,6 +118,7 @@ spells:
     available: true
     casting_time: 1 round
     desc: "Cast a spell on a target that enables the caster to hold a telepathic conversation with one person at a time. Initial casting requires concentration, after which this spell remains in effect without requiring maintenance or taking up your action during a round."
+    damage_type: Psionic
     duration: 1 hour
     effect: Psionic
     level: 2
@@ -127,6 +133,7 @@ spells:
     available: false
     casting_time: 1 round
     desc: Target becomes afraid of the caster and attempts to flee to the nearest place they could safely hide. They will not move in the direction of the caster for the duration of the spell unless forced.
+    damage_type: Psionic
     effect: Stun
     is_stun: true
     rounds: 1
@@ -142,6 +149,7 @@ spells:
     available: true
     casting_time: 1 round
     desc: Target becomes charmed by the caster and attempts to move toward them. They are neutral toward all parties and will neither aid nor attack while under the spell. The spell is broken if they are hit by an attack.
+    damage_type: Psionic
     effect: Psionic
     is_stun: true
     rounds: 1
@@ -157,6 +165,7 @@ spells:
     available: true
     casting_time: 1 round
     desc: 'The target is able to comprehend any spoken or written language for the duration of the spell. This does not apply to text written in code.'
+    damage_type: Psionic
     duration: 24 hours
     effect: Communication
     is_potion: true
@@ -171,6 +180,7 @@ spells:
     available: true
     casting_time: 1 round
     desc: One target becomes outlined in light visible only to the caster. The color of the light corresponds to the target's current emotional status.
+    damage_type: Psionic
     duration: 1 round
     effect: Psionic
     level: 3
@@ -185,6 +195,7 @@ spells:
   Flagging Spirits:
     available: false
     casting_time: 1 round
+    damage_type: Psionic
     desc: Target loses their will to fight.
     effect: Stun
     fs3_attack: true
@@ -201,6 +212,7 @@ spells:
   Mind Bolt:
     available: false
     casting_time: 1 round
+    damage_type: Psionic
     desc: The caster delivers a minor assault on the thought pathways of any one sapient creature, doing damage.
     effect: Damage
     fs3_attack: true
@@ -265,6 +277,7 @@ spells:
   Group Comprehend Languages:
     available: true
     casting_time: 1 round
+    damage_type: Psionic
     desc: "Up to 4 targets of the caster's choice are able to comprehend any spoken or written language for the duration of the spell. This does not apply to text written in code."
     duration: 24 hours
     effect: Communication
@@ -279,6 +292,7 @@ spells:
   Share Sensation:
     available: true
     casting_time: 1 round
+    damage_type: Psionic
     desc: "The caster shares any specific physical sensation that they are currently feeling with a target."
     effect: Psionic
     level: 3
@@ -293,6 +307,7 @@ spells:
   Group Telepathic Correspondence:
     available: true
     casting_time: 1 round
+    damage_type: Psionic
     desc: "Up to 4 targets, including the caster, are able to hold a telepathic conversation together. All targets are part of a single conversation for the duration of the spell. Initial casting requires concentration, after which this spell remains in effect without requiring maintenance or taking up your action during a round."
     duration: 1 hour
     effect: Psionic
@@ -340,6 +355,7 @@ spells:
   Spirit Of Pacifism:
     available: false
     casting_time: 1 round
+    damage_type: Psionic
     desc: So long as the caster does not attack or block, they are not seen as an viable threat or target by aggressors. They are not immune to unintended AoE attacks.
     duration: 10 minutes
     effect: Defense
@@ -352,6 +368,7 @@ spells:
   Telepathic Reading:
     available: true
     casting_time: 1 round
+    damage_type: Psionic
     desc: Read someone's surface thoughts.
     duration: 30 minutes
     effect: Psionic
@@ -365,6 +382,7 @@ spells:
   Trick Senses:
     available: true
     casting_time: 1 round
+    damage_type: Psionic
     desc: "The caster convinces a sapient target's mind of sensory input (a smell, taste, sound, texture, and/or temperature) to trick their senses into believing it is real. The target’s mind, in conjunction with the spell, will fill in the gaps and discrepancies, glossing over irregularities. Cannot be used to convey words or intelligible speech to the target.\n\nThose with Spirit are more likely to identify the senses as false, and may attempt to do so with a roll of the caster's Spirit vs the observer's Spirit-5."
     duration: 5 minutes
     effect: Psionic
@@ -425,6 +443,7 @@ spells:
   Memory Dive:
     available: true
     casting_time: "1+ rounds at GM\u2019s discretion."
+    damage_type: Psionic
     desc: "Search someone\u2019s memory for specific events."
     duration: 30 minutes
     effect: Psionic
@@ -438,6 +457,7 @@ spells:
   Pass Unseen:
     available: false
     casting_time: 1 round
+    damage_type: Psionic
     desc: "The caster's presence is completely ignored by all thinking beings or creatures. \n\nThere is no physical change, the mind simply rejects any sensory signs of the caster for the duration of the spell. Large disruptions or sudden violence by the caster will break the spell. Other Spirit users may see through the spell with a successful roll of the caster's Spirit vs their Spirit-1. A draw goes to the caster."
     duration: 10 minutes
     effect: Defense
@@ -449,6 +469,7 @@ spells:
   Simple Command:
     available: true
     casting_time: 1 round
+    damage_type: Psionic
     desc: "Implant a single one-word command in a target's mind.They cannot be commanded to harm themselves.\n\n Unprotected minds must follow the command."
     duration: 5 minutes
     effect: Psionic
@@ -464,6 +485,7 @@ spells:
     area: 150 mile radius
     available: true
     casting_time: 1 round
+    damage_type: Psionic
     desc: "Form a telepathic link with another sapient being that, while active, allows communication over long distances."
     duration: 2 hours
     effect: Psionic
@@ -487,6 +509,7 @@ spells:
     available: true
   Mass Awaken Terror:
     available: false
+    damage_type: Psionic
     desc: Targets become afraid of the caster and attempt to flee to the nearest place they could safely hide. They will not move in the direction of the caster or attack for the duration of the spell unless forced.
     effect: Stun
     is_stun: true
@@ -499,6 +522,7 @@ spells:
   Rewrite Memory:
     available: true
     casting_time: "1 round to cast, additional rounds for rewriting at GM's discretion."
+    damage_type: Psionic
     desc: "Rewrite or remove someone's memory of an event up to 1 hour long."
     duration: 30 minutes
     effect: Psionic
@@ -512,6 +536,7 @@ spells:
   Sleep:
     available: false
     casting_time: 1 round
+    damage_type: Psionic
     desc: The target becomes overwhelmed by the desire to sleep and falls unconscious. They are only awoken if attacked or if an ally uses a round to attempt to awaken them.
     duration: 15 minutes
     effect: Stun
@@ -527,6 +552,7 @@ spells:
   Clarity:
     available: true
     casting_time: 1 round
+    damage_type: Psionic
     desc: "The caster extends their senses to all beings within range. While their  body lies senseless and incapacitated, they see and feel everything sensed by every sapient creature in that area. They can also identify the presence, quantity, and location of non-sapient creatures.\n\n
     The caster can choose to absorb all experiences at a surface level, or focus their attention on up to five individuals at a time for more details."
     duration: 15 minutes
@@ -548,6 +574,7 @@ spells:
   Dreamtrap:
     available: false
     casting_time: 1 round
+    damage_type: Psionic
     desc: "The caster puts their their target to sleep (if awake) and draws them into a dream. The caster has control of the dream and its events, although they may allow the target's subconscious to fill in details. While in the dream, all encounters seem real, though physical damage in the dream world is imaginary and vanishes upon awakening."
     duration: 2 hours
     effect: Psionic
@@ -573,6 +600,7 @@ spells:
   Rewrite History:
     available: false
     casting_time: "1 round to cast, plus additional rounds at GM's discretion according to complexity of the rewrite."
+    damage_type: Psionic
     desc: "Permanently rewrite the mind of the target, changing or replacing any and all memories.\n\n
     The target’s mind, in conjunction with the spell, will fill in the gaps and discrepancies, glossing over irregularities.\n\n
     Additionally, the caster can impart the remembered knowledge of how to perform simple tasks at a basic level, as long as the caster possesses said knowledge.\n\n
@@ -589,6 +617,7 @@ spells:
   Binding Oath:
     available: false
     casting_time: 1 round
+    damage_type: Psionic
     desc: "The caster specifies a contract which the target agrees to. Upon agreement, the magical oath is sealed./n/n
     Either party breaking the oath results in an instant impairment of their mental facilities and the loss of all memories since the moment the oath was enacted. Their 'Wits' and 'Perception' are lowered to 1, and they are incapable of higher-level mental tasks such as complicated mathematics, science, and reading. Mentally, they will be capable at the level of a three year old./n/n
     Memories return sporadically over the course of six months. Cognitive development a year, eventually returning the oath breaker's mental facilities to what they were before."
@@ -603,6 +632,7 @@ spells:
   Curse Of Twilight:
     available: false
     casting_time: 1 round
+    damage_type: Psionic
     desc: "The target of the spell is forgotten by those who know them. They are not unseen, but are treated as strangers, any reference to who they were denied. Any new connections forged are reset at twilight of each day."
     duration: 1 year and 1 day
     effect: Psionic
@@ -630,6 +660,7 @@ spells:
   Heirloom Object:
     available: true
     casting_time: 3 hours
+    damage_type: Psionic
     desc: "The caster is capable of concealing a fragment of their spirit and binding it to an inanimate object. If the caster is killed, their full spirit enters the object after 60 seconds.\n\nUsing this spell does not harm the caster. Though it may contain a portion of the caster's spirit, they have no awareness of the object once leaving its presence. \n\nThe object may be stored anywhere, but there must be an open portal path between the caster and the object within 60 seconds of death in order for the spirit to enter the object. Otherwise, they are killed.\n\nOnce their full spirit has entered the object, the caster exists as a sapient object. They are incapable of movement but retain their spell casting abilities. Any who hold the trinket can freely converse with the caster via telepathy.\n\nIf the object is destroyed, so is that piece of the caster\u2019s spirit. If the object is destroyed after the caster fully inhabits it, the caster dies permanently."
     level: 8
     name: Heirloom Object

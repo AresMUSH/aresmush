@@ -80,7 +80,7 @@ module AresMUSH
         damage_desc = Global.read_config("spells", spell, "damage_desc")
         damage_type = Global.read_config("spells", self.spell, "damage_type")
         defense_mod = Global.read_config("spells", self.spell, "defense_mod")
-        effect = Global.read_config("spells", self.spell, "effect")
+        damage_type = Global.read_config("spells", self.spell, "damage_type")
         fs3_attack = Global.read_config("spells", self.spell, "fs3_attack")
         heal_points = Global.read_config("spells", self.spell, "heal_points")
         is_revive = Global.read_config("spells", self.spell, "is_revive")
@@ -135,7 +135,7 @@ module AresMUSH
         else
           succeeds = Magic.roll_combat_spell_success(combatant, spell)
           #Spells here do not roll for success individually because they may do more than one thing and so need one success roll.
-          if succeeds == "%xgSUCCEEDS%xn"
+          if succeeds[:succeeds] == "%xgSUCCEEDS%xn"
 
             targets.each do |target|
 
@@ -234,7 +234,7 @@ module AresMUSH
 
               #Roll
               if roll
-                message = Magic.cast_combat_roll(combatant, target, spell, effect)
+                message = Magic.cast_combat_roll(combatant, target, spell, damage_type, succeeds[:result])
                 messages.concat message
               end
             #End targets.each do for non FS3 spells (if spell succeeds)

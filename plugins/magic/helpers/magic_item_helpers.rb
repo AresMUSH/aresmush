@@ -59,9 +59,9 @@ module AresMUSH
 
 
     def self.item_spells(char)
-      item_name = char.magic_item_equipped
+      item_name = char.magic_item_equipped || "None"
       if item_name == "None"
-        nil
+        []
       else
         Global.read_config("magic-items", item_name, "spells") || []
       end

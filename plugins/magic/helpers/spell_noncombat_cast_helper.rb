@@ -8,7 +8,7 @@ module AresMUSH
         caster = caster_name
         is_npc = true
       end
-      if is_npc        
+      if is_npc
         roll = FS3Skills.roll_dice(dice)
         die_result = FS3Skills.get_success_level(roll)
         succeeds = Magic.spell_success(spell, die_result)
@@ -36,7 +36,6 @@ module AresMUSH
     def self.cast_noncombat_spell(caster_name, name_string, spell, mod = nil, result = nil, is_potion = false)
       success = "%xgSUCCEEDS%xn"
       target_num = Global.read_config("spells", spell, "target_num") || 1
-      effect = Global.read_config("spells", spell, "effect")
       damage_type = Global.read_config("spells", spell, "damage_type")
       if Character.named(caster_name)
         caster = Character.named(caster_name)
@@ -67,7 +66,7 @@ module AresMUSH
       else
         names = []
         targets.each do |target|
-          if ((effect == "Psionic" || damage_type == "Fire" || damage_type == "Cold") && !is_potion)
+          if ((damage_type == "Psionic" || damage_type == "Fire" || damage_type == "Cold") && !is_potion)
             message = Magic.check_spell_vs_shields(target, caster_name, spell, mod, result)
             if !message
               names.concat [target.name]
