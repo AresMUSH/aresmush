@@ -11,7 +11,9 @@ module AresMUSH
         char = char_or_combatant
       end
 
-      if char.spells_learned.select { |a| (a.name == spell_name && a.learning_complete == true) }.first
+      item_spells = Magic.item_spells(char)
+
+      if char.spells_learned.select { |a| (a.name == spell_name && a.learning_complete == true) }.first || item_spells.include?(spell_name)
         return true
       else
         return false

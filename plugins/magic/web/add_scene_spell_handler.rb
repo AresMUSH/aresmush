@@ -5,6 +5,7 @@ module AresMUSH
         scene = Scene[request.args[:scene_id]]
         enactor = request.enactor
         caster = request.enactor
+        caster_name = caster.name
         spell_string = request.args[:spell_string]
         target_name_arg = request.args[:target_name]
         mod = request.args[:mod]
@@ -50,27 +51,27 @@ module AresMUSH
         end
 
         heal_points = Global.read_config("spells", spell, "heal_points")
-        success = Magic.roll_noncombat_spell_success(enactor, spell, mod)
+        success = Magic.roll_noncombat_spell_success(enactor.name, spell, mod, dice = nil)
         print_names = Magic.print_target_names(target_name_string)
 
-        if success == "%xgSUCCEEDS%xn"
+        if success[:succeeds] == "%xgSUCCEEDS%xn"
           if heal_points
-            message = Magic.cast_non_combat_heal(caster, target_name_string, spell, mod)
+            message = Magic.cast_non_combat_heal(caster_name, target_name_string, spell, mod)
           elsif Magic.spell_shields.include?(spell)
-            message = Magic.cast_noncombat_shield(caster, target_name_string, spell, mod)
+            message = Magic.cast_noncombat_shield(caster, caster_name, target_name_string, spell, mod, success[:result])
           else
             if has_target
-              message = Magic.cast_noncombat_spell(caster, target_name_string, spell, mod)
+              message = Magic.cast_noncombat_spell(caster_name, target_name_string, spell, mod, success[:result])
             else
-              message = Magic.cast_noncombat_spell(caster, target_name_string=nil, spell, mod)
+              message = Magic.cast_noncombat_spell(caster_name, target_name_string=nil, spell, mod, success[:result])
             end
           end
           Magic.handle_spell_cast_achievement(caster)
         else
           if target_name_arg.blank?
-            message = [t('magic.casts_spell', :name => caster.name, :spell => spell, :mod => mod, :succeeds => success)]
+            message = [t('magic.casts_spell', :name => caster.name, :spell => spell, :mod => mod, :succeeds => success[:succeeds])]
           else
-            message = [t('magic.casts_spell_on_target', :name => caster.name, :spell => spell, :mod => mod, :target => print_names, :succeeds => success)]
+            message = [t('magic.casts_spell_on_target', :name => caster.name, :spell => spell, :mod => mod, :target => print_names, :succeeds => success[:succeeds])]
           end
         end
         message.each do |msg|
