@@ -31,7 +31,7 @@ module AresMUSH
         @char.fs3_action_skills.sort_by(:schools).each_with_index do |a, i|
           schools = Global.read_config("schools")
           if !schools.include? a.name
-            if a.rating_name != "Unskilled"
+            if a.rating_name != "Incapable"
               list << format_attr(a, i)
             end
           end
@@ -43,7 +43,7 @@ module AresMUSH
        list = []
         @char.fs3_action_skills.sort_by(:schools).each_with_index do |a, i|
           if (a.name == "Air") || (a.name == "Corpus") || (a.name == "Earth") || (a.name =="Fire") || (a.name == "Nature") || (a.name == "Spirit") || (a.name == "Water") || (a.name == "Will")
-            if a.rating_name != "Unskilled"
+            if a.rating_name != "Incapable"
               list << format_attr(a, i)
             end
           end
