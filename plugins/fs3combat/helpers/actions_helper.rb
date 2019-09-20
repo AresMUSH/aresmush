@@ -449,7 +449,7 @@ module AresMUSH
       stopped_by_cover = target.stance == "Cover" ? FS3Combat.stopped_by_cover?(attacker_net_successes, combatant) : false
       hit = false
 
-      stopped_by_shield = Magic.stopped_by_shield?(combatant.weapon, target, combatant)
+      stopped_by_shield = Magic.stopped_by_shield?(combatant.weapon, target, combatant, attacker_net_successes)
 
       weapon_type = FS3Combat.weapon_stat(combatant.weapon, "weapon_type")
       hit_mount = FS3Combat.hit_mount?(combatant, target, attacker_net_successes, mount_hit)

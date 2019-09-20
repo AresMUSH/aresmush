@@ -40,6 +40,7 @@ module AresMUSH
 
       die_result = Magic.roll_combat_spell(caster_combatant, caster_combatant, school, mod)
       succeeds = Magic.spell_success(spell, die_result)
+      return {:succeeds => succeeds, :result => die_result}
     end
 
     def self.set_spell_weapon_effects(combatant, spell)
@@ -214,12 +215,12 @@ module AresMUSH
       return message
     end
 
-    def self.cast_combat_roll(combatant, target, spell, effect)
+    def self.cast_combat_roll(combatant, target, spell, damage_type, result = nil)
       if target == combatant
         message = [t('magic.spell_resolution_msg', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn")]
       else
-        if effect == "Psionic" && target.mind_shield > 0
-          shield_held = Magic.roll_shield(target, combatant, spell) == "shield"
+        if damage_type == "Psionic" && target.mind_shield > 0
+          shield_held = Magic.check_shield(target, combatant.name, spell, result) == "shield"
           if shield_held
              message = [t('magic.shield_held', :name => combatant.name, :spell => spell, :mod => "", :shield => "Mind Shield", :target => target.name)]
           else
