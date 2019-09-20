@@ -8,10 +8,9 @@ Potions can only be made from certain spells marked in the database. They take 1
  See [Creating Potions](http://spiritlakemu.com/wiki/magical_items) for more info.
 
 `potion/create <name>` - Create a potion. This spends a luck point.
-`luck/spend <reason>` - Spend a luck to have someone else create a potion for you.
-`luck/give <name>=<reason>` - Give someone a luck point.
+`luck/give <name>=<reason>` - Give someone a luck point so they can create a potion for you. Specify the potion name in 'reason'.
 
-`potions [<name>]` - See the potions you or someone else has, as well as in-progress potions..
+`potions [<name>]` - See the potions you or someone else has, as well as in-progress potions.
 `potion/give <name>=<potion>` - Give a potion to someone else.
 
 `potion/use <potion>` - Use a potion on yourself.
@@ -19,6 +18,5 @@ Potions can only be made from certain spells marked in the database. They take 1
 
 `combat/potion <potion>` - Use a potion on yourself in combat.
 `combat/potion <potion>/<name>` - Use a potion on someone else in combat.
-
 
 `potion/update <name>=<#>/<hours left>` - Admin-only command to adjust the hours left in potion creating.

@@ -36,9 +36,9 @@ There is also an online [Quick Reference](http://aresmush.com/fs3/fs3-3/combat-q
 
 `combat/explode <list of targets>` - Use an explosive weapon.
 
-`spell/cast <spell>` - Casts a spell that doesn't need a target.
-`spell/cast <spell>=<target>` - Casts a spell that needs a target.
-`potion/use <potion>` - Uses a potion.
+`combat/spell <spell>` - Casts a spell that doesn't need a target.
+`combat/spell <spell>/<target>` - Casts a spell that needs a target.
+`combat/potion <potion>` - Uses a potion.
 
 `combat/distract <target>` - Distracts a target
 `combat/subdue <target>` - Subdues or disarms a target.
@@ -64,15 +64,6 @@ There are various kinds of gear that can be used in combat.  You should only use
 `combat/hero` - Spends a luck point to un-KO yourself.
 
 See [Luck Points](/wiki/luck_points) for more options.
-
-### Bonus Dice
-
-`combat/luck <attack, defense or initiative>` - Spend a luck point to get +3 bonus dice this turn.
-
-> **Tip:** Spending luck on attack affects special attacks like explosions or suppression.  It also conveys a bonus to damage.
-
-### Avoiding Knockout
-`combat/hero` - Spends a luck point to un-KO yourself. This doesn't erase the damage, it just lets you soldier on in spite of it.
 
 ## Damage
 `damage` - Views your damage.

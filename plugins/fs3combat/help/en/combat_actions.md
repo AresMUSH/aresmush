@@ -38,10 +38,9 @@ Luck points have special effects in combat. (see [Luck](/help/luck))
 `combat/pass` - Take no action this turn.
 
 ### Magic
-`spell/cast <spell>` - Casts a spell that doesn't need a target.
-`spell/cast <spell>=<target>` - Casts a spell that needs a target.
-**Tip** You can also just use `cast`
-`potion/use <potion>` - Uses a potion.
+`combat/spell <spell>` - Casts a spell that doesn't need a target.
+`combat/spell <spell>/<target>` - Casts a spell that needs a target.
+`combat/potion <potion>` - Uses a potion.
 
 ### Attacks
 `combat/attack <target>[>mod:<mod>] OR [>called:<hitloc>]`
