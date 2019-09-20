@@ -6,10 +6,11 @@ module AresMUSH
       attr_accessor :name, :spell, :spell_list, :has_target, :args, :mod, :target, :target_name_string, :target_name, :npc, :dice
 
       def parse_args
-        args = cmd.parse_args(/(?<npc>.+?)\/(?<dice>\d+)=(?<spell>.+?)\/(?<target>.+)/)
+        args = cmd.parse_args(/(?<npc>.+\w)\/(?<dice>\d+)\=(?<spell>[a-zA-Z\s]+\w)?(\/(?<target>.*))?/)
         self.spell = titlecase_arg(args.spell)
         self.npc = titlecase_arg(args.npc)
         self.dice = args.dice.to_i
+        puts "Spell #{self.spell}"
 
         if !args.target
           self.target_name_string = self.npc
@@ -18,7 +19,6 @@ module AresMUSH
           self.target_name_string = titlecase_arg(args.target)
           self.has_target = true
         end
-        Global.logger.debug "#{self.npc} rolling #{self.dice} dice to cast #{self.spell} on #{self.target_name_string}"
       end
 
       def check_errors

@@ -36,7 +36,6 @@ module AresMUSH
         caster = caster_name
         held = Magic.check_shield(target, caster_name, spell, result) == "shield"
       end
-      puts "Held: #{held}"
 
       if (effect == "Psionic" && target.mind_shield > 0)
         if held

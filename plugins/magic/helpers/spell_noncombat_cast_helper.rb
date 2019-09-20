@@ -8,8 +8,7 @@ module AresMUSH
         caster = caster_name
         is_npc = true
       end
-      if is_npc
-        Global.logger.info "#{caster_name} rolling #{dice} dice to cast #{spell}."
+      if is_npc        
         roll = FS3Skills.roll_dice(dice)
         die_result = FS3Skills.get_success_level(roll)
         succeeds = Magic.spell_success(spell, die_result)
@@ -200,7 +199,6 @@ module AresMUSH
 
           Global.logger.info "#{spell} strength on #{target.name} set to #{shield_strength}."
           message = [t('magic.cast_shield', :name => caster_name, :spell => spell, :mod => mod, :succeeds => "%xgSUCCEEDS%xn", :target =>  target.name, :type => type)]
-          puts "Triggering"
           messages.concat message
         end
       end
