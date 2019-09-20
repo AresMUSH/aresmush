@@ -24,30 +24,36 @@ module AresMUSH
         char.update(endure_cold: 0)
     end
 
-    def self.check_spell_vs_shields(target, caster, spell, mod = nil)
+    def self.check_spell_vs_shields(target, caster_name, spell, mod, result)
       effect = Global.read_config("spells", spell, "effect")
       damage_type = Global.read_config("spells", spell, "damage_type")
 
+      if Character.named(caster_name)
+        caster = Character.named(caster_name)
+        caster_name = caster.name
+        held = Magic.check_shield(target, caster_name, spell, result) == "shield"
+      else
+        caster = caster_name
+        held = Magic.check_shield(target, caster_name, spell, result) == "shield"
+      end
+
       if (effect == "Psionic" && target.mind_shield > 0)
-        held = Magic.roll_shield(target, caster, spell) == "shield"
         if held
-          message = t('magic.shield_held', :name => caster.name, :spell => spell, :mod => mod, :target => target.name, :shield => "Mind Shield")
+          message = t('magic.shield_held', :name => caster_name, :spell => spell, :mod => mod, :target => target.name, :shield => "Mind Shield")
         else
-          message = t('magic.mind_shield_failed', :name => caster.name, :spell =>  spell, :mod => mod, :target => target.name, :shield => "Mind Shield")
+          message = t('magic.mind_shield_failed', :name => caster_name, :spell =>  spell, :mod => mod, :target => target.name, :shield => "Mind Shield")
         end
       elsif (damage_type == "Fire" && target.endure_fire > 0)
-        held = Magic.roll_shield(target, caster, spell) == "shield"
         if held
-          message = t('magic.shield_held', :name => caster.name, :spell => spell, :mod => mod, :target => target.name, :shield => "Endure Fire")
+          message = t('magic.shield_held', :name => caster_name, :spell => spell, :mod => mod, :target => target.name, :shield => "Endure Fire")
         else
-          message = t('magic.shield_failed', :name => caster.name, :spell => spell, :mod => mod, :target => target.name, :shield => "Endure Fire")
+          message = t('magic.shield_failed', :name =>caster_name, :spell => spell, :mod => mod, :target => target.name, :shield => "Endure Fire")
         end
       elsif (damage_type == "Cold" && target.endure_cold > 0)
-        held = Magic.roll_shield(target, caster, spell) == "shield"
         if held
-          message = t('magic.shield_held', :name => caster.name, :spell => spell, :mod => mod, :target => target.name, :shield => "Endure Cold")
+          message = t('magic.shield_held', :name => caster_name, :spell => spell, :mod => mod, :target => target.name, :shield => "Endure Cold")
         else
-          message = t('magic.shield_failed', :name => caster.name, :spell => spell, :mod => mod, :target => target.name, :shield => "Endure Cold")
+          message = t('magic.shield_failed', :name => caster_name, :spell => spell, :mod => mod, :target => target.name, :shield => "Endure Cold")
         end
       else
         message = nil
@@ -84,10 +90,21 @@ module AresMUSH
       end
     end
 
-    def self.roll_shield(target, caster, spell)
+    def self.check_shield(target, caster_name, spell, result)
       damage_type = Global.read_config("spells", spell, "damage_type")
       effect = Global.read_config("spells", spell, "effect")
       school = Global.read_config("spells", spell, "school")
+
+      if Character.named(caster_name)
+        caster = Character.named(caster_name)
+        caster_name = caster.name
+        if caster.combat
+          in_combat = true
+        end
+      else
+        caster = caster_name
+        is_npc = true
+      end
 
       if damage_type == "Fire"
         shield_strength = target.endure_fire
@@ -103,18 +120,14 @@ module AresMUSH
         shield = "None"
       end
 
-      if caster.combat
-        successes = caster.roll_ability(school)
-      else
-        successes = caster.roll_ability(school)[:successes]
-      end
+      successes = result
 
       delta = shield_strength - successes
 
-      if caster.combat
+      if in_combat
         caster.log "#{shield.upcase}: #{caster.name} rolling #{school} vs #{target.name}'s #{shield} (strength #{shield_strength}): #{successes} successes."
       else
-        Global.logger.info "#{shield.upcase}: #{caster.name} rolling #{school} vs #{target.name}'s #{shield} (strength #{shield_strength}): #{successes} successes."
+        Global.logger.info "#{shield.upcase}: #{caster_name} rolling #{school} vs #{target.name}'s #{shield} (strength #{shield_strength}): #{successes} successes."
       end
 
       case delta

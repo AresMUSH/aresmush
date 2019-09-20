@@ -63,7 +63,7 @@ module AresMUSH
       if item_name == "None"
         nil
       else
-        Global.read_config("magic-items", item_name, "spells")
+        Global.read_config("magic-items", item_name, "spells") || []
       end
     end
 
