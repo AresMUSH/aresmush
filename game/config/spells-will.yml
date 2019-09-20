@@ -71,6 +71,7 @@ spells:
     line_of_sight: true
     name: Nudge Aim
     range: Short
+    rounds: 1
     school: Will
     target_num: 1
     target_optional: true
