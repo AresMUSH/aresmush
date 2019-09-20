@@ -28,7 +28,6 @@ module AresMUSH
 
       def check_valid_armor
         return t('fs3combat.invalid_armor') if !FS3Combat.armor(self.armor)
-        return t('custom.cast_to_use') if Magic.is_magic_armor(self.armor)
         return nil
       end
 
@@ -43,6 +42,9 @@ module AresMUSH
 
 
       def handle
+        if Magic.is_magic_armor(self.armor)
+          FS3Combat.emit_to_combat(enactor.combat, t('magic.cast_to_use', :name => self.armor))
+        end
         self.names.each do |name|
           FS3Combat.with_a_combatant(name, client, enactor) do |combat, combatant|
             FS3Combat.set_armor(enactor, combatant, self.armor, self.specials)
