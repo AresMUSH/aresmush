@@ -57,7 +57,6 @@ module AresMUSH
       else
         message = nil
       end
-      puts "Message #{message}"
       return message
     end
 
