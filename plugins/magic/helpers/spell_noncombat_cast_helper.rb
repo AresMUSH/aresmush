@@ -75,16 +75,16 @@ module AresMUSH
             end
           else
             names.concat [target.name]
-            print_names = names.join(", ")
-            if is_potion
-              message = [t('magic.use_potion_target', :name => caster_name, :potion => spell, :target => print_names)]
-              messages.concat message
-            else
-              message = [t('magic.casts_spell_on_target', :name => caster_name, :target => print_names, :spell => spell, :mod => mod, :succeeds => success)]
-              messages.concat message
-            end
           end
         end
+        print_names = names.join(", ")
+        if is_potion
+          message = [t('magic.use_potion_target', :name => caster_name, :potion => spell, :target => print_names)]
+          messages.concat message
+        else
+          message = [t('magic.casts_spell_on_target', :name => caster_name, :target => print_names, :spell => spell, :mod => mod, :succeeds => success)]
+          messages.concat message
+        end      
         return messages
       end
     end
