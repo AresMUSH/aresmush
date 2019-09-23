@@ -39,9 +39,14 @@ module AresMUSH
         heal_points = Global.read_config("spells", self.potion_name, "heal_points")
 
         if heal_points
-          message = Magic.cast_non_combat_heal(self.caster, target_name, self.potion_name, mod = nil, is_potion = true)
+          message = Magic.cast_non_combat_heal(self.caster.name, target_name, self.potion_name, mod = nil, is_potion = true)
+        elsif Magic.spell_shields.include?(self.potion_name)
+          school = "Magic"
+          cast_mod = FS3Skills.ability_rating(caster, "Magic") * 2
+          roll = self.caster.roll_ability(school, cast_mod)[:successes]
+          message = Magic.cast_noncombat_shield(self.caster, self.caster.name, target_name, self.potion_name, mod = nil, roll, is_potion = true)
         else
-          message = Magic.cast_noncombat_spell(self.caster, target_name, self.potion_name, mod = nil, is_potion = true)
+          message = Magic.cast_noncombat_spell(self.caster.name, target_name, self.potion_name, mod = nil, result = roll, is_potion = true)
         end
         message.each do |message|
           self.caster.room.emit message
