@@ -2,8 +2,8 @@
 fs3skills:
   max_luck: 6
   luck_for_scene:
-    0: 0.075
-    10: 0.05
+    0: 0.06
+    10: 0.04
     25: 0.025
     50: 0.015
   public_sheets: true
