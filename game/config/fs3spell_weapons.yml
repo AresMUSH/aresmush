@@ -5,6 +5,9 @@ fs3combat:
     Aos Si Coin:
       description: A magical lucky coin. Owned by Ethan.
       init_mod: 1
+    Zhujiang's Hairpin:
+      description: A magical hair pin. Owned by Adelaide.
+      accuracy: 1
     #SPELLS
     Agility:
       description: Level 4 Corpus spell
