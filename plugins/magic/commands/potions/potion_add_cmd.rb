@@ -31,7 +31,7 @@ module AresMUSH
 
         other_client = Login.find_client(self.target)
         message = t('magic.given_potion', :name => enactor.name, :potion => potion_name)
-        Login.emit_if_logged_in self.target,
+        Login.emit_if_logged_in(self.target, message)
         Mail.send_mail([target.name], t('magic.given_potion_subj', :potion => potion_name), message, nil)
 
 

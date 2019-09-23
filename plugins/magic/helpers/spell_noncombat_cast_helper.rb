@@ -168,7 +168,7 @@ module AresMUSH
       end
     end
 
-    def self.cast_noncombat_shield(caster, caster_name, name_string, spell, mod, shield_strength)
+    def self.cast_noncombat_shield(caster, caster_name, name_string, spell, mod, shield_strength, is_potion = false)
       target_num = Global.read_config("spells", spell, "target_num")
 
       if name_string != nil
@@ -195,10 +195,15 @@ module AresMUSH
             target.update(endure_cold: shield_strength)
             type = "ice"
           end
-
-          Global.logger.info "#{spell} strength on #{target.name} set to #{shield_strength}."
-          message = [t('magic.cast_shield', :name => caster_name, :spell => spell, :mod => mod, :succeeds => "%xgSUCCEEDS%xn", :target =>  target.name, :type => type)]
-          messages.concat message
+          if is_potion
+            Global.logger.info "#{spell} strength on #{target.name} set to #{shield_strength}."
+            message = [t('magic.potion_shield', :name => caster_name, :spell => spell, :mod => mod, :succeeds => "%xgSUCCEEDS%xn", :target =>  target.name, :type => type)]
+            messages.concat message
+          else
+            Global.logger.info "#{spell} strength on #{target.name} set to #{shield_strength}."
+            message = [t('magic.cast_shield', :name => caster_name, :spell => spell, :mod => mod, :succeeds => "%xgSUCCEEDS%xn", :target =>  target.name, :type => type)]
+            messages.concat message
+          end
         end
       end
       return messages
