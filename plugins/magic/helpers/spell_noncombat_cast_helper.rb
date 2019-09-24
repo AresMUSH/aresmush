@@ -14,18 +14,19 @@ module AresMUSH
         succeeds = Magic.spell_success(spell, die_result)
         Global.logger.info "#{caster_name} rolling #{dice} dice to cast #{spell}. Result: #{roll} (#{die_result} successes)"
       else
-        if Magic.knows_spell?(caster, spell)
-          school = Global.read_config("spells", spell, "school")
+        schools = [caster.group("Minor School"), caster.group("Major School")]
+        school = Global.read_config("spells", spell, "school")
+        if schools.include?(school)
+          skill = school
         else
-          school = "Magic"
+          skill = "Magic"
           cast_mod = FS3Skills.ability_rating(caster, "Magic") * 2
           mod = mod.to_i + cast_mod
         end
-
         spell_mod = Magic.item_spell_mod(caster)
         total_mod = mod.to_i + spell_mod.to_i
-        Global.logger.info "#{caster.name} rolling #{school} to cast #{spell}. Mod=#{mod} Item Mod=#{spell_mod} Off-school cast mod=#{cast_mod} total=#{total_mod}"
-        roll = caster.roll_ability(school, total_mod)
+        Global.logger.info "#{caster.name} rolling #{skill} to cast #{spell}. Mod=#{mod} Item Mod=#{spell_mod} Off-school cast mod=#{cast_mod} total=#{total_mod}"
+        roll = caster.roll_ability(skill, total_mod)
         die_result = roll[:successes]
         succeeds = Magic.spell_success(spell, die_result)
       end
@@ -84,7 +85,7 @@ module AresMUSH
         else
           message = [t('magic.casts_spell_on_target', :name => caster_name, :target => print_names, :spell => spell, :mod => mod, :succeeds => success)]
           messages.concat message
-        end      
+        end
         return messages
       end
     end
