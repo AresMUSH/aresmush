@@ -213,7 +213,7 @@ spells:
     available: false
     casting_time: 1 round
     damage_type: Psionic
-    desc: The caster delivers a minor assault on the thought pathways of any one sapient creature, doing damage.
+    desc: The caster delivers a minor assault on the thought pathways of any one sapient creature, distracting them.
     effect: Damage
     fs3_attack: true
     level: 3
@@ -321,7 +321,7 @@ spells:
   Mind Shield:
     available: true
     casting_time: 1 round
-    desc: "Cast a protective psionic shield on a target. The strength of the shield is determined by the caster's Spirit roll. When the target is targetted by another psionic spell, the opposing caster rolls Spirit vs the strength of the shield to determine whether the spell succeeds, or whether the mind shield holds. If the opposing spell bypasses the shield, the shield raises an alarm which informs the target that a psionic spell of some sort has been successfully cast on them."
+    desc: "Cast a protective psionic shield on a target. The strength of the shield is determined by the caster's Spirit roll. When the target is targetted by another psionic spell, the opposing caster rolls Spirit vs the strength of the shield to determine whether the spell succeeds, or whether the mind shield holds. The shield raises an alarm which informs the target that a psionic spell of some sort has been cast on them, whether the spell succeeds in bypassing the shield or not."
     effect: Defense
     level: 4
     line_of_sight: true
