@@ -455,7 +455,7 @@ spells:
     target_num: 1
     target_optional: true
   Pass Unseen:
-    available: false
+    available: true
     casting_time: 1 round
     damage_type: Psionic
     desc: "The caster's presence is completely ignored by all thinking beings or creatures. \n\nThere is no physical change, the mind simply rejects any sensory signs of the caster for the duration of the spell. Large disruptions or sudden violence by the caster will break the spell. Other Spirit users may see through the spell with a successful roll of the caster's Spirit vs their Spirit-1. A draw goes to the caster."
