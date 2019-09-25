@@ -1,7 +1,7 @@
 ---
 fs3skills:
   advantages_cost: 2
-  allow_unskilled_action_skills: true
+  allow_incapable_action_skills: true
   free_backgrounds: 6
   free_languages: 3
   max_ap: 45
