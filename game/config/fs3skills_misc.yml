@@ -26,3 +26,9 @@ fs3skills:
     fs3_joined_combat:
       type: fs3
       message: Joined %{count} combats.
+    fs3_luck_spent:
+      type: fs3
+      message: Spent a luck point.
+    fs3_roll:
+      type: fs3
+      message: Rolled a skill.
