@@ -1,13 +1,7 @@
 ---
 achievements:
   announce_channel: Achievements
-  custom_achievements:
-    object_meme:
-      type: meme
-      message: Participated in the Object Meme
-    vignette_challenge:
-      type: meme
-      message: Participated in a Vignette Challenge
+  custom_achievements: {}
   shortcuts:
     achievements: achievement
   types:
@@ -21,3 +15,10 @@ achievements:
     death: fa-skull-crossbones
     plot: fa-book-open
     meme: fa-award
+  achievements:
+    object_meme:
+      type: meme
+      message: Participated in the Object Meme
+    vignette_challenge:
+      type: meme
+      message: Participated in a Vignette Challenge
