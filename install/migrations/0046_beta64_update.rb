@@ -10,7 +10,10 @@ module AresMUSH
         
         Global.logger.debug "Resetting word count achievement."
         Achievement.all.select { |a| a.name == "word_count" }.each { |a| a.delete }
-        
+        Character.all.each do |c| 
+          c.update(pose_word_count: 0 )
+          c.update(scenes_participated_in: [] )
+        end
         
         Global.logger.debug "Reset default log size."
         config = DatabaseMigrator.read_config_file("logger.yml")
@@ -37,13 +40,20 @@ module AresMUSH
           end
         end
         
-        Global.logger.debug "Reset default scene idle timeout."
+        Global.logger.debug "Change default scene idle timeout."
         config = DatabaseMigrator.read_config_file("scenes.yml")
         if config['scenes']['idle_scene_timeout_days'] == 3
-          config['scenes']['idle_scene_timeout_days'] = 7
+          config['scenes']['idle_scene_timeout_days'] = 5
           DatabaseMigrator.write_config_file("scenes.yml", config)
         end
         
+        Global.logger.debug "FS3 incapable rename take 2."
+        config = DatabaseMigrator.read_config_file("fs3skills_chargen.yml")
+        if (config['fs3skills']['allow_incapable_action_skills'] == nil )
+          config['fs3skills']['allow_incapable_action_skills'] = config['fs3skills']['allow_unskilled_action_skills']
+          config['fs3skills'].delete 'allow_unskilled_action_skills'
+          config = DatabaseMigrator.write_config_file("fs3skills_chargen.yml", config)
+        end
         
       end 
     end
