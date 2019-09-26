@@ -1,7 +1,13 @@
 ---
 achievements:
   announce_channel: Achievements
-  custom_achievements: {}
+  custom_achievements:
+    object_meme:
+      type: meme
+      message: Participated in the Object Meme
+    vignette_challenge:
+      type: meme
+      message: Participated in a Vignette Challenge
   shortcuts:
     achievements: achievement
   types:
