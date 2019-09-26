@@ -8,7 +8,7 @@ module AresMUSH
     attribute :pose_word_count, :type => DataType::Integer
     attribute :scene_home
     attribute :read_scenes, :type => DataType::Array, :default => []
-    attribute :scene_participation_count, :type => DataType::Integer
+    attribute :scenes_participated_in, :type => DataType::Array, :default => []
     
     collection :scene_likes, "AresMUSH::SceneLike"
   

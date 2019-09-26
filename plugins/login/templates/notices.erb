@@ -7,7 +7,7 @@
 <% end %>
 
 <% paginator.page_items.each do |notice| %>
-<%= notice_unread(notice) %> %xh%xx<%= left(notice_hint(notice), 10) %>%xn <%= left(notice.message,38) %> <%= notice_timestamp(notice) %>
+<%= notice_unread(notice) %> <%= left(notice.message, 48) %> <%= notice_timestamp(notice) %>
 <% end %>
 
 <%= paginator.page_footer %>
