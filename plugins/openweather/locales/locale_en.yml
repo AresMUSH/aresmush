@@ -1,0 +1,29 @@
+---
+en:
+    Openweather:
+        weather_reset: "Forcing API update to update weather."
+        default: "Everywhere Else"
+        condition: "The weather is %{condition}."
+        temperature: "It is %{temperature}%{degree}%{unit} with a humidity of %{humidity}% on this %{season} %{time_of_day}."
+        winds: "There are %{wind_speed} %{unit} winds from the %{wind_dir}."
+        
+# from https://www.campbellsci.com/blog/convert-wind-directions
+
+        wind_1: "north"
+        wind_2: "north northeast"
+        wind_3: "northeast"
+        wind_4: "east northeast"
+        wind_5: "east"
+        wind_6: "east southeast"
+        wind_7: "southeast"
+        wind_8: "south southeast"
+        wind_9: "south"
+        wind_10: "south southwest"
+        wind_11: "southwest"
+        wind_12: "west southwest"
+        wind_13: "west"
+        wind_14: "west northwest"
+        wind_15: "northwest"
+        wind_16: "north northwest"
+        wind_17: "north"
+
