@@ -17,7 +17,7 @@ module AresMUSH
        end
 
        def temperature
-         weather[:main][:temp]
+         weather[:main][:temp].to_i
        end
 
        def pressure
