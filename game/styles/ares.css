@@ -411,6 +411,9 @@ SIDEBAR
 .search-bar {
   padding: 10px; }
 
+.sidebar-list {
+  word-wrap: break-word; }
+
 /* -------------------------
 GENERAL UTILITIES
 ------------------------- */
@@ -920,6 +923,9 @@ OTHER
 
 .wiki-breadcrumbs {
   margin-bottom: 10px; }
+
+.help-heading {
+  margin-top: 5px; }
 
 /*.char-scene-list li:before { content: "\2666  "; }*/
 @media (max-width: 992px) {

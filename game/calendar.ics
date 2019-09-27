@@ -2,17 +2,8 @@ BEGIN:VCALENDAR
 VERSION:2.0
 PRODID:-//hacksw/handcal//NONSGML v1.0//EN
 BEGIN:VEVENT
-UID:1c0d9789-61ce-4fbe-987b-696b23089d92@Spirit Lake-spiritlakemu.com
-DTSTART:20190921T200000Z
-DTSTAMP:20190901T202906Z
-SUMMARY:Hoarders
-DESCRIPTION:Myths like to claim that dragons are fond of collecting things of value. Several of the young mages in Grand Lake will learn that though many myths have a grain of truth to them, 'things of value' is an awfully nebulous term...
-  
-  (This event will touch off a PRP storyline; I'd like to keep the participants to five or less for the sake of my sanity and speed of scene, so please do sign up.)
-END:VEVENT
-BEGIN:VEVENT
 UID:ffd68b18-277b-4ad0-a3ff-9260bb59822e@Spirit Lake-spiritlakemu.com
-DTSTART:20190928T180000Z
+DTSTART:20190929T180000Z
 DTSTAMP:20190906T125136Z
 SUMMARY:Carver House Party: The Beginning
 DESCRIPTION:Jon's throwing open the Carver House for Weird use. Come celebrate!
@@ -21,19 +12,12 @@ DESCRIPTION:Jon's throwing open the Carver House for Weird use. Come celebrate!
 END:VEVENT
 BEGIN:VEVENT
 UID:52b3e7de-cd55-4a25-abb1-4f7af410a4a2@Spirit Lake-spiritlakemu.com
-DTSTART:20190929T003000Z
+DTSTART:20190930T003000Z
 DTSTAMP:20190906T125208Z
 SUMMARY:Carver House Party: The End
 DESCRIPTION:Jon's throwing open the Carver House for Weird use. Come celebrate!
   
   We're gonna run this party in two parts, so more people can come. ICly, they'll be separated by several hours. This one will start at 10 PM ICly. 
-END:VEVENT
-BEGIN:VEVENT
-UID:05f97738-3829-49dc-98be-59b73ac2caec@Spirit Lake-spiritlakemu.com
-DTSTART:20190911T000000Z
-DTSTAMP:20190907T175929Z
-SUMMARY:Yaoguai Bounty
-DESCRIPTION:Across the Western Market of Feixuzhicheng are numerous postings and wanted ads. One of them, more prominent than the others, asks for help in dealing with a demon who has attacked several farmers. The promised reward is great. Who will answer the wanted board? This scene is an open event. I'll take up to eight, or so, people.
 END:VEVENT
 BEGIN:VEVENT
 UID:b7370053-a973-4854-9664-dc97fdf62526@Spirit Lake-spiritlakemu.com
@@ -45,17 +29,31 @@ DESCRIPTION:A team of mages has been assembled to move the runestone from the ba
   This will be an open RP event for those who want to help or just want to come for the fun of it. Please feel free to join us, even if it's just to stand on the ground and provide commentary! (Though, if you see us from the ground, we've probably failed at least one part of it, so oh no.)
 END:VEVENT
 BEGIN:VEVENT
-UID:59c24871-a50e-4347-b799-ec97e3480d1a@Spirit Lake-spiritlakemu.com
-DTSTART:20190912T000000Z
-DTSTAMP:20190908T164445Z
-SUMMARY:Everything Is Awful: Eat Something
-DESCRIPTION:In light of recent events, Grace has decided everyone needs comfort food, hugs, and a bitch sesh. Come to Coalstack House. The beatings will continue until morale improves.
+UID:993042c2-3dc6-4e4c-b18d-d0e3ef6090df@Spirit Lake-spiritlakemu.com
+DTSTART:20191015T000000Z
+DTSTAMP:20190919T021629Z
+SUMMARY:Portals & You
+DESCRIPTION:Portals and you! Come to see more of Erik's powerpoints giving the highlights of various known portals and general advice on how not to die right away. Might involve a field trip, depends on turn out/phase of the moon.
 END:VEVENT
 BEGIN:VEVENT
-UID:614602eb-9a01-415b-a734-44397ad754e5@Spirit Lake-spiritlakemu.com
-DTSTART:20190914T003000Z
-DTSTAMP:20190909T233016Z
-SUMMARY:Gnomish Ruins
-DESCRIPTION:Dimas, Danielle, Salvador, and Griffith head into the ruins of Stochieion.
+UID:b448be06-8299-45e0-a2ea-39b976435035@Spirit Lake-spiritlakemu.com
+DTSTART:20191019T000000Z
+DTSTAMP:20190919T022048Z
+SUMMARY:Training: How To Magic 
+DESCRIPTION:A hands-on lesson in regards to using magic, located in the Monte Field. First aid will be available.
+END:VEVENT
+BEGIN:VEVENT
+UID:e87ba530-f95d-4a20-b827-c60a8601d00a@Spirit Lake-spiritlakemu.com
+DTSTART:20191002T000000Z
+DTSTAMP:20190924T140236Z
+SUMMARY:Demon Hunting in Feixuzhicheng 
+DESCRIPTION:This will likely be two scenes like last time. We can take up to 10 people. If sign-ups go over, we'll prioritize folks who didn't get to go last time.
+END:VEVENT
+BEGIN:VEVENT
+UID:10e2a950-056e-47fc-8cef-086ef320f74e@Spirit Lake-spiritlakemu.com
+DTSTART:20190928T190000Z
+DTSTAMP:20190924T163519Z
+SUMMARY:Written In Memory
+DESCRIPTION:Jonathan (and 1-2 companions of his choosing) receive a lesson in history and memory in Stochieion. This is a private event. Do not sign up unless you're asked to.
 END:VEVENT
 END:VCALENDAR
