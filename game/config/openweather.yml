@@ -1,0 +1,132 @@
+---
+openweather:
+  openweather_api_key: 43d29549a3f8538c31c2d168a1b1a337
+  # Units can be set to imperial or metric
+  units: imperial
+  shortcuts: {}
+
+  # Default climate for rooms without an area set.
+  default_climate:
+      zip: 80447
+
+  # List of areas. Provide none for no weather, a zip code, or even coordinates
+  # For openweather to pull weather data.
+
+  climate_for_area:
+      Offstage: none
+      Polar:
+        coords:
+            lat: -74.7
+            lon: 40.92
+      Vegas:
+        zip: 89109
+      Granby:
+        zip: 80446
+      Grand Lake:
+        zip: 89109
+      Hot Sulphur Springs:
+        zip: 80451
+      Rocky Mountain National Park:
+        coords:
+            lat: 40.307980
+            lon: -105.776723
+      #PORTALS
+      Algid Vertex:
+        zip:
+      Cimex:
+        coords:
+            lat: -4.204371
+            lon: -59.949712
+      Elysium:
+        coords:
+            lat: 37.080665
+            lon: 21.849387
+      #PORTALS
+      Feixuzhicheng:
+        coords:
+            lat: 28.269571
+            lon: 111.111863
+      Feynthorn:
+        zip: 03033
+      Immeasurable Autumn:
+        zip: 98101
+      Lualea:
+        zip: 93940
+      Stochieion:
+        zip: 92328
+      Takutaima:
+        zip: 96795
+
+
+  # Runs every hour to update weather data.
+
+  weather_cron:
+      minute:
+      - 0
+
+# These result codes are from https://openweathermap.org/weather-conditions
+# If not defined it will use the default description from api
+
+  weather_code_desc:
+    # Group 2xx: Thunderstorm
+    200: A thunderstorm with light rain falls from the sky.
+    201: A thunderstorm with rain falls from the sky.
+    202: A thunderstorm with heavy rain fall from the sky.
+    210: A light thunderstorm is in the area.
+    211: A thunderstroms is in the area.
+    212: A heavy thunderstorm moves through the area.
+    221: A ragged thunderstorm hangs in the sky.
+    230: A thunderstorm with light drizzle falls from the sky.
+    231: A thunderstorm with drizzle falls from the sky.
+    232: A thunderstorm with heavy drizzle is in the area.
+    # Group 3xx: Drizzle
+    300: A light intensity drizzle falls from above.
+    301: A drizzle comes from the heavens.
+    302: A heavy intensity drizzle falls from the above clouds.
+    310: A light intensity drizzle mixed with some rain falls from above.
+    311: A drizzle like rain falls from the sky.
+    312: A heavy intensity drizzle rain falls from above.
+    313: A rain shower mixed with drizzle falls from the heavens.
+    314: A heavy shower of rain and drizzle moves through the area.
+    321: A shower drizzle hangs in the atmosphere.
+    # Group 5xx: Rain
+    500: A light rain dances down from above.
+    501: There is a moderate rainfall outside.
+    502: A heavy intense rain falls pounding the area.
+    503: Dark skies usher forth a very heavy rain.
+    504: The clouded black skies above deluge a extream amout of rain.
+    511: A cold freezing rain drops from above.
+    520: A light intensity rain shower springles from the clouds above.
+    521: Rain showers from clouds above.
+    522: A heavy rain shower falls from the dark clouds above.
+    531: A ragged stop and start rain showers move throughout the area.
+    # Group 6xx: Snow
+    600: A light snow falls from clouds above.
+    601: It's snowing out.
+    602: A heavy snowfall blankets the area from dark clouds above.
+    611: Sleet falls from the skies above.
+    612: A light shower of sleet and rain fall from the heavens.
+    613: A mix of sleet and rain fall from dark clouds.
+    615: A mix of light rain and snow falls from above.
+    616: Rain and snow, or snow and rain? A even mix falls from the sky.
+    620: A Light snow shower moves through the area.
+    621: Shower snow and dark skies halmark the weather.
+    622: A heavy snow shower falls from dark clouds above.
+    # Group 7xx: Atmosphere
+    701: It is misty. The air is thick with moisture, and there's just barely a light rain.
+    711: Smoke carried by the wind obscures vision in the area.
+    721: A hazy atmosphere hangs in the air above.
+    731: Sand and dust whirls in the air. Making it difficult to see.
+    741: A dense fog hugs the ground. It is hard to see.
+    751: A sandstrom whips through the area. It is very difficult to see.
+    761: A dusty atmosphere hangs above.
+    762: Volcanic ash hangs in the atmosphere, blotting out the sky above.
+    771: Gust of winds and squalls move through the area.
+    781: A tornado rampages through the area. Dark skies, is that a witch on a broom?
+    # Group 800: Clear
+    800: The sky is clear, with not a cloud in sight.
+    # Group 80x: Clouds
+    801: A few clouds drift in the sky above.
+    802: Scattered clouds in an otherwise clear sky.
+    803: Broken clouds float in the clear sky.
+    804: It is overcast, heavy clouds hang in the sky.
