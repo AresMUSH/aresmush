@@ -58,6 +58,10 @@ module AresMUSH
       send_data MushFormatter.format(msg, color_mode, screen_reader)
     end
     
+    def send_raw(msg)
+      send_data msg
+    end
+    
     def close_connection(after_writing = false)
       begin
         Global.logger.info("Client #{self.client.id} disconnected.")
