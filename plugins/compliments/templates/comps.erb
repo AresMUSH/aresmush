@@ -3,12 +3,12 @@
 <%= t('compliments.comps_title', :name => char.name.upcase) -%>
 <%= "%xn"  %>
 
-<% paginator.page_items.each do |a| -%>
+<% paginator.page_items.each do |c| -%>
 <%= "%xcFrom "  -%>
-<%=  a.from -%>
-<%=  right(a.created_at.strftime("%Y-%m-%d"), 65 ) -%>
+<%=  c.from -%>
+<%=  right(date(c), 65 ) -%>
 <%= "%xn"  %>
-<%=  a.comp_msg %>
+<%=  c.comp_msg %>
 
 <% end %>
 <%= paginator.page_footer %>

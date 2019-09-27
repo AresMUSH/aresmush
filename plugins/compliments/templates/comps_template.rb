@@ -9,12 +9,8 @@ module AresMUSH
          super File.dirname(__FILE__) + "/comps.erb"
       end
 
-      def comps_recieved
-        @char.comps.to_a
-      end
-
-      def comps_list
-        self.comps_recieved.sort_by { |s| s.date }
+      def date(c)
+        OOCTime.format_date_for_entry(c.created_at)
       end
 
     end

@@ -4,39 +4,42 @@ module AresMUSH
 
       #comp <name>=<text>
       include CommandHandler
-      attr_accessor :targets, :comp, :target_names, :scene_id, :scene
+      attr_accessor :comp, :scene_or_names, :scene_id, :scene, :target_names
 
       def parse_args
-       args = cmd.parse_args(ArgParser.arg1_equals_arg2)
-
-       if args.arg1.is_integer?
-         self.scene_id = args.arg1
-       else
-        self.target_names = args.arg1.split(" ").map { |n| InputFormatter.titlecase_arg(n) }
-        self.targets = []
-         self.target_names.each do |name|
-          target = Character.named(name)
-          return t('compliments.invalid_name') if !target
-          return t('compliments.cant_comp_self') if target.name == enactor_name
-          self.targets << target
-        end
-       end
-
-       self.comp = args.arg2
+        args = cmd.parse_args(ArgParser.arg1_equals_arg2)
+        self.scene_or_names = args.arg1
+        self.comp = args.arg2
       end
 
-      def check_errors
-        self.scene = Scene[scene_id]
-        return "That is not a scene number." if (self.scene_id && !scene)
+      def required_args
+        [ self.scene_or_names, self.comp ]
       end
 
       def handle
+        targets = []
+        if (self.scene_or_names.is_integer?)
+          self.scene_id = self.scene_or_names.to_i
+          puts "Scene ID: #{self.scene_id}"
+          self.scene = Scene[self.scene_id]
+          puts "Scene: #{  self.scene}"
+          return "That is not a scene number." if !  self.scene
+        else
+          self.target_names = self.scene_or_names.split(" ").map { |n| InputFormatter.titlecase_arg(n) }
+          self.target_names.each do |name|
+            target = Character.named(name)
+            return t('compliments.invalid_name') if !target
+            return t('compliments.cant_comp_self') if target.name == enactor_name
+            targets << target
+          end
+        end
+
+
         date = Time.now.strftime("%Y-%m-%d")
         luck_amount = Global.read_config("compliments", "luck_amount")
         give_luck = Global.read_config("compliments", "give_luck")
         if self.scene_id
           self.target_names = []
-
           self.scene.participants.each do |target|
             if target == enactor
 

@@ -10,6 +10,7 @@ module AresMUSH
 
       def handle
         ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
+         comps = model.comps.to_a.sort_by { |c| c.created_at }
          comps = model.comps.to_a.reverse
          paginator = Paginator.paginate(comps, cmd.page, 5)
 
