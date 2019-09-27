@@ -30,6 +30,7 @@ module AresMUSH
         w = Openweather.weather_for_area(room.area_name)
         w ? "%R%R#{w}" : nil
       end
+      
     end
   end
 end

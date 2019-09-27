@@ -32,7 +32,7 @@ openweather:
             lon: -105.776723
       #PORTALS
       Algid Vertex:
-        zip:
+        zip: 43701
       Cimex:
         coords:
             lat: -4.204371
