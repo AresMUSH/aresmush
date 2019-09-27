@@ -47,16 +47,7 @@ module AresMUSH
         end
 
         season = ICTime.season(area)
-        if season == "early-fall"
-          season = "fall"
-        elsif season == "early-winter"
-          season = "winter"
-        elsif season == "early-spring"
-          season = "spring"
-        elsif season == "early-summer"
-          season = "summer"
-        end
-
+        
         if (!response)
           raise "Could not call API climate for #{climate}."
         end

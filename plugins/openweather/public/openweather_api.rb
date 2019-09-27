@@ -3,10 +3,10 @@ module AresMUSH
       def self.is_enabled?
         !Global.plugin_manager.is_disabled?("Openweather")
       end
-  
-      def self.weather_for_area(area_name)  
+
+      def self.weather_for_area(area_name)
         Openweather.load_weather_if_needed
-  
+
         # Get the weather for the current area if there is one.
         if (Openweather.current_weather.has_key?(area_name))
           weather = Openweather.current_weather[area_name]
@@ -17,19 +17,29 @@ module AresMUSH
           end
           weather = Openweather.current_weather["Default"]
         end
-  
+
         # This handles the 'no weather' case, returning nil.
         return nil if !weather || weather.empty?
-  
+
         season = ICTime.season(area_name)
+        if season == "early-fall"
+          season = "fall"
+        elsif season == "early-winter"
+          season = "winter"
+        elsif season == "early-spring"
+          season = "spring"
+        elsif season == "early-summer"
+          season = "summer"
+        end
+
 
         # Season and Time of day are 'generic' and not based off
         # Openweather's sunset and sunrise times for an area.
         # Possible TODO?
-        
+
         time_of_day = ICTime.time_of_day(area_name)
-      
-        units = Global.read_config("openweather", "units") 
+
+        units = Global.read_config("openweather", "units")
         degree = "\u00B0"
 
         case units
@@ -44,7 +54,7 @@ module AresMUSH
 
         x = wind_deg % 360
         x = (x/22.5)+1
-        
+
         wind_dir = t("Openweather.wind_#{x.round}")
 
         # Weather is in an array list, I've only seen 1 element, but adding
@@ -58,13 +68,13 @@ module AresMUSH
         weather_desc = Global.read_config("openweather", "weather_code_desc", condition_id) ||
           t('Openweather.condition', :condition => condition)
 
-        temp_desc =  t('Openweather.temperature', :temperature => temperature, :degree => degree.encode('utf-8'),
+        temp_desc =  t('Openweather.temperature', :temperature => temperature.to_i, :degree => degree.encode('utf-8'),
                         :unit => units[0], :humidity => humidity, :season => season, :time_of_day => time_of_day)
 
         wind_desc = t('Openweather.winds', :wind_speed => wind_speed, :unit => units[1], :wind_dir => wind_dir)
 
         "#{temp_desc} #{wind_desc} #{weather_desc}"
-      
+
 
       end
     end
