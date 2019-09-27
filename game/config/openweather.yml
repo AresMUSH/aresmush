@@ -1,6 +1,5 @@
 ---
 openweather:
-  openweather_api_key: 43d29549a3f8538c31c2d168a1b1a337
   # Units can be set to imperial or metric
   units: imperial
   shortcuts: {}
