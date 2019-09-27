@@ -71,7 +71,7 @@ module AresMUSH
         temp_desc =  t('Openweather.temperature', :temperature => temperature.to_i, :degree => degree.encode('utf-8'),
                         :unit => units[0], :humidity => humidity, :season => season, :time_of_day => time_of_day)
 
-        wind_desc = t('Openweather.winds', :wind_speed => wind_speed, :unit => units[1], :wind_dir => wind_dir)
+        wind_desc = t('Openweather.winds', :wind_speed => wind_speed.to_i, :unit => units[1], :wind_dir => wind_dir)
 
         "#{temp_desc} #{wind_desc} #{weather_desc}"
 
