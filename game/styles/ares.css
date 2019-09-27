@@ -64,7 +64,7 @@ BASIC CONTAINERS
 .markdown-controls {
   padding: 5px; }
 
-.app-status, #console, #console pre, code, #sendMsg, #sendMsg2 {
+.app-status, #console, #console pre, code, #sendMsg, #sendMsg2, #manageLog {
   white-space: pre-wrap;
   background-color: black;
   color: white;
@@ -83,6 +83,12 @@ code {
 
 .inline-block {
   display: inline-block; }
+
+.ember-basic-dropdown-content {
+  z-index: 3001; }
+
+.modal-content {
+  background-color: #1A1B1C; }
 
 /* -------------------------
 NAVIGATION
@@ -405,6 +411,9 @@ SIDEBAR
 .search-bar {
   padding: 10px; }
 
+.sidebar-list {
+  word-wrap: break-word; }
+
 /* -------------------------
 GENERAL UTILITIES
 ------------------------- */
@@ -724,8 +733,18 @@ CHARACTERS SCREEN
   background-repeat: no-repeat;
   background-image: url("/game/uploads/theme_images/box-bg.png"); }
 
-ul.char-ability-list {
-  list-style-type: square; }
+table.char-ability-list {
+  width: 100%; }
+
+.char-ability-title {
+  font-size: 1.5em;
+  background-color: #383A4F;
+  padding: .1em 1.2em;
+  color: #d1d2d3;
+  font-weight: normal;
+  border: 3px solid #5B5760;
+  letter-spacing: 0.1em;
+  margin: 20px 0px 10px 0px; }
 
 .profile-image {
   width: 300px;
@@ -795,8 +814,14 @@ ul.char-ability-list {
 input[type='file'] {
   color: transparent; }
 
-.combat-danage {
+.combat-damage {
   color: red; }
+
+#combat-log {
+  max-height: 100px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  margin: 5px; }
 
 /* -------------------------
 CHAT SCREEN
@@ -814,6 +839,10 @@ CHAT SCREEN
   width: 100%;
   white-space: normal !important;
   word-wrap: break-word; }
+
+.chat-report {
+  max-height: 200px;
+  overflow-y: scroll; }
 
 .timestamp-tip {
   color: #999999;
@@ -892,8 +921,17 @@ OTHER
   display: inline-block;
   margin-bottom: 5px; }
 
+.wiki-breadcrumbs {
+  margin-bottom: 10px; }
+
+.help-heading {
+  margin-top: 5px; }
+
 /*.char-scene-list li:before { content: "\2666  "; }*/
 @media (max-width: 992px) {
+  .site-title {
+    font-size: 2em;
+    max-height: 50px; }
   .profile-wrap {
     padding: 10px; }
   .profile-box {
@@ -1070,8 +1108,9 @@ blockquote {
 
 .ember-power-select-trigger {
   color: #1c1713; }
-  .ember-power-select-trigger #ember624 {
-    width: 150px; }
+
+#ember624 {
+  width: 150px; }
 
 #searchFields {
   width: 95%;
@@ -1168,7 +1207,7 @@ code {
   padding: 3px; }
 
 .modal-content {
-  color: #333333; }
+  color: #bdbcbc; }
 
 .collapse.in {
   background: #383A4F;

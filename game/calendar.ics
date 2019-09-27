@@ -2,17 +2,58 @@ BEGIN:VCALENDAR
 VERSION:2.0
 PRODID:-//hacksw/handcal//NONSGML v1.0//EN
 BEGIN:VEVENT
-UID:9c25c268-cfac-4095-a3de-a09cb382e88d@Spirit Lake-spiritlakemu.com
-DTSTART:20190706T000000Z
-DTSTAMP:20190701T005835Z
-SUMMARY:Fourth of July!
-DESCRIPTION:BBQ and Fireworks, Grand Lake style.
+UID:ffd68b18-277b-4ad0-a3ff-9260bb59822e@Spirit Lake-spiritlakemu.com
+DTSTART:20190929T180000Z
+DTSTAMP:20190906T125136Z
+SUMMARY:Carver House Party: The Beginning
+DESCRIPTION:Jon's throwing open the Carver House for Weird use. Come celebrate!
+  
+  We're gonna run this party in two parts, so more people can come. ICly, they'll be separated by several hours. This one will start at 6 PM ICly, and the second will start at 10 PM.
 END:VEVENT
 BEGIN:VEVENT
-UID:b26615bd-482f-423a-a785-32243f7adc8e@Spirit Lake-spiritlakemu.com
-DTSTART:20190702T003000Z
-DTSTAMP:20190701T221543Z
-SUMMARY:Joel's Canada Day BBQ
-DESCRIPTION:In deference to his half-Canadian heritage, Joel is holding a small BBQ in his backyard. BYOB. There will be puppies (not for BBQing). It's fair to assume you heard about it through the grapevine if you don't know Joel. 
+UID:52b3e7de-cd55-4a25-abb1-4f7af410a4a2@Spirit Lake-spiritlakemu.com
+DTSTART:20190930T003000Z
+DTSTAMP:20190906T125208Z
+SUMMARY:Carver House Party: The End
+DESCRIPTION:Jon's throwing open the Carver House for Weird use. Come celebrate!
+  
+  We're gonna run this party in two parts, so more people can come. ICly, they'll be separated by several hours. This one will start at 10 PM ICly. 
+END:VEVENT
+BEGIN:VEVENT
+UID:b7370053-a973-4854-9664-dc97fdf62526@Spirit Lake-spiritlakemu.com
+DTSTART:20190929T190000Z
+DTSTAMP:20190908T001256Z
+SUMMARY:Runestone Moving Services
+DESCRIPTION:A team of mages has been assembled to move the runestone from the battlefield next to the wolf portal to Khepri and Chionet's tomb. So far, Jonathan, Manny, DeLuz, Fenris, and Dani are all planning to help out. 
+  
+  This will be an open RP event for those who want to help or just want to come for the fun of it. Please feel free to join us, even if it's just to stand on the ground and provide commentary! (Though, if you see us from the ground, we've probably failed at least one part of it, so oh no.)
+END:VEVENT
+BEGIN:VEVENT
+UID:993042c2-3dc6-4e4c-b18d-d0e3ef6090df@Spirit Lake-spiritlakemu.com
+DTSTART:20191015T000000Z
+DTSTAMP:20190919T021629Z
+SUMMARY:Portals & You
+DESCRIPTION:Portals and you! Come to see more of Erik's powerpoints giving the highlights of various known portals and general advice on how not to die right away. Might involve a field trip, depends on turn out/phase of the moon.
+END:VEVENT
+BEGIN:VEVENT
+UID:b448be06-8299-45e0-a2ea-39b976435035@Spirit Lake-spiritlakemu.com
+DTSTART:20191019T000000Z
+DTSTAMP:20190919T022048Z
+SUMMARY:Training: How To Magic 
+DESCRIPTION:A hands-on lesson in regards to using magic, located in the Monte Field. First aid will be available.
+END:VEVENT
+BEGIN:VEVENT
+UID:e87ba530-f95d-4a20-b827-c60a8601d00a@Spirit Lake-spiritlakemu.com
+DTSTART:20191002T000000Z
+DTSTAMP:20190924T140236Z
+SUMMARY:Demon Hunting in Feixuzhicheng 
+DESCRIPTION:This will likely be two scenes like last time. We can take up to 10 people. If sign-ups go over, we'll prioritize folks who didn't get to go last time.
+END:VEVENT
+BEGIN:VEVENT
+UID:10e2a950-056e-47fc-8cef-086ef320f74e@Spirit Lake-spiritlakemu.com
+DTSTART:20190928T190000Z
+DTSTAMP:20190924T163519Z
+SUMMARY:Written In Memory
+DESCRIPTION:Jonathan (and 1-2 companions of his choosing) receive a lesson in history and memory in Stochieion. This is a private event. Do not sign up unless you're asked to.
 END:VEVENT
 END:VCALENDAR
