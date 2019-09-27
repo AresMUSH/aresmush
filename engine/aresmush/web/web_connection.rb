@@ -54,18 +54,22 @@ module AresMUSH
     
     def send_formatted(msg, color_mode = "FANSI", ascii_mode = false, screen_reader = false)
        # Strip out < and > - may need to strip other things in the future
-      formatted = MushFormatter.format(msg, color_mode).gsub(/</, '&lt;').gsub(/>/, '&gt;')
-      
-      data = {
-        type: "notification",
-        args: {
-          notification_type: "webclient_output",
-          message: formatted,
-          character: @web_char_id
-        }
-      }
-      
-      send_data data.to_json.to_s
+      formatted = MushFormatter.format(msg, color_mode)
+      self.send_raw(formatted)
+    end
+    
+    def send_raw(msg)
+      # Strip out < and > - may need to strip other things in the future
+     formatted = msg.gsub(/</, '&lt;').gsub(/>/, '&gt;')
+     data = {
+       type: "notification",
+       args: {
+         notification_type: "webclient_output",
+         message: formatted,
+         character: @web_char_id
+       }
+     }
+     send_data data.to_json.to_s
     end
     
     # Just announces that the websocket was closed.

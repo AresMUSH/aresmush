@@ -78,7 +78,7 @@ module AresMUSH
     end
     
     def emit_raw(msg)
-      @connection.send_data "#{msg}\r\n"
+      @connection.send_raw "#{msg}\r\n"
     end
     
     def web_notify(type, message)
