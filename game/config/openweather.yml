@@ -52,7 +52,9 @@ openweather:
       Lualea:
         zip: 93940
       Stochieion:
-        zip: 92328
+        coords:
+            lat: 14.240831
+            lon: 40.304199
       Takutaima:
         zip: 96795
 
