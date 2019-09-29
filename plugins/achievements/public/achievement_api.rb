@@ -9,6 +9,8 @@ module AresMUSH
       return nil if !Achievements.is_enabled?
       return nil if char.is_admin? || char.is_npc? || char.is_guest?
       
+      Global.logger.info "Checking #{name} (#{count}) achievement for #{char.name}."
+      
       achievement_details = Achievements.achievement_data(name)          
       if (!achievement_details)
         Global.logger.warn "Achievement not found: #{name}"
@@ -23,16 +25,18 @@ module AresMUSH
       end
       
       if (!Achievements.has_achievement?(char, name, count))
+        Global.logger.info "Awarding #{name} (#{count}) achievement to #{char.name}."
+
         message = message % { count: count }
         achievement = char.achievements.select { |a| a.name == name }.first
         
         if (achievement)
           achievement.update(count: count, message: message)
         else
-          Achievement.create(character: char, type: type, name: name, message: message, count: count)
+          achievement = Achievement.create(character: char, type: type, name: name, message: message, count: count)
         end
 
-        Mail.send_mail([char.name], t('achievements.achievement_mail_subject'), t('achievements.achievement_mail_message', :message => message), nil)          
+        Login.notify(char, :achievement, t('achievements.achievement_noification_message', :message => message), achievement.id)
         
         notification = t('achievements.achievement_earned', :name => char.name, :message => message)
         Channels.announce_notification(notification)

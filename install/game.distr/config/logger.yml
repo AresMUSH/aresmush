@@ -16,8 +16,8 @@ logger:
       type: PatternFormatter
   - type: RollingFileOutputter
     name: file
-    max_backups: '10'
-    maxsize: 250000
+    max_backups: 20
+    maxsize: 125000
     filename: game/logs/log.txt
     formatter:
       date_pattern: "%Y-%m-%d %H:%M:%S"
