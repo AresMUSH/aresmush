@@ -375,6 +375,20 @@ spells:
     range: Short
     roll: true
     school: Corpus
+  Speed Boost:
+    available: false
+    attack_mod: 2
+    casting_time: 1 round
+    defense_mod: 2
+    desc: "The target's strength and reflexes are improved, increasing the speed at which they can move. They are able to attack and dodge faster and can run up to 40 mph for the duration of the spell."
+    duration: 2 min
+    effect: Buff
+    level: 6
+    name: Speed Boost
+    range: Self
+    rounds: 12
+    school: Corpus
+    weapon_specials: Speed Boost
   #Level 7
   Brink Of Death:
     available: true
