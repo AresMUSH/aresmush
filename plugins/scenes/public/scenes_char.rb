@@ -9,6 +9,7 @@ module AresMUSH
     attribute :scene_home
     attribute :read_scenes, :type => DataType::Array, :default => []
     attribute :scenes_participated_in, :type => DataType::Array, :default => []
+    attribute :scene_participation_count
     
     collection :scene_likes, "AresMUSH::SceneLike"
   
