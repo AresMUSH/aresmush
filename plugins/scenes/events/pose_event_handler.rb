@@ -13,7 +13,7 @@ module AresMUSH
         end
         
         if (!event.is_ooc)
-          Scenes.handle_word_count_achievements(enactor, pose)
+          Scenes.handle_word_count_achievements(enactor, event.pose)
         end
       end
     end
