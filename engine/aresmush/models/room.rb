@@ -9,6 +9,7 @@ module AresMUSH
     index :name_upcase
   
     collection :exits, "AresMUSH::Exit", :source
+    collection :exits_in, "AresMUSH::Exit", :dest
     collection :characters, "AresMUSH::Character"
     
     before_save :save_upcase
@@ -33,15 +34,6 @@ module AresMUSH
     
     def save_upcase
       self.name_upcase = self.name ? self.name.upcase : nil
-    end
-    
-    def delete
-      sources = Exit.find(dest_id: self.id)
-      sources.each do |s|
-        s.dest = nil
-        s.save
-      end
-      super
     end
 
     def out_exit

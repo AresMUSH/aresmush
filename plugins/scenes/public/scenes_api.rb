@@ -34,10 +34,6 @@ module AresMUSH
       data[:pose_order] = Scenes.build_pose_order_web_data(scene)
 
       Scenes.new_scene_activity(scene, :new_pose, data.to_json)
-      if (!is_ooc)
-        Scenes.handle_word_count_achievements(character, pose)
-      end
-      
       return scene_pose
     end
     

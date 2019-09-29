@@ -33,8 +33,7 @@ The `roomtype` property ties in with the 'status' system, to tell whether someon
 `roomtype [<room name>=]<IC, OOC or RPR>` - Sets a room as part of the IC, OOC or RPR (Roleplay Room) zone.
 
 
-`foyer <on or off` - Marks whether a room is a foyer, like an apartment or the
-        RP room hub.  Numbered exits will be shown in a special way.
+`foyer <on or off` - Marks whether a room is a foyer, like an apartment or the RP room hub.  Numbered exits will be shown in a special way.
 
 ## Room Owners
 

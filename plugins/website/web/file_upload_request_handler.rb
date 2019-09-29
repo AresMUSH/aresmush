@@ -18,9 +18,9 @@ module AresMUSH
         end
         
         is_wiki_admin = Website.can_manage_wiki?(enactor)
-        extension = File.extname(name)
+        extension = File.extname(name) || ""
 
-        if (!is_wiki_admin && !['.png', '.jpg'].include?(extension))
+        if (!is_wiki_admin && !['.png', '.jpg', '.gif'].include?(extension.downcase))
           return { error: t('webportal.only_upload_images') }
         end
         

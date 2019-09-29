@@ -185,6 +185,48 @@ module AresMUSH
         end
         
       end
+      
+      describe :handle_scene_participation_achievement do
+        before do 
+          @char = double
+          @scene = double
+          allow(@scene).to receive(:id) { 123 }
+          allow(@scene).to receive(:scene_type) { "event" }
+        end
+        
+        it "should not award anything if char already participated in scene." do
+          expect(Scenes).to receive(:participated_in_scene?).with(@char, @scene) { true }
+          expect(Achievements).to_not receive(:award_achievement).with(@char, "scene_participant", 1)
+          Scenes.handle_scene_participation_achievement(@char, @scene)
+        end
+        
+        it "should use the level not the count for awards." do
+          expect(Scenes).to receive(:participated_in_scene?).with(@char, @scene) { false }
+          expect(@char).to receive(:scenes_participated_in) { [ "1", "2" ]}
+          expect(Achievements).to receive(:award_achievement).with(@char, "scene_participant_event")
+          expect(Achievements).to receive(:award_achievement).with(@char, "scene_participant", 1)
+          expect(@char).to receive(:update).with(:scenes_participated_in => [ "1", "2", "123" ])
+          Scenes.handle_scene_participation_achievement(@char, @scene)
+        end
+        
+        it "should award new level once they get enough scenes" do
+          expect(Scenes).to receive(:participated_in_scene?).with(@char, @scene) { false }
+          expect(@char).to receive(:scenes_participated_in) { [ "1", "2", "3", "4", "5", "6", "7", "8", "9" ]}
+          expect(Achievements).to receive(:award_achievement).with(@char, "scene_participant_event")
+          expect(Achievements).to receive(:award_achievement).with(@char, "scene_participant", 10)
+          expect(@char).to receive(:update).with(:scenes_participated_in => [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "123" ])
+          Scenes.handle_scene_participation_achievement(@char, @scene)
+        end
+        
+        it "should award type achievement" do
+          expect(Scenes).to receive(:participated_in_scene?).with(@char, @scene) { false }
+          expect(@char).to receive(:scenes_participated_in) { [] }
+          expect(Achievements).to receive(:award_achievement).with(@char, "scene_participant_event")
+          expect(Achievements).to receive(:award_achievement).with(@char, "scene_participant", 1)
+          expect(@char).to receive(:update).with(:scenes_participated_in => [ "123" ])
+          Scenes.handle_scene_participation_achievement(@char, @scene)
+        end
+      end
     end
   end
 end

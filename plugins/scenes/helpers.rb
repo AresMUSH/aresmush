@@ -9,7 +9,8 @@ module AresMUSH
       end
       if (activity_type =~ /pose/)
         message = t('scenes.new_scene_activity', :id => scene.id)
-        scene.watchers.each do |w|
+        watching_participants = scene.watchers.to_a & scene.participants.to_a
+        watching_participants.each do |w|
           if (last_posed != w.name)
             Login.notify(w, :scene, message, scene.id, "", false)
           end
@@ -54,6 +55,8 @@ module AresMUSH
       Scenes.create_scene_temproom(scene)
       scene.update(completed: false)
       scene.update(was_restarted: true)
+      scene.update(last_activity: Time.now)
+      scene.watchers.replace scene.participants.to_a
       Scenes.new_scene_activity(scene, :status_changed, nil)
     end
     
@@ -123,11 +126,15 @@ module AresMUSH
 
       scene.update(completed: true)
       scene.update(date_completed: Time.now)
+      scene.invited.replace []
+      scene.watchers.replace []
       
       Scenes.new_scene_activity(scene, :status_changed, nil)
       
-      if (!scene.was_restarted)
-        scene.participants.each do |char|
+      scene.participants.each do |char|
+        # Don't double-award luck or scene participation if we've already tracked 
+        # that they've participated in that scene.
+        if (!Scenes.participated_in_scene?(char, scene))
           Scenes.handle_scene_participation_achievement(char, scene)
           if (FS3Skills.is_enabled?)
             FS3Skills.luck_for_scene(char, scene)
@@ -135,6 +142,10 @@ module AresMUSH
         end
       end
     end    
+    
+    def self.participated_in_scene?(char, scene)
+      char.scenes_participated_in.include?("#{scene.id}")
+    end
     
     def self.participants_and_room_chars(scene)
       participants = scene.participants.to_a
@@ -445,12 +456,18 @@ module AresMUSH
         end
       end
     end
-    
+        
     def self.handle_scene_participation_achievement(char, scene)
-      char.update(scene_participation_count: char.scene_participation_count + 1)
+      return if Scenes.participated_in_scene?(char, scene)
+      
+      scenes = char.scenes_participated_in
+      scenes << "#{scene.id}"
+      char.update(scenes_participated_in: scenes)
+      count = scenes.count
+      
       Achievements.award_achievement(char, "scene_participant_#{scene.scene_type.downcase}")
       [ 1, 10, 20, 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000 ].reverse.each do |level|
-        if ( char.scene_participation_count >= level )
+        if ( count >= level )
           Achievements.award_achievement(char, "scene_participant", level)
           break
         end
