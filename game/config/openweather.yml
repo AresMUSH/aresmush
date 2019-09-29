@@ -40,7 +40,9 @@ openweather:
             lat: 28.269571
             lon: 111.111863
       Feynthorn:
-        zip: 03302
+        coords:
+            lat: 43.204895
+            lon: -71.502984
       Immeasurable Autumn:
         zip: 94016
       Lualea:
