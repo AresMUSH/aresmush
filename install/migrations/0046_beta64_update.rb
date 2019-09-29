@@ -40,13 +40,6 @@ module AresMUSH
           end
         end
         
-        Global.logger.debug "Change default scene idle timeout."
-        config = DatabaseMigrator.read_config_file("scenes.yml")
-        if config['scenes']['idle_scene_timeout_days'] == 3
-          config['scenes']['idle_scene_timeout_days'] = 5
-          DatabaseMigrator.write_config_file("scenes.yml", config)
-        end
-        
         Global.logger.debug "FS3 incapable rename take 2."
         config = DatabaseMigrator.read_config_file("fs3skills_chargen.yml")
         if (config['fs3skills']['allow_incapable_action_skills'] == nil )
