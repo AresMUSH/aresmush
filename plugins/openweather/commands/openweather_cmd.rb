@@ -8,7 +8,7 @@ module AresMUSH
 
         Openweather.load_weather_if_needed
         Openweather.current_weather.each do |k, v|
-          puts "K #{k} V #{v}"
+          Global.logger.debug "K #{k} V #{v}"
           weather = Openweather.weather_for_area(k)
           name = k == "default" ? t('Openweather.default') : k
           next if !weather
