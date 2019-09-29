@@ -1,3 +1,8 @@
+if [[ $EUID == 0 ]]; then
+   echo "This script should not be run as root.  Log out and log back in with your ares user." 
+   exit 1
+fi
+
 echo "Exporting default language settings."
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8

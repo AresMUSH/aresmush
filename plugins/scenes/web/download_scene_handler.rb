@@ -19,7 +19,7 @@ module AresMUSH
         end
         
         text = ""
-        line = "&lt;---------------------------------------"
+        line = "<---------------------------------------"
         
         if (scene.title)
           text << scene.title
@@ -47,11 +47,11 @@ module AresMUSH
             
             if (p.is_ooc)
               if (show_ooc)
-                text << "&lt;OOC&gt; #{p.pose}\n\n"
+                text << "<OOC> #{p.pose}\n\n"
               end
             elsif (p.is_system_pose?)
               if (show_system)
-                text << "&lt;System&gt; #{p.pose}\n\n"
+                text << "<System> #{p.pose}\n\n"
               end
             elsif (p.is_setpose?)
               text << "#{line}\n"
@@ -63,17 +63,15 @@ module AresMUSH
           end
         end
 
-
-        formatter = MarkdownFormatter.new
-        log = formatter.to_mush(text)
-        log.gsub!(/\[\[div class\=\"scene-system-pose\"\]\]/, "&lt;System&gt; #{line}\n")
-        log.gsub!(/\[\[div ([^\]]*)\]\]/, '')
-        log.gsub!(/\[\[\/div\]\]/, "#{line}\n")
-
+        
+        text.gsub!(/\[\[div class\=\"scene-system-pose\"\]\]/, "<System> #{line}")
+        text.gsub!(/\[\[div ([^\]]*)\]\]/, "#{line}")
+        text.gsub!(/\[\[\/div\]\]/, "#{line}")
+        
         {
           id: scene.id,
           title: scene.date_title,
-          log: AresMUSH::MushFormatter.format(log),
+          log: AnsiFormatter.strip_ansi(MushFormatter.format(text)),
           completed: scene.completed,
           shared: scene.shared
         }
