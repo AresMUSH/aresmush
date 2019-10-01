@@ -598,7 +598,7 @@ spells:
     roll: true
     school: Spirit
   Rewrite History:
-    available: false
+    available: true
     casting_time: "1 round to cast, plus additional rounds at GM's discretion according to complexity of the rewrite."
     damage_type: Psionic
     desc: "Permanently rewrite the mind of the target, changing or replacing any and all memories.\n\n
