@@ -139,6 +139,10 @@ module AresMUSH
           fs3 = nil
         end
 
+        if (enactor)
+          Login.mark_notices_read(enactor, :achievement)
+        end
+
         {
           id: char.id,
           name: char.name,

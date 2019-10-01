@@ -17,7 +17,7 @@ module AresMUSH
         {
           config: config,
           status_options: [ 'In Development', 'Alpha', 'Beta', 'Open', 'Closed', 'Sandbox' ],
-          category_options: [ 'Social', 'Historical', 'Fantasy', 'Sci-Fi', 'Modern', 'Supernatural', 'Other' ]
+          category_options: [ 'Social', 'Historical', 'Fantasy', 'Sci-Fi', 'Modern', 'Supernatural', 'Comic', 'Other' ]
         }
       end
     end

@@ -80,7 +80,8 @@ module AresMUSH
       print "\n[4] Fantasy"
       print "\n[5] Modern"
       print "\n[6] Supernatural"
-      print "\n[7] Other"
+      print "\n[7] Comic"
+      print "\n[8] Other"
       print "\n Select a Category > "
       input = STDIN.gets.chomp
 
@@ -97,6 +98,8 @@ module AresMUSH
         category = "Modern"
       when "6"
         category = "Supernatural"
+      when "7"
+        category = "Comic"
       else
         category = "Other"
       end

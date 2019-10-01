@@ -10,6 +10,8 @@ module AresMUSH
       end
       
       def handle
+        Login.mark_notices_read(enactor, :achievement)
+        
         ClassTargetFinder.with_a_character(self.name, client, enactor) do |model|
           template = AchievementsTemplate.new Achievements.achievements_list(model), model, enactor
           client.emit template.render

@@ -29,7 +29,7 @@ module AresMUSH
           end
           
           scenes = Scene.all.select { |s| s.completed && s.participants.include?(c) }
-          c.update(scene_participation_count: scenes.count)
+          c.update(scenes_participated_in: scenes.map { |s| "#{s.id}" })
           
         end
         
