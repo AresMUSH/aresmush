@@ -321,7 +321,7 @@ spells:
   Mind Shield:
     available: true
     casting_time: 1 round
-    desc: "Cast a protective psionic shield on a target. The strength of the shield is determined by the caster's Spirit roll. When the target is targetted by another psionic spell, the opposing caster rolls Spirit vs the strength of the shield to determine whether the spell succeeds, or whether the mind shield holds. The shield raises an alarm which informs the target that a psionic spell of some sort has been cast on them, whether the spell succeeds in bypassing the shield or not."
+    desc: "Cast a protective psionic shield on a target. The strength of the shield is determined by the caster's Spirit roll. When the target is targetted by another spell with a psionic effect or doing psionic damage, the opposing caster rolls Spirit vs the strength of the shield to determine whether the spell succeeds, or whether the mind shield holds. The shield raises an alarm which informs the target that a psionic spell of some sort has been cast on them, whether the spell succeeds in bypassing the shield or not."
     effect: Defense
     level: 4
     line_of_sight: true
