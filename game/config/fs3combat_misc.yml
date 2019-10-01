@@ -4,7 +4,7 @@ fs3combat:
   allow_vehicles: false
   combatant_types:
     Archer:
-      weapon: Bow
+      weapon: Recurve Bow
       weapon_specials:
       armor: Leather
       hitloc: Humanoid

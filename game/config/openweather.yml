@@ -13,16 +13,10 @@ openweather:
 
   climate_for_area:
       Offstage: none
-      Polar:
-        coords:
-            lat: -74.7
-            lon: 40.92
-      Vegas:
-        zip: 89109
       Granby:
         zip: 80446
       Grand Lake:
-        zip: 89109
+        zip: 80447
       Hot Sulphur Springs:
         zip: 80451
       Rocky Mountain National Park:
@@ -31,7 +25,7 @@ openweather:
             lon: -105.776723
       #PORTALS
       Algid Vertex:
-        zip: 43701
+        zip: 98101
       Cimex:
         coords:
             lat: -4.204371
@@ -46,7 +40,9 @@ openweather:
             lat: -41.242736
             lon: -71.639422
       Feynthorn:
-        zip: 03033
+        coords:
+            lat: 43.204895
+            lon: -71.502984
       Immeasurable Autumn:
         zip: 94016
       Lualea:

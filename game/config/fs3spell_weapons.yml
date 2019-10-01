@@ -50,6 +50,10 @@ fs3combat:
       lethality: -20
       penetration: -5
       init_mod: 1
+    Shrink:
+      description: Level 6 Corpus spell
+      is_magic: true
+      init_mod: 2
     Strength:
       description: Level 3 Corpus spell
       is_magic: true
