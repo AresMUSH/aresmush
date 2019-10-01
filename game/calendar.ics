@@ -2,33 +2,6 @@ BEGIN:VCALENDAR
 VERSION:2.0
 PRODID:-//hacksw/handcal//NONSGML v1.0//EN
 BEGIN:VEVENT
-UID:ffd68b18-277b-4ad0-a3ff-9260bb59822e@Spirit Lake-spiritlakemu.com
-DTSTART:20190929T180000Z
-DTSTAMP:20190906T125136Z
-SUMMARY:Carver House Party: The Beginning
-DESCRIPTION:Jon's throwing open the Carver House for Weird use. Come celebrate!
-  
-  We're gonna run this party in two parts, so more people can come. ICly, they'll be separated by several hours. This one will start at 6 PM ICly, and the second will start at 10 PM.
-END:VEVENT
-BEGIN:VEVENT
-UID:52b3e7de-cd55-4a25-abb1-4f7af410a4a2@Spirit Lake-spiritlakemu.com
-DTSTART:20190930T003000Z
-DTSTAMP:20190906T125208Z
-SUMMARY:Carver House Party: The End
-DESCRIPTION:Jon's throwing open the Carver House for Weird use. Come celebrate!
-  
-  We're gonna run this party in two parts, so more people can come. ICly, they'll be separated by several hours. This one will start at 10 PM ICly. 
-END:VEVENT
-BEGIN:VEVENT
-UID:b7370053-a973-4854-9664-dc97fdf62526@Spirit Lake-spiritlakemu.com
-DTSTART:20190929T190000Z
-DTSTAMP:20190908T001256Z
-SUMMARY:Runestone Moving Services
-DESCRIPTION:A team of mages has been assembled to move the runestone from the battlefield next to the wolf portal to Khepri and Chionet's tomb. So far, Jonathan, Manny, DeLuz, Fenris, and Dani are all planning to help out. 
-  
-  This will be an open RP event for those who want to help or just want to come for the fun of it. Please feel free to join us, even if it's just to stand on the ground and provide commentary! (Though, if you see us from the ground, we've probably failed at least one part of it, so oh no.)
-END:VEVENT
-BEGIN:VEVENT
 UID:993042c2-3dc6-4e4c-b18d-d0e3ef6090df@Spirit Lake-spiritlakemu.com
 DTSTART:20191015T000000Z
 DTSTAMP:20190919T021629Z
@@ -46,14 +19,18 @@ BEGIN:VEVENT
 UID:e87ba530-f95d-4a20-b827-c60a8601d00a@Spirit Lake-spiritlakemu.com
 DTSTART:20191002T000000Z
 DTSTAMP:20190924T140236Z
-SUMMARY:Demon Hunting in Feixuzhicheng 
+SUMMARY:Demon Attack in Feixuzhicheng 
 DESCRIPTION:This will likely be two scenes like last time. We can take up to 10 people. If sign-ups go over, we'll prioritize folks who didn't get to go last time.
+  
+  UPDATE: We'll take everyone EXCEPT those who got to go on the last round AND got to kill things last night (IE, those who have killed demons two of the last two times). So sorry Grace, Calgary, Asher, Joel - next time!
 END:VEVENT
 BEGIN:VEVENT
-UID:10e2a950-056e-47fc-8cef-086ef320f74e@Spirit Lake-spiritlakemu.com
-DTSTART:20190928T190000Z
-DTSTAMP:20190924T163519Z
-SUMMARY:Written In Memory
-DESCRIPTION:Jonathan (and 1-2 companions of his choosing) receive a lesson in history and memory in Stochieion. This is a private event. Do not sign up unless you're asked to.
+UID:88d27a3b-d1fd-4d9e-a690-7707d8191aed@Spirit Lake-spiritlakemu.com
+DTSTART:20191012T003000Z
+DTSTAMP:20190928T183440Z
+SUMMARY:Guardians
+DESCRIPTION:People trekking around in the National Park come across something Weird.
+  
+  (OOC: I'll take up to 5 people. The reason your character is hiking around in RMNP is up to you).
 END:VEVENT
 END:VCALENDAR
