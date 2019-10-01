@@ -67,7 +67,7 @@ module AresMUSH
           plot: scene.plot ? { title: scene.plot.title, id: scene.plot.id } : nil,
           portals: portals,
           creatures: creatures,
-          related_scenes: scene.related_scenes.map { |r| { title: r.date_title, id: r.id }},
+          related_scenes: scene.related_scenes.sort_by { |r| r.date_title }.map { |r| { title: r.date_title, id: r.id }},
           can_edit: enactor && Scenes.can_edit_scene?(enactor, scene),
           can_join: Scenes.can_join_scene?(enactor, scene),
           can_delete: Scenes.can_delete_scene?(enactor, scene),

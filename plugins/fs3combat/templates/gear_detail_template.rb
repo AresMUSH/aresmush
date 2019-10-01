@@ -2,7 +2,6 @@ module AresMUSH
   module FS3Combat
     class GearDetailTemplate < ErbTemplateRenderer
 
-
       attr_accessor :title, :list, :gear_type
 
       def initialize(list, title, gear_type)

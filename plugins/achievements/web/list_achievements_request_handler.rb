@@ -4,7 +4,7 @@ module AresMUSH
       def handle(request)
         icon_types = Global.read_config('achievements', 'types')
         groups = Achievement.all.group_by { |a| a.name }
-       
+              
         Achievements.all_achievements.sort_by { |k, v| [v['type'], v['message']] }
           .map { |k, v| {
           name: k,

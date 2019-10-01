@@ -21,6 +21,7 @@ module AresMUSH
       def handle
         if (self.to_room)
           enactor_room.clients.each do |c|
+            # This uses raw emit because you're often trying to show off some formatting code to somebody.
              c.emit_raw t('echo.echo_to_room', :name => enactor_name, :message => self.message)
            end
         else

@@ -15,7 +15,8 @@ module AresMUSH
               name: area.full_name,
               summary: area.summary ? Website.format_markdown_for_html(area.summary) : "",
               children: area.children.to_a.sort_by { |a| a.name }.map { |a| { id: a.id, name: a.name } },
-              rooms: area.rooms.map { |r| { name: r.name, id: r.id } }
+              rooms: area.rooms.map { |r| { name: r.name, id: r.id } },
+              is_top_level: area.parent ? false : true
             }
           },
           orphan_rooms: Room.all.select { |r| is_orphan?(r) }.sort_by { |r| r.name }.map { |r| 
