@@ -15,7 +15,7 @@ module AresMUSH
       def handle
         client.emit_success t('custom.plot_proposed')
         subj = "PRP: #{plot_name} by #{enactor.name}"
-        Jobs.create_job("PLOT", subj, plot_form, enactor)
+        Jobs.create_job("PRP", subj, plot_form, enactor)
       end
 
     end
