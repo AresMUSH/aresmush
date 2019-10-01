@@ -73,17 +73,17 @@ module AresMUSH
       combatant.update(spell_armor_effects:armor_specials)
     end
 
-    def self.cast_mind_shield(combatant, target, spell, rounds)
-      shield_strength = combatant.roll_ability("Spirit")
+    def self.cast_mind_shield(combatant, target, spell, rounds, result)
+      shield_strength = result
       target.update(mind_shield: shield_strength)
       target.update(mind_shield_counter: rounds)
-      combatant.log "Setting #{combatant.name}'s Mind Shield to #{target.mind_shield}"
+      combatant.log "Setting #{target.name}'s Mind Shield to #{target.mind_shield}"
       message = [t('magic.cast_shield', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target =>  target.name, :type => "psionic")]
       return message
     end
 
-    def self.cast_endure_fire(combatant, target, spell, rounds)
-      shield_strength = combatant.roll_ability("Fire")
+    def self.cast_endure_fire(combatant, target, spell, rounds, result)
+      shield_strength = result
       target.update(endure_fire: shield_strength)
       target.update(endure_fire_counter: rounds)
       combatant.log "Setting #{target.name}'s Endure Fire to #{target.endure_fire}"
@@ -91,8 +91,8 @@ module AresMUSH
       return message
     end
 
-    def self.cast_endure_cold(combatant, target, spell, rounds)
-      shield_strength = combatant.roll_ability("Water")
+    def self.cast_endure_cold(combatant, target, spell, rounds, result)
+      shield_strength = result
       target.update(endure_cold: shield_strength)
       target.update(endure_cold_counter: rounds)
       combatant.log "Setting #{target.name}'s Endure Cold to #{target.endure_cold}"

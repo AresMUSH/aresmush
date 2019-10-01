@@ -34,12 +34,10 @@ en:
       potion_ko: "You cannot use a potion while Knocked Out."
       use_potion: "%{name} uses a %xM%{potion}%xn potion."
       use_potion_target: "%{name} uses a %xM%{potion}%xn potion on %{target}."
-      potion_heal: "%{name} uses a %xM%{potion}%xn potion. SOMEONE receives up to %{points} points of healing to a wound."
+      potion_heal: "%{name} uses a %xM%{potion}%xn potion. %{target} receives up to %{points} points of healing to a wound."
       potion_shield: "%{name} uses a %xM%{spell}%xn potion. %{target} is protected against %{type} attacks."
-      potion_heal_ko_target: "%{name} uses a %xM%{potion}%xn potion. %{target} receives up to %{points} points of healing to a wound and are no longer dying."
-      potion_ko_heal: "%{name} uses a %xM%{potion}%xn potion. SOMEONE receives up to %{points} points of healing to a wound and are no longer dying."
-      # potion_heal_no_effect: "%{name} uses a %xM%{potion}%xn potion, but they have no healable wounds. The potion has no effect."
-      # potion_heal_no_effect_target: "%{name} uses a %xM%{potion}%xn potion on %{target}, but they have no healable wounds. The potion has no effect."
+      potion_heal_ko_target: "%{name} uses a %xM%{potion}%xn potion. %{target} receives up to %{points} points of healing to a wound and is no longer dying."
+      potion_ko_heal: "%{name} uses a %xM%{potion}%xn potion. %{target} receives up to %{points} points of healing to a wound and is no longer dying."
       potion_stance: "%{name} uses a %xM%{potion}%xn potion, changing their stance to %{stance}."
       potion_stance_target: "%{name} uses a %xM%{potion}%xn potion on %{target}, changing their stance to %{stance} It will last for %{rounds} more round(s)."
       potion_mod: "%{name} uses a %xM%{potion}%xn potion, giving them a %{mod} %{type} modification."
@@ -49,13 +47,10 @@ en:
         # ----------------------------
         # SPELL CASTING
         # ----------------------------
-      # cant_force_cast: "You can't force someone to cast a spell outside of combat."
-      # already_cast: "%xr You have already cast a spell or used a potion this turn. Wait until a new turn starts to take an action.%xn"
       use_combat_spell: "Use combat/spell when you are in combat."
       spell_ko: "You cannot cast a spell while Knocked Out."
       casts_spell: "%{name} casts %xB%{spell}%xn%{mod} and %{succeeds}."
       casts_spell_on_target: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{succeeds}."
-      # will_cast_spell: "%{name} will cast %xB%{spell}%xn."
       will_cast_fs3_attack: "%{name} will cast %xB%{spell}%xn on %{target} this turn."
       cast_heal: "%{name} casts %xB%{spell}%xn%{mod} and %{succeeds}. %{target} receives up to %{points} points of healing to a wound."
       cast_ko_heal: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{succeeds}. %{target} receives up to %{points} points of healing to a wound and they are no longer dying."
@@ -134,7 +129,6 @@ en:
       # ----------------------------
       spell_target_action_msg_short: "Spell %{target}"
       spell_target_action_msg_long: "%{name} will cast %xB%{spell}%xn on %{target} this turn."
-      # spell_stun_action_msg_long: "%{name} will cast %xB%{spell}%xn on %{targets} this turn."
       spell_target_resolution_msg: "%{name} casts %xB%{spell}%xn on %{target} and %{succeeds}."
       spell_action_msg_short: "Spell"
       spell_action_msg_long: "%{name} will cast %xB%{spell}%xn this turn."
@@ -162,8 +156,7 @@ en:
       # # ----------------------------
       # # LUCK
       # # ----------------------------
-      # awarded_luck: "%{name} has awarded %{target} %{luck} luck points. %R%RReason: %{reason}"
-      # awarded_luck_title: "%{target} awarded %{luck} luck."
+
       spent_luck: "%{name} has spent 1 luck point. %R%RReason: %{reason}"
       spent_luck_title: "%{name} spent luck on %{reason}"
 
@@ -188,10 +181,3 @@ en:
       give_item: "You have given %{target} %{item}."
       item_has_been_given: "%{name} has given you %{item}. Type `items` to see details."
       unequip_first: "You can't given away items you have equipped. Do `item/unequip %{item}` first."
-
-      # # ----------------------------
-      # # MISC
-      # # ----------------------------
-      # build_requested: "Your build request has been successful. Check your requests for more info. "
-      # plot_prefs_set: "Your plot preferences have been set."
-      # plot_prefs_title: "%{name}'s Plot Preferences"

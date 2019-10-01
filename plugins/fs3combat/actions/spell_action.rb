@@ -141,19 +141,19 @@ module AresMUSH
 
               #Psionic Protection
               if self.spell == "Mind Shield"
-                message = Magic.cast_mind_shield(combatant, target, self.spell, rounds)
+                message = Magic.cast_mind_shield(combatant, target, self.spell, rounds, succeeds[:result])
                 messages.concat message
               end
 
               #Fire Protection
                if self.spell == "Endure Fire"
-                 message = Magic.cast_endure_fire(combatant, target, self.spell, rounds)
+                 message = Magic.cast_endure_fire(combatant, target, self.spell, rounds, succeeds[:result])
                  messages.concat message
                end
 
               #Cold Protection
               if self.spell == "Endure Cold"
-                message = Magic.cast_endure_cold(combatant, target, self.spell, rounds)
+                message = Magic.cast_endure_cold(combatant, target, self.spell, rounds, succeeds[:result])
                 messages.concat message
               end
 
