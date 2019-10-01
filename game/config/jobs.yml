@@ -32,18 +32,22 @@ jobs:
       - coder
     ALERT:
       color: "%xy"
+    LH:
+      color: "%x38"
+      roles:
+      - storyteller
     MISC:
       color: "%xh"
     PLOT:
       color: "%xc"
       roles:
       - storyteller
-    REQ:
-      color: "%xw"
-    SECRET:
-      color: "%xc"
+    PRP:
+      color: "%x32"
       roles:
       - storyteller
+    REQ:
+      color: "%xw"
     SYS:
       color: "%xh"
     SPELL:
