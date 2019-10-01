@@ -40,7 +40,7 @@ module AresMUSH
 
           message = t('fs3skills.luck_awarded', :name => model.name, :luck => self.luck, :reason => self.reason)
           client.emit_success message
-          Mail.send_mail([model.name], t('fs3skills.luck_award_mail_subject'), message, nil)
+          Login.notify(model, :luck, message, nil)
 
 
 
