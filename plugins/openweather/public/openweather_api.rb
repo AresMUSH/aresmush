@@ -32,6 +32,10 @@ module AresMUSH
           season = "summer"
         end
 
+        if area_name == Feixuzhicheng
+          season = "spring"
+        end
+
 
         # Season and Time of day are 'generic' and not based off
         # Openweather's sunset and sunrise times for an area.
