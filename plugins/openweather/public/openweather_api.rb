@@ -32,7 +32,7 @@ module AresMUSH
           season = "summer"
         end
 
-        if area_name == Feixuzhicheng
+        if area_name == "Feixuzhicheng"
           season = "spring"
         end
 
