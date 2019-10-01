@@ -283,7 +283,7 @@ spells:
     weapon: Spell
   #Level 5
   Disable:
-    available: false
+    available: true
     casting_time: 1 round
     desc: Subdue an enemy by paralyzing their limbs, immobilizing them briefly.
     duration: 2 rounds
