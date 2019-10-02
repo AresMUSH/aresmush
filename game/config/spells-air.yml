@@ -215,6 +215,8 @@ spells:
     require_target: true
     school: Air
     weapon: Lightning Bolt
+    target_num: 1
+    target_optional: true
   Lightning Weapon:
     available: true
     casting_time: 1 round
