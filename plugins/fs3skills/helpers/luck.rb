@@ -25,7 +25,7 @@ module AresMUSH
 
       Achievements.award_achievement(char, "fs3_luck_spent")
 
-      category = "LUCK"
+      category = Global.read_config("jobs", "luck_category")
       Jobs.create_job(category, t('fs3skills.luck_job_title', :name => char.name, :reason => reason), message, char)
 
       Global.logger.info "#{char.name} spent luck on #{reason}."
