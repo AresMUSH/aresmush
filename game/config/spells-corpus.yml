@@ -113,8 +113,8 @@ spells:
   Drowsy:
     available: false
     casting_time: 1 round
-    desc: Make a target suddenly feel extremely drowsy and cause them to briefly fall asleep. In combat, they are stunned them for one round. In other situations, they remain asleep until they are woken or wake naturally.
-    duration: 1 round
+    desc: Make a target suddenly feel extremely drowsy and cause them to briefly fall asleep. In combat, they are stunned for one round. In other situations, they remain asleep until they are woken or wake naturally.
+    duration: Until woken or 20 seconds in situations with disturbances
     effect: Stun
     is_stun: true
     level: 3
