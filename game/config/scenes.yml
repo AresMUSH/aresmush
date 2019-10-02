@@ -2,7 +2,7 @@
 scenes:
   delete_unshared_scenes: true
   idle_scene_timeout_days: 2
-  include_pose_separator: false
+  include_pose_separator: true
   ooc_color: "%xc"
   room_cleanup_cron:
     minute:
