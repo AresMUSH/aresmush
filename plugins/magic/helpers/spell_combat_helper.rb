@@ -1,7 +1,7 @@
 module AresMUSH
   module Magic
 
-    def self.roll_combat_spell(char, combatant, school, mod = 0)
+    def self.roll_combat_spell(char, combatant, school)
       accuracy_mod = FS3Combat.weapon_stat(combatant.weapon, "accuracy")
       special_mod = combatant.attack_mod
       damage_mod = combatant.total_damage_mod
@@ -17,11 +17,11 @@ module AresMUSH
         item_spell_mod = 0
       end
 
-      combatant.log "Spell roll for #{combatant.name} school=#{school} mod=#{mod} spell_mod=#{spell_mod} item_spell_mod=#{item_spell_mod} accuracy=#{accuracy_mod} damage=#{damage_mod} stance=#{stance_mod} attack_luck=#{attack_luck_mod} spell_luck=#{spell_luck_mod} stress=#{stress_mod} special=#{special_mod} distract=#{distraction_mod}"
+      total_mod = item_spell_mod.to_i + spell_mod.to_i + accuracy_mod.to_i + damage_mod.to_i  + stance_mod.to_i  + attack_luck_mod.to_i  + spell_luck_mod.to_i - stress_mod.to_i  + special_mod.to_i - distraction_mod.to_i
 
-      mod = mod.to_i + item_spell_mod.to_i + spell_mod.to_i + accuracy_mod.to_i + damage_mod.to_i  + stance_mod.to_i  + attack_luck_mod.to_i  + spell_luck_mod.to_i - stress_mod.to_i  + special_mod.to_i - distraction_mod.to_i
+      combatant.log "SPELL ROLL for #{combatant.name} school=#{school} spell_mod=#{spell_mod} item_spell_mod=#{item_spell_mod} accuracy=#{accuracy_mod} damage=#{damage_mod} stance=#{stance_mod} attack_luck=#{attack_luck_mod} spell_luck=#{spell_luck_mod} stress=#{stress_mod} special=#{special_mod} distract=#{distraction_mod} total_mod=#{total_mod}"
 
-      successes = combatant.roll_ability(school, mod)
+      successes = combatant.roll_ability(school, total_mod)
       return successes
     end
 
@@ -38,9 +38,58 @@ module AresMUSH
         mod = FS3Skills.ability_rating(caster_combatant.associated_model, "Magic") * 2
       end
 
-      die_result = Magic.roll_combat_spell(caster_combatant, caster_combatant, school, mod)
+      die_result = Magic.roll_combat_spell(caster_combatant, caster_combatant, school)
       succeeds = Magic.spell_success(spell, die_result)
       return {:succeeds => succeeds, :result => die_result}
+    end
+
+    def self.determine_magic_attack_margin(combatant, target, called_shot = nil, result)
+      weapon = combatant.weapon
+      attack_roll = result
+      defense_roll = FS3Combat.roll_defense(target, weapon)
+
+      attacker_net_successes = attack_roll - defense_roll
+      stopped_by_cover = target.stance == "Cover" ? FS3Combat.stopped_by_cover?(attacker_net_successes, combatant) : false
+      hit = false
+
+      stopped_by_shield = Magic.stopped_by_shield?(combatant.weapon, target, combatant, attack_roll)
+
+      weapon_type = FS3Combat.weapon_stat(combatant.weapon, "weapon_type")
+
+
+      if (attack_roll <= 0)
+        message = t('fs3combat.attack_missed', :name => combatant.name, :target => target.name, :weapon => weapon)
+      elsif (called_shot && (attacker_net_successes > 0) && (attacker_net_successes < 2))
+        message = t('fs3combat.attack_near_miss', :name => combatant.name, :target => target.name, :weapon => weapon)
+      elsif (stopped_by_cover)
+        message = t('fs3combat.attack_hits_cover', :name => combatant.name, :target => target.name, :weapon => weapon)
+      elsif stopped_by_shield == "Endure Fire Held"
+        message = t('custom.shield_held', :name => combatant.name, :spell => combatant.weapon, :mod => "", :shield => "Endure Fire", :target => target.name)
+      elsif stopped_by_shield == "Endure Cold Held"
+        message = t('custom.shield_held', :name => combatant.name, :spell => combatant.weapon, :mod => "", :shield => "Endure Cold", :target => target.name)
+      elsif (attacker_net_successes < 0)
+        # Only can evade when being attacked by melee or when in a vehicle.
+        if (weapon_type == 'Melee' || target.is_in_vehicle?)
+          if (attacker_net_successes < -2)
+            message = t('fs3combat.attack_dodged_easily', :name => combatant.name, :target => target.name, :weapon => weapon)
+          else
+            message = t('fs3combat.attack_dodged', :name => combatant.name, :target => target.name, :weapon => weapon)
+          end
+        else
+            message = t('fs3combat.attack_near_miss', :name => combatant.name, :target => target.name, :weapon => weapon)
+        end
+      else
+        hit = true
+      end
+
+      combatant.log "ATTACK MARGIN: called=#{called_shot} " +
+      "attack=#{attack_roll} defense=#{defense_roll} hit=#{hit} cover=#{stopped_by_cover} shield=#{stopped_by_shield }result=#{message}"
+
+      {
+        message: message,
+        hit: hit,
+        attacker_net_successes: attacker_net_successes
+      }
     end
 
     def self.set_spell_weapon_effects(combatant, spell)
@@ -208,7 +257,7 @@ module AresMUSH
     end
 
     def self.cast_stance(combatant, target, spell, rounds, stance)
-      target.update(stance: stance)
+      target.update(stance: stance.titlecase)
       target.update(stance_counter: rounds)
       target.update(stance_spell: spell)
       message = [t('magic.cast_stance', :name => combatant.name, :target => target.name, :mod => "", :spell => spell, :succeeds => "%xgSUCCEEDS%xn", :stance => stance, :rounds => rounds)]
@@ -233,8 +282,10 @@ module AresMUSH
       return message
     end
 
-    def self.cast_stun(combatant, target, spell, rounds, mod)
-      margin = FS3Combat.determine_attack_margin(combatant, target, mod = mod)
+
+
+    def self.cast_stun(combatant, target, spell, rounds, result)
+      margin = Magic.determine_magic_attack_margin(combatant, target, mod = mod, result)
       if target == combatant
         message = ["%xrYou can't stun yourself%xn"]
         return message
@@ -253,9 +304,9 @@ module AresMUSH
       return message
     end
 
-    def self.cast_explosion(combatant, target, spell, mod)
+    def self.cast_explosion(combatant, target, spell, result)
       messages = []
-      margin = FS3Combat.determine_attack_margin(combatant, target, mod = mod)
+      margin = Magic.determine_magic_attack_margin(combatant, target, result = result)
       if (margin[:hit])
         attacker_net_successes = margin[:attacker_net_successes]
         messages.concat FS3Combat.resolve_attack(combatant, combatant.name, target, combatant.weapon, attacker_net_successes)
@@ -274,13 +325,13 @@ module AresMUSH
       return messages
     end
 
-    def self.cast_suppress(combatant, target, spell, mod)
+    def self.cast_suppress(combatant, target, spell, result)
       composure = Global.read_config("fs3combat", "composure_skill")
-      attack_roll = FS3Combat.roll_attack(combatant, target, mod = mod)
+      attack_roll = result
       defense_roll = target.roll_ability(composure)
       margin = attack_roll - defense_roll
 
-      combatant.log "#{combatant.name} suppressing #{target.name} with #{spell}.  atk=#{attack_roll} atk_mod=#{mod} def=#{defense_roll} "
+      combatant.log "#{combatant.name} suppressing #{target.name} with #{spell}. atk=#{attack_roll} def=#{defense_roll} margin=#{margin}"
       if (margin >= 0)
         target.add_stress(margin + 2)
         message = [t('fs3combat.suppress_successful_msg', :name => combatant.name, :target => target.name, :weapon => "%xB#{combatant.weapon}%xn")]
@@ -290,6 +341,23 @@ module AresMUSH
       return message
     end
 
+    def self.cast_attack_target(combatant, target, called_shot = nil, result)
+        return [ t('fs3combat.has_no_target', :name => combatant.name) ] if !target
+
+        margin = Magic.determine_magic_attack_margin(combatant, target, result = result)
+
+        # Update recoil after determining the attack success but before returning out for a miss
+        recoil = FS3Combat.weapon_stat(combatant.weapon, "recoil")
+        combatant.update(recoil: combatant.recoil + recoil)
+
+        return [margin[:message]] if !margin[:hit]
+
+        weapon = combatant.weapon
+
+        attacker_net_successes = margin[:attacker_net_successes]
+
+        FS3Combat.resolve_attack(combatant, combatant.name, target, weapon, attacker_net_successes, called_shot, crew_hit)
+      end
 
   end
 end

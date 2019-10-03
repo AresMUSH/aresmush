@@ -18,7 +18,6 @@ module AresMUSH
       if (char.endure_cold > 0)
         room.emit_ooc t('magic.shield_wore_off', :name => char.name, :shield => "Endure Cold")
       end
-
         char.update(mind_shield: 0)
         char.update(endure_fire: 0)
         char.update(endure_cold: 0)
@@ -118,13 +117,12 @@ module AresMUSH
       end
 
       successes = result
-
       delta = shield_strength - successes
 
       if in_combat
-        caster.combatant.log "#{shield.upcase}: #{caster.name} rolling #{school} vs #{target.name}'s #{shield} (strength #{shield_strength}): #{successes} successes."
+        caster.combatant.log "#{shield.upcase}: #{caster.name}'s #{school} (#{successes} successes) vs #{target.name}'s #{shield} (strength #{shield_strength})."
       else
-        Global.logger.info "#{shield.upcase}: #{caster_name} rolling #{school} vs #{target.name}'s #{shield} (strength #{shield_strength}): #{successes} successes."
+        Global.logger.info "#{shield.upcase}: #{caster.name}'s #{school} (#{successes} successes) vs #{target.name}'s #{shield} (strength #{shield_strength})."
       end
 
       case delta
