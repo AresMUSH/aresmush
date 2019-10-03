@@ -23,7 +23,7 @@ module AresMUSH
         can_learn_num = FS3Skills.ability_rating(enactor, major_school)
         return t('magic.learning_too_many_spells', :can_learn_num => can_learn_num) if (Magic.count_spells_learning(enactor) > (can_learn_num - 1) && !Magic.find_spell_learned(enactor, self.spell))
         return t('magic.wrong_school') if !enactor.groups.values.include? self.school
-
+        return "Level 8 spells aren't available yet" if self.spell_level == 8
         return nil
       end
 
