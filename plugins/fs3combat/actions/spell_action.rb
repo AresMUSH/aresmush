@@ -137,7 +137,7 @@ module AresMUSH
             messages.concat [t('magic.spell_target_resolution_msg', :name =>  combatant.name, :spell => self.spell, :target => print_target_names, :succeeds => "%xrFAILS%xn")]
           end
         else
-          succeeds = Magic.roll_combat_spell_success(combatant, spell)
+          # succeeds = Magic.roll_combat_spell_success(combatant, spell)
           #Spells here do not roll for success individually because they may do more than one thing and so need one success roll.
           if succeeds[:succeeds] == "%xgSUCCEEDS%xn"
 
