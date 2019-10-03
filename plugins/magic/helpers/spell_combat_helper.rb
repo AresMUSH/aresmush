@@ -13,13 +13,15 @@ module AresMUSH
       spell_mod = combatant.spell_mod ? combatant.spell_mod : 0
       if !combatant.is_npc?
         item_spell_mod = Magic.item_spell_mod(combatant.associated_model)
+        item_attack_mod = Magic.item_attack_mod(combatant.associated_model)
       else
         item_spell_mod = 0
+        item_attack_mod = 0
       end
+      puts "LUCK #{combatant.luck}"
+      total_mod = item_spell_mod.to_i + item_attack_mod.to_i + spell_mod.to_i + accuracy_mod.to_i + damage_mod.to_i  + stance_mod.to_i  + attack_luck_mod.to_i  + spell_luck_mod.to_i - stress_mod.to_i  + special_mod.to_i - distraction_mod.to_i
 
-      total_mod = item_spell_mod.to_i + spell_mod.to_i + accuracy_mod.to_i + damage_mod.to_i  + stance_mod.to_i  + attack_luck_mod.to_i  + spell_luck_mod.to_i - stress_mod.to_i  + special_mod.to_i - distraction_mod.to_i
-
-      combatant.log "SPELL ROLL for #{combatant.name} school=#{school} spell_mod=#{spell_mod} item_spell_mod=#{item_spell_mod} accuracy=#{accuracy_mod} damage=#{damage_mod} stance=#{stance_mod} attack_luck=#{attack_luck_mod} spell_luck=#{spell_luck_mod} stress=#{stress_mod} special=#{special_mod} distract=#{distraction_mod} total_mod=#{total_mod}"
+      combatant.log "SPELL ROLL for #{combatant.name} school=#{school} spell_mod=#{spell_mod} item_spell_mod=#{item_spell_mod} item_attack_mod=#{item_attack_mod} accuracy=#{accuracy_mod} damage=#{damage_mod} stance=#{stance_mod} attack_luck=#{attack_luck_mod} spell_luck=#{spell_luck_mod} stress=#{stress_mod} attack=#{special_mod} distract=#{distraction_mod} total_mod=#{total_mod}"
 
       successes = combatant.roll_ability(school, total_mod)
       return successes
@@ -282,8 +284,6 @@ module AresMUSH
       return message
     end
 
-
-
     def self.cast_stun(combatant, target, spell, rounds, result)
       margin = Magic.determine_magic_attack_margin(combatant, target, mod = mod, result)
       if target == combatant
@@ -356,7 +356,7 @@ module AresMUSH
 
         attacker_net_successes = margin[:attacker_net_successes]
 
-        FS3Combat.resolve_attack(combatant, combatant.name, target, weapon, attacker_net_successes, called_shot, crew_hit)
+        FS3Combat.resolve_attack(combatant, combatant.name, target, weapon, attacker_net_successes, called_shot)
       end
 
   end
