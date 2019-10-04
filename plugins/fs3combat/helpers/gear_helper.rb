@@ -23,7 +23,6 @@ module AresMUSH
 
     def self.weapon_stat(name_with_specials, stat)
       return nil if !name_with_specials
-
       specials = FS3Combat.weapon_specials
       name = name_with_specials.before("+")
       weapon = FS3Combat.weapon(name)
@@ -42,7 +41,9 @@ module AresMUSH
         special_value = special[stat]
         next if !special_value
 
-        value = value + special_value
+        if value.is_a? Integer
+          value = value + special_value
+        end
       end
       value
     end
