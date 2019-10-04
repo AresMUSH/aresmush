@@ -446,9 +446,8 @@ module AresMUSH
       defense_roll = FS3Combat.roll_defense(target, weapon)
 
       attacker_net_successes = attack_roll - defense_roll
-      stopped_by_cover = target.stance == "Cover" ? FS3Combat.stopped_by_cover?(attacker_net_successes, combatant) : false
+      stopped_by_cover = target.stance == "Cover"  ?  FS3Combat.stopped_by_cover?(attacker_net_successes, combatant) : false
       hit = false
-
       stopped_by_shield = Magic.stopped_by_shield?(combatant.weapon, target, combatant, attacker_net_successes)
 
       weapon_type = FS3Combat.weapon_stat(combatant.weapon, "weapon_type")
@@ -493,7 +492,7 @@ module AresMUSH
 
 
       combatant.log "Attack Margin: mod=#{mod} called=#{called_shot} " +
-      " attack=#{attack_roll} defense=#{defense_roll} hit=#{hit} cover=#{stopped_by_cover} shield=#{stopped_by_shield }result=#{message}"
+      " attack=#{attack_roll} defense=#{defense_roll} hit=#{hit} cover=#{stopped_by_cover} shield=#{stopped_by_shield } result=#{message}"
 
 
       {

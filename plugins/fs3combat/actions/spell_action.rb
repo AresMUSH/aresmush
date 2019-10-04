@@ -97,43 +97,47 @@ module AresMUSH
         weapon_specials_str = Global.read_config("spells", self.spell, "weapon_specials")
 
         messages = []
+        combatant.log "#{self.combatant.name.upcase} CASTING #{self.spell.upcase}"
+
+        succeeds = Magic.roll_combat_spell_success(combatant, spell)
+        #The roll_combat_spell_success handles combat mods via roll_combat_spell
 
         if (fs3_attack || is_stun)
-          #Weapon
-          if (weapon && weapon != "Spell")
-            FS3Combat.set_weapon(combatant, combatant, weapon)
-          end
 
-          weapon_type = FS3Combat.weapon_stat(self.combatant.weapon, "weapon_type")
-          #Spells roll for success individually because they only do one thing, and need to use different measures of success.
-          targets.each do |target|
-            if !combatant.is_npc?
-              item_spell_mod  = Magic.item_spell_mod(self.combatant.associated_model) || 0
-            else
-              item_spell_mod = 0
-            end
-            spell_mod = self.combatant.spell_mod || 0
-            mod = item_spell_mod + spell_mod
-            combatant.log "Casting #{self.spell}: item_spell_mod=#{item_spell_mod} spell_mod=#{spell_mod} total_mod=#{mod}"
-
-            #Stun
-            if is_stun
-              message = Magic.cast_stun(self.combatant, target, self.spell, rounds, mod)
-              messages.concat message
-            #Attacks
-            elsif weapon_type == "Explosive"
-              message = Magic.cast_explosion(self.combatant, target, self.spell, mod)
-              messages.concat message
-            elsif weapon_type == "Suppressive"
-              message = Magic.cast_suppress(self.combatant, target, self.spell, mod)
-              messages.concat message
-            else
-              messages.concat FS3Combat.attack_target(combatant, target, mod = mod, called_shot = nil, crew_hit = false, mount_hit = false)
+          if succeeds[:succeeds] == "%xgSUCCEEDS%xn"
+            #Weapon
+            if (weapon && weapon != "Spell")
+              FS3Combat.set_weapon(combatant, combatant, weapon)
             end
 
+            weapon_type = FS3Combat.weapon_stat(self.combatant.weapon, "weapon_type")
+
+
+            #Spells roll for success individually because they only do one thing, and need to use different measures of success. Also, because weapon changes are on the caster, not the target.
+            targets.each do |target|
+
+
+              #Stun
+              if is_stun
+                message = Magic.cast_stun(self.combatant, target, self.spell, rounds, result = succeeds[:result])
+                messages.concat message
+              #Attacks
+              elsif weapon_type == "Explosive"
+                message = Magic.cast_explosion(self.combatant, target, self.spell, result = succeeds[:result])
+                messages.concat message
+              elsif weapon_type == "Suppressive"
+                message = Magic.cast_suppress(self.combatant, target, self.spell, succeeds[:result])
+                messages.concat message
+              else
+                message = Magic.cast_attack_target(self.combatant, target, result = succeeds[:result])
+                messages.concat message
+              end
+            end
+          else
+            messages.concat [t('magic.spell_target_resolution_msg', :name =>  combatant.name, :spell => self.spell, :target => print_target_names, :succeeds => "%xrFAILS%xn")]
           end
         else
-          succeeds = Magic.roll_combat_spell_success(combatant, spell)
+          # succeeds = Magic.roll_combat_spell_success(combatant, spell)
           #Spells here do not roll for success individually because they may do more than one thing and so need one success roll.
           if succeeds[:succeeds] == "%xgSUCCEEDS%xn"
 

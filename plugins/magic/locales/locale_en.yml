@@ -87,7 +87,7 @@ en:
       needs_target: "You need to identify a target. Do spell/cast <spell>=<target>."
       caster_should_not_equal_target: "You cannot target yourself. Do spell/cast <spell> instead."
       cast_to_use: "%xrYou cannot use %{name} without casting a spell. Only equip it if this spell is still active.%xn"
-      level_eight_fatigue: "%xb%{name} has cast a level 8 spell and is overcome by spell casting fatigue. They are unable to cast spells or fight until they have recovered.%xn"
+      level_eight_fatigue: "%x39%{name}%xn %x39has cast a level 8 spell and is overcome by spell casting fatigue. They are unable to cast spells or fight until they have recovered.%xn"
 
       # ----------------------------
       # LEARNING SPELLS
