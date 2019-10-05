@@ -59,6 +59,7 @@ spells:
     name: Camouflage
     range: Self
     roll: false
+    rounds: 90
     school: Nature
     stance: Hidden
   Natural Defenses:
