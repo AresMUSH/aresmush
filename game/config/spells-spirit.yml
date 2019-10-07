@@ -466,6 +466,8 @@ spells:
     range: Self
     roll: true
     school: Spirit
+    target_num: 20
+    target_optional: true
   Simple Command:
     available: true
     casting_time: 1 round
