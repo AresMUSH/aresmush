@@ -338,6 +338,19 @@ spells:
     weapon_specials: Shrink
     weapon: Spell
   #Level 6
+  Demon Tails:
+    available: false
+    casting_time: 1 round
+    desc: "Four demonic tails, each 4 ft in length, grow from the caster's lower back. Each one is tipped with a bone spearhead that does damage with piercing strikes that hit enemies nearby in quick succession."
+    effect: Damage
+    level: 6
+    name: Demon Tails
+    range: Touch
+    roll: true
+    school: Corpus
+    target_optional: true
+    target_num: 1
+    weapon: Demon Tails
   Familiar (Corpus):
     desc: 'A familiar is a spirit associated or allied with a school of magic that has taken residence in a physical vessel with the shape of an animal. It functions as a companion, assistant, and guardian. Familiars may be capable of some or all of the following: sharing telepathic or empathic communication, providing knowledge of the arcane, sharing senses, lending physical aid as spies or fighters, delivering spells at a distance of up to three miles.'
     effect: Other
@@ -349,6 +362,21 @@ spells:
     range: Short
     line_of_sight: true
     available: true
+  Group Nap:
+    available: false
+    casting_time: 1 round
+    desc: Make up to 3 targets suddenly feel extremely drowsy and cause them to briefly fall asleep. In combat, they are stunned for two rounds. In other situations, they remain asleep until they are woken or wake naturally.
+    duration: Until woken or 20 seconds in situations with disturbances
+    effect: Stun
+    is_stun: true
+    level: 6
+    line_of_sight: true
+    name: Group Nap
+    range: Short
+    rounds: 2
+    target_num: 3
+    target_optional: true
+    school: Corpus
   Massive Heal:
     available: true
     casting_time: 1 round

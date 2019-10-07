@@ -98,7 +98,7 @@ spells:
     target_optional: true
     target_num: 1
   Restful Sleep:
-    available: false
+    available: true
     casting_time: 1 round
     desc: "Cast a spell on a target that helps ease the mind toward sleep. Falling asleep becomes easy. For the duration, sleep is undisturbed by natural dreams, letting the target rest easy. When the spell is ended, sleep becomes natural and continues or is ended according to natural means.\n\n
     Has no noticeable effect on those who do not attempt to sleep."
@@ -339,7 +339,7 @@ spells:
     name: Potions (Spirit)
     school: Spirit
   Spell Fatigue Heal:
-    available: false
+    available: true
     casting_time: 1 round
     desc: Heal a target of spell fatigue. Cannot be cast on oneself.
     effect: Heal

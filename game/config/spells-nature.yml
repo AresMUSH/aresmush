@@ -501,6 +501,26 @@ spells:
     range: Self
     roll: true
     school: Nature
+  Greater Wild Shape Cervidae:
+    available: true
+    armor: Tough Hide
+    desc: Greater Wild Shape Cervidae
+    defense_mod: 2
+    level: 7
+    name: Greater Wild Shape Cervidae
+    roll: true
+    school: Nature
+    weapon: Antlers
+  Greater Wild Shape Canidae:
+    available: true
+    armor: Tough Hide
+    desc: Wild Shape Canidae
+    level: 7
+    name: Wild Shape Canidae
+    roll: true
+    school: Nature
+    range: Self
+    weapon: Claws
   Sense Animals:
     available: true
     desc: "The caster extends their senses to all non-sapient creatures within range. While their body lies senseless and incapacitated, they see and feel everything sensed by every non-sapient creature in that area. They can also identify the presence, quantity, and location of sapient creatures.\n\nThe caster can choose to absorb all experiences at a surface level, or focus their attention on up to five individuals at a time for more details."

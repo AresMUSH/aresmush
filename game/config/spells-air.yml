@@ -278,6 +278,7 @@ spells:
     range: Short
     roll: true
     school: Air
+  #Level 5
   Blow Object:
     available: true
     casting_time: 1 round
@@ -308,6 +309,21 @@ spells:
     school: Air
     spell_mod: -2
     target_num: 1
+    target_optional: true
+  Sound Barrier:
+    available: false
+    casting_time: 1 round
+    desc: "Creates a barrier of air using high frequency vibrations to deflect attacks directed against up to three targets, effectively putting the targets in [cover](https://www.aresmush.com/fs3/fs3-3/combat/#stance)."
+    duration: 3 rounds
+    effect: Defense
+    level: 5
+    line_of_sight: true
+    name: Sound Barrier
+    range: Short
+    rounds: 3
+    school: Air
+    stance: cover
+    target_num: 3
     target_optional: true
   #LEVEL 6
   Familiar (Air):
