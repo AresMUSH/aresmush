@@ -164,6 +164,23 @@ a:focus{
     background-color: #000;
 }
 
+.toc {
+  padding: 10px;
+  background-color: $border-color;
+  width: 300px;
+  max-width: 100%;
+  border: 1px solid white;
+  box-shadow: 5px 5px 5px $secondary-color;
+  padding: 15px;
+  margin: 15px 15px 15px 0px;
+  border-radius: 8px;
+}
+
+
+.toc li {
+  list-style-type: square;
+}
+
 /* -------------------------
 GENERAL HTML ELEMENTS
 ------------------------- */
@@ -226,17 +243,17 @@ pre {
 
 
 blockquote{
-	margin: 0.4em 0;
-    width: 80%;
-	padding: 10px;	
-    font-size: 1em;
-    background-color: $border-color;
-    border: 0px;
-    border-left: 1px solid $secondary-color;
-    -webkit-margin-before: 1em;
-    -webkit-margin-after: 1em;
-    -webkit-margin-start: 40px;
-    -webkit-margin-end: 40px;
+  margin: 0.4em 0;
+  width: 80%;
+  padding: 10px;	
+  font-size: 1em;
+  background-color: $border-color;
+  border: 0px;
+  border-left: 1px solid $secondary-color;
+  -webkit-margin-before: 1em;
+  -webkit-margin-after: 1em;
+  -webkit-margin-start: 40px;
+  -webkit-margin-end: 40px;
 }
 
 pre code { 
