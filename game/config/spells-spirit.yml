@@ -564,6 +564,8 @@ spells:
     range: Long
     roll: true
     school: Spirit
+    target_num: 20
+    target_optional: true
   Energize Dimensional Anchor (Spirit):
     available: false
     casting_time: 2 minutes
@@ -669,6 +671,8 @@ spells:
     range: Touch
     roll: true
     school: Spirit
+    target_num: 1
+    target_optional: true
   Restore Magic:
     available: false
     casting_time: 10 minutes
