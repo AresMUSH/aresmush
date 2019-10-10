@@ -64,8 +64,8 @@ module AresMUSH
         # Weather is in an array list, I've only seen 1 element, but adding
         # first here
 
-        condition = weather[:weather].first[:description]
-        condition_id = weather[:weather].first[:id]
+        condition = weather[:weather].last[:description]
+        condition_id = weather[:weather].last[:id]
 
         # Read the code desc from config, or use the api crappy description
 
