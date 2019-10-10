@@ -156,7 +156,7 @@ fs3combat:
       description: Antlers
       skill: Melee
       lethality: -10
-      penetration: 0
+      penetration: 2
       weapon_type: Melee
       recoil: 0
       damage_type: Physical

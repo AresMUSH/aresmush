@@ -119,7 +119,7 @@ spells:
     roll: true
     school: Water
   Water Cannon:
-    available: false
+    available: true
     casting_time: 1 round
     desc: The caster blasts a target with a powerful water attack, knocking them off their feet and incapacitating them for one round.
     effect: Stun
@@ -313,7 +313,7 @@ spells:
     weapon: Ice Storm
   Ice Wall:
     area: 20 yards long, 5 yards thick, 10 yards tall
-    available: false
+    available: true
     casting_time: 1 round
     desc: "The caster summons a single, solid wall of ice no greater than 20 yards long, 5 yards thick, 10 yards tall. It remains until melted or destroyed."
     effect: Defense

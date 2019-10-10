@@ -353,7 +353,7 @@ spells:
     target_num: 1
     target_optional: true
   Spirit Of Pacifism:
-    available: false
+    available: true
     casting_time: 1 round
     damage_type: Psionic
     desc: So long as the caster does not attack or block, they are not seen as an viable threat or target by aggressors. They are not immune to unintended AoE attacks.

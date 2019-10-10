@@ -314,13 +314,13 @@ spells:
     available: false
     casting_time: 1 round
     desc: "Creates a barrier of air using high frequency vibrations to deflect attacks directed against up to three targets, effectively putting the targets in [cover](https://www.aresmush.com/fs3/fs3-3/combat/#stance)."
-    duration: 3 rounds
+    duration: 5 rounds
     effect: Defense
     level: 5
     line_of_sight: true
     name: Sound Barrier
     range: Short
-    rounds: 3
+    rounds: 5
     school: Air
     stance: cover
     target_num: 3

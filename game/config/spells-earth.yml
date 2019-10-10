@@ -135,10 +135,23 @@ spells:
     target_num: 1
     target_optional: true
     weapon: Stone Slam
+  Touchstone:
+    area: 40 mile radius
+    available: false
+    casting_time: 1 round
+    desc: "The caster creates a link between themselves and a rock, gem, or piece of unalloyed metal, allowing them to always sense its location and direction from their person. If the touchstone is moved, the caster will feel the change in its location and be able to track it. The feeling of the link becomes vaguer the more distant the touchstone is, but the caster can always tell the direction of the touchstone as long as they are in range for the duration of the spell. Only one touchstone can be active at a time."
+    duration: 24 hours
+    effect: Other
+    is_potion: true
+    level: 3
+    name: Touchstone
+    range: Touch
+    roll: true
+    school: Earth
   #Level 4
   Crystalline Armor:
     armor: Crystalline
-    available: false
+    available: true
     casting_time: 1 round
     desc: The caster's skin becomes as hard as densely formed crystal to increase defenses significantly. Colors may vary.
     effect: Armor
@@ -274,7 +287,7 @@ spells:
     target_optional: true
     weapon: Stun (Earth)
   Stone Daggers:
-    available: false
+    available: true
     casting_time: 1 round
     desc: A myriad of tiny, sharp stone daggers spring from the earth and fly toward the target with speed and force, automatically seeking weak spots in the foe's armor.
     effect: Damage
@@ -288,7 +301,7 @@ spells:
     target_optional: true
     weapon: Stone Daggers
   Energize Dimensional Anchor (Earth):
-    available: false
+    available: true
     casting_time: 2 minutes
     desc: Provide necessary magical energy of the appropriate School to a Dimensional Anchor spell, enabling the linked casters to permanently open or close an interdimensional portal.
     effect: Travel
@@ -299,7 +312,7 @@ spells:
     school: Earth
   Exploding Earth:
     area: 15 yard radius
-    available: false
+    available: true
     casting_time: 1 round
     desc: A ball of jagged earth and stone flies toward a point the caster can see, exploding on impact and hitting up to 3 targets.
     effect: AOE Damage

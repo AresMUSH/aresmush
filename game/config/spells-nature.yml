@@ -155,6 +155,7 @@ spells:
     available: true
     casting_time: 1 round
     desc: The caster immobolizes one target with vines anchored to the ground or other structural surroundings.
+    duration: 1 round
     effect: Stun
     is_stun: true
     level: 3
@@ -185,6 +186,7 @@ spells:
     available: true
     casting_time: 1 round
     desc: "Control a group of angry insects, encouraging them to attack a single enemy. Overcome, the enemy is unable to take any action this round. \n\n Behavior of swarm after the caster''s control dissipates is subject to GM discretion."
+    duration: 1 round
     effect: Stun
     is_stun: true
     rounds: 1
@@ -252,7 +254,7 @@ spells:
     target_num: 1
     target_optional: true
   Heal Animal:
-    available: false
+    available: true
     casting_time: 1 round
     desc: Provide a middling amount of healing magic to a non-sapient target's most severe treatable wound, speeding their healing by up to nearly a week and restoring some of their vigor.
     effect: Heal
@@ -306,9 +308,8 @@ spells:
     name: Regress Growth
     range: Short
     school: Nature
-
   Vigor Surge:
-    available: false
+    available: true
     casting_time: 1 round
     desc: The caster temporarily increases the vigor of an animal of any size. For an hour, the animal has more energy, gains a minor amount of strength, and recovers more quickly from exhaustion or minor injury. With repeated use over weeks, the animal's health will improve permanently within natural limits. The spell cannot prevent injuries or provide any healing to existing injuries.
     effect: Buff
@@ -320,7 +321,7 @@ spells:
     school: Nature
     target_num: 0
   Germinate:
-    available: false
+    available: true
     casting_time: 1 round
     desc: Grow any kind of plant from a seed that will reach maturity within a matter of minutes. It may bloom, but will not produce fruit without either more time or magic. There must be sufficient and appropriate resources for the plant to grow.
     effect: Creation
