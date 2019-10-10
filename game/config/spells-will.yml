@@ -284,7 +284,7 @@ spells:
   Dimensional Anchor:
     available: true
     casting_time: 2 minutes
-    desc: "With the aid of at least one other caster of the appropriate School, become an Anchor for the closing of a dimensional portal. May require additional casters according to the portal''s magical energies. \n\n Travel, perception, and attacks through the targeted interdimensional portal are reduced as the Anchor forces the portal to shrink. Once the spell is completed, the portal is completely closed and the effect is permanent."
+    desc: "With the aid of at least one other caster of the appropriate School, become an Anchor for the opening or closing of a dimensional portal. May require additional casters according to the portal's magical energies. \n\n When closing a portal, travel, perception, and attacks through it are reduced as the Anchor forces the portal to shrink. When opening a portal, these same effects may increase. Once the spell is completed, the portal is either completely closed or opened and the effect is permanent."
     effect: Travel
     level: 7
     name: Dimensional Anchor
@@ -294,7 +294,7 @@ spells:
   Energize Dimensional Anchor (Will):
     available: true
     casting_time: 2 minutes
-    desc: Provide necessary magical energy of the appropriate School to a Dimensional Anchor spell, enabling the linked casters to permanently close an interdimensional portal.
+    desc: Provide necessary magical energy of the appropriate School to a Dimensional Anchor spell, enabling the linked casters to permanently open or close an interdimensional portal.
     effect: Travel
     level: 7
     name: Dimensional Anchor
@@ -331,13 +331,27 @@ spells:
     target_optional: true
     weapon: Mass Telekinetic Burst
   Open Local Portal:
-    available: true
+    available: false
     casting_time: 5 minutes
-    desc: "The caster opens a permanent portal to a location in the same dimensional world they are currently in. They must have two of the following in order to open a portal to a location:\n\n
+    desc: "The caster opens or closes a permanent gateway to a location in the same dimensional world they are currently in. They must have two of the following in order to open a portal to a location:\n\n
       * Personal knowledge of the portal's opening point. They have visited it themselves and can remember the location.\n
       * The ability to see someone else''s memory of the location.\n
       * Exact GPS coordinates of the portal's opening point.\n
       * A realistic depiction of the portal's location, created in the last six months. A recent photograph, life-like drawing, painting, etc."
+    effect: Travel
+    level: 7
+    name: Open Local Portal
+    range: Touch
+    roll: true
+    school: Will
+  Local Gateway:
+    available: true
+    casting_time: 5 minutes
+    desc: "The caster opens or closes a permanent gateway to a location in the same dimensional world they are currently in. Gateways can be closed at will. They must have two of the following in order to open a gateway to a location:\n\n
+      * Personal knowledge of the gateway's opening point. They have visited it themselves and can remember the location.\n
+      * The ability to see someone else''s memory of the location.\n
+      * Exact GPS coordinates of the gateway's opening point.\n
+      * A realistic depiction of the gateway's location, created in the last six months. A recent photograph, life-like drawing, painting, etc."
     effect: Travel
     level: 7
     name: Open Local Portal

@@ -472,7 +472,7 @@ spells:
   Energize Dimensional Anchor (Nature):
     available: true
     casting_time: 2 minutes
-    desc: Provide necessary magical energy of the appropriate School to a Dimensional Anchor spell, enabling the linked casters to permanently close an interdimensional portal.
+    desc: Provide necessary magical energy of the appropriate School to a Dimensional Anchor spell, enabling the linked casters to permanently open or close an interdimensional portal.
     effect: Travel
     level: 7
     name: Dimensional Anchor
