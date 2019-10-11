@@ -67,14 +67,13 @@ module AresMUSH
       end
     end
 
-    def self.higher_level_spell?(char, spell_name)
+    def self.equal_level_spell?(char, spell_name)
       spell_name = spell_name.titlecase
       spell_level = Magic.find_spell_level(char, spell_name)
       school = Magic.find_spell_school(char, spell_name)
-      level_above = spell_level.to_i + 1
       spells_learned =  char.spells_learned.to_a
 
-      if spells_learned.any? {|s| s.level == level_above && s.school == school && s.learning_complete == true}
+      if spells_learned.any? {|s| s.level == spell_level && s.school == school && s.learning_complete == true}
         return true
       else
         return false
