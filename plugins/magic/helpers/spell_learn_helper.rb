@@ -68,7 +68,7 @@ module AresMUSH
     end
 
     def self.equal_level_spell?(char, spell_name)
-      spell_name = spell_name.titlecase
+      spell_name = spell_name.titlecase 
       spell_level = Magic.find_spell_level(char, spell_name)
       school = Magic.find_spell_school(char, spell_name)
       spells_learned =  char.spells_learned.to_a
