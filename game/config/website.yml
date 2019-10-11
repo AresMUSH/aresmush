@@ -151,7 +151,7 @@ website:
       id: guides:combat_org_guide
     - route: wiki-page
       title: Combat Tactics Guide
-      id: guides:guides:combat_tactics
+      id: guides:combat_tactics
     - route: wiki-page
       title: Magic System
       id: magic_system
