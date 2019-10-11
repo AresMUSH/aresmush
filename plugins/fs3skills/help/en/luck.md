@@ -15,7 +15,7 @@ Luck is also award for various OOC work such as GMing scenes or updating the wik
 `luck/give <name>=<reason>` - Give someone one of your luck points.
 `luck/record [<name>]` - See a record of all luck given to a character.
 `potion/create <potion>` - Spends luck to create a potion.
-`spell/luck <spell>` - Reduce the learning time of a spell by a week.
+`spell/luck <spell>` - Spend 2 luck to remove a week's learning time from a spell.
 
 See [Luck](http://spiritlakemu.com/wiki/luck_points) for more information on how to earn Luck Points and how you can spend them.
 
