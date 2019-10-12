@@ -120,9 +120,9 @@ module AresMUSH
       delta = shield_strength - successes
 
       if in_combat
-        caster.combatant.log "#{shield.upcase}: #{caster.name}'s #{school} (#{successes} successes) vs #{target.name}'s #{shield} (strength #{shield_strength})."
+        caster.combatant.log "#{shield.upcase}: #{caster_name}'s #{school} (#{successes} successes) vs #{target.name}'s #{shield} (strength #{shield_strength})."
       else
-        Global.logger.info "#{shield.upcase}: #{caster.name}'s #{school} (#{successes} successes) vs #{target.name}'s #{shield} (strength #{shield_strength})."
+        Global.logger.info "#{shield.upcase}: #{caster_name}'s #{school} (#{successes} successes) vs #{target.name}'s #{shield} (strength #{shield_strength})."
       end
 
       case delta
