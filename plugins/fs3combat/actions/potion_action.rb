@@ -92,7 +92,7 @@ module AresMUSH
 
           #Equip Weapon Specials
           if weapon_specials_str
-            Magic.spell_weapon_effects(self.combatant, self.spell)
+            Magic.set_spell_weapon_effects(self.combatant, self.spell)
             weapon = self.combatant.weapon.before("+")
             FS3Combat.set_weapon(nil, target, weapon, [weapon_specials_str])
             if heal_points
