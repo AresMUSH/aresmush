@@ -50,7 +50,7 @@ module AresMUSH
             use_advantages: FS3Skills.use_advantages?,
             damage: damage,
             show_sheet: show_sheet,
-            luck_points: char.fs3_luck,
+            luck_points: char.luck.floor,
             xp: xp
           }
         else

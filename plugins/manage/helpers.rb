@@ -112,7 +112,7 @@ module AresMUSH
         end
       end
       Global.config_reader.load_game_config
-      Global.plugin_manager.all_plugin_folders.each do |load_target|
+      Global.plugin_manager.all_plugin_folders.sort_by { |p| p == 'custom' ? 'zzzzzzzcustom' : p }.each do |load_target|
         begin
           Global.plugin_manager.load_plugin(load_target)                      
         rescue SystemNotFoundException => e

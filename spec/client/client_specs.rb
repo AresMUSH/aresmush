@@ -81,7 +81,7 @@ module AresMUSH
     
     describe :emit_raw do
       it "sends the raw text without formatting and with a linebreak" do
-        expect(@connection).to receive(:send_data).with("%xr%%Boo%xn%r\r\n")
+        expect(@connection).to receive(:send_raw).with("%xr%%Boo%xn%r\r\n")
         @client.emit_raw "%xr%%Boo%xn%r"
       end
     end
