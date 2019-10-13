@@ -1,6 +1,6 @@
 en:
     manage:
-        plugin_loaded: "Plugin '%{name}' (including config, help and locale) reloaded."
+        plugin_loaded: "Plugin '%{name}' (including config, help and locale) reloaded.  If you have code customizations for %{name} in the 'custom' plugin, you'll want to load custom as well."
         plugin_unloaded: "Plugin '%{name}' unloaded."
         plugin_not_found: "Plugin '%{name}' not found.  Please check your spelling."
         error_loading_plugin: "Problem loading plugin '%{name}': %{error}"

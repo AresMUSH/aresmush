@@ -2,7 +2,6 @@
 login:
   allow_web_registration: true
   guest_role: guest
-  use_terms_of_service: true
   activity_cron:
     minute:
     - 0

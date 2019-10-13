@@ -1,26 +1,21 @@
 ---
 demographics:
-  min_age: 18
-  max_age: 65
-  required_properties:
-  - played by
-  - hair
-  - eyes
-  - skin
-  - height
-  - physique
-  - full name
-  - gender
-  - birthdate
-  nickname_field: callsign
-  nickname_format: "%{name} (%{nickname})"
-  disable_auto_shortcuts: false
-  editable_properties:
-  - full name
-  - callsign
-  - gender
-  - hair
-  - physique
+  census_fields:
+  - field: name
+    width: 28
+    title: Name
+  - field: demographic
+    width: 10
+    title: Gender
+    value: gender
+  - field: group
+    width: 20
+    title: Faction
+    value: Faction
+  - field: group
+    width: 20
+    title: Position
+    value: Position
   demographics:
   - full name
   - callsign
@@ -32,6 +27,13 @@ demographics:
   - physique
   - played by
   - birthdate
+  disable_auto_shortcuts: false
+  editable_properties:
+  - full name
+  - callsign
+  - gender
+  - hair
+  - physique
   groups:
     Faction:
       desc: Military faction.
@@ -82,6 +84,31 @@ demographics:
         Medical Support: Other medical personnel.
         Deck Crew: Air wing support/maintenance personnel.
         Other: Any other position.
+  help_text:
+    played by: "%xcplayedby <actor>%xn - The actor/actress depicting your character."
+    physique: "%xcphysique <build/body type>%xn - athletic, wiry, slim, pudgy, etc."
+    gender: "%xcgender <male/female/other>%xn"
+    hair: "%xchair <hair color>%xn"
+    eyes: "%xceyes <eye color>%xn"
+    skin: "%xcskin <complexion>%xn"
+    birthdate: "%xcbirthdate <mm/dd/yyy>%xn or %xcage <years>%xn"
+    callsign: "%xccallsign <callsign>%xn - Non-pilots may leave blank or enter a nickname."
+    full name: "%xcfullname <name>%xn - Your character's full name."
+  max_age: 65
+  min_age: 18
+  nickname_field: callsign
+  nickname_format: "%{name} (%{nickname})"
+  private_properties: []
+  required_properties:
+  - played by
+  - hair
+  - eyes
+  - skin
+  - height
+  - physique
+  - full name
+  - gender
+  - birthdate
   shortcuts:
     groups: group
     colonies: group colony
@@ -91,30 +118,24 @@ demographics:
     actor: demographic/set played by=
     fullname: demographic/set full name=
     playedby: demographic/set played by=
-  help_text:
-    playedby: "%xcplayedby <actor>%xn - The actor/actress depicting your character."
-    physique: "%xcphysique <build/body type>%xn - athletic, wiry, slim, pudgy, etc."
-    gender: "%xcgender <male/female/other>%xn"
-    hair: "%xchair <hair color>%xn"
-    eyes: "%xceyes <eye color>%xn"
-    skin: "%xcskin <complexion>%xn"
-    birthdate: "%xcbirthdate <mm/dd/yyy>%xn or %xcage <years>%xn"
-    callsign: "%xccallsign <callsign>%xn - Non-pilots may leave blank or enter a nickname."
-    fullname: "%xcfullname <name>%xn - Your character's full name."
-  census_fields:
-  - field: name
-    width: 28
-    title: Name
-  - field: demographic
-    width: 10
-    title: Gender
-    value: gender
-  - field: group
-    width: 20
-    title: Faction
-    value: Faction
-  - field: group
-    width: 20
-    title: Position
-    value: Position
-  private_properties: []
+  genders:
+    Male:
+      possessive_pronoun: his
+      subjective_pronoun: he
+      objective_pronoun: him
+      noun: man
+    Female:
+      possessive_pronoun: her
+      subjective_pronoun: she
+      objective_pronoun: her
+      noun: woman
+    Other:
+      possessive_pronoun: their
+      subjective_pronoun: they
+      objective_pronoun: them
+      noun: person
+    Robot:
+      possessive_pronoun: their
+      subjective_pronoun: they
+      objective_pronoun: them
+      noun: robot
