@@ -17,9 +17,10 @@ module AresMUSH
                 
         return { chargen_locked: true } if Chargen.is_chargen_locked?(char)
         
+        all_demographics = Demographics.all_demographics
         demographics = {}
         
-        Demographics.all_demographics.select { |d| d != 'birthdate' }.each do |d| 
+        all_demographics.select { |d| d != 'birthdate' }.each do |d| 
           demographics[d.downcase] = 
             {
               name: d.titleize,
@@ -27,7 +28,9 @@ module AresMUSH
             }
         end
         
-        demographics['age'] = { name: t('profile.age_title'), value: char.birthdate ? OOCTime.format_date_for_entry(char.birthdate) : char.age }
+        if (all_demographics.include?('birthdate'))
+          demographics['age'] = { name: t('profile.age_title'), value: char.birthdate ? OOCTime.format_date_for_entry(char.birthdate) : char.age }
+        end
         
         groups = {}
         

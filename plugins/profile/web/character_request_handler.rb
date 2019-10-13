@@ -24,7 +24,8 @@ module AresMUSH
         all_fields['age'] = char.age
 
 
-        demographics = Demographics.visible_demographics(char, enactor).each.map { |d| 
+        visible_demographics = Demographics.visible_demographics(char, enactor)
+        demographics = visible_demographics.each.map { |d| 
             {
               name: d.titleize,
               key: d.titleize,
@@ -32,8 +33,9 @@ module AresMUSH
             }
           }
         
-        
-        demographics << { name: t('profile.age_title'), key: 'Age', value: char.age }
+        if (visible_demographics.include?('birthdate'))
+          demographics << { name: t('profile.age_title'), key: 'Age', value: char.age }
+        end
         
         groups = Demographics.all_groups.keys.sort.map { |g| 
           {

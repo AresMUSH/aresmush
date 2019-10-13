@@ -64,7 +64,7 @@ module AresMUSH
     
     class WikidotItalics
       def self.regex
-       /\/\/([^\/\r\n]+)\/\//
+       /[^:]\/\/([^\/\r\n]+)\/\//
       end
       
       def self.parse(matches)
