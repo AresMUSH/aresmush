@@ -61,9 +61,9 @@ module AresMUSH
       def check_gender
         return nil if self.property != "gender"
         
-        genders = [ "Male", "Female", "Other" ]
+        genders = Demographics.genders
         return nil if genders.include?(self.value)
-        return t('demographics.invalid_gender')
+        return t('demographics.invalid_gender', :genders => genders.join(', '))
       end
       
       def handle
