@@ -17,7 +17,7 @@ module AresMUSH
     end 
      
     def load_all
-      self.all_plugin_folders.each do |p|
+      self.all_plugin_folders.sort_by { |p| p == 'custom' ? 'zzzzzzzcustom' : p }.each do |p|
         load_plugin p
       end
     end
