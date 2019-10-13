@@ -57,8 +57,6 @@ module AresMUSH
       text << "%r"
       text << FS3Skills.backgrounds_review(char)
       text << "%r%r"
-      text << FS3Skills.starting_language_review(char)
-      text << "%r"
       text << FS3Skills.starting_skills_check(char)
       text << "%r"
       text << FS3Skills.unusual_skills_check(char)
