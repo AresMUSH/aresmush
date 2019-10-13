@@ -84,13 +84,6 @@ module AresMUSH
       Chargen.format_review_status(t('fs3skills.total_points_spent', :total => points, :max => max), error)
     end
     
-    def self.starting_language_review(char)
-      starting_languages = Global.read_config("fs3skills", "starting_languages") || []
-      missing = starting_languages.select { |l| FS3Skills.ability_rating(char, l) < 3 }
-      error = missing.count > 0 ? t('chargen.are_you_sure', :missing => missing.join(" ")) : t('chargen.ok')
-      Chargen.format_review_status(t('fs3skills.language_check'), error)
-    end
-    
     def self.starting_skills_check(char)
       message = t('fs3skills.starting_skills_check')
       missing = []

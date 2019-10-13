@@ -103,28 +103,6 @@ module AresMUSH
           expect(review).to eq "fs3skills.ability_ratings_check                    chargen.ok"
         end
       end
-      
-      
-      describe :starting_language_review do
-        before do 
-          allow(Global).to receive(:read_config).with("fs3skills", "starting_languages") { ["English", "German"] }
-          @char = double
-        end
-
-        it "should warn if missing a starting language" do
-          allow(FS3Skills).to receive(:ability_rating).with(@char, "English") { 3 }
-          allow(FS3Skills).to receive(:ability_rating).with(@char, "German") { 0 }
-          review = FS3Skills.starting_language_review(@char)
-          expect(review).to eq "fs3skills.language_check                           chargen.are_you_sure"
-        end
-        
-        it "should be OK if all languages present" do
-          allow(FS3Skills).to receive(:ability_rating).with(@char, "English") { 3 }
-          allow(FS3Skills).to receive(:ability_rating).with(@char, "German") { 3 }
-          review = FS3Skills.starting_language_review(@char)
-          expect(review).to eq "fs3skills.language_check                           chargen.ok"
-        end
-      end
 
       describe :starting_skills_check do
         before do 
