@@ -2,10 +2,12 @@ module AresMUSH
   module Demographics    
 
     def self.can_set_demographics?(char)
+      return false if !char
       char.has_permission?("manage_demographics")
     end
 
     def self.can_set_group?(char)
+      return false if !char
       char.has_permission?("manage_demographics")
     end
 
@@ -15,6 +17,24 @@ module AresMUSH
     
     def self.all_groups
       Global.read_config("demographics", "groups") || {}
+    end
+    
+    def self.genders
+      gender_config = Global.read_config("demographics", "genders") 
+      return [ 'Male', 'Female', 'Other' ] if !gender_config
+      gender_config.keys
+    end
+    
+    def self.gender_config(gender)
+      all_config = Global.read_config("demographics", "genders") || {}
+      default_config = {
+        'subjective_pronoun' => 'they',
+        'objective_pronoun' => 'them',
+        'possessive_pronoun' => 'their',
+        'noun' => 'person'
+      }
+      return default_config if !gender
+      all_config[gender.titlecase] || default_config
     end
     
     def self.get_group(name)
