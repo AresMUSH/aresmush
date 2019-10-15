@@ -26,6 +26,7 @@ module AresMUSH
         client.emit_success t('luckgive.given_luck', :name => self.target.name)
         message = t('luckgive.received_luck', :from => enactor.name)
         Login.emit_if_logged_in self.target, message
+        Login.notify(self.target, :luck, message, nil)
 
         FS3Skills.modify_luck(self.target, 1)
         FS3Skills.modify_luck(enactor, -1)

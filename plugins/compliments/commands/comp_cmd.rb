@@ -62,6 +62,7 @@ module AresMUSH
             end
             message = t('compliments.has_left_comp', :from => enactor.name)
             Login.emit_if_logged_in target, message
+            Login.notify(target, :comp, message, nil)
           end
           client.emit_success t('compliments.left_comp', :name =>  self.target_names.join(", "))
         end

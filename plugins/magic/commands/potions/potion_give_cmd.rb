@@ -28,9 +28,7 @@ module AresMUSH
         client.emit_success t('magic.give_potion', :target => target.name, :potion => potion.name)
         message = t('magic.given_potion', :name => enactor.name, :potion => potion.name)
         Login.emit_if_logged_in self.target, message
-        Mail.send_mail([target.name], t('magic.given_potion_subj', :potion => potion.name), message, nil)
-
-
+        Login.notify(self.target, :potion, message, nil)
 
       end
 
