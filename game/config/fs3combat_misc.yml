@@ -18,7 +18,6 @@ fs3combat:
       armor: Plate
       hitloc: Humanoid
       defense_skill: Reflexes
-
     Insect:
       weapon: Teeth
       weapon_specials:
@@ -31,11 +30,23 @@ fs3combat:
       armor: Tough Hide
       hitloc: FlyingInsect
       defense_skill: Reflexes
+    Flying Creature:
+      weapon: Claws
+      weapon_specials:
+      armor: Tough Hide
+      hitloc: FlyingCreature
+      defense_skill: Reflexes
     Rogue:
       weapon: Knife
       weapon_specials:
       armor: Leather
       hitloc: Humanoid
+      defense_skill: Reflexes
+    Spider:
+      weapon: Stinger
+      weapon_specials:
+      armor: Tough Hide
+      hitloc: Spider
       defense_skill: Reflexes
     Swordsman:
       weapon: Sword
