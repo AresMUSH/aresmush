@@ -184,5 +184,6 @@ website:
   website_code_path: "/home/ares/ares-webportal"
   wiki_aliases:
     main: home
-    weirdnet: weird_docs:weirdnet
-    
+    weird_docs:weirdnet: weirdnet
+    weird_docs:underlibrary: underlibrary
+    under-library: underlibrary
