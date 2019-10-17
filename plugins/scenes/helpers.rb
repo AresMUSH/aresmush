@@ -23,6 +23,11 @@ module AresMUSH
       actor.has_permission?("manage_scenes")
     end
     
+    def self.can_control_npcs?(actor)
+      return false if !actor
+      actor.has_permission?("control_npcs")
+    end
+    
     def self.scene_types
       AresMUSH::Global.read_config('scenes', 'scene_types' )      
     end
@@ -49,6 +54,12 @@ module AresMUSH
       return true if (scene.owner == actor && (real_poses.count == 0) && !scene.scene_log)
       return true if Scenes.can_manage_scene?(actor, scene)
       return false
+    end
+    
+    def self.can_pose_char?(actor, char)
+      return true if char == actor
+      return true if AresCentral.is_alt?(actor, char)
+      (char.is_npc? && Scenes.can_control_npcs?(char))
     end
     
     def self.restart_scene(scene)
@@ -619,7 +630,8 @@ module AresMUSH
         places: places,
         poses: scene.poses_in_order.map { |p| Scenes.build_scene_pose_web_data(p, viewer) },
         fs3_enabled: FS3Skills.is_enabled?,
-        fs3combat_enabled: FS3Combat.is_enabled?
+        fs3combat_enabled: FS3Combat.is_enabled?,
+        poseable_chars: Scenes.build_poseable_chars_data(scene, viewer)
       }
     end    
     
@@ -654,6 +666,15 @@ module AresMUSH
          name: name,
          time: Time.parse(time).rfc2822
          }}
+    end
+    
+    def self.build_poseable_chars_data(scene, enactor)
+      return [] if !enactor
+      scene.participants
+         .select { |p| Scenes.can_pose_char?(enactor, p) }
+         .sort_by { |p| [ p == enactor ? 0 : 1, p.name ]}
+         .map { |p| { id: p.id, name: p.name, icon: Website.icon_for_char(p) }}
+         
     end
     
     def self.recent_scenes

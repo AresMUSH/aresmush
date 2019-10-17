@@ -560,6 +560,15 @@ GENERAL UTILITIES
     margin: 2px;
 }
 
+.tiny-profile-icon {
+    width: 25px;
+    height: 25px;
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+    border-radius: 15px;
+    margin: 2px;
+}
+
 .icon-row img {
   margin-left: 20px;
 }
@@ -889,8 +898,9 @@ SCENES SCREEN
   padding: 0px;
 }
 
-.scene-pose-select {
+.scene-pose-select, .scene-char-select {
   width: 175px;
+  padding-top: 10px;
 }
 
 /* -------------------------
