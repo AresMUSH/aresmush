@@ -71,3 +71,5 @@ en:
         can_talk_title: "Can Talk:"
         announce_logins_title: "Announce Logins:"
         cant_talk_on_channel: "You aren't allowed to talk on that channel."
+        
+        channel_recall_cleared: "You clear the channel buffer on %{channel}."
