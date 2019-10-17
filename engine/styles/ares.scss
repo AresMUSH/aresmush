@@ -882,6 +882,17 @@ SCENES SCREEN
   color: green;  
 }
 
+.scene-menu { 
+  display: inline-block;
+}
+.scene-menu .dropdown-toggle {
+  padding: 0px;
+}
+
+.scene-pose-select {
+  width: 175px;
+}
+
 /* -------------------------
 CHARACTERS SCREEN
 ------------------------- */
