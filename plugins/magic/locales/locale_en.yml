@@ -48,6 +48,7 @@ en:
         # SPELL CASTING
         # ----------------------------
       use_combat_spell: "Use combat/spell when you are in combat."
+      dont_target_self: "Be sure to specify a target when using an attack spell so you don't attack yourself. "
       spell_ko: "You cannot cast a spell while Knocked Out."
       casts_spell: "%{name} casts %xB%{spell}%xn%{mod} and %{succeeds}."
       casts_spell_on_target: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{succeeds}."
@@ -166,6 +167,7 @@ en:
       # ----------------------------
       magic_items_title: "%{name}'S MAGIC ITEMS"
       item_equipped: "You have equipped %{item}."
+      equipped_item: "%{name} has equipped %{item}."
       has_equipped_item: "%{name} has equipped %{item}"
       item_unequipped: "You have unequipped %{item}."
       has_unequipped_item: "%{name} has unequipped %{item}"

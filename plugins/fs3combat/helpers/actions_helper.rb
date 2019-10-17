@@ -472,9 +472,9 @@ module AresMUSH
       elsif (stopped_by_cover)
         message = t('fs3combat.attack_hits_cover', :name => combatant.name, :target => target.name, :weapon => weapon)
       elsif stopped_by_shield == "Endure Fire Held"
-        message = t('custom.shield_held', :name => combatant.name, :spell => combatant.weapon, :mod => "", :shield => "Endure Fire", :target => target.name)
+        message = t('magic.shield_held', :name => combatant.name, :spell => combatant.weapon, :mod => "", :shield => "Endure Fire", :target => target.name)
       elsif stopped_by_shield == "Endure Cold Held"
-        message = t('custom.shield_held', :name => combatant.name, :spell => combatant.weapon, :mod => "", :shield => "Endure Cold", :target => target.name)
+        message = t('magic.shield_held', :name => combatant.name, :spell => combatant.weapon, :mod => "", :shield => "Endure Cold", :target => target.name)
       elsif (attacker_net_successes < 0)
         # Only can evade when being attacked by melee or when in a vehicle.
         if (weapon_type == 'Melee' || target.is_in_vehicle?)
@@ -560,10 +560,12 @@ module AresMUSH
 
       damage_type = Global.read_config("spells", weapon, "damage_type")
       if (damage_type == "Fire" && target.endure_fire > 0)
-        endure_fire_mod = -25
+        math = target.endure_fire * 5
+        endure_fire_mod = -20 - math
         endure_cold_mod = 0
       elsif (damage_type == "Cold" && target.endure_cold > 0)
-        endure_cold_mod = -25
+        math = target.endure_cold * 5
+        endure_cold_mod = -20
         endure_fire_mod = 0
       else
         endure_cold_mod = 0
