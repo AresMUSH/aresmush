@@ -5,6 +5,7 @@ module AresMUSH
         scene = Scene[request.args[:id]]
         enactor = request.enactor
         pose = (request.args[:pose] || "").chomp
+        pose_char = request.args[:pose_char]
         pose_type = request.args[:pose_type]
         
         if (!scene)
@@ -25,14 +26,24 @@ module AresMUSH
         if (!scene.room)
           raise "Trying to pose to a scene that doesn't have a room."
         end
+
+        char = pose_char ? Character[pose_char] : enactor
+
+        if (!char)
+          return { error: t('webportal.not_found') }
+        end
         
-        Global.logger.debug "Scene #{scene.id} pose added by #{enactor.name}."
+        if !Scenes.can_pose_char?(enactor, char)
+          return { error: t('dispatcher.not_allowed') }
+        end
+                  
+        Global.logger.debug "Scene #{scene.id} pose added for #{char.name} by #{enactor.name}."
         
         pose = Website.format_input_for_mush(pose)
         
-        parse_results = Scenes.parse_web_pose(pose, enactor, pose_type)
+        parse_results = Scenes.parse_web_pose(pose, char, pose_type)
         
-        Scenes.emit_pose(enactor, parse_results[:pose], parse_results[:is_emit], 
+        Scenes.emit_pose(char, parse_results[:pose], parse_results[:is_emit], 
            parse_results[:is_ooc], nil, parse_results[:is_setpose] || parse_results[:is_gmpose], scene.room)
         
         if (parse_results[:is_setpose] && scene.room)
