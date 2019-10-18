@@ -8,7 +8,7 @@ module AresMUSH
         return error if error
         
         
-        active = Scene.all.select { |s| !s.completed }.sort { |s1, s2| sort_scene(s1, s2) }.reverse.map { |s| {
+        active = Scene.all.select { |s| !s.completed }.sort { |s1, s2| sort_scene(s1, s2, enactor) }.reverse.map { |s| {
                   id: s.id,
                   title: s.title,
                   summary: Website.format_markdown_for_html(s.summary),
@@ -56,7 +56,15 @@ module AresMUSH
         enactor && Scenes.can_read_scene?(enactor, s)
       end
       
-      def sort_scene(s1, s2)
+      def sort_scene(s1, s2, enactor)
+        if (Scenes.is_participant?(s1, enactor))
+          return 1
+        end
+        
+        if (Scenes.is_participant?(s2, enactor))
+          return -1
+        end
+        
         if (!s1.private_scene && s2.private_scene)
           return 1
         end
