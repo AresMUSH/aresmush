@@ -639,7 +639,8 @@ module AresMUSH
         poses: scene.poses_in_order.map { |p| Scenes.build_scene_pose_web_data(p, viewer) },
         fs3_enabled: FS3Skills.is_enabled?,
         fs3combat_enabled: FS3Combat.is_enabled?,
-        poseable_chars: Scenes.build_poseable_chars_data(scene, viewer)
+        poseable_chars: Scenes.build_poseable_chars_data(scene, viewer),
+        pose_order_type: scene.room ? scene.room.pose_order_type : nil
       }
     end    
     
