@@ -47,6 +47,7 @@ A scene can either be open (anyone's invited) or private.  Scenes on the grid ar
 To join an open scene, you can use the scene/join command.  To join a private scene, you'll need a scene invitation or a [meetme](/help/meetme). 
 
 `scenes` - Lists active scenes.
+`scenes/open` - Lists active scenes that are marked as open to anyone.
 `scene/join <#>` - Joins a scene.
 `scene/invite <name>[=<scene num>]` - Invites someone to a private scene.
 `scene/uninvite <name>[=<scene num>]` - Withdraws an invitation.

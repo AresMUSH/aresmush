@@ -156,8 +156,9 @@ module AresMUSH
       weapon = weapon ? weapon.titlecase : "Unarmed"
       prior_ammo = combatant.prior_ammo || {}
       
-      if (weapon && prior_ammo[weapon])
-        max_ammo = prior_ammo[weapon]
+      current_ammo = max_ammo
+      if (weapon && prior_ammo[weapon] != nil)
+        current_ammo = prior_ammo[weapon]
       end
       if (combatant.weapon_name)
         prior_ammo[combatant.weapon_name] = combatant.ammo
@@ -165,7 +166,7 @@ module AresMUSH
       end
       combatant.update(weapon_name: weapon)
       combatant.update(weapon_specials: specials ? specials.map { |s| s.titlecase }.uniq : [])
-      combatant.update(ammo: max_ammo)
+      combatant.update(ammo: current_ammo)
       combatant.update(max_ammo: max_ammo)
       combatant.update(action_klass: nil)
       combatant.update(action_args: nil)

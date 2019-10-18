@@ -176,6 +176,7 @@ module AresMUSH
     end
     
     def self.is_participant?(scene, char)
+      return false if !char
       Scenes.participants_and_room_chars(scene).include?(char)
     end
     
@@ -306,6 +307,10 @@ module AresMUSH
           end
           log << formatted_pose
         elsif (pose.is_setpose?)
+          if (div_started)
+            log << "\n[[/div]]\n\n"
+            div_started = false
+          end
           log << "[[div class=\"scene-set-pose\"]]\n#{formatted_pose}\n[[/div]]\n\n"
         else
           if (div_started)
@@ -315,12 +320,15 @@ module AresMUSH
           log << formatted_pose
         end
         
-        if (Global.read_config("scenes", "include_pose_separator"))
-          log << "\n[[div class=\"pose-divider\"]][[/div]]\n"
+        if (!div_started)
+          if (Global.read_config("scenes", "include_pose_separator"))
+            log << "\n[[div class=\"pose-divider\"]][[/div]]\n"
+          end
         end
         
         log << "\n\n"
       end
+      
       if (div_started)
         log << "\n[[/div]]\n\n"
       end

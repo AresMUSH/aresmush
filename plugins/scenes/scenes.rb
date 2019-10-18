@@ -68,7 +68,7 @@ module AresMUSH
       
       when "scene"
         case cmd.switch
-        when "all"
+        when "all", "open"
           return ScenesCmd
         when nil
           if (cmd.args)
