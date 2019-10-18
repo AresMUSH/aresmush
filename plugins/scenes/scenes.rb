@@ -167,6 +167,8 @@ module AresMUSH
         return DeleteSceneRequestHandler
       when "downloadScene"
         return DownloadSceneRequestHandler
+      when "dropPoseOrder"
+        return DropPoseOrderRequestHandler
       when "editPlot"
         return EditPlotRequestHandler
       when "editScene"
@@ -199,6 +201,8 @@ module AresMUSH
         return GetSceneTypesRequestHandler
       when "searchScenes"
         return SearchScenesRequestHandler
+      when "switchPoseOrder"
+        return SwitchPoseOrderRequestHandler
       when "unwatchScene"
         return UnwatchSceneRequestHandler
       when "watchScene"
