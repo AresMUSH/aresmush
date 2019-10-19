@@ -330,9 +330,9 @@ code {
 }
 
 .collapse.in {
-    background: #383A4F;
+    background: #4f5162;
     padding: 10px;
-    border-radius: 5px;
+    border-radius: 0px 5px 5px 5px;
     top: -10px;
     position: relative;
     width: fit-content;
@@ -378,7 +378,7 @@ code {
     background: #383A4F;
     border: black;
     color: #d1d2d3;
-    padding: 15px;
+    padding: 15px 15px 35px 15px;
     width: fit-content;
     text-align:left;
 }
