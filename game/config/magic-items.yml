@@ -87,7 +87,7 @@ magic-items:
   #Asher's Hook
   Bagua Charm:
     name: Bagua Charm
-    desc: "A small brass ring, the charm is worn from years of being handled by generations of family members. In the center is a relief of a horned tiger, depicted in traditional Chinese style, with a jian clutched between its fangs. Once, the tiger was gilded with gold, but most of the precious metal has faded over time. Surrounding the tiger are the eight trigrams, the lines bumpy and, in some places, worn all the way down. Heaven, Earth, Water, Fire, Wind, Thunder, Mountain, and Lake are painted white, green, blue, red, gold, black, and brown. The paint is fresh, suggesting someone cares for the charm. Atop it,  a small ring is threaded with red twine that can easily be tied and left or attached to another piece of jewelry."
+    desc: "A small brass ring, the charm is worn from years of being handled by generations of family members. In the center is a relief of a horned tiger, depicted in traditional Chinese style, with a jian clutched between its fangs. Once, the tiger was gilded with gold, but most of the precious metal has faded over time. Surrounding the tiger are the eight trigrams, the lines bumpy and, in some places, worn all the way down. Heaven, Earth, Water, Fire, Wind, Thunder, Mountain, and Lake are painted white, green, blue, red, gold, black, and brown. The paint is fresh, suggesting someone cares for the charm. Atop it,  a small ring is threaded with red twine that can easily be tied and left or attached to another piece of jewelry. Allows the bearer to cast %XBAnimal Friendship%xn, %XBObject Whisper%xn, and %XBShare Emotion%xn."
     spells:
     - Animal Friendship
     - Object Whisper
@@ -130,7 +130,7 @@ magic-items:
     spells:
     - Trick Senses
     - Emotional Aura
-  #Jamie's Hook
+  #Jaime's Hook
   Nakama's Touch:
     name: "Nakama's Touch"
     desc: "A slender wand, about a foot in length, lovingly shaped from a soft, stone-like material colored in shifting whites and browns and pinks. Upon closer inspection, it is not made of stone at all, but of the seashells that decorate so much of the beaches of Takutaima. Shaped and melded together. Its surface is etched with symbols that resemble tiny, stylized waves, done in a design not unlike that common in the islands of Polynesia. A single, bluish crystal is attached to one end. Amidst the symbols are carved faint words in Soitos which translate to: “Nakama's Touch. The seas defend one with a worthy heart.” The wand is enchanted enable its bearer to cast %xBWater Whip%xn and %xBWater Breathing%xn."

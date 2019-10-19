@@ -16,6 +16,11 @@ module AresMUSH
       def handle
         enactor.update(magic_item_equipped: self.item_name)
         client.emit_success t('magic.item_equipped', :item => enactor.magic_item_equipped)
+        message = t('magic.equipped_item', :name => enactor.name, :item => enactor.magic_item_equipped)
+        enactor.room.emit_success message
+        if enactor.room.scene
+          Scenes.add_to_scene(enactor.room.scene, message)
+        end
         Achievements.award_achievement(enactor, "equipped_magic_item")
       end
 

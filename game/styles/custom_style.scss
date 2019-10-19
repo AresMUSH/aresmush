@@ -243,6 +243,17 @@ blockquote {
   border: solid 2px white;
   margin: 20px;
   width: fit-content;
+  width: -moz-fit-content;
+}
+
+.isonwn {
+  background: #606486;
+  padding: 15px;
+  border-radius: 10px;
+  border: solid 2px white;
+  margin: 20px;
+  width: fit-content;
+  width: -moz-fit-content;
 }
 
 
