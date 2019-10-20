@@ -64,7 +64,13 @@ module AresMUSH
           elsif (line =~ /^(<p>)?(<br>)?\[\[toc\]\]/)
             html << "$TOC_GOES_HERE_MARKER$"
           elsif in_gallery
-            gallery << line.gsub("<br>", "").strip
+            image = line.gsub("<br>", "").strip
+            if (image =~ /(.+)\/\*/)
+              image_files = Dir["#{File.join(AresMUSH.game_path, 'uploads', $1)}/*"]
+              image_files.each { |i| gallery << "#{$1}/#{File.basename(i)}"}
+            else
+              gallery << image
+            end
           else
             if (line =~ /<h2>(.+)<\/h2>/)
               heading = coder.decode $1

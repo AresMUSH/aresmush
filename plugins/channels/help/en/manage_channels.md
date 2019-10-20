@@ -20,6 +20,7 @@ If you have the appropriate permissions, you can create and delete channels.
 `channel/create <channel>`
 `channel/delete <channel>`
 `channel/rename <channel>=<new name>` - Be cautious renaming channels since peoples' aliases may no longer make sense.
+`channel/clear <channel>` - Clears the recall history.
 
 ## Channel Appearance
 
