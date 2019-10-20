@@ -430,7 +430,7 @@ module AresMUSH
           if (m[1])
             colored_pose << "#{quote_color}#{m[1]}%xn"
           end
-          if (m[2
+          if (m[2])
             colored_pose << "#{quote_color}#{m[1]}%xn"
           end
         end
