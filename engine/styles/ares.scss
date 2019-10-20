@@ -560,6 +560,15 @@ GENERAL UTILITIES
     margin: 2px;
 }
 
+.tiny-profile-icon {
+    width: 25px;
+    height: 25px;
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+    border-radius: 15px;
+    margin: 2px;
+}
+
 .icon-row img {
   margin-left: 20px;
 }
@@ -867,6 +876,7 @@ SCENES SCREEN
     margin: 20px 25px 20px 25px;
     border: 1px solid #eee;
     align: center; 
+    height: 1px;
 }
 
 .scene-pose-order {
@@ -880,6 +890,18 @@ SCENES SCREEN
 .your-pose-order {
   font-weight: bold;
   color: green;  
+}
+
+.scene-menu { 
+  display: inline-block;
+}
+.scene-menu .dropdown-toggle {
+  padding: 0px;
+}
+
+.scene-pose-select, .scene-char-select {
+  width: 175px;
+  padding-top: 10px;
 }
 
 /* -------------------------
@@ -1041,6 +1063,12 @@ input[type='file'] {
   overflow-y: scroll;
   overflow-x: hidden;
   margin: 5px;
+}
+
+.fs3-linked-attr {
+  font-size: .7em;
+  color: $faded-text-color;
+
 }
 /* -------------------------
 CHAT SCREEN

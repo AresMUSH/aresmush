@@ -51,6 +51,7 @@ module AresMUSH
             name: e.dest.name, 
             id: e.dest.id
             }},
+          details: room.details.map { |k, v| { name: k, desc: Website.format_markdown_for_html(v) } },
           can_manage: Rooms.can_build?(enactor)
         }
       end
