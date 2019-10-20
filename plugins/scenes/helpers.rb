@@ -421,13 +421,16 @@ module AresMUSH
       if (is_ooc || quote_color.blank?)
         colored_pose = pose
       else
-        quote_matches = pose.scan(/([^"]+)?("[^"]+")?/)
+        quote_matches = pose.scan(/([^"|”]+)?("[^"]+")?(”[^”]+”)?/)
         colored_pose = ""
         quote_matches.each do |m|
           if (m[0])
             colored_pose << "#{m[0]}"
           end
           if (m[1])
+            colored_pose << "#{quote_color}#{m[1]}%xn"
+          end
+          if (m[2
             colored_pose << "#{quote_color}#{m[1]}%xn"
           end
         end
