@@ -68,7 +68,8 @@ module AresMUSH
             name: a.name, 
             rating: a.rating, 
             rating_name: a.rating_name,
-            specialties: include_specs ? a.specialties.join(", ") : nil
+            specialties: include_specs ? a.specialties.join(", ") : nil,
+            linked_attr: include_specs ? FS3Skills.get_linked_attr(a.name)[0..2].upcase : nil
           }}
       end
       
