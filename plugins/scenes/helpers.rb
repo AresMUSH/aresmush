@@ -431,7 +431,7 @@ module AresMUSH
             colored_pose << "#{quote_color}#{m[1]}%xn"
           end
           if (m[2])
-            colored_pose << "#{quote_color}#{m[1]}%xn"
+            colored_pose << "#{quote_color}#{m[2]}%xn"
           end
         end
         tepe_matches = pose.scan(/([^<]+)?(<<[^>]+>>)?/)
