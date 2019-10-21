@@ -59,7 +59,7 @@ module AresMUSH
     def self.can_pose_char?(actor, char)
       return true if char == actor
       return true if AresCentral.is_alt?(actor, char)
-      (char.is_npc? && Scenes.can_control_npcs?(char))
+      (char.is_npc? && Scenes.can_control_npcs?(actor))
     end
     
     def self.restart_scene(scene)
