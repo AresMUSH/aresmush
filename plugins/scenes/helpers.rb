@@ -421,7 +421,7 @@ module AresMUSH
       if (is_ooc || quote_color.blank?)
         colored_pose = pose
       else
-        quote_matches = pose.scan(/([^\u201C\u201D\u201E\u201F\u2033\u2036"]+)?([\u201C\u201D\u201E\u201F\u2033\u2036"][^\u201C\u201D\u201E\u201F\u2033\u2036"]+[\u201C\u201D\u201E\u201F\u2033\u2036"]?)/)
+        quote_matches = pose.scan(/([^\u201C\u201D\u201E\u201F\u2033\u2036"]+)?([\u201C\u201D\u201E\u201F\u2033\u2036"][^\u201C\u201D\u201E\u201F\u2033\u2036"]+[\u201C\u201D\u201E\u201F\u2033\u2036"]?)?/)
         colored_pose = ""
         quote_matches.each do |m|
           if (m[0])
