@@ -680,11 +680,14 @@ module AresMUSH
     
     def self.build_poseable_chars_data(scene, enactor)
       return [] if !enactor
-      scene.participants
+      pose_chars = scene.participants
          .select { |p| Scenes.can_pose_char?(enactor, p) }
-         .sort_by { |p| [ p == enactor ? 0 : 1, p.name ]}
-         .map { |p| { id: p.id, name: p.name, icon: Website.icon_for_char(p) }}
+      
+      pose_chars << enactor
          
+      pose_chars.uniq
+         .sort_by { |p| [ p == enactor ? 0 : 1, p.name ]}
+         .map { |p| { id: p.id, name: p.name, icon: Website.icon_for_char(p) }}   
     end
     
     def self.recent_scenes
