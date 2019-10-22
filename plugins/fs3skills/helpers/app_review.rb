@@ -79,7 +79,20 @@ module AresMUSH
         
     def self.total_point_review(char)
       points =  AbilityPointCounter.total_points(char)
-      max = Global.read_config("fs3skills", "max_ap")
+      charage = char.age
+      configuredmax = Global.read_config("fs3skills", "max_ap")
+      if (charage = 18)
+        deduction = 12
+      elsif (charage = 19)
+        deduction = 11
+      elsif (charage < 30)
+        deduction = 10
+      elsif (charage < 40)
+        deduction = 5
+      else
+        deduction = 0
+      end
+      max = configuredmax - deduction
       error = points > max ? t('chargen.too_many') : t('chargen.ok')
       Chargen.format_review_status(t('fs3skills.total_points_spent', :total => points, :max => max), error)
     end
