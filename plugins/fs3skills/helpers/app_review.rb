@@ -81,9 +81,9 @@ module AresMUSH
       points =  AbilityPointCounter.total_points(char)
       charage = char.age
       configuredmax = Global.read_config("fs3skills", "max_ap")
-      if (charage = 18)
+      if (charage == 18)
         deduction = 12
-      elsif (charage = 19)
+      elsif (charage == 19)
         deduction = 11
       elsif (charage < 30)
         deduction = 10
