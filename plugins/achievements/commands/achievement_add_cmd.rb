@@ -5,8 +5,6 @@ module AresMUSH
       
       attr_accessor :name, :achievement_name
       
-      test
-      
       def parse_args
          args = cmd.parse_args(ArgParser.arg1_equals_arg2)
          self.name = titlecase_arg(args.arg1)
