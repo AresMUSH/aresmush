@@ -88,6 +88,7 @@ module AresMUSH
     end
       
     def self.gender(char)
+      return nil if !char
       g = char.demographic(:gender) || "Other"
       g.downcase
     end
