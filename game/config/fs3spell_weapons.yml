@@ -564,6 +564,18 @@ fs3combat:
       accuracy: 1
       init_mod: 0
       special_group: Ranged
+    Telekinetic Crush:
+      description: Level 5 Will spell
+      is_magic: true
+      skill: Will
+      lethality: 6
+      penetration: 10
+      weapon_type: Ranged
+      recoil: 0
+      damage_type: Physical
+      accuracy: 0
+      init_mod: 0
+      special_group: Ranged
   #Level 6
     Demon Tails:
       description: Level 6 Corpus spell

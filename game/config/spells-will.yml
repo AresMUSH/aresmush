@@ -231,6 +231,17 @@ spells:
     range: Short
     roll: true
     school: Will
+  Telekinetic Crush:
+    available: false
+    casting_time: 1 round
+    desc: "Crush an enemy with telekinetic strength, doing damage."
+    effect: Damage
+    fs3_attack: true
+    level: 5
+    name: 'Telekinetic Crush '
+    range: Long
+    school: Will
+    weapon: Telekinetic Crush
   #LEVEL 6
   Familiar (Will):
     desc: "A familiar is a spirit associated or allied with a school of magic that has taken residence in a physical vessel with the shape of an animal. It functions as a companion, assistant, and guardian. \n\nFamiliars may be capable of some or all of the following: sharing telepathic or empathic communication, providing knowledge of the arcane, sharing senses, lending physical aid as spies or fighters, delivering spells at a distance of up to three miles."
