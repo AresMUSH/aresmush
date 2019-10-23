@@ -14,7 +14,7 @@ module AresMUSH
       end
                   
       def handle        
-        online_chars = Global.client_monitor.logged_in.map { |client, char| char }
+        online_chars = Who.all_online
         if (self.search)
           online_chars = online_chars.select { |char| char.name =~ /^#{self.search}/ }
         end

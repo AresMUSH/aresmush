@@ -31,6 +31,14 @@ module AresMUSH
       !!Login.find_client(char)
     end
     
+    def self.is_online_or_on_web?(char)
+      Login.find_client(char) || Login.find_web_client(char)
+    end
+    
+    def self.is_portal_only?(char)
+      !Login.find_client(char) && Login.find_web_client(char)
+    end
+    
     def self.find_client(char)
       return nil if !char
       Global.client_monitor.find_client(char)

@@ -626,7 +626,7 @@ GENERAL UTILITIES
 }
 
 .icon-status-web-active {
-  border: 3px solid #a5a509;
+  border: 3px double #176109;
   border-radius: 30px;
 }
 
@@ -635,7 +635,12 @@ GENERAL UTILITIES
   border-radius: 30px;
 }
 
-.icon-status-inactive {
+.icon-status-web-inactive {
+  border: 3px double #ccc;
+  border-radius: 30px;
+}
+
+.icon-status-game-inactive {
   border: 3px solid #ccc;
   border-radius: 30px;
 }
