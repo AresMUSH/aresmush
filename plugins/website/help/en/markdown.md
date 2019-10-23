@@ -73,6 +73,8 @@ You can include a gallery of images (similar to what appears on the character pr
 `folder/image2.jpg`
 `[[/gallery]]`
 
+You can include all files in a folder using `folder/*`.
+
 ## Social Media
 
 There are several social media codes to make it easy to embed playlists, videos and pinterest boards on your character profiles and wiki pages.
@@ -172,6 +174,8 @@ Once an image file is uploaded, you can use it on any page with:
 
 `[[image folder\filename.jpg]]`  
 
-You can also use it in your character profile as explained in .  If you upload something that is not an image, you can link to it like so:
+If you place the image in a folder matching your character name, you can use it in the character profile image gallery. 
 
-`[Link Text](\folder\filename.jpg)`
+Only admins can upload non-image files.  If you do, you can link to them like so:
+
+`[Link Text](\folder\filename.ext)`

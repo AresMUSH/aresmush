@@ -9,24 +9,11 @@ en:
         invalid_demographic: "That is not a valid demographic."
         
         property_set: "You set your %{property} to %{value}."
-        invalid_gender: "Please pick: male, female, other."
+        invalid_gender: "Please pick one of these: %{genders}."
         invalid_age: "Please enter a number of years."
         age_outside_limits: "The minimum age is %{min} and the maximum age is %{max}."
         birthdate_set: "Your birthdate has been set to %{birthdate}, making you %{age} years old."
         invalid_birthdate: "Please specify a date in %{format_str} format."
-        
-        male_possessive: his
-        female_possessive: her
-        other_possessive: their
-        male_objective: him
-        female_objective: her
-        other_objective: them
-        male_subjective: he
-        female_subjective: she
-        other_subjective: they
-        male_noun: man
-        female_noun: woman
-        other_noun: person
         
         demo_review: Checking all demographics are set.
         gender_set_to_other: "< Gender is set to 'Other'.  Just making sure that's intentional. >"

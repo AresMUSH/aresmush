@@ -57,8 +57,6 @@ module AresMUSH
       text << "%r"
       text << FS3Skills.backgrounds_review(char)
       text << "%r%r"
-      text << FS3Skills.starting_language_review(char)
-      text << "%r"
       text << FS3Skills.starting_skills_check(char)
       text << "%r"
       text << FS3Skills.unusual_skills_check(char)
@@ -77,14 +75,14 @@ module AresMUSH
     
     def self.save_char(char, chargen_data)
       alerts = []
-      (chargen_data[:fs3][:fs3_attributes] || []).each do |k, v|
+      (chargen_data[:fs3][:fs3_attributes] || {}).each do |k, v|
         error = FS3Skills.set_ability(char, k, v.to_i)
         if (error)
           alerts << t('fs3skills.error_saving_ability', :name => k, :error => error)
         end
       end
 
-      (chargen_data[:fs3][:fs3_action_skills] || []).each do |k, v|
+      (chargen_data[:fs3][:fs3_action_skills] || {}).each do |k, v|
         error = FS3Skills.set_ability(char, k, v.to_i)
         if (error)
           alerts << t('fs3skills.error_saving_ability', :name => k, :error => error)
@@ -98,12 +96,13 @@ module AresMUSH
       end
     
       new_bg_skills = []
-      (chargen_data[:fs3][:fs3_backgrounds] || []).each do |k, v|
-        error = FS3Skills.set_ability(char, k, v.to_i)
+      (chargen_data[:fs3][:fs3_backgrounds] || {}).each do |k, v|
+        skill_name = k.titleize
+        error = FS3Skills.set_ability(char, skill_name, v.to_i)
         if (error)
           alerts << t('fs3skills.error_saving_ability', :name => k, :error => error)
         end
-        new_bg_skills << k
+        new_bg_skills << skill_name
       end
       
       # Remove any BG skills that they no longer have
@@ -113,14 +112,14 @@ module AresMUSH
         end
       end
     
-      (chargen_data[:fs3][:fs3_languages] || []).each do |k, v|
+      (chargen_data[:fs3][:fs3_languages] || {}).each do |k, v|
         error = FS3Skills.set_ability(char, k, v.to_i)
         if (error)
           alerts << t('fs3skills.error_saving_ability', :name => k, :error => error)
         end
       end
     
-      (chargen_data[:fs3][:fs3_advantages] || []).each do |k, v|
+      (chargen_data[:fs3][:fs3_advantages] || {}).each do |k, v|
         error = FS3Skills.set_ability(char, k, v.to_i)
         if (error)
           alerts << t('fs3skills.error_saving_ability', :name => k, :error => error)

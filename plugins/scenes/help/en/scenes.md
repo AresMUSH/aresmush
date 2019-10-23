@@ -43,6 +43,7 @@ A scene can be open (anyone's invited), private (only those invited should join 
 ## Finding & Joining Scenes
 
 `scenes` - Lists active scenes.
+`scenes/open` - Lists active scenes that are marked as open to anyone.
 `scene <#>.` - See a scene's information.
 `scene/join <#>` - Joins an open scene.
 `meetme <list of names>` - Invites others to join your private or watchable scene.
