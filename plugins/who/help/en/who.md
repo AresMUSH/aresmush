@@ -23,6 +23,7 @@ Your character status is a general reflection of what you're doing on the game. 
     AFK (Away from the Keyboard)
     IC (In an In Character area, aka "Onstage")
     OOC (In an Out of Character area, aka "Offstage")
+    WEB (Character playing from web portal)
     NEW (A new character who has not been approved or has marked themselves as a beginner)
     ADM (Admin on duty; off-duty admins show up as OOC)
 

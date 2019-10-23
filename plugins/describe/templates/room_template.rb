@@ -26,7 +26,12 @@ module AresMUSH
       
       # List of online characters, sorted by name.      
       def online_chars
-        @room.characters.select { |c| Login.is_online?(c) }.sort_by { |c| c.name }
+        chars = @room.characters.select { |c| Login.is_online?(c) }
+        if (@room.scene)
+          web_participants = @room.scene.participants.select { |c| Login.find_web_client(c) }
+          chars.concat(web_participants)
+        end
+        chars.uniq.sort_by { |c| c.name }
       end
       
       # Available detail views.
@@ -91,14 +96,16 @@ module AresMUSH
       end
       
       def char_shortdesc(char)
-        char.shortdesc ? " - #{char.shortdesc}" : ""
+        char.shortdesc ? "- #{char.shortdesc}" : ""
       end
       
       def char_tag(char)
+        tag = ""
         colors = Global.read_config("describe", "tag_colors") || {}
-        return "#{colors['admin']}[#{t('describe.admin_tag')}]%xn" if char.is_admin?
-        return "#{colors['beginner']}[#{t('describe.beginner_tag')}]%xn" if char.is_beginner?
-        return nil
+        tag << "#{colors['web']}#{Website.web_char_marker}%xn " if Login.is_portal_only?(char)
+        tag << "#{colors['admin']}[#{t('describe.admin_tag')}]%xn " if char.is_admin?
+        tag << "#{colors['beginner']}[#{t('describe.beginner_tag')}]%xn " if char.is_beginner?
+        return tag
       end
       
       def char_name(char)
@@ -109,19 +116,20 @@ module AresMUSH
       # if the character has been idle for a really long time.
       def char_afk(char)
         client = Login.find_client(char)
+        return nil if !client
         idle_secs = Login.find_client(char).idle_secs
         idle_str = TimeFormatter.format(idle_secs)
         if (char.is_afk?)
           afk_message = char.afk_display
           if (afk_message)
-            "%xr[#{t('describe.afk')}:#{idle_str}%xH #{afk_message}]%xn"
+            "%xr[#{t('describe.afk')}:#{idle_str}%xH #{afk_message}]%xn "
           else
-            "%xr[#{t('describe.afk')}:#{idle_str}]%xn"
+            "%xr[#{t('describe.afk')}:#{idle_str}]%xn "
           end
         elsif (client && Status.is_idle?(client))
-          "%xy%xh[#{idle_str}]%xn"
+          "%xy%xh[#{idle_str}]%xn "
         elsif (Global.read_config('describe', 'always_show_idle_in_rooms'))
-          "%xh%xx[#{idle_str}]%xn"
+          "%xh%xx[#{idle_str}]%xn "
         else
           ""
         end
