@@ -36,7 +36,7 @@ module AresMUSH
 
     def self.cast_noncombat_spell(caster_name, name_string, spell, mod = nil, result = nil, is_potion = false)
       success = "%xgSUCCEEDS%xn"
-      target_num = Global.read_config("spells", spell, "target_num") || 1
+      target_num = Global.read_config("spells", spell, "target_num")
       damage_type = Global.read_config("spells", spell, "damage_type")
       if Character.named(caster_name)
         caster = Character.named(caster_name)
@@ -92,7 +92,6 @@ module AresMUSH
 
     def self.parse_spell_targets(name_string, target_num)
       return t('fs3combat.no_targets_specified') if (!name_string)
-
       target_names = name_string.split(" ").map { |n| InputFormatter.titlecase_arg(n) }
       targets = []
       target_names.each do |name|
@@ -101,6 +100,7 @@ module AresMUSH
         targets << target
       end
       targets = targets
+      puts "TARGET Count: #{targets.count} TARGETNUM #{target_num}"
       if (targets.count > target_num)
         return "too_many_targets"
       else
@@ -170,8 +170,7 @@ module AresMUSH
     end
 
     def self.cast_noncombat_shield(caster, caster_name, name_string, spell, mod, shield_strength, is_potion = false)
-      target_num = Global.read_config("spells", spell, "target_num")
-
+      target_num = Global.read_config("spells", spell, "target_num") || 1
       if name_string != nil
 
         targets = Magic.parse_spell_targets(name_string, target_num)
