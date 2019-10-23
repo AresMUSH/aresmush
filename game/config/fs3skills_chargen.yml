@@ -21,6 +21,7 @@ fs3skills:
   starting_skills:
     Everyone:
       skills:
+        English: 3
     Major School:
       Air:
         skills:
