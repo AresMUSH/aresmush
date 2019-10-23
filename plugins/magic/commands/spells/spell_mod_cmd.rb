@@ -3,18 +3,18 @@ module AresMUSH
     class SpellModCmd
     #spell/mod <name>=<mod>
       include CommandHandler
-      attr_accessor :target_name, :target_combat, :spell_mod
+      attr_accessor :target_name, :target_combat, :spell_mod, :combat
 
       def parse_args
         args = cmd.parse_args(ArgParser.arg1_equals_arg2)
-        combat = enactor.combat
+        self.combat = enactor.combat
         self.target_name = args.arg1
         self.target_combat = combat.find_combatant(self.target_name)
         self.spell_mod = trim_arg(args.arg2)
       end
 
       def check_can_set
-        return t('dispatcher.not_allowed') if !enactor.has_permission?("manage_combat")
+        return t('fs3combat.only_organizer_can_do') if self.combat.organizer != enactor
       end
 
       def check_errors
