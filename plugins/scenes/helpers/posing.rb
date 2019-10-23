@@ -132,9 +132,16 @@ module AresMUSH
       if (is_ooc || quote_color.blank?)
         colored_pose = pose
       else
-        matches = pose.scan(/([^"]+)?("[^"]+")?/)
+        
+        quote_markers = "\u201C\u201D\u201E\u201F\u2033\u2036\""
+        
+        # (Group 1: Optional preceding junk before a quote) 
+        # (Group 2: Quote -- Multiple letters not quote -- Quote )
+        # /([^"]+)?("[^"]+")?/
+        quote_matches = pose.scan(/([^#{quote_markers}]+)?([#{quote_markers}][^#{quote_markers}]+[#{quote_markers}])?/)
+        
         colored_pose = ""
-        matches.each do |m| 
+        quote_matches.each do |m| 
           if (m[0])
             colored_pose << "#{m[0]}"
           end
