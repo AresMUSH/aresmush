@@ -33,6 +33,7 @@ module AresMUSH
         completed: completed,
         plot: plot.blank? ? nil : Plot[plot],
         private_scene: completed ? false : (privacy == "Private"),
+        watchable_scene: completed ? false : (privacy == "Watchable"),
         owner: enactor
         )
 
