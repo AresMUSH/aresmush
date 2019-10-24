@@ -22,3 +22,6 @@ achievements:
     vignette_challenge:
       type: meme
       message: Participated in a Vignette Challenge
+    playlist_meme:
+      type: meme
+      message: Participated in the Playlist Meme
