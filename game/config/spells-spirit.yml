@@ -525,7 +525,7 @@ spells:
     available: true
     casting_time: "1 round to cast, additional rounds for rewriting at GM's discretion."
     damage_type: Psionic
-    desc: "Rewrite or remove someone's memory of an event up to 1 hour long."
+    desc: "Rewrite or remove someone's memory of an event up to 1 hour long. The target's mind, in conjunction with the spell, will fill in the gaps and discrepancies, glossing over irregularities."
     duration: 30 minutes
     effect: Psionic
     level: 6
