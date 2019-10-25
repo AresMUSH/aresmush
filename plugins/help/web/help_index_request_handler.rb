@@ -16,7 +16,7 @@ module AresMUSH
         .map { |name, data| 
           {
             topic: data['topic'],
-            name: name.titleize,
+            name: name.gsub('_', ' ').titleize,
             summary: data['summary']
           }
         }
