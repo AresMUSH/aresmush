@@ -18,7 +18,7 @@ module AresMUSH
         when "add"
           return FatigueAddCmd     
         else
-          return Fatiguemd
+          return FatigueCmd
         end
       end
     end
