@@ -23,4 +23,5 @@ module AresMUSH
       end
     end
   end
+  nil
 end
