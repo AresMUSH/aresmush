@@ -51,6 +51,76 @@ module AresMUSH
         successes2 = FS3Skills.get_success_level(die_result2)
             
         results = FS3Skills.opposed_result_title(self.name1, successes1, self.name2, successes2)
+
+## Fatigue Stuff for roll 1
+          ability_type1 = FS3Skills.get_ability_type(roll_str1)
+          current_fatigue1 = model1.fatigue.to_i
+          if (current_fatigue1 > 6)
+            fatigued1 = "yes"
+          else
+            fatigued1 = "no"
+          end
+
+          if (ability_type1 == :advantage && fatigued1 == "yes" && self.private_roll == false)
+            client.emit_failure("#{model1.name} is too fatigued to use any advantages.")
+            return
+          end
+
+          rng1 = rand(9)
+          ftg_ck1 = "yes"
+
+          if (rng1 < 5)
+            ftg_ck1 = "yes"
+          else
+            ftg_ck1 = "no"
+          end
+
+          if (ability_type1 == :advantage && ftg_ck1 == "yes" && self.private_roll == false)
+            fatigue1 = model1.fatigue
+            new_fatigue1 = fatigue1.to_i + 1
+            model1.update(fatigue: new_fatigue1)
+            Login.emit_ooc_if_logged_in(model1, "#{enactor.name} rolled your #{roll_str1} and increased your fatigue.  Now at: #{new_fatigue1} / 7.")
+          end
+
+          if (ability_type1 == :advantage)
+            Global.logger.debug "#{enactor.name} rolling #{model1.name}'s #{roll_str1}.  Fatigue increase: #{ftg_ck1}"
+          end
+## End Fatigue Stuff for roll 1
+        
+## Fatigue Stuff for roll 2
+          ability_type2 = FS3Skills.get_ability_type(roll_str2)
+          current_fatigue2 = model2.fatigue.to_i
+          if (current_fatigue2 > 6)
+            fatigued2 = "yes"
+          else
+            fatigued2 = "no"
+          end
+
+          if (ability_type2 == :advantage && fatigued2 == "yes" && self.private_roll == false)
+            client.emit_failure("#{model2.name} is too fatigued to use any advantages.")
+            return
+          end
+
+          rng2 = rand(9)
+          ftg_ck2 = "yes"
+
+          if (rng2 < 5)
+            ftg_ck2 = "yes"
+          else
+            ftg_ck2 = "no"
+          end
+
+          if (ability_type2 == :advantage && ftg_ck2 == "yes" && self.private_roll == false)
+            fatigue2 = model2.fatigue
+            new_fatigue2 = fatigue2.to_i + 1
+            model2.update(fatigue: new_fatigue2)
+            Login.emit_ooc_if_logged_in(model2, "#{enactor.name} rolled your #{roll_str2} and increased your fatigue.  Now at: #{new_fatigue2} / 7.")
+          end
+
+          if (ability_type2 == :advantage)
+            Global.logger.debug "#{enactor.name} rolling #{model2.name}'s #{roll_str2}.  Fatigue increase: #{ftg_ck2}"
+          end
+## End Fatigue Stuff for roll 2
           
         message = t('fs3skills.opposed_roll_result', 
            :name1 => !model1 ? t('fs3skills.npc', :name => self.name1) : model1.name,
