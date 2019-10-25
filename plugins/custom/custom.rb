@@ -11,15 +11,14 @@ module AresMUSH
     end
  
     def self.get_cmd_handler(client, cmd, enactor)      
-      when "fatigue"
-        case cmd.switch
-        when "lower"
-          return FatigueLowerCmd    
-        when "add"
-          return FatigueAddCmd     
-        else
-          return FatigueCmd
-        end
+    when "fatigue"
+      case cmd.switch
+      when "lower"
+        return FatigueLowerCmd    
+      when "add"
+        return FatigueAddCmd     
+      else
+        return FatigueCmd
       end
     end
   end
