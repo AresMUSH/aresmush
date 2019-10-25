@@ -1,6 +1,6 @@
 module AresMUSH
   module Custom
-    class FatigueAddCmd
+    class FatigueLowerCmd
       include CommandHandler
 
       attr_accessor :name
