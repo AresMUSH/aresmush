@@ -17,6 +17,10 @@ module AresMUSH
       def luck
         @char.luck.floor
       end
+
+      def fatigue
+        @char.fatigue
+      end
       
       def attrs
        list = []        
