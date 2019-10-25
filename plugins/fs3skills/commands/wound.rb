@@ -32,7 +32,7 @@ module AresMUSH
           
           success_level = FS3Skills.get_success_level(die_result)
           success_title = FS3Skills.get_success_title(success_level)
-          message = t('fs3skills.simple_advroll_result', 
+          message = t('fs3skills.adv_roll_result', 
             :name => model.name,
             :roll => self.roll_str,
             :dice => FS3Skills.print_dice(die_result),
