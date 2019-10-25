@@ -51,7 +51,8 @@ module AresMUSH
             damage: damage,
             show_sheet: show_sheet,
             luck_points: char.luck.floor,
-            xp: xp
+            xp: xp,
+            fatigue: char.fatigue
           }
         else
           {
