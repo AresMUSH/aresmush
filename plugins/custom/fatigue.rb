@@ -15,7 +15,7 @@ module AresMUSH
      
       def handle
         fatigue = name.fatigue
-        if (fatigue = nil)
+        if (fatigue == "")
           fatigue = 0
         end
         client.emit_ooc("#{name.name}'s Fatigue: #{fatigue} / 7")
