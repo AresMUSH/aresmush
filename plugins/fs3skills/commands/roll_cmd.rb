@@ -29,6 +29,41 @@ module AresMUSH
             client.emit_failure t('fs3skills.unknown_roll_params')
             return
           end
+
+## Fatigue Stuff
+          ability_type = FS3Skills.get_ability_type(roll_str)
+          current_fatigue = model.fatigue.to_i
+          if (current_fatigue > 6)
+            fatigued = "yes"
+          else
+            fatigued = "no"
+          end
+
+          if (ability_type == :advantage && fatigued == "yes" && self.private_roll == false)
+            client.emit_failure("#{model.name} is too fatigued to use any advantages.")
+            return
+          end
+
+          rng = rand(9)
+          ftg_ck = "yes"
+
+          if (rng < 5)
+            ftg_ck = "yes"
+          else
+            ftg_ck = "no"
+          end
+
+          if (ability_type == :advantage && ftg_ck == "yes" && self.private_roll == false)
+            fatigue = model.fatigue
+            new_fatigue = fatigue.to_i + 1
+            model.update(fatigue: new_fatigue)
+            Login.emit_ooc_if_logged_in(model, "#{enactor.name} rolled your #{roll_str} and increased your fatigue.  Now at: #{new_fatigue} / 7.")
+          end
+
+          if (ability_type == :advantage)
+            Global.logger.debug "#{enactor.name} rolling #{model.name}'s #{roll_str}.  Fatigue increase: #{ftg_ck}"
+          end
+## End Fatigue Stuff
           
           success_level = FS3Skills.get_success_level(die_result)
           success_title = FS3Skills.get_success_title(success_level)
