@@ -6,5 +6,6 @@ summary: Character achievements.
 
 You can earn achievements for contributing to the game's community, story or website.  Achievements are tracked per character.  Each game defines what achievements are available.
 
+`achievements/all` - Lists all achievements.
 `achievements` - Views your achievements.
 `achievements <name>` Views someone else's achievements.

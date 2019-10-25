@@ -17,6 +17,15 @@ module AresMUSH
         config = DatabaseMigrator.read_config_file("describe.yml")
         config['describe']['tag_colors']['web'] = '%xh%xx'
         DatabaseMigrator.write_config_file("describe.yml", config)
+        
+        Global.logger.debug "Fixing game status."
+        config = DatabaseMigrator.read_config_file("game.yml")
+        if (!config['game']['status'])
+          config['game']['status'] = config['game']['game_status'] || "In Development"
+        end
+        config['game'].delete 'game_status'
+        DatabaseMigrator.write_config_file("game.yml", config)
+        
       end 
     end
   end
