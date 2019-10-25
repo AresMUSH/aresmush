@@ -52,7 +52,7 @@ module AresMUSH
             show_sheet: show_sheet,
             luck_points: char.luck.floor,
             xp: xp,
-            fatigue: char.fatigue
+            fatigue: !char.fatigue ? 0 : char.fatigue
           }
         else
           {
