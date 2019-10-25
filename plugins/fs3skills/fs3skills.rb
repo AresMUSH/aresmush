@@ -45,6 +45,12 @@ module AresMUSH
         else
           return RollCmd
         end
+      when "wound"
+        if (cmd.args =~ / vs /)
+          return OpposedWoundCmd
+        else
+          return WoundCmd
+        end
       when "sheet"
         return SheetCmd
       when "skill"
