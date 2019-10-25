@@ -10,7 +10,8 @@ module AresMUSH
       Global.read_config("custom", "shortcuts")
     end
  
-    def self.get_cmd_handler(client, cmd, enactor)      
+    def self.get_cmd_handler(client, cmd, enactor) 
+    case cmd.root
     when "fatigue"
       case cmd.switch
       when "lower"
