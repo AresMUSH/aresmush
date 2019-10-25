@@ -20,10 +20,10 @@ module AresMUSH
         end
 
         current_fatigue = name.fatigue
-        new_fatigue = current_fatigue.to_i + 1
+        new_fatigue = current_fatigue.to_i - 1
         name.update(fatigue: new_fatigue)
-        client.emit_ooc("Added 1 to #{name.name}'s Fatigue.  Now at: #{new_fatigue} / 7.")
-        Login.emit_ooc_if_logged_in(name, "#{enactor.name} added one to your fatigue level.  Now at: #{new_fatigue} / 7.")
+        client.emit_ooc("Lowered #{name.name}'s Fatigue by 1.  Now at: #{new_fatigue} / 7.")
+        Login.emit_ooc_if_logged_in(name, "#{enactor.name} removed one from your fatigue level.  Now at: #{new_fatigue} / 7.")
       end
     end
   end
