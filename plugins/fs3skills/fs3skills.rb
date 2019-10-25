@@ -34,6 +34,8 @@ module AresMUSH
           return LuckAwardCmd
         when "spend"
           return LuckSpendCmd
+        when "fatigue"
+          return LuckFatigueCmd
         end
       when "raise", "lower"
         return RaiseAbilityCmd
