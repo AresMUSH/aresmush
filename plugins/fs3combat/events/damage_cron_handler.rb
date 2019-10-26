@@ -8,7 +8,19 @@ module AresMUSH
         Global.logger.debug "Time for healing."
         
         Character.all.each do |c|
-          FS3Combat.heal_wounds(c)   
+          FS3Combat.heal_wounds(c)  
+# Fatigue
+          fatigue = c.fatigue
+          if (fatigue == nil)
+            fatigue = 0
+          else
+            fatigue = c.fatigue
+          end
+          new_fatigue = fatigue.to_i - 1
+          if (fatigue.to_i > 0)
+            c.update(fatigue: new_fatigue)
+          end
+# End Fatigue
         end
         
         Healing.all.each do |h|
