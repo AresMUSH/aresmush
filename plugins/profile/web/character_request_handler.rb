@@ -73,7 +73,8 @@ module AresMUSH
               targets: Global.read_config("spells", a.name, "targets"),
               heal: Global.read_config("spells", a.name, "heal_points"),
               effect: Global.read_config("spells", a.name, "effect"),
-              damage_type:  Global.read_config("spells", a.name, "damage_type")
+              damage_type:  Global.read_config("spells", a.name, "damage_type"),
+              available: Global.read_config("spells", a.name, "available")
               # weapon_lethality: FS3Combat.weapon_stat(Global.read_config("spells", a.name, "weapon"), "lethality"),
               # weapon_penetration: FS3Combat.weapon_stat(Global.read_config("spells", a.name, "weapon"), "penetration"),
               # weapon_type: FS3Combat.weapon_stat(Global.read_config("spells", a.name, "weapon"), "weapon_type"),
