@@ -31,37 +31,46 @@ module AresMUSH
           end
 
 ## Fatigue Stuff
-          ability_type = FS3Skills.get_ability_type(roll_str)
-          current_fatigue = model.fatigue.to_i
-          if (current_fatigue > 6)
-            fatigued = "yes"
-          else
-            fatigued = "no"
-          end
+          if (!roll_str.is_integer?)
+            ability_type = FS3Skills.get_ability_type(roll_str)
 
-          if (ability_type == :advantage && fatigued == "yes" && self.private_roll == false)
-            client.emit_failure("#{model.name} is too fatigued to use any advantages.")
-            return
-          end
+            rating = FS3Skills.ability_rating(model, roll_str)
+            if (ability_type == :advantage && rating == 0)
+              client.emit_failure("#{model.name} does not possess that advantage.")
+              return
+            end
 
-          rng = rand(9)
-          ftg_ck = "yes"
+            current_fatigue = model.fatigue.to_i
+            if (current_fatigue > 6)
+              fatigued = "yes"
+            else
+              fatigued = "no"
+            end
 
-          if (rng < 5)
+            if (ability_type == :advantage && fatigued == "yes" && self.private_roll == false)
+              client.emit_failure("#{model.name} is too fatigued to use any advantages.")
+              return
+            end
+
+            rng = rand(9)
             ftg_ck = "yes"
-          else
-            ftg_ck = "no"
-          end
 
-          if (ability_type == :advantage && ftg_ck == "yes" && self.private_roll == false)
-            fatigue = model.fatigue
-            new_fatigue = fatigue.to_i + 1
-            model.update(fatigue: new_fatigue)
-            Login.emit_ooc_if_logged_in(model, "#{enactor.name} rolled your #{roll_str} and increased your fatigue.  Now at: #{new_fatigue} / 7.")
-          end
+            if (rng < 5)
+              ftg_ck = "yes"
+            else
+              ftg_ck = "no"
+            end
 
-          if (ability_type == :advantage)
-            Global.logger.debug "#{enactor.name} rolling #{model.name}'s #{roll_str}.  Fatigue increase: #{ftg_ck}"
+            if (ability_type == :advantage && ftg_ck == "yes" && self.private_roll == false)
+              fatigue = model.fatigue
+              new_fatigue = fatigue.to_i + 1
+              model.update(fatigue: new_fatigue)
+              Login.emit_ooc_if_logged_in(model, "#{enactor.name} rolled your #{roll_str} and increased your fatigue.  Now at: #{new_fatigue} / 7.")
+            end
+
+            if (ability_type == :advantage)
+              Global.logger.debug "#{enactor.name} rolling #{model.name}'s #{roll_str}.  Fatigue increase: #{ftg_ck}"
+            end
           end
 ## End Fatigue Stuff
           
