@@ -91,6 +91,7 @@ module AresMUSH
               new_fatigue1 = fatigue1.to_i + 1
               model1.update(fatigue: new_fatigue1)
               Login.emit_ooc_if_logged_in(model1, "#{enactor.name} rolled your #{roll_str1} and increased your fatigue.  Now at: #{new_fatigue1} / 7.")
+              Login.notify(model1, "", "[#{enactor.name}] Rolling #{roll_str1}, +1 Fatigue (#{new_fatigue1} / 7).", "")
             end
 
             if (ability_type1 == :advantage)
@@ -138,6 +139,7 @@ module AresMUSH
               new_fatigue2 = fatigue2.to_i + 1
               model2.update(fatigue: new_fatigue2)
               Login.emit_ooc_if_logged_in(model2, "#{enactor.name} rolled your #{roll_str2} and increased your fatigue.  Now at: #{new_fatigue2} / 7.")
+              Login.notify(mode2, "", "[#{enactor.name}] Rolling #{roll_str2}, +1 Fatigue (#{new_fatigue2} / 7).", "")
             end
 
             if (ability_type2 == :advantage)
