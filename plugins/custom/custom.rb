@@ -14,7 +14,6 @@ module AresMUSH
       case cmd.root     
       when "wordcount"
         return WordcountCmd
-      end
       when "fatigue"
         case cmd.switch
         when "lower"
