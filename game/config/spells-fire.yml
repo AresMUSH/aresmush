@@ -209,7 +209,7 @@ spells:
     level: 5
     line_of_sight: true
     name: Invisible
-    range: Short
+    range: Touch
     rounds: 30
     school: Fire
     stance: hidden
