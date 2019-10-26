@@ -19,7 +19,7 @@ module AresMUSH
       end
 
       def fatigue
-        @char.fatigue
+        @char.fatigue.to_i
       end
       
       def attrs
