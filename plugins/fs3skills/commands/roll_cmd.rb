@@ -66,6 +66,7 @@ module AresMUSH
               new_fatigue = fatigue.to_i + 1
               model.update(fatigue: new_fatigue)
               Login.emit_ooc_if_logged_in(model, "#{enactor.name} rolled your #{roll_str} and increased your fatigue.  Now at: #{new_fatigue} / 7.")
+              Login.notify(model, :scene, "#{enactor.name} rolled your #{roll_str} and increased your fatigue.  Now at: #{new_fatigue} / 7.", scene.id)
             end
 
             if (ability_type == :advantage)
