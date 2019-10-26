@@ -5,7 +5,7 @@ module AresMUSH
       def handle(request)
         all_spells = Global.read_config("spells")
         school = request.args['school'].titlecase || ""
-        Global.logger.debug school
+l
         school_spells = all_spells.select { |name, data|  data['school'] == school }
         spells = build_list(school_spells)
         spells.each do |s|
