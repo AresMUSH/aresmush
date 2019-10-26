@@ -11,7 +11,6 @@ module AresMUSH
       
       # Language and advantage doubles dice
       if (ability_type == :language || ability_type == :advantage)
-        skill_rating = skill_rating * 2
         linked_attr = ability
       # Background doubles dice, but an untrained one defaults to everyman (1)
       elsif (ability_type == :background)
