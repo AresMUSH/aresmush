@@ -3,7 +3,6 @@ module AresMUSH
     class SpellsRequestHandler
 
       def handle(request)
-        Global.logger.debug "CALLING CORRECT HANDLER."
         all_spells = Global.read_config("spells")
         spells = build_list(all_spells)
         spells.each do |s|
