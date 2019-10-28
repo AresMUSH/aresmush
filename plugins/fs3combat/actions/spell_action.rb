@@ -19,8 +19,6 @@ module AresMUSH
         error = self.parse_targets(self.names)
         return error if error
 
-
-
         spell_list = Global.read_config("spells")
         return t('magic.not_spell') if !spell_list.include?(self.spell)
         if !combatant.is_npc?

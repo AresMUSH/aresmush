@@ -60,25 +60,32 @@ module AresMUSH
     end
 
     def self.stopped_by_shield?(spell, target, combatant, result)
-      ignore = ["Stun (Air)", "Stun (Corpus)", "Stun (Earth)", "Stun (Fire)", "Stun (Nature)", "Stun (Water)", "Stun (Will)", "Spell"]
-
-      if ignore.include?(combatant.weapon)
-        return nil
-      elsif ((target.mind_shield > 0 || target.endure_fire > 0 || target.endure_cold > 0 ) && Magic.is_magic_weapon(combatant.weapon))
+      # ignore = ["Stun (Air)", "Stun (Corpus)", "Stun (Earth)", "Stun (Fire)", "Stun (Nature)", "Stun (Water)", "Stun (Will)", "Spell"]
+      #
+      # if ignore.include?(combatant.weapon)
+      #   return nil
+      if ((target.mind_shield > 0 || target.endure_fire > 0 || target.endure_cold > 0 ) && Magic.is_magic_weapon(combatant.weapon))
         damage_type = Global.read_config("spells", spell, "damage_type")
+        puts "SPELL #{spell}"
+        puts "DAMAGE TYPE: #{damage_type}"
         roll_shield = Magic.check_shield(target, combatant.name, spell, result)
+        puts "ROLL SHIELD #{roll_shield}"
         if roll_shield == "shield"
           if (damage_type == "Fire" && target.endure_fire > 0)
             return "Endure Fire Held"
           elsif (damage_type == "Cold" && target.endure_cold > 0)
             return "Endure Cold Held"
+          elsif (damage_type == "Psionic" && target.mind_shield > 0)
+            return "Mind Shield Held"
           end
 
-        elsif roll_shield == "failed"
+        elsif roll_shield == "caster"
           if (damage_type == "Fire" && target.endure_fire > 0)
             return "Endure Fire Failed"
           elsif (damage_type == "Cold" && target.endure_cold > 0)
             return "Endure Cold Failed"
+          elsif (damage_type == "Psionic" && target.mind_shield > 0)
+            return "Mind Shield Failed"
           end
         else
           return false

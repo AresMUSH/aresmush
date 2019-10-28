@@ -49,7 +49,7 @@ module AresMUSH
       return {:succeeds => succeeds, :result => die_result}
     end
 
-    def self.determine_magic_attack_margin(combatant, target, called_shot = nil, result)
+    def self.determine_magic_attack_margin(combatant, target, called_shot = nil, result, spell)
       weapon = combatant.weapon
       attack_roll = result
       defense_roll = FS3Combat.roll_defense(target, weapon)
@@ -58,8 +58,8 @@ module AresMUSH
       stopped_by_cover = target.stance == "Cover" ? FS3Combat.stopped_by_cover?(attacker_net_successes, combatant) : false
       hit = false
 
-      stopped_by_shield = Magic.stopped_by_shield?(combatant.weapon, target, combatant, attack_roll)
-
+      stopped_by_shield = Magic.stopped_by_shield?(spell, target, combatant, attack_roll)
+      puts "STOPPED BY SHIELD #{stopped_by_shield}"
       weapon_type = FS3Combat.weapon_stat(combatant.weapon, "weapon_type")
 
 
@@ -73,6 +73,8 @@ module AresMUSH
         message = t('custom.shield_held', :name => combatant.name, :spell => combatant.weapon, :mod => "", :shield => "Endure Fire", :target => target.name)
       elsif stopped_by_shield == "Endure Cold Held"
         message = t('custom.shield_held', :name => combatant.name, :spell => combatant.weapon, :mod => "", :shield => "Endure Cold", :target => target.name)
+      elsif stopped_by_shield == "Mind Shield Held"
+        message = t('custom.shield_held', :name => combatant.name, :spell => combatant.weapon, :mod => "", :shield => "Mind Shield", :target => target.name)
       elsif (attacker_net_successes < 0)
         # Only can evade when being attacked by melee or when in a vehicle.
         if (weapon_type == 'Melee' || target.is_in_vehicle?)
@@ -85,16 +87,20 @@ module AresMUSH
             message = t('fs3combat.attack_near_miss', :name => combatant.name, :target => target.name, :weapon => weapon)
         end
       else
+        if stopped_by_shield == "Mind Shield Failed"
+          message = [t('magic.mind_shield_failed', :name => combatant.name, :spell => spell, :mod => "", :shield => "Mind Shield", :target => target.name, :succeeds => "%xgSUCCEEDS%xn")]
+        end
         hit = true
       end
 
       combatant.log "ATTACK MARGIN: called=#{called_shot} " +
-      "attack=#{attack_roll} defense=#{defense_roll} hit=#{hit} cover=#{stopped_by_cover} shield=#{stopped_by_shield }result=#{message}"
+      "attack=#{attack_roll} defense=#{defense_roll} hit=#{hit} cover=#{stopped_by_cover} shield=#{stopped_by_shield} result=#{message}"
 
       {
         message: message,
         hit: hit,
-        attacker_net_successes: attacker_net_successes
+        attacker_net_successes: attacker_net_successes,
+        stopped_by_shield: stopped_by_shield
       }
     end
 
@@ -289,7 +295,9 @@ module AresMUSH
     end
 
     def self.cast_stun(combatant, target, spell, rounds, result)
-      margin = Magic.determine_magic_attack_margin(combatant, target, mod = mod, result)
+      margin = Magic.determine_magic_attack_margin(combatant, target, mod = mod, result, spell)
+      stopped_by_shield = margin[:stopped_by_shield]
+      puts "MARGIN: #{margin}"
       if target == combatant
         message = ["%xrYou can't stun yourself%xn"]
         return message
@@ -301,16 +309,28 @@ module AresMUSH
         target.update(magic_stun_spell: spell)
         target.update(action_klass: nil)
         target.update(action_args: nil)
-        message = [t('magic.cast_stun', :name => combatant.name, :spell => spell, :mod => "", :target => target.name, :succeeds => "%xgSUCCEEDS%xn", :rounds => rounds)]
+        if stopped_by_shield.include?("Failed")
+          # message = margin[:message]
+          message = [t('magic.shield_failed_stun', :name => combatant.name, :spell => spell, :shield=> "Mind Shield", :mod => "", :target => target.name, :succeeds => "%xgSUCCEEDS%xn", :rounds => rounds)]
+        elsif !stopped_by_shield
+          message = [t('magic.cast_stun', :name => combatant.name, :spell => spell, :mod => "", :target => target.name, :succeeds => "%xgSUCCEEDS%xn", :rounds => rounds)]
+        end
       else
-        message = [t('magic.casts_spell_on_target', :name => combatant.name, :spell => spell, :mod => "", :target => target.name, :succeeds => "%xrFAILS%xn")]
+        if stopped_by_shield.include?("Held")
+          message = [t('magic.shield_held', :name => combatant.name, :spell => spell, :mod => "", :shield => "Mind Shield", :target => target.name)]
+        elsif stopped_by_shield.include?("Failed")
+          message = [t('magic.shield_failed_stun_resisted', :name => combatant.name, :spell => spell, :shield=> "Mind Shield", :mod => "", :target => target.name)]
+        elsif !stopped_by_shield
+          message = [t('magic.cast_failed_stun', :name => combatant.name, :spell => spell, :mod => "", :target => target.name, :succeeds => "%xgSUCCEEDS%xn")]
+        end
+
       end
       return message
     end
 
     def self.cast_explosion(combatant, target, spell, result)
       messages = []
-      margin = Magic.determine_magic_attack_margin(combatant, target, result = result)
+      margin = Magic.determine_magic_attack_margin(combatant, target, result = result, spell)
       if (margin[:hit])
         attacker_net_successes = margin[:attacker_net_successes]
         messages.concat FS3Combat.resolve_attack(combatant, combatant.name, target, combatant.weapon, attacker_net_successes)
@@ -348,7 +368,7 @@ module AresMUSH
     def self.cast_attack_target(combatant, target, called_shot = nil, result)
         return [ t('fs3combat.has_no_target', :name => combatant.name) ] if !target
 
-        margin = Magic.determine_magic_attack_margin(combatant, target, result = result)
+        margin = Magic.determine_magic_attack_margin(combatant, target, result = result, spell)
 
         # Update recoil after determining the attack success but before returning out for a miss
         recoil = FS3Combat.weapon_stat(combatant.weapon, "recoil")
