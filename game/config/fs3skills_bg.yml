@@ -1,5 +1,5 @@
 fs3skills:
-    bg_skills_blurb: "Background Skills represent arts, sports, hobbies, professions and any other skills not covered by Action Skills.  Background Skills have a descriptive rating.<br><br> Background Skills are free-form, so there is no specific list. You can pick anything from Singing to Dad Jokes. See [Background Skills](http://spiritlakemu.com/fs3skills/abilities) for details and suggestions."
+    bg_skills_blurb: "Background Skills represent arts, sports, hobbies, professions and any other skills not covered by Action Skills.  Background Skills have a descriptive rating.<br><br> Background Skills are free-form, so there is no specific list. You can pick anything from Singing to Dad Jokes. See [Background Skills](https://aresmush.com/fs3/fs3-3/chargen.html#background-skills) for more information."
 
     background_skills:
         "A skill learned on the job":  surveillance, investigation, cooking, bartending, programming, carpentry
