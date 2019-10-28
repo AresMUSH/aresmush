@@ -74,7 +74,8 @@ module AresMUSH
               heal: Global.read_config("spells", a.name, "heal_points"),
               effect: Global.read_config("spells", a.name, "effect"),
               damage_type:  Global.read_config("spells", a.name, "damage_type"),
-              available: Global.read_config("spells", a.name, "available")
+              available: Global.read_config("spells", a.name, "available"),
+              los:  Global.read_config("spells", a.name, "line_of_sight")
               # weapon_lethality: FS3Combat.weapon_stat(Global.read_config("spells", a.name, "weapon"), "lethality"),
               # weapon_penetration: FS3Combat.weapon_stat(Global.read_config("spells", a.name, "weapon"), "penetration"),
               # weapon_type: FS3Combat.weapon_stat(Global.read_config("spells", a.name, "weapon"), "weapon_type"),
@@ -89,7 +90,6 @@ module AresMUSH
 
         spells.each do |s|
           weapon = Global.read_config("spells", s[:name], "weapon")
-          puts "Weapon: #{weapon}"
           weapon_specials = Global.read_config("spells", s[:name], "weapon_specials")
           armor = Global.read_config("spells", s[:name], "armor")
           armor_specials = Global.read_config("spells", s, "armor_specials")
@@ -159,8 +159,7 @@ module AresMUSH
           if (s[:school] == major_school && s[:learned])
             major_spells.concat [s]
           end
-        end
-        puts "Major #{major_spells}"
+        end 
 
         if minor_school != "None"
           minor_spells = []
