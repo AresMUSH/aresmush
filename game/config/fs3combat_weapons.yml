@@ -11,6 +11,7 @@ fs3combat:
     - shrink
     - transform
     - vitality
+    - speed boost
     Melee:
     - agility
     - diamond
@@ -23,6 +24,7 @@ fs3combat:
     - strength
     - transform
     - vitality
+    - speed boost
   weapon specials:
     Sparring:
       description: Padded sparring equipment
