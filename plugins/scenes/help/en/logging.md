@@ -39,7 +39,7 @@ During the scene, you can refer back to the log for a quick catch-up if you join
 
 ## Editing Poses
 
-You can edit and delete your poses through the Web Portal, and even attribute them to other characters (handy if you're emitting from one of your alts).  
+You can edit and delete your poses through the web portal, and even attribute them to other characters (handy if you're emitting from one of your alts).  
 
 For a quick correction, you can also replace your **previous pose** with a corrected one.  Format it like an emit.
 

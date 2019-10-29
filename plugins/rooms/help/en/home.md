@@ -1,5 +1,5 @@
 ---
-toc: Getting Around
+toc: Locations and Descriptions
 summary: Going to your home or work quickly.
 aliases:
 - work

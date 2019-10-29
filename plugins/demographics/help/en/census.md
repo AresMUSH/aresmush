@@ -1,5 +1,5 @@
 ---
-toc: Finding People
+toc: Community
 summary: Seeing what other characters are out there.
 ---
 # Census

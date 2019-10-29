@@ -1,6 +1,8 @@
 ---
-toc: Tracking Time
+toc: Utilities / Miscellaneous
 summary: Viewing the IC date/time.
+aliases:
+- ictime
 ---
 # IC Time
 

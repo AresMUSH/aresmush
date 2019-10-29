@@ -83,7 +83,7 @@ BASIC CONTAINERS
     padding: 5px;
 }
 
-.app-status, #console, #console pre, code, #sendMsg, #sendMsg2, #manageLog { 
+.app-status, #console, #console pre, #sendMsg, #sendMsg2, #manageLog { 
     white-space: pre-wrap;
     background-color: black;
     color: white;
@@ -93,8 +93,10 @@ BASIC CONTAINERS
 }
 
 code {
-    background: none;
-    color: $primary-color;
+  white-space: pre-wrap;
+  color: $primary-color;
+  font-family: "Lucida Console", Monaco, 'Andale Mono', 'Courier New', Courier, monospace;
+  font-size: 14px; 
 }
 
 
@@ -257,7 +259,7 @@ blockquote{
 }
 
 pre code { 
-	border: 2px solid $secondary-color;
+	border: 2px solid $border-color;
     border-radius: 5px;
     font-size: 1em;
 	margin: 0.4em 0;
@@ -602,6 +604,10 @@ GENERAL UTILITIES
     font-style: italic;
     padding-left: 10px;
     font-size: .8em;
+}
+
+img {
+  max-width: 100%;
 }
 
 .image-container {
@@ -1202,6 +1208,28 @@ OTHER
 
 .help-heading {
   margin-top: 5px;
+}
+
+.help-topic img {
+
+      max-width: 80%;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 10px;  
+}
+
+ul.regular-help-list {
+    list-style-type: square;
+}
+
+ul.reference-help-list li {
+    display: inline;
+}
+
+ul.reference-help-list > li:not(:last-child)::after {
+    content: "\00b7";
+    margin: 0 .25em;
 }
 
 /*.char-scene-list li:before { content: "\2666  "; }*/

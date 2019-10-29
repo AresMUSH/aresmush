@@ -1,5 +1,5 @@
 ---
-toc: Looking at Things
+toc: Locations and Descriptions
 summary: Looking around.
 order: 1
 aliases:

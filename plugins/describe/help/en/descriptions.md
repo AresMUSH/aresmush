@@ -1,5 +1,5 @@
 ---
-toc: Looking at Things
+toc: Locations and Descriptions
 summary: Setting descriptions.
 order: 2
 aliases:

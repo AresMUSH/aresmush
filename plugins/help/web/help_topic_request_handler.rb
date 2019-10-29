@@ -13,7 +13,7 @@ module AresMUSH
         contents = Help.topic_contents(topic)
 
         {
-          name: topic.titleize,
+          name: topic.humanize.titleize,
           help: Website.format_markdown_for_html(contents)
         }
       end

@@ -1,5 +1,5 @@
 ---
-toc: Using Profiles
+toc: 3 - Creating a Character
 summary: Setting your web portal icon.
 aliases:
 - log icon

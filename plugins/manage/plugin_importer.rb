@@ -88,7 +88,7 @@ module AresMUSH
         end
         
         if (!Dir.exist?(dest_path))
-          Global.logger.warn "WARNING! Web Portal directory #{dest_path} not found.  You'll need to install web files manually." 
+          Global.logger.warn "WARNING! web portal directory #{dest_path} not found.  You'll need to install web files manually." 
           return
         end
         

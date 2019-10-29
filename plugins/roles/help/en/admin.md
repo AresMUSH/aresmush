@@ -1,5 +1,5 @@
 ---
-toc: Finding People
+toc: Community
 summary: Who runs the game?
 aliases:
 - admin

@@ -1,5 +1,5 @@
 ---
-toc: Tracking Time
+toc: Utilities / Miscellaneous
 summary: Using timezones and viewing server time.
 aliases:
 - ooctime

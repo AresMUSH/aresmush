@@ -1,5 +1,5 @@
 ---
-toc: Finding People
+toc: Community
 summary: Seeing who's online.
 aliases:
 - where

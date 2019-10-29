@@ -10,7 +10,7 @@ module AresMUSH
       def handle        
         
         toc_list = Help.toc.keys.sort
-        paginator = Paginator.paginate(toc_list, cmd.page, 3)
+        paginator = Paginator.paginate(toc_list, cmd.page, 5)
         
         if (paginator.out_of_bounds?)
           client.emit_failure paginator.out_of_bounds_msg
