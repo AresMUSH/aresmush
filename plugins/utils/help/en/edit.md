@@ -17,4 +17,4 @@ The default prefix is `FugueEdit >`, a long-standing MUSH tradition.  This will 
 
 `edit/prefix <prefix>` - Sets your grab/edit prefix.
 
-Some clients also require special setup.  See the [AresMUSH Client Configuration Tutorial](http://aresmush.com/clients.html) for more information.
+Some clients also require special setup.  See the [AresMU Client Configuration Tutorial](http://aresmush.com/clients.html) for more information.

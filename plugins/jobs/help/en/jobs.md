@@ -8,82 +8,60 @@ aliases:
 
 The Jobs system is used by the game administrators to track work requests and to-do items.  Players can submit their own requests with the [request](/help/requests) command.
 
-> **Permissions Requred:** Working with jobs requires the access_jobs permission.  Some games will have multiple staff roles with limited access to certain categories.  For example - builders may only be able to access the 'BUILD' category.
+> Get an overview of the the jobs system in the [Jobs and Requests Tutorial](/help/jobs_tutorial).
 
-For a general overview of using jobs, see the aresmush.com [Jobs tutorial](https://aresmush.com/tutorials/manage/jobs.html).
-
-## Viewing  Jobs
-
-The jobs list shows you the jobs.  You can also just see a quick summary of unread ones, which you may want to put into your [onconnect](/help/onconnect).
+## Viewing  and Filtering Jobs
 
 `jobs` - Lists jobs
 `job <#>` - Views a job.
 
-You can mark jobs as read with the catchup command:
-
-`jobs/catchup` - Marks all jobs as read.
-`jobs/catchup <number>` - Mark a specific job as read.
-
-## Filtering  Jobs
-
-You can change what jobs you see in the jobs list.  If you're a coder, you could set your filter to only show jobs in the CODE category.  Or you might set the filter so it only shows jobs that are assigned to you.
+`jobs/filter <flter>` - Filters the jobs list. Valid filters are: active, mine, unfinished, unread, all, or a specific category name.
+`jobs/mine`, `jobs/active`, `jobs/all` - Shortcuts for the common filters.
 
 > **Tip:** Your job filter is remembered when you log out.
 
-Valid filters are: active, mine, unfinished, unread, all, or a specific category name
-
-`jobs/filter <flter>` - Filters the jobs list.
-`jobs/mine`, `jobs/active`, `jobs/all` - Shortcuts for the common filters.
-
 ## Creating Jobs
 
-Jobs can be created by players using the `request` command, by coded systems (e.g. apps), or manually.
+`job/create <title>` - Creates a new job (in default category, usually REQ).
+`job/create <title>=<category>/<description>` - Creates a new job. Default categories are APP (Applications), BUILD (Building), CODE, MISC, RP and REQ (Request).
 
-`job/create <title>` - Creates a new job (REQ category)
-`job/create <title>=<category>/<description>` - Creates a new job
-        Default categories are APP (Applications), BUILD (Building), CODE, MISC, RP and REQ (Request).
 `job/query <player>=<title>/<description>` - Submit a request on behalf of someone.
+`job/addparticipant <#>=<name>` - Adds a participant to a job.
+`job/removeparticipant <#>=<name>` - Removes a participant from a job.
 
-## Multi-Character Jobs
-
-You can add multiple participants to a single job.  All participants will be able to see and comment upon the job.
-
-`job/addparticipant <#>=<name>`
-`job/removeparticipant <#>=<name>`
+> **Tip:** All participants will be able to see and comment upon the job as if it were their own request.
 
 ## Changing Job Status
-
-You can change various attributes about the job, including its status and who it's assigned to.
 
 `job/assign <#>=<player>`                  `job/handle <#>` 
 `job/status <#>=<status>`                  `job/cat <#>=<category>` 
 `job/title <#>=<title>`   
 
+`jobs/catchup` - Marks all jobs as read.
+`jobs/catchup <number>` - Mark a specific job as read.
+
 ## Adding Job Comments
 
-There are two ways for admins to comment upon a job.  A `discuss` comment is for admin eyes only, and will never be seen by the original submitter.  A `respond` comment is **viewable by the submitter**.
-
-`job/discuss <#>=<comment>` - Comments on a job (only admins may view)
-`job/respond <#>=<message>` - Comments on a job (admins and submitter may view)
+`job/discuss <#>=<comment>` - Comments on a job (only admins may view; will never be seen by the submitter)
+`job/respond <#>=<message>` - Comments on a job (viewable by submitter)
 `job/deletereply <#>=<reply#>` - Deletes a reply.
 
 ## Jobs and Mail
 
-Players can automatically see responses on their own requests; there's no need to send them mail.  If you want to send a mail related to a job that wasn't their own request, you can use the `job/mail` command to add a comment to the job and send that comment in a mail message.
-
 `job/mail <#>=<recipients>/<message>` - Sets a response (admins and submitter may view) on the job and sends that response in mail to the recipients.
-  
-Admins can convert a mail message into a job.
-
 `mail/job <#>` - Turns a mail message into a job request.
+
+> **Tip:** Players can automatically see responses on their own requests; there's normally no need to send them mail.
 
 ## Closing Jobs
 
-When you're done with the job, close it and it will be archived.
-
-`job/close <#>` - Closes a job
+`job/close <#>` - Closes a job and archives it.
 `job/close <#>=<message>` - Closes a job with a comment to the original submitter.
 
 ## Old  Jobs
 
-For help finding old jobs, see [Jobs Archive](/help/jobs_archive).
+`jobs/search <category>=<value>` - Searches old jobs. Category to search may be 'title' or 'submitter'.
+
+`jobs/backup` - Prints out closed jobs to the screen, so you can save them to a log file.
+`jobs/purge` - Deletes all closed jobs.  Be cautious with this, since there's no going back.
+`job/delete <#>` - Deletes a particular job.

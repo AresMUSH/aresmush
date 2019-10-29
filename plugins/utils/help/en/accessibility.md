@@ -1,5 +1,5 @@
 ---
-toc: Accessibility
+toc: Setting Up Your Client
 summary: Support for screen readers and accessibility features.
 aliases:
 - screen_reader

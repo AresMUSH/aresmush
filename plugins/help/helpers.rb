@@ -103,5 +103,11 @@ module AresMUSH
       !cracked ? nil : cracked[:rest]
     end
     
+    # @engineinternal true
+    def self.tutorial_files
+      search = File.join(AresMUSH.game_path, "tutorials", "**.md")
+      Dir[search]
+    end
+    
   end
 end

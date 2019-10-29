@@ -1,5 +1,5 @@
 ---
-toc: Looking at Things
+toc: Locations and Descriptions
 summary: Expanding your character's wardrobe.
 aliases:
 - wear

@@ -7,7 +7,7 @@ aliases:
 ---
 # Character Creation
 
-You can do chargen either on the [Web Portal](/help/web_portal) or in-game.  They both have the same information - it's just a matter of preference.
+You can do chargen either on the [web portal](/help/web_portal) or in-game.  They both have the same information - it's just a matter of preference.
  
 You can access the chargen commands from anywhere on the game.  The chargen tutorial will prompt you step by step.
 

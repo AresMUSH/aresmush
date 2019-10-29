@@ -9,48 +9,33 @@ aliases:
 - harassment
 - harassed
 ---
-# Pages
+# Private Messages (aka PMs or Pages)
 
-Pages are private messages sent between players.  You can page any number of people at once, and use the standard pose formats in the message (like : and ;).  You can also send and receive pages via the web portal.
+Pages are private messages sent between players. The `pm` command is aliased to `p` and `page` so it's familiar to veteran MU players.
 
-`page <list of names>=<message>`
+> Get an overview of the private message system in the [Chat Tutorial](/help/chat_tutorial).
 
-## Page Review
+## Sending and Receiving Pages
 
-You can review pages you've missed, including ones that happened when you were offline. You will be notified of missed pages when you log in.
+`pm <list of names>=<message>` - Send a pm to a list of players.
+`pm/review` - Shows available conversations.
+`pm/review <names>` - Reviews a conversation.
 
-> Note: Conversations are automatically deleted (after 60 days by default) to prevent database clutter. 
+> **Note:** Conversations are automatically deleted (after 60 days by default) to prevent database clutter. 
 
-`page/review` - Shows available conversations.
-`page/review <names>` - Reviews a conversation.
-  
-## Page Status Indicators
-
-When you page someone who's offline/AFK/etc in-game, it will alert you to their status.
-
-    <PM> (to Faraday<AFK>) Cate says, "Hiya"
-
-AFK = Away from Keyboard; OFF = Offline; DND = Do not disturb; a time like 2h indicates they're idle
+When you page someone who's offline, idle, AFK, in 'do not disturb' (DND) mode, or on the web portal, it will alert you to their status.
 
 ## Page Format
 
-You can customize the appearance of pages by changing the color (see [Colors](/help/colors)) of the %% at the beginning as well as autospace text that appears before every page (such as a blank line or other marker).
-
-`page/autospace <text before pages>`
-`page/color <ansi code>`
+`pm/autospace <text before pages>` - Format the text that appears before each page (using a blank line or other marker)
+`pm/color <ansi code>` - Customize the color of the PM marker.
 
 ## Blocking and Reporting Pages
 
-You can block pages from someone you don't want to hear from.
+You can block pages from someone you don't want to hear from, or put yourself in 'do not disturb' mode while you're RPing. If someone is harassing you in pages, you can report them.  This will automatically include a copy of the pages you select (from page/review) in your report.
 
-`page/ignore <name>=<on or off>`
-
-If someone is harassing you in pages, you can report them.  This will automatically include a copy of the pages you select (from page/review) in your report. For example, page/report Bob=12-15/Terrible things!  You have to use the full conversation title in the report if it involves multiple people.  For example, page/report Bob Mary=12-15/Bob said terrible things!
-
-`page/report <conversation>=<range>/<reason>` - Creates a report.  
-
-## Do Not Disturb Mode
-
-Do not disturb mode prevents your MUSH client window from seeing pages while you're RPing.  You'll still see a notification of the missed pages the next time you log in, and can review them with page/review.  Do not disturb does not affect pages received on the web portal.
-
-`page/dnd <on or off>`
+`pm/dnd <on or off>` - 
+`pm/ignore <name>=<on or off>` - Blocks messages from a player.
+`pm/report <conversation>=<range of messages from page review>/<reason>` - Creates a report of inapprpriate messages.  
+  
+> **Tip:** You have to use the full conversation title in the report if it involves multiple people.  For example, page/report Bob Mary=12-15/Bob said terrible things!

@@ -1,5 +1,5 @@
 ---
-toc: Using Profiles
+toc: 3 - Creating a Character
 summary: Tracking IC relationships.
 ---
 # Tracking IC Relationships

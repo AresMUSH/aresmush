@@ -1,5 +1,5 @@
 ---
-toc: Utilities / Miscellaneous
+toc: Locations and Descriptions
 summary: Locking exits.
 aliases:
 - lock

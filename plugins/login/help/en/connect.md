@@ -1,7 +1,7 @@
 ---
 toc: 1 - Getting Started
 summary: Connecting and disconnecting.
-order: 3
+order: 1
 aliases:
 - connect
 - tour
@@ -11,7 +11,7 @@ aliases:
 ---
 # Connecting and Disconnecting
 
-You connect to the game through a 'MUSH client'.  There are dedicated apps you can install on your PC/Mac or mobile device, or you can use the game's built-in web client to play through the web browser.  For more help finding a MUSH client or connecting, see the [MUSH 101 tutorial](https://aresmush.com/mush-101).
+You connect to the game through a 'MU Client'.  There are dedicated apps you can install on your PC/Mac or mobile device, or you can use the game's built-in web client to play through the web browser.  For more help finding a MU Client or connecting, see the [MUSH 101 tutorial](https://aresmush.com/mush-101).
 
 To get past the game's welcome screen, you need to log in with a character.  
 

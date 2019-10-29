@@ -1,5 +1,5 @@
 ---
-toc: Getting Around
+toc: Locations and Descriptions
 summary: Meeting up for roleplay.
 aliases:
 - meet

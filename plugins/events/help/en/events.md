@@ -1,5 +1,5 @@
 ---
-toc: Utilities / Miscellaneous
+toc: Community
 summary: Scheduling game events.
 ---
 # Events
