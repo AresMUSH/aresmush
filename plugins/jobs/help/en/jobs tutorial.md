@@ -12,6 +12,8 @@ Jobs and requests can be viewed and submitted via either the portal (usually und
 
 ![Jobs Page Screenshot](https://aresmush.com/images/help-images/jobs.png)
 
+[[toc]]
+
 ## Job Workflow
 
 You can customize the job workflow for your game, but the default flow is:
@@ -64,7 +66,7 @@ Closed jobs in Ares are not archived to a BBS, but stay around in the jobs syste
 
 Jobs are small and database space shouldn't ever be an issue.  But if it is, and you want to archive your jobs offline, you can log the closed jobs to a file and purge them.
 
-## Learn More
+## Command Reference
 
 [Request Commands](/help/requests) (for players)
 [Job Commands](/help/jobs) (for admin)

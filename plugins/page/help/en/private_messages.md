@@ -3,11 +3,9 @@ toc: 2 - Communicating
 summary: Sending private chat messages.
 aliases:
 - tell
-- pm
+- page
 - pagelock
-- abuse
-- harassment
-- harassed
+- pm
 ---
 # Private Messages (aka PMs or Pages)
 

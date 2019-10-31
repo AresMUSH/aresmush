@@ -21,7 +21,9 @@ aliases:
 
 # Organizing Combat
 
-This is a quick reference for combat organizer commands.   You may also want to check out the [Running Combats](http://aresmush.com/fs3/fs3-3/running-combat.html) tutorial on AresMUSH.com.
+This is a quick reference for combat organizer commands.  
+
+> Learn how the combat system works in the [Combat Tutorial](/help/fs3combat_tutorial).
 
 `combat/start [<mock or real>]` - Starts a combat (default real).
 `combat/stop <combat #>` - Stops a combat. 

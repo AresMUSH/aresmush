@@ -10,6 +10,8 @@ A MUSH is a multi-player online game that blends creative writing, improv acting
 
 Players create and control characters in a shared story.  Like a video game, a MUSH provides a virtual world for the characters to inhabit.  It just uses text instead of graphics to describe the characters, locations and action.  Like a tabletop RPG, there are rules to keep things fair.
 
+[[toc]]
+
 ## Connecting to the Game
 
 Using the game's website, or **web portal**, you can play the game from a browser, browse characters and scenes, manage your character's profile, check mail and forum posts, view the online help and more.
@@ -36,7 +38,7 @@ Once you've completed chargen, you can join the story.  The story is told via **
 
 Scenes take place in locations in the game world.  Where a video game has a graphical environment to explore, a MUSH has a text-based one that's divided into distinct locations.  In MUSH lingo, the collection of locations is called **The Grid** and each location is called a **Room**.  When you're ready to start or join a scene, see the [Scene Help](/help/scenes).
 
-## Learn More
+## Command Reference
 
 For a more in-depth tutorial on how to play, including important commands and terminology, see the [MUSH 101 tutorial](https://aresmush.com/mush-101).
 

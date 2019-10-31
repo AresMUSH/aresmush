@@ -6,6 +6,8 @@ summary: Learn about the help system.
 
 The MUSH help system is here to help you learn how to use the in-game commands.  You can view help articles on either the web portal (typically under Help -> Game Help) or via the help command.
 
+> Learn more about the help system in the [Help Tutorial](/help/help_tutorial).
+
 `help, help2, help3, etc.` - Shows each page of help topics.
 `help <topic name or keyword>` - Searches the help and shows the full help text.
 `qr <command name>` - Views quick command syntax.

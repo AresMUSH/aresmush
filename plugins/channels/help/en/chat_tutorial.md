@@ -15,6 +15,8 @@ There are two main ways to chat with other players:
 * Channels are like chat rooms, geared around specific topics (questions, general chit-chat, group-related messages, etc.)
 * Private Messages (aka pages or PMs) are shared with only a select player or group of players.
 
+[[toc]]
+
 ## Channels
 
 You can see available channels and their descriptions using the `channels` command or the Chat page on the web portal.  Choose which channels you want to join, and you'll see messages from those channels.  The `channels` command also shows the commands used to talk on the channels you've joined when using a MU client..
@@ -50,7 +52,7 @@ With private messages, you can also:
 * Customize how your page messages are formatted on the MU client view.
 * Report abusive messages.
 
-## Learn More
+## Command Reference
 
 [Channel Commands](/help/channels)
 [Private Message Commands](/help/pm)

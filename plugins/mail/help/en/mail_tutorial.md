@@ -22,6 +22,6 @@ You can make your own custom tags as well to organize your messages as you desir
 
 Filtering mail shows only messages matching a certain tag. There are common filters defined for the special tags.  For example, to see your sent mail you can either click the 'Sent' filter on the web portal or use the `mail/sent` command.
 
-## Learn More
+## Command Reference
 
 [Mail Commands](/help/mail)

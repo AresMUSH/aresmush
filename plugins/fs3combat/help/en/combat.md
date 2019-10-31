@@ -11,11 +11,9 @@ aliases:
 ---
 # FS3 Combat
 
-The FS3 Combat system is designed to bring some order to the chaos of large combat scenes, managing ability rolls and tracking damage in an automated fashion. 
+The FS3 Combat system is designed to bring some order to the chaos of large combat scenes.
 
-To learn how FS3 combat works, you should read the [FS3 Combat Player's Guide](http://aresmush.com/fs3/fs3-3/combat.html) and try out the [Interacive Combat Walkthrough](http://aresmush.com/fs3/fs3-3/combat-walkthrough.html).
-
-There is also an online [Quick Reference](http://aresmush.com/fs3/fs3-3/combat-quickref.html) to the most common combat commands.
+> Learn how the combat system works in the [Combat Tutorial](/help/fs3combat_tutorial).
 
 ## Actions
 
@@ -61,7 +59,7 @@ There is also an online [Quick Reference](http://aresmush.com/fs3/fs3-3/combat-q
 
 ## Gear
 
-There are various kinds of gear that can be used in combat.  You should only use gear that is appropriate to the IC situation.  Just because the code will let you pick a rocket launcher doesn't mean you have a rocket launcher.  RP appropriately.
+> **Note:** FS3 Combat has no inventory system, so you should only use gear that is appropriate to the IC situation.  Just because the code will let you pick a rocket launcher doesn't mean you have a rocket launcher.  RP appropriately.
 
 `weapons` - List all weapons.
 `weapon <name>` - See details for a particular weapon.
@@ -73,7 +71,7 @@ There are various kinds of gear that can be used in combat.  You should only use
 
 ## Vehicles and Mounts
 
-On some games, you can use vehicles or mounts in combat.
+> **Note:** Vehicles and mounts may not be supported on all games.
 
 `vehicles` - List all types of vehicles.
 `vehicle <name>` - See details for a particular vehicle type.
@@ -88,8 +86,6 @@ On some games, you can use vehicles or mounts in combat.
 `combat/dismount` - Dismounts an animal.
 
 ## Luck
-
-You can spend luck to get a bonus on attack, defense or initiative, or undo a knockout.
 
 `combat/luck <attack, defense or initiative>` - Spend a luck point this turn. 
 `combat/hero` - Spends a luck point to un-KO yourself.

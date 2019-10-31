@@ -7,7 +7,7 @@ aliases:
 ---
 # Channel Commands
 
-Channels are like chatrooms, and let you communicate with other players.
+Channels are like chatrooms, letting you communicate with other players about specific topics (questions, general chit-chat, group-related messages, etc.)
 
 > Get an overview of the chat channel system in the [Chat Tutorial](/help/chat_tutorial).
 

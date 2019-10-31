@@ -2,7 +2,7 @@
 toc: 3 - Creating a Character
 summary: Setting roleplay hooks.
 aliases:
-- rp hooks
+- rp_hooks
 - hook
 ---
 
@@ -13,10 +13,7 @@ RP Hooks are interesting things about your character that others can "hook" into
 `hooks` - View your hooks.
 `hooks/set <hooks>` - Set your hooks.  Leave blank to clear them.
 `hooks <name>` - View someone else's hooks.
-
-If your client supports the [Edit Feature](/help/edit), you can use the edit command to grab a RP hook into the input buffer.
-
-`hooks/edit` - Grabs the existing RP Hook text into your input buffer.
+`hooks/edit` - Grabs the existing RP Hook text into your input buffer.  (See [Edit Feature](/help/edit)).
 
 Admins with the `manage_apps` permission can set other peoples' hooks:
 

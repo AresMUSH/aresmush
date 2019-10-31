@@ -7,25 +7,38 @@ tutorial: true
 
 [AresCentral](http://arescentral.aresmush.com/) is the social hub for AresMUSH.  It helps connect players and games.
 
+[[toc]]
+
 ## Player Handles
 
-AresCentral Player Handles bring a little taste of social media to MUSHing. For more information and help on creating your handle, see: [AresMUSH Handles Tutorial](http://aresmush.com/handles/).
+AresCentral Player Handles bring a little taste of social media to MUSHing.  A handle is your OOC identity, used across all Ares games. Through your handle, people can identify you as a player, not just as a character.
 
-Having a handle is only useful once you `link` characters to it.  This tells the game which characters on which games are yours.  Linking is optional; you can pick and choose which characters you want to link.  Unlinked characters will remain anonymous (though of course your IP address still identifies you to game admins).
+Having a handle does nothing until you **link** a character to it. This basically tells everyone that you play that character. It also allows access to handle features from that character. More on that in a moment.  Linking is optional; you can pick and choose which characters you want to link.  
+
+> **Tip:** All linked characters are publicly visible. Think of them them as cross-game public alts. All friendships are also publicly visible, like on Facebook.  Unlinked characters will remain anonymous (though of course your IP address still identifies you to game admins).
 
 Linking a character is a multi-step process:
 
-1. Log into or create your AresCentral account.
-2. Select My Account -> Manage Characters -> Get a New Link Code.
-3. In the game, use `handle/link <handle name>=<link code>` to complete the link.
+1. Log into or create your [AresCentral](http://arescentral.aresmush.com/) account.
+2. In AresCentral, select My Account -> Manage Characters -> Get a New Link Code.
+3. In the game, enter the link code on your account page (usually under Help -> Account) or use `handle/link <handle name>=<link code>`.
+  
+You can unlink your character from your handle at AresCentral.
 
-Autospace, quote/page colors and timezone preferences are automatically downloaded from your AresCentral character to each of your linked characters when you log in.
+Having characters linked enables various features:
+
+* Your handle name appears next to your character name when you talk on channels.  (e.g. `Cate (@Faraday) says...`)
+* Several preferences (autospace, timezone, client settings, etc.) can be set once on AresCentral and automatically shared across all your linked characters.
+* You can mark other player handles as your friends, and that will carry over to all your linked characters.
+* Reading a forum post on one character will mark it read for all other linked characters.
+* You can easily switch between linked characters on the web portal, or pose as all your characters in a scene.
+* And more...
 
 ## Game Directory
 
 AresCentral also has a directory of all public AresMUSH games.  You can browse game advertisements, see activity graphs, and view player profiles.
 
-## Learn More
+## Command Reference
 
 [Player Handle Commands](/tutorials/handles)
 [Managing Game Directory Info](/tutorials/game_directory)
