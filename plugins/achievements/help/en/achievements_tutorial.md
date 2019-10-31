@@ -15,7 +15,7 @@ Achievements are tracked per character.  You can see which ones you've earned on
 
 Some achievements may be earned multiple times at different levels.  For instance, you will get the "Participated in 1 scenes." achievement for your very first scene, and it will be upgraded to "Participated in 10 scenes" after ten.
 
-## Learn More
+## Command Reference
 
 [Achievements Commands](/help/achievements)
 [Managing Achievements](/help/manage_achievements)  

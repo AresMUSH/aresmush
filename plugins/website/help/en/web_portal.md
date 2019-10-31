@@ -15,4 +15,6 @@ The game's web portal provides an interface to the game that you can access from
 
 > Note: AresMUSH is supported on Chrome, Safari and Edge.  It will probably work fine in other browsers too, but fixing minor layout issues or other oddities will not be a priority.
 
-Type `website` to get the address to the web portal.
+`website` - Gives you the address of the web portal.
+
+![Web Portal Screenshot](https://aresmush.com/images/web-portal/portal.png)

@@ -17,7 +17,7 @@ aliases:
 
 Inspired by the widely-loved [Myrrdin’s Bulletin Board System](http://www.firstmagic.com/~merlin/mushcode/mc.bb.html), the Ares Forum provides MU-wide discussion topics, available in-game and on the web portal.
 
-> Get an overview of the forum system in the [Forum Tutorial](/help/forum_tutorial).
+> Learn how the forum system works in the [Forum Tutorial](/help/forum_tutorial).
 
 ## Viewing Forum Categories
 

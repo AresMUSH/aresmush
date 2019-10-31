@@ -5,19 +5,13 @@ order: 2
 ---
 # Roster
 
-The roster system allows you to jump into RP more quickly with a ready-made character - often with ties to other players. Some characters have been pre-played, while others are former NPCs.
+The roster system allows you to jump into RP more quickly with a ready-made character - often with ties to other players. The roster will note if a character has been previously played, if they're approved and ready to go, and if any special permission is required to claim them.
 
 `roster` - Views a list of rostered characters.
 `roster <name>` - Views details about a character.
+  
+Use the character's web profile or the `sheet` and `bg` commands to view their stats and background.
 
-## Claiming a Roster Character
+Claim a roster character through the web portal roster page, or log in with a guest character and use the `roster/claim` command. You'll be given a temporary password for the character.
 
-If a character has been through chargen, you can see their stats and background using the `sheet` and 'bg' commands. 
-
-The roster system will tell you who to contact if you want to find out more info about them, but you do not need anyone's permission to claim most most roster characters. 
-
-When you're ready to take a roster character, you can log in with a guest (using the tour command) and then use roster/claim.  You will be paged with the login password.
-
-`roster/claim <name>` - Claims a character.  
-
-Sometimes characters require a special application, or a chat with the contact person.  These characters are marked with a note on the roster.  Talk to the contact person to claim one of them.
+`roster/claim <name>` - Claims a character. 

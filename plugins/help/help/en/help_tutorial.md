@@ -2,11 +2,15 @@
 toc: 1 - Getting Started
 tutorial: true
 summary: Learn about the help system.
-order: 2
+order: 3
 ---
 # Help Tutorial
 
 The MUSH help system is here to help you learn how to use the in-game commands.  
+
+[[toc]]
+
+## Viewing Help
 
 The best way to read the help articles is on the web portal (usually under Help -> Game Help) because it's easy to browse around with hyperlinks.  You can also view help in-game using the `help` command.  
 
