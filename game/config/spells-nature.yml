@@ -296,8 +296,21 @@ spells:
     effect: Other
     level: 4
     name: Potions (Nature)
-    school: Nature
+    school: NatureTeeth as a weapon and a higher defense mod instead of armor for size/dodging of some kind probably makes sense for a raccoon.
     available: true
+  Predatory Instincts:
+    attack_mod: 2
+    available: false
+    casting_time: 1 round
+    desc: Caster hones their aggressive animal instincts, improving their attack power and reaction speed.
+    effect: Buff
+    init_mod: 1
+    is_potion: true
+    level: 4
+    name: Predatory Instincts
+    range: Self
+    school: Nature
+    target_num: 1
   Regress Growth:
     available: true
     casting_time: 1 round
@@ -378,6 +391,15 @@ spells:
     name: Wild Shape
     roll: true
     school: Nature
+  Wild Shape Racoon:
+    available: false
+    defense_mod: 2
+    desc: Wild Shape Racoon
+    level: 5
+    name: Wild Shape Racoon
+    roll: true
+    school: Nature
+    weapon: Teeth
   Wild Shape Wolf:
     available: true
     armor: Tough Hide
@@ -512,6 +534,16 @@ spells:
     roll: true
     school: Nature
     weapon: Antlers
+  Greater Wild Shape Bull:
+    available: false
+    armor: Tough Hide
+    desc: Allows the caster to transform into any animal in the Bovidae family.
+    level: 7
+    name: Greater Wild Shape Bull
+    roll: true
+    school: Nature
+    range: Self
+    weapon: Horns
   Greater Wild Shape Canidae:
     available: true
     armor: Tough Hide
