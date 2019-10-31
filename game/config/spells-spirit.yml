@@ -509,6 +509,20 @@ spells:
     range: Short
     line_of_sight: true
     available: true
+  Group Telepathic Connection:
+    available: true
+    casting_time: "1 round"
+    damage_type: Psionic
+    desc: "Up to 5 targets, including the caster, are part of a telepathic connection. This enables them to telepathically correspond and share emotions, images, sounds, and sensations with each other at will until the connection is severed.\n\nTargets must be familiarly known to caster or in line of sight."
+    duration: 1 hour
+    effect: Psionic
+    level: 6
+    name: Group Telepathic Connection
+    range: Massive
+    roll: true
+    school: Spirit
+    target_num: 5
+    target_optional: true
   Mass Awaken Terror:
     available: false
     damage_type: Psionic
@@ -613,7 +627,7 @@ spells:
     roll: true
     school: Spirit
     target_num: 1
-    target_optional: true    
+    target_optional: true
   Rewrite History:
     available: true
     casting_time: "1 round to cast, plus additional rounds at GM's discretion according to complexity of the rewrite."
