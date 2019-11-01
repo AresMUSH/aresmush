@@ -34,7 +34,7 @@ When you start a scene, you can create a temporary room or start one in the room
 
 A scene can either be open (anyone's invited) or private.  Scenes on the grid are open by default and scenes in RP Rooms private by default.  The scene's organizer can change the privacy setting. 
 
-> **Note:** Ares does not provide admins with a command to view private scenes.  However, nothing on a MUSH is ever _truly_ private from nefarious staff willing to spy on their players. Ultimately you're sending your text to a server (and database) controlled by them, and privacy is an illusion.
+> **Note:** Ares does not provide admins with a command to view private scenes.  However, be aware that any data transmitted to the server and/or stored in the database is accessible to the game owner and anyone they choose to share it with.
 
 ## Joining Scenes
 

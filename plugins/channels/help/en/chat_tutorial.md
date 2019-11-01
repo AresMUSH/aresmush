@@ -52,6 +52,8 @@ With private messages, you can also:
 * Customize how your page messages are formatted on the MU client view.
 * Report abusive messages.
 
+> **Note:** Ares does not provide admins with a command to view private messages.  However, be aware that any data transmitted to the server and/or stored in the database is accessible to the game owner and anyone they choose to share it with.
+
 ## Command Reference
 
 [Channel Commands](/help/channels)

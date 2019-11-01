@@ -17,6 +17,8 @@ Having a handle does nothing until you **link** a character to it. This basicall
 
 > **Tip:** All linked characters are publicly visible. Think of them them as cross-game public alts. All friendships are also publicly visible, like on Facebook.  Unlinked characters will remain anonymous (though of course your IP address still identifies you to game admins).
 
+### Linking Characters to Your Handle
+
 Linking a character is a multi-step process:
 
 1. Log into or create your [AresCentral](http://arescentral.aresmush.com/) account.
@@ -24,6 +26,8 @@ Linking a character is a multi-step process:
 3. In the game, enter the link code on your account page (usually under Help -> Account) or use `handle/link <handle name>=<link code>`.
   
 You can unlink your character from your handle at AresCentral.
+
+### Linked Character Features
 
 Having characters linked enables various features:
 
