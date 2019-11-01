@@ -1232,6 +1232,13 @@ ul.reference-help-list > li:not(:last-child)::after {
     margin: 0 .25em;
 }
 
+.reference-help-title { 
+  color: $faded-text-color;
+  font-style: italic;
+  font-weight: bold;
+  padding-left: 25px;
+}
+
 /*.char-scene-list li:before { content: "\2666  "; }*/
 
 @media (max-width:992px)  { 
