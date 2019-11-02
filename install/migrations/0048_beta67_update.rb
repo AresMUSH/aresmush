@@ -26,6 +26,13 @@ module AresMUSH
         config['game'].delete 'game_status'
         DatabaseMigrator.write_config_file("game.yml", config)
         
+        
+        Global.logger.debug "Add profile backup commands."
+        config = DatabaseMigrator.read_config_file("profile.yml")
+        config['profile']['backup_commands'] = ["sheet", "bg", "profile", "damage", "relationships", "outfits/all"]
+        DatabaseMigrator.write_config_file("profile.yml", config)
+        
+        
       end 
     end
   end

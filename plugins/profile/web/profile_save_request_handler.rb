@@ -32,7 +32,6 @@ module AresMUSH
         gallery = (request.args[:gallery] || []).map { |g| g.downcase }
         profile_image = build_image_path(char, request.args[:profile_image])
         profile_icon = build_image_path(char, request.args[:profile_icon])
-        char.update(profile_gallery: gallery)
         char.update(profile_image: profile_image)
         char.update(profile_icon: profile_icon)
         char.update(profile_tags: tags)

@@ -35,7 +35,7 @@ You can display image files in a gallery on the bottom of your web profile page.
 
 > **Tip:** Your game may set limits on the size of individual image files, and the total size of all files on your page.
 
-You can remove files from your gallery just by editing the "Gallery" field.  To delete them entirely, you'll need to go to the web portal file manager (typically under Directory -> Files), open the file, and select "Delete".
+To delete files from your gallery, click on it to open its file page, and select "Delete".
 
 ## Profile Image and Icon
 
