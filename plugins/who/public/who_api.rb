@@ -26,8 +26,11 @@ module AresMUSH
       end
       
       room_area = char.room.area_name
-      area = !room_area ? "" : "#{room_area} - "
-      "#{area}#{char.room.name}"
+      room_grid = char.room.grid_marker
+      
+      grid = room_grid ? " #{room_grid}" : ""
+      area = room_area ? "#{room_area} - " : ""
+      "#{area}#{char.room.name}#{grid}"
     end
   end
 end

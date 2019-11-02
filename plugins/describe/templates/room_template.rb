@@ -52,9 +52,14 @@ module AresMUSH
         @room.area_name
       end
       
+      def area_and_grid
+        room_grid = grid
+        grid ? "#{area} #{grid}" : area
+      end
+      
       # Room grid coordinates, e.g. (1,2)
       def grid
-        "(#{@room.grid_x},#{@room.grid_y})"
+        @room.grid_marker
       end
       
       def web_watchers
@@ -153,6 +158,10 @@ module AresMUSH
       
       def exit_linebreak(i)
         i % 2 == 0 ? "%r" : ""
+      end
+      
+      def scene_url
+        @room.scene ? "#{Game.web_portal_url}/scene-live/#{@room.scene.id}" : ""
       end
     end
   end

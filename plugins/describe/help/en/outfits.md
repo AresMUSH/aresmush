@@ -14,6 +14,7 @@ The `outfit` command lets you manage multiple outfits for your character.
 
 `outfits` - Lists outfits
 `outfit <name>` - Views an outfit.
+`outfits/all` - Spammy view of all your outfits and descriptions.
 `outfit/set <name>=<description>` - Creates a new outfit, or replaces an old one.
 `outfit/delete <name>` - Deletes an outfit.
 
