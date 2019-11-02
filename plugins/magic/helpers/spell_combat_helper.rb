@@ -296,7 +296,7 @@ module AresMUSH
 
     def self.cast_stun(combatant, target, spell, rounds, result)
       margin = Magic.determine_magic_attack_margin(combatant, target, mod = mod, result, spell)
-      stopped_by_shield = margin[:stopped_by_shield]
+      stopped_by_shield = margin[:stopped_by_shield] || []
       puts "MARGIN: #{margin}"
       if target == combatant
         message = ["%xrYou can't stun yourself%xn"]
