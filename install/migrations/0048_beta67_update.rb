@@ -32,7 +32,10 @@ module AresMUSH
         config['profile']['backup_commands'] = ["sheet", "bg", "profile", "damage", "relationships", "outfits/all"]
         DatabaseMigrator.write_config_file("profile.yml", config)
         
-        
+        Global.logger.debug "Add char card option."
+        config = DatabaseMigrator.read_config_file("scenes.yml")
+        config['scenes']['use_custom_char_cards'] = false
+        DatabaseMigrator.write_config_file("scenes.yml", config)
       end 
     end
   end

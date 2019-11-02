@@ -8,10 +8,9 @@ aliases:
 - nospoof
 - pose
 - emit
+- setpose
 - pemit
 - whisper
-- mutter
-- setpose
 ---
 # Posing
 
@@ -30,3 +29,7 @@ A GM emit is highlighted to ensure they aren't missed.  A scene set is similarly
 
 `emit/gm <gm pose>` - Emits a highlighted GM pose.
 `emit/set <set pose>` - Emits a highlighted GM pose that also sets a temporary description in the room.
+
+## Private Emits
+
+Private emits (like the old whisper/@pemit commands from Penn and TinyMUX) are incompatible with the Ares web portal integration and scene system, and have been deprecated.
