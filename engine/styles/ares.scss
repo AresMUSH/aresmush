@@ -798,6 +798,8 @@ SCENES SCREEN
     max-height: 400px;
     overflow-y: scroll;
     overflow-x: hidden;
+    margin: 2px 0px;
+    
 }
 
 .log-icon-container {
@@ -914,6 +916,50 @@ SCENES SCREEN
   width: 175px;
   padding-top: 10px;
 }
+
+.scene-pose-box { 
+    margin: 10px 0px;
+    width: 100%;
+}
+ 
+.pose-ui, 
+.pose-buttons {
+    display: flex;
+    flex-flow: row-reverse wrap;
+}
+ 
+.pose-buttons .btn {
+    margin-left: 4px;
+}
+ 
+.scene-buttons {
+    display: flex;
+    flex-flow: column;
+    align-items: flex-end;
+}
+ 
+.scene-char-select .tiny-profile-icon {
+    margin: 0 2px 3px 0;
+}
+ 
+@media (max-width: 767px) {
+    .scene-dropdowns {
+        display: flex;
+        flex-flow: row;
+        justify-content: flex-end;
+        padding-top: 10px;
+     }
+ 
+     .scene-dropdowns .scene-menu {
+         margin-left: 4px;
+     }
+     
+     .scene-dropdowns .dropdown-menu {
+         right: 0;
+         left: auto;
+     }
+}
+
 
 /* -------------------------
 CHARACTERS SCREEN
