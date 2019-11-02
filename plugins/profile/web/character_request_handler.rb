@@ -72,6 +72,10 @@ module AresMUSH
            }
         }}
         
+        details = char.details.map { |name, desc| {
+          name: name,
+          desc: Website.format_markdown_for_html(desc)
+        }}
         can_manage = enactor && Profile.can_manage_char_profile?(enactor, char)
         
         if (char.background.blank?)
@@ -112,9 +116,10 @@ module AresMUSH
           profile: profile,
           relationships: relationships,
           last_online: OOCTime.local_long_timestr(enactor, char.last_on),
-          profile_gallery: (char.profile_gallery || {}).map { |g| Website.get_file_info(g) },
+          profile_gallery: (Profile.character_page_files(char) || {}).map { |g| Website.get_file_info(g) },
           background: show_background ? Website.format_markdown_for_html(char.background) : nil,
           description: Website.format_markdown_for_html(char.description),
+          details: details,
           rp_hooks: char.rp_hooks ? Website.format_markdown_for_html(char.rp_hooks) : '',
           desc: char.description,
           playerbit: char.is_playerbit?,
