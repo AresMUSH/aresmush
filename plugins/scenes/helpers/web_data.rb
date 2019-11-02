@@ -31,7 +31,9 @@ module AresMUSH
             icon: Website.icon_for_char(p), 
             status: Website.activity_status(p),
             is_ooc: p.is_admin? || p.is_playerbit?,
-            online: Login.is_online?(p)  }}
+            online: Login.is_online?(p),
+            char_card: Scenes.build_char_card_web_data(p, viewer)
+            }}
       
       if (scene.room)
         places = scene.room.places.to_a.sort_by { |p| p.name }.map { |p| {
@@ -70,7 +72,8 @@ module AresMUSH
         fs3_enabled: FS3Skills.is_enabled?,
         fs3combat_enabled: FS3Combat.is_enabled?,
         poseable_chars: Scenes.build_poseable_chars_data(scene, viewer),
-        pose_order_type: scene.room ? scene.room.pose_order_type : nil
+        pose_order_type: scene.room ? scene.room.pose_order_type : nil,
+        use_custom_char_chards: Scenes.use_custom_char_cards?
       }
     end    
     
@@ -164,6 +167,33 @@ module AresMUSH
         is_ooc: is_ooc,
         is_setpose: is_setpose,
         is_gmpose: is_gmpose
+      }
+    end
+    
+    def self.use_custom_char_cards?
+      Global.read_config("scenes", "use_custom_char_cards") || false
+    end
+    
+    def self.build_char_card_web_data(char, viewer)
+      if (!char)
+        return {
+          name: t('global.deleted_character'),
+          icon: Website.icon_for_char(char),
+          id: nil
+        }
+      end
+      
+      {
+        name: char.name,
+        icon: Website.icon_for_char(char),
+        id: char.id,
+        all_fields: Demographics.build_web_all_fields_data(char, viewer),
+        demographics: Demographics.build_web_demographics_data(char, viewer),
+        groups: Demographics.build_web_groups_data(char),
+        description: Website.format_markdown_for_html(char.description || ""),
+        status_message: Profile.get_profile_status_message(char),
+        is_ooc: char.is_admin? || char.is_playerbit?,
+        custom: Scenes.custom_char_card_fields(char, viewer)
       }
     end
   end
