@@ -26,9 +26,7 @@ module AresMUSH
         end
         room = matched_rooms.first
         
-        Game.master.update(ic_start_room: room)
-        Status.reset_ic_start room
-        
+        Game.master.update(ic_start_room: room)        
         client.emit_success t('rooms.ic_start_set', :name => room.name)
       end
     end

@@ -66,6 +66,7 @@ Areas are used to group rooms together to represent different regions of the gam
 `grid [<room name>=]<x>/<y>` - Sets the grid coordinates.  Leave blank to clear.
 `roomtype [<room name>=]<IC, OOC or RPR>` - Sets a room as part of the IC, OOC or RPR (Roleplay Room) zone.
 `foyer <on or off` - Marks whether a room is a foyer, like an apartment or the RP room hub.  Numbered exits will be shown in a special way.
+`icstart <room name>` - Resets the IC starting location.
 
 ## Owners
 
