@@ -37,15 +37,10 @@ Ares also supports MUX-style mail composition, which lets you write your mail in
 
 ## Reviewing Sent Mail
 
-With the 'sent mail' feature enabled, You will receive a CC of all mail you send. It will be filed away with the 'Sent' tag.
-
-`mail/sentmail <on or off>` - Turns sent mail copy on or off.
 `mail/sent` - View your sent mail.
 
-You can also use the mail review feature to review messages you've sent to particular people, as long as the message hasn't been deleted.
-
 `mail/review <name>` - Shows messages you've sent to someone.
-`mail/unsend <name>/<#>` - Unsends a message if it hasn't already been read.
+`mail/unsend <name>/<# from mail review>` - Unsends a message if it hasn't already been read.  Use mail/review to find the message number you should use.
 
 ## Deleting and Archiving Mail
 
