@@ -12,4 +12,4 @@ Ranks are used in military or paramiltary organizations.  The ranks system diffe
 
 Admins and people with the `manage_ranks` permission can set someone else's rank, including restricted ranks that are not available in chargen.
 
-`rank <name>=<rank>`
+`rank/set <name>=<rank>`
