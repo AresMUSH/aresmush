@@ -391,7 +391,7 @@ spells:
     name: Wild Shape
     roll: true
     school: Nature
-  Wild Shape Racoon:
+  Wild Shape Raccoon:
     available: false
     defense_mod: 2
     desc: Wild Shape Racoon

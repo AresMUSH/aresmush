@@ -66,7 +66,7 @@ module AresMUSH
           profile_image: char.profile_image,
           desc: Website.format_input_for_html(char.description),
           shortdesc: Website.format_input_for_html(char.shortdesc),
-          secretpref: { value: char.secretpref, desc: Global.read_config('demographics', 'secret_prefs').fetch(char.secretpref) },
+          # secretpref: { value: char.secretpref, desc: Global.read_config('demographics', 'secret_prefs').fetch(char.secretpref) },
           lore_hook_pref: { value: char.lore_hook_pref, desc: char.lore_hook_pref },
           lastwill: Website.format_input_for_html(char.idle_lastwill),
           fs3: fs3

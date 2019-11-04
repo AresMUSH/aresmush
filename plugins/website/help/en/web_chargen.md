@@ -2,19 +2,14 @@
 toc: Web Portal
 summary: Creating a character with the web portal.
 ---
+# Character Creation
 
-# Creating a Character with the Web Portal
+This game uses a web-based applications system for character approvals.
 
-To get a character, you can create one from the [connect screen](/help/connect) or  [register](/help/website/web_login) on the web portal.
+Log in to the web portal with your character name and password, then visit [Create a Character](/chargen) to complete your application online. As you are going through character creation, you can save and review your application.  The system will flag common issues.
 
-All character generation is done on the web portal, where all the stages are together on the same page and there are visual cues and links to all the information you'll need.
+* Visit our [Guidelines & Help](/wiki/join_us) for information on restrictions and more.
+* [Hooks & Hopes](/wiki/hooks__amp__hopes) offers hooks to new characters and lists characters others are searching for.
+* The [roster](/roster) has pre-made characters you can pick up easily.
 
-## Setting Character Information
-
-The other tabs allow you to set up the different bits of your character's information.  
-
-> **Tip:** Changes to your character are not made in-game until you click the Save button.  Save early.  Save often.
-
-## Submitting Your Character for Approval
-
-When you're finished setting all your information, you can use the 'Review' button at the bottom to review and submit your character for approval.  You'll need to log into the game to check the status of your app.
+You can view responses to your application in your requests.

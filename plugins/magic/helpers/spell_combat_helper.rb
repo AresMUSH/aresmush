@@ -296,7 +296,7 @@ module AresMUSH
 
     def self.cast_stun(combatant, target, spell, rounds, result)
       margin = Magic.determine_magic_attack_margin(combatant, target, mod = mod, result, spell)
-      stopped_by_shield = margin[:stopped_by_shield]
+      stopped_by_shield = margin[:stopped_by_shield] || []
       puts "MARGIN: #{margin}"
       if target == combatant
         message = ["%xrYou can't stun yourself%xn"]
@@ -312,7 +312,7 @@ module AresMUSH
         if stopped_by_shield.include?("Failed")
           # message = margin[:message]
           message = [t('magic.shield_failed_stun', :name => combatant.name, :spell => spell, :shield=> "Mind Shield", :mod => "", :target => target.name, :succeeds => "%xgSUCCEEDS%xn", :rounds => rounds)]
-        elsif !stopped_by_shield
+        else
           message = [t('magic.cast_stun', :name => combatant.name, :spell => spell, :mod => "", :target => target.name, :succeeds => "%xgSUCCEEDS%xn", :rounds => rounds)]
         end
       else
@@ -320,11 +320,12 @@ module AresMUSH
           message = [t('magic.shield_held', :name => combatant.name, :spell => spell, :mod => "", :shield => "Mind Shield", :target => target.name)]
         elsif stopped_by_shield.include?("Failed")
           message = [t('magic.shield_failed_stun_resisted', :name => combatant.name, :spell => spell, :shield=> "Mind Shield", :mod => "", :target => target.name)]
-        elsif !stopped_by_shield
+        else !stopped_by_shield
           message = [t('magic.cast_failed_stun', :name => combatant.name, :spell => spell, :mod => "", :target => target.name, :succeeds => "%xgSUCCEEDS%xn")]
         end
 
       end
+      puts "Message #{message}"
       return message
     end
 
@@ -368,7 +369,7 @@ module AresMUSH
     def self.cast_attack_target(combatant, target, called_shot = nil, result)
         return [ t('fs3combat.has_no_target', :name => combatant.name) ] if !target
 
-        margin = Magic.determine_magic_attack_margin(combatant, target, result = result, spell)
+        margin = Magic.determine_magic_attack_margin(combatant, target, result = result, combatant.weapon)
 
         # Update recoil after determining the attack success but before returning out for a miss
         recoil = FS3Combat.weapon_stat(combatant.weapon, "recoil")

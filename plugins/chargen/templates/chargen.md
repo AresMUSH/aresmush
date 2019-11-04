@@ -14,5 +14,3 @@ Log in to the web portal with your character name and password, then visit [Crea
 * Visit our [Guidelines & Help](/wiki/join_us) for information on restrictions and more.
 * [Hooks & Hopes](/wiki/hooks__amp__hopes) offers hooks to new characters and lists characters others are searching for.
 * The [roster](/roster) has pre-made characters you can pick up easily.
-
-You can view responses to your application in your requests.
