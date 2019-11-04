@@ -58,6 +58,8 @@ module AresMUSH
       school = Magic.find_spell_school(char, spell_name)
       level_below = spell_level.to_i - 1
       spells_learned =  char.spells_learned.to_a
+      Global.logger.debug "SPELL: #{spell_name} level_below: #{level_below}"
+      Global.logger.debug "SPELLS LEARNED #{spells_learned}"
       if spells_learned.any? {|s| s.level == level_below && s.school == school && s.learning_complete == true}
         return true
       elsif spell_level == 1
@@ -68,7 +70,7 @@ module AresMUSH
     end
 
     def self.equal_level_spell?(char, spell_name)
-      spell_name = spell_name.titlecase 
+      spell_name = spell_name.titlecase
       spell_level = Magic.find_spell_level(char, spell_name)
       school = Magic.find_spell_school(char, spell_name)
       spells_learned =  char.spells_learned.to_a
