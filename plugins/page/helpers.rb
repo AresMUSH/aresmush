@@ -13,7 +13,11 @@ module AresMUSH
       recipients.sort_by { |r| r.name }.each do |r|
         client = Login.find_client(r)
         if (!client)
-          names << "#{r.name}<#{t('page.offline_status')}>"
+          if (Login.find_web_client(r))
+            names << "#{r.name}#{Website.web_char_marker}"
+          else
+            names << "#{r.name}<#{t('page.offline_status')}>"
+          end
         elsif (r.page_do_not_disturb)
           names << "#{r.name}<#{t('page.dnd_status')}>"
         elsif (r.is_afk?)

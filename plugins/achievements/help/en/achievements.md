@@ -1,10 +1,13 @@
 ---
-toc: Utilities / Miscellaneous
+toc: Community
 summary: Character achievements.
 ---
-# Achievements
+# Achievement Commands
 
-You can earn achievements for contributing to the game's community, story or website.  Achievements are tracked per character.  Each game defines what achievements are available.
+You can earn achievements for contributing to the game's community, story or website.  They have no practical effect; they're just fun badges for you to collect.
 
+> Learn about how achievements work in the [Achievements Tutorial](/help/achievements_tutorial).
+
+`achievements/all` - Lists all achievements.
 `achievements` - Views your achievements.
 `achievements <name>` Views someone else's achievements.

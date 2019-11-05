@@ -1,5 +1,5 @@
 ---
-toc: Accessibility
+toc: Setting Up Your Client
 summary: Support for screen readers and accessibility features.
 aliases:
 - screen_reader
@@ -16,4 +16,6 @@ If you have difficulty seeing color, you can change how the game shows you color
 
 `colors <fansi, ansi, none>` - Changes what colors you see.
 
-If you have suggestions for how to improve accessibility, please provide [feedback](https://aresmush.com/feedback.html).
+If you have a player handle, you can set these settings once in your AresCentral account and it will automatically carry over to all your other linked characters.  See [AresCentral](/help/arescentral).
+
+Suggestions for improving accessibility are always welcome.  Just [contact us](https://aresmush.com/feedback.html).

@@ -1,5 +1,5 @@
 <%= header %>
-<%= left(room.name, 40) %> <%= right(area, 37) %>
+<%= left(room.name, 40) %> <%= right(area_and_grid, 37) %>
 <%= ooc_time %> ~ <%= ic_time %>
 <%= divider %>
 <%= description %>
@@ -14,12 +14,12 @@
 <% end %>
 <% if logging_enabled %>
 
-%xy<%= center( t('describe.scene_log_active', :num => room.scene.id), 78 )%>%xn
+%xy<%= center( t('describe.scene_log_active', :url => scene_url), 78 )%>%xn
 <% end %>
 <%= divider %>
 %xg<%= t('describe.players_title') %>%xn
 <% online_chars.each do |c| -%>
-%xh<%= char_name(c) %>%xn <%= char_tag(c)%> <%= char_afk(c) %><%= char_shortdesc(c)%>
+%xh<%= char_name(c) %>%xn <%= char_tag(c)%><%= char_afk(c) %><%= char_shortdesc(c)%>
 <% end %> 
 
 <%= "%xg#{t('describe.exits_title')}%xn" -%>

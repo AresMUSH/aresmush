@@ -1,5 +1,6 @@
 ---
 toc: 1 - Getting Started
+tutorial: true
 summary: Learn how a MUSH is played.
 order: 1
 ---
@@ -9,37 +10,35 @@ A MUSH is a multi-player online game that blends creative writing, improv acting
 
 Players create and control characters in a shared story.  Like a video game, a MUSH provides a virtual world for the characters to inhabit.  It just uses text instead of graphics to describe the characters, locations and action.  Like a tabletop RPG, there are rules to keep things fair.
 
+[[toc]]
+
 ## Connecting to the Game
 
-There are two ways to interact with the game.
+Using the game's website, or **web portal**, you can play the game from a browser, browse characters and scenes, manage your character's profile, check mail and forum posts, view the online help and more.
 
-You can start with the game's integrated website, known as the **Web Portal**.  Through the Web Portal, you can read the game's story, learn about the setting and the characters, and participate in the game community through discussion forums and live chat.  
-
-The Web Portal is great for information gathering, but to access *all* of the game's features you'll need to connect to the game server through a **MUSH client**.  There are [dedicated MUSH client apps](http://www.aresmush.com/clients.html) you can install on your PC/Mac or mobile device, or you can use the game's built-in web client to play through the web browser.  
-
-> If you've already connected through a MUSH client, type `website` to find the address of the Web Portal.   If you're reading this on the Web Portal, the home page should give you the address to input into your MUSH client.  On the Web Portal, go to 'Play -> Play via Web Client' to open the built-in web client.
+Many players prefer to play using a **MU Client**, which is a text-only, MUSH-specific app that works similar to Discord or Slack.  There are several [client apps](http://www.aresmush.com/clients.html) available for various platforms.  Many admin commands are currently only available via MU Client.
 
 ## Interacting with the Game
 
-The Web Portal works like any website, so it should be pretty easy to browse around and figure things out.   The MUSH client takes a little getting used to because it's entirely text-based.  You interact with the game by typing **commands** in your client.  For example, to look around you'd type `look`.  To see who's online, you'd type `who`.
+The web portal works like any website, so it should be pretty easy to browse around and figure things out.   The MU Client takes a little getting used to because it's entirely text-based.  You interact with the game by typing **commands** in your client.  For example, to look around you'd type `look`.  To see who's online, you'd type `who`.
 
-There are many MUSH commands.  They let you describe your character and his/her abilitie, communicate with other players in a variety of ways, and interact with the game world.
+There are many MUSH commands.  They let you describe your character and his/her abilities, communicate with other players, and interact with the game world.
 
-To find out what commands are available and how to use them, type `help` in your client or browse to 'Help -> Game Help' in the Web Portal.
+To find out what commands are available and how to use them, type `help` in your client or browse to 'Help -> Game Help' in the web portal.
 
 ## Character Generation
 
-You can create a character of your own from the game's welcome screen, but at first all they have is a name.  Before you can actually play, you'll need to flesh them out.  This is called **Character Generation** (chargen for short).  You can do some of chargen on the Web Portal (maybe even all, depending on the game).  There are also in-game chargen commands.  When you're ready to start chargen, see the [Chargen Help](/help/chargen).
+You can create a character of your own from the game's welcome screen, but initially all they have is a name.  Before you can actually play, you'll need to flesh them out.  This is called **Character Generation** (chargen for short).  You can do some or all of chargen on the web portal, depending on the game.  There are also in-game chargen commands.  When you're ready to start chargen, see the [Chargen Help](/help/chargen).
 
-> Depending on whether you're reading this via a MUSH client or the Web Portal, 'Chargen Help' above may show up as either a hyperlink, which you can click on, or text like (/help/chargen) that reminds you to type `help chargen` in your MUSH client.
+> When viewing help files on the portal, a reference like Chargen Help' above will show up as a clickable link.  In the MU Client, you'd type `help chargen` to view that file.
 
 ## Scenes and Rooms
 
-Once you've completed chargen, you can join the story.  The story is told via **Scenes**.  Like a scene in a TV show or movie, a MUSH scene represents a snippet in time where something interesting happens.  During a MUSH scene, you write your character's actions and dialogue.  In MUSH lingo, these are called **Poses**, but you can really just think of them as turns or moves.  The other characters do the same, and that's how the story gets told.
+Once you've completed chargen, you can join the story.  The story is told via **Scenes**.  Like a scene in a TV show or movie, a MUSH scene represents a snippet in time where something interesting happens.  During a MUSH scene, you write your character's actions and dialogue.  In MUSH lingo, these are called **Poses**, but you can also just think of them as turns or moves.  Everyone takes turn posing their individual characters, and that's how the story gets told.
 
 Scenes take place in locations in the game world.  Where a video game has a graphical environment to explore, a MUSH has a text-based one that's divided into distinct locations.  In MUSH lingo, the collection of locations is called **The Grid** and each location is called a **Room**.  When you're ready to start or join a scene, see the [Scene Help](/help/scenes).
 
-## Learn More
+## Command Reference
 
 For a more in-depth tutorial on how to play, including important commands and terminology, see the [MUSH 101 tutorial](https://aresmush.com/mush-101).
 

@@ -10,9 +10,20 @@ module AresMUSH
         super File.dirname(__FILE__) + "/help_list.erb"
       end
       
+      def toc_topics(section)
+        Help.toc_section_topic_data(section)
+             .select { |name, data| data['tutorial'] }
+             .sort_by { |name, data| [ data['order'] || 99, name ] }
+      end
+      
       def section_topics(section)
-        Help.toc_section_topic_data(section).sort_by { |name, data| [ data['order'] || 99, name ] }
-      end            
+        Help.toc_section_topic_data(section)
+        .select { |name, data| !data['tutorial'] }
+        .sort_by { |name, data| [ data['order'] || 99, name ] }
+        .map { |name, data| name.humanize.titleize }
+        .join( ' | ' )
+      end  
+       
       
       def web_portal_url
         Game.web_portal_url

@@ -9,16 +9,9 @@ aliases:
 
 # Names and Aliases
 
-All characters have a one-word moniker called their "name".  This can be their first name, last name or nickname depending on the game's naming policy.
-
-Up until the point when you're approved, you can change your name.
+All characters have a one-word moniker called their "name".  This can be their first name, last name or nickname depending on the game's naming policy.  A character can also have a single nickname/alias.  You can substitute the alias in any command that uses character's name.
 
 `rename me=<new name>` - Changes your name.
-
-After you're approved, only admins can change your name.  This is because changing your identity may confuse people, and may mess up things like wiki page references.
-
-## Setting an Alias
-
-A character can also have a single nickname/alias.  You can use it anywhere that you use a character's name.
-
 `alias <name>` - Sets your alias.  Leave blank to clear it.
+  
+> **Note:** After you're approved, you need to contact an admin to change your name.

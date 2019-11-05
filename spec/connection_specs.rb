@@ -53,6 +53,12 @@ module AresMUSH
         @connection.receive_data("test1\ntest2\n")
       end
       
+      it "should handle multiple inputs separated with double line ends and ignore null commands" do
+        expect(@client).to receive(:handle_input).with("echo 1\n")
+        expect(@client).to receive(:handle_input).with("echo 2\n")
+        @connection.receive_data("echo 1\n\necho 2\n\n")
+      end
+      
       it "should accumulate partial commands" do
         expect(@client).to receive(:handle_input).with("test\n")
         @connection.receive_data("te")
