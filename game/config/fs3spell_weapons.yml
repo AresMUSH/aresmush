@@ -16,11 +16,12 @@ fs3combat:
     Diamond:
       description: Level 4 Earth spell
       is_magic: true
-      penetration: 3
+      penetration: 2
     Fire:
       description: Level 4 Fire spell
       is_magic: true
-      lethality: 5
+      lethality: 10
+      accuracy: 1
     Grow:
       description: Level 4 Corpus spell
       is_magic: true
@@ -38,12 +39,14 @@ fs3combat:
     Ice:
       description: Level 4 Ice spell
       is_magic: true
-      lethality: 10
-      penetration: -4
+      lethality: 15
+      penetration: -1
     Lightning:
       description: Level 4 Air spell
       is_magic: true
       lethality: 5
+      penetration: 1
+      init_mod: 2
     Shrink:
       description: Level 4 Corpus spell
       is_magic: true
@@ -63,12 +66,12 @@ fs3combat:
       description: Level 4 Will spell
       is_magic: true
       accuracy: 1
-      lethality: 3
+      lethality: 5
       penetration: 1
     Vitality:
       description: Level 4 Corpus spells
       is_magic: true
-      lethality: 3
+      lethality: 10
 
   weapons:
     #LORE HOOKS

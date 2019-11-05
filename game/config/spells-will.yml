@@ -315,7 +315,7 @@ spells:
   Mass Flight:
     available: true
     casting_time: 1 round
-    desc: "Confers the power of flight upon up to 3 targeted creatures. Each recipient of the spell must remain within 30 feet of at least one other recipient, or the spell ends for the creature that is separated from the others."
+    desc: "Confers the power of flight upon up to 3 targeted creatures. Each recipient of the spell must remain within 30 feet of at least one other recipient, or the spell ends for the creature that is separated from the others.\n\n Should the spell duration expire while the caster is still aloft, the magic fails slowly, lowering the caster safely to the ground."
     duration: 30 minutes
     effect: Travel
     level: 7

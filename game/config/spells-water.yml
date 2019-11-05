@@ -180,7 +180,7 @@ spells:
   Ice Weapon:
     available: true
     casting_time: 1 round
-    desc: Augment one specified pre-existing weapon with a fine coating of freezing ice. Though largely useless against armor, this weapon does incredible damage against unprotected skin, even through normal clothing.
+    desc: Augment one specified pre-existing weapon with a fine coating of freezing ice. Though less useful against armor, this weapon does incredible damage against unprotected skin, even through normal clothing.
     duration: 3 hours
     effect: Buff
     is_potion: true
