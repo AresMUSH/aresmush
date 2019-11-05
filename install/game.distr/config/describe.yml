@@ -24,5 +24,6 @@ describe:
   tag_colors:
     admin: "%xb"
     beginner: "%xg"
+    web: "%xh%xx"
   exit_start_bracket: "["
   exit_end_bracket: "]"
