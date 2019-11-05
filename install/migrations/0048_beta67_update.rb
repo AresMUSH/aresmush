@@ -3,7 +3,7 @@ module AresMUSH
   module Migrations
     class MigrationBeta67Update
       def require_restart
-        false
+        true
       end
       
       def migrate
@@ -34,6 +34,7 @@ module AresMUSH
         Global.logger.debug "Add plugin extras list."
         config = DatabaseMigrator.read_config_file("plugins.yml")
         config['plugins']['extras'] = []
+        config['plugins']['command_queue_limit'] = 15
         DatabaseMigrator.write_config_file("plugins.yml", config)
       end 
     end
