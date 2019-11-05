@@ -24,5 +24,10 @@ module AresMUSH
         true
       end
     end
+    
+    def self.is_extra_installed?(name)
+      extras = Global.read_config('plugins', 'extras') || []
+      extras.include?(name)
+    end
   end
 end

@@ -27,6 +27,7 @@ module AresMUSH
           import_game
         end
         import_portal
+        update_extras
         
         Global.logger.info "Plugin #{@plugin_name} added."
       end
@@ -98,6 +99,13 @@ module AresMUSH
         web_files.each do |f|
           FileUtils.cp_r(f, dest_path)
         end
+      end
+      
+      def update_extras
+        config = DatabaseMigrator.read_config_file("plugins.yml")
+        config['plugins']['extras'] << @plugin_name
+        config['plugins']['extras'] = config['plugins']['extras'].uniq
+        DatabaseMigrator.write_config_file("plugins.yml", config)
       end
     end
   end

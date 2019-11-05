@@ -16,26 +16,31 @@ module AresMUSH
       end
       
       def show_abilities
-        ability_system = Global.read_config("chargen", "ability_system")
-        return false if ability_system.blank?
-        return FS3Skills.is_enabled? if ability_system == 'fs3'
-        return true
+        return true if FS3Skills.is_enabled?
+        return true if Manage.is_extra_installed?("cortex")
+        return true if Manage.is_extra_installed?("ffg")
+        return true if Manage.is_extra_installed?("fate")
+        return false
       end
       
       def abilities
-        ability_system = Global.read_config("chargen", "ability_system")
-        return nil if ability_system.blank?
-        
-        case ability_system
-        when "fs3"
-          FS3Skills.app_review(@char)
-        else
-          plugin_module = Global.plugin_manager.plugins.select { |p| "#{p}".upcase == "ARESMUSH::#{ability_system.upcase}"}.first
-          if (!plugin_module)
-            raise "Invalid ability system configured.  No plugin found for #{ability_system}."
-          end
-          plugin_module.app_review(@char)
+        if (FS3Skills.is_enabled?)
+          return FS3Skills.app_review(@char)
         end
+        
+        if (Manage.is_extra_installed?("cortex"))
+          return Cortex.app_review(@char)
+        end
+
+        if (Manage.is_extra_installed?("ffg"))
+          return Ffg.app_review(@char)
+        end
+
+        if (Manage.is_extra_installed?("fate"))
+          return Fate.app_review(@char)
+        end
+        
+        return nil
       end
       
       def abilities_header
