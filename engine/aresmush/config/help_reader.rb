@@ -35,6 +35,7 @@ module AresMUSH
         meta["path"] = file
         meta["plugin"] = plugin_title
         meta["topic"] = topic
+        meta["override"] = plugin == "game" ? true : false
         toc = meta["toc"] || "Miscellaneous"
         
         if self.help_file_index.has_key?(topic)

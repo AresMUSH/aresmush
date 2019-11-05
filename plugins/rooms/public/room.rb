@@ -42,6 +42,14 @@ module AresMUSH
       self.area ? "#{self.area.name}/#{self.name}" : self.name
     end
     
+    def grid_marker
+      if (self.grid_x && self.grid_y)
+        "(#{self.grid_x},#{self.grid_y})"
+      else
+        nil
+      end
+    end
+    
     def self.find_by_name_and_area(search, enactor_room = nil)
       search = search || ""
       return [enactor_room] if search == "here" && enactor_room

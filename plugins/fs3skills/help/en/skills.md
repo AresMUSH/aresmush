@@ -16,41 +16,28 @@ aliases:
 - advantages
 - abilities
 ---
-# FS3 Skills
+# FS3 Skill Commands
 
-This game uses the FS3 skills system, Third Edition.  The complete rulebook can be found online: [FS3 Player's Guide](http://www.aresmush.com/fs3/fs3-3).
+You can set your skills during character creation via the web portal or the ability commands explained below.  After you're approved, you can only improve skills with [Experience Points](/help/xp).
 
-## Resetting Skills
+> Learn how the FS3 skills system works in the [FS3 Tutorial](/help/fs3).
 
-To get started, or at any point you wish to reset yourself, use the reset command.
+## Reset to Start
 
-`reset` - Resets your abilities, setting default values based on your groups.
-         **This will erase any abilities you have, so do this first!**
+To get started in chargen (or to start over), use the reset command.
 
-## Viewing Your Sheet
+`reset` - Resets your abilities, setting default values based on your groups.  **This will erase any abilities you have, so do this first!**
 
-At any time you can check your current status and progress using the `sheet` and `app` commands.
+## Setting Abilities
 
-## Raising Abilities
+`abilities` - Lists available abilities.
+`sheet` - Views your character sheet.
 
-Use the Abilities command to see the ratings, available abilities and descriptions.
+`raise <name>` and `lower <name>` - Raise or lower an ability by 1 level.
+`ability <name>=<level>` - Sets an ability to a specific rating.
+`specialty/add <ability>=<specialty>` or `specialty/remove <ability>=<specialty>` - Add or remove an action skill specialty.
 
-`abilities` - Lists abilities.
-
-There are two ways to adjust your abilities.  All abilities use the same commands:   
-
-`raise <name>` and `lower <name>` - Raise or lower by 1 level.
-`ability <name>=<level>` - Sets the rating
-
-## Adding Specialties
-
-Some abilities require specialization.  You can add or remove a specialty:
-
-`specialty/add <ability>=<specialty>` or `specialty/remove <ability>=<specialty>`
-
-## Finding Other People With Skills
-
-If you're looking for a character with a specific skill, you can use the skill scan command (if the game has enabled visible sheets).  It will list anyone with that skill above Everyman (or above Average for attributes).  People in your room are highlighted.  You can also see a summary of people within the different skill categories.
+## Finding People With Skills
 
 `skill/scan <specific skill name>` - Find people with that skill.
 `skill/scan <action, background, language>` - Summarize peoples' skill levels. Only skills held by 2 or more people are shown to cut down on spam.

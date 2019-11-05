@@ -11,20 +11,24 @@ aliases:
 
 # Damage
 
+The damage commands are part of the FS3Combat system.
+
+> Learn how the combat system works in the [Combat Tutorial](/help/fs3combat_tutorial).
+
 `damage` - Views your damage. 
 `damage <name>` - Views someone else's damage.
 
-Note that the healing progress bar on the damage display just shows how close you are to reducing the wound by one level. 
+> **Note:** The healing progress bar on the damage display just shows how close you are to reducing the wound by one level. It may take several levels before you're fully healed.
 
 ## Treating
 
-For first aid/treatment immediately after an injury, medics can use the treat command.  Each treatment affects only a single wound.  Inside combat, you use `combat/treat <name>` instead.
+> **Note:** Treating only works soon after an injury, and only affects a single wound.  Inside combat, you use `combat/treat <name>` instead.
 
 `treat <name>` - Treats someone's wounds with immediate first aid.
 
 ## Healing
 
-For more longer-term healing, doctors/healers can use the heal command.  You will continue healing someone until they are well.  
+> **Note:** Healing is more of ongoing care, like a nurse or doctor might give. You will continue healing someone until they are well. 
 
 `heal/start <name>` - Takes someone as a patient.
 `heal/stop <name>` - Removes a patient.
@@ -43,7 +47,7 @@ Admins or builders with the `build` permission can designate rooms as hospitals.
 
 ## Adjusting Damage
 
-Admins, combat organizers, and characters with the manage_combat permission can add or modify damage.
+Admins and characters with the `manage_combat` permission can add or modify damage.
 
 `damage/inflict <name>=<description>/<severity>` - Inflicts damage outside combat.
 `damage/modify <name>/<damage #>=<description>/<initial severity>/<current severity>/<IC date>` - Modifies damage.

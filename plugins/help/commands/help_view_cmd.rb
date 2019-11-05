@@ -26,14 +26,7 @@ module AresMUSH
         
         if (topics.count == 1)
           found_topic = topics.first
-          formatter = MarkdownFormatter.new
-          md_contents = Help.topic_contents(found_topic)
-          help_url = Help.topic_url(found_topic, search_topic.rest(' '))
-          
-          lines = md_contents.split("\n")            
-          
-          footer = "%ld%R#{t('help.help_topic_footer', :url => help_url)}%R#{t('help.quickref_tip')}"
-          template = BorderedDisplayTemplate.new formatter.to_mush(md_contents), nil, footer
+          template = HelpDetailTemplate.new(search_topic, found_topic)
           client.emit template.render
           
         elsif (topics.count == 0)

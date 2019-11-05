@@ -43,7 +43,8 @@ module AresMUSH
           unread_scenes_count: unread_scenes.count,
           date_entry_format: Global.read_config("datetime", 'date_entry_format_help').upcase,
           disabled_plugins: disabled,
-          whos_online: Who.web_who_report,
+          extra_plugins: Global.read_config('plugins', 'extras') || [],
+          who_count: Who.all_online.count,
           scene_count: active_scenes.count,
           roster_enabled: Idle.roster_enabled?
         } 

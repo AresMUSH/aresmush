@@ -14,9 +14,6 @@ en:
         organizer_deleted: "(Organizer Deleted)"
         last_activity: "Last Activity: "
         
-        whisper_emit: "%{name} whispers to %{target}, \"%{message}\""
-        whisper_emit_header: "%xc%% Private whisper:%xn"
-        
         grid_scene: "On Grid"
         temproom_scene: "Temp Room"
         

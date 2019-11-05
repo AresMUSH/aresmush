@@ -45,8 +45,6 @@ scenes:
     pose/remove: pose/drop
     po: pose
     me: pose
-    whisp: whisper
-    mutter: whisper
     repose/nudge: pose/nudge
     repose/notify: pose/notify
     repose/drop: pose/drop
@@ -72,3 +70,4 @@ scenes:
     scene_participant:
       type: story
       message: Participated in %{count} scenes.
+  use_custom_char_cards: false

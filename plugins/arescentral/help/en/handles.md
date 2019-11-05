@@ -1,15 +1,13 @@
 ---
-toc: 3 - Creating a Character
+toc: Community
 summary: Creating a player handle.
 ---
 # AresCentral - Player Handles
 
-Handles bring a little taste of social media to MUSHing. For more information and help on creating your handle, see: [AresMUSH Handles Tutorial](http://aresmush.com/handles/).
+Handles bring a little taste of social media to MUSHing.
 
-To create or manage your handle, visit [AresCentral](http://arescentral.aresmush.com/).
+> Learn about how handles work in the [AresCentral Tutorial](/help/arescentral).
 
-Having a handle is only useful once you `link` characters to it.  This tells the game which characters on which games are yours.  Linking is optional; you can pick and choose which characters you want to link.  You will need a link code from AresCentral.  When you have it, you can do:
+To link a character to your player handle, you'll need a link code from AresCentral.  Once you have it:
 
-`handle/link <handle name>=<link code>`
-
-Autospace, quote/page colors and timezone preferences are automatically downloaded from your AresCentral character to each of your linked characters.
+`handle/link <handle name>=<link code>` - Links a character to your player handle.

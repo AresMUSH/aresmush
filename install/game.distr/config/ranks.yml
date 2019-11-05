@@ -4,6 +4,7 @@ ranks:
   - manage_ranks
   rank_group: Faction
   rank_rows: 9
+  rank_style: military
   ranks:
     Navy:
       Officer:
@@ -49,4 +50,3 @@ ranks:
         Sergeant Major: false
   shortcuts:
     rank/clear: rank/set
-  rank_style: military
