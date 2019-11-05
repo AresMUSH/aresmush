@@ -3,9 +3,11 @@ module AresMUSH
   class Character
     collection :mail, "AresMUSH::MailMessage"
     reference :mail_composition, "AresMUSH::MailComposition"
-    attribute :copy_sent_mail, :type => DataType::Boolean
     attribute :mail_filter, :default => "Inbox"
     
+    # Deprecated.  Sent mail is always on now.
+    attribute :copy_sent_mail, :type => DataType::Boolean
+
     before_delete :delete_mail
     
     def has_unread_mail?

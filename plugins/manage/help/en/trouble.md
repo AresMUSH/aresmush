@@ -1,5 +1,5 @@
 ---
-toc: Utilities / Miscellaneous
+toc: Community
 summary: Dealing with troublesome players.
 aliases:
 - ban
@@ -8,6 +8,8 @@ aliases:
 - harassment
 - harassing
 - harass
+- abuse
+- harassed
 - troll
 ---
 # Dealing With Trouble

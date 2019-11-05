@@ -1,0 +1,77 @@
+---
+toc: 4 - Writing the Story
+summary: Starting scenes.
+order: 1
+tutorial: true
+---
+
+# Scenes
+
+While you can always do free-form RP on the grid or in the RP room, there are a variety of features available to you if you use the **Scenes** system to manage your RP scene.  Some features that the scenes system provides:
+
+* Creating temprooms for private scenes or places not on the grid.
+* Advertising your scene as open so others know they're welcome to join.
+* Capture a log of poses, skill rolls and combat messages without the OOC spam.
+* Share a log easily to the game's web portal.
+
+[[toc]]
+
+## Viewing Scenes
+
+You can see what scenes are going on through the web portal (typically under Play -> Active Scenes) or the `scenes` command.
+
+![Scenes Page Screenshot](https://aresmush.com/images/help-images/scenes.png)
+
+> **Tip:** Once you've joined scenes, you can switch between them easily on the My Scenes page on the web portal.
+
+## Starting a Scene
+
+When you start a scene, you can create a temporary room or start one in the room you're in.  Scenes started on the web portal always use a temp room.  Temp rooms are automatically recycled when the scene ends.
+
+> **Tip:** If your location name matches a grid location, the desc will be copied over.  You can use Area/Room for the location name to distinguish between rooms with the same name in different areas.
+
+## Scene Privacy
+
+A scene can either be open (anyone's invited) or private.  Scenes on the grid are open by default and scenes in RP Rooms private by default.  The scene's organizer can change the privacy setting. 
+
+> **Note:** Ares does not provide admins with a command to view private scenes.  However, be aware that any data transmitted to the server and/or stored in the database is accessible to the game owner and anyone they choose to share it with.
+
+## Joining Scenes
+
+To join an open scene, you can use the `scene/join` command or join on the web portal.  To join a private scene, you'll need a scene invitation or a [meetme](/help/meetme). 
+
+> **Tip:** When you're playing via the MU client, you can only pose to a scene in the room you're in.  On the web portal, you can join and pose to any number of scenes at once.
+
+## Posing
+
+During the scene, you will use [Poses](/help/posing_tutorial) to write your part of the story.
+
+You can use [Pose Order](/help/pose_order) to help keep track of whose turn it is. This is a guide to help people take turns equitably, and is not meant as a strict turn order.
+
+You can edit and delete your poses through the web portal. From a MU client, you can also amend or replace your **prior pose** using `scene/replace` or `scene/typo`.  The typo version corrects it in the log but doesn't add a notification.
+
+![Live Scene Page Screenshot](https://aresmush.com/images/help-images/scene-live.png)
+
+## Scene Logging
+
+The scenes system captures a RP log automatically for you.  The log will contain poses, skill rolls and combat results.  OOC remarks will be captured while the scene is in progress but deleted once it's shared.  Other OOC spam (pages, channels, help text) will not be included.
+
+During the scene, you can refer back to the log for a quick catch-up if you joined late or missed poses.  You can also capture the full, clean log from either the web portal or the `scene/log` command.
+
+## Stopping a Scene
+
+You should stop a scene when it's over, either from the portal menu or using `scene/stop`.  Scenes with no activity will be stopped automatically at some point.  If a scene is inadvertently stopped, you can restart it in a temp room.
+
+When a scene in a temp room stops, characters in that room are normally sent back to the Offstage lounge.  You can instead choose to be sent to your character's home or workplace (if you've set one with the home or work command) using the `scene/home` command.
+
+## Sharing a Scene
+
+When a scene is over, you can choose to share the scene on the web portal.  Shared scenes are viewable by everyone and included on your character's personal scene archive on their profile page.
+
+> **Note:** Unshared scenes will be deleted at some point (determined by the game settings), so if you don't intend to share the scene you should be sure to download the scene log.
+
+## Command Reference
+
+[Scene Commands](/help/scenes)
+[Posing](/help/posing)
+[Pose Order](/help/pose_order)

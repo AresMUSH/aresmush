@@ -15,10 +15,10 @@ For example, if you want the game to do the 'combat' command whenever you type '
     shortcut/add com=combat
     shortcut/add h=help
 
-You can include arguments in your shortcuts.  For example, you could create an alias that did 'help combat' when you typed 'chelp'.
+You can include arguments in your shortcuts.  For example, you could create an alias that did 'help combat' when you typed `chelp`.
 
     shortcut/add chelp=help combat
 
-When you use a shortcut, anything you type after it will be added to the end of the command.  Here's one that lets you do 'pf <text>' to page Faraday.
+When you use a shortcut, anything you type after it will be added to the end of the command.  Here's one that lets you do `pf <text>` to page Faraday.
 
     shortcut/add pf=page faraday=

@@ -1,5 +1,5 @@
 ---
-toc: Getting Started
+toc: Utilities / Miscellaneous
 summary: Notifications
 aliases:
 - notifications

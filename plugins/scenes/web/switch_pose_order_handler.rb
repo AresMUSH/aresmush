@@ -26,7 +26,7 @@ module AresMUSH
         
         scene.room.update(pose_order_type: new_type)
         message = t('scenes.pose_order_type_changed', :name => enactor.name, :type => new_type)
-        Scenes.emit_pose(enactor, message, false, false, nil, true)
+        Scenes.emit_pose(enactor, message, false, false, nil, true, scene.room)
         
         {
         }
