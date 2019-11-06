@@ -85,7 +85,7 @@ spells:
   Dampen Emotion:
     available: true
     casting_time: 1 round
-    desc: "Reduce the strength of the most dominant emotion that the target is feeling. For example, anger may be suppressed into annoyance, joy into serenity, or grief into sadness."
+    desc: "Reduce the strength of the most dominant emotion that the target is feeling. For example, anger may be suppressed into annoyance, joy into serenity, or grief into sadness.\n\nThose with Spirit may notice that the spell has been cast, and may attempt to do so with a roll of the caster's Spirit vs the target's Spirit-4. A draw goes to the caster. A draw goes to the caster. This does not prevent the spell's effects or identify the caster in any way."
     damage_type: Psionic
     duration: 10 minutes
     effect: Psionic
@@ -179,7 +179,7 @@ spells:
   Emotional Aura:
     available: true
     casting_time: 1 round
-    desc: One target becomes outlined in light visible only to the caster. The color of the light corresponds to the target's current emotional status.
+    desc: "One target becomes outlined in light visible only to the caster. The color of the light corresponds to the target's current emotional status.\n\nThose with Spirit may notice that the spell has been cast, and may attempt to do so with a roll of the caster's Spirit vs the target's Spirit-4. A draw goes to the caster. This does not prevent the spell's effects or identify the caster in any way."
     damage_type: Psionic
     duration: 1 round
     effect: Psionic
@@ -264,7 +264,7 @@ spells:
   Detect Magic:
     available: true
     casting_time: 1 round
-    desc: "The caster senses whether magic is affecting or being performed by a sapient target. They are able to identify the magic's School, its specific affect(s), its range, and targets if applicable. The caster can also sense whether a sapient target is capable of magic, and the target's Schools.\n\nGMs should provide the name of the spell if the caster would be aware of it."
+    desc: "The caster senses whether magic is affecting or being performed by a sapient target. They are able to identify the magic's School, its specific affect(s), its range, and targets if applicable. The caster can also sense whether a sapient target is capable of magic, and the target's Schools.\n\nGMs should provide the name of the spell if the caster would be aware of it.\n\nThose with Spirit may notice that the spell has been cast, and may attempt to do so with a roll of the caster's Spirit vs the target's Spirit-4. A draw goes to the caster. This does not prevent the spell's effects or identify the caster in any way."
     effect: Psionic
     level: 4
     line_of_sight: true
@@ -383,7 +383,7 @@ spells:
     available: true
     casting_time: 1 round
     damage_type: Psionic
-    desc: "The caster convinces a sapient target's mind of sensory input (a smell, taste, sound, texture, and/or temperature) to trick their senses into believing it is real. The target’s mind, in conjunction with the spell, will fill in the gaps and discrepancies, glossing over irregularities. Cannot be used to convey words or intelligible speech to the target.\n\nThose with Spirit are more likely to identify the senses as false, and may attempt to do so with a roll of the caster's Spirit vs the observer's Spirit-5."
+    desc: "The caster convinces a sapient target's mind of sensory input (a smell, taste, sound, texture, and/or temperature) to trick their senses into believing it is real. The target’s mind, in conjunction with the spell, will fill in the gaps and discrepancies, glossing over irregularities. Cannot be used to convey words or intelligible speech to the target.\n\nThose with Spirit are more likely to identify the senses as false, and may attempt to do so with a roll of the caster's Spirit vs the observer's Spirit-4."
     duration: 5 minutes
     effect: Psionic
     level: 4
@@ -444,7 +444,7 @@ spells:
     available: true
     casting_time: "1+ rounds at GM\u2019s discretion."
     damage_type: Psionic
-    desc: "Search someone\u2019s memory for specific events."
+    desc: "Search someone\u2019s memory for specific events.\n\nThose with Spirit may notice that the spell has been cast, and may attempt to do so with a roll of the caster's Spirit vs the target's Spirit-4. A draw goes to the caster. This does not prevent the spell's effects or identify the caster in any way."
     duration: 30 minutes
     effect: Psionic
     level: 5
@@ -458,7 +458,7 @@ spells:
     available: true
     casting_time: 1 round
     damage_type: Psionic
-    desc: "The caster's presence is completely ignored by all thinking beings or creatures. \n\nThere is no physical change, the mind simply rejects any sensory signs of the caster for the duration of the spell. Large disruptions or sudden violence by the caster will break the spell. Other Spirit users who are either actively wary or who pass an Alertness roll (with modifiers where appropriate) may see through the spell with a successful roll of the caster's Spirit vs their Spirit. A draw goes to the caster."
+    desc: "The caster's presence is completely ignored by all thinking beings or creatures. \n\nThere is no physical change, the mind simply rejects any sensory signs of the caster for the duration of the spell. Large disruptions or sudden violence by the caster will break the spell. Other Spirit users who are either actively wary or who pass an Alertness roll (with modifiers where appropriate) may see through the spell with a successful roll of the caster's Spirit vs their Spirit-4. A draw goes to the caster."
     duration: 10 minutes
     effect: Defense
     level: 5
@@ -472,7 +472,7 @@ spells:
     available: true
     casting_time: 1 round
     damage_type: Psionic
-    desc: "Implant a single one-word command in a target's mind.They cannot be commanded to harm themselves.\n\n Unprotected minds must follow the command."
+    desc: "Implant a single one-word command in a target's mind.They cannot be commanded to harm themselves.\n\n Unprotected minds must follow the command.\n\nThose with Spirit may notice that the spell has been cast, and may attempt to do so with a roll of the caster's Spirit vs the target's Spirit-4. A draw goes to the caster. This does not prevent the spell's effects or identify the caster in any way."
     duration: 5 minutes
     effect: Psionic
     level: 5
@@ -539,7 +539,7 @@ spells:
     available: true
     casting_time: "1 round to cast, additional rounds for rewriting at GM's discretion."
     damage_type: Psionic
-    desc: "Rewrite or remove someone's memory of an event up to 1 hour long. The target's mind, in conjunction with the spell, will fill in the gaps and discrepancies, glossing over irregularities."
+    desc: "Rewrite or remove someone's memory of an event up to 1 hour long. The target's mind, in conjunction with the spell, will fill in the gaps and discrepancies, glossing over irregularities.\n\nThose with Spirit may notice that the spell has been cast, and may attempt to do so with a roll of the caster's Spirit vs the target's Spirit-4. A draw goes to the caster. This does not prevent the spell's effects or identify the caster in any way."
     duration: 30 minutes
     effect: Psionic
     level: 6
@@ -570,7 +570,7 @@ spells:
     casting_time: 1 round
     damage_type: Psionic
     desc: "The caster extends their senses to all beings within range. While their  body lies senseless and incapacitated, they see and feel everything sensed by every sapient creature in that area. They can also identify the presence, quantity, and location of non-sapient creatures.\n\n
-    The caster can choose to absorb all experiences at a surface level, or focus their attention on up to five individuals at a time for more details."
+    The caster can choose to absorb all experiences at a surface level, or focus their attention on up to five individuals at a time for more details.\n\nThose with Spirit may notice that the spell has been cast, and may attempt to do so with a roll of the caster's Spirit vs the target's Spirit-4. A draw goes to the caster. This does not prevent the spell's effects or identify the caster in any way."
     duration: 15 minutes
     effect: Communication
     level: 7
@@ -593,7 +593,7 @@ spells:
     available: false
     casting_time: 1 round
     damage_type: Psionic
-    desc: "The caster puts their their target to sleep (if awake) and draws them into a dream. The caster has control of the dream and its events, although they may allow the target's subconscious to fill in details. While in the dream, all encounters seem real, though physical damage in the dream world is imaginary and vanishes upon awakening."
+    desc: "The caster puts their their target to sleep (if awake) and draws them into a dream. The caster has control of the dream and its events, although they may allow the target's subconscious to fill in details. While in the dream, all encounters seem real, though physical damage in the dream world is imaginary and vanishes upon awakening.  Most dreams are recognizable as dreams or visions on waking, though some particularly realistic ones may not be.\n\nOccasionally, a particularly fantastical dream may be recognized as such by the dreamer during the dream. At the GM's discretion, they may roll Alertness with a negative modifier, up to -11, according to the degree of absurdity present in the dream. Think of blocks of buildings curving in on themselves in Inception, not the presence of an unexpected person or being in an unexpected location.\n\nThose with Spirit may notice that the spell has been cast, and may attempt to do so with a roll of the caster's Spirit vs the target's Spirit-4. A draw goes to the caster. This does not prevent the spell's effects or identify the caster in any way."
     duration: 2 hours
     effect: Psionic
     level: 7
@@ -635,7 +635,7 @@ spells:
     desc: "Permanently rewrite the mind of the target, changing or replacing any and all memories.\n\n
     The target’s mind, in conjunction with the spell, will fill in the gaps and discrepancies, glossing over irregularities.\n\n
     Additionally, the caster can impart the remembered knowledge of how to perform simple tasks at a basic level, as long as the caster possesses said knowledge.\n\n
-    Specifics of 'simple tasks' are at staff's discretion, but can include spells up to level 3, languages at a 'conversational'(2) level, most background skills at a 'fair' (1) level, and action skills (except Schools) at a 'competent'(3) level."
+    Specifics of 'simple tasks' are at staff's discretion, but can include spells up to level 3, languages at a 'conversational'(2) level, most background skills at a 'fair' (1) level, and action skills (except Schools) at a 'competent'(3) level.\n\nThose with Spirit may notice that the spell has been cast, and may attempt to do so with a roll of the caster's Spirit vs the target's Spirit-4. A draw goes to the caster. This does not prevent the spell's effects or identify the caster in any way."
     effect: Psionic
     level: 7
     name: Rewrite History
@@ -726,7 +726,7 @@ spells:
   Siphon Of Spirit:
     available: false
     casting_time: 3 hours
-    desc: "A target siphons the magic of those around them in order to increase their power, while simultaneously decreasing the power of others.\n\nThe target receives a bonus to spellcasting and mental abilities that increases as they learn (mod=highest spell level), while those within physical range and those with a significant emotional connection to the target receive a negative modifier to spellcasting and mental abilities, up to -2."
+    desc: "A target siphons the magic of those around them in order to increase their power, while simultaneously decreasing the power of others.\n\nThe target receives a bonus to spellcasting and mental abilities that increases as they learn (mod=highest spell level), while those within physical range and those with a significant emotional connection to the target receive a negative modifier to spellcasting and mental abilities, up to -2.\n\nThose with Spirit may notice that the spell has been cast, and may attempt to do so with a roll of the caster's Spirit vs the target's Spirit-4. This does not prevent the spell's effects or identify the caster in any way."
     duration: Permanent
     effect: Buff
     level: 8

@@ -340,7 +340,7 @@ spells:
   Wind Rider:
     available: true
     casting_time: 1 round
-    desc: "The caster conjures wind to ride in filght. The wind can carry them at a speed of up to 200 mph. They can stay aloft easily and hover in midair, but cannot deftly maneuver while in flight. They can cast spells and use ranged weapons, but gain  -2 attack and -2 defense modifiers when making melee attacks.\n\n
+    desc: "The caster conjures wind to ride in flight. The wind can carry them at a speed of up to 200 mph. They can stay aloft easily and hover in midair, but cannot deftly maneuver while in flight. Mods to defense and attack may be applied at the GM's discretion according to actions taken while in flight.\n\n
     Should the spell duration expire while the caster is still aloft, the magic fails slowly, lowering the caster safely to the ground."
     duration: 1 hour
     effect: Travel
