@@ -262,7 +262,7 @@ fs3combat:
       accuracy: 2
       has_shrapnel: true
       init_mod: 0
-      special_group: Ranged
+      special_group: Spell
     Stone Fists:
       description: Level 3 Earth spell
       is_magic: true
