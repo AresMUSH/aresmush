@@ -40,8 +40,6 @@ module AresMUSH
           xp = nil
         end
 
-
-
         if (show_sheet)
           {
             attributes: get_ability_list(char.fs3_attributes),
@@ -63,17 +61,9 @@ module AresMUSH
           }
         end
       end
-
+    
       def get_ability_list(list, include_specs = false)
-        new_list = []
-        list.to_a.each do |a|
-          if a.rating > 0
-            new_list.concat a
-          end
-        end
-
-
-        new_list.sort_by { |a| a.name }.map { |a|
+        list.to_a.sort_by { |a| a.name }.map { |a|
           {
             name: a.name,
             rating: a.rating,
