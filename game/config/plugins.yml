@@ -16,3 +16,6 @@ plugins:
     cortex: https://github.com/AresMUSH/ares-extras/tree/master/plugins/cortex
     prefs: https://github.com/AresMUSH/ares-extras/tree/master/plugins/prefs
     traits: https://github.com/AresMUSH/ares-extras/tree/master/plugins/traits
+  extras:
+  - openweather
+  - txt
