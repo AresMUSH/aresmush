@@ -23,7 +23,8 @@ module AresMUSH
            name: w.name,
            ooc_name: w.ooc_name,
            icon: Website.icon_for_char(w),
-           muted: Channels.is_muted?(w, c)  
+           muted: Channels.is_muted?(w, c),
+           status: Website.activity_status(w)
           }},
           messages: Channels.is_on_channel?(enactor, c) ? c.messages.map { |m| {
             message: Website.format_markdown_for_html(m['message']),

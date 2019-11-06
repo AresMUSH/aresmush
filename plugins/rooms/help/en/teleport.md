@@ -12,6 +12,8 @@ The teleport command lets you jump around the grid without using the exits.  You
 `teleport <destination>` - Teleports yourself.
 `teleport <list of names>=<destination>` - Teleports a character.
 
+> **Tip:** If you have multiple rooms with the same name, you can use Area/Room - for instance Uptown/Bar.
+
 If you're not sure of the room name or ID, you can use the rooms directory command.
 
 `rooms` - Shows all rooms and their database IDs.

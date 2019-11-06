@@ -1,6 +1,6 @@
 module AresMUSH
 
-  module FS3Skills
+  module Profile
     class CharBackupCmd
       include CommandHandler
       
@@ -10,16 +10,12 @@ module AresMUSH
         self.target = !cmd.args ? enactor.name : titlecase_arg(cmd.args)
       end
       
-      def check_permission
-        return nil if self.target == enactor.name
-        return nil if FS3Skills.can_view_sheets?(enactor)
-        return t('fs3skills.no_permission_to_backup')
-      end
-      
       def handle
         ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
           
-          ["sheet", "bg", "profile", "damage", "relationships"].each_with_index do |cmd, seconds|
+          commands = Global.read_config("profile", "backup_commands") || []
+          
+          commands.each_with_index do |cmd, seconds|
             Global.dispatcher.queue_timer(seconds, "Character backup #{model.name}", client) do
               Global.dispatcher.queue_command(client, Command.new("#{cmd} #{model.name}"))
             end

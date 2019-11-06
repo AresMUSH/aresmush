@@ -5,18 +5,18 @@ summary: Managing channels.
 # Managing Channels
 **These commands require the Admin role or the permission: manage\_channels**
 
+## Creating and Deleting Channels
+`channel/create <channel>`
+`channel/delete <channel>`
+`channel/rename <channel>=<new name>` - Be cautious renaming channels since peoples' aliases may no longer make sense.
+`channel/clear <channel>` - Clears the recall history.
+
 ## Adding and Removing Characters
 
 Channel administrators can add or remove characters from a channel:
 
 `channel/addchar <char>=<channel>`
 `channel/removechar <char>=<channel>`
-
-## Creating and Deleting Channels
-`channel/create <channel>`
-`channel/delete <channel>`
-`channel/rename <channel>=<new name>` - Be cautious renaming channels since peoples' aliases may no longer make sense.
-`channel/clear <channel>` - Clears the recall history.
 
 ## Channel Appearance
 `channel/describe <channel>=<description>`

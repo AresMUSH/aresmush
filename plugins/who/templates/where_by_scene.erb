@@ -2,12 +2,12 @@
 <%= center( mush_name, 78 ) %>
 <%= section_line t('who.where_open_scene_header') %>
 <% scene_groups['open'].each do |room, people| %>
-%xh<%= left( room, 35 ) %>%xn <%= people.sort.join(", ") %>
+%xh<%= left( room, 40 ) %>%xn <%= people.sort.join(", ") %>
 <% end %>
 
 <%= section_line t('who.where_private_scene_header') %>
 <% scene_groups['private'].sort_by { |room, people | room }.each do |room, people| %>
-%xh<%= left( room, 35 ) %>%xn <%= people.sort.join(", ") %>
+%xh<%= left( room, 40 ) %>%xn <%= people.sort.join(", ") %>
 <% end %>
 <%= divider %>
 %xr<%= center( online_total, 25 ) %>%xn %xg<%= center( ic_total, 25 ) %>%xn %xb<%= center( online_record, 25 ) %>%xn

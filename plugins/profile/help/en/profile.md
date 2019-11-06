@@ -1,13 +1,15 @@
 ---
-toc: Using Profiles
+toc: Community
 summary: Using character profiles.
 aliases:
 - finger
 - info
 ---
-# Character Profile
+# Character Profile Commands
 
-Each character has a **character profile** showing various information.  Any IC information is provided for OOC reference; do not use it inappropriately if you have no IC reason to know it.
+Each character has a character profile showing various information.
+
+> Learn about character profiles in the [Profiles Tutorial](/help/profiles_tutorial).
 
 ## Viewing Profiles
 

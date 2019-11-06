@@ -5,10 +5,9 @@ summary: Managing room areas.
 # Managing Areas
 
 Areas are used to group rooms together to represent different regions of the game.
+ands require the Admin role or the `build` permission.
 
 ## Viewing Areas
-
-You can view a list of all areas and details for any given one.
 
 `areas` - Lists all areas.
 `area [<area name>]` - Shows details for an area.  Defaults to your current area.

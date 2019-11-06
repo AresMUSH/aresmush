@@ -10,22 +10,13 @@ module AresMUSH
       end
       
       def handle        
-        icloc = get_icloc(enactor)
+        icloc = Status.get_icloc(enactor, cmd.switch_is?("reset"))
         enactor.update(is_afk: false)
         # No need to save because move will do it.
         enactor.room.emit_ooc t('status.go_ic', :name => enactor.name)
         icloc.emit_ooc t('status.go_ic', :name => enactor.name)
         Rooms.move_to(client, enactor, icloc)
       end
-      
-      def get_icloc(char)
-        icloc = enactor.last_ic_location
-        if (!icloc || cmd.switch_is?("reset"))
-          icloc = Rooms.ic_start_room
-        end
-        icloc
-      end
-        
     end
   end
 end

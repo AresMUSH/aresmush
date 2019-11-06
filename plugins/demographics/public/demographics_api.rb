@@ -88,6 +88,7 @@ module AresMUSH
     end
       
     def self.gender(char)
+      return nil if !char
       g = char.demographic(:gender) || "Other"
       g.downcase
     end
@@ -154,5 +155,55 @@ module AresMUSH
       model.update_demographic :birthdate, bday
       return bday
     end
+    
+    def self.build_web_demographics_data(char, viewer)
+      visible_demographics = Demographics.visible_demographics(char, viewer)
+      demographics = visible_demographics.each.map { |d| 
+          {
+            name: d.titleize,
+            key: d.titleize,
+            value: char.demographic(d)
+          }
+        }
+    
+      if (visible_demographics.include?('birthdate'))
+        demographics << { name: t('profile.age_title'), key: 'Age', value: char.age }
+      end        
+      demographics
+    end
+    
+    def self.build_web_groups_data(char)
+      groups = Demographics.all_groups.keys.sort.map { |g| 
+        {
+          name: g.titleize,
+          value: char.group(g)
+        }
+      }
+    
+      if (Ranks.is_enabled?)
+        groups << { name: t('profile.rank_title'), key: 'Rank', value: char.rank }
+      end
+    end
+    
+    def self.build_web_all_fields_data(char, viewer)
+      # Generic demographic/group field list for those who want custom displays.
+      all_fields = {}
+      visible_demographics = Demographics.visible_demographics(char, viewer)
+      visible_demographics.each do |d|
+        all_fields[d.gsub(' ', '_')] = char.demographic(d)
+      end
+      
+      Demographics.all_groups.each do |k, v|
+        all_fields[k.downcase] = char.group(k)
+      end
+      if (Ranks.is_enabled?)
+        all_fields['rank'] = char.rank
+      end
+      if (visible_demographics.include?('birthdate'))
+        all_fields['age'] = char.age
+      end
+      all_fields
+    end
+      
   end  
 end

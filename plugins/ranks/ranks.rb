@@ -17,7 +17,7 @@ module AresMUSH
         
       when "rank"
         case cmd.switch
-        when "set", nil
+        when "set"
           return RankSetCmd
         end
       end

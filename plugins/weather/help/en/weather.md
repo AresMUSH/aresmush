@@ -1,6 +1,6 @@
 ---
-toc: 4 - Writing the Story
-summary: Viewing the weather.
+toc: ~admin~ Building
+summary: Setting the weather.
 ---
 # Weather
 

@@ -1,6 +1,8 @@
 ---
 toc: ~admin~ Managing the Game
 summary: Managing roles.
+aliases:
+- manage_roles
 ---
 # Roles
 

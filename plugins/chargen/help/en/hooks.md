@@ -2,7 +2,7 @@
 toc: 3 - Creating a Character
 summary: Setting roleplay hooks.
 aliases:
-- rp hooks
+- rp_hooks
 - hook
 ---
 
@@ -12,5 +12,9 @@ RP Hooks are interesting things about your character that others can "hook" into
 
 `hooks` - View your hooks.
 `hooks <name>` - View someone else's hooks.
+`hooks/edit` - Grabs the existing RP Hook text into your input buffer.  (See [Edit Feature](/help/edit)).
+You can also edit your hooks on the Web Portal by visiting your character page and choosing 'edit' from the bottom menu.
 
-You can edit your hooks on the Web Portal by visiting your character page and choosing 'edit' from the bottom menu.
+Admins with the `manage_apps` permission can set other peoples' hooks:
+
+`hooks/set <name>=<hooks>` and `hooks/edit <name>`

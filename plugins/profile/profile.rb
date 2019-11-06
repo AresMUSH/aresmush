@@ -18,6 +18,8 @@ module AresMUSH
       
       
       case cmd.root
+      when "backup"
+        return CharBackupCmd
       when "profile"
         case cmd.switch
         when "add"

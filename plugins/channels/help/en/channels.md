@@ -5,34 +5,40 @@ aliases:
 - chat
 - comsys
 ---
-# Channels
-Channels are public forums for out-of-character communication.
+# Channel Commands
 
-`channels` - Lists channels and their descriptions
+Channels are like chatrooms, letting you communicate with other players about specific topics (questions, general chit-chat, group-related messages, etc.)
+
+> Get an overview of the chat channel system in the [Chat Tutorial](/help/chat_tutorial).
+
+## Listing and Joining Channels
+
+`channels` - Lists channels and their descriptions.
 `channel/info <name>` - Shows detailed info for a channel.
-**Tip:** Some channels are restricted.  You can only use them if you have one of the roles listed in the 'Restricted To' column.
-
 `channel/join <channel>[=<alias>]` - Joins a channel.
 `channel/leave <channel>` - Leaves a channel.
-**Tip:** AresMUSH also supports the MUX-style channel commands, so you can use the keywords "on", "off", "who", "last", "mute", and "unmute" with the channel alias.  For example:  `pub who`.
+`channel/who <channel>` - Shows who's on the channel.
 
-## Talking & Reading on Channels
-`<channel name> <message>` - Talks on a channel.
-`<channel alias> <message>` - Talks on a channel using the alias.
+> **Tip:** AresMUSH also supports the MUX-style channel commands, so you can use the keywords "on", "off", "who", "last", "mute", and "unmute" with the channel alias.  For example:  `ch who`.
+
+## Talking on Channels
+
+You can talk on a channel using the full channel name followed by the message.  For example: `chat hello`.  You can also create **aliases** for channels so you can use shorter names.  For example, `ch hello`.
+
+`<channel name or alias> <message>` - Talks on a channel.
+`channels` - Views your current channel aliases.
 `channel/alias <channel>=<alias>` - Changes the alias.  You can use multiple aliases, separated by spaces.
-**Tip:** The system will set you up with some channel aliases by default, which you can see on the `channels` command list.
-
-`channel/mute <channel>` - Silences a channel temporarily.
-`channel/unmute <channel>` - Un-silences a channel.
 `channel/recall <channel>[=<num messages>]` - Shows the last few messages on a channel.
 
-## Who List & Announcements
-`channel/who <channel>` - Shows who's on the channel
+> **Tip:** Take care to avoid channel aliases that overlap with other commands, like 'n' for north or 'p' for page.  Remember that AresMUSH ignores prefixes like '+' on commands.
+
+## Channel Options
+
+`channel/mute <channel>` - Silences a channel until your next login.  Use 'all' to mute all channels at once.
+`channel/unmute <channel>` - Un-silences a channel. Use 'all' to unmute all channels at once.
 `channel/announce <channel>=<on/off>` - Turns connection messages on or off.
-
-## Recall
-
-`channel/recall <channel>[=<num messages>]` - Shows the last few messages on a channel.
+`channel/title <channel>=<title>` - Sets a channel-specific title to show up in front of your name.
+`channel/showtitles <channel>=<on or off>` - Enables or disables other peoples' channel titles. (Only works when on a MU Client; web portal channels always show titles.)
 
 ## Reporting Abuse
 `channel/report <channel>=<explanation>`

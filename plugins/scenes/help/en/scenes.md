@@ -16,16 +16,20 @@ aliases:
 # Scenes
 **Do `qr scene` to see a quick reference of all scene commands.**
 
-The scenes system:
+While you can always do free-form RP on the grid or in the RP room, there are a variety of features available to you if you use the **Scenes** system to manage your RP scene.
 
-* Creates temprooms for places not on the grid.
-* Advertises your scene as open so others know they're welcome to join.
-* Captures a log of poses, skill rolls and combat messages without the OOC spam.
-* Shares a log to the game's web portal. See [Scene Logging](/help/logging) for more.
+> Learn about scenes in the [Scenes Tutorial](/help/scenes_tutorial).
 
-## Starting a Scene
+## Viewing Scenes
 
-When you start a scene, you can create a temporary room or start one in the room you're in.  Temp rooms are automatically recycled when the scene ends.
+`scenes` - Shows active scenes.
+`scenes/open` - Shows only open and active scenes.
+`scenes/all` - Lists all scenes you have access to.
+`scenes/unshared` - Lists all scenes you have access to that haven't been shared yet.
+
+`scene/home <home, work, ooc>` - Sets your preference for where you go after a scene in a temp room has been stopped.
+
+## Starting  a Scene
 
 `scene/start` - Starts a scene in your current room.
 `scene/start [<area>/]<location name>=<private/open>` - Starts a scene in a temp room.
@@ -49,38 +53,43 @@ A scene can be open (anyone's invited), private (only those invited should join 
 `meetme <list of names>` - Invites others to join your private or watchable scene.
 `scene/invite <name>[=<scene num>]` - Invites someone to a private or watchable scene.
 `scene/uninvite <name>[=<scene num>]` - Withdraws an invitation.
-
-You can leave a scene by exiting the room or going offstage or by using the scene/leave command to return to your designated scene/home (described in Stopping a Scene below).
-
 `scene/leave` - Leaves a scene and returns to your designated scene home location.
 
-## Setting Scene Info
+`scene/repose [scene #]` - Quick log catch-up of the last few poses.
+`scene/log [scene #]` - Spam yourself with the entire log.
 
-You can control several properties about the scene.  These are used for [Scene Logging](/help/logging) and to advise the participants about what's going on.
+## Editing Poses
 
-You can see the current scene info by typing `scene <#>.`
-
-`scene/title [<#>=]<title>` - Sets the scene title.
-`scene/summary [<#>=]<summary>` - Sets the scene summary.
-`scene/icdate [<#>=]<icdate>` - Sets the scene IC date. Defaults to today's date.
-`scene/location [<#>=]=[<area>/]<location>` - Sets the scene location. Defaults to the room you are in.
-`scene/type [<#>=]<type>` - Sets the scene type.  `scene/types` lists types. Defaults to social.
-`scene/set <desc>` - Sets the scene in the current room and adds a temporary message to the desc, so that new players can refer to it.  Leave blank to clear.
+`scene/replace <text in the form of an emit>` - Replaces your last pose.
+`scene/typo <text in the form of an emit>` - Silent replace for small typos.
+`scene/undo` - Removes your last pose.
+`scene/addpose <emit>` - Add a pose without emitting to other participants. (useful for a pose that happened before the scene started)
 
 ## Stopping a Scene
-
-You should stop a scene when it's over.  Scenes with empty rooms will be stopped automatically at some point.  The scene organizer can also delete a scene.  If you accidentally stop a scene, you can restart it in a temp room.
 
 `scene/stop [<#>]` - Stops a scene and recycles the room (if it was a temporary one).
 `scene/delete <#>` - Deletes a scene.
 `scene/restart <#>` - Restarts a scene.
+`scene/share [scene #]` - Shares the log to the web portal.
+`scene/unshare [scene #]` - Unshares a log.
 
-> **Tip:** Admins and Storytellers with the `manage_scenes` permission can stop and delete other people's scenes.
+## Disabling and Clearing the Log
 
-When a scene in a temp room stops, characters are normally sent back to the Offstage lounge.  You can instead choose to be sent to your character's home or workplace, if you've set one with the home or work command.
+`scene/disablelog [scene #]` - Stops logging. Note: This also clears any existing poses from the log.
+`scene/clearlog [scene #]` - Clears current poses from the log but keeps logging enabled.
+`scene/enablelog [scene #]` - Restarts logging. Note: This starts the scene fresh.
 
-`scene/home <home, work, ooc>` - Sets your scene home preference.
+> **Note:** If the scene log is disabled, characters cannot join from the web portal.
 
-## Logging and Poses
+## Setting Scene Info
 
-The scene system starts a scene log automatically.  For more help, see [Scene Logging](/help/logging).
+`scene <#>` - Views scene info.
+`scene/privacy [<#>=]<private/open>` - Changes the privacy level.
+`scene/title [<#>=]<title>` - Sets the scene title.
+`scene/summary [<#>=]<summary>` - Sets the scene summary.
+`scene/icdate [<#>=]<icdate>` - Sets the scene date.
+`scene/location [<#>=]=[<area>/]<location>` - Sets the scene location.
+`scene/type [<#>=]<type>` - Sets the scene type.  `scene/types` lists types.
+`scene/set <desc>` - Sets the scene in the current room.  Leave blank to clear.
+`scene/addchar <#>=<char>` - Adds a participant to the scene log.
+`scene/removechar <#>=<char>` - Removes a participant from the scene log.
