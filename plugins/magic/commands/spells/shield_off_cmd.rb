@@ -21,7 +21,7 @@ module AresMUSH
 
       def check_errors
         Global.logger.info "SHIELD: #{self.shield}"
-        return t('dispatcher.not_allowed') if (self.target != enactor && !FS3Skills.can_manage_abilities?(enactor))
+        return t('dispatcher.not_allowed') if (self.target != enactor && !enactor.has_permission?("view_bgs"))
         shields = Magic.spell_shields
         return t('magic.not_shield', :shield => self.shield) if !shields.include?(self.shield)
       end
