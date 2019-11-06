@@ -296,7 +296,7 @@ spells:
     effect: Other
     level: 4
     name: Potions (Nature)
-    school: NatureTeeth as a weapon and a higher defense mod instead of armor for size/dodging of some kind probably makes sense for a raccoon.
+    school: Nature
     available: true
   Predatory Instincts:
     attack_mod: 2
