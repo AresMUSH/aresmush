@@ -61,9 +61,16 @@ module AresMUSH
           }
         end
       end
-    
+
       def get_ability_list(list, include_specs = false)
-        list.to_a.sort_by { |a| a.name }.map { |a|
+        new_list = []
+        list.to_a.each do |a|
+          if a.rating > 0
+            new_list << a
+          end
+        end
+
+        new_list.sort_by { |a| a.name }.map { |a|
           {
             name: a.name,
             rating: a.rating,
