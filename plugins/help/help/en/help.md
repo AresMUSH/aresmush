@@ -1,6 +1,8 @@
 ---
 toc: 1 - Getting Started
 summary: Learn about the help system.
+aliases:
+- qr
 ---
 # Help System
 
