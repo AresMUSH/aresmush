@@ -12,6 +12,6 @@ Because Ares allows anyone to connect or even create a new character from the lo
 
 > It is preferable to let the game admin deal with problem players.  However, the default Ares configuration allows all approved characters to use the boot command.  This helps players protect each other even when an admin is not available. 
 
-All uses are logged and will generate a staff job including the reason.  For the reason, you can include any offensive statements that were made so they're on record.  You can also add additional comments to the staff jobs using the  [Requests](help/jobs/requests) commands.  
+All uses are logged and will generate a staff job. You can also add additional comments to the staff jobs using the  [Requests](help/jobs/requests) commands.  You may also use the `channel/report` or `pm/report` commands to generate a log of abusive channel or private message chats.  
 
 `boot <name>=<reason>`

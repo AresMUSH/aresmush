@@ -1,14 +1,16 @@
 ---
 toc: 4 - Writing the Story
-summary: Describing your actions.
+summary: Writing your character's actions.
 order: 1
+tutorial: true
 aliases:
 - say
 - nospoof
 - pose
 - emit
-- pemit
 - setpose
+- pemit
+- whisper
 ---
 # Posing
 
@@ -19,13 +21,15 @@ aliases:
 `;'s hair is black.` - Bob's hair is black.
 `emit Go Bob!` or `\Go Bob!` or `\\Go Bob!` - Go Bob!
 `ooc I have a question.` or `'I have a question.` - <OOC> Bob says, "I have a question."
+`nospoof <on or off>` - Identifies emits with the character name.
 
-`pemit <list of names>=<message>` - Make a private emit with an OOC notice in front telling who it came from.
-`emit/set <set pose>` - Mark an emit as a set pose that will be highlighted in scene and logs and stickied to the top of the scene.
-`emit/gm <gm pose>` - Mark an emit as a GM pose that will be highlighted in scene and logs.
+## Special Scene Emits
 
-## Nospoof
+A GM emit is highlighted to ensure they aren't missed.  A scene set is similarly highlighted, and also sets a temporary addendum to the room description for the duration of the scene.
 
-Emit poses are normally anonymous to maintain the flow of the RP text.  If someone is abusing this privilege, you can turn on your "nospoof" setting to identify emits and report the offender to the admin.
+`emit/gm <gm pose>` - Emits a highlighted GM pose.
+`emit/set <set pose>` - Emits a highlighted GM pose that also sets a temporary description in the room.
 
-`nospoof <on or off>`
+## Private Emits
+
+Private emits (like the old whisper/@pemit commands from Penn and TinyMUX) are incompatible with the Ares web portal integration and scene system, and have been deprecated.

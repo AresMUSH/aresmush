@@ -1,26 +1,27 @@
 ---
-toc: Looking at Things
+toc: Locations and Descriptions
 summary: Setting descriptions.
 order: 2
 aliases:
 - describe
 - shortdesc
 - desc
+- adesc
 ---
-# Descriptions
+# Description Commands
 
-Every character, room and exit has a description that tells you what your character sees when they look around.  You can also have multiple outfits for your character, and have more detailed views that are separate from your main description.
+Every character, room and exit has a description that tells you what your character sees when they look around.
 
-## Setting Descriptions
+> Learn the basics of descriptions in the [Descriptions Tutorial](/help/descriptions_tutorial).
 
 `describe <name>=<description>` - Describes something
-`shortdesc <name>=<description>` - Sets your short desc.
+`describe/edit <name>` - Grabs the existing description into your input buffer. (See [Edit Feature](/help/edit).)
+
+`shortdesc <name>=<description>` - Sets a short desc.
 `shortdesc/edit <name>` - Grabs an existing short desc into your input buffer.
 
-You can store multiple descriptions with the [Outfits](/help/outfits) commands, and have expanded [Details](/help/details) (like jewelry or tatoos).
+`desc/notify <on or off>` - Notifies you when someone looks at you. (MU client only)
 
-`describe/edit <name>` - Grabs the existing description into your input buffer.
+## Outfits and Details
 
-## Describe Permissions
-
-If you have the `desc_places` permission (typically given to builder characters), you can describe any room, even if you don't own it.   With the `desc_anything` permission, you can describe anything - characters or rooms.
+You can store multiple descriptions with the [Outfits](/help/outfits) commands, and have expanded [Details](/help/details) (like jewelry or tattoos).

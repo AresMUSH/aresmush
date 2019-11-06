@@ -12,180 +12,140 @@ module AresMUSH
         error = Website.check_login(request, true)
         return error if error
 
-        # Generic demographic/group field list for those who want custom displays.
-        all_fields = {}
-        Demographics.all_demographics.each do |d|
-          all_fields[d] = char.demographic(d)
-        end
-        Demographics.all_groups.each do |k, v|
-          all_fields[k.downcase] = char.group(k)
-        end
-        all_fields['rank'] = char.rank
-        all_fields['age'] = char.age
 
 
-        visible_demographics = Demographics.visible_demographics(char, enactor)
-        demographics = visible_demographics.each.map { |d|
-            {
-              name: d.titleize,
-              key: d.titleize,
-              value: char.demographic(d)
-            }
-          }
-
-        if (visible_demographics.include?('birthdate'))
-          demographics << { name: t('profile.age_title'), key: 'Age', value: char.age }
-        end
-
-        groups = Demographics.all_groups.keys.sort.map { |g|
-          {
-            name: g.titleize,
-            value: char.group(g)
-          }
-        }
-
-        #Spells
-        major_school = char.group("Major School")
-        minor_school = char.group("Minor School")
-
-        def get_spell_list(list)
-          list.to_a.sort_by { |a| a.level }.map { |a|
-            {
-              name: a.name,
-              level: a.level,
-              school: a.school,
-              learned: a.learning_complete,
-              desc: Website.format_markdown_for_html(Global.read_config("spells", a.name, "desc")),
-              potion: Global.read_config("spells", a.name, "potion"),
-              weapon: Global.read_config("spells", a.name, "weapon"),
-              weapon_specials:  Global.read_config("spells", a.name, "weapon_specials"),
-              armor: Global.read_config("spells", a.name, "armor"),
-              armor_specials: Global.read_config("spells", a.name, "armor_specials"),
-              attack_mod: Global.read_config("spells", a.name, "attack_mod"),
-              lethal_mod: Global.read_config("spells", a.name, "lethal_mod"),
-              spell_mod:  Global.read_config("spells", a.name, "spell_mod"),
-              defense_mod:  Global.read_config("spells", a.name, "defense_mod"),
-              duration: Global.read_config("spells", a.name, "duration"),
-              casting_time: Global.read_config("spells", a.name, "casting_time"),
-              range: Global.read_config("spells", a.name, "range"),
-              area: Global.read_config("spells", a.name, "area"),
-              los: Global.read_config("spells", a.name, "los"),
-              targets: Global.read_config("spells", a.name, "targets"),
-              heal: Global.read_config("spells", a.name, "heal_points"),
-              effect: Global.read_config("spells", a.name, "effect"),
-              damage_type:  Global.read_config("spells", a.name, "damage_type"),
-              available: Global.read_config("spells", a.name, "available"),
-              los:  Global.read_config("spells", a.name, "line_of_sight")
-              # weapon_lethality: FS3Combat.weapon_stat(Global.read_config("spells", a.name, "weapon"), "lethality"),
-              # weapon_penetration: FS3Combat.weapon_stat(Global.read_config("spells", a.name, "weapon"), "penetration"),
-              # weapon_type: FS3Combat.weapon_stat(Global.read_config("spells", a.name, "weapon"), "weapon_type"),
-              # weapon_accuracy: FS3Combat.weapon_stat(Global.read_config("spells", a.name, "weapon"), "accuracy"),
-              # weapon_shrapnel: FS3Combat.weapon_stat(Global.read_config("spells", a.name, "weapon"), "has_shrapnel"),
-              # weapon_init: FS3Combat.weapon_stat(Global.read_config("spells", a.name, "weapon"), "init_mod"),
-              # weapon_damage_type: FS3Combat.weapon_stat(Global.read_config("spells", a.name, "weapon"), "damage_type")
-              }}
-        end
-
-        spells = get_spell_list(char.spells_learned)
-
-        spells.each do |s|
-          weapon = Global.read_config("spells", s[:name], "weapon")
-          weapon_specials = Global.read_config("spells", s[:name], "weapon_specials")
-          armor = Global.read_config("spells", s[:name], "armor")
-          armor_specials = Global.read_config("spells", s, "armor_specials")
-          attack = Global.read_config("spells", s[:name], "attack_mod")
-          lethal = Global.read_config("spells", s[:name], "lethal_mod")
-          spell = Global.read_config("spells", s[:name], "spell_mod")
-          defense = Global.read_config("spells", s[:name], "defense_mod")
-          if s[:level] == 8
-            s[:level_8] = true
-            s[:xp] = 13
-          elsif s[:level] == 7
-            s[:xp] = 11
-          elsif s[:level] == 6
-            s[:xp] = 9
-          elsif s[:level] == 5
-            s[:xp] = 9
-          elsif s[:level] == 4
-            s[:xp] = 5
-          elsif s[:level] == 3
-            s[:xp] = 5
-          elsif s[:level] == 2
-            s[:xp] = 3
-          elsif s[:level] == 1
-            s[:xp] = 2
-          end
-          if s[:range] == "Massive"
-            s[:range_desc] = "(2 miles)"
-          elsif s[:range] == "Short"
-            s[:range_desc] = "(10 yards)"
-          elsif s[:range] == "Long"
-            s[:range_desc] = "(100 yards)"
-          end
-          s[:weapon_lethality] = FS3Combat.weapon_stat(weapon, "lethality")
-          s[:weapon_penetration] = FS3Combat.weapon_stat(weapon, "penetration")
-          s[:weapon_type] = FS3Combat.weapon_stat(weapon, "weapon_type")
-          s[:weapon_accuracy] = FS3Combat.weapon_stat(weapon, "accuracy")
-          s[:weapon_shrapnel] = FS3Combat.weapon_stat(weapon, "has_shrapnel")
-          s[:weapon_init] = FS3Combat.weapon_stat(weapon, "init_mod")
-          s[:weapon_damage_type] = FS3Combat.weapon_stat(weapon, "damage_type")
-          if weapon_specials
-            weapon_special = "Spell+#{weapon_specials}"
-            s[:weapon_special_lethality] = FS3Combat.weapon_stat(weapon_special, "lethality")
-            s[:weapon_special_penetration] = FS3Combat.weapon_stat(weapon_special, "penetration")
-            s[:weapon_special_init] = FS3Combat.weapon_stat(weapon_special, "init_mod")
-            s[:weapon_special_accuracy] = FS3Combat.weapon_stat(weapon_special, "accuracy")
-          end
-          if (attack || defense || lethal || spell)
-            s[:mod] = true
-          end
-          protection = FS3Combat.armor_stat(armor, "protection")
-          if protection
-            protection = protection["Chest"]
-          end
-          s[:armor_protection] = protection
-          s[:armor_defense] = FS3Combat.armor_stat(armor, "defense")
-          if s[:targets] == nil
-
-          elsif s[:targets] == 1
-            s[:single_target] = true
-          elsif s[:targets] > 1
-            s[:multi_target] = true
-          end
-        end
-
-        major_spells = []
-        spells.each do |s|
-          if (s[:school] == major_school && s[:learned])
-            major_spells.concat [s]
-          end
-        end 
-
-        if minor_school != "None"
-          minor_spells = []
-          spells.each do |s|
-            if (s[:school] == minor_school && s[:learned])
-              minor_spells.concat [s]
-            end
-          end
-        else
-          minor_spells = nil
-        end
-
-        other_spells = []
-        spells.each do |s|
-          if s[:school] != minor_school && s[:school] != major_school
-            other_spells.concat [s]
-          end
-        end
+        all_fields = Demographics.build_web_all_fields_data(char, enactor)
+        demographics = Demographics.build_web_demographics_data(char, enactor)
+        groups = Demographics.build_web_groups_data(char)
 
 
+                #Spells
+                major_school = char.group("Major School")
+                minor_school = char.group("Minor School")
 
+                def get_spell_list(list)
+                  list.to_a.sort_by { |a| a.level }.map { |a|
+                    {
+                      name: a.name,
+                      level: a.level,
+                      school: a.school,
+                      learned: a.learning_complete,
+                      desc: Website.format_markdown_for_html(Global.read_config("spells", a.name, "desc")),
+                      potion: Global.read_config("spells", a.name, "potion"),
+                      weapon: Global.read_config("spells", a.name, "weapon"),
+                      weapon_specials:  Global.read_config("spells", a.name, "weapon_specials"),
+                      armor: Global.read_config("spells", a.name, "armor"),
+                      armor_specials: Global.read_config("spells", a.name, "armor_specials"),
+                      attack_mod: Global.read_config("spells", a.name, "attack_mod"),
+                      lethal_mod: Global.read_config("spells", a.name, "lethal_mod"),
+                      spell_mod:  Global.read_config("spells", a.name, "spell_mod"),
+                      defense_mod:  Global.read_config("spells", a.name, "defense_mod"),
+                      duration: Global.read_config("spells", a.name, "duration"),
+                      casting_time: Global.read_config("spells", a.name, "casting_time"),
+                      range: Global.read_config("spells", a.name, "range"),
+                      area: Global.read_config("spells", a.name, "area"),
+                      los: Global.read_config("spells", a.name, "los"),
+                      targets: Global.read_config("spells", a.name, "targets"),
+                      heal: Global.read_config("spells", a.name, "heal_points"),
+                      effect: Global.read_config("spells", a.name, "effect"),
+                      damage_type:  Global.read_config("spells", a.name, "damage_type"),
+                      available: Global.read_config("spells", a.name, "available"),
+                      los:  Global.read_config("spells", a.name, "line_of_sight")
+                      }}
+                end
 
-        if (Ranks.is_enabled?)
-          groups << { name: t('profile.rank_title'), key: 'Rank', value: char.rank }
-        end
+                spells = get_spell_list(char.spells_learned)
 
+                spells.each do |s|
+                  weapon = Global.read_config("spells", s[:name], "weapon")
+                  weapon_specials = Global.read_config("spells", s[:name], "weapon_specials")
+                  armor = Global.read_config("spells", s[:name], "armor")
+                  armor_specials = Global.read_config("spells", s, "armor_specials")
+                  attack = Global.read_config("spells", s[:name], "attack_mod")
+                  lethal = Global.read_config("spells", s[:name], "lethal_mod")
+                  spell = Global.read_config("spells", s[:name], "spell_mod")
+                  defense = Global.read_config("spells", s[:name], "defense_mod")
+                  if s[:level] == 8
+                    s[:level_8] = true
+                    s[:xp] = 13
+                  elsif s[:level] == 7
+                    s[:xp] = 11
+                  elsif s[:level] == 6
+                    s[:xp] = 9
+                  elsif s[:level] == 5
+                    s[:xp] = 9
+                  elsif s[:level] == 4
+                    s[:xp] = 5
+                  elsif s[:level] == 3
+                    s[:xp] = 5
+                  elsif s[:level] == 2
+                    s[:xp] = 3
+                  elsif s[:level] == 1
+                    s[:xp] = 2
+                  end
+                  if s[:range] == "Massive"
+                    s[:range_desc] = "(2 miles)"
+                  elsif s[:range] == "Short"
+                    s[:range_desc] = "(10 yards)"
+                  elsif s[:range] == "Long"
+                    s[:range_desc] = "(100 yards)"
+                  end
+                  s[:weapon_lethality] = FS3Combat.weapon_stat(weapon, "lethality")
+                  s[:weapon_penetration] = FS3Combat.weapon_stat(weapon, "penetration")
+                  s[:weapon_type] = FS3Combat.weapon_stat(weapon, "weapon_type")
+                  s[:weapon_accuracy] = FS3Combat.weapon_stat(weapon, "accuracy")
+                  s[:weapon_shrapnel] = FS3Combat.weapon_stat(weapon, "has_shrapnel")
+                  s[:weapon_init] = FS3Combat.weapon_stat(weapon, "init_mod")
+                  s[:weapon_damage_type] = FS3Combat.weapon_stat(weapon, "damage_type")
+                  if weapon_specials
+                    weapon_special = "Spell+#{weapon_specials}"
+                    s[:weapon_special_lethality] = FS3Combat.weapon_stat(weapon_special, "lethality")
+                    s[:weapon_special_penetration] = FS3Combat.weapon_stat(weapon_special, "penetration")
+                    s[:weapon_special_init] = FS3Combat.weapon_stat(weapon_special, "init_mod")
+                    s[:weapon_special_accuracy] = FS3Combat.weapon_stat(weapon_special, "accuracy")
+                  end
+                  if (attack || defense || lethal || spell)
+                    s[:mod] = true
+                  end
+                  protection = FS3Combat.armor_stat(armor, "protection")
+                  if protection
+                    protection = protection["Chest"]
+                  end
+                  s[:armor_protection] = protection
+                  s[:armor_defense] = FS3Combat.armor_stat(armor, "defense")
+                  if s[:targets] == nil
+
+                  elsif s[:targets] == 1
+                    s[:single_target] = true
+                  elsif s[:targets] > 1
+                    s[:multi_target] = true
+                  end
+                end
+
+                major_spells = []
+                spells.each do |s|
+                  if (s[:school] == major_school && s[:learned])
+                    major_spells.concat [s]
+                  end
+                end
+
+                if minor_school != "None"
+                  minor_spells = []
+                  spells.each do |s|
+                    if (s[:school] == minor_school && s[:learned])
+                      minor_spells.concat [s]
+                    end
+                  end
+                else
+                  minor_spells = nil
+                end
+
+                other_spells = []
+                spells.each do |s|
+                  if s[:school] != minor_school && s[:school] != major_school
+                    other_spells.concat [s]
+                  end
+                end
 
         profile = char.profile.each_with_index.map { |(section, data), index|
           {
@@ -210,6 +170,10 @@ module AresMUSH
            }
         }}
 
+        details = char.details.map { |name, desc| {
+          name: name,
+          desc: Website.format_markdown_for_html(desc)
+        }}
         can_manage = enactor && Profile.can_manage_char_profile?(enactor, char)
 
         if (char.background.blank?)
@@ -264,9 +228,10 @@ module AresMUSH
           profile: profile,
           relationships: relationships,
           last_online: OOCTime.local_long_timestr(enactor, char.last_on),
-          profile_gallery: (char.profile_gallery || {}).map { |g| Website.get_file_info(g) },
+          profile_gallery: (Profile.character_page_files(char) || {}).map { |g| Website.get_file_info(g) },
           background: show_background ? Website.format_markdown_for_html(char.background) : nil,
           description: Website.format_markdown_for_html(char.description),
+          details: details,
           rp_hooks: char.rp_hooks ? Website.format_markdown_for_html(char.rp_hooks) : '',
           plot_prefs: Website.format_markdown_for_html(char.plot_prefs),
           lore_hook_name: char.lore_hook_name,

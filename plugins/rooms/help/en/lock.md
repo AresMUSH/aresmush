@@ -1,5 +1,5 @@
 ---
-toc: Utilities / Miscellaneous
+toc: Locations and Descriptions
 summary: Locking exits.
 aliases:
 - lock
@@ -17,7 +17,7 @@ These locks are temporary.  The game periodically clears the locks on empty room
 
 > **Permissions Required:** This command requires the Admin role or the 'build' permission.
 
-Builders can also lock exits to a list of roles - for instance if you had a "rebel" role you could lock a secret rebel exit to "rebel admin" so only rebels and admins could use it.  Role locks are not limited to interior rooms; any exit can be locked.
+Builders can also lock exits to a list of roles - for instance if you had a "rebel" role you could lock a secret rebel exit to "rebel" so only rebels could use it.  Role locks are not limited to interior rooms; any exit can be locked.
 
 `lock <exit>=<list of roles who are allowed in>`
 `unlock <exit>`

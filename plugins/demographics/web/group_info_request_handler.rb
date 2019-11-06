@@ -19,7 +19,10 @@ module AresMUSH
         if (Ranks.is_enabled?)
           ranks = []
           
-          group_config[Ranks.rank_group]['values'].each do |k, v|
+          rank_group = group_config[Ranks.rank_group]
+          return [] if !rank_group
+          
+          rank_group['values'].each do |k, v|
             Ranks.allowed_ranks_for_group(k).each do |r|
               ranks << { name: 'Rank', value: r, desc: k }
             end

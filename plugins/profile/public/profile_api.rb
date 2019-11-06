@@ -1,6 +1,7 @@
 module AresMUSH
   module Profile
     def self.general_field(char, field_type, value)
+      client = Login.find_client(char)
       case field_type
       when 'demographic'
         char.demographic(value)
@@ -25,10 +26,10 @@ module AresMUSH
         char.group(value)
 
       when 'idle'
-        TimeFormatter.format(Login.find_client(char).idle_secs)
+        client ? TimeFormatter.format(client.idle_secs) : '---'
 
       when 'connected'
-        TimeFormatter.format(Login.find_client(char).connected_secs)
+        client ? TimeFormatter.format(client.connected_secs) : '---'
 
       when 'room'
         Who.who_room_name(char)

@@ -1,5 +1,5 @@
 ---
-toc: Getting Around
+toc: Locations and Descriptions
 summary: Going onstage (IC) and offstage (OOC).
 aliases:
 - onstage

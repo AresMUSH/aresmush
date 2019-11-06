@@ -18,8 +18,6 @@ module AresMUSH
       case cmd.root
       when "abilities"
         return AbilitiesCmd
-      when "backup"
-        return CharBackupCmd
       when "specialty"
         if (cmd.switch_is?("add"))
           return AddSpecialtyCmd

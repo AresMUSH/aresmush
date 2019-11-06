@@ -62,7 +62,7 @@ module AresMUSH
       chars = channel.characters.sort_by(:name_upcase, :order => "ALPHA")
       online_chars = []
       chars.each do |c|
-        next if !Login.is_online?(c)
+        next if !Login.is_online_or_on_web?(c)
         online_chars << c
       end
       online_chars
@@ -94,8 +94,10 @@ module AresMUSH
       return formatted_msg
     end
     
-    def self.mute_text(char, channel)
-      Channels.is_muted?(char, channel) ? "%xh%xx#{t('channels.muted')}%xn" : ""
+    def self.channel_who_status(char, channel)
+      web_marker = Login.is_portal_only?(char) ? "%xh%xx#{Website.web_char_marker}%xn" : ""
+      mute_marker = Channels.is_muted?(char, channel) ? "%xh%xx#{t('channels.muted')}%xn" : ""
+      "#{web_marker}#{mute_marker}"
     end
     
     def self.leave_channel(char, channel)

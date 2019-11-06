@@ -3,6 +3,8 @@ toc: Using FS3
 summary: Using luck points.
 ---
 # FS3 - Luck
+> Learn how the FS3 skills system works in the [FS3 Tutorial](/help/fs3).
+
 Luck Points are special points that you can spend in various ways to perform better in combat, avoid death, increase your chance in rolls, create potions, increase your chance to stumble on plot points, and more.
 
 Luck is awarded for participation in scenes.  You get a fraction of a luck point for each participant.  There are bonuses for RPing with someone for the first time, and for RPing with a new player.  There are diminishing returns if you always RP with the same people.  Admins can also issue luck as rewards.
