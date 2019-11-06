@@ -123,7 +123,7 @@ spells:
     weapon: Stun (Will)
   #Level 4
   Alter Object:
-    available: false
+    available: true
     casting_time: 1 round
     duration: 10 minutes
     desc: "For the duration of the spell, the caster can reshape up to 2 cubic feet of non-living material. The caster can make simple, non-weaponized shapes that animate at their direction out of the material. The density and composition of the material does not change, but its rough shape can be altered, which also allows for repairs or damage to an object. Material returns to its natural, but not necessarily original, state when the spell ends.\n\nIn combat, damaging a weapon enough to disable it takes 3-5 rounds, at the GM's discretion."
