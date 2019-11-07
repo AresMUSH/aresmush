@@ -268,6 +268,13 @@ module AresMUSH
       return message
     end
 
+    def self.cast_init_mod(combatant, target, spell, rounds, init_mod)
+      target.update(init_spell_mod_counter: rounds)
+      target.update(init_spell_mod: init_mod)
+      message = [t('magic.cast_mod', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target =>  target.name, :mod => init_mod, :type => "initiative")]
+      return message
+    end
+
     def self.cast_stance(combatant, target, spell, rounds, stance)
       target.update(stance: stance.titlecase)
       target.update(stance_counter: rounds)

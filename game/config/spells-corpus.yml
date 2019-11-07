@@ -189,6 +189,7 @@ spells:
     desc: The caster's reflexes are improved, increasing their defensive abilities and their reaction speed.
     duration: 5 rounds
     effect: Buff
+    init_mod: 1
     is_potion: true
     level: 4
     name: Agility
@@ -196,7 +197,6 @@ spells:
     range: Self
     rounds: 5
     school: Corpus
-    weapon_specials: Agility
     weapon: Spell
   Diagnose:
     available: true
@@ -411,12 +411,12 @@ spells:
     desc: "The target's strength and reflexes are improved, increasing the speed at which they can move. They are able to attack and dodge faster and can run up to 40 mph for the duration of the spell."
     duration: 2 min
     effect: Buff
+    init_mod: 2
     level: 6
     name: Speed Boost
     range: Self
     rounds: 12
     school: Corpus
-    weapon_specials: Speed Boost
   #Level 7
   Brink Of Death:
     available: true

@@ -26,11 +26,9 @@ fs3combat:
     - vitality
     - speed boost
     Spell:
-    - agility
     - shrink
     - strength
-    - speed boost
-    - grow      
+    - grow
   weapon specials:
     Sparring:
       description: Padded sparring equipment
