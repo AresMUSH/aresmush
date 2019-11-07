@@ -8,6 +8,8 @@ aliases:
 - textcolor
 - posecolor
 - posebreak
+- tepecolor
+- tepe
 ---
 # Formatting Poses
 
