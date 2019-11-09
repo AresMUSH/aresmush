@@ -106,6 +106,9 @@ website:
       title: Plots
     - divider: true
     - route: wiki-page
+      title: WeirdDocs
+      id: weird_docs
+    - route: wiki-page
       title: Under-Library
       id: underlibrary
     - route: wiki-page

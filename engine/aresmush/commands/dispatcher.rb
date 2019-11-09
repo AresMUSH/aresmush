@@ -1,8 +1,23 @@
 module AresMUSH
   class Dispatcher
-
+    attr_accessor :queue_log
+    
+    def initialize
+      self.queue_log = {}
+    end
+    
     # Places a new command in the queue to be processed.
     def queue_command(client, cmd)
+    
+      queue = (self.queue_log[client.id] || []).select { |t| Time.now - t < 1 }
+      queue << Time.now
+      self.queue_log[client.id] = queue
+      queue_limit = Global.read_config('plugins', 'command_queue_limit') || 15
+      if (queue.count > queue_limit)
+        Global.logger.warn "Command queue overflow from #{client.id}."
+        return
+      end
+      
       EventMachine.next_tick do
         AresMUSH.with_error_handling(client, "Queue command.") do
           on_command(client, cmd)

@@ -79,6 +79,7 @@ module AresMUSH
         damage_desc = Global.read_config("spells", spell, "damage_desc")
         damage_type = Global.read_config("spells", self.spell, "damage_type")
         defense_mod = Global.read_config("spells", self.spell, "defense_mod")
+        init_mod = Global.read_config("spells", self.spell, "init_mod")
         damage_type = Global.read_config("spells", self.spell, "damage_type")
         fs3_attack = Global.read_config("spells", self.spell, "fs3_attack")
         heal_points = Global.read_config("spells", self.spell, "heal_points")
@@ -226,6 +227,11 @@ module AresMUSH
 
               if spell_mod
                 message = Magic.cast_spell_mod(combatant, target, spell, rounds, spell_mod)
+                messages.concat message
+              end
+
+              if init_mod
+                message = Magic.cast_init_mod(combatant, target, spell, rounds, init_mod)
                 messages.concat message
               end
 

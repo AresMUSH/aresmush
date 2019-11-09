@@ -1,9 +1,12 @@
 <%= header %>
 <% paginator.items.each do |section| %>
-%xg<%= section %>%xn
-<% section_topics(section).each do |title, data| %>
-     %xh<%= title.titleize %>%xn - <%= data['summary'] %>
+%xg<%= line_with_text(section) %>%xn
+<% toc_topics(section).each do |title, data| %>
+%xh<%= title.humanize.titleize %>%xn - <%= data['summary'] %>
 <% end %>
+
+%xh%xxCommand Topics:%xn <%= section_topics(section) %>
+
 <% end %>
 <%= paginator.page_footer %>
 <%= t('help.pages_tip') %>

@@ -7,6 +7,7 @@ status:
     AFK: "%xy"
     NEW: "%xg"
     ADM: "%xb"
+    WEB: "%xh"
   minutes_before_idle: 45
   minutes_before_idle_disconnect: 300
   afk_cron:

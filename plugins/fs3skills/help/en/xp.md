@@ -7,6 +7,7 @@ aliases:
 - xp
 ---
 # FS3 - Experience Points
+> Learn how the FS3 skills system works in the [FS3 Tutorial](/help/fs3).
 
 Experience Points (XP) are gained weekly to reflect what your character has been learning and/or practicing during that time.  You spend them to improve your abilities.  
 

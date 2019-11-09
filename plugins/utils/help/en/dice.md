@@ -8,7 +8,7 @@ aliases:
 ---
 # Dice Roller
 
-The dice command is used to roll random dice.  The syntax is <numDice>d<dieSides>.  
+The dice command is used to roll random dice.  The syntax is `<numDice>d<dieSides>`.  
 
 For example: 4d6 would roll four six-sided dice.
 

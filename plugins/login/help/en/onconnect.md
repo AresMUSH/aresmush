@@ -1,5 +1,5 @@
 ---
-toc: Utilities / Miscellaneous
+toc: Setting Up Your Client
 summary: Running commands on login.
 aliases:
 - aconnect

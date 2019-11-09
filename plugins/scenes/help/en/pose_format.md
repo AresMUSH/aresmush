@@ -8,6 +8,8 @@ aliases:
 - textcolor
 - posecolor
 - posebreak
+- tepecolor
+- tepe
 ---
 # Formatting Poses
 
@@ -20,6 +22,8 @@ The autospace command automatically inserts a blank line or other symbol between
 `autospace <text>` - Sets your autospace text.  Leave blank to clear it.
 
 > Note: This applies only to poses.  There is another command (see [Pages](/help/page)) that lets you format a similar autospace before pages and OOC remarks.
+
+## Quote Color
 
 You can also have Ares colorize text between quotes in poses, to make quotations more visible.  The color code can be found in the `colors` command.  You can also combine colors, so \%xb\%xh will make it bold and blue.
 

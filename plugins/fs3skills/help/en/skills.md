@@ -16,9 +16,9 @@ aliases:
 - advantages
 - abilities
 ---
-# FS3 Skills
+# FS3 Skill Commands
 
-This game uses the FS3 skills system, Third Edition.  The complete rulebook can be found online: [FS3 Player's Guide](http://www.aresmush.com/fs3/fs3-3).
+You can set your skills during character creation via the web portal or the ability commands explained below.  After you're approved, you can only improve skills with [Experience Points](/help/xp).
 
 `sheet [<name>]` - Shows a sheet.
 
@@ -29,7 +29,6 @@ This game uses the FS3 skills system, Third Edition.  The complete rulebook can 
 
 ## Finding Other People With Skills
 
-If you're looking for a character with a specific skill, you can use the skill scan command (if the game has enabled visible sheets).  It will list anyone with that skill above Everyman (or above Average for attributes).  People in your room are highlighted.  You can also see a summary of people within the different skill categories.
-
 `skill/scan <specific skill name>` - Find people with that skill.
 `skill/scan <action, background, language>` - Summarize peoples' skill levels. Only skills held by 2 or more people are shown to cut down on spam.
+`census skills <type>` - Shows a summary of skills.  Type can be Action, Background or Language.`

@@ -14,7 +14,7 @@ module AresMUSH
       end
 
       def check_can_set
-        return t('dispatcher.not_allowed') if !FS3Skills.can_manage_abilities?(enactor)
+        return t('dispatcher.not_allowed') if !enactor.has_permission?("view_bgs")
       end
 
       def check_errors

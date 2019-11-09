@@ -19,9 +19,5 @@ module AresMUSH
           char.update(last_ic_location: char.room)
         end
       end
-      
-      def self.reset_ic_start(new_start)
-        Character.all.each { |c| c.update(last_ic_location: new_start) }
-      end      
   end  
 end

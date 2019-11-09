@@ -12,6 +12,8 @@ module AresMUSH
     attribute :spell_weapon_effects, :type => DataType::Hash, :default => {}
     attribute :spell_armor_effects, :type => DataType::Hash, :default => {}
     attribute :spell_mod_counter, :type => DataType::Integer, :default => 0
+    attribute :init_spell_mod, :type => DataType::Integer, :default => 0
+    attribute :init_spell_mod_counter, :type => DataType::Integer, :default => 0
     attribute :lethal_mod_counter, :type => DataType::Integer, :default => 0
     attribute :attack_mod_counter, :type => DataType::Integer, :default => 0
     attribute :defense_mod_counter, :type => DataType::Integer, :default => 0
@@ -23,6 +25,7 @@ module AresMUSH
     attribute :endure_fire_counter, :type => DataType::Integer, :default => 0
     attribute :endure_cold, :type => DataType::Integer, :default => 0
     attribute :endure_cold_counter, :type => DataType::Integer, :default => 0
+    
 
     attribute :action_klass
     attribute :action_args
@@ -198,7 +201,7 @@ module AresMUSH
     end
 
     def poss_pronoun
-      self.is_npc? ? t('demographics.other_possessive') : Demographics.possessive_pronoun(self.character)
+      self.is_npc? ? Demographics.possessive_pronoun(nil) : Demographics.possessive_pronoun(self.character)
     end
 
     def log(msg)

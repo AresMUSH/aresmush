@@ -374,6 +374,14 @@ spells:
     school: Nature
     range: Self
     weapon: Claws
+  Wild Shape Fly:
+    available: false
+    defense_mod: 10
+    desc: Wild Shape Fly
+    level: 5
+    name: Wild Shape Fly
+    roll: true
+    school: Nature
   Wild Shape Lynx:
     available: false
     armor: Lynx

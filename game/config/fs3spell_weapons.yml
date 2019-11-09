@@ -9,10 +9,10 @@ fs3combat:
       description: A magical hair pin. Owned by Adelaide.
       accuracy: 1
     #SPELLS
-    Agility:
-      description: Level 4 Corpus spell
-      is_magic: true
-      init_mod: 1
+    # Agility:
+    #   description: Level 4 Corpus spell
+    #   is_magic: true
+    #   init_mod: 1
     Diamond:
       description: Level 4 Earth spell
       is_magic: true
@@ -53,10 +53,10 @@ fs3combat:
       lethality: -20
       penetration: -5
       init_mod: 1
-    Speed Boost:
-      description: Level 6 Corpus spell
-      is_magic: true
-      init_mod: 2
+    # Speed Boost:
+    #   description: Level 6 Corpus spell
+    #   is_magic: true
+    #   init_mod: 2
     Strength:
       description: Level 3 Corpus spell
       is_magic: true
@@ -204,7 +204,7 @@ fs3combat:
     Chill Touch:
       description: Level 2 Water spell
       is_magic: true
-      skill: Water
+      skill: Brawl
       lethality: -10
       penetration: 4
       weapon_type: Melee
@@ -224,7 +224,7 @@ fs3combat:
       damage_type: Physical
       accuracy: 0
       init_mod: 0
-      special_group: Ranged
+      special_group: Spell
     Natural Weaponry:
       description: Level 2 Nature spell
       is_magic: true
@@ -236,7 +236,7 @@ fs3combat:
       damage_type: Physical
       accuracy: 0
       init_mod: 0
-      special_group: Melee
+      special_group: Brawl
     Sling Barb:
       description: Level 2 Nature spell
       is_magic: true
@@ -248,7 +248,7 @@ fs3combat:
       damage_type: Physical
       accuracy: 0
       init_mod: 0
-      special_group: Ranged
+      special_group: Spell
   #Level 3
     Earth Bolt:
       description: Level 3 Earth spell
@@ -274,7 +274,7 @@ fs3combat:
       damage_type: Physical
       accuracy: 0
       init_mod: 0
-      special_group: Melee
+      special_group: Brawl
     Flame Dart:
       description: Level 3 Fire spell
       is_magic: true
@@ -286,7 +286,7 @@ fs3combat:
       damage_type: Physical
       accuracy: 0
       init_mod: 0
-      special_group: Ranged
+      special_group: Spell
     Hot Hands:
       description: Level 3 Fire spell
       is_magic: true
@@ -298,7 +298,7 @@ fs3combat:
       damage_type: Physical
       accuracy: 3
       init_mod: 0
-      special_group: Melee
+      special_group: Brawl
     Ice Talons:
       description: Level 3 Water spell
       is_magic: true
@@ -310,7 +310,7 @@ fs3combat:
       damage_type: Physical
       accuracy: 0
       init_mod: 0
-      special_group: Melee
+      special_group: Brawl
     Laser Zap:
       description: Level 3 Fire spell
       is_magic: true
@@ -322,19 +322,7 @@ fs3combat:
       damage_type: Physical
       accuracy: 0
       init_mod: 0
-      special_group: Ranged
-    Mind Bolt:
-      description: Level 3 Spirit spell
-      is_magic: true
-      skill: Spirit
-      lethality: 0
-      penetration: 0
-      weapon_type: Suppressive
-      is_automatic: true
-      recoil: 0
-      damage_type: Stun
-      accuracy: 3
-      init_mod: 0
+      special_group: Spell
     Stone Slam:
       description: Level 3 Earth spell
       is_magic: true
@@ -346,7 +334,7 @@ fs3combat:
       damage_type: Physical
       accuracy: 0
       init_mod: 0
-      special_group: Ranged
+      special_group: Spell
     Thorn Growth:
       description: Level 3 Nature spell
       is_magic: true
@@ -358,7 +346,7 @@ fs3combat:
       damage_type: Physical
       accuracy: 0
       init_mod: 0
-      special_group: Ranged
+      special_group: Spell
   #Level 4
     Acid Spit:
       description: Level 4 Nature spell
@@ -371,7 +359,7 @@ fs3combat:
       damage_type: Physical
       accuracy: 0
       init_mod: 0
-      special_group: Ranged
+      special_group: Spell
     Breathless:
       description: Level 4 Air spell
       is_magic: true
@@ -383,7 +371,7 @@ fs3combat:
       damage_type: Physical
       accuracy: 0
       init_mod: 0
-      special_group: Ranged
+      special_group: Spell
     Cone Of Cold:
       description: Level 4 Water spell
       is_magic: true
@@ -396,7 +384,7 @@ fs3combat:
       accuracy: 0
       has_shrapnel: true
       init_mod: 0
-      special_group: Ranged
+      special_group: Spell
     Exoskeleton:
       description: Level 4 Corpus spell
       is_magic: true
@@ -420,7 +408,7 @@ fs3combat:
       damage_type: Physical
       accuracy: 0
       init_mod: 0
-      special_group: Ranged
+      special_group: Spell
     Ice Armor:
       description: Level 4 Water spell
       is_magic: true
@@ -432,7 +420,7 @@ fs3combat:
       damage_type: Physical
       accuracy: 0
       init_mod: 0
-      special_group: Melee
+      special_group: Brawl
     Jenu:
       description: Form for Half Shift spell
       is_magic: true
@@ -456,7 +444,7 @@ fs3combat:
       damage_type: Physical
       accuracy: 0
       init_mod: 0
-      special_group: Ranged
+      special_group: Spell
     Telekinetic Burst:
       description: Level 4 Will spell
       is_magic: true
@@ -468,7 +456,7 @@ fs3combat:
       damage_type: Physical
       accuracy: 0
       init_mod: 0
-      special_group: Ranged
+      special_group: Spell
     Rock Skin:
       description: Level 4 Earth spell
       is_magic: true
@@ -480,7 +468,7 @@ fs3combat:
       damage_type: Physical
       accuracy: 0
       init_mod: 0
-      special_group: Melee
+      special_group: Brawl
     Water Whip:
       description: Level 4 Water spell
       is_magic: true
@@ -492,7 +480,7 @@ fs3combat:
       damage_type: Physical
       accuracy: 0
       init_mod: 0
-      special_group: Ranged
+      special_group: Spell
   #Level 5
     Blow Object:
       description: Level 5 Air spell
@@ -505,7 +493,7 @@ fs3combat:
       damage_type: Physical
       accuracy: 0
       init_mod: 0
-      special_group: Ranged
+      special_group: Spell
     Earth Shudder:
       description: Level 5 Earth spell
       is_magic: true
@@ -518,6 +506,7 @@ fs3combat:
       damage_type: Stun
       accuracy: 3
       init_mod: 0
+      special_group: Spell
     Exploding Ice:
       description: Level 5 Water spell
       is_magic: true
@@ -530,7 +519,7 @@ fs3combat:
       accuracy: 1
       has_shrapnel: true
       init_mod: 0
-      special_group: Ranged
+      special_group: Spell
     Flares:
       description: Level 5 Fire spell
       is_magic: true
@@ -542,7 +531,7 @@ fs3combat:
       damage_type: Physical
       accuracy: 1
       init_mod: 0
-      special_group: Ranged
+      special_group: Spell
     Slick Ground:
       description: Level 5 Water spell
       is_magic: true
@@ -555,6 +544,7 @@ fs3combat:
       damage_type: Stun
       accuracy: 3
       init_mod: 0
+      special_group: Spell
     Stalagmite:
       description: Level 5 Earth spell
       is_magic: true
@@ -566,7 +556,7 @@ fs3combat:
       damage_type: Physical
       accuracy: 1
       init_mod: 0
-      special_group: Ranged
+      special_group: Spell
     Telekinetic Crush:
       description: Level 5 Will spell
       is_magic: true
@@ -578,7 +568,7 @@ fs3combat:
       damage_type: Physical
       accuracy: 0
       init_mod: 0
-      special_group: Ranged
+      special_group: Spell
   #Level 6
     Demon Tails:
       description: Level 6 Corpus spell
@@ -592,7 +582,7 @@ fs3combat:
       accuracy: 0
       init_mod: 0
       has_shrapnel: true
-      special_group: Ranged
+      special_group: Melee
     Poison Puffs:
       description: Level 6 Nature spell
       is_magic: true
@@ -604,7 +594,7 @@ fs3combat:
       damage_type: Physical
       accuracy: 0
       init_mod: 0
-      special_group: Ranged
+      special_group: Spell
     Pyre:
       description: Level 6 Fire spell
       is_magic: true
@@ -616,7 +606,7 @@ fs3combat:
       damage_type: Physical
       accuracy: 0
       init_mod: 0
-      special_group: Ranged
+      special_group: Spell
     Shatter:
       description: Level 6 Ice spell
       is_magic: true
@@ -628,7 +618,7 @@ fs3combat:
       recoil: 0
       damage_type: Physical
       init_mod: 0
-      special_group: Ranged
+      special_group: Spell
     Stone Daggers:
       description: Level 6 Earth spell
       is_magic: true
@@ -641,7 +631,7 @@ fs3combat:
       damage_type: Stun
       accuracy: 0
       init_mod: 0
-      special_group: Ranged
+      special_group: Spell
   #Level 7
     Exploding Earth:
       description: Level 7 Earth spell
@@ -656,7 +646,7 @@ fs3combat:
       accuracy: 1
       has_shrapnel: true
       init_mod: 0
-      special_group: Ranged
+      special_group: Spell
     Ice Storm:
       description: Level 7 Water spell
       is_magic: true
@@ -670,7 +660,7 @@ fs3combat:
       accuracy: 1
       has_shrapnel: true
       init_mod: 0
-      special_group: Ranged
+      special_group: Spell
     Lightning Strike:
       description: Level 7 Air spell
       is_magic: true
@@ -682,7 +672,7 @@ fs3combat:
       damage_type: Physical
       accuracy: 0
       init_mod: 0
-      special_group: Ranged
+      special_group: Spell
     Mass Telekinetic Burst:
       description: Level 7 Will spell
       is_magic: true
@@ -695,7 +685,7 @@ fs3combat:
       damage_type: Stun
       accuracy: 1
       init_mod: 0
-      special_group: Ranged
+      special_group: Spell
     Suffocate:
       description: Level 7 Air spell
       is_magic: true
@@ -707,7 +697,7 @@ fs3combat:
       damage_type: Physical
       accuracy: 0
       init_mod: 0
-      special_group: Ranged
+      special_group: Spell
   #Level 8
     Firestorm:
       description: Level 8 Fire spell
@@ -721,7 +711,7 @@ fs3combat:
       accuracy: 4
       has_shrapnel: true
       init_mod: 0
-      special_group: Ranged
+      special_group: Spell
     Land Of Ice:
       description: Level 8 Water spell
       is_magic: true
@@ -747,7 +737,7 @@ fs3combat:
       accuracy: 4
       has_shrapnel: true
       init_mod: 0
-      special_group: Ranged
+      special_group: Spell
     Tempest:
       description: Level 8 Air spell
       is_magic: true
@@ -760,4 +750,4 @@ fs3combat:
       accuracy: 4
       has_shrapnel: true
       init_mod: 0
-      special_group: Ranged
+      special_group: Spell

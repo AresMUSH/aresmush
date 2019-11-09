@@ -4,5 +4,5 @@ game: !ruby/hash:Sinatra::IndifferentHash
   description: AresMUSH test site.
   name: Ares Local Test
   public_game: false
-  status: In Development
   website: ''
+  status: In Development

@@ -27,10 +27,6 @@ module AresMUSH
         return AutospaceCmd
       when "nospoof"
         return NospoofCmd
-      when "pemit"
-        return PemitCmd
-      when "whisper"
-        return WhisperCmd
       when "ooc"
         # ooc by itself is an alias for offstage
         if (cmd.args)

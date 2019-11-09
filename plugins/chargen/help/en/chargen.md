@@ -4,6 +4,10 @@ summary: Creating your character.
 order: 1
 aliases:
 - cg
+- submit
+- approve
+- approval
+- app
 ---
 # Character Creation
 

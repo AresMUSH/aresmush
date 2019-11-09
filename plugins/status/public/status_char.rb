@@ -29,6 +29,7 @@ module AresMUSH
     end
     
     def status
+      return "WEB" if Login.is_portal_only?(self)
       # AFK trumps all
       return "AFK" if self.is_afk?
       # Admins can be on duty or OOC

@@ -136,7 +136,7 @@ spells:
     weapon: Stone Slam
   Touchstone:
     area: 40 mile radius
-    available: false
+    available: true
     casting_time: 1 round
     desc: "The caster creates a link between themselves and a rock, gem, or piece of unalloyed metal, allowing them to always sense its location and direction from their person. If the touchstone is moved, the caster will feel the change in its location and be able to track it. The feeling of the link becomes vaguer the more distant the touchstone is, but the caster can always tell the direction of the touchstone as long as they are in range for the duration of the spell. Only one touchstone can be active at a time."
     duration: 24 hours

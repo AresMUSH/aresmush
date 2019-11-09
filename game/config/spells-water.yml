@@ -10,6 +10,17 @@ spells:
     range: Short
     roll: true
     school: Water
+  Create Frost:
+    area: 1-3 ft radius
+    available: true
+    casting_time: 1 round
+    desc: "Creates a fine layer of frost on a target the caster touches, covering an area up to 3 square feet."
+    effect: Creation
+    level: 1
+    name: Create Frost
+    range: Touch
+    roll: true
+    school: Water
   Minor Fog:
     area: 5 cubic feet
     available: true
