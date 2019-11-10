@@ -30,10 +30,13 @@ You can display image files in a gallery on the bottom of your web profile page.
 
 1. Click the "Files" button at the bottom of the profile page and then click "Choose Files".  
 2. Choose the files to upload and select the "Upload" button for each.
-3. Edit your profile and find the "Gallery" field.
-4. Select the images you want to show in the gallery.
 
 > **Tip:** Your game may set limits on the size of individual image files, and the total size of all files on your page.
+
+By default, your gallery will show all images you upload, in alphabetical order.  If you want to customize this:
+
+1. Edit your profile and find the "Profile Gallery" field.
+2. List the images you want to show in your gallery, space-separated in the form `folder/file.png folder/file2.png`.
 
 To delete files from your gallery, click on it to open its file page, and select "Delete".
 
