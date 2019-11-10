@@ -7,8 +7,6 @@ module AresMUSH
     attribute :profile_icon
     attribute :profile_last_edited, :type => DataType::Time
     attribute :profile_tags, :type => DataType::Array, :default => []
-
-    # Deprecated - gallery now automatically shows all images.
     attribute :profile_gallery, :type => DataType::Array, :default => []
     
     collection :profile_versions, "AresMUSH::ProfileVersion"
