@@ -23,7 +23,7 @@ module AresMUSH
     
     def self.character_page_files(char)
       name = Profile.character_page_folder(char)
-      Dir[File.join(AresMUSH.website_uploads_path, "#{name}/**")]
+      Dir[File.join(AresMUSH.website_uploads_path, "#{name}/**")].sort
     end
     
     def self.get_profile_status_message(char)
