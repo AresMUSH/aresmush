@@ -183,6 +183,8 @@ module AresMUSH
       if (Ranks.is_enabled?)
         groups << { name: t('profile.rank_title'), key: 'Rank', value: char.rank }
       end
+      
+      groups
     end
     
     def self.build_web_all_fields_data(char, viewer)
