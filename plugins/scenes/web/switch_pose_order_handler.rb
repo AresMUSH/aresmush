@@ -24,10 +24,8 @@ module AresMUSH
 
         new_type = scene.room.pose_order_type == 'normal' ? '3-per' : 'normal'
         
-        scene.room.update(pose_order_type: new_type)
-        message = t('scenes.pose_order_type_changed', :name => enactor.name, :type => new_type)
-        Scenes.emit_pose(enactor, message, false, false, nil, true, scene.room)
-        
+        Scenes.change_pose_order_type(scene.room, enactor, new_type)
+                
         {
         }
       end
