@@ -15,6 +15,7 @@ module AresMUSH
       scene.update(completed: false)
       scene.update(was_restarted: true)
       scene.update(last_activity: Time.now)
+      scene.update(deletion_warned: false)
       scene.watchers.replace scene.participants.to_a
       Scenes.new_scene_activity(scene, :status_changed, nil)
     end

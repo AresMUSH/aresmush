@@ -9,11 +9,6 @@ export ARES_INSTALL_TEXT="\n\n<\033[0;32mINSTALL\033[0m>"
 
 echo -e "${ARES_INSTALL_TEXT} Updating Ubuntu packages."
 
-# Need yarn to manage web client dependencies.  Add its source.
-
-curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
-echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-
 # Set up redis PPA so we get a recent version
 
 add-apt-repository -y ppa:chris-lea/redis-server
@@ -52,7 +47,6 @@ apt-get install -y nginx
 echo -e "${ARES_INSTALL_TEXT} Dependency mgmt for ember cli"
 apt-get install -y nodejs
 apt-get install -y npm
-apt-get install -y yarn
 apt-get install python
 
 # #########################################################################################

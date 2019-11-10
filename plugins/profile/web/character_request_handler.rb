@@ -27,6 +27,13 @@ module AresMUSH
           }
         }
         
+        if (char.profile_gallery.empty?)
+          gallery_files = Profile.character_page_files(char) || []
+        else
+          gallery_files = char.profile_gallery
+        end
+          
+        
         relationships_by_category = Profile.relationships_by_category(char)
         relationships = relationships_by_category.map { |category, relationships| {
           name: category,
@@ -85,7 +92,7 @@ module AresMUSH
           profile: profile,
           relationships: relationships,
           last_online: OOCTime.local_long_timestr(enactor, char.last_on),
-          profile_gallery: (Profile.character_page_files(char) || {}).map { |g| Website.get_file_info(g) },
+          profile_gallery: gallery_files.map { |g| Website.get_file_info(g) },
           background: show_background ? Website.format_markdown_for_html(char.background) : nil,
           description: Website.format_markdown_for_html(char.description),
           details: details,

@@ -50,6 +50,8 @@ module AresMUSH
       case request.cmd
         
       ## WIKI
+      when "blankWiki"
+        return GetBlankWikiPageRequestHandler
       when "createWiki"
         return CreateWikiPageRequestHandler
       when "deleteWiki"

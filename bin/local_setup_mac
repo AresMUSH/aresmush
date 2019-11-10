@@ -1,5 +1,4 @@
 brew update
-brew install yarn
 brew install git
 brew install redis
 brew install node

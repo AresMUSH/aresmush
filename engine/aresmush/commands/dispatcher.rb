@@ -12,9 +12,9 @@ module AresMUSH
       queue = (self.queue_log[client.id] || []).select { |t| Time.now - t < 1 }
       queue << Time.now
       self.queue_log[client.id] = queue
-      
-      if (queue.count > 10)
-        Global.logger.warn "Command queue overflow from #{client.id}. #{cmd} ignored."
+      queue_limit = Global.read_config('plugins', 'command_queue_limit') || 15
+      if (queue.count > queue_limit)
+        Global.logger.warn "Command queue overflow from #{client.id}."
         return
       end
       
