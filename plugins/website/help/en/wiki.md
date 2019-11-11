@@ -44,6 +44,7 @@ etc.
 Includes let you define a component in one place and re-use it across many other pages.  Typically you'll use them for a fancy component, like a creature box that appears on the side of some explanatory text.  Like templates, they allow you to standardize your wiki formatting.
 
 ![Include Screenshot](https://aresmush.com/images/help-images/include.png)
+(Image courtesy of Blu&Roadspike@AresCentral)
 
 To define an include, just make a wiki page as normal (like a page named 'creature_box').  Within that wiki page, define your text and styling.  Use placeholders like `%{name}` where page-specific variables will go.  When you include that template inside another wiki page, set variables within the include statement like so:
 
