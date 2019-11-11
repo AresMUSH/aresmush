@@ -50,7 +50,26 @@ module AresMUSH
       room.update_pose_order(enactor.name)
       Scenes.notify_next_person(room)
     end
+    
+    def self.remove_from_pose_order(enactor, target_name, room)
+      room.remove_from_pose_order(target_name)   
+      message = t('scenes.pose_order_dropped', :name => enactor.name, :dropped => target_name)
+      room.emit_ooc message
+      if (room.scene)
+        Scenes.add_to_scene(room.scene, message, Game.master.system_character, false, true)
+      end
+      Scenes.notify_next_person(room)
+    end
 
+    def self.change_pose_order_type(room, enactor, type)
+      room.update(pose_order_type: type)
+      message = t('scenes.pose_order_type_changed', :name => enactor.name, :type => type)
+      room.emit_ooc message
+      if (room.scene)
+        Scenes.add_to_scene(room.scene, message, Game.master.system_character, false, true)
+      end
+    end
+      
     def self.notify_next_person(room)
         
       poses = room.sorted_pose_order

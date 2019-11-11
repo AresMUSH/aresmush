@@ -32,7 +32,7 @@ module AresMUSH
       recipients.each do |r|
         delivery = MailMessage.create(subject: subject, body: body, author: author, to_list: to_list, character: r)
         tags = []
-        if (r == author)
+        if (r == author && !names.include?(author.name))
           delivery.update(read: true)
           tags << Mail.sent_tag
         else

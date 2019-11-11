@@ -19,10 +19,7 @@ module AresMUSH
           return
         end
         
-        enactor_room.remove_from_pose_order(self.name)   
-        message = t('scenes.pose_order_dropped', :name => enactor_name, :dropped => self.name)
-        Scenes.emit_pose(enactor, message, false, false, nil, true)
-        Scenes.notify_next_person(enactor_room)
+        Scenes.remove_from_pose_order(enactor, self.name, enactor_room)
       end
     end
   end

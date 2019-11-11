@@ -109,7 +109,7 @@ en:
         pose_nudge_muted: "Pose notifications are muted until your next login."
         pose_nudge_options: "Use on, off or mute."
         not_in_pose_order: "%{name} is not in the pose order."
-        pose_order_dropped: "Dropping %{dropped} from pose order. (by %{name})"
+        pose_order_dropped: "%{name} dropped %{dropped} from pose order."
         pose_order_mistake: "It seems like you meant to use pose/order instead."
         invalid_pose_order_type: "That is not a valid pose order type.  Try one of these: %{types}"
         pose_order_type_changed: "%{name} has changed the pose order type to %{type}."

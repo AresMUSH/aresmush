@@ -101,5 +101,16 @@ module AresMUSH
       version = File.read(version_path)
       version = version.gsub('var aresweb_version = "', '').gsub('";', '').chomp
     end
+    
+    def self.wiki_templates
+      templates = WikiPage.all.select { |p| p.category == "template" }.map { |p| {
+        title: p.title,
+        text: p.text
+      }
+      }
+      templates << { title: 'blank', text: '' }
+      templates
+    end
+    
   end
 end
