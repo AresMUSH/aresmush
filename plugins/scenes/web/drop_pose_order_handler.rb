@@ -22,11 +22,7 @@ module AresMUSH
         end
         
         Global.logger.debug "Scene #{scene.id} pose order dropping #{name} by #{enactor.name}."
-
-        scene.room.remove_from_pose_order(name)   
-        message = t('scenes.pose_order_dropped', :name => enactor.name, :dropped => name)
-        Scenes.emit_pose(enactor, message, false, false, nil, true, scene.room)
-        Scenes.notify_next_person(scene.room)
+        Scenes.remove_from_pose_order(enactor, name, scene.room)
         
         {
         }
