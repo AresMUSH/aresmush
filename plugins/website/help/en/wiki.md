@@ -7,6 +7,8 @@ aliases:
 - templates
 ---
 
+# Wiki
+
 Part of the web portal is the game's wiki, an information repository typically used for theme and policy files. The wiki is typically found under the "Wiki" menu on the web portal.
 
 ## Creating and Editing Pages
@@ -45,9 +47,11 @@ Includes let you define a component in one place and re-use it across many other
 
 To define an include, just make a wiki page as normal (like a page named 'creature_box').  Within that wiki page, define your text and styling.  Use placeholders like `%{name}` where page-specific variables will go.  When you include that template inside another wiki page, set variables within the include statement like so:
 
-`[[include CreatureBox`
-`|name=Wendigo
-`]]`
+```
+[[include CreatureBox
+|name=Wendigo
+]]
+```
 
 In the page, `%{name}` will be replaced with "Wendigo".  Be sure to put only one variable per line, and start the line with |.
 
@@ -74,3 +78,6 @@ If you place the image in a folder matching your character name, you can use it 
 Only admins can upload non-image files.  If you do, you can link to them like so:
 
 `[Link Text](\folder\filename.ext)`
+
+----
+[[disableWikiExtensions]]
