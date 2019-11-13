@@ -341,7 +341,7 @@ spells:
     available: false
     armor: Storm
     casting_time: 1 round
-    desc: "Defensive storms are summoned around the caster. Lightning envelopes the caster's body, the electric field acting as armor to deflect attacks while swirling clouds make the caster more difficult to hit."
+    desc: "Defensive storms are summoned around the target. Lightning envelopes the target's body, the electric field acting as armor to deflect attacks while swirling clouds make the target more difficult to hit."
     duration: 8 hours
     effect: Armor
     level: 6
