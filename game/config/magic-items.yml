@@ -52,6 +52,12 @@ magic-items:
     desc:  A baton about the length of a man's forearm made from lava rock, the sort of material common in the volcanoes of Stochieion. Flames yearn slightly toward it, and it allows the bearer to cast %xBShape Fire%xn.
     spells:
     - Shape Fire
+  Jade Jaguar Pendant:
+    name: Jade Jaguar Pendant
+    desc: "A heavy, palm-sized Mayan pendant of jade stone carved into the head of a jaguar. The jade is a cloudy teal, almost translucent where the stone has been carved down to thinner details. The jaguar head is long, sculpted of curved simple shapes, with its mouth open in a snarl and fangs bared. It is detailed despite its simplicity, the eyes, nose, and mouth all outlined with gold that has been partially worn or smoothed away by time. Two gold rings are attached to the back of the head for a cord to be strung through. It gives the bearer power over the body, allowing them to cast %xBImpair%xn and %xBMedium Heal%xn."
+    spells:
+    - Impair
+    - Medium Heal
   Konvaskr:
     name: Konvaskr
     desc: A flying ship that really needs a better desc.
