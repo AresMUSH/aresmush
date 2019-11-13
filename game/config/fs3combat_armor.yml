@@ -310,6 +310,24 @@ fs3combat:
         Right Hand: 14
         Left Foot: 14
         Right Foot: 14
+    Storm:
+      description: Level 6 Air spell
+      is_magic: true
+      defense: 3
+      protection:
+        Head: 11
+        Neck: 11
+        Chest: 11
+        Abdomen: 11
+        Left Leg: 11
+        Right Leg: 11
+        Groin: 11
+        Left Arm: 11
+        Right Arm: 11
+        Left Hand: 11
+        Right Hand: 11
+        Left Foot: 11
+        Right Foot: 11
   armor specials:
     Modern Helmet:
       description: A modern combat or police helmet

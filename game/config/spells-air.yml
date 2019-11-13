@@ -337,6 +337,17 @@ spells:
     range: Short
     line_of_sight: true
     available: true
+  Storm Armor:
+    available: false
+    armor: Storm
+    casting_time: 1 round
+    desc: "Defensive storms are summoned around the caster. Lightning envelopes the caster's body, the electric field acting as armor to deflect attacks while swirling clouds make the caster more difficult to hit."
+    duration: 8 hours
+    effect: Armor
+    level: 6
+    name: Storm Armor
+    range: Touch
+    school: Air
   Wind Rider:
     available: true
     casting_time: 1 round
