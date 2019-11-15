@@ -616,7 +616,7 @@ spells:
     roll: true
     school: Spirit
   Restore Memory:
-    available: false
+    available: true
     casting_time: "1 round to cast, plus additional rounds at GM's discretion according to the complexity of the restoration"
     damage_type: Psionic
     desc: "Search someone’s memory to find any which have been overwritten or changed and restore them to their original state. The caster may choose to leave the rewritten memories alongside the restored memories, or to remove them completely."
