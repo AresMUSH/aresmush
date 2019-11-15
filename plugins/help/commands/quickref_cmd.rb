@@ -7,7 +7,7 @@ module AresMUSH
       attr_accessor :topic
       
       def parse_args
-        self.topic = cmd.args
+        self.topic = cmd.args || "help"
       end
 
       def required_args

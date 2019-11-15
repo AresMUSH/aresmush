@@ -41,10 +41,14 @@ module AresMUSH
           if (scene.private_scene)
             return "      #{t('who.private_scene')}"
           else
-            scene_name = char.room.name.after('- ')
-            area_name = char.room.area ? "#{char.room.area.name} - " : ''
             scene_id = left("\##{scene.id}", 6)
-            return "#{scene_id}#{area_name}#{scene_name}"
+            if (scene.temp_room)
+              scene_name = char.room.name.after('- ')
+              area_name = char.room.area ? "#{char.room.area.name} - " : ''
+              return "#{scene_id}#{area_name}#{scene_name}"
+            else
+              return "#{scene_id}#{Who.who_room_name(char)}"
+            end
           end
         elsif (status == 'web-inactive' || status == 'web-active')
           return "      #{t('who.web_room')}"

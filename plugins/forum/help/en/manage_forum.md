@@ -15,7 +15,7 @@ aliases:
 `forum/createcat <name>`
 
 `forum/describe <category>=<description>`
-`forum/rename <category>=<new name>`
+`forum/rename <category>=<new name>` - Renames a forum.  You can use this to change capitalization on the name as well as changing the name itself.
 `forum/deletecat <category>`
 `forum/order <category>=<order #>`
 

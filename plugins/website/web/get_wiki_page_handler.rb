@@ -17,7 +17,11 @@ module AresMUSH
         name_or_id = WikiPage.sanitize_page_name(name_or_id)
         page = WikiPage.find_by_name_or_id(name_or_id)
         if (!page)
-          return { not_found: true, title: name_or_id.titleize }
+          return { 
+            not_found: true, 
+            title: name_or_id.titleize,
+            templates: Website.wiki_templates
+           }
         end
         
         lock_info = page.get_lock_info(enactor)

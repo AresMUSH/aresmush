@@ -1231,6 +1231,20 @@ JOBS SCREEN
   color: white;
 }
 
+.job-reply {
+  padding: 5px;
+  margin-top: 5px;
+}
+
+.admin-only-reply-label {
+  background-color: #f0ad4e;
+}
+
+.admin-only-reply, .admin-only-reply .markdown-editor {
+  background-color: #fcf8e3;
+  border-color: #faebcc;
+}
+
 /* -------------------------
 OTHER
 ------------------------- */
