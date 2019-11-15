@@ -66,6 +66,12 @@ magic-items:
     desc:  Strung together with stiff cords and bird bones, the necklace hangs loose and just below the collarbone. The bones are bleached white and decorated with little carvings. Adhered to the bones are short, slim raven feathers. The pendant is a bird skull, but the brow has been hollowed out and set with a dull black stone that doesn't reflect any light. It grants the wearer the ability to cast Group Comprehend Languages
     spells:
     - Group Comprehend Languages
+  Rising Sun Signet Ring:
+    name: Rising Sun Signet Ring
+    desc: "A Greek styled, thick gold ring set with a large, round malachite stone. An intaglio signet is engraved into the deep green, marbled stone. The signet features a sun disk wrapped in two snakes, their heads facing opposite directions. The stone is flanked by feathered wings on the gold band, their balanced forms detailed and decorated with scroll-work. Allows the bearer to cast %xBShape Light%xn and %xBWild Shape Falcon%xn. "
+    spells:
+    - Wild Shape Falcon
+    - Shape Light
   Rosewing:
     name: Rosewing
     desc: "Just under nine inches, the slender wand of oak is beautifully polished with age. Delicate rose quartz is inlaid along the length of it in intricate designs, and it's topped with a sharp, many-pointed star of pink sapphire. Gives +1 to spellcasting."
