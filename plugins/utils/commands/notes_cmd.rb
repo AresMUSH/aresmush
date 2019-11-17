@@ -16,7 +16,7 @@ module AresMUSH
       end
 
       def check_is_allowed
-        return nil if self.target == enactor_name
+        return nil if self.section == 'player' && self.target == enactor_name
         return nil if Utils.can_access_notes?(enactor)
         return t('dispatcher.not_allowed')
       end
