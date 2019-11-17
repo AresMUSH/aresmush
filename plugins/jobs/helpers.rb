@@ -158,8 +158,8 @@ module AresMUSH
       end
     end
     
-    def self.can_access_job?(enactor, job)
-      !Jobs.check_job_access(enactor, job)
+    def self.can_access_job?(enactor, job, allow_author = false)
+      !Jobs.check_job_access(enactor, job, allow_author)
     end
     
     def self.check_job_access(enactor, job, allow_author = false)
