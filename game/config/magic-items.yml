@@ -82,11 +82,18 @@ magic-items:
   Skofnung:
     name: Skofnung
     desc: Ragnar's magical sword with a soul inside.
+  Scythe Of Isis: 
+    name: Scythe of Isis
+    desc: An ancient bronze scythe with a long, crescent blade fitted to a slightly curved handle. The length of the handle is about a foot and a half long, making it able to be wielded with either one hand or two. In the middle of the shaft is the image of a doorway in low relief, surrounded by hieroglyphics, and the tyet symbol of Isis in red jasper beneath it. Letters and runes of Soitos, ancient Greek, and Coptic are etched in delicate designs all over the weapon, the writing all encrypted. The scythe both cuts and cures, allowing the bearer to cast  %xBMedium Heal%xn.
+    spells:
+    - Medium Heal
+    weapon_specials: Scythe Of Isis
   Spear Of The Hunt:
     name: Spear of the Hunt
     desc: This spear is 5 feet in length with a smooth, oiled shaft that is decorated in ogham runes along one side. It has a simple, but sharp spearhead, and allows its bearer to cast Track Animal.
     spells:
     - Track Animal
+
   #LORE HOOKS
   #Adelaide's Hook
   Zhujiang's Hairpin:
