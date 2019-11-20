@@ -21,7 +21,7 @@ module AresMUSH
            client.emit template.render
           end
        end
-
+       Login.mark_notices_read(enactor, :comp, reference_id = nil)
 
 
       end
