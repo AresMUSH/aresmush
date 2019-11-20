@@ -38,7 +38,7 @@ module AresMUSH
           storyteller = Character.find_one_by_name(storyteller.strip)
           if (storyteller)
             if (!plot.storytellers.include?(storyteller))
-              Scenes.add_storyteller(plot, storyteller)
+              Custom.add_storyteller(plot, storyteller)
             end
           end
         end

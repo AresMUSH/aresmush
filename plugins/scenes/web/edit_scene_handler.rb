@@ -25,9 +25,9 @@ module AresMUSH
             end
           end
           scene.scene_log.update(log: request.args[:log])
-          
+
           Website.add_to_recent_changes('scene', t('scenes.scene_updated', :title => scene.title), { id: scene.id }, enactor.name)
-          
+
         end
 
         scene.update(location: request.args[:location])
@@ -86,7 +86,7 @@ module AresMUSH
           creature = Creature.find_one_by_name(creature.strip)
           if (creature)
             if (!scene.creatures.include?(creature))
-              Scenes.add_creature(scene, creature)
+              Custom.add_creature(scene, creature)
             end
           end
         end
@@ -98,7 +98,7 @@ module AresMUSH
           portal = Portal.find_one_by_name(portal.strip)
           if (portal)
             if (!scene.portals.include?(portal))
-              Scenes.add_portal(scene, portal)
+              Custom.add_portal(scene, portal)
             end
           end
         end
