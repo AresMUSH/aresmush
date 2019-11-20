@@ -28,8 +28,7 @@ Although Grand Lake seems to have an abnormally high population of magic users, 
   hooks_required: true
   icon_blurb: "Upload an optional picture for your character icon. Square images work best."
   lastwill_blurb: "If you would like to register a preference on what happens if you ever idle out, you can fill out your lastwill here.  You could leave your character's fate up to someone else, or specify that they be killed off or sent away.\n\nYou can fill out or change your lastwill at any time on game using the `lastwill` command."
-  post_approval_message: Please make sure they have a profile image for their log
-    icon.
+  post_approval_message: Please make sure they have a profile image for their log icon.
   rejection_message: "Sorry, your character could not be approved at the present time for the reasons listed.  You can make changes to your app by visiting [Create a Character](/chargen) on the web portal. \n\nFeel free to leave comments in this request or to ask for help on the **New Characters** channel if you have any questions.\n\n-----------"
   shortcuts:
     chargen: cg

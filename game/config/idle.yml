@@ -24,6 +24,8 @@ idle:
   reminder_category: MISC
   roster_welcome_msg: Welcome!  You may wish to check your %xcnotes%xn and web portal
     profile page for any notes left by the prior player.  Check out the [Getting Started](/wiki/getting_started) guide for some tips on getting started on Spirit Lake.
+  roster_arrival_msg: "Please welcome %{name}, who has been claimed off the roster.\n\nPMajor
+    School: %{major school} \nMinor School: %{minor school}\n\nRP Hooks:\n%{rp_hooks}"
   roster_fields:
   - field: name
     width: 20
