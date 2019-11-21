@@ -425,10 +425,10 @@ fs3combat:
     Spider:
       areas:
         Abdomen:
-        - Arm
-        - Arm
-        - Arm
-        - Arm
+        - Leg
+        - Leg
+        - Leg
+        - Leg
         - Thorax
         - Thorax
         - Head
@@ -436,10 +436,10 @@ fs3combat:
         - Abdomen
         - Abdomen
         Thorax:
-        - Arm
-        - Arm
-        - Arm
-        - Arm
+        - Leg
+        - Leg
+        - Leg
+        - Leg
         - Abdomen
         - Abdomen
         - Head
@@ -447,27 +447,27 @@ fs3combat:
         - Thorax
         - Thorax
         Head:
-        - Arm
-        - Arm
-        - Arm
-        - Arm
-        - Arm
-        - Arm
+        - Leg
+        - Leg
+        - Leg
+        - Leg
+        - Leg
+        - Leg
         - Abdomen
         - Abdomen
         - Head
         - Head
-        Arm:
+        Leg:
         - Abdomen
         - Abdomen
         - Head
         - Thorax
         - Thorax
-        - Arm
-        - Arm
-        - Arm
-        - Arm
-        - Arm
+        - Leg
+        - Leg
+        - Leg
+        - Leg
+        - Leg
       vital_areas:
       - Abdomen
       - Thorax
