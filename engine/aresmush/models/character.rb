@@ -37,7 +37,7 @@ module AresMUSH
       return [] if !name_or_id
             
       if (name_or_id.start_with?("#"))
-        return find_any_by_id(name_or_id)
+        return find_any_by_id(name_or_id.upcase)
       end
       
       found = find(name_upcase: name_or_id.upcase).union(alias_upcase: name_or_id.upcase).to_a

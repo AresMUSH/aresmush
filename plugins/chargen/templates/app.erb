@@ -1,7 +1,7 @@
 <%= header %>
 <%= t('chargen.app_title', :name => char.name) %>
-<% if AresMUSH::FS3Skills.is_enabled? %>
-<%= section_title(t('chargen.abilities_review_title')) %>
+<% if show_abilities %>
+<%= section_title(abilities_header) %>
 <%= abilities %>      
 <% end %>
 

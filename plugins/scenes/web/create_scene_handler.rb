@@ -39,11 +39,12 @@ module AresMUSH
         Global.logger.debug "Web scene #{scene.id} created by #{enactor.name}."
             
         participant_names = request.args[:participants] || []
-      
+        participants = []
         participant_names.each do |p|
           participant = Character.find_one_by_name(p.strip)
           if (participant)
-            Scenes.add_participant(scene, participant)
+            Scenes.add_participant(scene, participant, enactor)
+            participants << participant
           end
         end
       
@@ -66,6 +67,13 @@ module AresMUSH
         
         if (completed)
           Scenes.share_scene(scene)
+          
+          participants.each do |p|
+            split_log = log.split
+            split_log = split_log[0..split_log.count/participants.count].join(" ")
+            Scenes.handle_word_count_achievements(p, split_log)
+          end
+          
         else
           Scenes.create_scene_temproom(scene)
         end

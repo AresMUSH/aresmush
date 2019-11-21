@@ -73,6 +73,8 @@ You can include a gallery of images (similar to what appears on the character pr
 `folder/image2.jpg`
 `[[/gallery]]`
 
+You can include all files in a folder using `folder/*`.
+
 ## Social Media
 
 There are several social media codes to make it easy to embed playlists, videos and pinterest boards on your character profiles and wiki pages.
@@ -126,13 +128,13 @@ You can include a tab view with multiple tab selections.
 `[[/tab]]` 
 `[[/tabview]]` 
 
-## Including Other Pages
+## Templates and Includes
 
 If you have a common snippet that you want to use in multiple places, you can put it into a wiki page of its own and then include it in other pages with the include tag.
 
 `[[include PageName]]`
 
-You can use includes like templates, creating consistent formatting easily across other wiki articles.  Within the original wiki page (the template), you style everything the way you want, but use placeholders like `%{foo}` where page-specific variables will go.  When you include that template inside another wiki page, set variables within the include statement like so:
+Includes can have parameters, like so:
 
 `[[include PageName`
 `|foo=Foo Value`
@@ -140,7 +142,7 @@ You can use includes like templates, creating consistent formatting easily acros
 
 In the page, `%{foo}` will be replaced with "Foo Value".  Be sure to put only one variable per line, and start the line with |.
 
-Note:  If the page you're including has an actual % in it, you'll need to format it as two percents (%%) otherwise the variable processing will get confused.
+You can also create templates containing starter text for various kinds of pages. See [Wiki Tutorial](/help/wiki) for more information.
 
 ## Table of Contents
 
@@ -162,16 +164,4 @@ If you want to disable all custom Ares markdown extensions on a page, simply add
 
 ## Files
 
-The Ares web portal has a central file repository.  This allows images to easily be used across multiple pages.   You can use folders to organize the images by page name or any other criteria.  Character gallery images will automatically be put into a folder matching the character name.
-
-You can upload and view available files just by visiting the [File Repository](/files).  Click on any file to view or manage it.
-
-> **Tip:** If you want to overwrite/replace an existing file, be sure the 'overwrite' checkbox is checked.
-
-Once an image file is uploaded, you can use it on any page with:
-
-`[[image folder\filename.jpg]]`  
-
-You can also use it in your character profile as explained in .  If you upload something that is not an image, you can link to it like so:
-
-`[Link Text](\folder\filename.jpg)`
+For help using files on wiki pages, see the [Wiki Tutorial](/help/wiki).

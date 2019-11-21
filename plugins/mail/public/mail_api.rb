@@ -23,9 +23,7 @@ module AresMUSH
         recipients << recipient
       end
       
-      copy_sent = author.copy_sent_mail
-      
-      recipients << author if copy_sent
+      recipients << author
       recipients = recipients.uniq
       
       to_list = recipients.map { |r| r.name }.join(" ")
@@ -34,13 +32,9 @@ module AresMUSH
       recipients.each do |r|
         delivery = MailMessage.create(subject: subject, body: body, author: author, to_list: to_list, character: r)
         tags = []
-        if (r == author)
+        if (r == author && !names.include?(author.name))
           delivery.update(read: true)
-          if (copy_sent)
-            tags << Mail.sent_tag
-          else
-            tags << Mail.inbox_tag
-          end
+          tags << Mail.sent_tag
         else
           tags << Mail.inbox_tag
         end

@@ -5,79 +5,40 @@ aliases:
 - chat
 - comsys
 ---
-# Channels
+# Channel Commands
 
-Channels are public forums for out-of-character communication.  Each game will have a variety of channels available for use.  Some will be locked so that only people with certain roles may use them.
+Channels are like chatrooms, letting you communicate with other players about specific topics (questions, general chit-chat, group-related messages, etc.)
 
-> **Tip:** AresMUSH also supports the MUX-style channel commands, so you can use the keywords "on", "off", "who", "last", "mute", and "unmute" with the channel alias.  For example:  `pub who`.
+> Get an overview of the chat channel system in the [Chat Tutorial](/help/chat_tutorial).
 
-## Finding Channels
+## Listing and Joining Channels
 
-You can see available channels and their descriptions using the `channels` command.  This also tells you at a glance what channels you've joined and what commands are used to talk on them, which we'll discuss in a moment.
-
-`channels` - Lists channels and their descriptions
+`channels` - Lists channels and their descriptions.
 `channel/info <name>` - Shows detailed info for a channel.
-
-## Joining and Leaving Channels
-
-You will only see messages on channels you join, and you may leave those channels at any time. 
-
 `channel/join <channel>[=<alias>]` - Joins a channel.
 `channel/leave <channel>` - Leaves a channel.
+`channel/who <channel>` - Shows who's on the channel.
+
+> **Tip:** AresMUSH also supports the MUX-style channel commands, so you can use the keywords "on", "off", "who", "last", "mute", and "unmute" with the channel alias.  For example:  `ch who`.
 
 ## Talking on Channels
 
-You can talk on a channel using the full channel name followed by the message.  For example: `chat hello`
+You can talk on a channel using the full channel name followed by the message.  For example: `chat hello`.  You can also create **aliases** for channels so you can use shorter names.  For example, `ch hello`.
 
-`<channel name> <message>` - Talks on a channel.
-
-## Channel Aliases
-
-It's convenient to have shorter commands to talk on channels so you don't have to type out things like `questions Hi!`.  You can make *aliases* for channel names and then talk on the channel using the alias instead of the full name.  For example, if you set up an alias of 'ch' for the chat channel, you can then do `ch hello`.
-
-The system will set you up with some channel aliases by default, which you can see on the `channels` command list.  You can change your aliases at any time, and can even set multiple aliases for a single channel.
-
-`<channel alias> <message>` - Talks on a channel using the alias.
+`<channel name or alias> <message>` - Talks on a channel.
+`channels` - Views your current channel aliases.
 `channel/alias <channel>=<alias>` - Changes the alias.  You can use multiple aliases, separated by spaces.
+`channel/recall <channel>[=<num messages>]` - Shows the last few messages on a channel.
 
 > **Tip:** Take care to avoid channel aliases that overlap with other commands, like 'n' for north or 'p' for page.  Remember that AresMUSH ignores prefixes like '+' on commands.
 
-## Titles
+## Channel Options
 
-You can configure an optional title to appear in front of your name when you talk on a channel.  Titles are channel-specific.
-
-    <Chat> Captain Faraday says, "Hello."
-
-`channel/title <channel>=<title>`.
-
-If you don't like seeing other peoples' channel titles, you can turn them off on a per-channel basis.  This only works in your main MU client output, and doesn't affect the 'Chat' tab on the web portal or channel recall.
-
-`channel/showtitles <channel>=<on or off>`
-
-## Mute
-
-Channels sometimes get spammy, or distract you when you're RPing.  You can temporarily mute (aka gag) a channel without actually leaving it.  Mute is cleared when you disconnect.  You can use 'all' for the channel name to mute/unmute all channels at once.
-
-`channel/mute <channel>` - Silences a channel temporarily.
-`channel/unmute <channel>` - Un-silences a channel.
-
-## Who List
-
-You can see who's on a channel, and whether they're currently listening or muted.
-
-`channel/who <channel>` - Shows who's on the channel
-
-## Connection Announcements
-
-By default, the game will show you who has connected and disconnected from a channel, so you can greet people and stop having a conversation with someone who is no longer there.  If you don't want to see those messages, you can turn them on or off for a particular channel.
-
+`channel/mute <channel>` - Silences a channel until your next login.  Use 'all' to mute all channels at once.
+`channel/unmute <channel>` - Un-silences a channel. Use 'all' to unmute all channels at once.
 `channel/announce <channel>=<on/off>` - Turns connection messages on or off.
-
-## Recall
-
-Channels save a history of recent messages, which you can review using the recall command.
-
-`channel/recall <channel>[=<num messages>]` - Shows the last few messages on a channel.
+`channel/title <channel>=<title>` - Sets a channel-specific title to show up in front of your name.
+`channel/showtitles <channel>=<on or off>` - Enables or disables other peoples' channel titles. (Only works when on a MU Client; web portal channels always show titles.)
 
 ## Reporting Abuse
 

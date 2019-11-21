@@ -10,7 +10,7 @@ module AresMUSH
         
         Global.logger.debug "FS3 incapable rename."
         config = DatabaseMigrator.read_config_file("fs3skills_chargen.yml")
-        if (!config['fs3skills']['allow_unskilled_action_skills'] )
+        if (!config['fs3skills']['allow_incapable_action_skills'] )
           config['fs3skills']['allow_incapable_action_skills'] = config['fs3skills']['allow_unskilled_action_skills']
           config['fs3skills'].delete 'allow_unskilled_action_skills'
           config = DatabaseMigrator.write_config_file("fs3skills_chargen.yml", config)
@@ -75,40 +75,8 @@ module AresMUSH
             "cookie_received" => { 'type' => 'community', 'message' => "Received %{count} cookies." }
           })
         end
-
-        Global.config_reader.load_game_config
-        
-        Character.all.each do |c|
-          c.achievements.each do |achievement|
-            if (achievement.name =~ /fs3_joined_combat_/)
-              count = achievement.name.split('_').last.to_i
-              Achievements.award_achievement(c, 'fs3_joined_combat', count)
-              achievement.delete
-            end
-
-            if (achievement.name =~ /word_count_/)
-              count = achievement.name.split('_').last.to_i
-              Achievements.award_achievement(c, 'word_count', count)
-              achievement.delete
-            end
-
-            if (achievement.name =~ /scene_participant_/)
-              count = achievement.name.split('_').last.to_i
-              if (count > 0)
-                Achievements.award_achievement(c, 'scene_participant', count)
-                achievement.delete
-              end
-            end
-            
-            if (achievement.name =~ /cookie_received_/)
-              count = achievement.name.split('_').last.to_i
-              Achievements.award_achievement(c, 'cookie_received', count)
-              achievement.delete
-            end
-          end
-        end
       end 
-      
+
       def set_achievements(filename, section, data)
         config = DatabaseMigrator.read_config_file(filename)
         if (!config[section]['achievements'])

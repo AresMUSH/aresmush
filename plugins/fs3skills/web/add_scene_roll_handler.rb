@@ -97,11 +97,7 @@ module AresMUSH
             )
         end
         
-        Scenes.add_to_scene(scene, message, Game.master.system_character)
-        
-        if (scene.room)
-          scene.room.emit message
-        end
+        FS3Skills.emit_results(message, nil, scene.room, false)
         
         {
         }

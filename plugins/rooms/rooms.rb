@@ -35,6 +35,8 @@ module AresMUSH
         end
       when "build"
         return BuildCmd
+      when "exits"
+        return ExitsCmd
       when "foyer"
         return FoyerCmd
       when "go"

@@ -83,7 +83,7 @@ BASIC CONTAINERS
     padding: 5px;
 }
 
-.app-status, #console, #console pre, code, #sendMsg, #sendMsg2, #manageLog { 
+.app-status, #console, #console pre, #sendMsg, #sendMsg2, #manageLog { 
     white-space: pre-wrap;
     background-color: black;
     color: white;
@@ -93,8 +93,10 @@ BASIC CONTAINERS
 }
 
 code {
-    background: none;
-    color: $primary-color;
+  white-space: pre-wrap;
+  color: $primary-color;
+  font-family: "Lucida Console", Monaco, 'Andale Mono', 'Courier New', Courier, monospace;
+  font-size: 14px; 
 }
 
 
@@ -164,6 +166,23 @@ a:focus{
     background-color: #000;
 }
 
+.toc {
+  padding: 10px;
+  background-color: $border-color;
+  width: 300px;
+  max-width: 100%;
+  border: 1px solid white;
+  box-shadow: 5px 5px 5px $secondary-color;
+  padding: 15px;
+  margin: 15px 15px 15px 0px;
+  border-radius: 8px;
+}
+
+
+.toc li {
+  list-style-type: square;
+}
+
 /* -------------------------
 GENERAL HTML ELEMENTS
 ------------------------- */
@@ -226,21 +245,21 @@ pre {
 
 
 blockquote{
-	margin: 0.4em 0;
-    width: 80%;
-	padding: 10px;	
-    font-size: 1em;
-    background-color: $border-color;
-    border: 0px;
-    border-left: 1px solid $secondary-color;
-    -webkit-margin-before: 1em;
-    -webkit-margin-after: 1em;
-    -webkit-margin-start: 40px;
-    -webkit-margin-end: 40px;
+  margin: 0.4em 0;
+  width: 80%;
+  padding: 10px;	
+  font-size: 1em;
+  background-color: $border-color;
+  border: 0px;
+  border-left: 1px solid $secondary-color;
+  -webkit-margin-before: 1em;
+  -webkit-margin-after: 1em;
+  -webkit-margin-start: 40px;
+  -webkit-margin-end: 40px;
 }
 
 pre code { 
-	border: 2px solid $secondary-color;
+	border: 2px solid $border-color;
     border-radius: 5px;
     font-size: 1em;
 	margin: 0.4em 0;
@@ -521,6 +540,10 @@ SIDEBAR
   padding: 10px;
 }
 
+.sidebar-list {
+  word-wrap: break-word;
+}
+
 /* -------------------------
 GENERAL UTILITIES
 ------------------------- */
@@ -536,6 +559,15 @@ GENERAL UTILITIES
     -moz-border-radius: 25px;
     -webkit-border-radius: 25px;
     border-radius: 25px;
+    margin: 2px;
+}
+
+.tiny-profile-icon {
+    width: 25px;
+    height: 25px;
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+    border-radius: 15px;
     margin: 2px;
 }
 
@@ -574,6 +606,10 @@ GENERAL UTILITIES
     font-size: .8em;
 }
 
+img {
+  max-width: 100%;
+}
+
 .image-container {
     padding: 5px;
     max-width: 100%;
@@ -596,7 +632,7 @@ GENERAL UTILITIES
 }
 
 .icon-status-web-active {
-  border: 3px solid #a5a509;
+  border: 3px double #176109;
   border-radius: 30px;
 }
 
@@ -605,7 +641,12 @@ GENERAL UTILITIES
   border-radius: 30px;
 }
 
-.icon-status-inactive {
+.icon-status-web-inactive {
+  border: 3px double #ccc;
+  border-radius: 30px;
+}
+
+.icon-status-game-inactive {
   border: 3px solid #ccc;
   border-radius: 30px;
 }
@@ -757,6 +798,8 @@ SCENES SCREEN
     max-height: 400px;
     overflow-y: scroll;
     overflow-x: hidden;
+    margin: 2px 0px;
+    
 }
 
 .log-icon-container {
@@ -846,6 +889,7 @@ SCENES SCREEN
     margin: 20px 25px 20px 25px;
     border: 1px solid #eee;
     align: center; 
+    height: 1px;
 }
 
 .scene-pose-order {
@@ -860,6 +904,62 @@ SCENES SCREEN
   font-weight: bold;
   color: green;  
 }
+
+.scene-menu { 
+  display: inline-block;
+}
+.scene-menu .dropdown-toggle {
+  padding: 0px;
+}
+
+.scene-pose-select, .scene-char-select {
+  width: 175px;
+  padding-top: 10px;
+}
+
+.scene-pose-box { 
+    margin: 10px 0px;
+    width: 100%;
+}
+ 
+.pose-ui, 
+.pose-buttons {
+    display: flex;
+    flex-flow: row-reverse wrap;
+}
+ 
+.pose-buttons .btn {
+    margin-left: 4px;
+}
+ 
+.scene-buttons {
+    display: flex;
+    flex-flow: column;
+    align-items: flex-end;
+}
+ 
+.scene-char-select .tiny-profile-icon {
+    margin: 0 2px 3px 0;
+}
+ 
+@media (max-width: 767px) {
+    .scene-dropdowns {
+        display: flex;
+        flex-flow: row;
+        justify-content: flex-end;
+        padding-top: 10px;
+     }
+ 
+     .scene-dropdowns .scene-menu {
+         margin-left: 4px;
+     }
+     
+     .scene-dropdowns .dropdown-menu {
+         right: 0;
+         left: auto;
+     }
+}
+
 
 /* -------------------------
 CHARACTERS SCREEN
@@ -1021,6 +1121,12 @@ input[type='file'] {
   overflow-x: hidden;
   margin: 5px;
 }
+
+.fs3-linked-attr {
+  font-size: .7em;
+  color: $faded-text-color;
+
+}
 /* -------------------------
 CHAT SCREEN
 ------------------------- */
@@ -1125,6 +1231,20 @@ JOBS SCREEN
   color: white;
 }
 
+.job-reply {
+  padding: 5px;
+  margin-top: 5px;
+}
+
+.admin-only-reply-label {
+  background-color: #f0ad4e;
+}
+
+.admin-only-reply, .admin-only-reply .markdown-editor {
+  background-color: #fcf8e3;
+  border-color: #faebcc;
+}
+
 /* -------------------------
 OTHER
 ------------------------- */
@@ -1144,6 +1264,39 @@ OTHER
 
 .wiki-breadcrumbs {
   margin-bottom: 10px;
+}
+
+.help-heading {
+  margin-top: 5px;
+}
+
+.help-topic img {
+
+      max-width: 80%;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 10px;  
+}
+
+ul.regular-help-list {
+    list-style-type: square;
+}
+
+ul.reference-help-list li {
+    display: inline;
+}
+
+ul.reference-help-list > li:not(:last-child)::after {
+    content: "\00b7";
+    margin: 0 .25em;
+}
+
+.reference-help-title { 
+  color: $faded-text-color;
+  font-style: italic;
+  font-weight: bold;
+  padding-left: 25px;
 }
 
 /*.char-scene-list li:before { content: "\2666  "; }*/

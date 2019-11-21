@@ -35,21 +35,27 @@ module AresMUSH
       end  
       
       def scene_room_name(char)
-        if (char.who_hidden)
-          return "      #{t('who.hidden')}"
-        end
-        
-        name = Who.who_room_name(char)
         scene = char.room.scene
+        status  = Website.activity_status(char)
         if (scene)
           if (scene.private_scene)
-            name = t('who.private_scene')
+            return "      #{t('who.private_scene')}"
           else
-            name = name.after('- ')
+            scene_id = left("\##{scene.id}", 6)
+            if (scene.temp_room)
+              scene_name = char.room.name.after('- ')
+              area_name = char.room.area ? "#{char.room.area.name} - " : ''
+              return "#{scene_id}#{area_name}#{scene_name}"
+            else
+              return "#{scene_id}#{Who.who_room_name(char)}"
+            end
           end
+        elsif (status == 'web-inactive' || status == 'web-active')
+          return "      #{t('who.web_room')}"
+        else 
+          return "      #{Who.who_room_name(char)}"
         end
-        scene_name = scene ? left("\##{scene.id}", 6) : "      "
-        "#{scene_name}#{name}"
+        
       end
         
       def build_scene_groups
@@ -60,10 +66,11 @@ module AresMUSH
         self.online_chars.each do |c|
           scene = c.room.scene
           room = scene_room_name(c)
-          idle = c.is_afk? || Status.is_idle?(Login.find_client(c))
-          name = idle ? "%xh%xx#{name(c)}%xn" : name(c)
+          name = name(c)
 
-          if (scene)
+          if (c.who_hidden)
+            append_to_group(groups['private'],  "      #{t('who.hidden')}", name)
+          elsif (scene)
             if (scene.private_scene)
               append_to_group(groups['private'], room, name)
             else
@@ -77,12 +84,27 @@ module AresMUSH
       end
       
       def name(char)
-         Demographics.name_and_nickname(char)
+        status  = Website.activity_status(char)
+        name =  Demographics.name_and_nickname(char)
+        if (status == 'game-inactive')
+          name = "%xh%xx#{name}%xn"
+        elsif (status == 'web-inactive')
+          name = "%xh%xx#{name}#{Website.web_char_marker}%xn"
+        elsif (status == 'web-active')
+          name = "#{name}%xh%xx#{Website.web_char_marker}%xn"
+        end
+        name
       end
        
       def room_name(char)
         room = char.room
         name = Who.who_room_name(char)
+        
+        status  = Website.activity_status(char)
+        if (status == 'web-inactive' || status == 'web-active')
+          return t('who.web_room')
+        end
+        
         if (room.scene)
           if (room.scene.temp_room)
             if (room.scene.private_scene)
@@ -106,9 +128,8 @@ module AresMUSH
         groups = {}
         self.online_chars.each do |c|
           room = room_name(c)
-          idle = c.is_afk? || Status.is_idle?(Login.find_client(c))
-          name = idle ? "%xh%xx#{c.name}%xn" : c.name
-          append_to_group(groups, room, name)
+          char_name = name(c)
+          append_to_group(groups, room, char_name)
         end
         groups.sort
       end

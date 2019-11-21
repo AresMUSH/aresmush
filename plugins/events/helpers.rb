@@ -66,7 +66,7 @@ module AresMUSH
         
       Channels.announce_notification(t('events.event_created_notification', :title => title))
       Events.events_updated
-      Events.handle_event_achievement(enactor)
+      Achievements.award_achievement(enactor, "event_created")
       return event
     end
    
@@ -118,10 +118,6 @@ module AresMUSH
         
         f.puts "END:VCALENDAR\r\n"
       end
-    end
-    
-    def self.handle_event_achievement(char)
-        Achievements.award_achievement(char, "event_created")
     end
     
     def self.cancel_signup(event, name, enactor)

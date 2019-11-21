@@ -10,19 +10,13 @@ aliases:
 ---
 # Pose Order
 
-Pose order tracking is a tool to help you keep track of whose turn it is.  It is **not** intended to be a strict restriction on who's allowed to pose.  Use any order you like in a given scene.
+Pose order tracking is a tool to help you keep track of whose turn it is.  This is a guide to help people take turns equitably, and is not meant as a strict turn order.
 
 `pose/order` - Shows the pose order of the room.
+`pose/nudge <on, off or gag>` - Controls whether the game tells you when it's your turn.
+`pose/drop <name>` - Skips someone's turn if they're idle. As soon as they pose again, they'll jump in at their new spot.
 
-By default, the system will nudge you when it's your turn to pose, according to the established pose order.  This notification will only happen after the first turn, when repose is on.  You can disable this notification or temporarily gag it until your next login.
-
-`pose/nudge <on, off or gag>`
-
-If someone's idle or passing, you can skip their turn by dropping them from pose order.  As soon as they pose again, they'll jump in at their new spot.
-
-`pose/drop <name>`
-
-For large scenes, you can switch from regular order to 3-pose order, where people will be nudged after three other people have posed.
+For large scenes, you can switch from regular order to 3-pose order, where someone can pose again after three other people have posed.
 
 `pose/ordertype <normal, 3-per>`
 

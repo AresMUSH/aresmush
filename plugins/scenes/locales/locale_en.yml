@@ -14,9 +14,6 @@ en:
         organizer_deleted: "(Organizer Deleted)"
         last_activity: "Last Activity: "
         
-        whisper_emit: "%{name} whispers to %{target}, \"%{message}\""
-        whisper_emit_header: "%xc%% Private whisper:%xn"
-        
         grid_scene: "On Grid"
         temproom_scene: "Temp Room"
         
@@ -75,7 +72,7 @@ en:
         scene_not_shared: "That scene is not shared."
         no_scene_room: "That scene doesn't have a room to join.  That can happen if it's created from the web portal."
         log_list_short_footer: "Only the last few poses are shown.  For the entire log, use `scene/log`."
-        scene_active_footer: "Only active scenes are shown.  For completed scenes, use `scenes/all`."
+        scene_active_footer: "Scene views: scenes/open, scenes/all, scenes/unshared."
 
         log_shared: "The log has been shared, and will now appear on the web portal."
         log_unshared: "The log is no longer being shared on the web portal."
@@ -112,7 +109,7 @@ en:
         pose_nudge_muted: "Pose notifications are muted until your next login."
         pose_nudge_options: "Use on, off or mute."
         not_in_pose_order: "%{name} is not in the pose order."
-        pose_order_dropped: "Dropping %{dropped} from pose order. (by %{name})"
+        pose_order_dropped: "%{name} dropped %{dropped} from pose order."
         pose_order_mistake: "It seems like you meant to use pose/order instead."
         invalid_pose_order_type: "That is not a valid pose order type.  Try one of these: %{types}"
         pose_order_type_changed: "%{name} has changed the pose order type to %{type}."

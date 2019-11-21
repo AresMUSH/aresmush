@@ -16,3 +16,10 @@ profile:
     profile_edit:
       type: portal
       message: Edited your character profile.
+  backup_commands:
+  - sheet
+  - bg
+  - profile
+  - damage
+  - relationships
+  - outfits/all

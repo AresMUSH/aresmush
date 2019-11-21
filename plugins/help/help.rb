@@ -19,14 +19,15 @@ module AresMUSH
        when "beginner"
          return BeginnerCmd
        when "help"
-         if (cmd.args)
-           if (cmd.switch_is?("quick"))
-             return HelpQuickrefCmd
-           else
-             return HelpViewCmd
-           end
+         case cmd.switch
+         when "quick"
+           return HelpQuickrefCmd
          else
-           return HelpListCmd
+           if (cmd.args)
+             return HelpViewCmd
+           else
+             return HelpListCmd
+           end
          end
        end
        
@@ -41,6 +42,10 @@ module AresMUSH
         return HelpTopicRequestHandler
       when "searchHelp"
         return SearchHelpRequestHandler
+      when "overrideHelp"
+        return HelpOverrideRequestHandler
+      when "restoreHelp"
+        return HelpRestoreRequestHandler
       end
       nil
     end

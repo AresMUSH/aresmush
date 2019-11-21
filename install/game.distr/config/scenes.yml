@@ -45,8 +45,6 @@ scenes:
     pose/remove: pose/drop
     po: pose
     me: pose
-    whisp: whisper
-    mutter: whisper
     repose/nudge: pose/nudge
     repose/notify: pose/notify
     repose/drop: pose/drop
@@ -56,7 +54,7 @@ scenes:
     posebreak: autospace
     pose/skip: pose/drop
   unshared_scene_deletion_days: 20
-  idle_scene_timeout_days: 3
+  idle_scene_timeout_days: 4
   trending_scenes_category: Trending Scenes
   trending_scenes_cron:
     hour:
@@ -72,3 +70,4 @@ scenes:
     scene_participant:
       type: story
       message: Participated in %{count} scenes.
+  use_custom_char_cards: false

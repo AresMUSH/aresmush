@@ -28,7 +28,11 @@ module AresMUSH
                     
           elapsed = delta * ratio
           t = start + elapsed
-          
+
+          tmp_date = DateTime.new(t.year, t.month, t.day, t.hour, t.minute, t.sec)
+          if (tmp_date.year != DateTime.now.year)
+            year = year + 1
+          end
         end
         
         return DateTime.new(year, t.month, t.day, t.hour, t.minute, t.sec) +  day_offset + hour_offset.hours

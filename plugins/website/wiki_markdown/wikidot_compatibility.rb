@@ -64,14 +64,15 @@ module AresMUSH
     
     class WikidotItalics
       def self.regex
-       /\/\/([^\/\r\n]+)\/\//
+       /([^:])\/\/([^\/\r\n]+)\/\//
       end
       
       def self.parse(matches)
-        text = matches[1]
+        prefix = matches[1]
+        text = matches[2]
         return "" if !text
 
-        "<em>#{text}</em>"
+        "#{prefix}<em>#{text}</em>"
       end
     end
     

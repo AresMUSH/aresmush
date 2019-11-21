@@ -58,6 +58,10 @@ module AresMUSH
       send_data MushFormatter.format(msg, color_mode, screen_reader)
     end
     
+    def send_raw(msg)
+      send_data msg
+    end
+    
     def close_connection(after_writing = false)
       begin
         Global.logger.info("Client #{self.client.id} disconnected.")
@@ -93,7 +97,7 @@ module AresMUSH
         end
          
         
-        if (data =~ /.+[\r|\n].+/)
+        if (data =~ /.+\r|\n.+/)
           parts = data.split(/\r|\n/).map { |p| "#{p}\n"}
         else
           parts = [ data ]
@@ -102,7 +106,13 @@ module AresMUSH
         parts.each do |part|
           #telnet_debug(part, "RECV")
           
-          next if !part
+          next if !part  # Ignore nil part
+          
+          # Ignore if only whitespace.
+          if (part !~ /\w/)
+            next
+          end
+          
           part = "#{part.chomp}\n"
           input = @negotiator.handle_input(part)
           if (!input)

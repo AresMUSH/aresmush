@@ -50,6 +50,7 @@ module AresMUSH
             use_advantages: FS3Skills.use_advantages?,
             damage: damage,
             show_sheet: show_sheet,
+            luck_points: char.luck.floor,
             xp: xp
           }
         else
@@ -67,7 +68,8 @@ module AresMUSH
             name: a.name, 
             rating: a.rating, 
             rating_name: a.rating_name,
-            specialties: include_specs ? a.specialties.join(", ") : nil
+            specialties: include_specs ? a.specialties.join(", ") : nil,
+            linked_attr: include_specs ? FS3Skills.get_linked_attr(a.name)[0..2].upcase : nil
           }}
       end
       

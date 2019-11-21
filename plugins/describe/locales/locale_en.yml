@@ -33,7 +33,7 @@ en:
        exits_title: "Exits:"
        no_way_out: "No way out!"
        
-       scene_log_active: "+++ The scene log (%{num}) is active in this room. +++"
+       scene_log_active: "+++ Scene log active: %{url} +++"
        watching_from_web: "(Via Web)"
        no_such_detail: "No such detail available."
        detail_deleted: "Detail deleted."
@@ -42,7 +42,7 @@ en:
        detail_title: "\"%{detail}\" on %{name}"
        foyer_room_locked: "%xrLocked%xn"
        foyer_room_occupied: "%xyOccupied%xn"
-       foyer_room_free: "%xgOpen%xn"
+       foyer_room_free: "%xh%xxEmpty%xn"
        foyer_room_status: "%xhFoyer Exits%xn"
        foyer_room_in_use: "%xy%xhIn Use%xn"
        

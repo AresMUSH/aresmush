@@ -13,7 +13,7 @@ module AresMUSH
         return error if error
         
         if (!scene.participants.include?(enactor))
-          Scenes.add_participant(scene, enactor)
+          Scenes.add_participant(scene, enactor, enactor)
         end
                   
         {}

@@ -1,16 +1,16 @@
 ---
 toc: 4 - Writing the Story
-summary: Describing your actions.
+summary: Writing your character's actions.
 order: 1
+tutorial: true
 aliases:
 - say
 - nospoof
 - pose
 - emit
+- setpose
 - pemit
 - whisper
-- mutter
-- setpose
 ---
 # Posing
 
@@ -19,28 +19,17 @@ aliases:
 `say Hello!` or `"Hello!` - Bob says, "Hello!"
 `pose waves.` or `:waves.` - Bob waves.
 `;'s hair is black.` - Bob's hair is black.
-`emit Go Bob!` or `\Go Bob!` - Go Bob!
+`emit Go Bob!` or `\Go Bob!` or `\\Go Bob!` - Go Bob!
 `ooc I have a question.` or `'I have a question.` - <OOC> Bob says, "I have a question."
+`nospoof <on or off>` - Identifies emits with the character name.
 
-## Private Emits / Whispers
+## Special Scene Emits
 
-The `pemit` command lets you make a private emit only to certain characters.  This will appear like an emit, but with an OOC notice in front telling who it came from.
+A GM emit is highlighted to ensure they aren't missed.  A scene set is similarly highlighted, and also sets a temporary addendum to the room description for the duration of the scene.
 
-`pemit <list of names>=<message>` - Make a private emit.
-  
-You can also whisper to another character.  This is formatted like a 'say' (e.g. `whisper Cate=Hi!` - Bob whispers to Cate, "Hi!") but is only shown to the recipient.  The room doesn't see anything.
+`emit/gm <gm pose>` - Emits a highlighted GM pose.
+`emit/set <set pose>` - Emits a highlighted GM pose that also sets a temporary description in the room.
 
-`whisper <name>=<message>` - Whisper to someone.
+## Private Emits
 
-## Set and GM Poses
-
-Storytellers can mark an emit as a set pose.  It will be set off with a border on the game, and highlighted in scene and wiki logs.  The scene set is stored and displayed alongside the room description.  A GM emit is similarly-highlighted, but it doesn't update the scene set.
-
-`emit/set <set pose>`
-`emit/gm <gm pose>`
-
-## Nospoof
-
-Emit poses are normally anonymous to maintain the flow of the RP text.  If someone is abusing this privilege, you can turn on your "nospoof" setting to identify emits and report the offender to the admin.
-
-`nospoof <on or off>`
+Private emits (like the old whisper/@pemit commands from Penn and TinyMUX) are incompatible with the Ares web portal integration and scene system, and have been deprecated.

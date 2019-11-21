@@ -5,9 +5,9 @@ module AresMUSH
     attribute :relationships_category_order, :type => DataType::Array, :default => []
     attribute :profile_image
     attribute :profile_icon
-    attribute :profile_gallery, :type => DataType::Array, :default => []
     attribute :profile_last_edited, :type => DataType::Time
     attribute :profile_tags, :type => DataType::Array, :default => []
+    attribute :profile_gallery, :type => DataType::Array, :default => []
     
     collection :profile_versions, "AresMUSH::ProfileVersion"
     
@@ -27,7 +27,7 @@ module AresMUSH
       self.groups.each { |k, v| profile_text << "\n#{k}: #{v}"}
       self.profile.each { |k, v| profile_text << "\n\n#{k}\n------\n#{v}"}
       self.relationships.each { |k, v| profile_text << "\n\n#{k}: #{v['category']}\n------\n#{v['relationship']}"}
-      (self.profile_gallery || []).sort.each { |k| profile_text << "\n\nGallery: #{k}"}
+      (Profile.character_page_files(self) || []).sort.each { |k| profile_text << "\n\nGallery: #{k}"}
       profile_text
     end
     

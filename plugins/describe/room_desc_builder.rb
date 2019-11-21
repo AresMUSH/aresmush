@@ -2,7 +2,7 @@ module AresMUSH
   module Describe
     class RoomDescBuilder
       def self.build(room)
-        desc = room.description || ""
+        desc = "#{room.description}"
 
         time_of_day = ICTime.time_of_day(room.area_name).titleize
         if (room.vistas && room.vistas.has_key?(time_of_day))
@@ -26,8 +26,15 @@ module AresMUSH
       end
     
       def self.weather(room)
-        return nil if !AresMUSH::Weather.is_enabled? 
-        w = Weather.weather_for_area(room.area_name)
+        w = nil
+        if Manage.is_extra_installed?("openweather")
+          if (AresMUSH::Openweather.is_enabled?)
+            w = Openweather.weather_for_area(room.area_name)
+          end
+        end
+        if !w && Weather.is_enabled? 
+          w = Weather.weather_for_area(room.area_name)
+        end
         w ? "%R%R#{w}" : nil
       end
     end

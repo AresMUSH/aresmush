@@ -15,8 +15,36 @@ module AresMUSH
         "%x!%xh#{title}%xH%xn%r"
       end
       
+      def show_abilities
+        return true if FS3Skills.is_enabled?
+        return true if Manage.is_extra_installed?("cortex")
+        return true if Manage.is_extra_installed?("ffg")
+        return true if Manage.is_extra_installed?("fate")
+        return false
+      end
+      
       def abilities
-        FS3Skills.app_review(@char)
+        if (FS3Skills.is_enabled?)
+          return FS3Skills.app_review(@char)
+        end
+        
+        if (Manage.is_extra_installed?("cortex"))
+          return Cortex.app_review(@char)
+        end
+
+        if (Manage.is_extra_installed?("ffg"))
+          return Ffg.app_review(@char)
+        end
+
+        if (Manage.is_extra_installed?("fate"))
+          return Fate.app_review(@char)
+        end
+        
+        return nil
+      end
+      
+      def abilities_header
+        Global.read_config("chargen", "ability_system_app_review_header")
       end
       
       def demographics

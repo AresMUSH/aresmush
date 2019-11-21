@@ -56,6 +56,8 @@ module AresMUSH
         return LookCmd
       when "outfit"
         case cmd.switch
+        when "all"
+          return OutfitListCmd
         when "delete"
           return OutfitDeleteCmd
         when "edit"
