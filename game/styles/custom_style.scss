@@ -466,6 +466,12 @@ h2 {
 }
 
 /* Jobs */
+
+.admin-only-reply, .admin-only-reply .markdown-editor {
+    background-color: #494b61;
+    border-color: #383a4f;
+}
+
 .job-status-HOLD {
     background-color: #A31B1B;
 }
