@@ -174,7 +174,7 @@ module AresMUSH
 
         potions_creating = get_potions(char.potions_creating)
 
-        def get_magic_items (list)
+        def get_magic_items(list)
           list.map { |i|
             {
               name: i,
@@ -183,6 +183,18 @@ module AresMUSH
         end
 
         magic_items = get_magic_items(char.magic_items)
+
+        def get_comps(list)
+          list = list.to_a.sort_by { |c| c.created_at }.reverse
+          list[0...10].map { |c|
+            {
+              from: c.from,
+              msg:  Website.format_markdown_for_html(c.comp_msg),
+              date: OOCTime.format_date_for_entry(c.created_at)
+            }}
+        end
+
+        comps = get_comps(char.comps)
 
         relationships_by_category = Profile.relationships_by_category(char)
         relationships = relationships_by_category.map { |category, relationships| {
@@ -242,6 +254,7 @@ module AresMUSH
           profile_image: Website.get_file_info(char.profile_image),
           demographics: demographics,
           groups: groups,
+          comps: comps,
           spells: spells,
           major_spells: major_spells,
           minor_spells: minor_spells,
