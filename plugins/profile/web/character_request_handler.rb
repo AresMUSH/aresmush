@@ -162,6 +162,27 @@ module AresMUSH
           gallery_files = char.profile_gallery
         end
 
+        def get_potions(list)
+          list.to_a.sort_by { |a| a.name }
+            .each_with_index
+              .map do |a, i|
+                "#{ a.name }"
+          end
+        end
+
+        potions = get_potions(char.potions_has)
+
+        potions_creating = get_potions(char.potions_creating)
+
+        def get_magic_items (list)
+          list.map { |i|
+            {
+              name: i,
+              desc:  Website.format_markdown_for_html(Magic.item_desc(i))
+            }}
+        end
+
+        magic_items = get_magic_items(char.magic_items)
 
         relationships_by_category = Profile.relationships_by_category(char)
         relationships = relationships_by_category.map { |category, relationships| {
@@ -227,6 +248,9 @@ module AresMUSH
           other_spells: other_spells,
           major_school: major_school,
           minor_school: minor_school,
+          magic_items: magic_items,
+          potions: potions,
+          potions_creating: potions_creating,
           roster_notes: char.idle_state == 'Roster' ? char.roster_notes : nil,
           handle: char.handle ? char.handle.name : nil,
           status_message: Profile.get_profile_status_message(char),
