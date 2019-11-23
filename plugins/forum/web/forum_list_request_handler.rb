@@ -34,28 +34,24 @@ module AresMUSH
       
       def last_activity(board, enactor)
         
-        last_reply = BbsReply.all.select { |r| r.bbs_post.bbs_board == board }.sort_by { |b| b.created_at }.reverse.first
-        last_post = board.last_post
-        
-        if (!last_reply && !last_post)
+        last_post = board.last_post_with_activity
+        if (!last_post)
           return nil
         end
         
-        last_reply_date = last_reply ? last_reply.created_at : Time.new(1999)
-        last_post_date = last_post ? last_post.created_at : Time.new(1999)
-        
-        if (last_reply_date > last_post_date)
-          post = last_reply.bbs_post
-          type = 'reply'
-          author_name = last_reply.author_name
-          date = last_reply.created_at
-        else
+        replies = last_post.sorted_replies
+        if (replies.empty?)
           post = last_post
           type = 'post'
           author_name = last_post.author_name
           date = last_post.created_at
+        else
+          post = last_post
+          type = 'reply'
+          author_name = replies[-1].author_name
+          date = replies[-1].created_at
         end
-          
+        
         
         {
           id: post.id,

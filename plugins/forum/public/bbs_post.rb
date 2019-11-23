@@ -21,11 +21,15 @@ module AresMUSH
       char == author
     end
     
+    def sorted_replies
+     bbs_replies.to_a.sort_by { |p| p.created_at }
+   end
+     
     def last_updated
       if (bbs_replies.empty?)
         return self.updated_at
       else
-        return bbs_replies.to_a[-1].updated_at
+        return self.sorted_replies[-1].updated_at
       end
     end
     
