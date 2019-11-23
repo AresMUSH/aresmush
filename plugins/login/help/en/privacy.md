@@ -1,7 +1,7 @@
 ---
 toc: 1 - Getting Started
 summary: Ares privacy practices.
-toc: true
+tutorial: true
 ---
 # Data and Privacy
 

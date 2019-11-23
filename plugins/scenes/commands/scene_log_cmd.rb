@@ -3,13 +3,17 @@ module AresMUSH
     class SceneLogCmd
       include CommandHandler
       
-      attr_accessor :all, :scene_num
+      attr_accessor :all, :scene_num, :num_poses
       
       def parse_args
-        if (cmd.args)
-          self.scene_num = integer_arg(cmd.args)
+        args = cmd.parse_args(ArgParser.arg1_slash_arg2)
+        self.scene_num = integer_arg(args.arg1)
+        
+        if (self.scene_num)
+          self.num_poses = integer_arg(args.arg2)
         else
           self.scene_num = enactor_room.scene ? enactor_room.scene.id : nil
+          self.num_poses = integer_arg(cmd.args)
         end
         self.all = cmd.switch_is?("log")
       end
@@ -28,9 +32,13 @@ module AresMUSH
             return
           end
           
+          if (!self.num_poses || self.num_poses == 0)
+            # 3 x participants, min 10 max 20
+            self.num_poses = [ [scene.participants.count * 3, 20].min, 10 ].max
+          end
           scene.mark_read(enactor)
           
-          template = SceneLogTemplate.new scene, !self.all
+          template = SceneLogTemplate.new scene, self.all, self.num_poses
           client.emit template.render
         end
       end
