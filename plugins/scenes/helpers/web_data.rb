@@ -132,8 +132,11 @@ module AresMUSH
       
       command = ((pose.split(" ").first) || "").downcase
       is_emit = false
+      
       if (command == "ooc")
         is_ooc = true
+        is_gmpose = false
+        is_setpose = false
         pose = pose.after(" ")
         pose = PoseFormatter.format(enactor.name, pose)
       elsif (command == "scene/set")

@@ -47,7 +47,12 @@ module AresMUSH
         end
         
         participant_names = request.args[:participants] || []
-        scene.participants.replace []
+        participant_names_upcase = participant_names.map { |p| p.upcase }
+        scene.participants.each do |p|
+          if (!participant_names_upcase.include?(p.name_upcase))
+            scene.participants.delete p
+          end
+        end
       
         participant_names.each do |p|
           participant = Character.find_one_by_name(p.strip)

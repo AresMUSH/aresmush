@@ -12,6 +12,7 @@ aliases:
 - scene summary
 - scene date
 - scene set
+- repose
 ---
 # Scenes
 
@@ -57,7 +58,7 @@ While you can always do free-form RP on the grid or in the RP room, there are a 
 
 ## Repose and Logging
 
-`scene/repose [scene #]` - Quick log catch-up.
+`scene/repose [# of poses to show]/[scene #]` - Quick log catch-up.
 `scene/log [scene #]` - Spam yourself with the entire log.
 
 `scene/share [scene #]` - Shares the log to the web portal.

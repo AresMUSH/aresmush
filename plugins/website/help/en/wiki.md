@@ -81,4 +81,4 @@ Only admins can upload non-image files.  If you do, you can link to them like so
 `[Link Text](\folder\filename.ext)`
 
 ----
-[[disableWikiExtensions]]
+This article has disabled wiki extensions: [[disableWikiExtensions]]

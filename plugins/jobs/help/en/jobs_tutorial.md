@@ -2,7 +2,12 @@
 toc: 2 - Communicating
 tutorial: true
 summary: Tracking support tickets and admin tasks.
+aliases:
+- job_tutorial
+- request_tutorial
 ---
+
+## Jobs and Requests Tutorial
 
 Ares has a lightweight job/request tracking system.  Requests are like support tickets in many web applications.  Players can track the status of a request, see who it's assigned to, and converse with the admin handling your request.  Admins can also create jobs for their own work.  
 
