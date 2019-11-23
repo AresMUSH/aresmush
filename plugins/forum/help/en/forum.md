@@ -52,5 +52,5 @@ You can edit, move and delete your own forum posts.  Forum administrators with t
 `forum/edit <category>/<post #>` - Grabs the existing post text into your input buffer. (if your client supports the [Edit Feature](/help/edit)).
 `forum/move <category>/<post #>=<new category>` - Moves a post from one category to another.
 `forum/delete <category>/<post #>` - Deletes a topic and all of its replies.
-`forum/editreply <category name or number>/<post number>/<reply number>/<new text>` - Edits a reply.
+`forum/editreply <category name or number>/<post number>/<reply number>=<new text>` - Edits a reply.
 `forum/deletereply <category name or number>/<post number>/<reply number>` - Deletes a forum reply.
