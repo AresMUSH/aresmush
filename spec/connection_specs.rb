@@ -69,6 +69,16 @@ module AresMUSH
         expect(@client).to receive(:handle_input).with("test\nfoo\n")
         @connection.receive_data("test^Mfoo\n")    
       end
+      
+      it "should not send blank text" do
+        expect(@client).to_not receive(:handle_input).with("   ")
+        @connection.receive_data("   \n")    
+      end
+      
+      it "should send only punctuation" do
+        expect(@client).to receive(:handle_input).with(":...\n")
+        @connection.receive_data(":...\n")
+      end
     end
     
     describe :unbind do
