@@ -4,7 +4,7 @@ module AresMUSH
              
       attr_accessor :scene, :full_log, :num_poses
                      
-      def initialize(scene, full_log, num_poses)
+      def initialize(scene, full_log, num_poses = 0)
         @scene = scene
         @full_log = full_log
         @num_poses = num_poses
