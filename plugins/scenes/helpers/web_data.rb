@@ -73,7 +73,7 @@ module AresMUSH
         fs3combat_enabled: FS3Combat.is_enabled?,
         poseable_chars: Scenes.build_poseable_chars_data(scene, viewer),
         pose_order_type: scene.room ? scene.room.pose_order_type : nil,
-        use_custom_char_chards: Scenes.use_custom_char_cards?,
+        use_custom_char_cards: Scenes.use_custom_char_cards?,
         extras_installed: Global.read_config('plugins', 'extras') || []
       }
     end    
@@ -132,8 +132,11 @@ module AresMUSH
       
       command = ((pose.split(" ").first) || "").downcase
       is_emit = false
+      
       if (command == "ooc")
         is_ooc = true
+        is_gmpose = false
+        is_setpose = false
         pose = pose.after(" ")
         pose = PoseFormatter.format(enactor.name, pose)
       elsif (command == "scene/set")

@@ -1,6 +1,8 @@
 ---
 toc: ~admin~ Managing the Game
 summary: Managing character demographics.
+aliases:
+- manage_groups
 ---
 # Managing Demographics
 

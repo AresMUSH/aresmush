@@ -2,21 +2,22 @@ module AresMUSH
   module Scenes
     class SceneLogTemplate < ErbTemplateRenderer
              
-      attr_accessor :scene, :short_log
+      attr_accessor :scene, :full_log, :num_poses
                      
-      def initialize(scene, short_log)
+      def initialize(scene, full_log, num_poses = 0)
         @scene = scene
-        @short_log = short_log
+        @full_log = full_log
+        @num_poses = num_poses
         super File.dirname(__FILE__) + "/scene_log.erb"        
       end
       
       def poses
         poses = @scene.poses_in_order.to_a
         
-        if (@short_log)
-          poses = poses[-10, 10] || poses
-        else
+        if (@full_log)
           poses = poses.select { |p| !p.is_ooc }
+        else
+          poses = poses[-@num_poses, @num_poses] || poses
         end
         poses
       end
@@ -26,7 +27,7 @@ module AresMUSH
       end
       
       def log_footer
-        @short_log ? t('scenes.log_list_short_footer') : nil
+        @full_log ? nil : t('scenes.log_list_short_footer')
       end
       
       def format_pose(pose)

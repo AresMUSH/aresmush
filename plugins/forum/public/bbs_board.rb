@@ -57,5 +57,11 @@ module AresMUSH
       BbsBoard.all_sorted.index(self) + 1
     end
     
+    def last_post_with_activity
+      return nil if self.bbs_posts.empty?
+      
+      sorted_posts = self.bbs_posts.to_a.sort_by { |p| p.last_updated }
+      sorted_posts[-1]
+    end
   end
 end

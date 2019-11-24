@@ -36,6 +36,7 @@ module AresMUSH
           created: job.created_date_str(enactor),
           is_open: job.is_open?,
           is_job_admin: is_job_admin,
+          fs3_enabled: FS3Skills.is_enabled?,
           is_category_admin: Jobs.can_access_category?(enactor, job.job_category),
           is_approval_job: job.author && !job.author.is_approved? && (job.author.approval_job == job),
           author: { name: job.author_name, id: job.author ? job.author.id : nil, icon: Website.icon_for_char(job.author) },

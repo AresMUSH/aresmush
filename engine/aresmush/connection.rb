@@ -109,7 +109,7 @@ module AresMUSH
           next if !part  # Ignore nil part
           
           # Ignore if only whitespace.
-          if (part !~ /\w/)
+          if (part !~ /\S/)
             next
           end
           

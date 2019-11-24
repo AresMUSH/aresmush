@@ -43,14 +43,20 @@ module AresMUSH
     def self.build_game_params
       server_config = Global.read_config("server")
       game_config = Global.read_config("game")
-          
+      
+      if (game_config["website"].blank?)
+        website = Game.web_portal_url
+      else
+        website = game_config["website"]
+      end
+      
       params = {
         host: server_config['hostname'], 
         port: server_config['port'], 
         name: game_config['name'], 
         category: game_config['category'],
         description: game_config['description'],
-        website: game_config["website"] || Game.web_portal_url,
+        website: website,
         public_game: AresCentral.is_public_game?,
         status: game_config["status"],
         activity: Game.master.login_activity

@@ -1,22 +1,19 @@
 module AresMUSH
   module Scenes
-    class SceneLogCmd
+    class SceneReposeCmd
       include CommandHandler
       
-      attr_accessor :scene_num
+      attr_accessor  :scene_num, :num_poses
       
       def parse_args
-        self.scene_num = integer_arg(cmd.args)
-        
-        if (!self.scene_num)
-          self.scene_num = enactor_room.scene ? enactor_room.scene.id : nil
-        end
+        self.scene_num = enactor_room.scene ? enactor_room.scene.id : nil
+        self.num_poses = integer_arg(cmd.args)
       end
-      
+
       def required_args
         [ self.scene_num ]
       end
-      
+            
       def handle    
         Scenes.with_a_scene(self.scene_num, client) do |scene|
           if (!scene.logging_enabled)
@@ -31,9 +28,13 @@ module AresMUSH
             return
           end
           
+          if (!self.num_poses || self.num_poses == 0)
+            # 3 x participants, min 10 max 20
+            self.num_poses = [ [scene.participants.count * 3, 20].min, 10 ].max
+          end
           scene.mark_read(enactor)
           
-          template = SceneLogTemplate.new scene, true
+          template = SceneLogTemplate.new scene, false, self.num_poses
           client.emit template.render
         end
       end
