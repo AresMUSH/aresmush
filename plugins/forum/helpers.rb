@@ -54,7 +54,7 @@ module AresMUSH
         !Forum.is_category_hidden?(char, category)
       end
       
-      Global.client_monitor.notify_web_clients('new_forum_activity', data) do |char|
+      Global.client_monitor.notify_web_clients('new_forum_activity', "#{data.to_json}") do |char|
         Forum.can_read_category?(char, category) &&
         !Forum.is_category_hidden?(char, category)
       end
@@ -96,7 +96,7 @@ module AresMUSH
           raw_message: message,
           type: 'new_forum_post'
         }
-        Forum.notify(new_post, category, :new_forum_post, message, "#{data.to_json}")
+        Forum.notify(new_post, category, :new_forum_post, message, data)
         Achievements.award_achievement(author, "forum_post")
         
         new_post
@@ -136,7 +136,7 @@ module AresMUSH
         
       Forum.add_recent_post(post)
       Achievements.award_achievement(author, "forum_reply")
-      Forum.notify(post, category, :new_forum_reply, message, "#{data.to_json}")
+      Forum.notify(post, category, :new_forum_reply, message, data)
             
       if (post.author && author != post.author)
         Login.notify(post.author, :forum, t('forum.new_forum_reply', :subject => post.subject), post.id, "#{category.id}|#{post.id}")
@@ -261,7 +261,7 @@ module AresMUSH
       }
       
       Forum.add_recent_post(post)
-      Forum.notify(post, category, :forum_edited, notification, "#{data.to_json}")
+      Forum.notify(post, category, :forum_edited, notification, data)
       Forum.mark_read_for_player(enactor, post)
     end
     
@@ -287,7 +287,7 @@ module AresMUSH
       }
       
       Forum.add_recent_post(post)
-      Forum.notify(post, category, :reply_edited, notification, "#{data.to_json}")
+      Forum.notify(post, category, :reply_edited, notification, data)
       Forum.mark_read_for_player(enactor, post)
     end
     
