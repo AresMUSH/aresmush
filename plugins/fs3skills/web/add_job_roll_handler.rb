@@ -1,30 +1,30 @@
 module AresMUSH
   module FS3Skills
-    class AddSceneRollRequestHandler
+    class AddJobRollRequestHandler
       def handle(request)
-        scene = Scene[request.args[:id]]
+        job = Job[request.args[:id]]
         enactor = request.enactor
         
-        if (!scene)
+        if (!job)
           return { error: t('webportal.not_found') }
         end
         
         error = Website.check_login(request)
         return error if error
 
-        if (!Scenes.can_read_scene?(enactor, scene))
-          return { error: t('scenes.access_not_allowed') }
+        if (!Jobs.can_access_job?(enactor, job, true))
+          return { error: t('jobs.cant_view_job') }
         end
         
-        if (scene.completed)
-          return { error: t('scenes.scene_already_completed') }
+        if (!job.is_open?)
+          return { error: t('jobs.job_already_closed') }
         end
         
         result = FS3Skills.determine_web_roll_result(request, enactor)
         
         return result if result[:error]
 
-        FS3Skills.emit_results(result[:message], nil, scene.room, false)
+        Jobs.comment(job, enactor, result[:message], false)
         
         {
         }
