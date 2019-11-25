@@ -12,6 +12,7 @@ aliases:
 - scene summary
 - scene date
 - scene set
+- repose
 ---
 # Scenes
 **Do `qr scene` to see a quick reference of all scene commands.**
@@ -55,7 +56,7 @@ A scene can be open (anyone's invited), private (only those invited should join 
 `scene/uninvite <name>[=<scene num>]` - Withdraws an invitation.
 `scene/leave` - Leaves a scene and returns to your designated scene home location.
 
-`scene/repose [scene #]` - Quick log catch-up of the last few poses.
+`scene/repose [# of poses to show]` - Quick log catch-up of your current scene.
 `scene/log [scene #]` - Spam yourself with the entire log.
 
 ## Editing Poses
@@ -70,6 +71,10 @@ A scene can be open (anyone's invited), private (only those invited should join 
 `scene/stop [<#>]` - Stops a scene and recycles the room (if it was a temporary one).
 `scene/delete <#>` - Deletes a scene.
 `scene/restart <#>` - Restarts a scene.
+`scene/home <home, work, ooc>` - Sets your scene home preference.
+
+## Logging
+
 `scene/share [scene #]` - Shares the log to the web portal.
 `scene/unshare [scene #]` - Unshares a log.
 

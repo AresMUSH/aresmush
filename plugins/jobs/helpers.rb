@@ -145,21 +145,30 @@ module AresMUSH
     end
     
     def self.comment(job, author, message, admin_only)
-      JobReply.create(:author => author, 
+      reply = JobReply.create(:author => author, 
         :job => job,
         :admin_only => admin_only,
         :message => message)
+        
+      data = {
+        job_id: job.id,
+        reply_id: reply.id,
+        admin_only: admin_only,
+        author: { name: author.name, icon: Website.icon_for_char(author), id: author.id},
+        message: Website.format_markdown_for_html(message),
+        type: 'job_reply'
+      }
       if (admin_only)
         notification = t('jobs.discussed_job', :name => author.name, :number => job.id, :title => job.title)
-        Jobs.notify(job, notification, author, false, false)
+        Jobs.notify(job, notification, author, data, false, false)
       else
         notification = t('jobs.responded_to_job', :name => author.name, :number => job.id, :title => job.title)
-        Jobs.notify(job, notification, author, true, false)
+        Jobs.notify(job, notification, author, data, true, false)
       end
     end
     
-    def self.can_access_job?(enactor, job)
-      !Jobs.check_job_access(enactor, job)
+    def self.can_access_job?(enactor, job, allow_author = false)
+      !Jobs.check_job_access(enactor, job, allow_author)
     end
     
     def self.check_job_access(enactor, job, allow_author = false)
@@ -199,7 +208,7 @@ module AresMUSH
       Global.read_config("jobs", "open_status")
     end
         
-    def self.notify(job, message, author, notify_participants = true, add_to_job = true)
+    def self.notify(job, message, author, data = nil, notify_participants = true, add_to_job = true)
       
       if (add_to_job)
         JobReply.create(:author => author, 
@@ -213,7 +222,7 @@ module AresMUSH
       
       all_parties = job.all_parties
       
-      data = "#{job.id}|#{message}"
+      data = "#{job.id}|#{message}|#{data.to_json}"
       Global.client_monitor.notify_web_clients(:job_update, data) do |char|
         char && (Jobs.can_access_category?(char, job.job_category) || notify_participants && all_parties.include?(char))
       end
