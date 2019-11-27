@@ -176,6 +176,23 @@ spells:
     target_optional: true
     weapon_specials: Diamond
     weapon: Spell
+  Earth Shudder:
+    area: 10 yard radius
+    available: true
+    casting_time: 1 round
+    desc: Cause the earth to shudder, distracting up to 3 enemies within its range
+     and giving them a penalty to attack and defense.
+    duration: 1 round
+    effect: Debuff
+    fs3_attack: true
+    level: 4
+    line_of_sight: true
+    name: Earth Shudder
+    range: Long
+    school: Earth
+    target_num: 3
+    target_optional: true
+    weapon: Earth Shudder
   Potions (Earth):
     desc: The caster has learned the art of potion-making and can craft potions in any school. This is not a spell in the same sense of most, but rather an art learned through study. It takes time, effort, and materials to brew a potion.
     effect: Other
@@ -224,25 +241,8 @@ spells:
     roll: true
     school: Earth
   #Level 5
-  Earth Shudder:
-    area: 10 yard radius
-    available: true
-    casting_time: 1 round
-    desc: Cause the earth to shudder, distracting up to 3 enemies within its range
-     and giving them a penalty to attack and defense.
-    duration: 1 round
-    effect: Debuff
-    fs3_attack: true
-    level: 5
-    line_of_sight: true
-    name: Earth Shudder
-    range: Long
-    school: Earth
-    target_num: 3
-    target_optional: true
-    weapon: Earth Shudder
   Stalagmite:
-    available: false
+    available: true
     casting_time: 1 round
     desc: A jagged piece of earth juts up beneath an enemy, doing damage.
     effect: Damage

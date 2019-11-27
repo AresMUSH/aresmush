@@ -224,6 +224,22 @@ spells:
     level: 4
     name: Potions (Water)
     school: Water
+  Slick Ground:
+    area: 10 yard radius
+    available: true
+    casting_time: 1 round
+    desc: Coat the ground in slick ice, making footing difficult up to 3 opponents and giving them a penalty to attack and defense.
+    duration: 1 round
+    effect: Debuff
+    fs3_attack: true
+    level: 4
+    line_of_sight: true
+    name: Slick Ground
+    range: Long
+    school: Water
+    target_num: 3
+    target_optional: true
+    weapon: Slick Ground
   Water Whip:
     available: true
     casting_time: 1 round
@@ -254,22 +270,6 @@ spells:
     target_num: 3
     target_optional: true
     weapon: Exploding Ice
-  Slick Ground:
-    area: 10 yard radius
-    available: true
-    casting_time: 1 round
-    desc: Coat the ground in slick ice, making footing difficult up to 3 opponents and giving them a penalty to attack and defense.
-    duration: 1 round
-    effect: Debuff
-    fs3_attack: true
-    level: 5
-    line_of_sight: true
-    name: Slick Ground
-    range: Long
-    school: Water
-    target_num: 3
-    target_optional: true
-    weapon: Slick Ground
   Familiar (Water):
     available: true
     desc: "A familiar is a spirit associated or allied with a school of magic that has taken residence in a physical vessel with the shape of an animal. It functions as a companion, assistant, and guardian. \n\nFamiliars may be capable of some or all of the following: sharing telepathic or empathic communication, providing knowledge of the arcane, sharing senses, lending physical aid as spies or fighters, delivering spells at a distance of up to three miles."

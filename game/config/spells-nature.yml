@@ -451,7 +451,7 @@ spells:
     school: Nature
     weapon: Jenu
   Half Shift:
-    available: false
+    available: true
     casting_time: 1 round
     desc: "The caster transforms up to half their body into a chosen non-sapient creature, giving them a hybrid form that carries advantages of both the creature and their original form.\n\n Creature is from the same genus each time the spell is cast."
     duration: 1 hour

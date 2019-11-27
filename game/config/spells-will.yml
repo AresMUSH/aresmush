@@ -358,7 +358,7 @@ spells:
   Local Gateway:
     available: true
     casting_time: 5 minutes
-    desc: "The caster opens or closes a permanent gateway to a location in the same dimensional world they are currently in. Gateways can be closed at will. They must have two of the following in order to open a gateway to a location:\n\n
+    desc: "The caster opens or closes a permanent gateway to a location in the same dimensional world they are currently in. Gateways can be closed at will, and a maxium of 3 gateways can be active at a time. They must have two of the following in order to open a gateway to a location:\n\n
       * Personal knowledge of the gateway's opening point. They have visited it themselves and can remember the location.\n
       * The ability to see someone else''s memory of the location.\n
       * Exact GPS coordinates of the gateway's opening point.\n
