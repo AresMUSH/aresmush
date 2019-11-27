@@ -228,7 +228,7 @@ spells:
     area: 10 yard radius
     available: true
     casting_time: 1 round
-    desc: Coat the ground in slick ice, making footing difficult up to 3 opponents and giving them a penalty to attack and defense.
+    desc: Coat the ground in slick ice, making footing difficult up to 3 opponents and giving them a penalty to attack.
     duration: 1 round
     effect: Debuff
     fs3_attack: true

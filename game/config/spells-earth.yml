@@ -181,7 +181,7 @@ spells:
     available: true
     casting_time: 1 round
     desc: Cause the earth to shudder, distracting up to 3 enemies within its range
-     and giving them a penalty to attack and defense.
+     and giving them a penalty to attack.
     duration: 1 round
     effect: Debuff
     fs3_attack: true
