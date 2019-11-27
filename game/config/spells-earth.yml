@@ -269,7 +269,7 @@ spells:
     available: true
   Quicksand:
     area: 2.5 ft radius
-    available: false
+    available: true
     casting_time: 1 round
     desc: "The caster turns a 5-foot diameter patch of dirt into quicksand, making it possible to sink something easily into the earth at that spot. If cast on the ground below a target, the target sinks in, immobilizing them until they can climb back out or an ally uses a round to attempt to rescue them. Targets submerged in the ground cannot be attacked."
     duration: 5 rounds
