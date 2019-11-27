@@ -111,7 +111,7 @@ spells:
     roll: true
     school: Nature
   Sling Barb:
-    available: false
+    available: true
     casting_time: 1 round
     desc: Caster grows a natural barb from any flora in the surrounding environment and flings it at target.
     effect: Damage

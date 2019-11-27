@@ -243,7 +243,7 @@ spells:
     available: true
   Sound Bubble:
     area: 5 ft radius
-    available: false
+    available: true
     casting_time: 1 round
     desc: Create a bubble up to 10 ft in diameter centered on a target that functions as a barrier which sound cannot pass through. Inside the boundary of the bubble sound can be heard normally, but no noise from within the bubble can be heard outside it and no noise from the outside world can be heard by those within the bubble.
     duration: 10 minutes
@@ -294,7 +294,7 @@ spells:
     target_optional: true
     weapon: Blow Object
   Sonic Blast:
-    available: false
+    available: true
     attack_mod: -2
     casting_time: 1 round
     desc: The target is blasted by an intense burst of sound, leaving them disoriented. For a short time, it is more difficult for the them to take their intended actions.
@@ -311,7 +311,7 @@ spells:
     target_num: 1
     target_optional: true
   Sound Barrier:
-    available: false
+    available: true
     casting_time: 1 round
     desc: "Creates a barrier of air using high frequency vibrations to deflect attacks directed against up to three targets, effectively putting the targets in [cover](https://www.aresmush.com/fs3/fs3-3/combat/#stance)."
     duration: 5 rounds

@@ -339,7 +339,7 @@ spells:
     weapon: Spell
   #Level 6
   Demon Tails:
-    available: false
+    available: true
     casting_time: 1 round
     desc: "Four demonic tails, each 4 ft in length, grow from the caster's lower back. Each one is tipped with a bone spearhead that does damage with piercing strikes that hit enemies nearby in quick succession."
     effect: Damage
