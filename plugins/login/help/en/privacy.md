@@ -7,7 +7,7 @@ tutorial: true
 
 It's up to each individual Ares game to determine their privacy policies.  Ideally this will be conveyed to players in the terms of service acknowledgement or a policy file on the wiki.  This article provides some **general** information about privacy on Ares games.
 
-> **Note:** Ares does not directly support admins spying on players, but be aware that **any** data transmitted to the server and/or stored in the database is ultimately accessible to the game owner and anyone they choose to share it with.
+**Ares has no built-in commands to support admins spying on players.**  That means there's no SUSPECT flag or DARK power for spying, and no admin commands to view private scenes, mail, or private messages.  Just as with any online service, though, **any** data transmitted to the server and/or stored in the database is ultimately accessible to the game owner and anyone they choose to share it with. They may install custom loggers or custom commands, or crack open the database manually. Sensitive information is probably best kept off-game.
 
 ## What Data Is Stored
 
@@ -30,7 +30,7 @@ Neither the database nor the log files are encrypted.  Passwords are hashed.
 
 Debug logs and everything in the database is accessible to the game owner and players with coder privileges.  Beyond that, Ares commands limit who can view what.  But again we'll reiterate:
 
-> **Note:** Ares does not directly support admins spying on players, but be aware that **any** data transmitted to the server and/or stored in the database is ultimately accessible to the game owner and anyone they choose to share it with.
+> **Note:** Just as with any online service, **any** data transmitted to the server and/or stored in the database is ultimately accessible to the game owner and anyone they choose to share it with.
 
 ### Channels
 
@@ -62,7 +62,7 @@ There is no command allowing game admins to view other peoples' mail messages.
 
 ### Other Data
 
-Your player handle is visible to all players.  There is no command to view your handle preferences.
+Your player handle is visible to all players.  There is no command allowing admins to view your handle preferences.
 
 Email address, if set, is visible to game admins.
 

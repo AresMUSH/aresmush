@@ -34,7 +34,7 @@ When you start a scene, you can create a temporary room or start one in the room
 
 A scene can either be open (anyone's invited) or private.  Scenes on the grid are open by default and scenes in RP Rooms private by default.  The scene's organizer can change the privacy setting. 
 
-> **Note:** Ares does not directly support admins spying on players, but be aware that **any** data transmitted to the server and/or stored in the database is ultimately accessible to the game owner and anyone they choose to share it with.  See [Privacy](/help/privacy).
+> **Note:** Ares has no built-in commands to support admins spying on players.  Just as with any online service, though, **any** data transmitted to the server and/or stored in the database is ultimately accessible to the game owner and anyone they choose to share it with.  See [Privacy](/help/privacy).
 
 ## Joining Scenes
 
