@@ -585,6 +585,15 @@ h2 {
    float: left;
 }
 
+.thumbnail {
+    max-width: 2250px;
+    max-height: 225px;
+}
+
+.thumbnail-gallery {
+    height: 250px;
+    width: 250px;
+}
 /* Specific Shit*/
 /* BG text area */
 #ember823 {
