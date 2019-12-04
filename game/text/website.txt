@@ -1,5 +1,5 @@
-<br><p style="font-size:30px; font-variant:small-caps;">Spirit Lake is accepting all applications. We are now in <a href="/wiki/beta">Beta</a>.</p>
+<br><p style="font-size:30px; font-variant:small-caps;">Spirit Lake is in <a href="/wiki/beta">Beta</a>.</p>
 
-<p>In the shadow of the Rocky Mountains lies a little town that is about to rediscover its history.</p>
+<p>In the shadow of the Rocky Mountains lies a little town that is rediscovering its history.</p>
 <p>And its <a href="/wiki/magic">magic.</a></p>
 <p>Welcome to <a href="/wiki/about_us">Spirit Lake.</a></p>
