@@ -35,6 +35,11 @@ magic-items:
     name: Guilt-Weighted Gloves
     desc: Fancy purple satin gloves with slightly fraying gold embroidery along the palm and knuckles. These gloves provide a bonus to lethality
     weapon_specials: Guilt-Weighted Gloves
+  Hammered Vambraces:
+    name: Hammered Vambraces
+    desc: Slightly battered vambraces that cause the wearer's hands to turn to stone
+    spells:
+    - Stone Fists
   Horn Of Uktena:
     name: Horn Of Uktena
     desc: A bit of worn horn that allows the bearer to cast %xBPhotosynthesis%xn.
@@ -61,6 +66,9 @@ magic-items:
   Konvaskr:
     name: Konvaskr
     desc: A flying ship that really needs a better desc.
+  Mistletoe:
+    name: Mistletoe
+    desc: A small bundle of white berries with green leaves, secured with a red bow. Gives the holder luck for a good kiss or hug.
   Raven's Blessing:
     name: Raven's Blessing
     desc:  Strung together with stiff cords and bird bones, the necklace hangs loose and just below the collarbone. The bones are bleached white and decorated with little carvings. Adhered to the bones are short, slim raven feathers. The pendant is a bird skull, but the brow has been hollowed out and set with a dull black stone that doesn't reflect any light. It grants the wearer the ability to cast Group Comprehend Languages
@@ -72,6 +80,11 @@ magic-items:
     spells:
     - Wild Shape Falcon
     - Shape Light
+  Red Knit Cap:
+    name: Red Knit Cap
+    desc: A red knit cap that takes away the chill of winter
+    spells:
+    - Endure Cold
   Rosewing:
     name: Rosewing
     desc: "Just under nine inches, the slender wand of oak is beautifully polished with age. Delicate rose quartz is inlaid along the length of it in intricate designs, and it's topped with a sharp, many-pointed star of pink sapphire. Gives +1 to spellcasting."
@@ -82,7 +95,7 @@ magic-items:
   Skofnung:
     name: Skofnung
     desc: Ragnar's magical sword with a soul inside.
-  Scythe Of Isis: 
+  Scythe Of Isis:
     name: Scythe of Isis
     desc: An ancient bronze scythe with a long, crescent blade fitted to a slightly curved handle. The length of the handle is about a foot and a half long, making it able to be wielded with either one hand or two. In the middle of the shaft is the image of a doorway in low relief, surrounded by hieroglyphics, and the tyet symbol of Isis in red jasper beneath it. Letters and runes of Soitos, ancient Greek, and Coptic are etched in delicate designs all over the weapon, the writing all encrypted. The scythe both cuts and cures, allowing the bearer to cast  %xBMedium Heal%xn.
     spells:
