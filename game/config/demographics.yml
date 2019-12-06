@@ -21,16 +21,16 @@ demographics:
     title: Job
     value: job
   demographics:
-  - actor
+  - fullname
+  - birthdate
   - hair
   - eyes
   - skin
   - height
   - physique
-  - fullname
   - gender
-  - birthdate
   - job
+  - actor
   disable_auto_shortcuts: true
   editable_properties:
   - fullname
