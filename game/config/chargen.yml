@@ -44,5 +44,5 @@ Although Grand Lake seems to have an abnormally high population of magic users, 
   stages:
     start:
       tutorial: chargen.md
-  welcome_message: "Please welcome %{name}, our latest character to be approved! \n\nMajor
+  welcome_message: "Please welcome [%{name}](https://spiritlakemu.com/char/%{name}), our latest character to be approved! \n\nMajor
     School: %{major school} \nMinor School: %{minor school}\n\nRP Hooks:\n%{rp_hooks}"
