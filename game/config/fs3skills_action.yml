@@ -40,6 +40,9 @@ fs3skills:
     desc: Fighting with hand-to-hand weapons.
     linked_attr: Brawn
     is_school: false
+  - name: Research
+    desc: Navigating information systems and using books, records, and other recorded information.
+    linked_attr: Wits
   - name: Stealth
     desc: Being sneaky.
     linked_attr: Reflexes
