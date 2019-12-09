@@ -42,6 +42,7 @@ module AresMUSH
       Login.set_random_password(char)
       char.update(profile_tags: char.profile_tags.select { |t| !t.start_with?("player:") })
       char.reset_xp
+      char.delete_pages
     end
     
     def self.idle_action_color(action)

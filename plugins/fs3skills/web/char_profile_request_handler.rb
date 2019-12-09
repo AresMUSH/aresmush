@@ -18,7 +18,8 @@ module AresMUSH
           damage = char.damage.to_a.sort { |d| d.created_at }.map { |d| {
             date: d.ictime_str,
             description: d.description,
-            severity: Website.format_markdown_for_html(FS3Combat.display_severity(d.initial_severity))
+            original_severity: Website.format_markdown_for_html(FS3Combat.display_severity(d.initial_severity)),
+            severity: Website.format_markdown_for_html(FS3Combat.display_severity(d.current_severity))
             }}
         else
           damage = nil
@@ -26,7 +27,7 @@ module AresMUSH
         
         show_sheet = FS3Skills.can_view_sheets?(enactor) || is_owner
         
-        if (is_owner)
+        if (FS3Skills.can_view_xp?(enactor, char))
           xp = {
             attributes: get_xp_list(char, char.fs3_attributes),
             action_skills: get_xp_list(char, char.fs3_action_skills),
@@ -34,6 +35,7 @@ module AresMUSH
             languages: get_xp_list(char, char.fs3_languages),
             advantages: get_xp_list(char, char.fs3_advantages),
             xp_points: char.fs3_xp,
+            can_learn: is_owner,
             allow_advantages_xp: Global.read_config("fs3skills", "allow_advantages_xp")
           }
         else

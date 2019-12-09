@@ -43,7 +43,7 @@ module AresMUSH
         when :language
           metadata = FS3Skills.languages
           starting_rating = 0
-          starting_rating_name = t('fs3skills.incapable_rating')
+          starting_rating_name = t('fs3skills.everyman_rating')
         when :advantage
           metadata = FS3Skills.advantages
           starting_rating = 0
