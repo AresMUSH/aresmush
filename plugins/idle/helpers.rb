@@ -40,9 +40,12 @@ module AresMUSH
         char.handle.delete
       end
       Login.set_random_password(char)
+      
+      # Move to event handlers
       char.update(profile_tags: char.profile_tags.select { |t| !t.start_with?("player:") })
       char.reset_xp
       char.delete_pages
+      char.update(login_email: nil)
     end
     
     def self.idle_action_color(action)
