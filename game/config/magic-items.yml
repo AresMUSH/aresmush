@@ -21,6 +21,11 @@ magic-items:
   Chilled Pitcher:
     name: Chilled Pitcher
     desc: A glass pitcher which chills any liquid poured into it.
+  Cloud Slippers:
+    name: Cloud Slippers
+    desc: Delicate silk slippers allowing the wearer to dance on air for a time.
+    spells:
+    - Air Walk
   Eye Of The Serpent:
     name: Eye Of The Serpent
     desc: A briliant diamond the size of a child's fist. It allows the bearer to cast %xBClarity%xn.
