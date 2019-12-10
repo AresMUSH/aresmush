@@ -159,6 +159,9 @@ website:
       title: Magic System
       id: magic_system
     - route: wiki-page
+      title: Plot System
+      id: plot_system
+    - route: wiki-page
       title: Luck Points
       id: luck_points
     - route: wiki-page
