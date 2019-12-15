@@ -3,6 +3,6 @@ rvm:
   - 2.5.1
   - 2.6.0
 before_install:
-  - gem install bundler
+  - gem install bundler -v "$(grep -A 1 "BUNDLED WITH" Gemfile.lock | tail -n 1)"
   - cp -r install/game.distr game
 cache: bundler
