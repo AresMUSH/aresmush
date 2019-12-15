@@ -973,6 +973,16 @@ CHARACTERS SCREEN
     
 }
 
+.profile-gallery-input textarea {
+  margin: 0px;  
+  width: 100%;
+}
+
+.profile-gallery-input code {
+  color: $text-color;
+  background-color: $background-color;
+}
+
 .profile-box { 
 
     background-color: white;

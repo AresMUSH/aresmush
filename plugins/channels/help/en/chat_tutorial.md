@@ -52,7 +52,7 @@ With private messages, you can also:
 * Customize how your page messages are formatted on the MU client view.
 * Report abusive messages.
 
-> **Note:** Ares does not directly support admins spying on players, but be aware that **any** data transmitted to the server and/or stored in the database is ultimately accessible to the game owner and anyone they choose to share it with.  See [Privacy](/help/privacy).
+> **Note:** Ares has no built-in commands to support admins spying on players.  Just as with any online service, though, **any** data transmitted to the server and/or stored in the database is ultimately accessible to the game owner and anyone they choose to share it with.  See [Privacy](/help/privacy).
 
 ## Command Reference
 

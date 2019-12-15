@@ -17,7 +17,7 @@ module AresMUSH
         end
         
         if (scene.shared)
-          return { error: t('scenes.scene_already_shared') }
+          return { shared: true }
         end
         
         if (!scene.logging_enabled)

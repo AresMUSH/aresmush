@@ -30,7 +30,7 @@ module AresMUSH
         if (char.profile_gallery.empty?)
           gallery_files = Profile.character_page_files(char) || []
         else
-          gallery_files = char.profile_gallery
+          gallery_files = char.profile_gallery.select { |g| g =~ /\w\.\w/ }
         end
           
         

@@ -121,6 +121,8 @@ module AresMUSH
         return RoleChangedEventHandler
       when "ConnectionEstablishedEvent"
         return ConnectionEstablishedEventHandler
+      when "CharIdledOutEvent"
+        return CharIdledOutEventHandler
       end
       nil
     end

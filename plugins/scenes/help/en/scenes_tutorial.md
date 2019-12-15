@@ -3,6 +3,8 @@ toc: 4 - Writing the Story
 summary: Starting scenes.
 order: 1
 tutorial: true
+aliases:
+- plot
 ---
 
 # Scenes
@@ -34,7 +36,7 @@ When you start a scene, you can create a temporary room or start one in the room
 
 A scene can either be open (anyone's invited) or private.  Scenes on the grid are open by default and scenes in RP Rooms private by default.  The scene's organizer can change the privacy setting. 
 
-> **Note:** Ares does not directly support admins spying on players, but be aware that **any** data transmitted to the server and/or stored in the database is ultimately accessible to the game owner and anyone they choose to share it with.  See [Privacy](/help/privacy).
+> **Note:** Ares has no built-in commands to support admins spying on players.  Just as with any online service, though, **any** data transmitted to the server and/or stored in the database is ultimately accessible to the game owner and anyone they choose to share it with.  See [Privacy](/help/privacy).
 
 ## Joining Scenes
 
@@ -71,6 +73,10 @@ When a scene in a temp room stops, characters in that room are normally sent bac
 When a scene is over, you can choose to share the scene on the web portal.  Shared scenes are viewable by everyone and included on your character's personal scene archive on their profile page.
 
 > **Note:** Unshared scenes will be deleted at some point (determined by the game settings), so if you don't intend to share the scene you should be sure to download the scene log.
+
+## Plots
+
+Through the web portal, you can create "plots", which are a way to organize related scenes.  When editing a scene, you can select which plot it's a part of.  The plot page on the web portal will list all scenes you've linked to the plot. Plots can also have a description and a storyteller, who acts as a contact person for plot-related questions.
 
 ## Command Reference
 
