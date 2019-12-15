@@ -43,7 +43,7 @@ module AresMUSH
           activity[day_of_week][hour] = []
         end
         
-        activity[day_of_week][hour] << Global.client_monitor.logged_in.count
+        activity[day_of_week][hour] << Who.all_online.count
         if (activity[day_of_week][hour].count > 6)
           activity[day_of_week][hour].shift
         end
