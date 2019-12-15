@@ -48,6 +48,14 @@ module AresMUSH
       nil
     end
     
+    def self.get_event_handler(event_name)
+      case event_name
+      when "CharIdledOutEvent"
+        return CharIdledOutEventHandler
+      end
+      nil
+    end
+    
     def self.get_web_request_handler(request)
       case request.cmd
       when "characters"

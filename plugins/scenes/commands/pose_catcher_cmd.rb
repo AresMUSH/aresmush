@@ -11,25 +11,26 @@ module AresMUSH
       def handle
         is_emit = false
         is_ooc = false
+        cmd_str = (cmd.raw || "").strip
         
-        if (cmd.raw.start_with?("\\\\"))
-          message = cmd.raw.after("\\\\")
+        if (cmd_str.start_with?("\\\\"))
+          message = cmd_str.after("\\\\")
           is_emit = true
-        elsif (cmd.raw.start_with?("\\"))
-            message = cmd.raw.after("\\")
+        elsif (cmd_str.start_with?("\\"))
+            message = cmd_str.after("\\")
             is_emit = true
-        elsif (cmd.raw.start_with?("'"))
-          message = PoseFormatter.format(enactor_name, cmd.raw.after("'"))
+        elsif (cmd_str.start_with?("'"))
+          message = PoseFormatter.format(enactor_name, cmd_str.after("'"))
           is_ooc = true
-        elsif (cmd.raw.start_with?(">"))
-          message =  PoseFormatter.format(enactor_name, cmd.raw.after(">"))
+        elsif (cmd_str.start_with?(">"))
+          message =  PoseFormatter.format(enactor_name, cmd_str.after(">"))
           is_ooc = true
         else
-          message = PoseFormatter.format(enactor_name, cmd.raw)
+          message = PoseFormatter.format(enactor_name, cmd_str)
         end
         
 
-        emit_to_room = Scenes.send_to_ooc_chat_if_needed(enactor, client, PoseFormatter.format(enactor.ooc_name, cmd.raw))
+        emit_to_room = Scenes.send_to_ooc_chat_if_needed(enactor, client, PoseFormatter.format(enactor.ooc_name, cmd_str))
         if (emit_to_room)
           Scenes.emit_pose(enactor, message, is_emit, is_ooc)
         end

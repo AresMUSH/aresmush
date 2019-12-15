@@ -16,6 +16,11 @@ module AresMUSH
         [ self.num ]
       end
       
+      def check_is_approved
+        return t('dispatcher.not_allowed') if !enactor.is_approved?
+        return nil
+      end
+      
       def handle
         Events.with_an_event(self.num, client, enactor) do |event| 
           Events.signup_for_event(event, enactor, self.comment)

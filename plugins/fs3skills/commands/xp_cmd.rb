@@ -12,7 +12,7 @@ module AresMUSH
 
       def handle
         ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
-          if (!can_view_xp(model))
+          if (!FS3Skills.can_view_xp?(enactor, model))
             client.emit_failure t('dispatcher.not_allowed')
             return
           end
@@ -22,11 +22,7 @@ module AresMUSH
         end
       end
 
-      def can_view_xp(char)
-        return true if self.target == enactor_name
-        return true if enactor.has_permission?("view_sheets")
-        AresCentral.is_alt?(enactor, char)
-      end
+
     end
   end
 end
