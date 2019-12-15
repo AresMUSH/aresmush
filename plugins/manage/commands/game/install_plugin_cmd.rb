@@ -23,7 +23,10 @@ module AresMUSH
           url = "https://github.com/AresMUSH/ares-extras/tree/master/plugins/#{self.name}"
           importer = AresMUSH::Manage::PluginImporter.new(self.name)
           importer.import
-          Global.plugin_manager.load_plugin(self.name)                      
+          Global.plugin_manager.load_plugin(self.name)      
+          Help.reload_help
+          Global.locale.reload
+          Global.dispatcher.queue_event ConfigUpdatedEvent.new                
           client.emit_success t('manage.plugin_installed', :name => self.name, :url => url)
         rescue Exception => e
           Global.logger.debug "Error instaling plugin: #{e}  backtrace=#{e.backtrace[0,10]}"

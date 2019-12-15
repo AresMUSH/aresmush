@@ -9,6 +9,13 @@ module AresMUSH
       return false if !actor
       actor.has_permission?("view_sheets")
     end
+    
+    def self.can_view_xp?(actor, target)
+      return false if !actor
+      return true if target == actor
+      return true if actor.has_permission?("view_sheets")
+      AresCentral.is_alt?(actor, target)
+    end
 
     def self.attrs
       Global.read_config("fs3skills", "attributes")

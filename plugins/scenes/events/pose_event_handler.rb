@@ -12,7 +12,7 @@ module AresMUSH
           room.update(scene_nag: false)
         end
         
-        if (!event.is_ooc)
+        if (!event.is_ooc && room.room_type != "OOC")
           Scenes.handle_word_count_achievements(enactor, event.pose)
         end
       end

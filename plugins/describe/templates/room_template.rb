@@ -161,7 +161,7 @@ module AresMUSH
       end
       
       def scene_url
-        @room.scene ? "#{Game.web_portal_url}/scene-live/#{@room.scene.id}" : ""
+        @room.scene ? @room.scene.live_url : ""
       end
     end
   end
