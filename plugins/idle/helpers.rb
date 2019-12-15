@@ -41,7 +41,11 @@ module AresMUSH
       end
       Login.set_random_password(char)
       
-      Global.dispatcher.queue_event CharIdledOutEvent.new(char.id, idle_status)
+      # Don't queue event for destroyed characters.  They won't exist by the time the
+      # event triggers.
+      if (idle_status != "Destroy")
+        Global.dispatcher.queue_event CharIdledOutEvent.new(char.id, idle_status)
+      end
     end
     
     def self.idle_action_color(action)
