@@ -25,7 +25,7 @@ module AresMUSH
         else
           formatted_pose = "#{pose.pose}"
         end
-        formatted_pose = formatted_pose.gsub(/</, '&lt;').gsub(/>/, '&gt;').gsub(/%r/i, "\n").gsub(/%t/i, "  ")
+        formatted_pose = formatted_pose.gsub(/</, '&lt;').gsub(/(?<!^)>/, '&gt;').gsub(/%r/i, "\n").gsub(/%t/i, "  ")
                 
                 
         formatted_pose = formatted_pose.split("\n").map { |line| line.strip }.join("\n")
