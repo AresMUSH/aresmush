@@ -6,6 +6,7 @@ module AresMUSH
         comment = request.args[:comment]
         enactor = request.enactor
         
+        
         event = Event[event_id.to_i]
         if (!event)
           return { error: t('webportal.not_found') }
@@ -13,7 +14,11 @@ module AresMUSH
         
         error = Website.check_login(request)
         return error if error
-              
+
+        if !enactor.is_approved?              
+          return { error: t('dispatcher.not_allowed') }
+        end
+
         Events.signup_for_event(event, enactor, comment)
         
         {}
