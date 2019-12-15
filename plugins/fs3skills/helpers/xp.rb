@@ -67,6 +67,8 @@ module AresMUSH
         if (error)
           return error
         end
+        ability = FS3Skills.find_ability(char, name)
+        FS3Skills.create_xp_job(char, ability)
       else
         
         error = FS3Skills.check_can_learn(char, name, ability.rating)
@@ -83,9 +85,7 @@ module AresMUSH
         
         if (ability.learning_complete)
           ability.update(xp: 0, rating: ability.rating + 1)
-          message = t('fs3skills.xp_raised_job', :name => char.name, :ability => name, :rating => ability.rating)
-          category = Jobs.system_category
-          Jobs.create_job(category, t('fs3skills.xp_job_title', :name => char.name), message, Game.master.system_character)        
+          FS3Skills.create_xp_job(char, ability)
         end
         
       end 
@@ -93,6 +93,12 @@ module AresMUSH
       
       FS3Skills.modify_xp(char, -1)       
       return nil
+    end
+    
+    def self.create_xp_job(char, ability)
+      message = t('fs3skills.xp_raised_job', :name => char.name, :ability => ability.name, :rating => ability.rating)
+      category = Jobs.system_category
+      Jobs.create_job(category, t('fs3skills.xp_job_title', :name => char.name), message, Game.master.system_character)        
     end
     
     def self.max_dots_in_action

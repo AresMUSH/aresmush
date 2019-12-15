@@ -70,6 +70,8 @@ module AresMUSH
       case event_name
       when "CronEvent"
         return XpCronHandler
+      when "CharIdledOutEvent"
+        return CharIdledOutEventHandler
       end
       
       nil
