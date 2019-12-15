@@ -46,10 +46,10 @@ module AresMUSH
             model.update(idle_state: nil)
           elsif (self.status == 'Npc')
             model.update(is_npc: true)
-            Idle.idle_cleanup(model)
+            Idle.idle_cleanup(model, "Npc")
           else
             model.update(idle_state: self.status)
-            Idle.idle_cleanup(model)
+            Idle.idle_cleanup(model, self.status)
           end
 
           client.emit_success t('idle.idle_status_set', :name => self.name, :status => self.status)
