@@ -325,7 +325,37 @@ spells:
     stance: cover
     target_num: 3
     target_optional: true
+  Storm Power:
+    available: false
+    casting_time: 1 round
+    desc: "The caster is imbued with the power of a storm. Cloud cover makes them more difficult to hit and lightning streaks augment their body, providing a boost to movements which allows them to attack and dodge slightly faster."
+    defense_mod: 4
+    duration: 1 minute (6 rounds)
+    effect: Defense
+    init_mod: 2
+    level: 5
+    line_of_sight: true
+    name: Storm Power
+    range: Self
+    rounds: 6
+    school: Air
+    target_num: 1
+    target_optional: true
   #LEVEL 6
+  Air Form:
+    available: false
+    casting_time: 1 round
+    defense_mod: 10
+    desc: "The caster's body becomes a gaseous cloud and cannot be hit by attacks.\n\nWhile in air form, the caster can pass through small holes or narrow openings, even mere cracks, with anything they were carrying at the time the spell was cast. The form also allows them to float up into the surrounding air in a limited form of flight, capable of moving up to 5 mph. "
+    duration: 5 rounds
+    effect: Defense
+    level: 6
+    name: Air Form
+    range: Self
+    roll: true
+    rounds: 5
+    school: Water
+    target_num: 1
   Familiar (Air):
     desc: "A familiar is a spirit associated or allied with a school of magic that has taken residence in a physical vessel with the shape of an animal. It functions as a companion, assistant, and guardian. \n\nFamiliars may be capable of some or all of the following: sharing telepathic or empathic communication, providing knowledge of the arcane, sharing senses, lending physical aid as spies or fighters, delivering spells at a distance of up to three miles."
     effect: Other

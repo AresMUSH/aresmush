@@ -344,6 +344,21 @@ spells:
     range: Short
     roll: true
     school: Nature
+  Vine Thrash
+    area: 10 yard radius
+    available: false
+    casting_time: 1 round
+    desc: Thorny, barbed vines burst wildly from the ground, hitting up to 3 targets with their thrashing and doing damage.
+    effect: AOE Damage
+    fs3_attack: true
+    level: 5
+    line_of_sight: true
+    name: Vine Thrash
+    range: Long
+    school: Nature
+    target_num: 3
+    target_optional: true
+    weapon: Vine Thrash
   Wild Shape Bear:
     available: true
     armor: Tough Hide

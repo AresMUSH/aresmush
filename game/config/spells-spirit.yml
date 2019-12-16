@@ -213,8 +213,8 @@ spells:
     available: false
     casting_time: 1 round
     damage_type: Psionic
-    desc: The caster delivers a minor assault on the thought pathways of any one sapient creature, distracting them.
-    effect: Damage
+    desc: The caster delivers a minor assault on the thought pathways of any one sapient creature, distracting them and giving them a penalty to attack.
+    effect: Debuff
     fs3_attack: true
     level: 3
     line_of_sight: true

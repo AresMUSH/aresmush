@@ -338,6 +338,19 @@ fs3combat:
       accuracy: 0
       init_mod: 0
       special_group: Spell
+    Mind Bolt:
+      description: Level 3 Spirit spell
+      is_magic: true
+      skill: Spirit
+      lethality: 0
+      penetration: 0
+      weapon_type: Suppressive
+      is_automatic: true
+      recoil: 0
+      damage_type: Stun
+      accuracy: 3
+      init_mod: 0
+      special_group: Spell
     Stone Slam:
       description: Level 3 Earth spell
       is_magic: true
@@ -594,6 +607,19 @@ fs3combat:
       recoil: 0
       damage_type: Physical
       accuracy: 0
+      init_mod: 0
+      special_group: Spell
+    Vine Thrash:
+      description: Level 5 Nature spell
+      is_magic: true
+      skill: Nature
+      lethality: 10
+      penetration: 7
+      weapon_type: Explosive
+      recoil: 0
+      damage_type: Physical
+      accuracy: 1
+      has_shrapnel: false
       init_mod: 0
       special_group: Spell
   #Level 6

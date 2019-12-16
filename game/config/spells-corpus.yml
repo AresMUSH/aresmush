@@ -431,6 +431,18 @@ spells:
     school: Corpus
     target_num: 1
     target_optional: true
+  Extreme Speed:
+    available: false
+    casting_time: 1 round
+    desc: "The caster makes fundamental changes to their body's resistance, strength, and flexibility to make themselves able to reach running speeds of up to 200 miles per hour. They are able to easily scale steep, even vertical, planes while in motion, but cannot deftly maneuver in close-quarters.\n\n Mods to attack and defense may be applied at the GM's discretion according to actions taken while operating at extreme speed."
+    effect: Travel
+    level: 7
+    name: Extreme Speed
+    range: Self
+    roll: true
+    school: Corpus
+    target_num: 1
+    target_optional: true
   Energize Dimensional Anchor (Corpus):
     available: true
     casting_time: 2 minutes
@@ -476,7 +488,7 @@ spells:
     available: true
     casting_time: 1 Round
     defense_mod: -3
-    desc: "The caster draws contaminants, decay, and disease into a targets' body, filling their throat and mouth with unpalatable noxious vapors. The miasma spreads to up to two targets nearby. All targets feel ill, which saps them of their strength and vitality for a period of time."
+    desc: "The caster weakens the bodies of up to 3 targets, causing fever symptoms and inflaming their sinuses. The targets suddenly feel faint, losing their strength and becoming fatigued."
     duration: 3 rounds
     effect: Debuff
     level: 7
