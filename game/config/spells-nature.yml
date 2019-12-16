@@ -344,7 +344,7 @@ spells:
     range: Short
     roll: true
     school: Nature
-  Vine Thrash
+  Vine Thrash:
     area: 10 yard radius
     available: false
     casting_time: 1 round

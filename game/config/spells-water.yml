@@ -292,7 +292,7 @@ spells:
     name: Liquid Form
     range: Self
     roll: true
-    rounds: 4
+    rounds: 5
     school: Water
     target_num: 1
   Shatter:
