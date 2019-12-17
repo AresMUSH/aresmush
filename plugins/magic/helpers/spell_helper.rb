@@ -57,33 +57,10 @@ module AresMUSH
     end
 
     def self.spell_success(spell, die_result)
-      spell_level = Global.read_config("spells", spell, "level")
-      if spell_level == 1
-        return "%xrFAILS%xn" if die_result < 1
-        return "%xgSUCCEEDS%xn"
-      elsif spell_level == 2
-        return "%xrFAILS%xn" if die_result < 1
-        return "%xgSUCCEEDS%xn"
-      elsif spell_level == 3
-        return "%xrFAILS%xn" if die_result <= 1
-        return "%xgSUCCEEDS%xn"
-      elsif spell_level == 4
-        return "%xrFAILS%xn" if die_result <= 1
-        return "%xgSUCCEEDS%xn"
-      elsif spell_level == 5
-        return "%xrFAILS%xn" if die_result <= 2
-        return "%xgSUCCEEDS%xn"
-      elsif spell_level == 6
-        return "%xrFAILS%xn" if die_result <= 2
-        return "%xgSUCCEEDS%xn"
-      elsif spell_level == 7
-        return "%xrFAILS%xn" if die_result <= 3
-        return "%xgSUCCEEDS%xn"
-      elsif spell_level == 8
-        return "%xrFAILS%xn" if die_result <= 1
-        return "%xgSUCCEEDS%xn"
+      if die_result < 1
+        return "%xrFAILS%xn"
       else
-        return "%xgSUCCEEDS%xn"
+        return "%xgSUCCEEDS%xn"  
       end
     end
 

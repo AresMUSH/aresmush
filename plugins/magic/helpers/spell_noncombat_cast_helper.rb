@@ -23,9 +23,15 @@ module AresMUSH
           cast_mod = FS3Skills.ability_rating(caster, "Magic") * 2
           mod = mod.to_i + cast_mod
         end
+        level = Global.read_config("spells", spell, "level")
+        if level == 1
+          level_mod = 0
+        else
+          level_mod = 0 - level
+        end
         spell_mod = Magic.item_spell_mod(caster)
-        total_mod = mod.to_i + spell_mod.to_i
-        Global.logger.info "#{caster.name} rolling #{skill} to cast #{spell}. Mod=#{mod} Item Mod=#{spell_mod} Off-school cast mod=#{cast_mod} total=#{total_mod}"
+        total_mod = mod.to_i + spell_mod.to_i + level_mod.to_i
+        Global.logger.info "#{caster.name} rolling #{skill} to cast #{spell}. Level Mod=#{level_mod} Mod=#{mod} Item Mod=#{spell_mod} Off-school cast mod=#{cast_mod} total=#{total_mod}"
         roll = caster.roll_ability(skill, total_mod)
         die_result = roll[:successes]
         succeeds = Magic.spell_success(spell, die_result)
@@ -100,7 +106,6 @@ module AresMUSH
         targets << target
       end
       targets = targets
-      puts "TARGET Count: #{targets.count} TARGETNUM #{target_num}"
       if (targets.count > target_num)
         return "too_many_targets"
       else

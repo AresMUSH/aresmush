@@ -97,7 +97,7 @@ module AresMUSH
         weapon_specials_str = Global.read_config("spells", self.spell, "weapon_specials")
 
         messages = []
-        combatant.log "#{self.combatant.name.upcase} CASTING #{self.spell.upcase}"
+        combatant.log "~* #{self.combatant.name.upcase} CASTING #{self.spell.upcase} *~"
 
         succeeds = Magic.roll_combat_spell_success(combatant, spell)
         #The roll_combat_spell_success handles combat mods via roll_combat_spell
