@@ -23,7 +23,7 @@ module AresMUSH
       char.update(roster_contact: contact || Global.read_config("idle", "default_contact"))
       char.update(idle_state: "Roster")
       char.update(roster_played: char.is_approved?)  # Assume played if approved.
-      Idle.idle_cleanup(char)
+      Idle.idle_cleanup(char, "Roster")
     end
     
     def self.remove_from_roster(char)
@@ -34,14 +34,18 @@ module AresMUSH
       actor.has_any_role?(Global.read_config("idle", "idle_exempt_roles"))
     end
     
-    def self.idle_cleanup(char)
+    def self.idle_cleanup(char, idle_status)
       # Remove their handle.              
       if (char.handle)
         char.handle.delete
       end
       Login.set_random_password(char)
-      char.update(profile_tags: char.profile_tags.select { |t| !t.start_with?("player:") })
-      char.reset_xp
+      
+      # Don't queue event for destroyed characters.  They won't exist by the time the
+      # event triggers.
+      if (idle_status != "Destroy")
+        Global.dispatcher.queue_event CharIdledOutEvent.new(char.id, idle_status)
+      end
     end
     
     def self.idle_action_color(action)

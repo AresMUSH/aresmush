@@ -150,6 +150,10 @@ module AresMUSH
       self.scene_likes.count
     end
 
+    def live_url
+      "#{Game.web_portal_url}/scene-live/#{self.id}"
+    end
+
     def url
       "#{Game.web_portal_url}/scene/#{self.id}"
     end

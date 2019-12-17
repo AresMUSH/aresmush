@@ -37,14 +37,14 @@ module AresMUSH
             case action
             when "Destroy"
               Global.logger.debug "#{idle_char.name} deleted for idling out."
-              Idle.idle_cleanup(idle_char)
+              Idle.idle_cleanup(idle_char, action)
               idle_char.delete
             when "Roster"
               Global.logger.debug "#{idle_char.name} added to roster."
-              Idle.add_to_roster(idle_char)
+              Idle.add_to_roster(idle_char, action)
             when "Npc"
               idle_char.update(is_npc: true)
-              Idle.idle_cleanup(idle_char)
+              Idle.idle_cleanup(idle_char, action)
             when "Warn"
               Global.logger.debug "#{idle_char.name} idle warned."
               Mail.send_mail([idle_char.name], t('idle.idle_warning_subject'), Global.read_config("idle", "idle_warn_msg"), nil)          
@@ -52,7 +52,7 @@ module AresMUSH
             else
               Global.logger.debug "#{idle_char.name} idle status set to: #{action}."
               idle_char.update(idle_state: action)
-              Idle.idle_cleanup(idle_char)
+              Idle.idle_cleanup(idle_char, action)
             end
           end
         end
