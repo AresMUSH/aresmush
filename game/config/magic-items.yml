@@ -18,8 +18,16 @@ magic-items:
     desc: A six-point deer antler with one tip jaggedly broken off. The base is wrapped and bound in leather that ends in a loop, perfect for attaching to a belt. It grants its owner the ability to cast %xBHalf Shift (Jenu)%xn, allowing them to transform a portion of their body into a Jenu.
     spells:
     - Half Shift (Jenu)
+  Bottled Sunshine:
+    name: Bottled Sunshine
+    desc: A bottle of sunshine, acts as a torch. Evaporates if opened.
+    spells:
+    - Light
   Chilled Pitcher:
     name: Chilled Pitcher
+    desc: A glass pitcher which chills any liquid poured into it.
+  Cool Glass:
+    name: Cool Glass
     desc: A glass pitcher which chills any liquid poured into it.
   Cloud Slippers:
     name: Cloud Slippers
