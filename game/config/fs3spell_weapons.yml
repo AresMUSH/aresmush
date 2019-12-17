@@ -636,11 +636,23 @@ fs3combat:
       init_mod: 0
       has_shrapnel: true
       special_group: Melee
+    Mass Hemorrhage:
+      description: Level 6 Corpus spell
+      is_magic: true
+      skill: Corpus
+      lethality: -15
+      penetration: 50
+      weapon_type: Ranged
+      recoil: 0
+      damage_type: Physical
+      accuracy: 0
+      init_mod: 0
+      special_group: Spell
     Poison Puffs:
       description: Level 6 Nature spell
       is_magic: true
       skill: Nature
-      lethality: 0
+      lethality: -15
       penetration: 50
       weapon_type: Explosive
       recoil: 0
@@ -681,7 +693,7 @@ fs3combat:
       weapon_type: Ranged
       is_automatic: true
       recoil: 0
-      damage_type: Stun
+      damage_type: Physical
       accuracy: 0
       init_mod: 0
       special_group: Spell

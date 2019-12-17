@@ -377,6 +377,21 @@ spells:
     target_num: 3
     target_optional: true
     school: Corpus
+  Mass Hemorrhage:
+    available: false
+    casting_time: 1 round
+    desc: Damage some of the blood vessels in up to three targets, causing them to locally hemorrhage.
+    duration: 1 round
+    effect: AOE Damage
+    fs3_attack: true
+    level: 6
+    line_of_sight: true
+    name: Mass Hemorrhage
+    range: Long
+    school: Corpus
+    target_num: 3
+    target_optional: true
+    weapon: Mass Hemorrhage
   Massive Heal:
     available: true
     casting_time: 1 round
@@ -483,6 +498,23 @@ spells:
     roll: false
     school: Corpus
     target_num: 1
+  Mass Impair:
+    available: false
+    casting_time: 1 round
+    damage_desc: Impair Spell
+    damage_inflicted: IMPAIR
+    desc: "Inflict an impaired wound on up to 3 targets, making it difficult for an enemy to use the affected body part. \n\nSpell ignores target's armor."
+    effect: Damage
+    level: 7
+    line_of_sight: true
+    name: Mass Impair
+    notes: Desc on this probably needs fixed to match others.  Also needs tested to
+      see if level is appropriate
+    range: Long
+    roll: false
+    school: Corpus
+    target_num: 3
+    target_optional: true
   Miasma:
     attack_mod: -3
     available: true
