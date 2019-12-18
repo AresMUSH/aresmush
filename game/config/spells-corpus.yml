@@ -377,18 +377,18 @@ spells:
     target_num: 3
     target_optional: true
     school: Corpus
-  Iron Body:
-    available: false
-    armor: Iron Body
-    casting_time: 1 round
-    desc: "Caster augments the target's body, making their skin significantly tougher to increase defenses and improving their strength. They can lift up to an additional 150 lbs, and they hit harder when attacking."
-    duration: 8 hours
-    effect: Armor
-    level: 6
-    name: Iron Body
-    range: Touch
-    school: Corpus
-    weapon: Iron Body    
+  # Iron Body:
+  #   available: false
+  #   armor: Iron Body
+  #   casting_time: 1 round
+  #   desc: "Caster augments the target's body, making their skin significantly tougher to increase defenses and improving their strength. They can lift up to an additional 150 lbs, and they hit harder when attacking."
+  #   duration: 8 hours
+  #   effect: Armor
+  #   level: 6
+  #   name: Iron Body
+  #   range: Touch
+  #   school: Corpus
+  #   weapon: Iron Body
   Mass Hemorrhage:
     available: false
     casting_time: 1 round
