@@ -256,6 +256,17 @@ spells:
     target_optional: true
     weapon: Stalagmite
   #Level 6
+  Diamond Armor:
+    armor: Diamond
+    available: false
+    casting_time: 1 round
+    desc: The caster protects the target's body by augmenting it with a layer of hard diamond armor. Coloring may vary.
+    duration: 8 hours
+    effect: Armor
+    level: 6
+    name: Diamond Armor
+    range: Touch
+    school: Earth
   Familiar (Earth):
     desc: "A familiar is a spirit associated or allied with a school of magic that has taken residence in a physical vessel with the shape of an animal. It functions as a companion, assistant, and guardian. \n\nFamiliars may be capable of some or all of the following: sharing telepathic or empathic communication, providing knowledge of the arcane, sharing senses, lending physical aid as spies or fighters, delivering spells at a distance of up to three miles."
     effect: Other

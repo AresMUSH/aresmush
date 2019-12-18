@@ -476,6 +476,17 @@ spells:
     range: Self
     roll: true
     school: Nature
+  Ironwood Skin:
+    available: false
+    armor: Ironwood Skin
+    casting_time: 1 round
+    desc: "The caster grows the wooden bark of a plant over the target's body to protect it. Plant is from the same genus each time the spell is cast."
+    duration: 8 hours
+    effect: Armor
+    level: 6
+    name: Ironwood Skin
+    range: Touch
+    school: Nature
   Mass Calm Animal:
     available: false
     casting_time: 1 round

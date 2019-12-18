@@ -276,7 +276,7 @@ spells:
     level: 6
     name: Transmutation Armor
     notes: This probably shouldn't cover the whole body? Maybe a use for armor specials.
-    range: Self
+    range: Touch
     school: Will
   #LEVEL 7
   Being of Force:

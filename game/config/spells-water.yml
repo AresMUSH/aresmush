@@ -281,6 +281,18 @@ spells:
     casting_time: 3 hours
     range: Short
     line_of_sight: true
+  Glacial Ice Armor:
+    available: false
+    armor: Glacial Ice
+    casting_time: 1 round
+    desc: "Caster weaponizes and protects the target's body by augmenting it with dense sheets of ice that form into sharp icicles protruding from their knuckles. Increases defenses and adds a weapon."
+    duration: 8 hours
+    effect: Armor
+    level: 6
+    name: Glacial Ice Armor
+    range: Touch
+    school: Water
+    weapon: Glacial Ice
   Liquid Form:
     available: true
     casting_time: 1 round

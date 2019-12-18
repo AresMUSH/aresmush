@@ -292,6 +292,78 @@ fs3combat:
       defense: 3
       protection:
         Head: 0
+    Diamond:
+      description: Level 6 earth spell
+      is_magic: true
+      defense: 0
+      protection:
+        Head: 14
+        Neck: 14
+        Chest: 14
+        Abdomen: 14
+        Left Leg: 14
+        Right Leg: 14
+        Groin: 14
+        Left Arm: 14
+        Right Arm: 14
+        Left Hand: 14
+        Right Hand: 14
+        Left Foot: 14
+        Right Foot: 14
+    Glacial Ice:
+      description: Level 6 Water spell
+      is_magic: true
+      defense: 0
+      protection:
+        Head: 12
+        Neck: 12
+        Chest: 12
+        Abdomen: 12
+        Left Leg: 12
+        Right Leg: 12
+        Groin: 12
+        Left Arm: 12
+        Right Arm: 12
+        Left Hand: 12
+        Right Hand: 12
+        Left Foot: 12
+        Right Foot: 12
+    Iron Body:
+      description: Level 6 Corpus spell
+      is_magic: true
+      defense: 0
+      protection:
+        Head: 11
+        Neck: 11
+        Chest: 11
+        Abdomen: 11
+        Left Leg: 11
+        Right Leg: 11
+        Groin: 11
+        Left Arm: 11
+        Right Arm: 11
+        Left Hand: 11
+        Right Hand: 11
+        Left Foot: 11
+        Right Foot: 11
+    Ironwood Skin:
+      description: Level 6 Nature spell
+      is_magic: true
+      defense: 0
+      protection:
+        Head: 14
+        Neck: 14
+        Chest: 14
+        Abdomen: 14
+        Left Leg: 14
+        Right Leg: 14
+        Groin: 14
+        Left Arm: 14
+        Right Arm: 14
+        Left Hand: 14
+        Right Hand: 14
+        Left Foot: 14
+        Right Foot: 14
     Transmutation:
       description: Level 6 Will spell
       is_magic: true
