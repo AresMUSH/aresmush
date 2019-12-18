@@ -79,6 +79,9 @@ magic-items:
   Konvaskr:
     name: Konvaskr
     desc: A flying ship that really needs a better desc.
+  Mending Trunk:
+    name: Mending Trunk
+    desc:  A trunk that completely, if slowly, mends and cleans an item put in and left for a week.
   Mistletoe:
     name: Mistletoe
     desc: A small bundle of white berries with green leaves, secured with a red bow. Gives the holder luck for a good kiss or hug.
