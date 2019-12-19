@@ -354,7 +354,7 @@ spells:
     range: Self
     roll: true
     rounds: 5
-    school: Water
+    school: Air
     target_num: 1
   Familiar (Air):
     desc: "A familiar is a spirit associated or allied with a school of magic that has taken residence in a physical vessel with the shape of an animal. It functions as a companion, assistant, and guardian. \n\nFamiliars may be capable of some or all of the following: sharing telepathic or empathic communication, providing knowledge of the arcane, sharing senses, lending physical aid as spies or fighters, delivering spells at a distance of up to three miles."
