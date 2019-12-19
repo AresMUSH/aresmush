@@ -57,7 +57,7 @@ GEM
       nest (~> 3)
       redic (~> 1.5.0)
       stal
-    rack (2.0.7)
+    rack (2.0.8)
     rack-protection (2.0.5)
       rack
     rake (12.3.3)
