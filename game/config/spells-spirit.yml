@@ -210,7 +210,7 @@ spells:
     target_optional: true
     weapon: Stun (Spirit)
   Mind Bolt:
-    available: false
+    available: true
     casting_time: 1 round
     damage_type: Psionic
     desc: The caster delivers a minor assault on the thought pathways of any one sapient creature, distracting them and giving them a penalty to attack.
@@ -590,10 +590,10 @@ spells:
     roll: true
     school: Spirit
   Dreamtrap:
-    available: false
+    available: true
     casting_time: 1 round
     damage_type: Psionic
-    desc: "The caster puts their their target to sleep (if awake) and draws them into a dream. The caster has control of the dream and its events, although they may allow the target's subconscious to fill in details. While in the dream, all encounters seem real, though physical damage in the dream world is imaginary and vanishes upon awakening.  Most dreams are recognizable as dreams or visions on waking, though some particularly realistic ones may not be.\n\nOccasionally, a particularly fantastical dream may be recognized as such by the dreamer during the dream. At the GM's discretion, they may roll Alertness with a negative modifier, up to -11, according to the degree of absurdity present in the dream. Think of blocks of buildings curving in on themselves in Inception, not the presence of an unexpected person or being in an unexpected location.\n\nThose with Spirit may notice that the spell has been cast, and may attempt to do so with a roll of the caster's Spirit vs the target's Spirit-4. A draw goes to the caster. This does not prevent the spell's effects or identify the caster in any way."
+    desc: "The caster puts their their target to sleep (if awake) and either draws them into a dream or enters their current dream. The caster has control of the dream and its events, although they may allow the target's subconscious to fill in details or choose to simply observe the target's natural dream. While in the dream, all encounters seem real, though physical damage in the dream world is imaginary and vanishes upon awakening.  Most dreams are recognizable as dreams or visions on waking, though some particularly realistic ones may not be.\n\nOccasionally, a particularly fantastical dream may be recognized as such by the dreamer during the dream. At the GM's discretion, they may roll Alertness with a negative modifier, up to -11, according to the degree of absurdity present in the dream. Think of blocks of buildings curving in on themselves in Inception, not the presence of an unexpected person or being in an unexpected location.\n\nThose with Spirit may notice that the spell has been cast, and may attempt to do so with a roll of the caster's Spirit vs the target's Spirit-4. A draw goes to the caster. This does not prevent the spell's effects or identify the caster in any way."
     duration: 2 hours
     effect: Psionic
     level: 7
