@@ -178,6 +178,13 @@ magic-items:
     spells:
     - Trick Senses
     - Emotional Aura
+  #Jackson's Hook
+  Somnolent Tragedie:
+    name: Somnolent Tragedie
+    desc: "A beautiful, palm-sized pocket watch containing a musical device using a set of pins placed on a revolving disc to pluck the tuned teeth (or lamellae) of a steel comb. The carriage of the watch is made of an unusual silver which appears to gleam in nightlight more than it does in the day. Adorned with gorgeous and complex filigree, the front cover depicts a nightingale descending downward in flight. Chain attachment allows it to be worn on a vest, secure in a pocket. When the top is pressed it opens, beginning to play a haunting series of chimes. The bearer is able to cast the spells %xBDrowsy%xn and %xBSimple Illusion%xn."
+    spells:
+    - Drowsy
+    - Simple Illusion
   #Jaime's Hook
   Nakama's Touch:
     name: "Nakama's Touch"
