@@ -289,5 +289,12 @@ module AresMUSH
       !(char.read_jobs || []).include?(job.id.to_s)
     end
     
+    def self.has_participant_by_name?(job, name)
+      name_upcase = "#{name}".upcase
+      return true if job.author && (job.author.name.upcase == name_upcase)
+      return true if job.participants.any? { |p| p.name.upcase == name_upcase }
+      return false
+    end
+    
   end
 end

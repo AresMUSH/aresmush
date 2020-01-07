@@ -26,7 +26,7 @@ module AresMUSH
         end
         
         if (!searchSubmitter.blank?)
-          jobs = jobs.select { |j| j.author && (j.author.name.upcase == searchSubmitter.upcase) }
+          jobs =  jobs.select { |j| Jobs.has_participant_by_name?(j, searchSubmitter) }
         end
                 
         
