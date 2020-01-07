@@ -27,7 +27,11 @@ module AresMUSH
         pose_id = scene_pose.id
         scene_pose.update(is_deleted: true)
         
-        message = t('scenes.deleted_scene_pose', :name => enactor.name, :pose => pose_text)
+        if (scene_pose.is_ooc)
+          message = t('scenes.deleted_scene_ooc', :name => enactor.name, :pose => pose_text)
+        else
+          message = t('scenes.deleted_scene_pose', :name => enactor.name, :pose => pose_text)
+        end
         
         if (scene.room)
           scene.room.emit_ooc message
@@ -36,7 +40,7 @@ module AresMUSH
         data = { id: pose_id }.to_json
         Scenes.new_scene_activity(scene, :pose_deleted, data)
 
-        Scenes.add_to_scene(scene, Website.format_markdown_for_html(message), Game.master.system_character, false, true)
+        Scenes.add_to_scene(scene, message, Game.master.system_character, false, true)
         
         {}
       end
