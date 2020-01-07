@@ -127,7 +127,12 @@ module AresMUSH
       scene_pose.update(pose: new_text)
       
       if (notify)
-        message = t('scenes.edited_scene_pose', :name => enactor.name, :pose => new_text)
+        
+        if (scene_pose.is_ooc)
+          message = t('scenes.edited_scene_ooc', :name => enactor.name, :pose => new_text)
+        else
+          message = t('scenes.edited_scene_pose', :name => enactor.name, :pose => new_text)
+        end
       
         if (scene.room)
           scene.room.emit_ooc message
