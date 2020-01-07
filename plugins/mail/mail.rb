@@ -86,6 +86,8 @@ module AresMUSH
       case event_name
       when "CharDisconnectedEvent"
         return CharDisconnectedEventHandler
+      when "CharIdledOutEvent"
+        return CharIdledOutEventHandler
       end
       nil
     end
