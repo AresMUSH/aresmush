@@ -101,7 +101,7 @@ module AresMUSH
         expect(ICTime.ictime).to eq DateTime.new(2114, 01, 5)
       end
 
-      it "should handle a time ratio across years" do
+      it "should handle a fast time ratio across years" do
         allow(Global).to receive(:read_config).with("ictime", "hour_offset") { 0 } 
         allow(Global).to receive(:read_config).with("ictime", "day_offset") { 0 } 
         allow(Global).to receive(:read_config).with("ictime", "year_offset") { 100 } 
@@ -111,6 +111,39 @@ module AresMUSH
         allow(DateTime).to receive(:now) { DateTime.new(2014, 12, 27) } # 7 days elapsed from 12/20 -> 12/27 means 14 days IC
         expect(ICTime.ictime).to eq DateTime.new(2115, 1, 3)
       end      
+      
+      it "should handle a slow time ratio near a year boundary" do
+        allow(Global).to receive(:read_config).with("ictime", "hour_offset") { 0 } 
+        allow(Global).to receive(:read_config).with("ictime", "day_offset") { 0 } 
+        allow(Global).to receive(:read_config).with("ictime", "year_offset") { 100 } 
+        allow(Global).to receive(:read_config).with("ictime", "time_ratio") { 0.5 } 
+        allow(Global).to receive(:read_config).with("ictime", "game_start_date") { "12/25/2014" } 
+
+        allow(DateTime).to receive(:now) { DateTime.new(2015, 01, 02 ) } # 8 days elapsed from 12/25 -> 01/02 means 4 days IC
+        expect(ICTime.ictime).to eq DateTime.new(2114, 12, 29, 0, 0, 0)
+      end
+      
+      it "should handle a slow time ratio across a year boundary" do
+        allow(Global).to receive(:read_config).with("ictime", "hour_offset") { 0 } 
+        allow(Global).to receive(:read_config).with("ictime", "day_offset") { 0 } 
+        allow(Global).to receive(:read_config).with("ictime", "year_offset") { 100 } 
+        allow(Global).to receive(:read_config).with("ictime", "time_ratio") { 0.5 } 
+        allow(Global).to receive(:read_config).with("ictime", "game_start_date") { "12/29/2014" } 
+
+        allow(DateTime).to receive(:now) { DateTime.new(2015, 01, 06 ) } # 8 days elapsed from 12/29 -> 01/06 means 4 days IC
+        expect(ICTime.ictime).to eq DateTime.new(2115, 1, 2, 0, 0, 0)
+      end
+      
+      it "should handle a fast time ratio across multiple years" do
+        allow(Global).to receive(:read_config).with("ictime", "hour_offset") { 0 } 
+        allow(Global).to receive(:read_config).with("ictime", "day_offset") { 0 } 
+        allow(Global).to receive(:read_config).with("ictime", "year_offset") { 100 } 
+        allow(Global).to receive(:read_config).with("ictime", "time_ratio") { 2 } 
+        allow(Global).to receive(:read_config).with("ictime", "game_start_date") { "12/20/2014" } 
+
+        allow(DateTime).to receive(:now) { DateTime.new(2015, 12, 20) } # 365 days elapsed = 2 years IC
+        expect(ICTime.ictime).to eq DateTime.new(2116, 12, 19)
+      end   
 
       it "should handle a time ratio across years plus a day offset" do
         allow(Global).to receive(:read_config).with("ictime", "hour_offset") { 0 } 
