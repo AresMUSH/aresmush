@@ -24,11 +24,6 @@ module AresMUSH
           unread_scenes = []
         end
         
-        search_id = Global.read_config("secrets", "gcse", "search_id")
-        if (search_id.blank?)
-          search_id = nil
-        end
-        
         {
           type: 'game',
           id: 1,
@@ -38,7 +33,6 @@ module AresMUSH
           description: Global.read_config('game', 'description'),
           website_welcome: Website.welcome_text,
           ictime: ICTime.ic_datestr(ICTime.ictime),
-          gcse_search_id: search_id,
           scene_start_date: ICTime.ictime.strftime("%Y-%m-%d"),
           unread_scenes_count: unread_scenes.count,
           date_entry_format: Global.read_config("datetime", 'date_entry_format_help').upcase,

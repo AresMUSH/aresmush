@@ -123,6 +123,8 @@ module AresMUSH
         return RestoreConfigRequestHandler
       when "upgrade"
         return UpgradeRequestHandler
+      when "serverStats"
+        return ServerStatsRequestHandler
       end
     end
   end
