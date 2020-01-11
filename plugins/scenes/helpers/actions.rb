@@ -119,5 +119,24 @@ module AresMUSH
       end
     end
     
+    def self.report_scene(enactor, scene, reason)
+      log = ""
+      scene.scene_poses.to_a.sort_by { |p| p.sort_order }.each do |pose|
+        name = pose.character.name
+        ooc = pose.is_ooc ? "<OOC> " : ""
+        text = pose.is_deleted? ? "<DELETED> #{pose.pose}" : pose.pose
+        history = pose.history.any? ? "%R%T*** Prior Versions: #{pose.history.join("%R%T")}" : ""
+
+        log << "%R%R#{ooc}#{text} (by #{name}) #{history}"
+      end
+
+      body = t('scenes.scene_reported_body', :scene_num => scene.id, :reporter => enactor.name)
+      body << reason
+      body << "%R-------%R"
+      body << log
+
+      Jobs.create_job(Jobs.trouble_category, t('scenes.scene_reported_title'), body, Game.master.system_character)
+    end
+    
   end
 end

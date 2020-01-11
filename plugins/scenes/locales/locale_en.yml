@@ -142,3 +142,7 @@ en:
         
         new_scene_activity: "New activity in scene %{id}."
         scene_updated: "%{title} updated."
+        scene_reported: "Thank you.  A report has been created using the scene log as evidence."
+        
+        scene_reported_body: "%{reporter} has reported scene #%{scene_num}.%R%RReason:%R"
+        scene_reported_title: "Scene Reported"
