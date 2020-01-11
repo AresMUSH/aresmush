@@ -109,10 +109,14 @@ module AresMUSH
     end
     
     # Returns whether the message should be emitted to the actual room.
-    def self.send_to_ooc_chat_if_needed(enactor, client, message)
+    def self.send_to_ooc_chat_if_needed(enactor, client, message, is_emit)
       ooc_channel = Channels.ooc_lounge_channel
       return true if ooc_channel.blank?
       return true if enactor.room != Game.master.ooc_room
+      
+      if (is_emit)
+        message = "#{message} (#{enactor.ooc_name})"
+      end
       
       enabled = Channels.pose_to_channel_if_enabled(ooc_channel, enactor, message)
       if (!enabled)

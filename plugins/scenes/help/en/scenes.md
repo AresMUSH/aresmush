@@ -86,3 +86,9 @@ While you can always do free-form RP on the grid or in the RP room, there are a 
 `scene/removechar <#>=<char>` - Removes a participant from the scene log.
 
 > **Tip:** Admins and characters with the `manage_scenes` permission can edit other people's scenes.  However, they cannot read scenes unless they've been shared first.
+
+## Reporting Abuse
+
+If someone is behaving badly in a scene, you can bring it to the game admin's attention - along with an automatic, verified log of the scene (including OOC chat and any previously-edited or deleted poses).  
+
+`scene/report <scene#>=<explanation>`
