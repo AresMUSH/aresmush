@@ -11,8 +11,7 @@ module AresMUSH
         combatant.update(posed: true)
         combat = combatant.combat
         
-        set_scene = !combat.scene || combat.scene.completed
-        if (set_scene && room.scene)
+        if (!combat.scene && room.scene)
           combat.update(scene: room.scene)
         end
 
