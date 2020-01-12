@@ -106,6 +106,7 @@ module AresMUSH
           
           roster: self.build_roster_info(char),
           idle_notes: char.idle_notes ? Website.format_markdown_for_html(char.idle_notes) : nil,
+          custom: CustomCharFields.get_fields_for_viewing(char, enactor)
           
         }
       end

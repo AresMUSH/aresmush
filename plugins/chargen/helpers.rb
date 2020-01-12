@@ -114,6 +114,11 @@ module AresMUSH
         end
       end
       
+      errors = Profile::CustomFields.save_fields_from_chargen(char, chargen_data)
+      if (errors.any?)
+        alerts.concat errors
+      end
+      
       return alerts
     end
     
