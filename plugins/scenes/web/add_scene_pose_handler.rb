@@ -37,8 +37,6 @@ module AresMUSH
           return { error: t('dispatcher.not_allowed') }
         end
                   
-        Global.logger.debug "Scene #{scene.id} pose added for #{char.name} by #{enactor.name}."
-        
         pose = Website.format_input_for_mush(pose)
         
         parse_results = Scenes.parse_web_pose(pose, char, pose_type)

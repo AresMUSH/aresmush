@@ -45,6 +45,7 @@ scenes:
     pose/remove: pose/drop
     po: pose
     me: pose
+    sya: say
     repose/nudge: pose/nudge
     repose/notify: pose/notify
     repose/drop: pose/drop

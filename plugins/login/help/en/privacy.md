@@ -52,6 +52,8 @@ Scenes may be marked as 'open' or 'private'.  Open scenes are visible to everyon
 
 Any party to the scene may extend invitations, download the log, or share the log on the web portal when the scene is complete. In other words, don't assume a 'private' scene is going to _stay_ private unless you trust the other players involved.
 
+Anyone in the scene may elect to report the scene log to the game admin in the case of harassment or abuse.
+
 There is no command allowing game admins to view or join private scenes.
 
 ### Mail

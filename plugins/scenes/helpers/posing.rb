@@ -109,10 +109,14 @@ module AresMUSH
     end
     
     # Returns whether the message should be emitted to the actual room.
-    def self.send_to_ooc_chat_if_needed(enactor, client, message)
+    def self.send_to_ooc_chat_if_needed(enactor, client, message, is_emit)
       ooc_channel = Channels.ooc_lounge_channel
       return true if ooc_channel.blank?
       return true if enactor.room != Game.master.ooc_room
+      
+      if (is_emit)
+        message = "#{message} (#{enactor.ooc_name})"
+      end
       
       enabled = Channels.pose_to_channel_if_enabled(ooc_channel, enactor, message)
       if (!enabled)
@@ -127,7 +131,12 @@ module AresMUSH
       scene_pose.update(pose: new_text)
       
       if (notify)
-        message = t('scenes.edited_scene_pose', :name => enactor.name, :pose => new_text)
+        
+        if (scene_pose.is_ooc)
+          message = t('scenes.edited_scene_ooc', :name => enactor.name, :pose => new_text)
+        else
+          message = t('scenes.edited_scene_pose', :name => enactor.name, :pose => new_text)
+        end
       
         if (scene.room)
           scene.room.emit_ooc message
@@ -157,7 +166,7 @@ module AresMUSH
         # (Group 1: Optional preceding junk before a quote) 
         # (Group 2: Quote -- Multiple letters not quote -- Quote )
         # /([^"]+)?("[^"]+")?/
-        quote_matches = pose.scan(/([^#{quote_markers}]+)?([#{quote_markers}][^#{quote_markers}]+[#{quote_markers}])?/)
+        quote_matches = pose.scan(/([^#{quote_markers}]+)?([#{quote_markers}][^#{quote_markers}]+[#{quote_markers}]?)?/)
         
         colored_pose = ""
         quote_matches.each do |m| 

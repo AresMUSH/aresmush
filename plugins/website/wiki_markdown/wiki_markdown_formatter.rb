@@ -13,7 +13,7 @@ module AresMUSH
       
       def preprocess(text)
         return text if text =~ /\[\[disableWikiExtensions\]\]/
-        
+                
         @pre_tag_blocks.each do |tag|
           text = text.gsub(tag.regex) { tag.parse(Regexp.last_match) }
         end

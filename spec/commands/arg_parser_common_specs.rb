@@ -125,5 +125,49 @@ module AresMUSH
         expect(args.arg3).to eq "c = d/e"
       end
     end
+    
+    describe "flexible_args" do
+      it "should crack a equals b slash c" do
+        args = ArgParser.parse(ArgParser.flexible_args, "a=b/c")
+        expect(args.arg1).to eq "a"
+        expect(args.arg2).to eq "b"
+        expect(args.arg3).to eq "c"
+      end
+      
+      it "should crack a equals b" do
+        args = ArgParser.parse(ArgParser.flexible_args, "a=b")
+        expect(args.arg1).to eq "a"
+        expect(args.arg2).to eq "b"
+        expect(args.arg3).to be_nil
+      end
+      
+      it "should crack a slash b" do
+        args = ArgParser.parse(ArgParser.flexible_args, "a/b")
+        expect(args.arg1).to eq "a"
+        expect(args.arg2).to be_nil
+        expect(args.arg3).to eq "b"
+      end
+      
+      it "should crack a by itself" do
+        args = ArgParser.parse(ArgParser.flexible_args, "a!! b...c")
+        expect(args.arg1).to eq "a!! b...c"
+        expect(args.arg2).to be_nil
+        expect(args.arg3).to be_nil
+      end
+      
+      it "should crack no args" do
+        args = ArgParser.parse(ArgParser.flexible_args, "")
+        expect(args.arg1).to be_nil
+        expect(args.arg2).to be_nil
+        expect(args.arg3).to be_nil
+      end
+      
+      it "should match an arg3 with equals or slashes" do
+        args = ArgParser.parse(ArgParser.flexible_args, "a b c=d/e = f/g")
+        expect(args.arg1).to eq "a b c"
+        expect(args.arg2).to eq "d"
+        expect(args.arg3).to eq "e = f/g"
+      end
+    end
   end
 end

@@ -115,7 +115,9 @@ en:
         pose_order_type_changed: "%{name} has changed the pose order type to %{type}."
         
         edited_scene_pose: "%{name} has edited their pose: %xn%R%{pose}"
+        edited_scene_ooc: "%{name} has edited their OOC comment: %{pose}"
         deleted_scene_pose: "%{name} has deleted their pose: %{pose}"
+        deleted_scene_ooc: "%{name} has deleted their OOC comment: %{pose}"
         typo_scene_pose: "You fix the typo in the log:%R%{pose}"
         
         trending_scenes_subject: "Popular Scenes This Week"
@@ -140,3 +142,7 @@ en:
         
         new_scene_activity: "New activity in scene %{id}."
         scene_updated: "%{title} updated."
+        scene_reported: "Thank you.  A report has been created using the scene log as evidence."
+        
+        scene_reported_body: "%{reporter} has reported scene #%{scene_num}.%R%RReason:%R"
+        scene_reported_title: "Scene Reported"

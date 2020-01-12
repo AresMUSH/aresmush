@@ -42,6 +42,7 @@ module AresMUSH
             when "Roster"
               Global.logger.debug "#{idle_char.name} added to roster."
               Idle.add_to_roster(idle_char, action)
+              # Idle cleanup is done inside add to roster.
             when "Npc"
               idle_char.update(is_npc: true)
               Idle.idle_cleanup(idle_char, action)
