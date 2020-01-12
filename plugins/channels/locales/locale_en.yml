@@ -26,8 +26,8 @@ en:
         unable_to_determine_auto_alias: "Could not automatically pick an alias for this channel due to name conflicts.  Use channel/join <name>=<alias> to pick one yourself."
         
         joined_channel: "%{name} has joined this channel."
-        already_on_channel: "That channel is already on."
-        not_on_channel: "That channel is already off."
+        already_on_channel: "You are already on that channel."
+        not_on_channel: "You are not on that channel."
         left_channel: "%{name} has left this channel."
         has_disconnected: "%{name} has disconnected."
         has_connected: "%{name} has connected."

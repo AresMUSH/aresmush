@@ -26,7 +26,7 @@ module AresMUSH
       def handle
         FS3Combat.with_a_combatant(name, client, enactor) do |combat, combatant|    
           if (combatant.mount_type)                
-            combatant.update(mount_type: self.mount)
+            combatant.update(mount_type: nil)
             FS3Combat.emit_to_combat combat, t('fs3combat.dismounted', :name => combatant.name)
           else
             client.emit_failure t('fs3combat.not_mounted')

@@ -27,10 +27,12 @@ module AresMUSH
         location: request.args[:location],
         summary: Website.format_input_for_mush(request.args[:summary]),
         content_warning: request.args[:content_warning],
+        last_activity: Time.now,
         scene_type: request.args[:scene_type],
         title: request.args[:title],
         icdate: request.args[:icdate],
         completed: completed,
+        date_completed: completed ? Time.now : nil,
         plot: plot.blank? ? nil : Plot[plot],
         private_scene: completed ? false : (privacy == "Private"),
         owner: enactor
