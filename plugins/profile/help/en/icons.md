@@ -6,7 +6,7 @@ aliases:
 - log_icon
 ---
 
-## Setting a Profile Image
+# Setting a Profile Image
 
 Your **profile image** is the picture featured on your profile page.  To set your profile image:
 
@@ -14,7 +14,7 @@ Your **profile image** is the picture featured on your profile page.  To set you
 2. Edit your profile and find the "Profile Image" field.
 3. Select the image to use as your profile image.
 
-### Image Sizing Tips
+## Image Sizing Tips
 
 * Square icons work best.
 * 600x600 pixels is a nice size, though it could be larger or as small as 300x300.
@@ -23,7 +23,7 @@ Your **profile image** is the picture featured on your profile page.  To set you
 
 > **Tip:** You can resize your images and make them square using free online tools like [BeFunky](https://www.befunky.com/create/).
 
-## Customizing Your Profile Icon
+## Customizing Your Small Profile Icon
 
 Your **profile icon** (or sometimes "log icon") is a smaller profile image used across the web portal in scene lists, forum posts, and more. By default, the game will use a scaled-down version of your profile image for your icon.  Sometimes this doesn't look right, and your icon will appear squished.  If this happens to you, you can use a separate image for your profile icon.
 

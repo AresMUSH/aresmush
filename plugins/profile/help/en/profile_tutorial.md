@@ -40,13 +40,7 @@ To delete files from your gallery, click on it to open its file page, and select
 
 ## Profile Images and Icons
 
-Your **profile image** is the picture featured on your profile page.  To set your profile image:
-
-1. Click the "Files" button at the bottom of the profile page and upload the image to your character's folder.
-2. Edit your profile and find the "Profile Image" field.
-3. Select the image to use as your profile image.
-
-You can optionally set a different image for the smaller **profile icon** used in scenes and across the web portal. See [Icons](/help/icons) for tips on sizing your icon.
+Your **profile image** is the picture featured on your profile page.  You can select any file in your profile gallery to be your profile image.  You can optionally select a different image for your smaller **profile icon** used in scenes and elsewhere throughout the web portal.  See [Icons](/help/icons) for tips on sizing your icon and detailed instructions for uploading and setting them.
 
 ## Relationships
 
