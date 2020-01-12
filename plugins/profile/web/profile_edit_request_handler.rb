@@ -72,7 +72,7 @@ module AresMUSH
           profile_icon: char.profile_icon ? Website.get_file_info(char.profile_icon) : nil,
           bg_shared: char.bg_shared,
           lastwill: Website.format_input_for_html(char.idle_lastwill),
-          
+          custom: CustomCharFields.get_fields_for_editing(char, enactor)
         }
       end
     end
