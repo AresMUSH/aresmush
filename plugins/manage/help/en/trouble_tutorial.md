@@ -1,7 +1,10 @@
 ---
 toc: Community
-summary: Dealing with troublesome players.
+summary: Dealing with harassment and abuse.
+tutorial: true
+title: Harassment and Abuse
 aliases:
+- trouble
 - ban
 - siteban
 - sitelock
@@ -14,7 +17,7 @@ aliases:
 ---
 # Dealing With Trouble
 
-Unfortunately, you will sometimes have troublesome players trolling you or your game.  There are a variety of commands for players and admin to deal with them.
+Unfortunately, you will sometimes have troublesome players who are trolling, harassing, or otherwise abusing you or other players.  There are a variety of commands for players and admin to deal with them.
 
 [[toc]]
 
@@ -24,7 +27,7 @@ Unfortunately, you will sometimes have troublesome players trolling you or your 
 
 If someone is causing a ruckus, you can forcibly disconnect them using the `boot` command.
 
-> It is preferable to let the game admin deal with problem players.  However, the default Ares configuration allows all approved characters to use the boot command.  This helps players protect each other even when an admin is not available. 
+> **Note:** It is preferable to let the game admin deal with problem players.  However, the default Ares configuration allows all approved characters to use the boot command.  This helps players protect each other even when an admin is not available. 
 
 ### Reporting Channel Abuse
 
@@ -72,9 +75,7 @@ If someone is using a proxy server, banning them can be like playing whack-a-mol
 
 To ban proxy sites, simply enable the option in the [Web Portal banned/suspect sites configuration](/tutorials/config/sites.html)
 
-{% note %} 
- There are thousands of proxy IPs on the Internet, and the list is constantly changing.  Blocking them all is impossible, but blocking some can sometimes be better than nothing.
-{% endnote %}
+> **Note:** There are thousands of proxy IPs on the Internet, and the list is constantly changing.  Blocking them all is impossible, but blocking some can sometimes be better than nothing.
 
 ### Monitoring Trolls
 
