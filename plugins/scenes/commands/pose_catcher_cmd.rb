@@ -30,7 +30,7 @@ module AresMUSH
         end
         
 
-        emit_to_room = Scenes.send_to_ooc_chat_if_needed(enactor, client, PoseFormatter.format(enactor.ooc_name, cmd_str))
+        emit_to_room = Scenes.send_to_ooc_chat_if_needed(enactor, client, PoseFormatter.format(enactor.ooc_name, cmd_str), is_emit)
         if (emit_to_room)
           Scenes.emit_pose(enactor, message, is_emit, is_ooc)
         end

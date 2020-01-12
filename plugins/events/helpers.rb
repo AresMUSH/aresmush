@@ -9,11 +9,20 @@ module AresMUSH
         
     def self.parse_date_time_desc(str)
       begin
-        split = str.split('/')
-        date = split[0..2].join('/')
-        desc = split[3..-1].join("/")
+        separator = OOCTime.date_element_separator
+        if (separator == '-')
+          split = str.split('/')
+          date = split[0]
+          desc = split[1]
+        elsif (separator == '/')
+          split = str.split('/')
+          date = split[0..2].join('/')
+          desc = split[3..-1].join('/')
+        else
+          raise "Unrecognized date time separator.  Check your 'short' date format in datetime.yml."
+        end
+
         date_time = OOCTime.parse_datetime(date.strip.downcase)
-        
         if (date_time < DateTime.now)
           return nil, nil, t('events.no_past_events')
         end

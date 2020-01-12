@@ -24,10 +24,11 @@ module AresMUSH
            }
         end
         
+        can_manage_wiki = Website.can_manage_wiki?(enactor)
         lock_info = page.get_lock_info(enactor)
         restricted_page = Website.is_restricted_wiki_page?(page)
         if (edit_mode)
-          if (restricted_page && !Website.can_manage_wiki?(enactor))
+          if (restricted_page && !can_manage_wiki)
             return { error: t('dispatcher.not_allowed') }
           end
           if (!lock_info)
@@ -39,7 +40,7 @@ module AresMUSH
           text = Website.format_markdown_for_html page.text
         end
         
-        can_edit = enactor && enactor.is_approved? && !lock_info && ( Website.can_manage_wiki?(enactor) || !restricted_page )
+        can_edit = enactor && enactor.is_approved? && !lock_info && ( can_manage_wiki || !restricted_page )
             
         breadcrumbs = []
         breadcrumbs << { title: "Home", url: "home" }
@@ -69,8 +70,9 @@ module AresMUSH
           text: text,
           tags: page.tags,
           lock_info: lock_info,
-          can_delete: enactor && enactor.is_admin? && !restricted_page,
+          can_delete: can_manage_wiki && !restricted_page,
           can_edit: can_edit,
+          can_do_minor_edits: can_manage_wiki,
           current_version_id: page.current_version.id,
           breadcrumbs: breadcrumbs,
           can_change_name: can_edit

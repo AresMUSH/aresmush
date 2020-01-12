@@ -13,7 +13,8 @@ module AresMUSH
     def self.convert_to_ictime(t)
       day_offset = Global.read_config("ictime", "day_offset")
       hour_offset = Global.read_config("ictime", "hour_offset")
-      year = t.year + Global.read_config("ictime", "year_offset")
+      year_offset = Global.read_config("ictime", "year_offset")
+      year = t.year + year_offset
       ratio = Global.read_config("ictime", "time_ratio")
       
       begin
@@ -31,7 +32,7 @@ module AresMUSH
 
           tmp_date = DateTime.new(t.year, t.month, t.day, t.hour, t.minute, t.sec)
           if (tmp_date.year != DateTime.now.year)
-            year = year + 1
+           year = tmp_date.year + year_offset
           end
         end
         

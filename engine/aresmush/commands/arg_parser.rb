@@ -34,5 +34,13 @@ module AresMUSH
       /(?<arg1>[^\=]+)\=(?<arg2>[^\/]+)\/?(?<arg3>.+)?/
     end
     
+    # command <arg1>
+    # command <arg1>/<arg3>
+    # command <arg1>=<arg2>
+    # command <arg1>=<arg2>/<arg3>
+    def self.flexible_args
+      /(?<arg1>[^\(=|\/)]+)\=?(?<arg2>[^\/]+)?\/?(?<arg3>.+)?/
+    end
+    
   end
 end

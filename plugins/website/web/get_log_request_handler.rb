@@ -23,7 +23,7 @@ module AresMUSH
               
         {
           name: filename,
-          text: lines.join('<br/>')
+          lines: lines
         }
       end
     end
