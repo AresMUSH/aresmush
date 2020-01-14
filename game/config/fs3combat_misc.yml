@@ -30,11 +30,29 @@ fs3combat:
       armor: Tough Hide
       hitloc: FlyingInsect
       defense_skill: Reflexes
-    Flying Creature:
+    Flying 4 Legged Creature:
       weapon: Claws
       weapon_specials:
       armor: Tough Hide
-      hitloc: FlyingCreature
+      hitloc: Flying4LeggedCreature
+      defense_skill: Reflexes
+    Dragon:
+      weapon: Claws
+      weapon_specials:
+      armor: Very Tough Hide
+      hitloc: Flying4LeggedCreature
+      defense_skill: Reflexes      
+    Flying 2 Legged Creature:
+      weapon: Claws
+      weapon_specials:
+      armor: Tough Hide
+      hitloc: Flying2LeggedCreature
+      defense_skill: Reflexes
+    Lindworm:
+      weapon: Claws
+      weapon_specials:
+      armor: Very Tough Hide
+      hitloc: Flying2LeggedCreature
       defense_skill: Reflexes
     Rogue:
       weapon: Knife

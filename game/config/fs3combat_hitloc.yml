@@ -680,7 +680,7 @@ fs3combat:
       - Abdomen
       critical_areas:
       - Thorax
-    FlyingCreature:
+    Flying4LeggedCreature:
       areas:
         Rear Left Leg:
         - Chest
@@ -775,6 +775,91 @@ fs3combat:
       - Chest
       critical_areas:
       - Head
+  Flying2LeggedCreature:
+    areas:
+      Left Leg:
+      - Neck
+      - Right Leg
+      - Right Leg
+      - Chest
+      - Chest
+      - Abdomen
+      - Abdomen
+      - Left Leg
+      - Left Leg
+      - Left Leg
+      Right Leg:
+      - Neck
+      - Left Leg
+      - Left Leg
+      - Chest
+      - Chest
+      - Abdomen
+      - Abdomen
+      - Right Leg
+      - Right Leg
+      - Right Leg
+      Right Wing:
+      - Head
+      - Chest
+      - Chest
+      - Abdomen
+      - Abdomen
+      - Front Right Leg
+      - Front Right Leg
+      - Right Wing
+      - Right Wing
+      - Right Wing
+      Left Wing:
+      - Head
+      - Chest
+      - Chest
+      - Abdomen
+      - Abdomen
+      - Front Left Leg
+      - Front Left Leg
+      - Left Wing
+      - Left Wing
+      - Left Wing
+      Neck:
+      - Right Leg
+      - Left Leg
+      - Head
+      - Head
+      - Chest
+      - Chest
+      - Chest
+      - Neck
+      - Neck
+      - Neck
+      Head:
+      - Right Leg
+      - Left Leg
+      - Neck
+      - Neck
+      - Chest
+      - Chest
+      - Chest
+      - Head
+      - Head
+      - Head
+      Abdomen:
+      - Left Leg
+      - Right Leg
+      - Left Leg
+      - Right Leg
+      - Chest
+      - Chest
+      - Chest
+      - Abdomen
+      - Abdomen
+      - Abdomen
+    vital_areas:
+    - Abdomen
+    - Chest
+    - Neck
+    critical_areas:
+    - Head
     FlyingInsect:
       areas:
         Left Leg:
