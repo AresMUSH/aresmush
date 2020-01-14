@@ -8,7 +8,7 @@ fs3combat:
       protection:
         Nowhere: 0
     Tough Hide:
-      description: Animal hide for quadrapeds
+      description: Low level animal hide
       is_magic: false
       defense: 1
       protection:
@@ -21,6 +21,44 @@ fs3combat:
         Head: 3
         Neck: 3
         Groin: 2
+    Very Tough Hide:
+      description: Animal hide on par with plate armor
+      is_magic: false
+      defense: 1
+      protection:
+        Chest: 9
+        Rear Left Leg: 8
+        Rear Right Leg: 8
+        Front Left Leg: 8
+        Front Right Leg: 8
+        Left Leg: 8
+        Right Leg: 8
+        Tail: 8
+        Right Wing: 8
+        Left Wing: 8
+        Abdomen: 9
+        Head: 7
+        Neck: 6
+        Groin: 5
+    Extremely Tough Hide:
+      description: Animal hide on par with uppper level magic armor
+      is_magic: false
+      defense: 1
+      protection:
+        Chest: 14
+        Rear Left Leg: 12
+        Rear Right Leg: 12
+        Front Left Leg: 12
+        Front Right Leg: 12
+        Left Leg: 12
+        Right Leg: 12
+        Tail: 13
+        Right Wing: 12
+        Left Wing: 12
+        Abdomen: 14
+        Head: 11
+        Neck: 10
+        Groin: 10        
     Tactical:
       description: Military-Grade Kevlar Vest and Helmet
       is_magic: false
