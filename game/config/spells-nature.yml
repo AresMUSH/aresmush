@@ -303,6 +303,7 @@ spells:
     available: false
     casting_time: 1 round
     desc: Caster hones their aggressive animal instincts, improving their attack power and reaction speed.
+    duration: 5 rounds
     effect: Buff
     init_mod: 1
     is_potion: true
@@ -311,6 +312,7 @@ spells:
     range: Self
     school: Nature
     target_num: 1
+    rounds: 5
   Regress Growth:
     available: true
     casting_time: 1 round
