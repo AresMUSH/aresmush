@@ -397,6 +397,16 @@ spells:
     name: Wild Shape Fly
     roll: true
     school: Nature
+  Wild Shape Hrafn:
+    available: true
+    armor: Hrafn
+    desc: Wild Shape Hrafn. Form able to change the color of its feathers and vocally mimic a few phrases, as well as use Flesh Wound.
+    level: 5
+    name: Wild Shape
+    roll: true
+    school: Nature
+    range: Self
+    weapon: Claws
   Wild Shape Lynx:
     available: false
     armor: Lynx

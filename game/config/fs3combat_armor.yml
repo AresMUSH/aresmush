@@ -58,7 +58,7 @@ fs3combat:
         Abdomen: 14
         Head: 11
         Neck: 10
-        Groin: 10        
+        Groin: 10
     Tactical:
       description: Military-Grade Kevlar Vest and Helmet
       is_magic: false
@@ -269,8 +269,8 @@ fs3combat:
         Right Hand: 4
         Left Foot: 4
         Right Foot: 4
-    Falcon:
-      description: Wild Shape Falcon
+    Hrafn:
+      description: Wild Shape Hrafn
       is_magic: true
       protection:
         Head: 0
