@@ -409,6 +409,19 @@ spells:
     school: Nature
     range: Self
     weapon: Claws
+  Flesh Wound (Wild Shape):
+    available: false
+    casting_time: 1 round
+    damage_desc: Flesh Wound Spell
+    damage_inflicted: FLESH
+    desc: "Inflict a flesh wound, slowing an enemy down. \n\nSpell ignores target's armor."
+    effect: Damage
+    level: 3
+    name: Flesh Wound
+    range: Short
+    school: Magic
+    target_num: 1
+    target_optional: true
   Wild Shape Lynx:
     available: false
     armor: Lynx
