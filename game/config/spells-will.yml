@@ -266,6 +266,17 @@ spells:
     range: Long
     roll: Will
     school: Will
+  Summon Object:
+    available: false
+    casting_time: 1 round
+    desc: "The caster creates a link between themselves and an object of up to 100 pounds, allowing them to teleport the object to themselves. The object may be stored anywhere, but to summon between dimensions there must be an open portal path between the caster and the object. They can sense the direction of the linked object, and it if is moved, the caster will feel the change in its location and be able to track it. The feeling of the link becomes vaguer the more distant the object is, but the caster can always tell the direction of it. Only one object can be bonded to the caster at a time."
+    duration: 48 hours
+    effect: Other
+    level: 6
+    name: Summon Object
+    range: Touch
+    roll: Will
+    school: Will
   Transmutation Armor:
     armor: Transmutation
     available: false
@@ -286,7 +297,7 @@ spells:
     desc: "The caster creates a being of pure Will. The being is capable of any Will abilities of level 5 or below. It can be actively directed by its master via a short command of up to four words. A command is in effect until countered by the caster or until the being is dispelled or defeated. Giving a new command takes a turn.\n\nWhile active, the being requires a significant amount of Will energy, and its creator casts Will spells with a -1 modifier.\n\n In combat, the being should be represented by an NPC of level five."
     duration: 30 minutes
     effect: Other
-    level: 6
+    level: 7
     line_of_sight: true
     name: 'Being of Force '
     range: Short
