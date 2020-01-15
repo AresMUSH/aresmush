@@ -39,8 +39,8 @@ spells:
     casting_time: 1 round
     damage_type: Cold
     desc: Caster delivers minor cold damage via touch.
+    duration: 30 minutes
     effect: Damage
-    fs3_attack: true
     is_potion: true
     level: 2
     name: Chill Touch

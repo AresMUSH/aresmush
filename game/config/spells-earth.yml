@@ -112,7 +112,7 @@ spells:
     available: true
     casting_time: 1 round
     desc: The caster's hands become stone fists capable of inflicting damage.
-    duration: 1 round
+    duration: 30 minutes
     effect: Damage
     is_potion: true
     level: 3

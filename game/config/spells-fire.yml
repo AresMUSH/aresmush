@@ -107,8 +107,8 @@ spells:
     casting_time: 1 round
     damage_type: Fire
     desc: The caster's fingertips become red hot and capable of inflicting burn damage on touch.
+    duration: 30 minutes
     effect: Damage
-    fs3_attack: true
     is_potion: true
     level: 3
     name: Hot Hands
