@@ -255,6 +255,23 @@ spells:
     target_num: 1
     target_optional: true
     weapon: Stalagmite
+  Stone Shackles:
+    available: false
+    casting_time: 1 round
+    desc: The caster subdues the target with rock bindings, entrapping their hands and feet to immobilize them briefly.
+    duration: 2 rounds
+    effect: Stun
+    fs3_attack: true
+    is_stun: true
+    level: 5
+    line_of_sight: true
+    name: Stone Shackles
+    range: Long
+    rounds: 2
+    school: Earth
+    target_num: 1
+    target_optional: true
+    weapon: Stun (Earth)
   #Level 6
   Diamond Armor:
     armor: Diamond
