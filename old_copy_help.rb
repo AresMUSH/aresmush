@@ -79,8 +79,7 @@ end
 minimal_boot
 
 
-docs_dir = "/Users/lynn/Documents/ares-docs/"
-help_dir = "#{docs_dir}/help/"
+help_dir = "/Users/lynn/Documents/ares-docs/help/#{filename_friendly_help_version}"
 if (!Dir.exist?(help_dir))
   Dir.mkdir help_dir
 end
@@ -89,6 +88,38 @@ end
 plugins = Dir['plugins/*']
 plugin_names = []
 
+plugins.each do |p|
+  next if !File.directory?(p)
+  plugin_name = File.basename(p)
+  plugin_help_dir = "#{help_dir}/#{plugin_name}"
+
+  help_files = Dir["#{p}/help/en/*.md"]
+  next if help_files.empty?
+
+  plugin_names << plugin_name
+  if (!Dir.exist?(plugin_help_dir))
+    Dir.mkdir plugin_help_dir
+  end
+  
+  puts "Processing #{p}..."
+  help_files.each do |h|
+    orig = File.readlines h
+    orig.shift
+    orig.unshift "version: #{help_version}\n"
+    orig.unshift "layout: help_#{filename_friendly_help_version}\n"
+    orig.unshift "---\n"
+    
+    new_filename =  "#{plugin_help_dir}/#{File.basename(h)}"
+    
+    puts "Copying files from #{h} to #{new_filename}"
+    File.open(new_filename, 'w') do |f|
+      new_lines = orig.map { |o| format_help(o, filename_friendly_help_version)}
+      f.write new_lines.join
+    end
+  end
+end
+
+
 toc_topics = {}
 
 AresMUSH::Help.toc.keys.sort.each do |toc|
@@ -96,51 +127,38 @@ AresMUSH::Help.toc.keys.sort.each do |toc|
 end
 
 
-File.open("#{help_dir}/index.md", 'w') do |file|
-  file.puts "---"
-  file.puts "title: Game Help Files - Version #{help_version}"
-  file.puts "description: Game Help."
-  file.puts "layout: page"
-  file.puts "tags:"
-  file.puts "- help-#{help_version}"
-  file.puts "---"
-  file.puts ""
-  file.puts "These are quick links to the game help files for the current version of AresMUSH."
-  file.puts ""
+File.open("/Users/lynn/Documents/ares-docs/_includes/help_#{filename_friendly_help_version}.md", 'w') do |file|
+  file.puts "*AresMUSH version #{help_version}*"
+  file.puts "\n[Version #{help_version} Home](/help/#{filename_friendly_help_version}/)"
+  
   toc_topics.each do |toc, topics|
     file.puts ""
     file.puts "## #{toc}"
     file.puts ""
     
     topics.select { |name, data| data['tutorial'] }.sort_by { |name, data| [data['order'] || 99, name] }.each do |name, data|
-      file.puts "* [#{name.humanize}](https://mush.aresmush.com/help/#{data['topic']})"
+      file.puts "* [#{name.humanize}](/help/#{filename_friendly_help_version}/#{data['plugin']}/#{data['topic']})"
     end
 
-    commands = topics.select { |name, data| !data['tutorial'] }
-      .sort_by { |name, data| [data['order'] || 99, name] }
-      .map { |name, data| "[#{name.titleize}](https://mush.aresmush.com/help/#{data['topic']})" }
-      .join( " &bull; " )
-
-    file.puts "\n*Commands*: #{commands}"
+    file.puts "\n*Commands*: "
+    topics.select { |name, data| !data['tutorial'] }.sort_by { |name, data| [data['order'] || 99, name] }.each do |name, data|
+        file.puts "[#{name.titleize}](/help/#{filename_friendly_help_version}/#{data['plugin']}/#{data['topic']})"
+    end
   end
+  
 end
 
-help_files = {
-  'plugins/login/help/en/privacy.md': "#{docs_dir}/game_privacy.md",
-  'plugins/manage/help/en/trouble_tutorial.md': "#{docs_dir}/tutorials/manage/trolls.md"
-}
 
-help_files.each do |src, dest|
-  puts "Copying files from #{src} to #{dest}"
-  orig = File.readlines src.to_s
-  orig.shift
-  orig.unshift "layout: help_page\n"
-  orig.unshift "---\n"
-    
-  File.open(dest, 'w') do |f|
-    new_lines = orig.map { |o| format_help(o, filename_friendly_help_version)}
-    f.write new_lines.join
-  end
+File.open("#{help_dir}/index.md", 'w') do |file|
+  file.puts "---"
+  file.puts "title: Help Archive - Version #{help_version}"
+  file.puts "description: Online help archive."
+  file.puts "layout: page"
+  file.puts "tags:"
+  file.puts "- help-#{help_version}"
+  file.puts "---"
+  file.puts ""
+  file.puts "This is an archive of the AresMUSH online help.  For other versions, see the [Plugins](/plugins) page."
+  file.puts ""
+  file.puts "{% include help_#{filename_friendly_help_version}.md %}"
 end
-
-puts "Done!"
