@@ -5,7 +5,7 @@ chargen:
   app_hold_status: HOLD
   app_resubmit_status: OPEN
   approval_message: Congratulations!  Your application has been approved.  Check out
-    the [Getting Started](/wiki/getting_started) guide for help finding a place to
+    the [Getting Started](/wiki/guides:getting_started) guide for help finding a place to
     live, getting into RP, and more. We are glad to have you!
   arrivals_category: New Arrivals
   demographics_blurb: "Set the basic information about your character here."
