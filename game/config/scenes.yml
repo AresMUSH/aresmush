@@ -54,11 +54,11 @@ scenes:
   trending_scenes_category: Cookie Awards
   trending_scenes_cron:
     hour:
-    - '08'
+    - '09'
     minute:
     - 0
     day_of_week:
-    - Mon
+    - Fri
   unshared_scene_cleanup_cron:
     day_of_week:
     - Fri
