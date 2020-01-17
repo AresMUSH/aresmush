@@ -60,6 +60,7 @@ module AresMUSH
           watchable_scene: watchable_scene,
           scene_type: scene_type,
           temp_room: temp_room,
+          last_activity: Time.now,
           icdate: ICTime.ictime.strftime("%Y-%m-%d"))
 
       Global.logger.info "Scene #{scene.id} started by #{enactor.name} in #{temp_room ? 'temp room' : enactor.room.name}."

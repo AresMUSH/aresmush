@@ -111,6 +111,8 @@ module AresMUSH
           return SceneLogEnableCmd
         when "repose"
           return SceneReposeCmd
+        when "report"
+          return SceneReportCmd
         when "share"
           return SceneShareCmd
         when "unshare"
@@ -192,6 +194,8 @@ module AresMUSH
         return PlotRequestHandler
       when "recentScenes"
         return RecentScenesRequestHandler
+      when "reportScene"
+        return ReportSceneRequestHandler
       when "scene"
         return GetSceneRequestHandler
       when "scenes"

@@ -38,6 +38,15 @@ module AresMUSH
       "#{date_format} #{time_format}"
     end
     
+    def self.date_element_separator
+      date_format = Global.read_config("datetime", "short_date_format")
+      if (date_format =~ /-/)
+        return '-'
+      else
+        return '/'
+      end
+    end
+    
     def self.server_timestr(time = Time.now)
       timezone = Global.read_config("datetime", "server_timezone")
       format = Global.read_config("datetime", "time_format")

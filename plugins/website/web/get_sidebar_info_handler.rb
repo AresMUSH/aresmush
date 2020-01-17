@@ -17,7 +17,7 @@ module AresMUSH
         if (enactor)
           notifications = enactor.unread_notifications.count
           if (enactor.handle)
-            alts = AresCentral.alts(enactor).select { |alt| alt != enactor }
+            alts = AresCentral.alts(enactor) #.select { |alt| alt != enactor }
             
             if (alts.any?)
               alts = alts.map { |alt| {

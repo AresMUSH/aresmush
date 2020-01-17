@@ -8,6 +8,7 @@ module AresMUSH
         tags = (request.args[:tags] || []).map { |t| t.downcase }.select { |t| !t.blank? }
         title = request.args[:title]
         name = request.args[:name]
+        minor_edit = (request.args[:minor_edit] || "").to_bool
       
         error = Website.check_login(request)
         return error if error
@@ -34,7 +35,9 @@ module AresMUSH
 
         page.update(tags: tags, title: title, name: name, locked_by: nil)
         version = WikiPageVersion.create(wiki_page: page, text: text, character: enactor)
-        Website.add_to_recent_changes('wiki', t('webportal.wiki_updated', :name => page.title), { version_id: version.id, page_name: page.name }, enactor.name)
+        if (!minor_edit)
+          Website.add_to_recent_changes('wiki', t('webportal.wiki_updated', :name => page.title), { version_id: version.id, page_name: page.name }, enactor.name)
+        end
         
         Achievements.award_achievement(enactor, "wiki_edit")
         

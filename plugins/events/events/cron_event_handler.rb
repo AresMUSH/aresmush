@@ -16,7 +16,7 @@ module AresMUSH
             Channels.announce_notification(message)
             
             Global.notifier.notify_ooc(:event_starting, message) do |char|
-              char && e.participants.include?(char)
+              char && e.is_signed_up?(char)
             end
             
             e.update(reminded: true)
