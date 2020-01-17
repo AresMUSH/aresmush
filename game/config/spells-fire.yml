@@ -266,6 +266,16 @@ spells:
     range: Touch
     roll: true
     school: Fire
+  Light Form:
+    available: false
+    casting_time: 1 round
+    desc: Turn into light
+    effect: Transformation
+    level: 7
+    name: Light Form
+    range: Self
+    roll: true
+    school: Fire
   Phoenix's Healing Flames:
     available: true
     casting_time: 1 round
@@ -280,6 +290,7 @@ spells:
     school: Fire
     target_num: 1
     target_optional: true
+  #LEVEL 8
   Firestorm:
     area: Up to 1 square mile
     available: true

@@ -462,6 +462,7 @@ spells:
     available: false
     casting_time: 1 round
     desc: "The caster makes fundamental changes to their body's resistance, strength, and flexibility to make themselves able to reach running speeds of up to 200 miles per hour. They are able to easily scale steep, even vertical, planes while in motion, but cannot deftly maneuver in close-quarters.\n\n Mods to attack and defense may be applied at the GM's discretion according to actions taken while operating at extreme speed."
+    duration: 1 hour
     effect: Travel
     level: 7
     name: Extreme Speed
