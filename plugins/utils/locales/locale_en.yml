@@ -24,8 +24,7 @@ en:
         no_set_cmd: "AresMUSH has no set command.  There are individual commands to set various things.  Try searching the help files with `help <topic>` or ask for help."
         screen_reader_set: "Screen reader mode is now %{option}."
     dice:
-        too_many_dice: "You can't roll that many dice."
-        no_zero_dice: "You can't roll zero dice."
+        invalid_dice_string: "You may only roll up to 10 dice in the form <num>d<sides> (e.g. 6d10)."
         rolls_dice: "%{name} rolls %{dice}: %{results}."
     shortcuts:
         shortcut_deleted: "Shortcut deleted."
