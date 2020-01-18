@@ -1,5 +1,5 @@
 ---
-toc: Using FS3
+toc: FS3 Skills and Combat
 order: 1
 tutorial: true
 summary: Skills and Combat System
