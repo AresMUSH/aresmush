@@ -16,6 +16,10 @@ module AresMUSH
       message = t('jobs.announce_new_job', :number => job.id, :title => job.title, :name => author.name)
       Jobs.notify(job, message, author, notify_author)
 
+      Character.all.select { |c| c != author && c.jobs_subscription && Jobs.can_access_category?(c, job.job_category) }.each do |c|
+        Login.notify(c, :job, message, job.id)
+      end
+      
       return { :job => job, :error => nil }
     end
     
