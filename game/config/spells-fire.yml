@@ -269,13 +269,17 @@ spells:
   Light Form:
     available: false
     casting_time: 1 round
-    desc: Turn into light
+    defense_mod: 10
+    desc: "The caster's body becomes white light and cannot be hit by attacks.\n\nWhile in light form, the caster can pass through small holes, narrow openings, or transparent objects with anything they were carrying at the time the spell was cast. The form also allows them to cross distances seemingly instantaneously, able to travel up to 4,000 miles total for the duration of the spell."
+    duration: 10 rounds
     effect: Transformation
     level: 7
     name: Light Form
     range: Self
     roll: true
+    rounds: 10
     school: Fire
+    target_num: 1
   Phoenix's Healing Flames:
     available: true
     casting_time: 1 round
