@@ -17,7 +17,7 @@ module AresMUSH
         return t('fs3skills.not_enough_points') if enactor.luck < 1
         return t('magic.use_school_version') if (self.spell == "Potions" || self.spell == "Familiar")
         return t('magic.not_spell') if !Magic.is_spell?(self.spell)
-        return t('magic.need_higher_level', :spell => self.spell) if Magic.equal_level_spell?(enactor, self.spell) == false
+        return t('magic.need_same_level', :spell => self.spell) if Magic.equal_level_spell?(enactor, self.spell) == false
         return  t('magic.not_learning_spell', :spell => self.spell) if !spell_learned
         return t('magic.no_xp') if enactor.xp < 1
         return t('magic.only_1_xp_needed') if spell_learned.xp_needed.to_i == 1
