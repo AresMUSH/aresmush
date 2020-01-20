@@ -134,6 +134,7 @@ spells:
     casting_time: 1 round
     desc: Target becomes afraid of the caster and attempts to flee to the nearest place they could safely hide. They will not move in the direction of the caster for the duration of the spell unless forced.
     damage_type: Psionic
+    duration: 1 round
     effect: Stun
     is_stun: true
     rounds: 1
@@ -150,6 +151,7 @@ spells:
     casting_time: 1 round
     desc: Target becomes charmed by the caster and attempts to move toward them. They are neutral toward all parties and will neither aid nor attack while under the spell. The spell is broken if they are hit by an attack.
     damage_type: Psionic
+    duration: 1 round
     effect: Psionic
     is_stun: true
     rounds: 1
@@ -197,6 +199,7 @@ spells:
     casting_time: 1 round
     damage_type: Psionic
     desc: Target loses their will to fight.
+    duration: 1 round
     effect: Stun
     fs3_attack: true
     is_stun: true
@@ -527,10 +530,13 @@ spells:
     available: false
     damage_type: Psionic
     desc: Targets become afraid of the caster and attempt to flee to the nearest place they could safely hide. They will not move in the direction of the caster or attack for the duration of the spell unless forced.
+    duration: 2 rounds
     effect: Stun
     is_stun: true
     level: 6
     name: Mass Awaken Terror
+    range: Short
+    rounds: 2
     roll: true
     school: Spirit
     target_num: 3

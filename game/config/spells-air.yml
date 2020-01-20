@@ -106,6 +106,7 @@ spells:
     available: true
     casting_time: 1 round
     desc: Shock an opponent with a burst of electricity, stunning them for one round.
+    duration: 1 round
     effect: Stun
     is_stun: true
     rounds: 1
@@ -151,6 +152,7 @@ spells:
     available: true
     casting_time: 1 round
     desc: Create a powerful blast of wind that knocks an enemy back 5 yards, stunning them.
+    duration: 1 round
     effect: Stun
     is_stun: true
     rounds: 1
@@ -399,7 +401,7 @@ spells:
     duration: 15 min
     effect: Buff
     init_mod: 1
-    level: 4
+    level: 7
     name: Create Sound
     range: Short
     roll: true
