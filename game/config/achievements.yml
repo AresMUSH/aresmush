@@ -5,16 +5,16 @@ achievements:
   shortcuts:
     achievements: achievement
   types:
-    community: fa-users
+    plot: fa-book-open
     comp: fa-hand-holding-heart
-    portal: fa-globe
-    fs3: fa-cubes
-    story: fa-book
     spell: fa-magic
     potion: fa-flask
     death: fa-skull-crossbones
-    plot: fa-book-open
     meme: fa-award
+    fs3: fa-cubes
+    story: fa-book
+    community: fa-users
+    portal: fa-globe    
   achievements:
     object_meme:
       type: meme
