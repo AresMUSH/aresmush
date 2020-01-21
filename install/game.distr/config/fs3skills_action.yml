@@ -46,5 +46,6 @@ fs3skills:
     desc: General mechanics/electronics and fixing things.
     linked_attr: Wits
   action_skills_blurb: 'Action Skills represent your ability in areas deemed important
-    for gameplay.  Action Skills are rated from 0-8, but some games limit the highest and lowest ratings. See [FS3: Action Skills](https://aresmush.com/fs3/fs3-3/chargen.html#action-skills)
-    for details.'
+    for gameplay.  Action Skills are rated from 0-8, but some games limit the highest
+    and lowest ratings. See <a href="https://aresmush.com/fs3/fs3-3/chargen.html#action-skills"
+    target="_blank">FS3: Action Skills</a> for details.'
