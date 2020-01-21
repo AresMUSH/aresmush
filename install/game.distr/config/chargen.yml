@@ -1,27 +1,45 @@
 ---
 chargen:
+  achievements:
+    created_character:
+      type: story
+      message: Created a character.
+  allow_web_submit: true
   app_category: APP
   app_hold_status: HOLD
   app_resubmit_status: OPEN
+  app_review_commands:
+  - app %{name}
+  - profile %{name}
+  - bg %{name}
+  - hooks %{name}
+  - sheet %{name}
   approval_message: Congratulations!  Your application has been approved.  Type %xhonstage%xn
     to go forth and RP.  You may want to customize your character profile on the web
     portal.
+  arrivals_category: New Arrivals
   bg_blurb: A background is your character's backstory or history.  You don''t need
     to write a novel. Just cover the basics--who you are, why are you here, and anything
     noteworthy about you. Be sure to explain any unusual skills.
+  demographics_blurb: Demographics record your basic character info.
   desc_blurb: You can set both your main description, visible when people look at
     you, and a short description that shows your character at a glance.
+  groups_blurb: Groups determine your character's affiliations.
   hooks_blurb: RP Hooks are interesting things about your character that others can
     hook into for RP. This could be an odd personality quirk, a reputation your character
     has, or anything else that might inspire someone to connect with you. Looking
     around at other character's sheets can be a good way to get inspiration for RP
     Hooks.
+  hooks_required: true
   icon_blurb: Your profile icon appears in scenes and the character gallery to show
     your character at a glance. Providing a profile icon is optional. You can upload
     additional character images once you're approved.
-  hooks_required: true
+  lastwill_blurb: The fate of idled-out characters is at the game admin's discretion,
+    but you can register a preference with your character's 'last will'. You may ask
+    to be killed off, or turned into a NPC, or whatever.
   post_approval_message: Please make sure they have a profile image for their log
     icon.
+  rank_blurb: Military rank.
   rejection_message: Sorry, your character could not be approved at the present time
     for the reasons described below.  Please see %xhhelp app%xn for help making changes
     and resubmitting, and contact the person handling your application if you have
@@ -86,21 +104,3 @@ chargen:
 
     RP Hooks:
     %{rp_hooks}
-  arrivals_category: New Arrivals
-  app_review_commands:
-  - app %{name}
-  - profile %{name}
-  - bg %{name}
-  - hooks %{name}
-  - sheet %{name}
-  allow_web_submit: true
-  groups_blurb: Groups determine your character's affiliations.
-  demographics_blurb: Demographics record your basic character info.
-  lastwill_blurb: The fate of idled-out characters is at the game admin's discretion,
-    but you can register a preference with your character's 'last will'. You may ask
-    to be killed off, or turned into a NPC, or whatever.
-  rank_blurb: Military rank.
-  achievements:
-    created_character:
-      type: story
-      message: Created a character.

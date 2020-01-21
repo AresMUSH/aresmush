@@ -6,7 +6,7 @@ module AresMUSH
     attribute :ascii_mode_enabled, :type => DataType::Boolean, :default => false
     
     def notes_section(section)
-      self.notes[section] || {}
+      self.notes[section]
     end
     
     def update_notes_section(section, notes)

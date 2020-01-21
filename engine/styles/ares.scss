@@ -560,6 +560,8 @@ GENERAL UTILITIES
     -webkit-border-radius: 25px;
     border-radius: 25px;
     margin: 2px;
+    object-fit: cover;
+    object-position: center 10%;
 }
 
 .tiny-profile-icon {
@@ -569,6 +571,8 @@ GENERAL UTILITIES
     -webkit-border-radius: 15px;
     border-radius: 15px;
     margin: 2px;
+    object-fit: cover;
+    object-position: center 10%;
 }
 
 .icon-row img {
@@ -813,11 +817,13 @@ SCENES SCREEN
 }
 
 .log-icon {
-    max-width: 100%;
-    min-height: 90%;
+    width: 150px;
+    height: 150px;
     margin-left: auto;
     margin-right: auto;
     display: block;    
+    object-fit: cover;
+    object-position: center 10%;
 }
 
 .log-icon-title-container {
@@ -851,6 +857,18 @@ SCENES SCREEN
 
 .scene-vignette {
     background-color: #f0ad4e;
+}
+
+.scene-privacy-open {
+  background-color: #5cb85c;
+}
+
+.scene-privacy-private {
+  background-color: #337ab7;
+}
+
+.scene-privacy-limited {
+  background-color: #f0ad4e;
 }
 
 .log-box { 

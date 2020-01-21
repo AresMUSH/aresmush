@@ -37,6 +37,7 @@ module AresMUSH
         scene.update(title: request.args[:title])
         scene.update(icdate: request.args[:icdate])
         scene.update(plot: Plot[request.args[:plot_id]])
+        scene.update(limit: request.args[:limit])
             
         if (!scene.completed)
           is_private = request.args[:privacy] == "Private"
