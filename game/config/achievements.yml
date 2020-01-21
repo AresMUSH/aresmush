@@ -25,3 +25,9 @@ achievements:
     playlist_meme:
       type: meme
       message: Participated in the Playlist Meme
+    question_meme:
+      type: meme
+      message: Participated in the Question Meme
+    ran_prp:
+      type: plot
+      message: Ran a player-run plot
