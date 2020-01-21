@@ -1,6 +1,6 @@
 module AresMUSH
   module Utils
-    class NotesCmd
+    class NotesEditCmd
       include CommandHandler
       
       attr_accessor :target, :section
@@ -32,16 +32,18 @@ module AresMUSH
       
       def handle
         ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
-          
           if (!Utils.can_access_notes?(model, enactor, self.section))
             client.emit_failure t('dispatcher.not_allowed')
             return
           end
           
-          text = model.notes_section(self.section)
-          title = t("notes.notes_#{section}_title", :name => model.name)
-          template = BorderedDisplayTemplate.new text, title
-          client.emit template.render
+          notes = model.notes_section(self.section)
+          
+          if (self.target == enactor_name)
+            Utils.grab client, enactor, "notes/set #{self.section}=#{notes}"
+          else
+            Utils.grab client, enactor, "notes/set #{self.target}/#{self.section}=#{notes}"
+          end
         end
       end
     end

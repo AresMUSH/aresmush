@@ -24,8 +24,7 @@ en:
         no_set_cmd: "AresMUSH has no set command.  There are individual commands to set various things.  Try searching the help files with `help <topic>` or ask for help."
         screen_reader_set: "Screen reader mode is now %{option}."
     dice:
-        too_many_dice: "You can't roll that many dice."
-        no_zero_dice: "You can't roll zero dice."
+        invalid_dice_string: "You may only roll up to 10 dice in the form <num>d<sides> (e.g. 6d10)."
         rolls_dice: "%{name} rolls %{dice}: %{results}."
     shortcuts:
         shortcut_deleted: "Shortcut deleted."
@@ -33,11 +32,10 @@ en:
         shortcuts_title: "Personal Shortcuts"
         shortcut_does_not_exist: "That shortcut does not exist."
     notes:
-        note_added: "Note added."
-        note_deleted: "Note deleted."
+        notes_set: "Notes set."
         notes_admin_title: "Admin Notes for %{name}"
-        notes_title: "Player Notes for %{name}"
-        note_does_not_exist: "That note does not exist."
-        note_added_by: "Added by %{name} on %{date}."
+        notes_shared_title: "Shared Notes for %{name}"
+        notes_player_title: "Player Notes for %{name}"
+        invalid_notes_section: "Invalid notes section.  Try one of these: %{sections}"
     echo:
         echo_to_room: "%%%% %{name} shows: %{message}"
