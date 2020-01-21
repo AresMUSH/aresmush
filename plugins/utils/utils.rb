@@ -36,14 +36,14 @@ module AresMUSH
         return ColorModeCmd
       when "math"
         return MathCmd
-      when "note"
+      when "notes", "note"
         case cmd.switch
         when nil
           return NotesCmd
-        when "add"
-          return NoteAddCmd
-        when "delete"
-          return NoteDeleteCmd
+        when "set"
+          return NotesSetCmd
+        when "edit"
+          return NotesEditCmd
         end
       when "recall"
         return RecallCmd
@@ -71,6 +71,18 @@ module AresMUSH
         end
       end
       
+      nil
+    end
+    
+    def self.get_web_request_handler(request)
+      case request.cmd
+      when "rollDice"
+        return RollDiceRequestHandler
+      when "getNotes"
+        return GetNotesRequestHandler
+      when "saveNotes"
+        return SaveNotesRequestHandler
+      end
       nil
     end
   end

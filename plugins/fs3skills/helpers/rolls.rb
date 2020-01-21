@@ -114,12 +114,12 @@ module AresMUSH
       # PC ROLL
       # ------------------
       elsif (!pc_name.blank?)
-        char = Character.find_one_by_name(pc_name) || enactor
+        char = Character.find_one_by_name(pc_name)
         roll = FS3Skills.parse_and_roll(char, pc_skill)
         roll_result = FS3Skills.get_success_level(roll)
         success_title = FS3Skills.get_success_title(roll_result)
         message = t('fs3skills.simple_roll_result', 
-          :name => char.name,
+          :name => char ? char.name : "#{pc_name} (#{enactor.name})",
           :roll => pc_skill,
           :dice => FS3Skills.print_dice(roll),
           :success => success_title

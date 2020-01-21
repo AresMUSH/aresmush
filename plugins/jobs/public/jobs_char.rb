@@ -2,6 +2,7 @@ module AresMUSH
   class Character
     
     attribute :jobs_filter, :default => "ACTIVE"
+    attribute :jobs_subscription, :type => DataType::Boolean
     
     attribute :read_jobs, :type => DataType::Array, :default => []
 

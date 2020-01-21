@@ -28,7 +28,7 @@ module AresMUSH
             return
           end
 
-          if (self.setting != "summary")
+          if (self.setting != "summary" && self.setting != "limit")
             self.value = self.value.titlecase
           end
 
@@ -52,6 +52,10 @@ module AresMUSH
             
           when "type"
             success = set_type(scene)
+            
+          when "limit"
+            scene.update(limit: self.value.downcase == "none" ? nil : self.value)
+            success = true
           end
           
           if (success)

@@ -1,5 +1,5 @@
 ---
-toc: Using FS3
+toc: FS3 Skills and Combat
 summary: Using luck points.
 ---
 # FS3 - Luck

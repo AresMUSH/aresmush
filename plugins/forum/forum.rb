@@ -39,7 +39,7 @@ module AresMUSH
         return ForumDescCmd
       when "edit"
         return ForumEditCmd  
-      when "hide", "show"
+      when "hide", "show", "unhide"
         return ForumHideCmd      
       when "move"
         return ForumMoveCmd

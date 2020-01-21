@@ -114,6 +114,18 @@ module AresMUSH
         end
       end
       
+      if Manage.is_extra_installed?("traits")
+        errors = Traits.save_char(char, chargen_data)
+        if (errors.any?)
+          alerts.concat errors
+        end
+      end
+      
+      errors = Profile::CustomCharFields.save_fields_from_chargen(char, chargen_data)
+      if (errors.any?)
+        alerts.concat errors
+      end
+      
       return alerts
     end
     

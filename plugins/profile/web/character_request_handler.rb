@@ -70,6 +70,12 @@ module AresMUSH
           fs3 = nil
         end
         
+        if Manage.is_extra_installed?("traits")
+          traits = Traits.get_traits_for_web_viewing(char, char)
+        else
+          traits = nil
+        end
+        
         if (enactor)
           Login.mark_notices_read(enactor, :achievement)
         end
@@ -100,12 +106,15 @@ module AresMUSH
           desc: char.description,
           playerbit: char.is_playerbit?,
           fs3: fs3,
+          traits: traits,
           files: files,
           last_profile_version: char.last_profile_version ? char.last_profile_version.id : nil,
           achievements: Achievements.is_enabled? ? Achievements.build_achievements(char) : nil,
           
           roster: self.build_roster_info(char),
           idle_notes: char.idle_notes ? Website.format_markdown_for_html(char.idle_notes) : nil,
+          custom: CustomCharFields.get_fields_for_viewing(char, enactor),
+          show_notes: char == enactor || Utils.can_manage_notes?(enactor)
           
         }
       end
