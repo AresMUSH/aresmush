@@ -457,6 +457,20 @@ spells:
     school: Spirit
     target_num: 1
     target_optional: true
+  Rally Spirit:
+    available: false
+    casting_time: 1 round
+    desc: "The caster boosts the emotional resolve of a knocked out target, returning them to the fight."
+    effect: Revive
+    is_revive: true
+    level: 5
+    line_of_sight: true
+    name: Rally Spirit
+    range: Short
+    roll: true
+    school: Spirit
+    target_num: 1
+    target_optional: true
   Pass Unseen:
     available: true
     casting_time: 1 round

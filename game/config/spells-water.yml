@@ -271,6 +271,20 @@ spells:
     target_num: 3
     target_optional: true
     weapon: Exploding Ice
+  Reviving Cold:
+    available: false
+    casting_time: 1 round
+    desc: The caster revives a knocked out target with a cold splash of water, returning them to the fight.
+    effect: Revive
+    is_revive: true
+    level: 5
+    line_of_sight: true
+    name: Reviving Cold
+    range: Short
+    school: Water
+    target_num: 1
+    target_optional: true
+  #LEVEL 6
   Familiar (Water):
     available: true
     desc: "A familiar is a spirit associated or allied with a school of magic that has taken residence in a physical vessel with the shape of an animal. It functions as a companion, assistant, and guardian. \n\nFamiliars may be capable of some or all of the following: sharing telepathic or empathic communication, providing knowledge of the arcane, sharing senses, lending physical aid as spies or fighters, delivering spells at a distance of up to three miles."

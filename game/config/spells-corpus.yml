@@ -430,6 +430,17 @@ spells:
     range: Short
     roll: true
     school: Corpus
+  Shift Appearance:
+    available: false
+    desc: "Caster can temporarily alter the physical appearance of their face and/or body within the natural limits of their own species. This includes altering their apparent coloring, age, gender, voice, and physicality.\n\nWith the appropriate observations the caster can mimic the appearance of another specific person from within their own species, but they cannot replicate any physical details they are unaware of. Fine details, such as exact retina patterns and fingerprints, cannot be replicated at all. Vocal mimicry is also imprecise, as the altered voice can be shifted to the chosen person's range, but cannot mimic their exact tone, speech patterns, or vocal tics.\n\nThe caster's shifted appearance is good enough to fool casual observers, but may be identified as false with a roll of the caster's Corpus vs the observer's Alertness-5. Those with significant knowledge of of the mimicked individual or enhanced senses such as smell or hearing are more likely to identify the caster as an impostor, and GMs may choose to adjust the modification as appropriate. Any use of a psionic connection on the caster will also reveal that they are an impostor."
+    duration: 1 hour
+    effect: Transformation
+    level: 6
+    name: Shift Appearance
+    roll: true
+    school: Corpus
+    casting_time: 1 round
+    range: Self 
   Speed Boost:
     available: false
     attack_mod: 2
