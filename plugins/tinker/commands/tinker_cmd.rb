@@ -17,8 +17,13 @@ module AresMUSH
       #   end
 
       enactor = enactor
+      if (enactor.handle)
+        all_chars = AresCentral.alts(enactor)
+      else
+        all_chars = enactor
+      end
 
-      all_chars = AresCentral.alts(enactor)
+
       client.emit "CHARS: #{all_chars}"
 
       my_scenes = []
