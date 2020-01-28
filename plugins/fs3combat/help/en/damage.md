@@ -1,6 +1,6 @@
 ---
-toc: FS3
-summary: Information about damage, healing, and hospitals.
+toc: FS3 Skills and Combat
+summary: Damage and healing in combat.
 aliases:
 - medicine
 - hospitals
@@ -59,4 +59,4 @@ Admins, combat organizers, and characters with the manage_combat permission can 
 `damage/modify <name>/<damage #>=<description>/<initial severity>/<current severity>/<IC date>` - Modifies damage.
 `damage/delete <name>/<damage #>` - Deletes damage.
 
-`combat/unko` - Un-KO's someone who shouldn't have been. Use sparingly. 
+`combat/unko` - Un-KO's someone who shouldn't have been. Use sparingly.

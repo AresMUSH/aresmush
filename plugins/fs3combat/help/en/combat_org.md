@@ -1,6 +1,6 @@
 ---
-toc: FS3
-summary: Managing and running combat scenes.
+toc: FS3 Skills and Combat
+summary: Managing combat scenes.
 aliases:
 - running
 - organizer

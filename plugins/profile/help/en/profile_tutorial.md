@@ -4,8 +4,6 @@ summary: Using character profiles.
 tutorial: true
 aliases:
 - profiles_tutorial
-- icon
-- log_icon
 ---
 
 Each character has a **character profile** showing various information.  
@@ -31,7 +29,7 @@ You can display image files in a gallery on the bottom of your web profile page.
 1. Click the "Files" button at the bottom of the profile page and then click "Choose Files".  
 2. Choose the files to upload and select the "Upload" button for each.
 
-> **Tip:** Your game may set limits on the size of individual image files, and the total size of all files on your page.
+> **Tip:** Please be considerate and don't upload giant hi-res images - 1200x600px is the max you should need.  You can resize your images using free online tools like [BeFunky](https://www.befunky.com/create/).  Games may set limits on the size of individual image files, and the total size of all files on your page. 
 
 By default, your gallery will show all images you upload, in alphabetical order.  If you want to customize this:
 
@@ -40,26 +38,9 @@ By default, your gallery will show all images you upload, in alphabetical order.
 
 To delete files from your gallery, click on it to open its file page, and select "Delete".
 
-## Profile Image and Icon
+## Profile Images and Icons
 
-Your **profile image** is the picture featured on your profile page.  To set your profile image:
-
-1. Upload the image to your profile gallery as explained above.
-2. Edit your profile and find the "Profile Image" field.
-3. Select the image to use as your profile image.
-
-Various places on the website will use a mini version of your profile image, which is known as your **profile icon** (or sometimes "log icon"). The web portal will try to scale down the profile image as best it can, but sometimes it just doesn't look right.  If this happens to you, you can upload a dedicated profile icon for your character.
-
-1. Upload the image to your profile gallery as explained above.
-2. Edit your profile and find the "Profile Icon" field.
-3. Select the image to use as your profile icon.
-
-The following tips will help you get your icon showing up right:
-
-* Square icons work best.
-* 300x300 pixels is an ideal size, though it can be larger.
-* Keep the face close to the top of the icon - don't leave a lot of empty space above the head.
-* Make sure there's room at the bottom for the name tag.
+Your **profile image** is the picture featured on your profile page.  You can select any file in your profile gallery to be your profile image.  You can optionally select a different image for your smaller **profile icon** used in scenes and elsewhere throughout the web portal.  See [Icons](/help/icons) for tips on sizing your icon and detailed instructions for uploading and setting them.
 
 ## Relationships
 

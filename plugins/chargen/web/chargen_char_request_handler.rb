@@ -53,6 +53,12 @@ module AresMUSH
           fs3 = nil
         end
 
+        if Manage.is_extra_installed?("traits")
+          traits = Traits.get_traits_for_web_editing(char, char)
+        else
+          traits = nil
+        end
+
         hooks = Website.format_input_for_html(char.rp_hooks)
 
         {
@@ -69,7 +75,9 @@ module AresMUSH
           # secretpref: { value: char.secretpref, desc: Global.read_config('demographics', 'secret_prefs').fetch(char.secretpref) },
           lore_hook_pref: { value: char.lore_hook_pref, desc: char.lore_hook_pref },
           lastwill: Website.format_input_for_html(char.idle_lastwill),
-          fs3: fs3
+          fs3: fs3,
+          traits: traits,
+          custom: Profile::CustomCharFields.get_fields_for_chargen(char)
         }
       end
     end

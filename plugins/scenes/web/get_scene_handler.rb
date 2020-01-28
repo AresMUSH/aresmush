@@ -61,6 +61,7 @@ module AresMUSH
           tags: scene.tags,
           icdate: scene.icdate,
           participants: participants,
+          limit: scene.limit,
           privacy: scene.completed ? "Open" : (scene.private_scene ? "Private" : (scene.watchable_scene ? "Watchable" : "Open")),
           scene_type: scene.scene_type ? scene.scene_type.titlecase : 'unknown',
           log: log,

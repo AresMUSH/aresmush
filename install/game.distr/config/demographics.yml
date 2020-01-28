@@ -85,7 +85,7 @@ demographics:
         Deck Crew: Air wing support/maintenance personnel.
         Other: Any other position.
   help_text:
-    played by: "%xcplayedby <actor>%xn - The actor/actress depicting your character."
+    played by: "%xcplayedby <actor>%xn - Your 'dream casting' for your character."
     physique: "%xcphysique <build/body type>%xn - athletic, wiry, slim, pudgy, etc."
     gender: "%xcgender <male/female/other>%xn"
     hair: "%xchair <hair color>%xn"

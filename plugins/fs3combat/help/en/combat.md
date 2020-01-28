@@ -1,6 +1,6 @@
 ---
-toc: FS3 Combat
-summary: Index of available combat help.
+toc: FS3 Skills and Combat
+summary: Participating in combat scenes.
 aliases:
 order: 1
 ---

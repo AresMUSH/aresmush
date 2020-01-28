@@ -31,6 +31,7 @@ module AresMUSH
         scene_type: request.args[:scene_type],
         title: request.args[:title],
         icdate: request.args[:icdate],
+        limit: request.args[:limit],
         completed: completed,
         date_completed: completed ? Time.now : nil,
         plot: plot.blank? ? nil : Plot[plot],

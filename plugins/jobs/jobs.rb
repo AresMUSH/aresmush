@@ -71,6 +71,8 @@ module AresMUSH
           return JobSearchCmd
         when "status"
           return JobStatusCmd
+        when "subscribe", "unsubscribe"
+          return JobsSubscribeCmd
         when "title"
           return ChangeTitleCmd
         when "unread"

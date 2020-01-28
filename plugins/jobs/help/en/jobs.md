@@ -17,6 +17,7 @@ The Jobs system is used by the game administrators to track work requests and to
 
 `jobs/filter <flter>` - Filters the jobs list. Valid filters are: active, mine, unfinished, unread, all, or a specific category name.
 `jobs/mine`, `jobs/active`, `jobs/all` - Shortcuts for the common filters.
+`jobs/subscribe` and `jobs/unsubscribe` - Subscribes to new job notices, so you'll get a personal notification for any new job.
 
 > **Tip:** Your job filter is remembered when you log out.
 

@@ -35,6 +35,7 @@ While you can always do free-form RP on the grid or in the RP room, there are a 
 `scene/start` - Starts a scene in your current room.
 `scene/start [<area>/]<location name>=<private/open>` - Starts a scene in a temp room.
 `scene/webstart [<area>/]<location name>=<private/open>` - Starts a scene that you intend to play on the web, and doesn't move you there.
+`scene/limit [scene#]=<limit notice>` - Indicates that an open scene has some participation limit - by quantity, character type, etc.
 
 > **Tip:** If your location name matches a grid location, the desc will be copied over.  You can use Area/Room for the location name to distinguish between rooms with the same name in different areas.
 
