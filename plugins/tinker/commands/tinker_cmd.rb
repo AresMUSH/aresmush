@@ -18,7 +18,7 @@ module AresMUSH
 
       enactor = enactor
 
-      all_chars = AresCentral.alts_of(enactor)
+      all_chars = AresCentral.alts(enactor)
       client.emit "CHARS: #{all_chars}"
 
       my_scenes = []
@@ -26,7 +26,7 @@ module AresMUSH
         char_scenes = Scene.all.select { |s| !s.completed && Scenes.is_watching?(s, char) }.sort_by { |s| s.id }
         my_scenes.concat char_scenes
       end
-      
+
       client.emit "SCENES #{my_scenes}"
 
       end
