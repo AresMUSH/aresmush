@@ -26,7 +26,7 @@ module AresMUSH
         char_scenes = Scene.all.select { |s| !s.completed && Scenes.is_watching?(s, char) }.sort_by { |s| s.id }
         my_scenes.concat char_scenes
       end
-      enactor.emit "SCENES #{my_scenes}"
+      client.emit "SCENES #{my_scenes}"
 
       end
 
