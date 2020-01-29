@@ -22,9 +22,7 @@ module AresMUSH
           config = Global.read_config("scenes", "trending_scenes_cron")
           if Cron.is_cron_match?(config, event.time)
              Global.logger.debug "Trending scenes."
-             Global.logger.debug "HITTING THIS3"
              post_trending_scenes
-             Global.logger.debug "HITTING THIS2"
           end
         end
       end
@@ -87,10 +85,8 @@ module AresMUSH
       end
 
       def post_trending_scenes
-        Global.logger.debug "HITTING THIS"
-        recent_scenes = Scenes.all.select { |s| s.likes > 0 && (Time.now - (s.date_shared || s.created_at) < 864000) }
+        recent_scenes = Scenes.shared_scenes.select { |s| s.likes > 0 && (Time.now - (s.date_shared || s.created_at) < 864000) }
         trending = recent_scenes.sort_by { |s| -s.likes }[0, 10]
-        Global.logger.debug "Post Trending Scenes #{trending.count}"
         return if trending.count < 1
 
         template = TrendingScenesTemplate.new(trending)
