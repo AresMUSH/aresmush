@@ -54,9 +54,9 @@ scenes:
   trending_scenes_category: Trending Scenes
   trending_scenes_cron:
     hour:
-    - '06'
+    - 06
     minute:
-    - 39
+    - 41
     day_of_week:
     - Wed
   unshared_scene_cleanup_cron:
