@@ -51,14 +51,14 @@ scenes:
     scene/set: emit/set
     posebreak: autospace
     pose/skip: pose/drop
-  trending_scenes_category: Cookie Awards
+  trending_scenes_category: Trending Scenes
   trending_scenes_cron:
     hour:
-    - '09'
+    - '08'
     minute:
-    - 0
+    - 20
     day_of_week:
-    - Fri
+    - Wed
   unshared_scene_cleanup_cron:
     day_of_week:
     - Fri
