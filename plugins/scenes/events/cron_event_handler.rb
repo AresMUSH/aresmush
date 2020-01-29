@@ -85,9 +85,10 @@ module AresMUSH
       end
 
       def post_trending_scenes
+
         recent_scenes = Scenes.all.select { |s| s.likes > 0 && (Time.now - (s.date_shared || s.created_at) < 864000) }
         trending = recent_scenes.sort_by { |s| -s.likes }[0, 10]
-
+        Global.logger.debug "Post Trending Scenes #{trending.count}"
         return if trending.count < 1
 
         template = TrendingScenesTemplate.new(trending)
