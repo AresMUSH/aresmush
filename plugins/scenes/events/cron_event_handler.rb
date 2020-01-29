@@ -22,7 +22,9 @@ module AresMUSH
           config = Global.read_config("scenes", "trending_scenes_cron")
           if Cron.is_cron_match?(config, event.time)
              Global.logger.debug "Trending scenes."
+             Global.logger.debug "HITTING THIS3"
              post_trending_scenes
+             Global.logger.debug "HITTING THIS2"
           end
         end
       end

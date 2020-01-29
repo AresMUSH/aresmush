@@ -56,7 +56,7 @@ scenes:
     hour:
     - 06
     minute:
-    - 46
+    - 48
     day_of_week:
     - Wed
   unshared_scene_cleanup_cron:
