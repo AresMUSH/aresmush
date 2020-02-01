@@ -3,9 +3,20 @@ module AresMUSH
     class NoticesCmd
       include CommandHandler
 
+      attr_accessor :unread
+      
+      def parse_args
+        self.unread = cmd.switch_is?("unread")
+      end
+      
       def handle
+        if (self.unread)
+          notices = enactor.login_notices.select { |n| n.is_unread }.sort_by { |n| n.created_at }.reverse
+        else
+          notices = enactor.login_notices.to_a.sort_by { |n| [ n.is_unread ? 1 : 0, n.created_at] }.reverse
+        end
         
-        paginator = Paginator.paginate(enactor.login_notices.to_a.sort_by { |n| [ n.is_unread ? 1 : 0, n.created_at] }.reverse, cmd.page, 20)
+        paginator = Paginator.paginate(notices, cmd.page, 20)
         if (paginator.out_of_bounds?)
           client.emit_failure paginator.out_of_bounds_msg
           return

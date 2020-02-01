@@ -9,10 +9,7 @@ module AresMUSH
       end
 
       def handle
-         list = enactor.page_threads
-             .to_a
-             .sort_by { |t| [ Page.is_thread_unread?(t, enactor) ? 1 : 0, t.last_activity ] }
-             .reverse
+         list = enactor.sorted_page_threads
 
          Login.mark_notices_read(enactor, :pm)
              
