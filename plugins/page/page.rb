@@ -22,6 +22,8 @@ module AresMUSH
           return PageDoNotDisturbCmd
         when "ignore"
           return PageIgnoreCmd
+        when "new" 
+          return PageNewCmd
         when "review"
           if (cmd.args)
             return PageReviewCmd
@@ -30,6 +32,8 @@ module AresMUSH
           end
         when "report"
           return PageReportCmd
+        when "scan"
+          return PageScanCmd
         when nil
           # It's a common mistake to type 'p' when you meant '+p' for a channel, but
           # not vice-versa.  So ignore any command that has a prefix. 
