@@ -136,25 +136,30 @@ module AresMUSH
 
       job = model.approval_job
 
-      if (!job)
-        return t('chargen.no_app_submitted', :name => model.name)
+      if (job)
+        Jobs.close_job(enactor, job, "#{Global.read_config("chargen", "approval_message")}%R%R#{notes}")
+      else
+        unless (model.on_roster? || model.is_npc?)
+          return t('chargen.no_app_submitted', :name => model.name)
+        end
       end
       
-      Jobs.close_job(enactor, job, "#{Global.read_config("chargen", "approval_message")}%R%R#{notes}")
       Roles.add_role(model, "approved")
-
       model.update(approval_job: nil)
-                      
-      Achievements.award_achievement(model, "created_character")
+                            
+      unless (model.on_roster? || model.is_npc?)
+        Achievements.award_achievement(model, "created_character")
+
+        welcome_message = Global.read_config("chargen", "welcome_message")
+        welcome_message_args = Chargen.welcome_message_args(model)
+        post_body = welcome_message % welcome_message_args
       
-      welcome_message = Global.read_config("chargen", "welcome_message")
-      welcome_message_args = Chargen.welcome_message_args(model)
-      post_body = welcome_message % welcome_message_args
+        Forum.system_post(
+          Global.read_config("chargen", "arrivals_category"),
+          t('chargen.approval_post_subject', :name => model.name), 
+          post_body)
+      end
       
-      Forum.system_post(
-        Global.read_config("chargen", "arrivals_category"),
-        t('chargen.approval_post_subject', :name => model.name), 
-        post_body)
       Jobs.create_job(Global.read_config("chargen", "app_category"), 
          t('chargen.approval_post_subject', :name => model.name), 
          Global.read_config("chargen", "post_approval_message"), 
