@@ -10,6 +10,7 @@ module AresMUSH
     
     reference :storyteller, "AresMUSH::Character"
     collection :scenes, "AresMUSH::Scene"
+    set :storytellers, "AresMUSH::Character"
     
     def sorted_scenes
       self.scenes.to_a.sort_by { |s| s.icdate }
