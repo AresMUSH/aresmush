@@ -73,9 +73,9 @@ module AresMUSH
           File.open(File.join(export_path, page_name), 'w') do |f|
           
             request = WebRequest.new( { args: { id: s.id } } )
-            response = Scenes::GetSceneRequestHandler.new.handle(request)
+            response = Scenes::GetSceneRequestHandler.new.handle(request)            
             
-            f.puts render_template(File.join(template_path, 'scene.hbs'), { model: response }, s.date_title)
+            f.puts render_template(File.join(AresMUSH.plugin_path, 'website', 'templates', 'wiki_scene.hbs'), { model: response }, s.date_title)
           end
         end
         index
@@ -262,6 +262,10 @@ module AresMUSH
           ""
         end
         
+        @handlebars.register_helper("array") do |this, context, block|
+          ""
+        end
+        
         template_path = File.join(AresMUSH.root_path, "..", "ares-webportal", "app", "templates")
         
         file = File.join(template_path, 'components', 'fs3-sheet.hbs')
@@ -269,12 +273,32 @@ module AresMUSH
 
         file = File.join(template_path, 'components', 'fs3-damage.hbs')
         @handlebars.register_partial("fs3-damage", File.read(file))
-        
-        
-        template_contents = template_contents.gsub("{{{ansi-format text=", "{{{")
 
-        template_contents = template_contents.gsub("{{fs3-sheet char=char}}", "{{>fs3-sheet}}")
-        template_contents = template_contents.gsub("{{fs3-damage char=char}}", "{{>fs3-damage}}")
+        file = File.join(template_path, 'components', 'profile-fs3-tabs.hbs')
+        @handlebars.register_partial("profile-fs3-tabs", File.read(file))
+
+        file = File.join(template_path, 'components', 'profile-fs3.hbs')
+        @handlebars.register_partial("profile-fs3", File.read(file))
+
+        file = File.join(template_path, 'components', 'profile-custom-tabs.hbs')
+        @handlebars.register_partial("profile-custom-tabs", File.read(file))
+
+        file = File.join(template_path, 'components', 'profile-custom.hbs')
+        @handlebars.register_partial("profile-custom", File.read(file))
+
+        file = File.join(template_path, 'components', 'char-achievements.hbs')
+        @handlebars.register_partial("char-achievements", File.read(file))
+
+                
+        template_contents = template_contents.gsub(/<AnsiFormat @text={{([^}]+)}} \/>/i) { "{{{#{$1}}}}" }
+        template_contents = template_contents.gsub("<Fs3Sheet @char={{char}} />", "{{>fs3-sheet}}")
+        template_contents = template_contents.gsub("<Fs3Damage @char={{char}} />", "{{>fs3-damage}}")
+        template_contents = template_contents.gsub("<ProfileFs3Tabs @char={{char}} @game={{game}} />", "{{>profile-fs3-tabs}}")
+        template_contents = template_contents.gsub("<ProfileFs3 @char={{char}} @game={{game}} @reloadChar={{action \"reloadChar\"}}", "{{>profile-fs3}}")
+        template_contents = template_contents.gsub("<CharAchievements @achievements={{char.achievements}} />", "{{char-achievements}}")
+        
+        template_contents = template_contents.gsub("<ProfileCustomTabs @char={{char}} @game={{game}} />", "{{>profile-custom-tabs}}")
+        template_contents = template_contents.gsub("<ProfileCustom @char={{char}} @game={{game}} />", "{{>profile-custom}}")
         
 
         template_contents = replace_char_icon(template_contents, "c")
@@ -289,11 +313,11 @@ module AresMUSH
       end	
       
       def replace_char_icon(template_contents, key)
-        template_contents.gsub("{{char-icon char=#{key}}}", "<div class=\"char-icon-container\"><div class=\"log-icon-container\"><a href=\"{{#{key}.name}}.html\"><img src=\"game/uploads/{{#{key}.icon}}\" class=\"log-icon\"/></a></div></div><div class=\"log-icon-title-container\"><div class=\"log-icon-title\">{{#{key}.name}}</div></div>") 
+        template_contents.gsub("<CharIcon @char={{#{key}}} />", "<div class=\"char-icon-container\"><div class=\"log-icon-container\"><a href=\"{{#{key}.name}}.html\"><img src=\"game/uploads/{{#{key}.icon}}\" class=\"log-icon\"/></a></div></div><div class=\"log-icon-title-container\"><div class=\"log-icon-title\">{{#{key}.name}}</div></div>") 
       end	
       
       def replace_relationship_icon(template_contents)
-        template_contents.gsub("{{relationship-icon char=ship}}", "<div class=\"char-icon-container\"><div class=\"log-icon-container\"><a href=\"{{ship.name}}.html\"><img src=\"game/uploads/{{ship.icon}}\" class=\"log-icon\"/></a></div></div><div class=\"log-icon-title-container\"><div class=\"log-icon-title\">{{ship.name}}</div></div>") 
+        template_contents.gsub("<RelationshipIcon @char={{ship}} />", "<div class=\"char-icon-container\"><div class=\"log-icon-container\"><a href=\"{{ship.name}}.html\"><img src=\"game/uploads/{{ship.icon}}\" class=\"log-icon\"/></a></div></div><div class=\"log-icon-title-container\"><div class=\"log-icon-title\">{{ship.name}}</div></div>") 
       end	
     end
     
