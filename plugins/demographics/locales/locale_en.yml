@@ -45,3 +45,5 @@ en:
         
         demographics_list_header: "Available Demographics"
         demographics_ediable: "Editable after chargen."
+        
+        freeform_group: "That group doesn't have a specific list of values."

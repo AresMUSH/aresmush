@@ -21,6 +21,11 @@ module AresMUSH
           return
         end
         
+        if (!group['values'])
+          client.emit_failure t('demographics.freeform_group')
+          return
+        end
+        
         template = GroupDetailTemplate.new(self.name, group)
         client.emit template.render        
       end
