@@ -1,0 +1,33 @@
+       <div>
+
+          <h3>{{name}}</h3>
+          
+         
+          {{#each chars as |c| }}
+    
+          <div class="profile-gallery">
+
+            <a href="{{c.name}}.html">
+              <div class="char-icon-container">
+    
+              <div class="log-icon-container">
+                     {{#if c.icon}}
+                      <img alt="{{c.name}}'s icon" class="log-icon" src="game/uploads/{{c.icon}}" >
+                     {{else}}
+                     <img alt="{{c.name}}'s icon" class="log-icon" src="game/uploads/theme_images/noicon.png" >
+                     {{/if}}
+              </div>
+
+              <div class="log-icon-title-container">
+                  <div class="log-icon-title">
+                   {{c.name}}
+                  </div>
+              </div>
+
+              </div>
+            </a>
+              
+          </div>
+          {{/each}}
+      
+       </div>
