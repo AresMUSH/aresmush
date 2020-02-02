@@ -14,10 +14,8 @@ The "git" command is used to access the server's version control commands.  See 
 
 Supported commands include:  
 
-    git commit -m <message>
-    git add <filespec>
     git pull
     git status
     git diff
 
-`git/load` - Shortcut for a `git pull` followed by a `load all`.
+`git/load` - Shortcut for a `git pull` followed by a `load all`. Be careful with this command, because if the 'load all' goes awry it can leave your system in an unpredictable state.
