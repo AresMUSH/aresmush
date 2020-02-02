@@ -43,7 +43,7 @@ module AresMUSH
       end
       message = t('scenes.scene_notify_invite', :name => enactor.name, :num => scene.id)
       Login.emit_ooc_if_logged_in(char, message)        
-      Login.notify(char, :scene, message, scene.id)
+      Login.notify(char, :scene, message, scene.id, "", false)
     end
     
     def self.uninvite_from_scene(scene, char, enactor)

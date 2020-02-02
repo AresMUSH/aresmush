@@ -16,8 +16,6 @@ module AresMUSH
       
       def check_command
         commands = [
-          "git commit -m ",
-          "git add",
           "git pull",
           "git status",
           "git diff"
@@ -32,8 +30,12 @@ module AresMUSH
 
       def handle
         Global.dispatcher.spawn("Doing git query", client) do
-          output = `git #{self.args} 2>&1`
-          client.emit_success t('manage.git_output', :output => output)
+          output = "%lh\naresmush:\n%ld\n"
+          output << `git #{self.args} 2>&1`
+          output << "\n%ld\nares-webportal:\n%ld\n"
+          output << `cd ../ares-webportal;git #{self.args} 2>&1`
+          output << "%lf"
+          client.emit output
         end
       end
     end
