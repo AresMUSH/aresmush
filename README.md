@@ -10,4 +10,4 @@ For more information see:  [http://www.aresmush.com](http://www.aresmush.com)
 License
 =======
 
-See [License.md](License.md)
+See [License](https://github.com/AresMUSH/aresmush/blob/master/LICENSE.md)
