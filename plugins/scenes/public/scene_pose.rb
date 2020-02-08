@@ -45,6 +45,7 @@ module AresMUSH
       return false if self.is_system_pose?
       return true if Scenes.can_manage_scene?(actor, self.scene)
       return true if actor == self.character
+      return true if self.restarted_scene_pose && Scenes.can_edit_scene?(actor, self.scene)
       return false
     end
   end

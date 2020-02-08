@@ -26,8 +26,10 @@ module AresMUSH
             .reverse
             .map { |s|  Scenes.build_scene_summary_web_data(s) }
             
-        storyteller = plot.storyteller || Game.master.system_character
-        
+        storytellers = plot.storytellers.to_a
+            .sort_by {|storyteller| storyteller.name }
+            .map { |storyteller| { name: storyteller.name, id: storyteller.id, icon: Website.icon_for_char(storyteller), is_ooc: storyteller.is_admin? || storyteller.is_playerbit?  }}
+                        
         {
           id: plot.id,
           title: plot.title,
@@ -41,7 +43,7 @@ module AresMUSH
             scenes: scenes,
             pages: [ 1 ]
           },
-          storyteller: { name: storyteller.name, id: storyteller.id, icon: Website.icon_for_char(storyteller) }
+          storytellers: storytellers
         }
       end
     end

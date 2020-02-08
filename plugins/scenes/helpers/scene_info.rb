@@ -56,7 +56,7 @@ module AresMUSH
         
         if (!scene.completed && char != enactor)
           message = t('scenes.scene_notify_added_to_scene', :num => scene.id)
-          Login.notify(char, :scene, message, scene.id)
+          Login.notify(char, :scene, message, scene.id, "", false)
           Login.emit_ooc_if_logged_in char, message
         end
       end

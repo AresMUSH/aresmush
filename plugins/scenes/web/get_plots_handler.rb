@@ -10,13 +10,14 @@ module AresMUSH
                   end_date: p.end_date,
                   completed: p.completed,
                   content_warning: p.content_warning,
-                  storyteller: get_storyteller(p)
+                  storytellers: get_storytellers(p)
                 }}
       end
       
-      def get_storyteller(plot)
-        storyteller = plot.storyteller || Game.master.system_character
-        { name: storyteller.name, id: storyteller.id, icon: Website.icon_for_char(storyteller) }
+      def get_storytellers(plot)
+        storytellers = plot.storytellers.to_a
+            .sort_by {|storyteller| storyteller.name }
+            .map { |storyteller| { name: storyteller.name, id: storyteller.id, icon: Website.icon_for_char(storyteller), is_ooc: storyteller.is_admin? || storyteller.is_playerbit?  }}
       end
     end
   end

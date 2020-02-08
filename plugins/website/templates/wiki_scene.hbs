@@ -1,0 +1,103 @@
+<h1>{{model.icdate}} - {{model.title}}</h1>
+        
+<div class="row log-wrap">
+       
+    <div class="log-box">
+       
+        <p>{{{model.summary}}}</p>
+
+        {{#if model.content_warning}}
+        <div class="alert alert-danger"><b>Content Warning:</b> {{model.content_warning}}</div>
+        {{/if}}
+
+        <p><b>IC Date:</b> {{model.icdate}}</p>
+
+        <p><b>OOC Date:</b> {{model.date_created}}</p>
+
+        <p><b>Location:</b> {{model.location}}</p>
+
+
+        <p><b>Related Scenes:</b>
+           {{#if model.related_scenes}}
+             {{#each model.related_scenes as |related index|}}
+                  &nbsp;
+                  <a href="{{related.name}}">{{related.title}}</a>
+              {{/each}}
+            {{else}}
+               None
+            {{/if}}
+        </p>
+            
+        <p>
+            <b>Plot: </b>
+            {{#if model.plot}}
+                {{model.plot.title}}
+            {{else}}
+                None
+            {{/if}}
+        </p>
+        
+        <p><b>Scene Number:</b> {{model.id}}</p>
+        
+        
+        <div>
+          
+            
+        <span class="label label-info scene-{{style}}">{{model.scene_type}}</span>                 
+         </div>
+         
+    </div>
+    
+    <div class="log-participants-box">
+        
+    {{#each model.participants as |participant|}}
+        <div class="profile-gallery">    
+            
+            <a href="{{participant.name}}.html">
+              <div class="char-icon-container">
+    
+              <div class="log-icon-container">
+                     {{#if participant.icon}}
+                      <img alt="{{participant.name}}'s icon" class="log-icon" src="game/uploads/{{participant.icon}}" >
+                     {{else}}
+                     <img alt="{{participant.name}}'s icon" class="log-icon" src="game/uploads/theme_images/noicon.png" >
+                     {{/if}}
+              </div>
+
+              <div class="log-icon-title-container">
+                  <div class="log-icon-title">
+                   {{participant.name}}
+                  </div>
+              </div>
+
+              </div>
+            </a>
+        </div>
+    {{/each}}
+    
+    </div>
+    
+    <div class="clearfix"> </div>
+
+
+</div>
+
+<div class="scene-log">
+    {{{model.log}}}
+</div>
+    
+
+<br>
+
+
+<p>
+    <b>Tags:</b>  
+    {{#each model.tags as |tag|}}
+    {{tag}}
+    {{/each}}
+   </p>
+   
+<p><a href="scenes.html"><i class="fa fa-long-arrow-alt-left" aria-hidden="true"></i> Back to Scenes</a></p>
+
+
+{{outlet}}

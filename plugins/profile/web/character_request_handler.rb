@@ -71,9 +71,15 @@ module AresMUSH
         end
         
         if Manage.is_extra_installed?("traits")
-          traits = Traits.get_traits_for_web_viewing(char, char)
+          traits = Traits.get_traits_for_web_viewing(char, enactor)
         else
           traits = nil
+        end
+        
+        if Manage.is_extra_installed?("fate")
+          fate = Fate.get_web_sheet(char, enactor)
+        else
+          fate = nil
         end
         
         if (enactor)
@@ -107,6 +113,7 @@ module AresMUSH
           playerbit: char.is_playerbit?,
           fs3: fs3,
           traits: traits,
+          fate: fate,
           files: files,
           last_profile_version: char.last_profile_version ? char.last_profile_version.id : nil,
           achievements: Achievements.is_enabled? ? Achievements.build_achievements(char) : nil,

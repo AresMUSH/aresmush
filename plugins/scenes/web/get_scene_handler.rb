@@ -46,6 +46,7 @@ module AresMUSH
           location: scene.location,
           completed: scene.completed,
           shared: scene.shared,
+          date_created: OOCTime.local_short_timestr(enactor, scene.created_at),
           summary: summary,
           content_warning: scene.content_warning,
           tags: scene.tags,
