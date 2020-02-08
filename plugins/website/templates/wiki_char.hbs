@@ -1,0 +1,221 @@
+<script type="text/javascript" src="https://www.youtube.com/player_api"></script>
+<script type="text/javascript" src="game/scripts/music_player.js"></script>
+
+<h1>{{char.name}}</h1>
+
+    <div class="col-md-4 col-sm-12 col-xs-12">
+    {{#if char.profile_image.name}}
+        <img src="game/uploads/{{char.profile_image.path}}" alt="{{char.name}}'s icon"  class="profile-image">
+    {{else}}
+        <img src="game/uploads/theme_images/noicon.png" class="profile-image" alt="{{char.name}}'s icon" >
+    {{/if}}
+    </div>
+
+    <div class="col-md-8 col-sm-12 col-xs-12">        
+
+        <div class="profile-box">
+        <div class="profile-title">
+                    {{char.military_name}}
+        </div>
+        
+        {{#each char.demographics as |demo|}}
+        <div class="row">
+            <div class="col-sm-3">
+                    <b>{{demo.name}}</b> 
+            </div>
+            <div class="col-sm-9">
+                    {{demo.value}}
+            </div>
+        </div>
+        {{/each}}
+                                
+        
+        <div class="profile-divider">
+        </div>
+        
+        
+        {{#each char.groups as |group|}}
+        <div class="row">
+            <div class="col-sm-3">
+                    <b>{{group.name}}</b> 
+            </div>
+            <div class="col-sm-9">
+                    {{group.value}}
+            </div>
+        </div>
+        {{/each}}
+
+
+        {{#if char.handle}}
+        
+        <div class="row">
+            <div class="col-sm-3">
+                    <b>Player</b> 
+            </div>
+            <div class="col-sm-9">
+                    <a href="http://arescentral.aresmush.com/handle/{{char.handle}}">{{char.handle}}</a>
+            </div>
+        </div>
+        
+        {{/if}}
+        
+      </div>
+        
+    </div>
+
+<div class="profile-tab">
+  <ul class="nav nav-tabs">
+      <li class="active"><a data-toggle="tab" href="#supplementalindex">+</a></li>
+      {{#each char.profile as |profile| }}
+          <li><a data-toggle="tab" href="#{{profile.key}}">{{profile.name}}</a></li>
+      {{/each}}
+  </ul>
+</div>
+
+
+<div class="profile-tab">
+  <div class="tab-content">
+
+    <div id="supplementalindex" class="tab-pane fade in active">
+        <div class="tab-cover">Supplemental Information</div>
+    </div>
+  
+    {{#each char.profile as |profile|}}
+  
+    <div id="{{profile.key}}" class="tab-pane fade ansi">
+  
+        {{{profile.text}}}
+      
+    </div>
+  
+    {{/each}}
+  
+ </div>
+  
+  
+
+  <ul class="nav nav-tabs">
+      <li class="active"><a data-toggle="tab" href="#relationshipindex">+</a></li>
+      {{#each char.relationships as |cat|}}
+      <li><a data-toggle="tab" href="#{{cat.key}}">{{cat.name}}</a></li>
+      {{/each}}
+  </ul>
+</div>
+
+<div class="profile-tab">
+  <div class="tab-content">
+
+    <div id="relationshipindex" class="tab-pane fade in active">
+        <div class="tab-cover">Relationships</div>
+    </div>
+  
+    {{#each char.relationships as |cat|}}
+
+    <div id="{{cat.key}}" class="tab-pane fade">
+    
+      {{#each cat.relationships as |ship|}}
+        
+          <div class="row relationship-row">
+              <div class="col col-xs-12 col-sm-3">
+                
+                  <div class="relationship-icon-container">
+                  {{#if ship.is_npc}}
+                      {{#if ship.icon}}
+                      <img class="relationship-icon" src="game/uploads/{{ship.icon}}" alt="{{ship.name}}'s icon" >
+                      {{else}}
+                      <img class="relationship-icon" src="game/uploads/theme_images/noicon.png" alt="{{ship.name}}'s icon"  >
+                      {{/if}}
+                  {{else}}
+                        {{#if ship.icon}}
+                        <img class="relationship-icon" src="game/uploads/{{ship.icon}}" alt="{{ship.name}}'s icon" >
+                        {{else}}
+                        <img class="relationship-icon" src="game/uploads/theme_images/noicon.png" alt="{{ship.name}}'s icon"  >
+                        {{/if}}
+                  {{/if}}
+                  </div>
+                
+                
+              </div>
+            
+              <div class="col col-xs-12 col-sm-8 ansi">
+                  {{#if ship.is_npc}}
+                  <b>{{ship.name}}</b> (NPC)
+                  {{else}}
+                  <b>{{ship.name}}</b>
+                  {{/if}}
+                  {{{ship.text}}}
+              </div>
+          </div>
+        
+       {{/each}}
+             
+    </div>
+    {{/each}}
+  </div>
+</div>
+
+
+<div class="profile-tab">
+  <ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#systeminfo">+</a></li>
+
+    <li><a data-toggle="tab" href="#systemhooks">RP Hooks</a></li>
+
+    {{#if char.background}}
+        <li><a data-toggle="tab" href="#systembg">Background</a></li> 
+    {{/if}}
+  
+    {{#if char.description}}
+    <li><a data-toggle="tab" href="#systemdesc">Description</a></li>
+    {{/if}}
+  
+  </ul>
+
+
+  <div class="tab-content">
+    <div id="systeminfo" class="tab-pane fade in active">
+        <div class="tab-cover">System Information</div>
+    </div>
+  
+    <div id="systemhooks" class="tab-pane fade">
+        {{{char.rp_hooks}}}
+    </div>
+  
+    {{#if char.background}}
+    <div id="systembg" class="tab-pane fade">
+      {{{char.background}}}
+     </div>
+    {{/if}} 
+  
+    {{#if char.description}}
+    <div id="systemdesc" class="tab-pane fade">
+         {{{char.description}}}
+       
+         {{#if char.details}}
+         {{#each char.details as |detail|}}
+         <b>{{detail.name}}</b>: {{{detail.desc}}}
+         {{/each}}
+         {{/if}}
+    </div>
+    {{/if}}
+  </div>
+
+</div>
+
+<div class="profile-tab">
+  {{{scenes}}}
+</div>
+
+
+<div class="profile-tab">
+
+<div class="panel panel-default">
+
+{{#if char.profile_gallery}}
+    {{#each char.profile_gallery as |gallery|}}
+        <a href="game/uploads/{{gallery.path}}"><img src="game/uploads/{{gallery.path}}" class="profile-gallery" alt="{{gallery.name}}" >
+        </a>
+    {{/each}}
+{{/if}}
+</div>
+</div>

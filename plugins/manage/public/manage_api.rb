@@ -20,9 +20,11 @@ module AresMUSH
     
     def self.announce(msg)
       # Doesn't use notify_ooc because the prompt includes the %%
-      Global.notifier.notify(:announcement, t('manage.announce', :message => msg)) do |char|
+      formatted_msg = t('manage.announce', :message => msg)
+      Global.notifier.notify(:announcement, formatted_msg) do |char|
         true
       end
+      Channels.announce_notification(formatted_msg)
     end
     
     def self.is_extra_installed?(name)

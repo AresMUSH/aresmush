@@ -103,8 +103,9 @@ module AresMUSH
       
       def update_extras
         config = DatabaseMigrator.read_config_file("plugins.yml")
-        config['plugins']['extras'] << @plugin_name
-        config['plugins']['extras'] = config['plugins']['extras'].uniq
+        extras = config['plugins']['extras']
+        extras << @plugin_name
+        config['plugins']['extras'] = extras.uniq
         DatabaseMigrator.write_config_file("plugins.yml", config)
       end
     end

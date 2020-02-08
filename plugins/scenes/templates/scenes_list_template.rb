@@ -41,8 +41,16 @@ module AresMUSH
       end
       
       def privacy(scene)
-        color = scene.private_scene ? "%xr" : "%xg"
-        message = scene.private_scene ? t('scenes.private') : t('scenes.open')
+        if (scene.private_scene)
+          color = "%xr"
+          message = t('scenes.private')
+        elsif (scene.limit)
+          color = "%xy"
+          message = t('scenes.limited')
+        else
+          color = "%xg"
+          message = t('scenes.open')
+        end
         "#{color}#{message}%xn"
       end
     end

@@ -23,6 +23,7 @@ module AresMUSH
           url = "https://github.com/AresMUSH/ares-extras/tree/master/plugins/#{self.name}"
           importer = AresMUSH::Manage::PluginImporter.new(self.name)
           importer.import
+          Global.config_reader.load_game_config
           Global.plugin_manager.load_plugin(self.name)      
           Help.reload_help
           Global.locale.reload

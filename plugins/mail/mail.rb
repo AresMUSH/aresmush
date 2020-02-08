@@ -46,12 +46,16 @@ module AresMUSH
           return MailFwdCmd
         when "new"
           return MailNewCmd
+        when "read"
+          return MailReadCmd
         when "reply", "replyall"
           return MailReplyCmd
         when "report"
           return MailReportCmd
         when "review"
           return MailReviewCmd
+        when "scan"
+          return MailScanCmd
         when "sentmail"
           return MailSentMailCmd
         when "unsend"

@@ -153,6 +153,8 @@ module AresMUSH
         return ChangeSceneLocationHandler
       when "changeSceneStatus"
         return ChangeSceneStatusRequestHandler
+      when "collapseScenePoses"
+        return CollapseScenePosesRequestHandler
       when "createPlot"
         return CreatePlotRequestHandler
       when "createScene"

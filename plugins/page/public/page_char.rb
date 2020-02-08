@@ -13,6 +13,13 @@ module AresMUSH
     def page_threads
       PageThread.all.select { |p| p.characters.include?(self) }
     end
+    
+    def sorted_page_threads
+      self.page_threads
+         .to_a
+         .sort_by { |t| [ Page.is_thread_unread?(t, self) ? 1 : 0, t.last_activity ] }
+         .reverse
+   end
         
     def delete_pages
       self.page_threads.each { |p| p.delete }
