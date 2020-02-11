@@ -6,7 +6,7 @@ openweather:
 
   # Default climate for rooms without an area set.
   default_climate:
-      zip: 80447
+      zip: 43701
 
   # List of areas. Provide none for no weather, a zip code, or even coordinates
   # For openweather to pull weather data.
@@ -34,7 +34,6 @@ openweather:
         coords:
             lat: 37.080665
             lon: 21.849387
-      #PORTALS
       Feixuzhicheng:
         coords:
             lat: -41.242736
@@ -45,6 +44,10 @@ openweather:
             lon: -71.502984
       Immeasurable Autumn:
         zip: 94016
+      Kleisis:
+        coords:
+            lat: 21.882067
+            lon: -102.292502
       Lualea:
         zip: 93940
       Stochieion:
