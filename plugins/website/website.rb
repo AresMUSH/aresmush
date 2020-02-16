@@ -136,6 +136,8 @@ module AresMUSH
         return ShutdownRequestHandler
       when "deployWebsite"
         return DeployWebsiteRequestHandler
+      when "webhook"
+        return WebhookRequestHandler
       end
       nil
     end

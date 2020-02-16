@@ -9,9 +9,6 @@ module AresMUSH
         # Admin version
         if (cmd.args =~ /[^=]+\//)
           args = cmd.parse_args(ArgParser.arg1_slash_arg2_equals_arg3)
-          pp args.arg1
-          pp args.arg2
-          pp args.arg3
           self.target = titlecase_arg(args.arg1)
           self.section = downcase_arg(args.arg2)
           self.text = trim_arg(args.arg3)

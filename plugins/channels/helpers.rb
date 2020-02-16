@@ -88,9 +88,11 @@ module AresMUSH
       end
     end
     
-    def self.pose_to_channel(channel, name, msg, title)
+    def self.pose_to_channel(channel, enactor, msg, title)
+      name = enactor.ooc_name
       formatted_msg = PoseFormatter.format(name, msg)
       Channels.emit_to_channel channel, formatted_msg, title
+      Channels.notify_discord_webhook(channel, msg, enactor)
       return formatted_msg
     end
     
@@ -183,10 +185,7 @@ module AresMUSH
             ChannelOptions.create(character: char, channel: channel, aliases: aliases)
           end
           channel.characters << char
-          
-          if (client)
-            Channels.emit_to_channel channel, t('channels.joined_channel', :name => char.name)
-          end
+          Channels.emit_to_channel channel, t('channels.joined_channel', :name => char.name)
         end
       end
     end
@@ -268,6 +267,36 @@ module AresMUSH
       body << messages
 
       Jobs.create_job(Jobs.trouble_category, t('channels.channel_reported_title'), body, Game.master.system_character)
+    end
+    
+    def self.notify_discord_webhook(channel, message, enactor)
+      name = enactor.ooc_name
+      hook = (Global.read_config('secrets', 'discord', 'webhooks') || [])
+         .select { |h| (h['mush_channel'] || "").upcase == channel.name_upcase }
+         .first
+
+      return if !hook
+      
+      Global.dispatcher.spawn("Sending discord webhook", nil) do
+        url = hook['webhook_url']
+        
+        formatted_msg = message
+        if (message.start_with?(':'))
+          formatted_msg = "_#{message.after(':')}_" 
+        elsif (message.start_with?(';'))
+          formatted_msg = "#{name}#{message.after(';')}"
+        end
+
+        gravatar_style = Global.read_config('channels', 'discord_gravatar_style') || 'robohash'
+        icon = Website.icon_for_char(enactor) 
+        icon_url = icon ? "#{Game.web_portal_url}/game/uploads/#{icon}" :
+             "https://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(enactor.name)}?d=#{gravatar_style}"
+        resp = Net::HTTP.post_form(URI.parse(url), { 
+          content: formatted_msg, 
+          username: name,
+          avatar_url: icon_url })
+        # JSON.parse(resp.body)
+      end
     end
   end
 end
