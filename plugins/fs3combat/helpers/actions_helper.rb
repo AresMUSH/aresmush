@@ -64,7 +64,7 @@ module AresMUSH
       if (!combatant.is_subdued?)
         combatant.update(subdued_by: nil)
       end
-      
+
       combatant.update(luck: nil)
       combatant.update(posed: false)
       combatant.update(recoil: 0)
@@ -104,7 +104,7 @@ module AresMUSH
 
       combatant.log "Checking for KO: #{combatant.name} damaged=#{combatant.freshly_damaged} ko=#{combatant.is_ko} mod=#{combatant.total_damage_mod}"
 
-      if (combatant.is_npc? && (combatant.total_damage_mod <= -7))
+      if (combatant.is_npc? && (combatant.total_damage_mod <= -20))
         combatant.log "#{combatant.name} auto-KO'd."
         roll = 0
       else
@@ -348,10 +348,12 @@ module AresMUSH
       attack_roll =  combatant.roll_ability(school, 0)
       defense_roll = target.roll_ability("Composure", 0)
       attacker_net_successes = attack_roll - defense_roll
+
+      combatant.log "#{combatant.name} attempts to escape: attack=#{attack_roll} defense=#{defense_roll} net=#{attacker_net_successes}"
       if attacker_net_successes > 0
-        hit = false
-      else
         hit = true
+      else
+        hit = false
       end
       {
         hit: hit

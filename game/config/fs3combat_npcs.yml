@@ -45,8 +45,14 @@ fs3combat:
       Default: 17
       Reflexes: 4
       Wounds: -30
+    Fifteen: :
+      Default: 20
+      Reflexes: 2
+      Composure: 20
+      Wounds: -35
     Twenty:
-      Default: 17
-      Reflexes: 5
-      Wounds: -75
+      Default: 20
+      Reflexes: 2
+      Composure: 25
+      Wounds: -45
   default_npc_type: Three

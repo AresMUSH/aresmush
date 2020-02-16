@@ -33,7 +33,6 @@ module AresMUSH
 
       def resolve
         messages = []
-
         # If the subduer is no longer subduing, you succeed automatically
         if (!self.combatant.is_subdued?)
           reset_subdue
@@ -47,7 +46,6 @@ module AresMUSH
             self.reset_subdue
           end
         else
-
           # This is a little different because it forces the attacker to make another subdue roll.  This
           # ensures that we use the attacker's melee weapon skill and not the defender's weapon
           margin = FS3Combat.determine_attack_margin(self.subduer, self.combatant)

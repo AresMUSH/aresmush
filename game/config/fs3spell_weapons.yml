@@ -31,7 +31,7 @@ fs3combat:
       lethality: 15
       penetration: 5
     Guilt-Weighted Gloves:
-      description: Magic item
+      description: Magic item 
       is_magic: true
       lethality: 5
     Huxian's Gift:

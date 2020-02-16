@@ -1,4 +1,34 @@
 spells:
+  Direwolf Bite:
+    available: false
+    casting_time: 1 round
+    desc: Direwolf 'spell'
+    effect: Damage
+    fs3_attack: true
+    level: 1
+    line_of_sight: true
+    name: Direwolf Bite
+    range: Short
+    school: Nature
+    target_num: 5
+    target_optional: true
+    weapon: Sharp Teeth
+    effect: Damage
+  Direwolf Claws:
+    available: false
+    casting_time: 1 round
+    desc: Direwolf 'spell'
+    effect: Damage
+    fs3_attack: true
+    level: 1
+    line_of_sight: true
+    name: Direwolf Claws
+    range: Short
+    school: Nature
+    target_num: 5
+    target_optional: true
+    weapon: Sharp Claws 
+    effect: Damage
   Beckon Tiny Animal:
     available: true
     casting_time: 1 round
