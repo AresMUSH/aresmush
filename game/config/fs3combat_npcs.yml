@@ -45,7 +45,7 @@ fs3combat:
       Default: 17
       Reflexes: 4
       Wounds: -30
-    Fifteen: :
+    Fifteen:
       Default: 20
       Reflexes: 2
       Composure: 20
