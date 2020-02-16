@@ -23,7 +23,7 @@ module AresMUSH
         return false
       end
       options = Channels.get_channel_options(enactor, channel)
-      Channels.emit_to_channel channel, message, options.title
+      Channels.pose_to_channel channel, enactor, message, options.title
       return true
     end
     
