@@ -74,7 +74,7 @@ module AresMUSH
           end
         end
           
-        Channels.pose_to_channel channel, enactor.ooc_name, self.msg, options.title
+        Channels.pose_to_channel channel, enactor, self.msg, options.title
       end
     end  
   end
