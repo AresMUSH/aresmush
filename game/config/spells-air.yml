@@ -190,7 +190,7 @@ spells:
     name: Breathless
     range: Short
     school: Air
-    target_num: 1
+    target_num: 3
     target_optional: true
     weapon: Breathless
   Create Sound:
