@@ -146,5 +146,9 @@ module AresMUSH
     def url
       "#{Game.web_portal_url}/scene/#{self.id}"
     end
+    
+    def limited_participation?
+      !self.limit.blank?
+    end
   end
 end

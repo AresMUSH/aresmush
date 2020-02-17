@@ -31,5 +31,9 @@ module AresMUSH
       extras = Global.read_config('plugins', 'extras') || []
       extras.include?(name)
     end
+    
+    def self.server_reboot_required?
+      File.exist?('/var/run/reboot-required')
+    end
   end
 end

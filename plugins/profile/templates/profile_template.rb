@@ -15,7 +15,7 @@ module AresMUSH
       end
       
       def visible_demographics
-        Demographics.visible_demographics(@char, @enactor)
+        Demographics.visible_demographics(@char, @enactor).select { |d| d != 'birthdate' }
       end
       
       def demographic(d)
@@ -30,9 +30,9 @@ module AresMUSH
         age = @char.age
         age == 0 ? "" : age
       end
-
-      def age_separator
-        visible_demographics.count % 2 == 0 ? "%R" : ""
+      
+      def show_age
+        Demographics.age_enabled?
       end
       
       def birthdate
