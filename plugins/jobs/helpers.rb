@@ -247,7 +247,7 @@ module AresMUSH
     end    
     
     def self.reboot_required_notice
-      File.exist?('/var/run/reboot-required') ? t('jobs.reboot_required') : nil
+      Manage.server_reboot_required? ? t('jobs.reboot_required') : nil
     end
 
     def self.change_job_title(enactor, job, title)
