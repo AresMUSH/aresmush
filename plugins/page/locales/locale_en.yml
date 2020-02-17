@@ -29,7 +29,7 @@ en:
         page_review_title: "PMs with %{title}"
         page_review_index_title: "PM Conversations"
         invalid_thread: "No PM conversation with those characters was found."
-        invalid_report_range: "Invalid page range.  Specify numbers from the page/log entries, like 2-10."
+        invalid_report_range: "Invalid page.  Specify numbers from the page/log entries."
         pages_reported: "Thank you.  The conversation has been reported to the admins."
         page_reported_title: "Pages Reported"
         page_reported_body: "%{reporter} has reported an issue with the following pages from a conversation with %{name}.%R%RReason:%R"

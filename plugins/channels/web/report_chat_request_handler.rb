@@ -4,7 +4,7 @@ module AresMUSH
       def handle(request)
         enactor = request.enactor
         key = request.args[:key]
-        message_ids = request.args[:messages] || []
+        start_message = request.args[:start_message]
         reason = request.args[:reason]
         
         error = Website.check_login(request)
@@ -15,7 +15,20 @@ module AresMUSH
           return { error: t('webportal.not_found') }
         end
         
-        messages = channel.messages.select { |m| message_ids.include?(m['id']) }
+        found = false
+        messages = []
+        channel.messages.each do |m|
+          if (found)
+            messages << m
+          elsif (m['id'] == start_message)
+            found = true
+            messages << m
+          end
+        end
+
+        if (!found)
+          messages = channel.messages
+        end
         Channels.report_channel_abuse(enactor, channel, messages, reason) 
         
         
