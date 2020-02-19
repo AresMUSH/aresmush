@@ -207,6 +207,13 @@ magic-items:
     desc: "A small statue of an African Sacred Ibis, able to fit in the palm of a hand. The ibis is reclined gracefully, positioned to sit atop its long, dark legs on a rectangular base. Its head and the tips of its wings are painted a deep ebony, while the rest of the feathered body glimmers with gold. The idol allows the bearer to contact Thoth, the Egyptian god of wisdom, and gives the bearer the ability to cast %xBTelepathic Link%xn"
     spells:
     - Telepathic Link
+  # Nevada's Hook
+  Carved Antler Pendant :
+    name: Carved Antler Pendant
+    desc: "A pale pendant made from the prong of deer antler. The antler is five inches long, slightly curved, and carved with a relief of delicate ivy vines. The top of is wrapped in tough leather cord that also strings a small cross section of a tree branch and a white tuft of a feather to the pendant. The cord is looped to be easily be tied to something or strung on another piece of jewelry. Allows the bearer to cast %xBLightning Bolt%xn and %xBBark Skin%xn."
+    spells:
+    - Lightning Bolt
+    - Bark Skin
   #Olive's Hook
   Ring Of Nolawyn:
     name: Ring of Nolawyn
