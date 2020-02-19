@@ -104,7 +104,7 @@ module AresMUSH
 
       combatant.log "Checking for KO: #{combatant.name} damaged=#{combatant.freshly_damaged} ko=#{combatant.is_ko} mod=#{combatant.total_damage_mod}"
 
-      if (combatant.is_npc? && (combatant.total_damage_mod <= -20))
+      if (combatant.is_npc? && (combatant.total_damage_mod <= -9))
         combatant.log "#{combatant.name} auto-KO'd."
         roll = 0
       else
