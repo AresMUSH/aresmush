@@ -11,6 +11,11 @@ module AresMUSH
         super File.dirname(__FILE__) + "/index.erb"
       end
       
+      def name(category)
+        return "%xh%xx#{category.name}%xn" if !Forum.can_read_category?(@char, category)  
+        return category.name
+      end
+      
       def num(index)
         "#{index+1}"
       end        
@@ -33,6 +38,7 @@ module AresMUSH
       
       # Shows the unread marker if there are posts the character hasn't read.
       def unread(category)
+        return "--" if !Forum.can_read_category?(@char, category)
         category.has_unread?(@char) ? t('forum.unread_marker') : " "
       end
     end
