@@ -76,16 +76,14 @@ module AresMUSH
     end
     
     def self.reset_stress(combatant)
-      return if combatant.stress == 0 && combatant.distraction == 0
+      return if combatant.stress == 0
 
       composure = Global.read_config("fs3combat", "composure_skill")
       roll = combatant.roll_ability(composure)
       new_stress = [0, combatant.stress - roll - 1].max
-      new_distract = [0, combatant.distraction - roll - 1].max      
       
-      combatant.log "#{combatant.name} resetting stress.  roll=#{roll} old_stress=#{combatant.stress} new_stress=#{new_stress} old_distr=#{combatant.distraction} new_distr=#{new_distract}."
+      combatant.log "#{combatant.name} resetting stress.  roll=#{roll} old_stress=#{combatant.stress} new_stress=#{new_stress}."
       combatant.update(stress: new_stress)
-      combatant.update(distraction: new_distract)
     end
     
     def self.check_for_ko(combatant)

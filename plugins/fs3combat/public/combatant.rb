@@ -16,7 +16,6 @@ module AresMUSH
     attribute :is_ko, :type => DataType::Boolean
     attribute :idle, :type => DataType::Boolean
     attribute :luck
-    attribute :distraction, :type => DataType::Integer, :default => 0
     attribute :ammo, :type => DataType::Integer
     attribute :max_ammo, :type => DataType::Integer, :default => 0
     attribute :posed, :type => DataType::Boolean
@@ -39,6 +38,10 @@ module AresMUSH
     reference :riding_in, "AresMUSH::Vehicle"
     
     attribute :damaged_by, :type => DataType::Array, :default => []
+
+    # DEPRECATED - Do Not Use
+    attribute :distraction
+
         
     before_delete :cleanup
         
