@@ -90,34 +90,27 @@ module AresMUSH
           allow(@combatant).to receive(:log)
           allow(@combatant).to receive(:name) { "Bob" }
           allow(@combatant).to receive(:stress) { 0 }
-          allow(@combatant).to receive(:distraction) { 0 }
           allow(Global).to receive(:read_config).with("fs3combat", "composure_skill") { "Composure" }
         end
         
         it "should reduce stress by 1 even if roll fails" do
           allow(@combatant).to receive(:stress) { 3 }
-          allow(@combatant).to receive(:distraction) { 2 }
           allow(@combatant).to receive(:roll_ability).with("Composure") { 0 }
           expect(@combatant).to receive(:update).with(stress: 2)
-          expect(@combatant).to receive(:update).with(distraction: 1)
           FS3Combat.reset_stress(@combatant)
         end
         
         it "should reduce stress by roll result further" do
           allow(@combatant).to receive(:stress) { 3 }
-          allow(@combatant).to receive(:distraction) { 4 }
           allow(@combatant).to receive(:roll_ability).with("Composure") { 2 }
           expect(@combatant).to receive(:update).with(stress: 0)
-          expect(@combatant).to receive(:update).with(distraction: 1)
           FS3Combat.reset_stress(@combatant)
         end
         
         it "should not reduce stress below 0" do
           allow(@combatant).to receive(:stress) { 1 }
-          allow(@combatant).to receive(:distraction) { 1 }
           allow(@combatant).to receive(:roll_ability).with("Composure") { 2 }
           expect(@combatant).to receive(:update).with(stress: 0)
-          expect(@combatant).to receive(:update).with(distraction: 0)
           FS3Combat.reset_stress(@combatant)
         end
       end
