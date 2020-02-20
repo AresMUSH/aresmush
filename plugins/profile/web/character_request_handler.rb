@@ -133,7 +133,8 @@ module AresMUSH
           notes: char.roster_notes ? Website.format_markdown_for_html(char.roster_notes) : nil,
           previously_played: char.roster_played,
           app_required: char.roster_restricted,
-          contact: char.roster_contact
+          contact: char.roster_contact,
+          app_template: Website.format_input_for_html(Global.read_config("idle", "roster_app_template") || "")
         }
       end
     end

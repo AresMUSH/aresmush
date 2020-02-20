@@ -153,6 +153,7 @@ module AresMUSH
         return { status: 'error', error: t('login.password_incorrect') }
       end
       
+      Login.update_site_info(ip_addr, hostname, char)
       return { status: 'ok' }
     end
   end
