@@ -9,13 +9,14 @@ module AresMUSH
         return error if error
         
         categories = Forum.visible_categories(enactor)
-           .select { |b| Forum.can_read_category?(enactor, b) }
+           .sort_by { |b| [ Forum.can_read_category?(enactor, b) ? 0 : 1, b.order ] }
            .map { |b| {
              id: b.id,
              name: b.name,
              description: b.description,
              unread: enactor && b.has_unread?(enactor),
-             last_activity: last_activity(b, enactor)
+             last_activity: last_activity(b, enactor),
+             can_read: Forum.can_read_category?(enactor, b)
            }}
            
        hidden =Forum.hidden_categories(enactor)
@@ -33,6 +34,7 @@ module AresMUSH
       end
       
       def last_activity(board, enactor)
+        return nil if !Forum.can_read_category?(enactor, board)
         
         last_post = board.last_post_with_activity
         if (!last_post)
