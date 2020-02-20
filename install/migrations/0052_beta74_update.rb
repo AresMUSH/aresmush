@@ -20,6 +20,12 @@ module AresMUSH
         config['channels']['discord_prefix'] = '[D]'
         config['channels']['discord_gravatar_style'] = 'retro'
         DatabaseMigrator.write_config_file("channels.yml", config)
+        
+        Global.logger.debug "Add related scene fitler config."
+        config = DatabaseMigrator.read_config_file("scenes.yml")
+        config['scenes']['related_scenes_filter_days'] = 90
+        DatabaseMigrator.write_config_file("scenes.yml", config)
+        
       end 
     end
   end
