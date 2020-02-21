@@ -24,7 +24,8 @@ en:
         plugin_installed: "Plugin %{name} has been installed.  Please check the readme file at %{url} for any additional instructions."
         error_installing_plugin: "Error installing plugin %{name}.  Error: %{error}."
         plugins: "Plugins"
-        
+        game_config_ok: "No errors were detected in your game configuration."
+        plugin_config_invalid: "One or more of your configuration options have invalid settings: %{errors}"
         shutdown: "Shutdown by %{name}."
         shutdown_with_message:  "Shutdown by %{name}: %{message}."
         

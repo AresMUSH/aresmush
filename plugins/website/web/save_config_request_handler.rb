@@ -34,7 +34,7 @@ module AresMUSH
           error = Manage.reload_config     
           if (error)
             Global.logger.warn "Trouble loading YAML config: #{error}"
-            return { error: t('manage.game_config_invalid', :error => error) }
+            return { :error => error }
           end
                     
         rescue Exception => ex
