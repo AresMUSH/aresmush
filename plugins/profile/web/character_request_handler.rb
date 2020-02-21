@@ -247,6 +247,8 @@ module AresMUSH
 
         if (enactor)
           Login.mark_notices_read(enactor, :achievement)
+          Login.mark_notices_read(enactor, :comp)
+          Login.mark_notices_read(enactor, :luck)
         end
 
         {

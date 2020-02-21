@@ -9,6 +9,9 @@ module AresMUSH
       end
 
       def handle
+        if self.target_name == enactor_name
+          Login.mark_notices_read(enactor, :comp)
+        end
         ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
          comps = model.comps.to_a.sort_by { |c| c.created_at }.reverse
          paginator = Paginator.paginate(comps, cmd.page, 5)
