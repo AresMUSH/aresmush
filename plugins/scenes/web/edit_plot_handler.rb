@@ -3,10 +3,9 @@ module AresMUSH
     class EditPlotRequestHandler
       def handle(request)
         plot = Plot[request.args[:id]]
-        storyteller = Character[request.args[:storyteller_id]]
         enactor = request.enactor
 
-        if (!plot || !storyteller)
+        if (!plot)
           return { error: t('webportal.not_found') }
         end
 
@@ -32,12 +31,11 @@ module AresMUSH
           storyteller = Character.find_one_by_name(storyteller.strip)
           if (storyteller)
             if (!plot.storytellers.include?(storyteller))
-              Custom.add_storyteller(plot, storyteller)
+              plot.storytellers.add storyteller
             end
           end
         end
 
-        plot.update(storyteller: storyteller)
         plot.update(summary: request.args[:summary])
         plot.update(content_warning: request.args[:content_warning])
         plot.update(title: request.args[:title])

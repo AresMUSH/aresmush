@@ -11,7 +11,8 @@ en:
         message_deleted: "Message '%{subject}' is marked as trash."
         message_undeleted: "Message '%{subject}' is no longer marked as trash."
         trash_emptied: "Trashed mail messages are now deleted."
-        no_unread_messages: "There are no new messages to read."
+        no_unread_messages: "No new mail messages to read."
+        unread_messages: "%{count} unread messages. %xh%xx(mail/new)%xn"
         
         inbox_title: "  #         From                   Subject                         Date"
         sent_title:  "  #         To                     Subject                         Date"

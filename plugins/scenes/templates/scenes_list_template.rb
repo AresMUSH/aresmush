@@ -41,15 +41,18 @@ module AresMUSH
       end
 
       def privacy(scene)
-        if scene.private_scene
-          message = t('scenes.private')
+        if (scene.private_scene)
           color = "%xr"
+          message = t('scenes.private')
         elsif scene.watchable_scene
           message = "Watchable"
           color = "%xc"
+        elsif (scene.limit)
+          color = "%xy"
+          message = t('scenes.limited')
         else
-          message = t('scenes.open')
           color = "%xg"
+          message = t('scenes.open')
         end
         "#{color}#{message}%xn"
       end

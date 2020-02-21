@@ -14,6 +14,7 @@ The mail system lets you send messages to other players.
 `mail <#>` - Reads a mail message.
 `mail/filter <tag>` - Shows mail matching the tag.  Remains in effect until you switch the filter or log out.
 `mail/inbox, mail/sent, mail/archive or mail/trash` - Shortcuts to common tag filters.
+`mail/scan` - Shows if you have unread mail. You can add this to your [onconnect](/help/onconnect).
 
 ## Sending Mail
 
