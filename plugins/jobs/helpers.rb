@@ -9,15 +9,7 @@ module AresMUSH
     def self.can_manage_jobs?(actor)
       return false if !actor
       actor.has_permission?("manage_jobs")
-    end
-    
-    def self.categories
-      JobCategory.all.map { |j| j.name }
-    end
-    
-    def self.status_vals
-      Global.read_config("jobs", "status").keys
-    end
+    end    
     
     def self.closed_jobs
       Job.all.select { |j| !j.is_open? }

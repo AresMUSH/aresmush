@@ -108,6 +108,10 @@ module AresMUSH
         return ReportChatRequestHandler
       end
     end
-    
+
+    def self.check_config
+      validator = ChannelConfigValidator.new
+      validator.validate
+    end
   end
 end

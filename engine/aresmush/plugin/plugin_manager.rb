@@ -168,6 +168,19 @@ module AresMUSH
       achieve
     end
     
+    def check_plugin_config
+      errors = []
+      plugins.each do |p|
+        begin
+          next if !p.respond_to?(:check_config)
+          errors.concat p.check_config
+        rescue Exception => ex
+          errors << "Error checking config: #{p} #{ex}"
+        end
+      end
+      errors
+    end
+    
     private    
     
     def find_plugin_const(name)
