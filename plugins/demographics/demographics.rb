@@ -80,5 +80,10 @@ module AresMUSH
       nil
     end
     
+    def self.check_config
+      validator = DemographicsConfigValidator.new
+      validator.validate
+    end
+    
   end
 end

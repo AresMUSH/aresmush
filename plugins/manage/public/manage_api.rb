@@ -15,9 +15,7 @@ module AresMUSH
         if (errors.any?)
           return t('manage.plugin_config_invalid', :errors => "\n- #{errors.join("\n- ")}")
         end
-      
-      return nil
-      
+            
         return nil
       rescue Exception => e
         Global.logger.debug "Error loading config: #{e}"

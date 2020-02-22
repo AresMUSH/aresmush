@@ -73,11 +73,59 @@ module AresMUSH
           return
         end
         value.each do |k, v|
-          if !['date', 'day_of_week', 'hour', 'minute'].include?(k)
+          if !['date', 'day', 'day_of_week', 'hour', 'minute'].include?(k)
             @errors << "#{field_key(field)} - #{k} is not a valid setting."
           end
           if (v.class != Array)
             @errors << "#{field_key(field)} - #{k} is not a list."
+          end
+        end
+      end
+      
+      def check_channel_exists(field)
+        name = @config[field] || ""
+        if (!Channel.named(name))
+          self.add_error("#{field_key(field)} - #{name} is not a valid channel.")
+        end
+      end
+      
+      def check_channels_exist(field)
+        names = @config[field] || []
+        names.each do |name|
+          if (!Channel.named(name))
+            self.add_error("#{field_key(field)} - #{name} is not a valid channel.")
+          end
+        end
+      end
+      
+      def check_forum_exists(field)
+        name = @config[field] || ""
+        if (!BbsBoard.named(name))
+          self.add_error("#{field_key(field)} - #{name} is not a valid forum.")
+        end
+      end
+      
+      def check_forums_exist(field)
+        names = @config[field] || ""
+        names.each do |name|
+          if (!BbsBoard.named(name))
+            self.add_error("#{field_key(field)} - #{name} is not a valid forum.")
+          end
+        end
+      end
+      
+      def check_role_exists(field)
+        name = @config[field] || ""
+        if (!Role.named(name))
+          self.add_error("#{field_key(field)} - #{name} is not a valid role.")
+        end
+      end
+      
+      def check_roles_exist(field)
+        names = @config[field] || ""
+        names.each do |name|
+          if (!Role.named(name))
+            self.add_error("#{field_key(field)} - #{name} is not a valid role.")
           end
         end
       end
