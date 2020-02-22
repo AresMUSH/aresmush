@@ -14,7 +14,6 @@ module AresMUSH
         @validator.require_in_list("app_resubmit_status", Jobs.status_vals)
         @validator.require_list("app_review_commands")
         @validator.require_text("approval_message")
-        @validator.require_in_list("arrivals_category", Forum.category_names)
         @validator.require_text("bg_blurb")
         @validator.require_text("demographics_blurb")
         @validator.require_text("desc_blurb")
@@ -28,8 +27,22 @@ module AresMUSH
         @validator.require_text("rejection_message")
         @validator.require_text("welcome_message")
         @validator.require_hash("stages")
+        @validator.check_forum_exists("arrivals_category")
         
-        Global.read_config("chargen", "stages").each do |stage, keys|
+        begin
+          check_stages
+        rescue Exception => ex
+          @validator.add_error "Unknown chargen config error.  Fix other errors first and try again. #{ex}"
+        end
+        
+        @validator.errors
+      end
+      
+      def check_stages
+        stages = Global.read_config("chargen", "stages")
+        return if (!stages.kind_of?(Hash))
+        
+        stages.each do |stage, keys|
           if (!(keys.include?('help') || keys.include?('text')))
             @validator.add_error("chargen stage #{stage} must have either a help reference or some text.")
           end
@@ -41,16 +54,7 @@ module AresMUSH
             end
           end
         end
-        
-        @validator.errors
-      end
-      
-      def check_chanel_exists(field, name)
-        channel = Channel.named(name)
-        if (!channel)
-          @validator.add_error("channels:#{field} - #{name} is not a valid channel.")
-        end
-      end
+      end      
     end
   end
 end

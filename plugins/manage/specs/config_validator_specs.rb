@@ -255,6 +255,122 @@ module AresMUSH
           expect(@validator.errors).to eq ["foo:some_val - day is not a valid setting."]
         end
       end
+      
+      describe :check_channel_exists do
+        it "should be OK for a real channel" do
+          expect(Global).to receive(:read_config).with("foo") { { "some_val" => "some chan" } }
+          @validator = ConfigValidator.new("foo")
+          expect(Channel).to receive(:named).with("some chan") { double }
+          @validator.check_channel_exists("some_val")
+          expect(@validator.errors).to eq []
+        end
+        
+        it "should fail if channel not found" do
+          expect(Global).to receive(:read_config).with("foo") { { "some_val" => "some chan" } }
+          @validator = ConfigValidator.new("foo")
+          expect(Channel).to receive(:named).with("some chan") { nil }
+          @validator.check_channel_exists("some_val")
+          expect(@validator.errors).to eq [ "foo:some_val - some chan is not a valid channel."]
+        end
+      end
+      
+      describe :check_channels_exist do
+        it "should be OK for all real channels" do
+          expect(Global).to receive(:read_config).with("foo") { { "some_val" => ["some chan", "other chan"] } }
+          @validator = ConfigValidator.new("foo")
+          expect(Channel).to receive(:named).with("some chan") { double }
+          expect(Channel).to receive(:named).with("other chan") { double }
+          @validator.check_channels_exist("some_val")
+          expect(@validator.errors).to eq []
+        end
+        
+        it "should fail if channel not found" do
+          expect(Global).to receive(:read_config).with("foo") { { "some_val" => ["some chan", "other chan"] } }
+          @validator = ConfigValidator.new("foo")
+          expect(Channel).to receive(:named).with("some chan") { double }
+          expect(Channel).to receive(:named).with("other chan") { nil }
+          @validator.check_channels_exist("some_val")
+          expect(@validator.errors).to eq [ "foo:some_val - other chan is not a valid channel."]
+        end
+      end
+      
+      describe :check_role_exists do
+        it "should be OK for a real role" do
+          expect(Global).to receive(:read_config).with("foo") { { "some_val" => "some role" } }
+          @validator = ConfigValidator.new("foo")
+          expect(Role).to receive(:named).with("some role") { double }
+          @validator.check_role_exists("some_val")
+          expect(@validator.errors).to eq []
+        end
+        
+        it "should fail if role not found" do
+          expect(Global).to receive(:read_config).with("foo") { { "some_val" => "some role" } }
+          @validator = ConfigValidator.new("foo")
+          expect(Role).to receive(:named).with("some role") { nil }
+          @validator.check_role_exists("some_val")
+          expect(@validator.errors).to eq [ "foo:some_val - some role is not a valid role."]
+        end
+      end
+      
+      describe :check_roles_exist do
+        it "should be OK for all real roles" do
+          expect(Global).to receive(:read_config).with("foo") { { "some_val" => ["some role", "other role"] } }
+          @validator = ConfigValidator.new("foo")
+          expect(Role).to receive(:named).with("some role") { double }
+          expect(Role).to receive(:named).with("other role") { double }
+          @validator.check_roles_exist("some_val")
+          expect(@validator.errors).to eq []
+        end
+        
+        it "should fail if role not found" do
+          expect(Global).to receive(:read_config).with("foo") { { "some_val" => ["some role", "other role"] } }
+          @validator = ConfigValidator.new("foo")
+          expect(Role).to receive(:named).with("some role") { double }
+          expect(Role).to receive(:named).with("other role") { nil }
+          @validator.check_roles_exist("some_val")
+          expect(@validator.errors).to eq [ "foo:some_val - other role is not a valid role."]
+        end
+      end
+      
+      
+      describe :check_forum_exists do
+        it "should be OK for a real forum" do
+          expect(Global).to receive(:read_config).with("foo") { { "some_val" => "some forum" } }
+          @validator = ConfigValidator.new("foo")
+          expect(BbsBoard).to receive(:named).with("some forum") { double }
+          @validator.check_forum_exists("some_val")
+          expect(@validator.errors).to eq []
+        end
+        
+        it "should fail if forum not found" do
+          expect(Global).to receive(:read_config).with("foo") { { "some_val" => "some forum" } }
+          @validator = ConfigValidator.new("foo")
+          expect(BbsBoard).to receive(:named).with("some forum") { nil }
+          @validator.check_forum_exists("some_val")
+          expect(@validator.errors).to eq [ "foo:some_val - some forum is not a valid forum."]
+        end
+      end
+      
+      describe :check_forums_exist do
+        it "should be OK for all real forums" do
+          expect(Global).to receive(:read_config).with("foo") { { "some_val" => ["some forum", "other forum"] } }
+          @validator = ConfigValidator.new("foo")
+          expect(BbsBoard).to receive(:named).with("some forum") { double }
+          expect(BbsBoard).to receive(:named).with("other forum") { double }
+          @validator.check_forums_exist("some_val")
+          expect(@validator.errors).to eq []
+        end
+        
+        it "should fail if forum not found" do
+          expect(Global).to receive(:read_config).with("foo") { { "some_val" => ["some forum", "other forum"] } }
+          @validator = ConfigValidator.new("foo")
+          expect(BbsBoard).to receive(:named).with("some forum") { double }
+          expect(BbsBoard).to receive(:named).with("other forum") { nil }
+          @validator.check_forums_exist("some_val")
+          expect(@validator.errors).to eq [ "foo:some_val - other forum is not a valid forum."]
+        end
+      end
+      
     end
   end
 end
