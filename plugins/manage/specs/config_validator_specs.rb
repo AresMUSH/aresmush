@@ -127,9 +127,134 @@ module AresMUSH
           @validator.require_int("some_val", 5, 50)
           expect(@validator.errors).to eq [ "foo:some_val must not be more than 50." ]
         end
-        
       end
       
+      describe :require_text do
+        it "should OK some text" do 
+          expect(Global).to receive(:read_config).with("foo") { { "some_val" => '' } }
+          @validator = ConfigValidator.new("foo")
+          @validator.require_text("some_val")
+          expect(@validator.errors).to eq []
+        end
+
+        it "should fail for an invalid type" do 
+          expect(Global).to receive(:read_config).with("foo") { { "some_val" => 123 } }
+          @validator = ConfigValidator.new("foo")
+          @validator.require_text("some_val")
+          expect(@validator.errors).to eq ["foo:some_val must be a text string."]
+        end
+
+        it "should fail if value is not there" do 
+          expect(Global).to receive(:read_config).with("foo") { {} }
+          @validator = ConfigValidator.new("foo")
+          @validator.require_text("some_val")
+          expect(@validator.errors).to eq ["foo:some_val must be a text string."]
+        end
+      end
+      
+      describe :require_nonblank_text do
+        it "should OK some text" do 
+          expect(Global).to receive(:read_config).with("foo") { { "some_val" => 'xxx' } }
+          @validator = ConfigValidator.new("foo")
+          @validator.require_nonblank_text("some_val")
+          expect(@validator.errors).to eq []
+        end
+
+        it "should fail for an invalid type" do 
+          expect(Global).to receive(:read_config).with("foo") { { "some_val" => 123 } }
+          @validator = ConfigValidator.new("foo")
+          @validator.require_nonblank_text("some_val")
+          expect(@validator.errors).to eq ["foo:some_val must be a non-blank text string."]
+        end
+
+        it "should fail if value is not there" do 
+          expect(Global).to receive(:read_config).with("foo") { {} }
+          @validator = ConfigValidator.new("foo")
+          @validator.require_nonblank_text("some_val")
+          expect(@validator.errors).to eq ["foo:some_val must be a non-blank text string."]
+        end
+        
+        it "should fail if string is blank" do 
+          expect(Global).to receive(:read_config).with("foo") { { "some_val" => '' } }
+          @validator = ConfigValidator.new("foo")
+          @validator.require_nonblank_text("some_val")
+          expect(@validator.errors).to eq ["foo:some_val must be a non-blank text string."]
+        end
+      end
+      
+      
+      describe :require_boolean do
+        it "should OK true" do 
+          expect(Global).to receive(:read_config).with("foo") { { "some_val" => true } }
+          @validator = ConfigValidator.new("foo")
+          @validator.require_boolean("some_val")
+          expect(@validator.errors).to eq []
+        end
+
+        it "should OK false" do 
+          expect(Global).to receive(:read_config).with("foo") { { "some_val" => false } }
+          @validator = ConfigValidator.new("foo")
+          @validator.require_boolean("some_val")
+          expect(@validator.errors).to eq []
+        end
+
+        it "should fail for an invalid type" do 
+          expect(Global).to receive(:read_config).with("foo") { { "some_val" => 'true' } }
+          @validator = ConfigValidator.new("foo")
+          @validator.require_boolean("some_val")
+          expect(@validator.errors).to eq ["foo:some_val must be true or false (without quotes)."]
+        end
+
+        it "should fail if value is not there" do 
+          expect(Global).to receive(:read_config).with("foo") { {} }
+          @validator = ConfigValidator.new("foo")
+          @validator.require_boolean("some_val")
+          expect(@validator.errors).to eq ["foo:some_val must be true or false (without quotes)."]
+        end
+      end
+      
+      
+      describe :check_cron do
+        it "should OK true" do 
+          cron = { 
+            'hour' => [ 1, 2 ],
+            'day_of_week' => [ 'Tue', 'Wed' ]
+          }
+          expect(Global).to receive(:read_config).with("foo") { { "some_val" => cron } }
+          @validator = ConfigValidator.new("foo")
+          @validator.check_cron("some_val")
+          expect(@validator.errors).to eq []
+        end
+
+        it "should fail if cron specs not a list" do 
+          cron = { 
+            'hour' => 1,
+            'day_of_week' => [ 'Tue', 'Wed' ]
+          }
+          expect(Global).to receive(:read_config).with("foo") { { "some_val" => cron } }
+          @validator = ConfigValidator.new("foo")
+          @validator.check_cron("some_val")
+          expect(@validator.errors).to eq ["foo:some_val - hour is not a list."]
+        end
+
+        it "should fail if not a hash" do 
+          expect(Global).to receive(:read_config).with("foo") { { "some_val" => 123 } }
+          @validator = ConfigValidator.new("foo")
+          @validator.check_cron("some_val")
+          expect(@validator.errors).to eq ["foo:some_val is not a hash."]
+        end
+
+        it "should fail if invalid hash setting" do 
+          cron = { 
+            'hour' => [ 1, 2 ],
+            'day' => [ 'Tue', 'Wed' ]
+          }
+          expect(Global).to receive(:read_config).with("foo") { { "some_val" => cron } }
+          @validator = ConfigValidator.new("foo")
+          @validator.check_cron("some_val")
+          expect(@validator.errors).to eq ["foo:some_val - day is not a valid setting."]
+        end
+      end
     end
   end
 end
