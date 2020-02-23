@@ -84,6 +84,7 @@ module AresMUSH
       
       def check_channel_exists(field)
         name = @config[field] || ""
+        return if name.blank?
         if (!Channel.named(name))
           self.add_error("#{field_key(field)} - #{name} is not a valid channel.")
         end
@@ -100,6 +101,7 @@ module AresMUSH
       
       def check_forum_exists(field)
         name = @config[field] || ""
+        return if name.blank?
         if (!BbsBoard.named(name))
           self.add_error("#{field_key(field)} - #{name} is not a valid forum.")
         end

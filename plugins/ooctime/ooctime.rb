@@ -30,5 +30,10 @@ module AresMUSH
       end
       nil
     end
+    
+    def self.check_config
+      validator = OOCTimeConfigValidator.new
+      validator.validate
+    end
   end
 end
