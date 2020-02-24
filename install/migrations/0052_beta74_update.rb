@@ -26,6 +26,12 @@ module AresMUSH
         config['scenes']['related_scenes_filter_days'] = 90
         DatabaseMigrator.write_config_file("scenes.yml", config)
         
+        Global.logger.debug "Add roster app config."
+        config = DatabaseMigrator.read_config_file("idle.yml")
+        config['idle']['roster_app_template'] = "Tell us why you want to play this character:\n\n\nIf you're not submitting this from an existing character, provide an email where we can get back to you:"
+        config['idle']['roster_app_category'] = 'APP'
+        DatabaseMigrator.write_config_file("idle.yml", config)
+        
       end 
     end
   end

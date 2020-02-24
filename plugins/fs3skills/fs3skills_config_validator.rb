@@ -128,9 +128,7 @@ module AresMUSH
         abilities = Global.read_config('fs3skills', 'languages')
         abilities.each do |s|
           name = s['name'] || "Missing Name"
-          ['name', 'desc'].each do |prop|
-            verify_property_exists(name, s, prop)
-          end
+          verify_property_exists(name, s, 'name')
           if (FS3Skills.check_ability_name(name))
             @validator.add_error "fs3skills:languages #{a['name']} cannot contain special characters."
           end
@@ -156,7 +154,7 @@ module AresMUSH
               @validator.add_error "fs3skills:xp_costs #{type} level #{level} is not a valid level."
             end
             if (level.to_i == 0)
-              @validator.add_error "fs3skills:xp_costs #{type} level 0 always costs 1XP no matter what you put here."
+              @validator.add_error "fs3skills:xp_costs #{type} level 0->1 always costs 1XP no matter what you put here."
             end
           end
           
