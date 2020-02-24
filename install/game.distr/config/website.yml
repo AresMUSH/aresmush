@@ -1,11 +1,18 @@
 ---
 website:
+  achievements:
+    wiki_create:
+      type: portal
+      message: Created a wiki page.
+    wiki_edit:
+      type: portal
+      message: Edited a wiki page.
   allow_html_in_markdown: true
   character_gallery_group: Faction
   character_gallery_subgroup: Position
   left_sidebar: false
-  max_upload_size_kb: 300
   max_folder_size_kb: 2000
+  max_upload_size_kb: 300
   restricted_pages:
   - home
   sitemap_update_cron:
@@ -132,10 +139,3 @@ website:
   website_code_path: "/home/ares/ares-webportal"
   wiki_aliases:
     main: home
-  achievements:
-    wiki_create:
-      type: portal
-      message: Created a wiki page.
-    wiki_edit:
-      type: portal
-      message: Edited a wiki page.

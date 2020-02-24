@@ -25,7 +25,7 @@ en:
         error_installing_plugin: "Error installing plugin %{name}.  Error: %{error}."
         plugins: "Plugins"
         game_config_ok: "No errors were detected in your game configuration."
-        plugin_config_invalid: "One or more of your configuration options have invalid settings: %{errors}"
+        plugin_config_invalid: "Your config is saved, but one or more of your configuration options have invalid settings: %{errors}"
         shutdown: "Shutdown by %{name}."
         shutdown_with_message:  "Shutdown by %{name}: %{message}."
         
