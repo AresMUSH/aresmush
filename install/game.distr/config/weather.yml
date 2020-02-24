@@ -1,21 +1,8 @@
 ---
 weather:
-  temperatures:
-  - hot
-  - warm
-  - cool
-  - cold
-  - freezing
-  conditions:
-  - clear
-  - fair
-  - misty
-  - overcast
-  - drizzling
-  - raining
-  - storming
-  - flurrying
-  - snowing
+  climate_for_area:
+    Offstage: none
+    North: polar
   climates:
     polar:
       spring:
@@ -51,13 +38,17 @@ weather:
         temperature: cold cold cold cold cold cold cold cool cool freezing freezing
         condition: clear clear clear fair fair fair flurrying flurrying overcast snowing
         stability: 70
+  conditions:
+  - clear
+  - fair
+  - misty
+  - overcast
+  - drizzling
+  - raining
+  - storming
+  - flurrying
+  - snowing
   default_climate: temperate
-  climate_for_area:
-    Offstage: none
-    North: polar
-  weather_cron:
-    minute:
-    - 0
   descriptions:
     clear: The skies are clear.
     fair: The weather is fair.
@@ -148,3 +139,12 @@ weather:
     freezing_winter_day: It is a freezing winter day.
     freezing_winter_evening: It is a freezing winter evening.
     freezing_winter_night: It is a freezing winter night.
+  temperatures:
+  - hot
+  - warm
+  - cool
+  - cold
+  - freezing
+  weather_cron:
+    minute:
+    - 0

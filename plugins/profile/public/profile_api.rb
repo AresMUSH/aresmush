@@ -65,8 +65,8 @@ module AresMUSH
           errors << "#{title} #{value} is not a valid demographic."
         end
         
-        if (field == 'group' && !Demographics.all_groups.include?(value))
-          errors << "#{title} is not a valid group."
+        if (field == 'group' && !Demographics.get_group(value))
+          errors << "#{title} is not a valid group #{value}."
         end
       end
       return errors

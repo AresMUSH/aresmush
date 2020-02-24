@@ -5,8 +5,8 @@ fs3skills:
     desc: Noticing things and being aware of your surroundings.
     linked_attr: Perception
   - name: Athletics
-    desc: General running, jumping, climbing, etc.
     linked_attr: Brawn
+    desc: General running, jumping, climbing, etc.
   - name: Composure
     desc: Coolness under pressure.
     linked_attr: Grit

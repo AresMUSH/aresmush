@@ -26,6 +26,8 @@ idle:
   roster_welcome_msg: Welcome!  You may wish to check your %xcnotes%xn and web portal
     profile page for any notes left by the prior player.  Type %xhonstage%xn to go
     forth and RP.
+  roster_app_template: "CONTACT: (email or character name you want to be contacted at)\n\nAPP: (why you want to play this character)"
+  roster_app_category: APP
   roster_fields:
   - field: name
     width: 20

@@ -77,7 +77,6 @@ module AresMUSH
         errors.each do |e|
           @validator.add_error "demographics:census_fields #{e}"
         end
-        
       end
     end
   end
