@@ -190,7 +190,7 @@ spells:
     school: Water
     weapon: Ice Armor
   Ice Blast:
-    available: false
+    available: true
     casting_time: 1 round
     damage_type: Cold
     desc: The caster sends a chunk of snowy ice hurtling at a single target.

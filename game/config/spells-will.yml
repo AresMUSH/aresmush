@@ -279,7 +279,7 @@ spells:
     school: Will
   Transmutation Armor:
     armor: Transmutation
-    available: false
+    available: true
     casting_time: 1 round
     desc: Transforms the caster's clothing into formidable armor.
     duration: 8 hours

@@ -345,7 +345,7 @@ spells:
     target_optional: true
   #LEVEL 6
   Air Form:
-    available: false
+    available: true
     casting_time: 1 round
     defense_mod: 10
     desc: "The caster's body becomes a gaseous cloud and cannot be hit by attacks.\n\nWhile in air form, the caster can pass through small holes or narrow openings, even mere cracks, with anything they were carrying at the time the spell was cast. The form also allows them to float up into the surrounding air in a limited form of flight, capable of moving up to 5 mph."
@@ -370,7 +370,7 @@ spells:
     line_of_sight: true
     available: true
   Storm Armor:
-    available: false
+    available: true
     armor: Storm
     casting_time: 1 round
     desc: "Defensive storms are summoned around the target. Lightning envelopes the target's body, the electric field acting as armor to deflect attacks while swirling clouds make the target more difficult to hit."
