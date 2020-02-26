@@ -161,10 +161,10 @@ module AresMUSH
           post_body)
       end
 
-      Jobs.create_job(Global.read_config("chargen", "app_category"),
-         t('chargen.approval_post_subject', :name => model.name),
-         Global.read_config("chargen", "post_approval_message"),
-         Game.master.system_character)
+      # Jobs.create_job(Global.read_config("chargen", "app_category"),
+      #    t('chargen.approval_post_subject', :name => model.name),
+      #    Global.read_config("chargen", "post_approval_message"),
+      #    Game.master.system_character)
 
        Chargen.custom_approval(model)
 
