@@ -440,7 +440,7 @@ spells:
     roll: true
     school: Corpus
     casting_time: 1 round
-    range: Self 
+    range: Self
   Speed Boost:
     available: false
     attack_mod: 2
@@ -466,6 +466,18 @@ spells:
     level: 7
     name: Brink Of Death
     range: Touch
+    school: Corpus
+    target_num: 1
+    target_optional: true
+  Detect Ancestry:
+    available: false
+    casting_time: 1 round
+    desc: "The caster is able to determine information about the target's genealogy. They can determine the biological relationships between individuals, including the level and type of the genetic relationship between them. They are able to identify all of the target's ethnicities and species, including any magical creature ancestries.\n\nWith additional work and knowledge, they are also able to trace the lineage of the target, including where their ancestors might have come from and relationships between families. Tracing lineages and relationships requires magical access to or knowledge of said lineage."
+    effect: Other
+    level: 7
+    name: Detect Ancestry
+    range: Touch
+    roll: true
     school: Corpus
     target_num: 1
     target_optional: true
