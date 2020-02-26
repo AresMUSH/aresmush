@@ -66,10 +66,7 @@ module AresMUSH
       #   return nil
       if ((target.mind_shield > 0 || target.endure_fire > 0 || target.endure_cold > 0 ) && Magic.is_magic_weapon(combatant.weapon))
         damage_type = Global.read_config("spells", spell, "damage_type")
-        puts "SPELL #{spell}"
-        puts "DAMAGE TYPE: #{damage_type}"
         roll_shield = Magic.check_shield(target, combatant.name, spell, result)
-        puts "ROLL SHIELD #{roll_shield}"
         if roll_shield == "shield"
           if (damage_type == "Fire" && target.endure_fire > 0)
             return "Endure Fire Held"

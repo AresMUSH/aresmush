@@ -517,11 +517,19 @@ module AresMUSH
 
       messages = []
 
-      damage_type = Global.read_config("spells", weapon, "damage_type")
+
+      if weapon == "Cold Shrapnel"
+        damage_type = "Cold"
+      elsif weapon == "Fire Shrapnel"
+        damage_type = "Fire"
+      else
+        damage_type = Global.read_config("spells", weapon, "damage_type")
+      end
+
       if (damage_type == "Fire" && target.endure_fire > 0)
-        messages.concat [t('custom.shield_failed', :name => attacker.name, :spell => weapon, :mod => "", :shield => "Endure Fire", :target => target.name)]
+        messages.concat [t('custom.shield_failed', :name => attack_name, :spell => weapon, :mod => "", :shield => "Endure Fire", :target => target.name)]
       elsif (damage_type == "Cold" && target.endure_cold > 0)
-        messages.concat [t('custom.shield_failed', :name => attacker.name, :spell => weapon, :mod => "", :shield => "Endure Cold", :target => target.name)]
+        messages.concat [t('custom.shield_failed', :name => attack_name, :spell => weapon, :mod => "", :shield => "Endure Cold", :target => target.name)]
       end
 
 

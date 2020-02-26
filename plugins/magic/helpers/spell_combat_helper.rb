@@ -58,6 +58,7 @@ module AresMUSH
 
     def self.determine_magic_attack_margin(combatant, target, called_shot = nil, result, spell)
       weapon = combatant.weapon
+      puts "WEAPON: #{weapon}"
       attack_roll = result
       defense_roll = FS3Combat.roll_defense(target, weapon)
 
@@ -354,8 +355,13 @@ module AresMUSH
 
       if (FS3Combat.weapon_stat(combatant.weapon, "has_shrapnel"))
         shrapnel = rand(max_shrapnel)
+        puts "SHRAPNEL #{shrapnel}"
+        damage_type = Global.read_config("spells", spell, "damage_type")
         shrapnel.times.each do |s|
-          messages.concat FS3Combat.resolve_attack(nil, combatant.name, target, "Shrapnel")
+          puts "Doing shrapnel"
+          margin = Magic.determine_magic_attack_margin(combatant, target, result = result, spell)
+          attacker_net_successes = margin[:attacker_net_successes]
+          messages.concat FS3Combat.resolve_attack(nil, combatant.name, target, "#{damage_type} Shrapnel", attacker_net_successes)
         end
       end
       return messages
