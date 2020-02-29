@@ -127,6 +127,8 @@ module AresMUSH
           f.puts blacklist
         end
       end
+      # Reset the cache so it reloads next time.
+      Login.blacklist = nil
     end
     
     def self.check_login(char, password, ip_addr, hostname)
@@ -139,7 +141,7 @@ module AresMUSH
       end
 
       if (Login.is_banned?(char, ip_addr, hostname))
-        return { status: 'error',  error: t('login.site_blocked') }
+        return { status: 'error',  error: Login.site_blocked_message }
       end
 
       if (char.handle && AresCentral.is_registered?)
@@ -170,6 +172,12 @@ module AresMUSH
       
       Login.update_site_info(ip_addr, hostname, char)
       return { status: 'ok' }
+    end
+    
+    def self.site_blocked_message
+      Global.read_config("sites", "ban_proxies") ? 
+         t('login.site_blocked_proxies') : 
+         t('login.site_blocked')
     end
   end
 end

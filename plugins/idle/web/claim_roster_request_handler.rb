@@ -10,7 +10,7 @@ module AresMUSH
                         
         # Duplicated from check_login because we're allowing anonymous logins, just not banned sites.
         if (Login.is_banned?(enactor, request.ip_addr, request.hostname))
-          return { status: 'error',  error: t('login.site_blocked') }
+          return { status: 'error',  error: Login.site_blocked_message }
         end
             
         char = Character[request.args[:id]]
