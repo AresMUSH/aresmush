@@ -18,6 +18,7 @@ jobs:
   default_status: NEW
   open_status: OPEN
   request_category: REQ
+  status_filters: {}
   shortcuts:
     jobs: job
     requests: request

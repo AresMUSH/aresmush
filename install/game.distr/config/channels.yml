@@ -32,4 +32,4 @@ channels:
     delcom: channel/leave
     comtitle: channel/title
     channel/name: channel/rename
-  start_marker: ">"
+  start_marker: "<"
