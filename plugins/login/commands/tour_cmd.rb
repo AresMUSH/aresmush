@@ -25,7 +25,7 @@ module AresMUSH
         end
         
         if (Login.is_banned?(nil, client.ip_addr, client.hostname))
-          client.emit_failure t('login.site_blocked')
+          client.emit_failure Login.site_blocked_message
           return
         end
         

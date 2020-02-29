@@ -12,7 +12,7 @@ module AresMUSH
         end
         
         if (Login.is_banned?(char, request.ip_addr, request.hostname))
-          return { status: 'error',  error: t('login.site_blocked') }
+          return { status: 'error',  error: Login.site_blocked_message }
         end
         
         
