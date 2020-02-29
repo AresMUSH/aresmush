@@ -220,7 +220,7 @@ module AresMUSH
            
       def validate_starting_skills_list(skills)
         if (!skills || !skills.kind_of?(Hash))
-          @validator.add_error "fs3skills:starting_skills #{name} is missing a skills list."
+          @validator.add_error "fs3skills:starting_skills is not a hash."
         end
       
         skills.each do |skill, rating|
