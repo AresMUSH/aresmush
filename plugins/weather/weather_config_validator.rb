@@ -45,7 +45,7 @@ module AresMUSH
           end
           
         rescue Exception => ex
-          @validator.add_error "Unknown weather config error.  Fix other errors first and try again. #{ex}"
+          @validator.add_error "Unknown weather config error.  Fix other errors first and try again. #{ex} #{ex.backtrace[0]}"
           
         end
         
