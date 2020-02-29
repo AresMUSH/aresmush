@@ -31,11 +31,16 @@ module AresMUSH
           
           host_and_ip = "IP: #{model.last_ip}  Host: #{model.last_hostname}"
           Global.logger.warn "#{model.name} banned by #{enactor_name}.  #{host_and_ip}"
-                    
+
+          alts = AresCentral.alts(model)
+          alts.each do |alt|
+            if (!alt.is_admin?)
+              Login.set_random_password(alt)
+            end
+          end
           if (model.handle)
             model.handle.delete
           end
-          Login.set_random_password(model)
            
           begin
             config = DatabaseMigrator.read_config_file("sites.yml")
