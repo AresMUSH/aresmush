@@ -19,6 +19,7 @@ module AresMUSH
         {
           status_values: Jobs.status_vals,
           category_values: Jobs.categories,
+          status_filters: Jobs.status_filters,
           category_templates: category_templates,
           request_category: Jobs.request_category,
           is_job_admin: is_job_admin,

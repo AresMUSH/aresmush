@@ -65,6 +65,14 @@ module AresMUSH
       jobs
     end
     
+    def self.status_filters
+      base = [ "ACTIVE", "MINE", "UNREAD", "UNFINISHED", "ALL" ]
+      status_filters = (Global.read_config("jobs", "status_filters") || {})
+          .keys
+          .map { |k| k.upcase }
+      base.concat status_filters
+    end
+    
     def self.filtered_jobs(char, filter = nil)
       if (!filter)
         filter = char.jobs_filter
@@ -81,8 +89,16 @@ module AresMUSH
         jobs = char.unread_jobs
       when "ALL"
         jobs = Jobs.accessible_jobs(char)
-      else # Category filter
-        jobs = Jobs.accessible_jobs(char, [ filter ]).select { |j| j.is_active? || j.is_unread?(char) }
+      else 
+        # Category or status filter
+        if (Jobs.status_filters.include?(filter))
+          statuses = Global.read_config("jobs", "status_filters")
+                     .select { |k, v| k.upcase == filter.upcase }.values.first # This gives a list.
+                     .map { |k| k.upcase }
+          jobs = Jobs.accessible_jobs(char).select { |j| statuses.include?(j.status) }
+        else
+          jobs = Jobs.accessible_jobs(char, [ filter ]).select { |j| j.is_active? || j.is_unread?(char) }
+        end
       end
         
       jobs.sort_by { |j| j.created_at }
@@ -256,7 +272,9 @@ module AresMUSH
     end
     
     def self.check_filter_type(filter)
-      types = ["ACTIVE", "MINE", "ALL", "UNFINISHED", "UNREAD"].concat(Jobs.categories)
+      types = ["ACTIVE", "MINE", "ALL", "UNFINISHED", "UNREAD"]
+         .concat(Jobs.categories)
+         .concat(Jobs.status_filters)
       return t('jobs.invalid_filter_type', :names => types) if !types.include?(filter)
       return nil
     end
