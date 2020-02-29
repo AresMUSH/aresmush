@@ -30,7 +30,7 @@ module AresMUSH
           check_roster_fields
           
         rescue Exception => ex
-          @validator.add_error "Unknown idle config error.  Fix other errors first and try again. #{ex}"
+          @validator.add_error "Unknown idle config error.  Fix other errors first and try again. #{ex} #{ex.backtrace[0]}"
         end
         
         @validator.errors

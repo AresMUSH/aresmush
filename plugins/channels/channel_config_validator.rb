@@ -31,7 +31,7 @@ module AresMUSH
         
           @validator.check_channel_exists("announce_channel")
         rescue Exception => ex
-          @validator.add_error "Unknown channel config error.  Fix other errors first and try again. #{ex}"
+          @validator.add_error "Unknown channel config error.  Fix other errors first and try again. #{ex} #{ex.backtrace[0]}"
         end
         
         @validator.errors
