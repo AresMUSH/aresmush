@@ -86,10 +86,17 @@ en:
         
         
         statue_title: "Player Statue"
-        statue_message: "%{statue} from %{host} has been turned to a statue by %{actor}.   Reason:%R%{reason}"
+        statue_message: "%{name} from %{host} has been turned to a statue by %{actor}.   Reason:%R%{reason}"
         unstatue_message: "%{actor} has unlocked %{statue} (%{host}) from being a statue.   Reason:%R%{reason}"
         no_longer_statue: "You are no longer a statue.  Please play nice."
         cant_statue_admins: "You can't statue another admin."
+        
+        ban_title: "Player Banned"
+        ban_message: "%{name} from %{host} has been banned by %{actor}.   Reason:%R%{reason}"
+        cant_ban_admins: "You can't ban another admin."
+        player_banned: "%{name} has been banned."
+        ban_config_error: "%{name} has been banned, but there was a problem reloading your config files. See config/check for details."
+        you_have_been_banned: "You have been banned."
         
         config_restored: "Config file %{name} restored to defaults."
         error_restoring_config: "There was a problem restoring the config file.  Check the name.  Error: %{error}"
