@@ -19,5 +19,5 @@ These locks are temporary.  The game periodically clears the locks on empty room
 
 Builders can also lock exits to a list of roles - for instance if you had a "rebel" role you could lock a secret rebel exit to "rebel" so only rebels could use it.  Role locks are not limited to interior rooms; any exit can be locked.
 
-`lock <exit>=<list of roles who are allowed in>`
+`lock <exit>=<list of roles who are allowed in, comma-separated>`
 `unlock <exit>`

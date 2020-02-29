@@ -62,15 +62,31 @@ module AresMUSH
        end
      end
      
-     def self.claim_roster(model)
+     def self.roster_app_required?(char)
+       return true if Global.read_config('idle', 'restrict_roster')
+       return char.roster_restricted
+     end
+     
+     def self.claim_roster(model, enactor, app_text = nil)
+       enactor_name = enactor ? enactor.name : "Anonymous"
        if (!model.on_roster?)
          return { error: t('idle.not_on_roster', :name => model.name) }
        end
        
-       if (model.roster_restricted)
-         return { error: t('idle.contact_required') }
+       if (Idle.roster_app_required?(model))
+         if (app_text.blank?)
+           return { error: t('idle.roster_app_required') }
+         else
+           category = Global.read_config('idle', 'roster_app_category') || "APP"
+           title = t('idle.roster_app_title', :name => model.name)
+           body = t('idle.roster_app_body', :target => model.name, :name => enactor_name, :app => app_text )
+           Jobs.create_job(category, title, body, Game.master.system_character)
+           return {}
+         end
        end
 
+       Global.logger.info("#{enactor_name} claimed #{model.name} from the roster.")
+       
        password = Login.set_random_password(model)
        model.update(idle_state: nil)
        model.update(terms_of_service_acknowledged: nil)

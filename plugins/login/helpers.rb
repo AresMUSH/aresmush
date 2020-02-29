@@ -1,5 +1,7 @@
 module AresMUSH
   module Login
+    mattr_accessor :blacklist
+    
     def self.can_access_email?(actor, model)
       return true if actor == model
       actor.has_permission?("manage_login")
@@ -57,26 +59,39 @@ module AresMUSH
       end
     end
     
-    def self.is_banned?(ip_addr, hostname)
-      suspects = Global.read_config("sites", "banned") || []
-      
-      if (Global.read_config("sites", "ban_proxies"))
-        blacklist_file = File.join(AresMUSH.game_path, "text", "blacklist.txt")
-        if (File.exists?(blacklist_file))
-          blacklist = File.readlines(blacklist_file)
-          suspects.concat blacklist
-        end
-      end
-            
-      return false if suspects.empty?
-      
+    # Char may be nil
+    def self.is_banned?(char, ip_addr, hostname)
       hostname = hostname ? hostname.downcase : "" 
       
-      suspects.each do |s|
+      # Admins can never be banned.  Take away their admin privs first!
+      return false if char && char.is_admin?
+
+      # Check explicitly banned sites.
+      banned = Global.read_config("sites", "banned") || []
+      banned.each do |s|
         if (Login.is_site_match?(ip_addr, hostname, s, s))
           return true
         end
       end
+      
+      # If the character is not approved and proxy ban is enabled, check the proxy list.
+      return false if char && char.is_approved?
+      return false if !Global.read_config("sites", "ban_proxies")
+
+      if (!Login.blacklist)
+        text = Global.config_reader.get_text('blacklist.txt')
+        if (text)
+          Login.blacklist = text.split("\n")
+        else
+          Login.blacklist = []
+        end
+      end
+      Login.blacklist.each do |s|
+        if (Login.is_site_match?(ip_addr, hostname, s, s))
+          return true
+        end
+      end
+      
       return false
     end
     
@@ -112,6 +127,8 @@ module AresMUSH
           f.puts blacklist
         end
       end
+      # Reset the cache so it reloads next time.
+      Login.blacklist = nil
     end
     
     def self.check_login(char, password, ip_addr, hostname)
@@ -123,8 +140,8 @@ module AresMUSH
         return { status: 'error', error: t('dispatcher.you_are_statue') }
       end
 
-      if (Login.is_banned?(ip_addr, hostname))
-        return { status: 'error',  error: t('login.site_blocked') }
+      if (Login.is_banned?(char, ip_addr, hostname))
+        return { status: 'error',  error: Login.site_blocked_message }
       end
 
       if (char.handle && AresCentral.is_registered?)
@@ -153,7 +170,14 @@ module AresMUSH
         return { status: 'error', error: t('login.password_incorrect') }
       end
       
+      Login.update_site_info(ip_addr, hostname, char)
       return { status: 'ok' }
+    end
+    
+    def self.site_blocked_message
+      Global.read_config("sites", "ban_proxies") ? 
+         t('login.site_blocked_proxies') : 
+         t('login.site_blocked')
     end
   end
 end

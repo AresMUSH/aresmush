@@ -18,7 +18,7 @@ module AresMUSH
         end
  
         options = Channels.get_channel_options(enactor, channel)
-        message = Channels.pose_to_channel channel, enactor.ooc_name, message, options.title   
+        message = Channels.pose_to_channel channel, enactor, message, options.title   
         
         {
           message: Website.format_markdown_for_html(message)

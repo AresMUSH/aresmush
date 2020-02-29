@@ -19,7 +19,7 @@ module AresMUSH
     
     def parse_targets(name_string)
       return t('fs3combat.no_targets_specified') if (name_string.blank?)
-      target_names = name_string.split(" ").map { |n| InputFormatter.titlecase_arg(n) }
+      target_names = name_string.split(" ").map { |n| InputFormatter.titlecase_arg(n) }.uniq
       targets = []
       target_names.each do |name|
         target = self.combat.find_combatant(name)

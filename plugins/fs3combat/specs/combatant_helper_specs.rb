@@ -18,7 +18,6 @@ module AresMUSH
           allow(@combatant).to receive(:total_damage_mod) { 0 }
           allow(@combatant).to receive(:attack_stance_mod) { 0 }
           allow(@combatant).to receive(:stress) { 0 }
-          allow(@combatant).to receive(:distraction) { 0 }
           allow(@combatant).to receive(:attack_mod) { 0 }
           allow(@combatant).to receive(:is_aiming?) { false }
           allow(@combatant).to receive(:weapon) { "Knife" }
@@ -59,12 +58,6 @@ module AresMUSH
         it "should account for wound modifiers" do
           allow(@combatant).to receive(:total_damage_mod) { -1 }
           expect(@combatant).to receive(:roll_ability).with("Knives", -1)
-          FS3Combat.roll_attack(@combatant, @target)
-        end
-        
-        it "should account for distract modifiers" do
-          allow(@combatant).to receive(:distraction) { 2 }
-          expect(@combatant).to receive(:roll_ability).with("Knives", -2)
           FS3Combat.roll_attack(@combatant, @target)
         end
         
@@ -140,7 +133,6 @@ module AresMUSH
           allow(@combatant).to receive(:total_damage_mod) { 0 }
           allow(@combatant).to receive(:defense_stance_mod) { 0 }
           allow(@combatant).to receive(:defense_mod) { 0 }
-          allow(@combatant).to receive(:distraction) { 0 }
           allow(@combatant).to receive(:luck)
           allow(@combatant).to receive(:armor) { "armor" }
           allow(FS3Combat).to receive(:weapon_defense_skill) { "Reaction" }
@@ -160,12 +152,6 @@ module AresMUSH
           FS3Combat.roll_defense(@combatant, "Knife")
         end
         
-        it "should account for distract modifiers" do
-          allow(@combatant).to receive(:distraction) { 2 }
-          expect(@combatant).to receive(:roll_ability).with("Reaction", -2)
-          FS3Combat.roll_defense(@combatant, "Knife")
-        end
-                
         it "should account for stance modifiers" do
           allow(@combatant).to receive(:defense_stance_mod) { 1 }
           expect(@combatant).to receive(:roll_ability).with("Reaction", 1)

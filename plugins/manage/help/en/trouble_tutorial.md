@@ -5,9 +5,6 @@ tutorial: true
 title: Dealing with Harassment and Abuse
 aliases:
 - trouble
-- ban
-- siteban
-- sitelock
 - harassment
 - harassing
 - harass
@@ -29,7 +26,7 @@ Unfortunately, you will sometimes have troublesome players who are trolling, har
 
 If someone is causing a ruckus, you can forcibly disconnect them using the `boot` command.
 
-> **Note:** It is preferable to let the game admin deal with problem players.  However, the default Ares configuration allows all approved characters to use the boot command.  This helps players protect each other even when an admin is not available. 
+Normally this would be done by game admin, but the default Ares configuration allows all approved characters to use the boot command.  This helps players protect each other even when an admin is not available. All uses of the boot command are logged and require the player to specify the reason.
 
 ### Reporting Channel Abuse
 
@@ -59,15 +56,15 @@ The `statue` command, similar to Rhost's FUBAR flag or MUX's @toad, can deter tr
 
 ### Unapproving Trolls
 
-Most game-altering commands (building, posting to forums, starting scenes) are locked to approved characters by default.  This inherently protects you against malicious guests and characters fresh off the login screen.  If an already-approved character causes mischief, you can unapprove them to deny them access to these commands.  See `help manage apps` in-game.
+Most game-altering commands (building, posting to forums, starting scenes) are locked to approved characters by default.  This inherently protects you against malicious guests and characters fresh off the login screen.  If an already-approved character causes mischief, you can unapprove them using `app/unapprove` to deny them access to these commands.  
 
 ### Banning Trolls
 
-In the [Web Portal banned/suspect sites configuration](http://aresmush.com/tutorials/config/sites.html), you can designate certain IP addresses and/or hostnames as suspect or banned sites.  
+Banning a site doesn't target a particular character, but a particular IP or hostname.  It prevents ANY characters from logging in, being created, or accessing the web portal from that site.  Be aware that this could potentially block _other_ players logging in from the same ISP.
 
-Banning a site prevents players from logging in at all from that site.
+In the [Web Portal banned/suspect sites configuration](http://aresmush.com/tutorials/config/sites.html), you can designate specific IP addresses and/or hostnames as banned sites.
 
-Marking a site as suspect will alert you (via staff job) any time a new character first logs in for the first time from that site.
+The `ban` command is a shortcut for editing the site config and re-passwording a troublesome player and all their alts.
 
 ### Blacklisting Proxy Sites
 
@@ -77,8 +74,20 @@ If someone is using a proxy server, banning them can be like playing whack-a-mol
 
 To ban proxy sites, simply enable the option in the [Web Portal banned/suspect sites configuration](/tutorials/config/sites.html)
 
+Game admin and approved characters can connect from a proxy site, even if the proxy blacklist is enabled. If you need to ban someone who's admin/approved, be sure to unapprove or remove their admin privileges first.
+
 > **Note:** There are thousands of proxy IPs on the Internet, and the list is constantly changing.  Blocking them all is impossible, but blocking some can sometimes be better than nothing.
+
+### Setting Suspects
+
+Suspect sites are ones that aren't banned, but you want to be alerted (via staff job) if anyone new comes from that site.  You might use this if someone is on probation and you want to know if they try to create a new alt.
+
+In the [Web Portal banned/suspect sites configuration](http://aresmush.com/tutorials/config/sites.html), you can designate specific IP addresses and/or hostnames as suspect sites.
+
+> **Note:** Setting a site suspect does not enact any special logging, unlike the SUSPECT flag in other MU servers.
 
 ### Monitoring Trolls
 
-General commands appear in the [game log](http://aresmush.com/tutorials/code/logs.html), but private conversations (pages, poses, mail and channels) are not.  Ares does not have a 'SUSPECT' flag in the way you might be used to from other MU* servers.  It is often used for malicious purposes and rarely for good.  Players have tools to report page and channel harassment, as explained in the *Player Commands* section above.
+General commands appear in the [game log](http://aresmush.com/tutorials/code/logs.html), but private conversations (pages, poses, mail and channels) are not.  Players have tools to report page and channel harassment, as explained in the *Player Commands* section above.
+
+Ares does not have a 'SUSPECT' flag in the way you might be used to from other MU* servers.  It is often used for malicious purposes and rarely for good.

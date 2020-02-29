@@ -19,6 +19,7 @@ module AresMUSH
           allow(config_reader).to receive(:load_game_config)
           allow(config_reader).to receive(:validate_game_config)
           allow(help_reader).to receive(:load_game_help)
+          allow(plugin_manager).to receive(:check_plugin_config) { [] }
           @plugin = double
           allow(plugin_manager).to receive(:plugins) { [@plugin] }
         end
@@ -32,6 +33,12 @@ module AresMUSH
         it "should handle errors from game config" do
           expect(config_reader).to receive(:validate_game_config).and_raise("error")
           expect(@client).to receive(:emit_failure).with('manage.game_config_invalid')
+          @handler.handle
+        end   
+        
+        it "should handle errors from plugin config" do
+          allow(plugin_manager).to receive(:check_plugin_config) { [ 'errors' ] }
+          expect(@client).to receive(:emit_failure).with('manage.error_loading_config')
           @handler.handle
         end    
         

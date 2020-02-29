@@ -5,12 +5,12 @@ module AresMUSH
         client = event.client
         
         # Connect screen ansi
-        filename = File.join(AresMUSH.game_path, 'text', 'connect.txt')        
+        connect_text = Global.config_reader.get_text('connect.txt')
         
-        if (File.exist?(filename))
-          client.emit File.read(filename, :encoding => "UTF-8")
+        if (connect_text)
+          client.emit connect_text
         else
-          Global.logger.warn "Connect screen #{filename} missing!"
+          Global.logger.warn "Connect screen missing!"
         end
 
         # Ares welcome text

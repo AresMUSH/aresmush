@@ -6,7 +6,7 @@ idle:
   - coder
   - guest
   monthly_reminder_cron:
-    date:
+    day:
     - 1
     hour:
     - 15
@@ -26,6 +26,9 @@ idle:
   roster_welcome_msg: Welcome!  You may wish to check your %xcnotes%xn and web portal
     profile page for any notes left by the prior player.  Type %xhonstage%xn to go
     forth and RP.
+  roster_app_template: "Tell us why you want to play this character:\n\n\nIf you're not submitting this from an existing character, provide an email where we can get back to you:"
+  roster_app_category: APP
+  restrict_roster: false
   roster_fields:
   - field: name
     width: 20

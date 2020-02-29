@@ -31,7 +31,7 @@ en:
 
         roster_disabled: "This game does not use the roster system."
         roster_title: "Character Roster"
-        contact_required: "You need to talk to this character's contact person before you can claim them."
+        roster_app_required: "An application is required for this roster char."
         roster_updated: "Roster updated."
         roster_column_titles: "Played?"
         not_on_roster: "%{name} is not on the roster."
@@ -41,13 +41,16 @@ en:
         wiki_page: "Wiki Page:"
         notes: "Notes:"
         contact: "Contact:"
-        star_means_contact_required: "Unless marked with a (*), chars can be claimed simply by using %xcroster/claim <name>%xn."
         roster_claim: "Use %xcroster/claim %{name}%xn to claim this character."
+        roster_app: "Use %xcroster/claim %{name}=<app>%xn to apply for this character."
         roster_claimed: "You have claimed %{name}.  Their new password is: %{password}"
         roster_post_subject: "Roster Character Claimed"
         roster_post_body: "%{name} has been claimed off the roster."
         roster_welcome_msg_subject: "Welcome!"
         roster_url_hint: "The roster can be viewed more easily on the web portal: %{url}."
+        roster_app_title: "Roster App - %{name}"
+        roster_app_submitted: "You have submitted your application for %{name}."
+        roster_app_body: "%xhApp For:%xn %{target}%%xhRFrom:%xn %{name}%R%R%{app}"
         
         destroy_approved_warning: "WARNING! Destroying approved characters is not advised. See help idle sweep for details."
         

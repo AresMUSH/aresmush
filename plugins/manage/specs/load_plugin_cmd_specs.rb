@@ -98,6 +98,13 @@ module AresMUSH
           @handler.handle
         end
         
+        it "should warn if config is bad but still proceed with the load" do
+          expect(config_reader).to receive(:validate_game_config) { raise "Error" }
+          expect(config_reader).to receive(:load_game_config)
+          expect(plugin_manager).to receive(:load_plugin).with("foo")
+          expect(@client).to receive(:emit_failure).with("manage.game_config_invalid")
+          @handler.handle
+        end        
       end
     end
   end

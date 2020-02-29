@@ -16,6 +16,8 @@ module AresMUSH
         return AliasCmd
       when "announce"
         return AnnounceCmd
+      when "ban"
+        return BanCmd
       when "dbbackup"
         return BackupCmd
       when "config"

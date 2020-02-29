@@ -10,7 +10,6 @@ module AresMUSH
       stress_mod = combatant.stress
       aiming_mod = (combatant.is_aiming? && (combatant.aim_target == combatant.action.target)) ? 3 : 0
       luck_mod = (combatant.luck == "Attack") ? 3 : 0
-      distraction_mod = combatant.distraction
 
       if (combatant.mount_type && !target.mount_type)
         mount_mod = FS3Combat.mount_stat(combatant.mount_type, "mod_vs_unmounted")
@@ -20,9 +19,9 @@ module AresMUSH
         mount_mod = 0
       end
 
-      combatant.log "Attack roll for #{combatant.name} ability=#{ability} aiming=#{aiming_mod} mod=#{mod} accuracy=#{accuracy_mod} damage=#{damage_mod} stance=#{stance_mod} mount=#{mount_mod} luck=#{luck_mod} stress=#{stress_mod} special=#{special_mod} distract=#{distraction_mod}"
+      combatant.log "Attack roll for #{combatant.name} ability=#{ability} aiming=#{aiming_mod} mod=#{mod} accuracy=#{accuracy_mod} damage=#{damage_mod} stance=#{stance_mod} mount=#{mount_mod} luck=#{luck_mod} stress=#{stress_mod} special=#{special_mod}"
 
-      mod = mod + accuracy_mod + damage_mod + stance_mod + aiming_mod + luck_mod - stress_mod + special_mod - distraction_mod + mount_mod
+      mod = mod + accuracy_mod + damage_mod + stance_mod + aiming_mod + luck_mod - stress_mod + special_mod + mount_mod
       
       
       combatant.roll_ability(ability, mod)
@@ -35,12 +34,11 @@ module AresMUSH
       damage_mod = combatant.total_damage_mod
       special_mod = combatant.defense_mod
       dodge_mod = FS3Combat.vehicle_dodge_mod(combatant)
-      distraction_mod = combatant.distraction
       armor_mod = FS3Combat.armor_stat(combatant.armor, 'defense') || 0
       
-      mod = stance_mod + luck_mod + damage_mod + special_mod + dodge_mod + armor_mod - distraction_mod
+      mod = stance_mod + luck_mod + damage_mod + special_mod + dodge_mod + armor_mod
       
-      combatant.log "Defense roll for #{combatant.name} ability=#{ability} stance=#{stance_mod} damage=#{damage_mod} luck=#{luck_mod} special=#{special_mod} armor=#{armor_mod} dodge=#{dodge_mod} distract=#{distraction_mod}"
+      combatant.log "Defense roll for #{combatant.name} ability=#{ability} stance=#{stance_mod} damage=#{damage_mod} luck=#{luck_mod} special=#{special_mod} armor=#{armor_mod} dodge=#{dodge_mod}"
       
       combatant.roll_ability(ability, mod)
     end

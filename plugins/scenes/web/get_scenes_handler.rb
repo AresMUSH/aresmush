@@ -9,8 +9,11 @@ module AresMUSH
         
         # Special limited filter for related scenes list
         if (filter == 'Related')
+          related_filter_days = Global.read_config("scenes", "related_scenes_filter_days") || 90
           return {
-            scenes: Scene.shared_scenes.sort_by { |s| s.date_shared || s.created_at }
+            scenes: Scene.shared_scenes
+            .select { |s| s.days_since_shared < related_filter_days }
+            .sort_by { |s| s.date_shared || s.created_at }
             .reverse.map { |s| {
               id: s.id,
               title: s.title

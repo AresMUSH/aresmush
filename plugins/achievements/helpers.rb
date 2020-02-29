@@ -22,5 +22,9 @@ module AresMUSH
       data = Achievements.all_achievements
       data.select { |k, v| k.downcase == achievement.downcase }.values.first
     end
+    
+    def self.format_achievement_name(name)
+      name ? name.downcase.split.join("_") : nil
+    end
   end  
 end

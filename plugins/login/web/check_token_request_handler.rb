@@ -11,6 +11,11 @@ module AresMUSH
           return { error: t('webportal.not_found') }
         end
         
+        if (Login.is_banned?(char, request.ip_addr, request.hostname))
+          return { status: 'error',  error: Login.site_blocked_message }
+        end
+        
+        
         if (char.is_statue?)
           return { error: t('dispatcher.you_are_statue') }
         end

@@ -3,6 +3,8 @@ module AresMUSH
     
     def self.new_scene_activity(scene, activity_type, data)
       last_posed = scene.last_posed ? scene.last_posed.name : nil
+      
+      # **NOTE** Don't add any more pipes after 'data' because poses can contain pipes.
       web_msg = "#{scene.id}|#{last_posed}|#{activity_type}|#{data}"
       Global.client_monitor.notify_web_clients(:new_scene_activity, web_msg) do |char|
         Scenes.can_read_scene?(char, scene) && Scenes.is_watching?(scene, char)

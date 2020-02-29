@@ -65,21 +65,47 @@ module AresMUSH
        content_type :json
        handle_request
      end
+
+     post '/api/webhook' do
+       content_type :json
+       handle_webhook
+     end
+          
+     post '/webhook' do
+       content_type :json
+       handle_webhook
+     end
      
 
      def handle_request
        AresMUSH.with_error_handling(nil, "Web Request") do
-         webReq = WebRequest.new(params)
-         webReq.ip_addr = request.ip
-         webReq.hostname = request.host
-         if (!webReq.check_api_key)
+         web_request = WebRequest.new(params)
+         web_request.ip_addr = request.ip
+         web_request.hostname = request.host
+         if (!web_request.check_api_key)
            return { error: "Invalid authentication key.  This can happen when the game restarts.  Try refreshing the page." }.to_json
          end
         
-         response = Global.dispatcher.on_web_request(webReq)
+         response = Global.dispatcher.on_web_request(web_request)
          return response.to_json
        end
        return { error: "Sorry, something went wrong with the web request." }.to_json
+     end
+     
+     def handle_webhook
+       AresMUSH.with_error_handling(nil, "Web Request") do
+         request_params = {
+           cmd: 'webhook',
+           args: JSON.parse(request.body.read)
+         }
+         web_request = WebRequest.new(request_params)
+         web_request.ip_addr = request.ip
+         web_request.hostname = request.host
+         
+         response = Global.dispatcher.on_web_request(web_request)
+         return response.to_json
+       end
+       return { error: "Sorry, something went wrong with the webhook request." }.to_json
      end
     
     

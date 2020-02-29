@@ -136,9 +136,15 @@ module AresMUSH
         return ShutdownRequestHandler
       when "deployWebsite"
         return DeployWebsiteRequestHandler
+      when "webhook"
+        return WebhookRequestHandler
       end
       nil
     end
     
+    def self.check_config
+      validator = WebsiteConfigValidator.new
+      validator.validate
+    end
   end
 end

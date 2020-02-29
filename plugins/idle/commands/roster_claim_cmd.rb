@@ -4,10 +4,12 @@ module AresMUSH
     class RosterClaimCmd
       include CommandHandler
       
-      attr_accessor :name
+      attr_accessor :name, :app
       
       def parse_args
-        self.name = titlecase_arg(cmd.args)
+        args = cmd.parse_args(ArgParser.arg1_equals_optional_arg2)
+        self.name = titlecase_arg(args.arg1)
+        self.app = trim_arg(args.arg2)
       end
        
       def required_args
@@ -22,11 +24,13 @@ module AresMUSH
       
       def handle
         ClassTargetFinder.with_a_character(self.name, client, enactor) do |model|
-          response = Idle.claim_roster(model)
+          response = Idle.claim_roster(model, enactor, self.app)
           if (response[:error])
             client.emit_failure response[:error]
-          else
+          elsif (response[:password])
             client.emit_success t('idle.roster_claimed', :name => model.name, :password => response[:password])
+          else
+            client.emit_success t('idle.roster_app_submitted', :name => model.name)
           end
         end
       end

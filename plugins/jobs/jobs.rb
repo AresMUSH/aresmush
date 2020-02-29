@@ -153,5 +153,10 @@ module AresMUSH
       end
       nil
     end
+    
+    def self.check_config
+      validator = JobsConfigValidator.new
+      validator.validate
+    end
   end
 end

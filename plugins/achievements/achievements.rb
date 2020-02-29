@@ -41,6 +41,9 @@ module AresMUSH
       end
     end
 
-
+    def self.check_config
+      validator = AchievementConfigValidator.new
+      validator.validate
+    end
   end
 end
