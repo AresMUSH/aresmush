@@ -1,6 +1,6 @@
 module AresMUSH
   module Login
-    class ConfigUpdatedEventHandler
+    class GameStartedEventHandler
       def on_event(event)
         Global.dispatcher.spawn("Getting rhost blacklist", nil) do
           Login.update_blacklist

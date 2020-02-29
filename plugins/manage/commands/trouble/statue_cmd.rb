@@ -47,7 +47,7 @@ module AresMUSH
             end
                     
             Global.logger.warn "#{statue.name} restored from statue by #{enactor_name}.  #{host_and_ip}"
-            message = t('manage.unstatue_message', :actor => enactor.name, :statue => statue.name, :reason => self.reason, :host => host_and_ip)
+            message = t('manage.unstatue_message', :actor => enactor.name, :name => statue.name, :reason => self.reason, :host => host_and_ip)
           end
           
           job = Jobs.create_job(Jobs.trouble_category, 
@@ -56,7 +56,7 @@ module AresMUSH
             Game.master.system_character)
             
           statue.update(is_statue: self.option)
-          
+          statue.update(login_api_token: nil)
         end
       end
     end

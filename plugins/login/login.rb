@@ -10,7 +10,10 @@ module AresMUSH
       Global.read_config("login", "shortcuts")
     end
     
- 
+    def self.init_plugin
+      Login.blacklist = nil
+    end
+    
     def self.get_cmd_handler(client, cmd, enactor)
       case cmd.root
       when "activity"
@@ -113,8 +116,8 @@ module AresMUSH
         return CharConnectedEventHandler
       when "CharDisconnectedEvent"
         return CharDisconnectedEventHandler
-      when "ConfigUpdatedEvent", "GameStartedEvent"
-        return ConfigUpdatedEventHandler
+      when "GameStartedEvent"
+        return GameStartedEventHandler
       when "CronEvent"
         return CronEventHandler
       when "RoleChangedEvent"

@@ -5,9 +5,6 @@ tutorial: true
 title: Dealing with Harassment and Abuse
 aliases:
 - trouble
-- ban
-- siteban
-- sitelock
 - harassment
 - harassing
 - harass
@@ -63,11 +60,19 @@ Most game-altering commands (building, posting to forums, starting scenes) are l
 
 ### Banning Trolls
 
-In the [Web Portal banned/suspect sites configuration](http://aresmush.com/tutorials/config/sites.html), you can designate certain IP addresses and/or hostnames as suspect or banned sites.  
+Banning a site doesn't target a particular character, but a particular IP or hostname.  It prevents ANY characters from logging in, being created, or accessing the web portal from that site.  Be aware that this can also block _other_ players logging in from the same site, especially if the player's internet provider uses dynamic IP addresses.
 
-Banning a site prevents players from logging in at all from that site.
+In the [Web Portal banned/suspect sites configuration](http://aresmush.com/tutorials/config/sites.html), you can designate specific IP addresses and/or hostnames as banned sites.
 
-Marking a site as suspect will alert you (via staff job) any time a new character first logs in for the first time from that site.
+The `ban` command is a shortcut for editing the site config and re-passwording the troublesome player.
+
+### Setting Suspects
+
+Suspect sites are ones that aren't banned, but you want to be aware if anyone new comes from that site.  Marking a site as suspect will alert you (via staff job) if a new character logs in from that site.
+
+In the [Web Portal banned/suspect sites configuration](http://aresmush.com/tutorials/config/sites.html), you can designate specific IP addresses and/or hostnames as suspect sites.
+
+> **Note:** Setting a site suspect does not enact any special logging, unlike the SUSPECT flag in other MU servers.
 
 ### Blacklisting Proxy Sites
 

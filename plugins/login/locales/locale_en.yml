@@ -67,7 +67,7 @@ en:
        activity_footer: "@ = 5 players, o = 1-4 players"
        
        cant_boot_disconnected_player: "You can't boot someone who's not online."
-       you_have_been_booted: "You have been given the boot by %{booter}.  Please play nice."
+       you_have_been_booted: "You have been given the boot.  Please play nice."
        cant_boot_admin: "Nice try.  You can't boot an admin character!"
        
        boot_title: "Character Booted"
