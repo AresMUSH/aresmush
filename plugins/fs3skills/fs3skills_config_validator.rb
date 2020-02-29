@@ -205,22 +205,22 @@ module AresMUSH
         start_skills = Global.read_config('fs3skills', 'starting_skills')
         start_skills.each do |name, data|
           if (name == "Everyone")
-            validate_starting_skills_list(data['skills'])
+            validate_starting_skills_list(data['skills'], name)
           else
             group = Demographics.get_group(name)
             if (!group)
               @validator.add_error "fs3skills:starting_skills #{name} is not a valid group."
             end
             data.each do |group_val, group_data|
-              validate_starting_skills_list group_data['skills']
+              validate_starting_skills_list group_data['skills'], name
             end
           end
         end
       end
            
-      def validate_starting_skills_list(skills)
+      def validate_starting_skills_list(skills, name)
         if (!skills || !skills.kind_of?(Hash))
-          @validator.add_error "fs3skills:starting_skills is not a hash."
+          @validator.add_error "fs3skills:starting_skills #{name} is missing a skills list."
         end
       
         skills.each do |skill, rating|
