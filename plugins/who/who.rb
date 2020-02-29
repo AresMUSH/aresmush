@@ -39,5 +39,10 @@ module AresMUSH
         return WhoRequestHandler
       end
     end
+    
+    def self.check_config
+      validator = WhoConfigValidator.new
+      validator.validate
+    end
   end
 end

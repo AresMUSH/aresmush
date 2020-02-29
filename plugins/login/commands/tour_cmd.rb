@@ -24,6 +24,11 @@ module AresMUSH
           return
         end
         
+        if (Login.is_banned?(nil, client.ip_addr, client.hostname))
+          client.emit_failure Login.site_blocked_message
+          return
+        end
+        
         guest = guests.sort_by{ |g| g.name }.select { |g| !Login.is_online?(g) }.first
 
         if (!guest)

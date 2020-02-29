@@ -1,5 +1,6 @@
 ---
 achievements:
+  achievements: {}
   shortcuts:
     achievements: achievement
   types:

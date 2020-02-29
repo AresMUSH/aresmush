@@ -91,5 +91,10 @@ module AresMUSH
       end
       nil
     end
+    
+    def self.check_config
+      validator = ChargenConfigValidator.new
+      validator.validate
+    end
   end
 end

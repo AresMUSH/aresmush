@@ -115,7 +115,7 @@ module AresMUSH
     
     
     def self.check_age(age)
-      return nil if !Demographics.all_demographics.include?('birthdate')
+      return nil if !Demographics.age_enabled?
       
       min_age = Global.read_config("demographics", "min_age")
       max_age = Global.read_config("demographics", "max_age")
@@ -206,6 +206,9 @@ module AresMUSH
       end
       all_fields
     end
-      
+    
+    def self.age_enabled?
+      Demographics.all_demographics.include?('birthdate')
+    end 
   end  
 end

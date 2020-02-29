@@ -36,5 +36,10 @@ module AresMUSH
         return WeatherGameStartedEventHandler
       end
     end
+    
+    def self.check_config
+      validator = WeatherConfigValidator.new
+      validator.validate
+    end
   end
 end

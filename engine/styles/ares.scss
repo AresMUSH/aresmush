@@ -1157,6 +1157,11 @@ input[type='file'] {
   color: $faded-text-color;
 
 }
+
+.roster-table {
+  width: 100%;
+}
+
 /* -------------------------
 CHAT SCREEN
 ------------------------- */
@@ -1197,8 +1202,17 @@ CHAT SCREEN
   background-color: $primary-color;
 }
 
+.chat-add-convo {
+  display: inline-block;
+}
+
 .chat-nav > li > a {
   padding: 0px;
+}
+
+.chat-control-row {
+  margin: 0px;
+  padding: 0px 15px 0px 0px;
 }
 
 /* -------------------------

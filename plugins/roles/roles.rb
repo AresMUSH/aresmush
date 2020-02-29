@@ -58,5 +58,10 @@ module AresMUSH
         return nil
       end
     end
+    
+    def self.check_config
+      validator = RolesConfigValidator.new
+      validator.validate
+    end
   end
 end

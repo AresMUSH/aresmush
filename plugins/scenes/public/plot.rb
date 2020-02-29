@@ -8,9 +8,12 @@ module AresMUSH
     attribute :completed, :type => DataType::Boolean
     attribute :content_warning
     
-    reference :storyteller, "AresMUSH::Character"
     collection :scenes, "AresMUSH::Scene"
     set :storytellers, "AresMUSH::Character"
+    
+    ## DEPRECATED!  No longer used.
+    reference :storyteller, "AresMUSH::Character"
+    
     
     def sorted_scenes
       self.scenes.to_a.sort_by { |s| s.icdate }

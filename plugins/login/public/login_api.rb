@@ -117,5 +117,24 @@ module AresMUSH
         n.update(is_unread: false)
       end
     end
+    
+    def self.boot_char(bootee, boot_message)
+      status = Website.activity_status(bootee)
+      if (status == 'offline')
+        return t('login.cant_boot_disconnected_player')
+      end
+      
+      # Boot from game
+      boot_client = Login.find_client(bootee)
+      if (boot_client)
+        boot_client.emit_failure boot_message
+        boot_client.disconnect
+      end
+      
+      # Boot from portal
+      bootee.update(login_api_token: nil)
+      
+      return nil
+    end
   end
 end

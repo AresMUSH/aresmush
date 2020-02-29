@@ -54,5 +54,9 @@ module AresMUSH
 
       recent
     end
+    
+    def self.category_names
+      BbsBoard.all.map { |b| b.name }
+    end
   end
 end

@@ -1,36 +1,24 @@
 ---
 jobs:
-  status:
-    NEW:
-      color: "%xg"
-    OPEN:
-      color: "%xb"
-    HOLD:
-      color: "%xx%xh"
-    DONE:
-      color: "%xy"
-    ARCHIVED:
-      color: "%xx%xh"
-  archive_job_days: 10
+  active_statuses:
+  - NEW
+  - OPEN
   archive_cron:
     hour:
-    - 04
+    - 4
     minute:
     - 18
     day_of_week:
-    - Sun    
-  active_statuses:
-    - NEW
-    - OPEN
+    - Sun
+  archive_job_days: 10
+  archived_status: ARCHIVED
   closed_statuses:
-    - DONE
-    - ARCHIVED
+  - DONE
+  - ARCHIVED
   default_status: NEW
   open_status: OPEN
-  archived_status: ARCHIVED
   request_category: REQ
-  system_category: SYS
-  trouble_category: ALERT
+  status_filters: {}
   shortcuts:
     jobs: job
     requests: request
@@ -47,3 +35,16 @@ jobs:
     job/category: job/cat
     request/all: request/filter all
     request/active: request/filter active
+  status:
+    NEW:
+      color: "%xg"
+    OPEN:
+      color: "%xb"
+    HOLD:
+      color: "%xx%xh"
+    DONE:
+      color: "%xy"
+    ARCHIVED:
+      color: "%xx%xh"
+  system_category: SYS
+  trouble_category: ALERT

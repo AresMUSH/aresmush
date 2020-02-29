@@ -35,6 +35,7 @@ en:
        watch_new: "You will now see connect/disconnect messages for new players."
        disconnected_by_reconnect: "You are being disconnected because you connected from another location."
        site_blocked: "Your site has been blocked from this game."
+       site_blocked_proxies: "Your site has been blocked.  If you're using a VPN/proxy to connect, note that only approved characters may connect from certain proxy sites."
        suspect_login_title: "Suspicious Login"
        suspect_login: "%{name} was just created and their site appeared to match something on your suspects list.%R%RIP: %{ip}%RHostname: %{host}%RMatched suspect entry %{match}."
        currently_online: "%{name} is currently online."
@@ -67,7 +68,7 @@ en:
        activity_footer: "@ = 5 players, o = 1-4 players"
        
        cant_boot_disconnected_player: "You can't boot someone who's not online."
-       you_have_been_booted: "You have been given the boot by %{booter}.  Please play nice."
+       you_have_been_booted: "You have been given the boot.  Please play nice."
        cant_boot_admin: "Nice try.  You can't boot an admin character!"
        
        boot_title: "Character Booted"

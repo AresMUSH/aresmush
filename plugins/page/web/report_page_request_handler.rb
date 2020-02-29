@@ -4,7 +4,7 @@ module AresMUSH
       def handle(request)
         enactor = request.enactor
         key = request.args[:key]
-        message_ids = request.args[:messages] || []
+        start_message = request.args[:start_message]
         reason = request.args[:reason]
                 
         error = Website.check_login(request)
@@ -15,7 +15,22 @@ module AresMUSH
           return { error: t('page.invalid_thread') }
         end
         
-        messages = thread.page_messages.select { |m| message_ids.include?(m.id) }
+        
+        found = false
+        messages = []
+        thread.sorted_messages.each do |m|
+          if (found)
+            messages << m
+          elsif (m.id == start_message)
+            found = true
+            messages << m
+          end
+        end
+
+        if (!found)
+          messages = thread.sorted_messages
+        end
+        
         Page.report_page_abuse(enactor, thread, messages, reason)
          
         {
