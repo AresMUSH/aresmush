@@ -73,7 +73,7 @@ module AresMUSH
           return
         end
         value.each do |k, v|
-          if !['date', 'day', 'day_of_week', 'hour', 'minute'].include?(k)
+          if !['day', 'day_of_week', 'hour', 'minute'].include?(k)
             @errors << "#{field_key(field)} - #{k} is not a valid setting."
           end
           if (v.class != Array)
