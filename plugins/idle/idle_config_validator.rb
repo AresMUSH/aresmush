@@ -23,6 +23,7 @@ module AresMUSH
         @validator.require_list('roster_fields')
         @validator.require_text('roster_welcome_msg')
         @validator.require_boolean('use_roster')
+        @validator.require_boolean('restrict_roster')
         
         begin
           @validator.check_roles_exist("idle_exempt_roles")
