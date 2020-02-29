@@ -42,7 +42,7 @@ module AresMUSH
     end
   
     def root_plus_switch
-      root_only? ? @root : "#{@root}/#{@switch}"
+      @switch ? "#{@root}/#{@switch}" : @root
     end
   end
 end
