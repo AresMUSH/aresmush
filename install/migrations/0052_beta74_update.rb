@@ -30,7 +30,14 @@ module AresMUSH
         config = DatabaseMigrator.read_config_file("idle.yml")
         config['idle']['roster_app_template'] = "Tell us why you want to play this character:\n\n\nIf you're not submitting this from an existing character, provide an email where we can get back to you:"
         config['idle']['roster_app_category'] = 'APP'
+        config['idle']['restrict_roster'] = false
         DatabaseMigrator.write_config_file("idle.yml", config)
+        
+        Global.logger.debug "Add job status filter config."
+        config = DatabaseMigrator.read_config_file("jobs.yml")
+        config['jobs']['status_filters'] = {}
+        DatabaseMigrator.write_config_file("jobs.yml", config)
+        
         
       end 
     end
