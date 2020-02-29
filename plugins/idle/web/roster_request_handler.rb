@@ -60,7 +60,7 @@ module AresMUSH
             icon: Website.icon_for_char(char),
             roster_notes: Website.format_markdown_for_html(char.roster_notes || ""),
             previously_played: char.roster_played,
-            app_required: char.roster_restricted,
+            app_required: Idle.roster_app_required?(char),
             contact: char.roster_contact,
             groups: groups,
             demographics: demographics,

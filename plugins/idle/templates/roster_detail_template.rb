@@ -19,6 +19,9 @@ module AresMUSH
         "#{game_site}/char:#{@char.name}"
       end
       
+      def app_required
+        Idle.roster_app_required?(@char)
+      end
     end
   end
 end

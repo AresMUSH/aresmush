@@ -8,6 +8,11 @@ module AresMUSH
         error = Website.check_login(request, true)
         return error if error
                         
+        # Duplicated from check_login because we're allowing anonymous logins, just not banned sites.
+        if (Login.is_banned?(enactor, request.ip_addr, request.hostname))
+          return { status: 'error',  error: t('login.site_blocked') }
+        end
+            
         char = Character[request.args[:id]]
         app = Website.format_input_for_mush((request.args[:app] || ""))
         
