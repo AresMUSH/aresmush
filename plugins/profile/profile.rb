@@ -75,5 +75,10 @@ module AresMUSH
       end
       nil
     end
+    
+    def self.check_config
+      validator = ProfileConfigValidator.new
+      validator.validate
+    end
   end
 end

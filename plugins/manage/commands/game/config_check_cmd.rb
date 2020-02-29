@@ -15,7 +15,13 @@ module AresMUSH
           client.emit_failure t('manage.game_config_invalid', :error => ex)
           return
         end
-        client.emit_success t('global.ok')
+        errors = Global.plugin_manager.check_plugin_config
+        if (errors.any?)
+          client.emit_failure t('manage.game_config_invalid', :error => "\n- #{errors.join("\n- ")}")
+          return
+        end
+        
+        client.emit_success t('manage.game_config_ok')
       end
     end
   end

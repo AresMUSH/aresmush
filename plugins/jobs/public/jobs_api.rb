@@ -52,6 +52,13 @@ module AresMUSH
     def self.system_category
       Global.read_config("jobs", "system_category")
     end
-
+    
+    def self.categories
+      JobCategory.all.map { |j| j.name }
+    end
+    
+    def self.status_vals
+      Global.read_config("jobs", "status").keys
+    end
   end
 end

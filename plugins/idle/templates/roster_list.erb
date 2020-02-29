@@ -3,12 +3,12 @@
 
 %B%B%B%xh<% fields.each do |f| %><%= show_title(f) %> <% end %><%= t('idle.roster_column_titles') %>%xn
 <% paginator.items.each do |r| %>
-<%= left( restricted(r), 3 ) -%>
+<%= left( app_required(r), 3 ) -%>
 <% fields.each do |f| %><%= show_field(r, f) -%> <% end %> <%= -%>
 <%= center( r.roster_played.yesno, 5 ) %>
    <% if r.roster_notes %><%= r.roster_notes %>%R<% end %>
 <% end %>
 <%= paginator.page_footer %>
 %xh<%= t('idle.roster_url_hint', :url => roster_url) %>%xn
-<%= t('idle.star_means_contact_required')%>
+(*) - <%= t('idle.roster_app_required')%>
 <%= footer %>

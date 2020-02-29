@@ -142,5 +142,9 @@ module AresMUSH
       nil
     end
     
+    def self.check_config
+      validator = WebsiteConfigValidator.new
+      validator.validate
+    end
   end
 end

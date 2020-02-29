@@ -1,7 +1,7 @@
 module AresMUSH
   class ConfigReader
     
-    attr_accessor :config
+    attr_accessor :config, :text
     
     def initialize
       clear_config
@@ -13,6 +13,14 @@ module AresMUSH
 
     def self.config_files
       Dir[File.join(ConfigReader.config_path, "**", "*.yml")]
+    end
+
+    def self.text_path
+      File.join(AresMUSH.game_path, "text") 
+    end
+
+    def self.text_files
+      Dir[File.join(ConfigReader.text_path, "**", "*.txt")]
     end
 
     def get_config(section_name, key = nil, subkey = nil)
@@ -32,9 +40,14 @@ module AresMUSH
       return nil if !subsection
       return subsection[subkey]
     end
+
+    def get_text(name)
+      return self.text[name]
+    end
     
     def clear_config
       self.config = {}
+      self.text = {}
     end
 
     def validate_game_config
@@ -54,7 +67,11 @@ module AresMUSH
     def load_game_config
       clear_config
       ConfigReader.config_files.each do |file|
-        load_config_file(file)
+        self.load_config_file(file)
+      end
+      
+      ConfigReader.text_files.each do |file|
+        self.load_game_text_file(file)
       end
     end   
     
@@ -79,5 +96,14 @@ module AresMUSH
       end
     end
     
+    # @engineinternal true
+    def load_game_text_file(file)
+      Global.logger.debug "Loading text file #{file}."
+      begin
+        self.text[File.basename(file)] = File.read(file, :encoding => "UTF-8")
+      rescue Exception => ex
+        Global.logger.warn "Problem loading text file #{file}: #{ex}."
+      end
+    end
   end
 end

@@ -20,6 +20,10 @@ module AresMUSH
         if (migrator.restart_required?)
           return { message: t('manage.restart_required') }
         end
+        
+        if (Manage.server_reboot_required?)
+          return { message: t('manage.server_reboot_required') }
+        end
 
        message = Manage.finish_upgrade(enactor, true)
        {

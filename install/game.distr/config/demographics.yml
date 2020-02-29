@@ -34,6 +34,27 @@ demographics:
   - gender
   - hair
   - physique
+  genders:
+    Male:
+      possessive_pronoun: his
+      subjective_pronoun: he
+      objective_pronoun: him
+      noun: man
+    Female:
+      possessive_pronoun: her
+      subjective_pronoun: she
+      objective_pronoun: her
+      noun: woman
+    Other:
+      possessive_pronoun: their
+      subjective_pronoun: they
+      objective_pronoun: them
+      noun: person
+    Robot:
+      possessive_pronoun: their
+      subjective_pronoun: they
+      objective_pronoun: them
+      noun: robot
   groups:
     Faction:
       desc: Military faction.
@@ -96,7 +117,7 @@ demographics:
     full name: "%xcfullname <name>%xn - Your character's full name."
   max_age: 65
   min_age: 18
-  nickname_field: callsign
+  nickname_field: ''
   nickname_format: "%{name} (%{nickname})"
   private_properties: []
   required_properties:
@@ -118,24 +139,3 @@ demographics:
     actor: demographic/set played by=
     fullname: demographic/set full name=
     playedby: demographic/set played by=
-  genders:
-    Male:
-      possessive_pronoun: his
-      subjective_pronoun: he
-      objective_pronoun: him
-      noun: man
-    Female:
-      possessive_pronoun: her
-      subjective_pronoun: she
-      objective_pronoun: her
-      noun: woman
-    Other:
-      possessive_pronoun: their
-      subjective_pronoun: they
-      objective_pronoun: them
-      noun: person
-    Robot:
-      possessive_pronoun: their
-      subjective_pronoun: they
-      objective_pronoun: them
-      noun: robot

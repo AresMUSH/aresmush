@@ -3,17 +3,17 @@ module AresMUSH
     class PageReportCmd
       include CommandHandler
 
-      attr_accessor :names, :reason, :range
+      attr_accessor :names, :reason, :start_page
       
       def parse_args
         args = cmd.parse_args(ArgParser.arg1_equals_arg2_slash_arg3)
         self.names = list_arg(args.arg1)
-        self.range = args.arg2
+        self.start_page = args.arg2
         self.reason = args.arg3
       end
       
       def required_args
-        [ self.range, self.reason ]
+        [ self.start_page, self.reason ]
       end
       
       def handle
@@ -24,15 +24,14 @@ module AresMUSH
           return
         end
                 
-        from_page = self.range.before("-").to_i - 1
-        to_page = self.range.after("-").to_i - 1
+        from_page = self.start_page.to_i - 1
         
-        if (from_page < 0 || to_page < 0 || to_page < from_page)
+        if (from_page < 0)
           client.emit_failure t('page.invalid_report_range')
           return
         end
         
-        messages = thread.sorted_messages[from_page..to_page]
+        messages = thread.sorted_messages[from_page..-1]
         Page.report_page_abuse(enactor, thread, messages, self.reason)
         client.emit_success t('page.pages_reported')
         

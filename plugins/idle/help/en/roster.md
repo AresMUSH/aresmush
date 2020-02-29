@@ -15,3 +15,7 @@ Use the character's web profile or the `sheet` and `bg` commands to view their s
 Claim a roster character through the web portal roster page, or log in with a guest character and use the `roster/claim` command. You'll be given a temporary password for the character.
 
 `roster/claim <name>` - Claims a character. 
+  
+Some roster characters are listed on the roster as "requires application", which means you have to submit some additional information to be considered for the character.  You will be prompted with the application details when you use the web portal claim feature, or view the character using `roster <name>`.   If you don't already have a character on the game, be sure to include some kind of contact info (like an email or an alt) so the app staff can contact you if your application is approved.
+  
+`roster/claim <name>=<app>`

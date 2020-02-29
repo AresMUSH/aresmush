@@ -65,7 +65,12 @@ module AresMUSH
        content_type :json
        handle_request
      end
-     
+
+     post '/api/webhook' do
+       content_type :json
+       handle_webhook
+     end
+          
      post '/webhook' do
        content_type :json
        handle_webhook

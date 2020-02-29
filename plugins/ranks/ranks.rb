@@ -24,5 +24,10 @@ module AresMUSH
       
       nil
     end
+    
+    def self.check_config
+      validator = RanksConfigValidator.new
+      validator.validate
+    end
   end
 end

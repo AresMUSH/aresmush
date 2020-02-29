@@ -1,10 +1,10 @@
 ---
 login:
-  allow_web_registration: true
-  guest_role: guest
   activity_cron:
     minute:
     - 0
+  allow_creation: true
+  allow_web_registration: true
   blacklist_cron:
     day:
     - 1
@@ -13,6 +13,10 @@ login:
     - 3
     minute:
     - 0
+  creation_not_allowed_message: ''
+  guest_disabled_message: ''
+  guest_role: guest
+  login_not_allowed_message: ''
   notice_cleanup_cron:
     day:
     - 18
@@ -21,6 +25,7 @@ login:
     minute:
     - 19
   notice_timeout_days: 60
+  portal_requires_registration: false
   shortcuts:
     logout: quit
     con: connect
@@ -29,8 +34,3 @@ login:
     kick: boot
     password/change: password/set
     motd: notice/motd
-  allow_creation: true
-  login_not_allowed_message: ''
-  creation_not_allowed_message: ''
-  portal_requires_registration: 
-  guest_disabled_message: ''

@@ -30,7 +30,8 @@ module AresMUSH
         
         self.combatant.log "#{self.name} distracting #{target.name}.  atk=#{attack_roll} def=#{defense_roll}"
         if (margin >= 1)
-          target.update(distraction: combatant.distraction + margin)
+          target.update(action_klass: nil)
+          target.update(action_args: nil)
           messages << t('fs3combat.distract_successful_msg', :name => self.name, 
              :target => target.name, :weapon => self.combatant.weapon)
         else

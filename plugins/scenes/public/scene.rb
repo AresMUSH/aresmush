@@ -146,5 +146,14 @@ module AresMUSH
     def url
       "#{Game.web_portal_url}/scene/#{self.id}"
     end
+    
+    def limited_participation?
+      !self.limit.blank?
+    end
+    
+    def days_since_shared
+      return nil if !self.date_shared
+      (Time.now - self.date_shared) / 86400
+    end
   end
 end

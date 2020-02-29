@@ -76,7 +76,7 @@ fs3combat:
     Target:
       hitloc: Target
       weapon: Unarmed
-      defense_skill: None
+      defense_skill: 1
   shortcuts:
     combat/skill: combat/summary
     combat/skills: combat/summary

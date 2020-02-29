@@ -29,9 +29,9 @@ module AresMUSH
         expect(Cron.is_cron_match?(cron, time)).to be true
       end
 
-      it "should not match a different date" do
+      it "should not match a different day" do
         time = Time.new(2014, 01, 25, 14, 22, 17)
-        cron = { "date" => [26] }
+        cron = { "day" => [26] }
         expect(Cron.is_cron_match?(cron, time)).to be false
       end
       

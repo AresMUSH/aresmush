@@ -26,18 +26,7 @@ module AresMUSH
       end
         
       def glance(char)
-        glance_format = Global.read_config("describe", "glance_format")
-        glance_args = {
-          name: char.name, 
-          age: char.age,
-          gender_noun: Demographics.gender_noun(char) }
-        Demographics.visible_demographics(char, @enactor).each do |k|
-          next if k == 'birthdate'
-          glance_args[k.downcase.to_sym] = (char.demographic(k) || "-").downcase
-          glance_args["#{k.downcase}_title".to_sym] = (char.demographic(k) || "-").titlecase
-        end
-        output = (glance_format % glance_args) || ""
-        output
+        Describe.format_glance_output(char)
       end
       
       def shortdesc(char)

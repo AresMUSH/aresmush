@@ -36,6 +36,9 @@ module AresMUSH
 
       when 'handle'
         char.handle ? "@#{char.handle.name}" : ""
+        
+      else 
+        nil
       end
     end
     
@@ -44,6 +47,29 @@ module AresMUSH
       return nil if !player_tag
       player_tag = player_tag.after(":")
       player_tag.blank? ? nil : player_tag
+    end
+    
+    def self.validate_general_field_config(config)
+      errors = []
+      config.each do |entry|
+        field = entry['field']
+        title = entry['title']
+        value = entry['value']
+        if (!field)
+          errors << "#{title} missing field."
+        elsif (field.downcase != field)
+          errors << "#{title} field names must be all lowercase."
+        end
+        
+        if (field == 'demographic' && !Demographics.all_demographics.include?(value))
+          errors << "#{title} #{value} is not a valid demographic."
+        end
+        
+        if (field == 'group' && !Demographics.get_group(value))
+          errors << "#{title} is not a valid group #{value}."
+        end
+      end
+      return errors
     end
   end
 end
