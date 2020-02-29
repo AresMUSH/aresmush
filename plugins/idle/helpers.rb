@@ -62,13 +62,18 @@ module AresMUSH
        end
      end
      
+     def self.roster_app_required?(char)
+       return true if Global.read_config('idle', 'restrict_roster')
+       return char.roster_restricted
+     end
+     
      def self.claim_roster(model, enactor, app_text = nil)
        enactor_name = enactor ? enactor.name : "Anonymous"
        if (!model.on_roster?)
          return { error: t('idle.not_on_roster', :name => model.name) }
        end
        
-       if (model.roster_restricted)
+       if (Idle.roster_app_required?(model))
          if (app_text.blank?)
            return { error: t('idle.roster_app_required') }
          else

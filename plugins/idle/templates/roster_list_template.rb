@@ -13,15 +13,9 @@ module AresMUSH
         char.is_approved? ? t('global.y') : t('global.n')
       end
       
-      def contact(char)
-        restricted = char.roster_restricted ? "(*)" : ""
-        "#{char.roster_contact}#{restricted}"
-      end
-      
       def roster_url
         "#{Game.web_portal_url}/roster"
       end
-      
       
       def fields
         Global.read_config("idle", "roster_fields")
@@ -51,8 +45,8 @@ module AresMUSH
         Demographics.name_and_nickname(char)
       end
       
-      def restricted(char)
-        char.roster_restricted ? "(*)" : ""
+      def app_required(char)
+        Idle.roster_app_required?(char) ? "(*)" : ""
       end
       
       def group(char, value)

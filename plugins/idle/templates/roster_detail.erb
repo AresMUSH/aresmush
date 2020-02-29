@@ -11,7 +11,7 @@
 <%= char.roster_notes %>
 
 %ld
-<% if char.roster_restricted %>
+<% if app_required %>
 %xr%xh<%= t('idle.roster_app_required') %>%xn
 <%= app_template %>
 
