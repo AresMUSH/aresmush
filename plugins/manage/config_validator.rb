@@ -60,9 +60,13 @@ module AresMUSH
       end
       
       def require_boolean(field)
-        value = @config[field]
-        if !(value.kind_of?(FalseClass) || value.kind_of?(TrueClass))
+        if !@config.has_key?(field)
           @errors << "#{field_key(field)} must be true or false (without quotes)." 
+        else
+          value = @config[field]
+          if !(value.kind_of?(FalseClass) || value.kind_of?(TrueClass))
+            @errors << "#{field_key(field)} must be true or false (without quotes)." 
+          end
         end
       end
       
