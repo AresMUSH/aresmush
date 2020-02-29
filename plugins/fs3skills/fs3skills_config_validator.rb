@@ -130,7 +130,7 @@ module AresMUSH
           name = s['name'] || "Missing Name"
           verify_property_exists(name, s, 'name')
           if (FS3Skills.check_ability_name(name))
-            @validator.add_error "fs3skills:languages #{a['name']} cannot contain special characters."
+            @validator.add_error "fs3skills:languages #{s['name']} cannot contain special characters."
           end
         end
       end
