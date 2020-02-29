@@ -59,7 +59,7 @@ module AresMUSH
           check_misc
           
         rescue Exception => ex
-          @validator.add_error "Unknown FS3Skills config error.  Fix other errors first and try again. #{ex} #{ex.backtrace}"
+          @validator.add_error "Unknown FS3Skills config error.  Fix other errors first and try again. #{ex}"
         end
         
         @validator.errors
