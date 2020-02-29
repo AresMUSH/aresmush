@@ -28,7 +28,7 @@ idle:
     forth and RP.
   roster_app_template: "Tell us why you want to play this character:\n\n\nIf you're not submitting this from an existing character, provide an email where we can get back to you:"
   roster_app_category: APP
-  restrict_roster: true
+  restrict_roster: false
   roster_fields:
   - field: name
     width: 20
