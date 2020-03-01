@@ -21,6 +21,7 @@ module AresMUSH
 
       def handle
         enactor.combatant.update(combatant_type: self.combatant_type)
+        FS3Combat.set_default_gear(enactor, enactor.combatant, self.combatant_type)
         FS3Combat.emit_to_combat enactor.combat, t('fs3combat.changed_type', :name => enactor.name, :type => combatant_type)
       end
 
