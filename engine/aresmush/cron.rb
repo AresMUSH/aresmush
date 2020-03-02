@@ -5,7 +5,7 @@ module AresMUSH
     def self.is_cron_match?(cron_spec, time)
       return false if !cron_spec
       return false if cron_spec.keys.count == 0
-      return false if !test_match(cron_spec["date"], time.day, :date)
+      return false if !test_match(cron_spec["day"], time.day, :day)
       return false if !test_match(cron_spec["day_of_week"], time.wday, :day_of_week)
       return false if !test_match(cron_spec["hour"], time.hour, :hour)
       return false if !test_match(cron_spec["minute"], time.min, :min)
@@ -28,7 +28,7 @@ module AresMUSH
       return true if !cron_component
 
       case component_type
-      when :date, :hour, :min
+      when :day, :hour, :min
         cron_component = cron_component.map { |c| c.to_i }
       when :day_of_week
         cron_component = cron_component.map { |c| convert_weekday(c) }

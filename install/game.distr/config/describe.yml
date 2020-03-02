@@ -1,6 +1,8 @@
 ---
 describe:
   always_show_idle_in_rooms: false
+  exit_end_bracket: "]"
+  exit_start_bracket: "["
   glance_format: "%{height_title} height, %{age} year-old %{gender_noun} with %{hair}
     hair and %{eyes} eyes."
   shortcuts:
@@ -25,5 +27,3 @@ describe:
     admin: "%xb"
     beginner: "%xg"
     web: "%xh%xx"
-  exit_start_bracket: "["
-  exit_end_bracket: "]"

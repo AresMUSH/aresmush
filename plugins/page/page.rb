@@ -68,5 +68,10 @@ module AresMUSH
       end
     end
     
+    def self.check_config
+      validator = PageConfigValidator.new
+      validator.validate
+    end
+    
   end
 end

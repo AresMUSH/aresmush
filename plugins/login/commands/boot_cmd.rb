@@ -28,15 +28,12 @@ module AresMUSH
             client.emit_failure t('login.cant_boot_admin')
             return
           end
-          
-          boot_client = Login.find_client(bootee)
-          if (!boot_client)
-            client.emit_failure t('login.cant_boot_disconnected_player')
+
+          error = Login.boot_char(bootee, t('login.you_have_been_booted'))
+          if (error)
+            client.emit_failure error
             return
           end
-          
-          boot_client.emit_failure t('login.you_have_been_booted', :booter => enactor.name)
-          boot_client.disconnect
           
           host_and_ip = "IP: #{bootee.last_ip}  Host: #{bootee.last_hostname}"
           Global.logger.warn "#{bootee.name} booted by #{enactor_name}.  #{host_and_ip}"

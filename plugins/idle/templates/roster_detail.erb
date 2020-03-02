@@ -10,8 +10,12 @@
 %xh<%= t('idle.notes') %>%xn
 <%= char.roster_notes %>
 
-<% if char.roster_restricted %>
-%xr%xh<%= t('idle.contact_required') %>%xn
+%ld
+<% if app_required %>
+%xr%xh<%= t('idle.roster_app_required') %>%xn
+<%= app_template %>
+
+<%= t('idle.roster_app', :name => char.name ) %>
 <% else %>
 <%= t('idle.roster_claim', :name => char.name) %>
 <% end %>

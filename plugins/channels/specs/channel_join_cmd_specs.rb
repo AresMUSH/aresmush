@@ -11,7 +11,7 @@ module AresMUSH
         @options = double
         stub_translate_for_testing
       end
-        
+      
       describe :join_channel do
         before do
           allow(Channel).to receive(:find_one_by_name).with("pub") { @channel }

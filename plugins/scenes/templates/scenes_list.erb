@@ -10,7 +10,7 @@
 <% if scene.summary && !scene.private_scene %>
 <%= scene.summary%>
 <% end %>
-<% if scene.limit %>
+<% if scene.limited_participation? %>
 %xh%xy<%= t('scenes.limited_participation') %>:%xn <%= scene.limit %>
 <% end %>
 <% end %>

@@ -47,7 +47,7 @@ module AresMUSH
         elsif scene.watchable_scene
           message = "Watchable"
           color = "%xc"
-        elsif (scene.limit)
+        elsif (scene.limited_participation?)
           color = "%xy"
           message = t('scenes.limited')
         else

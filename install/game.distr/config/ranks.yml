@@ -1,7 +1,5 @@
 ---
 ranks:
-  permissions:
-  - manage_ranks
   rank_group: Faction
   rank_rows: 9
   rank_style: military

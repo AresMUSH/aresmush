@@ -24,7 +24,8 @@ en:
         plugin_installed: "Plugin %{name} has been installed.  Please check the readme file at %{url} for any additional instructions."
         error_installing_plugin: "Error installing plugin %{name}.  Error: %{error}."
         plugins: "Plugins"
-        
+        game_config_ok: "No errors were detected in your game configuration."
+        plugin_config_invalid: "Your config is saved, but one or more of your configuration options have invalid settings: %{errors}"
         shutdown: "Shutdown by %{name}."
         shutdown_with_message:  "Shutdown by %{name}: %{message}."
         
@@ -40,6 +41,7 @@ en:
         upgrade_conflict_warning: "There seem to be conflicts between your code and the latest Ares code.  Check the output above for 'CONFLICT' warnings and resolve them.  Then you can use `upgrade/finish` to complete the upgrade."
         upgrade_continue: "Check the output above to see if there are any CONFLICT warnings you need to resolve. If there are no conflicts (or you've resolved them), you can use `upgrade/finish` to complete the upgrade."
         restart_required: "This upgrade requires a game restart.  Use the `shutdown` command or Admin->Manage on the web portal to shut down the game and then restart it as described in https://aresmush.com/tutorials/manage/start.html."
+        server_reboot_required: "Your server indicates that it needs a reboot, probably due to Operating System updates. Reboot the server (not just Ares) in order to complete the upgrade."
         invalid_git_command: "Invalid git command.  Only a limited subset of commands are supported: %{commands}"
         database_upgrade_in_progress: "Database upgrade in progress.  Please stand by."
         database_upgrade_complete: "Database upgrade complete.  Carry on."
@@ -84,10 +86,17 @@ en:
         
         
         statue_title: "Player Statue"
-        statue_message: "%{statue} from %{host} has been turned to a statue by %{actor}.   Reason:%R%{reason}"
+        statue_message: "%{name} from %{host} has been turned to a statue by %{actor}.   Reason:%R%{reason}"
         unstatue_message: "%{actor} has unlocked %{statue} (%{host}) from being a statue.   Reason:%R%{reason}"
         no_longer_statue: "You are no longer a statue.  Please play nice."
         cant_statue_admins: "You can't statue another admin."
+        
+        ban_title: "Player Banned"
+        ban_message: "%{name} from %{host} has been banned by %{actor}.   Reason:%R%{reason}"
+        cant_ban_admins: "You can't ban another admin."
+        player_banned: "%{name} has been banned."
+        ban_config_error: "%{name} has been banned, but there was a problem reloading your config files. See config/check for details."
+        you_have_been_banned: "You have been banned."
         
         config_restored: "Config file %{name} restored to defaults."
         error_restoring_config: "There was a problem restoring the config file.  Check the name.  Error: %{error}"

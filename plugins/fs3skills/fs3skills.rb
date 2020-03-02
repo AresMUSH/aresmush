@@ -92,5 +92,10 @@ module AresMUSH
       end
       nil
     end
+    
+    def self.check_config
+      validator = FS3SkillsConfigValidator.new
+      validator.validate
+    end
   end
 end
