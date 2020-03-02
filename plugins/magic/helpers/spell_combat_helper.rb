@@ -68,7 +68,6 @@ module AresMUSH
       stopped_by_shield = Magic.stopped_by_shield?(spell, target, combatant, attack_roll)
       weapon_type = FS3Combat.weapon_stat(combatant.weapon, "weapon_type")
 
-
       if (attack_roll <= 0)
         message = t('fs3combat.attack_missed', :name => combatant.name, :target => target.name, :weapon => weapon)
       elsif (called_shot && (attacker_net_successes > 0) && (attacker_net_successes < 2))
@@ -354,8 +353,11 @@ module AresMUSH
 
       if (FS3Combat.weapon_stat(combatant.weapon, "has_shrapnel"))
         shrapnel = rand(max_shrapnel)
+        damage_type = Global.read_config("spells", spell, "damage_type")
         shrapnel.times.each do |s|
-          messages.concat FS3Combat.resolve_attack(nil, combatant.name, target, "Shrapnel")
+          margin = Magic.determine_magic_attack_margin(combatant, target, result = result, spell)
+          attacker_net_successes = margin[:attacker_net_successes]
+          messages.concat FS3Combat.resolve_attack(nil, combatant.name, target, "#{damage_type} Shrapnel", attacker_net_successes)
         end
       end
       return messages
