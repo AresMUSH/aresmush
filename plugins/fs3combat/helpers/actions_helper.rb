@@ -393,9 +393,17 @@ module AresMUSH
       elsif (stopped_by_cover)
         message = t('fs3combat.attack_hits_cover', :name => combatant.name, :target => target.name, :weapon => weapon)
       elsif stopped_by_shield == "Endure Fire Held"
-        message = t('magic.shield_held', :name => combatant.name, :spell => combatant.weapon, :mod => "", :shield => "Endure Fire", :target => target.name)
+        if weapon == "Fire Shrapnel"
+          message = t('magic.shrapnel_shield_held', :name => combatant.name, :weapon => combatant.weapon, :mod => "", :shield => "Endure Fire", :target => target.name)
+        else
+          message = t('magic.shield_held', :name => combatant.name, :spell => combatant.weapon, :mod => "", :shield => "Endure Fire", :target => target.name)
+        end
       elsif stopped_by_shield == "Endure Cold Held"
-        message = t('magic.shield_held', :name => combatant.name, :spell => combatant.weapon, :mod => "", :shield => "Endure Cold", :target => target.name)
+        if weapon == "Cold Shrapnel"
+          message = t('magic.shrapnel_shield_held', :name => combatant.name, :weapon => combatant.weapon, :mod => "", :shield => "Endure Cold", :target => target.name)
+        else
+          message = t('magic.shield_held', :name => combatant.name, :spell => combatant.weapon, :mod => "", :shield => "Endure Cold", :target => target.name)
+        end
       elsif (attacker_net_successes < 0)
         # Only can evade when being attacked by melee or when in a vehicle.
         if (weapon_type == 'Melee' || target.is_in_vehicle?)
@@ -451,7 +459,6 @@ module AresMUSH
       hitloc = FS3Combat.determine_hitloc(target, attacker_net_successes, called_shot, crew_hit)
       armor = FS3Combat.determine_armor(target, hitloc, weapon, attacker_net_successes)
 
-
       if (armor >= 100)
         message = t('fs3combat.attack_stopped_by_armor', :name => attack_name, :weapon => weapon, :target => target.name, :hitloc => hitloc)
         return [message]
@@ -460,7 +467,6 @@ module AresMUSH
       reduced_by_armor = armor > 0 ? t('fs3combat.reduced_by_armor') : ""
 
       attack_luck_mod = (attacker && attacker.luck == "Attack") ? 30 : 0
-
       defense_luck_mod = target.luck == "Defense" ? 30 : 0
 
       hit_mod = [(attacker_net_successes - 1) * 5, 0].max
@@ -479,14 +485,21 @@ module AresMUSH
         melee_damage_mod = [(strength_roll - 1) * 5, 0].max
       end
 
-      damage_type = Global.read_config("spells", weapon, "damage_type")
+      if weapon == "Cold Shrapnel"
+        damage_type = "Cold"
+      elsif weapon == "Fire Shrapnel"
+        damage_type = "Fire"
+      else
+        damage_type = Global.read_config("spells", weapon, "damage_type")
+      end
+
       if (damage_type == "Fire" && target.endure_fire > 0)
         math = target.endure_fire * 5
         endure_fire_mod = -20 - math
         endure_cold_mod = 0
       elsif (damage_type == "Cold" && target.endure_cold > 0)
         math = target.endure_cold * 5
-        endure_cold_mod = -20
+        endure_cold_mod = -20 - math
         endure_fire_mod = 0
       else
         endure_cold_mod = 0
@@ -517,19 +530,18 @@ module AresMUSH
 
       messages = []
 
-
-      if weapon == "Cold Shrapnel"
-        damage_type = "Cold"
-      elsif weapon == "Fire Shrapnel"
-        damage_type = "Fire"
-      else
-        damage_type = Global.read_config("spells", weapon, "damage_type")
-      end
-
       if (damage_type == "Fire" && target.endure_fire > 0)
-        messages.concat [t('custom.shield_failed', :name => attack_name, :spell => weapon, :mod => "", :shield => "Endure Fire", :target => target.name)]
+        if weapon == "Fire Shrapnel"
+          messages.concat [t('magic.shrapnel_shield_failed', :name => attack_name, :weapon => weapon, :mod => "", :shield => "Endure Fire", :target => target.name)]
+        else
+          messages.concat [t('magic.shield_failed', :name => attack_name, :spell => weapon, :mod => "", :shield => "Endure Fire", :target => target.name)]
+        end
       elsif (damage_type == "Cold" && target.endure_cold > 0)
-        messages.concat [t('custom.shield_failed', :name => attack_name, :spell => weapon, :mod => "", :shield => "Endure Cold", :target => target.name)]
+        if weapon == "Cold Shrapnel"
+          messages.concat [t('magic.shrapnel_shield_failed', :name => attack_name, :weapon => weapon, :mod => "", :shield => "Endure Cold", :target => target.name)]
+        else
+          messages.concat [t('magic.shield_failed', :name => attack_name, :spell => weapon, :mod => "", :shield => "Endure Cold", :target => target.name)]
+        end
       end
 
 

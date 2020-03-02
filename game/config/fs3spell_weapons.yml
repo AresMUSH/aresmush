@@ -87,6 +87,7 @@ fs3combat:
       damage_type: Physical
       accuracy: 0
       init_mod: 0
+      is_magic: true
     Fire Shrapnel:
       description: Shrapnel that does fire damage
       skill: 3
@@ -97,6 +98,7 @@ fs3combat:
       damage_type: Physical
       accuracy: 0
       init_mod: 0
+      is_magic: true
     #LORE HOOKS
     Hell's Revenant:
       description: A magical single-edged Chinese longsword with a cleaver-like tip. Owned by Calgary.
