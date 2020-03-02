@@ -60,7 +60,6 @@ module AresMUSH
           subject: post.subject,
           author: author_name,
           type: type,
-          can_read: false,
           date: OOCTime.local_long_timestr(enactor, date)
         }
       end
