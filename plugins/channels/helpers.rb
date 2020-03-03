@@ -286,6 +286,7 @@ module AresMUSH
         elsif (message.start_with?(';'))
           formatted_msg = "#{name}#{message.after(';')}"
         end
+        formatted_msg = AnsiFormatter.strip_ansi(MushFormatter.format(formatted_msg))
 
         gravatar_style = Global.read_config('channels', 'discord_gravatar_style') || 'robohash'
         icon = Website.icon_for_char(enactor) 

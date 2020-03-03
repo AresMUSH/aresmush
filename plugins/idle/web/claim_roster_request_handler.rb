@@ -19,7 +19,9 @@ module AresMUSH
         if (!char)
           return { error: t('webportal.not_found') }
         end
-        
+
+        Global.logger.debug "Roster #{char.name} claimed by #{enactor ? enactor.name : 'Anonymous'} - #{request.ip_addr}."
+                
         Idle.claim_roster(char, enactor, app)    
       end
     end
