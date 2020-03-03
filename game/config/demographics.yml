@@ -38,6 +38,22 @@ demographics:
   - physique
   - job
   - actor
+  genders:
+    Male:
+      possessive_pronoun: his
+      subjective_pronoun: he
+      objective_pronoun: him
+      noun: man
+    Female:
+      possessive_pronoun: her
+      subjective_pronoun: she
+      objective_pronoun: her
+      noun: woman
+    Other:
+      possessive_pronoun: their
+      subjective_pronoun: they
+      objective_pronoun: them
+      noun: person  
   groups:
     Major School:
       desc: The school of magic with which you have a major affinity.
@@ -76,7 +92,7 @@ demographics:
   min_age: 18
   nickname_field: ''
   nickname_format: "%{name} (%{nickname})"
-  private_properties: {}
+  private_properties: []
   required_properties:
   - hair
   - eyes
