@@ -26,6 +26,9 @@ idle:
     profile page for any notes left by the prior player.  Check out the [Getting Started](/wiki/getting_started) guide for some tips on getting started on Spirit Lake.
   roster_arrival_msg: "Please welcome %{name}, who has been claimed off the roster.\n\nPMajor
     School: %{major school} \nMinor School: %{minor school}\n\nRP Hooks:\n%{rp_hooks}"
+  roster_app_template: "Tell us why you want to play this character:\n\n\nIf you're not submitting this from an existing character, provide an email where we can get back to you:"
+  roster_app_category: APP
+  restrict_roster: true
   roster_fields:
   - field: name
     width: 20

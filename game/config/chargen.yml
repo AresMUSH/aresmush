@@ -4,6 +4,12 @@ chargen:
   app_category: APP
   app_hold_status: HOLD
   app_resubmit_status: OPEN
+  app_review_commands:
+  - app %{name}
+  - profile %{name}
+  - bg %{name}
+  - hooks %{name}
+  - sheet %{name}
   approval_message: Congratulations!  Your application has been approved.  Check out
     the [Getting Started](/wiki/guides:getting_started) guide for help finding a place to
     live, getting into RP, and more. We are glad to have you!
@@ -30,6 +36,7 @@ Although Grand Lake seems to have an abnormally high population of magic users, 
   lastwill_blurb: "If you would like to register a preference on what happens if you ever idle out, you can fill out your lastwill here.  You could leave your character's fate up to someone else, or specify that they be killed off or sent away.\n\nYou can fill out or change your lastwill at any time on game using the `lastwill` command."
   post_approval_message: Please make sure they have a profile image for their log icon.
   rejection_message: "Sorry, your character could not be approved at the present time for the reasons listed.  You can make changes to your app by visiting [Create a Character](/chargen) on the web portal. \n\nFeel free to leave comments in this request or to ask for help on the **New Characters** channel if you have any questions.\n\n-----------"
+  rank_blurb: "Don't use ranks."
   shortcuts:
     chargen: cg
     cg/back: cg/prev
@@ -43,6 +50,6 @@ Although Grand Lake seems to have an abnormally high population of magic users, 
     hook/add: hook/set
   stages:
     start:
-      tutorial: chargen.md
+      tutorial: "Use the web portal CG."
   welcome_message: "Please welcome [%{name}](https://spiritlakemu.com/char/%{name}), our latest character to be approved! \n\nMajor
     School: %{major school} \nMinor School: %{minor school}\n\nRP Hooks:\n%{rp_hooks}"
