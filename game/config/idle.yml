@@ -13,7 +13,7 @@ idle:
     rooms that reaped characters may have owned, and check their secrets for possible
     re-use.
   monthly_reminder_cron:
-    date:
+    day:
     - 1
     - 15
   monthly_reminder_title: Idle Sweep
