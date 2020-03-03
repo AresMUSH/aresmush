@@ -74,8 +74,7 @@ module AresMUSH
     end
     
     def self.welcome_text
-      welcome_filename = File.join(AresMUSH.game_path, "text", "website.txt")
-      text = File.read(welcome_filename, :encoding => "UTF-8")
+      text = Global.config_reader.get_text('website.txt')
       Website.format_markdown_for_html(text)
     end
     
