@@ -4,8 +4,6 @@ module AresMUSH
       def handle(request)
         creature = Creature.find_one_by_name(request.args[:id])
         enactor = request.enactor
-        Global.logger.debug "Creature edit handler"
-        Global.logger.debug "Request: #{request.args.to_a} "
 
         if (!creature)
           return { error: t('webcreature.not_found') }
@@ -57,7 +55,7 @@ module AresMUSH
             minor_school = {:name => minor_school_name, :id => id}
             creature.update(minor_school: minor_school)
           end
-
+          puts "Sapient request args: #{request.args[:sapient]}"
           sapient = (request.args[:sapient] || "").to_bool
 
 

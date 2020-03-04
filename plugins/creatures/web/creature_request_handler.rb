@@ -35,11 +35,11 @@ module AresMUSH
             .sort_by {|portal| portal.name }
             .map { |portal| { name: portal.name, id: portal.id }}
 
-        if creature.sapient
-          sapient = "Sapient"
-        else
-          sapient = "Non Sapient"
-        end
+        # if creature.sapient
+        #   sapient = "Sapient"
+        # else
+        #   sapient = "Non Sapient"
+        # end
 
         {
           name: creature.name,
@@ -48,7 +48,7 @@ module AresMUSH
           gms: gms,
           found: creature.found,
           portals: portals,
-          sapient: sapient,
+          sapient: creature.sapient,
           id: creature.id,
           pinterest: creature.pinterest,
           language: creature.language,
