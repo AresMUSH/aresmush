@@ -120,6 +120,7 @@ spells:
   Laser Zap:
     available: true
     casting_time: 1 round
+    damage_type: Fire
     desc: The caster creates an amplified ray of light and focuses the laser on a target to burn them.
     effect: Damage
     fs3_attack: true
