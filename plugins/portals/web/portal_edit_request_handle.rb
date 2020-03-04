@@ -5,6 +5,9 @@ module AresMUSH
         portal = Portal.find_one_by_name(request.args[:id])
         enactor = request.enactor
 
+        puts "Request args: #{request.args[:location_known]}"
+        puts "Starting location_known: #{portal.location_known}"
+
         if (!portal)
           return { error: t('webportal.not_found') }
         end
@@ -71,7 +74,7 @@ module AresMUSH
           portal.update(society: request.args[:society].blank? ? nil : request.args[:society])
           portal.update(rp_suggestions: request.args[:rp_suggestions].blank? ? nil : request.args[:rp_suggestions])
           Website.add_to_recent_changes('portal', t('portals.portal_updated', :name => portal.name), { id: portal.id }, enactor.name)
-
+          puts "Ending location_known: #{portal.location_known}"
           {}
       end
     end
