@@ -4,6 +4,7 @@ scenes:
   idle_scene_timeout_days: 2
   include_pose_separator: true
   ooc_color: "%xc"
+  related_scenes_filter_days: 90
   room_cleanup_cron:
     minute:
     - 15
@@ -75,3 +76,4 @@ scenes:
     scene_participant:
       type: story
       message: Participated in %{count} scenes.
+  use_custom_char_cards: false
