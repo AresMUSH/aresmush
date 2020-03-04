@@ -290,7 +290,7 @@ spells:
     range: Touch
     school: Will
   #LEVEL 7
-  Being of Force:
+  Being Of Force:
     area: 15 yard radius
     available: false
     casting_time: 10 minutes, plus additional rounds for commands
