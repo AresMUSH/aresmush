@@ -101,7 +101,7 @@ spells:
   Endure Extreme Temperatures:
     available: true
     casting_time: 1 round
-    desc: The caster suffers no harm from being in an extremely hot or cold environment, from -20 °F to 200 °F (−129 °C to 93°C).
+    desc: The caster suffers no harm from being in an extremely hot or cold environment, from -20 °F to 200 °F (−129 °C to 93°C). The protection is not strong enough to prevent or reduce damage from spells doing cold or fire damage.
     duration: 10 minutes
     effect: Buff
     is_potion: true
@@ -469,6 +469,18 @@ spells:
     school: Corpus
     target_num: 1
     target_optional: true
+  Demon Form:
+    available: false
+    armor: Demon Form
+    casting_time: 1 round
+    desc: "The caster transforms their body into a demonic form. Their physical form is altered, making them slightly stronger and faster, boosting their attack power and reflexes slightly. They grow a formidable exoskeleton over their body, along with with a spear tipped tail, claws, fangs, and wings large enough to carry them in flight, allowing them to travel at a speed of up to 35 mph."
+    duration: 8 hours
+    effect: Transformation
+    level: 7
+    name: Demon Form
+    range: Self
+    school: Corpus
+    weapon: Demon Form
   Detect Ancestry:
     available: false
     casting_time: 1 round

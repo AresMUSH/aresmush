@@ -639,7 +639,7 @@ spells:
     available: true
     casting_time: "1 round to cast, plus additional rounds at GM's discretion according to the complexity of the restoration"
     damage_type: Psionic
-    desc: "Search someone’s memory to find any which have been overwritten or changed and restore them to their original state. The caster may choose to leave the rewritten memories alongside the restored memories, or to remove them completely."
+    desc: "Search someone's memory for specific events. Easily locate any which have been overwritten or changed and restore them to their original state.\n\n Memory is able to be searched much like a database, with the caster narrowing in on results by searching for certain times, people, places, etc. They can also filter to view only memories which have been altered. The caster can view original, altered, and restored memories.\n\nThe amount of time neccessary to find a desired memory varies according to the caster's skill and the amount of information they posess about the specific memory or piece of information. Looking through 'all memories about dogs' takes longer than 'memories about dogs in February 2019'.\n\nThe process of restoring a memory once it has been located is simple and relatively quick. The caster may choose to leave the rewritten memories alongside the restored memories, or to remove them completely.\n\nThose with Spirit may notice that the spell has been cast, and may attempt to do so with a roll of the caster's Spirit vs the target's Spirit-4. A draw goes to the caster. This does not prevent the spell's effects or identify the caster in any way."
     effect: Psionic
     level: 7
     name: Restore Memory
@@ -675,6 +675,21 @@ spells:
     level: 8
     line_of_sight: true
     name: Binding Oath
+    range: Short
+    roll: true
+    school: Spirit
+    target_num: 1
+    target_optional: true
+  Create Librarian:
+    available: false
+    casting_time: 1 hour
+    damage_type: Psionic
+    desc: "The target's emotional center is rerouted, removing their ability to process emotion and, in turn, increasing their memory storage and processing capability.\n\nTargets affected by this spell operate without an emotional center. They speak with plain clarity and even intonation. They often struggle to understand humor or idioms, and never find themselves angry, frustrated, or impassioned. They are patient and fair to a fault. In exchange, they possess a nearly faultless memory for events, people, and items they encounter. They are able to turn their attention inwards, spending time performing a Memory Dive-like function on their own memories in order to retrieve the most relevant pieces of information.\n\nThose with Spirit may notice that the spell has been cast, and may attempt to do so with a roll of the caster's Spirit vs the target's Spirit-4. A draw goes to the caster. This does not prevent the spell's effects or identify the caster in any way."
+    duration: Permanent
+    effect: Psionic
+    level: 8
+    line_of_sight: true
+    name: Create Librarian
     range: Short
     roll: true
     school: Spirit

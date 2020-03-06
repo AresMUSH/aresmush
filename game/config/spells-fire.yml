@@ -78,7 +78,7 @@ spells:
   Endure Fire:
     available: true
     casting_time: 1 round
-    desc: Caster is immune to fire and the negative effects of extreme heat up to 2,012 °F (1,110 °C).
+    desc: Caster is immune to fire and the negative effects of extreme heat up to 2,012 °F (1,110 °C). Spells that do fire damage may be stopped entirely by Endure Fire; when they are not, the damage inflicted is decreased. 
     duration: 10 minutes
     effect: Buff
     is_potion: true

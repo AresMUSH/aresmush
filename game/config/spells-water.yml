@@ -95,7 +95,7 @@ spells:
   Endure Cold:
     available: true
     casting_time: 1 round
-    desc: Caster is immune to the negative effects of extreme cold.
+    desc: Caster is immune to the negative effects of extreme cold. Spells that do cold damage may be stopped entirely by Endure Cold; when they are not, the damage inflicted is decreased.
     duration: 10 minutes
     effect: Buff
     is_potion: true
@@ -255,6 +255,7 @@ spells:
     target_num: 1
     target_optional: true
     weapon: Water Whip
+#Level 5
   Exploding Ice:
     area: 10 yard radius
     available: true
@@ -271,6 +272,20 @@ spells:
     target_num: 3
     target_optional: true
     weapon: Exploding Ice
+  Group Water Walk:
+    available: true
+    casting_time: 1 round
+    desc: The caster conveys the ability to walk on a liquid surface as if it were solid ground on up to 3 targets. Each recipient of the spell must remain within 15 yards of each other, or the spell ends for the target that is separated.
+    duration: 1 hour
+    effect: Travel
+    is_potion: true
+    level: 3
+    line_of_sight: true
+    name: Group Water Walk
+    range: Short
+    roll: true
+    school: Water
+    target_num: 3
   Reviving Cold:
     available: false
     casting_time: 1 round
