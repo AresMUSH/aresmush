@@ -10,6 +10,7 @@ module AresMUSH
         searchDesc = (request.args[:searchDesc] || "").strip
         searchAvailable = (request.args[:searchAvailable] || "")
         searchPotion = (request.args[:searchPotion] || "")
+        searchLOS = (request.args[:searchLOS] || "")
 
         all_spells = Global.read_config("spells")
         spells = build_list(all_spells)
@@ -111,6 +112,10 @@ module AresMUSH
           spells = spells.select { |s| s[:potion] == true }
         end
 
+        if searchLOS == "true"
+          spells = spells.select { |s| s[:line_of_sight] == true }
+        end
+
         spells.sort_by { |s| s[:level] }
       end
 
@@ -123,6 +128,7 @@ module AresMUSH
           level: data['level'],
           school: data['school'],
           potion: data['is_potion'],
+          line_of_sight: data['line_of_sight'],
           duration: data['duration'],
           casting_time: data['casting_time'],
           range: data['range'],
