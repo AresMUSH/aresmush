@@ -52,6 +52,17 @@ spells:
     target_num: 1
     target_optional: true
     effect: Debuff
+  Glow Stone:
+    available: false
+    casting_time: 1 round
+    desc: "The caster imbues any rock or gem with the ability to fluoresce, making it able emit a soft glow in the dark after being charged in the light for a short period of time. The light from the stone is dim, equivalent to a small candle flame (12 lumens)."
+    duration: 1 hour
+    effect: Creation
+    level: 2
+    name: Glow Stone
+    range: Touch
+    roll: true
+    school: Earth
   Shape Stone:
     available: true
     casting_time: 1 round

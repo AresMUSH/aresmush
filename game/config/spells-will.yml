@@ -326,7 +326,7 @@ spells:
   Mass Flight:
     available: true
     casting_time: 1 round
-    desc: "Confers the power of flight upon up to 3 targeted creatures. Each recipient of the spell must remain within 30 feet of at least one other recipient, or the spell ends for the creature that is separated from the others.\n\n Should the spell duration expire while the caster is still aloft, the magic fails slowly, lowering the caster safely to the ground."
+    desc: "Confers the power of flight upon up to 5 targets. Each recipient of the spell must remain within 30 yards of at least one other recipient, or the spell ends for the target that is separated from the others. This manipulation is not precise and cannot travel above 35 mph.\n\n Should the spell duration expire while the caster is still aloft, the magic fails slowly, lowering the caster safely to the ground."
     duration: 30 minutes
     effect: Travel
     level: 7
@@ -335,7 +335,7 @@ spells:
     range: Short
     roll: true
     school: Will
-    target_num: 3
+    target_num: 5
     target_optional: true
   Mass Telekinetic Burst:
     area: 15 yard radius
