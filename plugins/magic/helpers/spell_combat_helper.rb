@@ -354,10 +354,15 @@ module AresMUSH
       if (FS3Combat.weapon_stat(combatant.weapon, "has_shrapnel"))
         shrapnel = rand(max_shrapnel)
         damage_type = Global.read_config("spells", spell, "damage_type")
-        shrapnel.times.each do |s|
+                shrapnel.times.each do |s|
           margin = Magic.determine_magic_attack_margin(combatant, target, result = result, spell)
           attacker_net_successes = margin[:attacker_net_successes]
-          messages.concat FS3Combat.resolve_attack(nil, combatant.name, target, "#{damage_type} Shrapnel", attacker_net_successes)
+          if damage_type
+            messages.concat FS3Combat.resolve_attack(nil, combatant.name, target, "#{damage_type} Shrapnel", attacker_net_successes)
+          else
+            messages.concat FS3Combat.resolve_attack(nil, combatant.name, target, "Shrapnel", attacker_net_successes)
+          end
+
         end
       end
       return messages
