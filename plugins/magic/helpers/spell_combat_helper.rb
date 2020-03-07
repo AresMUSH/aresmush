@@ -362,7 +362,6 @@ module AresMUSH
           else
             messages.concat FS3Combat.resolve_attack(nil, combatant.name, target, "Shrapnel", attacker_net_successes)
           end
-
         end
       end
       return messages
