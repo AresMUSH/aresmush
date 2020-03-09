@@ -248,6 +248,17 @@ fs3combat:
       accuracy: 0
       init_mod: 0
       special_group: Melee
+    Greatsword:
+      description: Sword of any type
+      skill: Melee
+      lethality: 10
+      penetration: 5
+      weapon_type: Melee
+      recoil: 0
+      damage_type: Physical
+      accuracy: -1
+      init_mod: 0
+      special_group: Melee
     Unarmed:
       description: Unarmed
       skill: Brawl
@@ -342,7 +353,7 @@ fs3combat:
       description: Upper level animal or creature teeth
       skill: Melee
       lethality: 0
-      penetration: 6 
+      penetration: 6
       weapon_type: Melee
       recoil: 0
       damage_type: Physical
