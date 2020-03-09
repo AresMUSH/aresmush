@@ -10,7 +10,7 @@ module AresMUSH
         config =  { 
           "default" => {
             "color" => "%x!",
-            "padding" => "-=-",
+            "pattern" => "-=-",
             "text_position" => 5,
             "left_bracket" => '[ ',
             "right_bracket" => ' ]',
@@ -27,7 +27,7 @@ module AresMUSH
         config =  { 
           "default" => {
             "color" => "%xr",
-            "padding" => "=",
+            "pattern" => "=",
             "text_position" => 10,
             "left_bracket" => '<<<',
             "right_bracket" => '>>>',
@@ -44,7 +44,7 @@ module AresMUSH
         config =  { 
           "default" => {
             "color" => "%xr",
-            "padding" => "=",
+            "pattern" => "=",
             "text_position" => 60,
             "left_bracket" => '<<',
             "right_bracket" => '>>',
@@ -61,7 +61,7 @@ module AresMUSH
         config =  { 
           "default" => {
             "color" => "%xr",
-            "padding" => "=",
+            "pattern" => "=",
             "text_position" => 'center',
             "left_bracket" => '<<',
             "right_bracket" => '>>',

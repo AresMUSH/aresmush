@@ -24,7 +24,7 @@ module AresMUSH
     end
     
     def pad_char
-      self.style['padding'] || "-"
+      self.style['pattern'] || "-"
     end
     
     def pad_length
@@ -42,12 +42,12 @@ module AresMUSH
       repeat_times = repeat_length / self.pad_length
       repeat_remainder = repeat_length % self.pad_length
       if (repeat_remainder > 0)
-        extra_padding = self.pad_char[0..repeat_remainder-1]
+        extra_pattern = self.pad_char[0..repeat_remainder-1]
       else
-        extra_padding = ""
+        extra_pattern = ""
       end
       line = right('', repeat_times, self.pad_char)
-      "#{line}#{extra_padding}"
+      "#{line}#{extra_pattern}"
     end
     
     def color
@@ -59,12 +59,12 @@ module AresMUSH
       repeat_times = repeat_length / self.pad_length
       repeat_remainder = repeat_length % self.pad_length
       if (repeat_remainder > 0)
-        extra_padding = self.pad_char[0..repeat_remainder-1]
+        extra_pattern = self.pad_char[0..repeat_remainder-1]
       else
-        extra_padding = ""
+        extra_pattern = ""
       end
       line = left('', repeat_times, self.pad_char)
-      "#{line}#{extra_padding}"
+      "#{line}#{extra_pattern}"
     end
     
     def bracket_length

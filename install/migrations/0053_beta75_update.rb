@@ -1,7 +1,7 @@
 module AresMUSH  
 
   module Migrations
-    class MigrationBeta74Update
+    class MigrationBeta75Update
       def require_restart
         false
       end
@@ -13,7 +13,7 @@ module AresMUSH
           config['skin']['line_with_text'] = {
             "default" => {
               "color" => config['skin']['line_with_text_color'] || "%x!",
-              "padding" => config['skin']['line_with_text_padding'] || "-",
+              "pattern" => config['skin']['line_with_text_padding'] || "-",
               "text_position" => 5,
               "left_bracket" => '[ ',
               "right_bracket" => ' ]',
@@ -23,6 +23,12 @@ module AresMUSH
           config.delete 'line_with_text_padding'
         end
         DatabaseMigrator.write_config_file("skin.yml", config)
+        
+        if (!Global.read_config('emoji', 'emoji'))
+          default_emoji = DatabaseMigrator.read_distr_config_file("emoji.yml")
+          DatabaseMigrator.write_config_file("emoji.yml", default_emoji)
+        end
+        
       end 
     end
   end
