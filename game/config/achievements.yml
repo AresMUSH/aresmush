@@ -14,7 +14,8 @@ achievements:
     fs3: fa-cubes
     story: fa-book
     community: fa-users
-    portal: fa-globe    
+    portal: fa-globe
+    library: fa-book-reader
   achievements:
     object_meme:
       type: meme
@@ -31,3 +32,6 @@ achievements:
     ran_prp:
       type: plot
       message: Ran a player-run plot
+    library_token:
+      type: library
+      message: Obtained a Scholar's token
