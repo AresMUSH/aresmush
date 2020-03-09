@@ -32,10 +32,11 @@ module AresMUSH
     def self.get_file_info(file_path)
       return nil if !file_path
       relative_path = file_path.gsub(AresMUSH.website_uploads_path, '')
+      folder = File.dirname(relative_path).gsub(AresMUSH.website_uploads_path, '').gsub('/', '')
       {
         path: relative_path,
         name: File.basename(relative_path),
-        folder: File.dirname(relative_path).gsub(AresMUSH.website_uploads_path, '').gsub('/', '')
+        folder: folder.blank? ? '/' : folder
       }
     end
     

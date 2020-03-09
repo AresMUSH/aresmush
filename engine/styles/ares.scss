@@ -1343,6 +1343,10 @@ ul.reference-help-list > li:not(:last-child)::after {
   padding-left: 25px;
 }
 
+.emoji-example {
+  font-size: 24px;
+}
+
 /*.char-scene-list li:before { content: "\2666  "; }*/
 
 @media (max-width:992px)  { 

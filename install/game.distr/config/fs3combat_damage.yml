@@ -11,7 +11,7 @@ fs3combat:
     IMPAIR: 95
   healing_cron:
     hour:
-    - 0
+    - 2
     minute:
     - 47
   healing_points:

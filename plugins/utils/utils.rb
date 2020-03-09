@@ -82,6 +82,8 @@ module AresMUSH
         return GetNotesRequestHandler
       when "saveNotes"
         return SaveNotesRequestHandler
+      when "emojiList"
+        return EmojiListRequestHandler
       end
       nil
     end
