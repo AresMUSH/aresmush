@@ -27,7 +27,7 @@ spells:
     school: Nature
     target_num: 5
     target_optional: true
-    weapon: Sharp Claws 
+    weapon: Sharp Claws
     effect: Damage
   Beckon Tiny Animal:
     available: true
@@ -587,7 +587,7 @@ spells:
     desc: Provide necessary magical energy of the appropriate School to a Dimensional Anchor spell, enabling the linked casters to permanently open or close an interdimensional portal.
     effect: Travel
     level: 7
-    name: Dimensional Anchor
+    name: Energize Dimensional Anchor (Nature)
     range: Touch
     roll: true
     school: Nature

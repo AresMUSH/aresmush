@@ -1,3 +1,4 @@
+
 spells:
   Create Water:
     area: 1-5 ft radius
@@ -358,7 +359,7 @@ spells:
     desc: Provide necessary magical energy of the appropriate School to a Dimensional Anchor spell, enabling the linked casters to permanently open or close an interdimensional portal.
     effect: Travel
     level: 7
-    name: Dimensional Anchor
+    name: Energize Dimensional Anchor (Water)
     range: Touch
     roll: true
     school: Water

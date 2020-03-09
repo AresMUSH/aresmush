@@ -78,7 +78,7 @@ spells:
   Endure Fire:
     available: true
     casting_time: 1 round
-    desc: Caster is immune to fire and the negative effects of extreme heat up to 2,012 °F (1,110 °C). Spells that do fire damage may be stopped entirely by Endure Fire; when they are not, the damage inflicted is decreased. 
+    desc: Caster is immune to fire and the negative effects of extreme heat up to 2,012 °F (1,110 °C). Spells that do fire damage may be stopped entirely by Endure Fire; when they are not, the damage inflicted is decreased.
     duration: 10 minutes
     effect: Buff
     is_potion: true
@@ -263,7 +263,7 @@ spells:
     desc: Provide necessary magical energy of the appropriate School to a Dimensional Anchor spell, enabling the linked casters to permanently open or close an interdimensional portal.
     effect: Travel
     level: 7
-    name: Dimensional Anchor
+    name: Energize Dimensional Anchor (Fire)
     range: Touch
     roll: true
     school: Fire
