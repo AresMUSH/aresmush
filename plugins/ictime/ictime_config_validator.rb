@@ -10,10 +10,10 @@ module AresMUSH
       def validate
         @validator.require_list('day_names')
         @validator.require_list('month_names')
-        @validator.require_int('day_offset', 0)
-        @validator.require_int('hour_offset', 0)
+        @validator.require_int('day_offset')
+        @validator.require_int('hour_offset')
         @validator.require_text('game_start_date')
-        @validator.require_int('year_offset', 0)
+        @validator.require_int('year_offset')
         
         begin
           ratio = Global.read_config("ictime", "time_ratio")
