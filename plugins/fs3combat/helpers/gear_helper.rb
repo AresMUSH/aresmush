@@ -147,7 +147,8 @@ module AresMUSH
       
       armor = FS3Combat.combatant_type_stat(type, "armor")
       if (armor)
-        FS3Combat.set_armor(enactor, combatant, armor)
+        specials = FS3Combat.combatant_type_stat(type, "armor_specials")
+        FS3Combat.set_armor(enactor, combatant, armor, specials)
       end      
     end
     

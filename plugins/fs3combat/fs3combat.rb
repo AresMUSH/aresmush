@@ -46,13 +46,6 @@ module AresMUSH
          when "scan"
            return HealScanCmd
          end
-       when "hospital"
-         case cmd.switch
-         when "list"
-           return HospitalsCmd
-         when "on", "off"
-           return HospitalSetCmd
-         end
        when "mount"
          if (cmd.args)
            return MountDetailCmd

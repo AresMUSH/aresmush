@@ -48,7 +48,6 @@ module AresMUSH
           allow(@damage1).to receive(:healing_points) { 2 }
           allow(@damage2).to receive(:healing_points) { 2 }
           @wounds =  [@damage1, @damage2]
-          allow(FS3Combat).to receive(:is_in_hospital?) { false }
           allow(@char).to receive(:doctors) { [] }
           allow(@char).to receive(:damage) { @wounds }
           allow(FS3Skills).to receive(:one_shot_roll) { { :successes => 0 } }
@@ -69,30 +68,12 @@ module AresMUSH
           expect(FS3Combat).to receive(:heal).with(@damage1, 2)
           expect(FS3Combat).to receive(:heal).with(@damage2, 2)
           FS3Combat.heal_wounds(@char)
-        end
-        
-        it "should add 1 if in hospital" do
-          allow(FS3Combat).to receive(:is_in_hospital?) { true }
-          expect(FS3Combat).to receive(:heal).with(@damage1, 2)
-          expect(FS3Combat).to receive(:heal).with(@damage2, 2)
-          FS3Combat.heal_wounds(@char)
-        end
+        end        
 
         it "should add 1 if under doctor's care" do
           doctor = double
           allow(doctor).to receive(:name) { "Dr. Carter" }
           allow(@char).to receive(:doctors) { [doctor] }
-          expect(FS3Combat).to receive(:heal).with(@damage1, 2)
-          expect(FS3Combat).to receive(:heal).with(@damage2, 2)
-          FS3Combat.heal_wounds(@char)
-        end
-        
-        it "should only add 1 if under both doctor and hospital" do
-          doctor = double
-          allow(doctor).to receive(:name) { "Dr. Carter" }
-          allow(FS3Combat).to receive(:is_in_hospital?) { true }
-          allow(@char).to receive(:doctors) { [doctor] }
-          allow(FS3Skills).to receive(:one_shot_roll) { { :successes => 3 } }
           expect(FS3Combat).to receive(:heal).with(@damage1, 2)
           expect(FS3Combat).to receive(:heal).with(@damage2, 2)
           FS3Combat.heal_wounds(@char)
