@@ -31,6 +31,7 @@ module AresMUSH
         @validator.require_hash('max_attrs_at_or_above')
         @validator.require_int('max_points_on_action', 0)
         @validator.require_int('max_points_on_attrs', 0)
+        @validator.require_int('max_points_on_advantages', 0)
         @validator.require_int('max_skill_rating', 1, 8)
         @validator.require_hash('max_skills_at_or_above')
         @validator.require_int('min_backgrounds', 0)

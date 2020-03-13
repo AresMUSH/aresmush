@@ -29,6 +29,12 @@ module AresMUSH
           DatabaseMigrator.write_config_file("emoji.yml", default_emoji)
         end
         
+        Global.logger.debug "Add max pts advantages."
+        config = DatabaseMigrator.read_config_file("fs3skills_chargen.yml")
+        config['fs3skills']['max_points_on_advantages'] = 12
+        DatabaseMigrator.write_config_file("fs3skills_chargen.yml", config)
+        
+        
       end 
     end
   end

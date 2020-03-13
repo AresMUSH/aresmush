@@ -28,9 +28,14 @@ module AresMUSH
           @char = double
           allow(Global).to receive(:read_config).with("fs3skills", "max_points_on_attrs") { 14 }
           allow(Global).to receive(:read_config).with("fs3skills", "max_points_on_action") { 10 }
+          allow(Global).to receive(:read_config).with("fs3skills", "max_points_on_advantages") { 10 }
           allow(Global).to receive(:read_config).with("fs3skills", "attr_dots_beyond_chargen_max") { 1 }
           allow(Global).to receive(:read_config).with("fs3skills", "action_dots_beyond_chargen_max") { 2 }
+          allow(Global).to receive(:read_config).with("fs3skills", "advantage_dots_beyond_chargen_max") { 2 }
+          allow(Global).to receive(:read_config).with("fs3skills", "advantages_cost") { 2 }
           allow(FS3Skills).to receive(:get_ability_type).with("Firearms") { :action }
+          allow(FS3Skills).to receive(:get_ability_type).with("Reflexes") { :attribute }
+          allow(FS3Skills).to receive(:get_ability_type).with("Rank") { :advantage }
         end
         
         it "should return false if next rating not in cost chart" do
@@ -51,18 +56,29 @@ module AresMUSH
         end
         
         it "should return false if char is at max in attrs already" do
-          expect(FS3Skills).to receive(:xp_needed).with("Firearms", 4) { 4 }
-          allow(FS3Skills).to receive(:get_ability_type).with("Firearms") { :attribute }
+          expect(FS3Skills).to receive(:xp_needed).with("Reflexes", 4) { 4 }
           allow(FS3Skills::AbilityPointCounter).to receive(:points_on_attrs).with(@char) { 16 }
-          expect(FS3Skills.check_can_learn(@char, "Firearms", 4)).to eq "fs3skills.max_ability_points_reached"
+          expect(FS3Skills.check_can_learn(@char, "Reflexes", 4)).to eq "fs3skills.max_ability_points_reached"
         end
 
         it "should return ok if char would be at max after spending on attrs" do
-          expect(FS3Skills).to receive(:xp_needed).with("Firearms", 4) { 4 }
-          allow(FS3Skills).to receive(:get_ability_type).with("Firearms") { :attribute }
+          expect(FS3Skills).to receive(:xp_needed).with("Reflexes", 4) { 4 }
           allow(FS3Skills::AbilityPointCounter).to receive(:points_on_attrs).with(@char) { 14 }
-          expect(FS3Skills.check_can_learn(@char, "Firearms", 4)).to eq nil
+          expect(FS3Skills.check_can_learn(@char, "Reflexes", 4)).to eq nil
         end
+        
+        it "should return false if char is at max in adv already" do
+          expect(FS3Skills).to receive(:xp_needed).with("Rank", 3) { 3 }
+          allow(FS3Skills::AbilityPointCounter).to receive(:points_on_advantages).with(@char) { 14 }
+          expect(FS3Skills.check_can_learn(@char, "Rank", 3)).to eq "fs3skills.max_ability_points_reached"
+        end
+        
+        it "should return ok if char would be at max after spending on adv" do
+          expect(FS3Skills).to receive(:xp_needed).with("Rank", 3) { 4 }
+          allow(FS3Skills::AbilityPointCounter).to receive(:points_on_advantages).with(@char) { 12 }
+          expect(FS3Skills.check_can_learn(@char, "Rank", 3)).to eq nil
+        end
+        
       end
       
       describe :xp do

@@ -27,6 +27,9 @@ module AresMUSH
       error = FS3Skills.check_action_points(char)
       too_high << error if error
       
+      error = FS3Skills.check_advantage_points(char)
+      too_high << error if error
+      
       
       if (too_high.count == 0)
         Chargen.format_review_status(message, t('chargen.ok'))
@@ -75,6 +78,12 @@ module AresMUSH
       points = AbilityPointCounter.points_on_action(char)
       max = Global.read_config("fs3skills", "max_points_on_action")
       points > max ? t('fs3skills.too_many_action_skills', :max => max) : nil
+    end
+    
+    def self.check_advantage_points(char)
+      points = AbilityPointCounter.points_on_advantages(char)
+      max = Global.read_config("fs3skills", "max_points_on_advantages") || 99
+      points > max ? t('fs3skills.too_many_advantages', :max => max) : nil
     end
         
     def self.total_point_review(char)

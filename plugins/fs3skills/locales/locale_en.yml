@@ -88,7 +88,7 @@ en:
         unusual_abilities_check: "Checking for unusual skills."
         unusual_skill: "%xh%xy< %{skill} is an unusual skill.  Be sure there's good reason for it. >%xn"
         high_bg: "%xh%xy< %{skill} is pretty high for a hobby.  Be sure there's good reason for it. >%xn"
-
+        too_many_advantages: "%xh%xr< Too many points on advantages. (%{max} max) >%xn"
 
         # ------------------------------------------------------
         # LUCK
