@@ -12,6 +12,7 @@ Requests are like support tickets in many web applications.  You can use them wh
 
 `request <title>=<description>` - Submits a request
 `requests` - Views your active requests
+`request/new` - Views the next unread request.
 `requests/all` - Views all of your requests, even closed ones.  
 `request <#>` - Views details of a request.
 
