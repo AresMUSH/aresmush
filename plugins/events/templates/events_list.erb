@@ -2,9 +2,12 @@
 %xh<%= title %>%xn
 
 <% events.each_with_index do |ev, i| %>
-<%= left(i + 1, 4) %><%= ev.color -%>
+<%= left("#{i + 1}.", 4) %><%= signup_indication(ev) -%>
+<%= ev.color -%>
 <%= left( ev.title, 30 ) -%>
  <%= start_datetime_local(ev) -%>
  (<%= start_time_standard(ev) %>)%xn
 <% end %>
+
+[*] = Event you've signed up for.
 %lf

@@ -43,5 +43,28 @@ module AresMUSH
       char.update(ranks_rank: rank)
       return nil
     end
+    
+    def self.build_rank_group_data(groups_data)
+      return {} if !Ranks.is_enabled?
+
+      ranks = []
+      
+      rank_group = Demographics.get_group(Ranks.rank_group)
+      return {} if !rank_group
+      
+      rank_group['values'].each do |k, v|
+        Ranks.allowed_ranks_for_group(k).each do |r|
+          ranks << { name: 'Rank', value: r, desc: k }
+        end
+      end
+      
+      groups_data['rank'] = {
+        name: 'Rank',
+        desc: Global.read_config('chargen', 'rank_blurb'),
+        values: ranks
+      }
+      
+      groups_data['all_ranks'] = Global.read_config('ranks', 'ranks')
+    end
   end
 end
