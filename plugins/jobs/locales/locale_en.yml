@@ -11,6 +11,7 @@ en:
         reply_title: "%xh%{name}%xn replied on %{date}:"
         admin_only: "(To Admins Only)"
         no_new_jobs: "There are no new jobs to read."
+        no_new_requests: "There are no new requests to read."
         job_admin_only: "Admin"
         
         category_title: "Category:"
