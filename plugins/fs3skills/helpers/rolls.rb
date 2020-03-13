@@ -115,6 +115,11 @@ module AresMUSH
       # ------------------
       elsif (!pc_name.blank?)
         char = Character.find_one_by_name(pc_name)
+
+        if (!char && !pc_skill.is_integer?)
+          pc_skill = "3"
+        end
+
         roll = FS3Skills.parse_and_roll(char, pc_skill)
         roll_result = FS3Skills.get_success_level(roll)
         success_title = FS3Skills.get_success_title(roll_result)

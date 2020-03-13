@@ -57,6 +57,16 @@ module AresMUSH
         msg = EmojiFormatter.format("I want to fly in a :rocket:.")
         expect(msg).to eq "I want to fly in a \u{1F680}."
       end
+      
+      it "should not replace smiley in the middle of another word." do
+        msg = EmojiFormatter.format("I want to fly yes:)so.")
+        expect(msg).to eq "I want to fly yes:)so."
+      end
+      
+      it "should replace smiley by itself." do
+        msg = EmojiFormatter.format(":)")
+        expect(msg).to eq "\u{1F600}"
+      end
     end
   end
 end
