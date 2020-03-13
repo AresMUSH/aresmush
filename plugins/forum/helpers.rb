@@ -306,6 +306,16 @@ module AresMUSH
       end
       Game.master.update(recent_forum_posts: recent)
     end
+    
+    def self.get_authorable_chars(char, category)
+      return [] if !char
+      authors = AresCentral.alts(char)
+      authors << char
+      authors.uniq
+        .select { |p| Forum.can_write_to_category?(p, category)}
+        .sort_by { |p| [ p == char ? 0 : 1, p.name ]}
+        .map { |p| { id: p.id, name: p.name, icon: Website.icon_for_char(p) }}   
+     end
   end
 end
   

@@ -5,6 +5,7 @@ module AresMUSH
                 
         topic_id = request.args[:topic_id]
         message = request.args[:reply]
+        author = Character.find_one_by_name(request.args[:author_id])
         enactor = request.enactor
         
         topic = BbsPost[topic_id.to_i]
@@ -15,9 +16,12 @@ module AresMUSH
         error = Website.check_login(request)
         return error if error
         
-
+        if (!author)
+          author = enactor
+        end
+        
         category = topic.bbs_board
-        if (!Forum.can_write_to_category?(enactor, category))
+        if (!Forum.can_write_to_category?(author, category))
           return { error: t('forum.cannot_access_category') }
         end
         
@@ -26,7 +30,7 @@ module AresMUSH
         end
       
         formatted_message = Website.format_input_for_mush(message)
-        Forum.reply(category, topic, enactor, formatted_message)
+        Forum.reply(category, topic, author, formatted_message)
         {}
       end
     end

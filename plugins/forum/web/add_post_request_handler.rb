@@ -6,17 +6,22 @@ module AresMUSH
         category_id = request.args[:category_id]
         message = request.args[:message]
         subject = request.args[:subject]
+        author = Character.find_one_by_name(request.args[:author_id])
         enactor = request.enactor
 
         error = Website.check_login(request)
         return error if error
+        
+        if (!author)
+          author = enactor
+        end
         
         category = BbsBoard[category_id.to_i]
         if (!category)
           return { error: t('webportal.not_found') }
         end
 
-        if (!Forum.can_write_to_category?(enactor, category))
+        if (!Forum.can_write_to_category?(author, category))
           return { error: t('forum.cannot_access_category') }
         end
         
@@ -25,7 +30,7 @@ module AresMUSH
         end
       
         formatted_message = Website.format_input_for_mush(message)
-        post = Forum.post(category.name, subject, message, enactor)
+        post = Forum.post(category.name, subject, message, author)
         
         if (!post)
           return { error: t('webportal.unexpected_error') }
