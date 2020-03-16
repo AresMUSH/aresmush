@@ -273,14 +273,25 @@ spells:
     target_num: 3
     target_optional: true
     weapon: Exploding Ice
+  Group Endure Cold:
+    available: false
+    casting_time: 1 round
+    desc: The caster conveys the ability to walk on a liquid surface as if it were solid ground on up to 3 targets. Each recipient of the spell must remain within 15 yards of each other, or the spell ends for the target that is separated.
+    duration: 1 hour
+    effect: Travel
+    level: 5
+    name: Group Endure Cold
+    range: Short
+    school: Water
+    target_num: 3
+    rounds: 600
   Group Water Walk:
     available: true
     casting_time: 1 round
     desc: The caster conveys the ability to walk on a liquid surface as if it were solid ground on up to 3 targets. Each recipient of the spell must remain within 15 yards of each other, or the spell ends for the target that is separated.
     duration: 1 hour
     effect: Travel
-    is_potion: true
-    level: 3
+    level: 5
     line_of_sight: true
     name: Group Water Walk
     range: Short
