@@ -16,6 +16,10 @@ idle:
     day:
     - 1
     - 15
+    hour:
+    - 1
+    minute:
+    - 00
   monthly_reminder_title: Idle Sweep
   reminder_category: MISC
   roster_welcome_msg: Welcome!  You may wish to check your %xcnotes%xn and web portal

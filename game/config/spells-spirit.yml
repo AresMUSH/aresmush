@@ -669,7 +669,7 @@ spells:
     desc: "Permanently rewrite the mind of the target, changing or replacing any and all memories.\n\n
     The target’s mind, in conjunction with the spell, will fill in the gaps and discrepancies, glossing over irregularities.\n\n
     Additionally, the caster can impart the remembered knowledge of how to perform simple tasks at a basic level, as long as the caster possesses said knowledge.\n\n
-    Specifics of 'simple tasks' are at staff's discretion, but can include spells up to level 3, languages at a 'conversational'(2) level, most background skills at a 'fair' (1) level, and action skills (except Schools) at a 'competent'(3) level.\n\nThose with Spirit may notice that the spell has been cast, and may attempt to do so with a roll of the caster's Spirit vs the target's Spirit-4. A draw goes to the caster. This does not prevent the spell's effects or identify the caster in any way."
+    Specifics of 'simple tasks' are at staff's discretion, but can include spells up to level 2, languages at a 'conversational'(2) level, most background skills at a 'fair' (1) level, and action skills (except Schools) at a 'competent'(3) level.\n\nThose with Spirit may notice that the spell has been cast, and may attempt to do so with a roll of the caster's Spirit vs the target's Spirit-4. A draw goes to the caster. This does not prevent the spell's effects or identify the caster in any way."
     effect: Psionic
     level: 7
     name: Rewrite History
