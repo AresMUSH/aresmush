@@ -5,6 +5,10 @@ module AresMUSH
       ability = roll_params.ability
       modifier = roll_params.modifier || 0
 
+      if ("#{ability}".is_integer?)
+        return ability
+      end
+      
       linked_attr = roll_params.linked_attr || FS3Skills.get_linked_attr(ability)
       ability_type = FS3Skills.get_ability_type(ability)
       skill_rating = FS3Skills.ability_rating(char, ability)
