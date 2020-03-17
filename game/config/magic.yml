@@ -27,6 +27,9 @@ magic:
     spells_learned:
       type: spell
       message: Learned %{count} spells.
+    spells_discarded:
+      type: spell
+      message: Discarded %{count} spells.
     spells_cast:
       type: spell
       message: Cast %{count} spells.

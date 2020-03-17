@@ -21,6 +21,7 @@ module AresMUSH
       def handle
         self.spell_learned.delete
         client.emit_success t('magic.discarded_spell', :spell => self.spell)
+        Magic.handle_spell_discard_achievement(enactor)
       end
 
     end

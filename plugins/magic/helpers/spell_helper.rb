@@ -35,7 +35,7 @@ module AresMUSH
 
     def self.handle_spell_learn_achievement(char)
       char.update(achievement_spells_learned: char.achievement_spells_learned + 1)
-      [ 1, 10, 20, 30 ].each do |count|
+      [ 1, 10, 20, 30, 40, 50 ].each do |count|
         if (char.achievement_spells_learned >= count)
           # if (count == 1)
           #   message = "Learned a spell."
@@ -43,6 +43,20 @@ module AresMUSH
           #   message = "Learned #{count} spells."
           # end
           Achievements.award_achievement(char, "spells_learned", count)
+        end
+      end
+    end
+
+    def self.handle_spell_discard_achievement(char)
+      char.update(achievement_spells_discarded: char.achievement_spells_discarded + 1)
+      [ 1, 5, 15, 20, 25 ].each do |count|
+        if (char.achievement_spells_discarded >= count)
+          # if (count == 1)
+          #   message = "Learned a spell."
+          # else
+          #   message = "Learned #{count} spells."
+          # end
+          Achievements.award_achievement(char, "spells_discarded", count)
         end
       end
     end
@@ -60,7 +74,7 @@ module AresMUSH
       if die_result < 1
         return "%xrFAILS%xn"
       else
-        return "%xgSUCCEEDS%xn"  
+        return "%xgSUCCEEDS%xn"
       end
     end
 

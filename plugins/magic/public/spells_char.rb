@@ -3,6 +3,7 @@ module AresMUSH
     collection :spells_learned, "AresMUSH::SpellsLearned"
     attribute :spells_cast, :type => DataType::Integer
     attribute :achievement_spells_learned, :type => DataType::Integer
+    attribute :achievement_spells_discarded, :type => DataType::Integer
     attribute :mind_shield, :type => DataType::Integer, :default => 0
     attribute :endure_fire, :type => DataType::Integer, :default => 0
     attribute :endure_cold, :type => DataType::Integer, :default => 0
