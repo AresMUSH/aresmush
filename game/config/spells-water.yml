@@ -276,7 +276,7 @@ spells:
   Group Endure Cold:
     available: false
     casting_time: 1 round
-    desc: The caster conveys the ability to walk on a liquid surface as if it were solid ground on up to 3 targets. Each recipient of the spell must remain within 15 yards of each other, or the spell ends for the target that is separated.
+    desc: Targets are immune to the negative effects of extreme cold up to -346°F (-210 °C). Spells that do cold damage may be stopped entirely by Endure Cold; when they are not, the damage inflicted is decreased.
     duration: 1 hour
     effect: Travel
     level: 5
