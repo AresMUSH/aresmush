@@ -51,11 +51,11 @@ module AresMUSH
       return t('validation.name_is_restricted') if Login.is_name_restricted?(name)
           
       found = Character.find_one_by_name(name)
-      if (enactor)
-        return t('validation.char_name_taken') if (found && enactor != found)
-      else
-        return t('validation.char_name_taken') if found
+      # Only look for an exact name match.
+      if (found && (found.name_upcase == name.upcase || found.alias_upcase == name.upcase))
+        return t('validation.char_name_taken')
       end
+      
       return nil
     end
     
