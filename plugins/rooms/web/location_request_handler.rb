@@ -39,20 +39,29 @@ module AresMUSH
           area = nil
         end
         
+        areas = Area.all.to_a.sort_by { |area| area.full_name }.map { |area|
+          {
+            name: area.name,
+            id: area.id,
+            full_name: area.full_name
+          }
+        }
         
         {
+          id: room.id,
           name: room.name,
-          description: desc,
+          descs: edit_mode ? Describe.get_web_descs_for_edit(room) : Describe.get_web_descs_for_display(room),
           owners: owners,
           area: area,
           name_and_area: room.name_and_area,
+          can_edit: room.room_owners.include?(enactor) || Rooms.can_build?(enactor),
           destinations: room.exits.select { |e| e.dest }.map { |e| 
             { 
             name: e.dest.name, 
             id: e.dest.id
             }},
-          details: room.details.map { |k, v| { name: k, desc: Website.format_markdown_for_html(v) } },
-          can_manage: Rooms.can_build?(enactor)
+          can_manage: Rooms.can_build?(enactor),
+          areas: areas
         }
       end
       

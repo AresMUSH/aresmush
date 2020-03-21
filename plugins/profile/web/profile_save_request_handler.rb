@@ -56,6 +56,7 @@ module AresMUSH
         relation_category_order = (request.args[:relationships_category_order] || "").split(',')
         char.update(relationships_category_order: relation_category_order)
         
+        Describe.save_web_descs(char, request.args['descs'])
         CustomCharFields.save_fields_from_profile_edit(char, request.args)
         
         ## DO PROFILE LAST SO IT TRIGGERS THE SOURCE HISTORY UPDATE
