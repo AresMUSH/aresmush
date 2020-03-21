@@ -218,6 +218,7 @@ module AresMUSH
         it "should OK true" do 
           cron = { 
             'hour' => [ 1, 2 ],
+            'minute' => [ 1 ],
             'day_of_week' => [ 'Tue', 'Wed' ]
           }
           expect(Global).to receive(:read_config).with("foo") { { "some_val" => cron } }
@@ -229,7 +230,8 @@ module AresMUSH
         it "should fail if cron specs not a list" do 
           cron = { 
             'hour' => 1,
-            'day_of_week' => [ 'Tue', 'Wed' ]
+            'day_of_week' => [ 'Tue', 'Wed' ],
+            'minute' => [ 1 ]
           }
           expect(Global).to receive(:read_config).with("foo") { { "some_val" => cron } }
           @validator = ConfigValidator.new("foo")
@@ -247,13 +249,25 @@ module AresMUSH
         it "should fail if invalid hash setting" do 
           cron = { 
             'hour' => [ 1, 2 ],
-            'xxx' => [ 'Tue', 'Wed' ]
+            'xxx' => [ 'Tue', 'Wed' ],
+            'minute' => [ 1 ]
           }
           expect(Global).to receive(:read_config).with("foo") { { "some_val" => cron } }
           @validator = ConfigValidator.new("foo")
           @validator.check_cron("some_val")
           expect(@validator.errors).to eq ["foo:some_val - xxx is not a valid setting."]
         end
+        
+        it "should warn if no minute value" do
+          cron = { 
+            'hour' => [ 1, 2 ]
+          }
+          expect(Global).to receive(:read_config).with("foo") { { "some_val" => cron } }
+          @validator = ConfigValidator.new("foo")
+          @validator.check_cron("some_val")
+          expect(@validator.errors).to eq ["foo:some_val - will run every minute; that's probably excessive."]
+        end
+        
       end
       
       describe :check_channel_exists do

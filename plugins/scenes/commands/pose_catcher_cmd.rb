@@ -34,8 +34,7 @@ module AresMUSH
         else
           formatted_message = PoseFormatter.format(enactor_name, message)
         end
-        
-
+                
         emit_to_room = Scenes.send_to_ooc_chat_if_needed(enactor, client, message, is_emit)
         if (emit_to_room)
           Scenes.emit_pose(enactor, formatted_message, is_emit, is_ooc)
