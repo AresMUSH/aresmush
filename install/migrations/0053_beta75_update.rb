@@ -34,6 +34,10 @@ module AresMUSH
         config['fs3skills']['max_points_on_advantages'] = 12
         DatabaseMigrator.write_config_file("fs3skills_chargen.yml", config)
         
+        Global.logger.debug "Add max pts advantages."
+        config = DatabaseMigrator.read_config_file("fs3skills_xp.yml")
+        config['fs3skills']['advantage_dots_beyond_chargen_max'] = 12
+        DatabaseMigrator.write_config_file("fs3skills_xp.yml", config)
         
       end 
     end
