@@ -17,22 +17,27 @@ module AresMUSH
           message = cmd_str.after("\\\\")
           is_emit = true
         elsif (cmd_str.start_with?("\\"))
-            message = cmd_str.after("\\")
-            is_emit = true
+          message = cmd_str.after("\\")
+          is_emit = true
         elsif (cmd_str.start_with?("'"))
-          message = PoseFormatter.format(enactor_name, cmd_str.after("'"))
+          message = cmd_str.after("'")
           is_ooc = true
         elsif (cmd_str.start_with?(">"))
-          message =  PoseFormatter.format(enactor_name, cmd_str.after(">"))
+          message =  cmd_str.after(">")
           is_ooc = true
-        else
-          message = PoseFormatter.format(enactor_name, cmd_str)
+        else 
+          message = cmd_str
         end
         
-
-        emit_to_room = Scenes.send_to_ooc_chat_if_needed(enactor, client, PoseFormatter.format(enactor.ooc_name, cmd_str), is_emit)
+        if is_emit
+          formatted_message = message
+        else
+          formatted_message = PoseFormatter.format(enactor_name, message)
+        end
+                
+        emit_to_room = Scenes.send_to_ooc_chat_if_needed(enactor, client, message, is_emit)
         if (emit_to_room)
-          Scenes.emit_pose(enactor, message, is_emit, is_ooc)
+          Scenes.emit_pose(enactor, formatted_message, is_emit, is_ooc)
         end
       end
 

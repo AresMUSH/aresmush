@@ -27,6 +27,9 @@ module AresMUSH
     end
     
     def ability_rating(ability)
+      if ("#{ability}".is_integer?)
+        return ability
+      end
       stats = FS3Combat.npc_type(self.level)
       rating = stats[ability]
       default = stats["Default"] || 4

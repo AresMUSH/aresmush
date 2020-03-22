@@ -22,7 +22,7 @@ module AresMUSH
   
     def is_treatable?
       return false if self.healed
-      time_to_go = (4 * 3600) - (Time.now - self.created_at)
+      time_to_go = (86400) - (Time.now - self.created_at)
       return true if time_to_go > 0
       return false
     end

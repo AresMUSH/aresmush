@@ -21,7 +21,7 @@ module AresMUSH
         end
         
         if (!char.approval_job)
-          return { error: t('chargen.no_app_submitted') }
+          return { error: t('chargen.no_app_submitted', :name => char.name) }
         end
 
         return Chargen.build_app_review_info(char)

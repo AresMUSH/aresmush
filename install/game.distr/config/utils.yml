@@ -2,6 +2,7 @@
 utils:
   shortcuts:
     colors: color
+    ansi: color
     think: echo
     "@@": keepalive
     "@": keepalive

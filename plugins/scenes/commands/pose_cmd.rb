@@ -13,24 +13,33 @@ module AresMUSH
           client.emit_failure t('scenes.pose_order_mistake')
           return
         end
-        is_emit = cmd.root_is?("emit")
-        emit_to_room = Scenes.send_to_ooc_chat_if_needed(enactor, client, message(enactor.ooc_name), is_emit)
-        if emit_to_room
-          Scenes.emit_pose(enactor, message(enactor_name), is_emit, cmd.root_is?("ooc"))
+        is_emit = false
+        is_ooc = false
+        
+        if (cmd.root_is?("emit"))
+          is_emit = true
+          message = cmd.args
+        elsif (cmd.root_is?("pose"))
+          message = ":#{cmd.args}"
+        elsif (cmd.root_is?("ooc"))
+          message = cmd.args
+          is_ooc = true
+        else
+          message = "\"#{cmd.args}"
         end
         
+        if (is_emit)
+          formatted_message = message
+        else
+          formatted_message = PoseFormatter.format(enactor_name, message)
+        end
+
+        emit_to_room = Scenes.send_to_ooc_chat_if_needed(enactor, client, message, is_emit)
+        if emit_to_room
+          Scenes.emit_pose(enactor, formatted_message, is_emit, cmd.root_is?("ooc"))
+        end  
       end
       
-      def message(name)
-        if (cmd.root_is?("emit"))
-          return cmd.args
-        elsif (cmd.root_is?("pose"))
-          return PoseFormatter.format(name, ":#{cmd.args}")
-        elsif (cmd.root_is?("ooc"))
-          return PoseFormatter.format(name, "#{cmd.args}")
-        end
-        return PoseFormatter.format(name, "\"#{cmd.args}")
-      end
 
       def log_command
         # Don't log poses

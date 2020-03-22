@@ -7,44 +7,70 @@ module AresMUSH
       before do
         @client = double
         @enactor = double
-        allow(@enactor).to receive(:ooc_name) { "Bob OOC" }
         allow(@enactor).to receive(:name) { "Bob" }
-        @handler = PoseCmd.new(@client, Command.new("pose a message"), @enactor)
         stub_translate_for_testing
       end
       
       describe :handle do
-        it "should emit to the room" do
+        it "should emit a pose" do
           room = double
+          @handler = PoseCmd.new(@client, Command.new("pose a message"), @enactor)
           allow(@client).to receive(:room) { room }
-          allow(@handler).to receive(:message) { "a message" }
-          expect(Scenes).to receive(:emit_pose).with(@enactor, "a message", false, false)
+          expect(Scenes).to receive(:send_to_ooc_chat_if_needed) { true }
+          expect(PoseFormatter).to receive(:format).with("Bob", ":a message") { "Bob a message"}
+          expect(Scenes).to receive(:emit_pose).with(@enactor, "Bob a message", false, false)
           @handler.handle
         end
-      end
-      
-      describe :message do
-        before do
-          allow(@enactor).to receive(:name) { "Bob" }          
+        
+        it "should emit a say" do
+          room = double
+          @handler = PoseCmd.new(@client, Command.new("say a message"), @enactor)
+          allow(@client).to receive(:room) { room }
+          expect(Scenes).to receive(:send_to_ooc_chat_if_needed) { true }
+          expect(PoseFormatter).to receive(:format).with("Bob", "\"a message") { "Bob says a message"}
+          expect(Scenes).to receive(:emit_pose).with(@enactor, "Bob says a message", false, false)
+          @handler.handle
         end
         
-        it "should format an emit message" do
-          @handler = PoseCmd.new(@client, Command.new("emit test"), @enactor)
-          expect(@handler.message("Bob")).to eq "test"
+        it "should emit an emit" do
+          room = double
+          @handler = PoseCmd.new(@client, Command.new("emit a message"), @enactor)
+          allow(@client).to receive(:room) { room }
+          expect(Scenes).to receive(:send_to_ooc_chat_if_needed) { true }
+          expect(Scenes).to receive(:emit_pose).with(@enactor, "a message", true, false)
+          @handler.handle
         end
-
-        it "should format a say message" do
-          @handler = PoseCmd.new(@client, Command.new("say test"), @enactor)
-          expect(PoseFormatter).to receive(:format).with("Bob", "\"test") { "formatted msg" }
-          expect(@handler.message("Bob")).to eq "formatted msg"
+        
+        it "should emit an ooc" do
+          room = double
+          @handler = PoseCmd.new(@client, Command.new("ooc a message"), @enactor)
+          allow(@client).to receive(:room) { room }
+          expect(Scenes).to receive(:send_to_ooc_chat_if_needed) { true }
+          expect(PoseFormatter).to receive(:format).with("Bob", "a message") { "OOC Bob a message"}
+          expect(Scenes).to receive(:emit_pose).with(@enactor, "OOC Bob a message", false, true)
+          @handler.handle
         end
-
-        it "should format a pose message" do
-          @handler = PoseCmd.new(@client, Command.new("pose test"), @enactor)
-          expect(PoseFormatter).to receive(:format).with("Bob", ":test") { "formatted msg" }
-          expect(@handler.message("Bob")).to eq "formatted msg"
+        
+        it "should emit an ooc pose" do
+          room = double
+          @handler = PoseCmd.new(@client, Command.new("ooc :a message"), @enactor)
+          allow(@client).to receive(:room) { room }
+          expect(Scenes).to receive(:send_to_ooc_chat_if_needed) { true }
+          expect(PoseFormatter).to receive(:format).with("Bob", ":a message") { "OOC Bob sends a message"}
+          expect(Scenes).to receive(:emit_pose).with(@enactor, "OOC Bob sends a message", false, true)
+          @handler.handle
         end
-      end     
+        
+        it "should not emit if ooc chat channel eats the message" do
+          room = double
+          @handler = PoseCmd.new(@client, Command.new("pose a message"), @enactor)
+          allow(@client).to receive(:room) { room }
+          expect(Scenes).to receive(:send_to_ooc_chat_if_needed) { false }
+          expect(PoseFormatter).to receive(:format).with("Bob", ":a message") { "Bob a message"}
+          expect(Scenes).to_not receive(:emit_pose)
+          @handler.handle
+        end
+      end   
     end
   end
 end

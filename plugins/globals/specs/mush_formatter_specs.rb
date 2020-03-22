@@ -42,6 +42,34 @@ module AresMUSH
         msg = MushFormatter.format("A\\%c")
         expect_msg("A%c", msg)
       end
+      
+      it "should format emojis if not ascii and enabled" do
+        allow(Global).to receive(:read_config).with('emoji', 'allow_emoji') { true }
+        allow(EmojiFormatter).to receive(:format).with("ABC") { "ABCEMOJI" }
+        msg = MushFormatter.format("ABC")
+        expect_msg("ABCEMOJI", msg)
+      end
+      
+      it "should not format emojis in ascii only mode" do
+        allow(Global).to receive(:read_config).with('emoji', 'allow_emoji') { true }
+        expect(EmojiFormatter).to_not receive(:format)
+        msg = MushFormatter.format("ABC", "ANSI", true)
+        expect_msg("ABC", msg)
+      end
+
+      it "should not format emojis in screen reader mode" do
+        allow(Global).to receive(:read_config).with('emoji', 'allow_emoji') { true }
+        expect(EmojiFormatter).to_not receive(:format)
+        msg = MushFormatter.format("ABC", "ANSI", false, true)
+        expect_msg("ABC", msg)
+      end
+      
+      it "should not format emojis if disabled" do
+        allow(Global).to receive(:read_config).with('emoji', 'allow_emoji') { false }
+        expect(EmojiFormatter).to_not receive(:format)
+        msg = MushFormatter.format("ABC")
+        expect_msg("ABC", msg)
+      end
     end
   end
 end

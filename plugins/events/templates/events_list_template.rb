@@ -18,6 +18,10 @@ module AresMUSH
       def start_time_standard(event)
         event.start_time_standard
       end
+      
+      def signup_indication(event)
+        event.is_signed_up?(@enactor) ? "[*] " : "    "
+      end
 
     end
   end
