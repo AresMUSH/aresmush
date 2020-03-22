@@ -22,7 +22,7 @@ module AresMUSH
         if (enactor)
           Forum.mark_read_for_player(enactor, topic)
         end
-
+        
         replies = topic.bbs_replies.map { |r|
           { id: r.id,
             author: {
@@ -49,7 +49,8 @@ module AresMUSH
              raw_message: topic.message,
              replies: replies,
              can_reply: Forum.can_write_to_category?(enactor, category),
-             can_edit: Forum.can_edit_post?(enactor, topic)
+             can_edit: Forum.can_edit_post?(enactor, topic),
+             authors: Forum.get_authorable_chars(enactor, category)
         }
       end
     end

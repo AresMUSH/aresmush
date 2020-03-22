@@ -145,6 +145,7 @@ module AresMUSH
       threads = char.read_page_threads || []
       threads << thread.id.to_s
       char.update(read_page_threads: threads)
+      Login.mark_notices_read(char, :pm, thread.id)
     end
     
     def self.mark_thread_unread(thread, except_for_char = nil)

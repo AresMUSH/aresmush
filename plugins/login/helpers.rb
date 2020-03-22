@@ -75,8 +75,8 @@ module AresMUSH
       end
       
       # If the character is not approved and proxy ban is enabled, check the proxy list.
-      return false if char && char.is_approved?
       return false if !Global.read_config("sites", "ban_proxies")
+      return false if char && char.is_approved?
 
       if (!Login.blacklist)
         text = Global.config_reader.get_text('blacklist.txt')

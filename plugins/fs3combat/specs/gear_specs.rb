@@ -116,7 +116,8 @@ module AresMUSH
 
         it "should set armor if set" do
           expect(FS3Combat).to receive(:combatant_type_stat).with("soldier", "armor") { "kevlar" }
-          expect(FS3Combat).to receive(:set_armor).with(@enactor, @combatant, "kevlar")
+          expect(FS3Combat).to receive(:combatant_type_stat).with("soldier", "armor_specials") { "specials" }
+          expect(FS3Combat).to receive(:set_armor).with(@enactor, @combatant, "kevlar", "specials")
           FS3Combat.set_default_gear(@enactor, @combatant, "soldier")
         end
         

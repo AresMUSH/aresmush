@@ -84,6 +84,9 @@ module AresMUSH
             @errors << "#{field_key(field)} - #{k} is not a list."
           end
         end
+        if (!value.has_key?('minute'))
+          @errors << "#{field_key(field)} - will run every minute; that's probably excessive."
+        end
       end
       
       def check_channel_exists(field)

@@ -930,7 +930,7 @@ SCENES SCREEN
   padding: 0px;
 }
 
-.scene-pose-select, .scene-char-select {
+.scene-pose-select, .scene-char-select, .forum-char-select {
   width: 175px;
   padding-top: 10px;
 }
@@ -1343,6 +1343,13 @@ ul.reference-help-list > li:not(:last-child)::after {
   padding-left: 25px;
 }
 
+.emoji-example {
+  font-size: 24px;
+}
+
+.forum-reply-panel {
+  padding: 10px;
+}
 /*.char-scene-list li:before { content: "\2666  "; }*/
 
 @media (max-width:992px)  { 

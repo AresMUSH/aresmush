@@ -17,22 +17,7 @@ module AresMUSH
         end
         
         if (Ranks.is_enabled?)
-          ranks = []
-          
-          rank_group = group_config[Ranks.rank_group]
-          return [] if !rank_group
-          
-          rank_group['values'].each do |k, v|
-            Ranks.allowed_ranks_for_group(k).each do |r|
-              ranks << { name: 'Rank', value: r, desc: k }
-            end
-          end
-          
-          groups['rank'] = {
-            name: 'Rank',
-            desc: Global.read_config('chargen', 'rank_blurb'),
-            values: ranks
-          }
+          Ranks.build_rank_group_data(groups)
         end
         
         groups

@@ -14,7 +14,7 @@ module AresMUSH
         @validator.require_hash('ranks')
         
         # Don't worry about the remaining config options if ranks are disabled.
-        return if !Ranks.is_enabled?
+        return [] if !Ranks.is_enabled?
         
         begin
           group = Demographics.get_group(Global.read_config('ranks', 'rank_group'))

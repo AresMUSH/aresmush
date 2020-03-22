@@ -17,3 +17,4 @@ en:
         role_deleted: "Role %{name} deleted.  Make sure if you have any plugins configured to use that role that you remove it from them."
         role_already_exists: "Role %{name} already exists."
         role_permissions_updated: "Role permissions updated."
+        permissions_no_spaces: "Permission names may not contain commas or spaces."

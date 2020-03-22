@@ -85,7 +85,6 @@ fs3combat:
     combat/remove: combat/leave
     combat/hitlocs: combat/hitloc
     vehicles: vehicle
-    hospitals: hospital/list
     healing: heal/list
     weapons: weapon
     mounts: mount

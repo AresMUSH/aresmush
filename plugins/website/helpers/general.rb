@@ -32,10 +32,11 @@ module AresMUSH
     def self.get_file_info(file_path)
       return nil if !file_path
       relative_path = file_path.gsub(AresMUSH.website_uploads_path, '')
+      folder = File.dirname(relative_path).gsub(AresMUSH.website_uploads_path, '').gsub('/', '')
       {
         path: relative_path,
         name: File.basename(relative_path),
-        folder: File.dirname(relative_path).gsub(AresMUSH.website_uploads_path, '').gsub('/', '')
+        folder: folder.blank? ? '/' : folder
       }
     end
     
@@ -74,8 +75,7 @@ module AresMUSH
     end
     
     def self.welcome_text
-      welcome_filename = File.join(AresMUSH.game_path, "text", "website.txt")
-      text = File.read(welcome_filename, :encoding => "UTF-8")
+      text = Global.config_reader.get_text('website.txt')
       Website.format_markdown_for_html(text)
     end
     

@@ -243,7 +243,7 @@ module AresMUSH
         end
         
         types.each do |name, data|
-          if (!FS3Combat.hitloc_chart_for_type(data['hitloc']))
+          if (!data['hitloc'] || !FS3Combat.hitloc_chart_for_type(data['hitloc']))
             @validator.add_error "fs3combat:combatant_types #{name} has an invalid hitloc table."
           end
           if (data['vehicle'] && !FS3Combat.vehicle(data['vehicle']))
@@ -255,6 +255,11 @@ module AresMUSH
           if (data['armor'] && !FS3Combat.armor(data['armor']))
             @validator.add_error "fs3combat:combatant_types #{name} has invalid armor."
           end
+          
+          if (!data['vehicle'] && !data['weapon'] && name != "Observer")
+            @validator.add_error "fs3combat:combatant_types #{name} needs either a weapon or a vehicle."
+          end
+          
           specials = data['weapon_specials']
           if (specials) 
             allowed_specials = FS3Combat.weapon_stat(data['weapon'], 'allowed_specials') || []
