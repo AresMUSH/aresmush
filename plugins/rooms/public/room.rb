@@ -3,7 +3,6 @@ module AresMUSH
     attribute :room_grid_x
     attribute :room_grid_y
     attribute :room_type, :default => "IC"
-    attribute :room_area
     attribute :room_is_foyer, :type => DataType::Boolean
          
     index :room_type
@@ -12,6 +11,9 @@ module AresMUSH
     reference :area, "AresMUSH::Area"
     
     before_delete :clear_exits
+
+    # DEPRECATED - use 'area' instead.
+    attribute :room_area
     
     def clear_exits
       self.exits.each { |e| e.delete }

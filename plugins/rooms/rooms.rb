@@ -126,6 +126,8 @@ module AresMUSH
         return AreaDeleteRequestHandler
       when "editArea"
         return AreaEditRequestHandler
+      when "editLocation"
+        return LocationEditRequestHandler
       when "locations"
         return LocationsRequestHandler
       when "location"

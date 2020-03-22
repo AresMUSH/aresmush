@@ -38,7 +38,7 @@ Except for warn, the other actions also reset their password so they cannot just
 
 ## Setting Idle Status Directly
 
-Sometimes you want to immediately idle someone out without going through the whole idle queue process.  You can do this with the `idle/set` command.  Only 'None', 'Dead' and 'Gone' are valid options here.  You can also clear someone's idle status by setting it to 'None'.
+Sometimes you want to immediately idle someone out without going through the whole idle queue process.  You can do this with the `idle/now` command.  Only 'None', 'Dead' and 'Gone' are valid options here.  You can also clear someone's idle status by setting it to 'None'.
 
 ## Protected Roles
 
@@ -60,5 +60,5 @@ Here are the idle sweep commands for quick reference.  The system is explained i
 `idle/note <name>=<note>` - Adds a note about what happened to them.
 
 `idle/preview <name>` - View idle information without adding someone to the idle queue.
-`idle/set <name>=<status>` - Sets someone's status without running through the idle queue.
+`idle/now <name>=<status>` - Sets someone's status without running through the idle queue.
 

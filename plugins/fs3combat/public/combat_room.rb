@@ -1,8 +1,7 @@
 module AresMUSH
   class Room
+    # Deprecated - no longer used
     attribute :is_hospital, :type => DataType::Boolean
-    
-    index :is_hospital
   end
   
 end

@@ -47,19 +47,31 @@ module AresMUSH
         expect(Character.check_name("B@ABC")).to eq "validation.name_contains_invalid_chars"
       end
       
-      it "should fail if the char already exists" do
+      it "should fail if the char name already exists" do
         allow(Character).to receive(:find_one_by_name).with("Existing") { @found_char }
+        allow(@found_char).to receive(:name_upcase) { "EXISTING" }
+        expect(Character.check_name("Existing")).to eq "validation.char_name_taken"
+      end
+
+      it "should fail if the char alias already exists" do
+        allow(Character).to receive(:find_one_by_name).with("Existing") { @found_char }
+        allow(@found_char).to receive(:name_upcase) { "FOO" }
+        allow(@found_char).to receive(:alias_upcase) { "EXISTING" }
         expect(Character.check_name("Existing")).to eq "validation.char_name_taken"
       end
       
-      it "should allow char to rename themselves the same" do
-        allow(Character).to receive(:find_one_by_name).with("Existing") { @found_char }
-        expect(Character.check_name("Existing", @found_char)).to be_nil
+      it "should allow a subset of an existing name" do
+        allow(Character).to receive(:find_one_by_name).with("Exi") { @found_char }
+        allow(@found_char).to receive(:name_upcase) { "EXISTING" }
+        allow(@found_char).to receive(:alias_upcase) { nil }
+        expect(Character.check_name("Exi", @found_char)).to be_nil
       end
-
-      it "should not allow char to rename themselves the same as someone else" do
-        allow(Character).to receive(:find_one_by_name).with("Existing") { @found_char }
-        expect(Character.check_name("Existing", double)).to eq "validation.char_name_taken"
+      
+      it "should allow a subset of an existing alias" do
+        allow(Character).to receive(:find_one_by_name).with("Exi") { @found_char }
+        allow(@found_char).to receive(:name_upcase) { "FOO" }
+        allow(@found_char).to receive(:alias_upcase) { "EXISTING" }
+        expect(Character.check_name("Exi", @found_char)).to be_nil
       end
       
       it "should return true if everything's ok" do

@@ -5,7 +5,6 @@ aliases:
 - treat
 - heal
 - healing
-- hospitals
 - combat_damage
 ---
 
@@ -34,16 +33,6 @@ The damage commands are part of the FS3Combat system.
 `heal/stop <name>` - Removes a patient.
 `heal/list` - Shows your patients.
 `heal/scan` - Find injured patients who might need your services.
-
-## Hospitals
-
-When a room is marked as a hospital, people who are there heal faster.  
-
-`hospitals` - Finds hospitals.
-
-Admins or builders with the `build` permission can designate rooms as hospitals.
-
-`hospital/on` or `hospital/off`- Makes the current room a hospital or not.
 
 ## Adjusting Damage
 

@@ -55,7 +55,7 @@ module AresMUSH
                  .gsub(/[\u2018\u2019]/, "'")
                  .encode("ASCII", invalid: :replace, undef: :replace, replace: '?')
       end
-      send_data MushFormatter.format(msg, color_mode, screen_reader)
+      send_data MushFormatter.format(msg, color_mode, screen_reader, ascii_mode)
     end
     
     def send_raw(msg)
