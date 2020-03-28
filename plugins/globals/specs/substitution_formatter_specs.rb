@@ -12,6 +12,7 @@ module AresMUSH
     describe :perform_subs do
       before do
         @enactor = { "name" => "Bob" }
+        @display_settings = ClientDisplaySettings.new
       end
 
       it "should replace %r and %R with linebreaks" do
@@ -52,8 +53,9 @@ module AresMUSH
       end   
       
       it "should omit a line if screen reader mode enabled" do
+        @display_settings.screen_reader = true
         allow(Line).to receive(:show).with("d", true) { "" }
-        expect(SubstitutionFormatter.format("Test%ldTest", "ANSI", true)).to eq "TestTest"
+        expect(SubstitutionFormatter.format("Test%ldTest", @display_settings)).to eq "TestTest"
       end    
       
       it "should replace %x! with a random color" do
@@ -90,8 +92,9 @@ module AresMUSH
       end
       
       it "should pass on color mode to ansi formatter" do
+        @display_settings.color_mode = "ANSI"
         allow(AnsiFormatter).to receive(:get_code).with("%xb", "ANSI") { "blue" }
-        expect(SubstitutionFormatter.format("Test%xbTest", "ANSI")).to eq "TestblueTest"
+        expect(SubstitutionFormatter.format("Test%xbTest", @display_settings)).to eq "TestblueTest"
       end  
       
       it "should not replace an escaped linebreak or space" do

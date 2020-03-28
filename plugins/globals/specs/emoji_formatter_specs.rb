@@ -67,6 +67,21 @@ module AresMUSH
         msg = EmojiFormatter.format(":)")
         expect(msg).to eq "\u{1F600}"
       end
+      
+      it "should replace two smileys in a row." do
+        msg = EmojiFormatter.format("Test :) :(")
+        expect(msg).to eq "Test \u{1F600} \u{1F626}"
+      end
+      
+      it "should replace a smiley at the end of a quote." do
+        msg = EmojiFormatter.format("Faraday says, \"Test :)\"")
+        expect(msg).to eq "Faraday says, \"Test \u{1F600}\""
+      end
+      
+      it "should not replace a code-block emoji" do
+        msg = EmojiFormatter.format("This is my `:rocket:`")
+        expect(msg).to eq "This is my `:rocket:`"
+      end
     end
   end
 end

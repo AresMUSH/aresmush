@@ -66,7 +66,7 @@ module AresMUSH
     end
     
     def self.status_filters
-      base = [ "ACTIVE", "MINE", "UNREAD", "UNFINISHED", "ALL" ]
+      base = [ "ACTIVE", "MINE", "UNREAD", "UNFINISHED", "UNASSIGNED", "ALL" ]
       status_filters = (Global.read_config("jobs", "status_filters") || {})
           .keys
           .map { |k| k.upcase }
@@ -85,6 +85,8 @@ module AresMUSH
         jobs = char.assigned_jobs.select { |j| j.is_open? }
       when "UNFINISHED"
         jobs = Jobs.accessible_jobs(char).select { |j| j.is_open? }
+      when "UNASSIGNED"
+        jobs = Jobs.accessible_jobs(char).select { |j| !j.assigned_to }
       when "UNREAD"
         jobs = char.unread_jobs
       when "ALL"
@@ -272,9 +274,7 @@ module AresMUSH
     end
     
     def self.check_filter_type(filter)
-      types = ["ACTIVE", "MINE", "ALL", "UNFINISHED", "UNREAD"]
-         .concat(Jobs.categories)
-         .concat(Jobs.status_filters)
+      types = Jobs.categories.concat(Jobs.status_filters)
       return t('jobs.invalid_filter_type', :names => types) if !types.include?(filter)
       return nil
     end
