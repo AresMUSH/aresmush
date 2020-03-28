@@ -719,7 +719,8 @@ PLAY SCREEN
 
 #console
 {
-    height:400px;
+    height: calc(100vh - 325px);
+    min-height: 400px;
     overflow-y:scroll;
 }
 
@@ -799,7 +800,8 @@ SCENES SCREEN
 }
 
 #live-scene-log {
-    max-height: 400px;
+    height: calc(100vh - 400px);
+    min-height: 400px;
     overflow-y: scroll;
     overflow-x: hidden;
     margin: 2px 0px;

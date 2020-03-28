@@ -9,7 +9,9 @@ module AresMUSH
     attribute :alias_upcase
     attribute :fansi_on, :default => true
     attribute :color_mode, :default => "FANSI"
-    attribute :screen_reader
+    attribute :screen_reader, :type => DataType::Boolean, :default => false
+    attribute :ascii_mode_enabled, :type => DataType::Boolean, :default => false
+    attribute :emoji_enabled, :type => DataType::Boolean, :default => true
     attribute :is_statue
     attribute :password_hash
 
