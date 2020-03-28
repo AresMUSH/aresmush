@@ -19,15 +19,29 @@ module AresMUSH
     
     describe :send_formatted do
       it "should format the message before sending" do
-        expect(MushFormatter).to receive(:format).with("test", "FANSI", false, false) { "TEST" }
+        expect(MushFormatter).to receive(:format) { "TEST" }
         expect(@connection).to receive(:send_data).with("TEST")
         @connection.send_formatted("test")
       end
       
       it "should pass along ansi and screen reader settings" do
-        expect(MushFormatter).to receive(:format).with("test", "ANSI", true, true) { "TEST" }
+        settings = ClientDisplaySettings.new
+        settings.ascii_mode = true
+        settings.color_mode = "ANSI"
+        settings.screen_reader = true
+        settings.emoji_enabled = false
+        
+        expect(MushFormatter).to receive(:format) do |msg, display_settings|
+          expect(display_settings.ascii_mode).to eq true
+          expect(display_settings.color_mode).to eq "ANSI"
+          expect(display_settings.screen_reader).to eq true
+          expect(display_settings.emoji_enabled).to eq false
+          expect(msg).to eq "test"
+          "TEST" 
+        end
+        
         expect(@connection).to receive(:send_data).with("TEST")
-        @connection.send_formatted("test", "ANSI", true, true)
+        @connection.send_formatted("test", settings)
       end
     end    
     
