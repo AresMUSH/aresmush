@@ -20,6 +20,10 @@ fs3combat:
       description: Level 4 Earth spell
       is_magic: true
       penetration: 2
+    Dead Calm:
+      description: Level 5 Water Spell
+      is_magic: true
+      accuracy: 3
     Fire:
       description: Level 4 Fire spell
       is_magic: true
@@ -748,7 +752,7 @@ fs3combat:
       description: Level 7 Corpus spell
       accuracy: 1
       is_magic: true
-      skill: Earth
+      skill: Melee
       lethality: 12
       penetration: 9
       weapon_type: Melee

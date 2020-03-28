@@ -257,6 +257,18 @@ spells:
     target_optional: true
     weapon: Water Whip
 #Level 5
+  Cold Calm:
+    available: false
+    accuracy_mod:
+    casting_time: 1 round
+    desc: The caster imbues themselves with a wintry chill, calming and cooling their body to improve their focus. They move a little slower than normal, but can better anticipate attacks to dodge and have greatly improved accuracy for the duration of the spell.
+    defense_mod: 2
+    effect: Buff
+    level: 5
+    name: Cold Calm
+    range: Self
+    school: Water
+    weapon_specials: Dead Calm
   Exploding Ice:
     area: 10 yard radius
     available: true
@@ -286,7 +298,7 @@ spells:
     target_num: 3
     rounds: 600
   Group Water Walk:
-    available: true
+    available: false
     casting_time: 1 round
     desc: The caster conveys the ability to walk on a liquid surface as if it were solid ground on up to 3 targets. Each recipient of the spell must remain within 15 yards of each other, or the spell ends for the target that is separated.
     duration: 1 hour

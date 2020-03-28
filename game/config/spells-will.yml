@@ -232,7 +232,7 @@ spells:
     roll: true
     school: Will
   Telekinetic Crush:
-    available: false
+    available: true
     casting_time: 1 round
     desc: "Crush an enemy with telekinetic strength, doing damage."
     effect: Damage

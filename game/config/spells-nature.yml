@@ -660,6 +660,18 @@ spells:
     name: Sense Animals
     roll: true
     school: Nature
+  Sense Flora:
+    available: true
+    area: 100 yards
+    casting_time: 1 round
+    desc: "TThe caster extends their senses to all vegetation within range. While their body lies senseless and incapacitated, they feel everything sensed by every kind of flora in that area, able to understand the general weather, including temperature and quality of the air, as well as a rough map of the landscape and terrain through the root systems.\n\nThey can identify the presence, quantity, and location of all the various types of vegetation in the area. They can also identify the presence and location of any creatures currently interacting with the flora in the area, though they cannot tell what kind of creature it is or whether it is sapient or not.\n\nThe caster can choose to absorb all experiences at a surface level, or focus their attention on up to five individual plants at a time for more details."
+    duration: 15 minutes
+    effect: Communication
+    level: 7
+    name: Sense Flora
+    roll: true
+    school: Nature
+#Level 8
   Baleful Polymorph:
     available: true
     casting_time: 1 round

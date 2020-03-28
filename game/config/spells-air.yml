@@ -419,6 +419,25 @@ spells:
     range: Touch
     roll: true
     school: Air
+  Lightning Flash:
+    available: false
+    area: 2,000 miles travel / 20 ft radius stun
+    casting_time: 1 round
+    desc: The caster travels through the air as a streak of lightning, transporting themselves from one location to another up to 2,000 miles away with anything they were carrying at the time the spell was cast. While traveling, the lightning can break through low or non-conductive materials, such as a glass, wood, plastic, or concrete. It cannot break through anything electrically grounded or thicker than 6 inches. The caster lands with a discharge of electricity, able to arc the shock outward to stun up to three targets within a 20ft radius of their landing spot.
+    duration: 4 rounds
+    effect: Stun
+    is_stun: true
+    level: 7
+    line_of_sight: true
+    fs3_attack: true
+    range: long
+    name: Lightning Flash
+    range: Self
+    rounds: 4
+    school: Air
+    target_optional: true
+    target_num: 3
+    weapon: Lightning Strike
   Lightning Strike:
     available: true
     casting_time: 1 round

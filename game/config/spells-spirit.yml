@@ -458,7 +458,7 @@ spells:
     target_num: 1
     target_optional: true
   Rally Spirit:
-    available: false
+    available: true
     casting_time: 1 round
     desc: "The caster boosts the emotional resolve of a knocked out target, returning them to the fight."
     effect: Revive
