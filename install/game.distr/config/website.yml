@@ -130,6 +130,8 @@ website:
     - id: markdown
       title: Markdown Reference
       route: help-topic
+    - title: Emoji Reference
+      route: emoji
     - title: Terms of Service
       route: tos
     - divider: true
