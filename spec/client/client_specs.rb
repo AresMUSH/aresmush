@@ -28,60 +28,68 @@ module AresMUSH
         @char = double
         @client.char_id = 5
         allow(@client).to receive(:char) { @char }
-        allow(@char).to receive(:color_mode) { "FANSI" }
-        allow(@char).to receive(:ascii_mode_enabled) { false }
-        allow(@char).to receive(:screen_reader) { false }
       end
       
       it "should send the message to the connection with default options" do
-        expect(@connection).to receive(:send_formatted).with("Hi", "FANSI", false, false)
+        @client.char_id = nil
+        expect(@connection).to receive(:send_formatted) do |msg, display_settings|
+          expect(msg).to eq "Hi"
+          expect(display_settings.color_mode).to eq "FANSI"
+          expect(display_settings.ascii_mode).to eq false
+          expect(display_settings.screen_reader).to eq false
+          expect(display_settings.emoji_enabled).to eq true
+        end
         @client.emit "Hi"
       end
       
-      it "should send the message to the connection with ASCII enabled" do
-        allow(@char).to receive(:ascii_mode_enabled) { true }
-        expect(@connection).to receive(:send_formatted).with("Hi", "FANSI", true, false)
-        @client.emit "Hi"
-      end
-      
-      it "should send the message to the connection with screen reader enabled" do
-        allow(@char).to receive(:screen_reader) { true }
-        expect(@connection).to receive(:send_formatted).with("Hi", "FANSI", false, true)
-        @client.emit "Hi"
-      end
-      
-      it "should send the message to the connection with a different color mode" do
+      it "should send the message to the connection with custom display settings" do
         allow(@char).to receive(:color_mode) { "ANSI" }
-        expect(@connection).to receive(:send_formatted).with("Hi", "ANSI", false, false)
+        allow(@char).to receive(:ascii_mode_enabled) { true }
+        allow(@char).to receive(:screen_reader) { true }
+        allow(@char).to receive(:emoji_enabled) { false }
+        expect(@connection).to receive(:send_formatted) do |msg, display_settings|
+          expect(msg).to eq "Hi"
+          expect(display_settings.color_mode).to eq "ANSI"
+          expect(display_settings.ascii_mode).to eq true
+          expect(display_settings.screen_reader).to eq true
+          expect(display_settings.emoji_enabled).to eq false
+        end
         @client.emit "Hi"
       end
-     
     end
 
     describe :emit_ooc do
       it "should send the message with yellow ansi tags and %% prefix" do
-        expect(@connection).to receive(:send_formatted).with("%xc%% OOC%xn", "FANSI", false, false)
+        expect(@connection).to receive(:send_formatted) do |msg, display_options|
+          expect(msg).to eq "%xc%% OOC%xn"
+        end
         @client.emit_ooc "OOC"
       end
     end    
     
     describe :emit_success do
       it "should send the message with green ansi tags and %% prefix" do
-        expect(@connection).to receive(:send_formatted).with("%xg%% Yay%xn", "FANSI", false, false)
+        expect(@connection).to receive(:send_formatted) do |msg, display_options|
+          expect(msg).to eq "%xg%% Yay%xn"
+        end
         @client.emit_success "Yay"
       end
     end
 
     describe :emit_failure do
       it "sends the message with green ansi tags and %% prefix" do
-        expect(@connection).to receive(:send_formatted).with("%xr%% Boo%xn", "FANSI", false, false)
+        expect(@connection).to receive(:send_formatted) do |msg, display_options|
+          expect(msg).to eq "%xr%% Boo%xn"
+        end
         @client.emit_failure "Boo"
       end
     end
     
     describe :emit_raw do
       it "sends the raw text without formatting and with a linebreak" do
-        expect(@connection).to receive(:send_raw).with("%xr%%Boo%xn%r\r\n")
+        expect(@connection).to receive(:send_raw) do |msg, display_options|
+          expect(msg).to eq "%xr%%Boo%xn%r\r\n"
+        end
         @client.emit_raw "%xr%%Boo%xn%r"
       end
     end

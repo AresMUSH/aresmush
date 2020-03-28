@@ -5,10 +5,10 @@ module AresMUSH
       smileys = Global.read_config('emoji', 'smileys') || {}
       
       smileys.each do |text, emoji|
-        formatted = (formatted.gsub(/(^|\s)#{Regexp.escape(text)}($|\s|[.?,!])/) { "#{$1}:#{emoji}:#{$2}" })
+        formatted = (formatted.gsub(/(^|\s)#{Regexp.escape(text)}($|\s|[.?,!\"])/) { "#{$1}:#{emoji}:#{$2}" })
       end
-            
-      formatted.gsub(/:([^ :]+):/) { find_emoji($1) }
+         
+      formatted.gsub(/(^|[^`]):([^ :]+):/) { "#{$1}#{find_emoji($2)}" }
     end
     
     def self.find_emoji(name)

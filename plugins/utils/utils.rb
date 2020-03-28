@@ -32,6 +32,8 @@ module AresMUSH
         if (cmd.switch_is?("prefix"))
           return EditPasswordCmd
         end
+      when "emoji"
+        return EmojiCmd
       when "fansi"
         return ColorModeCmd
       when "math"

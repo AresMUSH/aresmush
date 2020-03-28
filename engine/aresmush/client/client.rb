@@ -38,43 +38,41 @@ module AresMUSH
     def window_height
       @connection.window_height
     end
-
-    def ascii_mode
-      return false if !@char_id
-      self.char.ascii_mode_enabled
-    end
-    
-    def color_mode
-      return "FANSI" if !@char_id
-      self.char.color_mode
-    end
     
     def screen_reader
       return false if !@char_id
       self.char.screen_reader
     end
     
+    def display_settings
+      if (@char_id)
+        return ClientDisplaySettings.from_char(self.char)
+      else
+        return ClientDisplaySettings.from_char(nil)
+      end
+    end
+    
     def beep
       @connection.beep
     end
-    
+  
     def emit(msg)
-      @connection.send_formatted "#{msg}", color_mode, ascii_mode, screen_reader
+      @connection.send_formatted "#{msg}", self.display_settings
     end 
     
     def emit_ooc(msg)
       prefix = screen_reader ? "#{t('global.system')}:" : "%%" 
-      @connection.send_formatted "%xc#{prefix} #{msg}%xn", color_mode, ascii_mode, screen_reader
+      @connection.send_formatted "%xc#{prefix} #{msg}%xn", self.display_settings
     end
 
     def emit_success(msg)
       prefix = screen_reader ? "#{t('global.system')}:" : "%%" 
-      @connection.send_formatted "%xg#{prefix} #{msg}%xn", color_mode, ascii_mode, screen_reader
+      @connection.send_formatted "%xg#{prefix} #{msg}%xn", self.display_settings
     end
 
     def emit_failure(msg)
       prefix = screen_reader ? "#{t('global.system')}:" : "%%" 
-      @connection.send_formatted "%xr#{prefix} #{msg}%xn", color_mode, ascii_mode, screen_reader
+      @connection.send_formatted "%xr#{prefix} #{msg}%xn", self.display_settings
     end
     
     def emit_raw(msg)
