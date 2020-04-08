@@ -1,5 +1,6 @@
 module AresMUSH
   module Website
+    mattr_accessor :emoji_regex
     
     def self.is_restricted_wiki_page?(page)
       restricted_pages = Global.read_config("website", "restricted_pages") || ['home']
@@ -112,5 +113,11 @@ module AresMUSH
       templates
     end
     
+    def self.get_emoji_regex
+      if (!Website.emoji_regex)
+        Website.emoji_regex = EmojiFormatter.emoji_regex
+      end
+      Website.emoji_regex
+    end
   end
 end
