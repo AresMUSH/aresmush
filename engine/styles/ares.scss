@@ -321,7 +321,10 @@ li hr {
     border-width: 4px;
 }
 
-
+.emoji {
+  font-size: 1.5em;
+  vertical-align: middle;
+}
 /* -------------------------
 BOOTSTRAP OVERRIDES
 ------------------------- */
@@ -1329,6 +1332,9 @@ ul.regular-help-list {
     list-style-type: square;
 }
 
+ul.reference-help-list {
+  padding-left: 25px;
+}
 ul.reference-help-list li {
     display: inline;
 }
