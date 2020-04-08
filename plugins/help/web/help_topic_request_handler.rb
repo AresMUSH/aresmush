@@ -26,7 +26,11 @@ module AresMUSH
           name: topic.humanize.titleize,
           help: Website.format_markdown_for_html(contents),
           raw_contents: Website.format_input_for_html(file),
-          can_manage: Manage.can_manage_game?(enactor)
+          can_manage: Manage.can_manage_game?(enactor),
+          related_topics: Help.related_topics(topic).map { |r| {
+            title: r.humanize.titleize,
+            key: r }},
+          section_title: (Help.topic_index[topic] || {})['toc']
         }
       end
     end
