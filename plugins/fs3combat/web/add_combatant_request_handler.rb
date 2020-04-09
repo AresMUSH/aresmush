@@ -5,7 +5,8 @@ module AresMUSH
         id = request.args[:id]
         enactor = request.enactor
         combatant_type = request.args[:combatant_type] || FS3Combat.default_combatant_type
-        names = (request.args[:name] || "").split(" ")
+        names = (request.args[:name] || "").split(/[ ,]/)
+        pp names
         
         error = Website.check_login(request)
         return error if error
