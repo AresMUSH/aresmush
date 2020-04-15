@@ -369,6 +369,22 @@ spells:
     range: Short
     line_of_sight: true
     available: true
+  Group Faint:
+    available: true
+    casting_time: 1 round
+    desc: Draw the air away from up to 3 targets, abruptly depriving them of oxygen and changing the air pressure around them, which causes them to faint. In combat, they are stunned for two rounds. In other situations, they remain passed out until they are woken or wake naturally.
+    duration: 1 round
+    effect: Stun
+    is_stun: true
+    rounds: 2
+    level: 6
+    line_of_sight: true
+    name: Group Faint
+    range: Short
+    school: Air
+    target_num: 3
+    target_optional: true
+    weapon: Stun (Air)
   Storm Armor:
     available: true
     armor: Storm
