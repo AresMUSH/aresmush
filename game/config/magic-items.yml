@@ -101,9 +101,9 @@ magic-items:
     spells:
     - Wild Shape Falcon
     - Shape Light
-  Red Knit Cap:
-    name: Red Knit Cap
-    desc: A red knit cap that takes away the chill of winter
+  Warm Knit Cap:
+    name: Warm Knit Cap
+    desc: A knit cap that takes away the chill of winter
     spells:
     - Endure Cold
   Rosewing:
