@@ -603,6 +603,17 @@ spells:
     range: Self
     roll: true
     school: Corpus
+  Sacrifice of Blood:
+    available: false
+    casting_time: 1 hour
+    desc: "The caster sacrifices a sapient creature, siphoning the life force from it as they die in order to increase either the caster's own power or another sapient target's power. The sacrificed individual must be drained of blood to the point of permanent death of both the body and spirit.\n\nEach non-magical life sacrificed gives the target 5 Luck Points worth of power for the duration of the spell. Each magical life sacrificed gives the target 10 Luck Points worth of power. The power may be used for anything Luck Points may be spent on. For example, increasing attack, initiative, defense, or spellcasting; re-rolling a skill; reviving in combat; escaping without pursuit; learning spells at an advanced rate; creating spells at an advanced rate.\n\nThe magical schools of the sacrificed creature should be the same as the target's. Deviations from this result gaining the innate abilities of the magical schools of the target for the duration of the spell, but there will also be unpredictable and problematic consequences.\n\nNOTE: This spell may not be learned or used by PCs. Learning Sacrifice of Blood will be considered PvP and is only feasible if your PC will be shifted to an NPC as part of an approved plot."
+    duration: 14 days
+    effect: Buff
+    level: 8
+    name: Sacrifice of Blood
+    range: Short
+    roll: true
+    school: Corpus
   Siphon Of Body:
     available: false
     casting_time: 3 hours
@@ -614,4 +625,4 @@ spells:
     name: Siphon Of Body
     range: Short
     roll: true
-    school: Spirit
+    school: Corpus

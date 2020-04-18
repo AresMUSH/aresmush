@@ -359,7 +359,7 @@ spells:
     available: true
     casting_time: 1 round
     damage_type: Psionic
-    desc: So long as the caster does not attack or block, they are not seen as an viable threat or target by aggressors. They are not immune to unintended AoE attacks.
+    desc: "For the duration of the spell the caster is not seen as an viable threat or target by aggressors, as long as they do not attack or threaten the aggressor in any way. This includes casting debuffs on the aggressor or stopping their attacks with magical cover or shield spells. Casting buffs or healing spells on friendly targets does not break the spell. The caster is not immune to damage from unintended AoE attacks."
     duration: 10 minutes
     effect: Defense
     is_potion: true
@@ -717,6 +717,20 @@ spells:
     line_of_sight: true
     name: Create Librarian
     range: Short
+    roll: true
+    school: Spirit
+    target_num: 1
+    target_optional: true
+  Creeping Possession:
+    available: false
+    casting_time: 10 minutes, plus additional rounds for commands
+    damage_type: Psionic
+    desc: "The caster links their mind telepathically to a target, allowing the caster to slowly replace the target's consciousness with the caster's own. After 3 months have passed, the target is completely possessed by the caster and functions as an extension of the caster's own mind, allowing them to puppet the target's body to their will.\n\nDuring the time the link is active, the caster is able to telepathically impose thoughts, emotions, images, sounds, and sensations on the target's mind, as well as enter the their dreams. The caster has some control of a dream entered and its events, although they may allow the target's subconscious to fill in details or choose to simply observe the target's natural dream. While in the dream, all encounters seem real, though physical damage in the dream world is imaginary and vanishes upon awakening. Most dreams are recognizable as dreams or visions on waking, though some particularly realistic ones may not be.\n\nThe caster is able to link their mind to up to 20 targets at a time. The more targets they possess, the more fractured the caster's own mind gets. A single target can be controlled with complete focus, but controlling five targets is less precise, more than fifteen targets can only be manipulated with rudimentary commands, and by twenty targets the caster's mind is so fractured they've lost their own identity.\n\nThose with Spirit may notice that the spell has been cast, and may attempt to do so with a roll of the caster's Spirit vs the target's Spirit-4. This does not prevent the spell's effects or identify the caster in any way."
+    duration: Permanent
+    effect: Psionic
+    level: 8
+    name: Creeping Possession
+    range: Massive
     roll: true
     school: Spirit
     target_num: 1
