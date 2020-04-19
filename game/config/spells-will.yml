@@ -289,6 +289,8 @@ spells:
     notes: This probably shouldn't cover the whole body? Maybe a use for armor specials.
     range: Touch
     school: Will
+    target_optional: true
+    target_num: 1
   #LEVEL 7
   Being Of Force:
     area: 15 yard radius
