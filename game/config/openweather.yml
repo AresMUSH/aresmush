@@ -6,7 +6,7 @@ openweather:
 
   # Default climate for rooms without an area set.
   default_climate:
-      zip: 43701
+      zip: 80447
 
   # List of areas. Provide none for no weather, a zip code, or even coordinates
   # For openweather to pull weather data.
