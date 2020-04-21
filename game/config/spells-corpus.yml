@@ -431,7 +431,7 @@ spells:
     roll: true
     school: Corpus
   Shift Appearance:
-    available: false
+    available: true
     desc: "Caster can temporarily alter the physical appearance of their face and/or body within the natural limits of their own species. This includes altering their apparent coloring, age, gender, voice, and physicality.\n\nWith the appropriate observations the caster can mimic the appearance of another specific person from within their own species, but they cannot replicate any physical details they are unaware of. Fine details, such as exact retina patterns and fingerprints, cannot be replicated at all. Vocal mimicry is also imprecise, as the altered voice can be shifted to the chosen person's range, but cannot mimic their exact tone, speech patterns, or vocal tics.\n\nThe caster's shifted appearance is good enough to fool casual observers, but may be identified as false with a roll of the caster's Corpus vs the observer's Alertness-5. Those with significant knowledge of of the mimicked individual or enhanced senses such as smell or hearing are more likely to identify the caster as an impostor, and GMs may choose to adjust the modification as appropriate. Any use of a psionic connection on the caster will also reveal that they are an impostor."
     duration: 1 hour
     effect: Transformation
@@ -470,7 +470,7 @@ spells:
     target_num: 1
     target_optional: true
   Demon Form:
-    available: false
+    available: true
     armor: Demon Form
     casting_time: 1 round
     desc: "The caster transforms their body into a demonic form. Their physical form is altered, making them slightly stronger and faster, boosting their attack power and reflexes slightly. They grow a formidable exoskeleton over their body, along with with a spear tipped tail, claws, fangs, and wings large enough to carry them in flight, allowing them to travel at a speed of up to 35 mph."
@@ -494,7 +494,7 @@ spells:
     target_num: 1
     target_optional: true
   Extreme Speed:
-    available: false
+    available: true
     casting_time: 1 round
     desc: "The caster makes fundamental changes to their body's resistance, strength, and flexibility to make themselves able to reach running speeds of up to 200 miles per hour. They are able to easily scale steep, even vertical, planes while in motion, but cannot deftly maneuver in close-quarters.\n\n Mods to attack and defense may be applied at the GM's discretion according to actions taken while operating at extreme speed."
     duration: 1 hour
@@ -533,7 +533,7 @@ spells:
     target_num: 3
     target_optional: true
   Incorporeal:
-    available: false
+    available: true
     casting_time: 1 Round
     defense_mod: 20
     desc: "The caster temporarily transforms their physical body into an incorporeal state. For the spell's duration, the caster can enter or pass through solid objects including lifeforms as easily as one might pass through air.\n\n While incorporeal, the caster cannot breathe, effectively limiting their ability to remain incorporeal or act according to how long they can hold their breath. Base speed and mode of movement remain the same."
@@ -547,7 +547,7 @@ spells:
     school: Corpus
     target_num: 1
   Mass Impair:
-    available: false
+    available: true
     casting_time: 1 round
     damage_desc: Impair Spell
     damage_inflicted: IMPAIR

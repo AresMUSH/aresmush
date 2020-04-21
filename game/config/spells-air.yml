@@ -410,7 +410,7 @@ spells:
     school: Air
   #Level 7
   Complex Sound:
-    available: false
+    available: true
     attack_mod: 2
     casting_time: 1 round
     desc: "For the duration of the spell, the caster can vibrate the air to create complex sounds. These sounds can be several noises at once, music, or conversational speech. Sound created cannot be louder than 100 db (a loud vehicle, a train whistle, a hand drill).\n\nMusic can be used to affect people, able to bolster morale of up to three targets which improves their attacks for 4 rounds.\n\nThe sound may be identified as artificial with a roll of the caster's Air vs the observer's Alertness-5. Those with enhanced hearing are more likely to identify the sound as artificial according to its content and range, and GMs may choose to adjust the modification as appropriate."

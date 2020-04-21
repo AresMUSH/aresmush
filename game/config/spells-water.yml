@@ -311,7 +311,7 @@ spells:
     school: Water
     target_num: 3
   Reviving Cold:
-    available: false
+    available: true
     casting_time: 1 round
     desc: The caster revives a knocked out target with a cold splash of water, returning them to the fight.
     effect: Revive
@@ -388,7 +388,7 @@ spells:
     school: Water
   Ice Storm:
     area: 20 yard radius
-    available: false
+    available: true
     casting_time: 1 round
     damage_type: Cold
     desc: Jagged shards of ice fall from the sky, doing damage to up to 3 targets within its range. When they hit, they explode, doing further shrapnel damage.
