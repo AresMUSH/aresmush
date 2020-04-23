@@ -15,7 +15,7 @@ en:
        invalid_name_or_password: "Invalid name or password."
        passwords_dont_match: "Passwords don't match."
        recaptcha_failed: "Please prove you're human first."
-       no_guest_webportal: "Guests do not have a web portal account.  You can still use the 'Play' screen to play with the web client as a guest."
+       no_guest_webportal: "Guests do not have a web portal account.  You can still use 'Play via Web Client' option to play from the web portal as a guest."
        web_registration_disabled: "Web registration is disabled.  Please create a character in the game."
        char_reserved: "Character %{name} created.  Temporary password is %{password}"
        invalid_email_format:  "That is not a valid email format."
@@ -84,6 +84,7 @@ en:
        notices_caught_up: "You mark all notices as read."
        unrecognized_notice_config: "That is not a valid notices setting."
        motd_set: "Login message of the day set."
+       no_motd: "There is no message of the day."
        alt_unread_notices: "%{name} has unread notifications."
        
        cant_read_tos_text: "%xrTerms of Service Missing%xn%R%RThere was a problem reading the game's terms of service file.  Please contact staff for more information."
