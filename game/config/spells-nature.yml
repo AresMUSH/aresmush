@@ -1,28 +1,28 @@
 spells:
-  Direwolf Bite:
+  Dire wolf Bite:
     available: false
     casting_time: 1 round
-    desc: Direwolf 'spell'
+    desc: Dire wolf 'spell'
     effect: Damage
     fs3_attack: true
     level: 1
     line_of_sight: true
-    name: Direwolf Bite
+    name: Dire wolf Bite
     range: Short
     school: Nature
     target_num: 5
     target_optional: true
     weapon: Sharp Teeth
     effect: Damage
-  Direwolf Claws:
+  Dire wolf Claws:
     available: false
     casting_time: 1 round
-    desc: Direwolf 'spell'
+    desc: Dire Wolf 'spell'
     effect: Damage
     fs3_attack: true
     level: 1
     line_of_sight: true
-    name: Direwolf Claws
+    name: Dire wolf Claws
     range: Short
     school: Nature
     target_num: 5
@@ -512,10 +512,10 @@ spells:
     range: Short
     line_of_sight: true
     available: true
-  Half Shift (Direwolf):
+  Half Shift (Dire Wolf):
     available: false
     armor: Tough Hide
-    desc: Half Shift (Direwolf)
+    desc: Grants the caster Claws, Teeth, and Tough Hide, while also improving their sense of hearing, sight, and smell  to wolf standards.
     level: 6
     name: Half Shift (Direwolf)
     school: Nature
