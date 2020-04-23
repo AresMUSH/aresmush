@@ -29,6 +29,14 @@ module AresMUSH
       input.gsub(/%r/i, "\n")
     end
     
+    def self.avatar_info(char)
+      {
+        name: char.name,
+        nick: char.nick,
+        icon: Website.icon_for_char(char)
+      }
+    end
+    
     def self.icon_for_char(char)
       if (char)
         icon = char.profile_icon

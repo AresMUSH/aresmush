@@ -34,7 +34,7 @@ module AresMUSH
                   
           scene.delete_poses_and_log
           if (scene.room)
-            scene.room.emit_ooc t('scenes.log_cleared')
+            scene.room.emit_ooc t('scenes.log_cleared_by', :name => enactor_name)
           end
           client.emit_success t('scenes.log_cleared')
         end
