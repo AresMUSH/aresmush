@@ -178,6 +178,13 @@ magic-items:
     spells:
     - Medium Luck
     weapon_specials: Aos Si Coin
+  Burning Ring of Fire:
+    name: Burning Ring of Fire
+    attack_mod: 1
+    desc: "This ring appears to be made out of wood, stained a deep, dark brown, so dark that it's almost black and the grain of the wood is lost entirely. The stone is unusual, a fiery orange opal, cut and polished so that it's smooth and a person peering closely can see inside of it. Within, vague shapes can be discerned: trees and rocks, a landscape on fire with ashes cast into the wind. It's devoid of any other identifiable markings. Allows the bearer to cast %xBFire Weapon%xn and %xBObject Whisper%xn"
+    spells:
+    - Fire Weapon
+    - Object Whisper
   #Grace's Hook
   Dice Of Apate:
     name: Dice of Apate
