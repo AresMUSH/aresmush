@@ -475,6 +475,24 @@ fs3combat:
         Right Hand: 12
         Left Foot: 12
         Right Foot: 12
+    Verdurous:
+      description: Level 7 Nature spell
+      is_magic: true
+      defense: 2
+      protection:
+        Head: 12
+        Neck: 12
+        Chest: 12
+        Abdomen: 12
+        Left Leg: 12
+        Right Leg: 12
+        Groin: 12
+        Left Arm: 12
+        Right Arm: 12
+        Left Hand: 12
+        Right Hand: 12
+        Left Foot: 12
+        Right Foot: 12
   armor specials:
     Modern Helmet:
       description: A modern combat or police helmet

@@ -512,6 +512,14 @@ spells:
     range: Short
     line_of_sight: true
     available: true
+  Half Shift (Direwolf):
+    available: false
+    armor: Tough Hide
+    desc: Half Shift (Direwolf)
+    level: 6
+    name: Half Shift (Direwolf)
+    school: Nature
+    weapon: Claws
   Half Shift (Jenu):
     available: false
     armor: Jenu
@@ -581,6 +589,7 @@ spells:
     roll: true
     rounds: 100
     school: Nature
+  #LEVEL 7
   Energize Dimensional Anchor (Nature):
     available: true
     casting_time: 2 minutes
@@ -671,6 +680,18 @@ spells:
     name: Sense Flora
     roll: true
     school: Nature
+  Verdurous Armor:
+    available: true
+    armor: Verdurous
+    casting_time: 1 round
+    desc: "The caster grows the wooden bark, verdant leaves and thorny vines of plants all over their body to weaponize and protect it. The foliage makes the target more difficult to hit while the barbed vines can be thrashed around, hitting up to 3 targets within 5ft the caster to do damage."
+    duration: 8 hours
+    effect: Armor
+    level: 7
+    name: Verdurous Armor
+    range: Self
+    school: Nature
+    weapon: Verdurous
 #Level 8
   Baleful Polymorph:
     available: true
