@@ -4,6 +4,7 @@ module AresMUSH
     def self.build_scene_pose_web_data(pose, viewer, live_update = false)
       {
         char: { name: pose.character ? pose.character.name : t('global.deleted_character'), 
+                nick: pose.character ? pose.character.nick : t('global.deleted_character'), 
                 icon: Website.icon_for_char(pose.character),
                 id: pose.character ? pose.character.id : 0 }, 
         order: pose.order, 
@@ -27,6 +28,7 @@ module AresMUSH
           .sort_by {|p| p.name }
           .map { |p| { 
             name: p.name, 
+            nick: p.nick,
             id: p.id, 
             icon: Website.icon_for_char(p), 
             status: Website.activity_status(p),
@@ -90,7 +92,7 @@ module AresMUSH
         icdate: scene.icdate,
         likes: scene.likes,
         participants: scene.participants.to_a.sort_by { |p| p.name }.map { |p| 
-          { name: p.name, id: p.id, icon: Website.icon_for_char(p) }},
+          { name: p.name, nick: p.nick, id: p.id, icon: Website.icon_for_char(p) }},
         scene_type: scene.scene_type ? scene.scene_type.titlecase : 'Unknown',
         limit: scene.limit
         }
