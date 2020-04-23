@@ -5,6 +5,12 @@ fi
 
 export ARES_INSTALL_TEXT="\n\n<\033[0;32mINSTALL\033[0m>"
 
+# Ares user password will either be passed in as an arg, or we'll default it
+
+RANDOMPW=$(openssl rand 1000 | strings | grep -io [[:alnum:]] | head -n 16 | tr -d '\n')
+PASSWD=${1:-$RANDOMPW}
+ENCRYPTEDPW=$(openssl passwd -1 "$PASSWD")
+
 # #########################################################################################
 
 echo -e "${ARES_INSTALL_TEXT} Updating Ubuntu packages."
@@ -73,7 +79,8 @@ apt-get install -y unattended-upgrades
 # #########################################################################################
 
 echo -e "${ARES_INSTALL_TEXT} Turn unatteded upgrades on."
-dpkg-reconfigure -plow unattended-upgrades
+dpkg-reconfigure -f noninteractive unattended-upgrades
+
 
 # #########################################################################################
 
@@ -89,10 +96,6 @@ export ARES_USERNAME="ares"
 
 adduser --disabled-password --gecos "" ${ARES_USERNAME}
 
-# Give them a temporary password
-
-PASSWD=$(openssl rand 1000 | strings | grep -io [[:alnum:]] | head -n 16 | tr -d '\n')
-ENCRYPTEDPW=$(openssl passwd -1 "$PASSWD")
 usermod -p "$ENCRYPTEDPW" ${ARES_USERNAME}
 
 # Add them to groups
