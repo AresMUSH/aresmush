@@ -48,15 +48,19 @@ module AresMUSH
         end
       when "last"
         return LastCmd
-      when "notice"
+      when "motd"
         case cmd.switch
-        when "motd"
-          return NoticeMotdCmd
+        when "set"
+          return MotdSetCmd
+        else
+          return MotdViewCmd
         end
       when "notices"
         case cmd.switch
         when "catchup"
           return NoticesCatchupCmd
+        when "motd"
+          return MotdViewCmd
         when nil, "unread"
           return NoticesCmd
         end
