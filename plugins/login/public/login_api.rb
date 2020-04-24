@@ -89,13 +89,24 @@ module AresMUSH
     def self.notify(char, type, message, reference_id, data = "", notify_if_online = true)
       unless notify_if_online
         status = Website.activity_status(char)
-        return if status == 'game-active' || status == 'web-active'
+        return if status == 'game-active'
       end
       
-      # Check for duplicate notification
-      key = "#{type}|#{message}|#{reference_id}"
-      return if char.login_notices.find(is_unread: true).any? { |n| "#{n.type}|#{n.message}|#{n.reference_id}" == key }
-      LoginNotice.create(character: char, type: type, message: message, data: data, reference_id: reference_id, is_unread: true)
+      # Check for a duplicate notification from today.
+      key = "#{type}|#{message}|#{reference_id}|#{Time.now.yday}"
+      existing = char.login_notices.select { |n| "#{n.type}|#{n.message}|#{n.reference_id}|#{n.timestamp.yday}" == key }.first
+      if (existing)
+        # Already an existing unread notice - update the time but return before we send a count update to the website.
+        if (existing.is_unread?)
+          existing.update(timestamp: Time.now)
+          return
+        # Existing read notice - update the time and mark unread
+        else
+          existing.update(is_unread: true, timestamp: Time.now)
+        end
+      else
+        LoginNotice.create(character: char, type: type, message: message, data: data, reference_id: reference_id, is_unread: true, timestamp: Time.now)
+      end
       Global.client_monitor.notify_web_clients(:notification_update, "#{char.unread_notifications.count}") do |c|
         c == char 
       end

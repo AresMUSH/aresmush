@@ -15,6 +15,9 @@ module AresMUSH
         shortcuts['notice'] = 'notices'
         config['login']['shortcuts'] = shortcuts
         DatabaseMigrator.write_config_file("login.yml", config)
+        
+        Global.logger.debug "Updating timestamps on login notices"
+        LoginNotice.all.each { |n| n.update(timestamp: n.created_at)}
       end 
     end
   end

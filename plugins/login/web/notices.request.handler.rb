@@ -9,13 +9,13 @@ module AresMUSH
         
         notices = enactor.login_notices
         
-        notice_data = notices.to_a.sort_by { |n| [ n.is_unread ? 1 : 0, n.created_at ] }.reverse.map { |n| {
+        notice_data = notices.to_a.sort_by { |n| [ n.is_unread ? 1 : 0, n.timestamp ] }.reverse.map { |n| {
           message: Website.format_markdown_for_html(n.message),
           data: n.data ? n.data.split("|") : [],
           reference_id: n.reference_id,
           type: n.type,
           is_unread: n.is_unread,
-          timestamp: OOCTime.local_long_timestr(enactor, n.created_at)
+          timestamp: OOCTime.local_long_timestr(enactor, n.timestamp)
         }}
         
         alts = AresCentral.alts(enactor)
