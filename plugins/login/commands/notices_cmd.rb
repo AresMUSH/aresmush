@@ -11,9 +11,9 @@ module AresMUSH
       
       def handle
         if (self.unread)
-          notices = enactor.login_notices.select { |n| n.is_unread }.sort_by { |n| n.created_at }.reverse
+          notices = enactor.login_notices.select { |n| n.is_unread }.sort_by { |n| n.timestamp }.reverse
         else
-          notices = enactor.login_notices.to_a.sort_by { |n| [ n.is_unread ? 1 : 0, n.created_at] }.reverse
+          notices = enactor.login_notices.to_a.sort_by { |n| [ n.is_unread ? 1 : 0, n.timestamp] }.reverse
         end
         
         paginator = Paginator.paginate(notices, cmd.page, 20)
