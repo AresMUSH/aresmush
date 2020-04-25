@@ -9,7 +9,7 @@ module AresMUSH
                 id: pose.character ? pose.character.id : 0 }, 
         order: pose.order, 
         id: pose.id,
-        timestamp: OOCTime.local_long_timestr(viewer, pose.created_at),
+        timestamp: OOCTime.local_short_date_and_time(viewer, pose.created_at),
         is_setpose: pose.is_setpose,
         is_system_pose: pose.is_system_pose?,
         restarted_scene_pose: pose.restarted_scene_pose,
