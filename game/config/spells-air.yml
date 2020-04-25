@@ -177,7 +177,6 @@ spells:
     range: Short
     roll: true
     school: Air
-
   Breathless:
     area: 10 ft radius
     available: true
@@ -370,7 +369,7 @@ spells:
     line_of_sight: true
     available: true
   Group Faint:
-    available: true
+    available: false
     casting_time: 1 round
     desc: Draw the air away from up to 3 targets, abruptly depriving them of oxygen and changing the air pressure around them, which causes them to faint. In combat, they are stunned for two rounds. In other situations, they remain passed out until they are woken or wake naturally.
     duration: 1 round
