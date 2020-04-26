@@ -118,7 +118,7 @@ module AresMUSH
         end
       end
         
-      thread.key
+      thread
     end
     
     def self.find_thread(chars)
