@@ -299,5 +299,57 @@ module AresMUSH
         # JSON.parse(resp.body)
       end
     end
+    
+    def self.build_channel_web_data(channel, enactor)
+      {
+        key: channel.name.downcase,
+        title: channel.name,
+        desc: channel.description,
+        enabled: Channels.is_on_channel?(enactor, channel),
+        can_join: Channels.can_join_channel?(enactor, channel),
+        can_talk: Channels.can_talk_on_channel?(enactor, channel),
+        muted: Channels.is_muted?(enactor, channel),
+        last_activity: channel.last_activity,
+        is_page: false,
+        who: Channels.channel_who(channel).map { |w| {
+         name: w.name,
+         ooc_name: w.ooc_name,
+         icon: Website.icon_for_char(w),
+         muted: Channels.is_muted?(w, channel),
+         status: Website.activity_status(w)
+        }},
+        messages: Channels.is_on_channel?(enactor, channel) ? channel.messages.map { |m| {
+          message: Website.format_markdown_for_html(m['message']),
+          id: m['id'],
+          timestamp: OOCTime.local_short_date_and_time(enactor, m['timestamp']) 
+          }} : [],
+      }
+    end
+    
+    def self.build_page_web_data(thread, enactor)
+      {
+         key: thread.id,
+         title: thread.title_without_viewer(enactor),
+         enabled: true,
+         can_join: true,
+         can_talk: true,
+         muted: false,
+         is_page: true,
+         is_unread: Page.is_thread_unread?(thread, enactor),
+         last_activity: thread.last_activity,
+         who: thread.characters.map { |c| {
+          name: c.name,
+          ooc_name: c.ooc_name,
+          icon: Website.icon_for_char(c),
+          muted: false
+         }},
+         messages: thread.sorted_messages.map { |p| {
+            message: Website.format_markdown_for_html(p.message),
+            id: p.id,
+            timestamp: OOCTime.local_short_date_and_time(enactor, p.created_at)
+            }}
+        }
+    end
+                      
   end
 end
