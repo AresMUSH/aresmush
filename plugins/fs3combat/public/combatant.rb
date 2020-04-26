@@ -175,6 +175,10 @@ module AresMUSH
       !!self.npc
     end
     
+    def is_player?
+      !self.npc
+    end
+    
     def is_noncombatant?
       self.combatant_type == "Observer"
     end

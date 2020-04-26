@@ -15,7 +15,6 @@ module AresMUSH
         watching_participants.each do |w|
           if (last_posed != w.name)
             is_in_room = scene.room && scene.room == w.room
-            pp "Participant #{w.name} #{is_in_room}"
             Login.notify(w, :scene, message, scene.id, "", !is_in_room)
           end
         end
