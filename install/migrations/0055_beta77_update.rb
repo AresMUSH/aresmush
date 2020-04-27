@@ -52,6 +52,10 @@ module AresMUSH
           'type' => 'fs3', 'message' => 'Treated a teammate in combat.'
         }
         config = DatabaseMigrator.write_config_file('fs3combat_misc.yml', config)
+        
+        Global.logger.debug "Clear scene deletion warnings."
+        Scene.all.each { |s| s.update(deletion_warned: false) }
+        
       end 
     end    
   end
