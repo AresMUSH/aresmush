@@ -155,5 +155,9 @@ module AresMUSH
       return nil if !self.date_shared
       (Time.now - self.date_shared) / 86400
     end
+    
+    def days_since_last_activity
+      (Time.now - self.last_activity)/86400
+    end
   end
 end

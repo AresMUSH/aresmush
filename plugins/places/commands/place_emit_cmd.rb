@@ -26,6 +26,10 @@ module AresMUSH
         
         Scenes.emit(enactor, self.emit, place.name)
       end
+      
+      def log_command
+        # Don't log poses.
+      end
     end
   end
 end
