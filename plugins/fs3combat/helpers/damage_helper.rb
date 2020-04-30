@@ -90,7 +90,12 @@ module AresMUSH
      
      def self.max_patients(char)
        rating = FS3Skills.ability_rating(char, FS3Combat.healing_skill)
-       rating / 2
+       patient_to_heal_skill_ratio = Global.read_config("fs3combat", "healing_skill_patient_ratio")
+       Global.logger.info("patient_to_heal_skill_ratio #{patient_to_heal_skill_ratio}")
+       if patient_to_heal_skill_ratio.nil? || patient_to_heal_skill_ratio <= 0
+         patient_to_heal_skill_ratio = 0.5
+       end
+       (rating * patient_to_heal_skill_ratio).round()
      end
      
      def self.heal_wounds(char)
