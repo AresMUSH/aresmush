@@ -28,24 +28,22 @@ website:
     - title: Pre-Made Characters
       route: roster
     - divider: true
+    - title: Play
+      route: play
     - title: Active Scenes
       route: scenes-live
-    - title: My Scenes
-      route: scenes-play
     - title: Start New Scene
       route: scene-create
     - divider: true
     - title: Who's Online
       route: who
-    - title: Chat
-      route: chat
     - title: Forum
       route: forum
     - title: Mail
       route: mail
     - divider: true
-    - title: Play via Web Client
-      route: play
+    - title: Web Client
+      route: client
   - title: Directory
     menu:
     - title: Characters
