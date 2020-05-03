@@ -68,9 +68,10 @@ module AresMUSH
       online_chars
     end
     
-    def self.emit_to_channel(channel, original_msg, title = nil)
+    def self.emit_to_channel(channel, original_msg, enactor = nil, title = nil)
+      enactor = enactor || Game.master.system_character
       original_msg = "#{original_msg}".gsub(/%R/i, " ")
-      channel.add_to_history "#{title} #{original_msg}"
+      channel.add_to_history "#{title} #{original_msg}", enactor
       channel.characters.each do |c|
         if (!Channels.is_muted?(c, channel))
           
@@ -82,8 +83,17 @@ module AresMUSH
       end
       
       formatted_msg = "#{title} #{original_msg}"
-      web_message = "#{channel.name.downcase}|#{channel.name}|#{Website.format_markdown_for_html(formatted_msg)}"
-      Global.client_monitor.notify_web_clients(:new_chat, web_message) do |char|
+      
+      data = {
+        id: channel.id,
+        key: channel.name.downcase,
+        title: channel.name,
+        author: {name: enactor.name, icon: Website.icon_for_char(enactor), id: enactor.id},
+        message: Website.format_markdown_for_html(formatted_msg),
+        is_page: false
+      }
+      
+      Global.client_monitor.notify_web_clients(:new_chat, "#{data.to_json}") do |char|
         char && Channels.is_on_channel?(char, channel) && !Channels.is_muted?(char, channel)
       end
     end
@@ -91,7 +101,7 @@ module AresMUSH
     def self.pose_to_channel(channel, enactor, msg, title)
       name = enactor.ooc_name
       formatted_msg = PoseFormatter.format(name, msg)
-      Channels.emit_to_channel channel, formatted_msg, title
+      Channels.emit_to_channel channel, formatted_msg, enactor, title
       Channels.notify_discord_webhook(channel, msg, enactor)
       return formatted_msg
     end
@@ -259,7 +269,7 @@ module AresMUSH
     end
     
     def self.report_channel_abuse(enactor, channel, messages, reason) 
-      messages = messages.map { |m| "  [#{OOCTime.local_long_timestr(enactor, m['timestamp'])}] #{channel.display_name} #{m['message']}"}.join("%R")
+      messages = messages.map { |m| "  [#{OOCTime.local_long_timestr(enactor, m.created_at)}] #{channel.display_name} #{m.message}"}.join("%R")
 
       body = t('channels.channel_reported_body', :name => channel.name, :reporter => enactor.name)
       body << reason
@@ -310,7 +320,7 @@ module AresMUSH
         can_talk: Channels.can_talk_on_channel?(enactor, channel),
         muted: Channels.is_muted?(enactor, channel),
         last_activity: channel.last_activity,
-        is_recent: channel.last_activity ? (Time.now - Time.parse(channel.last_activity) < (86400 * 2)) : false,
+        is_recent: channel.last_activity ? (Time.now - channel.last_activity < (86400 * 2)) : false,
         is_page: false,
         who: Channels.channel_who(channel).map { |w| {
          name: w.name,
@@ -319,11 +329,14 @@ module AresMUSH
          muted: Channels.is_muted?(w, channel),
          status: Website.activity_status(w)
         }},
-        messages: Channels.is_on_channel?(enactor, channel) ? channel.messages.map { |m| {
-          message: Website.format_markdown_for_html(m['message']),
-          id: m['id'],
-          timestamp: OOCTime.local_short_date_and_time(enactor, m['timestamp']) 
-          }} : [],
+        messages: Channels.is_on_channel?(enactor, channel) ? channel.sorted_channel_messages.map { |m| {
+          message: Website.format_markdown_for_html(m.message),
+          id: m.id,
+          timestamp: OOCTime.local_short_date_and_time(enactor, m.created_at),
+          author: {
+            name: m.author_name,
+            icon: m.author ? Website.icon_for_char(m.author) : nil }
+            }} : [],
       }
     end
     
@@ -348,7 +361,10 @@ module AresMUSH
          messages: thread.sorted_messages.map { |p| {
             message: Website.format_markdown_for_html(p.message),
             id: p.id,
-            timestamp: OOCTime.local_short_date_and_time(enactor, p.created_at)
+            timestamp: OOCTime.local_short_date_and_time(enactor, p.created_at),
+            author: {
+              name: p.author_name,
+              icon: p.author ? Website.icon_for_char(p.author) : nil }
             }}
         }
     end

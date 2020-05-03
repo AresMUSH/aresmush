@@ -17,10 +17,10 @@ module AresMUSH
         
         found = false
         messages = []
-        channel.messages.each do |m|
+        channel.sorted_channel_messages.each do |m|
           if (found)
             messages << m
-          elsif (m['id'] == start_message)
+          elsif (m.id == start_message)
             found = true
             messages << m
           end

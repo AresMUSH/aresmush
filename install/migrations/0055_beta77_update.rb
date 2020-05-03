@@ -56,6 +56,17 @@ module AresMUSH
         Global.logger.debug "Clear scene deletion warnings."
         Scene.all.each { |s| s.update(deletion_warned: false) }
         
+        Global.logger.debug "Convert channel messages to objects."
+        Channel.all.each do |c|
+          next if c.channel_messages.count > 0
+          c.messages.each do |m|
+            msg = m['message']
+            author = Character.named(msg.split.first)
+            chanmsg = ChannelMessage.create(character: author || Game.master.system_character,
+             message: msg, channel: c)
+             chanmsg.update(created_at: Time.parse(m['timestamp']))
+          end
+        end
       end 
     end    
   end
