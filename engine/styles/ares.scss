@@ -492,6 +492,11 @@ HEADER
     text-align: right;
 }
 
+.alts-switcher 
+{
+  width: 100%;
+}
+
 /* -------------------------
 FOOTER
 ------------------------- */
@@ -1191,7 +1196,7 @@ CHAT SCREEN
   overflow-y: scroll;
 }
 
-.play-participants {
+.play-hint {
   color: $faded-text-color;
   margin-left: 5px;
   font-size: .8em;
