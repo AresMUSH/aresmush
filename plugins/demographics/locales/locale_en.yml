@@ -32,7 +32,6 @@ en:
         group_census_title: "Census By %{name}"
         gender_census_title: "Gender Census"
         timezone_census_title: "Timezone Census"
-        skill_census_title: "Skill Census - %{type} Skills"
         rank_census_title: "Rank Census"
         invalid_skill_census_type: "Invalid skill census type.  Try one of these: %{types}."
         invalid_census_type: "Invalid census type.  Try one of these: %{types}."

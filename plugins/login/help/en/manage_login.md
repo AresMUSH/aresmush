@@ -47,4 +47,4 @@ You can change the terms of service in the configuration section of the game's w
 
 You can set whether an important message appears on the notices screen (a 'message of the day').
 
-`notice/motd <message>` - Sets the message of the day.  Leave blank to clear it.
+`motd/set <message>` - Sets the message of the day.  Leave blank to clear it.

@@ -11,6 +11,10 @@ module AresMUSH
         allow(FS3Combat).to receive(:update_ammo) { nil }
         allow(@combatant).to receive(:name) { "A" }
         allow(FS3Combat).to receive(:weapon_stat) { "" }
+        allow(@combatant).to receive(:is_npc?) { false }
+        allow(@combatant).to receive(:associated_model) { double }
+        allow(Achievements).to receive(:award_achievement) {}
+        
         stub_translate_for_testing
       end
       

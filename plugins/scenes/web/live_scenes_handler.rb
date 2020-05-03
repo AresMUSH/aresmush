@@ -22,7 +22,8 @@ module AresMUSH
                       .select { |p| !p.who_hidden }
                       .sort_by { |p| p.name }
                       .map { |p| { 
-                         name: p.name, 
+                         name: p.name,
+                         nick: p.nick,
                          id: p.id, 
                          icon: Website.icon_for_char(p), 
                          status: Website.activity_status(p),

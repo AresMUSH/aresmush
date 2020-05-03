@@ -207,6 +207,8 @@ module AresMUSH
         return SearchScenesRequestHandler
       when "switchPoseOrder"
         return SwitchPoseOrderRequestHandler
+      when "unsharedScenes"
+        return UnsharedScenesRequestHandler
       when "unwatchScene"
         return UnwatchSceneRequestHandler
       when "watchScene"

@@ -9,7 +9,7 @@ module AresMUSH
       def parse_args
         if (cmd.args =~ /=/)
           args = cmd.parse_args(ArgParser.arg1_equals_arg2_slash_optional_arg3)
-          self.names = titlecase_list_arg(args.arg1)
+          self.names = titlecase_list_arg(args.arg1, /[ ,]/)
           self.num = trim_arg(args.arg2)
           self.combatant_type = titlecase_arg(args.arg3)
         else
@@ -22,11 +22,6 @@ module AresMUSH
 
       def required_args
         [ self.names, self.num ]
-      end
-      
-      def check_commas
-        return t('fs3combat.dont_use_commas_for_join') if self.names.any? { |n| n.include?(",")}
-        return nil
       end
       
       def check_type

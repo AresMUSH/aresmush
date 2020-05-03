@@ -22,7 +22,8 @@ module AresMUSH
             if (alts.any?)
               alts = alts.map { |alt| {
                 name: alt.name,
-                id: alt.id
+                id: alt.id,
+                icon: Website.icon_for_char(alt)
                 }}
             else
               alts = nil

@@ -18,3 +18,4 @@ en:
         beginner_set: "You set your beginner flag to %{option}."
         pages_tip: "For additional pages, put the page # after the command (e.g. help2, help3, etc.)"
         quickref_tip: "Use %xcqr <command>%xn for a command quick reference."
+        related_topics_title: "Other topics in '%{section}':"

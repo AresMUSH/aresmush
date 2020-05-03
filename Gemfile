@@ -24,7 +24,7 @@ gem 'aws-sdk-s3', '~> 1.8.2'
 gem 'rubyzip',  '~> 1.3.0'
 gem 'diff-lcs', '~> 1.3'
 gem 'diffy', '~> 3.2.0'
-gem 'sassc', '~> 2.0.0'
+gem 'sassc', '~> 2.2.1'
 gem 'htmlentities', '~>4.3.4'
 gem 'handlebars', '~>0.8.0'
 gem "rack", ">= 2.0.8"

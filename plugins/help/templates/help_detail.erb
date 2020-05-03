@@ -1,6 +1,11 @@
 <%= header %>
 <%= contents %>
+<% if related_topics %>
 <%= divider %>
-<%= t('help.help_topic_footer', :url => help_url) %>
+%xh<%= t('help.related_topics_title', :section => section_title) %>%xn 
+<%= related_topics %>
+<% end %>
+<%= divider %>
 <%= t('help.quickref_tip') %>
+<%= t('help.help_topic_footer', :url => help_url) %>
 <%= footer %>

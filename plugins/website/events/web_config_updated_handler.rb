@@ -32,6 +32,8 @@ module AresMUSH
         File.open(file_path, 'w') do |f|
           f.write "var aresconfig = #{config.to_json};"
         end
+        
+        Website.emoji_regex = EmojiFormatter.emoji_regex
       end
     end
   end

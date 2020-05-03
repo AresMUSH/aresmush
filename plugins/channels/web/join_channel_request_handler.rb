@@ -19,6 +19,7 @@ module AresMUSH
         end
                  
         {
+          channel: Channels.build_channel_web_data(channel, enactor)
         }
       end
     end

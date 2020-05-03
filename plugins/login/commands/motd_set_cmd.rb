@@ -1,6 +1,6 @@
 module AresMUSH
   module Login
-    class NoticeMotdCmd
+    class MotdSetCmd
       include CommandHandler
 
       attr_accessor :notice

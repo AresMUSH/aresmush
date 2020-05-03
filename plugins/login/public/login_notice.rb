@@ -6,6 +6,7 @@ module AresMUSH
     attribute :data
     attribute :reference_id
     attribute :is_unread, :type => DataType::Boolean, :default => true
+    attribute :timestamp, :type => DataType::Time
     
     reference :character, "AresMUSH::Character"
     index :is_unread
