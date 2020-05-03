@@ -195,10 +195,6 @@ blockquote {
 	color:$dark-words-color;
 }
 
-#ember624 {
-  width: 150px;
-}
-
 
 #searchFields {
   width: 95%;
@@ -597,19 +593,14 @@ h2 {
 }
 /* Specific Shit*/
 /* BG text area */
-#ember823 {
-    height:700px;
-}
+
 
 .panel-default>.panel-heading {
     color: $primary-words-color;
     background-color: #314254;
     border-color: #314254;
 }
-/* Combat 'type' spacing */
-#ember670 {
-    margin-top:5px;
-}
+
 
 /* Character pages */
 
@@ -938,13 +929,6 @@ div.rating-alpha {
   color: #1a1a1c;
 }
 
-#ember823 {
-    height: fit-content;
-}
-
-#ember731 {
-  padding: 5px;
-}
 
 /* Mobile */
 @media only screen and (max-width: 700px) {
