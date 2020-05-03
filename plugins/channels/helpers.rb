@@ -310,6 +310,7 @@ module AresMUSH
         can_talk: Channels.can_talk_on_channel?(enactor, channel),
         muted: Channels.is_muted?(enactor, channel),
         last_activity: channel.last_activity,
+        is_recent: channel.last_activity ? (Time.now - Time.parse(channel.last_activity) < (86400 * 2)) : false,
         is_page: false,
         who: Channels.channel_who(channel).map { |w| {
          name: w.name,
@@ -337,6 +338,7 @@ module AresMUSH
          is_page: true,
          is_unread: Page.is_thread_unread?(thread, enactor),
          last_activity: thread.last_activity,
+         is_recent: thread.last_activity ? (Time.now - thread.last_activity < (86400 * 2)) : false,
          who: thread.characters.map { |c| {
           name: c.name,
           ooc_name: c.ooc_name,
