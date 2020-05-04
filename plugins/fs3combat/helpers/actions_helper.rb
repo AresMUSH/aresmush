@@ -466,6 +466,7 @@ module AresMUSH
     end
     
     def self.award_hit_achievement(attacker, damage, weapon_type)
+      return if !attacker
       return if attacker.is_npc?
       return if !attacker.combat.is_real
       return if damage == 'GRAZE'
