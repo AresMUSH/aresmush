@@ -339,6 +339,23 @@ spells:
     school: Will
     target_num: 5
     target_optional: true
+  Massive Telekinetic Hold:
+    available: false
+    casting_time: 1 round
+    desc: Subdue up to three enemies with a hold of telekinetic force, disabling them for four rounds.
+    duration: 1 round
+    effect: Stun
+    fs3_attack: true
+    is_stun: true
+    rounds: 4
+    level: 7
+    line_of_sight: true
+    name: Massive Telekinetic Hold
+    range: Long
+    school: Will
+    target_num: 3
+    target_optional: true
+    weapon: Stun (Will)
   Mass Telekinetic Burst:
     area: 15 yard radius
     available: false
@@ -354,6 +371,18 @@ spells:
     target_num: 3
     target_optional: true
     weapon: Mass Telekinetic Burst
+  Object Survey:
+    available: false
+    area: 100 yards
+    casting_time: 1 round
+    desc: "The caster extends their senses to all non-organic objects within range. While their body lies senseless and incapacitated, they can identify the presence, quantity, and location of all objects in the area. This allows them to make a map of the non-organic landscape, including structures such as walls and buildings, based on the location of non-organic matter.\n\nThe caster can choose to survey all of the objects at a surface level, or focus their attention on up to five individual objects at a time for more details. They can identify any movement or impacts effecting these five objects, though they cannot tell who or what is interacting with the objects."
+    duration: 15 minutes
+    effect: Other
+    level: 7
+    name:  Object Survey
+    range: Self
+    roll: true
+    school: Will
   Open Local Portal:
     available: false
     casting_time: 5 minutes

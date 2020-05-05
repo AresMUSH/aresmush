@@ -602,8 +602,9 @@ spells:
     school: Nature
   Druid's Wood:
     available: false
+    area: 600 square yards
     casting_time: 1 round
-    desc: The caster may summon a forest, no larger than 600 square yards, populated with the trees, shrubs, and grasses local to the area. The trees may not exceed three hundred feet in height. The plants must have ample space and soil to grow. The plants may be grown in any pattern the caster chooses.
+    desc: "The caster may summon a forest, no larger than 600 square yards, populated with the trees, shrubs, and grasses local to the area. The trees may not exceed three hundred feet in height. The plants must have ample space and soil to grow. The plants may be grown in any pattern the caster chooses. The caster can encourage the trees to bloom or any nut or fruit-bearing trees grown to ripen, even out of season."
     effect: Other
     level: 7
     line_of_sight: true
@@ -661,6 +662,18 @@ spells:
     roll: true
     school: Nature
     weapon: Claws
+  Mass Flora:
+    available: false
+    area: 1/2 acre
+    casting_time: 1 round
+    desc: "The caster may summon plants, flowers, and/or grasses local to the region in an area no larger than half an acre. The plants may not exceed six feet in height. The flora must have ample space and soil to grow. The flora may be grown in any pattern the caster chooses. The caster can encourage the flowers and plants to bloom or the berry, nut, seed, or fruit-bearing plants grown to ripen, even out of season."
+    effect: Other
+    level: 7
+    line_of_sight: true
+    name: Mass Flora
+    range: Long
+    roll: true
+    school: Nature
   Sense Animals:
     available: true
     desc: "The caster extends their senses to all non-sapient creatures within range. While their body lies senseless and incapacitated, they see and feel everything sensed by every non-sapient creature in that area. They can also identify the presence, quantity, and location of sapient creatures.\n\nThe caster can choose to absorb all experiences at a surface level, or focus their attention on up to five individuals at a time for more details."
