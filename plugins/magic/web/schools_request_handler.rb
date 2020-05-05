@@ -28,7 +28,7 @@ module AresMUSH
           elsif s[:level] == 4
             s[:xp] = 5
           elsif s[:level] == 3
-            s[:xp] = 3
+            s[:xp] = 4
           elsif s[:level] == 2
             s[:xp] = 3
           elsif s[:level] == 1
