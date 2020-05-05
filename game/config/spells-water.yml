@@ -1,5 +1,16 @@
 
 spells:
+  Bubble Dance:
+    available: false
+    casting_time: 1 round
+    desc: "Send a stream of water bubbles dancing according to your will. The size of the bubbles can range from foam to fist-sized."
+    duration: 10 minutes
+    effect: Creation
+    level: 1
+    name: Bubble Dance
+    range: Short
+    roll: true
+    school: Water
   Create Water:
     area: 1-5 ft radius
     available: true
