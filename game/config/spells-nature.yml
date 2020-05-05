@@ -413,7 +413,7 @@ spells:
     weapon: Claws
   Wild Shape Falcon:
     available: true
-    armor: Falcon
+    armor: Bird
     desc: Wild Shape Falcon
     level: 5
     name: Wild Shape
@@ -431,7 +431,7 @@ spells:
     school: Nature
   Wild Shape Hrafn:
     available: true
-    armor: Hrafn
+    armor: Bird
     desc: Wild Shape Hrafn. Form able to change the color of its feathers and vocally mimic a few phrases, as well as use Flesh Wound.
     level: 5
     name: Wild Shape
@@ -469,6 +469,16 @@ spells:
     name: Wild Shape
     roll: true
     school: Nature
+  Wild Shape Owl:
+    available: true
+    armor: Bird
+    desc: Wild Shape Owl - genus Strix
+    level: 5
+    name: Wild Shape Owl
+    roll: true
+    school: Nature
+    range: Self
+    weapon: Claws
   Wild Shape Raccoon:
     available: false
     defense_mod: 2
