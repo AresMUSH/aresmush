@@ -269,8 +269,8 @@ fs3combat:
         Right Hand: 4
         Left Foot: 4
         Right Foot: 4
-    Hrafn:
-      description: Wild Shape Hrafn
+    Bird:
+      description: Armor for feathered birds.
       is_magic: true
       protection:
         Head: 0
