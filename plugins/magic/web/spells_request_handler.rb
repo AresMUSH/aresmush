@@ -16,17 +16,17 @@ module AresMUSH
           defense = Global.read_config("spells", s[:name], "defense_mod")
           if s[:level] == 8
             s[:level_8] = true
-            s[:xp] = 13
+            s[:xp] = 12
           elsif s[:level] == 7
-            s[:xp] = 11
+            s[:xp] = 8
           elsif s[:level] == 6
-            s[:xp] = 9
+            s[:xp] = 7
           elsif s[:level] == 5
-            s[:xp] = 9
+            s[:xp] = 6
           elsif s[:level] == 4
             s[:xp] = 5
           elsif s[:level] == 3
-            s[:xp] = 5
+            s[:xp] = 4
           elsif s[:level] == 2
             s[:xp] = 3
           elsif s[:level] == 1
