@@ -29,6 +29,11 @@ module AresMUSH
           return
         end
         
+        if (self.permission =~ /[, ]/)
+          client.emit_failure t('roles.permissions_no_spaces')
+          return
+        end
+        
         if (self.remove_permission)
           permissions = role.permissions
           permissions.delete(self.permission)

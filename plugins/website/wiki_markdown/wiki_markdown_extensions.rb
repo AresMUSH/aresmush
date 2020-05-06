@@ -18,7 +18,6 @@ module AresMUSH
           SpeechBracketExtension,
           StartPreBlockMarkdownExtension,
           EndPreBlockMarkdownExtension
-          
         ]
       end
       

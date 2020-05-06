@@ -13,6 +13,7 @@ aliases:
 - reviving
 - rally
 - healing
+- combat_damage
 ---
 #Healing and Damage
 
@@ -43,13 +44,6 @@ For more longer-term healing, doctors can use the heal command. You will continu
 `heal/stop <name>` - Removes a patient.
 `heal/list` - Shows your patients.
 `heal/scan` - Find injured patients who might need your services.
-
-## Hospitals
-
-When a room is marked as a hospital, people who are there heal faster.
-
-`hospitals` - Finds hospitals.
-`hospital/on` or `hospital/off`- Toggles whether the current room is a hospital.
 
 ## Adjusting Damage
 

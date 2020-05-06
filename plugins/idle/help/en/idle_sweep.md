@@ -36,8 +36,13 @@ Except for warn, the other actions also reset their password so they cannot just
 
 `idle/preview <name>` - View idle information without adding someone to the idle queue.
 
+
 ## Setting Idle Status Directly
 
 `idle/set <name>=<status>` - Sets someone's status without running through the idle queue. Only 'None', 'Dead' and 'Gone' are valid options here.
 `npc <name>=<on or off>` - Admin-only command to mark a character as a staff-run NPC.
 `roster/add <name>=<contact>` - Adds someone to the roster.  Contact is optional.
+
+## Protected Roles
+
+You can't mark certain individuals as permanently safe from the idle sweep, but you can protect people with certain roles by specifying those roles in the idle config settings.

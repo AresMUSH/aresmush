@@ -32,6 +32,7 @@ module AresMUSH
           else
             client.emit_success t('idle.roster_app_submitted', :name => model.name)
           end
+          Global.logger.debug "Roster #{model.name} claimed by #{enactor_name} - #{client.ip_addr}."
         end
       end
     end

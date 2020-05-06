@@ -32,6 +32,8 @@ module AresMUSH
         if (cmd.switch_is?("prefix"))
           return EditPasswordCmd
         end
+      when "emoji"
+        return EmojiCmd
       when "fansi"
         return ColorModeCmd
       when "math"
@@ -82,6 +84,8 @@ module AresMUSH
         return GetNotesRequestHandler
       when "saveNotes"
         return SaveNotesRequestHandler
+      when "emojiList"
+        return EmojiListRequestHandler
       end
       nil
     end

@@ -31,6 +31,8 @@ module AresMUSH
           allow(Global).to receive(:read_config).with("fs3skills", "max_attrs_at_or_above") { { 4 => 2, 5 => 1 } }
           allow(Global).to receive(:read_config).with("fs3skills", "max_points_on_attrs") { 14 }
           allow(Global).to receive(:read_config).with("fs3skills", "max_points_on_action") { 20 }
+          allow(Global).to receive(:read_config).with("fs3skills", "max_points_on_advantages") { 10 }
+          allow(Global).to receive(:read_config).with("fs3skills", "advantages_cost") { 2 }
           @char = double
         end
         
@@ -38,6 +40,7 @@ module AresMUSH
           allow(@char).to receive(:fs3_attributes) { [] }
           allow(@char).to receive(:fs3_action_skills) { [ FS3ActionSkill.new(rating: 7), 
                                              FS3ActionSkill.new(rating: 8) ] }
+          allow(@char).to receive(:fs3_advantages) { [] }
           review = FS3Skills.ability_rating_review(@char)
           expect(review).to eq "fs3skills.ability_ratings_check%r%Tfs3skills.action_skills_above"
         end
@@ -47,6 +50,7 @@ module AresMUSH
           allow(@char).to receive(:fs3_action_skills) { [ FS3ActionSkill.new(rating: 7),
                                              FS3ActionSkill.new(rating: 5),
                                              FS3ActionSkill.new(rating: 5) ] }
+          allow(@char).to receive(:fs3_advantages) { [] }
           review = FS3Skills.ability_rating_review(@char)
           expect(review).to eq "fs3skills.ability_ratings_check%r%Tfs3skills.action_skills_above"
         end
@@ -59,6 +63,7 @@ module AresMUSH
                                              FS3Attribute.new(rating: 3),
                                              FS3Attribute.new(rating: 4),
                                              FS3Attribute.new(rating: 3) ] }
+          allow(@char).to receive(:fs3_advantages) { [] }
           review = FS3Skills.ability_rating_review(@char)
           expect(review).to eq "fs3skills.ability_ratings_check%r%Tfs3skills.too_many_attributes"
         end
@@ -71,8 +76,20 @@ module AresMUSH
                                              FS3ActionSkill.new(rating: 4),
                                              FS3ActionSkill.new(rating: 4),
                                              FS3ActionSkill.new(rating: 4) ] }
+          allow(@char).to receive(:fs3_advantages) { [] }
           review = FS3Skills.ability_rating_review(@char)
           expect(review).to eq "fs3skills.ability_ratings_check%r%Tfs3skills.too_many_action_skills"
+        end
+        
+        
+        it "should error if too many points on advs" do
+          allow(@char).to receive(:fs3_action_skills) { [] }
+          allow(@char).to receive(:fs3_attributes) { [] }
+          allow(@char).to receive(:fs3_advantages) { [ FS3Advantage.new(rating: 3),
+                                             FS3Advantage.new(rating: 2),
+                                             FS3Advantage.new(rating: 1) ] }
+          review = FS3Skills.ability_rating_review(@char)
+          expect(review).to eq "fs3skills.ability_ratings_check%r%Tfs3skills.too_many_advantages"
         end
         
         it "should error if too many attrs above 3" do
@@ -80,6 +97,7 @@ module AresMUSH
           allow(@char).to receive(:fs3_attributes) { [ FS3Attribute.new(rating: 4),
                                              FS3Attribute.new(rating: 4),
                                              FS3Attribute.new(rating: 5) ] }
+          allow(@char).to receive(:fs3_advantages) { [] }
           review = FS3Skills.ability_rating_review(@char)
           expect(review).to eq "fs3skills.ability_ratings_check%r%Tfs3skills.attributes_above"
         end
@@ -88,6 +106,7 @@ module AresMUSH
           allow(@char).to receive(:fs3_action_skills) { [] }
           allow(@char).to receive(:fs3_attributes) { [ FS3Attribute.new(rating: 5),
                                              FS3Attribute.new(rating: 5) ] }
+          allow(@char).to receive(:fs3_advantages) { [] }
           review = FS3Skills.ability_rating_review(@char)
           expect(review).to eq "fs3skills.ability_ratings_check%r%Tfs3skills.attributes_above"
         end
@@ -99,6 +118,8 @@ module AresMUSH
          allow(@char).to receive(:fs3_action_skills) { [ FS3ActionSkill.new(rating: 7),
                                             FS3ActionSkill.new(rating: 4),
                                             FS3ActionSkill.new(rating: 3) ] }
+          allow(@char).to receive(:fs3_advantages) { [ FS3Advantage.new(rating: 3),
+                                             FS3Advantage.new(rating: 2) ] }
           review = FS3Skills.ability_rating_review(@char)
           expect(review).to eq "fs3skills.ability_ratings_check                    chargen.ok"
         end

@@ -23,6 +23,7 @@ en:
     utils:
         no_set_cmd: "AresMUSH has no set command.  There are individual commands to set various things.  Try searching the help files with `help <topic>` or ask for help."
         screen_reader_set: "Screen reader mode is now %{option}."
+        emoji_mode_set: "Emoji have been turned %{option}."
     dice:
         invalid_dice_string: "You may only roll up to 10 dice in the form <num>d<sides> (e.g. 6d10)."
         rolls_dice: "%{name} rolls %{dice}: %{results}."

@@ -24,14 +24,14 @@ module AresMUSH
       end
       
       describe :is_treatable? do
-        it "should be treatable if it's been less than four hours" do
-          allow(Time).to receive(:now) { Time.new(2014, 01, 01, 8, 0, 0) }
+        it "should be treatable if it's been less than 24 hours" do
+          allow(Time).to receive(:now) { Time.new(2014, 01, 02, 3, 0, 0) }
           damage = Damage.new(created_at: Time.new(2014, 01, 01, 4, 1, 0))
           expect(damage.is_treatable?).to be true
         end
         
-        it "should not be treatable if it's been more than four hours" do
-          allow(Time).to receive(:now) { Time.new(2014, 01, 01, 8, 0, 0) }
+        it "should not be treatable if it's been more than 24 hours" do
+          allow(Time).to receive(:now) { Time.new(2014, 01, 02, 8, 0, 0) }
           damage = Damage.new(created_at: Time.new(2014, 01, 01, 3, 59, 0))
           expect(damage.is_treatable?).to be false
         end

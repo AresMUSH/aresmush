@@ -19,5 +19,50 @@ module AresMUSH
       error = has_desc ? t('chargen.ok') : t('chargen.not_set')
       Chargen.format_review_status t('describe.description_review'), error
     end
+    
+    def self.get_web_descs_for_edit(model)
+      if (model.kind_of?(Character))
+        outfits = model.outfits.each_with_index.map { |(name, desc), index| { name: name, desc: Website.format_input_for_html(desc), key: index }}
+      else
+        outfits = nil
+      end
+      
+      {
+        current: Website.format_input_for_html(model.description),
+        outfits: outfits,
+        details: model.details.each_with_index.map { |(name, desc), index| { name: name, desc: Website.format_input_for_html(desc), key: index }}
+      }
+    end
+    
+    def self.get_web_descs_for_display(model)
+      if (model.kind_of?(Character))
+        outfits = model.outfits.each_with_index.map { |(name, desc), index| { name: name, desc: Website.format_markdown_for_html(desc), key: index }}
+      else
+        outfits = nil
+      end
+      
+      {
+        current: Website.format_markdown_for_html(model.description),
+        outfits: outfits,
+        details: model.details.each_with_index.map { |(name, desc), index| { name: name, desc: Website.format_markdown_for_html(desc), key: index }}
+      }
+    end
+    
+    def self.save_web_descs(model, data)
+      model.update(description: Website.format_input_for_mush(data['current']))
+      
+      if (model.kind_of?(Character))
+        outfits = {}
+        (data['outfits'] || []).each do |name, desc|
+          outfits[name.titlecase] =  Website.format_input_for_mush(desc)
+        end
+        model.update(outfits: outfits)
+      end
+      details = {}
+      (data['details'] || []).each do |name, desc|
+        details[name.titlecase] =  Website.format_input_for_mush(desc)
+      end
+      model.update(details: details)
+    end
   end
 end

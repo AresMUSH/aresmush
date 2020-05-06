@@ -13,6 +13,7 @@ Requests are most easily view and managed through the [web portal](https://spiri
 
 `request <title>=<description>` - Submits a request
 `requests` - Views your active requests
+`request/new` - Views the next unread request.
 `requests/all` - Views all of your requests, even closed ones.  
 `request <#>` - Views details of a request.
 

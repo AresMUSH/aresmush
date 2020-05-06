@@ -45,6 +45,12 @@ module AresMUSH
         max = Global.read_config("fs3skills", "max_points_on_action") + dots_beyond_chargen
         points = AbilityPointCounter.points_on_action(char)
         new_total = points + 1
+      elsif (ability_type == :advantage)
+        dots_beyond_chargen = Global.read_config("fs3skills", "advantage_dots_beyond_chargen_max") || 3
+        cost = Global.read_config("fs3skills", "advantages_cost")
+        max = (Global.read_config("fs3skills", "max_points_on_advantages") || 99) + (dots_beyond_chargen * cost)
+        points = AbilityPointCounter.points_on_advantages(char)
+        new_total = points + 1
       else
         return nil
       end
@@ -110,6 +116,13 @@ module AresMUSH
     def self.max_dots_in_attrs
       base = (Global.read_config("fs3skills", 'max_points_on_attrs') || 0) / 2
       extra = Global.read_config("fs3skills", 'attr_dots_beyond_chargen_max') || 0
+      base + extra
+    end
+    
+    def self.max_dots_in_advantages
+      cost = Global.read_config("fs3skills", "advantages_cost")
+      base = (Global.read_config("fs3skills", 'max_points_on_advantages') || 0) / cost
+      extra = Global.read_config("fs3skills", 'advantages_dots_beyond_chargen_max') || 0
       base + extra
     end
   end

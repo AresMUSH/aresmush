@@ -99,6 +99,8 @@ module AresMUSH
           return CreateRequestCmd
         when "mail"
           return RequestMailCmd
+        when "new"
+          return RequestNewCmd
         when nil
           if (!cmd.args)
             return ListRequestsCmd

@@ -28,13 +28,14 @@ module AresMUSH
              author: p.author_name,
              last_activity: p.last_activity_time_str(enactor)
            }}
-           
+              
          {
            id: category.id,
            name: category.name,
            description: category.description,
            can_post: Forum.can_write_to_category?(enactor, category),
-           posts: posts
+           posts: posts,
+           authors: Forum.get_authorable_chars(enactor, category)
          }
       end
     end

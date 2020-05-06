@@ -17,7 +17,7 @@ The events system is an in-game calendar that lets you schedule events.
 
 > **Note:** When creating and editing events, times must be specified in the **server's** timezone.  This will be automatically converted to local time for anyone who has their timezone set.
 
-`event/create <title>=<date and time>/<description>` - Creates an event. Use the game's configured date/time format.  The default  format is 2/1/2019 6:54pm.
+`event/create <title>=<date and time>/<description>` - Creates an event. Use the game's configured date/time format.  The default  format is 2/15/2019 6:54pm.
 `event/edit <#>` - Grabs the current event into your edit buffer (see help edit)
 `event/update <#>=<title>/<date and time>/<description>`
 `event/delete <#>`
