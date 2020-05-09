@@ -16,7 +16,7 @@ channels:
   end_marker: ">"
   ooc_lounge_channel: ''
   recall_buffer_size: 500
-  recall_timeout_days: 1
+  recall_timeout_days: 3
   shortcuts:
     chan: channel
     channels: channel
