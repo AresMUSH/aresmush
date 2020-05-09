@@ -23,7 +23,7 @@ module AresMUSH
       def handle
         Global.logger.debug "Name: #{self.name}"
         type = self.name.titlecase
-        types = [ 'Action', 'Background', 'Language', 'Bg' ]
+        types = [ 'Action', 'Background', 'Language', 'Bg', 'Advantage' ]
         if (types.include?(type))
           if (type == 'Bg')
             type = 'Background'
@@ -44,7 +44,9 @@ module AresMUSH
           .select { |c| FS3Skills.ability_rating(c, self.name) >= min_rating }
           .sort_by { |c| c.name }
           .map { |c| "%xn#{color(c)}#{c.name}#{room_marker(c)}%xn" }
-          client.emit_ooc chars.join(", ")
+          
+          template = BorderedListTemplate.new(chars, t('fs3skills.skill_scan_title'), nil, t('fs3skills.skill_scan_subtitle', :skill => self.name, :type => skill_type))
+          client.emit template.render
         end
       end
 

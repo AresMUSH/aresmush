@@ -27,7 +27,7 @@ module AresMUSH
         error = Manage.reload_config  
         if (error)
           Global.logger.warn "Trouble loading YAML config: #{error}"
-          return { error: t('manage.game_config_invalid', :error => error) }
+          return { :warnings => Website.format_markdown_for_html(error) }
         end
                   
         if (AresCentral.is_registered?)

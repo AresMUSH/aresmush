@@ -34,6 +34,9 @@ module AresMUSH
           target.update(action_args: nil)
           messages << t('fs3combat.distract_successful_msg', :name => self.name, 
              :target => target.name, :weapon => self.combatant.weapon)
+           if (!self.combatant.is_npc?)
+             Achievements.award_achievement(self.combatant.associated_model, "fs3_distracted")  
+           end
         else
           messages << t('fs3combat.distract_failed_msg', :name => self.name, 
              :target => target.name, :weapon => self.combatant.weapon)

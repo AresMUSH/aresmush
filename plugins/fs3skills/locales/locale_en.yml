@@ -149,4 +149,6 @@ en:
         max_ability_points_reached: "You have reached the maximum number of points in that kind of ability."
         cant_learn_advantages_xp: "You can't raise advantages directly with XP.  Submit a request to staff."
         
-        skill_census_title: "Skill Scan"
+        skill_census_title: "Skill Scan - %{type} Abilities"
+        skill_scan_title: "Skill Scan"
+        skill_scan_subtitle: "Characters with ability %{skill} (%{type}) at higher levels:"

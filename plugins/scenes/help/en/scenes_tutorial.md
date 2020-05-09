@@ -85,3 +85,5 @@ Through the web portal, you can create "plots", which are a way to organize rela
 [Scene Commands](/help/scenes)
 [Posing](/help/posing)
 [Pose Order](/help/pose_order)
+[Pose Formatting](/help/pose_format)
+[Out-of-Character Remarks](/help/ooc)

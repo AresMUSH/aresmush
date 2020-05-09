@@ -16,7 +16,7 @@ module AresMUSH
     
     def move_to_history
       entries = self.history || []
-      entries << "#{Time.now} #{character ? character.name : 'Author Deleted'} -- #{pose}"
+      entries << "#{Time.now} #{character ? character.name : t('global.deleted_character')} -- #{pose}"
       self.update(history: entries)
     end
     

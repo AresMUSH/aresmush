@@ -17,6 +17,7 @@ module AresMUSH
         Channels.set_muted(enactor, channel, mute)
                  
         {
+          channel: Channels.build_channel_web_data(channel, enactor)
         }
       end
     end

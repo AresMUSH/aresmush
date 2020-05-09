@@ -109,5 +109,14 @@ module AresMUSH
       Dir[search]
     end
     
+    # Given a topic name (e.g. 'channels')
+    # returns other topics in the same toc section.
+    def self.related_topics(topic)
+      topic_data = Help.topic_index[topic]
+      return [] if (!topic_data['toc'])
+      related = Help.toc_section_topic_data(topic_data['toc']) || {}
+      related.select { |k, v| k != topic }.sort_by { |k, v| [ v['tutorial'] ? 0 : 1, k ] }.map { |k, v| k}
+    end
+    
   end
 end

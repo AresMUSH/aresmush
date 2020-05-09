@@ -2,7 +2,6 @@
 toc: 4 - Writing the Story
 summary: Writing your character's actions.
 order: 1
-tutorial: true
 aliases:
 - say
 - nospoof

@@ -58,6 +58,7 @@ module AresMUSH
       end
       
       Damage.create(params)
+      FS3Combat.award_damage_achievement(target, is_mock)
      end
      
      def self.healing_points(wound_level)
@@ -179,6 +180,20 @@ module AresMUSH
 
        wound.update(healed: true)
      end
+     
+     def self.award_damage_achievement(target, is_mock)
+       return if target.class != Character
+       return if is_mock
+       
+       damage_count = target.damage.count
+       [ 1, 5, 10, 20, 50, 100 ].reverse.each do |count|
+         if (damage_count >= count)
+           Achievements.award_achievement(target, "fs3_wounded", count)
+           break
+         end
+       end  
+     end
+     
   
   end
 end

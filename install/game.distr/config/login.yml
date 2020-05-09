@@ -33,4 +33,4 @@ login:
     conn: connect
     kick: boot
     password/change: password/set
-    motd: notice/motd
+    notice: notices
