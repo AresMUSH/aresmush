@@ -27,8 +27,9 @@ task :startares, [:options] do |t, args|
   bootstrapper.start
 end
   
-task :configure do
-  AresMUSH::Install.configure_game
+task :configure, [:options] do |t, args|
+  options = args[:options] || nil
+  AresMUSH::Install.configure_game(options)
 end
 
 task :add_plugin, [:plugin_name] do |t, args|
