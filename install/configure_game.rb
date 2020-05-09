@@ -105,6 +105,8 @@ module AresMUSH
         opts_data[key] = val
       end
       
+      puts "Configuring with options: #{options}."
+      
       host_port = opts_data['server_port'] || '4201'
       
       {
