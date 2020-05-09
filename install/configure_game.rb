@@ -73,6 +73,7 @@ module AresMUSH
       `git config --global user.name "Admin"`
       
       begin
+        web_portal_port = template_data['web_portal_port']
         webportal_dir = DatabaseMigrator.read_config_file("website.yml")['website']['website_code_path']
         if (webportal_dir && Dir.exist?(webportal_dir))
           if (web_portal_port.to_s == '80')
@@ -82,7 +83,7 @@ module AresMUSH
           end
         
           File.open(File.join(webportal_dir, "public", "robots.txt"), "a") do |f| 
-            f.write("\nSitemap: #{server_host}#{port_str}/game/sitemap.xml")
+            f.write("\nSitemap: #{template_data['server_host']}#{port_str}/game/sitemap.xml")
           end
         else
           raise "Directory doesn't exist."
@@ -97,7 +98,7 @@ module AresMUSH
     end
     
     def self.parse_options(options)
-      opts_list = options.split("|")
+      opts_list = options.split("~")
       opts_data = {}
       opts_list.each do |opt|
         key = opt.split("=")[0]
