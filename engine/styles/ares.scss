@@ -321,7 +321,10 @@ li hr {
     border-width: 4px;
 }
 
-
+.emoji {
+  font-size: 1.5em;
+  vertical-align: middle;
+}
 /* -------------------------
 BOOTSTRAP OVERRIDES
 ------------------------- */
@@ -489,6 +492,11 @@ HEADER
     text-align: right;
 }
 
+.alts-switcher 
+{
+  width: 100%;
+}
+
 /* -------------------------
 FOOTER
 ------------------------- */
@@ -531,6 +539,7 @@ SIDEBAR
     text-align: center;
     font-size: 1.5em;
     color: $faded-text-color;
+    font-variant: small-caps;
     padding: 0px;
     margin-top: 20px;
     margin-bottom: 10px;
@@ -804,8 +813,7 @@ SCENES SCREEN
     min-height: 400px;
     overflow-y: scroll;
     overflow-x: hidden;
-    margin: 2px 0px;
-    
+    margin: 2px 0px;    
 }
 
 .log-icon-container {
@@ -1172,16 +1180,31 @@ CHAT SCREEN
     max-height: 400px;
     overflow-y: scroll;
     overflow-x: hidden;
+    border: 1px solid $border-color;
+    margin: 2px;
+    padding: 10px;
+}
+
+.play-sidebar {
+    max-height: 800px;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    padding: 5px;
+}
+
+.play-sidebar:hover { 
+  overflow-y: scroll;
+}
+
+.play-hint {
+  color: $faded-text-color;
+  margin-left: 5px;
+  font-size: .8em;
 }
 
 .chat-box {
   padding: 3px;
   margin: 0px;
-}
-.chat-button {
-  width: 100%;
-  white-space:normal !important;
-  word-wrap: break-word; 
 }
 
 .chat-report {
@@ -1191,7 +1214,7 @@ CHAT SCREEN
 .timestamp-tip {
   color: $faded-text-color;
   font-style: italic;
-  font-size: 1em;
+  font-size: .8em;
 }
 
 .chat-button-active {
@@ -1215,6 +1238,26 @@ CHAT SCREEN
 .chat-control-row {
   margin: 0px;
   padding: 0px 15px 0px 0px;
+}
+
+.play-section-title {
+  color: $faded-text-color;
+  font-variant: small-caps;
+  font-weight: bold;
+  margin: 10px 5px 5px 5px;
+}
+
+.play-selector {
+  width: 100%;
+  padding: 5px;
+}
+
+.play-selector-active {
+  background-color: #eee;
+}
+
+.navbar-nav > li > a.dropdown-toggle.chat-menu {
+  padding: 10px 0px 0px 0px;
 }
 
 /* -------------------------
@@ -1329,6 +1372,9 @@ ul.regular-help-list {
     list-style-type: square;
 }
 
+ul.reference-help-list {
+  padding-left: 25px;
+}
 ul.reference-help-list li {
     display: inline;
 }

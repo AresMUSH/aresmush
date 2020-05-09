@@ -50,6 +50,12 @@ module AresMUSH
           c.fs3_languages.each do |a|
             add_to_hash(skills, c, a)
           end
+          
+        elsif (skill_type == "Advantage")
+          c.fs3_advantages.each do |a|
+            add_to_hash(skills, c, a)
+          end
+          
         else
           raise "Invalid skill type selected for skill census: #{skill_type}"
         end

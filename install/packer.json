@@ -1,0 +1,35 @@
+{
+  
+  "variables": {
+    "do_api_key": "",
+    "ssh_pass": ""
+  },
+  "sensitive-variables": ["do_api_key", "ares_password"],
+  "builders": [
+    {
+      "type": "digitalocean",
+      "api_token": "{{user `do_api_key`}}",
+      "image": "ubuntu-18-04-x64",
+      "region": "nyc1",
+      "size": "s-1vcpu-1gb",
+      "ssh_username": "root",
+      "droplet_name": "ares-{{user `mush_name`}}-{{timestamp}}",
+      "snapshot_name": "ares-{{user `mush_name`}}-{{timestamp}}",
+      "communicator": "ssh"
+      }
+    ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "inline": [
+        "echo 'debconf debconf/frontend select Noninteractive' | sudo debconf-set-selections",
+        "curl https://raw.githubusercontent.com/aresmush/aresmush/dev/bin/setup_server > setup_server",
+        "chmod +x setup_server",
+        "sudo ./setup_server {{user `ares_password`}}",
+        "su ares",
+        "curl https://raw.githubusercontent.com/aresmush/aresmush/dev/bin/install > install",
+        "./install \"mush_name={{user `mush_name`}}|server_port={{user `server_port`}}|host_name={{user `host_name`}}\""
+      ]
+    }
+  ]
+}

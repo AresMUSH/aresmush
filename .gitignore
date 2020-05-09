@@ -2,6 +2,7 @@
 # -----------------------------
 secrets.yml
 real_database.yml
+packer_vars.json
 
 # Logs and errors
 # -----------------------------

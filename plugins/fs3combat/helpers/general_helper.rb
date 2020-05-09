@@ -52,7 +52,7 @@ module AresMUSH
     end
     
 
-    def self.emit_to_combat(combat, message, npcmaster = nil, scene_pose = false)
+    def self.emit_to_combat(combat, message, npcmaster = nil, scene_pose = false, filter_for_screenreader = false)
       message = message + "#{npcmaster}"
       combat.log(message)
 
@@ -70,7 +70,7 @@ module AresMUSH
       end
 
       combat.combatants.each do |combatant|
-        FS3Combat.emit_to_combatant(combatant, message)
+        FS3Combat.emit_to_combatant(combatant, message, filter_for_screenreader)
       end
     end
       
@@ -83,14 +83,17 @@ module AresMUSH
       end
     end
     
-    def self.emit_to_combatant(combatant, message)
+    def self.emit_to_combatant(combatant, message, filter_for_screenreader = false)
       char = combatant.character
       return if !char
       
-      client_message = message.gsub(/#{combatant.name}/, "%xh%xc#{combatant.name}%xn")  
       client = Login.find_client(char)
       if (client)
-        client.emit t('fs3combat.combat_emit', :message => client_message)
+        client_message = message.gsub(/#{combatant.name}/, "%xh%xc#{combatant.name}%xn")  
+        client_message.split("\n").each do |part|
+          next if filter_for_screenreader && client.screen_reader && part !~ /#{combatant.name}/
+          client.emit t('fs3combat.combat_emit', :message => part)
+        end
       end
     end
     
@@ -179,21 +182,22 @@ module AresMUSH
       Global.dispatcher.spawn("Combat Turn", nil) do
         begin
           initiative_order = FS3Combat.get_initiative_order(combat)
-      
+          
+          all_messages = []
+          
           initiative_order.each do |id|
             c = Combatant[id]
             next if !c.action
             next if c.is_noncombatant?
 
             combat.log "Action #{c.name} #{c.action ? c.action.print_action_short : "-"} #{c.is_noncombatant?}"
-          
-            messages = c.action.resolve
-            messages.each do |m|
-              FS3Combat.emit_to_combat combat, m, nil, true
-            end
             
+            messages = c.action.resolve   
+            all_messages.concat messages         
           end
       
+          FS3Combat.emit_to_combat combat, all_messages.join("\n"), nil, true, true
+
           combat.log "---- Resolutions ----"
           combat.active_combatants.each { |c| FS3Combat.reset_for_new_turn(c) }
           # This will reset their action if it's no longer valid.  Do this after everyone's been KO'd.

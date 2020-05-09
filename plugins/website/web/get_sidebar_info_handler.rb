@@ -17,12 +17,13 @@ module AresMUSH
         if (enactor)
           notifications = enactor.unread_notifications.count
           if (enactor.handle)
-            alts = AresCentral.alts(enactor) #.select { |alt| alt != enactor }
+            alts = AresCentral.alts(enactor) # Note - will include the original character
             
-            if (alts.any?)
+            if (alts.count > 1)
               alts = alts.map { |alt| {
                 name: alt.name,
-                id: alt.id
+                id: alt.id,
+                icon: Website.icon_for_char(alt)
                 }}
             else
               alts = nil

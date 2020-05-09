@@ -28,9 +28,9 @@ module AresMUSH
         end
         
         thread = Page.send_page(enactor, recipients, message, nil)
-
+        
         {
-          thread: thread
+          thread: Channels.build_page_web_data(thread, enactor)
         }
       end
     end

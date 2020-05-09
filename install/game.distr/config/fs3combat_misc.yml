@@ -95,3 +95,33 @@ fs3combat:
     fs3_joined_combat:
       type: fs3
       message: Joined %{count} combats.
+    fs3_wounded:
+      type: fs3
+      message: Wounded %{count} times in combat.
+    fs3_hard_hitter:
+      type: fs3
+      message: Incapacitated an opponent in combat.
+    fs3_explosive_hit:
+      type: fs3
+      message: Did damage with an explosive weapon.
+    fs3_melee_hit:
+      type: fs3
+      message: Did damage with a melee weapon.
+    fs3_ranged_hit:
+      type: fs3
+      message: Did damage with a ranged weapon.
+    fs3_suppressed:
+      type: fs3
+      message: Suppressed a target in combat.
+    fs3_subdued:
+      type: fs3
+      message: Subdued a target in combat.
+    fs3_distracted:
+      type: fs3
+      message: Distracted a target in combat.
+    fs3_rallied:
+      type: fs3
+      message: Rallied a teammate in combat.
+    fs3_treated:
+      type: fs3
+      message: Treated a teammate in combat.

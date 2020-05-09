@@ -21,6 +21,16 @@ module AresMUSH
       def help_url
         Help.topic_url(@topic_found, @topic_key.rest(' '))
       end
+      
+      def section_title
+        (Help.topic_index[@topic_found] || {})['toc']
+      end
+      
+      def related_topics
+        related = Help.related_topics(@topic_found)
+        return nil if !related.any?
+        related.map { |r| r.humanize.titleize }.join(", ")
+      end
     end
   end
 end

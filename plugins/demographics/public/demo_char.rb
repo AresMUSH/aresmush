@@ -34,6 +34,10 @@ module AresMUSH
     def group(name)
       self.groups[name.downcase]
     end
+    
+    def nick
+      Demographics.name_and_nickname(self)
+    end
   end
   
 end

@@ -30,9 +30,9 @@ module AresMUSH
 
         activity = game.login_activity || {}
         
-        
-        hour = (Time.now.hour / 4).to_s
-        day_of_week = Time.now.wday.to_s
+        estnow = Time.now.localtime("-05:00")
+        hour = (estnow.hour / 4).to_s
+        day_of_week = estnow.wday.to_s
         
       
         if (!activity[day_of_week])

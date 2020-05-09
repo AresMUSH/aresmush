@@ -146,6 +146,12 @@ module AresMUSH
       channel.default_alias = [ 'q', 'qu', 'que' ]
       channel.save
       
+      channel = AresMUSH::Channel.create(name: "Game",
+         color: "%xc",
+         description: "System messages.")
+      channel.default_alias = [ 'gam' ]
+      channel.save
+      
       channel = AresMUSH::Channel.create(name: "RP Requests",
          color: "%xB",
          description: "Look for RP. No spam.")

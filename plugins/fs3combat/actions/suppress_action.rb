@@ -42,6 +42,10 @@ module AresMUSH
           self.combatant.log "#{self.name} suppressing #{target.name}.  atk=#{attack_roll} def=#{defense_roll}"
           if (margin >= 0)
             target.add_stress(margin + 2)
+            if (!self.combatant.is_npc?)
+              Achievements.award_achievement(self.combatant.associated_model, "fs3_suppressed")  
+            end
+            
             messages << t('fs3combat.suppress_successful_msg', :name => self.name, 
                :target => target.name, :weapon => self.combatant.weapon)
           else

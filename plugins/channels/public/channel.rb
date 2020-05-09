@@ -9,7 +9,6 @@ module AresMUSH
     attribute :description
     attribute :announce, :type => DataType::Boolean, :default => true
     attribute :default_alias, :type => DataType::Array
-    attribute :messages, :type => DataType::Array, :default => []
     attribute :recall_enabled, :type => DataType::Boolean, :default => true
     
     index :name_upcase
@@ -18,9 +17,14 @@ module AresMUSH
     set :talk_roles, "AresMUSH::Role"
     set :roles, "AresMUSH::Role"
     set :characters, "AresMUSH::Character"
+    
+    collection :channel_messages, "AresMUSH::ChannelMessage"
 
     before_save :save_upcase
-    before_delete :delete_options
+    before_delete :delete_refs
+    
+    # DEPRECATED
+    attribute :messages, :type => DataType::Array, :default => []
     
     def save_upcase
       self.name_upcase = self.name.upcase
@@ -37,8 +41,9 @@ module AresMUSH
       end
     end      
     
-    def delete_options
+    def delete_refs
       ChannelOptions.all.select { |c| c.channel_id == self.id }.each { |c| c.delete }
+      self.channel_messages.each { |c| c.delete }
     end
         
     def display_name(include_markers = true)
@@ -46,20 +51,18 @@ module AresMUSH
       include_markers ? Channels.name_with_markers(display) : display
     end
     
-    def add_to_history(msg)
+    def add_to_history(msg, author)
       return if !self.recall_enabled
-      new_messages = (self.messages << { message: msg, timestamp: DateTime.now, id: SecureRandom.uuid })
-      if (new_messages.count > Channels.recall_buffer_size)
-        new_messages.shift
+      ChannelMessage.create(message: msg, character: author, channel: self )
+      if (self.channel_messages.count > Channels.recall_buffer_size)
+        self.sorted_channel_messages.first.delete
       end
-      self.update(messages: new_messages)
     end      
     
     def last_activity
-      return nil if !self.messages
-      last_message = self.messages[-1]
-      return nil if !last_message
-      return last_message['timestamp']
+      last_msg = self.sorted_channel_messages[-1]
+      return nil if !last_msg
+      return last_msg.created_at
     end
     
     def self.find_one_with_partial_match(name)
@@ -73,6 +76,10 @@ module AresMUSH
       end
       
       channel
+    end
+    
+    def sorted_channel_messages
+      self.channel_messages.to_a.sort_by { |m| m.created_at }
     end
   end
 end

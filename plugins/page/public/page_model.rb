@@ -35,5 +35,9 @@ module AresMUSH
     reference :page_thread, "AresMUSH::PageThread"
     reference :author, "AresMUSH::Character"
     attribute :message
+    
+    def author_name
+      self.author ? self.author.name : t('global.deleted_character')
+    end
   end
 end
