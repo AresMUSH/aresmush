@@ -93,7 +93,7 @@ module AresMUSH
         end
       
         if (!FS3Combat.weapons.keys.include?("Shrapnel"))
-          warnings<< "fs3combat:weapons The Sharpnel weapon cannot be removed or renamed."
+          @validator.add_error "fs3combat:weapons The Sharpnel weapon cannot be removed or renamed."
         end
       end
       
