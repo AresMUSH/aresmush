@@ -9,6 +9,8 @@ export ARES_INSTALL_TEXT="\n\n<\033[0;32mINSTALL\033[0m>"
 
 GAME_CLONE_URL=${1:-'https://github.com/aresmush/aresmush.git'}
 WEBPORTAL_CLONE_URL=${2:-'https://github.com/aresmush/ares-webportal.git'}
+CONFIG_OPTIONS=${3:-''}
+
 export HOME_DIR="/home/ares"
 
 # #########################################################################################
@@ -37,7 +39,7 @@ source "${HOME_DIR}/.rvm/scripts/rvm"
 
 echo -e "${ARES_INSTALL_TEXT} Install Ruby version."
 
-rvm install ruby-2.6.3
+rvm install ruby-2.6.3 --autolibs read-fail
 
 # #########################################################################################
 
@@ -95,7 +97,7 @@ chmod +x bin/*
 
 echo -e "${ARES_INSTALL_TEXT} Run the configure script to set up basic game options."
 
-bin/configure
+bin/configure ${CONFIG_OPTIONS}
 
 # #########################################################################################
 
