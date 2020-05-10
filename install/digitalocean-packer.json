@@ -13,8 +13,8 @@
       "region": "nyc1",
       "size": "s-1vcpu-1gb",
       "ssh_username": "root",
-      "droplet_name": "ares-{{user `mush_name`}}-{{timestamp}}",
-      "snapshot_name": "ares-{{user `mush_name`}}-{{timestamp}}",
+      "droplet_name": "ares-{{user `droplet_name`}}-{{timestamp}}",
+      "snapshot_name": "ares-{{user `droplet_name`}}-{{timestamp}}",
       "communicator": "ssh"
       }
     ],
@@ -26,10 +26,10 @@
         "curl https://raw.githubusercontent.com/aresmush/aresmush/dev/bin/setup_server > setup_server",
         "chmod +x setup_server",
         "sudo ./setup_server {{user `ares_password`}}",
-        "su ares",
-        "curl https://raw.githubusercontent.com/aresmush/aresmush/dev/bin/install > install",
-        "./install \"mush_name={{user `mush_name`}}|server_port={{user `server_port`}}|host_name={{user `host_name`}}\""
-      ]
+        "sudo su - ares -c 'curl https://raw.githubusercontent.com/aresmush/aresmush/dev/bin/install > install'",
+        "sudo su - ares -c 'chmod +x install'",
+        "sudo su - ares -c 'echo {{user `ares_password`}} | sudo -Ss -u ares ./install \"mush_name={{user `mush_name`}}~server_port={{user `server_port`}}~host_name={{user `host_name`}}\"'"
+    ]
     }
   ]
 }
