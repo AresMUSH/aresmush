@@ -4,4 +4,4 @@ if [[ $EUID == 0 ]]; then
 fi
 
 bundle install
-bundle exec rake configure
+bundle exec rake configure $*

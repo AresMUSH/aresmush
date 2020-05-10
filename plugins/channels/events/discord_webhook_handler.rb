@@ -26,6 +26,7 @@ module AresMUSH
         end
         
         prefix = Global.read_config('channels', 'discord_prefix') || "[D]"
+        enactor = Character.named(name)
         Channels.emit_to_channel(channel, "#{prefix} #{name}: #{message}", title = nil)
       end
     end
