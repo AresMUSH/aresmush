@@ -1,7 +1,4 @@
-if [[ $EUID -ne 0 ]]; then
-   echo "This script must be run as root" 
-   exit 1
-fi
+(( EUID )) && { echo 'This script must be run with the root user.'; exit 1; }
 
 export ARES_INSTALL_TEXT="\n\n<\033[0;34mINSTALL\033[0m>"
 
@@ -134,6 +131,15 @@ sudo chgrp redis /var/lib/redis
 sudo chmod g+rwx /var/lib/redis
 sudo chgrp redis /var/lib/redis/dump.rdb
 sudo chmod g+rwx /var/lib/redis/dump.rdb
+sudo chgrp www /etc/nginx/sites-available/default
+sudo chmod g+rwx /etc/nginx/sites-available/default
+
+# #########################################################################################
+
+echo -e "${ARES_INSTALL_TEXT} RVM needs some libs."
+
+sudo apt-get update
+sudo apt-get install -y autoconf automake bison libffi-dev libgdbm-dev libncurses5-dev libsqlite3-dev libtool libyaml-dev pkg-config sqlite3 zlib1g-dev libreadline-dev libssl-dev
 
 # #########################################################################################
 
