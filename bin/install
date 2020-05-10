@@ -1,15 +1,12 @@
-if [[ $EUID == 0 ]]; then
-   echo "This script should not be run as root.  Log out and log back in with your ares user." 
-   exit 1
-fi
+(( !EUID )) && { echo 'This script must be run with the ares user.'; exit 1; }
 
 export ARES_INSTALL_TEXT="\n\n<\033[0;34mINSTALL\033[0m>"
 
 # Set up some variables we'll use throughout.
 
-GAME_CLONE_URL=${1:-'https://github.com/aresmush/aresmush.git'}
-WEBPORTAL_CLONE_URL=${2:-'https://github.com/aresmush/ares-webportal.git'}
-CONFIG_OPTIONS=${3:-''}
+GAME_CLONE_URL='https://github.com/aresmush/aresmush.git'
+WEBPORTAL_CLONE_URL='https://github.com/aresmush/ares-webportal.git'
+CONFIG_OPTIONS=${1:-''}
 
 export HOME_DIR="/home/ares"
 
@@ -39,7 +36,7 @@ source "${HOME_DIR}/.rvm/scripts/rvm"
 
 echo -e "${ARES_INSTALL_TEXT} Install Ruby version."
 
-rvm install ruby-2.6.3 --autolibs=read-fail
+rvm install ruby-2.6.3
 
 # #########################################################################################
 
