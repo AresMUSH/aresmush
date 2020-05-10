@@ -1,7 +1,4 @@
-if [[ $EUID -ne 0 ]]; then
-   echo "This script must be run as root" 
-   exit 1
-fi
+(( EUID )) && { echo 'This script must be run with the root user.'; exit 1; }
 
 export ARES_INSTALL_TEXT="\n\n<\033[0;34mINSTALL\033[0m>"
 
