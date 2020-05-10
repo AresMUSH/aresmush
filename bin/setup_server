@@ -32,10 +32,8 @@ apt-get install -y ruby-bundler
 
 # #########################################################################################
 
-echo -e "${ARES_INSTALL_TEXT} Need ruby dev for local gems and sundry things for RVM."
+echo -e "${ARES_INSTALL_TEXT} Need ruby dev for local gems."
 apt-get install -y ruby-dev
-apt-get install -y autoconf automake bison libffi-dev libgdbm-dev libncurses5-dev libsqlite3-dev libtool libyaml-dev pkg-config sqlite3 zlib1g-dev libreadline-dev 
-apt-get install -y libssl-dev
 
 # #########################################################################################
 
@@ -135,6 +133,9 @@ sudo chgrp redis /var/lib/redis/dump.rdb
 sudo chmod g+rwx /var/lib/redis/dump.rdb
 sudo chgrp www /etc/nginx/sites-available/default
 sudo chmod g+rwx /etc/nginx/sites-available/default
+
+sudo apt-get update
+sudo apt-get install -y autoconf automake bison libffi-dev libgdbm-dev libncurses5-dev libsqlite3-dev libtool libyaml-dev pkg-config sqlite3 zlib1g-dev libreadline-dev libssl-dev
 
 # #########################################################################################
 
