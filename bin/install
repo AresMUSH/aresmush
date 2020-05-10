@@ -8,6 +8,8 @@ GAME_CLONE_URL='https://github.com/aresmush/aresmush.git'
 WEBPORTAL_CLONE_URL='https://github.com/aresmush/ares-webportal.git'
 CONFIG_OPTIONS=${1:-''}
 
+echo "Configuring with options ${CONFIG_OPTIONS}"
+
 export HOME_DIR="/home/ares"
 
 # #########################################################################################
