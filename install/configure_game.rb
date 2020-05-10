@@ -26,7 +26,7 @@ module AresMUSH
       
       template_path = File.join(File.dirname(__FILE__), 'templates')
       
-      if (options)
+      if (!options.blank?)
         template_data = self.parse_options(options)
       else        
         template_data = self.ask_for_options
