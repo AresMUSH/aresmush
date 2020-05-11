@@ -2,6 +2,7 @@ spells:
   #Level 1
   Beginner Telekinesis:
     available: true
+    area: 10 yard radius
     casting_time: 1 round, plus additional rounds to manipulate at GM's discretion
     desc: The caster is able to slowly lift and manipulate 1 pound of material almost as if with their hands. This manipulation is not precise and cannot travel above 2 mph.
     duration: 10 minutes
@@ -9,7 +10,7 @@ spells:
     level: 1
     line_of_sight: true
     name: Beginner Telekinesis
-    range: Short
+    range: Self
     roll: Will
     school: Will
   Deface:
@@ -52,13 +53,14 @@ spells:
     effect: Damage
   Minor Telekinesis:
     available: true
+    area: 10 yard radius
     casting_time: 1 round, plus additional rounds to manipulate at GM's discretion
     desc: The caster is able to slowly lift and manipulate 5 pounds of material almost as if with their hands. This manipulation is not precise and cannot travel above 10 mph.
     duration: 1 hour
     effect: Other
     level: 2
     name: Minor Telekinesis
-    range: Short
+    range: Self
     roll: Will
     school: Will
   Nudge Aim:
@@ -80,13 +82,14 @@ spells:
   #Level 3
   Intermediate Telekinesis:
     available: true
+    area: 10 yard radius
     casting_time: 1 round, plus additional rounds for movement at the GM's discretion
     desc: The caster can lift and move an object weighing up to 100 lbs at will from a distance. This manipulation is not precise and cannot travel above 25 mph.
     duration: 1 hour
     effect: Other
     level: 3
     name: 'Intermediate Telekinesis '
-    range: Short
+    range: Self
     roll: Will
     school: Will
   Telekinetic Block:
@@ -136,13 +139,14 @@ spells:
     school: Will
   Major Telekinesis:
     available: true
+    area: 10 yard radius
     casting_time: 1 round, plus additional rounds for movement at the GM's discretion
     desc: The caster can lift and move an object or person weighing up to 250 lbs at will from a distance. This manipulation is not precise and cannot travel above 35 mph.
     duration: 1 hour
     effect: Other
     level: 4
     name: 'Major Telekinesis '
-    range: Short
+    range: Self
     roll: true
     school: Will
   Potions (Will):
@@ -209,7 +213,7 @@ spells:
     target_num: 3
     target_optional: true
   Multiple Telekinesis:
-    area: 15 yard radius
+    area: 10 yard radius
     available: true
     casting_time: 1 round, plus additional rounds for movement at the GM's discretion
     desc: 'The caster can lift and move up to five objects weighing up to 100 lbs total. The more items they manipulate, the less precise their manipulation is. A single item can be manipulated with good precision, but manipulating three items is imprecise, and more than three items can only be manipulated with rudimentary control such as broad movements through the air. Objects cannot be smaller than 5cm or travel above 25 mph.'
@@ -217,18 +221,19 @@ spells:
     effect: Other
     level: 5
     name: Multiple Telekinesis
-    range: Short
+    range: Self
     roll: true
     school: Will
   Telekinetic Precision:
     available: true
+    area: 10 yard radius
     casting_time: 1 round, plus additional rounds to manipulate at GM's discretion
     desc: "The caster can manipulate a small object with great precision. Objects may range in size from 1 mm  to 5 cm.\n\n Manipulation requires knowledge. The caster cannot use telekinesis to pick locks without lockpicking knowledge, or to load a gun without firearms knowledge."
     duration: 1 hour
     effect: Other
     level: 5
     name: 'Telekinetic Precision '
-    range: Short
+    range: Self
     roll: true
     school: Will
   Telekinetic Crush:
@@ -255,7 +260,7 @@ spells:
     line_of_sight: true
     available: true
   Massive Telekinesis:
-    area: 15 yard radius
+    area: 100 yard radius
     available: true
     casting_time: 1 round, plus additional rounds for movement at the GM's discretion
     desc: 'The caster can move an object weighing up to 5 tons. This is imprecise, and objects move at a speed inverse to their weight. Smaller objects may move up to 35 mph; larger objects move 15 mph.'
@@ -263,7 +268,7 @@ spells:
     effect: Other
     level: 6
     name: 'Massive Telekinesis '
-    range: Long
+    range: Self
     roll: Will
     school: Will
   Summon Object:
@@ -425,17 +430,18 @@ spells:
     school: Will
   Microscopic Telekinesis:
     available: false
+    area: 1 ft radius
     casting_time: 1 round, plus additional rounds to manipulate at GM's discretion
     desc: "The caster can manipulate a microscopic object with great precision. Objects may range in size from 1 micrometer  to 1 milimeter.\n\n Manipulation requires knowledge. The caster cannot use telekinesis to vanquish disease without exact medical knowledge, or to repair fine machinery without engineering knowledge."
     duration: 1 hour
     effect: Other
     level: 8
     name: Microscopic Telekinesis
-    range: Touch
+    range: Self
     roll: true
     school: Will
   Titanic Telekinesis:
-    area: 30 yard cube
+    area: 10 yard radius
     available: false
     casting_time: 1 round, plus additional rounds for movement at the GM's discretion
     desc: 'Move an object weighing up to 100 tons. This is imprecise, and objects move at a speed inverse to their weight. Smaller objects may move up to 35 mph; larger objects move a yard per minute.'
@@ -443,6 +449,6 @@ spells:
     effect: Other
     level: 8
     name: Titanic Telekinesis
-    range: Long
+    range: Self
     roll: true
     school: Will
