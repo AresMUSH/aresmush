@@ -17,7 +17,7 @@ module AresMUSH
       
       def handle
         Channels.with_an_enabled_channel(self.name, client, enactor) do |channel|
-          Channels.report_channel_abuse(enactor, channel, channel.messages.last(50), self.reason) 
+          Channels.report_channel_abuse(enactor, channel, channel.sorted_channel_messages.last(50), self.reason) 
           client.emit_success t('channels.channel_reported')
         end
       end

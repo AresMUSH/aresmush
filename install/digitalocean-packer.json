@@ -1,0 +1,40 @@
+{
+  
+  "variables": {
+    "do_api_key": "",
+    "ssh_pass": ""
+  },
+  "sensitive-variables": ["do_api_key", "ares_password"],
+  "builders": [
+    {
+      "type": "digitalocean",
+      "api_token": "{{user `do_api_key`}}",
+      "image": "ubuntu-18-04-x64",
+      "region": "nyc1",
+      "size": "s-1vcpu-1gb",
+      "ssh_username": "root",
+      "droplet_name": "ares-{{user `droplet_name`}}-{{timestamp}}",
+      "snapshot_name": "ares-{{user `droplet_name`}}-{{timestamp}}",
+      "communicator": "ssh"
+      }
+    ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "inline": [
+        "echo 'debconf debconf/frontend select Noninteractive' | sudo debconf-set-selections",
+        "curl https://raw.githubusercontent.com/aresmush/aresmush/master/bin/setup_server > setup_server",
+        "chmod +x setup_server",
+        "sudo ./setup_server {{user `ares_password`}}",
+        "sudo su - ares -c 'curl https://raw.githubusercontent.com/aresmush/aresmush/master/bin/install > install'",
+        "sudo su - ares -c 'chmod +x install'",
+        "sudo su - ares -c 'echo {{user `ares_password`}} | sudo -Ss -u ares ./install \"mush_name={{user `mush_name`}}~server_port={{user `server_port`}}~host_name={{user `host_name`}}\"'",
+        "sudo apt-get install -y software-properties-common",
+        "sudo add-apt-repository universe",
+        "sudo add-apt-repository -y ppa:certbot/certbot",
+        "sudo apt-get update",
+        "sudo apt-get install -y certbot python-certbot-nginx"
+    ]
+    }
+  ]
+}

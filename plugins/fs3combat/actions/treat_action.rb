@@ -35,6 +35,9 @@ module AresMUSH
       def resolve
         message = FS3Combat.treat(self.target.associated_model, self.combatant.associated_model)
         FS3Combat.check_for_unko(self.target)
+        if (!self.combatant.is_npc?)
+          Achievements.award_achievement(self.combatant.associated_model, "fs3_treated")
+        end
         [message]
       end
     end

@@ -4,6 +4,7 @@ summary: Using the public chat channels.
 aliases:
 - chat
 - comsys
+- comtitle
 ---
 # Channel Commands
 

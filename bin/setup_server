@@ -1,9 +1,6 @@
-if [[ $EUID -ne 0 ]]; then
-   echo "This script must be run as root" 
-   exit 1
-fi
+(( EUID )) && { echo 'This script must be run with the root user.'; exit 1; }
 
-export ARES_INSTALL_TEXT="\n\n<\033[0;32mINSTALL\033[0m>"
+export ARES_INSTALL_TEXT="\n\n<\033[0;34mINSTALL\033[0m>"
 
 # #########################################################################################
 
@@ -13,14 +10,15 @@ echo -e "${ARES_INSTALL_TEXT} Updating Ubuntu packages."
 
 add-apt-repository -y ppa:chris-lea/redis-server
 
-apt-get update
+apt-get -y update
+apt-get -y install dialog apt-utils
 apt-get -y upgrade
 
 # #########################################################################################
 
 echo -e "${ARES_INSTALL_TEXT} Installing SSL/HTTPS utils."
 apt-get install -y binutils
-apt-get install apt-transport-https
+apt-get install -y apt-transport-https
 
 # #########################################################################################
 
@@ -47,7 +45,7 @@ apt-get install -y nginx
 echo -e "${ARES_INSTALL_TEXT} Dependency mgmt for ember cli"
 apt-get install -y nodejs
 apt-get install -y npm
-apt-get install python
+apt-get install -y python
 
 # #########################################################################################
 
@@ -73,7 +71,8 @@ apt-get install -y unattended-upgrades
 # #########################################################################################
 
 echo -e "${ARES_INSTALL_TEXT} Turn unatteded upgrades on."
-dpkg-reconfigure -plow unattended-upgrades
+dpkg-reconfigure -f noninteractive unattended-upgrades
+
 
 # #########################################################################################
 
@@ -85,14 +84,16 @@ service redis-server restart
 
 echo -e "${ARES_INSTALL_TEXT} Create an ares user"
 
+# Ares user password will either be passed in as an arg, or we'll default it
+
+RANDOMPW=$(openssl rand 1000 | strings | grep -io [[:alnum:]] | head -n 16 | tr -d '\n')
+PASSWD=${1:-$RANDOMPW}
+ENCRYPTEDPW=$(openssl passwd -1 "$PASSWD")
+
 export ARES_USERNAME="ares"
 
 adduser --disabled-password --gecos "" ${ARES_USERNAME}
 
-# Give them a temporary password
-
-PASSWD=$(openssl rand 1000 | strings | grep -io [[:alnum:]] | head -n 16 | tr -d '\n')
-ENCRYPTEDPW=$(openssl passwd -1 "$PASSWD")
 usermod -p "$ENCRYPTEDPW" ${ARES_USERNAME}
 
 # Add them to groups
@@ -130,6 +131,15 @@ sudo chgrp redis /var/lib/redis
 sudo chmod g+rwx /var/lib/redis
 sudo chgrp redis /var/lib/redis/dump.rdb
 sudo chmod g+rwx /var/lib/redis/dump.rdb
+sudo chgrp www /etc/nginx/sites-available/default
+sudo chmod g+rwx /etc/nginx/sites-available/default
+
+# #########################################################################################
+
+echo -e "${ARES_INSTALL_TEXT} RVM needs some libs."
+
+sudo apt-get update
+sudo apt-get install -y autoconf automake bison libffi-dev libgdbm-dev libncurses5-dev libsqlite3-dev libtool libyaml-dev pkg-config sqlite3 zlib1g-dev libreadline-dev libssl-dev
 
 # #########################################################################################
 

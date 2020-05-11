@@ -515,7 +515,6 @@ module AresMUSH
 
       target.inflict_damage(damage, desc, is_stun, crew_hit)
 
-
       if (damage != "GRAZE")
         target.update(freshly_damaged: true)
 
@@ -543,12 +542,13 @@ module AresMUSH
       end
 
 
-      if (FS3Combat.weapon_stat(weapon, 'weapon_type') == "Explosive")
+      weapon_type = FS3Combat.weapon_stat(weapon, 'weapon_type')
+      if (weapon_type == "Explosive")
         weapon_name = t('fs3combat.concussion_from', :weapon => weapon)
       else
         weapon_name = weapon
       end
-
+      FS3Combat.award_hit_achievement(attacker, damage, weapon_type)
       messages << t('fs3combat.attack_hits',
                     :name => attack_name,
                     :weapon => weapon_name,
@@ -559,6 +559,22 @@ module AresMUSH
 
       messages.concat FS3Combat.resolve_possible_crew_hit(target, hitloc, damage)
       messages
+    end
+
+    def self.award_hit_achievement(attacker, damage, weapon_type)
+      return if !attacker
+      return if attacker.is_npc?
+      return if !attacker.combat.is_real
+      return if damage == 'GRAZE'
+
+      [ "explosive", "melee", "ranged", ].each do |hit|
+        if (weapon_type.downcase == hit)
+          Achievements.award_achievement(attacker.associated_model, "fs3_#{hit}_hit")
+        end
+      end
+      if (damage == "INCAP")
+        Achievements.award_achievement(attacker.associated_model, "fs3_hard_hitter")
+      end
     end
 
     def self.resolve_possible_crew_hit(target, hitloc, damage)

@@ -750,7 +750,6 @@ module AresMUSH
           allow(@target).to receive(:riding_in) { nil }
           allow(@combatant).to receive(:name) { "A" }
           allow(FS3Combat).to receive(:determine_attack_margin) { { hit: true, attacker_net_successes: 2 }}
-          
           allow(FS3Combat).to receive(:resolve_attack)
         end
         
@@ -825,6 +824,7 @@ module AresMUSH
           allow(@target).to receive(:luck) { "" }
           allow(@target).to receive(:update).with(damaged_by: [ "A" ]) {}
           allow(@combatant).to receive(:luck) { "" }
+          allow(FS3Combat).to receive(:award_hit_achievement) {}
         end
             
         

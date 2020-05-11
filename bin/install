@@ -1,14 +1,15 @@
-if [[ $EUID == 0 ]]; then
-   echo "This script should not be run as root.  Log out and log back in with your ares user." 
-   exit 1
-fi
+(( !EUID )) && { echo 'This script must be run with the ares user.'; exit 1; }
 
-export ARES_INSTALL_TEXT="\n\n<\033[0;32mINSTALL\033[0m>"
+export ARES_INSTALL_TEXT="\n\n<\033[0;34mINSTALL\033[0m>"
 
 # Set up some variables we'll use throughout.
 
-GAME_CLONE_URL=${1:-'https://github.com/aresmush/aresmush.git'}
-WEBPORTAL_CLONE_URL=${2:-'https://github.com/aresmush/ares-webportal.git'}
+GAME_CLONE_URL='https://github.com/aresmush/aresmush.git'
+WEBPORTAL_CLONE_URL='https://github.com/aresmush/ares-webportal.git'
+CONFIG_OPTIONS=${1:-''}
+
+echo "Configuring with options ${CONFIG_OPTIONS}"
+
 export HOME_DIR="/home/ares"
 
 # #########################################################################################
@@ -28,9 +29,11 @@ echo "(setq make-backup-files nil)" > ~/.emacs
 
 echo -e "${ARES_INSTALL_TEXT} Install RVM."
 
-gpg --keyserver hkp://pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
+# gpg --keyserver hkp://pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
+curl -sSL https://rvm.io/mpapis.asc | gpg --import -
+curl -sSL https://rvm.io/pkuczynski.asc | gpg --import -
 
-\curl -sSL https://get.rvm.io | bash -s stable --ruby
+\curl -sSL https://get.rvm.io | bash -s stable --ruby --autolibs=read-fail
 source "${HOME_DIR}/.rvm/scripts/rvm"
 
 # #########################################################################################
@@ -95,7 +98,7 @@ chmod +x bin/*
 
 echo -e "${ARES_INSTALL_TEXT} Run the configure script to set up basic game options."
 
-bin/configure
+bin/configure ${CONFIG_OPTIONS}
 
 # #########################################################################################
 
@@ -115,7 +118,7 @@ ln -s "${HOME_DIR}/aresmush/game" game
 
 echo -e "${ARES_INSTALL_TEXT} Install default web configuration."
 
-sudo cp "${HOME_DIR}/aresmush/install/nginx.default" /etc/nginx/sites-enabled/default
+cp "${HOME_DIR}/aresmush/install/nginx.default" /etc/nginx/sites-available/default
 sudo service nginx restart
 
 # #########################################################################################

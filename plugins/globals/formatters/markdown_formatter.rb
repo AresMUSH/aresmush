@@ -76,7 +76,10 @@ class MarkdownToMURenderer < Redcarpet::Render::Base
 
   # Other methods where we don't return only a specific argument
   def link(link, title, content)
-    "#{content} (#{link})"
+    if link.start_with?("/")
+      link = "#{AresMUSH::Game.web_portal_url}#{link}"
+    end
+    "%xh%xc#{content} (#{link})%xn"
   end
 
   def image(link, title, content)

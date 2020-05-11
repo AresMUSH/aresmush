@@ -22,103 +22,38 @@ module AresMUSH
       input
     end
     
-    def self.configure_game
-      
-      engine_api_key = SecureRandom.uuid
+    def self.configure_game(options)
       
       template_path = File.join(File.dirname(__FILE__), 'templates')
-      puts "\nYou can press 'enter' for any option to accept the default."
-      puts "\nLet's set up your database.  The default options should suffice unless you've done something unusual with your Redis installation."
-
-      db_url = get_optional_field "Database url", '127.0.0.1:6379'
       
-      template_data =
-      {
-        "db_url" => db_url,
-      }
+      if (!options.blank?)
+        template_data = self.parse_options(options)
+      else        
+        template_data = self.ask_for_options
+      end
   
       template = Erubis::Eruby.new(File.read(File.join(template_path, 'database.yml.erb'), :encoding => "UTF-8"))
       File.open(File.join(AresMUSH.game_path, 'config', 'database.yml'), 'w') do |f|
         f.write(template.evaluate(template_data))
       end
       
+      engine_api_key = SecureRandom.uuid
       if (File.exists?(File.join(AresMUSH.game_path, "config", "secrets.yml")))
         db_password = nil
       else
         db_password = ('a'..'z').to_a.shuffle[0,30].join
-        template_data =
+        secrets_data =
         {
           "engine_api_key" => engine_api_key,
           "db_password" => db_password
         }
-        puts "\nYour database password has been set to #{db_password}.  This will be stored in the secrets.yml config file."
         
         template = Erubis::Eruby.new(File.read(File.join(template_path, 'secrets.yml.erb'), :encoding => "UTF-8"))
         File.open(File.join(AresMUSH.game_path, 'config', 'secrets.yml'), 'w') do |f|
-          f.write(template.evaluate(template_data))
+          f.write(template.evaluate(secrets_data))
         end
       end
-      
-    
-  
-      puts "\nGreat.  Now we'll gather some server information.  See http://aresmush.com/tutorials/install/install-game.html for help with these options."
-  
-      server_host = get_required_field "Server hostname (ex: yourmush.aresmush.com or an IP)"
-      server_port = get_optional_field "Server telnet port", "4201"
-      websocket_port = get_optional_field "Server web socket port", "4202"
-      engine_api_port = get_optional_field "Server engine API port", "4203"
-      web_portal_port = get_optional_field "Server website port", "80"
-
-      mush_name = get_required_field "MUSH Name"
-      game_desc = get_required_field "Game Description"
-      
-      print "\nMUSH Category > "
-      print "\nPick one:"
-      print "\n[1] Social"
-      print "\n[2] Historical"
-      print "\n[3] Sci-Fi"
-      print "\n[4] Fantasy"
-      print "\n[5] Modern"
-      print "\n[6] Supernatural"
-      print "\n[7] Comic"
-      print "\n[8] Other"
-      print "\n Select a Category > "
-      input = STDIN.gets.chomp
-
-      case input
-      when "1"
-        category = "Social"
-      when "2"
-        category = "Historical"
-      when "3"
-        category = "Sci-Fi"
-      when "4" 
-        category = "Fantasy"
-      when "5"
-        category = "Modern"
-      when "6"
-        category = "Supernatural"
-      when "7"
-        category = "Comic"
-      else
-        category = "Other"
-      end
-  
-      template_data = 
-      {
-        "host_name" => server_host,
-        "host_port" => server_port,
-        "websocket_port" => websocket_port,
-        "web_portal_port" => web_portal_port,
-        "engine_api_port" => engine_api_port,
-        "mush_name" => mush_name,
-        "category" => category,
-        "game_desc" => game_desc,
-        "website" => '',
-        "public_game" => false,
-        "game_status" => 'In Development'
-      }
-  
+        
       template = Erubis::Eruby.new(File.read(File.join(template_path, 'server.yml.erb'), :encoding => "UTF-8"))
       File.open(File.join(AresMUSH.game_path, 'config', 'server.yml'), 'w') do |f|
         f.write(template.evaluate(template_data))
@@ -134,20 +69,11 @@ module AresMUSH
         f.write(template.evaluate(template_data))
       end
       
-      print "\nNext we'll set up some information that will be used when you interact with the version control system GitHub for code updates."
-      
-      git_email = get_optional_field "GitHub Email", "admin@#{server_host}"
-      git_name = get_optional_field "GitHub Name", "#{mush_name} Admin"
-      
-      if (!git_email.blank?)
-        `git config --global user.email "#{git_email}"`
-      end
-      
-      if (!git_name.blank?)
-        `git config --global user.name "#{git_name}"`
-      end
+      `git config --global user.email "admin@#{template_data['host_name']}"`
+      `git config --global user.name "Admin"`
       
       begin
+        web_portal_port = template_data['web_portal_port']
         webportal_dir = DatabaseMigrator.read_config_file("website.yml")['website']['website_code_path']
         if (webportal_dir && Dir.exist?(webportal_dir))
           if (web_portal_port.to_s == '80')
@@ -157,7 +83,7 @@ module AresMUSH
           end
         
           File.open(File.join(webportal_dir, "public", "robots.txt"), "a") do |f| 
-            f.write("\nSitemap: #{server_host}#{port_str}/game/sitemap.xml")
+            f.write("\nSitemap: #{template_data['server_host']}#{port_str}/game/sitemap.xml")
           end
         else
           raise "Directory doesn't exist."
@@ -165,13 +91,78 @@ module AresMUSH
       rescue Exception => ex
         puts "!!!!!!!"
         puts "Your Ares web portal directory can't be found, or there's a problem accessing it."
-        puts "In order to set up your search engine, you'll need to manually edit the robots file."
-        puts "See https://aresmush.com/tutorials/config/website.html for details."
         puts "!!!!!!!"
       end
      
       puts "\nYour game has been configured!  You can edit these and other game options through the files in game/config."
-      
     end
+    
+    def self.parse_options(options)
+      opts_list = options.split("~")
+      opts_data = {}
+      opts_list.each do |opt|
+        key = opt.split("=")[0]
+        val = opt.split("=")[1]
+        opts_data[key] = val
+      end
+      
+      puts "Configuring with options: #{options}."
+      
+      host_port = opts_data['server_port'] || '4201'
+      
+      {
+        "host_name" => opts_data['host_name'] || 'localhost',
+        "host_port" => host_port,
+        "websocket_port" => (host_port.to_i + 1).to_s,
+        "engine_api_port" => (host_port.to_i + 2).to_s,
+        "web_portal_port" => '80',
+        "mush_name" => opts_data['mush_name'] || "Test Game",
+        "category" => "Other",
+        "game_desc" => "Coming Soon",
+        "website" => '',
+        "public_game" => false,
+        "game_status" => 'In Development',
+        "db_url" => "127.0.0.1:6379"
+      }
+    end
+    
+    def self.ask_for_options
+      
+      puts "\nYou can press 'enter' for any option to accept the default."
+
+      puts "\nGive your MUSH a name.  You can change your game name, description and category later in the web portal configuration screen."
+      mush_name = get_required_field "MUSH Name"      
+
+      puts "\nGreat.  Now we need to know the hostname, like yourmush.aresmush.com. You can use the server's IP address if you don't have a domain name."
+      server_host = get_required_field "Server hostname (ex: yourmush.aresmush.com or an IP)"
+      
+      puts "\nNow you can choose the port that people will connect to from a MUSH client.  See https://aresmush.com/tutorials/install/install-game.html#ports for help."
+      
+      server_port = get_optional_field "Server telnet port", "4201"
+
+      puts "\nAres also uses other ports for the web portal, web-game communication, and database.  You can accept the default values for typical systems.  See https://aresmush.com/tutorials/install/install-game.html#ports for help."
+
+      websocket_port = get_optional_field "Server web socket port", "4202"
+      engine_api_port = get_optional_field "Server engine API port", "4203"
+      web_portal_port = get_optional_field "Server website port", "80"
+      db_url = get_optional_field "Database url", '127.0.0.1:6379'
+
+            
+      {
+        "host_name" => server_host,
+        "host_port" => server_port,
+        "websocket_port" => websocket_port,
+        "engine_api_port" => engine_api_port,
+        "web_portal_port" => web_portal_port,
+        "mush_name" => mush_name,
+        "category" => "Other",
+        "game_desc" => "Coming Soon",
+        "website" => '',
+        "public_game" => false,
+        "game_status" => 'In Development',
+        "db_url" => db_url
+      }
+    end
+    
   end
 end

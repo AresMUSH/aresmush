@@ -34,5 +34,10 @@ module AresMUSH
     def self.print_emoji(val)
       val.hex.chr(Encoding::UTF_8)
     end
+    
+    def self.emoji_regex
+      all_emoji = Global.read_config("emoji", "emoji").values.map { |v| "\\u\{#{v}\}" }.join('|')
+      /([#{all_emoji}])/
+    end
   end
 end

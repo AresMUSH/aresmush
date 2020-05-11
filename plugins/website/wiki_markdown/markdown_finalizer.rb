@@ -1,6 +1,5 @@
 module AresMUSH
   module Website
-    
     # This runs after all other markdown has been rendered, because it looks for
     # big blocks of text (like a tab view) and things that apply to the entire
     # page (like table of contents).
@@ -116,7 +115,8 @@ module AresMUSH
           end
           toc_links << "</ul></div>"
         end
-                
+
+        html = html.gsub(Website.get_emoji_regex) { "<span class='emoji'>#{$1}</span>" }
         html.gsub("$TOC_GOES_HERE_MARKER$", toc_links)
       end
       

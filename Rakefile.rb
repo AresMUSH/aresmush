@@ -28,7 +28,12 @@ task :startares, [:options] do |t, args|
 end
   
 task :configure do
-  AresMUSH::Install.configure_game
+  # The task name is the first arg, and we don't care about that.
+  ARGV.shift
+  options = ARGV.join(" ")
+  AresMUSH::Install.configure_game(options)
+  # Manually exit because otherwise it'll try to run each word as a separate task.
+  exit
 end
 
 task :add_plugin, [:plugin_name] do |t, args|

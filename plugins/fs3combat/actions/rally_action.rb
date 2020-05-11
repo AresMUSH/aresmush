@@ -27,6 +27,9 @@ module AresMUSH
         FS3Combat.check_for_unko(self.target)
         if (self.target.is_ko)
           message = t('fs3combat.rally_resolution_failed', :target => print_target_names, :name => self.name)
+          if (!self.combatant.is_npc?)
+            Achievements.award_achievement(self.combatant.associated_model, "fs3_rallied")  
+          end
         else
           message = t('fs3combat.rally_resolution_success', :target => print_target_names, :name => self.name)
         end

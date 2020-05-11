@@ -29,6 +29,14 @@ module AresMUSH
       input.gsub(/%r/i, "\n")
     end
 
+    def self.avatar_info(char)
+      {
+        name: char.name,
+        nick: char.nick,
+        icon: Website.icon_for_char(char)
+      }
+    end
+
     def self.icon_for_char(char)
       if (char)
         icon = char.profile_icon
@@ -46,11 +54,11 @@ module AresMUSH
       char = Character.find_one_by_name(name)
       Website.icon_for_char(char)
     end
-    
+
     def self.web_char_marker
       "[Web]"
     end
-    
+
     def self.activity_status(char)
       client = Login.find_client(char)
       if (client)
@@ -61,7 +69,7 @@ module AresMUSH
       if (!client)
         return 'offline'
       end
-      
+
       return Status.is_idle?(client) ? 'web-inactive' : 'web-active'
     end
   end
