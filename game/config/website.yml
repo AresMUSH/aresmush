@@ -40,17 +40,17 @@ website:
     - route: roster
       title: Pre-Made Characters
     - divider: true
+    - route: scenes-play
+      title: Play
     - route: scenes-live
       title: Active Scenes
-    - route: scenes-play
-      title: My Scenes
     - route: scene-create
       title: Start New Scene
     - route: combats
       title: Combats
     - divider: true
     - route: play
-      title: Play via Web Client
+      title: Web Client
   - title: Game
     menu:
     - route: wiki-page
@@ -62,8 +62,6 @@ website:
     - route: help
       title: Help
     - divider: true
-    - route: chat
-      title: Chat
     - route: forum
       title: Forum
     - route: events
