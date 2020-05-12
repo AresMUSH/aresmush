@@ -16,6 +16,34 @@ spells:
   #   spell_mod: -2
   #   target_num: 20
   #   target_optional: true
+  Stochieion 1:
+    available: false
+    casting_time: 1 round
+    desc: "Casting non-elemental or non-spirit spells in Stochieion grants +1 to spellcasting."
+    duration: 100 rounds
+    level: 1
+    line_of_sight: true
+    name: Stochieion 2
+    range: Short
+    rounds: 100
+    school: Spirit
+    spell_mod: 1
+    target_num: 20
+    target_optional: true
+  Stochieion 2:
+    available: false
+    casting_time: 1 round
+    desc: "Casting elemental or spirit spells in Stochieion grants +2 to spellcasting."
+    duration: 100 rounds
+    level: 1
+    line_of_sight: true
+    name: Stochieion 2
+    range: Short
+    rounds: 100
+    school: Spirit
+    spell_mod: 2
+    target_num: 20
+    target_optional: true
   Locate Object:
     available: true
     casting_time: 1 round
