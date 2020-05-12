@@ -704,6 +704,10 @@ h2 {
     color: #95d895;
 }
 
+#chat-window {
+  border: 0px;
+}
+
 .play-hint {
     font-style: italic;
 }
@@ -714,6 +718,7 @@ h2 {
 
 .play-selector-active {
     background-color: #383a4f;
+    color: #d1e3ee;
 }
 
 #sceneMenuCollapse {
