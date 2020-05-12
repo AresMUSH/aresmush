@@ -21,8 +21,8 @@ pre {
 }
 
 textarea {
-     color: $dark-words-color;
-     background-color: white;
+     color: #d1d2d3;
+     background-color: #45484a;
 }
 
 ::-webkit-scrollbar {
@@ -381,7 +381,7 @@ code {
 }
 
 button, input, select, textarea {
-    color: $dark-words-color;
+    color: #d1d2d3;
 }
 
 /* Text */
@@ -706,7 +706,6 @@ h2 {
 
 .play-hint {
     font-style: italic;
-    margin-top: -8px;
 }
 
 .play-section-title {
@@ -714,7 +713,7 @@ h2 {
 }
 
 #sceneMenuCollapse {
-  background: black;
+  background: #292b2d;
 }
 
 .scene-pose {
@@ -753,6 +752,7 @@ h2 {
 .scene-pose-header {
     padding-top: 10px;
     margin-bottom: 0px;
+    border-color: #45484a;
 }
 
 .scene-journal {
