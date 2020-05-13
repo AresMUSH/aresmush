@@ -55,7 +55,7 @@ spells:
   Glow Stone:
     available: true
     casting_time: 1 round
-    desc: "The caster imbues any rock or gem with the ability to fluoresce, making it able emit a soft glow in the dark after being charged in the light for a short period of time. The light from the stone is dim, equivalent to a small candle flame (12 lumens)."
+    desc: "The caster imbues up to 1 cubic foot of pre-existing rock or gemstone with the ability to fluoresce, making it able emit a soft glow in the dark after being charged in the light for a short period of time. The light from the stone is dim, equivalent to a small candle flame (12 lumens)."
     duration: 1 hour
     effect: Creation
     level: 2

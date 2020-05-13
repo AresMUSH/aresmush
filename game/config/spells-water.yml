@@ -358,6 +358,8 @@ spells:
     range: Touch
     school: Water
     weapon: Glacial Ice
+    target_optional: true
+    target_num: 1
   Liquid Form:
     available: true
     casting_time: 1 round
