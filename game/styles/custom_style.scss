@@ -20,28 +20,26 @@ pre {
      background-color: #d1d2d3;
 }
 
-textarea {
-     color: #d1d2d3;
-     background-color: #45484a;
-}
+
+
 
 ::-webkit-scrollbar {
     width: 9px;
     background-color: white;
 }
 
-input[type="text"] {
-	background: #45484a;
-	color: #d1d2d3;
-  border: 0px;
-  padding: 5px;
-  border-radius: 2px;
-}
-
-input[type="password"] {
-	background: #45484a;
-	color: #d1d2d3;
-}
+// input[type="text"] {
+// 	background: #45484a;
+// 	color: #d1d2d3;
+//   border: 0px;
+//   padding: 5px;
+//   border-radius: 2px;
+// }
+//
+// input[type="password"] {
+// 	background: #45484a;
+// 	color: #d1d2d3;
+// }
 
 blockquote {
     color:$dark-words-color;
@@ -194,40 +192,73 @@ blockquote {
     padding-left: 4px
 }
 
-.ember-power-select-trigger {
-	color: #d1d2d3;
+
+input,
+textarea,
+.ember-power-select-trigger,
+.ember-basic-dropdown-trigger,
+.ember-power-select-search-input,
+.ember-text-field {
   background: #45484a;
+  color: #d1d2d3;
   border: 0px;
   border-radius: 2px;
 }
 
-.ember-power-select-options {
-  color: #d1d2d3;
-  background: #45484a;
+.ember-power-select-option[aria-current="true"],
+.ember-power-select-option[aria-selected="true"] {
+  background-color: #383A4F;
 }
 
-.ember-power-select-search {
-    background: #45484a;
+input:focus, .ember-power-select-search-input:focus, textarea:focus {
+  box-shadow: none;
+  outline: 0;
+  border: 1px solid $void-blue;
 }
 
-.ember-power-select-options:hover {
-  color: #d1d2d3;
-  background: #383a4e;
-}
+.ember-power-select-trigger {
+
+  &.ember-power-select-trigger--active,
+  &:focus {
+    border: 1px solid $void-blue;
+    outline: 0;
+    box-shadow: none;
+  }
+
+// .ember-power-select-trigger {
+// 	color: #d1d2d3;
+//   background: #45484a;
+//   border: 0px;
+//   border-radius: 2px;
+// }
+//
+// .ember-power-select-options {
+//   color: #d1d2d3;
+//   background: #45484a;
+// }
+//
+// .ember-power-select-search {
+//     background: #45484a;
+// }
+//
+// .ember-power-select-options:hover {
+//   color: #d1d2d3;
+//   background: #383a4e;
+// }
 
 // .ember-power-select-option[aria-selected="true"] {
 //   background: #383a4e;
 // }
 
-.ember-power-select-option[aria-current="true"] {
-  background: #383a4e; 
-}
-
-.ember-power-select-multiple-option {
-  border-radius: 2px;
-  color: #d1d2d3;
-  background-color: #383a4e;
-}
+// .ember-power-select-option[aria-current="true"] {
+//   background: #383a4e;
+// }
+//
+// .ember-power-select-multiple-option {
+//   border-radius: 2px;
+//   color: #d1d2d3;
+//   background-color: #383a4e;
+// }
 
 #searchFields {
   width: 95%;
