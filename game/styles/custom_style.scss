@@ -33,6 +33,7 @@ textarea {
 input[type="text"] {
 	background: #45484a;
 	color: #d1d2d3;
+  border: 0px;
 }
 
 input[type="password"] {
@@ -194,6 +195,7 @@ blockquote {
 .ember-power-select-trigger {
 	color: #d1d2d3;
   background: #45484a;
+  border: 0px;
 }
 
 .ember-power-select-options {
@@ -203,7 +205,11 @@ blockquote {
 
 .ember-power-select-options:hover {
   color: #d1d2d3;
-  background: #45484a;
+  background: #383a4e;
+}
+
+.ember-power-select-option[aria-selected="true"] {
+  background: #383a4e;
 }
 
 #searchFields {
