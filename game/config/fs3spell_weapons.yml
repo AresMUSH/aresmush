@@ -20,7 +20,7 @@ fs3combat:
       description: Level 4 Earth spell
       is_magic: true
       penetration: 2
-    Dead Calm:
+    Cold Calm:
       description: Level 5 Water Spell
       is_magic: true
       accuracy: 3

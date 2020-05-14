@@ -279,7 +279,7 @@ spells:
     name: Cold Calm
     range: Self
     school: Water
-    weapon_specials: Dead Calm
+    weapon_specials: Cold Calm
   Exploding Ice:
     area: 10 yard radius
     available: true
