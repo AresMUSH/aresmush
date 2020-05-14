@@ -83,7 +83,7 @@ blockquote {
 }
 
 .label-pill {
-    background-color: #A9353E;
+    background-color: #862931;
 }
 
 .pinterest {
@@ -407,10 +407,11 @@ h1 {
     font-family: "Libre Baskerville";
     font-size: 2.5em;
     font-variant: small-caps;
-    -moz-border-radius: 15px;
-    -webkit-border-radius: 15px;
-    border-radius: 15px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
     border:0px;
+    background-image: linear-gradient(to right, #383A4F, #1a1b1c);
 }
 
 h2 {
