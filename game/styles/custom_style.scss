@@ -31,13 +31,16 @@ textarea {
 }
 
 input[type="text"] {
-	background:white;
-	color:$dark-words-color;
+	background: #45484a;
+	color: #d1d2d3;
+  border: 0px;
+  padding: 5px;
+  border-radius: 2px;
 }
 
 input[type="password"] {
-	background:white;
-	color:$dark-words-color;
+	background: #45484a;
+	color: #d1d2d3;
 }
 
 blockquote {
@@ -83,7 +86,7 @@ blockquote {
 }
 
 .label-pill {
-    background-color: #A9353E;
+    background-color: #862931;
 }
 
 .pinterest {
@@ -192,9 +195,36 @@ blockquote {
 }
 
 .ember-power-select-trigger {
-	color:$dark-words-color;
+	color: #d1d2d3;
+  background: #45484a;
+  border: 0px;
+  border-radius: 2px;
 }
 
+.ember-power-select-options {
+  color: #d1d2d3;
+  background: #45484a;
+}
+
+.ember-power-select-search {
+    background: #45484a;
+}
+
+// .ember-power-select-options:hover {
+//   color: #d1d2d3;
+//   background: #383a4e;
+// }
+
+.ember-power-select-option[aria-current="true"],
+.ember-power-select-option[aria-selected="true"] {
+  background-color: #383a4e;
+}
+
+.ember-power-select-multiple-option {
+  border-radius: 2px;
+  color: #d1d2d3;
+  background-color: #383a4e;
+}
 
 #searchFields {
   width: 95%;
@@ -327,7 +357,7 @@ code {
 }
 
 .collapse.in {
-    background: #4f5162;
+    // background: #4f5162;
     padding: 10px;
     border-radius: 0px 5px 5px 5px;
     top: -10px;
@@ -352,13 +382,14 @@ code {
 }
 
 .btn-default {
-  background: #ecedef;
+  background: #bbbfc1;
   color: #1a1a1c;
   border: 0px;
+  border-radius: 2px;
 }
 
 .btn-primary {
-    background-color: #555;
+    background-color: #2b2d3a;
     border-color: #383A4F;
 }
 
@@ -407,10 +438,11 @@ h1 {
     font-family: "Libre Baskerville";
     font-size: 2.5em;
     font-variant: small-caps;
-    -moz-border-radius: 15px;
-    -webkit-border-radius: 15px;
-    border-radius: 15px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
     border:0px;
+    background-image: linear-gradient(to right, #383A4F, #1a1b1c);
 }
 
 h2 {
@@ -990,6 +1022,8 @@ div.rating-alpha {
 
   .dropdown-menu > li > a {
     color: #d1d2d3;
+    background: #e8eff2;
+    border-radius: 2px;
   }
     .body-wrap {
       padding: 5px 0px 0px 5px;
