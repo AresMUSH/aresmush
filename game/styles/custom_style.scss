@@ -193,6 +193,7 @@ blockquote {
 
 .ember-power-select-trigger {
 	color:$dark-words-color;
+  background: #bbbfc1;
 }
 
 
@@ -352,9 +353,10 @@ code {
 }
 
 .btn-default {
-  background: #ecedef;
+  background: #bbbfc1;
   color: #1a1a1c;
   border: 0px;
+  border-radius: 2px;
 }
 
 .btn-primary {
@@ -991,6 +993,8 @@ div.rating-alpha {
 
   .dropdown-menu > li > a {
     color: #d1d2d3;
+    background: #bbbfc1;
+    border-radius: 2px;
   }
     .body-wrap {
       padding: 5px 0px 0px 5px;
