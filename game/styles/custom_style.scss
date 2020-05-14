@@ -34,6 +34,8 @@ input[type="text"] {
 	background: #45484a;
 	color: #d1d2d3;
   border: 0px;
+  padding: 5px;
+  border-radius: 2px;
 }
 
 input[type="password"] {
@@ -196,11 +198,16 @@ blockquote {
 	color: #d1d2d3;
   background: #45484a;
   border: 0px;
+  border-radius: 2px;
 }
 
 .ember-power-select-options {
   color: #d1d2d3;
   background: #45484a;
+}
+
+.ember-power-select-search {
+    background: #45484a;
 }
 
 .ember-power-select-options:hover {
@@ -210,6 +217,16 @@ blockquote {
 
 .ember-power-select-option[aria-selected="true"] {
   background: #383a4e;
+}
+
+.ember-power-select-option[aria-current="true"] {
+  background: #383a4e;
+}
+
+.ember-power-select-multiple-option {
+  border-radius: 2px;
+  color: #d1d2d3;
+  background-color: #383a4e;
 }
 
 #searchFields {
