@@ -49,6 +49,11 @@ magic-items:
     desc: The eye is a perfect orb, larger than the size of a closed fist, composed of a freckled gold stone. It is preserved in an eternally seeing state with its diamond shaped pupil large and black as night. To look upon it for too long is unnerving as if the great snake still watches one's movements. It is cool to the touch. Allows the possessor to cast %xBDreamtrap%xn on a target.
     spells:
     - Dreamtrap
+  Everfull Flask:
+    name: Everfull Flask
+    desc: A metal drinking flask with a leather strap that never runs out of water.
+    spells:
+      - Create Water
   Guilt-Weighted Gloves:
     name: Guilt-Weighted Gloves
     desc: Fancy purple satin gloves with slightly fraying gold embroidery along the palm and knuckles. These gloves provide a bonus to lethality
