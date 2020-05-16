@@ -93,7 +93,7 @@ module AresMUSH
         is_page: false
       }
       
-      Global.client_monitor.notify_web_clients(:new_chat, "#{data.to_json}") do |char|
+      Global.client_monitor.notify_web_clients(:new_chat, "#{data.to_json}", true) do |char|
         char && Channels.is_on_channel?(char, channel) && !Channels.is_muted?(char, channel)
       end
     end
