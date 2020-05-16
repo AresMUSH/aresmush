@@ -15,6 +15,11 @@ module AresMUSH
         end
         is_emit = false
         is_ooc = false
+                
+        if (cmd.args.blank?)
+          client.emit_failure t('scenes.no_pose_given')
+          return
+        end
         
         if (cmd.root_is?("emit"))
           is_emit = true
