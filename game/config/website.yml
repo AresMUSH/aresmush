@@ -57,6 +57,9 @@ website:
       title: Getting Started
       id: guides:getting_started
     - route: wiki-page
+      title: Hooks & Hopes
+      id: hooks__amp__hopes
+    - route: wiki-page
       title: Guides
       id: guides
     - route: help
@@ -66,15 +69,12 @@ website:
       title: Forum
     - route: events
       title: Events
-    - route: jobs
-      title: Requests
-    - route: who
-      title: Who's Online
   - title: World
     menu:
     - route: wiki-page
       title: Grand Lake
       id: grand_lake
+    - divider: true
     - route: wiki-page
       title: Magic
       id: magic
@@ -109,17 +109,10 @@ website:
     - route: wiki-page
       title: Under-Library
       id: underlibrary
+    - divider: true
     - route: wiki-page
       title: Story So Far
       id: story_so_far
-    - route: wiki-page
-      title: Hooks & Hopes
-      id: hooks__amp__hopes
-    - route: wiki-page
-      title: Player Run Plots
-      id: guides:player_run_plots
-    - route: lore-hooks
-      title: Lore Hooks
   - title: Directory
     menu:
     - route: spells
@@ -130,6 +123,10 @@ website:
       title: Creatures
     - route: characters
       title: Characters
+    - route: lore-hooks
+      title: Lore Hooks
+    - route: fs3combat-gear
+      title: Gear List
     - divider: true
     - route: players
       title: Players
@@ -153,12 +150,13 @@ website:
     - route: wiki-page
       title: Combat Tactics Guide
       id: guides:combat_tactics
+    - divider: true
     - route: wiki-page
       title: Magic System
       id: magic_system
-    - route: wiki-page
-      title: Plot System
-      id: plot_system
+    - divider: true
+    - route: fs3skills-abilities
+      title: Abilities List
     - route: wiki-page
       title: Luck Points
       id: luck_points
@@ -166,14 +164,15 @@ website:
       title: XP
       id: xp
     - divider: true
-    - route: fs3skills-abilities
-      title: Abilities List
-    - route: fs3combat-gear
-      title: Gear List
-    - route: spells
-      title: Spell List
-    - route: groups
-      title: Groups List
+    - route: wiki-page
+      title: Plot System
+      id: plot_system
+    - route: wiki-page
+      title: Player Run Plots
+      id: guides:player_run_plots
+    - route: wiki-page
+      title: One-Shot Adventures
+      id: one-shot_adventures
     - divider: true
     - target: blank
       title: FS3 Player's Guide <i class="fa fa-external-link-alt" aria-hidden="true">
