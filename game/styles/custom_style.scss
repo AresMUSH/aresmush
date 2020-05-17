@@ -126,7 +126,7 @@ code {
     // background: #4f5162;
     padding: 10px;
     border-radius: 0px 5px 5px 5px;
-    top: -10px;
+    // top: -10px;
     position: relative;
     width: fit-content;
 }
@@ -813,6 +813,10 @@ button,  select {
 .play-selector:hover {
     background-color: $main-purple;
     color: $light-words-color;
+}
+
+.play-sidebar:hover {
+    overflow-y: auto;
 }
 
 .play-hint {
