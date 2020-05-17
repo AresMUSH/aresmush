@@ -1,8 +1,13 @@
 %lh
 %xh<%= t('manage.config_cron_title') %>%xn
+%xh<%= t('manage.config_cron_subtitle') %>%xn
 <% @crons.sort.each do |section, section_crons| %>
 <% section_crons.each do |name, cron| %>
-<%= left(section, 12 ) %> <%= left(name, 25) %> <%= cron %>
+<%= left("#{section}.#{name}", 30 ) -%> 
+ <%= display_cron(cron_day(cron), 8) -%> 
+ <%= display_cron(cron_dow(cron), 12) -%> 
+ <%= display_cron(cron_hour(cron), 12) -%> 
+ <%= display_cron(cron_minute(cron), 12) %>
 <% end %>
 <% end %>
 %lf
