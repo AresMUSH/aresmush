@@ -49,8 +49,8 @@ website:
     - route: combats
       title: Combats
     - divider: true
-    - route: play
-      title: Web Client
+    - route: client
+      title: Web Client 
   - title: Game
     menu:
     - route: wiki-page
