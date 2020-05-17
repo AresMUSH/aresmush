@@ -28,7 +28,6 @@ module AresMUSH
     
     def cleanup_login
       self.login_notices.each { |n| n.delete }
-      Global.dispatcher.queue_event CharDeletedEvent.new(self.id)
     end
     
     def is_guest?

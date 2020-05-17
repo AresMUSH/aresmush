@@ -7,6 +7,8 @@ module AresMUSH
       end
       
       def migrate
+                
+        
       end
     end    
   end
