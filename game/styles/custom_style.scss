@@ -118,7 +118,8 @@ code {
 }
 
 .modal-content {
-    color: #bdbcbc;
+  background-image: url("/game/uploads/theme_images/background.png");
+  background-size: cover;
 }
 
 .collapse.in {
@@ -941,6 +942,13 @@ button,  select {
 }
 
 /*------------end textbox input---------------------*/
+
+.char-card {
+  background: $dark-gray-bg;
+  padding: 15px;
+  opacity: .8;
+  border-radius: 5px;
+}
 
 .live-scene-info  {
   font-size: 85%;

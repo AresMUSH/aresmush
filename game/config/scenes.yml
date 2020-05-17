@@ -76,4 +76,4 @@ scenes:
     scene_participant:
       type: story
       message: Participated in %{count} scenes.
-  use_custom_char_cards: false
+  use_custom_char_cards: true
