@@ -35,6 +35,8 @@ module AresMUSH
             return ConfigListCmd
           end
         end
+      when "cron"
+        return CronCmd
       when "debuglog"
         return DebugLogCmd
       when "server"

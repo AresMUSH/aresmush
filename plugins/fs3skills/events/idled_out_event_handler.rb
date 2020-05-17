@@ -5,8 +5,11 @@ module AresMUSH
         # No need to reset if they're getting destroyed.
         return if event.is_destroyed?
         
+        Global.logger.debug "Clearing XP for #{event.char_id}"
         char = Character[event.char_id]
-        char.reset_xp
+        if (char.fs3_xp > 0)
+          char.reset_xp
+        end
       end
     end
   end
