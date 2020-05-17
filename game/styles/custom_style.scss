@@ -122,6 +122,13 @@ code {
   background-size: cover;
 }
 
+.modal-body {
+  background: $dark-gray-bg;
+  padding: 15px;
+  opacity: .8;
+  border-radius: 5px;
+}
+
 .collapse.in {
     // background: #4f5162;
     padding: 10px;
@@ -158,6 +165,8 @@ li hr {
 .dropdown-menu{
   background: $dark-gray-bg;
   color: $light-words-color;
+  box-shadow: 0 0px 5px rgb(101, 102, 121);
+  -webkit-box-shadow:  0 0px 5px rgb(101, 102, 121);
 }
 /*------------End Menus ----------------*/
 
