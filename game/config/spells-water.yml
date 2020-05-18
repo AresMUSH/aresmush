@@ -239,9 +239,8 @@ spells:
     school: Water
   Purify Water:
     available: false
-    casting_time: 1 round
-    desc: "For the duration of the spell, the caster can purify up to 30 cubic feet of preexisting water, drawing impurities out of the water, such as pollution, small organisms, pyrogens, dissolved compounds, and suspended particles."
-    duration: 10 minutes
+    casting_time: 10 minutes
+    desc: "The caster can purify up to 30 cubic feet of preexisting water, drawing impurities out of the water, such as pollution, small organisms, pyrogens, dissolved compounds, and suspended particles."
     effect: Other
     level: 4
     name: Purify Water
@@ -444,9 +443,8 @@ spells:
     effect: Defense
   Greater Purify Water:
     available: false
-    casting_time: 1 round
-    desc: "For the duration of the spell, the caster can purify up to 150 cubic feet of preexisting water, drawing impurities out of the water, such as pollution, small organisms, pyrogens, dissolved compounds, suspended particles and magical contaminations."
-    duration: 15 minutes
+    casting_time: 15 minutes
+    desc: "The caster can purify up to 150 cubic feet of preexisting water, drawing impurities out of the water, such as pollution, small organisms, pyrogens, dissolved compounds, suspended particles and magical contaminations."
     effect: Other
     level: 4
     line_of_sight: true
