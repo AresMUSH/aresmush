@@ -439,6 +439,15 @@ spells:
     school: Nature
     range: Self
     weapon: Claws
+  Wild Shape Octopus:
+    available: true
+    armor: None
+    desc: Wild Shape Octopus.
+    name: Wild Shape Octopus
+    roll: true
+    school: Nature
+    range: Self
+    weapon: Beak
   Flesh Wound (Wild Shape):
     available: false
     casting_time: 1 round
