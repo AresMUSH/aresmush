@@ -241,7 +241,7 @@ spells:
     available: false
     casting_time: 10 minutes
     desc: "The caster can purify up to 30 cubic feet of preexisting water, drawing impurities out of the water, such as pollution, small organisms, pyrogens, dissolved compounds, and suspended particles."
-    effect: Other
+    effect: Other 
     level: 4
     name: Purify Water
     range: Short
