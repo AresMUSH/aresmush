@@ -28,6 +28,7 @@ module AresMUSH
           Help.reload_help
           Global.locale.reload
           Global.dispatcher.queue_event ConfigUpdatedEvent.new                
+          Website.redeploy_portal(enactor, false)
           client.emit_success t('manage.plugin_installed', :name => self.name, :url => url)
         rescue Exception => e
           Global.logger.debug "Error instaling plugin: #{e}  backtrace=#{e.backtrace[0,10]}"
