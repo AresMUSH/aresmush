@@ -1,7 +1,7 @@
 
 spells:
   Bubble Dance:
-    available: false
+    available: true
     casting_time: 1 round
     desc: "Send a stream of water bubbles dancing according to your will. The size of the bubbles can range from foam to fist-sized."
     duration: 10 minutes
@@ -237,6 +237,17 @@ spells:
     level: 4
     name: Potions (Water)
     school: Water
+  Purify Water:
+    available: false
+    casting_time: 1 round
+    desc: "For the duration of the spell, the caster can purify up to 30 cubic feet of preexisting water, drawing impurities out of the water, such as pollution, small organisms, pyrogens, dissolved compounds, and suspended particles."
+    duration: 10 minutes
+    effect: Other
+    level: 4
+    name: Purify Water
+    range: Short
+    roll: true
+    school: Water
   Slick Ground:
     area: 10 yard radius
     available: true
@@ -269,9 +280,10 @@ spells:
     weapon: Water Whip
 #Level 5
   Cold Calm:
-    available: false
+    available: true
     accuracy_mod:
     casting_time: 1 round
+    duration: 1 minute
     desc: The caster imbues themselves with a wintry chill, calming and cooling their body to improve their focus. They move a little slower than normal, but can better anticipate attacks to dodge and have greatly improved accuracy for the duration of the spell.
     defense_mod: 2
     effect: Buff
@@ -309,7 +321,7 @@ spells:
     target_num: 3
     rounds: 600
   Group Water Walk:
-    available: false
+    available: true
     casting_time: 1 round
     desc: The caster conveys the ability to walk on a liquid surface as if it were solid ground on up to 3 targets. Each recipient of the spell must remain within 15 yards of each other, or the spell ends for the target that is separated.
     duration: 1 hour
@@ -320,6 +332,7 @@ spells:
     range: Short
     roll: true
     school: Water
+    target_optional: true
     target_num: 3
   Reviving Cold:
     available: true
@@ -347,7 +360,7 @@ spells:
     range: Short
     line_of_sight: true
   Glacial Ice Armor:
-    available: false
+    available: true
     armor: Glacial Ice
     casting_time: 1 round
     desc: "Caster weaponizes and protects the target's body by augmenting it with dense sheets of ice that form into sharp icicles protruding from their knuckles. Increases defenses and adds a weapon."
@@ -429,6 +442,18 @@ spells:
     range: Long
     school: Water
     effect: Defense
+  Greater Purify Water:
+    available: false
+    casting_time: 1 round
+    desc: "For the duration of the spell, the caster can purify up to 150 cubic feet of preexisting water, drawing impurities out of the water, such as pollution, small organisms, pyrogens, dissolved compounds, suspended particles and magical contaminations."
+    duration: 15 minutes
+    effect: Other
+    level: 4
+    line_of_sight: true
+    name: Greater Purify Water
+    range: Short
+    roll: true
+    school: Water
   #Level 8
   Land Of Ice:
     area: Up to 1 square mile

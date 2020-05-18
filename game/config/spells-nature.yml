@@ -297,7 +297,7 @@ spells:
     target_num: 1
     target_optional: true
   Thermal Sense:
-    area: 10 yards
+    area: 10 yard radius
     available: true
     casting_time: 1 round
     desc: "The caster is able to sense slight changes in the ambient temperature around themselves, sensing where the temperature differs from the ambient temperature of the air or other surroundings. This allows them to roughly perceive objects, people, and other aspects of their environment via thermal imaging within 10 yards of their person.\n\nThermal differences can be sensed despite invisibility, darkness, and other conditions that obscure eyesight, but cannot be sensed beyond cover that blocks heat rays. The caster is not required to make perception checks to notice thermal changes within range."
@@ -305,7 +305,7 @@ spells:
     effect: Other
     level: 4
     name: Thermal Sense
-    range: Short
+    range: Self
     school: Nature
     target_num: 1
     target_optional: true
@@ -620,7 +620,7 @@ spells:
     roll: true
     school: Nature
   Druid's Wood:
-    available: false
+    available: true
     area: 600 square yards
     casting_time: 1 round
     desc: "The caster may summon a forest, no larger than 600 square yards, populated with the trees, shrubs, and grasses local to the area. The trees may not exceed three hundred feet in height. The plants must have ample space and soil to grow. The plants may be grown in any pattern the caster chooses. The caster can encourage the trees to bloom or any nut or fruit-bearing trees grown to ripen, even out of season."
@@ -695,21 +695,26 @@ spells:
     school: Nature
   Sense Animals:
     available: true
+    area: 100 yard radius
+    casting_time: 1 round
+    duration: 15 minutes
     desc: "The caster extends their senses to all non-sapient creatures within range. While their body lies senseless and incapacitated, they see and feel everything sensed by every non-sapient creature in that area. They can also identify the presence, quantity, and location of sapient creatures.\n\nThe caster can choose to absorb all experiences at a surface level, or focus their attention on up to five individuals at a time for more details."
     effect: Communication
     level: 7
     name: Sense Animals
+    range: Self
     roll: true
     school: Nature
   Sense Flora:
     available: true
-    area: 100 yards
+    area: 100 yard radius
     casting_time: 1 round
     desc: "TThe caster extends their senses to all vegetation within range. While their body lies senseless and incapacitated, they feel everything sensed by every kind of flora in that area, able to understand the general weather, including temperature and quality of the air, as well as a rough map of the landscape and terrain through the root systems.\n\nThey can identify the presence, quantity, and location of all the various types of vegetation in the area. They can also identify the presence and location of any creatures currently interacting with the flora in the area, though they cannot tell what kind of creature it is or whether it is sapient or not.\n\nThe caster can choose to absorb all experiences at a surface level, or focus their attention on up to five individual plants at a time for more details."
     duration: 15 minutes
     effect: Communication
     level: 7
     name: Sense Flora
+    range: Self
     roll: true
     school: Nature
   Verdurous Armor:

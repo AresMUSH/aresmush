@@ -197,6 +197,18 @@ spells:
     weapon_specials: Transform
     weapon: Spell
   #LEVEL 5
+  Buckshot:
+    available: false
+    casting_time: 1 round
+    desc: "The caster gathers available small objects (under a 1/2lb each) and flings them at up to 3 targets, doing damage."
+    effect: Damage
+    fs3_attack: true
+    level: 5
+    name: 'Buckshot'
+    range: Short
+    school: Will
+    weapon: Buckshot
+    target_num: 3
   Group Telekinetic Block:
     available: true
     casting_time: 1 round

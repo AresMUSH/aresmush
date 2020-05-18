@@ -236,7 +236,7 @@ spells:
     level: 4
     line_of_sight: false
     name: Seismic Sense
-    range: Short
+    range: Self
     roll: true
     school: Earth
   Terramancy:

@@ -629,6 +629,7 @@ spells:
     target_optional: true
   Clarity:
     available: true
+    area: 100 yard radius
     casting_time: 1 round
     damage_type: Psionic
     desc: "The caster extends their senses to all beings within range. While their  body lies senseless and incapacitated, they see and feel everything sensed by every sapient creature in that area. They can also identify the presence, quantity, and location of non-sapient creatures.\n\n
@@ -637,7 +638,7 @@ spells:
     effect: Communication
     level: 7
     name: Clarity
-    range: Long
+    range: Self
     roll: true
     school: Spirit
     target_num: 20
