@@ -147,6 +147,10 @@ code {
 
 /*------------ Menus ----------------*/
 
+select {
+  background: $dark-gray-bg;
+}
+
 li hr {
     border-image: linear-gradient(to left, transparent, #6A6E95, transparent) 100% 1;
     border-width: 2px;
@@ -1058,24 +1062,27 @@ button,  select {
     height: 0px;
   }
 
-.scene-set-pose {
-    margin-left: 25px;
+.scene-set-pose, .scene-ooc-pose {
+    margin: 5px 20px 20px 20px;
     border: 0px;
-    color: #c7d2d3;
+    color: $light-words-color;
     padding: 5px;
-    border-radius: 10px;
+    border-radius: 5px;
     padding-left: 40px;
-    background: #35353a;
     -webkit-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.3);
     -moz-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.3);
     box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.3);
 }
 
+
+
+.scene-set-pose {
+    background: $dark-gray-bg;
+  }
+
 .scene-ooc-pose {
-    margin-bottom: 10px;
-    padding: 8px;
-    width: fit-content;
-    border-radius: 10px;
+    background: #252633;
+    padding-top: 15px;
 }
 
 .scene-pose-header {
@@ -1084,22 +1091,17 @@ button,  select {
     border-color: #45484a;
 }
 
-.scene-log p {
-  margin: 35px 35px 35px 0px;
+.scene-log p, .scene-pose p {
+  margin: 5px 35px 35px 0px;
   line-height: 1.6;
-}
-
-.scene-pose p {
-  margin: 0px 35px 35px 0px;
-  line-height: 1.6;
-}
-
-.scene-ooc-pose p {
-  margin: 5px;
 }
 
 #live-scene-log {
     max-height: 575px;
+}
+
+.scene-set-pose p, .scene-ooc-pose p{
+  margin: 15px 20px 20px 0px;
 }
 
 /*---------------- End Live Play Pages ---------------- */
