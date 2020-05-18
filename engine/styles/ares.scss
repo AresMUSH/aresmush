@@ -798,7 +798,6 @@ SCENES SCREEN
     margin-left: 25px;
     background-color: $log-icon-color;
     color: $log-icon-text-color;
-    font-style: italic;
     padding: 0px 10px 10px 10px;
 }
 
@@ -950,7 +949,17 @@ SCENES SCREEN
     width: 100%;
 }
  
-.pose-ui, 
+.scene-controls-box {
+  border: 1px solid #ccc;
+  background: #F5F5F5;
+  padding: 5px;
+}
+
+.scene-controls {
+  display: flex;
+  flex-flow: row-reverse wrap;
+}
+
 .pose-buttons {
     display: flex;
     flex-flow: row-reverse wrap;
@@ -959,30 +968,40 @@ SCENES SCREEN
 .pose-buttons .btn {
     margin-left: 4px;
 }
- 
-.scene-buttons {
+
+.scene-controls-left {
+  padding: 5px;
+}
+
+.scene-controls-right {
     display: flex;
     flex-flow: column;
     align-items: flex-end;
+    padding: 5px;
 }
- 
+
 .scene-char-select .tiny-profile-icon {
     margin: 0 2px 3px 0;
 }
  
+.live-scene-controls a, .chat-controls a {
+  padding-right: 15px;
+}
+
 @media (max-width: 767px) {
-    .scene-dropdowns {
+    .scene-controls-left {
         display: flex;
-        flex-flow: row;
+        flex-flow: column;
         justify-content: flex-end;
         padding-top: 10px;
+        align-items: flex-end;
      }
  
-     .scene-dropdowns .scene-menu {
+     .scene-controls-left .scene-menu {
          margin-left: 4px;
      }
      
-     .scene-dropdowns .dropdown-menu {
+     .scene-controls-left .dropdown-menu {
          right: 0;
          left: auto;
      }
@@ -1193,7 +1212,7 @@ CHAT SCREEN
 }
 
 .play-sidebar:hover { 
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .play-hint {

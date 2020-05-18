@@ -28,6 +28,11 @@ module AresMUSH
         else 
           message = cmd_str
         end
+                
+        if (message.blank?)
+          client.emit_failure t('scenes.no_pose_given')
+          return
+        end
         
         if is_emit
           formatted_message = message

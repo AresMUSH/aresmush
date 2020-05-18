@@ -43,14 +43,6 @@ module AresMUSH
     end
   end
   
-  class CharDeletedEvent
-    attr_accessor :char_id
-    
-    def initialize(char_id)
-      self.char_id = char_id
-    end
-  end
-  
   class CronEvent
     attr_accessor :time
     

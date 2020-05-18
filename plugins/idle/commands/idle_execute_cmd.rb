@@ -17,6 +17,7 @@ module AresMUSH
       def handle
         report = []
         
+        Manage.announce t('idle.idle_sweep_beginning')
         client.program[:idle_queue].map { |id, action| action }.uniq.each do |action|
           ids =  client.program[:idle_queue].select { |id, a| a == action }
           chars = ids.map { |id, action| Character[id] }
@@ -30,28 +31,32 @@ module AresMUSH
           
           chars.sort_by { |c| c.name }.each do |idle_char|
 
+            idle_name = idle_char.name
             if (action != "Destroy")   
-              report << idle_char.name 
+              report << idle_name 
             end
             
             case action
             when "Destroy"
-              Global.logger.debug "#{idle_char.name} deleted for idling out."
+              Global.logger.debug "#{idle_name} marked for termination."
               Idle.idle_cleanup(idle_char, action)
+              
+              Global.logger.debug "Deleting #{idle_name}"
               idle_char.delete
             when "Roster"
-              Global.logger.debug "#{idle_char.name} added to roster."
+              Global.logger.debug "#{idle_name} added to roster."
               Idle.add_to_roster(idle_char, action)
               # Idle cleanup is done inside add to roster.
             when "Npc"
+              Global.logger.debug "#{idle_name} marked as NPC."
               idle_char.update(is_npc: true)
               Idle.idle_cleanup(idle_char, action)
             when "Warn"
-              Global.logger.debug "#{idle_char.name} idle warned."
-              Mail.send_mail([idle_char.name], t('idle.idle_warning_subject'), Global.read_config("idle", "idle_warn_msg"), nil)          
+              Global.logger.debug "#{idle_name} idle warned."
+              Mail.send_mail([idle_name], t('idle.idle_warning_subject'), Global.read_config("idle", "idle_warn_msg"), nil)          
               idle_char.update(idle_warned: true)
             else
-              Global.logger.debug "#{idle_char.name} idle status set to: #{action}."
+              Global.logger.debug "#{idle_name} idle status set to: #{action}."
               idle_char.update(idle_state: action)
               Idle.idle_cleanup(idle_char, action)
             end
@@ -67,6 +72,8 @@ module AresMUSH
           Global.read_config("idle", "idle_category"), 
           t('idle.idle_post_subject'), 
           t('idle.idle_post_body', :report => report.join("%R")))
+        
+          Manage.announce t('idle.idle_sweep_finished')
       end      
     end
   end

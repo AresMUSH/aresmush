@@ -55,3 +55,5 @@ en:
         destroy_approved_warning: "WARNING! Destroying approved characters is not advised. See help idle sweep for details."
         
         idle_warning_subject: "Idle Warning"
+        idle_sweep_beginning: "Sweeping idled characters.  Please stand by."
+        idle_sweep_finished: "Idle sweep completed. Carry on."
