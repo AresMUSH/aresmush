@@ -443,6 +443,7 @@ spells:
     available: true
     armor: None
     desc: Wild Shape Octopus.
+    level: 5
     name: Wild Shape Octopus
     roll: true
     school: Nature
