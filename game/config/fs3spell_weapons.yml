@@ -140,6 +140,18 @@ fs3combat:
         init_mod: 0
         special_group: Melee
         is_owned: true
+    Sun-Slayer's Longbow:
+      description: Longbow
+      skill: Archery
+      lethality: 0
+      penetration: 4
+      weapon_type: Ranged
+      ammo: 0
+      recoil: 0
+      damage_type: Physical
+      accuracy: 1
+      init_mod: 0
+      special_group: Ranged
     #General
     Spell:
       description: Spell with no stats to make it easier to grab special stats.

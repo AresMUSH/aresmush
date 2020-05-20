@@ -238,6 +238,13 @@ magic-items:
     spells:
     - Invisible
     armor_specials: Ring of Nolawyn
+  #Midori's Lore Hook
+  Sun-Slayer Longbow:
+    name: Sun-Slayer Longbow
+    desc:
+    spells:
+    - Simple Illusion
+    - Fire Starter    
   #Summer's Hook
   Pilot’s Watch:
     name: Pilot’s Watch
