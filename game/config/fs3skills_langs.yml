@@ -1,9 +1,7 @@
 ---
 fs3skills:
-  language_blurb: 'Languages represent your ability to speak and read other languages.
-    If a language that you would like is not currently listed, please speak to admin.
-    Languages have a descriptive rating.   See [FS3: Languages](https://aresmush.com/fs3/fs3-3/chargen.html#languages)
-    for details.'
+  language_blurb: "Languages represent your ability to speak and read other languages. If a language that you would like is not currently listed, please speak to admin.\n\n
+    Languages have a descriptive rating: Incapable, Beginner, Conversational, Fluent.   See [FS3: Languages](https://aresmush.com/fs3/fs3-3/chargen.html#languages) for details. To remove a language, set its rating to Unskilled."
   languages:
   - name: American Sign Language
     desc:
