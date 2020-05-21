@@ -603,6 +603,18 @@ spells:
     range: Self
     roll: true
     school: Corpus
+  Rise of the Living Dead:
+    available: false
+    area: 500 yard radius
+    casting_time: 1 round
+    desc: "The caster is able to reanimated up to 20 dead sapient creatures that are bound to do the caster's bidding. Their minds remain dead, but they can perform simple tasks and come to the caster's aid in battle. They cannot cast spells. When the spell ends, the raised dead return to its dead state."
+    duration: 2 hours
+    effect: Other
+    level: 8
+    name: Rise of the Living Dead
+    range: Short
+    roll: true
+    school: Corpus
   Sacrifice of Blood:
     available: false
     casting_time: 1 hour
