@@ -241,10 +241,10 @@ magic-items:
   #Midori's Lore Hook
   Sun-Slayer Longbow:
     name: Sun-Slayer Longbow
-    desc:
+    desc: "About four and a half feet long with a deep curve across its upper and lower limbs, far deeper than western counterparts, and its recurves far longer than customary, the bow's breadth is thick and polished. Meant for a strong pull, likely used only by trained hands, the wood flexes backward considerably when the string is taut. The wood is a dark brown, the brace and grip slim, offering little purchase for an arrow shaft to rest, and inlaid with an undulated golden wood that spirals outward from its center like the rays of the sun. Across the length of the bow is a slight bevel, and in its center there seems a golden glow if it is touched by sunlight."
     spells:
     - Simple Illusion
-    - Fire Starter    
+    - Fire Starter
   #Summer's Hook
   Pilot’s Watch:
     name: Pilot’s Watch
