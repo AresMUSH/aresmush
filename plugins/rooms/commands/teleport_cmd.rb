@@ -42,6 +42,11 @@ module AresMUSH
         
         room = matched_rooms[0]
         
+        if (room.scene && !Scenes.can_read_scene?(enactor, room.scene))
+          client.emit_failure t('rooms.cant_teleport_private_scene')
+          return
+        end
+        
         targets = find_targets
         return if targets.empty?
 

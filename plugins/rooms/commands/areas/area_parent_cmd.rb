@@ -32,6 +32,11 @@ module AresMUSH
           parent = nil
         end
         
+        if (Rooms.has_parent_area(parent, area))
+          client.emit_failure t('rooms.circular_area_parentage')
+          return
+        end
+        
         area.update(parent: parent)
         client.emit_success t('rooms.area_parent_set', :name => self.area_name, :parent => self.parent_name)
         
