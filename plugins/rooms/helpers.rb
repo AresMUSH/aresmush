@@ -72,5 +72,12 @@ module AresMUSH
     def self.top_level_areas
       Area.all.select { |a| !a.parent }.sort_by { |a| a.name }
     end
+    
+    def self.has_parent_area(parent_to_check, area)
+      return false if !parent_to_check
+      return false if !parent_to_check.parent
+      return true if parent_to_check.parent == area
+      Rooms.has_parent_area(parent_to_check.parent, area)
+    end
   end
 end
