@@ -10,6 +10,10 @@ module AresMUSH
         error = Website.check_login(request)
         return error if error
 
+        if (!names) 
+          return { error: t('webportal.not_found')}
+        end
+        
         if (thread_id)
           thread = PageThread[thread_id]
           if (!thread)
