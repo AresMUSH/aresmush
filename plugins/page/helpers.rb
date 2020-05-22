@@ -121,7 +121,7 @@ module AresMUSH
                   
           clients = Global.client_monitor.clients.select { |client| client.web_char_id == char.id }
           clients.each do |client|
-            client.web_notify :new_page, "#{data.to_json}"
+            client.web_notify :new_page, "#{data.to_json}", true
           end
         end
       end

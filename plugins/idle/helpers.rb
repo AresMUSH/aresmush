@@ -35,6 +35,7 @@ module AresMUSH
     end
     
     def self.idle_cleanup(char, idle_status)
+      Global.logger.debug "Starting idle cleanup for #{char.name}"
       # Remove their handle.              
       if (char.handle)
         char.handle.delete

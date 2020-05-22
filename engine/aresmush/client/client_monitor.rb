@@ -35,11 +35,11 @@ module AresMUSH
       end
     end
     
-    def notify_web_clients(type, msg, &trigger_block)
+    def notify_web_clients(type, msg, is_data, &trigger_block)
       Global.dispatcher.spawn("Notifying web clients", nil) do
         @clients.each do |c|    
           if ( yield Character[c.web_char_id] )
-            c.web_notify type, msg
+            c.web_notify type, msg, is_data
           end
         end
       end

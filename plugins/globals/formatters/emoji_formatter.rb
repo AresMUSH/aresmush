@@ -3,9 +3,9 @@ module AresMUSH
     def self.format(msg)
       formatted = msg
       smileys = Global.read_config('emoji', 'smileys') || {}
-      
+
       smileys.each do |text, emoji|
-        formatted = (formatted.gsub(/(^|\s)#{Regexp.escape(text)}($|\s|[.?,!\"])/) { "#{$1}:#{emoji}:#{$2}" })
+        formatted = (formatted.gsub(/(^|\s)#{Regexp.escape(text)}/) { "#{$1}:#{emoji}:#{$2}" }) # ($|\s|[.?,!\"])
       end
          
       formatted.gsub(/(^|[^`]):([^ :]+):/) { "#{$1}#{find_emoji($2)}" }
@@ -25,14 +25,18 @@ module AresMUSH
       key = all_emoji.keys.select { |k| k.downcase == name.downcase }.first
       
       if (key)
-        print_emoji(all_emoji[key])
+          print_emoji(all_emoji[key])
       else
         ":#{name}:"
       end
     end
     
     def self.print_emoji(val)
-      val.hex.chr(Encoding::UTF_8)
+      if (val == "2764")  
+        "\u2764\uFE0F"
+      else
+        val.hex.chr(Encoding::UTF_8)
+      end
     end
     
     def self.emoji_regex

@@ -79,8 +79,8 @@ module AresMUSH
       @connection.send_raw "#{msg}\r\n"
     end
     
-    def web_notify(type, message)
-      @connection.web_notify type, message
+    def web_notify(type, message, is_data)
+      @connection.web_notify type, message, is_data
     end
     
     def idle_secs
