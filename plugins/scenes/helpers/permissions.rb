@@ -24,7 +24,9 @@ module AresMUSH
     def self.can_edit_scene?(actor, scene)
       return false if !actor
       return true if scene.owner == actor
-      return true if Scenes.can_manage_scene?(actor, scene)
+      if (scene.shared)
+        return true if Scenes.can_manage_scene?(actor, scene)
+      end
       scene.participants.include?(actor)
     end
     

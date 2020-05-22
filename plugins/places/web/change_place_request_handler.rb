@@ -20,7 +20,7 @@ module AresMUSH
         place = Places.find_place(scene.room, place_name)
       
         if (!place)
-          place = Place.create(name: place_name, room: enactor.room)
+          place = Place.create(name: place_name, room: scene.room)
         end
         
         Places.join_place(enactor, place)

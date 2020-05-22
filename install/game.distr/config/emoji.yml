@@ -1307,6 +1307,8 @@ emoji:
     ":-P": face_with_tongue
     ":/": confused_face
     ":-/": confused_face
-    ":‑|": expressionless_face
-    ":|": expressionless_face
+    ":‑|": neutral_face
+    ":|": neutral_face
+    "<3": red_heart
+    "XD": grinning_squinting_face
   allow_emoji: true

@@ -10,7 +10,8 @@ module AresMUSH
         'cowboy' => '1F920', 
         'rocket_ship' => '1F680',
         'smile' =>  '1F600',
-        'frown' => '1F626'
+        'frown' => '1F626',
+        'red_heart' => '2764'
       }
       allow(Global).to receive(:read_config).with('emoji', 'emoji') { emoji }
       allow(Global).to receive(:read_config).with('emoji', 'smileys') { { ':)' => 'smile', ':(' => 'frown' } }
@@ -63,6 +64,11 @@ module AresMUSH
         expect(msg).to eq "I want to fly yes:)so."
       end
       
+      it "should not replace a link." do
+        msg = EmojiFormatter.format("I want go to https://google.com.")
+        expect(msg).to eq "I want go to https://google.com."
+      end
+      
       it "should replace smiley by itself." do
         msg = EmojiFormatter.format(":)")
         expect(msg).to eq "\u{1F600}"
@@ -82,6 +88,17 @@ module AresMUSH
         msg = EmojiFormatter.format("This is my `:rocket:`")
         expect(msg).to eq "This is my `:rocket:`"
       end
+      
+      it "should format the silly black heart" do
+        msg = EmojiFormatter.format("I have a :red_heart: and I don't want it painted black.")
+        expect(msg).to eq "I have a \u2764\uFE0F and I don't want it painted black."
+      end
+      
+      it "should format three smileys in a row" do
+        msg = EmojiFormatter.format("Ha ha :) :) :)")
+        expect(msg).to eq "Ha ha \u{1F600} \u{1F600} \u{1F600}"
+      end
+      
     end
   end
 end

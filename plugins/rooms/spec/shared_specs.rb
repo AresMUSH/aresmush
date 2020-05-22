@@ -59,7 +59,51 @@ module AresMUSH
           expect(client).to receive(:emit).with("room desc")
           Rooms.emit_here_desc(client, char)
         end
-      end   
+      end  
+      
+      describe :has_parent_area do
+        before do
+          @a1 = double
+          @a2 = double
+          @a3 = double
+          @a4 = double
+          allow(@a1).to receive(:name) { "A1" }
+          allow(@a2).to receive(:name) { "A2" }
+          allow(@a3).to receive(:name) { "A3" }
+          allow(@a4).to receive(:name) { "A4" }
+        end
+
+        it "should return false if no connections" do
+          allow(@a2).to receive(:parent) { nil }
+          expect(Rooms.has_parent_area(@a2, @a1)).to eq false
+        end
+        
+        it "should return true if parenting to your own child" do
+          # We want to parent a1 -> a2, but a2 has a1 as its parent.
+          allow(@a2).to receive(:parent) { @a1 }
+          allow(@a1).to receive(:parent) { nil }
+          expect(Rooms.has_parent_area(@a2, @a1)).to eq true
+        end
+        
+        it "should return true if parenting to your own grandchild" do
+          # We want to parent a1 -> a3, but a3->a2 and a2->a1
+          allow(@a3).to receive(:parent) { @a2 }
+          allow(@a2).to receive(:parent) { @a1 }
+          allow(@a1).to receive(:parent) { nil }
+          expect(Rooms.has_parent_area(@a3, @a1)).to eq true
+        end
+        
+        it "should return true if parenting to your own great-grandchild" do
+          # We want to parent a1 -> a4, but a4->a3, a3->a2, and a2->a1
+          allow(@a4).to receive(:parent) { @a3 }
+          allow(@a3).to receive(:parent) { @a2 }
+          allow(@a2).to receive(:parent) { @a1 }
+          allow(@a1).to receive(:parent) { nil }
+          expect(Rooms.has_parent_area(@a4, @a1)).to eq true
+        end
+
+
+      end 
     end   
   end
 end

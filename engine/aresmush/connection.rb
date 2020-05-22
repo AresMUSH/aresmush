@@ -130,7 +130,7 @@ module AresMUSH
       end
     end  
     
-    def web_notify(type, message)
+    def web_notify(type, message, is_data)
       # Nothing - not a web connection
     end
     

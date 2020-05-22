@@ -107,7 +107,7 @@ module AresMUSH
       else
         LoginNotice.create(character: char, type: type, message: message, data: data, reference_id: reference_id, is_unread: true, timestamp: Time.now)
       end
-      Global.client_monitor.notify_web_clients(:notification_update, "#{char.unread_notifications.count}") do |c|
+      Global.client_monitor.notify_web_clients(:notification_update, "#{char.unread_notifications.count}", true) do |c|
         c == char 
       end
     end

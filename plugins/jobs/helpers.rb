@@ -233,7 +233,7 @@ module AresMUSH
       all_parties = job.all_parties
       
       data = "#{job.id}|#{message}|#{data.to_json}"
-      Global.client_monitor.notify_web_clients(:job_update, data) do |char|
+      Global.client_monitor.notify_web_clients(:job_update, data, true) do |char|
         char && (Jobs.can_access_category?(char, job.job_category) || notify_participants && all_parties.include?(char))
       end
       

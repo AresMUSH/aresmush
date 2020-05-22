@@ -54,7 +54,7 @@ module AresMUSH
         !Forum.is_category_hidden?(char, category)
       end
       
-      Global.client_monitor.notify_web_clients('new_forum_activity', "#{data.to_json}") do |char|
+      Global.client_monitor.notify_web_clients('new_forum_activity', "#{data.to_json}", true) do |char|
         Forum.can_read_category?(char, category) &&
         !Forum.is_category_hidden?(char, category)
       end
