@@ -10,10 +10,6 @@ module AresMUSH
         error = Website.check_login(request)
         return error if error
 
-        if (!names) 
-          return { error: t('webportal.not_found')}
-        end
-        
         if (thread_id)
           thread = PageThread[thread_id]
           if (!thread)
@@ -22,6 +18,11 @@ module AresMUSH
           recipients = thread.characters.select { |c| c != enactor }
         else
           recipients = []
+          
+          if (!names) 
+            return { error: t('webportal.not_found')}
+          end
+        
           names.each do |name|
             char = Character.find_one_by_name(name)
             if (!char)
