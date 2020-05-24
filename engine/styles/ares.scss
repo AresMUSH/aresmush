@@ -423,6 +423,16 @@ table.gsc-search-box td {
     padding: 3px;
 }
 
+.gsst_b {
+  padding: 0px;
+}
+
+.gsc-search-box-tools .gsc-search-box .gsc-input, .gscb_a {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.25em;
+}
+
 /* --------------------------
 ALERTIFY DIALOGS
 ---------------------------*/
@@ -551,6 +561,11 @@ SIDEBAR
 
 .sidebar-list {
   word-wrap: break-word;
+}
+
+.search-hint { 
+    color: $faded-text-color;
+    font-style: italic;
 }
 
 /* -------------------------
