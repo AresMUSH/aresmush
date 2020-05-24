@@ -1,6 +1,6 @@
 ---
 toc: 4 - Writing the Story
-summary: Starting scenes.
+summary: Understanding the scene system.
 order: 1
 tutorial: true
 aliases:

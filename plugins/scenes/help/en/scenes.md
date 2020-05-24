@@ -1,6 +1,6 @@
 ---
 toc: 4 - Writing the Story
-summary: Starting scenes.
+summary: Starting and editing scenes.
 order: 2
 aliases:
 - scene join

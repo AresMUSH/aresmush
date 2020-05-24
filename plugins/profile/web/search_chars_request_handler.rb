@@ -3,19 +3,19 @@ module AresMUSH
     class SearchCharsRequestHandler
       def handle(request)
 
-        searchGroups = request.args[:searchGroups] || {}
-        searchDemographics = request.args[:searchDemographics] || {}
-        searchTag = (request.args[:searchTag] || "").strip
-        searchName = (request.args[:searchName] || "").strip
-        searchRelation = (request.args[:searchRelation] || "").strip
+        search_groups = request.args[:searchGroups] || {}
+        search_demographics = request.args[:searchDemographics] || {}
+        search_tag = (request.args[:searchTag] || "").strip
+        search_name = (request.args[:searchName] || "").strip
+        search_relation = (request.args[:searchRelation] || "").strip
         
         chars = Chargen.approved_chars
         
-        if (!searchName.blank?)
-          chars = chars.select { |c| "#{Demographics.name_and_nickname(c)} #{c.demographic('fullname')}" =~ /#{searchName}/i }
+        if (!search_name.blank?)
+          chars = chars.select { |c| "#{Demographics.name_and_nickname(c)} #{c.demographic('fullname')}" =~ /#{search_name}/i }
         end
         
-        searchGroups.each do |group, search|
+        search_groups.each do |group, search|
           next if search.blank?
           search = (search || "").strip
 
@@ -26,18 +26,18 @@ module AresMUSH
           end
         end
         
-        searchDemographics.each do |demo, search|
+        search_demographics.each do |demo, search|
           next if search.blank?
           search = (search || "").strip
           chars = chars.select { |c| c.demographic(demo) =~ /\b#{search}\b/i }
         end
         
-        if (!searchTag.blank?)
-          chars = chars.select { |p| p.profile_tags.include?(searchTag.downcase) }
+        if (!search_tag.blank?)
+          chars = chars.select { |p| p.profile_tags.include?(search_tag.downcase) }
         end
 
-        if (!searchRelation.blank?)
-          chars = chars.select { |c| c.relationships.keys.map { |k| k.downcase}.include?(searchRelation.downcase) }
+        if (!search_relation.blank?)
+          chars = chars.select { |c| c.relationships.keys.map { |k| k.downcase}.include?(search_relation.downcase) }
         end
         
         chars.sort_by { |c| c.name }.map { |c| {
