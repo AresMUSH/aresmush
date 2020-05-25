@@ -31,7 +31,7 @@ module AresMUSH
         if (action.blank?)
           action = "pass"
         end
-        action_args = request.args[:action_args] || ""
+        action_args = (request.args[:action_args] || "").strip
         selected_weapon_specials = (request.args[:weapon_specials] || [])
            .select { |k, w| (w[:selected] || "").to_bool }
             .map { |k, w| w[:name] }
