@@ -11,12 +11,14 @@ module AresMUSH
         if (!char)
           return { error: t('webportal.not_found') }
         end
+
+        manager = Profile.can_manage_profiles?(enactor)
         
         if (!Profile.can_manage_char_profile?(enactor, char))
           return { error: t('dispatcher.not_allowed') }
         end
         
-        if (!char.is_approved?)
+        if (!char.is_approved? && !manager)
           return { error: t('profile.not_yet_approved') }
         end
         
@@ -24,7 +26,13 @@ module AresMUSH
         profile = {}
         relationships = {}
         
-        Global.read_config('demographics')['editable_properties'].each do |d| 
+        if (manager)
+          props = Demographics.all_demographics
+        else
+          props = Global.read_config('demographics')['editable_properties']
+        end
+                
+        props.each do |d| 
           demographics[d.downcase] = 
             {
               name: d.titlecase,
