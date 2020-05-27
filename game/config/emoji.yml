@@ -1306,10 +1306,10 @@ emoji:
     black_flag: 1F3F4
     white_flag: 1F3F3
   smileys:
-    ":)": grinning_face
-    ":-)": grinning_face
-    ":D": grinning_face_with_big_eyes
-    ":-D": grinning_face_with_big_eyes
+    ":)": slightly_smiling_face
+    ":-)": slightly_smiling_face
+    ":D": grinning_face
+    ":-D": grinning_face
     ":(": slightly_frowning_face
     ":-(": slightly_frowning_face
     ":‑O": face_with_open_mouth
