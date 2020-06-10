@@ -11,6 +11,7 @@ module AresMUSH
            title: s.title.blank? ? nil : s.date_title, 
            icdate: s.icdate,
            summary: s.summary.blank? ? nil : Website.format_markdown_for_html(s.summary),
+           is_private: s.private_scene,
            participants: s.participants
                .to_a
                .sort_by { |p| p.name }

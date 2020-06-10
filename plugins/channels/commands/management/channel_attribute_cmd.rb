@@ -25,7 +25,13 @@ module AresMUSH
       include ChannelAttributeCmd
     
       def handle
+        other_channel = Channel.named(self.attribute)
         Channels.with_a_channel(name, client) do |channel|
+          if (other_channel && other_channel != channel)
+            client.emit_failure t('channels.channel_already_exists', :name => self.attribute)
+            return
+          end
+          
           channel.update(name: self.attribute)
           client.emit_success "%xn#{t('channels.channel_renamed', :old_name => self.name, :new_name => channel.display_name)}"
         end
@@ -75,17 +81,9 @@ module AresMUSH
         Channels.with_a_channel(name, client) do |channel|
         
           if (cmd.switch_is?("joinroles"))
-            channel.join_roles.each { |r| channel.join_roles.delete r }
-          
-            roles.each do |r|
-              roles.each { |r| channel.join_roles.add Role.find_one_by_name(r) }
-            end
+            channel.set_join_roles(roles)
           else
-            channel.talk_roles.each { |r| channel.talk_roles.delete r }
-          
-            roles.each do |r|
-              roles.each { |r| channel.talk_roles.add Role.find_one_by_name(r) }
-            end
+            channel.set_talk_roles((roles))
           end
         
           Channels.emit_to_channel channel, t('channels.roles_changed_by', :name => enactor_name)
