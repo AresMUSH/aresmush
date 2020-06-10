@@ -15,7 +15,7 @@ module AresMUSH
           files: files.select { |f| !File.directory?(f) }.sort.map { |f| 
             {
              name: File.basename(f),
-             size: File.size(f)/ 1024,
+             size: File.size(f) / 1024,
              folder: dir.gsub(AresMUSH.website_uploads_path, '').gsub('/', ''),
              path: f.gsub(AresMUSH.website_uploads_path, '')
             }

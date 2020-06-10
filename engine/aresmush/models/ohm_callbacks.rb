@@ -15,11 +15,15 @@ module Ohm
       end
 
       def before_save(sym)
-        @@before_save_callbacks[self] << sym
+        if (!@@before_save_callbacks[self].include?(sym))
+          @@before_save_callbacks[self] << sym
+        end
       end
     
       def before_delete(sym)
-        @@before_delete_callbacks[self] << sym
+        if (!@@before_delete_callbacks[self].include?(sym))
+          @@before_delete_callbacks[self] << sym
+        end
       end
        
       def before_save_callbacks
