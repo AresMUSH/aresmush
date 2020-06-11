@@ -11,6 +11,5 @@ You can use the census command to find out how many characters already exist wit
 `census <type>` - Views a census.
 For example:
 `census gender` - Counts characters by gender.
-`census skills <type>` - Shows a summary of skills.  Type can be Action, Background or Language.
 `census major school` - Counts characters by Major School
 `census minor school` - Counts characters by Minor School
