@@ -679,7 +679,7 @@ spells:
     target_num: 1
     target_optional: true
   Manifest Spirit:
-    available: false
+    available: true
     casting_time: 5 minutes
     desc: "Caster calls forth a local spirit. The spirit manifests as a visible presence able to communicate and physically interact with the world in their immediate area. The spirit's knowledge is limited to matters within its location or personal expertise. If the spirit possessed magical abilities in life, it is capable of casting known spells of level 5 or below."
     duration: 15 minutes
@@ -751,7 +751,7 @@ spells:
     target_num: 1
     target_optional: true
   Creeping Possession:
-    available: false
+    available: true
     casting_time: 10 minutes, plus additional rounds for commands
     damage_type: Psionic
     desc: "The caster links their mind telepathically to a target, allowing the caster to slowly replace the target's consciousness with the caster's own. After 3 months have passed, the target is completely possessed by the caster and functions as an extension of the caster's own mind, allowing them to puppet the target's body to their will.\n\nDuring the time the link is active, the caster is able to telepathically impose thoughts, emotions, images, sounds, and sensations on the target's mind, as well as enter the their dreams. The caster has some control of a dream entered and its events, although they may allow the target's subconscious to fill in details or choose to simply observe the target's natural dream. While in the dream, all encounters seem real, though physical damage in the dream world is imaginary and vanishes upon awakening. Most dreams are recognizable as dreams or visions on waking, though some particularly realistic ones may not be.\n\nThe caster is able to link their mind to up to 20 targets at a time. The more targets they possess, the more fractured the caster's own mind gets. A single target can be controlled with complete focus, but controlling five targets is less precise, more than fifteen targets can only be manipulated with rudimentary commands, and by twenty targets the caster's mind is so fractured they've lost their own identity.\n\nThose with Spirit may notice that the spell has been cast, and may attempt to do so with a roll of the caster's Spirit vs the target's Spirit-4. This does not prevent the spell's effects or identify the caster in any way."
