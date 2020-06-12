@@ -29,6 +29,11 @@ fs3combat:
       is_magic: true
       lethality: 10
       accuracy: 1
+    Glacial Ice:
+      description: Level 6 Water spell
+      is_magic: true
+      lethality: 20
+      penetration: 2      
     Grow:
       description: Level 4 Corpus spell
       is_magic: true

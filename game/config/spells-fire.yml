@@ -229,7 +229,7 @@ spells:
     name: Double Vision
     range: Self
     rounds: 120
-    school: Fire  
+    school: Fire
   Familiar (Fire):
     desc: "A familiar is a spirit associated or allied with a school of magic that has taken residence in a physical vessel with the shape of an animal. It functions as a companion, assistant, and guardian. \n\nFamiliars may be capable of some or all of the following: sharing telepathic or empathic communication, providing knowledge of the arcane, sharing senses, lending physical aid as spies or fighters, delivering spells at a distance of up to three miles."
     effect: Other
@@ -312,6 +312,7 @@ spells:
     target_num: 1
   Phoenix's Healing Flames:
     available: true
+    auto_revive: true
     casting_time: 1 round
     desc: "A knocked out target is overtaken by flames and reduced to ashes. From beneath those ashes, they are revived and able to return to the fight. \n\nA revived target has no wounds and no spell fatigue.\n\n A magic user who knows this spell is automatically consumed and revived when they themselves can no longer fight. This takes 1 round after they are knocked out."
     effect: Revive

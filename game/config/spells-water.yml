@@ -388,6 +388,20 @@ spells:
     weapon: Glacial Ice
     target_optional: true
     target_num: 1
+  Glacial Ice Weapon:
+    available: true
+    armor: Glacial Ice
+    casting_time: 1 round
+    desc: "Augment one specified pre-existing weapon with a freezing coating of sharp ice. Though less useful against armor, this weapon does incredible damage against unprotected skin, even through normal clothing."
+    duration: 6 hours
+    effect: Buff
+    level: 6
+    name: Glacial Ice Weapon
+    range: Touch
+    school: Water
+    weapon_specials: Glacial Ice
+    target_optional: true
+    target_num: 1
   Liquid Form:
     available: true
     casting_time: 1 round
@@ -468,6 +482,20 @@ spells:
     range: Short
     roll: true
     school: Water
+  Waters of Renewal:
+    available: true
+    auto_revive: true
+    casting_time: 1 round
+    desc: "A knocked out target is deluged by waters and soaked through. From beneath the water, they are revived and able to return to the fight. \n\nA revived target has no wounds and no spell fatigue.\n\n A magic user who knows this spell is automatically drenched and revived when they themselves can no longer fight. This takes 1 round after they are knocked out."
+    effect: Revive
+    level: 7
+    line_of_sight: true
+    name: Waters of Renewal
+    notes: This can work, but needs more coding to remove wounds.
+    range: Long
+    school: Water
+    target_num: 1
+    target_optional: true
   #Level 8
   Land Of Ice:
     area: Up to 1 square mile
