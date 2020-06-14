@@ -47,7 +47,8 @@ module AresMUSH
             armor: AresMUSH::FS3Combat.armors.keys.sort,
             stances: FS3Combat.stances.keys,
             npc_skills: FS3Combat.npc_type_names,
-            actions: actions
+            actions: actions,
+            targets: combatant.combat.active_combatants.map { |c| c.name }
           }
         }
       end
