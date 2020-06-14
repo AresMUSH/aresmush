@@ -9,9 +9,13 @@ module AresMUSH
       char.relationships_category_order.map { |r| r.upcase }.index(category.upcase) || (category[0] || "1").ord
     end
     
+    def self.can_manage_profiles?(actor)
+      actor && actor.has_permission?("manage_profiles")
+    end
+    
     def self.can_manage_char_profile?(actor, char)
       return false if !actor
-      return true if actor.is_admin?
+      return true if Profile.can_manage_profiles?(actor)
       return true if actor == char
       
       return AresCentral.is_alt?(actor, char)

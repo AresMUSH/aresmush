@@ -93,7 +93,7 @@ module AresMUSH
     
     def self.folder_size_kb(folder)
       files = Dir["#{folder}/*"].select { |f| File.file?(f) }
-      files.sum { |f| File.size(f) } / 1000
+      files.sum { |f| File.size(f) } / 1024
     end
     
     def self.webportal_version

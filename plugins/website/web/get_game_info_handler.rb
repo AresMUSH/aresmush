@@ -24,6 +24,11 @@ module AresMUSH
           unread_scenes = []
         end
         
+        search_id = Global.read_config("secrets", "gcse", "search_id")
+        if (search_id.blank?)
+          search_id = nil
+        end
+        
         {
           type: 'game',
           id: 1,
@@ -40,7 +45,8 @@ module AresMUSH
           extra_plugins: Global.read_config('plugins', 'extras') || [],
           who_count: Who.all_online.count,
           scene_count: active_scenes.count,
-          roster_enabled: Idle.roster_enabled?
+          roster_enabled: Idle.roster_enabled?,
+          gcse_search_id: search_id
         } 
       end
     end

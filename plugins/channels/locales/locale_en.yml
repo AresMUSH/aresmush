@@ -73,3 +73,4 @@ en:
         cant_talk_on_channel: "You aren't allowed to talk on that channel."
         
         channel_recall_cleared: "You clear the channel buffer on %{channel}."
+        name_required: "Channel name is required."

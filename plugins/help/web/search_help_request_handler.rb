@@ -3,34 +3,30 @@ module AresMUSH
     class SearchHelpRequestHandler
       def handle(request)
 
-        searchText = (request.args[:searchText] || "").strip
+        search_text = (request.args[:searchText] || "").strip
 
-        if (searchText.blank?)
-          topics_by_name = {}
-          topics_by_text = {}
-        else
-          topics_by_name = Help.find_topic(searchText).uniq.sort
-          topics_by_text = Global.help_reader.help_text.select { |k, v| v =~ /\b#{searchText}\b/i }.keys.uniq.sort
-        end
-        
+        topics = Help.find_quickref(search_text)
+        topic_keys = topics.values.uniq
+       
         {
-          probable_matches: topics_by_name.map { |t| 
+          probable_matches: topic_keys.map { |t| 
             {
               id: t,
-              name: t.titleize,
-              summary: (Help.topic_index[t] || {})['summary']
-            }
-          },
-          possible_matches: topics_by_text.empty? ? nil : topics_by_text.map { |t| 
-            {
-              id: t,
-              name: t.titleize,
+              name: t.humanize.titleize,
               summary: (Help.topic_index[t] || {})['summary']
             }
           }
         }
         
       end
+      
+      def line_is_match?(line, search)
+        return true if line.start_with?("`#{search}")
+        
+        search = search.gsub(' ', '/')
+        return line.start_with?("`#{search}")
+      end
+      
     end
   end
 end

@@ -40,6 +40,8 @@ module AresMUSH
           return WebCmdEventHandler
         when "ConfigUpdatedEvent", "GameStartedEvent"
           return WebConfigUpdatedEventHandler
+        when "CronEvent"
+          return WebCronEventHandler
       end
       
       nil
