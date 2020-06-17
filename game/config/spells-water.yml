@@ -482,8 +482,8 @@ spells:
     range: Short
     roll: true
     school: Water
-  Waters of Renewal:
-    available: true
+  Waters Of Renewal:
+    available: false
     auto_revive: true
     casting_time: 1 round
     desc: "A knocked out target is deluged by waters and soaked through. From beneath the water, they are revived and able to return to the fight. \n\nA revived target has no wounds and no spell fatigue.\n\n A magic user who knows this spell is automatically drenched and revived when they themselves can no longer fight. This takes 1 round after they are knocked out."
