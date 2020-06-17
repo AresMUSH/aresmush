@@ -111,6 +111,7 @@ spells:
     duration: 10 minutes
     effect: Buff
     is_potion: true
+    is_shield: true
     level: 3
     name: Endure Cold
     range: Self
@@ -308,16 +309,18 @@ spells:
     target_optional: true
     weapon: Exploding Ice
   Group Endure Cold:
-    available: false
+    available: true
     casting_time: 1 round
     desc: Targets are immune to the negative effects of extreme cold up to -346°F (-210 °C). Spells that do cold damage may be stopped entirely by Endure Cold; when they are not, the damage inflicted is decreased.
     duration: 1 hour
     effect: Travel
+    is_shield: true
     level: 5
     name: Group Endure Cold
     range: Short
     school: Water
     target_num: 3
+    target_optional: true
     rounds: 600
   Group Water Walk:
     available: true

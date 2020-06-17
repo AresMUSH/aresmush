@@ -330,7 +330,7 @@ spells:
     available: true
   Predatory Instincts:
     attack_mod: 2
-    available: false
+    available: true
     casting_time: 1 round
     desc: Caster hones their aggressive animal instincts, improving their attack power and reaction speed.
     duration: 5 rounds
@@ -490,7 +490,7 @@ spells:
     range: Self
     weapon: Claws
   Wild Shape Raccoon:
-    available: false
+    available: true
     defense_mod: 2
     desc: Wild Shape Racoon
     level: 5
@@ -533,7 +533,7 @@ spells:
     line_of_sight: true
     available: true
   Half Shift (Dire Wolf):
-    available: false
+    available: true
     armor: Tough Hide
     desc: Grants the caster Claws, Teeth, and Tough Hide, while also improving their sense of hearing, sight, and smell  to wolf standards.
     level: 6
@@ -719,7 +719,7 @@ spells:
     roll: true
     school: Nature
   Verdurous Armor:
-    available: true
+    available: false
     armor: Verdurous
     casting_time: 1 round
     desc: "The caster grows the wooden bark, verdant leaves and thorny vines of plants all over their body to weaponize and protect it. The foliage makes the target more difficult to hit while the barbed vines can be thrashed around, hitting up to 3 targets within 5ft the caster to do damage."

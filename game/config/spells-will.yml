@@ -259,6 +259,8 @@ spells:
     range: Long
     school: Will
     weapon: Telekinetic Crush
+    target_optional: true
+    target_num: 1
   #LEVEL 6
   Familiar (Will):
     desc: "A familiar is a spirit associated or allied with a school of magic that has taken residence in a physical vessel with the shape of an animal. It functions as a companion, assistant, and guardian. \n\nFamiliars may be capable of some or all of the following: sharing telepathic or empathic communication, providing knowledge of the arcane, sharing senses, lending physical aid as spies or fighters, delivering spells at a distance of up to three miles."
@@ -284,7 +286,7 @@ spells:
     roll: Will
     school: Will
   Summon Object:
-    available: false
+    available: true
     casting_time: 1 round
     desc: "The caster creates a link between themselves and an object of up to 100 pounds, allowing them to teleport the object to themselves. The object may be stored anywhere, but to summon between dimensions there must be an open portal path between the caster and the object. They can sense the direction of the linked object, and it if is moved, the caster will feel the change in its location and be able to track it. The feeling of the link becomes vaguer the more distant the object is, but the caster can always tell the direction of it. Only one object can be bonded to the caster at a time."
     duration: 48 hours

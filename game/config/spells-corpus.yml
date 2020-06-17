@@ -126,7 +126,7 @@ spells:
     target_optional: true
     school: Corpus
   Flesh Wound:
-    available: false
+    available: true
     casting_time: 1 round
     damage_desc: Flesh Wound Spell
     damage_inflicted: FLESH
@@ -363,7 +363,7 @@ spells:
     line_of_sight: true
     available: true
   Group Nap:
-    available: false
+    available: true
     casting_time: 1 round
     desc: Make up to 3 targets suddenly feel extremely drowsy and cause them to briefly fall asleep. In combat, they are stunned for two rounds. In other situations, they remain asleep until they are woken or wake naturally.
     duration: Until woken or 20 seconds in situations with disturbances
@@ -442,7 +442,7 @@ spells:
     casting_time: 1 round
     range: Self
   Speed Boost:
-    available: false
+    available: true
     attack_mod: 2
     casting_time: 1 round
     defense_mod: 2
