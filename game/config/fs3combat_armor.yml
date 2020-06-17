@@ -7,43 +7,12 @@ fs3combat:
       defense: 0
       protection:
         Nowhere: 0
-    Tough Hide:
-      description: Low level animal hide
-      is_magic: false
-      defense: 1
-      protection:
-        Chest: 4
-        Rear Left Leg: 4
-        Read Right Leg: 4
-        Front Left Leg: 4
-        Front Right Leg: 4
-        Abdomen: 4
-        Head: 3
-        Neck: 3
-        Groin: 2
-    Very Tough Hide:
-      description: Animal hide on par with plate armor
-      is_magic: false
-      defense: 1
-      protection:
-        Chest: 9
-        Rear Left Leg: 8
-        Rear Right Leg: 8
-        Front Left Leg: 8
-        Front Right Leg: 8
-        Left Leg: 8
-        Right Leg: 8
-        Tail: 8
-        Right Wing: 8
-        Left Wing: 8
-        Abdomen: 9
-        Head: 7
-        Neck: 6
-        Groin: 5
+
+    #CREATURES
     Extremely Tough Hide:
       description: Animal hide on par with uppper level magic armor
       is_magic: false
-      defense: 1
+      defense: 0
       protection:
         Chest: 14
         Rear Left Leg: 12
@@ -59,6 +28,107 @@ fs3combat:
         Head: 11
         Neck: 10
         Groin: 10
+        Leg: 12
+        Arm: 12
+        Body: 14
+        Fin: 10
+    Shell:
+      description: Low level animal shell armor
+      defense: 0
+      protection:
+        Chest: 5
+        Rear Left Leg: 4
+        Rear Right Leg: 4
+        Front Left Leg: 4
+        Front Right Leg: 4
+        Left Leg: 4
+        Right Leg: 4
+        Tail: 4
+        Right Wing: 4
+        Left Wing: 4
+        Abdomen: 4
+        Head: 4
+        Neck: 4
+        Groin: 4
+        Leg: 4
+        Eyes: 1
+        Right Claw: 4
+        Left Claw: 4
+        Carapace: 4
+        Abdomen: 4
+    Thick Shell:
+      description: Animal shell on par with plate armor
+      defense: 0
+      protection:
+        Chest: 9
+        Rear Left Leg: 8
+        Rear Right Leg: 8
+        Front Left Leg: 8
+        Front Right Leg: 8
+        Right Wing: 7
+        Left Wing: 7
+        Left Leg: 8
+        Right Leg: 8
+        Tail: 8
+        Right Wing: 8
+        Left Wing: 8
+        Abdomen: 9
+        Head: 7
+        Neck: 6
+        Groin: 5
+        Leg: 8
+        Eyes: 3
+        Right Claw: 8
+        Left Claw: 8
+        Carapace: 9
+        Abdomen: 8
+    Tough Hide:
+      description: Low level animal hide
+      is_magic: false
+      defense: 0
+      protection:
+        Chest: 4
+        Rear Left Leg: 4
+        Read Right Leg: 4
+        Front Left Leg: 4
+        Front Right Leg: 4
+        Right Wing: 3
+        Left Wing: 3
+        Abdomen: 4
+        Head: 3
+        Neck: 3
+        Groin: 2
+        Body: 4
+        Fin: 2
+        Tail: 4
+        Leg: 4
+        Arm: 4
+        Body: 4
+        Fin: 3
+    Very Tough Hide:
+      description: Animal hide on par with plate armor
+      is_magic: false
+      defense: 0
+      protection:
+        Chest: 9
+        Rear Left Leg: 8
+        Rear Right Leg: 8
+        Front Left Leg: 8
+        Front Right Leg: 8
+        Left Leg: 8
+        Right Leg: 8
+        Tail: 8
+        Right Wing: 8
+        Left Wing: 8
+        Abdomen: 9
+        Head: 7
+        Neck: 6
+        Groin: 5
+        Leg: 8
+        Arm: 8
+        Body: 9
+        Fin: 6
+    #HUMANOID
     Tactical:
       description: Military-Grade Kevlar Vest and Helmet
       is_magic: false
@@ -330,24 +400,6 @@ fs3combat:
       defense: 3
       protection:
         Head: 0
-    Glacial Ice:
-      description: Level 6 Water spell
-      is_magic: true
-      defense: 1
-      protection:
-        Head: 12
-        Neck: 12
-        Chest: 12
-        Abdomen: 12
-        Left Leg: 12
-        Right Leg: 12
-        Groin: 12
-        Left Arm: 12
-        Right Arm: 12
-        Left Hand: 12
-        Right Hand: 12
-        Left Foot: 12
-        Right Foot: 12
     Diamond:
       description: Level 6 earth spell
       is_magic: true

@@ -1,6 +1,76 @@
 ---
 fs3combat:
   hitloc:
+    Crab:
+      areas:
+        Eyes:
+        - Right Claw
+        - Right Claw
+        - Left Claw
+        - Left Claw
+        - Abdomen
+        - Abdomen
+        - Abdomen
+        - Abdomen
+        - Eyes
+        - Eyes
+        Leg:
+        - Right Claw
+        - Left Claw
+        - Abdomen
+        - Abdomen
+        - Carapace
+        - Carapace
+        - Leg
+        - Leg
+        - Leg
+        - Leg
+        Abdomen:
+        - Leg
+        - Leg
+        - Leg
+        - Carapace
+        - Carapace
+        - Carapace
+        - Carapace
+        - Abdomen
+        - Abdomen
+        Carapace:
+        - Leg
+        - Leg
+        - Leg
+        - Abdomen
+        - Abdomen
+        - Abdomen
+        - Carapace
+        - Carapace
+        - Carapace
+        Right Claw:
+        - Eyes
+        - Leg
+        - Leg
+        - Leg
+        - Carapace
+        - Carapace
+        - Left Claw
+        - Right Claw
+        - Right Claw
+        - Right Claw
+        Left Claw:
+        - Eyes
+        - Leg
+        - Leg
+        - Leg
+        - Carapace
+        - Carapace
+        - Right Claw
+        - Left Claw
+        - Left Claw
+        - Left Claw
+        vital_areas:
+        - Eyes
+        critical_areas:
+        - Abdomen
     Deathcap:
       areas:
         Trunk:
@@ -93,6 +163,56 @@ fs3combat:
         - Head
       vital_areas:
       - Trunk
+      critical_areas:
+      - Head
+    Fish:
+      areas:
+        Head:
+        - Fin
+        - Fin
+        - Body
+        - Body
+        - Body
+        - Body
+        - Body
+        - Head
+        - Head
+        - Head
+        Tail:
+        - Fin
+        - Fin
+        - Body
+        - Body
+        - Body
+        - Body
+        - Body
+        - Tail
+        - Tail
+        - Tail
+        Body:
+        - Fin
+        - Fin
+        - Tail
+        - Tail
+        - Head
+        - Head
+        - Body
+        - Body
+        - Body
+        - Body
+        Fin:
+        - Head
+        - Tail
+        - Tail
+        - Body
+        - Body
+        - Body
+        - Body
+        - Fin
+        - Fin
+        - Fin
+      vital_areas:
+      - Body
       critical_areas:
       - Head
     Humanoid:
@@ -212,6 +332,125 @@ fs3combat:
         - Right Leg
         - Left Leg
         - Right Leg
+        - Chest
+        - Chest
+        - Chest
+        - Abdomen
+        - Abdomen
+        - Abdomen
+      vital_areas:
+      - Chest
+      - Abdomen
+      critical_areas:
+      - Head
+      - Neck
+      - Groin
+    Merperson:
+      areas:
+        Chest:
+        - Tail
+        - Tail
+        - Left Arm
+        - Right Arm
+        - Abdomen
+        - Abdomen
+        - Head
+        - Chest
+        - Chest
+        - Chest
+        Tail:
+        - Chest
+        - Chest
+        - Abdomen
+        - Abdomen
+        - Abdomen
+        - Abdomen
+        - Tail
+        - Tail
+        - Tail
+        - Tail
+        Groin:
+        - Abdomen
+        - Abdomen
+        - Abdomen
+        - Tail
+        - Tail
+        - Tail
+        - Tail
+        - Groin
+        - Groin
+        - Groin
+        Left Hand:
+        - Chest
+        - Chest
+        - Abdomen
+        - Abdomen
+        - Left Arm
+        - Left Arm
+        - Left Arm
+        - Left Hand
+        - Left Hand
+        - Left Hand
+        Right Hand:
+        - Chest
+        - Chest
+        - Abdomen
+        - Abdomen
+        - Right Arm
+        - Right Arm
+        - Right Arm
+        - Right Hand
+        - Right Hand
+        - Right Hand
+        Left Arm:
+        - Head
+        - Chest
+        - Chest
+        - Abdomen
+        - Abdomen
+        - Left Hand
+        - Left Hand
+        - Left Arm
+        - Left Arm
+        - Left Arm
+        Right Arm:
+        - Head
+        - Chest
+        - Chest
+        - Abdomen
+        - Abdomen
+        - Right Hand
+        - Right Hand
+        - Right Arm
+        - Right Arm
+        - Right Arm
+        Head:
+        - Right Arm
+        - Right Arm
+        - Left Arm
+        - Chest
+        - Chest
+        - Neck
+        - Neck
+        - Head
+        - Head
+        - Head
+        Neck:
+        - Right Arm
+        - Right Arm
+        - Left Arm
+        - Chest
+        - Chest
+        - Head
+        - Head
+        - Neck
+        - Neck
+        - Neck
+        Abdomen:
+        - Tail
+        - Tail
+        - Tail
+        - Tail
         - Chest
         - Chest
         - Chest
@@ -476,53 +715,42 @@ fs3combat:
     Serpent:
       areas:
         Head:
-        - Right Flank
-        - Right Flank
-        - Right Flank
-        - Left Flank
-        - Left Flank
-        - Left Flank
+        - Body
+        - Body
+        - Body
+        - Body
+        - Body
+        - Body
         - Head
         - Head
         - Head
         - Head
-        Right Flank:
+        Body:
         - Tail
         - Tail
         - Tail
         - Head
         - Head
-        - Left Flank
-        - Left Flank
-        - Right Flank
-        - Right Flank
-        - Right Flank
-        Left Flank:
-        - Tail
-        - Tail
-        - Tail
-        - Head
-        - Head
-        - Right Flank
-        - Right Flank
-        - Left Flank
-        - Left Flank
-        - Left Flank
+        - Body
+        - Body
+        - Body
+        - Body
+        - Body
         Tail:
-        - Right Flank
-        - Right Flank
-        - Right Flank
-        - Left Flank
-        - Left Flank
-        - Left Flank
+        - Body
+        - Body
+        - Body
+        - Body
+        - Body
+        - Tail
         - Tail
         - Tail
         - Tail
         - Tail
       vital_areas:
-      - Head
+      - Body
       critical_areas:
-      - Left Flank
+      - Head
     Tree:
       areas:
         Trunk:
