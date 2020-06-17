@@ -84,14 +84,17 @@ module AresMUSH
             names.concat [target.name]
           end
         end
+        puts "MESSAGES1: #{messages}"
+        puts "NAMES: #{names}"
         print_names = names.join(", ")
         if is_potion
           message = [t('magic.use_potion_target', :name => caster_name, :potion => spell, :target => print_names)]
           messages.concat message
-        else
+        elsif !names.empty?
           message = [t('magic.casts_spell_on_target', :name => caster_name, :target => print_names, :spell => spell, :mod => mod, :succeeds => success)]
           messages.concat message
         end
+        puts "MESSAGES2: #{messages}"
         return messages
       end
     end

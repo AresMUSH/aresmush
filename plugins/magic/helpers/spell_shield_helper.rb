@@ -2,25 +2,26 @@ module AresMUSH
   module Magic
 
     def self.spell_shields
-      ["Mind Shield", "Endure Fire", "Endure Cold"]
+      ["Mind Shield", "Endure Fire", "Endure Cold", "Group Endure Cold", "Enduring Mind Shield", "Group Endure Fire"]
     end
 
     def self.shields_expire (char)
       room = char.room
       if (char.mind_shield > 0)
         room.emit_ooc t('magic.shield_wore_off', :name => char.name, :shield => "Mind Shield")
+        char.update(mind_shield: 0)
       end
 
       if (char.endure_fire > 0)
         room.emit_ooc t('magic.shield_wore_off', :name => char.name, :shield => "Endure Fire")
+        char.update(endure_fire: 0)
       end
 
       if (char.endure_cold > 0)
         room.emit_ooc t('magic.shield_wore_off', :name => char.name, :shield => "Endure Cold")
-      end
-        char.update(mind_shield: 0)
-        char.update(endure_fire: 0)
         char.update(endure_cold: 0)
+      end
+
     end
 
     def self.check_spell_vs_shields(target, caster_name, spell, mod, result)

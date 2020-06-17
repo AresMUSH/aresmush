@@ -6,8 +6,9 @@ module AresMUSH
       attr_accessor :name, :spell, :spell_list, :has_target, :args, :mod, :target, :target_name_string, :target_name
 
       def parse_args
-        args = cmd.parse_args(/(?<spell>[a-zA-Z\s]+\w)\s*(?<mod>[+\-]\s*\d+)?(\/(?<target>.*))?/)
+        args = cmd.parse_args(/(?<spell>[^+\-\/]+[^+\-\/\s])\s*(?<mod>[+\-]\s*\d+)?(\/(?<target>.*))?/)
         self.spell = titlecase_arg(args.spell)
+        puts "SPELL: #{self.spell}"
         self.mod = args.mod
         if !args.target
           self.target_name_string = enactor.name

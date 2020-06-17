@@ -139,32 +139,47 @@ module AresMUSH
       combatant.update(spell_armor_effects:armor_specials)
     end
 
-    def self.cast_mind_shield(combatant, target, spell, rounds, result)
+    def self.cast_shield(combatant, target, spell, rounds, result)
       shield_strength = result
-      target.update(mind_shield: shield_strength)
-      target.update(mind_shield_counter: rounds)
-      combatant.log "Setting #{target.name}'s Mind Shield to #{target.mind_shield}"
-      message = [t('magic.cast_shield', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target =>  target.name, :type => "psionic")]
+      if spell.include?("Mind Shield")
+        type = "psionic"
+        target.update(mind_shield: shield_strength)
+        target.update(mind_shield_counter: rounds)
+        shield_value = target.mind_shield
+      elsif spell.include?("Endure Cold")
+        type = "cold"
+        target.update(endure_cold: shield_strength)
+        target.update(endure_cold_counter: rounds)
+        shield_value = target.endure_cold
+      elsif spell.include?("Endure Fire")
+        type = "fire"
+        target.update(endure_fire: shield_strength)
+        target.update(endure_fire_counter: rounds)
+        shield_value = target.endure_fire
+      end
+
+      combatant.log "Setting #{target.name}'s #{spell} to #{shield_value}"
+      message = [t('magic.cast_shield', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target =>  target.name, :type => type)]
       return message
     end
 
-    def self.cast_endure_fire(combatant, target, spell, rounds, result)
-      shield_strength = result
-      target.update(endure_fire: shield_strength)
-      target.update(endure_fire_counter: rounds)
-      combatant.log "Setting #{target.name}'s Endure Fire to #{target.endure_fire}"
-      message = [t('magic.cast_shield', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target =>  target.name, :type => "fire")]
-      return message
-    end
-
-    def self.cast_endure_cold(combatant, target, spell, rounds, result)
-      shield_strength = result
-      target.update(endure_cold: shield_strength)
-      target.update(endure_cold_counter: rounds)
-      combatant.log "Setting #{target.name}'s Endure Cold to #{target.endure_cold}"
-      message = [t('magic.cast_shield', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target =>  target.name, :type => "cold")]
-      return message
-    end
+    # def self.cast_endure_fire(combatant, target, spell, rounds, result)
+    #   shield_strength = result
+    #   target.update(endure_fire: shield_strength)
+    #   target.update(endure_fire_counter: rounds)
+    #   combatant.log "Setting #{target.name}'s Endure Fire to #{target.endure_fire}"
+    #   message = [t('magic.cast_shield', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target =>  target.name, :type => "fire")]
+    #   return message
+    # end
+    #
+    # def self.cast_endure_cold(combatant, target, spell, rounds, result)
+    #   shield_strength = result
+    #   target.update(endure_cold: shield_strength)
+    #   target.update(endure_cold_counter: rounds)
+    #   combatant.log "Setting #{target.name}'s Endure Cold to #{target.endure_cold}"
+    #   message = [t('magic.cast_shield', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target =>  target.name, :type => "cold")]
+    #   return message
+    # end
 
     def self.cast_combat_heal(combatant, target, spell, heal_points)
       wound = FS3Combat.worst_treatable_wound(target.associated_model)

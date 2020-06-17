@@ -6,11 +6,10 @@ module AresMUSH
       attr_accessor :name, :spell, :spell_list, :has_target, :args, :mod, :target, :target_name_string, :target_name, :npc, :dice
 
       def parse_args
-        args = cmd.parse_args(/(?<npc>.+\w)\/(?<dice>\d+)\=(?<spell>[a-zA-Z\s]+\w)?(\/(?<target>.*))?/)
+        args = cmd.parse_args(/(?<npc>.+\w)\/(?<dice>\d+)\=(?<spell>[^+\-\/]+[^+\-\/\s])\s*?(\/(?<target>.*))?/)
         self.spell = titlecase_arg(args.spell)
         self.npc = titlecase_arg(args.npc)
         self.dice = args.dice.to_i
-        puts "Spell #{self.spell}"
 
         if !args.target
           self.target_name_string = self.npc

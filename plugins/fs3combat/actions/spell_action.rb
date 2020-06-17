@@ -4,6 +4,7 @@ module AresMUSH
       attr_accessor  :spell, :target, :names, :target_optional, :has_target
 
       def prepare
+
         if (self.action_args =~ /\//)
           self.spell = self.action_args.before("/")
           self.names = self.action_args.after("/")
@@ -12,6 +13,7 @@ module AresMUSH
           self.names = self.name
           self.spell = self.action_args
         end
+        
         self.spell = self.spell.titlecase
 
 
@@ -25,6 +27,7 @@ module AresMUSH
           item_spells = Magic.item_spells(combatant.associated_model) || []
           return t('magic.dont_know_spell') if (Magic.knows_spell?(combatant, self.spell) == false && !item_spells.include?(spell))
         end
+
         num = Global.read_config("spells", self.spell, "target_num")
         return t('magic.too_many_targets', :spell => self.spell, :num => num) if (self.targets.count > num) if self.target_optional
         return t('magic.doesnt_use_target') if (self.target_optional.nil? && self.names != self.name)
@@ -85,6 +88,7 @@ module AresMUSH
         heal_points = Global.read_config("spells", self.spell, "heal_points")
         is_revive = Global.read_config("spells", self.spell, "is_revive")
         is_res = Global.read_config("spells", self.spell, "is_res")
+        is_shield = Global.read_config("spells", self.spell, "is_shield")
         is_stun = Global.read_config("spells", self.spell, "is_stun")
         lethal_mod = Global.read_config("spells", self.spell, "lethal_mod")
         roll = Global.read_config("spells", self.spell, "roll")
@@ -143,21 +147,9 @@ module AresMUSH
 
             targets.each do |target|
 
-              #Psionic Protection
-              if self.spell == "Mind Shield"
-                message = Magic.cast_mind_shield(combatant, target, self.spell, rounds, succeeds[:result])
-                messages.concat message
-              end
-
-              #Fire Protection
-               if self.spell == "Endure Fire"
-                 message = Magic.cast_endure_fire(combatant, target, self.spell, rounds, succeeds[:result])
-                 messages.concat message
-               end
-
-              #Cold Protection
-              if self.spell == "Endure Cold"
-                message = Magic.cast_endure_cold(combatant, target, self.spell, rounds, succeeds[:result])
+              #Shields
+              if is_shield == true
+                message = Magic.cast_shield(combatant, target, self.spell, rounds, succeeds[:result])
                 messages.concat message
               end
 
