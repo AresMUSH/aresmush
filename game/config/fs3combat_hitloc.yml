@@ -67,10 +67,10 @@ fs3combat:
         - Left Claw
         - Left Claw
         - Left Claw
-        vital_areas:
-        - Eyes
-        critical_areas:
-        - Abdomen
+      vital_areas:
+      - Eyes
+      critical_areas:
+      - Abdomen
     Deathcap:
       areas:
         Trunk:
