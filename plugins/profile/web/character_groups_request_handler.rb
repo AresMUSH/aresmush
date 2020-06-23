@@ -12,7 +12,7 @@ module AresMUSH
         
         char_group_names = char_groups.keys
         npc_group_names = npc_groups.keys
-        group_names = char_group_names.concat(npc_group_names).uniq
+        group_names = char_group_names.concat(npc_group_names).uniq.sort
                 
         group_names.each_with_index do |group_name, index|
           npcs_in_group = (npc_groups[group_name] || []).sort_by { |n| n.name }.map { |c| {
