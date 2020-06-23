@@ -7,7 +7,6 @@ module AresMUSH
     attribute :read_jobs, :type => DataType::Array, :default => []
 
     collection :jobs, "AresMUSH::Job", :author
-    reference :job_read_tracker, "AresMUSH::JobReadTracker"
     
     before_delete :delete_job_participation
     
@@ -25,7 +24,7 @@ module AresMUSH
     
     def unread_jobs
       return [] if !Jobs.can_access_jobs?(self)
-      tracker = self.job_read_tracker
+      tracker = self.get_or_create_read_tracker
       read_jobs = tracker ? tracker.read_jobs : []
       staff_jobs = Jobs.accessible_jobs(self).select { |j| !read_jobs.include?(j.id) }
       their_jobs = self.unread_requests
@@ -45,16 +44,6 @@ module AresMUSH
       Job.all.each do |j|
         Database.remove_from_set j.participants, self
       end
-      if (self.job_read_tracker)
-        self.job_read_tracker.delete
-      end
-    end
-    
-    def get_or_create_job_tracker
-      return self.job_read_tracker if self.job_read_tracker
-      tracker = JobReadTracker.create(character: self)
-      self.update(job_read_tracker: tracker)
-      return tracker
     end
   end
 end

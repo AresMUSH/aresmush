@@ -3,16 +3,17 @@ module AresMUSH
   module Migrations
     class MigrationBeta80Update
       def require_restart
-        false
+        true
       end
       
       def migrate
                
-        Global.logger.debug "Migrating read jobsn."
+        Global.logger.debug "Migrating read jobs."
         Character.all.each do |c|
-          if (!(c.read_jobs || []).empty?)
-            tracker = c.get_or_create_job_tracker
-            tracker.update(read_jobs: c.read_jobs)
+          if ((c.read_jobs || []).any?)
+            tracker = c.get_or_create_read_tracker
+            tracker.update(read_jobs: c.read_jobs.uniq)
+            c.update(read_jobs: [])
           end
         end
      

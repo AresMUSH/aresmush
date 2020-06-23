@@ -280,22 +280,22 @@ module AresMUSH
     end
     
     def self.mark_read(job, char)  
-      tracker = char.get_or_create_job_tracker 
-      tracker.mark_read(job)   
+      tracker = char.get_or_create_read_tracker 
+      tracker.mark_job_read(job)   
       Login.mark_notices_read(char, :job, job.id)
     end
     
     def self.mark_unread(job)
       chars = Character.all.select { |c| !Jobs.is_unread?(job, c) }
       chars.each do |char|
-        tracker = char.get_or_create_job_tracker
-        tracker.mark_unread(job)
+        tracker = char.get_or_create_read_tracker
+        tracker.mark_job_unread(job)
       end
     end
     
     def self.is_unread?(job, char)
-      tracker = char.get_or_create_job_tracker
-      tracker.is_unread?(job)
+      tracker = char.get_or_create_read_tracker
+      tracker.is_job_unread?(job)
     end
     
     def self.has_participant_by_name?(job, name)
