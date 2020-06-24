@@ -21,7 +21,7 @@ module AresMUSH
           scenario = Global.read_config("randomscene", "scenarios")
           msg = "%xmRandom scenario: #{scenario.sample}%xn"
         elsif type == 2
-          room_list = Room.all.select { |r| (r.room_type == "IC" && r.area.name != "Grand Lake Homes") }
+          room_list = Room.all.select { |r| r.room_type == "IC" }
           room = room_list.sample
           word_list = Global.read_config("randomscene", "words")
           word = word_list.sample
