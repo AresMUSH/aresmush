@@ -142,9 +142,8 @@ module AresMUSH
     end
     
     def self.mark_read(scene, char)      
-      scenes = char.read_scenes || []
-      scenes << scene.id.to_s
-      char.update(read_scenes: scenes)
+      tracker = char.get_or_create_read_tracker
+      tracker.mark_scene_read(scene)
       Login.mark_notices_read(char, :scene, scene.id)
     end
     
@@ -152,14 +151,14 @@ module AresMUSH
       chars = Character.all.select { |c| !Scenes.is_unread?(scene, c) }
       chars.each do |char|
         next if except_for_char && char == except_for_char
-        scenes = char.read_scenes || []
-        scenes.delete scene.id.to_s
-        char.update(read_scenes: scenes)
+        tracker = char.get_or_create_read_tracker
+        tracker.mark_scene_unread(scene)
       end
     end
     
     def self.is_unread?(scene, char)
-      !(char.read_scenes || []).include?(scene.id.to_s)
+      tracker = char.get_or_create_read_tracker
+      tracker.is_scene_unread?(scene)
     end
     
     
