@@ -1,2 +1,11 @@
 ---
-randomscene: {}
+randomscene:
+  scenarios:
+  - "Scenario 1"
+  - "Scenario 2"
+  npcs:
+  - "NPC1"
+  - "NPC 2"
+  actions:
+  - "Action 1"
+  - "Action 2"

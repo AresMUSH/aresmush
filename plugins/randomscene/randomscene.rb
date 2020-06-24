@@ -12,6 +12,10 @@ module AresMUSH
     end
 
     def self.get_cmd_handler(client, cmd, enactor)
+      case cmd.root
+      when "randomscene"
+        return RandomSceneCmd 
+      end
       nil
     end
 
