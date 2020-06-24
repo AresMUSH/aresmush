@@ -2,7 +2,7 @@ module AresMUSH
   module Randomscene
     class RandomSceneCmd
     # shield/off <shield>
-      include CommandHandler 
+      include CommandHandler
 
       # attr_accessor :target, :shield
 
@@ -18,7 +18,7 @@ module AresMUSH
         type = rand(2)
 
         if type == 1
-          scenario = Global.read_config("randomscene", "scenario")
+          scenario = Global.read_config("randomscene", "scenarios")
           msg = scenario.select
         else
           npc_list = Global.read_config("randomscene", "npcs")
