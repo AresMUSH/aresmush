@@ -15,7 +15,7 @@ module AresMUSH
       # end
 
       def handle
-        type = rand(3)
+        type = rand(4)
 
         if type == 1
           scenario = Global.read_config("randomscene", "scenarios")
