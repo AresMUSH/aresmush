@@ -50,7 +50,7 @@ spells:
     available: true
     casting_time: 1 round
     damage_type: Cold
-    desc: Caster delivers minor cold damage via touch.
+    desc: Caster can cool their hands to a chosen temperature ranging from a minor chill to cold enough to deliver minor cold damage via touch.
     duration: 30 minutes
     effect: Damage
     is_potion: true

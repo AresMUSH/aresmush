@@ -107,7 +107,7 @@ spells:
     available: true
     casting_time: 1 round
     damage_type: Fire
-    desc: The caster's fingertips become red hot and capable of inflicting burn damage on touch.
+    desc: Caster can heat their hands to a chosen temperature ranging from a minor warmth to hot enough to deliver minor fire damage via touch.
     duration: 30 minutes
     effect: Damage
     is_potion: true
