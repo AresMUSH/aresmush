@@ -4,6 +4,7 @@ module AresMUSH
     attribute :jobs_filter, :default => "ACTIVE"
     attribute :jobs_subscription, :type => DataType::Boolean
     
+    # OBSOLETE - use read_tracker instead.
     attribute :read_jobs, :type => DataType::Array, :default => []
 
     collection :jobs, "AresMUSH::Job", :author

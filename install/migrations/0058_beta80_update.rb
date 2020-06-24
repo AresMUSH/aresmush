@@ -3,7 +3,7 @@ module AresMUSH
   module Migrations
     class MigrationBeta80Update
       def require_restart
-        true
+        false
       end
       
       def migrate
@@ -14,6 +14,12 @@ module AresMUSH
             tracker = c.get_or_create_read_tracker
             tracker.update(read_jobs: c.read_jobs.uniq)
             c.update(read_jobs: [])
+          end
+          
+          if ((c.forum_read_posts || []).any?)
+            tracker = c.get_or_create_read_tracker
+            tracker.update(forum_read_posts: c.forum_read_posts.uniq)
+            c.update(forum_read_posts: [])
           end
         end
      
