@@ -15,11 +15,17 @@ module AresMUSH
       # end
 
       def handle
-        type = rand(2)
+        type = rand(3)
 
         if type == 1
           scenario = Global.read_config("randomscene", "scenarios")
           msg = scenario.sample
+        elsif type == 2
+          room_list = Room.all.select { |r| r.room_type == "IC" }
+          room = room_list.sample
+          word_list = Global.read_config("randomscene", "words")
+          word = word_list.sample
+          msg = "Your prompt is #{word}. Your location is #{room.area.name}/#{room.name}."
         else
           npc_list = Global.read_config("randomscene", "npcs")
           npc = npc_list.sample
