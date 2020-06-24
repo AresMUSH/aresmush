@@ -19,12 +19,12 @@ module AresMUSH
 
         if type == 1
           scenario = Global.read_config("randomscene", "scenarios")
-          msg = scenario.select
+          msg = scenario.sample
         else
           npc_list = Global.read_config("randomscene", "npcs")
-          npc = npc_list.select
+          npc = npc_list.sample
           action_list = Global.read_config("randomscene", "actions")
-          action = action_list.select
+          action = action_list.sample
           msg = "#{npc} #{action}"
         end
         client.emit_success msg
