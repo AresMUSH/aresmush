@@ -19,19 +19,19 @@ module AresMUSH
 
         if type == 1
           scenario = Global.read_config("randomscene", "scenarios")
-          msg = "Random scenario: #{scenario.sample}"
+          msg = "%xmRandom scenario: #{scenario.sample}%xn"
         elsif type == 2
           room_list = Room.all.select { |r| r.room_type == "IC" }
           room = room_list.sample
           word_list = Global.read_config("randomscene", "words")
           word = word_list.sample
-          msg = "Your prompt is #{word}. Your location is #{room.area.name}/#{room.name}."
+          msg = "%xmYour prompt is #{word}. Your location is #{room.area.name}/#{room.name}.%xn"
         else
           npc_list = Global.read_config("randomscene", "npcs")
           npc = npc_list.sample
           action_list = Global.read_config("randomscene", "actions")
           action = action_list.sample
-          msg = "Random scenario: #{npc} #{action}"
+          msg = "%xmRandom scenario: #{npc} #{action}.%xn"
         end
         client.emit msg
 
