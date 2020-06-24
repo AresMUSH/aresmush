@@ -9,3 +9,6 @@ randomscene:
   actions:
   - "Action 1"
   - "Action 2"
+  words:
+  - "Word 1"
+  - "Word 2"
