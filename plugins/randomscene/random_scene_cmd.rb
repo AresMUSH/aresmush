@@ -19,7 +19,7 @@ module AresMUSH
 
         if type == 1
           scenario = Global.read_config("randomscene", "scenarios")
-          msg = scenario.sample
+          msg = "Random scenario: #{scenario.sample}"
         elsif type == 2
           room_list = Room.all.select { |r| r.room_type == "IC" }
           room = room_list.sample
@@ -31,9 +31,9 @@ module AresMUSH
           npc = npc_list.sample
           action_list = Global.read_config("randomscene", "actions")
           action = action_list.sample
-          msg = "#{npc} #{action}"
+          msg = "Random scenario: #{npc} #{action}"
         end
-        client.emit_success msg
+        client.emit msg
 
       end
 
