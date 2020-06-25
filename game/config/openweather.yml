@@ -36,14 +36,18 @@ openweather:
             lon: 21.849387
       Feixuzhicheng:
         coords:
-            lat: -41.242736
-            lon: -71.639422
+            lat: 22.07
+            lon: -159.76
       Feynthorn:
         coords:
             lat: 43.204895
             lon: -71.502984
       Immeasurable Autumn:
         zip: 94016
+      Kupuna Aina:
+        coords:
+            lat: -18.85
+            lon: -159.79
       Kleosis:
         coords:
             lat: 21.882067
