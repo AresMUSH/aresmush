@@ -12,7 +12,7 @@ module AresMUSH
         end
 
         message = Manage.start_upgrade
-        Global.client_monitor.notify_web_clients(:manage_activity, Website.format_markdown_for_html(message)) do |c|
+        Global.client_monitor.notify_web_clients(:manage_activity, Website.format_markdown_for_html(message), true) do |c|
            c == enactor
         end        
         

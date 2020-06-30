@@ -113,14 +113,14 @@ module AresMUSH
     def on_event(event)
       begin
         event_name = event.class.to_s.gsub("AresMUSH::", "")
-        if (event_name != "CronEvent")
-          Global.logger.debug "Handling #{event_name}."
-        end
         Global.plugin_manager.plugins.each do |p|
           next if !p.respond_to?(:get_event_handler)
           AresMUSH.with_error_handling(nil, "Handling #{event_name}.") do            
             handler_class = p.get_event_handler(event_name)
             if (handler_class)
+              if (event_name != "CronEvent")
+                Global.logger.debug "#{handler_class} handling #{event_name}."
+              end
               handler = handler_class.new
               handler.on_event(event)
             end # if

@@ -272,7 +272,7 @@ module AresMUSH
           
           abilities = FS3Skills.action_skill_names.concat(FS3Skills.attr_names)
           defense = data['defense_skill']
-          if (defense && !defense.kind_of?(Integer) && !abilities.include?(defense))
+          if (defense && !abilities.include?(defense))
             @validator.add_error "fs3combat:combatant_types #{name} has invalid defense ability."
           end
         end

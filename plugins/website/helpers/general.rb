@@ -65,7 +65,7 @@ module AresMUSH
           Global.logger.info "Deployed web portal: #{output}"
           message = t('webportal.portal_deployed', :output => output)
           if (from_web)
-            Global.client_monitor.notify_web_clients(:manage_activity, Website.format_markdown_for_html(message)) do |c|
+            Global.client_monitor.notify_web_clients(:manage_activity, Website.format_markdown_for_html(message), false) do |c|
                c && c == enactor
             end
           elsif (enactor) # Enactor should always be specified except in the backwards-compatibility example.
@@ -93,7 +93,7 @@ module AresMUSH
     
     def self.folder_size_kb(folder)
       files = Dir["#{folder}/*"].select { |f| File.file?(f) }
-      files.sum { |f| File.size(f) } / 1000
+      files.sum { |f| File.size(f) } / 1024
     end
     
     def self.webportal_version

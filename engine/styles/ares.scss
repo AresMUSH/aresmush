@@ -79,8 +79,39 @@ BASIC CONTAINERS
     margin-bottom: 5px;
 }
 
+.markdown-preview {
+  width: 98%;
+  padding: 5px;
+  margin: 0px 10px 10px 10px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  background-color: $background-color;
+  color: $text-color;
+  border: 1px solid $border-color;
+}
+
+.markdown-editor textarea {
+  margin-top: 0px;
+}
+
 .markdown-controls {
+    margin-top: 3px;
     padding: 5px;
+}
+
+.markdown-control-toggle {
+  margin-left: 10px;
+  margin-right: 5px;
+  padding: 5px 10px 10px 10px;
+  border-left: 1px solid $border-color;
+  border-right: 1px solid $border-color;
+}
+
+.markdown-control-toggle.active {
+  background-color: $primary-color;
+  color: $primary-words-color;
+  border-bottom: 0px;
 }
 
 .app-status, #console, #console pre, #sendMsg, #sendMsg2, #manageLog { 
@@ -294,6 +325,7 @@ textarea {
     box-sizing: border-box;
     background-color: $background-color;
     color: $text-color;
+    border: 1px solid $border-color;
 }
 
 
@@ -309,10 +341,18 @@ form {
     color: $text-color;
 }
 
-input {
-    background-color: $background-color;
-    color: $text-color;
-}
+input,
+textarea,
+.ember-power-select-trigger,
+.ember-basic-dropdown-trigger,
+.ember-power-select-search-input,
+.ember-text-field {
+  background-color: $background-color;
+  color: $text-color;
+  border: 1px solid $border-color;
+  border-radius: 3px;
+  transition: border 0.3s linear;
+  padding: 4px; }
 
 
 li hr { 
@@ -421,6 +461,16 @@ table.gsc-search-box td {
     vertical-align: top !important;
     border: none;
     padding: 3px;
+}
+
+.gsst_b {
+  padding: 0px;
+}
+
+.gsc-search-box-tools .gsc-search-box .gsc-input, .gscb_a {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.25em;
 }
 
 /* --------------------------
@@ -551,6 +601,11 @@ SIDEBAR
 
 .sidebar-list {
   word-wrap: break-word;
+}
+
+.search-hint { 
+    color: $faded-text-color;
+    font-style: italic;
 }
 
 /* -------------------------
@@ -798,7 +853,6 @@ SCENES SCREEN
     margin-left: 25px;
     background-color: $log-icon-color;
     color: $log-icon-text-color;
-    font-style: italic;
     padding: 0px 10px 10px 10px;
 }
 
@@ -950,7 +1004,17 @@ SCENES SCREEN
     width: 100%;
 }
  
-.pose-ui, 
+.scene-controls-box {
+  border: 1px solid #ccc;
+  background: #F5F5F5;
+  padding: 5px;
+}
+
+.scene-controls {
+  display: flex;
+  flex-flow: row-reverse wrap;
+}
+
 .pose-buttons {
     display: flex;
     flex-flow: row-reverse wrap;
@@ -959,30 +1023,40 @@ SCENES SCREEN
 .pose-buttons .btn {
     margin-left: 4px;
 }
- 
-.scene-buttons {
+
+.scene-controls-left {
+  padding: 5px;
+}
+
+.scene-controls-right {
     display: flex;
     flex-flow: column;
     align-items: flex-end;
+    padding: 5px;
 }
- 
+
 .scene-char-select .tiny-profile-icon {
     margin: 0 2px 3px 0;
 }
  
+.live-scene-controls a, .chat-controls a {
+  padding-right: 15px;
+}
+
 @media (max-width: 767px) {
-    .scene-dropdowns {
+    .scene-controls-left {
         display: flex;
-        flex-flow: row;
+        flex-flow: column;
         justify-content: flex-end;
         padding-top: 10px;
+        align-items: flex-end;
      }
  
-     .scene-dropdowns .scene-menu {
+     .scene-controls-left .scene-menu {
          margin-left: 4px;
      }
      
-     .scene-dropdowns .dropdown-menu {
+     .scene-controls-left .dropdown-menu {
          right: 0;
          left: auto;
      }
@@ -1193,7 +1267,7 @@ CHAT SCREEN
 }
 
 .play-sidebar:hover { 
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .play-hint {
