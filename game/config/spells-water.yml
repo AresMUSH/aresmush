@@ -418,7 +418,6 @@ spells:
     roll: true
     rounds: 5
     school: Water
-    target_num: 1
   Shatter:
     available: true
     casting_time: 1 round
