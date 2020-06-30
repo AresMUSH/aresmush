@@ -13,11 +13,11 @@ module AresMUSH
           self.names = self.name
           self.spell = self.action_args
         end
-        
+
         self.spell = self.spell.titlecase
 
 
-        self.target_optional = Global.read_config("spells", self.spell, "target_optional")
+        # self.target_optional = Global.read_config("spells", self.spell, "target_optional")
         error = self.parse_targets(self.names)
         return error if error
 
@@ -29,8 +29,8 @@ module AresMUSH
         end
 
         num = Global.read_config("spells", self.spell, "target_num")
-        return t('magic.too_many_targets', :spell => self.spell, :num => num) if (self.targets.count > num) if self.target_optional
-        return t('magic.doesnt_use_target') if (self.target_optional.nil? && self.names != self.name)
+        return t('magic.too_many_targets', :spell => self.spell, :num => num) if (self.targets.count > num)
+        return t('magic.doesnt_use_target') if (self.num.nil? && self.names != self.name)
         is_res = Global.read_config("spells", self.spell, "is_res")
         is_revive = Global.read_config("spells", self.spell, "is_revive")
 
@@ -96,7 +96,7 @@ module AresMUSH
         spell_mod = Global.read_config("spells", self.spell, "spell_mod")
         stance = Global.read_config("spells", self.spell, "stance")
         school = Global.read_config("spells", self.spell, "school")
-        target_optional = Global.read_config("spells", self.spell, "target_optional")
+        # target_optional = Global.read_config("spells", self.spell, "target_optional")
         weapon = Global.read_config("spells", self.spell, "weapon")
         weapon_specials_str = Global.read_config("spells", self.spell, "weapon_specials")
 
