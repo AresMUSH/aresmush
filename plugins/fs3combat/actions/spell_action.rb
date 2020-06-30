@@ -29,8 +29,13 @@ module AresMUSH
         end
 
         num = Global.read_config("spells", self.spell, "target_num")
+        puts "Number #{num} Is nil? #{num.nil?}"
+        puts "Names: #{self.names}"
+        return t('magic.doesnt_use_target') if (num.nil? && self.names != self.name)
         return t('magic.too_many_targets', :spell => self.spell, :num => num) if (self.targets.count > num)
-        return t('magic.doesnt_use_target') if (self.num.nil? && self.names != self.name)
+
+
+
         is_res = Global.read_config("spells", self.spell, "is_res")
         is_revive = Global.read_config("spells", self.spell, "is_revive")
 
