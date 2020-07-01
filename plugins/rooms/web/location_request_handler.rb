@@ -54,7 +54,7 @@ module AresMUSH
           owners: owners,
           area: area,
           name_and_area: room.name_and_area,
-          can_edit: room.room_owners.include?(enactor) || Rooms.can_build?(enactor),
+          can_edit: enactor && (room.room_owners.include?(enactor) || Rooms.can_build?(enactor)),
           destinations: room.exits.select { |e| e.dest }.map { |e| 
             { 
             name: e.dest.name, 
