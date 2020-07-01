@@ -20,7 +20,8 @@ module AresMUSH
            icon: Website.icon_for_char(player),
            alts: player.alts.map { |a| {name: a.name, icon: Website.icon_for_char(a)} },
            can_manage: enactor && Profile.can_manage_char_profile?(enactor, player),
-           achievements: Achievements.is_enabled? ? Achievements.build_achievements(player) : nil
+           achievements: Achievements.is_enabled? ? Achievements.build_achievements(player) : nil,
+           admin_role_title: player.role_admin_note
          }
        end
      end
