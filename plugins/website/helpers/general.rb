@@ -105,7 +105,7 @@ module AresMUSH
     
     def self.wiki_templates
       templates = WikiPage.all.select { |p| p.category == "template" }.map { |p| {
-        title: p.title,
+        title: p.title.gsub("template:", ""),
         text: p.text
       }
       }

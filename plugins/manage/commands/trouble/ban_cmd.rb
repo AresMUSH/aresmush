@@ -62,7 +62,7 @@ module AresMUSH
             Game.master.system_character)
             
           if (error)
-            client.emit_failure t('manage.ban_config_error', :error => error)
+            client.emit_failure t('manage.ban_config_error', :name => model.name, :error => error)
           else
             client.emit_success t('manage.player_banned', :name => model.name)
           end
