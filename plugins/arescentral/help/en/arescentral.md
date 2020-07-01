@@ -9,6 +9,12 @@ tutorial: true
 
 [[toc]]
 
+## Game Directory
+
+AresCentral has a directory of all public AresMUSH games.  You can browse game advertisements, see activity graphs, and view player profiles.
+
+Private games do not appear on the AresCentral game directory, but they can still leverage other AresCentral features if an admin registers the game. See [Game Directory](/help/game_directory) for more information.
+
 ## Player Handles
 
 AresCentral Player Handles bring a little taste of social media to MUSHing.  A handle is your OOC identity, used across all Ares games. Through your handle, people can identify you as a player, not just as a character.
@@ -37,10 +43,6 @@ Having characters linked enables various features:
 * Reading a forum post on one character will mark it read for all other linked characters.
 * You can easily switch between linked characters on the web portal, or pose as all your characters in a scene.
 * And more...
-
-## Game Directory
-
-AresCentral also has a directory of all public AresMUSH games.  You can browse game advertisements, see activity graphs, and view player profiles.
 
 ## Command Reference
 
