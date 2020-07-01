@@ -43,6 +43,7 @@ module AresMUSH
                name: name,
                is_npc: data['is_npc'],
                icon: data['npc_image'] || Website.icon_for_name(name),
+               name_and_nickname: Demographics.name_and_nickname(Character.named(name)),
                text: Website.format_markdown_for_html(data['relationship'])
              }
            }
