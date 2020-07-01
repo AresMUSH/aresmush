@@ -12,24 +12,26 @@ module AresMUSH
     def self.can_manage_bgs?(actor)
       actor.has_permission?("manage_apps")
     end     
+
+    def self.can_manage_apps?(actor)
+      actor.has_permission?("manage_apps")
+    end     
     
     def self.can_view_bgs?(actor)
       return false if !actor
       Chargen.can_manage_bgs?(actor) || actor.has_permission?("view_bgs")
     end      
     
-    def self.can_edit_bg?(actor, model, client)
-      if (model.is_approved? && !Chargen.can_manage_bgs?(actor))
-        client.emit_failure t('chargen.cannot_edit_after_approval')
-        return false
+    def self.check_can_edit_bg(actor, model)      
+      if (actor != model && !Chargen.can_manage_bgs?(actor))
+        return t('chargen.cannot_edit_bg')
       end
       
-      if (actor != model && !Chargen.can_manage_bgs?(actor))
-        client.emit_failure t('chargen.cannot_edit_bg')
-        return false
+      if (model.is_approved? && !Chargen.can_manage_bgs?(actor))
+        return t('chargen.cannot_edit_after_approval')
       end
 
-      return true
+      return nil
     end
     
     def self.unsubmit_app(char)
