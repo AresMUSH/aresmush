@@ -82,6 +82,8 @@ module AresMUSH
         return FileDeleteRequestHandler
       when "files"
         return GetFilesRequestHandler
+      when "folders"
+        return GetFoldersRequestHandler
       when "updateFile"
         return FileUpdateRequestHandler
       when "uploadFile"

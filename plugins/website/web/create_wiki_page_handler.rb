@@ -26,7 +26,7 @@ module AresMUSH
         end
         
         if (name =~ /:/ && name.after(":").blank?)
-          return { error: t('webportal.missing_required_fields') }
+          return { error: t('webportal.page_name_blank') }
         end
       
         if (!enactor.is_approved?)
