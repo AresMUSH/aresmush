@@ -7,9 +7,11 @@ module AresMUSH
     attribute :pose_nudge_muted, :type => DataType::Boolean
     attribute :pose_word_count, :type => DataType::Integer
     attribute :scene_home
-    attribute :read_scenes, :type => DataType::Array, :default => []
     attribute :scenes_participated_in, :type => DataType::Array, :default => []
     attribute :scene_participation_count
+
+    # OBSOLETE - use read_tracker instead
+    attribute :read_scenes, :type => DataType::Array, :default => []
     
     collection :scene_likes, "AresMUSH::SceneLike"
   

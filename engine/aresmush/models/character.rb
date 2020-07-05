@@ -22,6 +22,7 @@ module AresMUSH
     
     reference :room, "AresMUSH::Room"
     reference :handle, "AresMUSH::Handle"
+    reference :read_tracker, "AresMUSH::ReadTracker"
     
     set :roles, "AresMUSH::Role"
     
@@ -142,7 +143,7 @@ module AresMUSH
       end
       
       return display_name
-    end    
+    end  
     
     def self.random_link_code
       (0...8).map { (33 + rand(94)).chr }.join

@@ -45,14 +45,6 @@ module AresMUSH
       Forum.can_read_category?(nil, self.bbs_board)
     end
     
-    def mark_read(char)
-      Forum.mark_read(self, char)
-    end
-    
-    def mark_unread
-      Forum.mark_unread(self)
-    end
-    
     def reference_str
       "(#{category_index}/#{post_index})"
     end

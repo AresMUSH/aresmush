@@ -22,15 +22,18 @@ module AresMUSH
       end
 
       def check_chargen_locked
+        return nil if Chargen.can_manage_apps?(enactor)        
         Chargen.check_chargen_locked(enactor)
       end
-
+      
       def handle
         ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
-          if (!Chargen.can_edit_bg?(enactor, model, client))
+          error = Chargen.check_can_edit_bg(enactor, model)
+          if (error)
+            client.emit_failure error
             return
           end
-                    
+                              
           model.update(cg_background: self.background)
           client.emit_success t('chargen.bg_set')
         end

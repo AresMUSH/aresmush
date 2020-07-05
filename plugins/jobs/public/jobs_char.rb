@@ -4,6 +4,7 @@ module AresMUSH
     attribute :jobs_filter, :default => "ACTIVE"
     attribute :jobs_subscription, :type => DataType::Boolean
     
+    # OBSOLETE - use read_tracker instead.
     attribute :read_jobs, :type => DataType::Array, :default => []
 
     collection :jobs, "AresMUSH::Job", :author
@@ -24,7 +25,8 @@ module AresMUSH
     
     def unread_jobs
       return [] if !Jobs.can_access_jobs?(self)
-      read_jobs = self.read_jobs || []
+      tracker = self.get_or_create_read_tracker
+      read_jobs = tracker ? tracker.read_jobs : []
       staff_jobs = Jobs.accessible_jobs(self).select { |j| !read_jobs.include?(j.id) }
       their_jobs = self.unread_requests
       

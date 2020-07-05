@@ -138,9 +138,10 @@ Includes can have parameters, like so:
 
 `[[include PageName`
 `|foo=Foo Value`
+`|bar=Bar value`
 `]]`
 
-In the page, `%{foo}` will be replaced with "Foo Value".  Be sure to put only one variable per line, and start the line with |.
+In the page, `%{foo}` will be replaced with "Foo Value".  Be sure to separate the parameters with "|".
 
 You can also create templates containing starter text for various kinds of pages. See [Wiki Tutorial](/help/wiki) for more information.
 
@@ -157,6 +158,18 @@ Using the raw `<div></div>`, `<span></span>` and `<pre></pre>` block tags often 
 `[[div class="someClass"]]`
 `Some text`
 `[[/div]]`
+
+## Create Wiki Button
+
+You can add a button that takes you to the "create wiki page" page, with the ability to specify optional page parameters like category and template.
+
+`[[createwiki button=Create Colony|template=colony]]`
+
+Separate parameters with a "|".  All parameters are optional.  Possible values include:
+
+* Template - name of the wiki template to use. (default is 'blank')
+* Category - a category value that will be prepended to the page name like "category:name". (default is no category)
+* Button - text to put on the button. (default is "Create Page")
 
 ## Disabling Extensions
 
