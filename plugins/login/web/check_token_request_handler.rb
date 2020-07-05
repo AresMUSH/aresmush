@@ -24,6 +24,12 @@ module AresMUSH
           return { error: t('webportal.session_expired') }    
         end
         
+        if (Time.now - char.last_on > 86400)
+          Login.update_site_info(request.ip_addr, request.hostname, char)
+        end
+        
+        
+        
         {
           token: char.login_api_token,
           name: char.name,

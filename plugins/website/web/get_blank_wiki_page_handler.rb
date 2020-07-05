@@ -3,6 +3,7 @@ module AresMUSH
     class GetBlankWikiPageRequestHandler
       def handle(request)
         title = request.args[:title] || ""
+        tags = (request.args[:tags] || "").strip
         category = (request.args[:category] || "").strip
         template_name = (request.args[:template] || "").strip.downcase
         enactor = request.enactor
@@ -27,7 +28,8 @@ module AresMUSH
           name: name,
           title: title.humanize.titleize,
           category: category,
-          template: template,
+          template: template || templates.select { |t| t[:title] == 'blank' }.first,
+          tags: tags,
           templates: templates
          }        
       end
