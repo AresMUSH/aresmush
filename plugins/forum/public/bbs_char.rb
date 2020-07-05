@@ -1,6 +1,8 @@
 module AresMUSH
   class Character 
     attribute :forum_muted, :type => DataType::Boolean
+
+    # OBSOLETE - use read_tracker instead
     attribute :forum_read_posts, :type => DataType::Array, :default => []
     
     collection :bbs_prefs, "AresMUSH::BbsPrefs"

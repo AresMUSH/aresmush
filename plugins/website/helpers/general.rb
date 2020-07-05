@@ -87,7 +87,7 @@ module AresMUSH
     def self.can_edit_wiki_file?(actor, folder)
       return false if !actor
       wiki_admin = Website.can_manage_wiki?(actor)
-      own_folder = folder.upcase == actor.name_upcase
+      own_folder = folder.downcase == FilenameSanitizer.sanitize(actor.name)
       wiki_admin || own_folder
     end
     
@@ -105,7 +105,7 @@ module AresMUSH
     
     def self.wiki_templates
       templates = WikiPage.all.select { |p| p.category == "template" }.map { |p| {
-        title: p.title,
+        title: p.title.gsub("template:", ""),
         text: p.text
       }
       }

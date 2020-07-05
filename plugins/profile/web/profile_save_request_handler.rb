@@ -25,7 +25,20 @@ module AresMUSH
           if (value.blank? && Demographics.required_demographics.include?(name))
             return { error: t('webportal.missing_required_fields') }
           end
-          char.update_demographic name, value
+          if (name == 'birthdate')
+            # Standard db format
+            if (value =~ /\d\d\d\d-\d\d-\d\d/)
+              char.update_demographic name, value
+            # Game-specific format
+            else
+              result = Demographics.set_birthday(char, value)
+              if (result[:error])
+                return { error: result[:error] }
+              end
+            end
+          else
+            char.update_demographic name, value
+          end
         end
         
         tags = (request.args[:tags] || []).map { |t| t.downcase }.select { |t| !t.blank? }

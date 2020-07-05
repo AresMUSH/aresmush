@@ -40,8 +40,8 @@ module AresMUSH
           return { error: t('webportal.max_upload_kb', :kb => max_upload_kb) }
         end
         
-        name = AresMUSH::Website::FilenameSanitizer.sanitize name
-        folder = AresMUSH::Website::FilenameSanitizer.sanitize folder
+        name = FilenameSanitizer.sanitize name
+        folder = FilenameSanitizer.sanitize folder
         folder_path = File.join(AresMUSH.website_uploads_path, folder)
         
         if (!Dir.exist?(folder_path))

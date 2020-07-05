@@ -40,9 +40,9 @@ module AresMUSH
     end
     
     def self.mark_read_for_player(char, post)
-      post.mark_read(char)
+      Forum.mark_read(post, char)
       AresCentral.alts(char).each do |alt|
-        post.mark_read(alt)
+        Forum.mark_read(post, alt)
       end
       Login.mark_notices_read(char, :forum, post.id)
     end    
@@ -115,7 +115,7 @@ module AresMUSH
 
       new_reply = BbsReply.create(author: author, bbs_post: post, message: reply)
         
-      post.mark_unread
+      Forum.mark_unread(post)
       Forum.mark_read_for_player(author, post)
 
       message = t('forum.new_reply', :subject => post.subject, 
@@ -222,21 +222,20 @@ module AresMUSH
     end
     
     def self.is_unread?(post, char)
-      posts = (char.forum_read_posts || [])
-      !posts.include?(post.id.to_s)
+      tracker = char.get_or_create_read_tracker
+      tracker.is_forum_post_unread?(post)
     end
     
     def self.mark_read(post, char)
-      posts = (char.forum_read_posts || []) << post.id.to_s
-      char.update(forum_read_posts: posts)
+      tracker = char.get_or_create_read_tracker
+      tracker.mark_forum_post_read(post)
     end
     
     def self.mark_unread(post)
       chars = Character.all.select { |c| !Forum.is_unread?(post, c) }
       chars.each do |char|
-        posts = char.forum_read_posts || []
-        posts.delete post.id.to_s
-        char.update(forum_read_posts: posts)
+        tracker = char.get_or_create_read_tracker
+        tracker.mark_forum_post_unread(post)
       end
     end
     
