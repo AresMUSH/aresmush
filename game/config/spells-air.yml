@@ -196,7 +196,7 @@ spells:
     available: true
     casting_time: 1 round
     desc: "For the duration of the spell, the caster can vibrate the air to create simple sounds. These sounds can be a single noise, a melody, or a short sentence of up to fifteen, one-syllable words. Sound created cannot be louder than 100 db (a loud vehicle, a train whistle, a hand drill).\n\nThe sound may be identified as artificial with a roll of the caster's Air vs the observer's Alertness-5. Those with enhanced hearing are more likely to identify the sound as artificial according to its content and range, and GMs may choose to adjust the modification as appropriate."
-    duration: 10 minutes
+    duration: 15 minutes
     effect: Illusion
     level: 4
     name: Create Sound

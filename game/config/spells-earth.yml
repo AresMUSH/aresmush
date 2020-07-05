@@ -242,8 +242,8 @@ spells:
   Terramancy:
     available: true
     casting_time: 1 round
-    desc: "For the duration of the spell, the caster can move around and shape up to 5 cubic feet of pre-existing dirt, rock, or stone. The caster can sculpt detailed, non-weaponized shapes that animate at their direction. Earth returns to its natural, but not necessarily original, state when the spell ends. "
-    duration: 10 minutes
+    desc: "For the duration of the spell, the caster can move around and shape up to a total of 5 cubic feet of pre-existing dirt, rock, or stone. The caster can sculpt detailed, non-weaponized shapes that animate at their direction. Earth returns to its natural, but not necessarily original, state when the spell ends. "
+    duration: 15 minutes
     effect: Creation
     level: 4
     line_of_sight: true

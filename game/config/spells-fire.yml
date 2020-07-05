@@ -177,7 +177,7 @@ spells:
     available: false
     casting_time: 1 round
     desc: "For the duration of the spell, the caster can create or influence up to 15 cubic feet of fire, moving and shaping it into detailed, non-weaponized shapes that animate at their direction. Within the size limit, they can control the size and heat of the flames, making them grow, dim, or snuff them out entirely. When the spell ends, the flames return to their natural state in their current location."
-    duration: 10 min
+    duration: 30 min
     effect: Creation
     level: 4
     line_of_sight: true
@@ -190,7 +190,7 @@ spells:
     available: true
     casting_time: 1 minute (6 rounds)
     desc: "Create a convincing illusion of a single subject that fools most observers. It is able to animate at the caster's discretion. The illusion cannot be larger than 3 cubic yards.\n\n The image may be identified as an illusion with a roll of the caster's Fire vs the observer's Alertness-5. Those with enhanced senses such as smell, hearing, or psionic abilities are more likely to identify the subject as an illusion according to its content and range, and GMs may choose to adjust the modification as appropriate."
-    duration: 10 minutes
+    duration: 15 minutes
     effect: Illusion
     level: 4
     line_of_sight: true
@@ -290,7 +290,7 @@ spells:
     available: true
     casting_time: 1 minute
     desc: "Create a complicated, convincing visual illusion that fools most observers. The illusion can be quite large, with many moving parts, such as a forest scene or a busy street. Can be used to hide groups.\n\nThe image may be identified as an illusion with a roll of the caster's Fire vs the observer's Alertness-5. Those with enhanced senses such as smell, hearing, or psionic abilities are more likely to identify the subject as an illusion according to its content and range, and GMs may choose to adjust the modification as appropriate."
-    duration: 15 minutes
+    duration: 30 minutes
     effect: Illusion
     level: 7
     line_of_sight: true
