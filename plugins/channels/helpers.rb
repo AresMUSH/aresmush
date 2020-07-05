@@ -71,6 +71,8 @@ module AresMUSH
     def self.emit_to_channel(channel, original_msg, enactor = nil, title = nil)
       enactor = enactor || Game.master.system_character
       original_msg = "#{original_msg}".gsub(/%R/i, " ")
+      original_msg = "#{original_msg}".gsub(/[\r\n]/i, " ")
+
       channel.add_to_history "#{title} #{original_msg}", enactor
       channel.characters.each do |c|
         if (!Channels.is_muted?(c, channel))

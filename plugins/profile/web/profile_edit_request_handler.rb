@@ -82,7 +82,8 @@ module AresMUSH
           bg_shared: char.bg_shared,
           lastwill: Website.format_input_for_html(char.idle_lastwill),
           custom: CustomCharFields.get_fields_for_editing(char, enactor),
-          descs: Describe.get_web_descs_for_edit(char)
+          descs: Describe.get_web_descs_for_edit(char),
+          genders: Demographics.genders
         }
       end
     end

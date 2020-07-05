@@ -6,6 +6,8 @@ module AresMUSH
     attribute :page_color
     attribute :page_monitor, :type => DataType::Hash, :default => {}
     set :page_ignored, "AresMUSH::Character"
+
+    # OBSOLETE - use read_tracker instead
     attribute :read_page_threads, :type => DataType::Array, :default => []
 
     before_delete :delete_pages

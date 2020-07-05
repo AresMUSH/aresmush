@@ -6,7 +6,11 @@ module AresMUSH
         text = request.args[:text]
         tags = (request.args[:tags] || []).map { |t| t.downcase }.select { |t| !t.blank? }
         title = request.args[:title]
-        name = request.args[:name] || title
+        name = request.args[:name]
+        
+        if (name.blank?)
+          name = title
+        end
     
         error = Website.check_login(request)
         return error if error
@@ -19,6 +23,10 @@ module AresMUSH
         
         if (name.blank?)
           return { error: t('webportal.missing_required_fields') }
+        end
+        
+        if (name =~ /:/ && name.after(":").blank?)
+          return { error: t('webportal.page_name_blank') }
         end
       
         if (!enactor.is_approved?)

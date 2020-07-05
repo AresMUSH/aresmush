@@ -23,18 +23,20 @@ module AresMUSH
       
       def handle
         target = FS3Combat.find_named_thing(self.name, enactor)
+
+        if (!target)
+          client.emit_failure t('db.object_not_found')
+          return
+        end
             
         if !FS3Combat.can_inflict_damage(enactor, target)
           client.emit_failure t('dispatcher.not_allowed') 
-          return nil
+          return
         end
             
-        if (target)
-          FS3Combat.inflict_damage(target, self.severity, self.desc)
-          client.emit_success t('fs3combat.damage_inflicted', :name => target.name) 
-        else 
-          client.emit_failure t('db.object_not_found')
-        end
+        FS3Combat.inflict_damage(target, self.severity, self.desc)
+        client.emit_success t('fs3combat.damage_inflicted', :name => target.name) 
+      
       end
     end
   end

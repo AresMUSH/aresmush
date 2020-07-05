@@ -11,6 +11,7 @@ module AresMUSH
       end
          
       def check_chargen_locked
+        return nil if Chargen.can_manage_apps?(enactor)        
         Chargen.check_chargen_locked(enactor)
       end
       
