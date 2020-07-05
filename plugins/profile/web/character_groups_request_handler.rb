@@ -25,7 +25,12 @@ module AresMUSH
             }
           chars_in_group = char_groups[group_name] || []
           subgroup_key = Global.read_config("website", "character_gallery_subgroup") || "Position"
-          subgroup_order = Demographics.all_groups[subgroup_key]["values"].keys || []
+          
+          if (subgroup_key.blank?)
+            subgroup_order = [ '' ]
+          else
+            subgroup_order = Demographics.all_groups[subgroup_key]["values"].keys || []
+          end
 
           group_subgroups = chars_in_group
                .group_by { |c| c.group(subgroup_key) || "" }
