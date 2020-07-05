@@ -145,6 +145,13 @@ magic-items:
     - Animal Friendship
     - Object Whisper
     - Share Emotion
+  #Beto's Hook
+  Spoon Of The Perfect Flame:
+    name: Spon of the Perfect Flame
+    desc: "Much like any other ordinary cooking spoon, this one is small in size, shaped to add the perfect helping of spice to a dish or stir a cup of tea. Forged from brass common in Feixuzhicheng, a spot of vivid blue colors the spoon's center, and its handle is made to resemble the wings of the prized magical bird, the feng-huang.  A creature at home in flames. It allows the wielder to cast %XBPyromancy%xn and %XBEndure Fire%xn, to control heat and protect against it."
+    spells:
+    - Pyromancy
+    - Endure Fire
   #Calgary's Hook
   Hell's Revenant:
     name: Hell's Revenant
