@@ -146,9 +146,9 @@ magic-items:
     - Object Whisper
     - Share Emotion
   #Beto's Hook
-  Spoon Of The Perfect Flame:
-    name: Spon of the Perfect Flame
-    desc: "Much like any other ordinary cooking spoon, this one is small in size, shaped to add the perfect helping of spice to a dish or stir a cup of tea. Forged from brass common in Feixuzhicheng, a spot of vivid blue colors the spoon's center, and its handle is made to resemble the wings of the prized magical bird, the feng-huang.  A creature at home in flames. It allows the wielder to cast %XBPyromancy%xn and %XBEndure Fire%xn, to control heat and protect against it."
+  Rising Flames Spoon:
+    name: Rising Flames Spoon
+    desc: "A small spoon forged from a brass common in Feixuzhicheng. Much like any other measuring spoon, this one is carefully made to add the perfect helping of spice to a dish or tea to a cup. A glossy, vivid blue colors the inside of the spoon's bowl while the backside is engraved with stylistic smoke and flames. The brass handle is crafted to resemble the wings of the magical phoenix of the land, the feng-huang, a creature at home in flames. The arch of the bird's graceful neck forms a loop through which a cord can be strung. It allows the bearer to cast **Pyromancy** and **Endure Fire**, to control flame and protect themselves against it."
     spells:
     - Pyromancy
     - Endure Fire
