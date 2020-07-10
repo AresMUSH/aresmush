@@ -242,7 +242,7 @@ module AresMUSH
     def self.edit_post(post, enactor, subject, message)
       post.update(message: message)
       post.update(subject: subject)
-      post.mark_unread
+      Forum.mark_unread(post)
       category = post.bbs_board
       notification = t('forum.new_edit', :subject => post.subject, 
         :category => category.name, 
@@ -267,7 +267,7 @@ module AresMUSH
     def self.edit_reply(reply, enactor, message)
       reply.update(message: message)
       post = reply.bbs_post
-      post.mark_unread
+      Forum.mark_unread(post)
       category = post.bbs_board
       notification = t('forum.new_reply_edit', :subject => post.subject, 
         :category => category.name, 
