@@ -3,7 +3,7 @@ module AresMUSH
     class CharacterGroupsRequestHandler
       def handle(request)
         
-        group_key = Global.read_config("website", "character_gallery_group") || "Faction"
+        group_key = (Global.read_config("website", "character_gallery_group") || "faction").downcase
         npc_groups = Character.all.select { |c| c.is_npc? && !c.idled_out? }
            .group_by { |c| c.group(group_key) || "" }
         char_groups = Chargen.approved_chars.group_by { |c| c.group(group_key) || "No #{group_key.titlecase}" }
@@ -14,8 +14,9 @@ module AresMUSH
         npc_group_names = npc_groups.keys
         group_names = char_group_names.concat(npc_group_names).uniq
         
-        group_order = Demographics.all_groups[group_key]["values"].keys || []
-        group_names = group_names.sort_by { |g| group_order.find_index(g) || 99 }
+        group = Demographics.all_groups.select { |k, v| k.downcase == group_key }.values.first
+        group_order = (( group["values"] || {} ).keys || []).map { |g| g.downcase }
+        group_names = group_names.sort_by { |g| [group_order.find_index(g.downcase) || 99, g] }
                 
         group_names.each_with_index do |group_name, index|
           npcs_in_group = (npc_groups[group_name] || []).sort_by { |n| n.name }.map { |c| {
@@ -24,17 +25,18 @@ module AresMUSH
               }
             }
           chars_in_group = char_groups[group_name] || []
-          subgroup_key = Global.read_config("website", "character_gallery_subgroup") || "Position"
+          subgroup_key = (Global.read_config("website", "character_gallery_subgroup") || "position").downcase
           
           if (subgroup_key.blank?)
             subgroup_order = [ '' ]
           else
-            subgroup_order = Demographics.all_groups[subgroup_key]["values"].keys || []
+            subgroup = Demographics.all_groups.select { |k, v| k.downcase == subgroup_key }.values.first
+            subgroup_order = (( subgroup["values"] || {} ).keys || []).map { |g| g.downcase }
           end
 
           group_subgroups = chars_in_group
                .group_by { |c| c.group(subgroup_key) || "" }
-               .sort_by { |g, c| subgroup_order.find_index(g) || 99 }
+               .sort_by { |g, c| [subgroup_order.find_index(g.downcase) || 99, g] }
           
           subgroups = []
           
