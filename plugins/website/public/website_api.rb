@@ -60,17 +60,11 @@ module AresMUSH
     end
     
     def self.activity_status(char)
-      client = Login.find_client(char)
-      if (client)
-        return 'inactive' if char.is_afk?
-        return Status.is_idle?(client) ? 'game-inactive' : 'game-active'
-      end
-      client = Login.find_web_client(char)
-      if (!client)
-        return 'offline'
-      end
-      
-      return Status.is_idle?(client) ? 'web-inactive' : 'web-active'
+      Status.activity_status(char)
+    end
+    
+    def self.can_manage_theme?(actor)
+      actor && actor.has_permission?("manage_theme")
     end
   end
 end
