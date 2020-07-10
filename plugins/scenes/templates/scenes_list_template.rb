@@ -13,7 +13,7 @@ module AresMUSH
       def characters(scene)
         scene.participants.select { |p| !p.who_hidden }
            .sort_by { |p| p.name }
-           .map { |p| p.room == scene.room ? p.name : "%xh%xx#{p.name}%xn"}
+           .map { |p| Status.is_active?(p) ? p.name : "%xh%xx#{p.name}%xn"}
            .join(", ")
         
       end

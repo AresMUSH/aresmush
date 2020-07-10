@@ -8,7 +8,7 @@ module AresMUSH
         error = Website.check_login(request)
         return error if error
         
-        if (!Manage.can_manage_game?(enactor))
+        if (!Website.can_manage_theme?(enactor))
           return { error: t('dispatcher.not_allowed') }
         end
                 
