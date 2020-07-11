@@ -72,6 +72,17 @@ module AresMUSH
         AresResponse.new(json)
       end
       
+      def unlink_handle(handle_id, char_name, char_id)
+        params = {
+          char_name: char_name,
+          char_id: char_id,
+          api_key: Game.master.api_key,
+          game_id: Game.master.api_game_id
+        }
+        json = @rest.post("handle/#{handle_id}/unlink", params)
+        AresResponse.new(json)
+      end
+      
       def update_game(params)
         params[:api_key] = Game.master.api_key
         json = @rest.post("game/#{Game.master.api_game_id}/update", params)
