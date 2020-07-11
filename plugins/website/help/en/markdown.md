@@ -170,6 +170,8 @@ Separate parameters with a "|".  All parameters are optional.  Possible values i
 * Template - name of the wiki template to use. (default is 'blank')
 * Category - a category value that will be prepended to the page name like "category:name". (default is no category)
 * Button - text to put on the button. (default is "Create Page")
+* Tags - Space-separated list of tags you want to add to the page.
+* Class - Any extra CSS classes to add to the button.
 
 ## Disabling Extensions
 

@@ -1,12 +1,12 @@
 GEM
   remote: http://rubygems.org/
   specs:
-    activesupport (6.0.0)
+    activesupport (6.0.3.2)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       i18n (>= 0.7, < 2)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
-      zeitwerk (~> 2.1, >= 2.1.8)
+      zeitwerk (~> 2.2, >= 2.2.2)
     ansi (1.5.0)
     aws-eventstream (1.0.3)
     aws-partitions (1.203.0)
@@ -49,7 +49,7 @@ GEM
     json (2.1.0)
     libv8 (3.16.14.19)
     log4r (1.1.10)
-    minitest (5.11.3)
+    minitest (5.14.1)
     mustermann (1.0.3)
     nest (3.1.2)
       redic
@@ -57,7 +57,7 @@ GEM
       nest (~> 3)
       redic (~> 1.5.0)
       stal
-    rack (2.0.8)
+    rack (2.2.3)
     rack-protection (2.0.5)
       rack
     rake (12.3.3)
@@ -99,15 +99,15 @@ GEM
     thread_safe (0.3.6)
     tilt (2.0.9)
     timezone (1.2.12)
-    tzinfo (1.2.5)
+    tzinfo (1.2.7)
       thread_safe (~> 0.1)
-    zeitwerk (2.1.9)
+    zeitwerk (2.3.1)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  activesupport (> 5)
+  activesupport (>= 6.0.3.1)
   ansi (~> 1.5)
   aws-sdk-s3 (~> 1.8.2)
   bcrypt (~> 3.1.11)
@@ -123,7 +123,7 @@ DEPENDENCIES
   json (~> 2.1.0)
   log4r (~> 1.1.10)
   ohm (~> 3.1.1)
-  rack (>= 2.0.8)
+  rack (>= 2.1.4)
   rake (~> 12.3)
   redcarpet (~> 3.4.0)
   rspec (~> 3.7.0)

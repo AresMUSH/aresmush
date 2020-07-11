@@ -9,8 +9,10 @@ module AresMUSH
         error = Website.check_login(request)
         return error if error
         
-        if (!Manage.can_manage_game?(enactor))
+        if (!Website.can_manage_textfile?(enactor, file_type))
           return { error: t('dispatcher.not_allowed') }
+        else
+          
         end
         
         case file_type

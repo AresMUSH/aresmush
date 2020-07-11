@@ -2,7 +2,7 @@ source 'http://rubygems.org'
 
 gem 'ansi', '~> 1.5'
 
-gem 'activesupport', '> 5' 
+gem "activesupport", ">= 6.0.3.1"
 gem 'ohm', '~> 3.1.1'
 
 gem 'erubis', '~> 2.7.0'
@@ -27,4 +27,4 @@ gem 'diffy', '~> 3.2.0'
 gem 'sassc', '~> 2.2.1'
 gem 'htmlentities', '~>4.3.4'
 gem 'handlebars', '~>0.8.0'
-gem "rack", ">= 2.0.8"
+gem "rack", ">= 2.1.4"
