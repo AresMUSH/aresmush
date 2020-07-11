@@ -150,6 +150,9 @@ code {
   background-color: $background-color;
 }
 
+td > ul  {
+  padding-inline-start: 10px;
+}
 /* -------------------------
 NAVIGATION
 ------------------------- */
@@ -431,6 +434,11 @@ mark {
 
 .modal {
   z-index: 3000;
+}
+
+.row {
+    margin-right: 0px;
+    margin-left: 0px;
 }
 
 /* -------------------------
@@ -1039,8 +1047,42 @@ SCENES SCREEN
     margin: 0 2px 3px 0;
 }
  
-.live-scene-controls a, .chat-controls a {
+.live-scene-controls a, .chat-controls a, .live-scenes-controls a, .unshared-scenes-controls a  {
   padding-right: 15px;
+  display: inline-block;
+}
+
+.unshared-scene-warnings {
+  margin-bottom: 10px;
+}
+
+.live-scenes-block, .unshared-scene-block {
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+}
+
+.live-scenes-heading, .unshared-scenes-heading {
+  background-color: $border-color;
+  padding: 5px 0px 5px 0px;
+  border-radius: 5px;
+}
+
+.live-scenes-controls, .unshared-scenes-controls {
+  padding: 10px 0px;
+}
+
+
+.scene-title {
+  font-weight: bold;
+}
+
+.scene-info-label {
+  font-weight: bold;  
+}
+
+.live-scenes-block .scene-title-block {
+  background-color: $border-color;
+  padding: 10px;
 }
 
 @media (max-width: 767px) {
@@ -1246,6 +1288,21 @@ input[type='file'] {
   width: 100%;
 }
 
+.roster-char-title {
+  font-size: 1.5em;
+  background-color: $primary-color;
+  padding: .1em 1.2em;
+  color: $primary-words-color;
+  font-weight: normal;
+  border: 3px solid $primary-outline-color;
+  letter-spacing: 0.1em;
+  margin: 20px 0px 10px 0px;
+}
+
+.roster-char-warnings {
+  margin-bottom: 5px;
+}
+
 /* -------------------------
 CHAT SCREEN
 ------------------------- */
@@ -1425,6 +1482,34 @@ OTHER
   margin-bottom: 5px;
 }
 
+.xp-ability {
+  border-bottom: 1px solid $border-color;
+  padding: 5px;
+  margin: 5px;
+}
+
+.xp-ability-name {
+  font-weight: bold;
+}
+
+.xp-list {
+  margin: 5px 0px;
+}
+
+.xp-list h1 {
+  font-size: 1em;
+}
+
+.fs3-damage-block {
+  border-bottom: 1px solid $border-color;
+  padding: 5px;
+  margin: 5px;
+}
+
+.fs3-damage-title {
+  font-weight: bold;
+}
+
 .wiki-breadcrumbs {
   margin-bottom: 10px;
 }
@@ -1474,29 +1559,42 @@ ul.reference-help-list > li:not(:last-child)::after {
 }
 /*.char-scene-list li:before { content: "\2666  "; }*/
 
-@media (max-width:992px)  { 
+@media (max-width:765px)  { 
 
 .site-title {
     font-size: 2em;
     max-height: 50px;
 }
 
+h1, h2 {
+  font-size: 1.5em;
+}
+
+h3 {
+  font-size: 1.25em;
+}
+
+.char-ability-title {
+  font-size: 1.25em;
+}
+
+
 .profile-wrap { 
-    padding: 10px; 
+    padding: 5px; 
 }
 
 .profile-box { 
-    padding: 10px;
-    margin: 10px;
+    padding: 5px;
+    margin: 5px;
 }
 
 .log-wrap { 
-    padding: 10px;
+    padding: 5px;
 }
 
 .log-box { 
-    padding: 10px;
-    margin: 10px;
+    padding: 5px;
+    margin: 5px;
 }
 
 .container {
@@ -1504,6 +1602,9 @@ ul.reference-help-list > li:not(:last-child)::after {
     padding-right: 0px;
 }
 
+.profile-image-wrap, .profile-demo-wrap {
+  padding: 5px;
+}
 .body-row 
 {
   display: flex;
