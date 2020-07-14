@@ -1486,6 +1486,7 @@ OTHER
   border-bottom: 1px solid $border-color;
   padding: 5px;
   margin: 5px;
+  min-height: 50px;
 }
 
 .xp-ability-name {
@@ -1626,6 +1627,10 @@ h3 {
 
 .right-body {
   order: 1;
+}
+
+.xp-ability {
+  min-height: 100px;
 }
 
 
