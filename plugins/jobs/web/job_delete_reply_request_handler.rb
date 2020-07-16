@@ -17,6 +17,11 @@ module AresMUSH
           return { error: t('dispatcher.not_allowed') }
         end
         
+        error = Jobs.check_job_access(enactor, job)
+        if (error)
+          return { error: error }
+        end
+        
         reply.delete
         
         {
