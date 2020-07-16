@@ -24,7 +24,7 @@ module AresMUSH
     end
       
     def sorted_posts
-      bbs_posts.to_a.sort_by { |p| p.created_at }
+      bbs_posts.to_a.sort_by { |p| [ p.is_pinned? ? 0 : 1, p.created_at ] }
     end
     
     def set_upcase_name

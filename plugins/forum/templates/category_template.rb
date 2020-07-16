@@ -47,6 +47,11 @@ module AresMUSH
       def date(post)
         post.created_date_str_short(@enactor)
       end
+      
+      def subject(post)
+        pinned = post.is_pinned? ? "*" : ""
+        "#{pinned}#{post.subject}"
+      end
     end
     
   end
