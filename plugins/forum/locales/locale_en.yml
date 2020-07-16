@@ -62,3 +62,6 @@ en:
         hidden_categories_title: "Hidden:"
         forum_muted: "Forum notifications have been muted until your next login."
         forum_unmuted: "Forum notifications have been unmuted."
+        
+        message_pinned: "Message pinned."
+        message_unpinned: "Message unpinned."
