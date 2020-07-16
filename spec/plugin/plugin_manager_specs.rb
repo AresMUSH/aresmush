@@ -90,6 +90,20 @@ module AresMUSH
       end
     end
     
+    describe :sorted_plugins do
+      it "should sort custom first and others by abc" do
+        p1 = double('penguin')
+        p2 = double('custom')
+        p3 = double('armadillo')
+        allow(p1).to receive(:name) { "AresMUSH::Penguin" }
+        allow(p2).to receive(:name) { "AresMUSH::Custom" }
+        allow(p3).to receive(:name) { "AresMUSH::Armadillo" }
+        expect(@manager).to receive(:plugins) { [ p1, p2, p3 ]}
+        
+        expect(@manager.sorted_plugins).to eq [ p2, p3, p1 ]
+      end
+    end
+    
   end
 end
 

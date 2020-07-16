@@ -15,7 +15,8 @@ module AresMUSH
       
       def handle        
         Scenes.with_a_scene(self.scene_num, client) do |scene|
-          if (scene.temp_room && !Scenes.can_edit_scene?(enactor, scene))
+          can_stop = Scenes.can_manage_scenes?(enactor) || Scenes.can_edit_scene?(enactor, scene)
+          if (scene.temp_room && !can_stop)
             client.emit_failure t('dispatcher.not_allowed')
             return
           end

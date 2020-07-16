@@ -1,7 +1,7 @@
 module AresMUSH
   module Scenes
     
-    def self.can_manage_scene?(actor, scene)
+    def self.can_manage_scenes?(actor)
       return false if !actor
       actor.has_permission?("manage_scenes")
     end
@@ -25,7 +25,7 @@ module AresMUSH
       return false if !actor
       return true if scene.owner == actor
       if (scene.shared)
-        return true if Scenes.can_manage_scene?(actor, scene)
+        return true if Scenes.can_manage_scenes?(actor)
       end
       scene.participants.include?(actor)
     end
@@ -34,7 +34,7 @@ module AresMUSH
       return false if !actor
       real_poses = scene.scene_poses.select { |p| !p.is_ooc }
       return true if (scene.owner == actor && (real_poses.count == 0) && !scene.scene_log)
-      return true if Scenes.can_manage_scene?(actor, scene)
+      return true if Scenes.can_manage_scenes?(actor)
       return false
     end
     
