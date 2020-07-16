@@ -11,7 +11,7 @@ module AresMUSH
         active = Scene.all.select { |s| !s.completed }.sort { |s1, s2| sort_scene(s1, s2, enactor) }.reverse.map { |s| {
                   id: s.id,
                   title: s.title,
-                  summary: Website.format_markdown_for_html(s.summary),
+                  summary: (can_read?(enactor, s) && !s.summary.blank?) ? Website.format_markdown_for_html(s.summary) : nil,
                   content_warning: s.content_warning,
                   limit: s.limit,
                   location: Scenes.can_read_scene?(enactor, s) ? s.location : t('scenes.private'),
@@ -35,7 +35,8 @@ module AresMUSH
                   updated: can_read?(enactor, s) ? OOCTime.local_long_timestr(enactor, s.last_activity) : nil,
                   watching: Scenes.is_watching?(s, enactor),
                   participating: Scenes.is_participant?(s, enactor),
-                  last_posed: can_read?(enactor, s) && s.last_posed ? s.last_posed.name : nil
+                  last_posed: can_read?(enactor, s) && s.last_posed ? s.last_posed.name : nil,
+                  last_pose_time_str: s.last_pose_time_str(enactor)
                 }}
         if (enactor)        
           unshared = enactor.unshared_scenes.sort_by { |s| s.id.to_i }.reverse.map { |s| {

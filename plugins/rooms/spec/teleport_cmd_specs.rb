@@ -141,6 +141,7 @@ module AresMUSH
             allow(Rooms).to receive(:find_destination) { [@dest] }
             allow(@handler).to receive(:find_targets) { [ {:client => @client, :char => @enactor } ] }
             allow(@dest).to receive(:scene) { @scene }
+            allow(@scene).to receive(:owner) { double }
             allow(@scene).to receive(:is_private?) { true }
           end
           
