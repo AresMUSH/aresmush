@@ -11,7 +11,7 @@ module AresMUSH
       end
       
       def display_name
-        @channel.display_name(false)
+        Channels.display_name(@enactor, @channel, false)
       end
       
       def talk_roles
@@ -33,7 +33,11 @@ module AresMUSH
         else
           nil
         end
-      end      
+      end  
+      
+      def color
+        Channels.channel_color(@enactor, @channel)
+      end  
     end
   end
 end
