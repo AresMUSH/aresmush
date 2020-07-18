@@ -50,7 +50,10 @@ module AresMUSH
              replies: replies,
              can_reply: Forum.can_write_to_category?(enactor, category),
              can_edit: Forum.can_edit_post?(enactor, topic),
-             authors: Forum.get_authorable_chars(enactor, category)
+             authors: Forum.get_authorable_chars(enactor, category),
+             can_pin: Forum.can_manage_forum?(enactor),
+             is_pinned: topic.is_pinned
+             
         }
       end
     end

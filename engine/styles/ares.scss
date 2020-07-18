@@ -1047,9 +1047,13 @@ SCENES SCREEN
     margin: 0 2px 3px 0;
 }
  
-.live-scene-controls a, .chat-controls a, .live-scenes-controls a, .unshared-scenes-controls a  {
+.live-scene-controls a, .chat-controls a,  .unshared-scenes-controls a  {
   padding-right: 15px;
   display: inline-block;
+}
+
+.live-scenes-controls a {
+  padding-right: 10px;
 }
 
 .unshared-scene-warnings {
@@ -1067,8 +1071,13 @@ SCENES SCREEN
   border-radius: 5px;
 }
 
-.live-scenes-controls, .unshared-scenes-controls {
+.unshared-scenes-controls {
   padding: 10px 0px;
+}
+
+.live-scenes-controls {
+  padding: 0px;
+  text-align: right;
 }
 
 
@@ -1085,6 +1094,9 @@ SCENES SCREEN
   padding: 10px;
 }
 
+.content-warning-label {
+  margin: 0px 5px;
+}
 @media (max-width: 767px) {
     .scene-controls-left {
         display: flex;
@@ -1476,16 +1488,31 @@ OTHER
 
 
 .xp-progress {
-  max-width: 200px;
+  max-width: 100%;
   width: 200px;
   display: inline-block;
   margin-bottom: 5px;
+  position: relative;
+  
+}
+
+.xp-progress-points {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    text-align: center;
 }
 
 .xp-ability {
   border-bottom: 1px solid $border-color;
   padding: 5px;
-  margin: 5px;
+  margin: 5px 0px;
+  min-height: 50px;
+}
+
+.xp-ability .col {
+  padding-right: 5px;
+  padding-left: 5px;
 }
 
 .xp-ability-name {
@@ -1626,6 +1653,10 @@ h3 {
 
 .right-body {
   order: 1;
+}
+
+.xp-ability {
+  min-height: 100px;
 }
 
 

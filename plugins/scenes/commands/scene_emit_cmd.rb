@@ -1,21 +1,14 @@
 module AresMUSH
   module Scenes
-    class SceneAddPoseCmd
+    class SceneEmitCmd
       include CommandHandler
       
-      attr_accessor :pose
-      
-      attr_accessor :all, :scene_num
+      attr_accessor :pose, :scene_num
       
       def parse_args
-        if (cmd.args =~ /=/)
-          args = cmd.parse_args(ArgParser.arg1_equals_arg2)          
-          self.scene_num = integer_arg(args.arg1)
-          self.pose = trim_arg(args.arg2)
-        else
-          self.scene_num = enactor_room.scene ? enactor_room.scene.id : nil
-          self.pose = trim_arg(cmd.args)
-        end
+        args = cmd.parse_args(ArgParser.arg1_equals_arg2)          
+        self.scene_num = integer_arg(args.arg1)
+        self.pose = trim_arg(args.arg2)
       end
       
       def log_command
@@ -34,8 +27,10 @@ module AresMUSH
             return
           end
           
-          Scenes.emit(enactor, self.pose)
-          client.emit_success t('scenes.pose_added', :pose => self.pose )          
+          Scenes.emit_pose(enactor, self.pose, true, false, nil, false, scene.room)  
+          if (scene.room != enactor.room)      
+            client.emit_success t('scenes.pose_added.' )          
+          end
         end
       end
     end

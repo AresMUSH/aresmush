@@ -4,6 +4,7 @@ module AresMUSH
     
     attribute :subject
     attribute :message
+    attribute :is_pinned, :type => DataType::Boolean
         
     reference :author, "AresMUSH::Character"
     reference :bbs_board, "AresMUSH::BbsBoard"
@@ -30,6 +31,15 @@ module AresMUSH
         return self.updated_at
       else
         return self.sorted_replies[-1].updated_at
+      end
+    end
+    
+    def last_updated_by
+      if (bbs_replies.empty?)
+        return self.author_name
+      else
+        updater = self.sorted_replies[-1].author
+        return author ? author.name : t('global.deleted_character')
       end
     end
     
@@ -72,6 +82,10 @@ module AresMUSH
       else
         OOCTime.local_short_timestr(viewer, self.last_updated)
       end
+    end
+    
+    def is_pinned?
+      self.is_pinned
     end
   end
 end

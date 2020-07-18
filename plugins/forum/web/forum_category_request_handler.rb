@@ -18,7 +18,7 @@ module AresMUSH
           return { error: t('forum.cannot_access_category') }
         end
 
-        posts = category.sorted_posts.reverse
+        posts = category.bbs_posts.to_a.sort_by { |p| [ p.is_pinned? ? 1 : 0, p.last_updated ] }.reverse
            .map { |p| {
              id: p.id,
              category_id: p.bbs_board.id,
@@ -26,7 +26,10 @@ module AresMUSH
              unread: enactor && p.is_unread?(enactor),
              date: p.created_date_str(enactor),
              author: p.author_name,
-             last_activity: p.last_activity_time_str(enactor)
+             last_activity: OOCTime.local_long_timestr(enactor, p.last_updated),
+             last_updated_by: p.last_updated_by,
+             is_pinned: p.is_pinned?,
+             
            }}
               
          {
