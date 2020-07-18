@@ -54,7 +54,7 @@ module AresMUSH
           end
       
           if (!search_log.blank?)
-            scenes = scenes.select { |s| "#{s.summary} #{s.scene_log.log}" =~ /\b#{searchLog}\b/i }
+            scenes = scenes.select { |s| "#{s.summary} #{s.scene_log.log}" =~ /\b#{search_log}\b/i }
           end
       
           scenes = scenes.sort_by { |s| s.date_shared || s.created_at }.reverse
@@ -63,13 +63,15 @@ module AresMUSH
           paginator = Paginator.paginate(scenes, page, scenes_per_page)
       
           if (paginator.out_of_bounds?)
-            return { scenes: [], pages: nil }
-          end
+            data = { scenes: [], pages: nil }
+          else
         
-          data = {  
-            scenes: paginator.page_items.map { |s| Scenes.build_scene_summary_web_data(s) },
-            pages: paginator.total_pages.times.to_a.map { |i| i+1 }
-          }
+            data = {  
+              scenes: paginator.page_items.map { |s| Scenes.build_scene_summary_web_data(s) },
+              pages: paginator.total_pages.times.to_a.map { |i| i+1 }
+            }
+            
+          end
           
           Global.client_monitor.notify_web_clients(:search_results, "scenes|#{search_token}|#{data.to_json}", true) do |char|
             char == enactor
