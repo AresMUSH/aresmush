@@ -18,7 +18,7 @@ module AresMUSH
           return { error: t('forum.cannot_access_category') }
         end
 
-        posts = category.bbs_posts.to_a.sort_by { |p| [ p.is_pinned? ? 0 : 1, p.last_updated ] }
+        posts = category.bbs_posts.to_a.sort_by { |p| [ p.is_pinned? ? 1 : 0, p.last_updated ] }.reverse
            .map { |p| {
              id: p.id,
              category_id: p.bbs_board.id,
