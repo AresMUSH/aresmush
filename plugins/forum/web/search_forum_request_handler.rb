@@ -14,10 +14,6 @@ module AresMUSH
         
         posts = BbsPost.all.select { |p| Forum.can_read_category?(enactor, p.bbs_board) }
 
-        if (!search_text.blank?)
-          posts = posts.select { |p| "#{p.message} #{p.bbs_replies.map { |r| r.message }.join(' ')}" =~ /\b#{search_text}\b/i }
-        end
-        
         if (!search_title.blank?)
           posts = posts.select { |p| p.subject =~ /#{search_title}/i }
         end
@@ -25,6 +21,11 @@ module AresMUSH
         if (!search_author.blank?)
           posts = posts.select { |p| p.author && (p.author.name.upcase == search_author.upcase) }
         end
+
+        if (!search_text.blank?)
+          posts = posts.select { |p| "#{p.message} #{p.bbs_replies.map { |r| r.message }.join(' ')}" =~ /\b#{search_text}\b/i }
+        end
+        
 
         posts.to_a.sort_by { |p| p.created_at }.reverse
                    .map { |p| {

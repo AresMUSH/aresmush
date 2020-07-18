@@ -32,9 +32,9 @@ module AresMUSH
           options.update(announce: announce_on)
           
           if (announce_on)
-            client.emit_success "%xn#{t('channels.announce_enabled', :name => channel.display_name)}"
+            client.emit_success "%xn#{t('channels.announce_enabled', :name => Channels.display_name(enactor, channel))}"
           else
-            client.emit_success "%xn#{t('channels.announce_disabled', :name => channel.display_name)}"
+            client.emit_success "%xn#{t('channels.announce_disabled', :name => Channels.display_name(enactor, channel))}"
           end          
         end
       end

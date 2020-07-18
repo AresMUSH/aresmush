@@ -89,7 +89,10 @@ module AresMUSH
     end
     
     def self.welcome_message_args(model)
-      args = { name: model.name, rp_hooks: model.rp_hooks || t('global.none') }
+      args = { 
+        name: model.name, 
+        rp_hooks: model.rp_hooks || t('global.none'),
+        profile_link: "#{Game.web_portal_url}/char/#{model.name}" }
       
       Demographics.all_groups.keys.each do |k|
         args[k.downcase.to_sym] = model.group(k)

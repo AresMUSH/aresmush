@@ -74,8 +74,8 @@ module AresMUSH
           end
         when "addchar", "removechar"
           return SceneCharCmd
-        when "addpose"
-          return SceneAddPoseCmd
+        when "emit"
+          return SceneEmitCmd
         when "home"
           return SceneHomeCmd
         when "join"

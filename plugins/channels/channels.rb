@@ -27,6 +27,8 @@ module AresMUSH
           return ChannelColorCmd
         when "create"
           return ChannelCreateCmd
+        when "defaultcolor"
+          return ChannelDefaultColorCmd
         when "defaultalias"
           return ChannelDefaultAlias
         when "delete"

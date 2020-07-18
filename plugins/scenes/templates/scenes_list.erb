@@ -4,11 +4,8 @@
 <%= divider %>
 %xh<%= left(title(scene), 36) %>%xn <%= left(organizer(scene), 25) %> <%= left(scene.scene_type, 10) %> <%= last_activity(scene) %>
 <%= left(location(scene), 36) %> <%= t('scenes.players_title')%> <%= characters(scene) %> 
-<% if scene.room && scene.room.scene_set && !scene.private_scene %>
-<%= scene.room.scene_set%>
-<% end %>
 <% if scene.summary && !scene.private_scene %>
-<%= scene.summary%>
+<%= summary(scene) %>
 <% end %>
 <% if scene.limited_participation? %>
 %xh%xy<%= t('scenes.limited_participation') %>:%xn <%= scene.limit %>

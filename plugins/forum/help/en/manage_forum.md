@@ -49,3 +49,9 @@ You can edit and delete other peoples' posts as well as their own.  You can also
 > **Tip:** It is recommended that you archive a category before doing a mass delete, as there is no 'undo'.  Deleted messages are permanently gone.
 
 `forum/delete <category>/<#>-<#>`
+
+## Pinning Posts
+
+Posts can be pinned (or made sticky) so they show up first regardless of when they were posted.
+
+`forum/pin <category>/<#>=<on or off>`

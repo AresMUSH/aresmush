@@ -158,6 +158,19 @@ module AresMUSH
     
     def days_since_last_activity
       (Time.now - self.last_activity)/86400
+    end    
+    
+    def last_pose_time_str(viewer)
+      last_pose = self.poses_in_order.to_a[-1]
+      return nil if !last_pose
+      
+      elapsed = Time.now - last_pose.updated_at
+      if (elapsed < 86400 * 30)
+        TimeFormatter.format(elapsed)
+      else
+        OOCTime.local_short_timestr(viewer, last_pose.updated_at)
+      end
     end
+    
   end
 end
