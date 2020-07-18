@@ -28,7 +28,7 @@ module AresMUSH
       if (intersection.empty?)
         return nil
       end
-      intersection = intersection.map { |c| Channels.display_name(nil, channel) }
+      intersection = intersection.map { |c| Channels.display_name(nil, c) }
       Channels.name_with_markers(intersection.join(", "))
     end
     
