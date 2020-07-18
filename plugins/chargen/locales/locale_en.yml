@@ -66,7 +66,7 @@ en:
         no_app_submitted: "%{name} has not submitted their character for approval."
         app_job_updated: "Application job #%{num} '%{title}' updated."
         
-        cant_be_changed: "You can't use this command once you've been approved.  See 'help xp' for advancement commands."
+        cant_be_changed: "You can't use this command once you've been approved."
         app_in_progress: "Unsubmit your character application if you need to make changes."
         
         approved: "Approved"

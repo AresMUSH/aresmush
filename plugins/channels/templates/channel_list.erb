@@ -5,7 +5,7 @@
 <%= channel_on_indicator(c) -%>
  <%= left(channel_name(c),20) -%>
  <% if is_on_channel?(c) %>
- <%= c.color %><%= left(channel_alias(c), 15) %>%xn<%= '' -%>
+ <%= channel_color(c) %><%= left(channel_alias(c), 15) %>%xn<%= '' -%>
  <% else %>
  <%= left('', 15) -%>
  <% end %>

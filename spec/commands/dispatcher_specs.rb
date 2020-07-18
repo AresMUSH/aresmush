@@ -39,7 +39,7 @@ module AresMUSH
           end
           @handler = double
           @handler_class = double
-          allow(plugin_manager).to receive(:plugins) { [] }
+          allow(plugin_manager).to receive(:sorted_plugins) { [] }
         end
         
         it "performs alias substitutions" do
@@ -59,19 +59,19 @@ module AresMUSH
         end
         
         it "gets the list of plugins from the plugin manager" do
-          expect(plugin_manager).to receive(:plugins) { [] }
+          expect(plugin_manager).to receive(:sorted_plugins) { [] }
           @dispatcher.on_command(@client, @command)
         end
       
         it "asks each plugin if it wants a command" do
-          allow(plugin_manager).to receive(:plugins) { [ @plugin1, @plugin2 ] }
+          allow(plugin_manager).to receive(:sorted_plugins) { [ @plugin1, @plugin2 ] }
           expect(@plugin1).to receive(:get_cmd_handler).with(@client, @command, @enactor) { false }
           expect(@plugin2).to receive(:get_cmd_handler).with(@client, @command, @enactor) { false }
           @dispatcher.on_command(@client, @command)
         end      
             
         it "stops after finding one plugin to handle the command" do
-          allow(plugin_manager).to receive(:plugins) { [ @plugin1, @plugin2 ] }
+          allow(plugin_manager).to receive(:sorted_plugins) { [ @plugin1, @plugin2 ] }
           allow(@handler_class).to receive(:new).with(@client, @command, @enactor) { @handler }
           expect(@handler).to receive(:on_command)
           expect(@plugin1).to receive(:get_cmd_handler).with(@client, @command, @enactor) { @handler_class }
@@ -80,7 +80,7 @@ module AresMUSH
         end
       
         it "continues processing if the first plugin doesn't want the command" do
-          allow(plugin_manager).to receive(:plugins) { [ @plugin1, @plugin2 ] }
+          allow(plugin_manager).to receive(:sorted_plugins) { [ @plugin1, @plugin2 ] }
           allow(@handler_class).to receive(:new).with(@client, @command, @enactor) { @handler }
           expect(@handler).to receive(:on_command)
           expect(@plugin1).to receive(:get_cmd_handler).with(@client, @command, @enactor) { nil }
@@ -89,7 +89,7 @@ module AresMUSH
         end
 
         it "sends huh message if nobody handles the command" do
-          allow(plugin_manager).to receive(:plugins) { [ @plugin1, @plugin2 ] }
+          allow(plugin_manager).to receive(:sorted_plugins) { [ @plugin1, @plugin2 ] }
           expect(@plugin1).to receive(:get_cmd_handler).with(@client, @command, @enactor) { nil }
           expect(@plugin2).to receive(:get_cmd_handler).with(@client, @command, @enactor) { nil }
           expect(@client).to receive(:emit_ooc).with("dispatcher.huh")
@@ -104,14 +104,14 @@ module AresMUSH
         end
       
         it "keeps asking plugins if they want the command after an error" do
-          allow(plugin_manager).to receive(:plugins) { [ @plugin1, @plugin2 ] }
+          allow(plugin_manager).to receive(:sorted_plugins) { [ @plugin1, @plugin2 ] }
           expect(@plugin1).to receive(:get_cmd_handler).and_raise("an error")
           expect(@plugin2).to receive(:get_cmd_handler).with(@client, @command, @enactor)
           @dispatcher.on_command(@client, @command)
         end
         
         it "catches exceptions from within the command handling" do
-          allow(plugin_manager).to receive(:plugins) { [ @plugin1 ] }
+          allow(plugin_manager).to receive(:sorted_plugins) { [ @plugin1 ] }
           allow(@plugin1).to receive(:get_cmd_handler).and_raise("an error")
           allow(@command).to receive(:raw) { "raw" }
           expect(@client).to receive(:emit_failure).with("dispatcher.unexpected_error")
@@ -119,7 +119,7 @@ module AresMUSH
         end
       
         it "allows a plugin exit exception to bubble up" do
-          allow(plugin_manager).to receive(:plugins) { [ @plugin1 ] }
+          allow(plugin_manager).to receive(:sorted_plugins) { [ @plugin1 ] }
           allow(@plugin1).to receive(:get_cmd_handler) { true }
           allow(@plugin1).to receive(:get_cmd_handler).and_raise(SystemExit)
           expect {@dispatcher.on_command(@client, @command)}.to raise_error(SystemExit)
@@ -135,7 +135,7 @@ module AresMUSH
       it "should send the event to any class that handles it" do
         plugin1 = double
         plugin2 = double
-        allow(plugin_manager).to receive(:plugins) { [ plugin1, plugin2 ] }
+        allow(plugin_manager).to receive(:sorted_plugins) { [ plugin1, plugin2 ] }
         event = double
         handler_class = double
         handler1 = double
@@ -152,7 +152,7 @@ module AresMUSH
       it "should not send event to a class that doesn't want it" do
         plugin1 = double
         plugin2 = double
-        allow(plugin_manager).to receive(:plugins) { [ plugin1, plugin2 ] }
+        allow(plugin_manager).to receive(:sorted_plugins) { [ plugin1, plugin2 ] }
         event = double
         handler_class = double
         handler = double

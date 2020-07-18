@@ -11,7 +11,7 @@ module AresMUSH
       end
       
       def channel_name(channel)
-        channel.display_name(false)
+        Channels.display_name(@enactor, channel, false)
       end
       
       def channel_roles(channel)
@@ -38,7 +38,11 @@ module AresMUSH
       def channel_alias(channel)
         options = Channels.get_channel_options(@enactor, channel)
         (options.aliases || []).join(", ")
-      end      
+      end
+      
+      def channel_color(channel)
+        Channels.channel_color(@enactor, channel)
+      end
     end
   end
 end

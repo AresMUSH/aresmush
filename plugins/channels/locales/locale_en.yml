@@ -10,6 +10,7 @@ en:
         channel_being_deleted: "This channel is being deleted by %{name}."
 
         desc_set: "Channel description set."
+        default_color_set: "The channel will now be displayed like so by default: %{name}."
         color_set: "The channel will now be displayed like so: %{name}."
         channel_renamed: "Channel %{old_name} is now named %{new_name}."
         roles_set: "Channel roles updated."
