@@ -3,7 +3,7 @@ module AresMUSH
   module Forum
     
     def self.can_manage_forum?(actor)
-      actor.has_permission?("manage_forum")
+      actor && actor.has_permission?("manage_forum")
     end
 
     # NOTE: May return nil
