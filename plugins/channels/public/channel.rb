@@ -81,5 +81,37 @@ module AresMUSH
     def sorted_channel_messages
       self.channel_messages.to_a.sort_by { |m| m.created_at }
     end
+    
+    def set_talk_roles(role_names)
+      role_names_upcase = role_names.map { |r| r.upcase }
+      self.talk_roles.each do |r|
+        if (!role_names_upcase.include?(r.name_upcase))
+          self.talk_roles.delete r
+        end
+      end
+    
+      role_names.each do |r|
+        role = Role.find_one_by_name(r)
+        if (!self.talk_roles.include?(role))
+          self.talk_roles.add role
+        end
+      end
+    end
+    
+    def set_join_roles(role_names)
+      role_names_upcase = role_names.map { |r| r.upcase }
+      self.join_roles.each do |r|
+        if (!role_names_upcase.include?(r.name_upcase))
+          self.join_roles.delete r
+        end
+      end
+    
+      role_names.each do |r|
+        role = Role.find_one_by_name(r)
+        if (!self.join_roles.include?(role))
+          self.join_roles.add role
+        end
+      end
+    end
   end
 end

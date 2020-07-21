@@ -62,6 +62,11 @@ module AresMUSH
       self.wiki_page_versions.to_a.sort_by { |v| v.created_at }
     end
     
+    def last_edited
+      ver = self.current_version 
+      ver ? ver.created_at : self.updated_at
+    end
+    
     def text
       latest = self.current_version
       latest ? latest.text : ""

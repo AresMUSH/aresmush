@@ -181,6 +181,10 @@ module AresMUSH
       errors
     end
     
+    def sorted_plugins
+      self.plugins.sort_by { |p| [ p.name == "AresMUSH::Custom" ? 0 : 1, p.name ]}
+    end
+    
     private    
     
     def find_plugin_const(name)

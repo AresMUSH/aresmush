@@ -233,7 +233,7 @@ module AresMUSH
       all_parties = job.all_parties
       
       data = "#{job.id}|#{message}|#{data.to_json}"
-      Global.client_monitor.notify_web_clients(:job_update, data) do |char|
+      Global.client_monitor.notify_web_clients(:job_update, data, true) do |char|
         char && (Jobs.can_access_category?(char, job.job_category) || notify_participants && all_parties.include?(char))
       end
       
@@ -279,29 +279,29 @@ module AresMUSH
       return nil
     end
     
-    def self.mark_read(job, char)      
-      jobs = char.read_jobs || []
-      jobs << job.id.to_s
-      char.update(read_jobs: jobs)
+    def self.mark_read(job, char)  
+      tracker = char.get_or_create_read_tracker 
+      tracker.mark_job_read(job)   
       Login.mark_notices_read(char, :job, job.id)
     end
     
     def self.mark_unread(job)
       chars = Character.all.select { |c| !Jobs.is_unread?(job, c) }
       chars.each do |char|
-        jobs = char.read_jobs || []
-        jobs.delete job.id.to_s
-        char.update(read_jobs: jobs)
+        tracker = char.get_or_create_read_tracker
+        tracker.mark_job_unread(job)
       end
     end
     
     def self.is_unread?(job, char)
-      !(char.read_jobs || []).include?(job.id.to_s)
+      tracker = char.get_or_create_read_tracker
+      tracker.is_job_unread?(job)
     end
     
     def self.has_participant_by_name?(job, name)
       name_upcase = "#{name}".upcase
       return true if job.author && (job.author.name.upcase == name_upcase)
+      return true if job.assigned_to && job.assigned_to.name_upcase == name_upcase
       return true if job.participants.any? { |p| p.name.upcase == name_upcase }
       return false
     end

@@ -41,7 +41,7 @@ module AresMUSH
           StartSpanBlockMarkdownExtension,
           EndDivBlockMarkdownExtension,
           EndSpanBlockMarkdownExtension,
-
+          CreateWikiPageButton
         ]
       end
       

@@ -1,6 +1,6 @@
 ---
 toc: 4 - Writing the Story
-summary: Starting scenes.
+summary: Starting and editing scenes.
 order: 2
 aliases:
 - scene join
@@ -57,15 +57,12 @@ A scene can be open (anyone's invited), private (only those invited should join 
 `scene/uninvite <name>[=<scene num>]` - Withdraws an invitation.
 `scene/leave` - Leaves a scene and returns to your designated scene home location.
 
-`scene/repose [# of poses to show]` - Quick log catch-up of your current scene.
-`scene/log [scene #]` - Spam yourself with the entire log.
-
 ## Editing Poses
 
 `scene/replace <text in the form of an emit>` - Replaces your last pose.
 `scene/typo <text in the form of an emit>` - Silent replace for small typos.
 `scene/undo` - Removes your last pose.
-`scene/addpose <emit>` - Add a pose without emitting to other participants. (useful for a pose that happened before the scene started)
+`scene/emit <scene num>=<emit>` - Add a pose to a scene that isn't in your room.
 
 ## Stopping a Scene
 

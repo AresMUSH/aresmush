@@ -12,10 +12,10 @@ module AresMUSH
       char.is_approved? || char.chargen_locked
     end
     
-    def self.check_chargen_locked(char)
-      return false if char.is_admin?
-      return t('chargen.cant_be_changed') if char.is_approved?
-      return t('chargen.app_in_progress') if char.chargen_locked
+    def self.check_chargen_locked(target)
+      return nil if target.is_admin?
+      return t('chargen.cant_be_changed') if target.is_approved?
+      return t('chargen.app_in_progress') if target.chargen_locked
       return nil
     end
     
@@ -89,7 +89,10 @@ module AresMUSH
     end
     
     def self.welcome_message_args(model)
-      args = { name: model.name, rp_hooks: model.rp_hooks || t('global.none') }
+      args = { 
+        name: model.name, 
+        rp_hooks: model.rp_hooks || t('global.none'),
+        profile_link: "#{Game.web_portal_url}/char/#{model.name}" }
       
       Demographics.all_groups.keys.each do |k|
         args[k.downcase.to_sym] = model.group(k)

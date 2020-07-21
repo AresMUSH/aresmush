@@ -20,7 +20,7 @@ Channel administrators can add or remove characters from a channel:
 
 ## Channel Appearance
 `channel/describe <channel>=<description>`
-`channel/color <channel>=<ansi prefix>` - Sets a channel's color.
+`channel/defaultcolor <channel>=<ansi prefix>` - Sets a channel's default color.
 
 **Tip:** Use full ansi code(s) not just the color name: \%xc  You can use multiple codes: \%xh\%xr
 

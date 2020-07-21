@@ -18,3 +18,5 @@ en:
         game_already_registered: "This game is already registered with AresCentral.  If you're having trouble with your game directory information, please ask for help on the forums."
         game_registered: "You register this game with AresCentral.  Note: The game will only appear in the directory if you have the game marked as public in the game configuration."
         game_not_registered: "This game hasn't been registered with AresCentral, so handle functionality is currently disabled.  Please contact your local game admin for more information."
+        
+        unlink_failed: "There was a problem unlinking the character to your handle: %{error}"

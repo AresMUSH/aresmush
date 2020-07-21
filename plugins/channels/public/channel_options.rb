@@ -8,6 +8,7 @@ module AresMUSH
     attribute :title
     attribute :aliases, :type => DataType::Array
     attribute :muted, :type => DataType::Boolean
+    attribute :color
     attribute :show_titles, :type => DataType::Boolean, :default => true
     attribute :announce, :type => DataType::Boolean, :default => true
     

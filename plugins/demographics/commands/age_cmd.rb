@@ -11,6 +11,9 @@ module AresMUSH
       end
          
       def check_chargen_locked
+        return nil if Chargen.can_manage_apps?(enactor)    
+        enabled_after_cg = Global.read_config("demographics", "editable_properties")
+        return nil if enabled_after_cg.include?('birthdate')
         Chargen.check_chargen_locked(enactor)
       end
       

@@ -57,6 +57,7 @@ module AresMUSH
             @dest = double
             allow(Rooms).to receive(:find_destination) { [@dest] }
             allow(@handler).to receive(:find_targets) { [ {:client => @client, :char => @enactor } ] }
+            allow(@dest).to receive(:scene) { nil }
           end
           
           it "should go to the room" do
@@ -76,6 +77,7 @@ module AresMUSH
             @dest = double
             @other_char = double
             @other_client = double
+            allow(@dest).to receive(:scene) { nil }
             allow(@enactor).to receive(:name) { "Bob" }
             allow(Rooms).to receive(:find_destination) { [@dest] }
             allow(@handler).to receive(:find_targets) { [ {:client => @other_client, :char => @other_char } ] }
@@ -119,8 +121,10 @@ module AresMUSH
         
         context "targets not found" do          
           before do
+            @dest = double
             allow(@handler).to receive(:find_targets) { [] }
-            allow(Rooms).to receive(:find_destination) { [double] }
+            allow(Rooms).to receive(:find_destination) { [@dest] }
+            allow(@dest).to receive(:scene) { nil }
             allow(@client).to receive(:emit_failure)
           end  
           
@@ -129,6 +133,43 @@ module AresMUSH
             @handler.handle
           end
         end
+         
+        context "teleporting into private room should fail if not allowed to read scene" do
+          before do
+            @dest = double
+            @scene = double
+            allow(Rooms).to receive(:find_destination) { [@dest] }
+            allow(@handler).to receive(:find_targets) { [ {:client => @client, :char => @enactor } ] }
+            allow(@scene).to receive(:owner) { double }
+            allow(@dest).to receive(:scene) { @scene }
+            allow(Scenes).to receive(:can_read_scene?).with(@enactor, @scene) { false }
+            allow(@dest).to receive(:owner) { nil }
+          end
+          
+          it "should not go anywhere" do
+            expect(@client).to receive(:emit_failure)
+            expect(Rooms).to_not receive(:move_to)
+            @handler.handle
+          end
+        end  
+        
+        context "teleporting into private room should succeed if allowed to read scene" do
+          before do
+            @dest = double
+            @scene = double
+            allow(Rooms).to receive(:find_destination) { [@dest] }
+            allow(@handler).to receive(:find_targets) { [ {:client => @client, :char => @enactor } ] }
+            allow(@scene).to receive(:owner) { double }
+            allow(@dest).to receive(:scene) { @scene }
+            allow(Scenes).to receive(:can_read_scene?).with(@enactor, @scene) { true }
+            allow(@dest).to receive(:owner) { nil }
+          end
+          
+          it "should go to the room" do
+            expect(Rooms).to receive(:move_to).with(@client, @enactor, @dest)
+            @handler.handle
+          end
+        end  
         
       end
     end

@@ -13,7 +13,7 @@ module AresMUSH
       def characters(scene)
         scene.participants.select { |p| !p.who_hidden }
            .sort_by { |p| p.name }
-           .map { |p| p.room == scene.room ? p.name : "%xh%xx#{p.name}%xn"}
+           .map { |p| Status.is_active?(p) ? p.name : "%xh%xx#{p.name}%xn"}
            .join(", ")
 
       end
@@ -28,16 +28,23 @@ module AresMUSH
       end
 
       def location(scene)
-        scene.private_scene ? t('scenes.private') : "#{scene.location} (#{location_type(scene)})"
+        self.can_read?(scene) ? "#{scene.location} (#{location_type(scene)})" : t('scenes.private')
       end
 
       def last_activity(scene)
+        return "-" if !self.can_read?(scene)
         return "-" if !scene.last_activity
         TimeFormatter.format(Time.now - scene.last_activity)
       end
 
       def location_type(scene)
         scene.temp_room ? t('scenes.temproom_scene') : t('scenes.grid_scene')
+      end
+
+      def summary(scene)
+        return nil if !scene.summary
+        return scene.summary if scene.summary.length < 150
+        "#{scene.summary.truncate(150)}..."
       end
 
       def privacy(scene)
@@ -55,6 +62,10 @@ module AresMUSH
           message = t('scenes.open')
         end
         "#{color}#{message}%xn"
+      end
+
+      def can_read?(scene)
+        Scenes.can_read_scene?(@enactor, scene)
       end
     end
   end

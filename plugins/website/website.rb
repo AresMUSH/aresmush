@@ -40,6 +40,8 @@ module AresMUSH
           return WebCmdEventHandler
         when "ConfigUpdatedEvent", "GameStartedEvent"
           return WebConfigUpdatedEventHandler
+        when "CronEvent"
+          return WebCronEventHandler
       end
       
       nil
@@ -80,6 +82,8 @@ module AresMUSH
         return FileDeleteRequestHandler
       when "files"
         return GetFilesRequestHandler
+      when "folders"
+        return GetFoldersRequestHandler
       when "updateFile"
         return FileUpdateRequestHandler
       when "uploadFile"

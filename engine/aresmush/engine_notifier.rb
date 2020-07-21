@@ -20,14 +20,14 @@ module AresMUSH
       Global.client_monitor.emit msg, &trigger_block
       
       formatted_msg = MushFormatter.format(msg)
-      Global.client_monitor.notify_web_clients type, formatted_msg, &trigger_block
+      Global.client_monitor.notify_web_clients type, formatted_msg, false, &trigger_block
     end
     
     def notify_ooc(type, msg, &trigger_block)
       Global.client_monitor.emit_ooc msg, &trigger_block
       
       formatted_msg = MushFormatter.format(msg)      
-      Global.client_monitor.notify_web_clients type, formatted_msg, &trigger_block
+      Global.client_monitor.notify_web_clients type, formatted_msg, false, &trigger_block
     end
   end
 end

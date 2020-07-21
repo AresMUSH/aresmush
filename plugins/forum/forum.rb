@@ -49,6 +49,8 @@ module AresMUSH
         return ForumNewCmd
       when "order"
         return ForumOrderCmd
+      when "pin"
+        return ForumPinCmd
       when "post"
         return ForumPostCmd
       when "readroles", "writeroles"
@@ -107,6 +109,8 @@ module AresMUSH
         return ForumListRequestHandler
       when "forumMute"
         return ForumMuteRequestHandler
+      when "forumPin"
+        return ForumPinRequestHandler
       when "forumTopic"
         return ForumTopicRequestHandler
       when "forumUnread"

@@ -131,6 +131,7 @@ en:
         no_targets_specified: "No targets specified."
 
         ammo_set: "%{name} ammo now set to %{ammo}."
+        invalid_combatant_name: "Invalid combatant name."
 
         # ----------------------------
         # KO

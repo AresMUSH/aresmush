@@ -6,7 +6,7 @@ module AresMUSH
       
       # **NOTE** Don't add any more pipes after 'data' because poses can contain pipes.
       web_msg = "#{scene.id}|#{last_posed}|#{activity_type}|#{data}"
-      Global.client_monitor.notify_web_clients(:new_scene_activity, web_msg) do |char|
+      Global.client_monitor.notify_web_clients(:new_scene_activity, web_msg, true) do |char|
         Scenes.can_read_scene?(char, scene) && Scenes.is_watching?(scene, char)
       end
       if (activity_type =~ /pose/)

@@ -4,6 +4,7 @@ module AresMUSH
     
     attribute :subject
     attribute :message
+    attribute :is_pinned, :type => DataType::Boolean
         
     reference :author, "AresMUSH::Character"
     reference :bbs_board, "AresMUSH::BbsBoard"
@@ -33,6 +34,15 @@ module AresMUSH
       end
     end
     
+    def last_updated_by
+      if (bbs_replies.empty?)
+        return self.author_name
+      else
+        updater = self.sorted_replies[-1].author
+        return author ? author.name : t('global.deleted_character')
+      end
+    end
+    
     def author_name
       !self.author ? t('global.deleted_character') : self.author.name
     end
@@ -43,14 +53,6 @@ module AresMUSH
     
     def is_public?
       Forum.can_read_category?(nil, self.bbs_board)
-    end
-    
-    def mark_read(char)
-      Forum.mark_read(self, char)
-    end
-    
-    def mark_unread
-      Forum.mark_unread(self)
     end
     
     def reference_str
@@ -80,6 +82,10 @@ module AresMUSH
       else
         OOCTime.local_short_timestr(viewer, self.last_updated)
       end
+    end
+    
+    def is_pinned?
+      self.is_pinned
     end
   end
 end

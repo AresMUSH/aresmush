@@ -3,16 +3,15 @@ module AresMUSH
     class SearchLocationsRequestHandler
       def handle(request)
 
-        searchName = request.args[:searchName] || ""
-        searchDesc = request.args[:searchDesc] || ""
-        
+        search_name = request.args[:searchName] || ""
+        search_area = request.args[:searchArea] || ""
         rooms = Room.all.to_a
         
-        if (!searchName.blank?)
-          rooms = rooms.select { |r| r.name =~ /#{searchName}/i }
+        if (!search_name.blank?)
+          rooms = rooms.select { |r| r.name =~ /#{search_name}/i }
         end
-        if (!searchDesc.blank?)
-          rooms = rooms.select { |r| r.description =~ /#{searchDesc}/i }
+        if (!search_area.blank?)
+          rooms = rooms.select { |r| (r.area_name || "") =~ /#{search_area}/i }
         end
         
         rooms.sort_by { |r| r.name_and_area }.map { |r| {

@@ -183,6 +183,8 @@ module AresMUSH
         return CombatSummaryRequestHandler
       when "combats"
         return CombatsRequestHandler
+      when "combatAiActions"
+        return CombatAiActionsRequestHandler
       when "combatSetup"
         return CombatSetupRequestHandler
       when "newCombatTurn"

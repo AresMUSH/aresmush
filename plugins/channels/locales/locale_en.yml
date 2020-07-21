@@ -10,6 +10,7 @@ en:
         channel_being_deleted: "This channel is being deleted by %{name}."
 
         desc_set: "Channel description set."
+        default_color_set: "The channel will now be displayed like so by default: %{name}."
         color_set: "The channel will now be displayed like so: %{name}."
         channel_renamed: "Channel %{old_name} is now named %{new_name}."
         roles_set: "Channel roles updated."
@@ -38,7 +39,7 @@ en:
         cant_talk_when_muted: "You can't talk on a channel while it's muted."
 
         recall_history: "Chat History For %{name}"
-        invalid_recall_limit: "Please specify a number between 1 and 25."
+        invalid_recall_limit: "Please specify a number between 1 and 50."
         recall_not_enabled: "Recall is not enabled on that channel."
         
         channel_titles_enabled: "You will now see channel titles on %{name}."
@@ -73,3 +74,4 @@ en:
         cant_talk_on_channel: "You aren't allowed to talk on that channel."
         
         channel_recall_cleared: "You clear the channel buffer on %{channel}."
+        name_required: "Channel name is required."

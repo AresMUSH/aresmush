@@ -28,13 +28,30 @@ module AresMUSH
       if (intersection.empty?)
         return nil
       end
-      intersection = intersection.map { |c| c.display_name(false) }
+      intersection = intersection.map { |c| Channels.display_name(nil, c, false) }
       Channels.name_with_markers(intersection.join(", "))
     end
     
     def self.announce_enabled?(char, channel)
       options = Channels.get_channel_options(char, channel)
       options ? options.announce : false
+    end
+    
+    def self.channel_color(char, channel)
+      color = channel.color
+      if (char)
+        options = Channels.get_channel_options(char, channel)
+        if (options && !options.color.blank?)
+          color = options.color
+        end
+      end
+      color
+    end    
+    
+    def self.display_name(char, channel, include_markers = true)
+      color = Channels.channel_color(char, channel)
+      display = "#{color}#{channel.name}%xn"
+      include_markers ? Channels.name_with_markers(display) : display
     end
     
     def self.name_with_markers(name)
@@ -71,12 +88,14 @@ module AresMUSH
     def self.emit_to_channel(channel, original_msg, enactor = nil, title = nil)
       enactor = enactor || Game.master.system_character
       original_msg = "#{original_msg}".gsub(/%R/i, " ")
+      original_msg = "#{original_msg}".gsub(/[\r\n]/i, " ")
+
       channel.add_to_history "#{title} #{original_msg}", enactor
       channel.characters.each do |c|
         if (!Channels.is_muted?(c, channel))
           
           title_display = (title && Channels.show_titles?(c, channel)) ? "#{title} " : ""
-          formatted_msg = "#{channel.display_name} #{title_display}#{original_msg}"
+          formatted_msg = "#{Channels.display_name(c, channel)} #{title_display}#{original_msg}"
           
           Login.emit_if_logged_in(c, formatted_msg)
         end
@@ -93,7 +112,7 @@ module AresMUSH
         is_page: false
       }
       
-      Global.client_monitor.notify_web_clients(:new_chat, "#{data.to_json}") do |char|
+      Global.client_monitor.notify_web_clients(:new_chat, "#{data.to_json}", true) do |char|
         char && Channels.is_on_channel?(char, channel) && !Channels.is_muted?(char, channel)
       end
     end
@@ -269,7 +288,7 @@ module AresMUSH
     end
     
     def self.report_channel_abuse(enactor, channel, messages, reason) 
-      messages = messages.map { |m| "  [#{OOCTime.local_long_timestr(enactor, m.created_at)}] #{channel.display_name} #{m.message}"}.join("%R")
+      messages = messages.map { |m| "  [#{OOCTime.local_long_timestr(enactor, m.created_at)}] #{Channels.display_name(nil, channel)} #{m.message}"}.join("%R")
 
       body = t('channels.channel_reported_body', :name => channel.name, :reporter => enactor.name)
       body << reason

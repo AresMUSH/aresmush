@@ -79,8 +79,39 @@ BASIC CONTAINERS
     margin-bottom: 5px;
 }
 
+.markdown-preview {
+  width: 98%;
+  padding: 5px;
+  margin: 0px 10px 10px 10px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  background-color: $background-color;
+  color: $text-color;
+  border: 1px solid $border-color;
+}
+
+.markdown-editor textarea {
+  margin-top: 0px;
+}
+
 .markdown-controls {
+    margin-top: 3px;
     padding: 5px;
+}
+
+.markdown-control-toggle {
+  margin-left: 10px;
+  margin-right: 5px;
+  padding: 5px 10px 10px 10px;
+  border-left: 1px solid $border-color;
+  border-right: 1px solid $border-color;
+}
+
+.markdown-control-toggle.active {
+  background-color: $primary-color;
+  color: $primary-words-color;
+  border-bottom: 0px;
 }
 
 .app-status, #console, #console pre, #sendMsg, #sendMsg2, #manageLog {
@@ -119,6 +150,9 @@ code {
   background-color: $background-color;
 }
 
+td > ul  {
+  padding-inline-start: 10px;
+}
 /* -------------------------
 NAVIGATION
 ------------------------- */
@@ -294,6 +328,7 @@ textarea {
     box-sizing: border-box;
     background-color: $background-color;
     color: $text-color;
+    border: 1px solid $border-color;
 }
 
 
@@ -309,10 +344,18 @@ form {
     color: $text-color;
 }
 
-input {
-    background-color: $background-color;
-    color: $text-color;
-}
+input,
+textarea,
+.ember-power-select-trigger,
+.ember-basic-dropdown-trigger,
+.ember-power-select-search-input,
+.ember-text-field {
+  background-color: $background-color;
+  color: $text-color;
+  border: 1px solid $border-color;
+  border-radius: 3px;
+  transition: border 0.3s linear;
+  padding: 4px; }
 
 
 li hr {
@@ -393,6 +436,11 @@ mark {
   z-index: 3000;
 }
 
+.row {
+    margin-right: 0px;
+    margin-left: 0px;
+}
+
 /* -------------------------
 GOOGLE SEARCH OVERRIDES
 ------------------------- */
@@ -421,6 +469,16 @@ table.gsc-search-box td {
     vertical-align: top !important;
     border: none;
     padding: 3px;
+}
+
+.gsst_b {
+  padding: 0px;
+}
+
+.gsc-search-box-tools .gsc-search-box .gsc-input, .gscb_a {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.25em;
 }
 
 /* --------------------------
@@ -551,6 +609,11 @@ SIDEBAR
 
 .sidebar-list {
   word-wrap: break-word;
+}
+
+.search-hint {
+    color: $faded-text-color;
+    font-style: italic;
 }
 
 /* -------------------------
@@ -798,7 +861,6 @@ SCENES SCREEN
     margin-left: 25px;
     background-color: $log-icon-color;
     color: $log-icon-text-color;
-    font-style: italic;
     padding: 0px 10px 10px 10px;
 }
 
@@ -950,7 +1012,17 @@ SCENES SCREEN
     width: 100%;
 }
 
-.pose-ui,
+.scene-controls-box {
+  border: 1px solid #ccc;
+  background: #F5F5F5;
+  padding: 5px;
+}
+
+.scene-controls {
+  display: flex;
+  flex-flow: row-reverse wrap;
+}
+
 .pose-buttons {
     display: flex;
     flex-flow: row-reverse wrap;
@@ -960,29 +1032,85 @@ SCENES SCREEN
     margin-left: 4px;
 }
 
-.scene-buttons {
+.scene-controls-left {
+  padding: 5px;
+}
+
+.scene-controls-right {
     display: flex;
     flex-flow: column;
     align-items: flex-end;
+    padding: 5px;
 }
 
 .scene-char-select .tiny-profile-icon {
     margin: 0 2px 3px 0;
 }
 
+.live-scene-controls a, .chat-controls a,  .unshared-scenes-controls a  {
+  padding-right: 15px;
+  display: inline-block;
+}
+
+.live-scenes-controls a {
+  padding-right: 10px;
+}
+
+.unshared-scene-warnings {
+  margin-bottom: 10px;
+}
+
+.live-scenes-block, .unshared-scene-block {
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+}
+
+.live-scenes-heading, .unshared-scenes-heading {
+  background-color: $border-color;
+  padding: 5px 0px 5px 0px;
+  border-radius: 5px;
+}
+
+.unshared-scenes-controls {
+  padding: 10px 0px;
+}
+
+.live-scenes-controls {
+  padding: 0px;
+  text-align: right;
+}
+
+
+.scene-title {
+  font-weight: bold;
+}
+
+.scene-info-label {
+  font-weight: bold;
+}
+
+.live-scenes-block .scene-title-block {
+  background-color: $border-color;
+  padding: 10px;
+}
+
+.content-warning-label {
+  margin: 0px 5px;
+}
 @media (max-width: 767px) {
-    .scene-dropdowns {
+    .scene-controls-left {
         display: flex;
-        flex-flow: row;
+        flex-flow: column;
         justify-content: flex-end;
         padding-top: 10px;
+        align-items: flex-end;
      }
 
-     .scene-dropdowns .scene-menu {
+     .scene-controls-left .scene-menu {
          margin-left: 4px;
      }
 
-     .scene-dropdowns .dropdown-menu {
+     .scene-controls-left .dropdown-menu {
          right: 0;
          left: auto;
      }
@@ -1170,6 +1298,21 @@ input[type='file'] {
   width: 100%;
 }
 
+.roster-char-title {
+  font-size: 1.5em;
+  background-color: $primary-color;
+  padding: .1em 1.2em;
+  color: $primary-words-color;
+  font-weight: normal;
+  border: 3px solid $primary-outline-color;
+  letter-spacing: 0.1em;
+  margin: 20px 0px 10px 0px;
+}
+
+.roster-char-warnings {
+  margin-bottom: 5px;
+}
+
 /* -------------------------
 CHAT SCREEN
 ------------------------- */
@@ -1191,7 +1334,7 @@ CHAT SCREEN
 }
 
 .play-sidebar:hover {
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .play-hint {
@@ -1348,10 +1491,53 @@ OTHER
 
 
 .xp-progress {
-  max-width: 200px;
+  max-width: 100%;
   width: 200px;
   display: inline-block;
   margin-bottom: 5px;
+  position: relative;
+
+}
+
+.xp-progress-points {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    text-align: center;
+}
+
+.xp-ability {
+  border-bottom: 1px solid $border-color;
+  padding: 5px;
+  margin: 5px 0px;
+  min-height: 50px;
+}
+
+.xp-ability .col {
+  padding-right: 5px;
+  padding-left: 5px;
+}
+
+.xp-ability-name {
+  font-weight: bold;
+}
+
+.xp-list {
+  margin: 5px 0px;
+}
+
+.xp-list h1 {
+  font-size: 1em;
+}
+
+.fs3-damage-block {
+  border-bottom: 1px solid $border-color;
+  padding: 5px;
+  margin: 5px;
+}
+
+.fs3-damage-title {
+  font-weight: bold;
 }
 
 .wiki-breadcrumbs {
@@ -1403,29 +1589,42 @@ ul.reference-help-list > li:not(:last-child)::after {
 }
 /*.char-scene-list li:before { content: "\2666  "; }*/
 
-@media (max-width:992px)  {
+@media (max-width:765px)  {
 
 .site-title {
     font-size: 2em;
     max-height: 50px;
 }
 
+h1, h2 {
+  font-size: 1.5em;
+}
+
+h3 {
+  font-size: 1.25em;
+}
+
+.char-ability-title {
+  font-size: 1.25em;
+}
+
+
 .profile-wrap {
-    padding: 10px;
+    padding: 5px;
 }
 
 .profile-box {
-    padding: 10px;
-    margin: 10px;
+    padding: 5px;
+    margin: 5px;
 }
 
 .log-wrap {
-    padding: 10px;
+    padding: 5px;
 }
 
 .log-box {
-    padding: 10px;
-    margin: 10px;
+    padding: 5px;
+    margin: 5px;
 }
 
 .container {
@@ -1433,6 +1632,9 @@ ul.reference-help-list > li:not(:last-child)::after {
     padding-right: 0px;
 }
 
+.profile-image-wrap, .profile-demo-wrap {
+  padding: 5px;
+}
 .body-row
 {
   display: flex;
@@ -1454,6 +1656,10 @@ ul.reference-help-list > li:not(:last-child)::after {
 
 .right-body {
   order: 1;
+}
+
+.xp-ability {
+  min-height: 100px;
 }
 
 

@@ -150,6 +150,8 @@ module AresMUSH
         return JobChangeDataRequestHandler
       when "jobOptions"
         return JobOptionsRequestHandler
+      when "jobsCatchup"
+        return JobsCatchupRequestHandler
       when "searchJobs"
         return SearchJobsRequestHandler
       end

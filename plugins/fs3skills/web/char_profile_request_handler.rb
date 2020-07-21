@@ -18,8 +18,8 @@ module AresMUSH
           damage = char.damage.to_a.sort { |d| d.created_at }.map { |d| {
             date: d.ictime_str,
             description: d.description,
-            original_severity: Website.format_markdown_for_html(FS3Combat.display_severity(d.initial_severity)),
-            severity: Website.format_markdown_for_html(FS3Combat.display_severity(d.current_severity))
+            original_severity: MushFormatter.format(FS3Combat.display_severity(d.initial_severity)),
+            severity: MushFormatter.format(FS3Combat.display_severity(d.current_severity))
             }}
         else
           damage = nil

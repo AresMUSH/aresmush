@@ -121,7 +121,7 @@ module AresMUSH
                   
           clients = Global.client_monitor.clients.select { |client| client.web_char_id == char.id }
           clients.each do |client|
-            client.web_notify :new_page, "#{data.to_json}"
+            client.web_notify :new_page, "#{data.to_json}", true
           end
         end
       end
@@ -146,13 +146,13 @@ module AresMUSH
     end
     
     def self.is_thread_unread?(thread, char)
-      !(char.read_page_threads || []).include?(thread.id.to_s)
+      tracker = char.get_or_create_read_tracker
+      tracker.is_page_thread_unread?(thread)
     end
     
     def self.mark_thread_read(thread, char)      
-      threads = char.read_page_threads || []
-      threads << thread.id.to_s
-      char.update(read_page_threads: threads)
+      tracker = char.get_or_create_read_tracker
+      tracker.mark_page_thread_read(thread)
       Login.mark_notices_read(char, :pm, thread.id)
     end
     
@@ -160,9 +160,8 @@ module AresMUSH
       chars = Character.all.select { |c| !Page.is_thread_unread?(thread, c) }
       chars.each do |char|
         next if except_for_char && char == except_for_char
-        threads = char.read_page_threads || []
-        threads.delete thread.id.to_s
-        char.update(read_page_threads: threads)
+        tracker = char.get_or_create_read_tracker
+        tracker.mark_page_thread_unread(thread)
       end
     end
     

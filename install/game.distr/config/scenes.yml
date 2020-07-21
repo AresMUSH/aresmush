@@ -36,7 +36,6 @@ scenes:
     log/off: scene/stoplog
     log/clear: scene/clearlog
     log/undo: scene/undo
-    scene/emit: emit/set
     scene/proxy: scene/spoof
     scene/amend: scene/replace
     pose/undo: scene/undo
@@ -55,6 +54,8 @@ scenes:
     scene/set: emit/set
     posebreak: autospace
     pose/skip: pose/drop
+    scene/addpose: scene/emit
+    scene/pose: scene/emit
   trending_scenes_category: Trending Scenes
   trending_scenes_cron:
     hour:
