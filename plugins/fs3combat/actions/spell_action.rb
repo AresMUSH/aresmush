@@ -4,18 +4,16 @@ module AresMUSH
       attr_accessor  :spell, :target, :names, :target_optional, :has_target
 
       def prepare
-
         if (self.action_args =~ /\//)
           self.spell = self.action_args.before("/")
           self.names = self.action_args.after("/")
           self.has_target = true
         else
-          self.names = self.name
+          self.names = combatant.name
           self.spell = self.action_args
         end
 
         self.spell = self.spell.titlecase
-
 
         # self.target_optional = Global.read_config("spells", self.spell, "target_optional")
         error = self.parse_targets(self.names)
@@ -29,17 +27,8 @@ module AresMUSH
         end
 
         num = Global.read_config("spells", self.spell, "target_num")
-        if num
-          num = num
-        else
-          num = 0
-        end
-        puts "Number #{num} Is nil? #{num.nil?}"
-        puts "Names: #{self.names}"
-        return t('magic.doesnt_use_target') if (num.nil? && self.names != self.name)
-        return t('magic.too_many_targets', :spell => self.spell, :num => num) if (self.targets.count > num)
-
-
+        return t('magic.doesnt_use_target') if ((num.nil?) && (self.has_target))
+        return t('magic.too_many_targets', :spell => self.spell, :num => num) if (self.has_target && (self.targets.count > num))
 
         is_res = Global.read_config("spells", self.spell, "is_res")
         is_revive = Global.read_config("spells", self.spell, "is_revive")
