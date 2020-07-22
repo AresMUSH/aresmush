@@ -905,6 +905,10 @@ button,  select {
     }
   }
 
+.scene-controls-box {
+  background: #1A1B1C;
+}
+
   .scene-pose-select, .scene-char-select {
     padding-top: 0;
     margin-right: 5px;
@@ -968,6 +972,10 @@ button,  select {
 
 .live-scene-info  {
   font-size: 85%;
+}
+
+.live-scenes-heading, .unshared-scenes-heading {
+  background: $main-purple;
 }
 
 .timestamp-tip {
