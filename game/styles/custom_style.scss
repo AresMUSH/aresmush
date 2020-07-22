@@ -517,6 +517,10 @@ button,  select {
     color: #d1d2d3;
 }
 
+.input-button {
+  background: #e6e6e6;
+}
+
 /* ------End Buttons------ */
 
 
@@ -848,6 +852,11 @@ button,  select {
   background: #292b2d;
 }
 
+.markdown-control-toggle {
+    font-size: 75%;
+    border: 0px;
+  }
+
 /*------- end play sidebar ----------*/
 
 
@@ -978,6 +987,8 @@ button,  select {
 .live-scenes-heading, .unshared-scenes-heading {
   background: $main-purple;
   margin-bottom: 15px;
+  background-image: linear-gradient(to right, #383A4F, #1a1b1c);
+}
 }
 
 .timestamp-tip {
