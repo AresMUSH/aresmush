@@ -852,6 +852,10 @@ button,  select {
 
 
 /*------- textbox input --------*/
+.scene-controls-box {
+  background: #1A1B1C;
+}
+
 .textbox-input {
   background: $dark-gray-bg;
   margin-left: 5px;
@@ -903,10 +907,6 @@ button,  select {
     .scene-pose-order {
       padding-top: 5px;
     }
-  }
-
-  .scene-controls-box {
-    background: #1A1B1C;
   }
 
   .scene-pose-select, .scene-char-select {
