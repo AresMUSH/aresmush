@@ -909,9 +909,9 @@ button,  select {
   background: #1A1B1C;
 }
 
-  .scene-pose-select, .scene-char-select {
-    padding-top: 0;
-    margin-right: 5px;
+.scene-pose-select, .scene-char-select {
+  padding-top: 0;
+  margin-right: 5px;
   }
 
   .textbox-buttons {
@@ -976,6 +976,7 @@ button,  select {
 
 .live-scenes-heading, .unshared-scenes-heading {
   background: $main-purple;
+  margin-bottom: 15px;
 }
 
 .timestamp-tip {
