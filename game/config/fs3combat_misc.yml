@@ -172,4 +172,7 @@ fs3combat:
     Hidden:
       attack_mod: 0
       defense_mod: 0
-  achievements: []
+  achievements:
+    fs3_wounded:
+      type: fs3
+      message: Wounded %{count} times in combat.
