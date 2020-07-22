@@ -905,14 +905,14 @@ button,  select {
     }
   }
 
-.scene-controls-box {
-  background: #1A1B1C;
-}
-
-.scene-pose-select, .scene-char-select {
-  padding-top: 0;
-  margin-right: 5px;
+  .scene-controls-box {
+    background: #1A1B1C;
   }
+
+  .scene-pose-select, .scene-char-select {
+    padding-top: 0;
+    margin-right: 5px;
+    }
 
   .textbox-buttons {
     display: flex;
