@@ -29,6 +29,11 @@ module AresMUSH
         end
 
         num = Global.read_config("spells", self.spell, "target_num")
+        if num
+          num = num
+        else
+          num = 0
+        end
         puts "Number #{num} Is nil? #{num.nil?}"
         puts "Names: #{self.names}"
         return t('magic.doesnt_use_target') if (num.nil? && self.names != self.name)
