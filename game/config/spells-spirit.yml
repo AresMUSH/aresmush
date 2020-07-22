@@ -438,6 +438,19 @@ spells:
     roll: true
     school: Spirit
     target_num: 1
+  Dampen Magic:
+    available: false
+    casting_time: 1 round
+    desc: "The target's ability to cast spells is made more difficult for a short time."
+    duration: 3 rounds
+    effect: Debuff
+    level: 5
+    name: Dampen Magic
+    range: Long
+    rounds: 3
+    school: Spirit
+    spell_mod: -3
+    target_num: 1
   Medium Jinx:
     attack_mod: -2
     available: false
@@ -692,6 +705,19 @@ spells:
     range: Short
     roll: true
     school: Spirit
+  Restrain Magic:
+    available: false
+    casting_time: 1 round
+    desc: "The target's ability to cast spells is made very difficult for a short time."
+    duration: 3 rounds
+    effect: Debuff
+    level: 5
+    name: Restrain Magic
+    range: Long
+    rounds: 3
+    school: Spirit
+    spell_mod: -5
+    target_num: 1
   Restore Memory:
     available: true
     casting_time: "1 round to cast, plus additional rounds at GM's discretion according to the complexity of the restoration"

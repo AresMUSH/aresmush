@@ -449,6 +449,16 @@ spells:
     school: Nature
     range: Self
     weapon: Beak
+  Wild Shape Panthera:
+    available: true
+    armor: Big Cat
+    desc: Wild Shape Panthera
+    level: 5
+    name: Wild Shape Panthera
+    roll: true
+    school: Nature
+    range: Self
+    weapon: Sharp Claws
   Flesh Wound (Wild Shape):
     available: false
     casting_time: 1 round
@@ -464,7 +474,7 @@ spells:
     target_optional: true
   Wild Shape Lynx:
     available: false
-    armor: Lynx
+    armor: Big Cat
     desc: Wild Shape Lynx
     level: 5
     name: Wild Shape Lynx
@@ -683,7 +693,7 @@ spells:
     school: Nature
     weapon: Claws
   Mass Flora:
-    available: false
+    available: true
     area: 1/2 acre
     casting_time: 1 round
     desc: "The caster may summon plants, flowers, and/or grasses local to the region in an area no larger than half an acre. The plants may not exceed six feet in height. The flora must have ample space and soil to grow. The flora may be grown in any pattern the caster chooses. The caster can encourage the flowers and plants to bloom or the berry, nut, seed, or fruit-bearing plants grown to ripen, even out of season."

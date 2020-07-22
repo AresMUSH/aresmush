@@ -337,7 +337,7 @@ spells:
     target_optional: true
     target_num: 3
   Ice Block:
-    available: false
+    available: true
     casting_time: 1 round
     desc: "Deflect attacks directed against up to three targets with a wall of ice effectively putting the targets in [cover](https://www.aresmush.com/fs3/fs3-3/combat/#stance)."
     duration: 5 rounds

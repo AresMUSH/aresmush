@@ -174,7 +174,7 @@ spells:
     available: true
   Pyromancy:
     area: 15 cubic feet
-    available: false
+    available: true
     casting_time: 1 round
     desc: "For the duration of the spell, the caster can create or influence up to 15 cubic feet of fire, moving and shaping it into detailed, non-weaponized shapes that animate at their direction. Within the size limit, they can control the size and heat of the flames, making them grow, dim, or snuff them out entirely. When the spell ends, the flames return to their natural state in their current location."
     duration: 30 min
@@ -256,7 +256,7 @@ spells:
     line_of_sight: true
     available: true
   Laser Blast:
-    available: false
+    available: true
     casting_time: 1 round
     damage_type: Fire
     desc: 'The caster creates a powerfully amplified ray of light and focuses the laser on a target to blast them with intense heat.'

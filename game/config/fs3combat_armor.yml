@@ -357,8 +357,8 @@ fs3combat:
         Left Foot: 0
         Right Foot: 0
       defense: 1
-    Lynx:
-      description: Wild Shape Lynx
+    Big Cat:
+      description: Armor for lynx, panthera, etc.
       is_magic: true
       protection:
         Head: 0
