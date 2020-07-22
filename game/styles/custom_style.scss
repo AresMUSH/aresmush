@@ -178,6 +178,7 @@ li hr {
   /*------- input boxes & selectors --------*/
 input,
 textarea,
+.markdown-preview,
 .ember-power-select-trigger,
 .ember-basic-dropdown-trigger,
 .ember-power-select-search-input,
@@ -191,7 +192,7 @@ textarea,
 }
 
 textarea,
-.ember-text-field, .ember-power-select-trigger, .ember-text-field {
+.ember-text-field, .ember-power-select-trigger, .ember-text-field, .markdown-preview {
   box-shadow: 0px 0px 4px 0px $box-shadow;
 }
 
@@ -855,6 +856,7 @@ button,  select {
 a.markdown-control-toggle {
     font-size: 75%;
     border: 0px;
+    margin: 0px;
   }
 
 /*------- end play sidebar ----------*/
@@ -990,6 +992,9 @@ a.markdown-control-toggle {
   background-image: linear-gradient(to right, #383A4F, #1a1b1c);
 }
 
+.markdown-preview {
+
+}
 
 .timestamp-tip {
     color: #999999;
