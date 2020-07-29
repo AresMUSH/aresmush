@@ -11,6 +11,7 @@ module AresMUSH
       text
     end
       
+    # Weird edge case that you might want to ignore markdown formatting but still do MUSH format codes.
     def self.format_output_for_html(output)
       return nil if !output
         

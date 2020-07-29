@@ -11,7 +11,7 @@ module AresMUSH
         folders = Dir[File.join(AresMUSH.website_uploads_path, "*")]
         
         
-        folders.map { |f| {
+        folders.sort.map { |f| {
           name: f.gsub(AresMUSH.website_uploads_path, '').gsub('/', '')
           } }
       end
