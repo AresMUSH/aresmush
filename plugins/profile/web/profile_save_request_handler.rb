@@ -66,7 +66,7 @@ module AresMUSH
         char.update(bg_shared: request.args[:bg_shared].to_bool)
         char.update(idle_lastwill: Website.format_input_for_mush(request.args[:lastwill]))
         
-        relation_category_order = (request.args[:relationships_category_order] || "").split(',')
+        relation_category_order = (request.args[:relationships_category_order] || "").split(',').map { |o| o.strip }
         char.update(relationships_category_order: relation_category_order)
         
         Describe.save_web_descs(char, request.args['descs'])

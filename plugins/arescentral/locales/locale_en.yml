@@ -20,3 +20,4 @@ en:
         game_not_registered: "This game hasn't been registered with AresCentral, so handle functionality is currently disabled.  Please contact your local game admin for more information."
         
         unlink_failed: "There was a problem unlinking the character to your handle: %{error}"
+        view_full_profile: "View full profile (including other linked characters) at [AresCentral](https://arescentral.aresmush.com/handle/%{name})."

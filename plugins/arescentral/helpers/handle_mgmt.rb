@@ -25,6 +25,7 @@ module AresMUSH
               char.update(ascii_mode_enabled: response.data["ascii_only"])
               char.update(screen_reader: response.data["screen_reader"])
               char.handle.update(friends: response.data["friends"])
+              char.handle.update(profile: response.data["profile"])
               return nil
             else
               char.handle.delete
