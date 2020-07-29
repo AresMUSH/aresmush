@@ -51,8 +51,7 @@ module AresMUSH
     
     # Parses a roll string in the form Ability+Attr(+ or -)Modifier, where
     # everything except "Ability" is optional.
-    # Technically it can be Ability+Ability, or Attribute+Attribute or Attribute+Ability;
-    # the code doesn't care.
+    # Can also do Attr+Attr or Attr+Attr.
     def self.parse_roll_params(str)
       match = /^(?<ability>[^\+\-]+)\s*(?<linked_attr>[\+]\s*[A-Za-z\s]+)?\s*(?<modifier>[\+\-]\s*\d+)?$/.match(str)
       return nil if !match
@@ -67,6 +66,13 @@ module AresMUSH
         tmp = ability
         ability = linked_attr
         linked_attr = tmp
+      end
+      
+      if (linked_attr)
+        ability_type = FS3Skills.get_ability_type(linked_attr)
+        if (ability_type != :attribute)
+          return nil
+        end
       end
       
       return RollParams.new(ability, modifier, linked_attr)
