@@ -63,5 +63,23 @@ module AresMUSH
       sorted_posts = self.bbs_posts.to_a.sort_by { |p| p.last_updated }
       sorted_posts[-1]
     end
+    
+    def set_roles(role_names, role_type)
+      role_list = role_type == :read ? self.read_roles : self.write_roles
+      
+      role_names_upcase = role_names.map { |r| r.upcase }
+      role_list.each do |r|
+        if (!role_names_upcase.include?(r.name_upcase))
+          role_list.delete r
+        end
+      end
+    
+      role_names.each do |r|
+        role = Role.find_one_by_name(r)
+        if (!role_list.include?(role))
+          role_list.add role
+        end
+      end
+    end
   end
 end
