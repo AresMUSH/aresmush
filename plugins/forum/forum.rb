@@ -117,6 +117,16 @@ module AresMUSH
         return ForumUnreadRequestHandler
       when "forumRecent"
         return RecentForumPostsRequestHandler
+      when "createForum"
+        return CreateForumRequestHandler
+      when "deleteForum"
+        return DeleteForumRequestHandler
+      when "editForum"
+        return EditForumRequestHandler
+      when "manageForum"
+        return ManageForumRequestHandler
+      when "saveForum"
+        return SaveForumRequestHandler
       when "searchForum"
         return SearchForumRequestHandler
       end
