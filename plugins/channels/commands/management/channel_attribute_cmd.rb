@@ -81,9 +81,9 @@ module AresMUSH
         Channels.with_a_channel(name, client) do |channel|
         
           if (cmd.switch_is?("joinroles"))
-            channel.set_join_roles(roles)
+            channel.set_roles(roles, :join)
           else
-            channel.set_talk_roles((roles))
+            channel.set_roles(roles, :talk)
           end
         
           Channels.emit_to_channel channel, t('channels.roles_changed_by', :name => enactor_name)

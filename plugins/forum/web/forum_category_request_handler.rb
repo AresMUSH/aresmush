@@ -35,7 +35,7 @@ module AresMUSH
          {
            id: category.id,
            name: category.name,
-           description: category.description,
+           description: Website.format_markdown_for_html(category.description),
            can_post: Forum.can_write_to_category?(enactor, category),
            posts: posts,
            authors: Forum.get_authorable_chars(enactor, category)

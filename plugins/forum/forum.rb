@@ -107,6 +107,8 @@ module AresMUSH
         return ForumHideRequestHandler
       when "forumList"
         return ForumListRequestHandler
+      when "forumMove"
+        return ForumMoveTopicRequestHandler
       when "forumMute"
         return ForumMuteRequestHandler
       when "forumPin"
