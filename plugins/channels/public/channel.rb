@@ -84,20 +84,14 @@ module AresMUSH
     
     def set_roles(role_names, role_type)
       role_list = role_type == :talk ? self.talk_roles : self.join_roles
-
-      role_names_upcase = role_names.map { |r| r.upcase }
-      role_list.each do |r|
-        if (!role_names_upcase.include?(r.name_upcase))
-          role_list.delete r
-        end
-      end
-    
+      new_roles = []
       role_names.each do |r|
         role = Role.find_one_by_name(r)
-        if (!role_list.include?(role))
-          role_list.add role
+        if (role)
+          new_roles << role
         end
       end
+      role_list.replace new_roles
     end
   end
 end

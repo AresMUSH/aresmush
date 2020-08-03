@@ -25,6 +25,11 @@ module AresMUSH
             return
           end
           
+          if (JobCategory.all.count == 1)
+            client.emit_failure t('jobs.cant_delete_only_category') 
+            return
+          end
+          
           category.delete
           client.emit_success t('jobs.category_deleted')
         end

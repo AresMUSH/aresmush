@@ -8,7 +8,7 @@ module AresMUSH
         error = Website.check_login(request)
         return error if error
                 
-        return { error: t('dispatcher.not_allowed') } if !Channels.can_manage_channels?(enactor)
+        return { error: t('dispatcher.not_allowed') } if !Forum.can_manage_forum?(enactor)
 
         forum = BbsBoard[id]
         return { error: t('webportal.not_found') } if !forum
