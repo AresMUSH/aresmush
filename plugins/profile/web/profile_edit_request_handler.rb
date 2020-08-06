@@ -68,6 +68,7 @@ module AresMUSH
           name: char.name,
           demographics: demographics,
           background: Website.format_input_for_html(char.background),
+          is_profile_manager: manager,
           rp_hooks: Website.format_input_for_html(char.rp_hooks),
           desc: Website.format_input_for_html(char.description),
           shortdesc: char.shortdesc ? char.shortdesc : '',

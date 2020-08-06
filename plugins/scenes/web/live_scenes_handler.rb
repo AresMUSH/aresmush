@@ -56,7 +56,7 @@ module AresMUSH
       end
       
       def can_read?(enactor, s)
-        enactor && Scenes.can_read_scene?(enactor, s)
+        Scenes.can_read_scene?(enactor, s)
       end
       
       def sort_scene(s1, s2, enactor)

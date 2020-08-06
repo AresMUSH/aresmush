@@ -147,7 +147,7 @@ module AresMUSH
       "#{Game.web_portal_url}/scene/#{self.id}"
     end
     
-    def limited_participation?
+    def has_notes?
       !self.limit.blank?
     end
     
