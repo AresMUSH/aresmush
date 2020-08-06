@@ -7,8 +7,8 @@
 <% if scene.summary && !scene.private_scene %>
 <%= summary(scene) %>
 <% end %>
-<% if scene.limited_participation? %>
-%xh%xy<%= t('scenes.limited_participation') %>:%xn <%= scene.limit %>
+<% if scene.has_notes? %>
+%xh%xc<%= t('scenes.scene_notes') %>:%xn <%= scene.limit %>
 <% end %>
 <% end %>
 <%= divider %>
