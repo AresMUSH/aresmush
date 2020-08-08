@@ -350,6 +350,7 @@ module AresMUSH
           allow(@combatant).to receive(:action_klass) { "" }
           allow(@combatant).to receive(:weapon) { "" }
           allow(FS3Combat).to receive(:weapon_stat) { 0 }
+          allow(@combatant).to receive(:initiative_mod) { 0 }
         end
         
         it "should roll the init ability" do
@@ -411,6 +412,12 @@ module AresMUSH
           allow(@combatant).to receive(:action_klass) { "AresMUSH::FS3Combat::AttackAction" }
           expect(@combatant).to receive(:roll_ability).with("init", 0) { 2 }
           expect(FS3Combat.roll_initiative(@combatant, "init")).to eq 2
+        end
+        
+        it "should add in a gm modifier" do 
+          allow(@combatant).to receive(:initiative_mod) { 2 }
+          expect(@combatant).to receive(:roll_ability).with("init", 2) { 3 }
+          expect(FS3Combat.roll_initiative(@combatant, "init")).to eq 3
         end
       end
       
