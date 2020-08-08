@@ -15,6 +15,8 @@ module AresMUSH
           self.mod_type = :defense
         when "lethalmod"
           self.mod_type = :damage
+        when "initmod"
+          self.mod_type = :initiative
         else
           self.mod_type = :attack
         end
@@ -37,6 +39,8 @@ module AresMUSH
             combatant.update(defense_mod: self.value)
           when :damage
             combatant.update(damage_lethality_mod: self.value)
+          when :initiative
+            combatant.update(initiative_mod: self.value)
           else
             combatant.update(attack_mod: self.value)
           end

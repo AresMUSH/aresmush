@@ -939,8 +939,8 @@ SCENES SCREEN
   background-color: #337ab7;
 }
 
-.scene-privacy-limited {
-  background-color: #f0ad4e;
+.scene-privacy-openstar {
+  background-color: #5bc0de;
 }
 
 .log-box { 
@@ -1475,6 +1475,14 @@ JOBS SCREEN
 .admin-only-reply, .admin-only-reply .markdown-editor {
   background-color: #fcf8e3;
   border-color: #faebcc;
+}
+
+.job-participant-edit-box {
+  padding-left: 15px;
+}
+
+.job-template-editor {
+  margin: 0px;
 }
 
 /* -------------------------

@@ -13,6 +13,7 @@ module AresMUSH
   end
   
   Game.master.master_admin.change_password(new_password)
+  Game.master.master_admin.update(login_failures: 0)
   
   puts "Script complete!  Password is now #{new_password}"
 end
