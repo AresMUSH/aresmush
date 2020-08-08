@@ -67,7 +67,7 @@ en:
         simple_roll_result: "%xb<FS3>%xn %{name} rolls %{roll}: %{success} (%{dice})"
         opposed_roll_result: "%xb<FS3>%xn %{name1} rolls %{roll1} (%{dice1}) vs %{name2}'s %{roll2} (%{dice2})%R%xb<FS3>%xn%T%T%{result}"
                 
-        unknown_roll_params: "Unable to figure out what you're trying to roll."
+        unknown_roll_params: "Can't figure out what you're trying to roll. You can specify a single ability, an optional ruling attribute, and an optional modifier.  See 'help roll' for more details."
 
         npc: "%{name} (a NPC)"
         numbers_only_for_npc_skills: "Use a number for a NPC skill, like Badguy/3."
