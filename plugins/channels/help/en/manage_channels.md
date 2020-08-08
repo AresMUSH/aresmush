@@ -8,12 +8,26 @@ summary: Managing channels.
 
 ## Creating and Deleting Channels
 
-If you have the appropriate permissions, you can create and delete channels.
+Channel admins can create, edit and delete channels.  Go to [Admin -> Setup -> Setup Channels](/channels-manage). Channel properties include:
+
+* Name - A unique name for the channel.
+* Description - An optional description.
+* Default Color - The default channel color, as an ansi code (e.g., \%xh\%xr). Players can set their own custom colors.
+* Default Alias - A space-separated list of commands for talking on the channel (e.g., 'c ch cha' for the chat channel). If you don't specify this, the system will default to the first few letters of the channel.
+* Join Roles - Players with this [role](/help/roles) can join the channel. Use 'everyone' to allow everybody to talk.
+* Talk Roles - Players with this [role](/help/roles) can talk on the channel. Use 'everyone' to allow everybody to talk.
+
+> **Note:** Take care to avoid ambiguous channel aliases (like 'g' if you have both a Galactica and Global channel) and aliases that overlap with other command (like 'n' for north or 'p' for page).  Remember that AresMUSH ignores prefixes like '+' on commands.
 
 `channel/create <channel>`
 `channel/delete <channel>`
 `channel/rename <channel>=<new name>` - Be cautious renaming channels since peoples' aliases may no longer make sense.
 `channel/clear <channel>` - Clears the recall history.
+`channel/describe <channel>=<description>`
+`channel/defaultcolor <channel>=<ansi prefix>` - Sets a channel's default color.
+`channel/joinroles <channel>=<roles>` - Use commas to separate multiple roles.  Use "none" to clear existing roles.
+`channel/talkroles <channel>=<roles>` - Use commas to separate multiple roles.  Use "none" to clear existing roles.
+`channel/defaultalias <channel>=<aliases>` - Sets the default aliases for a channel.
 
 ## Adding and Removing Characters
 
@@ -21,29 +35,3 @@ Channel administrators can add or remove characters from a channel:
 
 `channel/addchar <char>=<channel>`
 `channel/removechar <char>=<channel>`
-
-## Channel Appearance
-
-You can set a description for the channel (which will appear in the channels list) and the color used for its name.
-
-`channel/describe <channel>=<description>`
-`channel/defaultcolor <channel>=<ansi prefix>` - Sets a channel's default color.
-
-> **Tip:** Use full ansi code(s) not just the color name.  For example: \%xc  You can use multiple codes.  For example:  \%xh\%xr
-
-## Roles
-
-You can control who is allowed to use a channel by assigning roles to it.  Only people with one of the specified roles will be allowed to join or talk on the channel. 
-
-If you change the roles for an existing channel, anyone who no longer has permission to be there will automatically leave the channel.
-
-`channel/joinroles <channel>=<roles>` - Use commas to separate multiple roles.  Use "none" to clear existing roles.
-`channel/talkroles <channel>=<roles>` - Use commas to separate multiple roles.  Use "none" to clear existing roles.
-
-## Default Aliases
-
-The system will automatically use the first couple letters of the channel name for its default aliases (if the player doesn't specify their own).  You can change this by specifying a list of space-separated names.  For example: 'c ch cha' for the chat channel.
-
-`channel/defaultalias <channel>=<aliases>` - Sets the default aliases for a channel.
-
-> **Tip:** Take care to avoid ambiguous channel aliases (like 'g' if you have both a Galactica and Global channel) and aliases that overlap with other command (like 'n' for north or 'p' for page).  Remember that AresMUSH ignores prefixes like '+' on commands.
