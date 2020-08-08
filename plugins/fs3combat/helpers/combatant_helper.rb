@@ -125,9 +125,10 @@ module AresMUSH
           action_mod = 3
       end
       weapon_mod = FS3Combat.weapon_stat(combatant.weapon, "init_mod") || 0
-      roll = combatant.roll_ability(ability, weapon_mod + action_mod + luck_mod + combatant.total_damage_mod)
+      gm_mod = combatant.initiative_mod
+      roll = combatant.roll_ability(ability, weapon_mod + action_mod + luck_mod + combatant.total_damage_mod + gm_mod)
 
-      combatant.log "Initiative roll for #{combatant.name} ability=#{ability} action=#{action_mod} weapon=#{weapon_mod} luck=#{luck_mod} roll=#{roll}"
+      combatant.log "Initiative roll for #{combatant.name} ability=#{ability} action=#{action_mod} weapon=#{weapon_mod} luck=#{luck_mod} gm=#{gm_mod} roll=#{roll}"
  
       roll
     end

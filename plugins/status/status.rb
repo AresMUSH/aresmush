@@ -36,6 +36,8 @@ module AresMUSH
       case event_name
       when "CharDisconnectedEvent"
         return CharDisconnectedEventHandler
+      when "CronEvent"
+        return AfkCronHandler
       end
       nil
     end

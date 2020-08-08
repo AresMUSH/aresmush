@@ -99,3 +99,6 @@ en:
         
         jobs_subscription_on: "New job notices on."
         jobs_subscription_off: "New job notices off."
+        
+        category_name_required: "Category name is required."
+        cant_delete_only_category: "Can't delete the only job category."

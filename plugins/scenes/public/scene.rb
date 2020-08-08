@@ -86,7 +86,7 @@ module AresMUSH
     end
     
     def all_info_set?
-      missing_fields = self.title.blank? || self.location.blank? || self.scene_type.blank? || self.summary.blank?
+      missing_fields = self.title.blank? || self.location.blank? || self.scene_type.blank? || self.summary.blank? || self.icdate.blank?
       !missing_fields
     end
 
@@ -147,7 +147,7 @@ module AresMUSH
       "#{Game.web_portal_url}/scene/#{self.id}"
     end
     
-    def limited_participation?
+    def has_notes?
       !self.limit.blank?
     end
     

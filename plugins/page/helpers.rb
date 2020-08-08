@@ -32,6 +32,7 @@ module AresMUSH
       return t('page.recipient_indicator', :recipients => names.join(", "))
     end
     
+    # NO LONGER USED.  Keeping for reference.
     def self.send_afk_message(client, other_client, other_char)
       if (!other_client)
         #client.emit_ooc t('page.recipient_is_offline', :name => other_char.name)

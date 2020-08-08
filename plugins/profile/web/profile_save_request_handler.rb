@@ -13,17 +13,19 @@ module AresMUSH
           return { error: t('webportal.not_found') }
         end
         
+        manager = Profile.can_manage_profiles?(enactor)
+        
         if (!Profile.can_manage_char_profile?(enactor, char))
           return { error: t('dispatcher.not_allowed') }
         end
-        
-        if (!char.is_approved?)
+
+        if (!char.is_approved? && !manager)
           return { error: t('profile.not_yet_approved') }
         end
               
         request.args[:demographics].each do |name, value|
           if (value.blank? && Demographics.required_demographics.include?(name))
-            return { error: t('webportal.missing_required_fields') }
+            return { error: t('webportal.missing_required_field', :name => name) }
           end
           if (name == 'birthdate')
             # Standard db format
@@ -50,6 +52,10 @@ module AresMUSH
         char.update(profile_gallery: gallery)
         char.update(profile_tags: tags)
         
+        if (manager)
+          char.update(cg_background: Website.format_input_for_mush(request.args[:background]))
+        end
+        
         relationships = {}
         (request.args[:relationships] || {}).each do |name, data|
           relationships[name] = {
@@ -66,7 +72,7 @@ module AresMUSH
         char.update(bg_shared: request.args[:bg_shared].to_bool)
         char.update(idle_lastwill: Website.format_input_for_mush(request.args[:lastwill]))
         
-        relation_category_order = (request.args[:relationships_category_order] || "").split(',')
+        relation_category_order = (request.args[:relationships_category_order] || "").split(',').map { |o| o.strip }
         char.update(relationships_category_order: relation_category_order)
         
         Describe.save_web_descs(char, request.args['descs'])

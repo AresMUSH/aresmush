@@ -118,7 +118,7 @@ module AresMUSH
           AresMUSH.with_error_handling(nil, "Handling #{event_name}.") do            
             handler_class = p.get_event_handler(event_name)
             if (handler_class)
-              if (event_name != "CronEvent" && event_name != "ConnectionEstablishedEvent")
+              if (event_name != "CronEvent" && event_name != "ConnectionEstablishedEvent" && event_name != "PoseEvent")
                 Global.logger.debug "#{handler_class} handling #{event_name}."
               end
               handler = handler_class.new
