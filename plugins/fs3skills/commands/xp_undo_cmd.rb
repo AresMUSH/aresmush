@@ -51,7 +51,7 @@ module AresMUSH
               ability.update(last_learned: nil)
             end
           end
-          model.award_xp 1
+          model.update(fs3_xp: model.xp + 1)
           client.emit_success t('fs3skills.xp_undone', :name => model.name, :skill => self.skill)
         end
       end

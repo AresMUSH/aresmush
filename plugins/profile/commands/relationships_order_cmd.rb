@@ -19,8 +19,9 @@ module AresMUSH
       end
       
       def handle
-        enactor.update(relationships_category_order: self.list)
-        client.emit_success t('profile.relationships_order', :categories => self.list.join(","))
+        order = self.list.map { |o| o.strip }
+        enactor.update(relationships_category_order: order)
+        client.emit_success t('profile.relationships_order', :categories => order.join(","))
       end
     end
   end

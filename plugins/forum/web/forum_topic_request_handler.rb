@@ -35,12 +35,22 @@ module AresMUSH
           }
         }
         
+        categories = BbsBoard.all
+          .select { |cat| Forum.can_write_to_category?(enactor, cat) }
+          .map { |cat|
+          {
+            id: cat.id,
+            name: cat.name
+          }
+        }
+        
         {
              id: topic.id,
              title: topic.subject,
              category: {
                id: category.id,
                name: category.name },
+             categories: categories,
              date: topic.created_date_str(enactor),
              author: {
                name: topic.author_name,

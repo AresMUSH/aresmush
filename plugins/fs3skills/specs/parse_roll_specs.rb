@@ -33,12 +33,12 @@ module AresMUSH
       describe :can_parse_roll_params do
         before do
           allow(FS3Skills).to receive(:get_ability_type) { :action }
+          allow(FS3Skills).to receive(:get_ability_type).with("ATTR") { :attribute }
         end
         
         it "should handle attribute by itself" do
-          allow(FS3Skills).to receive(:get_ability_type).with("A") { :attribute }
-          params = FS3Skills.parse_roll_params("A")
-          check_params(params, "A", 0, nil)
+          params = FS3Skills.parse_roll_params("ATTR")
+          check_params(params, "ATTR", 0, nil)
         end
         
         it "should handle abiliity and positive modifier" do
@@ -67,38 +67,48 @@ module AresMUSH
         end
 
         it "should handle ability with modifier and linked attr and space" do
-          params = FS3Skills.parse_roll_params("A B + C D + 3")
-          check_params(params, "A B", 3, "C D")
+          allow(FS3Skills).to receive(:get_ability_type).with("AT TR") { :attribute }
+          params = FS3Skills.parse_roll_params("A B + AT TR + 3")
+          check_params(params, "A B", 3, "AT TR")
         end
         
         it "should handle ability and linked attr" do
-          params = FS3Skills.parse_roll_params("A+B")
-          check_params(params, "A", 0, "B")
+          params = FS3Skills.parse_roll_params("A+ATTR")
+          check_params(params, "A", 0, "ATTR")
         end
 
         it "should handle ability and linked attr and modifier" do
-          params = FS3Skills.parse_roll_params("A+B-2")
-          check_params(params, "A", -2, "B")
+          params = FS3Skills.parse_roll_params("A+ATTR-2")
+          check_params(params, "A", -2, "ATTR")
         end
         
         it "should handle bad string with negative ruling attr" do
-          params = FS3Skills.parse_roll_params("A-B+2")
+          params = FS3Skills.parse_roll_params("A-ATTR+2")
           expect(params).to be_nil
         end
         
         it "should swap attr and ability if backwards" do
-          allow(FS3Skills).to receive(:get_ability_type).with("Y") { :attribute }
-          params = FS3Skills.parse_roll_params("Y+X")
-          check_params(params, "X", 0, "Y")
+          params = FS3Skills.parse_roll_params("ATTR+X")
+          check_params(params, "X", 0, "ATTR")
+        end
+        
+        it "should not allow two abilities" do
+          params = FS3Skills.parse_roll_params("A+B")
+          expect(params).to be_nil
+        end
+        
+        it "should allow two attributes" do
+          params = FS3Skills.parse_roll_params("ATTR+ATTR")
+          check_params(params, "ATTR", 0, "ATTR")
         end
 
         it "should handle bad string with a non-digit modifier" do
-          params = FS3Skills.parse_roll_params("A+B+C")
+          params = FS3Skills.parse_roll_params("A+ATTR+C")
           expect(params).to be_nil
         end
         
         it "should handle bad string with too many params" do
-          params = FS3Skills.parse_roll_params("A+B+2+D")
+          params = FS3Skills.parse_roll_params("A+ATTR+2+D")
           expect(params).to be_nil
         end
       end

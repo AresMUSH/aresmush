@@ -104,7 +104,10 @@ module AresMUSH
     def self.create_xp_job(char, ability)
       message = t('fs3skills.xp_raised_job', :name => char.name, :ability => ability.name, :rating => ability.rating)
       category = Jobs.system_category
-      Jobs.create_job(category, t('fs3skills.xp_job_title', :name => char.name), message, Game.master.system_character)        
+      status = Jobs.create_job(category, t('fs3skills.xp_job_title', :name => char.name), message, Game.master.system_character)        
+      if (status[:job])
+        Jobs.close_job(Game.master.system_character, status[:job])
+      end
     end
     
     def self.max_dots_in_action

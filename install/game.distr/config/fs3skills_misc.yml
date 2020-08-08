@@ -25,3 +25,4 @@ fs3skills:
     fs3_roll:
       type: fs3
       message: Rolled a skill.
+  job_on_luck_spend: true

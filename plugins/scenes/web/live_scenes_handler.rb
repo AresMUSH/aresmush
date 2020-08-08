@@ -31,7 +31,7 @@ module AresMUSH
                          last_posed: s.last_posed == p }},
                   scene_type: s.scene_type ? s.scene_type.titlecase : 'Unknown',
                   likes: s.likes,
-                  is_unread: can_read?(enactor, s) && s.participants.include?(enactor) && s.is_unread?(enactor),
+                  is_unread: can_read?(enactor, s) && enactor && s.participants.include?(enactor) && s.is_unread?(enactor),
                   updated: can_read?(enactor, s) ? OOCTime.local_long_timestr(enactor, s.last_activity) : nil,
                   watching: Scenes.is_watching?(s, enactor),
                   participating: Scenes.is_participant?(s, enactor),
@@ -56,7 +56,7 @@ module AresMUSH
       end
       
       def can_read?(enactor, s)
-        enactor && Scenes.can_read_scene?(enactor, s)
+        Scenes.can_read_scene?(enactor, s)
       end
       
       def sort_scene(s1, s2, enactor)
