@@ -6,7 +6,7 @@ module AresMUSH
       attr_accessor :name
 
       def parse_args
-        self.name = titlecase_arg(cmd.args)
+        self.name = trim_arg(cmd.args)
       end
       
       def required_args
