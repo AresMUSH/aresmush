@@ -4,7 +4,7 @@ module AresMUSH
       def handle(request)
         enactor = request.enactor
         id = request.args[:id]
-        name = request.args[:name]
+        name = (request.args[:name] || "").upcase
         color = request.args[:color]
         roles = request.args[:roles] || []
         template = request.args[:template] || ""
