@@ -2,7 +2,7 @@
 website:
   allow_html_in_markdown: true
   character_gallery_group: Major School
-  character_gallery_subgroup: Minor School
+  character_gallery_subgroup: ""
   left_sidebar: false
   max_upload_size_kb: 500
   max_folder_size_kb: 5000
