@@ -667,6 +667,19 @@ spells:
     range: Touch
     roll: true
     school: Spirit
+Detect All Magic:
+  available: true
+  casting_time: 1 round
+  damage_type: Psionic
+  desc: "The caster senses whether magic is affecting, being performed by, or capable of being performed by any sapient, non-sapient, or inanimate target. They are able to identify the magic's School, its specific affect(s), its range, and targets if applicable. The caster can also sense whether a sapient target is capable of magic, and the target's Schools.\n\nGMs should provide the name of the spell if the caster would be aware of it.\n\nThose with Spirit may notice that the spell has been cast, and may attempt to do so with a roll of the caster's Spirit vs the target's Spirit-4. A draw goes to the caster. This does not prevent the spell's effects or identify the caster in any way."
+  effect: Psionic
+  level: 7
+  line_of_sight: true
+  name: Detect All Magic
+  range: Short
+  roll: true
+  school: Spirit
+  target_num: 1
   Dispel Magic:
     available: true
     casting_time: 1 round

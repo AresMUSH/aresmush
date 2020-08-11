@@ -311,6 +311,19 @@ spells:
     target_optional: true
     target_num: 1
   #LEVEL 7
+  Analyze Object:
+    available: true
+    area: 100 yards
+    casting_time: 1 round
+    desc: "The caster senses all the physical properties of an inanimate object. This includes the type of materials it is composed of, their density, hardness, conductivity, and freezing, melting and boiling points.\n\nThe caster can also sense whether magic is affecting, being performed, or capable of being performed by the inanimate target. They are able to identify the magic's School, its specific affect(s), its range, and targets if applicable. The caster can also sense whether a sapient target is capable of magic, and the target's Schools.\n\nGMs should provide the name of the spell if the caster would be aware of it."
+    duration: 15 minutes
+    effect: Other
+    level: 7
+    line_of_sight: true
+    name:  Analyze Object
+    range: Short
+    roll: true
+    school: Will
   Being Of Force:
     area: 15 yard radius
     available: false
@@ -430,6 +443,7 @@ spells:
     range: Touch
     roll: true
     school: Will
+  #LEVEL 8
   Massive Telekinetic Barrier:
     area: 100 yard sphere
     available: true
