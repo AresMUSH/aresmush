@@ -290,6 +290,7 @@ spells:
     level: 5
     name: Cold Calm
     range: Self
+    rounds: 6
     school: Water
     weapon_specials: Cold Calm
   Exploding Ice:
