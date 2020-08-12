@@ -10,8 +10,13 @@ module AresMUSH
       Global.read_config("custom", "shortcuts")
     end
  
-    def self.get_cmd_handler(client, cmd, enactor)      
+    def self.get_cmd_handler(client, cmd, enactor)   
+      case cmd.root
+      when "plotcheck"
+        return PlotcheckCmd
+      end   
       return nil
     end
   end
 end
+
