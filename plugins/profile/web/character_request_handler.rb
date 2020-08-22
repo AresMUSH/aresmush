@@ -102,6 +102,7 @@ module AresMUSH
           status_message: Profile.get_profile_status_message(char),
           tags: char.profile_tags,
           can_manage: can_manage,
+          can_approve: Chargen.can_approve?(enactor),
           profile: profile,
           relationships: relationships,
           last_online: OOCTime.local_long_timestr(enactor, char.last_on),

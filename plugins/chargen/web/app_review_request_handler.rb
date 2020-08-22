@@ -24,7 +24,7 @@ module AresMUSH
           return { error: t('chargen.no_app_submitted', :name => char.name) }
         end
 
-        return Chargen.build_app_review_info(char)
+        return Chargen.build_app_review_info(char, enactor)
       end
     end
   end

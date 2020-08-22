@@ -194,7 +194,7 @@ module AresMUSH
        return nil
      end
      
-     def self.build_app_review_info(char)
+     def self.build_app_review_info(char, enactor)
        abilities_app = FS3Skills.is_enabled? ? MushFormatter.format(FS3Skills.app_review(char)) : nil
        demographics_app = MushFormatter.format Demographics.app_review(char)
        bg_app = MushFormatter.format Chargen.bg_app_review(char)
@@ -216,7 +216,7 @@ module AresMUSH
          id: char.id,
          job: char.approval_job ? char.approval_job.id : nil,
          custom: custom_app,
-         allow_web_submit: Global.read_config("chargen", "allow_web_submit")
+         allow_web_submit: (char == enactor) && Global.read_config("chargen", "allow_web_submit")
        }
      end
   end
