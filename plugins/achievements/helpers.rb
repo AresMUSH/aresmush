@@ -1,8 +1,7 @@
 module AresMUSH
   module Achievements
     def self.can_manage_achievements?(actor)
-      return false if !actor
-      return actor.has_permission?("manage_achievements")
+      actor && actor.has_permission?("manage_achievements")
     end
     
     def self.all_achievements
