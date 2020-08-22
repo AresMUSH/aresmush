@@ -44,6 +44,10 @@ module AresMUSH
       self.area ? "#{self.area.name}/#{self.name}" : self.name
     end
     
+    def is_temp_room?
+      self.scene && self.scene.temp_room
+    end
+    
     def grid_marker
       if (self.grid_x && self.grid_y)
         "(#{self.grid_x},#{self.grid_y})"
