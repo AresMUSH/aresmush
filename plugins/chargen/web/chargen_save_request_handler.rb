@@ -2,9 +2,7 @@ module AresMUSH
   module Chargen
     class ChargenSaveRequestHandler
       def handle(request)
-        char = request.enactor
         chargen_data = request.args[:char]
-                
         id = request.args[:id]
         enactor = request.enactor
 
