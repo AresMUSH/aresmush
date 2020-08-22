@@ -1,7 +1,7 @@
 module AresMUSH
   module Chargen
     def self.can_approve?(actor)
-      actor.has_permission?("manage_apps")
+      Chargen.can_manage_apps?(actor)
     end
     
     def self.bg_app_review(char)
@@ -10,11 +10,11 @@ module AresMUSH
     end
     
     def self.can_manage_bgs?(actor)
-      actor.has_permission?("manage_apps")
+      actor && actor.has_permission?("manage_apps")
     end     
 
     def self.can_manage_apps?(actor)
-      actor.has_permission?("manage_apps")
+      actor && actor.has_permission?("manage_apps")
     end     
     
     def self.can_view_bgs?(actor)

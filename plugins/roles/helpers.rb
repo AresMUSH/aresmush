@@ -9,7 +9,7 @@ module AresMUSH
     end
     
     def self.can_assign_role?(actor)
-      actor.is_admin?
+      actor && actor.is_admin?
     end
     
     def self.is_restricted?(name)

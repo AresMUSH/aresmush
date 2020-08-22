@@ -17,7 +17,7 @@ module AresMUSH
         end
 
         if (char.is_approved?)
-          return { error: t('chargen.already_approved') }
+          return { error: t('chargen.already_approved', :name => char.name) }
         end
         
         if (!char.approval_job)

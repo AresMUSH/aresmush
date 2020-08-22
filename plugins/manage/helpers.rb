@@ -1,18 +1,16 @@
 module AresMUSH
   module Manage
     def self.can_manage_game?(actor)
-      return false if !actor
-      actor.has_permission?("manage_game")
+      actor && actor.has_permission?("manage_game")
     end
     
     def self.can_announce?(actor)
-      return false if !actor
-      actor.has_permission?("announce")
+      actor && actor.has_permission?("announce")
     end
     
     def self.can_manage_rooms?(actor)
-      return false if !actor
-      actor.has_permission?("build") || self.can_manage_game?(actor)
+      return true if Manage.can_manage_game?(actor)
+      actor && actor.has_permission?("build")
     end
     
     def self.can_manage_object?(actor, model)
