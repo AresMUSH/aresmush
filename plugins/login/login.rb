@@ -144,6 +144,8 @@ module AresMUSH
         return LoginInfoRequestHandler
       when "register"
         return RegisterRequestHandler
+      when "changeName"
+        return ChangeNameRequestHandler
       when "changePassword"
         return ChangePasswordRequestHandler
       when "accountInfo"
