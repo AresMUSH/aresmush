@@ -2,20 +2,32 @@ module AresMUSH
   module Chargen
     class ChargenCharRequestHandler
       def handle(request)
-        char = request.enactor
-        
+        id = request.args[:id]
+        enactor = request.enactor
+        char = Character.find_one_by_name id
         if (!char)
           return { error: t('webportal.login_required') }
         end
-        
+
         error = Website.check_login(request)
         return error if error
-
-        if (char.is_approved?)
-          return { error: t('chargen.you_are_already_approved')}
-        end
                 
-        return { chargen_locked: true } if Chargen.is_chargen_locked?(char)
+
+        
+        if (Chargen.can_approve?(enactor))
+          can_approve = true
+        else
+          can_approve = false
+          if (char != enactor)
+            return { error: t('dispatcher.not_allowed') }
+          end
+
+          if (char.is_approved?)
+            return { error: t('chargen.you_are_already_approved')}
+          end
+                
+          return { chargen_locked: true } if Chargen.is_chargen_locked?(char)
+        end
         
         all_demographics = Demographics.all_demographics
         demographics = {}
@@ -63,7 +75,8 @@ module AresMUSH
         
         {
           id: char.id,
-          chargen_locked: char.chargen_locked,
+          chargen_locked: false,
+          can_approve: can_approve,
           name: char.name,
           demographics: demographics,
           groups: groups,

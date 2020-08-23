@@ -8,13 +8,9 @@ module AresMUSH
       def parse_args
         self.email = trim_arg(cmd.args)
       end
-
-      def required_args
-       [ self.email ]
-      end
       
       def check_email_format
-        if self.email !~ /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/
+        if !Login.is_email_valid?(self.email)
           return t('login.invalid_email_format')
         end
         return nil

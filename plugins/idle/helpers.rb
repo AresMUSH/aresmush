@@ -1,11 +1,11 @@
 module AresMUSH
   module Idle
     def self.can_idle_sweep?(actor)
-      actor.has_permission?("manage_idle")
+      actor && actor.has_permission?("manage_idle")
     end
     
     def self.can_manage_roster?(actor)
-      actor.has_permission?("manage_roster")
+      actor && actor.has_permission?("manage_roster")
     end
     
     def self.roster_enabled?

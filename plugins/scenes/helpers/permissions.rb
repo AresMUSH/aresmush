@@ -2,13 +2,11 @@ module AresMUSH
   module Scenes
     
     def self.can_manage_scenes?(actor)
-      return false if !actor
-      actor.has_permission?("manage_scenes")
+      actor && actor.has_permission?("manage_scenes")
     end
     
     def self.can_control_npcs?(actor)
-      return false if !actor
-      actor.has_permission?("control_npcs")
+      actor && actor.has_permission?("control_npcs")
     end
     
 
