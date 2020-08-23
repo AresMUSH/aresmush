@@ -15,7 +15,7 @@ module AresMUSH
       when "plotcheck"
         return PlotcheckCmd
       end   
-      return nil
+      nil
     end
   end
 end
