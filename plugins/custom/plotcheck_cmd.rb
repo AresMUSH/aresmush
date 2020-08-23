@@ -5,7 +5,7 @@ module AresMUSH
 
             def check_can_view
                 return nil if enactor.has_permission?("view_bgs")
-                return "You do not have permission to use this command."
+                return "You cannot use this command."
             end
 
             def handle 
