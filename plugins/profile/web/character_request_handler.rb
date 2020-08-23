@@ -83,8 +83,10 @@ module AresMUSH
           fate = nil
         end
         
-        if (enactor)
-          Login.mark_notices_read(enactor, :achievement)
+        if (enactor && enactor.is_admin?)
+          siteinfo = Login.build_web_site_info(char, enactor)
+        else
+          siteinfo = nil
         end
           
         {
@@ -123,7 +125,8 @@ module AresMUSH
           roster: self.build_roster_info(char),
           idle_notes: char.idle_notes ? Website.format_markdown_for_html(char.idle_notes) : nil,
           custom: CustomCharFields.get_fields_for_viewing(char, enactor),
-          show_notes: char == enactor || Utils.can_manage_notes?(enactor)
+          show_notes: char == enactor || Utils.can_manage_notes?(enactor),
+          siteinfo: siteinfo
           
         }
       end

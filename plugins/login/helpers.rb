@@ -180,5 +180,13 @@ module AresMUSH
          t('login.site_blocked_proxies') : 
          t('login.site_blocked')
     end
+    
+    def self.is_email_valid?(email)
+      return true if email.blank?
+      if email !~ /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/
+        return false
+      end
+      return true
+    end
   end
 end
