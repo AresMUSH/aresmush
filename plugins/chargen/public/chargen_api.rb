@@ -13,6 +13,9 @@ module AresMUSH
     end
     
     def self.check_chargen_locked(target)
+      # Note: Most of these commands work on enactor-only, so we allow admins to change whatever they want
+      # on themselves. The commands that allow other players separately check whether to allow admins to override
+      # the lock.
       return nil if target.is_admin?
       return t('chargen.cant_be_changed') if target.is_approved?
       return t('chargen.app_in_progress') if target.chargen_locked

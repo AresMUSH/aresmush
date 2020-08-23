@@ -4,15 +4,15 @@ module AresMUSH
     
     def self.can_access_email?(actor, model)
       return true if actor == model
-      actor.has_permission?("manage_login")
+      actor && actor.has_permission?("manage_login")
     end
     
     def self.can_manage_login?(actor)
-      actor.has_permission?("manage_login")
+      actor && actor.has_permission?("manage_login")
     end
     
     def self.can_login?(actor)
-      actor.has_permission?("login")
+      actor && actor.has_permission?("login")
     end
     
     def self.creation_allowed?
@@ -25,6 +25,7 @@ module AresMUSH
     
     def self.can_boot?(actor)
       # Limit to admins or approved non-admins to prevent trolls from using it.
+      return false if !actor
       not_new = actor.has_permission?("manage_login") || actor.is_approved?
       actor.has_permission?("boot") && not_new
     end
@@ -178,6 +179,14 @@ module AresMUSH
       Global.read_config("sites", "ban_proxies") ? 
          t('login.site_blocked_proxies') : 
          t('login.site_blocked')
+    end
+    
+    def self.is_email_valid?(email)
+      return true if email.blank?
+      if email !~ /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/
+        return false
+      end
+      return true
     end
   end
 end

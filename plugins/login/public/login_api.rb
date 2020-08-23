@@ -144,5 +144,19 @@ module AresMUSH
       
       return nil
     end
+    
+    def self.build_web_site_info(char, viewer)
+      matches = Character.all.select { |c| Login.is_site_match?(c.last_ip, 
+        c.last_hostname, 
+        char.last_ip, 
+        char.last_hostname) }
+      findsite = matches.map { |m| { name: m.name, ip: m.last_ip, hostname: m.last_hostname } }
+      {
+        last_online: OOCTime.local_long_timestr(viewer, char.last_on),
+        last_ip: char.last_ip,
+        last_hostname: char.last_hostname,
+        findsite: findsite
+      }
+    end
   end
 end

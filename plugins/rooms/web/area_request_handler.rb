@@ -34,7 +34,7 @@ module AresMUSH
             parent: area.parent ? { name: area.parent.name, id: area.parent.id } : nil,
             summary: summary,
             description: desc,
-            rooms: area.rooms.to_a.sort_by { |r| r.name }.map { |r| {
+            rooms: area.rooms.select { |r| !r.is_temp_room? }.sort_by { |r| r.name }.map { |r| {
               name: r.name,
               id: r.id,
               name_and_area: r.name_and_area

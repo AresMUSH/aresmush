@@ -2,13 +2,11 @@ module AresMUSH
   module Jobs    
       
     def self.can_access_jobs?(actor)
-      return false if !actor
-      actor.has_permission?("access_jobs")
+      actor && actor.has_permission?("access_jobs")
     end
     
     def self.can_manage_jobs?(actor)
-      return false if !actor
-      actor.has_permission?("manage_jobs")
+      actor && actor.has_permission?("manage_jobs")
     end    
     
     def self.closed_jobs
@@ -16,6 +14,7 @@ module AresMUSH
     end
     
     def self.can_access_category?(actor, category)
+      return false if !actor
       return true if actor.is_admin?
       return false if !Jobs.can_access_jobs?(actor)    
       actor.has_any_role?(category.roles)
