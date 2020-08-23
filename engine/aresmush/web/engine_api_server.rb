@@ -81,7 +81,7 @@ module AresMUSH
        AresMUSH.with_error_handling(nil, "Web Request") do
          web_request = WebRequest.new(params)
          web_request.ip_addr = request.ip
-         web_request.hostname = request.host
+         web_request.hostname = Client.lookup_hostname(request.ip)
          if (!web_request.check_api_key)
            return { error: "Invalid authentication key.  This can happen when the game restarts.  Try refreshing the page." }.to_json
          end
@@ -100,7 +100,7 @@ module AresMUSH
          }
          web_request = WebRequest.new(request_params)
          web_request.ip_addr = request.ip
-         web_request.hostname = request.host
+         web_request.hostname = Client.lookup_hostname(request.ip)
          
          response = Global.dispatcher.on_web_request(web_request)
          return response.to_json
