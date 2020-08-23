@@ -11,7 +11,7 @@ module AresMUSH
         return error if error
         
         if (!enactor.compare_password(pw))
-          return { error: t('login.invalid_name_or_password') }
+          return { error: t('login.invalid_password') }
         end
         
         password_error = Character.check_password(new_pw)

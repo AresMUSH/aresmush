@@ -3,7 +3,7 @@ module AresMUSH
     mattr_accessor :current_weather
    
     def self.can_change_weather?(actor)
-      actor.has_permission?("manage_weather")
+      actor && actor.has_permission?("manage_weather")
     end
     
     def self.load_weather_if_needed

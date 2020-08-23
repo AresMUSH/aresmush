@@ -15,6 +15,12 @@ module AresMUSH
       
       def handle
         area = Area.find_one_by_name(self.name)
+        
+        if (!Rooms.can_delete_area?(area))
+          client.emit_failure t('rooms.cant_delete_area')
+          return
+        end
+        
         if (area)
           area.delete
           client.emit_success t('rooms.area_deleted', :name => self.name)

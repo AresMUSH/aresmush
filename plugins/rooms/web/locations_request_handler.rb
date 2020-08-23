@@ -15,7 +15,7 @@ module AresMUSH
               name: area.full_name,
               summary: area.summary ? Website.format_markdown_for_html(area.summary) : "",
               children: area.children.to_a.sort_by { |a| a.name }.map { |a| { id: a.id, name: a.name } },
-              rooms: area.rooms.map { |r| { name: r.name, id: r.id } },
+              rooms: area.rooms.select { |r| !r.is_temp_room? }.map { |r| { name: r.name, id: r.id } },
               is_top_level: area.parent ? false : true
             }
           },
@@ -31,7 +31,7 @@ module AresMUSH
       def is_orphan?(room)
         return false if room.area
         return true if !room.scene
-        return !room.scene.temp_room
+        return !room.is_temp_room?
       end
 
     end

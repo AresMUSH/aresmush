@@ -78,10 +78,10 @@ chargen:
       help: groups
     ranks:
       help: ranks
-    background:
-      help: backgrounds
     abilities:
       help: skills
+    background:
+      help: backgrounds
     desc:
       help: descriptions
     hooks:

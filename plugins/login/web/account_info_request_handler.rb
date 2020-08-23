@@ -8,7 +8,9 @@ module AresMUSH
         return error if error
         
         {
-          handle: enactor.handle ? enactor.handle.name : nil
+          handle: enactor.handle ? enactor.handle.name : nil,
+          email: enactor.login_email,
+          name: enactor.name
         }
       end
     end

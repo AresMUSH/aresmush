@@ -73,7 +73,7 @@ module AresMUSH
       
       if (matched_rooms.count == 1)
         room = matched_rooms.first
-        if (room.scene && room.scene.temp_room)
+        if (room.is_temp_room?)
           description = location
         else
           description = "%xh#{room.name}%xn%R#{room.description}"

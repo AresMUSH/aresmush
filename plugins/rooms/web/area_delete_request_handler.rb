@@ -12,6 +12,10 @@ module AresMUSH
         
         error = Website.check_login(request)
         return error if error
+
+        if (!Rooms.can_delete_area?(area))
+          return { error: t('rooms.cant_delete_area') }
+        end
         
         if (!Rooms.can_build?(enactor))
           return { error: t('dispatcher.not_allowed') }

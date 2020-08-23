@@ -79,5 +79,11 @@ module AresMUSH
       return true if parent_to_check.parent == area
       Rooms.has_parent_area(parent_to_check.parent, area)
     end
+    
+    def self.can_delete_area?(area)
+      return false if area.children.any?
+      return false if area.rooms.any?
+      return true
+    end
   end
 end
