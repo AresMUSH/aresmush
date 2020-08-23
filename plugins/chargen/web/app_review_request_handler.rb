@@ -17,14 +17,14 @@ module AresMUSH
         end
 
         if (char.is_approved?)
-          return { error: t('chargen.already_approved') }
+          return { error: t('chargen.already_approved', :name => char.name) }
         end
         
         if (!char.approval_job)
           return { error: t('chargen.no_app_submitted', :name => char.name) }
         end
 
-        return Chargen.build_app_review_info(char)
+        return Chargen.build_app_review_info(char, enactor)
       end
     end
   end

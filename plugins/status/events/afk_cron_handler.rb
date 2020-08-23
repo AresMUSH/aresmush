@@ -3,10 +3,10 @@ module AresMUSH
     class AfkCronHandler
       
       def on_event(event)
-        #return if !Cron.is_cron_match?(Global.read_config('status', 'afk_cron'), event.time)
+        return if !Cron.is_cron_match?(Global.read_config('status', 'afk_cron'), event.time)
         
         minutes_before_idle_disconnect = "#{Global.read_config('status', 'minutes_before_idle_disconnect')}".to_i
-        return if !minutes_before_idle_disconnect
+        return if minutes_before_idle_disconnect == 0
         
         Global.client_monitor.logged_in_clients.each do |client|
           if (client.idle_secs > minutes_before_idle_disconnect * 60)

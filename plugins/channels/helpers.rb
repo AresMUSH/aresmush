@@ -1,8 +1,7 @@
 module AresMUSH
   module Channels
     def self.can_manage_channels?(actor)
-      return false if !actor
-      actor.has_permission?("manage_channels")
+      actor && actor.has_permission?("manage_channels")
     end
     
     def self.get_channel_options(char, channel)
@@ -28,7 +27,7 @@ module AresMUSH
       if (intersection.empty?)
         return nil
       end
-      intersection = intersection.map { |c| Channels.display_name(nil, c, false) }
+      intersection = intersection.map { |c| Channels.display_name(other_char, c, false) }
       Channels.name_with_markers(intersection.join(", "))
     end
     
@@ -155,13 +154,13 @@ module AresMUSH
     def self.can_join_channel?(char, channel)
       return true if channel.join_roles.empty?
       return true if Channels.can_manage_channels?(char)
-      return char.has_any_role?(channel.join_roles)
+      return char && char.has_any_role?(channel.join_roles)
     end
     
     def self.can_talk_on_channel?(char, channel)
       return true if channel.talk_roles.empty?
       return true if Channels.can_manage_channels?(char)
-      return char.has_any_role?(channel.talk_roles)
+      return char && char.has_any_role?(channel.talk_roles)
     end
     
     def self.with_an_enabled_channel(name, client, enactor, &block)
