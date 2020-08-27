@@ -667,215 +667,215 @@ spells:
     range: Touch
     roll: true
     school: Spirit
-Detect All Magic:
-  available: true
-  casting_time: 1 round
-  damage_type: Psionic
-  desc: "The caster senses whether magic is affecting, being performed by, or capable of being performed by any sapient, non-sapient, or inanimate target. They are able to identify the magic's School, its specific affect(s), its range, and targets if applicable. The caster can also sense whether a sapient target is capable of magic, and the target's Schools.\n\nGMs should provide the name of the spell if the caster would be aware of it.\n\nThose with Spirit may notice that the spell has been cast, and may attempt to do so with a roll of the caster's Spirit vs the target's Spirit-4. A draw goes to the caster. This does not prevent the spell's effects or identify the caster in any way."
-  effect: Psionic
-  level: 7
-  line_of_sight: true
-  name: Detect All Magic
-  range: Short
-  roll: true
-  school: Spirit
-  target_num: 1
-Dispel Magic:
-  available: true
-  casting_time: 1 round
-  desc: "Caster can remove the effects of one spell level 7 or below from a sapient target. They are able to differentiate between the effects of different spells, but cannot remove only a portion of a spell's effect.\n\nThe caster can sense the magic that is affecting a sapient target. They are able to identify the magic's School, its specific affect(s), its range, its level, and targets if applicable. GMs should provide the name of the spell if the caster would be aware of it.\n\nThose with Spirit may notice that the spell has been cast, and may attempt to do so with a roll of the caster's Spirit vs the target's Spirit-4. A draw goes to the caster. This does not prevent the spell's effects or identify the caster in any way."
-  effect: Psionic
-  level: 7
-  name: Dispel All Magic
-  range: Short
-  roll: true
-  school: Spirit
-  target_num: 1
-  target_optional: true
-Dreamtrap:
-  available: true
-  casting_time: 1 round
-  damage_type: Psionic
-  desc: "The caster puts their their target to sleep (if awake) and either draws them into a dream or enters their current dream. The caster has control of the dream and its events, although they may allow the target's subconscious to fill in details or choose to simply observe the target's natural dream. While in the dream, all encounters seem real, though physical damage in the dream world is imaginary and vanishes upon awakening.  Most dreams are recognizable as dreams or visions on waking, though some particularly realistic ones may not be.\n\nOccasionally, a particularly fantastical dream may be recognized as such by the dreamer during the dream. At the GM's discretion, they may roll Alertness with a negative modifier, up to -11, according to the degree of absurdity present in the dream. Think of blocks of buildings curving in on themselves in Inception, not the presence of an unexpected person or being in an unexpected location.\n\nThose with Spirit may notice that the spell has been cast, and may attempt to do so with a roll of the caster's Spirit vs the target's Spirit-4. A draw goes to the caster. This does not prevent the spell's effects or identify the caster in any way."
-  duration: 2 hours
-  effect: Psionic
-  level: 7
-  name: Dreamtrap
-  range: Short
-  roll: true
-  school: Spirit
-  target_num: 1
-  target_optional: true
-Manifest Spirit:
-  available: true
-  casting_time: 5 minutes
-  desc: "Caster calls forth a local spirit. The spirit manifests as a visible presence able to communicate and physically interact with the world in their immediate area. The spirit's knowledge is limited to matters within its location or personal expertise. If the spirit possessed magical abilities in life, it is capable of casting known spells of level 5 or below."
-  duration: 15 minutes
-  effect: Psionic
-  level: 7
-  line_of_sight: true
-  name: Manifest Spirit
-  range: Short
-  roll: true
-  school: Spirit
-Restrain Magic:
-  available: false
-  casting_time: 1 round
-  desc: "The target's ability to cast spells is made very difficult for a short time."
-  duration: 3 rounds
-  effect: Debuff
-  level: 5
-  name: Restrain Magic
-  range: Long
-  rounds: 3
-  school: Spirit
-  spell_mod: -5
-  target_num: 1
-Restore Memory:
-  available: true
-  casting_time: "1 round to cast, plus additional rounds at GM's discretion according to the complexity of the restoration"
-  damage_type: Psionic
-  desc: "Search someone's memory for specific events. Easily locate any which have been overwritten or changed and restore them to their original state.\n\n Memory is able to be searched much like a database, with the caster narrowing in on results by searching for certain times, people, places, etc. They can also filter to view only memories which have been altered. The caster can view original, altered, and restored memories.\n\nThe amount of time neccessary to find a desired memory varies according to the caster's skill and the amount of information they posess about the specific memory or piece of information. Looking through 'all memories about dogs' takes longer than 'memories about dogs in February 2019'.\n\nThe process of restoring a memory once it has been located is simple and relatively quick. The caster may choose to leave the rewritten memories alongside the restored memories, or to remove them completely.\n\nThose with Spirit may notice that the spell has been cast, and may attempt to do so with a roll of the caster's Spirit vs the target's Spirit-4. A draw goes to the caster. This does not prevent the spell's effects or identify the caster in any way."
-  effect: Psionic
-  level: 7
-  name: Restore Memory
-  range: Short
-  roll: true
-  school: Spirit
-  target_num: 1
-  target_optional: true
-Rewrite History:
-  available: true
-  casting_time: "1 round to cast, plus additional rounds at GM's discretion according to complexity of the rewrite."
-  damage_type: Psionic
-  desc: "Permanently rewrite the mind of the target, changing or replacing any and all memories.\n\n
-  The target’s mind, in conjunction with the spell, will fill in the gaps and discrepancies, glossing over irregularities.\n\n
-  Additionally, the caster can impart the remembered knowledge of how to perform simple tasks at a basic level, as long as the caster possesses said knowledge.\n\n
-  Specifics of 'simple tasks' are at staff's discretion, but can include spells up to level 2, languages at a 'conversational'(2) level, most background skills at a 'fair' (1) level, and action skills (except Schools) at a 'competent'(3) level.\n\nThose with Spirit may notice that the spell has been cast, and may attempt to do so with a roll of the caster's Spirit vs the target's Spirit-4. A draw goes to the caster. This does not prevent the spell's effects or identify the caster in any way."
-  effect: Psionic
-  level: 7
-  name: Rewrite History
-  range: Short
-  roll: true
-  school: Spirit
-  target_num: 1
-  target_optional: true
-  #Level 8
-Binding Oath:
-  available: false
-  casting_time: 1 round
-  damage_type: Psionic
-  desc: "The caster specifies a contract which the target agrees to. Upon agreement, the magical oath is sealed./n/n
-  Either party breaking the oath results in an instant impairment of their mental facilities and the loss of all memories since the moment the oath was enacted. Their 'Wits' and 'Perception' are lowered to 1, and they are incapable of higher-level mental tasks such as complicated mathematics, science, and reading. Mentally, they will be capable at the level of a three year old./n/n
-  Memories return sporadically over the course of six months. Cognitive development a year, eventually returning the oath breaker's mental facilities to what they were before."
-  level: 8
-  line_of_sight: true
-  name: Binding Oath
-  range: Short
-  roll: true
-  school: Spirit
-  target_num: 1
-  target_optional: true
-Create Librarian:
-  available: false
-  casting_time: 1 hour
-  damage_type: Psionic
-  desc: "The target's emotional center is rerouted, removing their ability to process emotion and, in turn, increasing their memory storage and processing capability.\n\nTargets affected by this spell operate without an emotional center. They speak with plain clarity and even intonation. They often struggle to understand humor or idioms, and never find themselves angry, frustrated, or impassioned. They are patient and fair to a fault. In exchange, they possess a nearly faultless memory for events, people, and items they encounter. They are able to turn their attention inwards, spending time performing a Memory Dive-like function on their own memories in order to retrieve the most relevant pieces of information.\n\nThose with Spirit may notice that the spell has been cast, and may attempt to do so with a roll of the caster's Spirit vs the target's Spirit-4. A draw goes to the caster. This does not prevent the spell's effects or identify the caster in any way."
-  duration: Permanent
-  effect: Psionic
-  level: 8
-  line_of_sight: true
-  name: Create Librarian
-  range: Short
-  roll: true
-  school: Spirit
-  target_num: 1
-  target_optional: true
-Creeping Possession:
-  available: true
-  casting_time: 10 minutes, plus additional rounds for commands
-  damage_type: Psionic
-  desc: "The caster links their mind telepathically to a target, allowing the caster to slowly replace the target's consciousness with the caster's own. After 3 months have passed, the target is completely possessed by the caster and functions as an extension of the caster's own mind, allowing them to puppet the target's body to their will.\n\nDuring the time the link is active, the caster is able to telepathically impose thoughts, emotions, images, sounds, and sensations on the target's mind, as well as enter the their dreams. The caster has some control of a dream entered and its events, although they may allow the target's subconscious to fill in details or choose to simply observe the target's natural dream. While in the dream, all encounters seem real, though physical damage in the dream world is imaginary and vanishes upon awakening. Most dreams are recognizable as dreams or visions on waking, though some particularly realistic ones may not be.\n\nThe caster is able to link their mind to up to 20 targets at a time. The more targets they possess, the more fractured the caster's own mind gets. A single target can be controlled with complete focus, but controlling five targets is less precise, more than fifteen targets can only be manipulated with rudimentary commands, and by twenty targets the caster's mind is so fractured they've lost their own identity.\n\nThose with Spirit may notice that the spell has been cast, and may attempt to do so with a roll of the caster's Spirit vs the target's Spirit-4. This does not prevent the spell's effects or identify the caster in any way."
-  duration: Permanent
-  effect: Psionic
-  level: 8
-  name: Creeping Possession
-  range: Massive
-  roll: true
-  school: Spirit
-  target_num: 1
-  target_optional: true
-Curse Of Twilight:
-  available: false
-  casting_time: 1 round
-  damage_type: Psionic
-  desc: "The target of the spell is forgotten by those who know them. They are not unseen, but are treated as strangers, any reference to who they were denied. Any new connections forged are reset at twilight of each day."
-  duration: 1 year and 1 day
-  effect: Psionic
-  level: 8
-  line_of_sight: true
-  name: Curse of Twilight
-  range: Short
-  roll: true
-  school: Spirit
-  target_num: 1
-  target_optional: true
-Dispel All Magic:
-  available: true
-  casting_time: 1 round
-  desc: "Caster removes all magical effects of all levels from any sapient, non-sapient, or inanimate target. They are able to differentiate between the effects of different spells, and can remove all magical effects or choose the spells to remove. They cannot remove a portion of a spell's effect.\n\nThe caster can sense the magic that is affecting the target. They are able to identify the magic's School, its specific affect(s), its range, and targets if applicable. The caster can also sense whether a sapient target is capable of magic, and the target's Schools.\n\nGMs should provide the name of the spell if the caster would be aware of it.\n\nThose with Spirit may notice that the spell has been cast, and may attempt to do so with a roll of the caster's Spirit vs the target's Spirit-4. A draw goes to the caster. This does not prevent the spell's effects or identify the caster in any way."
-  effect: Psionic
-  level: 8
-  name: Dispel All Magic
-  range: Short
-  roll: true
-  school: Spirit
-  target_num: 1
-  target_optional: true
-Heirloom Object:
-  available: true
-  casting_time: 3 hours
-  damage_type: Psionic
-  desc: "The caster is capable of concealing a fragment of their spirit and binding it to an inanimate object. If the caster is killed, their full spirit enters the object after 60 seconds.\n\nUsing this spell does not harm the caster. Though it may contain a portion of the caster's spirit, they have no awareness of the object once leaving its presence. \n\nThe object may be stored anywhere, but there must be an open portal path between the caster and the object within 60 seconds of death in order for the spirit to enter the object. Otherwise, they are killed.\n\nOnce their full spirit has entered the object, the caster exists as a sapient object. They are incapable of movement but retain their spell casting abilities. Any who hold the trinket can freely converse with the caster via telepathy.\n\nIf the object is destroyed, so is that piece of the caster\u2019s spirit. If the object is destroyed after the caster fully inhabits it, the caster dies permanently."
-  level: 8
-  name: Heirloom Object
-  range: Touch
-  roll: true
-  school: Spirit
-  target_num: 1
-  target_optional: true
-Restore Magic:
-  available: false
-  casting_time: 10 minutes
-  desc: "The caster restores a target's access to magic. They must have previously been capable of magic to benefit from this spell."
-  duration: Permanent
-  level: 8
-  line_of_sight: true
-  name: Restore Magic
-  range: Short
-  roll: true
-  school: Spirit
-Sever Magic:
-  available: false
-  casting_time: 10 minutes
-  desc: "The caster removes a target's access to magic."
-  duration: Permanent
-  effect: Psionic
-  level: 8
-  line_of_sight: true
-  name: Sever Magic
-  range: Short
-  roll: true
-  school: Spirit
-Siphon Of Spirit:
-  available: false
-  casting_time: 3 hours
-  desc: "A target siphons the magic of those around them in order to increase their power, while simultaneously decreasing the power of others.\n\nThe target receives a bonus to spellcasting and mental abilities that increases as they learn (mod=highest spell level), while those within physical range and those with a significant emotional connection to the target receive a negative modifier to spellcasting and mental abilities, up to -2.\n\nThose with Spirit may notice that the spell has been cast, and may attempt to do so with a roll of the caster's Spirit vs the target's Spirit-4. This does not prevent the spell's effects or identify the caster in any way."
-  duration: Permanent
-  effect: Buff
-  level: 8
-  line_of_sight: true
-  name: Siphon Of Spirit
-  range: Short
-  roll: true
-  school: Spirit
+  Detect All Magic:
+    available: true
+    casting_time: 1 round
+    damage_type: Psionic
+    desc: "The caster senses whether magic is affecting, being performed by, or capable of being performed by any sapient, non-sapient, or inanimate target. They are able to identify the magic's School, its specific affect(s), its range, and targets if applicable. The caster can also sense whether a sapient target is capable of magic, and the target's Schools.\n\nGMs should provide the name of the spell if the caster would be aware of it.\n\nThose with Spirit may notice that the spell has been cast, and may attempt to do so with a roll of the caster's Spirit vs the target's Spirit-4. A draw goes to the caster. This does not prevent the spell's effects or identify the caster in any way."
+    effect: Psionic
+    level: 7
+    line_of_sight: true
+    name: Detect All Magic
+    range: Short
+    roll: true
+    school: Spirit
+    target_num: 1
+  Dispel Magic:
+    available: true
+    casting_time: 1 round
+    desc: "Caster can remove the effects of one spell level 7 or below from a sapient target. They are able to differentiate between the effects of different spells, but cannot remove only a portion of a spell's effect.\n\nThe caster can sense the magic that is affecting a sapient target. They are able to identify the magic's School, its specific affect(s), its range, its level, and targets if applicable. GMs should provide the name of the spell if the caster would be aware of it.\n\nThose with Spirit may notice that the spell has been cast, and may attempt to do so with a roll of the caster's Spirit vs the target's Spirit-4. A draw goes to the caster. This does not prevent the spell's effects or identify the caster in any way."
+    effect: Psionic
+    level: 7
+    name: Dispel All Magic
+    range: Short
+    roll: true
+    school: Spirit
+    target_num: 1
+    target_optional: true
+  Dreamtrap:
+    available: true
+    casting_time: 1 round
+    damage_type: Psionic
+    desc: "The caster puts their their target to sleep (if awake) and either draws them into a dream or enters their current dream. The caster has control of the dream and its events, although they may allow the target's subconscious to fill in details or choose to simply observe the target's natural dream. While in the dream, all encounters seem real, though physical damage in the dream world is imaginary and vanishes upon awakening.  Most dreams are recognizable as dreams or visions on waking, though some particularly realistic ones may not be.\n\nOccasionally, a particularly fantastical dream may be recognized as such by the dreamer during the dream. At the GM's discretion, they may roll Alertness with a negative modifier, up to -11, according to the degree of absurdity present in the dream. Think of blocks of buildings curving in on themselves in Inception, not the presence of an unexpected person or being in an unexpected location.\n\nThose with Spirit may notice that the spell has been cast, and may attempt to do so with a roll of the caster's Spirit vs the target's Spirit-4. A draw goes to the caster. This does not prevent the spell's effects or identify the caster in any way."
+    duration: 2 hours
+    effect: Psionic
+    level: 7
+    name: Dreamtrap
+    range: Short
+    roll: true
+    school: Spirit
+    target_num: 1
+    target_optional: true
+  Manifest Spirit:
+    available: true
+    casting_time: 5 minutes
+    desc: "Caster calls forth a local spirit. The spirit manifests as a visible presence able to communicate and physically interact with the world in their immediate area. The spirit's knowledge is limited to matters within its location or personal expertise. If the spirit possessed magical abilities in life, it is capable of casting known spells of level 5 or below."
+    duration: 15 minutes
+    effect: Psionic
+    level: 7
+    line_of_sight: true
+    name: Manifest Spirit
+    range: Short
+    roll: true
+    school: Spirit
+  Restrain Magic:
+    available: false
+    casting_time: 1 round
+    desc: "The target's ability to cast spells is made very difficult for a short time."
+    duration: 3 rounds
+    effect: Debuff
+    level: 5
+    name: Restrain Magic
+    range: Long
+    rounds: 3
+    school: Spirit
+    spell_mod: -5
+    target_num: 1
+  Restore Memory:
+    available: true
+    casting_time: "1 round to cast, plus additional rounds at GM's discretion according to the complexity of the restoration"
+    damage_type: Psionic
+    desc: "Search someone's memory for specific events. Easily locate any which have been overwritten or changed and restore them to their original state.\n\n Memory is able to be searched much like a database, with the caster narrowing in on results by searching for certain times, people, places, etc. They can also filter to view only memories which have been altered. The caster can view original, altered, and restored memories.\n\nThe amount of time neccessary to find a desired memory varies according to the caster's skill and the amount of information they posess about the specific memory or piece of information. Looking through 'all memories about dogs' takes longer than 'memories about dogs in February 2019'.\n\nThe process of restoring a memory once it has been located is simple and relatively quick. The caster may choose to leave the rewritten memories alongside the restored memories, or to remove them completely.\n\nThose with Spirit may notice that the spell has been cast, and may attempt to do so with a roll of the caster's Spirit vs the target's Spirit-4. A draw goes to the caster. This does not prevent the spell's effects or identify the caster in any way."
+    effect: Psionic
+    level: 7
+    name: Restore Memory
+    range: Short
+    roll: true
+    school: Spirit
+    target_num: 1
+    target_optional: true
+  Rewrite History:
+    available: true
+    casting_time: "1 round to cast, plus additional rounds at GM's discretion according to complexity of the rewrite."
+    damage_type: Psionic
+    desc: "Permanently rewrite the mind of the target, changing or replacing any and all memories.\n\n
+    The target’s mind, in conjunction with the spell, will fill in the gaps and discrepancies, glossing over irregularities.\n\n
+    Additionally, the caster can impart the remembered knowledge of how to perform simple tasks at a basic level, as long as the caster possesses said knowledge.\n\n
+    Specifics of 'simple tasks' are at staff's discretion, but can include spells up to level 2, languages at a 'conversational'(2) level, most background skills at a 'fair' (1) level, and action skills (except Schools) at a 'competent'(3) level.\n\nThose with Spirit may notice that the spell has been cast, and may attempt to do so with a roll of the caster's Spirit vs the target's Spirit-4. A draw goes to the caster. This does not prevent the spell's effects or identify the caster in any way."
+    effect: Psionic
+    level: 7
+    name: Rewrite History
+    range: Short
+    roll: true
+    school: Spirit
+    target_num: 1
+    target_optional: true
+    #Level 8
+  Binding Oath:
+    available: false
+    casting_time: 1 round
+    damage_type: Psionic
+    desc: "The caster specifies a contract which the target agrees to. Upon agreement, the magical oath is sealed./n/n
+    Either party breaking the oath results in an instant impairment of their mental facilities and the loss of all memories since the moment the oath was enacted. Their 'Wits' and 'Perception' are lowered to 1, and they are incapable of higher-level mental tasks such as complicated mathematics, science, and reading. Mentally, they will be capable at the level of a three year old./n/n
+    Memories return sporadically over the course of six months. Cognitive development a year, eventually returning the oath breaker's mental facilities to what they were before."
+    level: 8
+    line_of_sight: true
+    name: Binding Oath
+    range: Short
+    roll: true
+    school: Spirit
+    target_num: 1
+    target_optional: true
+  Create Librarian:
+    available: false
+    casting_time: 1 hour
+    damage_type: Psionic
+    desc: "The target's emotional center is rerouted, removing their ability to process emotion and, in turn, increasing their memory storage and processing capability.\n\nTargets affected by this spell operate without an emotional center. They speak with plain clarity and even intonation. They often struggle to understand humor or idioms, and never find themselves angry, frustrated, or impassioned. They are patient and fair to a fault. In exchange, they possess a nearly faultless memory for events, people, and items they encounter. They are able to turn their attention inwards, spending time performing a Memory Dive-like function on their own memories in order to retrieve the most relevant pieces of information.\n\nThose with Spirit may notice that the spell has been cast, and may attempt to do so with a roll of the caster's Spirit vs the target's Spirit-4. A draw goes to the caster. This does not prevent the spell's effects or identify the caster in any way."
+    duration: Permanent
+    effect: Psionic
+    level: 8
+    line_of_sight: true
+    name: Create Librarian
+    range: Short
+    roll: true
+    school: Spirit
+    target_num: 1
+    target_optional: true
+  Creeping Possession:
+    available: true
+    casting_time: 10 minutes, plus additional rounds for commands
+    damage_type: Psionic
+    desc: "The caster links their mind telepathically to a target, allowing the caster to slowly replace the target's consciousness with the caster's own. After 3 months have passed, the target is completely possessed by the caster and functions as an extension of the caster's own mind, allowing them to puppet the target's body to their will.\n\nDuring the time the link is active, the caster is able to telepathically impose thoughts, emotions, images, sounds, and sensations on the target's mind, as well as enter the their dreams. The caster has some control of a dream entered and its events, although they may allow the target's subconscious to fill in details or choose to simply observe the target's natural dream. While in the dream, all encounters seem real, though physical damage in the dream world is imaginary and vanishes upon awakening. Most dreams are recognizable as dreams or visions on waking, though some particularly realistic ones may not be.\n\nThe caster is able to link their mind to up to 20 targets at a time. The more targets they possess, the more fractured the caster's own mind gets. A single target can be controlled with complete focus, but controlling five targets is less precise, more than fifteen targets can only be manipulated with rudimentary commands, and by twenty targets the caster's mind is so fractured they've lost their own identity.\n\nThose with Spirit may notice that the spell has been cast, and may attempt to do so with a roll of the caster's Spirit vs the target's Spirit-4. This does not prevent the spell's effects or identify the caster in any way."
+    duration: Permanent
+    effect: Psionic
+    level: 8
+    name: Creeping Possession
+    range: Massive
+    roll: true
+    school: Spirit
+    target_num: 1
+    target_optional: true
+  Curse Of Twilight:
+    available: false
+    casting_time: 1 round
+    damage_type: Psionic
+    desc: "The target of the spell is forgotten by those who know them. They are not unseen, but are treated as strangers, any reference to who they were denied. Any new connections forged are reset at twilight of each day."
+    duration: 1 year and 1 day
+    effect: Psionic
+    level: 8
+    line_of_sight: true
+    name: Curse of Twilight
+    range: Short
+    roll: true
+    school: Spirit
+    target_num: 1
+    target_optional: true
+  Dispel All Magic:
+    available: true
+    casting_time: 1 round
+    desc: "Caster removes all magical effects of all levels from any sapient, non-sapient, or inanimate target. They are able to differentiate between the effects of different spells, and can remove all magical effects or choose the spells to remove. They cannot remove a portion of a spell's effect.\n\nThe caster can sense the magic that is affecting the target. They are able to identify the magic's School, its specific affect(s), its range, and targets if applicable. The caster can also sense whether a sapient target is capable of magic, and the target's Schools.\n\nGMs should provide the name of the spell if the caster would be aware of it.\n\nThose with Spirit may notice that the spell has been cast, and may attempt to do so with a roll of the caster's Spirit vs the target's Spirit-4. A draw goes to the caster. This does not prevent the spell's effects or identify the caster in any way."
+    effect: Psionic
+    level: 8
+    name: Dispel All Magic
+    range: Short
+    roll: true
+    school: Spirit
+    target_num: 1
+    target_optional: true
+  Heirloom Object:
+    available: true
+    casting_time: 3 hours
+    damage_type: Psionic
+    desc: "The caster is capable of concealing a fragment of their spirit and binding it to an inanimate object. If the caster is killed, their full spirit enters the object after 60 seconds.\n\nUsing this spell does not harm the caster. Though it may contain a portion of the caster's spirit, they have no awareness of the object once leaving its presence. \n\nThe object may be stored anywhere, but there must be an open portal path between the caster and the object within 60 seconds of death in order for the spirit to enter the object. Otherwise, they are killed.\n\nOnce their full spirit has entered the object, the caster exists as a sapient object. They are incapable of movement but retain their spell casting abilities. Any who hold the trinket can freely converse with the caster via telepathy.\n\nIf the object is destroyed, so is that piece of the caster\u2019s spirit. If the object is destroyed after the caster fully inhabits it, the caster dies permanently."
+    level: 8
+    name: Heirloom Object
+    range: Touch
+    roll: true
+    school: Spirit
+    target_num: 1
+    target_optional: true
+  Restore Magic:
+    available: false
+    casting_time: 10 minutes
+    desc: "The caster restores a target's access to magic. They must have previously been capable of magic to benefit from this spell."
+    duration: Permanent
+    level: 8
+    line_of_sight: true
+    name: Restore Magic
+    range: Short
+    roll: true
+    school: Spirit
+  Sever Magic:
+    available: false
+    casting_time: 10 minutes
+    desc: "The caster removes a target's access to magic."
+    duration: Permanent
+    effect: Psionic
+    level: 8
+    line_of_sight: true
+    name: Sever Magic
+    range: Short
+    roll: true
+    school: Spirit
+  Siphon Of Spirit:
+    available: false
+    casting_time: 3 hours
+    desc: "A target siphons the magic of those around them in order to increase their power, while simultaneously decreasing the power of others.\n\nThe target receives a bonus to spellcasting and mental abilities that increases as they learn (mod=highest spell level), while those within physical range and those with a significant emotional connection to the target receive a negative modifier to spellcasting and mental abilities, up to -2.\n\nThose with Spirit may notice that the spell has been cast, and may attempt to do so with a roll of the caster's Spirit vs the target's Spirit-4. This does not prevent the spell's effects or identify the caster in any way."
+    duration: Permanent
+    effect: Buff
+    level: 8
+    line_of_sight: true
+    name: Siphon Of Spirit
+    range: Short
+    roll: true
+    school: Spirit
