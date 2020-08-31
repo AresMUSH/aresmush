@@ -5,7 +5,11 @@ module AresMUSH
         players = {}
         
         Handle.all.each do |h|
-          players[h.name] = AresCentral.alts_of(h).map { |a| alt_char_data(a) }
+          players["@#{h.name}"] = {
+            name: h.name,
+            alts: AresCentral.alts_of(h).map { |a| alt_char_data(a) },
+            is_handle: true
+          } 
         end
         
         Character.all.each do |c|
@@ -21,19 +25,21 @@ module AresMUSH
           add_alt(players, player_tag.titleize, c)
         end
         
-        players.sort.map { |name, alts| { name: name, alts: alts }}
+        players.sort_by { |key, data| data[:name] }.map { |key, data| data }
       end
       
       def add_alt(players, player_name, alt)
         if (players.has_key?(player_name))
-          players[player_name] << alt_char_data(alt)
+          alts = players[player_name][:alts]
+          alts << alt_char_data(alt)
+          players[player_name][:alts] = alts
         else
-          players[player_name] = [ alt_char_data(alt) ]
+          players[player_name] = { name: player_name, alts: [ alt_char_data(alt) ], is_handle: false }
         end
       end
       
       def alt_char_data(char)
-        {name: char.name, icon: Website.icon_for_char(char) }
+        {name: char.name, icon: Website.icon_for_char(char), is_handle: !!char.handle }
       end
     end
   end
