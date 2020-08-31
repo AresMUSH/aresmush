@@ -61,7 +61,7 @@ module AresMUSH
           wound.update(initial_severity: self.initial_severity)
           wound.update(description: self.desc)
           wound.update(healing_points: FS3Combat.healing_points(self.current_severity))
-          
+          wound.update(ictime_str: self.ictime_str)
           client.emit_success t('fs3combat.damage_modified') 
         else 
           client.emit_failure t('db.object_not_found')
