@@ -320,11 +320,11 @@ module AresMUSH
         icon = Website.icon_for_char(enactor) 
         icon_url = icon ? "#{Game.web_portal_url}/game/uploads/#{icon}" :
              "https://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(enactor.name)}?d=#{gravatar_style}"
-        resp = Net::HTTP.post_form(URI.parse(url), { 
+        connector = RestConnector.new(url)
+        connector.post( "", { 
           content: formatted_msg, 
           username: name,
-          avatar_url: icon_url })
-        # JSON.parse(resp.body)
+          avatar_url: icon_url } )
       end
     end
     
