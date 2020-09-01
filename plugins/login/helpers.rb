@@ -121,7 +121,11 @@ module AresMUSH
     def self.update_blacklist
       return if (!Global.read_config("sites", "ban_proxies"))
       Global.logger.debug "Updating blacklist from rhost.com."
-      blacklist = Net::HTTP.get('rhostmush.com', '/blacklist.txt')
+
+      connector = HttpConnector.new      
+      resp = connector.get('http://rhostmush.com/blacklist.txt')
+      blacklist = resp.body
+
       if (blacklist)
         blacklist = blacklist.split("\n").select { |b| b != "ip" && !b.empty? }.join("\n")
         File.open(File.join(AresMUSH.game_path, 'text', 'blacklist.txt'), 'w') do |f|
@@ -145,7 +149,9 @@ module AresMUSH
         return { status: 'error',  error: Login.site_blocked_message }
       end
 
-      if (char.handle && AresCentral.is_registered?)
+      password_ok = char.compare_password(password)
+
+      if (!password_ok && char.handle && AresCentral.is_registered?)
         AresMUSH.with_error_handling(nil, "AresCentral forgotten password.") do
           Global.logger.info "Checking AresCentral for forgotten password."
 
@@ -165,7 +171,7 @@ module AresMUSH
         return { status: 'error', error: t('login.password_locked') }
       end
         
-      if (!char.compare_password(password))
+      if (!password_ok)
         Global.logger.info "Failed login attempt #{char.login_failures} to #{char.name} from #{ip_addr}."
         char.update(login_failures: char.login_failures + 1)
         return { status: 'error', error: t('login.password_incorrect') }

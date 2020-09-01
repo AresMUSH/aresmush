@@ -2,22 +2,35 @@ module AresMUSH
   class RestConnector
     def initialize(baseUrl)
       @baseUrl = baseUrl
+      @connector = HttpConnector.new
     end
     
     def get(action)
-      url = "#{@baseUrl}/#{action}"
-      resp = Net::HTTP.get_response(build_uri(action))
-      JSON.parse(resp.body)
+      url = build_url(action)
+      resp = @connector.get(url)
+      if (resp && resp.body)
+        return JSON.parse(resp.body)
+      else
+        return nil
+      end
     end
     
     def post(action, params)
-      resp = Net::HTTP.post_form(build_uri(action), params)
-      JSON.parse(resp.body)
+      url = build_url(action)
+      resp = @connector.post(url, params)
+      if (resp && resp.body)
+        return JSON.parse(resp.body)
+      else
+        return nil
+      end
     end
     
-    def build_uri(action)
-      url = "#{@baseUrl}/#{action}"
-      URI.parse(url)
+    def build_url(action)
+      if (action.blank?)
+        return @baseUrl
+      else
+        return "#{@baseUrl}/#{action}"
+      end
     end
   end
 end
