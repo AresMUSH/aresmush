@@ -36,7 +36,7 @@ module AresMUSH
           job_message = t('custom.awarded_luck', :name => enactor.name, :target => model.name, :luck => self.luck, :reason => self.reason)
           category = Global.read_config("jobs", "luck_category")
 
-          status = Jobs.create_job(category, t('custom.awarded_luck_title', :target => model.name, :luck => self.luck), job_message, model))
+          status = Jobs.create_job(category, t('custom.awarded_luck_title', :target => model.name, :luck => self.luck), job_message, model) 
           if (status[:job])
             Jobs.close_job(Game.master.system_character, status[:job])
           end
