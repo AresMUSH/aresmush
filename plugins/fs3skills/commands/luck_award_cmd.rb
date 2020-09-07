@@ -18,7 +18,7 @@ module AresMUSH
 
 
       def check_luck
-        return t('fs3skills.invalid_luck_points') if self.luck.to_f == 0.0
+        # return t('fs3skills.invalid_luck_points') if self.luck.to_f == 0.0
         return nil
       end
 
@@ -35,7 +35,12 @@ module AresMUSH
 
           job_message = t('custom.awarded_luck', :name => enactor.name, :target => model.name, :luck => self.luck, :reason => self.reason)
           category = Global.read_config("jobs", "luck_category")
-          Jobs.create_job(category, t('custom.awarded_luck_title', :target => model.name, :luck => self.luck), job_message, model)
+
+          status = Jobs.create_job(Jobs.create_job(category, t('custom.awarded_luck_title', :target => model.name, :luck => self.luck), job_message, model))
+          if (status[:job])
+            Jobs.close_job(Game.master.system_character, status[:job])
+          end
+
 
 
           message = t('fs3skills.luck_awarded', :name => model.name, :luck => self.luck, :reason => self.reason)
