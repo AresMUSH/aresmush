@@ -49,7 +49,11 @@ module AresMUSH
               client.emit_success t('magic.complete_learning', :spell => self.spell)
               message = t('magic.xp_learned_spell', :name => enactor.name, :spell => self.spell, :level => self.spell_level, :school => self.school)
               category = Jobs.system_category
-              Jobs.create_job(category, t('magic.xp_learned_spell_title', :name => enactor.name, :spell => self.spell), message, Game.master.system_character)
+              status = Jobs.create_job(category, t('magic.xp_learned_spell_title', :name => enactor.name, :spell => self.spell), message, Game.master.system_character)
+              if (status[:job])
+                Jobs.close_job(Game.master.system_character, status[:job])
+              end
+              
               Magic.handle_spell_learn_achievement(enactor)
             end
           end
