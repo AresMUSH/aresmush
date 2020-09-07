@@ -42,7 +42,10 @@ module AresMUSH
 
             job_message = t('magic.reduce_spell_learn_time_job', :name => enactor.name, :spell => self.spell)
             category = Global.read_config("jobs", "luck_category")
-            Jobs.create_job(category, t('fs3skills.luck_point_spent', :name => enactor.name, :reason => "learn time of #{self.spell}."), job_message, enactor)
+            status = Jobs.create_job(category, t('fs3skills.luck_point_spent', :name => enactor.name, :reason => "learn time of #{self.spell}."), job_message, enactor)
+            if (status[:job])
+              Jobs.close_job(Game.master.system_character, status[:job])
+            end
             Global.logger.info "#{enactor.name} spent luck to reduce the learn time of #{self.spell}."
             client.emit_success job_message
 
