@@ -2,21 +2,28 @@ module AresMUSH
   module FS3Skills
     class ChargenCharRequestHandler
       def handle(request)
-        char = request.enactor
-        
+        id = request.args[:id]
+        enactor = request.enactor
+                
+        char = Character.find_one_by_name id
         if (!char)
           return { error: t('webportal.login_required') }
         end
         
         error = Website.check_login(request)
         return error if error
-
-        if (char.is_approved?)
-          return { error: t('chargen.you_are_already_approved')}
-        end
-                
-        return { chargen_locked: true } if Chargen.is_chargen_locked?(char)
         
+        if (!Chargen.can_approve?(enactor))
+          if (char != enactor)
+            return { error: t('dispatcher.not_allowed') }
+          end
+
+          if (char.is_approved?)
+            return { error: t('chargen.you_are_already_approved')}
+          end
+                
+          return { chargen_locked: true } if Chargen.is_chargen_locked?(char)
+        end        
         
         {
           fs3_attributes: get_ability_list(char, char.fs3_attributes, :attribute),

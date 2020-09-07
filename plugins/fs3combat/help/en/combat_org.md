@@ -22,6 +22,7 @@ aliases:
 - combat_attackmod
 - combat_defensemod
 - combat_lethalmod
+- combat_initmod
 - combat_team
 - combat_stop
 - combat_newturn
@@ -51,9 +52,11 @@ You can always specify a NPC or player name in front of any action command to ma
 Most commands support multiple names as well, so you can do: `combat/attack A B/C`.
 **See [NPC](/help/npc) for more information on how spells, potions, and levels work for NPCs**
 
-`combat/join <list of names>=<combat #>[/<type>]` - Creates temporary NPCs and adds them to the combat. 'Type' affects their available hitlocs. See `combat/types` for a list.
-`combat/npc <name>=<level>` - Adjusts a NPC's skill level.  Level can be One, Two, Three, Four, Five, Six, Seven, Eight, Nine, or Ten. Levels Seven-Ten are Miniboss to Boss levels. See `combat/npcs` for more info.
-`combat/targets` - See a breakdown of who's targeting whom.
+`combat/attackmod <name>=<modifier>` - Gives the combatant a modifier to attack.
+`combat/defensemod <name>=<modifier>` - Gives the combatant a modifier to defend.
+`combat/lethalmod <name>=<modifier>` - Gives the combatant a modifier to lethality on damage TAKEN.
+`combat/initmod <name>=<modifier>` - Gives the combatant a modifier to initiative.
+`combat/ammo <name>=<ammo>` - Adjusts remaining ammo.
 
 `combat/team <list of names>=<team#>` - Switches teams.
 `combat/target <team#>=<list of team #s>` - Sets it up so NPCs on a given team will only target people on the listed teams.  "combat/target 3=1 4" means team 3 will only target people on teams 1 and 4.

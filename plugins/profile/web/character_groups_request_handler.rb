@@ -2,6 +2,9 @@ module AresMUSH
   module Profile
     class CharacterGroupsRequestHandler
       def handle(request)
+        enactor = request.enactor
+        error = Website.check_login(request, true)
+        return error if error
 
         group_key = (Global.read_config("website", "character_gallery_group") || "faction").downcase
         npc_groups = Character.all.select { |c| c.is_npc? && !c.idled_out? }
@@ -74,6 +77,16 @@ module AresMUSH
                       }
                     }
 
+        if (enactor && enactor.is_admin?)
+          new_chars = Character.all.select { |c| !c.is_approved? }.sort_by { |c| c.name }.map { |c| {
+                        name: c.name,
+                        icon: Website.icon_for_char(c)
+                        }
+                      }
+        else
+          new_chars = nil
+        end
+
         unplayed_chars = Character.all.select { |c| c.idle_state == 'Unplayed' }.sort_by { |c| c.name }.map { |c| {
                       name: c.name,
                       icon: Website.icon_for_char(c)
@@ -90,7 +103,8 @@ module AresMUSH
           groups: groups,
           idle: idle_chars,
           dead: dead_chars,
-          unplayed: unplayed_chars
+          unplayed: unplayed_chars,
+          unapproved: new_chars
         }
       end
     end

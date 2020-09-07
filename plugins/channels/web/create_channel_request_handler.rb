@@ -30,8 +30,8 @@ module AresMUSH
         Global.logger.info "Channel #{name} created by #{enactor.name}."
         
         channel = Channel.create(name: name, description: Website.format_input_for_mush(desc), color: color)
-        channel.set_join_roles(can_join)
-        channel.set_talk_roles(can_talk)
+        channel.set_roles(can_join, :join)
+        channel.set_roles(can_talk, :talk)
 
         {}
       end

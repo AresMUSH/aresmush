@@ -51,6 +51,7 @@ module AresMUSH
     attribute :damage_lethality_mod, :type => DataType::Integer, :default => 0
     attribute :defense_mod, :type => DataType::Integer, :default => 0
     attribute :attack_mod, :type => DataType::Integer, :default => 0
+    attribute :initiative_mod, :type => DataType::Integer, :default => 0
 
     reference :subdued_by, "AresMUSH::Combatant"
     reference :aim_target, "AresMUSH::Combatant"

@@ -1,8 +1,9 @@
 module AresMUSH
   module Events
     def self.can_manage_events?(actor)
-      actor.has_permission?("manage_events")
+      actor && actor.has_permission?("manage_events")
     end
+
     def self.ical_path
       File.join(AresMUSH.game_path, 'calendar.ics')
     end

@@ -8,27 +8,26 @@ aliases:
 ---
 # Managing the Forum
 
-> **These commands require the Admin role or the permission: manage\_forum**
+> **Permission Required:** These commands require the Admin role or the permission: manage\_forum
 
-## Creating and Deleting Categories
+## Managing Categories
+
+Forum admins can create and delete categories on the web portal.  Go to [Admin -> Setup -> Setup Forum](/forum-manage). Category properties include:
+
+* Name - A unique name for the category. You can change the name at any time.
+* Description - Optional description for the category's purpose.
+* Order - The order that categories are displayed on the forum index. If there are multiple forums with the same order number, they will be sorted by name.
+* Read Roles - People with these [roles](/help/roles) are allowed to see the forum. You can use 'everyone' to let everybody read.
+* Write Roles - People with these [roles](/help/roles) are allowed to post and reply to the forum. To prevent abuse, it is advised that you minimally lock each forum to the 'approved' role.
 
 `forum/createcat <name>`
 
 `forum/describe <category>=<description>`
-`forum/rename <category>=<new name>` - Renames a forum.  You can use this to change capitalization on the name as well as changing the name itself.
+`forum/rename <category>=<new name>`
 `forum/deletecat <category>`
 `forum/order <category>=<order #>`
-
-## Access Roles
-
-Access to forums is done by [role](/help/roles). You can give a role read and/or write permissions to a forum category. Posting and replying to a forum requires 'write' permissions.
-
 `forum/readroles <category>=<comma-separated roles that can read it, or 'everyone'>`
 `forum/writeroles <category>=<comma-separated roles that can write to it, or 'everyone'>`
-
-## Archiving a Board
-
-`forum/archive <category>` - Prints out messages so you can log them to a file.
 
 ## Editing, Moving and Deleting Posts
 
@@ -43,3 +42,9 @@ You can edit and delete other peoples' posts as well as their own.  You can also
 Posts can be pinned (or made sticky) so they show up first regardless of when they were posted.
 
 `forum/pin <category>/<#>=<on or off>`
+
+## Archiving a Board
+
+You can archive the messages from a forum category for offline storage.  The default format is suitable for a wiki page.
+
+`forum/archive <category>` - Prints out messages so you can log them to a file.

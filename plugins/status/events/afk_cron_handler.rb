@@ -1,16 +1,15 @@
 module AresMUSH
   module Status    
     class AfkCronHandler
-      include CommandHandler
       
-      def on_cron_event(event)
-        config = Global.read_config("status")
-        return if !Cron.is_cron_match?(config['afk_cron'], event.time)
+      def on_event(event)
+        return if !Cron.is_cron_match?(Global.read_config('status', 'afk_cron'), event.time)
+        
+        minutes_before_idle_disconnect = "#{Global.read_config('status', 'minutes_before_idle_disconnect')}".to_i
+        return if minutes_before_idle_disconnect == 0
         
         Global.client_monitor.logged_in_clients.each do |client|
-          minutes_before_idle_disconnect = config['minutes_before_idle_disconnect']
-          if (minutes_before_idle_disconnect &&
-            (client.idle_secs > minutes_before_idle_disconnect * 60))
+          if (client.idle_secs > minutes_before_idle_disconnect * 60)
             client.emit_ooc t('status.afk_disconnect')
             client.disconnect
           end

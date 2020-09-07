@@ -1,7 +1,7 @@
 module AresMUSH
   module FS3Skills
     def self.can_manage_luck?(actor)
-      actor.has_permission?("manage_abilities")
+      actor && actor.has_permission?("manage_abilities")
     end
 
     def self.modify_luck(char, amount)
@@ -25,8 +25,13 @@ module AresMUSH
 
       Achievements.award_achievement(char, "fs3_luck_spent")
 
-      category = Global.read_config("jobs", "luck_category")
-      Jobs.create_job(category, t('fs3skills.luck_job_title', :name => char.name, :reason => reason), message, char)
+      if (Global.read_config('fs3skills', 'job_on_luck_spend'))
+        category = Jobs.system_category
+        status = Jobs.create_job(category, t('fs3skills.luck_job_title', :name => char.name), message, Game.master.system_character)
+        if (status[:job])
+          Jobs.close_job(Game.master.system_character, status[:job])
+        end
+      end
 
       Global.logger.info "#{char.name} spent luck on #{reason}."
     end

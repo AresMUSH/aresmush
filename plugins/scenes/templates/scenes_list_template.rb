@@ -51,11 +51,8 @@ module AresMUSH
         if (scene.private_scene)
           color = "%xr"
           message = t('scenes.private')
-        elsif scene.watchable_scene
-          message = "Watchable"
+        elsif (scene.has_notes?)
           color = "%xc"
-        elsif (scene.limited_participation?)
-          color = "%xy"
           message = t('scenes.limited')
         else
           color = "%xg"

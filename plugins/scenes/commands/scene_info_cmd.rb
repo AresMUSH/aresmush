@@ -53,7 +53,7 @@ module AresMUSH
           when "type"
             success = set_type(scene)
             
-          when "limit"
+          when "limit", "note", "notes"
             scene.update(limit: self.value.downcase == "none" ? nil : self.value)
             success = true
           end

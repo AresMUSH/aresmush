@@ -1,7 +1,7 @@
 module AresMUSH
   module FS3Skills
     def self.can_manage_xp?(actor)
-      actor.has_permission?("manage_abilities")
+      actor && actor.has_permission?("manage_abilities")
     end
 
     def self.modify_xp(char, amount)
@@ -104,7 +104,10 @@ module AresMUSH
     def self.create_xp_job(char, ability)
       message = t('fs3skills.xp_raised_job', :name => char.name, :ability => ability.name, :rating => ability.rating)
       category = Jobs.system_category
-      Jobs.create_job(category, t('fs3skills.xp_job_title', :name => char.name), message, Game.master.system_character)
+      status = Jobs.create_job(category, t('fs3skills.xp_job_title', :name => char.name), message, Game.master.system_character)
+      if (status[:job])
+        Jobs.close_job(Game.master.system_character, status[:job])
+      end
     end
 
     def self.max_dots_in_action
@@ -118,7 +121,7 @@ module AresMUSH
       extra = Global.read_config("fs3skills", 'attr_dots_beyond_chargen_max') || 0
       base + extra
     end
-    
+
     def self.max_dots_in_advantages
       cost = Global.read_config("fs3skills", "advantages_cost")
       base = (Global.read_config("fs3skills", 'max_points_on_advantages') || 0) / cost

@@ -13,7 +13,7 @@ module AresMUSH
            .map { |b| {
              id: b.id,
              name: b.name,
-             description: b.description,
+             description: Website.format_markdown_for_html(b.description),
              unread: enactor && b.has_unread?(enactor),
              last_activity: last_activity(b, enactor),
              can_read: Forum.can_read_category?(enactor, b)

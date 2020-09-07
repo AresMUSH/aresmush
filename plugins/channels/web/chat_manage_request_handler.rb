@@ -14,7 +14,7 @@ module AresMUSH
             id: c.id,
             name: c.name,
             color: c.color,
-            desc: c.description,
+            desc: Website.format_markdown_for_html(c.description),
             can_join: c.join_roles.map { |r| r.name },
             can_talk: c.talk_roles.map { |r| r.name }
           }}
