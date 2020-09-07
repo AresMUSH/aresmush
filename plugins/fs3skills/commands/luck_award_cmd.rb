@@ -8,7 +8,7 @@ module AresMUSH
       def parse_args
         args = cmd.parse_args(ArgParser.arg1_equals_arg2_slash_arg3)
         self.name = trim_arg(args.arg1)
-        self.luck = integer_arg(args.arg2)
+        self.luck = trim_arg(args.arg2)
         self.reason = args.arg3
       end
 
@@ -36,7 +36,7 @@ module AresMUSH
           job_message = t('custom.awarded_luck', :name => enactor.name, :target => model.name, :luck => self.luck, :reason => self.reason)
           category = Global.read_config("jobs", "luck_category")
 
-          status = Jobs.create_job(category, t('custom.awarded_luck_title', :target => model.name, :luck => self.luck), job_message, model) 
+          status = Jobs.create_job(category, t('custom.awarded_luck_title', :target => model.name, :luck => self.luck), job_message, model)
           if (status[:job])
             Jobs.close_job(Game.master.system_character, status[:job])
           end
