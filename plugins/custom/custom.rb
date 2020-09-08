@@ -16,6 +16,8 @@ module AresMUSH
 		case cmd.switch
 		when "set"
 		  return SetGoalsCmd
+		else
+		  return GoalsCmd
 		end
 	  end	
       return nil
