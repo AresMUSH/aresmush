@@ -1,6 +1,6 @@
 License
 ----
-<span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" property="dct:title" rel="dct:type">Spirit Lake's magic system and configuration files</span> are copyright 2018 by <a xmlns:cc="http://creativecommons.org/ns#" href="https://arescentral.aresmush.com/handle/Tat" property="cc:attributionName" rel="cc:attributionURL">Tat @ AresCentral</a> and are licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
+<span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" property="dct:title" rel="dct:type">Spirit Lake's magic system and configuration files</span> are copyright 2018 by <a xmlns:cc="http://creativecommons.org/ns#" href="https://arescentral.aresmush.com/handle/Tat" property="cc:attributionName" rel="cc:attributionURL">Tat @ AresCentral</a>. As part of AresMUSH's license, they are also licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
 
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>
 
@@ -20,7 +20,7 @@ Repository content open for general public use includes:
 * The changes to any core Ares code files, such as FS3 or the scene system.
 * Corresponding hbs and js files to make the magic, creature, and portals code work in the web portal.
 
-**Some things in the git repository are considered game content and are not generally available to use on other games.**
+**SOME THINGS IN THE GIT REPOSITORY ARE CONSIDERED GAME CONTENT AND ARE NOT AVAILABLE FOR USE ON OTHER GAMES.**
 
 Repository content NOT open for general public use includes:
 * All images.
@@ -43,7 +43,7 @@ Specifically, the contents of the following files are NOT covered under this lic
 * <a href="https://github.com/spiritlake/aresmush/blob/master/game/config/magic-items.yml">magic-items</a>
 This list is not exhaustive.
 
-
+________________________________
 <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" property="dct:title" rel="dct:type">AresMUSH and the FS3 System</span>  are copyright 2007 by <a xmlns:cc="http://creativecommons.org/ns#" href="http://www.aresmush.com" property="cc:attributionName" rel="cc:attributionURL">Faraday ("the author")</a> and are licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
 
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>
