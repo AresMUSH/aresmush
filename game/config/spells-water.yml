@@ -406,6 +406,16 @@ spells:
     weapon_specials: Glacial Ice
     target_optional: true
     target_num: 1
+  Hydroplane:
+    available: false
+    casting_time: 1 round
+    desc: "The caster manipulates water, snow, or ice to carry themselves at a speed of up to 60 mph. They are able to ski along the surface of any water, snow, or ice. They can also slide beneath the surface to swim at the same fast speeds, able to breathe in the water for the duration of the spell. Mods to defense and attack may be applied at the GM's discretion according to actions taken while in motion."
+    duration: 1 hour
+    effect: Travel
+    level: 6
+    name: Hydroplane
+    range: Self
+    school: Water
   Liquid Form:
     available: true
     casting_time: 1 round
@@ -434,6 +444,7 @@ spells:
     target_num: 1
     target_optional: true
     weapon: Shatter
+#LEVEL 7
   Energize Dimensional Anchor (Water):
     available: false
     casting_time: 2 minutes
@@ -473,7 +484,18 @@ spells:
     name: Ice Wall
     range: Long
     school: Water
-    effect: Defense
+  Mass Hydroplane:
+    available: false
+    casting_time: 1 round
+    desc: "Confers water breathing and the ability to move through water, snow, and ice upon up to 5 targets. They are able to ski across the surface or swim below the surface of any water or snow at a speeds of up to 30 mph. Each recipient of the spell must remain within 30 yards of at least one other recipient, or the spell ends for the target that is separated from the others."
+    duration: 30 minutes
+    effect: Travel
+    level: 7
+    line_of_sight: true
+    name: Mass Hydroplane
+    range: Short
+    school: Water
+    target_num: 5
   Greater Purify Water:
     available: false
     casting_time: 15 minutes
