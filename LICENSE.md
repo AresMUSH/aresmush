@@ -4,7 +4,7 @@ License
 
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>
 
-This includes several plugins available via <a href="https://github.com/AresMUSH/ares-extras">Ares Extras:</a>
+The game's code includes several plugins that are also available via <a href="https://github.com/AresMUSH/ares-extras">Ares Extras:</a>
 
 * <a href="https://github.com/AresMUSH/ares-extras/tree/master/plugins/compliments">Compliments</a>
 * <a href="https://github.com/AresMUSH/ares-extras/tree/master/plugins/luckgive">LuckGive</a>
