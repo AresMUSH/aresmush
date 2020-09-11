@@ -92,6 +92,19 @@ spells:
     range: Self
     roll: Will
     school: Will
+  Spatial Awareness:
+    attack_mod: 1
+    available: false
+    casting_time: 1 round
+    defense_mod: 1
+    desc: "The caster becomes more aware of the inanimate environment within a yard around them. This allows them to have solid footing and better avoid objects, slightly increasing their ability to attack and defend."
+    duration: 4 rounds
+    effect: Buff
+    level: 3
+    name: 'Spatial Awareness '
+    range: Self
+    rounds: 4
+    school: Will        
   Telekinetic Block:
     available: true
     casting_time: 1 round
