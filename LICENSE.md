@@ -41,6 +41,7 @@ Specifically, the contents of the following files are NOT covered under this lic
 * <a href="https://github.com/spiritlake/aresmush/blob/master/game/config/spells-will.yml">spells-will</a>
 * <a href="https://github.com/spiritlake/aresmush/blob/master/game/config/magic.yml">magic</a>
 * <a href="https://github.com/spiritlake/aresmush/blob/master/game/config/magic-items.yml">magic-items</a>
+
 This list is not exhaustive.
 
 ________________________________
