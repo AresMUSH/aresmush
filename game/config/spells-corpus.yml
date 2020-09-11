@@ -603,6 +603,18 @@ spells:
     range: Self
     roll: true
     school: Corpus
+  Rejuvenate Body:
+    available: true
+    casting_time: 10 minutes
+    desc: "The caster is able to fully heal damage to the body caused by injury or disease suffered within the past 10 years. With the appropriate medical knowledge (anatomy, biology, medicine, paramedics, surgery, etc) the caster can regrow a lost limb, restore function to a severed spine, repair deep scarring, mend old breaks, or heal other kinds of damage. The spell cannot cure any diseases, only the damage caused by them.\n\nDuring the casting process, both the target and the caster experience the memory of traumatic pain from the damage caused to the body. Phantom echoes of this pain will recur at random moments throughout the life of both the target and caster. Afterwards, a wound (about half as severe healed damage) is left on the caster which cannot be magically healed and the target loses 1 point in Brawn, representing the strain to their body from the healing and the rehabilitation they will need to do.\n\nOOC: Please notify Storytellers before using this spell, so they can make sure the damage in question can be healed, the caster has the required medical knowledge, and the wound and mechanical adjustments can be made."
+    duration: Permanent
+    effect: Heal
+    level: 8
+    name: Rejuvenate Body
+    range: Short
+    roll: true
+    school: Corpus
+    target_num: 1
   Rise of the Living Dead:
     available: true
     area: 500 yard radius
