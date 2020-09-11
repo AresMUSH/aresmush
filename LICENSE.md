@@ -4,7 +4,7 @@ License
 
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>
 
-This includes several plugins available via <a href="https://github.com/AresMUSH/ares-extras"Ares Extras:</a>
+This includes several plugins available via <a href="https://github.com/AresMUSH/ares-extras">Ares Extras:</a>
 
 * <a href="https://github.com/AresMUSH/ares-extras/tree/master/plugins/compliments">Compliments</a>
 * <a href="https://github.com/AresMUSH/ares-extras/tree/master/plugins/luckgive">LuckGive</a>
@@ -15,17 +15,17 @@ In addition, you are welcome to fork and use Spirit Lake's magic system with cre
 Code open for general public use includes:
 
 * Anything in the <a href="https://github.com/spiritlake/aresmush/tree/master/plugins/magic">/game/plugins/magic</a> folder.
-* Anything in the <a href="https://github.com/spiritlake/aresmush/tree/master/plugins/creatures">/game/plugins/magic</a> folder.
-* Anything in the <a href="https://github.com/spiritlake/aresmush/tree/master/plugins/portals">/game/plugins/magic</a> folder.
+* Anything in the <a href="https://github.com/spiritlake/aresmush/tree/master/plugins/creatures">/game/plugins/creatures</a> folder.
+* Anything in the <a href="https://github.com/spiritlake/aresmush/tree/master/plugins/portals">/game/plugins/portals</a> folder.
 * The changes to any core Ares code files, such as FS3 or the scene system.
 * Corresponding hbs and js files to make the magic, creature, and portals code work in the web portal.
 
-Some things in the git repository are considered game content and are not generally available to use on other games.
+**Some things in the git repository are considered game content and are not generally available to use on other games.**
 
 Repository content NOT open for general public use includes:
 * All images.
 * All wiki text.
-* The contents of any <a href="https://github.com/spiritlake/aresmush/tree/master/game/config"> configuration file, including spell lists, custom css, and navigation menu.
+* The contents of any <a href="https://github.com/spiritlake/aresmush/tree/master/game/config"> configuration file</a>, including spell lists, custom css, and navigation menu.
 
 You are welcome to use these files as inspirations and guidelines for setting up your own spells, magical items, and more, but they should not be copied and remain in your game's repository. If you do copy them as a part of forking Spirit Lake, please remove Spirit Lake's content and add your own.
 
