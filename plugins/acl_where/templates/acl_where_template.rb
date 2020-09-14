@@ -1,5 +1,5 @@
 module AresMUSH
-  module Who
+  module ACL_Where
     class ACL_WhereTemplate < ErbTemplateRenderer
       
       # NOTE!  Because so many fields are shared between the who and where templates,
