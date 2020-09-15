@@ -24,8 +24,7 @@ module AresMUSH
           online_chars = online_chars.select { |char| char.status == "IC"  }
         when "friends"
           online_chars = online_chars.select { |char| enactor.is_friend?(char)  }
-        end
-        client.emit template.render		
+        end	
         template = ACL_WhereTemplate.new online_chars, client
         client.emit template.render
       end      
