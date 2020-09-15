@@ -29,7 +29,8 @@ module AresMUSH
 	  
 	  def acl_list_rooms(area indent_str)
 		objects = Room.all.select { |r| r.name_upcase =~ /#{self.name.upcase}/ }
-		kids.map { |a| "%R#{indent_str}- #{a.name}#{acl_list_rooms(a, new_indent)}"}.join("")
+		new_indent = "  #{indent_str}"
+		objects.map { |a| "%R#{indent_str}- #{a.name}#{acl_list_rooms(a, new_indent)}"}.join("")
         #objects.map { |a| format_name(a) }
 	  end
         
