@@ -16,6 +16,10 @@ module AresMUSH
 	  def top_level_areas
         Rooms.top_level_areas
       end
+	  
+	  def children
+		Rooms.children
+	  end
         
         case (Global.read_config("who", "where_style"))
         when "scene"
