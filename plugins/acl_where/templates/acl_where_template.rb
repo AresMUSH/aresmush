@@ -16,11 +16,7 @@ module AresMUSH
 	  def top_level_areas
         Rooms.top_level_areas
       end
-	  
-	  def format_name(r)
-		Rooms.format_name
-	  end
-	  	  
+	   	  
       def children(area, indent_str)
         kids = area.sorted_children
         if kids.empty?
@@ -36,8 +32,8 @@ module AresMUSH
 		#objects = Room.all.select { |a| a.area_id = area }
 		objects = area.sorted_children
 		new_indent = "  #{indent_str}**"
-		#objects.map { |a| "%R#{indent_str}- #{a.name}#{acl_list_rooms(a, new_indent)}"}.join("")
-        objects.map { |a| format_name(a) }
+		#area = r.area ? "(#{r.area_name})" : ""
+		objects.map { |a| "%R#{indent_str}- #{a.name}.{a.id}#{acl_list_rooms(a, new_indent)}"}.join("")
 	  end
         
         case (Global.read_config("who", "where_style"))
