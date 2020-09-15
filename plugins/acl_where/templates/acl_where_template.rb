@@ -17,7 +17,7 @@ module AresMUSH
         Rooms.top_level_areas
       end
 	  
-	  def children
+	  def children(area, indent_str)
 		Rooms.children
 	  end
         
