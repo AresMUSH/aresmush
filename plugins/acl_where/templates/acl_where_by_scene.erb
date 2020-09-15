@@ -7,7 +7,7 @@
 
 <% top_level_areas.each do |a| %>
 - <%= a.name %> <%= children(a, '  ') %>
-  <%= acl_list_rooms(a, ' ') %>
+ ---- <%= acl_list_rooms(a, ' ') %>
 <% end %>
 
 
