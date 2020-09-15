@@ -17,6 +17,10 @@ module AresMUSH
         Rooms.top_level_areas
       end
 	  
+	  def find_any_by_id
+		FindByName.find_any_by_id
+	  end
+	  
       def children(area, indent_str)
         kids = area.sorted_children
         if kids.empty?
