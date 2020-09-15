@@ -33,7 +33,7 @@ module AresMUSH
 		#objects = area.sorted_children
 		new_indent = "  #{indent_str}**"
 		objects = area.id
-		objects.map { |a| "%R#{indent_str}- #{a.name}#{acl_list_rooms(a, new_indent)}"}.join("")
+		#objects.map { |a| "%R#{indent_str}- #{a.name}#{acl_list_rooms(a, new_indent)}"}.join("")
         #objects.map { |a| format_name(a) }
 	  end
         
