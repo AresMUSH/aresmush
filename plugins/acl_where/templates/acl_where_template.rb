@@ -17,7 +17,7 @@ module AresMUSH
         Rooms.top_level_areas
       end
 	  
-	  def format_name
+	  def format_name(r)
 		Rooms.format_name
 	  end
 	  	  
