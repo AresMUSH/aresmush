@@ -18,7 +18,7 @@ module AresMUSH
       end
 	  
 	  def find_any_by_id(id)
-		FindByName.ClassMethods.find_any_by_id(id)
+		FindByName::ClassMethods.find_any_by_id(id)
 	  end
 	  
       def children(area, indent_str)
