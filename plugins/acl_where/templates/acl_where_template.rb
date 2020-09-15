@@ -26,6 +26,11 @@ module AresMUSH
           kids.map { |a| "%R#{indent_str}- #{a.name}#{children(a, new_indent)}"}.join("")
         end
       end
+	  
+	  def acl_list_rooms(area)
+		objects = Room.all.select { |r| r.name_upcase =~ /#{self.name.upcase}/ }
+        objects = objects.map { |r| format_name(r) }
+	  end
         
         case (Global.read_config("who", "where_style"))
         when "scene"
