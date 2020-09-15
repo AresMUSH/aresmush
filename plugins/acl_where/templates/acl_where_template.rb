@@ -29,7 +29,7 @@ module AresMUSH
 	  
 	  def acl_list_rooms(area)
 		objects = Room.all.select { |r| r.name_upcase =~ /#{self.name.upcase}/ }
-        objects = objects.map { |r| format_name(r) }
+        objects.map { |r| format_name(r) }
 	  end
         
         case (Global.read_config("who", "where_style"))
