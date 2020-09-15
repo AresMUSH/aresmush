@@ -23,7 +23,7 @@ module AresMUSH
           return nil
         else
           new_indent = "  #{indent_str}"
-		  openbrace = " ("
+		  openbrace = " (#A-"
 		  closebrace = ") "
           kids.map { |a| "%R#{indent_str}- #{a.name}#{openbrace}#{a.id}#{closebrace}#{children(a, new_indent)}"}.join("")
         end
