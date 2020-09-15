@@ -12,7 +12,10 @@ module AresMUSH
         @online_chars = online_chars
         @scene_groups = build_scene_groups
         @client = client
-        
+       
+	  def top_level_areas
+        Rooms.top_level_areas
+      end
         
         case (Global.read_config("who", "where_style"))
         when "scene"

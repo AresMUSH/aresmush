@@ -5,7 +5,7 @@
 
 %xh<%= t('rooms.areas_title') %>%xn
 
-<% rooms.top_level_areas.each do |a| %>
+<% top_level_areas.each do |a| %>
 - <%= a.name %> <%= children(a, '  ') %>
 <% end %>
 
