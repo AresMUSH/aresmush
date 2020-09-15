@@ -56,7 +56,7 @@ module AresMUSH
           return "      #{Who.who_room_name(char)}"
         end
         
-      end
+      end	  
         
       def build_scene_groups
         groups = {}
