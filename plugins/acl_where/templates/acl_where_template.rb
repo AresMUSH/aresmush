@@ -33,7 +33,7 @@ module AresMUSH
 	  
 	  def acl_list_rooms(area, indent_str)
 	    areaname = find_any_by_id(area.id)
-		#objects = Room.alexl.select { |a| a.area_id = area }
+		#objects = Room.all.select { |a| a.area_id = area }
 		#objects = area.sorted_children
 		new_indent = "  #{indent_str}**"
 		#objects.map { |a| "%R#{indent_str}- #{a.name}#{acl_list_rooms(a, new_indent)}"}.join("")
