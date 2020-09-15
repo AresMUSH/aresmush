@@ -28,7 +28,7 @@ module AresMUSH
       end
 
       def format_name(r)
-        db = Rooms.can_build?(enactor) ? "#{r.dbref} - #{r.room_type.ljust(3)} - " : ""
+        db = "#{r.dbref} - #{r.room_type.ljust(3)} - " : ""
         area = r.area ? "(#{r.area_name})" : ""
         "#{db}#{r.name}#{area}"
       end
