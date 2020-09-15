@@ -1,9 +1,15 @@
-{{! Open Scenes By Zone }}
 <%= header %>
 <%= center( mush_name, 78 ) %>
 <%= section_line t('who.where_open_scene_header') %>
 %xhTesting new command %xn
-# We need to call the Zone first and show it.
+
+%xh<%= t('rooms.areas_title') %>%xn
+
+<% top_level_areas.each do |a| %>
+- <%= a.name %> <%= children(a, '  ') %>
+<% end %>
+
+
 <% scene_groups['open'].each do |room, people| %>
 %xh<%= left( room, 40 ) %>%xn <%= people.sort.join(", ") %>
 <% end %>
