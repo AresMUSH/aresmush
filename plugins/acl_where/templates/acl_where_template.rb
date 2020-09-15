@@ -16,6 +16,10 @@ module AresMUSH
 	  def top_level_areas
         Rooms.top_level_areas
       end
+	  
+	  def format_name
+		Rooms.format_name
+	  end
 	  	  
       def children(area, indent_str)
         kids = area.sorted_children
@@ -25,12 +29,6 @@ module AresMUSH
           new_indent = "  #{indent_str}"
           kids.map { |a| "%R#{indent_str}- #{a.name}#{children(a, new_indent)}"}.join("")
         end
-      end
-
-      def format_name(r)
-        db = "#{r.dbref} - #{r.room_type.ljust(3)} - " : ""
-        area = r.area ? "(#{r.area_name})" : ""
-        "#{db}#{r.name}#{area}"
       end
 	  
 	  def acl_list_rooms(area, indent_str)
