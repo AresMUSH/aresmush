@@ -26,14 +26,20 @@ module AresMUSH
           kids.map { |a| "%R#{indent_str}- #{a.name}#{children(a, new_indent)}"}.join("")
         end
       end
+
+      def format_name(r)
+        db = Rooms.can_build?(enactor) ? "#{r.dbref} - #{r.room_type.ljust(3)} - " : ""
+        area = r.area ? "(#{r.area_name})" : ""
+        "#{db}#{r.name}#{area}"
+      end
 	  
 	  def acl_list_rooms(area, indent_str)
 	    #areaname = find_any_by_id(area.id)
 		#objects = Room.all.select { |a| a.area_id = area }
 		objects = area.sorted_children
 		new_indent = "  #{indent_str}**"
-		objects.map { |a| "%R#{indent_str}- #{a.name}#{acl_list_rooms(a, new_indent)}"}.join("")
-        #objects.map { |a| format_name(a) }
+		#objects.map { |a| "%R#{indent_str}- #{a.name}#{acl_list_rooms(a, new_indent)}"}.join("")
+        objects.map { |a| format_name(a) }
 	  end
         
         case (Global.read_config("who", "where_style"))
