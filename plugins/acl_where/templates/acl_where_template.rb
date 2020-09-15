@@ -17,9 +17,15 @@ module AresMUSH
         Rooms.top_level_areas
       end
 	  
-	  def children(area, indent_str)
-		Rooms.children
-	  end
+      def children(area, indent_str)
+        kids = area.sorted_children
+        if kids.empty?
+          return nil
+        else
+          new_indent = "  #{indent_str}"
+          kids.map { |a| "%R#{indent_str}- #{a.name}#{children(a, new_indent)}"}.join("")
+        end
+      end
         
         case (Global.read_config("who", "where_style"))
         when "scene"
