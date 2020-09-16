@@ -31,7 +31,7 @@ module AresMUSH
 	    #areaname = AnyTargetFinder.with_any_name_or_id(area.id)
 		objects = Room.all.select { |a| area.id }
 		#objects = area.sorted_children
-		new_indent = "  #{indent_str}**"
+		#new_indent = "  #{indent_str}**"
 		#area = r.area ? "(#{r.area_name})" : ""
 		#objects.map { |a| "%R#{indent_str}- #{a.name} (#A-#{a.id}) #{acl_list_rooms(a, new_indent)}"}.join("")
 	  end
