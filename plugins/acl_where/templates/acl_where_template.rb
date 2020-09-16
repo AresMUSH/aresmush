@@ -28,12 +28,12 @@ module AresMUSH
       end
 	  
 	  def acl_list_rooms(area, indent_str)
-	    areaname = AnyTargetFinder.with_any_name_or_id(area.id)
+	    #areaname = AnyTargetFinder.with_any_name_or_id(area.id)
 		objects = Room.all.select { |a| a.area_id = area }
 		#objects = area.sorted_children
-		new_indent = "  #{indent_str}**"
+		#new_indent = "  #{indent_str}**"
 		#area = r.area ? "(#{r.area_name})" : ""
-		objects.map { |a| "%R#{indent_str}- #{a.name} (#A-#{a.id}) #{acl_list_rooms(a, new_indent)}"}.join("")
+		#objects.map { |a| "%R#{indent_str}- #{a.name} (#A-#{a.id}) #{acl_list_rooms(a, new_indent)}"}.join("")
 	  end
         
         case (Global.read_config("who", "where_style"))
