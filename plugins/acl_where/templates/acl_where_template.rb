@@ -29,7 +29,7 @@ module AresMUSH
 	  
 	  def acl_list_rooms(area, indent_str)
 	    #areaname = AnyTargetFinder.with_any_name_or_id(area.id)
-		objects = Room.all.select { |a| a.area_id = area }
+		objects = Room.all.select { |a| area.id }
 		#objects = area.sorted_children
 		new_indent = "  #{indent_str}**"
 		#area = r.area ? "(#{r.area_name})" : ""
