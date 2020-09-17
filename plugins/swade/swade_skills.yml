@@ -1,0 +1,161 @@
+---
+swade:
+    skills_blurb:
+    >- Represent your learned abilities.
+    skills:
+    - 
+      name: Academics
+      description: Knowledge of the world before the Rifts as well as the inner workings of factions.
+      linked_attr: Smarts
+    - 
+      name: Athletics
+      desc: Coordination and learned skills such as climbing, jumping, balancing, biking, wrestling, skiiing, swimming, throwing or catching. 
+      linked_attr: Agility
+    - 
+      name: Battle
+      desc: Command of strategy and tactics.
+      linked_attr: Smarts
+    - 
+      name: Boating
+      desc: How to handle most common tasks associated with most boats or ships common to the setting.
+      linked_attr: Agility
+    -
+      name: Common Knowledge
+      desc: Non-critical, non-emergency operation of common tech and identification of the general type of supernatural forces encountered.
+      linked_attr: Smarts
+    -
+      name: Driving
+      desc: Control any powered ground vehicle. 
+      linked_attr: Agility
+    -
+      name: Electronics
+      desc: Use complex or specialized devices such as control panels or industrial machines. 
+      linked_attr: Smarts
+    -
+      name: Fighting
+      desc: Hand-to-hand (melee) attacks. 
+      linked_attr: Agility
+    -
+      name: Focus
+      desc: Skill for the Gifted
+      linked_attr: Spirit
+    -
+      name: Gambling
+      desc: Games of chance for money. 
+      linked_attr: Smarts
+    -
+      name: Hacking
+      desc: For programming, building, and hacking into computers. 
+      linked_attr: Smarts
+    -
+      name: Healing
+      desc: Treat wounds, diagnose disease, and analyze certain kinds of forensic evidence.
+      linked_attr: Smarts
+    -
+      name: Intimidation
+      desc: Frightening an opponent so that they backdown, reveals information, or flees.
+      linked_attr: Spirit
+    -
+      name: Lang (Chinese)
+      desc: All PCs are assumed to know American. Fluency is d8. 
+      linked_attr: Smarts
+    -
+      name: Lang (Demongogian)
+      desc: All PCs are assumed to know American. Fluency is d8. 
+      linked_attr: Smarts
+    -
+      name: Lang (Dragonese)
+      desc: All PCs are assumed to know American. Fluency is d8. 
+      linked_attr: Smarts
+    -
+      name: Lang (Euro)
+      desc: All PCs are assumed to know American. Fluency is d8. 
+      linked_attr: Smarts
+    -
+      name: Lang (Faerie Speak)
+      desc: All PCs are assumed to know American. Fluency is d8. 
+      linked_attr: Smarts
+    -
+      name: Lang (Gobblely)
+      desc: All PCs are assumed to know American. Fluency is d8. 
+      linked_attr: Smarts
+    -
+      name: Lang (Japanese)
+      desc: All PCs are assumed to know American. Fluency is d8. 
+      linked_attr: Smarts
+    -
+      name: Lang (Spanish)
+      desc: All PCs are assumed to know American. Fluency is d8. 
+      linked_attr: Smarts
+    -
+      name: Lang (TechnoCan)
+      desc: All PCs are assumed to know American. Fluency is d8. 
+      linked_attr: Smarts
+    -     
+      name: Miracles
+      desc: Skill for the pious
+      linked_attr: Spirit
+    -
+      name: Notice
+      desc: Awareness and alertness
+      linked_attr: Smarts
+    -
+      name: Occult
+      desc: Understanding the principles of the supernatural or arcane powers, items and creatures. 
+      linked_attr: Smarts
+    -
+      name: Performance
+      desc: Signing, acting, playing an instrument, or similar task that require an audience to participate.
+      linked_attr: Spirit
+    -
+      name: Persuasion
+      desc: Ability to convince others to do what you want through reason, cajoling, deception, rewards, or other friendly means. 
+      linked_attr: Spirit
+    -
+      name: Piloting
+      desc: Power armor, robot vehicles, jet packs, hovercycles and advanced hovercraft.
+      linked_attr: Agility
+    -
+      name: Psionics
+      desc: Skill for Psionics
+      linked_attr: Smarts
+    -
+      name: Repair
+      desc: The mechanical aspects of machines, as well as the nature and elements of physical structures.
+      linked_attr: Smarts
+    -
+      name: Research
+      desc: How to make good use of libraries, newspaper, morgues, the internet, or other written sources of information. 
+      linked_attr: Smarts
+    -
+      name: Riding
+      desc: Mount, control, and ride any beast or beast-drawn vehicle common to the setting. 
+      linked_attr: Agility
+    -
+      name: Science
+      desc: Broad-based knowledge of physics, chemistry, and biology. 
+      linked_attr: Smarts
+    -
+      name: Shooting
+      desc: Covers all attempts to hit a target with a ranged weapon, such as a bow, pistol, or rocket launcher.
+      linked_attr: Agility
+    -
+      name: Spellcasting
+      desc: Skill for Spellcasters
+      linked_attr: Smarts
+    -  
+      name: Stealth
+      desc: Ability to hide and move quietly. 
+      linked_attr: Agility
+    -
+      name: Survival
+      desc: Allows a character to find food, water, or shelter in hostile environments and navigate wilderness environments.
+      linked_attr: Smarts
+    -
+      name: Taunt 
+      desc: Attacks a person's pride through ridicule, cruel jests, or oneupmanship. 
+      linked_attr: Smarts
+    -
+      name: Thievery
+      desc: Lockpicking, safecracking, picking pockets, slight of hand, setting and disabling traps and similar acts of misdirection, sabotage, subterfuge, and manipulation. 
+      linked_attr: Agility

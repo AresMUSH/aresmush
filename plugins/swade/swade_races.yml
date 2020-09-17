@@ -1,0 +1,83 @@
+---
+swade:
+    races:
+    - 
+      name: Altara
+      desc: Warrior Women
+      edges:
+        - Attractive
+        - Alertness
+      hinderances:
+        - Bad Reputation
+        - Blind
+      attributes: 
+        - Agility d6
+        - Strength d6
+        - Vigor d6
+      skills:
+        - Common Knowledge 0
+        - Psionics d4
+      complications:
+        - Skill Penalty (Common Knowledge)
+        - Storm-Fouled Senses
+        - Inhuman Physiology 1
+        - Racial Enemy
+      isp: 10
+      powers:
+        - Arcane Protection
+        - Detect Arcana
+        - Conceal Arcana
+        - Empathy
+    -  
+      name: Centaur
+    -  
+      name: DNorr
+      desc: Devilmen
+      edges:
+        - Charismatic
+      hinderances:
+      attributes: 
+        - Smarts d6
+        - Spirit d6
+      max_attribute_step: d12+1
+      skills:
+      abilities:
+        - Horns
+      complications:
+        - Inhuman Physiology 2
+        - D-Bee (Major)
+        - Restricted Path (Psionics)
+        - Skill Penalty (Fear) 2
+      ppe: 5
+      powers:
+    -  
+      name: Dog Boy
+    -  
+      name: Dragon
+    -  
+      name: Fennodi
+    -  
+      name: Grackle Tooth
+    -  
+      name: Human
+    -  
+      name: Lyn-Srial
+    -  
+      name: Mutant Animal
+    -  
+      name: Mutant Feline
+    -  
+      name: Psi-Stalker
+    -  
+      name: Psi-X Alien
+    -  
+      name: Quick Flex
+    -  
+      name: Sasquatch
+    -  
+      name: Simvan
+    -  
+      name: Trimadore
+    -  
+      name: Vernulians
+      

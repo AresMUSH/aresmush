@@ -1,0 +1,156 @@
+---
+swade:
+    Iconic Framework:
+    -
+    name: Burster
+    desc: Pyrokinetic
+    -
+    name: Combat Cyborg
+    desc: Full Conversion Borgs
+    - 
+    name: Crazy
+    desc: Juicers that trade sanity for cyberware
+    -
+    name: Cyber-Knight
+    desc: null
+    -
+    name: Flame Wind Dragon
+    desc: null
+    -
+    name: Forest Runner Dragon
+    desc: null
+    -
+    name: Great Horned Dragon
+    desc: null
+    -
+    name: Royal Frilled Dragon
+    desc: null
+    -
+    name: Snow Lizard Dragon
+    desc: null
+    -
+    name: Dragon Juicer
+    desc: null
+    -
+    name: Elemental Fusionist
+    desc: null
+    -
+    name: Glitter Boy
+    desc: null
+    -
+    name: Intelligent Construct
+    desc: null
+    -
+    name: Juicer
+    desc: null
+    -
+    name: Knight of the White Rose
+    desc: null
+    -
+    name: Ley Line Walker
+    desc: null
+    -
+    name: MARS
+    desc: null
+    -
+    name: Mind Melter
+    desc: null
+    -
+    name: Momano Headhunter
+    desc: null
+    -
+    name: Mystic
+    desc: null
+    -
+    name: Necromancer
+    desc: null
+    -
+    name: Nega-Psychic
+    desc: null
+    -
+    name: Shifter
+    desc: null
+    skills:
+      - Occult d6
+      - Spellcasting d6
+    hinderances:
+      - Enemies
+    edges:
+      - Arcane Background Magic
+      - Master of Magic
+      - Power Points
+      - Rapid Recharge
+      - Familiar Bond
+      - Dimensional Portal
+    powers: 
+      - Banish
+      - Drain Power Points
+      - Summon Ally
+      - Teleport
+    abilities:
+      - Bind the Summoned
+      - Communication Rift
+      - Dimension Sense
+      - Dimensional Teleport Home
+      - Expanded Awareness
+      - Ley Line Magic Mastery
+      - Psychotically Brave
+      - Sense Rifts
+      - Shift Reality
+    complications:
+      - Corruption
+      - Cybernetics
+      - Disconnected
+      - Power Activators
+    spell list:
+      - arcane protection
+      - banish
+      - barrier
+      - beast friend
+      - blast
+      - detect arcana
+      - conceal arcana
+      - darksight
+      - deflection
+      - disguise
+      - dispel
+      - drain Power Points
+      - entangle
+      - environmental protection 
+      - farsight
+      - fear
+      - fly
+      - illusion
+      - intangibility
+      - invisibility
+      - light
+      - darkness
+      - mind link
+      - protection 
+      - puppet
+      - sloth
+      - speed
+      - slumber
+      - smite
+      - sound
+      - silence
+      - speak language
+      - stun
+      - summon ally
+      - telekinesis
+      - teleport
+      - warrior's gift
+    powers_points: 1
+    hj_rolls: 2
+    -
+    name: Techno-Wizard
+    desc: null
+    -
+    name: Werecat
+    desc: null
+    -
+    name: Zapper
+    desc: null
+    -
+    name: Other
+    desc: Any other position.

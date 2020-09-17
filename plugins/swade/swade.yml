@@ -1,0 +1,29 @@
+---
+swade:
+    starting_attribute_points: 5
+    starting_skill_points: 15
+    starting_trait_points: 0
+    starting_advance_points: 0
+    starting_powers_points: 0
+    starting_cyberware_points: 0
+    starting_PPE: 0
+    starting_ISP: 0
+    starting_strain: 0
+    starting_burn: 0
+    max_attribute_step: 'd12'
+    max_skill_step: 'd12'
+    
+    pace: 6
+        
+    parry:
+        - Fighting
+
+    toughness:
+        - Vigor
+        
+    shortcuts:
+        attributes: attribute
+        skills: skill
+        hinderances: hinderances
+        edges: edges
+        powers: powers 

@@ -1,0 +1,19 @@
+---
+swade:
+    powers:
+    - 
+      name: Arcane Protection
+      prank: Novice
+      ppcost: 1
+      range: Smarts
+      duration: 5
+      desc: Hostile powers suffer a -2 penalty to affect this character. 
+      modifiers:
+      -  additional recipients
+    - 
+      name: Banish
+      prank: Veteran
+      ppcost: 3
+      range: Smarts
+      duration: Instant
+      desc: Sends entities from immaterial planes back to their native dimensions. 

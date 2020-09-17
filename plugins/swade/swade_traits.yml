@@ -1,0 +1,316 @@
+---
+cortex:
+    complications:
+    - 
+      name: Absent Minded
+      steps:
+      - d2
+      - d4
+      - d6
+    - 
+      name: Addiction
+      steps:
+      - d4
+      - d6
+      - d8
+      - d10
+    - 
+      name: Allergy
+      description: Allergic to something common.
+      steps:
+      - d2
+      - d8
+    - 
+      name: Amnesia
+      steps:
+      - d4
+      - d8
+    - 
+      name: Amorous
+      steps:
+      - d4
+      - d6
+      - d8
+    - 
+      name: Anger Issues
+      steps:
+      - d2
+      - d4
+    - 
+      name: Animal Emnity
+      steps:
+      - d2
+      - d4
+      - d6
+    - 
+      name: Bleeder
+      steps:
+      - d10
+    - 
+      name: Combat Paralysis
+      steps:
+      - d4
+      - d8
+    - 
+      name: Complex Needs
+    - 
+      name: Contrarian
+      steps:
+      - d4
+    - 
+      name: Coward
+      steps:
+      - d4
+      - d6
+      - d8
+    - 
+      name: Criminal Past
+      steps:
+      - d6
+    - 
+      name: Crude
+      steps:
+      - d4
+      - d6
+      - d8
+    - 
+      name: Dead Broke
+      steps:
+      - d4
+      - d8
+    - 
+      name: Dead Inside
+      steps:
+      - d4
+      - d6
+    - 
+      name: Duty
+      steps:
+      - d4
+      - d8
+      - d12
+    - 
+      name: Eerie Presence
+    -
+      name: Forked Tongue
+      description: Compulsive liar.
+      steps:
+      - d6
+    - 
+      name: Fragile
+      steps:
+      - d4
+      - d8
+      - d12
+    - 
+      name: Glory Hound
+      steps:
+      - d2
+      - d4
+    - 
+      name: Greedy
+      steps:
+      - d4
+      - d6
+      - d8
+    - 
+      name: Gullible
+    - 
+      name: Honest To A Fault
+      steps:
+      - d2
+      - d4
+      - d6
+    - 
+      name: Hooked
+      steps:
+      - d4
+      - d8
+    - 
+      name: Idealist
+      steps:
+      - d2
+      - d4
+      - d6
+    - 
+      name: Illiterate
+      steps:
+      - d4
+      - d8
+    - 
+      name: Illness
+      steps:
+      - d4
+      - d8
+      - d12
+    - 
+      name: Impaired Communication
+    - 
+      name: Impaired Movement
+    - 
+      name: Impaired Senses
+    - 
+      name: Infamy
+    - 
+      name: Insatiable Curiosity
+      steps:
+      - d6
+    - 
+      name: Klepto
+      steps:
+      - d2
+      - d6
+      - d10
+    - 
+      name: Klutz
+      steps:
+      - d4
+      - d8
+    - 
+      name: Lazy
+      steps:
+      - d4
+    - 
+      name: Lightweight
+      steps:
+      - d2
+      - d4
+      - d6
+      - d8
+    - 
+      name: Little Person
+      steps:
+      - d2
+    - 
+      name: Low Pain Threshold
+      steps:
+      - d6
+    - 
+      name: Memorable
+      steps:
+      - d2
+      - d4
+      - d6
+      - d8
+    - 
+      name: Neatfreak
+      steps:
+      - d4
+      - d8
+    - 
+      name: Nonhealing
+      steps:
+      - d8
+      - d12
+    - 
+      name: On The Run
+      steps:
+      - d4
+      - d8
+      - d12
+    - 
+      name: Out For Blood
+      steps:
+      - d4
+      - d8
+    - 
+      name: Overconfident
+      steps:
+      - d4
+      - d6
+      - d8
+      - d10
+    - 
+      name: Overweight
+      steps:
+      - d2
+      - d4
+      - d6
+    - 
+      name: Pacifist
+      steps:
+      - d6
+      - d12
+    - 
+      name: Paralyzed
+      steps:
+      - d8
+    - 
+      name: Paranoid
+      steps:
+      - d4
+    - 
+      name: Phobia
+    - 
+      name: prejudice
+      steps:
+      - d4
+    - 
+      name: Pyro
+      steps:
+      - d10
+    - 
+      name: Rebellious
+      steps:
+      - d4
+    - 
+      name: Rival
+    - 
+      name: Rotten Luck
+      steps:
+      - d4
+      - d8
+      - d12
+    - 
+      name: Shy
+      steps:
+      - d6
+    - 
+      name: Smartass
+      steps:
+      - d4
+    - 
+      name: Stingy
+      steps:
+      - d4
+      - d6
+    - 
+      name: Strange Luck
+      steps:
+      - d6
+      - d12
+    - 
+      name: Superstitious
+      steps:
+      - d2
+      - d6
+    - 
+      name: Toes The Line
+      steps:
+      - d4
+      - d8
+    - 
+      name: Traumatic Flashes
+      steps:
+      - d4
+      - d8
+    - 
+      name: Ugly
+      steps:
+      - d2
+      - d4
+      - d6
+    - 
+      name: Unstable
+      steps:
+      - d4
+      - d6
+      - d8
+      - d10
+      - d12
+    - 
+      name: Weak Stomach
+      steps:
+      - d4
+      - d6
+      - d8

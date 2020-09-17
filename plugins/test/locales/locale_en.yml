@@ -1,0 +1,41 @@
+en:
+    testskills:
+
+        
+        # Chargen Values Set
+        attribute_set: "Attribute '%{name}' is now %{rating}."
+        invalid_rating: That is not a valid ability rating.  You have to use a number.
+        no_special_characters: "Ability names may not contain special characters."
+        error_saving_ability: "There was a problem saving %{name}: %{error}"
+        
+        ability_not_found: "Ability not found."
+       
+        # Reset
+        reset_attributes: "Setting attributes to default values."
+
+        # Review
+        total_points_spent: "%{total} total points spent. (%{max} max)"
+
+        # ------------------------------------------------------
+        # SHEET
+        # ------------------------------------------------------
+            
+        no_permission_to_view_sheet: "You are not allowed to view that sheet."
+        no_permission_to_backup: "You are not allowed to backup somebody else."
+        invalid_page_number: "That is not a valid page number."
+        not_that_many_pages: "There aren't that many character sheet pages."
+                
+        abilities_page_title: "Abilities"
+        
+        xp_title: "XP:"
+        bennie_title: "Bennies:"
+        
+        attributes_title: "Attributes"
+        skills_title: "Skills"
+        hooks_title: "RP Hooks"
+        hinderances_title: "Hinderances"
+        edges_title: "Edges"
+        powers_title: "Powers"
+        abilities_title: "Abilities"
+        complications_title: "Complications"
+        

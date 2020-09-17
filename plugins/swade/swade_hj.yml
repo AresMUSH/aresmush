@@ -1,0 +1,15 @@
+---
+swade:
+    hj_body armor:
+    - 
+      name: `1-4
+      desc: Trade the starting armor from your Iconic Framework for any other body armor. 
+    -
+      name: `5-6
+      desc: `+2 Armor to your Body Armor. 
+    -
+      name: `7
+      desc: Requires a Notice roll at -2 to detect armor. 
+    -
+      name: `8
+      desc: `+1 Strength die increase.
