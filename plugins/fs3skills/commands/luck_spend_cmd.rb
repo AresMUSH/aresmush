@@ -19,6 +19,7 @@ module AresMUSH
       end
 
       def handle
+        Global.logger.debug "REASON: #{self.reason}"
         FS3Skills.spend_luck(enactor, self.reason, enactor_room.scene)
       end
     end
