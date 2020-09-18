@@ -19,6 +19,8 @@ module AresMUSH
         else
           return AttributesCmd #Swade/commands/attributes_cmd.rb
         end
+      when "sheet"
+        return SheetCmd #Swade/commands/sheet_cmd.rb
 	  end
       return nil
     end
