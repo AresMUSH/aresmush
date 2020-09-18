@@ -1,5 +1,5 @@
 module AresMUSH
-  class swade
+  class Character
     attribute :strength
   end
 end
