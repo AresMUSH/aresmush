@@ -10,7 +10,7 @@ module AresMUSH
       def parse_args
 	  
 	    self.aaaaa = "Testing some shite"
-		return nil
+		
         # Admin version
         if (cmd.args =~ /\//)
           args = cmd.parse_args(ArgParser.arg1_equals_arg2_slash_arg3)
