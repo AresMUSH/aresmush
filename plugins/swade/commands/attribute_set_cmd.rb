@@ -3,7 +3,7 @@ module AresMUSH
     class AttributeSetCmd
       include CommandHandler
       
-      attr_accessor :target_name, :attribute_name, :die_step, :aaaa
+      attr_accessor :target_name, :attribute_name, :die_step, :aaaaa
       
       def parse_args
         # Admin version
