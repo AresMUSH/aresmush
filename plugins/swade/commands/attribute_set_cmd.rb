@@ -12,8 +12,10 @@ module AresMUSH
           self.target_name = titlecase_arg(args.arg1)
           self.attribute_name = titlecase_arg(args.arg2)
           self.die_step = downcase_arg(args.arg3)
-        else
-          args = cmd.parse_args(ArgParser.arg1_equals_arg2)
+        # Self version 
+		else
+          self.aaaaa = "Just Testing"
+		  args = cmd.parse_args(ArgParser.arg1_equals_arg2)
           self.target_name = enactor_name
           self.attribute_name = titlecase_arg(args.arg1)
           self.die_step = downcase_arg(args.arg2)
