@@ -8,9 +8,11 @@ module AresMUSH
         return nil
       end
       
-      def handle
-        client.emit_success "Done!"
-      end
+def handle
+  char = Character.find_one_by_name('Aliana')
+  char.update(race: "Demon")
+  client.emit " #{char.name} updated!"
+end
 
     end
   end
