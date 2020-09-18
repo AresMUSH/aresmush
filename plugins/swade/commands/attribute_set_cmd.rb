@@ -9,10 +9,9 @@ module AresMUSH
 
       def parse_args
 	  
-	    self.aaaaa = "Testing some shite"
-		
         # Admin version
         if (cmd.args =~ /\//)
+          self.aaaaa = "Testing some shite2"
           args = cmd.parse_args(ArgParser.arg1_equals_arg2_slash_arg3)
           self.target_name = titlecase_arg(args.arg1)
           self.attribute_name = titlecase_arg(args.arg2)
