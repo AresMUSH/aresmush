@@ -8,7 +8,7 @@ module AresMUSH
 
 
       def parse_args
-		self.aaaaa = "Testing New CMD"
+		self.aaaaa = trim_arg(cmd.args)
 	  end
 	  
       def handle
