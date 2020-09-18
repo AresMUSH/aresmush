@@ -3,7 +3,7 @@ module AresMUSH
     class AttributeNewSetCmd
       include CommandHandler
       
-      attr_accessor :target_name, :attribute_name, :die_step, :aaaaa
+      attr_accessor :aaaaa
  
 
 
