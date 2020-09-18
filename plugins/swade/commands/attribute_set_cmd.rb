@@ -59,6 +59,8 @@ module AresMUSH
       end
       
       def handle
+	  
+		enactor.update(acltest: self.acltest)
         ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
           attr = Swade.find_attribute(model, self.attribute_name)
           
@@ -73,7 +75,7 @@ module AresMUSH
           else
             SwadeAttribute.create(name: self.attribute_name, die_step: self.die_step, character: model)
           end
-         
+
           client.emit_success t('Swade.attribute_set')
         end
       end
