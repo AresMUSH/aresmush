@@ -15,7 +15,7 @@ module AresMUSH
       case cmd.root
 	  when "attribute"
         if (cmd.switch_is?("set"))
-          return AttributeSetCmd # Swade/commands/attribute_set_cmd.rb
+          return AttributeNewSetCmd # Swade/commands/attribute_set_cmd.rb
         else
           return AttributesCmd #Swade/commands/attributes_cmd.rb
         end
