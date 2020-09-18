@@ -1,5 +1,5 @@
 module AresMUSH    
-  module test
+  module Swade
     class SheetTemplate < ErbTemplateRenderer
       attr_accessor :char
   
@@ -9,7 +9,7 @@ module AresMUSH
       end
   
       def attrs
-        format_two_per_line @char.test_attributes
+        format_two_per_line @char.Swade_attributes
       end
       
       def format_two_per_line(list)

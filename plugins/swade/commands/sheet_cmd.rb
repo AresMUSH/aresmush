@@ -1,5 +1,5 @@
 module AresMUSH    
-  module test
+  module Swade
     class SheetCmd
       include CommandHandler
 
