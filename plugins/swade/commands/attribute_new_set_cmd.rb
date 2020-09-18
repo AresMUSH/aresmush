@@ -1,6 +1,6 @@
 module AresMUSH    
   module Swade
-    class AttributeSetCmd
+    class AttributeNewSetCmd
       include CommandHandler
       
       attr_accessor :target_name, :attribute_name, :die_step, :aaaaa
