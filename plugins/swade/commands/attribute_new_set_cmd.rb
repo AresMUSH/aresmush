@@ -3,16 +3,16 @@ module AresMUSH
     class AttributeNewSetCmd
       include CommandHandler
       
-      attr_accessor :aaaaa
+      attr_accessor :strength
  
 
 
       def parse_args
-		self.aaaaa = trim_arg(cmd.args)
+		self.strength = trim_arg(cmd.args)
 	  end
 	  
       def handle
-        enactor.update(aaaaa: self.aaaaa)
+        enactor.update(strength: self.strength)
         client.emit_success "Attribute set!"
       end
     end
