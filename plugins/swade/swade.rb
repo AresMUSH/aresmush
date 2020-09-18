@@ -19,6 +19,7 @@ module AresMUSH
         else
           return AttributesCmd #Swade/commands/attributes_cmd.rb
         end
+	  end
       return nil
     end
 
