@@ -38,17 +38,17 @@ module AresMUSH
       
       def check_can_set
         return nil if enactor_name == self.target_name
-        return nil if Swade.can_manage_attribute?(enactor)
+        return nil if Swade.can_manage_attributes?(enactor)
         return t('dispatcher.not_allowed')
       end     
       
       def check_chargen_locked
-        return nil if Swade.can_manage_attribute?(enactor)
+        return nil if Swade.can_manage_attributes?(enactor)
         Chargen.check_chargen_locked(enactor)
       end
       
       def check_rating
-        return nil if Swade.can_manage_attribute?(enactor)
+        return nil if Swade.can_manage_attributes?(enactor)
         Swadecheck_max_starting_rating(self.die_step, 'max_attribute_step')
       end
       
