@@ -5,9 +5,12 @@ module AresMUSH
       
       attr_accessor :target_name, :attribute_name, :die_step, :aaaaa
  
-      self.aaaaa = "Testing some shite"
-	  return nil
+
+
       def parse_args
+	  
+	    self.aaaaa = "Testing some shite"
+		return nil
         # Admin version
         if (cmd.args =~ /\//)
           args = cmd.parse_args(ArgParser.arg1_equals_arg2_slash_arg3)
