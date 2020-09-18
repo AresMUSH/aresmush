@@ -3,7 +3,7 @@ module AresMUSH
     class AttributeSetCmd
       include CommandHandler
       
-      attr_accessor :target_name, :ability_name, :die_step
+      attr_accessor :target_name, :attribute_name, :die_step
       
       def parse_args
         # Admin version
@@ -31,8 +31,8 @@ module AresMUSH
         return nil
       end
       
-      def check_valid_ability
-        return t('Swade.invalid_ability_name') if !Swade.is_valid_attribute_name?(self.ability_name)
+      def check_valid_attribute
+        return t('Swade.invalid_attribute_name') if !Swade.is_valid_attribute_name?(self.attribute_name)
         return nil
       end
       
