@@ -1,23 +1,23 @@
 $:.unshift File.dirname(__FILE__)
 
 module AresMUSH
-	module test
+	module Swade
 		
     def self.plugin_dir
       File.dirname(__FILE__)
     end
     
 	def self.shortcuts
-      Global.read_config("test", "shortcuts")
+      Global.read_config("Swade", "shortcuts")
     end
 
     def self.get_cmd_handler(client, cmd, enactor)
       case cmd.root
 	  when "attribute"
         if (cmd.switch_is?("set"))
-          return AttributeSetCmd # test/commands/attribute_set_cmd.rb
+          return AttributeSetCmd # Swade/commands/attribute_set_cmd.rb
         else
-          return AttributesCmd #test/commands/attributes_cmd.rb
+          return AttributesCmd #Swade/commands/attributes_cmd.rb
         end
       return nil
     end

@@ -1,5 +1,5 @@
 module AresMUSH    
-  module test
+  module Swade
     class AttributeSetCmd
       include CommandHandler
       
@@ -18,7 +18,7 @@ module AresMUSH
           self.attribute_name = titlecase_arg(args.arg1)
           self.die_step = downcase_arg(args.arg2)
         end
-        self.die_step = test.format_die_step(self.die_step)
+        self.die_step = Swade.format_die_step(self.die_step)
       end
       
       def required_args
@@ -27,48 +27,48 @@ module AresMUSH
       
       def check_valid_die_step
         return nil if self.die_step == '0'
-        return t('test.invalid_die_step') if !test.is_valid_die_step?(self.die_step)
+        return t('Swade.invalid_die_step') if !Swade.is_valid_die_step?(self.die_step)
         return nil
       end
       
       def check_valid_ability
-        return t('test.invalid_ability_name') if !test.is_valid_attribute_name?(self.ability_name)
+        return t('Swade.invalid_ability_name') if !Swade.is_valid_attribute_name?(self.ability_name)
         return nil
       end
       
       def check_can_set
         return nil if enactor_name == self.target_name
-        return nil if test.can_manage_attribute?(enactor)
+        return nil if Swade.can_manage_attribute?(enactor)
         return t('dispatcher.not_allowed')
       end     
       
       def check_chargen_locked
-        return nil if test.can_manage_attribute?(enactor)
+        return nil if Swade.can_manage_attribute?(enactor)
         Chargen.check_chargen_locked(enactor)
       end
       
       def check_rating
-        return nil if test.can_manage_attribute?(enactor)
-        testcheck_max_starting_rating(self.die_step, 'max_attribute_step')
+        return nil if Swade.can_manage_attribute?(enactor)
+        Swadecheck_max_starting_rating(self.die_step, 'max_attribute_step')
       end
       
       def handle
         ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-          attr = test.find_attribute(model, self.attribute_name)
+          attr = Swade.find_attribute(model, self.attribute_name)
           
           if (attr && self.die_step == '0')
             attr.delete
-            client.emit_success t('test.attribute_removed')
+            client.emit_success t('Swade.attribute_removed')
             return
           end
           
           if (attr)
             attr.update(die_step: self.die_step)
           else
-            testAttribute.create(name: self.attribute_name, die_step: self.die_step, character: model)
+            SwadeAttribute.create(name: self.attribute_name, die_step: self.die_step, character: model)
           end
          
-          client.emit_success t('test.attribute_set')
+          client.emit_success t('Swade.attribute_set')
         end
       end
     end

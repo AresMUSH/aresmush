@@ -1,0 +1,5 @@
+test:     
+    starting_attribute_points: 5
+    starting_skill_points: 15
+    starting_trait_points: 0
+    shortcuts: {}
