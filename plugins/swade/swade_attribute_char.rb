@@ -5,5 +5,6 @@ module AresMUSH
     attribute :spirit
     attribute :strength
     attribute :vigor
+    attribute :acltest
   end
 end
