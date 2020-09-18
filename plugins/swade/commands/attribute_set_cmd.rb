@@ -4,7 +4,9 @@ module AresMUSH
       include CommandHandler
       
       attr_accessor :target_name, :attribute_name, :die_step, :aaaaa
-      
+ 
+      self.aaaaa = "Testing some shite"
+	  return nil
       def parse_args
         # Admin version
         if (cmd.args =~ /\//)
