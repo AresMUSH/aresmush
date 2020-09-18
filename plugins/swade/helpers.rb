@@ -32,7 +32,8 @@ module AresMUSH
     def self.find_attribute_step(char, attribute_name)
       return nil if !attribute_name
       
-      case attribute_name.downcase      
+      #case attribute_name.downcase
+      
       [ char.Swade_attributes ].each do |list|
         found = list.select { |a| a.name.downcase == ability_name.downcase }.first
         return found.die_step if found
