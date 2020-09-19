@@ -5,7 +5,6 @@ en:
         invalid_attribute_name: "%{name} is not a valid attribute name."
         invalid_die_step: "%{rating} is not a valid die step."
         attribute_removed: "Attribute '%{name}' has been removed."
-        sheet_title: "Character Sheet for %{name}"
         starting_attr_limit: "Starting attributes may not be higher than %{step}."
         starting_rating_limit: "The maximum rating is %{step}."
         attribute_not_set: "Attribute '%{name}' was not set."
@@ -39,6 +38,8 @@ en:
         # ------------------------------------------------------
         # SWADE
         # ------------------------------------------------------
+        
+        sheet_title: "Character Sheet for %{name}."
         
         iconicf_types_title: "Iconic Frameworks"
         iconicf_invalid: "There is no Iconic Framework called %{name}."
