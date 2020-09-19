@@ -15,6 +15,9 @@ en:
         invalid_rating: That is not a valid attribute rating.  You have to use a number.
         no_special_characters: "Attribute names may not contain special characters."
         error_saving_ability: "There was a problem saving %{name}: %{error}"
+        cant_lower_below_iconicf_min: "You can't lower an attribute below the starting Iconic Framework value."
+        iconicf_set: "You set your Iconic Framework to %{name}."
+        invalid_iconicf_name: "There is no Iconic Framework called %{name}."
         
         attribute_not_found: "Attribute not found."
        

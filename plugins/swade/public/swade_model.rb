@@ -2,11 +2,13 @@ module AresMUSH
   class Character < Ohm::Model
 #----- These are in aresmush\game\config and are the YML files
     collection :swade_attributes, "AresMUSH::SwadeAttributes"
-	collection :swade_skills, "AresMUSH::SwadeSkills"
-	collection :swade_hinderances, "AresMUSH::SwadeHinderances"
+#	collection :swade_skills, "AresMUSH::SwadeSkills"
+#	collection :swade_hinderances, "AresMUSH::SwadeHinderances"
 #	collection :swade_edges, "AresMUSH::SwadeEdges"
 #	collection :swade_powers, "AresMUSH::SwadePowers"
-#	collection :swade_iconicf_shifter, "AresMUSH::SwadeIconicF_Shifter"
+	collection :swade_iconicf, "AresMUSH::SwadeIconicf"
+
+	attribute :swade_iconicf
 
 #--- This is called in commands\reset_cmd.rb and public\cortex_model.rb     
 #    before_delete :delete_cortex_abilities
@@ -24,26 +26,26 @@ module AresMUSH
 		include ObjectModel
     
 		attribute :name
-		attribute :die_step
+		attribute :rating, :type => DataType::Integer
 		reference :character, "AresMUSH::Character"
 		index :name
 	end
   
-    class SwadeSkills < Ohm::Model
-		include ObjectModel
+    # class SwadeSkills < Ohm::Model
+		# include ObjectModel
     
-		attribute :name
-		attribute :die_step
-		reference :character, "AresMUSH::Character"
-		index :name
-	end
+		# attribute :name
+		# attribute :die_step
+		# reference :character, "AresMUSH::Character"
+		# index :name
+	# end
 
-	class SwadeHinderances < Ohm::Model
-		include ObjectModel
+	# class SwadeHinderances < Ohm::Model
+		# include ObjectModel
     
-		attribute :name
-		reference :character, "AresMUSH::Character"
-		index :name
-	end
+		# attribute :name
+		# reference :character, "AresMUSH::Character"
+		# index :name
+	# end
   
 end
