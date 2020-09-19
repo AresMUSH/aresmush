@@ -12,16 +12,16 @@ module AresMUSH
         # Admin version
         if (cmd.args =~ /\//)
   		  self.acltest = 'adminonly'
-          args = cmd.parse_args(ArgParser.arg1_equals_arg2_slash_arg3)
+          args = cmd.parse_args(ArgParser.arg1_equals_arg2_slash_arg3) #ArgParser looks to be a function
           self.target_name = titlecase_arg(args.arg1)
           self.attribute_name = titlecase_arg(args.arg2)
           self.die_step = downcase_arg(args.arg3)
         # Self version 
 		else
-		  self.acltest = 'self'
-          args = cmd.parse_args(ArgParser.arg1_equals_arg2)
+          args = cmd.parse_args(ArgParser.arg1_equals_arg2) #ArgParser looks to be a function
           self.target_name = enactor_name
           self.attribute_name = titlecase_arg(args.arg1)
+  		  self.acltest = "self Enactor: #{enactor_name} Attr: #{attribute_name} Arg1: #{args.arg1} Arg2: #{args.arg2}"
           self.die_step = downcase_arg(args.arg2)
         end
         self.die_step = Swade.format_die_step(self.die_step)
