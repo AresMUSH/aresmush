@@ -11,7 +11,7 @@ module AresMUSH
       Global.read_config("swade", "shortcuts")
     end
 
-    def self.get_cmd_handler(client, cmd)
+    def self.get_cmd_handler(client, cmd, enactor)
       case cmd.root
       when "iconicf"
         if (cmd.switch_is?("set"))
