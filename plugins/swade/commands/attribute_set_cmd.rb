@@ -78,7 +78,7 @@ module AresMUSH
 			end
           end
 
-          client.emit_success t('Swade.attribute_set') #Tell the player the attribute was set. 
+          client.emit_success t('Swade.attribute_set', :name => self.attribute_name, :rating => self.die_step) #Tell the player the attribute was set. 
         end
       end
     end
