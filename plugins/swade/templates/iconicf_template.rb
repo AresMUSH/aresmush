@@ -1,6 +1,6 @@
 module AresMUSH    
   module Swade
-    class iconicfTemplate < ErbTemplateRenderer
+    class IconicfTemplate < ErbTemplateRenderer
 
       attr_accessor :types
       
