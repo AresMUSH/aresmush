@@ -21,7 +21,7 @@ module AresMUSH
           args = cmd.parse_args(ArgParser.arg1_equals_arg2) #ArgParser looks to be a function
           self.target_name = enactor_name
           self.attribute_name = titlecase_arg(args.arg1)
-  		  self.acltest = "self Enactor: #{enactor_name} Attr: #{attribute_name} Arg1: #{args.arg1} Arg2: #{args.arg2}"
+  		  self.acltest = "self Enactor: #{enactor_name} Attr: #{attribute_name} Arg1: #{args.arg1} Arg2: #{args.arg2} Target: #{target_name}"  #Setting a string to set the attribute acltest.
           self.die_step = downcase_arg(args.arg2)
         end
         self.die_step = Swade.format_die_step(self.die_step)
@@ -64,8 +64,8 @@ module AresMUSH
         ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
 		  enactor.update(acltest: self.acltest)
           attr = Swade.find_attribute(model, self.attribute_name)
-          template = BorderedDisplayTemplate.new self.attr, "Attr"
-          client.emit template.render
+          #template = BorderedDisplayTemplate.new , "Attr"
+          #client.emit template.render
           if (attr && self.die_step == '0')
             attr.delete
             client.emit_success t('Swade.attribute_removed')
