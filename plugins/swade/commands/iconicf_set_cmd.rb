@@ -31,7 +31,7 @@ module AresMUSH
 				Swade.set_iconicf(model, self.iconicf_name)
 				client.emit_success t('swade.iconicf_set')
 			end
-
 		end
-	end
+    end
+  end
 end
