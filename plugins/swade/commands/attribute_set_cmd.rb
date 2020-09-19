@@ -77,7 +77,7 @@ module AresMUSH
 			client.emit template.render
           else
             SwadeAttribute.create(name: self.attribute_name, die_step: self.die_step, character: model)
-			newacltest = " #{self.acltest}%r%r#{attr}%r%r#{model}%r%R#{self.die_step}"
+			newacltest = " #{self.acltest}%r%r#{attr}%r%r#{model}%r%RDie Step: #{self.die_step}%r%RAttribute Name: #{self.attribute_name}%r%R"
 			template = BorderedDisplayTemplate.new newacltest, "Attr Not Set?"
 			client.emit template.render
           end
