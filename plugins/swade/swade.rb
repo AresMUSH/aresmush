@@ -8,13 +8,17 @@ module AresMUSH
     end
     
 	def self.shortcuts
-      Global.read_config("Swade", "shortcuts")
+      Global.read_config("swade", "shortcuts")
     end
 
     def self.get_cmd_handler(client, cmd, enactor)
       case cmd.root
       when "iconicf"
-        return IconicfCmd
+        if (cmd.switch_is?("set"))
+          return IconicfSetCmd
+        else
+          return IconicfCmd
+        end
       when "sheet"
         return SheetCmd
       end
