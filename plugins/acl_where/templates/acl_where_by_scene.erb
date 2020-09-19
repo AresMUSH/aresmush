@@ -6,7 +6,7 @@
 %xh<%= t('rooms.areas_title') %>%xn
 
 <% top_level_areas.each do |a| %>
-<%= a.name %> (#A-<%= a.id %>) <%= acl_list_rooms(a, '**') %>
+<%= a.name %> (#A-<%= a.id %>) <%= children(a, '**') %>
 <% end %>
 
 
