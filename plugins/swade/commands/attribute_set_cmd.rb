@@ -64,7 +64,7 @@ module AresMUSH
         ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
 		  enactor.update(acltest: self.acltest)
           attr = Swade.find_attribute(model, self.attribute_name)
-		  puts " #{attr}"
+		  enactor.update (acltest: attr)
           if (attr && self.die_step == '0')
             attr.delete
             client.emit_success t('Swade.attribute_removed')
