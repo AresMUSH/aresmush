@@ -11,18 +11,16 @@ module AresMUSH
 	  
         # Admin version
         if (cmd.args =~ /\//)
-  		  self.acltest = 'adminonly'
-          args = cmd.parse_args(ArgParser.arg1_equals_arg2_slash_arg3) #ArgParser looks to be a function
-          self.target_name = titlecase_arg(args.arg1)
-          self.attribute_name = titlecase_arg(args.arg2)
-          self.die_step = downcase_arg(args.arg3)
+          args = cmd.parse_args(ArgParser.arg1_equals_arg2_slash_arg3) #ArgParser is a function that splits a command string
+          self.target_name = titlecase_arg(args.arg1) #Set the character to be updated from the command string
+          self.attribute_name = titlecase_arg(args.arg2) #set the attribute name to be updated from the command string
+          self.die_step = downcase_arg(args.arg3) #set the die_step to be updated from the command string
         # Self version 
 		else
-          args = cmd.parse_args(ArgParser.arg1_equals_arg2) #ArgParser looks to be a function
-          self.target_name = enactor_name
-          self.attribute_name = titlecase_arg(args.arg1)
-  		  self.acltest = "self Enactor: #{enactor_name} Attr: #{attribute_name} Arg1: #{args.arg1} Arg2: #{args.arg2} Target: #{target_name}"  #Setting a string to set the attribute acltest.
-          self.die_step = downcase_arg(args.arg2)
+          args = cmd.parse_args(ArgParser.arg1_equals_arg2) #ArgParser is a function that splits a command string
+          self.target_name = enactor_name #Set the character to be the current character
+          self.attribute_name = titlecase_arg(args.arg1) #set the attribute name to be updated from the command string
+          self.die_step = downcase_arg(args.arg2) #set the die_step to be updated from the command string
         end
         self.die_step = Swade.format_die_step(self.die_step)
       end
@@ -60,44 +58,27 @@ module AresMUSH
       
       def handle
 	  
-		
         ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-		  #enactor.update(acltest: self.acltest)
-          attr = Swade.find_attribute(model, self.attribute_name)
+          attr = Swade.find_attribute(model, self.attribute_name) #Calls the find attribute function in /public/swade_model.rb and returns the HASHED record.
 		  
-		  if (attr)
-			client.emit ("attr set")
-		  else
-			client.emit ("no attr set")		  
-		  end
-		  
-          if ( attr && ( self.die_step == '0' || !self.die_step ))
-			newacltest = " #{self.acltest}%r%r#{attr}%r%r#{model}%r%RDie Step: #{self.die_step}%r%RAttribute Name: #{self.attribute_name}%r%R"
-			template = BorderedDisplayTemplate.new newacltest, "attr is 0"
-			client.emit template.render				  
+          if (attr && self.die_step == '0')	#If the attribute is set AND the die_step is 0 delete the attribute in the character hash.		  
             attr.delete
             client.emit_success t('Swade.attribute_removed')
             return
           end
 		    
-          if (attr)
+          if (attr) #If the attribute is already set in the HASH then update it. 
             attr.update(die_step: self.die_step)
-			newacltest = " #{self.acltest}%r%r#{attr}%r%r#{model}%r%RDie Step: #{self.die_step}%r%RAttribute Name: #{self.attribute_name}%r%R"
-			template = BorderedDisplayTemplate.new newacltest, "Attr set?"
-			client.emit template.render
-          else
-			if (self.die_step != '0')
+          else #If the attribute is not already set in the HASH 
+			if (self.die_step != '0') #If the attribute is missing and DIE_STEP is NOT set to 0, then set it
 				SwadeAttribute.create(name: self.attribute_name, die_step: self.die_step, character: model)
-				newacltest = " #{self.acltest}%r%r#{attr}%r%r#{model}%r%RDie Step: #{self.die_step}%r%RAttribute Name: #{self.attribute_name}%r%R"
-				template = BorderedDisplayTemplate.new newacltest, "Attr Not Set?"
-				client.emit template.render
-			else
+			else #If the attribute is missing and DIE_STEP is set to 0, then say it did nothing and just return.
 				client.emit_success t('Swade.attribute_removed')  #Add a function to say no changes made and update this.
 				return
 			end
           end
 
-          client.emit_success t('Swade.attribute_set')
+          client.emit_success t('Swade.attribute_set') #Tell the player the attribute was set. 
         end
       end
     end
