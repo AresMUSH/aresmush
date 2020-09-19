@@ -1,8 +1,8 @@
 en:
     Swade:
         attributes_title: "Attributes"
-        invalid_attribute_name: "%{name} is not a valid ability name."
-        invalid_die_step: "%rating is not a valid die step."
+        invalid_attribute_name: "%{name} is not a valid attribute name."
+        invalid_die_step: "%{rating} is not a valid die step."
         attribute_removed: "Attribute '%{name}' has been removed."
         sheet_title: "Character Sheet for %{name}"
         starting_attr_limit: "Starting attributes may not be higher than %{step}."
