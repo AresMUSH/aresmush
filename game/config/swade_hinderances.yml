@@ -186,7 +186,7 @@ swade:
       hind_points: 2
     -
       name: Outsider-
-      description: : The character doesn’t fit in to the local environment and subtracts 2 from Persuasion rolls. 
+      description: The character doesn’t fit in to the local environment and subtracts 2 from Persuasion rolls. 
       hind_points: 2
     -
       name: Outsider+
