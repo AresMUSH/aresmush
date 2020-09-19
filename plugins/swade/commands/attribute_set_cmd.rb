@@ -64,6 +64,7 @@ module AresMUSH
         ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
 		  #enactor.update(acltest: self.acltest)
           attr = Swade.find_attribute(model, self.attribute_name)
+		  
   
           if (attr && self.die_step == '0')
 			newacltest = " #{self.acltest}%r%r#{attr}%r%r#{model}%r%RDie Step: #{self.die_step}%r%RAttribute Name: #{self.attribute_name}%r%R"
@@ -73,7 +74,13 @@ module AresMUSH
             client.emit_success t('Swade.attribute_removed')
             return
           end
-          
+		  
+		  if (self.die_step == '0')
+			newacltest = " #{self.acltest}%r%r#{attr}%r%r#{model}%r%RDie Step: #{self.die_step}%r%RAttribute Name: #{self.attribute_name}%r%R"
+			template = BorderedDisplayTemplate.new newacltest, "dis_step is 0"
+			client.emit template.render				
+          end
+		  
           if (attr)
             attr.update(die_step: self.die_step)
 			newacltest = " #{self.acltest}%r%r#{attr}%r%r#{model}%r%RDie Step: #{self.die_step}%r%RAttribute Name: #{self.attribute_name}%r%R"
