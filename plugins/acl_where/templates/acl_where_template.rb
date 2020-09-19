@@ -31,7 +31,7 @@ module AresMUSH
 	    #areaname = AnyTargetFinder.with_any_name_or_id(area.id)
 		#objects = Room.all.select { |a| a.area_id==area.id }
 		objects = area.sorted_children
-		  [ self.objects ].each do |list|
+		  [ objects ].each do |list|
 			list.each do |a|
 			  #newacltest = " #{self.acltest}%r%r#{attr}%r%r#{model}%r%RDie Step: #{self.die_step}%r%RAttribute Name: #{self.attribute_name}%r%R"
 			  newacltest = " #{self.acltest}%r%t%t#{indent_str} #{a.name} (#R-#{a.id})"
