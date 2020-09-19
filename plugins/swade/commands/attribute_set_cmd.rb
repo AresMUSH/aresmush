@@ -64,6 +64,9 @@ module AresMUSH
         ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
 		  #enactor.update(acltest: self.acltest)
           attr = Swade.find_attribute(model, self.attribute_name)
+			newacltest = " #{self.acltest}%r%r#{attr}%r%r#{model}%r%RDie Step: #{self.die_step}%r%RAttribute Name: #{self.attribute_name}%r%R"
+			template = BorderedDisplayTemplate.new newacltest, "Before testing"
+			client.emit template.render		  
           if (attr && self.die_step == '0')
             attr.delete
             client.emit_success t('Swade.attribute_removed')
