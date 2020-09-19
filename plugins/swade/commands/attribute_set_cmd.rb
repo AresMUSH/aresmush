@@ -31,12 +31,12 @@ module AresMUSH
       
       def check_valid_die_step
         return nil if self.die_step == '0'
-        return t('Swade.invalid_die_step') if !Swade.is_valid_die_step?(self.die_step)
+        return t('Swade.invalid_die_step', :die_step => self.die_step) if !Swade.is_valid_die_step?(self.die_step)
         return nil
       end
       
       def check_valid_attribute
-        return t('Swade.invalid_attribute_name') if !Swade.is_valid_attribute_name?(self.attribute_name)
+        return t('Swade.invalid_attribute_name', :name => self.attribute_name) if !Swade.is_valid_attribute_name?(self.attribute_name)
         return nil
       end
       
@@ -63,7 +63,7 @@ module AresMUSH
 		  
           if (attr && self.die_step == '0')	#If the attribute is set AND the die_step is 0 delete the attribute in the character hash.		  
             attr.delete
-            client.emit_success t('Swade.attribute_removed')
+            client.emit_success t('Swade.attribute_removed', :name => self.attribute_name)
             return
           end
 		    
@@ -73,7 +73,7 @@ module AresMUSH
 			if (self.die_step != '0') #If the attribute is missing and DIE_STEP is NOT set to 0, then set it
 				SwadeAttribute.create(name: self.attribute_name, die_step: self.die_step, character: model)
 			else #If the attribute is missing and DIE_STEP is set to 0, then say it did nothing and just return.
-				client.emit_success t('Swade.attribute_removed')  #Add a function to say no changes made and update this.
+				client.emit_success t('Swade.attribute_removed', :name => self.attribute_name)  #Add a function to say no changes made and update this.
 				return
 			end
           end
