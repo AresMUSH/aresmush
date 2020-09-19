@@ -1,11 +1,11 @@
 module AresMUSH
   class Character < Ohm::Model
-    collection :Swade_attributes, "AresMUSH::SwadeAttribute"
+    collection :swade_attributes, "AresMUSH::SwadeAttribute"
     
-    before_delete :delete_Swade_abilities
+    before_delete :delete_swade_abilities
     
-    def delete_Swade_abilities
-      [ self.Swade_attributes ].each do |list|
+    def delete_swade_abilities
+      [ self.swade_attributes ].each do |list|
         list.each do |a|
           a.delete
         end
