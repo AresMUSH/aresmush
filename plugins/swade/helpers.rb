@@ -21,8 +21,7 @@ module AresMUSH
     
     def self.find_attribute(model, attribute_name)
       name_downcase = attribute_name.downcase
-	  puts ("FindAttribute: #{name_downcase}")
-      model.swade_attributes.select { |a| a.name.downcase == name_downcase }.first
+	  model.swade_attributes.select { |a| a.name.downcase == name_downcase }.first
     end
   
     def self.format_die_step(input)
