@@ -6,7 +6,7 @@ module AresMUSH
       # some are defined in a common file.
       include CommonWhoFields
     
-      attr_accessor :online_chars, :scene_groups
+      attr_accessor :online_chars, :scene_groups, :newacltest
     
       def initialize(online_chars, client)
         @online_chars = online_chars
@@ -31,6 +31,13 @@ module AresMUSH
 	    #areaname = AnyTargetFinder.with_any_name_or_id(area.id)
 		#objects = Room.all.select { |a| a.area_id==area.id }
 		objects = area.sorted_children
+		  [ self.objects ].each do |list|
+			list.each do |a|
+			  #newacltest = " #{self.acltest}%r%r#{attr}%r%r#{model}%r%RDie Step: #{self.die_step}%r%RAttribute Name: #{self.attribute_name}%r%R"
+			  newacltest = " #{self.acltest}%r%t%t#{indent_str} #{a.name} (#R-#{a.id})"
+			end
+		  end
+		end		
 		#new_indent = "  #{indent_str}**"
 		#objects.map { |a| "%R#{indent_str}- #{a.name} (#A-#{a.id}) #{acl_list_rooms(a, new_indent)}"}.join("")
 		#objects.map { |a| "%R#{indent_str}- #{a.name} (#A-#{a.id}) #{acl_list_rooms(a, new_indent)}"}.join("")
