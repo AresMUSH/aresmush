@@ -34,7 +34,7 @@ module AresMUSH
 		  [ objects ].each do |list|
 			list.each do |a|
 			  #newacltest = " #{self.acltest}%r%r#{attr}%r%r#{model}%r%RDie Step: #{self.die_step}%r%RAttribute Name: #{self.attribute_name}%r%R"
-			  newacltest = " #{self.acltest}%r%t%t#{indent_str} #{a.name} (#R-#{a.id})"
+			  newacltest = " #{self.newacltest}%r%t%t#{indent_str} #{a.name} (#R-#{a.id})"
 			end
 		  end	
 		#new_indent = "  #{indent_str}**"
