@@ -73,7 +73,7 @@ module AresMUSH
 			if (self.die_step != '0') #If the attribute is missing and DIE_STEP is NOT set to 0, then set it
 				SwadeAttribute.create(name: self.attribute_name, die_step: self.die_step, character: model)
 			else #If the attribute is missing and DIE_STEP is set to 0, then say it did nothing and just return.
-				client.emit_success t('Swade.attribute_removed', :name => self.attribute_name)  #Add a function to say no changes made and update this.
+				client.emit_success t('Swade.attribute_not_set', :name => self.attribute_name)  #Tell player the attribute wasn't set 
 				return
 			end
           end
