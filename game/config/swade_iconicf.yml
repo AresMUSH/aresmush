@@ -1,0 +1,18 @@
+---
+Swade:
+    iconicf:
+        -
+            name: Shifter
+            attributes:
+                Agility: d4
+                Smarts: d4
+                Spirit: d4
+                Strength: d4
+                Vigor: d4
+        -   name: Mystic
+            attributes:
+                Agility: d4
+                Smarts: d4
+                Spirit: d4
+                Strength: d4
+                Vigor: d4
