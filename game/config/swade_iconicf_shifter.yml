@@ -1,0 +1,101 @@
+---
+Swade:
+    iconicf:
+    -
+        name: Shifter
+        attributes_points: 5
+        attributes:
+            Agility: d4
+            Smarts: d4
+            Spirit: d4
+            Strength: d4
+            Vigor: d4
+        skills_points: 15
+        skills:
+            Athletics: d4
+            Common Knowledge: d4
+            Notice: d4
+            Occult: d6
+            Persuasion: d4
+            Spelllcasting: d6
+            Stealth: d4
+        hinderances: 
+            - Enemies
+        edges:
+            - AB Magic
+            - Familiar Link
+            - Dimensional Portal
+            - Master of Magic
+            - Power Points
+            - Rapid Recharge
+        powers:
+            - Detect Arcana
+            - Banish
+            - Drain Power Points
+            - Summon Ally
+            - Teleport
+        abilities:
+            - Bind the Summoned
+            - Communication Rift
+            - Dimension Sense
+            - Dimensional Teleport Home
+            - Expanded Awareness
+            - Ley Line Magic Mastery
+            - Psychotically Brave
+            - Sense Rifts
+            - Shift Reality
+        complications:
+            - Corruption
+            - Cybernetics
+            - Disconnected
+            - Power Activators
+        hj_slots: 2 
+        hj_tables: 
+            - Body Armor
+            - Close Combat Weapons
+            - Cybernetics
+            - Education
+            - Enchanted Items
+            - Experience & Wisdom
+            - Magic & Mysticism
+            - Ranged Weapons
+            - Training
+            - Underworld & Black Ops
+        powers_slots: 1
+        powers_list:
+            - arcane protection
+            - barrier
+            - beast friend
+            - blast
+            - bolt
+            - boost trait
+            - burst
+            - conceal arcana
+            - darkness
+            - darksight
+            - defection
+            - disguise
+            - dispel
+            - entangle
+            - environmental protection
+            - farsight
+            - fear
+            - fly
+            - illusion
+            - intangibility
+            - invisibility
+            - light
+            - lower trait
+            - mind link
+            - protection
+            - puppet
+            - silence
+            - sloth
+            - slumber
+            - smite
+            - sound
+            - speak language
+            - speed
+            - stun
+            - telekinesis
+            - warrior’s gift

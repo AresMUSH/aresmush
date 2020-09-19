@@ -1,19 +1,26 @@
 module AresMUSH
   class Character < Ohm::Model
-    collection :swade_attributes, "AresMUSH::SwadeAttribute"
-    
-    before_delete :delete_swade_abilities
-    
-    def delete_swade_abilities
-      [ self.swade_attributes ].each do |list|
-        list.each do |a|
-          a.delete
-        end
-      end
-    end
-  end
+#----- These are in aresmush\game\config and are the YML files
+    collection :swade_attributes, "AresMUSH::SwadeAttributes"
+	collection :swade_skills, "AresMUSH::SwadeSkills"
+	collection :swade_hinderances, "AresMUSH::SwadeHinderances"
+	collection :swade_edges, "AresMUSH::SwadeEdges"
+	collection :swade_powers, "AresMUSH::SwadePowers"
+	collection :swade_iconicf_shifter, "AresMUSH::SwadeIconicF_Shifter"
+
+#--- This is called in commands\reset_cmd.rb and public\cortex_model.rb     
+#    before_delete :delete_cortex_abilities
+#   
+#    def delete_cortex_abilities
+#      [ self.swade_attributes ].each do |list|
+#        list.each do |a|
+#          a.delete
+#        end
+#      end
+#    end
+#  end
   
-  class SwadeAttribute < Ohm::Model
+  class SwadeAttributes < Ohm::Model
     include ObjectModel
     
     attribute :name

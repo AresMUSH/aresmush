@@ -1,0 +1,336 @@
+---
+swade:
+    hinderances:
+    - 
+      name: All Thumbs
+      description: –2 to use mechanical or electrical devices
+      hind_points: 1
+    - 
+      name: Anemic
+      description: –2 Vigor when resisting Fatigue.
+      hind_points: 1
+    - 
+      name: Arrogant
+      description: Likes to dominate his opponent, challenge the most powerful foe in combat.
+      hind_points: 1
+    -
+      name: Bad Eyes-
+      description: –1 to all Trait rolls dependent on vision
+      hind_points: 1
+    -
+      name: Bad Eyes+
+      description: –2 to all Trait rolls dependent on vision
+      hind_points: 2
+    -
+      name: Bad Luck
+      description: The characters starts with one less Benny per session.
+      hind_points: 2
+    -
+      name: Big Mouth
+      description: Unable to keep secrets and constantly gives away private information.
+      hind_points: 1
+    -
+      name: Blind
+      description: –6 to all tasks that require vision (but choice of a free Edge to offset)
+      hind_points: 2
+    -
+      name: Bloodthirsty
+      description: Never takes prisoners.
+      hind_points: 2
+    -
+      name: Can't Swim
+      description: –2 to swimming (Athletics) rolls
+      hind_points: 1
+    -
+      name: Cautious
+      description: The character plans extensively and/or is overly careful.
+      hind_points: 1
+    -
+      name: Clueless
+      description: –1 to Common Knowledge and Notice rolls.
+      hind_points: 1
+    -
+      name: Clumsy
+      description: –2 to Athletics and Stealth rolls.
+      hind_points: 2
+    -
+      name: Code of Honor
+      description: The character keeps his word and acts like a gentleman.
+      hind_points: 2
+    -
+      name: Curious
+      description: The character wants to know about everything.
+      hind_points: 2
+    -
+      name: Death Wish
+      description: The hero wants to die after or while completing some epic task.
+      hind_points: 2
+    -
+      name: Delusional-
+      description: The individual believes something strange that causes him frequent trouble.
+      hind_points: 2
+    -
+      name: Delusional+
+      description: The individual believes something strange that causes him frequent trouble.
+      hind_points: 2
+    -
+      name: Doubting Thomas
+      description: –2 to use mechanical or electrical devices
+      hind_points: 2
+    -
+      name: Driven-
+      description: The character doesn’t believe in the supernatural, often exposing him to unnecessary risks
+      hind_points: 2
+    -
+      name: Driven+
+      description: The hero’s actions are driven by some important goal or belief.
+      hind_points: 2
+    -
+      name: Elderly
+      description: –1 to Pace, running, Agility, Strength, and Vigor. Hero gets 5 extra skill points.
+      hind_points: 2
+      skill_points: 5
+    -
+      name: Enemy-
+      description: The character has a recurring nemesis.
+      hind_points: 2
+    -
+      name: Enemy+
+      description: The character has a recurring nemesis.
+      hind_points: 2
+    -
+      name: Greedy-
+      description: The individual is obsessed with wealth and material possessions.
+      hind_points: 2
+    -
+      name: Greedy+
+      description: The individual is obsessed with wealth and material possessions.
+      hind_points: 2
+    -
+      name: Habit-
+      description: Addicted to something.
+      hind_points: 2
+    -
+      name: Habit+
+      description: Addicted to something, sufers Fatigue if deprived.
+      hind_points: 2
+    -
+      name: Hard of Hearing-
+      description: –4 to Notice sounds
+      hind_points: 2
+    -
+      name: Hard of Hearing+
+      description: automatic failure to Notice sounds
+      hind_points: 2
+    -
+      name: Heroic
+      description: The character always helps those in need.
+      hind_points: 2
+    -
+      name: Hesitant
+      description: Draw two Action Cards and take the lowest (except Jokers, which may be kept).
+      hind_points: 2
+    -
+      name: Illiterate
+      description: The character cannot read or write.
+      hind_points: 2
+    -
+      name: Impulsive
+      description: The hero leaps before he looks.
+      hind_points: 2
+    -
+      name: Jealous-
+      description: The individual covets what others have.
+      hind_points: 2
+    -
+      name: Jealous+
+      description: The individual covets what others have.
+      hind_points: 2
+    -
+      name: Loyal
+      description: The hero is loyal to his friends and allies.
+      hind_points: 2
+    -
+      name: Mean
+      description: –1 to Persuasion rolls.
+      hind_points: 2
+    -
+      name: Mild Mannered
+      description: –2 to Intimidation rolls.
+      hind_points: 2
+    -
+      name: Mute
+      description: The hero cannot speak.
+      hind_points: 2
+    -
+      name: Obese
+      description: Size +1, Pace –1 and running die of d4. Treat Str as one die type lower for Min Str.
+      hind_points: 2
+      size: +1
+      pace: -1
+    -
+      name: Obligation-
+      description: The character has a weekly obligation of 20 hours.
+      hind_points: 2
+    -
+      name: Obligation+
+      description: The character has a weekly obligation of 40 hours.
+      hind_points: 2
+    -
+      name: One Arm
+      description: –4 to tasks (such as Athletics) that require two hands.
+      hind_points: 2
+    -
+      name: One Eye
+      description: –2 to actions at 5″ (10 yards) or more distance.
+      hind_points: 2
+    -
+      name: Outsider-
+      description: : The character doesn’t fit in to the local environment and subtracts 2 from Persuasion rolls. 
+      hind_points: 2
+    -
+      name: Outsider+
+      description: Has no legal rights or other serious consequences
+      hind_points: 2
+    -
+      name: Overconfident
+      description: The hero believes she can do anything
+      hind_points: 2
+    -
+      name: Pacifist-
+      description: Fights only in self-defense
+      hind_points: 2
+    -
+      name: Pacifist+
+      description: Won’t fght at all
+      hind_points: 2
+    -
+      name: Phobia-
+      description: The character is afraid of something, and subtracts –1 from all Trait rolls in its presence
+      hind_points: 2
+    -
+      name: Phobia+
+      description: The character is afraid of something, and subtracts –2 from all Trait rolls in its presence
+      hind_points: 2
+    -
+      name: Poverty
+      description: Half starting funds and the character is always broke.
+      hind_points: 2
+    -
+      name: Quirk
+      description: The individual has some minor but persistent foible that often annoys others.
+      hind_points: 2
+    -
+      name: Ruthless-
+      description: The character does what it takes to get her way.
+      hind_points: 2
+    -
+      name: Ruthless+
+      description: The character does what it takes to get her way.
+      hind_points: 2
+    -
+      name: Secret-
+      description: The hero has a dark secret of some kind.
+      hind_points: 2
+    -
+      name: Secret+
+      description: The hero has a dark secret of some kind.
+      hind_points: 2
+    -
+      name: Shamed-
+      description: The individual is haunted by some tragic event from her past
+      hind_points: 2
+    -
+      name: Shamed+
+      description: The individual is haunted by some tragic event from her past
+      hind_points: 2
+    -
+      name: Slow-
+      description: Pace –1, reduce running die one step. May not take the Fleet-Footed Edge.
+      hind_points: 2
+      pace: d4
+    -
+      name: Slow+
+      description: -2 to Athletics and rolls to resist Athletics. May not take the Fleet-Footed Edge.
+      hind_points: 2
+      pace: d4-2
+    -
+      name: Small
+      description: Size and Toughness are reduced by 1. Size cannot be reduced below –1.
+      hind_points: 2
+      toughness: -1
+      size: -1
+    -
+      name: Stubborn
+      description: The character wants his way and rarely admits his 
+      hind_points: 2
+    -
+      name: Suspicious-
+      description: The individual is paranoid
+      hind_points: 2
+    -
+      name: Suspicious+
+      description: Allies subtract 2 when rolling to Support him.
+      hind_points: 2
+    -
+      name: Thin Skinned-
+      description: The character is particularly susceptible to personal atacks. Subtract two when resisting Taunt atacks.
+      hind_points: 2
+    -
+      name: Thin Skinned+
+      description: The character is particularly susceptible to personal atacks. Subtract four when resisting Taunt atacks.
+      hind_points: 2
+    -
+      name: Tongue-Tied
+      description: The character often misspeaks or can’t get her words out. –1 to Intimidation, Persuasion, and Taunt rolls.
+      hind_points: 2
+    -
+      name: Ugly-
+      description: The character is physically unatractive and subtracts 1 from Persuasion rolls.
+      hind_points: 2
+    -
+      name: Ugly+
+      description: The character is physically unatractive and subtracts 2 from Persuasion rolls.
+      hind_points: 2
+    -
+      name: Vengeful-
+      description: The adventurer seeks payback for slights against her
+      hind_points: 2
+    -
+      name: Vengeful+
+      description: The adventurer seeks payback for slights against her and will cause physical harm to get it.
+      hind_points: 2
+    -
+      name: Vow-
+      description: The individual has pledged himself to some cause.
+      hind_points: 2
+    -
+      name: Vow+
+      description: The individual has pledged himself to some cause.
+      hind_points: 2
+    -
+      name: Wanted-
+      description: The character is wanted by the authorities.
+      hind_points: 2
+    -
+      name: Wanted+
+      description:  The character is wanted by the authorities.
+      hind_points: 2
+    -
+      name: Yellow
+      description: –2 to Fear checks and resisting Intimidation.
+      hind_points: 2
+    -
+      name: Young-
+      description: Has 4 atribute points and 10 skill points, extra Benny per session. 
+      hind_points: 1
+      attribute_points: -1
+      skills_points: -2
+      bennies_max: 1
+    -
+      name: Young+
+      description: Has 3 atribute points, 10 skill points, and two extra Bennies per session.
+      hind_points: 2
+      attribute_points: -2
+      skills_points: -2
+      bennies_max: 2
