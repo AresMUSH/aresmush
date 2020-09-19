@@ -70,10 +70,6 @@ module AresMUSH
 		  else
 			client.emit ("no attr set")		  
 		  end
-  
-		  if (!attr && self.die_step != nil)
-			return
-		  end
 		  
           if ( attr && ( self.die_step == '0' || !self.die_step ))
 			newacltest = " #{self.acltest}%r%r#{attr}%r%r#{model}%r%RDie Step: #{self.die_step}%r%RAttribute Name: #{self.attribute_name}%r%R"
@@ -90,10 +86,12 @@ module AresMUSH
 			template = BorderedDisplayTemplate.new newacltest, "Attr set?"
 			client.emit template.render
           else
-            SwadeAttribute.create(name: self.attribute_name, die_step: self.die_step, character: model)
-			newacltest = " #{self.acltest}%r%r#{attr}%r%r#{model}%r%RDie Step: #{self.die_step}%r%RAttribute Name: #{self.attribute_name}%r%R"
-			template = BorderedDisplayTemplate.new newacltest, "Attr Not Set?"
-			client.emit template.render
+			if (self.die_step != 0)
+				SwadeAttribute.create(name: self.attribute_name, die_step: self.die_step, character: model)
+				newacltest = " #{self.acltest}%r%r#{attr}%r%r#{model}%r%RDie Step: #{self.die_step}%r%RAttribute Name: #{self.attribute_name}%r%R"
+				template = BorderedDisplayTemplate.new newacltest, "Attr Not Set?"
+				client.emit template.render
+			}
           end
 
           client.emit_success t('Swade.attribute_set')
