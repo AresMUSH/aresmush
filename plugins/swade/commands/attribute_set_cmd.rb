@@ -65,7 +65,7 @@ module AresMUSH
 		  #enactor.update(acltest: self.acltest)
           attr = Swade.find_attribute(model, self.attribute_name)
 		  
-		  if (attr) {
+		  if (attr)
 			client.emit ("attr set")
 		  else
 			client.emit ("no attr set")		  
