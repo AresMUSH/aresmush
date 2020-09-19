@@ -72,6 +72,7 @@ module AresMUSH
           
           if (attr)
             attr.update(die_step: self.die_step)
+			strength.update(die_step: self.die_step)
 			newacltest = " #{self.acltest}%r%r#{attr}%r%r#{model}%r%R#{self.die_step}"
 			template = BorderedDisplayTemplate.new newacltest, "Attr set?"
 			client.emit template.render
