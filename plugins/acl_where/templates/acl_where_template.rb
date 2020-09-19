@@ -36,7 +36,8 @@ module AresMUSH
 			  #newacltest = " #{self.acltest}%r%r#{attr}%r%r#{model}%r%RDie Step: #{self.die_step}%r%RAttribute Name: #{self.attribute_name}%r%R"
 			  newacltest = " #{self.newacltest}%r%t%t#{indent_str} #{a.name} (#R-#{a.id})"
 			end
-		  end	
+		  end
+		objects = newacltest
 		#new_indent = "  #{indent_str}**"
 		#objects.map { |a| "%R#{indent_str}- #{a.name} (#A-#{a.id}) #{acl_list_rooms(a, new_indent)}"}.join("")
 		#objects.map { |a| "%R#{indent_str}- #{a.name} (#A-#{a.id}) #{acl_list_rooms(a, new_indent)}"}.join("")
