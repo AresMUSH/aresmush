@@ -16,8 +16,8 @@ en:
         no_special_characters: "Attribute names may not contain special characters."
         error_saving_ability: "There was a problem saving %{name}: %{error}"
         cant_lower_below_iconicf_min: "You can't lower an attribute below the starting Iconic Framework value."
-        iconicf_set: "You set your Iconic Framework to %{name}."
-        invalid_iconicf_name: "There is no Iconic Framework called %{name}."
+
+
         
         attribute_not_found: "Attribute not found."
        
@@ -36,5 +36,14 @@ en:
         invalid_page_number: "That is not a valid page number."
         not_that_many_pages: "There aren't that many character sheet pages."
 
-
+        # ------------------------------------------------------
+        # SWADE
+        # ------------------------------------------------------
         
+        iconicf_types_title: "Iconic Frameworks"
+        iconicf_invalid: "There is no Iconic Framework called %{name}."
+        iconicf_invalid_type: "Invalid Iconic Framework Type %{name}."
+        iconicf_cleared: "Iconic Framework %{name} removed."
+        iconicf_set: "You set your Iconic Framework to %{name}."
+        
+
