@@ -13,15 +13,11 @@ module AresMUSH
 
     def self.get_cmd_handler(client, cmd, enactor)
       case cmd.root
-	  when "attribute"
-        if (cmd.switch_is?("set"))
-          return AttributeSetCmd # Swade/commands/attribute_set_cmd.rb
-        else
-          return AttributesCmd #Swade/commands/attributes_cmd.rb
-        end
+      when "iconicf"
+        return IconicfCmd
       when "sheet"
-        return SheetCmd #Swade/commands/sheet_cmd.rb
-	  end
+        return SheetCmd
+      end
       return nil
     end
 

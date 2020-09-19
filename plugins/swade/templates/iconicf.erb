@@ -1,0 +1,9 @@
+%lh
+%xh<%= t('swade.iconicf_title') %>%xn
+
+<% types.each do |c| %>
+<%= left c['name'], 15 %> 
+  %xh<%= t('swade.attributes_title') %>:%xn <%= attributes(c) %>
+    
+<% end %>
+%lf
