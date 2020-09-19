@@ -1,5 +1,6 @@
 ---
-toc: Swade
+toc: SWADE RPG
+order: 2
 summary: The Savage Worlds Adventure Edition RPG system.
 ---
 # Swade Chargen
