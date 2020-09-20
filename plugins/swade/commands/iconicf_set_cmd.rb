@@ -13,10 +13,10 @@ module AresMUSH
 			  # self.rating = trim_arg(args.arg3)
 			# else
 			# args = cmd.parse_args(ArgParser.arg1)
-			  self.inconicf_name = trim_arg(cmd.args)	
+			  self.iconicf_name = trim_arg(cmd.args)	
 			  #self.target_name = enactor_name
 			  #self.iconicf_name = cmd.args ? titlecase_arg(cmd.args) : enactor_name
-			  enactor.update(iconicf_name: self.inconicf_name)
+			  enactor.update(iconicf_name: self.iconicf_name)
 			  client.emit_success "Iconic Framework set!"
 			# end
 		end
