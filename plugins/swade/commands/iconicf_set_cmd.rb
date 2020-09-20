@@ -58,8 +58,7 @@ module AresMUSH
 					iconicf_attributes=iconicf['attributes']
 					iconicf_attributes.each { |key, value| client.emit("k: #{key}, v: #{value}") }					
 					iconicf_attributes.each do |key, value|
-						setattribute = "swade_#{key}".chop.downcase
-						#setattribute = setattribute.downcase
+						setattribute = "swade_#{key}".downcase
 						client.emit (setattribute)
 						setvalue = "#{value}"
 						ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
