@@ -83,8 +83,11 @@ module AresMUSH
           fate = nil
         end
         
-        if (enactor && enactor.is_admin?)
-          siteinfo = Login.build_web_site_info(char, enactor)
+        if (enactor)
+          if (enactor.is_admin?)
+            siteinfo = Login.build_web_site_info(char, enactor)
+          end
+          Login.mark_notices_read(enactor, :achievement)
         else
           siteinfo = nil
         end
