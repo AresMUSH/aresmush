@@ -19,14 +19,14 @@ module AresMUSH
 			# end
 		end
 
-			def required_args
-				[self.target_name, self.iconicf_name]
-			end
+			# def required_args
+				# [self.target_name, self.iconicf_name]
+			# end
 			
-			def check_valid_iconicf
-				return t('swade.iconicf_invalid_name') if !Swade.is_iconicf_valid_name?(self.iconicf_name)
-				return nil
-			end
+			# def check_valid_iconicf
+				# return t('swade.iconicf_invalid_name') if !Swade.is_iconicf_valid_name?(self.iconicf_name)
+				# return nil
+			# end
 		  
 			# def check_can_set
 				# return nil if enactor_name == self.target_name
