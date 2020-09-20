@@ -56,6 +56,12 @@ module AresMUSH
 					iconicf_name=iconicf['name'].downcase
 					iconicf_attributes=iconicf['attributes']
 					iconicf_attributes.each { |key, value| client.emit("k: #{key}, v: #{value}") }					
+					iconicf_attributes.each do |key, value|
+						setattribute = "swade_#{key}".chop
+						setvalue = "#{value}"
+						SwadeAttribute.create(name: self.setattribute, value: self.setvalue, character: model)
+						client.emit_success t('swade.iconicattributes_set', :name => self.setattribute)
+					end
 					
 					# client.emit (iconicf_name)
 					# client.emit (iconicf_attributes)
