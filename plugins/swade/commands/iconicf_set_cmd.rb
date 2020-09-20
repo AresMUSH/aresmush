@@ -27,7 +27,7 @@ module AresMUSH
 						client.emit (model)
 						client.emit (iconicf_name)
 						model.update(swade_iconicf: model.iconicf_name)
-					    #client.emit_success t('swade.iconicf_set', :name => self.iconicf_name)
+					    client.emit_success t('swade.iconicf_set', :name => self.iconicf_name)
 					end
 				else
 					client.emit_failure t('swade.iconicf_invalid_name', :name=> self.iconicf_name.capitalize)

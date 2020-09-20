@@ -9,9 +9,8 @@ module AresMUSH
       end
 
       def iconicf_name
-		summ = @char.swade_iconicf
+		Swade.iconicf_name(@char)
 		#summ = "#{char.swade_iconicf_name}"
-		summ
       end
   
       def stats
