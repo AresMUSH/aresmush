@@ -5,19 +5,20 @@ module AresMUSH
       
 			attr_accessor :target, :iconicf_name
 			
-		def parse_args
-			  self.target = enactor_name #Set the character to be the current character
-			  self.iconicf_name = trim_arg(cmd.args) #Set 'iconicf_name' to be the inputted Iconic Framework
-		end
+			def parse_args
+				  self.target = enactor_name #Set the character to be the current character
+				  self.iconicf_name = trim_arg(cmd.args) #Set 'iconicf_name' to be the inputted Iconic Framework
+			end
 
-		def required_args
-			[ self.target, self.iconicf_name ]
-		end
-			
-			
-		def handle  
-			client.emit (self.target)
-			client.emit (self.iconicf_name)
+			def required_args
+				[ self.target, self.iconicf_name ]
+			end
+				
+				
+			def handle  
+				client.emit (self.target)
+				client.emit (self.iconicf_name)
+			end
 		end
     end
 end
