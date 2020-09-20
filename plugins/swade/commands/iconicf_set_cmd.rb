@@ -23,7 +23,7 @@ module AresMUSH
 			end
       
 			def check_valid_iconicf
-				return t('swade.iconicf_valid_name') if Swade.is_valid_iconicf_name?(self.iconicf_name)
+				return t('swade.iconicf_valid_name') if Swade.is_iconicf_valid_name?(self.iconicf_name)
 				return nil
 			end
 			
