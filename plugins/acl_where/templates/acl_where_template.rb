@@ -28,18 +28,12 @@ module AresMUSH
       end
 	  
 	  def acl_list_rooms(area, indent_str)
-	    #areaname = AnyTargetFinder.with_any_name_or_id(area.id)
-		#objects = Room.all.select { |a| a.area_id==area.id }
 		objects = area.sorted_children
-		  [ objects ].each do |list|
-			list.each do |a|
-			  #newacltest = " #{self.acltest}%r%r#{attr}%r%r#{model}%r%RDie Step: #{self.die_step}%r%RAttribute Name: #{self.attribute_name}%r%R"
-			  client.emit ("%r%t%t#{indent_str} #{a.name} (#R-#{a.id})")
-			end
-		  end
-		#new_indent = "  #{indent_str}**"
-		#objects.map { |a| "%R#{indent_str}- #{a.name} (#A-#{a.id}) #{acl_list_rooms(a, new_indent)}"}.join("")
-		#objects.map { |a| "%R#{indent_str}- #{a.name} (#A-#{a.id}) #{acl_list_rooms(a, new_indent)}"}.join("")
+		  #[ objects ].each do |list|
+			# list.each do |a|
+			  # client.emit ("%r%t%t#{indent_str} #{a.name} (#R-#{a.id})")
+			# end
+		  #end
 	  end
         
         case (Global.read_config("who", "where_style"))
