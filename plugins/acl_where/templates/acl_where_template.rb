@@ -32,14 +32,14 @@ module AresMUSH
 		  [ objects ].each do |list|
 			list.each do |a|
 				listitem = "#{self.listitem} - #{a.name} (#A-#{a.id}%r"
-				client.emit (listitem)
+				kids = a.sorted_children
+				  [ kids ].each do |kidlist|
+				     kidlist.each do |b|
+					    listitem = "#{self.listitem} .%r   **#{b.name} (#A-#{b.id}"
+					end	
+				  end
 			end
 		  end
-		  return "#{listitem}"
-			# list.each do |a|
-			  # client.emit ("%r%t%t#{indent_str} #{a.name} (#R-#{a.id})")
-			# end
-		  #end
 	  end
         
         case (Global.read_config("who", "where_style"))
