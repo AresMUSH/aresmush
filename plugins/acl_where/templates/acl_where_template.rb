@@ -40,6 +40,7 @@ module AresMUSH
 				  end
 			end
 		  end
+		return listitem
 	  end
         
         case (Global.read_config("who", "where_style"))
