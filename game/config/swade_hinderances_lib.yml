@@ -9,10 +9,18 @@ swade:
       name: Anemic
       description: –2 Vigor when resisting Fatigue.
       hind_points: 1
+    -
+      name: Arcane Averse-
+      description: Characters wishing to interact with the supernatural or arcane (social interaction, using arcane weapons, means of travel, accepting healing, and so on) make their rolls to do so at a penalty of −2.
+      hind_points: 1
+    - 
+      name: Arcane Averse+
+      description: Characters wishing to interact with the supernatural or arcane (social interaction, using arcane weapons, means of travel, accepting healing, and so on) make their rolls to do so at a penalty of −2 and must spend a Benny.
+      hind_points: 2
     - 
       name: Arrogant
       description: Likes to dominate his opponent, challenge the most powerful foe in combat.
-      hind_points: 1
+      hind_points: 2
     -
       name: Bad Eyes-
       description: –1 to all Trait rolls dependent on vision
@@ -48,11 +56,15 @@ swade:
     -
       name: Clueless
       description: –1 to Common Knowledge and Notice rolls.
-      hind_points: 1
+      hind_points: 2
     -
       name: Clumsy
       description: –2 to Athletics and Stealth rolls.
       hind_points: 2
+    -
+      name: Coalition Exile
+      description: Character is on the Internal Security Service’s wanted list. −1 Persuasion with D-Bees or magic users that learn of the character’s past. +1 bonus to Taunt or Intimidate D-Bees and mages familiar with the Coalition.
+      hind_points: 1
     -
       name: Code of Honor
       description: The character keeps his word and acts like a gentleman.
@@ -64,11 +76,11 @@ swade:
     -
       name: Death Wish
       description: The hero wants to die after or while completing some epic task.
-      hind_points: 2
+      hind_points: 1
     -
       name: Delusional-
       description: The individual believes something strange that causes him frequent trouble.
-      hind_points: 2
+      hind_points: 1
     -
       name: Delusional+
       description: The individual believes something strange that causes him frequent trouble.
@@ -76,11 +88,11 @@ swade:
     -
       name: Doubting Thomas
       description: –2 to use mechanical or electrical devices
-      hind_points: 2
+      hind_points: 1
     -
       name: Driven-
       description: The character doesn’t believe in the supernatural, often exposing him to unnecessary risks
-      hind_points: 2
+      hind_points: 1
     -
       name: Driven+
       description: The hero’s actions are driven by some important goal or belief.
@@ -93,7 +105,7 @@ swade:
     -
       name: Enemy-
       description: The character has a recurring nemesis.
-      hind_points: 2
+      hind_points: 1
     -
       name: Enemy+
       description: The character has a recurring nemesis.
@@ -101,7 +113,7 @@ swade:
     -
       name: Greedy-
       description: The individual is obsessed with wealth and material possessions.
-      hind_points: 2
+      hind_points: 1
     -
       name: Greedy+
       description: The individual is obsessed with wealth and material possessions.
@@ -109,7 +121,7 @@ swade:
     -
       name: Habit-
       description: Addicted to something.
-      hind_points: 2
+      hind_points: 1
     -
       name: Habit+
       description: Addicted to something, sufers Fatigue if deprived.
@@ -117,7 +129,7 @@ swade:
     -
       name: Hard of Hearing-
       description: –4 to Notice sounds
-      hind_points: 2
+      hind_points: 1
     -
       name: Hard of Hearing+
       description: automatic failure to Notice sounds
@@ -129,11 +141,11 @@ swade:
     -
       name: Hesitant
       description: Draw two Action Cards and take the lowest (except Jokers, which may be kept).
-      hind_points: 2
+      hind_points: 1
     -
       name: Illiterate
       description: The character cannot read or write.
-      hind_points: 2
+      hind_points: 1
     -
       name: Impulsive
       description: The hero leaps before he looks.
@@ -141,7 +153,7 @@ swade:
     -
       name: Jealous-
       description: The individual covets what others have.
-      hind_points: 2
+      hind_points: 1
     -
       name: Jealous+
       description: The individual covets what others have.
@@ -149,15 +161,23 @@ swade:
     -
       name: Loyal
       description: The hero is loyal to his friends and allies.
+      hind_points: 1
+    -
+      name: Mania-
+      description: -1 to Persuasion to those who know of it.
+      hind_points: 1
+    -
+      name: Mania+
+      description: Full time obsession with serious consequences if caught or discovered. 
       hind_points: 2
     -
       name: Mean
       description: –1 to Persuasion rolls.
-      hind_points: 2
+      hind_points: 1
     -
       name: Mild Mannered
       description: –2 to Intimidation rolls.
-      hind_points: 2
+      hind_points: 1
     -
       name: Mute
       description: The hero cannot speak.
@@ -165,13 +185,13 @@ swade:
     -
       name: Obese
       description: Size +1, Pace –1 and running die of d4. Treat Str as one die type lower for Min Str.
-      hind_points: 2
-      size: +1
+      hind_points: 1
+      size: 1
       pace: -1
     -
       name: Obligation-
       description: The character has a weekly obligation of 20 hours.
-      hind_points: 2
+      hind_points: 1
     -
       name: Obligation+
       description: The character has a weekly obligation of 40 hours.
@@ -187,7 +207,7 @@ swade:
     -
       name: Outsider-
       description: The character doesn’t fit in to the local environment and subtracts 2 from Persuasion rolls. 
-      hind_points: 2
+      hind_points: 1
     -
       name: Outsider+
       description: Has no legal rights or other serious consequences
@@ -199,31 +219,47 @@ swade:
     -
       name: Pacifist-
       description: Fights only in self-defense
-      hind_points: 2
+      hind_points: 1
     -
       name: Pacifist+
-      description: Won’t fght at all
+      description: Won’t fight at all
+      hind_points: 2
+    -
+      name: Partisan-
+      description: Check on the lower of Spirit or Smarts to interact with those other than his own group in any positive way.
+      hind_points: 1
+    -
+      name: Partisan+
+      description: As per Partisan-, plus on a failure opposing party's attitude decreaes on step on the Reaction Table.
       hind_points: 2
     -
       name: Phobia-
       description: The character is afraid of something, and subtracts –1 from all Trait rolls in its presence
-      hind_points: 2
+      hind_points: 1
     -
       name: Phobia+
       description: The character is afraid of something, and subtracts –2 from all Trait rolls in its presence
       hind_points: 2
     -
+      name: PTSD-
+      description: Make a Spirit check. Failure starts with one less Benny.
+      hind_points: 1
+    -
+      name: PTSD+
+      description: As per PTSD-, plus gain a level of Sleep-based Fatigue. 
+      hind_points: 2
+    -
       name: Poverty
       description: Half starting funds and the character is always broke.
-      hind_points: 2
+      hind_points: 1
     -
       name: Quirk
       description: The individual has some minor but persistent foible that often annoys others.
-      hind_points: 2
+      hind_points: 1
     -
       name: Ruthless-
       description: The character does what it takes to get her way.
-      hind_points: 2
+      hind_points: 1
     -
       name: Ruthless+
       description: The character does what it takes to get her way.
@@ -231,7 +267,7 @@ swade:
     -
       name: Secret-
       description: The hero has a dark secret of some kind.
-      hind_points: 2
+      hind_points: 1
     -
       name: Secret+
       description: The hero has a dark secret of some kind.
@@ -239,7 +275,7 @@ swade:
     -
       name: Shamed-
       description: The individual is haunted by some tragic event from her past
-      hind_points: 2
+      hind_points: 1
     -
       name: Shamed+
       description: The individual is haunted by some tragic event from her past
@@ -247,7 +283,7 @@ swade:
     -
       name: Slow-
       description: Pace –1, reduce running die one step. May not take the Fleet-Footed Edge.
-      hind_points: 2
+      hind_points: 1
       pace: d4
     -
       name: Slow+
@@ -257,17 +293,17 @@ swade:
     -
       name: Small
       description: Size and Toughness are reduced by 1. Size cannot be reduced below –1.
-      hind_points: 2
+      hind_points: 1
       toughness: -1
       size: -1
     -
       name: Stubborn
       description: The character wants his way and rarely admits his 
-      hind_points: 2
+      hind_points: 1
     -
       name: Suspicious-
       description: The individual is paranoid
-      hind_points: 2
+      hind_points: 1
     -
       name: Suspicious+
       description: Allies subtract 2 when rolling to Support him.
@@ -275,7 +311,7 @@ swade:
     -
       name: Thin Skinned-
       description: The character is particularly susceptible to personal atacks. Subtract two when resisting Taunt atacks.
-      hind_points: 2
+      hind_points: 1
     -
       name: Thin Skinned+
       description: The character is particularly susceptible to personal atacks. Subtract four when resisting Taunt atacks.
@@ -287,7 +323,7 @@ swade:
     -
       name: Ugly-
       description: The character is physically unatractive and subtracts 1 from Persuasion rolls.
-      hind_points: 2
+      hind_points: 1
     -
       name: Ugly+
       description: The character is physically unatractive and subtracts 2 from Persuasion rolls.
@@ -295,7 +331,7 @@ swade:
     -
       name: Vengeful-
       description: The adventurer seeks payback for slights against her
-      hind_points: 2
+      hind_points: 1
     -
       name: Vengeful+
       description: The adventurer seeks payback for slights against her and will cause physical harm to get it.
@@ -303,7 +339,7 @@ swade:
     -
       name: Vow-
       description: The individual has pledged himself to some cause.
-      hind_points: 2
+      hind_points: 1
     -
       name: Vow+
       description: The individual has pledged himself to some cause.
@@ -311,7 +347,7 @@ swade:
     -
       name: Wanted-
       description: The character is wanted by the authorities.
-      hind_points: 2
+      hind_points: 1
     -
       name: Wanted+
       description:  The character is wanted by the authorities.
