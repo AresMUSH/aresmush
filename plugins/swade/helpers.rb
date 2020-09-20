@@ -13,7 +13,8 @@ module AresMUSH
     def self.find_iconicf_config(name)
 		return nil if !name
 		types = Global.read_config('swade', 'iconicf')
-		types.select { |a| a['name'].downcase == name.downcase }.first
+		client.emit (types)
+		#types.select { |a| a['name'].downcase == name.downcase }.first
     end
  
 	def self.set_iconicf(char, iconicf_name)
