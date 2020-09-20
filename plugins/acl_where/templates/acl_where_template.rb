@@ -70,8 +70,9 @@ module AresMUSH
 			scene_id = left("\##{scene.id}", 6)
 			if (scene.temp_room)
 			  scene_name = char.room.name.after('- ')
+			  room_id = char.room.id.after('- ')
 			  area_name = char.room.area ? "#{char.room.area.name} - " : ''
-			  return "#{scene_id}#{area_name}#{scene_name}"
+			  return "#{scene_id}#{area_name}#{scene_name}#{room_id}"
 			else
 			  # return "#{scene_id}#{Who.who_room_name(char)}"
 			  Rooms.online_chars_in_room(scene.room).each do |c|
