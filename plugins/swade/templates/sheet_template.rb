@@ -9,14 +9,15 @@ module AresMUSH
       end
 
       def iconicf_name
-		summ = @char.swade_iconicf_name
+		summ = @char.swade_iconicf
 		#summ = "#{char.swade_iconicf_name}"
 		summ
       end
   
       def attributes
         #format_two_per_line @char.swade_attributes
-        @char.swade_attributes.to_a.sort_by { |a| a.name }
+        attributes = @char.swade_attributes.to_a.sort_by { |a| a.name }
+		attributes
       end
       
       # def format_two_per_line(list)
