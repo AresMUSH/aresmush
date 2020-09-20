@@ -55,7 +55,7 @@ module AresMUSH
 					SwadeAttributes.create(name: swade_iconicf_name, setvalue: self.iconicf_name, character: model)				#enactor.update(iconicfname: self.iconicfname)
 				#client.emit_success "Iconic Framework set!"			
 				#iconicf = Swade.get_iconicf(self.enactor, self.iconicf_name)
-				if (iconicf)
+				#if (iconicf)
 					#set the iconic framework on the character
 					setattribute= "swade_iconicf_name"
 
