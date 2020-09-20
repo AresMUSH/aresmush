@@ -14,7 +14,7 @@ Below is a reference list of the commands used. See individual Help files for mo
 `iconicf/set <name>=<iconic_framework>`   - Sets your Iconic Framework
 `race/set <name>=<race>`                  - Sets your Race
 `hj/table <Hero's Journey Slot>=<table>`  - Rolls on Table for HJ
-`attribute/set <name>=<die_step>`         - Sets an Attribute to Die_Step
+`stat/set <name>=<die_step>`         - Sets an Attribute to Die_Step
 `skill/set <name>=<die_step>`             - Sets a Skill to Die_Step
 `hind/<add/rem> <name>=<hinderance_name>` - Add/Remove Hinderances
 `edge/<add/rem> <name>=<edge_name>`       - Add/Remove Edges

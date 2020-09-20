@@ -14,10 +14,10 @@ module AresMUSH
 		summ
       end
   
-      def attributes
-        #format_two_per_line @char.swade_attributes
-        attributes = @char.swade_attributes.to_a.sort_by { |a| a.name }
-		attributes
+      def stats
+        #format_two_per_line @char.swade_stats
+        stats = @char.swade_stats.to_a.sort_by { |a| a.name }
+		stats
       end
       
       # def format_two_per_line(list)

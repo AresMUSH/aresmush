@@ -1,6 +1,6 @@
 module AresMUSH    
   module Swade
-    class AttributeNewSetCmd
+    class StatNewSetCmd
       include CommandHandler
       
       attr_accessor :strength
