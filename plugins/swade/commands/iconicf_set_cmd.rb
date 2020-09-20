@@ -3,7 +3,7 @@ module AresMUSH
 		class IconicfSetCmd
 			include CommandHandler
       
-			attr_accessor :target_name, :iconicf_name
+			attr_accessor :target_name, :iconicf_name, :iconicf_attributes, :setattribute, :setvalue
 			
 		def parse_args
 			# if (cmd.args =~ /[^\/]+\=.+\/.+/)
@@ -52,10 +52,23 @@ module AresMUSH
 				#client.emit_success "Iconic Framework set!"			
 				iconicf = Swade.get_iconicf(self.enactor, self.iconicf_name)
 				if (iconicf)
+					client.emit (iconicf['attributes'])
 					iconicf_name=iconicf['name'].downcase
-					client.emit (iconicf_name)
-					enactor.update(iconicfname: self.iconicf_name)
-					client.emit_success t('swade.iconicf_set', self.iconicf_name)
+					iconicf_attributes=iconicf['attributes']
+					iconicf_attributes.each { |key, value| client.emit("k: #{key}, v: #{value}") }					
+					iconicf_attributes.each do |key, value|
+						setattribute = "swade_#{key}".chop
+						setvalue = "#{value}"
+						SwadeAttribute.create(name: self.setattribute, value: self.setvalue, character: model)
+						client.emit_success t('swade.iconicattributes_set', :name => self.setattribute)
+					end
+					
+					# client.emit (iconicf_name)
+					# client.emit (iconicf_attributes)
+					# enactor.update(swade_iconicfname: self.iconicf_name)
+					# client.emit_success t('swade.iconicf_set', :name => self.iconicf_name)
+					# enactor.update(swade_attributes: self.iconicf_attributes)
+					# client.emit_success t('swade.iconicattributes_set', :name => self.iconicf_attributes)					
 				else
 					client.emit ('nothing')
 				end
