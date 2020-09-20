@@ -23,7 +23,7 @@ module AresMUSH
 				client.emit (iconicf_exists)
 				if (iconicf_exists)
 					ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
-						swade_iconicf.create(name: self.iconicf_name, character: model)
+						swade_iconicf.set(name: self.iconicf_name, character: model)
 						    client.emit_success t('swade.iconicf_set', :name => self.iconicf_name)
 					end
 				else
