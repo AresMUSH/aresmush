@@ -3,7 +3,7 @@ module AresMUSH
 		class IconicfSetCmd
 			include CommandHandler
       
-			attr_accessor :target_name, :iconicf_name
+			attr_accessor :target_name, :iconicf_name, :iconicf_attributes
 			
 		def parse_args
 			# if (cmd.args =~ /[^\/]+\=.+\/.+/)
@@ -54,9 +54,8 @@ module AresMUSH
 				if (iconicf)
 					client.emit (iconicf['attributes'])
 					iconicf_name=iconicf['name'].downcase
-					#iconicf_attributes=iconicf['attributes'].downcase
+					iconicf_attributes=iconicf['attributes'].downcase
 					client.emit (iconicf_name)
-					client.emit '%r%R'
 					client.emit (iconicf_attributes)
 					enactor.update(swade_iconicfname: self.iconicf_name)
 					client.emit_success t('swade.iconicf_set', :name => self.iconicf_name)
