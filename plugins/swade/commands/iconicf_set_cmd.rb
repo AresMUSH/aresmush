@@ -14,7 +14,7 @@ module AresMUSH
 			# else
 			# args = cmd.parse_args(ArgParser.arg1)
 			  self.target_name = enactor_name
-			  self.iconicf_name = cmd.args ? titlecase_arg(cmd.args)
+			  self.iconicf_name = cmd.args ? titlecase_arg(cmd.args) :
 			# end
 		end
 
