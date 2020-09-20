@@ -67,9 +67,9 @@ module AresMUSH
         scene = char.room.scene
         status  = Website.activity_status(char)
         if (scene)
-          if (scene.private_scene)
-            return "      #{t('who.private_scene')}"
-          else
+          #if (scene.private_scene)
+          #  return "      #{t('who.private_scene')}"
+          #else
             scene_id = left("\##{scene.id}", 6)
             if (scene.temp_room)
               scene_name = char.room.name.after('- ')
@@ -78,7 +78,7 @@ module AresMUSH
             else
               return "#{scene_id}#{Who.who_room_name(char)}"
             end
-          end
+          #end
         elsif (status == 'web-inactive' || status == 'web-active')
           return "      #{t('who.web_room')}"
         else 
@@ -91,7 +91,7 @@ module AresMUSH
         groups = {}
         groups['private'] = {}
         groups['open'] = {}
-        groups['ooc'] = {}
+        groups['ooc'] = {} #try to catch people who are in OOC areas
         
         self.online_chars.each do |c|
           scene = c.room.scene

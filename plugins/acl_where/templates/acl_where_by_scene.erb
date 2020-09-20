@@ -1,7 +1,6 @@
 <%= header %>
 <%= center( mush_name, 78 ) %>
 <%= section_line t('who.where_open_scene_header') %>
-%xhTesting new command %xn
 
 %xh<%= t('rooms.areas_title') %>%xn
 <% scene_groups['open'].each do |room, people| %>
@@ -14,13 +13,11 @@
 <% end %>
 
 <%= section_line ("New Closed") %>
-New Stuff here %r%r
 <% scene_groups['private'].each do |room, people| %>
 %xh<%= left( room, 40 ) %>%xn <%= people.sort.join(", ") %>
 <% end %>
 
 <%= section_line ("OOC") %>
-New Stuff here %r%r
 <% scene_groups['ooc'].sort_by { |room, people | room }.each do |room, people| %>
 %xh<%= left( room, 40 ) %>%xn <%= people.sort.join(", ") %>
 <% end %>
