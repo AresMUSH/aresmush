@@ -26,10 +26,10 @@ module AresMUSH
 				ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|        
 				  
 					if (self.iconicf_name.blank?)
-						char.update(swade_iconicf: nil)
+						model.update(swade_iconicf: nil)
 						client.emit_success t('swade.iconicf_cleared', :name => self.iconicf_name.capitalize)
 					else
-						char.update(swade_iconicf: self.iconicf_name.capitalize)
+						model.update(swade_iconicf: nil)
 						client.emit_success t('swade.iconicf_set', :name => self.iconicf_name.capitalize)
 					end
 					
