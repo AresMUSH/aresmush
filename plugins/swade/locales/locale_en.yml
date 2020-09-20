@@ -42,8 +42,8 @@ en:
         sheet_title: "Character Sheet for %{name}."
         
         iconicf_types_title: "Iconic Frameworks"
-        iconicf_invalid: "There is no Iconic Framework called %{name}."
-        iconicf_valid: "Iconic Framework called %{name} is valid."
+        iconicf_invalid_name: "There is no Iconic Framework named %{name}."
+        iconicf_valid_name: "Iconic Framework named %{name} is valid."
         iconicf_invalid_type: "Invalid Iconic Framework Type %{name}."
         iconicf_cleared: "Iconic Framework %{name} removed."
         iconicf_set: "You set your Iconic Framework to %{name}."

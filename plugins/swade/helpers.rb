@@ -3,7 +3,13 @@ module AresMUSH
     def self.die_steps
       [ 'd2', 'd4', 'd6', 'd8', 'd10', 'd12', 'd12+d2', 'd12+d4', 'd12+d6', 'd12+d8', 'd12+d10', 'd12+d12' ]
     end
-        
+ 
+    def self.is_iconicf_valid_name?(name)
+      return false if !name
+      names = Global.read_config('Swade', 'iconicf').map { |a| a['name'].downcase }
+      names.include?(name.downcase)
+    end
+ 
     def self.is_valid_die_step?(step)
       Swade.die_steps.include?(step)
     end
