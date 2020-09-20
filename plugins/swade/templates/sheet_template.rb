@@ -23,6 +23,7 @@ module AresMUSH
 				title = left("#{ a.name }:", 15)
 				rating = left(a.rating, 20)
 				"#{linebreak}%xh#{title}%xn #{rating}"
+			end
       end
       
       # def format_two_per_line(list)
