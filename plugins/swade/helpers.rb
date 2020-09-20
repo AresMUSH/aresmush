@@ -6,7 +6,7 @@ module AresMUSH
  
     def self.is_iconicf_valid_name?(name)
       return false if !name
-      names = Global.read_config('Swade', 'iconicf').map { |a| a['name'].downcase }
+      names = Global.read_config('swade', 'iconicf').map { |a| a['name'].downcase }
       names.include?(name.downcase)
     end
  
@@ -16,7 +16,7 @@ module AresMUSH
     
     def self.is_valid_attribute_name?(name)
       return false if !name
-      names = Global.read_config('Swade', 'attributes').map { |a| a['name'].downcase }
+      names = Global.read_config('swade', 'attributes').map { |a| a['name'].downcase }
       names.include?(name.downcase)
     end
     
