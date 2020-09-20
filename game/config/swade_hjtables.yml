@@ -1,0 +1,16 @@
+---
+swade:
+    hjtables:
+        -
+            name: Shifter
+            hjtables:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
