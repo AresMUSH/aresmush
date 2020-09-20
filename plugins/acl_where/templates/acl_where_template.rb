@@ -73,7 +73,13 @@ module AresMUSH
 			  area_name = char.room.area ? "#{char.room.area.name} - " : ''
 			  return "#{scene_id}#{area_name}#{scene_name}"
 			else
-			  return "#{scene_id}#{Who.who_room_name(char)}"
+			  # return "#{scene_id}#{Who.who_room_name(char)}"
+			  Rooms.online_chars_in_room(scene.room).each do |c|
+				  if (!participants.include?(c))
+					participants << c
+				  end
+			  end
+			  return participants
 			end
         elsif (status == 'web-inactive' || status == 'web-active')
           #return "      #{t('who.web_room')}"
