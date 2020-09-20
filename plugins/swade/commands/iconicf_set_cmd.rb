@@ -51,7 +51,7 @@ module AresMUSH
 				client.emit ("Hello World2")
 				#enactor.update(iconicfname: self.iconicfname)
 				#client.emit_success "Iconic Framework set!"			
-				iconicf = Swade.set_iconicf(self.iconicf_name)
+				iconicf = Swade.set_iconicf(enactor, self.iconicf_name)
         
 				#if (!iconicf)
 				#client.emit_failure t('swade.iconicf_invalid_type')
