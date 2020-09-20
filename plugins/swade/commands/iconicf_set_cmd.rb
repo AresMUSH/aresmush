@@ -54,7 +54,8 @@ module AresMUSH
 				if (iconicf)
 					client.emit (iconicf['attributes'])
 					iconicf_name=iconicf['name'].downcase
-					iconicf_attributes=iconicf['attributes'].join(",")
+					iconicf_attributes=iconicf['attributes']
+					iconicf_attributes = iconicf_attributes.join(",")
 					client.emit (iconicf_name)
 					client.emit (iconicf_attributes)
 					enactor.update(swade_iconicfname: self.iconicf_name)
