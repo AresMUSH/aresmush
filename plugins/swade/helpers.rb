@@ -15,6 +15,11 @@ module AresMUSH
 		types = Global.read_config('swade', 'iconicf')
 		types.select { |a| a['name'].downcase == name.downcase }.first
     end
+
+    def self.find_iconicf(model, iconicf_name)
+      name_downcase = iconicf_name.downcase
+      model.swade_iconicf.select { |a| a.name.downcase == name_downcase }.first
+    end
  
 	def self.get_iconicf(char, iconicf_name)
 		charac = Swade.find_iconicf_config(iconicf_name)
