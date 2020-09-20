@@ -12,9 +12,9 @@ module AresMUSH
 			  # self.ability_name = titlecase_arg(args.arg2)
 			  # self.rating = trim_arg(args.arg3)
 			# else
-			  args = cmd.parse_args(ArgParser.arg1)
+			#  args = cmd.parse_args(ArgParser.arg1_equals_arg2)
 			  self.target_name = enactor_name
-			  self.iconicf_name = titlecase_arg(args.arg1)
+			  self.iconicf_name = titlecase_arg(args)
 			# end
 		end
 
