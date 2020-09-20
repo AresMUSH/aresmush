@@ -69,9 +69,9 @@ module AresMUSH
         if (scene)
 			scene_id = left("\##{scene.id}", 6)
 			if (scene.temp_room)
-			  scene_name = char.room.name.after('- ')
+			  scene_name = char.room.name.after('-fff ')
 			  room_id = char.room.id.after('- ')
-			  area_name = char.room.area ? "#{char.room.area.name} - " : ''
+			  area_name = char.room.area ? "#{char.room.area.name} -ggg " : ''
 			  return "#{scene_id}#{area_name}#{scene_name}#{room_id}"
 			else
 			  # return "#{scene_id}#{Who.who_room_name(char)}"
