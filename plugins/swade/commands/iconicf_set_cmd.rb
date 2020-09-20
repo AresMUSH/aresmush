@@ -57,7 +57,7 @@ module AresMUSH
 					setattribute= "swade_iconicf_name"
 					ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
 						SwadeAttribute.create(name: self.setattribute, value: self.iconicf_name, character: model)
-						    model.update(swade_iconicf_name: self.iconicf_name)
+						    model.update(swade_iconicf_name)
 							client.emit_success t('swade.iconicf_set', :name => self.iconicf_name)
 					end				
 					client.emit (iconicf['attributes'])
@@ -65,14 +65,14 @@ module AresMUSH
 					iconicf_attributes=iconicf['attributes']
 					iconicf_attributes.each { |key, value| client.emit("k: #{key}, v: #{value}") }					
 					iconicf_attributes.each do |key, value|
-					setattribute = "swade_#{key}"
-					client.emit (setattribute)
-					setvalue = "#{value}"
-					ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
-						SwadeAttribute.create(name: self.setattribute, value: self.setvalue, character: model)
-					    model.update(swade_setvalue: self.setvalue)
-						client.emit_success t('swade.iconicattributes_set', :name => setattribute)
-					end
+						setattribute = "swade_#{key}"
+						client.emit (setattribute)
+						setvalue = "#{value}"
+						ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
+							SwadeAttribute.create(name: self.setattribute, value: self.setvalue, character: model)
+							model.update(swade_setattribute: self.setvalue)
+							client.emit_success t('swade.iconicattributes_set', :name => setattribute)
+						end
 				end
 					
 					# client.emit (iconicf_name)
