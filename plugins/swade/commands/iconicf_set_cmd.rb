@@ -29,7 +29,8 @@ module AresMUSH
 						model.update(swade_iconicf: nil)
 						client.emit_success t('swade.iconicf_cleared', :name => self.iconicf_name.capitalize)
 					else
-						self.target.update(swade_iconicf: self.iconicf_name)
+						client.emit (model)
+						# model.update(swade_iconicf: self.iconicf_name)
 						client.emit_success t('swade.iconicf_set', :name => self.iconicf_name.capitalize)
 					end
 					
