@@ -58,6 +58,7 @@ module AresMUSH
           location: location, 
           private_scene: private_scene,
           scene_type: scene_type,
+          scene_pacing: Scenes.scene_pacing.first,
           temp_room: temp_room,
           last_activity: Time.now,
           icdate: ICTime.ictime.strftime("%Y-%m-%d"))
