@@ -50,7 +50,7 @@ module AresMUSH
 			
 			def handle  
 				ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
-					attr = Swade.find_iconicf(model, self.iconcf_name)
+					attr = Swade.find_iconicf(model, self.iconicf_name)
 					client.emit (attr)
 					SwadeAttributes.create(name: swade_iconicf_name, setvalue: self.iconicf_name, character: model)				#enactor.update(iconicfname: self.iconicfname)
 				#client.emit_success "Iconic Framework set!"			
