@@ -4,16 +4,16 @@ swade:
         -
             name: Shifter
             attributes:
-                Agility: 1
-                Smarts: 1
-                Spirit: 1
-                Strength: 1
-                Vigor: 1
+            - Agility: 1
+            - Smarts: 1
+            - Spirit: 1
+            - Strength: 1
+            - Vigor: 1
         -   
             name: Mystic
             attributes:
-                Agility: 1
-                Smarts: 1
-                Spirit: 1
-                Strength: 1
-                Vigor: 1
+            - Agility: 1
+            - Smarts: 1
+            - Spirit: 1
+            - Strength: 1
+            - Vigor: 1
