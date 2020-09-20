@@ -27,16 +27,16 @@ module AresMUSH
 				return nil
 			end
 		  
-			def check_can_set
-				return nil if enactor_name == self.target_name
-				return nil if Swade.can_manage_abilities?(enactor)
-				return t('dispatcher.not_allowed')
-			end     
+			# def check_can_set
+				# return nil if enactor_name == self.target_name
+				# return nil if Swade.can_manage_abilities?(enactor)
+				# return t('dispatcher.not_allowed')
+			# end     
 		  
-			def check_chargen_locked
-				return nil if Swade.can_manage_abilities?(enactor)
-				Chargen.check_chargen_locked(enactor)
-			end
+			# def check_chargen_locked
+				# return nil if Swade.can_manage_abilities?(enactor)
+				# Chargen.check_chargen_locked(enactor)
+			# end
       
 			def handle
 				ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
