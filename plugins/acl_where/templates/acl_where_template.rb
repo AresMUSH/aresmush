@@ -32,6 +32,7 @@ module AresMUSH
 		  [ objects ].each do |list|
 			list.each do |a|
 				listitem = "#{self.listitem} - #{a.name} (#A-#{a.id}%r"
+				client.emit (listitem)
 			end
 		  end
 		  return "#{listitem}"
