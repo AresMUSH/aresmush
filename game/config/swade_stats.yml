@@ -1,6 +1,6 @@
 ---
 swade:
-    attributes:
+    stats:
     -
       name: Agility
       description: Nimbleness, dexterity, and general coordination.
