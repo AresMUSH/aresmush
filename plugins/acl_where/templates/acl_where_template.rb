@@ -64,7 +64,7 @@ module AresMUSH
       end  
       
       def scene_room_name(char)
-	    return "#{char.inspect}"
+	    return "#{char}"
         scene = char.room.scene
         status  = Website.activity_status(char)
         if (scene)
@@ -102,7 +102,7 @@ module AresMUSH
           scene = c.room.scene
           room = scene_room_name(c)
           name = name(c)
-
+		  return "#{room}"
           if (c.who_hidden)
             append_to_group(groups['private'],  "      #{t('who.hidden')}", name)
           elsif (scene)
