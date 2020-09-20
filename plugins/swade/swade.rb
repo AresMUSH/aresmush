@@ -14,7 +14,9 @@ module AresMUSH
     def self.get_cmd_handler(client, cmd, enactor)
       case cmd.root
       when "iconicf"
-        if (cmd.switch_is?("set"))
+	    case cmd.switch
+        #if (cmd.switch_is?("set"))
+		when set
           return IconicfSetCmd
         else
           return IconicfCmd
