@@ -2,6 +2,8 @@
 <%= center( mush_name, 78 ) %>
 <%= section_line t('who.where_open_scene_header') %>
 
+<%= scene_groups['open'] %>
+
 %xh<%= t('rooms.areas_title') %>%xn
 <% scene_groups['open'].each do |room, people| %>
 %xh<%= left( room, 40 ) %>%xn <%= people.sort.join(", ") %>
