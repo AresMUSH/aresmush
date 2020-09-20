@@ -73,6 +73,8 @@ module AresMUSH
 							SwadeAttribute.create(name: self.setattribute, value: self.setvalue, character: model)
 							model.update(swade_setattribute: self.setvalue)
 							client.emit_success t('swade.iconicattributes_set', :name => setattribute)
+							client.emit (setattribute)
+							client.emit (setvalue)
 						end
 				end
 					
