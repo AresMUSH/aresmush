@@ -6,7 +6,7 @@ module AresMUSH
 #	collection :swade_hinderances, "AresMUSH::SwadeHinderances"
 #	collection :swade_edges, "AresMUSH::SwadeEdges"
 #	collection :swade_powers, "AresMUSH::SwadePowers"
-#	collection :swade_iconicf, "AresMUSH::SwadeIconicf"
+	collection :swade_iconicf, "AresMUSH::SwadeIconicf"
 
 	attribute :swade_iconicf_name
 
