@@ -10,6 +10,11 @@ module AresMUSH
 
 	attribute :swade_iconicf_name
 	attribute :swade_iconicf_attributes
+	attribute :swade_agility
+	attribute :swade_strength
+	attribute :swade_vigor
+	attribute :swade_smarts
+	attribute :swade_spirit
 
 #--- This is called in commands\reset_cmd.rb and public\cortex_model.rb     
 #    before_delete :delete_cortex_abilities
