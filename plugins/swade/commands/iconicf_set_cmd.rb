@@ -66,12 +66,13 @@ module AresMUSH
 					iconicf_attributes.each { |key, value| client.emit("k: #{key}, v: #{value}") }					
 					iconicf_attributes.each do |key, value|
 						setattribute = "swade_#{key}".downcase
+						swade_setattribute=(setattribute)
 						client.emit (setattribute)
 						setvalue = "#{value}"
 						client.emit (setvalue)
 						ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
 							SwadeAttribute.create(name: self.setattribute, value: self.setvalue, character: model)
-							model.update(swade_setattribute: self.setvalue)
+							model.update(self.swade_setattribute: self.setvalue)
 							client.emit_success t('swade.iconicattributes_set', :name => setattribute)
 						end
 				end
