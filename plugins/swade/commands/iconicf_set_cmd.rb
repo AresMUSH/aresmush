@@ -23,7 +23,7 @@ module AresMUSH
 				client.emit (iconicf_exists)
 				client.emit ("----- Start if statement")
 
-				ClassTargetFinder.with_a_character(self.name, client, enactor) do |model|        
+				ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|        
 				  
 					if (self.iconicf_name.blank?)
 						model.update(swade_iconicf: nil)
