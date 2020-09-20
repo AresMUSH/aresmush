@@ -23,7 +23,6 @@ module AresMUSH
         end
       when "sheet"
         return SheetCmd
-      end
 	  when "swade_reset"
         return ResetCmd
       end
