@@ -7,7 +7,9 @@ module AresMUSH
 #	collection :swade_edges, "AresMUSH::SwadeEdges"
 #	collection :swade_powers, "AresMUSH::SwadePowers"
 
-    before_delete :delete_swade_chargen
+    attribute :swade_iconicf
+	
+	before_delete :delete_swade_chargen
     
     def delete_swade_chargen
       [ self.swade_stats, self.swade_iconicf ].each do |list|

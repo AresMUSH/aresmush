@@ -19,8 +19,12 @@ module AresMUSH
 				client.emit (self.target)
 				client.emit (self.iconicf_name)
 				client.emit ("-----")
-				verified_iconicf = Swade.get_iconicf(self.enactor, self.iconicf_name)
-				client.emit (verified_iconicf)
+				iconicf_exists = Swade.get_iconicf(self.enactor, self.iconicf_name)
+				client.emit (iconicf_exists)
+				if (iconicf_exists)
+					ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
+						iconicf.create(name: self.iconicf_name, character: model)
+						    client.emit_success t('swade.iconicf_set', :name => self.iconicf_name)
 			end
 		end
     end
