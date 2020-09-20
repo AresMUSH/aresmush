@@ -24,7 +24,7 @@ module AresMUSH
         
         topics = Help.find_quickref(search_topic)
 
-        if (topics.count == 0)
+        if (topics.empty?)
           client.emit_failure t('help.not_found', :topic => self.topic)          
           return
         end
@@ -42,6 +42,11 @@ module AresMUSH
           if (!matching_lines.empty?)
             list.concat matching_lines
           end    
+        end
+        
+        if (list.empty?)
+          client.emit_failure t('help.not_found', :topic => self.topic)          
+          return
         end
         
         help_url = Help.topic_url('')
