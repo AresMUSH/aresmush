@@ -37,9 +37,9 @@ module AresMUSH
 						end
 					end
 				end
-				else
-					client.emit_failure t('swade.iconicf_invalid_name', :name=> self.iconicf_name.capitalize)
-				end
+				# else
+					# client.emit_failure t('swade.iconicf_invalid_name', :name=> self.iconicf_name.capitalize)
+				# end
 			end
 		end
     end
