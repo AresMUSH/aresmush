@@ -7,7 +7,7 @@ module AresMUSH
 #	collection :swade_edges, "AresMUSH::SwadeEdges"
 #	collection :swade_powers, "AresMUSH::SwadePowers"
 
-    attribute :swade_iconicf
+    attribute :swade_iconicf, :type => DataType::Hash, :default => {}
 	
 	before_delete :delete_swade_chargen
     
