@@ -7,7 +7,7 @@ module AresMUSH
 #	collection :swade_edges, "AresMUSH::SwadeEdges"
 #	collection :swade_powers, "AresMUSH::SwadePowers"
 
-    before_delete :delete_cortex_abilities
+    before_delete :delete_swade_chargen
     
     def delete_swade_chargen
       [ self.swade_attributes ].each do |list|
@@ -18,18 +18,6 @@ module AresMUSH
 		end
 	end
 
-#--- This is called in commands\reset_cmd.rb and public\cortex_model.rb     
-#    before_delete :delete_cortex_abilities
-#   
-#    def delete_cortex_abilities
-#      [ self.swade_attributes ].each do |list|
-#        list.each do |a|
-#          a.delete
-#        end
-#      end
-#    end
-	end
-  
 	class SwadeAttributes < Ohm::Model
 		include ObjectModel
     
