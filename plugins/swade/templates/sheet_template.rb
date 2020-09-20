@@ -10,7 +10,7 @@ module AresMUSH
 
       def summary
         # summ = @char.swade_iconicf
-		summ = "#{char.swade_iconicf}"
+		summ = "#{char.swade_iconicf_name}"
 		summ
       end
   
