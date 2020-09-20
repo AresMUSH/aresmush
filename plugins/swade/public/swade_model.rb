@@ -29,6 +29,15 @@ module AresMUSH
 		attribute :rating, :type => DataType::Integer
 		reference :character, "AresMUSH::Character"
 		index :name
+	end	
+	
+	class SwadeIconicf < Ohm::Model
+		include ObjectModel
+    
+		attribute :name
+		attribute :rating, :type => DataType::Integer
+		reference :character, "AresMUSH::Character"
+		index :name
 	end
   
     # class SwadeSkills < Ohm::Model
