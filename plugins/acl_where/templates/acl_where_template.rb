@@ -91,6 +91,7 @@ module AresMUSH
         groups = {}
         groups['private'] = {}
         groups['open'] = {}
+        groups['ooc'] = {}
         
         self.online_chars.each do |c|
           scene = c.room.scene
@@ -106,7 +107,7 @@ module AresMUSH
               append_to_group(groups['open'], room, name)
             end
           else
-            append_to_group(groups['private'], room, name)
+            append_to_group(groups['ooc'], room, name)
           end
         end
         groups
