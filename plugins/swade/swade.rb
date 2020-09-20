@@ -25,7 +25,7 @@ module AresMUSH
         return SheetCmd
       end
 	  when "swade_reset"
-        return reset_cmd
+        return ResetCmd
       end
       return nil
     end
