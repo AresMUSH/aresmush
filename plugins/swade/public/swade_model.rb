@@ -10,7 +10,7 @@ module AresMUSH
     before_delete :delete_swade_chargen
     
     def delete_swade_chargen
-      [ self.swade_attributes ].each do |list|
+      [ self.swade_attributes, self.swade_iconicf ].each do |list|
 			list.each do |a|
 				a.delete
 				end
