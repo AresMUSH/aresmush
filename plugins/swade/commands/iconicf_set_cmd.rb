@@ -29,7 +29,7 @@ module AresMUSH
 						model.update(swade_iconicf: nil)
 						client.emit_success t('swade.iconicf_cleared')
 					else
-						error = Swade.set(model, self.iconicf_name, enactor)
+						error = Swade.set_iconicf_name(model, self.iconicf_name, enactor)
 						if (error)
 							client.emit_failure error
 						else
