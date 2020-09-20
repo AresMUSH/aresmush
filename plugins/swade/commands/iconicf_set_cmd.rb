@@ -60,7 +60,7 @@ module AresMUSH
 					enactor.update(swade_iconicfname: self.iconicf_name)
 					client.emit_success t('swade.iconicf_set', :name => self.iconicf_name)
 					enactor.update(swade_attributes: self.iconicf_attributes)
-					client.emit_success t('swade.iconicf_set', :name => self.iconicf_attributes)					
+					client.emit_success t('swade.iconicattributes_set', :name => self.iconicf_attributes)					
 				else
 					client.emit ('nothing')
 				end
