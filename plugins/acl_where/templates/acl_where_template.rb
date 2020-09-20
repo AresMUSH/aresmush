@@ -79,7 +79,7 @@ module AresMUSH
 					participants << c
 				  end
 			  end
-			  return participants
+			  return "#{participants}"
 			end
         elsif (status == 'web-inactive' || status == 'web-active')
           #return "      #{t('who.web_room')}"
