@@ -64,7 +64,7 @@ module AresMUSH
       end  
       
       def scene_room_name(char)
-	    return "#{char.room.scene}"
+	    return "#{char.inspect}"
         scene = char.room.scene
         status  = Website.activity_status(char)
         if (scene)
