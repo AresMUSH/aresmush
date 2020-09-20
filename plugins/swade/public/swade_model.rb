@@ -8,8 +8,8 @@ module AresMUSH
 #	collection :swade_powers, "AresMUSH::SwadePowers"
 	collection :swade_iconicf, "AresMUSH::SwadeIconicf"
 
-	attribute :iconicf_name
-	attribute :iconicf_attributes
+	attribute :swade_iconicf_name
+	attribute :swade_iconicf_attributes
 
 #--- This is called in commands\reset_cmd.rb and public\cortex_model.rb     
 #    before_delete :delete_cortex_abilities
