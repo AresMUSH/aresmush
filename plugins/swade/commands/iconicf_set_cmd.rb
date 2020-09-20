@@ -55,7 +55,7 @@ module AresMUSH
 					client.emit (iconicf['attributes'])
 					iconicf_name=iconicf['name'].downcase
 					iconicf_attributes=iconicf['attributes']
-					iconicf_attributes.each { |key, value| puts "k: #{key}, v: #{value}" }					
+					iconicf_attributes.each { |key, value| client.emit("k: #{key}, v: #{value}") }					
 					
 					# client.emit (iconicf_name)
 					# client.emit (iconicf_attributes)
