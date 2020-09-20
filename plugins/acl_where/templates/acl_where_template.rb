@@ -81,7 +81,7 @@ module AresMUSH
           #end
         elsif (status == 'web-inactive' || status == 'web-active')
           #return "      #{t('who.web_room')}"
-          return "       #{Who.who_room_name(char)}"
+          return "#{scene_id}#{area_name}#{scene_name}"
         else 
           return "      #{Who.who_room_name(char)}"
         end
