@@ -1,7 +1,7 @@
 module AresMUSH
   class Character < Ohm::Model
 #----- These are in aresmush\game\config and are the YML files
-    collection :swade_attributes, "AresMUSH::SwadeAttributes"
+    collection :swade_stats, "AresMUSH::SwadeStats"
 #	collection :swade_skills, "AresMUSH::SwadeSkills"
 #	collection :swade_hinderances, "AresMUSH::SwadeHinderances"
 #	collection :swade_edges, "AresMUSH::SwadeEdges"
@@ -10,7 +10,7 @@ module AresMUSH
     before_delete :delete_swade_chargen
     
     def delete_swade_chargen
-      [ self.swade_attributes, self.swade_iconicf ].each do |list|
+      [ self.swade_stats, self.swade_iconicf ].each do |list|
 			list.each do |a|
 				a.delete
 				end
@@ -18,7 +18,7 @@ module AresMUSH
 		end
 	end
 
-	class SwadeAttributes < Ohm::Model
+	class SwadeStats < Ohm::Model
 		include ObjectModel
     
 		attribute :name

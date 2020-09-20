@@ -2,11 +2,11 @@
 <%= t('swade.sheet_title', :name => char.name) %>
 %xh<%= left( t('swade.iconicf_title'), 20 ) %>%xn <%= left( iconicf_name, 30 ) %>
 
-<%= attributes %>
+<%= stats %>
 
-<%= line_with_text t('swade.attributes_title') -%>
+<%= line_with_text t('swade.stats_title') -%>
 
-<% attributes.each do |a| -%>
+<% stats.each do |a| -%>
 <%= a -%>
 <% end %>
 

@@ -3,7 +3,7 @@ module AresMUSH
 		class IconicfSetCmd
 			include CommandHandler
       
-			attr_accessor :target, :iconicf_name, :iconicf_attributes, :setattribute, :setvalue
+			attr_accessor :target, :iconicf_name, :iconicf_stats, :setstat, :setvalue
 			
 		def parse_args
 			# if (cmd.args =~ /[^\/]+\=.+\/.+/)
@@ -54,34 +54,34 @@ module AresMUSH
 				iconicf = Swade.get_iconicf(self.enactor, self.iconicf_name)
 				if (iconicf)
 					#set the iconic framework on the character
-					setattribute= "swade_iconicf_name"
+					setstat= "swade_iconicf_name"
 					ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
-						SwadeAttributes.create(name: self.setattribute, setvalue: self.iconicf_name, character: model)
+						SwadeAttributes.create(name: self.setstat, setvalue: self.iconicf_name, character: model)
 						    #model.update(swade_iconicf_name: self.iconicf_name)
 							client.emit_success t('swade.iconicf_set', :name => self.iconicf_name)
 					end				
-					client.emit (iconicf['attributes'])
+					client.emit (iconicf['stats'])
 					iconicf_name=iconicf['name']
-					iconicf_attributes=iconicf['attributes']
-					iconicf_attributes.each { |key, value| client.emit("k: #{key}, v: #{value}") }					
-					iconicf_attributes.each do |key, value|
-						setattribute = "swade_#{key}".downcase
+					iconicf_stats=iconicf['stats']
+					iconicf_stats.each { |key, value| client.emit("k: #{key}, v: #{value}") }					
+					iconicf_stats.each do |key, value|
+						setstat = "swade_#{key}".downcase
 						setvalue = "#{value}"
 						ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
-							SwadeAttributes.create(name: self.setattribute, setvalue: self.setvalue, character: model)
-							#model.update(setattribute: self.setvalue)
-							client.emit_success t('swade.iconicattributes_set', :name => setattribute)
-							client.emit (setattribute)
+							SwadeAttributes.create(name: self.setstat, setvalue: self.setvalue, character: model)
+							#model.update(setstat: self.setvalue)
+							client.emit_success t('swade.iconicstats_set', :name => setstat)
+							client.emit (setstat)
 							client.emit (setvalue)
 						end
 				end
 					
 					# client.emit (iconicf_name)
-					# client.emit (iconicf_attributes)
+					# client.emit (iconicf_stats)
 					# enactor.update(swade_iconicfname: self.iconicf_name)
 					# client.emit_success t('swade.iconicf_set', :name => self.iconicf_name)
-					# enactor.update(swade_attributes: self.iconicf_attributes)
-					# client.emit_success t('swade.iconicattributes_set', :name => self.iconicf_attributes)					
+					# enactor.update(swade_stats: self.iconicf_stats)
+					# client.emit_success t('swade.iconicstats_set', :name => self.iconicf_stats)					
 				else
 					client.emit ('nothing')
 				end
