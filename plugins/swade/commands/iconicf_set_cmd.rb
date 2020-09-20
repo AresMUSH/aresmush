@@ -25,6 +25,10 @@ module AresMUSH
 					ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
 						iconicf.create(name: self.iconicf_name, character: model)
 						    client.emit_success t('swade.iconicf_set', :name => self.iconicf_name)
+					end
+				else
+					client.emit ('errrrrrrror')
+				end
 			end
 		end
     end
