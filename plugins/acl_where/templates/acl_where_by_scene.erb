@@ -4,11 +4,6 @@
 %xhTesting new command %xn
 
 %xh<%= t('rooms.areas_title') %>%xn
-
-<% top_level_areas.each do |a| %>
-<%= a.name %> (#A-<%= a.id %>) <%= acl_list_rooms(a, '**') %>
-<% end %>
-
 <% scene_groups['open'].each do |room, people| %>
 %xh<%= left( room, 40 ) %>%xn <%= people.sort.join(", ") %>
 <% end %>
@@ -18,18 +13,10 @@
 %xh<%= left( room, 40 ) %>%xn <%= people.sort.join(", ") %>
 <% end %>
 
-<%= section_line t('who.where_private_scene_header') %>
+<%= section_line ("Hellow") %>
 New Stuff here %r%r
 <% scene_groups['ooc'].sort_by { |room, people | room }.each do |room, people| %>
 %xh<%= left( room, 40 ) %>%xn <%= people.sort.join(", ") %>
-<% end %>
-<%= divider %>
-
-
-<%= divider %>
-%xh%x!<%= t('who.where_by_room_header') %>%xn
-<% room_groups.each do |room, people| %>
-%xh<%= left( room, 35 ) %>%xn <%= people.sort.join(", ") %>
 <% end %>
 <%= divider %>
 
