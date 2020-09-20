@@ -7,6 +7,11 @@ module AresMUSH
         @char = char
         super File.dirname(__FILE__) + "/sheet.erb"
       end
+
+      def summary
+        summ = "#{char.swade_iconicf}"
+        summ
+      end
   
       def attrs
         format_two_per_line @char.Swade_attributes
