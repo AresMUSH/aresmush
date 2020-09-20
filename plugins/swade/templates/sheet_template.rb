@@ -17,7 +17,6 @@ module AresMUSH
       def attributes
         #format_two_per_line @char.swade_attributes
         @char.swade_attributes.select { |k, v| v['setting'] == '+' }.sort
-			end
       end
       
       # def format_two_per_line(list)
