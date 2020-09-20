@@ -43,6 +43,7 @@ en:
         # ------------------------------------------------------
         
         sheet_title: "Character Sheet for %{name}."
+        iconicframe: "%{name}"
         
         iconicf_types_title: "Iconic Frameworks"
         iconicf_invalid_name: "There is no Iconic Framework named %{name}."
