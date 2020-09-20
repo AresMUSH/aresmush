@@ -13,6 +13,12 @@
 %xh<%= left( room, 40 ) %>%xn <%= people.sort.join(", ") %>
 <% end %>
 
+<%= section_line ("New Closed") %>
+New Stuff here %r%r
+<% scene_groups['private'].each do |room, people| %>
+%xh<%= left( room, 40 ) %>%xn <%= people.sort.join(", ") %>
+<% end %>
+
 <%= section_line ("OOC") %>
 New Stuff here %r%r
 <% scene_groups['ooc'].sort_by { |room, people | room }.each do |room, people| %>
