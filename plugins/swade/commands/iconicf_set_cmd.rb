@@ -60,8 +60,9 @@ module AresMUSH
 						    model.update(swade_iconicf_name: self.iconicf_name)
 							client.emit_success t('swade.iconicf_set', :name => self.iconicf_name)
 					end				
-					client.emit (iconicf['attributes'].downcase)
+					client.emit (iconicf['attributes'])
 					iconicf_name=iconicf['name'].downcase
+					client.emit (iconicf['name'])
 					iconicf_attributes=iconicf['attributes']
 					iconicf_attributes.each { |key, value| client.emit("k: #{key}, v: #{value}") }					
 					iconicf_attributes.each do |key, value|
