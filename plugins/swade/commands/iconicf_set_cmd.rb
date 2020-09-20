@@ -39,13 +39,13 @@ module AresMUSH
 				# Chargen.check_chargen_locked(enactor)
 			# end
       
-			def handle
-				client.emit ("Hello World")
-				ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-				config = Swade.find_iconicf_config(model.swade_iconicf)
-				Swade.set_iconicf(model, self.iconicf_name)
-				client.emit_success t('swade.iconicf_set')
-			end
+			#def handle
+				#client.emit ("Hello World")
+				#ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
+				#config = Swade.find_iconicf_config(model.swade_iconicf)
+				#Swade.set_iconicf(model, self.iconicf_name)
+				#client.emit_success t('swade.iconicf_set')
+			#end
 			
 			def handle  
 				client.emit ("Hello World2")
@@ -53,31 +53,30 @@ module AresMUSH
 				#client.emit_success "Iconic Framework set!"			
 				iconicf = Swade.get_iconicf(self.iconicf_name)
         
-				if (!iconicf)
-				client.emit_failure t('swade.iconicf_invalid_type')
-				return
-				end
+				#if (!iconicf)
+				#client.emit_failure t('swade.iconicf_invalid_type')
+				#return
+				#end
         
-				values = iconicf['values']
-				if (self.value && values)
-					self.value = values.keys.find { |v| v.downcase == self.value.downcase }
-					if (!self.value)
-						client.emit_failure t('swade.iconicf_invalid', :iconicf => self.iconicf_name)
-						return
-					end
-				end
+				#values = iconicf['values']
+				#if (self.value && values)
+					#self.value = values.keys.find { |v| v.downcase == self.value.downcase }
+					#if (!self.value)
+						#client.emit_failure t('swade.iconicf_invalid', :iconicf => self.iconicf_name)
+						#return
+					#end
+				#end
         
-				ClassTargetFinder.with_a_character(self.name, client, enactor) do |model|
-					Swade.set_iconicf(model, self.iconicf_name, self.value)
+				#ClassTargetFinder.with_a_character(self.name, client, enactor) do |model|
+					#Swade.set_iconicf(model, self.iconicf_name, self.value)
                     
-					if (!self.value)
-						client.emit_success t('swade.iconicf_cleared', :iconicf => self.iconicf_name)
-					else
-						client.emit_success t('swade.iconicf_set', :iconicf => self.iconicf_name, :value => self.value)
-					end
-				end
+					#if (!self.value)
+						#client.emit_success t('swade.iconicf_cleared', :iconicf => self.iconicf_name)
+					#else
+						#client.emit_success t('swade.iconicf_set', :iconicf => self.iconicf_name, :value => self.value)
+					#end
+				#end
 			end
 		end
     end
-end
 end
