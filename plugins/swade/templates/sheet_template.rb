@@ -15,7 +15,9 @@ module AresMUSH
       end
   
       def attributes
-        format_two_per_line @char.swade_attributes
+        #format_two_per_line @char.swade_attributes
+		summ = @char.swade_attributes
+		summ
       end
       
       # def format_two_per_line(list)
