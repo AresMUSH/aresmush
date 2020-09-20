@@ -61,7 +61,7 @@ module AresMUSH
 
 						    #model.update(swade_iconicf_name: self.iconicf_name)
 							client.emit_success t('swade.iconicf_set', :name => self.iconicf_name)
-					end				
+				#end				
 					client.emit (iconicf['attributes'])
 					iconicf_name=iconicf['name']
 					iconicf_attributes=iconicf['attributes']
