@@ -63,7 +63,7 @@ module AresMUSH
 						setvalue = "#{value}"
 						ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
 							SwadeAttribute.create(name: self.setattribute, value: self.setvalue, character: model)
-							client.emit_success t('swade.iconicattributes_set', :name => self.setattribute)
+							client.emit_success t('swade.iconicattributes_set', :name => setattribute)
 						end
 					end
 					
