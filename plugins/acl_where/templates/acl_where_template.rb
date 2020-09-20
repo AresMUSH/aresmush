@@ -6,7 +6,7 @@ module AresMUSH
       # some are defined in a common file.
       include CommonWhoFields
     
-      attr_accessor :online_chars, :scene_groups, :newacltest
+      attr_accessor :online_chars, :scene_groups, :newacltest, :listitem
     
       def initialize(online_chars, client)
         @online_chars = online_chars
