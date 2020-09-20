@@ -73,6 +73,7 @@ module AresMUSH
 							client.emit_success t('swade.iconicattributes_set', :name => setattribute)
 							client.emit (setattribute)
 							client.emit (setvalue)
+							client emit (@char.swade_attributes)
 						end
 				end
 					
