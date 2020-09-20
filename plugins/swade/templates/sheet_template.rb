@@ -9,8 +9,7 @@ module AresMUSH
       end
 
       def summary
-        summ = "#{char.swade_iconicf}"
-        summ
+        summ = "#{char.swade_iconicfname}"
       end
   
       def attrs
