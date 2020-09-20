@@ -19,7 +19,11 @@ module AresMUSH
     def self.scene_types
       AresMUSH::Global.read_config('scenes', 'scene_types' )      
     end
-               
+    
+    def self.scene_pacing
+      [ "Traditional", "Distracted", "Asynchronous" ]
+    end
+                   
     def self.is_valid_privacy?(privacy)
       ["Public", "Open", "Private"].include?(privacy)
     end

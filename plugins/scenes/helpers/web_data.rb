@@ -63,6 +63,7 @@ module AresMUSH
         is_private: scene.private_scene,
         participants: participants,
         scene_type: scene.scene_type ? scene.scene_type.titlecase : 'unknown',
+        scene_pacing: scene.scene_pacing,
         can_edit: viewer && Scenes.can_edit_scene?(viewer, scene),
         can_delete: Scenes.can_delete_scene?(viewer, scene),
         is_watching: viewer && scene.watchers.include?(viewer),
@@ -94,6 +95,7 @@ module AresMUSH
         participants: scene.participants.to_a.sort_by { |p| p.name }.map { |p| 
           { name: p.name, nick: p.nick, id: p.id, icon: Website.icon_for_char(p) }},
         scene_type: scene.scene_type ? scene.scene_type.titlecase : 'Unknown',
+        scene_pacing: scene.scene_pacing,
         limit: scene.limit
         }
       end

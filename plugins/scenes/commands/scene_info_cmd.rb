@@ -53,6 +53,9 @@ module AresMUSH
           when "type"
             success = set_type(scene)
             
+          when "pacing"
+            success = set_pacing(scene)
+            
           when "limit", "note", "notes"
             scene.update(limit: self.value.downcase == "none" ? nil : self.value)
             success = true
@@ -91,6 +94,18 @@ module AresMUSH
         end
         
         scene.update(scene_type: self.value)
+        return true
+      end
+      
+      def set_pacing(scene)        
+        pacing = Scenes.scene_pacing.select { |p| p.downcase.start_with?(self.value.downcase)}.first
+        if (!pacing)
+          client.emit_failure t('scenes.invalid_scene_pacing', 
+          :types => Scenes.scene_pacing.join(", "))
+          return false
+        end
+        
+        scene.update(scene_pacing: pacing)
         return true
       end
 
