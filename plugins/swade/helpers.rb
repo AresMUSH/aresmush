@@ -10,6 +10,12 @@ module AresMUSH
       names.include?(name.downcase)
     end
  
+    def self.find_iconicf_config(name)
+		return nil if !name
+		types = Global.read_config('swade', 'iconicf')
+		types.select { |a| a['name'].downcase == name.downcase }.first
+    end
+ 
     def self.is_valid_die_step?(step)
       Swade.die_steps.include?(step)
     end
