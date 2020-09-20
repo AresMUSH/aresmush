@@ -18,6 +18,7 @@ module AresMUSH
       end
       
       def format_two_per_line(list)
+		client.emit (list)
         list.to_a.sort_by { |a| a.name }
           .each_with_index
             .map do |a, i| 
