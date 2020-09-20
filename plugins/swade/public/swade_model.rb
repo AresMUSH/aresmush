@@ -6,15 +6,17 @@ module AresMUSH
 #	collection :swade_hinderances, "AresMUSH::SwadeHinderances"
 #	collection :swade_edges, "AresMUSH::SwadeEdges"
 #	collection :swade_powers, "AresMUSH::SwadePowers"
-	collection :swade_iconicf, "AresMUSH::SwadeIconicf"
 
-	attribute :swade_iconicf_name
-	attribute :swade_iconicf_attributes
-	attribute :swade_agility
-	attribute :swade_strength
-	attribute :swade_vigor
-	attribute :swade_smarts
-	attribute :swade_spirit
+    before_delete :delete_cortex_abilities
+    
+    def delete_swade_chargen
+      [ self.swade_attributes ].each do |list|
+			list.each do |a|
+				a.delete
+				end
+			end
+		end
+	end
 
 #--- This is called in commands\reset_cmd.rb and public\cortex_model.rb     
 #    before_delete :delete_cortex_abilities
@@ -37,14 +39,6 @@ module AresMUSH
 		index :name
 	end	
 	
-	class SwadeIconicf < Ohm::Model
-		include ObjectModel
-    
-		attribute :name
-		attribute :rating, :type => DataType::Integer
-		reference :character, "AresMUSH::Character"
-		index :name
-	end
   
     # class SwadeSkills < Ohm::Model
 		# include ObjectModel
