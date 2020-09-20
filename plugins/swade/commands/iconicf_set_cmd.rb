@@ -3,7 +3,7 @@ module AresMUSH
 		class IconicfSetCmd
 			include CommandHandler
       
-			attr_accessor :target_name, :iconicf_name, :iconicfname
+			attr_accessor :target_name, :iconicf_name
 			
 		def parse_args
 			# if (cmd.args =~ /[^\/]+\=.+\/.+/)
@@ -13,11 +13,9 @@ module AresMUSH
 			  # self.rating = trim_arg(args.arg3)
 			# else
 			# args = cmd.parse_args(ArgParser.arg1)
-			  self.iconicfname = trim_arg(cmd.args)	
+			  self.iconicf_name = trim_arg(cmd.args)
 			  #self.target_name = enactor_name
 			  #self.iconicf_name = cmd.args ? titlecase_arg(cmd.args) : enactor_name
-			  enactor.update(iconicfname: self.iconicfname)
-			  client.emit_success "Iconic Framework set!"
 			# end
 		end
 
@@ -42,13 +40,16 @@ module AresMUSH
 			# end
       
 			def handle
+				client.emit ("Hello World")
 				ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
 				config = Swade.find_iconicf_config(model.swade_iconicf)
 				Swade.set_iconicf(model, self.iconicf_name)
 				client.emit_success t('swade.iconicf_set')
 			end
 			
-			def handle   
+			def handle  
+				#enactor.update(iconicfname: self.iconicfname)
+				#client.emit_success "Iconic Framework set!"			
 				iconicf = Swade.get_iconicf(self.iconicf_name)
         
 				if (!iconicf)
