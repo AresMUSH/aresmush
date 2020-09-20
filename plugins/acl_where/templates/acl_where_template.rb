@@ -34,8 +34,7 @@ module AresMUSH
 				listitem = "#{self.listitem} - #{a.name} (#A-#{a.id}%r"
 			end
 		  end
-		  
-		  listitem
+		  return "#{listitem}"
 			# list.each do |a|
 			  # client.emit ("%r%t%t#{indent_str} #{a.name} (#R-#{a.id})")
 			# end
