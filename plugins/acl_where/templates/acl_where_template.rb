@@ -40,7 +40,7 @@ module AresMUSH
 				  end
 			end
 		  end
-		listitem
+		objects = self.listitem
 	  end
         
         case (Global.read_config("who", "where_style"))
