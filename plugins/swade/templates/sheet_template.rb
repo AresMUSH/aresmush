@@ -16,12 +16,13 @@ module AresMUSH
   
       def attributes
         #format_two_per_line @char.swade_attributes
-        attributes = @char.swade_attributes.to_a.sort_by { |a| a.name }
-		attributes.map do |a, i| 
-				linebreak = i % 2 == 0 ? "\n" : ""
-				title = left("#{ a.name }:", 15)
-				rating = left(a.rating, 20)
-				"#{linebreak}%xh#{title}%xn #{rating}"
+        @char.swade_attributes.to_a.sort_by { |a| a.name }
+			.each_with_index
+				.map do |a, i| 
+					linebreak = i % 2 == 0 ? "\n" : ""
+					title = left("#{ a.name }:", 15)
+					rating = left(a.value, 20)
+					"#{linebreak}%xh#{title}%xn #{rating}"
 			end
       end
       
