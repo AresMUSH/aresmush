@@ -4,6 +4,19 @@ module AresMUSH
 			include CommandHandler
       
 			attr_accessor :target_name, :iconicf_name
+			
+		def parse_args
+			# if (cmd.args =~ /[^\/]+\=.+\/.+/)
+			  # args = cmd.parse_args(ArgParser.arg1_equals_arg2_slash_arg3)
+			  # self.name = trim_arg(args.arg1)
+			  # self.ability_name = titlecase_arg(args.arg2)
+			  # self.rating = trim_arg(args.arg3)
+			# else
+			  args = cmd.parse_args(ArgParser.arg1)
+			  self.target_name = enactor_name
+			  self.iconicf_name = titlecase_arg(args.arg1)
+			# end
+		end
 
 			def required_args
 				[self.target_name, self.iconicf_name]
