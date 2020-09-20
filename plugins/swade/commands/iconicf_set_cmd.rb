@@ -52,8 +52,9 @@ module AresMUSH
 				#client.emit_success "Iconic Framework set!"			
 				iconicf = Swade.get_iconicf(self.enactor, self.iconicf_name)
 				if (iconicf)
+					client.emit (iconicf)
 					iconicf_name=iconicf['name'].downcase
-					iconicf_attributes=iconicf['attributes'].downcase
+					#iconicf_attributes=iconicf['attributes'].downcase
 					client.emit (iconicf_name)
 					client.emit '%r%R'
 					client.emit (iconicf_attributes)
