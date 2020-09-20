@@ -13,13 +13,13 @@ module AresMUSH
     def self.find_iconicf_config(name)
 		return nil if !name
 		types = Global.read_config('swade', 'iconicf')
-		types.select { |a| a['name'].downcase == name.downcase }.first
+		#types.select { |a| a['name'].downcase == name.downcase }.first
 		#types.select { |a| a['name'] == name }.first
     end
  
 	def self.set_iconicf(char, iconicf_name)
 		charac = Swade.find_iconicf_config(char)
-		SwadeIconicf.create(name: iconicf_name, character: char)
+		#SwadeIconicf.create(name: iconicf_name, character: char)
 	end
  
     def self.is_valid_die_step?(step)
