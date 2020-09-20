@@ -27,7 +27,7 @@ module AresMUSH
 						    client.emit_success t('swade.iconicf_set', :name => self.iconicf_name)
 					end
 				else
-					client.emit ('errrrrrrror')
+					client.emit ('iconicf_invalid_name', :name=> self.iconicf_name)
 				end
 			end
 		end
