@@ -3,7 +3,7 @@ module AresMUSH
 		class IconicfSetCmd
 			include CommandHandler
       
-			attr_accessor :target, :iconicf_name
+			attr_accessor :target, :iconicf_name :swade_iconicf
 			
 			def parse_args
 				  self.target = enactor_name #Set the character to be the current character
