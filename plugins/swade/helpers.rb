@@ -17,7 +17,7 @@ module AresMUSH
     end
  
 	def self.set_iconicf(char, iconicf_name)
-		charac = Swade.find_iconicf(char, iconicf_name)
+		charac = Swade.find_iconicf_config(char, iconicf_name)
 		SwadeIconicf.create(name: iconicf_name, character: char)
 	end
  
