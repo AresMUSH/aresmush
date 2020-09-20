@@ -25,7 +25,7 @@ module AresMUSH
 		charac = Swade.find_iconicf_config(iconicf_name)
 	end
  
-    def self.set_iconicf_name(char, iconicf_name)
+    def self.set_iconicf_name(char, iconicf_name, allow_all = false)
 		return error if error
 		char.update(swade_iconicf: iconicf_name)
 		return nil
