@@ -57,7 +57,7 @@ module AresMUSH
 					setattribute= "swade_iconicf_name"
 					ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
 						SwadeAttribute.create(name: self.setattribute, value: self.iconicf_name, character: model)
-						    model.update(swade_iconicf_name)
+						    model.update(swade_iconicf_name: self.iconicf_name)
 							client.emit_success t('swade.iconicf_set', :name => self.iconicf_name)
 					end				
 					client.emit (iconicf['attributes'])
