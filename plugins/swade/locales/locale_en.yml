@@ -18,7 +18,7 @@ en:
         no_special_characters: "Attribute names may not contain special characters."
         error_saving_ability: "There was a problem saving %{name}: %{error}"
         cant_lower_below_iconicf_min: "You can't lower an attribute below the starting Iconic Framework value."
-
+        reset_chargen: "SWADE Chargen Reset!"
 
         
         attribute_not_found: "Attribute not found."
