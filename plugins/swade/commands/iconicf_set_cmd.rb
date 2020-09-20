@@ -13,9 +13,10 @@ module AresMUSH
 			  # self.rating = trim_arg(args.arg3)
 			# else
 			# args = cmd.parse_args(ArgParser.arg1)
+			
+			#self version
+			  self.target_name = enactor_name #Set the character to be the current character
 			  self.iconicf_name = trim_arg(cmd.args)
-			  #self.target_name = enactor_name
-			  #self.iconicf_name = cmd.args ? titlecase_arg(cmd.args) : enactor_name
 			# end
 		end
 
@@ -59,8 +60,10 @@ module AresMUSH
 					iconicf_attributes.each do |key, value|
 						setattribute = "swade_#{key}".chop
 						setvalue = "#{value}"
-						SwadeAttribute.create(name: self.setattribute, value: self.setvalue, character: model)
-						client.emit_success t('swade.iconicattributes_set', :name => self.setattribute)
+						ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
+							SwadeAttribute.create(name: self.setattribute, value: self.setvalue, character: model)
+							client.emit_success t('swade.iconicattributes_set', :name => self.setattribute)
+						end
 					end
 					
 					# client.emit (iconicf_name)
