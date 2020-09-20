@@ -9,7 +9,8 @@ swade:
                 Spirit: 1
                 Strength: 1
                 Vigor: 1
-        -   name: Mystic
+        -   
+            name: Mystic
             attributes:
                 Agility: 1
                 Smarts: 1
