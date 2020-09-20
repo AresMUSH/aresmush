@@ -55,7 +55,7 @@ module AresMUSH
 					iconicf_name=iconicf['name'].downcase
 					client.emit (iconicf_name)
 					enactor.update(iconicfname: self.iconicf_name)
-					client.emit_success t('swade.iconicf_set', :iconficf => self.iconicf_name)
+					client.emit_success t('swade.iconicf_set', :name => self.iconicf_name)
 				else
 					client.emit ('nothing')
 				end
