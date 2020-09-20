@@ -55,13 +55,14 @@ module AresMUSH
 					client.emit (iconicf['attributes'])
 					iconicf_name=iconicf['name'].downcase
 					iconicf_attributes=iconicf['attributes']
-					iconicf_attributes = iconicf_attributes.join(",")
-					client.emit (iconicf_name)
-					client.emit (iconicf_attributes)
-					enactor.update(swade_iconicfname: self.iconicf_name)
-					client.emit_success t('swade.iconicf_set', :name => self.iconicf_name)
-					enactor.update(swade_attributes: self.iconicf_attributes)
-					client.emit_success t('swade.iconicattributes_set', :name => self.iconicf_attributes)					
+					iconicf_attributes.each { |key, value| puts "k: #{key}, v: #{value}" }					
+					
+					# client.emit (iconicf_name)
+					# client.emit (iconicf_attributes)
+					# enactor.update(swade_iconicfname: self.iconicf_name)
+					# client.emit_success t('swade.iconicf_set', :name => self.iconicf_name)
+					# enactor.update(swade_attributes: self.iconicf_attributes)
+					# client.emit_success t('swade.iconicattributes_set', :name => self.iconicf_attributes)					
 				else
 					client.emit ('nothing')
 				end
