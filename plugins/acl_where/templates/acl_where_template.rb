@@ -30,7 +30,7 @@ module AresMUSH
 	  def acl_list_rooms(area, indent_str)
 		objects = area.sorted_children
 		  [ objects ].each do |list|
-		    listitem = "#{self.listitem} - #{list}%r"
+		    listitem = "#{self.listitem} - #{list['name']} (#A-#{list['id']}%r"
 		  end
 		  
 		  listitem
