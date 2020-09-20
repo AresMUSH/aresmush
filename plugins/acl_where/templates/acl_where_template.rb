@@ -102,7 +102,7 @@ module AresMUSH
           scene = c.room.scene
           room = scene_room_name(c)
           name = name(c)
-		  return "#{room}"
+		  return "#{c.inspect}"
           if (c.who_hidden)
             append_to_group(groups['private'],  "      #{t('who.hidden')}", name)
           elsif (scene)
