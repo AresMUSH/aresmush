@@ -1,0 +1,748 @@
+---
+swade:
+    edges:
+    - 
+        background:
+        -
+            name: Alertness
+            description: +2 to Notice rolls
+            pre-reqs: 
+                - rank: Novice
+        -
+            name: Ambidextrous
+            description: Ignore -2 penalty when making Trait rolls with off-hand.
+            pre-reqs:
+                - rank: Novice
+                - Agility: d8
+        -
+            name: AB Magic
+            description: Magical Arcane Background
+            power_slots: 3
+            powerpoints: 10
+            pre-reqs:
+                - rank: Novice
+        -
+            name: AB Psionics
+            description: Psionics Arcane Background
+            power_slots: 3
+            powerpoints: 10
+            pre-reqs:
+                - rank: Novice
+        -
+            name: AB Miracles
+            description: Miracles Arcane Background
+            power_slots: 3
+            powerpoints: 10
+            pre-reqs:     
+                - rank: Novice
+        -
+            name: AB Gifted
+            description: Gifted Arcane Background
+            power_slots: 1
+            powerpoints: 15
+            pre-reqs:     
+                - rank: Novice
+        -
+            name: AB Weird Science
+            description: Weird Science Arcane Background
+            power_slots: 2
+            powerpoints: 15
+            pre-reqs:     
+                - rank: Novice
+        -
+            name: Arcane Resistance
+            description: Arcane skills targeting the hero sufer a −2 penalty; magical damage is reduced by 2
+            pre-reqs:     
+                - rank: Novice
+                - Spirit: d8
+        -
+            name: Improved Arcane Resistance
+            description: As Arcane Resistance except penalty is -4 and magical damage is reduced by 4.
+            pre-reqs:     
+                - rank: Novice
+                - edge: Arcane Resistance
+        -
+            name: Aristocrat
+            description: +2 to Common Knowledge and networking with upper class.
+            pre-reqs:     
+                - rank: Novice
+        -
+            name: Attractive
+            description: +1 to Performance and Persuasion rolls.
+            pre-reqs:     
+                - rank: Novice
+                - vigor: d6
+        -
+            name: Very Attractive
+            description: +2 to Performance and Persuasion rolls.
+            pre-reqs:     
+                - rank: Novice
+                - edge: Attractive
+        -
+            name: Berserk
+            description: Attacks after being Shaken or Wounded must be Wild. Take Fagitue after every 5 rounds.
+            pre-reqs:
+                - rank: Novice
+        -
+            name: Brave
+            description: +2 to Fear checks and –2 to rolls on the Fear Table.
+            pre-reqs:
+                - rank: Novice
+                - spirit: d6
+        -
+            name: Brawny
+            description: Size/Toughness +1. Treat Strength as one die type higher for Enc and Min Str
+            pre-reqs:
+                - rank: Novice
+                - strength: d6
+                - vigor: d6
+        -
+            name: Brute
+            description: Link Athletics to Strength instead of Agility. Increases range with thrown weapons. 
+            pre-reqs:
+                - rank: Novice
+                - strength: d6
+                - vigor: d6
+        -
+            name: Charismatic
+            description: Free reroll when using Persuasion.
+            pre-reqs:
+                - rank: Novice
+                - spirit: d8
+        -
+            name: Elan
+            description: +2 when spending a Benny to reroll a Trait roll.
+            pre-reqs:
+                - rank: Novice
+                - spirit: d8
+        -
+            name: Fame
+            description: +1 Persuasion rolls when recognized (Common Knowledge), double usual fee for Performance.
+            pre-reqs:
+                - rank: Novice
+        -
+            name: Famous
+            description: +2 Persuasion when recognized, 5× or more usual fee for Performance.
+            pre-reqs:
+                - rank: Seasoned
+                - edge: Fame
+        -
+            name: Fast Healer
+            description: +2 Vigor when rolling for natural healing; check every 3 days.
+            pre-reqs:
+                - rank: Novice
+                - vigor: d8
+        -
+            name: Fleet-Footed
+            description: Pace +2, increase running die one step.
+            pre-reqs:
+                - rank: Novice
+                - agility: d6
+        -
+            name: Linguist
+            description: Character has d6 in languages equal to half her Smarts die.
+            pre-reqs:
+                - rank: Novice
+                - smarts: d6
+        -
+            name: Luck
+            description: +1 Benny at the start of each session.
+            pre-reqs:
+                - rank: Novice
+        -
+            name: Great Luck
+            description: +2 Bennies at the start of each session.
+            pre-reqs:
+                - rank: Novice
+                - edge: Luck
+        -
+            name: Quick
+            description: The hero may discard and redraw Action Cards of 5 or lower.
+            pre-reqs:
+                - rank: Novice
+                - agility: d8
+        -
+            name: Rich
+            description: Character starts with three times the starting funds and a $150K annual salary.
+            pre-reqs:
+                - rank: Novice
+        -
+            name: Filthy Rich
+            description: Five times starting funds and $500K average salary.
+            pre-reqs:
+                - rank: Novice
+                - edge: Rich
+    -
+        combat:
+        -
+            name: 
+            description: 
+            pre-reqs: 
+                - rank: Novice
+        -
+            name: 
+            description: 
+            pre-reqs: 
+                - rank: Novice
+        -
+            name: 
+            description: 
+            pre-reqs: 
+                - rank: Novice
+        -
+            name: 
+            description: 
+            pre-reqs: 
+                - rank: Novice
+        -
+            name: 
+            description: 
+            pre-reqs: 
+                - rank: Novice
+        -
+            name: 
+            description: 
+            pre-reqs: 
+                - rank: Novice
+        -
+            name: 
+            description: 
+            pre-reqs: 
+                - rank: Novice
+        -
+            name: 
+            description: 
+            pre-reqs: 
+                - rank: Novice
+        -
+            name: 
+            description: 
+            pre-reqs: 
+                - rank: Novice
+        -
+            name: 
+            description: 
+            pre-reqs: 
+                - rank: Novice
+        -
+            name: 
+            description: 
+            pre-reqs: 
+                - rank: Novice
+        -
+            name: 
+            description: 
+            pre-reqs: 
+                - rank: Novice
+        -
+            name: 
+            description: 
+            pre-reqs: 
+                - rank: Novice
+        -
+            name: 
+            description: 
+            pre-reqs: 
+                - rank: Novice
+        -
+            name: 
+            description: 
+            pre-reqs: 
+                - rank: Novice
+        -
+            name: 
+            description: 
+            pre-reqs: 
+                - rank: Novice
+        -
+            name: 
+            description: 
+            pre-reqs: 
+                - rank: Novice
+        -
+            name: 
+            description: 
+            pre-reqs: 
+                - rank: Novice
+        -
+            name: 
+            description: 
+            pre-reqs: 
+                - rank: Novice
+        -
+            name: 
+            description: 
+            pre-reqs: 
+                - rank: Novice
+        -
+            name: 
+            description: 
+            pre-reqs: 
+                - rank: Novice
+        -
+            name: 
+            description: 
+            pre-reqs: 
+                - rank: Novice
+        -
+            name: 
+            description: 
+            pre-reqs: 
+                - rank: Novice
+        -
+            name: 
+            description: 
+            pre-reqs: 
+                - rank: Novice
+        -
+            name: 
+            description: 
+            pre-reqs: 
+                - rank: Novice
+        -
+            name: 
+            description: 
+            pre-reqs: 
+                - rank: Novice
+        -
+            name: 
+            description: 
+            pre-reqs: 
+                - rank: Novice
+        -
+            name: 
+            description: 
+            pre-reqs: 
+                - rank: Novice
+        -
+            name: 
+            description: 
+            pre-reqs: 
+                - rank: Novice
+        -
+            name: 
+            description: 
+            pre-reqs: 
+                - rank: Novice
+        -
+            name: 
+            description: 
+            pre-reqs: 
+                - rank: Novice
+        -
+            name: 
+            description: 
+            pre-reqs: 
+                - rank: Novice
+        -
+            name: 
+            description: 
+            pre-reqs: 
+                - rank: Novice
+        -
+            name: 
+            description: 
+            pre-reqs: 
+                - rank: Novice
+        -
+            name: 
+            description: 
+            pre-reqs: 
+                - rank: Novice
+        -
+            name: 
+            description: 
+            pre-reqs: 
+                - rank: Novice
+        -
+            name: 
+            description: 
+            pre-reqs: 
+                - rank: Novice
+        -
+            name: 
+            description: 
+            pre-reqs: 
+                - rank: Novice
+        -
+            name: 
+            description: 
+            pre-reqs: 
+                - rank: Novice
+        -
+            name: 
+            description: 
+            pre-reqs: 
+                - rank: Novice
+        -
+            name: 
+            description: 
+            pre-reqs: 
+                - rank: Novice
+        -
+            name: 
+            description: 
+            pre-reqs: 
+                - rank: Novice
+        -
+            name: 
+            description: 
+            pre-reqs: 
+                - rank: Novice
+        -
+            name: 
+            description: 
+            pre-reqs: 
+                - rank: Novice
+        -
+            name: 
+            description: 
+            pre-reqs: 
+                - rank: Novice
+    -
+        leadership:
+        -
+            name: 
+            description: 
+            pre-reqs: 
+                - rank: Novice
+        -
+            name: 
+            description: 
+            pre-reqs: 
+                - rank: Novice
+        -
+            name: 
+            description: 
+            pre-reqs: 
+                - rank: Novice
+        -
+            name: 
+            description: 
+            pre-reqs: 
+                - rank: Novice
+        -
+            name: 
+            description: 
+            pre-reqs: 
+                - rank: Novice
+        -
+            name: 
+            description: 
+            pre-reqs: 
+                - rank: Novice
+        -
+            name: 
+            description: 
+            pre-reqs: 
+                - rank: Novice
+        -
+            name: 
+            description: 
+            pre-reqs: 
+                - rank: Novice
+    -
+        power:
+        -
+            name: 
+            description: 
+            pre-reqs: 
+                - rank: Novice
+        -
+            name: 
+            description: 
+            pre-reqs: 
+                - rank: Novice
+        -
+            name: 
+            description: 
+            pre-reqs: 
+                - rank: Novice
+        -
+            name: 
+            description: 
+            pre-reqs: 
+                - rank: Novice
+        -
+            name: 
+            description: 
+            pre-reqs: 
+                - rank: Novice
+        -
+            name: 
+            description: 
+            pre-reqs: 
+                - rank: Novice
+        -
+            name: 
+            description: 
+            pre-reqs: 
+                - rank: Novice
+        -
+            name: 
+            description: 
+            pre-reqs: 
+                - rank: Novice
+        -
+            name: 
+            description: 
+            pre-reqs: 
+                - rank: Novice
+        -
+            name: 
+            description: 
+            pre-reqs: 
+                - rank: Novice
+        -
+            name: 
+            description: 
+            pre-reqs: 
+                - rank: Novice
+        -
+            name: 
+            description: 
+            pre-reqs: 
+                - rank: Novice
+        -
+            name: 
+            description: 
+            pre-reqs: 
+                - rank: Novice
+        -
+            name: 
+            description: 
+            pre-reqs: 
+                - rank: Novice
+    -
+        professional:
+        -
+            name: 
+            description: 
+            pre-reqs: 
+                - rank: Novice
+        -
+            name: 
+            description: 
+            pre-reqs: 
+                - rank: Novice
+        -
+            name: 
+            description: 
+            pre-reqs: 
+                - rank: Novice
+        -
+            name: 
+            description: 
+            pre-reqs: 
+                - rank: Novice
+        -
+            name: 
+            description: 
+            pre-reqs: 
+                - rank: Novice
+        -
+            name: 
+            description: 
+            pre-reqs: 
+                - rank: Novice
+        -
+            name: 
+            description: 
+            pre-reqs: 
+                - rank: Novice
+        -
+            name: 
+            description: 
+            pre-reqs: 
+                - rank: Novice
+        -
+            name: 
+            description: 
+            pre-reqs: 
+                - rank: Novice
+        -
+            name: 
+            description: 
+            pre-reqs: 
+                - rank: Novice
+        -
+            name: 
+            description: 
+            pre-reqs: 
+                - rank: Novice
+        -
+            name: 
+            description: 
+            pre-reqs: 
+                - rank: Novice
+    -
+        social:
+        -
+            name: 
+            description: 
+            pre-reqs: 
+                - rank: Novice
+        -
+            name: 
+            description: 
+            pre-reqs: 
+                - rank: Novice
+        -
+            name: 
+            description: 
+            pre-reqs: 
+                - rank: Novice
+        -
+            name: 
+            description: 
+            pre-reqs: 
+                - rank: Novice
+        -
+            name: 
+            description: 
+            pre-reqs: 
+                - rank: Novice
+        -
+            name: 
+            description: 
+            pre-reqs: 
+                - rank: Novice
+        -
+            name: 
+            description: 
+            pre-reqs: 
+                - rank: Novice
+        -
+            name: 
+            description: 
+            pre-reqs: 
+                - rank: Novice
+        -
+            name: 
+            description: 
+            pre-reqs: 
+                - rank: Novice
+        -
+            name: 
+            description: 
+            pre-reqs: 
+                - rank: Novice
+        -
+            name: 
+            description: 
+            pre-reqs: 
+                - rank: Novice
+        -
+            name: 
+            description: 
+            pre-reqs: 
+                - rank: Novice
+        -
+            name: 
+            description: 
+            pre-reqs: 
+                - rank: Novice
+        -
+            name: 
+            description: 
+            pre-reqs: 
+                - rank: Novice
+    -
+        weird:
+        -
+            name: 
+            description: 
+            pre-reqs: 
+                - rank: Novice
+        -
+            name: 
+            description: 
+            pre-reqs: 
+                - rank: Novice
+        -
+            name: 
+            description: 
+            pre-reqs: 
+                - rank: Novice
+        -
+            name: 
+            description: 
+            pre-reqs: 
+                - rank: Novice
+        -
+            name: 
+            description: 
+            pre-reqs: 
+                - rank: Novice
+        -
+            name: 
+            description: 
+            pre-reqs: 
+                - rank: Novice
+        -
+            name: 
+            description: 
+            pre-reqs: 
+                - rank: Novice
+        -
+            name: 
+            description: May fnd a needed item once per encounter.
+            pre-reqs: 
+                - rank: Novice
+    -
+        legendary:
+        -
+            name: Followers
+            description: The hero has fve followers.
+            pre-reqs: 
+                - rank: Legendary
+                - wildcard: 1
+        # -
+            # name: Professional
+            # description: The character’s Trait and its limit increases one step.
+            # pre-reqs: 
+                # - rank: Legendary
+                # - one attribute at max
+        # -
+            # name: Expert
+            # description: The character’s Trait and its limit increases one step.
+            # pre-reqs: 
+                # - rank: Legendary
+                # - edge: Professional
+        # -
+            # name: Master
+            # description: The character’s Wild Die is a d10 with a chosen Trait.
+            # pre-reqs: 
+                # - rank: Legendary
+                # - edge: Expert
+        -
+            name: Sidekick
+            description: The character gains a Wild Card sidekick.
+            pre-reqs: 
+                - rank: Legendary
+                - wildcard: 1
+        -
+            name: Tough as Nails
+            description: The hero can take four Wounds before being Incapacitated.
+            pre-reqs: 
+                - rank: Legendary
+                - vigor: d8
+        -
+            name: Tougher than Nails
+            description: The hero can take fve Wounds before being Incapacitated.
+            pre-reqs: 
+                - rank: Legendary
+                - edge: Tough as Nails
+                - vigor: d12
+        -
+            name: Weapon Master
+            description: Parry increases by +1 and Fighting bonus damage die is d8.
+            pre-reqs: 
+                - rank: Legendary
+                - fighting: d12
+        -
+            name: Master of Arms
+            description: Parry increases another +1 and Fighting bonus damage die is d10.
+            pre-reqs: 
+                - rank: Legendary
+                - edge: Weapon Master
