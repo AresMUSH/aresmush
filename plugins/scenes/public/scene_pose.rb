@@ -40,6 +40,14 @@ module AresMUSH
       self.character.is_admin? || self.character.is_playerbit?
     end
     
+    def is_real_pose?
+      return true if self.restarted_scene_pose
+      return false if self.is_deleted
+      return false if self.is_ooc
+      return false if self.is_system_pose?
+      return true
+    end
+    
     def can_edit?(actor)
       return false if !actor
       return false if self.is_system_pose?

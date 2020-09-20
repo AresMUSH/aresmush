@@ -18,6 +18,10 @@ module AresMUSH
         
         if (!scene.completed)
          return { error: t('scenes.cant_delete_in_progress_scene') }
+        end        
+        
+        if (scene.shared)
+          return { error: t('scenes.cant_delete_shared_scene') }
         end
         
         Global.logger.debug "Scene #{scene.id} deleted by #{enactor.name}."
