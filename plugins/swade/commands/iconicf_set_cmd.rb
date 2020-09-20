@@ -68,6 +68,7 @@ module AresMUSH
 						setattribute = "swade_#{key}"
 						client.emit (setattribute)
 						setvalue = "#{value}"
+						client.emit (setvalue)
 						ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
 							SwadeAttribute.create(name: self.setattribute, value: self.setvalue, character: model)
 							model.update(swade_setattribute: self.setvalue)
