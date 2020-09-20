@@ -9,7 +9,7 @@ module AresMUSH
       end
 
       def iconicf_name
-		Swade.iconicf_name(@char)
+		Swade.iconicf(@char)
 		#summ = "#{char.swade_iconicf_name}"
       end
   
