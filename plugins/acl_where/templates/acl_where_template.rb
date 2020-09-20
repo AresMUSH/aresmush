@@ -31,7 +31,7 @@ module AresMUSH
 		objects = area.sorted_children
 		  [ objects ].each do |list|
 			list.each do |a|
-				listitem = "#{self.listitem} - #{list['name']} (#A-#{list['id']}%r"
+				listitem = "#{self.listitem} - #{a.name} (#A-#{a.id}%r"
 			end
 		  end
 		  
