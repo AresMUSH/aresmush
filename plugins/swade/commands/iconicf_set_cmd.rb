@@ -56,7 +56,7 @@ module AresMUSH
 					#set the iconic framework on the character
 					setattribute= "swade_iconicf_name"
 					ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
-						SwadeAttribute.create(name: self.setattribute, value: self.iconicf_name, character: model)
+						SwadeAttributes.create(name: self.setattribute, value: self.iconicf_name, character: model)
 						    model.update(swade_iconicf_name: self.iconicf_name)
 							client.emit_success t('swade.iconicf_set', :name => self.iconicf_name)
 					end				
@@ -68,7 +68,7 @@ module AresMUSH
 						setattribute = "swade_#{key}".downcase
 						setvalue = "#{value}"
 						ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
-							SwadeAttribute.create(name: self.setattribute, value: self.setvalue, character: model)
+							SwadeAttributes.create(name: self.setattribute, value: self.setvalue, character: model)
 							model.update(setattribute: self.setvalue)
 							client.emit_success t('swade.iconicattributes_set', :name => setattribute)
 							client.emit (setattribute)
