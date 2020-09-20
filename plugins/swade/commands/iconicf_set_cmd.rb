@@ -18,14 +18,15 @@ module AresMUSH
 			def handle  
 				client.emit (self.target)
 				client.emit (self.iconicf_name)
-				client.emit ("-----")
+				client.emit ("----- check to see if the Iconic Framework Exists")
 				iconicf_exists = Swade.get_iconicf(self.enactor, self.iconicf_name)
 				client.emit (iconicf_exists)
+				client.emit ("----- Start if statement")
 				if (iconicf_exists)
 					ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
-						swade_iconicf = self.iconicf_name
-						model.update(swade_iconicf: swade_iconicf)
-					    client.emit_success t('swade.iconicf_set', :name => self.iconicf_name)
+						swade_iconicf = model.swade_iconicf || {}
+						client.emit (swade_iconicf)
+					    #client.emit_success t('swade.iconicf_set', :name => self.iconicf_name)
 					end
 				else
 					client.emit_failure t('swade.iconicf_invalid_name', :name=> self.iconicf_name.capitalize)
