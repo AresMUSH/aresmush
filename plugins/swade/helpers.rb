@@ -18,7 +18,7 @@ module AresMUSH
  
 	def self.set_iconicf(char, iconicf_name)
 		charac = Swade.find_iconicf_config(iconicf_name)
-		SwadeIconicf.create(name: iconicf_name, character: char)
+		#SwadeIconicf.create(name: iconicf_name, character: char) Maybe not needed.
 	end
  
     def self.is_valid_die_step?(step)
