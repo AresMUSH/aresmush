@@ -27,6 +27,7 @@ module AresMUSH
 						client.emit (model)
 						client.emit (iconicf_name)
 						model.update(swade_iconicf: model.iconicf_name)
+						client.emit (model)
 					    client.emit_success t('swade.iconicf_set', :name => self.iconicf_name)
 					end
 				else
