@@ -16,7 +16,7 @@ module AresMUSH
       when "iconicf"
 	    case cmd.switch
         #if (cmd.switch_is?("set"))
-		when set
+		when "set"
           return IconicfSetCmd
         else
           return IconicfCmd
