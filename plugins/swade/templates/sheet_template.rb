@@ -8,10 +8,11 @@ module AresMUSH
         super File.dirname(__FILE__) + "/sheet.erb"
       end
 
-      def summary
-        summ = @char.swade_iconicf_name
+      def iconicf
+        Swade.iconicf_name(@char)
+		#summ = @char.swade_iconicf_name
 		# summ = "#{char.swade_iconicf_name}"
-		summ
+		#summ
       end
   
       def attributes
