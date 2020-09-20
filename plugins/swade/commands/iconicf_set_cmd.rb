@@ -18,6 +18,9 @@ module AresMUSH
 			def handle  
 				client.emit (self.target)
 				client.emit (self.iconicf_name)
+				client.emit ("-----")
+				verified_iconicf = Swade.get_iconicf(self.enactor, self.iconicf_name)
+				client.emit (verified_iconicf)
 			end
 		end
     end
