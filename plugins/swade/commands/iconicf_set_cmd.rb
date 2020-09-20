@@ -3,7 +3,7 @@ module AresMUSH
 		class IconicfSetCmd
 			include CommandHandler
       
-			attr_accessor :target_name, :iconicf_name, :iconicf_attributes, :setattribute, :setvalue
+			attr_accessor :target, :iconicf_name, :iconicf_attributes, :setattribute, :setvalue
 			
 		def parse_args
 			# if (cmd.args =~ /[^\/]+\=.+\/.+/)
@@ -15,14 +15,14 @@ module AresMUSH
 			# args = cmd.parse_args(ArgParser.arg1)
 			
 			#self version
-			  self.target_name = enactor_name #Set the character to be the current character
+			  self.target = enactor_name #Set the character to be the current character
 			  self.iconicf_name = trim_arg(cmd.args)
 			# end
 		end
 
-			def required_args
-				[ self.target_name, self.iconicf_name ]
-			end
+		def required_args
+			[ self.target, self.iconicf_name ]
+		end
 			
 			# def check_valid_iconicf
 				# return t('swade.iconicf_invalid_name') if !Swade.is_iconicf_valid_name?(self.iconicf_name)
@@ -30,7 +30,7 @@ module AresMUSH
 			# end
 		  
 			# def check_can_set
-				# return nil if enactor_name == self.target_name
+				# return nil if enactor_name == self.target
 				# return nil if Swade.can_manage_abilities?(enactor)
 				# return t('dispatcher.not_allowed')
 			# end     
@@ -42,7 +42,7 @@ module AresMUSH
       
 			#def handle
 				#client.emit ("Hello World")
-				#ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
+				#ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
 				#config = Swade.find_iconicf_config(model.swade_iconicf)
 				#Swade.set_iconicf(model, self.iconicf_name)
 				#client.emit_success t('swade.iconicf_set')
@@ -55,9 +55,10 @@ module AresMUSH
 				if (iconicf)
 					#set the iconic framework on the character
 					setattribute= "swade_iconicf_name"
-					ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
+					ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
 						SwadeAttribute.create(name: self.setattribute, value: self.iconicf_name, character: model)
-						client.emit_success t('swade.iconicf_set', :name => self.iconicf_name)
+						    model.update(swade_iconicf_name: self.iconicf_name)
+							client.emit_success t('swade.iconicf_set', :name => self.iconicf_name)
 					end				
 					client.emit (iconicf['attributes'])
 					iconicf_name=iconicf['name'].downcase
@@ -67,7 +68,7 @@ module AresMUSH
 						setattribute = "swade_#{key}".downcase
 						client.emit (setattribute)
 						setvalue = "#{value}"
-						ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
+						ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
 							SwadeAttribute.create(name: self.setattribute, value: self.setvalue, character: model)
 							client.emit_success t('swade.iconicattributes_set', :name => setattribute)
 						end
