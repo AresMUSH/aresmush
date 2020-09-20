@@ -3,7 +3,7 @@ module AresMUSH
 		class IconicfSetCmd
 			include CommandHandler
       
-			attr_accessor :target_name, :iconicf_name, :iconicf_attributes
+			attr_accessor :target_name, :iconicf_name, :iconicf_attributes, :setattribute, :setvalue
 			
 		def parse_args
 			# if (cmd.args =~ /[^\/]+\=.+\/.+/)
