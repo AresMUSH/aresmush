@@ -16,6 +16,11 @@ module AresMUSH
 		types.select { |a| a['name'].downcase == name.downcase }.first
     end
  
+	def self.set_iconicf(char, iconicf_name)
+		charac = Swade.find_iconicf(char, iconicf_name)
+		SwadeIconicf.create(name: iconicf_name, character: char)
+	end
+ 
     def self.is_valid_die_step?(step)
       Swade.die_steps.include?(step)
     end
