@@ -3,7 +3,7 @@ swade:
     iconicf:
         -
             name: Shifter
-            attributes:
+            stats:
                 Agility: 1
                 Smarts: 1
                 Spirit: 1
@@ -11,7 +11,7 @@ swade:
                 Vigor: 1
         -   
             name: Mystic
-            attributes:
+            stats:
                 Agility: 1
                 Smarts: 1
                 Spirit: 1
