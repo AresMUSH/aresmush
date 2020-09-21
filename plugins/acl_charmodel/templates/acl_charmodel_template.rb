@@ -10,7 +10,7 @@ module AresMUSH
       end
 	  
 	  def quickview(model)
-        model.inspect
+        self.model.inspect
       end
       
     end
