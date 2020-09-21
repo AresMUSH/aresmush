@@ -67,7 +67,7 @@ module AresMUSH
 						SwadeSkills.create(name: setthing, rating: setrating, character: model)
 					end
 				end
-				client.emit_success t('swade.iconicskills_set')
+				client.emit_success t('swade.iconicskills_set') 
 
 				#----- This sets the default Chargen Points on the Character -----				
 				iconicf_chargen_points.each do |key|
