@@ -3,6 +3,7 @@ swade:
     iconicf:
         -
             name: Shifter
+            description: Practitioners of magic with a talent for manipulating - or "shifting" the patterns of the raw cosmic energies that bind the Megaverse(R) together.
             stats:
                 Agility: 1
                 Smarts: 1
@@ -76,6 +77,7 @@ swade:
                 - Power Activators*
         -   
             name: Mystic
+            description: Enlightened spell weavers in tune with the greater comic forces of the universe. 
             stats:
                 Agility: 1
                 Smarts: 1
