@@ -10,8 +10,6 @@ en:
         invalid_recipient: "%{name} is not someone you can page."
         recipient_is_afk: "%{name} is AFK and may not respond right away. %{message}"
         dnd_status: "DND"
-        afk_status: "AFK"
-        offline_status: "OFF"
         recipient_is_idle: "%{name} is %{time} idle and may be AFK."
         do_not_disturb_set: "You turn your 'do not disturb' status %{status}."
         recipient_do_not_disturb: "%{name} is set 'do not disturb' right now.  Please try your page again later."
