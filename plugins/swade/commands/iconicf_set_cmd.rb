@@ -26,6 +26,11 @@ module AresMUSH
 				iconicf_stats=iconicf['stats']
 				iconicf_skills=iconicf['skills']
 				iconicf_hinderances=iconicf['hinderances']
+				iconicf_edges=iconicf['edges']
+				iconicf_abilities=iconicf['abilities']
+				iconicf_complications=iconicf['complications']
+				iconicf_magic_powers=iconicf['magic_powers']
+				iconicf_psionic_powers=iconicf['psionic_powers']
 				
 				#----- This sets the Iconic Framework on the Character -----
 				ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
