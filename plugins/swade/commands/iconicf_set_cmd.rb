@@ -16,7 +16,7 @@ module AresMUSH
 			end
 			
 			def check_valid_iconicf
-				return t('swade.iconicf_invalid_name') if !Swade.is_valid_iconicf_name?(self.iconicf_name)
+				return t('swade.iconicf_invalid_name', :name => self.iconicf_name.capitalize) if !Swade.is_valid_iconicf_name?(self.iconicf_name)
 				return nil
 			end
 			
