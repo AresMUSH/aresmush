@@ -15,7 +15,7 @@ module AresMUSH
 	  
 	  def description(type)
 		type['description']
-      
+      end 
 
     end
   end
