@@ -3,7 +3,7 @@ module AresMUSH
 		class IconicfSetCmd
 			include CommandHandler
       
-			attr_accessor :swade_iconicf
+			attr_accessor :goals
 
 			def parse_args
 				self.goals = trim_arg(cmd.args)
@@ -11,7 +11,10 @@ module AresMUSH
 
 			def handle
 				enactor.update(swade_iconicf: self.goals)
-			client.emit_success "Goals set!"
+				client.emit (enactor)
+				client.emit (self.goals)
+				client.emit (goals)
+				client.emit_success "Goals set!"
 			end
 		end
 	end
