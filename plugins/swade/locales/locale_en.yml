@@ -2,6 +2,7 @@ en:
     swade:
         iconicf_title: "Iconic Frameworks"
         stats_title: "Stats"
+        skills_title: "Skills"
         invalid_stat_name: "%{name} is not a valid stat name."
         invalid_die_step: "%{rating} is not a valid die step."
         stat_removed: "Stat '%{name}' has been removed."

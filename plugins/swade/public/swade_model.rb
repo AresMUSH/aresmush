@@ -14,7 +14,7 @@ module AresMUSH
 	before_delete :delete_swade_chargen
     
     def delete_swade_chargen
-      [ self.swade_stats ].each do |list|
+      [ self.swade_stats, self.swade_skills ].each do |list|
 			list.each do |a|
 				a.delete
 				end
@@ -32,14 +32,14 @@ module AresMUSH
 	end	
 	
   
-    # class SwadeSkills < Ohm::Model
-		# include ObjectModel
+    class SwadeSkills < Ohm::Model
+		include ObjectModel
     
-		# attribute :name
-		# attribute :die_step
-		# reference :character, "AresMUSH::Character"
-		# index :name
-	# end
+		attribute :name
+		attribute :rating
+		reference :character, "AresMUSH::Character"
+		index :name
+	end
 
 	# class SwadeHinderances < Ohm::Model
 		# include ObjectModel
