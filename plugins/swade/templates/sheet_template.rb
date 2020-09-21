@@ -21,7 +21,11 @@ module AresMUSH
 			end
 			
 			def hinderances
-				format_hinderances @char.swade_hinderances
+				format_three_column @char.swade_hinderances
+			end
+
+			def edges
+				format_three_column @char.swade_edges
 			end
 
 			def format_stats(list)
@@ -57,12 +61,12 @@ module AresMUSH
 				end
 			end
 
-			def format_hinderances(list)
+			def format_three_column(list)
 				list.to_a.sort_by { |a| a.name }
 					.each_with_index
 						.map do |a, i| 
 						linebreak = i % 3 == 0 ? "\n" : ""
-						title = left("#{ a.name }".capitalize, 16,'.')
+						title = left("#{ a.name }".capitalize, 16)
 						"#{linebreak} %xh#{title}%xn"
 				end
 			end
