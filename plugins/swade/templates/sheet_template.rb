@@ -13,7 +13,7 @@ module AresMUSH
 			end
   
 			def stats
-				format_two_per_line @char.swade_stats
+				@char.swade_stats
 			end
 
 			# def skills
