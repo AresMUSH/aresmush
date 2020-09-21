@@ -2,12 +2,14 @@ module AresMUSH
   class Character < Ohm::Model
 #----- These are in aresmush\game\config and are the YML files
     collection :swade_stats, "AresMUSH::SwadeStats"
-#	collection :swade_skills, "AresMUSH::SwadeSkills"
+	collection :swade_skills, "AresMUSH::SwadeSkills"
 #	collection :swade_hinderances, "AresMUSH::SwadeHinderances"
 #	collection :swade_edges, "AresMUSH::SwadeEdges"
 #	collection :swade_powers, "AresMUSH::SwadePowers"
 
 	attribute :swade_iconicf
+	attribute :swade_ppe_max
+	attribute :swade_isp_max
 	
 	before_delete :delete_swade_chargen
     
