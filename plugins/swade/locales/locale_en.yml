@@ -1,8 +1,13 @@
 en:
     swade:
+        # Titles
+        sheet_title: "Character Sheet for %{name}."
         iconicf_title: "Iconic Framework"
+        iconicf_types_title: "Iconic Frameworks"
+        race_title: "Race"
         stats_title: "Stats"
         skills_title: "Skills"
+        
         invalid_stat_name: "%{name} is not a valid stat name."
         invalid_die_step: "%{rating} is not a valid die step."
         stat_removed: "Stat '%{name}' has been removed."
@@ -40,10 +45,7 @@ en:
         # SWADE
         # ------------------------------------------------------
         
-        sheet_title: "Character Sheet for %{name}."
         iconicframe: "%{name}"
-        
-        iconicf_types_title: "Iconic Frameworks"
         iconicf_invalid_name: "There is no Iconic Framework named %{name}."
         iconicf_valid_name: "Iconic Framework named %{name} is valid."
         iconicf_invalid_type: "Invalid Iconic Framework Type %{name}."
