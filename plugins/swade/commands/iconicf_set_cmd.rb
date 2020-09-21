@@ -10,7 +10,7 @@ module AresMUSH
 			end
 
 			def handle
-				enactor.update(goals: self.goals)
+				enactor.update(swade_iconicf: self.goals)
 			client.emit_success "Goals set!"
 			end
 		end
