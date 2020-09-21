@@ -1,47 +1,46 @@
 module AresMUSH    
-  module Swade
-    class SheetTemplate < ErbTemplateRenderer
-      attr_accessor :char
+	module Swade
+		class SheetTemplate < ErbTemplateRenderer
+			attr_accessor :char
   
-      def initialize(char)
-        @char = char
-        super File.dirname(__FILE__) + "/sheet.erb"
-      end
+			def initialize(char)
+				@char = char
+				super File.dirname(__FILE__) + "/sheet.erb"
+			end
 
-      def iconicf_name
-		@char.swade_iconicf
-		#summ = "#{char.swade_iconicf_name}"
-      end
+			def iconicf_name
+				@char.swade_iconicf
+			end
   
-      def stats
-        format_two_per_line @char.swade_stats
-        #stats = @char.swade_stats.to_a.sort_by { |a| a.name }
-		#stats
-      end
+			def stats
+				format_five_per_line @char.swade_stats
+			end
+
+			def skills
+				format_two_per_line @char.swade_skills
+			end
       
-      # def format_two_per_line(list)
-		# puts ("kdkdkd")
-        # list.to_a.sort_by { |a| a.name }
-          # .each_with_index
-            # .map do |a, i| 
-              # linebreak = i % 2 == 0 ? "\n" : ""
-              # title = left("#{ a.name }:", 15)
-              # step = left(a.die_step, 20)
-              # "#{linebreak}%xh#{title}%xn #{step}"
-        # end
-      # end
-
-      def format_two_per_line(list)
-        list.to_a.sort_by { |a| a.name }
-          .each_with_index
-            .map do |a, i| 
-              linebreak = i % 2 == 0 ? "\n" : ""
-              title = left("#{ a.name }:", 15)
-              rating = left(a.rating, 20)
-              "#{linebreak}%xh#{title}%xn #{rating}"
-        end
-      end
-
-    end
-  end
+			def format_two_per_line(list)
+				list.to_a.sort_by { |a| a.name }
+					.each_with_index
+						.map do |a, i| 
+						linebreak = i % 2 == 0 ? "\n" : ""
+						title = left("#{ a.name }:", 15)
+						rating = left(a.rating, 20)
+						"#{linebreak}%xh#{title}%xn #{rating}"
+				end
+			end
+		
+			def format_five_per_line(list)
+				list.to_a.sort_by { |a| a.name }
+					.each_with_index
+						.map do |a, i| 
+						linebreak = i % 2 == 0 ? "\n" : ""
+						title = left("#{ a.name }:", 10)
+						rating = left(a.rating, 6)
+						"#{linebreak}%xh#{title}%xn #{rating}"
+				end
+			end
+		end
+	end
 end
