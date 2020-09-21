@@ -1,6 +1,6 @@
 en:
     swade:
-        iconicf_title: "Iconic Frameworks"
+        iconicf_title: "Iconic Framework"
         stats_title: "Stats"
         skills_title: "Skills"
         invalid_stat_name: "%{name} is not a valid stat name."
