@@ -18,9 +18,9 @@ module AresMUSH
           .each_with_index
             .map do |a, i| 
               linebreak = i % 2 == 0 ? "\n" : ""
-              title = left("#{ a.name }:", 15)
-              step = left(a.rating, 20)
-              "#{linebreak}%xh#{title}%xn #{step}"
+              title = left("#{ a.name }:", 10)
+              step = left(a.rating, 15)
+              "%xh#{title}%xn #{step}"
 			end
 	   end
     end
