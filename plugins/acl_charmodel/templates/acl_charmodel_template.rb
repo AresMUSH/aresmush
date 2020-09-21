@@ -12,6 +12,10 @@ module AresMUSH
 	  def niceview(model)
 		model.to_yaml
       end
+
+	  def swadestats(model)
+		model.swade_stats
+      end
 	end
   end
 end
