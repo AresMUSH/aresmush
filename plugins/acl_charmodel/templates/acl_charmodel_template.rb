@@ -14,10 +14,11 @@ module AresMUSH
       end
 
 	  def niceview(model)
-		#model.each do |key, value|
-		  #client.emit "#{key}: #{value}"
-		#end
-		model.id
+		model.attributes.each do |key, value|
+		  client.emit "#{key}: #{value}"
+		end
+		
+		#model.id
       end
 	end
   end
