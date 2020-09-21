@@ -7,7 +7,7 @@ module AresMUSH
 			attr_accessor :iconicf_name
 			
 			def parse_args
-				  #self.target = enactor_name #Set the character to be the current character
+				  self.target = enactor_name #Set the character to be the current character
 				  self.iconicf_name = trim_arg(cmd.args) #Set 'iconicf_name' to be the inputted Iconic Framework
 			end
 
