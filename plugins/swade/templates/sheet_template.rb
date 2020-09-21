@@ -38,7 +38,7 @@ module AresMUSH
 						linebreak = i % 3 == 0 ? "\n" : ""
 						title = left("#{ a.name }:", 16)
 						rating = left(a.rating, 7)
-						" #{linebreak}%xh#{title}  %xn #{rating}"
+						" #{linebreak}%xh#{title}%xn #{rating} "
 				end
 			end
 
