@@ -2,10 +2,13 @@ module AresMUSH
   module ACL_CharModel
     class ACL_CharModelTemplate < ErbTemplateRenderer
              
-      attr_accessor :pair
+      attr_accessor :char
                      
       def initialize(pair)
-        @pair = pair
+        @list = list
+        @char = name
+        @viewer = viewer
+        super File.dirname(__FILE__) + "/acl_charmodel_template.erb"		
 	  end
 	  
 	  def quickview(model)
