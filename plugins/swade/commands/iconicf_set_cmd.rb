@@ -69,21 +69,21 @@ module AresMUSH
 
 				#----- This sets the default Hinderances on the Character -----				
 				iconicf_hinderances.each do |key|
-					sethinderance = "#{key}".downcase
+					sethinderances = "#{key}".downcase
 					ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
-						SwadeHinderances.create(name: sethinderance, character: model)
+						SwadeHinderances.create(name: sethinderances, character: model)
 					end
 				end
 				client.emit_success t('swade.iconichinderances_set')
 
 				#----- This sets the default Edges on the Character -----				
-				iconicf_edges.each do |key|
-					setedges = "#{key}".downcase
-					ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
-						SwadeEdges.create(name: setedges, character: model)
-					end
-				end
-				client.emit_success t('swade.iconicedges_set')
+				# iconicf_edges.each do |key|
+					# setedges = "#{key}".downcase
+					# ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
+						# SwadeEdges.create(name: setedges, character: model)
+					# end
+				# end
+				# client.emit_success t('swade.iconicedges_set')
 
 			end
 #----- End of def handle -----	
