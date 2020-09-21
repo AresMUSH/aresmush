@@ -17,7 +17,7 @@ module AresMUSH
 			end
 
 			 def skills
-				format_two_per_line @char.swade_skills
+				format_three_per_line @char.swade_skills
 			 end
       
 			def format_two_per_line(list)
