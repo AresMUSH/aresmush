@@ -14,7 +14,6 @@ module AresMUSH
       end
 
 	  def niceview(model)
-		@char.each do |key, value| puts "#{value}: #{key}"}  
       end
       
     end
