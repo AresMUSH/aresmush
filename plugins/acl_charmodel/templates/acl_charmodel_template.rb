@@ -14,12 +14,15 @@ module AresMUSH
       end
 
 	  def swadestats(model)
-		# SwadeStats.each do |k, v|
-			# client.emit "Key: #{k} - Value: #{v}"
-		# end
-		SwadeStats.to_yaml
-      end
-	end
+        model.swade_stats.to_a.sort_by { |a| a.name }
+          .each_with_index
+            .map do |a, i| 
+              linebreak = i % 2 == 0 ? "\n" : ""
+              title = left("#{ a.name }:", 10)
+              step = left(a.rating, 15)
+              "%xh#{title}%xn #{step}"
+			end
+	   end
+    end
   end
 end
-
