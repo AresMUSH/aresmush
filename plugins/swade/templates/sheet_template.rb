@@ -17,7 +17,7 @@ module AresMUSH
 			end
 
 			 def skills
-				format_two_per_line @char.swade_skills
+				format_three_per_line @char.swade_skills
 			 end
       
 			def format_two_per_line(list)
@@ -28,6 +28,17 @@ module AresMUSH
 						title = left("#{ a.name }:", 15)
 						rating = left(a.rating, 20)
 						"#{linebreak}%xh#{title}%xn #{rating}"
+				end
+			end
+			
+			def format_three_per_line(list)
+				list.to_a.sort_by { |a| a.name }
+					.each_with_index
+						.map do |a, i| 
+						linebreak = i % 3 == 0 ? "\n" : ""
+						title = left("#{ a.name }:", 16)
+						rating = left(a.rating, 7)
+						"#{linebreak}%xh#{title}   %xn #{rating}"
 				end
 			end
 
