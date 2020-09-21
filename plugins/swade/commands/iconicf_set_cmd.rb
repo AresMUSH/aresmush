@@ -15,6 +15,11 @@ module AresMUSH
 				[ self.target, self.iconicf_name ]
 			end
 			
+			def check_valid_iconicf
+				return t('swade.iconicf_invalid_name') if !Swade.is_valid_iconicf_name?(self.iconicf_name)
+				return nil
+			end
+			
 			def handle  
 				iconicf_exists = Swade.get_iconicf(self.target, self.iconicf_name)
 				
@@ -22,6 +27,9 @@ module AresMUSH
 					model.update(swade_iconicf: self.iconicf_name)
 					client.emit_success t('swade.iconicf_set', :name => self.iconicf_name.capitalize)
 				end
+				
+				
+				
 			end
 		end
     end
