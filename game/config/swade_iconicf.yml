@@ -44,6 +44,36 @@ swade:
                 Survival: 0
                 Taunt: 0
                 Thievery: 0
+        hinderances: 
+            - Enemies
+        edges:
+            - AB Magic
+            - Familiar Link
+            - Dimensional Portal
+            - Master of Magic
+            - Power Points
+            - Rapid Recharge
+        powers:
+            - Detect Arcana
+            - Banish
+            - Drain Power Points
+            - Summon Ally
+            - Teleport
+        abilities:
+            - Bind the Summoned
+            - Communication Rift
+            - Dimension Sense
+            - Dimensional Teleport Home
+            - Expanded Awareness
+            - Ley Line Magic Mastery
+            - Psychotically Brave
+            - Sense Rifts
+            - Shift Reality
+        complications:
+            - Corruption
+            - Cybernetics
+            - Disconnected
+            - Power Activators
         -   
             name: Mystic
             stats:
