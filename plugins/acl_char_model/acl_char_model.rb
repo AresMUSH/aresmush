@@ -8,6 +8,7 @@ module AresMUSH
 		  Global.read_config("acl_char_model", "shortcuts")
 		end
 	
+		# get the command
 		def self.get_cmd_handler(client, cmd, enactor)
 		  case cmd.root
 		  when "aclcm"
