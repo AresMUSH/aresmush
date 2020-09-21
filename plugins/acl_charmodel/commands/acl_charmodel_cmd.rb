@@ -20,7 +20,6 @@ module AresMUSH
           #template = ACL_CharModelTemplate.new model
           #client.emit template.render
 		  client.emit "Here"
-		  client.emit (model.inspect)
         end		
       end      
     end
