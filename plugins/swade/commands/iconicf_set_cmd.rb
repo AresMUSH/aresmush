@@ -68,7 +68,16 @@ module AresMUSH
 					end
 				end
 				client.emit_success t('swade.iconicskills_set')
-				
+
+				#----- This sets the default Chargen Points on the Character -----				
+				iconicf_chargen_points.each do |key|
+					setthing = "#{key}".downcase
+					setrating = "#{rating}"
+					ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
+						SwadeChargenpoints.create(name: setthing, rating: setrating, character: model)
+					end
+				end
+				client.emit_success t('swade.iconicchargenpoints_set')				
 
 				#----- This sets the default Hinderances on the Character -----				
 				iconicf_hinderances.each do |key|
@@ -133,15 +142,6 @@ module AresMUSH
 				end
 				client.emit_success t('swade.iconiccomplications_set')
 				
-				#----- This sets the default Chargen Points on the Character -----				
-				iconicf_chargen_points.each do |key|
-					setrating = "#{rating}"
-					ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
-						SwadeChargenpoints.create(name: setthing, rating: setrating, character: model)
-					end
-				end
-				client.emit_success t('swade.iconicchargenpoints_set')
-
 				client.emit_success center(COMPLETE, 78)
 			end
 #----- End of def handle -----	
