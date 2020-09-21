@@ -16,9 +16,9 @@ module AresMUSH
 				format_stats @char.swade_stats
 			end
 
-			# def skills
-				# format_two_per_line @char.swade_skills
-			# end
+			 def skills
+				format_two_per_line @char.swade_skills
+			 end
       
 			def format_two_per_line(list)
 				list.to_a.sort_by { |a| a.name }
