@@ -17,7 +17,7 @@ module AresMUSH
 		#model.each do |key, value|
 		  #client.emit "#{key}: #{value}"
 		#end
-		model.inspect
+		model.color_mode
       end
 	end
   end
