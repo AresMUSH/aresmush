@@ -3,16 +3,16 @@ module AresMUSH
 		class IconicfSetCmd
 			include CommandHandler
       
-			attr_accessor :goals, :swade_iconicf
+			attr_accessor :iconicf_name, :swade_iconicf
 
 			def parse_args
-				self.goals = trim_arg(cmd.args)
+				self.iconicf_name = trim_arg(cmd.args)
 				self.swade_iconicf = "swade_iconicf"
 			end
 
 			def handle
 				client.emit (enactor)
-				client.emit (self.goals)
+				client.emit (self.iconicf_name)
 				client.emit (self.swade_iconicf)
 			end
 		end
