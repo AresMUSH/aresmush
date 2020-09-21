@@ -44,11 +44,10 @@ module AresMUSH
 				
 				client.emit (iconicf)
 				client.emit (iconicf_stats)
+				client.emit (self.target.swade_stats)
 				iconicf_stats.each do |key, rating|
 					setstat = "#{key}".downcase
 					setrating = "#{rating}"
-					client.emit (setstat)
-					client.emit (setrating)
 					ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
 						SwadeStats.create(name: setstat, rating: setrating, character: model)
 						client.emit_success t('swade.iconicstats_set', :name => setstat)
@@ -57,7 +56,7 @@ module AresMUSH
 				
 #----- This sets the default skills on the Character -----				
 				
-				#iconicf_skills.each { |key, rating| client.emit("k: #{key}, r: #{rating}") }					
+				# iconicf_skills.each { |key, rating| client.emit("k: #{key}, r: #{rating}") }					
 				# iconicf_skills.each do |key, rating|
 					# setskill = "#{key}".downcase
 					# setrating = "#{rating}"
