@@ -23,6 +23,11 @@
 <%= a -%>
 <% end %>
 
+<%= line_with_text t('swade.mpowers_title') -%>
+<% mpowers.each do |a| %>
+<%= a -%>
+<% end %>
+
 <%= line_with_text t('swade.abilities_title') -%>
 <% abilities.each do |a| %>
 <%= a -%>
@@ -30,11 +35,6 @@
 
 <%= line_with_text t('swade.complications_title') -%>
 <% complications.each do |a| %>
-<%= a -%>
-<% end %>
-
-<%= line_with_text t('swade.mpowers_title') -%>
-<% mpowers.each do |a| %>
 <%= a -%>
 <% end %>
 
