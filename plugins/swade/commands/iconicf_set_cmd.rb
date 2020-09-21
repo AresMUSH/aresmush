@@ -85,6 +85,15 @@ module AresMUSH
 				end
 				client.emit_success t('swade.iconicedges_set')
 
+				#----- This sets the default Magic Powers on the Character -----				
+				iconicf_magic_powers.each do |key|
+					setmpowers = "#{key}".downcase
+					ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
+						SwadeMpowers.create(name: setmpowers, character: model)
+					end
+				end
+				client.emit_success t('swade.iconicmpowers_set')
+
 			end
 #----- End of def handle -----	
 		end
