@@ -14,10 +14,8 @@ module AresMUSH
       end
 
 	  def swadestats(model)
-		# SwadeStats.each do |k, v|
-			# client.emit "Key: #{k} - Value: #{v}"
-		# end
-		SwadeStats.to_yaml
+		ss = model.swade_stats { |a| a.name }
+		ss.to_yaml
       end
 	end
   end
