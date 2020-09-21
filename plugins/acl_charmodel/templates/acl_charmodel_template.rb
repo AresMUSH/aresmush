@@ -2,7 +2,7 @@ module AresMUSH
   module ACL_CharModel
     class ACL_CharModelTemplate < ErbTemplateRenderer
              
-      attr_accessor :list, :char, :viewer 
+      attr_accessor :list, :char, :viewer, :model 
                      
       def initialize(model)
         @model = model
