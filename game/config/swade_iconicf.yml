@@ -9,6 +9,41 @@ swade:
                 Spirit: 1
                 Strength: 1
                 Vigor: 1
+            chargen_points:
+                attributes_points: 5
+                skills_points: 15
+                hj_slots: 2 
+                magic_slots: 1
+            swade_ppe_max: 15
+            skills:
+                Academics: 0
+                Athletics: 1
+                Battle: 0
+                Boating: 0
+                Common Knowledge: 1
+                Driving: 0
+                Electronics: 0
+                Fighting: 0
+                Gambling: 0
+                Hacking: 0
+                Healing: 0
+                Intimidation: 0
+                Language: 0
+                Notice: 1
+                Occult: 2
+                Performance: 0
+                Persuasion: 1
+                Piloting: 0
+                Repair: 0
+                Research: 0
+                Riding: 0
+                Science: 0
+                Shooting: 0
+                Spelllcasting: 2
+                Stealth: 1
+                Survival: 0
+                Taunt: 0
+                Thievery: 0
         -   
             name: Mystic
             stats:
@@ -17,3 +52,40 @@ swade:
                 Spirit: 1
                 Strength: 1
                 Vigor: 1
+            chargen_points:
+                skills_points: 15
+                hj_slots: 2 
+                magic_slots: 3
+                psionic_slots: 3
+            swade_ppe_max: 15
+            swade_isp_max: 20
+            skills:
+                Academics: 0
+                Athletics: 1
+                Battle: 0
+                Boating: 0
+                Common Knowledge: 1
+                Driving: 0
+                Electronics: 0
+                Faith: 2
+                Fighting: 0
+                Gambling: 0
+                Hacking: 0
+                Healing: 0
+                Intimidation: 0
+                Language: 0
+                Notice: 1
+                Occult: 0
+                Performance: 0
+                Persuasion: 1
+                Piloting: 0
+                Psionics: 2
+                Repair: 0
+                Research: 0
+                Riding: 0
+                Science: 0
+                Shooting: 0
+                Stealth: 1
+                Survival: 0
+                Taunt: 0
+                Thievery: 0
