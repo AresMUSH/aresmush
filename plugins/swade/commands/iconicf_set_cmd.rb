@@ -50,6 +50,7 @@ module AresMUSH
 						client.emit_success t('swade.iconicstats_set', :name => setstat)
 					end
 				end
+				client.emit_success t('swade.iconicstats_set', :name => setstat)
 				
 #----- This sets the default skills on the Character -----				
 				
@@ -62,6 +63,7 @@ module AresMUSH
 					end
 				end
 				client.emit_success t('swade.iconicskills_set')
+				
 			end
 		end
     end
