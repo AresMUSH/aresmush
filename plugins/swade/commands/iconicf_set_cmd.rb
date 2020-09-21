@@ -25,6 +25,7 @@ module AresMUSH
 				iconicf = Swade.get_iconicf(self.enactor, self.iconicf_name)
 				iconicf_stats=iconicf['stats']
 				iconicf_skills=iconicf['skills']
+				iconicf_hinderances=iconicf['hinderances']
 				
 				#----- This sets the Iconic Framework on the Character -----
 				ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
