@@ -6,6 +6,7 @@ module AresMUSH
                      
       def initialize(pair)
         @pair = pair
+	  end
 	  
 	  def quickview(model)
         model.inspect
