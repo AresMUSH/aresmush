@@ -7,13 +7,13 @@ module AresMUSH
 
 			def parse_args
 				self.goals = trim_arg(cmd.args)
-				swade_iconicf = "swade_iconicf"
+				self.swade_iconicf = "swade_iconicf"
 			end
 
 			def handle
 				client.emit (enactor)
 				client.emit (self.goals)
-				client.emit (swade_iconicf)
+				client.emit (self.swade_iconicf)
 			end
 		end
 	end
