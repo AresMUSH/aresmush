@@ -97,23 +97,23 @@ module AresMUSH
 				end
 				client.emit_success t('swade.iconicmpowers_set') 
 
-				#----- This sets the default Psionic Powers on the Character -----				
-				iconicf_psionic_powers.each do |key|
-					setthing = "#{key}".downcase
-					ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
-						SwadePpowers.create(name: setthing, character: model)
-					end
-				end
-				client.emit_success t('swade.iconicppowers_set')
+				# ----- This sets the default Psionic Powers on the Character -----				
+				# iconicf_psionic_powers.each do |key|
+					# setthing = "#{key}".downcase
+					# ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
+						# SwadePpowers.create(name: setthing, character: model)
+					# end
+				# end
+				# client.emit_success t('swade.iconicppowers_set')
 
-				#----- This sets the default Cybernetics on the Character -----				
-				iconicf_cybernetics.each do |key|
-					setthing = "#{key}".downcase
-					ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
-						SwadeCybernetics.create(name: setthing, character: model)
-					end
-				end
-				client.emit_success t('swade.iconiccybernetics_set')
+				# ----- This sets the default Cybernetics on the Character -----				
+				# iconicf_cybernetics.each do |key|
+					# setthing = "#{key}".downcase
+					# ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
+						# SwadeCybernetics.create(name: setthing, character: model)
+					# end
+				# end
+				# client.emit_success t('swade.iconiccybernetics_set')
 				
 				#----- This sets the default Abilities on the Character -----				
 				iconicf_abilities.each do |key|
