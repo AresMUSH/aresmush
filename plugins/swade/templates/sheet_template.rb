@@ -28,7 +28,6 @@ module AresMUSH
 						title = left("#{ a.name }:", 15)
 						rating = left(a.rating, 20)
 						"#{linebreak}%xh#{title}%xn #{rating}"
-					end
 				end
 			end
 		
@@ -40,7 +39,6 @@ module AresMUSH
 						title = left("#{ a.name }:", 10)
 						rating = left(a.rating, 6)
 						"#{linebreak}%xh#{title}%xn #{rating}"
-					end
 				end
 			end
 		end
