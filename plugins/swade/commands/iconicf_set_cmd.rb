@@ -23,11 +23,13 @@ module AresMUSH
 				iconicf_exists = Swade.get_iconicf(self.target, self.iconicf_name)
 				client.emit (iconicf_exists)
 				client.emit ("----- ")
+				charattrib = char.swade_iconicf
+				client.emit (charattrib)
 				if (self.iconicf_name.blank?)
-					target.update(self.swade_iconicf, nil)
+					charattrib.update(nil)
 					client.emit_success t('swade.iconicf_cleared')
 				else
-					target.update(self.swade_iconicf, self.iconicf_name)
+					charattrib.update(self.iconicf_name)
 					client.emit_success t('swade.iconicf_set', :name => self.iconicf_name.capitalize)
 				end
 				# else
