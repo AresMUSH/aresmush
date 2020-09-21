@@ -1,7 +1,7 @@
 en:
     swade:
         # Titles
-        sheet_title: "Character Sheet for %{name}."
+        sheet_title: "Character Sheet for %{name}"
         iconicf_title: "Iconic Framework"
         iconicf_types_title: "Iconic Frameworks"
         race_title: "Race"
