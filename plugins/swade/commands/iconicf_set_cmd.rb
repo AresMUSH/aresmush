@@ -95,7 +95,7 @@ module AresMUSH
 						SwadeMpowers.create(name: setthing, character: model)
 					end
 				end
-				client.emit_success t('swade.iconicmpowers_set')
+				client.emit_success t('swade.iconicmpowers_set') 
 
 				#----- This sets the default Psychic Powers on the Character -----				
 				iconicf_psychic_powers.each do |key|
