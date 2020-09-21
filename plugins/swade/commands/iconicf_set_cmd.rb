@@ -3,7 +3,7 @@ module AresMUSH
 		class IconicfSetCmd
 			include CommandHandler
       
-			attr_accessor :target, :iconicf_name, :swade_iconicf
+			attr_accessor :target, :iconicf_name, :swade_iconicf, :setstat, :setrating
 			
 			def parse_args
 				self.target = enactor_name #Set the character to be the current character
@@ -50,7 +50,7 @@ module AresMUSH
 					client.emit (setstat)
 					client.emit (setrating)
 					ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
-						SwadeAttributes.create(name: self.setstat, rating: self.setrating, character: model)
+						SwadeStats.create(name: self.setstat, rating: self.setrating, character: model)
 						client.emit_success t('swade.iconicstats_set', :name => setstat)
 					end
 				end
