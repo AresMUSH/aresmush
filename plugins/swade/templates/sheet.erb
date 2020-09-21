@@ -1,11 +1,9 @@
 %lh
 <%= t('swade.sheet_title', :name => char.name) %>
 %xh<%= left( t('swade.iconicf_title'), 20 ) %>%xn <%= left( iconicf_name, 30 ) %>
-<%= line_with_text t('swade.stats_title') -%>
-<% stats.each do |s| %>
-%xh<%= left("#{s.name}:", 15) %>%xn <%= s.rating %>
-<% end %>
 
+<%= line_with_text t('swade.stats_title') -%>
+<% stats.each do |a| %>
 <%= a -%>
 <% end %>
 
