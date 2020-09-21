@@ -9,15 +9,7 @@ module AresMUSH
         super File.dirname(__FILE__) + "/acl_charmodel_template.erb"		
 	  end
 	  
-	  def quickview(model)
-        model.inspect
-      end
-
 	  def niceview(model)
-		#model.attributes.each do |key, value|
-		  #client.emit "#{key}: #{value}"
-		#end
-		
 		model.to_yaml
       end
 	end
