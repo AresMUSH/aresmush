@@ -14,7 +14,7 @@ module AresMUSH
       end
 	  
 	  def description(type)
-		type['description'] || {})
+		type['description']
       
 
     end
