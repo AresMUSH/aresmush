@@ -50,5 +50,6 @@ en:
         iconicf_set: "You set your Iconic Framework to %{name}."
         iconicf_not_set: "Iconic Framework: '%{name}' was not set."
         iconicf_set: "Iconic Framework set to '%{name}'."
-        iconicstats_set: "Base Stats set to '%{name}'."
+        iconicstats_set: "Base Stats set."
+        iconicskills_set: "Base Skills set."
 
