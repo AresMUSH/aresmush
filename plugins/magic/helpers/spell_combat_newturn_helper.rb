@@ -59,26 +59,26 @@ module AresMUSH
 
       end
 
-      if combatant.lethal_mod_counter == 0 && combatant.damage_lethality_mod != 0
-        FS3Combat.emit_to_combat combatant.combat, t('custom.mod_wore_off', :name => combatant.name, :type => "lethality", :mod => combatant.damage_lethality_mod), nil, true
-        combatant.update(damage_lethality_mod: 0)
-        combatant.log "#{combatant.name} resetting lethality mod to #{combatant.damage_lethality_mod}."
+      if combatant.lethal_mod_counter == 0 && combatant.spell_damage_lethality_mod != 0
+        FS3Combat.emit_to_combat combatant.combat, t('custom.mod_wore_off', :name => combatant.name, :type => "lethality", :mod => combatant.spell_damage_lethality_mod), nil, true
+        combatant.update(spell_damage_lethality_mod: 0)
+        combatant.log "#{combatant.name} resetting lethality mod to #{combatant.spell_damage_lethality_mod}."
       else
         combatant.update(lethal_mod_counter: combatant.lethal_mod_counter - 1)
       end
 
-      if combatant.defense_mod_counter == 0 && combatant.defense_mod != 0
-        FS3Combat.emit_to_combat combatant.combat, t('custom.mod_wore_off', :name => combatant.name, :type => "defense", :mod => combatant.defense_mod), nil, true
-        combatant.update(defense_mod: 0)
-        combatant.log "#{combatant.name} resetting defense mod to #{combatant.defense_mod}."
+      if combatant.defense_mod_counter == 0 && combatant.spell_defense_mod != 0
+        FS3Combat.emit_to_combat combatant.combat, t('custom.mod_wore_off', :name => combatant.name, :type => "defense", :mod => combatant.spell_defense_mod), nil, true
+        combatant.update(spell_defense_mod: 0)
+        combatant.log "#{combatant.name} resetting defense mod to #{combatant.spell_defense_mod}."
       else
         combatant.update(defense_mod_counter: combatant.defense_mod_counter - 1)
       end
 
-      if combatant.attack_mod_counter == 0 && combatant.attack_mod != 0
-        FS3Combat.emit_to_combat combatant.combat, t('custom.mod_wore_off', :name => combatant.name, :type => "attack", :mod => combatant.attack_mod), nil, true
-        combatant.update(attack_mod: 0)
-        combatant.log "#{combatant.name} resetting attack mod to #{combatant.attack_mod}."
+      if combatant.attack_mod_counter == 0 && combatant.spell_attack_mod != 0
+        FS3Combat.emit_to_combat combatant.combat, t('custom.mod_wore_off', :name => combatant.name, :type => "attack", :mod => combatant.spell_attack_mod), nil, true
+        combatant.update(spell_attack_mod: 0)
+        combatant.log "#{combatant.name} resetting attack mod to #{combatant.spell_attack_mod}."
       else
         combatant.update(attack_mod_counter: combatant.attack_mod_counter - 1)
       end
