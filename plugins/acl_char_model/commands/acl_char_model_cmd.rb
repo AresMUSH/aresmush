@@ -3,7 +3,7 @@ module AresMUSH
     class ACLCharModelCmd
       include CommandHandler
       
-      attr_accessor :search, :mode
+      attr_accessor :search, :mode, :name
       
       def parse_args
         #self.search = titlecase_arg(cmd.args)
