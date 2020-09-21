@@ -1,6 +1,6 @@
 module AresMUSH
   module Who
-    class WhereTemplate < ErbTemplateRenderer
+    class WhereSceneTemplate < ErbTemplateRenderer
       
       # NOTE!  Because so many fields are shared between the who and where templates,
       # some are defined in a common file.
@@ -10,16 +10,10 @@ module AresMUSH
     
       def initialize(online_chars, client)
         @online_chars = online_chars
+                
         @client = client
         
-        case (Global.read_config("who", "where_style"))
-        when "room"
-          template_file = "/where_by_room.erb"
-        else
-          template_file = "/where.erb"
-        end
-        
-        super File.dirname(__FILE__) + template_file
+        super File.dirname(__FILE__) + "/where_by_scene.erb"
       end
       
       def append_to_group(groups, key, value)
@@ -28,7 +22,19 @@ module AresMUSH
         else
           groups[key] = [value]
         end
-      end  
+      end
+      
+      def scenes
+        Scene.all.select { |s| !s.completed && !s.is_private? }
+      end
+      
+      def scene_location(scene)
+        scene.location
+      end
+      
+      def scene_participants(scene)
+        Scenes.participants_and_room_chars(scene).each.map { |p| name(p) }.join(" ")
+      end
       
       def name(char)
         status  = Website.activity_status(char)
@@ -39,6 +45,10 @@ module AresMUSH
           name = "%xh%xx#{name}#{Website.web_char_marker}%xn"
         elsif (status == 'web-active')
           name = "#{name}%xh%xx#{Website.web_char_marker}%xn"
+        elsif (status == 'game-active')
+          name
+        else
+          name = "%xh%xx#{name}[#{t('global.offline_status')}]%xn"
         end
         name
       end
@@ -80,14 +90,22 @@ module AresMUSH
         end
         groups.sort
       end
-      
-      def profile_field(char, field, value = nil)
-        Profile.general_field(char, field, value)
-      end
        
       def section_line(title)
         @client.screen_reader ? title : line_with_text(title)
       end
+      
+      def scene_room_name(scene)
+        if (scene.room.is_temp_room?)
+          scene_id = left("\##{scene.id}", 5)
+          return "#{scene_id} #{scene.location}(*)"
+        else
+          scene_id = left("\##{scene.id}", 5)
+          area = scene.room.area ? "#{scene.room.area.name} - " : ""
+          return "#{scene_id} #{area}#{scene.room.name}"
+        end
+      end
+      
     end 
   end
 end
