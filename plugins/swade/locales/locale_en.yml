@@ -63,4 +63,10 @@ en:
         iconicskills_set: "Base Skills set."
         iconichinderances_set: "Base Hinderances set."
         iconicedges_set: "Base Edges set."
+        iconicmpowers_set: "Base Magic Powers set."
+        iconicppowers_set: "Base Psionic Powers set."
+        iconiccybernetics_set: "Base Cybernetics set."
+        iconicabilities_set: "Iconic Framework Abilities set."
+        iconiccomplications_set: "Iconic Framework Complications set."
+        iconicchargenpoints_set: "Iconic Framework chargen points set."
 
