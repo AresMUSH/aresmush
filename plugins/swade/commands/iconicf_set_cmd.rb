@@ -61,7 +61,7 @@ module AresMUSH
 						SwadeSkills.create(name: setskill, rating: setrating, character: model)
 					end
 				end
-				client.emit_success t('swade.iconicskills_set', :name => setskill)
+				client.emit_success t('swade.iconicskills_set')
 			end
 		end
     end
