@@ -44,7 +44,6 @@ module AresMUSH
 				
 				client.emit (iconicf)
 				client.emit (iconicf_stats)
-				client.emit (self.target.swade_stats)
 				iconicf_stats.each do |key, rating|
 					setstat = "#{key}".downcase
 					setrating = "#{rating}"
