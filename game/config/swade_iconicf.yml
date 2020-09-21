@@ -54,26 +54,26 @@ swade:
                 - Power Points*
                 - Rapid Recharge*
             magic_powers:
-                - Detect Arcana
-                - Banish
-                - Drain Power Points
-                - Summon Ally
-                - Teleport
+                - Detect Arcana*
+                - Banish*
+                - Drain Power Points*
+                - Summon Ally*
+                - Teleport*
             abilities:
-                - Bind the Summoned
-                - Communication Rift
-                - Dimension Sense
-                - Dimensional Teleport Home
-                - Expanded Awareness
-                - Ley Line Magic Mastery
-                - Psychotically Brave
-                - Sense Rifts
-                - Shift Reality
+                - Bind the Summoned*
+                - Communication Rift*
+                - Dimension Sense*
+                - Dimensional Teleport Home*
+                - Expanded Awareness*
+                - Ley Line Magic Mastery*
+                - Psychotically Brave*
+                - Sense Rifts*
+                - Shift Reality*
             complications:
-                - Corruption
-                - Cybernetics
-                - Disconnected
-                - Power Activators
+                - Corruption*
+                - Cybernetics*
+                - Disconnected*
+                - Power Activators*
         -   
             name: Mystic
             stats:
