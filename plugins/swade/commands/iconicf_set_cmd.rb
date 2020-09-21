@@ -50,7 +50,7 @@ module AresMUSH
 					client.emit (setstat)
 					client.emit (setrating)
 					ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
-						SwadeStats.create(name: self.setstat, rating: self.setrating, character: model)
+						SwadeStats.create(name: setstat, rating: setrating, character: model)
 						client.emit_success t('swade.iconicstats_set', :name => setstat)
 					end
 				end
