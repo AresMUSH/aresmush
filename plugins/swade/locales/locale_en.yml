@@ -8,9 +8,6 @@ en:
         starting_stat_limit: "Starting stats may not be higher than %{step}."
         starting_rating_limit: "The maximum rating is %{step}."
         stat_not_set: "Stat '%{name}' was not set."
-        iconicf_not_set: "Iconic Framework: '%{name}' was not set."
-        iconicf_set: "Iconic Framework set to '%{name}'."
-        iconicstats_set: "Base Stats set to '%{name}'."
         
         # Chargen Values Set
         stat_set: "Stat '%{name}' is now %{rating}."
@@ -51,5 +48,7 @@ en:
         iconicf_invalid_type: "Invalid Iconic Framework Type %{name}."
         iconicf_cleared: "Iconic Framework %{name} removed."
         iconicf_set: "You set your Iconic Framework to %{name}."
-        
+        iconicf_not_set: "Iconic Framework: '%{name}' was not set."
+        iconicf_set: "Iconic Framework set to '%{name}'."
+        iconicstats_set: "Base Stats set to '%{name}'."
 
