@@ -32,14 +32,14 @@ module AresMUSH
 	end	
 	
   
-    # class SwadeSkills < Ohm::Model
-		# include ObjectModel
+    class SwadeSkills < Ohm::Model
+		include ObjectModel
     
-		# attribute :name
-		# attribute :die_step
-		# reference :character, "AresMUSH::Character"
-		# index :name
-	# end
+		attribute :name
+		attribute :rating
+		reference :character, "AresMUSH::Character"
+		index :name
+	end
 
 	# class SwadeHinderances < Ohm::Model
 		# include ObjectModel
