@@ -18,7 +18,9 @@ module AresMUSH
 		  #client.emit "#{key}: #{value}"
 		#end
 		
-		model.map { |k,v| "%r%tKey: #{k} - Value: #{v}"}
+		model.each_with_object([]) do |(key, value), array|
+			array << { id: value, name: key }
+		end
 		
 		#model.id
       end
