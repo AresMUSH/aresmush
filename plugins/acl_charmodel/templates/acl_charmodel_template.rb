@@ -21,8 +21,8 @@ module AresMUSH
               title = left("#{ a.name }:", 15)
               step = left(a.rating, 20)
               "#{linebreak}%xh#{title}%xn #{step}"
-      end
-	end
+			end
+	   end
+    end
   end
 end
-
