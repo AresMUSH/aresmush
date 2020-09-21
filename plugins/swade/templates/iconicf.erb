@@ -1,7 +1,8 @@
 %lh
 %xh<%= t('swade.iconicf_title') %>%xn
+
 <% types.each do |c| %>
-<%= left c['name'], 15 %> 
+%xc<%= c['name'] %>%xn
 <%= description(c) %>
   
 <% end %>
