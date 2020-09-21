@@ -59,9 +59,9 @@ module AresMUSH
 					setrating = "#{rating}"
 					ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
 						SwadeSkills.create(name: setskill, rating: setrating, character: model)
-						client.emit_success t('swade.iconicskills_set', :name => setskill)
 					end
 				end
+				client.emit_success t('swade.iconicskills_set', :name => setskill)
 			end
 		end
     end
