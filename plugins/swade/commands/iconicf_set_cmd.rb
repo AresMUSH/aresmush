@@ -3,7 +3,7 @@ module AresMUSH
 		class IconicfSetCmd
 			include CommandHandler
       
-			attr_accessor :goals
+			attr_accessor :swade_iconicf
 
 			def parse_args
 				self.goals = trim_arg(cmd.args)
