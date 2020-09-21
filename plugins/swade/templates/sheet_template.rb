@@ -62,7 +62,7 @@ module AresMUSH
 					.each_with_index
 						.map do |a, i| 
 						linebreak = i % 3 == 0 ? "\n" : ""
-						title = left("#{ a.name }".capitalize, 16,'.')
+						title = left("#{ a.name }".capitalize, 16)
 						"#{linebreak} %xh#{title}%xn"
 				end
 			end
