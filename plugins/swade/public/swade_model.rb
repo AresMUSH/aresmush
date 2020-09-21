@@ -46,6 +46,14 @@ module AresMUSH
 		index :name
 	end
 
+	class SwadeChargenpoints < Ohm::Model
+		include ObjectModel
+	
+		attribute :name
+		attribute :rating, :type => DataType::Integer
+		reference :character, "AresMUSH::Character"
+		index :name
+	end
 
 	class SwadeHinderances < Ohm::Model
 		include ObjectModel
@@ -89,15 +97,7 @@ module AresMUSH
 		index :name
 	end
 	
-	class SwadeChargenpoints < Ohm::Model
-		include ObjectModel
-	
-		attribute :name
-		attribute :rating
-		reference :character, "AresMUSH::Character"
-		index :name
-	end
-	
+
 	class SwadeAbilities < Ohm::Model
 		include ObjectModel
 	
