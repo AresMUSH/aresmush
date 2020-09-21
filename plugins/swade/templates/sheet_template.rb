@@ -30,6 +30,17 @@ module AresMUSH
 						"#{linebreak}%xh#{title}%xn #{rating}"
 				end
 			end
+			
+			def format_three_per_line(list)
+				list.to_a.sort_by { |a| a.name }
+					.each_with_index
+						.map do |a, i| 
+						linebreak = i % 3 == 0 ? "\n" : ""
+						title = left("#{ a.name }:", 16)
+						rating = left(a.rating, 7)
+						"#{linebreak}%xh#{title}   %xn #{rating}"
+				end
+			end
 
 			def format_stats(list)
 				list.to_a.sort_by { |a| a.name }
