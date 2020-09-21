@@ -25,9 +25,8 @@ module AresMUSH
 				client.emit ("----- ")
 				if (self.iconicf_name.blank?)
 					enactor.update(swade_iconicf: nil)
-					client.emit_success t('swade.iconicf_cleared', :name => self.iconicf_name.capitalize)
+					client.emit_success t('swade.iconicf_cleared')
 				else
-					client.emit (model)
 					client.emit (enactor)
 					enactor.update(self.swade_iconicf self.iconicf_name)
 					client.emit_success t('swade.iconicf_set', :name => self.iconicf_name.capitalize)
