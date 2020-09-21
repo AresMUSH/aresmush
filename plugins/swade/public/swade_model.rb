@@ -19,7 +19,7 @@ module AresMUSH
 		before_delete :delete_swade_chargen
 		
 		def delete_swade_chargen
-		  [ self.swade_stats, self.swade_skills, self.swade_hinderances, self.swade_edges ].each do |list|
+		  [ self.swade_stats, self.swade_skills, self.swade_hinderances, self.swade_edges, self.swade_abilities, self.swade_complications, self.swade_chargenpoints, self.swade_cybernetics ].each do |list|
 				list.each do |a|
 					a.delete
 					end
