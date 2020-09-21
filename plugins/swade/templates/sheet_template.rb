@@ -13,7 +13,7 @@ module AresMUSH
 			end
   
 			def stats
-				format_five_per_line @char.swade_stats
+				format_two_per_line @char.swade_stats
 			end
 
 			def skills
@@ -31,16 +31,17 @@ module AresMUSH
 				end
 			end
 		
-			def format_five_per_line(list)
-				list.to_a.sort_by { |a| a.name }
-					.each_with_index
-						.map do |a, i| 
-						linebreak = i % 2 == 0 ? "\n" : ""
-						title = left("#{ a.name }:", 10)
-						rating = left(a.rating, 6)
-						"#{linebreak}%xh#{title}%xn #{rating}"
-				end
-			end
+			# def format_five_per_line(list)
+				# list.to_a.sort_by { |a| a.name }
+					# .each_with_index
+						# .map do |a, i| 
+						# linebreak = i % 2 == 0 ? "\n" : ""
+						# title = left("#{ a.name }:", 10)
+						# rating = left(a.rating, 6)
+						# "#{linebreak}%xh#{title}%xn #{rating}"
+				# end
+			# end
+			
 		end
 	end
 end
