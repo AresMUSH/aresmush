@@ -14,8 +14,13 @@ module AresMUSH
       end
 
 	  def swadestats(model)
-		ss = model.swade_stats { |a| a.name }
-		ss.to_yaml
+        model.swade_stats.to_a.sort_by { |a| a.name }
+          .each_with_index
+            .map do |a, i| 
+              linebreak = i % 2 == 0 ? "\n" : ""
+              title = left("#{ a.name }:", 15)
+              step = left(a.rating, 20)
+              "#{linebreak}%xh#{title}%xn #{step}"
       end
 	end
   end
