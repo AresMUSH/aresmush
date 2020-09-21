@@ -27,6 +27,18 @@ module AresMUSH
 			def edges
 				format_three_column @char.swade_edges
 			end
+			
+			def abilities
+				format_three_column @char.swade_abilities
+			end
+
+			def complications
+				format_three_column @char.swade_complications
+			end
+
+			def mpowers
+				format_three_column @char.swade_mpowers
+			end
 
 			def format_stats(list)
 				list.to_a.sort_by { |a| a.name }
