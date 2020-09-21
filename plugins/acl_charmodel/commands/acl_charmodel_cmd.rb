@@ -19,7 +19,7 @@ module AresMUSH
          ClassTargetFinder.with_a_character(self.name, client, enactor) do |model|
           #template = ACL_CharModelTemplate.new model
           #client.emit template.render
-		  model.inspect
+		  client.emit (model.inspect)
         end		
       end      
     end
