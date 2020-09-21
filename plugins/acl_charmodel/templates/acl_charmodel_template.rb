@@ -14,8 +14,9 @@ module AresMUSH
       end
 
 	  def swadestats(model)
-		ss = model.swade_stats
-		ss
+		SwadeStats.each do |k, v|
+			client.emit "Key: #{k} - Value: #{v}"
+		end
       end
 	end
   end
