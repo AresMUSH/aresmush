@@ -12,9 +12,6 @@ module AresMUSH
 	  def quickview(model)
         model.inspect
       end
-
-	  def niceview(model)
-      end
       
     end
   end
