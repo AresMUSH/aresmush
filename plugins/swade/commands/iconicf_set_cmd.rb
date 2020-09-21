@@ -20,13 +20,13 @@ module AresMUSH
 				return t('swade.iconicf_invalid_name', :name => self.iconicf_name.capitalize) if !Swade.is_valid_iconicf_name?(self.iconicf_name)
 				return nil
 			end
-			
+#----- Begin of def handle -----			
 			def handle  
 				iconicf = Swade.get_iconicf(self.enactor, self.iconicf_name)
 				iconicf_stats=iconicf['stats']
 				iconicf_skills=iconicf['skills']
 				
-#----- This sets the Iconic Framework on the Character -----
+				#----- This sets the Iconic Framework on the Character -----
 				ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
 					attr = self.iconicf_name
 				    
@@ -40,8 +40,7 @@ module AresMUSH
 					client.emit_success t('swade.iconicf_set', :name => self.iconicf_name.capitalize)
 				end
 				
-#----- This sets the default stats on the Character -----				
-				
+				#----- This sets the default stats on the Character -----				
 				iconicf_stats.each do |key, rating|
 					setstat = "#{key}".downcase
 					setrating = "#{rating}"
@@ -50,10 +49,8 @@ module AresMUSH
 					end
 				end
 				client.emit_success t('swade.iconicstats_set')
-				
-#----- This sets the default skills on the Character -----				
-				
-				# iconicf_skills.each { |key, rating| client.emit("k: #{key}, r: #{rating}") }					
+
+				#----- This sets the default skills on the Character -----				
 				iconicf_skills.each do |key, rating|
 					setskill = "#{key}".downcase
 					setrating = "#{rating}"
@@ -63,7 +60,18 @@ module AresMUSH
 				end
 				client.emit_success t('swade.iconicskills_set')
 				
+
+				#----- This sets the default hinderances on the Character -----				
+				iconicf_hinderances.each do |key|
+					sethinderance = "#{key}".downcase
+					ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
+						SwadeHinderances.create(name: sethinderance, character: model)
+					end
+				end
+				client.emit_success t('swade.iconichinderances_set')
+
 			end
+#----- End of def handle -----	
 		end
     end
 end
