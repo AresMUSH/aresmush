@@ -35,10 +35,9 @@ module AresMUSH
 				list.to_a.sort_by { |a| a.name }
 					.each_with_index
 						.map do |a, i| 
-						linebreak = i % 2 == 0 ? "\n" : ""
-						title = left("#{ a.name }:", 15)
-						rating = left(a.rating, 20)
-						"%xh#{title}%xn #{rating},"
+						title = left("#{ a.name }:", 10)
+						rating = left(a.rating, 3)
+						"%xh#{title}%xn #{rating}"
 				end
 			end
 
