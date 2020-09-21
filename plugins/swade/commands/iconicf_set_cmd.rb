@@ -4,7 +4,7 @@ module AresMUSH
 			include CommandHandler
       
 			#attr_accessor :target, :iconicf_name, :swade_iconicf
-			attr_accessor :iconicf_name
+			attr_accessor :target, :iconicf_name
 			
 			def parse_args
 				  self.target = enactor_name #Set the character to be the current character
