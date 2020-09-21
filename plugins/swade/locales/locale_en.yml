@@ -10,6 +10,7 @@ en:
         rank_title: "Rank"
         bennies_title: "Bennies"
         conviction_title: "Conviction"
+        race_title: "Race"
         
         invalid_stat_name: "%{name} is not a valid stat name."
         invalid_die_step: "%{rating} is not a valid die step."
