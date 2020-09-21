@@ -41,20 +41,22 @@ module AresMUSH
 		index :name
 	end
 
-	# class SwadeHinderances < Ohm::Model
-		# include ObjectModel
+
+	class SwadeHinderances < Ohm::Model
+		include ObjectModel
     
-		# attribute :name
-		# reference :character, "AresMUSH::Character"
-		# index :name
-	# end
+		attribute :name
+		reference :character, "AresMUSH::Character"
+		index :name
+	end
 	
-		# class SwadeEdges < Ohm::Model
-		# include ObjectModel
+	
+	class SwadeEdges < Ohm::Model
+		include ObjectModel
     
-		# attribute :name
-		# reference :character, "AresMUSH::Character"
-		# index :name
-	# end
+		attribute :name
+		reference :character, "AresMUSH::Character"
+		index :name
+	end
   
 end
