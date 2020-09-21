@@ -12,6 +12,7 @@ en:
         conviction_title: "Conviction"
         race_title: "Race"
         hinderances_title: "Hinderances"
+        edges_title: "Edges"
         
         invalid_stat_name: "%{name} is not a valid stat name."
         invalid_die_step: "%{rating} is not a valid die step."
@@ -61,4 +62,5 @@ en:
         iconicstats_set: "Base Stats set."
         iconicskills_set: "Base Skills set."
         iconichinderances_set: "Base Hinderances set."
+        iconicedges_set: "Base Edges set."
 
