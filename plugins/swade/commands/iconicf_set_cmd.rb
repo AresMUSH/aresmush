@@ -8,7 +8,7 @@ module AresMUSH
 			def parse_args
 				self.target = enactor_name #Set the character to be the current character
 				self.iconicf_name = trim_arg(cmd.args) #Set 'iconicf_name' to be the inputted Iconic Framework
-				self.swade_iconicf = "swade_iconicf"
+				self.swade_iconicf = "swade_iconicf:"
 			end
 
 			# def required_args
@@ -24,7 +24,7 @@ module AresMUSH
 				client.emit (iconicf_exists)
 				client.emit ("----- ")
 				if (self.iconicf_name.blank?)
-					target.update(self.swade_iconicf: nil)
+					target.update(self.swade_iconicf nil)
 					client.emit_success t('swade.iconicf_cleared')
 				else
 					target.update(self.swade_iconicf self.iconicf_name)
