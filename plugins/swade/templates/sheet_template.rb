@@ -16,9 +16,24 @@ module AresMUSH
 				format_stats @char.swade_stats
 			end
 
-			 def skills
+			def skills
 				format_three_per_line @char.swade_skills
-			 end
+			end
+			
+			def hinderances
+				format_hinderances @char.swade_hinderances
+			end
+
+			def format_stats(list)
+				list.to_a.sort_by { |a| a.name }
+					.each_with_index
+						.map do |a, i| 
+						linebreak = i % 5 == 0 ? "\n" : ""
+						title = right("#{ a.name }:".capitalize, 10)
+						rating = left(a.rating, 5)
+						"#{linebreak}%xh#{title}%xn #{rating}"
+				end
+			end
       
 			def format_two_per_line(list)
 				list.to_a.sort_by { |a| a.name }
@@ -42,14 +57,13 @@ module AresMUSH
 				end
 			end
 
-			def format_stats(list)
+			def format_hinderances(list)
 				list.to_a.sort_by { |a| a.name }
 					.each_with_index
 						.map do |a, i| 
-						linebreak = i % 5 == 0 ? "\n" : ""
-						title = right("#{ a.name }:".capitalize, 10)
-						rating = left(a.rating, 5)
-						"#{linebreak}%xh#{title}%xn #{rating}"
+						linebreak = i % 3 == 0 ? "\n" : ""
+						title = left("#{ a.name }".capitalize, 16,'.')
+						"#{linebreak} %xh#{title}%xn"
 				end
 			end
 		
