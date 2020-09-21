@@ -5,7 +5,7 @@ module AresMUSH
       attr_accessor :list, :char, :viewer, :model 
                      
       def initialize(model)
-        @model = model
+        self.model = model
         super File.dirname(__FILE__) + "/acl_charmodel_template.erb"        
       end
 	  
