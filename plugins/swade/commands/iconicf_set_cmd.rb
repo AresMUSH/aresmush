@@ -97,8 +97,8 @@ module AresMUSH
 				end
 				client.emit_success t('swade.iconicmpowers_set') 
 
-				#----- This sets the default Psychic Powers on the Character -----				
-				iconicf_psychic_powers.each do |key|
+				#----- This sets the default Psionic Powers on the Character -----				
+				iconicf_psionic_powers.each do |key|
 					setthing = "#{key}".downcase
 					ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
 						SwadePpowers.create(name: setthing, character: model)
