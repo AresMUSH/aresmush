@@ -47,7 +47,7 @@ module AresMUSH
 						linebreak = i % 5 == 0 ? "\n" : ""
 						title = right("#{ a.name }:".capitalize, 10)
 						rating = left(a.rating, 5)
-						"#{linebreak}%xh#{title}%xn #{rating}"
+						"#{linebreak}#{title} #{rating}"
 				end
 			end
       
@@ -58,7 +58,7 @@ module AresMUSH
 						linebreak = i % 2 == 0 ? "\n" : ""
 						title = left("#{ a.name }:", 15)
 						rating = left(a.rating, 20)
-						"#{linebreak}%xh#{title}%xn #{rating}"
+						"#{linebreak} #{title} #{rating}"
 				end
 			end
 			
@@ -69,7 +69,7 @@ module AresMUSH
 						linebreak = i % 3 == 0 ? "\n" : ""
 						title = left("#{ a.name }".capitalize, 16,'.')
 						rating = left(a.rating, 7)
-						"#{linebreak} %xh#{title}%xn #{rating} "
+						"#{linebreak} #{title} #{rating} "
 				end
 			end
 
@@ -79,7 +79,7 @@ module AresMUSH
 						.map do |a, i| 
 						linebreak = i % 3 == 0 ? "\n" : ""
 						title = left("#{ a.name }".capitalize, 25)
-						"#{linebreak} %xh#{title}%xn"
+						"#{linebreak} #{title}"
 				end
 			end
 		
