@@ -43,15 +43,11 @@ module AresMUSH
 #----- This sets the default stats on the Character -----				
 				
 				#iconicf = Swade.get_iconicf(self.enactor, self.iconicf_name)
-				client.emit (iconicf)
 				iconicf_stats=iconicf['stats']
-				client.emit (iconicf_stats)
 				iconicf_stats.each { |key, rating| client.emit("k: #{key}, r: #{rating}") }					
 				iconicf_stats.each do |key, rating|
 					setstat = "#{key}".downcase
 					setrating = "#{rating}"
-					client.emit (setstat)
-					client.emit (setrating)
 					ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
 						SwadeStats.create(name: setstat, rating: setrating, character: model)
 						client.emit_success t('swade.iconicstats_set', :name => setstat)
@@ -64,8 +60,6 @@ module AresMUSH
 				iconicf_skills.each do |key, rating|
 					setskill = "#{key}".downcase
 					setrating = "#{rating}"
-					client.emit (setskill)
-					client.emit (setrating)
 					ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
 						SwadeSkills.create(name: setskill, rating: setrating, character: model)
 						client.emit_success t('swade.iconicskills_set', :name => setskill)
