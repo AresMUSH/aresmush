@@ -3,7 +3,7 @@
 
 <%= quickview(@char) %>
 
-<% @char.each do |key, value|   %>
+<%= @char.each do |key, value|   %>
 %ld
 %xh<%= key %>%xn: <%= value %>
 <% end %>

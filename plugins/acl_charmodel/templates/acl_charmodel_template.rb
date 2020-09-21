@@ -12,6 +12,10 @@ module AresMUSH
 	  def quickview(model)
         model.inspect
       end
+
+	  def niceview(model)
+		@char.each do |key, value| puts "#{value}: #{key}"}  
+      end
       
     end
   end
