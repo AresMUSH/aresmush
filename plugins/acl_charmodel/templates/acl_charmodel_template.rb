@@ -14,9 +14,9 @@ module AresMUSH
       end
 
 	  def niceview(model)
-		@char.each do |key, value|
-		  client.emit "#{key}: #{value}"
-		end
+		#model.each do |key, value|
+		  #client.emit "#{key}: #{value}"
+		#end
       end
 	end
   end
