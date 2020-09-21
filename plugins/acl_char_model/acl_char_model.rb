@@ -5,7 +5,7 @@ module AresMUSH
 		end
     
 	   def self.shortcuts
-		  Global.read_config("acl_char_model", "shortcuts")
+		  #Global.read_config("acl_char_model", "shortcuts")
 		end
 	
 		# get the command
