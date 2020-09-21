@@ -4,7 +4,7 @@ module AresMUSH
       # [ 'd2', 'd4', 'd6', 'd8', 'd10', 'd12', 'd12+d2', 'd12+d4', 'd12+d6', 'd12+d8', 'd12+d10', 'd12+d12' ]
     # end
  
-    def self.is_iconicf_valid_name?(name)
+    def self.is_valid_iconicf_name?(name)
       return false if !name
       names = Global.read_config('swade', 'iconicf').map { |a| a['name'].downcase }
       names.include?(name.downcase)
