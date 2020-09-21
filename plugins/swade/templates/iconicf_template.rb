@@ -12,6 +12,9 @@ module AresMUSH
       def stats(type)
         (type['stats'] || {}).map { |name, rating| "#{name}:#{rating}" }.join(", ")
       end
+	  
+	  def description(type)
+		type['description'] || {})
       
 
     end
