@@ -16,10 +16,9 @@ module AresMUSH
       end
       
       def handle
-        online_chars = Who.all_online
-        ClassTargetFinder.with_a_character(self.name, client, enactor) do |model|
-          template = ACL_CharModelTemplate.new model
-          client.emit template.render
+        # ClassTargetFinder.with_a_character(self.name, client, enactor) do |model|
+          # template = ACL_CharModelTemplate.new model
+          # client.emit template.render
         end		
       end      
     end
