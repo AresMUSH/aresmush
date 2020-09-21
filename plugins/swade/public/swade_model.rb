@@ -22,7 +22,6 @@ module AresMUSH
 		  [ self.swade_stats, self.swade_skills, self.swade_hinderances, self.swade_edges ].each do |list|
 				list.each do |a|
 					a.delete
-					end
 				end
 			end
 		end
@@ -55,7 +54,6 @@ module AresMUSH
 			index :name
 		end
 		
-		
 		class SwadeEdges < Ohm::Model
 			include ObjectModel
 		
@@ -64,7 +62,7 @@ module AresMUSH
 			index :name
 		end
 		
-			class SwadeMpowers < Ohm::Model
+		class SwadeMpowers < Ohm::Model
 			include ObjectModel
 		
 			attribute :name
@@ -73,7 +71,7 @@ module AresMUSH
 		end
 
 		
-			class SwadePpowers < Ohm::Model
+		class SwadePpowers < Ohm::Model
 			include ObjectModel
 		
 			attribute :name
