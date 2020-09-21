@@ -23,7 +23,7 @@ module AresMUSH
 				iconicf_exists = Swade.get_iconicf(self.target, self.iconicf_name)
 				client.emit (iconicf_exists)
 				client.emit ("----- ")
-				charattrib = char.swade_iconicf
+				charattrib = target.swade_iconicf
 				client.emit (charattrib)
 				if (self.iconicf_name.blank?)
 					charattrib.update(nil)
