@@ -19,100 +19,100 @@ module AresMUSH
 		before_delete :delete_swade_chargen
 		
 		def delete_swade_chargen
-		  [ self.swade_stats, self.swade_skills, self.swade_hinderances, self.swade_edges, self.swade_abilities, self.swade_chargenpoints, self.swade_complications, self.swade_cybernetics, self.swade_mpowers, self.swade_ppowers ].each do |list|
+			[ self.swade_stats, self.swade_skills, self.swade_hinderances, self.swade_edges, self.swade_abilities, self.swade_chargenpoints, self.swade_complications, self.swade_cybernetics, self.swade_mpowers, self.swade_ppowers ].each do |list|
 				list.each do |a|
 					a.delete
 				end
 			end
 		end
- 
-		class SwadeStats < Ohm::Model
-			include ObjectModel
-		
-			attribute :name
-			attribute :rating, :type => DataType::Integer
-			reference :character, "AresMUSH::Character"
-			index :name
-		end	
-		
-	  
-		class SwadeSkills < Ohm::Model
-			include ObjectModel
-		
-			attribute :name
-			attribute :rating
-			reference :character, "AresMUSH::Character"
-			index :name
-		end
-
-
-		class SwadeHinderances < Ohm::Model
-			include ObjectModel
-		
-			attribute :name
-			reference :character, "AresMUSH::Character"
-			index :name
-		end
-		
-		class SwadeEdges < Ohm::Model
-			include ObjectModel
-		
-			attribute :name
-			reference :character, "AresMUSH::Character"
-			index :name
-		end
-		
-		class SwadeMpowers < Ohm::Model
-			include ObjectModel
-		
-			attribute :name
-			reference :character, "AresMUSH::Character"
-			index :name
-		end
-
-		
-		class SwadePpowers < Ohm::Model
-			include ObjectModel
-		
-			attribute :name
-			reference :character, "AresMUSH::Character"
-			index :name
-		end
-
-		
-		class SwadeCybernetics < Ohm::Model
-			include ObjectModel
-		
-			attribute :name
-			reference :character, "AresMUSH::Character"
-			index :name
-		end
-		
-		class SwadeChargenpoints < Ohm::Model
-			include ObjectModel
-		
-			attribute :name
-			attribute :points
-			reference :character, "AresMUSH::Character"
-			index :name
-		end
-		
-		class SwadeAbilities < Ohm::Model
-			include ObjectModel
-		
-			attribute :name
-			reference :character, "AresMUSH::Character"
-			index :name
-		end
-		
-		class SwadeComplications < Ohm::Model
-			include ObjectModel
-		
-			attribute :name
-
-			reference :character, "AresMUSH::Character"
-			index :name
-		end
-		
 	end
+ 
+	class SwadeStats < Ohm::Model
+		include ObjectModel
+	
+		attribute :name
+		attribute :rating, :type => DataType::Integer
+		reference :character, "AresMUSH::Character"
+		index :name
+	end	
+	
+  
+	class SwadeSkills < Ohm::Model
+		include ObjectModel
+	
+		attribute :name
+		attribute :rating
+		reference :character, "AresMUSH::Character"
+		index :name
+	end
+
+
+	class SwadeHinderances < Ohm::Model
+		include ObjectModel
+	
+		attribute :name
+		reference :character, "AresMUSH::Character"
+		index :name
+	end
+	
+	class SwadeEdges < Ohm::Model
+		include ObjectModel
+	
+		attribute :name
+		reference :character, "AresMUSH::Character"
+		index :name
+	end
+	
+	class SwadeMpowers < Ohm::Model
+		include ObjectModel
+	
+		attribute :name
+		reference :character, "AresMUSH::Character"
+		index :name
+	end
+
+	
+	class SwadePpowers < Ohm::Model
+		include ObjectModel
+	
+		attribute :name
+		reference :character, "AresMUSH::Character"
+		index :name
+	end
+
+	
+	class SwadeCybernetics < Ohm::Model
+		include ObjectModel
+	
+		attribute :name
+		reference :character, "AresMUSH::Character"
+		index :name
+	end
+	
+	class SwadeChargenpoints < Ohm::Model
+		include ObjectModel
+	
+		attribute :name
+		attribute :points
+		reference :character, "AresMUSH::Character"
+		index :name
+	end
+	
+	class SwadeAbilities < Ohm::Model
+		include ObjectModel
+	
+		attribute :name
+		reference :character, "AresMUSH::Character"
+		index :name
+	end
+	
+	class SwadeComplications < Ohm::Model
+		include ObjectModel
+	
+		attribute :name
+
+		reference :character, "AresMUSH::Character"
+		index :name
+	end
+
 end
