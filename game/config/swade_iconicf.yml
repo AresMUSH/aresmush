@@ -45,14 +45,14 @@ swade:
                 Taunt: 0
                 Thievery: 0
             hinderances: 
-                - Enemies (if)
+                - Enemies*
             edges:
-                - AB Magic (if)
-                - Familiar Link (if) 
-                - Dimensional Portal (if)
-                - Master of Magic (if)
-                - Power Points (if)
-                - Rapid Recharge (if) 
+                - AB Magic*
+                - Familiar Link*
+                - Dimensional Portal*
+                - Master of Magic*
+                - Power Points*
+                - Rapid Recharge*
             magic_powers:
                 - Detect Arcana
                 - Banish
