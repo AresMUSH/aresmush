@@ -42,8 +42,6 @@ module AresMUSH
 				
 #----- This sets the default stats on the Character -----				
 				
-				client.emit (iconicf)
-				client.emit (iconicf_stats)
 				iconicf_stats.each do |key, rating|
 					setstat = "#{key}".downcase
 					setrating = "#{rating}"
