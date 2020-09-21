@@ -16,10 +16,9 @@ module AresMUSH
       end
       
       def handle
-         ClassTargetFinder.with_a_character(self.name, client, enactor) do |model|
-          template = ACL_CharModelTemplate.new model
+         ClassTargetFinder.with_a_character(self.name, client, enactor) do |model| 
+          template = ACL_CharModelTemplate.new model.each {|key, value| puts "#{value}: #{key}"} 
           client.emit template.render
-		  client.emit "Here"
         end		
       end      
     end
