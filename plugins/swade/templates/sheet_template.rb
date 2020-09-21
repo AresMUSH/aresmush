@@ -36,7 +36,7 @@ module AresMUSH
 					.each_with_index
 						.map do |a, i| 
 						linebreak = i % 3 == 0 ? "\n" : ""
-						title = left("#{ a.name }:", 16)
+						title = left("#{ a.name }", 16,.)
 						rating = left(a.rating, 7)
 						"#{linebreak} %xh#{title}%xn #{rating} "
 				end
