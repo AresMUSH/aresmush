@@ -43,12 +43,12 @@ module AresMUSH
 				client.emit (iconicf)
 				iconicf_stats=iconicf['stats']
 				client.emit (iconicf_stats)
-				iconicf_stats.each { |key, rating| client.emit("k: #{key}, r: #{rating|}") }					
+				iconicf_stats.each { |key, rating| client.emit("k: #{key}, r: #{rating}") }					
 				iconicf_stats.each do |key, rating||
 					setstat = "swade_#{key}".downcase
-					setrating = "#{rating|}"
+					setrating = "#{rating}"
 					ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
-						SwadeAttributes.create(name: setstat, rating: setrating, character: model)
+						SwadeAttributes.create(name: self.setstat, rating: self.setrating, character: model)
 						client.emit_success t('swade.iconicstats_set', :name => setstat)
 						client.emit (setstat)
 						client.emit (setrating)
