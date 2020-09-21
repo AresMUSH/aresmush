@@ -25,7 +25,7 @@ module AresMUSH
 				end
 			end
 		end
-
+ 
 		class SwadeStats < Ohm::Model
 			include ObjectModel
 		
