@@ -21,10 +21,12 @@ module AresMUSH
 			end
 			
 			def handle  
-
+			
+#----- This sets the Iconic Framework on the Character -----
 				ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
 					attr = self.iconicf_name
-				    if (attr == nil)
+				    
+					if (attr == nil)
 						attr.delete
 						client.emit_success t('swade.iconicf_cleared')
 						return
@@ -33,6 +35,20 @@ module AresMUSH
 					model.update(swade_iconicf: self.iconicf_name)
 					client.emit_success t('swade.iconicf_set', :name => self.iconicf_name.capitalize)
 				end
+				
+#----- This sets the default stats on the Character -----				
+				ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
+					attr = Swade.find_stat(model, self.stat_name)
+					client.emit (attr)
+					# if (attr)
+						# attr.update(rating: self.rating)
+					# else
+						# SwadeStats.create(name: self.stat_name, rating: self.rating, character: model)
+					# end
+         
+					# client.emit_success t('Swade.stat_set')
+				end
+				
 			end
 		end
     end
