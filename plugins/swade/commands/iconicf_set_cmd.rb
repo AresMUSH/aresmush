@@ -37,7 +37,7 @@ module AresMUSH
 				end
 				
 #----- This sets the default stats on the Character -----				
-				ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
+				ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
 					attr = Swade.find_stat(model, self.stat_name)
 					client.emit (attr)
 					# if (attr)
