@@ -9,8 +9,8 @@ module AresMUSH
         super File.dirname(__FILE__) + "/acl_charmodel_template.erb"        
       end
 	  
-	  def quickview
-        debug.model
+	  def quickview(model)
+        model.inspect
       end
       
     end
