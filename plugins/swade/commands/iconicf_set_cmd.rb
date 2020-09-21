@@ -11,25 +11,25 @@ module AresMUSH
 				self.swade_iconicf = "swade_iconicf:"
 			end
 
-			# def required_args
-				# [ self.target, self.iconicf_name ]
-			# end
+			def required_args
+				[ self.target, self.iconicf_name ]
+			end
 				
 				
 			def handle  
 				client.emit (self.target)
 				client.emit (self.iconicf_name)
-				client.emit ("----- check to see if the Iconic Framework Exists")
-				iconicf_exists = Swade.get_iconicf(self.target, self.iconicf_name)
-				client.emit (iconicf_exists)
 				client.emit ("----- ")
-				charattrib = target.swade_iconicf
-				client.emit (charattrib)
-				if (self.iconicf_name.blank?)
-					charattrib.update(nil)
-					client.emit_success t('swade.iconicf_cleared')
-				else
-					charattrib.update(self.iconicf_name)
+				
+				ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
+					iconicf_exists = Swade.get_iconicf(self.target, self.iconicf_name)
+					if (self.iconicf_name.blank?)
+						model.update(swade_iconicf: nil)
+						client.emit_success t('swade.iconicf_cleared')
+						return
+					end
+                              
+					model.update(swade_iconicf: self.iconicf_name)
 					client.emit_success t('swade.iconicf_set', :name => self.iconicf_name.capitalize)
 				end
 				# else
