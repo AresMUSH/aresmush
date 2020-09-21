@@ -25,7 +25,7 @@ module AresMUSH
       end
       
       def scenes
-        Scene.all.select { |s| !s.completed && !s.is_private? }
+        Scene.all.select { |s| !s.completed && !s.is_private? && Scenes.participants_and_room_chars(s).any? }
       end
       
       def scene_location(scene)
@@ -57,8 +57,7 @@ module AresMUSH
         room = char.room
         name = Who.who_room_name(char)
         
-        status  = Website.activity_status(char)
-        if (status == 'web-inactive' || status == 'web-active')
+        if (is_on_web?(char))
           return t('who.web_room')
         end
         
@@ -81,28 +80,61 @@ module AresMUSH
         end
       end
       
-      def room_groups
+      def ic_groups
         groups = {}
         self.online_chars.each do |c|
+          next if is_on_web?(c)
+          next if c.room.scene && !c.room.scene.is_private?
+          next if c.room.room_type == "OOC"
           room = room_name(c)
           char_name = name(c)
           append_to_group(groups, room, char_name)
         end
         groups.sort
       end
+      
+      def ooc_groups
+        groups = {}
+        self.online_chars.each do |c|
+          if (is_on_web?(c))
+            append_to_group groups, t('who.web_room'), c.name
+          else
+            next if c.room.scene && !c.room.scene.is_private?
+            next if c.room.room_type != "OOC"
+          
+            room = room_name(c)
+            char_name = name(c)
+            append_to_group(groups, room, char_name)
+          end
+        end
+        groups.sort
+      end
        
+      def is_on_web?(char)
+        status  = Website.activity_status(char)
+        return status == 'web-inactive' || status == 'web-active'
+      end
+      
       def section_line(title)
         @client.screen_reader ? title : line_with_text(title)
       end
       
       def scene_room_name(scene)
+        scene_codes = ""
+        if (scene.room.is_temp_room?)
+          scene_codes << "%xc*%xn"
+        end
+        if (scene.scene_pacing != "Traditional")
+          scene_codes << "%xy@%xn"
+        end
+        
         if (scene.room.is_temp_room?)
           scene_id = left("\##{scene.id}", 5)
-          return "#{scene_id} #{scene.location}(*)"
+          return "#{scene_id} #{scene.location}#{scene_codes}"
         else
           scene_id = left("\##{scene.id}", 5)
           area = scene.room.area ? "#{scene.room.area.name} - " : ""
-          return "#{scene_id} #{area}#{scene.room.name}"
+          return "#{scene_id} #{area}#{scene.room.name}#{scene_codes}"
         end
       end
       
