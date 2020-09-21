@@ -2,6 +2,7 @@ module AresMUSH
 	module Swade
 		class IconicfSetCmd
 			include CommandHandler
+			include Swade_model
       
 			attr_accessor :target, :iconicf_name, :swade_iconicf
 			
