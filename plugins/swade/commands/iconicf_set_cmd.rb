@@ -36,19 +36,24 @@ module AresMUSH
 					client.emit_success t('swade.iconicf_set', :name => self.iconicf_name.capitalize)
 				end
 				
+				client.emit ("-----")
 #----- This sets the default stats on the Character -----				
-				ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
-					attr = Swade.find_stat(model, self.stat_name)
-					client.emit (attr)
-					# if (attr)
-						# attr.update(rating: self.rating)
-					# else
-						# SwadeStats.create(name: self.stat_name, rating: self.rating, character: model)
-					# end
-         
-					# client.emit_success t('Swade.stat_set')
-				end
 				
+				iconicf = Swade.get_iconicf(self.enactor, self.iconicf_name)
+				client.emit (iconicf)
+				iconicf_stats=iconicf['stats']
+				client.emit (iconicf_stats)
+				iconicf_stats.each { |key, value| client.emit("k: #{key}, v: #{value}") }					
+				iconicf_stats.each do |key, value|
+					setstat = "swade_#{key}".downcase
+					setvalue = "#{value}"
+					ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
+						SwadeAttributes.create(name: self.setstat, setvalue: self.setvalue, character: model)
+						client.emit_success t('swade.iconicstats_set', :name => setstat)
+						client.emit (setstat)
+						client.emit (setvalue)
+					end
+				end
 			end
 		end
     end
