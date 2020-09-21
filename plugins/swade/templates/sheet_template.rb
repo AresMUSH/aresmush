@@ -30,17 +30,18 @@ module AresMUSH
 						"#{linebreak}%xh#{title}%xn #{rating}"
 				end
 			end
-		
+
 			def format_stats(list)
 				list.to_a.sort_by { |a| a.name }
 					.each_with_index
 						.map do |a, i| 
-						title = left("#{ a.name }:", 10)
-						rating = left(a.rating, 3)
-						"%xh#{title}%xn #{rating}"
+						linebreak = i % 5 == 0 ? "\n" : ""
+						title = right("#{ a.name }:", 10)
+						rating = left(a.rating, 5)
+						"#{linebreak}%xh#{title}%xn #{rating}"
 				end
 			end
-
+		
 		end
 	end
 end
