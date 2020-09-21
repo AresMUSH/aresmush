@@ -4,7 +4,7 @@ module AresMUSH
     collection :swade_stats, "AresMUSH::SwadeStats"
 	collection :swade_skills, "AresMUSH::SwadeSkills"
 	collection :swade_hinderances, "AresMUSH::SwadeHinderances"
-	collection :swade_edges, "AresMUSH::SwadeEdges"
+	collection :swade_edges, "AresMUSH::SwadeEdges" 
 #	collection :swade_powers, "AresMUSH::SwadePowers"
 
 	attribute :swade_iconicf
