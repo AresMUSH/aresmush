@@ -14,7 +14,8 @@ module AresMUSH
       end
 
 	  def swadestats(model)
-		model.swade_stats
+		ss = model.swade_stats
+		ss.to_yaml
       end
 	end
   end
