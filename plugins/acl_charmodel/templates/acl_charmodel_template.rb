@@ -8,6 +8,10 @@ module AresMUSH
         @model = model
         super File.dirname(__FILE__) + "/acl_charmodel_template.erb"        
       end
+	  
+	  def quickview
+        debug.model
+      end
       
     end
   end
