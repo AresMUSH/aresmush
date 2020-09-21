@@ -59,4 +59,5 @@ en:
         iconicf_set: "Iconic Framework set to '%{name}'."
         iconicstats_set: "Base Stats set."
         iconicskills_set: "Base Skills set."
+        iconichinderances_set: "Base Hinderances set."
 
