@@ -93,7 +93,7 @@ module AresMUSH
 		include ObjectModel
 	
 		attribute :name
-		attribute :points
+		attribute :rating
 		reference :character, "AresMUSH::Character"
 		index :name
 	end
