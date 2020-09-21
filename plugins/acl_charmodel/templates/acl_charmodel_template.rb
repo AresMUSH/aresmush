@@ -18,11 +18,7 @@ module AresMUSH
 		  #client.emit "#{key}: #{value}"
 		#end
 		
-		model.each_with_object([]) do |(key, value), array|
-			array << { id: value, name: key }
-		end
-		
-		#model.id
+		model.to_yaml
       end
 	end
   end
