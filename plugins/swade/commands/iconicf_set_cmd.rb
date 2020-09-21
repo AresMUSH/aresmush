@@ -24,7 +24,7 @@ module AresMUSH
 				client.emit (iconicf_exists)
 				client.emit ("----- ")
 				if (self.iconicf_name.blank?)
-					target.update(swade_iconicf: nil)
+					target.update(self.swade_iconicf: nil)
 					client.emit_success t('swade.iconicf_cleared')
 				else
 					target.update(self.swade_iconicf self.iconicf_name)
