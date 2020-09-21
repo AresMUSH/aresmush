@@ -21,15 +21,18 @@ module AresMUSH
 			end
 			
 			def handle  
-				iconicf_exists = Swade.get_iconicf(self.target, self.iconicf_name)
-				
+
 				ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
+					attr = self.iconicf_name
+				    if (attr == nil)
+						attr.delete
+						client.emit_success t('swade.iconicf_cleared')
+						return
+					end
+		  
 					model.update(swade_iconicf: self.iconicf_name)
 					client.emit_success t('swade.iconicf_set', :name => self.iconicf_name.capitalize)
 				end
-				
-				
-				
 			end
 		end
     end
