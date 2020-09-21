@@ -142,7 +142,7 @@ module AresMUSH
 				end
 				client.emit_success t('swade.iconiccomplications_set')
 				
-				client.emit_success t('iconicf_complete')
+				client.emit_success t('swade.iconicf_complete')
 			end
 #----- End of def handle -----	
 		end
