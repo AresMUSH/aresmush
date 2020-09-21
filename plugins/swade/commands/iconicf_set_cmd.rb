@@ -24,7 +24,7 @@ module AresMUSH
 			def handle  
 				iconicf = Swade.get_iconicf(self.enactor, self.iconicf_name)
 				iconicf_stats=iconicf['stats']
-				iconicf_skills=iconicf['skills']
+				#iconicf_skills=iconicf['skills']
 				
 #----- This sets the Iconic Framework on the Character -----
 				ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
@@ -42,11 +42,11 @@ module AresMUSH
 				
 #----- This sets the default stats on the Character -----				
 				
-				#iconicf = Swade.get_iconicf(self.enactor, self.iconicf_name)
-				#iconicf_stats.each { |key, rating| client.emit("k: #{key}, r: #{rating}") }					
 				iconicf_stats.each do |key, rating|
 					setstat = "#{key}".downcase
 					setrating = "#{rating}"
+					client.emit (setstat)
+					client.emit (setrating)
 					ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
 						SwadeStats.create(name: setstat, rating: setrating, character: model)
 						client.emit_success t('swade.iconicstats_set', :name => setstat)
