@@ -44,7 +44,7 @@ module AresMUSH
 				iconicf_stats=iconicf['stats']
 				client.emit (iconicf_stats)
 				iconicf_stats.each { |key, rating| client.emit("k: #{key}, r: #{rating}") }					
-				iconicf_stats.each do |key, rating||
+				iconicf_stats.each do |key, rating|
 					setstat = "swade_#{key}".downcase
 					setrating = "#{rating}"
 					ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
