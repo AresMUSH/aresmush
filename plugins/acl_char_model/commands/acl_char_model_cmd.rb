@@ -16,10 +16,11 @@ module AresMUSH
       end
       
       def handle
-        # ClassTargetFinder.with_a_character(self.name, client, enactor) do |model|
+         ClassTargetFinder.with_a_character(self.name, client, enactor) do |model|
           # template = ACL_CharModelTemplate.new model
           # client.emit template.render
-        #end		
+		  client.emit (model)
+        end		
       end      
     end
   end
