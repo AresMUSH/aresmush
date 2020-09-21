@@ -48,5 +48,13 @@ module AresMUSH
 		# reference :character, "AresMUSH::Character"
 		# index :name
 	# end
+	
+		# class SwadeEdges < Ohm::Model
+		# include ObjectModel
+    
+		# attribute :name
+		# reference :character, "AresMUSH::Character"
+		# index :name
+	# end
   
 end
