@@ -26,7 +26,7 @@ module AresMUSH
       Achievements.award_achievement(char, "fs3_luck_spent")
 
       if (Global.read_config('fs3skills', 'job_on_luck_spend'))
-        category = "Luck"
+        category = Global.read_config("jobs", "luck_category")
         status = Jobs.create_job(category, t('fs3skills.luck_job_title', :name => char.name, :reason => reason), message, Game.master.system_character)
         if (status[:job])
           Jobs.close_job(Game.master.system_character, status[:job])
