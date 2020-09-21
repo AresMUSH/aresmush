@@ -9,6 +9,8 @@ module AresMUSH
 		collection :swade_ppowers, "AresMUSH::SwadePpowers"
 		collection :swade_cybernetics, "AresMUSH::SwadeCybernetics"
 		collection :swade_chargenpoints, "AresMUSH::SwadeChargenpoints"
+		collection :swade_abilities, "AresMUSH::SwadeAbilities"
+		collection :swade_complications, "AresMUSH::SwadeComplications"
 
 		attribute :swade_iconicf
 		attribute :swade_ppe_max
@@ -93,6 +95,22 @@ module AresMUSH
 		
 			attribute :name
 			attribute :points
+			reference :character, "AresMUSH::Character"
+			index :name
+		end
+		
+		class SwadeAbilities < Ohm::Model
+			include ObjectModel
+		
+			attribute :name
+			reference :character, "AresMUSH::Character"
+			index :name
+		end
+		
+		class SwadeComplications < Ohm::Model
+			include ObjectModel
+		
+			attribute :name
 			reference :character, "AresMUSH::Character"
 			index :name
 		end
