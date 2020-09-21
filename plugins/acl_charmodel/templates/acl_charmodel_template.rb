@@ -17,7 +17,7 @@ module AresMUSH
 		#model.each do |key, value|
 		  #client.emit "#{key}: #{value}"
 		#end
-		model.keys
+		model.key
       end
 	end
   end
