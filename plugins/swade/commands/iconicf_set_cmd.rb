@@ -32,7 +32,7 @@ module AresMUSH
 					else
 						client.emit (model)
 						client.emit (enactor)
-						enactor.update(self.swade_iconicf: self.iconicf_name)
+						enactor.update(self.swade_iconicf self.iconicf_name)
 						client.emit_success t('swade.iconicf_set', :name => self.iconicf_name.capitalize)
 					end
 					
