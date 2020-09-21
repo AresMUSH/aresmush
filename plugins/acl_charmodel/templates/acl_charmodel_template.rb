@@ -4,10 +4,8 @@ module AresMUSH
              
       attr_accessor :char
                      
-      def initialize(pair)
-        @list = list
+      def initialize(char)
         @char = name
-        @viewer = viewer
         super File.dirname(__FILE__) + "/acl_charmodel_template.erb"		
 	  end
 	  
