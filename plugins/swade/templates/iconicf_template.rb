@@ -9,8 +9,8 @@ module AresMUSH
         super File.dirname(__FILE__) + "/iconicf.erb"
       end
       
-      def stats(type)
-        (type['stats'] || {}).map { |name, rating| "#{name}:#{rating}" }.join(", ")
+      def iconcfs(type)
+        (type['iconicf'] || {}).map { |name, description| "#{name}:#{description}" }.join(", ")
       end
       
 
