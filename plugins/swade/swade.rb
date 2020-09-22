@@ -29,7 +29,7 @@ module AresMUSH
 				when "sheet"
 					return SheetCmd
 				end
-			return nil
+			end
 		end
 
 		def self.get_event_handler(event_name)
