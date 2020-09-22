@@ -9,10 +9,9 @@ module AresMUSH
         super File.dirname(__FILE__) + "/hinderances.erb"
       end
       
-      def hinderances(type)
-        type['description']
-      end
-      
+	  def description(type)
+		type['description']
+      end 
 
     end
   end
