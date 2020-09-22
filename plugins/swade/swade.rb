@@ -18,7 +18,7 @@ module AresMUSH
 					case cmd.switch
 						when "iconicf"
 							 client.emit (cmd.args)
-							 case cmd.switch
+							 case cmd.args
 								 when (!cmd.args)
 								    #client.emit ("hello")
 									return IconicfCmd
