@@ -26,24 +26,30 @@ module AresMUSH
 					return ResetCmd
 				when "chargen"
 					return ChargenpointsCmd
-				# when "race"
-					# if (!cmd.args)							 
+				when "race"
+					if (!cmd.args)							 
 						# return RaceCmd
-					# else
+						return PendingCmd
+					else
 						# return RaceSetCmd
-					# end
-				# when "hj"
-					# if (!cmd.args)							 
+						return PendingCmd
+					end
+				when "hj"
+					if (!cmd.args)							 
 						# return HjCmd
-					# else
+						return PendingCmd
+					else
 						# return HjSetCmd
-					# end
-				# when "fandg"
-					# if (!cmd.args)							 
+						return PendingCmd
+					end
+				when "fandg"
+					if (!cmd.args)							 
 						# return FandgCmd
-					# else
+						return PendingCmd
+					else
 						# return FandgSetCmd
-					# end
+						return PendingCmd
+					end
 				when "stats"
 					if (!cmd.args)							 
 						return StatsCmd
@@ -65,30 +71,38 @@ module AresMUSH
 						# return HindSetCmd
 						return PendingCmd
 					end
-				# when "edge"
-					# if (!cmd.args)							 
+				when "edge"
+					if (!cmd.args)							 
 						# return EdgeCmd
-					# else
+						return PendingCmd
+					else
 						# return EdgeSetCmd
-					# end
-				# when "ppower"
-					# if (!cmd.args)							 
+						return PendingCmd
+					end
+				when "ppower"
+					if (!cmd.args)							 
 						# return PpowerCmd
-					# else
+						return PendingCmd
+					else
 						# return PpowerSetCmd
-					# end
-				# when "mpower"
-					# if (!cmd.args)							 
+						return PendingCmd
+					end
+				when "mpower"
+					if (!cmd.args)							 
 						# return MpowerSetCmd
-					# else
+						return PendingCmd
+					else
 						# return MpowerSetCmd
-					# end
-				# when "cyber"
-					# if (!cmd.args)							 
+						return PendingCmd
+					end
+				when "cyber"
+					if (!cmd.args)							 
 						# return CyberSetCmd
-					# else
+						return PendingCmd
+					else
 						#return CyberSetCmd
-					# end
+						return PendingCmd
+					end
 				else
 					client.emit ("Error")
 				end
