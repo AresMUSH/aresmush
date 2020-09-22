@@ -4,9 +4,9 @@ module AresMUSH
       include CommandHandler
   
       def handle
-        types = Global.read_config("swade", "skill")
+        types = Global.read_config("swade", "skills")
         list = types.sort_by { |a| a['name']}
-        template = IconicfTemplate.new list
+        template = SkillsTemplate.new list
         client.emit template.render
       end
     end
