@@ -87,6 +87,8 @@ module AresMUSH
 							SwadeHinderances.create(name: setthing, character: model)
 						end
 					end
+				else 
+					client.emit ("No Hinderances set")
 				end
 				client.emit_success t('swade.iconichinderances_set')
 
