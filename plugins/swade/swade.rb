@@ -97,6 +97,7 @@ module AresMUSH
 				else
 				    client.emit ("hello 33333")
 				end
+			end
 		end
 
 		def self.get_event_handler(event_name)
