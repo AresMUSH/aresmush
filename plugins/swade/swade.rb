@@ -19,10 +19,9 @@ module AresMUSH
 						when "iconicf"
 							 client.emit (cmd.args)
 							 case cmd.args
-								 when (cmd.args)							 
-									return IconicfSetCmd
-								 else
-								     client.emit ("hello")	
+								 if (!cmd.args)							 
+									return IconicfCmd
+								 else	
 									 return IconicfSetCmd
 								 end
 						when "reset"
