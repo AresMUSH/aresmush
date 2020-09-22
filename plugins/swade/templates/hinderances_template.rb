@@ -10,7 +10,7 @@ module AresMUSH
       end
       
       def hinderances(type)
-        (type['hinderances'] || {}).map { |name, hind_points, description| "#{name}:#{hind_points} #{description}" }
+        type['description']
       end
       
 
