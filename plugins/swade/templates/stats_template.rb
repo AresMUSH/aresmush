@@ -6,7 +6,7 @@ module AresMUSH
       
       def initialize(types)
         self.types = types
-        super File.dirname(__FILE__) + "/iconicf.erb"
+        super File.dirname(__FILE__) + "/stats.erb"
       end
       
 	  def description(type)
