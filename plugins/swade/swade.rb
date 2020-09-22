@@ -43,9 +43,9 @@ module AresMUSH
 						# when "skill"
 							# return SkillCmd
 						# end
-						when "hind"
-							return HindCmd
-						end
+						# when "hind"
+							# return HindCmd
+						# end
 						# when "edge"
 							# return EdgeCmd
 						# end
