@@ -17,7 +17,7 @@ Below is a reference list of the commands used. See individual Help files for mo
 `swade/race <race>`                      - Sets your Race
 `swade/hj <table>`                       - Rolls on Table for HJ
 `swade/fandg`                            - Rolls on Fortune and Glory table
-`swade/stat <name>=<points>`             - Adds pts to Stat <name>. Can be neg
+`swade/stats <name>=<points>`             - Adds pts to Stat <name>. Can be neg
 `swade/skill <name>=<points>`            - Adds pts to Skill <name>. Can be neg
 `swade/hind <hinderance_name>=<add/rem>` - Add/Remove Hinderances
 `swade/edge <edge_name>=<add/rem>`       - Add/Remove Edges
