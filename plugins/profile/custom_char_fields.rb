@@ -12,7 +12,7 @@ module AresMUSH
       # Return a hash of custom fields formatted for editing in the profile editor
       # Example: return { goals: Website.format_input_for_html(char.goals) }
       def self.get_fields_for_editing(char, viewer)
-        return { goals: Website.format_input_for_html(char.goals), swadeskills: Website.format_input_for_html(char.swade_skills) }
+
       end
 
       # Return a hash of custom fields formatted for editing in chargen
@@ -24,7 +24,7 @@ module AresMUSH
       # Custom fields will be in char_data[:custom]
       # Example: char.update(goals: char_data[:custom][:goals])
       def self.save_fields_from_profile_edit(char, char_data)
-        char.update( goals: Website.format_input_for_mush(char_data[:custom][:goals]), swadeskills: Website.format_input_for_mush(char_data[:custom][:swade_skills]) )
+
       end
       
       # Save fields and return an array of any error messages.
