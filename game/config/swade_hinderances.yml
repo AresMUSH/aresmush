@@ -101,7 +101,8 @@ swade:
       name: Elderly
       description: –1 to Pace, running, Agility, Strength, and Vigor. Hero gets 5 extra skill points.
       hind_points: 2
-      skill_points: 5
+      modifiers:
+        skill_points: 5
     -
       name: Enemy-
       description: The character has a recurring nemesis.
@@ -187,7 +188,8 @@ swade:
       description: Size +1, Pace –1 and running die of d4. Treat Str as one die type lower for Min Str.
       hind_points: 1
       size: 1
-      pace: -1
+      modifiers:
+        pace: -1
     -
       name: Obligation-
       description: The character has a weekly obligation of 20 hours.
@@ -284,18 +286,21 @@ swade:
       name: Slow-
       description: Pace –1, reduce running die one step. May not take the Fleet-Footed Edge.
       hind_points: 1
-      pace: d4
+      modifiers:
+        pace: d4
     -
       name: Slow+
       description: -2 to Athletics and rolls to resist Athletics. May not take the Fleet-Footed Edge.
       hind_points: 2
-      pace: d4-2
+      modifiers:
+        pace: d4-2
     -
       name: Small
       description: Size and Toughness are reduced by 1. Size cannot be reduced below –1.
       hind_points: 1
-      toughness: -1
-      size: -1
+      modifiers:
+        toughness: -1
+        size: -1
     -
       name: Stubborn
       description: The character wants his way and rarely admits his 
@@ -360,13 +365,15 @@ swade:
       name: Young-
       description: Has 4 atribute points and 10 skill points, extra Benny per session. 
       hind_points: 1
-      attribute_points: -1
-      skills_points: -2
-      bennies_max: 1
+      modifiers:
+        attribute_points: -1
+        skills_points: -2
+        bennies_max: 1
     -
       name: Young+
       description: Has 3 atribute points, 10 skill points, and two extra Bennies per session.
       hind_points: 2
-      attribute_points: -2
-      skills_points: -2
-      bennies_max: 2
+      modifiers:
+        attribute_points: -2
+        skills_points: -2
+        bennies_max: 2

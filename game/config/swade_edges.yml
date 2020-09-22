@@ -17,36 +17,41 @@ swade:
         -
             name: AB Magic
             description: Magical Arcane Background
-            power_slots: 3
-            powerpoints: 10
+            bonuses:
+                power_slots: 3
+                powerpoints: 10
             pre-reqs:
                 - rank: Novice
         -
             name: AB Psionics
             description: Psionics Arcane Background
-            power_slots: 3
-            powerpoints: 10
+            bonuses:
+                power_slots: 3
+                powerpoints: 10
             pre-reqs:
                 - rank: Novice
         -
             name: AB Miracles
             description: Miracles Arcane Background
-            power_slots: 3
-            powerpoints: 10
+            bonuses:
+                power_slots: 3
+                powerpoints: 10
             pre-reqs:     
                 - rank: Novice
         -
             name: AB Gifted
             description: Gifted Arcane Background
-            power_slots: 1
-            powerpoints: 15
+            bonuses:
+                power_slots: 1
+                powerpoints: 15
             pre-reqs:     
                 - rank: Novice
         -
             name: AB Weird Science
             description: Weird Science Arcane Background
-            power_slots: 2
-            powerpoints: 15
+            bonuses:
+                power_slots: 2
+                powerpoints: 15
             pre-reqs:     
                 - rank: Novice
         -
