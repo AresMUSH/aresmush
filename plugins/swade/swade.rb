@@ -17,7 +17,7 @@ module AresMUSH
 				when "swade"
 					case cmd.switch
 						when "iconicf"
-							 client.emit (cmd.switch)
+							 client.emit (cmd.args)
 							 case cmd.switch
 								 when (!cmd.args)
 								    #client.emit ("hello")
