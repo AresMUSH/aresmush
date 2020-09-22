@@ -34,8 +34,8 @@ module AresMUSH
 							# return FandgCmd
 						when "stats"
 							return StatsCmd
-						# when "skill"
-							# return SkillCmd
+						when "skill"
+							return SkillCmd
 						when "hind"
 							return HindCmd
 						# when "edge"
