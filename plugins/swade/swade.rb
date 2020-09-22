@@ -17,7 +17,7 @@ module AresMUSH
 					case cmd.switch
 						when "iconicf"
 							case cmd.arg
-								when ( cmd.arg == nil )
+								when ( cmd.args == nil )
 									return IconicfCmd
 								else
 									return IconicfSetCmd
