@@ -38,7 +38,7 @@ module AresMUSH
 							# return FandgCmd
 						# end
 						when "stat"
-							return StatCmd
+							return StatsCmd
 						end
 						# when "skill"
 							# return SkillCmd
