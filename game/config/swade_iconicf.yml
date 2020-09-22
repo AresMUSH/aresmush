@@ -1,7 +1,6 @@
 ---
 swade:
     iconicf:
-<<<<<<< HEAD
         # -
             # name: Template
             # description: 
@@ -61,11 +60,9 @@ swade:
         -
             name: Burster
             description: Bursters are pyrokinetics—they telekinetically accelerate molecules to the point of ignition. 
-=======
         -
             name: Shifter
             description: Practitioners of magic with a talent for manipulating - or "shifting" the patterns of the raw cosmic energies that bind the Megaverse(R) together.
->>>>>>> parent of 160c5a3e4... Update swade_iconicf.yml
             stats:
                 Agility: 1
                 Smarts: 1
@@ -73,21 +70,18 @@ swade:
                 Strength: 1
                 Vigor: 1
             chargen_points:
-<<<<<<< HEAD
                 skills_points: 15
                 stats_points: 5
                 hj_slots: 2
                 psionic_slots: 3
                 hind_points: 0
-            swade_ppe_max: 
-            swade_isp_max: 
-=======
+            swade_ppe_max: 0
+            swade_isp_max: 0
                 attributes_points: 5
                 skills_points: 15
                 hj_slots: 2 
                 magic_slots: 1
             swade_ppe_max: 15
->>>>>>> parent of 160c5a3e4... Update swade_iconicf.yml
             skills:
                 Academics: 0
                 Athletics: 1
@@ -103,33 +97,26 @@ swade:
                 Intimidation: 0
                 Language: 0
                 Notice: 1
-<<<<<<< HEAD
                 Occult: 0
                 Performance: 0
                 Persuasion: 1
                 Piloting: 0
                 Psionics: 2
-=======
                 Occult: 2
                 Performance: 0
                 Persuasion: 1
                 Piloting: 0
->>>>>>> parent of 160c5a3e4... Update swade_iconicf.yml
                 Repair: 0
                 Research: 0
                 Riding: 0
                 Science: 0
                 Shooting: 0
-<<<<<<< HEAD
-=======
                 Spelllcasting: 2
->>>>>>> parent of 160c5a3e4... Update swade_iconicf.yml
                 Stealth: 1
                 Survival: 0
                 Taunt: 0
                 Thievery: 0
             hinderances: 
-<<<<<<< HEAD
                 - Enemy-*
                 - Quirk*
                     - Pyromaniac 
@@ -139,7 +126,6 @@ swade:
                 - Major Psionic*
             psionic_powers:
                 - Elemental Manipulation*
-=======
                 - Enemies*
             edges:
                 - AB Magic*
@@ -154,7 +140,6 @@ swade:
                 - Drain Power Points*
                 - Summon Ally*
                 - Teleport*
->>>>>>> parent of 160c5a3e4... Update swade_iconicf.yml
             abilities:
                 - Bind the Summoned*
                 - Communication Rift*
