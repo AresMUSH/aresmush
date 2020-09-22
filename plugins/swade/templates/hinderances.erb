@@ -1,9 +1,8 @@
 %lh
-%xh<%= t('swade.hinderances_title') %>%xn
-
+%xh<%= center( t('swade.hinderances_title') ,78,"_") %> %xn
 <% types.each do |c| %>
-<%= left c['name'], 15 %> 
-  %xh<%= t('swade.hinderances_title') %>:%xn <%= hinderances(c) %>
-    
+%xc<%= c['name'] %>%xn
+<%= description(c) %>
+
 <% end %>
 %lf
