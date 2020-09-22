@@ -79,12 +79,16 @@ module AresMUSH
 				end
 				client.emit_success t('swade.iconicchargenpoints_set')				
 
-				#----- This sets the default Hinderances on the Character -----				
-				iconicf_hinderances.each do |key|
-					setthing = "#{key}".downcase
-					ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
-						SwadeHinderances.create(name: setthing, character: model)
+				#----- This sets the default Hinderances on the Character -----	
+				if (iconicf_hinderances) 
+					iconicf_hinderances.each do |key|
+						setthing = "#{key}".downcase
+						ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
+							SwadeHinderances.create(name: setthing, character: model)
+						end
 					end
+				else 
+					client.emit ("No Hinderances set")
 				end
 				client.emit_success t('swade.iconichinderances_set')
 
