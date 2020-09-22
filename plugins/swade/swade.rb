@@ -16,7 +16,7 @@ module AresMUSH
 				when "swade"
 					case cmd.switch
 						when "iconicf"
-							case cmd.arg
+							case cmd.args
 								when ( cmd.args == nil )
 									return IconicfCmd
 								else
