@@ -24,6 +24,7 @@ module AresMUSH
            id: s.id,
            location: s.location.blank? ? nil : s.location,
            scene_type: s.scene_type ? s.scene_type.titlecase : 'Unknown',
+           scene_pacing: s.scene_pacing,
            updated: OOCTime.local_long_timestr(enactor, s.last_activity),
            last_posed: s.last_posed ? s.last_posed.name : nil,
            can_edit: Scenes.can_edit_scene?(enactor, s),

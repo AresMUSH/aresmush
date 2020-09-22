@@ -33,12 +33,17 @@ module AresMUSH
       end
       
       def scene_participants(scene)
-        Scenes.participants_and_room_chars(scene).each.map { |p| name(p) }.join(" ")
+        pp Scenes.participants_and_room_chars(scene).map { |p| "#{p.name} - #{Login.is_online_or_on_web?(p) && (p.room == scene.room)}" }
+        Scenes.participants_and_room_chars(scene)
+        .sort_by { |p| [ (Login.is_online_or_on_web?(p) && (p.room == scene.room)) ? 0 : 1, p.name ]  }
+        .each
+        .map { |p| name(p, p.room == scene.room) }.join(" ")
       end
       
-      def name(char)
+      def name(char, in_room = true)
         status  = Website.activity_status(char)
         name =  Demographics.name_and_nickname(char)
+        
         if (status == 'game-inactive')
           name = "%xh%xx#{name}%xn"
         elsif (status == 'web-inactive')
@@ -46,7 +51,10 @@ module AresMUSH
         elsif (status == 'web-active')
           name = "#{name}%xh%xx#{Website.web_char_marker}%xn"
         elsif (status == 'game-active')
-          name
+          if (!in_room)
+            name = "%xh%xx#{name}%xn"
+          end
+          # Else use regular name
         else
           name = "%xh%xx#{name}[#{t('global.offline_status')}]%xn"
         end
@@ -90,7 +98,7 @@ module AresMUSH
           char_name = name(c)
           append_to_group(groups, room, char_name)
         end
-        groups.sort
+        groups.sort_by { |k, v| [ k == "Private Scenes" ? 1 : 0, k ]}
       end
       
       def ooc_groups
@@ -122,7 +130,7 @@ module AresMUSH
       def scene_room_name(scene)
         scene_codes = ""
         if (scene.room.is_temp_room?)
-          scene_codes << "%xc*%xn"
+          scene_codes << "%xc+%xn"
         end
         if (scene.scene_pacing != "Traditional")
           scene_codes << "%xy@%xn"
