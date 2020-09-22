@@ -17,13 +17,11 @@ module AresMUSH
 				when "swade"
 					case cmd.switch
 						when "iconicf"
-							 client.emit (cmd.args)
-							 case cmd.args
-								 if (!cmd.args)							 
-									return IconicfCmd
-								 else	
-									 return IconicfSetCmd
-								 end
+							if (!cmd.args)							 
+								return IconicfCmd
+							else	
+								return IconicfSetCmd
+							end
 						when "reset"
 							return ResetCmd
 						when "chargen"
