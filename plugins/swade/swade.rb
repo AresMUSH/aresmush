@@ -10,18 +10,19 @@ module AresMUSH
 		def self.shortcuts
 			Global.read_config("swade", "shortcuts")
 		end
+		
 
 		def self.get_cmd_handler(client, cmd, enactor)
 			case cmd.root
 				when "swade"
 					case cmd.switch
 						when "iconicf"
-							# case cmd.args
-								# when ( cmd.args == !nil )
-									return IconicfSetCmd
-								# else
-									# return IconicfCmd
-								# end
+							 case cmd.args
+								 when (!cmd.args)
+									return IconicfCmd
+								 else
+									 return IconicfSetCmd
+								 end
 						when "reset"
 							return ResetCmd
 						when "chargen"
@@ -46,6 +47,8 @@ module AresMUSH
 							# return MpowerCmd
 						# when "cyber"
 							# return CyberCmd
+						else
+							client.emit ("Whatever")
 						end
 				when "sheet"
 					return SheetCmd
