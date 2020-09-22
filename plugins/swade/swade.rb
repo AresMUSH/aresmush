@@ -24,8 +24,8 @@ module AresMUSH
 								end
 						when "reset"
 							return ResetCmd
-						# when "chargen"
-							# return ChargenCmd
+						when "chargen"
+							return ChargenpointsCmd
 						# when "race"
 							# return RaceCmd
 						# when "hj"
