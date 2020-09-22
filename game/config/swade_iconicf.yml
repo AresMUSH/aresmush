@@ -1,6 +1,7 @@
 ---
 swade:
     iconicf:
+<<<<<<< HEAD
         # -
             # name: Template
             # description: 
@@ -60,6 +61,11 @@ swade:
         -
             name: Burster
             description: Bursters are pyrokinetics—they telekinetically accelerate molecules to the point of ignition. 
+=======
+        -
+            name: Shifter
+            description: Practitioners of magic with a talent for manipulating - or "shifting" the patterns of the raw cosmic energies that bind the Megaverse(R) together.
+>>>>>>> parent of 160c5a3e4... Update swade_iconicf.yml
             stats:
                 Agility: 1
                 Smarts: 1
@@ -67,6 +73,7 @@ swade:
                 Strength: 1
                 Vigor: 1
             chargen_points:
+<<<<<<< HEAD
                 skills_points: 15
                 stats_points: 5
                 hj_slots: 2
@@ -74,6 +81,13 @@ swade:
                 hind_points: 0
             swade_ppe_max: 
             swade_isp_max: 
+=======
+                attributes_points: 5
+                skills_points: 15
+                hj_slots: 2 
+                magic_slots: 1
+            swade_ppe_max: 15
+>>>>>>> parent of 160c5a3e4... Update swade_iconicf.yml
             skills:
                 Academics: 0
                 Athletics: 1
@@ -89,21 +103,33 @@ swade:
                 Intimidation: 0
                 Language: 0
                 Notice: 1
+<<<<<<< HEAD
                 Occult: 0
                 Performance: 0
                 Persuasion: 1
                 Piloting: 0
                 Psionics: 2
+=======
+                Occult: 2
+                Performance: 0
+                Persuasion: 1
+                Piloting: 0
+>>>>>>> parent of 160c5a3e4... Update swade_iconicf.yml
                 Repair: 0
                 Research: 0
                 Riding: 0
                 Science: 0
                 Shooting: 0
+<<<<<<< HEAD
+=======
+                Spelllcasting: 2
+>>>>>>> parent of 160c5a3e4... Update swade_iconicf.yml
                 Stealth: 1
                 Survival: 0
                 Taunt: 0
                 Thievery: 0
             hinderances: 
+<<<<<<< HEAD
                 - Enemy-*
                 - Quirk*
                     - Pyromaniac 
@@ -113,90 +139,38 @@ swade:
                 - Major Psionic*
             psionic_powers:
                 - Elemental Manipulation*
-            abilities:
-                - Everything Burns*
-                - Fiery Aura*
-                - Fire Walker*
-                - Flame Bolt*
-            complications:
-                - Cybernetics*
-        -
-            name: Combat Cyborg
-            description: Combat Cyborgs are also referred to as full conversion ’Borgs. Their brain and a handful of organs—heart, lungs, possibly some part of the digestive system, not much else—are atached to a synthesis of bionic parts and cybernetic systems. The whole thing is encased in a metallic form capable of wrestling giant robots and dragons to the ground while withstanding direct missile impacts.
-            stats:
-                Agility: 4
-                Smarts: 1
-                Spirit: 1
-                Strength: 7
-                Vigor: 5
-            chargen_points:
-                skills_points: 15
-                stats_points: 2
-                hj_slots: 2
-                hind_points: 0
-            swade_ppe_max: 
-            swade_isp_max: 
-            swade_strain: 6
-            skills:
-                Academics: 0
-                Athletics: 1
-                Battle: 0
-                Boating: 0
-                Common Knowledge: 1
-                Driving: 0
-                Electronics: 0
-                Fighting: 0
-                Gambling: 0
-                Hacking: 0
-                Healing: 0
-                Intimidation: 0
-                Language: 0
-                Notice: 1
-                Occult: 0
-                Performance: 0
-                Persuasion: 1
-                Piloting: 0
-                Repair: 0
-                Research: 0
-                Riding: 0
-                Science: 0
-                Shooting: 0
-                Stealth: 1
-                Survival: 0
-                Taunt: 0
-                Thievery: 0
-            hinderances: 
-                - Ugly-*
+=======
+                - Enemies*
             edges:
-                - Fleet-Footed*
-                - Size*
-                - Upgradeable
-            cybernetics:
-                - Adrenal System*
-                - Armor Plating x3*
-                - Audio Package*
-                - Bionic Strength Augmentation*
-                - Core Electronics Pkg*
-                - Cyber Wired Reflexes*
-                - Internal Life Support*
-                - Nuclear Power Cell*
-                - Optics Package*
-                - Reinforced Frame x3*
-                - Synthetic Organ Replacement*
+                - AB Magic*
+                - Familiar Link*
+                - Dimensional Portal*
+                - Master of Magic*
+                - Power Points*
+                - Rapid Recharge*
+            magic_powers:
+                - Detect Arcana*
+                - Banish*
+                - Drain Power Points*
+                - Summon Ally*
+                - Teleport*
+>>>>>>> parent of 160c5a3e4... Update swade_iconicf.yml
             abilities:
-                - Bionic Augmentation*
-                - Harder than Steel*
-                - More Machine*
-                - Unarmed Combat*
+                - Bind the Summoned*
+                - Communication Rift*
+                - Dimension Sense*
+                - Dimensional Tport Home*
+                - Expanded Awareness*
+                - Ley Line Magic Mastery*
+                - Psychotically Brave*
+                - Sense Rifts*
+                - Shift Reality*
             complications:
-                - All Those Moving Parts*
-                - Full Conversion*
-                - Heavy
-                - Loss of Dexterity*
-                - Malfunctions*
-                - Shadow of Themselves*
-                - Spiritually Numb
-        -
+                - Corruption*
+                - Cybernetics*
+                - Disconnected*
+                - Power Activators*
+        -   
             name: Mystic
             description: Enlightened spell weavers in tune with the greater comic forces of the universe. 
             stats:
@@ -207,11 +181,9 @@ swade:
                 Vigor: 1
             chargen_points:
                 skills_points: 15
-                stats_points: 5
                 hj_slots: 2 
                 magic_slots: 3
                 psionic_slots: 3
-                hind_points: -2
             swade_ppe_max: 15
             swade_isp_max: 20
             skills:
@@ -244,100 +216,3 @@ swade:
                 Survival: 0
                 Taunt: 0
                 Thievery: 0
-            hinderances: 
-                - Enemy-*
-            edges:
-                - AB Miracles*
-                - Master of Magic*
-                - AB Psionics*
-                - Major Psionic*
-                - Alertness*
-                - Danger Sense*
-            magic_powers:
-                - Concel Arcana*
-                - Detect Arcana*
-                - Divination*
-            abilities:
-                - Cosmic Confluence*
-                - Mystic Power Modifiers*
-            complications:
-                - Arcane Duality*
-                - Cybernetics*
-                - Higher Standard*
-                - Power Activators*
-        -
-            name: Shifter
-            description: Practitioners of magic with a talent for manipulating - or "shifting" the patterns of the raw cosmic energies that bind the Megaverse(R) together.
-            stats:
-                Agility: 1
-                Smarts: 1
-                Spirit: 1
-                Strength: 1
-                Vigor: 1
-            chargen_points:
-                stats_points: 5
-                skills_points: 15
-                hj_slots: 2 
-                magic_slots: 1
-                hind_points: 0
-            swade_ppe_max: 15
-            skills:
-                Academics: 0
-                Athletics: 1
-                Battle: 0
-                Boating: 0
-                Common Knowledge: 1
-                Driving: 0
-                Electronics: 0
-                Fighting: 0
-                Gambling: 0
-                Hacking: 0
-                Healing: 0
-                Intimidation: 0
-                Language: 0
-                Notice: 1
-                Occult: 2
-                Performance: 0
-                Persuasion: 1
-                Piloting: 0
-                Repair: 0
-                Research: 0
-                Riding: 0
-                Science: 0
-                Shooting: 0
-                Spelllcasting: 2
-                Stealth: 1
-                Survival: 0
-                Taunt: 0
-                Thievery: 0
-            hinderances: 
-                - Enemy-*
-            edges:
-                - AB Magic*
-                - Familiar Link*
-                - Dimensional Portal*
-                - Master of Magic*
-                - Power Points*
-                - Rapid Recharge*
-            magic_powers:
-                - Detect Arcana*
-                - Banish*
-                - Drain Power Points*
-                - Summon Ally*
-                - Teleport*
-            abilities:
-                - Bind the Summoned*
-                - Communication Rift*
-                - Dimension Sense*
-                - Dimensional Tport Home*
-                - Expanded Awareness*
-                - Ley Line Magic Mastery*
-                - Psychotically Brave*
-                - Sense Rifts*
-                - Shift Reality*
-            complications:
-                - Corruption*
-                - Cybernetics*
-                - Disconnected*
-                - Power Activators*
-        -   
