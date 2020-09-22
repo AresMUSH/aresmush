@@ -17,12 +17,11 @@ module AresMUSH
 					case cmd.switch
 						when "iconicf"
 							case cmd.args
-								client.emit(cmd.args)
-								# when ( cmd.args == nil )
-									# return IconicfCmd
-								# else
-									# return IconicfSetCmd
-								# end
+								when ( cmd.args == !nil )
+									return IconicfSetCmd
+								else
+									return IconicfCmd
+								end
 						when "reset"
 							return ResetCmd
 						end
