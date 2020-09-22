@@ -18,11 +18,13 @@ module AresMUSH
 					case cmd.switch
 						when "iconicf"
 							 case cmd.args
-								 when (!cmd.args)
-									return IconicfCmd
-								 else
-									 return IconicfSetCmd
-								 end
+							    client.emit "Hellow World")
+							  end
+								 #when (!cmd.args)
+									#return IconicfCmd
+								 #else
+									 #return IconicfSetCmd
+								 #end
 						when "reset"
 							return ResetCmd
 						when "chargen"
