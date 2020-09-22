@@ -76,7 +76,7 @@ swade:
                 psionic_slots: 3
                 hind_points: 0
             swade_ppe_max: 0
-            swade_isp_max: 0
+            swade_isp_max: 
                 attributes_points: 5
                 skills_points: 15
                 hj_slots: 2 
