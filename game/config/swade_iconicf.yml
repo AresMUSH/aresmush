@@ -1,62 +1,62 @@
 ---
 swade:
     iconicf:
-        -
-            name: Template
-            description: 
-            stats:
-                Agility: 1
-                Smarts: 1
-                Spirit: 1
-                Strength: 1
-                Vigor: 1
-            chargen_points:
-                skills_points: 15
-                stats_points: 5
-                hj_slots:  2
-                magic_slots: 
-                psionic_slots: 
-                hind_points: 0
-            swade_ppe_max: 
-            swade_isp_max: 
-            skills:
-                Academics: 0
-                Athletics: 1
-                Battle: 0
-                Boating: 0
-                Common Knowledge: 1
-                Driving: 0
-                Electronics: 0
-                Fighting: 0
-                Gambling: 0
-                Hacking: 0
-                Healing: 0
-                Intimidation: 0
-                Language: 0
-                Notice: 1
-                Occult: 0
-                Performance: 0
-                Persuasion: 1
-                Piloting: 0
-                Repair: 0
-                Research: 0
-                Riding: 0
-                Science: 0
-                Shooting: 0
-                Stealth: 1
-                Survival: 0
-                Taunt: 0
-                Thievery: 0
-            hinderances: 
-                -
-            edges:
-                -
-            magic_powers:
-                -
-            abilities:
-                -
-            complications:
-                -
+        # -
+            # name: Template
+            # description: 
+            # stats:
+                # Agility: 1
+                # Smarts: 1
+                # Spirit: 1
+                # Strength: 1
+                # Vigor: 1
+            # chargen_points:
+                # skills_points: 15
+                # stats_points: 5
+                # hj_slots:  2
+                # magic_slots: 
+                # psionic_slots: 
+                # hind_points: 0
+            # swade_ppe_max: 
+            # swade_isp_max: 
+            # skills:
+                # Academics: 0
+                # Athletics: 1
+                # Battle: 0
+                # Boating: 0
+                # Common Knowledge: 1
+                # Driving: 0
+                # Electronics: 0
+                # Fighting: 0
+                # Gambling: 0
+                # Hacking: 0
+                # Healing: 0
+                # Intimidation: 0
+                # Language: 0
+                # Notice: 1
+                # Occult: 0
+                # Performance: 0
+                # Persuasion: 1
+                # Piloting: 0
+                # Repair: 0
+                # Research: 0
+                # Riding: 0
+                # Science: 0
+                # Shooting: 0
+                # Stealth: 1
+                # Survival: 0
+                # Taunt: 0
+                # Thievery: 0
+            # hinderances: 
+                # -
+            # edges:
+                # -
+            # magic_powers:
+                # -
+            # abilities:
+                # -
+            # complications:
+                # -
         -
             name: Burster
             description: Bursters are pyrokinetics—they telekinetically accelerate molecules to the point of ignition. 
