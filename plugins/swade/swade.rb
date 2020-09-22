@@ -24,40 +24,29 @@ module AresMUSH
 								end
 						when "reset"
 							return ResetCmd
-						# end
 						# when "chargen"
 							# return ChargenCmd
-						# end
 						# when "race"
 							# return RaceCmd
-						# end
 						# when "hj"
 							# return HjCmd
-						# end
 						# when "fandg"
 							# return FandgCmd
-						# end
 						when "stats"
 							return StatsCmd
-						end
 						# when "skill"
 							# return SkillCmd
-						# end
-						# when "hind"
-							# return HindCmd
-						# end
+						when "hind"
+							return HindCmd
 						# when "edge"
 							# return EdgeCmd
-						# end
 						# when "ppower"
 							# return PpowerCmd
-						# end
 						# when "mpower"
 							# return MpowerCmd
-						# end
 						# when "cyber"
 							# return CyberCmd
-						# end
+						end
 				when "sheet"
 					return SheetCmd
 				end
