@@ -16,12 +16,12 @@ module AresMUSH
 				when "swade"
 					case cmd.switch
 						when "iconicf"
-							case cmd.args
-								when ( cmd.args == !nil )
-									return IconicfSetCmd
-								else
+							# case cmd.args
+								# when ( cmd.args == !nil )
+									# return IconicfSetCmd
+								# else
 									return IconicfCmd
-								end
+								# end
 						when "reset"
 							return ResetCmd
 						when "chargen"
