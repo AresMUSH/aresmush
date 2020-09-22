@@ -8,7 +8,7 @@ module AresMUSH
 			def parse_args
 				self.target = enactor_name #Set the character to be the current character
 				self.iconicf_name = trim_arg(cmd.args) #Set 'iconicf_name' to be the inputted Iconic Framework
-				self.swade_iconicf = "swade_iconicf:"
+				self.swade_iconicf = "swade_iconicf:" 
 
 			end
 
@@ -16,6 +16,7 @@ module AresMUSH
 				[ self.target, self.iconicf_name ]
 			end
 			
+			#----- Check to see if what was entered was an Iconic Framework in game\config\swade_iconicf.yml
 			def check_valid_iconicf
 				return t('swade.iconicf_invalid_name', :name => self.iconicf_name.capitalize) if !Swade.is_valid_iconicf_name?(self.iconicf_name)
 				return nil
@@ -50,34 +51,46 @@ module AresMUSH
 				end
 				
 				#----- This sets the default stats on the Character -----				
-				iconicf_stats.each do |key, rating|
-					setthing = "#{key}".downcase
-					setrating = "#{rating}"
-					ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
-						SwadeStats.create(name: setthing, rating: setrating, character: model)
+				if (iconicf_stats)
+					iconicf_stats.each do |key, rating|
+						setthing = "#{key}".downcase
+						setrating = "#{rating}"
+						ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
+							SwadeStats.create(name: setthing, rating: setrating, character: model)
+						end
 					end
+					client.emit_success t('swade.iconicstats_set')
+				else 
+					client.emit_failure ("This Iconic Framework has no Stats")
 				end
-				client.emit_success t('swade.iconicstats_set')
 
 				#----- This sets the default skills on the Character -----				
-				iconicf_skills.each do |key, rating|
-					setthing = "#{key}".downcase
-					setrating = "#{rating}"
-					ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
-						SwadeSkills.create(name: setthing, rating: setrating, character: model)
+				if (iconicf_skills)
+					iconicf_skills.each do |key, rating|
+						setthing = "#{key}".downcase
+						setrating = "#{rating}"
+						ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
+							SwadeSkills.create(name: setthing, rating: setrating, character: model)
+						end
 					end
-				end
-				client.emit_success t('swade.iconicskills_set') 
+					client.emit_success t('swade.iconicskills_set')
+				else 
+					client.emit_failure ("This Iconic Framework has no Skills")
+				end 
 
 				#----- This sets the default Chargen Points on the Character -----				
-				iconicf_chargen_points.each do |key, rating|
-					setthing = "#{key}".downcase
-					setrating = "#{rating}"
-					ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
-						SwadeChargenpoints.create(name: setthing, rating: setrating, character: model)
+				if (iconicf_chargen_points)
+					iconicf_chargen_points.each do |key, rating|
+						setthing = "#{key}".downcase
+						setrating = "#{rating}"
+						ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
+							SwadeChargenpoints.create(name: setthing, rating: setrating, character: model)
+						end
 					end
-				end
-				client.emit_success t('swade.iconicchargenpoints_set')				
+					client.emit_success t('swade.iconicchargenpoints_set')
+				else 
+					client.emit_failure ("This Iconic Framework has no Chargen Points")
+				end				
 
 				#----- This sets the default Hinderances on the Character -----	
 				if (iconicf_hinderances) 
@@ -89,67 +102,90 @@ module AresMUSH
 					end
 					client.emit_success t('swade.iconichinderances_set')
 				else 
-					client.emit ("No Hinderances set")
+					client.emit_failure ("This Iconic Framework has no Hinderances")
 				end
-				
-
 				#----- This sets the default Edges on the Character -----				
-				iconicf_edges.each do |key|
-					setthing = "#{key}".downcase
-					ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
-						SwadeEdges.create(name: setthing, character: model)
+				if (iconicf_edges)
+					iconicf_edges.each do |key|
+						setthing = "#{key}".downcase
+						ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
+							SwadeEdges.create(name: setthing, character: model)
+						end
 					end
+					client.emit_success t('swade.iconicedges_set')
+				else 
+					client.emit_failure ("This Iconic Framework has no Edges")
 				end
-				client.emit_success t('swade.iconicedges_set')
 
-				#----- This sets the default Magic Powers on the Character -----				
-				iconicf_magic_powers.each do |key|
-					setthing = "#{key}".downcase
-					ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
-						SwadeMpowers.create(name: setthing, character: model)
+				#----- This sets the default Magic Powers on the Character -----	
+					if (iconicf_magic_powers)
+					iconicf_magic_powers.each do |key|
+						setthing = "#{key}".downcase
+						ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
+							SwadeMpowers.create(name: setthing, character: model)
+						end
 					end
+					client.emit_success t('swade.iconicmpowers_set')
+				else 
+					client.emit_failure ("This Iconic Framework has no Magic Powers")
+				end 
+
+				# ----- This sets the default Psionic Powers on the Character -----	
+				if (iconicf_psionic_powers)
+					iconicf_psionic_powers.each do |key|
+						setthing = "#{key}".downcase
+						ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
+							SwadePpowers.create(name: setthing, character: model)
+						end
+					end
+					client.emit_success t('swade.iconicppowers_set')
+				else 
+					client.emit_failure ("This Iconic Framework has no Psionic Powers")
 				end
-				client.emit_success t('swade.iconicmpowers_set') 
 
-				# ----- This sets the default Psionic Powers on the Character -----				
-				# iconicf_psionic_powers.each do |key|
-					# setthing = "#{key}".downcase
-					# ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
-						# SwadePpowers.create(name: setthing, character: model)
-					# end
-				# end
-				# client.emit_success t('swade.iconicppowers_set')
-
-				# ----- This sets the default Cybernetics on the Character -----				
-				# iconicf_cybernetics.each do |key|
-					# setthing = "#{key}".downcase
-					# ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
-						# SwadeCybernetics.create(name: setthing, character: model)
-					# end
-				# end
-				# client.emit_success t('swade.iconiccybernetics_set')
+				# ----- This sets the default Cybernetics on the Character -----	
+				if (iconicf_cybernetics)
+					iconicf_cybernetics.each do |key|
+						setthing = "#{key}".downcase
+						ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
+							SwadeCybernetics.create(name: setthing, character: model)
+						end
+					end
+					client.emit_success t('swade.iconiccybernetics_set')
+				else 
+					client.emit_failure ("This Iconic Framework has no Cybernetics")
+				end
 				
-				#----- This sets the default Abilities on the Character -----				
-				iconicf_abilities.each do |key|
-					setthing = "#{key}".downcase
-					ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
-						SwadeAbilities.create(name: setthing, character: model)
+				#----- This sets the default Abilities on the Character -----	
+				if (iconicf_abilities)
+					iconicf_abilities.each do |key|
+						setthing = "#{key}".downcase
+						ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
+							SwadeAbilities.create(name: setthing, character: model)
+						end
 					end
+					client.emit_success t('swade.iconicabilities_set')
+				else 
+					client.emit_failure ("This Iconic Framework has no Abilities")
 				end
-				client.emit_success t('swade.iconicabilities_set')
 				
-				#----- This sets the default Complications on the Character -----				
-				iconicf_complications.each do |key|
-					setthing = "#{key}".downcase
-					ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
-						SwadeComplications.create(name: setthing, character: model)
+				#----- This sets the default Complications on the Character -----
+				if (iconicf_complications)
+					iconicf_complications.each do |key|
+						setthing = "#{key}".downcase
+						ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
+							SwadeComplications.create(name: setthing, character: model)
+						end
 					end
+					client.emit_success t('swade.iconiccomplications_set')
+				else 
+					client.emit_failure ("This Iconic Framework has no Complications")
 				end
-				client.emit_success t('swade.iconiccomplications_set')
 				
 				client.emit_success t('swade.iconicf_complete')
 			end
 #----- End of def handle -----	
+
 		end
     end
 end
