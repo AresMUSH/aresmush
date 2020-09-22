@@ -1,6 +1,6 @@
 %lh
 %xh<%= center( t('swade.hinderances_title') ,78,"_") %> %xn
-<%= center({+ indicates a Major Hinderance} , 39) %> <%= center({- indicates a Minor Hinderance} , 39 ) %>
+<%= center("+ indicates a Major Hinderance" , 39) %> <%= center("- indicates a Minor Hinderance" , 39 ) %>
 <% types.each do |c| %>
 %xc<%= c['name'] %>%xn (<%= c['hind_points'] %> points)
 <%= description(c) %>
