@@ -27,27 +27,70 @@ module AresMUSH
 						when "chargen"
 							return ChargenpointsCmd
 						# when "race"
-							# return RaceCmd
+							# if (!cmd.args)							 
+								# return RaceCmd
+							# else
+								# return RaceSetCmd
+							# end
 						# when "hj"
-							# return HjCmd
+							# if (!cmd.args)							 
+								# return HjCmd
+							# else
+								# return HjSetCmd
+							# end
 						# when "fandg"
-							# return FandgCmd
+							# if (!cmd.args)							 
+								# return FandgCmd
+							# else
+								# return FandgSetCmd
+							# end
 						when "stats"
-							return StatsCmd
+							if (!cmd.args)							 
+								return StatsCmd
+							else
+								# return StatsSetCmd
+								return client.emit ("Command Pending")
+							end
 						when "skill"
-							return SkillCmd
+							if (!cmd.args)							 
+								return SkillCmd
+							else
+								# return SkillSetCmd
+								return client.emit ("Command Pending")
+							end
 						when "hind"
-							return HindCmd
+							if (!cmd.args)							 
+								return HindCmd
+							else
+								# return HindSetCmd
+								return client.emit ("Command Pending")
+							end
 						# when "edge"
-							# return EdgeCmd
+							# if (!cmd.args)							 
+								# return EdgeCmd
+							# else
+								# return EdgeSetCmd
+							# end
 						# when "ppower"
-							# return PpowerCmd
+							# if (!cmd.args)							 
+								# return PpowerCmd
+							# else
+								# return PpowerSetCmd
+							# end
 						# when "mpower"
-							# return MpowerCmd
+							# if (!cmd.args)							 
+								# return MpowerSetCmd
+							# else
+								# return MpowerSetCmd
+							# end
 						# when "cyber"
-							# return CyberCmd
+							# if (!cmd.args)							 
+								# return CyberSetCmd
+							# else
+								#return CyberSetCmd
+							# end
 						else
-							client.emit ("Whatever")
+							client.emit ("Error")
 						end
 				when "sheet"
 					return SheetCmd
