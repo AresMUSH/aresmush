@@ -1,0 +1,8 @@
+%lh
+%xh<%= center( t('swade.stats_title') ,78,"_") %> %xn
+<% types.each do |c| %>
+%xc<%= c['name'] %>%xn
+<%= description(c) %>
+
+<% end %>
+%lf
