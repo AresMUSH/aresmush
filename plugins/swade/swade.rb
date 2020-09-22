@@ -18,9 +18,9 @@ module AresMUSH
 						when "iconicf"
 							# case cmd.args
 								# when ( cmd.args == !nil )
-									# return IconicfSetCmd
+									return IconicfSetCmd
 								# else
-									return IconicfCmd
+									# return IconicfCmd
 								# end
 						when "reset"
 							return ResetCmd
