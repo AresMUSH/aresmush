@@ -87,10 +87,11 @@ module AresMUSH
 							SwadeHinderances.create(name: setthing, character: model)
 						end
 					end
+					client.emit_success t('swade.iconichinderances_set')
 				else 
 					client.emit ("No Hinderances set")
 				end
-				client.emit_success t('swade.iconichinderances_set')
+				
 
 				#----- This sets the default Edges on the Character -----				
 				iconicf_edges.each do |key|
