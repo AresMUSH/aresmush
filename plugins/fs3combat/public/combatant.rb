@@ -4,7 +4,6 @@ module AresMUSH
     include ObjectModel
     #SPELLS
     attribute :spell_mod, :type => DataType::Integer, :default => 0
-    attribute :gm_spell_mod, :type => DataType::Integer, :default => 0
     attribute :has_cast, :type => DataType::Boolean, :default => false
     attribute :magic_stun, :type => DataType::Boolean, :default => false
     attribute :magic_stun_spell
@@ -15,9 +14,6 @@ module AresMUSH
     attribute :spell_mod_counter, :type => DataType::Integer, :default => 0
     attribute :init_spell_mod, :type => DataType::Integer, :default => 0
     attribute :init_spell_mod_counter, :type => DataType::Integer, :default => 0
-    attribute :spell_damage_lethality_mod, :type => DataType::Integer, :default => 0
-    attribute :spell_defense_mod, :type => DataType::Integer, :default => 0
-    attribute :spell_attack_mod, :type => DataType::Integer, :default => 0
     attribute :lethal_mod_counter, :type => DataType::Integer, :default => 0
     attribute :attack_mod_counter, :type => DataType::Integer, :default => 0
     attribute :defense_mod_counter, :type => DataType::Integer, :default => 0

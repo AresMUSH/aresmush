@@ -102,32 +102,32 @@ module AresMUSH
       lethal_mod = Global.read_config("spells", spell, "lethal_mod")
       current_mod = caster_combat.damage_lethality_mod
       new_mod = current_mod + lethal_mod
-      caster_combat.update(spell_damage_lethality_mod: new_mod)
-      FS3Combat.emit_to_combat caster_combat.combat, t('potion_mod', :name => caster_combat.name, :potion => spell, :target => "themself", :mod => lethal_mod, :type => "lethality", :total_mod => caster_combat.spell_damage_lethality_mod)
+      caster_combat.update(damage_lethality_mod: new_mod)
+      FS3Combat.emit_to_combat caster_combat.combat, t('potion_mod', :name => caster_combat.name, :potion => spell, :target => "themself", :mod => lethal_mod, :type => "lethality", :total_mod => caster_combat.damage_lethality_mod)
     end
 
     def self.potion_defense_mod(caster_combat, spell)
       defense_mod = Global.read_config("spells", spell, "defense_mod")
-      # current_mod = caster_combat.defense_mod
-      # new_mod = current_mod + defense_mod
-      caster_combat.update(spell_defense_mod: defense_mod)
-      FS3Combat.emit_to_combat caster_combat.combat, t('magic.potion_mod', :name => caster_combat.name, :target => "themself", :potion => spell, :mod => defense_mod, :type => "defense", :total_mod => caster_combat.spell_defense_mod)
+      current_mod = caster_combat.defense_mod
+      new_mod = current_mod + defense_mod
+      caster_combat.update(defense_mod: new_mod)
+      FS3Combat.emit_to_combat caster_combat.combat, t('magic.potion_mod', :name => caster_combat.name, :target => "themself", :potion => spell, :mod => defense_mod, :type => "defense", :total_mod => caster_combat.defense_mod)
     end
 
     def self.potion_spell_mod(caster_combat, spell)
       spell_mod = Global.read_config("spells", spell, "spell_mod")
-      # current_mod = caster_combat.spell_mod.to_i
-      # new_mod = current_mod + spell_mod
-      caster_combat.update(spell_mod: spell_mod)
+      current_mod = caster_combat.spell_mod.to_i
+      new_mod = current_mod + spell_mod
+      caster_combat.update(spell_mod: new_mod)
       FS3Combat.emit_to_combat caster_combat.combat, t('magic.potion_mod', :name => caster_combat.name, :target => "themself", :potion => spell, :mod => spell_mod, :type => "spell", :total_mod => caster_combat.spell_mod)
     end
 
     def self.potion_attack_mod(caster_combat, spell)
       attack_mod = Global.read_config("spells", spell, "attack_mod")
-      # current_mod = caster_combat.attack_mod
-      # new_mod = current_mod + attack_mod
-      caster_combat.update(spell_attack_mod: attack_mod)
-      FS3Combat.emit_to_combat caster_combat.combat, t('magic.potion_mod', :name => caster_combat.name, :target => "themself", :potion => spell, :mod => attack_mod, :type => "attack", :total_mod => caster_combat.spell_attack_mod)
+      current_mod = caster_combat.attack_mod
+      new_mod = current_mod + attack_mod
+      caster_combat.update(attack_mod: new_mod)
+      FS3Combat.emit_to_combat caster_combat.combat, t('magic.potion_mod', :name => caster_combat.name, :target => "themself", :potion => spell, :mod => attack_mod, :type => "attack", :total_mod => caster_combat.attack_mod)
     end
 
 

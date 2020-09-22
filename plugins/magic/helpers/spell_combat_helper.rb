@@ -3,15 +3,13 @@ module AresMUSH
 
     def self.roll_combat_spell(char, combatant, school, cast_mod = 0, level_mod)
       accuracy_mod = FS3Combat.weapon_stat(combatant.weapon, "accuracy")
-      attack_mod = combatant.attack_mod
-      spell_attack_mod = combatant.spell_attack_mod
+      special_mod = combatant.attack_mod
       damage_mod = combatant.total_damage_mod
       stance_mod = combatant.attack_stance_mod
       stress_mod = combatant.stress
       attack_luck_mod = (combatant.luck == "Attack") ? 3 : 0
       spell_luck_mod = (combatant.luck == "Spell") ? 3 : 0
       distraction_mod = combatant.distraction
-      gm_spell_mod = combatant.gm_spell_mod
       spell_mod = combatant.spell_mod ? combatant.spell_mod : 0
       if !combatant.is_npc?
         item_spell_mod = Magic.item_spell_mod(combatant.associated_model)
@@ -20,9 +18,9 @@ module AresMUSH
         item_spell_mod = 0
         item_attack_mod = 0
       end
-      total_mod = cast_mod + item_spell_mod.to_i + item_attack_mod.to_i + gm_spell_mod.to_i + spell_mod.to_i + accuracy_mod.to_i + damage_mod.to_i  + stance_mod.to_i  + attack_luck_mod.to_i  + spell_luck_mod.to_i - stress_mod.to_i  + spell_attack_mod.to_i + attack_mod.to_i - distraction_mod.to_i + level_mod.to_i
+      total_mod = cast_mod + item_spell_mod.to_i + item_attack_mod.to_i + spell_mod.to_i + accuracy_mod.to_i + damage_mod.to_i  + stance_mod.to_i  + attack_luck_mod.to_i  + spell_luck_mod.to_i - stress_mod.to_i  + special_mod.to_i - distraction_mod.to_i + level_mod.to_i
 
-      combatant.log "SPELL ROLL for #{combatant.name} school=#{school} level_mod=#{level_mod} off-school_cast_mod=#{cast_mod} spell_mod=#{spell_mod} spell_luck=#{spell_luck_mod} gm_spell_mod=#{gm_spell_mod} item_spell_mod=#{item_spell_mod} attack=#{attack_mod} spell_attack=#{spell_attack_mod} item_attack_mod=#{item_attack_mod} attack_luck=#{attack_luck_mod} accuracy=#{accuracy_mod} damage=#{damage_mod} stance=#{stance_mod}   stress=#{stress_mod}  distract=#{distraction_mod} total_mod=#{total_mod}"
+      combatant.log "SPELL ROLL for #{combatant.name} school=#{school} level_mod=#{level_mod} off-school_cast_mod=#{cast_mod} spell_mod=#{spell_mod} item_spell_mod=#{item_spell_mod} item_attack_mod=#{item_attack_mod} accuracy=#{accuracy_mod} damage=#{damage_mod} stance=#{stance_mod} attack_luck=#{attack_luck_mod} spell_luck=#{spell_luck_mod} stress=#{stress_mod} attack=#{special_mod} distract=#{distraction_mod} total_mod=#{total_mod}"
 
       successes = combatant.roll_ability(school, total_mod)
       return successes
@@ -271,14 +269,14 @@ module AresMUSH
 
     def self.cast_attack_mod(combatant, target, spell, rounds, attack_mod)
       target.update(attack_mod_counter: rounds)
-      target.update(spell_attack_mod: attack_mod)
+      target.update(attack_mod: attack_mod)
       message = [t('magic.cast_mod', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target =>  target.name, :mod => attack_mod, :type => "attack")]
       return message
     end
 
     def self.cast_defense_mod(combatant, target, spell, rounds, defense_mod)
       target.update(defense_mod_counter: rounds)
-      target.update(spell_defense_mod: defense_mod)
+      target.update(defense_mod: defense_mod)
       message = [t('magic.cast_mod', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target =>  target.name, :mod => defense_mod, :type => "defense")]
       return message
     end

@@ -22,8 +22,8 @@ module AresMUSH
       end
 
       def handle
-        self.target_combat.update(spell_mod: self.gm_spell_mod)
-        client.emit_success "You have updated #{target_combat.name}'s spell modification to #{target_combat.gm_spell_mod}."
+        self.target_combat.update(spell_mod: self.spell_mod)
+        client.emit_success "You have updated #{target_combat.name}'s spell modification to #{target_combat.spell_mod}."
       end
     end
   end
