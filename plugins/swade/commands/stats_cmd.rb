@@ -6,7 +6,7 @@ module AresMUSH
       def handle
         types = Global.read_config("swade", "stats_lib")
         list = types.sort_by { |a| a['name']}
-        template = IconicfTemplate.new list
+        template = StatsTemplate.new list
         client.emit template.render
       end
     end
