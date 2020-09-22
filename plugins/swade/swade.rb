@@ -108,8 +108,6 @@ module AresMUSH
 				end
 			when "sheet"
 				return SheetCmd
-			else
-				client.emit ("hello 33333")
 			end
 		end
 
