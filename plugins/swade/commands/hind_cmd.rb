@@ -4,9 +4,9 @@ module AresMUSH
       include CommandHandler
   
       def handle
-        types = Global.read_config("swade", "hinderances_lib")
+        types = Global.read_config("swade", "hinderances")
         list = types.sort_by { |a| a['name']}
-        template = IconicfTemplate.new list
+        template = HinderancesTemplate.new list
         client.emit template.render
       end
     end
