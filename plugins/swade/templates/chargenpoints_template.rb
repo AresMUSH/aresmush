@@ -5,7 +5,7 @@ module AresMUSH
   
 			def initialize(char)
 				@char = char
-				super File.dirname(__FILE__) + "/sheet.erb"
+				super File.dirname(__FILE__) + "/chargenpoints.erb"
 			end
 
 			def chargenpoints
