@@ -39,6 +39,10 @@ module AresMUSH
 			def mpowers
 				format_three_column @char.swade_mpowers
 			end
+			
+			def chargenpoints
+				format_three_per_line @char.swade_chargenpoints
+			end
 
 			def format_stats(list)
 				list.to_a.sort_by { |a| a.name }
