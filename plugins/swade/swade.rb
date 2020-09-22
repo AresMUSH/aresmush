@@ -45,17 +45,20 @@ module AresMUSH
 							if (!cmd.args)							 
 								return StatsCmd
 							else
-								return StatsSetCmd
+								# return StatsSetCmd
+								return client.emit ("Command Pending")
 						when "skill"
 							if (!cmd.args)							 
 								return SkillCmd
 							else
-								return SkillSetCmd
+								# return SkillSetCmd
+								return client.emit ("Command Pending")
 						when "hind"
 							if (!cmd.args)							 
 								return HindCmd
 							else
-								return HindSetCmd
+								# return HindSetCmd
+								return client.emit ("Command Pending")
 						# when "edge"
 							# if (!cmd.args)							 
 								# return EdgeCmd
