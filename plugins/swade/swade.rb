@@ -10,7 +10,6 @@ module AresMUSH
 		def self.shortcuts
 			Global.read_config("swade", "shortcuts")
 		end
-		
 
 		def self.get_cmd_handler(client, cmd, enactor)
 			case cmd.root
@@ -115,9 +114,22 @@ module AresMUSH
 			nil
 		end
 
-		def self.get_web_request_handler(request)
-			nil
-		end
+# Somehow the webrequests come in here. Check the ./web folder for handlers etc
+    def self.get_web_request_handler(request)
+      case request.cmd
+      when "abilities"
+        return AbilitiesRequestHandler
+      when "addJobRoll"
+        return AddJobRollRequestHandler
+      when "addSceneRoll"
+        return AddSceneRollRequestHandler
+      when "learnAbility"
+        return LearnAbilityRequestHandler
+      when"spendLuck"
+        return SpendLuckRequestHandler
+      end
+      nil
+    end
 
 	end
 end
