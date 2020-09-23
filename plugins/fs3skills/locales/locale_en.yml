@@ -103,7 +103,7 @@ en:
         #    one: "%{name} spends a luck point!"
         #    other: "%{name} spends %{count} luck points!"
         luck_point_spent: "%{name} spends luck on %{reason}."
-        luck_job_title: "${name} spent luck on %{reason}"
+        luck_job_title: "%{name} spent luck on %{reason}"
 
         # ------------------------------------------------------
         # SHEET
