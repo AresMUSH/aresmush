@@ -25,6 +25,7 @@ module AresMUSH
 			title = left("#{ a.name }".capitalize, 16,'.')
 			rating = left(a.rating, 7)
 			"#{linebreak} #{title} #{rating} "
+		end
 	end	
   end
 end
