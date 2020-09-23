@@ -558,6 +558,21 @@ spells:
     target_optional: true
     target_num: 1
 #LEVEL SIX
+  Bewitch:
+    available: false
+    casting_time: 1 round
+    desc: Target becomes completely charmed by the caster and attempts to move toward them. They are neutral toward all parties and will neither aid nor attack while under the spell. The spell is broken if they are hit by an attack.
+    damage_type: Psionic
+    duration: 3 rounds
+    effect: Psionic
+    is_stun: true
+    rounds: 3
+    level: 3
+    name: Bewitch
+    range: Long
+    school: Spirit
+    target_num: 1
+    weapon: Stun (Spirit)
   Enduring Mind Shield:
     available: true
     casting_time: "1 round"
@@ -642,6 +657,7 @@ spells:
     school: Spirit
     target_num: 1
     target_optional: true
+  #LEVEL 7
   Clarity:
     available: true
     area: 100 yard radius
