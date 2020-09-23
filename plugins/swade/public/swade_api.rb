@@ -19,9 +19,10 @@ module AresMUSH
 	
 	def self.returnskillsforweb(skills)
 		skills.to_a.sort_by { |a| a.name }
+		linebreak = ""
 		.each_with_index
 			.map do |a, i| 
-			linebreak = i % 3 == 0 ? "-" : ""
+			linebreak = i % 3 == 0 ? "<br \>" : ""
 			title = "#{ a.name }".capitalize
 			rating = a.rating
 			"#{linebreak} #{title} #{rating} "
