@@ -19,7 +19,6 @@ module AresMUSH
 	
 	def self.returnskillsforweb(skills)
 		skills.to_a.sort_by { |a| a.name }
-		#linebreak = ""
 		.each_with_index
 			.map do |a, i| 
 			linebreak = i % 3 == 0 ? " --- " : ""
