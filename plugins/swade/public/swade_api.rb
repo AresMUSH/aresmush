@@ -1,7 +1,7 @@
 module AresMUSH
   module Swade
     def self.get_abilities_for_web_viewing(char, viewer)
-		skills = "Hello World" 
+		skills = Website.format_markdown_for_html("Hello World")
         return {
 
           skills: skills
