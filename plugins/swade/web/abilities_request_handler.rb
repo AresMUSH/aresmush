@@ -2,7 +2,8 @@ module AresMUSH
   module Swade
     class AbilitiesRequestHandler
       def handle(request)
-        skills = format_three_per_line @char.swade_skills
+        #skills = format_three_per_line @char.swade_skills
+		skills = "Hello World" 
         {
           attrs_blurb: Website.format_markdown_for_html(FS3Skills.attr_blurb),
           action_blurb: Website.format_markdown_for_html(FS3Skills.action_blurb),
