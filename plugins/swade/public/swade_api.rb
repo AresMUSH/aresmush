@@ -22,7 +22,7 @@ module AresMUSH
 		linebreak = ""
 		.each_with_index
 			.map do |a, i| 
-			linebreak = i % 3 == 0 ? "<br \>" : ""
+			linebreak = i % 3 == 0 ? " --- " : ""
 			title = "#{ a.name }".capitalize
 			rating = a.rating
 			"#{linebreak} #{title} #{rating} "
