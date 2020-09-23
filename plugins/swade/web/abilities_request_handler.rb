@@ -2,8 +2,7 @@ module AresMUSH
   module Swade
     class AbilitiesRequestHandler
       def handle(request)
-        skills = Swade.skills.map { |a| { name: a['name'].titleize, rating: a['rating'] } }
-		
+        skills = format_three_per_line @char.swade_skills
         {
           attrs_blurb: Website.format_markdown_for_html(FS3Skills.attr_blurb),
           action_blurb: Website.format_markdown_for_html(FS3Skills.action_blurb),
