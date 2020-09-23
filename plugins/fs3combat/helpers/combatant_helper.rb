@@ -28,7 +28,7 @@ module AresMUSH
 
       combatant.log "Attack roll for #{combatant.name} ability=#{ability} aiming=#{aiming_mod} mod=#{mod} accuracy=#{accuracy_mod} damage=#{damage_mod} stance=#{stance_mod} mount=#{mount_mod} luck=#{luck_mod} spell_luck=#{spell_luck_mod} item_attack=#{item_attack_mod} stress=#{stress_mod} attack=#{attack_mod} spell_attack=#{spell_attack_mod}"
 
-      mod = mod + accuracy_mod + damage_mod + stance_mod + aiming_mod + luck_mod - stress_mod + special_mod + mount_mod + item_attack_mod.to_i + spell_luck_mod.to_i + spell_attack_mod.to_i
+      mod = mod + accuracy_mod + damage_mod + stance_mod + aiming_mod + luck_mod - stress_mod + attack_mod + mount_mod + item_attack_mod.to_i + spell_luck_mod.to_i + spell_attack_mod.to_i
 
 
       combatant.roll_ability(ability, mod)
