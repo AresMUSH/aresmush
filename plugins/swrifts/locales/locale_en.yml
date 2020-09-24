@@ -32,7 +32,7 @@ en:
         no_special_characters: "Stat names may not contain special characters."
         error_saving_ability: "There was a problem saving %{name}: %{error}"
         cant_lower_below_iconicf_min: "You can't lower an stat below the starting Iconic Framework value."
-        reset_chargen: "SWADE Chargen Reset!"
+        reset_chargen: "SWRifts Chargen Reset!"
 
         
         stat_not_found: "Stat not found."
@@ -53,7 +53,7 @@ en:
         not_that_many_pages: "There aren't that many character sheet pages."
 
         # ------------------------------------------------------
-        # SWADE
+        # SWRifts
         # ------------------------------------------------------
         
         iconicframe: "%{name}"

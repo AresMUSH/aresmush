@@ -1,7 +1,7 @@
 ---
-toc: SWADE RPG
+toc: SWRIFTS RPG
 order: 1
-summary: The Savage Worlds Adventure Edition RPG system.
+summary: Rifts for Savage Worlds RPG system.
 ---
 
 # Swrifts System

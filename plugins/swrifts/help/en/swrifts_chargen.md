@@ -1,7 +1,7 @@
 ---
-toc: SWADE RPG
+toc: SWRIFTS RPG
 order: 2
-summary: The Savage Worlds Adventure Edition RPG system.
+summary: SWRifts Chargen Commands
 ---
 # Swrifts Chargen
 
