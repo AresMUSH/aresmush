@@ -49,7 +49,7 @@ module AresMUSH
 				linebreak = i % 3 == 0 ? "" : ""
 				cellopenid='<div class="col-sm-4">'
 				colautoopenid='<div class="col-sm-6 heading">'
-				colsmallopenid='<div class="col-sm-6">'
+				colsmallopenid='<div class="col-sm-6 rating">'
 				cellcloseid='</div>'
 				title = "#{ a.name }".titleize 
 				rating = die_rating(a.rating)
