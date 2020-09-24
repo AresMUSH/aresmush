@@ -24,10 +24,10 @@ module AresMUSH
 		.each_with_index
 			.map do |a, i| 
 				rowopenid = i == 0 ? "<div class='container-fluid skillstable'><div class='row'>" : ""
-				rowcloseid = i == skills.count ? "</div>" : ""
+				rowcloseid = i == skills.count ? "</div></div>" : ""
 				linebreak = i % 3 == 0 ? " <div class='w-100'></div> " : ""
 				cellopenid='<div class="col-sm-4">'
-				cellcloseid='</div></div>'
+				cellcloseid='</div>'
 				title = "#{ a.name }".capitalize
 				rating = a.rating
 				"#{rowopenid}#{cellopenid}#{title}: #{rating}#{cellcloseid}#{linebreak}#{rowcloseid}"
