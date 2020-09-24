@@ -37,7 +37,7 @@ module AresMUSH
 			#rating = a.rating
 			rating = "#{ value}"
 			"#{rowopenid}#{cellopenid}#{title}: #{rating}#{cellcloseid}#{linebreak}#{rowcloseid}"
-		    #end
+		end
 	end	
   end
 end
