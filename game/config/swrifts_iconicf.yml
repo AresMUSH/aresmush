@@ -1,5 +1,5 @@
 ---
-swade:
+swrifts:
     iconicf:
         # -
             # name: Template
@@ -17,8 +17,8 @@ swade:
                 # magic_slots: 
                 # psionic_slots: 
                 # hind_points: 0
-            # swade_ppe_max: 
-            # swade_isp_max: 
+            # swrifts_ppe_max: 
+            # swrifts_isp_max: 
             # skills:
                 # Academics: 0
                 # Athletics: 1
@@ -75,13 +75,13 @@ swade:
                 hj_slots: 2
                 psionic_slots: 3
                 hind_points: 0
-            swade_ppe_max: 0
-            swade_isp_max: 
+            swrifts_ppe_max: 0
+            swrifts_isp_max: 
                 attributes_points: 5
                 skills_points: 15
                 hj_slots: 2 
                 magic_slots: 1
-            swade_ppe_max: 15
+            swrifts_ppe_max: 15
             skills:
                 Academics: 0
                 Athletics: 1
@@ -169,8 +169,8 @@ swade:
                 hj_slots: 2 
                 magic_slots: 3
                 psionic_slots: 3
-            swade_ppe_max: 15
-            swade_isp_max: 20
+            swrifts_ppe_max: 15
+            swrifts_isp_max: 20
             skills:
                 Academics: 0
                 Athletics: 1
