@@ -25,18 +25,15 @@ module AresMUSH
 	
 	    # Format skill table
 		skills = returnskillsforweb(char.swade_skills)
-		skills = skills.join(" ")
+		skills = skills.join(" ") #removes the comma's that seperates the entries
+		
+		#Format Stat Table
+		stats = returnstatsforweb(char.swade_stats)
+		stats = stats.join(" ") #removes the comma's that seperates the entries
+		
          return {
-
           skills: skills
-          # Copied from the FS3 stuff.
-
-          # attrs: attrs,
-          # action_skills: action_skills,
-          # backgrounds: backgrounds,
-          # languages: languages,
-          # advantages: advantages,
-          # use_advantages: FS3Skills.use_advantages?
+		  stats: stats
         } 
 	end
 	
@@ -46,6 +43,25 @@ module AresMUSH
 			.map do |a, i| 
 				rowopenid = i == 0 ? "<div class='skilltable'><div class='container-fluid skillstable'><div class='row'>" : ""
 				rowcloseid = i == skills.count ? "</div></div></div>" : ""
+				#linebreak = i % 3 == 0 ? " <div class='w-100'></div> " : ""
+				linebreak = i % 3 == 0 ? "" : ""
+				cellopenid='<div class="col-sm-4">'
+				colautoopenid='<div class="col-sm-6 heading">'
+				colsmallopenid='<div class="col-sm-6 rating">'
+				cellcloseid='</div>'
+				correcttitle = "#{a.name}".titleize
+				title = "<span title='#{correcttitle}'>#{correcttitle}</span>"
+				rating = die_rating(a.rating)
+				"#{rowopenid}#{cellopenid}#{colautoopenid}#{title}: #{cellcloseid}#{colsmallopenid}#{rating}#{cellcloseid}#{cellcloseid}#{linebreak}#{rowcloseid}"
+			end
+	end	
+
+	def self.returnstatsforweb(stats)
+		stats.to_a.sort_by { |a| a.name }
+		.each_with_index
+			.map do |a, i| 
+				rowopenid = i == 0 ? "<div class='stattable'><div class='container-fluid statstable'><div class='row'>" : ""
+				rowcloseid = i == stats.count ? "</div></div></div>" : ""
 				#linebreak = i % 3 == 0 ? " <div class='w-100'></div> " : ""
 				linebreak = i % 3 == 0 ? "" : ""
 				cellopenid='<div class="col-sm-4">'
