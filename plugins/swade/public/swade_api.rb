@@ -1,6 +1,7 @@
 module AresMUSH
   module Swade
   
+    # Return the code to display the font awesome die type based on rating. This should probably be moved to somewhere else.
     def self.die_rating(rating)
       case rating.to_i
       when 0
@@ -51,7 +52,8 @@ module AresMUSH
 				colautoopenid='<div class="col-sm-6 heading">'
 				colsmallopenid='<div class="col-sm-6 rating">'
 				cellcloseid='</div>'
-				title = "#{ a.name }".titleize 
+				correcttitle = "#{a.name}".titleize
+				title = "<span title='#{correcttitle}'>#{correcttitle}</span>"
 				rating = die_rating(a.rating)
 				"#{rowopenid}#{cellopenid}#{colautoopenid}#{title}: #{cellcloseid}#{colsmallopenid}#{rating}#{cellcloseid}#{cellcloseid}#{linebreak}#{rowcloseid}"
 			end
