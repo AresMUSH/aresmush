@@ -21,19 +21,14 @@ module AresMUSH
 	def self.returnskillsforweb(skills)
 		skills.to_a.sort_by { |a| a.name }
 			.map do |a, i| 
-				#rowopenid = i == 0 ? "<div class='row'>" : ""
-				rowopenid = ''
-				#rowcloseid = i == skills.count ? "</div>" : ""
-				rowcloseid = ''
-				#linebreak = i % 3 == 0 ? " <div class='w-100'></div> " : ""
-				linebreak = ""
-				#cellopenid='<div class="col-sm">'
-				cellopenid=''
-				#cellcloseid='</div>'
-				cellcloseid=''
+				rowopenid = i == 0 ? "<div class='row'>" : ""
+				rowcloseid = i == skills.count ? "</div>" : ""
+				linebreak = i % 3 == 0 ? " <div class='w-100'></div> " : ""
+				cellopenid='<div class="col-sm-4">'
+				cellcloseid='</div>'
 				title = "#{ a.name }".capitalize
 				rating = a.rating
-				#"#{rowopenid}#{cellopenid}#{title}: #{rating}#{cellcloseid}#{linebreak}#{rowcloseid}"
+				"#{rowopenid}#{cellopenid}#{title}: #{rating}#{cellcloseid}#{linebreak}#{rowcloseid}"
 			end
 	end	
   end
