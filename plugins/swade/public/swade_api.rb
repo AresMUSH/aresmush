@@ -4,6 +4,7 @@ module AresMUSH
 	
 	    # Format skill table
 		skills = returnskillsforweb(char.swade_skills)
+		skills = skill.join(" ")
          return {
 
           skills: skills
