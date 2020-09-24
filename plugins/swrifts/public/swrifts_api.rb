@@ -45,8 +45,8 @@ module AresMUSH
 				#linebreak = i % 3 == 0 ? " <div class='w-100'></div> " : ""
 				linebreak = i % 3 == 0 ? "" : ""
 				cellopenid='<div class="col-sm-4">'
-				colautoopenid='<div class="col-sm-9 heading">'
-				colsmallopenid='<div class="col-sm-3 rating">'
+				colautoopenid='<div class="col-sm-8 heading">'
+				colsmallopenid='<div class="col-sm-4 rating">'
 				cellcloseid='</div>'
 				correcttitle = "#{a.name}".titleize
 				title = "<span title='#{correcttitle}'>#{correcttitle}</span>"
