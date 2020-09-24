@@ -23,44 +23,55 @@ module AresMUSH
 			end
 #----- Begin of def handle -----			
 			def handle  
-				iconicf = Swrifts.get_iconicf(self.enactor, self.iconicf_name)
-				iconicf_stats=iconicf['stats']
-				iconicf_skills=iconicf['skills']
-				iconicf_hinderances=iconicf['hinderances']
-				iconicf_edges=iconicf['edges']
-				iconicf_abilities=iconicf['abilities']
-				iconicf_complications=iconicf['complications']
-				iconicf_magic_powers=iconicf['magic_powers']
-				iconicf_psionic_powers=iconicf['psionic_powers']
-				iconicf_cybernetics=iconicf['cybernetics']
-				iconicf_chargen_points=iconicf['chargen_points']
+				# sets 'iconicf' to the Iconic Framework 'name' of our game\config\swrifts_iconicf.yml file
+				iconicf = Swrifts.get_iconicf(self.enactor, self.iconicf_name) 
+				# pulls out the 'stats' portion of the named Iconic Framework into a list
+				iconicf_stats=iconicf['stats']  
+				# pulls out the 'skills' portion of the named Iconic Framework into a list
+				iconicf_skills=iconicf['skills'] 
+				# pulls out the 'hinderances' portion of the named Iconic Framework into a list
+				iconicf_hinderances=iconicf['hinderances'] 
+				# pulls out the 'edges' portion of the named Iconic Framework into a list
+				iconicf_edges=iconicf['edges'] 
+				# pulls out the 'abilities' portion of the named Iconic Framework into a list
+				iconicf_abilities=iconicf['abilities'] 
+				# pulls out the 'complications' portion of the named Iconic Framework into a list
+				iconicf_complications=iconicf['complications'] 
+				# pulls out the 'magic_powers' portion of the named Iconic Framework into a list
+				iconicf_magic_powers=iconicf['magic_powers'] 
+				# pulls out the 'psionic_powers' portion of the named Iconic Framework into a list
+				iconicf_psionic_powers=iconicf['psionic_powers'] 
+				# pulls out the 'cybernetics' portion of the named Iconic Framework into a list
+				iconicf_cybernetics=iconicf['cybernetics'] 
+				# pulls out the 'chargen_points' portion of the named Iconic Framework into a list
+				iconicf_chargen_points=iconicf['chargen_points'] 
 				
 				
 				#----- This sets the Iconic Framework on the Character -----
 				ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
-					attr = self.iconicf_name
-				    
-					if (attr == nil)
-						attr.delete
-						client.emit_success t('swrifts.iconicf_cleared')
-						return
-					end
-		  
-					model.update(swrifts_iconicf: self.iconicf_name)
+		  			# set 'swrifts_iconicf' attribute on the character object
+					model.update(swrifts_iconicf: self.iconicf_name) 
+					# emit to the person running the command that this was set
 					client.emit_success t('swrifts.iconicf_set', :name => self.iconicf_name.capitalize)
 				end
 				
-				#----- This sets the default stats on the Character -----				
-				if (iconicf_stats)
+				#----- This sets the default stats field on the collection -----				
+				# If Iconic Framework being set has this field in iconicf.yml, run the command.
+				if (iconicf_stats) 
+					# grab the list from the config file and break it into 'key' (before the ':') and 'rating' (after the ':')
 					iconicf_stats.each do |key, rating|
+						# alias the 'key' because the command below doesn't parse the #'s and {'s etc.
 						setthing = "#{key}".downcase
+						# alias the 'rating' for the same reason
 						setrating = "#{rating}"
 						ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
+							# create the collection
 							SwriftsStats.create(name: setthing, rating: setrating, character: model)
 						end
 					end
 					client.emit_success t('swrifts.iconicstats_set')
 				else 
+					# If the Iconic Framework does not have this field in iconicf.yml, skip and emit to enactor
 					client.emit_failure ("This Iconic Framework has no Stats")
 				end
 

@@ -249,7 +249,7 @@ swrifts:
                 - Enemy-*
             edges:
                 - Arcane Background*
-                    - Miracles, Psionic
+                    - Miracles
                 - Master of Magic*
                 - Arcane Background*
                     - Psionic
