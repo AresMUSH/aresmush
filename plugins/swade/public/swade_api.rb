@@ -21,7 +21,7 @@ module AresMUSH
 	def self.returnskillsforweb(skills)
 		skills.to_a.sort_by { |a| a.name }
 		.each_with_index
-			.map do |a, i| 
+			#.map do |a, i| 
 			#rowopenid = i == 0 ? "<div class='row'>" : ""
 			rowopenid = ''
 			#rowcloseid = i == skills.count ? "</div>" : ""
