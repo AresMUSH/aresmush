@@ -3,7 +3,7 @@ module AresMUSH
   
     def self.die_rating(rating)
       case rating
-      when 0
+      when "0"
         return "No die"
       when 1
         return "<i class='fad fa-dice-d4'></i>"
