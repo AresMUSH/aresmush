@@ -25,19 +25,19 @@ module AresMUSH
 			end
 
 			def edges
-				format_three_column @char.swrifts_edges
+				format_two_column @char.swrifts_edges
 			end
 			
 			def abilities
-				format_three_column @char.swrifts_abilities
+				format_two_column @char.swrifts_abilities
 			end
 
 			def complications
-				format_three_column @char.swrifts_complications
+				format_two_column @char.swrifts_complications
 			end
 
 			def mpowers
-				format_three_column @char.swrifts_mpowers
+				format_two_column @char.swrifts_mpowers
 			end
 			
 			def format_stats(list)
