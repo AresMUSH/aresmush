@@ -50,7 +50,7 @@ module AresMUSH
 				cellopenid='<div class="col-sm-4">'
 				cellcloseid='</div>'
 				title = "<div class='col-sm-2'>#{ a.name }".capitalize"</div>"
-				rating = "<div class='col-sm-2'>".die_rating(a.rating)"</div>"
+				rating = "<div class='col-sm-2'>".die_rating(a.rating)."</div>"
 				"#{rowopenid}#{cellopenid}#{title}: #{rating}#{cellcloseid}#{linebreak}#{rowcloseid}"
 			end
 	end	
