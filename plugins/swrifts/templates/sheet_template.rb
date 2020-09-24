@@ -21,7 +21,7 @@ module AresMUSH
 			end
 			
 			def hinderances
-				format_three_column @char.swrifts_hinderances
+				format_two_column @char.swrifts_hinderances
 			end
 
 			def edges
@@ -70,6 +70,16 @@ module AresMUSH
 						title = left("#{ a.name }".capitalize, 16,'.')
 						rating = left(a.rating, 7)
 						"#{linebreak} #{title} #{rating} "
+				end
+			end
+
+			def format_two_column(list)
+				list.to_a.sort_by { |a| a.name }
+					.each_with_index
+						.map do |a, i| 
+						linebreak = i % 2 == 0 ? "\n" : ""
+						title = left("#{ a.name }".capitalize, 39)
+						"#{linebreak} #{title}"
 				end
 			end
 
