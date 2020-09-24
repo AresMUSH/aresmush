@@ -44,9 +44,10 @@ module AresMUSH
 				rowcloseid = i == skills.count ? "</div></div></div>" : ""
 				#linebreak = i % 3 == 0 ? " <div class='w-100'></div> " : ""
 				linebreak = i % 3 == 0 ? "" : ""
+				cssclass = "#{a.name}".strip
 				cellopenid='<div class="col-sm-4">'
-				colautoopenid="<div class='col-sm-9 heading #{a.name}.strip'>"
-				colsmallopenid="<div class='col-sm-3 rating #{a.name}.strip'>"
+				colautoopenid="<div class='col-sm-9 heading #{cssclass}'>"
+				colsmallopenid="<div class='col-sm-3 rating #{cssclass}'>"
 				cellcloseid='</div>'
 				correcttitle = "#{a.name}".titleize
 				title = "<span title='#{correcttitle}'>#{correcttitle}</span>"
