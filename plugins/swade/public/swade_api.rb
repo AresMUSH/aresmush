@@ -4,7 +4,6 @@ module AresMUSH
 	
 	    # Format skill table
 		skills = returnskillsforweb(char.swade_skills)
-		skills = skills.join(" ")
          return {
 
           skills: skills
@@ -30,7 +29,7 @@ module AresMUSH
 				cellcloseid='</div>'
 				title = "#{ a.name }".capitalize
 				rating = a.rating
-				skills = "#{rowopenid}#{cellopenid}#{title}: #{rating}#{cellcloseid}#{linebreak}#{rowcloseid}"
+				"#{rowopenid}#{cellopenid}#{title}: #{rating}#{cellcloseid}#{linebreak}#{rowcloseid}"
 			end
 	end	
   end
