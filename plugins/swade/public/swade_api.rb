@@ -19,6 +19,8 @@ module AresMUSH
 	end
 	
 	def self.returnskillsforweb(skills)
+		rowopenid = '<div class="container-fluid"><div class="row">'
+		rowcloseid = '</div></div>'
 		skills.to_a.sort_by { |a| a.name }
 		.each_with_index
 			.map do |a, i| 
@@ -27,8 +29,9 @@ module AresMUSH
 			cellcloseid='</div>'
 			title = "#{ a.name }".capitalize
 			rating = a.rating
-			"#{cellopenid}#{title}: #{rating}#{cellcloseid}#{linebreak}"
+			skilltable = "#{cellopenid}#{title}: #{rating}#{cellcloseid}#{linebreak}"
 		end
+		"#{rowopenid}#{silltable}#{rowcloseid}"
 	end	
   end
 end
