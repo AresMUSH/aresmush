@@ -7,17 +7,17 @@ module AresMUSH
       when 0
         return "No die"
       when 1
-        return "<i class='fad fa-dice-d4'></i>"
+        return "<i class='fad fa-dice-d4' title='d4'></i>"
       when 2
-        return "<i class='fad fa-dice-d6'></i>"
+        return "<i class='fad fa-dice-d6' title='d6'></i>"
       when 3
-        return "<i class='fad fa-dice-d8'></i>"
+        return "<i class='fad fa-dice-d8' title='d8'></i>"
       when 4
-        return "<i class='fad fa-dice-d10'></i>"
+        return "<i class='fad fa-dice-d10' title='d10'></i>"
       when 5
-        return "<i class='fad fa-dice-d12'></i>"
+        return "<i class='fad fa-dice-d12' title='d12'></i>"
       else
- 	    return "<i class='fad fa-dice-d12'></i> + (code to add steps)" 
+ 	    return "<i class='fad fa-dice-d12' title='d12+xxxxx'></i> + (code to add steps)" 
       end
     end
 	
