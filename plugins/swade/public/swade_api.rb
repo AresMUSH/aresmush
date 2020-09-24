@@ -22,10 +22,12 @@ module AresMUSH
 		skills.to_a.sort_by { |a| a.name }
 		.each_with_index
 			.map do |a, i| 
-			linebreak = i % 3 == 0 ? " <br /> " : ""
+			linebreak = i % 3 == 0 ? " <div class='w-100'></div> " : ""
+			cellopenid='<div class="col-sm">'
+			cellcloseid='</div>'
 			title = "#{ a.name }".capitalize
 			rating = a.rating
-			"#{linebreak} #{title}: #{rating} "
+			"#{cellopenid}#{title}: #{rating}#{cellcloseid}#{linebreak}"
 		end
 	end	
   end
