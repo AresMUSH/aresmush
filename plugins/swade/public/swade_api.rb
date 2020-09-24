@@ -1,5 +1,5 @@
 module AresMUSH
-  module Swade
+  module Swrifts
   
     # Return the code to display the font awesome die type based on rating. This should probably be moved to somewhere else.
     def self.die_rating(rating)
@@ -24,11 +24,11 @@ module AresMUSH
     def self.get_abilities_for_web_viewing(char, viewer)
 	
 	    # Format skill table
-		skills = returnskillsforweb(char.swade_skills)
+		skills = returnskillsforweb(char.swrifts_skills)
 		skills = skills.join(" ") #removes the comma's that seperates the entries
 		
 		#Format Stat Table
-		#stats = returnstatsforweb(char.swade_stats)
+		#stats = returnstatsforweb(char.swrifts_stats)
 		#stats = stats.join(" ") #removes the comma's that seperates the entries
 		
          return {

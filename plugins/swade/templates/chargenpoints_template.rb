@@ -1,5 +1,5 @@
 module AresMUSH    
-	module Swade
+	module Swrifts
 		class ChargenpointsTemplate < ErbTemplateRenderer
 			attr_accessor :char
   
@@ -9,7 +9,7 @@ module AresMUSH
 			end
 
 			def chargenpoints
-				format_three_per_line @char.swade_chargenpoints
+				format_three_per_line @char.swrifts_chargenpoints
 			end
 
 			def format_three_per_line(list)

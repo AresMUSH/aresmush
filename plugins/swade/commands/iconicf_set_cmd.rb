@@ -1,14 +1,14 @@
 module AresMUSH    
-	module Swade
+	module Swrifts
 		class IconicfSetCmd
 			include CommandHandler
 			      
-			attr_accessor :target, :iconicf_name, :swade_iconicf
+			attr_accessor :target, :iconicf_name, :swrifts_iconicf
 			
 			def parse_args
 				self.target = enactor_name #Set the character to be the current character
 				self.iconicf_name = trim_arg(cmd.args) #Set 'iconicf_name' to be the inputted Iconic Framework
-				self.swade_iconicf = "swade_iconicf:" 
+				self.swrifts_iconicf = "swrifts_iconicf:" 
 
 			end
 
@@ -16,14 +16,14 @@ module AresMUSH
 				[ self.target, self.iconicf_name ]
 			end
 			
-			#----- Check to see if what was entered was an Iconic Framework in game\config\swade_iconicf.yml
+			#----- Check to see if what was entered was an Iconic Framework in game\config\swrifts_iconicf.yml
 			def check_valid_iconicf
-				return t('swade.iconicf_invalid_name', :name => self.iconicf_name.capitalize) if !Swade.is_valid_iconicf_name?(self.iconicf_name)
+				return t('swrifts.iconicf_invalid_name', :name => self.iconicf_name.capitalize) if !Swrifts.is_valid_iconicf_name?(self.iconicf_name)
 				return nil
 			end
 #----- Begin of def handle -----			
 			def handle  
-				iconicf = Swade.get_iconicf(self.enactor, self.iconicf_name)
+				iconicf = Swrifts.get_iconicf(self.enactor, self.iconicf_name)
 				iconicf_stats=iconicf['stats']
 				iconicf_skills=iconicf['skills']
 				iconicf_hinderances=iconicf['hinderances']
@@ -42,12 +42,12 @@ module AresMUSH
 				    
 					if (attr == nil)
 						attr.delete
-						client.emit_success t('swade.iconicf_cleared')
+						client.emit_success t('swrifts.iconicf_cleared')
 						return
 					end
 		  
-					model.update(swade_iconicf: self.iconicf_name)
-					client.emit_success t('swade.iconicf_set', :name => self.iconicf_name.capitalize)
+					model.update(swrifts_iconicf: self.iconicf_name)
+					client.emit_success t('swrifts.iconicf_set', :name => self.iconicf_name.capitalize)
 				end
 				
 				#----- This sets the default stats on the Character -----				
@@ -56,10 +56,10 @@ module AresMUSH
 						setthing = "#{key}".downcase
 						setrating = "#{rating}"
 						ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
-							SwadeStats.create(name: setthing, rating: setrating, character: model)
+							SwriftsStats.create(name: setthing, rating: setrating, character: model)
 						end
 					end
-					client.emit_success t('swade.iconicstats_set')
+					client.emit_success t('swrifts.iconicstats_set')
 				else 
 					client.emit_failure ("This Iconic Framework has no Stats")
 				end
@@ -70,10 +70,10 @@ module AresMUSH
 						setthing = "#{key}".downcase
 						setrating = "#{rating}"
 						ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
-							SwadeSkills.create(name: setthing, rating: setrating, character: model)
+							SwriftsSkills.create(name: setthing, rating: setrating, character: model)
 						end
 					end
-					client.emit_success t('swade.iconicskills_set')
+					client.emit_success t('swrifts.iconicskills_set')
 				else 
 					client.emit_failure ("This Iconic Framework has no Skills")
 				end 
@@ -84,10 +84,10 @@ module AresMUSH
 						setthing = "#{key}".downcase
 						setrating = "#{rating}"
 						ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
-							SwadeChargenpoints.create(name: setthing, rating: setrating, character: model)
+							SwriftsChargenpoints.create(name: setthing, rating: setrating, character: model)
 						end
 					end
-					client.emit_success t('swade.iconicchargenpoints_set')
+					client.emit_success t('swrifts.iconicchargenpoints_set')
 				else 
 					client.emit_failure ("This Iconic Framework has no Chargen Points")
 				end				
@@ -97,10 +97,10 @@ module AresMUSH
 					iconicf_hinderances.each do |key|
 						setthing = "#{key}".downcase
 						ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
-							SwadeHinderances.create(name: setthing, character: model)
+							SwriftsHinderances.create(name: setthing, character: model)
 						end
 					end
-					client.emit_success t('swade.iconichinderances_set')
+					client.emit_success t('swrifts.iconichinderances_set')
 				else 
 					client.emit_failure ("This Iconic Framework has no Hinderances")
 				end
@@ -109,10 +109,10 @@ module AresMUSH
 					iconicf_edges.each do |key|
 						setthing = "#{key}".downcase
 						ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
-							SwadeEdges.create(name: setthing, character: model)
+							SwriftsEdges.create(name: setthing, character: model)
 						end
 					end
-					client.emit_success t('swade.iconicedges_set')
+					client.emit_success t('swrifts.iconicedges_set')
 				else 
 					client.emit_failure ("This Iconic Framework has no Edges")
 				end
@@ -122,10 +122,10 @@ module AresMUSH
 					iconicf_magic_powers.each do |key|
 						setthing = "#{key}".downcase
 						ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
-							SwadeMpowers.create(name: setthing, character: model)
+							SwriftsMpowers.create(name: setthing, character: model)
 						end
 					end
-					client.emit_success t('swade.iconicmpowers_set')
+					client.emit_success t('swrifts.iconicmpowers_set')
 				else 
 					client.emit_failure ("This Iconic Framework has no Magic Powers")
 				end 
@@ -135,10 +135,10 @@ module AresMUSH
 					iconicf_psionic_powers.each do |key|
 						setthing = "#{key}".downcase
 						ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
-							SwadePpowers.create(name: setthing, character: model)
+							SwriftsPpowers.create(name: setthing, character: model)
 						end
 					end
-					client.emit_success t('swade.iconicppowers_set')
+					client.emit_success t('swrifts.iconicppowers_set')
 				else 
 					client.emit_failure ("This Iconic Framework has no Psionic Powers")
 				end
@@ -148,10 +148,10 @@ module AresMUSH
 					iconicf_cybernetics.each do |key|
 						setthing = "#{key}".downcase
 						ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
-							SwadeCybernetics.create(name: setthing, character: model)
+							SwriftsCybernetics.create(name: setthing, character: model)
 						end
 					end
-					client.emit_success t('swade.iconiccybernetics_set')
+					client.emit_success t('swrifts.iconiccybernetics_set')
 				else 
 					client.emit_failure ("This Iconic Framework has no Cybernetics")
 				end
@@ -161,10 +161,10 @@ module AresMUSH
 					iconicf_abilities.each do |key|
 						setthing = "#{key}".downcase
 						ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
-							SwadeAbilities.create(name: setthing, character: model)
+							SwriftsAbilities.create(name: setthing, character: model)
 						end
 					end
-					client.emit_success t('swade.iconicabilities_set')
+					client.emit_success t('swrifts.iconicabilities_set')
 				else 
 					client.emit_failure ("This Iconic Framework has no Abilities")
 				end
@@ -174,15 +174,15 @@ module AresMUSH
 					iconicf_complications.each do |key|
 						setthing = "#{key}".downcase
 						ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
-							SwadeComplications.create(name: setthing, character: model)
+							SwriftsComplications.create(name: setthing, character: model)
 						end
 					end
-					client.emit_success t('swade.iconiccomplications_set')
+					client.emit_success t('swrifts.iconiccomplications_set')
 				else 
 					client.emit_failure ("This Iconic Framework has no Complications")
 				end
 				
-				client.emit_success t('swade.iconicf_complete')
+				client.emit_success t('swrifts.iconicf_complete')
 			end
 #----- End of def handle -----	
 
