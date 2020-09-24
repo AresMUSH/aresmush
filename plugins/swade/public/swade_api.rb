@@ -30,9 +30,9 @@ module AresMUSH
 			cellcloseid='</div>'
 			title = "#{ a.name }".capitalize
 			rating = a.rating
-			builttable = "#{cellopenid}#{title}: #{rating}#{cellcloseid}#{linebreak}"
+			builttable = "#{rowopenid}#{cellopenid}#{title}: #{rating}#{cellcloseid}#{linebreak}#{rowcloseid}"
 		end
-		"#{rowopenid}#{builttable}#{rowcloseid}"
+		#"#{rowopenid}#{builttable}#{rowcloseid}"
 	end	
   end
 end
