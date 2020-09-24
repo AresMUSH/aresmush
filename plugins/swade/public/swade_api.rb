@@ -3,7 +3,7 @@ module AresMUSH
     def self.get_abilities_for_web_viewing(char, viewer)
 		#skills = Website.format_markdown_for_html(char.swade_skills)
 		skills = returnskillsforweb(char.swade_skills)
-		skills = Website.format_markdown_for_html(skills)
+		#skills = Website.format_markdown_for_html(skills)
          return {
 
           skills: skills
@@ -22,7 +22,7 @@ module AresMUSH
 		skills.to_a.sort_by { |a| a.name }
 		.each_with_index
 			.map do |a, i| 
-			linebreak = i % 3 == 0 ? " \n " : ""
+			linebreak = i % 3 == 0 ? " \n\r " : ""
 			title = "#{ a.name }".capitalize
 			rating = a.rating
 			"#{linebreak} #{title} #{rating} "
