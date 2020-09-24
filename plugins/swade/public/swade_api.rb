@@ -35,7 +35,7 @@ module AresMUSH
 			title = "#{ a.name }".capitalize
 			rating = a.rating
 			"#{rowopenid}#{cellopenid}#{title}: #{rating}#{cellcloseid}#{linebreak}#{rowcloseid}"
-		end
+		    #end
 	end	
   end
 end
