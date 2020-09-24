@@ -167,6 +167,7 @@ swrifts:
                 Thievery: 0
             hinderances: 
                 - Ugly-*
+                    - (Inhuman)
             edges:
                 - Fleet-Footed*
                 - Size*
