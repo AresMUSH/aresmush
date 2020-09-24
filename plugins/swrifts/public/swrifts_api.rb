@@ -40,7 +40,7 @@ module AresMUSH
 		skills.to_a.sort_by { |a| a.name }
 		.each_with_index
 			.map do |a, i| 
-				rowopenid = i == 0 ? "<div class='skilltable'><div class='container-fluid skillstable'><div class='row'>" : ""
+				rowopenid = i == 0 ? "<div class='skilltable'><div class='container-fluid skillstable'><div class='row no-gutters'>" : ""
 				rowcloseid = i == skills.count ? "</div></div></div>" : ""
 				#linebreak = i % 3 == 0 ? " <div class='w-100'></div> " : ""
 				linebreak = i % 3 == 0 ? "" : ""
