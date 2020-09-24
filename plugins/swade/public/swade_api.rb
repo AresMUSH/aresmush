@@ -48,7 +48,7 @@ module AresMUSH
 				#linebreak = i % 3 == 0 ? " <div class='w-100'></div> " : ""
 				linebreak = i % 3 == 0 ? "" : ""
 				cellopenid='<div class="col-sm-4">'
-				colautoopenid='<div class="col-md-6">'
+				colautoopenid='<div class="col-md-4">'
 				colsmallopenid='<div class="col-md-4">'
 				cellcloseid='</div>'
 				title = "#{ a.name }".capitalize
