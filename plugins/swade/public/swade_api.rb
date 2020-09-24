@@ -20,11 +20,12 @@ module AresMUSH
 	
 	def self.returnskillsforweb(skills)
 		skills.to_a.sort_by { |a| a.name }
+		.each_with_index
 			.map do |a, i| 
 				rowopenid = i == 0 ? "<div class='row'>" : ""
 				rowcloseid = i == skills.count ? "</div>" : ""
 				linebreak = i % 3 == 0 ? " <div class='w-100'></div> " : ""
-				cellopenid='<div class="col-sm-4">'
+				cellopenid='<div class="col-sm">'
 				cellcloseid='</div>'
 				title = "#{ a.name }".capitalize
 				rating = a.rating
