@@ -33,7 +33,6 @@ module AresMUSH
       end
       
       def scene_participants(scene)
-        pp Scenes.participants_and_room_chars(scene).map { |p| "#{p.name} - #{Login.is_online_or_on_web?(p) && (p.room == scene.room)}" }
         Scenes.participants_and_room_chars(scene)
         .sort_by { |p| [ (Login.is_online_or_on_web?(p) && (p.room == scene.room)) ? 0 : 1, p.name ]  }
         .each
