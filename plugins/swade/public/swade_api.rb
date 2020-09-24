@@ -22,10 +22,10 @@ module AresMUSH
 		skills.to_a.sort_by { |a| a.name }
 		.each_with_index
 			.map do |a, i| 
-			linebreak = i % 3 == 0 ? " \n\r " : ""
+			linebreak = i % 3 == 0 ? " <br /> " : ""
 			title = "#{ a.name }".capitalize
 			rating = a.rating
-			"#{linebreak} #{title} #{rating} "
+			"#{linebreak} #{title}: #{rating} "
 		end
 	end	
   end
