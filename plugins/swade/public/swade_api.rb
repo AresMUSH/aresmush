@@ -20,7 +20,7 @@ module AresMUSH
 	
 	def self.returnskillsforweb(skills)
 		skills.to_a.sort_by { |a| a.name }
-		.each_with_index
+		.each_with_index do |(key, value), index|
 			#.map do |a, i| 
 			#rowopenid = i == 0 ? "<div class='row'>" : ""
 			rowopenid = ''
@@ -32,8 +32,10 @@ module AresMUSH
 			cellopenid=''
 			#cellcloseid='</div>'
 			cellcloseid=''
-			title = "#{ a.name }".capitalize
-			rating = a.rating
+			#title = "#{ a.name }".capitalize
+			title = "#{ key }".capitalize
+			#rating = a.rating
+			rating = "#{ value}"
 			"#{rowopenid}#{cellopenid}#{title}: #{rating}#{cellcloseid}#{linebreak}#{rowcloseid}"
 		    #end
 	end	
