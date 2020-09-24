@@ -24,8 +24,10 @@ module AresMUSH
 		.each_with_index
 			.map do |a, i| 
 			rowopenid = i == 0 ? "<div class='row'>" : ""
-			rowcloseid = i == skills.count ? "</div></div>" : ""
+			rowcloseid = i == skills.count ? "</div>" : ""
 			linebreak = i % 3 == 0 ? " <div class='w-100'></div> " : ""
+			cellopenid='<div class="col-sm">'
+			cellcloseid='</div>'
 			title = "#{ a.name }".capitalize
 			rating = a.rating
 			"#{rowopenid}#{cellopenid}#{title}: #{rating}#{cellcloseid}#{linebreak}#{rowcloseid}"
