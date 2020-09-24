@@ -1,7 +1,7 @@
 module AresMUSH
   module Swade
   
-    def die_rating (rating)
+    def self.die_rating (rating)
       case rating
       when 0
         return "No die"
@@ -47,7 +47,7 @@ module AresMUSH
 				cellopenid='<div class="col-sm-4">'
 				cellcloseid='</div>'
 				title = "#{ a.name }".capitalize
-				rating = self.die_rating(a.rating)
+				rating = die_rating(a.rating)
 				"#{rowopenid}#{cellopenid}#{title}: #{rating}#{cellcloseid}#{linebreak}#{rowcloseid}"
 			end
 	end	
