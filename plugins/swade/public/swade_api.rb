@@ -45,11 +45,12 @@ module AresMUSH
 			.map do |a, i| 
 				rowopenid = i == 0 ? "<div class='container-fluid skillstable'><div class='row'>" : ""
 				rowcloseid = i == skills.count ? "</div></div>" : ""
-				linebreak = i % 3 == 0 ? " <div class='w-100'></div> " : ""
+				#linebreak = i % 3 == 0 ? " <div class='w-100'></div> " : ""
+				linebreak = i % 3 == 0 ? "" : ""
 				cellopenid='<div class="col-sm-4">'
 				cellcloseid='</div>'
-				title = "#{ a.name }".capitalize
-				rating = die_rating(a.rating)
+				title = "<div class='col-sm-2'>#{ a.name }".capitalize"</div>"
+				rating = "<div class='col-sm-2'>"die_rating(a.rating)"</div>"
 				"#{rowopenid}#{cellopenid}#{title}: #{rating}#{cellcloseid}#{linebreak}#{rowcloseid}"
 			end
 	end	
