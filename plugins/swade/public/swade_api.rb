@@ -19,6 +19,7 @@ module AresMUSH
 	end
 	
 	def self.returnskillsforweb(skills)
+		return "Hello World"
 		skills.to_a.sort_by { |a| a.name }
 			.map do |a, i| 
 				#rowopenid = i == 0 ? "<div class='row'>" : ""
