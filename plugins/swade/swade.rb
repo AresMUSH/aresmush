@@ -114,19 +114,11 @@ module AresMUSH
 			nil
 		end
 
-# Somehow the webrequests come in here. Check the ./web folder for handlers etc
+# Somehow the webrequests come in here. Check the ./public folder for handlers etc
     def self.get_web_request_handler(request)
       case request.cmd
       when "abilities"
         return AbilitiesRequestHandler
-      when "addJobRoll"
-        return AddJobRollRequestHandler
-      when "addSceneRoll"
-        return AddSceneRollRequestHandler
-      when "learnAbility"
-        return LearnAbilityRequestHandler
-      when"spendLuck"
-        return SpendLuckRequestHandler
       end
       nil
     end
