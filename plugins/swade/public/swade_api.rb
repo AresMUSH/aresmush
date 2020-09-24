@@ -25,7 +25,7 @@ module AresMUSH
 				rowopenid = i == 0 ? "<div class='row'>" : ""
 				rowcloseid = i == skills.count ? "</div>" : ""
 				linebreak = i % 3 == 0 ? " <div class='w-100'></div> " : ""
-				cellopenid='<div class="col-sm">'
+				cellopenid='<div class="col-sm-4">'
 				cellcloseid='</div>'
 				title = "#{ a.name }".capitalize
 				rating = a.rating
