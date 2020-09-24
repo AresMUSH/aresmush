@@ -1,7 +1,7 @@
 module AresMUSH
   module Swade
   
-    def die_rating (rating)
+    def self.die_rating (rating)
       case rating
       when 0
         return "No die"
