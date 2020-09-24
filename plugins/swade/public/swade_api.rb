@@ -1,8 +1,11 @@
 module AresMUSH
   module Swade
     def self.get_abilities_for_web_viewing(char, viewer)
-		#skills = Website.format_markdown_for_html(char.swade_skills)
-		skills = returnskillsforweb(char.swade_skills)
+	
+	    # Format skill table
+		rowopenid = "<div class='container-fluid'><div class='row'>"
+		rowcloseid = "</div></div>"		
+		skills = "#{rowopenid}".returnskillsforweb(char.swade_skills)."#{rowcloseid}"
 		#skills = Website.format_markdown_for_html(skills)
          return {
 
@@ -19,8 +22,7 @@ module AresMUSH
 	end
 	
 	def self.returnskillsforweb(skills)
-		rowopenid = "<div class='container-fluid'><div class='row'>"
-		rowcloseid = "</div></div>"
+
 		skills.to_a.sort_by { |a| a.name }
 		.each_with_index
 			.map do |a, i| 
@@ -31,7 +33,6 @@ module AresMUSH
 			rating = a.rating
 			skilltable = "#{cellopenid}#{title}: #{rating}#{cellcloseid}#{linebreak}"
 		end
-		skilltable1 = "#{rowopenid}#{skilltable}#{rowcloseid}"
 	end	
   end
 end
