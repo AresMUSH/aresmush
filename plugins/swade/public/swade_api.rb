@@ -29,7 +29,8 @@ module AresMUSH
 				cellcloseid='</div>'
 				title = "#{ a.name }".capitalize
 				rating = a.rating
-				"#{rowopenid}#{cellopenid}#{title}: #{rating}#{cellcloseid}#{linebreak}#{rowcloseid}"
+				skills = "#{rowopenid}#{cellopenid}#{title}: #{rating}#{cellcloseid}#{linebreak}#{rowcloseid}"
+				skills = skills.join(" ")
 			end
 	end	
   end
