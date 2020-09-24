@@ -4,8 +4,9 @@ module AresMUSH
 	
 	    # Format skill table
 		rowopenid = "<div class='container-fluid'><div class='row'>"
-		rowcloseid = "</div></div>"		
-		skills = "#{rowopenid}".returnskillsforweb(char.swade_skills)."#{rowcloseid}"
+		rowcloseid = "</div></div>"	
+		skilltable = returnskillsforweb(char.swade_skills)
+		skills = "#{rowopenid}#{skilltable}#{rowcloseid}"
 		#skills = Website.format_markdown_for_html(skills)
          return {
 
@@ -31,7 +32,7 @@ module AresMUSH
 			cellcloseid='</div>'
 			title = "#{ a.name }".capitalize
 			rating = a.rating
-			skilltable = "#{cellopenid}#{title}: #{rating}#{cellcloseid}#{linebreak}"
+			"#{cellopenid}#{title}: #{rating}#{cellcloseid}#{linebreak}"
 		end
 	end	
   end
