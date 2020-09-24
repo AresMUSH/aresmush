@@ -3,9 +3,7 @@ module AresMUSH
     def self.get_abilities_for_web_viewing(char, viewer)
 	
 	    # Format skill table
-
-		skilltable = returnskillsforweb(char.swade_skills)
-		skills = "#{rowopenid}#{skilltable}#{rowcloseid}"
+		skills = returnskillsforweb(char.swade_skills)
 		#skills = Website.format_markdown_for_html(skills)
          return {
 
