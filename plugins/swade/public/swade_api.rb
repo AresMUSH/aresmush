@@ -48,10 +48,11 @@ module AresMUSH
 				#linebreak = i % 3 == 0 ? " <div class='w-100'></div> " : ""
 				linebreak = i % 3 == 0 ? "" : ""
 				cellopenid='<div class="col-sm-4">'
+				colopenid='<div class="col-sm-2">'
 				cellcloseid='</div>'
-				title = "<div class='col-sm-2'>#{ a.name }".capitalize"</div>"
-				rating = "<div class='col-sm-2'>".die_rating(a.rating)."</div>"
-				"#{rowopenid}#{cellopenid}#{title}: #{rating}#{cellcloseid}#{linebreak}#{rowcloseid}"
+				title = "#{ a.name }".capitalize
+				rating = die_rating(a.rating)
+				"#{rowopenid}#{cellopenid}#{colopenid}#{title}: #{cellcloseid}#{colopenid}#{rating}#{cellcloseid}#{cellcloseid}#{linebreak}#{rowcloseid}"
 			end
 	end	
   end
