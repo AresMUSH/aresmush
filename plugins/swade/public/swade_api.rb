@@ -31,7 +31,7 @@ module AresMUSH
 			rating = a.rating
 			skilltable = "#{cellopenid}#{title}: #{rating}#{cellcloseid}#{linebreak}"
 		end
-		"#{rowopenid}#{skilltable}#{rowcloseid}"
+		#"#{rowopenid}#{skilltable}#{rowcloseid}"
 	end	
   end
 end
