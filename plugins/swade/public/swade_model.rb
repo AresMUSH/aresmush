@@ -1,25 +1,25 @@
 module AresMUSH
 	class Character < Ohm::Model
 #----- These are in aresmush\game\config and are the YML files
-		collection :swade_stats, "AresMUSH::SwadeStats"
-		collection :swade_skills, "AresMUSH::SwadeSkills"
-		collection :swade_hinderances, "AresMUSH::SwadeHinderances"
-		collection :swade_edges, "AresMUSH::SwadeEdges" 
-		collection :swade_mpowers, "AresMUSH::SwadeMpowers"
-		collection :swade_ppowers, "AresMUSH::SwadePpowers"
-		collection :swade_cybernetics, "AresMUSH::SwadeCybernetics"
-		collection :swade_chargenpoints, "AresMUSH::SwadeChargenpoints"
-		collection :swade_abilities, "AresMUSH::SwadeAbilities"
-		collection :swade_complications, "AresMUSH::SwadeComplications"
+		collection :swrifts_stats, "AresMUSH::SwriftsStats"
+		collection :swrifts_skills, "AresMUSH::SwriftsSkills"
+		collection :swrifts_hinderances, "AresMUSH::SwriftsHinderances"
+		collection :swrifts_edges, "AresMUSH::SwriftsEdges" 
+		collection :swrifts_mpowers, "AresMUSH::SwriftsMpowers"
+		collection :swrifts_ppowers, "AresMUSH::SwriftsPpowers"
+		collection :swrifts_cybernetics, "AresMUSH::SwriftsCybernetics"
+		collection :swrifts_chargenpoints, "AresMUSH::SwriftsChargenpoints"
+		collection :swrifts_abilities, "AresMUSH::SwriftsAbilities"
+		collection :swrifts_complications, "AresMUSH::SwriftsComplications"
 
-		attribute :swade_iconicf
-		attribute :swade_ppe_max
-		attribute :swade_isp_max
+		attribute :swrifts_iconicf
+		attribute :swrifts_ppe_max
+		attribute :swrifts_isp_max
 		
-		before_delete :delete_swade_chargen
+		before_delete :delete_swrifts_chargen
 		
-		def delete_swade_chargen
-			[ self.swade_stats, self.swade_skills, self.swade_hinderances, self.swade_edges, self.swade_abilities, self.swade_chargenpoints, self.swade_complications, self.swade_cybernetics, self.swade_mpowers, self.swade_ppowers ].each do |list|
+		def delete_swrifts_chargen
+			[ self.swrifts_stats, self.swrifts_skills, self.swrifts_hinderances, self.swrifts_edges, self.swrifts_abilities, self.swrifts_chargenpoints, self.swrifts_complications, self.swrifts_cybernetics, self.swrifts_mpowers, self.swrifts_ppowers ].each do |list|
 				list.each do |a|
 					a.delete
 				end
@@ -27,7 +27,7 @@ module AresMUSH
 		end
 	end
  
-	class SwadeStats < Ohm::Model
+	class SwriftsStats < Ohm::Model
 		include ObjectModel
 	
 		attribute :name
@@ -37,7 +37,7 @@ module AresMUSH
 	end	
 	
   
-	class SwadeSkills < Ohm::Model
+	class SwriftsSkills < Ohm::Model
 		include ObjectModel
 	
 		attribute :name
@@ -46,7 +46,7 @@ module AresMUSH
 		index :name
 	end
 
-	class SwadeChargenpoints < Ohm::Model
+	class SwriftsChargenpoints < Ohm::Model
 		include ObjectModel
 	
 		attribute :name
@@ -55,7 +55,7 @@ module AresMUSH
 		index :name
 	end
 
-	class SwadeHinderances < Ohm::Model
+	class SwriftsHinderances < Ohm::Model
 		include ObjectModel
 	
 		attribute :name
@@ -63,7 +63,7 @@ module AresMUSH
 		index :name
 	end
 	
-	class SwadeEdges < Ohm::Model
+	class SwriftsEdges < Ohm::Model
 		include ObjectModel
 	
 		attribute :name
@@ -71,16 +71,7 @@ module AresMUSH
 		index :name
 	end
 	
-	class SwadeMpowers < Ohm::Model
-		include ObjectModel
-	
-		attribute :name
-		reference :character, "AresMUSH::Character"
-		index :name
-	end
-
-	
-	class SwadePpowers < Ohm::Model
+	class SwriftsMpowers < Ohm::Model
 		include ObjectModel
 	
 		attribute :name
@@ -89,7 +80,16 @@ module AresMUSH
 	end
 
 	
-	class SwadeCybernetics < Ohm::Model
+	class SwriftsPpowers < Ohm::Model
+		include ObjectModel
+	
+		attribute :name
+		reference :character, "AresMUSH::Character"
+		index :name
+	end
+
+	
+	class SwriftsCybernetics < Ohm::Model
 		include ObjectModel
 	
 		attribute :name
@@ -98,7 +98,7 @@ module AresMUSH
 	end
 	
 
-	class SwadeAbilities < Ohm::Model
+	class SwriftsAbilities < Ohm::Model
 		include ObjectModel
 	
 		attribute :name
@@ -106,7 +106,7 @@ module AresMUSH
 		index :name
 	end
 	
-	class SwadeComplications < Ohm::Model
+	class SwriftsComplications < Ohm::Model
 		include ObjectModel
 	
 		attribute :name

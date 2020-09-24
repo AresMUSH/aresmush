@@ -1,5 +1,5 @@
 module AresMUSH    
-	module Swade
+	module Swrifts
 		class SheetTemplate < ErbTemplateRenderer
 			attr_accessor :char
   
@@ -9,35 +9,35 @@ module AresMUSH
 			end
 
 			def iconicf_name
-				@char.swade_iconicf
+				@char.swrifts_iconicf
 			end
   
 			def stats
-				format_stats @char.swade_stats
+				format_stats @char.swrifts_stats
 			end
 
 			def skills
-				format_three_per_line @char.swade_skills
+				format_three_per_line @char.swrifts_skills
 			end
 			
 			def hinderances
-				format_three_column @char.swade_hinderances
+				format_three_column @char.swrifts_hinderances
 			end
 
 			def edges
-				format_three_column @char.swade_edges
+				format_three_column @char.swrifts_edges
 			end
 			
 			def abilities
-				format_three_column @char.swade_abilities
+				format_three_column @char.swrifts_abilities
 			end
 
 			def complications
-				format_three_column @char.swade_complications
+				format_three_column @char.swrifts_complications
 			end
 
 			def mpowers
-				format_three_column @char.swade_mpowers
+				format_three_column @char.swrifts_mpowers
 			end
 			
 			def format_stats(list)

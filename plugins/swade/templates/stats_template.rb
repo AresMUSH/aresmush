@@ -1,5 +1,5 @@
 module AresMUSH    
-  module Swade
+  module Swrifts
     class StatsTemplate < ErbTemplateRenderer
 
       attr_accessor :types

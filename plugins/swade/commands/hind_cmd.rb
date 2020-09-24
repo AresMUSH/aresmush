@@ -1,10 +1,10 @@
 module AresMUSH    
-  module Swade
+  module Swrifts
     class HindCmd
       include CommandHandler
   
       def handle
-        types = Global.read_config("swade", "hinderances")
+        types = Global.read_config("swrifts", "hinderances")
         list = types.sort_by { |a| a['name']}
         template = HinderancesTemplate.new list
         client.emit template.render

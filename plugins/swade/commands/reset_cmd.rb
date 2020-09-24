@@ -1,5 +1,5 @@
 module AresMUSH    
-  module Swade
+  module Swrifts
     class ResetCmd
       include CommandHandler  
       
@@ -9,8 +9,8 @@ module AresMUSH
       # end
       
       def handle
-        enactor.delete_swade_chargen
-        client.emit_success t('swade.reset_chargen')
+        enactor.delete_swrifts_chargen
+        client.emit_success t('swrifts.reset_chargen')
       end
     end
   end

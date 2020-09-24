@@ -1,19 +1,19 @@
 $:.unshift File.dirname(__FILE__)
 
 module AresMUSH
-	module Swade
+	module Swrifts
 		
 		def self.plugin_dir
 			File.dirname(__FILE__)
 		end
     
 		def self.shortcuts
-			Global.read_config("swade", "shortcuts")
+			Global.read_config("swrifts", "shortcuts")
 		end
 
 		def self.get_cmd_handler(client, cmd, enactor)
 			case cmd.root
-			when "swade"
+			when "swrifts"
 				case cmd.switch
 				when "iconicf"
 					if (!cmd.args)
