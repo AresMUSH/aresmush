@@ -72,7 +72,7 @@ module AresMUSH
 				colautoopenid="<div class='col-sm-9 heading #{cssclass}'>"
 				colsmallopenid="<div class='col-sm-3 rating #{cssclass}'>"
 				cellcloseid='</div>'
-				if ( (i > 0 ) && ( i % 3 == 0) )
+				if ( (i > 0 ) && ( (i+1) % 3 == 0) )
 					closerow = '</div>'
 				else
 				    closerow =''
