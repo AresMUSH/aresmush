@@ -121,7 +121,7 @@ module AresMUSH
 				    closerow =''
 				end
 				title = "<span class='statname' title='#{correcttitle}: #{swdesc}'>#{correcttitle}</span>: "
-				"#{rowopenid}#{openrow}#{cellopenid}#{colautoopenid}#{title}#{rating}#{cellcloseid}#{cellcloseid}#{closerow}#{rowcloseid}"
+				"#{rowopenid}#{openrow}#{cellopenid}#{title}#{rating}#{cellcloseid}#{closerow}#{rowcloseid}"
 
 				#Used for debugging - need to delete when complete
 				#"#{downsizetitle} - #{swstats} - #{swdesc}<hr />"
