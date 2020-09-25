@@ -4,7 +4,8 @@ module AresMUSH
 	
     # Return the code to display the font awesome die type based on rating. This should probably be moved to somewhere else.
     def self.die_rating(name,rating)
-      case rating.to_i
+	  rating = "#{rating}".to_i
+      case rating
       when 0
         return "-"
       when 1
@@ -18,9 +19,8 @@ module AresMUSH
       when 5
         return "<i class='fad fa-dice-d12' title='#{name} d12'></i>"
       else
-	    rating = "#{rating}".to_i
 	    statstep = rating-5
- 	    return "<i class='fad fa-dice-d12' title='#{name} d12+#{statstep}'></i> + <span class='statrating'> #{statstep}</span>"
+ 	    return "<i class='fad fa-dice-d12' title='#{name} d12+#{statstep}'></i> + <span class='statrating'>#{statstep}</span>"
       end
     end
 	
