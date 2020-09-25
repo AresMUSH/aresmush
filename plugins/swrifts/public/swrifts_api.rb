@@ -52,6 +52,9 @@ module AresMUSH
 				swskills.each do |key, value|
 					swdesc2 = "Key: #{key} Value: #{value}"
 				end
+				if (!swdesc2) 
+					swdesc2=''
+				end
 				swdesc = ''
 				rowopenid = i == 0 ? "<div class='skilltable'><div class='container-fluid skillstable'><div class='row no-gutters'>" : ""
 				rowcloseid = i == skills.count ? "</div></div></div>" : ""
