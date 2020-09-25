@@ -125,7 +125,7 @@ module AresMUSH
 				"#{rowopenid}#{openrow}#{cellopenid}#{colautoopenid}#{title}#{cellcloseid}#{colsmallopenid}#{rating}#{cellcloseid}#{cellcloseid}#{closerow}#{rowcloseid}"
 
 				#Used for debugging - need to delete when complete
-				"#{downsizetitle} - #{swstats} - #{swdesc}<hr />"
+				#"#{downsizetitle} - #{swstats} - #{swdesc}<hr />"
 			end
 	end
 	
