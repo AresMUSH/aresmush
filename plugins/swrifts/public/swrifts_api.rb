@@ -60,10 +60,6 @@ module AresMUSH
 				#get the entry in global file that matches the skill name on the character
 				swskills = swriftskills.select { |ss| ss['name'].downcase == downsizetitle }.first
 
-				#determine what type of object is being returned. DEBUGGING
-				#swsclass2 = swskills.class
-				#swdesc2 = ''
-
 				if (swskills)   #if something is returned from the global skills table, set the Desc and Linked Stat.
 					swdesc = swskills['description']
 					swlinkedstat = swskills['linked_stat']
@@ -73,10 +69,7 @@ module AresMUSH
 				end
 
 				#Set up the skills table
-				rowopenid = i == 0 ? "<div class='skilltable'><div class='container-fluid skillstable'><div class='row no-gutters stdlh'><div class='titlerow' colspan='6'>Skills</div>" : ""
-				rowcloseid = i == skills.count ? "</div></div></div>" : ""
 				openrow = i % 3 == 0 ? " <div class='row skilldata'>" : ""
-				#linebreak = i % 3 == 0 ? "" : ""
 				cssclass = "#{a.name}".strip
 				cellopenid='<div class="col-sm-4">'
 				colautoopenid="<div class='col-sm-9 heading #{cssclass}'>"
@@ -88,7 +81,7 @@ module AresMUSH
 				    closerow =''
 				end
 				title = "<span class='skillname' title='#{correcttitle}: #{swdesc}'>#{correcttitle}</span>:<br /><span class='linkedstat'>#{swlinkedstat}</span>"
-				"#{rowopenid}#{openrow}#{cellopenid}#{colautoopenid}#{title}#{cellcloseid}#{colsmallopenid}#{rating}#{cellcloseid}#{cellcloseid}#{closerow}#{rowcloseid}"
+				"#{openrow}#{cellopenid}#{colautoopenid}#{title}#{cellcloseid}#{colsmallopenid}#{rating}#{cellcloseid}#{cellcloseid}#{closerow}"
 
 				# Used for debugging - need to delete when complete
 				#"#{downsizetitle} - #{swsclass} - #{swsclass2} - #{swskills} - #{swdesc} - #{swdesc2}<hr />"
