@@ -49,7 +49,7 @@ module AresMUSH
 				#select the skill from the list.
 				swskills = swriftskills.select { |ss| ss['name'].downcase == downsizetitle }.first 
 				sstype = swskills.class
-				swdesc = "lll"
+				swdesc = "#{swskills[:description]}"
 				rowopenid = i == 0 ? "<div class='skilltable'><div class='container-fluid skillstable'><div class='row no-gutters'>" : ""
 				rowcloseid = i == skills.count ? "</div></div></div>" : ""
 				#linebreak = i % 3 == 0 ? " <div class='w-100'></div> " : ""
