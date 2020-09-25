@@ -23,17 +23,16 @@ module AresMUSH
     end
 	
     def self.get_abilities_for_web_viewing(char, viewer)
-	
 	    # Format skill table
 		skills = returnskillsforweb(char.swrifts_skills)
-		skills = skills.join(" ") #removes the comma's that seperates the entries
+		skills = skills.join(" ") #removes the comma's that seperates the entries		
 		
-		#Format Stat Table
-		#stats = returnstatsforweb(char.swrifts_stats)
-		#stats = stats.join(" ") #removes the comma's that seperates the entries
-		
+		stats = returnstatsforweb(char.swrifts_stats)
+		stats = stats.join(" ") #removes the comma's that seperates the entries
+				
          return {
           skills: skills
+		  stats: stats
         } 
 	end
 	
@@ -78,6 +77,51 @@ module AresMUSH
 				    closerow =''
 				end
 				title = "<span class='skillname' title='#{correcttitle}: #{swdesc}'>#{correcttitle}</span>:<br /><span class='linkedstat'>#{swlinkedstat}</span>"
+				"#{rowopenid}#{openrow}#{cellopenid}#{colautoopenid}#{title}#{cellcloseid}#{colsmallopenid}#{rating}#{cellcloseid}#{cellcloseid}#{closerow}#{rowcloseid}"
+
+				# Used for debugging - need to delete when complete
+				#"#{downsizetitle} - #{swsclass} - #{swsclass2} - #{swskills} - #{swdesc} - #{swdesc2}<hr />"
+			end
+	end
+
+
+	#Get the Stats for the website
+	
+	def self.returnstatsforweb(stats)
+		stats.to_a.sort_by { |a| a.name }
+		.each_with_index
+			.map do |a, i| 
+				correcttitle = "#{a.name}".titleize
+				downsizetitle = "#{a.name}".downcase
+				rating = die_rating(correcttitle,a.rating)
+				#sets swriftskills to the skills table located in game\config\swrifts_stats.yml file
+				swriftstats = Global.read_config('swrifts', 'stats')
+
+				#get the entry in global file that matches the skill name on the character
+				swstats = swriftstatss.select { |ss| ss['name'].downcase == downsizetitle }.first
+
+				if (swstats)   #if something is returned from the global stats table, set the Desc
+					swdesc = swstats['description']
+				else #otherwise set desc to nothing
+					swdesc = ''
+				end
+
+				#Set up the stats table
+				rowopenid = i == 0 ? "<div class='stattable'><div class='container-fluid statstable'><div class='row no-gutters stdlh'><div class='titlerow' colspan='10'>Stats</div>" : ""
+				rowcloseid = i == stats.count ? "</div></div></div>" : ""
+				openrow = i % 5 == 0 ? " <div class='row statdata'>" : ""
+				#linebreak = i % 3 == 0 ? "" : ""
+				cssclass = "#{a.name}".strip
+				cellopenid='<div class="col-sm-4">'
+				colautoopenid="<div class='col-sm-9 heading #{cssclass}'>"
+				colsmallopenid="<div class='col-sm-3 rating #{cssclass}'>"
+				cellcloseid='</div>'
+				if ( (i > 0 ) && ( (i+1) % 5 == 0) )
+					closerow = '</div>'
+				else
+				    closerow =''
+				end
+				title = "<span class='statname' title='#{correcttitle}: #{swdesc}'>#{correcttitle}</span>:"
 				"#{rowopenid}#{openrow}#{cellopenid}#{colautoopenid}#{title}#{cellcloseid}#{colsmallopenid}#{rating}#{cellcloseid}#{cellcloseid}#{closerow}#{rowcloseid}"
 
 				# Used for debugging - need to delete when complete
