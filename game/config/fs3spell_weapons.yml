@@ -33,7 +33,7 @@ fs3combat:
       description: Level 6 Water spell
       is_magic: true
       lethality: 20
-      penetration: 2      
+      penetration: 2
     Grow:
       description: Level 4 Corpus spell
       is_magic: true
@@ -134,17 +134,17 @@ fs3combat:
       special_group: Melee
       is_owned: true
     Scythe Of Isis:
-        description: An ancient bronze scythe with a long, crescent blade fitted to a slightly curved handle. Owned by Danielle.
-        skill: Melee
-        lethality: 0
-        penetration: 5
-        weapon_type: Melee
-        recoil: 0
-        damage_type: Physical
-        accuracy: 0
-        init_mod: 0
-        special_group: Melee
-        is_owned: true
+      description: An ancient bronze scythe with a long, crescent blade fitted to a slightly curved handle. Owned by Danielle.
+      skill: Melee
+      lethality: 0
+      penetration: 5
+      weapon_type: Melee
+      recoil: 0
+      damage_type: Physical
+      accuracy: 0
+      init_mod: 0
+      special_group: Melee
+      is_owned: true
     Sun-Slayer's Longbow:
       description: Longbow
       skill: Archery
@@ -270,7 +270,7 @@ fs3combat:
       damage_type: Physical
       accuracy: 0
       init_mod: 0
-      special_group: Brawl
+      special_group: Body
     Fling:
       description: Level 2 Will spell
       is_magic: true
@@ -294,7 +294,7 @@ fs3combat:
       damage_type: Physical
       accuracy: 0
       init_mod: 0
-      special_group: Brawl
+      special_group: Body
     Sling Barb:
       description: Level 2 Nature spell
       is_magic: true
@@ -332,7 +332,7 @@ fs3combat:
       damage_type: Physical
       accuracy: 0
       init_mod: 0
-      special_group: Brawl
+      special_group: Body
     Flame Dart:
       description: Level 3 Fire spell
       is_magic: true
@@ -356,7 +356,7 @@ fs3combat:
       damage_type: Physical
       accuracy: 3
       init_mod: 0
-      special_group: Brawl
+      special_group: Body
     Ice Talons:
       description: Level 3 Water spell
       is_magic: true
@@ -368,7 +368,7 @@ fs3combat:
       damage_type: Physical
       accuracy: 0
       init_mod: 0
-      special_group: Brawl
+      special_group: Body
     Laser Zap:
       description: Level 3 Fire spell
       is_magic: true
@@ -467,7 +467,7 @@ fs3combat:
       damage_type: Physical
       accuracy: 0
       init_mod: 0
-      special_group: Melee
+      special_group: Body
     Flame Burst:
       description: Level 4 Fire spell
       is_magic: true
@@ -491,7 +491,7 @@ fs3combat:
       damage_type: Physical
       accuracy: 0
       init_mod: 0
-      special_group: Brawl
+      special_group: Body
     Ice Blast:
       description: Level 4 Water spell
       is_magic: true
@@ -515,7 +515,7 @@ fs3combat:
       damage_type: Physical
       accuracy: 0
       init_mod: 0
-      special_group: Brawl
+      special_group: Body
     Lightning Bolt:
       description: Level 4 Air spell
       is_magic: true
@@ -551,7 +551,7 @@ fs3combat:
       damage_type: Physical
       accuracy: 0
       init_mod: 0
-      special_group: Brawl
+      special_group: Body
     Water Whip:
       description: Level 4 Water spell
       is_magic: true
@@ -691,7 +691,7 @@ fs3combat:
       accuracy: 0
       init_mod: 0
       has_shrapnel: true
-      special_group: Melee
+      special_group: Body
     Glacial Ice:
       description: Level 6 Water spell
       is_magic: true
@@ -715,7 +715,7 @@ fs3combat:
       damage_type: Physical
       accuracy: 0
       init_mod: 0
-      special_group: Melee
+      special_group: Body
     Mass Hemorrhage:
       description: Level 6 Corpus spell
       is_magic: true
@@ -803,7 +803,7 @@ fs3combat:
       damage_type: Physical
       accuracy: 0
       init_mod: 0
-      special_group: Melee
+      special_group: Body
     Exploding Earth:
       description: Level 7 Earth spell
       is_magic: true
@@ -880,7 +880,7 @@ fs3combat:
       damage_type: Physical
       accuracy: 0
       init_mod: 0
-      special_group: Melee
+      special_group: Body
   #Level 8
     Firestorm:
       description: Level 8 Fire spell

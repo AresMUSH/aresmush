@@ -117,7 +117,7 @@ en:
         not_a_npc: "You can only set NPC skill levels."
 
         mod_applied: "You apply a %{type} modifier to %{name}."
-        mods_cleared: "You clear all modifiers from %{name}"
+        mods_cleared: "You clear all GM modifiers from %{name}. Use combat/seemods to see all active mods."
         log_title: "Combat Log"
 
         must_transfer_to_combatant: "%{name} needs to join the combat before you can transfer it to them."
