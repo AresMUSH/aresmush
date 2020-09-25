@@ -18,7 +18,8 @@ module AresMUSH
       when 5
         return "<i class='fad fa-dice-d12' title='#{name} d12'></i>"
       else
-	    statstep = "#{rating}"-5
+	    rating = "#{rating}".to_i
+	    statstep = rating-5
 		#statstep=0
  	    return "<i class='fad fa-dice-d12' title='#{name} d12+#{statstep}'></i> + #{statstep} #{rating}"
       end
