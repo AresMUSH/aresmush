@@ -52,9 +52,9 @@ module AresMUSH
 				swsclass2 = swskills.class
 				swdesc2 = ''
 				if (swsclass2 != "Hash")
-					swdesc = ''
+					swdesc = 'no class'
 				else
-					swdesc = swskill['description']
+					swdesc = swskills['description']
 				end
 				#swdesc = swskills['description']
 				rowopenid = i == 0 ? "<div class='skilltable'><div class='container-fluid skillstable'><div class='row no-gutters'>" : ""
