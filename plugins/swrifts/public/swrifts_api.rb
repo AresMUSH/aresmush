@@ -49,7 +49,7 @@ module AresMUSH
 				#select the skill from the list.
 				swskills = swriftskills.select { |ss| ss['name'].downcase == downsizetitle }.first 
 				swskills.each do |sskill|
-					ssdesc = sskill['description']
+					ssdesc = "#{sskill}"
 				end
 
 				ssdesc = 'hellow world'
