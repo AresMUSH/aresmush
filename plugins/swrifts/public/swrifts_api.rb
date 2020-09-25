@@ -61,7 +61,7 @@ module AresMUSH
 				cellcloseid='</div>'
 				title = "<span title='#{correcttitle}: #{ssdesc}'>#{correcttitle}</span>"
 				#"#{rowopenid}#{cellopenid}#{colautoopenid}#{title}: #{cellcloseid}#{colsmallopenid}#{rating}#{cellcloseid}#{cellcloseid}#{linebreak}#{rowcloseid}"
-				"#{swskills}<br />#{swdesc}<hr />"
+				"#{swskills}<br />#{ssdesc}<hr />"
 			end
 	end	
   end
