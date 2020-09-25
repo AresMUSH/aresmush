@@ -41,7 +41,7 @@ module AresMUSH
 		.each_with_index
 			.map do |a, i| 
 				correcttitle = "#{a.name}".titleize
-				downsizetitle = "#{a.name}".downsize
+				downsizetitle = "#{a.name}".downcase
 				rating = die_rating(correcttitle,a.rating)
 				#sets 'iconicf' to the Iconic Framework 'name' of our game\config\swrifts_skills.yml file
 				#swriftskills = Global.read_config('swrifts', 'swrifts_skills')				
