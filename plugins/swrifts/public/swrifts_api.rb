@@ -110,9 +110,8 @@ module AresMUSH
 				rowopenid = i == 0 ? "<div class='stattable'><div class='container-fluid statstable'><div class='row no-gutters stdlh'><div class='titlerow' colspan='10'>Stats</div>" : ""
 				rowcloseid = i == stats.count ? "</div></div></div>" : ""
 				openrow = i % 5 == 0 ? " <div class='row statdata'>" : ""
-				#linebreak = i % 3 == 0 ? "" : ""
 				cssclass = "#{a.name}".strip
-				cellopenid='<div class="col-sm-4">'
+				cellopenid='<div class="col-sm-2">'
 				colautoopenid="<div class='col-sm-9 heading #{cssclass}'>"
 				colsmallopenid="<div class='col-sm-3 rating #{cssclass}'>"
 				cellcloseid='</div>'
