@@ -47,10 +47,11 @@ module AresMUSH
 				#sets 'iconicf' to the Iconic Framework 'name' of our game\config\swrifts_skills.yml file
 				swriftskills = Global.read_config('swrifts', 'skills')	
 				swsclass = swriftskills.class
-				swskills = swriftskills.select { |ss| ss['name'].downcase == downsizetitle }	
+				swskills = swriftskills.select { |ss| ss['name'].downcase == downsizetitle }
+				newswskills = swskills.split(/, /)
 				swsclass2 = swskills.class
 				swdesc2 = ''
-				swskills.each do |key, value|
+				newswskills.each do |key, value|
 					swdesc2 = "Key: #{key} Value: #{value}"
 				end
 				swdesc = ''
