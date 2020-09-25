@@ -48,9 +48,9 @@ module AresMUSH
 				result = swriftskills.to_yaml
 				#select the skill from the list.
 				swskills = swriftskills.select { |ss| ss['name'].downcase == downsizetitle }.first 
-				.map do |ss|
-					ssdesc1="#{ss['name'].description}"
-				end
+				#.map do |ss|
+					#ssdesc1="#{ss['name'].description}"
+				#end
 				ssdesc = 'hellow world'
 				rowopenid = i == 0 ? "<div class='skilltable'><div class='container-fluid skillstable'><div class='row no-gutters'>" : ""
 				rowcloseid = i == skills.count ? "</div></div></div>" : ""
