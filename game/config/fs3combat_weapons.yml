@@ -161,17 +161,6 @@ fs3combat:
       init_mod: 0
       special_group: Ranged
     #MELEE
-    Antlers:
-      description: Antlers
-      skill: Melee
-      lethality: -10
-      penetration: 2
-      weapon_type: Melee
-      recoil: 0
-      damage_type: Physical
-      accuracy: 0
-      init_mod: 0
-      special_group: Melee
     Axe:
       description: Axe of any type
       skill: Melee
@@ -201,17 +190,6 @@ fs3combat:
       skill: Melee
       lethality: -10
       penetration: 0
-      weapon_type: Melee
-      recoil: 0
-      damage_type: Physical
-      accuracy: 0
-      init_mod: 0
-      special_group: Melee
-    Horns:
-      description: Horns
-      skill: Melee
-      lethality: -10
-      penetration: 2
       weapon_type: Melee
       recoil: 0
       damage_type: Physical
@@ -275,6 +253,17 @@ fs3combat:
       special_group: Melee
 
     #CREATURES
+    Antlers:
+      description: Antlers
+      skill: Melee
+      lethality: -10
+      penetration: 2
+      weapon_type: Melee
+      recoil: 0
+      damage_type: Physical
+      accuracy: 0
+      init_mod: 0
+      special_group: Body
     Beak:
       description: Bites from a beak
       skill: Melee
@@ -285,7 +274,7 @@ fs3combat:
       damage_type: Physical
       accuracy: -1
       init_mod: 0
-      special_group: Melee
+      special_group: Body
     Bug Bite:
       description: Mild bug bites
       skill: Melee
@@ -296,7 +285,7 @@ fs3combat:
       damage_type: Physical
       accuracy: 0
       init_mod: 0
-      special_group: Melee
+      special_group: Body
     Claws:
       description: Animal or creature claws
       skill: Melee
@@ -307,7 +296,18 @@ fs3combat:
       damage_type: Physical
       accuracy: 0
       init_mod: 0
-      special_group: Melee
+      special_group: Body
+    Horns:
+      description: Horns
+      skill: Melee
+      lethality: -10
+      penetration: 2
+      weapon_type: Melee
+      recoil: 0
+      damage_type: Physical
+      accuracy: 0
+      init_mod: 0
+      special_group: Body      
     Poison Stinger:
       description: Poison Insect stinger
       skill: Melee
@@ -318,7 +318,7 @@ fs3combat:
       damage_type: Physical
       accuracy: 0
       init_mod: 0
-      special_group: Melee
+      special_group: Body
     Sharp Claws:
       description: Upper level animal or creature claws
       skill: Melee
@@ -329,7 +329,7 @@ fs3combat:
       damage_type: Physical
       accuracy: 0
       init_mod: 0
-      special_group: Melee
+      special_group: Body
     Stinger:
       description: Insect stinger
       skill: Melee
@@ -340,7 +340,7 @@ fs3combat:
       damage_type: Physical
       accuracy: 0
       init_mod: 0
-      special_group: Melee
+      special_group: Body
     Teeth:
       description: Animal or creature teeth
       skill: Melee
@@ -351,7 +351,7 @@ fs3combat:
       damage_type: Physical
       accuracy: 0
       init_mod: 0
-      special_group: Melee
+      special_group: Body
     Sharp Teeth:
       description: Upper level animal or creature teeth
       skill: Melee
@@ -362,7 +362,7 @@ fs3combat:
       damage_type: Physical
       accuracy: 0
       init_mod: 0
-      special_group: Melee
+      special_group: Body
 
     #MAGIC ITEMS
     Skofnung:
