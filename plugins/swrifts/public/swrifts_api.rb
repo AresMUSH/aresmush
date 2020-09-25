@@ -46,7 +46,6 @@ module AresMUSH
 				#sets 'iconicf' to the Iconic Framework 'name' of our game\config\swrifts_skills.yml file
 				swriftskills = Global.read_config('swrifts', 'skills')
 				result = swriftskills.to_yaml
-				return result
 				#select the skill from the list.
 				#swskills = swriftskills.select { |ss| ss['name'].downcase == downsizetitle }.first
 				#ssdesc = swskills['description']
@@ -61,7 +60,8 @@ module AresMUSH
 				colsmallopenid="<div class='col-sm-3 rating #{cssclass}'>"
 				cellcloseid='</div>'
 				title = "<span title='#{correcttitle}: #{ssdesc}'>#{correcttitle}</span>"
-				"#{rowopenid}#{cellopenid}#{colautoopenid}#{title}: #{cellcloseid}#{colsmallopenid}#{rating}#{cellcloseid}#{cellcloseid}#{linebreak}#{rowcloseid}"
+				#"#{rowopenid}#{cellopenid}#{colautoopenid}#{title}: #{cellcloseid}#{colsmallopenid}#{rating}#{cellcloseid}#{cellcloseid}#{linebreak}#{rowcloseid}"
+				"#{result}"
 			end
 	end	
   end
