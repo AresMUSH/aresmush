@@ -45,10 +45,11 @@ module AresMUSH
 				rating = die_rating(correcttitle,a.rating)
 				
 				# sets 'iconicf' to the Iconic Framework 'name' of our game\config\swrifts_skills.yml file
-				swriftskills = Global.read_config('swrifts', 'swrifts_skills')				
+				#swriftskills = Global.read_config('swrifts', 'swrifts_skills')				
 				#select the skill from the list.
-				swskills = swriftskills.select { |ss| ss['name'].downcase == downsizetitle }.first
-				ssdesc = "#{swskills.description}"
+				#swskills = swriftskills.select { |ss| ss['name'].downcase == downsizetitle }.first
+				#ssdesc = "#{swskills.description}"
+				ssdesc = 'hellow world'
 				rowopenid = i == 0 ? "<div class='skilltable'><div class='container-fluid skillstable'><div class='row no-gutters'>" : ""
 				rowcloseid = i == skills.count ? "</div></div></div>" : ""
 				#linebreak = i % 3 == 0 ? " <div class='w-100'></div> " : ""
