@@ -59,7 +59,7 @@ module AresMUSH
 				colautoopenid="<div class='col-sm-9 heading #{cssclass}'>"
 				colsmallopenid="<div class='col-sm-3 rating #{cssclass}'>"
 				cellcloseid='</div>'
-				title = "<span title='#{correcttitle}: #{ssdesc}'>#{correcttitle}</span>"
+				#title = "<span title='#{correcttitle}: #{ssdesc}'>#{correcttitle}</span>"
 				#"#{rowopenid}#{cellopenid}#{colautoopenid}#{title}: #{cellcloseid}#{colsmallopenid}#{rating}#{cellcloseid}#{cellcloseid}#{linebreak}#{rowcloseid}"
 				"#{swskills}<br />#{sstype}<hr />"
 			end
