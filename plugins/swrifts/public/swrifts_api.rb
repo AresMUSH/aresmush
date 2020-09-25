@@ -45,15 +45,8 @@ module AresMUSH
 				downsizetitle = "#{a.name}".downcase
 				rating = die_rating(correcttitle,a.rating)
 				#sets 'iconicf' to the Iconic Framework 'name' of our game\config\swrifts_skills.yml file
-				swriftskills = Global.read_config('swrifts', 'skills')
-				result = swriftskills.to_yaml
-				#select the skill from the list.
-				swskills = swriftskills.select { |ss| ss['name'].downcase == downsizetitle }.first 
-				sstype = swskills.class
-				swdesc = ""
-				swskills.each do | key, value |
-					swdesc = "#{key} - #{value}"
-				end
+				swdesc = findskwriftskill(downsizetitle)
+				swskills.each_pair { |key, value| hash[key] = value.to_a }
 				rowopenid = i == 0 ? "<div class='skilltable'><div class='container-fluid skillstable'><div class='row no-gutters'>" : ""
 				rowcloseid = i == skills.count ? "</div></div></div>" : ""
 				#linebreak = i % 3 == 0 ? " <div class='w-100'></div> " : ""
@@ -67,6 +60,13 @@ module AresMUSH
 				#"#{rowopenid}#{cellopenid}#{colautoopenid}#{title}: #{cellcloseid}#{colsmallopenid}#{rating}#{cellcloseid}#{cellcloseid}#{linebreak}#{rowcloseid}"
 				"#{swskills}<br />#{sstype}<br />#{swdesc}<hr />"
 			end
-	end	
+	end
+
+	def self.findswriftskill(name)
+		swriftskills = Global.read_config('swrifts', 'skills')	
+		swskills = swriftskills.select { |ss| ss['name'].downcase == name }.first
+		return swskill['description']
+    end
+	
   end
 end
