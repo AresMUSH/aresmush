@@ -48,7 +48,10 @@ module AresMUSH
 				swriftskills = Global.read_config('swrifts', 'skills')	
 				swsclass = swriftskills.class
 				swskills = swriftskills.select { |ss| ss['name'].downcase == downsizetitle }	
-				swsclass2 = swskills.class				
+				swsclass2 = swskills.class
+				swskills.each { |key, value|
+					swdesc2 = "Key: #{key} Value: #{value}"
+				}
 				swdesc = ''
 				rowopenid = i == 0 ? "<div class='skilltable'><div class='container-fluid skillstable'><div class='row no-gutters'>" : ""
 				rowcloseid = i == skills.count ? "</div></div></div>" : ""
@@ -61,7 +64,7 @@ module AresMUSH
 				cellcloseid='</div>'
 				#title = "<span title='#{correcttitle}: #{ssdesc}'>#{correcttitle}</span>"
 				#"#{rowopenid}#{cellopenid}#{colautoopenid}#{title}: #{cellcloseid}#{colsmallopenid}#{rating}#{cellcloseid}#{cellcloseid}#{linebreak}#{rowcloseid}"
-				"#{swsclass} - #{swsclass2} - #{swskills} - #{swdesc}<hr />"
+				"#{swsclass} - #{swsclass2} - #{swskills} - #{swdesc2}<hr />"
 			end
 	end
 	
