@@ -48,11 +48,11 @@ module AresMUSH
 				swriftskills = Global.read_config('swrifts', 'skills')	
 				swsclass = swriftskills.class
 				swskills = swriftskills.select { |ss| ss['name'].downcase == downsizetitle }
-				newswskills = swskills.split(/, /)
 				swsclass2 = swskills.class
 				swdesc2 = ''
-				newswskills.each do |key, value|
-					swdesc2 = "Key: #{key} Value: #{value}"
+				swskills.each do |key, value|
+					newswskills = key.split(/, /)
+					swdesc2 = newswskills
 				end
 				swdesc = ''
 				rowopenid = i == 0 ? "<div class='skilltable'><div class='container-fluid skillstable'><div class='row no-gutters'>" : ""
