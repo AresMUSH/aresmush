@@ -30,8 +30,8 @@ module AresMUSH
 		stats = returnstatsforweb(char.swrifts_stats)
 		stats = stats.join(" ") #removes the comma's that seperates the entries
 				
-         return {
-          skills: skills
+        return {
+          skills: skills,
 		  stats: stats
         } 
 	end
