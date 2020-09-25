@@ -50,10 +50,6 @@ module AresMUSH
 				swskills = swriftskills.select { |ss| ss['name'].downcase == downsizetitle }
 				swsclass2 = swskills.class
 				swdesc2 = ''
-				swskills.each do |key, value|
-					newswskills = key.split(/, /)
-					swdesc2 = newswskills
-				end
 				swdesc = ''
 				rowopenid = i == 0 ? "<div class='skilltable'><div class='container-fluid skillstable'><div class='row no-gutters'>" : ""
 				rowcloseid = i == skills.count ? "</div></div></div>" : ""
