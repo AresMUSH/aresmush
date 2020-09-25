@@ -107,7 +107,7 @@ module AresMUSH
 				end
 
 				#Set up the stats table
-				rowopenid = i == 0 ? "<div class='stattable'><div class='container-fluid statstable'><div class='row no-gutters stdlh'><div class='titlerow' colspan='10'>Stats</div>" : ""
+				rowopenid = i == 0 ? "<div class='stattable'><div class='container-fluid statstable'><div class='row no-gutters stdlh'><div class='titlerow' colspan='5'>Stats</div>" : ""
 				rowcloseid = i == stats.count ? "</div></div></div>" : ""
 				openrow = i % 5 == 0 ? " <div class='row statdata'>" : ""
 				cssclass = "#{a.name}".strip
@@ -120,8 +120,8 @@ module AresMUSH
 				else
 				    closerow =''
 				end
-				title = "<span class='statname' title='#{correcttitle}: #{swdesc}'>#{correcttitle}</span>:"
-				"#{rowopenid}#{openrow}#{cellopenid}#{colautoopenid}#{title}#{cellcloseid}#{colsmallopenid}#{rating}#{cellcloseid}#{cellcloseid}#{closerow}#{rowcloseid}"
+				title = "<span class='statname' title='#{correcttitle}: #{swdesc}'>#{correcttitle}</span>: "
+				"#{rowopenid}#{openrow}#{cellopenid}#{colautoopenid}#{title}#{rating}#{cellcloseid}#{cellcloseid}#{closerow}#{rowcloseid}"
 
 				#Used for debugging - need to delete when complete
 				#"#{downsizetitle} - #{swstats} - #{swdesc}<hr />"
