@@ -18,7 +18,7 @@ swrifts:
       description:  handle most any boat or ship common to their seting. They also know how to handle common tasks associated with their vessel
       linked_stat: Agility
     - 
-      name: Common Knolwedge
+      name: Common Knowledge
       description:  Covers the non-critical, non-emergency operation of common electronics, computers, vehicles, and other gear. It also allows characters to identify the general type of supernatural forces encountered—such as elemental, faerie, demon, undead, etc.
       linked_stat: Smarts
     - 
