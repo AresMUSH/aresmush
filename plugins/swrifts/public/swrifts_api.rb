@@ -47,7 +47,8 @@ module AresMUSH
 				#sets 'iconicf' to the Iconic Framework 'name' of our game\config\swrifts_skills.yml file
 				swriftskills = Global.read_config('swrifts', 'skills')	
 				swsclass = swriftskills.class
-				swskills = swriftskills.select { |ss| ss['name'].downcase == name }.first				
+				swskills = swriftskills.select { |ss| ss['name'].downcase == name }.first	
+				swsclass2 = swskills.class				
 				swdesc = ''
 				rowopenid = i == 0 ? "<div class='skilltable'><div class='container-fluid skillstable'><div class='row no-gutters'>" : ""
 				rowcloseid = i == skills.count ? "</div></div></div>" : ""
@@ -60,7 +61,7 @@ module AresMUSH
 				cellcloseid='</div>'
 				#title = "<span title='#{correcttitle}: #{ssdesc}'>#{correcttitle}</span>"
 				#"#{rowopenid}#{cellopenid}#{colautoopenid}#{title}: #{cellcloseid}#{colsmallopenid}#{rating}#{cellcloseid}#{cellcloseid}#{linebreak}#{rowcloseid}"
-				"#{swsclass} - #{swriftskills} - #{swdesc}<hr />"
+				"#{swsclass} - #{swsclass2} - #{swriftskills} - #{swdesc}<hr />"
 			end
 	end
 	
