@@ -31,13 +31,22 @@ module AresMUSH
 		
 		stats = returnstatsforweb(char.swrifts_stats)
 		stats = stats.join(" ") #removes the comma's that seperates the entries
-				
+		
+		bennies = returnbenniesforweb(char.swrifts_bennies)
+		bennies = bennies.join(" ") #removes the comma's that seperates the entries
+
+		conviction = returnconvictionforweb(char.swrifts_conviction)
+		conviction = conviction.join(" ") #removes the comma's that seperates the entries
+		
         return {
           skills: skills,
-		  stats: stats
+		  stats: stats,
+		  bennies: bennies,
+		  conviction: conviction
         } 
 	end
 	
+	#Get skills for website
 	def self.returnskillsforweb(skills)
 		skills.to_a.sort_by { |a| a.name }
 		.each_with_index
@@ -88,7 +97,6 @@ module AresMUSH
 
 
 	#Get the Stats for the website
-	
 	def self.returnstatsforweb(stats)
 		stats.to_a.sort_by { |a| a.name }
 		.each_with_index
@@ -128,6 +136,26 @@ module AresMUSH
 				#Used for debugging - need to delete when complete
 				#"#{downsizetitle} - #{swstats} - #{swdesc}<hr />"
 			end
+	end
+
+	#Get the bennies for the website
+	def self.returnbenniesforweb(bennies)
+		bennies = "#{bennies}".to_i	
+		if (bennies)
+			return bennies
+		else
+			return "None"
+		end
+	end	
+	
+	#Get the conviction for the website
+	def self.returnconvictionforweb(conviction)
+		conviction = "#{conviction}".to_i	
+		if (conviction)
+			return conviction
+		else
+			return "None"
+		end
 	end
 	
   end
