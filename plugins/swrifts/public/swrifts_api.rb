@@ -20,7 +20,7 @@ module AresMUSH
       else
 	    rating = "#{rating}".to_i
 	    statstep = rating-5
- 	    return "<i class='fad fa-dice-d12' title='#{name} d12+#{statstep}'></i> + <span class='statrating'> #{statstep}</span>"
+ 	    return "<i class='fad fa-dice-d12' title='#{name} d12+#{statstep}'></i> + <span class='statrating'>#{statstep}</span>"
       end
     end
 	
