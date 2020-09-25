@@ -569,6 +569,7 @@ spells:
     name: Enduring Mind Shield
     range: Short
     roll: true
+    rounds: 800
     school: Spirit
     target_num: 1
     target_optional: true
