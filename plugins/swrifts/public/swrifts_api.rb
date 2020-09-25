@@ -51,7 +51,7 @@ module AresMUSH
 				pp swskills
 				swsclass2 = swskills.class
 				swdesc2 = ''
-				if (swsclass2 != "Hash")
+				if (!swskills)
 					swdesc = 'no class'
 				else
 					swdesc = swskills['description']
