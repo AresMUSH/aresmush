@@ -43,7 +43,7 @@ module AresMUSH
 				correcttitle = "#{a.name}".titleize
 				downsizetitle = "#{a.name}".downsize
 				rating = die_rating(correcttitle,a.rating)				
-				attrstat = Swrifts.find_stat(model, self.downsizetitle) #Calls the find stat function in /public/swrifts_model.rb and returns the HASHED record.
+				attrstat = Swrifts.find_stat(a, self.downsizetitle) #Calls the find stat function in /public/swrifts_model.rb and returns the HASHED record.
 				attrdesc = "#{attrstat.description}"
 				rowopenid = i == 0 ? "<div class='skilltable'><div class='container-fluid skillstable'><div class='row no-gutters'>" : ""
 				rowcloseid = i == skills.count ? "</div></div></div>" : ""
