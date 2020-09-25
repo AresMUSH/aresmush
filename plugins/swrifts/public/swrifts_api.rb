@@ -63,17 +63,18 @@ module AresMUSH
 				end
 
 				#Set up the skills table
-				rowopenid = i == 0 ? "<div class='skilltable'><div class='container-fluid skillstable'><div class='row no-gutters'>" : ""
+				rowopenid = i == 0 ? "<div class='skilltable'><div class='container-fluid skillstable'><div class='row no-gutters stdlh'>" : ""
 				rowcloseid = i == skills.count ? "</div></div></div>" : ""
-				#linebreak = i % 3 == 0 ? " <div class='w-100'></div> " : ""
-				linebreak = i % 3 == 0 ? "" : ""
+				openrow = i % 3 == 0 ? " <div class='row skilldata'>" : ""
+				#linebreak = i % 3 == 0 ? "" : ""
 				cssclass = "#{a.name}".strip
 				cellopenid='<div class="col-sm-4">'
 				colautoopenid="<div class='col-sm-9 heading #{cssclass}'>"
 				colsmallopenid="<div class='col-sm-3 rating #{cssclass}'>"
 				cellcloseid='</div>'
+				closerow = i % 3 == 0 ? " </div>" : ""
 				title = "<span title='#{correcttitle}: #{swdesc}'>#{correcttitle}</span>:<br /><span class='linkedstat'>#{swlinkedstat}</span>"
-				"#{rowopenid}#{cellopenid}#{colautoopenid}#{title}#{cellcloseid}#{colsmallopenid}#{rating}#{cellcloseid}#{cellcloseid}#{linebreak}#{rowcloseid}"
+				"#{rowopenid}#{openrow}#{cellopenid}#{colautoopenid}#{title}#{cellcloseid}#{colsmallopenid}#{rating}#{cellcloseid}#{cellcloseid}#{closerow}#{rowcloseid}"
 
 				# Used for debugging - need to delete when complete
 				#"#{downsizetitle} - #{swsclass} - #{swsclass2} - #{swskills} - #{swdesc} - #{swdesc2}<hr />"
