@@ -63,7 +63,7 @@ module AresMUSH
 				end
 
 				#Set up the skills table
-				rowopenid = i == 0 ? "<div class='skilltable'><div class='container-fluid skillstable'><div class='row no-gutters stdlh'>" : ""
+				rowopenid = i == 0 ? "<div class='skilltable i-#{i}'><div class='container-fluid skillstable'><div class='row no-gutters stdlh'>" : ""
 				rowcloseid = i == skills.count ? "</div></div></div>" : ""
 				openrow = i % 3 == 0 ? " <div class='row skilldata'>" : ""
 				#linebreak = i % 3 == 0 ? "" : ""
@@ -72,7 +72,11 @@ module AresMUSH
 				colautoopenid="<div class='col-sm-9 heading #{cssclass}'>"
 				colsmallopenid="<div class='col-sm-3 rating #{cssclass}'>"
 				cellcloseid='</div>'
-				closerow = (i > 0 && i % 3 == 0) ? " </div>" : ""
+				if ( (i > 0 ) && ( i % 3 == 0) )
+					closerow = '</div>'
+				else
+				    closerow =''
+				end
 				title = "<span title='#{correcttitle}: #{swdesc}'>#{correcttitle}</span>:<br /><span class='linkedstat'>#{swlinkedstat}</span>"
 				"#{rowopenid}#{openrow}#{cellopenid}#{colautoopenid}#{title}#{cellcloseid}#{colsmallopenid}#{rating}#{cellcloseid}#{cellcloseid}#{closerow}#{rowcloseid}"
 
