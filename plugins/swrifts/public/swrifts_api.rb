@@ -64,7 +64,7 @@ module AresMUSH
 	def self.findswriftskill(name)
 		swriftskills = Global.read_config('swrifts', 'skills')	
 		swskills = swriftskills.select { |ss| ss['name'].downcase == name }.first
-		return swskills['description']
+		return "#{swskills.description}"
     end
 	
   end
