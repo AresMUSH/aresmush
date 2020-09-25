@@ -44,7 +44,7 @@ module AresMUSH
 				downsizetitle = "#{a.name}".downcase
 				rating = die_rating(correcttitle,a.rating)
 				#sets 'iconicf' to the Iconic Framework 'name' of our game\config\swrifts_skills.yml file
-				swriftskills = Global.read_config('swrifts', 'swrifts_skills')				
+				swriftskills = Global.read_config('swrifts', 'skills')				
 				#select the skill from the list.
 				swskills = swriftskills.select { |ss| ss['name'].downcase == downsizetitle }.first
 				ssdesc = "#{swskills.description}"
