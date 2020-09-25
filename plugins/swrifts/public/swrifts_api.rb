@@ -72,7 +72,7 @@ module AresMUSH
 				colautoopenid="<div class='col-sm-9 heading #{cssclass}'>"
 				colsmallopenid="<div class='col-sm-3 rating #{cssclass}'>"
 				cellcloseid='</div>'
-				title = "<span title='#{correcttitle}: #{ssdesc}'>#{correcttitle}</span><br /><span class='linkedstat'>#{swlinkedstat}</span>"
+				title = "<span title='#{correcttitle}: #{swdesc}'>#{correcttitle}</span><br /><span class='linkedstat'>#{swlinkedstat}</span>"
 				"#{rowopenid}#{cellopenid}#{colautoopenid}#{title}: #{cellcloseid}#{colsmallopenid}#{rating}#{cellcloseid}#{cellcloseid}#{linebreak}#{rowcloseid}"
 
 				# Used for debugging - need to delete when complete
