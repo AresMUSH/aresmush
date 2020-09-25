@@ -98,7 +98,7 @@ module AresMUSH
 				swriftstats = Global.read_config('swrifts', 'stats')
 
 				#get the entry in global file that matches the skill name on the character
-				swstats = swriftstatss.select { |ss| ss['name'].downcase == downsizetitle }.first
+				swstats = swriftstats.select { |ss| ss['name'].downcase == downsizetitle }.first
 
 				if (swstats)   #if something is returned from the global stats table, set the Desc
 					swdesc = swstats['description']
