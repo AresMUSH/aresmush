@@ -51,6 +51,11 @@ module AresMUSH
 				pp swskills
 				swsclass2 = swskills.class
 				swdesc2 = ''
+				if (swclass2 != "Hash")
+					swdesc = ''
+				else
+					swdesc = swskill['description']
+				end
 				#swdesc = swskills['description']
 				rowopenid = i == 0 ? "<div class='skilltable'><div class='container-fluid skillstable'><div class='row no-gutters'>" : ""
 				rowcloseid = i == skills.count ? "</div></div></div>" : ""
@@ -63,7 +68,7 @@ module AresMUSH
 				cellcloseid='</div>'
 				#title = "<span title='#{correcttitle}: #{ssdesc}'>#{correcttitle}</span>"
 				#"#{rowopenid}#{cellopenid}#{colautoopenid}#{title}: #{cellcloseid}#{colsmallopenid}#{rating}#{cellcloseid}#{cellcloseid}#{linebreak}#{rowcloseid}"
-				"#{downsizetitle} - #{swsclass} - #{swsclass2} - #{swskills} - #{swdesc2}<hr />"
+				"#{downsizetitle} - #{swsclass} - #{swsclass2} - #{swskills} - #{swdesc} - #{swdesc2}<hr />"
 			end
 	end
 	

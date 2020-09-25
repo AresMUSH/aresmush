@@ -78,7 +78,7 @@ swrifts:
       description: The mechanical aspects of machines, as well as the nature and elements of physical structures, fall under this skill.
       linked_stat: Smarts
     - 
-      name: Pisonics
+      name: Psionics
       description: This is the skill “psions” or “psis” use to activate and control their psionic abilities.
       linked_stat: Smarts
     - 
