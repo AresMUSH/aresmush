@@ -44,19 +44,25 @@ module AresMUSH
 				correcttitle = "#{a.name}".titleize
 				downsizetitle = "#{a.name}".downcase
 				rating = die_rating(correcttitle,a.rating)
-				#sets 'iconicf' to the Iconic Framework 'name' of our game\config\swrifts_skills.yml file
-				swriftskills = Global.read_config('swrifts', 'skills')	
-				swsclass = swriftskills.class
+				#sets swriftskills to the skills table located in game\config\swrifts_skills.yml file
+				swriftskills = Global.read_config('swrifts', 'skills')
+
+				#get the entry in global file that matches the skill name on the character
 				swskills = swriftskills.select { |ss| ss['name'].downcase == downsizetitle }.first
-				pp swskills
-				swsclass2 = swskills.class
-				swdesc2 = ''
-				if (!swskills)
-					swdesc = 'no class'
-				else
+
+				#determine what type of object is being returned. DEBUGGING
+				#swsclass2 = swskills.class
+				#swdesc2 = ''
+
+				if (swskills)   #if something is returned from the global skills table, set the Desc and Linked Stat.
 					swdesc = swskills['description']
+					swlinkedstat = swskills['linked_stat']
+				else #otherwise set desc and Linked Stat to nothing
+					swdesc = ''
+					swlinkedstat = ''
 				end
-				#swdesc = swskills['description']
+
+				#Set up the skills table
 				rowopenid = i == 0 ? "<div class='skilltable'><div class='container-fluid skillstable'><div class='row no-gutters'>" : ""
 				rowcloseid = i == skills.count ? "</div></div></div>" : ""
 				#linebreak = i % 3 == 0 ? " <div class='w-100'></div> " : ""
@@ -66,9 +72,11 @@ module AresMUSH
 				colautoopenid="<div class='col-sm-9 heading #{cssclass}'>"
 				colsmallopenid="<div class='col-sm-3 rating #{cssclass}'>"
 				cellcloseid='</div>'
-				#title = "<span title='#{correcttitle}: #{ssdesc}'>#{correcttitle}</span>"
-				#"#{rowopenid}#{cellopenid}#{colautoopenid}#{title}: #{cellcloseid}#{colsmallopenid}#{rating}#{cellcloseid}#{cellcloseid}#{linebreak}#{rowcloseid}"
-				"#{downsizetitle} - #{swsclass} - #{swsclass2} - #{swskills} - #{swdesc} - #{swdesc2}<hr />"
+				title = "<span title='#{correcttitle}: #{ssdesc}'>#{correcttitle}</span><br /><span class='linkedstat'>#{swlinkedstat}</span>"
+				"#{rowopenid}#{cellopenid}#{colautoopenid}#{title}: #{cellcloseid}#{colsmallopenid}#{rating}#{cellcloseid}#{cellcloseid}#{linebreak}#{rowcloseid}"
+
+				# Used for debugging - need to delete when complete
+				#"#{downsizetitle} - #{swsclass} - #{swsclass2} - #{swskills} - #{swdesc} - #{swdesc2}<hr />"
 			end
 	end
 	
