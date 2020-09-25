@@ -42,9 +42,13 @@ module AresMUSH
 			.map do |a, i| 
 				correcttitle = "#{a.name}".titleize
 				downsizetitle = "#{a.name}".downsize
-				rating = die_rating(correcttitle,a.rating)				
-				attrstat = Swrifts.find_stat(a, self.downsizetitle) #Calls the find stat function in /public/swrifts_model.rb and returns the HASHED record.
-				attrdesc = "#{attrstat.description}"
+				rating = die_rating(correcttitle,a.rating)
+				
+				# sets 'iconicf' to the Iconic Framework 'name' of our game\config\swrifts_skills.yml file
+				swriftskills = Global.read_config('swrifts', 'swrifts_skills')				
+				#select the skill from the list.
+				swskills = swriftskills.select { |ss| ss['name'].downcase == downsizetitle }.first
+				ssdesc = "#{swskills.description}"
 				rowopenid = i == 0 ? "<div class='skilltable'><div class='container-fluid skillstable'><div class='row no-gutters'>" : ""
 				rowcloseid = i == skills.count ? "</div></div></div>" : ""
 				#linebreak = i % 3 == 0 ? " <div class='w-100'></div> " : ""
@@ -54,7 +58,7 @@ module AresMUSH
 				colautoopenid="<div class='col-sm-9 heading #{cssclass}'>"
 				colsmallopenid="<div class='col-sm-3 rating #{cssclass}'>"
 				cellcloseid='</div>'
-				title = "<span title='#{correcttitle} - #{attrdesc}'>#{correcttitle}</span>"
+				title = "<span title='#{correcttitle} - #{ssdesc}'>#{correcttitle}</span>"
 				"#{rowopenid}#{cellopenid}#{colautoopenid}#{title}: #{cellcloseid}#{colsmallopenid}#{rating}#{cellcloseid}#{cellcloseid}#{linebreak}#{rowcloseid}"
 			end
 	end	
