@@ -124,8 +124,8 @@ module AresMUSH
 				title = "<span class='statname' title='#{correcttitle}: #{swdesc}'>#{correcttitle}</span>:"
 				"#{rowopenid}#{openrow}#{cellopenid}#{colautoopenid}#{title}#{cellcloseid}#{colsmallopenid}#{rating}#{cellcloseid}#{cellcloseid}#{closerow}#{rowcloseid}"
 
-				# Used for debugging - need to delete when complete
-				#"#{downsizetitle} - #{swsclass} - #{swsclass2} - #{swskills} - #{swdesc} - #{swdesc2}<hr />"
+				Used for debugging - need to delete when complete
+				"#{downsizetitle} - #{swstats} - #{swdesc}<hr />"
 			end
 	end
 	
