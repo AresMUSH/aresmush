@@ -45,7 +45,7 @@ module AresMUSH
 				downsizetitle = "#{a.name}".downcase
 				rating = die_rating(correcttitle,a.rating)
 				#sets 'iconicf' to the Iconic Framework 'name' of our game\config\swrifts_skills.yml file
-				swdesc = findskwriftskill(downsizetitle)
+				swdesc = findswriftskill(downsizetitle)
 				swskills.each_pair { |key, value| hash[key] = value.to_a }
 				rowopenid = i == 0 ? "<div class='skilltable'><div class='container-fluid skillstable'><div class='row no-gutters'>" : ""
 				rowcloseid = i == skills.count ? "</div></div></div>" : ""
