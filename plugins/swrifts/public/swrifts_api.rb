@@ -63,7 +63,7 @@ module AresMUSH
 				end
 
 				#Set up the skills table
-				rowopenid = i == 0 ? "<div class='skilltable'><div class='container-fluid skillstable'><div class='row no-gutters stdlh'>" : ""
+				rowopenid = i == 0 ? "<div class='skilltable'><div class='container-fluid skillstable'><div class='row no-gutters stdlh'><div class='titlerow' colspan='6'>Skills</div>" : ""
 				rowcloseid = i == skills.count ? "</div></div></div>" : ""
 				openrow = i % 3 == 0 ? " <div class='row skilldata'>" : ""
 				#linebreak = i % 3 == 0 ? "" : ""
