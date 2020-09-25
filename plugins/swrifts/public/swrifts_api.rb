@@ -48,7 +48,7 @@ module AresMUSH
 				#select the skill from the list.
 				#swskills = swriftskills.select { |ss| ss['name'].downcase == downsizetitle }.first
 				#ssdesc = "#{swskills.description}"
-				#ssdesc = 'hellow world'
+				ssdesc = 'hellow world'
 				rowopenid = i == 0 ? "<div class='skilltable'><div class='container-fluid skillstable'><div class='row no-gutters'>" : ""
 				rowcloseid = i == skills.count ? "</div></div></div>" : ""
 				#linebreak = i % 3 == 0 ? " <div class='w-100'></div> " : ""
@@ -58,7 +58,7 @@ module AresMUSH
 				colautoopenid="<div class='col-sm-9 heading #{cssclass}'>"
 				colsmallopenid="<div class='col-sm-3 rating #{cssclass}'>"
 				cellcloseid='</div>'
-				title = "<span title='#{correcttitle}'>#{correcttitle}</span>"
+				title = "<span title='#{correcttitle}: #{ssdesc}'>#{correcttitle}</span>"
 				"#{rowopenid}#{cellopenid}#{colautoopenid}#{title}: #{cellcloseid}#{colsmallopenid}#{rating}#{cellcloseid}#{cellcloseid}#{linebreak}#{rowcloseid}"
 			end
 	end	
