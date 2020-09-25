@@ -72,8 +72,12 @@ module AresMUSH
 				colautoopenid="<div class='col-sm-9 heading #{cssclass}'>"
 				colsmallopenid="<div class='col-sm-3 rating #{cssclass}'>"
 				cellcloseid='</div>'
-				closerow = (i > 0 && i % 3 == 0) ? " </div>" : ""
-				title = "<span title='#{correcttitle}: #{swdesc}'>#{correcttitle}</span>:<br /><span class='linkedstat'>#{swlinkedstat}</span>"
+				if ( (i > 0 ) && ( i % 3 == 0) )
+					closerow = '</div>'
+				else
+				    closerow =''
+				end
+				title = "<span title='#{i}: #{correcttitle}: #{swdesc}'>#{correcttitle}</span>:<br /><span class='linkedstat'>#{swlinkedstat}</span>"
 				"#{rowopenid}#{openrow}#{cellopenid}#{colautoopenid}#{title}#{cellcloseid}#{colsmallopenid}#{rating}#{cellcloseid}#{cellcloseid}#{closerow}#{rowcloseid}"
 
 				# Used for debugging - need to delete when complete
