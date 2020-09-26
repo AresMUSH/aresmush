@@ -149,5 +149,44 @@ module AresMUSH
 		end
 	end
 	
+	
+	#### CHARGEN ####
+	
+	def self.get_abilities_for_chargen(char)
+		# Format Iconic Framework table
+		swrifts_iconicf = Global.read_config('swrifts', 'iconicf')
+		iconicf = returniconicforcg(swrifts)
+		iconicf = iconicf.join(" ") #removes the comma's that seperates the entries		
+
+		#stats = returnstatsforweb(char.swrifts_stats)
+		#stats = stats.join(" ") #removes the comma's that seperates the entries
+
+		#bennies = returnbenniesforweb(char.swrifts_bennies)
+
+
+		#conviction = returnconvictionforweb(char.swrifts_conviction)
+		#conviction = conviction.join(" ") #removes the comma's that seperates the entries
+
+		return {
+		  iconicf: iconicf
+		  #stats: stats,
+		  #bennies: bennies,
+		  #conviction: conviction
+		} 
+	end	
+	
+	def self.returniconicforcg(model)
+		model.to_a.sort_by { |a| a.name }
+		.each_with_index
+			.map do |a, i| 
+				correcttitle = "#{a.name}".titleize
+				downsizetitle = "#{a.name}".downcase
+				ifdesc = "#{a.description}"
+
+				#Set up the select box 
+				"#{correcttitle} - #{ifdesc}<br />"
+			end
+	end
+	
   end
 end
