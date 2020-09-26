@@ -68,7 +68,7 @@ module AresMUSH
 						setrating = "#{rating}"
 						ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
 							# add to char obj
-							model.update(setthing: rating, character: model)
+							model.update(setthing: rating)
 						end
 					end
 					client.emit_success ("Charget Stats Set.")
