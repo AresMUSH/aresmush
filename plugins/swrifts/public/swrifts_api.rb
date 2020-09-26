@@ -72,10 +72,10 @@ module AresMUSH
 				rowcounter = 1
 				if ( rowcounter % 2 == 1)
 				   rowcolor = "even"
-				   rowcounter++
+				   rowcounter = rowcounter+1
 				else
 				   rowcolor = "odd"
-				   rowcounter++
+				   rowcounter = rowcounter+1
 				end				
 				openrow = i % 3 == 0 ? " <div class='row skills skilldata #{rowcolor}'>" : ""
 				cssclass = "#{a.name}".strip
