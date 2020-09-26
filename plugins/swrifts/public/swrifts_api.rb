@@ -179,17 +179,17 @@ module AresMUSH
 	def self.returniconicforcg(icf)
 	    #modelclass = model.class
 		#Used for debugging - need to delete when complete
-		#"#{model} - #{modelclass}<hr />"		
-		icf.to_a.sort_by { |a| a.name }
-			.each_with_index
-				.map do |a, i| 
-					correcttitle = "#{a.name}".titleize
-					downsizetitle = "#{a.name}".downcase
-					ifdesc = "#{a.description}"
+		"#{model} - #{modelclass}<hr />"		
+		# icf.to_a.sort_by { |a| a.name }
+			# .each_with_index
+				# .map do |a, i| 
+					# correcttitle = "#{a.name}".titleize
+					# downsizetitle = "#{a.name}".downcase
+					# ifdesc = "#{a.description}"
 
-					#Set up the select box 
-					"#{correcttitle} - #{ifdesc}<br />"
-				end
+					# #Set up the select box 
+					# "#{correcttitle} - #{ifdesc}<br />"
+				# end
 	end
 	
   end
