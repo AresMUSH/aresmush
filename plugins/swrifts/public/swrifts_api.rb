@@ -177,7 +177,7 @@ module AresMUSH
 	end	
 	
 	def self.returniconicforcg(model)
-	    modelclass = model.class
+	    #modelclass = model.class
 		#Used for debugging - need to delete when complete
 		#"#{model} - #{modelclass}<hr />"		
 		# model.to_a.sort_by { |a| a.name }
@@ -192,8 +192,9 @@ module AresMUSH
 				# end
 		types = Global.read_config("swrifts", "iconicf")
         list = types.sort_by { |a| a['name']}		
-        #types.each do |c| 
-		return (list)
+			list.each do |c| 
+				correcttitle = "#{c.name}".titleize
+			end
 	end
 	
   end
