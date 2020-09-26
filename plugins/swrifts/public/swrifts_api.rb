@@ -192,7 +192,7 @@ module AresMUSH
 				# end
 				
 		    model.each do |a|
-			  "#{a}"
+			  "#{a.name}"
 			end 
 	end
 	
