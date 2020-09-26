@@ -62,13 +62,13 @@ module AresMUSH
 				if (chargen_stats) 
 					# grab the list from the config file and break it into 'key' (before the ':') and 'rating' (after the ':')
 					chargen_stats.each do |key, rating|
-						ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
+						# ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
 							# alias the 'key' because the command below doesn't parse the #'s and {'s etc.
 							setthing = "#{key}: #{rating}"
 							# add to char obj
 							# enactor.update(  )
 							client.emit ( setthing )
-						end
+						# end
 					end
 					# client.emit_success ("Chargen Stats Set.")
 				else 
