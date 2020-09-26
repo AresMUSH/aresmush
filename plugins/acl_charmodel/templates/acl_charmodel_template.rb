@@ -14,7 +14,7 @@ module AresMUSH
       end
 
 	  def swadestats(model)
-        model.swade_stats.to_a.sort_by { |a| a.name }
+        model.swrifts_stats.to_a.sort_by { |a| a.name }
           .each_with_index
             .map do |a, i| 
               linebreak = i % 2 == 0 ? "\n" : ""
