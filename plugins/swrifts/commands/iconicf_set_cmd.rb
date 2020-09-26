@@ -70,7 +70,7 @@ module AresMUSH
 							# add to char obj
 							model.update(setthing: rating)
 						end
-					# end
+					end
 					# client.emit_success ("Chargen Stats Set.")
 				else 
 					# If the Iconic Framework does not have this field in iconicf.yml, skip and emit to enactor
