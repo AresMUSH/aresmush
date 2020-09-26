@@ -195,6 +195,7 @@ module AresMUSH
 			list.each do |c| 
 				correcttitle = c['name'].titleize
 			end
+		"#{correcttitle}"
 	end
 	
   end
