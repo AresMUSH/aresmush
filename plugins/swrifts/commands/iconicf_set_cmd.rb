@@ -27,7 +27,8 @@ module AresMUSH
 				# Swrifts.get_iconicf - 'Swrifts' is the plugin folder. 'get' is the command. 'iconicf' is the .yml file in the 'config' folder. 
 				iconicf = Swrifts.get_iconicf(self.enactor, self.iconicf_name) 
 				# sets 
-				chargen_stats = iconicf['chargen_stats']
+				counters = iconicf['counters']
+				traits = iconicf['traits']
 				# pulls out the 'stats' portion of the named Iconic Framework into a list
 				iconicf_stats=iconicf['stats']  
 				# pulls out the 'skills' portion of the named Iconic Framework into a list
@@ -59,22 +60,24 @@ module AresMUSH
 				end
 				
 
-				if (chargen_stats) 
+				#----- This sets the default counters field on the collection -----				
+				# If Iconic Framework being set has this field in iconicf.yml, run the command.
+				if (counters) 
 					# grab the list from the config file and break it into 'key' (before the ':') and 'rating' (after the ':')
-					chargen_stats.each do |key, rating|
-						# ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
-							# alias the 'key' because the command below doesn't parse the #'s and {'s etc.
-							setthing = "#{key}: #{rating}"
-							# add to char obj
-							# enactor.update(  )
-							client.emit ( setthing )
-							self.target.update( setthing )
-						# end
+					counters.each do |key, rating|
+						# alias the 'key' because the command below doesn't parse the #'s and {'s etc.
+						setthing = "#{key}".downcase
+						# alias the 'rating' for the same reason
+						setrating = "#{rating}"
+						ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
+							# create the collection
+							SwriftsCounters.create(name: setthing, rating: setrating, character: model)
+						end
 					end
-					# client.emit_success ("Chargen Stats Set.")
+					client.emit_success ("Counters Set!")
 				else 
 					# If the Iconic Framework does not have this field in iconicf.yml, skip and emit to enactor
-					client.emit_failure ("No Chargen Stats on this Iconic Framework")
+					client.emit_failure ("This Iconic Framework has no Counters")
 				end
 				
 				#----- This sets the default stats field on the collection -----				
