@@ -42,7 +42,8 @@ module AresMUSH
 			
 			def counters
 				counters_raw = @char.swrifts_counters
-				counters_raw.find { |item| item.include?("bennies")}
+				result = counters_raw.find { |item| item.include?("bennies")}
+				"#{result}"
 			end
 			
 			def format_counters
