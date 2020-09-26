@@ -21,7 +21,7 @@ module AresMUSH
           icon_blurb: Website.format_markdown_for_html(Global.read_config("chargen", "icon_blurb")),
           demographics_blurb: Website.format_markdown_for_html(Global.read_config("chargen", "demographics_blurb")),
           lastwill_blurb: Website.format_markdown_for_html(Global.read_config("chargen", "lastwill_blurb")),
-          allow_web_submit: Global.read_config("chargen", "allow_web_submit"),
+          traits_blurb: Website.format_markdown_for_html(Global.read_config("traits", "traits_blurb")),          allow_web_submit: Global.read_config("chargen", "allow_web_submit"),
           genders: Demographics.genders
         }
       end

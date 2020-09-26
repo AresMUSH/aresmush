@@ -57,7 +57,7 @@ module AresMUSH
     end
     
     def self.web_char_marker
-      "[Web]"
+      "[#{t('global.web_status')}]"
     end
     
     def self.activity_status(char)

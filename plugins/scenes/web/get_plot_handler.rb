@@ -22,7 +22,7 @@ module AresMUSH
         end
         
         scenes = plot.scenes.select { |s| s.shared }
-            .sort_by { |s| s.date_shared || s.created_at }
+            .sort_by { |s| s.icdate || s.created_at }
             .reverse
             .map { |s|  Scenes.build_scene_summary_web_data(s) }
             
