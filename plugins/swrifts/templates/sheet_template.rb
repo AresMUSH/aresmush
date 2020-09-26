@@ -45,7 +45,15 @@ module AresMUSH
 			end
 
 			def benniescurrent
-				@char.swrifts_counters
+				aclcounters = @char.swrifts_counters
+				aclcounters.to_a.sort_by { |a| a.name }
+					.each_with_index
+						.map do |a, i| 
+						linebreak = i % 3 == 0 ? "\n" : ""
+						title = left("#{ a.name }".capitalize, 16,'.')
+						rating = left(a.rating, 7)
+						"#{linebreak} #{title} #{rating} "
+				end		
 			end
 			
 			# def format_counters
