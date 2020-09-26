@@ -195,7 +195,7 @@ module AresMUSH
 			list.each do |c| 
 				correcttitle = c['name'].titleize
 			end
-		return (correcttitle)
+		return (self.correcttitle)
 	end
 	
   end
