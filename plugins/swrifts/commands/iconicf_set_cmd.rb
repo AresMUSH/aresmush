@@ -66,11 +66,10 @@ module AresMUSH
 						setthing = "#{key}".downcase
 						# alias the 'rating' for the same reason
 						setrating = "#{rating}"
-						setstat = setthing setrating
 						ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
 							# add to char obj
 							# model.update(self.setthing setrating)
-							client.emit_success (setstat)
+							client.emit_success (setthing setrating)
 						end
 					end
 					client.emit_success ("Chargen Stats Set.")
