@@ -193,7 +193,7 @@ module AresMUSH
 		types = Global.read_config("swrifts", "iconicf")
         list = types.sort_by { |a| a['name']}		
 			list.each do |c| 
-				correcttitle = "#{c.name}".titleize
+				correcttitle = c['name'].titleize
 			end
 	end
 	
