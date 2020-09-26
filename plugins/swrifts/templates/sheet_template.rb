@@ -48,6 +48,11 @@ module AresMUSH
 				bc = "bennies_current"
 				return_counter bc
 			end
+
+			def convictioncount
+				cc = "conviction_current"
+				return_counter cc
+			end
 			
 			# def format_counters
 				# counters_raw = @char.swrifts_counters
