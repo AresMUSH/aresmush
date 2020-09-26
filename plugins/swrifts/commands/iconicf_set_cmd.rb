@@ -62,14 +62,14 @@ module AresMUSH
 				if (chargen_stats) 
 					# grab the list from the config file and break it into 'key' (before the ':') and 'rating' (after the ':')
 					chargen_stats.each do |key, rating|
-						# alias the 'key' because the command below doesn't parse the #'s and {'s etc.
-						setthing = "#{key}".downcase 
-						# alias the 'rating' for the same reaso
-						setrating = "#{rating}"
 						ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
+							# alias the 'key' because the command below doesn't parse the #'s and {'s etc.
+							setthing = "#{key}".downcase 
+							# alias the 'rating' for the same reaso
+							setrating = "#{rating}"
 							# add to char obj
 							# model.update(self.setthing setrating)
-							client.emit ( "#{key}" )
+							client.emit ( setthing setrating)
 						end
 					end
 					# client.emit_success ("Chargen Stats Set.")
