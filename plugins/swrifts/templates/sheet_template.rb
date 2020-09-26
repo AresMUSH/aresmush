@@ -47,13 +47,12 @@ module AresMUSH
 			def 
 
 			def benniescount
-				countername = "bennies_current"
 				swriftscounters = @char.swrifts_counters
 				swriftscounters.to_a.sort_by { |a| a.name }
 					.each_with_index
 						.map do |a, i| 
 						linebreak = "\n"
-						if a.name.downcase == "#{countername}"
+						if a.name.downcase == "bennies_count"
 							title = left("#{ a.name }".capitalize, 16,'.')
 							rating = left(a.rating, 7)
 						else
