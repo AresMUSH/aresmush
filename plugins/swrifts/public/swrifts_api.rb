@@ -49,8 +49,8 @@ module AresMUSH
 	#Get skills for website
 	def self.returnskillsforweb(skills)
 		skills.to_a.sort_by { |a| a.name }
+		rowcounter = 1		
 		.each_with_index
-		    rowcounter = 1
 			.map do |a, i| 
 				correcttitle = "#{a.name}".titleize
 				downsizetitle = "#{a.name}".downcase
