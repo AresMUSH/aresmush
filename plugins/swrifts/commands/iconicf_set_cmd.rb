@@ -68,7 +68,7 @@ module AresMUSH
 							# add to char obj
 							# enactor.update(  )
 							client.emit ( setthing )
-							model.update( setthing )
+							enactor.update( setthing )
 						# end
 					end
 					# client.emit_success ("Chargen Stats Set.")
