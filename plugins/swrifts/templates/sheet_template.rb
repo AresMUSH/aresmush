@@ -43,6 +43,10 @@ module AresMUSH
 			def counters
 				format_three_per_line @char.swrifts_counters
 			end
+
+			def benniescurrent
+				@char.swrifts_counters.to_yaml
+			end
 			
 			# def format_counters
 				# counters_raw = @char.swrifts_counters
