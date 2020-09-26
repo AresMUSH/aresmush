@@ -64,12 +64,10 @@ module AresMUSH
 					chargen_stats.each do |key, rating|
 						ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
 							# alias the 'key' because the command below doesn't parse the #'s and {'s etc.
-							setthing = "#{key}".downcase 
-							# alias the 'rating' for the same reaso
-							setrating = "#{rating}"
+							setthing = "#{key}: #{rating}"
 							# add to char obj
-							enactor.update( "#{key}:" " #{rating}" )
-							client.emit ( "#{key}:" " #{rating}" )
+							# enactor.update(  )
+							client.emit ( setthing )
 						end
 					end
 					# client.emit_success ("Chargen Stats Set.")
