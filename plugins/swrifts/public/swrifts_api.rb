@@ -50,6 +50,7 @@ module AresMUSH
 	def self.returnskillsforweb(skills)
 		skills.to_a.sort_by { |a| a.name }
 		.each_with_index
+		    rowcounter = 1
 			.map do |a, i| 
 				correcttitle = "#{a.name}".titleize
 				downsizetitle = "#{a.name}".downcase
@@ -69,7 +70,6 @@ module AresMUSH
 				end
 
 				#Set up the skills table
-				rowcounter = 1
 				if ( rowcounter % 2 == 1)
 				   rownum = rowcounter % 2
 				   rowcolor = "even #{rownum}"
