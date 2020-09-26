@@ -44,24 +44,19 @@ module AresMUSH
 				format_three_per_line @char.swrifts_counters
 			end
 
-			def counterscurrent
+			def counterscurrent(countername)
+			    countername = countername.downcase
 				aclcounters = @char.swrifts_counters
-				aclcountclass = aclcounters.class
 				aclcounters.to_a.sort_by { |a| a.name }
-				aclnewarray = aclcounters.select { |a| a.name.downcase == "bennies_current" }
-				return aclnewarray.to_yaml
 					.each_with_index
 						.map do |a, i| 
 						linebreak = "\n"
-						if a.name.downcase == "bennies_current"
+						if a.name.downcase == "#{countername}"
 							title = left("#{ a.name }".capitalize, 16,'.')
 							rating = left(a.rating, 7)
-						else
-							title = "nothing found"
-							rating = 000
 						end
-						"#{aclcountclass} "
-				end		
+						"#{rating}"
+					end		
 			end
 			
 			# def format_counters
