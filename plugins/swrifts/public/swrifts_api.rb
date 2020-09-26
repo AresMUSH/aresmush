@@ -151,11 +151,11 @@ module AresMUSH
 	
 	
 	#### CHARGEN ####
-	
+
 	def self.get_abilities_for_chargen(char)
 		# Format Iconic Framework table
 		swrifts_iconicf = Global.read_config('swrifts', 'iconicf')
-		iconicf = returniconicforcg(swrifts_iconicf)
+		#iconicf = returniconicforcg(swrifts_iconicf)
 		swrifts_iconicf='hellow world'
 		#iconicf = iconicf.join(" ") #removes the comma's that seperates the entries		
 
