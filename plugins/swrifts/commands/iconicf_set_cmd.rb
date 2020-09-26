@@ -69,7 +69,7 @@ module AresMUSH
 							setrating = "#{rating}"
 							# add to char obj
 							# model.update(self.setthing setrating)
-							client.emit ( setthing setrating)
+							client.emit ( "#{key}" "#{rating}" )
 						end
 					end
 					# client.emit_success ("Chargen Stats Set.")
