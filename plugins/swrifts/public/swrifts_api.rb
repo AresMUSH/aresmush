@@ -69,15 +69,17 @@ module AresMUSH
 				end
 
 				#Set up the skills table
-				openrow = i % 3 == 0 ? " <div class='row skilldata'>" : ""
-				cssclass = "#{a.name}".strip
 				rowcounter = 1
 				if ( rowcounter % 2 == 1)
 				   rowcolor = "even"
+				   rowcounter++
 				else
 				   rowcolor = "odd"
-				end
-				cellopenid="<div class='col-sm-4 #{rowcolor}'>"
+				   rowcounter++
+				end				
+				openrow = i % 3 == 0 ? " <div class='row skills skilldata #{rowcolor}'>" : ""
+				cssclass = "#{a.name}".strip
+				cellopenid="<div class='col-sm-4'>"
 				colautoopenid="<div class='col-sm-9 heading #{cssclass}'>"
 				colsmallopenid="<div class='col-sm-3 rating #{cssclass}'>"
 				cellcloseid='</div>'
@@ -116,15 +118,15 @@ module AresMUSH
 				end
 
 				#Set up the stats table
-				openrow = i % 5 == 0 ? " <div class='row statdata'>" : ""
-				cssclass = "#{a.name}".strip
 				rowcounter = 1
 				if ( rowcounter % 2 == 1)
 				   rowcolor = "even"
 				else
 				   rowcolor = "odd"
-				end
-				cellopenid="<div class='col-sm-2 #{rowcolor}'>"
+				end				
+				openrow = i % 5 == 0 ? " <div class='row stats statdata #{rowcolor}'>" : ""
+				cssclass = "#{a.name}".strip
+				cellopenid="<div class='col-sm-2'>"
 				colautoopenid="<div class='col-sm-9 heading #{cssclass}'>"
 				colsmallopenid="<div class='col-sm-3 rating #{cssclass}'>"
 				cellcloseid='</div>'
