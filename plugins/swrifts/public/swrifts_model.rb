@@ -115,5 +115,23 @@ module AresMUSH
 		reference :character, "AresMUSH::Character"
 		index :name
 	end
+	
+	class SwriftsTraits < Ohm::Model
+		include ObjectModel
+	
+		attribute :name
+
+		reference :character, "AresMUSH::Character"
+		index :name
+	end
+	
+	class SwriftsCounters < Ohm::Model
+		include ObjectModel
+	
+		attribute :name
+
+		reference :character, "AresMUSH::Character"
+		index :name
+	end
 
 end
