@@ -11,6 +11,10 @@ module AresMUSH
 			def iconicf_name
 				@char.swrifts_iconicf
 			end
+
+			def swrifts_bennies
+				@char.swrifts_bennies
+			end 
   
 			def stats
 				format_stats @char.swrifts_stats
