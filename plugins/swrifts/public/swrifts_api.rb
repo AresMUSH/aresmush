@@ -190,12 +190,8 @@ module AresMUSH
 					# #Set up the select box 
 					# "#{correcttitle} - #{ifdesc}<br />"
 				# end
-		types = Global.read_config("swrifts", "iconicf")
-        list = types.sort_by { |a| a['name']}		
-			list.each do |c| 
-				correcttitle = c['name'].titleize
-			end
-		return (self.correcttitle)
+        list = model.sort_by { |a| a['name']}		
+		list.to_yaml
 	end
 	
   end
