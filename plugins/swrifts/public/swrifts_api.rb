@@ -179,8 +179,8 @@ module AresMUSH
 	def self.returniconicforcg(model)
 	    modelclass = model.class
 		#Used for debugging - need to delete when complete
-		"#{model} - #{modelclass}<hr />"		
-		# icf.to_a.sort_by { |a| a.name }
+		#"#{model} - #{modelclass}<hr />"		
+		# model.to_a.sort_by { |a| a.name }
 			# .each_with_index
 				# .map do |a, i| 
 					# correcttitle = "#{a.name}".titleize
@@ -190,6 +190,10 @@ module AresMUSH
 					# #Set up the select box 
 					# "#{correcttitle} - #{ifdesc}<br />"
 				# end
+				
+		    model.each do |a|
+			  "#{a}"
+			end 
 	end
 	
   end
