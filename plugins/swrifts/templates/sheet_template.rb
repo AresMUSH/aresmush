@@ -14,7 +14,7 @@ module AresMUSH
 
 			def swrifts_bennies
 				@char.swrifts_bennies
-			end
+			end 
   
 			def stats
 				format_stats @char.swrifts_stats
