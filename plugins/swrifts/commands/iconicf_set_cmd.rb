@@ -71,7 +71,7 @@ module AresMUSH
 							# model.update(setthing: rating)
 						client.emit_success (setthing)
 						client.emit_success (setrating)
-						# end
+						end
 					# end
 					# client.emit_success ("Chargen Stats Set.")
 					client.emit_success (chargen_stats)
