@@ -12,10 +12,6 @@ module AresMUSH
 				@char.swrifts_iconicf
 			end
 
-			def swrifts_bennies
-				@char.swrifts_bennies
-			end 
-  
 			def stats
 				format_stats @char.swrifts_stats
 			end
@@ -42,6 +38,10 @@ module AresMUSH
 
 			def mpowers
 				format_two_column @char.swrifts_mpowers
+			end
+			
+			def counters
+				@char.swrifts_counters
 			end
 			
 			def format_stats(list)
