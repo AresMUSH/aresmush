@@ -26,7 +26,7 @@ module AresMUSH
 				# sets 'iconicf' to the Iconic Framework 'name' of our game\config\swrifts_iconicf.yml file
 				iconicf = Swrifts.get_iconicf(self.enactor, self.iconicf_name) 
 				# sets 'iconicf_bennies' to the number of Bennies in game\config\swrifts_iconicf.yml file
-				iconicf_bennies = Swrifts.get_swrifts_bennies(self.enactor, self.iconicf_swrifts_bennies)
+				iconicf_bennies = Swrifts.get_iconicf(self.enactor, self.iconicf_swrifts_bennies)
 				# pulls out the 'stats' portion of the named Iconic Framework into a list
 				iconicf_stats=iconicf['stats']  
 				# pulls out the 'skills' portion of the named Iconic Framework into a list
