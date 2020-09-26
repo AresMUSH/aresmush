@@ -24,9 +24,10 @@ module AresMUSH
 #----- Begin of def handle -----			
 			def handle  
 				# sets 'iconicf' to the Iconic Framework 'name' of our game\config\swrifts_iconicf.yml file
+				# Swrifts.get_iconicf - 'Swrifts' is the plugin folder. 'get' is the command. 'iconicf' is the .yml file in the 'config' folder. 
 				iconicf = Swrifts.get_iconicf(self.enactor, self.iconicf_name) 
-				# sets 'iconicf_bennies' to the number of Bennies in game\config\swrifts_iconicf.yml file
-				iconicf_bennies = Swrifts.get_iconicf(self.enactor, self.iconicf_swrifts_bennies)
+				# sets 
+				chargen_stats = iconicf['chargen_stats']
 				# pulls out the 'stats' portion of the named Iconic Framework into a list
 				iconicf_stats=iconicf['stats']  
 				# pulls out the 'skills' portion of the named Iconic Framework into a list
@@ -57,12 +58,23 @@ module AresMUSH
 					client.emit_success t('swrifts.iconicf_set', :name => self.iconicf_name.capitalize)
 				end
 				
-				#----- This sets the Bennies on the Character -----
-				ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
-		  			# set 'swrifts_bennies' attribute on the character object
-					model.update(swrifts_bennies: self.iconicf_bennies) 
-					# emit to the person running the command that this was set
-					client.emit_success t('swrifts.iconicf_set', :name => self.iconicf_bennies.capitalize)
+
+				if (chargen_stats) 
+					# grab the list from the config file and break it into 'key' (before the ':') and 'rating' (after the ':')
+					chargen_stats.each do |key, rating|
+						# alias the 'key' because the command below doesn't parse the #'s and {'s etc.
+						setthing = "#{key}".downcase
+						# alias the 'rating' for the same reason
+						setrating = "#{rating}"
+						ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
+							# add to char obj
+							model.update(setthing: rating)
+						end
+					end
+					client.emit_success ("Charget Stats Set.")
+				else 
+					# If the Iconic Framework does not have this field in iconicf.yml, skip and emit to enactor
+					client.emit_failure ("No Chargen Stats on this Iconic Framework")
 				end
 				
 				#----- This sets the default stats field on the collection -----				
