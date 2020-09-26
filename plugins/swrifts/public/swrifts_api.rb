@@ -176,7 +176,7 @@ module AresMUSH
 		} 
 	end	
 	
-	def self.returniconicforcg(icf)
+	def self.returniconicforcg(model)
 	    #modelclass = model.class
 		#Used for debugging - need to delete when complete
 		"#{model} - #{modelclass}<hr />"		
