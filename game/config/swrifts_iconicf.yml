@@ -4,7 +4,14 @@ swrifts:
         # -
             # name: Template
             # description: 
-            # stats:
+            # swrifts_ppe_max: 
+            # swrifts_isp_max:
+            # swrifts_bennies: 3
+            # swrifts_conviction: 0
+            # swrifts_rank: Novice
+            # swrifts_damage: 0
+            # swrifts_pace: 6           
+           # stats:
                 # Agility: 1
                 # Smarts: 1
                 # Spirit: 1
@@ -17,13 +24,6 @@ swrifts:
                 # magic_slots: 
                 # psionic_slots: 
                 # hind_points: 0
-            # swrifts_ppe_max: 
-            # swrifts_isp_max:
-            # swrifts_bennies: 3
-            # swrifts_conviction: 0
-            # swrifts_rank: Novice
-            # swrifts_damage: 0
-            # swrifts_pace: 6
             # skills:
                 # Academics: 0
                 # Athletics: 1
