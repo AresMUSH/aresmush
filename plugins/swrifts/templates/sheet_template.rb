@@ -48,7 +48,17 @@ module AresMUSH
 
 			def benniescounterscurrent
 				countername = "bennies_current"
-				return_counter countername
+				swriftscounters = @char.swrifts_counters
+				swriftscounters.to_a.sort_by { |a| a.name }
+					.each_with_index
+						.map do |a, i| 
+						linebreak = "\n"
+						if a.name.downcase == "#{countername}"
+							title = left("#{ a.name }".capitalize, 16,'.')
+							rating = left(a.rating, 7)
+						end
+						"#{rating}"
+					end	
 			end
 			
 			# def format_counters
