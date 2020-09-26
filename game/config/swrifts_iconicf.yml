@@ -300,12 +300,13 @@ swrifts:
                 hj_slots: 2
                 hind_points: 0
                 magic_slots: 1
-            swrifts_ppe_max: 15
-            swrifts_bennies: 3
-            swrifts_conviction: 0
-            swrifts_rank: Novice
-            swrifts_damage: 0
-            swrifts_pace: 6
+            chargen_stats:
+                swrifts_ppe_max: 15
+                swrifts_bennies: 3
+                swrifts_conviction: 0
+                swrifts_rank: Novice
+                swrifts_damage: 0
+                swrifts_pace: 6
             skills:
                 Academics: 1
                 Athletics: 2
@@ -342,13 +343,6 @@ swrifts:
                 Thievery: 0
             hinderances: 
                 - Enemy-*
-            edges:
-                - AB Psionics*
-                - Blaster*
-                - Major Psionic*
-            psionic_powers:
-                - Elemental Manipulation*
-                - Enemies*
             edges:
                 - AB Magic*
                 - Familiar Link*
