@@ -41,14 +41,14 @@ module AresMUSH
 			end
 			
 			def counters
-				counters_raw = @char.swrifts_counters
-				result = counters_raw.find { |item| item.include?("bennies")}
-				"#{result}"
+				format_three_per_line @char.swrifts_counters
 			end
 			
-			def format_counters
-				counters_raw.find { |item| item.include?("bennies")}
-			end
+			# def format_counters
+				# counters_raw = @char.swrifts_counters
+				# result = counters_raw.find { |item| item.include?("bennies")}
+				# "#{result}"
+			# end
 		
 			def format_stats(list)
 				list.to_a.sort_by { |a| a.name }
