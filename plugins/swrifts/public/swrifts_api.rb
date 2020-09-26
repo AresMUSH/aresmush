@@ -111,8 +111,14 @@ module AresMUSH
 
 				#Set up the stats table
 				openrow = i % 5 == 0 ? " <div class='row statdata'>" : ""
+				rowcounter = 1
 				cssclass = "#{a.name}".strip
-				cellopenid='<div class="col-sm-2">'
+				if ( rowcounter % 2 == 1) ) 
+				   rowcolor = "even"
+				else
+				   rowcolor = "odd"
+				end
+				cellopenid="<div class='col-sm-2 #{rowcolor}'>"
 				colautoopenid="<div class='col-sm-9 heading #{cssclass}'>"
 				colsmallopenid="<div class='col-sm-3 rating #{cssclass}'>"
 				cellcloseid='</div>'
