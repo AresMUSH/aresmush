@@ -176,8 +176,8 @@ module AresMUSH
 		} 
 	end	
 	
-	def self.returniconicforcg(icf)
-	    #modelclass = model.class
+	def self.returniconicforcg(model)
+	    modelclass = model.class
 		#Used for debugging - need to delete when complete
 		"#{model} - #{modelclass}<hr />"		
 		# icf.to_a.sort_by { |a| a.name }
