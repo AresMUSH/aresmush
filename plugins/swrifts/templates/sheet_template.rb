@@ -45,7 +45,7 @@ module AresMUSH
 			end
 
 			def benniescurrent
-				@char.swrifts_counters.to_yaml
+				@char.swrifts_counters
 			end
 			
 			# def format_counters
