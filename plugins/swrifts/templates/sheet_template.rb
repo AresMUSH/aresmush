@@ -43,20 +43,11 @@ module AresMUSH
 			def counters
 				format_three_per_line @char.swrifts_counters
 			end
+			
+			def 
 
-			def counterscurrent(countername)
-			    countername = countername.downcase
-				aclcounters = @char.swrifts_counters
-				aclcounters.to_a.sort_by { |a| a.name }
-					.each_with_index
-						.map do |a, i| 
-						linebreak = "\n"
-						if a.name.downcase == "#{countername}"
-							title = left("#{ a.name }".capitalize, 16,'.')
-							rating = left(a.rating, 7)
-						end
-						"#{rating}"
-					end		
+			def benniescounterscurrent
+				return_counter "bennies_current"
 			end
 			
 			# def format_counters
@@ -116,6 +107,21 @@ module AresMUSH
 						title = left("#{ a.name }".capitalize, 25)
 						"#{linebreak} #{title}"
 				end
+			end
+			
+			def return_counter(countername)
+				countername = countername.downcase
+				swriftscounters = @char.swrifts_counters
+				swriftscounters.to_a.sort_by { |a| a.name }
+					.each_with_index
+						.map do |a, i| 
+						linebreak = "\n"
+						if a.name.downcase == "#{countername}"
+							title = left("#{ a.name }".capitalize, 16,'.')
+							rating = left(a.rating, 7)
+						end
+						"#{rating}"
+					end	
 			end
 		
 		end
