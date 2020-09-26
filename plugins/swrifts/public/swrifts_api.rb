@@ -71,10 +71,12 @@ module AresMUSH
 				#Set up the skills table
 				rowcounter = 1
 				if ( rowcounter % 2 == 1)
-				   rowcolor = "even"
+				   rownum = rowcounter % 2
+				   rowcolor = "even #{rownum}"
 				   rowcounter = rowcounter+1
 				else
-				   rowcolor = "odd"
+				   rownum = rowcounter % 2
+				   rowcolor = "odd #{rownum}"
 				   rowcounter = rowcounter+1
 				end				
 				openrow = i % 3 == 0 ? " <div class='row skills skilldata #{rowcolor}'>" : ""
