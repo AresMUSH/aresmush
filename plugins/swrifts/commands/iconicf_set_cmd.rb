@@ -25,6 +25,8 @@ module AresMUSH
 			def handle  
 				# sets 'iconicf' to the Iconic Framework 'name' of our game\config\swrifts_iconicf.yml file
 				iconicf = Swrifts.get_iconicf(self.enactor, self.iconicf_name) 
+				# sets 'iconicf_bennies' to the number of Bennies in game\config\swrifts_iconicf.yml file
+				iconicf_bennies = Swrifts.get_iconicf(self.enactor, self.iconicf_swrifts_bennies)
 				# pulls out the 'stats' portion of the named Iconic Framework into a list
 				iconicf_stats=iconicf['stats']  
 				# pulls out the 'skills' portion of the named Iconic Framework into a list
@@ -53,6 +55,14 @@ module AresMUSH
 					model.update(swrifts_iconicf: self.iconicf_name) 
 					# emit to the person running the command that this was set
 					client.emit_success t('swrifts.iconicf_set', :name => self.iconicf_name.capitalize)
+				end
+				
+				#----- This sets the Bennies on the Character -----
+				ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
+		  			# set 'swrifts_bennies' attribute on the character object
+					model.update(swrifts_bennies: self.iconicf_bennies) 
+					# emit to the person running the command that this was set
+					client.emit_success t('swrifts.iconicf_set', :name => self.iconicf_bennies.capitalize)
 				end
 				
 				#----- This sets the default stats field on the collection -----				
