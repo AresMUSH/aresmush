@@ -44,13 +44,14 @@ en:
         
         scene_types: "Available scene types are: %{types}."
         invalid_scene_type: "That is not a valid scene type.  Try one of these: %{types}."
+        invalid_scene_pacing: "That is not a valid pacing type. Try one of these: %{types}."
         invalid_plot: "That is not a valid plot name or number."
         invalid_icdate_format: "Please use the form yyyy-mm-dd."
         cant_share_until_completed: "You can't share a scene until it's stopped."
         cant_collapse_until_completed: "You can't do that until the scene is stopped."
         grid_location_change_warning: "This is a grid room.  You can note a location change in the scene log, but new arrivals may think you're still in the original location.  It may be better to stop the scene and restart it in a temp room."
         
-        scene_delete_warn: "Your scene %{id} (title: %{title}) will be deleted in a few days if it it remains unshared. %{url}"
+        scene_delete_warn: "Scene %{id} will be deleted soon. Save or share it."
         scene_delete_warn_subject: "Unshared Scene Deletion"
         
         logging_not_enabled: "The scene log is not on."

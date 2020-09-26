@@ -32,6 +32,7 @@ module AresMUSH
           end
           
           Login.mark_notices_read(enactor, :scene, scene.id)
+          Login.mark_notices_read(enactor, :scene_deletion, scene.id)
 
         end
         

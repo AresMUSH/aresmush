@@ -55,6 +55,7 @@ module AresMUSH
           limit: scene.limit,
           privacy: scene.completed ? "Open" : (scene.private_scene ? "Private" : "Open"),
           scene_type: scene.scene_type ? scene.scene_type.titlecase : 'unknown',
+          scene_pacing: scene.scene_pacing,
           log: log,
           plot: scene.plot ? { title: scene.plot.title, id: scene.plot.id } : nil,
           related_scenes: scene.related_scenes.sort_by { |r| r.date_title }.map { |r| { title: r.date_title, id: r.id }},
