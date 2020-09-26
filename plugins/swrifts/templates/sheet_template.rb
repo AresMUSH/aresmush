@@ -49,7 +49,7 @@ module AresMUSH
 				aclcountclass = aclcounters.class
 				aclcounters.to_a.sort_by { |a| a.name }
 				aclnewarray = aclcounters.select { |a| a['name'].downcase == "bennies_current" }
-				return aclnewarray.to_yaml
+				return aclnewarray
 					.each_with_index
 						.map do |a, i| 
 						linebreak = "\n"
