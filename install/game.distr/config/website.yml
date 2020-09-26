@@ -136,6 +136,6 @@ website:
     - target: blank
       title: MUSH 101 Tutorial <i class="fa fa-external-link-alt" aria-hidden="true">
       url: https://aresmush.com/mush-101/
-  website_code_path: "/home/ares/ares-webportal"
+  website_code_path: "/Users/lynn/Code/ares-webportal"
   wiki_aliases:
     main: home
