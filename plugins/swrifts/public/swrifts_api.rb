@@ -177,7 +177,7 @@ module AresMUSH
 	end	
 	
 	def self.returniconicforcg(model)
-	    #modelclass = model.class
+	    modelclass = model.class
 		#Used for debugging - need to delete when complete
 		#"#{model} - #{modelclass}<hr />"		
 		# model.to_a.sort_by { |a| a.name }
@@ -190,8 +190,9 @@ module AresMUSH
 					# #Set up the select box 
 					# "#{correcttitle} - #{ifdesc}<br />"
 				# end
-        list = model.sort_by { |a| a['name']}		
-		list.to_yaml
+        list = model.sort_by { |a| a['name']}
+		modellist = list.to_yaml
+		"#{modelclass} | #{modellist}"
 	end
 	
   end
