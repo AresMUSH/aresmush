@@ -44,8 +44,9 @@ module AresMUSH
 				format_three_per_line @char.swrifts_counters
 			end
 
-			def benniescurrent
+			def counterscurrent
 				aclcounters = @char.swrifts_counters
+				aclcountclass = aclcounters.class
 				aclcounters.to_a.sort_by { |a| a.name }
 					.each_with_index
 						.map do |a, i| 
@@ -57,7 +58,7 @@ module AresMUSH
 							title = "nothing found"
 							rating = 000
 						end
-						"#{linebreak} #{title} #{rating} "
+						"#{aclcountclass} "
 				end		
 			end
 			
