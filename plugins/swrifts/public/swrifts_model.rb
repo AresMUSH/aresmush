@@ -11,16 +11,11 @@ module AresMUSH
 		collection :swrifts_chargenpoints, "AresMUSH::SwriftsChargenpoints"
 		collection :swrifts_abilities, "AresMUSH::SwriftsAbilities"
 		collection :swrifts_complications, "AresMUSH::SwriftsComplications"
+		collection :swrifts_traits, "AresMUSH::SwriftsTraits"
+		collection :swrifts_counters, "AresMUSH::SwriftsCounters"
 
 		attribute :swrifts_iconicf
-		attribute :swrifts_ppe_max
-		attribute :swrifts_isp_max
-		attribute :swrifts_bennies
-		attribute :swrifts_conviction
-		attribute :swrifts_rank
-		attribute :swrifts_damage
-		attribute :swrifts_pace
-		attribute :swrifts_strain
+
 		
 		before_delete :delete_swrifts_chargen
 		
