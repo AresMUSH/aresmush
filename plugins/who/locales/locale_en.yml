@@ -11,8 +11,13 @@ en:
         where_by_room_header: "Location                            People"
         open_scene: "#%{scene} Open"
         private_scene: "Private Scenes"
-        
+
+        where_ic_header: "IC Grid"
+        where_ooc_header: "OOC Grid"
         where_open_scene_header: "Open Scenes"
         where_private_scene_header: "Other"
         web_room: "Web Portal"
+        
+        temproom_scene: "Temp Room Scene"
+        alt_pacing: "Alternate Pacing"
         

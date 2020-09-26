@@ -39,8 +39,8 @@ While you can always do free-form RP on the grid or in the RP room, there are a 
 `scenes` - Lists active scenes.
 `scenes/open` - Lists active scenes that are marked as open to anyone.
 `scene/join <#>` - Joins a scene.
-`scene/invite <name>[=<scene num>]` - Invites someone to a private scene.
-`scene/uninvite <name>[=<scene num>]` - Withdraws an invitation.
+`scene/invite <names>[=<scene num>]` - Invites someone to a private scene.
+`scene/uninvite <names>[=<scene num>]` - Withdraws an invitation.
 `scene/leave` - Leaves a scene and returns to your designated scene home location.
   
 ## Editing Poses
@@ -82,9 +82,10 @@ While you can always do free-form RP on the grid or in the RP room, there are a 
 `scene/icdate [<#>=]<icdate>` - Sets the scene date.
 `scene/location [<#>=]=[<area>/]<location>` - Sets the scene location.
 `scene/type [<#>=]<type>` - Sets the scene type.  `scene/types` lists types.
+`scene/pacing [<#=]<pacing>` - Sets the scene pacing. Traditional, Distracted, or Asynchronous. (you can abbreviate the name)
 `scene/set <desc>` - Sets the scene in the current room.  Leave blank to clear.
-`scene/addchar <#>=<char>` - Adds a participant to the scene log.
-`scene/removechar <#>=<char>` - Removes a participant from the scene log.
+`scene/addchar <#>=<names>` - Adds participants to the scene log. Normally used when someone poses from an alt but you want the other char added too.
+`scene/removechar <#>=<names>` - Removes participants from the scene log. Normally used when someone poses from the wrong char and you need to remove them.
 
 > **Tip:** Admins and characters with the `manage_scenes` permission can edit other people's scenes.  However, they cannot read scenes unless they've been shared first.
 

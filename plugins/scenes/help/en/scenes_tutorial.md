@@ -40,6 +40,16 @@ A scene can either be open (anyone's invited) or private.  Scenes on the grid ar
 
 An open scene can include a note if there are any special considerations - like if a scene is open only to certain types of characters (Imperials only, Viper Pilots only, etc.), only a certain number of characters, or even to note that players can just come and watch. This is an advisory only--the scene is still open in all meaningful respects, it just alerts players that there may be some conditions to participating.
 
+## Scene Pacing
+
+MUSHes have traditionally been focused around live, synchronous RP, with players all being online together. With the web portal, Ares supports more varied playstyles. You can specify a **Pacing** for your scene to let other players know what to expect before they join.
+
+* **Traditional**: Live, synchronous RP with poses coming minutes apart. (Default Setting)
+* **Distracted**: RP that is still synchronous, but with longer time between poses due to work or other distractions.
+* **Asynchronous**: RP with poses coming in at various times, possibly in different timezones or schedules, or even over multiple days.
+
+If you wish to add extra detail about your scene's pacing, use the scene notes field.
+
 ## Joining Scenes
 
 To join an open scene, you can use the `scene/join` command or join on the web portal.  To join a private scene, you'll need a scene invitation or a [meetme](/help/meetme). 

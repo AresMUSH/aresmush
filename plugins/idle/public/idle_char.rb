@@ -20,5 +20,15 @@ module AresMUSH
     def idled_out_reason
       self.idle_state
     end
+    
+    def is_active?
+      return false if self.idled_out?
+      return false if self.is_admin?
+      return false if self.is_playerbit?
+      return false if self.is_guest?
+      return false if self.is_npc?
+      return false if self.on_roster?
+      return true
+    end
   end
 end

@@ -16,12 +16,12 @@ module AresMUSH
           if (Login.find_web_client(r))
             names << "#{r.name}#{Website.web_char_marker}"
           else
-            names << "#{r.name}<#{t('page.offline_status')}>"
+            names << "#{r.name}<#{t('global.offline_status')}>"
           end
         elsif (r.page_do_not_disturb)
           names << "#{r.name}<#{t('page.dnd_status')}>"
         elsif (r.is_afk?)
-          names << "#{r.name}<#{t('page.afk_status')}>"
+          names << "#{r.name}<#{t('global.afk_status')}>"
         elsif Status.is_idle?(client)
           time = TimeFormatter.format(client.idle_secs)
           names << "#{r.name}<#{time}>"

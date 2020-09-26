@@ -58,6 +58,7 @@ module AresMUSH
           location: location, 
           private_scene: private_scene,
           scene_type: scene_type,
+          scene_pacing: Scenes.scene_pacing.first,
           temp_room: temp_room,
           last_activity: Time.now,
           icdate: ICTime.ictime.strftime("%Y-%m-%d"))
@@ -88,6 +89,7 @@ module AresMUSH
                       icdate: s.icdate,
                       participants: s.participants.to_a.sort_by { |p| p.name }.map { |p| { name: p.name, id: p.id, icon: Website.icon_for_char(p) }},
                       scene_type: s.scene_type ? s.scene_type.titlecase : 'unknown',
+                      scene_pacing: s.scene_pacing
       
                     }}
     end
