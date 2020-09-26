@@ -190,10 +190,10 @@ module AresMUSH
 					# #Set up the select box 
 					# "#{correcttitle} - #{ifdesc}<br />"
 				# end
-				
-		    model.each do |a|
-			  "#{a.name}"
-			end 
+		types = Global.read_config("swrifts", "iconicf")
+        list = types.sort_by { |a| a['name']}		
+        #types.each do |c| 
+		return (list)
 	end
 	
   end
