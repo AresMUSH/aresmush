@@ -116,10 +116,8 @@ module AresMUSH
 						.map do |a, i| 
 						linebreak = "\n"
 						if a.name.downcase == "#{countername}"
-							title = left("#{ a.name }".capitalize, 16,'.')
-							rating = left(a.rating, 7)
+							return a.rating
 						end
-						"#{rating}"
 					end	
 			end
 		
