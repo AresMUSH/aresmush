@@ -41,7 +41,7 @@ module AresMUSH
 			end
 			
 			def counters
-				format_counters @char.swrifts_counters
+				@char.swrifts_counters
 			end
 			
 			def format_counters
