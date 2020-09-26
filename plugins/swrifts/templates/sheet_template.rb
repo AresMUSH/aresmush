@@ -41,17 +41,17 @@ module AresMUSH
 			end
 			
 			def counters
-				format_two_column @char.swrifts_counters
+				format_counters @char.swrifts_counters
 			end
 			
 			def format_counters
 				list.to_a.sort_by { |a| a.name }
 					.each_with_index
 						.map do |a, i| 
-						linebreak = i % 5 == 0 ? "\n" : ""
-						title = right("#{ a.name }:".capitalize, 10)
-						rating = left(a.rating, 5)
-						"#{linebreak}#{title} #{rating}"
+						linebreak = i % 2 == 0 ? "\n" : ""
+						title = left("#{ a.name }:", 15)
+						rating = left(a.rating, 20)
+						"#{linebreak} #{title} #{rating}"
 				end
 			end
 			
