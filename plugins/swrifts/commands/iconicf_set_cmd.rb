@@ -66,15 +66,12 @@ module AresMUSH
 						setthing = "#{key}".downcase
 						# alias the 'rating' for the same reason
 						setrating = "#{rating}"
-						# ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
+						ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
 							# add to char obj
-							# model.update(setthing: rating)
-						client.emit_success (setthing)
-						client.emit_success (setrating)
+							model.update(setthing: rating)
 						end
-					# end
+					end
 					# client.emit_success ("Chargen Stats Set.")
-					client.emit_success (chargen_stats)
 				else 
 					# If the Iconic Framework does not have this field in iconicf.yml, skip and emit to enactor
 					client.emit_failure ("No Chargen Stats on this Iconic Framework")
