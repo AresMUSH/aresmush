@@ -47,7 +47,8 @@ module AresMUSH
 			def 
 
 			def benniescounterscurrent
-				return_counter "bennies_current"
+				countername = "bennies_current"
+				return_counter countername
 			end
 			
 			# def format_counters
