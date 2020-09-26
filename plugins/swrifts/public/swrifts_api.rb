@@ -113,7 +113,7 @@ module AresMUSH
 				openrow = i % 5 == 0 ? " <div class='row statdata'>" : ""
 				rowcounter = 1
 				cssclass = "#{a.name}".strip
-				if ( rowcounter % 2 == 1) ) 
+				if ( rowcounter % 2 == 1)
 				   rowcolor = "even"
 				else
 				   rowcolor = "odd"
