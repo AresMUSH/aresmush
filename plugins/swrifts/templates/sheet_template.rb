@@ -48,7 +48,7 @@ module AresMUSH
 				aclcounters = @char.swrifts_counters
 				aclcountclass = aclcounters.class
 				aclcounters.to_a.sort_by { |a| a.name }
-				aclnewarray = aclcounters.select { |a| a['name'].downcase == "bennies_current" }
+				aclnewarray = aclcounters.select { |a| a.name.downcase == "bennies_current" }
 				return aclnewarray
 					.each_with_index
 						.map do |a, i| 
