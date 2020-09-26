@@ -6,6 +6,8 @@ module AresMUSH
         
         if (select == "all")
           chars = Character.all.to_a
+        elsif (select == 'active')
+          chars = Idle.active_chars
         else
           chars = Chargen.approved_chars
           if (select == "include_staff")

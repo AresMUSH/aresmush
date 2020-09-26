@@ -80,7 +80,7 @@ module AresMUSH
           return SceneHomeCmd
         when "join"
           return SceneJoinCmd
-        when "location", "privacy", "summary", "title", "type", "icdate", "plot", "limit", "notes", "note"
+        when "location", "privacy", "summary", "title", "type", "icdate", "plot", "limit", "notes", "note", "pacing"
           return SceneInfoCmd
         when "delete"
           return SceneDeleteCmd
@@ -201,8 +201,8 @@ module AresMUSH
         return GetScenesRequestHandler
       when "sceneLocations"
         return GetSceneLocationsHandler
-      when "sceneTypes"
-        return GetSceneTypesRequestHandler
+      when "sceneOptions"
+        return GetSceneOptionsRequestHandler
       when "searchScenes"
         return SearchScenesRequestHandler
       when "switchPoseOrder"

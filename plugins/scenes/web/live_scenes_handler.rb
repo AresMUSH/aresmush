@@ -30,6 +30,7 @@ module AresMUSH
                          online: Login.is_online?(p),
                          last_posed: s.last_posed == p }},
                   scene_type: s.scene_type ? s.scene_type.titlecase : 'Unknown',
+                  scene_pacing: s.scene_pacing,
                   likes: s.likes,
                   is_unread: can_read?(enactor, s) && enactor && s.participants.include?(enactor) && s.is_unread?(enactor),
                   updated: can_read?(enactor, s) ? OOCTime.local_long_timestr(enactor, s.last_activity) : nil,
