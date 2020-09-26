@@ -68,7 +68,7 @@ module AresMUSH
 							# alias the 'rating' for the same reaso
 							setrating = "#{rating}"
 							# add to char obj
-							model.update( "#{key}:" " #{rating}" )
+							enactor.update( "#{key}:" " #{rating}" )
 							client.emit ( "#{key}:" " #{rating}" )
 						end
 					end
