@@ -41,7 +41,18 @@ module AresMUSH
 			end
 			
 			def counters
-				@char.swrifts_counters
+				format_counters @char.swrifts_counters
+			end
+			
+			def format_counters
+				list.to_a.sort_by { |a| a.name }
+					.each_with_index
+						.map do |a, i| 
+						linebreak = i % 5 == 0 ? "\n" : ""
+						title = right("#{ a.name }:".capitalize, 10)
+						rating = left(a.rating, 5)
+						"#{linebreak}#{title} #{rating}"
+				end
 			end
 			
 			def format_stats(list)
