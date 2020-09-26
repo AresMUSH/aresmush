@@ -49,9 +49,14 @@ module AresMUSH
 				aclcounters.to_a.sort_by { |a| a.name }
 					.each_with_index
 						.map do |a, i| 
-						linebreak = i % 3 == 0 ? "\n" : ""
-						title = left("#{ a.name }".capitalize, 16,'.')
-						rating = left(a.rating, 7)
+						linebreak = "\n"
+						if a.name.downcase == "bennies_current"
+							title = left("#{ a.name }".capitalize, 16,'.')
+							rating = left(a.rating, 7)
+						else
+							title = "nothing found"
+							rating = 000
+						end
 						"#{linebreak} #{title} #{rating} "
 				end		
 			end
