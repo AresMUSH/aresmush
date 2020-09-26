@@ -44,8 +44,6 @@ module AresMUSH
 				format_three_per_line @char.swrifts_counters
 			end
 			
-			def 
-
 			def benniescount
 				swriftscounters = @char.swrifts_counters
 				swriftscounters.to_a.sort_by { |a| a.name }
