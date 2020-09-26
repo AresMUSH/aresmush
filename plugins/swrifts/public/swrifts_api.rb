@@ -48,8 +48,7 @@ module AresMUSH
 	
 	#Get skills for website
 	def self.returnskillsforweb(skills)
-		skills.to_a.sort_by { |a| a.name }
-		rowcounter = 1		
+		skills.to_a.sort_by { |a| a.name }	
 		.each_with_index
 			.map do |a, i| 
 				correcttitle = "#{a.name}".titleize
@@ -69,15 +68,8 @@ module AresMUSH
 					swlinkedstat = ''
 				end
 
-				#Set up the skills table
-				if ( self.rowcounter % 2 == 1)
-				   rownum = self.rowcounter % 2
-				   rowcolor = "even #{rownum}"
-				else
-				   rownum = self.rowcounter % 2
-				   rowcolor = "odd #{rownum}"
-				end				
-				openrow = i % 3 == 0 ? " <div class='row skills skilldata #{rowcolor}'>" : ""
+				#Set up the skills table		
+				openrow = i % 3 == 0 ? " <div class='row skills skilldata'>" : ""
 				cssclass = "#{a.name}".strip
 				cellopenid="<div class='col-sm-4'>"
 				colautoopenid="<div class='col-sm-9 heading #{cssclass}'>"
@@ -94,7 +86,6 @@ module AresMUSH
 				# Used for debugging - need to delete when complete
 				#"#{downsizetitle} - #{swsclass} - #{swsclass2} - #{swskills} - #{swdesc} - #{swdesc2}<hr />"
 			end
-		    self.rowcounter = self.rowcounter+1
 	end
 
 
@@ -118,16 +109,8 @@ module AresMUSH
 					swdesc = ''
 				end
 
-				#Set up the stats table
-				rowcounter = 1
-				if ( rowcounter % 2 == 1)
-				   rowcolor = "even"
-				   rowcounter = rowcounter+1
-				else
-				   rowcolor = "odd"
-				   rowcounter = rowcounter+1
-				end				
-				openrow = i % 5 == 0 ? " <div class='row stats statdata #{rowcolor}'>" : ""
+				#Set up the stats table		
+				openrow = i % 5 == 0 ? " <div class='row stats statdata'>" : ""
 				cssclass = "#{a.name}".strip
 				cellopenid="<div class='col-sm-2'>"
 				colautoopenid="<div class='col-sm-9 heading #{cssclass}'>"
