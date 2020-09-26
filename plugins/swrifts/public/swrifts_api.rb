@@ -176,11 +176,11 @@ module AresMUSH
 		} 
 	end	
 	
-	def self.returniconicforcg(model)
+	def self.returniconicforcg(icf)
 	    #modelclass = model.class
 		#Used for debugging - need to delete when complete
 		#"#{model} - #{modelclass}<hr />"		
-		model.to_a.sort_by { |a| a.name }
+		icf.to_a.sort_by { |a| a.name }
 			.each_with_index
 				.map do |a, i| 
 					correcttitle = "#{a.name}".titleize
