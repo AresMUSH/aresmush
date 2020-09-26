@@ -120,7 +120,7 @@ module AresMUSH
 		include ObjectModel
 	
 		attribute :name
-
+		attribute :rating
 		reference :character, "AresMUSH::Character"
 		index :name
 	end
@@ -129,7 +129,7 @@ module AresMUSH
 		include ObjectModel
 	
 		attribute :name
-
+		attribute :rating
 		reference :character, "AresMUSH::Character"
 		index :name
 	end
