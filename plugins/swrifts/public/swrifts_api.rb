@@ -192,7 +192,12 @@ module AresMUSH
 				# end
         list = model.sort_by { |a| a['name']}
 		modellist = list.to_yaml
-		"#{modelclass} | #{modellist}"
+		model.each do |name, values|
+			values.each do |value|
+				stuff = "#{name} - #{value}<br />"
+			end
+		end			
+		"#{modelclass} | #{modellist} | <br/> #{stuff}"
 	end
 	
   end
