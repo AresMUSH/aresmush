@@ -70,14 +70,12 @@ module AresMUSH
 				end
 
 				#Set up the skills table
-				if ( rowcounter % 2 == 1)
-				   rownum = rowcounter % 2
+				if ( self.rowcounter % 2 == 1)
+				   rownum = self.rowcounter % 2
 				   rowcolor = "even #{rownum}"
-				   rowcounter = rowcounter+1
 				else
-				   rownum = rowcounter % 2
+				   rownum = self.rowcounter % 2
 				   rowcolor = "odd #{rownum}"
-				   rowcounter = rowcounter+1
 				end				
 				openrow = i % 3 == 0 ? " <div class='row skills skilldata #{rowcolor}'>" : ""
 				cssclass = "#{a.name}".strip
@@ -96,6 +94,7 @@ module AresMUSH
 				# Used for debugging - need to delete when complete
 				#"#{downsizetitle} - #{swsclass} - #{swsclass2} - #{swskills} - #{swdesc} - #{swdesc2}<hr />"
 			end
+		    self.rowcounter = self.rowcounter+1
 	end
 
 
