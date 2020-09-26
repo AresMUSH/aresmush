@@ -18,7 +18,12 @@ swrifts:
                 # psionic_slots: 
                 # hind_points: 0
             # swrifts_ppe_max: 
-            # swrifts_isp_max: 
+            # swrifts_isp_max:
+            # swrifts_bennies: 3
+            # swrifts_conviction: 0
+            # swrifts_rank: Novice
+            # swrifts_damage: 0
+            # swrifts_pace: 6
             # skills:
                 # Academics: 0
                 # Athletics: 1
@@ -72,8 +77,12 @@ swrifts:
                 hj_slots: 2
                 psionic_slots: 3
                 hind_points: 0
-            swrifts_ppe_max: 
-            swrifts_isp_max: 
+            swrifts_isp_max: 20
+            swrifts_bennies: 3
+            swrifts_conviction: 0
+            swrifts_rank: Novice
+            swrifts_damage: 0
+            swrifts_pace: 6
             skills:
                 Academics: 0
                 Athletics: 1
@@ -134,9 +143,12 @@ swrifts:
                 stats_points: 2
                 hj_slots: 2
                 hind_points: 0
-            swrifts_ppe_max: 
-            swrifts_isp_max: 
             swrifts_strain: 6
+            swrifts_bennies: 3
+            swrifts_conviction: 0
+            swrifts_rank: Novice
+            swrifts_damage: 0
+            swrifts_pace: 6
             skills:
                 Academics: 0
                 Athletics: 1
@@ -215,6 +227,11 @@ swrifts:
                 hind_points: -2
             swrifts_ppe_max: 15
             swrifts_isp_max: 20
+            swrifts_bennies: 3
+            swrifts_conviction: 0
+            swrifts_rank: Novice
+            swrifts_damage: 0
+            swrifts_pace: 6
             skills:
                 Academics: 0
                 Athletics: 1
@@ -278,18 +295,17 @@ swrifts:
                 Strength: 4
                 Vigor: 5
             chargen_points:
-                skills_points: 15
                 stats_points: 5
-                hj_slots: 2
-                psionic_slots: 3
-                hind_points: 0
-            swrifts_ppe_max: 0
-            swrifts_isp_max: 
-                attributes_points: 5
                 skills_points: 15
-                hj_slots: 2 
+                hj_slots: 2
+                hind_points: 0
                 magic_slots: 1
             swrifts_ppe_max: 15
+            swrifts_bennies: 3
+            swrifts_conviction: 0
+            swrifts_rank: Novice
+            swrifts_damage: 0
+            swrifts_pace: 6
             skills:
                 Academics: 1
                 Athletics: 2
@@ -319,7 +335,7 @@ swrifts:
                 Riding: 0
                 Science: 0
                 Shooting: 0
-                Spelllcasting: 2
+                Spellcasting: 2
                 Stealth: 1
                 Survival: 0
                 Taunt: 0
