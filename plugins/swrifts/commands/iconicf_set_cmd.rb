@@ -59,23 +59,23 @@ module AresMUSH
 				end
 				
 
-				if (chargen_stats) 
+				# if (chargen_stats) 
 					# grab the list from the config file and break it into 'key' (before the ':') and 'rating' (after the ':')
-					chargen_stats.each do |key, rating|
+					# chargen_stats.each do |key, rating|
 						# alias the 'key' because the command below doesn't parse the #'s and {'s etc.
-						setthing = "#{key}".downcase
+						# setthing = "#{key}".downcase
 						# alias the 'rating' for the same reason
-						setrating = "#{rating}"
-						ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
+						# setrating = "#{rating}"
+						# ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
 							# add to char obj
-							model.update(setthing, rating)
-						end
-					end
-					client.emit_success ("Chargen Stats Set.")
-				else 
+							# model.update(setthing: rating)
+						# end
+					# end
+					# client.emit_success ("Chargen Stats Set.")
+				# else 
 					# If the Iconic Framework does not have this field in iconicf.yml, skip and emit to enactor
-					client.emit_failure ("No Chargen Stats on this Iconic Framework")
-				end
+					# client.emit_failure ("No Chargen Stats on this Iconic Framework")
+				# end
 				
 				#----- This sets the default stats field on the collection -----				
 				# If Iconic Framework being set has this field in iconicf.yml, run the command.
