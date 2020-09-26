@@ -62,7 +62,7 @@ en:
       shrapnel_shield_failed: "%{name}'s %xB%{weapon}%xn hits %{target} and %{target}'s %{shield} failed to stop it, but the damage is reduced."
       shrapnel_shield_held: "%{name}'s %xB%{weapon}%xn hits %{target}, but %{target}'s %{shield} stopped it."
       shield_failed_stun: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{target}'s %{shield} failed to stop it. %{name} %xgSUCCEEDS%xn and %{target} will be stunned for %{rounds} more rounds."
-      shield_failed_stun_resisted: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{target}'s %{shield} failed to stop it, but %{target} resists and is not stunned."
+      shield_failed_stun_resisted: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{target}'s %{shield} failed to stop it, but %{target} resists and %xris not stunned%xn."
       mind_shield_failed: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{target}'s %{shield} failed to stop it. %{name} %xgSUCCEEDS%xn."
       shield_held: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and their %{shield} stopped it. %{name} %xrFAILS%xn."
 
