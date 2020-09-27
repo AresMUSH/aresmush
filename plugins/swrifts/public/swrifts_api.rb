@@ -180,7 +180,7 @@ module AresMUSH
 		model = Global.read_config('swrifts', 'iconicf')
         list = model.sort_by { |a| a['name']}
 		list.each do |c|
-			"#{c}"
+			"gggggg #{c}"
 			ifname = c['name']
 			desc = c['description']
 			#"#{ifname} - #{desc}"
