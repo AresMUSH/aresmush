@@ -183,7 +183,7 @@ module AresMUSH
 			.each_with_index
 				.map do |a, i| 
 					a.each do | name, desc |
-						title = "#{name}"
+						title = "#{a.name}"
 					# title = "#{ a.name }".capitalize
 						"#{title}"
 					end
