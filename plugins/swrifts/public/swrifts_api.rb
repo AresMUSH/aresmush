@@ -185,7 +185,7 @@ module AresMUSH
 			desc = c['description']
 			looptext = "#{looptext} - #{ifname} - #{desc}"
 		end
-		"dkdkdkdkdkd - #{list}"
+		"dkdkdkdkdkd - #{list}<hr />#{looptext}"
 	end
 	
   end
