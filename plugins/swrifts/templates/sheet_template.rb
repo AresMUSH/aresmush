@@ -58,6 +58,11 @@ module AresMUSH
 				rank = "rank"
 				return_traits rank
 			end
+			
+			def damageforsheet
+				dmg = "damage"
+				return_counter dmg
+			end
 		
 			def format_stats(list)
 				list.to_a.sort_by { |a| a.name }
