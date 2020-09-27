@@ -178,6 +178,7 @@ module AresMUSH
 	
 	def self.returniconicforcg(model)
 	    modelclass = model.class
+		modelclass = "Model Class: #{model.class}"
 		#Used for debugging - need to delete when complete
         list = model.sort_by { |a| a['name']}
 			.each_with_index
