@@ -178,7 +178,8 @@ module AresMUSH
 	
 	def self.returniconicforcg(model)
 		model = Global.read_config('swrifts', 'iconicf')
-	    modelclass = model.class
+		swriftskills = Global.read_config('swrifts', 'skills')
+	    modelclass = swriftskills.class
 		modelclass1 = "Model Class: #{modelclass}"
 		#Used for debugging - need to delete when complete
         list = model.sort_by { |a| a['name']}
