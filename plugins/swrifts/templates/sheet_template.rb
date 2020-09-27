@@ -56,7 +56,7 @@ module AresMUSH
 
 			def rankforsheet
 				rank = "rank"
-				return_counter rank
+				return_traits rank
 			end
 		
 			def format_stats(list)
@@ -119,6 +119,18 @@ module AresMUSH
 					.each_with_index
 						.map do |a, i| 
 						if a.name.downcase == "#{countername}"
+							return a.rating
+						end
+					end	
+			end
+			
+				def return_traits(traitname)
+				traitname = traitname.downcase
+				swriftstraits = @char.swrifts_traits
+				swriftstraits.to_a.sort_by { |a| a.name }
+					.each_with_index
+						.map do |a, i| 
+						if a.name.downcase == "#{traitname}"
 							return a.rating
 						end
 					end	
