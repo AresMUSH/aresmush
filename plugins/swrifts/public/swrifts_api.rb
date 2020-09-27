@@ -183,9 +183,9 @@ module AresMUSH
 			"gggggg #{c}"
 			ifname = c['name']
 			desc = c['description']
-			#"#{ifname} - #{desc}"
+			looptext = "#{looptext} - #{ifname} - #{desc}"
 		end
-		"dkdkdkdkdkd - #{ifname} - #{desc}"
+		"dkdkdkdkdkd - #{looptext}"
 	end
 	
   end
