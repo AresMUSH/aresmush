@@ -184,8 +184,10 @@ module AresMUSH
 				.map do |a, i| 
 					classa = a.class
 					"#{a} - #{classa}"
+					a.each_with_index { |val,index|}
+						title = "#{index}"
 					# title = "#{ a.name }".capitalize
-					# "#{title}"
+						"#{title}"
 				end
 	end
 	
