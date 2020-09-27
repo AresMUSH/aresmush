@@ -185,7 +185,7 @@ module AresMUSH
 			desc = c['description']
 			#"#{ifname} - #{desc}"
 		end
-		"dkdkdkdkdkd"
+		"dkdkdkdkdkd - #{ifname} - #{desc}"
 	end
 	
   end
