@@ -185,13 +185,14 @@ module AresMUSH
 					#list2 = a.to_yaml
 					list1 = a.to_yaml
 					list2=list1.class
-					"#{modelclass} - #{list1} <hr /> #{list2}"
+					alist = "#{list1} <hr /> #{list2}<hr />"
 					# a.each do | name, desc |
 						# title = "#{a.name}"
 					# # title = "#{ a.name }".capitalize
 						# "#{title}"
 					# end
 				end
+		"#{modelclass}<br />#{alist}"
 	end
 	
   end
