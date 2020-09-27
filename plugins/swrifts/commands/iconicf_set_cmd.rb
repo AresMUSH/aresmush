@@ -26,8 +26,9 @@ module AresMUSH
 				# sets 'iconicf' to the Iconic Framework 'name' of our game\config\swrifts_iconicf.yml file
 				# Swrifts.get_iconicf - 'Swrifts' is the plugin folder. 'get' is the command. 'iconicf' is the .yml file in the 'config' folder. 
 				iconicf = Swrifts.get_iconicf(self.enactor, self.iconicf_name) 
-				# sets 
+				# sets up the different 'counters' and their maximums from the .yml 
 				counters = iconicf['counters']
+				# sets up the different 'traits' from the .yml
 				traits = iconicf['traits']
 				# pulls out the 'stats' portion of the named Iconic Framework into a list
 				iconicf_stats=iconicf['stats']  
@@ -78,6 +79,26 @@ module AresMUSH
 				else 
 					# If the Iconic Framework does not have this field in iconicf.yml, skip and emit to enactor
 					client.emit_failure ("This Iconic Framework has no Counters")
+				end
+				
+				#----- This sets the default traits field on the collection -----				
+				# If Iconic Framework being set has this field in iconicf.yml, run the command.
+				if (traits) 
+					# grab the list from the config file and break it into 'key' (before the ':') and 'rating' (after the ':')
+					traits.each do |key, rating|
+						# alias the 'key' because the command below doesn't parse the #'s and {'s etc.
+						setthing = "#{key}".downcase
+						# alias the 'rating' for the same reason
+						setrating = "#{rating}"
+						ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
+							# create the collection
+							SwriftsTraits.create(name: setthing, rating: setrating, character: model)
+						end
+					end
+					client.emit_success ("Traits Set!")
+				else 
+					# If the Iconic Framework does not have this field in iconicf.yml, skip and emit to enactor
+					client.emit_failure ("This Iconic Framework has no Traits set")
 				end
 				
 				#----- This sets the default stats field on the collection -----				
