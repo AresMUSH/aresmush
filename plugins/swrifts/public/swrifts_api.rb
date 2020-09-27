@@ -182,9 +182,8 @@ module AresMUSH
         list = model.sort_by { |a| a['name']}
 		list.each do |sub_array|
 			sub_array.each do |item|
-					list1 = item.to_yaml
-					list2 = list1.class
-					alist = "#{list1} <hr /> #{list2}<hr />"
+					list2 = item.class
+					alist = "#{item} <hr /> #{list2}<hr />"
 					# a.each do | name, desc |
 						# title = "#{a.name}"
 					# # title = "#{ a.name }".capitalize
