@@ -180,19 +180,12 @@ module AresMUSH
 		model = Global.read_config('swrifts', 'iconicf')
 		#Used for debugging - need to delete when complete
         list = model.sort_by { |a| a['name']}
-		list.each do |sub_array|
-			sa = "#{sub_array}"
-			sub_array.each do |item|
-					list2 = item.class
-					alist = "#{item} <hr /> #{list2}<hr />SA: #{sa}<hr />"
-					# a.each do | name, desc |
-						# title = "#{a.name}"
-					# # title = "#{ a.name }".capitalize
-						# "#{title}"
-					# end
-				"#{alist}"
-			end
+		ifkeys = list.keys
+		ifkeys.each do |a|
+			lista = "Key: #{a}"
+			"#{a}"
 		end
+
 	end
 	
   end
