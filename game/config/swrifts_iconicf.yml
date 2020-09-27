@@ -4,13 +4,15 @@ swrifts:
         # -
             # name: Template
             # description: 
-            # swrifts_ppe_max: 
-            # swrifts_isp_max:
-            # swrifts_bennies: 3
-            # swrifts_conviction: 0
-            # swrifts_rank: Novice
-            # swrifts_damage: 0
-            # swrifts_pace: 6           
+            # counters:
+                # ppe_max: 
+                # isp_max:
+                # bennies: 3
+                # conviction: 0
+                # damage: 0
+            # traits:
+                # rank: Novice
+                # pace: 6           
            # stats:
                 # Agility: 1
                 # Smarts: 1
@@ -77,12 +79,17 @@ swrifts:
                 hj_slots: 2
                 psionic_slots: 3
                 hind_points: 0
-            swrifts_isp_max: 20
-            swrifts_bennies: 3
-            swrifts_conviction: 0
-            swrifts_rank: Novice
-            swrifts_damage: 0
-            swrifts_pace: 6
+            counters:
+                isp_max: 20
+                isp_current: 20
+                bennies_max: 3
+                bennies_current: 3
+                conviction_current: 0
+                conviction_max: 0
+                damage: 0
+            traits:
+                rank: Novice
+                pace: 6
             skills:
                 Academics: 0
                 Athletics: 1
@@ -143,12 +150,16 @@ swrifts:
                 stats_points: 2
                 hj_slots: 2
                 hind_points: 0
-            swrifts_strain: 6
-            swrifts_bennies: 3
-            swrifts_conviction: 0
-            swrifts_rank: Novice
-            swrifts_damage: 0
-            swrifts_pace: 6
+            counters:
+                bennies_max: 3
+                bennies_current: 3
+                conviction_current: 0
+                conviction_max: 0
+                damage: 0
+            traits:
+                rank: Novice
+                pace: 6
+                strain: 6
             skills:
                 Academics: 0
                 Athletics: 1
@@ -225,13 +236,19 @@ swrifts:
                 magic_slots: 3
                 psionic_slots: 3
                 hind_points: -2
-            swrifts_ppe_max: 15
-            swrifts_isp_max: 20
-            swrifts_bennies: 3
-            swrifts_conviction: 0
-            swrifts_rank: Novice
-            swrifts_damage: 0
-            swrifts_pace: 6
+            counters:
+                ppe_max: 15
+                ppe_current: 15
+                isp_max: 20
+                isp_current: 15
+                bennies_max: 3
+                bennies_current: 3
+                conviction_current: 0
+                conviction_max: 0
+                damage: 0
+            traits:
+                rank: Novice
+                pace: 6
             skills:
                 Academics: 0
                 Athletics: 1
@@ -290,10 +307,10 @@ swrifts:
             description: Practitioners of magic with a talent for manipulating - or "shifting" the patterns of the raw cosmic energies that bind the Megaverse(R) together.
             stats:
                 Agility: 1
-                Smarts: 2
-                Spirit: 3
-                Strength: 4
-                Vigor: 5
+                Smarts: 1
+                Spirit: 1
+                Strength: 1
+                Vigor: 1
             chargen_points:
                 stats_points: 5
                 skills_points: 15
@@ -312,11 +329,11 @@ swrifts:
                 pace: 6
                 rank: Novice
             skills:
-                Academics: 1
-                Athletics: 2
-                Battle: 3
-                Boating: 4
-                Common Knowledge: 5
+                Academics: 0
+                Athletics: 1
+                Battle: 0
+                Boating: 0
+                Common Knowledge: 1
                 Driving: 0
                 Electronics: 0
                 Fighting: 0
@@ -327,11 +344,6 @@ swrifts:
                 Language: 0
                 Notice: 1
                 Occult: 0
-                Performance: 0
-                Persuasion: 1
-                Piloting: 0
-                Psionics: 2
-                Occult: 2
                 Performance: 0
                 Persuasion: 1
                 Piloting: 0

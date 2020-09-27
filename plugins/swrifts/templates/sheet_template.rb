@@ -53,12 +53,16 @@ module AresMUSH
 				cc = "conviction_current"
 				return_counter cc
 			end
+
+			def rankforsheet
+				rank = "rank"
+				return_traits rank
+			end
 			
-			# def format_counters
-				# counters_raw = @char.swrifts_counters
-				# result = counters_raw.find { |item| item.include?("bennies")}
-				# "#{result}"
-			# end
+			def damageforsheet
+				dmg = "damage"
+				return_counter dmg
+			end
 		
 			def format_stats(list)
 				list.to_a.sort_by { |a| a.name }
@@ -119,8 +123,19 @@ module AresMUSH
 				swriftscounters.to_a.sort_by { |a| a.name }
 					.each_with_index
 						.map do |a, i| 
-						linebreak = "\n"
 						if a.name.downcase == "#{countername}"
+							return a.rating
+						end
+					end	
+			end
+			
+				def return_traits(traitname)
+				traitname = traitname.downcase
+				swriftstraits = @char.swrifts_traits
+				swriftstraits.to_a.sort_by { |a| a.name }
+					.each_with_index
+						.map do |a, i| 
+						if a.name.downcase == "#{traitname}"
 							return a.rating
 						end
 					end	
