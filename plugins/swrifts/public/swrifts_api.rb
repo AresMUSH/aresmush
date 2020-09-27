@@ -183,7 +183,8 @@ module AresMUSH
 		list1 = list.to_yaml
 			.each_with_index
 				.map do |a, i| 
-					list2 = a.to_yaml
+					#list2 = a.to_yaml
+					list2=''
 					"#{list1} <hr /> #{list2}"
 					# a.each do | name, desc |
 						# title = "#{a.name}"
