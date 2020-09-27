@@ -187,7 +187,7 @@ module AresMUSH
 			looptext = "#{looptext}<br />#{ifname} - #{desc}"
 			iconicfarray.push("#{ifname}")
 		end
-		"#{looptext} - #{iconicfarray}"
+		"#{iconicfarray}"
 	end
 	
   end
