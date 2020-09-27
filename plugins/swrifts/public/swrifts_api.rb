@@ -184,7 +184,7 @@ module AresMUSH
 			sa = "#{sub_array}"
 			sub_array.each do |item|
 					list2 = item.class
-					alist = "#{item} <hr /> #{list2}<hr />#{sa}<hr />"
+					alist = "#{item} <hr /> #{list2}<hr />SA: #{sa}<hr />"
 					# a.each do | name, desc |
 						# title = "#{a.name}"
 					# # title = "#{ a.name }".capitalize
