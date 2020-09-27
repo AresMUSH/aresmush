@@ -180,16 +180,16 @@ module AresMUSH
 	    modelclass = model.class
 		#Used for debugging - need to delete when complete
         list = model.sort_by { |a| a['name']}
-		list = list.to_yaml
-		"#{list}"
-			# .each_with_index
-				# .map do |a, i| 
+			.each_with_index
+				.map do |a, i| 
+					list = a.to_yaml
+					"#{list}"
 					# a.each do | name, desc |
 						# title = "#{a.name}"
 					# # title = "#{ a.name }".capitalize
 						# "#{title}"
 					# end
-				# end
+				end
 	end
 	
   end
