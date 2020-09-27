@@ -192,7 +192,12 @@ module AresMUSH
 				# end
         list = model.sort_by { |a| a['name']}
 		modellist = list.to_yaml
-		"#{modelclass} | #{modellist} <br />"
+		list.to_a.sort_by { |a| a.name }
+			.each_with_index
+				.map do |a, i| 
+					title = "#{ a.name }".capitalize
+					"#{title}"
+				end
 	end
 	
   end
