@@ -18,6 +18,7 @@ en:
         abilities_title: "Abilities"
         complications_title: "Complications"
         chargenpoints_title: "Chargen Points"
+        damage_title: "Damage Level"
         
         invalid_stat_name: "%{name} is not a valid stat name."
         invalid_die_step: "%{rating} is not a valid die step."
