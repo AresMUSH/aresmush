@@ -188,6 +188,7 @@ module AresMUSH
 						title = "#{name}"
 					# title = "#{ a.name }".capitalize
 						"#{title} - #{classa}"
+					end
 				end
 	end
 	
