@@ -192,8 +192,8 @@ module AresMUSH
 					# # title = "#{ a.name }".capitalize
 						# "#{title}"
 					# end
+				"#{modelclass1}<br />#{alist}"
 				end
-		"#{modelclass1}<br />#{alist}"
 	end
 	
   end
