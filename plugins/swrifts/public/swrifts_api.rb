@@ -178,12 +178,12 @@ module AresMUSH
 	
 	def self.returniconicforcg(model)
 		model = Global.read_config('swrifts', 'iconicf')
-		#Used for debugging - need to delete when complete
         list = model.sort_by { |a| a['name']}
 		list.each do |c|
+			"#{c}"
 			ifname = c['name']
 			desc = c['description']
-			"#{ifname} - #{desc}"
+			#"#{ifname} - #{desc}"
 		end
 	end
 	
