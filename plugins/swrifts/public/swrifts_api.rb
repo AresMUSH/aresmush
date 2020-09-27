@@ -177,6 +177,7 @@ module AresMUSH
 	end	
 	
 	def self.returniconicforcg(model)
+		model = Global.read_config('swrifts', 'iconicf')
 	    modelclass = model.class
 		modelclass1 = "Model Class: #{modelclass}"
 		#Used for debugging - need to delete when complete
