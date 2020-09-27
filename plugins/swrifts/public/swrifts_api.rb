@@ -182,6 +182,10 @@ module AresMUSH
         list = model.sort_by { |a| a['name']}
 		listmodel = model.class
 		"#{listmodel}"
+		list.each do |a|
+			myname = a.['name']
+			"#{myname} - "
+		end
 		#ifkeys = list.keys
 		# ifkeys.each do |a|
 			# lista = "Key: #{a}"
