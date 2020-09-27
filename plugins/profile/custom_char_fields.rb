@@ -20,7 +20,7 @@ module AresMUSH
       def self.get_fields_for_chargen(char)
         #Swrifts.get_abilities_for_chargen(char)
 		{ swiconicf: char.swiconicf,
-		swiconicf: Global.read_config('swrifts', 'iconicf') } 		
+		swiconicfs: Global.read_config('swrifts', 'iconicf') } 		
       end
       
       # Custom fields will be in char_data[:custom]
