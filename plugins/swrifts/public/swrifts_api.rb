@@ -178,7 +178,7 @@ module AresMUSH
 	
 	def self.returniconicforcg(model)
 		looptext = ""
-		iconficarray = Array.new
+		iconicfarray = Array.new
 		model = Global.read_config('swrifts', 'iconicf')
         list = model.sort_by { |a| a['name']}
 		list.each do |c|
