@@ -181,7 +181,6 @@ module AresMUSH
 		model = Global.read_config('swrifts', 'iconicf')
         list = model.sort_by { |a| a['name']}
 		list.each do |c|
-			"gggggg #{c}"
 			ifname = c['name']
 			desc = c['description']
 			looptext = "#{looptext}<br />#{ifname} - #{desc}"
