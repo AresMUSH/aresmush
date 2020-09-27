@@ -182,12 +182,10 @@ module AresMUSH
         list = model.sort_by { |a| a['name']}
 			.each_with_index
 				.map do |a, i| 
-					classa = a.class
-					"#{a} - #{classa}"
 					a.each do | name, desc |
 						title = "#{name}"
 					# title = "#{ a.name }".capitalize
-						"#{title} - #{classa}"
+						"#{title}"
 					end
 				end
 	end
