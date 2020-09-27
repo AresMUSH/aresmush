@@ -183,7 +183,7 @@ module AresMUSH
 		listmodel = model.class
 		"#{listmodel}"
 		list.each do |a|
-			myname = a.['name']
+			myname = a['name']
 			"#{myname} - "
 		end
 		#ifkeys = list.keys
