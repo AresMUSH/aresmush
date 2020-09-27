@@ -179,22 +179,12 @@ module AresMUSH
 	def self.returniconicforcg(model)
 	    modelclass = model.class
 		#Used for debugging - need to delete when complete
-		#"#{model} - #{modelclass}<hr />"		
-		# model.to_a.sort_by { |a| a.name }
-			# .each_with_index
-				# .map do |a, i| 
-					# correcttitle = "#{a.name}".titleize
-					# downsizetitle = "#{a.name}".downcase
-					# ifdesc = "#{a.description}"
-
-					# #Set up the select box 
-					# "#{correcttitle} - #{ifdesc}<br />"
-				# end
         list = model.sort_by { |a| a['name']}
 			.each_with_index
 				.map do |a, i| 
-					title = "#{ a.name }".capitalize
-					"#{title}"
+					"#{a}"
+					# title = "#{ a.name }".capitalize
+					# "#{title}"
 				end
 	end
 	
