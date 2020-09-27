@@ -177,6 +177,7 @@ module AresMUSH
 	end	
 	
 	def self.returniconicforcg(model)
+		looptext = "Just set"
 		model = Global.read_config('swrifts', 'iconicf')
         list = model.sort_by { |a| a['name']}
 		list.each do |c|
