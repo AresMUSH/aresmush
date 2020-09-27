@@ -178,16 +178,12 @@ module AresMUSH
 	
 	def self.returniconicforcg(model)
 		model = Global.read_config('swrifts', 'iconicf')
-		swriftskills = Global.read_config('swrifts', 'skills')
-	    modelclass = swriftskills.class
-		modelclass1 = "Model Class: #{modelclass}"
 		#Used for debugging - need to delete when complete
         list = model.sort_by { |a| a['name']}
-			.each_with_index
-				.map do |a, i| 
-					#list2 = a.to_yaml
-					list1 = a.to_yaml
-					list2=list1.class
+		list.each do |sub_array|
+			sub_array.each do |item|
+					list1 = item.to_yaml
+					list2 = list1.class
 					alist = "#{list1} <hr /> #{list2}<hr />"
 					# a.each do | name, desc |
 						# title = "#{a.name}"
@@ -195,7 +191,8 @@ module AresMUSH
 						# "#{title}"
 					# end
 				"#{modelclass1}<br />#{alist}"
-				end
+			end
+		end
 	end
 	
   end
