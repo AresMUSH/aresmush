@@ -184,7 +184,7 @@ module AresMUSH
 				.map do |a, i| 
 					#list2 = a.to_yaml
 					list1 = a.to_yaml
-					list2=''
+					list2=list1.class
 					"#{list1} <hr /> #{list2}"
 					# a.each do | name, desc |
 						# title = "#{a.name}"
