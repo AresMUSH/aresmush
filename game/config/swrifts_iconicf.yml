@@ -4,13 +4,15 @@ swrifts:
         # -
             # name: Template
             # description: 
-            # swrifts_ppe_max: 
-            # swrifts_isp_max:
-            # swrifts_bennies: 3
-            # swrifts_conviction: 0
-            # swrifts_rank: Novice
-            # swrifts_damage: 0
-            # swrifts_pace: 6           
+            # counters:
+                # ppe_max: 
+                # isp_max:
+                # bennies: 3
+                # conviction: 0
+                # damage: 0
+            # traits:
+                # rank: Novice
+                # pace: 6           
            # stats:
                 # Agility: 1
                 # Smarts: 1
@@ -229,8 +231,8 @@ swrifts:
             swrifts_isp_max: 20
             swrifts_bennies: 3
             swrifts_conviction: 0
-            swrifts_rank: Novice
             swrifts_damage: 0
+            swrifts_rank: Novice
             swrifts_pace: 6
             skills:
                 Academics: 0
