@@ -177,16 +177,16 @@ module AresMUSH
 	end	
 	
 	def self.returniconicforcg(model)
-		looptext = "Just set"
+		looptext = ""
 		model = Global.read_config('swrifts', 'iconicf')
         list = model.sort_by { |a| a['name']}
 		list.each do |c|
 			"gggggg #{c}"
 			ifname = c['name']
 			desc = c['description']
-			looptext = "#{looptext}<br />#{ifname} - #{desc}<br />"
+			looptext = "#{looptext}<br />#{ifname} - #{desc}"
 		end
-		"dkdkdkdkdkd - #{list}<hr />#{looptext}"
+		"#{looptext}"
 	end
 	
   end
