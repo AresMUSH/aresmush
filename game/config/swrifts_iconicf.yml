@@ -239,7 +239,6 @@ swrifts:
             name: Momano Headhunter
             book_reference: EohH
         -
-        -
             name: Burster
             book_reference: TLPG
             description: Bursters are pyrokinetics—they telekinetically accelerate molecules to the point of ignition. 
@@ -460,7 +459,6 @@ swrifts:
         -
             name: Mind Melter
             book_reference: TLPG
-        -
         -
             name: Mystic
             book_reference: TLPG
