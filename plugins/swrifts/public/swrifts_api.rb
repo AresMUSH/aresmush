@@ -170,7 +170,7 @@ module AresMUSH
 		#conviction = conviction.join(" ") #removes the comma's that seperates the entries
 
 		return {
-		  iconicf: iconicf
+		  iconicf: iconicf,
 		  chariconicf: chariconicf
 		  #stats: stats,
 		  #bennies: bennies,
