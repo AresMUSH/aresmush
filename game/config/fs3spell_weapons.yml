@@ -11,19 +11,25 @@ fs3combat:
     Zhujiang's Hairpin:
       description: A magical hair pin. Owned by Adelaide.
       accuracy: 1
-    #SPELLS
-    # Agility:
-    #   description: Level 4 Corpus spell
-    #   is_magic: true
-    #   init_mod: 1
-    Diamond:
-      description: Level 4 Earth spell
+    #MAGIC ITEMS
+    Guilt-Weighted Gloves:
+      description: Magic item
       is_magic: true
-      penetration: 2
+      lethality: 5
+    Huxian's Gift:
+      description: Magical item
+      is_magic: true
+      accuracy: 3
+      init_mod: 3
+#SPELLS
     Cold Calm:
       description: Level 5 Water Spell
       is_magic: true
       accuracy: 3
+    Diamond:
+      description: Level 4 Earth spell
+      is_magic: true
+      penetration: 2
     Fire:
       description: Level 4 Fire spell
       is_magic: true
@@ -39,15 +45,6 @@ fs3combat:
       is_magic: true
       lethality: 15
       penetration: 5
-    Guilt-Weighted Gloves:
-      description: Magic item
-      is_magic: true
-      lethality: 5
-    Huxian's Gift:
-      description: Magical item
-      is_magic: true
-      accuracy: 3
-      init_mod: 3
     Ice:
       description: Level 4 Ice spell
       is_magic: true
@@ -65,10 +62,6 @@ fs3combat:
       lethality: -20
       penetration: -5
       init_mod: 1
-    # Speed Boost:
-    #   description: Level 6 Corpus spell
-    #   is_magic: true
-    #   init_mod: 2
     Strength:
       description: Level 3 Corpus spell
       is_magic: true

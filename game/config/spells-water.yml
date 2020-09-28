@@ -52,7 +52,7 @@ spells:
     damage_type: Cold
     desc: Caster can cool their hands to a chosen temperature ranging from a minor chill to cold enough to deliver minor cold damage via touch.
     duration: 30 minutes
-    effect: Damage
+    effect: Weapon
     is_potion: true
     level: 2
     name: Chill Touch
@@ -422,7 +422,7 @@ spells:
     defense_mod: 10
     desc: "The caster's body becomes clear liquid and cannot be hit by attacks.\n\n While in liquid form, the caster can pass through small holes or narrow openings, even mere cracks, with anything they were carrying at the time the spell was cast.  "
     duration: 5 rounds
-    effect: Defense
+    effect: Transformation
     level: 6
     name: Liquid Form
     range: Self

@@ -95,6 +95,7 @@ spells:
   Natural Defenses:
     available: true
     desc: The caster grows natural defenses from a specific animal. These take the form of armored skin, spines, etc. Animal is from the same genus each time the spell is cast.
+    effect: Armor
     level: 2
     name: Natural Defenses
     school: Nature
@@ -109,7 +110,7 @@ spells:
     casting_time: 1 round
     desc: The caster grows natural weaponry from a specific animal for the purpose of attack. These take the form of non-venomous fangs, claws, horns etc. Animal is from the same genus each time the spell is cast.
     duration: 15 minutes
-    effect: Buff
+    effect: Weapon
     is_potion: true
     level: 2
     name: Natural Weaponry
@@ -613,7 +614,7 @@ spells:
     defense_mod: 1
     desc: "The caster grows wings large enough to carry them in flight.The wings allow them to travel at a speed of up to 65 mph. \n\n Practiced casters can obtain excellent maneuverability with their wings, making it easy for them to engage in combat and giving them an edge to their ability to dodge.\n\n Should the spell duration expire while the caster is still aloft, they plummet to the ground."
     duration: 1 hour
-    effect: Travel
+    effect: Transformation
     level: 6
     range: Self
     roll: true

@@ -375,7 +375,7 @@ spells:
     defense_mod: 10
     desc: "The caster's body becomes a gaseous cloud and cannot be hit by attacks.\n\nWhile in air form, the caster can pass through small holes or narrow openings, even mere cracks, with anything they were carrying at the time the spell was cast. The form also allows them to float up into the surrounding air in a limited form of flight, capable of moving up to 5 mph."
     duration: 5 rounds
-    effect: Defense
+    effect: Transformation
     level: 6
     name: Air Form
     range: Self

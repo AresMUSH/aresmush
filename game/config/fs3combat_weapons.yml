@@ -1,22 +1,27 @@
 ---
 fs3combat:
   weapon special groups:
+    Body:
+    - cold calm
+    - shrink
+    - strength
+    - grow
     Ranged:
-    - agility
+    - cold calm
     - diamond
     - fire
+    - glacial ice
     - grow
     - ice
     - lightning
     - shrink
     - transform
     - vitality
-    - speed boost
-    - cold calm
     Melee:
-    - agility
+    - cold calm
     - diamond
     - fire
+    - glacial ice
     - grow
     - ice
     - lightning
@@ -25,13 +30,9 @@ fs3combat:
     - strength
     - transform
     - vitality
-    - speed boost
-    - cold calm
     Spell:
-    - shrink
-    - strength
-    - grow
     - cold calm
+
   weapon specials:
     Sparring:
       description: Padded sparring equipment
@@ -307,7 +308,7 @@ fs3combat:
       damage_type: Physical
       accuracy: 0
       init_mod: 0
-      special_group: Body      
+      special_group: Body
     Poison Stinger:
       description: Poison Insect stinger
       skill: Melee
