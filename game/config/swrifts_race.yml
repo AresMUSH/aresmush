@@ -1,0 +1,263 @@
+---
+swade:
+    races:
+        - 
+            name: Altara
+            book_reference: TLPG
+            desc: Warrior Women
+            edges:
+                - Attractive^
+                - Alertness^
+            hinderances:
+                - Bad Reputation^
+                - Blind^
+            attributes: 
+                Agility: 1
+                Strength: 1
+                Vigor: 1
+            skills:
+                Common Knowledge: -1
+                Psionics: 1
+            complications:
+                - Skill Penalty^
+                    - Common Knowledge^
+                - Storm-Fouled Senses^
+                - Inhuman Physiology-^
+                - Racial Enemy^
+            counters:
+                isp_max: 10
+            powers:
+                - Arcane Protection^
+                - Detect Arcana^
+                - Conceal Arcana^
+                - Empathy^
+        -  
+            name: Dog Boy
+            book_reference: TLPG
+            desc: Psi-Hound
+            edges:
+                - Breed Advantage^
+            hinderances:
+                - Wanted^
+                    - Feral
+            abilities:
+                - Bite^
+                - Keen Sense of Smell^
+                - Keen Sense of Hearing^
+                - Low Light Vision^
+                - Psychic Sense^
+            complications:
+                - Near-Human Phsiology^
+                - Oddly Built^
+                - Restricted Paths^
+                - Mutant^
+                - Ley Line Hypersensitivity^
+        -  
+            name: DNorr
+            book_reference: TLPG
+            desc: Devilmen
+            edges:
+                - Charismatic^
+            hinderances:
+            attributes: 
+                Smarts: 1
+                Spirit: 1
+            max_smarts_step: d12+1
+            abilities:
+                - Horns^
+            complications:
+                - Inhuman Physiology+^
+                - D-Bee+^
+                - Restricted Path^
+                    - Psionics
+                - Skill Penalty+^
+                    -Fear
+            ppe: 5
+        - 
+            name: Dragon
+            book_reference: Unknown
+        -
+            name: Fennodi
+            book_reference: TLPG
+        -
+            name: Grackle Tooth   
+            book_reference: TLPG  
+        -
+            name: Human
+            book_reference: TLPG
+            edge_slots: 1
+        -  
+            name: Lyn-Srial
+            book_reference: TLPG
+        -   
+            name: Psi-Stalker
+            book_reference: TLPG
+            desc: Psychic Predator
+            edges:
+                - Ambidexterity^
+            skills:
+                Riding: 1
+            abilities:
+                - Fast^
+                - Psychic Sense^
+                - Psychic Vampire^
+            complications:
+                - Mutant^
+                - Racial Enemy (Simvan)^
+                - Restricted Paths^
+        -  
+            name: Quick Flex
+            book_reference: TLPG
+            desc: Contortionist Daredevils
+            edges:
+                - Ambidextrous^
+                - Quick^
+            hinderances:
+                - Overconfident^
+            attributes: 
+                Agility: 2
+            abilities:
+                - Elusive^
+                - Fast^
+            complications:
+                - D-Bee+^
+                - Alien Phsiology^
+                - Restricted Path^
+                - Short Attention Span^
+        -  
+            name: Simvan
+            book_reference: TLPG
+            desc: Monster Riders
+            edges:
+                - Beast Master^
+                - Low Light Vision^
+                - Monstrous Beast Affinity^
+                - Natural Psionics^
+            skills:
+                Riding: 1
+            complications:
+                - D-Bee+^
+                - Bad Reputation+^
+                - Bloodthirsty^
+                - Instinct Over Intellect^ - -1 to Smarts rolls
+                - Near-Human Physiology^
+                - Racial Enemy^
+                    - Psi-Stalkers
+        -
+            name: Trimadore
+            book_reference: TLPG
+            desc: DBee Operators
+            edges:
+                - Mr Fix It^
+            skills:
+                Repair: 2
+            chargen_points:
+                skills_points: 6  Choose two at d6 Electronics, Hacking or Science
+            abilities:
+                - Long Arms^
+            complications:
+                - Alien Physiology^
+                - Alien Physiology^
+                - Big Boned^
+                - D-Bee+^
+        -
+            name: Android
+            book_reference: SWADE
+        -
+            name: Aquarian
+            book_reference: SWADE
+        -
+            name: Avion
+            book_reference: SWADE
+        -
+            name: Dwarf
+            book_reference: SWADE
+        -
+            name: Elf
+            book_reference: SWADE
+        -
+            name: Half-Elf-Elf
+            book_reference: SWADE
+        -
+            name: Half-Elf-Human
+            book_reference: SWADE
+        -  
+            name: Half-Folk
+            book_reference: SWADE
+        -  
+            name: Human
+            book_reference: SWADE
+        -  
+            name: Rakashan
+            book_reference: SWADE
+        -  
+            name: Saurian
+            book_reference: SWADE
+        -
+            name: Battle Cat
+            book_reference: EofH
+        -
+            name: Kill Cat
+            book_reference: EofH
+        -
+            name: Mutant Battle
+            book_reference: EofH
+        -
+            name: Mutant Rat
+            book_reference: EofH
+        -  
+            name: Psi-X Alien
+            book_reference: EofH
+        -  
+            name: Cactus People
+            book_reference: A&M
+        -
+            name: Dwarf
+            book_reference: A&M
+        -
+            name: Elf
+            book_reference: A&M
+        -
+            name: Orc
+            book_reference: A&M
+        -
+            name: Psi-Ghost
+            book_reference: A&M
+        -
+            name: Vronwor
+            book_reference: A&M
+        -
+            name: Centaur
+            book_reference: B&B
+        -
+            name: Sasquatch
+            book_reference: B&B
+        -
+            name: Vernulians
+            book_reference: TLFM
+            desc: Serpent People
+            edges:
+                - Four Arms^
+                - Natural Psionics^
+            hinderances:
+            attributes: 
+                Srength: 1
+            max_attribute_step: 
+            skills:
+                Athletics: 2
+            abilities:
+                - Semi-Aquatic^
+            complications:
+                - Bad Reputation-^
+                - Bizarre Physiology^
+                - D-Bee+^
+                - "It's a Weird World"^
+                - Non-Standard Build^
+            isp: 10
+            powers: 
+                - Arcane Protection^
+                - Mind Link^
+                - Telekinesis^
+            chargen_points: 
+                psionic_slots: 2
+          
