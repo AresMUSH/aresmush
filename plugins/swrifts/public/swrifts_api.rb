@@ -156,6 +156,7 @@ module AresMUSH
 		# Format Iconic Framework table
 		swrifts_iconicf = Global.read_config('swrifts', 'iconicf')
 		iconicf = returniconicforcg(swrifts_iconicf)
+		chariconicf = char.swrifts_iconicf
 		#iconicf='hellow world'
 		#iconicf = swrifts_iconicf.join(" ") #removes the comma's that seperates the entries		
 
@@ -170,6 +171,7 @@ module AresMUSH
 
 		return {
 		  iconicf: iconicf
+		  chariconicf: chariconicf
 		  #stats: stats,
 		  #bennies: bennies,
 		  #conviction: conviction
