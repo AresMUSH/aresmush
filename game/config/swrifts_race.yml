@@ -252,4 +252,11 @@ swade:
                 - Bizarre Physiology^
                 - D-Bee+^
                 - It's a Weird World^                
-                - Non-Standard Build^            
+                - Non-Standard Build^
+            isp: 10
+            powers: 
+                - Arcane Protection^
+                - Mind Link^
+                - Telekinesis^
+            chargen_points: 
+                psionic_slots: 2
