@@ -3,6 +3,7 @@ swrifts:
     iconicf:
         # -
             # name: Template
+            # book_reference: 
             # description: 
             # counters:
                 # ppe_max: 
@@ -65,245 +66,68 @@ swrifts:
             # complications:
                 # -
         -
-            name: Burster
-            description: Bursters are pyrokinetics—they telekinetically accelerate molecules to the point of ignition. 
-            stats:
-                Agility: 1
-                Smarts: 1
-                Spirit: 1
-                Strength: 1
-                Vigor: 1
-            chargen_points:
-                skills_points: 15
-                stats_points: 5
-                hj_slots: 2
-                psionic_slots: 3
-                hind_points: 0
-            counters:
-                isp_max: 20
-                isp_current: 20
-                bennies_max: 3
-                bennies_current: 3
-                conviction_current: 0
-                conviction_max: 0
-                damage: 0
-            traits:
-                rank: Novice
-                pace: 6
-            skills:
-                Academics: 0
-                Athletics: 1
-                Battle: 0
-                Boating: 0
-                Common Knowledge: 1
-                Driving: 0
-                Electronics: 0
-                Fighting: 0
-                Gambling: 0
-                Hacking: 0
-                Healing: 0
-                Intimidation: 0
-                Language: 0
-                Notice: 1
-                Occult: 0
-                Performance: 0
-                Persuasion: 1
-                Piloting: 0
-                Psionics: 2
-                Repair: 0
-                Research: 0
-                Riding: 0
-                Science: 0
-                Shooting: 0
-                Stealth: 1
-                Survival: 0
-                Taunt: 0
-                Thievery: 0
-            hinderances: 
-                - Enemy-*
-                - Quirk*
-                    - Pyromaniac 
-            edges:
-                - AB Psionics*
-                - Blaster*
-                - Major Psionic*
-            psionic_powers:
-                - Elemental Manipulation*
-            abilities:
-                - Everything Burns*
-                - Fiery Aura*
-                - Fire Walker*
-                - Flame Bolt*
-            complications:
-                - Cybernetics*
-        -
-            name: Combat Cyborg
-            description: Combat Cyborgs are also referred to as full conversion ’Borgs. Their brain and a handful of organs—heart, lungs, possibly some part of the digestive system, not much else—are atached to a synthesis of bionic parts and cybernetic systems. The whole thing is encased in a metallic form capable of wrestling giant robots and dragons to the ground while withstanding direct missile impacts.
-            stats:
-                Agility: 4
-                Smarts: 1
-                Spirit: 1
-                Strength: 7
-                Vigor: 5
-            chargen_points:
-                skills_points: 15
-                stats_points: 2
-                hj_slots: 2
-                hind_points: 0
-            counters:
-                bennies_max: 3
-                bennies_current: 3
-                conviction_current: 0
-                conviction_max: 0
-                damage: 0
-            traits:
-                rank: Novice
-                pace: 6
-                strain: 6
-            skills:
-                Academics: 0
-                Athletics: 1
-                Battle: 0
-                Boating: 0
-                Common Knowledge: 1
-                Driving: 0
-                Electronics: 0
-                Fighting: 0
-                Gambling: 0
-                Hacking: 0
-                Healing: 0
-                Intimidation: 0
-                Language: 0
-                Notice: 1
-                Occult: 0
-                Performance: 0
-                Persuasion: 1
-                Piloting: 0
-                Repair: 0
-                Research: 0
-                Riding: 0
-                Science: 0
-                Shooting: 0
-                Stealth: 1
-                Survival: 0
-                Taunt: 0
-                Thievery: 0
-            hinderances: 
-                - Ugly-*
-                    - (Inhuman)
-            edges:
-                - Fleet-Footed*
-                - Size*
-                - Upgradeable
-            cybernetics:
-                - Adrenal System*
-                - Armor Plating x3*
-                - Audio Package*
-                - Bionic Strength Augmentation*
-                - Core Electronics Pkg*
-                - Cyber Wired Reflexes*
-                - Internal Life Support*
-                - Nuclear Power Cell*
-                - Optics Package*
-                - Reinforced Frame x3*
-                - Synthetic Organ Replacement*
-            abilities:
-                - Bionic Augmentation*
-                - Harder than Steel*
-                - More Machine*
-                - Unarmed Combat*
-            complications:
-                - All Those Moving Parts*
-                - Full Conversion*
-                - Heavy
-                - Loss of Dexterity*
-                - Malfunctions*
-                - Shadow of Themselves*
-                - Spiritually Numb
-        -
-            name: Mystic
-            description: Enlightened spell weavers in tune with the greater comic forces of the universe. 
-            stats:
-                Agility: 1
-                Smarts: 1
-                Spirit: 1
-                Strength: 1
-                Vigor: 1
-            chargen_points:
-                skills_points: 15
-                stats_points: 5
-                hj_slots: 2 
-                magic_slots: 3
-                psionic_slots: 3
-                hind_points: -2
-            counters:
-                ppe_max: 15
-                ppe_current: 15
-                isp_max: 20
-                isp_current: 15
-                bennies_max: 3
-                bennies_current: 3
-                conviction_current: 0
-                conviction_max: 0
-                damage: 0
-            traits:
-                rank: Novice
-                pace: 6
-            skills:
-                Academics: 0
-                Athletics: 1
-                Battle: 0
-                Boating: 0
-                Common Knowledge: 1
-                Driving: 0
-                Electronics: 0
-                Faith: 2
-                Fighting: 0
-                Gambling: 0
-                Hacking: 0
-                Healing: 0
-                Intimidation: 0
-                Language: 0
-                Notice: 1
-                Occult: 0
-                Performance: 0
-                Persuasion: 1
-                Piloting: 0
-                Psionics: 2
-                Repair: 0
-                Research: 0
-                Riding: 0
-                Science: 0
-                Shooting: 0
-                Stealth: 1
-                Survival: 0
-                Taunt: 0
-                Thievery: 0
-            hinderances: 
-                - Enemy-*
-            edges:
-                - Arcane Background*
-                    - Miracles
-                - Master of Magic*
-                - Arcane Background*
-                    - Psionic
-                - Major Psionic*
-                - Alertness*
-                - Danger Sense*
-            magic_powers:
-                - Concel Arcana*
-                - Detect Arcana*
-                - Divination*
-            abilities:
-                - Cosmic Confluence*
-                - Mystic Power Modifiers*
-            complications:
-                - Arcane Duality*
-                - Cybernetics*
-                - Higher Standard*
-                - Power Activators*
+            name: Dragon Juicer
+            book_reference: A&M
+        -   
+            name: Elemental Fusionist
+            book_reference: A&M
+        -   
+            name: MARS Battle Magus
+            book_reference: A&M
+        -   
+            name: MARS Combat Mage
+            book_reference: A&M
+        -   
+            name: MARS High Magus
+            book_reference: A&M
+        -   
+            name: Lord Magus
+            book_reference: A&M
+        -   
+            name: MARS Psi-Druid
+            book_reference: A&M
+        -   
+            name: MARS Psi-Slinger
+            book_reference: A&M
+        -   
+            name: MARS Psi-Warrior
+            book_reference: A&M
+        -   
+            name: MARS Shaman
+            book_reference: A&M
+        -   
+            name: MARS Spirit Warrior
+            book_reference: A&M
+        -   
+            name: Nega-Psychic
+            book_reference: A&M
+        -   
+            name: Zappier
+            book_reference: A&M
+        -   
+            name: Heroic Vampire
+            book_reference: B&B
+        -   
+            name: Knight of the White Rose
+            book_reference: B&B
+        -   
+            name: MARS Barbarian
+            book_reference: B&B
+        -   
+            name: MARS Barbarian Eco-Wizard
+            book_reference: B&B
+        -   
+            name: MARS Dinosaur Hunter
+            book_reference: B&B
+        -   
+            name: MARS Vampire Hunter
+            book_reference: B&B
+        -   
+            name: Necromancer
+            book_reference: B&B
         -
             name: Shifter
+            book_reference: B&B
             description: Practitioners of magic with a talent for manipulating - or "shifting" the patterns of the raw cosmic energies that bind the Megaverse(R) together.
             stats:
                 Agility: 1
@@ -387,3 +211,354 @@ swrifts:
                 - Cybernetics*
                 - Disconnected*
                 - Power Activators*
+        -   
+            name: Werecat
+            book_reference: B&B
+        -   
+            name: Intelligent Construct
+            book_reference: EohH
+        -
+            name: MARS Commando
+            book_reference: EohH
+        -
+            name: MARS Cowboy
+            book_reference: EohH
+        -
+            name: MARS EOD Specialist
+            book_reference: EohH
+        -
+            name: MARS Gunslinger
+            book_reference: EohH
+        -
+            name: MARS Intel Operative
+            book_reference: EohH
+        -
+            name: MARS RCSG Scientist
+            book_reference: EohH
+        -
+            name: Momano Headhunter
+            book_reference: EohH
+        -
+        -
+            name: Burster
+            book_reference: TLPG
+            description: Bursters are pyrokinetics—they telekinetically accelerate molecules to the point of ignition. 
+            stats:
+                Agility: 1
+                Smarts: 1
+                Spirit: 1
+                Strength: 1
+                Vigor: 1
+            chargen_points:
+                skills_points: 15
+                stats_points: 5
+                hj_slots: 2
+                psionic_slots: 3
+                hind_points: 0
+            counters:
+                isp_max: 20
+                isp_current: 20
+                bennies_max: 3
+                bennies_current: 3
+                conviction_current: 0
+                conviction_max: 0
+                damage: 0
+            traits:
+                rank: Novice
+                pace: 6
+            skills:
+                Academics: 0
+                Athletics: 1
+                Battle: 0
+                Boating: 0
+                Common Knowledge: 1
+                Driving: 0
+                Electronics: 0
+                Fighting: 0
+                Gambling: 0
+                Hacking: 0
+                Healing: 0
+                Intimidation: 0
+                Language: 0
+                Notice: 1
+                Occult: 0
+                Performance: 0
+                Persuasion: 1
+                Piloting: 0
+                Psionics: 2
+                Repair: 0
+                Research: 0
+                Riding: 0
+                Science: 0
+                Shooting: 0
+                Stealth: 1
+                Survival: 0
+                Taunt: 0
+                Thievery: 0
+            hinderances: 
+                - Enemy-*
+                - Quirk*
+                    - Pyromaniac 
+            edges:
+                - AB Psionics*
+                - Blaster*
+                - Major Psionic*
+            psionic_powers:
+                - Elemental Manipulation*
+            abilities:
+                - Everything Burns*
+                - Fiery Aura*
+                - Fire Walker*
+                - Flame Bolt*
+            complications:
+                - Cybernetics*
+        -
+            name: Combat Cyborg
+            book_reference: TLPG
+            description: Combat Cyborgs are also referred to as full conversion ’Borgs. Their brain and a handful of organs—heart, lungs, possibly some part of the digestive system, not much else—are atached to a synthesis of bionic parts and cybernetic systems. The whole thing is encased in a metallic form capable of wrestling giant robots and dragons to the ground while withstanding direct missile impacts.
+            stats:
+                Agility: 4
+                Smarts: 1
+                Spirit: 1
+                Strength: 7
+                Vigor: 5
+            chargen_points:
+                skills_points: 15
+                stats_points: 2
+                hj_slots: 2
+                hind_points: 0
+            counters:
+                bennies_max: 3
+                bennies_current: 3
+                conviction_current: 0
+                conviction_max: 0
+                damage: 0
+            traits:
+                rank: Novice
+                pace: 6
+                strain: 6
+            skills:
+                Academics: 0
+                Athletics: 1
+                Battle: 0
+                Boating: 0
+                Common Knowledge: 1
+                Driving: 0
+                Electronics: 0
+                Fighting: 0
+                Gambling: 0
+                Hacking: 0
+                Healing: 0
+                Intimidation: 0
+                Language: 0
+                Notice: 1
+                Occult: 0
+                Performance: 0
+                Persuasion: 1
+                Piloting: 0
+                Repair: 0
+                Research: 0
+                Riding: 0
+                Science: 0
+                Shooting: 0
+                Stealth: 1
+                Survival: 0
+                Taunt: 0
+                Thievery: 0
+            hinderances: 
+                - Ugly-*
+                    - (Inhuman)
+            edges:
+                - Fleet-Footed*
+                - Size*
+                - Upgradeable
+            cybernetics:
+                - Adrenal System*
+                - Armor Plating x3*
+                - Audio Package*
+                - Bionic Strength Augmentation*
+                - Core Electronics Pkg*
+                - Cyber Wired Reflexes*
+                - Internal Life Support*
+                - Nuclear Power Cell*
+                - Optics Package*
+                - Reinforced Frame x3*
+                - Synthetic Organ Replacement*
+            abilities:
+                - Bionic Augmentation*
+                - Harder than Steel*
+                - More Machine*
+                - Unarmed Combat*
+            complications:
+                - All Those Moving Parts*
+                - Full Conversion*
+                - Heavy
+                - Loss of Dexterity*
+                - Malfunctions*
+                - Shadow of Themselves*
+                - Spiritually Numb
+        -
+            name: Crazy
+            book_reference: TLPG
+        -
+            name: Cyber-Knight
+            book_reference: TLPG
+        -
+            name: Flame Wind Dragon Hatchling
+            book_reference: TLPG
+        -
+            name: Glitter Boy
+            book_reference: TLPG
+        -
+            name: Imported Heroic
+            book_reference: TLPG
+        -
+            name: Juicer
+            book_reference: TLPG
+        -
+            name: Ley Line Walker
+            book_reference: TLPG
+        -
+            name: MARS Body-Fixer
+            book_reference: TLPG
+        -
+            name: MARS City Rat
+            book_reference: TLPG
+        -
+            name: MARS Cyber Doc
+            book_reference: TLPG
+        -
+            name: MARS Headhunter Techno-Warrior
+            book_reference: TLPG
+        -
+            name: MARS Merc Soldier
+            book_reference: TLPG
+        -
+            name: MARS Operator
+            book_reference: TLPG
+        -
+            name: MARS Personal Concept Option
+            book_reference: TLPG
+        -
+            name: MARS Power Armor Ace
+            book_reference: TLPG
+        -
+            name: MARS Psi-Operator
+            book_reference: TLPG
+        -
+            name: MARS Robot Vehicle Ace
+            book_reference: TLPG
+        -
+            name: MARS Rogue Scholar
+            book_reference: TLPG
+        -
+            name: MARS Vagabond
+            book_reference: TLPG
+        -
+            name: MARS Wilderness Scout
+            book_reference: TLPG
+        -
+            name: Mind Melter
+            book_reference: TLPG
+        -
+        -
+            name: Mystic
+            book_reference: TLPG
+            description: Enlightened spell weavers in tune with the greater comic forces of the universe. 
+            stats:
+                Agility: 1
+                Smarts: 1
+                Spirit: 1
+                Strength: 1
+                Vigor: 1
+            chargen_points:
+                skills_points: 15
+                stats_points: 5
+                hj_slots: 2 
+                magic_slots: 3
+                psionic_slots: 3
+                hind_points: -2
+            counters:
+                ppe_max: 15
+                ppe_current: 15
+                isp_max: 20
+                isp_current: 15
+                bennies_max: 3
+                bennies_current: 3
+                conviction_current: 0
+                conviction_max: 0
+                damage: 0
+            traits:
+                rank: Novice
+                pace: 6
+            skills:
+                Academics: 0
+                Athletics: 1
+                Battle: 0
+                Boating: 0
+                Common Knowledge: 1
+                Driving: 0
+                Electronics: 0
+                Faith: 2
+                Fighting: 0
+                Gambling: 0
+                Hacking: 0
+                Healing: 0
+                Intimidation: 0
+                Language: 0
+                Notice: 1
+                Occult: 0
+                Performance: 0
+                Persuasion: 1
+                Piloting: 0
+                Psionics: 2
+                Repair: 0
+                Research: 0
+                Riding: 0
+                Science: 0
+                Shooting: 0
+                Stealth: 1
+                Survival: 0
+                Taunt: 0
+                Thievery: 0
+            hinderances: 
+                - Enemy-*
+            edges:
+                - Arcane Background*
+                    - Miracles
+                - Master of Magic*
+                - Arcane Background*
+                    - Psionic
+                - Major Psionic*
+                - Alertness*
+                - Danger Sense*
+            magic_powers:
+                - Concel Arcana*
+                - Detect Arcana*
+                - Divination*
+            abilities:
+                - Cosmic Confluence*
+                - Mystic Power Modifiers*
+            complications:
+                - Arcane Duality*
+                - Cybernetics*
+                - Higher Standard*
+                - Power Activators*
+        -
+            name: Techno-Wizard
+            book_reference: TLPG
+        -
+            name: Forest Runner DH
+            book_reference: TLFM
+        -
+            name: Great Horned DH
+            book_reference: TLFM
+        -
+            name: MARS Bounty Hunter
+            book_reference: TLFM
+        -
+            name: Royal Frilled DH
+            book_reference: TLFM
+        -
+            name: Snow Lizard DH
+            book_reference: TLFM
