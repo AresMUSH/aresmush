@@ -231,4 +231,19 @@ swade:
             book_reference: B&B
         -
             name: Sasquatch
-            book_reference: B&B     
+            book_reference: B&B
+        -
+            name: Vernulians
+            book_reference: TLFM
+            desc: Serpent People
+            edges:
+                - Four Arms^
+                - Natural Psionics^
+            hinderances:
+            attributes: 
+                Srength: 1
+            max_attribute_step: 
+            skills:
+                Athletics: 2
+            abilities:
+                - Semi-Aquatic^            
