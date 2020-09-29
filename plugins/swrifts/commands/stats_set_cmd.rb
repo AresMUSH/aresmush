@@ -44,8 +44,9 @@ module AresMUSH
 				ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
 					stat = Swrifts.find_stat(model, self.stat_name)				
 					stat.update(rating: new_rating)
+				
 				end
-
+				client.emit_success t('swrifts.points_spend')
 			end
 		end
 	end
