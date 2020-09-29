@@ -91,12 +91,12 @@ module AresMUSH
 		end
 
 		def self.chargen_points(char, points_name) # Aliana, stats_points
-			points_name = points_name.downcase
+			name_downcase = points_name.downcase
 			swriftschargen_points = char.swrifts_chargen_points
 			swriftschargen_points.to_a.sort_by { |a| a.name }
 			.each_with_index
 				.map do |a, i| 
-				if a.name.downcase == "#{countername}"
+				if a.name.downcase == "#{name_downcase}"
 					return a.rating
 				end
 			end	
