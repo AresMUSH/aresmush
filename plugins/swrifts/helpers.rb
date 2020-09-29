@@ -78,7 +78,7 @@ module AresMUSH
 		end
 		
 		def self.rating_to_die( rating )
-			rating_num = rating
+			rating_num = rating.to_i
 			case rating_num
 			when "0"
 				return "d4-1"
@@ -95,7 +95,7 @@ module AresMUSH
 			else
 				step = rating_num - 5
 				die_step = "d12+ #{step}"
-				return rating_num
+				return die_step
 			end
 		end
   
