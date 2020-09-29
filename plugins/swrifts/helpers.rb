@@ -10,6 +10,12 @@ module AresMUSH
       names.include?(name.downcase)
     end
  
+     def self.is_valid_race_name?(name)
+      return false if !name
+      names = Global.read_config('swrifts', 'races').map { |a| a['name'].downcase }
+      names.include?(name.downcase)
+    end
+ 
     def self.find_iconicf_config(name)
 		return nil if !name
 		types = Global.read_config('swrifts', 'iconicf')
