@@ -6,7 +6,7 @@ module AresMUSH
 			def handle
 				types = Global.read_config("swrifts", "race")
 				list = types.sort_by { |a| a['name']}
-				template = raceTemplate.new list
+				template = RaceTemplate.new list
 				client.emit template.render
 			end
 			
