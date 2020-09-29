@@ -11,7 +11,7 @@ module AresMUSH
 				args = cmd.parse_args(ArgParser.arg1_equals_arg2) #break <args> into arg1 and arg2
 			    self.target_name = enactor_name #set target to enactor
 			    self.stat_name = titlecase_arg(args.arg1) #set stat_name to arg1
-			    self.rating = downcase_arg(args.arg2) #set raing to arg2
+			    self.rating = integer_arg(args.arg2) #set raing to arg2
 			end
 
 			def required_args
