@@ -27,7 +27,7 @@ module AresMUSH
 			def check_stats_points
 				current_stats_points = Swrifts.point_rating(enactor, self.points_name)
 				if mod > current_stats_points
-					return t('swrifts.invalid_points' , :name => self.stat_name, :mod => self.mod)
+					return t('swrifts.invalid_points' , :name => self.stat_name, :num => current_stats_points, :mod => self.mod)
 				else
 					return nil
 				end
