@@ -1,8 +1,5 @@
 module AresMUSH
   module Swrifts
-    # def self.die_steps
-      # [ 'd2', 'd4', 'd6', 'd8', 'd10', 'd12', 'd12+d2', 'd12+d4', 'd12+d6', 'd12+d8', 'd12+d10', 'd12+d12' ]
-    # end
  
     def self.is_valid_iconicf_name?(name)
       return false if !name
@@ -78,6 +75,27 @@ module AresMUSH
     def self.find_stat(char, stat_name)
         name_downcase = stat_name.downcase
         char.swrifts_stats.select { |a| a.name.downcase == name_downcase }.first
+    end
+	
+	def self.rating_to_die( rating )
+		rating_num = rating to_i
+		case rating_num
+		when "0"
+			return "d4-1"
+		when "1"
+			return "d4"
+		when "2"
+			return "d6"
+		when "3"
+			return "d8"
+		when "4"
+			return "d10"
+		when "5"
+			return "d12"
+		else
+			step = rating_num - 5
+			return "d12+" step
+		end
     end
   
     # def self.format_die_step(input)
