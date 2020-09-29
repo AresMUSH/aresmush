@@ -77,5 +77,6 @@ en:
         iconiccomplications_set: "Iconic Framework Complications set."
         iconicchargenpoints_set: "Iconic Framework chargen points set."
         iconicf_complete: "Iconic Framework initialization is complete."
-        race_set: "You set your race to %{name}."
+        race_set: "You set your Race to %{name}."
+        race_invalid_name: "There is no Race named %{name}."
 

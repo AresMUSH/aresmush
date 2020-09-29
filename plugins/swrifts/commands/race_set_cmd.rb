@@ -27,6 +27,7 @@ module AresMUSH
 
 				ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
 					model.update(swrifts_race: self.race_name) 
+					# new attrib 'swrifts_race' needs to be in model.rb
 					client.emit_success t('swrifts.race_set', :name => self.race_name.capitalize)
 				end
 
