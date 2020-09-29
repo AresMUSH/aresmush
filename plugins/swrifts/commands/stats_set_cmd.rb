@@ -15,7 +15,7 @@ module AresMUSH
 			end
 
 			def required_args
-				[self.target_name, self.ability_name, self.rating]
+				[self.target_name, self.stat_name, self.rating]
 			end
 			
 			def check_valid_stat
