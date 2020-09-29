@@ -206,7 +206,7 @@ module AresMUSH
 		list.each do |c|
 			racename = c['name']
 			desc = c['desc']
-			book = c['book']
+			book = c['book_reference']
 			racestring = "#{racename}"
 			if desc
 				racestring << " - "
