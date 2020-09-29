@@ -28,10 +28,8 @@ module AresMUSH
 				when "race"
 					if (!cmd.args)							 
 						return RaceCmd
-						# return PendingCmd
 					else
 						return RaceSetCmd
-						# return PendingCmd
 					end
 				when "hj"
 					if (!cmd.args)							 
