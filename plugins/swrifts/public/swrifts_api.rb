@@ -155,8 +155,11 @@ module AresMUSH
 	def self.get_abilities_for_chargen(char)
 		# Format Iconic Framework table
 		swrifts_iconicf = Global.read_config('swrifts', 'iconicf')
-		iconicf = returniconicforcg(swrifts_iconicf)
+		iconicf = returniconicforcg(swrifts_iconicf)	
 		chariconicf = char.swrifts_iconicf
+		swrifts_race = Global.read_config('swrifts', 'races')			
+		cgrace = returnraceforcg(swrifts_race)
+		charrace = char.swrifts_race	
 		#iconicf='hellow world'
 		#iconicf = swrifts_iconicf.join(" ") #removes the comma's that seperates the entries		
 
@@ -172,6 +175,8 @@ module AresMUSH
 		return {
 		  iconicf: iconicf,
 		  chariconicf: chariconicf
+		  cgrace: cgrace
+		  charrace: charrace
 		  #stats: stats,
 		  #bennies: bennies,
 		  #conviction: conviction
@@ -179,17 +184,26 @@ module AresMUSH
 	end	
 	
 	def self.returniconicforcg(model)
-		looptext = ""
 		iconicfarray = Array.new
-		model = Global.read_config('swrifts', 'iconicf')
         list = model.sort_by { |a| a['name']}
 		list.each do |c|
 			ifname = c['name']
 			desc = c['description']
-			looptext = "#{looptext}<br />#{ifname} - #{desc}"
 			iconicfarray.push("#{ifname}")
 		end
 		return (iconicfarray)
+	end	
+	
+	def self.returnraceforcg(model)
+		racearray = Array.new
+        list = model.sort_by { |a| a['name']}
+		list.each do |c|
+			racename = c['name']
+			desc = c['desc']
+			book = c['book']
+			racearray.push("#{racename} - #{desc} (#{book})")
+		end
+		return (racearray)
 	end
 	
   end
