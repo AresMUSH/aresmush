@@ -1,86 +1,75 @@
-module AresMUSH    
-  module Swrifts
-    class AttributeSetCmd
-      include CommandHandler
-      
-      attr_accessor :target_name, :stat_name, :die_step, :acltest, :newacltest
- 
+module AresMUSH
 
+	module race
+		class StatsSetCmd
+			include CommandHandler
+			  
+			attr_accessor :target_name, :stat_name, :rating
+			
+			#command syntax: swrifts/stat	<stat_name>=<new_rating>
 
-      def parse_args
-	  
-        # Admin version
-        if (cmd.args =~ /\//)
-          args = cmd.parse_args(ArgParser.arg1_equals_arg2_slash_arg3) #ArgParser is a function that splits a command string
-          self.target_name = titlecase_arg(args.arg1) #Set the character to be updated from the command string
-          self.stat_name = titlecase_arg(args.arg2) #set the stat name to be updated from the command string
-          self.die_step = downcase_arg(args.arg3) #set the die_step to be updated from the command string
-        # Self version 
-		else
-          args = cmd.parse_args(ArgParser.arg1_equals_arg2) #ArgParser is a function that splits a command string
-          self.target_name = enactor_name #Set the character to be the current character
-          self.stat_name = titlecase_arg(args.arg1) #set the stat name to be updated from the command string
-          self.die_step = downcase_arg(args.arg2) #set the die_step to be updated from the command string
-        end
-        self.die_step = Swrifts.format_die_step(self.die_step)
-      end
-      
-      def required_args
-        [self.target_name, self.stat_name, self.die_step]
-      end
-      
-      def check_valid_die_step
-        return nil if self.die_step == '0'
-        return t('Swrifts.invalid_die_step', :die_step => self.die_step) if !Swrifts.is_valid_die_step?(self.die_step)
-        return nil
-      end
-      
-      def check_valid_stat
-        return t('Swrifts.invalid_stat_name', :name => self.stat_name) if !Swrifts.is_valid_stat_name?(self.stat_name)
-        return nil
-      end
-      
-      def check_can_set
-        return nil if enactor_name == self.target_name
-        return nil if Swrifts.can_manage_stats?(enactor)
-        return t('dispatcher.not_allowed')
-      end     
-      
-      def check_chargen_locked
-        return nil if Swrifts.can_manage_stats?(enactor)
-        Chargen.check_chargen_locked(enactor)
-      end
-      
-      def check_rating
-        return nil if Swrifts.can_manage_stats?(enactor)
-        Swriftscheck_max_starting_rating(self.die_step, 'max_stat_step')
-      end
-      
-      def handle
-	  
-        ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-          attr = Swrifts.find_stat(model, self.stat_name) #Calls the find stat function in /public/swrifts_model.rb and returns the HASHED record.
-		  
-          if (attr && self.die_step == '0')	#If the stat is set AND the die_step is 0 delete the stat in the character hash.		  
-            attr.delete
-            client.emit_success t('Swrifts.stat_removed', :name => self.stat_name)
-            return
-          end
-		    
-          if (attr) #If the stat is already set in the HASH then update it. 
-            attr.update(die_step: self.die_step)
-          else #If the stat is not already set in the HASH 
-			if (self.die_step != '0') #If the stat is missing and DIE_STEP is NOT set to 0, then set it
-				SwriftsAttribute.create(name: self.stat_name, die_step: self.die_step, character: model)
-			else #If the stat is missing and DIE_STEP is set to 0, then say it did nothing and just return.
-				client.emit_success t('Swrifts.stat_not_set', :name => self.stat_name)  #Tell player the stat wasn't set 
-				return
+			def parse_args
+				args = cmd.parse_args(ArgParser.arg1_equals_arg2) #break <args> into arg1 and arg2
+			    self.target_name = enactor_name #set target to enactor
+			    self.stat_name = titlecase_arg(args.arg1) #set stat_name to arg1
+			    self.rating = downcase_arg(args.arg2) #set raing to arg2
 			end
-          end
 
-          client.emit_success t('Swrifts.stat_set', :name => self.stat_name, :rating => self.die_step) #Tell the player the stat was set. 
-        end
-      end
-    end
-  end
+			def required_args
+				[self.target_name, self.ability_name, self.rating]
+			end
+			
+			def check_valid_stat
+				return t('swrifts.invalid_stat_name') if !Swrifts.is_valid_stat_name?(self.stat_name)
+				return nil
+			end			
+			  
+			# def stat_current
+				# stat = "stat_current"
+				# return_current_stat stat
+			# end
+			
+			# add check for stat cap max
+			
+			# def return_current_stat(statname)
+			# statname = traitname.downcase
+			# swriftsstats = @char.swrifts_stats
+			# swriftsstats.to_a.sort_by { |a| a.name }
+				# .each_with_index
+					# .map do |a, i| 
+					# if a.name.downcase == "#{statname}"
+						# return a.rating
+					# end
+				# end	
+			# end
+			  
+			def handle
+				current_rating = Swrifts.stat_rating(enactor, self.name)
+				client.emit ( current_rating )
+				mod = self.rating
+				client.emit ( mod )
+				new_rating = current_rating + mod
+				client.emit ( new_rating )
+
+				ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
+					stat = Swrifts.find_stat(model, self.stat_name)				
+					stat.update(rating: new.rating)
+
+				
+				
+				# error = Swrifts.check_rating(self.name, new_rating)
+				# if (error)
+				  # client.emit_failure error
+				  # return
+				# end
+			  
+				# error = Swrifts.set_stat(enactor, self.name, new_rating)
+				# if (error)
+				  # client.emit_failure error
+				# else
+				  # client.emit_success Swrifts.stat_raised_text(enactor, self.name)
+				# end
+			end
+		end
+	end
 end
