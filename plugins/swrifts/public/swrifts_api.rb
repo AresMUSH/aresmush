@@ -174,8 +174,8 @@ module AresMUSH
 
 		return {
 		  iconicf: iconicf,
-		  chariconicf: chariconicf
-		  cgrace: cgrace
+		  chariconicf: chariconicf,
+		  cgrace: cgrace,
 		  charrace: charrace
 		  #stats: stats,
 		  #bennies: bennies,
