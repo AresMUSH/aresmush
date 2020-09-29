@@ -95,7 +95,7 @@ module AresMUSH
 			else
 				step = rating_num - 5
 				die_step = "d12+ #{step}"
-				return die_step
+				return rating_num
 			end
 		end
   
