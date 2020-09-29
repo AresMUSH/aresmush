@@ -27,11 +27,9 @@ module AresMUSH
 					return ChargenpointsCmd
 				when "race"
 					if (!cmd.args)							 
-						# return RaceCmd
-						return PendingCmd
+						return RaceCmd
 					else
 						return RaceSetCmd
-						# return PendingCmd
 					end
 				when "hj"
 					if (!cmd.args)							 
@@ -53,8 +51,8 @@ module AresMUSH
 					if (!cmd.args)							 
 						return StatsCmd
 					else
-						# return StatsSetCmd
-						return PendingCmd
+						return StatsSetCmd
+						# return PendingCmd
 					end
 				when "skill"
 					if (!cmd.args)							 

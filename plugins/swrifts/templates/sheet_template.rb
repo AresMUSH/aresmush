@@ -11,6 +11,10 @@ module AresMUSH
 			def iconicf_name
 				@char.swrifts_iconicf
 			end
+			
+			def race_name
+				@char.swrifts_race
+			end
 
 			def stats
 				format_stats @char.swrifts_stats
@@ -70,7 +74,8 @@ module AresMUSH
 						.map do |a, i| 
 						linebreak = i % 5 == 0 ? "\n" : ""
 						title = right("#{ a.name }:".capitalize, 10)
-						rating = left(a.rating, 5)
+						die_rating = Swrifts.rating_to_die(a.rating)
+						rating = left(die_rating, 5)
 						"#{linebreak}#{title} #{rating}"
 				end
 			end
@@ -92,7 +97,8 @@ module AresMUSH
 						.map do |a, i| 
 						linebreak = i % 3 == 0 ? "\n" : ""
 						title = left("#{ a.name }".capitalize, 16,'.')
-						rating = left(a.rating, 7)
+						die_rating = Swrifts.rating_to_die(a.rating)
+						rating = left(die_rating, 7)
 						"#{linebreak} #{title} #{rating} "
 				end
 			end
@@ -129,16 +135,16 @@ module AresMUSH
 					end	
 			end
 			
-				def return_traits(traitname)
-				traitname = traitname.downcase
-				swriftstraits = @char.swrifts_traits
-				swriftstraits.to_a.sort_by { |a| a.name }
-					.each_with_index
-						.map do |a, i| 
-						if a.name.downcase == "#{traitname}"
-							return a.rating
-						end
-					end	
+			def return_traits(traitname)
+			traitname = traitname.downcase
+			swriftstraits = @char.swrifts_traits
+			swriftstraits.to_a.sort_by { |a| a.name }
+				.each_with_index
+					.map do |a, i| 
+					if a.name.downcase == "#{traitname}"
+						return a.rating
+					end
+				end	
 			end
 		
 		end

@@ -19,6 +19,7 @@ en:
         complications_title: "Complications"
         chargenpoints_title: "Chargen Points"
         damage_title: "Damage Level"
+
         
         invalid_stat_name: "%{name} is not a valid stat name."
         invalid_die_step: "%{rating} is not a valid die step."
@@ -76,4 +77,8 @@ en:
         iconiccomplications_set: "Iconic Framework Complications set."
         iconicchargenpoints_set: "Iconic Framework chargen points set."
         iconicf_complete: "Iconic Framework initialization is complete."
+        race_set: "You set your Race to %{name}."
+        race_invalid_name: "There is no Race named %{name}."
+        invalid_points: "You cannot spend %{mod} points on %{name}, you only have %{num} stat points."
+        points_spend: "You spend %{mod} points on %{name}."
 
