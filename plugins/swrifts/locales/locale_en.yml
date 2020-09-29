@@ -79,5 +79,5 @@ en:
         iconicf_complete: "Iconic Framework initialization is complete."
         race_set: "You set your Race to %{name}."
         race_invalid_name: "There is no Race named %{name}."
-        invalid_points: "You cannot spend %{mod} points on %{stat_name}, you only have #{num} stat points."
+        invalid_points: "You cannot spend %{mod} points on %{name}, you only have #{num} stat points."
 
