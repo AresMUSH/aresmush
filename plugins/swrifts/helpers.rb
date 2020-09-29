@@ -78,7 +78,7 @@ module AresMUSH
 		end
 		
 		def self.rating_to_die( rating )
-			rating_num = integer_rating
+			rating_num = rating
 			case rating_num
 			when "0"
 				return "d4-1"
