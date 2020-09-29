@@ -69,6 +69,16 @@ module AresMUSH
       name_downcase = stat_name.downcase
 	  model.swrifts_stats.select { |a| a.name.downcase == name_downcase }.first
     end
+	
+	def self.skill_rating(char, stat_name)
+        stat = Swrifts.find_stat(char, stat_name)
+        stat ? stat.rating : 0
+    end
+	
+    def self.find_stat(char, stat_name)
+        name_downcase = stat_name.downcase
+        char.swrifts_stats.select { |a| a.name.downcase == name_downcase }.first
+    end
   
     # def self.format_die_step(input)
       # return "" if !input
