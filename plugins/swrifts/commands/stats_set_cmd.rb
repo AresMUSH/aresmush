@@ -25,7 +25,7 @@ module AresMUSH
 			end
 			
 			def check_stats_points
-				current_stats_points = Swrifts.chargen_points(enactor, self.points_name)
+				current_stats_points = Swrifts.point_rating(enactor, self.points_name)
 				if mod > current_stats_points
 					return t('swrifts.invalid_points')
 				else
