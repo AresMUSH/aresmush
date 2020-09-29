@@ -80,4 +80,5 @@ en:
         race_set: "You set your Race to %{name}."
         race_invalid_name: "There is no Race named %{name}."
         invalid_points: "You cannot spend %{mod} points on %{name}, you only have %{num} stat points."
+        points_spend: "You spend %{mod} points on %{name}."
 
