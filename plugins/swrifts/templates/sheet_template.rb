@@ -97,7 +97,8 @@ module AresMUSH
 						.map do |a, i| 
 						linebreak = i % 3 == 0 ? "\n" : ""
 						title = left("#{ a.name }".capitalize, 16,'.')
-						rating = left(a.rating, 7)
+						die_rating = Swrifts.rating_to_die(a.rating)
+						rating = left(die_rating, 7)
 						"#{linebreak} #{title} #{rating} "
 				end
 			end
