@@ -46,7 +46,7 @@ module AresMUSH
 					stat.update(rating: new_rating)
 				
 				end
-				client.emit_success t('swrifts.points_spend')
+				client.emit_success t('swrifts.points_spend', :name => self.stat_name, :mod => self.mod)
 			end
 		end
 	end
