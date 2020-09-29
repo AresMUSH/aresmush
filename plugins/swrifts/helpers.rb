@@ -94,8 +94,9 @@ module AresMUSH
 				return "d12"
 			else
 				step = rating_num - 5
+				step_to_string = step.to_s
 				die_step = "d12+" 
-				return die_step+step
+				return die_step+step_to_string
 			end
 		end
   
