@@ -207,7 +207,18 @@ module AresMUSH
 			racename = c['name']
 			desc = c['desc']
 			book = c['book']
-			racearray.push("#{racename} - #{desc} (#{book})")
+			racestring = "#{racename}"
+			if desc
+				racestring << " - "
+				racestring << desc
+			end
+			
+			if book
+				racestring << " ("
+				racestring << book
+				racestring << ")"
+			end
+			racearray.push("#{racestring}")
 		end
 		return (racearray)
 	end
