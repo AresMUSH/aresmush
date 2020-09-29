@@ -74,7 +74,7 @@ module AresMUSH
 		
 		def self.find_points(char, points_name)
 			name_downcase = points_name.downcase
-			char.swrifts_chargen_points.select { |a| a.name.downcase == name_downcase }.first
+			char.swrifts_chargenpoints.select { |a| a.name.downcase == name_downcase }.first
 		end
 		
 		def self.rating_to_die( rating )
