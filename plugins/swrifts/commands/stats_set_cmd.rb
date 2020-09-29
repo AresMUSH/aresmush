@@ -1,6 +1,5 @@
 module AresMUSH
-
-	module race
+	module Swrifts
 		class StatsSetCmd
 			include CommandHandler
 			  
@@ -54,7 +53,7 @@ module AresMUSH
 				ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
 					stat = Swrifts.find_stat(model, self.stat_name)				
 					stat.update(rating: new.rating)
-
+				end
 				
 				
 				# error = Swrifts.check_rating(self.name, new_rating)
