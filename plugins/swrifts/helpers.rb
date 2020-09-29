@@ -30,9 +30,17 @@ module AresMUSH
 	def self.get_iconicf(char, iconicf_name)
 		charac = Swrifts.find_iconicf_config(iconicf_name)
 	end
+	
+	def self.get_race(char, race_name)
+		charac = Swrifts.find_race_config(race_name)
+	end
  
     def self.set_iconicf_name(char, iconicf_name, enactor)
 		char.update(swrifts_iconicf: iconicf_name)
+	end
+	
+	def self.set_race_name(char, race_name, enactor)
+		char.update(swrifts_race: race_name)
 	end
  
 
