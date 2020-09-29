@@ -43,7 +43,7 @@ module AresMUSH
 			# end
 			  
 			def handle
-				current_rating = Swrifts.stat_rating(enactor, self.name)
+				current_rating = Swrifts.stat_rating(enactor, self.stat_name)
 				client.emit ( current_rating )
 				mod = self.rating
 				client.emit ( mod )
