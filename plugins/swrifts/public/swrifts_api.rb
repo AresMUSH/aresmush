@@ -160,10 +160,11 @@ module AresMUSH
 		swrifts_race = Global.read_config('swrifts', 'races')			
 		cgrace = returnraceforcg(swrifts_race)
 		
-		charrace = char.swrifts_race
-		if (charrace.empty) 
-			charrace ="Human"		
-		end
+		# if char.swrifts_race
+			# charrace = char.swrifts_race
+		# else
+			charrace = "Human"		
+		#end
 		#iconicf='hellow world'
 		#iconicf = swrifts_iconicf.join(" ") #removes the comma's that seperates the entries		
 
