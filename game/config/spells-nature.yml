@@ -684,6 +684,16 @@ spells:
     school: Nature
     range: Self
     weapon: Claws
+  Greater Wild Shape Felidae:
+    available: true
+    armor: Tough Hide
+    desc: Wild Shape Felidae
+    level: 7
+    name: Wild Shape Felidae
+    roll: true
+    school: Nature
+    range: Self
+    weapon: Claws
   Greater Wild Shape Ursidae:
     available: true
     armor: Tough Hide
