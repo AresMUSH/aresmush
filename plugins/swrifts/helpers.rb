@@ -45,11 +45,6 @@ module AresMUSH
 		def self.set_race_name(char, race_name, enactor)
 			char.update(swrifts_race: race_name)
 		end
-	 
-
-		# def self.is_valid_die_step?(step)
-		  # Swrifts.die_steps.include?(step)
-		# end
 		
 		def self.is_valid_stat_name?(name)
 		  return false if !name
@@ -62,17 +57,12 @@ module AresMUSH
 		  actor.has_permission?("manage_apps")
 		end
 		
-		def self.find_stat(model, stat_name)
-		  name_downcase = stat_name.downcase
-		  model.swrifts_stats.select { |a| a.name.downcase == name_downcase }.first
-		end
-		
 		def self.stat_rating(char, stat_name)
 			stat = Swrifts.find_stat(char, stat_name)
 			stat ? stat.rating : 0
 		end
 		
-		def self.find_stat(char, stat_name)
+		def self.find_stat(char, stat_name) #deleted version with 'model' instead of 'char'
 			name_downcase = stat_name.downcase
 			char.swrifts_stats.select { |a| a.name.downcase == name_downcase }.first
 		end
@@ -99,23 +89,20 @@ module AresMUSH
 				return die_step+step_to_string
 			end
 		end
+
+		def self.chargen_points(char, points_name) # Aliana, stats_points
+			points_name = points_name.downcase
+			swriftschargen_points = @char.swrifts_chargen_points
+			swriftschargen_points.to_a.sort_by { |a| a.name }
+			.each_with_index
+				.map do |a, i| 
+				if a.name.downcase == "#{countername}"
+					return a.rating
+				end
+			end	
+		end
   
-		# def self.format_die_step(input)
-		  # return "" if !input
-		  # input.downcase.gsub(" ", "")
-		# end
-		
-		# def self.find_stat_step(char, stat_name)
-		  # return nil if !stat_name
-		  
-		  # #case stat_name.downcase
-		  
-		  # [ char.Swrifts_stats ].each do |list|
-			# found = list.select { |a| a.name.downcase == ability_name.downcase }.first
-			# return found.die_step if found
-		  # end
-		  # return nil
-		# end
+
 		
 		# def self.check_max_starting_rating(die_step, config_setting)
 		  # max_step = Global.read_config("Swrifts", config_setting)
@@ -127,18 +114,7 @@ module AresMUSH
 		  # return t('Swrifts.starting_rating_limit', :step => max_step)
 		# end
 		
-		# def self.points_for_step(die_step)
-		  # costs = {
-			# 'd2' => 1,
-			# 'd4' => 2,
-			# 'd6' => 3,
-			# 'd8' => 4,
-			# 'd10' => 5,
-			# 'd12' => 6,
-		  # }
 
-		  # costs[die_step] || 0
-		# end
 
 	end
 end
