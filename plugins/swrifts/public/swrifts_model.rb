@@ -15,6 +15,7 @@ module AresMUSH
 		collection :swrifts_counters, "AresMUSH::SwriftsCounters"
 
 		attribute :swrifts_iconicf
+		attribute :swrifts_race
 
 		
 		before_delete :delete_swrifts_chargen
