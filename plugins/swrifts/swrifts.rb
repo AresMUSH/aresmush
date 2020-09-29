@@ -51,8 +51,8 @@ module AresMUSH
 					if (!cmd.args)							 
 						return StatsCmd
 					else
-						# return StatsSetCmd
-						return PendingCmd
+						return StatsSetCmd
+						# return PendingCmd
 					end
 				when "skill"
 					if (!cmd.args)							 
