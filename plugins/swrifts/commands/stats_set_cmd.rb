@@ -3,7 +3,7 @@ module AresMUSH
 		class StatsSetCmd
 			include CommandHandler
 			  
-			attr_accessor :target_name, :stat_name, :mod
+			attr_accessor :target_name, :stat_name, :mod, points_name
 			
 			#command syntax: swrifts/stat	<stat_name>=<new_rating>
 
