@@ -22,6 +22,12 @@ module AresMUSH
 		types.select { |a| a['name'].downcase == name.downcase }.first
     end
 
+    def self.find_race_config(name)
+		return nil if !name
+		types = Global.read_config('swrifts', 'races')
+		types.select { |a| a['name'].downcase == name.downcase }.first
+    end
+
     def self.find_iconicf(model, iconicf_name)
       name_downcase = iconicf_name.downcase
       model.swrifts_iconicf.select { |a| a.name.downcase == name_downcase }.first
