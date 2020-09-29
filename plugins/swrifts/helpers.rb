@@ -70,7 +70,7 @@ module AresMUSH
 	  model.swrifts_stats.select { |a| a.name.downcase == name_downcase }.first
     end
 	
-	def self.skill_rating(char, stat_name)
+	def self.stat_rating(char, stat_name)
         stat = Swrifts.find_stat(char, stat_name)
         stat ? stat.rating : 0
     end
