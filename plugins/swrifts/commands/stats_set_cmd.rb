@@ -37,11 +37,19 @@ module AresMUSH
 				current_rating = Swrifts.stat_rating(enactor, self.stat_name)
 				mod = self.mod
 				new_rating = current_rating + mod
+				current_points = Swrifts.point_rating(enactor, self.points_name)
+				new_points = current_points - mod
 
 				ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
 					stat = Swrifts.find_stat(model, self.stat_name)				
 					stat.update(rating: new_rating)
 				end
+				
+				ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
+					points = Swrifts.find_points(model, self.points_name)	
+					stat.update(rating: new_points)
+				end
+				
 				client.emit_success t('swrifts.points_spend' , :name => self.stat_name, :mod => self.mod)
 			end
 		end
