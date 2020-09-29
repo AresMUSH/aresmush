@@ -81,7 +81,7 @@ module AresMUSH
 			rating_num = rating.to_i
 			case rating_num
 			when 0
-				return "d4-1"
+				return "d4-2"
 			when 1
 				return "d4"
 			when 2
