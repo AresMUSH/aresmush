@@ -195,7 +195,14 @@ module AresMUSH
 		list.each do |c|
 			ifname = c['name']
 			desc = c['description']
-			iconicfarray.push("#{ifname}")
+			ifstring = "#{ifname}"
+			book = c['book_reference']
+			if book
+				ifstring << " ("
+				ifstring << book
+				ifstring << ")"
+			end			
+			iconicfarray.push("#{ifstring}")
 		end
 		return (iconicfarray)
 	end	
