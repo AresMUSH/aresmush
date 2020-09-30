@@ -35,7 +35,6 @@ module AresMUSH
 		char.update(swrifts_iconicf: Website.format_input_for_mush('Mystic'))
         return ['something went wrong']
       end
-      
     end
   end
 end
