@@ -1,0 +1,5 @@
+<%= header %>
+<% permissions.each do |p|%>
+<%= left(p[:name],20) %> <%= left(p[:section],12) %> <%= p[:description] %>
+<% end %>
+<%= footer %>

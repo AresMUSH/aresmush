@@ -37,6 +37,8 @@ module AresMUSH
         when nil
           return RolesCmd
         end
+      when "permissions"
+        return PermissionsCmd
       end
       
       nil
