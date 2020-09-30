@@ -36,7 +36,7 @@ module AresMUSH
       # Example: char.update(goals: chargen_data[:custom][:goals])
       def self.save_fields_from_chargen(char, chargen_data)
 	    var acltest;
-		acltest = Website.format_input_for_mush(char_data[:custom][:iconicf]);
+		acltest = 'kkkkkkk';
 		console.log ('acltest:');
 		console.log (acltest);
 		char.update(swrifts_iconicf: Website.format_input_for_mush(char_data[:custom][:iconicf]))
