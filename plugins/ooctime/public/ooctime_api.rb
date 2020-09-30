@@ -63,5 +63,19 @@ module AresMUSH
       
       "#{formatted_time.strip} #{timezone}"
     end
+    
+    def self.timezone_names
+      Timezone.names
+    end
+    
+    def self.set_timezone(char, zone)
+      zone = OOCTime.convert_timezone_alias(zone)
+      if (!OOCTime.timezone_names.include?(zone))
+        return t('time.invalid_timezone')
+      end
+      
+      char.update(ooctime_timezone: zone)
+      return nil
+    end
   end
 end
