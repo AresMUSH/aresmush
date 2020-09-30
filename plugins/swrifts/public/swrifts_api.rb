@@ -234,6 +234,26 @@ module AresMUSH
 		return (racearray)
 	end
 	
+	
+	#CG SAVE
+	
+	def self.savecgfields(char, chargen_data)
+	
+		c_iconicf = chargen_data[:custom][:iconicf]
+		c_race = chargen_data[:custom][:race]
+		
+		chopped_iconicf = c_iconicf[/[^~]+/]
+		chopped_race = c_race[/[^~]+/]
+		
+        return {
+          swrifts_iconicf: chopped_iconicf,
+		  swrifts_race: chopped_race,
+		  #bennies: bennies,
+		  #conviction: conviction
+        } 
+
+	end
+	
   end
 
 end
