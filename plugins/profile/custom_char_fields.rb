@@ -39,7 +39,7 @@ module AresMUSH
 		chopped_race = c_race[/[^~]+/]
 		char.update(swrifts_iconicf: Website.format_input_for_mush(chopped_iconicf), swrifts_race: Website.format_input_for_mush(chopped_race))
 		
-        return []
+        return ["Iconfic Framework Set to: #{chopped_iconicf}", "Race set to: #{chopped_race}"]
       end
     end
   end
