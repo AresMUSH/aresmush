@@ -35,7 +35,6 @@ module AresMUSH
 		choppedif = charif[/[^~]+/]
 		errormsg = "Something went wrong: #{choppedif}"
 		char.update(swrifts_iconicf: Website.format_input_for_mush(choppedif))
-		
         return [errormsg]
       end
     end
