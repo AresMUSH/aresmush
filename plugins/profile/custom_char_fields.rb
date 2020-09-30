@@ -34,7 +34,7 @@ module AresMUSH
 	  	#charif = chargen_data[:cutom][:iconicf]
 		choppedif = "Shifter"
 		char.update(swrifts_iconicf: Website.format_input_for_mush(choppedif))
-        return ['Something went wrong:']
+        return []
       end
     end
   end
