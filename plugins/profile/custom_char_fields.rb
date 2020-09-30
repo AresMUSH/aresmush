@@ -32,8 +32,12 @@ module AresMUSH
       # Example: char.update(goals: chargen_data[:custom][:goals])
       def self.save_fields_from_chargen(char, chargen_data)
 	  
-		fieldupd = Swrifts.savecgfields(char, chargen_data)
-		char.update(swrifts_iconicf: Website.format_input_for_mush(fieldupd[:chopped_iconicf]), swrifts_race: Website.format_input_for_mush(fieldupd[:chopped_race]))
+		c_iconicf = chargen_data[:custom][:iconicf]
+		c_race = chargen_data[:custom][:race]
+		
+		chopped_iconicf = c_iconicf[/[^~]+/]
+		chopped_race = c_race[/[^~]+/]
+		char.update(swrifts_iconicf: Website.format_input_for_mush(chopped_iconicf), swrifts_race: Website.format_input_for_mush(chopped_race))
 		
         return []
       end
