@@ -161,7 +161,7 @@ module AresMUSH
 		cgrace = returnraceforcg(swrifts_race)
 		
 		if char.swrifts_race
-			charrace = char.swrifts_race
+			charrace = char.swrifts_race.titleize
 		else
 			charrace = "Human"		
 		end
