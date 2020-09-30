@@ -27,7 +27,7 @@ module AresMUSH
 	    var acltest1;
 		acltest1 = char_data[:custom][:iconicf];
 		console.log ('acltest1:');
-		console.log (acltest);
+		console.log (acltest1);
 		char.update(swrifts_iconicf: Website.format_input_for_mush(char_data[:custom][:iconicf]))
       end
       
