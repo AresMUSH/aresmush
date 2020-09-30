@@ -36,12 +36,12 @@ module AresMUSH
 	  	charif = chargen_data[:custom][:iconicf]
 		choppedif = charif[/[^~]+/]
 		
-		#Get only the race and not the desc or book
-		charrace = chargen_data[:custom][:cgrace]
-		choppedrace = charrace[/[^~]+/]	
+		# #Get only the race and not the desc or book
+		# charrace = chargen_data[:custom][:cgrace]
+		# choppedrace = charrace[/[^~]+/]	
 		
-		
-		char.update(swrifts_iconicf: Website.format_input_for_mush(choppedif), swrifts_race: Website.format_input_for_mush(choppedrace))
+		#char.update(swrifts_iconicf: Website.format_input_for_mush(choppedif), swrifts_race: Website.format_input_for_mush(choppedrace))
+		char.update(swrifts_iconicf: Website.format_input_for_mush(choppedif))
 		
         return []
       end
