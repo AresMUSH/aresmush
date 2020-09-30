@@ -233,5 +233,7 @@ module AresMUSH
 		end
 		return (racearray)
 	end
+	
+  end
 
 end
