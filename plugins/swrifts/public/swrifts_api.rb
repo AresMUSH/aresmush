@@ -156,7 +156,7 @@ module AresMUSH
 		# Format Iconic Framework table
 		swrifts_iconicf = Global.read_config('swrifts', 'iconicf')
 		iconicf = returniconicforcg(swrifts_iconicf)	
-		chariconicf = char.swrifts_iconicf
+		chariconicf = char.swrifts_iconicf.titleize
 		swrifts_race = Global.read_config('swrifts', 'races')			
 		cgrace = returnraceforcg(swrifts_race)
 		
