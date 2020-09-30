@@ -31,10 +31,18 @@ module AresMUSH
       # Note Custom fields will be in chargen_data[:custom]
       # Example: char.update(goals: chargen_data[:custom][:goals])
       def self.save_fields_from_chargen(char, chargen_data)
+	  
+		#Get only the iconic framework and not the book
 	  	charif = chargen_data[:custom][:iconicf]
 		choppedif = charif[/[^~]+/]
-		#choppedif = "Crazy"
-		char.update(swrifts_iconicf: Website.format_input_for_mush(choppedif))
+		
+		#Get only the race and not the desc or book
+		charrace = chargen_data[:custom][:cgrace]
+		choppedrace = charrace[/[^~]+/]	
+		
+		
+		char.update(swrifts_iconicf: Website.format_input_for_mush(choppedif),swrifts_race: Website.format_input_for_mush(choppedrace))
+		
         return []
       end
     end
