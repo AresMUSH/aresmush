@@ -31,8 +31,9 @@ module AresMUSH
       # Note Custom fields will be in chargen_data[:custom]
       # Example: char.update(goals: chargen_data[:custom][:goals])
       def self.save_fields_from_chargen(char, chargen_data)
-	  	#charif = chargen_data[:cutom][:iconicf]
-		choppedif = "Crazy"
+	  	charif = chargen_data[:custom][:iconicf]
+		choppedif = charif[/[^~]+/]
+		#choppedif = "Crazy"
 		char.update(swrifts_iconicf: Website.format_input_for_mush(choppedif))
         return []
       end
