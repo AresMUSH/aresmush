@@ -155,11 +155,15 @@ module AresMUSH
 	def self.get_abilities_for_chargen(char)
 		# Format Iconic Framework table
 		swrifts_iconicf = Global.read_config('swrifts', 'iconicf')
-		iconicf = returniconicforcg(swrifts_iconicf)	
-		chariconicf = char.swrifts_iconicf.titleize
+		iconicf = returniconicforcg(swrifts_iconicf)
+		if char.swrifts_iconicf
+			chariconicf = char.swrifts_iconicf.titleize
+		else
+			chariconicf = ""
+		end
+		
 		swrifts_race = Global.read_config('swrifts', 'races')			
 		cgrace = returnraceforcg(swrifts_race)
-		
 		if char.swrifts_race
 			charrace = char.swrifts_race.titleize
 		else
