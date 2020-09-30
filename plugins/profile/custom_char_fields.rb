@@ -35,7 +35,7 @@ module AresMUSH
 		choppedif = charif[/[^~]+/]
 		#choppedif = "Crazy"
 		char.update(swrifts_iconicf: Website.format_input_for_mush(choppedif))
-        return [choppedif]
+        return []
       end
     end
   end
