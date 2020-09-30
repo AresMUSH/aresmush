@@ -3,10 +3,12 @@ module AresMUSH
     class ExamineCmd
       include CommandHandler
       
-      attr_accessor :target
+      attr_accessor :target, :attr_name
       
       def parse_args
-        self.target = trim_arg(cmd.args)
+        args = cmd.parse_args(ArgParser.arg1_slash_optional_arg2)
+        self.target = trim_arg(args.arg1)
+        self.attr_name = trim_arg(args.arg2)
       end
       
       def required_args
@@ -33,9 +35,15 @@ module AresMUSH
         end
 
         line = "-".repeat(78)
-        json = model.print_json
+        if (self.attr_name)
+          attr_val = model.attributes[self.attr_name.to_sym]
+          display = "#{line}\n#{self.attr_name}: #{attr_val}\n#{line}"
+        else
+          json = model.print_json
+          display = "#{line}\n#{model.name} (#{model.dbref})\n\n#{json}#{}\n#{line}"
+        end
         
-        client.emit_raw "#{line}\n#{model.name} (#{model.dbref})\n\n#{json}#{}\n#{line}"
+        client.emit_raw display
       end
       
       def print_model
