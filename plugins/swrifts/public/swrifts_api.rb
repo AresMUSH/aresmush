@@ -197,7 +197,7 @@ module AresMUSH
 			ifstring = "#{ifname}"
 			book = c['book_reference']
 			if book
-				ifstring << " ("
+				ifstring << " ~ ("
 				ifstring << book
 				ifstring << ")"
 			end			
