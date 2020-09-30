@@ -41,7 +41,7 @@ module AresMUSH
 		choppedrace = charrace[/[^~]+/]	
 		
 		
-		char.update(swrifts_iconicf: Website.format_input_for_mush(choppedif),swrifts_race: Website.format_input_for_mush(choppedrace))
+		char.update(swrifts_iconicf: Website.format_input_for_mush(choppedif), swrifts_race: Website.format_input_for_mush(choppedrace))
 		
         return []
       end
