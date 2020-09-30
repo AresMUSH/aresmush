@@ -33,6 +33,7 @@ module AresMUSH
       def self.save_fields_from_chargen(char, chargen_data)
 		charif = char_data[:cutom][:iconicf]
 		choppedif = charif[/[^~]+/]
+		"#{choppedif}"
 		char.update(swrifts_iconicf: Website.format_input_for_mush(choppedif))
         return ['something went wrong']
       end
