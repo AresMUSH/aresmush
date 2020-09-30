@@ -24,7 +24,11 @@ module AresMUSH
       # Custom fields will be in char_data[:custom]
       # Example: char.update(goals: char_data[:custom][:goals])
       def self.save_fields_from_profile_edit(char, char_data)
-
+	    var acltest1;
+		acltest1 = char_data[:custom][:iconicf];
+		console.log ('acltest1:');
+		console.log (acltest);
+		char.update(swrifts_iconicf: Website.format_input_for_mush(char_data[:custom][:iconicf]))
       end
       
       # Save fields and return an array of any error messages.
