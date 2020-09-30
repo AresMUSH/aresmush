@@ -214,8 +214,13 @@ module AresMUSH
 			desc = c['desc']
 			book = c['book_reference']
 			racestring = "#{racename}"
+			
+			if desc || book 
+				racestring << " ~ "
+			end
+			
 			if desc
-				racestring << " - "
+				racestring << " "
 				racestring << desc
 			end
 			
