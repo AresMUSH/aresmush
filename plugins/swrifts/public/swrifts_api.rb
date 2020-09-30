@@ -201,9 +201,9 @@ module AresMUSH
 			ifstring = "#{ifname}"
 			book = c['book_reference']
 			if book
-				ifstring << " ~ <span class='swbook'>("
+				ifstring << " ~ ("
 				ifstring << book
-				ifstring << ")</span>"
+				ifstring << ")"
 			end			
 			iconicfarray.push("#{ifstring}")
 		end
