@@ -36,5 +36,22 @@ module AresMUSH
       end
       admins
     end
+    
+    def self.all_permissions
+      permissions = []
+      Global.config_reader.config.keys.each do |section|
+        config = Global.read_config(section)
+        if (config['permissions'])
+          config['permissions'].each do |k, v|
+            permissions << {
+              section: section,
+              name: k,
+              description: v
+            }
+          end
+        end
+      end
+      permissions
+    end
   end
 end
