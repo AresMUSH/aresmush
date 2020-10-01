@@ -251,7 +251,7 @@ module AresMUSH
 		cg = Global.read_config('swrifts', 'iconicf')
 		cgpointsarray.push (downsizetitle)
 		cgpointsarray.push (cg.class)
-		cg = model.sort_by { |a| a['name']}
+		cg = cg.sort_by { |a| a['name']}
 		cg.each do |c|
 			if (c['name'] == downsizetitle)
 				cgpointsarray.push (c['chargen_points'])
