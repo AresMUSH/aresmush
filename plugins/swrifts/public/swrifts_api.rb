@@ -253,7 +253,7 @@ module AresMUSH
 		newdsclass = newds.class
 		cg = Global.read_config('swrifts', 'iconicf')
 		cgpointsarray.push (downsizetitle)
-		cgpointsarray.push (downsizetitleclass
+		cgpointsarray.push (downsizetitleclass)
 		cgpointsarray.push (newds)
 		cgpointsarray.push (newdsclass)
 		cg = cg.sort_by { |a| a['name']}
