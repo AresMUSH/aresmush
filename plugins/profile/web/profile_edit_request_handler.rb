@@ -59,6 +59,14 @@ module AresMUSH
           text: Website.format_input_for_html(data['relationship'])
         }}
         
+        roster = {
+            on_roster: char.on_roster?,
+            notes: Website.format_input_for_html(char.roster_notes),
+            contact: char.roster_contact,
+            played: char.roster_played,
+            restricted: char.roster_restricted
+          }
+        
         files = Profile.character_page_files(char)
         files = files.sort.map { |f| Website.get_file_info(f) }
         
@@ -69,6 +77,7 @@ module AresMUSH
           demographics: demographics,
           background: Website.format_input_for_html(char.background),
           is_profile_manager: manager,
+          is_roster_manager: enactor && Idle.can_manage_roster?(enactor),
           rp_hooks: Website.format_input_for_html(char.rp_hooks),
           desc: Website.format_input_for_html(char.description),
           shortdesc: char.shortdesc ? char.shortdesc : '',
@@ -84,7 +93,8 @@ module AresMUSH
           lastwill: Website.format_input_for_html(char.idle_lastwill),
           custom: CustomCharFields.get_fields_for_editing(char, enactor),
           descs: Describe.get_web_descs_for_edit(char),
-          genders: Demographics.genders
+          genders: Demographics.genders,
+          roster: roster
         }
       end
     end
