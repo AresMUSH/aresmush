@@ -257,7 +257,6 @@ module AresMUSH
 				else #otherwise set desc and Linked Stat to nothing
 					cgpointsarray.push ('')
 				end
-			end
 
 		# cgp = cg.sort_by { |a| a['name']}
 		# cgp.each do |c|	
