@@ -247,7 +247,7 @@ module AresMUSH
 	
 	def self.returncgpforcg(cg, chariconicf)
 		cgpointsarray = Array.new
-		chariconicf.to_a.sort_by { |a| a.name }	
+		chariconicf.sort_by { |a| a.name }	
 		.each_with_index
 			.map do |a, i| 
 				correcttitle = "#{a.name}".titleize
