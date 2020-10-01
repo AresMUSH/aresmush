@@ -250,7 +250,7 @@ module AresMUSH
 		cgp = cg.sort_by { |a| a['name']}
 		cgp.each do |c|
 			ifcgp = c['chargen_points']
-			cgpointsarray = push("#{ifcgp}")
+			cgpointsarray.push("#{ifcgp}")
 		end
 		#cgp.each do |key,value|
 			#cgpointname = c['name']
