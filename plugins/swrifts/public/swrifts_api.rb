@@ -246,9 +246,7 @@ module AresMUSH
 	end
 	
 	def self.returncgpforcg(cg, chariconicf)
-		charicf = chariconicf.downcase
 		cgpointsarray = Array.new
-		
 		chariconicf.to_a.sort_by { |a| a.name }	
 		.each_with_index
 			.map do |a, i| 
