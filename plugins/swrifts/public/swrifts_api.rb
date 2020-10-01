@@ -173,8 +173,8 @@ module AresMUSH
 		end
 		
 		# Set up Chargen Points
-		#cgpoints = returncgpointsforcg(swrifts_iconicf)
-		cgpoints = ''		
+		cgpoints = returncgpforcg(swrifts_iconicf)
+		#cgpoints = ''		
 		
 		#iconicf='hellow world'
 		#iconicf = swrifts_iconicf.join(" ") #removes the comma's that seperates the entries		
@@ -246,9 +246,10 @@ module AresMUSH
 		return (racearray)
 	end
 	
-	def returncgpointsforcg(cg)
-		cgpointsarray = Array.new
-		cgp = cg['chargen_points']
+	def returncgpforcg(cg)
+		return 'hellow word'
+		#cgpointsarray = Array.new
+		#cgp = cg['chargen_points']
 		#cgp.each do |key,value|
 			#cgpointname = c['name']
 			#desc = c['description']
@@ -262,7 +263,7 @@ module AresMUSH
 			#cgpointsarray.push("#{key}: #{value}")
 		#end
 		#return (cgpointsarray)
-		return (cgp)
+		#return (cgp)
 	end		
 	
   end
