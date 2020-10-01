@@ -245,10 +245,10 @@ module AresMUSH
 		return (racearray)
 	end
 	
-	def returncgpointsforcg(chargen_points)
+	def returncgpointsforcg(cg)
 		cgpointsarray = Array.new
-		cgp = chargen_points['chargen_points']
-		cgp.each do |key,value|
+		cgp = cg['chargen_points']
+		#cgp.each do |key,value|
 			#cgpointname = c['name']
 			#desc = c['description']
 			# ifstring = "#{ifname}"
@@ -258,9 +258,10 @@ module AresMUSH
 				# ifstring << book
 				# ifstring << ")"
 			# end			
-			cgpointsarray.push("#{key}: #{value}")
-		end
-		return (cgpointsarray)
+			#cgpointsarray.push("#{key}: #{value}")
+		#end
+		#return (cgpointsarray)
+		return (cgp)
 	end		
 	
   end
