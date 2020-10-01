@@ -260,7 +260,7 @@ module AresMUSH
 			cnameclass = cname.class
 			cgpointsarray.push ("cgname: #{cname}")
 			cgpointsarray.push ("cgnameclass: #{cnameclass}")
-			if (cname == downsizetitle)
+			if ("#{cname}" == "#{downsizetitle}")
 				cgpointsarray.push ("cgname: #{cname}")
 			end
 		end
