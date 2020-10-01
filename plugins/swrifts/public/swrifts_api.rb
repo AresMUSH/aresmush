@@ -255,7 +255,7 @@ module AresMUSH
 				if (cgp)   #if something is returned from the global skills table, set the Desc and Linked Stat.
 					cgpointsarray.push (cg['chargen_points'])
 				else #otherwise set desc and Linked Stat to nothing
-					cgpointsarray.push ('')
+					cgpointsarray.push ('nout')
 				end
 
 		# cgp = cg.sort_by { |a| a['name']}
