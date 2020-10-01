@@ -247,7 +247,7 @@ module AresMUSH
 	
 	def returncgpointsforcg(chargen_points)
 		cgpointsarray = Array.new
-		cgp = chargen_points['chargen_point']
+		cgp = chargen_points['chargen_points']
 		cgp.each do |key,value|
 			#cgpointname = c['name']
 			#desc = c['description']
