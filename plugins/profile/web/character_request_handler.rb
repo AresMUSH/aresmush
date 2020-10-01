@@ -86,10 +86,12 @@ module AresMUSH
         if (enactor)
           if (enactor.is_admin?)
             siteinfo = Login.build_web_site_info(char, enactor)
+            roles = char.roles.map { |r| r.name }
           end
           Login.mark_notices_read(enactor, :achievement)
         else
           siteinfo = nil
+          roles = nil
         end
           
         {
@@ -129,7 +131,8 @@ module AresMUSH
           idle_notes: char.idle_notes ? Website.format_markdown_for_html(char.idle_notes) : nil,
           custom: CustomCharFields.get_fields_for_viewing(char, enactor),
           show_notes: char == enactor || Utils.can_manage_notes?(enactor),
-          siteinfo: siteinfo
+          siteinfo: siteinfo,
+          roles: roles
           
         }
       end

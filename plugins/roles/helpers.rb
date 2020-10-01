@@ -53,5 +53,16 @@ module AresMUSH
       end
       permissions
     end
+    
+    def self.save_web_roles(char, role_names)
+      new_roles = []
+      role_names.each do |r|
+        role = Role.find_one_by_name(r)
+        if (role)
+          new_roles << role
+        end
+      end
+      char.roles.replace new_roles
+    end
   end
 end
