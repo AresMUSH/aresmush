@@ -1,0 +1,29 @@
+---
+fs3skills:
+  attributes:
+  - name: Agility
+    desc: Measure of a character's nimbleness, dexterity, and general coordination.
+  - name: Smarts
+    desc: Raw intelligence, mental acuity, and how fast a heroine thinks on her feet.
+      Used to resist certain types of mental and social attacks.
+  - name: Spirit
+    desc: Self-confidence, backbone, and willpower. Used to resist social and supernatural
+      attacks as well as fear.
+  - name: Strength
+    desc: Physical power and fitness. Used as the basis of a warror's damage in hand-to-hand
+      combat, and to determine how much he can wear or carry.
+  - name: Vigor
+    desc: Endurance, resistance to disease, poison, or toxins, and how much physical
+      damage she can take before she can't go on. Used to resist Fatigue effects and
+      is the basis for the derived stat of Toughness.
+  - name: Parry
+    desc: Two plus half Fighting
+  - name: Toughness
+    desc: Two plus half Vigor
+  - name: RTarget
+    desc: Tempstat
+  attributes_blurb: 'Attributes represent basic abilities that everyone has to some
+    extent. Attributes detremine the "soft" skill cap and come into play when no skill  directly
+    applies.  Attributes are rated from d4-d12. See <a href="https://aresmush.com/fs3/fs3-3/chargen.html#attributes"
+    target="_blank">FS3: Attributes</a> for details.'
+  default_linked_attr: Agility

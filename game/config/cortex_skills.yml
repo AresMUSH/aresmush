@@ -1,0 +1,69 @@
+---
+cortex:
+  skills:
+  - name: Academics
+    description: Thinky stuff
+    specialties: None
+  - name: Artistry
+    description: Creative expression.
+    specialties: Cooking, Composition, Painting, Photography, Sculpture, Writing
+  - name: Athletics
+    description: General athletic activity and sports.
+    specialties: Running, Jumping, Climbing, Weight Lifting
+  - name: Covert
+    description: Deception and evasion.
+    specialties: Stealth, Pickpocket, Disguise, Streetwise
+  - name: Craft
+    description: Creation of something more practical than artistic.
+    specialties: Architecture, Brewing, Carpentry, Sewing
+  - name: Discipline
+    description: Resisting temptation.
+    specialties: Concentration, Interrogation, Intimidation, Leadership, Morale, Resistance
+  - name: Drive
+    description: Operating ground transport.
+    specialties: Boat, Bus, Car, Motorcycle
+  - name: Guns
+    description: Shooting firearms.
+    specialties: Rifle, Pistol, Shotgun, Machinegun
+  - name: Heavy Weapon
+    description: Firing large-scale weapons.
+    specialties: Demolitions, Mortars, Rocket Launchers, Grenade Launchers
+  - name: Influence
+    description: Interpersonal communication and influence.
+    specialties: Barter, Persuasion, Politics, Seduction
+  - name: Knowledge
+    description: General academic knowledge.
+    specialties: Culture, History, Law, Literature, Philosophy, Religion
+  - name: Mechanic
+    description: Repairing and building mechanical devices.
+    specialties: Construction, Jury Rig, Plumbing, Automotive
+  - name: Medicine
+    description: Treating illness and injury.
+    specialties: First Aid, Internal Medicine, Surgery, Psychiatry
+  - name: Melee Weapons
+    description: Fighting with hand-held melee weapons.
+    specialties: Knife, Sword, Club
+  - name: Perception
+    description: Investigating and noticing things.
+    specialties: Deduction, Empathy, Search, Sight, Tracking
+  - name: Performance
+    description: Creative expression through performance art.
+    specialties: Singing, Instrument, Acting, Dancing, Costuming
+  - name: Pilot
+    description: Flying air transport.
+    specialties: Helicopter, Fixed Wing, Fighter
+  - name: Ranged Weapons
+    description: Firing ranged weapons other than guns.
+    specialties: Archery, Throwning Knife, Blowgun
+  - name: Science
+    description: General scientific knowledge.
+    specialties: Earth Sciences, Life Sciences, Space Sciences
+  - name: Survival
+    description: Finding food and shelter outside civilization.
+    specialties: Shelter, Foraging, Arctic, Jungle, Trapping
+  - name: Tech
+    description: Using complex electronics.
+    specialties: Programming, Hacking, Communications
+  - name: Unarmed Combat
+    description: Fighting with hands and feet.
+    specialties: Boxing, Brawling, Karate, Taw Kwon Do, Wrestling

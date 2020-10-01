@@ -1,0 +1,241 @@
+---
+cortex:
+    assets:
+    - 
+      name: Air Of Mystery
+      steps: 
+      - d6
+    - 
+      name: Allure
+    - 
+      name: Alternate Identity
+      steps: 
+      - d2
+      - d4
+      - d6
+    - 
+      name: Ambidextrous
+      description: Using both hands with equal proficiency.
+      steps:
+      - d2
+    - 
+      name: Animal Empathy
+    - 
+      name: Attuned To Nature
+
+    - 
+      name: Attuned To Technology
+
+    - 
+      name: Blue Blood
+      description: Descended from nobility.
+      steps:
+      - d2
+      - d4
+      - d6
+    - 
+      name: Born Behind The Wheel
+
+    - 
+      name: Brawler
+      steps: 
+      - d2
+      - d4
+      - d6
+    - 
+      name: Combat Ready
+      steps: 
+      - d10
+    - 
+      name: Constructed
+      steps: 
+      - d8
+    - 
+      name: Contacts
+
+    - 
+      name: Danger Sense
+      steps: 
+      - d4
+      - d8
+    - 
+      name: Destiny
+      steps: 
+      - d12
+    - 
+      name: Devoted To A Cause
+      steps: 
+      - d6
+    - 
+      name: Enhanced Communication
+
+    - 
+      name: Enhanced Manipulation
+
+    - 
+      name: Enhanced Movement
+
+    - 
+      name: Enhanced Senses
+
+    - 
+      name: Faith
+
+    - 
+      name: Fast Healer
+      steps: 
+      - d6
+      - d12
+    - 
+      name: Fast On Your Feet
+      steps: 
+      - d2
+      - d6
+      - d12
+    - 
+      name: Focused Hunter
+      steps: 
+      - d2
+      - d4
+      - d6
+    - 
+      name: Formidable Presence
+
+    - 
+      name: Good Natured
+
+    - 
+      name: Hardy Constitution
+
+    - 
+      name: Head For Numbers
+
+    - 
+      name: Healers Touch
+
+    - 
+      name: Hideout
+      steps: 
+      - d6
+      - d12
+    - 
+      name: Higher Education
+
+    - 
+      name: Immune
+      steps: 
+      - d8
+      - d12
+    - 
+      name: In Plain Sight
+
+    - 
+      name: Inherent Armor
+
+    - 
+      name: Inherent Weapon
+
+    - 
+      name: Intuitive Leaps
+      steps: 
+      - d4
+      - d8
+      - d12
+    - 
+      name: Light Sleeper
+      steps: 
+      - d4
+    - 
+      name: Lightning Reflexes
+
+    - 
+      name: Longevity
+
+    - 
+      name: Loyal Companion
+      steps: 
+      - d4
+      - d8
+      - d12
+    - 
+      name: Lucky
+      steps: 
+      - d4
+      - d8
+      - d12
+    - 
+      name: Natural Athlete
+
+    - 
+      name: Natural Leader
+
+    - 
+      name: Natural Linguist
+
+    - 
+      name: Photographic Memory
+      steps: 
+      - d4
+      - d8
+    - 
+      name: Quick Learner
+
+    - 
+      name: Rank and Privilege
+
+    - 
+      name: Reputation
+
+    - 
+      name: Shadow
+      steps: 
+      - d2
+      - d6
+      - d10
+    - 
+      name: Signature Item
+      steps: 
+      - d2
+      - d8
+      - d12
+    - 
+      name: Simple Needs
+      
+    - 
+      name: Steady Calm
+
+    - 
+      name: Sure Footed
+
+    - 
+      name: Talented
+
+    - 
+      name: Tough
+      steps: 
+      - d4
+      - d8
+      - d12
+    - 
+      name: Two Handed Fighting
+      steps: 
+      - d4
+    - 
+      name: Unbreakable Will
+
+    - 
+      name: Uncommon Knowledge
+      steps: 
+      - d6
+      - d8
+      - d10
+    - 
+      name: Unnatural Healing
+      steps: 
+      - d4
+      - d12
+    - 
+      name: Wealthy
+      steps: 
+      - d4
+      - d8

@@ -1,0 +1,148 @@
+---
+demographics:
+  census_fields:
+  - field: name
+    width: 28
+    title: Name
+  - field: demographics
+    width: 10
+    title: Gender
+    value: gender
+  - field: group
+    width: 20
+    title: Faction
+    value: Faction
+  - field: group
+    width: 20
+    title: Iconic Framework
+    value: Iconic Framework
+  demographics:
+  - full name
+  - callsign
+  - gender
+  - hair
+  - eyes
+  - skin
+  - height
+  - physique
+  - played by
+  - birthdate
+  disable_auto_shortcuts: false
+  editable_properties:
+  - full name
+  - callsign
+  - gender
+  - hair
+  - physique
+  genders:
+    Male:
+      possessive_pronoun: his
+      subjective_pronoun: he
+      objective_pronoun: him
+      noun: man
+    Female:
+      possessive_pronoun: her
+      subjective_pronoun: she
+      objective_pronoun: her
+      noun: woman
+    Other:
+      possessive_pronoun: their
+      subjective_pronoun: they
+      objective_pronoun: them
+      noun: person
+    Robot:
+      possessive_pronoun: their
+      subjective_pronoun: they
+      objective_pronoun: them
+      noun: robot
+  groups:
+    Faction:
+      desc: Primary Affiliation
+      wiki: ''
+      values:
+        Coalition States: 
+        Federation of Magic: 
+        A/RC: The Warrant is All
+        None: Not affiliated with any major group
+    Iconic Framework:
+      desc: Job.
+      wiki: ''
+      values:
+        Burster: Pyrokinetics
+        Combat Cyborg: Full Conversion Borgs
+        Crazy: Juicers that trade sanity for cyberware
+        Cyber-Knight: 
+        Dragon Hatchling: 
+        Dragon Juicer: 
+        Elemental Fusionist: 
+        Glitter Boy: 
+        Intelligent Construct: 
+        Juicer: 
+        Knight of the White Rose: 
+        Ley Line Walker: 
+        MARS: 
+        Mind Melter: 
+        Momano Headhunter: 
+        Mystic: 
+        Necromancer: 
+        Nega-Psychic: 
+        Shifter: 
+        Techno-Wizard: 
+        Werecat: 
+        Zapper: 
+        Other: Any other position.
+    Race:
+      desc: Race
+      wiki: ''
+      values:
+        Altara: 
+        Centaur: 
+        D'Norr: 
+        Dog Boy: 
+        Fennodi: 
+        Grackle Tooth: 
+        Human: 
+        Lyn-Srial: 
+        Psi-Stalker: 
+        Quick Flex: 
+        Simvan: 
+        Trimadore: 
+        Mutant Animal: 
+        Mutant Feline: 
+        Psi-X Alien: 
+        Vernulians: 
+        Sasquatch: 
+  help_text:
+    played by: "%xcplayedby <actor>%xn - Your 'dream casting' for your character."
+    physique: "%xcphysique <build/body type>%xn - athletic, wiry, slim, pudgy, etc."
+    gender: "%xcgender <male/female/other>%xn"
+    hair: "%xchair <hair color>%xn"
+    eyes: "%xceyes <eye color>%xn"
+    skin: "%xcskin <complexion>%xn"
+    birthdate: "%xcbirthdate <mm/dd/yyy>%xn or %xcage <years>%xn"
+    callsign: "%xccallsign <callsign>%xn - Non-pilots may leave blank or enter a nickname."
+    full name: "%xcfullname <name>%xn - Your character's full name."
+  max_age: 1000
+  min_age: 1
+  nickname_field: ''
+  nickname_format: "%{name} (%{nickname})"
+  private_properties: []
+  required_properties:
+  - played by
+  - hair
+  - eyes
+  - skin
+  - height
+  - physique
+  - full name
+  - gender
+  - birthdate
+  shortcuts:
+    groups: group
+    race: group race
+    demographics: demographic
+    birthday: birthdate
+    actors: census played by
+    actor: demographic/set played by=
+    fullname: demographic/set full name=
+    playedby: demographic/set played by=

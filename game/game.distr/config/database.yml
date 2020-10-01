@@ -1,0 +1,4 @@
+database:
+    url: "127.0.0.1:6379"
+
+    path: "/var/lib/redis/dump.rdb"

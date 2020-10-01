@@ -1,0 +1,3 @@
+<div class="jumbotron-tagline">A New Breed of MUSH Server</div>
+
+Welcome to AresMUSH!

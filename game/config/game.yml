@@ -1,0 +1,19 @@
+---
+game: !ruby/hash:Sinatra::IndifferentHash
+  name: Lost Dominion
+  category: Other
+  description: |-
+    There was a time when mankind knew two things: That we were alone in the cosmos and that there was no such thing as magic.
+
+    We were wrong.
+
+    The coming of the Rifts changed everything. Ignited by a spark still unknown to us, the planet began to surge with arcane energies absent for thousands of years. The results were devastating. Seas rose. Volcanoes roared to life. The earth buckled and cracked and split. Millions died in the first hours.
+
+    And then came the monsters.
+
+    Civilization never stood a chance. Life, on the other hand, is a hardy and determined thing. Our cities and nations crumbled, but we survived the dark age. We now share our world with invaders and refugees alike. A world fallen far from its former glory. A world that’s dark and dangerous and deadly.
+
+    But it is our world, and by spell and science and iron will we will forge it anew.
+  website: ''
+  public_game: false
+  status: In Development

@@ -1,0 +1,9 @@
+---
+fs3combat:
+  composure_skill: Spirit
+  default_defense_skill: Parry
+  healing_skill: Healing
+  initiative_skill: Notice
+  recovery_skill: Vigor
+  strength_skill: Strength
+  treat_skill: Healing

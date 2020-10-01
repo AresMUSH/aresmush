@@ -1,0 +1,20 @@
+---
+fs3skills:
+  language_blurb: 'Languages represent your ability to speak and read other languages.  Languages
+    have a descriptive rating.   See <a href="https://aresmush.com/fs3/fs3-3/chargen.html#languages"
+    target="_blank">FS3: Languages</a> for details.'
+  languages:
+  - name: American
+    desc: Default in North America
+  - name: Demongogian
+    desc: Used by demons
+  - name: Dragonese
+    desc: Also known as Elven
+  - name: Euro
+    desc: Default in Europe
+  - name: Faerie Speak
+    desc: Fae creatures
+  - name: Gobblely
+    desc: Language of the Goblinoid races
+  - name: Spanish
+    desc: Spoken in most of South America.

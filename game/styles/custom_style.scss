@@ -1,0 +1,421 @@
+/* Put any custom styles here.  They will override the default styles. */
+
+@import url('//fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Rock+Salt&display=swap');
+body {    
+  font-family: 'Lato', sans-serif;
+  font-size: 16px;
+} 
+
+.header-wrap {
+    background-image: url("/game/uploads/theme_images/logo.png");
+    background-size: auto;
+    background-repeat: no-repeat;
+    background-position: left top;
+    height: 150px;
+}
+
+.title-wrap {
+    padding-top: 0;
+    height: 100px;
+    padding-bottom: 0;
+}
+
+.site-title, .site-subtitle {
+    display: none;
+}
+
+.body-wrap, .container-fluid {
+    padding: 0 60px 0 60px;
+    background: #1e434c;
+    background: -moz-linear-gradient(top, #1e434c 0%, #193840 100%);
+    background: -webkit-linear-gradient(top, #1e434c 0%,#193840 100%);
+    background: linear-gradient(to bottom, #1e434c 0%,#193840 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e434c', endColorstr='#193840',GradientType=0 );
+}
+
+
+/* Nav Menu */
+.navbar-inverse .navbar-nav > li > a:hover {
+    color: #FF8219;
+}
+
+.dropdown-menu {
+    background-color: #1e434c;
+}
+
+.dropdown-menu>li>a {
+    color: #C99E10;
+}
+
+.navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:focus, .navbar-inverse .navbar-nav>.open>a:hover {
+    background-color: #ff8219;
+}
+
+h1 {
+    background: #1e434c;
+    background: -moz-linear-gradient(top, #1e434c 0%, #193840 100%);
+    background: -webkit-linear-gradient(top, #1e434c 0%,#193840 100%);
+    background: linear-gradient(to bottom, #1e434c 0%,#193840 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e434c', endColorstr='#193840',GradientType=0 );
+}
+
+h2, h3, h4 {
+    color: #1E434C;
+}
+
+h2 {
+    background: #1e434c;
+    background: -moz-linear-gradient(top, #1e434c 0%, #193840 100%);
+    background: -webkit-linear-gradient(top, #1e434c 0%, #193840 100%);
+    background: linear-gradient(to bottom, #1e434c 0%, #193840 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e434c', endColorstr='#193840',GradientType=0 );
+    padding: .1em 1.2em;
+    color: #f2f2f2;
+    font-weight: normal;
+    border: 3px solid #193840;
+    letter-spacing: 0.1em;
+    -moz-border-radius: 0px 25px;
+    -webkit-border-radius: 0px 25px;
+    border-top-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+}
+
+.btn-primary:hover, .btn-default:hover {
+    color: #fff;
+    background-color: #C99E10;
+    border-color: #FFC814;
+}
+
+.btn-default, btn-primary:focus, btn-primary.focus, btn-default.focus, btn-default:focus {
+    background-color: #1e434c;
+    color: #f2f2f2;
+    border-color: #193840;
+}
+
+.container-fluid {
+    padding: 0;
+}
+
+.body-container.left-body {
+    margin-top: 20px;
+    background-color: #ffffff;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.col-md-3.right-sidebar {
+    margin-top: 20px;
+}
+
+.rocksalt, .sidebar-heading h2 {
+    font-weight:bold; 
+    font-size: 1.8rem; 
+    color: #FF3F1B;
+    font-family: 'Rock Salt', sans-serif;
+} 
+
+.wte {
+    color: #f2f2f2;
+}
+
+.brightyellow {
+    color: #FF8219;
+}
+
+.lteblue {
+    color: #55bfd8;
+}
+
+.sidebar-heading h2 {
+    font-size: 1.4rem;
+    color: #F2F2F2;
+    letter-spacing: 2px;
+    background: transparent;
+    border: none;
+}
+
+p.alignleft {
+    text-align: left;
+}
+
+.sidebar-box {
+    border-top: 0px solid #dddddd;
+    margin: 2px;
+    margin-bottom: 10px;
+    font-size: .9em;
+    background: rgba(0,0,0,0.6);
+    box-shadow: 0 1px 5px rgba(0,0,0,0.25), 0 0 50px rgba(0,0,0,0.1) inset;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    padding: 5px 0px 10px 10px;
+}
+
+.sidebar-box-right {
+    border-left: 0px solid #dddddd;
+}
+
+.sidebar-box p {
+    color: #F2F2F2;
+}
+
+.sidebar-box a {
+    color: #FF3F1B;
+}
+
+.sidebar-box a:hover {
+    color: #FF8219;
+}
+
+a:hover {
+    color: #FF8219;
+}
+
+.sidebar-box p.sidebar-list a {
+    color: #F2F2F2;
+    text-decoration: underline;
+}
+
+.sidebar-box p.sidebar-list a:hover {
+    color: #FF8219;
+}
+
+/* Make search box bigger */
+.sidebar-box:nth-child(1) {
+    padding-top:10px;
+    padding-bottom: 10px;
+}
+
+
+/* Hide Recent Changes */
+.sidebar-box:nth-child(6) {
+    display: none;
+}
+
+
+.ember-power-select-trigger, .ember-basic-dropdown-trigger {
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+/* Character Gallery */
+
+.profile-gallery {
+    margin-right: 46px;
+}
+
+.log-icon-title-container {
+    margin-left: 10px;
+}
+
+.log-icon-title {
+    font-family: "Rock Salt";
+    letter-spacing: 1px;
+}
+
+.profile-gallery .log-icon-container {
+    margin: 0 10px;
+    width: 150px;
+    height: 150px;
+  -webkit-box-shadow:
+     0px 0px 0px 2px rgba(0,0,0,0.6),
+                0px 0px 0px 14px #1e434c,
+                0px 0px 0px 18px rgba(0,0,0,0.2),
+                6px 6px 8px 17px #193840;
+  
+     -moz-box-shadow:
+     0px 0px 0px 2px rgba(0,0,0,0.6),
+                0px 0px 0px 14px #1e434c,
+                0px 0px 0px 18px rgba(0,0,0,0.2),
+                6px 6px 8px 17px #193840;
+  
+          box-shadow:
+     0px 0px 0px 2px rgba(0,0,0,0.6),
+                0px 0px 0px 14px #1e434c,
+                0px 0px 0px 18px rgba(0,0,0,0.2),
+                6px 6px 8px 17px #193840;
+}    
+
+/* Character Sheet */
+
+.profile-box {
+   background: rgba(0,0,0,0.7);
+   color: #f2f2f2;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+  -webkit-filter: drop-shadow(16px 16px 10px rgba(0,0,0,0.9));
+  filter: drop-shadow(16px 16px 10px rgba(0,0,0,0.9));
+}
+
+.profile-title {
+    font-family: "Rock Salt";
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.profile-box .row {
+    border-bottom: 1px solid #555555;
+}
+
+.profile-box a {
+   color: #C99E10;
+}
+
+.profile-image-wrap img {
+  margin-top: 20px;
+  -webkit-box-shadow:
+     0px 0px 0px 2px rgba(0,0,0,0.6),
+                0px 0px 0px 14px #1e434c,
+                0px 0px 0px 18px rgba(0,0,0,0.2),
+                6px 6px 8px 17px #193840;
+  
+     -moz-box-shadow:
+     0px 0px 0px 2px rgba(0,0,0,0.6),
+                0px 0px 0px 14px #1e434c,
+                0px 0px 0px 18px rgba(0,0,0,0.2),
+                6px 6px 8px 17px #193840;
+  
+          box-shadow:
+     0px 0px 0px 2px rgba(0,0,0,0.6),
+                0px 0px 0px 14px #1e434c,
+                0px 0px 0px 18px rgba(0,0,0,0.2),
+                6px 6px 8px 17px #193840;
+}
+
+/* Sheet */
+
+.swriftsheet {
+    display: inline-block;
+    width: 100%
+}
+
+.stattable {
+    width: 48%;
+}
+
+.stattable.fullwidth {
+    width: 100%;
+}
+
+.stattable.left {
+    float: left;
+    margin-right: 2%;
+}
+
+.stattable.right {
+    float: right;
+}
+
+.container-fluid.statstable {
+    background: transparent;
+    margin-bottom: 20px;
+}
+
+.skilltable .titlerow, .stattable .titlerow {
+    text-align: center;
+    font-size: 1.3em;
+    font-weight: bold;
+    padding: 5px 0;
+    margin-bottom: 10px;
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+}
+
+.row.stdlh {
+    line-height: 1em;
+}
+
+.row.skilldata, .row.statdata {
+    float: left;
+    max-width: 100%;
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+.row.statdata .col-sm-2 {
+    margin-right: 1.66%;
+    margin-left: 1.66%;
+    text-align: center;
+}
+
+.col-sm-4.center {
+    text-align: center;
+}
+
+.row.statdata .col-sm-2:last-child {
+    margin-right: 0;
+}
+
+span.statrating {
+    font-size: 0.8em;
+}
+
+.heading span.skillname, span.statname, span.skillname {
+    font-weight: bold;
+}
+
+.heading span.linkedstat{
+    font-weight: normal;
+    font-size: 0.7em;
+}
+
+.rating {
+    text-align: center;
+}
+
+.row.skills {
+  padding: 4px 0;
+  margin-bottom: 0;
+}
+
+.row.skills:first-child {
+  padding-left: 4px;
+}
+
+.row.skills:nth-child(odd) {
+    background-color: #ccc;
+}
+
+.pgimg {
+    width: 20%;
+    font-size: 0.8em;
+    padding: 20px;
+    text-align: center;
+}
+
+.pgimg.right {
+    float: right;
+}
+
+.pgimg img {
+  -webkit-filter: drop-shadow(16px 16px 10px rgba(0,0,0,0.9));
+  filter: drop-shadow(16px 16px 10px rgba(0,0,0,0.9));
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+}
+
+.pgimg p {
+   margin-top: 20px;
+   text-align: center;
+   font-style: italic;
+}
+
+.nav-tabs>li>a {
+    background-color: #1e434c;
+    color: #f2f2f2;
+}
+
+.nav-tabs>li>a:hover {
+    background-color: #C99E10;
+    color: #f2f2f2;
+}
+
+.no-gutters div[class^="col-"] {
+    padding-left: 0;
+    padding-right: 0;
+}
+   

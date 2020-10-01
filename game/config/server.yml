@@ -1,0 +1,18 @@
+server:
+    hostname: ares.lostdominion.org
+
+    port: 6006
+    
+    websocket_port: 6007
+
+    web_portal_port: 80
+    
+    engine_api_port: 6008
+    
+    use_https: false
+    
+    certificate_file_path: '/home/ares/certs/fullchain.pem'
+    
+    private_key_file_path: '/home/ares/certs/privkey.pem'
+    
+    bind_address: ''

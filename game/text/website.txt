@@ -1,0 +1,154 @@
+<style>
+.container-fluid {
+    background: #1e434c;
+    background: -moz-linear-gradient(top, #1e434c 0%, #193840 100%);
+    background: -webkit-linear-gradient(top, #1e434c 0%,#193840 100%);
+    background: linear-gradient(to bottom, #1e434c 0%,#193840 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e434c', endColorstr='#193840',GradientType=0 );
+    padding: 0;
+    margin: 0;
+}
+
+.body-wrap {
+    background-image: url(//lostdominion.org/wp/wp-content/uploads/2016/09/krayzis_post_apocalypse_destruction_city_hd-wallpaper-389154-1.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.body-container.left-body {
+    padding-right: 10%;
+    padding-left: 10%;
+    background: transparent;
+}
+
+a {
+    color: #ffc814;
+}
+
+a:hover {
+    color: #9B4F0F;
+}
+
+.jumbotron {
+    padding: 20px;
+    background: rgba(0,0,0,0.8);
+    box-shadow: 0 1px 5px rgba(0,0,0,0.25), 0 0 50px rgba(0,0,0,0.1) inset;
+    border-radius: 1% 1% 1% 1% / 1% 1% 1% 1%;
+    position: relative;
+}
+
+.jumbotron, .jumbotron .h1, .jumbotron h1, .wte {
+    color: #F2F2F2;
+}
+
+.jumbotron p {
+    font-size: 18px;
+}
+
+.rocksalt {
+    font-size: 21px;
+}
+
+.sidebar-box {
+    border-top: 0px solid #dddddd;
+    margin: 2px;
+    margin-bottom: 10px;
+    font-size: .9em;
+    background: rgba(0,0,0,0.8);
+    box-shadow: 0 1px 5px rgba(0,0,0,0.25), 0 0 50px rgba(0,0,0,0.1) inset;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    padding: 5px 0px 10px 10px;
+}
+
+.sidebar-box-right {
+    border-left: 0px solid #dddddd;
+}
+
+.hplist {
+    text-align: left;
+    margin-left: 20px;
+}
+
+.row-hpbottom p {
+    font-size: inherit;
+}
+
+.splash, .jumbotron img:nth-child(1), .jumbotron>hr:last-child {
+    display: none;
+}
+
+.smicon {
+    margin-right: 10px;
+    font-size: 25px;
+}
+
+.jumbotron img.splgicon {
+    width: 200px;
+    height: auto;
+}
+
+</style>
+
+<div style="text-align: center;"><p>There was a time when mankind <span class="lteblue">knew</span> two things: That we were alone in the cosmos and that there was no such thing as <span class="lteblue">magic</span>.<p/>
+
+<p class="rocksalt">We were wrong.</p>
+
+<p>The coming of the <span class="lteblue">Rifts</span> changed everything. Ignited by a <span class="lteblue">spark</span> still unknown to us, the planet began to surge with <span class="lteblue">arcane</span> energies absent for thousands of years. The results were <span class="lteblue">devastating</span>. Seas rose. Volcanoes <span class="lteblue">roared</span> to life. The earth buckled and cracked and <span class="lteblue">split</span>. Millions <span class="lteblue">died</span> in the first hours.</p>
+
+<p class="rocksalt">And then came the monsters.</p>
+
+<p>Civilization never stood a chance. <span class="lteblue">Life</span>, on the other hand, is a hardy and determined thing. Our cities and nations crumbled, but we <span class="lteblue">survived</span> the dark age. We now <span class="lteblue">share</span> our world with invaders and refugees alike. A world fallen far from its former glory. A world that’s dark and dangerous and <span class="lteblue">deadly</span>.</p>
+
+<p class="rocksalt">But it is our world, and by spell and science and iron will we will forge it anew.</p>
+
+<hr>
+
+<img src="game/uploads/theme_images/pab.png" class="splgicon"/> </p>
+
+<p style="font-size: 24px;">Welcome to The Lost Dominion, a <span class="lteblue">Savage Worlds Adventure Edition &reg;</span> Game</p>
+
+<p style="font-size: 18px;">Connection Information:  <span class="brightyellow">ares.lostdominion.org Port: 6006</span><br />
+Discord Server: <a href="https://discord.gg/jc98VWv">https://discord.gg/jc98VWv</a></p>
+
+<div class="row row-hpbottom">
+<div class="col-sm-6">
+<a href="https://www.facebook.com/lostdominionmush/" target="_blank"><i class="fab fa-facebook-square smicon"></i>Connect with us on Facebook</a>
+</div>
+<div class="col-sm-6">
+<a href="https://twitter.com/lostdominionmu" target="_blank"><i class="fab fa-twitter-square smicon"></i>Connect with us on Twitter</a>
+</div>
+</div>
+
+<div class="row row-hpbottom">
+<div class="col-sm-4">
+<h3 class="colhead rocksalt wte">Learn More</h3>
+<ul class="hplist">
+<li><a href="#">Theme and Setting Information</a></li>
+<li><a href="#">Policies</a></li>
+<li><a href="#">Character Policies</a></li>
+<li><a href="#">How To Create Your Character</a></li>
+<li><a href="#">Character Archetypes</a></li>
+<li><a href="#">About Savage Worlds Adventure Edition</a></li>
+</ul>
+<p>New to MUSHing? Check out the <a href="http://aresmush.com/mush-101" target="_blank">MUSH 101 Tutorial.</a></p>
+</div>
+<div class="col-sm-4">
+<h3 class="colhead rocksalt wte">Web Portal</h3>
+<ul class="hplist">
+<li><a href="http://ares.lostdominion.org/chargen">Create a Character</a></li>
+<li><a href="http://ares.lostdominion.org/scenes-live>Join A Scene</a></li>
+<li><a href="http://ares.lostdominion.org/chat">Chat</a></li>
+<li><a href="http://ares.lostdominion.org/chars">View / Edit Character Profiles</a></li>
+<li>Browse the <a href="http://ares.lostdominion.org/wiki">Wiki</a></li>
+<li><a href="http://ares.lostdominion.org/scenes">Read Scene Logs</a></li>
+<li><a href="http://ares.lostdominion.org/client">Play via the web client</a></li>
+</ul>
+</div>
+<div class="col-sm-4">
+<h3 class="colhead rocksalt wte">Featured Character</h3>
+<p>Hopefully I can do something cool here.</p>
+</div>
+</div>
+

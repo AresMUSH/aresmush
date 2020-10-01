@@ -1,0 +1,15 @@
+---
+cortex:
+  attributes:
+  - name: Agility
+    description: Quickness and coordination.
+  - name: Strength
+    description: Physical brawn.
+  - name: Vitality
+    description: Toughness and health.
+  - name: Alertness
+    description: Observation and senses.
+  - name: Intelligence
+    description: Brainpower and reasoning.
+  - name: Willpower
+    description: Determination and force of personality.

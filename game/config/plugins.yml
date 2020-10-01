@@ -1,0 +1,24 @@
+---
+plugins:
+  config_help_links:
+    ffg: https://github.com/AresMUSH/ares-extras/tree/master/plugins/ffg
+    fate: https://github.com/AresMUSH/ares-extras/tree/master/plugins/fate
+    cortex: https://github.com/AresMUSH/ares-extras/tree/master/plugins/cortex
+    prefs: https://github.com/AresMUSH/ares-extras/tree/master/plugins/prefs
+    traits: https://github.com/AresMUSH/ares-extras/tree/master/plugins/traits
+  disabled_plugins:
+  - achievements
+  - fs3combat
+  - fs3skills
+  - ranks
+  - weather
+  extras:
+  - cortex
+  optional_plugins:
+  - achievements
+  - chargen
+  - events
+  - fs3combat
+  - fs3skills
+  - ranks
+  - weather

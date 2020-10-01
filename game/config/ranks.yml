@@ -1,0 +1,31 @@
+---
+ranks:
+  rank_group: Faction
+  rank_rows: 9
+  rank_style: basic
+  ranks:
+    Coalition States:
+      Officer:
+        Citizen: true
+      Enlisted:
+        Cadet: true
+    Federation of Magic:
+      Enlisted:
+        Citizen: true
+      Officer:
+        Cadet: true
+    RAC:
+      Officer:
+        Level 1: true
+        Level 2: true
+        Level 3: false
+        Level 4: false
+      Enlisted:
+        Broker: true
+    None:
+      Officer:
+        Wanderer: true
+      Enlisted:
+        Vagabond: true
+  shortcuts:
+    rank/clear: rank/set

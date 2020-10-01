@@ -1,0 +1,36 @@
+---
+login:
+  activity_cron:
+    minute:
+    - 0
+  allow_creation: true
+  allow_web_registration: true
+  blacklist_cron:
+    day:
+    - 1
+    - 15
+    hour:
+    - 3
+    minute:
+    - 0
+  creation_not_allowed_message: ''
+  guest_disabled_message: ''
+  guest_role: guest
+  login_not_allowed_message: ''
+  notice_cleanup_cron:
+    day:
+    - 18
+    hour:
+    - 2
+    minute:
+    - 19
+  notice_timeout_days: 60
+  portal_requires_registration: false
+  shortcuts:
+    logout: quit
+    con: connect
+    newpassword: password/reset
+    conn: connect
+    kick: boot
+    password/change: password/set
+    notice: notices

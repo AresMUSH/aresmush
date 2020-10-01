@@ -1,0 +1,21 @@
+---
+rooms:
+  room_lock_cron:
+    minute:
+    - 0
+  shortcuts:
+    tel: teleport
+    move: go
+    dig: build
+    o: out
+    dig/teleport: build
+    dig/tel: build
+    mjoin: meetme/join
+    msummon: meetme/bring
+    room/type: roomtype
+    room/area: area/set
+    map: area
+    owners: owner
+    location: room
+    rooms: room
+    locations: room

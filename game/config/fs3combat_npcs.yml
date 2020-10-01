@@ -1,0 +1,24 @@
+---
+fs3combat:
+  default_npc_type: Goon
+  npc_types:
+    Goon:
+      Default: 4
+      Shooting: 6
+      Fighting: 6
+      Wounds: 4
+    Henchman:
+      Default: 4
+      Shooting: 6
+      Fighting: 6
+      Wounds: 4
+    Miniboss:
+      Default: 4
+      Shooting: 6
+      Fighting: 6
+      Wounds: 4
+    Boss:
+      Default: 4
+      Shooting: 6
+      Fighting: 6
+      Wounds: 4

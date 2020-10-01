@@ -1,0 +1,141 @@
+---
+website:
+  achievements:
+    wiki_create:
+      type: portal
+      message: Created a wiki page.
+    wiki_edit:
+      type: portal
+      message: Edited a wiki page.
+  allow_html_in_markdown: true
+  character_gallery_group: Faction
+  character_gallery_subgroup: Position
+  left_sidebar: false
+  max_folder_size_kb: 2000
+  max_upload_size_kb: 300
+  restricted_pages:
+  - home
+  sitemap_update_cron:
+    hour:
+    - 2
+    minute:
+    - 17
+  top_navbar:
+  - title: Play
+    menu:
+    - title: Create a Character
+      route: chargen
+    - title: Pre-Made Characters
+      route: roster
+    - divider: true
+    - title: Play
+      route: play
+    - title: Active Scenes
+      route: scenes-live
+    - title: Start New Scene
+      route: scene-create
+    - divider: true
+    - title: Who's Online
+      route: who
+    - title: Forum
+      route: forum
+    - title: Mail
+      route: mail
+    - divider: true
+    - title: Web Client
+      route: client
+  - title: Directory
+    menu:
+    - title: Characters
+      route: characters
+    - title: Scenes
+      route: scenes
+    - title: Plots
+      route: plots
+    - divider: true
+    - title: Players
+      route: players
+    - title: Game Admin
+      route: admins
+    - title: Census
+      route: census
+    - title: Roster
+      route: roster
+    - title: Locations
+      route: locations
+    - title: Combats
+      route: combats
+    - divider: true
+    - title: Files
+      route: files
+  - title: System
+    menu:
+    - title: Abilities List
+      route: fs3skills-abilities
+    - title: Gear List
+      route: fs3combat-gear
+    - title: Groups List
+      route: groups
+    - title: Achievements
+      route: achievements
+    - title: Skill Limits
+      route: fs3-limits
+    - title: XP Costs
+      route: fs3-xp-costs
+    - divider: true
+    - target: blank
+      title: FS3 Player's Guide <i class="fa fa-external-link-alt" aria-hidden="true">
+      url: http://aresmush.com/fs3/fs3-3
+    - target: blank
+      title: FS3 Combat Quick Reference <i class="fa fa-external-link-alt" aria-hidden="true">
+      url: http://aresmush.com/fs3/fs3-3/combat-quickref.html
+    - target: blank
+      title: FS3 Interactive Combat Walkthrough <i class="fa fa-external-link-alt"
+        aria-hidden="true">
+      url: http://aresmush.com/fs3/fs3-3/combat-walkthrough.html
+  - title: Wiki
+    menu:
+    - title: Home
+      route: wiki
+    - divider: true
+    - title: Create New Page
+      route: wiki-create
+    - title: All Pages
+      route: wiki-all
+    - title: Search Wiki
+      route: search-wiki
+    - title: Tags
+      route: wiki-tags
+    - title: Recent Changes
+      route: recent-changes
+    - divider: true
+    - title: Files
+      route: files
+    - id: markdown
+      title: Editing Help
+      route: help-topic
+  - title: Help
+    menu:
+    - title: Requests
+      route: jobs
+    - title: Account
+      route: account
+    - divider: true
+    - title: Game Help
+      route: help
+    - title: Search
+      route: search-wiki
+    - id: markdown
+      title: Markdown Reference
+      route: help-topic
+    - title: Emoji Reference
+      route: emoji
+    - title: Terms of Service
+      route: tos
+    - divider: true
+    - target: blank
+      title: MUSH 101 Tutorial <i class="fa fa-external-link-alt" aria-hidden="true">
+      url: https://aresmush.com/mush-101/
+  website_code_path: "/home/ares/ares-webportal"
+  wiki_aliases:
+    main: home

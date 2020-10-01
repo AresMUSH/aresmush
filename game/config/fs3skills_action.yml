@@ -1,0 +1,107 @@
+---
+fs3skills:
+  action_skills:
+  - name: Academics
+    desc: Placeholder
+    linked_attr: Smarts
+  - name: Athletics
+    linked_attr: Agility
+    desc: General running, jumping, climbing, etc.
+  - name: Battle
+    desc: Placeholder
+    linked_attr: Smarts
+  - name: Boating
+    desc: Placeholder
+    linked_attr: Agility
+  - name: Common Knowledge
+    desc: Placeholder
+    linked_attr: Smarts
+  - name: Driving
+    desc: Placeholder
+    linked_attr: Agility
+  - name: Electronics
+    desc: Placeholder
+    linked_attr: Smarts
+  - name: Fighting
+    desc: Placeholder
+    linked_attr: Agility
+  - name: Gambling
+    desc: Placeholder
+    linked_attr: Smarts
+  - name: Hacking
+    desc: Placeholder
+    linked_attr: Smarts
+  - name: Healing
+    desc: Placeholder
+    linked_attr: Smarts
+  - name: Intimidation
+    desc: Placeholder
+    linked_attr: Spirit
+  - name: Language
+    desc: Placeholder
+    linked_attr: Smarts
+    specialties:
+    - Demongogian
+    - Dragonese
+    - Euro
+    - Faerie Speak
+    - Gobblely
+    - Spanish
+  - name: Notice
+    desc: Placeholder
+    linked_attr: Smarts
+  - name: Occult
+    desc: Placeholder
+    linked_attr: Smarts
+  - name: Performance
+    desc: Placeholder
+    linked_attr: Spirit
+  - name: Persuasion
+    desc: Placeholder
+    linked_attr: Spirit
+  - name: Piloting
+    desc: Placeholder
+    linked_attr: Agility
+  - name: Repair
+    desc: Placeholder
+    linked_attr: Smarts
+  - name: Research
+    desc: Placeholder
+    linked_attr: Smarts
+  - name: Riding
+    desc: Placeholder
+    linked_attr: Agility
+  - name: Science
+    desc: Placeholder
+    linked_attr: Smarts
+  - name: Shooting
+    desc: Placeholder
+    linked_attr: Agility
+  - name: Stealth
+    desc: Placeholder
+    linked_attr: Agility
+  - name: Survival
+    desc: Placeholder
+    linked_attr: Smarts
+  - name: Taunt
+    desc: Placeholder
+    linked_attr: Smarts
+  - name: Thievery
+    desc: Placeholder
+    linked_attr: Agility
+  - name: Arcane Skill
+    desc: Placeholder
+    linked_attr: Smarts
+    specialties:
+    - Spellcasting
+    - Psionics
+  - name: Arcane Skill2
+    desc: Placeholder
+    linked_attr: Spirit
+    specialties:
+    - Focus
+    - Miracles
+  action_skills_blurb: 'Action Skills represent your ability in areas deemed important
+    for gameplay.  Action Skills are rated from d4-d12, but some games limit the highest
+    and  lowest ratings. See <a href="https://aresmush.com/fs3/fs3-3/chargen.html#action-skills"
+    target="_blank">FS3: Action Skills</a> for details.'
