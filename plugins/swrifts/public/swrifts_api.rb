@@ -247,45 +247,20 @@ module AresMUSH
 	
 	def self.returncgpforcg(chariconicf)
 		cgpointsarray = Array.new
-		chariconicf = chariconicf
-		downsizetitle = chariconicf.downcase.strip!
-		downsizetitleclass = downsizetitle.class	
+		downsizetitle = chariconicf.downcase.strip!	
 		cg = Global.read_config('swrifts', 'iconicf')
-		cgpointsarray.push (downsizetitle)
-		cgpointsarray.push ("Class = #{downsizetitleclass}")
 		cg = cg.sort_by { |a| a['name']}
 		cg.each do |c|
-			#cgpointsarray.push ("c is: #{c}")
 			cname = c['name'].downcase
+			cgpoints = c['chargen_points']
 			cnameclass = cname.class
-			#cgpointsarray.push ("cgname: #{cname}")
-			#cgpointsarray.push ("cgnameclass: #{cnameclass}")
 			if ("#{cname}" == "#{downsizetitle}")
 				cgpointsarray.push ("cgname: #{cname}")
+				cgpointsarray.push ("cgpoints: #{cgpoints}")
 			end
 		end
 
-		# cgp = cg.sort_by { |a| a['name']}
-		# cgp.each do |c|	
-			# #get the entry in global file that matches the skill name on the character
-			# cgpoints = swriftskills.select { |ss| ss['name'].downcase == charicf }.first		
-			# ifcgp = c['chargen_points']
-			# cgpointsarray.push("#{ifcgp}")
-		# end
-		#cgp.each do |key,value|
-			#cgpointname = c['name']
-			#desc = c['description']
-			# ifstring = "#{ifname}"
-			# book = c['book_reference']
-			# if book
-				# ifstring << " ~ ("
-				# ifstring << book
-				# ifstring << ")"
-			# end			
-			#cgpointsarray.push("#{key}: #{value}")
-		#end
 		return (cgpointsarray)
-		#return (cgp)
 	end		
 	
   end
