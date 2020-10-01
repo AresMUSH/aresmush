@@ -259,7 +259,7 @@ module AresMUSH
 				cgp = cg.select { |ss| ss['name'].downcase == downsizetitle }.first
 
 				if (cgp)   #if something is returned from the global skills table, set the Desc and Linked Stat.
-					cgpointsarray.push (cg['chargen_points']
+					cgpointsarray.push (cg['chargen_points'])
 				else #otherwise set desc and Linked Stat to nothing
 					cgpointsarray.push ('')
 				end
