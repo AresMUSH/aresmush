@@ -1,14 +1,19 @@
 <%= header %>
 <%= center( mush_name, 78 ) %>
 <%= section_line t('who.where_open_scene_header') %>
-<% scene_groups['open'].each do |room, people| %>
+<% scenes.each do |scene| %>
+%xh<%= left( scene_room_name(scene), 40 ) %>%xn <%= scene_participants(scene) %>
+<% end %>
+
+<%= section_line t('who.where_ic_header') %>
+<% ic_groups.each do |room, people| %>
 %xh<%= left( room, 40 ) %>%xn <%= people.sort.join(", ") %>
 <% end %>
 
-<%= section_line t('who.where_private_scene_header') %>
-<% scene_groups['private'].sort_by { |room, people | room }.each do |room, people| %>
+<%= section_line t('who.where_ooc_header') %>
+<% ooc_groups.each do |room, people| %>
 %xh<%= left( room, 40 ) %>%xn <%= people.sort.join(", ") %>
 <% end %>
 <%= divider %>
-%xr<%= center( online_total, 25 ) %>%xn %xg<%= center( ic_total, 25 ) %>%xn %xb<%= center( online_record, 25 ) %>%xn
+%xr<%= center( online_total, 12 ) %>%xn %xg<%= center( ic_total, 12 ) %>%xn %xb<%= center( online_record, 12 ) %>%xn%B%B%B%xc+%xn=<%= t('who.temproom_scene') %>  %xy@%xn=<%= t('who.alt_pacing') %>
 <%= footer %>

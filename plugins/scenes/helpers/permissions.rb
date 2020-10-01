@@ -30,9 +30,8 @@ module AresMUSH
     
     def self.can_delete_scene?(actor, scene)
       return false if !actor
-      real_poses = scene.scene_poses.select { |p| !p.is_ooc }
-      return true if (scene.owner == actor && (real_poses.count == 0) && !scene.scene_log)
-      return true if Scenes.can_manage_scenes?(actor)
+      real_poses = scene.scene_poses.select { |p| p.is_real_pose? }
+      return true if (scene.owner == actor && (real_poses.count == 0) && !scene.shared)
       return false
     end
     

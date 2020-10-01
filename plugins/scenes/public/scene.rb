@@ -14,6 +14,7 @@ module AresMUSH
     attribute :temp_room, :type => DataType::Boolean
     attribute :completed
     attribute :scene_type
+    attribute :scene_pacing
     attribute :location
     attribute :summary
     attribute :limit

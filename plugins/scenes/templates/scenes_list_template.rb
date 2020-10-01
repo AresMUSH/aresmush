@@ -19,8 +19,8 @@ module AresMUSH
       end
       
       def title(scene)
-        return "##{scene.id} <#{privacy(scene)}>" if scene.private_scene
-        "##{scene.id} <#{privacy(scene)}> - #{scene.title || scene.location}"
+        return "##{scene.id} <#{privacy(scene)}, #{pacing(scene)}>" if scene.private_scene
+        "##{scene.id} <#{privacy(scene)}, #{pacing(scene)}> - #{scene.title || scene.location}"
       end
       
       def organizer(scene)
@@ -57,6 +57,23 @@ module AresMUSH
         else
           color = "%xg"
           message = t('scenes.open')
+        end
+        "#{color}#{message}%xn"
+      end
+      
+      def pacing(scene)
+        if (scene.scene_pacing == "Traditional")
+          color = "%xg"
+          message = "Trad"
+        elsif (scene.scene_pacing == "Distracted")
+          color = "%xy"
+          message = "Distract"
+        elsif (scene.scene_pacing == "Asynchronous")
+           color = "%xc"
+           message = "Async"
+        else
+          color = "%xh"
+          message = scene.scene_pacing[0..5]
         end
         "#{color}#{message}%xn"
       end

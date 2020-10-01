@@ -12,11 +12,7 @@ module AresMUSH
       self.last_connect = Time.now
       self.input_buffer = ""
       @ip_addr = @connection.ip_addr
-      begin
-        @hostname = Resolv.getname @ip_addr
-      rescue
-        @hostname = ""
-      end
+      @hostname = Client.lookup_hostname(@ip_addr)
       @program = {}
     end
     
@@ -145,6 +141,14 @@ module AresMUSH
     # @engineinternal true
     def web_char_id
       @connection.web_char_id
+    end
+    
+    def self.lookup_hostname(ip)
+      begin
+        return Resolv.getname ip
+      rescue
+        return ""
+      end
     end
     
   end
