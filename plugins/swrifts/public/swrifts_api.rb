@@ -247,8 +247,11 @@ module AresMUSH
 	
 	def self.returncgpforcg(cg)
 		cgpointsarray = Array.new
-		return cg
-		#cgp = cg['chargen_points']
+		cgp = cg.sort_by { |a| a['name']}
+		list.each do |c|
+			ifcgp = c['chargen_points']
+			cgpointsarray = push("#{racestring}")
+		end
 		#cgp.each do |key,value|
 			#cgpointname = c['name']
 			#desc = c['description']
@@ -261,7 +264,7 @@ module AresMUSH
 			# end			
 			#cgpointsarray.push("#{key}: #{value}")
 		#end
-		#return (cgpointsarray)
+		return (cgpointsarray)
 		#return (cgp)
 	end		
 	
