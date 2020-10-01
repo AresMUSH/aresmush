@@ -248,13 +248,7 @@ module AresMUSH
 	def self.returncgpforcg(chariconicf)
 		cgpointsarray = Array.new
 		downsizetitle = chariconicf.strip!
-		downsizetitleclass = downsizetitle.class
-		
-		list = chariconicf.sort_by { |a| a['name']}
-		list.each do |c|
-			cgpointsarray.push ("#{c}")
-		end
-		
+		downsizetitleclass = downsizetitle.class	
 		cg = Global.read_config('swrifts', 'iconicf')
 		cgpointsarray.push (downsizetitle)
 		cgpointsarray.push (downsizetitleclass)
