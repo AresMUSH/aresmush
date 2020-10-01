@@ -158,7 +158,7 @@ module AresMUSH
 		iconicf = returniconicforcg(swrifts_iconicf)
 
 		# Set up Chargen Points
-		cgpoints = returncgpointsforcg(swrifts.chargen_points)
+		cgpoints = returncgpointsforcg(swrifts.iconicf)
 	
 		if char.swrifts_iconicf
 			chariconicf = char.swrifts_iconicf.titleize
@@ -247,7 +247,8 @@ module AresMUSH
 	
 	def returncgpointsforcg(chargen_points)
 		cgpointsarray = Array.new
-		chargen_points.each do |key,value|
+		cgp = chargen_points['chargen_point']
+		cgp.each do |key,value|
 			#cgpointname = c['name']
 			#desc = c['description']
 			# ifstring = "#{ifname}"
