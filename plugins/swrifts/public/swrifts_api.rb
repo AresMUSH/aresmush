@@ -247,12 +247,8 @@ module AresMUSH
 	
 	def self.returncgpforcg(cg, chariconicf)
 		cgpointsarray = Array.new
-		chariconicf.sort_by { |a| a.name }	
-		.each_with_index
-			.map do |a, i| 
-				correcttitle = "#{a.name}".titleize
-				downsizetitle = "#{a.name}".downcase
-				
+		downsizetitle = chariconicf.downcase
+
 				#get the entry in global file that matches the skill name on the character
 				cgp = cg.select { |ss| ss['name'].downcase == downsizetitle }.first
 
