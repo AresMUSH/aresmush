@@ -78,6 +78,7 @@ module AresMUSH
         Describe.save_web_descs(char, request.args['descs'])
         CustomCharFields.save_fields_from_profile_edit(char, request.args)
         Idle.save_web_roster_fields(char, request.args['roster'])
+        Roles.save_web_roles(char, request.args['roles'])
         
         ## DO PROFILE LAST SO IT TRIGGERS THE SOURCE HISTORY UPDATE
         profile = {}

@@ -94,7 +94,9 @@ module AresMUSH
           custom: CustomCharFields.get_fields_for_editing(char, enactor),
           descs: Describe.get_web_descs_for_edit(char),
           genders: Demographics.genders,
-          roster: roster
+          roster: roster,
+          roles: char.roles.map { |r| r.name },
+          all_roles: Role.all.to_a.sort_by { |r| r.name }.map { |r| r.name }
         }
       end
     end

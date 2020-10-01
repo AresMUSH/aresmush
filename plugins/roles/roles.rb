@@ -56,6 +56,8 @@ module AresMUSH
       case request.cmd
       when "admins"
         return AdminsRequestHandler
+      when "roles"
+        return RolesRequestHandler
       else
         return nil
       end
