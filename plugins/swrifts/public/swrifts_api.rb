@@ -251,7 +251,7 @@ module AresMUSH
 
 				#get the entry in global file that matches the skill name on the character
 				cgp = cg.select { |ss| ss['name'].downcase == downsizetitle }.first
-
+				cgpointsarray.push (cgp)
 				if (cgp)   #if something is returned from the global skills table, set the Desc and Linked Stat.
 					cgpointsarray.push (cg['chargen_points'])
 				else #otherwise set desc and Linked Stat to nothing
