@@ -251,14 +251,14 @@ module AresMUSH
 		cg = Global.read_config('swrifts', 'iconicf')
 		cgpointsarray.push (downsizetitle)
 		cgpointsarray.push (cg.class)
-				#get the entry in global file that matches the skill name on the character
-				cgp = cg.select { |ss| ss['name'].downcase == downsizetitle }.first
-				cgpointsarray.push (cgp)
-				if (cgp)   #if something is returned from the global skills table, set the Desc and Linked Stat.
-					cgpointsarray.push (cg['chargen_points'])
-				else #otherwise set desc and Linked Stat to nothing
-					cgpointsarray.push ('nout')
-				end
+		cg = model.sort_by { |a| a['name']}
+		cg.each do |c|
+			if (c['name'] == downsizetitle)
+				cgpointsarray.push (c['chargen_points'])
+			else #otherwise set desc and Linked Stat to nothing
+				cgpointsarray.push ('nout')
+			end
+		end
 
 		# cgp = cg.sort_by { |a| a['name']}
 		# cgp.each do |c|	
