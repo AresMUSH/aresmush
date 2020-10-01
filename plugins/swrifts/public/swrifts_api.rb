@@ -173,7 +173,7 @@ module AresMUSH
 		end
 		
 		# Set up Chargen Points
-		cgpoints = returncgpforcg(swrifts_iconicf, char.swrifts_iconicf)
+		cgpoints = returncgpforcg(char.swrifts_iconicf)
 		
 		#iconicf='hellow world'
 		#iconicf = swrifts_iconicf.join(" ") #removes the comma's that seperates the entries		
