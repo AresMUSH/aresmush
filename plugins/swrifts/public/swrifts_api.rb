@@ -158,7 +158,7 @@ module AresMUSH
 		iconicf = returniconicforcg(swrifts_iconicf)
 
 		# Set up Chargen Points
-		cgpoints = returncgpointsforcg(swrifts.iconicf)
+		cgpoints = returncgpointsforcg(swrifts_iconicf)
 	
 		if char.swrifts_iconicf
 			chariconicf = char.swrifts_iconicf.titleize
