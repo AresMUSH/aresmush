@@ -173,7 +173,7 @@ module AresMUSH
 		end
 		
 		# Set up Chargen Points
-		cgpoints = returncgpforcg(swrifts_iconicf)	
+		cgpoints = returncgpforcg(swrifts_iconicf, chariconicf)	
 		
 		#iconicf='hellow world'
 		#iconicf = swrifts_iconicf.join(" ") #removes the comma's that seperates the entries		
@@ -245,13 +245,33 @@ module AresMUSH
 		return (racearray)
 	end
 	
-	def self.returncgpforcg(cg)
+	def self.returncgpforcg(cg, chariconicf)
+		charicf = chariconicf.downsize
 		cgpointsarray = Array.new
-		cgp = cg.sort_by { |a| a['name']}
-		cgp.each do |c|
-			ifcgp = c['chargen_points']
-			cgpointsarray.push("#{ifcgp}")
-		end
+		
+		chariconicf.to_a.sort_by { |a| a.name }	
+		.each_with_index
+			.map do |a, i| 
+				correcttitle = "#{a.name}".titleize
+				downsizetitle = "#{a.name}".downcase
+				
+				#get the entry in global file that matches the skill name on the character
+				cgp = cg.select { |ss| ss['name'].downcase == downsizetitle }.first
+
+				if (cgp)   #if something is returned from the global skills table, set the Desc and Linked Stat.
+					cgpointsarray.push (cg['chargen_points']
+				else #otherwise set desc and Linked Stat to nothing
+					cgpointsarray.push ('')
+				end
+			end
+
+		# cgp = cg.sort_by { |a| a['name']}
+		# cgp.each do |c|	
+			# #get the entry in global file that matches the skill name on the character
+			# cgpoints = swriftskills.select { |ss| ss['name'].downcase == charicf }.first		
+			# ifcgp = c['chargen_points']
+			# cgpointsarray.push("#{ifcgp}")
+		# end
 		#cgp.each do |key,value|
 			#cgpointname = c['name']
 			#desc = c['description']
