@@ -258,9 +258,9 @@ module AresMUSH
 				# ifstring << ")"
 			# end			
 			cgpointsarray.push("#{key}: #{value}")
-		 end
+		end
 		return (cgpointsarray)
-			
+	end		
 	
   end
 
