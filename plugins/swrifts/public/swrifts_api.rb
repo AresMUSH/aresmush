@@ -245,10 +245,10 @@ module AresMUSH
 		return (racearray)
 	end
 	
-	def self.returncgpforcg(cg, chariconicf)
+	def self.returncgpforcg(chariconicf)
 		cgpointsarray = Array.new
 		downsizetitle = chariconicf.downcase
-
+		cg = Global.read_config('swrifts', 'iconicf')
 				#get the entry in global file that matches the skill name on the character
 				cgp = cg.select { |ss| ss['name'].downcase == downsizetitle }.first
 				cgpointsarray.push (cgp)
