@@ -156,6 +156,10 @@ module AresMUSH
 		# Format Iconic Framework table
 		swrifts_iconicf = Global.read_config('swrifts', 'iconicf')
 		iconicf = returniconicforcg(swrifts_iconicf)
+
+		# Set up Chargen Points
+		cgpoints = returncgpointsforcg(swrifts.chargen_points)
+	
 		if char.swrifts_iconicf
 			chariconicf = char.swrifts_iconicf.titleize
 		else
@@ -164,11 +168,13 @@ module AresMUSH
 		
 		swrifts_race = Global.read_config('swrifts', 'races')			
 		cgrace = returnraceforcg(swrifts_race)
+		
 		if char.swrifts_race
 			charrace = char.swrifts_race.titleize
 		else
 			charrace = "Human"		
 		end
+		
 		#iconicf='hellow world'
 		#iconicf = swrifts_iconicf.join(" ") #removes the comma's that seperates the entries		
 
@@ -185,7 +191,8 @@ module AresMUSH
 		  iconicf: iconicf,
 		  chariconicf: chariconicf,
 		  cgrace: cgrace,
-		  charrace: charrace
+		  charrace: charrace,
+		  cgpoints: cgpoints,
 		  #stats: stats,
 		  #bennies: bennies,
 		  #conviction: conviction
@@ -237,6 +244,23 @@ module AresMUSH
 		end
 		return (racearray)
 	end
+	
+	def returncgpointsforcg(chargen_points)
+		cgpointsarray = Array.new
+		chargen_points.each do |key,value|
+			#cgpointname = c['name']
+			#desc = c['description']
+			# ifstring = "#{ifname}"
+			# book = c['book_reference']
+			# if book
+				# ifstring << " ~ ("
+				# ifstring << book
+				# ifstring << ")"
+			# end			
+			cgpointsarray.push("#{key}: #{value}")
+		 end
+		return (cgpointsarray)
+			
 	
   end
 
