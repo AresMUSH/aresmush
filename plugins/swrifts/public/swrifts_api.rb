@@ -253,7 +253,8 @@ module AresMUSH
 		cg = cg.sort_by { |a| a['name']}
 		cg.each do |c|
 			#cgpointsarray.push ("c is: #{c}")
-			cgpointsarray.push ("cgname: #{c['name'].downcase"}
+			cname = c['name'].downcase
+			cgpointsarray.push ("cgname: #{cname}"}
 			if (c['name'].downcase == downsizetitle)
 				cgpointsarray.push ("#{c}")
 			end
