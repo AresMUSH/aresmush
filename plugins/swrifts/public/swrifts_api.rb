@@ -252,11 +252,9 @@ module AresMUSH
 		cgpointsarray.push (downsizetitle)
 		cg = cg.sort_by { |a| a['name']}
 		cg.each do |c|
-			cgpointsarray.push ("c is: #{c}")
+			#cgpointsarray.push ("c is: #{c}")
 			if (c['name'].downcase == downsizetitle)
 				cgpointsarray.push (c['chargen_points'])
-			else #otherwise set desc and Linked Stat to nothing
-				cgpointsarray.push ('nout')
 			end
 		end
 
