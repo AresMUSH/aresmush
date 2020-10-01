@@ -249,6 +249,8 @@ module AresMUSH
 		cgpointsarray = Array.new
 		downsizetitle = chariconicf.downcase
 		cg = Global.read_config('swrifts', 'iconicf')
+		cgpointsarray.push (downsizetitle)
+		cgpointsarray.push (cg)
 				#get the entry in global file that matches the skill name on the character
 				cgp = cg.select { |ss| ss['name'].downcase == downsizetitle }.first
 				cgpointsarray.push (cgp)
