@@ -250,11 +250,10 @@ module AresMUSH
 		downsizetitle = chariconicf.downcase
 		cg = Global.read_config('swrifts', 'iconicf')
 		cgpointsarray.push (downsizetitle)
-		cgpointsarray.push (cg.class)
 		cg = cg.sort_by { |a| a['name']}
 		cg.each do |c|
 			cgpointsarray.push ("c is: #{c}")
-			if (c['name'] == downsizetitle)
+			if (c['name'].downcase == downsizetitle)
 				cgpointsarray.push (c['chargen_points'])
 			else #otherwise set desc and Linked Stat to nothing
 				cgpointsarray.push ('nout')
