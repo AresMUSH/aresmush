@@ -246,7 +246,7 @@ module AresMUSH
 		return (racearray)
 	end
 	
-	def returncgpforcg(cg)
+	def self.returncgpforcg(cg)
 		return 'hellow word'
 		#cgpointsarray = Array.new
 		#cgp = cg['chargen_points']
