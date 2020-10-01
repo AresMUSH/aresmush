@@ -109,6 +109,8 @@ Tag names may be prefixed with a hyphen to exclude the tag.  By default, multipl
 * "picon +navy" would include characers with the Picon tag _and_ the Navy tag.
 * "picon caprica +navy" would include characters with _either_ the Picon/Caprica tags _and_ the Navy tag.
 
+Note: Character lists include only active PCs by default. To include all characters (including idled out and NPCs), add the special "all" tag to your tags list. For example: `chargallery navy all`.
+
 ## Category Lists
 
 You can include a list of all pages in a particular category (defined by the part of the page name before the ':').

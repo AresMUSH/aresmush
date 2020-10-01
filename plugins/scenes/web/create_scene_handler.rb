@@ -29,6 +29,7 @@ module AresMUSH
         content_warning: request.args[:content_warning],
         last_activity: Time.now,
         scene_type: request.args[:scene_type],
+        scene_pacing: request.args[:scene_pacing],
         title: request.args[:title],
         icdate: request.args[:icdate],
         limit: request.args[:limit],

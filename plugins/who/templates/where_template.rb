@@ -6,17 +6,13 @@ module AresMUSH
       # some are defined in a common file.
       include CommonWhoFields
     
-      attr_accessor :online_chars, :scene_groups
+      attr_accessor :online_chars
     
       def initialize(online_chars, client)
         @online_chars = online_chars
-        @scene_groups = build_scene_groups
         @client = client
         
-        
         case (Global.read_config("who", "where_style"))
-        when "scene"
-          template_file = "/where_by_scene.erb"
         when "room"
           template_file = "/where_by_room.erb"
         else
@@ -33,55 +29,6 @@ module AresMUSH
           groups[key] = [value]
         end
       end  
-      
-      def scene_room_name(char)
-        scene = char.room.scene
-        status  = Website.activity_status(char)
-        if (scene)
-          if (scene.private_scene)
-            return "      #{t('who.private_scene')}"
-          else
-            scene_id = left("\##{scene.id}", 6)
-            if (scene.temp_room)
-              scene_name = char.room.name.after('- ')
-              area_name = char.room.area ? "#{char.room.area.name} - " : ''
-              return "#{scene_id}#{area_name}#{scene_name}"
-            else
-              return "#{scene_id}#{Who.who_room_name(char)}"
-            end
-          end
-        elsif (status == 'web-inactive' || status == 'web-active')
-          return "      #{t('who.web_room')}"
-        else 
-          return "      #{Who.who_room_name(char)}"
-        end
-        
-      end
-        
-      def build_scene_groups
-        groups = {}
-        groups['private'] = {}
-        groups['open'] = {}
-        
-        self.online_chars.each do |c|
-          scene = c.room.scene
-          room = scene_room_name(c)
-          name = name(c)
-
-          if (c.who_hidden)
-            append_to_group(groups['private'],  "      #{t('who.hidden')}", name)
-          elsif (scene)
-            if (scene.private_scene)
-              append_to_group(groups['private'], room, name)
-            else
-              append_to_group(groups['open'], room, name)
-            end
-          else
-            append_to_group(groups['private'], room, name)
-          end
-        end
-        groups
-      end
       
       def name(char)
         status  = Website.activity_status(char)
