@@ -258,8 +258,8 @@ module AresMUSH
 			#cgpointsarray.push ("c is: #{c}")
 			cname = c['name'].downcase
 			cnameclass = cname.class
-			cgpointsarray.push ("cgname: #{cname}")
-			cgpointsarray.push ("cgnameclass: #{cnameclass}")
+			#cgpointsarray.push ("cgname: #{cname}")
+			#cgpointsarray.push ("cgnameclass: #{cnameclass}")
 			if ("#{cname}" == "#{downsizetitle}")
 				cgpointsarray.push ("cgname: #{cname}")
 			end
