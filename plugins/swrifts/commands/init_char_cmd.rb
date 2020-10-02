@@ -97,7 +97,7 @@ module AresMUSH
 								setthing = "#{key}".downcase
 								setrating = "#{rating}"
 								ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
-									SwriftsStatMax.create(name: setthing, rating: setrating, character: model)
+									SwriftsStatsmax.create(name: setthing, rating: setrating, character: model)
 								end
 							end
 							client.emit_success ("Stat Maximums Set!")
