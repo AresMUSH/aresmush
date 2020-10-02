@@ -39,16 +39,12 @@ module AresMUSH
 					iconicf_stats.each do |key, rating|
 						# alias the 'key' because the command below doesn't parse the #'s and {'s etc.
 						stat_name = "#{key}".downcase
-						client.emit ("#{key}")
-						# alias the 'rating' for the same reason
+						# alias the 'rating' for the same reason and set it to an integer
 						mod = "#{rating}".to_i
-						client.emit ("#{rating}")
 						# get the current rating of the stat
 						current_rating = Swrifts.stat_rating(enactor, stat_name)
-						client.emit (current_rating)
 						# add Iconic Framework bonus to Initial stat
 						new_rating = current_rating + mod
-						client.emit (new_rating)
 												
 						ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
 							# update the collection
