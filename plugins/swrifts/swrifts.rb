@@ -15,6 +15,8 @@ module AresMUSH
 			case cmd.root
 			when "swrifts"
 				case cmd.switch
+				when "init"
+					return InitCharCmd
 				when "iconicf"
 					if (!cmd.args)
 						return IconicfCmd

@@ -1,18 +1,23 @@
 module AresMUSH
 	class Character < Ohm::Model
 #----- These are in aresmush\game\config and are the YML files
+		collection :swrifts_traits, "AresMUSH::SwriftsTraits"
+		collection :swrifts_counters, "AresMUSH::SwriftsCounters"
 		collection :swrifts_stats, "AresMUSH::SwriftsStats"
+		collection :swrifts_statsmax, "AresMUSH::SwriftsStatsmax"
+		colleciton :swrifts_dstats, "AresMUSH::SwriftsDstats"
+		collection :swrifts_chargenpoints, "AresMUSH::SwriftsChargenpoints"
 		collection :swrifts_skills, "AresMUSH::SwriftsSkills"
+		collection :swrifts_chargenmin, "AresMUSH::SwriftsChargenmin"
+		collection :swrifts_advances, "AresMUSH::SwriftsAdvances"
 		collection :swrifts_hinderances, "AresMUSH::SwriftsHinderances"
 		collection :swrifts_edges, "AresMUSH::SwriftsEdges" 
 		collection :swrifts_mpowers, "AresMUSH::SwriftsMpowers"
 		collection :swrifts_ppowers, "AresMUSH::SwriftsPpowers"
 		collection :swrifts_cybernetics, "AresMUSH::SwriftsCybernetics"
-		collection :swrifts_chargenpoints, "AresMUSH::SwriftsChargenpoints"
 		collection :swrifts_abilities, "AresMUSH::SwriftsAbilities"
 		collection :swrifts_complications, "AresMUSH::SwriftsComplications"
-		collection :swrifts_traits, "AresMUSH::SwriftsTraits"
-		collection :swrifts_counters, "AresMUSH::SwriftsCounters"
+
 
 		attribute :swrifts_iconicf
 		attribute :swrifts_race

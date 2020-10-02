@@ -1,13 +1,19 @@
 module AresMUSH
 	module Swrifts
  
+		def self.is_valid_chargen?(char)
+		  return false if (chargen)
+		  init = Swrifts.get_init(char)
+		  chargen = init['traits']
+		end
+ 
 		def self.is_valid_iconicf_name?(name)
 		  return false if !name
 		  names = Global.read_config('swrifts', 'iconicf').map { |a| a['name'].downcase }
 		  names.include?(name.downcase)
 		end
 	 
-		 def self.is_valid_race_name?(name)
+	    def self.is_valid_race_name?(name)
 		  return false if !name
 		  names = Global.read_config('swrifts', 'races').map { |a| a['name'].downcase }
 		  names.include?(name.downcase)

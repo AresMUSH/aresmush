@@ -253,8 +253,10 @@ module AresMUSH
 		cg.each do |c|
 			cname = c['name'].downcase
 			cgpoints = c['chargen_points']
+			cgpointsclass = cgpoints.class
 			if ("#{cname}" == "#{downsizetitle}")
-				cgpointsarray.push (cgpoints)
+				cc = "#{cgpoints} - #{cgpointsclass}"
+				cgpointsarray.push (cc)
 			end
 		end
 		return (cgpointsarray)
