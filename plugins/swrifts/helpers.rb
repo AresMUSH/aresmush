@@ -1,27 +1,17 @@
 module AresMUSH
 	module Swrifts
  
+		## ----- Iconicf
+ 
 		def self.is_valid_iconicf_name?(name)
 		  return false if !name
 		  names = Global.read_config('swrifts', 'iconicf').map { |a| a['name'].downcase }
 		  names.include?(name.downcase)
 		end
-	 
-	    def self.is_valid_race_name?(name)
-		  return false if !name
-		  names = Global.read_config('swrifts', 'races').map { |a| a['name'].downcase }
-		  names.include?(name.downcase)
-		end
-	 
+
 		def self.find_iconicf_config(name)
 			return nil if !name
 			types = Global.read_config('swrifts', 'iconicf')
-			types.select { |a| a['name'].downcase == name.downcase }.first
-		end
-
-		def self.find_race_config(name)
-			return nil if !name
-			types = Global.read_config('swrifts', 'races')
 			types.select { |a| a['name'].downcase == name.downcase }.first
 		end
 
@@ -33,18 +23,34 @@ module AresMUSH
 		def self.get_iconicf(char, iconicf_name)
 			charac = Swrifts.find_iconicf_config(iconicf_name)
 		end
-		
+
+		def self.set_iconicf_name(char, iconicf_name, enactor)
+			char.update(swrifts_iconicf: iconicf_name)
+		end
+
+		## ----- Race
+	 
+	    def self.is_valid_race_name?(name)
+		  return false if !name
+		  names = Global.read_config('swrifts', 'races').map { |a| a['name'].downcase }
+		  names.include?(name.downcase)
+		end
+
+		def self.find_race_config(name)
+			return nil if !name
+			types = Global.read_config('swrifts', 'races')
+			types.select { |a| a['name'].downcase == name.downcase }.first
+		end
+
 		def self.get_race(char, race_name)
 			charac = Swrifts.find_race_config(race_name)
 		end
 	 
-		def self.set_iconicf_name(char, iconicf_name, enactor)
-			char.update(swrifts_iconicf: iconicf_name)
-		end
-		
 		def self.set_race_name(char, race_name, enactor)
 			char.update(swrifts_race: race_name)
 		end
+		
+		## ----- Stats
 		
 		def self.is_valid_stat_name?(name)
 		  return false if !name
@@ -61,21 +67,44 @@ module AresMUSH
 			stat = Swrifts.find_stat(char, stat_name)
 			stat ? stat.rating : 0
 		end
+
+		def self.find_stat(char, stat_name)
+			name_downcase = stat_name.downcase
+			char.swrifts_stats.select { |a| a.name.downcase == name_downcase }.first
+		end
+
+		## ----- Points
 		
 		def self.point_rating(char, points_name)
 			point = Swrifts.find_points(char, points_name)
 			point ? point.rating : 0
 		end
-		
-		def self.find_stat(char, stat_name) #deleted version with 'model' instead of 'char'
-			name_downcase = stat_name.downcase
-			char.swrifts_stats.select { |a| a.name.downcase == name_downcase }.first
-		end
-		
+
 		def self.find_points(char, points_name)
 			name_downcase = points_name.downcase
 			char.swrifts_chargenpoints.select { |a| a.name.downcase == name_downcase }.first
 		end
+
+		## ----- Skills
+
+		def self.find_skill(char, skill_name) 
+			name_downcase = skill_name.downcase
+			char.swrifts_skills.select { |a| a.name.downcase == name_downcase }.first
+		end
+		
+		def self.skill_rating(char, skill_name)
+			skill = Swrifts.find_skill(char, skill_name)
+			skill ? skill.rating : 0
+		end
+
+		## ----- Traits
+		
+		def self.find_traits(model, iconicf_title)
+			name_downcase = iconicf_title.downcase
+			model.swrifts_traits.select { |a| a.name.downcase == name_downcase }.first
+		end
+		
+		## ----- Die Step
 		
 		def self.rating_to_die( rating )
 			rating_num = rating.to_i
@@ -100,10 +129,6 @@ module AresMUSH
 			end
 		end
 		
-		def self.find_traits(model, iconicf_title)
-			name_downcase = iconicf_title.downcase
-			model.swrifts_traits.select { |a| a.name.downcase == name_downcase }.first
-		end
 
 		# def self.chargen_points(char, points_name) # Aliana, stats_points
 			# name_downcase = points_name.downcase
