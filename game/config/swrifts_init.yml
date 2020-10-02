@@ -11,6 +11,10 @@ swrifts:
             conviction: 0
             conviction_current: 0
             damage: 0
+            ppe_max: 0
+            ppe_current: 0
+            isp_max: 0
+            isp_current: 0
         stats:
             Agility: 1
             Smarts: 1
@@ -54,11 +58,13 @@ swrifts:
             Performance: 0
             Persuasion: 1
             Piloting: 0
+            Psionics: 0
             Repair: 0
             Research: 0
             Riding: 0
             Science: 0
             Shooting: 0
+            Spellcasting: 0
             Stealth: 1
             Survival: 0
             Taunt: 0
