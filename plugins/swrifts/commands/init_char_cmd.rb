@@ -40,6 +40,9 @@ module AresMUSH
 				
 				ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
 					client.emit(model.inspect)
+					chartraits = model.swrifts_traits
+					client.emit ("%r%r")
+					client.emit (chartraits.inspect)
 					return
 				end
 				
