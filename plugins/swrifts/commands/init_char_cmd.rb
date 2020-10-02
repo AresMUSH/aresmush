@@ -49,7 +49,6 @@ module AresMUSH
 						.map do |a, i| 
 							client.emit("#{a.name}: #{a.rating}")
 					end						
-					return
 				end
 				
 				#----- This sets the default traits field on the collection -----				
