@@ -45,7 +45,7 @@ module AresMUSH
 						# alias the 'rating' for the same reason
 						setrating = rating
 						
-						client.emit ("#{setthing}%r")
+						client.emit (setthing)
 						client.emit ("#{setrating}%r")
 						ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
 							# create the collection
