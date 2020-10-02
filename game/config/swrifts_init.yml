@@ -15,7 +15,6 @@ swrifts:
             ppe_current: 0
             isp_max: 0
             isp_current: 0
-            
         stats:
             Agility: 1
             Smarts: 1
