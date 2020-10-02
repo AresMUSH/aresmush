@@ -146,7 +146,7 @@ module AresMUSH
 						#return "kkk: #{a.rating}"
 					end
 				end	
-				return (txtstring)
+				return ("#{txtstring}")
 			end
 		
 		end
