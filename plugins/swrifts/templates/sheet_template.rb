@@ -136,12 +136,12 @@ module AresMUSH
 			end
 			
 			def return_traits(traitname)
-			return ("#{traitname}")
 			traitname = traitname.downcase
 			swriftstraits = @char.swrifts_traits
 			swriftstraits.to_a.sort_by { |a| a.name }
 				.each_with_index
 					.map do |a, i| 
+					return ("#{traitname}, #{a.name}, #{a.rating}")
 					if a.name.downcase == "#{traitname}"
 						return "kkk: #{a.rating}"
 					end
