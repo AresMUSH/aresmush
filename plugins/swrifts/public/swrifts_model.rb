@@ -5,7 +5,7 @@ module AresMUSH
 		collection :swrifts_counters, "AresMUSH::SwriftsCounters"
 		collection :swrifts_stats, "AresMUSH::SwriftsStats"
 		collection :swrifts_statsmax, "AresMUSH::SwriftsStatsmax"
-		colleciton :swrifts_dstats, "AresMUSH::SwriftsDstats"
+		collection :swrifts_dstats, "AresMUSH::SwriftsDstats"
 		collection :swrifts_chargenpoints, "AresMUSH::SwriftsChargenpoints"
 		collection :swrifts_skills, "AresMUSH::SwriftsSkills"
 		collection :swrifts_chargenmin, "AresMUSH::SwriftsChargenmin"
