@@ -12,7 +12,7 @@ module AresMUSH
 			end
 			
 			def required_args
-				[ self.target, self.iconicf_name ]
+				[ self.target_name, self.iconicf_name ]
 			end
 
 			
