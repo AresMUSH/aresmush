@@ -43,6 +43,11 @@ module AresMUSH
 					chartraits = model.swrifts_traits
 					client.emit ("%r%r")
 					client.emit (chartraits.inspect)
+					chartraits.to_a.sort_by { |a| a.name }
+					.each_with_index
+						.map do |a, i| 
+							client.emit("#{a.name}: #{a.rating}")
+					end						
 					return
 				end
 				
