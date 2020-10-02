@@ -39,7 +39,7 @@ module AresMUSH
 				#----- Check to see if CGen has already been started. If it has, exit with a message. -----
 				
 				ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
-					model.inspect
+					client.emit(model.inspect)
 					return
 				end
 				
