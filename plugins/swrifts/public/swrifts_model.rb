@@ -34,6 +34,24 @@ module AresMUSH
 		end
 	end
  
+ 	class SwriftsTraits < Ohm::Model
+		include ObjectModel
+	
+		attribute :name
+		attribute :rating, :type => DataType::Integer
+		reference :character, "AresMUSH::Character"
+		index :name
+	end	
+ 
+  	class SwriftsCounters < Ohm::Model
+		include ObjectModel
+	
+		attribute :name
+		attribute :rating, :type => DataType::Integer
+		reference :character, "AresMUSH::Character"
+		index :name
+	end	
+ 
 	class SwriftsStats < Ohm::Model
 		include ObjectModel
 	
@@ -42,8 +60,34 @@ module AresMUSH
 		reference :character, "AresMUSH::Character"
 		index :name
 	end	
+
+	class SwriftsStatsmax < Ohm::Model
+		include ObjectModel
 	
-  
+		attribute :name
+		attribute :rating, :type => DataType::Integer
+		reference :character, "AresMUSH::Character"
+		index :name
+	end	
+
+	class SwriftsDstats < Ohm::Model
+		include ObjectModel
+	
+		attribute :name
+		attribute :rating, :type => DataType::Integer
+		reference :character, "AresMUSH::Character"
+		index :name
+	end	
+
+	class SwriftsChargenpoints < Ohm::Model
+		include ObjectModel
+	
+		attribute :name
+		attribute :rating, :type => DataType::Integer
+		reference :character, "AresMUSH::Character"
+		index :name
+	end
+
 	class SwriftsSkills < Ohm::Model
 		include ObjectModel
 	
@@ -53,7 +97,16 @@ module AresMUSH
 		index :name
 	end
 
-	class SwriftsChargenpoints < Ohm::Model
+	class SwriftsChargenmin < Ohm::Model
+		include ObjectModel
+	
+		attribute :name
+		attribute :rating, :type => DataType::Integer
+		reference :character, "AresMUSH::Character"
+		index :name
+	end
+
+	class SwriftsAdvances < Ohm::Model
 		include ObjectModel
 	
 		attribute :name
@@ -122,22 +175,5 @@ module AresMUSH
 		index :name
 	end
 	
-	class SwriftsTraits < Ohm::Model
-		include ObjectModel
-	
-		attribute :name
-		attribute :rating
-		reference :character, "AresMUSH::Character"
-		index :name
-	end
-	
-	class SwriftsCounters < Ohm::Model
-		include ObjectModel
-	
-		attribute :name
-		attribute :rating
-		reference :character, "AresMUSH::Character"
-		index :name
-	end
 
 end
