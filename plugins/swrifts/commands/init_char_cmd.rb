@@ -35,9 +35,6 @@ module AresMUSH
 				chargen_min = init['chargen_min']
 				advances = init['advances']
 				
-				client.emit ("#{traits}<br />")
-				return
-				
 				#----- This sets the default traits field on the collection -----				
 				if (traits) 
 					# grab the list from the config file and break it into 'key' (before the ':') and 'rating' (after the ':')
