@@ -14,10 +14,10 @@ module AresMUSH
 				[ self.target ]
 			end
 			
-			def check_if_started
-				return t('swrifts.init_started') if !Swrifts.is_valid_chargen?(self.target)
-				return nil
-			end
+			# def check_if_started
+				# return t('swrifts.init_started') if !Swrifts.is_valid_chargen?(self.target)
+				# return nil
+			# end
 
 #----- Begin of def handle -----			
 			def handle  
