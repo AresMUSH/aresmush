@@ -153,7 +153,7 @@ module AresMUSH
 								setthing = "#{key}".downcase
 								setrating = "#{rating}"
 								ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
-									SwriftsChargenMin.create(name: setthing, rating: setrating, character: model)
+									SwriftsChargenmin.create(name: setthing, rating: setrating, character: model)
 								end
 							end
 							client.emit_success ("Skills Set!")
