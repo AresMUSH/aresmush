@@ -1,10 +1,6 @@
 module AresMUSH
 	module Swrifts
  
-		def self.is_valid_chargen?(char)
-			return false if @char.swrifts_traits
-		end
- 
 		def self.is_valid_iconicf_name?(name)
 		  return false if !name
 		  names = Global.read_config('swrifts', 'iconicf').map { |a| a['name'].downcase }
