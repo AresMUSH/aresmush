@@ -2,7 +2,7 @@
 swrifts:
     init:
         traits:
-            iconicf: None
+            iconicf: Shifter
             race: None
             rank: Novice  
         counters:
