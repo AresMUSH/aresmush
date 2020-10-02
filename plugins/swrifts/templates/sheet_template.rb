@@ -142,9 +142,8 @@ module AresMUSH
 			swriftstraits.to_a.sort_by { |a| a.name }
 				.each_with_index
 					.map do |a, i| 
-					txtstring << "#{traitname}, #{a.name}, #{a.rating}%r%R"
 					if a.name.downcase == "#{traitname}"
-						#return "kkk: #{a.rating}"
+						txtstring << "#{traitname}, #{a.name}, #{a.rating}%r%R"
 					end
 				end	
 				return ("#{txtstring}")	
