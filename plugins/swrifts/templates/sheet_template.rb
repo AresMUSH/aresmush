@@ -138,7 +138,6 @@ module AresMUSH
 			def return_traits(traitname)
 			traitname = traitname.downcase
 			swriftstraits = @char.swrifts_traits
-			return ("#{swriftstraits}")
 			txtstring = ''
 			swriftstraits.to_a.sort_by { |a| a.name }
 				.each_with_index
@@ -148,7 +147,7 @@ module AresMUSH
 						#return "kkk: #{a.rating}"
 					end
 				end	
-				return (txtstring)	
+				return ("#{txtstring}")	
 			end
 
 		end
