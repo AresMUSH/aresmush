@@ -26,23 +26,23 @@ module AresMUSH
 				#----- Check to see if CGen has already been started. If it has, exit with a message. -----
 				
 				ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|  #get the character model to work with
-				chartraits = model.swrifts_traits #Return the traits collection.
-					if (chartraits.size > 0) #If the traits collection has *anything* in it, don't do the init
-						client.emit ("You've already initialised your sheet. Please proceed with Chargen") #This needs to be tidied up
-						return
-					else  #If the traits collection has nothing in it, init away
-					# init = Swrifts.get_init(self.enactor, self.init) 
-						init = Global.read_config('swrifts', 'init')				
-						traits = init['traits']
-						counters = init['counters']
-						stats = init['stats'] 
-						stat_max = init['stat_max']
-						dstats = init['dstats']
-						chargen_points = init['chargen_points'] 
-						skills = init['skills'] 
-						chargen_min = init['chargen_min']
-						advances = init['advances']					
-					end
+					chartraits = model.swrifts_traits #Return the traits collection.
+				end
+				if (chartraits.size > 0) #If the traits collection has *anything* in it, don't do the init
+					client.emit ("You've already initialised your sheet. Please proceed with Chargen") #This needs to be tidied up
+					return
+				else  #If the traits collection has nothing in it, init away
+				# init = Swrifts.get_init(self.enactor, self.init) 
+					init = Global.read_config('swrifts', 'init')				
+					traits = init['traits']
+					counters = init['counters']
+					stats = init['stats'] 
+					stat_max = init['stat_max']
+					dstats = init['dstats']
+					chargen_points = init['chargen_points'] 
+					skills = init['skills'] 
+					chargen_min = init['chargen_min']
+					advances = init['advances']					
 				end
 				
 				#----- This sets the default traits field on the collection -----				
