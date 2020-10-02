@@ -3,7 +3,7 @@ module AresMUSH
 		class InitCharCmd
 			include CommandHandler
 			      
-			attr_accessor :target
+			attr_accessor :target, :init
 			
 			def parse_args
 				self.target = enactor_name #Set the character to be the current character
