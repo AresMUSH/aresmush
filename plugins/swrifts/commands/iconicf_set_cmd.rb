@@ -39,6 +39,7 @@ module AresMUSH
 					iconicf_stats.each do |key, rating|
 						# alias the 'key' because the command below doesn't parse the #'s and {'s etc.
 						stat_name = "#{key}".downcase
+						client.emit ("#{key}")
 						# alias the 'rating' for the same reason
 						mod = "#{rating}"
 						# get the current rating of the stat
