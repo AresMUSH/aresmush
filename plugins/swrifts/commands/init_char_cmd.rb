@@ -22,8 +22,6 @@ module AresMUSH
 #----- Begin of def handle -----			
 			def handle  
 				# Swrifts.get_init_char - 'Swrifts' is the plugin folder. 'get' is the command. 'init' is the .yml file in the 'config' folder. 
-				# init = Swrifts.get_init(self.enactor, self.init) 
-				init = Global.read_config('swrifts', 'init')
 
 				#----- Check to see if CGen has already been started. If it has, exit with a message. -----
 				
@@ -33,6 +31,8 @@ module AresMUSH
 					client.emit ("You've already initialised your sheet. Please proceed with Chargen") #This needs to be tidied up
 					return
 				else  #If the traits collection has nothing in it, init away
+				# init = Swrifts.get_init(self.enactor, self.init) 
+					init = Global.read_config('swrifts', 'init')				
 					traits = init['traits']
 					counters = init['counters']
 					stats = init['stats'] 
