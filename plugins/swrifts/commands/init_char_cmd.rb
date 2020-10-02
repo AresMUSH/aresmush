@@ -50,7 +50,8 @@ module AresMUSH
 						client.emit ("#{setrating} (#{srclass})%r")
 						ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
 							# create the collection
-							SwriftsTraits.create(name: setthing, rating: setrating, character: model)
+							ddd = SwriftsTraits.create(name: setthing, rating: setrating, character: model)
+							client.emit ("#{ddd}")
 						end
 					end
 					client.emit_success ("Base Traits Set!")
