@@ -43,9 +43,9 @@ module AresMUSH
 						# alias the 'key' because the command below doesn't parse the #'s and {'s etc.
 						setthing = key.downcase
 						# alias the 'rating' for the same reason
-						setrating = rating
+						setrating = rating.downcase
 						
-						client.emit (setthing)
+						client.emit ("#{setthing}%r")
 						client.emit ("#{setrating}%r")
 						ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
 							# create the collection
