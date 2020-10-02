@@ -52,10 +52,7 @@ module AresMUSH
 								setthing = key.downcase
 								# alias the 'rating' for the same reason
 								setrating = rating
-								#ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
-									# create the collection
-									SwriftsTraits.create(name: setthing, rating: setrating, character: model)
-								#end
+								SwriftsTraits.create(name: setthing, rating: setrating, character: model)
 							end
 							client.emit_success ("Base Traits Set!")
 						else 
@@ -68,9 +65,8 @@ module AresMUSH
 							counters.each do |key, rating|
 								setthing = "#{key}".downcase
 								setrating = "#{rating}"
-								ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
-									SwriftsCounters.create(name: setthing, rating: setrating, character: model)
-								end
+								client.emit ("#{key}: #{rating}%r")
+								SwriftsCounters.create(name: setthing, rating: setrating, character: model)
 							end
 							client.emit_success ("Counters Set!")
 						else 
@@ -82,9 +78,7 @@ module AresMUSH
 							stats.each do |key, rating|
 								setthing = "#{key}".downcase
 								setrating = "#{rating}"
-								ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
-									SwriftsStats.create(name: setthing, rating: setrating, character: model)
-								end
+								SwriftsStats.create(name: setthing, rating: setrating, character: model)
 							end
 							client.emit_success ("Stats Set!")
 						else 
@@ -96,9 +90,7 @@ module AresMUSH
 							stat_max.each do |key, rating|
 								setthing = "#{key}".downcase
 								setrating = "#{rating}"
-								ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
-									SwriftsStatsmax.create(name: setthing, rating: setrating, character: model)
-								end
+								SwriftsStatsmax.create(name: setthing, rating: setrating, character: model)
 							end
 							client.emit_success ("Stat Maximums Set!")
 						else 
@@ -110,9 +102,7 @@ module AresMUSH
 							dstats.each do |key, rating|
 								setthing = "#{key}".downcase
 								setrating = "#{rating}"
-								ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
-									SwriftsDstats.create(name: setthing, rating: setrating, character: model)
-								end
+								SwriftsDstats.create(name: setthing, rating: setrating, character: model)
 							end
 							client.emit_success ("Derived Stats Set!")
 						else 
@@ -124,9 +114,7 @@ module AresMUSH
 							chargen_points.each do |key, rating|
 								setthing = "#{key}".downcase
 								setrating = "#{rating}"
-								ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
-									SwriftsChargenpoints.create(name: setthing, rating: setrating, character: model)
-								end
+								SwriftsChargenpoints.create(name: setthing, rating: setrating, character: model)
 							end
 							client.emit_success ("Chargen Points Set!")
 						else 
@@ -138,9 +126,7 @@ module AresMUSH
 							skills.each do |key, rating|
 								setthing = "#{key}".downcase
 								setrating = "#{rating}"
-								ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
-									SwriftsSkills.create(name: setthing, rating: setrating, character: model)
-								end
+								SwriftsSkills.create(name: setthing, rating: setrating, character: model)
 							end
 							client.emit_success ("Skills Set!")
 						else 
@@ -152,9 +138,7 @@ module AresMUSH
 							chargen_min.each do |key, rating|
 								setthing = "#{key}".downcase
 								setrating = "#{rating}"
-								ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
-									SwriftsChargenmin.create(name: setthing, rating: setrating, character: model)
-								end
+								SwriftsChargenmin.create(name: setthing, rating: setrating, character: model)
 							end
 							client.emit_success ("Skills Set!")
 						else 
@@ -166,9 +150,7 @@ module AresMUSH
 							advances.each do |key, rating|
 								setthing = "#{key}".downcase
 								setrating = "#{rating}"
-								ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
-									SwriftsAdvances.create(name: setthing, rating: setrating, character: model)
-								end
+								SwriftsAdvances.create(name: setthing, rating: setrating, character: model)
 							end
 							client.emit_success ("Skills Set!")
 						else 
