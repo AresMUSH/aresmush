@@ -253,16 +253,16 @@ module AresMUSH
 		#downsizetitle = chariconicf.downcase.strip!	
 		#cg = Global.read_config('swrifts', 'iconicf')
 		#cg = cg.sort_by { |a| a['name']}
-		return "#{cg}"
-		# cg.each do |c|
+		cg.each do |c|
 			# cname = c['name'].downcase
 			# cgpoints = c['chargen_points']
 			# if ("#{cname}" == "#{downsizetitle}")
 				# cgacl = ['name': cname, 'points': cgpoints]
 				# cgpointsarray.push(cgacl)
 			# end
+			cgpointsarray.push (c)
 		# end
-		#return ("#{cgpointsarray}")
+		return ("#{cgpointsarray}")
 	end		
 	
   end
