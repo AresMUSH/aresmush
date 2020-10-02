@@ -123,12 +123,6 @@ swrifts:
             name: Shifter
             book_reference: B&B
             description: Practitioners of magic with a talent for manipulating - or "shifting" the patterns of the raw cosmic energies that bind the Megaverse(R) together.
-            stats:
-                Agility: 1
-                Smarts: 2
-                Spirit: 3
-                Strength: 4
-                Vigor: 5
             chargen_points:
                 stats_points: 5
                 skills_points: 15
