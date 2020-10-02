@@ -65,7 +65,6 @@ module AresMUSH
 							counters.each do |key, rating|
 								setthing = "#{key}".downcase
 								setrating = "#{rating}"
-								client.emit ("#{key}: #{rating}%r")
 								SwriftsCounters.create(name: setthing, rating: setrating, character: model)
 							end
 							client.emit_success ("Counters Set!")
