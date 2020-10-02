@@ -6,7 +6,7 @@ module AresMUSH
 			attr_accessor :target_name, :iconicf_name, :iconicf_title
 
 			def parse_args
-				self.target = enactor_name
+				self.target_name = enactor_name
 				self.iconicf_name = trim_arg(cmd.args)
 				self.iconicf_title = "iconicf"
 			end
