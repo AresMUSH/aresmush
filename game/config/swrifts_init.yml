@@ -11,6 +11,11 @@ swrifts:
             conviction: 0
             conviction_current: 0
             damage: 0
+            ppe_max: 0
+            ppe_current: 0
+            isp_max: 0
+            isp_current: 0
+            
         stats:
             Agility: 1
             Smarts: 1

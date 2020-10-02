@@ -26,6 +26,15 @@ module AresMUSH
 				iconicf = Swrifts.get_iconicf(self.enactor, self.iconicf_name) 
 				iconicf_stats=iconicf['stats']  
 				iconicf_skills=iconicf['skills'] 
+				iconicf_hinderances=iconicf['hinderances'] 
+				iconicf_edges=iconicf['edges'] 
+				iconicf_abilities=iconicf['abilities'] 
+				iconicf_complications=iconicf['complications'] 
+				iconicf_magic_powers=iconicf['magic_powers'] 
+				iconicf_psionic_powers=iconicf['psionic_powers'] 
+				iconicf_cybernetics=iconicf['cybernetics'] 
+				iconicf_chargen_points=iconicf['chargen_points']
+				counters = iconicf['counters']
 
 				## ----- Update Iconic Framework
 				ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
