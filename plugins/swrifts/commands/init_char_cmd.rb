@@ -27,8 +27,9 @@ module AresMUSH
 				
 				ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|  #get the character model to work with
 					chartraits = model.swrifts_traits #Return the traits collection.
+					
 				end
-				if (chartraits.size > 0) #If the traits collection has *anything* in it, don't do the init
+				if (chartraits || chartraits.size > 0) #If the traits collection has *anything* in it, don't do the init
 					client.emit ("You've already initialised your sheet. Please proceed with Chargen") #This needs to be tidied up
 					return
 				else  #If the traits collection has nothing in it, init away
