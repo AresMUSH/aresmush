@@ -136,6 +136,7 @@ module AresMUSH
 			end
 			
 			def return_traits(traitname)
+			return ("{#traitname}")
 			traitname = traitname.downcase
 			swriftstraits = @char.swrifts_traits
 			swriftstraits.to_a.sort_by { |a| a.name }
