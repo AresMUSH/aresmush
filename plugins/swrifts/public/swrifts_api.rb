@@ -175,7 +175,8 @@ module AresMUSH
 		# Set up Chargen Points from Character not YML
 		
 		#cgpoints = returncgpforcg(char.swrifts_iconicf)
-		cgtraits = returncgpforcg()
+		cgpoints = char.swrifts_chargenpoints
+		cgtraits = returncgpforcg(cgpoints)
 		
 		#iconicf='hellow world'
 		#iconicf = swrifts_iconicf.join(" ") #removes the comma's that seperates the entries		
@@ -247,11 +248,10 @@ module AresMUSH
 		return (racearray)
 	end
 	
-	def self.returncgpforcg()
+	def self.returncgpforcg(cg)
 		cgpointsarray = Array.new
 		#downsizetitle = chariconicf.downcase.strip!	
 		#cg = Global.read_config('swrifts', 'iconicf')
-		cg = char.swrifts_chargenpoints
 		cg = cg.sort_by { |a| a['name']}
 		return "#{cg}"
 		# cg.each do |c|
