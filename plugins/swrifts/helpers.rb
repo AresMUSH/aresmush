@@ -99,6 +99,11 @@ module AresMUSH
 				return die_step+step_to_string
 			end
 		end
+		
+		def self.find_trait(model, iconicf_title)
+			name_downcase = iconicf_title.downcase
+			char.swrifts_traits.select { |a| a.name.downcase == name_downcase }.first
+		end
 
 		# def self.chargen_points(char, points_name) # Aliana, stats_points
 			# name_downcase = points_name.downcase
