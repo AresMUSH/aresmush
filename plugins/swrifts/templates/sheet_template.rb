@@ -148,7 +148,7 @@ module AresMUSH
 					end
 				end	
 			end
-		
+			return (txtstring)
 		end
 	end
 end
