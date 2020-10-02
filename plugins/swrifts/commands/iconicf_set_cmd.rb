@@ -115,7 +115,7 @@ module AresMUSH
 					# grab the list from the config file and break it into 'key' (before the ':') and 'rating' (after the ':')
 					iconicf_chargen_points.each do |key, rating|
 						# alias the 'key' because the command below doesn't parse the #'s and {'s etc.
-						thing_name = "#{key}".downcase
+						point_name = "#{key}".downcase
 						# alias the 'rating' for the same reason and set it to an integer
 						mod = "#{rating}".to_i
 						# get the current rating of the skill
@@ -140,7 +140,7 @@ module AresMUSH
 					# grab the list from the config file and break it into 'key' (before the ':') and 'rating' (after the ':')
 					iconicf_counters.each do |key, rating|
 						# alias the 'key' because the command below doesn't parse the #'s and {'s etc.
-						thing_name = "#{key}".downcase
+						counter_name = "#{key}".downcase
 						# alias the 'rating' for the same reason and set it to an integer
 						mod = "#{rating}".to_i
 						# get the current rating of the skill
