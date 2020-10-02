@@ -260,7 +260,7 @@ module AresMUSH
 				# cgacl = ['name': cname, 'points': cgpoints]
 				# cgpointsarray.push(cgacl)
 			# end
-			cgpointsarray.push ("#{c}")
+			cgpointsarray.push (c.name)
 		end
 		return ("#{cgpointsarray}")
 	end		
