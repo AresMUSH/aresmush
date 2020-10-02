@@ -42,10 +42,13 @@ module AresMUSH
 						client.emit ("#{key}")
 						# alias the 'rating' for the same reason
 						mod = "#{rating}"
+						client.emit ("#{rating}")
 						# get the current rating of the stat
 						current_rating = Swrifts.stat_rating(enactor, stat_name)
+						client.emit (current_rating)
 						# add Iconic Framework bonus to Initial stat
 						new_rating = current_rating + mod
+						client.emit (new_rating)
 												
 						ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
 							# update the collection
