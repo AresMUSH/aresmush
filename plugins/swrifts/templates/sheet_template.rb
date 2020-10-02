@@ -59,7 +59,7 @@ module AresMUSH
 			end
 
 			def rankforsheet
-				rank = "rank"
+				rank = "dddd"
 				return_traits rank
 			end
 			
