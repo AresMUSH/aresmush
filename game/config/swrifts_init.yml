@@ -1,5 +1,6 @@
 ---
 swrifts:
+    init:
         traits:
             iconicf: None
             race: None
