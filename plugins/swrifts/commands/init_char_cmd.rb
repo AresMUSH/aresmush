@@ -7,6 +7,7 @@ module AresMUSH
 			
 			def parse_args
 				self.target = enactor_name #Set the character to be the current character
+				self.init = init
 			end
 
 			def required_args
@@ -21,7 +22,7 @@ module AresMUSH
 #----- Begin of def handle -----			
 			def handle  
 				# Swrifts.get_init_char - 'Swrifts' is the plugin folder. 'get' is the command. 'init' is the .yml file in the 'config' folder. 
-				init = Swrifts.get_init(self.enactor) 
+				init = Swrifts.get_init(self.enactor, self.init) 
 
 				traits = init['traits']
 				counters = init['counters']

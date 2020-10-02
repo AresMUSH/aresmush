@@ -2,9 +2,7 @@ module AresMUSH
 	module Swrifts
  
 		def self.is_valid_chargen?(char)
-		  return false if (chargen)
-		  init = Swrifts.get_init(char)
-		  chargen = init['traits']
+			return false if @char.swrifts_traits
 		end
  
 		def self.is_valid_iconicf_name?(name)
