@@ -100,7 +100,7 @@ module AresMUSH
 			end
 		end
 		
-		def self.find_trait(model, iconicf_title)
+		def self.find_traits(model, iconicf_title)
 			name_downcase = iconicf_title.downcase
 			char.swrifts_traits.select { |a| a.name.downcase == name_downcase }.first
 		end
