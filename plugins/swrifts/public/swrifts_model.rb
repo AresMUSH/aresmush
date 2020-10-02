@@ -38,7 +38,7 @@ module AresMUSH
 		include ObjectModel
 	
 		attribute :name
-		attribute :rating, :type => DataType::Integer
+		attribute :rating
 		reference :character, "AresMUSH::Character"
 		index :name
 	end	
