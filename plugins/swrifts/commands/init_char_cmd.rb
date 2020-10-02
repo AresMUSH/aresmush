@@ -41,9 +41,9 @@ module AresMUSH
 					# grab the list from the config file and break it into 'key' (before the ':') and 'rating' (after the ':')
 					traits.each do |key, rating|
 						# alias the 'key' because the command below doesn't parse the #'s and {'s etc.
-						setthing = "#{key}".downcase
+						setthing = key.downcase
 						# alias the 'rating' for the same reason
-						setrating = "#{rating}"
+						setrating = rating
 						
 						client.emit ("#{setthing}%r")
 						client.emit ("#{setrating}%r")
