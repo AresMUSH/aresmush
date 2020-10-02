@@ -252,7 +252,7 @@ module AresMUSH
 		cgpointsarray = Array.new
 		#downsizetitle = chariconicf.downcase.strip!	
 		#cg = Global.read_config('swrifts', 'iconicf')
-		cg = cg.sort_by { |a| a['name']}
+		#cg = cg.sort_by { |a| a['name']}
 		return "#{cg}"
 		# cg.each do |c|
 			# cname = c['name'].downcase
