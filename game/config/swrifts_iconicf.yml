@@ -124,10 +124,6 @@ swrifts:
             book_reference: B&B
             description: Practitioners of magic with a talent for manipulating - or "shifting" the patterns of the raw cosmic energies that bind the Megaverse(R) together.
             chargen_points:
-                stats_points: 5
-                skills_points: 15
-                hj_slots: 2
-                hind_points: 0
                 magic_slots: 1
             counters:
                 ppe_max: 15
@@ -196,50 +192,13 @@ swrifts:
             name: Burster
             book_reference: TLPG
             description: Bursters are pyrokinetics—they telekinetically accelerate molecules to the point of ignition. 
-            stats:
-                Agility: 1
-                Smarts: 1
-                Spirit: 1
-                Strength: 1
-                Vigor: 1
             chargen_points:
-                skills_points: 15
-                stats_points: 5
-                hj_slots: 2
                 psionic_slots: 3
-                hind_points: 0
             counters:
                 isp_max: 20
                 isp_current: 20
             skills:
-                Academics: 0
-                Athletics: 1
-                Battle: 0
-                Boating: 0
-                Common Knowledge: 1
-                Driving: 0
-                Electronics: 0
-                Fighting: 0
-                Gambling: 0
-                Hacking: 0
-                Healing: 0
-                Intimidation: 0
-                Language: 0
-                Notice: 1
-                Occult: 0
-                Performance: 0
-                Persuasion: 1
-                Piloting: 0
                 Psionics: 2
-                Repair: 0
-                Research: 0
-                Riding: 0
-                Science: 0
-                Shooting: 0
-                Stealth: 1
-                Survival: 0
-                Taunt: 0
-                Thievery: 0
             hinderances: 
                 - Enemy-*
                 - Quirk*
@@ -262,44 +221,9 @@ swrifts:
             book_reference: TLPG
             description: Combat Cyborgs are also referred to as full conversion ’Borgs. Their brain and a handful of organs—heart, lungs, possibly some part of the digestive system, not much else—are atached to a synthesis of bionic parts and cybernetic systems. The whole thing is encased in a metallic form capable of wrestling giant robots and dragons to the ground while withstanding direct missile impacts.
             stats:
-                Agility: 4
-                Smarts: 1
-                Spirit: 1
-                Strength: 7
-                Vigor: 5
-            chargen_points:
-                skills_points: 15
-                stats_points: 2
-                hj_slots: 2
-                hind_points: 0
-            skills:
-                Academics: 0
-                Athletics: 1
-                Battle: 0
-                Boating: 0
-                Common Knowledge: 1
-                Driving: 0
-                Electronics: 0
-                Fighting: 0
-                Gambling: 0
-                Hacking: 0
-                Healing: 0
-                Intimidation: 0
-                Language: 0
-                Notice: 1
-                Occult: 0
-                Performance: 0
-                Persuasion: 1
-                Piloting: 0
-                Repair: 0
-                Research: 0
-                Riding: 0
-                Science: 0
-                Shooting: 0
-                Stealth: 1
-                Survival: 0
-                Taunt: 0
-                Thievery: 0
+                Agility: 3
+                Strength: 6
+                Vigor: 4
             hinderances: 
                 - Ugly-*
                     - (Inhuman)
@@ -399,16 +323,7 @@ swrifts:
             name: Mystic
             book_reference: TLPG
             description: Enlightened spell weavers in tune with the greater comic forces of the universe. 
-            stats:
-                Agility: 1
-                Smarts: 1
-                Spirit: 1
-                Strength: 1
-                Vigor: 1
             chargen_points:
-                skills_points: 15
-                stats_points: 5
-                hj_slots: 2 
                 magic_slots: 3
                 psionic_slots: 3
                 hind_points: -2
@@ -418,35 +333,8 @@ swrifts:
                 isp_max: 20
                 isp_current: 15
             skills:
-                Academics: 0
-                Athletics: 1
-                Battle: 0
-                Boating: 0
-                Common Knowledge: 1
-                Driving: 0
-                Electronics: 0
                 Faith: 2
-                Fighting: 0
-                Gambling: 0
-                Hacking: 0
-                Healing: 0
-                Intimidation: 0
-                Language: 0
-                Notice: 1
-                Occult: 0
-                Performance: 0
-                Persuasion: 1
-                Piloting: 0
                 Psionics: 2
-                Repair: 0
-                Research: 0
-                Riding: 0
-                Science: 0
-                Shooting: 0
-                Stealth: 1
-                Survival: 0
-                Taunt: 0
-                Thievery: 0
             hinderances: 
                 - Enemy-*
             edges:
