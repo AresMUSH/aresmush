@@ -41,7 +41,7 @@ module AresMUSH
 						stat_name = "#{key}".downcase
 						client.emit ("#{key}")
 						# alias the 'rating' for the same reason
-						mod = "#{rating}"
+						mod = "#{rating}".to_i
 						client.emit ("#{rating}")
 						# get the current rating of the stat
 						current_rating = Swrifts.stat_rating(enactor, stat_name)
