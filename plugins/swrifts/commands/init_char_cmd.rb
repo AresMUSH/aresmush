@@ -43,15 +43,10 @@ module AresMUSH
 						# alias the 'key' because the command below doesn't parse the #'s and {'s etc.
 						setthing = key.downcase
 						# alias the 'rating' for the same reason
-						setrating = rating.downcase
-						srclass = setrating.class
-						
-						client.emit ("#{setthing}: ")
-						client.emit ("#{setrating} (#{srclass})%r")
+						setrating = rating
 						ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
 							# create the collection
-							ddd = SwriftsTraits.create(name: setthing, rating: setrating, character: model)
-							client.emit ("#{ddd}")
+							SwriftsTraits.create(name: setthing, rating: setrating, character: model)
 						end
 					end
 					client.emit_success ("Base Traits Set!")
