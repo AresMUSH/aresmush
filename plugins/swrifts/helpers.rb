@@ -112,7 +112,7 @@ module AresMUSH
 		## ----- Counters
 
 		def self.find_counters(char, counter_name) 
-			name_downcase = point_name.downcase
+			name_downcase = counter_name.downcase
 			char.swrifts_counters.select { |a| a.name.downcase == name_downcase }.first
 		end
 		
