@@ -35,7 +35,14 @@ module AresMUSH
 				chargen_min = init['chargen_min']
 				advances = init['advances']
 				
-				client.emit ("#{traits}%r%r")
+				
+				#----- Check to see if CGen has already been started. If it has, exit with a message. -----
+				
+				ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
+					model.inspect
+					return
+				end
+				
 				#----- This sets the default traits field on the collection -----				
 				if (traits) 
 					# grab the list from the config file and break it into 'key' (before the ':') and 'rating' (after the ':')
