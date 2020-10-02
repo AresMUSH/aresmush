@@ -9,7 +9,8 @@ module AresMUSH
 				self.target = enactor_name
 				self.iconicf_name = trim_arg(cmd.args)
 				self.iconicf_title = "iconicf"
-				
+			end
+			
 			def required_args
 				[ self.target, self.iconicf_name ]
 			end
