@@ -133,7 +133,8 @@ swrifts:
                 ppe_max: 15
                 ppe_current: 15
             skills:
-                Spellcasting: 1
+                Occult: 2
+                Spellcasting: 2
             hinderances: 
                 - Enemy-*
             edges:
