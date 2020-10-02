@@ -43,7 +43,7 @@ module AresMUSH
 					chargen_min = init['chargen_min']
 					advances = init['advances']					
 				end
-			
+			end
 				
 				#----- This sets the default traits field on the collection -----				
 				if (traits) 
