@@ -41,6 +41,7 @@ module AresMUSH
 				ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
 					client.emit(model.inspect)
 					chartraits = model.swrifts_traits
+					client.emit ("#{chartraits.size} - %r%r")
 					client.emit ("%r%r")
 					client.emit (chartraits.inspect)
 					chartraits.to_a.sort_by { |a| a.name }
