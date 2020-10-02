@@ -143,10 +143,10 @@ module AresMUSH
 				.each_with_index
 					.map do |a, i| 
 					if a.name.downcase == "#{traitname}"
-						txtstring << "#{traitname}, #{a.name}, #{a.rating}%r%R"
+						return ("#{a.rating}")	
 					end
 				end	
-				return ("#{txtstring}")	
+				
 			end
 
 		end
