@@ -8,12 +8,6 @@ swrifts:
             # counters:
                 # ppe_max: 
                 # isp_max:
-                # bennies: 3
-                # conviction: 0
-                # damage: 0
-            # traits:
-                # rank: Novice
-                # pace: 6           
            # stats:
                 # Agility: 1
                 # Smarts: 1
@@ -144,14 +138,6 @@ swrifts:
             counters:
                 ppe_max: 15
                 ppe_current: 15
-                bennies_max: 3
-                bennies_current: 3
-                conviction_max: 0
-                conviction_current: 0
-                damage: 0
-            traits:
-                pace: 6
-                rank: Novice
             skills:
                 Academics: 0
                 Athletics: 1
@@ -257,14 +243,6 @@ swrifts:
             counters:
                 isp_max: 20
                 isp_current: 20
-                bennies_max: 3
-                bennies_current: 3
-                conviction_current: 0
-                conviction_max: 0
-                damage: 0
-            traits:
-                rank: Novice
-                pace: 6
             skills:
                 Academics: 0
                 Athletics: 1
@@ -326,16 +304,6 @@ swrifts:
                 stats_points: 2
                 hj_slots: 2
                 hind_points: 0
-            counters:
-                bennies_max: 3
-                bennies_current: 3
-                conviction_current: 0
-                conviction_max: 0
-                damage: 0
-            traits:
-                rank: Novice
-                pace: 6
-                strain: 6
             skills:
                 Academics: 0
                 Athletics: 1
@@ -481,14 +449,6 @@ swrifts:
                 ppe_current: 15
                 isp_max: 20
                 isp_current: 15
-                bennies_max: 3
-                bennies_current: 3
-                conviction_current: 0
-                conviction_max: 0
-                damage: 0
-            traits:
-                rank: Novice
-                pace: 6
             skills:
                 Academics: 0
                 Athletics: 1
