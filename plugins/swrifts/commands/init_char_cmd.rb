@@ -22,7 +22,8 @@ module AresMUSH
 #----- Begin of def handle -----			
 			def handle  
 				# Swrifts.get_init_char - 'Swrifts' is the plugin folder. 'get' is the command. 'init' is the .yml file in the 'config' folder. 
-				init = Swrifts.get_init(self.enactor, self.init) 
+				# init = Swrifts.get_init(self.enactor, self.init) 
+				init = Global.read_config('swrifts', 'init')
 
 				traits = init['traits']
 				counters = init['counters']
@@ -33,6 +34,9 @@ module AresMUSH
 				skills = init['skills'] 
 				chargen_min = init['chargen_min']
 				advances = init['advances']
+				
+				client.emit ("#{traits}<br />")
+				return
 				
 				#----- This sets the default traits field on the collection -----				
 				if (traits) 
