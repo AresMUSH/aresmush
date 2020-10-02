@@ -117,7 +117,7 @@ module AresMUSH
 		end
 		
 		def self.counters_rating(char, counter_name)
-			counters = Swrifts.find_chargen_points(char, counter_name)
+			counters = Swrifts.find_counters(char, counter_name)
 			counters ? counters.rating : 0
 		end
 

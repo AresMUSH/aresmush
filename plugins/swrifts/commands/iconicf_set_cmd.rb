@@ -137,19 +137,13 @@ module AresMUSH
 				
 				## ----- Update Counters
 				if (iconicf_counters)
-					# grab the list from the config file and break it into 'key' (before the ':') and 'rating' (after the ':')
 					iconicf_counters.each do |key, rating|
-						# alias the 'key' because the command below doesn't parse the #'s and {'s etc.
 						counter_name = "#{key}".downcase
-						# alias the 'rating' for the same reason and set it to an integer
 						mod = "#{rating}".to_i
-						# get the current rating of the skill
 						current_rating = Swrifts.counters_rating(enactor, counter_name).to_i
-						# add Iconic Framework bonus to Initial skill
 						new_rating = current_rating + mod
 												
 						ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-							# update the collection
 							counters = Swrifts.find_counters(model, counter_name)				
 							counters.update(rating: new_rating)
 						end
