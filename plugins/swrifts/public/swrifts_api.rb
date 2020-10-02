@@ -172,8 +172,10 @@ module AresMUSH
 			charrace = "Human"		
 		end
 		
-		# Set up Chargen Points
-		cgpoints = returncgpforcg(char.swrifts_iconicf)
+		# Set up Chargen Points from Character not YML
+		
+		#cgpoints = returncgpforcg(char.swrifts_iconicf)
+		cgtraits = returncgpforcg()
 		
 		#iconicf='hellow world'
 		#iconicf = swrifts_iconicf.join(" ") #removes the comma's that seperates the entries		
@@ -245,20 +247,22 @@ module AresMUSH
 		return (racearray)
 	end
 	
-	def self.returncgpforcg(chariconicf)
+	def self.returncgpforcg()
 		cgpointsarray = Array.new
-		downsizetitle = chariconicf.downcase.strip!	
-		cg = Global.read_config('swrifts', 'iconicf')
+		#downsizetitle = chariconicf.downcase.strip!	
+		#cg = Global.read_config('swrifts', 'iconicf')
+		cg = char.swrifts_chargenpoints
 		cg = cg.sort_by { |a| a['name']}
-		cg.each do |c|
-			cname = c['name'].downcase
-			cgpoints = c['chargen_points']
-			if ("#{cname}" == "#{downsizetitle}")
-				cgacl = ['name': cname, 'points': cgpoints]
-				cgpointsarray.push(cgacl)
-			end
-		end
-		return ("#{cgpointsarray}")
+		return "#{cg}"
+		# cg.each do |c|
+			# cname = c['name'].downcase
+			# cgpoints = c['chargen_points']
+			# if ("#{cname}" == "#{downsizetitle}")
+				# cgacl = ['name': cname, 'points': cgpoints]
+				# cgpointsarray.push(cgacl)
+			# end
+		# end
+		#return ("#{cgpointsarray}")
 	end		
 	
   end
