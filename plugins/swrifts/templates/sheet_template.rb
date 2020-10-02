@@ -60,7 +60,7 @@ module AresMUSH
 
 			def rankforsheet
 				rank = "rank"
-				return_traits rank
+				return_traits(rank)
 			end
 			
 			def damageforsheet
