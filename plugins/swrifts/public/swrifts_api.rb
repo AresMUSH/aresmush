@@ -256,7 +256,7 @@ module AresMUSH
 			if ("#{cname}" == "#{downsizetitle}")
 				cgpoints.to_a
 				cgpointsclass = cgpoints.class				
-				cc = "#{cgpoints} - #{cgpointsclass}"
+				cc = "ccc: #{cgpoints} - #{cgpointsclass}"
 				cgpointsarray.push (cc)
 			end
 		end
