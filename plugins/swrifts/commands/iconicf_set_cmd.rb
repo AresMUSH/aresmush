@@ -3,11 +3,12 @@ module AresMUSH
 		class IconicfSetCmd
 			include CommandHandler
 			      
-			attr_accessor :target_name, :iconicf_name
+			attr_accessor :target_name, :iconicf_name, :iconicf_title
 			
 			def parse_args
 				self.target_name = enactor_name #Set the character to be the current character
 				self.iconicf_name = trim_arg(cmd.args) #Set 'iconicf_name' to be the inputted Iconic Framework
+				self.iconicf_title = "iconicf"
 			end
 
 			def required_args
