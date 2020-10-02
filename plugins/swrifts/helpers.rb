@@ -96,6 +96,30 @@ module AresMUSH
 			skill = Swrifts.find_skill(char, skill_name)
 			skill ? skill.rating : 0
 		end
+		
+		## ----- Chargen Points
+
+		def self.find_chargen_points(char, point_name) 
+			name_downcase = point_name.downcase
+			char.swrifts_chargenpoints.select { |a| a.name.downcase == name_downcase }.first
+		end
+		
+		def self.chargen_points_rating(char, point_name)
+			points = Swrifts.find_chargen_points(char, point_name)
+			points ? points.rating : 0
+		end
+		
+		## ----- Counters
+
+		def self.find_counters(char, counter_name) 
+			name_downcase = point_name.downcase
+			char.swrifts_counters.select { |a| a.name.downcase == name_downcase }.first
+		end
+		
+		def self.counters_rating(char, counter_name)
+			counters = Swrifts.find_chargen_points(char, counter_name)
+			counters ? counters.rating : 0
+		end
 
 		## ----- Traits
 		
