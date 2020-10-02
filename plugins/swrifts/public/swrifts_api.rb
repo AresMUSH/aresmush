@@ -258,7 +258,7 @@ module AresMUSH
 				cgpointsarray.push(cgacl)
 			end
 		end
-		return (cgpointsarray)
+		return ("#{cgpointsarray}")
 	end		
 	
   end
