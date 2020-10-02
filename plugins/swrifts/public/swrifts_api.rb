@@ -262,7 +262,7 @@ module AresMUSH
 			# end
 			cgpointsarray.push (c.name)
 		end
-		return ("#{cgpointsarray}")
+		return ("#{cg}")
 	end		
 	
   end
