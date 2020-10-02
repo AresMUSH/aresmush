@@ -68,7 +68,7 @@ module AresMUSH
 						# alias the 'rating' for the same reason and set it to an integer
 						mod = "#{rating}".to_i
 						# get the current rating of the skill
-						current_rating = Swrifts.skill_rating.to_i(enactor, skill_name)
+						current_rating = Swrifts.skill_rating(enactor, skill_name).to_i
 						# add Iconic Framework bonus to Initial skill
 						new_rating = current_rating + mod
 												
