@@ -147,7 +147,6 @@ module AresMUSH
 						#return "kkk: #{a.rating}"
 					end
 				end	
-				client.emit ("#{txtstring}")
 			end
 		
 		end
