@@ -45,8 +45,8 @@ module AresMUSH
 						# alias the 'rating' for the same reason
 						setrating = "#{rating}"
 						
-						client.emit ("#{key}%r")
-						client.emit ("#{rating}%r")
+						client.emit ("#{setthing}%r")
+						client.emit ("#{setrating}%r")
 						ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
 							# create the collection
 							SwriftsTraits.create(name: setthing, rating: setrating, character: model)
