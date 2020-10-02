@@ -58,6 +58,16 @@ module AresMUSH
 				return_counter cc
 			end
 
+			def ifforsheet
+				rank = "iconicf"
+				return_traits(rank)
+			end
+			
+			def raceforsheet
+				rank = "race"
+				return_traits(rank)
+			end
+			
 			def rankforsheet
 				rank = "rank"
 				return_traits(rank)
