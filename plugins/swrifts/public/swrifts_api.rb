@@ -250,6 +250,7 @@ module AresMUSH
 	
 	def self.returncgpforcg(cg)
 		cgpointsarray = Hash.new
+		cgp = ''
 		cg.each do |c|
 				cgname = c.name
 				cgrating = c.rating
