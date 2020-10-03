@@ -3,7 +3,7 @@ module AresMUSH
  
 		## ----- Init
 		
-		def self.init_complete?(char)
+		def self.init_complete(char)
 			char.swrifts_traits
 		end
 				
