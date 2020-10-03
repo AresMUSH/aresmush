@@ -60,6 +60,7 @@ en:
         
         iconicframe: "%{name}"
         iconicf_invalid_name: "There is no Iconic Framework named %{name}."
+        iconicf_invalid_init: "You haven't started CGen, please type swrifts/init before continuing."
         iconicf_valid_name: "Iconic Framework named %{name} is valid."
         iconicf_invalid_type: "Invalid Iconic Framework Type %{name}."
         iconicf_cleared: "Iconic Framework %{name} removed."
