@@ -30,8 +30,6 @@ module AresMUSH
 		def self.iconicf_set?(model)
 			return false if !model	
 			chartraits = model.swrifts_traits
-			client.emit (chartraits.inspect)
-			return
 			#if (chartraits.size != 0)
 				if (chartraits['iconicf'].downcase)=='none'
 					return true
