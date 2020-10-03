@@ -24,10 +24,8 @@ module AresMUSH
 			def check_valid_init
 				ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
 					chartraits = model.swrifts_traits
-					if (chartraits.size == 0)
-						client.emit_failure ( "You need to use 'swrifts/init' before you can set an Iconic Framework." )
-						return nil
-					end	
+					return t('swrifts.iconicf_invalid_name', :name => self.iconicf_name.capitalize) if (chartraits.size==0)?(self.iconicf_name)
+					return nil
 				end
 			end
 			
