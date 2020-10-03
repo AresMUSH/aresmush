@@ -250,12 +250,8 @@ module AresMUSH
 	
 	def self.returncgpforcg(cg)
 		cgpointsarray = Array.new
-		cgpoints =''
-		#downsizetitle = chariconicf.downcase.strip!	
-		#cg = Global.read_config('swrifts', 'iconicf')
-		#cg = cg.sort_by { |a| a['name']}
 		cg.each do |c|
-				cgpointsarray.push [name: c.name, rating: c.rating]
+				cgpointsarray.push [name: "#{c.name}", rating: "#{c.rating}"]
 		end
 		return (cgpointsarray)
 	end		
