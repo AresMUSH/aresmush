@@ -41,7 +41,7 @@ module AresMUSH
 					# else
 						# client.emit ("Set the icf")
 					# end
-					return t('swrifts.iconicf_set') if !Swrifts.trait_set?(model,"iconicf")
+					return t('swrifts.trait_already_set',"Iconic Framework") if Swrifts.trait_set?(model,"iconicf")
 					return nil
 				end
 			end
