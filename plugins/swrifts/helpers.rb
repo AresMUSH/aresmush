@@ -35,7 +35,7 @@ module AresMUSH
 
 		def self.find_value(char, iconicf_title)
 			name_downcase = iconicf_title.downcase
-			char.swrifts_traits.select { |a| a.name.downcase == name_downcase }.first
+			char.Swrifts_traits.select { |a| a.name.downcase == name_downcase }.first
 		end
 		
 		## ----- Race
