@@ -176,7 +176,6 @@ module AresMUSH
 		
 		#cgpoints = returncgpforcg(char.swrifts_iconicf)
 		cgpoints = char.swrifts_chargenpoints
-		cgpoints = "#{cgpoints}"
 		cgtraits = returncgpforcg(cgpoints)
 		
 		#iconicf='hellow world'
@@ -196,7 +195,7 @@ module AresMUSH
 		  chariconicf: chariconicf,
 		  cgrace: cgrace,
 		  charrace: charrace,
-		  cgpoints: cgpoints,
+		  cgpoints: cgtraits,
 		  #stats: stats,
 		  #bennies: bennies,
 		  #conviction: conviction
@@ -250,12 +249,13 @@ module AresMUSH
 	end
 	
 	def self.returncgpforcg(cg)
-		return "#{cg}"
-		cgpointsarray = Hash.new
+		#cgpointsarray = Hash.new
+		cgpointsarray = ""
 		cg.each do |c|
-				cgpointsarray = {c.name => c.rating}
+				#cgpointsarray = {c.name => c.rating}
+				cgpointsarray = "#{c.name} => #{c.rating}"
 		end
-		return ("#{cgpointsarray}") 
+		return (cgpointsarray) 
 	end		
 	
   end
