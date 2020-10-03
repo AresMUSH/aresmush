@@ -253,7 +253,7 @@ module AresMUSH
 		cg.each do |c|
 				cgpointsarray.push [c.name]
 		end
-		return ("#{cgpointsarray}")
+		return (cgpointsarray)
 	end		
 	
   end
