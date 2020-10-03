@@ -253,7 +253,7 @@ module AresMUSH
 		cgp = ''
 		cg.each do |c|
 				cgname = c.name
-				cgn = cgname[/[^_]+/]
+				cgn = cgname.gsub("_", " ")
 				cgname = cgn.titleize				
 				cgrating = c.rating
 				cgpointsarray[cgname] = cgrating
