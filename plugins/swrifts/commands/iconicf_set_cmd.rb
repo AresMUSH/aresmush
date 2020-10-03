@@ -164,7 +164,7 @@ module AresMUSH
 							if (hind_col.size > 0) #If the traits collection has *anything* in it, which means it exists, run the 'create'
 								ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
 									SwriftsHinderances.update(name: setthing, character: model)
-								return
+								end
 							else
 								ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
 									SwriftsHinderances.create(name: setthing, character: model)
