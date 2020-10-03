@@ -9,7 +9,7 @@ module AresMUSH
 				self.target_name = enactor_name #Set the character to be the current character
 				self.iconicf_name = trim_arg(cmd.args) #Set 'iconicf_name' to be the inputted Iconic Framework
 				self.iconicf_title = "iconicf"
-				#self.charmodel = ClassTargetFinder.with_a_character(self.target_name, client, enactor)
+				self.charmodel = ClassTargetFinder.with_a_character(self.target_name, client, enactor)
 			end
 
 			def required_args
@@ -24,10 +24,10 @@ module AresMUSH
 			end
 			
 			def check_valid_init
-				ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-					return t('swrifts.iconicf_invalid_init') if !Swrifts.is_valid_init?(model)
+				#ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
+					return t('swrifts.iconicf_invalid_init') if !Swrifts.is_valid_init?(self.charmodel)
 					return nil
-				end
+				#end
 			end
 			
 		
