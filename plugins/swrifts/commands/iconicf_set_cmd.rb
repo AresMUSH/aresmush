@@ -31,17 +31,7 @@ module AresMUSH
 		
 			def check_for_existing_iconicf
 				ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-					# chartraits = model.swrifts_traits
-					# name_downcase = 'iconicf'
-					# ct1 = chartraits.select { |a| a.name.downcase == name_downcase }.first
-					# ct1 = ct1.rating.downcase
-					# client.emit (ct1)
-					# if (ct1 != 'none')
-						# client.emit ("Fool. you have icf")
-					# else
-						# client.emit ("Set the icf")
-					# end
-					return t('swrifts.trait_already_set',"Iconic Framework") if Swrifts.trait_set?(model,"iconicf")
+					return t('swrifts.trait_already_set',:name => "Iconic Framework") if Swrifts.trait_set?(model,"iconicf")
 					return nil
 				end
 			end
