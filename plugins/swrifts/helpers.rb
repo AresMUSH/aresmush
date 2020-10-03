@@ -16,6 +16,17 @@ module AresMUSH
 		  names = Global.read_config('swrifts', 'iconicf').map { |a| a['name'].downcase }
 		  names.include?(name.downcase)
 		end
+		
+		def self.is_valid_init?(model)
+			return false if !model	
+			chartraits = model.swrifts_traits
+			if (chartraits.size == 0)
+				return false
+			else
+				return true
+			end
+		end
+
 
 		def self.get_iconicf(char, iconicf_name)
 			charac = Swrifts.find_iconicf_config(iconicf_name)
