@@ -1,6 +1,11 @@
 module AresMUSH
 	module Swrifts
  
+		## ----- Init
+		
+
+		
+		
 		## ----- Iconicf
  
 		def self.is_valid_iconicf_name?(name)
@@ -139,6 +144,18 @@ module AresMUSH
 			model.swrifts_traits.select { |a| a.name.downcase == name_downcase }.first
 		end
 		
+		def return_trait_value(char, traitname)
+		traitname = traitname.downcase
+		swriftstraits = char.swrifts_traits
+		txtstring = ''
+		swriftstraits.to_a.sort_by { |a| a.name }
+			.each_with_index
+				.map do |a, i| 
+				if a.name.downcase == "#{traitname}"
+					return ("#{a.rating}")
+				end
+			end	
+		end
 		
 		## ----- Die Step
 		
