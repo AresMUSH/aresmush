@@ -7,12 +7,6 @@ module AresMUSH
 
 			def parse_args
 				self.target_name = enactor_name
-				self.iconicf_name = trim_arg(cmd.args)
-				self.iconicf_title = "iconicf"
-			end
-			
-			def required_args
-				[ self.target_name, self.iconicf_name ]
 			end
 
 			
