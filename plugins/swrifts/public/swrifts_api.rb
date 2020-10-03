@@ -251,9 +251,10 @@ module AresMUSH
 	def self.returncgpforcg(cg)
 		cgpointsarray = Hash.new
 		i = 0
+		return ("#{cg}")
 		cg.each do |c|
-				cgpointsarray['i']['name'] = c.name
-				cgpointsarray['i']['rating'] = c.rating
+				cgpointsarray['name'] = c.name
+				cgpointsarray['rating'] = c.rating
 				i = i + 1
 		end
 		cgclass = cgpointsarray.class
