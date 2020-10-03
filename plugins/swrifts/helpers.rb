@@ -128,6 +128,7 @@ module AresMUSH
 			model.swrifts_traits.select { |a| a.name.downcase == name_downcase }.first
 		end
 		
+		
 		## ----- Die Step
 		
 		def self.rating_to_die( rating )
