@@ -263,7 +263,6 @@ module AresMUSH
 			# end
 			#cgpoints << "#{c.name} - #{c.rating}"
 		end
-		#return ("#{cgpoints}")
 		return (cgpointsarray)
 	end		
 	
