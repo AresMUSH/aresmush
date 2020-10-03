@@ -3,13 +3,12 @@ module AresMUSH
 		class IconicfSetCmd
 			include CommandHandler
 			      
-			attr_accessor :target_name, :iconicf_name, :iconicf_title, :charmodel
+			attr_accessor :target_name, :iconicf_name, :iconicf_title
 			
 			def parse_args
 				self.target_name = enactor_name #Set the character to be the current character
 				self.iconicf_name = trim_arg(cmd.args) #Set 'iconicf_name' to be the inputted Iconic Framework
 				self.iconicf_title = "iconicf"
-				self.charmodel = ClassTargetFinder.with_a_character(self.target_name, client, enactor)
 			end
 
 			def required_args
@@ -24,10 +23,10 @@ module AresMUSH
 			end
 			
 			def check_valid_init
-				#ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
+				ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
 					return t('swrifts.iconicf_invalid_init') if !Swrifts.is_valid_init?(self.charmodel)
 					return nil
-				#end
+				end
 			end
 			
 		
@@ -54,12 +53,12 @@ module AresMUSH
 				iconicf_chargen_points=iconicf['chargen_points']
 				iconicf_counters = iconicf['counters']
 
-				ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-					chartraits = model.swrifts_traits
-					if (chartraits.size == 0)
-						client.emit_failure ( "You need to use 'swrifts/init' before you can set an Iconic Framework." )
-						return
-					else
+				# ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
+					# chartraits = model.swrifts_traits
+					# if (chartraits.size == 0)
+						# client.emit_failure ( "You need to use 'swrifts/init' before you can set an Iconic Framework." )
+						# return
+					# else
 
 						## ----- Update Iconic Framework
 						ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
@@ -271,7 +270,7 @@ module AresMUSH
 						
 						client.emit_success t('swrifts.iconicf_complete')
 					end
-				end
+				#end #End overall error checking
 			end
 #----- End of def handle -----	
 
