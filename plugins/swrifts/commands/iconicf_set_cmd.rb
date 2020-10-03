@@ -20,6 +20,12 @@ module AresMUSH
 				return t('swrifts.iconicf_invalid_name', :name => self.iconicf_name.capitalize) if !Swrifts.is_valid_iconicf_name?(self.iconicf_name)
 				return nil
 			end
+			
+			# def check_existing_iconicf
+				# return ( "You already have an Iconic Framework Selected.") if !Swrifts.
+			
+			# end
+			
 #----- Begin of def handle -----			
 			def handle  
 			
@@ -57,7 +63,7 @@ module AresMUSH
 					client.emit_success ("Iconic Framework Added")
 				else 
 					# If the Iconic Framework does not have this field in iconicf.yml, skip and emit to enactor
-					client.emit_failure ("This Iconic Framework has no Stats")
+					client.emit_failure ("This Iconic Framework has no Traits")
 				end
 
 				## ----- Update Stats
