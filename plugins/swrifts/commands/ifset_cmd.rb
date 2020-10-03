@@ -7,13 +7,14 @@ module AresMUSH
 
 			def parse_args
 				self.target_name = enactor_name
+				self.iconicf_title = "iconicf"
 			end
 
 			
 			## ----- start of def handle
 			def handle
 
-				check = Swrifts.iconicf_value(self.target_name)
+				check = Swrifts.iconicf_value(self.target_name, self.iconicf_title)
 				client.emit ( "#{check}" )
 
 			end
