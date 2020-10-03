@@ -46,7 +46,7 @@ module AresMUSH
 
 				## ----- Update Traits (Rank)
 				if (iconicf_traits)
-					iconicf_stats.each do |key, rating|
+					iconicf_traits.each do |key, rating|
 						trait_name = "#{key}".downcase
 						mod = "#{rating}"
 						ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
@@ -54,7 +54,7 @@ module AresMUSH
 							trait.update(rating: mod)
 						end
 					end
-					client.emit_success ("Iconic Framework Added")
+					client.emit_success ("Rank Updated")
 				else 
 					# If the Iconic Framework does not have this field in iconicf.yml, skip and emit to enactor
 					client.emit_failure ("This Iconic Framework has no Stats")
