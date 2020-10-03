@@ -27,15 +27,19 @@ module AresMUSH
 			end
 		end
 
-		def self.iconicf_set?(model)
+		def self.trait_set?(model,traitname)
 			return false if !model	
+			return false if !traitname
 			chartraits = model.swrifts_traits
+			tn = traitname.downcase
 			#if (chartraits.size != 0)
-				if (chartraits['iconicf'].downcase)=='none'
-					return true
-				else
-					return false
-				end
+			ct = chartraits.select { |a| a.name.downcase == tn }.first
+			ctrating = ct.rating.downcase			
+			if (ctrating)!='none'
+				return true
+			else
+				return false
+			end
 			#else
 				#return true
 			#end
