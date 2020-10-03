@@ -82,7 +82,7 @@ module AresMUSH
 					client.emit_success t('swrifts.iconicstats_set')
 				else 
 					# If the Iconic Framework does not have this field in iconicf.yml, skip and emit to enactor
-					client.emit_failure ("This Iconic Framework has no Stats")
+					client.emit_failure ("This Iconic Framework has no Stat changes")
 				end
 
 				## ----- Update Skills
@@ -107,7 +107,7 @@ module AresMUSH
 					client.emit_success t('swrifts.iconicskills_set')
 				else 
 					# If the Iconic Framework does not have this field in iconicf.yml, skip and emit to enactor
-					client.emit_failure ("This Iconic Framework has no Skills")
+					client.emit_failure ("This Iconic Framework has no Skill changes")
 				end
 				
 				## ----- Update Chargen Points
@@ -132,7 +132,7 @@ module AresMUSH
 					client.emit_success t('swrifts.chargen_points_set')
 				else 
 					# If the Iconic Framework does not have this field in iconicf.yml, skip and emit to enactor
-					client.emit_failure ("This Iconic Framework has no Chargen Points")
+					client.emit_failure ("This Iconic Framework has no Chargen Point changes")
 				end
 				
 				## ----- Update Counters
@@ -151,7 +151,7 @@ module AresMUSH
 					client.emit_success t('swrifts.counters_set')
 				else 
 					# If the Iconic Framework does not have this field in iconicf.yml, skip and emit to enactor
-					client.emit_failure ("This Iconic Framework has no Counters")
+					client.emit_failure ("This Iconic Framework has no Counters changes")
 				end
 
 				# ----- This sets the default Hinderances on the Character -----	
