@@ -155,19 +155,29 @@ module AresMUSH
 				end
 
 				# ----- This sets the default Hinderances on the Character -----	
-				# if (iconicf_hinderances) 
-					# iconicf_hinderances.each do |key|
-						# setthing = "#{key}".downcase
-						# ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
-							# SwriftsHinderances.create(name: setthing, character: model)
-						# end
-					# end
-					# client.emit_success t('swrifts.iconichinderances_set')
-				# else 
-					# client.emit_failure ("This Iconic Framework has no Hinderances")
-				# end
+				if (iconicf_hinderances) 
+					iconicf_hinderances.each do |key|
+						setthing = "#{key}".downcase
+						
+						ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|  #get the character model to work with
+							hind_col = model.swrifts_traits #Return the Hinderances collection.
+							if (hind_col.size > 0) #If the traits collection has *anything* in it, which means it exists, run the 'create'
+								ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
+									SwriftsHinderances.update(name: setthing, character: model)
+								return
+							else
+								ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
+									SwriftsHinderances.create(name: setthing, character: model)
+								end
+							end
+						end
+					end
+					client.emit_success t('swrifts.iconichinderances_set')
+				else 
+					client.emit_failure ("This Iconic Framework has no Hinderances")
+				end
 				
-				## ----- This sets the default Edges on the Character -----				
+				# ----- This sets the default Edges on the Character -----				
 				# if (iconicf_edges)
 					# iconicf_edges.each do |key|
 						# setthing = "#{key}".downcase
