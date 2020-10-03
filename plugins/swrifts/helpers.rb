@@ -27,7 +27,7 @@ module AresMUSH
 			types.select { |a| a['name'].downcase == name.downcase }.first
 		end
 
-		def self.trait_rating(char trait_name)
+		def self.trait_rating(char, trait_name)
 			trait = Swrifts.find_trait(char, trait_name)
 			trait ? trait.rating : 0
 		end
