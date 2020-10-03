@@ -13,8 +13,10 @@ module AresMUSH
 			
 			## ----- start of def handle
 			def handle
+				chartraits = char.swrifts_traits
+				client.emit ( "#{chartraits}" )
+				
 				current_rating = Swrifts.trait_rating(enactor, self.iconicf_title)
-
 				client.emit ( "#{current_rating}" )
 
 			end
