@@ -28,13 +28,13 @@ module AresMUSH
 					return nil
 				end
 			end
-			
 		
-			# def check_for_existing_iconicf
-				# existing_icf = Swrifts.return_trait_value( self.target_name, self.iconicf_title )
-				# client.emit ( "#{existing_icf}" )
-				# return
-			# end
+			def check_for_existing_iconicf
+				ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
+					return t('swrifts.iconicf_set') if Swrifts.iconicf_set?(model)
+					return nil
+				end
+			end
 			
 #----- Begin of def handle -----			
 			def handle  
