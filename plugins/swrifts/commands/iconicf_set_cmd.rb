@@ -20,16 +20,6 @@ module AresMUSH
 				return t('swrifts.iconicf_invalid_name', :name => self.iconicf_name.capitalize) if !Swrifts.is_valid_iconicf_name?(self.iconicf_name)
 				return nil
 			end
-			
-			# def check_existing_iconicf
-				# current_framework = Swrifts.iconicf_value(self.target_name)
-				# client.emit ("#{current_framework}")
-				# return
-			
-			# end
-			
-			# end
-			
 #----- Begin of def handle -----			
 			def handle  
 			
@@ -56,7 +46,7 @@ module AresMUSH
 
 				## ----- Update Traits (Rank)
 				if (iconicf_traits)
-					iconicf_traits.each do |key, rating|
+					iconicf_stats.each do |key, rating|
 						trait_name = "#{key}".downcase
 						mod = "#{rating}"
 						ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
@@ -67,7 +57,7 @@ module AresMUSH
 					client.emit_success ("Iconic Framework Added")
 				else 
 					# If the Iconic Framework does not have this field in iconicf.yml, skip and emit to enactor
-					client.emit_failure ("This Iconic Framework has no Traits")
+					client.emit_failure ("This Iconic Framework has no Stats")
 				end
 
 				## ----- Update Stats
@@ -97,22 +87,26 @@ module AresMUSH
 
 				## ----- Update Skills
 				if (iconicf_skills)
+					# grab the list from the config file and break it into 'key' (before the ':') and 'rating' (after the ':')
 					iconicf_skills.each do |key, rating|
+						# alias the 'key' because the command below doesn't parse the #'s and {'s etc.
 						skill_name = "#{key}".downcase
+						# alias the 'rating' for the same reason and set it to an integer
 						mod = "#{rating}".to_i
+						# get the current rating of the skill
 						current_rating = Swrifts.skill_rating(enactor, skill_name).to_i
+						# add Iconic Framework bonus to Initial skill
 						new_rating = current_rating + mod
-						client.emit ( " #{skill_name} - #{mod} - #{current_rating} - #{new_rating} " )
-																		
+												
 						ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-							skill = Swrifts.find_skill(model, skill_name)	
-							client.emit ("#{skill}")
-							return
+							# update the collection
+							skill = Swrifts.find_skill(model, skill_name)				
 							skill.update(rating: new_rating)
 						end
 					end
 					client.emit_success t('swrifts.iconicskills_set')
 				else 
+					# If the Iconic Framework does not have this field in iconicf.yml, skip and emit to enactor
 					client.emit_failure ("This Iconic Framework has no Skills")
 				end
 				
