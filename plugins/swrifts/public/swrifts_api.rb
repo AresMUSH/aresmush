@@ -176,6 +176,7 @@ module AresMUSH
 		
 		#cgpoints = returncgpforcg(char.swrifts_iconicf)
 		cgpoints = char.swrifts_chargenpoints
+		cgpoints = "#{cgpoints}"
 		cgtraits = returncgpforcg(cgpoints)
 		
 		#iconicf='hellow world'
