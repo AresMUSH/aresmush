@@ -14,7 +14,7 @@ module AresMUSH
 			## ----- start of def handle
 			def handle
 
-				check = Swrifts.trait_raiting(self.target_name, self.iconicf_title)
+				check = Swrifts.trait_rating(self.target_name, self.iconicf_title)
 				client.emit ( "#{check}" )
 
 			end
