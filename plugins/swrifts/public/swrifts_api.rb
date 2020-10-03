@@ -252,7 +252,7 @@ module AresMUSH
 		cgpointsarray = Hash.new
 		cg.each do |c|
 				cgpointsarray['name'] = c.name
-				cgpointsarray['rating'] = c.rating}
+				cgpointsarray['rating'] = c.rating
 		end
 		return (cgpointsarray) 
 	end		
