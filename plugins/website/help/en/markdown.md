@@ -145,6 +145,8 @@ Includes can have parameters, like so:
 
 In the page, `%{foo}` will be replaced with "Foo Value".  Be sure to separate the parameters with "|".
 
+Tip: If the page you're including has an actual % in it, you'll need to format it as two percents (%%) otherwise the variable processing will get confused.
+
 You can also create templates containing starter text for various kinds of pages. See [Wiki Tutorial](/help/wiki) for more information.
 
 ## Table of Contents
