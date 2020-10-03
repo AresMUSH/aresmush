@@ -16,7 +16,7 @@ module AresMUSH
 			end
 			
 			
-			#----- Check to see if what was entered was an Iconic Framework in game\config\swrifts_iconicf.yml
+			#----- Check to see:
 			def check_valid_iconicf
 				if !Swrifts.is_valid_iconicf_name?(self.iconicf_name) #Is the Iconic Framework in the list
 					return t('swrifts.iconicf_invalid_name', :name => self.iconicf_name.capitalize) 
