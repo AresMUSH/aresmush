@@ -24,17 +24,17 @@ module AresMUSH
 			
 			def check_valid_init
 				ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-					return t('swrifts.iconicf_invalid_init', :name => "Traits") if Swrifts.is_valid_cat?(model,"traits")
+					return t('swrifts.iconicf_invalid_init', :name => "Traits") if !Swrifts.is_valid_cat?(model,"traits")
 					return nil
 				end
 			end
 		
-			def check_for_existing_iconicf
-				ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-					return t('swrifts.trait_already_set',:name => "Iconic Framework") if Swrifts.trait_set?(model,"iconicf")
-					return nil
-				end
-			end
+			# def check_for_existing_iconicf
+				# ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
+					# return t('swrifts.trait_already_set',:name => "Iconic Framework") if Swrifts.trait_set?(model,"iconicf")
+					# return nil
+				# end
+			# end
 			
 #----- Begin of def handle -----			
 			def handle  
