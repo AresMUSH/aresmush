@@ -34,7 +34,7 @@ module AresMUSH
 			end
 			
 			def check_for_existing_iconicf
-				existing_icf = Swrifts.return_trait_value ( self.target_name, self.iconicf_title )
+				existing_icf = Swrifts.find_traits( self.target_name, self.iconicf_title )
 				client.emit ( "#{existing_icf}" )
 				return
 			end
