@@ -15,7 +15,6 @@ module AresMUSH
 			def handle
 				test = Swrifts.trait_rating(self.target_name)
 				client.emit ( "#{test}" )
-				end
 				
 				# current_rating = Swrifts.trait_rating(enactor, self.iconicf_title)
 				# client.emit ( "#{current_rating}" )
