@@ -249,11 +249,11 @@ module AresMUSH
 	end
 	
 	def self.returncgpforcg(cg)
+		cgclass = cg.class
+		return ("#{cgclass}")
 		cgpointsarray = Hash.new
-		#cgpointsarray = ""
 		cg.each do |c|
 				cgpointsarray = {name: c.name, rating: c.rating}
-				#cgpointsarray << "#{c.name} => #{c.rating}"
 		end
 		return (cgpointsarray) 
 	end		
