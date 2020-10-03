@@ -35,6 +35,11 @@ module AresMUSH
 					name_downcase = 'iconicf'
 					ct1 = chartraits.select { |a| a.name.downcase == name_downcase }.first
 					client.emit (ct1.rating)
+					if (ct1 != 'none')
+						client.emit ("Fool. Finish CGen")
+					else
+						client.emit ("Set the icf")
+					end
 					#return t('swrifts.iconicf_set') if Swrifts.iconicf_set?(model)
 					#return nil
 				end
