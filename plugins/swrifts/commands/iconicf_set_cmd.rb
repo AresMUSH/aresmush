@@ -57,7 +57,7 @@ module AresMUSH
 					client.emit_success ("Rank Updated")
 				else 
 					# If the Iconic Framework does not have this field in iconicf.yml, skip and emit to enactor
-					client.emit_failure ("This Iconic Framework has no Stats")
+					client.emit_failure ("Rank unchanged")
 				end
 
 				## ----- Update Stats
