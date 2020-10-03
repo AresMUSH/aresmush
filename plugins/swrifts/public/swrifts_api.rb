@@ -255,7 +255,7 @@ module AresMUSH
 				cgname = c.name
 				cgrating = c.rating
 				#cgp << "#{cgname} --- #{cgrating}"
-				cgpointsarray << {cgname => cgrating}
+				cgpointsarray = {cgname: cgrating}
 				#cgpointsarray = {name: cgname, rating: cgrating}
 		end
 		return (cgpointsarray) 
