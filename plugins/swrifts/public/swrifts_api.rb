@@ -256,7 +256,7 @@ module AresMUSH
 		end
 		cgclass = cgpointsarray.class
 		#return ("#{cgclass}") 
-		return (cgpointsarray) 
+		return ("#{cgpointsarray}") 
 	end		
 	
   end
