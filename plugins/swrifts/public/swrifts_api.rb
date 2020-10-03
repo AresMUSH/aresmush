@@ -253,13 +253,12 @@ module AresMUSH
 		cgp = ''
 		cg.each do |c|
 				cgname = c.name
+				cgn = cgname[/[^_]+/]
+				cgname = cgn.titleize				
 				cgrating = c.rating
-				#cgp << "#{cgname} --- #{cgrating}"
 				cgpointsarray[c.name] = cgrating
-				#cgpointsarray = {name: cgname, rating: cgrating}
 		end
-		return (cgpointsarray) 
-		#return (cgp) 
+		return (cgpointsarray)
 	end		
 	
   end
