@@ -169,7 +169,7 @@ module AresMUSH
 								end
 							else #Otherwise, run the 'create' version
 								ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
-									SwriftsHinderances.create(name: setthing, character: model)
+									# SwriftsHinderances.create(name: setthing, character: model)
 								end
 							end
 						end
