@@ -1,54 +1,100 @@
 ---
 swrifts:
     iconicf:
-        # -
-            # name: Template
-            # book_reference: 
+        -
+            name: Dragon Juicer
+            book_reference: A&M 7
+            description: When the drug augmenting you is dragon blood. 
+            counters:
+                ppe_max: 10
+                burn: -2
+            stats:
+                Agility: 1
+                Strength: 2
+                Vigor: 2
+            stat_max:
+                Agility: 1
+                Strength: 100
+                Vigor: 2
+            dstats:
+                Pace: 2
+                Running: 1
+            chargen_points:
+                magic_slots: 
+                psionic_slots: 
+            hinderances: 
+                - CHOICE*
+                - Enemies+*
+            edges:
+                - Brawny*
+                - Quick* 
+            magic_powers:
+                - Detect Arcana*    
+                    - Innate
+            abilities:
+                - Armored  Hide*
+                - Blood of Dragons*
+                - Inherently Magical*
+                - Strength of Dragons*
+                - Super Endurance* 
+                - Uncanny Reflexes* 
+            complications:
+                - Cybernetics*
+                - Death Wish*
+                - Dragon Blood is Life*
+                - Dragon-Related Disorders*
+                - Drug-induced Eupohria/Tranqulity
+                - Psionics and Magic*
+                - Weakness*
+        -   
+            name: Elemental Fusionist
+            book_reference: A&M 10
+            description: Mutant humans with a unique connection to the primeval forces of earth, air, water, and fire.
+            counters:
+                pp_max: 15
+            stats:
+                Strength: 1
+                Vigor: 1
+            chargen_points:
+                gifted_slots: 4
+            skills:
+                Survival: 2
+                Focus: 2
+            hinderances: 
+                - Enemies-*
+            edges:
+                - AB Gifted*
+                - Charismatic*
+                - Woodsman* 
+            gifted_powers:
+                - Detect Arcana* 
+            abilities:
+                - Elemental Fusion*
+                    - CHOICE
+                - Elemental Brotherhood*
+                - Primal Conduit* 
+                - Primordial Bond*
+                - Sense Life Sign*
+                - Variable Trappings* 
+            complications:
+                - All Thumbs*
+                - Arcane Backgrounds*
+                - Cybernetics*
+                - Human Mutant*
+        -   
+            name: MARS Battle Magus
+            book_reference: A&M
             # description: 
             # counters:
                 # ppe_max: 
                 # isp_max:
-           # stats:
-                # Agility: 1
-                # Smarts: 1
-                # Spirit: 1
-                # Strength: 1
-                # Vigor: 1
+            # stats:
+
             # chargen_points:
-                # skills_points: 15
-                # stats_points: 5
-                # hj_slots:  2
                 # magic_slots: 
                 # psionic_slots: 
-                # hind_points: 0
             # skills:
-                # Academics: 0
-                # Athletics: 1
-                # Battle: 0
-                # Boating: 0
-                # Common Knowledge: 1
-                # Driving: 0
-                # Electronics: 0
-                # Fighting: 0
-                # Gambling: 0
-                # Hacking: 0
-                # Healing: 0
-                # Intimidation: 0
-                # Language: 0
-                # Notice: 1
-                # Occult: 0
-                # Performance: 0
-                # Persuasion: 1
-                # Piloting: 0
-                # Repair: 0
-                # Research: 0
-                # Riding: 0
-                # Science: 0
-                # Shooting: 0
-                # Stealth: 1
-                # Survival: 0
-                # Taunt: 0
-                # Thievery: 0
+            
             # hinderances: 
                 # -
             # edges:
@@ -59,69 +105,398 @@ swrifts:
                 # -
             # complications:
                 # -
-        -
-            name: Dragon Juicer
-            book_reference: A&M
-        -   
-            name: Elemental Fusionist
-            book_reference: A&M
-        -   
-            name: MARS Battle Magus
-            book_reference: A&M
         -   
             name: MARS Combat Mage
             book_reference: A&M
+            # description: 
+            # counters:
+                # ppe_max: 
+                # isp_max:
+            # stats:
+
+            # chargen_points:
+                # magic_slots: 
+                # psionic_slots: 
+            # skills:
+            
+            # hinderances: 
+                # -
+            # edges:
+                # -
+            # magic_powers:
+                # -
+            # abilities:
+                # -
+            # complications:
+                # -
         -   
             name: MARS High Magus
             book_reference: A&M
+            # description: 
+            # counters:
+                # ppe_max: 
+                # isp_max:
+            # stats:
+
+            # chargen_points:
+                # magic_slots: 
+                # psionic_slots: 
+            # skills:
+            
+            # hinderances: 
+                # -
+            # edges:
+                # -
+            # magic_powers:
+                # -
+            # abilities:
+                # -
+            # complications:
+                # -
         -   
             name: Lord Magus
             book_reference: A&M
+            # description: 
+            # counters:
+                # ppe_max: 
+                # isp_max:
+            # stats:
+
+            # chargen_points:
+                # magic_slots: 
+                # psionic_slots: 
+            # skills:
+            
+            # hinderances: 
+                # -
+            # edges:
+                # -
+            # magic_powers:
+                # -
+            # abilities:
+                # -
+            # complications:
+                # -
         -   
             name: MARS Psi-Druid
             book_reference: A&M
+            # description: 
+            # counters:
+                # ppe_max: 
+                # isp_max:
+            # stats:
+
+            # chargen_points:
+                # magic_slots: 
+                # psionic_slots: 
+            # skills:
+            
+            # hinderances: 
+                # -
+            # edges:
+                # -
+            # magic_powers:
+                # -
+            # abilities:
+                # -
+            # complications:
+                # -
         -   
             name: MARS Psi-Slinger
             book_reference: A&M
+            # description: 
+            # counters:
+                # ppe_max: 
+                # isp_max:
+            # stats:
+
+            # chargen_points:
+                # magic_slots: 
+                # psionic_slots: 
+            # skills:
+            
+            # hinderances: 
+                # -
+            # edges:
+                # -
+            # magic_powers:
+                # -
+            # abilities:
+                # -
+            # complications:
+                # -
         -   
             name: MARS Psi-Warrior
             book_reference: A&M
+            # description: 
+            # counters:
+                # ppe_max: 
+                # isp_max:
+            # stats:
+
+            # chargen_points:
+                # magic_slots: 
+                # psionic_slots: 
+            # skills:
+            
+            # hinderances: 
+                # -
+            # edges:
+                # -
+            # magic_powers:
+                # -
+            # abilities:
+                # -
+            # complications:
+                # -
         -   
             name: MARS Shaman
             book_reference: A&M
+            # description: 
+            # counters:
+                # ppe_max: 
+                # isp_max:
+            # stats:
+
+            # chargen_points:
+                # magic_slots: 
+                # psionic_slots: 
+            # skills:
+            
+            # hinderances: 
+                # -
+            # edges:
+                # -
+            # magic_powers:
+                # -
+            # abilities:
+                # -
+            # complications:
+                # -
         -   
             name: MARS Spirit Warrior
             book_reference: A&M
+            # description: 
+            # counters:
+                # ppe_max: 
+                # isp_max:
+            # stats:
+
+            # chargen_points:
+                # magic_slots: 
+                # psionic_slots: 
+            # skills:
+            
+            # hinderances: 
+                # -
+            # edges:
+                # -
+            # magic_powers:
+                # -
+            # abilities:
+                # -
+            # complications:
+                # -
         -   
             name: Nega-Psychic
-            book_reference: A&M
+            book_reference: A&M 12
+            # description: 
+            # counters:
+                # ppe_max: 
+                # isp_max:
+            # stats:
+
+            # chargen_points:
+                # magic_slots: 
+                # psionic_slots: 
+            # skills:
+            
+            # hinderances: 
+                # -
+            # edges:
+                # -
+            # magic_powers:
+                # -
+            # abilities:
+                # -
+            # complications:
+                # -
         -   
-            name: Zappier
+            name: Zapper
             book_reference: A&M
-        -   
-            name: Heroic Vampire
-            book_reference: B&B
+            # description: 
+            # counters:
+                # ppe_max: 
+                # isp_max:
+            # stats:
+
+            # chargen_points:
+                # magic_slots: 
+                # psionic_slots: 
+            # skills:
+            
+            # hinderances: 
+                # -
+            # edges:
+                # -
+            # magic_powers:
+                # -
+            # abilities:
+                # -
+            # complications:
+                # -
         -   
             name: Knight of the White Rose
-            book_reference: B&B
+            book_reference: B&B 7
+            description: Order of renegade Mystic Knights that fight for Good. 
+            counters:
+                isp_max: 10
+            chargen_points:
+                magic_slots: 2
+                psionic_slots: 3
+            skills:
+                Faith: 2
+                Fighting: 2
+            hinderances: 
+                - Enemies-*
+            edges:
+                - AB Psionics*
+                - AB Miracles* 
+                - Martial Artist* 
+                - Ley Line Magic Mastery*
+                - Ley Line Rejuvenation* 
+                - Ley Line Sense*
+            magic_powers:
+                - Bolt*
+                    - Miracle
+            abilities:
+                - Mind and Spirit*
+                - Energy Invulnerability* 
+                - Onslaught* 
+                - Steal Ley Line Energy*
+            complications:
+                - Cybernetics*
+                - Distrusted Order* 
+                - Power Activators*
+                - Vow of the White Rose*
         -   
             name: MARS Barbarian
-            book_reference: B&B
+            book_reference: B&B 24
+            description: Those whose ancestors clung to life in the nigh-uninhabitable wilderness of the east and west coasts after the comming of the Rifts. 
+            stats:
+                Strength: 1
+                Vigor: 1
+            chargen_points:
+                hj_slots: 1
+            skills:
+                Notice: 1
+                Survival: 3
+            hinderances: 
+                - Illiterate*
+            edges:
+                - Alertness*
+                - Brawny*
+                - Woodsman* 
+            abilities:
+                - Resist Disease and Poison*
+            complications:
+                - Uncivilized*
         -   
             name: MARS Barbarian Eco-Wizard
-            book_reference: B&B
+            book_reference: B&B 24
+            description: Barbarian spellcasters
+            counters:
+                ppe_max: 10
+            chargen_points:
+                magic_slots: 3
+            skills:
+                Spellcasting: 2
+                Occult: 2
+                Survival: 2
+            edges:
+                - AB Magic*
+                - Alertness*
+                - Artificer*
+                - Minor Item Creation*
+            magic_powers:
+                - Detect Arcana*
+                - Conceal Arcana* 
         -   
             name: MARS Dinosaur Hunter
             book_reference: B&B
+            description: Taking 'Big Game Hunter' to a whole new level. 
+            skills:
+                Notice: 3
+                Shooting: 2
+                Survival: 3
+            edges:
+                - Giant Killer*
+                - Frontiersman* 
+                - Marksman*
+                - Woodsman* 
+            abilities:
+                - Megafauna Specialist*
         -   
             name: MARS Vampire Hunter
-            book_reference: B&B
+            book_reference: B&B 25
+            description: Those who have dedicated their lives to rooting out and exterminating the undead. 
+            skills:
+                Fighting: 2
+                Notice: 2
+                Occult: 2
+                CHOICE: 1
+            edges:
+                - Brave*
+                - Champion*
+                - Streetwise*
+                - Vampire Killer*
+                - CHOICE*
+            skill_choices:
+                - Riding
+                - Driving
+            edge_choices:
+                - Reid's Ranger*
+                - Elite Vampire Killer*
         -   
             name: Necromancer
-            book_reference: B&B
+            book_reference: B&B 10
+            description: Masters of death 
+            counters:
+                ppe_max: 15
+            chargen_points:
+                hj_slots:  2
+                magic_slots: 3
+            skills:
+                Spellcasting: 2
+                Repair: 2
+            hinderances: 
+                - Enemies-*
+            edges:
+                - AB Magic*
+                - Master of Magic*
+                - Power Points*
+                - Artificer
+            magic_powers:
+                - Divination*
+                - Zombie*
+                - Detect Arcana*  
+                    - Innate
+                - Conceal Arcana*
+                    - Innate
+            abilities:
+                - Necromantic Prodigy*
+                - Phylactery*
+                - Siphon PPE*
+                - Spiritual Awareness*
+                - Undead Link*
+            complications:
+                - Cybernetics*
+                - Oath* 
+                - Power Activators*
+                - Spooky*
         -
             name: Shifter
-            book_reference: B&B
+            book_reference: B&B 13
             description: Practitioners of magic with a talent for manipulating - or "shifting" the patterns of the raw cosmic energies that bind the Megaverse(R) together.
             chargen_points:
                 magic_slots: 1
@@ -163,31 +538,244 @@ swrifts:
                 - Power Activators*
         -   
             name: Werecat
-            book_reference: B&B
+            book_reference: B&B 20
+            description: Natives of Earth before the Rifts, these felines work to preserve the balance of nature. 
+            counters:
+                ppe_max: 10
+                isp_max: 10
+            stats:
+            stat_max:
+                Agility: 7
+                Strength: 100
+            chargen_points:
+                magic_slots: 3
+            skills:
+                Spellcasting: 1
+                Psionics: 1
+            hinderances: 
+                - Habit-*
+                    - Hunter's Instinct
+                - Enemies+*
+                - Vow+*
+            edges:
+                - Acrobat*
+                - Invulnerable*
+                - Keen Senses*
+                - Low Light Vision*
+                - Man-Monster Form*
+                - AB Magic*
+                - AB Psionics*
+            magic_powers:
+                -
+            abilities:
+                - Red in Tooth and Claw*
+                - Regeneration*
+                - Shape Change*
+            complications:
+                - Arcane Duality*
+                - Cyber Resistant*
+                - Distinctive Appearance*
+                - Human Mutant*
+                - Power Activators*
+                - Racial Enemy*
+                - Weakness*
+                    - Garlic and Wolf's Bane
+                    - Magic and Psionics
+                    - Silver
+                    - Supernatural
+                - Wild Beast
         -   
             name: Intelligent Construct
             book_reference: EohH
+            # description: 
+            # counters:
+                # ppe_max: 
+                # isp_max:
+            # stats:
+
+            # chargen_points:
+                # magic_slots: 
+                # psionic_slots: 
+            # skills:
+            
+            # hinderances: 
+                # -
+            # edges:
+                # -
+            # magic_powers:
+                # -
+            # abilities:
+                # -
+            # complications:
+                # -
         -
             name: MARS Commando
             book_reference: EohH
+            # description: 
+            # counters:
+                # ppe_max: 
+                # isp_max:
+            # stats:
+
+            # chargen_points:
+                # magic_slots: 
+                # psionic_slots: 
+            # skills:
+            
+            # hinderances: 
+                # -
+            # edges:
+                # -
+            # magic_powers:
+                # -
+            # abilities:
+                # -
+            # complications:
+                # -
         -
             name: MARS Cowboy
             book_reference: EohH
+            # description: 
+            # counters:
+                # ppe_max: 
+                # isp_max:
+            # stats:
+
+            # chargen_points:
+                # magic_slots: 
+                # psionic_slots: 
+            # skills:
+            
+            # hinderances: 
+                # -
+            # edges:
+                # -
+            # magic_powers:
+                # -
+            # abilities:
+                # -
+            # complications:
+                # -
         -
             name: MARS EOD Specialist
             book_reference: EohH
+            # description: 
+            # counters:
+                # ppe_max: 
+                # isp_max:
+            # stats:
+
+            # chargen_points:
+                # magic_slots: 
+                # psionic_slots: 
+            # skills:
+            
+            # hinderances: 
+                # -
+            # edges:
+                # -
+            # magic_powers:
+                # -
+            # abilities:
+                # -
+            # complications:
+                # -
         -
             name: MARS Gunslinger
             book_reference: EohH
+            # description: 
+            # counters:
+                # ppe_max: 
+                # isp_max:
+            # stats:
+
+            # chargen_points:
+                # magic_slots: 
+                # psionic_slots: 
+            # skills:
+            
+            # hinderances: 
+                # -
+            # edges:
+                # -
+            # magic_powers:
+                # -
+            # abilities:
+                # -
+            # complications:
+                # -
         -
             name: MARS Intel Operative
             book_reference: EohH
+            # description: 
+            # counters:
+                # ppe_max: 
+                # isp_max:
+            # stats:
+
+            # chargen_points:
+                # magic_slots: 
+                # psionic_slots: 
+            # skills:
+            
+            # hinderances: 
+                # -
+            # edges:
+                # -
+            # magic_powers:
+                # -
+            # abilities:
+                # -
+            # complications:
+                # -
         -
             name: MARS RCSG Scientist
             book_reference: EohH
+            # description: 
+            # counters:
+                # ppe_max: 
+                # isp_max:
+            # stats:
+
+            # chargen_points:
+                # magic_slots: 
+                # psionic_slots: 
+            # skills:
+            
+            # hinderances: 
+                # -
+            # edges:
+                # -
+            # magic_powers:
+                # -
+            # abilities:
+                # -
+            # complications:
+                # -
         -
             name: Momano Headhunter
             book_reference: EohH
+            # description: 
+            # counters:
+                # ppe_max: 
+                # isp_max:
+            # stats:
+
+            # chargen_points:
+                # magic_slots: 
+                # psionic_slots: 
+            # skills:
+            
+            # hinderances: 
+                # -
+            # edges:
+                # -
+            # magic_powers:
+                # -
+            # abilities:
+                # -
+            # complications:
+                # -
         -
             name: Burster
             book_reference: TLPG
@@ -259,66 +847,507 @@ swrifts:
         -
             name: Crazy
             book_reference: TLPG
+            # description: 
+            # counters:
+                # ppe_max: 
+                # isp_max:
+            # stats:
+
+            # chargen_points:
+                # magic_slots: 
+                # psionic_slots: 
+            # skills:
+            
+            # hinderances: 
+                # -
+            # edges:
+                # -
+            # magic_powers:
+                # -
+            # abilities:
+                # -
+            # complications:
+                # -
         -
             name: Cyber-Knight
             book_reference: TLPG
+            # description: 
+            # counters:
+                # ppe_max: 
+                # isp_max:
+            # stats:
+
+            # chargen_points:
+                # magic_slots: 
+                # psionic_slots: 
+            # skills:
+            
+            # hinderances: 
+                # -
+            # edges:
+                # -
+            # magic_powers:
+                # -
+            # abilities:
+                # -
+            # complications:
+                # -
         -
             name: Flame Wind Dragon Hatchling
             book_reference: TLPG
+            # description: 
+            # counters:
+                # ppe_max: 
+                # isp_max:
+            # stats:
+
+            # chargen_points:
+                # magic_slots: 
+                # psionic_slots: 
+            # skills:
+            
+            # hinderances: 
+                # -
+            # edges:
+                # -
+            # magic_powers:
+                # -
+            # abilities:
+                # -
+            # complications:
+                # -
         -
             name: Glitter Boy
             book_reference: TLPG
+            # description: 
+            # counters:
+                # ppe_max: 
+                # isp_max:
+            # stats:
+
+            # chargen_points:
+                # magic_slots: 
+                # psionic_slots: 
+            # skills:
+            
+            # hinderances: 
+                # -
+            # edges:
+                # -
+            # magic_powers:
+                # -
+            # abilities:
+                # -
+            # complications:
+                # -
         -
             name: Imported Heroic
             book_reference: TLPG
+            # description: 
+            # counters:
+                # ppe_max: 
+                # isp_max:
+            # stats:
+
+            # chargen_points:
+                # magic_slots: 
+                # psionic_slots: 
+            # skills:
+            
+            # hinderances: 
+                # -
+            # edges:
+                # -
+            # magic_powers:
+                # -
+            # abilities:
+                # -
+            # complications:
+                # -
         -
             name: Juicer
-            book_reference: TLPG
+            book_reference: TLPG 35
+            # description: Drug-powered super-soldiers. 
+            # counters:
+                # ppe_max: 
+                # isp_max:
+            # stats:
+
+            # chargen_points:
+                # magic_slots: 
+                # psionic_slots: 
+            # skills:
+            
+            # hinderances: 
+                # -
+            # edges:
+                # -
+            # magic_powers:
+                # -
+            # abilities:
+                # -
+            # complications:
+                # -
         -
             name: Ley Line Walker
             book_reference: TLPG
+            # description: 
+            # counters:
+                # ppe_max: 
+                # isp_max:
+            # stats:
+
+            # chargen_points:
+                # magic_slots: 
+                # psionic_slots: 
+            # skills:
+            
+            # hinderances: 
+                # -
+            # edges:
+                # -
+            # magic_powers:
+                # -
+            # abilities:
+                # -
+            # complications:
+                # -
         -
             name: MARS Body-Fixer
             book_reference: TLPG
+            # description: 
+            # counters:
+                # ppe_max: 
+                # isp_max:
+            # stats:
+
+            # chargen_points:
+                # magic_slots: 
+                # psionic_slots: 
+            # skills:
+            
+            # hinderances: 
+                # -
+            # edges:
+                # -
+            # magic_powers:
+                # -
+            # abilities:
+                # -
+            # complications:
+                # -
         -
             name: MARS City Rat
             book_reference: TLPG
+            # description: 
+            # counters:
+                # ppe_max: 
+                # isp_max:
+            # stats:
+
+            # chargen_points:
+                # magic_slots: 
+                # psionic_slots: 
+            # skills:
+            
+            # hinderances: 
+                # -
+            # edges:
+                # -
+            # magic_powers:
+                # -
+            # abilities:
+                # -
+            # complications:
+                # -
         -
             name: MARS Cyber Doc
             book_reference: TLPG
+            # description: 
+            # counters:
+                # ppe_max: 
+                # isp_max:
+            # stats:
+
+            # chargen_points:
+                # magic_slots: 
+                # psionic_slots: 
+            # skills:
+            
+            # hinderances: 
+                # -
+            # edges:
+                # -
+            # magic_powers:
+                # -
+            # abilities:
+                # -
+            # complications:
+                # -
         -
             name: MARS Headhunter Techno-Warrior
             book_reference: TLPG
+            # description: 
+            # counters:
+                # ppe_max: 
+                # isp_max:
+            # stats:
+
+            # chargen_points:
+                # magic_slots: 
+                # psionic_slots: 
+            # skills:
+            
+            # hinderances: 
+                # -
+            # edges:
+                # -
+            # magic_powers:
+                # -
+            # abilities:
+                # -
+            # complications:
+                # -
         -
             name: MARS Merc Soldier
             book_reference: TLPG
+            # description: 
+            # counters:
+                # ppe_max: 
+                # isp_max:
+            # stats:
+
+            # chargen_points:
+                # magic_slots: 
+                # psionic_slots: 
+            # skills:
+            
+            # hinderances: 
+                # -
+            # edges:
+                # -
+            # magic_powers:
+                # -
+            # abilities:
+                # -
+            # complications:
+                # -
         -
             name: MARS Operator
             book_reference: TLPG
+            # description: 
+            # counters:
+                # ppe_max: 
+                # isp_max:
+            # stats:
+
+            # chargen_points:
+                # magic_slots: 
+                # psionic_slots: 
+            # skills:
+            
+            # hinderances: 
+                # -
+            # edges:
+                # -
+            # magic_powers:
+                # -
+            # abilities:
+                # -
+            # complications:
+                # -
         -
             name: MARS Personal Concept Option
             book_reference: TLPG
+            # description: 
+            # counters:
+                # ppe_max: 
+                # isp_max:
+            # stats:
+
+            # chargen_points:
+                # magic_slots: 
+                # psionic_slots: 
+            # skills:
+            
+            # hinderances: 
+                # -
+            # edges:
+                # -
+            # magic_powers:
+                # -
+            # abilities:
+                # -
+            # complications:
+                # -
         -
             name: MARS Power Armor Ace
             book_reference: TLPG
+            # description: 
+            # counters:
+                # ppe_max: 
+                # isp_max:
+            # stats:
+
+            # chargen_points:
+                # magic_slots: 
+                # psionic_slots: 
+            # skills:
+            
+            # hinderances: 
+                # -
+            # edges:
+                # -
+            # magic_powers:
+                # -
+            # abilities:
+                # -
+            # complications:
+                # -
         -
             name: MARS Psi-Operator
             book_reference: TLPG
+            # description: 
+            # counters:
+                # ppe_max: 
+                # isp_max:
+            # stats:
+
+            # chargen_points:
+                # magic_slots: 
+                # psionic_slots: 
+            # skills:
+            
+            # hinderances: 
+                # -
+            # edges:
+                # -
+            # magic_powers:
+                # -
+            # abilities:
+                # -
+            # complications:
+                # -
         -
             name: MARS Robot Vehicle Ace
             book_reference: TLPG
+            # description: 
+            # counters:
+                # ppe_max: 
+                # isp_max:
+            # stats:
+
+            # chargen_points:
+                # magic_slots: 
+                # psionic_slots: 
+            # skills:
+            
+            # hinderances: 
+                # -
+            # edges:
+                # -
+            # magic_powers:
+                # -
+            # abilities:
+                # -
+            # complications:
+                # -
         -
             name: MARS Rogue Scholar
             book_reference: TLPG
+            # description: 
+            # counters:
+                # ppe_max: 
+                # isp_max:
+            # stats:
+
+            # chargen_points:
+                # magic_slots: 
+                # psionic_slots: 
+            # skills:
+            
+            # hinderances: 
+                # -
+            # edges:
+                # -
+            # magic_powers:
+                # -
+            # abilities:
+                # -
+            # complications:
+                # -
         -
             name: MARS Vagabond
             book_reference: TLPG
+            # description: 
+            # counters:
+                # ppe_max: 
+                # isp_max:
+            # stats:
+
+            # chargen_points:
+                # magic_slots: 
+                # psionic_slots: 
+            # skills:
+            
+            # hinderances: 
+                # -
+            # edges:
+                # -
+            # magic_powers:
+                # -
+            # abilities:
+                # -
+            # complications:
+                # -
         -
             name: MARS Wilderness Scout
             book_reference: TLPG
+            # description: 
+            # counters:
+                # ppe_max: 
+                # isp_max:
+            # stats:
+
+            # chargen_points:
+                # magic_slots: 
+                # psionic_slots: 
+            # skills:
+            
+            # hinderances: 
+                # -
+            # edges:
+                # -
+            # magic_powers:
+                # -
+            # abilities:
+                # -
+            # complications:
+                # -
         -
             name: Mind Melter
             book_reference: TLPG
+            # description: 
+            # counters:
+                # ppe_max: 
+                # isp_max:
+            # stats:
+
+            # chargen_points:
+                # magic_slots: 
+                # psionic_slots: 
+            # skills:
+            
+            # hinderances: 
+                # -
+            # edges:
+                # -
+            # magic_powers:
+                # -
+            # abilities:
+                # -
+            # complications:
+                # -
         -
             name: Mystic
             book_reference: TLPG
@@ -361,18 +1390,144 @@ swrifts:
         -
             name: Techno-Wizard
             book_reference: TLPG
+            # description: 
+            # counters:
+                # ppe_max: 
+                # isp_max:
+            # stats:
+
+            # chargen_points:
+                # magic_slots: 
+                # psionic_slots: 
+            # skills:
+            
+            # hinderances: 
+                # -
+            # edges:
+                # -
+            # magic_powers:
+                # -
+            # abilities:
+                # -
+            # complications:
+                # -
         -
             name: Forest Runner DH
             book_reference: TLFM
+            # description: 
+            # counters:
+                # ppe_max: 
+                # isp_max:
+            # stats:
+
+            # chargen_points:
+                # magic_slots: 
+                # psionic_slots: 
+            # skills:
+            
+            # hinderances: 
+                # -
+            # edges:
+                # -
+            # magic_powers:
+                # -
+            # abilities:
+                # -
+            # complications:
+                # -
         -
             name: Great Horned DH
             book_reference: TLFM
+            # description: 
+            # counters:
+                # ppe_max: 
+                # isp_max:
+            # stats:
+
+            # chargen_points:
+                # magic_slots: 
+                # psionic_slots: 
+            # skills:
+            
+            # hinderances: 
+                # -
+            # edges:
+                # -
+            # magic_powers:
+                # -
+            # abilities:
+                # -
+            # complications:
+                # -
         -
             name: MARS Bounty Hunter
             book_reference: TLFM
+            # description: 
+            # counters:
+                # ppe_max: 
+                # isp_max:
+            # stats:
+
+            # chargen_points:
+                # magic_slots: 
+                # psionic_slots: 
+            # skills:
+            
+            # hinderances: 
+                # -
+            # edges:
+                # -
+            # magic_powers:
+                # -
+            # abilities:
+                # -
+            # complications:
+                # -
         -
             name: Royal Frilled DH
             book_reference: TLFM
+            # description: 
+            # counters:
+                # ppe_max: 
+                # isp_max:
+            # stats:
+
+            # chargen_points:
+                # magic_slots: 
+                # psionic_slots: 
+            # skills:
+            
+            # hinderances: 
+                # -
+            # edges:
+                # -
+            # magic_powers:
+                # -
+            # abilities:
+                # -
+            # complications:
+                # -
         -
             name: Snow Lizard DH
             book_reference: TLFM
+            # description: 
+            # counters:
+                # ppe_max: 
+                # isp_max:
+            # stats:
+
+            # chargen_points:
+                # magic_slots: 
+                # psionic_slots: 
+            # skills:
+            
+            # hinderances: 
+                # -
+            # edges:
+                # -
+            # magic_powers:
+                # -
+            # abilities:
+                # -
+            # complications:
+                # -
