@@ -21,12 +21,12 @@ module AresMUSH
 				return nil
 			end
 			
-			def check_existing_iconicf
-				current_framework = Swrifts.iconicf_value(self.target_name)
-				client.emit ("#{current_framework}")
-				return
+			# def check_existing_iconicf
+				# current_framework = Swrifts.iconicf_value(self.target_name)
+				# client.emit ("#{current_framework}")
+				# return
 			
-			end
+			# end
 			
 			# end
 			
