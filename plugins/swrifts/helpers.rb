@@ -29,13 +29,13 @@ module AresMUSH
 
 		def self.iconicf_value(char)
 			iconicf_title = "iconicf"
-			value = swrifts.find_iconicf_value(char, iconicf_title)
+			value = swrifts.find_value(char, iconicf_title)
 			value ? value.rating : 0
 		end
 
-		def self.find_iconicf_value(char, iconicf_title)
+		def self.find_value(char, iconicf_title)
 			name_downcase = iconicf_title.downcase
-			char.swrifts_iconicf.select { |a| a.name.downcase == name_downcase }.first
+			char.swrifts_traits.select { |a| a.name.downcase == name_downcase }.first
 		end
 		
 		## ----- Race
