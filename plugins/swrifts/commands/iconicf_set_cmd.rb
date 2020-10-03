@@ -24,7 +24,11 @@ module AresMUSH
 			def check_for_init
 				ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
 					chartraits = model.swrifts_traits
+					chartraits = chartraits.size
 					client.emit ( "#{chartraits}" )
+					
+					
+					
 					return
 						# if (chartraits.size == nil ) 
 							# client.emit ( "You need to use 'swrifts/init' before you can set an Iconic Framework." )
