@@ -33,7 +33,7 @@ module AresMUSH
 				ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
 					chartraits = model.swrifts_traits
 					chartraits.each do |ct|
-						client.emit ("#{ct}")
+						client.emit ("#{ct.inspect}")
 					end
 					#return t('swrifts.iconicf_set') if Swrifts.iconicf_set?(model)
 					#return nil
