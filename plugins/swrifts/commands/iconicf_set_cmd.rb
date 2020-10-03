@@ -157,21 +157,16 @@ module AresMUSH
 				# ----- This sets the default Hinderances on the Character -----	
 				if (iconicf_hinderances) 
 					iconicf_hinderances.each do |key|
-						client.emit ( "#{key}" )
-						setthing = "#{key}"
-						setthing = setthing.downcase
-						client.emit ( "#{setthing}" )
-						client.emit ( "#{self.target_name}" )
-						return
-						ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|  #get the character model to work with
+						setthing = "#{key}".downcase
+						ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|  #get the character model to work with
 							hind_col = model.swrifts_hinderances #Return the Hinderances collection.
 							if (hind_col.size > 0) #If the traits collection has *anything* in it, which means it exists, run the 'update'
-								ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
-									# SwriftsHinderances.update(name: setthing, character: model)
+								ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
+									SwriftsHinderances.update(name: setthing, character: model)
 								end
 							else #Otherwise, run the 'create' version
-								ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
-									# SwriftsHinderances.create(name: setthing, character: model)
+								ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
+									SwriftsHinderances.create(name: setthing, character: model)
 								end
 							end
 						end
