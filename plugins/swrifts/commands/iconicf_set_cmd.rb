@@ -102,6 +102,7 @@ module AresMUSH
 						mod = "#{rating}".to_i
 						current_rating = Swrifts.skill_rating(enactor, skill_name).to_i
 						new_rating = current_rating + mod
+						client.emit ( " #{skill_name} - #{mod} - #{current_rating} - #{new_rating} " )
 																		
 						ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
 							skill = Swrifts.find_skill(model, skill_name)	
