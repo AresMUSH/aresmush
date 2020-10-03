@@ -175,7 +175,7 @@ module AresMUSH
 		# Set up Chargen Points from Character not YML
 		
 		#cgpoints = returncgpforcg(char.swrifts_iconicf)
-		cgpoints = char.swrifts_chargenpoints
+		cgpoints = "#{char.swrifts_chargenpoints}"
 		cgtraits = returncgpforcg(cgpoints)
 		
 		#iconicf='hellow world'
