@@ -3,17 +3,19 @@ module AresMUSH
 		class IconicfSetCmd
 			include CommandHandler
 			      
-			attr_accessor :target_name, :iconicf_name, :iconicf_title
+			attr_accessor :target_name, :iconicf_name, :iconicf_title, :charmodel
 			
 			def parse_args
 				self.target_name = enactor_name #Set the character to be the current character
 				self.iconicf_name = trim_arg(cmd.args) #Set 'iconicf_name' to be the inputted Iconic Framework
 				self.iconicf_title = "iconicf"
+				#self.charmodel = ClassTargetFinder.with_a_character(self.target_name, client, enactor)
 			end
 
 			def required_args
 				[ self.target_name, self.iconicf_name ]
 			end
+			
 			
 			#----- Check to see if what was entered was an Iconic Framework in game\config\swrifts_iconicf.yml
 			def check_valid_iconicf
@@ -23,8 +25,7 @@ module AresMUSH
 			
 			def check_valid_init
 				ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-					chartraits = model.swrifts_traits
-					return t('swrifts.iconicf_invalid_name', :name => self.iconicf_name.capitalize) if (chartraits.size==0)?(self.iconicf_name)
+					return t('swrifts.iconicf_invalid_name', :name => self.iconicf_name.capitalize) if !Swrifts.is_valid_init?(self.model)
 					return nil
 				end
 			end
