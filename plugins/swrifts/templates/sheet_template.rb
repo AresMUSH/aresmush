@@ -59,18 +59,18 @@ module AresMUSH
 			end
 
 			def ifforsheet
-				rank = "iconicf"
-				return_traits(rank)
+				traitname = "iconicf"
+				return_traits(traitname)
 			end
 			
 			def raceforsheet
-				rank = "race"
-				return_traits(rank)
+				traitname = "race"
+				return_traits(traitname)
 			end
 			
 			def rankforsheet
-				rank = "rank"
-				return_traits(rank)
+				traitname = "rank"
+				return_traits(traitname)
 			end
 			
 			def damageforsheet
@@ -106,9 +106,9 @@ module AresMUSH
 					.each_with_index
 						.map do |a, i| 
 						linebreak = i % 3 == 0 ? "\n" : ""
-						title = left("#{ a.name }".capitalize, 16,'.')
+						title = left("#{ a.name }".capitalize, 18,'.')
 						die_rating = Swrifts.rating_to_die(a.rating)
-						rating = left(die_rating, 7)
+						rating = left(die_rating, 5)
 						"#{linebreak} #{title} #{rating} "
 				end
 			end
@@ -134,15 +134,15 @@ module AresMUSH
 			end
 			
 			def return_counter(countername)
-				countername = countername.downcase
-				swriftscounters = @char.swrifts_counters
-				swriftscounters.to_a.sort_by { |a| a.name }
-					.each_with_index
-						.map do |a, i| 
-						if a.name.downcase == "#{countername}"
-							return a.rating
-						end
-					end	
+			countername = countername.downcase
+			swriftscounters = @char.swrifts_counters
+			swriftscounters.to_a.sort_by { |a| a.name }
+				.each_with_index
+					.map do |a, i| 
+					if a.name.downcase == "#{countername}"
+						return a.rating
+					end
+				end	
 			end
 			
 			def return_traits(traitname)
@@ -156,7 +156,6 @@ module AresMUSH
 						return ("#{a.rating}")
 					end
 				end	
-				
 			end
 
 		end

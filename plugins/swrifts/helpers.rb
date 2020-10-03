@@ -1,6 +1,14 @@
 module AresMUSH
 	module Swrifts
  
+		## ----- Init
+		
+		def self.init_complete(char)
+			char.swrifts_traits
+		end
+				
+		
+		
 		## ----- Iconicf
  
 		def self.is_valid_iconicf_name?(name)
@@ -9,25 +17,23 @@ module AresMUSH
 		  names.include?(name.downcase)
 		end
 
+		def self.get_iconicf(char, iconicf_name)
+			charac = Swrifts.find_iconicf_config(iconicf_name)
+		end
+
 		def self.find_iconicf_config(name)
 			return nil if !name
 			types = Global.read_config('swrifts', 'iconicf')
 			types.select { |a| a['name'].downcase == name.downcase }.first
 		end
 
-		def self.find_iconicf(model, iconicf_name)
-		  name_downcase = iconicf_name.downcase
-		  model.swrifts_iconicf.select { |a| a.name.downcase == name_downcase }.first
+		def self.trait_rating(char)
+			ClassTargetFinder.with_a_character(char, client, enactor) do |model|
+				chartraits = model.swrifts_traits
+				return chartraits
+			end
 		end
-	 
-		def self.get_iconicf(char, iconicf_name)
-			charac = Swrifts.find_iconicf_config(iconicf_name)
-		end
-
-		def self.set_iconicf_name(char, iconicf_name, enactor)
-			char.update(swrifts_iconicf: iconicf_name)
-		end
-
+		
 		## ----- Race
 	 
 	    def self.is_valid_race_name?(name)
@@ -70,7 +76,7 @@ module AresMUSH
 
 		def self.find_stat(char, stat_name)
 			name_downcase = stat_name.downcase
-			char.swrifts_stats.select { |a| a.name.downcase == name_downcase }.first
+			char.Swrifts_stats.select { |a| a.name.downcase == name_downcase }.first
 		end
 
 		## ----- Points
@@ -128,6 +134,7 @@ module AresMUSH
 			model.swrifts_traits.select { |a| a.name.downcase == name_downcase }.first
 		end
 		
+		
 		## ----- Die Step
 		
 		def self.rating_to_die( rating )
@@ -178,7 +185,21 @@ module AresMUSH
 		  # return t('Swrifts.starting_rating_limit', :step => max_step)
 		# end
 		
+		# def self.find_iconicf(model, iconicf_name)
+		  # name_downcase = iconicf_name.downcase
+		  # model.swrifts_iconicf.select { |a| a.name.downcase == name_downcase }.first
+		# end
 
+		# def self.iconicf_value(char)
+			# field = "iconicf"
+			# value = Swrifts.find_iconicf_value(char, field)
+			# value ? value.rating : 0
+		# end
+
+		# def self.find_iconicf_value(char) 
+			# name = "iconicf"
+			# char.swrifts_traits.select { |a| a.name.downcase == name_downcase }.first
+		# end
 
 	end
 end
