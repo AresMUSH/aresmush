@@ -27,14 +27,11 @@ module AresMUSH
 			types.select { |a| a['name'].downcase == name.downcase }.first
 		end
 
-		def self.trait_rating(char, trait_name)
-			trait = Swrifts.find_trait(char, trait_name)
-			trait ? trait.rating : 0
-		end
-
-		def self.find_trait(char, trait_name)
-			name_downcase = trait_name.downcase
-			char.Swrifts_traits.select { |a| a.name.downcase == name_downcase }.first
+		def self.trait_rating(char)
+			ClassTargetFinder.with_a_character(char, client, enactor) do |model|
+				chartraits = model.swrifts_traits
+				return chartraits
+			end
 		end
 		
 		## ----- Race
