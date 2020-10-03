@@ -5,11 +5,7 @@ module AresMUSH
 		
 		def self.init_complete(char)
 			chartraits = char.swrifts_traits
-			if (chartraits.size == 0)
-				return 0
-			else
-				return 1
-			end
+			return chartraits
 		end
 				
 		
