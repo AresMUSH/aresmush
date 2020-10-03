@@ -59,18 +59,18 @@ module AresMUSH
 			end
 
 			def ifforsheet
-				rank = "iconicf"
-				return_traits(rank)
+				traitname = "iconicf"
+				return_traits(traitname)
 			end
 			
 			def raceforsheet
-				rank = "race"
-				return_traits(rank)
+				traitname = "race"
+				return_traits(traitname)
 			end
 			
 			def rankforsheet
-				rank = "rank"
-				return_traits(rank)
+				traitname = "rank"
+				return_traits(traitname)
 			end
 			
 			def damageforsheet
@@ -156,7 +156,6 @@ module AresMUSH
 						return ("#{a.rating}")
 					end
 				end	
-				
 			end
 
 		end
