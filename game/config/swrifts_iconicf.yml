@@ -1355,7 +1355,6 @@ swrifts:
             chargen_points:
                 magic_slots: 3
                 psionic_slots: 3
-                hind_points: -2
             counters:
                 ppe_max: 15
                 ppe_current: 15
@@ -1366,6 +1365,7 @@ swrifts:
                 Psionics: 2
             hinderances: 
                 - Enemy-*
+                - CHOICE*
             edges:
                 - Arcane Background*
                     - Miracles
