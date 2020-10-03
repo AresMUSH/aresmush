@@ -27,6 +27,20 @@ module AresMUSH
 			end
 		end
 
+		def self.iconicf_set?(model)
+			return false if !model	
+			chartraits = model.swrifts_traits
+			#if (chartraits.size != 0)
+				if (chartraits['iconicf'].downcase)=='none'
+					return true
+				else
+					return false
+				end
+			#else
+				#return true
+			#end
+		end
+
 
 		def self.get_iconicf(char, iconicf_name)
 			charac = Swrifts.find_iconicf_config(iconicf_name)
