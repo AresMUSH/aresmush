@@ -264,7 +264,7 @@ module AresMUSH
 			#cgpoints << "#{c.name} - #{c.rating}"
 		end
 		#return ("#{cgpoints}")
-		return (cgpointsarray)
+		return ("#{cgpointsarray}")
 	end		
 	
   end
