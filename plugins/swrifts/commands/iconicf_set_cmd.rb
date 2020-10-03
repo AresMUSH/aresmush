@@ -20,6 +20,15 @@ module AresMUSH
 				return t('swrifts.iconicf_invalid_name', :name => self.iconicf_name.capitalize) if !Swrifts.is_valid_iconicf_name?(self.iconicf_name)
 				return nil
 			end
+			
+			# def check_for_init
+			
+			# end
+			
+			# def check_for_existing_iconicf
+			
+			# end
+			
 #----- Begin of def handle -----			
 			def handle  
 			

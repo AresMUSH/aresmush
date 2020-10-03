@@ -300,7 +300,7 @@ swrifts:
         -   
             name: Nega-Psychic
             book_reference: A&M 12
-            # description: 
+            # description: Walking human rejection of paranormal powers and influence. 
             # counters:
                 # ppe_max: 
                 # isp_max:
@@ -314,7 +314,7 @@ swrifts:
             # hinderances: 
                 # -
             # edges:
-                # -
+                # - AB Psionics*
             # magic_powers:
                 # -
             # abilities:
