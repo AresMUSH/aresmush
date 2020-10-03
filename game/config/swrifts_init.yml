@@ -15,6 +15,10 @@ swrifts:
             ppe_current: 0
             isp_max: 0
             isp_current: 0
+            pp_max: 0
+            pp_current: 0
+            burn: 8
+            strain: 0
         stats:
             Agility: 1
             Smarts: 1
@@ -28,7 +32,8 @@ swrifts:
             Strength: 5
             Vigor: 5
         dstats:
-            Pace: 6"
+            Pace: 6
+            Running: 2
             Parry: 3
             Toughness: 3   
         chargen_points:
@@ -38,6 +43,7 @@ swrifts:
             hj_slots:  2
             magic_slots: 0
             psionic_slots: 0
+            gifted_slots: 0
             edge_slots: 0
         skills:
             Academics: 0
@@ -69,6 +75,7 @@ swrifts:
             Survival: 0
             Taunt: 0
             Thievery: 0
+            CHOICE: 0
         chargen_min:
             Agility: 1
             Smarts: 1
