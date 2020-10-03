@@ -195,7 +195,7 @@ module AresMUSH
 		  chariconicf: chariconicf,
 		  cgrace: cgrace,
 		  charrace: charrace,
-		  cgpoints: cgtraits,
+		  cgpoints: cgpoints,
 		  #stats: stats,
 		  #bennies: bennies,
 		  #conviction: conviction
@@ -252,7 +252,6 @@ module AresMUSH
 		cgpointsarray = Hash.new
 		i = 0
 		cg.each do |c|
-			return ("#{c}")
 				cgpointsarray['name'] = c.name
 				cgpointsarray['rating'] = c.rating
 				i = i + 1
