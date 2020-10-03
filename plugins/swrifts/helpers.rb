@@ -3,7 +3,15 @@ module AresMUSH
  
 		## ----- Init
 		
-
+		def self.init_complete(char)
+			chartraits = char.swrifts_traits
+			if (chartraits.size == 0)
+				return 0
+			else
+				return 1
+			end
+		end
+				
 		
 		
 		## ----- Iconicf
@@ -144,18 +152,6 @@ module AresMUSH
 			model.swrifts_traits.select { |a| a.name.downcase == name_downcase }.first
 		end
 		
-		def self.return_trait_value(char, traitname)
-		traitname = traitname.downcase
-		swriftstraits = char.swrifts_traits
-		txtstring = ''
-		swriftstraits.to_a.sort_by { |a| a.name }
-			.each_with_index
-				.map do |a, i| 
-				if a.name.downcase == "#{traitname}"
-					return ("#{a.rating}")
-				end
-			end	
-		end
 		
 		## ----- Die Step
 		
