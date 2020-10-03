@@ -258,7 +258,7 @@ module AresMUSH
 				cgpointsarray = {cgname: cgrating}
 				#cgpointsarray = {name: cgname, rating: cgrating}
 		end
-		return (cgpointsarray) 
+		return ("#{cgpointsarray}") 
 		#return (cgp) 
 	end		
 	
