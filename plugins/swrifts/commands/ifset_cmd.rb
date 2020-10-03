@@ -16,6 +16,7 @@ module AresMUSH
 				ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
 					chartraits = model.swrifts_traits
 					client.emit ( "#{chartraits}" )
+				end
 				
 				# current_rating = Swrifts.trait_rating(enactor, self.iconicf_title)
 				# client.emit ( "#{current_rating}" )
