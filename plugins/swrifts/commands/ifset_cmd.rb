@@ -13,7 +13,7 @@ module AresMUSH
 			## ----- start of def handle
 			def handle
 
-				check = Swrifts.init_complete(self.target_name)
+				check = Swrifts.init_complete?(self.target_name)
 				client.emit ( "#{check}" )
 
 			end
