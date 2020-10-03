@@ -34,7 +34,8 @@ module AresMUSH
 			end
 			
 			def check_for_existing_iconicf
-				existing_icf = return_trait_value ( self.target_name, "iconicf")
+				field = "iconicf"
+				existing_icf = return_trait_value ( self.target_name, field)
 				client.emit ( "#{existing_icf}" )
 				return
 			end
