@@ -17,10 +17,12 @@ module AresMUSH
 		  names.include?(name.downcase)
 		end
 		
-		def self.is_valid_init?(model)
-			return false if !model	
-			chartraits = model.swrifts_traits
-			if (chartraits.size == 0)
+		def self.is_valid_cat?(model,cat)
+			return false if !model
+			return false if !cat
+			catname = "swrifts_#{cat}"
+			charcat = model.catname
+			if (charcat.size == 0)
 				return false
 			else
 				return true

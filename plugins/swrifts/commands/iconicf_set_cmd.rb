@@ -24,7 +24,7 @@ module AresMUSH
 			
 			def check_valid_init
 				ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-					return t('swrifts.iconicf_invalid_init') if !Swrifts.is_valid_init?(model)
+					return t('swrifts.iconicf_invalid_init', :name => "Traits") if !Swrifts.is_valid_cat?(model,"traits")
 					return nil
 				end
 			end
