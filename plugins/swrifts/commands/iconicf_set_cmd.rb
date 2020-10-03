@@ -269,7 +269,7 @@ module AresMUSH
 						end
 						
 						client.emit_success t('swrifts.iconicf_complete')
-					end
+					#end
 				#end #End overall error checking
 			end
 #----- End of def handle -----	
