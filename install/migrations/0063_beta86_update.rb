@@ -99,6 +99,8 @@ module AresMUSH
           DatabaseMigrator.write_config_file(file, config)
         end
 
+        Global.log "Multiple plots per scene."
+        Scene.all.each { |s| s.plots.replace s.plot ? [ s.plot ] : [] }
       end
     end    
   end
