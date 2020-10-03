@@ -165,7 +165,7 @@ module AresMUSH
 							hind_col = model.swrifts_hinderances #Return the Hinderances collection.
 							if (hind_col.size > 0) #If the traits collection has *anything* in it, which means it exists, run the 'update'
 								ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
-									SwriftsHinderances.update(name: setthing, character: model)
+									# SwriftsHinderances.update(name: setthing, character: model)
 								end
 							else #Otherwise, run the 'create' version
 								ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
