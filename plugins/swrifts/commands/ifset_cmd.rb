@@ -3,7 +3,7 @@ module AresMUSH
 		class IfSetCmd
 			include CommandHandler
 			  
-			attr_accessor :target_name
+			attr_accessor :target_name, :iconicf_title
 
 			def parse_args
 				self.target_name = enactor_name
