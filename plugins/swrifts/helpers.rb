@@ -17,36 +17,27 @@ module AresMUSH
 		  names.include?(name.downcase)
 		end
 
+		def self.get_iconicf(char, iconicf_name)
+			charac = Swrifts.find_iconicf_config(iconicf_name)
+		end
+
 		def self.find_iconicf_config(name)
 			return nil if !name
 			types = Global.read_config('swrifts', 'iconicf')
 			types.select { |a| a['name'].downcase == name.downcase }.first
 		end
 
-		def self.find_iconicf(model, iconicf_name)
-		  name_downcase = iconicf_name.downcase
-		  model.swrifts_iconicf.select { |a| a.name.downcase == name_downcase }.first
-		end
-	 
-		def self.get_iconicf(char, iconicf_name)
-			charac = Swrifts.find_iconicf_config(iconicf_name)
-		end
-
-		def self.set_iconicf_name(char, iconicf_name, enactor)
-			char.update(swrifts_iconicf: iconicf_name)
-		end
-		
 		def self.iconicf_value(char)
-			field = "iconicf"
-			value = Swrifts.find_iconicf_value(char, field)
+			iconicf_title = "iconicf"
+			value = Swrifts.find_iconicf_value(char, iconicf_title)
 			value ? value.rating : 0
 		end
 
-		def self.find_iconicf_value(char) 
-			name = "iconicf"
-			char.swrifts_traits.select { |a| a.name.downcase == name_downcase }.first
+		def self.find_iconicf_value(char, iconicf_title)
+			name_downcase = iconicf_title.downcase
+			char.swrifts_iconicf.select { |a| a.name.downcase == name_downcase }.first
 		end
-
+		
 		## ----- Race
 	 
 	    def self.is_valid_race_name?(name)
@@ -198,7 +189,21 @@ module AresMUSH
 		  # return t('Swrifts.starting_rating_limit', :step => max_step)
 		# end
 		
+		# def self.find_iconicf(model, iconicf_name)
+		  # name_downcase = iconicf_name.downcase
+		  # model.swrifts_iconicf.select { |a| a.name.downcase == name_downcase }.first
+		# end
 
+		# def self.iconicf_value(char)
+			# field = "iconicf"
+			# value = Swrifts.find_iconicf_value(char, field)
+			# value ? value.rating : 0
+		# end
+
+		# def self.find_iconicf_value(char) 
+			# name = "iconicf"
+			# char.swrifts_traits.select { |a| a.name.downcase == name_downcase }.first
+		# end
 
 	end
 end
