@@ -195,7 +195,7 @@ module AresMUSH
 		  chariconicf: chariconicf,
 		  cgrace: cgrace,
 		  charrace: charrace,
-		  cgpoints: cgtraits,
+		  cgpoints: cgpoints,
 		  #stats: stats,
 		  #bennies: bennies,
 		  #conviction: conviction
