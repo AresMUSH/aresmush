@@ -21,8 +21,12 @@ module AresMUSH
 				return nil
 			end
 			
-			# def check_existing_iconicf
-				# return ( "You already have an Iconic Framework Selected.") if !Swrifts.
+			def check_existing_iconicf
+				current_framework = Swrifts.iconicf_value(self.target_name)
+				client.emit ("#{current_framework}")
+				return
+			
+			end
 			
 			# end
 			
@@ -52,7 +56,7 @@ module AresMUSH
 
 				## ----- Update Traits (Rank)
 				if (iconicf_traits)
-					iconicf_stats.each do |key, rating|
+					iconicf_traits.each do |key, rating|
 						trait_name = "#{key}".downcase
 						mod = "#{rating}"
 						ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
