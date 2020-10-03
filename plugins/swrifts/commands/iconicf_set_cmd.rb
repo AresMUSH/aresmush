@@ -161,7 +161,6 @@ module AresMUSH
 						setthing = "#{key}"
 						setthing = setthing.downcase
 						client.emit ( "#{setthing}" )
-						return
 						ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|  #get the character model to work with
 							hind_col = model.swrifts_hinderances #Return the Hinderances collection.
 							if (hind_col.size > 0) #If the traits collection has *anything* in it, which means it exists, run the 'update'
