@@ -67,6 +67,7 @@ en:
         iconicf_cleared: "Iconic Framework %{name} removed."
         iconicf_set: "You set your Iconic Framework to %{name}."
         iconicf_not_set: "Iconic Framework: '%{name}' was not set."
+        iconicf_need: "You need to set your Iconic Framework first. Type 'swrifts/iconicf <name>' to set it."
         iconicf_set: "Iconic Framework set to '%{name}'."
         iconicstats_set: "Base Stats set."
         iconicskills_set: "Base Skills set."
