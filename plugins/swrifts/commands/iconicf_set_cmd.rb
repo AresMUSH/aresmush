@@ -26,15 +26,12 @@ module AresMUSH
 					chartraits = model.swrifts_traits
 					chartraits = chartraits.size
 					client.emit ( "#{chartraits}" )
-					
-					
-					
-					return
-						# if (chartraits.size == nil ) 
-							# client.emit ( "You need to use 'swrifts/init' before you can set an Iconic Framework." )
-							# return
-						# else
-						# end
+					if (chartraits == 0)
+						client.emit_failure ( "You need to use 'swrifts/init' before you can set an Iconic Framework." )
+						return
+					else
+						client.emit_success ( "init pau" )
+					end
 				end	
 			end
 			
