@@ -29,7 +29,7 @@ module AresMUSH
 
 		def self.iconicf_value(char)
 			iconicf_title = "iconicf"
-			value = swrifts.find_value(char, iconicf_title)
+			value = Swrifts.find_value(char, iconicf_title)
 			value ? value.rating : 0
 		end
 
