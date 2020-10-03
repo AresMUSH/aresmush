@@ -3,7 +3,7 @@ module AresMUSH
 		class IfSetCmd
 			include CommandHandler
 			  
-			attr_accessor :target_name, :iconicf_name, :iconicf_title
+			attr_accessor :target_name
 
 			def parse_args
 				self.target_name = enactor_name
@@ -13,7 +13,7 @@ module AresMUSH
 			## ----- start of def handle
 			def handle
 
-				check = Swrifts.init_complete?(self.target_name)
+				check = Swrifts.init_complete(self.target_name)
 				client.emit ( "#{check}" )
 
 			end
