@@ -255,7 +255,8 @@ module AresMUSH
 				cgpointsarray['rating'] = c.rating
 		end
 		cgclass = cgpointsarray.class
-		return ("#{cgclass}") 
+		#return ("#{cgclass}") 
+		return (cgpointsarray) 
 	end		
 	
   end
