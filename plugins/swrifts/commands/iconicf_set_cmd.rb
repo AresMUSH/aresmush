@@ -161,7 +161,7 @@ module AresMUSH
 						setthing = "#{key}"
 						setthing = setthing.downcase
 						client.emit ( "#{setthing}" )
-						client.emit ( "#{self.target}" )
+						client.emit ( "#{self.target_name}" )
 						return
 						ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|  #get the character model to work with
 							hind_col = model.swrifts_hinderances #Return the Hinderances collection.
