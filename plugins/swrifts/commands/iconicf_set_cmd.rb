@@ -22,7 +22,7 @@ module AresMUSH
 			end
 			
 			def check_for_init
-				ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
+				ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
 					chartraits = model.swrifts_traits
 					client.emit ( "#{chartraits}" )
 					return
