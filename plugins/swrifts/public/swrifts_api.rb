@@ -253,8 +253,8 @@ module AresMUSH
 		cg.each do |c|
 				cgpointsarray.push {name:c.name,rating:c.rating}
 		end
-		pp (cgpointsarray)
-		return (cgpointsarray)
+		cgp = pp (cgpointsarray)
+		return (cgp)
 	end		
 	
   end
