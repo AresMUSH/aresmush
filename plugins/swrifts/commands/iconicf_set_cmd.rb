@@ -21,20 +21,7 @@ module AresMUSH
 				return nil
 			end
 			
-			def check_for_init
-				ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-					chartraits = model.swrifts_traits
-					chartraits = chartraits.size
-					client.emit ( "#{chartraits}" )
-					if (chartraits == 0)
-						client.emit_failure ( "You need to use 'swrifts/init' before you can set an Iconic Framework." )
-						return
-					else
-						client.emit_success ( "init pau" )
-					end
-				end	
-			end
-			
+		
 			# def check_for_existing_iconicf
 				# existing_icf = Swrifts.return_trait_value( self.target_name, self.iconicf_title )
 				# client.emit ( "#{existing_icf}" )
@@ -60,9 +47,7 @@ module AresMUSH
 
 				ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
 					chartraits = model.swrifts_traits
-					chartraits = chartraits.size
-					client.emit ( "#{chartraits}" )
-					if (chartraits == 0)
+					if (chartraits.size == 0)
 						client.emit_failure ( "You need to use 'swrifts/init' before you can set an Iconic Framework." )
 						return
 					else
