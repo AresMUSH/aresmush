@@ -18,16 +18,22 @@ module AresMUSH
 			
 			#----- Check to see if what was entered was an Iconic Framework in game\config\swrifts_iconicf.yml
 			def check_valid_iconicf
-				return t('swrifts.iconicf_invalid_name', :name => self.iconicf_name.capitalize) if !Swrifts.is_valid_iconicf_name?(self.iconicf_name)
+				if !Swrifts.is_valid_iconicf_name?(self.iconicf_name) #Is the Iconic Framework in the list
+					return t('swrifts.iconicf_invalid_name', :name => self.iconicf_name.capitalize) 
+				elsif !Swrifts.is_valid_cat?(model,"traits") #Are there any traits set - i.e INIT completed.
+					return t('swrifts.iconicf_invalid_init', :name => "Traits")
+				elsif Swrifts.trait_set?(model,"iconicf") #Is the iconic framework already set
+					return t('swrifts.trait_already_set',:name => "Iconic Framework")
+				end
 				return nil
 			end
 			
-			def check_valid_init
-				ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-					return t('swrifts.iconicf_invalid_init', :name => "Traits") if !Swrifts.is_valid_cat?(model,"traits")
-					return nil
-				end
-			end
+			# def check_valid_init
+				# ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
+					# return t('swrifts.iconicf_invalid_init', :name => "Traits") if !Swrifts.is_valid_cat?(model,"traits")
+					# return nil
+				# end
+			# end
 		
 			# def check_for_existing_iconicf
 				# ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
