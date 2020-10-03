@@ -256,7 +256,7 @@ module AresMUSH
 				cgn = cgname[/[^_]+/]
 				cgname = cgn.titleize				
 				cgrating = c.rating
-				cgpointsarray[c.name] = cgrating
+				cgpointsarray[cgname] = cgrating
 		end
 		return (cgpointsarray)
 	end		
