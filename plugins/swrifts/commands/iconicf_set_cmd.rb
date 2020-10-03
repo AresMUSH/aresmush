@@ -28,7 +28,7 @@ module AresMUSH
 					client.emit ( "#{chartraits}" )
 					if (chartraits == 0)
 						client.emit_failure ( "You need to use 'swrifts/init' before you can set an Iconic Framework." )
-						return
+						return nil
 					else
 						client.emit_success ( "init pau" )
 					end
