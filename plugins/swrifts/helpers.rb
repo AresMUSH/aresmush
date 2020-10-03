@@ -4,8 +4,7 @@ module AresMUSH
 		## ----- Init
 		
 		def self.init_complete?(char)
-			return false if !char
-			chartraits = char.swrifts_traits
+			char.swrifts_traits
 		end
 				
 		
