@@ -13,9 +13,8 @@ module AresMUSH
 			
 			## ----- start of def handle
 			def handle
-				ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-					chartraits = model.swrifts_traits
-					client.emit ( "#{chartraits}" )
+				test = Swrifts.trait_rating(self.target_name)
+				client.emit ( "#{test}" )
 				end
 				
 				# current_rating = Swrifts.trait_rating(enactor, self.iconicf_title)
