@@ -27,6 +27,17 @@ module AresMUSH
 		def self.set_iconicf_name(char, iconicf_name, enactor)
 			char.update(swrifts_iconicf: iconicf_name)
 		end
+		
+		def self.iconicf_value(char)
+			field = "iconicf"
+			value = Swrifts.find_value(char, field)
+			value ? value.rating : 0
+		end
+
+		def self.find_iconicf_value(char) 
+			name = "iconicf"
+			char.swrifts_traits.select { |a| a.name.downcase == name_downcase }.first
+		end
 
 		## ----- Race
 	 
@@ -127,6 +138,7 @@ module AresMUSH
 			name_downcase = iconicf_title.downcase
 			model.swrifts_traits.select { |a| a.name.downcase == name_downcase }.first
 		end
+		
 		
 		## ----- Die Step
 		

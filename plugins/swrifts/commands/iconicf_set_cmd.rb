@@ -20,6 +20,16 @@ module AresMUSH
 				return t('swrifts.iconicf_invalid_name', :name => self.iconicf_name.capitalize) if !Swrifts.is_valid_iconicf_name?(self.iconicf_name)
 				return nil
 			end
+			
+			def check_existing_iconicf
+				current_framework = Swrifts.iconicf_value(self.target_name)
+				client.emit ("#{current_framework}")
+				return
+			
+			end
+			
+			# end
+			
 #----- Begin of def handle -----			
 			def handle  
 			
@@ -46,7 +56,7 @@ module AresMUSH
 
 				## ----- Update Traits (Rank)
 				if (iconicf_traits)
-					iconicf_stats.each do |key, rating|
+					iconicf_traits.each do |key, rating|
 						trait_name = "#{key}".downcase
 						mod = "#{rating}"
 						ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
@@ -57,7 +67,7 @@ module AresMUSH
 					client.emit_success ("Iconic Framework Added")
 				else 
 					# If the Iconic Framework does not have this field in iconicf.yml, skip and emit to enactor
-					client.emit_failure ("This Iconic Framework has no Stats")
+					client.emit_failure ("This Iconic Framework has no Traits")
 				end
 
 				## ----- Update Stats
