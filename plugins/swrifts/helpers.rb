@@ -144,7 +144,7 @@ module AresMUSH
 			model.swrifts_traits.select { |a| a.name.downcase == name_downcase }.first
 		end
 		
-		def return_trait_value(char, traitname)
+		def self.return_trait_value(char, traitname)
 		traitname = traitname.downcase
 		swriftstraits = char.swrifts_traits
 		txtstring = ''
