@@ -34,7 +34,7 @@ module AresMUSH
 
 		def self.find_trait(char, trait_name)
 			name_downcase = trait_name.downcase
-			char.swrifts_traits.select { |a| a.name.downcase == name_downcase }.first
+			char.Swrifts_traits.select { |a| a.name.downcase == name_downcase }.first
 		end
 		
 		## ----- Race
@@ -79,7 +79,7 @@ module AresMUSH
 
 		def self.find_stat(char, stat_name)
 			name_downcase = stat_name.downcase
-			char.swrifts_stats.select { |a| a.name.downcase == name_downcase }.first
+			char.Swrifts_stats.select { |a| a.name.downcase == name_downcase }.first
 		end
 
 		## ----- Points
