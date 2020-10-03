@@ -249,9 +249,9 @@ module AresMUSH
 	end
 	
 	def self.returncgpforcg(cg)
-		cgpointsarray = Hash.new
+		cgpointsarray = Array.new
 		cg.each do |c|
-				cgpointsarray.push {name:"hello",rating:"3"}
+				cgpointsarray.push {name => "hello",rating => "3"}
 		end
 		return (cgpointsarray)
 	end		
