@@ -258,7 +258,7 @@ module AresMUSH
 			# cname = c['name'].downcase
 			# cgpoints = c['chargen_points']
 			# if ("#{cname}" == "#{downsizetitle}")
-				cgpointsarray = [name: cname, points: cgpoints]
+				cgpointsarray.push [name: cname, points: cgpoints]
 				# cgpointsarray.push(cgacl)
 			# end
 			#cgpoints << "#{c.name} - #{c.rating}"
