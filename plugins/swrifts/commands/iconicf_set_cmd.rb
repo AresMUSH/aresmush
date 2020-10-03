@@ -25,11 +25,9 @@ module AresMUSH
 				ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
 					chartraits = model.swrifts_traits
 						when (chartraits.size = 0) 
-							client.emit ( "You need to use 'swrifts/init' before you can set an Iconic Framework." )
-							return
-						else
+							return client.emit ( "You need to use 'swrifts/init' before you can set an Iconic Framework." )
 						end
-					end
+					
 				end	
 			end
 			
