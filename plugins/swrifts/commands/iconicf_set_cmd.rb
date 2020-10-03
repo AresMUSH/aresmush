@@ -157,7 +157,7 @@ module AresMUSH
 				# ----- This sets the default Hinderances on the Character -----	
 				if (iconicf_hinderances) 
 					iconicf_hinderances.each do |key|
-						setthing = "#{key}".downcase
+						setthing = "#{key}"
 						
 						ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|  #get the character model to work with
 							hind_col = model.swrifts_traits #Return the Hinderances collection.
