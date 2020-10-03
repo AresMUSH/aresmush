@@ -18,12 +18,10 @@ module AresMUSH
 			
 			## ----- start of def handle
 			def handle
-				ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-					trait = Swrifts.find_traits(model, self.iconicf_title)				
-					trait.update(rating: self.iconicf_name)
-				end
-				
-				client.emit_success ("Iconic Framework Added")
+
+				check = Swrifts.init_complete(self.target_name)
+				client.emit ( "#{check}" )
+
 			end
 			## ----- end of def handle
 			
