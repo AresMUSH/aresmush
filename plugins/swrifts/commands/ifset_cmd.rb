@@ -20,8 +20,8 @@ module AresMUSH
 			def self.get_cmd_handler(client, cmd, enactor)
 				ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
 					Swrifts.check_features_mod(model, SwriftsHinderances, "Hinderances", hinderance_name)
+				end
 			end
-
 			
 		end
 	end
