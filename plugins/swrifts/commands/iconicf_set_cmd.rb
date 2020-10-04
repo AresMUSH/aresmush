@@ -49,7 +49,6 @@ module AresMUSH
 				iconicf_chargen_points=iconicf['chargen_points']
 				iconicf_counters = iconicf['counters']
 
-				client.emit( "#{iconicf_traits}" )
 
 				## ----- Update Iconic Framework
 				ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
