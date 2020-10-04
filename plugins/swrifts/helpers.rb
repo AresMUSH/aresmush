@@ -13,7 +13,9 @@ module AresMUSH
 			# model = Aliana, collection = SwriftsHinderances, featuretype = hinderances, feature_name = Elderly
 			collection.create(name: feature_name, character: model)
 			
-			feature_group = Global.read_config('swrifts', feature_name)
+			featuretype = featuretype.downcase
+			
+			feature_group = Global.read_config('swrifts', featuretype)
 			feature_group.select { |a| a['name'].downcase == feature_name.downcase }.first
 			
 
