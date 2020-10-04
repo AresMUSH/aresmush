@@ -1548,7 +1548,8 @@ swrifts:
             skills:
                 Notice: 2            
             hinderances: 
-                - Elderly*
+                - Young-*
+                - Small*
             edges:
                 - AB Magic*
             magic_powers:
