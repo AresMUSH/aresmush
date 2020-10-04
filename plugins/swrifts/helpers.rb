@@ -11,7 +11,7 @@ module AresMUSH
 		
 		def self.add_feature(model, feature_type, feature_name)
 			SwriftsHinderances.create(name: feature_name, character: model)
-		end			
+		end			 
 		
 		## ----- Iconicf
  
