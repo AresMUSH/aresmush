@@ -230,13 +230,12 @@ module AresMUSH
 				n = c['name']
 				d.each do |key, rating|
 					dstr = "#{n} - #{key} - #{rating}"
-					return (dstr)
-					# ifname = c['name'].downcase
-					# initcgpointsarray[ifname] = {name: 1, rating: 1}
+					ifname = n.downcase
+					initcgpointsarray[ifname] = {name: key, rating: rating}
 				end
 		end
 		#initcgpointsarray = [1,2,3,4]
-		#return ("#{c.inspect}")
+		return (initcgpointsarray)
 	end		
 	
 	def self.returnraceforcg(model)
