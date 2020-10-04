@@ -27,7 +27,7 @@ module AresMUSH
 						Swrifts.add_hinderance(self.target_name, setthing)
 						# ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
 							# SwriftsHinderances.create(name: setthing, character: model)
-						end
+						# end
 					end
 					client.emit_success t('swrifts.iconichinderances_set')
 				else 
