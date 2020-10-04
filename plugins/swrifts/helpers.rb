@@ -43,7 +43,7 @@ module AresMUSH
 					# end
 				end 
 			else 
-				client.emit_failure ("No Stats on this Feature")			
+				return	
 			end
 			# -----
 			# if (fg['chargen_points'])
