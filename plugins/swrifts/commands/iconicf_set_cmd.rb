@@ -173,14 +173,14 @@ module AresMUSH
 						hinderance_name = "#{key}".downcase
 
 						ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-							#Swrifts.add_feature(model, SwriftsHinderances, "Hinderances", hinderance_name)
-							feature_group = Global.read_config('swrifts','hinderances' )
+							Swrifts.add_feature(model, SwriftsHinderances, "Hinderances", hinderance_name)
+							# feature_group = Global.read_config('swrifts','hinderances' )
 							#client.emit (feature_group.inspect)
-							cgn = hinderance_name.gsub("*", "")
-							fg = feature_group.select { |a| a['name'].downcase ==cgn.downcase }.first
+							# cgn = hinderance_name.gsub("*", "")
+							# fg = feature_group.select { |a| a['name'].downcase ==cgn.downcase }.first
 							
-							client.emit(fg.inspect)
-							return
+							# client.emit(fg.inspect)
+							# return
 
 							# feature_stats = feature_group['stats']
 							# feature_cp = feature_group['chargen_points']
