@@ -197,7 +197,7 @@ module AresMUSH
 		  cgrace: cgrace,
 		  charrace: charrace,
 		  cgpoints: cgtraits,
-		  inicgpoints: initcgpoints,
+		  # inicgpoints: initcgpoints,
 		  #stats: stats,
 		  #bennies: bennies,
 		  #conviction: conviction
@@ -223,16 +223,16 @@ module AresMUSH
 	end	
 
 	def self.returninitcgforcg(model)
-		iconicf_chargen_points_array = []
-		iconicf_chargen_points=iconicf['chargen_points']
-		iconicf_chargen_points.each do |key, rating|
+		# iconicf_chargen_points_array = []
+		# iconicf_chargen_points=iconicf['chargen_points']
+		# iconicf_chargen_points.each do |key, rating|
 			# alias the 'key' because the command below doesn't parse the #'s and {'s etc.
-			point_name = "#{key}".downcase
+			# point_name = "#{key}".downcase
 			# alias the 'rating' for the same reason and set it to an integer
-			mod = "#{rating}".to_i
-			iconicf_chargen_points_array[point_name] = {rating:mod}
-		end
-		return (iconicf_chargen_points_array)
+			# mod = "#{rating}".to_i
+			# iconicf_chargen_points_array[point_name] = {rating:mod}
+		# end
+		# return (iconicf_chargen_points_array)
 	end	
 	
 	def self.returnraceforcg(model)
