@@ -10,9 +10,8 @@ module AresMUSH
 		## ----- Features
 		
 		def self.add_feature(model, feature_type, feature_name)
-			feature = 'Swrifts#{feature_type}'
-			feature.create(name: feature_name, character: model)
-		end			
+			SwriftsHinderances.create(name: feature_name, character: model)
+		end			 
 		
 		## ----- Iconicf
  
