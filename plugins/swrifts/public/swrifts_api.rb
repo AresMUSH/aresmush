@@ -225,7 +225,7 @@ module AresMUSH
 	def self.returninitcgforcg(model)
 		initcgpointsarray = Array.new
 		initcgpointsarray = [1,2,3,4,5,6]
-		return (initcgointsarray)
+		return (initcgpointsarray)
 	end		
 	
 	def self.returnraceforcg(model)
