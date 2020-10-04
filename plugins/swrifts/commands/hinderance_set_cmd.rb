@@ -3,7 +3,7 @@ module AresMUSH
 		class HinderanceSetCmd
 			include CommandHandler
 			      
-			attr_accessor :target_name, :iconicf_name
+			attr_accessor :target_name, :hinderance_name
 			
 			def parse_args
 				self.target_name = enactor_name #Set the character to be the current character
