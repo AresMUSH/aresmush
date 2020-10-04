@@ -17,13 +17,13 @@ module AresMUSH
 			feature_name = feature_name.gsub("^", "")	 #remove the ^ that appear in the feature name		
 			feature_group = Global.read_config('swrifts', featuretype)
 			feature_group.select { |a| a['name'].downcase == feature_name.downcase }.first
-		
+			return ('we made it this far')		
 			feature_stats = feature_group['stats']
 			feature_cp = feature_group['chargen_points']
 			feature_dstats = feature_group['chargen_points']
 			feature_counters = feature_group['counters']
 			
-			return ('we made it this far')
+
 			#-----
 			if (feature_stats)
 					feature_stats.each do |key, rating|
