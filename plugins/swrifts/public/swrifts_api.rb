@@ -223,17 +223,17 @@ module AresMUSH
 	end	
 	
 	def self.returninitcgforcg(model)
-		model = model['chargen_points']
-		return (model.inspect)
-		#initcgpointsarray = Hash.new
-		#list = model.sort_by { |a| a['name']}
-		#list.each do |c|
+		initcgpointsarray = Hash.new
+		list = model.sort_by { |a| a['name']}
+		list.each do |c|
+				d = c['chargen_points']
+				return (d.inspect)
 			#alias the 'key' because the command below doesn't parse the #'s and {'s etc.
 			#point_name = c['name'].downcase
 			#alias the 'rating' for the same reason and set it to an integer
 			#mod = c['rating']
 			#initcgpointsarray[c.name] = {name: c.name, rating:c.rating}
-		#end
+		end
 		#initcgpointsarray = [1,2,3,4]
 		#return (initcgpointsarray)
 	end		
