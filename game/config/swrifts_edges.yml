@@ -17,41 +17,46 @@ swrifts:
         -
             name: AB Magic
             description: Magical Arcane Background
-            bonuses:
-                power_slots: 3
-                powerpoints: 10
+            chargen_points:
+                magic_slots: 3
+            counters:
+                ppe_max: 10
             pre-reqs:
                 - rank: Novice
         -
             name: AB Psionics
             description: Psionics Arcane Background
-            bonuses:
-                power_slots: 3
-                powerpoints: 10
+            chargen_points:
+                psionic_slots: 3
+            counters:
+                isp: 10
             pre-reqs:
                 - rank: Novice
         -
             name: AB Miracles
             description: Miracles Arcane Background
-            bonuses:
-                power_slots: 3
-                powerpoints: 10
+            chargen_points:
+                miracle_slots: 3
+            counters:
+                ppe_max: 10
             pre-reqs:     
                 - rank: Novice
         -
             name: AB Gifted
             description: Gifted Arcane Background
-            bonuses:
-                power_slots: 1
-                powerpoints: 15
+            chargen_points:
+                gifted_slots: 1
+            counters:
+                pp_max: 15
             pre-reqs:     
                 - rank: Novice
         -
             name: AB Weird Science
             description: Weird Science Arcane Background
-            bonuses:
+            chargen_points:
                 power_slots: 2
-                powerpoints: 15
+            counters:
+                pp_max: 15
             pre-reqs:     
                 - rank: Novice
         -

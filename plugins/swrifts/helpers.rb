@@ -9,15 +9,49 @@ module AresMUSH
 				
 		## ----- Features
 		
-		def self.add_feature(model, collection, feature_type, feature_name)
+		def self.add_feature(model, collection, featuretype, feature_name)
 			collection.create(name: feature_name, character: model)
+			
+			feature_group = Swrifts.get_featuretype(model, feature_name)
+			feature_stats = feature_group['stats']
+			feature_cp = feature_group['chargen_points']
+			feature_dstats = feature_group['chargen_points']
+			feature_counters = feature_group['counters']
+			
+			#-----
+			if (feature_stats)
+					feature_stats.each do |key, rating|
+						stat_name = "#{key}".downcase
+						mod = "#{rating}".to_i
+						current_rating = Swrifts.stat_rating(enactor, feature_name)
+						new_rating = current_rating + mod
+												
+						ClassTargetFinder.with_a_character(model, client, enactor) do |model|
+							stat = Swrifts.find_stat(model, stat_name)				
+							stat.update(rating: new_rating)
+						end
+					end 
+					client.emit_failure ("Feature Stats set")	
+				else 
+					client.emit_failure ("No Stats on this Feature")			
+			end
+			# -----
+			# if (feature_cp)
+			
+			# end
+			# -----
+			# if (feature_dstats)
+			
+			# end
+			# -----
+			# if (feature_counters)
+			
+			# end
+			# -----
+			
+			
 		end
 
-		def self.check_features_mod(model, collection, feature_type, feature_name)
-			test = model.swrifts_hinderances.select { |a| a.name.downcase == feature_name }.first
-			return test
-			# collection.select { |a| a.name.downcase == feature_name }.first
-		end			 
 		
 		## ----- Add Rating
 		

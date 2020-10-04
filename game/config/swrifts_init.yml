@@ -11,6 +11,8 @@ swrifts:
             conviction: 0
             conviction_current: 0
             damage: 0
+            pp_max: 0
+            pp_current: 0
             ppe_max: 0
             ppe_current: 0
             isp_max: 0
@@ -44,6 +46,7 @@ swrifts:
             hj_slots:  2
             magic_slots: 0
             psionic_slots: 0
+            miracle_slots: 0
             gifted_slots: 0
             edge_slots: 0
         skills:
