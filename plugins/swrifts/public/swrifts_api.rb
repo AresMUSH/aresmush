@@ -156,7 +156,6 @@ module AresMUSH
 		# Format Iconic Framework table
 		swrifts_iconicf = Global.read_config('swrifts', 'iconicf')
 		iconicf = returniconicforcg(swrifts_iconicf)
-		initcgpoints = returninitcgforcg(swrifts_iconicf)
 	
 		if char.swrifts_iconicf
 			chariconicf = char.swrifts_iconicf.titleize
@@ -220,19 +219,6 @@ module AresMUSH
 			iconicfarray.push("#{ifstring}")
 		end
 		return (iconicfarray)
-	end	
-
-	def self.returninitcgforcg(model)
-		# iconicf_chargen_points_array = []
-		# iconicf_chargen_points=iconicf['chargen_points']
-		# iconicf_chargen_points.each do |key, rating|
-			# alias the 'key' because the command below doesn't parse the #'s and {'s etc.
-			# point_name = "#{key}".downcase
-			# alias the 'rating' for the same reason and set it to an integer
-			# mod = "#{rating}".to_i
-			# iconicf_chargen_points_array[point_name] = {rating:mod}
-		# end
-		# return (iconicf_chargen_points_array)
 	end	
 	
 	def self.returnraceforcg(model)
