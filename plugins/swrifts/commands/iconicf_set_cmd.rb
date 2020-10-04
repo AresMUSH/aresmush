@@ -173,9 +173,9 @@ module AresMUSH
 						client.emit ( "#{target_name} - #{setthing}" )
 						#Swrifts.add_hinderance(target_name, setthing)
 						ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-							var1= Swrifts.add_hinderance(model, setthing)
+							Swrifts.add_hinderance(model, setthing)
 						end
-						client.emit("#{var1}")
+						client.emit ("End")
 					end
 					client.emit_success t('swrifts.iconichinderances_set')
 				else 
