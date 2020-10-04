@@ -49,6 +49,8 @@ module AresMUSH
 				iconicf_chargen_points=iconicf['chargen_points']
 				iconicf_counters = iconicf['counters']
 
+				client.emit( "#{iconicf_traits}" )
+
 				## ----- Update Iconic Framework
 				ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
 					trait = Swrifts.find_traits(model, self.iconicf_title)				
@@ -58,7 +60,7 @@ module AresMUSH
 
 				## ----- Update Traits (Rank)
 				if (iconicf_traits)
-					iconicf_traits.each do |key, rating|
+						iconicf_traits.each do |key, rating|
 						trait_name = "#{key}".downcase
 						mod = "#{rating}"
 						ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
