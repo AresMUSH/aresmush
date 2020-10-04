@@ -14,7 +14,7 @@ module AresMUSH
 			collection.create(name: feature_name, character: model)
 			
 			feature_group = Global.read_config('swrifts', feature_name)
-			types.select { |a| a['name'].downcase == feature_name.downcase }.first
+			feature_group.select { |a| a['name'].downcase == feature_name.downcase }.first
 			
 
 			feature_stats = feature_group['stats']
