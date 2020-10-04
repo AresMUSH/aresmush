@@ -1539,7 +1539,8 @@ swrifts:
             counters:
                 ppe_max: 5
                 isp_max: 5
-            rank: Legendary
+            traits:
+                rank: Legendary
             stats:
                 Strength: 4
                 Agility: 4
