@@ -171,6 +171,10 @@ module AresMUSH
 		def self.rating_to_die( rating )
 			rating_num = rating.to_i
 			case rating_num
+			when -2
+				return "d4-4"
+			when -1 
+				return "d4-3"
 			when 0
 				return "-"
 			when 1
