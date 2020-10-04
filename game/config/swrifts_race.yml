@@ -3,7 +3,7 @@ swrifts:
     races:
         - 
             name: Altara
-            book_reference: TLPG
+            book_reference: TLPG 56
             desc: Warrior Women
             edges:
                 - Attractive^
@@ -11,12 +11,16 @@ swrifts:
             hinderances:
                 - Bad Reputation^
                 - Blind^
-            attributes: 
+            stats: 
+                Agility: 1
+                Strength: 1
+                Vigor: 1
+            stat_max:
                 Agility: 1
                 Strength: 1
                 Vigor: 1
             skills:
-                Common Knowledge: -1
+                Common Knowledge: -3
                 Psionics: 1
             complications:
                 - Skill Penalty^
@@ -33,7 +37,7 @@ swrifts:
                 - Empathy^
         -  
             name: Dog Boy
-            book_reference: TLPG
+            book_reference: TLPG 58
             desc: Psi-Hound
             edges:
                 - Breed Advantage^
@@ -53,7 +57,7 @@ swrifts:
                 - Mutant^
                 - Ley Line Hypersensitivity^
         -  
-            name: DNorr
+            name: DNorr 57
             book_reference: TLPG
             desc: Devilmen
             edges:
@@ -69,7 +73,7 @@ swrifts:
                 - Inhuman Physiology+^
                 - D-Bee+^
                 - Restricted Path^
-                    - Psionics
+                    - Magic
                 - Skill Penalty+^
                     -Fear
             ppe: 5
