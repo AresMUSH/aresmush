@@ -1532,3 +1532,32 @@ swrifts:
                 # -
             # complications:
                 # -
+        -
+            name: Test
+            book_reference: None
+            description: A testing framework for staff use
+            counters:
+                ppe_max: 5
+                isp_max: 5
+            stats:
+                Strength: 5
+                Agility: 1
+            chargen_points:
+                magic_slots: 2
+                psionic_slots: 1
+            skills:
+                Notice: 2            
+            hinderances: 
+                - Elderly*
+            edges:
+                - AB Magic*
+            magic_powers:
+                - Bolt*
+            abilities:
+                - Cosmic Confluence*
+                - Mystic Power Modifiers*
+            complications:
+                - Arcane Duality*
+                - Cybernetics*
+                - Higher Standard*
+                - Power Activators*
