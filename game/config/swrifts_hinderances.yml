@@ -391,7 +391,7 @@ swrifts:
       description: Has 3 atribute points, 10 skill points, and two extra Bennies per session.
       hind_points: 2
       stats:
-        Strength: -2
-        Agility: -2
+        Strength: 2
+        Agility: 2
       counters:
         bennies_max: 2
