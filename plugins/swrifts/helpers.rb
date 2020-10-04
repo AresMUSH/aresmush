@@ -9,10 +9,10 @@ module AresMUSH
 				
 		## ----- Features
 		
-		def self.add_feature(model, collection, featuretype, feature_name)
+		def self.add_feature(model, collection, featuretype, feature_name, feature_group)
 			collection.create(name: feature_name, character: model)
 			
-			feature_group = Swrifts.get_featuretype(model, feature_name)
+			# feature_group = Swrifts.get_featuretype(model, feature_name)
 			feature_stats = feature_group['stats']
 			feature_cp = feature_group['chargen_points']
 			feature_dstats = feature_group['chargen_points']
