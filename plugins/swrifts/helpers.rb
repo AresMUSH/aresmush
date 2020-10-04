@@ -17,26 +17,35 @@ module AresMUSH
 			feature_name = feature_name.gsub("^", "")	 #remove the ^ that appear in the feature name		
 			feature_group = Global.read_config('swrifts', featuretype)
 			fg = feature_group.select { |a| a['name'].downcase == feature_name.downcase }.first
-			return (fg)		
-			feature_stats = feature_group['stats']
-			feature_cp = feature_group['chargen_points']
-			feature_dstats = feature_group['chargen_points']
-			feature_counters = feature_group['counters']
+			return (fg)	
+	
+			if (fg['chargen_points'])
+				feature_cp = fg['chargen_points']
+			end
+			
+			if (fg['dstats'])
+				feature_dstats = feature_group['dstats']
+			end
+			
+			if (fg['counters'])
+				feature_counters = feature_group['counters']
+			end
 			
 
 			#-----
-			if (feature_stats)
-					feature_stats.each do |key, rating|
-						stat_name = "#{key}".downcase
-						mod = "#{rating}".to_i
-						current_rating = Swrifts.stat_rating(enactor, feature_name).to_i
-						new_rating = current_rating + mod
-												
-						ClassTargetFinder.with_a_character(model, client, enactor) do |model|
-							stat = Swrifts.find_stat(model, stat_name)				
-							stat.update(rating: new_rating)
-						end
-					end 
+			if (fg['stats'])
+				feature_stats = fg['stats']
+				feature_stats.each do |key, rating|
+					stat_name = "#{key}".downcase
+					mod = "#{rating}".to_i
+					current_rating = Swrifts.stat_rating(enactor, feature_name).to_i
+					new_rating = current_rating + mod
+											
+					ClassTargetFinder.with_a_character(model, client, enactor) do |model|
+						stat = Swrifts.find_stat(model, stat_name)				
+						stat.update(rating: new_rating)
+					end
+				end 
 					client.emit_failure ("Feature Stats set")	
 				else 
 					client.emit_failure ("No Stats on this Feature")			
