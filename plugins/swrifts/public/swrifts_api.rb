@@ -228,10 +228,10 @@ module AresMUSH
 		list.each do |c|
 				d = c['chargen_points']
 				dclass = d.class
-				d.each do |key, rating|
-					ifname = c['name'].downcase
-					initcgpointsarray[ifname] = {name: 1, rating: 1}
-				end
+				# d.each do |key, rating|
+					# ifname = c['name'].downcase
+					# initcgpointsarray[ifname] = {name: 1, rating: 1}
+				# end
 		end
 		#initcgpointsarray = [1,2,3,4]
 		return ("#{dclass}")
