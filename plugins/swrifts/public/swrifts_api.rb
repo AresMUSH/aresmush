@@ -223,7 +223,7 @@ module AresMUSH
 	end	
 	
 	def self.returninitcgforcg(model)
-		initcgpointsarray = Array.new
+		initcgpointsarray = Hash.new
 		iconicf_chargen_points=iconicf['chargen_points']
 		iconicf_chargen_points.each do |key, rating|
 			#alias the 'key' because the command below doesn't parse the #'s and {'s etc.
