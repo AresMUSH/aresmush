@@ -169,8 +169,8 @@ module AresMUSH
 		
 		def self.add_hinderance(char, hind_name)
 			setthing = hind_name.downcase
-			# hinderances = model.swrifts_hinderances
-			SwriftsHinderances.create(name: setthing, character: char)
+			model = char.swrifts_hinderances
+			SwriftsHinderances.create(name: setthing, character: model)
 		end	
 		
 		
