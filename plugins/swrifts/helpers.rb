@@ -7,11 +7,11 @@ module AresMUSH
 			char.swrifts_traits
 		end
 				
-		## ----- Hinderances
+		## ----- Features
 		
-		def self.add_hinderance(model, hind_name)
-			setthing = hind_name.downcase
-			SwriftsHinderances.create(name: setthing, character: model)
+		def self.add_feature(model, feature_type, feature_name)
+			feature = "Swrifts#{feature_type}"
+			feature.create(name: feature_name, character: model)
 		end			
 		
 		## ----- Iconicf

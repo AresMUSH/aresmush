@@ -169,9 +169,9 @@ module AresMUSH
 				# ----- This sets the default Hinderances on the Character -----	
 				if (iconicf_hinderances) 
 					iconicf_hinderances.each do |key|
-						setthing = "#{key}".downcase
+						feature_name = "#{key}".downcase
 						ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-							Swrifts.add_hinderance(model, setthing)
+							Swrifts.add_feature(model, "Hinderances", feature_name)
 						end
 					end
 					client.emit_success t('swrifts.iconichinderances_set')
