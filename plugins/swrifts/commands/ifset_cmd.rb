@@ -19,12 +19,19 @@ module AresMUSH
 			def handle
 				hinderance_name="Elderly" 
 				yml_data = Global.read_config('swrifts', 'hinderances')
-				modifiers = yml_data['modifiers'].to_s
+				tn = modifiers
+
+				hinderance_entry = yml_data.select { |a| a['name'].downcase == hinderance_name.downcase }.first
+				client.emit ( "#{hinderance_entry}" )
 				
-				client.emit ( "#{modifiers}" )
+				checkmods = hinderance_entry.select { |a| a.name.downcase == tn }.first
 				
-				# hinderance_entry = yml_data.select { |a| a['name'].downcase == hinderance_name.downcase }.first
-				# client.emit ( "#{hinderance_entry}" )
+				if (checkmods)
+					client.emit ( "#{checkmods}" )
+				else
+					client.emit ( "No modifiers" )
+				
+
 				
 				# modifiers_entry = hinderance_entry.select { |a| a['name'].downcase == "modifiers" }.first
 				# modifiers_value = modifiers_entry.downcase
