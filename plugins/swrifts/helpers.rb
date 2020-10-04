@@ -9,10 +9,14 @@ module AresMUSH
 				
 		## ----- Features
 		
-		def self.add_feature(model, collection, featuretype, feature_name, feature_group)
+		def self.add_feature(model, collection, featuretype, feature_name)
+			# model = Aliana, collection = SwriftsHinderances, featuretype = hinderances, feature_name = Elderly
 			collection.create(name: feature_name, character: model)
 			
-			# feature_group = Swrifts.get_featuretype(model, feature_name)
+			feature_group = Global.read_config('swrifts', feature_name)
+			types.select { |a| a['name'].downcase == feature_name.downcase }.first
+			
+
 			feature_stats = feature_group['stats']
 			feature_cp = feature_group['chargen_points']
 			feature_dstats = feature_group['chargen_points']
@@ -136,16 +140,16 @@ module AresMUSH
 		  names.include?(name.downcase)
 		end
 
+		def self.get_race(char, race_name)
+			charac = Swrifts.find_race_config(race_name)
+		end
+
 		def self.find_race_config(name)
 			return nil if !name
 			types = Global.read_config('swrifts', 'races')
 			types.select { |a| a['name'].downcase == name.downcase }.first
 		end
 
-		def self.get_race(char, race_name)
-			charac = Swrifts.find_race_config(race_name)
-		end
-	 
 		def self.set_race_name(char, race_name, enactor)
 			char.update(swrifts_race: race_name)
 		end
