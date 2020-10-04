@@ -228,7 +228,7 @@ module AresMUSH
 		list.each do |c|
 				d = c['chargen_points']
 				#return (d.inspect)
-				initcgpointsarray[c.name] = {name: d.name, rating:d.rating}
+				initcgpointsarray[c.name] = {name: '1', rating:2}
 		end
 		#initcgpointsarray = [1,2,3,4]
 		return (initcgpointsarray.inspect)
