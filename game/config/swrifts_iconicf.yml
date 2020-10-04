@@ -1540,8 +1540,8 @@ swrifts:
                 ppe_max: 5
                 isp_max: 5
             stats:
-                Strength: 5
-                Agility: 1
+                Strength: 4
+                Agility: 4
             chargen_points:
                 magic_slots: 2
                 psionic_slots: 1
