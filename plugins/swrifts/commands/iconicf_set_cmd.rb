@@ -171,7 +171,7 @@ module AresMUSH
 					
 					iconicf_hinderances.each do |key|
 						hinderance_name = "#{key}".downcase
-						feature_group = Swrifts.get_hinderances(model, hinderance_name)
+						feature_group = Swrifts.get_hinderances(self.target_name, hinderance_name)
 						ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
 							Swrifts.add_feature(model, SwriftsHinderances, "Hinderances", hinderance_name, feature_group)
 						end
