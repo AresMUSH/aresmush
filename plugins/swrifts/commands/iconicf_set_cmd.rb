@@ -37,7 +37,7 @@ module AresMUSH
 			
 				iconicf = Swrifts.get_iconicf(self.enactor, self.iconicf_name) 
 				iconicf_traits=iconicf['traits']
-				iconicf_stats=iconicf['stats']  
+				  
 				iconicf_skills=iconicf['skills'] 
 				iconicf_hinderances=iconicf['hinderances'] 
 				iconicf_edges=iconicf['edges'] 
@@ -73,7 +73,8 @@ module AresMUSH
 				end
 
 				## ----- Update Stats
-				if (iconicf_stats)
+				if (iconicf['stats'])
+					iconicf_stats=iconicf['stats']
 					# grab the list from the config file and break it into 'key' (before the ':') and 'rating' (after the ':')
 					iconicf_stats.each do |key, rating|
 						# alias the 'key' because the command below doesn't parse the #'s and {'s etc.
