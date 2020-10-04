@@ -12,9 +12,9 @@ module AresMUSH
 		def self.add_hinderance(char, hind_name)
 			setthing = hind_name.downcase
 			#SwriftsHinderances.create(name: setthing, character: hindstring)
-			ClassTargetFinder.with_a_character(char, client, enactor) do |model|
+			#ClassTargetFinder.with_a_character(char, client, enactor) do |model|
 				SwriftsHinderances.create(name: setthing, character: model)
-			end			
+			#end			
 		end			
 		
 		## ----- Iconicf
