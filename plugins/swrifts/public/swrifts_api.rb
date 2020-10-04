@@ -224,6 +224,7 @@ module AresMUSH
 	
 	def self.returninitcgforcg(model)
 		initcgpointsarray = Hash.new
+		d = Array.new
 		list = model.sort_by { |a| a['name']}
 		list.each do |c|
 				d = c['chargen_points']
