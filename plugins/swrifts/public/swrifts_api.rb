@@ -232,7 +232,7 @@ module AresMUSH
 			mod = c['rating']
 			initcgpointsarray.push [name: point_name, rating: mod]
 		end
-		#initcgpointsarray = [1,2,3,4]
+		initcgpointsarray = [1,2,3,4]
 		return (initcgpointsarray)
 	end		
 	
