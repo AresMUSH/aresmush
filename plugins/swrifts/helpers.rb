@@ -35,7 +35,7 @@ module AresMUSH
 				feature_stats.each do |key, rating|
 					stat_name = "#{key}".downcase
 					mod = "#{rating}".to_i
-					current_rating = Swrifts.stat_rating(enactor, stat_name)
+					current_rating = Swrifts.stat_rating(model, stat_name)
 					new_rating = current_rating + mod
 						
 					# ClassTargetFinder.with_a_character(model, client, enactor) do |model|
