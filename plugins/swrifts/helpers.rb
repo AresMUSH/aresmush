@@ -40,7 +40,7 @@ module AresMUSH
 					# ClassTargetFinder.with_a_character(model, client, enactor) do |model|
 						stat = Swrifts.find_stat(model, stat_name)				
 						stat.update(rating: new_rating)
-					end
+					# end
 				end 
 			else 
 				return	
