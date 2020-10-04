@@ -227,9 +227,9 @@ module AresMUSH
 		list = model.sort_by { |a| a['name']}
 		list.each do |c|
 			#alias the 'key' because the command below doesn't parse the #'s and {'s etc.
-			point_name = "#{key}".downcase
+			point_name = c['name'].downcase
 			#alias the 'rating' for the same reason and set it to an integer
-			mod = "#{rating}".to_i
+			mod = c['rating']
 			initcgpointsarray.push [name: point_name, rating: mod]
 		end
 		initcgpointsarray = [1,2,3,4]
