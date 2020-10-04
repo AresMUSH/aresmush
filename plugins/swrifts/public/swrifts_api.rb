@@ -230,8 +230,9 @@ module AresMUSH
 			point_name = "#{key}".downcase
 			#alias the 'rating' for the same reason and set it to an integer
 			mod = "#{rating}".to_i
-			initcgpointsarray[point_name] = {rating:mod}
+			#initcgpointsarray[point_name] = {rating:mod}
 		end
+		initcgpointsarray = [1,2,3,4]
 		return (initcgpointsarray)
 	end		
 	
