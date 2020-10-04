@@ -167,10 +167,10 @@ module AresMUSH
 		
 		## ----- Hinderances
 		
-		# def self.add_hinderance(char, hind_name)
-			# ClassTargetFinder.with_a_character(char, client, enactor) do |model|
-				# SwriftsHinderances.create(name: hind_name, character: model)
-		# end	
+		def self.add_hinderance(char, hind_name)
+			ClassTargetFinder.with_a_character(char, client, enactor) do |model|
+				SwriftsHinderances.create(name: hind_name, character: model)
+		end	
 		
 		
 		## ----- Die Step
