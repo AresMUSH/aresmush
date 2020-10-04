@@ -185,7 +185,7 @@ module AresMUSH
 
 		def self.find_stat(char, stat_name)
 			name_downcase = stat_name.downcase
-			char.Swrifts_stats.select { |a| a.name.downcase == name_downcase }.first
+			char.swrifts_stats.select { |a| a.name.downcase == name_downcase }.first
 		end
 
 		## ----- Points
