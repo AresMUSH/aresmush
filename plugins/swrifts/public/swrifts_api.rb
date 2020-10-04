@@ -234,7 +234,7 @@ module AresMUSH
 				# end
 		end
 		#initcgpointsarray = [1,2,3,4]
-		return ("#{d.inspect}")
+		return ("#{c.inspect}")
 	end		
 	
 	def self.returnraceforcg(model)
