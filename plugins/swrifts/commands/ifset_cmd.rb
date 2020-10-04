@@ -18,9 +18,11 @@ module AresMUSH
 
 			def handle
 				name="Elderly"
+				
 				collection = Global.read_config('swrifts', 'hinderances')
-				collection.select { |a| a['name'].downcase == name.downcase }.first
-
+				client.emit ( "#{collection}" )
+				test = collection.select { |a| a['name'].downcase == name.downcase }.first
+				client.emit ( "#{test}" )
 			end
 			
 		end
