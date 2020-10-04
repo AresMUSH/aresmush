@@ -19,7 +19,7 @@ module AresMUSH
 			def handle
 				hinderance_name="Elderly" 
 				yml_data = Global.read_config('swrifts', 'hinderances')
-				tn = modifiers
+				tn = "modifiers"
 
 				hinderance_entry = yml_data.select { |a| a['name'].downcase == hinderance_name.downcase }.first
 				client.emit ( "#{hinderance_entry}" )
