@@ -229,7 +229,9 @@ module AresMUSH
 		list.each do |c|
 				d = c['chargen_points']
 				n = c['name']
-				if (d.size > 0)
+				
+				# Need to handle for when there is no chargen_points crashing atm. 4 October.
+				if (d)
 					d.each do |key, rating|
 						dstr = "#{n} - #{key} - #{rating}"
 						ifname = n.downcase
