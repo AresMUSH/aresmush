@@ -16,11 +16,12 @@ module AresMUSH
 
 			
 
-			def self.get_cmd_handler(client, cmd, enactor)
-				ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-					test=Swrifts.check_features_mod(model, SwriftsHinderances, "Hinderances", Elderly)
-					client.emit ( "#{_test}" )
-				end
+			def handle
+				client.emit ( "Test" )
+				# ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
+					# test=Swrifts.check_features_mod(model, SwriftsHinderances, "Hinderances", Elderly)
+					# client.emit ( "#{_test}" )
+				# end
 			end
 			
 		end
