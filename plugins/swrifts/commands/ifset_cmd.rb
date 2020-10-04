@@ -19,8 +19,9 @@ module AresMUSH
 			def handle
 
 				ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-					Swrifts.check_features_mod(model, SwriftsHinderances, "Hinderances", "Elderly")
-					client.emit ( "test" )
+					# Swrifts.check_features_mod(model, SwriftsHinderances, "Hinderances", "Elderly")
+					check = model.swrifts_hinderances.select { |a| a.name.downcase == Elderly }.first
+					client.emit ( "#{check}" )
 				end
 			end
 			
