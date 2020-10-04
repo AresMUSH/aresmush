@@ -17,19 +17,15 @@ module AresMUSH
 			feature_name = feature_name.gsub("^", "")	 #remove the ^ that appear in the feature name		
 			feature_group = Global.read_config('swrifts', featuretype)
 			fg = feature_group.select { |a| a['name'].downcase == feature_name.downcase }.first
-			return (fg)	
 	
-			if (fg['chargen_points'])
-				feature_cp = fg['chargen_points']
-			end
+		
+			# if (fg['dstats'])
+				# feature_dstats = feature_group['dstats']
+			# end
 			
-			if (fg['dstats'])
-				feature_dstats = feature_group['dstats']
-			end
-			
-			if (fg['counters'])
-				feature_counters = feature_group['counters']
-			end
+			# if (fg['counters'])
+				# feature_counters = feature_group['counters']
+			# end
 			
 
 			#-----
@@ -50,22 +46,22 @@ module AresMUSH
 					client.emit_failure ("No Stats on this Feature")			
 			end
 			# -----
-			if (fg['chargen_points'])
-				feature_cp = fg['chargen_points']
-				feature_cp.each do |key, rating|
-					point_name = "#{key}".downcase
-					mod = "#{rating}".to_i
-					current_rating = Swrifts.chargen_points_rating(enactor, point_name).to_i
-					new_rating = current_rating + mod
+			# if (fg['chargen_points'])
+				# feature_cp = fg['chargen_points']
+				# feature_cp.each do |key, rating|
+					# point_name = "#{key}".downcase
+					# mod = "#{rating}".to_i
+					# current_rating = Swrifts.chargen_points_rating(enactor, point_name).to_i
+					# new_rating = current_rating + mod
 											
-					ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-						points = Swrifts.find_chargen_points(model, point_name)				
-						points.update(rating: new_rating)
-					end
-				end
-			else 
-				client.emit_failure ("This Iconic Framework has no Chargen Point changes")
-			end
+					# ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
+						# points = Swrifts.find_chargen_points(model, point_name)				
+						# points.update(rating: new_rating)
+					# end
+				# end
+			# else 
+				# client.emit_failure ("This Iconic Framework has no Chargen Point changes")
+			# end
 			# -----
 			# if (feature_dstats)
 			
