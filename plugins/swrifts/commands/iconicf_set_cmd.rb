@@ -171,7 +171,7 @@ module AresMUSH
 					iconicf_hinderances.each do |key|
 						setthing = "#{key}".downcase
 						client.emit ( "#{target_name} - #{setthing}" )
-						var1= add_hinderance(target_name, setthing)
+						var1= Swrifts.add_hinderance(target_name, setthing)
 						#Swrifts.add_hinderance(target_name, setthing)
 						# ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
 							# SwriftsHinderances.create(name: setthing, character: model)
