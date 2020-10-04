@@ -18,7 +18,7 @@ module AresMUSH
 			
 			## ----- start of def handle
 			def handle
-				iconicf = Swrifts.get_iconicf(self.enactor, self.iconicf_name) 
+				iconicf = Swrifts.get_iconicf(self.target_name, self.iconicf_name) 
 				iconicf_hinderances=iconicf['hinderances'] 
 				
 				if (iconicf_hinderances) 
