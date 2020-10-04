@@ -227,12 +227,13 @@ module AresMUSH
 		list = model.sort_by { |a| a['name']}
 		list.each do |c|
 				d = c['chargen_points']
-				#return (d.inspect)
-				dins = d.inspect
-				initcgpointsarray[c.name] = {rating: dins}
+				d.each do |key, rating|
+					ifname = c['name'].downcase
+					initcgpointsarray[ifname] = {name: key, rating: rating}
+				end
 		end
 		#initcgpointsarray = [1,2,3,4]
-		return (initcgpointsarray.inspect)
+		return (initcgpointsarray)
 	end		
 	
 	def self.returnraceforcg(model)
