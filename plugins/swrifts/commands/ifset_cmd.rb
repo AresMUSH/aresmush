@@ -17,12 +17,21 @@ module AresMUSH
 			
 
 			def handle
-				name="Elderly"
+				hinderance_name="Elderly"
+				 
+				yml_data = Global.read_config('swrifts', 'hinderances')
+				hinderance_entry = yml_data.select { |a| a['name'].downcase == hinderance_name.downcase }.first
+				client.emit ( "#{hinderance_entry}" )
 				
-				collection = Global.read_config('swrifts', 'hinderances')
-				client.emit ( "#{collection}" )
-				test = collection.select { |a| a['name'].downcase == name.downcase }.first
-				client.emit ( "#{test}" )
+				modifiers_entry = hinderance_entry.select { |a| a['name'].downcase == hinderance_name.downcase }.first
+				modifiers_value = modifiers_entry.downcase
+				client.emit ( "#{modifiers_value}" )
+				if (modifiers_value)==true
+					return true
+				else
+					return false
+				end
+				
 			end
 			
 		end
