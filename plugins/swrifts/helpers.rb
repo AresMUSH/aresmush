@@ -7,7 +7,16 @@ module AresMUSH
 			char.swrifts_traits
 		end
 				
+		## ----- Hinderances
 		
+		def self.add_hinderance(model, hind_name)
+			setthing = hind_name.downcase
+			puts ("#{setthing}")
+			puts ("#{model}")
+			hindstring = model.swrifts_hinderances
+			puts ("#{hindstring}")
+			SwriftsHinderances.create(name: setthing, character: hindstring)
+		end			
 		
 		## ----- Iconicf
  
@@ -165,17 +174,7 @@ module AresMUSH
 			model.swrifts_traits.select { |a| a.name.downcase == name_downcase }.first
 		end
 		
-		## ----- Hinderances
-		
-		def self.add_hinderance(model, hind_name)
-			setthing = hind_name.downcase
-			puts ("#{setthing}")
-			puts ("#{model}")
-			hindstring = model.swrifts_hinderances
-			puts ("#{hindstring}")
-			SwriftsHinderances.create(name: setthing, character: hindstring)
-		end	
-		
+
 		
 		## ----- Die Step
 		
