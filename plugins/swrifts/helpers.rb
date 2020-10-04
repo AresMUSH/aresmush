@@ -36,10 +36,10 @@ module AresMUSH
 					mod = "#{rating}".to_i
 					current_rating = Swrifts.stat_rating(enactor, stat_name).to_i
 					new_rating = current_rating + mod
-											
+					return new_rating						
 					# ClassTargetFinder.with_a_character(model, client, enactor) do |model|
-						stat = Swrifts.find_stat(model, stat_name)				
-						stat.update(rating: new_rating)
+						# stat = Swrifts.find_stat(model, stat_name)				
+						# stat.update(rating: new_rating)
 					# end
 				end 
 			else 

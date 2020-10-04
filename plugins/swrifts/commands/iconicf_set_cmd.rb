@@ -174,8 +174,9 @@ module AresMUSH
 						hinderance_name = "#{key}".downcase
 
 						ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-							Swrifts.add_feature(model, SwriftsHinderances, "Hinderances", hinderance_name)
+							test = Swrifts.add_feature(model, SwriftsHinderances, "Hinderances", hinderance_name)
 							
+							client.emit ( "#{test}" )
 							# feature_group = Global.read_config('swrifts','hinderances' )
 							# client.emit (feature_group.inspect)
 							# cgn = hinderance_name.gsub("*", "")
