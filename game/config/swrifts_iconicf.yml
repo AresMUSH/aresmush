@@ -1366,6 +1366,7 @@ swrifts:
             hinderances: 
                 - Enemy-*
                 - CHOICE*
+                    - Vow
             edges:
                 - Arcane Background*
                     - Miracles

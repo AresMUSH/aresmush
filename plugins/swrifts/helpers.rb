@@ -165,12 +165,23 @@ module AresMUSH
 			model.swrifts_traits.select { |a| a.name.downcase == name_downcase }.first
 		end
 		
+		## ----- Hinderances
+		
+		# def self.add_hinderance(char, hind_name)
+			# ClassTargetFinder.with_a_character(char, client, enactor) do |model|
+				# SwriftsHinderances.create(name: hind_name, character: model)
+		# end	
+		
 		
 		## ----- Die Step
 		
 		def self.rating_to_die( rating )
 			rating_num = rating.to_i
 			case rating_num
+			when -2
+				return "d4-4"
+			when -1 
+				return "d4-3"
 			when 0
 				return "-"
 			when 1
