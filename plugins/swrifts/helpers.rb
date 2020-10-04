@@ -9,7 +9,7 @@ module AresMUSH
 				
 		## ----- Hinderances
 		
-		def self.add_hinderance(char, hind_name)
+		def self.add_hinderance(model, hind_name)
 			setthing = hind_name.downcase
 			#SwriftsHinderances.create(name: setthing, character: hindstring)
 			#ClassTargetFinder.with_a_character(char, client, enactor) do |model|
