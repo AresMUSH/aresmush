@@ -171,7 +171,7 @@ module AresMUSH
 					iconicf_hinderances.each do |key|
 						feature_name = "#{key}".downcase
 						ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-							Swrifts.add_feature(model, "SwriftsHinderances", feature_name)
+							Swrifts.add_feature(model, SwriftsHinderances, feature_name)
 						end
 					end
 					client.emit_success t('swrifts.iconichinderances_set')
