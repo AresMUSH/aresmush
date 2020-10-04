@@ -176,7 +176,7 @@ module AresMUSH
 							Swrifts.add_feature(model, SwriftsHinderances, "Hinderances", hinderance_name)
 							
 							# feature_group = Global.read_config('swrifts','hinderances' )
-							#client.emit (feature_group.inspect)
+							# client.emit (feature_group.inspect)
 							# cgn = hinderance_name.gsub("*", "")
 							# fg = feature_group.select { |a| a['name'].downcase ==cgn.downcase }.first
 							
