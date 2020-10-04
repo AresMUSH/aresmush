@@ -101,7 +101,7 @@ swrifts:
       name: Elderly
       description: –1 to Pace, running, Agility, Strength, and Vigor. Hero gets 5 extra skill points.
       hind_points: 2
-      modifiers: yes
+      modifiers: Has
       chargen_points:
         stats_points: 5
     -
