@@ -9,13 +9,16 @@ module AresMUSH
 				
 		## ----- Hinderances
 		
-		def self.add_hinderance(model, hind_name)
+		def self.add_hinderance(char, hind_name)
 			setthing = hind_name.downcase
 			puts ("#{setthing}")
 			puts ("#{model}")
 			hindstring = model.swrifts_hinderances
 			puts ("#{hindstring}")
-			SwriftsHinderances.create(name: setthing, character: hindstring)
+			#SwriftsHinderances.create(name: setthing, character: hindstring)
+			ClassTargetFinder.with_a_character(char, client, enactor) do |model|
+				SwriftsHinderances.create(name: setthing, character: model)
+			end			
 		end			
 		
 		## ----- Iconicf
@@ -67,12 +70,12 @@ module AresMUSH
 			types.select { |a| a['name'].downcase == name.downcase }.first
 		end
 
-		def self.trait_rating(char)
-			ClassTargetFinder.with_a_character(char, client, enactor) do |model|
-				chartraits = model.swrifts_traits
-				return chartraits
-			end
-		end
+		# def self.trait_rating(char)
+			# ClassTargetFinder.with_a_character(char, client, enactor) do |model|
+				# chartraits = model.swrifts_traits
+				# return chartraits
+			# end
+		# end
 		
 		## ----- Race
 	 
