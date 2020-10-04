@@ -14,7 +14,7 @@ module AresMUSH
 		end
 
 		def self.check_features_mod(model, collection, feature_type, feature_name)
-			model.SwriftsHinderances
+			model.swrifts_hinderances.select { |a| a.name.downcase == feature_name }.first
 			# collection.select { |a| a.name.downcase == feature_name }.first
 		end			 
 		
