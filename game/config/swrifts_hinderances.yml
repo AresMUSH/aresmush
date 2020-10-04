@@ -101,8 +101,9 @@ swrifts:
       name: Elderly
       description: –1 to Pace, running, Agility, Strength, and Vigor. Hero gets 5 extra skill points.
       hind_points: 2
-      modifiers:
-        skill_points: 5
+      modifiers: yes
+      chargen_points:
+        stats_points: 5
     -
       name: Enemy-
       description: The character has a recurring nemesis.
@@ -187,8 +188,9 @@ swrifts:
       name: Obese
       description: Size +1, Pace –1 and running die of d4. Treat Str as one die type lower for Min Str.
       hind_points: 1
-      size: 1
-      modifiers:
+      modifiers: yes
+      dstats:
+        size: 1
         pace: -1
     -
       name: Obligation-
@@ -286,19 +288,22 @@ swrifts:
       name: Slow-
       description: Pace –1, reduce running die one step. May not take the Fleet-Footed Edge.
       hind_points: 1
-      modifiers:
-        pace: d4
+      modifiers: yes
+      dstats:
+        pace: -1
     -
       name: Slow+
       description: -2 to Athletics and rolls to resist Athletics. May not take the Fleet-Footed Edge.
       hind_points: 2
-      modifiers:
-        pace: d4-2
+      modifiers: yes
+      dstats:
+        pace: -1
     -
       name: Small
       description: Size and Toughness are reduced by 1. Size cannot be reduced below –1.
       hind_points: 1
-      modifiers:
+      modifiers: yes
+      dstats:
         toughness: -1
         size: -1
     -
@@ -365,15 +370,20 @@ swrifts:
       name: Young-
       description: Has 4 atribute points and 10 skill points, extra Benny per session. 
       hind_points: 1
-      modifiers:
+      modifiers: yes
+      stats:
         attribute_points: -1
+      chargen_points:
         skills_points: -2
+      counters: 
         bennies_max: 1
     -
       name: Young+
       description: Has 3 atribute points, 10 skill points, and two extra Bennies per session.
       hind_points: 2
-      modifiers:
+      modifiers: yes
+      chargen_points:
         attribute_points: -2
         skills_points: -2
+      counters:
         bennies_max: 2

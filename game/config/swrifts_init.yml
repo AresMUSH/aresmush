@@ -35,7 +35,8 @@ swrifts:
             Pace: 6
             Running: 2
             Parry: 3
-            Toughness: 3   
+            Toughness: 3  
+            Size: 3
         chargen_points:
             stats_points: 5
             skills_points: 15
