@@ -18,7 +18,8 @@ module AresMUSH
 
 			def self.get_cmd_handler(client, cmd, enactor)
 				ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-					Swrifts.check_features_mod(model, SwriftsHinderances, "Hinderances", Elderly)
+					test=Swrifts.check_features_mod(model, SwriftsHinderances, "Hinderances", Elderly)
+					client.emit ( "#{_test}" )
 				end
 			end
 			
