@@ -9,9 +9,32 @@ module AresMUSH
 				
 		## ----- Features
 		
-		def self.add_feature(model, feature_type, feature_name)
-			feature_type.create(name: feature_name, character: model)
+		def self.add_feature(model, collection, feature_type, feature_name)
+			collection.create(name: feature_name, character: model)
+		end
+
+		def self.check_features_mod(model, collection, feature_type, feature_name)
+			char.swrifts_collection.select { |a| a.name.downcase == feature_name }.first
 		end			 
+		
+		## ----- Add Rating
+		
+		def self.modify_rating(model, collection, point_name, mod)
+			current_rating = Swrifts.points_rating(model, point_name).to_i
+			new_rating = current_rating + mod
+			points = Swrifts.find_points(model, point_name)				
+			points.update(rating: new_rating)
+		end
+
+		def self.points_rating(char, point_name)
+			points = Swrifts.find_points(char, point_name)
+			points ? points.rating : 0
+		end
+		
+		def self.find_points(char, collection, point_name) 
+			char.swrifts_chargenpoints.select { |a| a.name.downcase == name_downcase }.first
+		end
+		
 		
 		## ----- Iconicf
  
