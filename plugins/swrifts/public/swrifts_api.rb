@@ -227,8 +227,9 @@ module AresMUSH
 		list = model.sort_by { |a| a['name']}
 		list.each do |c|
 				d = c['chargen_points']
+				n = c['name']
 				d.each do |key, rating|
-					dstr = "#{c.name} - #{key} - #{rating}"
+					dstr = "#{n} - #{key} - #{rating}"
 					return (dstr)
 					# ifname = c['name'].downcase
 					# initcgpointsarray[ifname] = {name: 1, rating: 1}
