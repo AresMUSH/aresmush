@@ -14,7 +14,8 @@ module AresMUSH
 		end
 
 		def self.check_features_mod(model, collection, feature_type, feature_name)
-			collection.select { |a| a.name.downcase == feature_name }.first
+			char.collection
+			# collection.select { |a| a.name.downcase == feature_name }.first
 		end			 
 		
 		## ----- Add Rating
