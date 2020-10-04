@@ -223,24 +223,20 @@ module AresMUSH
 	end	
 	
 	def self.returninitcgforcg(model)
-		initcgpointsarray = Hash.new
-		d = Array.new
-		list = model.sort_by { |a| a['name']}
-		list.each do |c|
-				d = c['chargen_points']
-				n = c['name']
-				
-				# Need to handle for when there is no chargen_points crashing atm. 4 October.
-				if (d)
-					d.each do |key, rating|
-						dstr = "#{n} - #{key} - #{rating}"
-						ifname = n.downcase
-						initcgpointsarray[ifname] = {name: key, rating: rating}
+		initcgpointsarray = Hash.new #We're going to pass this back to the char custom fields.
+		d = Array.new #initialise the array we're going to use to pull the cgen points from.
+		list = model.sort_by { |a| a['name']} #sort the iconic frameworks by name
+		list.each do |c|  # roll through the if's 
+				d = c['chargen_points'] # d is now an array of points set at the time of init
+				n = c['name'] # This is the name of iconic frame.
+				if (d)  # Are there any cgen points with this if?
+					d.each do |key, rating|  # loop through the cgen points 
+						ifname = n.downcase  #set name to all lowercase for ease of testing later
+						initcgpointsarray[ifname] = {name: key, rating: rating}  # set the hash 
 					end
 				end
 		end
-		#initcgpointsarray = [1,2,3,4]
-		return (initcgpointsarray)
+		return (initcgpointsarray) #return the complete hash.
 	end		
 	
 	def self.returnraceforcg(model)
