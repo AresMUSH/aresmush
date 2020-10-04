@@ -30,7 +30,7 @@ module AresMUSH
 				when "chargen"
 					return ChargenpointsCmd
 				when "race"
-					if (!cmd.args)							 
+					if (!cmd.args)					 
 						return RaceCmd
 					else
 						return RaceSetCmd
@@ -69,8 +69,7 @@ module AresMUSH
 					if (!cmd.args)							 
 						return HindCmd
 					else
-						# return HindSetCmd
-						return PendingCmd
+						return HinderanceSetCmd
 					end
 				when "edge"
 					if (!cmd.args)							 
