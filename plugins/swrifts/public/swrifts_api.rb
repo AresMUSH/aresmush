@@ -156,6 +156,7 @@ module AresMUSH
 		# Format Iconic Framework table
 		swrifts_iconicf = Global.read_config('swrifts', 'iconicf')
 		iconicf = returniconicforcg(swrifts_iconicf)
+		initcgpoints = returninitcgforcg(swrifts_iconicf)
 	
 		if char.swrifts_iconicf
 			chariconicf = char.swrifts_iconicf.titleize
@@ -196,7 +197,7 @@ module AresMUSH
 		  cgrace: cgrace,
 		  charrace: charrace,
 		  cgpoints: cgtraits,
-		  # inicgpoints: initcgpoints,
+		  inicgpoints: initcgpoints,
 		  #stats: stats,
 		  #bennies: bennies,
 		  #conviction: conviction
@@ -220,6 +221,12 @@ module AresMUSH
 		end
 		return (iconicfarray)
 	end	
+	
+	def self.returninitcgforcg(model)
+		initcgpointsarray = Array.new
+		initcgpointsarray = [1,2,3,4,5,6]
+		return (initcgointsarray)
+	end		
 	
 	def self.returnraceforcg(model)
 		racearray = Array.new
