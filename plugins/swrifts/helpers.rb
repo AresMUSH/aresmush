@@ -165,6 +165,9 @@ module AresMUSH
 			model.swrifts_traits.select { |a| a.name.downcase == name_downcase }.first
 		end
 		
+		## ----- Hinderances
+		def self.add
+		
 		
 		## ----- Die Step
 		
