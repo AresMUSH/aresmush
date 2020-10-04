@@ -225,10 +225,10 @@ module AresMUSH
 	def self.returninitcgforcg(model)
 		initcgpointsarray = Hash.new
 		list = model.sort_by { |a| a['name']}
+		return (list.inspect)
 		list.each do |c|
 				d = c['chargen_points']
 				dclass = d.class
-				return (d.inspect)
 				# d.each do |key, rating|
 					# ifname = c['name'].downcase
 					# initcgpointsarray[ifname] = {name: 1, rating: 1}
