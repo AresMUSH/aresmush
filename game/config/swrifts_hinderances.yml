@@ -103,7 +103,7 @@ swrifts:
       hind_points: 2
       modifiers: Has
       chargen_points:
-        stats_points: 5
+        skills_points: 5
     -
       name: Enemy-
       description: The character has a recurring nemesis.
@@ -371,9 +371,8 @@ swrifts:
       description: Has 4 atribute points and 10 skill points, extra Benny per session. 
       hind_points: 1
       modifiers: yes
-      stats:
-        attribute_points: -1
       chargen_points:
+        stats_points: -1
         skills_points: -2
       counters: 
         bennies_max: 1
@@ -383,7 +382,7 @@ swrifts:
       hind_points: 2
       modifiers: yes
       chargen_points:
-        attribute_points: -2
+        stats_points: -2
         skills_points: -2
       counters:
         bennies_max: 2

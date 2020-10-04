@@ -1548,9 +1548,11 @@ swrifts:
             skills:
                 Notice: 2            
             hinderances: 
-                - Elderly*
+                - Young-*
+                - Small*
             edges:
                 - AB Magic*
+                - AB Psionics*
             magic_powers:
                 - Bolt*
             abilities:
