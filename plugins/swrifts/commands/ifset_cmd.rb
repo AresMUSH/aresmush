@@ -25,7 +25,7 @@ module AresMUSH
 				
 				
 				# ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-					Swrifts.check_features_mod(model, SwriftsHinderances, "Hinderances", "Elderly")
+					# Swrifts.check_features_mod(model, SwriftsHinderances, "Hinderances", "Elderly")
 					# name = elderly
 					# check = Global.read_config('swrifts', 'hinderances').map { |a| a['name'].downcase }
 					# names.include?(name.downcase)
