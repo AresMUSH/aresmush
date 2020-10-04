@@ -183,6 +183,7 @@ module AresMUSH
 
 							# client.emit(fg.inspect)
 							# return
+							
 
 							# feature_stats = feature_group['stats']
 							# feature_cp = feature_group['chargen_points']
