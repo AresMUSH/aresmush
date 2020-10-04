@@ -223,7 +223,8 @@ module AresMUSH
 	end	
 	
 	def self.returninitcgforcg(model)
-		return "#{model.inspect}"
+		model = model['chargen_points']
+		return (model.inspect)
 		#initcgpointsarray = Hash.new
 		#list = model.sort_by { |a| a['name']}
 		#list.each do |c|
