@@ -20,7 +20,6 @@ module AresMUSH
 				name="Elderly"
 				
 				collection = Global.read_config('swrifts', 'hinderances')
-				client.emit ( "#{collection}" )
 				test = collection.select { |a| a['name'].downcase == name.downcase }.first
 				client.emit ( "#{test}" )
 			end
