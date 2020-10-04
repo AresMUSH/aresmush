@@ -22,8 +22,7 @@ module AresMUSH
 			# if (fg['dstats'])
 				# feature_dstats = feature_group['dstats']
 			# end
-			
-			
+						
 			# if (fg['counters'])
 				# feature_counters = feature_group['counters']
 			# end
