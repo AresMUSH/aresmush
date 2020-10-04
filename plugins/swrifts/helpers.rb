@@ -168,8 +168,8 @@ module AresMUSH
 		## ----- Hinderances
 		
 		def self.add_hinderance(char, hind_name)
-			ClassTargetFinder.with_a_character(char, client, enactor) do |model|
-				SwriftsHinderances.create(name: hind_name, character: model)
+			# ClassTargetFinder.with_a_character(char, client, enactor) do |model|
+				SwriftsHinderances.create(name: hind_name, character: char)
 			end
 		end	
 		
