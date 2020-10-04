@@ -30,7 +30,7 @@ module AresMUSH
 					client.emit ( "#{checkmods}" )
 				else
 					client.emit ( "No modifiers" )
-				
+				end
 
 				
 				# modifiers_entry = hinderance_entry.select { |a| a['name'].downcase == "modifiers" }.first
