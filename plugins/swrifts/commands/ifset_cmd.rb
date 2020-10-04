@@ -19,7 +19,7 @@ module AresMUSH
 			def handle
 				hinderance_name="Elderly" 
 				yml_data = Global.read_config('swrifts', 'hinderances')
-				modifiers = yml_data['modifiers']
+				modifiers = yml_data['modifiers'].to_s
 				
 				client.emit ( "#{modifiers}" )
 				
