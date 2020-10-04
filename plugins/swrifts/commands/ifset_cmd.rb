@@ -17,14 +17,12 @@ module AresMUSH
 			
 
 			def handle
-
-				ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-					# Swrifts.check_features_mod(model, SwriftsHinderances, "Hinderances", "Elderly")
-					name = elderly
-					check = Global.read_config('swrifts', 'hinderances').map { |a| a['name'].downcase }
-					names.include?(name.downcase)
-					client.emit ( "#{check}" )
-				end
+				name="Elderly"
+				
+				collection = Global.read_config('swrifts', 'hinderances')
+				client.emit ( "#{collection}" )
+				test = collection.select { |a| a['name'].downcase == name.downcase }.first
+				client.emit ( "#{test}" )
 			end
 			
 		end
