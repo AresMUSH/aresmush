@@ -6,6 +6,27 @@ module AresMUSH
 		def self.init_complete(char)
 			char.swrifts_traits
 		end
+		
+		def self.ymlfiles(model, group_name)
+			case group_name
+			when 'stats'
+				groupyml = model.swrifts_stats
+				return (groupyml)
+			when 'counters'
+				groupyml = model.swrifts_counters
+				return (groupyml)
+			when 'dstats'
+				groupyml = model.swrifts_dstats
+				return (groupyml)
+			when 'chargen_points'
+				groupyml = model.swrifts_chargen_points
+				return (groupyml)
+			else 
+				return ("Group doesn't exist")
+			end
+		end
+
+			
 				
 		## ----- Features
 		
@@ -88,8 +109,7 @@ module AresMUSH
 		
 		#Swrifts.element_update(model, feature_stats, stats)
 		def self.element_update(model, group, group_name)
-			cc = "swrifts_#{group_name}"
-			cc = model."#{cc}"
+			cc = ymlfiles (model, group_name)
 			return (cc)
 			sgroup = "Model: #{model} - Group: #{group} - Group Name: #{group_name}"
 			group.each do |key, rating| 
