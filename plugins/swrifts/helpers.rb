@@ -18,6 +18,7 @@ module AresMUSH
 			feature_group = Global.read_config('swrifts', featuretype)
 			fg = feature_group.select { |a| a['name'].downcase == feature_name.downcase }.first
 
+
 			#-----
 			if (fg['stats'])
 				feature_stats = fg['stats']
