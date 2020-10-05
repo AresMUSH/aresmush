@@ -286,14 +286,14 @@ module AresMUSH
 	end
 	
 	def self.returncgpforcg(cg)
-		cgpointsarray = Hash.new
+		cgpointsarray = []
 		cgp = ''
 		cg.each do |c|
 				cgname = c.name
 				cgn = cgname.gsub("_", " ")
 				cgname = cgn.titleize				
 				cgrating = c.rating
-				cgpointsarray[c.name] << {name: cgname, rating:cgrating}
+				cgpointsarray << {name: cgname, rating:cgrating}
 		end
 		return (cgpointsarray)
 	end		
