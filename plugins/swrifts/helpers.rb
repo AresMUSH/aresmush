@@ -20,7 +20,7 @@ module AresMUSH
 			#return (featurehash.inspect)
 			#return (feature_name)
 			if (a['name'].to_s !='')
-				fg = featurehash.select { |a| a['name'].downcase == feature_name.downcase }.first
+				fg = featurehash.select { |a| (if a['name'] !='' && a['name'].downcase == feature_name.downcase) }.first
 				return (fg.inspect)
 				if (fg['stats'])
 					featurehash = fg['stats']
