@@ -20,8 +20,10 @@ swrifts:
         type: Background
         chargen_points:
             magic_slots: 3
+            hj_slots: 3
         counters:
             ppe_max: 10
+            bennies_current: 2
         pre-reqs:
             - rank: Novice
     -
