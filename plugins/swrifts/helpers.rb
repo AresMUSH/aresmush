@@ -18,11 +18,11 @@ module AresMUSH
 			element_name = element_name.gsub("^", "")	 #remove the ^ that appear in the feature name		
 			grouphash = Global.read_config('swrifts', grouptype)
 			#return (grouphash.inspect)
-			return (element_name)
+			# return (element_name)
 			newfg = grouphash.select { |a| a['name'].to_s != '' }
 			# return (newfg)
 			fg = newfg.select { |a| a['name'].downcase == element_name.downcase }.first
-			#return (fg.inspect)
+			return (fg.inspect)
 			
 			
 			if (fg['stats'])
