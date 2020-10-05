@@ -29,23 +29,23 @@ module AresMUSH
 			
 
 			#-----
-			# if (fg['stats'])
-				# feature_stats = fg['stats']
-				# return feature_stats
-				# feature_stats.each do |key, rating|
-					# stat_name = "#{key}".downcase
-					# mod = "#{rating}".to_i
-					# current_rating = Swrifts.stat_rating(model, stat_name)
-					# new_rating = current_rating + mod
+			if (fg['stats'])
+				feature_stats = fg['stats']
+				return feature_stats
+				feature_stats.each do |key, rating|
+					stat_name = "#{key}".downcase
+					mod = "#{rating}".to_i
+					current_rating = Swrifts.stat_rating(model, stat_name)
+					new_rating = current_rating + mod
 						
 					# ClassTargetFinder.with_a_character(model, client, enactor) do |model|
-						# stat = Swrifts.find_stat(model, stat_name)				
-						# stat.update(rating: new_rating)
+						stat = Swrifts.find_stat(model, stat_name)				
+						stat.update(rating: new_rating)
 					# end
 				# end 
-			# else 
-				# return nil
-			# end
+			else 
+				return nil
+			end
 			# -----
 			# if (fg['chargen_points'])
 				# feature_cp = fg['chargen_points']
