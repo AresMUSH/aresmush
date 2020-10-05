@@ -11,8 +11,8 @@ module AresMUSH
 		
 		def self.add_feature(model, collection, featuretype, feature_name)
 			# model = Aliana, collection = SwriftsHinderances, featuretype = hinderances, feature_name = Elderly
-			return ('lldldldld')
 			collection.create(name: feature_name, character: model)
+			return ('lldldldld')
 			featuretype = featuretype.downcase
 			feature_name = feature_name.gsub("*", "")	 #remove the * that appear in the feature name		
 			feature_name = feature_name.gsub("^", "")	 #remove the ^ that appear in the feature name		
