@@ -38,7 +38,6 @@ module AresMUSH
 				iconicf = Swrifts.get_iconicf(self.enactor, self.iconicf_name) 
 				iconicf_traits=iconicf['traits']
 				iconicf_skills=iconicf['skills'] 
-				iconicf_hinderances=iconicf['hinderances'] 
 				iconicf_edges=iconicf['edges'] 
 				iconicf_abilities=iconicf['abilities'] 
 				iconicf_complications=iconicf['complications'] 
@@ -168,8 +167,8 @@ module AresMUSH
 				end
 
 				# ----- This sets the default Hinderances on the Character -----	
-				if (iconicf_hinderances) 
-					
+				if (iconicf['hinderances']) 
+					iconicf_hinderances=iconicf['hinderances'] 
 					iconicf_hinderances.each do |key|
 						hinderance_name = "#{key}".downcase
 
