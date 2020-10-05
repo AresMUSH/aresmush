@@ -1552,8 +1552,8 @@ swrifts:
             hinderances: 
                 - TestHind*
             edges:
-                - AB Magic*
-                - AB Psionics*
+                - ABMagic*
+                - ABPsionics*
             magic_powers:
                 - Bolt*
             abilities:
