@@ -44,8 +44,6 @@ module AresMUSH
 			if (fg['stats'])
 				feature_stats = fg['stats']
 				ss = Swrifts.element_update(model, feature_stats, "stats")
-				ss = ss.inspect
-				return ss
 				# feature_stats.each do |key, rating|
 					# group = stats
 					# point_name = "#{key}".downcase
