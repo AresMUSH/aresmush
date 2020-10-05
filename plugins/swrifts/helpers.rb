@@ -31,9 +31,10 @@ module AresMUSH
 			#-----
 			if (fg['stats'])
 				feature_stats = fg['stats']
-				feature_stats.each do |key, rating|
-					stat_name = "#{key}".downcase
-					mod = "#{rating}".to_i
+				return feature_stats
+				# feature_stats.each do |key, rating|
+					# stat_name = "#{key}".downcase
+					# mod = "#{rating}".to_i
 					# current_rating = Swrifts.stat_rating(model, stat_name)
 					# new_rating = current_rating + mod
 						
@@ -41,9 +42,9 @@ module AresMUSH
 						# stat = Swrifts.find_stat(model, stat_name)				
 						# stat.update(rating: new_rating)
 					# end
-				end 
+				# end 
 			else 
-				return	
+				return nil
 			end
 			# -----
 			# if (fg['chargen_points'])
