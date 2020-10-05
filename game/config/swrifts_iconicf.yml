@@ -20,8 +20,10 @@ swrifts:
                 Notice: 2            
             hinderances: 
                 - TestHind*
+                - Elderly*
             edges:
                 - TestEdge*
+                - ABMagic*
             magic_powers:
                 - Bolt*
             abilities:
