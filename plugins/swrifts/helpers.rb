@@ -37,7 +37,7 @@ module AresMUSH
 				ss = Swrifts.element_update(model, set, charhash)
 				# return (ss.inspect)
 			else 
-				# return nil
+				
 			end
 			
 			if (group['chargen_points'])
@@ -45,7 +45,7 @@ module AresMUSH
 				charhash = model.swrifts_chargenpoints
 				Swrifts.element_update(model, set, charhash)
 			else 
-				# return nil
+				
 			end
 
 			if (group['dstats'])
@@ -53,7 +53,7 @@ module AresMUSH
 				charhash = model.swrifts_dstats
 				Swrifts.element_update(model, set, charhash)
 			else 
-				# return nil
+				
 			end
 
 			if (group['counters'])
@@ -61,7 +61,7 @@ module AresMUSH
 				charhash = model.swrifts_counters
 				Swrifts.element_update(model, set, charhash)
 			else 
-				# return nil
+				
 			end
 					
 		end
