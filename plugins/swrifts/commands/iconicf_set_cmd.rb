@@ -176,20 +176,20 @@ module AresMUSH
 				end
 				
 				# ----- This sets the default Edges on the Character -----				
-				# if (iconicf['edges'])
-					# iconicf_edges=iconicf['edges'] 
-					# iconicf_edges.each do |key|
-						# edge_name = "#{key}".downcase
+				if (iconicf['edges'])
+					iconicf_edges=iconicf['edges'] 
+					iconicf_edges.each do |key|
+						edge_name = "#{key}".downcase
 						
-						# ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-							# ss = Swrifts.add_feature(model, SwriftsEdges, "edges", edge_name)
-							# client.emit ("llll: #{ss}")
-						# end
-					# end
-					# client.emit_success t('swrifts.iconicedges_set')
-				# else 
-					# client.emit_failure ("This Iconic Framework has no Edges")
-				# end
+						ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
+							ss = Swrifts.add_feature(model, SwriftsEdges, "edges", edge_name)
+							client.emit ("llll: #{ss}")
+						end
+					end
+					client.emit_success t('swrifts.iconicedges_set')
+				else 
+					client.emit_failure ("This Iconic Framework has no Edges")
+				end
 
 				# ----- This sets the default Magic Powers on the Character -----	
 				if (iconicf['magic_powers'])
