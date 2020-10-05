@@ -36,17 +36,6 @@ module AresMUSH
 			def handle  
 			
 				iconicf = Swrifts.get_iconicf(self.enactor, self.iconicf_name) 
-				iconicf_traits=iconicf['traits']
-				iconicf_skills=iconicf['skills'] 
-				iconicf_edges=iconicf['edges'] 
-				iconicf_abilities=iconicf['abilities'] 
-				iconicf_complications=iconicf['complications'] 
-				iconicf_magic_powers=iconicf['magic_powers'] 
-				iconicf_psionic_powers=iconicf['psionic_powers'] 
-				iconicf_cybernetics=iconicf['cybernetics'] 
-				iconicf_chargen_points=iconicf['chargen_points']
-				iconicf_counters = iconicf['counters']
-
 
 				## ----- Update Iconic Framework
 				ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
@@ -56,8 +45,9 @@ module AresMUSH
 				client.emit_success ("Iconic Framework Added")
 
 				## ----- Update Traits (Rank)
-				if (iconicf_traits)
-						iconicf_traits.each do |key, rating|
+				if (iconicf['traits'])
+					iconicf_traits=iconicf['traits']
+					iconicf_traits.each do |key, rating|
 						trait_name = "#{key}".downcase
 						mod = "#{rating}"
 						ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
@@ -98,7 +88,8 @@ module AresMUSH
 				end
 
 				## ----- Update Skills
-				if (iconicf_skills)
+				if (iconicf['skills'])
+					iconicf_skills=iconicf['skills'] 
 					# grab the list from the config file and break it into 'key' (before the ':') and 'rating' (after the ':')
 					iconicf_skills.each do |key, rating|
 						# alias the 'key' because the command below doesn't parse the #'s and {'s etc.
@@ -123,7 +114,8 @@ module AresMUSH
 				end
 				
 				## ----- Update Chargen Points
-				if (iconicf_chargen_points)
+				if (iconicf['chargen_points'])
+					iconicf_chargen_points=iconicf['chargen_points']
 					# grab the list from the config file and break it into 'key' (before the ':') and 'rating' (after the ':')
 					iconicf_chargen_points.each do |key, rating|
 						# alias the 'key' because the command below doesn't parse the #'s and {'s etc.
@@ -148,7 +140,8 @@ module AresMUSH
 				end
 				
 				## ----- Update Counters
-				if (iconicf_counters)
+				if (iconicf['counters'])
+					iconicf_counters = iconicf['counters']
 					iconicf_counters.each do |key, rating|
 						counter_name = "#{key}".downcase
 						mod = "#{rating}".to_i
@@ -182,11 +175,13 @@ module AresMUSH
 				end
 				
 				# ----- This sets the default Edges on the Character -----				
-				if (iconicf_edges)
+				if (iconicf['edges'])
+					iconicf_edges=iconicf['edges'] 
 					iconicf_edges.each do |key|
-						setthing = "#{key}".downcase
+						edge_name = "#{key}".downcase
+						
 						ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-							SwriftsEdges.create(name: setthing, character: model)
+							Swrifts.add_feature(model, SwriftsEdges, "Edges", edge_name)
 						end
 					end
 					client.emit_success t('swrifts.iconicedges_set')
@@ -195,7 +190,8 @@ module AresMUSH
 				end
 
 				# ----- This sets the default Magic Powers on the Character -----	
-				if (iconicf_magic_powers)
+				if (iconicf['magic_powers'])
+					iconicf_magic_powers=iconicf['magic_powers'] 
 					iconicf_magic_powers.each do |key|
 						setthing = "#{key}".downcase
 						ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
@@ -208,7 +204,8 @@ module AresMUSH
 				end 
 
 				# ----- This sets the default Psionic Powers on the Character -----	
-				if (iconicf_psionic_powers)
+				if (iconicf['psionic_powers'])
+					iconicf_psionic_powers=iconicf['psionic_powers']
 					iconicf_psionic_powers.each do |key|
 						setthing = "#{key}".downcase
 						ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
@@ -221,7 +218,8 @@ module AresMUSH
 				end
 
 				# ----- This sets the default Cybernetics on the Character -----	
-				if (iconicf_cybernetics)
+				if (iconicf['cybernetics'])
+					iconicf_cybernetics=iconicf['cybernetics']
 					iconicf_cybernetics.each do |key|
 						setthing = "#{key}".downcase
 						ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
@@ -234,7 +232,8 @@ module AresMUSH
 				end
 				
 				# ----- This sets the default Abilities on the Character -----	
-				if (iconicf_abilities)
+				if (iconicf['abilities'])
+					iconicf_abilities=iconicf['abilities'] 
 					iconicf_abilities.each do |key|
 						setthing = "#{key}".downcase
 						ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
@@ -247,7 +246,8 @@ module AresMUSH
 				end
 				
 				# ----- This sets the default Complications on the Character -----
-				if (iconicf_complications)
+				if (iconicf['complications'])
+					iconicf_complications=iconicf['complications'] 
 					iconicf_complications.each do |key|
 						setthing = "#{key}".downcase
 						ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
