@@ -13,6 +13,7 @@ module AresMUSH
 		def self.add_feature(model, collection, featuretype, feature_name)
 			collection.create(name: feature_name, character: model)
 			featuretype = featuretype.downcase
+			return (featuretype)
 			feature_name = feature_name.gsub("*", "")	 #remove the * that appear in the feature name		
 			feature_name = feature_name.gsub("^", "")	 #remove the ^ that appear in the feature name		
 			featurehash = Global.read_config('swrifts', featuretype)
