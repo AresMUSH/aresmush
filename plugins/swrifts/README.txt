@@ -1,6 +1,7 @@
 Definitions:
 
 swrifts: 						#PLUGIN
-    init:						#MODULE
-        stats:					#GROUP
-            Strength:			#ELEMENT	
+    hinderances:				#SYSTEM
+        Elderly:				#GROUP
+            Chargen_Points:		#SET	
+				Skills_Points:	#ELEMENT
