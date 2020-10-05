@@ -29,8 +29,8 @@ module AresMUSH
 				stats=fg['stats']
 				charhash = model.swrifts_stats
 				# return (charhash.inspect)
-				ss = Swrifts.element_update(model, grouphash, charhash)
-				return (ss.inspect)
+				ss = Swrifts.element_update(model, stats, charhash)
+				# return (ss.inspect)
 			else 
 				return nil
 			end
