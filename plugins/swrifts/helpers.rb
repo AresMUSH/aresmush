@@ -23,6 +23,7 @@ module AresMUSH
 			if (fg['stats'])
 				feature_stats = fg['stats']
 				ss = Swrifts.element_update(model, feature_stats, "stats")
+				ss << " llll"
 				return ss
 				# feature_stats.each do |key, rating|
 					# group = stats
