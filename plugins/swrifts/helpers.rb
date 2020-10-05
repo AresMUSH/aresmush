@@ -13,13 +13,13 @@ module AresMUSH
 		def self.add_feature(model, collection, grouptype, element_name)
 			collection.create(name: element_name, character: model)
 			grouptype = grouptype.downcase
-			#return (grouptype)
+			return (grouptype)
 			element_name = element_name.gsub("*", "")	 #remove the * that appear in the feature name		
 			element_name = element_name.gsub("^", "")	 #remove the ^ that appear in the feature name		
-			grouphash = Global.read_config('swrifts', grouptype)
+			grouphash = Global.read_config('swrifts', grouptype) #the whole Group
 			#return (grouphash.inspect)
 			# return (element_name)
-			newfg = grouphash.select { |a| a['name'].to_s != '' }
+			newfg = grouphash.select { |a| a['name'].to_s != '' } #the whole Group minus empty entries
 			# return (newfg)
 			fg = newfg.select { |a| a['name'].downcase == element_name.downcase }.first #the whole Element
 			# return (fg.inspect) 
@@ -62,7 +62,7 @@ module AresMUSH
 			grouphash.each do |key, rating| 
 				point_name = "#{key}".downcase 
 				mod = "#{rating}".to_i
-				return (point_name.inspect)
+				# return (point_name.inspect)
 				element = charhash.select { |a| a.name.downcase == point_name }.first
 				current_rating = element ? element.rating : 0
 				new_rating = current_rating + mod
