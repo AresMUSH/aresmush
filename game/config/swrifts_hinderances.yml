@@ -18,6 +18,10 @@ swrifts:
         bennies_current: 2
         ppe_max: 10
     - 
+      name: choice
+      description: Placeholder item
+      hind_points: 1
+    - 
       name: All Thumbs
       description: –2 to use mechanical or electrical devices
       hind_points: 1
