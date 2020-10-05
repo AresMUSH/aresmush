@@ -29,7 +29,7 @@ swrifts:
             chargen_points:
                 psionic_slots: 3
             counters:
-                isp: 10
+                isp_max: 10
             pre-reqs:
                 - rank: Novice
         -
