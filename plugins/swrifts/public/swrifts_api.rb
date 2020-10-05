@@ -293,7 +293,7 @@ module AresMUSH
 				cgn = cgname.gsub("_", " ")
 				cgname = cgn.titleize				
 				cgrating = c.rating
-				cgpointsarray << {name: cgname, rating:cgrating}
+				cgpointsarray << {class: c.name, name: cgname, rating:cgrating}
 		end
 		return (cgpointsarray)
 	end		
