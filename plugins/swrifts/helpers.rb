@@ -11,6 +11,7 @@ module AresMUSH
 		
 		def self.add_feature(model, collection, featuretype, feature_name)
 			# model = Aliana, collection = SwriftsHinderances, featuretype = hinderances, feature_name = Elderly
+			return ('lldldldld')
 			collection.create(name: feature_name, character: model)
 			featuretype = featuretype.downcase
 			feature_name = feature_name.gsub("*", "")	 #remove the * that appear in the feature name		
@@ -18,7 +19,7 @@ module AresMUSH
 			feature_group = Global.read_config('swrifts', featuretype)
 			fg = feature_group.select { |a| a['name'].downcase == feature_name.downcase }.first
 
-
+			
 			#-----
 			if (fg['stats'])
 				feature_stats = fg['stats']
