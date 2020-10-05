@@ -3,6 +3,12 @@ module AresMUSH
     class CombatSummaryCmd
       include CommandHandler
       
+      attr_accessor :filter
+      
+      def parse_args
+        self.filter = cmd.args
+      end
+        
       def handle
         combat = FS3Combat.combat(enactor.name)
         if (!combat)
@@ -15,7 +21,7 @@ module AresMUSH
           return
         end
         
-        template = CombatSummaryTemplate.new(combat)
+        template = CombatSummaryTemplate.new(combat, self.filter)
         client.emit template.render
       end
     
