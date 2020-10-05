@@ -394,4 +394,5 @@ swrifts:
         Strength: -2
         Agility: 2
       counters:
-        bennies_max: 2
+        bennies_current: 2
+        ppe_max: 10
