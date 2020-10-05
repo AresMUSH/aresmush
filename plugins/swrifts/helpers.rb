@@ -13,10 +13,11 @@ module AresMUSH
 		def self.add_feature(model, collection, featuretype, feature_name)
 			collection.create(name: feature_name, character: model)
 			featuretype = featuretype.downcase
-			return (featuretype)
+			#return (featuretype)
 			feature_name = feature_name.gsub("*", "")	 #remove the * that appear in the feature name		
 			feature_name = feature_name.gsub("^", "")	 #remove the ^ that appear in the feature name		
 			featurehash = Global.read_config('swrifts', featuretype)
+			return (featurehash.inspect)
 			fg = featurehash.select { |a| a['name'].downcase == feature_name.downcase }.first
 			
 			if (fg['stats'])
