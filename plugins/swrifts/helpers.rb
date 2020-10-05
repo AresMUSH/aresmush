@@ -27,8 +27,9 @@ module AresMUSH
 			
 			if (fg['stats'])
 				featurehash = fg['stats']
-				return (featurehash.inspect)
+				# return (featurehash.inspect)
 				charhash = model.swrifts_stats
+				return (charhash.inspect)
 				Swrifts.element_update(model, featurehash, charhash)
 			else 
 				return nil
