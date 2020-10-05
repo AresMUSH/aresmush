@@ -19,14 +19,16 @@ module AresMUSH
 			featurehash = Global.read_config('swrifts', featuretype)
 			#return (featurehash.inspect)
 			#return (feature_name)
-			fg = featurehash.select { |a| a['name'].downcase == feature_name.downcase }.first
-			return (fg.inspect)
-			if (fg['stats'])
-				featurehash = fg['stats']
-				charhash = model.swrifts_stats
-				Swrifts.element_update(model, featurehash, charhash)
-			else 
-				return nil
+			if (a['name'].to_s !='')
+				fg = featurehash.select { |a| a['name'].downcase == feature_name.downcase }.first
+				return (fg.inspect)
+				if (fg['stats'])
+					featurehash = fg['stats']
+					charhash = model.swrifts_stats
+					Swrifts.element_update(model, featurehash, charhash)
+				else 
+					return nil
+				end
 			end
 			
 			if (fg['chargen_points'])
