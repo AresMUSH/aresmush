@@ -1552,7 +1552,7 @@ swrifts:
             hinderances: 
                 - Young-*
                 - Small*
-                - Test*
+                - TestHind*
             edges:
                 - AB Magic*
                 - AB Psionics*
