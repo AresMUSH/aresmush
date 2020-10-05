@@ -20,6 +20,10 @@ swrifts:
         counters:
             bennies_current: 2
             ppe_max: 10
+    - 
+        name: choice
+        description: Placeholder item
+        type: Administrative
     -
         name: Alertness
         description: +2 to Notice rolls
