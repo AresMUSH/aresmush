@@ -11,16 +11,13 @@ module AresMUSH
 		## ----- Features
 		
 		def self.add_feature(model, collection, featuretype, feature_name)
-			# model = Aliana, collection = SwriftsHinderances, featuretype = hinderances, feature_name = Elderly
 			collection.create(name: feature_name, character: model)
 			featuretype = featuretype.downcase
 			feature_name = feature_name.gsub("*", "")	 #remove the * that appear in the feature name		
 			feature_name = feature_name.gsub("^", "")	 #remove the ^ that appear in the feature name		
 			feature_group = Global.read_config('swrifts', featuretype)
 			fg = feature_group.select { |a| a['name'].downcase == feature_name.downcase }.first
-			#return (fg.inspect)
 			
-			#-----
 			if (fg['stats'])
 				feature_stats = fg['stats']
 				charstats = model.swrifts_stats
@@ -29,14 +26,13 @@ module AresMUSH
 				return nil
 			end
 			
-			# -----
 			if (fg['chargen_points'])
 				charstats = model.swrifts_chargen_points
 				Swrifts.element_update(model, feature_stats, charstats)
 			else 
 				return nil
 			end
-			# -----
+
 			if (fg['dstats'])
 				feature_dstats = fg['dstats']
 				charstats = model.swrifts_dstats
@@ -44,14 +40,13 @@ module AresMUSH
 			else 
 				return nil
 			end
-			# -----
+
 			if (fg['counters'])
 				charstats = model.swrifts_counters
 				Swrifts.element_update(model, feature_stats, charstats)
 			else 
 				return nil
 			end
-			# -----
 					
 		end
 
