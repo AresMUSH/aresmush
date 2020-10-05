@@ -215,7 +215,7 @@ module AresMUSH
 		list = model.sort_by { |a| a['name']} #sort the init framework by name
 		list = list['chargen_points'] #only get the chargen points
 		list.each do |key, value|  # roll through the points
-				cginitarray[key] = {value} # Set the slot and value in the hash
+				cginitarray[key] = {value: value} # Set the slot and value in the hash
 		end
 		return (cginitarray)
 	end	
