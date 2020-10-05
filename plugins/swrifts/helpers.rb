@@ -19,7 +19,7 @@ module AresMUSH
 			featurehash = Global.read_config('swrifts', featuretype)
 			#return (featurehash.inspect)
 			#return (feature_name)
-			newfg = featurehash.select { |a| a['name'].strip.length != 0 }
+			newfg = featurehash.select { |a| a['name'].length != 0 }
 			return (newfg)
 			fg = newfg.select { |a| a['name'].downcase == feature_name.downcase }.first
 			return (fg.inspect)
