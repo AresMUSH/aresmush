@@ -10,13 +10,13 @@ module AresMUSH
 				
 		## ----- Features
 		
-		def self.add_feature(model, collection, featuretype, feature_name)
+		def self.add_feature(model, collection, grouptype, feature_name)
 			collection.create(name: feature_name, character: model)
-			featuretype = featuretype.downcase
-			#return (featuretype)
+			grouptype = grouptype.downcase
+			#return (grouptype)
 			feature_name = feature_name.gsub("*", "")	 #remove the * that appear in the feature name		
 			feature_name = feature_name.gsub("^", "")	 #remove the ^ that appear in the feature name		
-			featurehash = Global.read_config('swrifts', featuretype)
+			featurehash = Global.read_config('swrifts', grouptype)
 			#return (featurehash.inspect)
 			#return (feature_name)
 			newfg = featurehash.select { |a| a['name'].to_s != '' }
@@ -26,8 +26,6 @@ module AresMUSH
 			
 			
 			if (fg['stats'])
-				featurehash = fg['stats']
-				# return (featurehash.inspect)
 				charhash = model.swrifts_stats
 				return (charhash.inspect)
 				Swrifts.element_update(model, featurehash, charhash)
@@ -36,7 +34,6 @@ module AresMUSH
 			end
 			
 			if (fg['chargen_points'])
-				featurehash = fg['chargen_points']
 				charhash = model.swrifts_chargenpoints
 				Swrifts.element_update(model, featurehash, charhash)
 			else 
@@ -44,7 +41,6 @@ module AresMUSH
 			end
 
 			if (fg['dstats'])
-				featurehash = fg['dstats']
 				charhash = model.swrifts_dstats
 				Swrifts.element_update(model, featurehash, charhash)
 			else 
@@ -52,7 +48,6 @@ module AresMUSH
 			end
 
 			if (fg['counters'])
-				featurehash = fg['counters']
 				charhash = model.swrifts_counters
 				Swrifts.element_update(model, featurehash, charhash)
 			else 
@@ -70,7 +65,6 @@ module AresMUSH
 				current_rating = element ? element.rating : 0
 				new_rating = current_rating + mod
 				element.update(rating: new_rating)
-				return (new_rating)
 			end 
 		end
 
