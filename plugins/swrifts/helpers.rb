@@ -21,12 +21,13 @@ module AresMUSH
 			# return (group_name)
 			newsh = systemhash.select { |a| a['name'].to_s != '' } #the whole System minus empty entries
 			# return (newfg)
-			sh = newsh.select { |a| a['name'].downcase == group_name.downcase }.first #the whole Set
-			 return (sh.inspect) 
+			group = newsh.select { |a| a['name'].downcase == group_name.downcase }.first #the whole Group
+			# return (group.inspect) 
 			
 			
-			if (sh['stats'])
-				stats=sh['stats']
+			if (group['stats'])
+				stats=group['stats']
+				return (stats.inspect)
 				charhash = model.swrifts_stats
 				# return (charhash.inspect)
 				ss = Swrifts.element_update(model, stats, charhash)
@@ -35,24 +36,24 @@ module AresMUSH
 				return nil
 			end
 			
-			if (sh['chargen_points'])
-				cp=sh['chargen_points']				
+			if (group['chargen_points'])
+				cp=group['chargen_points']				
 				charhash = model.swrifts_chargenpoints
 				Swrifts.element_update(model, systemhash, charhash)
 			else 
 				return nil
 			end
 
-			if (sh['dstats'])
-				dstats=sh['dstats']
+			if (group['dstats'])
+				dstats=group['dstats']
 				charhash = model.swrifts_dstats
 				Swrifts.element_update(model, systemhash, charhash)
 			else 
 				return nil
 			end
 
-			if (sh['counters'])
-				counters=sh['counters']
+			if (group['counters'])
+				counters=group['counters']
 				charhash = model.swrifts_counters
 				Swrifts.element_update(model, systemhash, charhash)
 			else 
