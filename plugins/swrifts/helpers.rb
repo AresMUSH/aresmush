@@ -29,7 +29,7 @@ module AresMUSH
 				featurehash = fg['stats']
 				return (featurehash.inspect)
 				charhash = model.swrifts_stats
-				Swrifts.element_update(model, featurehash, charhash)
+				Swrifts.element_update(model, featurehash, charhash).each
 			else 
 				return nil
 			end
