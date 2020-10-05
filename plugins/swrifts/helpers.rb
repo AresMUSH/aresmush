@@ -18,18 +18,20 @@ module AresMUSH
 			feature_group = Global.read_config('swrifts', featuretype)
 			fg = feature_group.select { |a| a['name'].downcase == feature_name.downcase }.first
 
+
 			#-----
 			if (fg['stats'])
 				feature_stats = fg['stats']
-				feature_stats.each do |key, rating|
-					group = stats
-					point_name = "#{key}".downcase
-					mod = "#{rating}".to_i
-					current_rating = Swrifts.generic_rating(model, group, point_name)
-					new_rating = current_rating + mod
-					stat = Swrifts.find_stat(model, point_name)				
-					stat.update(rating: new_rating)
-				end 
+				Swrifts.element_update(model, feature_stats, "stats")
+				# feature_stats.each do |key, rating|
+					# group = stats
+					# point_name = "#{key}".downcase
+					# mod = "#{rating}".to_i
+					# current_rating = Swrifts.generic_rating(model, group, point_name)
+					# new_rating = current_rating + mod
+					# stat = Swrifts.find_stat(model, point_name)				
+					# stat.update(rating: new_rating)
+				# end 
 			else 
 				return nil
 			end
@@ -81,16 +83,30 @@ module AresMUSH
 		end
 
 		## ----- Generic stat and rating lookup
-		def self.generic_rating(model, group, element_name)
-			element = Swrifts.find_element(model, group, element_name)
-			element ? element.rating : 0
+		
+		#Swrifts.element_update(model, feature_stats, stats)
+		def self.element_update(model, group, group_name)
+			group.each do |key, rating| 
+				point_name = "#{key}".downcase 
+				mod = "#{rating}".to_i
+				sgroup = "swrifts_#{group_name}"
+				element = model.sgroup.select { |a| a.name.downcase == point_name }.first
+				current_rating = element ? element.rating : 0
+				new_rating = current_rating + mod
+				element.update(rating: new_rating)
+			end 
 		end
+		
+		# def self.generic_rating(model, group, element_name)
+			# element = Swrifts.find_element(model, group, element_name)
+			# element ? element.rating : 0
+		# end
 
-		def self.find_element(model, group, element_name)
-			name_downcase = element_name.downcase
-			sgroup = "swrifts_#{group}"
-			model.sgroup.select { |a| a.name.downcase == name_downcase }.first
-		end
+		# def self.find_element(model, group, element_name)
+			# name_downcase = element_name.downcase
+			# sgroup = "swrifts_#{group}"
+			# model.sgroup.select { |a| a.name.downcase == name_downcase }.first
+		# end
 		
 		
 		## ----- Add Rating
