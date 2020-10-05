@@ -176,7 +176,7 @@ module AresMUSH
 				end
 				
 				# ----- This sets the default Edges on the Character -----				
-				if (iconicf['edges'])
+				# if (iconicf['edges'])
 					# iconicf_edges=iconicf['edges'] 
 					# iconicf_edges.each do |key|
 						# edge_name = "#{key}".downcase
