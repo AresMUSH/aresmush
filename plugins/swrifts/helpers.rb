@@ -53,7 +53,7 @@ module AresMUSH
 				featurehash = fg['counters']
 				charhash = model.swrifts_counters
 				ss = Swrifts.element_update(model, featurehash, charhash)
-				return (ss)
+				return (ss.inspect)
 			else 
 				return nil
 			end
