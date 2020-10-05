@@ -10,19 +10,19 @@ module AresMUSH
 				
 		## ----- Features
 		
-		def self.add_feature(model, collection, system, group_name)
-			collection.create(name: group_name, character: model)
-			system = system.downcase
-			# return (system)
-			group_name = group_name.gsub("*", "")	 #remove the * that appear in the feature name		
-			group_name = group_name.gsub("^", "")	 #remove the ^ that appear in the feature name		
+		def self.add_feature(model, collection, system, system_name) #Aliana, SwriftsHinderances, "hinderances", testhind
+			collection.create(name: system_name, character: model)
+			system_name = system_name.downcase
+			# return (system_name)
+			system_name = system_name.gsub("*", "")	 #remove the * that appear in the feature name		
+			system_name = system_name.gsub("^", "")	 #remove the ^ that appear in the feature name		
 			systemhash = Global.read_config('swrifts', system) #the whole System from the yml
 			# return (systemhash.inspect)
-			# return (group_name)
+			# return (system_name)
 			newsh = systemhash.select { |a| a['name'].to_s != '' } #the whole System minus empty entries
 			# return (newfg)
-			group = newsh.select { |a| a['name'].downcase == group_name.downcase }.first #the whole Group
-			# return (group.inspect) 
+			group = newsh.select { |a| a['name'].downcase == system_name.downcase }.first #the whole Group
+			 return (group.inspect) 
 			
 			
 			if (group['stats'])
@@ -67,7 +67,7 @@ module AresMUSH
 			set.each do |key, rating| 
 				# return (set.inspect)
 				element_name = "#{key}".downcase 
-				return (element_name.inspect)
+				# return (element_name.inspect)
 				mod = "#{rating}".to_i
 				# return (element_name.inspect)
 				element = charhash.select { |a| a.name.downcase == element_name }.first
