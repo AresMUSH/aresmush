@@ -7,26 +7,6 @@ module AresMUSH
 			char.swrifts_traits
 		end
 		
-		def self.ymlfiles(model, group_name)
-			case group_name
-			when 'stats'
-				groupyml = model.swrifts_stats
-				return (groupyml)
-			when 'counters'
-				groupyml = model.swrifts_counters
-				return (groupyml)
-			when 'dstats'
-				groupyml = model.swrifts_dstats
-				return (groupyml)
-			when 'chargen_points'
-				groupyml = model.swrifts_chargen_points
-				return (groupyml)
-			else 
-				return ("Group doesn't exist")
-			end
-		end
-
-			
 				
 		## ----- Features
 		
@@ -45,70 +25,38 @@ module AresMUSH
 				feature_stats = fg['stats']
 				charstats = model.swrifts_stats
 				Swrifts.element_update(model, feature_stats, charstats)
-				# feature_stats.each do |key, rating|
-					# group = stats
-					# point_name = "#{key}".downcase
-					# mod = "#{rating}".to_i
-					# current_rating = Swrifts.generic_rating(model, group, point_name)
-					# new_rating = current_rating + mod
-					# stat = Swrifts.find_stat(model, point_name)				
-					# stat.update(rating: new_rating)
-				# end 
 			else 
 				return nil
 			end
 			
 			# -----
-			# if (fg['chargen_points'])
-				# feature_cp = fg['chargen_points']
-				# feature_cp.each do |key, rating|
-					# point_name = "#{key}".downcase
-					# mod = "#{rating}".to_i
-					# current_rating = Swrifts.chargen_points_rating(model, point_name).to_i
-					# new_rating = current_rating + mod
-					# points = Swrifts.find_chargen_points(model, point_name)				
-					# points.update(rating: new_rating)
-				# end 
-			# else 
-				# return nil
-			# end
+			if (fg['chargen_points'])
+				charstats = model.swrifts_chargen_points
+				Swrifts.element_update(model, feature_stats, charstats)
+			else 
+				return nil
+			end
 			# -----
-			# if (fg['dstats'])
-				# feature_dstats = fg['dstats']
-				# feature_dstats.each do |key, rating|
-					# point_name = "#{key}".downcase
-					# mod = "#{rating}".to_i
-					# current_rating = Swrifts.dstats_rating(model, point_name).to_i
-					# new_rating = current_rating + mod
-					# points = Swrifts.find_chargen_points(model, point_name)				
-					# points.update(rating: new_rating)
-				# end 
-			# else 
-				# return nil
-			# end
+			if (fg['dstats'])
+				feature_dstats = fg['dstats']
+				charstats = model.swrifts_dstats
+				Swrifts.element_update(model, feature_stats, charstats)
+			else 
+				return nil
+			end
 			# -----
-			# if (fg['counters'])
-				# feature_cp = fg['counters']
-				# feature_cp.each do |key, rating|
-					# point_name = "#{key}".downcase
-					# mod = "#{rating}".to_i
-					# current_rating = Swrifts.counters_rating(model, point_name).to_i
-					# new_rating = current_rating + mod
-					# points = Swrifts.find_counters(model, point_name)				
-					# points.update(rating: new_rating)
-				# end 
-			# else 
-				# return nil
-			# end
+			if (fg['counters'])
+				charstats = model.swrifts_counters
+				Swrifts.element_update(model, feature_stats, charstats)
+			else 
+				return nil
+			end
 			# -----
 					
 		end
 
-		## ----- Generic stat and rating lookup
-		
-		#Swrifts.element_update(model, feature_stats, stats)
+		## ----- Generic group update
 		def self.element_update(model, featurehash, charhash)
-			# sgroup = Swrifts.ymlfiles(model, group_name)
 			featurehash.each do |key, rating| 
 				point_name = "#{key}".downcase 
 				mod = "#{rating}".to_i
@@ -119,21 +67,6 @@ module AresMUSH
 			end 
 		end
 
-		# feature_stats.each do |key, rating|
-			# group = stats
-			# point_name = "#{key}".downcase
-			# mod = "#{rating}".to_i
-			# char.swrifts_stats.select { |a| a.name.downcase == name_downcase }.first
-			# current_rating = stat ? stat.rating : 0
-			# new_rating = current_rating + mod
-			# stat = Swrifts.find_stat(model, point_name)				
-			# stat.update(rating: new_rating)
-		# end 
-		
-		# def self.stat_rating(char, stat_name)
-			# char.swrifts_stats.select { |a| a.name.downcase == name_downcase }.first
-			# stat ? stat.rating : 0
-		# end
 
 		
 		
