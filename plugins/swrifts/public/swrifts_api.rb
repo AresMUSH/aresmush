@@ -212,7 +212,7 @@ module AresMUSH
 	
 	def self.returncgslotsforcg(model)
 		cginitarray = Hash.new #We're going to pass this back to the char custom fields.
-		list = model.sort_by { |a| a['name']} #sort the init framework by name
+		#list = model.sort_by { |a| a['name']} #sort the init framework by name
 		list = list['chargen_points'] #only get the chargen points
 		list.each do |key, value|  # roll through the points
 				cginitarray[key] = {value: value} # Set the slot and value in the hash
