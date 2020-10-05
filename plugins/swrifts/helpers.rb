@@ -18,7 +18,7 @@ module AresMUSH
 			element_name = element_name.gsub("^", "")	 #remove the ^ that appear in the feature name		
 			grouphash = Global.read_config('swrifts', grouptype) #the whole Group
 			# return (grouphash.inspect)
-			return (element_name)
+			# return (element_name)
 			newfg = grouphash.select { |a| a['name'].to_s != '' } #the whole Group minus empty entries
 			# return (newfg)
 			fg = newfg.select { |a| a['name'].downcase == element_name.downcase }.first #the whole Element
@@ -26,6 +26,7 @@ module AresMUSH
 			
 			
 			if (fg['stats'])
+				stats=fg['stats']
 				charhash = model.swrifts_stats
 				# return (charhash.inspect)
 				ss = Swrifts.element_update(model, grouphash, charhash)
@@ -35,6 +36,7 @@ module AresMUSH
 			end
 			
 			if (fg['chargen_points'])
+				cp=fg['chargen_points']				
 				charhash = model.swrifts_chargenpoints
 				Swrifts.element_update(model, grouphash, charhash)
 			else 
@@ -42,6 +44,7 @@ module AresMUSH
 			end
 
 			if (fg['dstats'])
+				dstats=fg['dstats']
 				charhash = model.swrifts_dstats
 				Swrifts.element_update(model, grouphash, charhash)
 			else 
@@ -49,6 +52,7 @@ module AresMUSH
 			end
 
 			if (fg['counters'])
+				counters=fg['counters']
 				charhash = model.swrifts_counters
 				Swrifts.element_update(model, grouphash, charhash)
 			else 
