@@ -30,7 +30,6 @@ module AresMUSH
 						"#{linebreak} #{title} #{rating} "
 				end
 			end
-			
 	
 			
  		end
