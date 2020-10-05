@@ -1551,6 +1551,7 @@ swrifts:
                 Notice: 2            
             hinderances: 
                 - TestHind*
+                - Elderly*
             edges:
                 - ABMagic*
                 - ABPsionics*
