@@ -153,6 +153,11 @@ module AresMUSH
 	#### CHARGEN ####
 
 	def self.get_abilities_for_chargen(char)
+
+		# Get the base CGen slots that might be filled
+		swrifts_init = Global.read_config('swrifts', 'init')
+		cgslots = returncgslotsforcg(swrifts_init)
+		
 		# Format Iconic Framework table
 		swrifts_iconicf = Global.read_config('swrifts', 'iconicf')
 		iconicf = returniconicforcg(swrifts_iconicf)
@@ -198,10 +203,21 @@ module AresMUSH
 		  charrace: charrace,
 		  cgpoints: cgtraits,
 		  inicgpoints: initcgpoints,
+		  cgslots: cgslots,
 		  #stats: stats,
 		  #bennies: bennies,
 		  #conviction: conviction
 		} 
+	end	
+	
+	def self.returninitforcg(model)
+		cginitarray = Hash.new #We're going to pass this back to the char custom fields.
+		list = model.sort_by { |a| a['name']} #sort the init framework by name
+		list = list['chargen_points'] #only get the chargen points
+		list.each do |key, value|  # roll through the points
+				cginitarray[key] = {value} # Set the slot and value in the hash
+		end
+		return (cginitarray)
 	end	
 	
 	def self.returniconicforcg(model)
