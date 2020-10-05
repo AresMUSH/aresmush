@@ -65,9 +65,11 @@ module AresMUSH
 				if (iconicf['stats'])
 					iconicf_stats=iconicf['stats']
 					# grab the list from the config file and break it into 'key' (before the ':') and 'rating' (after the ':')
+					client.emit (iconicf_stats)
 					iconicf_stats.each do |key, rating|
 						# alias the 'key' because the command below doesn't parse the #'s and {'s etc.
 						stat_name = "#{key}".downcase
+						client.emit (stat_name)
 						# alias the 'rating' for the same reason and set it to an integer
 						mod = "#{rating}".to_i
 						# get the current rating of the stat
