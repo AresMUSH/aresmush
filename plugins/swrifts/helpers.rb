@@ -17,64 +17,80 @@ module AresMUSH
 			feature_name = feature_name.gsub("^", "")	 #remove the ^ that appear in the feature name		
 			feature_group = Global.read_config('swrifts', featuretype)
 			fg = feature_group.select { |a| a['name'].downcase == feature_name.downcase }.first
-	
-		
-			# if (fg['dstats'])
-				# feature_dstats = feature_group['dstats']
-			# end
-						
-			# if (fg['counters'])
-				# feature_counters = feature_group['counters']
-			# end
-			
 
 			#-----
 			if (fg['stats'])
 				feature_stats = fg['stats']
 				feature_stats.each do |key, rating|
-					stat_name = "#{key}".downcase
+					group = stats
+					point_name = "#{key}".downcase
 					mod = "#{rating}".to_i
-					current_rating = Swrifts.stat_rating(model, stat_name)
+					current_rating = Swrifts.generic_rating(model, group, point_name)
 					new_rating = current_rating + mod
-						
-					# ClassTargetFinder.with_a_character(model, client, enactor) do |model|
-						stat = Swrifts.find_stat(model, stat_name)				
-						stat.update(rating: new_rating)
-					# end
+					stat = Swrifts.find_stat(model, point_name)				
+					stat.update(rating: new_rating)
 				end 
 			else 
 				return nil
 			end
+			
 			# -----
 			# if (fg['chargen_points'])
 				# feature_cp = fg['chargen_points']
 				# feature_cp.each do |key, rating|
 					# point_name = "#{key}".downcase
 					# mod = "#{rating}".to_i
-					# current_rating = Swrifts.chargen_points_rating(enactor, point_name).to_i
+					# current_rating = Swrifts.chargen_points_rating(model, point_name).to_i
 					# new_rating = current_rating + mod
-											
-					# ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-						# points = Swrifts.find_chargen_points(model, point_name)				
-						# points.update(rating: new_rating)
-					# end
-				# end
+					# points = Swrifts.find_chargen_points(model, point_name)				
+					# points.update(rating: new_rating)
+				# end 
 			# else 
-				# client.emit_failure ("This Iconic Framework has no Chargen Point changes")
+				# return nil
 			# end
 			# -----
-			# if (feature_dstats)
-			
+			# if (fg['dstats'])
+				# feature_dstats = fg['dstats']
+				# feature_dstats.each do |key, rating|
+					# point_name = "#{key}".downcase
+					# mod = "#{rating}".to_i
+					# current_rating = Swrifts.dstats_rating(model, point_name).to_i
+					# new_rating = current_rating + mod
+					# points = Swrifts.find_chargen_points(model, point_name)				
+					# points.update(rating: new_rating)
+				# end 
+			# else 
+				# return nil
 			# end
 			# -----
-			# if (feature_counters)
-			
+			# if (fg['counters'])
+				# feature_cp = fg['counters']
+				# feature_cp.each do |key, rating|
+					# point_name = "#{key}".downcase
+					# mod = "#{rating}".to_i
+					# current_rating = Swrifts.counters_rating(model, point_name).to_i
+					# new_rating = current_rating + mod
+					# points = Swrifts.find_counters(model, point_name)				
+					# points.update(rating: new_rating)
+				# end 
+			# else 
+				# return nil
 			# end
 			# -----
-			
-			
+					
 		end
 
+		## ----- Generic stat and rating lookup
+		def self.generic_rating(char, group, element_name)
+			element = Swrifts.find_element(char, group, element_name)
+			element ? element.rating : 0
+		end
+
+		def self.find_element(char, group, element_name)
+			name_downcase = element_name.downcase
+			char.swrifts_group.select { |a| a.name.downcase == name_downcase }.first
+		end
+		
 		
 		## ----- Add Rating
 		
