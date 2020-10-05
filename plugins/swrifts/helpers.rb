@@ -23,6 +23,8 @@ module AresMUSH
 			#return (newfg)
 			fg = newfg.select { |a| a['name'].downcase == feature_name.downcase }.first
 			#return (fg.inspect)
+			
+			
 			if (fg['stats'])
 				featurehash = fg['stats']
 				charhash = model.swrifts_stats
@@ -50,7 +52,8 @@ module AresMUSH
 			if (fg['counters'])
 				featurehash = fg['counters']
 				charhash = model.swrifts_counters
-				Swrifts.element_update(model, featurehash, charhash)
+				ss = Swrifts.element_update(model, featurehash, charhash)
+				return ss
 			else 
 				return nil
 			end
@@ -66,6 +69,7 @@ module AresMUSH
 				current_rating = element ? element.rating : 0
 				new_rating = current_rating + mod
 				element.update(rating: new_rating)
+				return (new_rating)
 			end 
 		end
 
