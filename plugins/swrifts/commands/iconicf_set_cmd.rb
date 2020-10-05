@@ -183,7 +183,7 @@ module AresMUSH
 						
 						ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
 							ss = Swrifts.add_feature(model, SwriftsEdges, "edges", edge_name)
-							client.emit ("llll: #{ss}")
+							# client.emit ("llll: #{ss}")
 						end
 					end
 					client.emit_success t('swrifts.iconicedges_set')
