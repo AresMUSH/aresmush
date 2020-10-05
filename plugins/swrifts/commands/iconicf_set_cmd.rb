@@ -167,7 +167,7 @@ module AresMUSH
 
 						ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
 							ss = Swrifts.add_feature(model, SwriftsHinderances, "hinderances", hinderance_name)
-							# client.emit ("kkkk: #{ss}")
+							client.emit ("hind: #{ss}")
 						end
 					end
 					client.emit_success t('swrifts.iconichinderances_set')
@@ -177,19 +177,19 @@ module AresMUSH
 				
 				# ----- This sets the default Edges on the Character -----				
 				if (iconicf['edges'])
-					iconicf_edges=iconicf['edges'] 
-					iconicf_edges.each do |key|
-						edge_name = "#{key}".downcase
+					# iconicf_edges=iconicf['edges'] 
+					# iconicf_edges.each do |key|
+						# edge_name = "#{key}".downcase
 						
-						ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-							ss = Swrifts.add_feature(model, SwriftsEdges, "edges", edge_name)
+						# ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
+							# ss = Swrifts.add_feature(model, SwriftsEdges, "edges", edge_name)
 							# client.emit ("llll: #{ss}")
-						end
-					end
-					client.emit_success t('swrifts.iconicedges_set')
-				else 
-					client.emit_failure ("This Iconic Framework has no Edges")
-				end
+						# end
+					# end
+					# client.emit_success t('swrifts.iconicedges_set')
+				# else 
+					# client.emit_failure ("This Iconic Framework has no Edges")
+				# end
 
 				# ----- This sets the default Magic Powers on the Character -----	
 				if (iconicf['magic_powers'])
