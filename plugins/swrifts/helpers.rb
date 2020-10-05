@@ -10,7 +10,11 @@ module AresMUSH
 				
 		## ----- Features
 		
-		def self.add_feature(model, collection, system, system_name) #Aliana, SwriftsHinderances, "hinderances", testhind
+		def self.add_feature(model, collection, system, system_name) 
+			# model - Aliana
+			# collection - SwriftsHinderances
+			# system - "hinderances"
+			# system_name - testhind
 			collection.create(name: system_name, character: model)
 			system_name = system_name.downcase
 			# return (system_name)
@@ -22,12 +26,12 @@ module AresMUSH
 			newsh = systemhash.select { |a| a['name'].to_s != '' } #the whole System minus empty entries
 			# return (newfg)
 			group = newsh.select { |a| a['name'].downcase == system_name.downcase }.first #the whole Group
-			 return (group.inspect) 
+			# return (group.inspect) 
 			
 			
 			if (group['stats'])
 				set=group['stats']
-				# return (set.inspect) # "Strength"=>-2, "Agility"=>-2
+				 return (set.inspect) # "Strength"=>-2, "Agility"=>-2
 				charhash = model.swrifts_stats
 				# return (charhash.inspect)
 				ss = Swrifts.element_update(model, set, charhash)
@@ -36,29 +40,29 @@ module AresMUSH
 				return nil
 			end
 			
-			if (group['chargen_points'])
-				set=group['chargen_points']				
-				charhash = model.swrifts_chargenpoints
-				Swrifts.element_update(model, set, charhash)
-			else 
-				return nil
-			end
+			# if (group['chargen_points'])
+				# set=group['chargen_points']				
+				# charhash = model.swrifts_chargenpoints
+				# Swrifts.element_update(model, set, charhash)
+			# else 
+				# return nil
+			# end
 
-			if (group['dstats'])
-				set=group['dstats']
-				charhash = model.swrifts_dstats
-				Swrifts.element_update(model, set, charhash)
-			else 
-				return nil
-			end
+			# if (group['dstats'])
+				# set=group['dstats']
+				# charhash = model.swrifts_dstats
+				# Swrifts.element_update(model, set, charhash)
+			# else 
+				# return nil
+			# end
 
-			if (group['counters'])
-				set=group['counters']
-				charhash = model.swrifts_counters
-				Swrifts.element_update(model, set, charhash)
-			else 
-				return nil
-			end
+			# if (group['counters'])
+				# set=group['counters']
+				# charhash = model.swrifts_counters
+				# Swrifts.element_update(model, set, charhash)
+			# else 
+				# return nil
+			# end
 					
 		end
 
