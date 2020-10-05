@@ -17,7 +17,7 @@ module AresMUSH
 			feature_name = feature_name.gsub("^", "")	 #remove the ^ that appear in the feature name		
 			feature_group = Global.read_config('swrifts', featuretype)
 			fg = feature_group.select { |a| a['name'].downcase == feature_name.downcase }.first
-			return ('lldldldld')
+			return (fg.inspect)
 			
 			#-----
 			if (fg['stats'])
