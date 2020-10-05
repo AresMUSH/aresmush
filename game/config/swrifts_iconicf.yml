@@ -1550,8 +1550,6 @@ swrifts:
             skills:
                 Notice: 2            
             hinderances: 
-                - Young-*
-                - Small*
                 - TestHind*
             edges:
                 - AB Magic*
