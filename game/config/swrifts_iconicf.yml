@@ -2,6 +2,37 @@
 swrifts:
     iconicf:
         -
+            name: Test
+            book_reference: None
+            description: A testing framework for staff use
+            counters:
+                ppe_max: 5
+                isp_max: 5
+            traits:
+                rank: Legendary
+            stats:
+                Strength: 4
+                Agility: 4
+            chargen_points:
+                magic_slots: 2
+                psionic_slots: 1
+            skills:
+                Notice: 2            
+            hinderances: 
+                - TestHind*
+            edges:
+                - TestEdge*
+            magic_powers:
+                - Bolt*
+            abilities:
+                - Cosmic Confluence*
+                - Mystic Power Modifiers*
+            complications:
+                - Arcane Duality*
+                - Cybernetics*
+                - Higher Standard*
+                - Power Activators* 
+        -
             name: Dragon Juicer
             book_reference: A&M 7
             description: When the drug augmenting you is dragon blood. 
@@ -1532,36 +1563,3 @@ swrifts:
                 # -
             # complications:
                 # -
-        -
-            name: Test
-            book_reference: None
-            description: A testing framework for staff use
-            counters:
-                ppe_max: 5
-                isp_max: 5
-            traits:
-                rank: Legendary
-            stats:
-                Strength: 4
-                Agility: 4
-            chargen_points:
-                magic_slots: 2
-                psionic_slots: 1
-            skills:
-                Notice: 2            
-            hinderances: 
-                - TestHind*
-                - Elderly*
-            edges:
-                - ABMagic*
-                - ABPsionics*
-            magic_powers:
-                - Bolt*
-            abilities:
-                - Cosmic Confluence*
-                - Mystic Power Modifiers*
-            complications:
-                - Arcane Duality*
-                - Cybernetics*
-                - Higher Standard*
-                - Power Activators* 

@@ -12,8 +12,8 @@ module AresMUSH
 		
 		def self.add_feature(model, collection, system, system_name) 
 			# model - Aliana
-			# collection - SwriftsHinderances
-			# system - "hinderances"
+			# collection - SwriftsEdges
+			# system - "edges"
 			# system_name - testhind
 			collection.create(name: system_name, character: model)
 			system_name = system_name.downcase
@@ -26,7 +26,7 @@ module AresMUSH
 			newsh = systemhash.select { |a| a['name'].to_s != '' } #the whole System minus empty entries
 			# return (newfg)
 			group = newsh.select { |a| a['name'].downcase == system_name.downcase }.first #the whole Group
-			# return (group.inspect) 
+			 return (group.inspect) 
 			
 			
 			if (group['stats'])
