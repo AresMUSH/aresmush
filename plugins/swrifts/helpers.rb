@@ -31,7 +31,6 @@ module AresMUSH
 			#-----
 			if (fg['stats'])
 				feature_stats = fg['stats']
-				return feature_stats
 				feature_stats.each do |key, rating|
 					stat_name = "#{key}".downcase
 					mod = "#{rating}".to_i
