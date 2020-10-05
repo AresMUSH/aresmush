@@ -89,8 +89,8 @@ module AresMUSH
 			group.each do |key, rating| 
 				point_name = "#{key}".downcase 
 				mod = "#{rating}".to_i
-				sgroup = "swrifts_#{group_name}"
-				element = model.sgroup.select { |a| a.name.downcase == point_name }.first
+				sgroup = "model.swrifts_#{group_name}"
+				element = sgroup.select { |a| a.name.downcase == point_name }.first
 				current_rating = element ? element.rating : 0
 				new_rating = current_rating + mod
 				element.update(rating: new_rating)
