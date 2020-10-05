@@ -43,7 +43,8 @@ module AresMUSH
 			#-----
 			if (fg['stats'])
 				feature_stats = fg['stats']
-				ss = Swrifts.element_update(model, feature_stats, "stats")
+				charstats = model.swrifts_stats
+				Swrifts.element_update(model, feature_stats, charstats)
 				# feature_stats.each do |key, rating|
 					# group = stats
 					# point_name = "#{key}".downcase
@@ -106,28 +107,34 @@ module AresMUSH
 		## ----- Generic stat and rating lookup
 		
 		#Swrifts.element_update(model, feature_stats, stats)
-		def self.element_update(model, group, group_name)
-			sgroup = Swrifts.ymlfiles(model, group_name)
-			sgroup.each do |key, rating| 
+		def self.element_update(model, featurehash, charhash)
+			# sgroup = Swrifts.ymlfiles(model, group_name)
+			featurehash.each do |key, rating| 
 				point_name = "#{key}".downcase 
 				mod = "#{rating}".to_i
-				element = sgroup.select { |a| a.name.downcase == point_name }.first
+				element = charhash.select { |a| a.name.downcase == point_name }.first
 				current_rating = element ? element.rating : 0
 				new_rating = current_rating + mod
 				element.update(rating: new_rating)
 			end 
 		end
+
+		# feature_stats.each do |key, rating|
+			# group = stats
+			# point_name = "#{key}".downcase
+			# mod = "#{rating}".to_i
+			# char.swrifts_stats.select { |a| a.name.downcase == name_downcase }.first
+			# current_rating = stat ? stat.rating : 0
+			# new_rating = current_rating + mod
+			# stat = Swrifts.find_stat(model, point_name)				
+			# stat.update(rating: new_rating)
+		# end 
 		
-		# def self.generic_rating(model, group, element_name)
-			# element = Swrifts.find_element(model, group, element_name)
-			# element ? element.rating : 0
+		# def self.stat_rating(char, stat_name)
+			# char.swrifts_stats.select { |a| a.name.downcase == name_downcase }.first
+			# stat ? stat.rating : 0
 		# end
 
-		# def self.find_element(model, group, element_name)
-			# name_downcase = element_name.downcase
-			# sgroup = "swrifts_#{group}"
-			# model.sgroup.select { |a| a.name.downcase == name_downcase }.first
-		# end
 		
 		
 		## ----- Add Rating
