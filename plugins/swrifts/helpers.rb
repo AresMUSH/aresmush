@@ -10,23 +10,23 @@ module AresMUSH
 				
 		## ----- Features
 		
-		def self.add_feature(model, collection, grouptype, element_name)
-			collection.create(name: element_name, character: model)
-			grouptype = grouptype.downcase
-			# return (grouptype)
-			element_name = element_name.gsub("*", "")	 #remove the * that appear in the feature name		
-			element_name = element_name.gsub("^", "")	 #remove the ^ that appear in the feature name		
-			grouphash = Global.read_config('swrifts', grouptype) #the whole Group
-			# return (grouphash.inspect)
-			# return (element_name)
-			newfg = grouphash.select { |a| a['name'].to_s != '' } #the whole Group minus empty entries
+		def self.add_feature(model, collection, system, group_name)
+			collection.create(name: group_name, character: model)
+			system = system.downcase
+			# return (system)
+			group_name = group_name.gsub("*", "")	 #remove the * that appear in the feature name		
+			group_name = group_name.gsub("^", "")	 #remove the ^ that appear in the feature name		
+			systemhash = Global.read_config('swrifts', system) #the whole System from the yml
+			# return (systemhash.inspect)
+			# return (group_name)
+			newsh = systemhash.select { |a| a['name'].to_s != '' } #the whole System minus empty entries
 			# return (newfg)
-			fg = newfg.select { |a| a['name'].downcase == element_name.downcase }.first #the whole Element
-			# return (fg.inspect) 
+			sh = newsh.select { |a| a['name'].downcase == group_name.downcase }.first #the whole Set
+			 return (sh.inspect) 
 			
 			
-			if (fg['stats'])
-				stats=fg['stats']
+			if (sh['stats'])
+				stats=sh['stats']
 				charhash = model.swrifts_stats
 				# return (charhash.inspect)
 				ss = Swrifts.element_update(model, stats, charhash)
@@ -35,26 +35,26 @@ module AresMUSH
 				return nil
 			end
 			
-			if (fg['chargen_points'])
-				cp=fg['chargen_points']				
+			if (sh['chargen_points'])
+				cp=sh['chargen_points']				
 				charhash = model.swrifts_chargenpoints
-				Swrifts.element_update(model, grouphash, charhash)
+				Swrifts.element_update(model, systemhash, charhash)
 			else 
 				return nil
 			end
 
-			if (fg['dstats'])
-				dstats=fg['dstats']
+			if (sh['dstats'])
+				dstats=sh['dstats']
 				charhash = model.swrifts_dstats
-				Swrifts.element_update(model, grouphash, charhash)
+				Swrifts.element_update(model, systemhash, charhash)
 			else 
 				return nil
 			end
 
-			if (fg['counters'])
-				counters=fg['counters']
+			if (sh['counters'])
+				counters=sh['counters']
 				charhash = model.swrifts_counters
-				Swrifts.element_update(model, grouphash, charhash)
+				Swrifts.element_update(model, systemhash, charhash)
 			else 
 				return nil
 			end
@@ -62,8 +62,8 @@ module AresMUSH
 		end
 
 		## ----- Generic group update
-		def self.element_update(model, grouphash, charhash)
-			grouphash.each do |key, rating| 
+		def self.element_update(model, systemhash, charhash)
+			systemhash.each do |key, rating| 
 				point_name = "#{key}".downcase 
 				mod = "#{rating}".to_i
 				# return (point_name.inspect)
