@@ -12,6 +12,14 @@ module AresMUSH
 				format_three_per_line @char.swrifts_chargenpoints
 			end
 
+			def counters
+				format_three_per_line @char.swrifts_counters
+			end
+
+			def dstats
+				format_three_per_line @char.swrifts_dstats
+			end
+
 			def format_three_per_line(list)
 				list.to_a.sort_by { |a| a.name }
 					.each_with_index
@@ -22,6 +30,7 @@ module AresMUSH
 						"#{linebreak} #{title} #{rating} "
 				end
 			end
+	
 			
  		end
 	end

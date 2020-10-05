@@ -36,19 +36,6 @@ module AresMUSH
 			def handle  
 			
 				iconicf = Swrifts.get_iconicf(self.enactor, self.iconicf_name) 
-				iconicf_traits=iconicf['traits']
-				  
-				iconicf_skills=iconicf['skills'] 
-				iconicf_hinderances=iconicf['hinderances'] 
-				iconicf_edges=iconicf['edges'] 
-				iconicf_abilities=iconicf['abilities'] 
-				iconicf_complications=iconicf['complications'] 
-				iconicf_magic_powers=iconicf['magic_powers'] 
-				iconicf_psionic_powers=iconicf['psionic_powers'] 
-				iconicf_cybernetics=iconicf['cybernetics'] 
-				iconicf_chargen_points=iconicf['chargen_points']
-				iconicf_counters = iconicf['counters']
-
 
 				## ----- Update Iconic Framework
 				ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
@@ -58,8 +45,9 @@ module AresMUSH
 				client.emit_success ("Iconic Framework Added")
 
 				## ----- Update Traits (Rank)
-				if (iconicf_traits)
-						iconicf_traits.each do |key, rating|
+				if (iconicf['traits'])
+					iconicf_traits=iconicf['traits']
+					iconicf_traits.each do |key, rating|
 						trait_name = "#{key}".downcase
 						mod = "#{rating}"
 						ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
@@ -100,7 +88,8 @@ module AresMUSH
 				end
 
 				## ----- Update Skills
-				if (iconicf_skills)
+				if (iconicf['skills'])
+					iconicf_skills=iconicf['skills'] 
 					# grab the list from the config file and break it into 'key' (before the ':') and 'rating' (after the ':')
 					iconicf_skills.each do |key, rating|
 						# alias the 'key' because the command below doesn't parse the #'s and {'s etc.
@@ -125,7 +114,8 @@ module AresMUSH
 				end
 				
 				## ----- Update Chargen Points
-				if (iconicf_chargen_points)
+				if (iconicf['chargen_points'])
+					iconicf_chargen_points=iconicf['chargen_points']
 					# grab the list from the config file and break it into 'key' (before the ':') and 'rating' (after the ':')
 					iconicf_chargen_points.each do |key, rating|
 						# alias the 'key' because the command below doesn't parse the #'s and {'s etc.
@@ -150,7 +140,8 @@ module AresMUSH
 				end
 				
 				## ----- Update Counters
-				if (iconicf_counters)
+				if (iconicf['counters'])
+					iconicf_counters = iconicf['counters']
 					iconicf_counters.each do |key, rating|
 						counter_name = "#{key}".downcase
 						mod = "#{rating}".to_i
@@ -169,28 +160,13 @@ module AresMUSH
 				end
 
 				# ----- This sets the default Hinderances on the Character -----	
-				if (iconicf_hinderances) 
-					
+				if (iconicf['hinderances']) 
+					iconicf_hinderances=iconicf['hinderances'] 
 					iconicf_hinderances.each do |key|
 						hinderance_name = "#{key}".downcase
 
 						ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-							ss = Swrifts.add_feature(model, SwriftsHinderances, "Hinderances", hinderance_name)
-							client.emit (ss)
-							# client.emit ( "#{ht}" )
-							# feature_group = Global.read_config('swrifts','hinderances' )
-							# client.emit (feature_group.inspect)
-							# cgn = hinderance_name.gsub("*", "")
-							# fg = feature_group.select { |a| a['name'].downcase ==cgn.downcase }.first
-
-							# client.emit(fg.inspect)
-							# return
-							
-
-							# feature_stats = feature_group['stats']
-							# feature_cp = feature_group['chargen_points']
-							# feature_dstats = feature_group['chargen_points']
-							# feature_counters = feature_group['counters']
+							Swrifts.add_feature(model, SwriftsHinderances, "Hinderances", hinderance_name)
 						end
 					end
 					client.emit_success t('swrifts.iconichinderances_set')
@@ -199,82 +175,89 @@ module AresMUSH
 				end
 				
 				# ----- This sets the default Edges on the Character -----				
-				# if (iconicf_edges)
-					# iconicf_edges.each do |key|
-						# setthing = "#{key}".downcase
-						# ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-							# SwriftsEdges.create(name: setthing, character: model)
-						# end
-					# end
-					# client.emit_success t('swrifts.iconicedges_set')
-				# else 
-					# client.emit_failure ("This Iconic Framework has no Edges")
-				# end
+				if (iconicf['edges'])
+					iconicf_edges=iconicf['edges'] 
+					iconicf_edges.each do |key|
+						edge_name = "#{key}".downcase
+						
+						ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
+							Swrifts.add_feature(model, SwriftsEdges, "Edges", edge_name)
+						end
+					end
+					client.emit_success t('swrifts.iconicedges_set')
+				else 
+					client.emit_failure ("This Iconic Framework has no Edges")
+				end
 
 				# ----- This sets the default Magic Powers on the Character -----	
-					# if (iconicf_magic_powers)
-					# iconicf_magic_powers.each do |key|
-						# setthing = "#{key}".downcase
-						# ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-							# SwriftsMpowers.create(name: setthing, character: model)
-						# end
-					# end
-					# client.emit_success t('swrifts.iconicmpowers_set')
-				# else 
-					# client.emit_failure ("This Iconic Framework has no Magic Powers")
-				# end 
+				if (iconicf['magic_powers'])
+					iconicf_magic_powers=iconicf['magic_powers'] 
+					iconicf_magic_powers.each do |key|
+						setthing = "#{key}".downcase
+						ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
+							SwriftsMpowers.create(name: setthing, character: model)
+						end
+					end
+					client.emit_success t('swrifts.iconicmpowers_set')
+				else 
+					client.emit_failure ("This Iconic Framework has no Magic Powers")
+				end 
 
 				# ----- This sets the default Psionic Powers on the Character -----	
-				# if (iconicf_psionic_powers)
-					# iconicf_psionic_powers.each do |key|
-						# setthing = "#{key}".downcase
-						# ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-							# SwriftsPpowers.create(name: setthing, character: model)
-						# end
-					# end
-					# client.emit_success t('swrifts.iconicppowers_set')
-				# else 
-					# client.emit_failure ("This Iconic Framework has no Psionic Powers")
-				# end
+				if (iconicf['psionic_powers'])
+					iconicf_psionic_powers=iconicf['psionic_powers']
+					iconicf_psionic_powers.each do |key|
+						setthing = "#{key}".downcase
+						ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
+							SwriftsPpowers.create(name: setthing, character: model)
+						end
+					end
+					client.emit_success t('swrifts.iconicppowers_set')
+				else 
+					client.emit_failure ("This Iconic Framework has no Psionic Powers")
+				end
 
 				# ----- This sets the default Cybernetics on the Character -----	
-				# if (iconicf_cybernetics)
-					# iconicf_cybernetics.each do |key|
-						# setthing = "#{key}".downcase
-						# ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-							# SwriftsCybernetics.create(name: setthing, character: model)
-						# end
-					# end
-					# client.emit_success t('swrifts.iconiccybernetics_set')
-				# else 
-					# client.emit_failure ("This Iconic Framework has no Cybernetics")
-				# end
+				if (iconicf['cybernetics'])
+					iconicf_cybernetics=iconicf['cybernetics']
+					iconicf_cybernetics.each do |key|
+						setthing = "#{key}".downcase
+						ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
+							SwriftsCybernetics.create(name: setthing, character: model)
+						end
+					end
+					client.emit_success t('swrifts.iconiccybernetics_set')
+				else 
+					client.emit_failure ("This Iconic Framework has no Cybernetics")
+				end
 				
 				# ----- This sets the default Abilities on the Character -----	
-				# if (iconicf_abilities)
-					# iconicf_abilities.each do |key|
-						# setthing = "#{key}".downcase
-						# ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-							# SwriftsAbilities.create(name: setthing, character: model)
-						# end
-					# end
-					# client.emit_success t('swrifts.iconicabilities_set')
-				# else 
-					# client.emit_failure ("This Iconic Framework has no Abilities")
-				# end
+				if (iconicf['abilities'])
+					iconicf_abilities=iconicf['abilities'] 
+					iconicf_abilities.each do |key|
+						setthing = "#{key}".downcase
+						ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
+							SwriftsAbilities.create(name: setthing, character: model)
+						end
+					end
+					client.emit_success t('swrifts.iconicabilities_set')
+				else 
+					client.emit_failure ("This Iconic Framework has no Abilities")
+				end
 				
 				# ----- This sets the default Complications on the Character -----
-				# if (iconicf_complications)
-					# iconicf_complications.each do |key|
-						# setthing = "#{key}".downcase
-						# ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-							# SwriftsComplications.create(name: setthing, character: model)
-						# end
-					# end
-					# client.emit_success t('swrifts.iconiccomplications_set')
-				# else 
-					# client.emit_failure ("This Iconic Framework has no Complications")
-				# end
+				if (iconicf['complications'])
+					iconicf_complications=iconicf['complications'] 
+					iconicf_complications.each do |key|
+						setthing = "#{key}".downcase
+						ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
+							SwriftsComplications.create(name: setthing, character: model)
+						end
+					end
+					client.emit_success t('swrifts.iconiccomplications_set')
+				else 
+					client.emit_failure ("This Iconic Framework has no Complications")
+				end
 				
 				client.emit_success t('swrifts.iconicf_complete')
 			end
