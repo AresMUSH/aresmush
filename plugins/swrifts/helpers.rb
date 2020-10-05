@@ -26,36 +26,36 @@ module AresMUSH
 			
 			
 			if (group['stats'])
-				stats=group['stats']
-				return (stats.inspect)
+				set=group['stats']
+				# return (set.inspect) # "Strength"=>-2, "Agility"=>-2
 				charhash = model.swrifts_stats
-				# return (charhash.inspect)
-				ss = Swrifts.element_update(model, stats, charhash)
+				return (charhash.inspect)
+				ss = Swrifts.element_update(model, set, charhash)
 				# return (ss.inspect)
 			else 
 				return nil
 			end
 			
 			if (group['chargen_points'])
-				cp=group['chargen_points']				
+				set=group['chargen_points']				
 				charhash = model.swrifts_chargenpoints
-				Swrifts.element_update(model, systemhash, charhash)
+				Swrifts.element_update(model, set, charhash)
 			else 
 				return nil
 			end
 
 			if (group['dstats'])
-				dstats=group['dstats']
+				set=group['dstats']
 				charhash = model.swrifts_dstats
-				Swrifts.element_update(model, systemhash, charhash)
+				Swrifts.element_update(model, set, charhash)
 			else 
 				return nil
 			end
 
 			if (group['counters'])
-				counters=group['counters']
+				set=group['counters']
 				charhash = model.swrifts_counters
-				Swrifts.element_update(model, systemhash, charhash)
+				Swrifts.element_update(model, set, charhash)
 			else 
 				return nil
 			end
@@ -63,8 +63,8 @@ module AresMUSH
 		end
 
 		## ----- Generic group update
-		def self.element_update(model, systemhash, charhash)
-			systemhash.each do |key, rating| 
+		def self.element_update(model, set, charhash)
+			set.each do |key, rating| 
 				point_name = "#{key}".downcase 
 				mod = "#{rating}".to_i
 				# return (point_name.inspect)
