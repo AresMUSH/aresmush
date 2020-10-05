@@ -31,11 +31,11 @@ module AresMUSH
 			
 			if (group['stats'])
 				set=group['stats']
-				 return (set.inspect) # "Strength"=>-2, "Agility"=>-2
+				# return (set.inspect) # "Strength"=>-2, "Agility"=>-2
 				charhash = model.swrifts_stats
 				# return (charhash.inspect)
 				ss = Swrifts.element_update(model, set, charhash)
-				# return (ss.inspect)
+				return (ss.inspect)
 			else 
 				return nil
 			end
@@ -69,7 +69,7 @@ module AresMUSH
 		## ----- Generic group update
 		def self.element_update(model, set, charhash)
 			set.each do |key, rating| 
-				# return (set.inspect)
+				 return (set)
 				element_name = "#{key}".downcase 
 				# return (element_name.inspect)
 				mod = "#{rating}".to_i
