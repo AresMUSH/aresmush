@@ -87,7 +87,7 @@ module AresMUSH
 		#Swrifts.element_update(model, feature_stats, stats)
 		def self.element_update(model, group, group_name)
 			cc = "swrifts_#{group_name}"
-			sgroup = model.cc
+			sgroup = model.swrifts_"#{group_name}"
 			return sgroup
 			group.each do |key, rating| 
 				point_name = "#{key}".downcase 
