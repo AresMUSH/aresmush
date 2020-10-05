@@ -57,7 +57,7 @@ swrifts:
                 psionic_slots: 
             hinderances: 
                 - CHOICE*
-                - Enemies+*
+                - Enemy+*
             edges:
                 - Brawny*
                 - Quick* 
@@ -94,7 +94,7 @@ swrifts:
                 Survival: 2
                 Focus: 2
             hinderances: 
-                - Enemies-*
+                - Enemy-*
             edges:
                 - AB Gifted*
                 - Charismatic*
@@ -391,7 +391,7 @@ swrifts:
                 Faith: 2
                 Fighting: 2
             hinderances: 
-                - Enemies-*
+                - Enemy-*
             edges:
                 - AB Psionics*
                 - AB Miracles* 
@@ -503,7 +503,7 @@ swrifts:
                 Spellcasting: 2
                 Repair: 2
             hinderances: 
-                - Enemies-*
+                - Enemy-*
             edges:
                 - AB Magic*
                 - Master of Magic*
@@ -532,10 +532,7 @@ swrifts:
             book_reference: B&B 13
             description: Practitioners of magic with a talent for manipulating - or "shifting" the patterns of the raw cosmic energies that bind the Megaverse(R) together.
             chargen_points:
-                magic_slots: 1
-            counters:
-                ppe_max: 15
-                ppe_current: 15
+                magic_slots: -2
             skills:
                 Occult: 2
                 Spellcasting: 2
@@ -588,7 +585,7 @@ swrifts:
             hinderances: 
                 - Habit-*
                     - Hunter's Instinct
-                - Enemies+*
+                - Enemy+*
                 - Vow+*
             edges:
                 - Acrobat*
@@ -598,8 +595,6 @@ swrifts:
                 - Man-Monster Form*
                 - AB Magic*
                 - AB Psionics*
-            magic_powers:
-                -
             abilities:
                 - Red in Tooth and Claw*
                 - Regeneration*
