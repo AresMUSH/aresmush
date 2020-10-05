@@ -20,14 +20,14 @@ module AresMUSH
 			#return (featurehash.inspect)
 			#return (feature_name)
 			newfg = featurehash.select { |a| a['name'].to_s != '' }
-			#return (newfg)
+			return (newfg)
 			fg = newfg.select { |a| a['name'].downcase == feature_name.downcase }.first
 			#return (fg.inspect)
 			
 			
 			if (fg['stats'])
 				charhash = model.swrifts_stats
-				return (charhash.inspect)
+				# return (charhash.inspect)
 				Swrifts.element_update(model, featurehash, charhash)
 			else 
 				return nil
