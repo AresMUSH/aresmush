@@ -28,7 +28,7 @@ module AresMUSH
 			
 			if (fg['chargen_points'])
 				featurehash = fg['chargen_points']
-				charhash = model.swrifts_chargen_points
+				charhash = model.swrifts_chargenpoints
 				Swrifts.element_update(model, featurehash, charhash)
 			else 
 				return nil
