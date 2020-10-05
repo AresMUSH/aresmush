@@ -15,35 +15,37 @@ module AresMUSH
 			featuretype = featuretype.downcase
 			feature_name = feature_name.gsub("*", "")	 #remove the * that appear in the feature name		
 			feature_name = feature_name.gsub("^", "")	 #remove the ^ that appear in the feature name		
-			feature_group = Global.read_config('swrifts', featuretype)
-			fg = feature_group.select { |a| a['name'].downcase == feature_name.downcase }.first
+			featurehash = Global.read_config('swrifts', featuretype)
+			fg = featurehash.select { |a| a['name'].downcase == feature_name.downcase }.first
 			
 			if (fg['stats'])
-				feature_stats = fg['stats']
-				charstats = model.swrifts_stats
-				Swrifts.element_update(model, feature_stats, charstats)
+				featurehash = fg['stats']
+				charhash = model.swrifts_stats
+				Swrifts.element_update(model, featurehash, charhash)
 			else 
 				return nil
 			end
 			
 			if (fg['chargen_points'])
-				charstats = model.swrifts_chargen_points
-				Swrifts.element_update(model, feature_stats, charstats)
+				featurehash = fg['chargen_points']
+				charhash = model.swrifts_chargen_points
+				Swrifts.element_update(model, featurehash, charhash)
 			else 
 				return nil
 			end
 
 			if (fg['dstats'])
-				feature_dstats = fg['dstats']
-				charstats = model.swrifts_dstats
-				Swrifts.element_update(model, feature_stats, charstats)
+				featurehash = fg['dstats']
+				charhash = model.swrifts_dstats
+				Swrifts.element_update(model, featurehash, charhash)
 			else 
 				return nil
 			end
 
 			if (fg['counters'])
-				charstats = model.swrifts_counters
-				Swrifts.element_update(model, feature_stats, charstats)
+				featurehash = fg['counters']
+				charhash = model.swrifts_counters
+				Swrifts.element_update(model, featurehash, charhash)
 			else 
 				return nil
 			end
