@@ -35,7 +35,7 @@ module AresMUSH
 				charhash = model.swrifts_stats
 				# return (charhash.inspect)
 				ss = Swrifts.element_update(model, set, charhash)
-				return (ss.inspect)
+				# return (ss.inspect)
 			else 
 				return nil
 			end
@@ -71,7 +71,7 @@ module AresMUSH
 			set.each do |key, rating| 
 				# return (set)
 				element_name = "#{key}".downcase 
-				return (element_name)
+				# return (element_name)
 				mod = "#{rating}".to_i
 				# return (element_name.inspect)
 				element = charhash.select { |a| a.name.downcase == element_name }.first
