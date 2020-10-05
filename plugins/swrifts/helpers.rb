@@ -65,11 +65,12 @@ module AresMUSH
 		## ----- Generic group update
 		def self.element_update(model, set, charhash)
 			set.each do |key, rating| 
+				return (set.inspect)
 				element_name = "#{key}".downcase 
 				mod = "#{rating}".to_i
 				# return (element_name.inspect)
 				element = charhash.select { |a| a.name.downcase == element_name }.first
-				return (element.inspect)								
+				# return (element.inspect)								
 				current_rating = element ? element.rating : 0
 				new_rating = current_rating + mod
 				element.update(rating: new_rating)
