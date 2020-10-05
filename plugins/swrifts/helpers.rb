@@ -28,7 +28,8 @@ module AresMUSH
 			if (fg['stats'])
 				featurehash = fg['stats']
 				charhash = model.swrifts_stats
-				ss = Swrifts.element_update(model, featurehash, charhash)
+				ss = charhash
+				Swrifts.element_update(model, featurehash, charhash)
 				return (ss)
 			else 
 				return nil
@@ -36,8 +37,8 @@ module AresMUSH
 			
 			if (fg['chargen_points'])
 				featurehash = fg['chargen_points']
-				charhash = model.swrifts_chargenpoints
-				ss = Swrifts.element_update(model, featurehash, charhash)
+				ss = charhash
+				Swrifts.element_update(model, featurehash, charhash)
 				return (ss)
 			else 
 				return nil
@@ -46,7 +47,8 @@ module AresMUSH
 			if (fg['dstats'])
 				featurehash = fg['dstats']
 				charhash = model.swrifts_dstats
-				ss = Swrifts.element_update(model, featurehash, charhash)
+				ss = charhash
+				Swrifts.element_update(model, featurehash, charhash)
 				return (ss)
 			else 
 				return nil
@@ -55,7 +57,8 @@ module AresMUSH
 			if (fg['counters'])
 				featurehash = fg['counters']
 				charhash = model.swrifts_counters
-				ss = Swrifts.element_update(model, featurehash, charhash)
+				ss = charhash
+				Swrifts.element_update(model, featurehash, charhash)
 				return (ss)
 			else 
 				return nil
