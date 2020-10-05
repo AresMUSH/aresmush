@@ -17,8 +17,8 @@ module AresMUSH
 			element_name = element_name.gsub("*", "")	 #remove the * that appear in the feature name		
 			element_name = element_name.gsub("^", "")	 #remove the ^ that appear in the feature name		
 			grouphash = Global.read_config('swrifts', grouptype) #the whole Group
-			return (grouphash.inspect)
-			# return (element_name)
+			# return (grouphash.inspect)
+			return (element_name)
 			newfg = grouphash.select { |a| a['name'].to_s != '' } #the whole Group minus empty entries
 			# return (newfg)
 			fg = newfg.select { |a| a['name'].downcase == element_name.downcase }.first #the whole Element
