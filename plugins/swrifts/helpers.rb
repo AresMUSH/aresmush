@@ -10,18 +10,18 @@ module AresMUSH
 				
 		## ----- Features
 		
-		def self.add_feature(model, collection, grouptype, feature_name)
-			collection.create(name: feature_name, character: model)
+		def self.add_feature(model, collection, grouptype, element_name)
+			collection.create(name: element_name, character: model)
 			grouptype = grouptype.downcase
 			#return (grouptype)
-			feature_name = feature_name.gsub("*", "")	 #remove the * that appear in the feature name		
-			feature_name = feature_name.gsub("^", "")	 #remove the ^ that appear in the feature name		
+			element_name = element_name.gsub("*", "")	 #remove the * that appear in the feature name		
+			element_name = element_name.gsub("^", "")	 #remove the ^ that appear in the feature name		
 			grouphash = Global.read_config('swrifts', grouptype)
 			#return (grouphash.inspect)
-			#return (feature_name)
+			return (element_name)
 			newfg = grouphash.select { |a| a['name'].to_s != '' }
-			return (newfg)
-			fg = newfg.select { |a| a['name'].downcase == feature_name.downcase }.first
+			# return (newfg)
+			fg = newfg.select { |a| a['name'].downcase == element_name.downcase }.first
 			#return (fg.inspect)
 			
 			
