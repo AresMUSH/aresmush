@@ -2,12 +2,20 @@ module AresMUSH
   module FS3Combat
     class CombatSummaryTemplate < ErbTemplateRenderer
 
-
-      attr_accessor :combat
+      attr_accessor :combat, :filter
       
-      def initialize(combat)
+      def initialize(combat, filter)
         @combat = combat
+        @filter = filter
         super File.dirname(__FILE__) + "/summary.erb"
+      end
+      
+      def combatants
+        all_combatants = self.combat.active_combatants
+        if (self.filter)
+          return all_combatants.select { |c| c.name.downcase.start_with?(self.filter.downcase) }
+        end
+        all_combatants
       end
       
       def slack(c)
@@ -36,9 +44,39 @@ module AresMUSH
         rating
       end
       
-      
       def vehicles
         combat.vehicles.sort_by(:name, :order => "ALPHA" ).map { |v| v.name }.join(" ")
+      end
+            
+      def combat_mods(c)
+        "A:#{c.attack_mod} D:#{c.defense_mod} L:#{c.damage_lethality_mod} I:#{c.initiative_mod}"
+      end
+      
+      def format_damage(c)
+        return "%xh%xr#{t('fs3combat.ko_status')}%xn" if c.is_ko
+        "#{FS3Combat.print_damage(c.total_damage_mod)} (#{(0 - c.total_damage_mod).ceil})"
+      end
+      
+      def format_weapon(c)
+        weapon = "#{c.weapon}"
+        
+        if (c.max_ammo > 0)
+          notes = " (#{c.ammo})"
+        else
+          notes = ""
+        end
+        
+        "#{weapon}#{notes}"
+      end
+      
+      def format_vehicle(c)
+        if (c.vehicle)
+          return c.vehicle.name
+        elsif (c.mount_type)
+          return c.mount_type
+        else
+          return ''
+        end
       end
       
     end
