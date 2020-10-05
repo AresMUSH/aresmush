@@ -176,7 +176,7 @@ module AresMUSH
 
 						ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
 							ss = Swrifts.add_feature(model, SwriftsHinderances, "Hinderances", hinderance_name)
-							client.emit (ss)
+							client.emit ('hello')
 							return
 							# client.emit ( "#{ht}" )
 							# feature_group = Global.read_config('swrifts','hinderances' )
