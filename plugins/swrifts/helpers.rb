@@ -40,29 +40,29 @@ module AresMUSH
 				return nil
 			end
 			
-			# if (group['chargen_points'])
-				# set=group['chargen_points']				
-				# charhash = model.swrifts_chargenpoints
-				# Swrifts.element_update(model, set, charhash)
-			# else 
-				# return nil
-			# end
+			if (group['chargen_points'])
+				set=group['chargen_points']				
+				charhash = model.swrifts_chargenpoints
+				Swrifts.element_update(model, set, charhash)
+			else 
+				return nil
+			end
 
-			# if (group['dstats'])
-				# set=group['dstats']
-				# charhash = model.swrifts_dstats
-				# Swrifts.element_update(model, set, charhash)
-			# else 
-				# return nil
-			# end
+			if (group['dstats'])
+				set=group['dstats']
+				charhash = model.swrifts_dstats
+				Swrifts.element_update(model, set, charhash)
+			else 
+				return nil
+			end
 
-			# if (group['counters'])
-				# set=group['counters']
-				# charhash = model.swrifts_counters
-				# Swrifts.element_update(model, set, charhash)
-			# else 
-				# return nil
-			# end
+			if (group['counters'])
+				set=group['counters']
+				charhash = model.swrifts_counters
+				Swrifts.element_update(model, set, charhash)
+			else 
+				return nil
+			end
 					
 		end
 
