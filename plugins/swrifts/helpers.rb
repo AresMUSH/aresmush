@@ -81,14 +81,15 @@ module AresMUSH
 		end
 
 		## ----- Generic stat and rating lookup
-		def self.generic_rating(char, group, element_name)
-			element = Swrifts.find_element(char, group, element_name)
+		def self.generic_rating(model, group, element_name)
+			element = Swrifts.find_element(model, group, element_name)
 			element ? element.rating : 0
 		end
 
-		def self.find_element(char, group, element_name)
+		def self.find_element(model, group, element_name)
 			name_downcase = element_name.downcase
-			char.swrifts_group.select { |a| a.name.downcase == name_downcase }.first
+			sgroup = "swrifts_#{group}"
+			model.sgroup.select { |a| a.name.downcase == name_downcase }.first
 		end
 		
 		
