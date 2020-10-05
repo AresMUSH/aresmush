@@ -393,6 +393,10 @@ swrifts:
       stats:
         Strength: -2
         Agility: 2
+      dstats:
+        Size: 1
+      chargen_points:
+        stats_points: 2
       counters:
         bennies_current: 2
         ppe_max: 10
