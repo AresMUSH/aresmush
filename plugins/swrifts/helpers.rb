@@ -21,14 +21,15 @@ module AresMUSH
 			# return (element_name)
 			newfg = grouphash.select { |a| a['name'].to_s != '' }
 			# return (newfg)
-			fg = newfg.select { |a| a['name'].downcase == element_name.downcase }.first
-			return (fg.inspect)
+			fg = newfg.select { |a| a['name'].downcase == element_name.downcase }.first #the whole Element
+			# return (fg.inspect) 
 			
 			
 			if (fg['stats'])
 				charhash = model.swrifts_stats
 				# return (charhash.inspect)
-				Swrifts.element_update(model, grouphash, charhash)
+				ss = Swrifts.element_update(model, grouphash, charhash)
+				return (ss.inspect)
 			else 
 				return nil
 			end
@@ -61,6 +62,7 @@ module AresMUSH
 			grouphash.each do |key, rating| 
 				point_name = "#{key}".downcase 
 				mod = "#{rating}".to_i
+				return (point_name.inspect)
 				element = charhash.select { |a| a.name.downcase == point_name }.first
 				current_rating = element ? element.rating : 0
 				new_rating = current_rating + mod
