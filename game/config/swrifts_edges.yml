@@ -292,3 +292,300 @@ swrifts:
         pre-reqs: 
             - rank: Legendary
             - edge: Weapon Master
+    -
+        name: Dimensional Portal
+        book_reference: B&B 29
+        description: Open a portal to a previously visited dimension, or a previously visited region of the current dimension. 
+        type: Iconic
+        pre-reqs: 
+            - rank: Veteran
+            - edge: Master of Magic
+            - skill: Arcane d8+
+    -
+        name: Gardener of the White Rose
+        book_reference: B&B 29
+        description: Gain the healing miracle power and access to its Mega Power modifiers. 
+        type: Iconic
+        pre-reqs: 
+            - rank: Novice
+            - iconicf: Knight of the White Rose
+            - skill: Healing d6+
+        miracle_powers:
+            - healing
+    -
+        name: Gateway Knight
+        book_reference: B&B 29
+        description: Knights of the White Rose that shuttle people in and out of the hidden refuge.  
+        type: Iconic
+        pre-reqs: 
+            - rank: Novice
+            - iconicf: Knight of the White Rose
+            - skill: Psionics d8+
+        psionic_powers: 
+            - teleport
+    -
+        name: Master Necromancer
+        book_reference: B&B 30
+        description: Necromancer raises especially strong Undead.  
+        type: Iconic
+        pre-reqs: 
+            - rank: Veteran
+            - iconicf: Necromancer
+    -
+        name: Pounce
+        book_reference: B&B 30
+        description: Doubles jumping distance and adds +4 damage when making a Wild Attack when coupled with a leap.  
+        type: Iconic
+        pre-reqs: 
+            - rank: Veteran
+            - iconicf: Heroic Vampire, Werecat
+    -
+        name: Shift the Arcane
+        book_reference: B&B 30
+        description: Alter the course of certain arcane abilities. 
+        type: Iconic
+        pre-reqs: 
+            - rank: Seasoned
+            - iconicf: Shifter
+    -
+        name: Teleportational Hitchhiker
+        book_reference: B&B 30
+        description: Follow someone teleporting. 
+        type: Iconic
+        pre-reqs: 
+            - rank: Novice
+            - iconicf: Ley Line Walker or Shifter
+            - powers: teleport
+    -
+        name: Beast Rider
+        book_reference: B&B 31
+        description: Increases the animal companions offered by the Beast Master edge. 
+        type: Professional
+        pre-reqs: 
+            - edge: Beast Master
+            - skill: Riding d10+
+    -
+        name: Frontiersman
+        book_reference: B&B 31
+        description:   
+        type: 
+        pre-reqs: 
+    -
+        name: Pathfinder
+        book_reference: B&B 31
+        description:   
+        type: 
+        pre-reqs: 
+    -
+        name: Squire of the White Rose
+        book_reference: B&B 31
+        description:   
+        type: 
+        pre-reqs: 
+    -
+        name: Reid's Ranger
+        book_reference: B&B 31
+        description:   
+        type: 
+        pre-reqs: 
+    -
+        name: Tundra Ranger
+        book_reference: B&B 32
+        description:   
+        type: 
+        pre-reqs: 
+    -
+        name: Vampire Killer
+        book_reference: B&B 32
+        description:   
+        type: 
+        pre-reqs: 
+    -
+        name: Elite Vampire Killer
+        book_reference: B&B 32
+        description:   
+        type: 
+        pre-reqs: 
+    -
+        name: Magi of Dweomer
+        book_reference: A&M 28
+        description:   
+        type: 
+        pre-reqs: 
+    -
+        name: Psychic of Psyscape
+        book_reference: A&M 28
+        description:   
+        type: 
+        pre-reqs: 
+    -
+        name: Arcane Marksman
+        book_reference: A&M 29
+        description:   
+        type: 
+        pre-reqs: 
+    -
+        name: Elemental Attunement
+        book_reference: A&M 29
+        description:   
+        type: 
+        pre-reqs: 
+    -
+        name: Life Sign Harmony
+        book_reference: A&M 29
+        description:   
+        type: 
+        pre-reqs: 
+    -
+        name: Warlock
+        book_reference: A&M 29
+        description:   
+        type: 
+        pre-reqs: 
+    -
+        name: Dream Vision
+        book_reference: A&M 29
+        description:   
+        type: 
+        pre-reqs: 
+    -
+        name: Minor Item Creation
+        book_reference: A&M 29
+        description:   
+        type: 
+        pre-reqs: 
+    -
+        name: Major Item Creation
+        book_reference: A&M 29
+        description:   
+        type: 
+        pre-reqs: 
+    -
+        name: Psi-Weapon Manipulation
+        book_reference: A&M 31
+        description:   
+        type: 
+        pre-reqs: 
+    -
+        name: Adept
+        book_reference: A&M 31
+        description:   
+        type: 
+        pre-reqs: 
+    -
+        name: Conjurer
+        book_reference: A&M 31
+        description:   
+        type: 
+        pre-reqs: 
+    -
+        name: Controller
+        book_reference: A&M 32
+        description:   
+        type: 
+        pre-reqs: 
+    -
+        name: Grey Seer
+        book_reference: A&M 32
+        description:   
+        type: 
+        pre-reqs: 
+    -
+        name: Totem Warrior
+        book_reference: A&M 33
+        description:   
+        type: 
+        pre-reqs: 
+    -
+        name: One with Magic
+        book_reference: B&B 33
+        description:   
+        type: 
+        pre-reqs: 
+    -
+        name: Quick Draw
+        book_reference: TLFM 10
+        description:   
+        type: 
+        pre-reqs: 
+    -
+        name: Fast Draw
+        book_reference: TLFM 10
+        description:   
+        type: 
+        pre-reqs: 
+    -
+        name: Bio-Manipulation
+        book_reference: TLFM 10
+        description:   
+        type: 
+        pre-reqs: 
+    -
+        name: Dragon Celerity
+        book_reference: TLFM 10
+        description:   
+        type: 
+        pre-reqs: 
+    -
+        name: Dragon Frost Scales
+        book_reference: TLFM 10
+        description:   
+        type: 
+        pre-reqs: 
+    -
+        name: Dragon Master Psychic
+        book_reference: TLFM 11
+        description:   
+        type: 
+        pre-reqs: 
+    -
+        name: Dragon Sharp Horns
+        book_reference: TLFM 11
+        description:   
+        type: 
+        pre-reqs: 
+    -
+        name: Master Elementalist
+        book_reference: TLFM 11
+        description:   
+        type: 
+        pre-reqs: 
+    -
+        name: Diabolist
+        book_reference: TLFM 11
+        description:   
+        type: 
+        pre-reqs: 
+    -
+        name: Elementalist
+        book_reference: TLFM 11
+        description:   
+        type: 
+        pre-reqs: 
+    -
+        name: Born to Ride
+        book_reference: TLFM 12
+        description:   
+        type: 
+        pre-reqs: 
+    -
+        name: Live to Ride
+        book_reference: TLFM 12
+        description:   
+        type: 
+        pre-reqs: 
+    -
+        name: Supernatural Strength
+        book_reference: TLFM 12
+        description:   
+        type: 
+        pre-reqs: 
+    -
+        name: Familiar Link
+        book_reference: TLFM 12
+        description: Metaphysical bond with an animalistic creature. 
+        type: Weird
+        pre-reqs: 
+            - rank: Novice (Shifter) or Veteran
+            - edge: AB Magic
+            - skill: Occult d10+, Spellcasting d10+
