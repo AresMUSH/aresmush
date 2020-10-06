@@ -17,8 +17,6 @@ module AresMUSH
 				case cmd.switch
 				when "ifset"
 					return IfSetCmd
-				when "init"
-					return InitCharCmd
 				when "iconicf"
 					if (!cmd.args)
 						return IconicfCmd
