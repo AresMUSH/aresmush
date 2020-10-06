@@ -1593,3 +1593,117 @@ swrifts:
         book_reference: TLPG 80
         type: 
         pre-reqs:
+    -
+        name: Delphi Juicer Treatment
+        description: 
+        book_reference: EohH 30
+        type: 
+        pre-reqs:
+    -
+        name: Genius
+        description: 
+        book_reference: EohH 30
+        type: 
+        pre-reqs:
+    -
+        name: Hyperion Treatment
+        description: 
+        book_reference: EohH 30
+        type: 
+        pre-reqs:
+    -
+        name: Mega-Juicer Treatment
+        description: 
+        book_reference: EohH 30
+        type: 
+        pre-reqs:
+    -
+        name: Phaeton Treatment
+        description: 
+        book_reference: EohH 30
+        type: 
+        pre-reqs:
+    -
+        name: Synthetic Immortality
+        description: 
+        book_reference: EohH 31
+        type: 
+        pre-reqs:
+    -
+        name: Titan Treatment
+        description: 
+        book_reference: EohH 31
+        type: 
+        pre-reqs:
+    -
+        name: Sharpshooting
+        description: 
+        book_reference: EohH 31
+        type: 
+        pre-reqs:
+    -
+        name: Trick Shooting
+        description: 
+        book_reference: EohH 31
+        type: 
+        pre-reqs:
+    -
+        name: Take 'em Down
+        description: 
+        book_reference: EohH 33
+        type: 
+        pre-reqs:
+    -
+        name: Improved Take 'em Down
+        description: 
+        book_reference: EohH 33
+        type: 
+        pre-reqs:
+    -
+        name: Combat Lifesaver
+        description: 
+        book_reference: EohH 33
+        type: 
+        pre-reqs:
+    -
+        name: Conditioned
+        description: 
+        book_reference: EohH 33
+        type: 
+        pre-reqs:
+    -
+        name: Demolitionist
+        description: 
+        book_reference: EohH 33
+        type: 
+        pre-reqs:
+    -
+        name: Expert Demolitionist
+        description: 
+        book_reference: EohH 33
+        type: 
+        pre-reqs:
+    -
+        name: Field Intel
+        description: 
+        book_reference: EohH 34
+        type: 
+        pre-reqs:
+    -
+        name: Legacy Scout
+        description: 
+        book_reference: EohH 34
+        type: 
+        pre-reqs:
+    -
+        name: Justice Ranger
+        description: 
+        book_reference: EohH 34
+        type: 
+        pre-reqs:
+    -
+        name: Monster Slayer
+        description: 
+        book_reference: EohH 34
+        type: 
+        pre-reqs:
