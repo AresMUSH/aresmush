@@ -90,13 +90,13 @@ module AresMUSH
 			end 
 		end
 		
-		def self.element_create(model, set, charhash)
+		def self.element_create(model, set, collection)
 			set.each do |key, rating| 
 				# return (set)
 				element_name = "#{key}".downcase 
 				# return (element_name)
 				mod = "#{rating}".to_i
-				element.create(rating: mod)
+				collection.create(name: element_name, rating: mod, character: model)
 			end 
 		end
 
