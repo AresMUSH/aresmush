@@ -23,7 +23,7 @@ swrifts:
                 - Elderly*
             edges:
                 - TestEdge*
-                - ABMagic*
+                - AB Magic*
             magic_powers:
                 - Bolt*
             abilities:
