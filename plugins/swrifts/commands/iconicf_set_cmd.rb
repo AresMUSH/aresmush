@@ -199,32 +199,6 @@ module AresMUSH
 				else 
 					client.emit_failure ("Init_char Error - Skills")
 				end 					
-
-				## ----- Update Skills
-				if (iconicf['skills'])
-					iconicf_skills=iconicf['skills'] 
-					# grab the list from the config file and break it into 'key' (before the ':') and 'rating' (after the ':')
-					iconicf_skills.each do |key, rating|
-						# alias the 'key' because the command below doesn't parse the #'s and {'s etc.
-						skill_name = "#{key}".downcase
-						# alias the 'rating' for the same reason and set it to an integer
-						mod = "#{rating}".to_i
-						# get the current rating of the skill
-						current_rating = Swrifts.skill_rating(enactor, skill_name).to_i
-						# add Iconic Framework bonus to Initial skill
-						new_rating = current_rating + mod
-												
-						ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-							# update the collection
-							skill = Swrifts.find_skill(model, skill_name)				
-							skill.update(rating: new_rating)
-						end
-					end
-					# client.emit_success t('swrifts.iconicskills_set')
-				else 
-					# If the Iconic Framework does not have this field in iconicf.yml, skip and emit to enactor
-					# client.emit_failure ("This Iconic Framework has no Skill changes")
-				end
 				
 
 				#----- This sets the default Chargen Points on the Character -----				
@@ -332,6 +306,32 @@ module AresMUSH
 					# client.emit_success t('swrifts.iconicedges_set')
 				else 
 					# client.emit_failure ("This Iconic Framework has no Edges")
+				end
+
+				## ----- Update Skills
+				if (iconicf['skills'])
+					iconicf_skills=iconicf['skills'] 
+					# grab the list from the config file and break it into 'key' (before the ':') and 'rating' (after the ':')
+					iconicf_skills.each do |key, rating|
+						# alias the 'key' because the command below doesn't parse the #'s and {'s etc.
+						skill_name = "#{key}".downcase
+						# alias the 'rating' for the same reason and set it to an integer
+						mod = "#{rating}".to_i
+						# get the current rating of the skill
+						current_rating = Swrifts.skill_rating(enactor, skill_name).to_i
+						# add Iconic Framework bonus to Initial skill
+						new_rating = current_rating + mod
+												
+						ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
+							# update the collection
+							skill = Swrifts.find_skill(model, skill_name)				
+							skill.update(rating: new_rating)
+						end
+					end
+					# client.emit_success t('swrifts.iconicskills_set')
+				else 
+					# If the Iconic Framework does not have this field in iconicf.yml, skip and emit to enactor
+					# client.emit_failure ("This Iconic Framework has no Skill changes")
 				end
 
 				# ----- This sets the default Magic Powers on the Character -----	
