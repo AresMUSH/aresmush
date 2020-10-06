@@ -63,6 +63,14 @@ module AresMUSH
 			else 
 				
 			end
+
+			if (group['skills'])
+				set=group['skills']
+				charhash = model.swrifts_counters
+				Swrifts.element_create(model, set, charhash)
+			else 
+				
+			end
 					
 		end
 
@@ -79,6 +87,16 @@ module AresMUSH
 				current_rating = element ? element.rating : 0
 				new_rating = current_rating + mod
 				element.update(rating: new_rating)
+			end 
+		end
+		
+		def self.element_create(model, set, charhash)
+			set.each do |key, rating| 
+				# return (set)
+				element_name = "#{key}".downcase 
+				# return (element_name)
+				mod = "#{rating}".to_i
+				element.create(rating: mod)
 			end 
 		end
 
