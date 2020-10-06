@@ -1396,7 +1396,7 @@ swrifts:
                 - CHOICE*
                     - Vow
             edges:
-                - Arcane Background*
+                - AB Miracles*
                     - Miracles
                 - Master of Magic*
                 - Arcane Background*
