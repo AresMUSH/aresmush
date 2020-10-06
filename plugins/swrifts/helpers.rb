@@ -67,7 +67,8 @@ module AresMUSH
 			if (group['skills'])
 				set=group['skills']
 				charhash = model.swrifts_counters
-				Swrifts.element_create(model, set, collection)
+				system = SwriftsSkills
+				Swrifts.element_create(model, set, system)
 			else 
 				
 			end
@@ -90,13 +91,13 @@ module AresMUSH
 			end 
 		end
 		
-		def self.element_create(model, set, collection)
+		def self.element_create(model, set, system)
 			set.each do |key, rating| 
 				# return (set)
 				element_name = "#{key}".downcase 
 				# return (element_name)
 				mod = "#{rating}".to_i
-				collection.create(name: element_name, rating: mod, character: model)
+				system.create(name: element_name, rating: mod, character: model)
 			end 
 		end
 
