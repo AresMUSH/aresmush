@@ -67,7 +67,7 @@ module AresMUSH
 			if (group['skills'])
 				set=group['skills']
 				charhash = model.swrifts_counters
-				Swrifts.element_create(model, set, charhash)
+				Swrifts.element_create(model, set, collection)
 			else 
 				
 			end
