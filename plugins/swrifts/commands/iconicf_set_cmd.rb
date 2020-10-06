@@ -35,6 +35,7 @@ module AresMUSH
 			
 #----- Begin of def handle -----			
 			def handle  
+				enactor.delete_swrifts_chargen #clear out the character
 			
 				iconicf = Swrifts.get_iconicf(self.enactor, self.iconicf_name) 
 				init = Global.read_config('swrifts', 'init')
