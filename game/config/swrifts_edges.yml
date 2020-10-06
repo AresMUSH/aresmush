@@ -38,7 +38,7 @@ swrifts:
             - rank: Novice
             - Agility: d8
     -
-        name: ABMagic
+        name: AB Magic
         description: Magical Arcane Background
         type: Background
         chargen_points:
@@ -48,7 +48,7 @@ swrifts:
         pre-reqs:
             - rank: Novice
     -
-        name: ABPsionics
+        name: AB Psionics
         description: Psionics Arcane Background
         type: Background
         chargen_points:
