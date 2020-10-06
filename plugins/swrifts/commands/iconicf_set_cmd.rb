@@ -40,7 +40,7 @@ module AresMUSH
 				init = Global.read_config('swrifts', 'init')
 				
 				#----- This sets the default traits field on the collection -----				
-				if (traits) 
+				if (init['traits']) 
 				traits = init['traits']
 					# grab the list from the config file and break it into 'key' (before the ':') and 'rating' (after the ':')
 					traits.each do |key, rating|
@@ -82,7 +82,7 @@ module AresMUSH
 				end
 						
 				#----- This sets the default stats field on the collection -----				
-				if (stats) 
+				if (init['stats']) 
 				stats = init['stats'] 
 					stats.each do |key, rating|
 						setthing = "#{key}".downcase
@@ -95,7 +95,7 @@ module AresMUSH
 				end
 						
 				#----- This sets the maximum stats field on the collection -----				
-				if (stat_max) 
+				if (init['stat_max']) 
 				stat_max = init['stat_max']
 					stat_max.each do |key, rating|
 						setthing = "#{key}".downcase
@@ -108,7 +108,7 @@ module AresMUSH
 				end
 						
 				#----- This sets the default minimums on the Character -----				
-				if (chargen_min)
+				if (init['chargen_min'])
 				chargen_min = init['chargen_min']
 					chargen_min.each do |key, rating|
 						setthing = "#{key}".downcase
@@ -121,7 +121,7 @@ module AresMUSH
 				end  						
 						
 				#----- This sets the default Advances on the Character -----				
-				if (advances)
+				if (init['advances'])
 				advances = init['advances']					
 					advances.each do |key, rating|
 						setthing = "#{key}".downcase
@@ -160,7 +160,7 @@ module AresMUSH
 				end
 						
 				#----- This sets the default derived stats field on the collection -----				
-				if (dstats) 
+				if (init['dstats']) 
 				dstats = init['dstats']
 					dstats.each do |key, rating|
 						setthing = "#{key}".downcase
@@ -173,7 +173,7 @@ module AresMUSH
 				end
 
 				#----- This sets the default skills on the Character -----				
-				if (skills)
+				if (init['skills'] )
 				skills = init['skills'] 
 					skills.each do |key, rating|
 						setthing = "#{key}".downcase
@@ -213,7 +213,7 @@ module AresMUSH
 				
 
 				#----- This sets the default Chargen Points on the Character -----				
-				if (chargen_points)
+				if (init['chargen_points'] )
 				chargen_points = init['chargen_points'] 
 					chargen_points.each do |key, rating|
 						setthing = "#{key}".downcase
@@ -252,7 +252,7 @@ module AresMUSH
 				end
 
 				#----- This sets the default counters field on the collection -----				
-				if (counters) 
+				if (init['counters']) 
 				counters = init['counters']
 					counters.each do |key, rating|
 						setthing = "#{key}".downcase
