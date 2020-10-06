@@ -232,30 +232,656 @@ swrifts:
             - rank: Novice
             - edge: Rich
     -
+        name: Block
+        description: 
+        book_reference: SWADE 40
+        type: 
+        pre-reqs:
+    -
+        name: Improved Block
+        description: 
+        book_reference: SWADE 40
+        type: 
+        pre-reqs:
+    -
+        name: Brawler
+        description: 
+        book_reference: SWADE 41
+        type: 
+        pre-reqs:
+    -
+        name: Bruiser
+        description: 
+        book_reference: SWADE 41
+        type: 
+        pre-reqs:
+    -
+        name: Calculating
+        description: 
+        book_reference: SWADE 41
+        type: 
+        pre-reqs:
+    -
+        name: Combat Reflexes
+        description: 
+        book_reference: SWADE 41
+        type: 
+        pre-reqs:
+    -
+        name: Counterattack
+        description: 
+        book_reference: SWADE 41
+        type: 
+        pre-reqs:
+    -
+        name: Dead Shot
+        description: 
+        book_reference: SWADE 41
+        type: 
+        pre-reqs:
+    -
+        name: Dodge
+        description: 
+        book_reference: SWADE 41
+        type: 
+        pre-reqs:
+    -
+        name: Improved Dodge
+        description: 
+        book_reference: SWADE 41
+        type: 
+        pre-reqs:
+    -
+        name: Double Tap
+        description: 
+        book_reference: SWADE 41
+        type: 
+        pre-reqs:
+    -
+        name: Extraction
+        description: 
+        book_reference: SWADE 41
+        type: 
+        pre-reqs:
+    -
+        name: Improved Extraction
+        description: 
+        book_reference: SWADE 42
+        type: 
+        pre-reqs:
+    -
+        name: Feint
+        description: 
+        book_reference: SWADE 42
+        type: 
+        pre-reqs:
+    -
+        name: First Strike
+        description: 
+        book_reference: SWADE 42
+        type: 
+        pre-reqs:
+    -
+        name: Improved First Strike
+        description: 
+        book_reference: SWADE 42
+        type: 
+        pre-reqs:
+    -
+        name: Free Runner
+        description: 
+        book_reference: SWADE 42
+        type: 
+        pre-reqs:
+    -
+        name: Frenzy
+        description: 
+        book_reference: SWADE 42
+        type: 
+        pre-reqs:
+    -
+        name: Improved Frenzy
+        description: 
+        book_reference: SWADE 42
+        type: 
+        pre-reqs:
+    -
+        name: Giant Killer
+        description: 
+        book_reference: SWADE 42
+        type: 
+        pre-reqs:
+    -
+        name: Hard to Kill
+        description: 
+        book_reference: SWADE 42
+        type: 
+        pre-reqs:
+    -
+        name: Harder to Kill
+        description: 
+        book_reference: SWADE 42
+        type: 
+        pre-reqs:
+    -
+        name: Improvisational Fighter
+        description: 
+        book_reference: SWADE 42
+        type: 
+        pre-reqs:
+    -
+        name: Iron Jaw
+        description: 
+        book_reference: SWADE 42
+        type: 
+        pre-reqs:
+    -
+        name: Killer Instinct
+        description: 
+        book_reference: SWADE 43
+        type: 
+        pre-reqs:
+    -
+        name: Level Headed
+        description: 
+        book_reference: SWADE 43
+        type: 
+        pre-reqs:
+    -
+        name: Improved Level Headed
+        description: 
+        book_reference: SWADE 43
+        type: 
+        pre-reqs:
+    -
+        name: Marksman
+        description: 
+        book_reference: SWADE 43
+        type: 
+        pre-reqs:
+    -
+        name: Martial Artist
+        description: 
+        book_reference: SWADE 43
+        type: 
+        pre-reqs:
+    -
+        name: Martial Warrior
+        description: 
+        book_reference: SWADE 43
+        type: 
+        pre-reqs:
+    -
+        name: Mighty Blow
+        description: 
+        book_reference: SWADE 43
+        type: 
+        pre-reqs:
+    -
+        name: Nerves of Steel
+        description: 
+        book_reference: SWADE 43
+        type: 
+        pre-reqs:
+    -
+        name: Improved Nerves of Steel
+        description: 
+        book_reference: SWADE 43
+        type: 
+        pre-reqs:
+    -
+        name: No Mercy
+        description: 
+        book_reference: SWADE 43
+        type: 
+        pre-reqs:
+    -
+        name: Rapid Fire
+        description: 
+        book_reference: SWADE 43
+        type: 
+        pre-reqs:
+    -
+        name: Improved Rapid Fire
+        description: 
+        book_reference: SWADE 43
+        type: 
+        pre-reqs:
+    -
+        name: Rock and Roll!
+        description: 
+        book_reference: SWADE 44
+        type: 
+        pre-reqs:
+    -
+        name: Steady Hands
+        description: 
+        book_reference: SWADE 44
+        type: 
+        pre-reqs:
+    -
+        name: Sweep
+        description: 
+        book_reference: SWADE 44
+        type: 
+        pre-reqs:
+    -
+        name: Improved Sweep
+        description: 
+        book_reference: SWADE 44
+        type: 
+        pre-reqs:
+    -
+        name: Trademark Weapon
+        description: 
+        book_reference: SWADE 44
+        type: 
+        pre-reqs:
+    -
+        name: Improved Trademark Weapon
+        description: 
+        book_reference: SWADE 44
+        type: 
+        pre-reqs:
+    -
+        name: Two-Fisted
+        description: 
+        book_reference: SWADE 44
+        type: 
+        pre-reqs:
+    -
+        name: Two-Gun Kid
+        description: 
+        book_reference: SWADE 44
+        type: 
+        pre-reqs:
+    -
+        name: Command
+        description: 
+        book_reference: SWADE 45
+        type: 
+        pre-reqs:
+    -
+        name: Command Presence
+        description: 
+        book_reference: SWADE 45
+        type: 
+        pre-reqs:
+    -
+        name: Fervor
+        description: 
+        book_reference: SWADE 45
+        type: 
+        pre-reqs:
+    -
+        name: Hold the Line!
+        description: 
+        book_reference: SWADE 45
+        type: 
+        pre-reqs:
+    -
+        name: Inspire
+        description: 
+        book_reference: SWADE 45
+        type: 
+        pre-reqs:
+    -
+        name: Natural Leader
+        description: 
+        book_reference: SWADE 45
+        type: 
+        pre-reqs:
+    -
+        name: Tactician
+        description: 
+        book_reference: SWADE 45
+        type: 
+        pre-reqs:
+    -
+        name: Master Tactician
+        description: 
+        book_reference: SWADE 45
+        type: 
+        pre-reqs:
+    -
+        name: Artificer
+        description: 
+        book_reference: SWADE 45
+        type: 
+        pre-reqs:
+    -
+        name: Channeling
+        description: 
+        book_reference: SWADE 46
+        type: 
+        pre-reqs:
+    -
+        name: Concentration
+        description: 
+        book_reference: SWADE 46
+        type: 
+        pre-reqs:
+    -
+        name: Extra Effort
+        description: 
+        book_reference: SWADE 46
+        type: 
+        pre-reqs:
+    -
+        name: Gadgeteer
+        description: 
+        book_reference: SWADE 46
+        type: 
+        pre-reqs:
+    -
+        name: Holy/Unholy Warrior
+        description: 
+        book_reference: SWADE 46
+        type: 
+        pre-reqs:
+    -
+        name: Mentalist
+        description: 
+        book_reference: SWADE 46
+        type: 
+        pre-reqs:
+    -
+        name: New Powers
+        description: 
+        book_reference: SWADE 47
+        type: 
+        pre-reqs:
+    -
+        name: PP Magic
+        description: 
+        book_reference: SWADE 47
+        type: 
+        pre-reqs:
+        counters: 
+            ppe_max: 5
+    -
+        name: PP Psionic
+        description: 
+        book_reference: SWADE 47
+        type: 
+        pre-reqs:
+        counters: 
+            isp_max: 5
+    -
+        name: PP Miracle
+        description: 
+        book_reference: SWADE 47
+        type: 
+        pre-reqs:
+        counters: 
+            ppe_max: 5
+    -
+        name: PP Gifted
+        description: 
+        book_reference: SWADE 47
+        type: 
+        pre-reqs:
+        counters: 
+            pp_max: 5
+    -
+        name: Power Surge
+        description: 
+        book_reference: SWADE 47
+        type: 
+        pre-reqs:
+    -
+        name: Rapid Recharge
+        description: 
+        book_reference: SWADE 47
+        type: 
+        pre-reqs:
+    -
+        name: Improved Rapid Recharge
+        description: 
+        book_reference: SWADE 47
+        type: 
+        pre-reqs:
+    -
+        name: Soul Drain
+        description: 
+        book_reference: SWADE 47
+        type: 
+        pre-reqs:
+    -
+        name: Wizard
+        description: 
+        book_reference: SWADE 47
+        type: 
+        pre-reqs:
+    -
+        name: Ace
+        description: 
+        book_reference: SWADE 47
+        type: 
+        pre-reqs:
+    -
+        name: Acrobat
+        description: 
+        book_reference: SWADE 48
+        type: 
+        pre-reqs:
+    -
+        name: Combat Acrobat
+        description: 
+        book_reference: SWADE 48
+        type: 
+        pre-reqs:
+    -
+        name: Assassin
+        description: 
+        book_reference: SWADE 48
+        type: 
+        pre-reqs:
+    -
+        name: Investigator
+        description: 
+        book_reference: SWADE 48
+        type: 
+        pre-reqs:
+    -
+        name: Jack-of-all-Trades
+        description: 
+        book_reference: SWADE 48
+        type: 
+        pre-reqs:
+    -
+        name: McGyver
+        description: 
+        book_reference: SWADE 49
+        type: 
+        pre-reqs:
+    -
+        name: Mr. Fix It
+        description: 
+        book_reference: SWADE 49
+        type: 
+        pre-reqs:
+    -
+        name: Scholar
+        description: 
+        book_reference: SWADE 49
+        type: 
+        pre-reqs:
+    -
+        name: Soldier
+        description: 
+        book_reference: SWADE 49
+        type: 
+        pre-reqs:
+    -
+        name: Thief
+        description: 
+        book_reference: SWADE 49
+        type: 
+        pre-reqs:
+    -
+        name: Woodsman
+        description: 
+        book_reference: SWADE 50
+        type: 
+        pre-reqs:
+    -
+        name: Bolster
+        description: 
+        book_reference: SWADE 50
+        type: 
+        pre-reqs:
+    -
+        name: Common Bond
+        description: 
+        book_reference: SWADE 50
+        type: 
+        pre-reqs:
+    -
+        name: Connections
+        description: 
+        book_reference: SWADE 50
+        type: 
+        pre-reqs:
+    -
+        name: Humiliate
+        description: 
+        book_reference: SWADE 50
+        type: 
+        pre-reqs:
+    -
+        name: Menacing
+        description: 
+        book_reference: SWADE 50
+        type: 
+        pre-reqs:
+    -
+        name: Provoke
+        description: 
+        book_reference: SWADE 50
+        type: 
+        pre-reqs:
+    -
+        name: Rabble-Rouser
+        description: 
+        book_reference: SWADE 50
+        type: 
+        pre-reqs:
+    -
+        name: Reliable
+        description: 
+        book_reference: SWADE 51
+        type: 
+        pre-reqs:
+    -
+        name: Retort
+        description: 
+        book_reference: SWADE 51
+        type: 
+        pre-reqs:
+    -
+        name: Streetwise
+        description: 
+        book_reference: SWADE 51
+        type: 
+        pre-reqs:
+    -
+        name: Strong Willed
+        description: 
+        book_reference: SWADE 51
+        type: 
+        pre-reqs:
+    -
+        name: Iron Will
+        description: 
+        book_reference: SWADE 51
+        type: 
+        pre-reqs:
+    -
+        name: Work the Room
+        description: 
+        book_reference: SWADE 51
+        type: 
+        pre-reqs:
+    -
+        name: 
+        description: Work the Crowd
+        book_reference: SWADE 51
+        type: 
+        pre-reqs:
+    -
+        name: Beast Bond
+        description: 
+        book_reference: SWADE 51
+        type: 
+        pre-reqs:
+    -
+        name: Beast Master
+        description: 
+        book_reference: SWADE 51
+        type: 
+        pre-reqs:
+    -
+        name: Champion
+        description: 
+        book_reference: SWADE 52
+        type: 
+        pre-reqs:
+    -
+        name: Chi
+        description: 
+        book_reference: SWADE 52
+        type: 
+        pre-reqs:
+    -
+        name: Danger Sense
+        description: 
+        book_reference: SWADE 52
+        type: 
+        pre-reqs:
+    -
+        name: Healer
+        description: 
+        book_reference: SWADE 52
+        type: 
+        pre-reqs:
+    -
+        name: Liquid Courage
+        description: 
+        book_reference: SWADE 52
+        type: 
+        pre-reqs:
+    -
+        name: Scavenger
+        description: 
+        book_reference: SWADE 52
+        type: 
+        pre-reqs:
+    -
         name: Followers
         description: The hero has five followers.
         type: Legendary
         pre-reqs: 
             - rank: Legendary
             - wildcard: 1
-    # -
-        # name: Professional
-        # description: The character’s Trait and its limit increases one step.
-        # pre-reqs: 
-            # - rank: Legendary
-            # - one attribute at max
-    # -
-        # name: Expert
-        # description: The character’s Trait and its limit increases one step.
-        # pre-reqs: 
-            # - rank: Legendary
-            # - edge: Professional
-    # -
-        # name: Master
-        # description: The character’s Wild Die is a d10 with a chosen Trait.
-        # pre-reqs: 
-            # - rank: Legendary
-            # - edge: Expert
+    -
+        name: Professional
+        description: The character’s Trait and its limit increases one step.
+        pre-reqs: 
+            - rank: Legendary
+            - one attribute at max
+    -
+        name: Expert
+        description: The character’s Trait and its limit increases one step.
+        pre-reqs: 
+            - rank: Legendary
+            - edge: Professional
+    -
+        name: Master
+        description: The character’s Wild Die is a d10 with a chosen Trait.
+        pre-reqs: 
+            - rank: Legendary
+            - edge: Expert
     -
         name: Sidekick
         description: The character gains a Wild Card sidekick.
