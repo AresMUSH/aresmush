@@ -1215,3 +1215,381 @@ swrifts:
             - rank: Novice (Shifter) or Veteran
             - edge: AB Magic
             - skill: Occult d10+, Spellcasting d10+
+    -
+        name: Flame Blast
+        description: 
+        book_reference: TLPG 72
+        type: 
+        pre-reqs:
+    -
+        name: Improved Fiery Aura
+        description: 
+        book_reference: TLPG 72
+        type: 
+        pre-reqs:
+    -
+        name: Improved Flame Bolt
+        description: 
+        book_reference: TLPG 72
+        type: 
+        pre-reqs:
+    -
+        name: Rapid Flame Bolt
+        description: 
+        book_reference: TLPG 72
+        type: 
+        pre-reqs:
+    -
+        name: Rad the Flame
+        description: 
+        book_reference: TLPG 72
+        type: 
+        pre-reqs:
+    -
+        name: Beyond the Limit
+        description: 
+        book_reference: TLPG 72
+        type: 
+        pre-reqs:
+    -
+        name: Upgrade
+        description: 
+        book_reference: TLPG 72
+        type: 
+        pre-reqs:
+    -
+        name: Gun Nut
+        description: 
+        book_reference: TLPG 72
+        type: 
+        pre-reqs:
+    -
+        name: Gymnastic Mastery
+        description: 
+        book_reference: TLPG 73
+        type: 
+        pre-reqs:
+    -
+        name: Off the Handle
+        description: 
+        book_reference: TLPG 73
+        type: 
+        pre-reqs:
+    -
+        name: Split the Seconds
+        description: 
+        book_reference: TLPG 73
+        type: 
+        pre-reqs:
+    -
+        name: Sublime Chaos
+        description: 
+        book_reference: TLPG 73
+        type: 
+        pre-reqs:
+    -
+        name: Cyberkinetic Awareness
+        description: 
+        book_reference: TLPG 73
+        type: 
+        pre-reqs:
+    -
+        name: Improved Cyberkinetic Awareness
+        description: 
+        book_reference: TLPG 73
+        type: 
+        pre-reqs:
+    -
+        name: Cyberkinetic Denial
+        description: 
+        book_reference: TLPG 74
+        type: 
+        pre-reqs:
+    -
+        name: Improved Cyber-Armor
+        description: 
+        book_reference: TLPG 74
+        type: 
+        pre-reqs:
+    -
+        name: Master Cyber-Armor
+        description: 
+        book_reference: TLPG 74
+        type: 
+        pre-reqs:
+    -
+        name: Improved Psi-Sword
+        description: 
+        book_reference: TLPG 74
+        type: 
+        pre-reqs:
+    -
+        name: Master Psi-Sword
+        description: 
+        book_reference: TLPG 74
+        type: 
+        pre-reqs:
+    -
+        name: Psi-Shield
+        description: 
+        book_reference: TLPG 74
+        type: 
+        pre-reqs:
+    -
+        name: Dragon Fast Regeneration
+        description: 
+        book_reference: TLPG 74
+        type: 
+        pre-reqs:
+    -
+        name: Dragon Flaming Scales
+        description: 
+        book_reference: TLPG 74
+        type: 
+        pre-reqs:
+    -
+        name: Dragon Low Light Vision
+        description: 
+        book_reference: TLPG 74
+        type: 
+        pre-reqs:
+    -
+        name: Dragon Metamorphosis
+        description: 
+        book_reference: TLPG 74
+        type: 
+        pre-reqs:
+    -
+        name: Dragon Grows Larger
+        description: 
+        book_reference: TLPG 74
+        type: 
+        pre-reqs:
+    -
+        name: Dragon Grows Huge
+        description: 
+        book_reference: TLPG 74
+        type: 
+        pre-reqs:
+    -
+        name: Dragon Teleportation
+        description: 
+        book_reference: TLPG 75
+        type: 
+        pre-reqs:
+    -
+        name: Burn Brighter
+        description: 
+        book_reference: TLPG 75
+        type: 
+        pre-reqs:
+    -
+        name: 
+        description: Burn for Glory
+        book_reference: TLPG 75
+        type: 
+        pre-reqs:
+    -
+        name: Burn Faster
+        description: 
+        book_reference: TLPG 75
+        type: 
+        pre-reqs:
+    -
+        name: Burn Past the Pain
+        description: 
+        book_reference: TLPG 75
+        type: 
+        pre-reqs:
+    -
+        name: Burn for Tomorrow
+        description: 
+        book_reference: TLPG 75
+        type: 
+        pre-reqs:
+    -
+        name: Freshly Juiced
+        description: 
+        book_reference: TLPG 75
+        type: 
+        pre-reqs:
+    -
+        name: Gymnastic Mastery
+        description: 
+        book_reference: TLPG 75
+        type: 
+        pre-reqs:
+    -
+        name: Split the Seconds
+        description: 
+        book_reference: TLPG 76
+        type: 
+        pre-reqs:
+    -
+        name: Ley Line Observation Sphere
+        description: 
+        book_reference: TLPG 76
+        type: 
+        pre-reqs:
+    -
+        name: Ley Line Phasing
+        description: 
+        book_reference: TLPG 76
+        type: 
+        pre-reqs:
+    -
+        name: Ley Line Gate
+        description: 
+        book_reference: TLPG 76
+        type: 
+        pre-reqs:
+    -
+        name: Beyond the Limit
+        description: 
+        book_reference: TLPG 76
+        type: 
+        pre-reqs:
+    -
+        name: Upgrade
+        description: 
+        book_reference: TLPG 76
+        type: 
+        pre-reqs:
+    -
+        name: Upgradeable
+        description: 
+        book_reference: TLPG 76
+        type: 
+        pre-reqs:
+    -
+        name: Charge
+        description: 
+        book_reference: TLPG 76
+        type: 
+        pre-reqs:
+    -
+        name: Overrun
+        description: 
+        book_reference: TLPG 76
+        type: 
+        pre-reqs:
+    -
+        name: Dirty Fighter
+        description: 
+        book_reference: TLPG 76
+        type: 
+        pre-reqs:
+    -
+        name: Tricky Fighter
+        description: 
+        book_reference: TLPG 76
+        type: 
+        pre-reqs:
+    -
+        name: Blaster
+        description: 
+        book_reference: TLPG 77
+        type: 
+        pre-reqs:
+    -
+        name: Expert Blaster
+        description: 
+        book_reference: TLPG 77
+        type: 
+        pre-reqs:
+    -
+        name: Master Blaster
+        description: 
+        book_reference: TLPG 77
+        type: 
+        pre-reqs:
+    -
+        name: Cyber-Psychic Alignment
+        description: 
+        book_reference: TLPG 77
+        type: 
+        pre-reqs:
+    -
+        name: Improved Cyber-Psychic Alignment
+        description: 
+        book_reference: TLPG 77
+        type: 
+        pre-reqs:
+    -
+        name: Major Psionic
+        description: 
+        book_reference: TLPG 77
+        type: 
+        pre-reqs:
+    -
+        name: Master Psionic
+        description: 
+        book_reference: TLPG 78
+        type: 
+        pre-reqs:
+    -
+        name: Master of Magic
+        description: 
+        book_reference: TLPG 78
+        type: 
+        pre-reqs:
+    -
+        name: Possession
+        description: 
+        book_reference: TLPG 78
+        type: 
+        pre-reqs:
+    -
+        name: Psi-Blade
+        description: 
+        book_reference: TLPG 79
+        type: 
+        pre-reqs:
+    -
+        name: Exceptional Rapid Recharge
+        description: 
+        book_reference: TLPG 79
+        type: 
+        pre-reqs:
+    -
+        name: Sixth Sense
+        description: 
+        book_reference: TLPG 79
+        type: 
+        pre-reqs:
+    -
+        name: Telemechanics
+        description: 
+        book_reference: TLPG 79
+        type: 
+        pre-reqs:
+    -
+        name: Combat Ace
+        description: 
+        book_reference: TLPG 79
+        type: 
+        pre-reqs:
+    -
+        name: Power Armor Jock
+        description: 
+        book_reference: TLPG 79
+        type: 
+        pre-reqs:
+    -
+        name: Robot Vehicle Jock
+        description: 
+        book_reference: TLPG 80
+        type: 
+        pre-reqs:
+    -
+        name: I Know a Guy
+        description: 
+        book_reference: TLPG 80
+        type: 
+        pre-reqs:
+    -
+        name: Scrounger
+        description: 
+        book_reference: TLPG 80
+        type: 
+        pre-reqs:
