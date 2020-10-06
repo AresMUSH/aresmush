@@ -308,7 +308,6 @@ module AresMUSH
 					iconicf_hinderances=iconicf['hinderances'] 
 					iconicf_hinderances.each do |key|
 						hinderance_name = "#{key}".downcase
-						client.emit (hinderance_name)
 						ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
 							ss = Swrifts.add_feature(model, SwriftsHinderances, "hinderances", hinderance_name)
 							# client.emit ("hind: #{ss}")
@@ -324,7 +323,6 @@ module AresMUSH
 					iconicf_edges=iconicf['edges'] 
 					iconicf_edges.each do |key|
 						edge_name = "#{key}".downcase
-						client.emit (edge_name)
 						ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
 							ss = Swrifts.add_feature(model, SwriftsEdges, "edges", edge_name)
 							# client.emit ("llll: #{ss}")
