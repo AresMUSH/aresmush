@@ -21,6 +21,7 @@ swrifts:
             pp_current: 0
             burn: 8
             strain: 0
+            advance_points: 0
         stats:
             Agility: 1
             Smarts: 1
