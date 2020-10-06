@@ -1394,13 +1394,10 @@ swrifts:
             hinderances: 
                 - Enemy-*
                 - CHOICE*
-                    - Vow
             edges:
                 - AB Miracles*
-                    - Miracles
                 - Master of Magic*
-                - Arcane Background*
-                    - Psionic
+                - AB Magic*
                 - Major Psionic*
                 - Alertness*
                 - Danger Sense*
