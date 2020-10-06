@@ -21,6 +21,7 @@ swrifts:
             pp_current: 0
             burn: 8
             strain: 0
+            advance_points: 0
         stats:
             Agility: 1
             Smarts: 1
@@ -44,6 +45,7 @@ swrifts:
             skills_points: 15
             hind_points: 0
             hj_slots:  2
+            fandg_slots: 0
             magic_slots: 0
             psionic_slots: 0
             miracle_slots: 0
