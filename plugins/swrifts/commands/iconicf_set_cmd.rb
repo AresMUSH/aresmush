@@ -48,7 +48,9 @@ module AresMUSH
 						setthing = key.downcase
 						# alias the 'rating' for the same reason
 						setrating = rating
-						SwriftsTraits.create(name: setthing, rating: setrating, character: model)
+						ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
+							SwriftsTraits.create(name: setthing, rating: setrating, character: model)
+						end
 					end
 					# client.emit_success ("Base Traits Set!")
 				else 
