@@ -507,7 +507,7 @@ swrifts:
             edges:
                 - AB Magic*
                 - Master of Magic*
-                - Power Points*
+                - PP Magic*
                 - Artificer
             magic_powers:
                 - Divination*
@@ -543,7 +543,7 @@ swrifts:
                 - Familiar Link*
                 - Dimensional Portal*
                 - Master of Magic*
-                - Power Points*
+                - PP Magic*
                 - Rapid Recharge*
             magic_powers:
                 - Detect Arcana*
