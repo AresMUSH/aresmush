@@ -16,6 +16,8 @@ swrifts:
             chargen_points:
                 magic_slots: 2
                 psionic_slots: 1
+                stats_points: 5
+                skills_points: 15
             skills:
                 Notice: 2            
             hinderances: 
