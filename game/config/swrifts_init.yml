@@ -44,6 +44,7 @@ swrifts:
             skills_points: 15
             hind_points: 0
             hj_slots:  2
+            fandg_slots: 0
             magic_slots: 0
             psionic_slots: 0
             miracle_slots: 0
