@@ -45,6 +45,8 @@ swrifts:
             magic_slots: 3
         counters:
             ppe_max: 10
+        skills:
+            Spellcasting: 0
         pre-reqs:
             - rank: Novice
     -
@@ -55,6 +57,8 @@ swrifts:
             psionic_slots: 3
         counters:
             isp_max: 10
+        skills:
+            Psionics: 0
         pre-reqs:
             - rank: Novice
     -
@@ -65,6 +69,8 @@ swrifts:
             miracle_slots: 3
         counters:
             ppe_max: 10
+        skills:
+            Faith: 0
         pre-reqs:     
             - rank: Novice
     -
@@ -75,6 +81,8 @@ swrifts:
             gifted_slots: 1
         counters:
             pp_max: 15
+        skills:
+            Spellcasting: 0
         pre-reqs:     
             - rank: Novice
     -
@@ -85,6 +93,8 @@ swrifts:
             power_slots: 2
         counters:
             pp_max: 15
+        skills:
+            Weird Science: 0
         pre-reqs:     
             - rank: Novice
     -
