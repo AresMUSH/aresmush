@@ -165,18 +165,18 @@ module AresMUSH
 	
 		# Get the Characters Iconic Framework
 		swriftstraits = char.swrifts_traits		
-		charicf = acl_return_traits(swriftstraits,'iconicf') #this function exists in the sheet_template.rb file. Trying not to rewrite code if I can at all avoid it.
+		charicf = acl_return_traits(swriftstraits,'iconicf') #Get the characters Iconic Framework from the traits
 		
-		if char.swrifts_iconicf
-			chariconicf = char.swrifts_iconicf.titleize
-		else
-			chariconicf = ""
-		end
+		# if char.swrifts_iconicf
+			# chariconicf = char.swrifts_iconicf.titleize
+		# else
+			# chariconicf = ""
+		# end
 		
 		if charicf
 			charicf=charicf
 		else
-			charicf=""
+			charicf="None"
 		end
 	
 		
@@ -184,10 +184,13 @@ module AresMUSH
 		cgrace = returnraceforcg(swrifts_race)
 		initracepoints = returninitraceforcg(swrifts_race)
 		
-		if char.swrifts_race
-			charrace = char.swrifts_race.titleize
+		# Get the Characters Race
+		swriftstraits = char.swrifts_traits		
+		charrace = acl_return_traits(swriftstraits,'race') #Get the characters Race from the traits		
+		if charrace
+			charrace = charrace
 		else
-			charrace = "Human"		
+			charrace = "None"		
 		end
 		
 		# Set up Chargen Points from Character not YML
@@ -210,7 +213,7 @@ module AresMUSH
 
 		return {
 		  iconicf: iconicf,
-		  chariconicf: chariconicf,
+		  # chariconicf: chariconicf,
 		  charicf: charicf,
 		  cgrace: cgrace,
 		  charrace: charrace,
