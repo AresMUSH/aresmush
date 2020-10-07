@@ -171,6 +171,7 @@ module AresMUSH
 		
 		swrifts_race = Global.read_config('swrifts', 'races')			
 		cgrace = returnraceforcg(swrifts_race)
+		initracepoints = returninitraceforcg(swrifts_race)
 		
 		if char.swrifts_race
 			charrace = char.swrifts_race.titleize
@@ -204,6 +205,7 @@ module AresMUSH
 		  cgpoints: cgtraits,
 		  inicgpoints: initcgpoints,
 		  cgslots: cgslots,
+		  initracepoints: initracepoints,
 		  #stats: stats,
 		  #bennies: bennies,
 		  #conviction: conviction
@@ -245,6 +247,23 @@ module AresMUSH
 		d = Array.new #initialise the array we're going to use to pull the cgen points from.
 		list = model.sort_by { |a| a['name']} #sort the iconic frameworks by name
 		list.each do |c|  # roll through the if's 
+				d = c['chargen_points'] # d is now an array of points set at the time of init
+				n = c['name'] # This is the name of iconic frame.
+				if (d)  # Are there any cgen points with this if?
+					d.each do |key, rating|  # loop through the cgen points 
+						ifname = n.downcase  #set name to all lowercase for ease of testing later
+						initcgpointsarray << {ifname: ifname, name: key, rating: rating}  # set the hash 
+					end
+				end
+		end
+		return (initcgpointsarray) #return the complete hash.
+	end
+
+	def self.returninitraceforcg(model)
+		initcgpointsarray = [] #We're going to pass this back to the char custom fields.
+		d = Array.new #initialise the array we're going to use to pull the cgen points from.
+		list = model.sort_by { |a| a['name']} #sort the race by name
+		list.each do |c|  # roll through the races 
 				d = c['chargen_points'] # d is now an array of points set at the time of init
 				n = c['name'] # This is the name of iconic frame.
 				if (d)  # Are there any cgen points with this if?
