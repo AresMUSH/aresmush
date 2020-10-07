@@ -174,7 +174,7 @@ module AresMUSH
 		end
 		
 		if charicf
-			charicf=charicf.titleize
+			charicf=charicf
 		else
 			charicf=""
 		end
