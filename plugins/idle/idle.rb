@@ -73,6 +73,10 @@ module AresMUSH
         return RosterRequestHandler
       when "claimRoster"
         return ClaimRosterRequestHandler
+      when "idleReview"
+        return IdleReviewRequestHandler
+      when "idleExecute"
+        return IdleExecuteRequestHandler
       end
       nil
     end
