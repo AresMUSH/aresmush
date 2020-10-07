@@ -164,7 +164,7 @@ module AresMUSH
 		initcgpoints = returninitcgforcg(swrifts_iconicf)
 	
 		# Get the Characters Iconic Framework
-		charicf = acl_return_traits(iconicf) #this function exists in the sheet_template.rb file. Trying not to rewrite code if I can at all avoid it.
+		charicf = acl_return_traits('iconicf') #this function exists in the sheet_template.rb file. Trying not to rewrite code if I can at all avoid it.
 		
 		if char.swrifts_iconicf
 			chariconicf = char.swrifts_iconicf.titleize
