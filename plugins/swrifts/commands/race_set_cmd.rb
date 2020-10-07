@@ -49,7 +49,7 @@ module AresMUSH
 					icf = ( "#{e_iconicf}" )
 				end
 				
-				return IconicSetCmd
+				return IconicfSetCmd
 
 				## ----- Update Race Framework
 				ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
