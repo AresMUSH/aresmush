@@ -30,8 +30,8 @@ module AresMUSH
 					# end
 				elsif
 					ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-						if Swrifts.trait_set?(model,"iconicf") #Is the Iconic Framework is set
-							return t('swrifts.trait_already_set',:name => "iconicf")
+						if !Swrifts.trait_set?(model,"iconicf") #Is the Iconic Framework is set
+							return t('swrifts.use_command',:name => "iconicf")
 						end
 					end
 				end
