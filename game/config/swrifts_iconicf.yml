@@ -177,6 +177,7 @@ swrifts:
             name: Lord Magus
             book_reference: A&M
             description: Scholar-Mages of Dweomer
+            counters:
                 advance_points: 3
             chargen_points:
                 magic_slots: 5
