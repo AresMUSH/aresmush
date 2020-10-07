@@ -17,11 +17,6 @@ module AresMUSH
 				[ self.target_name, self.race_name ]
 			end
 			
-			#----- Check to see if what was entered is a Race in game\config\swrifts_race.yml
-			# def check_valid_race
-				# return t('swrifts.race_invalid_name', :name => self.race_name.capitalize) if !Swrifts.is_valid_race_name?(self.race_name)
-				# return nil
-			# end
   
   			#----- Check to see:
 			def check_valid_iconicf
@@ -35,7 +30,7 @@ module AresMUSH
 					end
 				elsif
 					ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-						if !Swrifts.trait_set?(model,"iconicf") #Is the Iconic Framework is NOT set
+						if Swrifts.trait_set?(model,"iconicf") #Is the Iconic Framework is set
 							return t('swrifts.trait_already_set',:name => "iconicf")
 						end
 					end
