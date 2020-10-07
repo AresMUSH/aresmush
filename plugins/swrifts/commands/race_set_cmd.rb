@@ -45,7 +45,7 @@ module AresMUSH
 				race = Swrifts.get_race(self.enactor, self.race_name) 
 
 				ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-					e_iconicf = Swrifts.find_traits(model, "iconicf")
+					e_iconicf = model.swrifts_iconicf
 					client.emit ( e_iconicf )
 				end
 
