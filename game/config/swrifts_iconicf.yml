@@ -119,147 +119,128 @@ swrifts:
         -   
             name: MARS Battle Magus
             book_reference: A&M
-            # description: 
-            # counters:
-                # ppe_max: 
-                # isp_max:
-            # stats:
-
-            # chargen_points:
-                # magic_slots: 
-                # psionic_slots: 
-            # skills:
-            
-            # hinderances: 
-                # -
-            # edges:
-                # -
-            # magic_powers:
-                # -
-            # abilities:
-                # -
-            # complications:
-                # -
+            description: Warrior-Mages of Dweomer
+            counters: 
+                advance_points: 3
+            chargen_points:
+                fandg_slots: 2
+                hj_slots: 1
+            skills:
+                Athletics: 2
+                Fighting: 2
+                Shooting: 2
+                Occult: 2
+                Spellcasting: 2
+            edges:
+                - Arcane Marksman
+                - Magi of Dweomer
+                - AB Magic
         -   
             name: MARS Combat Mage
             book_reference: A&M
-            # description: 
-            # counters:
-                # ppe_max: 
-                # isp_max:
-            # stats:
-
-            # chargen_points:
-                # magic_slots: 
-                # psionic_slots: 
-            # skills:
-            
-            # hinderances: 
-                # -
-            # edges:
-                # -
-            # magic_powers:
-                # -
-            # abilities:
-                # -
-            # complications:
-                # -
+            description: Combat Magic Specialists 
+            counters:
+                advance_points: 3
+            chargen_points:
+                fng_slots: 2
+                hj_slots: 1
+            skills:
+                Occult: 2
+                Spellcasting: 2
+            edges:
+                - AB Magic
+                - Channeling
+                - Master of Magic
+                - Choice
+                - Choice
+                - Choice
         -   
             name: MARS High Magus
             book_reference: A&M
-            # description: 
-            # counters:
-                # ppe_max: 
-                # isp_max:
-            # stats:
-
-            # chargen_points:
-                # magic_slots: 
-                # psionic_slots: 
-            # skills:
-            
-            # hinderances: 
-                # -
-            # edges:
-                # -
-            # magic_powers:
-                # -
-            # abilities:
-                # -
-            # complications:
-                # -
+            description: Dweomer's Artificers and Creators
+            counters:
+                advance_points: 3
+            chargen_points:
+                fandg_slots: 2
+                hj_slots: 1 
+            skills:
+                Occult: 2
+                Spellcasting: 2
+                Repair: 2
+            edges:
+                - AB Magic
+                - Artificer
+                - Minor Item Creation
+                - Major Item Creation
+                - Magi of Dweomer
         -   
             name: Lord Magus
             book_reference: A&M
-            # description: 
-            # counters:
-                # ppe_max: 
-                # isp_max:
-            # stats:
-
-            # chargen_points:
-                # magic_slots: 
-                # psionic_slots: 
-            # skills:
-            
-            # hinderances: 
-                # -
-            # edges:
-                # -
-            # magic_powers:
-                # -
-            # abilities:
-                # -
-            # complications:
-                # -
+            description: Scholar-Mages of Dweomer
+                advance_points: 3
+            chargen_points:
+                magic_slots: 5
+                fng_slots: 2
+                hj_slots: 1 
+            skills:
+                Occult: 3
+                Spellcasting: 3
+            edges:
+                - AB Magic
+                - Magi of Dweomer
+                - One With Magic
+                - Power Points
         -   
             name: MARS Psi-Druid
             book_reference: A&M
-            # description: 
-            # counters:
-                # ppe_max: 
-                # isp_max:
-            # stats:
-
-            # chargen_points:
-                # magic_slots: 
-                # psionic_slots: 
-            # skills:
-            
-            # hinderances: 
-                # -
-            # edges:
-                # -
-            # magic_powers:
-                # -
-            # abilities:
-                # -
-            # complications:
-                # -
+            description: Psychic healers and beastmasters
+            counters:
+                advance_points: 3
+            chargen_points:
+                fng_slots: 2
+                hj_slots: 1
+            skills:
+                Healing: 2
+                Survival: 2
+                Psionics: 2
+            edges:
+                - AB Psionics
+                - Beast Master
+                - Healer
+                - Woodsman
+            psychic_powers:
+                - conceal arcana
+                - detect arcana
+                - healing
         -   
             name: MARS Psi-Slinger
             book_reference: A&M
-            # description: 
-            # counters:
-                # ppe_max: 
-                # isp_max:
-            # stats:
-
-            # chargen_points:
-                # magic_slots: 
-                # psionic_slots: 
-            # skills:
-            
-            # hinderances: 
-                # -
-            # edges:
-                # -
-            # magic_powers:
-                # -
-            # abilities:
-                # -
-            # complications:
-                # -
+            description: Telekinetic marksmen
+            counters:
+                advance_points: 3
+            chargen_points:
+                magic_slots: 
+                psionic_slots: 1
+                fandg_slots: 2
+            skills:
+                Psionics: 2
+                Shooting: 2
+            hinderances: 
+                - Choice
+            edges:
+                - AB Psionics
+                - Marksman
+                - Steady Hands
+                - Danger Sense
+                - Quick
+            psychic_powers: 
+                - bolt
+                - smite
+                - telekinesis
+                - protection
+            abilities:
+                - Energetic Diminishment
+                - Telekinetic Enhancement
         -   
             name: MARS Psi-Warrior
             book_reference: A&M
