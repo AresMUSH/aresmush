@@ -163,6 +163,9 @@ module AresMUSH
 		iconicf = returniconicforcg(swrifts_iconicf)
 		initcgpoints = returninitcgforcg(swrifts_iconicf)
 	
+		# Get the Characters Iconic Framework
+		charicf = Swrifts.return_traits(iconicf) #this function exists in the sheet_template.rb file. Trying not to rewrite code if I can at all avoid it.
+		
 		if char.swrifts_iconicf
 			chariconicf = char.swrifts_iconicf.titleize
 		else
@@ -200,6 +203,7 @@ module AresMUSH
 		return {
 		  iconicf: iconicf,
 		  chariconicf: chariconicf,
+		  charicf: charicf,
 		  cgrace: cgrace,
 		  charrace: charrace,
 		  cgpoints: cgtraits,
