@@ -30,7 +30,7 @@ module AresMUSH
 					# end
 				elsif
 					ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-						if !Swrifts.trait_set?(model,"iconicf") or !Swrifts.is_valid_cat?(model,"traits")
+						if !Swrifts.is_valid_cat?(model,"traits") or !Swrifts.trait_set?(model,"iconicf")
 							return t('swrifts.use_command',:name => "iconicf")
 						end
 					end
