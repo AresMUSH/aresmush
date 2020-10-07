@@ -218,7 +218,7 @@ module AresMUSH
 		# i = 0
 		cginitarray = []
 		cgp = ''
-		list.each do |key value|
+		list.each do |key, value|
 				cgname = key
 				cgn = cgname.gsub("_", " ")
 				cgname = cgn.titleize				
