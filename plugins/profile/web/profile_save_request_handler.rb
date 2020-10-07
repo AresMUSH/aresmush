@@ -52,10 +52,6 @@ module AresMUSH
         char.update(profile_gallery: gallery)
         char.update(profile_tags: tags)
         
-        if (manager)
-          char.update(cg_background: Website.format_input_for_mush(request.args[:background]))
-        end
-        
         relationships = {}
         (request.args[:relationships] || {}).each do |name, data|
           relationships[name] = {
@@ -77,8 +73,22 @@ module AresMUSH
         
         Describe.save_web_descs(char, request.args['descs'])
         CustomCharFields.save_fields_from_profile_edit(char, request.args)
-        Idle.save_web_roster_fields(char, request.args['roster'])
-        Roles.save_web_roles(char, request.args['roles'])
+        
+        if (Roles.can_assign_role?(enactor))
+          Roles.save_web_roles(char, request.args['roles'])
+        end
+
+        if (Idle.can_manage_roster?(enactor))
+          Idle.save_web_roster_fields(char, request.args['roster'])
+        end
+        
+        if (Chargen.can_manage_bgs?(enactor))
+          char.update(cg_background: Website.format_input_for_mush(request.args[:background]))
+        end
+        
+        if (Idle.can_idle_sweep?(enactor))
+          char.update(idle_notes: Website.format_input_for_mush(request.args[:idle_notes]))
+        end
         
         ## DO PROFILE LAST SO IT TRIGGERS THE SOURCE HISTORY UPDATE
         profile = {}
