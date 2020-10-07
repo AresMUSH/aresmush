@@ -301,6 +301,7 @@ module AresMUSH
 			end
 			racearray.push("#{racestring}")
 		end
+		racearray.unshift("None")
 		return (racearray)
 	end
 	
