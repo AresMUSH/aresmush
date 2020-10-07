@@ -24,7 +24,8 @@ swrifts:
                 stats_points: 50
             skills:
                 Common Knowledge: -3
-                Psionics: 1
+                Repair: 2
+                Academics: 8
             complications:
                 - Skill Penalty^
                     - Common Knowledge^
