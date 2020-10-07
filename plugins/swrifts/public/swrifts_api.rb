@@ -332,7 +332,7 @@ module AresMUSH
 		return (cgpointsarray)
 	end	
 	
-	def acl_return_traits(traitname)
+	def self.acl_return_traits(traitname)
 	traitname = traitname.downcase
 	swriftstraits = char.swrifts_traits
 	txtstring = ''
