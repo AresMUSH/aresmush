@@ -254,6 +254,7 @@ module AresMUSH
 			end			
 			iconicfarray.push("#{ifstring}")
 		end
+		iconicfarray.unshift("None")
 		return (iconicfarray)
 	end	
 	
