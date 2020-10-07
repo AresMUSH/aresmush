@@ -224,11 +224,6 @@ module AresMUSH
 				cgname = cgn.titleize				
 				cginitarray << {class: key, name: cgname, rating:value}
 		end
-		# return (cgpointsarray)	
-		# list.each do |key, value|  # roll through the points
-				# cginitarray[i] = {name: key, value: value} # Set the slot and value in the hash
-				# i = i+1
-		# end
 		return (cginitarray)
 	end	
 	
