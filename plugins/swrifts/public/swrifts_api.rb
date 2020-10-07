@@ -222,7 +222,7 @@ module AresMUSH
 				cgname = key
 				cgn = cgname.gsub("_", " ")
 				cgname = cgn.titleize				
-				cginitarray << {class: c.name, name: cgname, rating:value}
+				cginitarray << {class: key, name: cgname, rating:value}
 		end
 		# return (cgpointsarray)	
 		# list.each do |key, value|  # roll through the points
