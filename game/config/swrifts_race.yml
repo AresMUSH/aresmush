@@ -1,6 +1,43 @@
 ---
 swrifts:
     races:
+        -
+            name: Test
+            book_reference: 
+            desc: Test
+            edges:
+                - Attractive^
+                - Alertness^
+            hinderances:
+                - Bad Reputation^
+                - Blind^
+            stats: 
+                Agility: 1
+                Strength: 1
+                Vigor: 1
+            stat_max:
+                Agility: 1
+                Strength: 1
+                Vigor: 1
+            chargen_points:
+                skills_points: 20
+                stats_points: 50
+            skills:
+                Common Knowledge: -3
+                Psionics: 1
+            complications:
+                - Skill Penalty^
+                    - Common Knowledge^
+                - Storm-Fouled Senses^
+                - Inhuman Physiology-^
+                - Racial Enemy^
+            counters:
+                isp_max: 10
+            powers:
+                - Arcane Protection^
+                - Detect Arcana^
+                - Conceal Arcana^
+                - Empathy^        
         - 
             name: Altara
             book_reference: TLPG 56
@@ -156,7 +193,7 @@ swrifts:
             skills:
                 Repair: 2
             chargen_points:
-                skills_points: 6  Choose two at d6 Electronics, Hacking or Science
+                skills_points: 6 
             abilities:
                 - Long Arms^
             complications:
