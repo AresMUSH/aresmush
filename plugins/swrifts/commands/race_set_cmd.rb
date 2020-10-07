@@ -44,6 +44,11 @@ module AresMUSH
 			def handle
 				race = Swrifts.get_race(self.enactor, self.race_name) 
 
+				ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
+					e_iconicf = Swrifts.find_traits(model, "iconicf")
+					client.emit ( e_iconicf )
+				end
+
 				## ----- Update Race Framework
 				ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
 					trait = Swrifts.find_traits(model, self.race_title)				
