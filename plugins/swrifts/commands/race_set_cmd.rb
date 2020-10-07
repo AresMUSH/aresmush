@@ -83,38 +83,6 @@ module AresMUSH
 					# If the Race does not have this field in race.yml, skip and emit to enactor
 					# client.emit_failure ("This Race has no Stat changes")
 				end
-
-				#----- This sets the default skills on the Character -----				
-				if (init['skills'] )
-				skills = init['skills'] 
-					skills.each do |key, rating|
-						setthing = "#{key}".downcase
-						setrating = "#{rating}"
-						ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-							SwriftsSkills.create(name: setthing, rating: setrating, character: model)
-						end
-					end
-					# client.emit_success ("Skills Set!")
-				else 
-					client.emit_failure ("Init_char Error - Skills")
-				end 					
-				
-
-				#----- This sets the default Chargen Points on the Character -----				
-				if (init['chargen_points'] )
-				chargen_points = init['chargen_points'] 
-					chargen_points.each do |key, rating|
-						setthing = "#{key}".downcase
-						setrating = "#{rating}"
-						
-						ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-							SwriftsChargenpoints.create(name: setthing, rating: setrating, character: model)
-						end
-					end
-					# client.emit_success ("Chargen Points Set!")
-				else 
-					client.emit_failure ("Init_char Error - Chargen Points")
-				end			
 				
 				## ----- Update Chargen Points
 				if (race['chargen_points'])
@@ -140,21 +108,6 @@ module AresMUSH
 				else 
 					# If the Race does not have this field in race.yml, skip and emit to enactor
 					# client.emit_failure ("This Race has no Chargen Point changes")
-				end
-
-				#----- This sets the default counters field on the collection -----				
-				if (init['counters']) 
-				counters = init['counters']
-					counters.each do |key, rating|
-						setthing = "#{key}".downcase
-						setrating = "#{rating}"
-						ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-							SwriftsCounters.create(name: setthing, rating: setrating, character: model)
-						end
-					end
-					# client.emit_success ("Counters Set!")
-				else 
-					client.emit_failure ("Init_char Error - Counters")
 				end
 				
 				## ----- Update Counters
