@@ -48,7 +48,7 @@ module AresMUSH
 					e_iconicf = model.swrifts_iconicf
 				end
 				
-				return Swrifts.iconicf_set_cmd
+				return IcocnicfSetCmd(Shifter)
 
 				## ----- Update Race Framework
 				ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
