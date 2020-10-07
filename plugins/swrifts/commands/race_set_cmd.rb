@@ -25,7 +25,7 @@ module AresMUSH
   
   			#----- Check to see:
 			def check_valid_iconicf
-				if !Swrifts.is_valid_race_name?(self.race_name) #Is the Race in the list
+				if !Swrifts.is_valid_tname?(self.race_name, "races") #Is the Race in the list
 					return t('swrifts.race_invalid_name', :name => self.race_name.capitalize) 
 				elsif
 					ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|

@@ -192,6 +192,12 @@ module AresMUSH
 		  names = Global.read_config('swrifts', 'races').map { |a| a['name'].downcase }
 		  names.include?(name.downcase)
 		end
+		
+	    def self.is_valid_tname?(name, type)
+		  return false if !name
+		  names = Global.read_config('swrifts', type).map { |a| a['name'].downcase }
+		  names.include?(name.downcase)
+		end		
 
 		def self.get_race(char, race_name)
 			charac = Swrifts.find_race_config(race_name)
