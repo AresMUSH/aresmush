@@ -218,12 +218,11 @@ module AresMUSH
 		# i = 0
 		cginitarray = []
 		cgp = ''
-		list.each do |c|
-				cgname = c.name
+		list.each do |c value|
+				cgname = c
 				cgn = cgname.gsub("_", " ")
 				cgname = cgn.titleize				
-				cgrating = c.rating
-				cgpointsarray << {class: c.name, name: cgname, rating:cgrating}
+				cgpointsarray << {class: c.name, name: cgname, rating:value}
 		end
 		# return (cgpointsarray)	
 		# list.each do |key, value|  # roll through the points
