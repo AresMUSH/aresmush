@@ -164,13 +164,20 @@ module AresMUSH
 		initcgpoints = returninitcgforcg(swrifts_iconicf)
 	
 		# Get the Characters Iconic Framework
-		charicf = Swrifts.acl_return_traits(char,iconicf) #this function exists in the sheet_template.rb file. Trying not to rewrite code if I can at all avoid it.
+		charicf = acl_return_traits(iconicf) #this function exists in the sheet_template.rb file. Trying not to rewrite code if I can at all avoid it.
 		
 		if char.swrifts_iconicf
 			chariconicf = char.swrifts_iconicf.titleize
 		else
 			chariconicf = ""
 		end
+		
+		if charicf
+			charicf=charicf.titleize
+		else
+			charicf=""
+		end
+	
 		
 		swrifts_race = Global.read_config('swrifts', 'races')			
 		cgrace = returnraceforcg(swrifts_race)
@@ -323,6 +330,19 @@ module AresMUSH
 				cgpointsarray << {class: c.name, name: cgname, rating:cgrating}
 		end
 		return (cgpointsarray)
+	end	
+	
+	def acl_return_traits(traitname)
+	traitname = traitname.downcase
+	swriftstraits = char.swrifts_traits
+	txtstring = ''
+	swriftstraits.to_a.sort_by { |a| a.name }
+		.each_with_index
+			.map do |a, i| 
+			if a.name.downcase == "#{traitname}"
+				return ("#{a.rating}")
+			end
+		end	
 	end	
 	
   end
