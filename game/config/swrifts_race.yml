@@ -10,7 +10,6 @@ swrifts:
                 - Alertness^
             hinderances:
                 - Bad Reputation^
-                - Blind^
             stats: 
                 Agility: 1
                 Strength: 1
