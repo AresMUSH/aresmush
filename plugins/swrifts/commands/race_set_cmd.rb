@@ -27,10 +27,16 @@ module AresMUSH
 			def check_valid_iconicf
 				if !Swrifts.is_valid_race_name?(self.race_name) #Is the Race in the list
 					return t('swrifts.race_invalid_name', :name => self.race_name.capitalize) 
-				else
+				elsif
 					ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
 						if Swrifts.trait_set?(model,"race") #Is the Race already set
 							return t('swrifts.trait_already_set',:name => "Race")
+						end
+					end
+				elsif
+					ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
+						if !Swrifts.trait_set?(model,"iconicf") #Is the Iconic Framework is NOT set
+							return t('swrifts.trait_already_set',:name => "iconicf")
 						end
 					end
 				end
@@ -51,14 +57,7 @@ module AresMUSH
 
 
 
-
-				# ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-					# model.update(swrifts_race: self.race_name) 
-					# new attrib 'swrifts_race' needs to be in model.rb
-					# client.emit_success t('swrifts.race_set', :name => self.race_name.capitalize)
-				# end
-
-
+				client.emit_success t('swrifts.race_complete')
 			end
 #----- End of def handle -----	
 			
