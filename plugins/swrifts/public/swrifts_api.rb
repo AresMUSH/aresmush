@@ -358,6 +358,7 @@ module AresMUSH
 			return ["No Custom Data"]
 		else
 			return ["Chargen Data: #{chargen_data}"]
+		end
 		#Remove the book and description stuff from the end of the string.	
 		# chopped_iconicf = c_iconicf[/[^~]+/]
 		# chopped_iconicf = Website.format_input_for_mush(chopped_iconicf)
