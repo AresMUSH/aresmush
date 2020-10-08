@@ -359,7 +359,8 @@ module AresMUSH
 		else
 			c_iconicf = chargen_data[:custom][:charicf]
 			c_race = chargen_data[:custom][:charrace]
-			return ["Chargen Data: #{c_iconicf}"]
+			cc = chargen_data[:custom]
+			return ["Chargen Data: #{cc}"]
 		end
 		#Remove the book and description stuff from the end of the string.	
 		# chopped_iconicf = c_iconicf[/[^~]+/]
