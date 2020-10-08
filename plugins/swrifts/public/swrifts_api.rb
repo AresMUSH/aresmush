@@ -352,9 +352,9 @@ module AresMUSH
 	def self.save_abilities_for_chargen(char, chargen_data)
 
 		#Get the iconic framework and race set on the form
-		# c_iconicf = chargen_data[:custom][:charicf]
-		# c_race = chargen_data[:custom][:charrace]
-
+		c_iconicf = chargen_data[:custom][:charicf]
+		#c_race = chargen_data[:custom][:charrace]
+		return ["Iconicf Framework Set to: #{c_iconicf}"]
 		#Remove the book and description stuff from the end of the string.	
 		# chopped_iconicf = c_iconicf[/[^~]+/]
 		# chopped_iconicf = Website.format_input_for_mush(chopped_iconicf)
