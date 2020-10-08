@@ -351,23 +351,24 @@ module AresMUSH
 	
 	def self.save_abilities_for_chargen(char, chargen_data)
 
-		#Get the iconic framework and race set on the form
-		#c_iconicf = chargen_data[:custom][:charicf]
-		#c_race = chargen_data[:custom][:charrace]
+		
+
 		if (!chargen_data[:custom]) 
 			return ["No Custom Data"]
-		else
-			c_iconicf = chargen_data[:custom][:iconicf]
-			c_race = chargen_data[:custom][:race]
-			cc = chargen_data[:custom]
-			return ["Chargen Data: #{c_iconicf}"]
 		end
+		
+		#Get the iconic framework and race set on the form
+		c_iconicf = chargen_data[:custom][:iconicf]
+		c_race = chargen_data[:custom][:race]
+
+
 		#Remove the book and description stuff from the end of the string.	
-		# chopped_iconicf = c_iconicf[/[^~]+/]
-		# chopped_iconicf = Website.format_input_for_mush(chopped_iconicf)
-		# chopped_race = c_race[/[^~]+/]
-		# chopped_race = Website.format_input_for_mush(chopped_race)
-		#return { error: ("Here is chargen") }
+		chopped_iconicf = c_iconicf[/[^~]+/]
+		chopped_iconicf = Website.format_input_for_mush(chopped_iconicf)
+		chopped_race = c_race[/[^~]+/]
+		chopped_race = Website.format_input_for_mush(chopped_race)
+		return ["Chargen Data: Chopped Iconicf: #{chopped_iconicf}, Chopped Race: #{chopped_race}"]
+
 		## ----- Update Iconic Framework
 		# ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
 			# trait = Swrifts.find_traits(model, chopped_iconicf)				
