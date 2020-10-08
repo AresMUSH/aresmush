@@ -364,10 +364,12 @@ module AresMUSH
 		## ----- Update Iconic Framework
 		ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
 			## trait = Swrifts.find_traits(model, chopped_iconicf)				
-			name_downcase = iconicf_title.downcase
+			name_downcase = chopped_iconicf.downcase
 			model.swrifts_traits.select { |a| a.name.downcase == name_downcase }.first			
 			trait.update(rating: chopped_iconicf)
 		end
+		
+		return ["Iconicf Framework Set to: #{name_downcase}"]
 		
 		# client.emit_success ("Iconic Framework Added")		
 		#char.update(swrifts_iconicf: Website.format_input_for_mush(chopped_iconicf), swrifts_race: Website.format_input_for_mush(chopped_race));
