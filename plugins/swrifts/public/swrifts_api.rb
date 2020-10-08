@@ -369,13 +369,13 @@ module AresMUSH
 		chopped_race = Website.format_input_for_mush(chopped_race)
 
 		## ----- Update Iconic Framework
-		 ClassTargetFinder.with_a_character(char, client, enactor) do |model|
-			# trait = Swrifts.find_traits(model, chopped_iconicf)				
-			name_downcase = chopped_iconicf.downcase
-			model.swrifts_traits.select { |a| a.name.downcase == name_downcase }.first			
-			trait.update(rating: name_downcase)
-		 end
-		return ["Trait updated: #{name_downcase}"]
+		 # ClassTargetFinder.with_a_character(char, client, enactor) do |model|
+			trait = Swrifts.find_traits(model, chopped_iconicf)				
+			# name_downcase = chopped_iconicf.downcase
+			# model.swrifts_traits.select { |a| a.name.downcase == name_downcase }.first			
+			# trait.update(rating: name_downcase)
+		 # end
+		return ["Trait updated: #{char}"]
 		
 		# client.emit_success ("Iconic Framework Added")		
 		#char.update(swrifts_iconicf: Website.format_input_for_mush(chopped_iconicf), swrifts_race: Website.format_input_for_mush(chopped_race));
