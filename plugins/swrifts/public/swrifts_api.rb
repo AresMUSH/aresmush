@@ -373,7 +373,7 @@ module AresMUSH
 			#trait = Swrifts.find_traits(char, chopped_iconicf)				
 			# name_downcase = chopped_iconicf.downcase
 			#trait = char.swrifts_traits.select { |a| a.name.downcase == name_downcase }.first			
-			trait = char.swrifts_traits			
+			trait = char.swrifts_traits.inspect
 			# trait.update(rating: name_downcase)
 		 # end
 		return ["Trait updated: #{trait}"]
