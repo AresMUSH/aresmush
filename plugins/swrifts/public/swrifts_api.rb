@@ -1,6 +1,6 @@
 module AresMUSH
   module Swrifts
-  
+    include CommandHandler
 	
     # Return the code to display the font awesome die type based on rating. This should probably be moved to somewhere else.
     def self.die_rating(name,rating)
@@ -348,6 +348,33 @@ module AresMUSH
 			end
 		end	
 	end	
+	
+	def self.save_abilities_for_chargen(char, chargen_data)
+
+		#Get the iconic framework and race set on the form
+		c_iconicf = chargen_data[:custom][:charicf]
+		c_race = chargen_data[:custom][:charrace]
+
+		#Remove the book and description stuff from the end of the string.	
+		chopped_iconicf = c_iconicf[/[^~]+/]
+		chopped_iconicf = Website.format_input_for_mush(chopped_iconicf)
+		chopped_race = c_race[/[^~]+/]
+		chopped_race = Website.format_input_for_mush(chopped_race)
+
+		## ----- Update Iconic Framework
+		ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
+			## trait = Swrifts.find_traits(model, chopped_iconicf)				
+			name_downcase = iconicf_title.downcase
+			model.swrifts_traits.select { |a| a.name.downcase == name_downcase }.first			
+			trait.update(rating: chopped_iconicf)
+		end
+		
+		# client.emit_success ("Iconic Framework Added")		
+		#char.update(swrifts_iconicf: Website.format_input_for_mush(chopped_iconicf), swrifts_race: Website.format_input_for_mush(chopped_race));
+		
+        #return ["Iconfic Framework Set to: #{chopped_iconicf}", "Race set to: #{chopped_race}"]	
+	
+	end
 	
   end
 
