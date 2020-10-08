@@ -362,12 +362,12 @@ module AresMUSH
 		chopped_race = Website.format_input_for_mush(chopped_race)
 		#return { error: ("Here is chargen") }
 		## ----- Update Iconic Framework
-		ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-			## trait = Swrifts.find_traits(model, chopped_iconicf)				
-			name_downcase = chopped_iconicf.downcase
-			model.swrifts_traits.select { |a| a.name.downcase == name_downcase }.first			
-			trait.update(rating: chopped_iconicf)
-		end
+		# ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
+			# trait = Swrifts.find_traits(model, chopped_iconicf)				
+			# name_downcase = chopped_iconicf.downcase
+			# model.swrifts_traits.select { |a| a.name.downcase == name_downcase }.first			
+			# trait.update(rating: chopped_iconicf)
+		# end
 		
 		return ["Iconicf Framework Set to: #{name_downcase}"]
 		
