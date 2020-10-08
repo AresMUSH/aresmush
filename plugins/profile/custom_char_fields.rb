@@ -24,22 +24,14 @@ module AresMUSH
       # Custom fields will be in char_data[:custom]
       # Example: char.update(goals: char_data[:custom][:goals])
       def self.save_fields_from_profile_edit(char, char_data)
-		char.update(swrifts_iconicf: Website.format_input_for_mush(char_data[:custom][:iconicf]))
+	  
       end
       
       # Save fields and return an array of any error messages.
       # Note Custom fields will be in chargen_data[:custom]
       # Example: char.update(goals: chargen_data[:custom][:goals])
       def self.save_fields_from_chargen(char, chargen_data)
-	  
-		c_iconicf = chargen_data[:custom][:iconicf]
-		c_race = chargen_data[:custom][:race]
-		
-		chopped_iconicf = c_iconicf[/[^~]+/]
-		chopped_race = c_race[/[^~]+/]
-		char.update(swrifts_iconicf: Website.format_input_for_mush(chopped_iconicf), swrifts_race: Website.format_input_for_mush(chopped_race))
-		
-        return ["Iconfic Framework Set to: #{chopped_iconicf}", "Race set to: #{chopped_race}"]
+		Swrifts.save_abilities_for_chargen(char, chargen_data)
       end
     end
   end
