@@ -187,11 +187,11 @@ module AresMUSH
 		
 		## ----- Race
 	 
-	    def self.is_valid_race_name?(name)
+	    def self.is_valid_tname?(name, type)
 		  return false if !name
-		  names = Global.read_config('swrifts', 'races').map { |a| a['name'].downcase }
+		  names = Global.read_config('swrifts', type).map { |a| a['name'].downcase }
 		  names.include?(name.downcase)
-		end
+		end		
 
 		def self.get_race(char, race_name)
 			charac = Swrifts.find_race_config(race_name)
@@ -316,6 +316,9 @@ module AresMUSH
 			end
 		end
 		
+		## ----- Call command
+		
+
 
 		# def self.chargen_points(char, points_name) # Aliana, stats_points
 			# name_downcase = points_name.downcase

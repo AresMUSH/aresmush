@@ -9,7 +9,7 @@ swrifts:
                 - Attractive^
                 - Alertness^
             hinderances:
-                - Bad Reputation^
+                - Overconfident^
                 - Blind^
             stats: 
                 Agility: 1
@@ -24,7 +24,8 @@ swrifts:
                 stats_points: 50
             skills:
                 Common Knowledge: -3
-                Psionics: 1
+                Repair: 2
+                Academics: 8
             complications:
                 - Skill Penalty^
                     - Common Knowledge^
@@ -46,7 +47,6 @@ swrifts:
                 - Attractive^
                 - Alertness^
             hinderances:
-                - Bad Reputation^
                 - Blind^
             stats: 
                 Agility: 1
@@ -60,6 +60,7 @@ swrifts:
                 Common Knowledge: -3
                 Psionics: 1
             complications:
+                - Bad Reputation^
                 - Skill Penalty^
                     - Common Knowledge^
                 - Storm-Fouled Senses^
