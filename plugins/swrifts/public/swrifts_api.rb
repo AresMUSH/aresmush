@@ -352,23 +352,23 @@ module AresMUSH
 	def self.save_abilities_for_chargen(char, chargen_data)
 
 		#Get the iconic framework and race set on the form
-		c_iconicf = chargen_data[:custom][:charicf]
-		c_race = chargen_data[:custom][:charrace]
+		# c_iconicf = chargen_data[:custom][:charicf]
+		# c_race = chargen_data[:custom][:charrace]
 
 		#Remove the book and description stuff from the end of the string.	
-		chopped_iconicf = c_iconicf[/[^~]+/]
-		chopped_iconicf = Website.format_input_for_mush(chopped_iconicf)
-		chopped_race = c_race[/[^~]+/]
-		chopped_race = Website.format_input_for_mush(chopped_race)
+		# chopped_iconicf = c_iconicf[/[^~]+/]
+		# chopped_iconicf = Website.format_input_for_mush(chopped_iconicf)
+		# chopped_race = c_race[/[^~]+/]
+		# chopped_race = Website.format_input_for_mush(chopped_race)
 		#return { error: ("Here is chargen") }
 		## ----- Update Iconic Framework
-		ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-			## trait = Swrifts.find_traits(model, chopped_iconicf)				
-			name_downcase = chopped_iconicf.downcase
-			model.swrifts_traits.select { |a| a.name.downcase == name_downcase }.first			
-			trait.update(rating: chopped_iconicf)
-		end
-		
+		# ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
+			# trait = Swrifts.find_traits(model, chopped_iconicf)				
+			# name_downcase = chopped_iconicf.downcase
+			# model.swrifts_traits.select { |a| a.name.downcase == name_downcase }.first			
+			# trait.update(rating: chopped_iconicf)
+		# end
+		name_downcase = 'kkkk'
 		return ["Iconicf Framework Set to: #{name_downcase}"]
 		
 		# client.emit_success ("Iconic Framework Added")		
