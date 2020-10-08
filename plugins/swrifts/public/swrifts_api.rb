@@ -1,6 +1,6 @@
 module AresMUSH
   module Swrifts
-    #include CommandHandler
+    include CommandHandler
 	
     # Return the code to display the font awesome die type based on rating. This should probably be moved to somewhere else.
     def self.die_rating(name,rating)
