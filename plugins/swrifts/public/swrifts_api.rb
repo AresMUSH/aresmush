@@ -354,7 +354,7 @@ module AresMUSH
 		#Get the iconic framework and race set on the form
 		#c_iconicf = chargen_data[:custom][:charicf]
 		#c_race = chargen_data[:custom][:charrace]
-		if (!chargen_date[:custom]) 
+		if (!chargen_data[custom]) 
 			return ["No Custom Data"]
 		else
 			return ["Chargen Data: #{chargen_data}"]
