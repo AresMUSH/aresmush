@@ -363,7 +363,9 @@ module AresMUSH
 
 		## ----- Update Iconic Framework
 		ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-			trait = Swrifts.find_traits(model, chopped_iconicf)				
+			## trait = Swrifts.find_traits(model, chopped_iconicf)				
+			name_downcase = iconicf_title.downcase
+			model.swrifts_traits.select { |a| a.name.downcase == name_downcase }.first			
 			trait.update(rating: chopped_iconicf)
 		end
 		
