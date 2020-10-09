@@ -365,6 +365,7 @@ module AresMUSH
 		chopped_iconicf = Website.format_input_for_mush(chopped_iconicf)
 		chopped_race = c_race[/[^~]+/]
 		chopped_race = Website.format_input_for_mush(chopped_race)
+		name_downcase = chopped_iconicf.downcase  # Work out how to cycle through the custom stuff for this. Keep it tight.
 		
 		swriftstraits = char.swrifts_traits
 		ischaricf = self.acl_return_traits(swriftstraits,'iconicf') #Get the characters Iconic Framework from the traits
@@ -376,12 +377,10 @@ module AresMUSH
 		end
 
 		## ----- Update Iconic Framework
-		 # ClassTargetFinder.with_a_character(char, client, enactor) do |model|
-			#trait = Swrifts.find_traits(char, chopped_iconicf)				
-			name_downcase = chopped_iconicf.downcase
-			trait = char.swrifts_traits.select { |a| a.name.downcase == name_downcase }.first			
+		
 
-			if ( !trait )
+
+			if ( ischaricf.size = 0  )
 				# swinit = Global.read_config('swrifts', 'init')
 				# tt = SwriftsTraits.create(name: 'iconicf', rating: name_downcase, character: char)
 				# if (swinit['traits']) 
@@ -397,15 +396,16 @@ module AresMUSH
 				# end
 				##trait = char.swrifts_traits.select { |a| a.name.downcase == name_downcase }.first				
 				##tt = trait.update(rating: name_downcase)
+				tt2 = 'we got here'
 			else
 				# tt = trait.update(rating: name_downcase)
-				tt = "sucker"
+				tt2 = "sucker"
 			end
 		 # end
 		 
 		# trait = char.swrifts_traits.inspect
 	
-		return ["Trait: #{ischaricf}, #{tt1}"]
+		return ["Trait: #{ischaricf}, #{tt1}, #{tt2}"]
 		
 
 		
