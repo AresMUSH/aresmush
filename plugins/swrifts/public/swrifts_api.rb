@@ -373,14 +373,24 @@ module AresMUSH
 			trait = char.swrifts_traits.select { |a| a.name.downcase == name_downcase }.first			
 
 			if ( !trait )
-				# tt = trait.create(rating: name_downcase)
-				tt = 'trait is nil'
+				swinit = Global.read_config('swrifts', 'init')
+				tt = SwriftsTraits.create(name: 'iconicf', rating: name_downcase, character: char)
+				# if (swinit['traits']) 
+					# traits = swinit['traits']
+					# grab the list from the config file and break it into 'key' (before the ':') and 'rating' (after the ':')
+					# traits.each do |key, rating|
+						# alias the 'key' because the command below doesn't parse the #'s and {'s etc.
+						# setthing = key.downcase
+						# alias the 'rating' for the same reason
+						# setrating = rating
+						# SwriftsTraits.create(name: setthing, rating: setrating, character: char)
+					# end	
+				# end
+				##trait = char.swrifts_traits.select { |a| a.name.downcase == name_downcase }.first				
+				##tt = trait.update(rating: name_downcase)
 			else
 				# tt = trait.update(rating: name_downcase)
-				tt = trait.inspect
-				if ( tt )
-					trait = 'lllll'
-				end
+				tt = "sucker"
 			end
 		 # end
 		return ["Trait: #{trait} TT: #{tt}"]
