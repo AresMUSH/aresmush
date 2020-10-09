@@ -400,7 +400,7 @@ module AresMUSH
 			tt1 << "#{key}"
 		end
 	
-		return ["Trait: #{tt1}"]
+		return ["Trait: #{tt1.inspect}"]
 		
 
 		
