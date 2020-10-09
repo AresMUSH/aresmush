@@ -405,7 +405,7 @@ module AresMUSH
 		 
 		# trait = char.swrifts_traits.inspect
 	
-		return ["Trait: #{tt1}"]
+		return ["Trait: #{ischaricf}, #{tt1}"]
 		
 
 		
