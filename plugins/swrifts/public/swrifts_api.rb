@@ -373,7 +373,7 @@ module AresMUSH
 			trait = char.swrifts_traits.select { |a| a.name.downcase == name_downcase }.first			
 
 			if ( !trait )
-				swinit = Global.read_config('swrifts', 'init')
+				# swinit = Global.read_config('swrifts', 'init')
 				tt = SwriftsTraits.create(name: 'iconicf', rating: name_downcase, character: char)
 				# if (swinit['traits']) 
 					# traits = swinit['traits']
@@ -393,6 +393,8 @@ module AresMUSH
 				tt = "sucker"
 			end
 		 # end
+		 
+		trait = char.swrifts_traits
 		return ["Trait: #{trait} TT: #{tt}"]
 		
 		# client.emit_success ("Iconic Framework Added")		
