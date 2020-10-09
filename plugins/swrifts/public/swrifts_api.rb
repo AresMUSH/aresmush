@@ -372,11 +372,9 @@ module AresMUSH
 			name_downcase = chopped_iconicf.downcase
 			trait = char.swrifts_traits.select { |a| a.name.downcase == name_downcase }.first			
 
-			if ( trait == '' )
+			if ( trait )
 				# tt = trait.create(rating: name_downcase)
 				tt = 'trait is nil'
-			elsif ( trait.nil )
-				tt = 'dddd'
 			elsif ( trait.empty )
 				tt = 'kkkk'
 			else
