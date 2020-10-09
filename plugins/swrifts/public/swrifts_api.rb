@@ -398,13 +398,13 @@ module AresMUSH
 		
 		tt1=''
 		trait.each do | key, value|
-			tt1 << "#{key}"
+			tt1 << "Key: #{key} Value: #{value}"
 		end
 		
 		# tt1 = tt1.class
 		trait = trait.size
 	
-		return ["Trait: #{trait}"]
+		return ["Trait: #{tt1}"]
 		
 
 		
