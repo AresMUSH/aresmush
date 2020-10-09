@@ -402,7 +402,7 @@ module AresMUSH
 		end
 		
 		# tt1 = tt1.class
-		trait = trait.inspect
+		trait = trait.size
 	
 		return ["Trait: #{trait}"]
 		
