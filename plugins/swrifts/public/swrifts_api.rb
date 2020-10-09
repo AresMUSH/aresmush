@@ -392,7 +392,7 @@ module AresMUSH
 		 
 		# trait = char.swrifts_traits.inspect
 	
-		return ["Trait: #{ischaricf}, #{tt1}, #{tt2}"]
+		return ["Trait: #{name_downcase}, #{tt1}, #{tt2}"]
 		
 
 		
