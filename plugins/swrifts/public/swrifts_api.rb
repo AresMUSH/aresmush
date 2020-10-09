@@ -401,10 +401,12 @@ module AresMUSH
 			tt1 << "Key: #{key} Value: #{value}"
 		end
 		
+		tt3 = trait.find(iconicf: name_downcase)
+		
 		# tt1 = tt1.class
 		trait = trait.class
 	
-		return ["Trait: #{trait}"]
+		return ["Trait: #{tt3}"]
 		
 
 		
