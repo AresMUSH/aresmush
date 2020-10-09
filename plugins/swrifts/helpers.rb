@@ -251,7 +251,7 @@ module AresMUSH
 				iconicf_edges=iconicf['edges'] 
 				iconicf_edges.each do |key|
 					edge_name = "#{key}".downcase
-					ss = Swrifts.add_feature(model, SwriftsEdges, "edges", edge_name
+					ss = Swrifts.add_feature(model, SwriftsEdges, "edges", edge_name)
 				end
 				# client.emit_success t('swrifts.iconicedges_set')
 			else 
