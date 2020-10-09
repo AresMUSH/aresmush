@@ -349,9 +349,7 @@ module AresMUSH
 		end	
 	end	
 	
-	def self.save_abilities_for_chargen(char, chargen_data)
-
-		
+	def self.save_abilities_for_chargen(char, chargen_data)		
 
 		if (!chargen_data[:custom]) 
 			return ["No Custom Data"]
@@ -376,7 +374,7 @@ module AresMUSH
 			trait = char.swrifts_traits.inspect
 			# trait.update(rating: name_downcase)
 		 # end
-		return ["Trait updated: #{trait}"]
+		return ["Trait updated: #{chargen_data}"]
 		
 		# client.emit_success ("Iconic Framework Added")		
 		#char.update(swrifts_iconicf: Website.format_input_for_mush(chopped_iconicf), swrifts_race: Website.format_input_for_mush(chopped_race));
