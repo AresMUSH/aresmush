@@ -103,6 +103,7 @@ module AresMUSH
 					end
 				else
 					client.emit ("Error")
+					return
 				end
 			when "sheet"
 				return SheetCmd
