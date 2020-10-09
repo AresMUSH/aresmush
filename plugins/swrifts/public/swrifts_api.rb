@@ -399,7 +399,7 @@ module AresMUSH
 		tt1 = "Let's start"
 		trait.each do |key|
 			tt1 << "#{key}"
-			trait[key].each |val| 
+			trait[key].each do |val| 
 				tt3 << val 
 			end
 		end
