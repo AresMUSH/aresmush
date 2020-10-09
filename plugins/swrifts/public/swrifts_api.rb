@@ -378,7 +378,7 @@ module AresMUSH
 			else
 				# tt = trait.update(rating: name_downcase)
 				tt = trait.class
-				if ( tt == 'nil' )
+				if ( tt == 'NilClass' )
 					trait = 'lllll'
 				end
 			end
