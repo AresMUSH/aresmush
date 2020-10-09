@@ -374,7 +374,7 @@ module AresMUSH
 
 			if ( !trait )
 				# swinit = Global.read_config('swrifts', 'init')
-				tt = SwriftsTraits.create(name: 'iconicf', rating: name_downcase, character: char)
+				# tt = SwriftsTraits.create(name: 'iconicf', rating: name_downcase, character: char)
 				# if (swinit['traits']) 
 					# traits = swinit['traits']
 					# grab the list from the config file and break it into 'key' (before the ':') and 'rating' (after the ':')
@@ -396,11 +396,14 @@ module AresMUSH
 		 
 		trait = char.swrifts_traits
 		
-		tt1 = "Let's start<br />"
-		trait.each do |key, value|
-			tt1 << "#{key.inspect} is #{value.inspect}"
-		end
+		tt1 = "Let's start"
+		# trait.each do |key, value|
+			# tt1 << "#{key.inspect} is #{value.inspect}"
+		# end
+		tt1 << trait.select { |k,v| k:name == "iconicf" }		
 		return ["Trait: #{tt1} TT: #{tt}"]
+		
+
 		
 		# client.emit_success ("Iconic Framework Added")		
 		#char.update(swrifts_iconicf: Website.format_input_for_mush(chopped_iconicf), swrifts_race: Website.format_input_for_mush(chopped_race));
