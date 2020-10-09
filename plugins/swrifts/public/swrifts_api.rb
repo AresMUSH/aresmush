@@ -367,7 +367,13 @@ module AresMUSH
 		chopped_race = Website.format_input_for_mush(chopped_race)
 		
 		swriftstraits = char.swrifts_traits
-		ischaricf = self.acl_return_traits(swriftstraits,'iconicf') #Get the characters Iconic Framework from the traits		
+		ischaricf = self.acl_return_traits(swriftstraits,'iconicf') #Get the characters Iconic Framework from the traits
+
+		if ischaricf
+			tt1 = 'YES!!!'
+		else
+			tt1 = 'No :('
+		end
 
 		## ----- Update Iconic Framework
 		 # ClassTargetFinder.with_a_character(char, client, enactor) do |model|
@@ -399,7 +405,7 @@ module AresMUSH
 		 
 		# trait = char.swrifts_traits.inspect
 	
-		return ["Trait: #{ischaricf}"]
+		return ["Trait: #{tt1}"]
 		
 
 		
