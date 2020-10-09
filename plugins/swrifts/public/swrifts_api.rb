@@ -371,8 +371,8 @@ module AresMUSH
 			#trait = Swrifts.find_traits(char, chopped_iconicf)				
 			name_downcase = chopped_iconicf.downcase
 			trait = char.swrifts_traits.select { |a| a.name.downcase == name_downcase }.first			
-			trait = trait.class
-			if ( trait == 'NilClass' )
+
+			if ( trait == '' )
 				# tt = trait.create(rating: name_downcase)
 				tt = 'trait is nil'
 			elsif ( trait.nil )
