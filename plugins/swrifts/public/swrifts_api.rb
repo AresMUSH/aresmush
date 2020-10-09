@@ -382,10 +382,10 @@ module AresMUSH
 						setthing = key.downcase
 						# alias the 'rating' for the same reason
 						setrating = rating
-						SwriftsTraits.create(name: setthing, rating: setrating, character: model)
+						SwriftsTraits.create(name: setthing, rating: setrating, character: char)
 					end	
 				end
-				trait = char.swrifts_traits.select { |a| a.name.downcase == name_downcase }.first				
+				##trait = char.swrifts_traits.select { |a| a.name.downcase == name_downcase }.first				
 				tt = trait.update(rating: name_downcase)
 			else
 				# tt = trait.update(rating: name_downcase)
