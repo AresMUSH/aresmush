@@ -1367,11 +1367,6 @@ swrifts:
             chargen_points:
                 magic_slots: 3
                 psionic_slots: 3
-            counters:
-                ppe_max: 15
-                ppe_current: 15
-                isp_max: 20
-                isp_current: 15
             skills:
                 Faith: 2
                 Psionics: 2
@@ -1384,7 +1379,6 @@ swrifts:
                 - AB Magic*
                 - Major Psionic*
                 - Alertness*
-                - Danger Sense*
             magic_powers:
                 - Concel Arcana*
                 - Detect Arcana*

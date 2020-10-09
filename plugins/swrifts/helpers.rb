@@ -210,6 +210,7 @@ module AresMUSH
 				# client.emit_failure ("This Iconic Framework has no Chargen Point changes")
 			end
 			
+			
 			## ----- Update Counters
 			if (iconicf['counters'])
 				iconicf_counters = iconicf['counters']
@@ -250,10 +251,7 @@ module AresMUSH
 				iconicf_edges=iconicf['edges'] 
 				iconicf_edges.each do |key|
 					edge_name = "#{key}".downcase
-					# ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-						ss = Swrifts.add_feature(model, SwriftsEdges, "edges", edge_name)
-						# client.emit ("llll: #{ss}")
-					# end
+					ss = Swrifts.add_feature(model, SwriftsEdges, "edges", edge_name)
 				end
 				# client.emit_success t('swrifts.iconicedges_set')
 			else 
@@ -273,12 +271,9 @@ module AresMUSH
 					current_rating = Swrifts.skill_rating(model, skill_name).to_i
 					# add Iconic Framework bonus to Initial skill
 					new_rating = current_rating + mod
-											
-					# ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-						# update the collection
-						skill = Swrifts.find_skill(model, skill_name)				
-						skill.update(rating: new_rating)
-					# end
+					# update the collection
+					skill = Swrifts.find_skill(model, skill_name)				
+					skill.update(rating: new_rating)
 				end
 				# client.emit_success t('swrifts.iconicskills_set')
 			else 
@@ -291,9 +286,7 @@ module AresMUSH
 				iconicf_magic_powers=iconicf['magic_powers'] 
 				iconicf_magic_powers.each do |key|
 					setthing = "#{key}".downcase
-					# ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-						SwriftsMpowers.create(name: setthing, character: model)
-					# end
+					SwriftsMpowers.create(name: setthing, character: model)
 				end
 				# client.emit_success t('swrifts.iconicmpowers_set')
 			else 
@@ -305,9 +298,7 @@ module AresMUSH
 				iconicf_psionic_powers=iconicf['psionic_powers']
 				iconicf_psionic_powers.each do |key|
 					setthing = "#{key}".downcase
-					# ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-						SwriftsPpowers.create(name: setthing, character: model)
-					# end
+					SwriftsPpowers.create(name: setthing, character: model)
 				end
 				# client.emit_success t('swrifts.iconicppowers_set')
 			else 
@@ -319,9 +310,7 @@ module AresMUSH
 				iconicf_cybernetics=iconicf['cybernetics']
 				iconicf_cybernetics.each do |key|
 					setthing = "#{key}".downcase
-					# ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-						SwriftsCybernetics.create(name: setthing, character: model)
-					# end
+					SwriftsCybernetics.create(name: setthing, character: model)
 				end
 				# client.emit_success t('swrifts.iconiccybernetics_set')
 			else 
@@ -333,9 +322,7 @@ module AresMUSH
 				iconicf_abilities=iconicf['abilities'] 
 				iconicf_abilities.each do |key|
 					setthing = "#{key}".downcase
-					# ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-						SwriftsAbilities.create(name: setthing, character: model)
-					# end
+					SwriftsAbilities.create(name: setthing, character: model)
 				end
 				# client.emit_success t('swrifts.iconicabilities_set')
 			else 
@@ -347,9 +334,7 @@ module AresMUSH
 				iconicf_complications=iconicf['complications'] 
 				iconicf_complications.each do |key|
 					setthing = "#{key}".downcase
-					# ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-						SwriftsComplications.create(name: setthing, character: model)
-					# end
+					SwriftsComplications.create(name: setthing, character: model)
 				end
 				# client.emit_success t('swrifts.iconiccomplications_set')
 			else 
