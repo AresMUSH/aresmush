@@ -377,7 +377,7 @@ module AresMUSH
 				tt = 'trait is nil'
 			else
 				# tt = trait.update(rating: name_downcase)
-				tt = 'nothing yet'
+				tt = trait.inspect
 			end
 		 # end
 		return ["Trait updated: #{trait} #{tt}"]
