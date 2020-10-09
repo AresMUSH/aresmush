@@ -380,7 +380,7 @@ module AresMUSH
 		
 
 
-			if ( ischaricf.size = 0  )
+			if ( ischaricf.size == 0  )
 				# swinit = Global.read_config('swrifts', 'init')
 				# tt = SwriftsTraits.create(name: 'iconicf', rating: name_downcase, character: char)
 				# if (swinit['traits']) 
