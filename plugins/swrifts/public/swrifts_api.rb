@@ -385,6 +385,7 @@ module AresMUSH
 				tt = SwriftsTraits.create(name: 'iconicf', rating: name_downcase, character: char)
 				tt2 = 'we got here'
 			else
+				tt=''
 				swriftstraits.to_a.sort_by { |a| a.name }
 				swriftstraits.each do |key, value|
 					tt << "K: #{key}, v: #{value}"
