@@ -401,7 +401,7 @@ module AresMUSH
 				tt = SwriftsTraits.update(name: 'iconicf', rating: name_downcase)
 				tt2 = "updated"
 			end
-		 # end
+		 # end 
 		 
 		# trait = char.swrifts_traits.inspect
 	
