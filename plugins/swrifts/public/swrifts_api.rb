@@ -385,6 +385,7 @@ module AresMUSH
 				tt = SwriftsTraits.create(name: 'iconicf', rating: name_downcase, character: char)
 				tt2 = 'we got here'
 			else
+				tt = char.swrifts_traits.select { |a| a.name.downcase == name_downcase }.first
 				# tt = SwriftsTraits.update(name: 'iconicf', rating: name_downcase, character: char)
 				tt2 = "updated"
 			end
@@ -392,12 +393,7 @@ module AresMUSH
 		 
 		# trait = char.swrifts_traits.inspect
 	
-		return ["Trait: #{name_downcase}, #{tt1}, #{tt2}"]
-		
-
-		
-		# client.emit_success ("Iconic Framework Added")		
-		#char.update(swrifts_iconicf: Website.format_input_for_mush(chopped_iconicf), swrifts_race: Website.format_input_for_mush(chopped_race));
+		return ["Trait: #{name_downcase}, #{tt}, #{tt1}, #{tt2}"]
 		
         #return ["Iconfic Framework Set to: #{chopped_iconicf}", "Race set to: #{chopped_race}"]	
 	end
