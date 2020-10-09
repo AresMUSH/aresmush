@@ -400,7 +400,8 @@ module AresMUSH
 		# trait.each do |key, value|
 			# tt1 << "#{key.inspect} is #{value.inspect}"
 		# end
-		tt1 << trait.select { |k,v| k == "iconicf" }		
+		tt2  = trait.select { |k,v| k == "iconicf" }
+		tt1 << tt2.inspect
 		return ["Trait: #{tt1} TT: #{tt}"]
 		
 
