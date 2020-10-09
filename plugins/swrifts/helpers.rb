@@ -132,7 +132,7 @@ module AresMUSH
 			
 		end
 		
-		def self.run_iconicf(model, iconicf, iconicf_title, iconicf_name, 
+		def self.run_iconicf(model, iconicf, iconicf_title, iconicf_name)
 
 			## ----- Update Iconic Framework
 			# ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
@@ -168,7 +168,7 @@ module AresMUSH
 					# alias the 'rating' for the same reason and set it to an integer
 					mod = "#{rating}".to_i
 					# get the current rating of the stat
-					current_rating = Swrifts.stat_rating(enactor, stat_name)
+					current_rating = Swrifts.stat_rating(model, stat_name)
 					# add Iconic Framework bonus to Initial stat
 					new_rating = current_rating + mod
 											
@@ -194,7 +194,7 @@ module AresMUSH
 					# alias the 'rating' for the same reason and set it to an integer
 					mod = "#{rating}".to_i
 					# get the current rating of the skill
-					current_rating = Swrifts.chargen_points_rating(enactor, point_name).to_i
+					current_rating = Swrifts.chargen_points_rating(model, point_name).to_i
 					# add Iconic Framework bonus to Initial skill
 					new_rating = current_rating + mod
 											
@@ -216,7 +216,7 @@ module AresMUSH
 				iconicf_counters.each do |key, rating|
 					counter_name = "#{key}".downcase
 					mod = "#{rating}".to_i
-					current_rating = Swrifts.counters_rating(enactor, counter_name).to_i
+					current_rating = Swrifts.counters_rating(model, counter_name).to_i
 					new_rating = current_rating + mod
 											
 					# ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
@@ -270,7 +270,7 @@ module AresMUSH
 					# alias the 'rating' for the same reason and set it to an integer
 					mod = "#{rating}".to_i
 					# get the current rating of the skill
-					current_rating = Swrifts.skill_rating(enactor, skill_name).to_i
+					current_rating = Swrifts.skill_rating(model, skill_name).to_i
 					# add Iconic Framework bonus to Initial skill
 					new_rating = current_rating + mod
 											

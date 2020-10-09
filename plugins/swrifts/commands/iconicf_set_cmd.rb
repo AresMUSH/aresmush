@@ -45,7 +45,7 @@ module AresMUSH
 				end
 
 				ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-					Swrifts.run_iconicf(model, init)
+					Swrifts.run_iconicf(model, iconicf, iconicf_title, iconicf_name)
 				end
 				
 				client.emit_success t('swrifts.iconicf_complete')
