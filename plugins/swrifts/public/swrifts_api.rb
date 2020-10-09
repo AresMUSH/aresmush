@@ -394,7 +394,7 @@ module AresMUSH
 			end
 		 # end
 		 
-		trait = char.swrifts_traits
+		trait = char.swrifts_traits.inspect
 		return ["Trait: #{trait} TT: #{tt}"]
 		
 		# client.emit_success ("Iconic Framework Added")		
