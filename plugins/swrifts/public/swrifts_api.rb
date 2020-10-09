@@ -369,7 +369,7 @@ module AresMUSH
 		swriftstraits = char.swrifts_traits
 		ischaricf = self.acl_return_traits(swriftstraits,'iconicf') #Get the characters Iconic Framework from the traits
 		icfsize = ischaricf.size
-		if ischaricf
+		if (ischaricf.size > 0 )
 			tt1 = "YES!!! Size: #{icfsize}"
 		else
 			tt1 = 'No :('
