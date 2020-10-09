@@ -396,8 +396,11 @@ module AresMUSH
 		 
 		trait = char.swrifts_traits.inspect
 		
+		trait.each do | key |
+			tt1 << "#{key}"
+		end
 	
-		return ["Trait: #{trait}"]
+		return ["Trait: #{tt1}"]
 		
 
 		
@@ -405,7 +408,6 @@ module AresMUSH
 		#char.update(swrifts_iconicf: Website.format_input_for_mush(chopped_iconicf), swrifts_race: Website.format_input_for_mush(chopped_race));
 		
         #return ["Iconfic Framework Set to: #{chopped_iconicf}", "Race set to: #{chopped_race}"]	
-	
 	end
 	
   end
