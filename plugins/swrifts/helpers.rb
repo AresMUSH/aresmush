@@ -132,7 +132,7 @@ module AresMUSH
 			
 		end
 		
-		def self.run_iconicf(model, iconicf, iconicf_title, iconicf_name, 
+		def self.run_iconicf(model, iconicf, iconicf_title, iconicf_name)
 
 			## ----- Update Iconic Framework
 			# ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
