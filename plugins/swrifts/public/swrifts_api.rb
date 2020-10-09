@@ -375,8 +375,6 @@ module AresMUSH
 			if ( trait )
 				# tt = trait.create(rating: name_downcase)
 				tt = 'trait is nil'
-			elsif ( trait.empty )
-				tt = 'kkkk'
 			else
 				# tt = trait.update(rating: name_downcase)
 				tt = 'nothing yet'
