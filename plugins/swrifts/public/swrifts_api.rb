@@ -394,13 +394,13 @@ module AresMUSH
 			end
 		 # end
 		 
-		trait = char.swrifts_traits.inspect
+		trait = char.swrifts_traits
 		
 		trait.each do | key |
 			tt1 << "#{key}"
 		end
 	
-		return ["Trait: #{tt1.inspect}"]
+		return ["Trait: #{tt1}"]
 		
 
 		
