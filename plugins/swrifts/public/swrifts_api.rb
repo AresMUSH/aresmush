@@ -403,10 +403,16 @@ module AresMUSH
 		
 		tt3 = trait.find(name: name_downcase)
 		
+		tt5 = ''
+		tt3.each do |tt4|
+			tt5 >> tt4.name
+		end
+		
+		
 		# tt1 = tt1.class
 		trait = trait.class
 	
-		return ["Trait: #{tt3}"]
+		return ["Trait: #{tt3}, #{tt5}"]
 		
 
 		
