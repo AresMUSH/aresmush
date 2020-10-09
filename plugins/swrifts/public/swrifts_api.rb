@@ -372,13 +372,13 @@ module AresMUSH
 			name_downcase = chopped_iconicf.downcase
 			trait = char.swrifts_traits.select { |a| a.name.downcase == name_downcase }.first			
 			trait = trait.class
-			 if ( trait.class == 'NilClass' )
+			if ( trait.class == 'NilClass' )
 				# tt = trait.create(rating: name_downcase)
 				tt = 'trait is nil'
-			# else
+			else
 				# tt = trait.update(rating: name_downcase)
 				tt = 'nothing yet'
-			# end
+			end
 		 # end
 		return ["Trait updated: #{trait} #{tt}"]
 		
