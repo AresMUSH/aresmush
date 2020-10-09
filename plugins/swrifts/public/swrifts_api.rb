@@ -394,17 +394,10 @@ module AresMUSH
 			end
 		 # end
 		 
-		trait = char.swrifts_traits
+		trait = char.swrifts_traits.inspect
 		
-		tt1 = "Let's start"
-		trait.each do |key|
-			tt1 << "#{key}"
-			trait[key].each do |key1,val1| 
-				tt3 << "#{key1}" 
-			end
-		end
 	
-		return ["Trait: #{tt1} Trait: #{tt3}"]
+		return ["Trait: #{trait}"]
 		
 
 		
