@@ -394,11 +394,6 @@ module AresMUSH
 	
 		return ["Trait: #{name_downcase}, #{tt1}, #{tt2}"]
 		
-
-		
-		# client.emit_success ("Iconic Framework Added")		
-		#char.update(swrifts_iconicf: Website.format_input_for_mush(chopped_iconicf), swrifts_race: Website.format_input_for_mush(chopped_race));
-		
         #return ["Iconfic Framework Set to: #{chopped_iconicf}", "Race set to: #{chopped_race}"]	
 	end
 	
