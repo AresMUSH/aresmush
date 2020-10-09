@@ -398,7 +398,7 @@ module AresMUSH
 				##tt = trait.update(rating: name_downcase)
 				tt2 = 'we got here'
 			else
-				tt = SwriftsTraits.update(name: 'iconicf', rating: name_downcase)
+				tt = SwriftsTraits.update(name: 'iconicf', rating: name_downcase, character: char)
 				tt2 = "updated"
 			end
 		 # end 
