@@ -370,7 +370,7 @@ module AresMUSH
 		ischaricf = self.acl_return_traits(swriftstraits,'iconicf') #Get the characters Iconic Framework from the traits
 
 		if ischaricf
-			tt1 = 'YES!!!'
+			tt1 = "YES!!! #{ischarif}.size"
 		else
 			tt1 = 'No :('
 		end
