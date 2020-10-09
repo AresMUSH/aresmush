@@ -401,7 +401,7 @@ module AresMUSH
 			tt1 << "#{value}"
 		end
 		
-		tt1 = tt1.class
+		# tt1 = tt1.class
 	
 		return ["Trait: #{tt1}"]
 		
