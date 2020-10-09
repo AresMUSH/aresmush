@@ -388,6 +388,7 @@ module AresMUSH
 				ischaricf.to_a.sort_by { |a| a.name }
 				ischaricf.each do |key, value|
 					tt << "K: #{key}, v: #{value}"
+				end
 				# tt = SwriftsTraits.update(name: 'iconicf', rating: name_downcase, character: char)
 				tt2 = "updated"
 			end
