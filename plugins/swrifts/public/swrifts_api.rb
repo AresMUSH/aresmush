@@ -396,6 +396,7 @@ module AresMUSH
 		 
 		trait = char.swrifts_traits
 		
+		tt1 = "Let's start<br />"
 		trait.each do |key, value|
 			tt1 << "#{key} is #{value}"
 		end
