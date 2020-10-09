@@ -401,7 +401,7 @@ module AresMUSH
 			# tt1 << "#{key.inspect} is #{value.inspect}"
 		# end
 		tt2  = trait.select { |k,v| k == :name }
-		return ["Trait: #{tt2} TT: #{tt}"]
+		return ["Trait: #{trait.inspect} Trait: #{tt2}]
 		
 
 		
