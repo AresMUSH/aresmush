@@ -394,8 +394,12 @@ module AresMUSH
 			end
 		 # end
 		 
-		trait = char.swrifts_traits.inspect
-		return ["Trait: #{trait} TT: #{tt}"]
+		trait = char.swrifts_traits
+		
+		trait.each do |key, value|
+			tt1 << "#{key} is #{value}"
+		end
+		return ["Trait: #{tt1} TT: #{tt}"]
 		
 		# client.emit_success ("Iconic Framework Added")		
 		#char.update(swrifts_iconicf: Website.format_input_for_mush(chopped_iconicf), swrifts_race: Website.format_input_for_mush(chopped_race));
