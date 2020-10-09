@@ -385,7 +385,9 @@ module AresMUSH
 				tt = SwriftsTraits.create(name: 'iconicf', rating: name_downcase, character: char)
 				tt2 = 'we got here'
 			else
-				tt = char.swrifts_traits.select { |a| a.name.downcase == name_downcase }.first
+				ischaricf.to_a.sort_by { |a| a.name }
+				ischaricf.each do |key, value|
+					tt << "K: #{key}, v: #{value}"
 				# tt = SwriftsTraits.update(name: 'iconicf', rating: name_downcase, character: char)
 				tt2 = "updated"
 			end
