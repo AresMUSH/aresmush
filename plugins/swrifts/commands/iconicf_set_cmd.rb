@@ -40,24 +40,23 @@ module AresMUSH
 				iconicf = Swrifts.get_iconicf(self.enactor, self.iconicf_name) 
 				init = Global.read_config('swrifts', 'init')
 				
-				#----- This sets the default traits field on the collection -----				
-				if (init['traits']) 
-				traits = init['traits']
-					# grab the list from the config file and break it into 'key' (before the ':') and 'rating' (after the ':')
-					traits.each do |key, rating|
-						# alias the 'key' because the command below doesn't parse the #'s and {'s etc.
-						setthing = key.downcase
-						# alias the 'rating' for the same reason
-						setrating = rating
-						ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-							SwriftsTraits.create(name: setthing, rating: setrating, character: model)
-						end
-					end
-					# client.emit_success ("Base Traits Set!")
-				else 
-					# If the this field isn't in swrifts_init.yml, skip and emit to enactor
-					client.emit_failure ("Init_char Error - Traits")
+				ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
+					Swrifts.run_init(model, init)
 				end
+				
+				#----- This sets the default traits field on the collection -----				
+				# if (init['traits']) 
+				# traits = init['traits']
+					# traits.each do |key, rating|
+						# setthing = key.downcase
+						# setrating = rating
+						# ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
+							# SwriftsTraits.create(name: setthing, rating: setrating, character: model)
+						# end
+					# end
+				# else 
+					# client.emit_failure ("Init_char Error - Traits")
+				# end
 				
 
 				## ----- Update Iconic Framework
@@ -85,64 +84,61 @@ module AresMUSH
 				end
 						
 				#----- This sets the default stats field on the collection -----				
-				if (init['stats']) 
-				stats = init['stats'] 
-					stats.each do |key, rating|
-						setthing = "#{key}".downcase
-						setrating = "#{rating}"
-						ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-							SwriftsStats.create(name: setthing, rating: setrating, character: model)
-						end
-					end
-					# client.emit_success ("Stats Set!")
-				else 
-					client.emit_failure ("Init_char Error - Stats")
-				end
+				# if (init['stats']) 
+				# stats = init['stats'] 
+					# stats.each do |key, rating|
+						# setthing = "#{key}".downcase
+						# setrating = "#{rating}"
+						# ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
+							# SwriftsStats.create(name: setthing, rating: setrating, character: model)
+						# end
+					# end
+				# else 
+					# client.emit_failure ("Init_char Error - Stats")
+				# end
 						
 				#----- This sets the maximum stats field on the collection -----				
-				if (init['stat_max']) 
-				stat_max = init['stat_max']
-					stat_max.each do |key, rating|
-						setthing = "#{key}".downcase
-						setrating = "#{rating}"
-						ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-							SwriftsStatsmax.create(name: setthing, rating: setrating, character: model)
-						end
-					end
-					# client.emit_success ("Stat Maximums Set!")
-				else 
-					client.emit_failure ("Init_char Error - Stat_max")
-				end
+				# if (init['stat_max']) 
+				# stat_max = init['stat_max']
+					# stat_max.each do |key, rating|
+						# setthing = "#{key}".downcase
+						# setrating = "#{rating}"
+						# ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
+							# SwriftsStatsmax.create(name: setthing, rating: setrating, character: model)
+						# end
+					# end
+					client.emit_success ("Stat Maximums Set!")
+				# else 
+					# client.emit_failure ("Init_char Error - Stat_max")
+				# end
 						
 				#----- This sets the default minimums on the Character -----				
-				if (init['chargen_min'])
-				chargen_min = init['chargen_min']
-					chargen_min.each do |key, rating|
-						setthing = "#{key}".downcase
-						setrating = "#{rating}"
-						ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-							SwriftsChargenmin.create(name: setthing, rating: setrating, character: model)
-						end
-					end
-					# client.emit_success ("Chargen Mins Set!")
-				else 
-					client.emit_failure ("Init_char Error - Chargen_Min")
-				end  						
+				# if (init['chargen_min'])
+				# chargen_min = init['chargen_min']
+					# chargen_min.each do |key, rating|
+						# setthing = "#{key}".downcase
+						# setrating = "#{rating}"
+						# ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
+							# SwriftsChargenmin.create(name: setthing, rating: setrating, character: model)
+						# end
+					# end
+				# else 
+					# client.emit_failure ("Init_char Error - Chargen_Min")
+				# end  						
 						
 				#----- This sets the default Advances on the Character -----				
-				if (init['advances'])
-				advances = init['advances']					
-					advances.each do |key, rating|
-						setthing = "#{key}".downcase
-						setrating = "#{rating}"
-						ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-							SwriftsAdvances.create(name: setthing, rating: setrating, character: model)
-						end
-					end
-					# client.emit_success ("Advances Set!")
-				else 
-					client.emit_failure ("Init_char Error - Advances")
-				end 				
+				# if (init['advances'])
+				# advances = init['advances']					
+					# advances.each do |key, rating|
+						# setthing = "#{key}".downcase
+						# setrating = "#{rating}"
+						# ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
+							# SwriftsAdvances.create(name: setthing, rating: setrating, character: model)
+						# end
+					# end
+				# else 
+					# client.emit_failure ("Init_char Error - Advances")
+				# end 				
 
 				## ----- Update Stats
 				if (iconicf['stats'])
@@ -171,51 +167,48 @@ module AresMUSH
 				end
 						
 				#----- This sets the default derived stats field on the collection -----				
-				if (init['dstats']) 
-				dstats = init['dstats']
-					dstats.each do |key, rating|
-						setthing = "#{key}".downcase
-						setrating = "#{rating}"
-						ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-							SwriftsDstats.create(name: setthing, rating: setrating, character: model)
-						end
-					end
-					# client.emit_success ("Derived Stats Set!")
-				else 
-					client.emit_failure ("Init_char Error - DStats")
-				end
+				# if (init['dstats']) 
+				# dstats = init['dstats']
+					# dstats.each do |key, rating|
+						# setthing = "#{key}".downcase
+						# setrating = "#{rating}"
+						# ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
+							# SwriftsDstats.create(name: setthing, rating: setrating, character: model)
+						# end
+					# end
+				# else 
+					# client.emit_failure ("Init_char Error - DStats")
+				# end
 
 				#----- This sets the default skills on the Character -----				
-				if (init['skills'] )
-				skills = init['skills'] 
-					skills.each do |key, rating|
-						setthing = "#{key}".downcase
-						setrating = "#{rating}"
-						ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-							SwriftsSkills.create(name: setthing, rating: setrating, character: model)
-						end
-					end
-					# client.emit_success ("Skills Set!")
-				else 
-					client.emit_failure ("Init_char Error - Skills")
-				end 					
+				# if (init['skills'] )
+				# skills = init['skills'] 
+					# skills.each do |key, rating|
+						# setthing = "#{key}".downcase
+						# setrating = "#{rating}"
+						# ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
+							# SwriftsSkills.create(name: setthing, rating: setrating, character: model)
+						# end
+					# end
+				# else 
+					# client.emit_failure ("Init_char Error - Skills")
+				# end 					
 				
 
 				#----- This sets the default Chargen Points on the Character -----				
-				if (init['chargen_points'] )
-				chargen_points = init['chargen_points'] 
-					chargen_points.each do |key, rating|
-						setthing = "#{key}".downcase
-						setrating = "#{rating}"
+				# if (init['chargen_points'] )
+				# chargen_points = init['chargen_points'] 
+					# chargen_points.each do |key, rating|
+						# setthing = "#{key}".downcase
+						# setrating = "#{rating}"
 						
-						ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-							SwriftsChargenpoints.create(name: setthing, rating: setrating, character: model)
-						end
-					end
-					# client.emit_success ("Chargen Points Set!")
-				else 
-					client.emit_failure ("Init_char Error - Chargen Points")
-				end			
+						# ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
+							# SwriftsChargenpoints.create(name: setthing, rating: setrating, character: model)
+						# end
+					# end
+				# else 
+					# client.emit_failure ("Init_char Error - Chargen Points")
+				# end			
 				
 				## ----- Update Chargen Points
 				if (iconicf['chargen_points'])
@@ -244,19 +237,18 @@ module AresMUSH
 				end
 
 				#----- This sets the default counters field on the collection -----				
-				if (init['counters']) 
-				counters = init['counters']
-					counters.each do |key, rating|
-						setthing = "#{key}".downcase
-						setrating = "#{rating}"
-						ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-							SwriftsCounters.create(name: setthing, rating: setrating, character: model)
-						end
-					end
-					# client.emit_success ("Counters Set!")
-				else 
-					client.emit_failure ("Init_char Error - Counters")
-				end
+				# if (init['counters']) 
+				# counters = init['counters']
+					# counters.each do |key, rating|
+						# setthing = "#{key}".downcase
+						# setrating = "#{rating}"
+						# ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
+							# SwriftsCounters.create(name: setthing, rating: setrating, character: model)
+						# end
+					# end
+				# else 
+					# client.emit_failure ("Init_char Error - Counters")
+				# end
 				
 				## ----- Update Counters
 				if (iconicf['counters'])
