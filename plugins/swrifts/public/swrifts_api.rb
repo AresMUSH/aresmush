@@ -379,7 +379,7 @@ module AresMUSH
 				tt = 'nothing yet'
 			end
 		 # end
-		return ["Trait updated: #{tt}"]
+		return ["Trait updated: #{trait} #{tt}"]
 		
 		# client.emit_success ("Iconic Framework Added")		
 		#char.update(swrifts_iconicf: Website.format_input_for_mush(chopped_iconicf), swrifts_race: Website.format_input_for_mush(chopped_race));
