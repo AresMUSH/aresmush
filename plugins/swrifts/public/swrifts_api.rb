@@ -400,6 +400,8 @@ module AresMUSH
 		trait.each do | key |
 			tt1 << "#{key}"
 		end
+		
+		tt1 = tt1.class
 	
 		return ["Trait: #{tt1}"]
 		
