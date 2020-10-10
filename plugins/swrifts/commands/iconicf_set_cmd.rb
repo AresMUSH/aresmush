@@ -40,14 +40,14 @@ module AresMUSH
 				iconicf = Swrifts.get_iconicf(self.enactor, self.iconicf_name) 
 				init = Global.read_config('swrifts', 'init')
 				
+				
 				ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
+					# traits = Swrifts.find_traits(model, iconicf_title)				
+					# traits.update(rating: iconicf_name)
 					Swrifts.run_init(model, init)
-					Swrifts.run_iconicf(model, iconicf, iconicf_title, iconicf_name)
+					Swrifts.run_iconicf(model, iconicf)
 				end
 
-				# ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-					# Swrifts.run_iconicf(model, iconicf, iconicf_title, iconicf_name)
-				# end
 				
 				client.emit_success t('swrifts.iconicf_complete')
 			end
