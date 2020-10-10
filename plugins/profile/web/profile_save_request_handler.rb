@@ -72,7 +72,12 @@ module AresMUSH
         char.update(relationships_category_order: relation_category_order)
         
         Describe.save_web_descs(char, request.args['descs'])
-        CustomCharFields.save_fields_from_profile_edit(char, request.args)
+
+        errors = CustomCharFields.save_fields_from_profile_edit(char, request.args) || []
+        if (errors.class == Array && errors.any?)
+          return { error: errors.join("\n") }
+        end
+        
         
         if (Roles.can_assign_role?(enactor))
           Roles.save_web_roles(char, request.args['roles'])

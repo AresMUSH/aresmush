@@ -125,7 +125,7 @@ module AresMUSH
       end
       
       errors = Profile::CustomCharFields.save_fields_from_chargen(char, chargen_data) || []
-      if (errors.any?)
+      if (errors.class == Array && errors.any?)
         alerts.concat errors
       end
       
