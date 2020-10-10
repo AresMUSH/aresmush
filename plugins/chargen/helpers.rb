@@ -22,7 +22,8 @@ module AresMUSH
       Chargen.can_manage_bgs?(actor) || actor.has_permission?("view_bgs")
     end      
     
-    def self.check_can_edit_bg(actor, model)      
+    def self.check_can_edit_bg(actor, model)    
+      return t('chargen.cannot_edit_bg') if !actor
       if (actor != model && !Chargen.can_manage_bgs?(actor))
         return t('chargen.cannot_edit_bg')
       end
@@ -123,8 +124,8 @@ module AresMUSH
         end
       end
       
-      errors = Profile::CustomCharFields.save_fields_from_chargen(char, chargen_data)
-      if (errors.any?)
+      errors = Profile::CustomCharFields.save_fields_from_chargen(char, chargen_data) || []
+      if (errors.class == Array && errors.any?)
         alerts.concat errors
       end
       

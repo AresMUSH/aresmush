@@ -16,7 +16,7 @@ aliases:
 There are several commands that let you view and manipulate objects in the database.  For these commands, you can specify either an object name or object database ID.  You do not need to be in the same room as the object unless there are multiple objects with the same name.
 
 `name <name or database ID>=<new name>` - Renames an object.
-`examine <name or database ID>` - Examines an object. 
+`examine <name or database ID>[/<attribute>]` - Examines an object, optionally specifying an attribute name.
 `destroy <name or database ID>` - Deletes an item from the database.  
         %xrTHIS CANNOT BE UNDONE%xn.
 

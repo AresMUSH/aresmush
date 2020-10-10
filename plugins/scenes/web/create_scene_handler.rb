@@ -35,13 +35,22 @@ module AresMUSH
         limit: request.args[:limit],
         completed: completed,
         date_completed: completed ? Time.now : nil,
-        plot: plot.blank? ? nil : Plot[plot],
         private_scene: completed ? false : (privacy == "Private"),
         owner: enactor
         )
           
         Global.logger.debug "Web scene #{scene.id} created by #{enactor.name}."
-            
+
+        plot_ids = request.args[:plots] || []
+        plots = []
+        plot_ids.each do |id|
+          plot = Plot[id]
+          if (plot)
+            plots << plot
+          end
+        end
+        scene.plots.replace plots
+                    
         participant_names = request.args[:participants] || []
         participants = []
         participant_names.each do |p|

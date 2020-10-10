@@ -33,3 +33,6 @@ channels:
     comtitle: channel/title
     channel/name: channel/rename
   start_marker: "<"
+  permissions:
+    manage_channels: Create and modify channels.
+    set_comtitle: Can use the com title command.
