@@ -12,7 +12,7 @@ module AresMUSH
 			if !Swrifts.is_valid_cat?(model,"heroesj") #Are there any traits set - i.e INIT completed.
 				numbers = [1, 2, 3, 4]
 				numbers.each do |key|
-					setthing = "hj#{key}}"
+					setthing = "hj#{key}"
 					setrating = 1
 					SwriftsHeroesj.create(name: setthing, rating: setrating, character: model)
 				end
