@@ -23,3 +23,5 @@ profile:
   - damage
   - relationships
   - outfits/all
+  permissions:
+    manage_profiles: Allows editing other characters' profiles.
