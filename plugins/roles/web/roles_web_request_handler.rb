@@ -11,14 +11,18 @@ module AresMUSH
         roles = Role.all.to_a.sort_by { |r| r.name }.map { |r| 
           {
             name: r.name,
+            permissions: r.permissions,
             chars: is_admin ? 
                Character.all.select { |c| c.has_role?(r) }.map { |c| c.name }.sort : 
                nil
           }
         }
         
+        {
+          roles: roles,
+          permissions: Roles.all_permissions.sort_by { |p| p[:name] }
+        }
         
-        roles
       end
     end
   end
