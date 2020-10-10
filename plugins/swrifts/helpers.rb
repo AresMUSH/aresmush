@@ -134,10 +134,10 @@ module AresMUSH
 		
 		
 		## ----- Update Iconic Framework		
-		def self.run_iconicf(model, iconicf, iconicf_title, iconicf_name)
+		def self.run_iconicf(model, iconicf)
 
-			trait = Swrifts.find_traits(model, iconicf_title)				
-			trait.update(rating: iconicf_name)
+			# trait = Swrifts.find_traits(model, iconicf_title)				
+			# trait.update(rating: iconicf_name)
 
 			## ----- Update Traits (Rank)
 			if (iconicf['traits'])
@@ -145,8 +145,8 @@ module AresMUSH
 				iconicf_traits.each do |key, rating|
 					trait_name = "#{key}".downcase
 					mod = "#{rating}"
-					trait = Swrifts.find_traits(model, trait_name)				
-					trait.update(rating: mod)
+					traits = Swrifts.find_traits(model, trait_name)				
+					traits.update(rating: mod)
 				end
 			else 
 			end
