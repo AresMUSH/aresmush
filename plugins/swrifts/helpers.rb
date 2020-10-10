@@ -8,7 +8,16 @@ module AresMUSH
 		end
 		
 		def self.run_init(model, init)
-				
+			
+			if !Swrifts.is_valid_cat?(model,"heroesj") #Are there any traits set - i.e INIT completed.
+				numbers = [1, 2, 3, 4]
+				numbers.each do |key|
+					setthing = "hj#{key}}"
+					setrating = rand[1..21]
+					SwriftsHeroesj.create(name: setthing, rating: setrating, character: model)
+				end
+			end			
+			
 			#----- This sets the default traits field on the collection -----				
 			if (init['traits']) 
 			traits = init['traits']

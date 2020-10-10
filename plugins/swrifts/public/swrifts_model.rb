@@ -17,6 +17,7 @@ module AresMUSH
 		collection :swrifts_cybernetics, "AresMUSH::SwriftsCybernetics"
 		collection :swrifts_abilities, "AresMUSH::SwriftsAbilities"
 		collection :swrifts_complications, "AresMUSH::SwriftsComplications"
+		collection :swrifts_heroesj, "AresMUSH::SwriftsHeroesj"
 
 
 		attribute :swrifts_iconicf
