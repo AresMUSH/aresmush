@@ -507,6 +507,12 @@ module AresMUSH
 		  names.include?(name.downcase)
 		end
 		
+		def self.is_valid_element_name?(element_name)
+		  return false if !name
+		  names = Global.read_config('swrifts', element_name).map { |a| a['name'].downcase }
+		  names.include?(name.downcase)
+		end
+		
 		def self.can_manage_stats?(actor)
 		  return false if !actor
 		  actor.has_permission?("manage_apps")
