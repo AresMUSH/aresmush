@@ -56,7 +56,7 @@ en:
         active_combats: "Active Combats"
         active_combats_titlebar: "#   Scene Organizer       Participants"
         invalid_combat_type: "That is no a valid combat type.  Try one of these: %{types}."
-        summary_title: "Combatant       Act/Pose   Skill    Weapon           Armor            Stance"
+        summary_title: "Combatant       Skill      Weapon            Armor          Stance     Vehicle\nAct/Pose        Damage     Mods              Action"
         hud_subtitle: "%xhCombatant           Damage    Weapon(ammo)             Action(stance)%xn"
         marked_idle: "%{name} has been marked idle."
         marked_unidle: "%{name} has been marked un-idle."

@@ -37,9 +37,18 @@ module AresMUSH
         scene.update(scene_pacing: request.args[:scene_pacing])
         scene.update(title: request.args[:title])
         scene.update(icdate: request.args[:icdate])
-        scene.update(plot: Plot[request.args[:plot_id]])
         scene.update(limit: request.args[:limit])
-            
+        
+        plot_ids = request.args[:plots] || []
+        plots = []
+        plot_ids.each do |id|
+          plot = Plot[id]
+          if (plot)
+            plots << plot
+          end
+        end
+        scene.plots.replace plots
+          
         if (!scene.completed)
           is_private = request.args[:privacy] == "Private"
           scene.update(private_scene: is_private)

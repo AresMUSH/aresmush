@@ -8,8 +8,10 @@ module AresMUSH
         t('time.minutes', :time => seconds / 60)
       elsif (seconds < 86400)
         t('time.hours', :time => seconds / 3600)
-      else
+      elsif (seconds < (86400 * 30))
         t('time.days', :time => seconds / 86400)
+      else
+        t('time.weeks', :time => seconds / (86400 * 7))
       end
     end
   end
