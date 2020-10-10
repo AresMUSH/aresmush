@@ -51,7 +51,7 @@ module AresMUSH
     end
     
     def heading
-      self.title ? self.title : self.name.titleize
+      !self.title.blank? ? self.title : self.name.titleize
     end
     
     def current_version
