@@ -355,6 +355,8 @@ module AresMUSH
 			return ["No Custom Data"]
 		end
 		
+		init = Global.read_config('swrifts', 'init')
+		
 		#Get the iconic framework and race set on the form
 		c_iconicf = chargen_data[:custom][:iconicf]
 		c_race = chargen_data[:custom][:race]
@@ -370,6 +372,7 @@ module AresMUSH
 		swriftstraits = char.swrifts_traits
 		ischaricf = self.acl_return_traits(swriftstraits,'iconicf') #Get the characters Iconic Framework from the traits
 		icfsize = ischaricf.size
+		
 		if (ischaricf.size > 0 )
 			tt1 = "YES!!! Size: #{icfsize}"
 		else
@@ -386,11 +389,10 @@ module AresMUSH
 				tt2 = 'we got here'
 			else
 				tt=''
-				swriftstraits.to_a.sort_by { |a| a.name }
-				swriftstraits.each do |key, value|
-					tt << "K: #{key}, v: #{value}"
-				end
-				# tt = SwriftsTraits.update(name: 'iconicf', rating: name_downcase, character: char)
+				# iconicf = Swrifts.get_iconicf(self.enactor, self.iconicf_name) 
+				tt = Swrifts.run_init(char, init)
+				tt1 = Swrifts.run_iconicf(char, ischaricf, 'iconicf', name_downcase)
+				#tt = SwriftsTraits.update(name: 'iconicf', rating: name_downcase, character: char)
 				tt2 = "updated"
 			end
 		 # end 
