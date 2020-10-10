@@ -18,3 +18,4 @@ en:
         role_already_exists: "Role %{name} already exists."
         role_permissions_updated: "Role permissions updated."
         permissions_no_spaces: "Permission names may not contain commas or spaces."
+        unrecognized_permission: "%{name} is not a recognized permission. Are you sure you spelled it right?"

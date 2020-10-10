@@ -114,7 +114,7 @@ BASIC CONTAINERS
   border-bottom: 0px;
 }
 
-.app-status, #console, #console pre, #sendMsg, #sendMsg2, #manageLog { 
+.idle-status, .app-status, #console, #console pre, #sendMsg, #sendMsg2, #manageLog { 
     white-space: pre-wrap;
     background-color: black;
     color: white;
@@ -822,6 +822,12 @@ CHARGEN SCREEN
 
 .fs3-divider {
     background-color: $border-color;
+}
+
+.chargen-section-title {
+  font-size: 1.2em;
+  font-weight: bold;
+  padding: 10px 0 10px 0;
 }
 
 /* -------------------------
@@ -1606,6 +1612,10 @@ ul.reference-help-list > li:not(:last-child)::after {
 
 .forum-reply-panel {
   padding: 10px;
+}
+
+.idle-status {
+  white-space: normal;
 }
 /*.char-scene-list li:before { content: "\2666  "; }*/
 

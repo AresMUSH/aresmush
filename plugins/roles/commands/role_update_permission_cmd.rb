@@ -8,7 +8,7 @@ module AresMUSH
       def parse_args
         args = cmd.parse_args(ArgParser.arg1_equals_arg2)
         self.name = trim_arg(args.arg1)
-        self.permission = trim_arg(args.arg2)
+        self.permission = downcase_arg(args.arg2)
         self.remove_permission = cmd.switch_is?("removepermission")
       end
       
@@ -32,6 +32,11 @@ module AresMUSH
         if (self.permission =~ /[, ]/)
           client.emit_failure t('roles.permissions_no_spaces')
           return
+        end
+        
+        if (!Roles.all_permissions.any? { |p| p[:name].downcase == self.permission })
+          # Warn but continue - might be part of a custom plugin.
+          client.emit_failure t('roles.unrecognized_permission', :name => self.permission)
         end
         
         if (self.remove_permission)

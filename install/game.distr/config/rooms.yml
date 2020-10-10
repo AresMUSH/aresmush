@@ -19,3 +19,7 @@ rooms:
     location: room
     rooms: room
     locations: room
+  permissions:
+    build: Access build commands to create rooms and exits.
+    go_home: Use the home and work commands.
+    teleport: Can teleport anywhere.

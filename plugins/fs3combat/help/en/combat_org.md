@@ -34,7 +34,7 @@ This is a quick reference for combat organizer commands.
 `combat/join <list of names>=<combat #>[/<type>]` - Adds people to combats.
   Use `combat/types` to see available types and their associated gear.
 
-`combat/summary` - Summary of everyone's skills/gear/etc. Also shows who hasn't posed or set their actions.
+`combat/summary [<name>]` - Summary of everyone's skills/gear/etc. Also shows who hasn't posed or set their actions. Specifying a name will match only combatants whose names start with the given text.
 `combat/idle <name>` - Sets someone as idle/not idle.  They won't be counted in pose tracking until you use the command on them again.
 
 `combat/npc <name>=<level>` - Adjusts a NPC's skill level.  See `combat/npcs` for a list of options.
