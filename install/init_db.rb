@@ -96,7 +96,7 @@ module AresMUSH
       builder.save
   
       systemchar = Character.create(name: "System")
-      systemchar.change_password("change_me!")
+      Login.set_random_password(systemchar)
       systemchar.roles.add admin_role
       systemchar.roles.add everyone_role
       systemchar.room = welcome_room
