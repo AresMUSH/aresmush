@@ -550,6 +550,17 @@ swrifts:
                 - Cybernetics*
                 - Disconnected*
                 - Power Activators*
+            hj_table_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
         -   
             name: Werecat
             book_reference: B&B 20

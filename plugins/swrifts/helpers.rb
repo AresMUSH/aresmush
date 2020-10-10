@@ -8,7 +8,16 @@ module AresMUSH
 		end
 		
 		def self.run_init(model, init)
-				
+			
+			if !Swrifts.is_valid_cat?(model,"heroesj") #Are there any traits set - i.e INIT completed.
+				numbers = [1, 2, 3, 4]
+				numbers.each do |key|
+					setthing = "hj#{key}"
+					setrating = rand(1..10)
+					SwriftsHeroesj.create(name: setthing, rating: setrating, character: model)
+				end
+			end			
+			
 			#----- This sets the default traits field on the collection -----				
 			if (init['traits']) 
 			traits = init['traits']
@@ -134,10 +143,10 @@ module AresMUSH
 		
 		
 		## ----- Update Iconic Framework		
-		def self.run_iconicf(model, iconicf, iconicf_title, iconicf_name)
+		def self.run_iconicf(model, iconicf)
 
-			trait = Swrifts.find_traits(model, iconicf_title)				
-			trait.update(rating: iconicf_name)
+			# trait = Swrifts.find_traits(model, iconicf_title)				
+			# trait.update(rating: iconicf_name)
 
 			## ----- Update Traits (Rank)
 			if (iconicf['traits'])
@@ -145,8 +154,8 @@ module AresMUSH
 				iconicf_traits.each do |key, rating|
 					trait_name = "#{key}".downcase
 					mod = "#{rating}"
-					trait = Swrifts.find_traits(model, trait_name)				
-					trait.update(rating: mod)
+					traits = Swrifts.find_traits(model, trait_name)				
+					traits.update(rating: mod)
 				end
 			else 
 			end
@@ -495,6 +504,12 @@ module AresMUSH
 		def self.is_valid_stat_name?(name)
 		  return false if !name
 		  names = Global.read_config('swrifts', 'stats').map { |a| a['name'].downcase }
+		  names.include?(name.downcase)
+		end
+		
+		def self.is_valid_element_name?(element_name)
+		  return false if !name
+		  names = Global.read_config('swrifts', element_name).map { |a| a['name'].downcase }
 		  names.include?(name.downcase)
 		end
 		
