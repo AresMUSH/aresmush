@@ -13,7 +13,7 @@ module AresMUSH
 				numbers = [1, 2, 3, 4]
 				numbers.each do |key|
 					setthing = "hj#{key}}"
-					setrating = rand[1..20]
+					setrating = 1
 					SwriftsHeroesj.create(name: setthing, rating: setrating, character: model)
 				end
 			end			
