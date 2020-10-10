@@ -103,7 +103,10 @@ module AresMUSH
         Scene.all.each { |s| s.plots.replace s.plot ? [ s.plot ] : [] }
         
         Global.logger.debug "Reset system password"
-        Login.set_random_password(Character.named("System"))
+        systemchar = Character.named("System")
+        if (systemchar)
+          Login.set_random_password(systemchar)
+        end
       end
     end    
   end
