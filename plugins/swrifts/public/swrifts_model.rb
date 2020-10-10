@@ -107,6 +107,15 @@ module AresMUSH
 		index :name
 	end
 
+	class SwriftsHeroesj < Ohm::Model
+		include ObjectModel
+	
+		attribute :name
+		attribute :rating, :type => DataType::Integer
+		reference :character, "AresMUSH::Character"
+		index :name
+	end
+
 	class SwriftsAdvances < Ohm::Model
 		include ObjectModel
 	
