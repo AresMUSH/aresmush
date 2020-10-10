@@ -42,8 +42,8 @@ module AresMUSH
 				
 				
 				ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-					# traits = Swrifts.find_traits(model, iconicf_title)				
-					# traits.update(rating: iconicf_name)
+					traits = Swrifts.find_traits(model, iconicf_title)				
+					traits.update(rating: iconicf_name)
 					Swrifts.run_init(model, init)
 					Swrifts.run_iconicf(model, iconicf)
 				end
