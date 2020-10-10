@@ -19,6 +19,9 @@ module AresMUSH
 			def dstats
 				format_three_per_line @char.swrifts_dstats
 			end
+			
+			def heroesj
+				format_three_per_line @char.swrifts_heroesj
 
 			def format_three_per_line(list)
 				list.to_a.sort_by { |a| a.name }
