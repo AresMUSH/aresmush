@@ -391,7 +391,7 @@ module AresMUSH
 				tt=''
 				# iconicf = Swrifts.get_iconicf(self.enactor, self.iconicf_name) 
 				tt = Swrifts.run_init(char, init)
-				tt1 = Swrifts.run_iconicf(char, ischaricf, 'iconicf', name_downcase)
+				tt1 = Swrifts.run_iconicf(char, name_downcase)
 				#tt = SwriftsTraits.update(name: 'iconicf', rating: name_downcase, character: char)
 				tt2 = "updated"
 			end
