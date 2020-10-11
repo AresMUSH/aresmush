@@ -217,7 +217,7 @@ module AresMUSH
 					racestring << ")"
 				end
 			end
-			charrace = "#{racestring}"
+			charrace = "#{charrace}"
 		else
 			charrace = "None"		
 		end
