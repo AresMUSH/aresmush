@@ -393,7 +393,6 @@ module AresMUSH
 			trait = Swrifts.find_traits(char, 'iconicf')				
 			trait.update(rating: name_downcase)
 			tt1 = Swrifts.run_iconicf(char, icfsel)
-			tt2 = SwriftsTraits.update(name: 'iconicf', rating: name_downcase, character: char)
 			tt3 = "updated"
 			# end
 		 # end 
