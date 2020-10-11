@@ -192,7 +192,6 @@ module AresMUSH
 		# Get the Characters Race
 		swriftstraits = char.swrifts_traits		
 		charrace = acl_return_traits(swriftstraits,'race') #Get the characters Race from the traits		
-
 		if ( charrace.length > 0 && charrace.downcase != "none" )
 			# get the entry in global file that matches the ICF name selected. We're going to make this pretty.
 			charcgrace = swrifts_race.select { |ss| ss['name'].downcase == charrace.downcase }.first
@@ -400,7 +399,8 @@ module AresMUSH
 		chopped_race = c_race[/[^~]+/]
 		chopped_race = chopped_race
 		chopped_race = Website.format_input_for_mush(chopped_race)
-		name_downcase = chopped_iconicf.downcase.strip  # Work out how to cycle through the custom stuff for this. Keep it tight.
+		icf_downcase = chopped_iconicf.downcase.strip  # Stripped and downcased iconicframework name.
+		race_downcase = chopped_race.downcase.strip  # Stripped and downcased race name.
 
 		# Is this needed anymore? Leaving it jic.
 		charif = Swrifts.get_iconicf(char, name_downcase)		
@@ -425,7 +425,6 @@ module AresMUSH
 			trait.update(rating: name_downcase)  #Update the Icf with the one chosen.
 			tt1 = Swrifts.run_iconicf(char, icfsel) #Set the base stats based on the ICF chosen.		 
 	
-		#return ["Trait: #{tt}, #{tt1}, #{tt3}"] #For troubleshooting if needed.
 		return
 	
 	end
