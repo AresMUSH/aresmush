@@ -803,11 +803,6 @@ swrifts:
             name: Burster
             book_reference: TLPG
             description: Bursters are pyrokinetics—they telekinetically accelerate molecules to the point of ignition. 
-            chargen_points:
-                psionic_slots: 3
-            counters:
-                isp_max: 20
-                isp_current: 20
             skills:
                 Psionics: 2
             hinderances: 
@@ -1387,7 +1382,7 @@ swrifts:
             edges:
                 - AB Miracles*
                 - Master of Magic*
-                - AB Magic*
+                - AB Psionic*
                 - Major Psionic*
                 - Alertness*
                 - Danger Sense*
