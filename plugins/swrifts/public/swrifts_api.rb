@@ -392,7 +392,7 @@ module AresMUSH
 				# swinit = Global.read_config('swrifts', 'init')
 				tt = Swrifts.run_init(char, init)				
 				# tt = SwriftsTraits.create(name: 'iconicf', rating: name_downcase, character: char)
-				iconicf = Global.read_config('swrifts', 'iconicf')
+				tt3 = iconicf = Global.read_config('swrifts', 'iconicf')
 				tt1 = iconicf.select { |a| a['name'].downcase == name_downcase }.first				
 				#Swrifts.run_iconicf(char, iconicf)
 				tt2 = 'we got here'
@@ -409,7 +409,7 @@ module AresMUSH
 		 
 		# trait = char.swrifts_traits.inspect
 	
-		return ["Trait: #{swriftstraits}, #{tt}, #{tt1}, #{tt2}"]
+		return ["Trait: #{swriftstraits}, #{tt}, #{tt1}, #{tt2}, #{tt3}"]
 		
         #return ["Iconfic Framework Set to: #{chopped_iconicf}", "Race set to: #{chopped_race}"]	
 	end
