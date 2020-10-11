@@ -196,26 +196,27 @@ module AresMUSH
 		if ( charrace.length > 0 )
 			# get the entry in global file that matches the ICF name selected. We're going to make this pretty.
 			charcgrace = swrifts_race.select { |ss| ss['name'].downcase == charrace.downcase }.first
-			racename = charcgrace['name']
-			desc = charcgrace['desc']
-			book = charcgrace['book_reference']
-			racestring = "#{racename}"
+			newcgr = charcgrace.inspect
+			# racename = charcgrace['name']
+			# desc = charcgrace['desc']
+			# book = charcgrace['book_reference']
+			# racestring = "#{racename}"
 			
-			if desc || book 
-				racestring << " ~ "
-			end
+			# if desc || book 
+				# racestring << " ~ "
+			# end
 			
-			if desc
-				racestring << " "
-				racestring << desc
-			end
+			# if desc
+				# racestring << " "
+				# racestring << desc
+			# end
 			
 			if book
 				racestring << " ("
 				racestring << book
 				racestring << ")"
 			end
-			charrace = racestring
+			charrace = "#{newcgr}"
 		else
 			charrace = "None"		
 		end
