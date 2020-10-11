@@ -223,22 +223,14 @@ module AresMUSH
 		end
 		
 		# Set up Chargen Points from Character not YML
-		
-		#cgpoints = returncgpforcg(char.swrifts_iconicf)
 		cgpoints = char.swrifts_chargenpoints
 		cgtraits = returncgpforcg(cgpoints)
 		
-		#iconicf='hellow world'
-		#iconicf = swrifts_iconicf.join(" ") #removes the comma's that seperates the entries		
-
-		#stats = returnstatsforweb(char.swrifts_stats)
-		#stats = stats.join(" ") #removes the comma's that seperates the entries
-
-		#bennies = returnbenniesforweb(char.swrifts_bennies)
-
-
-		#conviction = returnconvictionforweb(char.swrifts_conviction)
-		#conviction = conviction.join(" ") #removes the comma's that seperates the entries
+		#Get the Edges that were set on the character.
+		cgedges = char.swrifts_edges
+		cgsysedges = Global.read_config('swrifts', 'edges')	
+		cgedg = returnedgesforcg(cgedges,cgsysedges)
+		
 
 		return {
 		  iconicf: iconicf,
@@ -250,9 +242,7 @@ module AresMUSH
 		  inicgpoints: initcgpoints,
 		  cgslots: cgslots,
 		  initracepoints: initracepoints,
-		  #stats: stats,
-		  #bennies: bennies,
-		  #conviction: conviction
+		  cgedges: cgedges,
 		} 
 	end	
 	
@@ -365,6 +355,20 @@ module AresMUSH
 		end
 		return (cgpointsarray)
 	end	
+	
+	def self.returnedgesforcg(cg, cgsys)
+		cgedgearray = []
+		cgp = ''
+		cg.each do |c|
+				cgname = c.name
+				edgsel = c.select { |ss| ss['name'].downcase == icf_downcase }.first #Filter the icf's to find the one that's been selected				
+				cgn = cgname.gsub("_", " ")
+				cgname = cgn.titleize				
+				cgrating = c.rating
+				cgpointsarray << {class: c.name, name: cgname, rating:cgrating}
+		end
+		return (cgedgearray)
+	end		
 	
 	def self.acl_return_traits(st,traitname)
 	traitname = traitname.downcase
