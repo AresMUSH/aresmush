@@ -387,8 +387,8 @@ module AresMUSH
 		## ----- Update Iconic Framework
 		
 			iconicf = Global.read_config('swrifts', 'iconicf')
-			iconicf.select { |ss| ss['name'].downcase == name_downcase }.first
-			return [iconicf.inspect]
+			icfsel = iconicf.select { |ss| ss['name'].downcase == name_downcase }.first
+			return [icfsel.inspect]
 			tt=''			
 			tt = Swrifts.run_init(char, init)
 			trait = Swrifts.find_traits(char, 'iconicf')				
