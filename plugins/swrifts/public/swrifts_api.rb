@@ -182,7 +182,7 @@ module AresMUSH
 					# ifstring << book
 					# ifstring << ")"
 				# end	
-			end
+			#end
 			charicf="#{ifstring}"
 		else
 			charicf="None"
