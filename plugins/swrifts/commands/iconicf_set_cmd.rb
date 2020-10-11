@@ -44,7 +44,8 @@ module AresMUSH
 					Swrifts.run_init(model, init)
 					trait = Swrifts.find_traits(model, self.iconicf_title)				
 					trait.update(rating: iconicf_name)
-					Swrifts.run_iconicf(model, iconicf)
+					gg = Swrifts.run_iconicf(model, iconicf)
+					client.emit ("#{gg}")
 				end
 		
 				client.emit_success t('swrifts.iconicf_complete')

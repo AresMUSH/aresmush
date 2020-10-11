@@ -231,6 +231,7 @@ module AresMUSH
 			## ----- Update Skills
 			if (iconicf['skills'])
 				iconicf_skills=iconicf['skills'] 
+				return (iconicf_skills.inspect)
 				# grab the list from the config file and break it into 'key' (before the ':') and 'rating' (after the ':')
 				iconicf_skills.each do |key, rating|
 					# alias the 'key' because the command below doesn't parse the #'s and {'s etc.
