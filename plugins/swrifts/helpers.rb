@@ -213,8 +213,7 @@ module AresMUSH
 				iconicf_hinderances=iconicf['hinderances'] 
 				iconicf_hinderances.each do |key|
 					hinderance_name = "#{key}".downcase
-					# ss = Swrifts.add_feature(model, SwriftsHinderances, "hinderances", hinderance_name)
-					# tbl = ("lll. #{ss}")					
+					ss = Swrifts.add_feature(model, SwriftsHinderances, "hinderances", hinderance_name)
 				end
 			else 
 			end
@@ -226,9 +225,9 @@ module AresMUSH
 				iconicf_edges.each do |key|
 					edge_name = "#{key}".downcase
 					ss = Swrifts.add_feature(model, SwriftsEdges, "edges", edge_name)
-					dbgstr << "Edge name: #{edge_name}, #{ss}%r"
+					# dbgstr << "Edge name: #{edge_name}, #{ss}%r"
 				end
-				return dbgstr
+				# return dbgstr
 			else 
 			end
 
@@ -327,12 +326,11 @@ module AresMUSH
 			# return (newfg)
 			group = newsh.select { |a| a['name'].downcase == system_name.downcase }.first #the whole Group
 			
-			if (!group)
-				return ('mmm: Nothing set')
+			if (!group) #If the feature has been entered incorrectly in the yml file, do nothing with it.
+				return
 			end
 			
-			if (group['stats']) 
-			return ("kkk: #{group.inspect}") 			
+			if (group['stats']) 			
 				set=group['stats']
 				# return (set.inspect) # "Strength"=>-2, "Agility"=>-2
 				charhash = model.swrifts_stats
