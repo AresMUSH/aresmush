@@ -228,7 +228,7 @@ module AresMUSH
 					ss = Swrifts.add_feature(model, SwriftsEdges, "edges", edge_name)
 					dbgstr << "Edge_name: #{edge_name}, #{ss}%r"
 				end
-				return ("mmm. #{dbgstr}")
+				#return ("mmm. #{dbgstr}")
 			else 
 			end
 
@@ -329,8 +329,7 @@ module AresMUSH
 			return ("kkk: #{group.inspect}") 
 			
 			
-			if (group['stats'] && group)
-			return ("kkk: #{group.inspect}") 
+			if (group['stats'] && group) 
 				set=group['stats']
 				# return (set.inspect) # "Strength"=>-2, "Agility"=>-2
 				charhash = model.swrifts_stats
