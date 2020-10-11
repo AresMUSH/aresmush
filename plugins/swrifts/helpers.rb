@@ -244,7 +244,7 @@ module AresMUSH
 					new_rating = current_rating + mod
 					# update the collection
 					skill = Swrifts.find_skill(model, skill_name)
-					teststr << "#{new_rating}, #{current_rating}, #{key}"
+					teststr << "#{skill}, #{new_rating}, #{current_rating}, #{key}"
 					#skill.update(rating: new_rating)
 				end
 				return [teststr]
