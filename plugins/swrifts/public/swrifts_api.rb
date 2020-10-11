@@ -356,6 +356,7 @@ module AresMUSH
 		end
 		
 		init = Global.read_config('swrifts', 'init')
+					
 		
 		#Get the iconic framework and race set on the form
 		c_iconicf = chargen_data[:custom][:iconicf]
@@ -368,7 +369,9 @@ module AresMUSH
 		chopped_race = c_race[/[^~]+/]
 		chopped_race = Website.format_input_for_mush(chopped_race)
 		name_downcase = chopped_iconicf.downcase  # Work out how to cycle through the custom stuff for this. Keep it tight.
-		
+
+		iconicf = Swrifts.get_iconicf(char, name_downcase)		
+
 		swriftstraits = char.swrifts_traits
 		ischaricf = self.acl_return_traits(swriftstraits,'iconicf') #Get the characters Iconic Framework from the traits
 		icfsize = ischaricf.size
@@ -388,10 +391,11 @@ module AresMUSH
 				tt = SwriftsTraits.create(name: 'iconicf', rating: name_downcase, character: char)
 				tt2 = 'we got here'
 			else
-				tt=''
-				# iconicf = Swrifts.get_iconicf(self.enactor, self.iconicf_name) 
+				tt=''			
 				tt = Swrifts.run_init(char, init)
-				tt1 = Swrifts.run_iconicf(char, name_downcase)
+				trait = Swrifts.find_traits(char, 'iconicf')				
+				trait.update(rating: name_downcase)
+				tt1 = Swrifts.run_iconicf(char, iconicf)
 				#tt = SwriftsTraits.update(name: 'iconicf', rating: name_downcase, character: char)
 				tt2 = "updated"
 			end
