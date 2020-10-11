@@ -323,14 +323,14 @@ module AresMUSH
 			newsh = systemhash.select { |a| a['name'].to_s != '' } #the whole System minus empty entries
 			# return (newfg)
 			group = newsh.select { |a| a['name'].downcase == system_name.downcase }.first #the whole Group
-			# return (group.inspect) 
+			return (group.inspect) 
 			
 			
 			if (group['stats'])
 				set=group['stats']
 				# return (set.inspect) # "Strength"=>-2, "Agility"=>-2
 				charhash = model.swrifts_stats
-				return (charhash.inspect)
+				#return (charhash.inspect)
 				ss = Swrifts.element_update(model, set, charhash)
 				# return (ss.inspect)
 			else 
