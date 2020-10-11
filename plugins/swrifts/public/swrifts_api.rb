@@ -174,7 +174,7 @@ module AresMUSH
 				ifname = c['name']
 				# desc = c['description']
 				# ifstring = "#{ifname}"
-				ifstring = "#{c} , #{v}"
+				ifstring << "#{c} , #{v}"
 				# book = c['book_reference']
 				# if book
 					# ifstring << " ~ ("
