@@ -9,7 +9,7 @@ module AresMUSH
             end
 
             def handle 
-                scene_info = Scenes.recent_scenes.map { |s| "#{s.icdate} - #{s.title} - #{s.plot ? s.plot.title : "%xrNO PLOT LINKED%xn" }" }.join "\n" 
+                scene_info = Scene.all.filter {|s| s.plots.empty? && s.shared }.map {|s| "##{s.id} - #{s.title}"}.join "\n" 
                 template = BorderedDisplayTemplate.new scene_info, "Scene List"
                 client.emit template.render
             end
