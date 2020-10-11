@@ -101,6 +101,12 @@ module AresMUSH
 
         Global.logger.debug "Multiple plots per scene."
         Scene.all.each { |s| s.plots.replace s.plot ? [ s.plot ] : [] }
+        
+        Global.logger.debug "Reset system password"
+        systemchar = Character.named("System")
+        if (systemchar)
+          Login.set_random_password(systemchar)
+        end
       end
     end    
   end
