@@ -387,7 +387,7 @@ module AresMUSH
 		## ----- Update Iconic Framework
 		
 			iconicf = Global.read_config('swrifts', 'iconicf')
-			tt1 = iconicf.select { |ss| ss['name'].downcase == name_downcase }.first	
+			iconicf.select { |ss| ss['name'].downcase == name_downcase }.first	
 
 			# if ( ischaricf.size == 0  )
 				# swinit = Global.read_config('swrifts', 'init')
