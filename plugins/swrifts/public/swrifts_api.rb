@@ -167,14 +167,8 @@ module AresMUSH
 		swriftstraits = char.swrifts_traits		
 		charicf = acl_return_traits(swriftstraits,'iconicf') #Get the characters Iconic Framework from the traits
 		
-		# if char.swrifts_iconicf
-			# chariconicf = char.swrifts_iconicf.titleize
-		# else
-			# chariconicf = ""
-		# end
-		
 		if charicf
-			charicf=charicf
+			charicf=charicf.titleize
 		else
 			charicf="None"
 		end
@@ -365,10 +359,10 @@ module AresMUSH
 
 		#Remove the book and description stuff from the end of the string.	
 		chopped_iconicf = c_iconicf[/[^~]+/]
-		chopped_iconicf = chopped_iconicf.strip
+		chopped_iconicf = chopped_iconicf
 		chopped_iconicf = Website.format_input_for_mush(chopped_iconicf)
 		chopped_race = c_race[/[^~]+/]
-		# chopped_race = chopped_race.strip
+		chopped_race = chopped_race
 		chopped_race = Website.format_input_for_mush(chopped_race)
 		name_downcase = chopped_iconicf.downcase.strip  # Work out how to cycle through the custom stuff for this. Keep it tight.
 
