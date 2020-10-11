@@ -394,7 +394,8 @@ module AresMUSH
 				# tt = SwriftsTraits.create(name: 'iconicf', rating: name_downcase, character: char)
 				iconicf = Global.read_config('swrifts', 'iconicf')
 				iconicf.select { |a| a['name'].downcase == name_downcase }.first				
-				Swrifts.run_iconicf(char, iconicf)
+				tt1 = iconicf
+				#Swrifts.run_iconicf(char, iconicf)
 				tt2 = 'we got here'
 			else
 				tt=''			
