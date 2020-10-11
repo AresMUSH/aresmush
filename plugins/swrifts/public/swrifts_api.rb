@@ -211,11 +211,11 @@ module AresMUSH
 				# racestring << desc
 			# end
 			
-			if book
-				racestring << " ("
-				racestring << book
-				racestring << ")"
-			end
+			# if book
+				# racestring << " ("
+				# racestring << book
+				# racestring << ")"
+			# end
 			charrace = "#{newcgr}"
 		else
 			charrace = "None"		
