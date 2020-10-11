@@ -227,9 +227,9 @@ module AresMUSH
 		cgtraits = returncgpforcg(cgpoints)
 		
 		#Get the Edges that were set on the character.
-		# cgedges = char.swrifts_edges
-		# cgsysedges = Global.read_config('swrifts', 'edges')	
-		# cgedg = returnedgesforcg(cgedges,cgsysedges)
+		cgedges = char.swrifts_edges
+		cgsysedges = Global.read_config('swrifts', 'edges')	
+		cgedg = returnedgesforcg(cgedges,cgsysedges)
 		
 
 		return {
@@ -242,7 +242,7 @@ module AresMUSH
 		  inicgpoints: initcgpoints,
 		  cgslots: cgslots,
 		  initracepoints: initracepoints,
-		  #cgedges: cgedges,
+		  cgedges: cgedg,
 		} 
 	end	
 	
