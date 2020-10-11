@@ -198,29 +198,27 @@ module AresMUSH
 			charcgrace = swrifts_race.select { |ss| ss['name'].downcase == charrace.downcase }.first
 			newcgr = charcgrace.inspect
 			if ( charcgrace ) 
-				kk = 'here'
-
-			racename = charcgrace['name']
+				racename = charcgrace['name']
+				desc = charcgrace['desc']
+				book = charcgrace['book_reference']
+				racestring = "#{racename}"
+				
+				if desc || book 
+					racestring << " ~ "
+				end
+				
+				if desc
+					racestring << " "
+					racestring << desc
+				end
+				
+				if book
+					racestring << " ("
+					racestring << book
+					racestring << ")"
+				end
 			end
-			# desc = charcgrace['desc']
-			# book = charcgrace['book_reference']
-			# racestring = "#{racename}"
-			
-			# if desc || book 
-				# racestring << " ~ "
-			# end
-			
-			# if desc
-				# racestring << " "
-				# racestring << desc
-			# end
-			
-			# if book
-				# racestring << " ("
-				# racestring << book
-				# racestring << ")"
-			# end
-			charrace = "#{newcgr}, #{racename}"
+			charrace = "#{racestring}"
 		else
 			charrace = "None"		
 		end
