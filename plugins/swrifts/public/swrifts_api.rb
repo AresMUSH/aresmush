@@ -193,7 +193,7 @@ module AresMUSH
 		swriftstraits = char.swrifts_traits		
 		charrace = acl_return_traits(swriftstraits,'race') #Get the characters Race from the traits		
 
-		if ( charrace.length > 0 )
+		if ( charrace.length > 0 && charrace.downcase != "none" )
 			# get the entry in global file that matches the ICF name selected. We're going to make this pretty.
 			charcgrace = swrifts_race.select { |ss| ss['name'].downcase == charrace.downcase }.first
 			newcgr = charcgrace.inspect
