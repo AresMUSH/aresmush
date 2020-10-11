@@ -225,7 +225,7 @@ module AresMUSH
 				iconicf_edges.each do |key|
 					edge_name = "#{key}".downcase
 					ss = Swrifts.add_feature(model, SwriftsEdges, "edges", edge_name)
-					# tbl1 = ("mmm. #{ss}")	
+					return ("mmm. #{ss}")	
 				end
 			else 
 			end
