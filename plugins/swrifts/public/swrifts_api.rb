@@ -357,7 +357,7 @@ module AresMUSH
 	end	
 	
 	def self.returnedgesforcg(cg, cgsys)
-		return ['']
+		return ["#{cgsys}"]
 		cgedgearray = []
 		cgp = ''
 		cg.each do |c|
