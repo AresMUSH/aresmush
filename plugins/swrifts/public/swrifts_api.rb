@@ -181,7 +181,7 @@ module AresMUSH
 					# ifstring << ")"
 				# end	
 			end
-			charicf=ifstring
+			charicf="#{charcgicf.inspect}"
 		else
 			charicf="None"
 		end
