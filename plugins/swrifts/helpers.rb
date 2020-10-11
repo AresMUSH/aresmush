@@ -228,6 +228,7 @@ module AresMUSH
 			else 
 			end
 
+			teststr = ''
 			## ----- Update Skills
 			if (iconicf['skills'])
 				iconicf_skills=iconicf['skills'] 
@@ -242,10 +243,11 @@ module AresMUSH
 					# add Iconic Framework bonus to Initial skill
 					new_rating = current_rating + mod
 					# update the collection
-					skill = Swrifts.find_skill(model, skill_name)	
-					skill.update(rating: new_rating)
-					return [skill, new_rating, current_rating]
+					skill = Swrifts.find_skill(model, skill_name)
+					teststr << "#{new_rating}, #{current_rating}, #{key}"
+					#skill.update(rating: new_rating)
 				end
+				return [teststr]
 			else 
 			end
 
