@@ -244,7 +244,10 @@ module AresMUSH
 					new_rating = current_rating + mod
 					# update the collection
 					skill = Swrifts.find_skill(model, skill_name)
-					teststr << "#{skill}, #{skill.length}, #{new_rating}, #{current_rating}, #{key}"
+					if ( !skill ) 
+						skill = 'not found'
+					end
+					teststr << "#{skill}, #{new_rating}, #{current_rating}, #{key}"
 					#skill.update(rating: new_rating)
 				end
 				return [teststr]
