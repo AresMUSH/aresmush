@@ -395,7 +395,7 @@ module AresMUSH
 			trait.update(rating: name_downcase)  #Update the Icf with the one chosen.
 			tt1 = Swrifts.run_iconicf(char, icfsel) #Set the base stats based on the ICF chosen.		 
 	
-		#return ["Trait: #{tt}, #{tt1}, #{tt3}"]
+		#return ["Trait: #{tt}, #{tt1}, #{tt3}"] #For troubleshooting if needed.
 		return
 	
 	end
