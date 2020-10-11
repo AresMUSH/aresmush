@@ -199,8 +199,9 @@ module AresMUSH
 			newcgr = charcgrace.inspect
 			if ( charcgrace ) 
 				kk = 'here'
+
+			racename = charcgrace['name']
 			end
-			# racename = charcgrace['name']
 			# desc = charcgrace['desc']
 			# book = charcgrace['book_reference']
 			# racestring = "#{racename}"
@@ -219,7 +220,7 @@ module AresMUSH
 				# racestring << book
 				# racestring << ")"
 			# end
-			charrace = "#{newcgr}, #{kk}"
+			charrace = "#{newcgr}, #{racename}"
 		else
 			charrace = "None"		
 		end
