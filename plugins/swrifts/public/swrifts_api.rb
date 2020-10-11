@@ -388,19 +388,14 @@ module AresMUSH
 		
 			char.delete_swrifts_chargen #clear out the character
 			
-			iconicf = Global.read_config('swrifts', 'iconicf')
-			icfsel = iconicf.select { |ss| ss['name'].downcase == name_downcase }.first
-			tt=''			
-			tt = Swrifts.run_init(char, init)
-			trait = Swrifts.find_traits(char, 'iconicf')				
-			trait.update(rating: name_downcase)
-			tt1 = Swrifts.run_iconicf(char, icfsel)
-			tt3 = "updated"
-			# end
-		 # end 
-		 
+			iconicf = Global.read_config('swrifts', 'iconicf') #Read the config file for Iconic Frameworks
+			icfsel = iconicf.select { |ss| ss['name'].downcase == name_downcase }.first #Filter the icf's to find the one that's been selected	
+			tt = Swrifts.run_init(char, init)  #Calls run_init in helpers.rb
+			trait = Swrifts.find_traits(char, 'iconicf')   #Calls find_traits in helpers.rb				
+			trait.update(rating: name_downcase)  #Update the Icf with the one chosen.
+			tt1 = Swrifts.run_iconicf(char, icfsel) #Set the base stats based on the ICF chosen.		 
 	
-		#return ["Trait: #{tt}, #{tt1}, #{tt3}"]
+		#return ["Trait: #{tt}, #{tt1}, #{tt3}"] #For troubleshooting if needed.
 		return
 	
 	end
