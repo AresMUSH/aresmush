@@ -182,7 +182,7 @@ module AresMUSH
 					# ifstring << ")"
 				# end	
 			end
-			charicf="#{ifstring}"
+			charicf="#{ifname}"
 		else
 			charicf="None"
 		end
