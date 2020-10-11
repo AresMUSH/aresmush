@@ -372,12 +372,10 @@ module AresMUSH
 		chopped_race = Website.format_input_for_mush(chopped_race)
 		name_downcase = chopped_iconicf.downcase  # Work out how to cycle through the custom stuff for this. Keep it tight.
 
-		#iconicf = Swrifts.get_iconicf(char, name_downcase)		
-		
-		#return ["iconicf: #{iconicf.inspect}"]
-
+		charif = Swrifts.get_iconicf(char, name_downcase)		
+		# Is this needed anymore?
 		swriftstraits = char.swrifts_traits
-		ischaricf = self.acl_return_traits(swriftstraits,'iconicf') #Get the characters Iconic Framework from the traits
+		ischaricf = self.acl_return_traits(swriftstraits,'charif') #Get the characters Iconic Framework from the traits
 		icfsize = ischaricf.size
 		
 		if (ischaricf.size > 0 )
@@ -388,49 +386,33 @@ module AresMUSH
 
 		## ----- Update Iconic Framework
 		
-				iconicf = Global.read_config('swrifts', 'iconicf')
-				tt3 = ''
-				iconicf.each do |key, value|
-					key.each do |k1, v1|
-							tt3 << "Key: #{k1} Value: #{v1}"
-					end
-				end
-				
-				tt1 = iconicf.select { |ss| ss['name'].downcase == name_downcase }.first	
-				#return ["ICF: #{iconicf}, #{tt3}, #{tt1}"]
-				return [tt1]
+			iconicf = Global.read_config('swrifts', 'iconicf')
+			tt1 = iconicf.select { |ss| ss['name'].downcase == name_downcase }.first	
 
-			if ( ischaricf.size == 0  )
+			# if ( ischaricf.size == 0  )
 				# swinit = Global.read_config('swrifts', 'init')
 				#tt = Swrifts.run_init(char, init)				
 				# tt = SwriftsTraits.create(name: 'iconicf', rating: name_downcase, character: char)
-				iconicf = Global.read_config('swrifts', 'iconicf')
-				tt3 = ''
-				iconicf.each do |key, value|
-					tt3 << "Key: #{key}  Value: #{value}"
-				end
+				# iconicf = Global.read_config('swrifts', 'iconicf')		
+				# tt1 = iconicf.select { |ss| ss['name'].downcase == name_downcase }.first				
+				#Swrifts.run_iconicf(char, iconicf)
+				# tt2 = 'we got here'	
 
 				
-				
-				tt1 = iconicf.select { |ss| ss['name'].downcase == name_downcase }.first				
-				#Swrifts.run_iconicf(char, iconicf)
-				tt2 = 'we got here'
-				
-				return [tt1, tt3]				
-			else
+			# else
 				tt=''			
 				tt = Swrifts.run_init(char, init)
 				trait = Swrifts.find_traits(char, 'iconicf')				
 				trait.update(rating: name_downcase)
 				tt1 = Swrifts.run_iconicf(char, iconicf)
-				#tt = SwriftsTraits.update(name: 'iconicf', rating: name_downcase, character: char)
-				tt2 = "updated"
-			end
+				tt2 = SwriftsTraits.update(name: 'iconicf', rating: name_downcase, character: char)
+				tt3 = "updated"
+			# end
 		 # end 
 		 
 		# trait = char.swrifts_traits.inspect
 	
-		return ["Trait: #{swriftstraits}, #{tt}, #{tt1}, #{tt2}, #{iconicf}"]
+		return ["Trait: #{swriftstraits}, #{tt}, #{tt1}, #{tt2}, #{tt3}"]
 		
         #return ["Iconfic Framework Set to: #{chopped_iconicf}", "Race set to: #{chopped_race}"]	
 	end
