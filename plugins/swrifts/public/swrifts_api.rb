@@ -407,17 +407,6 @@ module AresMUSH
 		icf_downcase = chopped_iconicf.downcase.strip  # Stripped and downcased iconicframework name.
 		race_downcase = chopped_race.downcase.strip  # Stripped and downcased race name.
 
-		# Is this needed anymore? Leaving it jic.
-		# charif = Swrifts.get_iconicf(char, name_downcase)		
-		# swriftstraits = char.swrifts_traits
-		# ischaricf = self.acl_return_traits(swriftstraits,'charif') #Get the characters Iconic Framework from the traits
-		# icfsize = ischaricf.size
-		
-		# if (ischaricf.size > 0 )
-			# tt1 = "YES!!! Size: #{icfsize}"
-		# else
-			# tt1 = 'No :('
-		# end
 
 		## ----- Update Iconic Framework
 		
