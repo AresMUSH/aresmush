@@ -219,14 +219,16 @@ module AresMUSH
 			else 
 			end
 			
+			dbgstr = ''
 			# ----- This sets the default Edges on the Character -----				
 			if (iconicf['edges'])
 				iconicf_edges=iconicf['edges'] 
 				iconicf_edges.each do |key|
 					edge_name = "#{key}".downcase
 					ss = Swrifts.add_feature(model, SwriftsEdges, "edges", edge_name)
-					return ("mmm. #{ss}")	
+					dbgstr << "#{ss}"
 				end
+				return ("mmm. #{dbgstr}")
 			else 
 			end
 
