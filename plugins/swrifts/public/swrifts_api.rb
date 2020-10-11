@@ -391,11 +391,15 @@ module AresMUSH
 				tt3 = ''
 				iconicf.each do |key, value|
 					key.each do |k1, v1|
-						tt3 << "Key: #{k1} Value: #{v1}"
+						if k1['name'] == name.downcase
+							tt3 << "Key: #{k1} Value: #{v1}"
+						else
+							tt3=''
+						end
 					end
 				end
 				
-				tt1 = iconicf.select { |aa| aa['name'].downcase == name_downcase }.first	
+				tt1 = iconicf.select { |ss| ss['name'].downcase == name_downcase }.first	
 				return [tt3, tt1]
 
 			if ( ischaricf.size == 0  )
@@ -407,12 +411,14 @@ module AresMUSH
 				iconicf.each do |key, value|
 					tt3 << "Key: #{key}  Value: #{value}"
 				end
-				return [tt3]
+
 				
 				
-				tt1 = iconicf.select { |aa| aa['name'].downcase == name_downcase }.first				
+				tt1 = iconicf.select { |ss| ss['name'].downcase == name_downcase }.first				
 				#Swrifts.run_iconicf(char, iconicf)
 				tt2 = 'we got here'
+				
+				return [tt1, tt3]				
 			else
 				tt=''			
 				tt = Swrifts.run_init(char, init)
