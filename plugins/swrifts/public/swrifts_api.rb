@@ -391,11 +391,7 @@ module AresMUSH
 				tt3 = ''
 				iconicf.each do |key, value|
 					key.each do |k1, v1|
-						if v1 == name.downcase
 							tt3 << "Key: #{k1} Value: #{v1}"
-						else
-							tt3=''
-						end
 					end
 				end
 				
