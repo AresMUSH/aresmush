@@ -365,11 +365,12 @@ module AresMUSH
 
 		#Remove the book and description stuff from the end of the string.	
 		chopped_iconicf = c_iconicf[/[^~]+/]
+		chopped_iconicf = chopped_iconicf.strip
 		chopped_iconicf = Website.format_input_for_mush(chopped_iconicf)
 		chopped_race = c_race[/[^~]+/]
+		chopped_race = chopped_race.strip
 		chopped_race = Website.format_input_for_mush(chopped_race)
 		name_downcase = chopped_iconicf.downcase  # Work out how to cycle through the custom stuff for this. Keep it tight.
-		name_downcase = "#{name_downcase}"
 
 		#iconicf = Swrifts.get_iconicf(char, name_downcase)		
 		
