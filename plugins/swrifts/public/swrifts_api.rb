@@ -387,32 +387,21 @@ module AresMUSH
 		## ----- Update Iconic Framework
 		
 			iconicf = Global.read_config('swrifts', 'iconicf')
-			iconicf.select { |ss| ss['name'].downcase == name_downcase }.first	
-
-			# if ( ischaricf.size == 0  )
-				# swinit = Global.read_config('swrifts', 'init')
-				#tt = Swrifts.run_init(char, init)				
-				# tt = SwriftsTraits.create(name: 'iconicf', rating: name_downcase, character: char)
-				# iconicf = Global.read_config('swrifts', 'iconicf')		
-				# tt1 = iconicf.select { |ss| ss['name'].downcase == name_downcase }.first				
-				#Swrifts.run_iconicf(char, iconicf)
-				# tt2 = 'we got here'	
-
-				
-			# else
-				tt=''			
-				tt = Swrifts.run_init(char, init)
-				trait = Swrifts.find_traits(char, 'iconicf')				
-				trait.update(rating: name_downcase)
-				tt1 = Swrifts.run_iconicf(char, iconicf)
-				tt2 = SwriftsTraits.update(name: 'iconicf', rating: name_downcase, character: char)
-				tt3 = "updated"
+			iconicf.select { |ss| ss['name'].downcase == name_downcase }.first
+			return [iconicf.inspect]
+			tt=''			
+			tt = Swrifts.run_init(char, init)
+			trait = Swrifts.find_traits(char, 'iconicf')				
+			trait.update(rating: name_downcase)
+			tt1 = Swrifts.run_iconicf(char, iconicf)
+			tt2 = SwriftsTraits.update(name: 'iconicf', rating: name_downcase, character: char)
+			tt3 = "updated"
 			# end
 		 # end 
 		 
 		# trait = char.swrifts_traits.inspect
 	
-		return ["Trait: #{swriftstraits}, #{tt}, #{tt1}, #{tt2}, #{tt3}"]
+		return ["Trait: #{tt}, #{tt1}, #{tt2}, #{tt3}"]
 		
         #return ["Iconfic Framework Set to: #{chopped_iconicf}", "Race set to: #{chopped_race}"]	
 	end
