@@ -372,7 +372,7 @@ module AresMUSH
 
 		iconicf = Swrifts.get_iconicf(char, name_downcase)		
 		
-		return ["iconicf: #{iconicf.inspect}"]
+		#return ["iconicf: #{iconicf.inspect}"]
 
 		swriftstraits = char.swrifts_traits
 		ischaricf = self.acl_return_traits(swriftstraits,'iconicf') #Get the characters Iconic Framework from the traits
@@ -390,6 +390,7 @@ module AresMUSH
 
 			if ( ischaricf.size == 0  )
 				# swinit = Global.read_config('swrifts', 'init')
+				tt = Swrifts.run_init(char, init)				
 				tt = SwriftsTraits.create(name: 'iconicf', rating: name_downcase, character: char)
 				tt2 = 'we got here'
 			else
