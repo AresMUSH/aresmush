@@ -242,9 +242,9 @@ module AresMUSH
 					# add Iconic Framework bonus to Initial skill
 					new_rating = current_rating + mod
 					# update the collection
-					skill = Swrifts.find_skill(model, skill_name)
-					return (skill, new_rating, current_rating)	
+					skill = Swrifts.find_skill(model, skill_name)	
 					skill.update(rating: new_rating)
+					return [skill, new_rating, current_rating]
 				end
 			else 
 			end
