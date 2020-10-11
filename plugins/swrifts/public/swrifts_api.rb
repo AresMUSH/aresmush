@@ -390,7 +390,7 @@ module AresMUSH
 				iconicf = Global.read_config('swrifts', 'iconicf')
 				tt3 = ''
 				iconicf.each do |key, value|
-						tt3 << "Key: #{key.name} Value: #{value}"
+						tt3 << "Key: #{key} Value: #{value}"
 				end
 				
 				tt1 = iconicf.select { |aa| aa['name'].downcase == name_downcase }.first	
