@@ -226,9 +226,7 @@ module AresMUSH
 				iconicf_edges.each do |key|
 					edge_name = "#{key}".downcase
 					ss = Swrifts.add_feature(model, SwriftsEdges, "edges", edge_name)
-					dbgstr << "Edge_name: #{edge_name}, #{ss}%r"
 				end
-				#return ("mmm. #{dbgstr}")
 			else 
 			end
 
@@ -326,8 +324,6 @@ module AresMUSH
 			newsh = systemhash.select { |a| a['name'].to_s != '' } #the whole System minus empty entries
 			# return (newfg)
 			group = newsh.select { |a| a['name'].downcase == system_name.downcase }.first #the whole Group
-			return ("kkk: #{group.inspect}") 
-			
 			
 			if (group['stats'] && group) 
 				set=group['stats']
