@@ -170,9 +170,9 @@ module AresMUSH
 		if charicf
 			#get the entry in global file that matches the ICF name selected. We're going to make this pretty.
 			charcgicf = swrifts_iconicf.select { |ss| ss['name'].downcase == charicf.downcase }.first
-			ifname = charcgicf.select { |k,v| k=='name' }
+			# ifname = charcgicf.select { |k,v| k=='name' }
 				#ifname = c.name
-				ifstring << "#{ifname}"
+				ifstring << "#{charcgicf.class}"
 				# desc = c['description']
 				# ifstring = "#{ifname}"
 				# ifstring << "#{c} , #{v}"
