@@ -2,7 +2,7 @@
 swrifts:
     iconicf:
         -
-            name: test
+            name: Test
             book_reference: None
             description: A testing framework for staff use
             counters:

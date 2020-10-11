@@ -386,13 +386,23 @@ module AresMUSH
 
 		## ----- Update Iconic Framework
 		
-
+				iconicf = Global.read_config('swrifts', 'iconicf')
+				tt3 = ''
+				iconicf.each do |key, value|
+					tt3 << "Key: #{key}  Value: #{value}"
+				end
+				return [tt3]
 
 			if ( ischaricf.size == 0  )
 				# swinit = Global.read_config('swrifts', 'init')
-				tt = Swrifts.run_init(char, init)				
+				#tt = Swrifts.run_init(char, init)				
 				# tt = SwriftsTraits.create(name: 'iconicf', rating: name_downcase, character: char)
 				iconicf = Global.read_config('swrifts', 'iconicf')
+				tt3 = ''
+				iconicf.each do |key, value|
+					tt3 << "Key: #{key}  Value: #{value}"
+				end
+				return [tt3]
 				tt1 = iconicf.select { |a| a['name'].downcase == name_downcase }.first				
 				#Swrifts.run_iconicf(char, iconicf)
 				tt2 = 'we got here'
