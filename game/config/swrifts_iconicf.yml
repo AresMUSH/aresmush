@@ -2,6 +2,10 @@
 swrifts:
     iconicf:
         -
+            name: None
+            book_reference: 
+            description: 
+        - 
             name: Test
             book_reference: None
             description: A testing framework for staff use
