@@ -386,6 +386,8 @@ module AresMUSH
 
 		## ----- Update Iconic Framework
 		
+			char.delete_swrifts_chargen #clear out the character
+			
 			iconicf = Global.read_config('swrifts', 'iconicf')
 			icfsel = iconicf.select { |ss| ss['name'].downcase == name_downcase }.first
 			tt=''			
