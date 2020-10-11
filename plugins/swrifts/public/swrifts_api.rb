@@ -166,14 +166,14 @@ module AresMUSH
 		# Get the Characters Iconic Framework
 		swriftstraits = char.swrifts_traits		
 		charicf = acl_return_traits(swriftstraits,'iconicf') #Get the characters Iconic Framework from the traits
-		ifstring=charicf
+		#ifstring=charicf
 		if charicf
 			#get the entry in global file that matches the ICF name selected. We're going to make this pretty.
 			charcgicf = swrifts_iconicf.select { |ss| ss['name'].downcase == charicf.downcase }.first
 			charcgicf.each do |c, v|
 				ifname = c['name']
 				# desc = c['description']
-				# ifstring = "#{ifname}"
+				ifstring = "#{ifname}"
 				ifstring << "#{c} , #{v}"
 				# book = c['book_reference']
 				# if book
@@ -182,7 +182,7 @@ module AresMUSH
 					# ifstring << ")"
 				# end	
 			end
-			charicf="#{ifname}"
+			charicf="#{ifstring}"
 		else
 			charicf="None"
 		end
