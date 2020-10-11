@@ -139,3 +139,5 @@ demographics:
     actor: demographic/set played by=
     fullname: demographic/set full name=
     playedby: demographic/set played by=
+  permissions:
+    manage_demographics: Edit demographics on other players.

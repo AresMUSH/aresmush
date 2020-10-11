@@ -101,8 +101,11 @@ chargen:
         See `help apps` for additional help on the app review process.
   welcome_message: |-
     Please welcome %{name}, our latest %{position} to be approved!
-    
+
     Profile: %{profile_link}
 
     RP Hooks:
     %{rp_hooks}
+  permissions:
+    manage_apps: Approve and reject character apps.
+    view_bgs: Can view other characters' backgrounds
