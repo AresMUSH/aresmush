@@ -371,6 +371,8 @@ module AresMUSH
 		name_downcase = chopped_iconicf.downcase  # Work out how to cycle through the custom stuff for this. Keep it tight.
 
 		iconicf = Swrifts.get_iconicf(char, name_downcase)		
+		
+		return ["iconicf: #{iconicf.inspect}"]
 
 		swriftstraits = char.swrifts_traits
 		ischaricf = self.acl_return_traits(swriftstraits,'iconicf') #Get the characters Iconic Framework from the traits
