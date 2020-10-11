@@ -173,7 +173,7 @@ module AresMUSH
 				ifname = charcgicf['name']
 				desc = charcgicf['description']
 				ifstring = "#{ifname}"
-				book = c['book_reference']
+				book = charcgicf['book_reference']
 				if book
 					ifstring << " ~ ("
 					ifstring << book
