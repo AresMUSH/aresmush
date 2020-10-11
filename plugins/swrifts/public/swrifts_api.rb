@@ -170,15 +170,15 @@ module AresMUSH
 		if ( charicf.length > 0 )
 			# get the entry in global file that matches the ICF name selected. We're going to make this pretty.
 			charcgicf = swrifts_iconicf.select { |ss| ss['name'].downcase == charicf.downcase }.first
-				ifname = charcgicf['name']
-				desc = charcgicf['description']
-				ifstring = "#{ifname}"
-				book = charcgicf['book_reference']
-				if book
-					ifstring << " ~ ("
-					ifstring << book
-					ifstring << ")"
-				end	
+			ifname = charcgicf['name']
+			desc = charcgicf['description']
+			ifstring = "#{ifname}"
+			book = charcgicf['book_reference']
+			if book
+				ifstring << " ~ ("
+				ifstring << book
+				ifstring << ")"
+			end	
 			charicf="#{ifstring}"
 		else
 			charicf="None"
@@ -192,8 +192,30 @@ module AresMUSH
 		# Get the Characters Race
 		swriftstraits = char.swrifts_traits		
 		charrace = acl_return_traits(swriftstraits,'race') #Get the characters Race from the traits		
-		if charrace
-			charrace = charrace
+
+		if ( charrace.length > 0 )
+			# get the entry in global file that matches the ICF name selected. We're going to make this pretty.
+			charcgrace = swrifts_race.select { |ss| ss['name'].downcase == charrace.downcase }.first
+			racename = charcgrace['name']
+			desc = charcgrace['desc']
+			book = charcgrace['book_reference']
+			racestring = "#{racename}"
+			
+			if desc || book 
+				racestring << " ~ "
+			end
+			
+			if desc
+				racestring << " "
+				racestring << desc
+			end
+			
+			if book
+				racestring << " ("
+				racestring << book
+				racestring << ")"
+			end
+			charrace = racestring
 		else
 			charrace = "None"		
 		end
