@@ -409,7 +409,7 @@ module AresMUSH
 		 
 		# trait = char.swrifts_traits.inspect
 	
-		return ["Trait: #{swriftstraits}, #{tt}, #{tt1}, #{tt2}, #{name_downcase}"]
+		return ["Trait: #{swriftstraits}, #{tt}, #{tt1}, #{tt2}, #{iconicf.class}"]
 		
         #return ["Iconfic Framework Set to: #{chopped_iconicf}", "Race set to: #{chopped_race}"]	
 	end
