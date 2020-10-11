@@ -368,12 +368,12 @@ module AresMUSH
 		chopped_iconicf = chopped_iconicf.strip
 		chopped_iconicf = Website.format_input_for_mush(chopped_iconicf)
 		chopped_race = c_race[/[^~]+/]
-		chopped_race = chopped_race.strip
+		# chopped_race = chopped_race.strip
 		chopped_race = Website.format_input_for_mush(chopped_race)
-		name_downcase = chopped_iconicf.downcase  # Work out how to cycle through the custom stuff for this. Keep it tight.
+		name_downcase = chopped_iconicf.downcase.strip  # Work out how to cycle through the custom stuff for this. Keep it tight.
 
+		# Is this needed anymore? Leaving it jic.
 		charif = Swrifts.get_iconicf(char, name_downcase)		
-		# Is this needed anymore?
 		swriftstraits = char.swrifts_traits
 		ischaricf = self.acl_return_traits(swriftstraits,'charif') #Get the characters Iconic Framework from the traits
 		icfsize = ischaricf.size
@@ -399,11 +399,10 @@ module AresMUSH
 			# end
 		 # end 
 		 
-		# trait = char.swrifts_traits.inspect
 	
-		return ["Trait: #{tt}, #{tt1}, #{tt3}"]
-		
-        #return ["Iconfic Framework Set to: #{chopped_iconicf}", "Race set to: #{chopped_race}"]	
+		#return ["Trait: #{tt}, #{tt1}, #{tt3}"]
+		return
+	
 	end
 	
   end
