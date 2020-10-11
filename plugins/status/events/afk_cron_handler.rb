@@ -10,6 +10,10 @@ module AresMUSH
         
         Global.client_monitor.logged_in_clients.each do |client|
           if (client.idle_secs > minutes_before_idle_disconnect * 60)
+            char = client.char
+            if (char && char.has_permission?("can_idle_indefinitely"))
+              next
+            end
             client.emit_ooc t('status.afk_disconnect')
             client.disconnect
           end

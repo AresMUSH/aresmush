@@ -27,3 +27,6 @@ describe:
     admin: "%xb"
     beginner: "%xg"
     web: "%xh%xx"
+  permissions:
+    desc_anything: Edit descs on any object.
+    desc_places: Edit descs on rooms and exits

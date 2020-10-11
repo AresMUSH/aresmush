@@ -120,7 +120,9 @@ fs3combat:
       message: Distracted a target in combat.
     fs3_rallied:
       type: fs3
-      message: Rallied a teammate in combat.
+      message: Rallied someone in combat.
     fs3_treated:
       type: fs3
-      message: Treated a teammate in combat.
+      message: Treated someone in combat.
+  permissions:
+    manage_combat: Control combats that you didn't organize.

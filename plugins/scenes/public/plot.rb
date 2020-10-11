@@ -8,12 +8,11 @@ module AresMUSH
     attribute :completed, :type => DataType::Boolean
     attribute :content_warning
     
-    collection :scenes, "AresMUSH::Scene"
     set :storytellers, "AresMUSH::Character"
     
     ## DEPRECATED!  No longer used.
     reference :storyteller, "AresMUSH::Character"
-    
+    collection :scenes, "AresMUSH::Scene"
     
     def sorted_scenes
       self.scenes.to_a.sort_by { |s| s.icdate }
@@ -31,6 +30,10 @@ module AresMUSH
     
     def is_open?
       !self.completed
+    end
+    
+    def related_scenes
+      Scene.all.select { |p| p.plots.include?(self) }
     end
   end
 end

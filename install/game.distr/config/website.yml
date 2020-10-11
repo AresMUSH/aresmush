@@ -82,6 +82,8 @@ website:
       route: fs3-limits
     - title: XP Costs
       route: fs3-xp-costs
+    - title: Roles
+      route: roles
     - divider: true
     - target: blank
       title: FS3 Player's Guide <i class="fa fa-external-link-alt" aria-hidden="true">
@@ -136,6 +138,9 @@ website:
     - target: blank
       title: MUSH 101 Tutorial <i class="fa fa-external-link-alt" aria-hidden="true">
       url: https://aresmush.com/mush-101/
-  website_code_path: "/Users/lynn/Code/ares-webportal"
+  website_code_path: "/home/ares/ares-webportal"
   wiki_aliases:
     main: home
+  permissions:
+    manage_theme: Edit web portal CSS and colors.
+    manage_wiki: Create and delete restricted wiki pages.

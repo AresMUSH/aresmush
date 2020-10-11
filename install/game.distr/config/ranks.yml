@@ -48,3 +48,5 @@ ranks:
         Sergeant Major: false
   shortcuts:
     rank/clear: rank/set
+  permissions:
+    manage_ranks: Can change other characters' ranks.
