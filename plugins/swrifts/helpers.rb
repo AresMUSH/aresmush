@@ -214,6 +214,7 @@ module AresMUSH
 				iconicf_hinderances.each do |key|
 					hinderance_name = "#{key}".downcase
 					ss = Swrifts.add_feature(model, SwriftsHinderances, "hinderances", hinderance_name)
+					return ("lll. #{ss}")					
 				end
 			else 
 			end
@@ -224,6 +225,7 @@ module AresMUSH
 				iconicf_edges.each do |key|
 					edge_name = "#{key}".downcase
 					ss = Swrifts.add_feature(model, SwriftsEdges, "edges", edge_name)
+					return ("mmm. #{ss}")	
 				end
 			else 
 			end
