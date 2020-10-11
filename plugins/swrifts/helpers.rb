@@ -231,7 +231,6 @@ module AresMUSH
 			## ----- Update Skills
 			if (iconicf['skills'])
 				iconicf_skills=iconicf['skills'] 
-				return (iconicf_skills.class)
 				# grab the list from the config file and break it into 'key' (before the ':') and 'rating' (after the ':')
 				iconicf_skills.each do |key, rating|
 					# alias the 'key' because the command below doesn't parse the #'s and {'s etc.
@@ -252,6 +251,7 @@ module AresMUSH
 			# ----- This sets the default Magic Powers on the Character -----	
 			if (iconicf['magic_powers'])
 				iconicf_magic_powers=iconicf['magic_powers'] 
+				return (iconicf_magic_powers.class)				
 				iconicf_magic_powers.each do |key|
 					setthing = "#{key}".downcase
 					SwriftsMpowers.create(name: setthing, character: model)
