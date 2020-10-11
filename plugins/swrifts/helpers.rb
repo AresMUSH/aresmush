@@ -228,7 +228,7 @@ module AresMUSH
 			else 
 			end
 
-			teststr = ''
+
 			## ----- Update Skills
 			if (iconicf['skills'])
 				iconicf_skills=iconicf['skills'] 
@@ -246,11 +246,10 @@ module AresMUSH
 					skill = Swrifts.find_skill(model, skill_name)
 					if ( !skill ) 
 						skill = 'not found'
+					else
+						skill.update(rating: new_rating)
 					end
-					teststr << "#{skill}, #{new_rating}, #{current_rating}, #{key}"
-					#skill.update(rating: new_rating)
 				end
-				return [teststr]
 			else 
 			end
 
