@@ -370,7 +370,7 @@ module AresMUSH
 		chopped_race = Website.format_input_for_mush(chopped_race)
 		name_downcase = chopped_iconicf.downcase  # Work out how to cycle through the custom stuff for this. Keep it tight.
 
-		iconicf = Swrifts.get_iconicf(char, name_downcase)		
+		#iconicf = Swrifts.get_iconicf(char, name_downcase)		
 		
 		#return ["iconicf: #{iconicf.inspect}"]
 
@@ -392,7 +392,7 @@ module AresMUSH
 				# swinit = Global.read_config('swrifts', 'init')
 				tt = Swrifts.run_init(char, init)				
 				# tt = SwriftsTraits.create(name: 'iconicf', rating: name_downcase, character: char)
-				tt3 = iconicf = Global.read_config('swrifts', 'iconicf')
+				iconicf = Global.read_config('swrifts', 'iconicf')
 				tt1 = iconicf.select { |a| a['name'].downcase == name_downcase }.first				
 				#Swrifts.run_iconicf(char, iconicf)
 				tt2 = 'we got here'
