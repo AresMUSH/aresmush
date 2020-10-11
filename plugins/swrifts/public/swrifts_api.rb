@@ -403,7 +403,7 @@ module AresMUSH
 		race_downcase = chopped_race.downcase.strip  # Stripped and downcased race name.
 
 		# Is this needed anymore? Leaving it jic.
-		charif = Swrifts.get_iconicf(char, name_downcase)		
+		charif = Swrifts.get_iconicf(char, icf_downcase)		
 		swriftstraits = char.swrifts_traits
 		ischaricf = self.acl_return_traits(swriftstraits,'charif') #Get the characters Iconic Framework from the traits
 		icfsize = ischaricf.size
@@ -419,10 +419,10 @@ module AresMUSH
 			char.delete_swrifts_chargen #clear out the character
 			
 			iconicf = Global.read_config('swrifts', 'iconicf') #Read the config file for Iconic Frameworks
-			icfsel = iconicf.select { |ss| ss['name'].downcase == name_downcase }.first #Filter the icf's to find the one that's been selected	
+			icfsel = iconicf.select { |ss| ss['name'].downcase == icf_downcase }.first #Filter the icf's to find the one that's been selected	
 			tt = Swrifts.run_init(char, init)  #Calls run_init in helpers.rb
 			trait = Swrifts.find_traits(char, 'iconicf')   #Calls find_traits in helpers.rb				
-			trait.update(rating: name_downcase)  #Update the Icf with the one chosen.
+			trait.update(rating: icf_downcase)  #Update the Icf with the one chosen.
 			tt1 = Swrifts.run_iconicf(char, icfsel) #Set the base stats based on the ICF chosen.		 
 	
 		return
