@@ -242,7 +242,8 @@ module AresMUSH
 					# add Iconic Framework bonus to Initial skill
 					new_rating = current_rating + mod
 					# update the collection
-					skill = Swrifts.find_skill(model, skill_name)				
+					skill = Swrifts.find_skill(model, skill_name)
+					return (skill, new_rating, current_rating)	
 					skill.update(rating: new_rating)
 				end
 			else 
@@ -250,8 +251,7 @@ module AresMUSH
 
 			# ----- This sets the default Magic Powers on the Character -----	
 			if (iconicf['magic_powers'])
-				iconicf_magic_powers=iconicf['magic_powers'] 
-				return (iconicf_magic_powers.class)				
+				iconicf_magic_powers=iconicf['magic_powers'] 			
 				iconicf_magic_powers.each do |key|
 					setthing = "#{key}".downcase
 					SwriftsMpowers.create(name: setthing, character: model)
