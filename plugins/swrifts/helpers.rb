@@ -329,7 +329,8 @@ module AresMUSH
 			return ("kkk: #{group.inspect}") 
 			
 			
-			if (group['stats'])
+			if (group['stats'] && group)
+			return ("kkk: #{group.inspect}") 
 				set=group['stats']
 				# return (set.inspect) # "Strength"=>-2, "Agility"=>-2
 				charhash = model.swrifts_stats
