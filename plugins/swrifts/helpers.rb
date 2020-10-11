@@ -327,9 +327,11 @@ module AresMUSH
 			# return (newfg)
 			group = newsh.select { |a| a['name'].downcase == system_name.downcase }.first #the whole Group
 			
+			if (!group)
+				return ('mmm: Nothing set')
+			end
 			
-			
-			if (group['stats'] && group) 
+			if (group['stats']) 
 			return ("kkk: #{group.inspect}") 			
 				set=group['stats']
 				# return (set.inspect) # "Strength"=>-2, "Agility"=>-2
