@@ -395,8 +395,9 @@ module AresMUSH
 					end
 				end
 				
-				tt1 = iconicf.select { |ss| ss['name'].downcase == name_downcase }.first	
-				return ["ICF: #{iconicf}, #{tt3}, #{tt1}"]
+				tt1 = iconicf.select { |ss| ss['name'].downcase == 'test' }.first	
+				#return ["ICF: #{iconicf}, #{tt3}, #{tt1}"]
+				return ["ICF: #{tt1}"]
 
 			if ( ischaricf.size == 0  )
 				# swinit = Global.read_config('swrifts', 'init')
