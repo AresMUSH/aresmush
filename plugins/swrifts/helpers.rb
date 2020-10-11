@@ -330,7 +330,7 @@ module AresMUSH
 				set=group['stats']
 				# return (set.inspect) # "Strength"=>-2, "Agility"=>-2
 				charhash = model.swrifts_stats
-				# return (charhash.inspect)
+				return (charhash.inspect)
 				ss = Swrifts.element_update(model, set, charhash)
 				# return (ss.inspect)
 			else 
