@@ -388,12 +388,11 @@ module AresMUSH
 		
 			iconicf = Global.read_config('swrifts', 'iconicf')
 			icfsel = iconicf.select { |ss| ss['name'].downcase == name_downcase }.first
-			return [icfsel.inspect]
 			tt=''			
 			tt = Swrifts.run_init(char, init)
 			trait = Swrifts.find_traits(char, 'iconicf')				
 			trait.update(rating: name_downcase)
-			tt1 = Swrifts.run_iconicf(char, iconicf)
+			tt1 = Swrifts.run_iconicf(char, icfsel)
 			tt2 = SwriftsTraits.update(name: 'iconicf', rating: name_downcase, character: char)
 			tt3 = "updated"
 			# end
