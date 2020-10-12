@@ -50,6 +50,7 @@ module AresMUSH
 
 				ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|  #get the character model to work with
 					chartraits = model.swrifts_traits.select { |a| a.name.downcase == "iconicf" }.first
+					chartraits = chartraits.rating
 					client.emit (chartraits)
 				end
 				
