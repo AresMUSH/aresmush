@@ -41,7 +41,9 @@ module AresMUSH
   
  #----- Begin of def handle -----			 
 			def handle
-				race_name = "#{self.race_name}^"
+				race_name = self.race_name
+				check = "Restricted Path PPE^"
+				
 				client.emit (race_name)
 
 
@@ -49,9 +51,9 @@ module AresMUSH
 				
 				client.emit (race.type)
 				
-				check = "Restricted Path PPE^"
 				
-				ppe_check = race.select { |a| a['name'].downcase == names.include?(check.downcase) }.first
+				ppe_check = race.select{ |test| check.include?(test[:complications]) }
+
 
 				client.emit ( ppe_check )
 
