@@ -360,7 +360,7 @@ module AresMUSH
 		cgedgearray = []
 		cgp = ''
 		cg.each do |c|
-				cgname = c.name
+				cgname = "#{c.name}"
 				edgsel = cgsys.select { |ss| ss['name'].downcase == cgname.downcase }.first #Filter the icf's to find the one that's been selected	
 				return (edgsel.inspect)
 				cgn = cgname.gsub("_", " ")
