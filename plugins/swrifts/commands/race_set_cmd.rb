@@ -63,6 +63,7 @@ module AresMUSH
 							client.emit ("You cannot select this race for your current Iconic Framework  ppe")
 							return
 						else #continue
+							client.emit ("no ab magic or miracles")
 						end
 					end
 				else #continue
@@ -77,6 +78,7 @@ module AresMUSH
 							client.emit ("You cannot select this race for your current Iconic Framework isp")
 							return
 						else #continue
+							client.emit ("no ab psionics")
 						end
 					end
 				else #continue
@@ -86,13 +88,12 @@ module AresMUSH
 				if cyber_check == true
 					ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
 						charcat = model.swrifts_cybernetics
-						client.emit (charcat.size)
-						# if cybercheck == true
-							# client.emit (cybercheck)
-							# client.emit ("You cannot select this race for your current Iconic Framework cyber")
-							# return
-						# else #continue
-						# end
+						if charcat.size > 0
+							client.emit ("You cannot select this race for your current Iconic Framework cyber")
+							return
+						else #continue
+							client.emit ("no cybernetics")
+						end
 					end
 				else #continue
 					client.emit ("no cyber complication")
