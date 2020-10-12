@@ -47,10 +47,12 @@ module AresMUSH
 				race = Swrifts.find_race_config(self.race_name) #get the race entry we're working with
 				carray = race.select{ |a| a == "complications" }.first #pull the complications array out of the race entry
 				cvalue = carray[1] #pull the complications value out of the array
+				
 				ppe_check = cvalue.include?("Restricted Path PPE^") #see if the race has the value
 				isp_check = cvalue.include?("Restricted Path ISP^") #see if the race has the value
+				cyber_check = cvalue.include?("Cyber Resistant^") #see if the race has the value
 				nsb_check = cvalue.include?("Non-Standard Build^") #see if the race has the value
-				bp_check = cvalue.include?("Bizzare Physiology^") #see if the race has the value
+				bp_check = cvalue.include?("Bizarre Physiology^") #see if the race has the value
 
 				if ppe_check == true
 					ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
@@ -60,15 +62,63 @@ module AresMUSH
 						if (abmagic) || (abmiracles)
 							client.emit ("You cannot select this race for your current Iconic Framework")
 							return
-						else
-							client.emit ("Passed PPE Check")
+						else #continue
 						end
 					end
-				else
-					client.emit ("Nah")
+				else #continue
 				end
 				
+				if isp_check == true
+					ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
+						edgecheck = model.swrifts_edges
+						abpsionics = edgecheck.select{ |a| a.name == "ab psionics*" }.first
+						if (abpsionics)
+							client.emit ("You cannot select this race for your current Iconic Framework")
+							return
+						else #continue
+						end
+					end
+				else #continue
+				end
 				
+				if cyber_check == true
+					ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
+						cybercheck = Swrifts.is_vald_cat?(model, "cybernetics")
+						client.emit (cybercheck)
+				else #continue
+				end
+				
+				if nsb_check == true
+					ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
+						nsbcheck = model.swrifts_edges
+						pajock = edgecheck.select{ |a| a.name == "power armor jock*" }.first
+						if (pajock)
+							client.emit (pajock)
+							client.emit ("You cannot select this race for your current Iconic Framework")
+							return
+						else #continue
+							client.emit ("no power armor jock IF")
+						end
+					end
+				else #continue
+				end
+				
+				if bp_check == true
+					ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
+						icfcheck = model.swrifts_traits
+						juicer = icfcheck.select{ |a| a.name == "juicer" }.first
+						crazy = icfcheck.select{ |a| a.name == "crazy" }.first
+						if (juicer) || (crazy)
+							client.emit (juicer)
+							client.emit (crazy)
+							client.emit ("You cannot select this race for your current Iconic Framework")
+							return
+						else #continue
+							client.emit ("not a crazy or juicer")
+						end
+					end
+				else #continue
+				end
 
 				
 				

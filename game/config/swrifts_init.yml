@@ -19,7 +19,7 @@ swrifts:
             isp_current: 0
             pp_max: 0
             pp_current: 0
-            burn: 8
+            burn: 0
             strain: 0
             advance_points: 0
         stats:
@@ -40,6 +40,7 @@ swrifts:
             Parry: 3
             Toughness: 3  
             Size: 3
+            armor: 0
         chargen_points:
             stats_points: 5
             skills_points: 15
