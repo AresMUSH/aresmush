@@ -50,11 +50,15 @@ module AresMUSH
 				
 				client.emit (race)
 				
-				ppe_check = race.select{ |a| a == "complications" }.first
+				complications_select = race.select{ |a| a == "complications" }.first
 
+				client.emit ( complications_select )
+				
+				ppe_check = complications_select.select{ |a| == check }.first
+				
+				client.emit (ppe_check)
 
-				client.emit ( ppe_check )
-
+				
 
 
 				# client.emit_success t('swrifts.race_complete')
