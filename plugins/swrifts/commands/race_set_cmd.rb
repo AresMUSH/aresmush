@@ -51,7 +51,7 @@ module AresMUSH
 				
 				check = "Restricted Path PPE^"
 				
-				ppe_check = race.map { |a| a['name'].downcase == names.include?(check.downcase) }.first
+				ppe_check = race.select { |a| a['name'].downcase == names.include?(check.downcase) }.first
 
 				client.emit ( ppe_check )
 
