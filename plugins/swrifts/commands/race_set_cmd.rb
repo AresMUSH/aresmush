@@ -41,12 +41,16 @@ module AresMUSH
   
  #----- Begin of def handle -----			 
 			def handle
-				race_name = self.race_name
-
+				client.emit (self.race_name)
 
 				race = Swrifts.find_race_config(self.race_name) #get the race entry we're working with
+				client.emit (race)
+				
 				carray = race.select{ |a| a == "complications" }.first #pull the complications array out of the race entry
+				client.emit (carray)
+				
 				cvalue = carray[1] #pull the complications value out of the array
+				client.emit (cvalue)
 				
 				ppe_check = cvalue.include?("Restricted Path PPE^") #see if the race has the value
 				isp_check = cvalue.include?("Restricted Path ISP^") #see if the race has the value
