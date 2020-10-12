@@ -50,7 +50,7 @@ module AresMUSH
 				
 				client.emit (race)
 				
-				ppe_check = race.select{ |test| check.include?(test[:'complications']) }
+				ppe_check = race.select{ |test| check.include?(test[:complications]) }
 
 
 				client.emit ( ppe_check )
