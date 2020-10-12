@@ -52,11 +52,11 @@ module AresMUSH
 					edgecheck = model.swrifts_edges
 					earray = edgecheck.select{ |a| a.name == "ab magic*" }.first
 					if (earray) 
-						client.emit ('Edge Found')
+						ab_magic = 1
 					else
-						client.emit ('Edge Not Found')
+						ab_magic = 0
 					end
-					client.emit (earray)
+					client.emit (ab_magic)
 				end
 				
 				
