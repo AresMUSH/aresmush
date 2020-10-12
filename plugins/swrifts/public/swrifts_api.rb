@@ -359,7 +359,7 @@ module AresMUSH
 	def self.returnedgesforcg(cg, cgsys)
 		cgedgearray = []
 		cgp = ''
-		
+		cgsys = Global.read_config('swrifts', 'edges'
 		# cgsys.each do |a|
 			# cgp << a.inspect
 			# cgp <<' , '
@@ -370,7 +370,7 @@ module AresMUSH
 			# return (cgp)
 		# end
 		edgsel = cgsys.select { |ss| ss['name'] == 'Test Edge' }.first #Filter the icf's to find the one that's been selected
-		return (cgsys.class)
+		return (cgsys.inspect)
 		cg.each do |c|
 				edgsel = cgsys.select { |ss| ss['name'] == cgname }.first #Filter the icf's to find the one that's been selected	
 				return (edgsel.inspect)
