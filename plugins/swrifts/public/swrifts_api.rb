@@ -359,27 +359,8 @@ module AresMUSH
 	def self.returnedgesforcg(cg, cgsys)
 		cgedgearray = []
 		cgp = ''
-		cgsys = Global.read_config('swrifts', 'edges')
-				
-		cgsys.each do |a|
-			if (!a['name'])
-				return (cgp)
-			end
-			cgpname = a['name']
-			cgpname = cgpname.downcase
-			cgp << a['name'].downcase
-			cgp << ' -- '
-			cgp << cgpname
-			cgp << '<br />'
-		end
-		return (cgp)
-		# edgsel = cgsys.select { |g| g['name'].downcase == 'testedge' }.first #Filter the icf's to find the one that's been selected
-		# cgp << edgsel.inspect
-		# cgp << ' <br /> '
-		# cgp << cgsys.inspect
-		return (cgp)
 		cg.each do |c|
-				edgsel = cgsys.select { |ss| ss['name'] == cgname }.first #Filter the icf's to find the one that's been selected	
+				edgsel = cgsys.select { |ss| ss['name'].downcase == cgname }.first #Filter the icf's to find the one that's been selected	
 				return (edgsel.inspect)
 				cgn = cgname.gsub("_", " ")
 				cgname = cgn.titleize				
