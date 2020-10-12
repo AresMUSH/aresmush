@@ -362,8 +362,8 @@ module AresMUSH
 		cg.each do |c|
 				cgname = "#{c.name}"
 				cgname = cgname.downcase
-				cgname = c_iconicf[/[^*]+/]
-				cgname = c_iconicf[/[^^]+/]
+				cgname = cgname[/[^*]+/]
+				cgname = cgname[/[^^]+/]
 				cgname = cgname.trim
 				edgsel = cgsys.select { |ss| ss['name'].downcase == cgname.downcase }.first #Filter the icf's to find the one that's been selected	
 				return (edgsel.inspect)
