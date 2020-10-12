@@ -363,7 +363,9 @@ module AresMUSH
 		cgsys.each do |a|
 			cgp << a.inspect
 			cgp <<' , '
-			cgp << a['name'].class
+			cgpname = a['name']
+			cgpname = cgpname.class
+			cgp << cgpname
 			return (cgp)
 		end
 		cg.each do |c|
