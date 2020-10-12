@@ -54,7 +54,7 @@ module AresMUSH
 
 				client.emit ( complications_select )
 				
-				ppe_check = complications_select.include?{"#{check}"}
+				ppe_check = complications_select.include?(check)
 				
 				client.emit (ppe_check)
 
