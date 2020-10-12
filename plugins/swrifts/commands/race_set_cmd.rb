@@ -52,7 +52,11 @@ module AresMUSH
 				nsb_check = cvalue.include?("Non-Standard Build^") #see if the race has the value
 				bp_check = cvalue.include?("Bizzare Physiology^") #see if the race has the value
 
-				client.emit (ppe_check)
+				if ppe_check == true
+					client.emit ("Yep")
+				else
+					client.emit ("Nah")
+				end
 
 				ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
 					edgecheck = model.swrifts_edges
