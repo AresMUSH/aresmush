@@ -83,13 +83,14 @@ module AresMUSH
 				
 				if cyber_check == true
 					ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-						cybercheck = Swrifts.is_valid_cat?(model, "cybernetics")
-						if cybercheck == true
-							client.emit (cybercheck)
-							client.emit ("You cannot select this race for your current Iconic Framework cyber")
-							return
-						else #continue
-						end
+						charcat = model.swrifts_cybernetics
+						client.emit (charcat)
+						# if cybercheck == true
+							# client.emit (cybercheck)
+							# client.emit ("You cannot select this race for your current Iconic Framework cyber")
+							# return
+						# else #continue
+						# end
 					end
 				else #continue
 				end
