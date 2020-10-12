@@ -51,6 +51,7 @@ module AresMUSH
 				ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|	
 					edgecheck = model.swrifts_edges
 					earray = edgecheck.select{ |a| a.name == "Ab magic*" }.first
+					client.emit (edgecheck.inspect)
 					client.emit (earray)
 				end
 				
