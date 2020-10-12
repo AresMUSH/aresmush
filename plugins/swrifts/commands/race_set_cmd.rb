@@ -46,22 +46,22 @@ module AresMUSH
 				race = Swrifts.find_race_config(self.race_name) #get the race entry we're working with
 				client.emit (race)
 
-				carray = model.swrifts_complications
-				if carray.size > 0
-					client.emit ("complications apply")
-					carray = race.select{ |a| a == "complications" }.first #pull the complications array out of the race entry
-					client.emit (carray)
-					
-					cvalue = carray[1] #pull the complications value out of the array
-					client.emit (cvalue)
-					
-					ppe_check = cvalue.include?("Restricted Path PPE^") #see if the race has the value
-					isp_check = cvalue.include?("Restricted Path ISP^") #see if the race has the value
-					cyber_check = cvalue.include?("Cyber Resistant^") #see if the race has the value
-					nsb_check = cvalue.include?("Non-Standard Build^") #see if the race has the value
-					bp_check = cvalue.include?("Bizarre Physiology^") #see if the race has the value
+				ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
+					carray = model.swrifts_complications
+					if carray.size > 0
+						client.emit ("complications apply")
+						carray = race.select{ |a| a == "complications" }.first #pull the complications array out of the race entry
+						client.emit (carray)
+						
+						cvalue = carray[1] #pull the complications value out of the array
+						client.emit (cvalue)
+						
+						ppe_check = cvalue.include?("Restricted Path PPE^") #see if the race has the value
+						isp_check = cvalue.include?("Restricted Path ISP^") #see if the race has the value
+						cyber_check = cvalue.include?("Cyber Resistant^") #see if the race has the value
+						nsb_check = cvalue.include?("Non-Standard Build^") #see if the race has the value
+						bp_check = cvalue.include?("Bizarre Physiology^") #see if the race has the value
 
-					ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
 						if ppe_check == true
 							edgecheck = model.swrifts_edges
 							abmagic = edgecheck.select{ |a| a.name == "ab magic*" }.first
@@ -130,9 +130,9 @@ module AresMUSH
 						else #continue
 							client.emit ("no bp complication")
 						end
+					else
+						client.emit ("no complications in race")
 					end
-				else
-					client.emit ("no complications applied")
 				end
 				trait = Swrifts.find_traits(model, "race")				
 				trait.update(rating: self.race_name)
