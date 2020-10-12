@@ -814,7 +814,7 @@ swrifts:
         type: 
         pre-reqs:
     -
-        name: 
+        name: Work the Crowd
         description: Work the Crowd
         book_reference: SWADE 51
         type: 
@@ -1394,8 +1394,8 @@ swrifts:
         type: 
         pre-reqs:
     -
-        name: 
-        description: Burn for Glory
+        name: Burn for Glory
+        description: 
         book_reference: TLPG 75
         type: 
         pre-reqs:

@@ -227,9 +227,9 @@ module AresMUSH
 		cgtraits = returncgpforcg(cgpoints)
 		
 		#Get the Edges that were set on the character.
-		# cgedges = char.swrifts_edges
-		# cgsysedges = Global.read_config('swrifts', 'edges')	
-		# cgedg = returnedgesforcg(cgedges,cgsysedges)
+		cgedges = char.swrifts_edges
+		cgsysedges = Global.read_config('swrifts', 'edges')	
+		cgedg = returnedgesforcg(cgedges,cgsysedges)
 		
 
 		return {
@@ -242,7 +242,7 @@ module AresMUSH
 		  inicgpoints: initcgpoints,
 		  cgslots: cgslots,
 		  initracepoints: initracepoints,
-		  #cgedges: cgedges,
+		  cgedges: cgedg,
 		} 
 	end	
 	
@@ -357,12 +357,16 @@ module AresMUSH
 	end	
 	
 	def self.returnedgesforcg(cg, cgsys)
-		return ['']
 		cgedgearray = []
 		cgp = ''
 		cg.each do |c|
-				cgname = c.name
-				edgsel = c.select { |ss| ss['name'].downcase == icf_downcase }.first #Filter the icf's to find the one that's been selected				
+				cgname = "#{c.name}"
+				cgname = cgname.downcase
+				cgname = cgname[/[^*]+/]
+				cgname = cgname[/[^^]+/]
+				cgname = cgname.strip
+				edgsel = cgsys.select { |ss| ss['name'].downcase == cgname.downcase }.first #Filter the icf's to find the one that's been selected	
+				return (edgsel.inspect)
 				cgn = cgname.gsub("_", " ")
 				cgname = cgn.titleize				
 				cgrating = c.rating
@@ -399,35 +403,22 @@ module AresMUSH
 
 		#Remove the book and description stuff from the end of the string.	
 		chopped_iconicf = c_iconicf[/[^~]+/]
-		chopped_iconicf = chopped_iconicf
 		chopped_iconicf = Website.format_input_for_mush(chopped_iconicf)
 		chopped_race = c_race[/[^~]+/]
-		chopped_race = chopped_race
 		chopped_race = Website.format_input_for_mush(chopped_race)
 		icf_downcase = chopped_iconicf.downcase.strip  # Stripped and downcased iconicframework name.
 		race_downcase = chopped_race.downcase.strip  # Stripped and downcased race name.
 
-		# Is this needed anymore? Leaving it jic.
-		charif = Swrifts.get_iconicf(char, name_downcase)		
-		swriftstraits = char.swrifts_traits
-		ischaricf = self.acl_return_traits(swriftstraits,'charif') #Get the characters Iconic Framework from the traits
-		icfsize = ischaricf.size
-		
-		if (ischaricf.size > 0 )
-			tt1 = "YES!!! Size: #{icfsize}"
-		else
-			tt1 = 'No :('
-		end
 
 		## ----- Update Iconic Framework
 		
 			char.delete_swrifts_chargen #clear out the character
 			
 			iconicf = Global.read_config('swrifts', 'iconicf') #Read the config file for Iconic Frameworks
-			icfsel = iconicf.select { |ss| ss['name'].downcase == name_downcase }.first #Filter the icf's to find the one that's been selected	
+			icfsel = iconicf.select { |ss| ss['name'].downcase == icf_downcase }.first #Filter the icf's to find the one that's been selected	
 			tt = Swrifts.run_init(char, init)  #Calls run_init in helpers.rb
 			trait = Swrifts.find_traits(char, 'iconicf')   #Calls find_traits in helpers.rb				
-			trait.update(rating: name_downcase)  #Update the Icf with the one chosen.
+			trait.update(rating: icf_downcase)  #Update the Icf with the one chosen.
 			tt1 = Swrifts.run_iconicf(char, icfsel) #Set the base stats based on the ICF chosen.		 
 	
 		return
