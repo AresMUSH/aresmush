@@ -49,8 +49,8 @@ module AresMUSH
 				cvalue = carray[1] #pull the complications value out of the array
 
 				ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|  #get the character model to work with
-					chartraits = model.swrifts_edges
-					chartraits = chartraits
+					earray = model.swrifts_edges
+					chartraits = earray.include?("AB Magic*")
 					client.emit (chartraits)
 				end
 				
