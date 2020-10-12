@@ -41,7 +41,7 @@ module AresMUSH
   
  #----- Begin of def handle -----			 
 			def handle
-				race_name = "#{race_name}^"
+				race_name = "#{self.race_name}^"
 				client.emit (race_name)
 
 
