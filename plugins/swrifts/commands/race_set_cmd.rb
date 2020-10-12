@@ -42,7 +42,7 @@ module AresMUSH
  #----- Begin of def handle -----			 
 			def handle
 				race_name = self.race_name
-				check = "Restricted Path PPE^"
+				check = ['Restricted Path PPE^']
 				
 				client.emit (race_name)
 
