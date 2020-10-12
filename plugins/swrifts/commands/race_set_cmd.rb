@@ -58,7 +58,8 @@ module AresMUSH
 					client.emit (edgecheck.class)
 					client.emit (earray.class)
 					client.emit (cjl.class)
-					client.emit (cjl.model)
+					client.emit (model.inspect)
+					client.emit (model.class)
 				end
 				
 				
