@@ -46,13 +46,11 @@ module AresMUSH
 				
 				client.emit (race_name)
 
-
 				race = Swrifts.find_race_config(self.race_name) #get the race entry we're working with
 				
 				client.emit (race)
 				
-				
-				ppe_check = race.select{ |test| check.include?(test[:complications]) }
+				ppe_check = race.select{ |test| check.include?(test[:'complications']) }
 
 
 				client.emit ( ppe_check )
