@@ -49,7 +49,7 @@ module AresMUSH
 				cvalue = carray[1] #pull the complications value out of the array
 
 				ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|  #get the character model to work with
-					chartraits = char.swrifts_traits.select { |a| a.name.downcase == "iconicf" }.first
+					chartraits = model.swrifts_traits.select { |a| a.name.downcase == "iconicf" }.first
 					client.emit (chartraits)
 				end
 				
