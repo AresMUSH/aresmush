@@ -55,7 +55,7 @@ module AresMUSH
 						cjl << c
 					end
 					earray = edgecheck.select{ |a| a.name == "Ab magic*" }.first
-					client.emit (edgecheck.class)
+					client.emit (edgecheck.size)
 					client.emit (earray.class)
 					client.emit (cjl.class)
 					client.emit (model.inspect)
