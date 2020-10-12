@@ -54,7 +54,7 @@ module AresMUSH
 				cvalue = carray[1]
 				# client.emit (cvalue)
 
-				ppe_check = cvalue.include?(check)
+				ppe_check = cvalue.include?("Restricted Path PPE^")
 				client.emit (ppe_check)
 
 
