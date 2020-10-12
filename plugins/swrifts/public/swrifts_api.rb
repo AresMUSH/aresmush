@@ -360,8 +360,11 @@ module AresMUSH
 		cgedgearray = []
 		cgp = ''
 		cg.each do |c|
-				return (c.name)
-				cgname = "#{c['name']}"
+				cgname = "#{c.name}"
+				cgname = cgname.downcase
+				cgname = c_iconicf[/[^*]+/]
+				cgname = c_iconicf[/[^^]+/]
+				cgname = cgname.trim
 				edgsel = cgsys.select { |ss| ss['name'].downcase == cgname.downcase }.first #Filter the icf's to find the one that's been selected	
 				return (edgsel.inspect)
 				cgn = cgname.gsub("_", " ")
@@ -400,10 +403,8 @@ module AresMUSH
 
 		#Remove the book and description stuff from the end of the string.	
 		chopped_iconicf = c_iconicf[/[^~]+/]
-		chopped_iconicf = chopped_iconicf
 		chopped_iconicf = Website.format_input_for_mush(chopped_iconicf)
 		chopped_race = c_race[/[^~]+/]
-		chopped_race = chopped_race
 		chopped_race = Website.format_input_for_mush(chopped_race)
 		icf_downcase = chopped_iconicf.downcase.strip  # Stripped and downcased iconicframework name.
 		race_downcase = chopped_race.downcase.strip  # Stripped and downcased race name.
