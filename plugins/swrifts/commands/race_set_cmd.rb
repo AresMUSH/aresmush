@@ -53,32 +53,27 @@ module AresMUSH
 				bp_check = cvalue.include?("Bizzare Physiology^") #see if the race has the value
 
 				if ppe_check == true
-					client.emit ("Yep")
+					ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
+						edgecheck = model.swrifts_edges
+						abmagic = edgecheck.select{ |a| a.name == "ab magic*" }.first
+						abmiracles = edgecheck.select{ |a| a.name == "ab magic*" }.first
+						if (abmagic) || (abmiracles)
+							client.emit ("You cannot select this race for your current Iconic Framework")
+							return
+						else
+							client.emit ("Passed PPE Check")
+						end
+					end
 				else
 					client.emit ("Nah")
 				end
+				
+				
 
-				ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-					edgecheck = model.swrifts_edges
-					abmagic = edgecheck.select{ |a| a.name == "ab magic*" }.first
-					abmiracles = edgecheck.select{ |a| a.name == "ab magic*" }.first
-					if (abmagic) 
-						ab_magic = 1
-					else
-						ab_magic = 0
-					end
-					client.emit (ab_magic)
-				end
-				
-				
-				ppe_check = cvalue.include?("Restricted Path PPE^") #see if the race has the value
-				isp_check = cvalue.include?("Restricted Path ISP^") #see if the race has the value
-				nsb_check = cvalue.include?("Non-Standard Build^") #see if the race has the value
-				bp_check = cvalue.include?("Bizzare Physiology^") #see if the race has the value
 				
 				
 				
-				# if ppe_check == true
+
 					
 
 
