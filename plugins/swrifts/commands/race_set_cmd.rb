@@ -52,7 +52,7 @@ module AresMUSH
 					edgecheck = model.swrifts_edges
 					earray = edgecheck.select{ |a| a.name == "Ab magic*" }.first
 					client.emit (edgecheck.inspect)
-					client.emit (earray)
+					client.emit (earray.class)
 				end
 				
 				
