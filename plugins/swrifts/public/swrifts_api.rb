@@ -360,18 +360,18 @@ module AresMUSH
 		cgedgearray = []
 		cgp = ''
 		cgsys = Global.read_config('swrifts', 'edges')
+				
 		# cgsys.each do |a|
-			# cgp << a.inspect
-			# cgp <<' , '
-			# cgpname = a['name']
-			# cgpname = cgpname.downcase
-			# cgp << a['name'].downcase
-			# cgp << cgpname
-			# return (cgp)
-		# end
-		edgsel = cgsys.select { |g| g['name'].downcase == 'testedge' }.first #Filter the icf's to find the one that's been selected
-		cgp << edgsel.inspect
-		cgp << ' <br /> '
+			cgpname = a['name']
+			cgpname = cgpname.downcase
+			cgp << a['name'].downcase
+			cgp << cgpname
+			cgp << '<br />'
+			return (cgp)
+		end
+		# edgsel = cgsys.select { |g| g['name'].downcase == 'testedge' }.first #Filter the icf's to find the one that's been selected
+		# cgp << edgsel.inspect
+		# cgp << ' <br /> '
 		# cgp << cgsys.inspect
 		return (cgp)
 		cg.each do |c|
