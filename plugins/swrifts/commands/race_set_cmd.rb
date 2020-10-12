@@ -47,11 +47,18 @@ module AresMUSH
 				race = Swrifts.find_race_config(self.race_name) #get the race entry we're working with
 				carray = race.select{ |a| a == "complications" }.first #pull the complications array out of the race entry
 				cvalue = carray[1] #pull the complications value out of the array
+				ppe_check = cvalue.include?("Restricted Path PPE^") #see if the race has the value
+				isp_check = cvalue.include?("Restricted Path ISP^") #see if the race has the value
+				nsb_check = cvalue.include?("Non-Standard Build^") #see if the race has the value
+				bp_check = cvalue.include?("Bizzare Physiology^") #see if the race has the value
+
+				client.emit (ppe_check)
 
 				ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
 					edgecheck = model.swrifts_edges
-					earray = edgecheck.select{ |a| a.name == "ab magic*" }.first
-					if (earray) 
+					abmagic = edgecheck.select{ |a| a.name == "ab magic*" }.first
+					abmiracles = edgecheck.select{ |a| a.name == "ab magic*" }.first
+					if (abmagic) 
 						ab_magic = 1
 					else
 						ab_magic = 0
