@@ -364,7 +364,7 @@ module AresMUSH
 			cgp << a.inspect
 			cgp <<' , '
 			cgpname = a['name']
-			cgpname = cgpname.class
+			cgpname = cgpname.downcase
 			cgp << cgpname
 			return (cgp)
 		end
