@@ -44,5 +44,5 @@ fs3skills:
     - 0
   action_dots_beyond_chargen_max: 17
   allow_advantages_xp: false
-  attr_dots_beyond_chargen_max: 1
+  attr_dots_beyond_chargen_max: 5
   advantage_dots_beyond_chargen_max: 2
