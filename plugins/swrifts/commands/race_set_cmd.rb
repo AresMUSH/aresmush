@@ -50,7 +50,7 @@ module AresMUSH
 
 				ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|  #get the character model to work with
 					earray = model.swrifts_edges
-					chartraits = earray.include?(name: "AB Magic*")
+					chartraits = earray.has_key?("AB Magic*")
 					client.emit (chartraits)
 				end
 				
