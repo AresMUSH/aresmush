@@ -48,7 +48,7 @@ module AresMUSH
 				carray = race.select{ |a| a == "complications" }.first #pull the complications array out of the race entry
 				cvalue = carray[1] #pull the complications value out of the array
 
-				ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|	
+				ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
 					edgecheck = model.swrifts_edges
 					cjl = []
 					edgecheck.each do |c|
@@ -58,6 +58,7 @@ module AresMUSH
 					client.emit (edgecheck.class)
 					client.emit (earray.class)
 					client.emit (cjl.class)
+					client.emit (cjl.model)
 				end
 				
 				
