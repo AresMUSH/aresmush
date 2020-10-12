@@ -362,6 +362,9 @@ module AresMUSH
 		cgsys = Global.read_config('swrifts', 'edges')
 				
 		cgsys.each do |a|
+			if (!a['name'])
+				return (cgp)
+			end
 			cgpname = a['name']
 			cgpname = cgpname.downcase
 			cgp << a['name'].downcase
