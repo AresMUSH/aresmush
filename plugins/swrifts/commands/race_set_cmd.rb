@@ -54,9 +54,10 @@ module AresMUSH
 					edgecheck.each do |k, v|
 						cjl << k
 					end
-					# earray = edgecheck.select{ |a| a['name'] == "Ab magic*" }.first
+					earray = edgecheck.select{ |a| a.name == "ab magic*" }.first
 					client.emit (edgecheck.size)
 					client.emit (edgecheck.class)
+					client.emit (earray)
 					client.emit (cjl.inspect)
 				end
 				
