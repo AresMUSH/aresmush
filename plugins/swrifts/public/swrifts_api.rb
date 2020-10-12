@@ -359,8 +359,9 @@ module AresMUSH
 	def self.returnedgesforcg(cg, cgsys)
 		cgedgearray = []
 		cgp = ''
-		cg.each do |c|
+		cgsys.each do |c|
 				cgname = "#{c.name}"
+				return (c.inspect)
 				# edgsel = cgsys.select { |ss| ss['name'].downcase == cgname }.first #Filter the icf's to find the one that's been selected	
 				return (cgsys.inspect)
 				cgn = cgname.gsub("_", " ")
