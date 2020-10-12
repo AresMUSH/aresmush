@@ -242,7 +242,7 @@ module AresMUSH
 		  inicgpoints: initcgpoints,
 		  cgslots: cgslots,
 		  initracepoints: initracepoints,
-		  cgedges: cgedg,
+		  cgedges: cgedges,
 		} 
 	end	
 	
