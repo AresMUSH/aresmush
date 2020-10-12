@@ -50,7 +50,7 @@ module AresMUSH
 				
 				client.emit (race)
 				
-				ppe_check = race.index('complications')
+				ppe_check = race.select{ |a| a == "complications" }.first
 
 
 				client.emit ( ppe_check )
