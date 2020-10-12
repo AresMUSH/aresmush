@@ -365,6 +365,7 @@ module AresMUSH
 			cgp <<' , '
 			cgp << a['name']
 			return (cgp)
+		end
 		cg.each do |c|
 				edgsel = cgsys.select { |ss| ss['name'] == cgname }.first #Filter the icf's to find the one that's been selected	
 				return (edgsel.inspect)
