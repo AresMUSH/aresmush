@@ -370,7 +370,7 @@ module AresMUSH
 			# return (cgp)
 		# end
 		edgsel = cgsys.select { |ss| ss['name'] == 'TestEdge' }.first #Filter the icf's to find the one that's been selected
-		cgp << edgsel
+		cgp << edgsel.inspect
 		cgp << ' , '
 		cgp << cgsys.inspect
 		return (cgp)
