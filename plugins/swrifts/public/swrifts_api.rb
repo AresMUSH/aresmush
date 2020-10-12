@@ -365,10 +365,11 @@ module AresMUSH
 			cgpname = a['name']
 			cgpname = cgpname.downcase
 			cgp << a['name'].downcase
+			cgp << ' -- '
 			cgp << cgpname
 			cgp << '<br />'
-			return (cgp)
 		end
+		return (cgp)
 		# edgsel = cgsys.select { |g| g['name'].downcase == 'testedge' }.first #Filter the icf's to find the one that's been selected
 		# cgp << edgsel.inspect
 		# cgp << ' <br /> '
