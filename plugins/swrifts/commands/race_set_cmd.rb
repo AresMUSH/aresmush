@@ -60,7 +60,7 @@ module AresMUSH
 						abmagic = edgecheck.select{ |a| a.name == "ab magic*" }.first
 						abmiracles = edgecheck.select{ |a| a.name == "ab magic*" }.first
 						if (abmagic) || (abmiracles)
-							client.emit ("You cannot select this race for your current Iconic Framework")
+							client.emit ("You cannot select this race for your current Iconic Framework  ppe")
 							return
 						else #continue
 						end
@@ -73,7 +73,7 @@ module AresMUSH
 						edgecheck = model.swrifts_edges
 						abpsionics = edgecheck.select{ |a| a.name == "ab psionics*" }.first
 						if (abpsionics)
-							client.emit ("You cannot select this race for your current Iconic Framework")
+							client.emit ("You cannot select this race for your current Iconic Framework isp")
 							return
 						else #continue
 						end
@@ -84,7 +84,12 @@ module AresMUSH
 				if cyber_check == true
 					ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
 						cybercheck = Swrifts.is_valid_cat?(model, "cybernetics")
-						client.emit (cybercheck)
+						if cybercheck == true
+							client.emit (cybercheck)
+							client.emit ("You cannot select this race for your current Iconic Framework cyber")
+							return
+						else #continue
+						end
 					end
 				else #continue
 				end
@@ -92,10 +97,10 @@ module AresMUSH
 				if nsb_check == true
 					ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
 						nsbcheck = model.swrifts_edges
-						pajock = edgecheck.select{ |a| a.name == "power armor jock*" }.first
+						pajock = nsbcheck.select{ |a| a.name == "power armor jock*" }.first
 						if (pajock)
 							client.emit (pajock)
-							client.emit ("You cannot select this race for your current Iconic Framework")
+							client.emit ("You cannot select this race for your current Iconic Framework nsb")
 							return
 						else #continue
 							client.emit ("no power armor jock IF")
@@ -112,7 +117,7 @@ module AresMUSH
 						if (juicer) || (crazy)
 							client.emit (juicer)
 							client.emit (crazy)
-							client.emit ("You cannot select this race for your current Iconic Framework")
+							client.emit ("You cannot select this race for your current Iconic Framework bp")
 							return
 						else #continue
 							client.emit ("not a crazy or juicer")
