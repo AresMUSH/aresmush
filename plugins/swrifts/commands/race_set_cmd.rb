@@ -51,12 +51,16 @@ module AresMUSH
 				# client.emit (race)
 				
 				complications_select = race.select{ |a| a == "complications" }.first
-
 				client.emit ( complications_select )
+
+				complications_select = complications_select.each do |key, rating|
 				
-				ppe_check = complications_select.include?("complications")
+				string = "#{rating}"
+				client.emit (string)
 				
-				client.emit (ppe_check)
+				# ppe_check = complications_select.include?("complications")
+				
+				# client.emit (ppe_check)
 
 				
 
