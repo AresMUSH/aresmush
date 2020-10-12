@@ -129,7 +129,7 @@ module AresMUSH
 
 
 
-				# client.emit_success t('swrifts.race_complete')
+				client.emit_success t('swrifts.race_complete')
 			end
 #----- End of def handle -----	
 			
