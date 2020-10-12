@@ -41,8 +41,9 @@ module AresMUSH
   
  #----- Begin of def handle -----			 
 			def handle
-
+				race_name = "#{race_name}^"
 				client.emit (race_name)
+
 
 				race = Swrifts.find_race_config(self.race_name) #get the race entry we're working with
 				
