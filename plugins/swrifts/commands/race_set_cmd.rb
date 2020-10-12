@@ -44,7 +44,7 @@ module AresMUSH
 
 				race = Swrifts.find_race_config(self.race_name) #get the race entry we're working with
 				
-				client.emit (race_name)
+				client.emit ("-"race_name"-")
 				
 				ppe_check = race.select { |a| a['complications'] == self.race_name }.first
 
