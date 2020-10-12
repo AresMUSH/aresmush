@@ -66,7 +66,7 @@ module AresMUSH
 						end
 					end
 				else #continue
-					client.emit ("no magic or miracles")
+					client.emit ("no magic or miracles complication")
 				end
 				
 				if isp_check == true
@@ -80,13 +80,13 @@ module AresMUSH
 						end
 					end
 				else #continue
-					client.emit ("no isp")
+					client.emit ("no isp complication")
 				end
 				
 				if cyber_check == true
 					ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
 						charcat = model.swrifts_cybernetics
-						client.emit (charcat)
+						client.emit (charcat.inspect)
 						# if cybercheck == true
 							# client.emit (cybercheck)
 							# client.emit ("You cannot select this race for your current Iconic Framework cyber")
@@ -95,7 +95,7 @@ module AresMUSH
 						# end
 					end
 				else #continue
-					client.emit ("no cyber")
+					client.emit ("no cyber complication")
 				end
 				
 				if nsb_check == true
