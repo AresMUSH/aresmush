@@ -54,8 +54,8 @@ module AresMUSH
 				nsb_check = cvalue.include?("Non-Standard Build^") #see if the race has the value
 				bp_check = cvalue.include?("Bizarre Physiology^") #see if the race has the value
 
-				if ppe_check == true
-					ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
+				ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
+					if ppe_check == true
 						edgecheck = model.swrifts_edges
 						abmagic = edgecheck.select{ |a| a.name == "ab magic*" }.first
 						abmiracles = edgecheck.select{ |a| a.name == "ab magic*" }.first
@@ -65,13 +65,11 @@ module AresMUSH
 						else #continue
 							client.emit ("no ab magic or miracles")
 						end
+					else #continue
+						client.emit ("no magic or miracles complication")
 					end
-				else #continue
-					client.emit ("no magic or miracles complication")
-				end
-				
-				if isp_check == true
-					ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
+					
+					if isp_check == true
 						edgecheck = model.swrifts_edges
 						abpsionics = edgecheck.select{ |a| a.name == "ab psionics*" }.first
 						if (abpsionics)
@@ -80,13 +78,11 @@ module AresMUSH
 						else #continue
 							client.emit ("no ab psionics")
 						end
+					else #continue
+						client.emit ("no isp complication")
 					end
-				else #continue
-					client.emit ("no isp complication")
-				end
-				
-				if cyber_check == true
-					ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
+					
+					if cyber_check == true
 						charcat = model.swrifts_cybernetics
 						if charcat.size > 0
 							client.emit ("You cannot select this race for your current Iconic Framework cyber")
@@ -94,13 +90,11 @@ module AresMUSH
 						else #continue
 							client.emit ("no cybernetics")
 						end
+					else #continue
+						client.emit ("no cyber complication")
 					end
-				else #continue
-					client.emit ("no cyber complication")
-				end
-				
-				if nsb_check == true
-					ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
+					
+					if nsb_check == true
 						nsbcheck = model.swrifts_edges
 						pajock = nsbcheck.select{ |a| a.name == "power armor jock*" }.first
 						if (pajock)
@@ -110,13 +104,11 @@ module AresMUSH
 						else #continue
 							client.emit ("no power armor jock IF")
 						end
+					else #continue
+						client.emit ("no nsb complication")
 					end
-				else #continue
-					client.emit ("no nsb complication")
-				end
-				
-				if bp_check == true
-					ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
+					
+					if bp_check == true
 						icfcheck = model.swrifts_traits
 						juicer = icfcheck.select{ |a| a.name == "juicer" }.first
 						crazy = icfcheck.select{ |a| a.name == "crazy" }.first
@@ -128,19 +120,13 @@ module AresMUSH
 						else #continue
 							client.emit ("not a crazy or juicer")
 						end
+					else #continue
+						client.emit ("no bp complication")
 					end
-				else #continue
-					client.emit ("no bp complication")
 				end
-
 				
 				
 				
-
-					
-
-
-
 				client.emit_success t('swrifts.race_complete')
 			end
 #----- End of def handle -----	
