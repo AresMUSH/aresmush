@@ -48,7 +48,7 @@ module AresMUSH
 				carray = race.select{ |a| a == "complications" }.first #pull the complications array out of the race entry
 				cvalue = carray[1] #pull the complications value out of the array
 				
-				earray = Swrifts.find_traits(self.target_name, "iconicf")
+				earray = Swrifts.find_traits(enactor, "iconicf")
 				client.emit (earray)
 				
 				ppe_check = cvalue.include?("Restricted Path PPE^") #see if the race has the value
