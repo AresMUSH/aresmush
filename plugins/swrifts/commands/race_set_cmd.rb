@@ -50,7 +50,7 @@ module AresMUSH
 
 				ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|	
 					edgecheck = model.swrifts_edges
-					cjl = ''
+					cjl = []
 					edgecheck.each do |c|
 						cjl << c
 					end
