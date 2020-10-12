@@ -42,12 +42,11 @@ module AresMUSH
  #----- Begin of def handle -----			 
 			def handle
 
-				race = Swrifts.find_race_config(self.race_name) #pull in the whole yml file
-				# race = race_list.select { |a| a['name'].downcase == race_name.downcase }.first #pull out the specific race we want to use
+				race = Swrifts.find_race_config(self.race_name) #get the race entry we're working with
 				
-				client.emit (race)
+				ppe_check = Swrifts.is_valid_element_name?( 'restricted path ppe' )
 
-				
+				client.emit ( ppe_check )
 
 
 
