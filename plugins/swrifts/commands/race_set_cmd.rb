@@ -7,7 +7,7 @@ module AresMUSH
 			
 			def parse_args
 				self.target_name = enactor_name #Set the character to be the current character
-				self.race_name = trim_arg(cmd.args) #Set 'race_name' to be the inputted Race
+				self.race_name = trim_arg.downcase(cmd.args) #Set 'race_name' to be the inputted Race
 				self.race_title = "race"
 				# self.swrifts_race = "swrifts_race:" 
 
@@ -44,7 +44,9 @@ module AresMUSH
 
 				race = Swrifts.find_race_config(self.race_name) #get the race entry we're working with
 				
-				ppe_check = race.select { |a| a['complications'].downcase == self.race_name }.first
+				client.emit (race_name)
+				
+				ppe_check = race.select { |a| a['complications'] == self.race_name }.first
 
 				client.emit ( ppe_check )
 
