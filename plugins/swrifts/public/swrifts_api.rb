@@ -360,8 +360,11 @@ module AresMUSH
 		cgedgearray = []
 		cgp = ''
 		
-		edgsel = cgsys.select { |ss| ss['name'].downcase == 'ab miracles*' }.first #Filter the icf's to find the one that's been selected
-		return (cgsys.inspect)
+		cgsys.each do |a|
+			cgp << a.inspect
+			cgp <<' , '
+			cgp << a['name']
+			return (cgp)
 		cg.each do |c|
 				edgsel = cgsys.select { |ss| ss['name'] == cgname }.first #Filter the icf's to find the one that's been selected	
 				return (edgsel.inspect)
