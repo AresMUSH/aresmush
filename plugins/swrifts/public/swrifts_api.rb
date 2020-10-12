@@ -362,7 +362,7 @@ module AresMUSH
 		cg.each do |c|
 				cgname = "#{c.name}"
 				# edgsel = cgsys.select { |ss| ss['name'].downcase == cgname }.first #Filter the icf's to find the one that's been selected	
-				return (cgsys.inspect cgname)
+				return (cgsys.inspect)
 				cgn = cgname.gsub("_", " ")
 				cgname = cgn.titleize				
 				cgrating = c.rating
