@@ -123,10 +123,10 @@ module AresMUSH
 					else #continue
 						client.emit ("no bp complication")
 					end
+					
+					trait = Swrifts.find_traits(model, "race")				
+					trait.update(rating: self.race_name)
 				end
-				
-				
-				
 				client.emit_success t('swrifts.race_complete')
 			end
 #----- End of def handle -----	
