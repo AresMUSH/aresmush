@@ -50,14 +50,12 @@ module AresMUSH
 				
 				# client.emit (race)
 				
-				complications_select = race.select{ |a| a == "complications" }.first
-				client.emit ( complications_select )
+				carray = race.select{ |a| a == "complications" }.first
+				cvalue = carray[1]
+				# client.emit (cvalue)
 
-				ppe_check = complications_select[1]
-				
+				ppe_check = cvalue.include?(check)
 				client.emit (ppe_check)
-
-				
 
 
 				# client.emit_success t('swrifts.race_complete')
