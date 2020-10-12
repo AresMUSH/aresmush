@@ -371,8 +371,8 @@ module AresMUSH
 		# end
 		edgsel = cgsys.select { |ss| ss['name'] == 'TestEdge' }.first #Filter the icf's to find the one that's been selected
 		cgp << edgsel.inspect
-		cgp << ' , '
-		cgp << cgsys.inspect
+		cgp << ' <br /> '
+		# cgp << cgsys.inspect
 		return (cgp)
 		cg.each do |c|
 				edgsel = cgsys.select { |ss| ss['name'] == cgname }.first #Filter the icf's to find the one that's been selected	
