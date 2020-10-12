@@ -48,8 +48,10 @@ module AresMUSH
 				carray = race.select{ |a| a == "complications" }.first #pull the complications array out of the race entry
 				cvalue = carray[1] #pull the complications value out of the array
 				
-				earray = char.swrifts_traits.select { |a| a.name.downcase == 'iconicf' }.first
-				client.emit (erray)
+				ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
+					earray = model.swrifts_traits.select { |a| a.name.downcase == 'iconicf' }.first
+					client.emit (erray)
+				end
 				
 				ppe_check = cvalue.include?("Restricted Path PPE^") #see if the race has the value
 				isp_check = cvalue.include?("Restricted Path ISP^") #see if the race has the value
