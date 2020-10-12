@@ -48,11 +48,12 @@ module AresMUSH
 				carray = race.select{ |a| a == "complications" }.first #pull the complications array out of the race entry
 				cvalue = carray[1] #pull the complications value out of the array
 
-				ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|  #get the character model to work with
-					earray = model.swrifts_edges
-					chartraits = earray.find(name: 'edges')
-					client.emit (chartraits)
+				ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|	
+					edgecheck = model.swrifts_edges
+					earray = edgecheck.select{ |a| a == "AB Magic*" }.first
+					client.emit (earray)
 				end
+				
 				
 				ppe_check = cvalue.include?("Restricted Path PPE^") #see if the race has the value
 				isp_check = cvalue.include?("Restricted Path ISP^") #see if the race has the value
