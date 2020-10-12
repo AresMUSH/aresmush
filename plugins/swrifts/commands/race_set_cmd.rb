@@ -44,7 +44,7 @@ module AresMUSH
 				race_name = self.race_name
 				check = ['Restricted Path PPE^']
 				
-				client.emit (race_name)
+				# client.emit (race_name)
 
 				race = Swrifts.find_race_config(self.race_name) #get the race entry we're working with
 				
@@ -54,7 +54,7 @@ module AresMUSH
 
 				client.emit ( complications_select )
 				
-				ppe_check = complications_select.include?{check}
+				ppe_check = complications_select.include?{"#{check}"}
 				
 				client.emit (ppe_check)
 
