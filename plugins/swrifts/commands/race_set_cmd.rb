@@ -54,7 +54,7 @@ module AresMUSH
 
 				client.emit ( complications_select )
 				
-				ppe_check = complications_select.include?('Restricted Path PPE^')
+				ppe_check = complications_select.include?('"Restricted Path PPE^"')
 				
 				client.emit (ppe_check)
 
