@@ -359,7 +359,7 @@ module AresMUSH
 	def self.returnedgesforcg(cg, cgsys)
 		cgedgearray = []
 		cgp = ''
-		cgsys = Global.read_config('swrifts', 'edges'
+		cgsys = Global.read_config('swrifts', 'edges')
 		# cgsys.each do |a|
 			# cgp << a.inspect
 			# cgp <<' , '
