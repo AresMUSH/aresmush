@@ -50,7 +50,8 @@ module AresMUSH
 				client.emit (race)
 				
 				check = "Restricted Path PPE^"
-				ppe_check = race.select { |a| a.name == complications }.first
+				
+				ppe_check = race.select { |a| a['name'].downcase == complications }.first
 
 				client.emit ( ppe_check )
 
