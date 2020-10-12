@@ -56,6 +56,7 @@ module AresMUSH
 					else
 						client.emit ('Edge Not Found')
 					end
+					client.emit (earray)
 				end
 				
 				
