@@ -27,8 +27,7 @@ swrifts:
                 Repair: 2
                 Academics: 8
             complications:
-                - Skill Penalty^
-                    - Common Knowledge^
+                - Skill Penalty Common Knowledge^
                 - Storm-Fouled Senses^
                 - Inhuman Physiology-^
                 - Racial Enemy^
