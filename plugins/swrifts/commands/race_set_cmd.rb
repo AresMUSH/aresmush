@@ -48,13 +48,13 @@ module AresMUSH
 
 				race = Swrifts.find_race_config(self.race_name) #get the race entry we're working with
 				
-				client.emit (race)
+				# client.emit (race)
 				
 				complications_select = race.select{ |a| a == "complications" }.first
 
-				client.emit ( complications_select.class )
+				client.emit ( complications_select )
 				
-				ppe_check = complications_select.select{ |a| a == check }.first
+				ppe_check = complications_select.include?{check}
 				
 				client.emit (ppe_check)
 
