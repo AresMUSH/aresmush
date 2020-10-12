@@ -54,7 +54,7 @@ module AresMUSH
 
 				client.emit ( complications_select )
 				
-				ppe_check = complications_select.select{ |a| == check }.first
+				ppe_check = complications_select.select{ |a| a == check }.first
 				
 				client.emit (ppe_check)
 
