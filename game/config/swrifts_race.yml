@@ -109,7 +109,7 @@ swrifts:
             stats: 
                 Smarts: 1
                 Spirit: 1
-            stat_max
+            stat_max:
                 Smarts: d12+1
                 Spirit: d12+1
             abilities:
