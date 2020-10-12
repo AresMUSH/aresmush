@@ -7,7 +7,7 @@ module AresMUSH
 			
 			def parse_args
 				self.target_name = enactor_name #Set the character to be the current character
-				self.race_name = trim_arg.downcase(cmd.args) #Set 'race_name' to be the inputted Race
+				self.race_name = trim_arg(cmd.args) #Set 'race_name' to be the inputted Race
 				self.race_title = "race"
 				# self.swrifts_race = "swrifts_race:" 
 
