@@ -242,7 +242,7 @@ module AresMUSH
 		  inicgpoints: initcgpoints,
 		  cgslots: cgslots,
 		  initracepoints: initracepoints,
-		  cgedges: cgedges,
+		  cgedges: cgedg,
 		} 
 	end	
 	
@@ -357,10 +357,10 @@ module AresMUSH
 	end	
 	
 	def self.returnedgesforcg(cg, cgsys)
-		return ["#{cg.inspect}"]
 		cgedgearray = []
 		cgp = ''
 		cg.each do |c|
+				return ["#{c.inspect}"]
 				cgname = c.name
 				# edgsel = c.select { |ss| ss['name'].downcase == icf_downcase }.first #Filter the icf's to find the one that's been selected				
 				cgn = cgname.gsub("_", " ")
