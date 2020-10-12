@@ -49,7 +49,7 @@ swrifts:
             description: When the drug augmenting you is dragon blood. 
             counters:
                 ppe_max: 10
-                burn: -2
+                burn: 6
             stats:
                 Agility: 1
                 Strength: 2
@@ -67,6 +67,7 @@ swrifts:
             hinderances: 
                 - CHOICE*
                 - Enemy+*
+                - Death Wish*
             edges:
                 - Brawny*
                 - Quick* 
@@ -82,7 +83,6 @@ swrifts:
                 - Uncanny Reflexes* 
             complications:
                 - Cybernetics*
-                - Death Wish*
                 - Dragon Blood is Life*
                 - Dragon-Related Disorders*
                 - Drug-induced Eupohria/Tranqulity
@@ -921,28 +921,43 @@ swrifts:
                 - Spiritually Numb
         -
             name: Crazy
-            book_reference: TLPG
-            # description: 
-            # counters:
-                # ppe_max: 
-                # isp_max:
-            # stats:
-
-            # chargen_points:
-                # magic_slots: 
-                # psionic_slots: 
-            # skills:
-            
-            # hinderances: 
-                # -
-            # edges:
-                # -
-            # magic_powers:
-                # -
-            # abilities:
-                # -
-            # complications:
-                # -
+            book_reference: TLPG 22
+            description: Trading away sanity for exceptional power and capabilities. 
+            stats:
+                agility: 2
+                strength: 2
+                vigor: 2
+            stat_max:
+                agility: 2
+                strength: 2
+                vigor: 2
+            dstats:
+                pace: 6
+            chargen_points:
+                magic_slots: 
+                psionic_slots: 
+            skills:
+                notice: 2
+                survival: 2   
+                psionics: 2
+            edges:
+                - Nerves of Steel*
+                - AB Psionics*
+                - Quick*
+            magic_powers:
+                -
+            abilities:
+                - Bio-Regeneration*
+                - Enhanced Endurance*
+                - Enhanced Speed* 
+                - Heightened Senses* 
+                - Uncanny Reflexes*
+            complications:
+                - Cybernetics*
+                - Distinctive Appearance*
+                - Magic*
+                - Needs Action*
+                - Unstable Psyche*
         -
             name: Cyber-Knight
             book_reference: TLPG
@@ -1055,27 +1070,34 @@ swrifts:
         -
             name: Juicer
             book_reference: TLPG 35
-            # description: Drug-powered super-soldiers. 
-            # counters:
-                # ppe_max: 
-                # isp_max:
-            # stats:
-
-            # chargen_points:
-                # magic_slots: 
-                # psionic_slots: 
-            # skills:
-            
-            # hinderances: 
-                # -
-            # edges:
-                # -
-            # magic_powers:
-                # -
-            # abilities:
-                # -
-            # complications:
-                # -
+            description: Drug-powered super-soldiers. 
+            counters:
+                burn: 8
+            stats:
+                Vigor: 2
+                Agility: 2
+                Strength: 2
+            stat_max:
+                Vigor: 2
+                Agility: 2
+                Strength: 2
+            dstats:
+                Pace: 6
+            edges:
+                - Quick*
+                - Brawny*
+            hinderances:
+                - Death Wish*
+            abilities:
+                - Burning Bright*
+                - Internal Repair System*
+                - Super Endurance*
+                - Super Speed*
+                - Uncanny Reflexes*
+            complications:
+                - Cybernetics*
+                - Drug-induced Euphoria/Tranquility
+                - Psionics and Magic*
         -
             name: Ley Line Walker
             book_reference: TLPG
