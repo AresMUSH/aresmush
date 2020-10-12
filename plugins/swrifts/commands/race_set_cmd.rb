@@ -53,7 +53,7 @@ module AresMUSH
 				complications_select = race.select{ |a| a == "complications" }.first
 				client.emit ( complications_select )
 
-				ppe_check = complications_select.select{ |a| a == check }.first
+				ppe_check = complications_select.at[2]
 				client.emit (ppe_check)
 
 				
