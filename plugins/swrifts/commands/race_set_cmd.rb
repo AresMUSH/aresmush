@@ -54,8 +54,8 @@ module AresMUSH
 				client.emit ( complications_select )
 
 				complications_select = complications_select.each do |key, rating|
-				
-				string = "#{rating}"
+					string = "#{rating}"
+				end
 				client.emit (string)
 				
 				# ppe_check = complications_select.include?("complications")
