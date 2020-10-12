@@ -85,6 +85,7 @@ module AresMUSH
 					ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
 						cybercheck = Swrifts.is_vald_cat?(model, "cybernetics")
 						client.emit (cybercheck)
+					end
 				else #continue
 				end
 				
