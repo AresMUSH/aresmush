@@ -360,10 +360,8 @@ module AresMUSH
 		cgedgearray = []
 		cgp = ''
 		cgsys.each do |c|
-				cgname = "#{c['name']}"
-				return (cgname)
-				# edgsel = cgsys.select { |ss| ss['name'].downcase == cgname }.first #Filter the icf's to find the one that's been selected	
-				return (cgsys.inspect)
+				edgsel = cgsys.select { |ss| ss['name'] == cgname }.first #Filter the icf's to find the one that's been selected	
+				return (edgsel.inspect)
 				cgn = cgname.gsub("_", " ")
 				cgname = cgn.titleize				
 				cgrating = c.rating
