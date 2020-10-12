@@ -133,9 +133,9 @@ module AresMUSH
 					else
 						client.emit ("no complications in race")
 					end
+					trait = Swrifts.find_traits(model, "race")				
+					trait.update(rating: self.race_name)
 				end
-				trait = Swrifts.find_traits(model, "race")				
-				trait.update(rating: self.race_name)
 				client.emit_success t('swrifts.race_complete')
 			end
 #----- End of def handle -----	
