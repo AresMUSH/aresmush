@@ -45,92 +45,97 @@ module AresMUSH
 
 				race = Swrifts.find_race_config(self.race_name) #get the race entry we're working with
 				client.emit (race)
-				
-				carray = race.select{ |a| a == "complications" }.first #pull the complications array out of the race entry
-				client.emit (carray)
-				
-				cvalue = carray[1] #pull the complications value out of the array
-				client.emit (cvalue)
-				
-				ppe_check = cvalue.include?("Restricted Path PPE^") #see if the race has the value
-				isp_check = cvalue.include?("Restricted Path ISP^") #see if the race has the value
-				cyber_check = cvalue.include?("Cyber Resistant^") #see if the race has the value
-				nsb_check = cvalue.include?("Non-Standard Build^") #see if the race has the value
-				bp_check = cvalue.include?("Bizarre Physiology^") #see if the race has the value
 
-				ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-					if ppe_check == true
-						edgecheck = model.swrifts_edges
-						abmagic = edgecheck.select{ |a| a.name == "ab magic*" }.first
-						abmiracles = edgecheck.select{ |a| a.name == "ab magic*" }.first
-						if (abmagic) || (abmiracles)
-							client.emit ("You cannot select this race for your current Iconic Framework  ppe")
-							return
-						else #continue
-							client.emit ("no ab magic or miracles")
-						end
-					else #continue
-						client.emit ("no magic or miracles complication")
-					end
+				carray = model.swrifts_complications
+				if carray.size > 0
+					client.emit ("complications apply")
+					carray = race.select{ |a| a == "complications" }.first #pull the complications array out of the race entry
+					client.emit (carray)
 					
-					if isp_check == true
-						edgecheck = model.swrifts_edges
-						abpsionics = edgecheck.select{ |a| a.name == "ab psionics*" }.first
-						if (abpsionics)
-							client.emit ("You cannot select this race for your current Iconic Framework isp")
-							return
-						else #continue
-							client.emit ("no ab psionics")
-						end
-					else #continue
-						client.emit ("no isp complication")
-					end
+					cvalue = carray[1] #pull the complications value out of the array
+					client.emit (cvalue)
 					
-					if cyber_check == true
-						charcat = model.swrifts_cybernetics
-						if charcat.size > 0
-							client.emit ("You cannot select this race for your current Iconic Framework cyber")
-							return
+					ppe_check = cvalue.include?("Restricted Path PPE^") #see if the race has the value
+					isp_check = cvalue.include?("Restricted Path ISP^") #see if the race has the value
+					cyber_check = cvalue.include?("Cyber Resistant^") #see if the race has the value
+					nsb_check = cvalue.include?("Non-Standard Build^") #see if the race has the value
+					bp_check = cvalue.include?("Bizarre Physiology^") #see if the race has the value
+
+					ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
+						if ppe_check == true
+							edgecheck = model.swrifts_edges
+							abmagic = edgecheck.select{ |a| a.name == "ab magic*" }.first
+							abmiracles = edgecheck.select{ |a| a.name == "ab magic*" }.first
+							if (abmagic) || (abmiracles)
+								client.emit ("You cannot select this race for your current Iconic Framework  ppe")
+								return
+							else #continue
+								client.emit ("no ab magic or miracles")
+							end
 						else #continue
-							client.emit ("no cybernetics")
+							client.emit ("no magic or miracles complication")
 						end
-					else #continue
-						client.emit ("no cyber complication")
-					end
-					
-					if nsb_check == true
-						nsbcheck = model.swrifts_edges
-						pajock = nsbcheck.select{ |a| a.name == "power armor jock*" }.first
-						if (pajock)
-							client.emit (pajock)
-							client.emit ("You cannot select this race for your current Iconic Framework nsb")
-							return
+						
+						if isp_check == true
+							edgecheck = model.swrifts_edges
+							abpsionics = edgecheck.select{ |a| a.name == "ab psionics*" }.first
+							if (abpsionics)
+								client.emit ("You cannot select this race for your current Iconic Framework isp")
+								return
+							else #continue
+								client.emit ("no ab psionics")
+							end
 						else #continue
-							client.emit ("no power armor jock IF")
+							client.emit ("no isp complication")
 						end
-					else #continue
-						client.emit ("no nsb complication")
-					end
-					
-					if bp_check == true
-						icfcheck = model.swrifts_traits
-						juicer = icfcheck.select{ |a| a.name == "juicer" }.first
-						crazy = icfcheck.select{ |a| a.name == "crazy" }.first
-						if (juicer) || (crazy)
-							client.emit (juicer)
-							client.emit (crazy)
-							client.emit ("You cannot select this race for your current Iconic Framework bp")
-							return
+						
+						if cyber_check == true
+							charcat = model.swrifts_cybernetics
+							if charcat.size > 0
+								client.emit ("You cannot select this race for your current Iconic Framework cyber")
+								return
+							else #continue
+								client.emit ("no cybernetics")
+							end
 						else #continue
-							client.emit ("not a crazy or juicer")
+							client.emit ("no cyber complication")
 						end
-					else #continue
-						client.emit ("no bp complication")
+						
+						if nsb_check == true
+							nsbcheck = model.swrifts_edges
+							pajock = nsbcheck.select{ |a| a.name == "power armor jock*" }.first
+							if (pajock)
+								client.emit (pajock)
+								client.emit ("You cannot select this race for your current Iconic Framework nsb")
+								return
+							else #continue
+								client.emit ("no power armor jock IF")
+							end
+						else #continue
+							client.emit ("no nsb complication")
+						end
+						
+						if bp_check == true
+							icfcheck = model.swrifts_traits
+							juicer = icfcheck.select{ |a| a.name == "juicer" }.first
+							crazy = icfcheck.select{ |a| a.name == "crazy" }.first
+							if (juicer) || (crazy)
+								client.emit (juicer)
+								client.emit (crazy)
+								client.emit ("You cannot select this race for your current Iconic Framework bp")
+								return
+							else #continue
+								client.emit ("not a crazy or juicer")
+							end
+						else #continue
+							client.emit ("no bp complication")
+						end
 					end
-					
-					trait = Swrifts.find_traits(model, "race")				
-					trait.update(rating: self.race_name)
+				else
+					client.emit ("no complications applied")
 				end
+				trait = Swrifts.find_traits(model, "race")				
+				trait.update(rating: self.race_name)
 				client.emit_success t('swrifts.race_complete')
 			end
 #----- End of def handle -----	
