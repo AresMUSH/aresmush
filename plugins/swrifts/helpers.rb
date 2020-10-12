@@ -592,6 +592,17 @@ module AresMUSH
 			model.swrifts_traits.select { |a| a.name.downcase == name_downcase }.first
 		end
 		
+		def self.return_element_value(elementname, set)
+		elementname = elementname.downcase
+		swriftselement = @char.swrifts_set
+		swriftselement.to_a.sort_by { |a| a.name }
+			.each_with_index
+				.map do |a, i| 
+				if a.name.downcase == "#{elementname}"
+					return ("#{a.rating}")
+				end
+			end	
+		end
 
 		
 		## ----- Die Step
