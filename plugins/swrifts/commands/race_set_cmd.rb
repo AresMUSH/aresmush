@@ -47,7 +47,7 @@ module AresMUSH
 
 				race = Swrifts.find_race_config(self.race_name) #get the race entry we're working with
 				
-				client.emit (race)
+				client.emit (race.type)
 				
 				check = "Restricted Path PPE^"
 				
