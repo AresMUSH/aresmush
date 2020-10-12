@@ -48,8 +48,7 @@ module AresMUSH
 				carray = race.select{ |a| a == "complications" }.first #pull the complications array out of the race entry
 				cvalue = carray[1] #pull the complications value out of the array
 				
-				earray = enactor.swrifts_traits
-				earray = earray.select { |a| a.name == iconicf }.first
+				earray = enactor.select{ |a| a == "iconicf" }.first
 				client.emit (earray)
 
 				
