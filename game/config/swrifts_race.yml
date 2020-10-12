@@ -32,6 +32,11 @@ swrifts:
                 - Storm-Fouled Senses^
                 - Inhuman Physiology-^
                 - Racial Enemy^
+                - Retricted Path PPE^
+                - Restricted Path ISP^
+                - Non-Standard Build^
+                - Cyber Resistant^
+                - Bizzare Physiology^
             counters:
                 isp_max: 10
             powers:
@@ -46,6 +51,7 @@ swrifts:
             edges:
                 - Attractive^
                 - Alertness^
+                - AB Psionics^
             hinderances:
                 - Blind^
             stats: 
@@ -66,8 +72,8 @@ swrifts:
                 - Storm-Fouled Senses^
                 - Inhuman Physiology-^
                 - Racial Enemy^
-            counters:
-                isp_max: 10
+            chargen_points:
+                psionic_slots: -1
             powers:
                 - Arcane Protection^
                 - Detect Arcana^
@@ -90,8 +96,8 @@ swrifts:
                 - Psychic Sense^
             complications:
                 - Near-Human Phsiology^
-                - Oddly Built^
-                - Restricted Paths^
+                - Non-Standard Build^
+                - Restricted Path PPE^
                 - Mutant^
                 - Ley Line Hypersensitivity^
         -  
@@ -100,25 +106,125 @@ swrifts:
             desc: Devilmen
             edges:
                 - Charismatic^
-            hinderances:
-            attributes: 
+            stats: 
                 Smarts: 1
                 Spirit: 1
-            max_smarts_step: d12+1
+            stat_max
+                Smarts: d12+1
+                Spirit: d12+1
             abilities:
                 - Horns^
             complications:
                 - Inhuman Physiology+^
                 - D-Bee+^
-                - Restricted Path^
-                    - Magic
+                - Restricted Path ISP^
                 - Skill Penalty+^
                     -Fear
             ppe: 5
         - 
-            name: Dragon
-            book_reference: Unknown
+            name: Dragon Flame Wind
+            book_reference: TLPG 28
+            stats:
+                Strength: 8
+                Vigor: 2
+            stat_max:
+                Strength: 100
+                Vigor: 100
+            abilities:
+                - Fire Breath^
+                - Impervious to Fire
+                - Flight^
+                - Size 6^
+                - Limited Metamorphosis*
         -
+            name: Dragon Forest Runner
+            stats:
+                Strength: 7
+                Vigor: 1
+            stat_max:
+                Strength: 100
+                Vigor: 100
+            abilities:
+                - Chameleon Scales^
+                - Enhanced Metamorphosis^
+                - Flight^
+                - Poison Breath^
+                - Resistant to Fire and Cold^
+                - Runner^
+                - Size 4^
+            edges:
+                - Major Psionic^
+            chargen_points:
+                psionic_slots: 4
+            dstats:
+                pace: 4
+                running: 2
+        - 
+            name: Dragon Great Horned
+            stats:
+                Strength: 8
+                Vigor: 2
+                Smarts: 1
+            stat_max:
+                Strength: 100
+                Vigor: 100
+            abilities:
+                - Great Horned Armor^
+                - Flame Breath^
+                - Horned^
+                - Resistant to Fire and Cold^
+                - Limited Metamorphosis^
+                - Flight^
+                - Size 6^
+            counters:
+                ppe_max: 5
+            edges:
+                - Major Psionic^
+        - 
+            name: Dragon Royal Frilled
+            stats:
+                Strength: 7
+                Vigor: 3
+            stat_max:
+                Strength: 100
+                Vigor: 100
+            hinderances:
+                - choice^
+            abilities: 
+                - Extended Metamorphosis^
+                - Keen Claws^
+                - Royal Frilled Fear^
+                - Resistant to Fire and Cold^
+                - Toxic Breath^
+                - Flight^
+                - Size 6^
+            counters:
+                ppe_max: 10
+            edges: 
+                - AB Magic^
+                - AB Psionic^
+                - Major Psionic^
+            skills:
+                spellcasting: 1
+                psionics: 1
+            chargen_points: 
+                psionic_slots: -1
+        - 
+            name: Dragon Snow Lizard
+            stats:
+                Strength: 8
+                Vigor: 2
+            stat_max:
+                Strength: 100
+                Vigor: 100
+            abilities:
+                - Flightless
+                - Frost Breath^
+                - Impervious to Cold^
+                - Snowstorm Transformation^
+                - Size 6^
+                - Limited Metamorphosis^
+        - 
             name: Fennodi
             book_reference: TLPG
         -
@@ -146,7 +252,7 @@ swrifts:
             complications:
                 - Mutant^
                 - Racial Enemy (Simvan)^
-                - Restricted Paths^
+                - Restricted Path PPE^
         -  
             name: Quick Flex
             book_reference: TLPG
@@ -164,7 +270,7 @@ swrifts:
             complications:
                 - D-Bee+^
                 - Alien Phsiology^
-                - Restricted Path^
+                - Restricted Path PPE^
                 - Short Attention Span^
         -  
             name: Simvan
@@ -203,27 +309,12 @@ swrifts:
                 - Big Boned^
                 - D-Bee+^
         -
-            name: Android
-            book_reference: SWADE
-        -
             name: Aquarian
             book_reference: SWADE
         -
             name: Avion
             book_reference: SWADE
         -
-            name: Dwarf
-            book_reference: SWADE
-        -
-            name: Elf
-            book_reference: SWADE
-        -
-            name: Half-Elf-Elf
-            book_reference: SWADE
-        -
-            name: Half-Elf-Human
-            book_reference: SWADE
-        -  
             name: Half-Folk
             book_reference: SWADE
         -  
@@ -252,10 +343,55 @@ swrifts:
             book_reference: EofH
         -  
             name: Cactus People
-            book_reference: A&M
+            book_reference: A&M 23
+            desc: Plant-like people with regenerative blood
+            edges:
+                - AB Psionics^
+            skills:
+                psionics: 2
+            abilities:
+                - Doesn't Breathe^
+                - Disease and Poison Resistant^
+                - Low Light Vision^
+                - Natural Psionics^
+                - Regeneration^
+            complications:
+                - Bizarre Physiology^
+                - Cannot Speak^
+                - D-Bee+^
+                - Hunted-^
+                - Sunlight Dependency
+                - Restricted Path PPE^
+            powers: 
+                - Mind Link^
+                - Detect Arcana^
+                - Conceal Arcana^
+                - Empathy^
+            chargen_points: 
+                - psionic_slots: 2
         -
             name: Dwarf
             book_reference: A&M
+            desc: 
+            stats:
+                Strength: 1
+                Vigor: 1
+            stat_max:
+                Strength: 1
+                Vigor: 1
+            edges:
+            hinderances:
+            attributes: 
+            max_attribute_step: 
+            skills:
+            abilities:
+                - Low Light Vision^
+            complications:
+                - D-Bee-^
+                - Near-Human Physiology^
+                - Racial Animosity^
+            powers: 
+            chargen_points: 
         -
             name: Elf
             book_reference: A&M
