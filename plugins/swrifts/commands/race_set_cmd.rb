@@ -43,9 +43,9 @@ module AresMUSH
 			def handle
 
 				race_list = Global.read_config('swrifts', 'race') #pull in the whole yml file
-				race = race_list.select { |a| a['name'].downcase == race_name.downcase }.first #pull out the specific race we want to use
+				# race = race_list.select { |a| a['name'].downcase == race_name.downcase }.first #pull out the specific race we want to use
 				
-				client.emit (race)
+				client.emit (race_list)
 
 				
 
