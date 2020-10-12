@@ -49,6 +49,7 @@ module AresMUSH
 				cvalue = carray[1] #pull the complications value out of the array
 				
 				earray = enactor.swrifts_traits
+				earray = earray.select { |a| a.name == iconicf }.first
 				client.emit (earray)
 
 				
