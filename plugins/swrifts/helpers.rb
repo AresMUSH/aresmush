@@ -592,9 +592,10 @@ module AresMUSH
 			model.swrifts_traits.select { |a| a.name.downcase == name_downcase }.first
 		end
 		
-		def self.return_element_value(elementname, set)
+		def self.return_element_value(model, elementname, set)
 		elementname = elementname.downcase
-		swriftselement = @char.swrifts_set
+		
+		swriftselement = model.swrifts_set
 		swriftselement.to_a.sort_by { |a| a.name }
 			.each_with_index
 				.map do |a, i| 
