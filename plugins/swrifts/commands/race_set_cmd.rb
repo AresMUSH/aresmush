@@ -66,6 +66,7 @@ module AresMUSH
 						end
 					end
 				else #continue
+					client.emit ("no magic or miracles")
 				end
 				
 				if isp_check == true
@@ -79,6 +80,7 @@ module AresMUSH
 						end
 					end
 				else #continue
+					client.emit ("no isp")
 				end
 				
 				if cyber_check == true
@@ -93,6 +95,7 @@ module AresMUSH
 						# end
 					end
 				else #continue
+					client.emit ("no cyber")
 				end
 				
 				if nsb_check == true
@@ -108,6 +111,7 @@ module AresMUSH
 						end
 					end
 				else #continue
+					client.emit ("no nsb complication")
 				end
 				
 				if bp_check == true
@@ -125,6 +129,7 @@ module AresMUSH
 						end
 					end
 				else #continue
+					client.emit ("no bp complication")
 				end
 
 				
