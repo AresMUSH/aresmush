@@ -47,7 +47,8 @@ module AresMUSH
 				client.emit (race)
 
 				ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-					carray = model.swrifts_complications
+					carray = race.swrifts_complications
+					client.emit (carray.size)
 					if carray.size > 0
 						client.emit ("complications apply")
 						carray = race.select{ |a| a == "complications" }.first #pull the complications array out of the race entry
