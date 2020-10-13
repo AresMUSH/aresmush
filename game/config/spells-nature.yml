@@ -94,7 +94,7 @@ spells:
     stance: Hidden
   Natural Defenses:
     available: true
-    desc: The caster grows natural defenses from a specific animal. These take the form of armored skin, spines, etc. Animal is from the same genus each time the spell is cast.
+    desc: The caster grows natural defenses from a specific animal of their choice. These take the form of armored skin, spines, etc. Animal is from the same genus each time the spell is cast.
     effect: Armor
     level: 2
     name: Natural Defenses
@@ -108,7 +108,7 @@ spells:
   Natural Weaponry:
     available: true
     casting_time: 1 round
-    desc: The caster grows natural weaponry from a specific animal for the purpose of attack. These take the form of non-venomous fangs, claws, horns etc. Animal is from the same genus each time the spell is cast.
+    desc: The caster grows natural weaponry from a specific animal of their choice for the purpose of attack. These take the form of non-venomous fangs, claws, horns etc. Animal is from the same genus each time the spell is cast.
     duration: 15 minutes
     effect: Weapon
     is_potion: true
@@ -216,7 +216,7 @@ spells:
   Swarm:
     available: true
     casting_time: 1 round
-    desc: "Control a group of angry insects, encouraging them to attack a single enemy. Overcome, the enemy is unable to take any action this round. \n\n Behavior of swarm after the caster''s control dissipates is subject to GM discretion."
+    desc: "Control a group of angry insects, encouraging them to attack a single enemy. Overcome, the enemy is unable to take any action this round. \n\n Behavior of swarm after the caster's control dissipates is subject to GM discretion."
     duration: 1 round
     effect: Stun
     is_stun: true
@@ -612,7 +612,7 @@ spells:
     available: true
     casting_time: 1 round
     defense_mod: 1
-    desc: "The caster grows wings large enough to carry them in flight.The wings allow them to travel at a speed of up to 65 mph. \n\n Practiced casters can obtain excellent maneuverability with their wings, making it easy for them to engage in combat and giving them an edge to their ability to dodge.\n\n Should the spell duration expire while the caster is still aloft, they plummet to the ground."
+    desc: "The caster grows wings of their choice, large enough to carry them in flight and allowing them to travel at a speed of up to 65 mph. Wings are the same each time the spell is cast. \n\n Practiced casters can obtain excellent maneuverability with their wings, making it easy for them to engage in combat and giving them an edge to their ability to dodge.\n\n Should the spell duration expire while the caster is still aloft, they plummet to the ground."
     duration: 1 hour
     effect: Transformation
     level: 6

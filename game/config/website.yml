@@ -163,6 +163,8 @@ website:
     - route: wiki-page
       title: XP
       id: xp
+    - route: fs3-limits
+      title: FS3 Limits
     - divider: true
     - route: wiki-page
       title: Plot System

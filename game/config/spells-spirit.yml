@@ -429,7 +429,7 @@ spells:
   Commune With Local Spirit:
     available: true
     casting_time: 1 round to conjure, 1 round per question.
-    desc: "You may contact a [spirit](http://spiritlakemu.com/wiki/creatures#spirits-and-ghosts) and ask it one question per      round. The spirit s knowledge is limited to matters within its immediate area or expertise"
+    desc: "The caster may may contact a [spirit](http://spiritlakemu.com/wiki/creatures#spirits-and-ghosts) for a time and ask them one question per round. The spirit may have an appearance like they had in life or be indistinct, depending on how much of their sense of self remains. The spirit's knowledge is limited to matters within their immediate area or expertise. Only the caster communes with the spirit, outside observers cannot see or hear anything communicated by the spirit. "
     duration: 15 minutes
     effect: Communication
     level: 5
