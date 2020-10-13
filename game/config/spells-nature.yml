@@ -612,7 +612,7 @@ spells:
     available: true
     casting_time: 1 round
     defense_mod: 1
-    desc: "The caster grows wings of their choice, large enough to carry them in flight and allowing them to travel at a speed of up to 65 mph. Wings are the same each time the spell is cast. \n\n Practiced casters can obtain excellent maneuverability with their wings, making it easy for them to engage in combat and giving them an edge to their ability to dodge.\n\n Should the spell duration expire while the caster is still aloft, they plummet to the ground."
+    desc: "The caster grows wings of a specific animal of their choice, large enough to carry them in flight and allowing them to travel at a speed of up to 65 mph. Wings are the same each time the spell is cast. \n\n Practiced casters can obtain excellent maneuverability with their wings, making it easy for them to engage in combat and giving them an edge to their ability to dodge.\n\n Should the spell duration expire while the caster is still aloft, they plummet to the ground."
     duration: 1 hour
     effect: Transformation
     level: 6
