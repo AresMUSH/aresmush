@@ -595,6 +595,7 @@ module AresMUSH
 		def self.return_element_value(char, element_title, set)
 			# return ("#{char}, #{element_title}, #{set}")
 			element = char.set.select { |a| a.name.downcase == element_title }.first
+			return ("#{element.}")
 			element ? element.rating : 0
 		end
 
