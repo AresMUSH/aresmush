@@ -42,8 +42,14 @@ module AresMUSH
  #----- Begin of def handle -----			 
 			def handle
 				
+				
 				icf_trait = enactor.swrifts_traits.select { |a| a.name == "iconicf" }.first #get the Iconic Framework trait off of the character
-				icf_name = icf_trait.rating #get the Iconic Framework name off the character
+					
+				if (icf_trait)
+					icf_name = icf_trait.rating #get the Iconic Framework name off the character
+				else
+				end
+				
 				race = Swrifts.find_race_config(self.race_name) #get the Race entry we're working with from the yml
 				race_trait = enactor.swrifts_traits.select { |a| a.name == "race" }.first #get the Race trait off of the character
 								
