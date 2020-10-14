@@ -58,12 +58,14 @@ module AresMUSH
 						init = Global.read_config('swrifts', 'init')
 						Swrifts.run_init(model, init)	
 						
-						iconicf = Swrifts.get_iconicf(self.enactor, icf_name) #get the Iconic Framework entry from the yml
-						Swrifts.run_system(model, iconicf)
+						if (icf_trait)
+							iconicf = Swrifts.get_iconicf(self.enactor, icf_name) #get the Iconic Framework entry from the yml
+							Swrifts.run_system(model, iconicf)
+							icf_trait.update(rating: icf_name)
+						else
+						end
 						
 						Swrifts.run_system(model, race)	
-						
-						icf_trait.update(rating: icf_name)
 						race_trait.update(rating: self.race_name)
 						
 						client.emit_success t('swrifts.race_complete', :race => self.race_name.capitalize)
