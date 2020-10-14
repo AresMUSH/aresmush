@@ -43,8 +43,20 @@ module AresMUSH
 			def handle
 				race = Swrifts.find_race_config(self.race_name) #get the race entry we're working with
 				
-				
 				ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
+					rc = Swrifts.race_check(model, race, self.race_name)
+					if rc == true
+						return t('swrifts.race_invalid', :race => race_name.capitalize, :icf => icf_name.capitalize)
+					else
+						trait = Swrifts.find_traits(model, "race")				
+						trait.update(rating: self.race_name)
+						Swrifts.run_system(model, race)
+						client.emit_success t('swrifts.race_complete', :race => self.race_name.capitalize)
+					end
+					
+					
+					
+					
 					# carray = race.include? 'complications'
 					
 					# icf_hash = model.swrifts_traits.select { |a| a.name == "iconicf" }.first
@@ -124,16 +136,8 @@ module AresMUSH
 					# else
 					# end
 					
-					rc = Swrifts.race_check(model, race, self.race_name)
-					client.emit (rc)
-					
-					# trait = Swrifts.find_traits(model, "race")				
-					# trait.update(rating: self.race_name)
-					
-					# Swrifts.run_system(model, race)
 					
 				end
-				client.emit_success t('swrifts.race_complete', :race => self.race_name.capitalize)
 			end
 #----- End of def handle -----	
 			
