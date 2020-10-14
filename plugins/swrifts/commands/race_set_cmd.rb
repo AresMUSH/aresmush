@@ -49,7 +49,7 @@ module AresMUSH
 					rc = Swrifts.race_check(model, race, self.race_name)
 					client.emit (rc)
 					if rc == true
-						return t('swrifts.race_invalid', :race => race_name.capitalize, :icf => icf_name.capitalize)
+						client.emit_failure t('swrifts.race_invalid', :race => self.race_name.capitalize, :icf => icf_name.capitalize)
 					else
 						trait = Swrifts.find_traits(model, "race")				
 						trait.update(rating: self.race_name)
