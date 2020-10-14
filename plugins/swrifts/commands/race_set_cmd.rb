@@ -54,6 +54,7 @@ module AresMUSH
 							icf="#{a.rating}"
 						end
 					end	
+				end
 
 				client.emit (icf)
 
