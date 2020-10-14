@@ -42,8 +42,10 @@ module AresMUSH
  #----- Begin of def handle -----			 
 			def handle
 				race = Swrifts.find_race_config(self.race_name) #get the race entry we're working with
+				client.emit (race.inspect)
 				init = Global.read_config('swrifts', 'init')
 				iconicf = enactor.swrifts_traits.select { |a| a.name == "iconicf" }.first
+				client.emit (iconicf.inspect)
 				icf_name = iconicf.rating
 				
 				ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
@@ -52,6 +54,7 @@ module AresMUSH
 					if rc == true
 						client.emit_failure t('swrifts.race_invalid', :race => self.race_name.capitalize, :icf => icf_name.capitalize)
 					else		
+						enactor.delete_swrifts_chargen #clear out the character
 						Swrifts.run_init(model, init)			
 						iconicf.update(rating: icf_name)
 						Swrifts.run_system(model, iconicf)
