@@ -47,7 +47,6 @@ module AresMUSH
 					icf_hash = model.swrifts_traits.select { |a| a.name == "iconicf" }.first
 					icf_name = icf_hash.rating
 					rc = Swrifts.race_check(model, race, self.race_name)
-					client.emit (rc)
 					if rc == true
 						client.emit_failure t('swrifts.race_invalid', :race => self.race_name.capitalize, :icf => icf_name.capitalize)
 					else
