@@ -311,8 +311,6 @@ module AresMUSH
 		
 		def self.race_check(model, race, race_name)
 			carray = race.include? 'complications'
-			icf_hash = model.swrifts_traits.select { |a| a.name == "iconicf" }.first
-			icf_name = icf_hash.rating
 			if carray == true
 				carray = race.select{ |a| a == "complications" }.first #pull the complications array out of the race entry
 				
