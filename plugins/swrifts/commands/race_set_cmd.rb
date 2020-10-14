@@ -49,8 +49,13 @@ module AresMUSH
 					
 					# char_traits = model.swrifts_traits
 					# icf_hash = char_traits.select { |a| a.name == "iconicf" }.first
-					icf_name = model.swrifts_traits.select { |a| a.name == "iconicf" }.first
-					return (icf_name)
+					# icf_name = icf_hash.rating
+					
+					
+					
+					icf_hash = model.swrifts_traits.select { |a| a.name == "iconicf" }.first
+					icf_name = icf_hash.rating
+					return client.emit (icf_name)
 					
 					if carray == true
 						client.emit ("complications apply")
