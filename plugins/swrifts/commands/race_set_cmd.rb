@@ -46,17 +46,9 @@ module AresMUSH
 				race = Swrifts.find_race_config(self.race_name) #get the race entry we're working with
 				client.emit (race)
 				
-				swriftstraits = @char.swrifts_traits
-				swriftstraits.to_a.sort_by { |a| a.name }
-					.each_with_index
-						.map do |a, i| 
-						if a.name.downcase == "iconicf"
-							icf="#{a.rating}"
-						end
-					end	
-				end
 
-				client.emit (icf)
+
+				# client.emit (icf)
 
 				ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
 					carray = race.include? 'complications'
