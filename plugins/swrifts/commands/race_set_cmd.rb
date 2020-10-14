@@ -48,8 +48,7 @@ module AresMUSH
 				if (icf_trait)
 					icf_name = icf_trait.rating #get the Iconic Framework name off the character
 				else
-					client.emit ("no icf trait")
-					return
+					icf_name = false
 				end
 				
 				race = Swrifts.find_race_config(self.race_name) #get the Race entry we're working with from the yml
