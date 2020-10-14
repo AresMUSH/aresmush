@@ -596,7 +596,7 @@ module AresMUSH
 		element_title = element_title.downcase
 		ss = "model.swrifts_#{set}"
 		swriftselement = ss
-		swriftselement.to_a.sort_by { |a| a.name }
+		swriftselement.sort_by { |a| a.name }
 			.each_with_index
 				.map do |a, i| 
 				if a.name.downcase == "#{element_title}"
