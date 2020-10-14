@@ -124,12 +124,13 @@ module AresMUSH
 					# else
 					# end
 					
-					Swrifts.race_check(model, race, self.race_name)
+					rc = Swrifts.race_check(model, race, self.race_name)
+					client.emit (rc)
 					
-					trait = Swrifts.find_traits(model, "race")				
-					trait.update(rating: self.race_name)
+					# trait = Swrifts.find_traits(model, "race")				
+					# trait.update(rating: self.race_name)
 					
-					Swrifts.run_system(model, race)
+					# Swrifts.run_system(model, race)
 					
 				end
 				client.emit_success t('swrifts.race_complete', :race => self.race_name.capitalize)
