@@ -46,17 +46,9 @@ module AresMUSH
 				race = Swrifts.find_race_config(self.race_name) #get the race entry we're working with
 				client.emit (race)
 				
-				swriftstraits = @char.swrifts_traits
-				swriftstraits.to_a.sort_by { |a| a.name }
-					.each_with_index
-						.map do |a, i| 
-						if a.name.downcase == "iconicf"
-							icf="#{a.rating}"
-						end
-					end	
-				end
 
-				client.emit (icf)
+
+				# client.emit (icf)
 
 				ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
 					carray = race.include? 'complications'
@@ -79,7 +71,7 @@ module AresMUSH
 							abmagic = edgecheck.select{ |a| a.name == "ab magic*" }.first
 							abmiracles = edgecheck.select{ |a| a.name == "ab magic*" }.first
 							if (abmagic) || (abmiracles)
-								client.emit t('swrifts.race_invalid', :race => self.race_name.capitalize), :icf => icf.capitalize)
+								client.emit t('swrifts.race_invalid', :race => self.race_name.capitalize, :icf => icf.capitalize)
 								return
 							else #continue
 								client.emit ("no ab magic or miracles")
