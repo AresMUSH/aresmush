@@ -594,8 +594,8 @@ module AresMUSH
 				
 		def self.return_element_value(model, element_title, set)
 		element_title = element_title.downcase
-		ss = "swrifts_#{set}"
-		swriftselement = model.ss
+		ss = "#{set}"
+		swriftselement = model.swrifts_ss
 		return swriftselement
 		swriftselement.sort_by { |a| a.name }
 			.each_with_index
