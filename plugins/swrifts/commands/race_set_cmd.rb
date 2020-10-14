@@ -43,7 +43,7 @@ module AresMUSH
 			def handle
 				race = Swrifts.find_race_config(self.race_name) #get the race entry we're working with
 				
-				icf = Swrifts.return_element_value(enactor, "iconicf", "traits")
+				icf = Swrifts.return_element_value(enactor, "iconicf", "swrifts_traits")
 				client.emit ("ICF: #{icf}")
 
 				ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
