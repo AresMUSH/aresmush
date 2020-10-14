@@ -339,7 +339,7 @@ module AresMUSH
 					edgecheck = model.swrifts_edges
 					abpsionics = edgecheck.select{ |a| a.name == "ab psionics*" }.first
 					if (abpsionics)
-						return t('swrifts.race_invalid', :race => race_name.capitalize, :icf => icf_name.capitalize)
+						return true
 					else #continue
 					end
 				else #continue
@@ -348,7 +348,7 @@ module AresMUSH
 				if cyber_check == true
 					charcat = model.swrifts_cybernetics
 					if charcat.size > 0
-						return t('swrifts.race_invalid', :race => race_name.capitalize, :icf => icf_name.capitalize)
+						return true
 					else #continue
 					end
 				else #continue
@@ -359,7 +359,7 @@ module AresMUSH
 					pajock = nsbcheck.select{ |a| a.name == "power armor jock*" }.first
 					if (pajock)
 						client.emit (pajock)
-						return t('swrifts.race_invalid', :race => race_name.capitalize, :icf => icf_name.capitalize)
+						return true
 					else #continue
 					end
 				else #continue
@@ -370,7 +370,7 @@ module AresMUSH
 					juicer = icfcheck.select{ |a| a.name == "juicer" }.first
 					crazy = icfcheck.select{ |a| a.name == "crazy" }.first
 					if (juicer) || (crazy)
-						return t('swrifts.race_invalid', :race => race_name.capitalize, :icf => icf_name.capitalize)
+						return true
 					else #continue
 					end
 				else #continue
