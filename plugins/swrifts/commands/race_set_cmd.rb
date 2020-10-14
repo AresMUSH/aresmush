@@ -42,7 +42,7 @@ module AresMUSH
  #----- Begin of def handle -----			 
 			def handle
 				race = Swrifts.find_race_config(self.race_name) #get the race entry we're working with
-				icf_hash = self.target_name.swrifts_traits.select { |a| a.name == "iconicf" }.first
+				icf_hash = enactor.swrifts_traits.select { |a| a.name == "iconicf" }.first
 				icf_name = icf_hash.rating
 				
 				ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
