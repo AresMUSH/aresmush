@@ -42,10 +42,10 @@ module AresMUSH
  #----- Begin of def handle -----			 
 			def handle
 				race = Swrifts.find_race_config(self.race_name) #get the race entry we're working with
-				icf_hash = model.swrifts_traits.select { |a| a.name == "iconicf" }.first
-				icf_name = icf_hash.rating
 				
 				ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
+					icf_hash = model.swrifts_traits.select { |a| a.name == "iconicf" }.first
+					icf_name = icf_hash.rating
 					rc = Swrifts.race_check(model, race, self.race_name)
 					if rc == true
 						return t('swrifts.race_invalid', :race => race_name.capitalize, :icf => icf_name.capitalize)
