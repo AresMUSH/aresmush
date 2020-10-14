@@ -48,8 +48,9 @@ module AresMUSH
 					carray = race.include? 'complications'
 					
 					char_traits = model.swrifts_traits
-					icf = char_traits.select { |a| a.name == "iconicf" }.first
-					return client.emit (icf.inspect)
+					icf_hash = char_traits.select { |a| a.name == "iconicf" }.first
+					icf_name = icf_hash.rating
+					return client.emit (icf_name)
 					
 					if carray == true
 						client.emit ("complications apply")
