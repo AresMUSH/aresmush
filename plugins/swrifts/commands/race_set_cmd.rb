@@ -44,6 +44,15 @@ module AresMUSH
 				race = Swrifts.find_race_config(self.race_name) #get the race entry we're working with
 				
 				ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
+					
+					icfcheck = model.swrifts_traits
+					juicer = icfcheck.select{ |a| a.name == "juicer" }.first
+					crazy = icfcheck.select{ |a| a.name == "crazy" }.first
+					client.emit (juicer)
+					client.emit (crazy)
+					return
+					
+					
 					icf_hash = model.swrifts_traits.select { |a| a.name == "iconicf" }.first
 					icf_name = icf_hash.rating
 					rc = Swrifts.race_check(model, race, self.race_name)
@@ -55,90 +64,6 @@ module AresMUSH
 						Swrifts.run_system(model, race)
 						client.emit_success t('swrifts.race_complete', :race => self.race_name.capitalize)
 					end
-					
-					
-					
-					
-					# carray = race.include? 'complications'
-					
-					# icf_hash = model.swrifts_traits.select { |a| a.name == "iconicf" }.first
-					# icf_name = icf_hash.rating
-					# return client.emit (icf_name)
-					
-					# if carray == true
-						# client.emit ("complications apply")
-						# carray = race.select{ |a| a == "complications" }.first #pull the complications array out of the race entry
-						
-						# cvalue = carray[1] #pull the complications value out of the array
-						
-						# ppe_check = cvalue.include?("Restricted Path PPE^") #see if the race has the value
-						# isp_check = cvalue.include?("Restricted Path ISP^") #see if the race has the value
-						# cyber_check = cvalue.include?("Cyber Resistant^") #see if the race has the value
-						# nsb_check = cvalue.include?("Non-Standard Build^") #see if the race has the value
-						# bp_check = cvalue.include?("Bizarre Physiology^") #see if the race has the value
-
-						# if ppe_check == true
-							# edgecheck = model.swrifts_edges
-							# abmagic = edgecheck.select{ |a| a.name == "ab magic*" }.first
-							# abmiracles = edgecheck.select{ |a| a.name == "ab magic*" }.first
-							# if (abmagic) || (abmiracles)
-								# client.emit t('swrifts.race_invalid', :race => self.race_name.capitalize, :icf => icf_name.capitalize)
-								# return
-							# else #continue
-							# end
-						# else #continue
-						# end
-						
-						# if isp_check == true
-							# edgecheck = model.swrifts_edges
-							# abpsionics = edgecheck.select{ |a| a.name == "ab psionics*" }.first
-							# if (abpsionics)
-								# client.emit t('swrifts.race_invalid', :race => self.race_name.capitalize, :icf => icf_name.capitalize)
-								# return
-							# else #continue
-							# end
-						# else #continue
-						# end
-						
-						# if cyber_check == true
-							# charcat = model.swrifts_cybernetics
-							# if charcat.size > 0
-								# client.emit t('swrifts.race_invalid', :race => self.race_name.capitalize, :icf => icf_name.capitalize)
-								# return
-							# else #continue
-							# end
-						# else #continue
-						# end
-						
-						# if nsb_check == true
-							# nsbcheck = model.swrifts_edges
-							# pajock = nsbcheck.select{ |a| a.name == "power armor jock*" }.first
-							# if (pajock)
-								# client.emit (pajock)
-								# client.emit t('swrifts.race_invalid', :race => self.race_name.capitalize, :icf => icf_name.capitalize)
-								# return
-							# else #continue
-							# end
-						# else #continue
-						# end
-						
-						# if bp_check == true
-							# icfcheck = model.swrifts_traits
-							# juicer = icfcheck.select{ |a| a.name == "juicer" }.first
-							# crazy = icfcheck.select{ |a| a.name == "crazy" }.first
-							# if (juicer) || (crazy)
-								# client.emit (juicer)
-								# client.emit (crazy)
-								# client.emit t('swrifts.race_invalid', :race => self.race_name.capitalize, :icf => icf_name.capitalize)
-								# return
-							# else #continue
-							# end
-						# else #continue
-						# end
-					# else
-					# end
-					
-					
 				end
 			end
 #----- End of def handle -----	
