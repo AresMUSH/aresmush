@@ -49,7 +49,7 @@ module AresMUSH
 					
 					char_traits = model.swrifts_traits
 					icf = char_traits.select { |a| a.name == "iconicf" }.first
-					return client.emit ("ICF: #{icf}")
+					return client.emit (icf.inspect)
 					
 					if carray == true
 						client.emit ("complications apply")
