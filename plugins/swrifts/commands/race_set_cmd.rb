@@ -43,6 +43,7 @@ module AresMUSH
 			def handle
 				race = Swrifts.find_race_config(self.race_name) #get the race entry we're working with
 				
+				
 				ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
 					carray = race.include? 'complications'
 					
@@ -126,7 +127,7 @@ module AresMUSH
 					trait = Swrifts.find_traits(model, "race")				
 					trait.update(rating: self.race_name)
 					
-					
+					Swrifts.run_system(model, race)
 					
 				end
 				client.emit_success t('swrifts.race_complete', :race => self.race_name.capitalize)
