@@ -85,5 +85,5 @@ en:
         invalid_points: "You cannot spend %{mod} points on %{name}, you only have %{num} stat points."
         points_spend: "You spend %{mod} points on %{name}."
         use_command: "Please use the swrifts/%{name} command."
-        race_invalid: "You cannot select the %{race} Race with the Iconic Framework '%{icf}'."
-
+        race_invalid: "You cannot select the '%{race}' Race with the Iconic Framework '%{icf}'."
+        race_complete: "You set your Race to '%{race}'"

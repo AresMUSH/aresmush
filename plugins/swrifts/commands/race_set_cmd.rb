@@ -53,10 +53,8 @@ module AresMUSH
 					if carray == true
 						client.emit ("complications apply")
 						carray = race.select{ |a| a == "complications" }.first #pull the complications array out of the race entry
-						client.emit (carray)
 						
 						cvalue = carray[1] #pull the complications value out of the array
-						client.emit (cvalue)
 						
 						ppe_check = cvalue.include?("Restricted Path PPE^") #see if the race has the value
 						isp_check = cvalue.include?("Restricted Path ISP^") #see if the race has the value
@@ -72,35 +70,29 @@ module AresMUSH
 								client.emit t('swrifts.race_invalid', :race => self.race_name.capitalize, :icf => icf_name.capitalize)
 								return
 							else #continue
-								client.emit ("no ab magic or miracles")
 							end
 						else #continue
-							client.emit ("no magic or miracles complication")
 						end
 						
 						if isp_check == true
 							edgecheck = model.swrifts_edges
 							abpsionics = edgecheck.select{ |a| a.name == "ab psionics*" }.first
 							if (abpsionics)
-								client.emit ("You cannot select this race for your current Iconic Framework isp")
+								client.emit t('swrifts.race_invalid', :race => self.race_name.capitalize, :icf => icf_name.capitalize)
 								return
 							else #continue
-								client.emit ("no ab psionics")
 							end
 						else #continue
-							client.emit ("no isp complication")
 						end
 						
 						if cyber_check == true
 							charcat = model.swrifts_cybernetics
 							if charcat.size > 0
-								client.emit ("You cannot select this race for your current Iconic Framework cyber")
+								client.emit t('swrifts.race_invalid', :race => self.race_name.capitalize, :icf => icf_name.capitalize)
 								return
 							else #continue
-								client.emit ("no cybernetics")
 							end
 						else #continue
-							client.emit ("no cyber complication")
 						end
 						
 						if nsb_check == true
@@ -108,13 +100,11 @@ module AresMUSH
 							pajock = nsbcheck.select{ |a| a.name == "power armor jock*" }.first
 							if (pajock)
 								client.emit (pajock)
-								client.emit ("You cannot select this race for your current Iconic Framework nsb")
+								client.emit t('swrifts.race_invalid', :race => self.race_name.capitalize, :icf => icf_name.capitalize)
 								return
 							else #continue
-								client.emit ("no power armor jock IF")
 							end
 						else #continue
-							client.emit ("no nsb complication")
 						end
 						
 						if bp_check == true
@@ -124,21 +114,22 @@ module AresMUSH
 							if (juicer) || (crazy)
 								client.emit (juicer)
 								client.emit (crazy)
-								client.emit ("You cannot select this race for your current Iconic Framework bp")
+								client.emit t('swrifts.race_invalid', :race => self.race_name.capitalize, :icf => icf_name.capitalize)
 								return
 							else #continue
-								client.emit ("not a crazy or juicer")
 							end
 						else #continue
-							client.emit ("no bp complication")
 						end
 					else
-						client.emit ("no complications in race")
 					end
+					
 					trait = Swrifts.find_traits(model, "race")				
 					trait.update(rating: self.race_name)
+					
+					
+					
 				end
-				client.emit_success t('swrifts.race_complete')
+				client.emit_success t('swrifts.race_complete', :race => self.race_name.capitalize)
 			end
 #----- End of def handle -----	
 			
