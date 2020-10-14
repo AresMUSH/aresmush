@@ -43,11 +43,14 @@ module AresMUSH
 			def handle
 				race = Swrifts.find_race_config(self.race_name) #get the race entry we're working with
 				
-				icf = Swrifts.return_element_value(enactor, "iconicf", "swrifts_traits")
-				return client.emit ("ICF: #{icf}")
 
 				ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
 					carray = race.include? 'complications'
+					
+					char_traits = model.swrifts_traits
+					icf = char_traits.select { |a| a.name == "iconicf" }.first
+					return client.emit ("ICF: #{icf}")
+					
 					if carray == true
 						client.emit ("complications apply")
 						carray = race.select{ |a| a == "complications" }.first #pull the complications array out of the race entry
