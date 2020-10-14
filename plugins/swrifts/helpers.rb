@@ -356,7 +356,6 @@ module AresMUSH
 					nsbcheck = model.swrifts_edges
 					pajock = nsbcheck.select{ |a| a.name == "power armor jock*" }.first
 					if (pajock)
-						client.emit (pajock)
 						return true
 					else #continue
 					end
