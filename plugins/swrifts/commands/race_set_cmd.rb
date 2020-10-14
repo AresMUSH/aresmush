@@ -42,20 +42,18 @@ module AresMUSH
  #----- Begin of def handle -----			 
 			def handle
 				race = Swrifts.find_race_config(self.race_name) #get the race entry we're working with
+				icf_hash = self.target_name.swrifts_traits.select { |a| a.name == "iconicf" }.first
+				icf_name = icf_hash.rating
 				
 				ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
 					
-					icfcheck = model.swrifts_traits
-					juicer = icfcheck.select{ |a| a.name == "juicer" }.first
-					crazy = icfcheck.select{ |a| a.name == "crazy" }.first
-					client.emit (icfcheck)
-					client.emit (juicer)
-					client.emit (crazy)
-					return
+					if icf_name == "juicer" or "crazy"
+						return ("true")
+					else
+						return ("false")
+					end
 					
 					
-					icf_hash = model.swrifts_traits.select { |a| a.name == "iconicf" }.first
-					icf_name = icf_hash.rating
 					rc = Swrifts.race_check(model, race, self.race_name)
 					if rc == true
 						client.emit_failure t('swrifts.race_invalid', :race => self.race_name.capitalize, :icf => icf_name.capitalize)
