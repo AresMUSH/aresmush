@@ -309,8 +309,7 @@ module AresMUSH
 
 ## ----- Start Race Check
 		
-		def self.race_check(model, race_name)
-			race = Swrifts.find_race_config(race_name) #get the race entry we're working with
+		def self.race_check(model, race, race_name)
 			carray = race.include? 'complications'
 			icf_hash = model.swrifts_traits.select { |a| a.name == "iconicf" }.first
 			icf_name = icf_hash.rating
