@@ -329,7 +329,7 @@ module AresMUSH
 					abmagic = edgecheck.select{ |a| a.name == "ab magic*" }.first
 					abmiracles = edgecheck.select{ |a| a.name == "ab magic*" }.first
 					if (abmagic) || (abmiracles)
-						return t('swrifts.race_invalid', :race => race_name.capitalize, :icf => icf_name.capitalize)
+						return true
 					else #continue
 					end
 				else #continue
