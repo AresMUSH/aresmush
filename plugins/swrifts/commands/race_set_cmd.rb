@@ -42,7 +42,6 @@ module AresMUSH
  #----- Begin of def handle -----			 
 			def handle
 				
-				
 				icf_trait = enactor.swrifts_traits.select { |a| a.name == "iconicf" }.first #get the Iconic Framework trait off of the character
 					
 				if (icf_trait)
@@ -50,11 +49,8 @@ module AresMUSH
 				else
 					icf_name = "none"
 				end
-				
-				client.emit (icf_name.inspect)
-				
+								
 				race = Swrifts.find_race_config(self.race_name) #get the Race entry we're working with from the yml
-				race_trait = enactor.swrifts_traits.select { |a| a.name == "race" }.first #get the Race trait off of the character
 								
 				ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
 					
@@ -75,6 +71,7 @@ module AresMUSH
 						end
 						
 						Swrifts.run_system(model, race)	
+						race_trait = enactor.swrifts_traits.select { |a| a.name == "race" }.first #get the Race trait off of the character
 						race_trait.update(rating: self.race_name)
 						
 						client.emit_success t('swrifts.race_complete', :race => self.race_name.capitalize)
