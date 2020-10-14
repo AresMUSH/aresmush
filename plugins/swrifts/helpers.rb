@@ -142,16 +142,16 @@ module AresMUSH
 		end
 		
 		
-		## ----- Update Iconic Framework		
-		def self.run_iconicf(model, iconicf)
+		## ----- Update Char for System		
+		def self.run_system(model, system)
 
 			# trait = Swrifts.find_traits(model, iconicf_title)				
 			# trait.update(rating: iconicf_name)
 
 			## ----- Update Traits (Rank)
-			if (iconicf['traits'])
-				iconicf_traits=iconicf['traits']
-				iconicf_traits.each do |key, rating|
+			if (system['traits'])
+				system_traits=system['traits']
+				system_traits.each do |key, rating|
 					trait_name = "#{key}".downcase
 					mod = "#{rating}"
 					traits = Swrifts.find_traits(model, trait_name)				
@@ -161,10 +161,10 @@ module AresMUSH
 			end
 
 			## ----- Update Stats
-			if (iconicf['stats'])
-				iconicf_stats=iconicf['stats']
+			if (system['stats'])
+				system_stats=system['stats']
 				# grab the list from the config file and break it into 'key' (before the ':') and 'rating' (after the ':')
-				iconicf_stats.each do |key, rating|
+				system_stats.each do |key, rating|
 					# alias the 'key' because the command below doesn't parse the #'s and {'s etc.
 					stat_name = "#{key}".downcase
 					# alias the 'rating' for the same reason and set it to an integer
@@ -180,9 +180,9 @@ module AresMUSH
 			end
 			
 			## ----- Update Chargen Points
-			if (iconicf['chargen_points'])
-				iconicf_chargen_points=iconicf['chargen_points']
-				iconicf_chargen_points.each do |key, rating|
+			if (system['chargen_points'])
+				system_chargen_points=system['chargen_points']
+				system_chargen_points.each do |key, rating|
 					point_name = "#{key}".downcase
 					mod = "#{rating}".to_i
 					current_rating = Swrifts.chargen_points_rating(model, point_name).to_i
@@ -195,9 +195,9 @@ module AresMUSH
 			
 			
 			## ----- Update Counters
-			if (iconicf['counters'])
-				iconicf_counters = iconicf['counters']
-				iconicf_counters.each do |key, rating|
+			if (system['counters'])
+				system_counters = system['counters']
+				system_counters.each do |key, rating|
 					counter_name = "#{key}".downcase
 					mod = "#{rating}".to_i
 					current_rating = Swrifts.counters_rating(model, counter_name).to_i
@@ -209,9 +209,9 @@ module AresMUSH
 			end
 
 			# ----- This sets the default Hinderances on the Character -----	
-			if (iconicf['hinderances']) 
-				iconicf_hinderances=iconicf['hinderances'] 
-				iconicf_hinderances.each do |key|
+			if (system['hinderances']) 
+				system_hinderances=system['hinderances'] 
+				system_hinderances.each do |key|
 					hinderance_name = "#{key}".downcase
 					ss = Swrifts.add_feature(model, SwriftsHinderances, "hinderances", hinderance_name)
 				end
@@ -220,9 +220,9 @@ module AresMUSH
 			
 			dbgstr = ''
 			# ----- This sets the default Edges on the Character -----				
-			if (iconicf['edges'])
-				iconicf_edges=iconicf['edges'] 
-				iconicf_edges.each do |key|
+			if (system['edges'])
+				system_edges=system['edges'] 
+				system_edges.each do |key|
 					edge_name = "#{key}".downcase
 					ss = Swrifts.add_feature(model, SwriftsEdges, "edges", edge_name)
 					# dbgstr << "Edge name: #{edge_name}, #{ss}%r"
@@ -232,10 +232,10 @@ module AresMUSH
 			end
 
 			## ----- Update Skills
-			if (iconicf['skills'])
-				iconicf_skills=iconicf['skills'] 
+			if (system['skills'])
+				system_skills=system['skills'] 
 				# grab the list from the config file and break it into 'key' (before the ':') and 'rating' (after the ':')
-				iconicf_skills.each do |key, rating|
+				system_skills.each do |key, rating|
 					# alias the 'key' because the command below doesn't parse the #'s and {'s etc.
 					skill_name = "#{key}".downcase
 					# alias the 'rating' for the same reason and set it to an integer
@@ -256,9 +256,9 @@ module AresMUSH
 			end
 
 			# ----- This sets the default Magic Powers on the Character -----	
-			if (iconicf['magic_powers'])
-				iconicf_magic_powers=iconicf['magic_powers'] 			
-				iconicf_magic_powers.each do |key|
+			if (system['magic_powers'])
+				system_magic_powers=system['magic_powers'] 			
+				system_magic_powers.each do |key|
 					setthing = "#{key}".downcase
 					SwriftsMpowers.create(name: setthing, character: model)
 				end
@@ -266,9 +266,9 @@ module AresMUSH
 			end 
 
 			# ----- This sets the default Psionic Powers on the Character -----	
-			if (iconicf['psionic_powers'])
-				iconicf_psionic_powers=iconicf['psionic_powers']
-				iconicf_psionic_powers.each do |key|
+			if (system['psionic_powers'])
+				system_psionic_powers=system['psionic_powers']
+				system_psionic_powers.each do |key|
 					setthing = "#{key}".downcase
 					SwriftsPpowers.create(name: setthing, character: model)
 				end
@@ -276,9 +276,9 @@ module AresMUSH
 			end
 
 			# ----- This sets the default Cybernetics on the Character -----	
-			if (iconicf['cybernetics'])
-				iconicf_cybernetics=iconicf['cybernetics']
-				iconicf_cybernetics.each do |key|
+			if (system['cybernetics'])
+				system_cybernetics=system['cybernetics']
+				system_cybernetics.each do |key|
 					setthing = "#{key}".downcase
 					SwriftsCybernetics.create(name: setthing, character: model)
 				end
@@ -286,9 +286,9 @@ module AresMUSH
 			end
 			
 			# ----- This sets the default Abilities on the Character -----	
-			if (iconicf['abilities'])
-				iconicf_abilities=iconicf['abilities'] 
-				iconicf_abilities.each do |key|
+			if (system['abilities'])
+				system_abilities=system['abilities'] 
+				system_abilities.each do |key|
 					setthing = "#{key}".downcase
 					SwriftsAbilities.create(name: setthing, character: model)
 				end
@@ -296,9 +296,9 @@ module AresMUSH
 			end
 			
 			# ----- This sets the default Complications on the Character -----
-			if (iconicf['complications'])
-				iconicf_complications=iconicf['complications'] 
-				iconicf_complications.each do |key|
+			if (system['complications'])
+				system_complications=system['complications'] 
+				system_complications.each do |key|
 					setthing = "#{key}".downcase
 					SwriftsComplications.create(name: setthing, character: model)
 				end
