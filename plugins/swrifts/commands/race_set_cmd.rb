@@ -54,11 +54,11 @@ module AresMUSH
 						client.emit_failure t('swrifts.race_invalid', :race => self.race_name.capitalize, :icf => icf_name.capitalize)
 					else		
 						enactor.delete_swrifts_chargen #clear out the character
-						Swrifts.run_init(model, init)			
-						iconicf.update(rating: icf_name)
+						Swrifts.run_init(model, init)		
 						Swrifts.run_system(model, iconicf)
+						Swrifts.run_system(model, race)	
+						iconicf.update(rating: icf_name)
 						race.update(rating: self.race_name)
-						Swrifts.run_system(model, race)
 						client.emit_success t('swrifts.race_complete', :race => self.race_name.capitalize)
 					end
 				end
