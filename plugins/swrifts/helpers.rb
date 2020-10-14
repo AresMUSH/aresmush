@@ -325,7 +325,7 @@ module AresMUSH
 				if ppe_check == true
 					edgecheck = model.swrifts_edges
 					abmagic = edgecheck.select{ |a| a.name == "ab magic*" }.first
-					abmiracles = edgecheck.select{ |a| a.name == "ab magic*" }.first
+					abmiracles = edgecheck.select{ |a| a.name == "ab miracles*" }.first
 					if (abmagic) || (abmiracles)
 						return true
 					else #continue
