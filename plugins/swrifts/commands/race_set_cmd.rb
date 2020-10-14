@@ -51,10 +51,11 @@ module AresMUSH
 					.each_with_index
 						.map do |a, i| 
 						if a.name.downcase == "iconicf"
-							return ("#{a.rating}")
+							icf="#{a.rating}"
 						end
 					end	
 
+				client.emit (icf)
 
 				ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
 					carray = race.include? 'complications'
