@@ -587,23 +587,23 @@ module AresMUSH
 
 		## ----- Traits
 		
-		def self.find_traits(model, iconicf_title)
-			name_downcase = iconicf_title.downcase
+		def self.find_traits(model, trait_title)
+			name_downcase = trait_title.downcase
 			model.swrifts_traits.select { |a| a.name.downcase == name_downcase }.first
 		end
-		
-		# def self.return_element_value(model, elementname, set)
-		# elementname = elementname.downcase
-		# ss = "swrifts_#{set}"
-		# swriftselement = model.ss
-		# swriftselement.to_a.sort_by { |a| a.name }
-			# .each_with_index
-				# .map do |a, i| 
-				# if a.name.downcase == "#{elementname}"
-					# return ("#{a.rating}")
-				# end
-			# end	
-		# end
+				
+		def self.return_element_value(model, element_title, set)
+		element_title = element_title.downcase
+		ss = "swrifts_#{set}"
+		swriftselement = model.ss
+		swriftselement.to_a.sort_by { |a| a.name }
+			.each_with_index
+				.map do |a, i| 
+				if a.name.downcase == "#{element_title}"
+					return ("#{a.rating}")
+				end
+			end	
+		end
 
 		
 		## ----- Die Step
