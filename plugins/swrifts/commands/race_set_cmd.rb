@@ -42,15 +42,10 @@ module AresMUSH
  #----- Begin of def handle -----			 
 			def handle
 				
-				icf_hash = enactor.swrifts_traits.select { |a| a.name == "iconicf" }.first #get the Iconic Framework entry off of the character
-				icf_name = icf_hash.rating #get the Iconic Framework name off the character
-				
-				race = Swrifts.find_race_config(self.race_name) #get the Race entry we're working with
-				
-				
-				iconicf = Swrifts.get_iconicf(self.enactor, icf_name) 
-				trait = Swrifts.find_traits(self.enactor, "iconicf")		
-				
+				icf_trait = enactor.swrifts_traits.select { |a| a.name == "iconicf" }.first #get the Iconic Framework trait off of the character
+				icf_name = icf_trait.rating #get the Iconic Framework name off the character
+				race_trait = enactor.swrifts_traits.select { |a| a.name == "race" }.first #get the Race trait off of the character
+								
 				ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
 					
 					rc = Swrifts.race_check(model, race, self.race_name, icf_name)
@@ -65,10 +60,11 @@ module AresMUSH
 						iconicf = Swrifts.get_iconicf(self.enactor, icf_name) #get the Iconic Framework entry from the yml
 						Swrifts.run_system(model, iconicf)
 						
+						race = Swrifts.find_race_config(self.race_name) #get the Race entry we're working with from the yml
 						Swrifts.run_system(model, race)	
 						
-						icf_hash.update(rating: icf_name)
-						race.update(rating: self.race_name)
+						icf_trait.update(rating: icf_name)
+						race_trait.update(rating: self.race_name)
 						
 						client.emit_success t('swrifts.race_complete', :race => self.race_name.capitalize)
 					end
