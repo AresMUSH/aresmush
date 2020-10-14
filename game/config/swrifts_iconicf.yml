@@ -25,7 +25,6 @@ swrifts:
                 - Elderly*
             edges:
                 - TestEdge*
-                - AB Psionics*
             magic_powers:
                 - Bolt*
             abilities:
