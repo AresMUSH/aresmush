@@ -41,7 +41,7 @@ module AresMUSH
   
  #----- Begin of def handle -----			 
 			def handle
-				race = Swrifts.find_race_config(self.race_name) #get the race entry we're working with
+				# race = Swrifts.find_race_config(self.race_name) #get the race entry we're working with
 				
 				
 				ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
@@ -124,7 +124,7 @@ module AresMUSH
 					# else
 					# end
 					
-					Swrifts.race_check(model, race)
+					Swrifts.race_check(model, self.race_name)
 					
 					trait = Swrifts.find_traits(model, "race")				
 					trait.update(rating: self.race_name)
