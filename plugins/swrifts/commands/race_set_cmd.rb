@@ -48,6 +48,7 @@ module AresMUSH
 					icfcheck = model.swrifts_traits
 					juicer = icfcheck.select{ |a| a.name == "juicer" }.first
 					crazy = icfcheck.select{ |a| a.name == "crazy" }.first
+					client.emit (icfcheck)
 					client.emit (juicer)
 					client.emit (crazy)
 					return
