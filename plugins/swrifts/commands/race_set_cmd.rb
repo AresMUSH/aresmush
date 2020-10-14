@@ -51,6 +51,8 @@ module AresMUSH
 					icf_name = "none"
 				end
 				
+				client.emit (icf_name.inspect)
+				
 				race = Swrifts.find_race_config(self.race_name) #get the Race entry we're working with from the yml
 				race_trait = enactor.swrifts_traits.select { |a| a.name == "race" }.first #get the Race trait off of the character
 								
