@@ -71,7 +71,7 @@ module AresMUSH
 							abmagic = edgecheck.select{ |a| a.name == "ab magic*" }.first
 							abmiracles = edgecheck.select{ |a| a.name == "ab magic*" }.first
 							if (abmagic) || (abmiracles)
-								client.emit t('swrifts.race_invalid', :race => self.race_name.capitalize), :icf => icf.capitalize)
+								client.emit t('swrifts.race_invalid', :race => self.race_name.capitalize, :icf => icf.capitalize)
 								return
 							else #continue
 								client.emit ("no ab magic or miracles")
