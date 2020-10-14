@@ -25,7 +25,7 @@ swrifts:
                 - Elderly*
             edges:
                 - TestEdge*
-                - AB Magic*
+                - AB Psionics*
             magic_powers:
                 - Bolt*
             abilities:
@@ -37,7 +37,7 @@ swrifts:
                 - Higher Standard*
                 - Power Activators* 
             race_check: 
-                - Retricted Path PPE
+                - Restricted Path PPE
                 - Restricted Path ISP
                 - Oddly Built
                 - Non-Standard Build
@@ -126,7 +126,7 @@ swrifts:
                 - Cybernetics*
                 - Human Mutant*
             race_check:
-                - Retricted Path PPE
+                - Restricted Path PPE
         -   
             name: MARS Battle Magus
             book_reference: A&M 17
@@ -147,7 +147,7 @@ swrifts:
                 - Magi of Dweomer
                 - AB Magic
             race_check:
-                - Retricted Path PPE
+                - Restricted Path PPE
         -   
             name: MARS Combat Mage
             book_reference: A&M 18
@@ -168,7 +168,7 @@ swrifts:
                 - Choice
                 - Choice
             race_check:
-                - Retricted Path PPE
+                - Restricted Path PPE
         -   
             name: MARS High Magus
             book_reference: A&M 19
@@ -189,7 +189,7 @@ swrifts:
                 - Major Item Creation
                 - Magi of Dweomer
             race_check:
-                - Retricted Path PPE
+                - Restricted Path PPE
         -   
             name: Lord Magus
             book_reference: A&M 19
@@ -209,7 +209,7 @@ swrifts:
                 - One With Magic
                 - Power Points
             race_check:
-                - Retricted Path PPE
+                - Restricted Path PPE
         -   
             name: MARS Psi-Druid
             book_reference: A&M 20
@@ -233,7 +233,7 @@ swrifts:
                 - detect arcana
                 - healing
             race_check:
-                - Retricted Path PPE
+                - Restricted Path PPE
         -   
             name: MARS Psi-Slinger
             book_reference: A&M 20 
@@ -264,7 +264,7 @@ swrifts:
                 - Energetic Diminishment
                 - Telekinetic Enhancement
             race_check:
-                - Retricted Path ISP
+                - Restricted Path ISP
         -   
             name: MARS Psi-Warrior
             book_reference: A&M 21
@@ -290,7 +290,7 @@ swrifts:
             # complications:
                 # -
             race_check:
-                - Retricted Path ISP
+                - Restricted Path ISP
         -   
             name: MARS Shaman
             book_reference: A&M 21
@@ -316,7 +316,7 @@ swrifts:
             # complications:
                 # -
             race_check:
-                - Retricted Path PPE
+                - Restricted Path PPE
         -   
             name: MARS Spirit Warrior
             book_reference: A&M
@@ -342,7 +342,7 @@ swrifts:
             # complications:
                 # -
             race_check:
-                - Retricted Path PPE
+                - Restricted Path PPE
         -   
             name: Nega-Psychic
             book_reference: A&M 12
@@ -368,7 +368,7 @@ swrifts:
             # complications:
                 # -
             race_check:
-                - Retricted Path ISP
+                - Restricted Path ISP
         -   
             name: Zapper
             book_reference: A&M
@@ -394,7 +394,7 @@ swrifts:
             # complications:
                 # -
             race_check:
-                - Retricted Path ISP
+                - Restricted Path ISP
         -   
             name: Knight of the White Rose
             book_reference: B&B 7
@@ -430,7 +430,7 @@ swrifts:
                 - Power Activators*
                 - Vow of the White Rose*
             race_check:
-                - Retricted Path ISP
+                - Restricted Path ISP
                 - Restricted Path PPE
         -   
             name: MARS Barbarian
@@ -475,7 +475,7 @@ swrifts:
                 - Detect Arcana*
                 - Conceal Arcana* 
             race_check:
-                - Retricted Path PPE
+                - Restricted Path PPE
         -   
             name: MARS Dinosaur Hunter
             book_reference: B&B
@@ -550,7 +550,7 @@ swrifts:
                 - Power Activators*
                 - Spooky*
             race_check:
-                - Retricted Path PPE
+                - Restricted Path PPE
         -
             name: Shifter
             book_reference: B&B 13
@@ -602,7 +602,7 @@ swrifts:
                 - Training
                 - Underworld & Black Ops
             race_check:
-                - Retricted Path PPE
+                - Restricted Path PPE
         -   
             name: Werecat
             book_reference: B&B 20
@@ -1490,42 +1490,6 @@ swrifts:
                 - Cybernetics*
                 - Higher Standard*
                 - Power Activators*
-            races_allowed: 
-                - Altara 
-                - Android
-                - Aquarian
-                - Avion
-                - Battle Cat
-                - Cactus People
-                - Centaur
-                - Dog Boy
-                - DNorr
-                - Dwarf
-                - Dragon Flame Wind
-                - Dragon Forest Runner
-                - Dragon Great Horned
-                - Dragon Royal Frilled
-                - Dragon Snow Lizard
-                - Elf
-                - Fennodi
-                - Grackle Tooth  
-                - Half-Folk
-                - Human
-                - Kill Cat
-                - Lyn-Srial
-                - Mutant Battle
-                - Mutant Rat
-                - Orc
-                - Psi-Ghost
-                - Psi-Stalker
-                - Psi-X Alien
-                - Quick Flex
-                - Rakashan
-                - Sasquatch
-                - Saurian
-                - Trimadore
-                - Vernulians
-                - Vronwor
         -
             name: Techno-Wizard
             book_reference: TLPG
