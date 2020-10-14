@@ -46,9 +46,8 @@ module AresMUSH
 				race = Swrifts.find_race_config(self.race_name) #get the race entry we're working with
 				client.emit (race)
 				
-
-
-				# client.emit (icf)
+				icf = Swrifts.find_traits(enactor, "iconicf")
+				client.emit (icf)
 
 				ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
 					carray = race.include? 'complications'
