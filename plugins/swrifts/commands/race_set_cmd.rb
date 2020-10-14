@@ -44,6 +44,7 @@ module AresMUSH
 				
 				icf_trait = enactor.swrifts_traits.select { |a| a.name == "iconicf" }.first #get the Iconic Framework trait off of the character
 				icf_name = icf_trait.rating #get the Iconic Framework name off the character
+				race = Swrifts.find_race_config(self.race_name) #get the Race entry we're working with from the yml
 				race_trait = enactor.swrifts_traits.select { |a| a.name == "race" }.first #get the Race trait off of the character
 								
 				ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
@@ -60,7 +61,6 @@ module AresMUSH
 						iconicf = Swrifts.get_iconicf(self.enactor, icf_name) #get the Iconic Framework entry from the yml
 						Swrifts.run_system(model, iconicf)
 						
-						race = Swrifts.find_race_config(self.race_name) #get the Race entry we're working with from the yml
 						Swrifts.run_system(model, race)	
 						
 						icf_trait.update(rating: icf_name)
