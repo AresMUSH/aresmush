@@ -45,84 +45,86 @@ module AresMUSH
 				
 				
 				ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-					carray = race.include? 'complications'
+					# carray = race.include? 'complications'
 					
-					icf_hash = model.swrifts_traits.select { |a| a.name == "iconicf" }.first
-					icf_name = icf_hash.rating
+					# icf_hash = model.swrifts_traits.select { |a| a.name == "iconicf" }.first
+					# icf_name = icf_hash.rating
 					# return client.emit (icf_name)
 					
-					if carray == true
-						client.emit ("complications apply")
-						carray = race.select{ |a| a == "complications" }.first #pull the complications array out of the race entry
+					# if carray == true
+						# client.emit ("complications apply")
+						# carray = race.select{ |a| a == "complications" }.first #pull the complications array out of the race entry
 						
-						cvalue = carray[1] #pull the complications value out of the array
+						# cvalue = carray[1] #pull the complications value out of the array
 						
-						ppe_check = cvalue.include?("Restricted Path PPE^") #see if the race has the value
-						isp_check = cvalue.include?("Restricted Path ISP^") #see if the race has the value
-						cyber_check = cvalue.include?("Cyber Resistant^") #see if the race has the value
-						nsb_check = cvalue.include?("Non-Standard Build^") #see if the race has the value
-						bp_check = cvalue.include?("Bizarre Physiology^") #see if the race has the value
+						# ppe_check = cvalue.include?("Restricted Path PPE^") #see if the race has the value
+						# isp_check = cvalue.include?("Restricted Path ISP^") #see if the race has the value
+						# cyber_check = cvalue.include?("Cyber Resistant^") #see if the race has the value
+						# nsb_check = cvalue.include?("Non-Standard Build^") #see if the race has the value
+						# bp_check = cvalue.include?("Bizarre Physiology^") #see if the race has the value
 
-						if ppe_check == true
-							edgecheck = model.swrifts_edges
-							abmagic = edgecheck.select{ |a| a.name == "ab magic*" }.first
-							abmiracles = edgecheck.select{ |a| a.name == "ab magic*" }.first
-							if (abmagic) || (abmiracles)
-								client.emit t('swrifts.race_invalid', :race => self.race_name.capitalize, :icf => icf_name.capitalize)
-								return
-							else #continue
-							end
-						else #continue
-						end
+						# if ppe_check == true
+							# edgecheck = model.swrifts_edges
+							# abmagic = edgecheck.select{ |a| a.name == "ab magic*" }.first
+							# abmiracles = edgecheck.select{ |a| a.name == "ab magic*" }.first
+							# if (abmagic) || (abmiracles)
+								# client.emit t('swrifts.race_invalid', :race => self.race_name.capitalize, :icf => icf_name.capitalize)
+								# return
+							# else #continue
+							# end
+						# else #continue
+						# end
 						
-						if isp_check == true
-							edgecheck = model.swrifts_edges
-							abpsionics = edgecheck.select{ |a| a.name == "ab psionics*" }.first
-							if (abpsionics)
-								client.emit t('swrifts.race_invalid', :race => self.race_name.capitalize, :icf => icf_name.capitalize)
-								return
-							else #continue
-							end
-						else #continue
-						end
+						# if isp_check == true
+							# edgecheck = model.swrifts_edges
+							# abpsionics = edgecheck.select{ |a| a.name == "ab psionics*" }.first
+							# if (abpsionics)
+								# client.emit t('swrifts.race_invalid', :race => self.race_name.capitalize, :icf => icf_name.capitalize)
+								# return
+							# else #continue
+							# end
+						# else #continue
+						# end
 						
-						if cyber_check == true
-							charcat = model.swrifts_cybernetics
-							if charcat.size > 0
-								client.emit t('swrifts.race_invalid', :race => self.race_name.capitalize, :icf => icf_name.capitalize)
-								return
-							else #continue
-							end
-						else #continue
-						end
+						# if cyber_check == true
+							# charcat = model.swrifts_cybernetics
+							# if charcat.size > 0
+								# client.emit t('swrifts.race_invalid', :race => self.race_name.capitalize, :icf => icf_name.capitalize)
+								# return
+							# else #continue
+							# end
+						# else #continue
+						# end
 						
-						if nsb_check == true
-							nsbcheck = model.swrifts_edges
-							pajock = nsbcheck.select{ |a| a.name == "power armor jock*" }.first
-							if (pajock)
-								client.emit (pajock)
-								client.emit t('swrifts.race_invalid', :race => self.race_name.capitalize, :icf => icf_name.capitalize)
-								return
-							else #continue
-							end
-						else #continue
-						end
+						# if nsb_check == true
+							# nsbcheck = model.swrifts_edges
+							# pajock = nsbcheck.select{ |a| a.name == "power armor jock*" }.first
+							# if (pajock)
+								# client.emit (pajock)
+								# client.emit t('swrifts.race_invalid', :race => self.race_name.capitalize, :icf => icf_name.capitalize)
+								# return
+							# else #continue
+							# end
+						# else #continue
+						# end
 						
-						if bp_check == true
-							icfcheck = model.swrifts_traits
-							juicer = icfcheck.select{ |a| a.name == "juicer" }.first
-							crazy = icfcheck.select{ |a| a.name == "crazy" }.first
-							if (juicer) || (crazy)
-								client.emit (juicer)
-								client.emit (crazy)
-								client.emit t('swrifts.race_invalid', :race => self.race_name.capitalize, :icf => icf_name.capitalize)
-								return
-							else #continue
-							end
-						else #continue
-						end
-					else
-					end
+						# if bp_check == true
+							# icfcheck = model.swrifts_traits
+							# juicer = icfcheck.select{ |a| a.name == "juicer" }.first
+							# crazy = icfcheck.select{ |a| a.name == "crazy" }.first
+							# if (juicer) || (crazy)
+								# client.emit (juicer)
+								# client.emit (crazy)
+								# client.emit t('swrifts.race_invalid', :race => self.race_name.capitalize, :icf => icf_name.capitalize)
+								# return
+							# else #continue
+							# end
+						# else #continue
+						# end
+					# else
+					# end
+					
+					Swrifts.race_check(model, race)
 					
 					trait = Swrifts.find_traits(model, "race")				
 					trait.update(rating: self.race_name)
