@@ -47,10 +47,10 @@ module AresMUSH
 				ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
 					carray = race.include? 'complications'
 					
-					char_traits = model.swrifts_traits
-					icf_hash = char_traits.select { |a| a.name == "iconicf" }.first
+					# char_traits = model.swrifts_traits
+					# icf_hash = char_traits.select { |a| a.name == "iconicf" }.first
+					icf_hash = model.swrifts_traits.select { |a| a.name == "iconicf" }.first
 					icf_name = icf_hash.rating
-					return client.emit (icf_name)
 					
 					if carray == true
 						client.emit ("complications apply")
