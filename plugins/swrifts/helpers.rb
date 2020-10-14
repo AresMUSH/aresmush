@@ -596,6 +596,7 @@ module AresMUSH
 		element_title = element_title.downcase
 		ss = "model.swrifts_#{set}"
 		swriftselement = ss.to_a
+		return swriftselement
 		swriftselement.sort_by { |a| a.name }
 			.each_with_index
 				.map do |a, i| 
