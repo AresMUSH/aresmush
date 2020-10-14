@@ -365,9 +365,8 @@ module AresMUSH
 				if bp_check == true
 					icf_name = icf_name.downcase
 					if icf_name.include? "juicer" || "crazy"
-						return icf_name
+						return true
 					else #continue
-						return icf_name
 					end
 				else #continue
 				end

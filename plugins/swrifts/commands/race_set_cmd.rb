@@ -45,8 +45,6 @@ module AresMUSH
 				icf_hash = enactor.swrifts_traits.select { |a| a.name == "iconicf" }.first
 				icf_name = icf_hash.rating
 				
-				client.emit (icf_name.inspect)
-				
 				ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
 					
 					rc = Swrifts.race_check(model, race, self.race_name, icf_name)
