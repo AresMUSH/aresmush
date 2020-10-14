@@ -35,13 +35,6 @@ swrifts:
                 - Cybernetics*
                 - Higher Standard*
                 - Power Activators* 
-            race_check: 
-                - Restricted Path PPE
-                - Restricted Path ISP
-                - Oddly Built
-                - Non-Standard Build
-                - Cyber Resistant
-                - Bizarre Physiology
         -
             name: Dragon Juicer
             book_reference: A&M 7
