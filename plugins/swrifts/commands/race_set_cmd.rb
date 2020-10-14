@@ -43,19 +43,12 @@ module AresMUSH
 			def handle
 				race = Swrifts.find_race_config(self.race_name) #get the race entry we're working with
 				
-
 				ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
 					carray = race.include? 'complications'
 					
-					# char_traits = model.swrifts_traits
-					# icf_hash = char_traits.select { |a| a.name == "iconicf" }.first
-					# icf_name = icf_hash.rating
-					
-					
-					
 					icf_hash = model.swrifts_traits.select { |a| a.name == "iconicf" }.first
 					icf_name = icf_hash.rating
-					return client.emit (icf_name)
+					# return client.emit (icf_name)
 					
 					if carray == true
 						client.emit ("complications apply")
@@ -76,7 +69,7 @@ module AresMUSH
 							abmagic = edgecheck.select{ |a| a.name == "ab magic*" }.first
 							abmiracles = edgecheck.select{ |a| a.name == "ab magic*" }.first
 							if (abmagic) || (abmiracles)
-								client.emit t('swrifts.race_invalid', :race => self.race_name.capitalize, :icf => icf.capitalize)
+								client.emit t('swrifts.race_invalid', :race => self.race_name.capitalize, :icf => icf_name.capitalize)
 								return
 							else #continue
 								client.emit ("no ab magic or miracles")
