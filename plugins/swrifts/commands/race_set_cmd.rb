@@ -48,9 +48,11 @@ module AresMUSH
 				ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
 					
 					if icf_name == "juicer" or "crazy"
-						return ("true")
+						client.emit ("true")
+						return
 					else
-						return ("false")
+						client.emit ("false")
+						return
 					end
 					
 					
