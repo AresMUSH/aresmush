@@ -309,7 +309,7 @@ module AresMUSH
 
 ## ----- Start Race Check
 		
-		def self.race_check(model, race, race_name)
+		def self.race_check(model, race, race_name, icf_name)
 			carray = race.include? 'complications'
 			if carray == true
 				carray = race.select{ |a| a == "complications" }.first #pull the complications array out of the race entry
@@ -363,10 +363,7 @@ module AresMUSH
 				end
 				
 				if bp_check == true
-					icfcheck = model.swrifts_traits
-					juicer = icfcheck.select{ |a| a.name == "juicer" }.first
-					crazy = icfcheck.select{ |a| a.name == "crazy" }.first
-					if (juicer) || (crazy)
+					if icf_name.include? "juicer" || "crazy"
 						return true
 					else #continue
 					end

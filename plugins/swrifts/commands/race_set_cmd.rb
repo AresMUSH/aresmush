@@ -45,20 +45,9 @@ module AresMUSH
 				icf_hash = enactor.swrifts_traits.select { |a| a.name == "iconicf" }.first
 				icf_name = icf_hash.rating
 				
-				client.emit (icf_name)
-				
 				ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
 					
-					if icf_name.include? "juicer" || "crazy"
-						client.emit ("true")
-						return
-					else
-						client.emit ("false")
-						return
-					end
-					
-					
-					rc = Swrifts.race_check(model, race, self.race_name)
+					rc = Swrifts.race_check(model, race, self.race_name, icf_name)
 					if rc == true
 						client.emit_failure t('swrifts.race_invalid', :race => self.race_name.capitalize, :icf => icf_name.capitalize)
 					else
