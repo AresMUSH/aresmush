@@ -12,9 +12,11 @@ module AresMUSH
         self.spell_learned = Magic.find_spell_learned(self.target, self.spell)
       end
 
+      def check_can_set
+        return t('dispatcher.not_allowed') if !enactor.has_permission?("view_bgs")
+      end
+
       def check_errors
-        return nil if FS3Skills.can_manage_abilities?(enactor)
-        return t('dispatcher.not_allowed')
         return t('magic.not_spell') if !Magic.is_spell?(self.spell)
         return t('magic.dont_know_spell') if !Magic.find_spell_learned(self.target, self.spell)
         return nil
