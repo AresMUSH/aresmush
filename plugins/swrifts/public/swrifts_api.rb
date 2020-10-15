@@ -166,24 +166,11 @@ module AresMUSH
 		# Get the Characters Iconic Framework
 		swriftstraits = char.swrifts_traits		
 		charicf = acl_return_traits(swriftstraits,'iconicf') #Get the characters Iconic Framework from the traits
-		ifstring=''
 		if ( charicf.length > 0 )
-			# get the entry in global file that matches the ICF name selected. We're going to make this pretty.
-			charcgicf = swrifts_iconicf.select { |ss| ss['name'].downcase == charicf.downcase }.first
-			ifname = charcgicf['name']
-			desc = charcgicf['description']
-			ifstring = "#{ifname}"
-			book = charcgicf['book_reference']
-			if book
-				ifstring << " ~ ("
-				ifstring << book
-				ifstring << ")"
-			end	
-			charicf="#{ifstring}"
+			charicf = getcharicf(charicf,swrifts_iconicf)
 		else
 			charicf="None"
 		end
-	
 		
 		swrifts_race = Global.read_config('swrifts', 'races')			
 		cgrace = returnraceforcg(swrifts_race)
@@ -250,6 +237,23 @@ module AresMUSH
 		  cghind: cghind,
 		} 
 	end	
+	
+	def getcharicf(charicf,swrifts_iconicf) 
+		ifstring=''
+		# get the entry in global file that matches the ICF name selected. We're going to make this pretty.
+		charcgicf = swrifts_iconicf.select { |ss| ss['name'].downcase == charicf.downcase }.first
+		ifname = charcgicf['name']
+		desc = charcgicf['description']
+		ifstring = "#{ifname}"
+		book = charcgicf['book_reference']
+		if book
+			ifstring << " ~ ("
+			ifstring << book
+			ifstring << ")"
+		end	
+		charicf="#{ifstring}"
+		return (charicf)
+	end
 	
 	def self.returncgslotsforcg(model)
 		# cginitarray = Hash.new #We're going to pass this back to the char custom fields.
