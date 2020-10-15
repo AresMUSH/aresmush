@@ -2,7 +2,7 @@
 swrifts:
     races:
         -
-            name: None
+            name: none
         -
             name: Test
             book_reference: 
