@@ -162,6 +162,11 @@ module AresMUSH
 		swrifts_iconicf = Global.read_config('swrifts', 'iconicf')
 		iconicf = returniconicforcg(swrifts_iconicf)
 		initcgpoints = returninitcgforcg(swrifts_iconicf)
+		
+		cgedges = char.swrifts_edges
+		cgsysedges = Global.read_config('swrifts', 'edges')
+		cghinder = char.swrifts_hinderances
+		cgsyshind = Global.read_config('swrifts', 'hinderances')
 	
 		# Get the Characters Iconic Framework
 		swriftstraits = char.swrifts_traits		
@@ -190,19 +195,16 @@ module AresMUSH
 		cgtraits = returncgpforcg(cgpoints)
 		
 		#Get the Edges that were set on the character.
-		cgedges = char.swrifts_edges
-		cgsysedges = Global.read_config('swrifts', 'edges')	
 		cgedg = returnedgesforcg(cgedges,cgsysedges)
 		
-		#Get the hinderances that were set on the character.
-		cghinder = char.swrifts_hinderances
-		cgsyshind = Global.read_config('swrifts', 'hinderances')	
+		#Get the hinderances that were set on the character.	
 		cghind = returnedgesforcg(cghinder,cgsyshind)
 
 		#Get the System Edges
-		cgedges = char.swrifts_edges #this likely isn't needed, but we might want to exclude these in the array returned? Or mark them differently
-		cgsysedges = Global.read_config('swrifts', 'edges')	
-		sysedges = returnsysedgesforcg(cgsysedges)		
+		sysedges = returnsysedgesforcg(cgsysedges)			
+		
+		#Get the System Hinderances
+		sysedges = returnsysedgesforcg(cgsyshind)		
 
 		return {
 		  iconicf: iconicf,
@@ -217,6 +219,7 @@ module AresMUSH
 		  cgedges: cgedg, #Edges on Character
 		  cghind: cghind, #Hinderances on Character
 		  sysedges: sysedges, #Edges from system
+		  syshind: syshind, #Hinderances from system
 		} 
 	end	
 	
