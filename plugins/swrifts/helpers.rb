@@ -322,7 +322,7 @@ module AresMUSH
 				nsb_check = cvalue.include?("Non-Standard Build^") #see if the race has the value
 				bp_check = cvalue.include?("Bizarre Physiology^") #see if the race has the value
 
-				iconicf = Swrifts.get_iconicf(self.enactor, self.iconicf_name) #get the Iconic Framework entry from the yml
+				iconicf = Swrifts.find_iconicf_config(icf_name) #get the Iconic Framework entry we're working with from the yml
 				edgecheck = iconicf['edges']
 
 				if ppe_check == true
