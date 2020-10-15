@@ -329,7 +329,7 @@ module AresMUSH
 				nsb_check = cvalue.include?("Non-Standard Build^") #see if the race has the value
 				bp_check = cvalue.include?("Bizarre Physiology^") #see if the race has the value
 
-				edgecheck = iconicf['edges']
+				edgecheck = model.swrifts_edges
 
 				if ppe_check == true
 					abmagic = edgecheck.select{ |a| a.name == "ab magic*" }.first

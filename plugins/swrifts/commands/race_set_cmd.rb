@@ -51,13 +51,14 @@ module AresMUSH
 				if (icf_trait)	
 					
 					icf_name = icf_trait.rating #get the Iconic Framework name off the character
+					icf_name = icf_name.downcase
 					
 					iconicf = Swrifts.get_iconicf(self.enactor, icf_name) #get the Iconic Framework entry from the yml
 					
 					ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
 					
 						rc = Swrifts.race_check(model, race, self.race_name, icf_name)
-						client.emit (rc.inspect)
+
 						if rc == true
 							client.emit_failure t('swrifts.race_invalid', :race => self.race_name.capitalize, :icf => icf_name.capitalize)
 						else		
