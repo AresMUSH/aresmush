@@ -42,42 +42,50 @@ module AresMUSH
  #----- Begin of def handle -----			 
 			def handle
 				
-				icf_trait = enactor.swrifts_traits.select { |a| a.name == "iconicf" }.first #get the Iconic Framework trait off of the character
+				icf_trait = enactor.swrifts_traits.select { |a| a.name == "iconicf" }.first #get the Iconic Framework trait off of the character	
+								
+				init = Global.read_config('swrifts', 'init')
+				
+				race = Swrifts.find_race_config(self.race_name) #get the Race entry we're working with from the yml
 					
 				if (icf_trait)
 					icf_name = icf_trait.rating #get the Iconic Framework name off the character
-				else
-					icf_name = "none"
-				end
-								
-				race = Swrifts.find_race_config(self.race_name) #get the Race entry we're working with from the yml
-								
-				ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
+					iconicf = Swrifts.get_iconicf(self.enactor, icf_name) #get the Iconic Framework entry from the yml
 					
-					rc = Swrifts.race_check(model, race, self.race_name, icf_name)
-					if rc == true
-						client.emit_failure t('swrifts.race_invalid', :race => self.race_name.capitalize, :icf => icf_name.capitalize)
-					else		
-						enactor.delete_swrifts_chargen #clear out the character
-						
-						init = Global.read_config('swrifts', 'init')
-						Swrifts.run_init(model, init)	
-						
-						if (icf_trait)
-							iconicf = Swrifts.get_iconicf(self.enactor, icf_name) #get the Iconic Framework entry from the yml
+					ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
+					
+						rc = Swrifts.race_check(model, race, self.race_name, icf_name)
+						if rc == true
+							client.emit_failure t('swrifts.race_invalid', :race => self.race_name.capitalize, :icf => icf_name.capitalize)
+						else		
+							enactor.delete_swrifts_chargen #clear out the character
+							
+							Swrifts.run_init(model, init)	
+							
 							Swrifts.run_system(model, iconicf)
 							icf_trait.update(rating: icf_name)
-						else
+							
+							Swrifts.run_system(model, race)	
+							race_trait = enactor.swrifts_traits.select { |a| a.name == "race" }.first #get the Race trait off of the character
+							race_trait.update(rating: self.race_name)
+							
+							client.emit_success t('swrifts.race_complete', :race => self.race_name.capitalize)
 						end
-						
+					end
+				else
+					enactor.delete_swrifts_chargen #clear out the character
+					
+					ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
+						Swrifts.run_init(model, init)
+					
 						Swrifts.run_system(model, race)	
+						
 						race_trait = enactor.swrifts_traits.select { |a| a.name == "race" }.first #get the Race trait off of the character
 						race_trait.update(rating: self.race_name)
-						
+
 						client.emit_success t('swrifts.race_complete', :race => self.race_name.capitalize)
 					end
 				end
-				
 			end
 #----- End of def handle -----	
 			

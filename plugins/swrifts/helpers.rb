@@ -311,7 +311,9 @@ module AresMUSH
 		
 		def self.race_check(model, race, race_name, icf_name)
 			carray = race.include? 'complications'
-			if carray == true
+			iconicf = Swrifts.find_iconicf_config(icf_name) #get the Iconic Framework entry we're working with from the yml
+			
+			if carray == true 
 				carray = race.select{ |a| a == "complications" }.first #pull the complications array out of the race entry
 				
 				cvalue = carray[1] #pull the complications value out of the array
@@ -322,7 +324,6 @@ module AresMUSH
 				nsb_check = cvalue.include?("Non-Standard Build^") #see if the race has the value
 				bp_check = cvalue.include?("Bizarre Physiology^") #see if the race has the value
 
-				iconicf = Swrifts.find_iconicf_config(icf_name) #get the Iconic Framework entry we're working with from the yml
 				edgecheck = iconicf['edges']
 
 				if ppe_check == true
