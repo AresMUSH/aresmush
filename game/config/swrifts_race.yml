@@ -2,6 +2,8 @@
 swrifts:
     races:
         -
+            name: None
+        -
             name: Test
             book_reference: 
             desc: Test
