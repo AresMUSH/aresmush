@@ -42,17 +42,21 @@ module AresMUSH
  #----- Begin of def handle -----			 
 			def handle
 				
-				icf_trait = enactor.swrifts_traits.select { |a| a.name == "iconicf" }.first #get the Iconic Framework trait off of the character	
-				client.emit (icf_trait.inspect)
+				icf_trait = enactor.swrifts_traits.select { |a| a.name == "iconicf" }.first #get the Iconic Framework trait off of the character
 								
 				init = Global.read_config('swrifts', 'init')
 				
 				race = Swrifts.find_race_config(self.race_name) #get the Race entry we're working with from the yml
 				client.emit (race.inspect)
 					
-				if (icf_trait)
+				if (icf_trait)	
+					client.emit (icf_trait.inspect)
+					
 					icf_name = icf_trait.rating #get the Iconic Framework name off the character
+					client.emit (icf_name.inspect)
+					
 					iconicf = Swrifts.get_iconicf(self.enactor, icf_name) #get the Iconic Framework entry from the yml
+					clinet.emit (iconicf)
 					
 					ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
 					
