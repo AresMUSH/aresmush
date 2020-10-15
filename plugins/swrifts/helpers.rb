@@ -311,7 +311,12 @@ module AresMUSH
 		
 		def self.race_check(model, race, race_name, icf_name)
 			carray = race.include? 'complications'
-			iconicf = Swrifts.find_iconicf_config(icf_name) #get the Iconic Framework entry we're working with from the yml
+			
+			if icf_name == "none"
+				return false
+			else
+				iconicf = Swrifts.find_iconicf_config(icf_name) #get the Iconic Framework entry we're working with from the yml
+			end
 			
 			if carray == true 
 				carray = race.select{ |a| a == "complications" }.first #pull the complications array out of the race entry
