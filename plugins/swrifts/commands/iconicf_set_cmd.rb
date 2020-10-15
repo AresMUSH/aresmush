@@ -76,7 +76,7 @@ module AresMUSH
 						iconicf_trait = Swrifts.find_traits(model, self.iconicf_title)				
 						iconicf_trait.update(rating: self.iconicf_name)
 						
-						client.emit_success t('swrifts.iconicf_complete')
+						client.emit_success t('swrifts.iconicf_complete', :iconicf => self.iconicf_name.capitalize)
 					end
 				end
 			end

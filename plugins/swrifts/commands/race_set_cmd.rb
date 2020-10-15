@@ -67,7 +67,7 @@ module AresMUSH
 							icf_trait.update(rating: icf_name)
 							
 							Swrifts.run_system(model, race)	
-							race_trait = enactor.swrifts_traits.select { |a| a.name == "race" }.first #get the Race trait off of the character
+							race_trait = Swrifts.find_traits(model, "race") #get the Race trait off of the character
 							race_trait.update(rating: self.race_name)
 							
 							client.emit_success t('swrifts.race_complete', :race => self.race_name.capitalize)
