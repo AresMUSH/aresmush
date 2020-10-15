@@ -60,6 +60,7 @@ module AresMUSH
 
 							Swrifts.run_system(model, race)
 							race_trait.update(rating: race_name)
+							client.emit_success t('swrifts.iconicf_complete')
 						end
 					end
 				else
@@ -71,9 +72,9 @@ module AresMUSH
 						iconicf_trait = Swrifts.find_traits(model, self.iconicf_title)				
 						iconicf_trait.update(rating: self.iconicf_name)
 						Swrifts.run_system(model, iconicf)
+						client.emit_success t('swrifts.iconicf_complete')
 					end
 				end
-				client.emit_success t('swrifts.iconicf_complete')
 			end
 #----- End of def handle -----	
 
