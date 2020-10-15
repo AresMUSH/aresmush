@@ -180,31 +180,7 @@ module AresMUSH
 		swriftstraits = char.swrifts_traits		
 		charrace = acl_return_traits(swriftstraits,'race') #Get the characters Race from the traits		
 		if ( charrace.length > 0 && charrace.downcase != "none" )
-			# get the entry in global file that matches the ICF name selected. We're going to make this pretty.
-			charcgrace = swrifts_race.select { |ss| ss['name'].downcase == charrace.downcase }.first
-			newcgr = charcgrace.inspect
-			if ( charcgrace ) 
-				racename = charcgrace['name']
-				desc = charcgrace['desc']
-				book = charcgrace['book_reference']
-				racestring = "#{racename}"
-				
-				if desc || book 
-					racestring << " ~ "
-				end
-				
-				if desc
-					racestring << " "
-					racestring << desc
-				end
-				
-				if book
-					racestring << " ("
-					racestring << book
-					racestring << ")"
-				end
-			end
-			charrace = "#{charrace}"
+			charrace = getcharrace(charrace,swrifts_race)
 		else
 			charrace = "None"		
 		end
@@ -253,6 +229,35 @@ module AresMUSH
 		end	
 		charicf="#{ifstring}"
 		return (charicf)
+	end	
+	
+	def self.getcharrace(charrace,swrifts_race) 
+		# get the entry in global file that matches the ICF name selected. We're going to make this pretty.
+		charcgrace = swrifts_race.select { |ss| ss['name'].downcase == charrace.downcase }.first
+		newcgr = charcgrace.inspect
+		if ( charcgrace ) 
+			racename = charcgrace['name']
+			desc = charcgrace['desc']
+			book = charcgrace['book_reference']
+			racestring = "#{racename}"
+			
+			if desc || book 
+				racestring << " ~ "
+			end
+			
+			if desc
+				racestring << " "
+				racestring << desc
+			end
+			
+			if book
+				racestring << " ("
+				racestring << book
+				racestring << ")"
+			end
+		end
+		charrace = "#{charrace}"
+		return (charrace)
 	end
 	
 	def self.returncgslotsforcg(model)
