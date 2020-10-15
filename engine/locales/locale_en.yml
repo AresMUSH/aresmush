@@ -8,6 +8,9 @@ en:
         ok: "OK"
         deleted_character: "(Deleted)"
         system: "System"
+        afk_status: "AFK"
+        offline_status: "Off"
+        web_status: "Web"
 
     date:
         # Don't forget the nil at the beginning; there's no such thing as a 0th month
@@ -81,6 +84,7 @@ en:
         minutes: "%{time}m"
         hours: "%{time}h"
         days: "%{time}d"
+        weeks: "%{time}w"
         am: "am"
         pm: "pm"
         formats:

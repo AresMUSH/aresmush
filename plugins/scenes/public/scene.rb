@@ -15,6 +15,7 @@ module AresMUSH
     attribute :temp_room, :type => DataType::Boolean
     attribute :completed
     attribute :scene_type
+    attribute :scene_pacing
     attribute :location
     attribute :summary
     attribute :limit
@@ -29,7 +30,7 @@ module AresMUSH
     collection :scene_poses, "AresMUSH::ScenePose"
     collection :scene_likes, "AresMUSH::SceneLike"
     reference :scene_log, "AresMUSH::SceneLog"
-    reference :plot, "AresMUSH::Plot"
+
 
     set :creatures, "AresMUSH::Creature"
     set :portals, "AresMUSH::Portal"
@@ -38,6 +39,10 @@ module AresMUSH
     set :watchers, "AresMUSH::Character"
     set :participants, "AresMUSH::Character"
     set :likers, "AresMUSH::Character"
+    set :plots, "AresMUSH::Plot"
+
+    # DEPRECATED - DO NOT USE (replaced by plots)
+    reference :plot, "AresMUSH::Plot"
 
     before_delete :delete_poses_and_log
 
@@ -158,24 +163,24 @@ module AresMUSH
     def url
       "#{Game.web_portal_url}/scene/#{self.id}"
     end
-    
+
     def has_notes?
       !self.limit.blank?
     end
-    
+
     def days_since_shared
       return nil if !self.date_shared
       (Time.now - self.date_shared) / 86400
     end
-    
+
     def days_since_last_activity
       (Time.now - self.last_activity)/86400
-    end    
-    
+    end
+
     def last_pose_time_str(viewer)
       last_pose = self.poses_in_order.to_a[-1]
       return nil if !last_pose
-      
+
       elapsed = Time.now - last_pose.updated_at
       if (elapsed < 86400 * 30)
         TimeFormatter.format(elapsed)
@@ -183,6 +188,6 @@ module AresMUSH
         OOCTime.local_short_timestr(viewer, last_pose.updated_at)
       end
     end
-    
+
   end
 end
