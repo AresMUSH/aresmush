@@ -330,7 +330,7 @@ module AresMUSH
 				bp_check = cvalue.include?("Bizarre Physiology^") #see if the race has the value
 
 				edgecheck = model.swrifts_edges
-				edgecheck = edgecheck.downcase
+				edgecheck = edgecheck.downcase 
 				return edgecheck
 
 				if ppe_check == true
