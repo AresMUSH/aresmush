@@ -315,8 +315,8 @@ module AresMUSH
 			if icf_name == "none"
 				return false
 			else
-				return icf_name
 				iconicf = Swrifts.find_iconicf_config(icf_name) #get the Iconic Framework entry we're working with from the yml
+				return iconicf
 			end
 			
 			if carray == true 
