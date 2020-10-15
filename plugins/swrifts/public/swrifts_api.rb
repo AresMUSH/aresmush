@@ -172,11 +172,11 @@ module AresMUSH
 			charicf="None"
 		end
 		
+		
+		# Get the Characters Race		
 		swrifts_race = Global.read_config('swrifts', 'races')			
 		cgrace = returnraceforcg(swrifts_race)
 		initracepoints = returninitraceforcg(swrifts_race)
-		
-		# Get the Characters Race
 		swriftstraits = char.swrifts_traits		
 		charrace = acl_return_traits(swriftstraits,'race') #Get the characters Race from the traits		
 		if ( charrace.length > 0 && charrace.downcase != "none" )
@@ -197,7 +197,12 @@ module AresMUSH
 		#Get the hinderances that were set on the character.
 		cghinder = char.swrifts_hinderances
 		cgsyshind = Global.read_config('swrifts', 'hinderances')	
-		cghind = returnedgesforcg(cghinder,cgsyshind)		
+		cghind = returnedgesforcg(cghinder,cgsyshind)
+
+		#Get the System Edges
+		cgedges = char.swrifts_edges #this likely isn't needed, but we might want to exclude these in the array returned? Or mark them differently
+		cgsysedges = Global.read_config('swrifts', 'edges')	
+		sysedges = returnsysedgesforcg(cgsysedges)		
 
 		return {
 		  iconicf: iconicf,
@@ -209,8 +214,9 @@ module AresMUSH
 		  inicgpoints: initcgpoints,
 		  cgslots: cgslots,
 		  initracepoints: initracepoints,
-		  cgedges: cgedg,
-		  cghind: cghind,
+		  cgedges: cgedg, #Edges on Character
+		  cghind: cghind, #Hinderances on Character
+		  sysedges: sysedges, #Edges from system
 		} 
 	end	
 	
@@ -288,6 +294,22 @@ module AresMUSH
 				ifstring << book
 				ifstring << ")"
 			end			
+			iconicfarray.push("#{ifstring}")
+		end
+		iconicfarray.unshift("None")
+		return (iconicfarray)
+	end	
+	
+	
+	#This is used for Edges and Traits. 
+	
+	def self.returnsysedgesforcg(model)
+		iconicfarray = Array.new
+        list = model.sort_by { |a| a['name']}
+		list.each do |c|
+			ifname = c['name']
+			desc = c['description']
+			ifstring = "#{ifname}"
 			iconicfarray.push("#{ifstring}")
 		end
 		iconicfarray.unshift("None")
@@ -419,7 +441,6 @@ module AresMUSH
 		chopped_race = Website.format_input_for_mush(chopped_race)
 		icf_downcase = chopped_iconicf.downcase.strip  # Stripped and downcased iconicframework name.
 		race_downcase = chopped_race.downcase.strip  # Stripped and downcased race name.
-
 
 		## ----- Update Iconic Framework
 		
