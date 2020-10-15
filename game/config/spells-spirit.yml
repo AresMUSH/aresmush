@@ -525,8 +525,6 @@ spells:
     range: Self
     roll: true
     school: Spirit
-    target_num: 20
-    target_optional: true
   Simple Command:
     available: true
     casting_time: 1 round
@@ -628,6 +626,7 @@ spells:
     school: Spirit
     target_num: 3
     target_optional: true
+    weapon: Stun (Spirit)
   Rewrite Memory:
     available: true
     casting_time: "1 round to cast, additional rounds for rewriting at GM's discretion."
