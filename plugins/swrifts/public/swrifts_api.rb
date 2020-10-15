@@ -204,7 +204,7 @@ module AresMUSH
 		sysedges = returnsysedgesforcg(cgsysedges)			
 		
 		#Get the System Hinderances
-		# syshind = returnsysedgesforcg(cgsyshind)		
+		syshind = returnsysedgesforcg(cgsyshind)		
 
 		return {
 		  iconicf: iconicf,
@@ -219,7 +219,7 @@ module AresMUSH
 		  cgedges: cgedg, #Edges on Character
 		  cghind: cghind, #Hinderances on Character
 		  sysedges: sysedges, #Edges from system
-		  # syshind: syshind, #Hinderances from system
+		  syshind: syshind, #Hinderances from system
 		} 
 	end	
 	
