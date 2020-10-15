@@ -36,15 +36,7 @@ module AresMUSH
 			def handle  
 			
 				race_trait = enactor.swrifts_traits.select { |a| a.name == "race" }.first #get the Race trait off of the character	
-				
-				if (race_trait) == "None"
-					client.emit (race_trait.inspect)
-					race_trait = nil
-					client.emit (race_trait.inspect)
-				else
-					client.emit (race_trait.inspect)
-				end
-				
+								
 				init = Global.read_config('swrifts', 'init')
 				
 				iconicf = Swrifts.get_iconicf(self.enactor, self.iconicf_name) #get the Iconic Framework entry from the yml
