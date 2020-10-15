@@ -368,7 +368,7 @@ module AresMUSH
 				edgsel = cgsys.select { |ss| ss['name'].downcase == cgname.downcase }.first #Filter the icf's to find the one that's been selected	
 				cgdesc = edgsel['description']
 				cgedg = "<span class='edgname'>#{cgname}<span>"
-				cgpointsarray << {class: c.name, name: cgname, rating:cgrating}
+				cgedgearray << {class: c.name, name: cgname, rating:cgrating}
 		end
 		return (cgedgearray)
 	end		
