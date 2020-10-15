@@ -324,7 +324,6 @@ module AresMUSH
 				cvalue = carray[1] #pull the complications value out of the array
 				
 				ppe_check = cvalue.include?("Restricted Path PPE^") #see if the race has the value
-				return ppe_check
 				isp_check = cvalue.include?("Restricted Path ISP^") #see if the race has the value
 				cyber_check = cvalue.include?("Cyber Resistant^") #see if the race has the value
 				nsb_check = cvalue.include?("Non-Standard Build^") #see if the race has the value
@@ -334,6 +333,7 @@ module AresMUSH
 
 				if ppe_check == true
 					abmagic = edgecheck.select{ |a| a.name == "ab magic*" }.first
+					return abmagic
 					abmiracles = edgecheck.select{ |a| a.name == "ab miracles*" }.first
 					if (abmagic) || (abmiracles)
 						return true
