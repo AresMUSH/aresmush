@@ -315,14 +315,15 @@ module AresMUSH
 			if icf_name == "none"
 				return false
 			else
-				iconicf = Swrifts.find_iconicf_config(icf_name) #get the Iconic Framework entry we're working with from the yml
-				return iconicf
+				iconicf = Swrifts.find_iconicf_config(icf_name) #get the Iconic Framework entry we're working with from the 
 			end
 			
 			if carray == true 
 				carray = race.select{ |a| a == "complications" }.first #pull the complications array out of the race entry
 				
 				cvalue = carray[1] #pull the complications value out of the array
+				
+				return cvalue
 				
 				ppe_check = cvalue.include?("Restricted Path PPE^") #see if the race has the value
 				isp_check = cvalue.include?("Restricted Path ISP^") #see if the race has the value
