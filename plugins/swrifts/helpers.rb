@@ -330,10 +330,11 @@ module AresMUSH
 				bp_check = cvalue.include?("Bizarre Physiology^") #see if the race has the value
 
 				edgecheck = model.swrifts_edges
+				edgecheck = edgecheck.downcase
+				return edgecheck
 
 				if ppe_check == true
 					abmagic = edgecheck.select{ |a| a.name == "ab magic*" }.first
-					return abmagic
 					abmiracles = edgecheck.select{ |a| a.name == "ab miracles*" }.first
 					if (abmagic) || (abmiracles)
 						return true
