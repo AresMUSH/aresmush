@@ -51,6 +51,7 @@ module AresMUSH
 				if (icf_trait)	
 					
 					icf_name = icf_trait.rating #get the Iconic Framework name off the character
+					icf_name = icf_name.downcase
 					
 					iconicf = Swrifts.get_iconicf(self.enactor, icf_name) #get the Iconic Framework entry from the yml
 					
