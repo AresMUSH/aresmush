@@ -257,6 +257,7 @@ module AresMUSH
 			end
 		end
 		charrace = "#{charrace}"
+		return (charrace)
 	end
 	
 	def self.returncgslotsforcg(model)
