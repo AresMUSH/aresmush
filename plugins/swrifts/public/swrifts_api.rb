@@ -219,7 +219,7 @@ module AresMUSH
 		  cgedges: cgedg, #Edges on Character
 		  cghind: cghind, #Hinderances on Character
 		  sysedges: sysedges, #Edges from system
-		  syshind: syshind, #Hinderances from system
+		  swsyshind: syshind, #Hinderances from system
 		} 
 	end	
 	
