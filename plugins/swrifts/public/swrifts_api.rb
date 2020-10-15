@@ -367,7 +367,7 @@ module AresMUSH
 				cgname = cgname.strip
 				edgsel = cgsys.select { |ss| ss['name'].downcase == cgname.downcase }.first #Filter the icf's to find the one that's been selected	
 				cgdesc = edgsel['description']
-				cgedgearray << {class: edgsel['name'], name: cgname, rating: cgdesc}
+				cgedgearray << {class: c.name, name: cgname, rating: cgdesc}
 		end
 		return (cgedgearray)
 	end		
