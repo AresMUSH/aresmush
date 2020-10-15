@@ -42,8 +42,9 @@ module AresMUSH
 				iconicf = Swrifts.get_iconicf(self.enactor, self.iconicf_name) #get the Iconic Framework entry from the yml
 					
 				if (race_trait)
-					race_name = race_trait.rating #get the Race name off the character		
-					race = Swrifts.find_race_config(race_name) #get the Race entry we're working with from the yml
+					race_name = race_trait.rating #get the Race name off the character	
+					race = Swrifts.find_race_config(race_name) #get the Race entry we're working with from the yml	
+					
 					ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
 						
 						rc = Swrifts.race_check(model, race, race_name, self.iconicf_name)
@@ -58,9 +59,10 @@ module AresMUSH
 							iconicf_trait = Swrifts.find_traits(model, self.iconicf_title)				
 							iconicf_trait.update(rating: self.iconicf_name)
 
-							Swrifts.run_system(model, race)
+							Swrifts.run_system(model, race
 							race_trait.update(rating: race_name)
-							client.emit_success t('swrifts.iconicf_complete')
+							
+							client.emit_success t('swrifts.iconicf_complete', :iconicf => self.iconicf_name.capitalize)
 						end
 					end
 				else
@@ -69,10 +71,12 @@ module AresMUSH
 					ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
 						Swrifts.run_init(model, init)
 						
+						Swrifts.run_system(model, iconicf)
+						
 						iconicf_trait = Swrifts.find_traits(model, self.iconicf_title)				
 						iconicf_trait.update(rating: self.iconicf_name)
-						Swrifts.run_system(model, iconicf)
-						client.emit_success t('swrifts.iconicf_complete')
+						
+						client.emit_success t('swrifts.iconicf_complete', :iconicf => self.iconicf_name.capitalize)
 					end
 				end
 			end

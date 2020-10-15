@@ -79,7 +79,7 @@ en:
         iconicabilities_set: "Iconic Framework Abilities set."
         iconiccomplications_set: "Iconic Framework Complications set."
         iconicchargenpoints_set: "Iconic Framework chargen points set."
-        iconicf_complete: "Iconic Framework initialization is complete."
+        iconicf_complete: "You set your Iconic Framework to '%{iconicf}'"
         race_set: "You set your Race to %{name}."
         race_invalid_name: "There is no Race named %{name}."
         invalid_points: "You cannot spend %{mod} points on %{name}, you only have %{num} stat points."
