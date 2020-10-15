@@ -18,9 +18,9 @@ module AresMUSH
 			
 			
 			#----- Check to see:
-			# def check_valid_iconicf
-				# if !Swrifts.is_valid_iconicf_name?(self.iconicf_name) #Is the Iconic Framework in the list
-					# return t('swrifts.iconicf_invalid_name', :name => self.iconicf_name.capitalize) 
+			def check_valid_iconicf
+				if !Swrifts.is_valid_iconicf_name?(self.iconicf_name) #Is the Iconic Framework in the list
+					return t('swrifts.iconicf_invalid_name', :name => self.iconicf_name.capitalize) 
 				# else
 					# ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
 						# if !Swrifts.is_valid_cat?(model,"traits") #Are there any traits set - i.e INIT completed.
@@ -29,26 +29,52 @@ module AresMUSH
 							# return t('swrifts.trait_already_set',:name => "Iconic Framework")
 						# end
 					# end
-				# end
-				# return nil
-			# end
+				end
+			end
 			
 #----- Begin of def handle -----			
 			def handle  
-				enactor.delete_swrifts_chargen #clear out the character
 			
-				iconicf = Swrifts.get_iconicf(self.enactor, self.iconicf_name) 
+				race_trait = enactor.swrifts_traits.select { |a| a.name == "race" }.first #get the Race trait off of the character	
+								
 				init = Global.read_config('swrifts', 'init')
 				
-				ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-					Swrifts.run_init(model, init)
-					trait = Swrifts.find_traits(model, self.iconicf_title)				
-					trait.update(rating: iconicf_name)
-					gg = Swrifts.run_system(model, iconicf)
-					# client.emit ("#{gg}")
+				iconicf = Swrifts.get_iconicf(self.enactor, self.iconicf_name) #get the Iconic Framework entry from the yml
+					
+				if (race_trait)
+					race_name = race_trait.rating #get the Race name off the character		
+					race = Swrifts.find_race_config(race_name) #get the Race entry we're working with from the yml
+					ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
+						
+						rc = Swrifts.race_check(model, race, race_name, self.iconicf_name)
+						if rc == true
+							client.emit_failure t('swrifts.iconicf_invalid', :race => race_name.capitalize, :icf => self.iconicf_name.capitalize)
+						else		
+							enactor.delete_swrifts_chargen #clear out the character
+							
+							Swrifts.run_init(model, init)	
+
+							Swrifts.run_system(model, iconicf)
+							iconicf_trait = Swrifts.find_traits(model, self.iconicf_title)				
+							iconicf_trait.update(rating: self.iconicf_name)
+
+							Swrifts.run_system(model, race)
+							race_trait.update(rating: race_name)
+							client.emit_success t('swrifts.iconicf_complete')
+						end
+					end
+				else
+					enactor.delete_swrifts_chargen #clear out the character
+									
+					ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
+						Swrifts.run_init(model, init)
+						
+						iconicf_trait = Swrifts.find_traits(model, self.iconicf_title)				
+						iconicf_trait.update(rating: self.iconicf_name)
+						Swrifts.run_system(model, iconicf)
+						client.emit_success t('swrifts.iconicf_complete')
+					end
 				end
-		
-				client.emit_success t('swrifts.iconicf_complete')
 			end
 #----- End of def handle -----	
 

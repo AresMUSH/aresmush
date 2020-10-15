@@ -60,7 +60,7 @@ en:
         
         iconicframe: "%{name}"
         iconicf_invalid_name: "There is no Iconic Framework named %{name}."
-        iconicf_invalid_init: "You haven't started CGen, please type swrifts/init before continuing."
+        iconicf_invalid:  "You cannot select the '%{icf}' Iconic Framework with the '%{race}' Race."
         trait_already_set: "You have already set %{name}."
         iconicf_valid_name: "Iconic Framework named %{name} is valid."
         iconicf_invalid_type: "Invalid Iconic Framework Type %{name}."
