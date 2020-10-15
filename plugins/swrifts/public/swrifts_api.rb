@@ -204,7 +204,7 @@ module AresMUSH
 		sysedges = returnsysedgesforcg(cgsysedges)			
 		
 		#Get the System Hinderances
-		sysedges = returnsysedgesforcg(cgsyshind)		
+		syshind = returnsysedgesforcg(cgsyshind)		
 
 		return {
 		  iconicf: iconicf,
