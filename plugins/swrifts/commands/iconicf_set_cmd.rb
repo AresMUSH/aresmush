@@ -36,6 +36,8 @@ module AresMUSH
 			def handle  
 			
 				race_trait = enactor.swrifts_traits.select { |a| a.name == "race" }.first #get the Race trait off of the character	
+				
+				client.emit (race_trait.inspect)
 								
 				init = Global.read_config('swrifts', 'init')
 				
@@ -48,8 +50,6 @@ module AresMUSH
 					ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
 						
 						rc = Swrifts.race_check(model, race, race_name, self.iconicf_name)
-						client.emit (model.inspect)
-						client.emit (race.inspect)
 						client.emit (race_name.inspect)
 						client.emit (self.iconicf_name.inspect)
 						
