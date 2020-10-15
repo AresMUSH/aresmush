@@ -231,6 +231,10 @@ module AresMUSH
 		cgsysedges = Global.read_config('swrifts', 'edges')	
 		cgedg = returnedgesforcg(cgedges,cgsysedges)
 		
+		#Get the hinderances that were set on the character.
+		cghinder = char.swrifts_hinderances
+		cgsyshind = Global.read_config('swrifts', 'hinderances')	
+		cghind = returnedgesforcg(cghinder,cgsyshind)		
 
 		return {
 		  iconicf: iconicf,
@@ -243,6 +247,7 @@ module AresMUSH
 		  cgslots: cgslots,
 		  initracepoints: initracepoints,
 		  cgedges: cgedg,
+		  cghind: cghind,
 		} 
 	end	
 	
