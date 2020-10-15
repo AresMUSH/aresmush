@@ -322,8 +322,10 @@ module AresMUSH
 				nsb_check = cvalue.include?("Non-Standard Build^") #see if the race has the value
 				bp_check = cvalue.include?("Bizarre Physiology^") #see if the race has the value
 
+				iconicf = Swrifts.get_iconicf(self.enactor, self.iconicf_name) #get the Iconic Framework entry from the yml
+				edgecheck = iconicf['edges']
+
 				if ppe_check == true
-					edgecheck = model.swrifts_edges
 					abmagic = edgecheck.select{ |a| a.name == "ab magic*" }.first
 					abmiracles = edgecheck.select{ |a| a.name == "ab miracles*" }.first
 					if (abmagic) || (abmiracles)
@@ -334,7 +336,6 @@ module AresMUSH
 				end
 				
 				if isp_check == true
-					edgecheck = model.swrifts_edges
 					abpsionics = edgecheck.select{ |a| a.name == "ab psionics*" }.first
 					if (abpsionics)
 						return true
