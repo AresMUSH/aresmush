@@ -27,6 +27,8 @@ module AresMUSH
           lore_hook_prefs: lore_hook_prefs,
           demographics: Demographics.public_demographics.map { |d| d.titlecase },
           date_format: Global.read_config("datetime", "date_entry_format_help"),
+          intro_blurb: Website.format_markdown_for_html(Global.read_config("chargen", "intro_blurb")),
+          lorehook_blurb: Website.format_markdown_for_html(Global.read_config("chargen", "lorehook_blurb")),
           bg_blurb: Website.format_markdown_for_html(Global.read_config("chargen", "bg_blurb")),
           hooks_blurb: Website.format_markdown_for_html(Global.read_config("chargen", "hooks_blurb")),
           desc_blurb: Website.format_markdown_for_html(Global.read_config("chargen", "desc_blurb")),
