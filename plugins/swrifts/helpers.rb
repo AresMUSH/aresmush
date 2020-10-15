@@ -311,7 +311,6 @@ module AresMUSH
 		
 		def self.race_check(model, race, race_name, icf_name)
 			carray = race.include? 'complications'
-			return carray
 			
 			if icf_name == "none"
 				return false
