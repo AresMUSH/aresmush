@@ -207,13 +207,12 @@ module AresMUSH
 		syshind = returnsysedgesforcg(cgsyshind)		
 
 		return {
-		  iconicf: iconicf,
-		  # chariconicf: chariconicf,
-		  charicf: charicf,
-		  cgrace: cgrace,
-		  charrace: charrace,
-		  cgpoints: cgtraits,
-		  inicgpoints: initcgpoints,
+		  iconicf: iconicf, #System iconic frameworks
+		  charicf: charicf, #Character Iconic Framework
+		  cgrace: cgrace, #System races
+		  charrace: charrace, #Char Race
+		  cgpoints: cgtraits, #CG points for the character
+		  inicgpoints: initcgpoints, #CG points set by system.
 		  cgslots: cgslots,
 		  initracepoints: initracepoints,
 		  cgedges: cgedg, #Edges on Character
