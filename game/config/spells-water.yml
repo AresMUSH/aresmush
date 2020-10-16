@@ -239,7 +239,7 @@ spells:
     name: Potions (Water)
     school: Water
   Purify Water:
-    available: false
+    available: true
     casting_time: 10 minutes
     desc: "The caster can purify up to 30 cubic feet of preexisting water, drawing impurities out of the water, such as pollution, small organisms, pyrogens, dissolved compounds, and suspended particles."
     effect: Other
@@ -394,7 +394,6 @@ spells:
     target_num: 1
   Glacial Ice Weapon:
     available: true
-    armor: Glacial Ice
     casting_time: 1 round
     desc: "Augment one specified pre-existing weapon with a freezing coating of sharp ice. Though less useful against armor, this weapon does incredible damage against unprotected skin, even through normal clothing."
     duration: 6 hours
@@ -407,7 +406,7 @@ spells:
     target_optional: true
     target_num: 1
   Hydroplane:
-    available: false
+    available: true
     casting_time: 1 round
     desc: "The caster manipulates water, snow, or ice to carry themselves at a speed of up to 60 mph. They are able to ski along the surface of any water, snow, or ice. They can also slide beneath the surface to swim at the same fast speeds, able to breathe in the water for the duration of the spell. Mods to defense and attack may be applied at the GM's discretion according to actions taken while in motion."
     duration: 1 hour
@@ -508,7 +507,7 @@ spells:
     roll: true
     school: Water
   Waters Of Renewal:
-    available: false
+    available: true
     auto_revive: true
     casting_time: 1 round
     desc: "A knocked out target is deluged by waters and soaked through. From beneath the water, they are revived and able to return to the fight. \n\nA revived target has no wounds and no spell fatigue.\n\n A magic user who knows this spell is automatically drenched and revived when they themselves can no longer fight. This takes 1 round after they are knocked out."

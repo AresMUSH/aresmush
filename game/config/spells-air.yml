@@ -150,7 +150,7 @@ spells:
   #Level 4
   Aeromancy:
     area: 10 cubic yards
-    available: false
+    available: true
     casting_time: 1 round
     desc: "For the duration of the spell, the caster can move and shape up to 10 cubic yards of gaseous substances. The caster can control the flow, density, and dispersion of a gaseous substance to form breathable bubbles in water, draw the oxygen towards or away from a flame, or push poisonous gases, pollution, or vapor away. They can also condense the air to create mild precipitation or form clouds."
     duration: 30 minutes
@@ -294,9 +294,8 @@ spells:
     school: Air
   #Level 5
   Aerokinesis:
-    # area: 15 yard radius
-    available: false
-    ares: 15 yard radius
+    available: true
+    area: 15 yard radius
     casting_time: 1 round
     desc: "For the duration of the spell, the caster can manipulate air currents, allowing them to conjure light breezes, strong gusts, or whirling vortexes. These can allow the caster to push or lift an object weighing up to 75 lbs. A windborne object cannot be manipulated with exact precision or dexterity and cannot travel above 40 mph."
     duration: 2 hours
@@ -436,7 +435,7 @@ spells:
   #Level 7
   Complex Aeromancy:
     area: 50 cubic yards
-    available: false
+    available: true
     casting_time: 1 round
     desc: "For the duration of the spell, the caster can move and shape up to 50 cubic yards of gaseous substances. The caster can control the flow, density, and dispersion of a gaseous substance to form breathable bubbles in water, draw the oxygen towards or away from a flame, push poisonous gases, pollution, or vapor away, or pull pre-existing air from materials (like water) within the area of the spell. They can also change the pressure of the air to create precipitation, form clouds, or adjust the temperature up or down by 20°F."
     duration: 1 hour

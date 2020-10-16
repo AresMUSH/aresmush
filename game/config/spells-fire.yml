@@ -232,7 +232,7 @@ spells:
     target_optional: true
   #Level 6
   Double Vision:
-    available: false
+    available: true
     casting_time: 1 round
     desc: "Through a trick of light, the caster creates a single mirror image of themselves. Until the spell ends, the duplicate image mimics the caster's actions, making it difficult to know which image is real, which bolsters their defense by making them more difficult to hit.\n\nThe mirror image may be identified as an illusion with a roll of the caster's Fire vs the observer's Alertness-5. Those with enhanced senses such as smell, hearing, or psionic abilities are more likely to identify the subject as an illusion according to its content and range, and GMs may choose to adjust the modification as appropriate."
     defense: 3
