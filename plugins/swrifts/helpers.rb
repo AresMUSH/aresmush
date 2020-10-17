@@ -329,10 +329,20 @@ module AresMUSH
 				cyber_check = cvalue.include?("Cyber Resistant^") #see if the race has the value
 				nsb_check = cvalue.include?("Non-Standard Build^") #see if the race has the value
 				bp_check = cvalue.include?("Bizarre Physiology^") #see if the race has the value
+				dragon_check = cvalue.include?("Dragon^") #see if the race has the value
 				
 				icf_edges = iconicf['edges']
 				icf_cyber = iconicf['cybernetics']
 				edgecheck = icf_edges.to_s.downcase
+				
+				if dragon_check == true
+					icf_name == icf_name.downcase
+					if icf_name != "Dragon Hatchling"
+						return true
+					else
+					end
+				else
+				end
 
 				if ppe_check == true
 					abmagic = edgecheck.include? "ab magic*"
