@@ -512,7 +512,7 @@ module AresMUSH
 			
 			#Set the Race
 			sysrace = Global.read_config('swrifts', 'race') #Read the config file for Race
-			return sysrace
+			return (sysrace)
 			racesel = sysrace.select { |ss| ss['name'].downcase == race_downcase }.first #Filter the races to find the one that's been selected	
 			race_trait = Swrifts.find_traits(char, 'race')	 #get the Race trait off of the character
 			race_trait.update(rating: race_downcase) #Update the race with the one chosen.		
