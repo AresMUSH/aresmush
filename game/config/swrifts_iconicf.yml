@@ -82,8 +82,6 @@ swrifts:
                 - Drug-induced Eupohria/Tranqulity
                 - Psionics and Magic*
                 - Weakness*
-            race_check: 
-                - Bizzare Physiology 
         -   
             name: Elemental Fusionist
             book_reference: A&M 10
@@ -119,8 +117,6 @@ swrifts:
                 - Arcane Backgrounds*
                 - Cybernetics*
                 - Human Mutant*
-            race_check:
-                - Restricted Path PPE
         -   
             name: MARS Battle Magus
             book_reference: A&M 17
@@ -137,11 +133,9 @@ swrifts:
                 Occult: 2
                 Spellcasting: 2
             edges:
-                - Arcane Marksman
-                - Magi of Dweomer
-                - AB Magic
-            race_check:
-                - Restricted Path PPE
+                - Arcane Marksman*
+                - Magi of Dweomer*
+                - AB Magic*
         -   
             name: MARS Combat Mage
             book_reference: A&M 18
@@ -155,14 +149,12 @@ swrifts:
                 Occult: 2
                 Spellcasting: 2
             edges:
-                - AB Magic
-                - Channeling
-                - Master of Magic
-                - Choice
-                - Choice
-                - Choice
-            race_check:
-                - Restricted Path PPE
+                - AB Magic*
+                - Channeling*
+                - Master of Magic*
+                - Choice*
+                - Choice*
+                - Choice*
         -   
             name: MARS High Magus
             book_reference: A&M 19
@@ -177,13 +169,11 @@ swrifts:
                 Spellcasting: 2
                 Repair: 2
             edges:
-                - AB Magic
-                - Artificer
-                - Minor Item Creation
-                - Major Item Creation
-                - Magi of Dweomer
-            race_check:
-                - Restricted Path PPE
+                - AB Magic*
+                - Artificer*
+                - Minor Item Creation*
+                - Major Item Creation*
+                - Magi of Dweomer*
         -   
             name: Lord Magus
             book_reference: A&M 19
@@ -198,12 +188,10 @@ swrifts:
                 Occult: 3
                 Spellcasting: 3
             edges:
-                - AB Magic
-                - Magi of Dweomer
-                - One With Magic
-                - Power Points
-            race_check:
-                - Restricted Path PPE
+                - AB Magic*
+                - Magi of Dweomer*
+                - One With Magic*
+                - Power Points*
         -   
             name: MARS Psi-Druid
             book_reference: A&M 20
@@ -218,16 +206,14 @@ swrifts:
                 Survival: 2
                 Psionics: 2
             edges:
-                - AB Psionics
-                - Beast Master
-                - Healer
-                - Woodsman
+                - AB Psionics*
+                - Beast Master*
+                - Healer*
+                - Woodsman*
             psychic_powers:
-                - conceal arcana
-                - detect arcana
-                - healing
-            race_check:
-                - Restricted Path PPE
+                - conceal arcana*
+                - detect arcana*
+                - healing*
         -   
             name: MARS Psi-Slinger
             book_reference: A&M 20 
@@ -242,23 +228,21 @@ swrifts:
                 Psionics: 2
                 Shooting: 2
             hinderances: 
-                - Choice
+                - Choice*
             edges:
-                - AB Psionics
-                - Marksman
-                - Steady Hands
-                - Danger Sense
-                - Quick
+                - AB Psionics*
+                - Marksman*
+                - Steady Hands*
+                - Danger Sense*
+                - Quick*
             psychic_powers: 
-                - bolt
-                - smite
-                - telekinesis
-                - protection
+                - bolt*
+                - smite*
+                - telekinesis*
+                - protection*
             abilities:
-                - Energetic Diminishment
-                - Telekinetic Enhancement
-            race_check:
-                - Restricted Path ISP
+                - Energetic Diminishment*
+                - Telekinetic Enhancement*
         -   
             name: MARS Psi-Warrior
             book_reference: A&M 21
@@ -423,9 +407,6 @@ swrifts:
                 - Distrusted Order* 
                 - Power Activators*
                 - Vow of the White Rose*
-            race_check:
-                - Restricted Path ISP
-                - Restricted Path PPE
         -   
             name: MARS Barbarian
             book_reference: B&B 24
@@ -468,8 +449,6 @@ swrifts:
             magic_powers:
                 - Detect Arcana*
                 - Conceal Arcana* 
-            race_check:
-                - Restricted Path PPE
         -   
             name: MARS Dinosaur Hunter
             book_reference: B&B
@@ -543,8 +522,6 @@ swrifts:
                 - Oath* 
                 - Power Activators*
                 - Spooky*
-            race_check:
-                - Restricted Path PPE
         -
             name: Shifter
             book_reference: B&B 13
@@ -595,8 +572,6 @@ swrifts:
                 - Ranged Weapons
                 - Training
                 - Underworld & Black Ops
-            race_check:
-                - Restricted Path PPE
         -   
             name: Werecat
             book_reference: B&B 20
@@ -642,7 +617,7 @@ swrifts:
                     - Magic and Psionics
                     - Silver
                     - Supernatural
-                - Wild Beast
+                - Wild Beast*
         -   
             name: Intelligent Construct
             book_reference: EohH
@@ -872,7 +847,7 @@ swrifts:
             magic_powers:
                 - Detect Arcana*
             psionic_powers:
-                - Speak Language
+                - Speak Language*
         -
             name: Combat Cyborg
             book_reference: TLPG
@@ -908,11 +883,11 @@ swrifts:
             complications:
                 - All Those Moving Parts*
                 - Full Conversion*
-                - Heavy
+                - Heavy*
                 - Loss of Dexterity*
                 - Malfunctions*
                 - Shadow of Themselves*
-                - Spiritually Numb
+                - Spiritually Numb*
         -
             name: Crazy
             book_reference: TLPG 22
@@ -1020,7 +995,7 @@ swrifts:
             edges:
                 - Power Armor Jock*
             abilities:
-                - Many Have Fallen
+                - Many Have Fallen*
             complications:
                 - Big and Shiny*
                 - Closed Off*
