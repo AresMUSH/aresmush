@@ -331,7 +331,9 @@ module AresMUSH
 				bp_check = cvalue.include?("Bizarre Physiology^") #see if the race has the value
 				
 				edgecheck = iconicf['edges']
-				return (edgecheck.inspect)
+				pajock = edgecheck.downcase
+				pajcheck = pajock.include? "power armor jock*"
+				return (pajcheck)
 
 				if ppe_check == true
 					abmagic = edgecheck.select{ |a| a.name == "ab magic*" }.first
@@ -363,7 +365,6 @@ module AresMUSH
 				
 				if nsb_check == true
 					pajock = edgecheck.select{ |a| a.name == "power armor jock*" }.first
-					return ("#{edgecheck.inspect}")
 					if (pajock)
 						return true
 					else #continue
