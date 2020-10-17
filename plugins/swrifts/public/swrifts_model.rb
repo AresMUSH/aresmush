@@ -110,8 +110,9 @@ module AresMUSH
 	class SwriftsHeroesj < Ohm::Model
 		include ObjectModel
 	
-		attribute :name
-		attribute :rating, :type => DataType::Integer
+		attribute :name #hj1, hj2, etc. 
+		attribute :rating, :type => DataType::Integer #the random roll
+		attribute :table #Body Armor, etc. 
 		reference :character, "AresMUSH::Character"
 		index :name
 	end
