@@ -10,7 +10,7 @@ module AresMUSH
 			def parse_args
 			    args = cmd.parse_args(ArgParser.arg1_equals_arg2) #Split the arguments into two around the =
 			    self.target_name = enactor_name #Set the character to be the current character
-			    self.hj_slot = trim_arg(args.arg1) #set the hj slot
+			    self.hj_slot = args.arg1 #set the hj slot
 			    self.hj_table_name = trim_arg(args.arg2) #set the hj name
 			end
 
@@ -26,11 +26,11 @@ module AresMUSH
 				client.emit (self.hj_table_name)
 				return
 				
-				if !Swrifts.is_valid_element_name?(self.hj_table_name) #Is the HJ on the IcF's list
-					return t('swrifts.hj_table_invalid_name', :name => self.hj_table.capitalize) 
-				else
-					client.emit.failure ("That is not a valid table for your Iconic Framework.")
-				end
+				# if !Swrifts.is_valid_element_name?(self.hj_table_name) #Is the HJ on the IcF's list
+					# return t('swrifts.hj_table_invalid_name', :name => self.hj_table.capitalize) 
+				# else
+					# client.emit.failure ("That is not a valid table for your Iconic Framework.")
+				# end
 			end
 			
 #----- Begin of def handle -----			
