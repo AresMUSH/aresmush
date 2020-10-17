@@ -312,8 +312,9 @@ module AresMUSH
 			ifname = c['name']
 			desc = c['description']
 			edgsel = cg.select { |ss| ss['name'].downcase == cgname.downcase }.first #Filter the icf's to find the one that's been selected
-			return ("#{edgsel}")
-			ifstring = "#{ifname}"
+			if (!edsel['name'].include?("*"))
+				ifstring = "#{ifname}"
+			end
 			iconicfarray.push("#{ifstring}")
 		end
 		return (iconicfarray)
