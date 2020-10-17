@@ -318,6 +318,7 @@ module AresMUSH
 				iconicf = Swrifts.find_iconicf_config(icf_name) #get the Iconic Framework entry we're working with from the 
 			end
 			
+			
 			if carray == true 
 				carray = race.select{ |a| a == "complications" }.first #pull the complications array out of the race entry
 				
@@ -329,7 +330,7 @@ module AresMUSH
 				nsb_check = cvalue.include?("Non-Standard Build^") #see if the race has the value
 				bp_check = cvalue.include?("Bizarre Physiology^") #see if the race has the value
 				
-				edgecheck = model.swrifts_edges
+				edgecheck = iconicf['edges']
 
 				if ppe_check == true
 					abmagic = edgecheck.select{ |a| a.name == "ab magic*" }.first
