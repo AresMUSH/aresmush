@@ -504,13 +504,15 @@ module AresMUSH
 			trait.update(rating: icf_downcase)  #Update the Icf with the one chosen.
 
 			#Save the no framework edges
-			c_edgesnofw.each do |key|
-				edge_name = "#{key}".downcase
-				ss = Swrifts.add_feature(model, SwriftsEdges, "edges", edge_name)
-				# dbgstr << "Edge name: #{edge_name}, #{ss}%r"
+			if (c_edgesnofw.size > 0)
+				c_edgesnofw.each do |key|
+					edge_name = "#{key}".downcase
+					ss = Swrifts.add_feature(model, SwriftsEdges, "edges", edge_name)
+					# dbgstr << "Edge name: #{edge_name}, #{ss}%r"
+				end
 			end
-
-			Save the framework edges
+			
+			#Save the framework edges
 			# c_edges.each do |key|
 				# edge_name = "#{key}".downcase
 				# ss = Swrifts.add_feature(model, SwriftsEdges, "edges", edge_name)
@@ -518,10 +520,13 @@ module AresMUSH
 			# end
 			
 			#Save the no framework hinderance
-			c_hindnofw.each do |key|
-				edge_name = "#{key}".downcase
-				ss = Swrifts.add_feature(model, SwriftsHinderances, "hinderances", edge_name)
-				# dbgstr << "Edge name: #{edge_name}, #{ss}%r"
+
+			if (c_hindnofw.size > 0)
+				c_hindnofw.each do |key|
+					edge_name = "#{key}".downcase
+					ss = Swrifts.add_feature(model, SwriftsHinderances, "hinderances", edge_name)
+					# dbgstr << "Edge name: #{edge_name}, #{ss}%r"
+				end
 			end
 
 			#Save the framework hinderance
