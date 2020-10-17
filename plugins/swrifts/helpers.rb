@@ -331,7 +331,7 @@ module AresMUSH
 				bp_check = cvalue.include?("Bizarre Physiology^") #see if the race has the value
 				
 				edgecheck = iconicf['edges']
-				pajock = edgecheck.downcase
+				pajock = edgecheck.to_s.downcase
 				pajcheck = pajock.include? "power armor jock*"
 				return (pajcheck)
 
