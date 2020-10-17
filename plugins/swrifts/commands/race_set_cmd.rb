@@ -41,9 +41,7 @@ module AresMUSH
   
  #----- Begin of def handle -----			 
 			def handle
-				
-				client.emit (self.race_name)
-				
+								
 				icf_trait = enactor.swrifts_traits.select { |a| a.name == "iconicf" }.first #get the Iconic Framework trait off of the character
 								
 				init = Global.read_config('swrifts', 'init')
@@ -53,6 +51,7 @@ module AresMUSH
 				if (icf_trait)	
 					
 					icf_name = icf_trait.rating #get the Iconic Framework name off the character
+					client.emit (icf_name.inspect)
 					icf_name = icf_name.downcase
 					
 					iconicf = Swrifts.get_iconicf(self.enactor, icf_name) #get the Iconic Framework entry from the yml
