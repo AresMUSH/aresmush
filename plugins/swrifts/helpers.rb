@@ -331,6 +331,7 @@ module AresMUSH
 				bp_check = cvalue.include?("Bizarre Physiology^") #see if the race has the value
 				
 				icf_edges = iconicf['edges']
+				icf_cyber = iconicf['cybernetics']
 				edgecheck = icf_edges.to_s.downcase
 
 				if ppe_check == true
@@ -353,8 +354,7 @@ module AresMUSH
 				end
 				
 				if cyber_check == true
-					charcat = model.swrifts_cybernetics
-					if charcat.size > 0
+					if icf_cyber > 0
 						return true
 					else #continue
 					end
