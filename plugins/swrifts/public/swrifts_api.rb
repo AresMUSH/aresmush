@@ -500,29 +500,38 @@ module AresMUSH
 		
 			char.delete_swrifts_chargen #clear out the character
 			
+			
+			#Set the iconic framework
 			iconicf = Global.read_config('swrifts', 'iconicf') #Read the config file for Iconic Frameworks
 			icfsel = iconicf.select { |ss| ss['name'].downcase == icf_downcase }.first #Filter the icf's to find the one that's been selected	
 			tt = Swrifts.run_init(char, init)  #Calls run_init in helpers.rb
 			tt1 = Swrifts.run_system(char, icfsel) #Set the base stats based on the ICF chosen.			
 			trait = Swrifts.find_traits(char, 'iconicf')   #Calls find_traits in helpers.rb				
 			trait.update(rating: icf_downcase)  #Update the Icf with the one chosen.
+			
+			
+			#Set the Race
+			sysrace = Global.read_config('swrifts', 'race') #Read the config file for Race
+			racesel = sysrace.select { |ss| ss['name'].downcase == race_downcase }.first #Filter the races to find the one that's been selected	
+			race_trait = Swrifts.find_traits(char, 'race')	 #get the Race trait off of the character
+			race_trait.update(rating: race_downcase) #Update the race with the one chosen.		
 
 			#Save the no framework edges
-			if (c_edgesnofw)
-				c_edgesnofw.each do |key,value|
-					edge_name = "#{value['name']}".downcase
-					ss = Swrifts.add_feature(char, SwriftsEdges, "edges", edge_name)
-					dbgstr << "Edge name: #{edge_name}, #{ss}%r"
+			if (c_edgesnofw)  #If there are edges not related to the Iconic Framework and Race
+				c_edgesnofw.each do |key,value|  #Cycle through each one
+					edge_name = "#{value['name']}".downcase #set the name to all lowercase
+					ss = Swrifts.add_feature(char, SwriftsEdges, "edges", edge_name) #Call the add_feature function helpers.rb
+					dbgstr << "Edge name: #{edge_name}, #{ss}"  #For troubleshooting.
 				end
 			end
 			
 			#Save the no framework hinderance
 
-			if (c_hindnofw)
-				c_hindnofw.each do |key, value|
-					edge_name = "#{value['name']}".downcase
-					ss = Swrifts.add_feature(char, SwriftsHinderances, "hinderances", edge_name)
-					dbgstr << "Edge name: #{edge_name}, #{ss}%r"
+			if (c_hindnofw) #If there are hinderances not related to the Iconic Framework and Race
+				c_hindnofw.each do |key, value| #Cycle through each one
+					edge_name = "#{value['name']}".downcase #set the name to all lowercase
+					ss = Swrifts.add_feature(char, SwriftsHinderances, "hinderances", edge_name) #Call the add_feature function helpers.rb
+					dbgstr << "Edge name: #{edge_name}, #{ss}" #For troubleshooting
 				end
 			end
 	
