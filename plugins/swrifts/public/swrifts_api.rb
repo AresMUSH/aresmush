@@ -310,11 +310,12 @@ module AresMUSH
         list = cgsys.sort_by { |a| a['name']}
 		list.each do |c|
 			ifname = c['name']
+			ifnamedowncase = ifname.downcase
 			desc = c['description']
-			ifnamesearch = ifname[/[^*]+/]
-			ifnamesearch = ifname[/[^^]+/]
-			ifnamesearch = ifname.downcase.strip
-			edgsel = cg.select { |ss| ss.name.downcase.start_with?"#{ifnamesearch}" }.first #Filter the icf's to find the one that's been selected
+			# ifnamesearch = ifname[/[^*]+/]
+			# ifnamesearch = ifname[/[^^]+/]
+			# ifnamesearch = ifname.downcase.strip
+			edgsel = cg.select { |ss| ss.name.downcase.start_with?"#{ifnamedowncase}" }.first #Filter the icf's to find the one that's been selected
 			
 			if (edgsel)
 				if (!edgsel.name.include?("*"))
