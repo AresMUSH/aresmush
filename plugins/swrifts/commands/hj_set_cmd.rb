@@ -3,7 +3,7 @@ module AresMUSH
 		class HJSetCmd
 			include CommandHandler
 			      
-			attr_accessor :target_name
+			attr_accessor :target_name, :hj_slot, :hj_table_name
 			
 			#swrifts/hj 1=Body Armor
 			
