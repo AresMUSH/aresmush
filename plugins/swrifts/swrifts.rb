@@ -38,7 +38,7 @@ module AresMUSH
 						# return HjCmd
 						return PendingCmd
 					else
-						return HjSetCmd
+						return HJSetCmd
 					end
 				when "fandg"
 					if (!cmd.args)							 
