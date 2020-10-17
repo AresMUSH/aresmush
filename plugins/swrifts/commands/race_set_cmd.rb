@@ -43,6 +43,7 @@ module AresMUSH
 			def handle
 				
 				icf_trait = enactor.swrifts_traits.select { |a| a.name == "iconicf" }.first #get the Iconic Framework trait off of the character
+				client.emit (icf_trait.inspect)
 								
 				init = Global.read_config('swrifts', 'init')
 				
