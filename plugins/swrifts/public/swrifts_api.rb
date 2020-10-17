@@ -201,10 +201,10 @@ module AresMUSH
 		cghind = returnedgesforcg(cghinder,cgsyshind)
 
 		#Get the System Edges
-		sysedges = returnsysedgesforcg(cgsysedges)			
+		sysedges = returnsysedgesforcg(cgsysedges, cgedges)			
 		
 		#Get the System Hinderances
-		syshind = returnsysedgesforcg(cgsyshind)		
+		syshind = returnsysedgesforcg(cgsyshind, cghinder)		
 
 		return {
 		  iconicf: iconicf, #System iconic frameworks
@@ -305,16 +305,17 @@ module AresMUSH
 	
 	#This is used for Edges and Traits. 
 	
-	def self.returnsysedgesforcg(model)
+	def self.returnsysedgesforcg(cgsys, cg)
 		iconicfarray = Array.new
-        list = model.sort_by { |a| a['name']}
+        list = cgsys.sort_by { |a| a['name']}
 		list.each do |c|
 			ifname = c['name']
 			desc = c['description']
+			edgsel = cg.select { |ss| ss['name'].downcase == cgname.downcase }.first #Filter the icf's to find the one that's been selected
+			return ("#{edgsel}")
 			ifstring = "#{ifname}"
 			iconicfarray.push("#{ifstring}")
 		end
-		iconicfarray.unshift("None")
 		return (iconicfarray)
 	end	
 	
