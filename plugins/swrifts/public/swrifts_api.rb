@@ -308,17 +308,21 @@ module AresMUSH
 	def self.returnsysedgesforcg(cgsys, cg)
 		iconicfarray = Array.new
 		
-		cg.each do |l|
-			ifname= "#{l.name}"
-			iconicfarray.push("#{ifname}")
-		end
-		return (iconicfarray)
+		# cg.each do |l|
+			# ifname= "#{l.name}"
+			# iconicfarray.push("#{ifname}")
+		# end
+		# return (iconicfarray)
 		
         list = cgsys.sort_by { |a| a['name']}
 		list.each do |c|
 			ifname = c['name']
 			desc = c['description']
-			edgsel = cg.select { |ss| ss.name.downcase == ifname.downcase }.first #Filter the icf's to find the one that's been selected
+			ifnamesearch = ifname[/[^*]+/]
+			ifnamesearch = ifname[/[^^]+/]
+			ifnamesearch = ifname.downcase
+			edgsel = cg.select { |ss| ss.name.downcase == ifnamesearch }.first #Filter the icf's to find the one that's been selected
+			
 			if (edgsel)
 				ifstring = "Here"
 				if (!edgsel['name'].include?("*"))
