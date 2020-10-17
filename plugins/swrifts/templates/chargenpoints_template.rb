@@ -29,9 +29,10 @@ module AresMUSH
 					.each_with_index
 						.map do |a, i| 
 						linebreak = i % 3 == 0 ? "\n" : ""
-						title = left("#{ a.name }".capitalize, 16,'.')
+						title = left("#{ a.name }".capitalize, 5,'.')
+						table = left("#{ a.table }".capitalize, 11,'.')
 						rating = left(a.rating, 7)
-						"#{linebreak} #{title} #{rating} "
+						"#{linebreak} #{title} #{table} #{rating} "
 				end
 			end
 	
