@@ -308,10 +308,10 @@ module AresMUSH
 	def self.returnsysedgesforcg(cgsys, cg)
 		iconicfarray = Array.new
 		
-		# cg.each do |l|
-			# ifname= "#{l.name}"
-			# iconicfarray.push("#{ifname}")
-		# end
+		cg.each do |l|
+			ifname= "#{l.name}"
+			iconicfarray.push("#{ifname}")
+		end
 		# return (iconicfarray)
 		
         list = cgsys.sort_by { |a| a['name']}
