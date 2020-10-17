@@ -507,7 +507,7 @@ module AresMUSH
 			if (c_edgesnofw)
 				c_edgesnofw.each do |key|
 					edge_name = "#{key}".downcase
-					ss = Swrifts.add_feature(model, SwriftsEdges, "edges", edge_name)
+					ss = Swrifts.add_feature(char, SwriftsEdges, "edges", edge_name)
 					dbgstr << "Edge name: #{edge_name}, #{ss}%r"
 				end
 			end
@@ -515,7 +515,7 @@ module AresMUSH
 			#Save the framework edges
 			# c_edges.each do |key|
 				# edge_name = "#{key}".downcase
-				# ss = Swrifts.add_feature(model, SwriftsEdges, "edges", edge_name)
+				# ss = Swrifts.add_feature(char, SwriftsEdges, "edges", edge_name)
 				# dbgstr << "Edge name: #{edge_name}, #{ss}%r"
 			# end
 			
@@ -524,7 +524,7 @@ module AresMUSH
 			if (c_hindnofw)
 				c_hindnofw.each do |key|
 					edge_name = "#{key}".downcase
-					ss = Swrifts.add_feature(model, SwriftsHinderances, "hinderances", edge_name)
+					ss = Swrifts.add_feature(char, SwriftsHinderances, "hinderances", edge_name)
 					# dbgstr << "Edge name: #{edge_name}, #{ss}%r"
 				end
 			end
@@ -532,7 +532,7 @@ module AresMUSH
 			#Save the framework hinderance
 			# c_hind.each do |key|
 				# edge_name = "#{key}".downcase
-				# ss = Swrifts.add_feature(model, SwriftsHinderances, "hinderances", edge_name)
+				# ss = Swrifts.add_feature(char, SwriftsHinderances, "hinderances", edge_name)
 				# dbgstr << "Edge name: #{edge_name}, #{ss}%r"
 			# end
 	
