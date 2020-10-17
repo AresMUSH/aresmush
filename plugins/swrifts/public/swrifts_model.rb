@@ -111,7 +111,7 @@ module AresMUSH
 		include ObjectModel
 	
 		attribute :name #hj1, hj2, etc. 
-		attribute :rating #the random roll
+		attribute :rating, :type => DataType::Integer #the random roll
 		attribute :table #Body Armor, etc. 
 		reference :character, "AresMUSH::Character"
 		index :name
