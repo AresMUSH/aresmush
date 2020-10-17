@@ -344,7 +344,7 @@ module AresMUSH
 				end
 				
 				if isp_check == true
-					abpsionics = edgecheck.select{ |a| a.name == "ab psionics*" }.first
+					abpsionics = edgecheck.include? "ab psionics*"
 					if (abpsionics)
 						return true
 					else #continue
