@@ -50,7 +50,7 @@ module AresMUSH
 #----- Begin of def handle -----			
 			def handle  
 			
-			model = self.target_name #character
+			model = enactor #character
 			# collection = "SwriftsHeroesj"
 			element_name = self.hj_slot #hj1
 			element_table = self.hj_table_name #Body Armor
