@@ -306,7 +306,7 @@ module AresMUSH
 	#This is used for Edges and Traits. 
 	
 	def self.returnsysedgesforcg(cgsys, cg)
-		iconicfarray = Array.new	
+		iconicfarray = []	
         list = cgsys.sort_by { |a| a['name']}
 		list.each do |c|
 			ifname = c['name']
@@ -321,11 +321,13 @@ module AresMUSH
 				edgselname = edgsel.name.gsub("^", "*")
 				if (!edgselname.include?("*"))
 					ifstring = ifname
+					ifdisabled = false
 				end
 			else
 				ifstring = ifname
+				ifdisabled = true
 			end
-			iconicfarray.push("#{ifstring}")
+			iconicfarray << {name: ifstring, disabled: ifdisabled}
 		end
 		return (iconicfarray)
 	end	
