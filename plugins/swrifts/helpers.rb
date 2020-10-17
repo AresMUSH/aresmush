@@ -337,7 +337,7 @@ module AresMUSH
 				
 				if dragon_check == true
 					icf_name == icf_name.downcase
-					if icf_name != "Dragon Hatchling"
+					if icf_name != "dragon hatchling"
 						return true
 					else
 					end
