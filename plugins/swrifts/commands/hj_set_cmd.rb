@@ -26,11 +26,11 @@ module AresMUSH
 				client.emit (self.hj_table_name)
 				return
 				
-				if !Swrifts.is_valid_element_name?(self.hj_table_name) #Is the HJ on the IcF's list
-					return t('swrifts.hj_table_invalid_name', :name => self.hj_table.capitalize) 
-				else
-					client.emit.failure ("That is not a valid table for your Iconic Framework.")
-				end
+				# if !Swrifts.is_valid_element_name?(self.hj_table_name) #Is the HJ on the IcF's list
+					# return t('swrifts.hj_table_invalid_name', :name => self.hj_table.capitalize) 
+				# else
+					# client.emit.failure ("That is not a valid table for your Iconic Framework.")
+				# end
 			end
 			
 #----- Begin of def handle -----			
