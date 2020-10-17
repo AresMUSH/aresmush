@@ -58,7 +58,7 @@ module AresMUSH
 					ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
 					
 						rc = Swrifts.race_check(model, race, self.race_name, icf_name)
-						client.emit (rc.inspect)
+						# client.emit (rc.inspect)
 
 						if rc == true
 							client.emit_failure t('swrifts.race_invalid', :race => self.race_name.capitalize, :icf => icf_name.capitalize)
