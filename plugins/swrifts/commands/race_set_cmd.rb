@@ -7,7 +7,7 @@ module AresMUSH
 			
 			def parse_args
 				self.target_name = enactor_name #Set the character to be the current character
-				self.race_name = trim_arg(cmd.args) #Set 'race_name' to be the inputted Race
+				self.race_name = trim_arg(cmd.args).downcase #Set 'race_name' to be the inputted Race
 				self.race_title = "race"
 				# self.swrifts_race = "swrifts_race:" 
 
@@ -41,9 +41,8 @@ module AresMUSH
   
  #----- Begin of def handle -----			 
 			def handle
-				
+								
 				icf_trait = enactor.swrifts_traits.select { |a| a.name == "iconicf" }.first #get the Iconic Framework trait off of the character
-				client.emit (icf_trait.inspect)
 								
 				init = Global.read_config('swrifts', 'init')
 				
