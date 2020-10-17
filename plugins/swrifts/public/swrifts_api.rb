@@ -439,7 +439,7 @@ module AresMUSH
 			cg.each do |c|
 				cgname = "#{c.name}"
 				cgname = cgname.downcase
-				cgnamesub = cgnamesub.gsub("^", "*")
+				cgnamesub = cgname.gsub("^", "*")
 				if (!cgnamesub.include?("*"))
 					cgname = cgname[/[^*]+/]
 					cgname = cgname[/[^^]+/]
