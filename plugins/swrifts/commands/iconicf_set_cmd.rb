@@ -36,7 +36,6 @@ module AresMUSH
 			def handle  
 			
 				race_trait = enactor.swrifts_traits.select { |a| a.name == "race" }.first #get the Race trait off of the character	
-				client.emit (race_trait.inspect)
 								
 				init = Global.read_config('swrifts', 'init')
 				
@@ -51,6 +50,7 @@ module AresMUSH
 					ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
 						
 						rc = Swrifts.race_check(model, race, race_name, self.iconicf_name)
+						client.emit (rc)
 						
 						if rc == true
 							client.emit_failure t('swrifts.iconicf_invalid', :race => race_name.capitalize, :icf => self.iconicf_name.capitalize)
