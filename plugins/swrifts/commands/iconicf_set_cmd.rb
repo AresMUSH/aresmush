@@ -36,6 +36,7 @@ module AresMUSH
 			def handle  
 			
 				race_trait = enactor.swrifts_traits.select { |a| a.name == "race" }.first #get the Race trait off of the character	
+				client.emit (race_trait.inspect)
 								
 				init = Global.read_config('swrifts', 'init')
 				
@@ -43,6 +44,7 @@ module AresMUSH
 					
 				if (race_trait)
 					race_name = race_trait.rating #get the Race name off the character	
+					client.emit (race_name)
 					
 					race = Swrifts.get_race(self.enactor, race_name) #get the Race entry we're working with from the yml	
 					
