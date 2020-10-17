@@ -328,6 +328,8 @@ module AresMUSH
 				cyber_check = cvalue.include?("Cyber Resistant^") #see if the race has the value
 				nsb_check = cvalue.include?("Non-Standard Build^") #see if the race has the value
 				bp_check = cvalue.include?("Bizarre Physiology^") #see if the race has the value
+				
+				return (nsb_check)
 
 				edgecheck = model.swrifts_edges
 
