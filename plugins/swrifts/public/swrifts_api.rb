@@ -306,14 +306,7 @@ module AresMUSH
 	#This is used for Edges and Traits. 
 	
 	def self.returnsysedgesforcg(cgsys, cg)
-		iconicfarray = Array.new
-		
-		cg.each do |l|
-			ifname= "#{l.name}"
-			iconicfarray.push("#{ifname}")
-		end
-		# return (iconicfarray)
-		
+		iconicfarray = Array.new	
         list = cgsys.sort_by { |a| a['name']}
 		list.each do |c|
 			ifname = c['name']
@@ -325,12 +318,11 @@ module AresMUSH
 			edgsel = cg.select { |ss| ss.name.downcase.start_with?"#{ifnamesearch}" }.first #Filter the icf's to find the one that's been selected
 			
 			if (edgsel)
-				ifstring = "Here"
 				if (!edgsel.name.include?("*"))
-					ifstring = "#{ifname}"
+					ifstring = "#{c['name']}"
 				end
 			else
-				ifstring = "#{ifname}"
+				ifstring = "#{c['name']}"
 			end
 			iconicfarray.push("#{ifstring}")
 		end
