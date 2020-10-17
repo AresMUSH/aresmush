@@ -329,8 +329,6 @@ module AresMUSH
 				nsb_check = cvalue.include?("Non-Standard Build^") #see if the race has the value
 				bp_check = cvalue.include?("Bizarre Physiology^") #see if the race has the value
 				
-				return (nsb_check)
-
 				edgecheck = model.swrifts_edges
 
 				if ppe_check == true
