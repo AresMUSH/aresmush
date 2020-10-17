@@ -307,6 +307,7 @@ module AresMUSH
 	
 	def self.returnsysedgesforcg(cgsys, cg)
 		iconicfarray = Array.new
+		return (cg)
         list = cgsys.sort_by { |a| a['name']}
 		list.each do |c|
 			ifname = c['name']
