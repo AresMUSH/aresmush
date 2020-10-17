@@ -310,19 +310,19 @@ module AresMUSH
         list = cgsys.sort_by { |a| a['name']}
 		list.each do |c|
 			ifname = c['name']
-			desc = c['description']
-			ifnamesearch = ifname[/[^*]+/]
-			ifnamesearch = ifname[/[^^]+/]
-			ifnamesearch = ifname.downcase.strip
-			ifname = ifnamesearch
+			# desc = c['description']
+			# ifnamesearch = ifname[/[^*]+/]
+			# ifnamesearch = ifname[/[^^]+/]
+			# ifnamesearch = ifname.downcase.strip
+			# ifname = ifnamesearch
 			edgsel = cg.select { |ss| ss.name.downcase.start_with?"#{ifnamesearch}" }.first #Filter the icf's to find the one that's been selected
 			
 			if (edgsel)
-				if (!edgsel.name.include?("*"))
-					ifstring = "#{c['name']}"
+				if (!edgsel.name.include?("*") || !edgsel.name.include?("^"))
+					ifstring = ifname
 				end
 			else
-				ifstring = "#{c['name']}"
+				ifstring = ifname
 			end
 			iconicfarray.push("#{ifstring}")
 		end
