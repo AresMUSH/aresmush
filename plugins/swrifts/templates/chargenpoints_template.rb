@@ -43,7 +43,7 @@ module AresMUSH
 						title = left("#{ a.name }".capitalize, 5,'.')
 						table = left("#{ a.table }".capitalize, 11,'.')
 						rating = left(a.rating, 7)
-						"#{linebreak} #{title} #{table} #{rating} "
+						"#{linebreak} #{title} #{table} #{rating}"
 				end
 			end
 	
