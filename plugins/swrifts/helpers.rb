@@ -354,7 +354,7 @@ module AresMUSH
 				end
 				
 				if cyber_check == true
-					if icf_cyber > 0
+					if icf_cyber.size > 0
 						return true
 					else #continue
 					end
