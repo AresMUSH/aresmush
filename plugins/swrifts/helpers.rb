@@ -333,7 +333,7 @@ module AresMUSH
 				edgecheck = iconicf['edges']
 				pajock = edgecheck.to_s.downcase
 				pajcheck = pajock.include? "power armor jock*"
-				return (pajcheck)
+				return (pajock)
 
 				if ppe_check == true
 					abmagic = edgecheck.select{ |a| a.name == "ab magic*" }.first
