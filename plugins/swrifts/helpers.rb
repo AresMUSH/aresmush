@@ -360,8 +360,7 @@ module AresMUSH
 				end
 				
 				if nsb_check == true
-					nsbcheck = model.swrifts_edges
-					pajock = nsbcheck.select{ |a| a.name == "power armor jock*" }.first
+					pajock = edgecheck.select{ |a| a.name == "power armor jock*" }.first
 					if (pajock)
 						return true
 					else #continue
