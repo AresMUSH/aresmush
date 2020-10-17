@@ -274,7 +274,7 @@ module AresMUSH
 				racestring << ")"
 			end
 		end
-		charrace = "#{charrace}"
+		charrace = "#{racestring}"
 		return (charrace)
 	end
 	
