@@ -209,7 +209,7 @@ module AresMUSH
 			else 
 			end
 
-			# ----- This sets the default Hinderances on the Character -----	
+			# ----- Add Hinderances to Character -----	
 			if (system['hinderances']) 
 				system_hinderances=system['hinderances'] 
 				system_hinderances.each do |key|
@@ -220,7 +220,7 @@ module AresMUSH
 			end
 			
 			dbgstr = ''
-			# ----- This sets the default Edges on the Character -----				
+			# ----- Add Edges to Character -----				
 			if (system['edges'])
 				system_edges=system['edges'] 
 				system_edges.each do |key|
