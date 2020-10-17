@@ -1,7 +1,7 @@
 module AresMUSH
 	module Swrifts
  
-		## ----- Init
+## ----- Init
 		
 		def self.init_complete(char)
 			char.swrifts_traits
@@ -14,6 +14,7 @@ module AresMUSH
 				numbers.each do |key|
 					setthing = "hj#{key}"
 					setrating = rand(1..10)
+					settable = "None"
 					SwriftsHeroesj.create(name: setthing, rating: setrating, character: model)
 				end
 			end			
@@ -140,7 +141,7 @@ module AresMUSH
 			end
 			
 		end
-		
+## ----- End Init			
 		
 ## ----- Update Char for System		
 		def self.run_system(model, system)
@@ -501,12 +502,12 @@ module AresMUSH
 		
 		## ----- Add Rating
 		
-		def self.modify_rating(model, collection, point_name, mod)
-			current_rating = Swrifts.points_rating(model, point_name).to_i
-			new_rating = current_rating + mod
-			points = Swrifts.find_points(model, point_name)				
-			points.update(rating: new_rating)
-		end
+		# def self.modify_rating(model, collection, point_name, mod)
+			# current_rating = Swrifts.points_rating(model, point_name).to_i
+			# new_rating = current_rating + mod
+			# points = Swrifts.find_points(model, point_name)				
+			# points.update(rating: new_rating)
+		# end
 
 		def self.points_rating(char, point_name)
 			points = Swrifts.find_points(char, point_name)
@@ -685,6 +686,25 @@ module AresMUSH
 			element = char.set.select { |a| a.name.downcase == element_title }.first
 			element ? element.rating : 0
 		end
+		
+
+			
+			
+## ----- Generic Set Update with Rating
+		# def self.set_update(model, set, element, rating)
+			# if (set[element])
+				# set_element = set[element]
+				# system_counters.each do |key, rating|
+					# counter_name = "#{key}".downcase
+					# mod = "#{rating}".to_i
+					# current_rating = Swrifts.counters_rating(model, counter_name).to_i
+					# new_rating = current_rating + mod
+					# counters = Swrifts.find_counters(model, counter_name)				
+					# counters.update(rating: new_rating)
+				# end
+			# else 
+			# end
+		# end
 
 		
 		## ----- Die Step
