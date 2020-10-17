@@ -473,7 +473,7 @@ module AresMUSH
 		end
 		
 		init = Global.read_config('swrifts', 'init')
-					
+		dbgstr = ''			
 		
 		#Get the iconic framework and race set on the form
 		c_iconicf = chargen_data[:custom][:iconicf]
@@ -508,7 +508,7 @@ module AresMUSH
 				c_edgesnofw.each do |key|
 					edge_name = "#{key}".downcase
 					ss = Swrifts.add_feature(model, SwriftsEdges, "edges", edge_name)
-					# dbgstr << "Edge name: #{edge_name}, #{ss}%r"
+					dbgstr << "Edge name: #{edge_name}, #{ss}%r"
 				end
 			end
 			
@@ -536,7 +536,7 @@ module AresMUSH
 				# dbgstr << "Edge name: #{edge_name}, #{ss}%r"
 			# end
 	
-		return
+		return (dbgstr)
 	
 	end
 	
