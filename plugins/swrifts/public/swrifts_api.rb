@@ -495,6 +495,8 @@ module AresMUSH
 		chopped_race = Website.format_input_for_mush(chopped_race)
 		icf_downcase = chopped_iconicf.downcase.strip  # Stripped and downcased iconicframework name.
 		race_downcase = chopped_race.downcase.strip  # Stripped and downcased race name.
+		
+		return (race_downcase)
 
 		## ----- Update Iconic Framework
 		
