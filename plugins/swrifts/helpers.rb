@@ -320,7 +320,6 @@ module AresMUSH
 				
 			dragon_race = race_name.include?("dragon")
 			dragon_icf = icf_name.include?("dragon")
-			return ("#{dragon_race} - #{dragon_icf}")
 			
 			if dragon_race or dragon_icf 
 				return true
