@@ -509,8 +509,8 @@ module AresMUSH
 
 			#Save the no framework edges
 			if (c_edgesnofw)
-				c_edgesnofw.each do |key|
-					edge_name = "#{key.name}".downcase
+				c_edgesnofw.each do |key value|
+					edge_name = "#{value.name}".downcase
 					ss = Swrifts.add_feature(char, SwriftsEdges, "edges", edge_name)
 					dbgstr << "Edge name: #{edge_name}, #{ss}%r"
 				end
