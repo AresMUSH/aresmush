@@ -195,10 +195,18 @@ module AresMUSH
 		cgtraits = returncgpforcg(cgpoints)
 		
 		#Get the Edges that were set on the character.
-		cgedg = returnedgesforcg(cgedges,cgsysedges)
+		fw = "all"
+		cgedg = returnedgesforcg(cgedges,cgsysedges, fw)
+		fw = "nofw"
+		cgedgnofw = returnedgesforcg(cgedges,cgsysedges, fw)		
+
 		
-		#Get the hinderances that were set on the character.	
-		cghind = returnedgesforcg(cghinder,cgsyshind)
+		#Get the hinderances that were set on the character.
+		fw = "all"
+		cghind = returnedgesforcg(cghinder,cgsyshind, fw)
+		fw = "nofw"
+		cghindnofw = returnedgesforcg(cghinder,cgsyshind, fw)
+		
 
 		#Get the System Edges
 		sysedges = returnsysedgesforcg(cgsysedges, cgedges)			
@@ -217,6 +225,8 @@ module AresMUSH
 		  initracepoints: initracepoints,
 		  cgedges: cgedg, #Edges on Character
 		  cghind: cghind, #Hinderances on Character
+		  cgedgesnofw: cgedgnofw, #Edges on Character for framework stuff
+		  cghindnofw: cghindnofw, #Hinderances on Character for framework stuff
 		  sysedges: sysedges, #Edges from system
 		  swsyshind: syshind, #Hinderances from system
 		} 
@@ -312,9 +322,6 @@ module AresMUSH
 			ifname = c['name']
 			ifnamedowncase = ifname.downcase
 			desc = c['description']
-			# ifnamesearch = ifname[/[^*]+/]
-			# ifnamesearch = ifname[/[^^]+/]
-			# ifnamesearch = ifname.downcase.strip
 			edgsel = cg.select { |ss| ss.name.downcase.start_with?"#{ifnamedowncase}" }.first #Filter the icf's to find the one that's been selected
 
 			if (edgsel)
@@ -411,19 +418,39 @@ module AresMUSH
 		return (cgpointsarray)
 	end	
 	
-	def self.returnedgesforcg(cg, cgsys)
+	def self.returnedgesforcg(cg, cgsys, fw)
 		cgedgearray = []
 		cgp = ''
-		cg.each do |c|
+		
+		if (fw == 'all')
+			cg.each do |c|
+					cgname = "#{c.name}"
+					cgname = cgname.downcase
+					cgname = cgname[/[^*]+/]
+					cgname = cgname[/[^^]+/]
+					cgname = cgname.strip
+					edgsel = cgsys.select { |ss| ss['name'].downcase == cgname.downcase }.first #Filter the icf's to find the one that's been selected	
+					cgdesc = edgsel['description']
+					cgedgearray << {class: c.name, name: cgname, rating: cgdesc}
+			end
+		end
+		
+		if (fw == "nofw")
+			cg.each do |c|
 				cgname = "#{c.name}"
 				cgname = cgname.downcase
-				cgname = cgname[/[^*]+/]
-				cgname = cgname[/[^^]+/]
-				cgname = cgname.strip
-				edgsel = cgsys.select { |ss| ss['name'].downcase == cgname.downcase }.first #Filter the icf's to find the one that's been selected	
-				cgdesc = edgsel['description']
-				cgedgearray << {class: c.name, name: cgname, rating: cgdesc}
+				cgnamesub = cgnamesub.gsub("^", "*")
+				if (!cgnamesub.include?("*"))
+					cgname = cgname[/[^*]+/]
+					cgname = cgname[/[^^]+/]
+					cgname = cgname.strip
+					edgsel = cgsys.select { |ss| ss['name'].downcase == cgname.downcase }.first #Filter the icf's to find the one that's been selected	
+					cgdesc = edgsel['description']
+					cgedgearray << {class: c.name, name: cgname, rating: cgdesc}
+				end
+			end
 		end
+			
 		return (cgedgearray)
 	end		
 	
