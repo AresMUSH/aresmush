@@ -361,7 +361,7 @@ module AresMUSH
 				
 				if nsb_check == true
 					pajock = edgecheck.select{ |a| a.name == "power armor jock*" }.first
-					return ("#{nsb_check} - #{pajock.inspect}")
+					return ("#{edgecheck}")
 					if (pajock)
 						return true
 					else #continue
