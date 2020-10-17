@@ -137,8 +137,6 @@ swrifts:
                 - Flight^
                 - Size 6^
                 - Limited Metamorphosis*
-            complications:
-                - Dragon^
         -
             name: Dragon Forest Runner
             stats:
@@ -162,8 +160,6 @@ swrifts:
             dstats:
                 pace: 4
                 running: 2
-            complications:
-                - Dragon^
         - 
             name: Dragon Great Horned
             stats:
@@ -185,8 +181,6 @@ swrifts:
                 ppe_max: 5
             edges:
                 - Major Psionic^
-            complications:
-                - Dragon^
         - 
             name: Dragon Royal Frilled
             stats:
@@ -216,8 +210,6 @@ swrifts:
                 psionics: 1
             chargen_points: 
                 psionic_slots: -1
-            complications:
-                - Dragon^
         - 
             name: Dragon Snow Lizard
             stats:
@@ -233,8 +225,6 @@ swrifts:
                 - Snowstorm Transformation^
                 - Size 6^
                 - Limited Metamorphosis^
-            complications:
-                - Dragon^
         - 
             name: Fennodi
             book_reference: TLPG
