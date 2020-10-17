@@ -21,10 +21,21 @@ module AresMUSH
 			end
 			
 			def heroesj
-				format_three_per_line @char.swrifts_heroesj
+				format_hj @char.swrifts_heroesj
 			end
 
 			def format_three_per_line(list)
+				list.to_a.sort_by { |a| a.name }
+					.each_with_index
+						.map do |a, i| 
+						linebreak = i % 3 == 0 ? "\n" : ""
+						title = left("#{ a.name }".capitalize, 16,'.')
+						rating = left(a.rating, 7)
+						"#{linebreak} #{title} #{rating} "
+				end
+			end
+
+			def format_hj(list)
 				list.to_a.sort_by { |a| a.name }
 					.each_with_index
 						.map do |a, i| 
