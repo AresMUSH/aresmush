@@ -514,7 +514,7 @@ module AresMUSH
 					# ss = Swrifts.add_feature(char, SwriftsEdges, "edges", edge_name)
 					# dbgstr << "Edge name: #{edge_name}, #{ss}%r"
 					dbgstr << "Edge name: #{key}, #{value}%r"
-					return (debugstr)
+					return (dbgstr)
 				end
 			end
 			
