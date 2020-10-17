@@ -316,9 +316,10 @@ module AresMUSH
 			# ifnamesearch = ifname[/[^^]+/]
 			# ifnamesearch = ifname.downcase.strip
 			edgsel = cg.select { |ss| ss.name.downcase.start_with?"#{ifnamedowncase}" }.first #Filter the icf's to find the one that's been selected
-			
+
 			if (edgsel)
-				if (!edgsel.name.include?("*"))
+				edgselname = edgsel.name.gsub("^", "*")
+				if (!edgselname.include?("*"))
 					ifstring = ifname
 				end
 			else
