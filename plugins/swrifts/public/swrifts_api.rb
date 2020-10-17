@@ -499,9 +499,9 @@ module AresMUSH
 			iconicf = Global.read_config('swrifts', 'iconicf') #Read the config file for Iconic Frameworks
 			icfsel = iconicf.select { |ss| ss['name'].downcase == icf_downcase }.first #Filter the icf's to find the one that's been selected	
 			tt = Swrifts.run_init(char, init)  #Calls run_init in helpers.rb
+			tt1 = Swrifts.run_system(char, icfsel) #Set the base stats based on the ICF chosen.			
 			trait = Swrifts.find_traits(char, 'iconicf')   #Calls find_traits in helpers.rb				
 			trait.update(rating: icf_downcase)  #Update the Icf with the one chosen.
-			tt1 = Swrifts.run_iconicf(char, icfsel) #Set the base stats based on the ICF chosen.
 
 			#Save the no framework edges
 			c_edgesnofw.each do |key|
