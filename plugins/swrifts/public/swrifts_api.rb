@@ -326,7 +326,7 @@ module AresMUSH
 			
 			if (edgsel)
 				ifstring = "Here"
-				if (!edgsel['name'].include?("*"))
+				if (!edgsel.name.include?("*"))
 					ifstring = "#{ifname}"
 				end
 			else
