@@ -53,8 +53,10 @@ module AresMUSH
 					icf_name = icf_trait.rating #get the Iconic Framework name off the character
 					client.emit (icf_name.inspect)
 					icf_name = icf_name.downcase
+					client.emit (icf_name.inspect)
 					
 					iconicf = Swrifts.get_iconicf(self.enactor, icf_name) #get the Iconic Framework entry from the yml
+					client.emit (iconicf.inspect)
 					
 					ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
 					
