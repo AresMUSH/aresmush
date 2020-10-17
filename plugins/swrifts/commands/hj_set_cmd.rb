@@ -22,7 +22,7 @@ module AresMUSH
 			#----- Check to see:
 			def check_valid_hj_table
 				
-				client.emit (arg1)
+				client.emit (self.hj_slot)
 				client.emit (self.hj_table_name)
 				return
 				
