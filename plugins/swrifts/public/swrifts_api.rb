@@ -321,6 +321,7 @@ module AresMUSH
 			ifnamesearch = ifname[/[^*]+/]
 			ifnamesearch = ifname[/[^^]+/]
 			ifnamesearch = ifname.downcase
+			ifname = ifnamesearch
 			edgsel = cg.select { |ss| ss.name.downcase == ifnamesearch }.first #Filter the icf's to find the one that's been selected
 			
 			if (edgsel)
