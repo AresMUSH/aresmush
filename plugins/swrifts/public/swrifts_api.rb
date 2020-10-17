@@ -313,6 +313,7 @@ module AresMUSH
 			desc = c['description']
 			edgsel = cg.select { |ss| ss.name.downcase == ifname.downcase }.first #Filter the icf's to find the one that's been selected
 			if (edgsel)
+				return ('here')
 				if (!edgsel['name'].include?("*"))
 					ifstring = "#{ifname}"
 				end
