@@ -323,7 +323,7 @@ module AresMUSH
 			
 			if dragon_race && dragon_icf 
 				return false
-			elsif dragon_rase || dragon_icf	
+			elsif dragon_race || dragon_icf	
 				return true
 			else
 			end
