@@ -511,11 +511,10 @@ module AresMUSH
 			
 			
 			#Set the Race
-			sysrace = Global.read_config('swrifts', 'race') #Read the config file for Race
-			return ("ddd: #{sysrace}")
-			racesel = sysrace.select { |ss| ss['name'].downcase == race_downcase }.first #Filter the races to find the one that's been selected	
+			racesys = Swrifts.find_race_config(race_downcase) #get the Race entry we're working with from the yml
+			#rc = Swrifts.race_check(model, race, self.race_name, icf_name) # Checks if ICF and Race work together
 			race_trait = Swrifts.find_traits(char, 'race')	 #get the Race trait off of the character
-			race_trait.update(rating: race_downcase) #Update the race with the one chosen.		
+			race_trait.update(rating: race_downcase) #Update the race with the one chosen.
 
 			#Save the no framework edges
 			if (c_edgesnofw)  #If there are edges not related to the Iconic Framework and Race
