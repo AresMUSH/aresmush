@@ -309,7 +309,7 @@ module AresMUSH
 		iconicfarray = Array.new
 		
 		cg.each do |l|
-			ifname= "#{l}"
+			ifname= "#{l.name}"
 			iconicfarray.push("#{ifname}")
 		end
 		return (iconicfarray)
