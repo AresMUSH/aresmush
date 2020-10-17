@@ -37,6 +37,28 @@ swrifts:
                 - Cybernetics*
                 - Higher Standard*
                 - Power Activators* 
+            hj1_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
+            hj2_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
         -
             name: Dragon Juicer
             book_reference: A&M 7
@@ -561,7 +583,7 @@ swrifts:
                 - Cybernetics*
                 - Disconnected*
                 - Power Activators*
-            hj_table_options:
+            hj1_options:
                 - Body Armor
                 - Close Combat Weapons
                 - Cybernetics
