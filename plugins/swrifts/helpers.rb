@@ -330,14 +330,12 @@ module AresMUSH
 				nsb_check = cvalue.include?("Non-Standard Build^") #see if the race has the value
 				bp_check = cvalue.include?("Bizarre Physiology^") #see if the race has the value
 				
-				edgecheck = iconicf['edges']
-				pajock = edgecheck.to_s.downcase
-				pajcheck = pajock.include? "power armor jock*"
-				return (pajock)
+				icf_edges = iconicf['edges']
+				edgecheck = icf_edges.to_s.downcase
 
 				if ppe_check == true
-					abmagic = edgecheck.select{ |a| a.name == "ab magic*" }.first
-					abmiracles = edgecheck.select{ |a| a.name == "ab miracles*" }.first
+					abmagic = edgecheck.include? "ab magic*"
+					abmiracles = edgecheck.include? "ab miracles*"
 					if (abmagic) || (abmiracles)
 						return true
 					else #continue
@@ -364,8 +362,8 @@ module AresMUSH
 				end
 				
 				if nsb_check == true
-					pajock = edgecheck.select{ |a| a.name == "power armor jock*" }.first
-					if (pajock)
+				pajcheck = edgecheck.include? "power armor jock*"
+					if (pajcheck)
 						return true
 					else #continue
 					end
