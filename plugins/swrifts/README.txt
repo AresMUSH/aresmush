@@ -10,4 +10,4 @@ swrifts: 										#PLUGIN
 swrifts:										#PLUGIN
     iconicf:									#SYSTEM
 		counters:								#SET
-			ppe_max: 5							#ELEMENT	:	#ELEMENT_RATING
+			ppe_max: 5							#ELEMENT_NAME	:	#ELEMENT_RATING
