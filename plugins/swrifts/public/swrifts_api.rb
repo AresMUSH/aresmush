@@ -495,8 +495,6 @@ module AresMUSH
 		chopped_race = Website.format_input_for_mush(chopped_race)
 		icf_downcase = chopped_iconicf.downcase.strip  # Stripped and downcased iconicframework name.
 		race_downcase = chopped_race.downcase.strip  # Stripped and downcased race name.
-		
-		return (race_downcase)
 
 		## ----- Update Iconic Framework
 		
@@ -514,6 +512,7 @@ module AresMUSH
 			
 			#Set the Race
 			sysrace = Global.read_config('swrifts', 'race') #Read the config file for Race
+			return sysrace
 			racesel = sysrace.select { |ss| ss['name'].downcase == race_downcase }.first #Filter the races to find the one that's been selected	
 			race_trait = Swrifts.find_traits(char, 'race')	 #get the Race trait off of the character
 			race_trait.update(rating: race_downcase) #Update the race with the one chosen.		
