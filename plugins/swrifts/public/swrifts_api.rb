@@ -322,10 +322,13 @@ module AresMUSH
 				if (!edgselname.include?("*"))
 					ifstring = ifname
 					ifdisabled = false
+				else
+					ifstring = ifname
+					ifdisabled = true
 				end
 			else
 				ifstring = ifname
-				ifdisabled = true
+				ifdisabled = false
 			end
 			iconicfarray << {name: ifstring, disabled: ifdisabled}
 		end
