@@ -23,6 +23,10 @@ module AresMUSH
 			def heroesj
 				format_hj @char.swrifts_heroesj
 			end
+			
+			def randnum
+				format_three_per_line @char.swrifts_randnum
+			end
 
 			def format_three_per_line(list)
 				list.to_a.sort_by { |a| a.name }
