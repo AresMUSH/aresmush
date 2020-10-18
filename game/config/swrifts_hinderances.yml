@@ -45,10 +45,14 @@ swrifts:
       name: Bad Eyes-
       description: –1 to all Trait rolls dependent on vision
       hind_points: 1
+      excludes:
+        - Bad Eyes+
     -
       name: Bad Eyes+
       description: –2 to all Trait rolls dependent on vision
       hind_points: 2
+      excludes:
+        - Bad Eyes-      
     -
       name: Bad Luck
       description: The characters starts with one less Benny per session.
@@ -101,10 +105,14 @@ swrifts:
       name: Delusional-
       description: The individual believes something strange that causes him frequent trouble.
       hind_points: 1
+      excludes:
+        - Delusional+      
     -
       name: Delusional+
       description: The individual believes something strange that causes him frequent trouble.
       hind_points: 2
+      excludes:
+        - Delusional-      
     -
       name: Doubting Thomas
       description: –2 to use mechanical or electrical devices
@@ -113,10 +121,14 @@ swrifts:
       name: Driven-
       description: The character doesn’t believe in the supernatural, often exposing him to unnecessary risks
       hind_points: 1
+      excludes:
+        - Driven+      
     -
       name: Driven+
       description: The hero’s actions are driven by some important goal or belief.
       hind_points: 2
+      excludes:
+        - Driven-      
     -
       name: Elderly
       description: –1 to Pace, running, Agility, Strength, and Vigor. Hero gets 5 extra skill points.
@@ -128,34 +140,50 @@ swrifts:
       name: Enemy-
       description: The character has a recurring nemesis.
       hind_points: 1
+      excludes:
+        - Enemy+      
     -
       name: Enemy+
       description: The character has a recurring nemesis.
       hind_points: 2
+      excludes:
+        - Enemy-      
     -
       name: Greedy-
       description: The individual is obsessed with wealth and material possessions.
       hind_points: 1
+      excludes:
+        - Greedy+      
     -
       name: Greedy+
       description: The individual is obsessed with wealth and material possessions.
       hind_points: 2
+      excludes:
+        - Greedy-      
     -
       name: Habit-
       description: Addicted to something.
       hind_points: 1
+      excludes:
+        - Habit+      
     -
       name: Habit+
       description: Addicted to something, sufers Fatigue if deprived.
       hind_points: 2
+      excludes:
+        - Habit-      
     -
       name: Hard of Hearing-
       description: –4 to Notice sounds
       hind_points: 1
+      excludes:
+        - Hard of Hearing+      
     -
       name: Hard of Hearing+
       description: automatic failure to Notice sounds
       hind_points: 2
+      excludes:
+        - Hard of Hearing-      
     -
       name: Heroic
       description: The character always helps those in need.
@@ -176,10 +204,14 @@ swrifts:
       name: Jealous-
       description: The individual covets what others have.
       hind_points: 1
+      excludes:
+        - Jealous+      
     -
       name: Jealous+
       description: The individual covets what others have.
       hind_points: 2
+      excludes:
+        - Jealous-      
     -
       name: Loyal
       description: The hero is loyal to his friends and allies.
@@ -188,10 +220,14 @@ swrifts:
       name: Mania-
       description: -1 to Persuasion to those who know of it.
       hind_points: 1
+      excludes:
+        - Mania+      
     -
       name: Mania+
       description: Full time obsession with serious consequences if caught or discovered. 
       hind_points: 2
+      excludes:
+        - Mania-      
     -
       name: Mean
       description: –1 to Persuasion rolls.
@@ -216,10 +252,14 @@ swrifts:
       name: Obligation-
       description: The character has a weekly obligation of 20 hours.
       hind_points: 1
+      excludes:
+        - Obligation+      
     -
       name: Obligation+
       description: The character has a weekly obligation of 40 hours.
       hind_points: 2
+      excludes:
+        - Obligation-      
     -
       name: One Arm
       description: –4 to tasks (such as Athletics) that require two hands.
@@ -232,10 +272,14 @@ swrifts:
       name: Outsider-
       description: The character doesn’t fit in to the local environment and subtracts 2 from Persuasion rolls. 
       hind_points: 1
+      excludes:
+        - Outsider+      
     -
       name: Outsider+
       description: Has no legal rights or other serious consequences
       hind_points: 2
+      excludes:
+        - Outsider-      
     -
       name: Overconfident
       description: The hero believes she can do anything
@@ -244,34 +288,50 @@ swrifts:
       name: Pacifist-
       description: Fights only in self-defense
       hind_points: 1
+      excludes:
+        - Pacifist+      
     -
       name: Pacifist+
       description: Won’t fight at all
       hind_points: 2
+      excludes:
+        - Pacifist-      
     -
       name: Partisan-
       description: Check on the lower of Spirit or Smarts to interact with those other than his own group in any positive way.
       hind_points: 1
+      excludes:
+        - Partisan+      
     -
       name: Partisan+
       description: As per Partisan-, plus on a failure opposing party's attitude decreaes on step on the Reaction Table.
       hind_points: 2
+      excludes:
+        - Partisan-      
     -
       name: Phobia-
       description: The character is afraid of something, and subtracts –1 from all Trait rolls in its presence
       hind_points: 1
+      excludes:
+        - Phobia+      
     -
       name: Phobia+
       description: The character is afraid of something, and subtracts –2 from all Trait rolls in its presence
       hind_points: 2
+      excludes:
+        - Phobia-      
     -
       name: PTSD-
       description: Make a Spirit check. Failure starts with one less Benny.
       hind_points: 1
+      excludes:
+        - PTSD+      
     -
       name: PTSD+
       description: As per PTSD-, plus gain a level of Sleep-based Fatigue. 
       hind_points: 2
+      excludes:
+        - PTSD-      
     -
       name: Poverty
       description: Half starting funds and the character is always broke.
@@ -284,26 +344,38 @@ swrifts:
       name: Ruthless-
       description: The character does what it takes to get her way.
       hind_points: 1
+      excludes:
+        - Ruthless+      
     -
       name: Ruthless+
       description: The character does what it takes to get her way.
       hind_points: 2
+      excludes:
+        - Ruthless-      
     -
       name: Secret-
       description: The hero has a dark secret of some kind.
       hind_points: 1
+      excludes:
+        - Secret+      
     -
       name: Secret+
       description: The hero has a dark secret of some kind.
       hind_points: 2
+      excludes:
+        - Secret-      
     -
       name: Shamed-
       description: The individual is haunted by some tragic event from her past
       hind_points: 1
+      excludes:
+        - Shamed+      
     -
       name: Shamed+
       description: The individual is haunted by some tragic event from her past
       hind_points: 2
+      excludes:
+        - Shamed-      
     -
       name: Slow-
       description: Pace –1, reduce running die one step. May not take the Fleet-Footed Edge.
@@ -311,6 +383,8 @@ swrifts:
       modifiers: yes
       dstats:
         pace: -1
+      excludes:
+        - Slow+        
     -
       name: Slow+
       description: -2 to Athletics and rolls to resist Athletics. May not take the Fleet-Footed Edge.
@@ -318,6 +392,8 @@ swrifts:
       modifiers: yes
       dstats:
         pace: -1
+      excludes:
+        - Slow-        
     -
       name: Small
       description: Size and Toughness are reduced by 1. Size cannot be reduced below –1.
@@ -334,18 +410,26 @@ swrifts:
       name: Suspicious-
       description: The individual is paranoid
       hind_points: 1
+      excludes:
+        - Suspicious+      
     -
       name: Suspicious+
       description: Allies subtract 2 when rolling to Support him.
       hind_points: 2
+      excludes:
+        - Suspicious-      
     -
       name: Thin Skinned-
       description: The character is particularly susceptible to personal atacks. Subtract two when resisting Taunt atacks.
       hind_points: 1
+      excludes:
+        - Thin Skinned+      
     -
       name: Thin Skinned+
       description: The character is particularly susceptible to personal atacks. Subtract four when resisting Taunt atacks.
       hind_points: 2
+      excludes:
+        - Thin Skinned-      
     -
       name: Tongue-Tied
       description: The character often misspeaks or can’t get her words out. –1 to Intimidation, Persuasion, and Taunt rolls.
@@ -354,34 +438,50 @@ swrifts:
       name: Ugly-
       description: The character is physically unatractive and subtracts 1 from Persuasion rolls.
       hind_points: 1
+      excludes:
+        - Ugly+      
     -
       name: Ugly+
       description: The character is physically unatractive and subtracts 2 from Persuasion rolls.
       hind_points: 2
+      excludes:
+        - Ugly-      
     -
       name: Vengeful-
       description: The adventurer seeks payback for slights against her
       hind_points: 1
+      excludes:
+        - Vengeful+      
     -
       name: Vengeful+
       description: The adventurer seeks payback for slights against her and will cause physical harm to get it.
       hind_points: 2
+      excludes:
+        - Vengeful-      
     -
       name: Vow-
       description: The individual has pledged himself to some cause.
       hind_points: 1
+      excludes:
+        - Vow+      
     -
       name: Vow+
       description: The individual has pledged himself to some cause.
       hind_points: 2
+      excludes:
+        - Vow-      
     -
       name: Wanted-
       description: The character is wanted by the authorities.
       hind_points: 1
+      excludes:
+        - Wanted+      
     -
       name: Wanted+
       description:  The character is wanted by the authorities.
       hind_points: 2
+      excludes:
+        - Wanted-      
     -
       name: Yellow
       description: –2 to Fear checks and resisting Intimidation.
@@ -396,6 +496,8 @@ swrifts:
         skills_points: -2
       counters: 
         bennies_max: 1
+      excludes:
+        - Young+        
     -
       name: Young+
       description: Has 3 atribute points, 10 skill points, and two extra Bennies per session.
@@ -406,3 +508,5 @@ swrifts:
         skills_points: -2
       counters:
         bennies_max: 2
+      excludes:
+        - Young-        
