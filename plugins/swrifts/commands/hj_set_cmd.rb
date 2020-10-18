@@ -47,7 +47,6 @@ module AresMUSH
 				if (hj_attr)
 					hj_selected = hj_attr.table #get the name out of the array
 					if hj_selected != "None"
-						client.emit (hj_selected)
 						return t('swrifts.hj_already_selected')
 					else
 					end
