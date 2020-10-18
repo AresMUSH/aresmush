@@ -42,10 +42,13 @@ module AresMUSH
 					client.emit (rating)
 					
 					if key == "hind_points"
-						mod = "#{rating}".to_i
+						client.emit ("yes")
 					else
+						client.emit ("no")
 					end
 				end 
+				
+				return
 				# client.emit (mod)
 				
 				new_points = current_points + mod
