@@ -23,7 +23,7 @@ module AresMUSH
 				system=iconicf
 				model=enactor
 				
-				rand_num_check = model.swrifts_randnum
+				rand_num_check = model.swrifts_randnum.empty?
 				client.emit (rand_num_check.inspect)
 				
 				return
