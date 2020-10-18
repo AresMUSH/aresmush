@@ -9,16 +9,16 @@ module AresMUSH
 		
 		def self.run_init(model, init)
 			
-			if !Swrifts.is_valid_cat?(model,"heroesj") #Are there any traits set - i.e INIT completed.
-				numbers = [1, 2, 3, 4]
-				numbers.each do |key|
-					setthing = "hj#{key}"
-					setrating = rand(1..10)
-					settable = "None"
-					setdesc = "None"
-					SwriftsHeroesj.create(name: setthing, table: settable, rating: setrating, description: setdesc, character: model)
-				end
-			end			
+			# if !Swrifts.is_valid_cat?(model,"heroesj") #Are there any traits set - i.e INIT completed.
+				# numbers = [1, 2, 3, 4]
+				# numbers.each do |key|
+					# setthing = "hj#{key}"
+					# setrating = rand(1..10)
+					# settable = "None"
+					# setdesc = "None"
+					# SwriftsHeroesj.create(name: setthing, table: settable, rating: setrating, description: setdesc, character: model)
+				# end
+			# end			
 			
 			#----- This sets the default traits field on the collection -----				
 			if (init['traits']) 
@@ -257,7 +257,7 @@ module AresMUSH
 			else 
 			end
 
-			# ----- This sets the default Magic Powers on the Character -----	
+			# ----- Adds Magic Powers to the Character -----	
 			if (system['magic_powers'])
 				system_magic_powers=system['magic_powers'] 			
 				system_magic_powers.each do |key|
@@ -267,7 +267,7 @@ module AresMUSH
 			else 
 			end 
 
-			# ----- This sets the default Psionic Powers on the Character -----	
+			# ----- Adds Psionic Powers to the Character -----	
 			if (system['psionic_powers'])
 				system_psionic_powers=system['psionic_powers']
 				system_psionic_powers.each do |key|
@@ -277,7 +277,7 @@ module AresMUSH
 			else 
 			end
 
-			# ----- This sets the default Cybernetics on the Character -----	
+			# ----- Adds Cybernetics to the Character -----	
 			if (system['cybernetics'])
 				system_cybernetics=system['cybernetics']
 				system_cybernetics.each do |key|
@@ -287,7 +287,7 @@ module AresMUSH
 			else 
 			end
 			
-			# ----- This sets the default Abilities on the Character -----	
+			# ----- Adds Abilities to the Character -----	
 			if (system['abilities'])
 				system_abilities=system['abilities'] 
 				system_abilities.each do |key|
@@ -297,7 +297,7 @@ module AresMUSH
 			else 
 			end
 			
-			# ----- This sets the default Complications on the Character -----
+			# ----- Adds Complication to the Character -----
 			if (system['complications'])
 				system_complications=system['complications'] 
 				system_complications.each do |key|
@@ -306,6 +306,32 @@ module AresMUSH
 				end
 			else 
 			end
+			
+			# ----- Create the Hero's Journey slots
+
+			if (system['hj1_options']) #See if there are any HJ slots outlined
+				counter = 0
+				system.each do | title, value |
+					title = title.slice(0,2)
+					if title == "hj" 
+						counter = counter + 1
+					else
+					end						
+				end
+				client.emit (counter)
+				counter = *(1..counter)
+				client.emit (counter)
+				
+				counter.each do |key|
+					setthing = "hj#{key}"
+					setrating = rand(1..10)
+					settable = "None"
+					setdesc = "None"
+					SwriftsHeroesj.create(name: setthing, table: settable, rating: setrating, description: setdesc, character: model)
+				end
+			else
+			end
+			
 		end
 ## ----- End Update Char for System	
 
