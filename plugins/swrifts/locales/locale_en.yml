@@ -98,3 +98,4 @@ en:
         points_spend: "You spend %{mod} points on %{name}."
         
         gen_invalid_name: "There is no %{cat} named %{name}."
+        gen_invalid_cgen: "You need to start CGEN before you can use this command."
