@@ -100,7 +100,7 @@ module AresMUSH
 						return PendingCmd
 					end
 				else
-					client.emit ("Error")
+					client.emit_failure ("Error - command not recognized")
 					return
 				end
 			when "sheet"
