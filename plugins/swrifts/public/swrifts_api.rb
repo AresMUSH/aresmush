@@ -536,7 +536,11 @@ module AresMUSH
 			end
 	
 		return (dbgstr)
+	end
 	
+	def self.systemlist(system)
+		syslist = Global.read_config('swrifts', system) #Read the config file for Iconic Frameworks
+		return syslist
 	end
 	
   end
