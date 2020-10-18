@@ -572,7 +572,7 @@ module AresMUSH
 			return false if !model
 			return false if !cat
 			catname = "swrifts_#{cat}"
-			charcat = model.swrifts_traits
+			charcat = model.catname
 			if (charcat.size == 0)
 				return false
 			else
