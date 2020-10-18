@@ -50,12 +50,12 @@ module AresMUSH
 			element_table = self.hj_table_name #Body Armor
 			
 			hj_yml = Global.read_config('swrifts', 'hjtables') #get all the hjtables yml info
-			hj_hash = hj_yml.select { |a| a['name'].downcase == element_table }.first #get the specific hj info
-			hj_roll = model.swrifts_heroesj.select { |a| a.name.downcase == element_name }.first
-			
 			client.emit (hj_yml.inspect)
+			hj_hash = hj_yml.select { |a| a['name'].downcase == element_table }.first #get the specific hj info
 			client.emit (hj_hash.inspect)
+			hj_roll = model.swrifts_heroesj.select { |a| a.name.downcase == element_name }.first
 			client.emit (hj_roll.inspect)
+			
 			return
 			
 			# element_desc = 
