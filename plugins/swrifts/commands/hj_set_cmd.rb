@@ -36,7 +36,7 @@ module AresMUSH
 				hj_check = hjvalue.include?(hj_table_name) #see if the hj table is on the list
 				
 				if  hj_check == false #Is the HJ on the IcF's list
-					return t('swrifts.hj_table_invalid_name', :name => self.hj_table.capitalize) 
+					return t('swrifts.hj_table_invalid_name', :name => self.hj_table_name.capitalize) 
 				else
 				end
 			end
