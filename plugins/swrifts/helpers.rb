@@ -9,9 +9,9 @@ module AresMUSH
 		
 		def self.run_init(model, init)
 			
-			rand_num_check = model.swrifts_randnum
+			rand_num_check = model.swrifts_randnum.empty?
 			
-			if  !(rand_num_check)
+			if rand_num_check == true
 				hj_nums = [1, 2, 3, 4, 5]
 				fandg_nums = [1, 2, 3, 4, 5]
 				hj_nums.each do |key|
