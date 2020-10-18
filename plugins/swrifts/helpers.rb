@@ -571,8 +571,7 @@ module AresMUSH
 		def self.is_valid_cat?(model,cat)
 			return false if !model
 			return false if !cat
-			catname = "swrifts_#{cat}"
-			charcat = model.catname
+			charcat = model.cat
 			if (charcat.size == 0)
 				return false
 			else
