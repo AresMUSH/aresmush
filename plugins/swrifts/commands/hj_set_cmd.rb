@@ -30,7 +30,7 @@ module AresMUSH
 				types = Global.read_config('swrifts', 'iconicf') #get all the iconicf yml info
 				icf_hash = types.select { |a| a['name'].downcase == icf_name }.first #get the specific iconicf info
 				
-				hjarray = icf_hash.select{ |a| a == hj_set }.first #pull the hj1_options array out of the race entry
+				hjarray = icf_hash.select{ |a| a == hj_set }.first #pull the hj1_options array out of the Iconic Framework entry
 				
 				hjvalue = hjarray[1] #pull the hj1_options value out of the array
 				hj_check = hjvalue.include?(hj_table_name) #see if the hj table is on the list

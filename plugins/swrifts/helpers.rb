@@ -729,7 +729,7 @@ module AresMUSH
 ## ----- Hero's Journey Start
 		
 		def self.hj_desc(model, element_name, element_table)
-			icfhj_roll = model.swrifts_heroesj.select { |a| a.name.downcase == element_name }.first #get the hj1 entry
+			icfhj_roll = model.swrifts_randnum.select { |a| a.name.downcase == element_name }.first #get the hj1 entry
 			icfhj_roll = icfhj_roll.rating # get the roll from hj1 
 			hj_yml = Global.read_config('swrifts', 'hjtables') #get all the hjtables yml 
 			hj_hash = hj_yml.select { |a| a['name'].downcase == element_table.downcase }.first #get the specific hj info
