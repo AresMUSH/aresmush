@@ -24,12 +24,11 @@ module AresMUSH
 					client.emit ("There are HJs outlined")
 					client.emit (iconicf.inspect)
 					
-					counts = hash.new 0
-					iconicf.each do | word |
-						counts[word] += 1
-					end
+					iconicf.each do | title, value |
+						client.emit ("#{title}")
+						client.emit ("#{value}")
 					
-					client.emit counts
+					end
 				else
 					client.emit ("No HJs outlined")
 				end
