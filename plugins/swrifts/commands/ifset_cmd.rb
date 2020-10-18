@@ -54,6 +54,7 @@ module AresMUSH
 				counter.each do |key|
 					setthing = "hj#{key}"
 					hj_set = model.swrifts_heroesj.select { |a| a.name.downcase == setthing }.first	
+					client.emit (hj_set.inspect)
 					settable = "None"
 					setdesc = "None"
 					hj_set.update(table: settable, description: setdesc, character: model)
