@@ -18,10 +18,10 @@ module AresMUSH
 
 			def handle
 
-			iconicf = Swrifts.get_iconicf(self.enactor, "shifter") #get the Iconic Framework entry from the yml
+			iconicf = Swrifts.get_iconicf(self.enactor, "Test") #get the Iconic Framework entry from the yml
 
 				if (iconicf['hj1']) #See if there are any HJ slots outlined
-					client.emit ("There are HJs outlined"
+					client.emit ("There are HJs outlined")
 				else
 					client.emit ("No HJs outlined")
 				end
