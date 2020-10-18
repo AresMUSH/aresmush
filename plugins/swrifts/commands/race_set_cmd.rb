@@ -22,18 +22,6 @@ module AresMUSH
 			def check_valid_iconicf
 				if !Swrifts.is_valid_tname?(self.race_name, "races") #Is the Race in the list
 					return t('swrifts.race_invalid_name', :name => self.race_name.capitalize) 
-				# elsif
-					# ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-						# if Swrifts.trait_set?(model,"race") #Is the Race already set
-							# return t('swrifts.trait_already_set',:name => "Race")
-						# end
-					# end
-				# elsif
-					# ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-						# if !Swrifts.is_valid_cat?(model,"traits") or !Swrifts.trait_set?(model,"iconicf")
-							# return t('swrifts.use_command',:name => "iconicf")
-						# end
-					# end
 				end
 			end
   
