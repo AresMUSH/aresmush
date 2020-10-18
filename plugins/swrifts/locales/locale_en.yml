@@ -92,6 +92,7 @@ en:
         
         hj_table_invalid_name: "%{table} is not a valid table for your Iconic Framework."
         hjselect_complete: "%{table} selected as your %{name} Hero's Journey slot."
+        hj_already_selected: "You have already selected a table for this Hero's Journey slot." 
         
         invalid_points: "You cannot spend %{mod} points on %{name}, you only have %{num} stat points."
         points_spend: "You spend %{mod} points on %{name}."
