@@ -20,6 +20,9 @@ module AresMUSH
 
 			iconicf = Swrifts.get_iconicf(self.target_name, "Test") #get the Iconic Framework entry from the yml
 			
+			system=iconicf
+			model=enactor
+			
 			if (system['hj1_options']) && !Swrifts.is_valid_cat?(model,"hc1") #See if there are any HJ slots outlined AND they haven't been set already
 				counter = 0
 				system.each do | title, value |
