@@ -42,12 +42,11 @@ module AresMUSH
 			def format_hj(list)
 				list.to_a.sort_by { |a| a.name }
 					.each_with_index
-						.map do |a, i| 
-						linebreak = i % 1 == 0 ? "\n" : ""
+						.map do |a | 
 						title = "#{ a.name } -".capitalize
-						table = left("#{ a.table }".capitalize, 27,'.')
-						desc = left(a.description, 42)
-						"#{linebreak} #{title} #{table} #{desc}"
+						table = "#{ a.table }".capitalize
+						desc = "#{a.description}"
+						"#{title} #{table} #{desc}"
 				end
 			end
 	
