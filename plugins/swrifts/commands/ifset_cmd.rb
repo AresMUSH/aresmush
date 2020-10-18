@@ -23,6 +23,8 @@ module AresMUSH
 				system=iconicf
 				model=enactor
 				
+				client.emit (system.inspect)
+				
 				systest = system('hj1_options')
 				client.emit (systest.inspect)
 				
