@@ -38,12 +38,15 @@ module AresMUSH
 				set = group.select { |a| a['name'].downcase == system_name }.first
 				
 				set.each do |key, rating| 
+					client.emit (key)
+					client.emit (rating)
+					
 					if key == "hind_points"
 						mod = "#{rating}".to_i
 					else
 					end
 				end 
-				client.emit (mod)
+				# client.emit (mod)
 				
 				new_points = current_points + mod
 				# client.emit (new_points) 
