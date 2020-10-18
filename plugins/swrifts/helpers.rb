@@ -567,17 +567,7 @@ module AresMUSH
 		  names = Global.read_config('swrifts', 'iconicf').map { |a| a['name'].downcase }
 		  names.include?(name.downcase)
 		end
-		
-		def self.is_valid_cat?(model,cat)
-			return false if !model
-			return false if !cat
-			charcat = model.cat
-			if (charcat.size == 0)
-				return false
-			else
-				return true
-			end
-		end
+
 
 		def self.trait_set?(model,traitname)
 			return false if !model	
