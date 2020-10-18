@@ -61,13 +61,14 @@ module AresMUSH
 			# client.emit (hj_rolls.inspect)
 			
 			hj_rolls.each do | roll, desc |
-				if (roll).include?(icfhj_roll.to_i)
-					client.emit (roll.inspect)
-					client.emit ("#{desc}")
-				else
-					client.emit (roll.inspect)
-					client.emit ("Not this one")
-				end
+				client.emit (roll.type)
+				# if (roll).include?(icfhj_roll.to_i)
+					# client.emit (roll.inspect)
+					# client.emit ("#{desc}")
+				# else
+					# client.emit (roll.inspect)
+					# client.emit ("Not this one")
+				# end
 			end
 		
 			# client.emit (element_desc.inspect)
