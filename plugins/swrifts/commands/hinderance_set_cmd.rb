@@ -30,7 +30,7 @@ module AresMUSH
 #----- Begin of def handle -----			
 			def handle  
 			
-				charhash = model.swrifts_chargenpoints
+				# charhash = enactor.swrifts_chargenpoints
 				
 				
 				current_rating = Swrifts.point_rating(enactor, 'hind_points')
