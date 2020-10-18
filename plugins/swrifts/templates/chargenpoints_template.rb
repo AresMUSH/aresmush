@@ -42,7 +42,7 @@ module AresMUSH
 						linebreak = i % 2 == 0 ? "\n" : ""
 						title = left("#{ a.name }".capitalize, 5,'.')
 						table = left("#{ a.table }".capitalize, 24,'.')
-						rating = left(a.rating, 10)
+						rating = left(a.rating, 7)
 						"#{linebreak} #{title} #{table} #{rating}"
 				end
 			end
