@@ -19,6 +19,9 @@ en:
         complications_title: "Complications"
         chargenpoints_title: "Chargen Points"
         damage_title: "Damage Level"
+        heroesj_title: "Hero's Journey"
+        dstats_title: "Derived Stats"
+        counters_title: "Counters"
 
         
         invalid_stat_name: "%{name} is not a valid stat name."
