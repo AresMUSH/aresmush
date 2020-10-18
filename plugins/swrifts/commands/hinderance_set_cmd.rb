@@ -16,13 +16,14 @@ module AresMUSH
 			
 			#----- Check to see:
 			def check_valid_iconicf
-				check_hind = !Swrifts.is_valid_tname?(self.hinderance_name, "hinderances")
+				check_hind = Swrifts.is_valid_tname?(self.hinderance_name, "hinderances")
 				check_cgen = self.target_name.swrifts_traits.empty?
 				client.emit (check_hind)
 				client.emit (check_cgen)
-				if  check_hind && check_cgen #Is the Hinderance in the list and have they started cgen
-					
+				if  check_hind == false
 					return t('swrifts.gen_invalid_name', :name => self.hinderance_name.capitalize, :cat => "Hinderance") 
+				elsif check_cgen == true
+					return t('swrifts.gen_invalid_cgen')
 				else
 					client.emit ("Pass")
 				end
