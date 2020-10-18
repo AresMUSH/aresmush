@@ -24,6 +24,7 @@ module AresMUSH
 					client.emit ("There are HJs outlined")
 					
 					iconicf.each do | title, value |
+						title = title.slice(0,2)
 						client.emit ("#{title}")
 					
 					end
