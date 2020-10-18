@@ -62,7 +62,7 @@ module AresMUSH
 			
 			hj_rolls.each do | roll, desc |
 				if roll.is_a?(Integer)
-					if (roll).include?(icfhj_roll.to_i)
+					if roll == icfhj_roll.to_i)
 						client.emit (roll.inspect)
 						client.emit ("#{desc}")
 					else
