@@ -50,7 +50,7 @@ module AresMUSH
 					end
 				end 
 				
-				# client.emit (mod)
+				client.emit ("#{mod}")
 				
 				return
 				
