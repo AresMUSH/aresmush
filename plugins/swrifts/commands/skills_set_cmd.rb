@@ -35,8 +35,11 @@ module AresMUSH
 			  
 			def handle
 				current_rating = Swrifts.skill_rating(enactor, self.skill_name)
+				client.emit (current_rating)
 				mod = self.mod
+				client.emit (mod)
 				new_rating = current_rating + mod
+				client.emit (new_rating)
 				current_points = Swrifts.point_rating(enactor, self.points_name)
 				client.emit (current_points)
 				new_points = current_points - mod
