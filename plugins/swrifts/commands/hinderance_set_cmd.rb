@@ -36,21 +36,24 @@ module AresMUSH
 				current_points = Swrifts.point_rating(enactor, 'hind_points')
 				group = Global.read_config('swrifts', 'hinderances')
 				set = group.select { |a| a['name'].downcase == system_name }.first
+				element = set.select { |a| a == 'hind_points' }.first
 				
-				set.each do |key, rating| 
-					client.emit (key)
-					client.emit (rating)
+				client.emit (element)
+				
+				# set.each do |key, rating| 
+					# client.emit (key)
+					# client.emit (rating)
 					
-					if key == "hind_points"
-						client.emit ("yes")
-						mod = rating
-						client.emit (mod)
-					else
-						client.emit ("no")
-					end
-				end 
+					# if key == "hind_points"
+						# client.emit ("yes")
+						# mod = rating
+						# client.emit (mod)
+					# else
+						# client.emit ("no")
+					# end
+				# end 
 				
-				client.emit ("#{mod}")
+				# client.emit ("#{mod}")
 				
 				return
 				
