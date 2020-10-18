@@ -62,9 +62,11 @@ module AresMUSH
 			
 			hj_rolls.each do | roll, desc |
 				if roll===icfhj_roll.to_i
-				client.emit (roll.inspect)
-				client.emit ("#{desc}")
+					client.emit (roll.inspect)
+					client.emit ("#{desc}")
 				else
+					client.emit (roll.inspect)
+					client.emit ("Not this one")
 				end
 			end
 		
