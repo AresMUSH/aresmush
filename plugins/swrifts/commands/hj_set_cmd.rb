@@ -33,7 +33,7 @@ module AresMUSH
 				hjarray = icf_hash.select{ |a| a == hj_set }.first #pull the hj1_options array out of the Iconic Framework entry
 				
 				hjvalue = hjarray[1] #pull the hj1_options value out of the array
-				hjvalue_downcase = hjvalue.downcase
+				hjvalue_downcase = "#{hjvalue}".downcase
 				hj_check = hjvalue_downcase.include?(hj_table_name) #see if the hj table is on the list
 				
 				if  hj_check == false #Is the HJ on the IcF's list
