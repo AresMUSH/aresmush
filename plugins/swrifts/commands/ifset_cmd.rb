@@ -23,7 +23,7 @@ module AresMUSH
 			system=iconicf
 			model=enactor
 			
-			hjcheck = Swrifts.is_valid_cat?(model,"hc1")
+			hjcheck = Swrifts.is_valid_cat?(model,"heroesj")
 			client.emit hjcheck
 			
 			if (system['hj1_options']) && !hjcheck #See if there are any HJ slots (iconicf command) outlined AND they haven't been set already
