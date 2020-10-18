@@ -36,7 +36,7 @@ module AresMUSH
 				hj_check = hjvalue.include?(hj_table_name) #see if the hj table is on the list
 				
 				if  hj_check == false #Is the HJ on the IcF's list
-					return t('swrifts.hj_table_invalid_name', :name => self.hj_table_name.capitalize) 
+					return t('swrifts.hj_table_invalid_name', :table => self.hj_table_name.capitalize, :name => self.hj_name.capitalize) 
 				else
 				end
 			end
@@ -53,7 +53,7 @@ module AresMUSH
 			hj_element = model.swrifts_heroesj.select { |a| a.name.downcase == element_name }.first			
 			hj_element.update(table: element_table)
 		
-			client.emit_success t('swrifts.hjselect_complete')
+			client.emit_success t('swrifts.hjselect_complete', :table => self.hj_table_name.capitalize)
 			end
 #----- End of def handle -----	
 

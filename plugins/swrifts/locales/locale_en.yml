@@ -80,10 +80,15 @@ en:
         iconiccomplications_set: "Iconic Framework Complications set."
         iconicchargenpoints_set: "Iconic Framework chargen points set."
         iconicf_complete: "You set your Iconic Framework to '%{iconicf}'"
+        
+        
         race_set: "You set your Race to %{name}."
         race_invalid_name: "There is no Race named %{name}."
-        invalid_points: "You cannot spend %{mod} points on %{name}, you only have %{num} stat points."
-        points_spend: "You spend %{mod} points on %{name}."
-        use_command: "Please use the swrifts/%{name} command."
         race_invalid: "You cannot select the '%{race}' Race with the Iconic Framework '%{icf}'."
         race_complete: "You set your Race to '%{race}'"
+        
+        hj_table_invalid_name: "%{table} is not a valid table for your Iconic Framework."
+        hjselect_complete: "%{table} selected as your %{name} Hero's Journey slot."
+        
+        invalid_points: "You cannot spend %{mod} points on %{name}, you only have %{num} stat points."
+        points_spend: "You spend %{mod} points on %{name}."
