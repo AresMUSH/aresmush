@@ -565,9 +565,9 @@ module AresMUSH
 			points ? points.rating : 0
 		end
 		
-		def self.find_points(char, collection, point_name) 
-			char.swrifts_chargenpoints.select { |a| a.name.downcase == name_downcase }.first
-		end
+		# def self.find_points(char, collection, point_name) 
+			# char.swrifts_chargenpoints.select { |a| a.name.downcase == name_downcase }.first
+		# end
 		
 		
 		## ----- Iconicf

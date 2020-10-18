@@ -33,22 +33,31 @@ module AresMUSH
 				# charhash = enactor.swrifts_chargenpoints
 				
 				system_name = self.hinderance_name.downcase
-				client.emit (system_name)
-				current_rating = Swrifts.point_rating(enactor, 'hind_points')
-				client.emit (current_rating)
+				current_points = Swrifts.point_rating(enactor, 'hind_points')
 				group = Global.read_config('swrifts', 'hinderances')
 				set = group.select { |a| a['name'].downcase == system_name }.first
-				client.emit (set)
-				# new_rating = current_rating + mod
-				# current_points = Swrifts.point_rating(enactor, self.points_name)
-				# client.emit (current_points)
-				# new_points = current_points - mod
-				# client.emit (new_points)
+				
+				set.each do |key, rating| 
+					if key == "hind_points"
+						mod = "#{rating}".to_i
+					else
+					end
+				end 
+				client.emit (mod)
+				
+				new_points = current_points + mod
+				# client.emit (new_points) 
+				
+				ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
+					points = Swrifts.find_points(model, 'hind_points')	
+					# client.emit (points)
+					points.update(rating: new_points)
+				end				
 			
-				# setthing = self.hinderance_name.downcase
-				# ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-					# SwriftsHinderances.create(name: setthing, character: model)
-				# end
+				setthing = self.hinderance_name.downcase
+				ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
+					SwriftsHinderances.create(name: setthing, character: model)
+				end
 			end
 #----- End of def handle -----	
 
