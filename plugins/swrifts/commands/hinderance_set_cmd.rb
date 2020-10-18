@@ -16,7 +16,7 @@ module AresMUSH
 			
 			#----- Check to see:
 			def check_valid_iconicf
-				if !Swrifts.is_valid_tname?(self.hinderance_name, 'hinderances') #Is the Hinderance in the list
+				if !Swrifts.is_valid_tname?(self.hinderance_name, "hinderances") #Is the Hinderance in the list
 					return t('swrifts.gen_invalid_name', :name => self.hinderance_name.capitalize, :cat => "Hinderance") 
 				else
 					client.emit ("No.")
