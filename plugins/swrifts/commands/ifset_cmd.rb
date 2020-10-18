@@ -17,30 +17,14 @@ module AresMUSH
 			
 
 			def handle
-				hinderance_name="Elderly" 
-				yml_data = Global.read_config('swrifts', 'hinderances')
-				tn = "modifiers"
 
-				hinderance_entry = yml_data.select { |a| a['name'].downcase == hinderance_name.downcase }.first
-				client.emit ( "#{hinderance_entry}" )
-				
-				checkmods = hinderance_entry.select { |a| a.name.downcase == tn }.first
-				
-				if (checkmods)
-					client.emit ( "#{checkmods}" )
+			iconicf = Swrifts.get_iconicf(self.enactor, "shifter") #get the Iconic Framework entry from the yml
+
+				if (iconicf['hj1']) #See if there are any HJ slots outlined
+					client.emit ("There are HJs outlined"
 				else
-					client.emit ( "No modifiers" )
+					client.emit ("No HJs outlined")
 				end
-
-				
-				# modifiers_entry = hinderance_entry.select { |a| a['name'].downcase == "modifiers" }.first
-				# modifiers_value = modifiers_entry.downcase
-				# client.emit ( "#{modifiers_value}" )
-				# if (modifiers_value)==true
-					# return true
-				# else
-					# return false
-				# end
 				
 			end
 			
