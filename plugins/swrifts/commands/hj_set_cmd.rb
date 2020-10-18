@@ -23,7 +23,7 @@ module AresMUSH
 			#----- Check to see:
 			def check_valid_hj_table
 			
-				icf_trait = enactor.swrifts_traits.select { |a| a.name == "iconicf" }.first #get the Iconic Framework trait off of the character
+				icf_trait = self.target_name.swrifts_traits.select { |a| a.name == "iconicf" }.first #get the Iconic Framework trait off of the character
 				icf_name = icf_trait.rating #get the Iconic Framework name off the character
 				icf_name = icf_name.downcase
 								
@@ -43,11 +43,10 @@ module AresMUSH
 			
 			def check_hj_selected
 								
-				hj_attr = enactor.swrifts_heroesj.select { |a| a.name == self.hj_name }.first #get the hj1 array out of the heroesj collection off of the character
+				hj_attr = self.target_name.swrifts_heroesj.select { |a| a.name == self.hj_name }.first #get the hj1 array out of the heroesj collection off of the character
 				if (hj_attr)
 					hj_selected = hj_attr.table #get the name out of the array
 					if hj_selected != "None"
-						client.emit (hj_selected)
 						return t('swrifts.hj_already_selected')
 					else
 					end
@@ -58,7 +57,7 @@ module AresMUSH
 #----- Begin of def handle -----			
 			def handle  
 			
-			model = enactor #character
+			model = self.target_name #character
 			# collection = "SwriftsHeroesj"
 			element_name = self.hj_name #hj1
 			element_table = self.hj_table_name #Body Armor
