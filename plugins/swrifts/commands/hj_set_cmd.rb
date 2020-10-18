@@ -47,7 +47,7 @@ module AresMUSH
 				if (hj_attr)
 					hj_name = hj_attr.name #get the name out of the array
 					when hj_name != "None"
-						client.emit ("You have already selected a table for this slot.")
+						return t('swrifts.hj_already_selected')
 					else
 					end
 				else
