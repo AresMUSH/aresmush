@@ -46,7 +46,7 @@ module AresMUSH
 				hj_attr = enactor.swrifts_heroesj.select { |a| a.name == self.hj_name }.first #get the hj1 array out of the heroesj collection off of the character
 				if (hj_attr)
 					hj_name = hj_attr.name #get the name out of the array
-					when hj_name != "None"
+					if hj_name != "None"
 						return t('swrifts.hj_already_selected')
 					else
 					end
