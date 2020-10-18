@@ -56,7 +56,7 @@ module AresMUSH
 			hj_roll = hj_roll.rating # get the roll from hj1
 			
 			
-			element_desc = hj_hash.select { |a| a.hj_roll.to_i }.first
+			element_desc = hj_hash.hj_roll
 			client.emit (element_desc.inspect)
 			
 			return
