@@ -53,7 +53,6 @@ module AresMUSH
 						return StatsCmd
 					else
 						return StatsSetCmd
-						# return PendingCmd
 					end
 				when "skill"
 					if (!cmd.args)							 
@@ -101,7 +100,7 @@ module AresMUSH
 						return PendingCmd
 					end
 				else
-					client.emit ("Error")
+					client.emit_failure ("Error - command not recognized")
 					return
 				end
 			when "sheet"
