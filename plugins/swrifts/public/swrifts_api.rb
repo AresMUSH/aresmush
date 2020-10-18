@@ -381,7 +381,7 @@ module AresMUSH
 	end		
 	
 	def self.returnraceforcg(model)
-		racearray = Array.new
+		racearray = []
         list = model.sort_by { |a| a['name']}
 		list.each do |c|
 			racename = c['name']
@@ -403,7 +403,10 @@ module AresMUSH
 				racestring << book
 				racestring << ")"
 			end
-			racearray.push("#{racestring}")
+			
+			ifdisabled=false # Will need better logic here.
+			
+			racearray << {name: racestring, disabled: ifdisabled, desc: desc}			
 		end
 		racearray.unshift("None")
 		return (racearray)
