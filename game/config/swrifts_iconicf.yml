@@ -616,6 +616,17 @@ swrifts:
                 - Ranged Weapons
                 - Training
                 - Underworld & Black Ops
+            hj2_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
         -   
             name: Werecat
             book_reference: B&B 20
@@ -1047,13 +1058,23 @@ swrifts:
                 - Highly Technical Machinery*
                 - Sonic Boom*
                 - Stand By to Fire*
-            hj1_table:
+            hj1_options:
                 - Cybernetics
                 - Close Combat Weapons
                 - Ranged Weapons
                 - Training
-            hj2_table: 
-                - Any
+            hj2_options: 
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Psionics
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
             gear:
                 - Glitter Boy Armor*
         -
