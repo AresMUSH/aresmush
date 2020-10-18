@@ -44,12 +44,13 @@ module AresMUSH
 					if key == "hind_points"
 						client.emit ("yes")
 						mod = "#{rating}"
+						client.emit (mod)
 					else
 						client.emit ("no")
 					end
 				end 
 				
-				client.emit (mod)
+				# client.emit (mod)
 				
 				return
 				
