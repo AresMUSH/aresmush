@@ -46,7 +46,7 @@ module AresMUSH
 						title = "#{ a.name } -".capitalize
 						table = "#{ a.table }".capitalize
 						desc = "#{a.description}"
-						"#{title} #{table} #{desc}"
+						"#{title} #{table}: #{desc}"
 				end
 			end
 	
