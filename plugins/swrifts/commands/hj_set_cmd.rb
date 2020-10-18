@@ -57,11 +57,13 @@ module AresMUSH
 			client.emit (hj_roll)
 			
 			hj_hash.each do |key, desc|
-				client.emit ("#{key}")
-				client.emit ("#{desc}")
+				roll = key.to_i
+				if roll != hj_roll.to_i
+				else
+					element_desc = "#{desc}"
 			end
 		
-			# client.emit (element_desc.inspect)
+			client.emit (element_desc.inspect)
 			
 			return
 			
