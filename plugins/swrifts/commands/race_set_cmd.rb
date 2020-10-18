@@ -22,6 +22,7 @@ module AresMUSH
 			def check_valid_iconicf
 				if !Swrifts.is_valid_tname?(self.race_name, "races") #Is the Race in the list
 					return t('swrifts.race_invalid_name', :name => self.race_name.capitalize) 
+	
 				end
 			end
   
