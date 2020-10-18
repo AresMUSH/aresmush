@@ -22,13 +22,7 @@ module AresMUSH
 			
 			#----- Check to see:
 			def check_valid_hj_table
-				
-				client.emit ("HJ Slot: #{self.hj_name}")
-				client.emit ("HJ Set: #{self.hj_set}")
-				client.emit ("HJ Table: #{self.hj_table_name}")
-				return
-				
-				
+			
 				icf_trait = enactor.swrifts_traits.select { |a| a.name == "iconicf" }.first #get the Iconic Framework trait off of the character
 				icf_name = icf_trait.rating #get the Iconic Framework name off the character
 				icf_name = icf_name.downcase
