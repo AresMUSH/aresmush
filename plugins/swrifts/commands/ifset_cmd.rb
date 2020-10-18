@@ -28,7 +28,7 @@ module AresMUSH
 				systest = system['hj1_options']
 				client.emit (systest.inspect)
 				
-				hjcheck = model.swrifts_heroesj
+				hjcheck = model.swrifts_heroesj.empty?
 				client.emit (hjcheck.inspect)
 				
 				
