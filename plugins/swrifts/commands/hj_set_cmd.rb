@@ -63,7 +63,7 @@ module AresMUSH
 			hj_rolls.each do | roll, desc |
 				roll = eval(roll)
 				client.emit (roll.inspect)
-				client.emit (desc)
+				client.emit ("#{desc}")
 			end
 		
 			# client.emit (element_desc.inspect)
