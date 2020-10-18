@@ -35,15 +35,10 @@ module AresMUSH
 			  
 			def handle
 				current_rating = Swrifts.skill_rating(enactor, self.skill_name)
-				client.emit (current_rating)
 				mod = self.mod
-				client.emit (mod)
 				new_rating = current_rating.to_i + mod
-				client.emit (new_rating)
 				current_points = Swrifts.point_rating(enactor, self.points_name)
-				client.emit (current_points)
 				new_points = current_points - mod
-				client.emit (new_points)
 
 				ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
 					stat = Swrifts.find_skill(model, self.skill_name)				
@@ -52,7 +47,6 @@ module AresMUSH
 				
 				ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
 					points = Swrifts.find_points(model, self.points_name)	
-					client.emit (points)
 					points.update(rating: new_points)
 				end
 				
