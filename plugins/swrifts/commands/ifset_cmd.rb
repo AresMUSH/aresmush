@@ -47,7 +47,7 @@ module AresMUSH
 						setdesc = "None"
 						SwriftsHeroesj.create(name: setthing, table: settable, rating: setrating, description: setdesc, character: model)
 					end
-				elsif (system['hj1_options']) && Swrifts.is_valid_cat?(model,"hc1") #See if there are any HJ slots (iconicf command) outlined AND if they already have HJs set up
+				elsif (system['hj1_options']) && !hjcheck #See if there are any HJ slots (iconicf command) outlined AND if they already have HJs set up
 					client.emit ("Second if")
 					counter = 0
 					system.each do | title, value |
