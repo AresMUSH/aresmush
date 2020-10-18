@@ -35,9 +35,7 @@ module AresMUSH
 				
 				current_rating = Swrifts.point_rating(enactor, 'hind_points')
 				client.emit (current_rating)
-				hind_yml = Global.read_config('swrifts', 'hinderances').map
-				client.emit (hind_yml.inspect)
-				group = hind_yml.select { |a| a.name.downcase == self.hinderance_name }.first
+				group = Global.read_config('swrifts', 'hinderances').map { |a| a['name'].downcase }
 				client.emit (group)
 				# new_rating = current_rating + mod
 				# current_points = Swrifts.point_rating(enactor, self.points_name)
