@@ -23,9 +23,9 @@ module AresMUSH
 			#----- Check to see:
 			def check_valid_hj_table
 				
-				client.emit (self.hj_slot)
-				client.emit (self.hj_set)
-				client.emit (self.hj_table_name)
+				client.emit ("HJ Slot:" self.hj_slot)
+				client.emit ("HJ Set:" self.hj_set)
+				client.emit ("HJ Table:" self.hj_table_name)
 				return
 				
 				
@@ -57,7 +57,7 @@ module AresMUSH
 			
 			
 			hj_element = model.swrifts_heroesj.select { |a| a.name.downcase == element_name }.first			
-			hj_element_set.update(table: element_table)
+			hj_element.update(table: element_table)
 		
 			client.emit_success t('swrifts.hjselect_complete')
 			end
