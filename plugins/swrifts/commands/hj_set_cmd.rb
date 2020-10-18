@@ -54,10 +54,14 @@ module AresMUSH
 			
 			hj_roll = model.swrifts_heroesj.select { |a| a.name.downcase == element_name }.first #get the hj1 entry
 			hj_roll = hj_roll.rating # get the roll from hj1
+			client.emit (hj_roll)
 			
-			
-			element_desc = hj_hash.find { |x| x.hj_roll.to_i }
-			client.emit (element_desc.inspect)
+			hj_hash.each do |key, desc|
+				client.emit ("#{key}")
+				client.emit ("#{desc}")
+			end
+		
+			# client.emit (element_desc.inspect)
 			
 			return
 			
