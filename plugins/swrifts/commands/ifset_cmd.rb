@@ -19,10 +19,11 @@ module AresMUSH
 			def handle
 
 			iconicf = Swrifts.get_iconicf(self.target_name, "Test") #get the Iconic Framework entry from the yml
-			# client.emit (iconicf.inspect)
 			
 				if (iconicf['hj1_options']) #See if there are any HJ slots outlined
 					client.emit ("There are HJs outlined")
+					hj_num = iconicf.count(hj)
+					client.emit hj_num
 				else
 					client.emit ("No HJs outlined")
 				end
