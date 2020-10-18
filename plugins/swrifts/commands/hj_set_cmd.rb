@@ -27,8 +27,8 @@ module AresMUSH
 				icf_name = icf_trait.rating #get the Iconic Framework name off the character
 				icf_name = icf_name.downcase
 								
-				types = Global.read_config('swrifts', 'iconicf') #get all the iconicf yml info
-				icf_hash = types.select { |a| a['name'].downcase == icf_name }.first #get the specific iconicf info
+				icf_yml = Global.read_config('swrifts', 'iconicf') #get all the iconicf yml info
+				icf_hash = icf_yml.select { |a| a['name'].downcase == icf_name }.first #get the specific iconicf info
 				
 				hjarray = icf_hash.select{ |a| a == hj_set }.first #pull the hj1_options array out of the Iconic Framework entry
 				
