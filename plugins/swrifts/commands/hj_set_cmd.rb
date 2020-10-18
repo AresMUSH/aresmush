@@ -61,6 +61,7 @@ module AresMUSH
 				if roll != hj_roll.to_i
 				else
 					element_desc = "#{desc}"
+				end
 			end
 		
 			client.emit (element_desc.inspect)
