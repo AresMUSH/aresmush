@@ -49,9 +49,21 @@ module AresMUSH
 			element_name = self.hj_name #hj1
 			element_table = self.hj_table_name #Body Armor
 			
+			hj_yml = Global.read_config('swrifts', 'hjtables') #get all the hjtables yml info
+			hj_hash = hj_yml.select { |a| a['name'].downcase == element_table }.first #get the specific hj info
+			hj_roll = model.swrifts_heroesj.select { |a| a.name.downcase == element_name }.first
+			
+			client.emit (hj_yml.inspect)
+			client.emit (hj_hash.inspect)
+			client.emit (hj_roll.inspect)
+			return
+			
+			# element_desc = 
+			
 			
 			hj_element = model.swrifts_heroesj.select { |a| a.name.downcase == element_name }.first			
-			hj_element.update(table: element_table)
+			hj_element.update(table: element_table)	
+			hj_element.update(description: element_desc)
 		
 			client.emit_success t('swrifts.hjselect_complete', :table => self.hj_table_name.capitalize, :name => self.hj_name.capitalize)
 			end
