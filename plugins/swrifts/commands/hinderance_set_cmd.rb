@@ -18,30 +18,35 @@ module AresMUSH
 			def check_valid_iconicf
 				check_hind = Swrifts.is_valid_tname?(self.hinderance_name, "hinderances")
 				check_cgen = self.target_name.swrifts_traits.empty?
-				client.emit (check_hind)
-				client.emit (check_cgen)
 				if  check_hind == false
 					return t('swrifts.gen_invalid_name', :name => self.hinderance_name.capitalize, :cat => "Hinderance") 
 				elsif check_cgen == true
 					return t('swrifts.gen_invalid_cgen')
 				else
-					client.emit ("Pass")
 				end
 			end			
 			
 			
 #----- Begin of def handle -----			
 			def handle  
-					client.emit ("Into the handle")
 			
-
-				# ----- This sets the Hinderance on the Character -----	
+				charhash = model.swrifts_chargenpoints
+				
+				
+				current_rating = Swrifts.point_rating(enactor, 'hind_points')
+				client.emit (current_rating)
+				group = Global.read_config('swrifts', 'hinderances').map { |a| a[self.hinderance_name].downcase }
+				client.emit (group)
+				# new_rating = current_rating + mod
+				# current_points = Swrifts.point_rating(enactor, self.points_name)
+				# client.emit (current_points)
+				# new_points = current_points - mod
+				# client.emit (new_points)
+			
 				# setthing = self.hinderance_name.downcase
 				# ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
 					# SwriftsHinderances.create(name: setthing, character: model)
 				# end
-				
-
 			end
 #----- End of def handle -----	
 
