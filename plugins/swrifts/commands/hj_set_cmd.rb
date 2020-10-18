@@ -23,9 +23,9 @@ module AresMUSH
 			#----- Check to see:
 			def check_valid_hj_table
 				
-				client.emit ("HJ Slot:" self.hj_slot)
-				client.emit ("HJ Set:" self.hj_set)
-				client.emit ("HJ Table:" self.hj_table_name)
+				client.emit ("HJ Slot: #{self.hj_slot}")
+				client.emit ("HJ Set: #{self.hj_set}")
+				client.emit ("HJ Table: #{self.hj_table_name}")
 				return
 				
 				
