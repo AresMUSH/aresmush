@@ -216,6 +216,7 @@ module AresMUSH
 
 		return {
 		  iconicf: iconicf, #System iconic frameworks
+		  sysiconicf: swrifts_iconicf, # Full System iconic frameworks
 		  charicf: charicf, #Character Iconic Framework
 		  cgrace: cgrace, #System races
 		  charrace: charrace, #Char Race
@@ -322,7 +323,10 @@ module AresMUSH
 			ifname = c['name']
 			ifnamedowncase = ifname.downcase
 			desc = c['description']
-			edgsel = cg.select { |ss| ss.name.downcase.start_with?"#{ifnamedowncase}" }.first #Filter the icf's to find the one that's been selected
+			
+			if (cg)
+				edgsel = cg.select { |ss| ss.name.downcase.start_with?"#{ifnamedowncase}" }.first #Filter the icf's to find the one that's been selected
+			end
 
 			if (edgsel)
 				edgselname = edgsel.name.gsub("^", "*")
@@ -536,11 +540,6 @@ module AresMUSH
 			end
 	
 		return (dbgstr)
-	end
-	
-	def self.systemlist(system)
-		syslist = Global.read_config('swrifts', system) #Read the config file for Iconic Frameworks
-		return syslist
 	end
 	
   end
