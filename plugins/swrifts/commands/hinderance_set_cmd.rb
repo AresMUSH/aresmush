@@ -45,7 +45,7 @@ module AresMUSH
 				client.emit (new_points) 
 				
 				ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-					points = Swrifts.find_points(model, 'hind_points')	
+					points = self.target_name.swrifts_chargenpoints.select { |a| a.name.downcase == 'hind_points' }.first
 					client.emit (points)
 					points.update(rating: new_points)
 				end				
