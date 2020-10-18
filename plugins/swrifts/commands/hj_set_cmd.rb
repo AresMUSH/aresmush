@@ -10,7 +10,7 @@ module AresMUSH
 			def parse_args
 			    args = cmd.parse_args(ArgParser.arg1_equals_arg2) #Split the arguments into two around the =
 			    self.target_name = enactor_name #Set the character to be the current character
-			    self.hj_slot = "hj" << trim_arg(args.arg1) #set the hj slot 'hj1'
+			    self.hj_slot = trim_arg(args.arg1) #set the hj slot 'hj1'
 				self.hj_set = hj_slot << "_options" # 'hj1_options'
 			    self.hj_table_name = trim_arg(args.arg2) #set the hj name 'Body Armor'
 			end
