@@ -22,17 +22,19 @@ module AresMUSH
 			counter = 0
 			
 				if (iconicf['hj1_options']) #See if there are any HJ slots outlined
-					client.emit ("There are HJs outlined")
-					
 					iconicf.each do | title, value |
 						title = title.slice(0,2)
-						client.emit ("#{title}")
 						if title == "hj" 
 							counter = counter + 1
 						else
 						end						
 					end
 					client.emit (counter)
+					counter = *(1..counter)
+					client.emit (counter)
+					
+					
+					
 				else
 					client.emit ("No HJs outlined")
 				end
