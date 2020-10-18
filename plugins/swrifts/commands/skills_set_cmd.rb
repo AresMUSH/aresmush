@@ -38,7 +38,7 @@ module AresMUSH
 				client.emit (current_rating)
 				mod = self.mod
 				client.emit (mod)
-				new_rating = current_rating + mod
+				new_rating = current_rating.to_i + mod
 				client.emit (new_rating)
 				current_points = Swrifts.point_rating(enactor, self.points_name)
 				client.emit (current_points)
