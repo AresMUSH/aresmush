@@ -17,7 +17,7 @@ module AresMUSH
 			#----- Check to see:
 			def check_valid_iconicf
 				check_hind = !Swrifts.is_valid_tname?(self.hinderance_name, "hinderances")
-				check_cgen = Swrifts.init_complete(self.target_name)
+				check_cgen = self.target_name.swrifts_traits.empty?
 				client.emit (check_hind)
 				client.emit (check_cgen)
 				if  check_hind && check_cgen #Is the Hinderance in the list and have they started cgen
