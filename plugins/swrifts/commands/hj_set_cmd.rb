@@ -49,41 +49,7 @@ module AresMUSH
 			element_name = self.hj_name #hj1
 			element_table = self.hj_table_name #Body Armor
 			
-			icfhj_roll = model.swrifts_heroesj.select { |a| a.name.downcase == element_name }.first #get the hj1 entry
-			icfhj_roll = icfhj_roll.rating # get the roll from hj1
-			client.emit (icfhj_roll)
-			
-			
-			
-			hj_yml = Global.read_config('swrifts', 'hjtables') #get all the hjtables yml 
-			hj_hash = hj_yml.select { |a| a['name'].downcase == element_table.downcase }.first #get the specific hj info
-			hj_rolls = hj_hash['rolls']
-			# client.emit (hj_rolls.inspect)
-			
-			hj_rolls.each do | roll, desc |
-				if roll.is_a?(Integer)
-					if roll == icfhj_roll.to_i
-						client.emit (roll.inspect)
-						client.emit ("#{desc}")
-					else
-						client.emit (roll.inspect)
-						client.emit ("Not this one")
-					end
-				else
-					eval(roll)
-					if eval(roll).include?(icfhj_roll.to_i)
-						client.emit (roll.inspect)
-						client.emit ("#{desc}")
-					else
-						client.emit (roll.inspect)
-						client.emit ("Not this one")
-					end
-				end
-			end
-		
-			# client.emit (element_desc.inspect)
-			
-			return
+			element_desc = Swrifts.hj_desc(model, element_name, element_table)
 			
 			hj_element = model.swrifts_heroesj.select { |a| a.name.downcase == element_name }.first			
 			hj_element.update(table: element_table)	
