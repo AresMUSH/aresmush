@@ -39,11 +39,12 @@ module AresMUSH
 				list.to_a.sort_by { |a| a.name }
 					.each_with_index
 						.map do |a, i| 
-						linebreak = i % 2 == 0 ? "\n" : ""
+						linebreak = i % 1 == 0 ? "\n" : ""
 						title = left("#{ a.name }".capitalize, 5,'.')
 						table = left("#{ a.table }".capitalize, 24,'.')
 						rating = left(a.rating, 7)
-						"#{linebreak} #{title} #{table} #{rating}"
+						desc = a.description
+						"#{linebreak} #{title} #{table} #{rating} #{description}"
 				end
 			end
 	
