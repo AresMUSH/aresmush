@@ -15,7 +15,8 @@ module AresMUSH
 					setthing = "hj#{key}"
 					setrating = rand(1..10)
 					settable = "None"
-					SwriftsHeroesj.create(name: setthing, table: settable, rating: setrating, character: model)
+					setdesc = "None"
+					SwriftsHeroesj.create(name: setthing, table: settable, rating: setrating, description: setdesc, character: model)
 				end
 			end			
 			
