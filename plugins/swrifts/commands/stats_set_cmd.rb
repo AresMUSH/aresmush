@@ -9,7 +9,7 @@ module AresMUSH
 
 			def parse_args
 				args = cmd.parse_args(ArgParser.arg1_equals_arg2) #break <args> into arg1 and arg2
-			    self.target = enactor #set target to enactor
+			    self.target = enactor_name #set target to enactor
 			    self.stat_name = titlecase_arg(args.arg1) #set stat_name to arg1
 			    self.mod = integer_arg(args.arg2) #set raing to arg2
 				self.points_name = "stats_points"
