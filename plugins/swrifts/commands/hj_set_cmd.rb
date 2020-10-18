@@ -58,9 +58,9 @@ module AresMUSH
 			
 			hj_hash.each do |key, desc|
 				if key != hj_roll.to_i
-					client.emit ("#{roll} - not this one.")
+					client.emit ("#{key} - not this one.")
 				else
-					client.emit ("#{roll} - this one.")
+					client.emit ("#{key} - this one.")
 					# element_desc = "#{desc}"
 				end
 			end
