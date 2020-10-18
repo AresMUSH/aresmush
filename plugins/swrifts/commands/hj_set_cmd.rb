@@ -57,7 +57,7 @@ module AresMUSH
 			client.emit (hj_roll)
 			
 			hj_hash.each do |key, desc|
-				key = key.to_a
+				key = eval(key)
 				if key.include? hj_roll.to_i
 					client.emit ("#{key} - this one.")
 				else
