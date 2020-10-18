@@ -28,7 +28,7 @@ module AresMUSH
 		before_delete :delete_swrifts_chargen
 		
 		def delete_swrifts_chargen
-			[ self.swrifts_stats, self.swrifts_skills, self.swrifts_hinderances, self.swrifts_edges, self.swrifts_abilities, self.swrifts_chargenpoints, self.swrifts_complications, self.swrifts_cybernetics, self.swrifts_mpowers, self.swrifts_ppowers, self.swrifts_counters, self.swrifts_traits, self.swrifts_dstats, self.swrifts_statsmax, self.swrifts_chargenmin, self.swrifts_advances, self.swrifts_heroesj, self.swrifts_randnum ].each do |list|
+			[ self.swrifts_stats, self.swrifts_skills, self.swrifts_hinderances, self.swrifts_edges, self.swrifts_abilities, self.swrifts_chargenpoints, self.swrifts_complications, self.swrifts_cybernetics, self.swrifts_mpowers, self.swrifts_ppowers, self.swrifts_counters, self.swrifts_traits, self.swrifts_dstats, self.swrifts_statsmax, self.swrifts_chargenmin, self.swrifts_advances, self.swrifts_heroesj].each do |list|
 				list.each do |a|
 					a.delete
 				end
