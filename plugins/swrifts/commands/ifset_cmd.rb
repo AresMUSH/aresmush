@@ -26,6 +26,7 @@ module AresMUSH
 				systest = system['hj1_options']
 				
 				hjcheck = model.swrifts_heroesj.empty?
+				client.emit hjcheck
 			
 			
 				if (system['hj1_options']) && hjcheck #See if there are any HJ slots (iconicf command) outlined AND they haven't been set already
