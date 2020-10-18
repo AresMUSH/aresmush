@@ -54,7 +54,7 @@ module AresMUSH
 					else
 						return StatsSetCmd
 					end
-				when "skill"
+				when "skills"
 					if (!cmd.args)							 
 						return SkillCmd
 					else
