@@ -18,12 +18,12 @@ module AresMUSH
 					setthing = "hj#{key}"
 					setrating = rand(1..10)
 					SwriftsRandnum.create(name: setthing, rating: setrating, character: model)
-				end
 				fandg_nums.each do |key|
 					setthing = "fandg#{key}"
 					setrating = rand(1..10)
 					SwriftsRandnum.create(name: setthing, rating: setrating, character: model)
 				end
+			else	
 			end			
 			
 			#----- This sets the default traits field on the collection -----				
