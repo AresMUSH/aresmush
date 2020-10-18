@@ -51,8 +51,8 @@ module AresMUSH
 			
 			hj_yml = Global.read_config('swrifts', 'hjtables') #get all the hjtables yml 
 			hj_hash = hj_yml.select { |a| a['name'].downcase == element_table.downcase }.first #get the specific hj info
-			client.emit (hj_hash.inspect)
 			hj_roll = model.swrifts_heroesj.select { |a| a.name.downcase == element_name }.first
+			hj_roll = hj_roll.rating
 			client.emit (hj_roll.inspect)
 			
 			return
