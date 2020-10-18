@@ -14,16 +14,26 @@ module AresMUSH
 				[ self.target_name, self.hinderance_name ]
 			end
 			
+			#----- Check to see:
+			def check_valid_iconicf
+				if !Swrifts.is_valid_tname?(self.hinderance_name, "hinderance") #Is the Hinderance in the list
+					return t('swrifts.iconicf_invalid_name', :name => self.hinderance_name.capitalize) 
+				else
+					client.emit ("No.")
+				end
+			end			
+			
 			
 #----- Begin of def handle -----			
 			def handle  
 			
+				client.emit ("Start")
 
 				# ----- This sets the Hinderance on the Character -----	
-				setthing = self.hinderance_name.downcase
-				ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-					SwriftsHinderances.create(name: setthing, character: model)
-				end
+				# setthing = self.hinderance_name.downcase
+				# ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
+					# SwriftsHinderances.create(name: setthing, character: model)
+				# end
 				
 
 			end
