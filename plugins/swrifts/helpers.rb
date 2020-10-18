@@ -309,6 +309,8 @@ module AresMUSH
 			
 			# ----- Create the Hero's Journey slots
 
+			hjcheck = model.swrifts_heroesj.empty?
+			
 			if (system['hj1_options']) && hjcheck #See if there are any HJ slots (iconicf command) outlined AND they haven't been set already
 				counter = 0
 				system.each do | title, value |
