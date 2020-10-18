@@ -3,27 +3,27 @@ module AresMUSH
 		class HJSetCmd
 			include CommandHandler
 			      
-			attr_accessor :target_name, :hj_slot, :hj_set, :hj_table_name
+			attr_accessor :target_name, :hj_name, :hj_set, :hj_table_name
 			
 			#swrifts/hj 1=Body Armor
 			
 			def parse_args
 			    args = cmd.parse_args(ArgParser.arg1_equals_arg2) #Split the arguments into two around the =
 			    self.target_name = enactor_name #Set the character to be the current character
-			    self.hj_slot = trim_arg(args.arg1) #set the hj slot 'hj1'
-				self.hj_set = hj_slot << "_options" # 'hj1_options'
+			    self.hj_name = "hj" << trim_arg(args.arg1) #set the hj slot 'hj1'
+				self.hj_set = "#{hj_name}_options" # 'hj1_options'
 			    self.hj_table_name = trim_arg(args.arg2) #set the hj name 'Body Armor'
 			end
 
 			def required_args
-				[ self.target_name, self.hj_slot, self.hj_table_name ]
+				[ self.target_name, self.hj_name, self.hj_table_name ]
 			end
 			
 			
 			#----- Check to see:
 			def check_valid_hj_table
 				
-				client.emit ("HJ Slot: #{self.hj_slot}")
+				client.emit ("HJ Slot: #{self.hj_name}")
 				client.emit ("HJ Set: #{self.hj_set}")
 				client.emit ("HJ Table: #{self.hj_table_name}")
 				return
@@ -52,7 +52,7 @@ module AresMUSH
 			
 			model = enactor #character
 			# collection = "SwriftsHeroesj"
-			element_name = self.hj_slot #hj1
+			element_name = self.hj_name #hj1
 			element_table = self.hj_table_name #Body Armor
 			
 			
