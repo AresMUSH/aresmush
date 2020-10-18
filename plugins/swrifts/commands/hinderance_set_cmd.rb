@@ -46,7 +46,7 @@ module AresMUSH
 				client.emit (mod)
 				
 				new_points = current_points + mod
-				# client.emit (new_points)
+				# client.emit (new_points) 
 				
 				ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
 					points = Swrifts.find_points(model, 'hind_points')	
