@@ -23,6 +23,10 @@ module AresMUSH
 			def heroesj
 				format_hj @char.swrifts_heroesj
 			end
+			
+			def randnum
+				format_three_per_line @char.swrifts_randnum
+			end
 
 			def format_three_per_line(list)
 				list.to_a.sort_by { |a| a.name }
@@ -41,7 +45,7 @@ module AresMUSH
 						.map do |a, i| 
 						linebreak = i % 1 == 0 ? "\n" : ""
 						title = "#{ a.name } -".capitalize
-						table = left("#{ a.table } (#{a.rating})".capitalize, 27,'.')
+						table = left("#{ a.table }".capitalize, 27,'.')
 						desc = left(a.description, 42)
 						"#{linebreak} #{title} #{table} #{desc}"
 				end

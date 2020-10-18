@@ -29,7 +29,8 @@ module AresMUSH
 				client.emit !hjcheck
 			
 			
-				if (system['hj1_options']) && hjcheck #See if there are any HJ slots (iconicf command) outlined AND they haven't been set already
+				if (system['hj1_options']) && hjcheck == true #See if there are any HJ slots (iconicf command) outlined AND they haven't been set already
+					
 					counter = 0
 					system.each do | title, value |
 						title = title.slice(0,2)
@@ -46,7 +47,7 @@ module AresMUSH
 						setdesc = "None"
 						SwriftsHeroesj.create(name: setthing, table: settable, rating: setrating, description: setdesc, character: model)
 					end
-				elsif (system['hj1_options']) && !hjcheck #See if there are any HJ slots (iconicf command) outlined AND if they already have HJs set up
+				elsif (system['hj1_options']) && !hjcheck == true #See if there are any HJ slots (iconicf command) outlined AND if they already have HJs set up
 					counter = 0
 					system.each do | title, value |
 						title = title.slice(0,2)

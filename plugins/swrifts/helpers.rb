@@ -9,16 +9,22 @@ module AresMUSH
 		
 		def self.run_init(model, init)
 			
-			# if !Swrifts.is_valid_cat?(model,"heroesj") #Are there any traits set - i.e INIT completed.
-				# numbers = [1, 2, 3, 4]
-				# numbers.each do |key|
-					# setthing = "hj#{key}"
-					# setrating = rand(1..10)
-					# settable = "None"
-					# setdesc = "None"
-					# SwriftsHeroesj.create(name: setthing, table: settable, rating: setrating, description: setdesc, character: model)
-				# end
-			# end			
+			rand_num_check = model.swrifts_randnum.empty?
+			
+			if  rand_num_check == true 
+				hj_nums = [1, 2, 3, 4, 5]
+				fandg_nums = [1, 2, 3, 4, 5]
+				hj_nums.each do |key|
+					setthing = "hj#{key}"
+					setrating = rand(1..10)
+					SwriftsRandnum.create(name: setthing, rating: setrating, character: model)
+				end
+				fandj_nums.each do |key|
+					setthing = "fandg#{key}"
+					setrating = rand(1..10)
+					SwriftsRandnum.create(name: setthing, rating: setrating, character: model)
+				end
+			end			
 			
 			#----- This sets the default traits field on the collection -----				
 			if (init['traits']) 
@@ -723,7 +729,7 @@ module AresMUSH
 ## ----- Hero's Journey Start
 		
 		def self.hj_desc(model, element_name, element_table)
-			icfhj_roll = model.swrifts_heroesj.select { |a| a.name.downcase == element_name }.first #get the hj1 entry
+			icfhj_roll = model.swrifts_randnum.select { |a| a.name.downcase == element_name }.first #get the hj1 entry
 			icfhj_roll = icfhj_roll.rating # get the roll from hj1 
 			hj_yml = Global.read_config('swrifts', 'hjtables') #get all the hjtables yml 
 			hj_hash = hj_yml.select { |a| a['name'].downcase == element_table.downcase }.first #get the specific hj info

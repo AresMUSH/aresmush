@@ -18,6 +18,7 @@ module AresMUSH
 		collection :swrifts_abilities, "AresMUSH::SwriftsAbilities"
 		collection :swrifts_complications, "AresMUSH::SwriftsComplications"
 		collection :swrifts_heroesj, "AresMUSH::SwriftsHeroesj"
+		collection :swrifts_randnum, "AresMUSH::SwriftsRandnum"
 
 
 		attribute :swrifts_iconicf
@@ -27,7 +28,7 @@ module AresMUSH
 		before_delete :delete_swrifts_chargen
 		
 		def delete_swrifts_chargen
-			[ self.swrifts_stats, self.swrifts_skills, self.swrifts_hinderances, self.swrifts_edges, self.swrifts_abilities, self.swrifts_chargenpoints, self.swrifts_complications, self.swrifts_cybernetics, self.swrifts_mpowers, self.swrifts_ppowers, self.swrifts_counters, self.swrifts_traits, self.swrifts_dstats, self.swrifts_statsmax, self.swrifts_chargenmin, self.swrifts_advances, self.swrifts_heroesj ].each do |list|
+			[ self.swrifts_stats, self.swrifts_skills, self.swrifts_hinderances, self.swrifts_edges, self.swrifts_abilities, self.swrifts_chargenpoints, self.swrifts_complications, self.swrifts_cybernetics, self.swrifts_mpowers, self.swrifts_ppowers, self.swrifts_counters, self.swrifts_traits, self.swrifts_dstats, self.swrifts_statsmax, self.swrifts_chargenmin, self.swrifts_advances, self.swrifts_heroesj, self.swrifts_randnum ].each do |list|
 				list.each do |a|
 					a.delete
 				end
@@ -183,6 +184,15 @@ module AresMUSH
 	
 		attribute :name
 
+		reference :character, "AresMUSH::Character"
+		index :name
+	end
+	
+	class SwriftsRandnum < Ohm::Model
+		include ObjectModel
+	
+		attribute :name
+		attribute :rating, :type => DataType::Integer
 		reference :character, "AresMUSH::Character"
 		index :name
 	end
