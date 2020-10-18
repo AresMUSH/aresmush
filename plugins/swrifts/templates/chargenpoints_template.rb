@@ -41,10 +41,9 @@ module AresMUSH
 						.map do |a, i| 
 						linebreak = i % 1 == 0 ? "\n" : ""
 						title = left("#{ a.name }".capitalize, 5,'.')
-						table = left("#{ a.table }".capitalize, 24,'.')
-						rating = left(a.rating, 7)
-						desc = left(a.description, 35)
-						"#{linebreak} #{title} #{table} #{rating} #{desc}"
+						table = left("#{ a.table } (#{a.rating})".capitalize, 24,'.')
+						desc = left(a.description, 38)
+						"#{linebreak} #{title} #{table} #{desc}"
 				end
 			end
 	
