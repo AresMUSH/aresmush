@@ -309,7 +309,7 @@ module AresMUSH
 			
 			# ----- Create the Hero's Journey slots
 
-			if (system['hj1_options']) #See if there are any HJ slots outlined
+			if (system['hj1_options']) && !Swrifts.is_valid_cat?(model,"hc1") #See if there are any HJ slots outlined AND they haven't been set already
 				counter = 0
 				system.each do | title, value |
 					title = title.slice(0,2)
@@ -325,6 +325,23 @@ module AresMUSH
 					settable = "None"
 					setdesc = "None"
 					SwriftsHeroesj.create(name: setthing, table: settable, rating: setrating, description: setdesc, character: model)
+				end
+			elsif Swrifts.is_valid_cat?(model,"hc1") #See if they already have HJs set up
+				counter = 0
+				system.each do | title, value |
+					title = title.slice(0,2)
+					if title == "hj" 
+						counter = counter + 1
+					else
+					end						
+				end
+				counter = *(1..counter)
+				counter.each do |key|
+					setthing = "hj#{key}"
+					hj_set = model.swrifts_heroesj.select { |a| a.name.downcase == setthing }.first	
+					settable = "None"
+					setdesc = "None"
+					hj_set.update(table: settable, description: setdesc, character: model)
 				end
 			else
 			end
@@ -711,7 +728,7 @@ module AresMUSH
 			element ? element.rating : 0
 		end
 		
-## ----- Hero's Journey
+## ----- Hero's Journey Start
 		
 		def self.hj_desc(model, element_name, element_table)
 			icfhj_roll = model.swrifts_heroesj.select { |a| a.name.downcase == element_name }.first #get the hj1 entry
@@ -734,7 +751,7 @@ module AresMUSH
 				end
 			end
 		end
-		
+## ----- Hero's Journey	End	
 
 			
 			
