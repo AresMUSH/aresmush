@@ -96,3 +96,5 @@ en:
         
         invalid_points: "You cannot spend %{mod} points on %{name}, you only have %{num} stat points."
         points_spend: "You spend %{mod} points on %{name}."
+        
+        gen_invalid_name: "There is no %{cat} named %{name}."
