@@ -23,6 +23,9 @@ module AresMUSH
 				system=iconicf
 				model=enactor
 				
+				systest = system('hj1_options')
+				client.emit (systest.inspect)
+				
 				hjcheck = model.swrifts_heroesj
 				client.emit (hjcheck.inspect)
 				
