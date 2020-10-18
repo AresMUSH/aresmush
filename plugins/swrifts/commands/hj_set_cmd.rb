@@ -62,18 +62,23 @@ module AresMUSH
 			
 			hj_rolls.each do | roll, desc |
 				if roll.is_a?(Integer)
-					client.emit (roll.inspect)
+					if (roll).include?(icfhj_roll.to_i)
+						client.emit (roll.inspect)
+						client.emit ("#{desc}")
+					else
+						client.emit (roll.inspect)
+						client.emit ("Not this one")
+					end
 				else
 					eval(roll)
-					client.emit (roll.inspect)
+					if eval(roll).include?(icfhj_roll.to_i)
+						client.emit (roll.inspect)
+						client.emit ("#{desc}")
+					else
+						client.emit (roll.inspect)
+						client.emit ("Not this one")
+					end
 				end
-				# if (roll).include?(icfhj_roll.to_i)
-					# client.emit (roll.inspect)
-					# client.emit ("#{desc}")
-				# else
-					# client.emit (roll.inspect)
-					# client.emit ("Not this one")
-				# end
 			end
 		
 			# client.emit (element_desc.inspect)
