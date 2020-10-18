@@ -31,7 +31,7 @@ module AresMUSH
 				return
 			
 			
-				if (system['hj1_options']) && hjcheck #See if there are any HJ slots (iconicf command) outlined AND they haven't been set already
+				if (system['hj1_options']) 
 					client.emit ("First if")
 					client.emit (hjcheck.inspect)
 					counter = 0
