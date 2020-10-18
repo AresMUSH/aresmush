@@ -23,8 +23,9 @@ module AresMUSH
 				if (iconicf['hj1_options']) #See if there are any HJ slots outlined
 					client.emit ("There are HJs outlined")
 					client.emit (iconicf.inspect)
-					# hj_num = iconicf.count(hj)
-					# client.emit hj_num
+					var = "#{hj}"
+					hj_num = iconicf.count(var)
+					client.emit hj_num
 				else
 					client.emit ("No HJs outlined")
 				end
