@@ -41,6 +41,19 @@ module AresMUSH
 				end
 			end
 			
+			def check_hj_selected
+								
+				hj_attr = enactor.swrifts_heroesj.select { |a| a.name == self.hj_name }.first #get the hj1 array out of the heroesj collection off of the character
+				if (hj_attr)
+					hj_name = hj_attr.name #get the name out of the array
+					when hj_name != "None"
+						client.emit ("You have already selected a table for this slot.")
+					else
+					end
+				else
+				end
+			end
+			
 #----- Begin of def handle -----			
 			def handle  
 			
