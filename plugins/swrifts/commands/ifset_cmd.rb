@@ -23,7 +23,8 @@ module AresMUSH
 			system=iconicf
 			model=enactor
 			
-			if (system['hj1_options']) && !Swrifts.is_valid_cat?(model,"hc1") #See if there are any HJ slots outlined AND they haven't been set already
+			if (system['hj1_options']) && !Swrifts.is_valid_cat?(model,"hc1") #See if there are any HJ slots (iconicf command) outlined AND they haven't been set already
+				client.emit ("First if")
 				counter = 0
 				system.each do | title, value |
 					title = title.slice(0,2)
@@ -40,7 +41,7 @@ module AresMUSH
 					setdesc = "None"
 					SwriftsHeroesj.create(name: setthing, table: settable, rating: setrating, description: setdesc, character: model)
 				end
-			elsif Swrifts.is_valid_cat?(model,"hc1") #See if they already have HJs set up
+			elsif (system['hj1_options']) && Swrifts.is_valid_cat?(model,"hc1") #See if there are any HJ slots (iconicf command) outlined AND if they already have HJs set up
 				client.emit ("Second if")
 				counter = 0
 				system.each do | title, value |
@@ -63,6 +64,7 @@ module AresMUSH
 					hj_set.update(table: settable, description: setdesc, character: model)
 				end
 			else
+				client.emit ("Third if")
 			end
 				
 			end
