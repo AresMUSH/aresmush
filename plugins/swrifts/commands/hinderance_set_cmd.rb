@@ -16,7 +16,7 @@ module AresMUSH
 			
 			#----- Check to see:
 			def check_valid_iconicf
-				if !Swrifts.is_valid_tname?(self.hinderance_name, "hinderances") #Is the Hinderance in the list
+				if !Swrifts.is_valid_tname?(self.hinderance_name, "hinderances") && Swrifts.init_complete(self.target_name) #Is the Hinderance in the list and have they started cgen
 					return t('swrifts.gen_invalid_name', :name => self.hinderance_name.capitalize, :cat => "Hinderance") 
 				else
 					client.emit ("No.")
@@ -26,8 +26,8 @@ module AresMUSH
 			
 #----- Begin of def handle -----			
 			def handle  
+					client.emit ("Into the handle")
 			
-				client.emit ("Start")
 
 				# ----- This sets the Hinderance on the Character -----	
 				# setthing = self.hinderance_name.downcase
