@@ -36,89 +36,33 @@ swrifts:
             name: Cybernetics
             rolls: 
                 1: Your hero wanted maximum capabilities, never mind others seeing her as a freak. She got an Extra Set of Arms installed, see page 113.
-                    cybernetics:
-                        - Extra Set of Arms
                 2..3: When the armor-piercing lasers and flechetes fy, your cyborg’s level of Reinforced Frame is the best, see page 113.
-                    cybernetics:
-                        - Reinforced Frame
                 4: Your hero wants to give that Juicer a run for his money, so he got a level of Cyber-Wired Refexes installed, see page 113.
-                    cybernetics:
-                        - Cyber-Wired Reflexes
                 5..6: Your cyborg is built for speed. Gain one level of Leg Upgrades, see page 114.
-                    cybernetics:
-                        - Leg Upgrades
                 7: Your cyborg is one with the machine when jacking in using his Vehicle Interface Package, see page 114.
-                    cybernetics:
-                        - Vehicle Interface Package
                 8: Who has time to actually train? Not your character, which is why he has a level of Embedded Combat Coding, see page 114.
-                    cybernetics:
-                        - Embedded Combat Coding
                 9: Booster Jets (see page 114) make for great tactical options, and they’re fun, too!
-                    cybernetics:
-                        - Booster Jets
                 10..11: Nothing like a Range Data System (see page 114) to make hiting all those pesky enemy targets diving for cover that much easier.
-                    cybernetics:
-                        - Range Data System
                 12: There’s a good chance your cyborg was meant for amphibious operations with his Internal Life Support Upgrade, see page 113.
-                    cybernetics:
-                        - Internal Life Support Upgrade
                 13..14: Stronger is always beter as far as your character is concerned, so he has a level of Bionic Strength Augmentation, see page 113.
-                    cybernetics:
-                        - Bionic Strength Augmentation
                 15: Whoever put your hero back together didn’t want her checking out any time soon. She has a level of Synthetic Organ Replacement, see page 113.
-                    cybernetics:
-                        - Synthetic Organ Replacement
                 16: It is all about combat efciency for your cyborg. He has Hand-to-Hand Reaction Wiring, see page 114.
-                    cybernetics:
-                        - Range Data System
                 17..18: Let’s face it, everyone expects your hero to take point, so that extra level of Armor Plating is always a good idea, see page 113.
-                    cybernetics:
-                        - Armor Plating
                 19..20: Choose any single cybernetic upgrade you wish and qualify for.
-                    cybernetics:
-                        - CHOICE
         -
             name: Education
             rolls: 
                 1..2: Your hero’s voracious appetite for knowledge led to her picking up a litle something about prety much everything. She has the Jack-of-All-Trades Edge.
-                    edges:
-                        - Jack-of-All-Trades
                 3..4: Your character is a talented medic and a huge boon for any group he runs with. He has the Healer Edge and the Healing skill at d4.
-                    edges:
-                        - Healer
-                    skills:
-                        healing: 1
                 5: Communication is the key to understanding. Your character has a passion for languages, and a real gift for them as well. She has the Linguist Edge and any one Language skill at d8.
-                    edges:
-                        - Linguist
-                    skills:
-                        choice: 3
-                            - Language
                 6..7: Following in the footsteps of Erin Tarn, your character is a student of the past. Only by understanding what has come before can he hope to make the most of what is to come. He gets Academics at d6 and increases Common Knowledge one die type.
-                    skills:
-                        academics: 2
-                        common knowledge: 1
                 8: The principles of technology are vital to building a future out of the catastrophes of the past. Your hero has the necessary foundation to be a part of that with a d8 in Electronics. 
-                    skills:
-                        electronics: 3
                 9..10: He’s traveled far and wide, and he knows a lot about the world that could come in handy. Your character gains a +2 on any Common Knowledge rolls related to geography and understanding the people and places of North America. He also gains a +2 on Survival and Networking checks in North America.
                 11: Understanding the ebb and fow of power in the habitable lands of North America may very well mean the diference between life and death, making your hero’s grasp of such maters extremely valuable. She gains Academics at d6. She also gains +1 to Persuasion and Performance rolls.
-                    skills:
-                        academics: 2
                 12: The world was ended in war, reborn in war, and war remains the most prevalent truth of the age. Your character understands this beter than anyone, and he gains a d6 in Battle to prove it. He also has the Command Edge (or one Leadership Edge of her choice if he already has Command).
-                    skills:
-                        battle: 2
-                    edges:
-                        - Command
-                13..14: Your character’s innate understanding of computers makes her one of the most valuable people in the world, whether most folks understand that or not. She gains Hacking at d6, as well as +1 when dealing with electronic security using Thievery. 
-                    skills:
-                        hacking: 2
+                13..14: Your character’s innate understanding of computers makes her one of the most valuable people in the world, whether most folks understand that or not. She gains Hacking at d6, as well as +1 when dealing with electronic security using Thievery.
                 15..16: Born with a natural inquisitiveness, your hero has a gift for research and fnding things out. He has the Research skill at d8.
-                    skills:
-                        research: 3
                 17..18: Either her parents did everything they could to educate her, she atended one of the few schools left in the world, or she might even have found and lived in an ancient library. However managed, she has three additional skill points to spend at character creation, but they may only be spent on Smarts-based skills.
-                    chargen_points:
-                        skills_points: 3
                 19..20: You may choose any one of the results on this table.
         -
             name: Enchanted Items
@@ -140,87 +84,41 @@ swrifts:
             name: Experience & Wisdom
             rolls: 
                 1..2: Your hero knows how to put on a show, and cultivate fans. Gain the Fame Edge. 
-                    edges:
-                        - fame
                 3..4: Your character doesn’t take kindly to threats, and no one messes with her head. She is Strong Willed.
-                    edges:
-                        - strong willed
                 5: With a nose for opportunities, horse-trading, and fve-fngered discounts, your hero is the go-to person for geting what’s needed in a crunch. He has the Scrounger Edge.
-                    edges:
-                        - scrounger
                 6: Some folks come to understand that lone wolves don’t make it in a world as dangerous as this one. Your hero has Common Bond.
-                    edges:
-                        - common bond
                 7..8: She always gets a strange tingling in the back of her neck when things are about to go all pear-shaped. She’s seen enough trouble to know when it’s coming. Your character has the Danger Sense Edge.
-                    edges:
-                        - danger sense
                 9: A split second often means the diference between alive and a smear on the landscape. Your character has the Quick Edge. If he already has that Edge, he gains the Level Headed Edge instead.
-                    edges:
-                        - quick
                 10..11: Some experiences take a person back to the beginning, reconnecting her to her foundations. Select one Background Edge, regardless of requirements, so long as it makes sense and the GM agrees with it.
-                    edges:
-                        - choice   
-                            - Background
                 12..13: He’s traveled far and wide, and he knows a lot about the world that could come in handy. Your character gains a +2 on any Common Knowledge rolls related to geography and understanding the people and places of North America. He also gains a +2 on Survival and Networking checks in North America.
                 14: There are times when no amount of skill, talent, or training is enough. Fortunately for your character, Lady Luck is in her corner. Take the Luck Edge, or Great Luck instead if she already has Luck.
-                    edges:
-                        - luck
                 15..16: Life on the road, in the wilderness, and wandering the streets of the cities that remain gave your character special insight and some key experience with a particular calling. You may give her one Professional Edge, ignoring requirements, so long as it makes sense and the GM agrees with it.
-                    edges:
-                        - choice
-                            - professional
                 17..18: There are moments when everything comes together and an opportunity presents itself. Your hero knows how to make the most of just such a moment. Gain the Elan Edge, Luck if you already have it, or Great Luck if you have Luck.
-                    edges:
-                        - elan
-                        - luck
                 19..20: You may choose any one of the results on this table.
         -
            name: Magic & Mysticism
            rolls: 
                1..2: There are times to put it all on the line, no mater the cost. Your character is always prepared to do just that, thanks to having the Soul Drain Edge. Techno-Wizards may reroll this result.
-                    edges:
-                        - soul drain
                3..4: Some batles are lengthy afairs, and the magic user playing the long game will win in the end. Begin with the Concentration Edge.
-                    edges:
-                        - concentration
                5..6: Your character has a knack for recovering PPE when the cards are right. Start with the Power Surge Edge.
-                    edges:
-                        - power surge
                7..9: Magic users beneft from a variety of spells. Your hero gains either the New Powers Edge or any one power normally unavailable (except resurrection). 
-                    edges:
-                        - new powers
                10..11: Often, one crisis is quickly followed by another, and your caster needs to get his energy back quickly. He has the Rapid Recharge Edge, or Improved Rapid Recharge if he already has Rapid Recharge.
-                    edges:
-                        - rapid recharge
                12..13: Some arcane wielders learn how to use certain spells as almost second nature. Choose one power your hero knows; if she casts it successfully, she automatically gains the raise efect.
                14..15: Conservation of magical energy is an incredibly powerful talent. Your hero gains the Channeling Edge.
-                    edges:
-                        - Channeling
                16..17: Born to fght the toughest threats, your hero is adept at customizing combat spells to take advantage of an opponent’s weakness. Your hero gains the Wizard Edge. Those with Arcane Background (Miracles) reroll this result.
-                    edges:
-                        - wizard
                18: Puting down opponents before they end you is a powerful lesson in this dangerous world. Your hero gains +2 damage when using direct damage spells and TW weapons by expending one extra PPE per atack.
                19..20: You may choose any one of the results on this table. 
         -
             name: Psionics
             rolls: 
                 1: Some psionics learn to dig deep within, risking their very lives to call on even more power. Your character has the Soul Drain Edge.
-                    edges:
-                        - soul drain
                 2..3: With deep concentration, meditation, or prayer, your hero regains her ISP at a faster rate than most. She gains the Rapid Recharge Edge, or improved Rapid Recharge if she already has that Edge.
-                    edges:
-                        - rapid recharge
                 4..5: More ISP means more power to work with, and your character has it. He gains the Power Points Edge. Psionics who already have this Edge should reroll.
-                    edges:
-                        - power points
                 6..7: Some batles are lengthy afairs, and conserving inner strength gives a psionic the advantage she needs to win. Your hero gains the Channeling Edge, or Concentration if she already has that Edge.
-                    edges:
-                        - channeling
                 8..11: Your psionicist gains either the New Powers Edge or one power chosen from the Mind Melter's list (Rank permiting).
                 12: Some powers become second-nature to the psionic. Choose a power your character knows; when she successfully activates it, she gains the raise efect automatically.
                 13: Some psionic characters become expert at breaking the infuence others have on people. As an action, your character can give an ally an immediate atempt to break out of illusion or puppet at +2, and he can do this once per round until they break free. This beneft also aids anyone under the efects of the mind walk Mega Power Modifer.
                 14..15: Overcoming the will of others is something many psionics strive to perfect. Your hero is a master of such techniques, granting her the Mentalist Edge.
-                    edges: mentalis
                 16: Many psionics strive for a level of enlightenment that transcends maters physical, focusing ever more energy and efort via their will. Your hero is able to spend a Benny to use her Spirit in place of any other Trait roll for a round.
                 17..18: Many psionics develop a powerful presence that aids them in infuencing and unnerving others. Your hero gains +1 on all social skill checks. If he has empathy, or fear, he gains a free reroll when using those powers.
                 19..20: You may choose any one of the results on this table.
@@ -239,84 +137,33 @@ swrifts:
                 15: Advanced technology makes this weapon extra efective against armor, giving it +2 AP. 
                 16: This weapon has an integral Vibro-Knife (see page 97) mounted bayonet-style (Str+d8 Mega Damage, AP 8, Parry +1, Reach 1, Two Hands)—rifes only.
                 17: This weapon is a favorite of your character. Gain the Trademark Weapon Edge for it. In addition, when you spend a Benny to reroll any Trait roll made using this weapon, add +2 to the total (stacks with Elan and similar bonuses).
-                    edges: 
-                        - trademark weapon
                 18: Your weapon is upgraded with a Multi-Optics Scope, see page 86.
                 19..20: You may choose any one of the results on this table.
         -
             name: Training
             rolls: 
                 1..3: After serving in a military, paramilitary, militia, or security force for some time, your hero has some solid combat training. She gains +3 Skill Points which may be spent on Athletics, Fighting, or Shooting in any combination. 
-                    chargen_points:
-                        skills_points: 3
                 4..5: Whether via formal training in a dedicated school, learning at the hands of a master, or just surviving a dangerous world, your hero’s picked up some serious fghting skills. He’s got the Martial Artist Edge, or Improved Martial Artist, if he already had Martial Artist.
-                    edges:
-                        - martial artist
                 6..7: Your character has extensively trained in a professional area of expertise, and has a trick or two up her sleeve. You may give her one Professional Edge, ignoring requirements, subject to the GM’s approval.
-                    edges:
-                        - choice   
-                            - professional
                 8..9: While the cities of Savage Rifts® are deadly in their own right, your hero understands the dangers of the wilderness in ways few ever grasp. He has the Woodsman Edge and gains a one die type increase in Survival.
-                    edges:
-                        - woodsman
-                    skills:
-                        survival: 1
                 10..11: Functional machines and technology often mean the diference between life and death in the world of Rifts®. Fortunately for any group your hero runs with, she’s prety good with tech, giving her a one die type increase for the Repair skill, and the Mr. Fix It Edge.
-                    edges:
-                        - Mr. Fix It
-                    skills:
-                        repair: 1
                 12..13: There are a lot of broken elevators and overgrown mountain trails across the world, making trained climbers a valuable addition to any group. Your character is one of those folks who knows his way around ropes and harnesses, granting him a die type increase to Athletics, and +2 on rolls made to climb. 
-                    skills:
-                        athletics: 1
                 14: When it gets up-close and ugly, your hero knows how to set up her opponents for a nasty fall, while protecting herself. She has the Dirty Fighter Edge, or Tricky Fighter if she already has Dirty Fighter.
-                    edges:
-                        - Dirty Fighter
-                15..16: Constant batle, for cause or survival, means your hero knows a great deal about combat. Select one Combat Edge; you may ignore all requirements except other Edges (e.g. to take Improved Frenzy your character must have Frenzy frst).
-                    edges:
-                        - choice
-                            - combat
+                15..16: Constant batle, for cause or survival, means your hero knows a great deal about combat. Select one Combat Edge; you may ignore all requirements except other Edges (e.g. to take Improved Frenzy your character must have Frenzy first).
                 17: Though lots of folks can jump behind a wheel or grab a stick, your hero understands the nuances of guiding a machine efectively through the worst conditions. She gains the Ace Edge, or Combat Ace, if she already has Ace, as well as a one die type increase in her choice of Boating, Driving, or Piloting.
-                    edges:
-                        - ace
-                    chargen_points:
-                        skills_points: 1
                 18: There are moments when everything comes together and an opportunity presents itself. Your hero knows how to make the most of just such a moment; gain the Elan Edge, Luck if you already have it, or Great Luck if you have Luck.
-                    edges:
-                        - elan
-                        - luck
                 19..20: You may choose any one of the results on this table.
         -
             name: Underworld & Black Ops
             rolls: 
                 1..2: When all else fails, your hero knows how to take any available resources and jury-rig her way into or out of situations. She has the McGyver Edge, and she gains a die type in Repair.
-                    edges:
-                        - McGyver
                 3..4: Your character’s innate understanding of computers makes him one of the most valuable people in the world. He gains Hacking at d6, as well as +1 when dealing with electronic security using Thievery.
-                    skills:
-                        hacking: 2
                 5..7: She’s traveled far and wide, and she always seems to know someone, somewhere, she can call on for information or aid. Your hero has the I Know a Guy Edge and gains +2 on all Networking rolls to contact and gain assistance.
-                    edges:
-                        - I Know a Guy
                 8: Your character has a knack for taking full advantage of his opponents in all manner of desperate circumstances. He has the Dirty Fighter Edge, or Tricky Fighter if he already has Dirty Fighter.
-                    edges:
-                        - Dirty Fighter
                 9..10: Though few and far between, the cites of Rifts Earth are the hubs of what remains of civilization, vital as sources of information. Your character understands the ebb and fow of the streets and alleys, gaining the Streetwise Edge. She is also good at creating fakes of necessary papers, badges, and the like; she’s got experience and training in forgery (treat as Common Knowledge), with a +2 to related checks.
-                    edges: 
-                        - Streetwise
                 11..13: Your character is inherently gifted at larceny, possessing the Thief Edge without concern for requirements. He also gains +1 Skill Point to spend on Athletics, Stealth, or Thievery as he chooses.
-                    edges:
-                        - Thief
-                    chargen_points:
-                        skills_points: 1
                 14: Your hero is an infltration specialist, skilled at blending into a culture or group for undercover work. She gains a +1 to any Persuasion, Research, or Stealth rolls related to being undercover, and a +2 to any Common Knowledge rolls for disguising herself and playing the role.
                 15..16: With a nose for opportunities, horse-trading, and five-fngered discounts, your hero is the go-to person for geting what’s needed in a crunch. He has the Scrounger Edge.
-                    edges:
-                        - Scrounger
                 17: Spies and provocateurs are regularly called upon to do just about anything to accomplish a mission; your hero’s made it a point to learn a litle something about everything. She has the Jack-of-All-Trades Edge.
-                    edges:
-                        - Jack-of-All-Trades
                 18: There are many killers in the world, but your character is a wetwork expert with a particular set of skills. He gains the Assassin Edge.
-                    edges: 
-                        - assassin
                 19..20: You may choose any one of the results on this table.
