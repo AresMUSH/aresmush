@@ -679,6 +679,12 @@ module AresMUSH
 		end
 
 		## ----- Skills
+		
+		def self.is_valid_skill_name?(name)
+		  return false if !name
+		  names = Global.read_config('swrifts', 'skills').map { |a| a['name'].downcase }
+		  names.include?(name.downcase)
+		end
 
 		def self.find_skill(char, skill_name) 
 			name_downcase = skill_name.downcase
