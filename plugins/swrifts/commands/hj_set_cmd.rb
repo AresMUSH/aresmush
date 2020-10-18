@@ -12,7 +12,7 @@ module AresMUSH
 			    self.target = enactor #Set the character to be the current character
 			    self.hj_name = "hj" << trim_arg(args.arg1) #set the hj slot 'hj1'
 				self.hj_set = "#{hj_name}_options" # 'hj1_options'
-			    self.hj_table_name = trim_arg(args.arg2) #set the hj name 'Body Armor'
+			    self.hj_table_name = trim_arg(args.arg2).downcase #set the hj name 'Body Armor'
 			end
 
 			def required_args
