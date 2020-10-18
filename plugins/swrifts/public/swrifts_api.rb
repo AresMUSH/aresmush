@@ -218,6 +218,7 @@ module AresMUSH
 		  iconicf: iconicf, #System iconic frameworks
 		  sysiconicf: swrifts_iconicf, # Full System iconic frameworks
 		  charicf: charicf, #Character Iconic Framework
+		  swrifts_race: swrifts_race #Just get the whole Race YML, looks like we're going to need it.
 		  cgrace: cgrace, #System races
 		  charrace: charrace, #Char Race
 		  cgpoints: cgtraits, #CG points for the character
