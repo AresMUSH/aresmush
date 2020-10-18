@@ -3,27 +3,27 @@ module AresMUSH
 		class HJSetCmd
 			include CommandHandler
 			      
-			attr_accessor :target_name, :hj_name, :hj_set, :hj_table_name
+			attr_accessor :target, :hj_name, :hj_set, :hj_table_name
 			
 			#swrifts/hj 1=Body Armor
 			
 			def parse_args
 			    args = cmd.parse_args(ArgParser.arg1_equals_arg2) #Split the arguments into two around the =
-			    self.target_name = enactor_name #Set the character to be the current character
+			    self.target = enactor #Set the character to be the current character
 			    self.hj_name = "hj" << trim_arg(args.arg1) #set the hj slot 'hj1'
 				self.hj_set = "#{hj_name}_options" # 'hj1_options'
 			    self.hj_table_name = trim_arg(args.arg2) #set the hj name 'Body Armor'
 			end
 
 			def required_args
-				[ self.target_name, self.hj_name, self.hj_table_name ]
+				[ self.target, self.hj_name, self.hj_table_name ]
 			end
 			
 			
 			#----- Check to see:
 			def check_valid_hj_table
 			
-				icf_trait = self.target_name.swrifts_traits.select { |a| a.name == "iconicf" }.first #get the Iconic Framework trait off of the character
+				icf_trait = self.target.swrifts_traits.select { |a| a.name == "iconicf" }.first #get the Iconic Framework trait off of the character
 				icf_name = icf_trait.rating #get the Iconic Framework name off the character
 				icf_name = icf_name.downcase
 								
@@ -43,7 +43,7 @@ module AresMUSH
 			
 			def check_hj_selected
 								
-				hj_attr = self.target_name.swrifts_heroesj.select { |a| a.name == self.hj_name }.first #get the hj1 array out of the heroesj collection off of the character
+				hj_attr = self.target.swrifts_heroesj.select { |a| a.name == self.hj_name }.first #get the hj1 array out of the heroesj collection off of the character
 				if (hj_attr)
 					hj_selected = hj_attr.table #get the name out of the array
 					if hj_selected != "None"
@@ -57,7 +57,7 @@ module AresMUSH
 #----- Begin of def handle -----			
 			def handle  
 			
-			model = self.target_name #character
+			model = self.target #character
 			# collection = "SwriftsHeroesj"
 			element_name = self.hj_name #hj1
 			element_table = self.hj_table_name #Body Armor
