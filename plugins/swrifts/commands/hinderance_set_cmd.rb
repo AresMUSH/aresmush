@@ -6,7 +6,7 @@ module AresMUSH
 			attr_accessor :target_name, :hinderance_name
 			
 			def parse_args
-				self.target_name = enactor_name #Set the character to be the current character
+				self.target_name = enactor #Set the character to be the current character
 				self.hinderance_name = trim_arg(cmd.args) #Set to the Hinderance passed
 			end
 
