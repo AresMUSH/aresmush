@@ -58,8 +58,7 @@ module AresMUSH
 					if (!cmd.args)							 
 						return SkillCmd
 					else
-						# return SkillSetCmd
-						return PendingCmd
+						return SkillSetCmd
 					end
 				when "hind"
 					if (!cmd.args)							 
