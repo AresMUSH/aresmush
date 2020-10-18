@@ -318,10 +318,7 @@ module AresMUSH
 					else
 					end						
 				end
-				client.emit (counter)
 				counter = *(1..counter)
-				client.emit (counter)
-				
 				counter.each do |key|
 					setthing = "hj#{key}"
 					setrating = rand(1..10)
