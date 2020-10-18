@@ -313,7 +313,7 @@ module AresMUSH
 		return (iconicfarray)
 	end	
 	
-	
+	  
 	#This is used for Edges and Traits. 
 	
 	def self.returnsysedgesforcg(cgsys, cg)
