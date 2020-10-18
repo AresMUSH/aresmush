@@ -32,12 +32,12 @@ module AresMUSH
 			
 				# charhash = enactor.swrifts_chargenpoints
 				
-				
+				system_name = self.hinderance_name.downcase
+				client.emit (system_name)
 				current_rating = Swrifts.point_rating(enactor, 'hind_points')
 				client.emit (current_rating)
 				group = Global.read_config('swrifts', 'hinderances')
-				client.emit (group.inspect)
-				set = group.select { |a| a.name.downcase == self.hinderance_name }.first
+				set = group.select { |a| a['name'].downcase == system_name }.first
 				client.emit (set)
 				# new_rating = current_rating + mod
 				# current_points = Swrifts.point_rating(enactor, self.points_name)
