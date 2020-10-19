@@ -669,7 +669,8 @@ module AresMUSH
 		## ----- Points
 		
 		def self.point_rating(char, points_name)
-			point = Swrifts.find_points(char, points_name)
+			name_downcase = points_name.downcase
+			point = char.swrifts_chargenpoints.select { |a| a.name.downcase == name_downcase }.first
 			point ? point.rating : 0
 		end
 
