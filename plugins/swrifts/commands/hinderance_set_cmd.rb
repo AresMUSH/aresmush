@@ -48,10 +48,10 @@ module AresMUSH
 					points.update(rating: new_points)
 				end				
 			
-				setthing = self.hinderance_name.downcase
-				ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-					SwriftsHinderances.create(name: setthing, character: model)
-				end
+				# setthing = self.hinderance_name.downcase
+				# ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
+					# SwriftsHinderances.create(name: setthing, character: model)
+				# end
 			end
 #----- End of def handle -----	
 
