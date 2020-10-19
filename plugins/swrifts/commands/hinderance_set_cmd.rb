@@ -6,8 +6,8 @@ module AresMUSH
 			attr_accessor :target, :target_name, :hinderance_name, :points_name
 			
 			def parse_args
-				self.target = enactor #Set the character to be the current character
-				self.target_name = enactor_name 
+				self.target = enactor #Set the character to be the current character HASH
+				self.target_name = enactor_name #set the character NAME
 				self.hinderance_name = trim_arg(cmd.args) #Set to the Hinderance passed
 				self.points_name = "hind_points"
 			end
@@ -18,10 +18,6 @@ module AresMUSH
 			
 			#----- Check to see:
 			def check_valid_iconicf
-				client.emit (self.target)
-				client.emit (self.target_name)
-				return
-				
 				check_hind = Swrifts.is_valid_tname?(self.hinderance_name, "hinderances")
 				check_cgen = self.target.swrifts_traits.empty?
 				if  check_hind == false
@@ -47,7 +43,7 @@ module AresMUSH
 				new_points = current_points + mod
 				client.emit (new_points) 
 				
-				ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
+				ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
 					points = Swrifts.find_points(model, self.points_name)	
 					points.update(rating: new_points)
 				end				
