@@ -52,6 +52,7 @@ module AresMUSH
 				ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
 					SwriftsHinderances.create(name: setthing, character: model)
 				end
+				client.emit_success t('swrifts.hind_added', :name => self.hinderance_name, :points => new_points)
 			end
 #----- End of def handle -----	
 
