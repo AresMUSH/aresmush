@@ -39,13 +39,11 @@ module AresMUSH
 				element = set.select { |a| a == 'hind_points' }.first
 				mod = element[1]
 				
-				client.emit (mod)
-				
 				new_points = current_points + mod
 				client.emit (new_points) 
 				
 				ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-					points = self.target_name.swrifts_chargenpoints.select { |a| a.name == 'hind_points' }.first
+					points = enactor.Swrifts_chargenpoints.select { |a| a.name == 'hind_points' }.first
 					client.emit (points)
 					points.update(rating: new_points)
 				end				
