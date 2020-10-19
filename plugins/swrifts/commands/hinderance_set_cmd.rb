@@ -3,21 +3,22 @@ module AresMUSH
 		class HinderanceSetCmd
 			include CommandHandler
 			      
-			attr_accessor :target_name, :hinderance_name
+			attr_accessor :target, :hinderance_name, :points_name
 			
 			def parse_args
-				self.target_name = enactor #Set the character to be the current character
+				self.target = enactor #Set the character to be the current character
 				self.hinderance_name = trim_arg(cmd.args) #Set to the Hinderance passed
+				self.points_name = "hind_points"
 			end
 
 			def required_args
-				[ self.target_name, self.hinderance_name ]
+				[ self.target, self.hinderance_name ]
 			end
 			
 			#----- Check to see:
 			def check_valid_iconicf
 				check_hind = Swrifts.is_valid_tname?(self.hinderance_name, "hinderances")
-				check_cgen = self.target_name.swrifts_traits.empty?
+				check_cgen = self.target.swrifts_traits.empty?
 				if  check_hind == false
 					return t('swrifts.gen_invalid_name', :name => self.hinderance_name.capitalize, :cat => "Hinderance") 
 				elsif check_cgen == true
@@ -42,14 +43,13 @@ module AresMUSH
 				new_points = current_points + mod
 				client.emit (new_points) 
 				
-				ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
-					points = enactor.Swrifts_chargenpoints.select { |a| a.name == 'hind_points' }.first
-					client.emit (points)
+				ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
+					points = Swrifts.find_points(model, self.points_name)	
 					points.update(rating: new_points)
 				end				
 			
 				# setthing = self.hinderance_name.downcase
-				# ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
+				# ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
 					# SwriftsHinderances.create(name: setthing, character: model)
 				# end
 			end
