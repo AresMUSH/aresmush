@@ -421,7 +421,7 @@ module AresMUSH
 			ifdisabled=false # Will need better logic here.
 		
 			
-			strret = "#{ifname[0]['class']}"
+			strret = "#{ifname}"
 			return (strret)
 			# Is there a character race selected?
 			# if ( ifname.length > 0 && ifname['class'].downcase != "none" )	
