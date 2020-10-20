@@ -422,7 +422,7 @@ module AresMUSH
 		
 			
 			ifname.each do |d, k|
-				return (k['class'])
+				return (d, k)
 			end
 			
 			# Is there a character race selected?
