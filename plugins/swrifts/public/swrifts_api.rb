@@ -423,7 +423,7 @@ module AresMUSH
 			
 			
 			ifname.each do |d|
-				strret = d['class']
+				strret = "#{d['class']}"
 				return (strret)
 			end
 			
