@@ -421,12 +421,8 @@ module AresMUSH
 			ifdisabled=false # Will need better logic here.
 		
 			
-			
-			ifname.each do |d|
-				strret = "#{d['class']}"
-				return (strret)
-			end
-			
+			strret = "#{ifname[0]['class']}"
+			return (strret)
 			# Is there a character race selected?
 			# if ( ifname.length > 0 && ifname['class'].downcase != "none" )	
 				# rc = Swrifts.race_check(char, swrifts_race, racename, ifname)
