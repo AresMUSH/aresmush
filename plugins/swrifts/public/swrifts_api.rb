@@ -253,9 +253,9 @@ module AresMUSH
 	
 	def self.getcharrace(charrace,swrifts_race) 
 		# get the entry in global file that matches the ICF name selected. We're going to make this pretty.
+		cracestring = Array.new
 		charcgrace = swrifts_race.select { |ss| ss['name'].downcase == charrace.downcase }.first
 		newcgr = charcgrace.inspect
-		cracestring = []
 		if ( charcgrace ) 
 			racename = charcgrace['name']
 			desc = charcgrace['desc']
