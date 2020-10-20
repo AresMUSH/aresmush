@@ -421,6 +421,7 @@ module AresMUSH
 			ifdisabled=false # Will need better logic here.
 		
 			
+			strret = ''
 			ifname.each do |d, k|
 				strret << d
 				strret << 'and'
