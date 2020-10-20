@@ -422,7 +422,7 @@ module AresMUSH
 		
 			strret=''
 			ifname.each do |e|
-				strret << e['class']
+				strret << e['name']
 			end
 				return (strret)
 			# Is there a character race selected?
