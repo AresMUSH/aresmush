@@ -248,7 +248,7 @@ module AresMUSH
 			ifstring << ")"
 		end	
 		cifstring << {class: ifname, name: ifstring, rating: desc}  
-		return (cifstring.name)
+		return (cifstring['name'])
 	end	
 	
 	def self.getcharrace(charrace,swrifts_race) 
