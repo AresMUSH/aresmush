@@ -420,13 +420,14 @@ module AresMUSH
 			
 			ifdisabled=false # Will need better logic here.
 			
+			return (ifname)
 			# Is there a character race selected?
-			if ( ifname.length > 0 && ifname['class'].downcase != "none" )	
-				rc = Swrifts.race_check(char, swrifts_race, racename, ifname)
-				if (rc == true) 
-					ifdisabled = true
-				end
-			end			
+			# if ( ifname.length > 0 && ifname['class'].downcase != "none" )	
+				# rc = Swrifts.race_check(char, swrifts_race, racename, ifname)
+				# if (rc == true) 
+					# ifdisabled = true
+				# end
+			# end			
 			
 			racearray << {name: racestring, disabled: ifdisabled, desc: desc, class: racename}			
 		end
