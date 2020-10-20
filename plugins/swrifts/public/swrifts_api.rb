@@ -421,8 +421,8 @@ module AresMUSH
 			ifdisabled=false # Will need better logic here.
 		
 			
-			ifname.each do |d|
-				return (d['class'])
+			ifname.each do |d k|
+				return (k['class'])
 			end
 			
 			# Is there a character race selected?
