@@ -421,6 +421,7 @@ module AresMUSH
 			ifdisabled=false # Will need better logic here.
 		
 			strret=''
+			strret << ifname[:class]
 			ifname.each do |e,f|
 				strret << 'e: '
 				strret << "#{e.class}"
