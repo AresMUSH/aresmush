@@ -421,7 +421,7 @@ module AresMUSH
 			ifdisabled=false # Will need better logic here.
 		
 			
-			ifname.each do |d k|
+			ifname.each do |d, k|
 				return (k['class'])
 			end
 			
