@@ -248,7 +248,7 @@ module AresMUSH
 			ifstring << ")"
 		end	
 		cifstring << {class: ifname, name: ifstring, rating: desc}
-		return ("#{ifstring}")
+		# return ("#{ifstring}")
 		return (cifstring)
 	end	
 	
