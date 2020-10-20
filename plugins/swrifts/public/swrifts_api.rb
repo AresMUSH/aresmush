@@ -238,7 +238,7 @@ module AresMUSH
 		cifstring = []
 		# get the entry in global file that matches the ICF name selected. We're going to make this pretty.
 		charcgicf = swrifts_iconicf.select { |ss| ss['name'].downcase == charicf.downcase }.first
-		
+		return ("#{charcgicf}")
 		ifname = charcgicf['name']
 		desc = charcgicf['description']
 		ifstring = "#{ifname}"
