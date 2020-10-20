@@ -238,7 +238,6 @@ module AresMUSH
 		cifstring = []
 		# get the entry in global file that matches the ICF name selected. We're going to make this pretty.
 		charcgicf = swrifts_iconicf.select { |ss| ss['name'].downcase == charicf.downcase }.first
-		return ("#{charcgicf}")
 		ifname = charcgicf['name']
 		desc = charcgicf['description']
 		ifstring = "#{ifname}"
@@ -250,7 +249,7 @@ module AresMUSH
 		end	
 		cifstring << {class: ifname, name: ifstring, rating: desc}
 		# cifstring << {name: ifstring, disabled: false, desc: desc}
-		return (cifstring)
+		return cifstring
 	end	
 	
 	def self.getcharrace(charrace,swrifts_race) 
