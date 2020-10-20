@@ -422,7 +422,10 @@ module AresMUSH
 		
 			strret=''
 			strret << "#{ifname[:class]}"
-			# return (strret)
+			strret << " "
+			strret << "#{strret.class}"
+			
+			return (strret)
 			# Is there a character race selected?
 			if ( strret.length > 0 && strret.downcase != "none" )	
 				rc = Swrifts.race_check(char, swrifts_race, racename, ifname)
