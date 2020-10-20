@@ -316,8 +316,8 @@ module AresMUSH
 				rc = Swrifts.race_check(char, swrifts_race, charrace, ifname)
 				if (rc == true) 
 					ifdisabled = true
-				}
-			}		
+				end
+			end		
 			iconicfarray << {name: ifstring, disabled: ifdisabled, desc: desc}
 		end
 		blankstrg = {name: 'None ~ Select to reset Iconic Framework', disabled: false, desc: 'Choose to reset Iconic Framework'}
