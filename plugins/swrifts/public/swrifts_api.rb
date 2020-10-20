@@ -429,7 +429,7 @@ module AresMUSH
 			strret << "#{ddd}"
 			# Is there a character race selected?
 			if ( strret.length > 0 && ddd != "none" )	
-				rc = Swrifts.race_check(char, swrifts_race, racename, ifname)
+				rc = Swrifts.race_check(char, swrifts_race, racename, ddd)
 				if (rc == true) 
 					ifdisabled = true
 				end
