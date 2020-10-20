@@ -433,11 +433,12 @@ module AresMUSH
 			else
 				newret << 'nnn'
 			end			
-			return "#{newret}"
-			racearray << {name: racestring, disabled: ifdisabled, desc: desc, class: racename}			
+			racearray << {name: racestring, disabled: ifdisabled, desc: desc, class: racename}
+						
 		end
 		blankstrg = {name: 'None ~ Select to reset Race', disabled: false, desc: 'Choose to reset Race', class: 'none'}
 		racearray.unshift(blankstrg)
+		return "#{newret}"
 		return (racearray)
 	end
 	
