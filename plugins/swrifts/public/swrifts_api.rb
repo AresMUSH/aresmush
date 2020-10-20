@@ -422,20 +422,13 @@ module AresMUSH
 		
 			strret=''
 			strret << ifname[:class]
-			ifname.each do |e,f|
-				strret << 'e: '
-				strret << "#{e.class}"
-				strret << 'f: '
-				strret << "#{f.class}"
-			end
-				return (strret)
 			# Is there a character race selected?
-			# if ( ifname.length > 0 && ifname['class'].downcase != "none" )	
-				# rc = Swrifts.race_check(char, swrifts_race, racename, ifname)
-				# if (rc == true) 
-					# ifdisabled = true
-				# end
-			# end			
+			if ( strret.length > 0 && strret.downcase != "none" )	
+				rc = Swrifts.race_check(char, swrifts_race, racename, ifname)
+				if (rc == true) 
+					ifdisabled = true
+				end
+			end			
 			
 			racearray << {name: racestring, disabled: ifdisabled, desc: desc, class: racename}			
 		end
