@@ -421,8 +421,11 @@ module AresMUSH
 			ifdisabled=false # Will need better logic here.
 		
 			strret=''
-			ifname.each do |e|
-				strret << e['name']
+			ifname.each do |e,f|
+				strret << 'e: '
+				strret << e
+				strret << 'f: '
+				strret << f
 			end
 				return (strret)
 			# Is there a character race selected?
