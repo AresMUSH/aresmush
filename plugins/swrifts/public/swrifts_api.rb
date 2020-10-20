@@ -158,37 +158,37 @@ module AresMUSH
 		swrifts_init = Global.read_config('swrifts', 'init')
 		cgslots = returncgslotsforcg(swrifts_init)
 		
-		# Format Iconic Framework table
+		# Get the Characters Traits	
 		swrifts_iconicf = Global.read_config('swrifts', 'iconicf')
-		iconicf = returniconicforcg(swrifts_iconicf)
-		initcgpoints = returninitcgforcg(swrifts_iconicf)
+		swrifts_race = Global.read_config('swrifts', 'races')			
+		cgrace = returnraceforcg(swrifts_race)
+		initracepoints = returninitraceforcg(swrifts_race)
+		swriftstraits = char.swrifts_traits	
+		charicf = acl_return_traits(swriftstraits,'iconicf') #Get the characters Iconic Framework from the traits		
+		charrace = acl_return_traits(swriftstraits,'race') #Get the characters Race from the traits			
 		
 		cgedges = char.swrifts_edges
 		cgsysedges = Global.read_config('swrifts', 'edges')
 		cghinder = char.swrifts_hinderances
 		cgsyshind = Global.read_config('swrifts', 'hinderances')
 	
-		# Get the Characters Iconic Framework
-		swriftstraits = char.swrifts_traits		
-		charicf = acl_return_traits(swriftstraits,'iconicf') #Get the characters Iconic Framework from the traits
+		# Set the Characters Iconic Framework
 		if ( charicf.length > 0 )
 			charicf = getcharicf(charicf,swrifts_iconicf)
 		else
 			charicf="None"
 		end
 		
-		
-		# Get the Characters Race		
-		swrifts_race = Global.read_config('swrifts', 'races')			
-		cgrace = returnraceforcg(swrifts_race)
-		initracepoints = returninitraceforcg(swrifts_race)
-		swriftstraits = char.swrifts_traits		
-		charrace = acl_return_traits(swriftstraits,'race') #Get the characters Race from the traits		
+		# Set the Characters Race			
 		if ( charrace.length > 0 && charrace.downcase != "none" )
 			charrace = getcharrace(charrace,swrifts_race)
 		else
 			charrace = "None"		
 		end
+		
+		# Format Iconic Framework table
+		iconicf = returniconicforcg(char, swrifts_race, charrace, swrifts_iconicf)
+		initcgpoints = returninitcgforcg(swrifts_iconicf)		
 		
 		# Set up Chargen Points from Character not YML
 		cgpoints = char.swrifts_chargenpoints
@@ -296,7 +296,7 @@ module AresMUSH
 		return (cginitarray)
 	end	
 	
-	def self.returniconicforcg(model)
+	def self.returniconicforcg(char, swrifts_race, charrace, model)
 		iconicfarray = []
         list = model.sort_by { |a| a['name']}
 		list.each do |c|
@@ -310,6 +310,14 @@ module AresMUSH
 				ifstring << ")"
 			end		
 			ifdisabled=false # Will need better logic here.
+			
+			# Is there a character race selected?
+			if ( charrace.length > 0 && charrace.downcase != "none" )	
+				rc = Swrifts.race_check(char, swrifts_race, charrace, ifname)
+				if (rc == true) 
+					ifdisabled = true
+				}
+			}		
 			iconicfarray << {name: ifstring, disabled: ifdisabled, desc: desc}
 		end
 		blankstrg = {name: 'None ~ Select to reset Iconic Framework', disabled: false, desc: 'Choose to reset Iconic Framework'}
