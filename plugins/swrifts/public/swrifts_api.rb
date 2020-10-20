@@ -421,13 +421,10 @@ module AresMUSH
 			ifdisabled=false # Will need better logic here.
 		
 			
-			strret = ifname['class']
-			return (strret)
-			ifname.each do |d, k|
-				strret << "#{d}"
-				strret << 'and'
-				strret << "#{k}"
-
+			
+			ifname.each do |d|
+				strret = d['class']
+				return (strret)
 			end
 			
 			# Is there a character race selected?
