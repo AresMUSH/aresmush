@@ -247,7 +247,7 @@ module AresMUSH
 			ifstring << book
 			ifstring << ")"
 		end	
-		cifstring << {class: ifname, name: ifname, rating: desc}  
+		cifstring << {class: ifname, name: ifstring, rating: desc}  
 		return ("#{cifstring}")
 	end	
 	
