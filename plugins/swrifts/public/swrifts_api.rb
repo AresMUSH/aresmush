@@ -427,9 +427,8 @@ module AresMUSH
 			ddd = strret.downcase
 			strret << ' '
 			strret << "#{ddd}"
-			return (strret)
 			# Is there a character race selected?
-			if ( strret.length > 0 && strret.downcase != "none" )	
+			if ( strret.length > 0 && ddd != "none" )	
 				rc = Swrifts.race_check(char, swrifts_race, racename, ifname)
 				if (rc == true) 
 					ifdisabled = true
