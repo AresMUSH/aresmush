@@ -423,9 +423,9 @@ module AresMUSH
 			
 			strret = ''
 			ifname.each do |d, k|
-				strret << d
+				strret << "#{d}"
 				strret << 'and'
-				strret << k
+				strret << "#{k}"
 				return (strret)
 			end
 			
