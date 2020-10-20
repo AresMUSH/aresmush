@@ -248,7 +248,6 @@ module AresMUSH
 			ifstring << ")"
 		end	
 		cifstring << {class: ifname, name: ifstring, rating: desc}
-		# return ("#{ifstring}")
 		return (cifstring)
 	end	
 	
@@ -311,7 +310,7 @@ module AresMUSH
 				ifstring << ")"
 			end		
 			ifdisabled=false # Will need better logic here.
-			iconicfarray << {name: ifstring, disabled: ifdisabled, desc: desc,}
+			iconicfarray << {name: ifstring, disabled: ifdisabled, desc: desc}
 		end
 		blankstrg = {name: 'None ~ Select to reset Iconic Framework', disabled: false, desc: 'Choose to reset Iconic Framework'}
 		iconicfarray.unshift(blankstrg)
