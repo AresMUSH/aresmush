@@ -423,9 +423,9 @@ module AresMUSH
 			strret=''
 			ifname.each do |e,f|
 				strret << 'e: '
-				strret << e
+				strret << e.class
 				strret << 'f: '
-				strret << f
+				strret << f.class
 			end
 				return (strret)
 			# Is there a character race selected?
