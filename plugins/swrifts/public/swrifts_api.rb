@@ -430,6 +430,8 @@ module AresMUSH
 				if (rc == true) 
 					ifdisabled = true
 				end
+			else
+				newret << 'nnn'
 			end			
 			return "#{newret}"
 			racearray << {name: racestring, disabled: ifdisabled, desc: desc, class: racename}			
