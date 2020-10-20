@@ -296,7 +296,7 @@ module AresMUSH
 	end	
 	
 	def self.returniconicforcg(model)
-		iconicfarray = Array.new
+		iconicfarray = []
         list = model.sort_by { |a| a['name']}
 		list.each do |c|
 			ifname = c['name']
@@ -307,13 +307,14 @@ module AresMUSH
 				ifstring << " ~ ("
 				ifstring << book
 				ifstring << ")"
-			end			
-			iconicfarray.push("#{ifstring}")
+			end		
+			ifdisabled=false # Will need better logic here.
+			iconicfarray << {name: ifstring, disabled: ifdisabled, desc: desc, class: ifname}
 		end
-		iconicfarray.unshift("None")
+		blankstrg = {name: 'None ~ Select to reset Iconic Framework', disabled: false, desc: 'Choose to reset Iconic Framework'		
+		iconicfarray.unshift(blankstrg)
 		return (iconicfarray)
 	end	
-	
 	  
 	#This is used for Edges and Traits. 
 	
