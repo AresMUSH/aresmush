@@ -391,7 +391,7 @@ module AresMUSH
 		return (initcgpointsarray) #return the complete hash.
 	end		
 	
-	def self.returnraceforcg(model)
+	def self.returnraceforcg(char, swrifts_race, charrace, model)
 		racearray = []
         list = model.sort_by { |a| a['name']}
 		list.each do |c|
@@ -416,6 +416,14 @@ module AresMUSH
 			end
 			
 			ifdisabled=false # Will need better logic here.
+			
+			# Is there a character race selected?
+			if ( charrace.length > 0 && charrace.downcase != "none" )	
+				rc = Swrifts.race_check(char, swrifts_race, charrace, ifname)
+				if (rc == true) 
+					ifdisabled = true
+				end
+			end			
 			
 			racearray << {name: racestring, disabled: ifdisabled, desc: desc, class: racename}			
 		end
