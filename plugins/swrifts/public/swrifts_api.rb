@@ -161,8 +161,7 @@ module AresMUSH
 		# Get the Characters Traits	
 		swrifts_iconicf = Global.read_config('swrifts', 'iconicf')
 		swrifts_race = Global.read_config('swrifts', 'races')			
-		cgrace = returnraceforcg(swrifts_race)
-		initracepoints = returninitraceforcg(swrifts_race)
+	
 		swriftstraits = char.swrifts_traits	
 		charicf = acl_return_traits(swriftstraits,'iconicf') #Get the characters Iconic Framework from the traits		
 		charrace = acl_return_traits(swriftstraits,'race') #Get the characters Race from the traits			
@@ -188,7 +187,11 @@ module AresMUSH
 		
 		# Format Iconic Framework table
 		iconicf = returniconicforcg(char, swrifts_race, charrace, swrifts_iconicf)
-		initcgpoints = returninitcgforcg(swrifts_iconicf)		
+		initcgpoints = returninitcgforcg(swrifts_iconicf)	
+		
+		#Get the race list for drop down.
+		cgrace = returnraceforcg(char, swrifts_race, charrace, swrifts_iconicf)		
+		initracepoints = returninitraceforcg(swrifts_race)
 		
 		# Set up Chargen Points from Character not YML
 		cgpoints = char.swrifts_chargenpoints
