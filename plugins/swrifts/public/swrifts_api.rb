@@ -247,10 +247,9 @@ module AresMUSH
 			ifstring << book
 			ifstring << ")"
 		end	
-		cifstring << {class: ifname, name: ifstring, rating: desc}  
+		cifstring << {class: ifname, name: ifname, rating: desc}  
 		return (cifstring)
 	end	
-
 	
 	def self.getcharrace(charrace,swrifts_race) 
 		# get the entry in global file that matches the ICF name selected. We're going to make this pretty.
