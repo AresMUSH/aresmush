@@ -235,7 +235,7 @@ module AresMUSH
 	end	
 	
 	def self.getcharicf(charicf,swrifts_iconicf) 
-		ifstring=''
+		ifstring=[]
 		# get the entry in global file that matches the ICF name selected. We're going to make this pretty.
 		charcgicf = swrifts_iconicf.select { |ss| ss['name'].downcase == charicf.downcase }.first
 		ifname = charcgicf['name']
@@ -247,14 +247,16 @@ module AresMUSH
 			ifstring << book
 			ifstring << ")"
 		end	
-		charicf="#{ifstring}"
+		charicf << {class: ifname, name: ifstring, rating: desc}  
 		return (charicf)
 	end	
+
 	
 	def self.getcharrace(charrace,swrifts_race) 
 		# get the entry in global file that matches the ICF name selected. We're going to make this pretty.
 		charcgrace = swrifts_race.select { |ss| ss['name'].downcase == charrace.downcase }.first
 		newcgr = charcgrace.inspect
+		racestring = []
 		if ( charcgrace ) 
 			racename = charcgrace['name']
 			desc = charcgrace['desc']
@@ -276,7 +278,7 @@ module AresMUSH
 				racestring << ")"
 			end
 		end
-		charrace = "#{racestring}"
+		charrace << {class: racename, name: racestring, rating: desc}		
 		return (charrace)
 	end
 	
