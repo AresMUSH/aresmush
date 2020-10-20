@@ -419,26 +419,19 @@ module AresMUSH
 			end
 			
 			ifdisabled=false # Will need better logic here.
-			newret=''
-			strret=''
-			strret << "#{ifname[:class]}"
-			ifname = strret.downcase
+			ifname = 'mystic'
 			# Is there a character race selected?
-			if ( strret.length > 0 && strret != "none" )	
+			if ( ifname.length > 0 && ifname != "none" )	
 				rc = Swrifts.race_check(char, swrifts_race, racename, ifname)
-				newret << "eee: #{rc}"
 				if (rc == true) 
 					ifdisabled = true
 				end
-			else
-				newret << 'nnn'
 			end			
 			racearray << {name: racestring, disabled: ifdisabled, desc: desc, class: racename}
 						
 		end
 		blankstrg = {name: 'None ~ Select to reset Race', disabled: false, desc: 'Choose to reset Race', class: 'none'}
 		racearray.unshift(blankstrg)
-		return "#{newret}"
 		return (racearray)
 	end
 	
