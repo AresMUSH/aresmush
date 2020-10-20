@@ -419,7 +419,7 @@ module AresMUSH
 			end
 			
 			ifdisabled=false # Will need better logic here.
-			newret
+			newret=''
 			strret=''
 			strret << "#{ifname[:class]}"
 			ifname = strret.downcase
