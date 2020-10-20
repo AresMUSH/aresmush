@@ -421,7 +421,7 @@ module AresMUSH
 			ifdisabled=false # Will need better logic here.
 			
 			# Is there a character race selected?
-			if ( charrace.length > 0 && charrace.downcase != "none" )	
+			if ( ifname.length > 0 && ifname.downcase != "none" )	
 				rc = Swrifts.race_check(char, swrifts_race, racename, ifname)
 				if (rc == true) 
 					ifdisabled = true
