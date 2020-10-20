@@ -190,7 +190,7 @@ module AresMUSH
 		initcgpoints = returninitcgforcg(swrifts_iconicf)	
 		
 		#Get the race list for drop down.
-		cgrace = returnraceforcg(char, swrifts_race, charrace, swrifts_iconicf)		
+		cgrace = returnraceforcg(char, swrifts_race, charicf, swrifts_race)		
 		initracepoints = returninitraceforcg(swrifts_race)
 		
 		# Set up Chargen Points from Character not YML
@@ -394,7 +394,7 @@ module AresMUSH
 		return (initcgpointsarray) #return the complete hash.
 	end		
 	
-	def self.returnraceforcg(char, swrifts_race, charrace, model)
+	def self.returnraceforcg(char, swrifts_race, ifname, model)
 		racearray = []
         list = model.sort_by { |a| a['name']}
 		list.each do |c|
@@ -422,7 +422,7 @@ module AresMUSH
 			
 			# Is there a character race selected?
 			if ( charrace.length > 0 && charrace.downcase != "none" )	
-				rc = Swrifts.race_check(char, swrifts_race, charrace, ifname)
+				rc = Swrifts.race_check(char, swrifts_race, racename, ifname)
 				if (rc == true) 
 					ifdisabled = true
 				end
