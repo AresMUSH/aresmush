@@ -740,7 +740,7 @@ spells:
     desc: "The target's ability to cast spells is made very difficult for a short time."
     duration: 3 rounds
     effect: Debuff
-    level: 5
+    level: 7
     name: Restrain Magic
     range: Long
     rounds: 3
