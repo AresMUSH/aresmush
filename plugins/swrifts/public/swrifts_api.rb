@@ -424,7 +424,9 @@ module AresMUSH
 			strret << "#{ifname[:class]}"
 			strret << " "
 			strret << "#{strret.class}"
-			
+			ddd = strret.downcase
+			strret << ' '
+			strret << "#{ddd}"
 			return (strret)
 			# Is there a character race selected?
 			if ( strret.length > 0 && strret.downcase != "none" )	
