@@ -164,7 +164,7 @@ module AresMUSH
 	
 		swriftstraits = char.swrifts_traits	
 		rawcharicf = acl_return_traits(swriftstraits,'iconicf') #Get the characters Iconic Framework from the traits		
-		charrace = acl_return_traits(swriftstraits,'race') #Get the characters Race from the traits			
+		rawcharrace = acl_return_traits(swriftstraits,'race') #Get the characters Race from the traits			
 		
 		cgedges = char.swrifts_edges
 		cgsysedges = Global.read_config('swrifts', 'edges')
@@ -180,13 +180,13 @@ module AresMUSH
 		
 		# Set the Characters Race			
 		if ( charrace.length > 0 && charrace.downcase != "none" )
-			charrace = getcharrace(charrace,swrifts_race)
+			charrace = getcharrace(rawcharrace,swrifts_race)
 		else
 			charrace = "None"		
 		end
 		
 		# Format Iconic Framework table
-		iconicf = returniconicforcg(char, swrifts_race, charrace, swrifts_iconicf)
+		iconicf = returniconicforcg(char, swrifts_race, rawcharrace, swrifts_iconicf)
 		initcgpoints = returninitcgforcg(swrifts_iconicf)	
 		
 		#Get the race list for drop down.
@@ -299,7 +299,7 @@ module AresMUSH
 		return (cginitarray)
 	end	
 	
-	def self.returniconicforcg(char, swrifts_race, charrace, model)
+	def self.returniconicforcg(char, rawcharrace, ifname, model)
 		iconicfarray = []
         list = model.sort_by { |a| a['name']}
 		list.each do |c|
@@ -313,10 +313,10 @@ module AresMUSH
 				ifstring << ")"
 			end		
 			ifdisabled=false # Will need better logic here.
-			
+			swrifts_race = Swrifts.find_race_config(rawcharrace) #get the Race entry we're working with from the yml
 			# Is there a character race selected?
 			if ( charrace.length > 0 && charrace.downcase != "none" )	
-				rc = Swrifts.race_check(char, swrifts_race, charrace, ifname)
+				rc = Swrifts.race_check(char, swrifts_race, rawcharrace, ifname)
 				if (rc == true) 
 					ifdisabled = true
 				end
