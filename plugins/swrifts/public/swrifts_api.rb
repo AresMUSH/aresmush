@@ -314,7 +314,6 @@ module AresMUSH
 				ifstring << ")"
 			end		
 			ifdisabled=false # Will need better logic here.
-			# return ("#{rawcharrace.inspect}")
 			if ( rawcharrace.length > 0 )				
 				swrifts_race = Swrifts.find_race_config(rawcharrace) #get the Race entry we're working with from the yml
 				# Is there a character race selected?
