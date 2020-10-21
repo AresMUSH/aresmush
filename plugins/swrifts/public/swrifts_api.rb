@@ -301,7 +301,6 @@ module AresMUSH
 	
 	def self.returniconicforcg(char, swrifts_race, rawcharrace, model)
 		#(char, swrifts_race, rawcharrace, swrifts_iconicf)	
-		return ("#{swrifts_race}")
 		iconicfarray = []
 		newtt =''
         list = model.sort_by { |a| a['name']}
@@ -320,7 +319,7 @@ module AresMUSH
 				swrifts_race = Swrifts.find_race_config(rawcharrace) #get the Race entry we're working with from the yml
 				# Is there a character race selected?
 				rc = Swrifts.race_check(char, swrifts_race, rawcharrace, ifname)
-				newtt << "ifname: #{ifname}, SWRIFTS_race: #{swrifts_race.inspect}"
+				newtt << "ifname: #{ifname}, SWRIFTS_race: #{swrifts_race.inspect}<br />"
 				if (rc == true) 
 					ifdisabled = true
 					
