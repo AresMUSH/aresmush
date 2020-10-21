@@ -281,6 +281,7 @@ module AresMUSH
 			end
 		end
 		cracestring << {class: racename, name: racestring, rating: desc}		
+		return (cracestring.inspect)
 		return (cracestring)
 	end
 	
