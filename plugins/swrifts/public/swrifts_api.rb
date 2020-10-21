@@ -419,7 +419,7 @@ module AresMUSH
 			end
 			
 			ifdisabled=false # Will need better logic here.
-			ifname = 'mystic'
+			# ifname = 'mystic'
 			swrifts_race = Swrifts.find_race_config(racename) #get the Race entry we're working with from the yml
 			# Is there a character race selected?
 			if ( ifname.length > 0 && ifname != "none" )	
