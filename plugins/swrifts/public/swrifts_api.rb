@@ -301,6 +301,7 @@ module AresMUSH
 	
 	def self.returniconicforcg(char, swrifts_race, rawcharrace, model)
 		#(char, swrifts_race, rawcharrace, swrifts_iconicf)	
+		return ("#{swrifts_race}")
 		iconicfarray = []
 		newtt =''
         list = model.sort_by { |a| a['name']}
