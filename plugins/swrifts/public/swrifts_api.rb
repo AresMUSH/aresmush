@@ -190,8 +190,8 @@ module AresMUSH
 		initcgpoints = returninitcgforcg(swrifts_iconicf)	
 		
 		#Get the race list for drop down.
-		newcharicf = "mystic"
-		# newcharicf = "#{charicf['class']}"
+		# newcharicf = "mystic"
+		newcharicf = charicf['class'].to_s
 		cgrace = returnraceforcg(char, swrifts_race, newcharicf, swrifts_race)		
 		initracepoints = returninitraceforcg(swrifts_race)
 		
