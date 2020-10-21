@@ -28,7 +28,9 @@ module AresMUSH
     end
 
     def self.count_spells_total(char)
-      spells_learned = char.spells_learned.select { |l| l.learning_complete }
+      major_school = char.group("Major School")
+      minor_school = char.group("Minor School")
+      spells_learned = char.spells_learned.select { |l| l.learning_complete && ( l.school == major_school || l.school == minor_school)}
       spells_learned.count
     end
 
