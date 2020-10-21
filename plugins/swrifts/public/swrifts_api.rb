@@ -507,19 +507,18 @@ module AresMUSH
 			return ["No Custom Data"]
 		end
 		
-		return [chargen_data.inspect]
-		
 		init = Global.read_config('swrifts', 'init')
 		dbgstr = ''	
 		
 		#Get the iconic framework and race set on the form
-		c_iconicf = chargen_data[:custom][:iconicf]
+		c_iconicf = chargen_data[:custom][:iconicf][:class]
 		c_race = chargen_data[:custom][:race]
 		c_edges = chargen_data[:custom][:cgedges]
 		c_edgesnofw = chargen_data[:custom][:cgedgesnofw]
 		c_hind = chargen_data[:custom][:cghind]
 		c_hindnofw = chargen_data[:custom][:cghindnofw]
 
+		return [c_iconicf]
 
 		#Remove the book and description stuff from the end of the string.	
 		chopped_iconicf = c_iconicf[/[^~]+/]
