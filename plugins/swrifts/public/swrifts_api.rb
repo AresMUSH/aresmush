@@ -190,7 +190,8 @@ module AresMUSH
 		initcgpoints = returninitcgforcg(swrifts_iconicf)	
 		
 		#Get the race list for drop down.
-		cgrace = returnraceforcg(char, swrifts_race, charicf, swrifts_race)		
+		newcharicf = charicf['class']
+		cgrace = returnraceforcg(char, swrifts_race, newcharicf, swrifts_race)		
 		initracepoints = returninitraceforcg(swrifts_race)
 		
 		# Set up Chargen Points from Character not YML
