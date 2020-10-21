@@ -507,7 +507,7 @@ module AresMUSH
 			return ["No Custom Data"]
 		end
 		
-		return [chargen_data]
+		return [chargen_data.inspect]
 		
 		init = Global.read_config('swrifts', 'init')
 		dbgstr = ''	
