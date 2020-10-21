@@ -319,17 +319,15 @@ module AresMUSH
 				swrifts_race = Swrifts.find_race_config(rawcharrace) #get the Race entry we're working with from the yml
 				# Is there a character race selected?
 				rc = Swrifts.race_check(char, swrifts_race, rawcharrace, ifname)
-				newtt << "ifname: #{ifname}, SWRIFTS_race: #{swrifts_race.inspect}<br />"
 				if (rc == true) 
 					ifdisabled = true
-					
 				end
 			end		
 			iconicfarray << {name: ifstring, disabled: ifdisabled, desc: desc}
 		end
 		blankstrg = {name: 'None ~ Select to reset Iconic Framework', disabled: false, desc: 'Choose to reset Iconic Framework'}
 		iconicfarray.unshift(blankstrg)
-		return (newtt)
+		return (iconicfarray)
 	end	
 	  
 	#This is used for Edges and Traits. 
