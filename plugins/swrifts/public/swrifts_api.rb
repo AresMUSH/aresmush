@@ -172,7 +172,7 @@ module AresMUSH
 		cgsyshind = Global.read_config('swrifts', 'hinderances')
 	
 		# Set the Characters Iconic Framework
-		if ( charicf.length > 0 )
+		if ( rawcharicf.length > 0 )
 			charicf = getcharicf(rawcharicf,swrifts_iconicf)
 		else
 			charicf="None"
