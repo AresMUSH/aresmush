@@ -512,22 +512,14 @@ module AresMUSH
 		
 		#Get the iconic framework and race set on the form
 		c_iconicf = chargen_data[:custom][:iconicf][:class]
-		c_race = chargen_data[:custom][:race]
+		c_race = chargen_data[:custom][:race][:class]
 		c_edges = chargen_data[:custom][:cgedges]
 		c_edgesnofw = chargen_data[:custom][:cgedgesnofw]
 		c_hind = chargen_data[:custom][:cghind]
 		c_hindnofw = chargen_data[:custom][:cghindnofw]
 
-		return [c_iconicf]
-
-		#Remove the book and description stuff from the end of the string.	
-		chopped_iconicf = c_iconicf[/[^~]+/]
-		chopped_iconicf = Website.format_input_for_mush(chopped_iconicf)
-		chopped_race = c_race[/[^~]+/]
-		chopped_race = Website.format_input_for_mush(chopped_race)
-
-		icf_downcase = chopped_iconicf.downcase.strip  # Stripped and downcased iconicframework name.
-		race_downcase = chopped_race.downcase.strip  # Stripped and downcased race name.
+		icf_downcase = c_iconicf.downcase.strip  # Stripped and downcased iconicframework name.
+		race_downcase = c_race.downcase.strip  # Stripped and downcased race name.
 
 		## ----- Update Iconic Framework
 		
