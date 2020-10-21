@@ -419,7 +419,7 @@ module AresMUSH
 				racestring << ")"
 			end
 			
-			return ("#{ifname['class']}")
+			return ("#{ifname}")
 			ifdisabled=false # Will need better logic here.
 			# ifname = 'mystic'
 			swrifts_race = Swrifts.find_race_config(racename) #get the Race entry we're working with from the yml
