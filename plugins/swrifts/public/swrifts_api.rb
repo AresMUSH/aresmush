@@ -302,6 +302,7 @@ module AresMUSH
 	def self.returniconicforcg(char, swrifts_race, rawcharrace, model)
 		#(char, swrifts_race, rawcharrace, swrifts_iconicf)	
 		iconicfarray = []
+		newtt =''
         list = model.sort_by { |a| a['name']}
 		list.each do |c|
 			ifname = c['name']
@@ -318,7 +319,7 @@ module AresMUSH
 				swrifts_race = Swrifts.find_race_config(rawcharrace) #get the Race entry we're working with from the yml
 				# Is there a character race selected?
 				rc = Swrifts.race_check(char, swrifts_race, rawcharrace, ifname)
-				return ("IFName: #{ifname} RC is true")
+				newtt << "ifname: #{ifname}, SWRIFTS_race: #{swrifts_race.inspect}"
 				if (rc == true) 
 					ifdisabled = true
 					
@@ -328,7 +329,7 @@ module AresMUSH
 		end
 		blankstrg = {name: 'None ~ Select to reset Iconic Framework', disabled: false, desc: 'Choose to reset Iconic Framework'}
 		iconicfarray.unshift(blankstrg)
-		return (iconicfarray)
+		return (newtt)
 	end	
 	  
 	#This is used for Edges and Traits. 
