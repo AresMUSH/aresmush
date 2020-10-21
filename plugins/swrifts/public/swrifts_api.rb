@@ -316,7 +316,7 @@ module AresMUSH
 			ifdisabled=false # Will need better logic here.
 			swrifts_race = Swrifts.find_race_config(rawcharrace) #get the Race entry we're working with from the yml
 			# Is there a character race selected?
-			if ( charrace.length > 0 && charrace.downcase != "none" )	
+			if ( rawcharrace.length > 0 && rawcharrace.downcase != "none" )	
 				rc = Swrifts.race_check(char, swrifts_race, rawcharrace, ifname)
 				if (rc == true) 
 					ifdisabled = true
