@@ -312,7 +312,6 @@ module AresMUSH
 				ifstring << book
 				ifstring << ")"
 			end		
-			return (rawcharrace);
 			ifdisabled=false # Will need better logic here.
 			swrifts_race = Swrifts.find_race_config(rawcharrace) #get the Race entry we're working with from the yml
 			# Is there a character race selected?
