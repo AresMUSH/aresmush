@@ -318,9 +318,9 @@ module AresMUSH
 				swrifts_race = Swrifts.find_race_config(rawcharrace) #get the Race entry we're working with from the yml
 				# Is there a character race selected?
 				rc = Swrifts.race_check(char, swrifts_race, rawcharrace, ifname)
-				return ("RC: #{rc}")
 				if (rc == true) 
 					ifdisabled = true
+					return ("IFName: #{ifname} RC is true")
 				end
 			end		
 			iconicfarray << {name: ifstring, disabled: ifdisabled, desc: desc}
