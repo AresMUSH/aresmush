@@ -163,7 +163,7 @@ module AresMUSH
 		swrifts_race = Global.read_config('swrifts', 'races')			
 	
 		swriftstraits = char.swrifts_traits	
-		charicf = acl_return_traits(swriftstraits,'iconicf') #Get the characters Iconic Framework from the traits		
+		rawcharicf = acl_return_traits(swriftstraits,'iconicf') #Get the characters Iconic Framework from the traits		
 		charrace = acl_return_traits(swriftstraits,'race') #Get the characters Race from the traits			
 		
 		cgedges = char.swrifts_edges
@@ -173,7 +173,7 @@ module AresMUSH
 	
 		# Set the Characters Iconic Framework
 		if ( charicf.length > 0 )
-			charicf = getcharicf(charicf,swrifts_iconicf)
+			charicf = getcharicf(rawcharicf,swrifts_iconicf)
 		else
 			charicf="None"
 		end
@@ -190,9 +190,7 @@ module AresMUSH
 		initcgpoints = returninitcgforcg(swrifts_iconicf)	
 		
 		#Get the race list for drop down.
-		# newcharicf = "mystic"
-		newcharicf = charicf['name'].to_s
-		cgrace = returnraceforcg(char, swrifts_race, newcharicf, swrifts_race)		
+		cgrace = returnraceforcg(char, swrifts_race, rawcharicf, swrifts_race)		
 		initracepoints = returninitraceforcg(swrifts_race)
 		
 		# Set up Chargen Points from Character not YML
