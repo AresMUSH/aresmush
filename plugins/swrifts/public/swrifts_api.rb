@@ -251,7 +251,6 @@ module AresMUSH
 			ifstring << ")"
 		end	
 		cifstring = {class: ifname, name: ifstring, rating: desc}
-		return (cifstring.inspect)
 		return (cifstring)
 	end	
 	
@@ -282,7 +281,6 @@ module AresMUSH
 			end
 		end
 		cracestring = {class: racename, name: racestring, rating: desc}		
-		# return (cracestring.inspect)
 		return (cracestring)
 	end
 	
