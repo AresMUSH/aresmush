@@ -299,7 +299,8 @@ module AresMUSH
 		return (cginitarray)
 	end	
 	
-	def self.returniconicforcg(char, rawcharrace, ifname, model)
+	def self.returniconicforcg(char, swrifts_race, rawcharrace, model)
+		#(char, swrifts_race, rawcharrace, swrifts_iconicf)	
 		iconicfarray = []
         list = model.sort_by { |a| a['name']}
 		list.each do |c|
@@ -313,7 +314,6 @@ module AresMUSH
 				ifstring << ")"
 			end		
 			ifdisabled=false # Will need better logic here.
-			return (rawcharrace.inspect)
 			if ( rawcharrace.length > 0 )				
 				swrifts_race = Swrifts.find_race_config(rawcharrace) #get the Race entry we're working with from the yml
 				# Is there a character race selected?
@@ -396,6 +396,7 @@ module AresMUSH
 	end		
 	
 	def self.returnraceforcg(char, swrifts_race, ifname, model)
+		#(char, swrifts_race, rawcharrace, swrifts_iconicf)
 		racearray = []
         list = model.sort_by { |a| a['name']}
 		list.each do |c|
