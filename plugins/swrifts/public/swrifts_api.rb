@@ -325,8 +325,7 @@ module AresMUSH
 			end		
 			iconicfarray << {name: ifstring, disabled: ifdisabled, desc: desc}
 		end
-		blankstrg = {name: 'None ~ Select to reset Iconic Framework', disabled: false, desc: 'Choose to reset Iconic Framework'}
-		iconicfarray.unshift(blankstrg)
+		iconicfarray << {name: 'None ~ Select to reset Iconic Framework', disabled: false, desc: 'Choose to reset Iconic Framework'}
 		return (iconicfarray)
 	end	
 	  
