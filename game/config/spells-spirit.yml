@@ -517,7 +517,7 @@ spells:
     available: true
     casting_time: 1 round
     damage_type: Psionic
-    desc: "The caster's presence is completely ignored by all thinking beings or creatures. \n\nThere is no physical change, the mind simply rejects any sensory signs of the caster for the duration of the spell. Large disruptions or sudden violence by the caster will break the spell. Other Spirit users who are either actively wary or who pass an Alertness roll (with modifiers where appropriate) may see through the spell with a successful roll of the caster's Spirit vs their Spirit-4. A draw goes to the caster."
+    desc: "The caster's presence is completely ignored by all thinking beings or creatures. There is no physical change, the mind simply rejects any sensory signs of the caster for the duration of the spell.  \n\nLarge disruptions or sudden violence by the caster will break the spell. Other Spirit users who are either actively wary or who pass an Alertness roll (with modifiers where appropriate) may see through the spell with a successful roll of the caster's Spirit vs their Spirit-4. A draw goes to the caster.\n\nAlthough Pass Unseen may only be cast on one's self in order to obtain the effects, the code allows the spell to target other characters for those times when a Mind Shield check is needed."
     duration: 10 minutes
     effect: Defense
     level: 5
@@ -525,6 +525,7 @@ spells:
     range: Self
     roll: true
     school: Spirit
+    target_num: 100
   Simple Command:
     available: true
     casting_time: 1 round
@@ -565,7 +566,7 @@ spells:
     effect: Psionic
     is_stun: true
     rounds: 3
-    level: 3
+    level: 6
     name: Bewitch
     range: Long
     school: Spirit
