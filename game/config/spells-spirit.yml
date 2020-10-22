@@ -526,6 +526,7 @@ spells:
     roll: true
     school: Spirit
     target_num: 100
+    target_optional: true
   Simple Command:
     available: true
     casting_time: 1 round
