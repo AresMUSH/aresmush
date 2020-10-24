@@ -158,37 +158,40 @@ module AresMUSH
 		swrifts_init = Global.read_config('swrifts', 'init')
 		cgslots = returncgslotsforcg(swrifts_init)
 		
-		# Format Iconic Framework table
+		# Get the Characters Traits	
 		swrifts_iconicf = Global.read_config('swrifts', 'iconicf')
-		iconicf = returniconicforcg(swrifts_iconicf)
-		initcgpoints = returninitcgforcg(swrifts_iconicf)
+		swrifts_race = Global.read_config('swrifts', 'races')			
+	
+		swriftstraits = char.swrifts_traits	
+		rawcharicf = acl_return_traits(swriftstraits,'iconicf') #Get the characters Iconic Framework from the traits		
+		rawcharrace = acl_return_traits(swriftstraits,'race') #Get the characters Race from the traits			
 		
 		cgedges = char.swrifts_edges
 		cgsysedges = Global.read_config('swrifts', 'edges')
 		cghinder = char.swrifts_hinderances
 		cgsyshind = Global.read_config('swrifts', 'hinderances')
 	
-		# Get the Characters Iconic Framework
-		swriftstraits = char.swrifts_traits		
-		charicf = acl_return_traits(swriftstraits,'iconicf') #Get the characters Iconic Framework from the traits
-		if ( charicf.length > 0 )
-			charicf = getcharicf(charicf,swrifts_iconicf)
+		# Set the Characters Iconic Framework
+		if ( rawcharicf.length > 0 )
+			charicf = getcharicf(rawcharicf,swrifts_iconicf)
 		else
 			charicf="None"
 		end
 		
-		
-		# Get the Characters Race		
-		swrifts_race = Global.read_config('swrifts', 'races')			
-		cgrace = returnraceforcg(swrifts_race)
-		initracepoints = returninitraceforcg(swrifts_race)
-		swriftstraits = char.swrifts_traits		
-		charrace = acl_return_traits(swriftstraits,'race') #Get the characters Race from the traits		
-		if ( charrace.length > 0 && charrace.downcase != "none" )
-			charrace = getcharrace(charrace,swrifts_race)
+		# Set the Characters Race			
+		if ( rawcharrace.length > 0 && rawcharrace.downcase != "none" )
+			charrace = getcharrace(rawcharrace,swrifts_race)
 		else
 			charrace = "None"		
 		end
+		
+		# Format Iconic Framework table
+		iconicf = returniconicforcg(char, swrifts_race, rawcharrace, swrifts_iconicf)
+		initcgpoints = returninitcgforcg(swrifts_iconicf)	
+		
+		#Get the race list for drop down.
+		cgrace = returnraceforcg(char, swrifts_race, rawcharicf, swrifts_race)		
+		initracepoints = returninitraceforcg(swrifts_race)
 		
 		# Set up Chargen Points from Character not YML
 		cgpoints = char.swrifts_chargenpoints
@@ -235,7 +238,7 @@ module AresMUSH
 	end	
 	
 	def self.getcharicf(charicf,swrifts_iconicf) 
-		ifstring=''
+		cifstring = Array.new
 		# get the entry in global file that matches the ICF name selected. We're going to make this pretty.
 		charcgicf = swrifts_iconicf.select { |ss| ss['name'].downcase == charicf.downcase }.first
 		ifname = charcgicf['name']
@@ -247,12 +250,13 @@ module AresMUSH
 			ifstring << book
 			ifstring << ")"
 		end	
-		charicf="#{ifstring}"
-		return (charicf)
+		cifstring = {class: ifname, name: ifstring, rating: desc}
+		return (cifstring)
 	end	
 	
 	def self.getcharrace(charrace,swrifts_race) 
 		# get the entry in global file that matches the ICF name selected. We're going to make this pretty.
+		cracestring = Array.new
 		charcgrace = swrifts_race.select { |ss| ss['name'].downcase == charrace.downcase }.first
 		newcgr = charcgrace.inspect
 		if ( charcgrace ) 
@@ -276,8 +280,8 @@ module AresMUSH
 				racestring << ")"
 			end
 		end
-		charrace = "#{racestring}"
-		return (charrace)
+		cracestring = {class: racename, name: racestring, rating: desc}		
+		return (cracestring)
 	end
 	
 	def self.returncgslotsforcg(model)
@@ -295,8 +299,10 @@ module AresMUSH
 		return (cginitarray)
 	end	
 	
-	def self.returniconicforcg(model)
-		iconicfarray = Array.new
+	def self.returniconicforcg(char, swrifts_race, rawcharrace, model)
+		#(char, swrifts_race, rawcharrace, swrifts_iconicf)	
+		iconicfarray = []
+		newtt =''
         list = model.sort_by { |a| a['name']}
 		list.each do |c|
 			ifname = c['name']
@@ -307,13 +313,22 @@ module AresMUSH
 				ifstring << " ~ ("
 				ifstring << book
 				ifstring << ")"
-			end			
-			iconicfarray.push("#{ifstring}")
+			end		
+			ifdisabled=false # Will need better logic here.
+			if ( rawcharrace.length > 0 )				
+				swrifts_race = Swrifts.find_race_config(rawcharrace) #get the Race entry we're working with from the yml
+				# Is there a character race selected?
+				rc = Swrifts.race_check(char, swrifts_race, rawcharrace, ifname)
+				if (rc == true) 
+					ifdisabled = true
+				end
+			end		
+			iconicfarray << {name: ifstring, disabled: ifdisabled, desc: desc, class: ifname}
 		end
-		iconicfarray.unshift("None")
+		blankstrg = {name: 'None ~ Select to reset Iconic Framework', disabled: false, desc: 'Choose to reset Iconic Framework', class: "none"}
+		iconicfarray.unshift(blankstrg)
 		return (iconicfarray)
 	end	
-	
 	  
 	#This is used for Edges and Traits. 
 	
@@ -381,7 +396,8 @@ module AresMUSH
 		return (initcgpointsarray) #return the complete hash.
 	end		
 	
-	def self.returnraceforcg(model)
+	def self.returnraceforcg(char, swrifts_race, ifname, model)
+		#(char, swrifts_race, rawcharrace, swrifts_iconicf)
 		racearray = []
         list = model.sort_by { |a| a['name']}
 		list.each do |c|
@@ -406,10 +422,18 @@ module AresMUSH
 			end
 			
 			ifdisabled=false # Will need better logic here.
-			
-			racearray << {name: racestring, disabled: ifdisabled, desc: desc}			
+			swrifts_race = Swrifts.find_race_config(racename) #get the Race entry we're working with from the yml
+			# Is there a character race selected?
+			if ( ifname.length > 0 && ifname != "none" )	
+				rc = Swrifts.race_check(char, swrifts_race, racename, ifname)
+				if (rc == true) 
+					ifdisabled = true
+				end
+			end			
+			racearray << {name: racestring, disabled: ifdisabled, desc: desc, class: racename}
+						
 		end
-		blankstrg = {name: 'None ~ Select to reset Race', disabled: false, desc: 'Choose to reset Race'}
+		blankstrg = {name: "None ~ Select to reset Race", disabled: false, desc: 'Choose to reset Race', class: 'None'}
 		racearray.unshift(blankstrg)
 		return (racearray)
 	end
@@ -489,42 +513,42 @@ module AresMUSH
 		dbgstr = ''	
 		
 		#Get the iconic framework and race set on the form
-		c_iconicf = chargen_data[:custom][:iconicf]
-		c_race = chargen_data[:custom][:race]
+		c_iconicf = chargen_data[:custom][:iconicf][:class]
+		c_race = chargen_data[:custom][:race][:class]
 		c_edges = chargen_data[:custom][:cgedges]
 		c_edgesnofw = chargen_data[:custom][:cgedgesnofw]
 		c_hind = chargen_data[:custom][:cghind]
 		c_hindnofw = chargen_data[:custom][:cghindnofw]
 
-
-		#Remove the book and description stuff from the end of the string.	
-		chopped_iconicf = c_iconicf[/[^~]+/]
-		chopped_iconicf = Website.format_input_for_mush(chopped_iconicf)
-		chopped_race = c_race[/[^~]+/]
-		chopped_race = Website.format_input_for_mush(chopped_race)
-		icf_downcase = chopped_iconicf.downcase.strip  # Stripped and downcased iconicframework name.
-		race_downcase = chopped_race.downcase.strip  # Stripped and downcased race name.
+		icf_downcase = c_iconicf.downcase.strip  # Stripped and downcased iconicframework name.
+		race_downcase = c_race.downcase.strip  # Stripped and downcased race name.
 
 		## ----- Update Iconic Framework
 		
-			char.delete_swrifts_chargen #clear out the character
-			
-			
-			#Set the iconic framework
-			iconicf = Global.read_config('swrifts', 'iconicf') #Read the config file for Iconic Frameworks
-			icfsel = iconicf.select { |ss| ss['name'].downcase == icf_downcase }.first #Filter the icf's to find the one that's been selected	
+			char.delete_swrifts_chargen #clear out the character	
 			tt = Swrifts.run_init(char, init)  #Calls run_init in helpers.rb
-			tt1 = Swrifts.run_system(char, icfsel) #Set the base stats based on the ICF chosen.			
-			trait = Swrifts.find_traits(char, 'iconicf')   #Calls find_traits in helpers.rb				
-			trait.update(rating: icf_downcase)  #Update the Icf with the one chosen.
 			
+			# If an Iconic Framework has been chosen 
+			if (icf_downcase)
+				#Set the iconic framework
+				iconicf = Global.read_config('swrifts', 'iconicf') #Read the config file for Iconic Frameworks
+				icfsel = iconicf.select { |ss| ss['name'].downcase == icf_downcase }.first #Filter the icf's to find the one that's been selected	
+				
+				tt1 = Swrifts.run_system(char, icfsel) #Set the base stats based on the ICF chosen.			
+				trait = Swrifts.find_traits(char, 'iconicf')   #Calls find_traits in helpers.rb				
+				trait.update(rating: icf_downcase)  #Update the Icf with the one chosen.
+			end
 			
-			#Set the Race
-			racesys = Swrifts.find_race_config(race_downcase) #get the Race entry we're working with from the yml
-			#rc = Swrifts.race_check(model, race, self.race_name, icf_name) # Checks if ICF and Race work together
-			race_trait = Swrifts.find_traits(char, 'race')	 #get the Race trait off of the character
-			race_trait.update(rating: race_downcase) #Update the race with the one chosen.
-
+			if (race_downcase)
+				race = Swrifts.find_race_config(race_downcase) #get the Race entry we're working with from the yml			
+				if (!icf_downcase)
+					tt3 = Swrifts.run_system(char, race)
+				end
+				#Set the Race
+				race_trait = Swrifts.find_traits(char, 'race')	 #get the Race trait off of the character
+				race_trait.update(rating: race_downcase) #Update the race with the one chosen.
+			end
+			
 			#Save the no framework edges
 			if (c_edgesnofw)  #If there are edges not related to the Iconic Framework and Race
 				c_edgesnofw.each do |key,value|  #Cycle through each one
