@@ -234,7 +234,8 @@ swrifts:
         -
             name: Human
             book_reference: TLPG
-            edge_slots: 1
+            chargen_points:
+                edge_slots: 1
         -  
             name: Lyn-Srial
             book_reference: TLPG
