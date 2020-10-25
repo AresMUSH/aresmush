@@ -176,5 +176,10 @@ module AresMUSH
       end
     end
     
+    def is_participant?(char)
+      return false if !char
+      char == self.owner || self.participants.include?(char)
+    end
+    
   end
 end
