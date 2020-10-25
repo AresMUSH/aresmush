@@ -9,7 +9,7 @@ aliases:
 
 Ares supports a fast-and-easy way to back up your important character information.  
 
-> If you're looking for help with game backups instead, see [Backups](/help/backups).
+> If you're looking for help with game backups instead, see [Backups](https://aresmush.com/tutorials/manage/backups.html).
 
 The character backup includes:
 

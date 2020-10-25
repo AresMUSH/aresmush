@@ -4,17 +4,17 @@ module AresMUSH
       def handle(request)
                 
         group = Global.read_config("website", "character_gallery_group") || "Faction"
-        chars = Character.all.select { |c| c.on_roster? }.group_by { |c| c.group(group) || "" }
+        groups = Character.all.select { |c| c.on_roster? }.group_by { |c| c.group(group) || "" }
         
         fields = Global.read_config("idle", "roster_fields").select { |f| f['field'] != 'name' }
         titles = fields.map { |f| f['title'] }
         
         roster = []
         
-        chars.each do |group, chars|
+        groups.each do |group, chars|
           roster << {
             name: group,
-            chars: chars.map { |c| build_profile(c, fields) }
+            chars: chars.sort_by { |c| c.name }.map { |c| build_profile(c, fields) }
           } 
         end
         
