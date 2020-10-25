@@ -23,9 +23,9 @@ While you can always do free-form RP on the grid or in the RP room, there are a 
 ## Viewing Scenes
 
 `scenes` - Shows active scenes.
-`scenes/open` - Shows only open and active scenes.
-`scenes/all` - Lists all scenes you have access to.
+`scenes/open` - Shows only open scenes and ones you've been invited to.
 `scenes/unshared` - Lists all scenes you have access to that haven't been shared yet.
+`scenes/all` - Lists all scenes you have access to.
 
 ## Starting  a Scene
 
@@ -75,7 +75,8 @@ While you can always do free-form RP on the grid or in the RP room, there are a 
 
 ## Setting Scene Info
 
-`scene <#>` - Views scene info.
+`scene <#>` - Views scene info, without poses.
+`scene/info <#>` - Views scene info, without poses.
 `scene/privacy [<#>=]<private/open>` - Changes the privacy level.
 `scene/title [<#>=]<title>` - Sets the scene title.
 `scene/summary [<#>=]<summary>` - Sets the scene summary.
@@ -83,11 +84,12 @@ While you can always do free-form RP on the grid or in the RP room, there are a 
 `scene/location [<#>=]=[<area>/]<location>` - Sets the scene location.
 `scene/type [<#>=]<type>` - Sets the scene type.  `scene/types` lists types.
 `scene/pacing [<#=]<pacing>` - Sets the scene pacing. Traditional, Distracted, or Asynchronous. (you can abbreviate the name)
+`scene/warning [<#=]<warning>` - Sets a content warning on the scene.
 `scene/set <desc>` - Sets the scene in the current room.  Leave blank to clear.
 `scene/addchar <#>=<names>` - Adds participants to the scene log. Normally used when someone poses from an alt but you want the other char added too.
 `scene/removechar <#>=<names>` - Removes participants from the scene log. Normally used when someone poses from the wrong char and you need to remove them.
 
-> **Tip:** Admins and characters with the `manage_scenes` permission can edit other people's scenes.  However, they cannot read scenes unless they've been shared first.
+> **Tip:** Admins and characters with the `manage_scenes` permission can edit other people's scenes that have been shared.  However, they cannot read scenes unless they've been shared first.
 
 ## Reporting Abuse
 

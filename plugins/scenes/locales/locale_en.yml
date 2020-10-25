@@ -152,3 +152,9 @@ en:
         scene_reported_body: "%{reporter} has reported scene #%{scene_num}.%R%RReason:%R"
         scene_reported_title: "Scene Reported"
         no_pose_given: "You didn't specify a message."
+        
+        content_warning: "Content Warning:"
+        open_scenes: "Open Scenes"
+        open_or_my_scenes: "Open/My Scenes"
+        private_scenes: "Private Scenes"
+        my_scenes: "My Scenes"

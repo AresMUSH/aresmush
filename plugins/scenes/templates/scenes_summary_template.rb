@@ -10,7 +10,8 @@ module AresMUSH
       end
       
       def characters(scene)
-        scene.participant_names.join(", ")
+        names = scene.participant_names
+        names.empty? ? "---" : names.join(", ")
       end
       
       def organizer(scene)

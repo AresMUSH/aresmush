@@ -17,5 +17,9 @@ module AresMUSH
     def divider
       "%ld"
     end
+    
+    def line(name)
+      return Line.show(name)
+    end
   end
 end
