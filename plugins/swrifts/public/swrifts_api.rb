@@ -401,7 +401,7 @@ module AresMUSH
 		racearray = []
         list = model.sort_by { |a| a['name']}
 		list.each do |c|
-			racename = c['name']
+			racename = c['name'].downcase;
 			desc = c['desc']
 			book = c['book_reference']
 			racestring = "#{racename}"
