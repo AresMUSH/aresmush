@@ -20,7 +20,7 @@ module AresMUSH
       
       def build_char_data(id, action, enactor)
         char = Character[id]
-        last_on = char.last_on || Time.now
+        last_on = char.last_on || Time.at(0)
         
         {
           id: id,
