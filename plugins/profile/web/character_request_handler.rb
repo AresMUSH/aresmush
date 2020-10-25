@@ -18,7 +18,10 @@ module AresMUSH
         demographics = Demographics.build_web_demographics_data(char, enactor)
         groups = Demographics.build_web_groups_data(char)
 
-        profile = char.profile.each_with_index.map { |(section, data), index| 
+        profile = char.profile
+        .sort_by { |k, v| [ char.profile_order.index { |p| p.downcase == k.downcase } || 999, k ] }
+        .each_with_index
+        .map { |(section, data), index| 
           {
             name: section.titlecase,
             key: section.parameterize(),
