@@ -252,6 +252,20 @@ spells:
     roll: true
     school: Earth
   #Level 5
+  Grounding:
+    available: false
+    attack_mod: 2
+    casting_time: 1 round
+    desc: The caster becomes more connected to the earth. They pull a cloud of dust and rocks around themselves and gain more solid footing on the ground, increasing their ability to attack and defend.
+    defense_mod: 2
+    duration: 6 rounds
+    effect: Buff
+    level: 5
+    name: Stalagmite
+    range: Self
+    rounds: 6
+    school: Earth
+    target_num: 1
   Stalagmite:
     available: true
     casting_time: 1 round

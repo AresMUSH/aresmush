@@ -724,6 +724,19 @@ spells:
     school: Spirit
     target_num: 1
     target_optional: true
+  Group Dampen Magic:
+    available: false
+    casting_time: 1 round
+    desc: "The targets' ability to cast spells is made very difficult for a short time."
+    duration: 3 rounds
+    effect: Debuff
+    level: 7
+    name: Group Dampen Magic
+    range: Long
+    rounds: 3
+    school: Spirit
+    spell_mod: -3
+    target_num: 6
   Manifest Spirit:
     available: true
     casting_time: 5 minutes
@@ -783,9 +796,8 @@ spells:
     available: false
     casting_time: 1 round
     damage_type: Psionic
-    desc: "The caster specifies a contract which the target agrees to. Upon agreement, the magical oath is sealed./n/n
-    Either party breaking the oath results in an instant impairment of their mental facilities and the loss of all memories since the moment the oath was enacted. Their 'Wits' and 'Perception' are lowered to 1, and they are incapable of higher-level mental tasks such as complicated mathematics, science, and reading. Mentally, they will be capable at the level of a three year old./n/n
-    Memories return sporadically over the course of six months. Cognitive development a year, eventually returning the oath breaker's mental facilities to what they were before."
+    desc: "The caster specifies a contract which the target agrees to. Upon agreement, the magical oath is sealed.\n\n
+    Either party breaking the oath results in an instant impairment of their mental facilities and the loss of all memories since the moment the oath was enacted. Their 'Wits' and 'Perception' are lowered to 1, and they are incapable of higher-level mental tasks such as complicated mathematics, science, and reading. Mentally, they will be capable at the level of a three year old.\n\n    Memories return sporadically over the course of six months. Cognitive development a year, eventually returning the oath breaker's mental facilities to what they were before."
     level: 8
     line_of_sight: true
     name: Binding Oath
@@ -862,6 +874,19 @@ spells:
     school: Spirit
     target_num: 1
     target_optional: true
+  Group Restrain Magic:
+    available: false
+    casting_time: 1 round
+    desc: "The targets' ability to cast spells is made very difficult for a time."
+    duration: 10 minutes
+    effect: Debuff
+    level: 8
+    name: Group Restrain Magic
+    range: Long
+    rounds: 600
+    school: Spirit
+    spell_mod: -6
+    target_num: 10
   Restore Magic:
     available: false
     casting_time: 10 minutes

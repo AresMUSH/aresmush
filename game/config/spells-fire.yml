@@ -215,6 +215,19 @@ spells:
     target_num: 3
     target_optional: true
     weapon: Flares
+  Group Endure Fire:
+    available: false
+    casting_time: 1 round
+    desc: Caster is immune to fire and the negative effects of extreme heat up to 2,012 °F (1,110 °C). Spells that do fire damage may be stopped entirely by Endure Fire; when they are not, the damage inflicted is decreased.
+    duration: 1 hour
+    effect: Buff
+    is_shield: true
+    level: 5
+    name: Group Endure Fire
+    range: Short
+    school: Fire
+    rounds: 100
+    target_num: 3
   Invisible:
     available: true
     casting_time: 1 round
@@ -230,6 +243,7 @@ spells:
     stance: hidden
     target_num: 1
     target_optional: true
+
   #Level 6
   Double Vision:
     available: true
