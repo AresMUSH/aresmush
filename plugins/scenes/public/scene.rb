@@ -87,6 +87,9 @@ module AresMUSH
         self.scene_log.delete
       end
       Scenes.find_all_scene_links(self).each { |s| s.delete }
+      self.plots.each do |p|
+        Database.remove_from_set p.scenes, self
+      end
     end
     
     def all_info_set?

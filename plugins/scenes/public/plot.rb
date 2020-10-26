@@ -9,13 +9,15 @@ module AresMUSH
     attribute :content_warning
     
     set :storytellers, "AresMUSH::Character"
+    collection :scenes, "AresMUSH::Scene"
     
     ## DEPRECATED!  No longer used.
     reference :storyteller, "AresMUSH::Character"
-    collection :scenes, "AresMUSH::Scene"
+    
+    before_delete :on_delete
     
     def sorted_scenes
-      self.related_scenes.to_a.sort_by { |s| s.icdate }
+      self.scenes.to_a.sort_by { |s| s.icdate }
     end
     
     def start_date
@@ -32,8 +34,10 @@ module AresMUSH
       !self.completed
     end
     
-    def related_scenes
-      Scene.all.select { |p| p.plots.include?(self) }
+    def on_delete
+      self.scenes.each do |s|
+        Database.remove_from_set s.plots, self
+      end
     end
   end
 end

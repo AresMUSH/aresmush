@@ -47,6 +47,21 @@ module AresMUSH
             plots << plot
           end
         end
+
+        plots.each do |p|
+          # Plot added - add to plot too
+          if (!scene.plots.include?(p))
+            p.scenes.add scene
+          end
+        end
+        
+        scene.plots.each do |p|
+          # Plot removed - remove from plot too
+          if (!plots.include?(p))
+            p.scenes.delete scene
+          end
+        end
+        
         scene.plots.replace plots
           
         if (!scene.completed)
