@@ -441,6 +441,7 @@ spells:
   Dampen Magic:
     available: false
     casting_time: 1 round
+    damage_type: Psionic
     desc: "The target's ability to cast spells is made more difficult for a short time."
     duration: 3 rounds
     effect: Debuff
@@ -727,6 +728,7 @@ spells:
   Group Dampen Magic:
     available: false
     casting_time: 1 round
+    damage_type: Psionic
     desc: "The targets' ability to cast spells is made very difficult for a short time."
     duration: 3 rounds
     effect: Debuff
@@ -752,7 +754,8 @@ spells:
   Restrain Magic:
     available: false
     casting_time: 1 round
-    desc: "The target's ability to cast spells is made very difficult for a short time."
+    damage_type: Psionic
+    desc: "The target's ability to cast spells is made very difficult for a short time.YES"
     duration: 3 rounds
     effect: Debuff
     level: 7
@@ -877,6 +880,7 @@ spells:
   Group Restrain Magic:
     available: false
     casting_time: 1 round
+    damage_type: Psionic
     desc: "The targets' ability to cast spells is made very difficult for a time."
     duration: 10 minutes
     effect: Debuff
