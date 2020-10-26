@@ -15,7 +15,7 @@ module AresMUSH
     collection :scenes, "AresMUSH::Scene"
     
     def sorted_scenes
-      self.scenes.to_a.sort_by { |s| s.icdate }
+      self.related_scenes.to_a.sort_by { |s| s.icdate }
     end
     
     def start_date
