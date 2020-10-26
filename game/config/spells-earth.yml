@@ -261,7 +261,7 @@ spells:
     duration: 6 rounds
     effect: Buff
     level: 5
-    name: Stalagmite
+    name: Grounding
     range: Self
     rounds: 6
     school: Earth
