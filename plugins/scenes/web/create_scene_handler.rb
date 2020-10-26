@@ -50,6 +50,11 @@ module AresMUSH
           end
         end
         scene.plots.replace plots
+        
+        plots.each do |p|
+          # Plot added - add to plot too
+          p.scenes.add scene
+        end
                     
         participant_names = request.args[:participants] || []
         participants = []
