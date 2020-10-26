@@ -25,3 +25,9 @@ The `find` command lists objects.  You can search by object type:  Room, Charact
 `find <object type>[=<name, optional>]`
 
 There is no equivalent to the generic 'set' command you might be familiar with from other MUSHes.  Instead, individual commands provide ways to update data.
+
+## Database Backups
+
+Ares contains an automated backup system. By default, backups will be stored locally in the aresmush/backups folder. You can also set up external backups.  See [Managing Backups](https://aresmush.com/tutorials/manage/backups.html) for details.
+
+`backup` - Triggers an immediate backup.

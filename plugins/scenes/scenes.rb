@@ -80,7 +80,7 @@ module AresMUSH
           return SceneHomeCmd
         when "join"
           return SceneJoinCmd
-        when "location", "privacy", "summary", "title", "type", "icdate", "plot", "limit", "notes", "note", "pacing"
+        when "location", "privacy", "summary", "title", "type", "icdate", "plot", "limit", "notes", "note", "pacing", "warning"
           return SceneInfoCmd
         when "delete"
           return SceneDeleteCmd
