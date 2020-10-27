@@ -2,16 +2,17 @@ module AresMUSH
   module Scenes
     class PlotsRequestHandler
       def handle(request)
-        Plot.all.to_a.sort_by { |p| [ p.end_date || "", p.start_date || "" ]}.reverse.map { |p| {
+        plots = Plot.all.to_a.map { |p| {
                   id: p.id,
                   title: p.title,
                   summary: Website.format_markdown_for_html(p.summary),
-                  start_date: p.start_date,
-                  end_date: p.end_date,
+                  start_date: p.start_date || "",
+                  end_date: p.end_date || "",
                   completed: p.completed,
                   content_warning: p.content_warning,
                   storytellers: get_storytellers(p)
                 }}
+        plots.sort_by { |p| [ p[:end_date], p[:start_date] ] }.reverse
       end
       
       def get_storytellers(plot)
