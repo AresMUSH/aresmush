@@ -56,7 +56,7 @@ module AresMUSH
         end
         
         plots.each do |p|
-          existing_link = scene.plot_links.select { |p| p.plot == p }.first
+          existing_link = PlotLink.find_link(p, scene)
           # Plot added - add plot link
           if (!existing_link)
             PlotLink.create(plot: p, scene: scene)
