@@ -49,11 +49,9 @@ module AresMUSH
             plots << plot
           end
         end
-        scene.plots.replace plots
         
         plots.each do |p|
-          # Plot added - add to plot too
-          p.scenes.add scene
+          PlotLink.create(plot: p, scene: scene)
         end
                     
         participant_names = request.args[:participants] || []

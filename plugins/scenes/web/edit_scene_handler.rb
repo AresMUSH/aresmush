@@ -48,21 +48,20 @@ module AresMUSH
           end
         end
 
+        scene.plot_links.each do |link|
+          # Plot removed - delete plot link
+          if (!plots.any? { |p| link.plot == p })
+            link.delete
+          end
+        end
+        
         plots.each do |p|
-          # Plot added - add to plot too
-          if (!scene.plots.include?(p))
-            p.scenes.add scene
+          existing_link = scene.plot_links.select { |p| p.plot == p }.first
+          # Plot added - add plot link
+          if (!existing_link)
+            PlotLink.create(plot: p, scene: scene)
           end
         end
-        
-        scene.plots.each do |p|
-          # Plot removed - remove from plot too
-          if (!plots.include?(p))
-            p.scenes.delete scene
-          end
-        end
-        
-        scene.plots.replace plots
           
         if (!scene.completed)
           is_private = request.args[:privacy] == "Private"

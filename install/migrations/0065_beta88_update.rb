@@ -8,10 +8,10 @@ module AresMUSH
       
       def migrate
         Global.logger.debug "Migrating plot scenes."
-        Plot.all.each do |p|
-          Scene.all.select { |s| s.plots.include?(p) }.each do |s|
-            if (!p.scenes.include?(s))
-              p.scenes.add s
+        Scene.all.each do |s|
+          s.plots.each do |p|
+            if (!PlotLink.find_link(p, s))
+              PlotLink.create(plot: p, scene: s)
             end
           end
         end
