@@ -7,8 +7,10 @@ module AresMUSH
                   id: p.id,
                   title: p.title,
                   summary: Website.format_markdown_for_html(p.summary),
-                  start_date: p.start_date,
-                  end_date: p.end_date,
+                  # start_date: p.start_date,
+                  # end_date: p.end_date,
+                  start_date: '',
+                  end_date: '',
                   completed: p.completed,
                   content_warning: p.content_warning,
                   storytellers: get_storytellers(p)
