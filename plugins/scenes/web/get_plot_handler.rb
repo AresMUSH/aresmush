@@ -21,7 +21,7 @@ module AresMUSH
           summary = Website.format_markdown_for_html(plot.summary)
         end
         
-        scenes = plot.related_scenes.select { |s| s.shared }
+        scenes = plot.sorted_scenes.select { |s| s.shared }
             .sort_by { |s| s.icdate || s.created_at }
             .reverse
             .map { |s|  Scenes.build_scene_summary_web_data(s) }
