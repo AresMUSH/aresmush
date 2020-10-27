@@ -202,33 +202,33 @@ module AresMUSH
 
               #Apply Mods
               if lethal_mod
-                message = Magic.cast_lethal_mod(combatant, target, spell, rounds, lethal_mod)
+                message = Magic.cast_lethal_mod(combatant, target, spell, damage_type, rounds, lethal_mod, succeeds[:result])
                 messages.concat message
               end
 
               if attack_mod
-                message = Magic.cast_attack_mod(combatant, target, spell, rounds, attack_mod)
+                message = Magic.cast_attack_mod(combatant, target, spell, damage_type, rounds, attack_mod, succeeds[:result])
                 messages.concat message
               end
 
               if defense_mod
-                message = Magic.cast_defense_mod(combatant, target, spell, rounds, defense_mod)
+                message = Magic.cast_defense_mod(combatant, target, spell, damage_type, rounds, defense_mod, succeeds[:result])
                 messages.concat message
               end
 
               if spell_mod
-                message = Magic.cast_spell_mod(combatant, target, spell, rounds, spell_mod)
+                message = Magic.cast_spell_mod(combatant, target, spell, damage_type, rounds, spell_mod, succeeds[:result])
                 messages.concat message
               end
 
               if init_mod
-                message = Magic.cast_init_mod(combatant, target, spell, rounds, init_mod)
+                message = Magic.cast_init_mod(combatant, target, spell, damage_type, rounds, init_mod, succeeds[:result])
                 messages.concat message
               end
 
               #Change Stance
               if stance
-                message = Magic.cast_stance(combatant, target, spell, rounds, stance)
+                message = Magic.cast_stance(combatant, target, spell, damage_type, rounds, stance, succeeds[:result])
                 messages.concat message
               end
 

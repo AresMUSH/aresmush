@@ -259,6 +259,7 @@ spells:
     attack_mod: -1
     available: true
     casting_time: 1 round
+    damage_type: Psionic
     defense_mod: -1
     desc: "The target's chance of botching their intended action increases slightly. "
     duration: 2 rounds
@@ -277,6 +278,7 @@ spells:
     attack_mod: 1
     available: true
     casting_time: 1 round
+    damage_type: Psionic
     defense_mod: 1
     desc: The target's chance of succeeding in their intended action is improved slightly.
     duration: 2 rounds
@@ -457,6 +459,7 @@ spells:
     available: false
     casting_time: 1 round
     defense_mod: -2
+    damage_type: Psionic
     desc: "The target's chance of botching their intended action increases slightly more."
     duration: 3 rounds
     effect: Debuff
@@ -473,6 +476,7 @@ spells:
     attack_mod: 2
     available: true
     casting_time: 1 round
+    damage_type: Psionic
     defense_mod: 2
     desc: "The target's chance of succeeding in their intended action is improved slightly more."
     duration: 3 rounds
