@@ -49,6 +49,10 @@ module AresMUSH
       end
       
       self.scene_likes.each { |l| l.delete }
+      
+      Plot.all.each do |p|
+        Database.remove_from_set p.storytellers, self
+      end
     end
   end
 end
