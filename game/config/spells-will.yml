@@ -356,8 +356,8 @@ spells:
     desc: "With the aid of at least one other caster of the appropriate School, become an Anchor for the opening or closing of a dimensional portal. May require additional casters according to the portal's magical energies. They must have two of the following in order to open a portal to a location:\n\n
     * Personal knowledge of the portal's opening point. They have visited it themselves and can remember the location.\n
     * The ability to see someone else's memory of the location.\n
-    * PMagical coordinates of the portal's existence in the magical universe.\n
-    * PA realistic depiction of a location in the portal world, created at any time.\n\n
+    * Magical coordinates of the portal's existence in the magical universe.\n
+    * A realistic depiction of a location in the portal world, created at any time.\n\n
     When closing a portal, travel, perception, and attacks through it are reduced as the Anchor forces the portal to shrink. When opening a portal, these same effects may increase. Once the spell is completed, the portal is either completely closed or opened and the effect is permanent.\n\n
     If cast on an open portal, the caster can sense if the spell's School is the necessary magical energy to enable opening or closing the portal, as well as the magical coordinates of the portal's existence in the magical universe."
     effect: Travel
