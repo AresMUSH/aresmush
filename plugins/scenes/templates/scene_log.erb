@@ -7,12 +7,15 @@
 <%= t('scenes.organizer_title', :name => @scene.owner_name) %>
 <%= t('scenes.scene_type_title') %> <%= @scene.scene_type %>
 <%= t('scenes.players_title') %> <%= players %>
+<%= t('scenes.content_warning') %> <%= @scene.content_warning %>
 <%= t('scenes.scene_summary') %> <%= @scene.summary %>
 
+<% if @full_log || @num_poses > 0 %>
 <%= divider %>
 <%= log_text %>
 <% if log_footer %>
 <%= divider %>
 %xh<%= log_footer %>%xn
+<% end %>
 <% end %>
 <%= footer %>
