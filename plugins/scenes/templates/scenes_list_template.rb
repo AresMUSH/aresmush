@@ -2,25 +2,35 @@ module AresMUSH
   module Scenes
     class SceneListTemplate < ErbTemplateRenderer
              
-      attr_accessor :scenes, :enactor
+      attr_accessor :scenes, :enactor, :show_private
                      
-      def initialize(scenes, enactor)
+      def initialize(scenes, enactor, show_private)
         @scenes = scenes
         @enactor = enactor
+        @show_private = show_private
+        
         super File.dirname(__FILE__) + "/scenes_list.erb"        
       end
       
       def characters(scene)
-        scene.participants.select { |p| !p.who_hidden }
+        chars = scene.participants.to_a.concat [ scene.owner ]
+        chars.uniq.select { |p| !p.who_hidden }
            .sort_by { |p| p.name }
            .map { |p| Status.is_active?(p) ? p.name : "%xh%xx#{p.name}%xn"}
            .join(", ")
         
       end
       
+      def active_scenes
+        @scenes.select { |s| !s.private_scene || s.is_participant?(enactor) }
+      end
+      
+      def private_scenes
+        @scenes.select { |s| s.private_scene && !s.is_participant?(enactor) }
+      end
+      
       def title(scene)
-        return "##{scene.id} <#{privacy(scene)}, #{pacing(scene)}>" if scene.private_scene
-        "##{scene.id} <#{privacy(scene)}, #{pacing(scene)}> - #{scene.title || scene.location}"
+        "##{scene.id} <#{privacy(scene)}, #{pacing(scene)}, #{scene_type(scene)}>"
       end
       
       def organizer(scene)
@@ -75,11 +85,19 @@ module AresMUSH
           color = "%xh"
           message = scene.scene_pacing[0..5]
         end
-        "#{color}#{message}%xn"
+        "%xh#{color}#{message}%xn"
+      end
+      
+      def scene_type(scene)
+        "%xh#{scene.scene_type}%xn"
       end
       
       def can_read?(scene)
         Scenes.can_read_scene?(@enactor, scene)
+      end
+      
+      def mush_name
+        Global.read_config("game", "name")
       end
     end
   end

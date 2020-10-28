@@ -14,8 +14,10 @@ module AresMUSH
     reference :storyteller, "AresMUSH::Character"
     collection :scenes, "AresMUSH::Scene"
     
+    before_delete :on_delete
+    
     def sorted_scenes
-      self.scenes.to_a.sort_by { |s| s.icdate }
+      self.plot_links.map { |p| p.scene }.sort_by { |s| s.icdate }
     end
     
     def start_date
@@ -32,8 +34,12 @@ module AresMUSH
       !self.completed
     end
     
-    def related_scenes
-      Scene.all.select { |p| p.plots.include?(self) }
+    def plot_links
+      PlotLink.find_by_plot(self)
+    end
+    
+    def on_delete
+      self.plot_links.each { |p| p.delete }
     end
   end
 end

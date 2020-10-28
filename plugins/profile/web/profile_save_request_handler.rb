@@ -51,6 +51,7 @@ module AresMUSH
         char.update(profile_icon: profile_icon)
         char.update(profile_gallery: gallery)
         char.update(profile_tags: tags)
+        char.update(profile_order: (request.args[:profile_order] || "").split(',').map { |o| o.strip })
         
         relationships = {}
         (request.args[:relationships] || {}).each do |name, data|

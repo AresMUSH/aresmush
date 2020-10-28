@@ -3,7 +3,7 @@ module AresMUSH
     class SceneLogCmd
       include CommandHandler
       
-      attr_accessor :scene_num
+      attr_accessor :scene_num, :info_only
       
       def parse_args
         self.scene_num = integer_arg(cmd.args)
@@ -11,6 +11,8 @@ module AresMUSH
         if (!self.scene_num)
           self.scene_num = enactor_room.scene ? enactor_room.scene.id : nil
         end
+        
+        self.info_only = cmd.switch.blank?
       end
       
       def required_args
@@ -33,7 +35,11 @@ module AresMUSH
           
           scene.mark_read(enactor)
           
-          template = SceneLogTemplate.new scene, true
+          if (self.info_only)
+            template = SceneLogTemplate.new scene, false, 0
+          else
+            template = SceneLogTemplate.new scene, true
+          end
           client.emit template.render
         end
       end
