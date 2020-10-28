@@ -24,7 +24,11 @@ module AresMUSH
             return { error: t('db.object_not_found')}
           end
 
-          queue[char.id] = action
+          if (action == "None")
+            char.update(idle_state: nil)
+          else
+            queue[char.id] = action
+          end
           
           if (notes != char.idle_notes)
             char.update(idle_notes: notes)
