@@ -282,7 +282,7 @@ module AresMUSH
 		end
 		cracestring = {class: racename, name: racestring, rating: desc}		
 		return (cracestring)
-	end
+	end 
 	
 	def self.returncgslotsforcg(model)
 		# cginitarray = Hash.new #We're going to pass this back to the char custom fields.
