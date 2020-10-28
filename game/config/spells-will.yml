@@ -359,7 +359,7 @@ spells:
     * Magical coordinates of the portal's existence in the magical universe.\n
     * A realistic depiction of a location in the portal world, created at any time.\n\n
     When closing a portal, travel, perception, and attacks through it are reduced as the Anchor forces the portal to shrink. When opening a portal, these same effects may increase. Once the spell is completed, the portal is either completely closed or opened and the effect is permanent.\n\n
-    If cast on an open portal, the caster can sense if the spell's School is the necessary magical energy to enable opening or closing the portal, as well as the magical coordinates of the portal's existence in the magical universe."
+    If cast on an open portal, the caster can sense the magical coordinates of the portal's existence in the magical universe."
     effect: Travel
     level: 7
     name: Dimensional Anchor
