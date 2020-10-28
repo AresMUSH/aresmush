@@ -28,3 +28,5 @@ forum:
     forum_post:
       type: community
       message: Created a forum post.
+  permissions:
+    manage_forum: Create and modify forum categories and posts.

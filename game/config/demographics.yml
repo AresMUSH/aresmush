@@ -4,7 +4,7 @@ demographics:
   - field: name
     width: 28
     title: Name
-  - field: demographics
+  - field: demographic
     width: 10
     title: Gender
     value: gender
@@ -14,8 +14,8 @@ demographics:
     value: Faction
   - field: group
     width: 20
-    title: Iconic Framework
-    value: Iconic Framework
+    title: Position
+    value: Position
   demographics:
   - full name
   - callsign
@@ -57,61 +57,54 @@ demographics:
       noun: robot
   groups:
     Faction:
-      desc: Primary Affiliation
+      desc: Military faction.
       wiki: ''
       values:
-        Coalition States: 
-        Federation of Magic: 
-        A/RC: The Warrant is All
-        None: Not affiliated with any major group
-    Iconic Framework:
+        Navy: Join the fleet, see the worlds.
+        Marines: Semper fi.
+    Department:
+      wiki: ''
+      desc: The ship is divided into several departments.  See the wiki for details.
+      values:
+        Air Wing: Viper and Raptor crews and deckhands. (Officers and Enlisted)
+        Marines: Boots on the ground. (Enlisted only)
+        Support: Support personnel - Deck crew, medical. (Officers and Enlisted)
+    Colony:
+      desc: Your character's home world.
+      wiki: ''
+      values:
+        Aerilon: Bread basket of the colonies.
+        Aquaria: Cold, harsh world popular with tourists.
+        Canceron: Crowded and hot, a developing nation.
+        Caprica: Rich center of colonial culture and industry.
+        Gemenon: Fundamentalist religion and isolationist people.
+        Leonis: Old imperialist empire in decline, still known for culture and fashion.
+        Libran: Neutral colony renowned for fostering inter-colonial cooperation.
+        Picon: Water world famous for its beaches and strong navy.
+        Sagittaron: Poor colony, oft-exploited, now carved into several protectorates.
+        Scorpia: Lush jungles and bitter clan warfare. Home to shipyards constructing
+          the Battlestars.
+        Tauron: An up-and-coming socialist republic with a strong agricultural base
+          and developing industries.
+        Virgon: A monarchy in decline, clinging to old traditions.
+    Position:
       desc: Job.
       wiki: ''
       values:
-        Burster: Pyrokinetics
-        Combat Cyborg: Full Conversion Borgs
-        Crazy: Juicers that trade sanity for cyberware
-        Cyber-Knight: 
-        Dragon Hatchling: 
-        Dragon Juicer: 
-        Elemental Fusionist: 
-        Glitter Boy: 
-        Intelligent Construct: 
-        Juicer: 
-        Knight of the White Rose: 
-        Ley Line Walker: 
-        MARS: 
-        Mind Melter: 
-        Momano Headhunter: 
-        Mystic: 
-        Necromancer: 
-        Nega-Psychic: 
-        Shifter: 
-        Techno-Wizard: 
-        Werecat: 
-        Zapper: 
+        Viper Pilot: Navy Viper pilot.
+        Raptor Pilot: Navy Raptor pilot.
+        Raptor ECO: Navy Raptor Electronic Countermeasures Officer
+        Rifleman: Marine rifleman.
+        Gunner: Marine support/heavy weapons specialist.
+        Combat Engineer: Marine demolitions, construction, maintenance.
+        Recon: Marine scout.
+        Combat Medic: Marine medic.
+        Doctor: Navy doc.
+        Nurse: Navy nurse.
+        Corpsman: Navy medic.
+        Medical Support: Other medical personnel.
+        Deck Crew: Air wing support/maintenance personnel.
         Other: Any other position.
-    Race:
-      desc: Race
-      wiki: ''
-      values:
-        Altara: 
-        Centaur: 
-        D'Norr: 
-        Dog Boy: 
-        Fennodi: 
-        Grackle Tooth: 
-        Human: 
-        Lyn-Srial: 
-        Psi-Stalker: 
-        Quick Flex: 
-        Simvan: 
-        Trimadore: 
-        Mutant Animal: 
-        Mutant Feline: 
-        Psi-X Alien: 
-        Vernulians: 
-        Sasquatch: 
   help_text:
     played by: "%xcplayedby <actor>%xn - Your 'dream casting' for your character."
     physique: "%xcphysique <build/body type>%xn - athletic, wiry, slim, pudgy, etc."
@@ -122,13 +115,12 @@ demographics:
     birthdate: "%xcbirthdate <mm/dd/yyy>%xn or %xcage <years>%xn"
     callsign: "%xccallsign <callsign>%xn - Non-pilots may leave blank or enter a nickname."
     full name: "%xcfullname <name>%xn - Your character's full name."
-  max_age: 1000
-  min_age: 1
+  max_age: 65
+  min_age: 18
   nickname_field: ''
   nickname_format: "%{name} (%{nickname})"
   private_properties: []
   required_properties:
-  - played by
   - hair
   - eyes
   - skin
@@ -139,10 +131,12 @@ demographics:
   - birthdate
   shortcuts:
     groups: group
-    race: group race
+    colonies: group colony
     demographics: demographic
     birthday: birthdate
     actors: census played by
     actor: demographic/set played by=
     fullname: demographic/set full name=
     playedby: demographic/set played by=
+  permissions:
+    manage_demographics: Edit demographics on other players.

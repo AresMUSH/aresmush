@@ -8,3 +8,5 @@ achievements:
     portal: fa-globe
     fs3: fa-cubes
     story: fa-book
+  permissions:
+    manage_achievements: Award and remove achievements.

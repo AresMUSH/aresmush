@@ -87,15 +87,17 @@ a:hover {
 .jumbotron img.splgicon {
     width: 200px;
     height: auto;
+    display: block;
+    float: right;
 }
 
 </style>
 
 <div style="text-align: center;"><p>There was a time when mankind <span class="lteblue">knew</span> two things: That we were alone in the cosmos and that there was no such thing as <span class="lteblue">magic</span>.<p/>
 
-<p class="rocksalt">We were wrong.</p>
+<p class="rocksalt">We were wrong. </p>
 
-<p>The coming of the <span class="lteblue">Rifts</span> changed everything. Ignited by a <span class="lteblue">spark</span> still unknown to us, the planet began to surge with <span class="lteblue">arcane</span> energies absent for thousands of years. The results were <span class="lteblue">devastating</span>. Seas rose. Volcanoes <span class="lteblue">roared</span> to life. The earth buckled and cracked and <span class="lteblue">split</span>. Millions <span class="lteblue">died</span> in the first hours.</p>
+<p><img src="game/uploads/theme_images/pab.png" class="splgicon"/>The coming of the <span class="lteblue">Rifts</span> changed everything. Ignited by a <span class="lteblue">spark</span> still unknown to us, the planet began to surge with <span class="lteblue">arcane</span> energies absent for thousands of years. The results were <span class="lteblue">devastating</span>. Seas rose. Volcanoes <span class="lteblue">roared</span> to life. The earth buckled and cracked and <span class="lteblue">split</span>. Millions <span class="lteblue">died</span> in the first hours.</p>
 
 <p class="rocksalt">And then came the monsters.</p>
 
@@ -105,7 +107,7 @@ a:hover {
 
 <hr>
 
-<img src="game/uploads/theme_images/pab.png" class="splgicon"/> </p>
+
 
 <p style="font-size: 24px;">Welcome to The Lost Dominion, a <span class="lteblue">Savage Worlds Adventure Edition &reg;</span> Game</p>
 

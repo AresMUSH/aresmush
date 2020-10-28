@@ -108,3 +108,6 @@ chargen:
 
     RP Hooks:
     %{rp_hooks}
+  permissions:
+    manage_apps: Approve and reject character apps.
+    view_bgs: Can view other characters' backgrounds

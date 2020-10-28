@@ -61,3 +61,6 @@ idle:
     roster/notes: roster/note
     idle/notes: idle/note
   use_roster: true
+  permissions:
+    manage_idle: Access idle purge commands.
+    manage_roster: Access roster commands.

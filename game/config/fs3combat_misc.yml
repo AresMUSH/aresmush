@@ -124,3 +124,5 @@ fs3combat:
     Hidden:
       attack_mod: 0
       defense_mod: 0
+  permissions:
+    manage_combat: Control combats that you didn't organize.

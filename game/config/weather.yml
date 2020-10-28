@@ -148,3 +148,5 @@ weather:
   weather_cron:
     minute:
     - 0
+  permissions:
+    manage_weather: Can override weather conditions.

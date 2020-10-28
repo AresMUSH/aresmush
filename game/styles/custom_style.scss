@@ -418,4 +418,64 @@ span.statrating {
     padding-left: 0;
     padding-right: 0;
 }
+
+/* Wiki Pages */
+
+.revhistory {
+   font-size: 0.8em;
+}
+
+/* Chargen */
+
+.txthding, .txtheading {
+    font-weight: bold;
+    text-align: center;
+}
+
+.cgtooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+
+.cgtooltip .tooltiptext {
+  visibility: hidden;
+  width: 250px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+}
+
+.cgtooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+ul.edges {
+     margin-left: 0;
+     padding-left: 0;
+}
+
+.edges li, .hind li {
+     display: inline-block;
+     list-style-type: none;
+     margin-right: 7px;
+}
+
+.edges li:after, .hind li:after {
+    content: ", ";
+}
+
+.edges li:last-child, .hind li:last-child  {
+     margin-righ: 0px;
+}
+
+.edges li:last-child:after, .hind li:last-child:after {
+    content: "";
+}
    
