@@ -4,4 +4,4 @@
 <p>And its <a href="/wiki/magic">magic.</a></p>
 <p>Welcome to <a href="/wiki/about_us">Spirit Lake.</a></p>
 
-<p>Interested in joining us? <a href="/wiki/join_us">Start here!</a></p>
+<p><i>Interested in joining us? <a href="/wiki/join_us">Start here!</a></i></p>
