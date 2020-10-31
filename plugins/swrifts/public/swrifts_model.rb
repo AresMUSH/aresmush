@@ -19,6 +19,7 @@ module AresMUSH
 		collection :swrifts_complications, "AresMUSH::SwriftsComplications"
 		collection :swrifts_heroesj, "AresMUSH::SwriftsHeroesj"
 		collection :swrifts_randnum, "AresMUSH::SwriftsRandnum"
+		collection :swrifts_fandg, "AresMUSH::SwriftsFandg"
 
 
 		attribute :swrifts_iconicf
@@ -115,6 +116,16 @@ module AresMUSH
 		attribute :rating, :type => DataType::Integer #the random roll
 		attribute :table #Body Armor, etc. 
 		attribute :description #text from table
+		reference :character, "AresMUSH::Character"
+		index :name
+	end
+
+	class SwriftsFandg < Ohm::Model
+		include ObjectModel
+	
+		attribute :name #fandg1, fandg2, etc. 
+		attribute :rating, :type => DataType::Integer #the random roll
+		attribute :description #text from roll
 		reference :character, "AresMUSH::Character"
 		index :name
 	end

@@ -50,7 +50,7 @@ module AresMUSH
 					points.update(rating: new_points)
 				end
 				
-				client.emit_success t('swrifts.points_spend' , :name => self.skill_name, :mod => self.mod)
+				client.emit_success t('swrifts.points_spend', :name => self.skill_name, :mod => self.mod)
 			end
 		end
 	end

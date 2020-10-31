@@ -198,6 +198,16 @@ module AresMUSH
 					new_rating = current_rating + mod
 					points = Swrifts.find_chargen_points(model, point_name)				
 					points.update(rating: new_rating)
+					if point_name == 'fandg_slots'
+						counter = *(1..mod)
+						counter.each do |key|
+							setthing = "fandg#{key}"
+							fandg_set = model.swrifts_fandg.select { |a| a.name.downcase == setthing }.first
+							setdesc = "None"
+							fandg_set.update(description: setdesc, character: model)
+						end
+					else
+					end
 				end
 			else 
 			end

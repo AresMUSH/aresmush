@@ -45,6 +45,7 @@ swrifts:
                 - Enchanted Items
                 - Experience & Wisdom
                 - Magic & Mysticism
+                - Psionics
                 - Ranged Weapons
                 - Training
                 - Underworld & Black Ops
@@ -56,6 +57,7 @@ swrifts:
                 - Enchanted Items
                 - Experience & Wisdom
                 - Magic & Mysticism
+                - Psionics
                 - Ranged Weapons
                 - Training
                 - Underworld & Black Ops
@@ -67,17 +69,7 @@ swrifts:
                 - Enchanted Items
                 - Experience & Wisdom
                 - Magic & Mysticism
-                - Ranged Weapons
-                - Training
-                - Underworld & Black Ops
-            hj4_options:
-                - Body Armor
-                - Close Combat Weapons
-                - Cybernetics
-                - Education
-                - Enchanted Items
-                - Experience & Wisdom
-                - Magic & Mysticism
+                - Psionics
                 - Ranged Weapons
                 - Training
                 - Underworld & Black Ops
@@ -99,9 +91,6 @@ swrifts:
             dstats:
                 Pace: 2
                 Running: 1
-            chargen_points:
-                magic_slots: 
-                psionic_slots: 
             hinderances: 
                 - CHOICE*
                 - Enemy+*
@@ -165,11 +154,12 @@ swrifts:
             name: MARS Battle Magus
             book_reference: A&M 17
             description: Warrior-Mages of Dweomer
+            traits:
+                rank: Seasoned
             counters: 
-                advance_points: 3
+                advance_points: 4
             chargen_points:
                 fandg_slots: 2
-                hj_slots: 1
             skills:
                 Athletics: 2
                 Fighting: 2
@@ -180,15 +170,52 @@ swrifts:
                 - Arcane Marksman*
                 - Magi of Dweomer*
                 - AB Magic*
+            hj1_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Psionics
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
+            hj2_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Psionics
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
+            hj3_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Psionics
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
         -   
             name: MARS Combat Mage
             book_reference: A&M 18
             description: Combat Magic Specialists 
-            counters:
-                advance_points: 3
+            traits:
+                rank: Seasoned
+            counters: 
+                advance_points: 4
             chargen_points:
-                fng_slots: 2
-                hj_slots: 1
+                fandg_slots: 2
             skills:
                 Occult: 2
                 Spellcasting: 2
@@ -199,15 +226,52 @@ swrifts:
                 - Choice*
                 - Choice*
                 - Choice*
+            hj1_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Psionics
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
+            hj2_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Psionics
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
+            hj3_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Psionics
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
         -   
             name: MARS High Magus
             book_reference: A&M 19
             description: Dweomer's Artificers and Creators
-            counters:
-                advance_points: 3
+            traits:
+                rank: Seasoned
+            counters: 
+                advance_points: 4
             chargen_points:
                 fandg_slots: 2
-                hj_slots: 1 
             skills:
                 Occult: 2
                 Spellcasting: 2
@@ -218,16 +282,53 @@ swrifts:
                 - Minor Item Creation*
                 - Major Item Creation*
                 - Magi of Dweomer*
+            hj1_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Psionics
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
+            hj2_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Psionics
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
+            hj3_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Psionics
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
         -   
-            name: Lord Magus
+            name: MARS Lord Magus
             book_reference: A&M 19
             description: Scholar-Mages of Dweomer
-            counters:
-                advance_points: 3
+            traits:
+                rank: Seasoned
+            counters: 
+                advance_points: 4
             chargen_points:
+                fandg_slots: 2
                 magic_slots: 5
-                fng_slots: 2
-                hj_slots: 1 
             skills:
                 Occult: 3
                 Spellcasting: 3
@@ -236,15 +337,52 @@ swrifts:
                 - Magi of Dweomer*
                 - One With Magic*
                 - Power Points*
+            hj1_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Psionics
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
+            hj2_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Psionics
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
+            hj3_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Psionics
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
         -   
             name: MARS Psi-Druid
             book_reference: A&M 20
             description: Psychic healers and beastmasters
-            counters:
-                advance_points: 3
+            traits:
+                rank: Seasoned
+            counters: 
+                advance_points: 4
             chargen_points:
-                fng_slots: 2
-                hj_slots: 1
+                fandg_slots: 2
             skills:
                 Healing: 2
                 Survival: 2
@@ -258,16 +396,53 @@ swrifts:
                 - conceal arcana*
                 - detect arcana*
                 - healing*
+            hj1_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Psionics
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
+            hj2_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Psionics
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
+            hj3_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Psionics
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
         -   
             name: MARS Psi-Slinger
             book_reference: A&M 20 
             description: Telekinetic marksmen
-            counters:
-                advance_points: 3
+            traits:
+                rank: Seasoned
+            counters: 
+                advance_points: 4
             chargen_points:
-                magic_slots: 
-                psionic_slots: 1
                 fandg_slots: 2
+                psionic_slots: 1
             skills:
                 Psionics: 2
                 Shooting: 2
@@ -287,136 +462,278 @@ swrifts:
             abilities:
                 - Energetic Diminishment*
                 - Telekinetic Enhancement*
+            hj1_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Psionics
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
+            hj2_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Psionics
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
+            hj3_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Psionics
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
         -   
             name: MARS Psi-Warrior
             book_reference: A&M 21
-            # description: 
-            # counters:
-                # ppe_max: 
-                # isp_max:
-            # stats:
-
-            # chargen_points:
-                # magic_slots: 
-                # psionic_slots: 
-            # skills:
-            
-            # hinderances: 
-                # -
-            # edges:
-                # -
-            # magic_powers:
-                # -
-            # abilities:
-                # -
-            # complications:
-                # -
-            race_check:
-                - Restricted Path ISP
+            description: Psionic martial artists trained in an ancient tradition.
+            traits:
+                rank: Seasoned
+            counters: 
+                advance_points: 4
+            chargen_points:
+                fandg_slots: 2
+                psionic_slots: -1
+            Skills:
+                Psionics: 2
+                Fighting: 2
+            hinderances: 
+                - Choice*
+            hind_choices:
+                - Code of Honor*
+                - Heroic* 
+            edges:
+                - Adept*
+                - Block*
+                - Chi*
+                - Psi-Shield*
+                - Psi-Blade*
+                - AB Psionics*
+            psychic_powers:
+                - boost trait*
+                - lower trait*
+                - smite*
+                - telekinesis*
+            abilities:
+                - Arts of Offense*
+                - Sturdy*
+            hj1_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Psionics
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
+            hj2_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Psionics
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
+            hj3_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Psionics
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
         -   
             name: MARS Shaman
             book_reference: A&M 21
-            # description: 
-            # counters:
-                # ppe_max: 
-                # isp_max:
-            # stats:
-
-            # chargen_points:
-                # magic_slots: 
-                # psionic_slots: 
-            # skills:
-            
-            # hinderances: 
-                # -
-            # edges:
-                # -
-            # magic_powers:
-                # -
-            # abilities:
-                # -
-            # complications:
-                # -
-            race_check:
-                - Restricted Path PPE
+            description: Spirit magic magi and speakers for nature
+            traits:
+                rank: Seasoned
+            counters: 
+                advance_points: 4
+            chargen_points:
+                fandg_slots: 2
+            skills:
+                Faith: 2
+                Occult: 2
+                Healing: 2
+                Survival: 2
+            edges:
+                - AB Miracles*
+                - Choice*
+                - Artificer*
+                - Minor Item Creation*
+            edge_choices:
+                - Beast Master*
+                - Danger Sense*
+                - Healer*
+            hj1_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Psionics
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
+            hj2_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Psionics
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
+            hj3_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Psionics
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
         -   
             name: MARS Spirit Warrior
             book_reference: A&M
-            # description: 
-            # counters:
-                # ppe_max: 
-                # isp_max:
-            # stats:
-
-            # chargen_points:
-                # magic_slots: 
-                # psionic_slots: 
-            # skills:
-            
-            # hinderances: 
-                # -
-            # edges:
-                # -
-            # magic_powers:
-                # -
-            # abilities:
-                # -
-            # complications:
-                # -
-            race_check:
-                - Restricted Path PPE
+            description: Spirit-magic empowered fighters
+            traits:
+                rank: Seasoned
+            counters: 
+                advance_points: 4
+            chargen_points:
+                fandg_slots: 2
+            skills:
+                Faith: 2
+                Athletics: 2
+                Fighting: 2
+            edges:
+                - AB Miracles*
+                - Adept*
+                - Champion*
+                - Holy Warrior*
+            abilities:
+                - Improved Natural Healing*
+            hj1_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Psionics
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
+            hj2_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Psionics
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
+            hj3_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Psionics
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
         -   
             name: Nega-Psychic
             book_reference: A&M 12
-            # description: Walking human rejection of paranormal powers and influence. 
-            # counters:
-                # ppe_max: 
-                # isp_max:
-            # stats:
-
-            # chargen_points:
-                # magic_slots: 
-                # psionic_slots: 
-            # skills:
-            
-            # hinderances: 
-                # -
-            # edges:
-                # - AB Psionics*
-            # magic_powers:
-                # -
-            # abilities:
-                # -
-            # complications:
-                # -
-            race_check:
-                - Restricted Path ISP
+            description: Psychic dispellers of the supernatural.
+            skills:
+                Psionics: 2
+            hinderances: 
+                - Enemy+*
+            edges:
+                - AB Psionics*
+                - Major Psionic*
+                - Brave*
+                - Strong Willed*
+            magic_powers:
+                - Dispel*
+            abilities:
+                - Disrupt Magic*
+                - Greater Arcane Resistance*
+                - Rapid Healing*
+            complications:
+                - Beneficial Powers Resistance*
+                - Cybernetics*
         -   
             name: Zapper
             book_reference: A&M
-            # description: 
-            # counters:
-                # ppe_max: 
-                # isp_max:
-            # stats:
-
-            # chargen_points:
-                # magic_slots: 
-                # psionic_slots: 
-            # skills:
-            
-            # hinderances: 
-                # -
-            # edges:
-                # -
-            # magic_powers:
-                # -
-            # abilities:
-                # -
-            # complications:
-                # -
-            race_check:
-                - Restricted Path ISP
+            description: Wielders of Lightning and Thunder
+            skills:
+                psionics: 2
+            hinderances: 
+                - Enemy+*
+            edges:
+                - AB Psionics*
+            psionic_powers:
+                - Damage Field*
+                - Elemental Manipulation*
+                    - Innate
+                    - Electricity
+                - Bolt*
+                    - Lightning
+            abilities:
+                - Absorb Electricity*
+                - Arc of Life*
+                - Electrical Aura*
+                - Electrical Immunity*
+                - Electrical Mastery*
+                - Lightning Bolt*
+            complications:
+                - Cybernetics
+                - Glitchy Electronics
         -   
             name: Knight of the White Rose
             book_reference: B&B 7
@@ -458,8 +775,12 @@ swrifts:
             stats:
                 Strength: 1
                 Vigor: 1
+            traits:
+                rank: Seasoned
+            counters: 
+                advance_points: 4
             chargen_points:
-                hj_slots: 1
+                fandg_slots: 2
             skills:
                 Notice: 1
                 Survival: 3
@@ -473,13 +794,52 @@ swrifts:
                 - Resist Disease and Poison*
             complications:
                 - Uncivilized*
+            hj1_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Psionics
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
+            hj2_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Psionics
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
+            hj3_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Psionics
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
         -   
             name: MARS Barbarian Eco-Wizard
             book_reference: B&B 24
             description: Barbarian spellcasters
-            counters:
-                ppe_max: 10
+            traits:
+                rank: Seasoned
+            counters: 
+                advance_points: 4
             chargen_points:
+                fandg_slots: 2
                 magic_slots: 3
             skills:
                 Spellcasting: 2
@@ -493,10 +853,52 @@ swrifts:
             magic_powers:
                 - Detect Arcana*
                 - Conceal Arcana* 
+            hj1_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Psionics
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
+            hj2_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Psionics
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
+            hj3_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Psionics
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
         -   
             name: MARS Dinosaur Hunter
             book_reference: B&B
             description: Taking 'Big Game Hunter' to a whole new level. 
+            traits:
+                rank: Seasoned
+            counters: 
+                advance_points: 4
+            chargen_points:
+                fandg_slots: 2
             skills:
                 Notice: 3
                 Shooting: 2
@@ -508,10 +910,52 @@ swrifts:
                 - Woodsman* 
             abilities:
                 - Megafauna Specialist*
+            hj1_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Psionics
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
+            hj2_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Psionics
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
+            hj3_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Psionics
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
         -   
             name: MARS Vampire Hunter
             book_reference: B&B 25
             description: Those who have dedicated their lives to rooting out and exterminating the undead. 
+            traits:
+                rank: Seasoned
+            counters: 
+                advance_points: 4
+            chargen_points:
+                fandg_slots: 2
             skills:
                 Fighting: 2
                 Notice: 2
@@ -529,6 +973,42 @@ swrifts:
             edge_choices:
                 - Reid's Ranger*
                 - Elite Vampire Killer*
+            hj1_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Psionics
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
+            hj2_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Psionics
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
+            hj3_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Psionics
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
         -   
             name: Necromancer
             book_reference: B&B 10
@@ -634,12 +1114,12 @@ swrifts:
             counters:
                 ppe_max: 10
                 isp_max: 10
-            stats:
             stat_max:
                 Agility: 7
                 Strength: 100
             chargen_points:
                 magic_slots: 3
+                hj_slots: 2
             skills:
                 Spellcasting: 1
                 Psionics: 1
@@ -674,197 +1154,435 @@ swrifts:
                     - Supernatural
                 - Wild Beast*
         -   
-            name: Intelligent Construct
-            book_reference: EohH
-            # description: 
-            # counters:
-                # ppe_max: 
-                # isp_max:
-            # stats:
-
-            # chargen_points:
-                # magic_slots: 
-                # psionic_slots: 
-            # skills:
-            
-            # hinderances: 
-                # -
-            # edges:
-                # -
-            # magic_powers:
-                # -
-            # abilities:
-                # -
-            # complications:
-                # -
+            name: MARS RCSG Scientist
+            description: Subject matter expert dedicated to Rifts, Ley Lines, magic, the supernatural, how they function in a scientific sense, and how to control them through technology.
+            traits:
+                rank: Seasoned
+            counters: 
+                advance_points: 4
+            chargen_points:
+                fandg_slots: 2
+            stats: 
+                smarts: 1
+            stat_max:
+                smarts: 1
+            skills:
+                occult: 3
+                science: 3
+                notice: 1
+                research: 2
+                survival: 2
+            edges:
+                - Scholar*
+                    - Occult
+                - Scholar*
+                    - Science
+                - Monster Slayer*
+            abilities:
+                - Recognize the Arcane*
+            hind_note:
+                - Cannot take Doubting Thomas or Illiterate
+            hj1_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Psionics
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
+            hj2_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Psionics
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
+            hj3_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Psionics
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
         -
             name: MARS Commando
-            book_reference: EohH
-            # description: 
-            # counters:
-                # ppe_max: 
-                # isp_max:
-            # stats:
-
-            # chargen_points:
-                # magic_slots: 
-                # psionic_slots: 
-            # skills:
-            
-            # hinderances: 
-                # -
-            # edges:
-                # -
-            # magic_powers:
-                # -
-            # abilities:
-                # -
-            # complications:
-                # -
+            book_reference: EoH 16
+            description: Elite, highly trained and deadly special operations soldiers
+            traits:
+                rank: Seasoned
+            counters: 
+                advance_points: 4
+            chargen_points:
+                fandg_slots: 2
+            stats:
+                Spirit: 1
+                Vigor: 1
+            skills:
+                Athletics: 2
+                Fighting: 1
+                Shooting: 1
+                Survival: 1
+            edges:
+                - Assassin*
+                - Brawler*
+                - Conditioned*
+                - Dodge*
+                - Marksman*
+                - Soldier*
+            abilities:
+                - Who Dares, Wins
+            hj1_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Psionics
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
+            hj2_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Psionics
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
+            hj3_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Psionics
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
         -
             name: MARS Cowboy
-            book_reference: EohH
-            # description: 
-            # counters:
-                # ppe_max: 
-                # isp_max:
-            # stats:
-
-            # chargen_points:
-                # magic_slots: 
-                # psionic_slots: 
-            # skills:
-            
-            # hinderances: 
-                # -
-            # edges:
-                # -
-            # magic_powers:
-                # -
-            # abilities:
-                # -
-            # complications:
-                # -
+            book_reference: EoH 16
+            description: Versatile riders and frontiersmen
+            traits:
+                rank: Seasoned
+            counters: 
+                advance_points: 4
+            chargen_points:
+                fandg_slots: 2
+            skills:
+                Athletics: 2
+                Notice: 2
+                Riding: 3
+                Survival: 2
+            edges:
+                - Beast Bond
+                - Beast Master
+                - Beast Master
+            abilities:
+                - Born in the Saddle
+            hj1_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Psionics
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
+            hj2_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Psionics
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
+            hj3_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Psionics
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
         -
             name: MARS EOD Specialist
-            book_reference: EohH
-            # description: 
-            # counters:
-                # ppe_max: 
-                # isp_max:
-            # stats:
-
-            # chargen_points:
-                # magic_slots: 
-                # psionic_slots: 
-            # skills:
-            
-            # hinderances: 
-                # -
-            # edges:
-                # -
-            # magic_powers:
-                # -
-            # abilities:
-                # -
-            # complications:
-                # -
+            book_reference: EoH 17
+            Description: Military bomb defusal and demolitions specialists
+            traits:
+                rank: Seasoned
+            counters: 
+                advance_points: 4
+            chargen_points:
+                fandg_slots: 2
+            skills:
+                Repair: 2
+                Thievery: 1
+                Survival: 1
+                Electronics: 2
+                Science: 2
+            edges:
+                - Conditioned
+                - Demolitionist
+                - Expert Demolitionist
+                - Take 'Em Down
+            abilities:
+                - Spicy Home Cooking
+            hind_note:
+                - Cannot take All Thumbs or Illiterate
+            hj1_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Psionics
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
+            hj2_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Psionics
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
+            hj3_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Psionics
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
         -
             name: MARS Gunslinger
-            book_reference: EohH
-            # description: 
-            # counters:
-                # ppe_max: 
-                # isp_max:
-            # stats:
-
-            # chargen_points:
-                # magic_slots: 
-                # psionic_slots: 
-            # skills:
-            
-            # hinderances: 
-                # -
-            # edges:
-                # -
-            # magic_powers:
-                # -
-            # abilities:
-                # -
-            # complications:
-                # -
+            book_reference: 
+            description: Sharpshooters, trick shooters and quick draw experts
+            traits:
+                rank: Seasoned
+            counters: 
+                advance_points: 4
+            chargen_points:
+                fandg_slots: 2
+            stats:
+                Agility: 2
+            skills:
+                Shooting: 3
+            hinderances: 
+                - Choice*
+            edges:
+                - Marksman*
+                - Sharpshooting*
+                - Danger Sense*
+                - Dead Shot*
+                - Quick*
+            abilities:
+                - The Quick and the Dead*
+            hj1_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Psionics
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
+            hj2_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Psionics
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
+            hj3_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Psionics
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
         -
             name: MARS Intel Operative
-            book_reference: EohH
-            # description: 
-            # counters:
-                # ppe_max: 
-                # isp_max:
-            # stats:
-
-            # chargen_points:
-                # magic_slots: 
-                # psionic_slots: 
-            # skills:
-            
-            # hinderances: 
-                # -
-            # edges:
-                # -
-            # magic_powers:
-                # -
-            # abilities:
-                # -
-            # complications:
-                # -
-        -
-            name: MARS RCSG Scientist
-            book_reference: EohH
-            # description: 
-            # counters:
-                # ppe_max: 
-                # isp_max:
-            # stats:
-
-            # chargen_points:
-                # magic_slots: 
-                # psionic_slots: 
-            # skills:
-            
-            # hinderances: 
-                # -
-            # edges:
-                # -
-            # magic_powers:
-                # -
-            # abilities:
-                # -
-            # complications:
-                # -
+            book_reference: EoH
+            Description: Military information specialists and occasional spies
+            traits:
+                rank: Seasoned
+            counters: 
+                advance_points: 4
+            chargen_points:
+                fandg_slots: 2
+            skills:
+                Common Knowledge: 2
+                Electronics: 2
+                Stealth: 2
+                Thievery: 2
+                Persuasion: 2
+                Research: 2
+                Notice: 2
+                Survival: 2
+            edges:
+                - Choice*
+                - Investigator*
+                - Conditioned*
+                - Field Intel*
+            edge_choices:
+                - Alertness*
+                - Linguist* 
+                - Streetwise*
+            hind_note:
+                - Cannot take All Thumbs or Illiterate
+            hj1_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Psionics
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
+            hj2_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Psionics
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
+            hj3_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Psionics
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
         -
             name: Momano Headhunter
-            book_reference: EohH
-            # description: 
-            # counters:
-                # ppe_max: 
-                # isp_max:
-            # stats:
-
-            # chargen_points:
-                # magic_slots: 
-                # psionic_slots: 
-            # skills:
-            
-            # hinderances: 
-                # -
-            # edges:
-                # -
-            # magic_powers:
-                # -
-            # abilities:
-                # -
-            # complications:
-                # -
+            book_reference: EoH
+            description: Specialist demon and monster slayers, Momano are an eclectic breed of techno-warriors who embrace arcane sources of power—including Techno-Wizardry and Psionics—labeled evil, dangerous, and untrustworthy by most Headhunters.
+            cybernetics:
+                - Magical Blades & Spikes (TW)*
+                - Hydraulic Stake Driver (TW)*
+                - Energy Projector (TW)*
+                - Armor Plating*
+                - Core Electronics Package*
+                - Expanded Detection and Security Array*
+                - Nano-Repair System*
+                - Optics Package*
+                - Targeting Eye* 
+            stats:
+                strength: 3
+                agility: 1
+                vigor: 1
+            stat_max: 
+                strength: 100
+                agility: 100
+                vigor: 100
+            chargen_points:
+                magic_slots: 
+                psionic_slots: 
+                hj_slots: 2
+            skills:
+                occult: 3
+                athletics: 2
+                fighting: 2
+                academics: 2
+                performance: 2
+                survival: 6
+                psionics: 2
+            hinderances: 
+                - Enemy+*
+            edges:
+                - Scholar* 
+                    - Occult
+                - Monster Slayer*
+                - Chi*
+                - Brave* 
+                - AB Psionics*
+            psionic_powers:
+                - arcane protection*
+                - detect arcana*
+                - conceal arcana*
+                - protection*
+            abilities:
+                - Monster Hunters*
+                - Recognized Defenders*
+                - TW Bionic Attunement*
+            complications:
+                - Cybernetic Oddball*
+                - Limited Expansion*
+                - Outsider*
+                - Restricted Path PPE*
+                - Some Piece of Work*
         -
             name: Dragon Hatchling
             book_reference: TLPG
@@ -907,6 +1625,8 @@ swrifts:
             name: Combat Cyborg
             book_reference: TLPG
             description: Combat Cyborgs are also referred to as full conversion ’Borgs. Their brain and a handful of organs—heart, lungs, possibly some part of the digestive system, not much else—are atached to a synthesis of bionic parts and cybernetic systems. The whole thing is encased in a metallic form capable of wrestling giant robots and dragons to the ground while withstanding direct missile impacts.
+            chargen_points:
+                hj_slots: 2
             stats:
                 Agility: 3
                 Strength: 6
@@ -958,8 +1678,7 @@ swrifts:
             dstats:
                 pace: 6
             chargen_points:
-                magic_slots: 
-                psionic_slots: 
+                hj_slots: 2
             skills:
                 notice: 2
                 survival: 2   
@@ -985,63 +1704,53 @@ swrifts:
         -
             name: Cyber-Knight
             book_reference: TLPG
-            # description: 
-            # counters:
-                # ppe_max: 
-                # isp_max:
-            # stats:
-
-            # chargen_points:
-                # magic_slots: 
-                # psionic_slots: 
-            # skills:
-            
-            # hinderances: 
-                # -
-            # edges:
-                # -
-            # magic_powers:
-                # -
-            # abilities:
-                # -
-            # complications:
-                # -
+            description: Techno-psychic paladins
+            chargen_points:
+                hj_slots: 2
+            edges:
+                - AB Psionics*
+                - Champion*
+                - Holy Warrior*
+            psionic_powers:
+                - Cyber Armor*
+                - Cybernetic Combat*
+                - First Into Battle*
+                - Psi-Sword*
+                - Revered Protectors*
+            complications:
+                - Code of Honor*
+                - Cybernetics*
         -
             name: Burster
             book_reference: TLPG
-            # description: 
-            # counters:
-                # ppe_max: 
-                # isp_max:
-            # stats:
-
-            # chargen_points:
-                # magic_slots: 
-                # psionic_slots: 
-            # skills:
-            
-            # hinderances: 
-                # -
-            # edges:
-                # -
-            # magic_powers:
-                # -
-            # abilities:
-                # -
-            # complications:
-                # -
+            description: Bursters are pyrokinetics—they telekinetically accelerate molecules to the point of ignition. 
+            chargen_points:
+                hj_slots: 2
+            skills:
+                Psionics: 2
+            hinderances: 
+                - Enemy-*
+                - Quirk*
+                    - Pyromaniac 
+            edges:
+                - AB Psionics*
+                - Blaster*
+                - Major Psionic*
+            psionic_powers:
+                - Elemental Manipulation*
+            abilities:
+                - Everything Burns*
+                - Fiery Aura*
+                - Fire Walker*
+                - Flame Bolt*
+            complications:
+                - Cybernetics*
         -
             name: Glitter Boy
             book_reference: TLPG
-            # description: 
-            # counters:
-                # ppe_max: 
-                # isp_max:
-            # stats:
-
-            # chargen_points:
-                # magic_slots: 
-                # psionic_slots: 
+            description: Elite pilot, walking tank, big damn gun.
+            chargen_points:
+                hj_slots: 2
             skills:
                 electronics: 2
                 piloting: 2
@@ -1078,35 +1787,13 @@ swrifts:
             gear:
                 - Glitter Boy Armor*
         -
-            name: Imported Heroic
-            book_reference: TLPG
-            # description: 
-            # counters:
-                # ppe_max: 
-                # isp_max:
-            # stats:
-
-            # chargen_points:
-                # magic_slots: 
-                # psionic_slots: 
-            # skills:
-            
-            # hinderances: 
-                # -
-            # edges:
-                # -
-            # magic_powers:
-                # -
-            # abilities:
-                # -
-            # complications:
-                # -
-        -
             name: Juicer
             book_reference: TLPG 35
             description: Drug-powered super-soldiers. 
             counters:
                 burn: 8
+            chargen_points:
+                hj_slots: 2
             stats:
                 Vigor: 2
                 Agility: 2
@@ -1135,102 +1822,216 @@ swrifts:
         -
             name: Ley Line Walker
             book_reference: TLPG
-            # description: 
-            # counters:
-                # ppe_max: 
-                # isp_max:
-            # stats:
-
-            # chargen_points:
-                # magic_slots: 
-                # psionic_slots: 
-            # skills:
-            
-            # hinderances: 
-                # -
-            # edges:
-                # -
-            # magic_powers:
-                # -
-            # abilities:
-                # -
-            # complications:
-                # -
+            description: Spell slinging wizards and masters of ley lines.
+            counters:
+                ppe_max: 20
+            chargen_points:
+                magic_slots: 5
+                hj_slots: 2
+            hinderances: 
+                - Enemy-*
+            edges:
+                - AB Magic*
+                - Power Points*
+                - Rapid Recharge*
+                - Master of Magic*
+            magic_powers:
+                - Detect Arcana*
+                    - innate
+                    - self
+                    - aspect
+            abilities:
+                - Expanded Awareness*
+                - Ley Line Mastery*
+                - Arcane Academic*
+                - Ley Line Rejuvenation*
+                - Ley Line Sense*
+                - Ley Line Transmission*
+                - Ley Line Walking*
+            complications:
+                - Cybernetics*
+                - Disconnected*
+                - Power Activators*
         -
             name: MARS Body-Fixer
             book_reference: TLPG
-            # description: 
-            # counters:
-                # ppe_max: 
-                # isp_max:
-            # stats:
-
-            # chargen_points:
-                # magic_slots: 
-                # psionic_slots: 
-            # skills:
-            
-            # hinderances: 
-                # -
-            # edges:
-                # -
-            # magic_powers:
-                # -
-            # abilities:
-                # -
-            # complications:
-                # -
+            description: Doctors and Healers
+            traits:
+                rank: Seasoned
+            counters: 
+                advance_points: 4
+            chargen_points:
+                fandg_slots: 2
+            stats:
+                smarts: 1
+            skills:
+                electronics: 3
+                healing: 3
+                repair: 2
+                science: 2
+            edges:
+                - Healer*
+            abilities:
+                - Body-Fixer*
+            hj1_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Psionics
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
+            hj2_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Psionics
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
+            hj3_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Psionics
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
         -
             name: MARS City Rat
             book_reference: TLPG
-            # description: 
-            # counters:
-                # ppe_max: 
-                # isp_max:
-            # stats:
-
-            # chargen_points:
-                # magic_slots: 
-                # psionic_slots: 
-            # skills:
-            
-            # hinderances: 
-                # -
-            # edges:
-                # -
-            # magic_powers:
-                # -
-            # abilities:
-                # -
-            # complications:
-                # -
+            description: Denizens of the underbelly of civilization
+            traits:
+                rank: Seasoned
+            counters: 
+                advance_points: 4
+            chargen_points:
+                fandg_slots: 2
+            skills:
+                electronics: 1
+                hacking: 1
+                intimidation: 1
+                thievery: 1
+            edges:
+                - Scrounger*
+                - Streetwise*
+                - Thief*
+            abilities:
+                - Born on the Streets*
+            hj1_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Psionics
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
+            hj2_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Psionics
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
+            hj3_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Psionics
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
         -
             name: MARS Cyber Doc
             book_reference: TLPG
-            # description: 
-            # counters:
-                # ppe_max: 
-                # isp_max:
-            # stats:
-
-            # chargen_points:
-                # magic_slots: 
-                # psionic_slots: 
-            # skills:
-            
-            # hinderances: 
-                # -
-            # edges:
-                # -
-            # magic_powers:
-                # -
-            # abilities:
-                # -
-            # complications:
-                # -
+            description: Cybernetics Surgeons
+            traits:
+                rank: Seasoned
+            counters: 
+                advance_points: 4
+            chargen_points:
+                fandg_slots: 2
+            stats:
+                smarts: 1
+            skills:
+                electronics: 3
+                healing: 3
+                repair: 2
+                science: 2
+            edges:
+                - Healer*
+            abilities:
+                - Cyber-Doc*
+            hj1_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Psionics
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
+            hj2_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Psionics
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
+            hj3_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Psionics
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
         -
             name: MARS Headhunter Techno-Warrior
             book_reference: TLPG
+            traits:
+                rank: Seasoned
+            counters: 
+                advance_points: 4
+            chargen_points:
+                fandg_slots: 2
             # description: 
             # counters:
                 # ppe_max: 
@@ -1252,9 +2053,51 @@ swrifts:
                 # -
             # complications:
                 # -
+            hj1_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Psionics
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
+            hj2_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Psionics
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
+            hj3_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Psionics
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
         -
             name: MARS Merc Soldier
             book_reference: TLPG
+            traits:
+                rank: Seasoned
+            counters: 
+                advance_points: 4
+            chargen_points:
+                fandg_slots: 2
             # description: 
             # counters:
                 # ppe_max: 
@@ -1276,9 +2119,51 @@ swrifts:
                 # -
             # complications:
                 # -
+            hj1_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Psionics
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
+            hj2_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Psionics
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
+            hj3_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Psionics
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
         -
             name: MARS Operator
             book_reference: TLPG
+            traits:
+                rank: Seasoned
+            counters: 
+                advance_points: 4
+            chargen_points:
+                fandg_slots: 2
             # description: 
             # counters:
                 # ppe_max: 
@@ -1300,9 +2185,51 @@ swrifts:
                 # -
             # complications:
                 # -
+            hj1_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Psionics
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
+            hj2_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Psionics
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
+            hj3_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Psionics
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
         -
             name: MARS Personal Concept Option
             book_reference: TLPG
+            traits:
+                rank: Seasoned
+            counters: 
+                advance_points: 4
+            chargen_points:
+                fandg_slots: 2
             # description: 
             # counters:
                 # ppe_max: 
@@ -1324,9 +2251,51 @@ swrifts:
                 # -
             # complications:
                 # -
+            hj1_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Psionics
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
+            hj2_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Psionics
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
+            hj3_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Psionics
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
         -
             name: MARS Power Armor Ace
             book_reference: TLPG
+            traits:
+                rank: Seasoned
+            counters: 
+                advance_points: 4
+            chargen_points:
+                fandg_slots: 2
             # description: 
             # counters:
                 # ppe_max: 
@@ -1348,9 +2317,51 @@ swrifts:
                 # -
             # complications:
                 # -
+            hj1_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Psionics
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
+            hj2_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Psionics
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
+            hj3_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Psionics
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
         -
             name: MARS Psi-Operator
             book_reference: TLPG
+            traits:
+                rank: Seasoned
+            counters: 
+                advance_points: 4
+            chargen_points:
+                fandg_slots: 2
             # description: 
             # counters:
                 # ppe_max: 
@@ -1372,9 +2383,51 @@ swrifts:
                 # -
             # complications:
                 # -
+            hj1_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Psionics
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
+            hj2_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Psionics
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
+            hj3_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Psionics
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
         -
             name: MARS Robot Vehicle Ace
             book_reference: TLPG
+            traits:
+                rank: Seasoned
+            counters: 
+                advance_points: 4
+            chargen_points:
+                fandg_slots: 2
             # description: 
             # counters:
                 # ppe_max: 
@@ -1396,9 +2449,51 @@ swrifts:
                 # -
             # complications:
                 # -
+            hj1_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Psionics
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
+            hj2_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Psionics
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
+            hj3_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Psionics
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
         -
             name: MARS Rogue Scholar
             book_reference: TLPG
+            traits:
+                rank: Seasoned
+            counters: 
+                advance_points: 4
+            chargen_points:
+                fandg_slots: 2
             # description: 
             # counters:
                 # ppe_max: 
@@ -1420,9 +2515,51 @@ swrifts:
                 # -
             # complications:
                 # -
+            hj1_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Psionics
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
+            hj2_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Psionics
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
+            hj3_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Psionics
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
         -
             name: MARS Vagabond
             book_reference: TLPG
+            traits:
+                rank: Seasoned
+            counters: 
+                advance_points: 4
+            chargen_points:
+                fandg_slots: 2
             # description: 
             # counters:
                 # ppe_max: 
@@ -1444,9 +2581,51 @@ swrifts:
                 # -
             # complications:
                 # -
+            hj1_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Psionics
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
+            hj2_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Psionics
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
+            hj3_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Psionics
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
         -
             name: MARS Wilderness Scout
             book_reference: TLPG
+            traits:
+                rank: Seasoned
+            counters: 
+                advance_points: 4
+            chargen_points:
+                fandg_slots: 2
             # description: 
             # counters:
                 # ppe_max: 
@@ -1468,33 +2647,149 @@ swrifts:
                 # -
             # complications:
                 # -
+            hj1_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Psionics
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
+            hj2_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Psionics
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
+            hj3_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Psionics
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
         -
             name: Mind Melter
-            book_reference: TLPG
-            # description: 
-            # counters:
-                # ppe_max: 
-                # isp_max:
-            # stats:
+            book_reference: TLPG 45
+            description: The name itself fairly describes the general population’s feelings about the most powerful psi-masters in the world. They certainly didn’t give it to themselves, but most Mind Melters wear the name like a badge of honor, reveling in the respect and (far more often) fear their very presence generates. Even the ones with a more noble or gentle intent fully grasp just how terrifying their powerful minds are.
+            counters:
+                ppe_max: 
+                isp_max:
+            stats:
 
-            # chargen_points:
-                # magic_slots: 
-                # psionic_slots: 
-            # skills:
-            
-            # hinderances: 
-                # -
-            # edges:
-                # -
-            # magic_powers:
-                # -
-            # abilities:
-                # -
-            # complications:
-                # -
+            chargen_points:
+                psionic_slots: 2
+            skills:
+                psionics: 2
+            hinderances: 
+                - Quirk*
+                - Enemy+*
+            edges:
+                - AB Psionics*
+                - Power Points*
+                - Major Psionic*
+                - Master Psionic*
+            psionic_powers:
+                - conceal arcana*
+                    - innate
+                    - range self
+                - detect arcana*
+                    - innate
+                    - range self
+                    - aspect
+            abilities:
+                - Alter Aura*
+                - Master of Psionics*
+                - Mental Resistance*
+            complications:
+                - Cybernetics*
+                - Feared*
+            hj1_options:
+                - Enchanted Items
+                - Experience & Wisdom
+                - Psionics
+            hj2_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Psionics
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
+            psionic_list:
+                - arcane protection
+                - barrier
+                - blind
+                - bolt
+                - boost trait
+                - lower trait
+                - confusion
+                - damage field
+                    - range self
+                - darksight
+                    - range self
+                - deflection
+                    - range self
+                - disguise
+                - divination
+                - elemental manipulation
+                - empathy
+                - entangle
+                - environmental protection
+                    - range self
+                - farsight
+                    - range self
+                - fear
+                - fly
+                    - range self
+                - havoc
+                - healing
+                - illusion
+                - intangibility
+                    - range self
+                - invisibility
+                    - range self
+                - mind reading
+                - mind link
+                - mind wipe
+                - object reading
+                - protection
+                    - range self
+                - puppet
+                - relief
+                - sloth
+                - speed
+                - slumber
+                - smite
+                    - range self
+                - sound
+                - silence
+                - speak language
+                    - range self
+                - stun
+                - telekinesis
+                - warrior’s gift
+                    - range self
         -
             name: Mystic
-            book_reference: TLPG
+            book_reference: TLPG 47
             description: Enlightened spell weavers in tune with the greater comic forces of the universe. 
             chargen_points:
                 magic_slots: 3
@@ -1526,49 +2821,145 @@ swrifts:
                 - Power Activators*
         -
             name: Techno-Wizard
-            book_reference: TLPG
-            # description: 
-            # counters:
-                # ppe_max: 
-                # isp_max:
-            # stats:
-
-            # chargen_points:
-                # magic_slots: 
-                # psionic_slots: 
-            # skills:
-            
-            # hinderances: 
-                # -
-            # edges:
-                # -
-            # magic_powers:
-                # -
-            # abilities:
-                # -
-            # complications:
-                # -
+            book_reference: TLPG 50
+            description: Arcane runes and copper wires conducting eldritch energy to gems at enchanted junctions, and classic vehicles soaring the skies as much by will as by wire—these are the defning joys of the Techno-Wizard. He loves machines, but he loves the magic potential of machines even more, and he’s dedicated his life to fulflling that potential wherever he can.
+            skills:
+                techno-wizardry: 2
+                electronics: 2
+                occult: 2
+                repair: 2
+                science: 2
+            hinderances: 
+                - Enemy-*
+                - Quirk*
+            edges:
+                - AB Techno-Wizardry*
+            magic_powers:
+                -
+            abilities:
+                - Arcane Machinist*
+                - Machine Maestro*
+            complications:
+                - Cybernetics*
+                - Device Dependent*
+            hj1_options:
+                - Education
+                - Enchanted Items
+                - Magic & Mysticism
+            hj2_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
+            magic_list:
+                - arcane protection
+                - barrier
+                - blast
+                - blind
+                - bolt
+                - boost trait
+                - lower trait
+                - burrow
+                - burst
+                - confusion
+                - damage field
+                - darksight
+                - deflection
+                - detect arcana
+                - conceal arcana
+                - dispel
+                - drain Power Points
+                - entangle
+                - environmental protection
+                - farsight 
+                - fly
+                - havoc
+                - healing
+                - intangibility
+                - invisibility
+                - light
+                - darkness
+                - protection
+                - relief
+                - slumber
+                - smite
+                - sound
+                - silence
+                - speak language
+                - sloth
+                - speed
+                - stun
+                - telekinesis
+                - teleport
+                - wall walker
+                - warrior’s gift
+            notes:
+                - Any Trappings except Necromantic
         -
             name: MARS Bounty Hunter
-            book_reference: TLFM
-            # description: 
-            # counters:
-                # ppe_max: 
-                # isp_max:
-            # stats:
-
-            # chargen_points:
-                # magic_slots: 
-                # psionic_slots: 
-            # skills:
-            
-            # hinderances: 
-                # -
-            # edges:
-                # -
-            # magic_powers:
-                # -
-            # abilities:
-                # -
-            # complications:
-                # -
+            book_reference: TLFM 3
+            description: Bounty hunters specialize in bringing desperadoes, fugitives, and wanted men or monsters in dead or alive. Combining the expertise of wilderness scouts, city rats, and merc soldiers, these tireless hunters are hard men and women driven to tackle the toughest prey.
+            traits:
+                rank: Seasoned
+            counters: 
+                advance_points: 4
+            chargen_points:
+                fandg_slots: 2
+            skills:
+                athletics: 2
+                notice: 1
+                occult: 2
+                research: 2
+                survival: 2
+            hinderances: 
+                - Choice*
+            hind_choices:
+                - Greedy-*
+                - Mean*
+                - Ruthless-*
+                - Suspicious-*
+            edges:
+                - Alertness*
+                - Free Runner*
+                - Investigator*
+                - Streetwise*
+            abilities:
+                - Take 'Em Alive*
+            hj_notes: Bounty Hunter chooses the result of HJ1
+            hj1_options:
+                - Experience & Wisdom
+                - Underworld & Black Ops
+            hj2_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Psionics
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
+            hj3_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Cybernetics
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+                - Psionics
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
+            gear:
+                - Neural Mace
+                - Stun Gun
+                - Silver-plated MD handcuffs
