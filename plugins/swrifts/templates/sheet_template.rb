@@ -42,6 +42,10 @@ module AresMUSH
 				format_stats @char.swrifts_stats
 			end
 
+			def dstats
+				format_three_per_line @char.swrifts_dstats
+			end
+
 			def skills
 				format_three_per_line @char.swrifts_skills
 			end

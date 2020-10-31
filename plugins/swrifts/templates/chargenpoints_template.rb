@@ -15,10 +15,6 @@ module AresMUSH
 			def counters
 				format_three_per_line @char.swrifts_counters
 			end
-
-			def dstats
-				format_three_per_line @char.swrifts_dstats
-			end
 			
 			def heroesj
 				format_hj @char.swrifts_heroesj
