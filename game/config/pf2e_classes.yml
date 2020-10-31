@@ -1,5 +1,6 @@
 ---
 pf2e_classes:
+-
    alchemist:
       key_score: Intelligence
       secondary_scores:
