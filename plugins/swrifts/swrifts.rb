@@ -102,7 +102,10 @@ module AresMUSH
 				end
 			when "sheet"
 				if (!cmd.args)
-					return SheetCmd
+					SheetCmd
+					Sheet2Cmd
+					ChargenpointsCmd
+					return
 				else
 					case cmd.switch
 					when "stats"
