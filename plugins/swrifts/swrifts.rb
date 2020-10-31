@@ -25,8 +25,6 @@ module AresMUSH
 					end
 				when "reset"
 					return ResetCmd
-				when "chargen"
-					return ChargenpointsCmd
 				when "race"
 					if (!cmd.args)					 
 						return RaceCmd
@@ -108,10 +106,10 @@ module AresMUSH
 					return SheetCmd
 				when "abils"
 					return Sheet2Cmd
+				when "chargen"
+					return ChargenpointsCmd
 				else
-					SheetCmd
-					Sheet2Cmd
-					return
+					clilent.emit_failure ("Please use 'sheet/stats', 'sheet/abils', or 'sheet/chargen'.")
 				end
 			end
 		end
