@@ -15,7 +15,8 @@ pf2e_classes:
          Crafting: trained
          open: 3
       attacks:
-         Simple Weapons: trained
-         Alchemical Bombs: trained
+         simpleweapons: trained
+         alchemicalbombs: trained
          Unarmed: trained
       class_dc: trained
+      
