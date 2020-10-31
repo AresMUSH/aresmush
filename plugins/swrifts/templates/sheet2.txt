@@ -1,0 +1,28 @@
+<%= line_with_text t('swrifts.sheet_title', :name => char.name) -%>
+
+<%= line_with_text t('swrifts.abilities_title') -%>
+<% abilities.each do |a| %>
+<%= a -%>
+<% end %>
+
+<%= line_with_text t('swrifts.complications_title') -%>
+<% complications.each do |a| %>
+<%= a -%>
+<% end %><%= line_with_text t('swrifts.hinderances_title') -%>
+
+<% hinderances.each do |a| %>
+<%= a -%>
+<% end %>
+
+<%= line_with_text t('swrifts.edges_title') -%>
+<% edges.each do |a| %>
+<%= a -%>
+<% end %>
+
+<%= line_with_text t('swrifts.mpowers_title') -%>
+<% mpowers.each do |a| %>
+<%= a -%>
+<% end %>
+
+
+%ld

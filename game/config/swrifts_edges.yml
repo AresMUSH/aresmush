@@ -98,6 +98,18 @@ swrifts:
         pre-reqs:     
             - rank: Novice
     -
+        name: AB Techno-Wizardry
+        description: Techno-Wizardry Arcane Background
+        type: Background
+        chargen_points:
+            power_slots: 3
+        counters:
+            ppe_max: 15
+        skills:
+            Techno-Wizardry: 0
+        pre-reqs:     
+            - rank: Novice
+    -
         name: Arcane Resistance
         description: Arcane skills targeting the hero sufer a −2 penalty; magical damage is reduced by 2
         type: Background

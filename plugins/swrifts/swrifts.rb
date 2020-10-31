@@ -105,6 +105,9 @@ module AresMUSH
 			when "sheet"
 				return SheetCmd
 			end
+			when "sheet2"
+				return Sheet2Cmd
+			end
 		end
 
 		def self.get_event_handler(event_name)
