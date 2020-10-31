@@ -109,7 +109,7 @@ module AresMUSH
 				when "chargen"
 					return ChargenpointsCmd
 				else
-					clilent.emit_failure ("Please use 'sheet/stats', 'sheet/abils', or 'sheet/chargen'.")
+					client.emit_failure ("Please use 'sheet/stats', 'sheet/abils', or 'sheet/chargen'.")
 				end
 			end
 		end
