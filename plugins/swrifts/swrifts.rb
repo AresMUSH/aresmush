@@ -104,7 +104,6 @@ module AresMUSH
 				end
 			when "sheet"
 				return SheetCmd
-			end
 			when "sheet2"
 				return Sheet2Cmd
 			end
