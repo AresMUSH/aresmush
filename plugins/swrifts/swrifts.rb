@@ -102,10 +102,10 @@ module AresMUSH
 					client.emit_failure ("Error - command not recognized")
 					return
 				end
-			when "sheet"
-				return SheetCmd
 			when "sheet2"
 				return Sheet2Cmd
+			when "sheet"
+				return SheetCmd
 			end
 		end
 
