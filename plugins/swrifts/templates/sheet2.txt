@@ -1,19 +1,15 @@
 <%= line_with_text t('swrifts.sheet_title', :name => char.name) -%>
 
-<%= left( t('swrifts.iconicf_title'), 20 ) %> <%= left( ifforsheet, 16 ) %> | <%= left( t('swrifts.bennies_title'), 20 ) %> <%= left( benniescount, 16 ) %>
-<%= left( t('swrifts.race_title'), 20 ) %> <%= left( raceforsheet, 16 ) %> | <%= left( t('swrifts.conviction_title'), 20 ) %> <%= left( convictioncount, 16 ) %>
-<%= left( t('swrifts.rank_title'), 20 ) %> <%= left( rankforsheet, 16 ) %> | <%= left( t('swrifts.damage_title'), 20 ) %> <%= left( damageforsheet, 16 ) %>
-<%= line_with_text t('swrifts.stats_title') -%>
-<% stats.each do |a| %>
+<%= line_with_text t('swrifts.abilities_title') -%>
+<% abilities.each do |a| %>
 <%= a -%>
 <% end %>
 
-<%= line_with_text t('swrifts.skills_title') -%>
-<% skills.each do |a| %>
+<%= line_with_text t('swrifts.complications_title') -%>
+<% complications.each do |a| %>
 <%= a -%>
-<% end %>
+<% end %><%= line_with_text t('swrifts.hinderances_title') -%>
 
-<%= line_with_text t('swrifts.hinderances_title') -%>
 <% hinderances.each do |a| %>
 <%= a -%>
 <% end %>
@@ -28,14 +24,5 @@
 <%= a -%>
 <% end %>
 
-<%= line_with_text t('swrifts.abilities_title') -%>
-<% abilities.each do |a| %>
-<%= a -%>
-<% end %>
-
-<%= line_with_text t('swrifts.complications_title') -%>
-<% complications.each do |a| %>
-<%= a -%>
-<% end %>
 
 %ld
