@@ -16,10 +16,6 @@ module AresMUSH
 				format_three_per_line @char.swrifts_counters
 			end
 			
-			def heroesj
-				format_hj @char.swrifts_heroesj
-			end
-			
 			def randnum
 				format_three_per_line @char.swrifts_randnum
 			end
@@ -32,17 +28,6 @@ module AresMUSH
 						title = left("#{ a.name }".capitalize, 16,'.')
 						rating = left(a.rating, 7)
 						"#{linebreak} #{title} #{rating} "
-				end
-			end
-
-			def format_hj(list)
-				list.to_a.sort_by { |a| a.name }
-					.each_with_index
-						.map do |a | 
-						title = "#{ a.name } -".capitalize
-						table = "#{ a.table }".capitalize
-						desc = "#{a.description}"
-						"#{title} #{table}: #{desc}"
 				end
 			end
 	
