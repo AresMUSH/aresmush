@@ -49,6 +49,10 @@ module AresMUSH
 			def skills
 				format_three_per_line @char.swrifts_skills
 			end
+			
+			def addtlinfo
+				"For additional information use 'sheet/abils' and 'sheet/chargen'"
+			end
 		
 			def format_stats(list)
 				list.to_a.sort_by { |a| a.name }
