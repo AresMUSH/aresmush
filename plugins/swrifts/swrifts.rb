@@ -103,7 +103,7 @@ module AresMUSH
 					return
 				end
 			when "sheet2"
-				return Shee2tCmd
+				return Sheet2Cmd
 			when "sheet"
 				return SheetCmd
 			end
