@@ -458,6 +458,7 @@ module AresMUSH
 	end	
 	
 	def self.returnedgesforcg(cg, cgsys, fw, traittype)
+		# CG = character traits, cgsys = systemtraits.
 		cgedgearray = []
 		cgp = ''
 		
@@ -482,6 +483,8 @@ module AresMUSH
 		end
 		
 		if (fw == "nofw")
+		trdisabled = false
+		# CG = character traits, cgsys = systemtraits.
 			cg.each do |c|
 				cgname = "#{c.name}"
 				cgname = cgname.downcase
@@ -493,13 +496,14 @@ module AresMUSH
 					edgsel = cgsys.select { |ss| ss['name'].downcase == cgname.downcase }.first #Filter the icf's to find the one that's been selected	
 					if (edgsel)
 						cgdesc = edgsel['description']
+						trdisabled = true;
 						if ( traittype == 'hind' && edgsel['excludes'])
 							trexcludes = edgsel['excludes'];
 						else 
 							trexcludes = '';
 						end						
 					end
-					cgedgearray << {name: cgname, disabled: 'false', class: c.name, rating: cgdesc, trexcludes: trexcludes}
+					cgedgearray << {name: cgname, disabled: trdisabled, class: c.name, rating: cgdesc, trexcludes: trexcludes}
 				end
 			end
 		end
