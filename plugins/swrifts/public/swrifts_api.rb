@@ -372,7 +372,7 @@ module AresMUSH
 			end
 
 			if (edgsel)
-				# edgselname = edgsel.name.gsub("^", "*") # make searching easy. Make all ^, *.
+				edgselname = edgsel.name.gsub("^", "*") # make searching easy. Make all ^, *.
 				# ifstring = "#{ifname}"				
 				if (!edgselname.include?("*")) # If the trait is not a ICF or Race trait, remove it from the list.
 					ifdisabled = true
