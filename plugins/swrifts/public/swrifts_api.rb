@@ -357,20 +357,20 @@ module AresMUSH
 				ifstring = "#{ifname}"				
 				if (!edgselname.include?("*")) # If the trait is not a ICF or Race trait, remove it from the list.
 					ifdisabled = true
-				end
+				end			
+			else
+				ifstring = "#{ifname}"
 				if (traittype == 'hind' && trexcludes.length > 0)
 					ttss << {name: trexcludes, ifname: ifnamedowncase}
 					trexsel = trexcludes.select { |tt| tt.downcase.starts_with?"#{ifnamedowncase}" }.first
-					
 					if (trexsel)
 						ifdisabled = true	
 					else
 						ifdisabled = false
 					end
-				end				
-			else
-				ifstring = "#{ifname}"
-				ifdisabled = false
+				end					
+				# ifdisabled = false
+				
 			end
 
 			iconicfarray << {name: ifstring, disabled: ifdisabled, desc: desc, trexcludes: trexcludes}
