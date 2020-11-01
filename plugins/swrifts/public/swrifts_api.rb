@@ -338,6 +338,7 @@ module AresMUSH
 			
 		iconicfarray = []	
 		ttss = []
+		return ("#{cgsys}")
 		
 		cg.each do |d|
 			ttss << {name: d.name}
