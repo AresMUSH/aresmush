@@ -348,7 +348,7 @@ module AresMUSH
 			trex = trexlarray['excludes']
 			if (trex)
 				trex.each do |e|
-					ttss << {e.downcase}
+					ttss << {name: e.downcase}
 				end
 			end
 		end
@@ -378,7 +378,9 @@ module AresMUSH
 			else
 				# ifstring = "#{ifname}"
 				if (ttss.length > 0)
-					return ("#{ttss}")
+					ttss.each do |f|
+						return ("#{f['name']}")
+					end
 					# ttss << {name: trexcludes, ifname: ifnamedowncase}
 					# trexsel = ttss.select { |tt| tt['name'].starts_with?"#{ifnamedowncase}" }.first
 					# if (trexsel)
