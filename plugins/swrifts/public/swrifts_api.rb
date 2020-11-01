@@ -379,7 +379,7 @@ module AresMUSH
 				# ifstring = "#{ifname}"
 				if (ttss.length > 0)
 					# ttss << {name: trexcludes, ifname: ifnamedowncase}
-					trexsel = ttss.select { |tt| tt['name'].downcase.starts_with?"#{ifnamedowncase}" }.first
+					trexsel = ttss.select { |tt| tt.name.downcase.starts_with?"#{ifnamedowncase}" }.first
 					if (trexsel)
 						ifdisabled = true	
 					else
