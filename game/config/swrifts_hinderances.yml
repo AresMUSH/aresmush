@@ -33,10 +33,14 @@ swrifts:
       name: Arcane Averse-
       description: Characters wishing to interact with the supernatural or arcane (social interaction, using arcane weapons, means of travel, accepting healing, and so on) make their rolls to do so at a penalty of −2.
       hind_points: 1
+      excludes:
+        - Arcane Averse+        
     - 
       name: Arcane Averse+
       description: Characters wishing to interact with the supernatural or arcane (social interaction, using arcane weapons, means of travel, accepting healing, and so on) make their rolls to do so at a penalty of −2 and must spend a Benny.
       hind_points: 2
+      excludes:
+        - Arcane Averse-        
     - 
       name: Arrogant
       description: Likes to dominate his opponent, challenge the most powerful foe in combat.
