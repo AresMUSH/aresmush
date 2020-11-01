@@ -375,22 +375,23 @@ module AresMUSH
 				ifdisabled = true				
 			else
 				# ifstring = "#{ifname}"
+				if (ttss.length > 0)
+					ttss.each do |f|
+						f.each do |k, v|
+							if (ifnamedowncase == v.downcase)
+								ifdisabled = true
+							else
+								ifdisabled = false
+							end
+						end
+					end
+				else
+					# ifdisabled = false
+				end				
 				ifdisabled = false					
 			end
 			
-			if (ttss.length > 0)
-				ttss.each do |f|
-					f.each do |k, v|
-						if (ifnamedowncase == v.downcase)
-							ifdisabled = true
-						else
-							ifdisabled = false
-						end
-					end
-				end
-			else
-				# ifdisabled = false
-			end			
+			
 			iconicfarray << {name: ifname, disabled: ifdisabled, desc: desc, trexcludes: trexcludes}
 		end
 		return (iconicfarray)
