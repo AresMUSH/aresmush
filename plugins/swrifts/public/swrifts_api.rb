@@ -335,6 +335,7 @@ module AresMUSH
 	def self.returnsysedgesforcg(cgsys, cg, traittype)
 		#cgsys = System Traits, cg = character traits
 		iconicfarray = []	
+		ttss = []
         list = cgsys.sort_by { |a| a['name']}
 		list.each do |c|
 			ifname = c['name']
@@ -359,7 +360,7 @@ module AresMUSH
 				else
 					if (traittype == 'hind' && trexcludes.length > 0)
 						trexsel = trexcludes.select { |tt| tt.downcase.starts_with?"#{ifnamedowncase}" }.first
-						return ("#{trexsel}")
+						ttss << "#{trexsel}"
 						if (trexsel)
 							ifdisabled = true	
 						else
@@ -374,6 +375,7 @@ module AresMUSH
 
 			iconicfarray << {name: ifstring, disabled: ifdisabled, desc: desc, trexcludes: trexcludes}
 		end
+		return ("#{ttss}")
 		return ("#{iconicfarray}")
 	end	
 	
