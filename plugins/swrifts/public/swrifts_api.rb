@@ -380,7 +380,9 @@ module AresMUSH
 				if (ttss.length > 0)
 					ttss.each do |f|
 						f.each do |g|
-							return (g.class)
+							g.each do |h|
+								return ("#{h}")
+							end
 						end
 					end
 					# ttss << {name: trexcludes, ifname: ifnamedowncase}
