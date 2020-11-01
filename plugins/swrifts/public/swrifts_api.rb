@@ -358,7 +358,7 @@ module AresMUSH
 					ifdisabled = true
 				else
 					ifstring = "#{ifname}"
-					if (traittype == 'hind' && trexcludes)
+					if (traittype == 'hind' && trexcludes.length > 0)
 						trexcludes.each do |tr|
 							trname = tr.downcase
 							trname = trname.gsub("*", "")
