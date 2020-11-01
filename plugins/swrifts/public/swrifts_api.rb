@@ -356,7 +356,7 @@ module AresMUSH
 	
         list = cgsys.sort_by { |a| a['name']}
 		list.each do |c|
-			ifdisabled = false
+			ifdisabled = false  
 			ifname = c['name']
 			ifnamedowncase = ifname.downcase
 			desc = c['description']
@@ -372,25 +372,18 @@ module AresMUSH
 			end
 
 			if (edgsel)
-				ifdisabled = true				
-			else
-				# ifstring = "#{ifname}"			
-				# ifdisabled = false					
+				ifdisabled = true							
 			end
 			
-				if (ttss.length > 0)
-					ttss.each do |f|
-						f.each do |k, v|
-							if (ifnamedowncase == v.downcase)
-								ifdisabled = true
-							else
-								# ifdisabled = false
-							end
+			if (ttss.length > 0) # Check to see if this is an excluded trait because of the selection.
+				ttss.each do |f|
+					f.each do |k, v|
+						if (ifnamedowncase == v.downcase)
+							ifdisabled = true
 						end
 					end
-				else
-					# ifdisabled = false
-				end				
+				end
+			end				
 			
 			iconicfarray << {name: ifname, disabled: ifdisabled, desc: desc, trexcludes: trexcludes}
 		end
