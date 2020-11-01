@@ -348,6 +348,7 @@ module AresMUSH
 				trexcludes = '';
 			end
 			
+			ttss << {name: "#{trexcludes}"}
 			if (cg)
 				edgsel = cg.select { |ss| ss.name.downcase.start_with?"#{ifnamedowncase}" }.first #Filter the trait's to find the one that's been selected
 			end
@@ -360,7 +361,7 @@ module AresMUSH
 				else
 					if (traittype == 'hind' && trexcludes.length > 0)
 						trexsel = trexcludes.select { |tt| tt.downcase.starts_with?"#{ifnamedowncase}" }.first
-						ttss << {name: "#{trexsel}"}
+						
 						if (trexsel)
 							ifdisabled = true	
 						else
