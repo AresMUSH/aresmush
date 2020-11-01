@@ -202,6 +202,8 @@ module AresMUSH
 		cgedg = returnedgesforcg(cgedges,cgsysedges, fw, 'edge')
 		fw = "nofw"
 		cgedgnofw = returnedgesforcg(cgedges,cgsysedges, fw, 'edge')		
+		fw = "fw"
+		cgedgfw = returnedgesforcg(cgedges,cgsysedges, fw, 'edge')		
 
 		
 		#Get the hinderances that were set on the character.
@@ -233,6 +235,7 @@ module AresMUSH
 		  cgedges: cgedg, #Edges on Character
 		  cghind: cghind, #Hinderances on Character
 		  cgedgesnofw: cgedgnofw, #Edges on Character for framework stuff
+		  cgedgesfw: cgedgfw, #Only Framework Edges on Character for framework stuff
 		  cghindnofw: cghindnofw, #Hinderances on Character for framework stuff
 		  cghindfw: cghindfw, #Only framework Hinderances on Character for framework stuff
 		  sysedges: sysedges, #Edges from system
