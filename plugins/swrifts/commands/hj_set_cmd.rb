@@ -5,7 +5,7 @@ module AresMUSH
 			      
 			attr_accessor :target, :hj_name, :hj_set, :hj_table_name
 			
-			#swrifts/hj 1=Body Armor
+			#command example: swrifts/hj 1=Body Armor
 			
 			def parse_args
 			    args = cmd.parse_args(ArgParser.arg1_equals_arg2) #Split the arguments into two around the =
