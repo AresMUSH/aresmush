@@ -360,10 +360,11 @@ module AresMUSH
 					ifstring = "#{ifname}"
 					if (traittype == 'hind' && trexcludes.length > 0)
 						trexcludes.each do |tr|
-						return ("#{tr}")
+						
 							trname = tr.downcase
 							trname = trname.gsub("*", "")
 							trname = trname.gsub("^", "")
+							return ("#{trname}")
 							trex = cg.select { |ss| ss.name.downcase.start_with?"#{trname}" }.first #Filter the trait's to find the one that's been selected
 							if (trex) 
 								ifdisabled = true
