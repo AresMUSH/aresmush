@@ -365,8 +365,7 @@ module AresMUSH
 							trname = trname.gsub("^", "")
 							if ifnamedowncase.start_with?"#{trname}"
 								if (trex) 
-									ifdisabled = true
-									return ("#{trex}")								
+									ifdisabled = true						
 								else
 									ifdisabled = false
 								end
