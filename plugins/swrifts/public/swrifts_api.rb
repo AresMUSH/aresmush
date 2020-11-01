@@ -384,14 +384,14 @@ module AresMUSH
 						f.each do |k, v|
 							trexsel = cgsys.select { |tt| tt['name'].downcase.starts_with?"#{v.downcase}" }.first
 							if (trexsel)
-								ifdisabled = true
+								# ifdisabled = true
 							else
-								ifdisabled = false
+								# ifdisabled = false
 							end
 						end
 					end
 				else
-					ifdisabled = false
+					# ifdisabled = false
 				end									
 			end
 			iconicfarray << {name: ifname, disabled: ifdisabled, desc: desc, trexcludes: trexcludes}
