@@ -339,8 +339,7 @@ module AresMUSH
 		iconicfarray = []	
 		ttss = []
 		
-        list1 = cg.sort_by { |a| a['name']}
-		list1.each do |d|
+		cg.each do |d|
 			ttss << {name: d}
 		end
 		return ("#{ttss}")
