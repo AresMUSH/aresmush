@@ -340,7 +340,7 @@ module AresMUSH
 		ttss = []
 		
 		cg.each do |d|
-			ttss << {name: d}
+			ttss << {name: d.name}
 		end
 		return ("#{ttss}")
         list = cgsys.sort_by { |a| a['name']}
