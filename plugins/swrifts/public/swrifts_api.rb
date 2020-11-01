@@ -378,9 +378,8 @@ module AresMUSH
 			else
 				# ifstring = "#{ifname}"
 				if (ttss.length > 0)
-						return ("#{ttss}")
 					ttss.each do |f|
-						ggg << "#{f}"
+						# ggg << "#{f}"
 						return ("#{f}")
 					end
 					# ttss << {name: trexcludes, ifname: ifnamedowncase}
