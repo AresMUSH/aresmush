@@ -340,7 +340,10 @@ module AresMUSH
 		ttss = []
 		
 		cg.each do |d|
-			ttss << {name: d}
+			ttss << {name: d.name}
+			dname = d.name.downcase
+			trexsel = cgsys.select { |ss| ss.name.downcase.start_with?"#{dname}" }.first #Filter the trait's to find the one that's been selected
+			return trexsel
 		end
 		return ("#{ttss}")
         list = cgsys.sort_by { |a| a['name']}
