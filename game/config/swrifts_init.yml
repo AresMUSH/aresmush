@@ -51,6 +51,7 @@ swrifts:
             miracle_slots: 0
             gifted_slots: 0
             edge_slots: 0
+            power_slots: 0
         skills:
             Academics: 0
             Athletics: 1
