@@ -212,10 +212,10 @@ module AresMUSH
 		
 
 		#Get the System Edges
-		sysedges = returnsysedgesforcg(cgsysedges, cgedges)			
+		sysedges = returnsysedgesforcg(cgsysedges, cgedges, 'edge')			
 		
 		#Get the System Hinderances
-		syshind = returnsysedgesforcg(cgsyshind, cghinder)		
+		syshind = returnsysedgesforcg(cgsyshind, cghinder, 'hind')		
 
 		return {
 		  iconicf: iconicf, #System iconic frameworks
@@ -332,13 +332,19 @@ module AresMUSH
 	  
 	#This is used for Edges and Traits. 
 	
-	def self.returnsysedgesforcg(cgsys, cg)
+	def self.returnsysedgesforcg(cgsys, cg, traittype)
 		iconicfarray = []	
         list = cgsys.sort_by { |a| a['name']}
 		list.each do |c|
 			ifname = c['name']
 			ifnamedowncase = ifname.downcase
 			desc = c['description']
+			
+			if traittype == 'hind' 
+				trexcludes = c['excludes'];
+			else 
+				trexcludes = '';
+			end
 			
 			if (cg)
 				edgsel = cg.select { |ss| ss.name.downcase.start_with?"#{ifnamedowncase}" }.first #Filter the icf's to find the one that's been selected
@@ -357,7 +363,7 @@ module AresMUSH
 				ifstring = "#{ifname}"
 				ifdisabled = false
 			end
-			iconicfarray << {name: ifstring, disabled: ifdisabled, desc: desc}
+			iconicfarray << {name: ifstring, disabled: ifdisabled, desc: desc, trexludes: trexcludes}
 		end
 		return (iconicfarray)
 	end	
