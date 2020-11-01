@@ -102,21 +102,19 @@ module AresMUSH
 					return
 				end
 			when "sheet"
-				if (!cmd.args)
+				case cmd.switch
+				if (!cmd.args)	
 					return SheetCmd
 				else
-					client.emit_failure ("no args on sheet")
-					return 
-					# case cmd.switch
-					# when "stats"
-						# return SheetCmd
-					# when "abils"
-						# return Sheet2Cmd
-					# when "chargen"
-						# return ChargenpointsCmd
-					# else
-						# client.emit_failure ("Please use 'sheet/stats', 'sheet/abils', or 'sheet/chargen'.")
-					# end
+					when "stats"
+						return SheetCmd
+					when "abils"
+						return Sheet2Cmd
+					when "chargen"
+						return ChargenpointsCmd
+					else
+						client.emit_failure ("Please use 'sheet/stats', 'sheet/abils', or 'sheet/chargen'.")
+					end
 				end
 			end
 		end
