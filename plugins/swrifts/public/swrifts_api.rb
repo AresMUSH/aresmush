@@ -360,6 +360,7 @@ module AresMUSH
 					ifstring = "#{ifname}"
 					if (traittype == 'hind' && trexcludes.length > 0)
 						trexcludes.each do |tr|
+						return ("#{tr}")
 							trname = tr.downcase
 							trname = trname.gsub("*", "")
 							trname = trname.gsub("^", "")
