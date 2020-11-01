@@ -338,7 +338,7 @@ module AresMUSH
 			
 		iconicfarray = []	
 		ttss = []
-		ifdisabled = false
+
 
 		# Create an array of the excluded traits for the ones that are already set on the character.
 		cg.each do |d|
@@ -356,6 +356,7 @@ module AresMUSH
 	
         list = cgsys.sort_by { |a| a['name']}
 		list.each do |c|
+			ifdisabled = false
 			ifname = c['name']
 			ifnamedowncase = ifname.downcase
 			desc = c['description']
