@@ -338,7 +338,7 @@ module AresMUSH
 			
 		iconicfarray = []	
 		ttss = []
-		ggg =''
+		ifdisabled = false
 
 		# Create an array of the excluded traits for the ones that are already set on the character.
 		cg.each do |d|
@@ -383,17 +383,11 @@ module AresMUSH
 						f.each do |k, v|
 							ggg << ("#{v}")
 							trexsel = cgsys.select { |tt| tt['name'].downcase.starts_with?"#{v.downcase}" }.first
-							return ("#{trexsel}")
+							if (trexsel)
+								ifdisabled = true
+							end
 						end
 					end
-
-					# ttss << {name: trexcludes, ifname: ifnamedowncase}
-
-					# if (trexsel)
-						# ifdisabled = true	
-					# else
-						# ifdisabled = false
-					# end
 				end									
 			end
 			iconicfarray << {name: ifname, disabled: ifdisabled, desc: desc, trexcludes: trexcludes}
