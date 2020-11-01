@@ -591,8 +591,10 @@ module AresMUSH
 		c_race = chargen_data[:custom][:race][:class]
 		c_edges = chargen_data[:custom][:cgedges]
 		c_edgesnofw = chargen_data[:custom][:cgedgesnofw]
+		c_edgesnofw = chargen_data[:custom][:cgedgesfw]
 		c_hind = chargen_data[:custom][:cghind]
 		c_hindnofw = chargen_data[:custom][:cghindnofw]
+		c_hindnofw = chargen_data[:custom][:cghindfw]
 
 		icf_downcase = c_iconicf.downcase.strip  # Stripped and downcased iconicframework name.
 		race_downcase = c_race.downcase.strip  # Stripped and downcased race name.
