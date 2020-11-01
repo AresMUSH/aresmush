@@ -199,16 +199,16 @@ module AresMUSH
 		
 		#Get the Edges that were set on the character.
 		fw = "all"
-		cgedg = returnedgesforcg(cgedges,cgsysedges, fw)
+		cgedg = returnedgesforcg(cgedges,cgsysedges, fw, 'edge')
 		fw = "nofw"
-		cgedgnofw = returnedgesforcg(cgedges,cgsysedges, fw)		
+		cgedgnofw = returnedgesforcg(cgedges,cgsysedges, fw, 'edge')		
 
 		
 		#Get the hinderances that were set on the character.
 		fw = "all"
-		cghind = returnedgesforcg(cghinder,cgsyshind, fw)
+		cghind = returnedgesforcg(cghinder,cgsyshind, fw, 'hind')
 		fw = "nofw"
-		cghindnofw = returnedgesforcg(cghinder,cgsyshind, fw)
+		cghindnofw = returnedgesforcg(cghinder,cgsyshind, fw, 'hind')
 		
 
 		#Get the System Edges
@@ -457,7 +457,7 @@ module AresMUSH
 		return (cgpointsarray)
 	end	
 	
-	def self.returnedgesforcg(cg, cgsys, fw)
+	def self.returnedgesforcg(cg, cgsys, fw, traittype)
 		cgedgearray = []
 		cgp = ''
 		
@@ -471,8 +471,13 @@ module AresMUSH
 					edgsel = cgsys.select { |ss| ss['name'].downcase == cgname.downcase }.first #Filter the icf's to find the one that's been selected	
 					if (edgsel)
 						cgdesc = edgsel['description']
+						if ( traittype == 'hind' && c['excludes'])
+							trexcludes = edgsel['excludes'];
+						else 
+							trexcludes = '';
+						end						
 					end
-					cgedgearray << {class: c.name, name: cgname, rating: cgdesc}
+					cgedgearray << {name: cgname, disabled: 'false', class: c.name, rating: cgdesc, trexcludes: trexcludes}					
 			end
 		end
 		
@@ -488,15 +493,20 @@ module AresMUSH
 					edgsel = cgsys.select { |ss| ss['name'].downcase == cgname.downcase }.first #Filter the icf's to find the one that's been selected	
 					if (edgsel)
 						cgdesc = edgsel['description']
+						if ( traittype == 'hind' && c['excludes'])
+							trexcludes = edgsel['excludes'];
+						else 
+							trexcludes = '';
+						end						
 					end
-					cgedgearray << {class: c.name, name: cgname, rating: cgdesc}
+					cgedgearray << {name: cgname, disabled: 'false', class: c.name, rating: cgdesc, trexcludes: trexcludes}
 				end
 			end
 		end
 			
 		return (cgedgearray)
 	end		
-	
+
 	def self.acl_return_traits(st,traitname)
 	traitname = traitname.downcase
 	txtstring = ''
