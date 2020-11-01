@@ -41,7 +41,7 @@ chargen:
   rejection_message: "Sorry, your character could not be approved at the present time for the reasons listed.  You can make changes to your app by visiting [Create a Character](/chargen) on the web portal. \n\nFeel free to leave comments in this request or to ask for help on the **New Characters** channel if you have any questions.\n\n-----------"
   rank_blurb: "Don't use ranks."
   shortcuts:
-    chargen: cg
+    chargen: cg 
     cg/back: cg/prev
     cg/previous: cg/prev
     bg/approve: app/approve
