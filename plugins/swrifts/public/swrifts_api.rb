@@ -378,6 +378,7 @@ module AresMUSH
 			else
 				# ifstring = "#{ifname}"
 				if (ttss.length > 0)
+					ttss = ttss.to_a
 					ttss.each do |f|
 						f.each do |g|
 							return (g.inspect)
