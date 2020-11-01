@@ -103,7 +103,7 @@ module AresMUSH
 				end
 			when "sheet"
 				case cmd.switch
-				when (!cmd.args)
+				when ""
 					return SheetCmd
 				when "stats"
 					return SheetCmd
