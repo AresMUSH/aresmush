@@ -380,9 +380,7 @@ module AresMUSH
 				if (ttss.length > 0)
 					ttss.each do |f|
 						# ggg << "#{f}"
-						f.each do |g|
-							return ("#{g['name']}")
-						end
+						return (f)
 					end
 					# ttss << {name: trexcludes, ifname: ifnamedowncase}
 					# trexsel = ttss.select { |tt| tt['name'].starts_with?"#{ifnamedowncase}" }.first
