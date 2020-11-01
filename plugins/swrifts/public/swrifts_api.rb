@@ -337,9 +337,7 @@ module AresMUSH
 
 			
 		iconicfarray = []	
-		ttss = []
-		return ("#{cgsys}")
-		
+		ttss = []		
 		cg.each do |d|
 			ttss << {name: d.name}
 			dname = d.name.downcase
