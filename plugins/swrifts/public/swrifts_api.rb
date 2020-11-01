@@ -353,7 +353,7 @@ module AresMUSH
 			end
 		end
 		
-		return ("#{ttss"})
+		return ("#{ttss}")
         list = cgsys.sort_by { |a| a['name']}
 		list.each do |c|
 			ifname = c['name']
