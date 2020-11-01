@@ -353,26 +353,17 @@ module AresMUSH
 
 			if (edgsel)
 				edgselname = edgsel.name.gsub("^", "*") # make searching easy. Make all ^, *.
+				ifstring = "#{ifname}"				
 				if (!edgselname.include?("*")) # If the trait is not a ICF or Race trait, remove it from the list.
-					ifstring = "#{ifname}"
 					ifdisabled = true
 				else
-					ifstring = "#{ifname}"
 					if (traittype == 'hind' && trexcludes.length > 0)
-						trexcludes.each do |tr|
-							trname = tr.downcase
-							trname = trname.gsub("*", "")
-							trname = trname.gsub("^", "")
-							if ifnamedowncase.start_with?"#{trname}"
-								if (trex) 
-									ifdisabled = true						
-								else
-									ifdisabled = false
-								end
-							end
+						trexsel = trexcludes.select { |tt| tt.downcase.starts_with?"#{ifnamedowncase}" }.first
+						if (trexsel)
+							ifdisabled = true	
+						else
+							ifdisabled = false
 						end
-					else
-						ifdisabled = false
 					end
 				end
 			else
