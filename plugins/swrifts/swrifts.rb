@@ -11,7 +11,9 @@ module AresMUSH
 			Global.read_config("swrifts", "shortcuts")
 		end
 
+
 		def self.get_cmd_handler(client, cmd, enactor)
+			# root/args
 			case cmd.root
 			when "swrifts"
 				case cmd.switch
@@ -103,16 +105,18 @@ module AresMUSH
 				if (!cmd.args)
 					return SheetCmd
 				else
-					case cmd.switch
-					when "stats"
-						return SheetCmd
-					when "abils"
-						return Sheet2Cmd
-					when "chargen"
-						return ChargenpointsCmd
-					else
-						client.emit_failure ("Please use 'sheet/stats', 'sheet/abils', or 'sheet/chargen'.")
-					end
+					client.emit_failure ("no args on sheet")
+					return 
+					# case cmd.switch
+					# when "stats"
+						# return SheetCmd
+					# when "abils"
+						# return Sheet2Cmd
+					# when "chargen"
+						# return ChargenpointsCmd
+					# else
+						# client.emit_failure ("Please use 'sheet/stats', 'sheet/abils', or 'sheet/chargen'.")
+					# end
 				end
 			end
 		end
