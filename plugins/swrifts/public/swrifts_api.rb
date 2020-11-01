@@ -363,7 +363,7 @@ module AresMUSH
 				ifstring = "#{ifname}"
 				ifdisabled = false
 			end
-			iconicfarray << {name: ifstring, disabled: ifdisabled, desc: desc, trexludes: trexcludes}
+			iconicfarray << {name: ifstring, disabled: ifdisabled, desc: desc, trexcludes: trexcludes}
 		end
 		return (iconicfarray)
 	end	
