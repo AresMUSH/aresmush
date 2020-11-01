@@ -334,9 +334,16 @@ module AresMUSH
 	
 	def self.returnsysedgesforcg(cgsys, cg, traittype)
 		#cgsys = System Traits, cg = character traits
-		return (cg.class)
+
+			
 		iconicfarray = []	
 		ttss = []
+		
+        list1 = cg.sort_by { |a| a['name']}
+		list1.each do |d|
+			ttss << {name: d}
+		end
+		return ("#{ttss}")
         list = cgsys.sort_by { |a| a['name']}
 		list.each do |c|
 			ifname = c['name']
