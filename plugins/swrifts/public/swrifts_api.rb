@@ -209,6 +209,8 @@ module AresMUSH
 		cghind = returnedgesforcg(cghinder,cgsyshind, fw, 'hind')
 		fw = "nofw"
 		cghindnofw = returnedgesforcg(cghinder,cgsyshind, fw, 'hind')
+		fw = "fw"
+		cghindfw = returnedgesforcg(cghinder,cgsyshind, fw, 'hind')
 		
 
 		#Get the System Edges
@@ -232,6 +234,7 @@ module AresMUSH
 		  cghind: cghind, #Hinderances on Character
 		  cgedgesnofw: cgedgnofw, #Edges on Character for framework stuff
 		  cghindnofw: cghindnofw, #Hinderances on Character for framework stuff
+		  cghindfw: cghindfw, #Only framework Hinderances on Character for framework stuff
 		  sysedges: sysedges, #Edges from system
 		  swsyshind: syshind, #Hinderances from system
 		} 
