@@ -3,6 +3,7 @@ swrifts:
     hjtables:
         -
             name: Body Armor
+            description: Your hero has a modifed version of his starting body armor, as provided by his Iconic Framework's Starting Gear or the Rich Edge. Only one of each indicated modifcation may be added to any single suit of armor, unless otherwise indicated. At the GM’s option, a suit of Body Armor may be upgraded up to two times, choosing from the following results. Each upgrade costs the item’s base purchase cost at a −4 modifer to the Gear Availability check.
             rolls:
                 1..4: You may trade the starting armor from your Iconic Framework for any other body armor (not power armor or robot vehicle). If this is not your frst roll, apply all other results from rolling on this table to your newly chosen body armor. 
                 5..6: Extra high-density plating and other design factors grant +2 Armor to your hero’s Body Armor. This result may only be applied once. 
@@ -18,6 +19,7 @@ swrifts:
                 19..20: You may choose any one of the results on this table.
         -
             name: Close Combat Weapons
+            description: Your hero has a modifed version of his starting close combat weapon, as provided by his Iconic Framework's Starting Gear or the Rich Edge. Only one of each indicated modifcation can be added to any single weapon, unless otherwise indicated. At the GM’s option, a close combat weapon may be upgraded up to two times, choosing from the following results. Each upgrade costs the item’s base purchase cost (10×cost for silvered weapons) at a −4 modifer to the Gear Availability check.
             rolls: 
                 1..4: You may add any non-TW Close Combat Weapon listed in this book to your character’s gear list. If this is not your frst roll, apply any other results from rolling on this table to your newly chosen weapon as you wish.
                 5..6: The superior balance of this weapon allows you to ignore up to 2 points of penalties to Fighting rolls, including those from Called Shots and Off-Hand Atacks.
@@ -34,6 +36,7 @@ swrifts:
                 19..20: You may choose any one of the results on this table.
         -
             name: Cybernetics
+            description: Whether through medical necessity or voluntary upgrade, your hero has undergone major surgery to have one or more artifcial replacements or additions grafted to his body. If any roll results in an upgrade that requires another form of cybernetics be installed, and your hero doesn’t have that piece, replace the roll with the required piece.
             rolls: 
                 1: Your hero wanted maximum capabilities, never mind others seeing her as a freak. She got an Extra Set of Arms installed, see page 113.
                 2..3: When the armor-piercing lasers and flechetes fy, your cyborg’s level of Reinforced Frame is the best, see page 113.
@@ -51,6 +54,7 @@ swrifts:
                 19..20: Choose any single cybernetic upgrade you wish and qualify for.
         -
             name: Education
+            description: Your character places great value on understanding the world around him. He’s studied extensively, reads whatever he can get his hands on, and values learning whenever the opportunity is presented. His parents instilled this in him as a child, or a guardian or colleague gave him a love of learning. Characters should have at least Smarts d6 when rolling on this table. With repeat results, the Game Master should allow for a new roll.
             rolls: 
                 1..2: Your hero’s voracious appetite for knowledge led to her picking up a litle something about prety much everything. She has the Jack-of-All-Trades Edge.
                 3..4: Your character is a talented medic and a huge boon for any group he runs with. He has the Healer Edge and the Healing skill at d4.
@@ -66,6 +70,7 @@ swrifts:
                 19..20: You may choose any one of the results on this table.
         -
             name: Enchanted Items
+            description: In a world full of massive guns and walking tanks, magic is not only a wonder but a fine equalizer for many trying to survive. Your hero’s journey resulted in one or more items of arcane wonder or spiritual importance winding up in her possession. Characters without ISP or PPE should not roll on this table. Any usage that doesn’t fall under other obvious categories (Fighting for melee, Shooting for ranged), heroes roll their Arcane Background skill (or Spirit if they have none). For any result that grants a character an item he already has, the player may elect either to re-roll or add a Techno-Wizard Minor Upgrade to that item.
             rolls: 
                 1: Made of a wood unknown to most of the world, your character’s elegant staf is a powerful weapon and tool for magic work. The staf has 10 PPE (which regenerate at the same rate as the caster’s), and grants +1 to all Spellcasting or Faith rolls. Finally, it’s a combat-worthy staf (Str+d6, Reach 1, Parry +1, two-handed) that even does Mega Damage if 2 PPE is channeled through it that round.
                 2..3: Things get ugly out in the world, and the Ley Line Walker Medium Armor (see page 90) is a good insurance policy for dealing with a lot of those things. Cyber-Knights should re-roll on this result.
@@ -82,6 +87,7 @@ swrifts:
                 19..20: You may choose any one of the results on this table.
         -
             name: Experience & Wisdom
+            description: There’s no greater teacher than experience, at least for those who survive it. Wisdom comes from enduring the worst and understanding the lessons therein. Your character is someone who’s been there, done that, and brought away far more than a t-shirt for her eforts. As with most tables, a repeat roll here should result in a reasonable modifcation, as approved by the Game Master, or else a simple re-roll.
             rolls: 
                 1..2: Your hero knows how to put on a show, and cultivate fans. Gain the Fame Edge. 
                 3..4: Your character doesn’t take kindly to threats, and no one messes with her head. She is Strong Willed.
@@ -97,6 +103,7 @@ swrifts:
                 19..20: You may choose any one of the results on this table.
         -
            name: Magic & Mysticism
+           description: Wielders of various arcane powers—those who channel PPE—are often very gifted in some fashion. They might also pick up a trick here or an unknown technique there, constantly improving their art as they survive the perils of Rifts Earth. The following table works for Ley Line Walkers, Mystics, Techno-Wizards, and anyone else with the Arcane Backgrounds of Magic or Miracles. If your character doesn’t have such an AB, you should choose a diferent table.
            rolls: 
                1..2: There are times to put it all on the line, no mater the cost. Your character is always prepared to do just that, thanks to having the Soul Drain Edge. Techno-Wizards may reroll this result.
                3..4: Some batles are lengthy afairs, and the magic user playing the long game will win in the end. Begin with the Concentration Edge.
@@ -110,6 +117,7 @@ swrifts:
                19..20: You may choose any one of the results on this table. 
         -
             name: Psionics
+            description: Wielders of various arcane powers—those who channel PPE—are often very gifted in some fashion. They might also pick up a trick here or an unknown technique there, constantly improving their art as they survive the perils of Rifts Earth. The following table works for Ley Line Walkers, Mystics, Techno-Wizards, and anyone else with the Arcane Backgrounds of Magic or Miracles. If your character doesn’t have such an AB, you should choose a diferent table.
             rolls: 
                 1: Some psionics learn to dig deep within, risking their very lives to call on even more power. Your character has the Soul Drain Edge.
                 2..3: With deep concentration, meditation, or prayer, your hero regains her ISP at a faster rate than most. She gains the Rapid Recharge Edge, or improved Rapid Recharge if she already has that Edge.
@@ -124,6 +132,7 @@ swrifts:
                 19..20: You may choose any one of the results on this table.
         -
             name: Ranged Weapons
+            description: Your hero has a modifed version of his starting ranged weapon, as provided by his Iconic Framework's Starting Gear or the Rich Edge. Only one of each indicated modifcation can be added to any single weapon, unless otherwise indicated. At the GM’s option, a personal ranged weapon may be upgraded up to two times, choosing from the following results. Each upgrade costs the item’s base purchase cost at a −4 modifer to the Gear Availability check.
             rolls: 
                 1..3: Add any Personal Ranged Weapon listed in this book to your character’s gear list. Apply all other results from rolling on this table to your new weapon as you wish.
                 4: Your hero came across a cache of grenades! She’s got 1d6 armor piercing, 1d8 fragmentation, 1d6 high explosive, and 1d4 plasma grenades, see page 99. Even after these run out, she always seems to fnd more, beginning each session with 1d4 fragmentation grenades (unless the GM feels circumstances prevent it).
@@ -141,6 +150,7 @@ swrifts:
                 19..20: You may choose any one of the results on this table.
         -
             name: Training
+            description: Your hero’s done some things here and there, or he’s had a chance to learn the tricks of trades from some of the best. He may have been a member of a military or paramilitary group, and there received extensive training. However he came by his expertise, he practices extensively, incorporates lessons learned adeptly, and seeks out new experiences frequently. As with most tables, a repeat roll here should result in a reasonable modifcation, as approved by the Game Master, or a simple re-roll.
             rolls: 
                 1..3: After serving in a military, paramilitary, militia, or security force for some time, your hero has some solid combat training. She gains +3 Skill Points which may be spent on Athletics, Fighting, or Shooting in any combination. 
                 4..5: Whether via formal training in a dedicated school, learning at the hands of a master, or just surviving a dangerous world, your hero’s picked up some serious fghting skills. He’s got the Martial Artist Edge, or Improved Martial Artist, if he already had Martial Artist.
@@ -155,6 +165,7 @@ swrifts:
                 19..20: You may choose any one of the results on this table.
         -
             name: Underworld & Black Ops
+            description: Nascent nations struggle to grow out of the ashes of global disaster. Credit-hungry corporations seek to once again flex the power and infuence of their pre-Rifts predecessors. Many other factions impose their own versions of order upon the chaos of existence. Covert operatives are always in high demand. As with most tables, a repeat roll here should result in a reasonable modifcation, as approved by the Game Master, or else a simple re-roll.
             rolls: 
                 1..2: When all else fails, your hero knows how to take any available resources and jury-rig her way into or out of situations. She has the McGyver Edge, and she gains a die type in Repair.
                 3..4: Your character’s innate understanding of computers makes him one of the most valuable people in the world. He gains Hacking at d6, as well as +1 when dealing with electronic security using Thievery.
