@@ -348,7 +348,7 @@ module AresMUSH
 				trexcludes = '';
 			end
 			
-			ttss << {name: "#{trexcludes}"}
+			ttss << {name: trexcludes}
 			if (cg)
 				edgsel = cg.select { |ss| ss.name.downcase.start_with?"#{ifnamedowncase}" }.first #Filter the trait's to find the one that's been selected
 			end
