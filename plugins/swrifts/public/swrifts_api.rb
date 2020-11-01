@@ -358,12 +358,26 @@ module AresMUSH
 					ifdisabled = true
 				else
 					ifstring = "#{ifname}"
-					ifdisabled = true
+					if (traittype == 'hind') 
+						trexcludes.each do |tr|
+							trname = tr['name'].downcase
+							trname = trname.gsub("*", "")
+							trname = trname.gsub("^", "")
+							trex = cg.select { |ss| ss.name.downcase.start_with?"#{trname}" }.first #Filter the trait's to find the one that's been selected
+							if (trex) 
+								ifdisabled = true
+							else
+								ifdisabled = false
+							end
+					else
+						ifdisabled = false
+					end
 				end
 			else
 				ifstring = "#{ifname}"
 				ifdisabled = false
 			end
+
 			iconicfarray << {name: ifstring, disabled: ifdisabled, desc: desc, trexcludes: trexcludes}
 		end
 		return (iconicfarray)
