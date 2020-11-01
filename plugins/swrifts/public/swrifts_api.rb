@@ -352,8 +352,7 @@ module AresMUSH
 				end
 			end
 		end
-		
-		return ("#{ttss}")
+	
         list = cgsys.sort_by { |a| a['name']}
 		list.each do |c|
 			ifname = c['name']
@@ -379,6 +378,7 @@ module AresMUSH
 			else
 				# ifstring = "#{ifname}"
 				if (ttss.length > 0)
+						return ("#{ttss}")
 					ttss.each do |f|
 						ggg << "#{f}"
 						return ("#{f}")
