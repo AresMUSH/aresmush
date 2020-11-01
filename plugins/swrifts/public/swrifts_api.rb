@@ -339,7 +339,6 @@ module AresMUSH
 		iconicfarray = []	
 		ttss = []		
 		cg.each do |d|
-			ttss << {name: d.name}
 			dname = d.name.downcase
 			dname = dname.gsub("*", "")
 			dname = dname.gsub("^", "")
