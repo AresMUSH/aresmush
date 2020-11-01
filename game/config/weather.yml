@@ -100,13 +100,16 @@ weather:
       spring:
         temperature: warm warm warm warm warm cool cool cool cool cold
         condition: mountain-clear mountain-clear mountain-clear mountain-clear mountain-clear
-          mountain-fair mountain-fair mountain-fair mountain-overcast mountain-overcast mountain-misty mountain-drizzling
-          mountain-drizzling mountain-raining mountain-storming mountain-sleeting
+          mountain-fair mountain-fair mountain-fair mountain-overcast mountain-overcast
+          mountain-misty mountain-drizzling mountain-drizzling mountain-raining mountain-storming
+          mountain-sleeting
         stability: 30
       early-fall:
         temperature: warm warm warm cool cool cool cool cold cold cold
-        condition: |-
-          mountain-clear mountain-clear mountain-clear mountain-clear mountain-clear mountain-clear mountain-fair mountain-fair mountain-windy mountain-windy mountain-windy mountain-overcast mountain-drizzling mountain-raining mountain-sleeting mountain-storming mountain-dusting
+        condition: mountain-clear mountain-clear mountain-clear mountain-clear mountain-clear
+          mountain-clear mountain-fair mountain-fair mountain-windy mountain-windy
+          mountain-windy mountain-overcast mountain-drizzling mountain-raining mountain-sleeting
+          mountain-storming mountain-dusting
         stability: 70
       fall:
         temperature: warm warm cool cool cool cool cold cold cold cold
@@ -164,8 +167,8 @@ weather:
     storming: It's raining really hard.
     flurrying: It's flurrying.
     snowing: It's snowing.
-    mountain-clear: The skies are breathtakingly clear, with only a few high,
-      white wispy clouds.
+    mountain-clear: The skies are breathtakingly clear, with only a few high, white
+      wispy clouds.
     mountain-fair: A few clouds drift lazily along as a dry breeze blows through the
       mountains.
     mountain-misty: The clouds are thick and low. Tiny droplets of moisture cling
@@ -183,7 +186,8 @@ weather:
       in a light dusting of white.
     mountain-flurrying: Fluffy snowflakes drift lazily from the heavens, covering
       everything in a blanket of white.
-    mountain-snowing: Snow falls steadily and thickly, accumulating in a beautiful blanket of white.
+    mountain-snowing: Snow falls steadily and thickly, accumulating in a beautiful
+      blanket of white.
     mountain-blizzard: Snow comes down in a white curtain that makes it impossible
       to see far. The inches accumulate with dangerous swiftness.
     hot_early-spring_morning: It is a hot spring morning.
@@ -322,3 +326,5 @@ weather:
   weather_cron:
     minute:
     - 0
+  permissions:
+    manage_weather: Can override weather conditions.

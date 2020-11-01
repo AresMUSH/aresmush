@@ -53,7 +53,7 @@ demographics:
       possessive_pronoun: their
       subjective_pronoun: they
       objective_pronoun: them
-      noun: person  
+      noun: person
   groups:
     Major School:
       desc: The school of magic with which you have a major affinity.
@@ -112,3 +112,5 @@ demographics:
     groups: group
     colonies: group colony
     demographics: demographic
+  permissions:
+    manage_demographics: Edit demographics on other players.

@@ -52,12 +52,13 @@ scenes:
     scene/set: emit/set
     posebreak: autospace
     pose/skip: pose/drop
+    scene/mine: scene/unshared
   trending_scenes_category: Trending Scenes
   trending_scenes_cron:
     hour:
     - 23
     minute:
-    - 00
+    - 0
     day_of_week:
     - Fri
   unshared_scene_cleanup_cron:
@@ -77,3 +78,6 @@ scenes:
       type: story
       message: Participated in %{count} scenes.
   use_custom_char_cards: true
+  permissions:
+    control_npcs: Pose from NPCs in scenes.
+    manage_scenes: Can use scene-related admin tools, like stopping or unsharing scenes.

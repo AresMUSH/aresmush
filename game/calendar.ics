@@ -2,35 +2,62 @@ BEGIN:VCALENDAR
 VERSION:2.0
 PRODID:-//hacksw/handcal//NONSGML v1.0//EN
 BEGIN:VEVENT
-UID:993042c2-3dc6-4e4c-b18d-d0e3ef6090df@Spirit Lake-spiritlakemu.com
-DTSTART:20191015T000000Z
-DTSTAMP:20190919T021629Z
-SUMMARY:Portals & You
-DESCRIPTION:Portals and you! Come to see more of Erik's powerpoints giving the highlights of various known portals and general advice on how not to die right away. Might involve a field trip, depends on turn out/phase of the moon.
-END:VEVENT
-BEGIN:VEVENT
-UID:b448be06-8299-45e0-a2ea-39b976435035@Spirit Lake-spiritlakemu.com
-DTSTART:20191019T000000Z
-DTSTAMP:20190919T022048Z
-SUMMARY:Training: How To Magic 
-DESCRIPTION:A hands-on lesson in regards to using magic, located in the Monte Field. First aid will be available.
-END:VEVENT
-BEGIN:VEVENT
-UID:e87ba530-f95d-4a20-b827-c60a8601d00a@Spirit Lake-spiritlakemu.com
-DTSTART:20191002T000000Z
-DTSTAMP:20190924T140236Z
-SUMMARY:Demon Attack in Feixuzhicheng 
-DESCRIPTION:This will likely be two scenes like last time. We can take up to 10 people. If sign-ups go over, we'll prioritize folks who didn't get to go last time.
+UID:fad92b90-1096-4efc-bd71-f5f788263584@Spirit Lake-spiritlakemu.com
+DTSTART:20201116T190000Z
+DTSTAMP:20201031T151418Z
+SUMMARY:Maureen's Halloween Masq! (Part 1)
+DESCRIPTION:Maureen Silva is having a Halloween Masquerade at the Carver House! Come as your best dressed self, either in a fancy gown or get up with a masq, or come costumed to the brim. Whatever floats your boat. All within the weird community are welcomed.
   
-  UPDATE: We'll take everyone EXCEPT those who got to go on the last round AND got to kill things last night (IE, those who have killed demons two of the last two times). So sorry Grace, Calgary, Asher, Joel - next time!
+  UPDATE: I'm pushing this two weeks back but I am going to back date the scenes for Halloween; I've been so, so very looking forward to this event all year long. With the death of the dog I need to give myself time to grieve.
 END:VEVENT
 BEGIN:VEVENT
-UID:88d27a3b-d1fd-4d9e-a690-7707d8191aed@Spirit Lake-spiritlakemu.com
-DTSTART:20191012T003000Z
-DTSTAMP:20190928T183440Z
-SUMMARY:Guardians
-DESCRIPTION:People trekking around in the National Park come across something Weird.
+UID:3fe1a88c-52ea-42b2-b58a-e6c24b1e9e72@Spirit Lake-spiritlakemu.com
+DTSTART:20201117T010000Z
+DTSTAMP:20201031T151406Z
+SUMMARY:Maureen's Halloween Masq! (Part 2)
+DESCRIPTION:Maureen Silva is having a Halloween Masquerade at the Carver House! Come as your best dressed self, either in a fancy gown or get up with a masq, or come costumed to the brim. Whatever floats your boat. All within the weird community are welcomed.
   
-  (OOC: I'll take up to 5 people. The reason your character is hiking around in RMNP is up to you).
+  UPDATE: I'm pushing this two weeks back but I am going to back date the scenes for Halloween; I've been so, so very looking forward to this event all year long. With the death of the dog I need to give myself time to grieve.
+END:VEVENT
+BEGIN:VEVENT
+UID:304ce07e-6fc6-4bc8-b9f9-c829d2e6b378@Spirit Lake-spiritlakemu.com
+DTSTART:20201102T010000Z
+DTSTAMP:20201015T021007Z
+SUMMARY:The Wild Hunt (OPEN, RSVP)
+DESCRIPTION:On the last night of Samhain, a green-ish fog rolls through the town of Grand Lake, Colorado. Local news reports discuss how spooky it is, arriving on the heels of Halloween's departure. And wouldn't it be great if it had shown up a few days earlier? 
+  
+  Several of Grand Lake's mages find themselves on the streets of Grand Lake: near the beach, and outside the Lariat.
+  
+  This event is the kick off to a mini-plot arc that's going to last 2-3 weeks. I'm going to aim to wrap us in TWO but the third is just for some wiggle. I plan to abscond with a handful of PCs by the end of the night, so if you're signing up for this event, you're OOCly consenting to me possibly snagging you. These PCs will be able to RP with each other throughout the course of the plot, but will be away from the rest of the grid and will not be able to contact or RP with them for the duration, so keep that in mind when deciding whether you'd like to volunteer. 
+  
+  If you'd like to attend but do NOT want to absconded with, please let me know, either via @mail or by noting so on the event. I don't want to over-spook anyone.
+  
+  For those of you who can't make the event, but decide later that you'd like to be absconded with, you're free to off-game your PC being taken!
+  
+  Note: I'm not too worried about how many signs up we get, but RSVPing will be helpful for me to prep for. Thanks. :)
+END:VEVENT
+BEGIN:VEVENT
+UID:df206185-a9bb-4404-9586-289f48406edc@Spirit Lake-spiritlakemu.com
+DTSTART:20201115T190000Z
+DTSTAMP:20201022T113137Z
+SUMMARY:An Encounter on the Beach
+DESCRIPTION:This was not how anyone expected to start their Saturday. [Limited Scene: Up to 5]
+END:VEVENT
+BEGIN:VEVENT
+UID:e8f8bd55-633f-4e81-b774-fdb1a4829892@Spirit Lake-spiritlakemu.com
+DTSTART:20201101T190000Z
+DTSTAMP:20201023T205923Z
+SUMMARY:The Wild Hunt - Daytime People (OPEN, RSVP)
+DESCRIPTION:On the last night of Samhain, a green-ish fog rolls through the town of Grand Lake, Colorado. Local news reports discuss how spooky it is, arriving on the heels of Halloween's departure. And wouldn't it be great if it had shown up a few days earlier?
+  
+  Several of Grand Lake's mages find themselves on the streets of Grand Lake: near the gas station
+  
+  This event is the kick off to a mini-plot arc that's going to last 2-3 weeks. I'm going to aim to wrap us in TWO but the third is just for some wiggle. I plan to abscond with a handful of PCs by the end of the night, so if you're signing up for this event, you're OOCly consenting to me possibly snagging you. These PCs will be able to RP with each other throughout the course of the plot, but will be away from the rest of the grid and will not be able to contact or RP with them for the duration, so keep that in mind when deciding whether you'd like to volunteer.
+  
+  If you'd like to attend but do NOT want to absconded with, please let me know, either via @mail or by noting so on the event. I don't want to over-spook anyone.
+  
+  For those of you who can't make the event, but decide later that you'd like to be absconded with, you're free to off-game your PC being taken!
+  
+  Note: I'm not too worried about how many signs up we get, but RSVPing will be helpful for me to prep for. Thanks. 🙂
 END:VEVENT
 END:VCALENDAR

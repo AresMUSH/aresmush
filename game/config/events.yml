@@ -11,3 +11,5 @@ events:
     event/add: event/create
     event/remove: event/delete
     cal: event
+  permissions:
+    manage_events: Edit/delete events you didn't create.

@@ -35,3 +35,5 @@ achievements:
     library_token:
       type: library
       message: Obtained a Scholar's token
+  permissions:
+    manage_achievements: Award and remove achievements.

@@ -27,3 +27,6 @@ describe:
   tag_colors:
     admin: "%xb"
     beginner: "%xg"
+  permissions:
+    desc_anything: Edit descs on any object.
+    desc_places: Edit descs on rooms and exits

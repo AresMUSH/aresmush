@@ -22,9 +22,11 @@ forum:
     bbs/newgroup: forum/createboard
     bb/new: forum/new
   achievements:
-      forum_reply:
-        type: community
-        message: Replied to a forum post.
-      forum_post:
-        type: community
-        message: Created a forum post.
+    forum_reply:
+      type: community
+      message: Replied to a forum post.
+    forum_post:
+      type: community
+      message: Created a forum post.
+  permissions:
+    manage_forum: Create and modify forum categories and posts.

@@ -6,3 +6,7 @@ manage:
     name: rename
     nuke: destroy
     update: upgrade
+  permissions:
+    announce: Use the announce command.
+    boot: Use the boot command.
+    manage_game: Code and database-related tasks, including restarts and loads.
