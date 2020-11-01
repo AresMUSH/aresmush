@@ -359,6 +359,7 @@ module AresMUSH
 				else
 					if (traittype == 'hind' && trexcludes.length > 0)
 						trexsel = trexcludes.select { |tt| tt.downcase.starts_with?"#{ifnamedowncase}" }.first
+						return ("#{trexsel}")
 						if (trexsel)
 							ifdisabled = true	
 						else
