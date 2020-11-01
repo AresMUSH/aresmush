@@ -373,7 +373,7 @@ module AresMUSH
 
 			iconicfarray << {name: ifstring, disabled: ifdisabled, desc: desc, trexcludes: trexcludes}
 		end
-		return (iconicfarray)
+		return ("#{iconicfarray}")
 	end	
 	
 	def self.returninitcgforcg(model)
