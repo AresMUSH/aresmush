@@ -337,7 +337,9 @@ module AresMUSH
 
 			
 		iconicfarray = []	
-		ttss = []		
+		ttss = []
+
+		# Create an array of the excluded traits for the ones that are already set on the character.
 		cg.each do |d|
 			dname = d.name.downcase
 			dname = dname.gsub("*", "")
@@ -350,7 +352,7 @@ module AresMUSH
 				end
 			end
 		end
-		return ("#{ttss}")
+		
         list = cgsys.sort_by { |a| a['name']}
 		list.each do |c|
 			ifname = c['name']
@@ -368,27 +370,25 @@ module AresMUSH
 			end
 
 			if (edgsel)
-				edgselname = edgsel.name.gsub("^", "*") # make searching easy. Make all ^, *.
-				ifstring = "#{ifname}"				
+				# edgselname = edgsel.name.gsub("^", "*") # make searching easy. Make all ^, *.
+				# ifstring = "#{ifname}"				
 				# if (!edgselname.include?("*")) # If the trait is not a ICF or Race trait, remove it from the list.
 					ifdisabled = true
 				# end			
 			else
-				ifstring = "#{ifname}"
-				# if (traittype == 'hind' && trexcludes.length > 0)
+				# ifstring = "#{ifname}"
+				if (ttss.length > 0)
 					# ttss << {name: trexcludes, ifname: ifnamedowncase}
-					# trexsel = trexcludes.select { |tt| tt.downcase.starts_with?"#{ifnamedowncase}" }.first
-					# if (trexsel)
-						# ifdisabled = true	
-					# else
-						# ifdisabled = false
-					# end
-				# end					
-				ifdisabled = false
-				
+					trexsel = ttss.select { |tt| tt.downcase.starts_with?"#{ifnamedowncase}" }.first
+					if (trexsel)
+						ifdisabled = true	
+					else
+						ifdisabled = false
+					end
+				end									
 			end
 
-			iconicfarray << {name: ifstring, disabled: ifdisabled, desc: desc, trexcludes: trexcludes}
+			iconicfarray << {name: ifname, disabled: ifdisabled, desc: desc, trexcludes: trexcludes}
 		end
 		# return ("#{ttss}")
 		return (iconicfarray)
