@@ -360,22 +360,22 @@ module AresMUSH
 				end			
 			else
 				ifstring = "#{ifname}"
-				if (traittype == 'hind' && trexcludes.length > 0)
-					ttss << {name: trexcludes, ifname: ifnamedowncase}
-					trexsel = trexcludes.select { |tt| tt.downcase.starts_with?"#{ifnamedowncase}" }.first
-					if (trexsel)
-						ifdisabled = true	
-					else
-						ifdisabled = false
-					end
-				end					
-				# ifdisabled = false
+				# if (traittype == 'hind' && trexcludes.length > 0)
+					# ttss << {name: trexcludes, ifname: ifnamedowncase}
+					# trexsel = trexcludes.select { |tt| tt.downcase.starts_with?"#{ifnamedowncase}" }.first
+					# if (trexsel)
+						# ifdisabled = true	
+					# else
+						# ifdisabled = false
+					# end
+				# end					
+				ifdisabled = false
 				
 			end
 
 			iconicfarray << {name: ifstring, disabled: ifdisabled, desc: desc, trexcludes: trexcludes}
 		end
-		return ("#{ttss}")
+		# return ("#{ttss}")
 		return (iconicfarray)
 	end	
 	
