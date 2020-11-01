@@ -372,25 +372,25 @@ module AresMUSH
 			end
 
 			if (edgsel)
-				ifdisabled = true
-				if (ttss.length > 0)
-					ttss.each do |f|
-						f.each do |k, v|
-							trexsel = cgsys.select { |tt| tt['name'].downcase.starts_with?"#{v.downcase}" }.first
-							if (trexsel.length > 0)
-								ifdisabled = true
-							else
-								ifdisabled = false
-							end
-						end
-					end
-				else
-					# ifdisabled = false
-				end				
+				ifdisabled = true				
 			else
 				# ifstring = "#{ifname}"
 				ifdisabled = false					
 			end
+			
+			if (ttss.length > 0)
+				ttss.each do |f|
+					f.each do |k, v|
+						if (ifnamedowncase == v.downcase)
+							ifdisabled = true
+						else
+							ifdisabled = false
+						end
+					end
+				end
+			else
+				# ifdisabled = false
+			end			
 			iconicfarray << {name: ifname, disabled: ifdisabled, desc: desc, trexcludes: trexcludes}
 		end
 		return (iconicfarray)
