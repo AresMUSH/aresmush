@@ -369,6 +369,7 @@ module AresMUSH
 							else
 								ifdisabled = false
 							end
+						end
 					else
 						ifdisabled = false
 					end
