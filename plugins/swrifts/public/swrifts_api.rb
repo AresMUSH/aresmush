@@ -340,7 +340,7 @@ module AresMUSH
 			ifnamedowncase = ifname.downcase
 			desc = c['description']
 			
-			if ( traittype == 'hind' && c['excludes'].length > 0)
+			if ( traittype == 'hind' && c['excludes'])
 				trexcludes = c['excludes'];
 			else 
 				trexcludes = '';
