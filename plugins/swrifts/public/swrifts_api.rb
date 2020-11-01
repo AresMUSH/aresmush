@@ -381,10 +381,11 @@ module AresMUSH
 					ttss.each do |f|
 						f.each do |g|
 							g.each do |h|
-								return ("#{h}")
+								ggg << ("#{h}")
 							end
 						end
 					end
+					return ("#{ggg}")
 					# ttss << {name: trexcludes, ifname: ifnamedowncase}
 					# trexsel = ttss.select { |tt| tt['name'].starts_with?"#{ifnamedowncase}" }.first
 					# if (trexsel)
