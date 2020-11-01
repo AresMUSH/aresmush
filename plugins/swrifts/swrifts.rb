@@ -121,7 +121,7 @@ module AresMUSH
 			nil
 		end
 
-# Somehow the webrequests come in here. Check the ./public folder for handlers etc
+# Somehow the webrequests come in here. Check the ./public folder for handlers etc 
     def self.get_web_request_handler(request)
       case request.cmd
       when "abilities"
