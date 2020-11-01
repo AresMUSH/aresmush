@@ -364,7 +364,7 @@ module AresMUSH
 							trname = tr.downcase
 							trname = trname.gsub("*", "")
 							trname = trname.gsub("^", "")
-							trex = cg.select { |ss| ss.name.downcase.start_with?"#{trname}" }.first #Filter the trait's to find the one that's been selected
+							trex = cgsys.select { |ss| ss.name.downcase.start_with?"#{trname}" }.first #Filter the trait's to find the one that's been selected
 							if (trex) 
 								ifdisabled = true
 								return ("#{trex}")								
