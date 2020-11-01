@@ -372,27 +372,24 @@ module AresMUSH
 			end
 
 			if (edgsel)
-				# edgselname = edgsel.name.gsub("^", "*") # make searching easy. Make all ^, *.
-				# ifstring = "#{ifname}"				
-				# if (!edgselname.include?("*")) # If the trait is not a ICF or Race trait, remove it from the list.
-					ifdisabled = true
-				# end			
-			else
-				# ifstring = "#{ifname}"
+				ifdisabled = true
 				if (ttss.length > 0)
 					ttss.each do |f|
 						f.each do |k, v|
 							trexsel = cgsys.select { |tt| tt['name'].downcase.starts_with?"#{v.downcase}" }.first
 							if (trexsel.length > 0)
-								# ifdisabled = true
+								ifdisabled = true
 							else
-								# ifdisabled = false
+								ifdisabled = false
 							end
 						end
 					end
 				else
 					# ifdisabled = false
-				end									
+				end				
+			else
+				# ifstring = "#{ifname}"
+				ifdisabled = false					
 			end
 			iconicfarray << {name: ifname, disabled: ifdisabled, desc: desc, trexcludes: trexcludes}
 		end
