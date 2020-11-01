@@ -338,6 +338,7 @@ module AresMUSH
 			
 		iconicfarray = []	
 		ttss = []
+		ggg =''
 
 		# Create an array of the excluded traits for the ones that are already set on the character.
 		cg.each do |d|
