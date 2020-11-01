@@ -348,7 +348,7 @@ module AresMUSH
 			trex = trexlarray['excludes']
 			if (trex)
 				trex.each do |e|
-					ttss << {name: e.downcase}
+					ttss << {e.downcase}
 				end
 			end
 		end
