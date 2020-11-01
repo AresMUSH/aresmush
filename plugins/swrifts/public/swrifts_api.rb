@@ -382,7 +382,7 @@ module AresMUSH
 					ttss.each do |f|
 						f.each do |k, v|
 							ggg << ("#{v}")
-							trexsel = cgsys.select { |tt| tt['name'].starts_with?"#{v.downcase}" }.first
+							trexsel = cgsys.select { |tt| tt['name'].downcase.starts_with?"#{v.downcase}" }.first
 							return ("#{trexsel}")
 						end
 					end
