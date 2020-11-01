@@ -375,7 +375,7 @@ module AresMUSH
 
 			iconicfarray << {name: ifstring, disabled: ifdisabled, desc: desc, trexcludes: trexcludes}
 		end
-		# return ("#{ttss}")
+		return ("#{ttss}")
 		return (iconicfarray)
 	end	
 	
