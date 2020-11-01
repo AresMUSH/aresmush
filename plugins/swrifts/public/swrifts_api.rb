@@ -353,6 +353,7 @@ module AresMUSH
 			end
 		end
 		
+		return ("#{ttss"})
         list = cgsys.sort_by { |a| a['name']}
 		list.each do |c|
 			ifname = c['name']
@@ -391,8 +392,6 @@ module AresMUSH
 					# end
 				end									
 			end
-
-			return (ggg)
 			iconicfarray << {name: ifname, disabled: ifdisabled, desc: desc, trexcludes: trexcludes}
 		end
 		# return ("#{ttss}")
