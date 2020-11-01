@@ -333,6 +333,7 @@ module AresMUSH
 	#This is used for Edges and Traits. 
 	
 	def self.returnsysedgesforcg(cgsys, cg, traittype)
+		#cgsys = System Traits, cg = character traits
 		iconicfarray = []	
         list = cgsys.sort_by { |a| a['name']}
 		list.each do |c|
@@ -347,14 +348,14 @@ module AresMUSH
 			end
 			
 			if (cg)
-				edgsel = cg.select { |ss| ss.name.downcase.start_with?"#{ifnamedowncase}" }.first #Filter the icf's to find the one that's been selected
+				edgsel = cg.select { |ss| ss.name.downcase.start_with?"#{ifnamedowncase}" }.first #Filter the trait's to find the one that's been selected
 			end
 
 			if (edgsel)
-				edgselname = edgsel.name.gsub("^", "*")
-				if (!edgselname.include?("*"))
+				edgselname = edgsel.name.gsub("^", "*") # make searching easy. Make all ^, *.
+				if (!edgselname.include?("*")) # If the trait is not a ICF or Race trait, remove it from the list.
 					ifstring = "#{ifname}"
-					ifdisabled = false
+					ifdisabled = true
 				else
 					ifstring = "#{ifname}"
 					ifdisabled = true
