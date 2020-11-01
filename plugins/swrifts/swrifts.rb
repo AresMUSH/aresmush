@@ -33,8 +33,7 @@ module AresMUSH
 					end
 				when "hj"
 					if (!cmd.args)							 
-						# return HjCmd
-						return PendingCmd
+						return HjCmd
 					else
 						return HJSetCmd
 					end
