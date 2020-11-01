@@ -103,18 +103,14 @@ module AresMUSH
 				end
 			when "sheet"
 				case cmd.switch
-				if (!cmd.args)	
+				when "stats"
 					return SheetCmd
+				when "abils"
+					return Sheet2Cmd
+				when "chargen"
+					return ChargenpointsCmd
 				else
-					when "stats"
-						return SheetCmd
-					when "abils"
-						return Sheet2Cmd
-					when "chargen"
-						return ChargenpointsCmd
-					else
-						client.emit_failure ("Please use 'sheet/stats', 'sheet/abils', or 'sheet/chargen'.")
-					end
+					client.emit_failure ("Please use 'sheet/stats', 'sheet/abils', or 'sheet/chargen'.")
 				end
 			end
 		end
