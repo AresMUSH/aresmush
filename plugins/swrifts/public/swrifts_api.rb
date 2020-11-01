@@ -374,7 +374,10 @@ module AresMUSH
 			if (edgsel)
 				ifdisabled = true				
 			else
-				# ifstring = "#{ifname}"
+				# ifstring = "#{ifname}"			
+				# ifdisabled = false					
+			end
+			
 				if (ttss.length > 0)
 					ttss.each do |f|
 						f.each do |k, v|
@@ -388,9 +391,6 @@ module AresMUSH
 				else
 					# ifdisabled = false
 				end				
-				# ifdisabled = false					
-			end
-			
 			
 			iconicfarray << {name: ifname, disabled: ifdisabled, desc: desc, trexcludes: trexcludes}
 		end
