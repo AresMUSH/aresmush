@@ -493,7 +493,7 @@ module AresMUSH
 					edgsel = cgsys.select { |ss| ss['name'].downcase == cgname.downcase }.first #Filter the icf's to find the one that's been selected	
 					if (edgsel)
 						cgdesc = edgsel['description']
-						if ( traittype == 'hind' && c['excludes'])
+						if ( traittype == 'hind' && edgsel['excludes'])
 							trexcludes = edgsel['excludes'];
 						else 
 							trexcludes = '';
