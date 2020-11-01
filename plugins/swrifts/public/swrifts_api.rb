@@ -378,16 +378,20 @@ module AresMUSH
 			else
 				# ifstring = "#{ifname}"
 				if (ttss.length > 0)
-					# ttss << {name: trexcludes, ifname: ifnamedowncase}
-					trexsel = ttss.select { |tt| tt['name'].starts_with?"#{ifnamedowncase}" }.first
-					if (trexsel)
-						ifdisabled = true	
-					else
-						ifdisabled = false
+					ttss.each do |f|
+						ggg = "#{f}"
 					end
+					# ttss << {name: trexcludes, ifname: ifnamedowncase}
+					# trexsel = ttss.select { |tt| tt['name'].starts_with?"#{ifnamedowncase}" }.first
+					# if (trexsel)
+						# ifdisabled = true	
+					# else
+						# ifdisabled = false
+					# end
 				end									
 			end
 
+			return (ggg)
 			iconicfarray << {name: ifname, disabled: ifdisabled, desc: desc, trexcludes: trexcludes}
 		end
 		# return ("#{ttss}")
