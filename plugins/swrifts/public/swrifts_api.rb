@@ -384,7 +384,7 @@ module AresMUSH
 							if (ifnamedowncase == v.downcase)
 								ifdisabled = true
 							else
-								ifdisabled = false
+								# ifdisabled = false
 							end
 						end
 					end
