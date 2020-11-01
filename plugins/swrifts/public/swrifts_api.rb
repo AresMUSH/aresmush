@@ -381,7 +381,6 @@ module AresMUSH
 				if (ttss.length > 0)
 					ttss.each do |f|
 						f.each do |k, v|
-							ggg << ("#{v}")
 							trexsel = cgsys.select { |tt| tt['name'].downcase.starts_with?"#{v.downcase}" }.first
 							if (trexsel)
 								ifdisabled = true
