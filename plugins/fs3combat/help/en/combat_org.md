@@ -23,6 +23,7 @@ aliases:
 - combat_defensemod
 - combat_lethalmod
 - combat_initmod
+- combat_spellmod
 - combat_team
 - combat_stop
 - combat_newturn
@@ -51,10 +52,6 @@ You can always specify a NPC or player name in front of any action command to ma
 Most commands support multiple names as well, so you can do: `combat/attack A B/C`.
 **See [NPC](/help/npc) for more information on how spells, potions, and levels work for NPCs**
 
-`combat/attackmod <name>=<modifier>` - Gives the combatant a modifier to attack.
-`combat/defensemod <name>=<modifier>` - Gives the combatant a modifier to defend.
-`combat/lethalmod <name>=<modifier>` - Gives the combatant a modifier to lethality on damage TAKEN.
-`combat/initmod <name>=<modifier>` - Gives the combatant a modifier to initiative.
 `combat/ammo <name>=<ammo>` - Adjusts remaining ammo.
 
 `combat/team <list of names>=<team#>` - Switches teams.
@@ -77,10 +74,10 @@ Admins, combat organizers, and characters with the manage_combat permission can 
 `combat/attackmod <name>=<modifier>` - Gives the combatant a modifier to attack
 `combat/defensemod <name>=<modifier>` - Gives the combatant a modifier to defend
 `combat/lethalmod <name>=<modifier>` - Gives the combatant a modifier to lethality on damage TAKEN
-`spell/mod <name>=<mod>` - Gives the combatant a modifier to their spell rolls.
-`combat/clearmods <name>` - Clears all modifiers from combatant and sets to 0.  Use with caution, as this can erase spell effects.
-`combat/seemods <name>` Shows all combat mods set on a combatant.
-**Tip:** Mods set this way only last for one round.
+`combat/initmod <name>=<modifier>` - Gives the combatant a modifier to initiative.
+`combat/spellmod <name>=<modifier>` - Gives the combatant a modifier to spellcasting.
+`combat/clearmods <name>` - Clears all modifiers from combatant and sets to 0.  This will not erase spell mods.
+`combat/seemods <name>` Shows all combat mods set on a combatant, both by a GM and by spells.
 
 ## Housekeeping
 `combat/transfer <name>` - Transfer organizer powers to another person in combat.

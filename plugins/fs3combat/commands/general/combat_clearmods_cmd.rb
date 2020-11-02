@@ -22,7 +22,7 @@ module AresMUSH
             return
           end
 
-          combatant.update(spell_mod: 0)
+          combatant.update(gm_spell_mod: 0)
           combatant.update(defense_mod: 0)
           combatant.update(damage_lethality_mod: 0)
           combatant.update(attack_mod: 0)
