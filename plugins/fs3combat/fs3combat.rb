@@ -72,7 +72,7 @@ module AresMUSH
            return CombatListCmd
          when "ammo"
            return CombatAmmoCmd
-         when "attackmod", "defensemod", "lethalmod", "initmod"
+         when "attackmod", "defensemod", "lethalmod", "initmod, spellmod"
            return CombatModCmd
          when "clearmods"
            return CombatClearModsCmd
@@ -205,7 +205,7 @@ module AresMUSH
         return StopCombatRequestHandler
       end
     end
-    
+
     def self.check_config
       validator = FS3CombatConfigValidator.new
       validator.validate
