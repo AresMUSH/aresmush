@@ -38,7 +38,7 @@ This is a quick reference for combat organizer commands. Also  check out the [Co
 `combat/start [<mock or real>]` - Starts a combat (default real).
 `combat/stop <combat #>` - Stops a combat.
 `combats` - Shows all combats going on.
-`combat/newturn` - Starts the first turn. Alias newturn.
+`combat/newturn` - Starts a new turn. Alias newturn.
 
 `combat/join <list of names>=<combat #>[/<type>]` - Adds characters or NPCs to combats.
   Use `combat/types` to see available types and their associated gear.
@@ -51,8 +51,6 @@ This is a quick reference for combat organizer commands. Also  check out the [Co
 You can always specify a NPC or player name in front of any action command to make them do something.  For example, `combat/join Bob/#123`.
 Most commands support multiple names as well, so you can do: `combat/attack A B/C`.
 **See [NPC](/help/npc) for more information on how spells, potions, and levels work for NPCs**
-
-`combat/ammo <name>=<ammo>` - Adjusts remaining ammo.
 
 `combat/team <list of names>=<team#>` - Switches teams.
 `combat/target <team#>=<list of team #s>` - Sets it up so NPCs on a given team will only target people on the listed teams.  "combat/target 3=1 4" means team 3 will only target people on teams 1 and 4.
@@ -81,5 +79,4 @@ Admins, combat organizers, and characters with the manage_combat permission can 
 
 ## Housekeeping
 `combat/transfer <name>` - Transfer organizer powers to another person in combat.
-
 `combat/scene <scene id>` - Ties combat to a scene, so combat messages will be included in the scene log. This will happen automatically as soon as someone poses.  The command exists in case you ever need to change it.
