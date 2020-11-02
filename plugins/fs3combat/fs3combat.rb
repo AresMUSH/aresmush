@@ -72,7 +72,7 @@ module AresMUSH
            return CombatListCmd
          when "ammo"
            return CombatAmmoCmd
-         when "attackmod", "defensemod", "lethalmod", "initmod, spellmod"
+         when "attackmod", "defensemod", "lethalmod", "initmod", "spellmod"
            return CombatModCmd
          when "clearmods"
            return CombatClearModsCmd
