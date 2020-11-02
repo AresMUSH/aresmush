@@ -634,6 +634,21 @@ spells:
     target_num: 3
     target_optional: true
     weapon: Stun (Spirit)
+  Mass Charmed:
+    available: false
+    damage_type: Psionic
+    desc: Targets become charmed by the caster and attempts to move toward them. They are neutral toward all parties and will neither aid nor attack while under the spell. The spell is broken if they are hit by an attack.
+    duration: 2 rounds
+    effect: Stun
+    is_stun: true
+    level: 6
+    name: Mass Charmed
+    range: Short
+    rounds: 2
+    roll: true
+    school: Spirit
+    target_num: 3
+    target_optional: true
   Rewrite Memory:
     available: true
     casting_time: "1 round to cast, additional rounds for rewriting at GM's discretion."
