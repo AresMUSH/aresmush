@@ -32,3 +32,7 @@ fs3skills:
     fs3_roll:
       type: fs3
       message: Rolled a skill.
+  job_on_luck_spend: true
+  permissions:
+    manage_abilities: Edit ability ratings on other chars.
+    view_sheets: Can view other characters' sheets.

@@ -10,3 +10,5 @@ utils:
     die: dice
     notes: note
     colors: color
+  permissions:
+    manage_notes: Can access admin-only notes.

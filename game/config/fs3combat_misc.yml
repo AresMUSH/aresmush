@@ -5,7 +5,7 @@ fs3combat:
   combatant_types:
     Archer:
       weapon: Recurve Bow
-      weapon_specials:
+      weapon_specials: 
       armor: Leather
       hitloc: Humanoid
       defense_skill: Reflexes
@@ -18,7 +18,7 @@ fs3combat:
       weapon: Club
     Dragon:
       weapon: Claws
-      weapon_specials:
+      weapon_specials: 
       armor: Very Tough Hide
       hitloc: Flying4LeggedCreature
       defense_skill: Reflexes
@@ -29,19 +29,19 @@ fs3combat:
       hitloc: Fish
     Flying Insect:
       weapon: Stinger
-      weapon_specials:
+      weapon_specials: 
       armor: Tough Hide
       hitloc: FlyingInsect
       defense_skill: Reflexes
     Flying 2 Legged Creature:
       weapon: Claws
-      weapon_specials:
+      weapon_specials: 
       armor: Tough Hide
       hitloc: Flying2LeggedCreature
       defense_skill: Reflexes
     Flying 4 Legged Creature:
       weapon: Claws
-      weapon_specials:
+      weapon_specials: 
       armor: Tough Hide
       hitloc: Flying4LeggedCreature
       defense_skill: Reflexes
@@ -51,7 +51,7 @@ fs3combat:
       weapon: Sharp Claws
     Insect:
       weapon: Teeth
-      weapon_specials:
+      weapon_specials: 
       armor: None
       hitloc: Insect
       defense_skill: Reflexes
@@ -61,13 +61,13 @@ fs3combat:
       hitloc: Octopus
     Knight:
       weapon: Sword
-      weapon_specials:
+      weapon_specials: 
       armor: Plate
       hitloc: Humanoid
       defense_skill: Reflexes
     Lindworm:
       weapon: Claws
-      weapon_specials:
+      weapon_specials: 
       armor: Very Tough Hide
       hitloc: Flying2LeggedCreature
       defense_skill: Reflexes
@@ -75,7 +75,7 @@ fs3combat:
       hitloc: Merperson
     Modern Soldier:
       weapon: Rifle
-      weapon_specials:
+      weapon_specials: 
       armor: Tactical
       hitloc: Humanoid
       defense_skill: Reflexes
@@ -90,19 +90,19 @@ fs3combat:
       defense_skill: Reflexes
     Rogue:
       weapon: Knife
-      weapon_specials:
+      weapon_specials: 
       armor: Leather
       hitloc: Humanoid
       defense_skill: Reflexes
     Spider:
       weapon: Stinger
-      weapon_specials:
+      weapon_specials: 
       armor: Tough Hide
       hitloc: Spider
       defense_skill: Reflexes
     Swordsman:
       weapon: Sword
-      weapon_specials:
+      weapon_specials: 
       armor: Chainmail
       hitloc: Humanoid
       defense_skill: Reflexes
@@ -176,3 +176,5 @@ fs3combat:
     fs3_wounded:
       type: fs3
       message: Wounded %{count} times in combat.
+  permissions:
+    manage_combat: Control combats that you didn't organize.

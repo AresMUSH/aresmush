@@ -9,6 +9,7 @@ module AresMUSH
         return nil
       end
 
+     
       def handle
       #   Character.all.each do |c|
       #     puts "Starting XP: #{c.xp}"

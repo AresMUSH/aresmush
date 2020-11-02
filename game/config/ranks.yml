@@ -1,7 +1,7 @@
 ---
 ranks:
   permissions:
-  - manage_ranks
+    manage_ranks: Can change other characters' ranks.
   rank_group: Faction
   rank_rows: 9
   ranks:
