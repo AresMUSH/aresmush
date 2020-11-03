@@ -517,12 +517,12 @@ module AresMUSH
 				cgname = "#{c.name}"
 				cgname = cgname.downcase
 				cgnamesub = cgname.gsub("^", "*")
+				return (cgnamesub);				
 				if (!cgnamesub.include?("*"))
 					cgname = cgname[/[^*]+/]
 					cgname = cgname[/[^^]+/]
 					cgname = cgname.strip
 					edgsel = cgsys.select { |ss| ss['name'].downcase == cgname.downcase }.first #Filter the icf's to find the one that's been selected	
-					return (edgsel);
 					if (edgsel)
 						cgdesc = edgsel['description']
 						trdisabled = true;
