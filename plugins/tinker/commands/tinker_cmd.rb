@@ -10,12 +10,12 @@ module AresMUSH
       end
 
       def parse_args
-        spell = cmd.args
+        self.spell = cmd.args
       end
 
 
       def handle
-        if Chargen.approved_chars.select { |c| Magic.knows_spell?(c, spell) }
+        if Chargen.approved_chars.select { |c| Magic.knows_spell?(c, self.spell) }
           client.emit c.name
         end
 
