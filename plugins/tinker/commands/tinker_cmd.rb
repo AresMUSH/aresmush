@@ -10,7 +10,7 @@ module AresMUSH
       end
 
       def parse_args
-        self.spell = cmd.args
+        self.name = titlecase_arg(cmd.args)
       end
 
 
