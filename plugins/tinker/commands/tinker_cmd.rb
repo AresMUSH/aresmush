@@ -17,7 +17,10 @@ module AresMUSH
 
 
       def handle
+        client.emit self.spell
+        client.emit "___________________________________"
         chars = Chargen.approved_chars.select { |c| Magic.knows_spell?(c, self.spell) }
+
         chars.each do |c|
           client.emit c.name
         end
