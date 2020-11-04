@@ -3,6 +3,8 @@ module AresMUSH
     class TinkerCmd
       include CommandHandler
 
+      attr_accessor :spell
+
 
       def check_can_manage
         return t('dispatcher.not_allowed') if !enactor.has_permission?("tinker")
@@ -10,7 +12,7 @@ module AresMUSH
       end
 
       def parse_args
-        self.name = titlecase_arg(cmd.args)
+        self.spel = titlecase_arg(cmd.args)
       end
 
 
