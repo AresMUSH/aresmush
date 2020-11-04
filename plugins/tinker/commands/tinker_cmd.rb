@@ -17,9 +17,11 @@ module AresMUSH
 
 
       def handle
-        if Chargen.approved_chars.select { |c| Magic.knows_spell?(c, self.spell) }
+        chars = Chargen.approved_chars.select { |c| Magic.knows_spell?(c, self.spell) }
+        chars.each do |c|
           client.emit c.name
         end
+
 
       end
 
