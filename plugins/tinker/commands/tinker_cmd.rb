@@ -17,7 +17,7 @@ module AresMUSH
 
 
       def handle
-        client.emit self.spell
+        client.emit self.spell.upcase
         client.emit "___________________________________"
         chars = Chargen.approved_chars.select { |c| Magic.knows_spell?(c, self.spell) }
 
