@@ -570,6 +570,7 @@ module AresMUSH
 	def self.acl_get_hj_slots(swrifts_iconicf, charicf) #swrifts_icf is the system icf's, charicf is the one selected by the player
 		if charicf #has there an ICF selected?
 			cifstring = Hash.new
+			tempcifstring = []
 			
 			charcgicf = swrifts_iconicf.select { |ss| ss['name'].downcase == charicf.downcase }.first
 			# get the entry in global file that matches the ICF name selected. We're going to make this pretty.
@@ -579,7 +580,10 @@ module AresMUSH
 			# return (charhjicf.inspect);
 			if (charhjicf.length > 0) 
 				charhjicf.each do |k,v|
-					cifstring[k] = { hjtables: v }
+					v.each do |k,v|
+						tempcifstring << {httable: k, table: v}
+					end
+					cifstring[k] = { hjtables: tempcifstring }
 				end
 			end
 		end
