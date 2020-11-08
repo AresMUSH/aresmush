@@ -579,8 +579,7 @@ module AresMUSH
 			# return (charhjicf.inspect);
 			if (charhjicf.length > 0) 
 				charhjicf.each do |k,v|
-				return (v.inspect);
-				    v.each do |k1,v1|
+				    v.each do |v1|
 						cifstring << { hjtable: k, value: v1 }
 					end
 				end
