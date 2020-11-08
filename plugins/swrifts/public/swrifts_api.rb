@@ -567,13 +567,18 @@ module AresMUSH
 		return (cgedgearray)
 	end	
 
-	def self.acl_get_hj_slots(swrifts_icf, charicf) #swrifts_icf is the system icf's, charicf is the one selected by the player
+	def self.acl_get_hj_slots(swrifts_iconicf, charicf) #swrifts_icf is the system icf's, charicf is the one selected by the player
 		if charicf #has there an ICF selected?
 			cifstring = Array.new
+			
+			charcgicf = swrifts_iconicf.select { |ss| ss['name'].downcase == charicf.downcase }.first
 			# get the entry in global file that matches the ICF name selected. We're going to make this pretty.
+			
+			return (charcgicf.inspect);
+			
 			pattern = 'hj'
 			charcgicf = swrifts_icf.select{ |k,v| k[pattern] }
-			return (charicf.inspect);
+
 			ifname = charcgicf['name']
 			desc = charcgicf['description']
 			ifstring = "#{ifname}"
