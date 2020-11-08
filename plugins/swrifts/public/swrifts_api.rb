@@ -577,17 +577,18 @@ module AresMUSH
 						
 			pattern = 'hj'
 			charhjicf = charcgicf.select{ |k,v| k[pattern] }
+			cifstring = charhjicf
 			# return (charhjicf.inspect);
-			if (charhjicf.length > 0) 
-				charhjicf.each do |k,v|
-					newk =  k.split("_")
-					newk = newk[0].gsub("_","");
-					v.each do |k1,v1|
-						tempcifstring << {httable: k1, table: k}
-					end
-					cifstring[newk] = { hjtables: tempcifstring }
-				end
-			end
+			# if (charhjicf.length > 0) 
+				# charhjicf.each do |k,v|
+					# newk =  k.split("_")
+					# newk = newk[0].gsub("_","");
+					# v.each do |k1,v1|
+						# tempcifstring << {httable: k1, table: k}
+					# end
+					# cifstring[newk] = { hjtables: tempcifstring }
+				# end
+			# end
 		end
 		return (cifstring);
 	end
