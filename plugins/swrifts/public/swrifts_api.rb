@@ -580,14 +580,14 @@ module AresMUSH
 			# return (charhjicf.inspect);
 			# if (charhjicf.length > 0) 
 				# charhjicf.each do |k,v|
-					# v.each do |k1,v1|
-						# tempcifstring << {httable: k1, table: k}
-					# end
+					v.each do |k1,v1|
+						tempcifstring << {httable: k1, table: k}
+					end
 					# cifstring[newk] = { hjtables: tempcifstring }
 				# end
 			# end
 		end
-		return ("#{charhjicf.inspect}, #{charhjicf.class}");
+		return ("#{tempcifstring.inspect}, #{temcifstring.class}");
 	end
 
 	def self.acl_return_traits(st,traitname)
