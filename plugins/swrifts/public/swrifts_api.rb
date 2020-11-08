@@ -577,9 +577,9 @@ module AresMUSH
 						
 			pattern = 'hj'
 			charhjicf = charcgicf.select{ |k,v| k[pattern] }
-			hj_slots = charhjicf
+			hj_slots = charhjicf.length
 		end
-		return ("#{hj_slots}")
+		return (hj_slots)
 	end	
 	
 	def self.acl_get_hj1_slots(swrifts_iconicf, charicf) #swrifts_icf is the system icf's, charicf is the one selected by the player
