@@ -577,7 +577,7 @@ module AresMUSH
 						
 			pattern = 'hj'
 			charhjicf = charcgicf.select{ |k,v| k[pattern] }
-			hj_slots = charhjicf.length
+			hj_slots = "#{charhjicf.length}"
 		end
 		return (hj_slots);
 	end	
