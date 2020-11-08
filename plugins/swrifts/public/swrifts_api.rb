@@ -576,7 +576,7 @@ module AresMUSH
 						
 			pattern = 'hj'
 			charhjicf = charcgicf.select{ |k,v| k[pattern] }
-			return (charhjicf.inspect);
+			return (charhjicf.length);
 
 			ifname = charcgicf['name']
 			desc = charcgicf['description']
