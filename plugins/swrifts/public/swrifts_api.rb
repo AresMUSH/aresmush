@@ -243,7 +243,7 @@ module AresMUSH
 		  sysedges: sysedges, #Edges from system
 		  swsyshind: syshind, #Hinderances from system
 		  hjslots: hjslots,
-		  hjtables: hjtables,
+		  # hjtables: hjtables,
 		} 
 	end	
 	
