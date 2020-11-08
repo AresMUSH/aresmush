@@ -578,11 +578,11 @@ module AresMUSH
 			charhjicf = charcgicf.select{ |k,v| k[pattern] }
 			if (charhjicf.length > 0) 
 				charhjicf.each do |k,v|
-					cifstring << { hjtable: k, value: v }
+					cifstring[k] << { hjtable: k, value: v }
 				end
 			end
 		end
-		return (cifstring);
+		return (cifstring.inspect);
 	end
 
 	def self.acl_return_traits(st,traitname)
