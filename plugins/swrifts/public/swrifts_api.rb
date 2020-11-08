@@ -219,7 +219,9 @@ module AresMUSH
 		sysedges = returnsysedgesforcg(cgsysedges, cgedges, 'edge')			
 		
 		#Get the System Hinderances
-		syshind = returnsysedgesforcg(cgsyshind, cghinder, 'hind')		
+		syshind = returnsysedgesforcg(cgsyshind, cghinder, 'hind')	
+
+		hjslots = acl_get_hj_slots(swrifts_iconicf, charicf) #swrifts_icf is the system icf's, charicf is the one selected by the player		
 
 		return {
 		  iconicf: iconicf, #System iconic frameworks
@@ -240,6 +242,8 @@ module AresMUSH
 		  cghindfw: cghindfw, #Only framework Hinderances on Character for framework stuff
 		  sysedges: sysedges, #Edges from system
 		  swsyshind: syshind, #Hinderances from system
+		  hjslots: hjslots,
+		  hjtables: hjtables,
 		} 
 	end	
 	
@@ -561,18 +565,40 @@ module AresMUSH
 		end
 			
 		return (cgedgearray)
-	end		
+	end	
+
+	def self.acl_get_hj_slots(swrifts_icf, charicf) #swrifts_icf is the system icf's, charicf is the one selected by the player
+		if charicf #has there an ICF selected?
+			cifstring = Array.new
+			# get the entry in global file that matches the ICF name selected. We're going to make this pretty.
+			pattern = 'hj'
+			charcgicf = swrifts_icf.select{ |k,v| k[pattern] }
+			return charicf;
+			ifname = charcgicf['name']
+			desc = charcgicf['description']
+			ifstring = "#{ifname}"
+			book = charcgicf['book_reference']
+			if book
+				ifstring << " ~ ("
+				ifstring << book
+				ifstring << ")"
+			end	
+			cifstring = {class: ifname, name: ifstring, rating: desc}
+			return (cifstring)			
+		
+	
+	end
 
 	def self.acl_return_traits(st,traitname)
-	traitname = traitname.downcase
-	txtstring = ''
-	st.to_a.sort_by { |a| a.name }
-		.each_with_index
-			.map do |a, i| 
-			if a.name.downcase == "#{traitname}"
-				return ("#{a.rating}")
-			end
-		end	
+		traitname = traitname.downcase
+		txtstring = ''
+		st.to_a.sort_by { |a| a.name }
+			.each_with_index
+				.map do |a, i| 
+				if a.name.downcase == "#{traitname}"
+					return ("#{a.rating}")
+				end
+			end	
 	end	
 	
 	def self.save_abilities_for_chargen(char, chargen_data)		
