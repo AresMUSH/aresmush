@@ -582,7 +582,7 @@ module AresMUSH
 		return ("#{hj_slots}")
 	end	
 	
-	def self.acl_get_hj_slots(swrifts_iconicf, charicf) #swrifts_icf is the system icf's, charicf is the one selected by the player
+	def self.acl_get_hj1_slots(swrifts_iconicf, charicf) #swrifts_icf is the system icf's, charicf is the one selected by the player
 		if charicf #has there an ICF selected?
 			cifstring = Hash.new
 			tempcifstring = []
