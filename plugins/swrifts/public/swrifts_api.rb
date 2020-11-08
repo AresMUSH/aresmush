@@ -577,7 +577,9 @@ module AresMUSH
 			pattern = 'hj'
 			charhjicf = charcgicf.select{ |k,v| k[pattern] }
 			if (charhjicf.length > 0) 
-				cifstring << { k: k, v: v }
+				charhjicf.each do |k,v|
+					cifstring << { k: k, v: v }
+				end
 			end
 		end
 		return (cifstring);
