@@ -580,7 +580,7 @@ module AresMUSH
 			# return (charhjicf.inspect);
 			if (charhjicf.length > 0) 
 				charhjicf.each do |k,v|
-					k.gsub(/(?<=a).*/, '_')
+					k.gsub(/(?<=_).*/, '_')
 					v.each do |k1,v1|
 						tempcifstring << {httable: k1, table: k}
 					end
