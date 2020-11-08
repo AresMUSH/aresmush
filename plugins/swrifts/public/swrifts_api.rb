@@ -583,11 +583,11 @@ module AresMUSH
 					v.each do |k1,v1|
 						tempcifstring << {httable: k1, table: k}
 					end
-					cifstring[k] = { hjtables: tempcifstring }
+					cifstring[k] = tempcifstring 
 				end
 			end
 		end
-		return ("#{cifstring.inspect}, #{tempcifstring.inspect}, #{tempcifstring.class}");
+		return ("#{cifstring.inspect}, #{charhjicf}");
 	end
 
 	def self.acl_return_traits(st,traitname)
