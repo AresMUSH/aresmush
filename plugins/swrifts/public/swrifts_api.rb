@@ -580,8 +580,8 @@ module AresMUSH
 			# return (charhjicf.inspect);
 			if (charhjicf.length > 0) 
 				charhjicf.each do |k,v|
-					v.each do |k,v1|
-						tempcifstring << {httable: k, table: v1}
+					v.each do |k1,v1|
+						tempcifstring << {httable: k1, table: k}
 					end
 					cifstring[k] = { hjtables: tempcifstring }
 				end
