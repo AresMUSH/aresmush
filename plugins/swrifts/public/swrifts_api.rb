@@ -581,6 +581,7 @@ module AresMUSH
 			if (charhjicf.length > 0) 
 				charhjicf.each do |k,v|
 					newk =  k.split("_")
+					newk = gsub("_","");
 					return (newk[0]);
 					v.each do |k1,v1|
 						tempcifstring << {httable: k1, table: k}
