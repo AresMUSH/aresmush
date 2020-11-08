@@ -585,8 +585,7 @@ module AresMUSH
 			end	
 			cifstring = {class: ifname, name: ifstring, rating: desc}
 			return (cifstring)			
-		
-	
+		end
 	end
 
 	def self.acl_return_traits(st,traitname)
