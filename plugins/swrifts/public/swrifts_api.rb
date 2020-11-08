@@ -577,7 +577,6 @@ module AresMUSH
 						
 			pattern = 'hj'
 			charhjicf = charcgicf.select{ |k,v| k[pattern] }
-			cifstring = charhjicf
 			# return (charhjicf.inspect);
 			# if (charhjicf.length > 0) 
 				# charhjicf.each do |k,v|
@@ -590,7 +589,7 @@ module AresMUSH
 				# end
 			# end
 		end
-		return (cifstring);
+		return (cifstring.inspect);
 	end
 
 	def self.acl_return_traits(st,traitname)
