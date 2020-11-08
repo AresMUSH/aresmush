@@ -581,7 +581,7 @@ module AresMUSH
 				charhjicf.each do |k,v|
 					i = 0;
 				    v.each do |v1|
-						cifstring[k][i] = { hjtable: k, value: v1 }
+						cifstring[i][k] = { hjtable: k, value: v1 }
 						i += 1
 					end
 				end
