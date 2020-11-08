@@ -578,7 +578,7 @@ module AresMUSH
 			charhjicf = charcgicf.select{ |k,v| k[pattern] }
 			if (charhjicf.length > 0) 
 				charhjicf.each do |k,v|
-					cifstring[k] << { hjtable: k, value: v }
+					cifstring["#{k}"] << { hjtable: k, value: v }
 				end
 			end
 		end
