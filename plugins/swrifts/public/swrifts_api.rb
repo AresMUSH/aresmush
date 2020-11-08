@@ -573,7 +573,7 @@ module AresMUSH
 			# get the entry in global file that matches the ICF name selected. We're going to make this pretty.
 			pattern = 'hj'
 			charcgicf = swrifts_icf.select{ |k,v| k[pattern] }
-			return charicf;
+			return (charicf.inspect);
 			ifname = charcgicf['name']
 			desc = charcgicf['description']
 			ifstring = "#{ifname}"
