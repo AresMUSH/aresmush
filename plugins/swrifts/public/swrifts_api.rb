@@ -587,7 +587,7 @@ module AresMUSH
 				# end
 			# end
 		end
-		return ("#{charhiicf.inspect}, #{charhjicf.class}");
+		return ("#{charhjicf.inspect}, #{charhjicf.class}");
 	end
 
 	def self.acl_return_traits(st,traitname)
