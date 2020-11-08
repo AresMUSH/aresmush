@@ -587,7 +587,7 @@ module AresMUSH
 				end
 			end
 		end
-		return ("#{tempcifstring.inspect}, #{tempcifstring.class}");
+		return ("#{charhjicf.inspect}, #{tempcifstring.inspect}, #{tempcifstring.class}");
 	end
 
 	def self.acl_return_traits(st,traitname)
