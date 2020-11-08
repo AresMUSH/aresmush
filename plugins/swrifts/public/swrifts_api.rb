@@ -576,19 +576,7 @@ module AresMUSH
 						
 			pattern = 'hj'
 			charhjicf = charcgicf.select{ |k,v| k[pattern] }
-			return (charhjicf.length);
-
-			ifname = charcgicf['name']
-			desc = charcgicf['description']
-			ifstring = "#{ifname}"
-			book = charcgicf['book_reference']
-			if book
-				ifstring << " ~ ("
-				ifstring << book
-				ifstring << ")"
-			end	
-			cifstring = {class: ifname, name: ifstring, rating: desc}
-			return (cifstring)			
+			return (charhjicf);		
 		end
 	end
 
