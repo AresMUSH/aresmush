@@ -579,7 +579,8 @@ module AresMUSH
 			if (charhjicf.length > 0) 
 				charhjicf.each do |c|
 					cifstring << { key1: c }
-				end		
+				end	
+			end
 		end
 		return (cifstring);
 	end
