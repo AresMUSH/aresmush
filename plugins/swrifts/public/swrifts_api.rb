@@ -580,6 +580,7 @@ module AresMUSH
 			# return (charhjicf.inspect);
 			if (charhjicf.length > 0) 
 				charhjicf.each do |k,v|
+					k.gsub(/(?<=a).*/, '_')
 					v.each do |k1,v1|
 						tempcifstring << {httable: k1, table: k}
 					end
@@ -587,7 +588,7 @@ module AresMUSH
 				end
 			end
 		end
-		return (cifstring);
+		return (cifstring.inspect);
 	end
 
 	def self.acl_return_traits(st,traitname)
