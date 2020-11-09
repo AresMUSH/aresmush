@@ -591,7 +591,7 @@ module AresMUSH
 				end
 			end
 		end
-		return (cifstring);
+		return (cifstring.inspect);
 	end
 
 	def self.acl_return_traits(st,traitname)
