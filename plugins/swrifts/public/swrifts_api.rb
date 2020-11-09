@@ -586,7 +586,7 @@ module AresMUSH
 						tempcifstring << {httable: k1, table: k}
 					end
 					cifstring[k]=[]
-					cifstring[k] = tempcifstring
+					cifstring[k] << tempcifstring
 					# i += 1
 				end
 			end
