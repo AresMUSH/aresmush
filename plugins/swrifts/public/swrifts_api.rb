@@ -585,8 +585,7 @@ module AresMUSH
 					v.each do |k1,v1|
 						tempcifstring << {httable: k1, table: k}
 					end
-					cifstring[k]=[]
-					cifstring[k] << tempcifstring
+					cifstring[k][i] = tempcifstring
 					# i += 1
 				end
 			end
