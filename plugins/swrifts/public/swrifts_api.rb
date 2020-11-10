@@ -604,6 +604,7 @@ module AresMUSH
 			pattern = 'hj'
 			charhjicf = charcgicf.select{ |k,v| k[pattern] }
 			return (charhjicf);
+		end
 	end
 
 	def self.acl_return_traits(st,traitname)
