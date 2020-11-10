@@ -222,6 +222,8 @@ module AresMUSH
 		syshind = returnsysedgesforcg(cgsyshind, cghinder, 'hind')	
 
 		hjslots = acl_get_hj_slots(swrifts_iconicf, rawcharicf) #swrifts_icf is the system icf's, charicf is the one selected by the player		
+		
+		hjtables= ''
 
 		return {
 		  iconicf: iconicf, #System iconic frameworks
@@ -243,7 +245,7 @@ module AresMUSH
 		  sysedges: sysedges, #Edges from system
 		  swsyshind: syshind, #Hinderances from system
 		  hjslots: hjslots,
-		  # hjtables: hjtables,
+		  hjtables: hjtables,
 		} 
 	end	
 	
