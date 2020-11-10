@@ -223,7 +223,7 @@ module AresMUSH
 
 		hjslots = acl_get_hj_slots(swrifts_iconicf, rawcharicf) #swrifts_icf is the system icf's, charicf is the one selected by the player		
 		
-		hjtables= ''
+		hjtables = acl_get_hj_tables(swrifts_iconicf, rawcharicf)
 
 		return {
 		  iconicf: iconicf, #System iconic frameworks
@@ -591,6 +591,19 @@ module AresMUSH
 			end
 		end
 		return (cifstring);
+	end	
+	
+	def self.acl_get_hj_tables(swrifts_iconicf, charicf) #swrifts_icf is the system icf's, charicf is the one selected by the player
+		if charicf #has there an ICF selected?
+			cifstring = Hash.new
+			tempcifstring = []
+			
+			charcgicf = swrifts_iconicf.select { |ss| ss['name'].downcase == charicf.downcase }.first
+			# get the entry in global file that matches the ICF name selected. We're going to make this pretty.
+						
+			pattern = 'hj'
+			charhjicf = charcgicf.select{ |k,v| k[pattern] }
+			return (charhjicf);
 	end
 
 	def self.acl_return_traits(st,traitname)
