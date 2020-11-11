@@ -15,10 +15,7 @@ module AresMUSH
         end
         
         skin = DatabaseMigrator.read_config_file('skin.yml')
-        pp skin
-        pp skin['skin']['plain']
         if (skin['skin']['plain'] == "%x!+==~~~~~====~~~~====~~~~====~~~~=====~~~~=====~~~~====~~~~====~~~~====~~~~~==+%xn")
-          pp "Updating skin"
           skin['skin']['plain'] = "------------------------------------------------------------------------------"
           DatabaseMigrator.write_config_file('skin.yml', skin)
         end
