@@ -32,7 +32,7 @@ module AresMUSH
           end
         end
         
-        thread = Page.send_page(enactor, recipients, message, nil)
+        thread = Page.send_page(enactor, recipients, message, Login.find_client(enactor))
         
         {
           thread: Channels.build_page_web_data(thread, enactor)
