@@ -559,6 +559,14 @@ spells:
     name: Half Shift (Jenu)
     school: Nature
     weapon: Jenu
+  Half Shift (Wasp):
+    available: true
+    armor: Thick Shell
+    desc: Grants the caster Claws, Poison Stinger, and Thick Shell, two extra arms, and a set of wings large enough to carry them in flight, allowing them to travel at a speed of up to 35 mph, while also improving their sense of sight and smell to wasp standards.
+    level: 6
+    name: Half Shift (Wasp)
+    school: Nature
+    weapon: Poison Stinger
   Half Shift:
     available: true
     casting_time: 1 round

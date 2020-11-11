@@ -2,7 +2,7 @@ spells:
   Fire Starter:
     available: true
     casting_time: 1 round
-    desc: Create a flame the size of a ligher.
+    desc: Create a flame the size of a lighter.
     duration: 10 minutes
     effect: Creation
     level: 1

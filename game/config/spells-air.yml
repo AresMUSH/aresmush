@@ -319,6 +319,21 @@ spells:
     target_num: 1
     target_optional: true
     weapon: Blow Object
+  Electric Burst:
+    area: 10 yard radius
+    available: false
+    casting_time: 1 round
+    desc: The caster discharges electrical energy from their hands, causing lightning bolts to arc through the air and strike up to 3 targets.
+    effect: AOE Damage
+    fs3_attack: true
+    level: 5
+    line_of_sight: true
+    name: Electric Burst
+    range: Long
+    school: Air
+    target_num: 3
+    target_optional: true
+    weapon: Electric Burst    
   Sonic Blast:
     available: true
     attack_mod: -2

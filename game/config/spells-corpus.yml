@@ -16,7 +16,7 @@ spells:
     available: true
     casting_time: 1 round
     desc: The caster can change the color of their eyes to any naturally occurring hue for a duration of up to one hour.
-    duration: 10 minutes
+    duration: 1 hour
     effect: Transformation
     is_potion: true
     level: 1

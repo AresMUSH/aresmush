@@ -37,6 +37,9 @@ fs3combat:
     Sparring:
       description: Padded sparring equipment
       lethality: -50
+    Scope:
+      description: Sniper scope
+      accuracy: 2
 
   weapons:
 
@@ -52,6 +55,20 @@ fs3combat:
       damage_type: Physical
       accuracy: 0
       init_mod: -2
+      special_group: Ranged
+    Boulder:
+      description: A giant boulder big enough to hit several people at once and shatter on impact.
+      skill: Athletics
+      lethality: 5
+      penetration: 4
+      weapon_type: Explosive
+      ammo: 0
+      recoil: 0
+      damage_type: Physical
+      has_shrapnel: true
+      accuracy: 1
+      init_mod: 0
+      allowed_specials:
       special_group: Ranged
     Flash Grenade:
       description: 'Hand Grenade which blinds/deafens most targets for 5 secs '

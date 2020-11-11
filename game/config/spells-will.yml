@@ -358,7 +358,7 @@ spells:
     * The ability to see someone else's memory of the location.\n
     * Magical coordinates of the portal's existence in the magical universe.\n
     * A realistic depiction of a location in the portal world, created at any time.\n\n
-    When closing a portal, travel, perception, and attacks through it are reduced as the Anchor forces the portal to shrink. When opening a portal, these same effects may increase. Once the spell is completed, the portal is either completely closed or opened and the effect is permanent.\n\n 
+    When closing a portal, travel, perception, and attacks through it are reduced as the Anchor forces the portal to shrink. When opening a portal, these same effects may increase. Once the spell is completed, the portal is either completely closed or opened and the effect is permanent.\n\n
     If cast on an open portal, the caster can sense the magical coordinates of the portal's existence in the magical universe."
     effect: Travel
     level: 7
@@ -423,7 +423,7 @@ spells:
     target_optional: true
     weapon: Mass Telekinetic Burst
   Object Survey:
-    available: false
+    available: true
     area: 100 yards
     casting_time: 1 round
     desc: "The caster extends their senses to all non-organic objects within range. While their body lies senseless and incapacitated, they can identify the presence, quantity, and location of all objects in the area. This allows them to make a map of the non-organic landscape, including structures such as walls and buildings, based on the location of non-organic matter.\n\nThe caster can choose to survey all of the objects at a surface level, or focus their attention on up to five individual objects at a time for more details. They can identify any movement or impacts effecting these five objects, though they cannot tell who or what is interacting with the objects."
@@ -459,6 +459,18 @@ spells:
     effect: Travel
     level: 7
     name: Open Local Portal
+    range: Touch
+    roll: true
+    school: Will
+  Transmission Objects:
+    available: false
+    area: 1,000 mile radius
+    casting_time: 1 round
+    desc: "The caster creates a link between two objects of up to 100 pounds, allowing communication over long distances through the objects.\n\n The objects will pick up and transmit all sounds directed at them (including any loud ambient noises) for the duration of the spell. Anyone can use one object to communicate with the other one, but only the caster can turn the spell off.\n\n The caster can sense the direction of the other linked object, and it if is moved, the caster will feel the change in its location and be able to track it. The feeling of the link becomes vaguer the more distant the object is, but the caster can always tell the direction of it.\n\n Only two objects can be linked at a time."
+    duration: 12 hours
+    effect: Communication
+    level: 7
+    name:  Transmission Objects
     range: Touch
     roll: true
     school: Will
