@@ -10,6 +10,7 @@ module AresMUSH
         notices = enactor.login_notices
         
         notice_data = notices.to_a.sort_by { |n| [ n.is_unread ? 1 : 0, n.timestamp ] }.reverse.map { |n| {
+          id: n.id,
           message: Website.format_markdown_for_html(n.message),
           data: n.data ? n.data.split("|") : [],
           reference_id: n.reference_id,
@@ -29,9 +30,7 @@ module AresMUSH
             count: count
           }
         end
-        
-        #notices.find(is_unread: true).each { |n| n.update(is_unread: false)}
-        
+                
         {
           notices: notice_data,
           alts: alts_data
