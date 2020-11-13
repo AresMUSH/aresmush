@@ -1,7 +1,7 @@
 module AresMUSH
   module FS3Skills
     def self.can_manage_luck?(actor)
-      actor && actor.has_permission?("manage_abilities")
+      actor && actor.has_permission?("view_bgs")
     end
 
     def self.modify_luck(char, amount)
