@@ -20,13 +20,14 @@ module AresMUSH
       
       def build_char_data(id, action, enactor)
         char = Character[id]
+        last_on = char.last_on
         
         {
           id: id,
           name: char.name,
           lastwill: char.idle_lastwill,
-          last_on: OOCTime.local_long_timestr(enactor, char.last_on),
-          last_on_formatted: TimeFormatter.format(Time.now - char.last_on), 
+          last_on: OOCTime.local_long_timestr(enactor, last_on),
+          last_on_formatted: last_on ? TimeFormatter.format(Time.now - last_on) : "---",
           notes: char.idle_notes,
           warned: char.idle_warned,
           idle_action: action,

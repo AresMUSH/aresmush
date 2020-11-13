@@ -154,6 +154,8 @@ module AresMUSH
         return LoginNoticesRequestHandler
       when "markNotificationsRead"
         return LoginNoticesMarkReadRequestHandler
+      when "markNotificationRead"
+        return LoginNoticeMarkReadRequestHandler
       end
       nil
     end

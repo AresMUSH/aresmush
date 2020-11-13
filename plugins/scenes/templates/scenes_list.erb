@@ -1,14 +1,19 @@
 <%= header %>
-%xh<%= t('scenes.scenes_title')%>%xn
-<% scenes.each do |scene| %>
-<%= divider %>
-%xh<%= left(title(scene), 36) %>%xn <%= left(organizer(scene), 25) %> <%= left(scene.scene_type, 10) %> <%= last_activity(scene) %>
-<%= left(location(scene), 36) %> <%= t('scenes.players_title')%> <%= characters(scene) %> 
-<% if scene.summary && !scene.private_scene %>
-<%= summary(scene) %>
-<% end %>
+<%= center( mush_name, 78 ) %>
+<%= line_with_text( t('scenes.open_or_my_scenes')) %>
+<% active_scenes.each do |scene| %>
+%xh<%= left(title(scene), 32) %> %xn <%= left(last_activity(scene), 5) %> <%= location(scene) %> 
+<%= characters(scene) %> 
 <% if scene.has_notes? %>
-%xh%xc<%= t('scenes.scene_notes') %>:%xn <%= scene.limit %>
+%xh<%= t('scenes.scene_notes') %>:%xn <%= scene.limit %>
+<% end %>
+<%= line('plain') %>
+<% end %>
+<% if show_private %>
+
+<%= line_with_text( t('scenes.private_scenes')) %>
+<% private_scenes.each do |scene| %>
+%xh<%= left(title(scene), 32) %>%xn <%= characters(scene) %>
 <% end %>
 <% end %>
 <%= divider %>

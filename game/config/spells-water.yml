@@ -494,6 +494,7 @@ spells:
     name: Mass Hydroplane
     range: Short
     school: Water
+    target_optional: true
     target_num: 5
   Greater Purify Water:
     available: false
