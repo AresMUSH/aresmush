@@ -6,6 +6,7 @@ fs3combat:
     - shrink
     - strength
     - grow
+    - sparring
     Ranged:
     - cold calm
     - diamond
