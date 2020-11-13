@@ -44,6 +44,8 @@ website:
       title: Play
     - route: scenes-live
       title: Active Scenes
+    - route: scenes-unshared
+      title: Your Unshared Scenes
     - route: scene-create
       title: Start New Scene
     - route: combats
