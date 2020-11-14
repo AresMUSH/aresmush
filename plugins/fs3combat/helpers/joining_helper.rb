@@ -21,20 +21,29 @@ module AresMUSH
     
     # client may be nil from web
     def self.join_combat(combat, name, combatant_type, enactor, client)
-      if FS3Combat.is_in_combat?(name)
-        client.emit_failure t('fs3combat.already_in_combat', :name => name)  if client
-        return nil
-      end
-      
       result = ClassTargetFinder.find(name, Character, enactor)
       if (result.found?)
+        
         char = result.target
+        name = char.name
+        
+        if FS3Combat.is_in_combat?(name)
+          client.emit_failure t('fs3combat.already_in_combat', :name => name)  if client
+          return nil
+        end
+      
         combatant = Combatant.create(:combatant_type => combatant_type, 
           :character => char,
           :team => 1,
           :combat => combat)
           FS3Combat.handle_combat_join_achievement(char)
       else
+        
+        if FS3Combat.is_in_combat?(name)
+          client.emit_failure t('fs3combat.already_in_combat', :name => name)  if client
+          return nil
+        end
+      
         npc = Npc.create(name: name, combat: combat, level: FS3Combat.default_npc_type)
         combatant = Combatant.create(:combatant_type => combatant_type, 
         :npc => npc,
