@@ -601,7 +601,7 @@ module AresMUSH
 				end
 			end
 		end
-		return (cifstring);
+		return (cifstring.inspect);
 	end	
 	
 	def self.acl_get_hj_tables(swrifts_iconicf, charicf) #swrifts_icf is the system icf's, charicf is the one selected by the player
