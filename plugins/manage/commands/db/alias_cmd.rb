@@ -41,7 +41,13 @@ module AresMUSH
         end
         
         if (target.class == Character)
-          name_validation_msg = Character.check_name(self.alias, target)
+          taken_error = Login.name_taken?(self.alias, target)
+          if (taken_error)
+            client.emit_failure taken_message
+            return
+          end
+          
+          name_validation_msg = Character.check_name(self.alias)
         else
           existing_exit = enactor_room.has_exit?(self.alias)
           if (existing_exit)

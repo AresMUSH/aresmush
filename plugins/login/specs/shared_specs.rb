@@ -5,6 +5,7 @@ module AresMUSH
 
       before do
         stub_global_objects
+        stub_translate_for_testing
       end
       
       describe :can_access_email? do
@@ -146,6 +147,57 @@ module AresMUSH
           expect(Login.is_site_match?("othersite.com", "", "123.45.67.89", "somesite.com")).to eq false
         end
         
+      end
+      
+      describe :name_taken? do
+        before do
+          @found_char = double
+          allow(Character).to receive(:find_one_by_name).with("Charname") { nil }
+          allow(Global).to receive(:read_config).with("names", "restricted") { ["barney"] }
+        end
+
+        it "should fail if the char name already exists" do
+          allow(Character).to receive(:find_one_by_name).with("Existing") { @found_char }
+          allow(@found_char).to receive(:name_upcase) { "EXISTING" }
+          expect(Login.name_taken?("Existing")).to eq "validation.char_name_taken"
+        end
+
+        it "should fail if the char alias already exists" do
+          allow(Character).to receive(:find_one_by_name).with("Existing") { @found_char }
+          allow(@found_char).to receive(:name_upcase) { "FOO" }
+          allow(@found_char).to receive(:alias_upcase) { "EXISTING" }
+          expect(Login.name_taken?("Existing")).to eq "validation.char_name_taken"
+        end
+      
+        it "should allow a subset of an existing name" do
+          allow(Character).to receive(:find_one_by_name).with("Exi") { @found_char }
+          allow(@found_char).to receive(:name_upcase) { "EXISTING" }
+          allow(@found_char).to receive(:alias_upcase) { nil }
+          expect(Login.name_taken?("Exi", @found_char)).to be_nil
+        end
+      
+        it "should allow a subset of an existing alias" do
+          allow(Character).to receive(:find_one_by_name).with("Exi") { @found_char }
+          allow(@found_char).to receive(:name_upcase) { "FOO" }
+          allow(@found_char).to receive(:alias_upcase) { "EXISTING" }
+          expect(Login.name_taken?("Exi", @found_char)).to be_nil
+        end
+        
+        it "should let them hvae their own name" do
+          allow(Character).to receive(:find_one_by_name).with("Existing") { @found_char }
+          allow(@found_char).to receive(:name_upcase) { "FOO" }
+          allow(@found_char).to receive(:alias_upcase) { "EXISTING" }
+          expect(Login.name_taken?("Existing", @found_char)).to be_nil
+        end
+      
+        it "should return true if everything's ok" do
+          allow(Character).to receive(:find_one_by_name).with("Charname") { nil }
+          allow(Character).to receive(:find_one_by_name).with("O'Malley") { nil }
+          allow(Character).to receive(:find_one_by_name).with("This-Char") { nil }
+          expect(Login.name_taken?("Charname")).to be_nil
+          expect(Login.name_taken?("O'Malley")).to be_nil
+          expect(Login.name_taken?("This-Char")).to be_nil
+        end
       end
     end
   end
