@@ -6,6 +6,7 @@ module AresMUSH
         filter = request.args[:filter] || "Recent"
         page = (request.args[:page] || "1").to_i
         char_name_or_id = request.args[:char_id]
+        plot_id = request.args[:plot_id]
         
         # Special limited filter for related scenes list
         if (filter == 'Related')
@@ -20,8 +21,20 @@ module AresMUSH
             }}
           }
         end
-            
-        if (char_name_or_id)
+         
+        if (plot_id)
+          plot = Plot[plot_id]   
+          if (!plot)
+            return { error: t('webportal.not_found') }
+          end
+          
+          if (filter == 'Recent')
+            scenes = plot.sorted_scenes.reverse[0..20].select { |s| s.shared }
+          else
+            scenes = plot.sorted_scenes.reverse.select { |s| s.shared }
+          end
+          
+        elsif (char_name_or_id)
           char = Character.find_one_by_name(char_name_or_id)
           if (!char)
             return { error: t('webportal.not_found') }
