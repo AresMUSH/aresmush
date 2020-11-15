@@ -572,6 +572,14 @@ module AresMUSH
 	end	
 
 	def self.acl_get_hj_slots(swrifts_iconicf, charicf) #swrifts_icf is the system icf's, charicf is the one selected by the player
+	
+		# attribute :name #hj1, hj2, etc. 
+		# attribute :rating, :type => DataType::Integer #the random roll
+		# attribute :table #Body Armor, etc. 
+		# attribute :description #text from table
+		# reference :character, "AresMUSH::Character"
+		
+		
 		if charicf #has there an ICF selected?
 			cifstring = Hash.new
 			tempcifstring = []
@@ -586,7 +594,7 @@ module AresMUSH
 				charhjicf.each do |k,v|
 					tempcifstring = []
 					v.each do |k1,v1|
-						tempcifstring << {httable: k1, table: k}
+						tempcifstring << {table: k1, name: k}
 					end
 					cifstring[k] = tempcifstring				
 				end
