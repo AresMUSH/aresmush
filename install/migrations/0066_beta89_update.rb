@@ -21,6 +21,10 @@ module AresMUSH
           ]
           DatabaseMigrator.write_config_file('jobs.yml', config)
         end
+        
+        Global.logger.debug "Init event tags."
+        Event.all.select { |e| !e.tags }.each { |e| e.update(tags: []) }
+        
       end
     end    
   end
