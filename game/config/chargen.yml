@@ -10,4 +10,49 @@ chargen:
   - bg %{name}
   - hooks %{name}
   - sheet %{name}
-  
+  approval_message: Congratulations!  Your application has been approved.  Check out the [Getting Started](/wiki/guides:getting_started) guide for help finding a place to
+    live, getting into RP, and more. We are glad to have you!
+  arrivals_category: New Arrivals
+  demographics_blurb: "Set the basic information about your character here."
+  groups_blurb: "[Schools](/wiki/schools) reflect the type of spells a magic user is able to do. A magic user may have an affinity for a single School, or they may possess an affinity for two, one lesser and one greater. \n\nSetting your School(s) here will set your Major School to level 2 and your Minor School to level 1. If you choose only a Major School, you can raise it to level 3 on the Action Skills tab.\n\nWe highly suggest that new players choose two Schools rather than one. In practice a lot of people find one magic school to be limiting in play. A character who has access to two schools, major and minor, will be a lot more versatile and possibly find hooks into plot more easily."
+  bg_blurb: "You don't need to write a novel. Just cover the basics: who you are, why are you here, and is there anything noteworthy about you. \n\n   *New characters cannot have been living within magic's influence before approval - though they can be local characters returning home.*\n\n
+  **Magic and Coming to Grand Lake**\n\n
+  Magic has been slowly trickling back into the world since early 2019. \n\n
+  Although Grand Lake seems to have an abnormally high population of magic users, not all characters will have a previous connection to Grand Lake. Many, including those who grew up in the area, are drawn to Grand Lake via dreams, which began in December 2018. Vague at first, the dreams grow increasingly explicit about the location. They feature images of the Rocky Mountains and Grand Lake, along with an unmistakable sense that answers lie there. They don't reveal further details - only that Grand Lake is the place to come, with a hint that there might be answers - and others experiencing the same thing - there. \n\n
+  **Some questions to consider in your background:**\n\n
+  * Where is your character from?\n
+  * What are the major events in your character's life? \n
+  * What is their education, and what do they do for a living?\n
+  * Why have they come to Grand Lake? What spurred the move NOW, after more than a year of dreams?\n
+  * What might motivate them to stay in Grand Lake? How will they make that work?\n
+  * Do they have any unusual skills you want to provide context for? "
+  desc_blurb: You can set both your main description, visible when people look at you, and a short description that shows your character at a glance.
+  hooks_blurb: "RP Hooks are interesting things about your character that others can
+    hook into for RP. This could be an odd personality quirk, a reputation your character
+    has, or anything else that might inspire someone to connect with you. Looking
+    around at other  [character's profile pages](/characters) can be a good way to get inspiration for RP
+    Hooks.\n\nYour RP Hooks will also show in the welcome message posted to the forum, so everyone gets a snapshot of who your character is."
+  hooks_required: true
+  icon_blurb: "Upload an optional picture for your character icon. Square images work best."
+  intro_blurb: "The online character creation tool will guide you through creating your character. Before getting started, we recommend reading \n\n* [Join Us](/wiki/guides:join_us) - Guidelines for creating a character, restricted and overdone concepts, and help with CG. \n* [World Intro](/wiki/guides:world_intro) - A fast and dirty introduction to theme.\n\n "
+  lastwill_blurb: "If you would like to register a preference on what happens if you ever idle out, you can fill out your lastwill here.  You could leave your character's fate up to someone else, or specify that they be killed off or sent away.\n\nYou can fill out or change your lastwill at any time on game using the `lastwill` command."
+  lorehook_blurb: "Lore Hooks are bits of fun lore that are unique to you. See (help Lore Hooks)[/help/lore_hooks] and the [Guide to Lore Hooks](https://tinyurl.com/y6zgez98) for more info on each type of hook.\n\nStorytellers begin working on Lore Hooks once a character has been played for at least two months.\n\nIf you have preferences for the sort of Lore Hook you recieve, please add them to your plot preferences on your character page after approval. Generally, STs will create something that we think will be interesting for your character and that fits into the story, but we'll keep preferences in mind where possible. You can also set or change your preference any time after CG, and add specific preferences in your [plot preferences](/help/plotprefs)."
+  post_approval_message: Please make sure they have a profile image for their log icon.
+  rejection_message: "Sorry, your character could not be approved at the present time for the reasons listed.  You can make changes to your app by visiting [Create a Character](/chargen) on the web portal. \n\nFeel free to leave comments in this request or to ask for help on the **New Characters** channel if you have any questions.\n\n-----------"
+  rank_blurb: "Don't use ranks."
+  shortcuts:
+    chargen: cg
+    cg/back: cg/prev
+    cg/previous: cg/prev
+    bg/approve: app/approve
+    bg/reject: app/reject
+    bg/submit: app/submit
+    bg/unsubmit: app/unsubmit
+    hooks: hook
+    hook/delete: hook/remove
+    hook/add: hook/set
+  stages:
+    start:
+      tutorial: "Use the web portal CG."
+  welcome_message: "Please welcome [%{name}](https://spiritlakemu.com/char/%{name}), our latest character to be approved! \n\nMajor
+    School: %{major school} \nMinor School: %{minor school}\n\nRP Hooks:\n%{rp_hooks}"
