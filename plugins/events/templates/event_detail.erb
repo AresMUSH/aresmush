@@ -3,6 +3,7 @@
 
 %xh<%= t('events.starts_at_title')%>%xn <%= start_datetime_local %> (<%= start_time_standard %>)
 %xh<%= t('events.who_title')%>%xn <%= event.who %>
+%xh<%= t('events.tags_title') %>%xn <%= event.tags.join(" ") %>
 
 <%= event.description %>
 

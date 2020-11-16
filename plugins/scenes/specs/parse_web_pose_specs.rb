@@ -120,6 +120,20 @@ module AresMUSH
           end
         end
         
+        context "Commands" do
+          it "should parse a command without args" do
+            result = Scenes.parse_web_pose("/dance", @enactor, "pose")
+            expect(result[:command]).to eq "dance"
+            expect(result[:args]).to eq ""
+          end
+          
+          it "should parse a command with args" do
+            result = Scenes.parse_web_pose("/dance x=y", @enactor, "pose")
+            expect(result[:command]).to eq "dance"
+            expect(result[:args]).to eq "x=y"
+          end
+        end
+        
       end
     end
   end

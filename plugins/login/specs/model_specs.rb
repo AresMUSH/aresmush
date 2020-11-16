@@ -31,8 +31,6 @@ module AresMUSH
     
     describe :check_name do
       before do
-        @found_char = double
-        allow(Character).to receive(:find_one_by_name).with("Charname") { nil }
         allow(Global).to receive(:read_config).with("names", "restricted") { ["barney"] }
       end
       
@@ -45,42 +43,6 @@ module AresMUSH
         expect(Character.check_name("A BC")).to eq "validation.name_contains_invalid_chars"
         expect(Character.check_name("A.BC")).to eq "validation.name_contains_invalid_chars"
         expect(Character.check_name("B@ABC")).to eq "validation.name_contains_invalid_chars"
-      end
-      
-      it "should fail if the char name already exists" do
-        allow(Character).to receive(:find_one_by_name).with("Existing") { @found_char }
-        allow(@found_char).to receive(:name_upcase) { "EXISTING" }
-        expect(Character.check_name("Existing")).to eq "validation.char_name_taken"
-      end
-
-      it "should fail if the char alias already exists" do
-        allow(Character).to receive(:find_one_by_name).with("Existing") { @found_char }
-        allow(@found_char).to receive(:name_upcase) { "FOO" }
-        allow(@found_char).to receive(:alias_upcase) { "EXISTING" }
-        expect(Character.check_name("Existing")).to eq "validation.char_name_taken"
-      end
-      
-      it "should allow a subset of an existing name" do
-        allow(Character).to receive(:find_one_by_name).with("Exi") { @found_char }
-        allow(@found_char).to receive(:name_upcase) { "EXISTING" }
-        allow(@found_char).to receive(:alias_upcase) { nil }
-        expect(Character.check_name("Exi", @found_char)).to be_nil
-      end
-      
-      it "should allow a subset of an existing alias" do
-        allow(Character).to receive(:find_one_by_name).with("Exi") { @found_char }
-        allow(@found_char).to receive(:name_upcase) { "FOO" }
-        allow(@found_char).to receive(:alias_upcase) { "EXISTING" }
-        expect(Character.check_name("Exi", @found_char)).to be_nil
-      end
-      
-      it "should return true if everything's ok" do
-        allow(Character).to receive(:find_one_by_name).with("Charname") { nil }
-        allow(Character).to receive(:find_one_by_name).with("O'Malley") { nil }
-        allow(Character).to receive(:find_one_by_name).with("This-Char") { nil }
-        expect(Character.check_name("Charname")).to be_nil
-        expect(Character.check_name("O'Malley")).to be_nil
-        expect(Character.check_name("This-Char")).to be_nil
       end
       
       it "should disallow a restricted name" do

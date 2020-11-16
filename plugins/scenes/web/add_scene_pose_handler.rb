@@ -41,11 +41,19 @@ module AresMUSH
         
         parse_results = Scenes.parse_web_pose(pose, char, pose_type)
         
-        Scenes.emit_pose(char, parse_results[:pose], parse_results[:is_emit], 
-           parse_results[:is_ooc], nil, parse_results[:is_setpose] || parse_results[:is_gmpose], scene.room)
+        # Command
+        if (parse_results[:command])
+          parser = Scenes::BaseSceneCommands.new
+          return parser.handle(enactor, char, scene, parse_results[:command], parse_results[:args])
+          
+        # Regular Pose or Emit
+        else
+          Scenes.emit_pose(char, parse_results[:pose], parse_results[:is_emit], 
+             parse_results[:is_ooc], nil, parse_results[:is_setpose] || parse_results[:is_gmpose], scene.room)
         
-        if (parse_results[:is_setpose] && scene.room)
-          scene.room.update(scene_set: parse_results[:pose])
+          if (parse_results[:is_setpose] && scene.room)
+            scene.room.update(scene_set: parse_results[:pose])
+          end
         end
         
         {}

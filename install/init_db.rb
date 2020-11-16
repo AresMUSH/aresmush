@@ -75,7 +75,7 @@ module AresMUSH
       guest_role = Role.create(name: "guest")
       approved_role = Role.create(name: "approved")
       approved_role.update(permissions: ["go_home", "boot", "announce"] )
-      coder_role = Role.create(name: "coder")
+      coder_role = Role.create(name: "coder", is_restricted: true)
       coder_role.update(permissions: ["manage_game", "access_jobs", "tinker"])
       
       puts "Creating OOC chars."

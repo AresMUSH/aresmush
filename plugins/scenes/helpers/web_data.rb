@@ -136,6 +136,13 @@ module AresMUSH
       is_gmpose = pose_type == 'gm'
       is_ooc = pose_type == 'ooc'
       
+      if (pose.start_with?("/"))
+        return {
+          command: pose.after("/").before(" "),
+          args: pose.after(" ")
+        }
+      end
+      
       command = ((pose.split(" ").first) || "").downcase
       is_emit = false
       
