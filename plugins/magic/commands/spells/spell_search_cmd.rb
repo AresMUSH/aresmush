@@ -10,6 +10,11 @@ module AresMUSH
         self.spell = titlecase_arg(cmd.args)
       end
 
+      def check_errors
+        return "What spell do you want to search?" if !self.spell
+        return t('magic.not_spell') if !Magic.is_spell?(self.spell)
+        return nil
+      end
 
       def handle
         client.emit "=============== CHARACTERS WHO KNOW #{self.spell.upcase} ==============="

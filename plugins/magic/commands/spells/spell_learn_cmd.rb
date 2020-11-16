@@ -19,7 +19,6 @@ module AresMUSH
         return t('fs3skills.not_enough_xp') if enactor.xp <= 0
         return t('magic.too_many_spells') if Magic.count_spells_total(enactor) >= 30
         previous = Magic.previous_level_spell?(enactor, self.spell)
-        Global.logger.debug "PREVIOUS #{previous}"
         return t('magic.need_previous_level') if Magic.previous_level_spell?(enactor, self.spell) == false
         major_school = enactor.group("Major School")
         can_learn_num = FS3Skills.ability_rating(enactor, major_school)
@@ -53,7 +52,7 @@ module AresMUSH
               if (status[:job])
                 Jobs.close_job(Game.master.system_character, status[:job])
               end
-              
+
               Magic.handle_spell_learn_achievement(enactor)
             end
           end
