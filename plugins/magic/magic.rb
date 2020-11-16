@@ -85,6 +85,8 @@ module AresMUSH
           return SpellAddCmd
         when "remove"
           return SpellRemoveCmd
+        when "search"
+          return SpellSearchCmd
         when "hascast"
           return SpellHascastCmd
         end
