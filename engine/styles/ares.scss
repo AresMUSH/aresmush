@@ -870,6 +870,12 @@ SCENES SCREEN
     padding: 0px 10px 10px 10px;
 }
 
+.scene-command {
+  margin-left: 25px;
+  color: $faded-text-color;
+  font-style: italic;
+}
+
 .scene-log {
     border: 1px solid $border-color;
     margin: 2px;
@@ -1119,6 +1125,8 @@ SCENES SCREEN
 .content-warning-label {
   margin: 0px 5px;
 }
+
+
 @media (max-width: 767px) {
     .scene-controls-left {
         display: flex;

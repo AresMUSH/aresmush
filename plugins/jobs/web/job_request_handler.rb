@@ -58,7 +58,11 @@ module AresMUSH
           job_admins: job_admins.map { |c|  { 
             id: c.id, 
             name: c.name 
-            }}
+            }},
+          responses: (Global.read_config('jobs', 'responses') || []).map { |r| {
+            name: r["name"],
+            value: Website.format_input_for_html(r["text"])
+          }}
         }
       end
     end

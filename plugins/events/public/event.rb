@@ -9,6 +9,7 @@ module AresMUSH
     attribute :reminded, :type => DataType::Boolean
     attribute :ical_uid
     attribute :content_warning
+    attribute :tags, :type => DataType::Array, :default => []
     
     reference :character, "AresMUSH::Character"
     collection :signups, "AresMUSH::EventSignup"

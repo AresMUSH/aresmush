@@ -3,17 +3,20 @@ module AresMUSH
     class RosterRequestHandler
       def handle(request)
                 
-        group = Global.read_config("website", "character_gallery_group") || "Faction"
-        groups = Character.all.select { |c| c.on_roster? }.group_by { |c| c.group(group) || "" }
+        gallery_group = Global.read_config("website", "character_gallery_group") || "Faction"
+        groups = Character.all.select { |c| c.on_roster? }.group_by { |c| c.group(gallery_group) || "" }
         
         fields = Global.read_config("idle", "roster_fields").select { |f| f['field'] != 'name' }
         titles = fields.map { |f| f['title'] }
         
         roster = []
         
-        groups.each do |group, chars|
+        groups.each_with_index do |(group, chars), index|
+          name = group.blank? ? "No #{gallery_group}" : group
           roster << {
-            name: group,
+            key: name.parameterize(),
+            name: name,
+            active_class: index == 0 ? "active" : "",
             chars: chars.sort_by { |c| c.name }.map { |c| build_profile(c, fields) }
           } 
         end

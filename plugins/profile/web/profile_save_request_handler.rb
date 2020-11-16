@@ -79,9 +79,11 @@ module AresMUSH
           return { error: errors.join("\n") }
         end
         
-        
         if (Roles.can_assign_role?(enactor))
-          Roles.save_web_roles(char, request.args['roles'])
+          error = Roles.save_web_roles(char, request.args['roles'], enactor)
+          if (error)
+            return { error: error }
+          end
         end
 
         if (Idle.can_manage_roster?(enactor))
