@@ -14,7 +14,6 @@ chargen:
   - bg %{name}
   - hooks %{name}
   - sheet %{name}
-<<<<<<< HEAD
   approval_message: Congratulations!  Your application has been approved.  Check out
     the [Getting Started](/wiki/guides:getting_started) guide for help finding a place
     to live, getting into RP, and more. We are glad to have you!
