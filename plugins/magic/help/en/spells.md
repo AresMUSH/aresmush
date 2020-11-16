@@ -1,12 +1,15 @@
 ---
 toc: Magic
 summary: Learning & casting spells
+aliases:
+- magic
 ---
 # Spells
 
 ##Information & Learning Spells
 `spells [<name>]` - See a list of your spells or someone else's spells, including spells you are learning.
 `spell <spell>` - See the details of a spell.
+`spell/search <spell>` - See all characters who know a spell.
 
 `spell/learn <spell>` - Spends 1 XP to work toward learning a spell.
 `spell/luck <spell>` - Spend 2 luck to remove a week's learning time from a spell.
