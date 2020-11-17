@@ -40,6 +40,10 @@ module AresMUSH
         return nil
       end
       
+      def check_name_taken
+        return Login.name_taken?(self.charname)
+      end
+      
       def handle
         terms_of_service = Login.terms_of_service
         if (terms_of_service && client.program[:tos_accepted].nil?)

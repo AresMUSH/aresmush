@@ -13,7 +13,7 @@ module AresMUSH
         if (!self.name)
           objects = Room.all.to_a
         else
-          objects = Room.all.select { |r| r.name_upcase =~ /#{self.name.upcase}/ }
+          objects = Room.all.select { |r| r.name_and_area.upcase =~ /#{self.name.upcase}/  }
         end
         
         if (!Rooms.can_build?(enactor))
@@ -26,8 +26,7 @@ module AresMUSH
       
       def format_name(r)
         db = Rooms.can_build?(enactor) ? "#{r.dbref} - #{r.room_type.ljust(3)} - " : ""
-        area = r.area ? "(#{r.area_name})" : ""
-        "#{db}#{r.name}#{area}"
+        "#{db}#{r.name_and_area}"
       end
     end
   end

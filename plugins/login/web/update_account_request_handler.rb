@@ -21,9 +21,14 @@ module AresMUSH
         enactor.update(login_email: email)
         
         if (!enactor.is_approved?)
-          name_validation_msg = Character.check_name(name, enactor)
+          name_validation_msg = Character.check_name(name)
           if (name_validation_msg)
             return { error: name_validation_msg }
+          end
+          
+          taken_error = Login.name_taken?(name, enactor)
+          if (taken_error)
+            return { error: taken_error }
           end
         
           enactor.update(name: name)

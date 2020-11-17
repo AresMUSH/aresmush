@@ -194,5 +194,21 @@ module AresMUSH
       end
       return true
     end
+    
+    def self.name_taken?(name, enactor = nil)
+      return nil if !name
+
+      found = Character.find_one_by_name(name)
+      
+      # They can have their own name
+      return nil if enactor && found == enactor
+      
+      # Only look for an exact name match.
+      if (found && (found.name_upcase == name.upcase || found.alias_upcase == name.upcase))
+        return t('validation.char_name_taken')
+      end
+      
+      return nil
+    end
   end
 end
