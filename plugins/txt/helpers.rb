@@ -3,20 +3,37 @@ module AresMUSH
 
       def self.format_txt_indicator(char, names)
         t('txt.txt_indicator',
-#        :start_marker => Global.read_config("page", "page_start_marker") || "<",
-#        :end_marker => Global.read_config("page", "page_end_marker") || "<",
-        :start_marker => "(",
-        :recipients => names,
-        :end_marker => ")",
-        :color => Txt.txt_color(char) )
+       :start_marker => Global.read_config("txt", "txt_start_marker") || "(", :end_marker => Global.read_config("txt", "txt_end_marker") || ")",  :recipients => names, :color => Txt.txt_color(char) )
       end
 
-      def self.format_recipient_indicator(recipients)
-        recipient_names = []
+      def self.format_recipient_display_names(recipients)
+        puts "Recipients #{recipients}"
+        use_nick = Global.read_config("txt", "use_nick")
+        use_only_nick = Global.read_config("txt", "use_only_nick")
+        recipient_display_names = []
         recipients.each do |char|
-          recipient_names.concat [char.name]
+          if use_nick
+            recipient_display_names.concat [char.nick]
+          elsif use_only_nick
+            nickname_field = Global.read_config("demographics", "nickname_field") || ""
+            if (char.demographic(nickname_field))
+              recipient_display_names.concat [char.demographic(nickname_field)]
+            else
+              recipient_display_names.concat [char.name]
+            end
+          else
+            recipient_display_names.concat [char.name]
+          end
         end
 
+        return t('txt.recipient_indicator', :recipients => recipient_display_names.join(" "))
+      end
+
+      def self.format_recipient_names(recipients)
+        recipient_names = []
+      recipients.each do |char|
+          recipient_names.concat [char.name]
+        end
         return t('txt.recipient_indicator', :recipients => recipient_names.join(" "))
       end
 
@@ -27,11 +44,23 @@ module AresMUSH
       def self.txt_recipient(sender, recipient, recipient_names, message, scene_id)
         client = Login.find_client(sender)
         recipient_client  = Login.find_client(recipient)
+        use_only_nick = Global.read_config("txt", "use_only_nick")
+
         if scene_id
-          Login.emit_if_logged_in recipient, "#{message} %xh%xx(Scene #{scene_id})"
+          if use_only_nick
+            txt_end = "%xh%xx(#{sender.name} in scene #{scene_id})%xn%xn"
+          else
+            txt_end = "%xh%xx(Scene #{scene_id})%xn%xn"
+          end
+          Login.emit_if_logged_in recipient, "#{message} #{txt_end}"
           Page.send_afk_message(client, recipient_client, recipient)
         else
-          Login.emit_if_logged_in recipient, message
+          if use_only_nick
+            txt_end = "%xh%xx(#{sender.name}"
+          else
+            txt_end = ""
+          end
+          Login.emit_if_logged_in recipient,  "#{message} #{txt_end}"
           Page.send_afk_message(client, recipient_client, recipient)
         end
 

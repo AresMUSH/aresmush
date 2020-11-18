@@ -31,6 +31,7 @@ demographics:
   - gender
   - job
   - actor
+  - nickname
   disable_auto_shortcuts: true
   editable_properties:
   - fullname
@@ -90,8 +91,8 @@ demographics:
     callsign: Callsign for pilots.  Non-pilots may leave blank or enter a nickname.
   max_age: 95
   min_age: 18
-  nickname_field: ''
-  nickname_format: "%{name} (%{nickname})"
+  nickname_field: 'Nickname'
+  nickname_format: "%{name} (%{nickname})" 
   private_properties: []
   required_properties:
   - hair

@@ -4,7 +4,7 @@ module AresMUSH
           include CommandHandler
 # Possible commands... txt name=message; txt =message; txt name[/optional scene #]=<message>
 
-          attr_accessor :names, :message, :scene_id, :scene, :txt, :txt_recipient
+          attr_accessor :names, :message, :scene_id, :scene, :txt, :txt_recipient, :use_nick, :use_only_nick
 
         def parse_args
           if (!cmd.args)
@@ -52,6 +52,8 @@ module AresMUSH
 
 
         def handle
+          self.use_nick = Global.read_config("txt", "use_nick")
+          self.use_only_nick = Global.read_config("txt", "use_only_nick")
           # Is scene real and can you text to it?
           if self.scene_id
             scene = Scene[self.scene_id]
@@ -112,31 +114,40 @@ module AresMUSH
             end
           end
 
-          recipient_names = Txt.format_recipient_indicator(recipients)
+          recipient_display_names = Txt.format_recipient_display_names(recipients)
+          recipient_names = Txt.format_recipient_names(recipients)
+
 
           # If scene, add text to scene
           if self.scene
-            scene_txt = t('txt.txt_to_scene_with_recipient',
-            :txt => Txt.format_txt_indicator(enactor, recipient_names),
-            :sender => enactor.name,
-            # :recipients => recipient_names,
-            :message => message,
-            :scene_id => self.scene_id )
+            if self.use_nick
+              sender = enactor.nick
+              scene_id = self.scene_id
+            elsif self.use_only_nick
+              nickname_field = Global.read_config("demographics", "nickname_field") || ""
+              if (enactor.demographic(nickname_field))
+                sender = enactor.demographic(nickname_field)
+                scene_id = "#{enactor.name} #{self.scene_id}"
+              else
+                sender = enactor.name
+                scene_id = self.scene_id
+              end
+            else
+              sender = enactor.name
+              scene_id = self.scene_id
+            end
+            scene_txt = t('txt.txt_to_scene_with_recipient', :txt => Txt.format_txt_indicator(enactor, recipient_display_names), :sender => sender, :message => message, :scene_id => scene_id )
 
             Scenes.add_to_scene(self.scene, scene_txt, enactor)
             Rooms.emit_ooc_to_room self.scene.room, scene_txt
           end
 
-          # If online, send emit to sender and recipients.
+          # If online, send emit to sender and recipients if they aren't in the scene.
+          self.txt = t('txt.txt_to_sender', :txt => Txt.format_txt_indicator(enactor, recipient_display_names), :sender => sender, :message => message)
 
-          self.txt = t('txt.txt_to_sender',
-          :txt => Txt.format_txt_indicator(enactor, recipient_names),
-          :sender => enactor.name,
-          # :recipients => recipient_names,
-          :message => message)
           #To recipients
           recipients.each do |char|
-            if Login.is_online?(char)
+            if Login.is_online?(char) && char.room != self.scene.room
               recipient = char
 
               if recipient.page_ignored.include?(enactor)
@@ -146,14 +157,16 @@ module AresMUSH
                 client.emit_ooc t('page.recipient_do_not_disturb', :name => recipient.name)
                 return
               end
-              Txt.txt_recipient(enactor, recipient, recipient_names, self.txt, self.scene_id)
+              Txt.txt_recipient(enactor, recipient, recipient_display_names, self.txt, self.scene_id)
             end
           end
           #To sender
-          if self.scene_id && (enactor.room.scene_id != self.scene_id)
-            client.emit "#{self.txt} %xh%xx(Scene #{self.scene_id})"
-          else
-            client.emit self.txt
+          if enactor_room != self.scene.room
+            if self.scene_id && (enactor.room.scene_id != self.scene_id)
+              client.emit "#{self.txt} %xh%xx(Scene #{self.scene_id})"
+            else
+              client.emit self.txt
+            end
           end
 
           enactor.update(txt_last: list_arg(recipient_names))

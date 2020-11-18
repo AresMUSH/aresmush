@@ -9,6 +9,8 @@ module AresMUSH
                 scene = Scene[request.args[:scene_id]]
                 enactor = request.enactor
                 pose = request.args[:pose]
+                use_nick = Global.read_config("txt", "use_nick")
+                use_only_nick = Global.read_config("txt", "use_only_nick")
 
                 if !enactor.txt_last_scene
                     enactor.update(txt_last_scene: [])
@@ -37,7 +39,6 @@ module AresMUSH
 
                 if pose.start_with?("=")
                     names = enactor.txt_last_scene
-                    # recipient_names = Txt.format_recipient_indicator(names)
                     message = pose.after("=")
                 elsif pose.include?("=")
                     if (!pose.rest("=").blank? && (pose.first("=").include?("http://") || pose.first("=").include?("https://") ) )
@@ -73,48 +74,61 @@ module AresMUSH
                 end
                 recipient_names = recipient_names.join(" ")
 
+
+
                 scene_room = scene.room
                 recipients = []
+                recipient_chars = []
                 if !names.empty?
                   names.each do |name|
-                      char = Character.named(name)
+                    char = Character.named(name)
 
-                      if !char
-                        return { error: t('txt.no_such_character') }
-                      else
-                        recipients.concat [char.name]
+                    if !char
+                      return { error: t('txt.no_such_character') }
+                    else
+                      recipients.concat [char.name]
+                      recipient_chars.concat [char]
+                    end
+
+                    can_txt_scene = Scenes.can_join_scene?(char, scene)
+                    if (!can_txt_scene)
+                      Scenes.add_to_scene(scene, t('txt.recipient_added_to_scene',
+                      :name => char.name ),
+                      enactor, nil, true )
+
+                      Rooms.emit_ooc_to_room scene_room,t('txt.recipient_added_to_scene',
+                      :name => char.name )
+
+                      if (!scene.participants.include?(char))
+                        scene.participants.add char
                       end
 
-                      can_txt_scene = Scenes.can_join_scene?(char, scene)
-                      if (!can_txt_scene)
-                          Scenes.add_to_scene(scene, t('txt.recipient_added_to_scene',
-                          :name => char.name ),
-                          enactor, nil, true )
-
-                          Rooms.emit_ooc_to_room scene_room,t('txt.recipient_added_to_scene',
-                          :name => char.name )
-
-                          if (!scene.participants.include?(char))
-                            scene.participants.add char
-                          end
-
-                          if (!scene.watchers.include?(char))
-                            scene.watchers.add char
-                          end
+                      if (!scene.watchers.include?(char))
+                        scene.watchers.add char
                       end
+                    end
                   end
+                  recipient_display_names = Txt.format_recipient_display_names(recipient_chars)
+
                   #Emit to online players
                   names_plus = recipients << enactor.name
-
+                  if use_nick
+                    sender = enactor.nick
+                  elsif use_only_nick
+                    nickname_field = Global.read_config("demographics", "nickname_field") || ""
+                    if (enactor.demographic(nickname_field))
+                      sender = enactor.demographic(nickname_field)
+                    else
+                      sender = enactor.name
+                    end
+                  else
+                    sender = enactor.name
+                  end
                   names_plus.each do |name|
                     recipient = Character.named(name)
 
                       if Login.is_online?(recipient)
-                          recipient_txt = t('txt.txt_to_recipient_with_scene',
-                          :txt => Txt.format_txt_indicator(enactor, recipient_names),
-                          :sender => enactor.name,
-                          :message => message,
-                          :scene_id => scene_id)
+                          recipient_txt = t('txt.txt_to_recipient_with_scene', :txt => Txt.format_txt_indicator(enactor, recipient_display_names), :sender => sender,  :message => message, :scene_id => scene_id)
 
                           if (recipient.page_do_not_disturb)
                             nil
@@ -136,19 +150,19 @@ module AresMUSH
 
                 if names.empty?
                     self.scene_txt = t('txt.txt_to_scene_no_recipient',
-                    :txt => Txt.format_txt_indicator(enactor, recipient_names),
-                    :sender => enactor.name,
+                    :txt => Txt.format_txt_indicator(enactor, recipient_display_names),
+                    :sender => sender,
                     :message => message )
                 else
                     self.scene_txt = t('txt.txt_to_scene_with_recipient',
-                    :txt => Txt.format_txt_indicator(enactor, recipient_names),
-                    :sender => enactor.name,
+                    :txt => Txt.format_txt_indicator(enactor, recipient_display_names),
+                    :sender => sender,
                     :message => message )
                 end
 
                 room_txt = t('txt.txt_to_recipient_with_scene',
-                :txt => Txt.format_txt_indicator(enactor, recipient_names),
-                :sender => enactor.name,
+                :txt => Txt.format_txt_indicator(enactor, recipient_display_names),
+                :sender => sender,
                 :message => message,
                 :scene_id => scene_id)
 
