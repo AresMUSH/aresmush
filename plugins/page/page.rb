@@ -16,7 +16,7 @@ module AresMUSH
         case cmd.switch
         when "autospace"
           return PageAutospaceCmd
-        when "color"
+        when "color", "colour"
           return PageColorCmd
         when "dnd"
           return PageDoNotDisturbCmd

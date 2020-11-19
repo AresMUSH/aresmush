@@ -23,7 +23,7 @@ module AresMUSH
           return ChannelAnnounceCmd
         when "clear"
           return ChannelClearCmd
-        when "color"
+        when "color", "colour"
           return ChannelColorCmd
         when "create"
           return ChannelCreateCmd

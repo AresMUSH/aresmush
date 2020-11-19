@@ -12,7 +12,7 @@ module AresMUSH
         case (type || "").downcase
         when "weapon"
           data = FS3Combat.weapon(name)
-        when "armor"
+        when "armor", "armour"
           data = FS3Combat.armor(name)
         when "vehicle"
           data = FS3Combat.vehicle(name)
@@ -47,5 +47,3 @@ module AresMUSH
     end
   end
 end
-
-

@@ -18,7 +18,7 @@ module AresMUSH
         return AsciiCmd
       when "beep"
         return BeepCmd
-      when "color"
+      when "color", "colour"
         if (cmd.args)
           return ColorModeCmd
         else
