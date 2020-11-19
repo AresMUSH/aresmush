@@ -29,7 +29,7 @@ module AresMUSH
          end
        when "treat"
          return TreatCmd
-       when "armor"
+       when "armor", "armour"
          if (cmd.args)
            return ArmorDetailCmd
          else
