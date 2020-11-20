@@ -1,6 +1,6 @@
 ---
 txt:
-  use_nick: false
-  use_only_nick: true
+  use_nick: true
+  use_only_nick: false
   txt_start_marker: (
   txt_end_marker: )
