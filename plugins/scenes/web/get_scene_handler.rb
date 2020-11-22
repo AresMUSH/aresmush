@@ -6,7 +6,7 @@ module AresMUSH
         edit_mode = request.args[:edit_mode]
         enactor = request.enactor
 
-        error = Website.check_login(request, true)
+        error = Website.check_login(request, !edit_mode)
         return error if error
         
         if (!scene)

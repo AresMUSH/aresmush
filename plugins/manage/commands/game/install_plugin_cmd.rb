@@ -3,14 +3,14 @@ module AresMUSH
     class PluginInstallCmd
       include CommandHandler
       
-      attr_accessor :name
+      attr_accessor :url
       
       def parse_args
-        self.name = trim_arg(cmd.args)
+        self.url = trim_arg(cmd.args)
       end
       
       def required_args
-        [ self.name ]
+        [ self.url ]
       end
       
       def check_can_manage
@@ -20,19 +20,19 @@ module AresMUSH
       
       def handle        
         begin
-          url = "https://github.com/AresMUSH/ares-extras/tree/master/plugins/#{self.name}"
-          importer = AresMUSH::Manage::PluginImporter.new(self.name)
+          importer = AresMUSH::Manage::PluginImporter.new(self.url)
           importer.import
+          plugin_name = importer.plugin_name
           Global.config_reader.load_game_config
-          Global.plugin_manager.load_plugin(self.name)      
+          Global.plugin_manager.load_plugin(plugin_name)      
           Help.reload_help
           Global.locale.reload
           Global.dispatcher.queue_event ConfigUpdatedEvent.new                
           Website.redeploy_portal(enactor, false)
-          client.emit_success t('manage.plugin_installed', :name => self.name, :url => url)
+          client.emit_success t('manage.plugin_installed', :name => plugin_name, :url => self.url)
         rescue Exception => e
           Global.logger.debug "Error instaling plugin: #{e}  backtrace=#{e.backtrace[0,10]}"
-          client.emit_failure t('manage.error_installing_plugin', :name => self.name, :error => e)
+          client.emit_failure t('manage.error_installing_plugin', :name => plugin_name, :error => e)
         end
       end
     end
