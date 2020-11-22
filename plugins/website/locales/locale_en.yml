@@ -25,3 +25,4 @@ en:
         wiki_deleted: "%{name} deleted."
         wiki_created: "%{name} created."
         page_name_blank: "You can't have a blank page name, or a page name with just a category."
+        invalid_api_key: "Invalid authentication key. Try refreshing the page."

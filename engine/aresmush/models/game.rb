@@ -9,6 +9,8 @@ module AresMUSH
     attribute :api_game_id
     attribute :api_key
     
+    attribute :player_api_keys, :type => DataType::Hash, :default => {}
+    
     # There's only one game document and this is it!
     def self.master
       Game[1]
