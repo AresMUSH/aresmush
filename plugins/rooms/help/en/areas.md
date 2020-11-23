@@ -21,12 +21,9 @@ Areas are automatically created when you assign an area to a room using `area/se
 `area/update <name>=<description>` - Updates an existing area.  Leave description blank to clear it.
 `area/delete <name>` - Deletes an area.
 `area/rename <name>=<new name>` - Renames an area.  You can use this to change capitalization on the name as well as changing the name itself.
-`area/edit <name>` - Grabs an area description into your edit buffer. See [edit](/help/edit).
-
-## Area Parents
-
-You can create a hierarchy of areas by assigning a 'parent' to each area.
-
-For example, you might have an area "New York" as the parent of areas named "Harlem" and "Brooklyn".  Individual rooms would then be assigned to either Harlem, Brooklyn, or (for rooms that are in neither) New York.
-
+`area/edit <name>` - Grabs an area description into your edit buffer. (see [Edit Feature](/help/edit))
 `area/parent <area>=<parent area>` - Sets the parent for an area.  Leave blank to clear it.
+
+## Setting Areas
+
+`area/set [<room>]=<area>` - Sets a room's area. Defaults to the room you're in if you don't specify a name.

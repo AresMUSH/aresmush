@@ -6,7 +6,9 @@ module AresMUSH
           @combat = double
           @enactor = double
           @client = double
+          @char = double
           
+          allow(@char).to receive(:name) { "Bob" }
           allow(FS3Combat).to receive(:emit_to_combat) {}
           allow(FS3Combat).to receive(:is_in_combat?) { false }
           allow(ClassTargetFinder).to receive(:find) { FindResult.new(nil, "error") }
@@ -17,9 +19,19 @@ module AresMUSH
         end
   
         it "should fail if already in combat" do
+          expect(ClassTargetFinder).to receive(:find).with("Bo", Character, @enactor) { FindResult.new(@char, nil) }
+
           expect(FS3Combat).to receive(:is_in_combat?).with("Bob") { true }
           expect(@client).to receive(:emit_failure).with("fs3combat.already_in_combat")
-          FS3Combat.join_combat(@combat, "Bob", "soldier", @enactor, @client)
+          FS3Combat.join_combat(@combat, "Bo", "soldier", @enactor, @client)
+        end
+        
+        it "should find a partial person match already in combat" do
+          expect(ClassTargetFinder).to receive(:find).with("Bo", Character, @enactor) { FindResult.new(@char, nil) }
+          
+          expect(FS3Combat).to receive(:is_in_combat?).with("Bob") { true }
+          expect(@client).to receive(:emit_failure).with("fs3combat.already_in_combat")
+          FS3Combat.join_combat(@combat, "Bo", "soldier", @enactor, @client)
         end
         
         it "should create a NPC if char not found" do
@@ -37,12 +49,11 @@ module AresMUSH
         end
         
         it "should create a combatant for a character if found" do
-          char = double
-          expect(ClassTargetFinder).to receive(:find).with("Bob", Character, @enactor) { FindResult.new(char) }
+          expect(ClassTargetFinder).to receive(:find).with("Bob", Character, @enactor) { FindResult.new(@char) }
           expect(Combatant).to receive(:create) do |params|
             expect(params[:combatant_type]).to eq "soldier"
             expect(params[:team]).to eq 1
-            expect(params[:character]).to eq char
+            expect(params[:character]).to eq @char
             expect(params[:combat]).to eq @combat
           end
           FS3Combat.join_combat(@combat, "Bob", "soldier", @enactor, @client)
@@ -50,10 +61,9 @@ module AresMUSH
         
         
         it "should create a vehicle if specified" do
-          char = double
           combatant = double
           vehicle = double
-          expect(ClassTargetFinder).to receive(:find).with("Bob", Character, @enactor) { FindResult.new(char) }
+          expect(ClassTargetFinder).to receive(:find).with("Bob", Character, @enactor) { FindResult.new(@char) }
           allow(Combatant).to receive(:create) { combatant }
           expect(FS3Combat).to receive(:combatant_type_stat).with("viper", "vehicle") { "Viper" }
           expect(FS3Combat).to receive(:find_or_create_vehicle).with(@combat, "Viper") { vehicle }

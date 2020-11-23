@@ -51,6 +51,7 @@ module AresMUSH
           description: description,
           date: datetime.before(' '),
           time: datetime.after( ' '),
+          tags: event.tags,
           signups: signups,
           signed_up: !!current_signup,
           signup_comment: current_signup ? current_signup.comment : nil,
