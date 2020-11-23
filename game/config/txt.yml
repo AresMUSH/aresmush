@@ -4,3 +4,6 @@ txt:
   use_only_nick: false
   txt_start_marker: (
   txt_end_marker: )
+  txt_preface: "TXT"
+  scene_type: "Text"
+  location: "Text"

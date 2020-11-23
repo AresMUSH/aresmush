@@ -3,7 +3,7 @@ module AresMUSH
 
       def self.format_txt_indicator(char, names)
         t('txt.txt_indicator',
-       :start_marker => Global.read_config("txt", "txt_start_marker") || "(", :end_marker => Global.read_config("txt", "txt_end_marker") || ")",  :recipients => names, :color => Txt.txt_color(char) )
+       :start_marker => Global.read_config("txt", "txt_start_marker") || "(", :end_marker => Global.read_config("txt", "txt_end_marker") || ")",  :preface => Global.read_config("txt", "txt_preface"),  :recipients => names, :color => Txt.txt_color(char) )
       end
 
       def self.format_recipient_display_names(recipients)

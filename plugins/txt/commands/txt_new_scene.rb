@@ -35,7 +35,9 @@ module AresMUSH
         end
       end
 
-      scene = Scenes.start_scene(enactor, "Text", true, false, "Text", true)
+      scene_type = Global.read_config("txt", "scene_type")
+      location = Global.read_config("txt", "location")
+      scene = Scenes.start_scene(enactor, location, true, false, scene_type, true)
 
       # Scenes.create_scene_temproom(scene)
 
