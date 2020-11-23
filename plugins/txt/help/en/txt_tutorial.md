@@ -1,5 +1,5 @@
 ---
-toc: Playing the Game
+toc: 4 - Writing the Story
 tutorial: true
 summary: How to send texts.
 ---

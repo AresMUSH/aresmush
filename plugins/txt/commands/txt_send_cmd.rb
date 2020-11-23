@@ -4,7 +4,7 @@ module AresMUSH
           include CommandHandler
 # Possible commands... txt name=message; txt =message; txt name[/optional scene #]=<message>
 
-          attr_accessor :names, :message, :scene_id, :scene, :txt, :txt_recipient
+          attr_accessor :names, :message, :scene_id, :scene, :txt, :txt_recipient, :use_only_nick
 
         def parse_args
           if (!cmd.args)
@@ -115,11 +115,10 @@ module AresMUSH
           recipient_names = Txt.format_recipient_names(recipients)
           sender_display_name = Txt.format_sender_display_name(enactor)
 
+          self.use_only_nick = Global.read_config("txt", "use_only_nick")
           # If scene, add text to scene
           if self.scene
-            use_nick = Global.read_config("txt", "use_nick")
-            use_only_nick = Global.read_config("txt", "use_only_nick")
-            if use_only_nick
+            if self.use_only_nick
               scene_id = "#{self.scene_id} - #{enactor.name}"
             else
               scene_id = self.scene_id
@@ -132,13 +131,18 @@ module AresMUSH
             Scenes.add_to_scene(self.scene, scene_txt, enactor)
             Rooms.emit_ooc_to_room self.scene.room, scene_txt
           else
-            self.txt = t('txt.txt_no_scene_id', :txt => Txt.format_txt_indicator(enactor, recipient_display_names), :sender => sender_display_name, :message => message)
+            if self.use_only_nick
+              self.txt = t('txt.txt_no_scene_id_nick', :txt => Txt.format_txt_indicator(enactor, recipient_display_names), :sender => sender_display_name, :message => message, :sender_char => enactor.name )
+            else
+              self.txt = t('txt.txt_no_scene_id', :txt => Txt.format_txt_indicator(enactor, recipient_display_names), :sender => sender_display_name, :message => message)
+            end
+
           end
 
         # If online, send emit to sender and recipients if they aren't in the scene's room.
           #To recipients
           recipients.each do |char|
-            if Login.is_online?(char) && char.room != self.scene.room
+            if (Login.is_online?(char)) && (!self.scene || char.room != self.scene.room)
               recipient = char
 
               if recipient.page_ignored.include?(enactor)
@@ -151,8 +155,9 @@ module AresMUSH
               Txt.txt_recipient(enactor, recipient, recipient_display_names, self.txt, scene_id)
             end
           end
+
           #To sender
-          if enactor_room != self.scene.room
+          if (!self.scene || enactor_room != self.scene.room)
             client.emit self.txt
           end
 

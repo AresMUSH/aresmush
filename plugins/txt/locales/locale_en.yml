@@ -3,6 +3,7 @@ en:
   txt:
       #Text Message Formatting
       txt_no_scene_id: "%{txt} %xh%xw %{sender}%xn: %{message}%xn"
+      txt_no_scene_id_nick: "%{txt} %xh%{sender}%xn: %{message} %xx%xh(%{sender_char})%xn"
       txt_with_scene_id: "%{txt} %xh%{sender}%xn: %{message} %xx%xh(Scene %{scene_id})%xn"
 
 

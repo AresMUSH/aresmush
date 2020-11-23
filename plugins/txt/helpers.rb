@@ -12,6 +12,7 @@ module AresMUSH
         recipient_display_names = []
         recipients.each do |char|
           if use_nick
+            puts "USE ONLY NICK"
             recipient_display_names.concat [char.nick]
           elsif use_only_nick
             nickname_field = Global.read_config("demographics", "nickname_field") || ""
@@ -61,7 +62,7 @@ module AresMUSH
         char.txt_color || "%xh%xy"
       end
 
-      def self.txt_recipient(sender, recipient, recipient_names, message, scene_id)
+      def self.txt_recipient(sender, recipient, recipient_names, message, scene_id = nil)
         client = Login.find_client(sender)
         recipient_client  = Login.find_client(recipient)
         Login.emit_if_logged_in recipient, message
