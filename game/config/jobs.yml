@@ -103,3 +103,10 @@ jobs:
   permissions:
     access_jobs: Allows non-admins to access jobs in categories allowed for their
       roles.
+  responses:
+  - name: Welcome Basket What Potion
+    text: Sure, let me know what 'for fun' potion you'd like from the list in the [welcome basket page](https://spiritlakemu.com/wiki/welcome_basket).
+  - name: Welcome Basket Recieved
+    text: "Potions added!\n\nYou are now in possession of a [Welcome Basket](https://spiritlakemu.com/wiki/welcome_basket). The small gift basket has been artfully arranged and filled with a small variety of local goods such as hand cream and lip balm. Several potions are tucked in as well, including a Medium Heal potion, a Telekinetic Armor potion, and one labeled 'Just for Fun!' It also holds reading material filled with important information about getting involved in the Weird:\n\n
+      * A welcome pamphlet from the Council containing the [magical charter](https://spiritlakemu.com/wiki/weird_docs:charter) by which all mages must abide.\n
+      * A spiral-bound printed edition of the most current [Guide to the Weird](https://spiritlakemu.com/wiki/weird_docs:a_guide_to_the_weird_2nd_ed), as well as the [Magical Primer](https://spiritlakemu.com/wiki/weird_docs:magic_primer_and_spellbook).\n\nBe sure to check out the reading, as it will offer a lot of helpful information!"
