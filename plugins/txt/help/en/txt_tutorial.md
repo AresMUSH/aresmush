@@ -13,6 +13,8 @@ The text plugin lets you send text messages to other characters.
 
 On the game, you can text characters online by sending a text without specifying a scene number. These texts are not added to any scene and will not be logged or saved unless you do so manually.
 
+Do `txt <name>=<message>` to send a text without adding it to a scene.
+
 > **Note:** Texting characters without an attached scene only works when all characters are logged in to the game via telnet; it will not work via the portal. Texting via the portal requires a scene.
 
 ##Sending Texts in a Scene
