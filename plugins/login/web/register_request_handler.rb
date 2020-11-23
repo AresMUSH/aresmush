@@ -26,6 +26,7 @@ module AresMUSH
       
         name_error = Character.check_name(name)
         password_error = Character.check_password(pw)
+        taken_error = Login.name_taken?(name)
       
         if (pw != confirm_pw)
           return { error: t('login.passwords_dont_match') }
@@ -33,6 +34,8 @@ module AresMUSH
           return { error: name_error }
         elsif password_error
           return { error: password_error }
+        elsif taken_error
+          return { error: taken_error }
         end 
         char = Character.new
         char.name = name

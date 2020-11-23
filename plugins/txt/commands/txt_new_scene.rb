@@ -20,6 +20,11 @@ module AresMUSH
       end
     end
 
+    def check_approved
+      return nil if enactor.is_approved?
+      return t('dispatcher.not_allowed')
+    end
+
     def check_txt_target
       return t('txt.txt_new_scene_target_missing') if !self.names || self.names.empty?
       return nil

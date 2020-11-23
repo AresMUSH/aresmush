@@ -23,10 +23,18 @@ module AresMUSH
              id: s.id,
              title: s.date_title
            }}
+           
+         events = Event.all.select { |e| e.tags.include?(tag.downcase) }
+         .map { |e| {
+           id: e.id,
+           title: e.title
+         }}
+         
            {
              pages: pages,
              chars: chars,
-             scenes: scenes
+             scenes: scenes,
+             events: events
            }
       end
     end

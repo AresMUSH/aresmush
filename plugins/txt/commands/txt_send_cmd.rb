@@ -8,6 +8,7 @@ module AresMUSH
 
         def parse_args
           if (!cmd.args)
+            #why is this here?
             self.names = []
 
           elsif (cmd.args.start_with?("="))
@@ -22,27 +23,35 @@ module AresMUSH
             if (args.arg1 && (args.arg1.include?("http://") || args.arg1.include?("https://")) )
               self.names = enactor.txt_last
               self.message = "#{args.arg1}=#{args.arg2}"
-
+            #Text a specific scene
             elsif ( args.arg1.include?("/") )
               if args.arg1.rest("/").is_integer?
                 self.scene_id = args.arg1.rest("/")
                 self.names = list_arg(args.arg1.first("/"))
                 self.message = trim_arg(args.arg2)
+              #Text the scene you are physically in
               elsif args.arg1.rest("/").chr.casecmp?("s")
                 self.scene_id = enactor.room.scene_id
                 self.names = list_arg(args.arg1.first("/"))
                 self.message = trim_arg(args.arg2)
               end
             else
+              #Text someone without a scene
               self.names = list_arg(args.arg1)
               self.message = trim_arg(args.arg2)
             end
 
           else
+            #Text your last recipient and scene
             self.names = enactor.txt_last
             self.scene_id = enactor.txt_scene
             self.message = cmd.args
           end
+        end
+
+        def check_approved
+          return nil if enactor.is_approved?
+          return t('dispatcher.not_allowed')
         end
 
         def check_txt_target
