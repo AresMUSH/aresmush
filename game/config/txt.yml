@@ -7,3 +7,5 @@ txt:
   txt_preface: "TXT"
   scene_type: "Text"
   location: "Text"
+  shortcuts:
+    text: txt
