@@ -2,62 +2,59 @@ BEGIN:VCALENDAR
 VERSION:2.0
 PRODID:-//hacksw/handcal//NONSGML v1.0//EN
 BEGIN:VEVENT
-UID:fad92b90-1096-4efc-bd71-f5f788263584@Spirit Lake-spiritlakemu.com
-DTSTART:20201116T190000Z
-DTSTAMP:20201031T151418Z
-SUMMARY:Maureen's Halloween Masq! (Part 1)
-DESCRIPTION:Maureen Silva is having a Halloween Masquerade at the Carver House! Come as your best dressed self, either in a fancy gown or get up with a masq, or come costumed to the brim. Whatever floats your boat. All within the weird community are welcomed.
-  
-  UPDATE: I'm pushing this two weeks back but I am going to back date the scenes for Halloween; I've been so, so very looking forward to this event all year long. With the death of the dog I need to give myself time to grieve.
-END:VEVENT
-BEGIN:VEVENT
-UID:3fe1a88c-52ea-42b2-b58a-e6c24b1e9e72@Spirit Lake-spiritlakemu.com
-DTSTART:20201117T010000Z
-DTSTAMP:20201031T151406Z
-SUMMARY:Maureen's Halloween Masq! (Part 2)
-DESCRIPTION:Maureen Silva is having a Halloween Masquerade at the Carver House! Come as your best dressed self, either in a fancy gown or get up with a masq, or come costumed to the brim. Whatever floats your boat. All within the weird community are welcomed.
-  
-  UPDATE: I'm pushing this two weeks back but I am going to back date the scenes for Halloween; I've been so, so very looking forward to this event all year long. With the death of the dog I need to give myself time to grieve.
-END:VEVENT
-BEGIN:VEVENT
-UID:304ce07e-6fc6-4bc8-b9f9-c829d2e6b378@Spirit Lake-spiritlakemu.com
-DTSTART:20201102T010000Z
-DTSTAMP:20201015T021007Z
-SUMMARY:The Wild Hunt (OPEN, RSVP)
-DESCRIPTION:On the last night of Samhain, a green-ish fog rolls through the town of Grand Lake, Colorado. Local news reports discuss how spooky it is, arriving on the heels of Halloween's departure. And wouldn't it be great if it had shown up a few days earlier? 
-  
-  Several of Grand Lake's mages find themselves on the streets of Grand Lake: near the beach, and outside the Lariat.
-  
-  This event is the kick off to a mini-plot arc that's going to last 2-3 weeks. I'm going to aim to wrap us in TWO but the third is just for some wiggle. I plan to abscond with a handful of PCs by the end of the night, so if you're signing up for this event, you're OOCly consenting to me possibly snagging you. These PCs will be able to RP with each other throughout the course of the plot, but will be away from the rest of the grid and will not be able to contact or RP with them for the duration, so keep that in mind when deciding whether you'd like to volunteer. 
-  
-  If you'd like to attend but do NOT want to absconded with, please let me know, either via @mail or by noting so on the event. I don't want to over-spook anyone.
-  
-  For those of you who can't make the event, but decide later that you'd like to be absconded with, you're free to off-game your PC being taken!
-  
-  Note: I'm not too worried about how many signs up we get, but RSVPing will be helpful for me to prep for. Thanks. :)
-END:VEVENT
-BEGIN:VEVENT
 UID:df206185-a9bb-4404-9586-289f48406edc@Spirit Lake-spiritlakemu.com
-DTSTART:20201115T190000Z
-DTSTAMP:20201022T113137Z
+DTSTART:20201124T013000Z
+DTSTAMP:20201113T023650Z
 SUMMARY:An Encounter on the Beach
-DESCRIPTION:This was not how anyone expected to start their Saturday. [Limited Scene: Up to 5]
+DESCRIPTION:This was not how anyone expected to start their week. [Limited Scene: Up to 5]
 END:VEVENT
 BEGIN:VEVENT
-UID:e8f8bd55-633f-4e81-b774-fdb1a4829892@Spirit Lake-spiritlakemu.com
-DTSTART:20201101T190000Z
-DTSTAMP:20201023T205923Z
-SUMMARY:The Wild Hunt - Daytime People (OPEN, RSVP)
-DESCRIPTION:On the last night of Samhain, a green-ish fog rolls through the town of Grand Lake, Colorado. Local news reports discuss how spooky it is, arriving on the heels of Halloween's departure. And wouldn't it be great if it had shown up a few days earlier?
-  
-  Several of Grand Lake's mages find themselves on the streets of Grand Lake: near the gas station
-  
-  This event is the kick off to a mini-plot arc that's going to last 2-3 weeks. I'm going to aim to wrap us in TWO but the third is just for some wiggle. I plan to abscond with a handful of PCs by the end of the night, so if you're signing up for this event, you're OOCly consenting to me possibly snagging you. These PCs will be able to RP with each other throughout the course of the plot, but will be away from the rest of the grid and will not be able to contact or RP with them for the duration, so keep that in mind when deciding whether you'd like to volunteer.
-  
-  If you'd like to attend but do NOT want to absconded with, please let me know, either via @mail or by noting so on the event. I don't want to over-spook anyone.
-  
-  For those of you who can't make the event, but decide later that you'd like to be absconded with, you're free to off-game your PC being taken!
-  
-  Note: I'm not too worried about how many signs up we get, but RSVPing will be helpful for me to prep for. Thanks. 🙂
+UID:19f887a0-7a1c-4b16-9ee8-5451120c18c7@Spirit Lake-spiritlakemu.com
+DTSTART:20201123T010000Z
+DTSTAMP:20201120T145017Z
+SUMMARY:Negotiations with the Queen
+DESCRIPTION:Lisette, Rose, and DeLuz meet the Queen of Immeasurable Autumn to discuss matters of interest to all parties. The Queen bargains in good faith under the Laws and Traditions of Faerie.
+END:VEVENT
+BEGIN:VEVENT
+UID:1be26a8a-a708-4dda-b0da-b27478a5a22b@Spirit Lake-spiritlakemu.com
+DTSTART:20201129T010000Z
+DTSTAMP:20201117T174616Z
+SUMMARY:Tree Lighting Ceremony
+DESCRIPTION:Grand Lake celebrates the beginning of its yearly Festival of Lights with a Tree Lightning in the Town Park. Social event scene.
+END:VEVENT
+BEGIN:VEVENT
+UID:732f931b-6961-427a-9727-931cd68c877a@Spirit Lake-spiritlakemu.com
+DTSTART:20201213T190000Z
+DTSTAMP:20201117T174833Z
+SUMMARY:Festival of Lights
+DESCRIPTION:A weekend night enjoying Grand Lake's Festival of Lights, including song, shops, cookies, and hot drinks! Social event scene.
+END:VEVENT
+BEGIN:VEVENT
+UID:2a350bb9-cc9f-4d20-b78c-b0b9a2a97e18@Spirit Lake-spiritlakemu.com
+DTSTART:20201203T020000Z
+DTSTAMP:20201118T020654Z
+SUMMARY:Earth School Meetup
+DESCRIPTION:Earth people. Meeting.
+END:VEVENT
+BEGIN:VEVENT
+UID:f6a512fc-b37e-4f09-9e16-4aeb85d9e050@Spirit Lake-spiritlakemu.com
+DTSTART:20201122T180000Z
+DTSTAMP:20201120T180915Z
+SUMMARY:In Faerie - Morning (Open)
+DESCRIPTION:The mages of Grand Lake  - both captive and not - attend a reception in Faerie while negotiations take place.
+END:VEVENT
+BEGIN:VEVENT
+UID:9ef7f0c6-0f3d-4279-aa25-7f85dcb44900@Spirit Lake-spiritlakemu.com
+DTSTART:20201123T013000Z
+DTSTAMP:20201120T180925Z
+SUMMARY:In Faerie - Evening (Open)
+DESCRIPTION:The mages of Grand Lake  - both captive and not - attend a reception in Faerie while negotiations take place.
+END:VEVENT
+BEGIN:VEVENT
+UID:dcbb3f7e-28e1-4288-b80c-dce0a623fd7a@Spirit Lake-spiritlakemu.com
+DTSTART:20201206T200000Z
+DTSTAMP:20201122T014824Z
+SUMMARY:Deck the Carver House
+DESCRIPTION:Decorate the Carver house, including a giant tree. Mages are encouraged to bring an ornament to add - something that represents them and their magic.
 END:VEVENT
 END:VCALENDAR
