@@ -47,7 +47,7 @@ module AresMUSH
       all_skills.concat char.fs3_action_skills.select { |s| s.rating > 1 }.map { |s| s.name }
       all_skills.concat char.fs3_languages.map { |s| s.name }
       
-      uncommon_skills = Global.read_config("fs3skills", "unusual_skills")
+      uncommon_skills = Global.read_config("fs3skills", "unusual_skills") || []
       uncommon_skills.each do |s|
         if (all_skills.include?(s))
           too_high << t('fs3skills.unusual_skill', :skill => s)
