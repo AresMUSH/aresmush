@@ -54,13 +54,12 @@ module AresMUSH
                         message = pose.rest("=")
                     end
                 else
-                  recipients = scene.participants
+                  recipients = scene.participants.to_a
                   message = pose
                 end
 
-                recipients_minus = recipients.delete(enactor)
                 recipient_names = Txt.format_recipient_names(recipients)
-                recipient_display_names = Txt.format_recipient_display_names(recipients)
+                recipient_display_names = Txt.format_recipient_display_names(recipients, enactor)
                 sender_display_name = Txt.format_sender_display_name(enactor)
                 scene_room = scene.room
                 use_only_nick = Global.read_config("txt", "use_only_nick")
@@ -90,6 +89,13 @@ module AresMUSH
                     end
                   end
 
+                  txt_received = "#{recipient_names}"
+                  txt_received.slice! "#{char.name}"
+                  puts char.txt_received
+                  char.update(txt_received: (txt_received.squish))
+                  char.update(txt_received_scene: scene_id)
+                  puts char.txt_received
+
                   #Emit to online players
 
 
@@ -110,6 +116,8 @@ module AresMUSH
                     end
                   end
                 end
+
+
 
                 scene_txt = t('txt.txt_no_scene_id',
                 :txt => Txt.format_txt_indicator(enactor, recipient_display_names),

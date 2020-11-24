@@ -6,7 +6,7 @@ module AresMUSH
        :start_marker => Global.read_config("txt", "txt_start_marker") || "(", :end_marker => Global.read_config("txt", "txt_end_marker") || ")",  :preface => Global.read_config("txt", "txt_preface"),  :recipients => names, :color => Txt.txt_color(char) )
       end
 
-      def self.format_recipient_display_names(recipients)
+      def self.format_recipient_display_names(recipients, sender)
         use_nick = Global.read_config("txt", "use_nick")
         use_only_nick = Global.read_config("txt", "use_only_nick")
         recipient_display_names = []
@@ -25,6 +25,7 @@ module AresMUSH
             recipient_display_names.concat [char.name]
           end
         end
+        recipient_display_names.delete(sender.name)
         return t('txt.recipient_indicator', :recipients => recipient_display_names.join(" "))
       end
 
