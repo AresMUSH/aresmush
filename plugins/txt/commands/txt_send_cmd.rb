@@ -120,7 +120,7 @@ module AresMUSH
             end
           end
 
-          recipient_display_names = Txt.format_recipient_display_names(recipients)
+          recipient_display_names = Txt.format_recipient_display_names(recipients, enactor)
           recipient_names = Txt.format_recipient_names(recipients)
           sender_display_name = Txt.format_sender_display_name(enactor)
 
