@@ -64,7 +64,8 @@ module AresMUSH
           # Is scene real and can you text to it?
           if self.scene_id
             scene = Scene[self.scene_id]
-            can_txt_scene = Scenes.can_join_scene?(enactor, scene)
+            can_txt_scene = Scenes.can_read_scene?(enactor, scene)
+
             if !scene
               client.emit_failure t('txt.scene_not_found')
               return
@@ -96,7 +97,7 @@ module AresMUSH
 
             #Add recipient to scene if they are not already a participant
             if self.scene
-              can_txt_scene = Scenes.can_join_scene?(char, self.scene)
+              can_txt_scene = Scenes.can_read_scene?(char, self.scene)
               if (!can_txt_scene)
                 Scenes.add_to_scene(scene, t('txt.recipient_added_to_scene', :name => char.name ),
                 enactor, nil, true )

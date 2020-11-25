@@ -59,7 +59,7 @@ module AresMUSH
           self.location = enactor_room.name_and_area
         end
 
-        scene = Scenes.start_scene(enactor, self.location, private_scene, watchable_scene, Scenes.scene_types.first, self.temp)
+        scene = Scenes.start_scene(enactor, self.location, private_scene,  Scenes.scene_types.first, self.temp)
 
         # scene = Scene.create(owner: enactor,
         #     location: self.location,

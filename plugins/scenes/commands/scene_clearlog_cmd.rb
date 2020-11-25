@@ -16,7 +16,7 @@ module AresMUSH
 
       def handle
 
-        if (!Scenes.can_join_scene?(enactor, Scene[self.scene_num]))
+        if (!Scenes.can_read_scene?(enactor, Scene[self.scene_num]))
           client.emit_failure t('dispatcher.not_allowed')
           return
         end
