@@ -59,7 +59,7 @@
 #       scene.participants.include?(actor)
 #     end
 #
-#     def self.can_join_scene?(actor, scene)
+#     def self.can_read_scene?(actor, scene)
 #       return !scene.is_private? if !actor
 #       return true if scene.owner == actor
 #       return true if !scene.is_private? && !scene.watchable_scene
@@ -663,7 +663,7 @@
 #         is_private: scene.private_scene,
 #         participants: participants,
 #         scene_type: scene.scene_type ? scene.scene_type.titlecase : 'unknown',
-#         can_join: Scenes.can_join_scene?(viewer, scene),
+#         can_join: Scenes.can_read_scene?(viewer, scene),
 #         can_edit: viewer && Scenes.can_edit_scene?(viewer, scene),
 #         can_delete: Scenes.can_delete_scene?(viewer, scene),
 #         is_watching: viewer && scene.watchers.include?(viewer),

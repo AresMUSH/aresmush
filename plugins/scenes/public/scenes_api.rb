@@ -53,11 +53,10 @@ module AresMUSH
       Login.emit_ooc_if_logged_in(char, t('scenes.scene_notify_uninvited', :name => enactor.name, :num => scene.id))
     end
 
-    def self.start_scene(enactor, location, private_scene, watchable_scene, scene_type, temp_room)
+    def self.start_scene(enactor, location, private_scene, scene_type, temp_room)
       scene = Scene.create(owner: enactor,
           location: location,
           private_scene: private_scene,
-          watchable_scene: watchable_scene,
           scene_type: scene_type,
           scene_pacing: Scenes.scene_pacing.first,
           temp_room: temp_room,
