@@ -66,9 +66,15 @@ module AresMUSH
         end
         
         if Manage.is_extra_installed?("traits")
-          traits = Traits.get_traits_for_web_editing(char, char)
+          traits = Traits.get_traits_for_web_editing(char, enactor)
         else
           traits = nil
+        end
+        
+        if Manage.is_extra_installed?("rpg")
+          rpg = Rpg.get_sheet_for_web_editing(char, enactor)
+        else
+          rpg = nil
         end
           
         hooks = Website.format_input_for_html(char.rp_hooks)
@@ -88,6 +94,7 @@ module AresMUSH
           lastwill: Website.format_input_for_html(char.idle_lastwill),
           fs3: fs3,
           traits: traits,
+          rpg: rpg,
           custom: Profile::CustomCharFields.get_fields_for_chargen(char)
         }
       end

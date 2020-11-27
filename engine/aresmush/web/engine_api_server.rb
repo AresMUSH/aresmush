@@ -83,7 +83,7 @@ module AresMUSH
          web_request.ip_addr = request.ip
          web_request.hostname = Client.lookup_hostname(request.ip)
          if (!web_request.check_api_key)
-           return { error: "Invalid authentication key.  This can happen when the game restarts.  Try refreshing the page." }.to_json
+           return { error: t('webportal.invalid_api_key') }.to_json
          end
         
          response = Global.dispatcher.on_web_request(web_request)

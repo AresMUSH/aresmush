@@ -1,41 +1,50 @@
 module AresMUSH
   module Manage
     class PluginImporter
-      def initialize(plugin_name)
+      def initialize(github_url)
         @tmp_dir = "/tmp/ares-extras"
-        @plugin_name = (plugin_name || "").downcase
-        @source_dir = File.join(@tmp_dir, "plugins", @plugin_name)
+        @github_url = github_url
+        @repo_name = (github_url || "").split("/").last.downcase
+        @source_dir = File.join(@tmp_dir, @repo_name)
       end
-        
+      
+      def plugin_name
+        @repo_name.after("-").before("-")
+      end
+      
       def import
+
+        if (@repo_name !~ /^ares-[\w\d]+-plugin$/)
+          raise "ERROR! Plugin not compatible with installer. Repo name invalid."
+        end
         
         if (Dir.exist?(@tmp_dir))
           FileUtils.rm_rf @tmp_dir
          end
-        `git clone https://github.com/AresMUSH/ares-extras.git /tmp/ares-extras`
+        `git clone #{@github_url} #{@source_dir}`
   
   
         if (!Dir.exist?(@source_dir))
           raise "ERROR! Directory #{@source_dir} not found."
         end
-  
+        
         existing = import_plugin
         if (existing)
           Global.logger.info "Plugin previously installed - skipping game directory."
-          Global.logger.info "If want to overwrite your configuration, you'll have to copy the game files manually from #{@source_dir} to your aresmush/game directory."
+          Global.logger.info "If want to overwrite your configuration, you'll have to copy the game/config files manually from #{@source_dir} to your aresmush/game directory."
         else
           import_game
         end
         import_portal
         update_extras
         
-        Global.logger.info "Plugin #{@plugin_name} added."
+        Global.logger.info "Plugin #{self.plugin_name} added."
       end
       
       def import_plugin
         
         plugin_dir = File.join(@source_dir, "plugin")
-        dest_path = File.join(AresMUSH.root_path, "plugins", @plugin_name)  
+        dest_path = File.join(AresMUSH.root_path, "plugins", self.plugin_name)  
         exists = Dir.exist?(dest_path)
         
         if (!Dir.exist?(plugin_dir))
@@ -43,8 +52,8 @@ module AresMUSH
           return false
         end
         
-        if (!File.exists?(File.join(plugin_dir, "#{@plugin_name}.rb")))
-          raise "ERROR! Plugin module file #{@plugin_name}.rb not found.  This plugin can't be automatically imported."
+        if (!File.exists?(File.join(plugin_dir, "#{self.plugin_name}.rb")))
+          raise "ERROR! Plugin module file #{self.plugin_name}.rb not found.  This plugin can't be automatically imported."
           return false
         end
         
@@ -104,7 +113,7 @@ module AresMUSH
       def update_extras
         config = DatabaseMigrator.read_config_file("plugins.yml")
         extras = config['plugins']['extras']
-        extras << @plugin_name
+        extras << self.plugin_name
         config['plugins']['extras'] = extras.uniq
         DatabaseMigrator.write_config_file("plugins.yml", config)
       end

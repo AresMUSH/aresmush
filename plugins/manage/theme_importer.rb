@@ -1,23 +1,36 @@
 module AresMUSH
   module Manage
     class ThemeImporter
-      def initialize(theme_name)
+      def initialize(github_url)
         @tmp_dir = "/tmp/ares-extras"
-        @theme_name = (theme_name || "").downcase
-        @source_dir = File.join(@tmp_dir, "themes", @theme_name)
-      end
-        
+        @github_url = github_url
+        @repo_name = (github_url || "").split("/").last.downcase
+        @source_dir = File.join(@tmp_dir, @repo_name)
+      end      
+              
       def import
         
         backup_current_theme
-        if (@theme_name == "default")
+        if (@github_url == "default")
           copy_theme_files(File.join(AresMUSH.root_path, "install", "game.distr", "styles"))
           copy_image_files(File.join(AresMUSH.root_path, "install", "game.distr", "uploads", "theme_images"))
         else
+          if (!@github_url.start_with?('https://github.com'))
+            raise "ERROR! You must supply a GitHub url, like https://github.com/AresMUSH/ares-dark-theme."
+          end
+          
+          if (@github_url.end_with?(".git"))
+            raise "ERROR! Just use the repo url, without .git on the end. For example:  https://github.com/AresMUSH/ares-dark-theme."
+          end
+        
+          if (@repo_name !~ /^ares-[\w\d]+-theme$/)
+            raise "ERROR! Theme not compatible with installer. Repo name invalid."
+          end
+
           if (Dir.exist?(@tmp_dir))
             FileUtils.rm_rf @tmp_dir
            end
-          `git clone https://github.com/AresMUSH/ares-extras.git /tmp/ares-extras`
+          `git clone #{@github_url} #{@source_dir}`
   
   
           if (!Dir.exist?(@source_dir))
@@ -28,7 +41,7 @@ module AresMUSH
           copy_image_files(File.join(@source_dir, "images"))
         end
         
-        Global.logger.info "Theme #{@theme_name} added."
+        Global.logger.info "Theme #{@github_url} added."
       end
       
       def backup_current_theme
