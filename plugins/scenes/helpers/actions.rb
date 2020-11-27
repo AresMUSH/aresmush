@@ -138,5 +138,20 @@ module AresMUSH
       Jobs.create_job(Jobs.trouble_category, t('scenes.scene_reported_title'), body, Game.master.system_character)
     end
     
+    def self.handle_scene_command(pose, enactor, char, scene)
+      command = pose.after("/").before(" ")
+      args = pose.after(" ")
+
+      custom = CustomSceneCommands.new
+      message = custom.handle(enactor, char, scene, command, args)
+      if (message)
+        return message
+      end
+      
+      parser = Scenes::BaseSceneCommands.new
+      message = parser.handle(enactor, char, scene, command, args)
+      return message
+    end
+    
   end
 end
