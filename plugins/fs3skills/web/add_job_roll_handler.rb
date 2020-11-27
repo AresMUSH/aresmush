@@ -24,7 +24,7 @@ module AresMUSH
         
         return result if result[:error]
 
-        Jobs.comment(job, enactor, result[:message], false)
+        Jobs.comment(job, Game.master.system_character, result[:message], false)
         
         {
         }

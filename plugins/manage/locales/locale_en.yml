@@ -23,7 +23,7 @@ en:
         load_all_complete: "Load complete."
         log_file_title: "Log File"
         plugin_installed: "Plugin %{name} has been installed.  Please check the readme file at %{url} for any additional instructions."
-        error_installing_plugin: "Error installing plugin %{name}.  Error: %{error}."
+        error_installing_plugin: "Error installing plugin %{name}.  %{error}."
         plugins: "Plugins"
         game_config_ok: "No errors were detected in your game configuration."
         plugin_config_invalid: "Your config is saved, but one or more of your configuration options have invalid settings: %{errors}"
@@ -103,7 +103,7 @@ en:
         error_restoring_config: "There was a problem restoring the config file.  Check the name.  Error: %{error}"
         
         starting_them_install: "Starting theme installation."
-        error_installing_theme: "Error installing theme %{name}. Error: %{error}"
-        theme_installed: "Theme %{name} installed. Please check the readme file at %{url} for any additional instructions."
+        error_installing_theme: "Error installing theme %{url}. %{error}"
+        theme_installed: "Theme installed. Please check the readme file at %{url} for any additional instructions."
         
         mismatched_versions: "Your game and webportal versions are mismatched.  Try reloading the page or clearing your browser cache. If the problem persists, there may be an upgrade issue."
