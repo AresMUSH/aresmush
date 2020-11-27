@@ -80,6 +80,12 @@ module AresMUSH
           traits = nil
         end
         
+        if Manage.is_extra_installed?("rpg")
+          rpg = Rpg.get_sheet_for_web_viewing(char, enactor)
+        else
+          rpg = nil
+        end
+        
         if Manage.is_extra_installed?("fate")
           fate = Fate.get_web_sheet(char, enactor)
         else
@@ -127,6 +133,7 @@ module AresMUSH
           traits: traits,
           fate: fate,
           files: files,
+          rpg: rpg,
           last_profile_version: char.last_profile_version ? char.last_profile_version.id : nil,
           achievements: Achievements.is_enabled? ? Achievements.build_achievements(char) : nil,
           
