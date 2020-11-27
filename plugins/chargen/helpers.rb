@@ -124,6 +124,13 @@ module AresMUSH
         end
       end
       
+      if Manage.is_extra_installed?("rpg")
+        errors = Rpg.save_char(char, chargen_data)
+        if (errors.any?)
+          alerts.concat errors
+        end
+      end
+      
       errors = Profile::CustomCharFields.save_fields_from_chargen(char, chargen_data) || []
       if (errors.class == Array && errors.any?)
         alerts.concat errors
