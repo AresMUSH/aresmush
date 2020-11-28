@@ -19,7 +19,7 @@ module AresMUSH
                 error = Website.check_login(request)
                 return error if error
 
-                if (!Scenes.can_read_scene?(enactor, scene)) 
+                if (!Scenes.can_read_scene?(enactor, scene))
                     return { error: t('scenes.access_not_allowed') }
                 end
 
@@ -42,7 +42,7 @@ module AresMUSH
                         message = pose
                     else
                         names = pose.first("=") ? pose.first("=").split(" ") : nil
-                        recipients = []
+                        recipients = [enactor]
                         names.each do |name|
                           char = Character.named(name)
                           if !char
@@ -70,6 +70,7 @@ module AresMUSH
                 end
 
                 recipients.each do |char|
+                  puts "Repicient #{char.name}"
                   can_txt_scene = Scenes.can_read_scene?(char, scene)
                   #If they aren't in the scene currently, add them
                   if (!can_txt_scene)
