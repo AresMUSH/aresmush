@@ -70,7 +70,6 @@ module AresMUSH
                 end
 
                 recipients.each do |char|
-                  puts "Repicient #{char.name}"
                   can_txt_scene = Scenes.can_read_scene?(char, scene)
                   #If they aren't in the scene currently, add them
                   if (!can_txt_scene)
@@ -92,10 +91,8 @@ module AresMUSH
 
                   txt_received = "#{recipient_names}"
                   txt_received.slice! "#{char.name}"
-                  puts char.txt_received
                   char.update(txt_received: (txt_received.squish))
                   char.update(txt_received_scene: scene_id)
-                  puts char.txt_received
 
                   #Emit to online players
 
