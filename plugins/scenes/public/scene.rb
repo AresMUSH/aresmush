@@ -81,11 +81,15 @@ module AresMUSH
       scene_poses.select { |p| !p.is_deleted? }.sort_by { |p| p.sort_order }
     end
 
-    def on_delete
+    def delete_poses_and_log
       scene_poses.each { |p| p.delete }
       if (self.scene_log)
         self.scene_log.delete
       end
+    end
+    
+    def on_delete
+      delete_poses_and_log
       Scenes.find_all_scene_links(self).each { |s| s.delete }
       self.plot_links.each { |p| p.delete }
     end
