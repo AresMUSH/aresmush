@@ -1,28 +1,28 @@
 ---
 emoji:
   aliases:
-    grin: neutral_face
-    rofl: neutral_face
-    rotfl: neutral_face
-    joy: neutral_face
-    wink: neutral_face
-    smirk: neutral_face
-    lol: neutral_face
-    smile: neutral_face
-    cool: neutral_face
+    # grin: neutral_face
+    # rofl: neutral_face
+    # rotfl: neutral_face
+    # joy: neutral_face
+    # wink: neutral_face
+    # smirk: neutral_face
+    # lol: neutral_face
+    # smile: neutral_face
+    # cool: neutral_face
 
-    # grin: grinning_face_with_big_eyes
-    # lol: grinning_squinting_face
-    # smile: grinning_face
+    grin: grinning_face_with_big_eyes
+    lol: grinning_squinting_face
+    smile: grinning_face
     wave: waving_hand
-    # rofl: rolling_on_the_floor_laughing
-    # rotfl: rolling_on_the_floor_laughing
-    # joy: face_with_tears_of_joy
-    # wink: winking_face
-    # smirk: smirking_face
+    rofl: rolling_on_the_floor_laughing
+    rotfl: rolling_on_the_floor_laughing
+    joy: face_with_tears_of_joy
+    wink: winking_face
+    smirk: smirking_face
     zzz: sleeping_face
     cowboy: cowboy_hat_face
-    # cool: smiling_face_with_sunglasses
+    cool: smiling_face_with_sunglasses
     confused: confused_face
     frown: slightly_frowning_face
     cry: crying_face
