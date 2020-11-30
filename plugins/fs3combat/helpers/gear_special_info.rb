@@ -12,6 +12,7 @@ module AresMUSH
         if (self.gear_type == "weapon" || self.gear_type == "armor")
           allowed_specials = []
           self.list.each do |fields|
+            Global.logger.debug "FIELDS: #{fields}"
             if (fields[0] == "allowed_specials")
               allowed_specials = fields[1]
             end
