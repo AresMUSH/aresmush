@@ -43,7 +43,6 @@ module AresMUSH
       def handle
 
         private_scene = self.privacy == "Private"
-        watchable_scene = self.privacy == "Watchable"
 
         if (!self.temp && enactor_room.room_type == "OOC")
           client.emit_failure t('scenes.no_scene_in_ooc_room')
