@@ -297,6 +297,16 @@ spells:
     school: Nature
     target_num: 1
     target_optional: true
+  Gills:
+    available: false
+    casting_time: 1 round
+    desc: The caster grows gills from a specific animal of their choice, allowing them to breath underwater for a time. Animal is from the same genus each time the spell is cast.
+    duration: 2 hours
+    effect: Transformation
+    level: 4
+    name: Gills
+    range: Self
+    school: Nature
   Thermal Sense:
     area: 10 yard radius
     available: true
