@@ -64,13 +64,14 @@ module AresMUSH
                 scene_room = scene.room
                 use_only_nick = Global.read_config("txt", "use_only_nick")
                 if use_only_nick
-                  scene_id = "#{scene_id} - #{enactor.name}"
+                  scene_id_display = "#{scene_id} - #{enactor.name}"
                 else
-                  scene_id = scene_id
+                  scene_id_display = scene_id
                 end
 
                 recipients.each do |char|
                   can_txt_scene = Scenes.can_read_scene?(char, scene)
+                  puts char.name
                   #If they aren't in the scene currently, add them
                   if (!can_txt_scene)
                     Scenes.add_to_scene(scene, t('txt.recipient_added_to_scene',
@@ -102,7 +103,7 @@ module AresMUSH
                     :txt => Txt.format_txt_indicator(enactor, recipient_display_names),
                     :sender => sender_display_name,
                     :message => message,
-                    :scene_id => scene_id)
+                    :scene_id => scene_id_display)
 
                     if (char.page_do_not_disturb)
                       nil
@@ -127,7 +128,7 @@ module AresMUSH
                 :txt => Txt.format_txt_indicator(enactor, recipient_display_names),
                 :sender => sender_display_name,
                 :message => message,
-                :scene_id => scene_id)
+                :scene_id => scene_id_display)
 
                 Rooms.emit_ooc_to_room scene_room,room_txt
 

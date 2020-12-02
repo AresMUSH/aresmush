@@ -17,6 +17,8 @@ module AresMUSH
       end
 
       def handle
+        puts enactor.txt_received
+        puts enactor.txt_received_scene
         if !self.message
           #Tell what the last text recieved was
           if enactor.txt_received_scene
