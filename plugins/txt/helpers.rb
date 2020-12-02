@@ -75,11 +75,7 @@ module AresMUSH
         recipient_client  = Login.find_client(recipient)
         Login.emit_if_logged_in recipient, message
         Page.send_afk_message(client, recipient_client, recipient)
-        txt_received = "#{recipient_names}" + " #{sender.name}"
-        txt_received.slice! "#{recipient.name}"
         puts scene_id
-        recipient.update(txt_received: (txt_received.squish))
-        recipient.update(txt_received_scene: scene_id)
       end
 
 

@@ -42,6 +42,9 @@ module AresMUSH
                         message = pose
                     else
                         names = pose.first("=") ? pose.first("=").split(" ") : nil
+                        if names[0].titlecase == enactor.name
+                          return { error: t('txt.dont_txt_self') }
+                        end
                         recipients = [enactor]
                         names.each do |name|
                           char = Character.named(name)
@@ -60,6 +63,7 @@ module AresMUSH
 
                 recipient_names = Txt.format_recipient_names(recipients)
                 recipient_display_names = Txt.format_recipient_display_names(recipients, enactor)
+
                 sender_display_name = Txt.format_sender_display_name(enactor)
                 scene_room = scene.room
                 use_only_nick = Global.read_config("txt", "use_only_nick")
@@ -90,6 +94,7 @@ module AresMUSH
                     end
                   end
 
+                  puts "RECIPIENT NAMES #{recipient_names}"
                   txt_received = "#{recipient_names}"
                   txt_received.slice! "#{char.name}"
                   char.update(txt_received: (txt_received.squish))
@@ -116,8 +121,6 @@ module AresMUSH
                   end
                 end
 
-
-
                 scene_txt = t('txt.txt_no_scene_id',
                 :txt => Txt.format_txt_indicator(enactor, recipient_display_names),
                 :sender => sender_display_name,
@@ -131,7 +134,6 @@ module AresMUSH
                 :scene_id => scene_id_display)
 
                 Rooms.emit_ooc_to_room scene_room,room_txt
-
 
                 {
                 }

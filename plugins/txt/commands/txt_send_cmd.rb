@@ -56,6 +56,7 @@ module AresMUSH
         end
 
         def handle
+          puts "DOING THIS"
           # Is scene real and can you text to it?
           if self.scene_id
             scene = Scene[self.scene_id]
@@ -147,17 +148,19 @@ module AresMUSH
           #To recipients
           recipients.each do |char|
             if (Login.is_online?(char)) && (!self.scene || char.room != self.scene.room)
-              recipient = char
-
-              if recipient.page_ignored.include?(enactor)
-                client.emit_failure t('txt.cant_txt_ignored', :names => recipient.name)
+              if char.page_ignored.include?(enactor)
+                client.emit_failure t('txt.cant_txt_ignored', :names => char.name)
                 return
-              elsif (recipient.page_do_not_disturb)
-                client.emit_ooc t('page.recipient_do_not_disturb', :name => recipient.name)
+              elsif (char.page_do_not_disturb)
+                client.emit_ooc t('page.recipient_do_not_disturb', :name => char.name)
                 return
               end
-              Txt.txt_recipient(enactor, recipient, recipient_display_names, self.txt, self.scene_id)
+              Txt.txt_recipient(enactor, char, recipient_display_names, self.txt, self.scene_id)
             end
+            txt_received = "#{recipient_names}" + " #{enactor.name}"
+            txt_received.slice! "#{char.name}"
+            char.update(txt_received: (txt_received.squish))
+            char.update(txt_received_scene: self.scene_id)
           end
 
           #To sender
