@@ -32,3 +32,4 @@ en:
       incorrect_format: "That's not the correct format. Please use `name(s)=message`"
 
       txt_new_scene_target_missing: "Please specify a target and message. Ex: txt/newscene Name=Message"
+      dont_txt_self: "You can't text yourself!"
