@@ -63,7 +63,6 @@ module AresMUSH
 
                 recipient_names = Txt.format_recipient_names(recipients)
                 recipient_display_names = Txt.format_recipient_display_names(recipients, enactor)
-
                 sender_display_name = Txt.format_sender_display_name(enactor)
                 scene_room = scene.room
                 use_only_nick = Global.read_config("txt", "use_only_nick")
@@ -75,7 +74,6 @@ module AresMUSH
 
                 recipients.each do |char|
                   can_txt_scene = Scenes.can_read_scene?(char, scene)
-                  puts char.name
                   #If they aren't in the scene currently, add them
                   if (!can_txt_scene)
                     Scenes.add_to_scene(scene, t('txt.recipient_added_to_scene',
@@ -94,7 +92,6 @@ module AresMUSH
                     end
                   end
 
-                  puts "RECIPIENT NAMES #{recipient_names}"
                   txt_received = "#{recipient_names}"
                   txt_received.slice! "#{char.name}"
                   char.update(txt_received: (txt_received.squish))

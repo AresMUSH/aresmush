@@ -14,12 +14,12 @@ module AresMUSH
         recipients.each do |char|
           if use_nick
             recipient_display_names.concat [char.nick]
-            sender_name = sender.nick
+            sender_name = sender.nick || sender.name
           elsif use_only_nick
             nickname_field = Global.read_config("demographics", "nickname_field") || ""
             if (char.demographic(nickname_field))
               recipient_display_names.concat [char.demographic(nickname_field)]
-              sender_name = sender.demographic(nickname_field)
+              sender_name = sender.demographic(nickname_field) || sender.name
             else
               recipient_display_names.concat [char.name]
             end
