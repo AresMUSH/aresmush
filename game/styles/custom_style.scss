@@ -427,6 +427,23 @@ span.statrating {
 
 /* Chargen */
 
+.icf .col-sm-6 {
+    padding-left: 0;
+}
+
+.icf .col-sm-3.heading {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.icf .col-sm-3.heading span {
+    font-weight: bold;
+}
+
+.icf .col-sm-6:last-child {
+    padding-right: 0;
+}
+
 .txthding, .txtheading {
     font-weight: bold;
     text-align: center;

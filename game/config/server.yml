@@ -9,7 +9,7 @@ server:
     
     engine_api_port: 6008
     
-    use_https: false
+    use_https: true
     
     certificate_file_path: '/home/ares/certs/fullchain.pem'
     
