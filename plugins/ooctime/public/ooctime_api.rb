@@ -51,8 +51,12 @@ module AresMUSH
       date_format = Global.read_config("datetime", "short_date_format")
       if (date_format =~ /-/)
         return '-'
-      else
+      elsif (date_format =~ /\//)
         return '/'
+      elsif (date_format =~ / /)
+        return ' '
+      else
+        return nil
       end
     end
     
