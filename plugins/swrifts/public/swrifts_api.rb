@@ -170,7 +170,7 @@ module AresMUSH
 		cgsysedges = Global.read_config('swrifts', 'edges')
 		cghinder = char.swrifts_hinderances
 		cgsyshind = Global.read_config('swrifts', 'hinderances')
-		cghjtables = char.swrifts_heroesj
+		cghjtables = char.swrifts_heroesj.inspect
 	
 		# Set the Characters Iconic Framework
 		if ( rawcharicf.length > 0 )
