@@ -226,7 +226,7 @@ module AresMUSH
 		
 		# hjtables = acl_get_hj_slots(swrifts_iconicf, rawcharicf)
 		# hjtables = cghjtables.inspect
-		hjtables = "#{cghjtables.inspect}"
+		hjtables = "#{cghjtables}"
 
 		return {
 		  iconicf: iconicf, #System iconic frameworks
