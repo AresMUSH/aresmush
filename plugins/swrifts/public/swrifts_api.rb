@@ -224,7 +224,7 @@ module AresMUSH
 
 		hjslots = acl_get_hj_slots(swrifts_iconicf, rawcharicf) #swrifts_icf is the system icf's, charicf is the one selected by the player		
 		
-		hjtables = acl_get_hj_slots(swrifts_iconicf, rawcharicf)
+		hjtables = acl_get_hj_tables(cghjtables, rawcharicf)
 		# hjtables = cghjtables.inspect
 		hjtables = "#{hjtables}"
 
@@ -605,11 +605,11 @@ module AresMUSH
 		return (cifstring);
 	end	
 	
-	def self.acl_get_hj_tables(swrifts_iconicf, charicf) #swrifts_icf is the system icf's, charicf is the one selected by the player
+	def self.acl_get_hj_tables(hjtables, charicf) #hjtables is the HJ's set on the char, charicf is the one selected by the player
 		if charicf #has there an ICF selected?
 			cifstring = Hash.new
 			tempcifstring = []
-			
+			return ("#{hjtables.inspect}")
 			charcgicf = swrifts_iconicf.select { |ss| ss['name'].downcase == charicf.downcase }.first
 			# get the entry in global file that matches the ICF name selected. We're going to make this pretty.
 						
