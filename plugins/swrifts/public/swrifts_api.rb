@@ -225,7 +225,8 @@ module AresMUSH
 		hjslots = acl_get_hj_slots(swrifts_iconicf, rawcharicf) #swrifts_icf is the system icf's, charicf is the one selected by the player		
 		
 		# hjtables = acl_get_hj_slots(swrifts_iconicf, rawcharicf)
-		hjtables = cghjtables.inspect
+		# hjtables = cghjtables.inspect
+		hjtables = "#{cghjtables.inspect}"
 
 		return {
 		  iconicf: iconicf, #System iconic frameworks
