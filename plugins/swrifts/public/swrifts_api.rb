@@ -170,7 +170,7 @@ module AresMUSH
 		cgsysedges = Global.read_config('swrifts', 'edges')
 		cghinder = char.swrifts_hinderances
 		cgsyshind = Global.read_config('swrifts', 'hinderances')
-		cghjtables = char.swrifts_heroesj.inspect
+		cghjtables = char.swrifts_heroesj
 	
 		# Set the Characters Iconic Framework
 		if ( rawcharicf.length > 0 )
@@ -225,7 +225,7 @@ module AresMUSH
 		hjslots = acl_get_hj_slots(swrifts_iconicf, rawcharicf) #swrifts_icf is the system icf's, charicf is the one selected by the player		
 		
 		# hjtables = acl_get_hj_slots(swrifts_iconicf, rawcharicf)
-		hjtables = cghjtables
+		hjtables = cghjtables.inspect
 
 		return {
 		  iconicf: iconicf, #System iconic frameworks
