@@ -30,6 +30,10 @@ fs3combat:
       description: Level 4 Earth spell
       is_magic: true
       penetration: 2
+    Fatal Vitality:
+      description: Level 6Corpus spells
+      is_magic: true
+      lethality: 30
     Fire:
       description: Level 4 Fire spell
       is_magic: true
@@ -39,7 +43,7 @@ fs3combat:
       description: Level 6 Corpus spell
       is_magic: true
       lethality: 10
-      penetration: 2  
+      penetration: 2
     Glacial Ice:
       description: Level 6 Water spell
       is_magic: true

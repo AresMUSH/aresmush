@@ -309,6 +309,23 @@ spells:
     name: Diamond Armor
     range: Touch
     school: Earth
+  Dust Devils:
+    attack_mod: -2
+    available: false
+    casting_time: 1 round
+    defense_mod: -2
+    desc: "The caster swirls small clouds of dirt around up to three targets, obscuring their vision and making it harder for them to attack or defend."
+    duration: 1 round
+    effect: Debuff
+    level: 6
+    line_of_sight: true
+    name: Dust Devils
+    range: Short
+    rounds: 3
+    school: Earth
+    target_num: 3
+    target_optional: true
+    effect: Debuff
   Familiar (Earth):
     desc: "A familiar is a spirit associated or allied with a school of magic that has taken residence in a physical vessel with the shape of an animal. It functions as a companion, assistant, and guardian. \n\nFamiliars may be capable of some or all of the following: sharing telepathic or empathic communication, providing knowledge of the arcane, sharing senses, lending physical aid as spies or fighters, delivering spells at a distance of up to three miles."
     effect: Other
@@ -320,6 +337,18 @@ spells:
     range: Short
     line_of_sight: true
     available: true
+  Golem:
+    desc: "The caster creates a golem made of rock mixed with sand, dirt and/or clay from the environment. It is bound to do the caster's bidding, able to perform simple tasks and come to the caster's aid in battle. It cannot cast spells. When the spell ends, the golem crumbles away.\n\nIn combat, the golem should be represented by an NPC of level three with Rock Skin."
+    effect: Other
+    duration: 10 minutes
+    level: 6
+    name: Golem
+    roll: true
+    school: Earth
+    casting_time: 1 round
+    range: Short
+    line_of_sight: true
+    available: false
   Quicksand:
     area: 2.5 ft radius
     available: true
