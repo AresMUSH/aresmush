@@ -3,6 +3,7 @@ fs3combat:
   weapon special groups:
     Body:
     - cold calm
+    - fortified body
     - shrink
     - strength
     - grow
@@ -10,6 +11,7 @@ fs3combat:
     Ranged:
     - cold calm
     - diamond
+    - fatal vitality 
     - fire
     - glacial ice
     - grow
@@ -21,7 +23,9 @@ fs3combat:
     Melee:
     - cold calm
     - diamond
+    - fortified body
     - fire
+    - fatal vitality
     - glacial ice
     - grow
     - ice
@@ -197,7 +201,7 @@ fs3combat:
       recoil: 0
       damage_type: Physical
       accuracy: 1
-      init_mod: 0      
+      init_mod: 0
       special_group: Melee
     Club:
       description: Mace/club/baton/chair leg etc
