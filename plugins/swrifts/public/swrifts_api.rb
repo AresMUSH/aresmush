@@ -605,21 +605,17 @@ module AresMUSH
 		return (cifstring);
 	end	
 	
-	def self.acl_get_hj_tables(hjtables, charicf) #hjtables is the HJ's set on the char, charicf is the one selected by the player
-		if charicf #has there an ICF selected?
-			cifstring = Hash.new
-			tempcifstring = []
-			return ("#{hjtables.inspect}")
-			charcgicf = swrifts_iconicf.select { |ss| ss['name'].downcase == charicf.downcase }.first
-			# get the entry in global file that matches the ICF name selected. We're going to make this pretty.
-						
-			pattern = 'hj'
-			charhjicf = charcgicf.select{ |k,v| k[pattern] }
-			return (charhjicf);
-		end
+	def self.acl_get_hj_tables(hjtables, charicf) #hjtables is the HJ's set on the char, charicf is the one selected by the player (not used)
+		txtstring = []
+		hjtables.to_a.sort_by { |a| a.name }
+			.each_with_index
+				.map do |a, i| 
+					txtstring << {table: a.table, name: a.name}
+			end	
+			return (txtstring)
 	end
 
-	def self.acl_return_traits(st,traitname)
+	def self.acl_return_traits(st,traitname) #st is the traits pulled from the character. traitname is whether we want the ICF traits or Race Traits.
 		traitname = traitname.downcase
 		txtstring = ''
 		st.to_a.sort_by { |a| a.name }
