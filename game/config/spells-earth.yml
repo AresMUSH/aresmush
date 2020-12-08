@@ -253,7 +253,7 @@ spells:
     school: Earth
   #Level 5
   Grounding:
-    available: false
+    available: true
     attack_mod: 2
     casting_time: 1 round
     desc: The caster becomes more connected to the earth. They pull a cloud of dust and rocks around themselves and gain more solid footing on the ground, increasing their ability to attack and defend.

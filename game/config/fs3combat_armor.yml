@@ -436,7 +436,7 @@ fs3combat:
         Right Hand: 12
         Left Foot: 12
         Right Foot: 12
-    Iron Body:
+    Fortified Body:
       description: Level 6 Corpus spell
       is_magic: true
       defense: 0
@@ -508,6 +508,24 @@ fs3combat:
         Right Hand: 11
         Left Foot: 11
         Right Foot: 11
+    Unbreakable Skin:
+      description: Level 6 Corpus spell
+      is_magic: true
+      defense: 0
+      protection:
+        Head: 13
+        Neck: 13
+        Chest: 13
+        Abdomen: 13
+        Left Leg: 13
+        Right Leg: 13
+        Groin: 13
+        Left Arm: 13
+        Right Arm: 13
+        Left Hand: 13
+        Right Hand: 13
+        Left Foot: 13
+        Right Foot: 13        
 #LEVEL 7
     Demon Form:
       description: Level 7 Corpus spell

@@ -484,7 +484,7 @@ spells:
     range: Long
     school: Water
   Mass Hydroplane:
-    available: false
+    available: true
     casting_time: 1 round
     desc: "Confers water breathing and the ability to move through water, snow, and ice upon up to 5 targets. They are able to ski across the surface or swim below the surface of any water or snow at a speeds of up to 30 mph. Each recipient of the spell must remain within 30 yards of at least one other recipient, or the spell ends for the target that is separated from the others."
     duration: 30 minutes

@@ -211,7 +211,7 @@ spells:
     weapon: Spell
   #LEVEL 5
   Buckshot:
-    available: false
+    available: true
     casting_time: 1 round
     desc: "The caster gathers available small objects (under a 1/2lb each) and flings them at up to 3 targets, doing damage."
     effect: Damage
@@ -391,7 +391,7 @@ spells:
     target_num: 5
     target_optional: true
   Massive Telekinetic Hold:
-    available: false
+    available: true
     casting_time: 1 round
     desc: Subdue up to three enemies with a hold of telekinetic force, disabling them for four rounds.
     duration: 1 round

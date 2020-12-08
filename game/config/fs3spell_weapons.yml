@@ -35,6 +35,11 @@ fs3combat:
       is_magic: true
       lethality: 10
       accuracy: 1
+    Fortified Body:
+      description: Level 6 Corpus spell
+      is_magic: true
+      lethality: 10
+      penetration: 2  
     Glacial Ice:
       description: Level 6 Water spell
       is_magic: true
