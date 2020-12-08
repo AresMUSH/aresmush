@@ -10,14 +10,16 @@ module AresMUSH
         use_nick = Global.read_config("txt", "use_nick")
         use_only_nick = Global.read_config("txt", "use_only_nick")
         recipient_display_names = []
+        sender_name = sender.name
         recipients.each do |char|
           if use_nick
-            puts "USE ONLY NICK"
             recipient_display_names.concat [char.nick]
+            sender_name = sender.nick || sender.name
           elsif use_only_nick
             nickname_field = Global.read_config("demographics", "nickname_field") || ""
             if (char.demographic(nickname_field))
               recipient_display_names.concat [char.demographic(nickname_field)]
+              sender_name = sender.demographic(nickname_field) || sender.name
             else
               recipient_display_names.concat [char.name]
             end
@@ -25,8 +27,13 @@ module AresMUSH
             recipient_display_names.concat [char.name]
           end
         end
-        recipient_display_names.delete(sender.name)
-        return t('txt.recipient_indicator', :recipients => recipient_display_names.join(" "))
+        recipient_display_names.delete(sender_name)
+        if use_nick || use_only_nick
+          recipients = recipient_display_names.join(", ")
+        else
+          recipients = recipient_display_names.join(" ")
+        end
+        return t('txt.recipient_indicator', :recipients => recipients)
       end
 
       def self.format_sender_display_name(sender)
@@ -68,10 +75,7 @@ module AresMUSH
         recipient_client  = Login.find_client(recipient)
         Login.emit_if_logged_in recipient, message
         Page.send_afk_message(client, recipient_client, recipient)
-        txt_received = "#{recipient_names}" + " #{sender.name}"
-        txt_received.slice! "#{recipient.name}"
-        recipient.update(txt_received: (txt_received.squish))
-        recipient.update(txt_received_scene: scene_id)
+        puts scene_id
       end
 
 

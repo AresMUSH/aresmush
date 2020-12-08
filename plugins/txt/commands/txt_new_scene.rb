@@ -33,8 +33,8 @@ module AresMUSH
     def handle
 
       self.names.each do |name|
-        result = Character.named(name)
-        if !result
+        char = Character.named(name)
+        if !char
           client.emit_failure t('txt.no_such_character')
           return
         end
@@ -42,7 +42,7 @@ module AresMUSH
 
       scene_type = Global.read_config("txt", "scene_type")
       location = Global.read_config("txt", "location")
-      scene = Scenes.start_scene(enactor, location, true, scene_type, true) 
+      scene = Scenes.start_scene(enactor, location, true, scene_type, true)
 
       # Scenes.create_scene_temproom(scene)
 
@@ -52,6 +52,7 @@ module AresMUSH
       Global.dispatcher.queue_command(client, Command.new("txt #{self.names_raw}/#{scene.id}=#{self.message}"))
 
       scene.participants.add enactor
+      scene.watchers.add enactor
 
       self.names.each do |name|
         char = Character.named(name)

@@ -115,6 +115,11 @@ magic-items:
     desc: A knit cap that takes away the chill of winter
     spells:
     - Endure Cold
+  Winter's Touch:
+    name: Winter's touch
+    desc: A set of silver rings with spokes like snowflakes that allow the wearer to %xBShape Ice%xn.
+    spells:
+    - Shape Ice
   Rosewing:
     name: Rosewing
     desc: "Just under nine inches, the slender wand of oak is beautifully polished with age. Delicate rose quartz is inlaid along the length of it in intricate designs, and it's topped with a sharp, many-pointed star of pink sapphire. Gives +1 to spellcasting."

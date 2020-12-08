@@ -31,7 +31,6 @@ demographics:
   - gender
   - job
   - actor
-  - nickname
   disable_auto_shortcuts: true
   editable_properties:
   - fullname
@@ -92,7 +91,7 @@ demographics:
   max_age: 95
   min_age: 18
   nickname_field: 'Nickname'
-  nickname_format: "%{name} (%{nickname})" 
+  nickname_format: "%{name} (%{nickname})"
   private_properties: []
   required_properties:
   - hair
