@@ -18,6 +18,7 @@ fs3skills:
     practice: learn
     train: learn
     xp/raise: learn
+    roll/secret: roll/private
   achievements:
     fs3_luck_spent:
       type: fs3

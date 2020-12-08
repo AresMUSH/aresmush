@@ -10,9 +10,7 @@ module AresMUSH
         return "" if !input
         
         helper = TagMatchHelper.new(input)
-        
-        pp helper.required_tags
-        
+                
         include_all = helper.or_tags.include?('all') || helper.required_tags.include?('all')
         
         matches = Character.all.select { |c| 
