@@ -37,10 +37,20 @@ module AresMUSH
       return nil if allow_anonymous
       return { error: "You need to log in first." } if !request.enactor
       token = request.auth[:token]
-      if request.enactor.is_valid_api_token?(token)
-        return nil
+      if !request.enactor.is_valid_api_token?(token)
+        return { error: t('webportal.session_expired') } 
       end
-      return { error: t('webportal.session_expired') } 
+      if !Website.is_valid_api_key?(request.enactor, request.api_key)
+        return { error: t('webportal.invalid_api_key') } 
+      end
+      return nil
+    end
+    
+    def self.is_valid_api_key?(enactor, api_key)
+      return true if Website.engine_api_keys.include?(api_key)
+      player_key = Game.master.player_api_keys[api_key]
+      return false if !player_key
+      player_key == enactor.id.to_s
     end
     
     def self.get_file_info(file_path)
