@@ -362,6 +362,20 @@ spells:
     range: Short
     line_of_sight: true
     available: true
+  Fortified Body:
+    armor: Fortified Body
+    available: false
+    casting_time: 1 round
+    defense_mod: 1
+    desc: Caster augments the target's body, making their skin significantly tougher to increase their defenses, while improving their strength and reflexes. They can lift up to an additional 150 lbs, and they hit harder when attacking.
+    duration: 8 hours
+    effect: Armor
+    init_mod: 1
+    level: 6
+    name: Fortified Body
+    range: Touch
+    school: Corpus
+    weapon_specials: Fortified Body
   Group Nap:
     available: true
     casting_time: 1 round
@@ -377,18 +391,6 @@ spells:
     target_num: 3
     target_optional: true
     school: Corpus
-  # Iron Body:
-  #   available: false
-  #   armor: Iron Body
-  #   casting_time: 1 round
-  #   desc: "Caster augments the target's body, making their skin significantly tougher to increase defenses and improving their strength. They can lift up to an additional 150 lbs, and they hit harder when attacking."
-  #   duration: 8 hours
-  #   effect: Armor
-  #   level: 6
-  #   name: Iron Body
-  #   range: Touch
-  #   school: Corpus
-  #   weapon: Iron Body
   Mass Hemorrhage:
     available: false
     casting_time: 1 round
@@ -454,6 +456,18 @@ spells:
     name: Speed Boost
     range: Self
     rounds: 12
+    school: Corpus
+  Unbreakable Skin:
+    armor: Unbreakable Skin
+    available: false
+    casting_time: 1 round
+    defense_mod: 1
+    desc: Caster augments the target's body, strengthening their skin into tough, armor-like plates to increase their defenses, while slightly improving their strength and reflexes.
+    duration: 8 hours
+    effect: Armor
+    level: 6
+    name: Unbreakable Skin
+    range: Touch
     school: Corpus
   #Level 7
   Brink Of Death:

@@ -758,7 +758,7 @@ spells:
     roll: true
     school: Nature
   Verdurous Armor:
-    available: false
+    available: true
     armor: Verdurous
     casting_time: 1 round
     desc: "The caster grows the wooden bark, verdant leaves and thorny vines of plants all over their body to weaponize and protect it. The foliage makes the target more difficult to hit while the barbed vines can be thrashed around, hitting up to 3 targets within 5ft the caster to do damage."
