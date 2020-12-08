@@ -2,59 +2,77 @@ BEGIN:VCALENDAR
 VERSION:2.0
 PRODID:-//hacksw/handcal//NONSGML v1.0//EN
 BEGIN:VEVENT
-UID:df206185-a9bb-4404-9586-289f48406edc@Spirit Lake-spiritlakemu.com
-DTSTART:20201124T013000Z
-DTSTAMP:20201113T023650Z
-SUMMARY:An Encounter on the Beach
-DESCRIPTION:This was not how anyone expected to start their week. [Limited Scene: Up to 5]
-END:VEVENT
-BEGIN:VEVENT
-UID:19f887a0-7a1c-4b16-9ee8-5451120c18c7@Spirit Lake-spiritlakemu.com
-DTSTART:20201123T010000Z
-DTSTAMP:20201120T145017Z
-SUMMARY:Negotiations with the Queen
-DESCRIPTION:Lisette, Rose, and DeLuz meet the Queen of Immeasurable Autumn to discuss matters of interest to all parties. The Queen bargains in good faith under the Laws and Traditions of Faerie.
-END:VEVENT
-BEGIN:VEVENT
-UID:1be26a8a-a708-4dda-b0da-b27478a5a22b@Spirit Lake-spiritlakemu.com
-DTSTART:20201129T010000Z
-DTSTAMP:20201117T174616Z
-SUMMARY:Tree Lighting Ceremony
-DESCRIPTION:Grand Lake celebrates the beginning of its yearly Festival of Lights with a Tree Lightning in the Town Park. Social event scene.
-END:VEVENT
-BEGIN:VEVENT
 UID:732f931b-6961-427a-9727-931cd68c877a@Spirit Lake-spiritlakemu.com
 DTSTART:20201213T190000Z
-DTSTAMP:20201117T174833Z
+DTSTAMP:20201126T002335Z
 SUMMARY:Festival of Lights
 DESCRIPTION:A weekend night enjoying Grand Lake's Festival of Lights, including song, shops, cookies, and hot drinks! Social event scene.
-END:VEVENT
-BEGIN:VEVENT
-UID:2a350bb9-cc9f-4d20-b78c-b0b9a2a97e18@Spirit Lake-spiritlakemu.com
-DTSTART:20201203T020000Z
-DTSTAMP:20201118T020654Z
-SUMMARY:Earth School Meetup
-DESCRIPTION:Earth people. Meeting.
-END:VEVENT
-BEGIN:VEVENT
-UID:f6a512fc-b37e-4f09-9e16-4aeb85d9e050@Spirit Lake-spiritlakemu.com
-DTSTART:20201122T180000Z
-DTSTAMP:20201120T180915Z
-SUMMARY:In Faerie - Morning (Open)
-DESCRIPTION:The mages of Grand Lake  - both captive and not - attend a reception in Faerie while negotiations take place.
-END:VEVENT
-BEGIN:VEVENT
-UID:9ef7f0c6-0f3d-4279-aa25-7f85dcb44900@Spirit Lake-spiritlakemu.com
-DTSTART:20201123T013000Z
-DTSTAMP:20201120T180925Z
-SUMMARY:In Faerie - Evening (Open)
-DESCRIPTION:The mages of Grand Lake  - both captive and not - attend a reception in Faerie while negotiations take place.
+  
+  **Open. Ammit setting.**
 END:VEVENT
 BEGIN:VEVENT
 UID:dcbb3f7e-28e1-4288-b80c-dce0a623fd7a@Spirit Lake-spiritlakemu.com
 DTSTART:20201206T200000Z
-DTSTAMP:20201122T014824Z
+DTSTAMP:20201123T201725Z
 SUMMARY:Deck the Carver House
 DESCRIPTION:Decorate the Carver house, including a giant tree. Mages are encouraged to bring an ornament to add - something that represents them and their magic.
+END:VEVENT
+BEGIN:VEVENT
+UID:abec2436-a73f-4708-aeee-489b77e96741@Spirit Lake-spiritlakemu.com
+DTSTART:20201219T180000Z
+DTSTAMP:20201126T002218Z
+SUMMARY:Down Through The Chimney
+DESCRIPTION:Ho, ho ho! Who wouldn't go? Ho, ho ho! Who wouldn't go?
+  Up on the library, swish, swish, swish
+  Down through the chimney....
+  
+  ---
+  
+  Something has invaded the Library and taken up residence in front of the fireplace.
+  
+  **RSVP, 1-4 players. Ammit GMing.**
+END:VEVENT
+BEGIN:VEVENT
+UID:8644237a-8cca-4c02-a955-9d2125c906d9@Spirit Lake-spiritlakemu.com
+DTSTART:20201213T013000Z
+DTSTAMP:20201126T002319Z
+SUMMARY:End Of Season Snack
+DESCRIPTION:It's late into the autumn season in the Forest of Feynthorn and many of the inhabitants are preparing for their long winter sleep. 
+  
+  I will take up to 5! Expect some combat. Hydra is GMing.
+END:VEVENT
+BEGIN:VEVENT
+UID:8b3a90a7-a1b7-45cc-85e2-6e66f586f772@Spirit Lake-spiritlakemu.com
+DTSTART:20201219T013000Z
+DTSTAMP:20201129T151435Z
+SUMMARY:Santa Ice Maze
+DESCRIPTION:On Friday the 18th the SANTA ICE MAZE will be up and running at the Training Fields. Many dummies will be dressed up and sacrificed in the name of Christmas Silly Times. Boozed up drinks as well as not boozed up drinks will be offered.
+  
+  In the days leading up to this, everyone is welcome and encouraged to hang out at the fields and get involved in the maze building process in whatever way best suits their skill set! This is all just for fun, so don't overthink it too much. After the event, what remains of the maze will be allowed to hang out until it melts or Erik gets tired of a bunch of random stuff littering his field. Whichever comes first.
+  
+  Disclaimer: No Real Santas Will Be Harmed
+END:VEVENT
+BEGIN:VEVENT
+UID:cdeaafa6-9aa3-4e09-9cd7-522cbd21d68b@Spirit Lake-spiritlakemu.com
+DTSTART:20201220T190000Z
+DTSTAMP:20201203T163906Z
+SUMMARY:Christmas Party - Afternoon
+DESCRIPTION:A Weird Christmas party!
+END:VEVENT
+BEGIN:VEVENT
+UID:b9068d6a-9c65-4e96-8ab4-5658355a7567@Spirit Lake-spiritlakemu.com
+DTSTART:20201221T010000Z
+DTSTAMP:20201203T164047Z
+SUMMARY:Christmas Party - Evening
+DESCRIPTION:A Weird Christmas party!
+END:VEVENT
+BEGIN:VEVENT
+UID:d6f94101-2685-4575-8579-cd0533fdeb33@Spirit Lake-spiritlakemu.com
+DTSTART:20201205T190000Z
+DTSTAMP:20201204T190934Z
+SUMMARY:Monster Hunters Inc.
+DESCRIPTION:A gathering of mages to discuss a potential monster problem.
+  
+  NOTE: I am bad at time. If this doesn't work for anyone, let me know. We'll figure something out! Earlier/later. W/e.
 END:VEVENT
 END:VCALENDAR

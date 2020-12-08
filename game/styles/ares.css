@@ -696,6 +696,11 @@ SCENES SCREEN
   color: #ffffff;
   padding: 0px 10px 10px 10px; }
 
+.scene-command {
+  margin-left: 25px;
+  color: #999999;
+  font-style: italic; }
+
 .scene-log {
   border: 1px solid #dddddd;
   margin: 2px;
