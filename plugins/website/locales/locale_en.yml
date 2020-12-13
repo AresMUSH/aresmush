@@ -17,7 +17,7 @@ en:
         tinker_error: "There was a problem with the tinker code: %{error}"
         redeploying_website: "Redeploying web portal.  This may take a couple minutes.  You'll see a message when it's done."
         portal_deployed: "Web portal deployed: %{output}%RDone!"
-        only_upload_images: "That is not a valid image format."
+        only_upload_images: "That is not a valid file format: %{extensions}."
         file_uploaded: "%{name} uploaded."
         file_deleted: "%{name} deleted."
         file_moved: "%{name} moved."

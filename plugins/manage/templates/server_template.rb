@@ -14,7 +14,7 @@ module AresMUSH
       end
       
       def migrations
-        @migrator.read_applied_migrations
+        @migrator.read_applied_migrations.map { |m| m.gsub("_update", "")}
       end
       
       def num_characters
