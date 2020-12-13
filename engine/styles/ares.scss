@@ -1626,6 +1626,10 @@ ul.reference-help-list > li:not(:last-child)::after {
 .idle-status {
   white-space: normal;
 }
+
+.server-migration {
+  padding-right: 10px;
+}
 /*.char-scene-list li:before { content: "\2666  "; }*/
 
 @media (max-width:765px)  { 
