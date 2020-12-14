@@ -697,7 +697,7 @@ spells:
     target_num: 20
     target_optional: true
   Energize Dimensional Anchor (Spirit):
-    available: false
+    available: true
     casting_time: 2 minutes
     desc: "Provide the necessary magical energy of the appropriate School to a Dimensional Anchor spell, enabling the linked casters to permanently open or close an interdimensional portal.\n\nIf cast on an open portal, the caster can sense if the spell's School is the necessary magical energy to enable opening or closing the portal, as well as the magical coordinates of the portal's existence in the magical universe."
     level: 7
