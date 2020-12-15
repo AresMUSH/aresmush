@@ -11,12 +11,13 @@ fs3combat:
     Ranged:
     - cold calm
     - diamond
-    - fatal vitality 
+    - fatal vitality
     - fire
     - glacial ice
     - grow
     - ice
     - lightning
+    - scope
     - shrink
     - transform
     - vitality
