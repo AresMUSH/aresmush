@@ -3,6 +3,8 @@ magic-items:
   Band Of The Unseen:
     name: Band of the Unseen
     desc: A slender golden armband, the magical item is embossed with a depiction of the antagonist god Set. He is represented traditionally here. The only variation is the brightly colored blindfold that's been tied over his eyes. When worn in the open or beneath one's clothes, the armband acts as a blockade against intrusions from the Spirit school by those who would do the wearer ill. Magic users with friendly or sincerely good intentions are not protected against.
+    spells:
+    - Enduring Mind Shield
   Bane of Elegast:
     name: Bane of Elegast
     desc: Crafted to hide from the legendary king and warlord, the broken chain allows anyone who carries it to cast Invisible, the Level 5 Fire spell. It currently resides in Silver's stomach after he swallowed it and fled retribution from the queen of Immeasurable Autumn, a faerie kingdom
@@ -28,6 +30,11 @@ magic-items:
     desc: A bottle of sunshine, acts as a torch. Evaporates if opened.
     spells:
     - Light
+  Charismatic Ruby:
+    name: Charismatic Ruby
+    desc: Slightly larger than a silver dollar, the ruby is elegant of proportion - if excessive of size. The deep red stone is cut in perfect, circular cabochon making it ideal to set in jewelry. It allows the bearer to cast %xBCharmed%xn.
+    spells:
+    - Charmed
   Chilled Pitcher:
     name: Chilled Pitcher
     desc: A glass pitcher which chills any liquid poured into it.
@@ -93,6 +100,8 @@ magic-items:
   Konvaskr:
     name: Konvaskr
     desc: A flying ship that really needs a better desc.
+    spells:
+    - Massive telekinesis
   Mending Trunk:
     name: Mending Trunk
     desc:  A trunk that completely, if slowly, mends and cleans an item put in and left for a week.
