@@ -21,6 +21,11 @@ module AresMUSH
         return LastRPCmd
       end
 
+      case cmd.root
+      when "playerlist"
+        return PlayerListCmd
+      end
+
       # case cmd.root
       # when "shield"
       #   case cmd.switch
