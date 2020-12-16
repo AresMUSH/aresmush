@@ -298,6 +298,18 @@ spells:
     target_optional: true
     weapon: Stun (Earth)
   #Level 6
+  Alter Metal:
+    available: false
+    casting_time: 1 round
+    desc: "For the duration of the spell, the caster can reshape up to 2 cubic feet of pre-existing, non-alloy metal. The caster can can sculpt detailed shapes that animate at their direction. The density and composition of the metal does not change, but its shape can be altered, which also allows for repairs or damage to the metal parts of an object. While entire objects can be made using Alter Metal, making a functional objects requires knowledge of how the object works. The caster cannot make a functional sword, lock, gun, etc. without the knowledge of how they mechanically and structurally work. Metal returns to its natural, but not necessarily original, state when the spell ends.\n\nThe caster can manipulate small pieces of metal, no smaller 1 mm, with great precision. Manipulation of metal to use a pre-existing object requires knowledge. The caster cannot use Alter Metal to pick locks without lockpicking knowledge, or to cock a gun without firearms knowledge.\n\nIn combat, damaging a weapon enough to disable it takes 3-5 rounds, at the GM's discretion. "
+    duration: 15 minutes
+    effect: Creation
+    level: 6
+    line_of_sight: true
+    name: Alter Metal
+    range: Short
+    roll: true
+    school: Earth
   Diamond Armor:
     armor: Diamond
     available: false
