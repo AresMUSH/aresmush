@@ -14,6 +14,7 @@ module AresMUSH
             handle = c.handle.name
           else
             handle = "NONE"
+          end
           if last_scene
             client.emit " #{handle} (#{c.name}) #{last_scene.created_at} - #{last_scene.title}. #{scene_count} scenes total."
           else
