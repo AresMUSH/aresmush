@@ -10,10 +10,11 @@ module AresMUSH
         chars.each do |c|
           last_scene = c.scenes_starring.sort_by { |s| s.created_at }.reverse[0]
           scene_count = c.scenes_starring.count
+          handle = c.handle.name || "NONE"
           if last_scene
-            client.emit " #{c.handle.name} (#{c.name}) #{last_scene.created_at} - #{last_scene.title}. #{scene_count} scenes total."
+            client.emit " #{handle} (#{c.name}) #{last_scene.created_at} - #{last_scene.title}. #{scene_count} scenes total."
           else
-            client.emit "#{c.handle.name} (#{c.name}): %xrNONE%xn"
+            client.emit "#{handle} (#{c.name}): %xrNONE%xn"
           end
         end
       end
