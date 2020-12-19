@@ -16,7 +16,7 @@ en:
         profile_set: "You set your profile."
         handle: "Handle:"
         handle_profile: "Profile:"
-        not_yet_approved: "You have to be approved first."
+        not_yet_approved: "You have to be approved before you can edit your profile. Go to 'Play->Create a Character' to complete chargen first."
         hooks_title: "Roleplay Hooks"
         
         custom_profile_set: "Custom profile field %{field} set."

@@ -46,19 +46,25 @@ module AresMUSH
           post = last_post
           type = 'post'
           author_name = last_post.author_name
+          author_icon = last_post.author ?  Website.icon_for_char(last_post.author) : nil
           date = last_post.created_at
         else
           post = last_post
           type = 'reply'
-          author_name = replies[-1].author_name
-          date = replies[-1].created_at
+          last_reply = replies[-1]
+          author_name = last_reply.author_name
+          author_icon = last_reply.author ?  Website.icon_for_char(last_reply.author) : nil
+          date = last_reply.created_at
         end
         
         
         {
           id: post.id,
           subject: post.subject,
-          author: author_name,
+          author: {
+            name: author_name,
+            icon: author_icon
+          },
           type: type,
           date: OOCTime.local_long_timestr(enactor, date)
         }

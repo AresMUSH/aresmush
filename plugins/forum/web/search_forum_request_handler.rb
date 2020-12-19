@@ -34,7 +34,9 @@ module AresMUSH
                      title: p.subject,
                      unread: enactor && p.is_unread?(enactor),
                      date: p.created_date_str(enactor),
-                     author: p.author_name,
+                     author: { 
+                        name: p.author_name, 
+                        icon: p.author ? Website.icon_for_char(p.author) : nil },
                      last_activity: p.last_activity_time_str(enactor)
                    }}
       end
