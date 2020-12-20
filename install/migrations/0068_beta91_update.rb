@@ -34,6 +34,22 @@ module AresMUSH
           Global.logger.debug "Resetting #{name} scenes: #{char.scenes_participated_in}"
           char.update(scenes_participated_in: new_scenes)
         end
+        
+        Global.logger.debug "Adding event log silence config."
+        config = DatabaseMigrator.read_config_file("plugins.yml")
+        config['plugins']['unlogged_events'] = [ "ConnectionEstablishedEvent" ]
+        
+        config['plugins']['config_help_links'] = {
+          "ffg" => "https://github.com/AresMUSH/ares-ffg-plugin",
+          "fate" => "https://github.com/AresMUSH/ares-fate-plugin",
+          "cortex" => "https://github.com/AresMUSH/ares-cortex-plugin",
+          "cookies" => "https://github.com/AresMUSH/ares-cookies-plugin",
+          "prefs" => "https://github.com/AresMUSH/ares-prefs-plugin",
+          "rpg" => "https://github.com/AresMUSH/ares-rpg-plugin",
+          "traits" => "https://github.com/AresMUSH/ares-traits-plugin"
+        }
+        DatabaseMigrator.write_config_file("plugins.yml", config)
+        
       end
     end    
   end

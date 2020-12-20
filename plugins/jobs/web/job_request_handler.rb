@@ -4,6 +4,7 @@ module AresMUSH
       def handle(request)
         enactor = request.enactor
         job = Job[request.args[:id]]
+        edit_mode = request.args[:edit_mode]
         
         error = Website.check_login(request)
         return error if error
@@ -14,6 +15,10 @@ module AresMUSH
         
         is_job_admin = Jobs.can_access_jobs?(enactor)
         
+        if (edit_mode && !is_job_admin)
+          return { error: t('dispatcher.not_allowed') }
+        end
+        
         # Authors can access their own job.
         error = Jobs.check_job_access(enactor, job, true)
         if (error)
@@ -22,10 +27,11 @@ module AresMUSH
         
         Jobs.mark_read(job, enactor)
         
-        
         system_char = Game.master.system_character
         master_admin = Game.master.master_admin
         job_admins = Character.all.select { |c| Jobs.can_access_job?(c, job) && c != system_char && c != master_admin }
+        
+        description = edit_mode ? job.description : Website.format_markdown_for_html(job.description)
         
         {
           id: job.id,
@@ -41,7 +47,7 @@ module AresMUSH
           is_approval_job: job.author && !job.author.is_approved? && (job.author.approval_job == job),
           author: { name: job.author_name, id: job.author ? job.author.id : nil, icon: Website.icon_for_char(job.author) },
           assigned_to: job.assigned_to ? { name: job.assigned_to.name, icon: Website.icon_for_char(job.assigned_to) } : nil,
-          description: Website.format_markdown_for_html(job.description),
+          description: description,
           unread_jobs_count: is_job_admin ? enactor.unread_jobs.count : enactor.unread_requests.count,
           replies: Jobs.visible_replies(enactor, job).map { |r| {
             author: { name: r.author_name, icon: Website.icon_for_char(r.author) },
