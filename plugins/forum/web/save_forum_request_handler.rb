@@ -12,6 +12,8 @@ module AresMUSH
         
         error = Website.check_login(request)
         return error if error
+
+        request.log_request
                 
         return { error: t('dispatcher.not_allowed') } if !Forum.can_manage_forum?(enactor)
 

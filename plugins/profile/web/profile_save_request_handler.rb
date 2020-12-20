@@ -12,6 +12,8 @@ module AresMUSH
         if (!char)
           return { error: t('webportal.not_found') }
         end
+
+        Global.logger.info "#{enactor.name} saving profile for #{char.name}."
         
         manager = Profile.can_manage_profiles?(enactor)
         

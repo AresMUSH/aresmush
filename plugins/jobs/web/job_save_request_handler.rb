@@ -11,13 +11,15 @@ module AresMUSH
         submitter_name = request.args[:submitter]
         assignee_name = request.args[:assigned_to]
 
+        error = Website.check_login(request)
+        return error if error
+        
+        request.log_request
+        
         job = Job[request.args[:id]]
         if (!job)
           return { error: t('webportal.not_found') }
         end
-        
-        error = Website.check_login(request)
-        return error if error
         
         job_admin = Jobs.can_access_jobs?(enactor)
         if (!job_admin)

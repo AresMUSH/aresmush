@@ -8,11 +8,13 @@ module AresMUSH
 
         error = Website.check_login(request)
         return error if error
-                
+                        
         char = Character.find_one_by_name id
         if (!char)
           return { error: t('webportal.not_found') }
         end
+        
+        Global.logger.info "Character reset for #{char.name} by #{enactor.name}."
         
         if (!Chargen.can_approve?(enactor))
           if (char != enactor)
@@ -22,8 +24,6 @@ module AresMUSH
           error = Chargen.check_chargen_locked(char)
           return { error: error } if error
         end
-        
-        Global.logger.info "Character reset for #{char.name} by #{enactor.name}."
         
         Chargen.save_char(char, chargen_data)
         

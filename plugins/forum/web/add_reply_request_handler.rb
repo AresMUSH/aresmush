@@ -8,6 +8,8 @@ module AresMUSH
         author = Character.find_one_by_name(request.args[:author_id])
         enactor = request.enactor
         
+        request.log_request
+        
         topic = BbsPost[topic_id.to_i]
         if (!topic)
           return { error: t('webportal.not_found') }
