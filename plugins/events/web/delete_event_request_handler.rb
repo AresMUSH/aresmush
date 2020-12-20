@@ -5,6 +5,8 @@ module AresMUSH
         event_id = request.args[:event_id]
         enactor = request.enactor
         
+        request.log_request
+        
         event = Event[event_id.to_i]
         if (!event)
           return { error: t('webportal.not_found') }

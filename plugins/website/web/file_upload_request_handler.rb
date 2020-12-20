@@ -13,6 +13,8 @@ module AresMUSH
         error = Website.check_login(request)
         return error if error
         
+        Global.logger.info "#{enactor.name} uploading file #{name}."
+        
         if (name.blank? || folder.blank?)
           return { error: t('webportal.missing_required_fields') }
         end

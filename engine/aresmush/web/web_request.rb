@@ -36,5 +36,9 @@ module AresMUSH
       id = auth[:id]
       id ? Character.find_one_by_name(id) : nil
     end
+    
+    def log_request
+      Global.logger.debug "Web Request: #{cmd} #{auth[:id]} #{args} #{enactor ? enactor.name : "Anonymous"}"
+    end
   end
 end

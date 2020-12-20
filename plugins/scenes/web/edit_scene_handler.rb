@@ -16,7 +16,7 @@ module AresMUSH
           return { error: t('dispatcher.not_allowed') }
         end
         
-        Global.logger.debug "Scene #{scene.id} edited by #{enactor.name}."
+        Global.logger.info "Scene #{scene.id} edited by #{enactor.name}."
         
         if (scene.shared)
           [ :log, :location, :summary, :scene_type, :title, :icdate ].each do |field|

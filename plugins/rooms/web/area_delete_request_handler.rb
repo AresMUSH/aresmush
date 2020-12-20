@@ -5,14 +5,16 @@ module AresMUSH
         id = request.args[:id]
         enactor = request.enactor
         
+        error = Website.check_login(request)
+        return error if error
+        
+        request.log_request
+        
         area = Area[id]
         if (!area)
           return { error: t('webportal.not_found') }
         end
         
-        error = Website.check_login(request)
-        return error if error
-
         if (!Rooms.can_delete_area?(area))
           return { error: t('rooms.cant_delete_area') }
         end

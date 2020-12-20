@@ -12,6 +12,8 @@ module AresMUSH
         error = Website.check_login(request)
         return error if error
         
+        request.log_request
+        
         job_admin = Jobs.can_access_jobs?(enactor)
         
         if (submitter_name)

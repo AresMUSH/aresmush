@@ -12,6 +12,8 @@ module AresMUSH
         enactor = request.enactor
         organizer = Character.named(request.args[:organizer])
         
+        request.log_request
+        
         event = Event[event_id.to_i]
         if (!event || !organizer)
           return { error: t('webportal.not_found') }

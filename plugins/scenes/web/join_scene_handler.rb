@@ -12,6 +12,8 @@ module AresMUSH
         error = Website.check_login(request)
         return error if error
         
+        Global.logger.info "#{enactor.name} joining scene #{scene.id}."
+        
         if (!scene.participants.include?(enactor))
           Scenes.add_participant(scene, enactor, enactor)
         end
