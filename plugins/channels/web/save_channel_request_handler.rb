@@ -13,6 +13,8 @@ module AresMUSH
         error = Website.check_login(request)
         return error if error
                 
+        request.log_request
+
         return { error: t('dispatcher.not_allowed') } if !Channels.can_manage_channels?(enactor)
 
         channel = Channel[id]

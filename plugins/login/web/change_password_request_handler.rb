@@ -10,6 +10,8 @@ module AresMUSH
         error = Website.check_login(request)
         return error if error
         
+        Global.logger.info "#{enactor.name} changing password."
+        
         if (!enactor.compare_password(pw))
           return { error: t('login.invalid_password') }
         end

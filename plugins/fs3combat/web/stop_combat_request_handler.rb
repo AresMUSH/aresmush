@@ -8,6 +8,8 @@ module AresMUSH
         error = Website.check_login(request)
         return error if error
         
+        request.log_request
+        
         combat = Combat[id]
         if (!combat)
           return { error: t('webportal.not_found') }

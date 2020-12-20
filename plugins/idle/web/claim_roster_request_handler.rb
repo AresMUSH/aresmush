@@ -7,6 +7,8 @@ module AresMUSH
 
         error = Website.check_login(request, true)
         return error if error
+
+        request.log_request
                         
         # Duplicated from check_login because we're allowing anonymous logins, just not banned sites.
         if (Login.is_banned?(enactor, request.ip_addr, request.hostname))

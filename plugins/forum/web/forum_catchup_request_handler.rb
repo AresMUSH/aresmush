@@ -9,6 +9,8 @@ module AresMUSH
         error = Website.check_login(request)
         return error if error
 
+        request.log_request
+
         if (category_id)
           category = BbsBoard[category_id.to_i]
           if (!category)

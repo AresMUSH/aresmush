@@ -8,6 +8,8 @@ module AresMUSH
         error = Website.check_login(request)
         return error if error
       
+        Global.logger.info "#{enactor.name} restoring help topic: #{topic_id}."
+      
         if (!Manage.can_manage_game?(enactor))
           return { error: t('dispatcher.not_allowed') }
         end

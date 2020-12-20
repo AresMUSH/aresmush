@@ -8,13 +8,15 @@ module AresMUSH
         summary = request.args[:summary]
         enactor = request.enactor
         
+        error = Website.check_login(request)
+        return error if error
+        
+        request.log_request
+        
         area = Area[id]
         if (!area)
           return { error: t('webportal.not_found') }
         end
-        
-        error = Website.check_login(request)
-        return error if error
         
         if (!Rooms.can_build?(enactor))
           return { error: t('dispatcher.not_allowed') }

@@ -5,7 +5,12 @@ module AresMUSH
         scene = Scene[request.args[:scene_id]]
         enactor = request.enactor
         place_name = (request.args[:place_name] || "").titlecase
-        
+                
+        error = Website.check_login(request)
+        return error if error
+
+        request.log_request
+
         if (!scene)
           return { error: t('webportal.not_found') }
         end
@@ -13,9 +18,6 @@ module AresMUSH
         if (scene.completed)
           return { error: t('places.scene_already_completed') }
         end
-        
-        error = Website.check_login(request)
-        return error if error
 
         place = Places.find_place(scene.room, place_name)
       

@@ -25,7 +25,9 @@ module AresMUSH
              title: p.subject,
              unread: enactor && p.is_unread?(enactor),
              date: p.created_date_str(enactor),
-             author: p.author_name,
+             author: { 
+              name: p.author_name, 
+              icon: p.author ? Website.icon_for_char(p.author) : nil },
              last_activity: OOCTime.local_long_timestr(enactor, p.last_updated),
              last_updated_by: p.last_updated_by,
              is_pinned: p.is_pinned?,

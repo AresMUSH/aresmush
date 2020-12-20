@@ -8,7 +8,9 @@ module AresMUSH
         
         error = Website.check_login(request)
         return error if error
-                
+
+        request.log_request
+        
         if (!channel)
           return { error: t('webportal.not_found') }
         end
@@ -17,7 +19,7 @@ module AresMUSH
         if (error)
           return { error: error }
         end
-                 
+                         
         {
           channel: Channels.build_channel_web_data(channel, enactor)
         }
