@@ -8,6 +8,8 @@ module AresMUSH
         error = Website.check_login(request)
         return error if error
         
+        request.log_request
+        
         if (!scene_id.blank?)
           scene = Scene[scene_id]
           if (!scene)

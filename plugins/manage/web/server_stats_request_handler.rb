@@ -10,7 +10,7 @@ module AresMUSH
         migrator = DatabaseMigrator.new
         
         {
-          migrations:  migrator.read_applied_migrations,
+          migrations:  migrator.read_applied_migrations.map { |m| m.gsub("_update", "")},
           num_characters: Character.all.count,
           num_rooms: Room.all.count,
           num_exits: Exit.all.count,

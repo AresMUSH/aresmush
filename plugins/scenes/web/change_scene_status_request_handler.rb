@@ -13,7 +13,7 @@ module AresMUSH
         error = Website.check_login(request)
         return error if error
 
-        Global.logger.debug "Scene #{scene.id} #{status} by #{enactor.name}."
+        Global.logger.info "Scene #{scene.id} #{status} by #{enactor.name}."
                 
         if (!Scenes.can_edit_scene?(enactor, scene))
           return { error: t('scenes.access_not_allowed') }

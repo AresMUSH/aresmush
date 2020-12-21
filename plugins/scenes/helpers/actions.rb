@@ -86,10 +86,16 @@ module AresMUSH
 
       scene.update(completed: true)
       scene.update(date_completed: Time.now)
+
+      # Can't use the regular notify method because of watcher race condition
+      web_msg = "#{scene.id}||#{:status_changed}|"
+      watchers = scene.watchers.map { |c| c.id }
+      Global.client_monitor.notify_web_clients(:new_scene_activity, web_msg, true) do |char|
+        Scenes.can_read_scene?(char, scene) && char && watchers.include?(char.id)
+      end
+      
       scene.invited.replace []
       scene.watchers.replace []
-      
-      Scenes.new_scene_activity(scene, :status_changed, nil)
       
       scene.participants.each do |char|
         # Don't double-award luck or scene participation if we've already tracked 

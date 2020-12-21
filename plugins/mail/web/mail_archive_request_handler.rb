@@ -8,6 +8,8 @@ module AresMUSH
         error = Website.check_login(request)
         return error if error
 
+        request.log_request
+
         if (!message)
           return { error: t('webportal.missing_required_fields') }
         end

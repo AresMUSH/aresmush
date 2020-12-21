@@ -35,7 +35,7 @@ module AresMUSH
           end
         end
                       
-        Global.logger.debug "Plot #{plot.id} created by #{enactor.name}."
+        Global.logger.info "Plot #{plot.id} created by #{enactor.name}."
   
         { id: plot.id }
       end

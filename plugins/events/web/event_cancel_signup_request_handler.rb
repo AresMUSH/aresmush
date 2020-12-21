@@ -9,6 +9,8 @@ module AresMUSH
         error = Website.check_login(request)
         return error if error
         
+        request.log_request
+        
         cancel_name = request.args[:name] || enactor.name
         event = Event[event_id.to_i]
         if (!event)
