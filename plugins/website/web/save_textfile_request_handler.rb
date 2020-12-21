@@ -10,6 +10,8 @@ module AresMUSH
         error = Website.check_login(request)
         return error if error
         
+        Global.logger.info "#{enactor.name} updating text file #{file}."
+        
         if (!Website.can_manage_textfile?(enactor, file_type))
           return { error: t('dispatcher.not_allowed') }
         end

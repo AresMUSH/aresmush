@@ -13,6 +13,8 @@ module AresMUSH
         error = Website.check_login(request)
         return error if error
         
+        request.log_request
+        
         can_create = enactor && enactor.is_approved?
         if (!can_create)
           return { error: t('dispatcher.not_allowed') }

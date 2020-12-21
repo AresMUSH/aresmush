@@ -9,6 +9,8 @@ module AresMUSH
         error = Website.check_login(request)
         return error if error
         
+        request.log_request
+        
         topic = BbsPost[topic_id.to_i]
         if (!topic)
           return { error: t('webportal.not_found') }

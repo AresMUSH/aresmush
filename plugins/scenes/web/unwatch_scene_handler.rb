@@ -12,7 +12,8 @@ module AresMUSH
         error = Website.check_login(request)
         return error if error
         
-        Scenes.leave_scene(scene, enactor)       
+        Scenes.leave_scene(scene, enactor)
+        
         {}
       end
     end
