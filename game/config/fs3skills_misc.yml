@@ -26,6 +26,7 @@ fs3skills:
     practice: learn
     train: learn
     xp/raise: learn
+    roll/secret: roll/private
   permissions:
     manage_abilities: Edit ability ratings on other chars.
     view_sheets: Can view other characters' sheets.
