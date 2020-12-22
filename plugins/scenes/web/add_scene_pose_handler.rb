@@ -41,9 +41,18 @@ module AresMUSH
         
         parse_results = Scenes.parse_web_pose(pose, char, pose_type)
         
+        # Command
+        if (pose.start_with?("/"))
+          message = Scenes.handle_scene_command(pose, enactor, char, scene)
+          if (message)
+            return message
+          end
+        end
+          
+        # Regular Pose or Emit
         Scenes.emit_pose(char, parse_results[:pose], parse_results[:is_emit], 
            parse_results[:is_ooc], nil, parse_results[:is_setpose] || parse_results[:is_gmpose], scene.room)
-        
+      
         if (parse_results[:is_setpose] && scene.room)
           scene.room.update(scene_set: parse_results[:pose])
         end

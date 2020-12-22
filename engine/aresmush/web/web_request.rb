@@ -14,8 +14,14 @@ module AresMUSH
       @json[:args] || {}
     end
     
+    def api_key
+      @json[:api_key]
+    end
+    
     def check_api_key
-      Website.engine_api_keys.include?(@json[:api_key])
+      key = @json[:api_key]
+      return true if Website.engine_api_keys.include?(key)
+      return Game.master.player_api_keys && Game.master.player_api_keys.has_key?(key)
     end
     
     def auth
@@ -29,6 +35,10 @@ module AresMUSH
     def enactor
       id = auth[:id]
       id ? Character.find_one_by_name(id) : nil
+    end
+    
+    def log_request
+      Global.logger.debug "Web Request: #{cmd} #{auth[:id]} #{args} #{enactor ? enactor.name : "Anonymous"}"
     end
   end
 end

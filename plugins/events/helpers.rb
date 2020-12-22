@@ -19,10 +19,16 @@ module AresMUSH
           split = str.split('/')
           date = split[0..2].join('/')
           desc = split[3..-1].join('/')
+        elsif (separator == ' ')
+          split = str.split('/')
+          date = split[0]
+          desc = split[1]
         else
           raise "Unrecognized date time separator.  Check your 'short' date format in datetime.yml."
         end
 
+        
+        
         date_time = OOCTime.parse_datetime(date.strip.downcase)
         if (date_time < DateTime.now)
           return nil, nil, t('events.no_past_events')
@@ -67,12 +73,13 @@ module AresMUSH
       end
     end
     
-    def self.create_event(enactor, title, datetime, desc, warning = nil)
+    def self.create_event(enactor, title, datetime, desc, warning, tags)
       event = Event.create(title: title, 
       starts: datetime, 
       description: desc,
       character: enactor,
-      content_warning: warning)
+      content_warning: warning,
+      tags: tags)
         
       Channels.announce_notification(t('events.event_created_notification', :title => title))
       Events.events_updated
@@ -92,11 +99,12 @@ module AresMUSH
       Events.events_updated
     end
    
-    def self.update_event(event, enactor, title, datetime, desc, warning = nil)
+    def self.update_event(event, enactor, title, datetime, desc, warning, tags)
       event.update(title: title)
       event.update(starts: datetime)
       event.update(description: desc)
       event.update(content_warning: warning)
+      event.update(tags: tags)
      
       Events.events_updated
       message = t('events.event_updated_notification', :title => title)

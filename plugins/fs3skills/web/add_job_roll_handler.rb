@@ -5,13 +5,15 @@ module AresMUSH
         job = Job[request.args[:id]]
         enactor = request.enactor
         
+        error = Website.check_login(request)
+        return error if error
+
+        request.log_request
+        
         if (!job)
           return { error: t('webportal.not_found') }
         end
         
-        error = Website.check_login(request)
-        return error if error
-
         if (!Jobs.can_access_job?(enactor, job, true))
           return { error: t('jobs.cant_view_job') }
         end
@@ -24,7 +26,7 @@ module AresMUSH
         
         return result if result[:error]
 
-        Jobs.comment(job, enactor, result[:message], false)
+        Jobs.comment(job, Game.master.system_character, result[:message], false)
         
         {
         }

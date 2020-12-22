@@ -119,7 +119,6 @@ module AresMUSH
             expect(result[:is_gmpose]).to eq false
           end
         end
-        
       end
     end
   end

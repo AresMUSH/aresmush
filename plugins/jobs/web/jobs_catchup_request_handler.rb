@@ -7,6 +7,8 @@ module AresMUSH
         error = Website.check_login(request)
         return error if error
         
+        request.log_request
+        
         if (!Jobs.can_access_jobs?(enactor)) 
           return { error: t('dispatcher.not_allowed') }
         end

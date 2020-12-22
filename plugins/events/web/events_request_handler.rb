@@ -10,11 +10,15 @@ module AresMUSH
         events = Event.sorted_events.map { |e| {
           id: e.id,
           title: e.title,
-          organizer: e.organizer_name,
+          organizer: { 
+            name: e.character.name, 
+            id: e.character.id, 
+            icon: Website.icon_for_char(e.character) },
           start_datetime_local: e.start_datetime_local(enactor),
           start_time_standard: e.start_time_standard,
           content_warning: e.content_warning,
-          is_signed_up: e.is_signed_up?(enactor)
+          is_signed_up: e.is_signed_up?(enactor),
+          tags: e.tags
         }}
         
         

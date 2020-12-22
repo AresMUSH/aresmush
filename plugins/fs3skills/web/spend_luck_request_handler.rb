@@ -6,13 +6,15 @@ module AresMUSH
         enactor = request.enactor
         reason = request.args[:reason]
         
+        request.log_request
+        
+        error = Website.check_login(request)
+        return error if error
+        
         if (!scene)
           return { error: t('webportal.not_found') }
         end
         
-        error = Website.check_login(request)
-        return error if error
-
         if (!Scenes.can_read_scene?(enactor, scene))
           return { error: t('scenes.access_not_allowed') }
         end

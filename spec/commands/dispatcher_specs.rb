@@ -130,6 +130,7 @@ module AresMUSH
     describe :on_event do
       before do
         allow(dispatcher).to receive(:spawn).and_yield
+        allow(Global).to receive(:read_config).with("plugins", "unlogged_events") { [] }
       end
       
       it "should send the event to any class that handles it" do

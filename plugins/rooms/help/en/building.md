@@ -61,6 +61,8 @@ For help with exit locks, see [Locks](/help/lock).
 
 Areas are used to group rooms together to represent different regions of the game.  See [Areas](/help/areas) for more information.
 
+`area/set [<room>]=<area>` - Sets a room's area. Defaults to the room you're in if you don't specify a name.
+
 ## Advanced Room Setup
 
 `grid [<room name>=]<x>/<y>` - Sets the grid coordinates.  Leave blank to clear.

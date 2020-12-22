@@ -6,12 +6,14 @@ module AresMUSH
         notes = request.args[:notes]
         enactor = request.enactor
         
+        error = Website.check_login(request)
+        return error if error
+        
+        request.log_request
+        
         if (!char)
           return { error: t('webportal.not_found') }
         end
-        
-        error = Website.check_login(request)
-        return error if error
         
         new_notes = char.notes
         
