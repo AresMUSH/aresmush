@@ -113,14 +113,16 @@ module AresMUSH
     def on_event(event)
       begin
         event_name = event.class.to_s.gsub("AresMUSH::", "")
+
         Global.plugin_manager.sorted_plugins.each do |p|
           next if !p.respond_to?(:get_event_handler)
           AresMUSH.with_error_handling(nil, "Handling #{event_name}.") do            
             handler_class = p.get_event_handler(event_name)
             if (handler_class)
-              if (event_name != "CronEvent" && event_name != "ConnectionEstablishedEvent" && event_name != "PoseEvent")
-                Global.logger.debug "#{handler_class} handling #{event_name}."
+              if (should_log_event?(event_name))
+                Global.logger.debug "#{handler_class} handling #{event_name}"
               end
+              
               handler = handler_class.new
               handler.on_event(event)
             end # if
@@ -141,7 +143,7 @@ module AresMUSH
           handler_class = p.get_web_request_handler(request)
           if (handler_class)
             handled = true
-            handler = handler_class.new
+            handler = handler_class.new            
             return handler.handle(request)
           end # if
         end # each
@@ -157,6 +159,13 @@ module AresMUSH
       if (!return_val)
         @handled = true
       end
+    end
+    
+    def should_log_event?(event_name)
+      # Can't turn on pose logging
+      unlogged_events = ((Global.read_config("plugins", "unlogged_events") || []) + [ "PoseEvent", "CronEvent" ]).uniq
+      
+      return !unlogged_events.include?(event_name)
     end
   end
 end

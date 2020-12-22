@@ -6,11 +6,14 @@ module AresMUSH
         time = request.args[:time]
         title = request.args[:title]
         desc = request.args[:description]
+        tags = (request.args[:tags] || []).map { |t| t.downcase }.select { |t| !t.blank? }
         warning = request.args[:content_warning]
         enactor = request.enactor
         
         error = Website.check_login(request)
         return error if error
+        
+        request.log_request
         
         can_create = enactor && enactor.is_approved?
         if (!can_create)
@@ -31,7 +34,7 @@ module AresMUSH
           return { error: t('events.invalid_event_date', :format_str => format_help ) }
         end
       
-        event = Events.create_event(enactor, title, datetime, Website.format_input_for_mush(desc), Website.format_input_for_mush(warning))
+        event = Events.create_event(enactor, title, datetime, Website.format_input_for_mush(desc), Website.format_input_for_mush(warning), tags)
         if (!event)
           return { error: t('webportal.unexpected_error') }
         end

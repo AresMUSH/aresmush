@@ -45,7 +45,7 @@ module AresMUSH
              .map { |name, data| {
                name: name,
                is_npc: data['is_npc'],
-               icon: data['npc_image'] || Website.icon_for_name(name),
+               icon: data['is_npc'] ? data['npc_image'] : Website.icon_for_name(name),
                name_and_nickname: Demographics.name_and_nickname(Character.named(name)),
                text: Website.format_markdown_for_html(data['relationship'])
              }
@@ -78,6 +78,12 @@ module AresMUSH
           traits = Traits.get_traits_for_web_viewing(char, enactor)
         else
           traits = nil
+        end
+        
+        if Manage.is_extra_installed?("rpg")
+          rpg = Rpg.get_sheet_for_web_viewing(char, enactor)
+        else
+          rpg = nil
         end
         
         if Manage.is_extra_installed?("fate")
@@ -127,6 +133,7 @@ module AresMUSH
           traits: traits,
           fate: fate,
           files: files,
+          rpg: rpg,
           last_profile_version: char.last_profile_version ? char.last_profile_version.id : nil,
           achievements: Achievements.is_enabled? ? Achievements.build_achievements(char) : nil,
           

@@ -5,6 +5,7 @@ en:
         starts_at_title: "Starts At:"
         who_title: "Organizer:"
         where_title: "Where:"
+        tags_title: "Tags:"
         
         event_deleted: "Event deleted."
         event_updated: "Event updated."

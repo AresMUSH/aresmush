@@ -177,6 +177,8 @@ module AresMUSH
         return CombatsRequestHandler
       when "combatAiActions"
         return CombatAiActionsRequestHandler
+      when "combatHero"
+        return CombatHeroRequestHandler
       when "combatSetup"
         return CombatSetupRequestHandler
       when "newCombatTurn"

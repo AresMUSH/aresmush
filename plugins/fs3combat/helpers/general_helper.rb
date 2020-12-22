@@ -234,14 +234,17 @@ module AresMUSH
           }
         }
       
+      viewer_in_combat = viewer && viewer.combat == combat
       
       {
         id: combat.id,
+        combatant_id: viewer_in_combat ? viewer.combatant.id : nil,
         organizer: combat.organizer.name,
         can_manage: can_manage,
         combatant_types: FS3Combat.combatant_types.keys,
         teams: teams,
-        in_combat: viewer && viewer.combat == combat
+        in_combat: viewer_in_combat,
+        luck_points: viewer ? viewer.fs3_luck.floor : 0
       }
     end
     

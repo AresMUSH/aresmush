@@ -1,11 +1,13 @@
 ---
 plugins:
   config_help_links:
-    ffg: https://github.com/AresMUSH/ares-extras/tree/master/plugins/ffg
-    fate: https://github.com/AresMUSH/ares-extras/tree/master/plugins/fate
-    cortex: https://github.com/AresMUSH/ares-extras/tree/master/plugins/cortex
-    prefs: https://github.com/AresMUSH/ares-extras/tree/master/plugins/prefs
-    traits: https://github.com/AresMUSH/ares-extras/tree/master/plugins/traits
+    ffg: https://github.com/AresMUSH/ares-ffg-plugin
+    fate: https://github.com/AresMUSH/ares-fate-plugin
+    cortex: https://github.com/AresMUSH/ares-cortex-plugin
+    cookies: https://github.com/AresMUSH/ares-cookies-plugin
+    prefs: https://github.com/AresMUSH/ares-prefs-plugin
+    rpg: https://github.com/AresMUSH/ares-rpg-plugin
+    traits: https://github.com/AresMUSH/ares-traits-plugin
   disabled_plugins: []
   extras: []
   optional_plugins:
@@ -16,3 +18,7 @@ plugins:
   - fs3skills
   - ranks
   - weather
+  unlogged_events:
+  - CronEvent
+  - ConnectionEstablishedEvent
+  - PoseEvent

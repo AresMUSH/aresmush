@@ -11,6 +11,8 @@ module AresMUSH
         error = Website.check_login(request)
         return error if error
         
+        request.log_request
+        
         if (char.is_approved?)
           return { error: t('chargen.you_are_already_approved')}
         end

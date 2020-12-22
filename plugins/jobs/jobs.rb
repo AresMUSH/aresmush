@@ -138,6 +138,8 @@ module AresMUSH
         return JobCreateRequestHandler
       when "jobReply"
         return JobReplyRequestHandler
+      when "jobSave"
+        return JobSaveRequestHandler
       when "jobCategoryCreate"
         return CreateJobCategoryRequestHandler
       when "jobCategoryDelete"

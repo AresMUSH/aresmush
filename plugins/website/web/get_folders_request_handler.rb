@@ -11,8 +11,10 @@ module AresMUSH
         folders = Dir[File.join(AresMUSH.website_uploads_path, "*")]
         
         
-        folders.sort.map { |f| {
-          name: f.gsub(AresMUSH.website_uploads_path, '').gsub('/', '')
+        folders.select { |f| Dir[File.join(f, "*")].count > 0 }
+          .sort
+          .map { |f| {
+             name: f.gsub(AresMUSH.website_uploads_path, '').gsub('/', '')
           } }
       end
     end

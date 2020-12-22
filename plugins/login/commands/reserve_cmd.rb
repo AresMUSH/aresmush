@@ -19,6 +19,10 @@ module AresMUSH
         return nil
       end
       
+      def check_name_taken
+        return Login.name_taken?(self.charname)
+      end
+      
       def handle
         char = Character.create(name: charname, room: Game.master.welcome_room)
         temp_password = Login.set_random_password(char)
