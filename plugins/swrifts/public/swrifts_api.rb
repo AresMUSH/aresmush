@@ -223,7 +223,7 @@ module AresMUSH
 		syshind = returnsysedgesforcg(cgsyshind, cghinder, 'hind')	
 
 		hjslots = acl_get_hj_slots(swrifts_iconicf, rawcharicf) #swrifts_icf is the system icf's, charicf is the one selected by the player	
-		# hjslots = ("#{hjslots.inspect}");
+		hjslots = ("#{hjslots}"); 
 		
 		hjtables = acl_get_hj_tables(cghjtables, rawcharicf)
 		# hjtables = cghjtables.inspect
@@ -603,7 +603,7 @@ module AresMUSH
 			end
 		end
 		return (cifstring);
-	end	
+	end
 	
 	def self.acl_get_hj_tables(hjtables, charicf) #hjtables is the HJ's set on the char, charicf is the one selected by the player (not used)
 		txtstring = []
@@ -614,6 +614,37 @@ module AresMUSH
 			end	
 			return (txtstring)
 	end
+	
+	def self.newacl_get_hj_tables(hjtables, charicf) #hjtables is the HJ's set on the char, charicf is the one selected by the player (not used)
+	
+		# attribute :name #hj1, hj2, etc. 
+		# attribute :rating, :type => DataType::Integer #the random roll
+		# attribute :table #Body Armor, etc. 
+		# attribute :description #text from table
+		# reference :character, "AresMUSH::Character"
+		
+		
+		txtstring = Hash.new
+		tempcifstring = []
+		
+		charcgicf = swrifts_iconicf.select { |ss| ss['name'].downcase == charicf.downcase }.first
+		# get the entry in global file that matches the ICF name selected. We're going to make this pretty.
+					
+		pattern = 'hj'
+		charhjicf = charcgicf.select{ |k,v| k[pattern] }
+		# return (charhjicf.inspect);
+		if (charhjicf.length > 0) 
+			charhjicf.each do |k,v|
+				tempcifstring = []
+				v.each do |k1,v1|
+					hjopt = k.split("_")[0]
+					tempcifstring << {table: k1, name: hjopt}
+				end
+				cifstring[k] = tempcifstring				
+			end
+		end
+		return (cifstring);
+	end		
 
 	def self.acl_return_traits(st,traitname) #st is the traits pulled from the character. traitname is whether we want the ICF traits or Race Traits.
 		traitname = traitname.downcase
