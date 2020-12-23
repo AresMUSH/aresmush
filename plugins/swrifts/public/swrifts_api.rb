@@ -701,13 +701,12 @@ module AresMUSH
 					element_table = "#{value['table']}" #Body Armor
 					if (element_table) != 'None'
 						element_desc = Swrifts.hj_desc(char, element_name, element_table)
-						# element_desc = 'test'
+						hj_element = char.swrifts_heroesj.select { |a| a.name.downcase == element_name }.first			
+						hj_element.update(table: element_table)	
+						hj_element.update(description: element_desc)
+						dbgstr << "HJ: #{element_name}, #{element_table}, #{element_desc}"
 					end
-					# hj_element = char.swrifts_heroesj.select { |a| a.name.downcase == element_name }.first			
-					# hj_element.update(table: element_table)	
-					# hj_element.update(description: element_desc)
-					# dbgstr << "HJ: #{element_name}, #{element_table}, #{element_desc}"
-					dbgstr << "HJ:#{element_table}, #{element_desc}"
+
 				end
 			end
 		return (dbgstr)
