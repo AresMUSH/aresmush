@@ -613,7 +613,7 @@ module AresMUSH
 					txtstring << {table: a.table, name: a.name}
 			end
 
-			txtstring.each do |k1 v1|
+			txtstring.each do |k1,v1|
 				txtstring2 = v1.name
 				return txtstring2
 			end
