@@ -616,7 +616,7 @@ module AresMUSH
 				# end
 		.each_with_index
 			.map do |k, v|
-			hjstr << {"K: #{k}, v: #{v}"}
+			hjstr << {K: "#{k}", v: "#{v}"}
 		end
 		return (hjstr)
 	end
