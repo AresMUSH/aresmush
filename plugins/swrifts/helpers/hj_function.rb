@@ -8,7 +8,6 @@ module AresMUSH
 			icfhj_roll = model.swrifts_randnum.select { |a| a.name.downcase == element_name }.first #get the hj1 entry
 			icfhj_roll = icfhj_roll.rating # get the roll from hj1 
 			hj_yml = Global.read_config('swrifts', 'hjtables') #get all the hjtables yml 
-			return ("#{hj_yml}")
 			hj_hash = hj_yml.select { |a| a['name'].downcase == element_table.downcase }.first #get the specific hj info
 			
 			hj_rolls = hj_hash['rolls']			
