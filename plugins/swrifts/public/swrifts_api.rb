@@ -614,9 +614,9 @@ module AresMUSH
 					# txtstring << {table: a.table, name: a.name}
 					# hjstring[a.name] = txtstring
 				# end
-		hjstring.each_with_index
-			.map do |k,v|
-			hjstr << "K: #{k}, v: #{v}"
+		.each_with_index
+			.map do |k, v|
+			hjstr << {"K: #{k}, v: #{v}"}
 		end
 		return (hjstr)
 	end
