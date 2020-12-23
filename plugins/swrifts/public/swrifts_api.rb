@@ -614,7 +614,7 @@ module AresMUSH
 			end
 
 			txtstring.each do |k1,v1|
-				txtstring2 = v1.name
+				txtstring2 = v1
 				return txtstring2
 			end
 			
