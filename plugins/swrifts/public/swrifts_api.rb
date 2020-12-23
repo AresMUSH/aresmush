@@ -618,7 +618,7 @@ module AresMUSH
 				.map do |k, v|
 					hjstr << {K: "#{k}", v: "#{v}"}
 				end
-		return (hjstr)
+		return (hjstr) 
 	end
 	
 	def self.newacl_get_hj_tables(hjtables, charicf) #hjtables is the HJ's set on the char, charicf is the one selected by the player (not used)
