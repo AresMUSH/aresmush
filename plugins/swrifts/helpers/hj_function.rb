@@ -9,6 +9,7 @@ module AresMUSH
 			icfhj_roll = icfhj_roll.rating # get the roll from hj1 
 			hj_yml = Global.read_config('swrifts', 'hjtables') #get all the hjtables yml 
 			hj_hash = hj_yml.select { |a| a['name'].downcase == element_table.downcase }.first #get the specific hj info
+			return ("#{hj_hash})
 			hj_rolls = hj_hash['rolls']
 			hj_rolls.each do | roll, desc |
 				if roll.is_a?(Integer)
