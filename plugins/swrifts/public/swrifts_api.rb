@@ -698,7 +698,7 @@ module AresMUSH
 			if (c_hj) #If there are heroes journey tables, save them.
 				c_hj.each do |key, value| #cycle through each one
 					element_name = "#{value['name']}" #hj1
-					element_table = value['table'] #Body Armor
+					element_table = "#{value['table']}" #Body Armor
 					# element_desc = Swrifts.hj_desc(char, element_name, element_table)
 					element_desc = 'test'
 					
