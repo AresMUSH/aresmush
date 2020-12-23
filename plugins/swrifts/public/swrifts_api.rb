@@ -615,7 +615,7 @@ module AresMUSH
 					# hjstring[a.name] = txtstring
 				# end
 		hjtables.each do |k,v|
-			hjstr = "#{k}, #{v}"
+			hjstr << "K: #{k}, v: #{v}"
 		end
 		return (hjstr)
 	end
