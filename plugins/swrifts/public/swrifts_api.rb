@@ -699,14 +699,15 @@ module AresMUSH
 				c_hj.each do |key, value| #cycle through each one
 					element_name = "#{value['name']}" #hj1
 					element_table = "#{value['table']}" #Body Armor
-					element_desc = Swrifts.hj_desc(char, element_name, element_table)
-					# element_desc = 'test'
-					
+					if (element_table) != 'None'
+						element_desc = Swrifts.hj_desc(char, element_name, element_table)
+						# element_desc = 'test'
+					end
 					# hj_element = char.swrifts_heroesj.select { |a| a.name.downcase == element_name }.first			
 					# hj_element.update(table: element_table)	
 					# hj_element.update(description: element_desc)
 					# dbgstr << "HJ: #{element_name}, #{element_table}, #{element_desc}"
-					dbgstr = "HJ:#{element_table}"
+					dbgstr = "HJ:#{element_table}, #{element_desc}"
 				end
 			end
 		return (dbgstr)
