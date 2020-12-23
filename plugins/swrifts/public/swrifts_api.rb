@@ -611,7 +611,7 @@ module AresMUSH
 		hjstring = hjtables.to_a.sort_by { |a| a.name }
 			.each_with_index
 				.map do |a, i| 
-					txtstring << {a: "#{a.inspect}", i: "#{i}"}
+					txtstring[a.name] << {table: a.table, name: a.name}
 				end
 
 		return (txtstring) 
