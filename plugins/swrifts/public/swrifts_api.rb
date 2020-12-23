@@ -705,7 +705,8 @@ module AresMUSH
 					# hj_element = char.swrifts_heroesj.select { |a| a.name.downcase == element_name }.first			
 					# hj_element.update(table: element_table)	
 					# hj_element.update(description: element_desc)
-					dbgstr << "HJ: #{element_name}, #{element_table}, #{element_desc}"
+					# dbgstr << "HJ: #{element_name}, #{element_table}, #{element_desc}"
+					dbgstr = "HJ: #{element_desc}"
 				end
 			end
 		return (dbgstr)
