@@ -607,17 +607,13 @@ module AresMUSH
 	
 	def self.acl_get_hj_tables(hjtables, charicf) #hjtables is the HJ's set on the char, charicf is the one selected by the player (not used)
 		txtstring = []
+		hjstr = []
 		hjtables.to_a.sort_by { |a| a.name }
 			.each_with_index
 				.map do |a, i| 
 					txtstring << {table: a.table, name: a.name}
-			end
-
-			txtstring.each do |k1,v1|
-				txtstring2 = v1
-				return txtstring2
-			end
-			
+					hjstring[a.name] = txtstring
+			end			
 			return (hjstring)
 	end
 	
