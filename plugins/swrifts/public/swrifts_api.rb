@@ -611,8 +611,9 @@ module AresMUSH
 			.each_with_index
 				.map do |a, i| 
 					txtstring << {table: a.table, name: a.name}
+					hjstring[a.name]=txtstring
 			end	
-			return (txtstring)
+			return (hjstring)
 	end
 	
 	def self.newacl_get_hj_tables(hjtables, charicf) #hjtables is the HJ's set on the char, charicf is the one selected by the player (not used)
