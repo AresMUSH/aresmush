@@ -598,7 +598,7 @@ module AresMUSH
 						hjopt = k.split("_")[0]
 						tempcifstring << {table: k1, name: hjopt}
 					end
-					cifstring[k] = tempcifstring				
+					cifstring[hjopt] = tempcifstring				
 				end
 			end
 		end
