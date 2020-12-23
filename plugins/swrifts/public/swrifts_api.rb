@@ -645,6 +645,7 @@ module AresMUSH
 		c_hind = chargen_data[:custom][:cghind]
 		c_hindnofw = chargen_data[:custom][:cghindnofw]
 		c_hindfw = chargen_data[:custom][:cghindfw]
+		c_hj = chargen_data[:custom][:hjtables]
 
 		icf_downcase = c_iconicf.downcase.strip  # Stripped and downcased iconicframework name.
 		race_downcase = c_race.downcase.strip  # Stripped and downcased race name.
@@ -693,7 +694,20 @@ module AresMUSH
 					dbgstr << "Edge name: #{edge_name}, #{ss}" #For troubleshooting
 				end
 			end
-	
+			
+			if (c_hj) #If there are heroes journey tables, save them.
+				c_hj.each do |key, value}| #cycle through each one
+					# element_name = self.hj_name #hj1
+					# element_table = self.hj_table_name #Body Armor
+					
+					# element_desc = Swrifts.hj_desc(model, element_name, element_table)
+					
+					# hj_element = model.swrifts_heroesj.select { |a| a.name.downcase == element_name }.first			
+					# hj_element.update(table: element_table)	
+					# hj_element.update(description: element_desc)
+					dbgstr << "HJ: #{key}, #{value}"
+				end
+			end
 		return (dbgstr)
 	end
 	
