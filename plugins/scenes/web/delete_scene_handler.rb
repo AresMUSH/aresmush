@@ -24,7 +24,7 @@ module AresMUSH
           return { error: t('scenes.cant_delete_shared_scene') }
         end
         
-        Global.logger.debug "Scene #{scene.id} deleted by #{enactor.name}."
+        Global.logger.info "Scene #{scene.id} deleted by #{enactor.name}."
         
         scene.delete
         {

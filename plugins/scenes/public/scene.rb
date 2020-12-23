@@ -49,7 +49,7 @@ module AresMUSH
     end
     
     def self.scenes_starring(char)
-      Scene.all.select { |s| s.shared && s.participants.include?(char) }
+      Scene.shared_scenes.select { |s| s.participants.include?(char) }
     end
     
     def is_private?

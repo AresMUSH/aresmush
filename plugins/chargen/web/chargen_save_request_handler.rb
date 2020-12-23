@@ -14,6 +14,8 @@ module AresMUSH
           return { error: t('webportal.not_found') }
         end
         
+        Global.logger.info "Saving chargen data for #{char.name} by #{enactor.name}."
+        
         if (!Chargen.can_approve?(enactor))
           if (char != enactor)
             return { error: t('dispatcher.not_allowed') }
@@ -23,7 +25,6 @@ module AresMUSH
           return { error: error } if error
         end
 
-        Global.logger.info "Saving chargen data for #{char.name} by #{enactor.name}."
         alerts = Chargen.save_char(char, chargen_data)
         
         {    

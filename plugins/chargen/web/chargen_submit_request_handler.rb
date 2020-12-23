@@ -12,6 +12,8 @@ module AresMUSH
         error = Website.check_login(request)
         return error if error
         
+        request.log_request
+        
         error = Chargen.check_chargen_locked(char)
         return { error: error } if error
         
