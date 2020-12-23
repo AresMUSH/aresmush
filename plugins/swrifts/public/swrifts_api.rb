@@ -611,8 +611,13 @@ module AresMUSH
 			.each_with_index
 				.map do |a, i| 
 					txtstring << {table: a.table, name: a.name}
-					return txtstring
-			end				
+			end
+
+			txtstring.each do |k1 v1|
+				txtstring2 = v1.name
+				return txtstring2
+			end
+			
 			return (hjstring)
 	end
 	
