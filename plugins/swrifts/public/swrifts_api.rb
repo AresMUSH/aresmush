@@ -613,7 +613,7 @@ module AresMUSH
 		hjstring = hjtables.to_a.sort_by { |a| a.name }
 			.each_with_index
 				.map do |a, i| 
-					tempcifstring[a.name] << {table: a.table, name: a.name}
+					tempcifstring[a.name] = {table: a.table, name: a.name}
 				end
 		return (tempcifstring) 
 	end
