@@ -614,8 +614,13 @@ module AresMUSH
 					txtstring << {table: a.table, name: a.name}
 					hjstr << {name: a.name}
 				end
-
-		return (hjstr) 
+		hjstr.each do |v|
+			tempcifstring = []
+			txtstring.each do |v1|
+				tempcifstring[v] = v1
+			end
+		end
+		return (tempcifstring) 
 	end
 	
 	def self.newacl_get_hj_tables(hjtables, charicf) #hjtables is the HJ's set on the char, charicf is the one selected by the player (not used)
