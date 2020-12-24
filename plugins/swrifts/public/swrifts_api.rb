@@ -617,8 +617,8 @@ module AresMUSH
 				end
 				
 		hjstr.each do |k, v|
-			k.each do |n|
-			 return (n.name)
+			k.each do |n, t|
+			 return (t)
 			end
 			
 			# txtstring.each do |k1, v1|
