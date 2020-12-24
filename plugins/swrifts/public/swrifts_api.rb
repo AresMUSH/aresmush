@@ -614,10 +614,10 @@ module AresMUSH
 					txtstring << {table: a.table, name: a.name}
 					hjstr << {name: a.name}
 				end
-		hjstr.each do |v|
+		hjstr.each do |k,v|
 			tempcifstring = []
-			txtstring.each do |v1|
-				tempcifstring[v] = v1
+			txtstring.each do |k1, v1|
+				tempcifstring << {k1:k1, v1:v1}
 			end
 		end
 		return (tempcifstring) 
