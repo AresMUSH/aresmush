@@ -615,6 +615,8 @@ module AresMUSH
 					txtstring << {table: a.table, name: a.name}
 					hjstr << {name: a.name}
 				end
+				
+		return (hjstr)
 		hjstr.each do |k, v|
 
 			txtstring.each do |k1, v1|
