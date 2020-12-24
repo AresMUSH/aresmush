@@ -614,18 +614,8 @@ module AresMUSH
 			.each_with_index
 				.map do |a, i| 
 					txtstring << {table: a.table, name: a.name}
-					hjstr << {name: a.name}
+					tempcifstring[a.name] = txtstring
 				end
-				
-		hjstr.each do |k, v|	
-			k.each do |n, t|
-			 tempcifstring[t]=k
-			end
-			
-			# txtstring.each do |k1, v1|
-				# tempcifstring[k] = k1
-			# end
-		end
 		return (tempcifstring) 
 	end
 	
