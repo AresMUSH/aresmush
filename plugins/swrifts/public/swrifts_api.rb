@@ -617,7 +617,7 @@ module AresMUSH
 				end
 				
 		txtstring.each do |k|
-			return ("key: #{k['name']}")
+			return ("key: #{k.class}")
 		end
 		return (tempcifstring) 
 	end
