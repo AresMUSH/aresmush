@@ -616,12 +616,12 @@ module AresMUSH
 					hjstr << {name: a.name}
 				end
 				
-		return (hjstr)
-		hjstr.each do |k, v|
 
-			txtstring.each do |k1, v1|
-				tempcifstring[k] = k1
-			end
+		hjstr.each do |k, v|
+			tempcifstring << {Key1: k, Value1: v}
+			# txtstring.each do |k1, v1|
+				# tempcifstring[k] = k1
+			# end
 		end
 		return (tempcifstring) 
 	end
