@@ -614,7 +614,7 @@ module AresMUSH
 			.each_with_index
 				.map do |a, i| 
 					txtstring << {table: a.table, name: a.name}
-					tempcifstring[a.name] = txtstring
+					return (txtstring)
 				end
 		return (tempcifstring) 
 	end
