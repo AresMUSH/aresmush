@@ -616,7 +616,7 @@ module AresMUSH
 					hjstr << {name: a.name}
 				end
 				
-		hjstr.each_with_index do |k, v|
+		hjstr.each do |k, v|
 			return (k.class)
 			tempcifstring << {Key1: k, Value1: v}
 			# txtstring.each do |k1, v1|
