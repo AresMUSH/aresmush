@@ -619,8 +619,7 @@ module AresMUSH
 		hjstr.each do |k, v|
 			tempcifstring = []		
 			k.each do |n, t|
-			return (t)
-			 tempcifstring[t]=k
+			 tempcifstring["#{t}"]=k
 			end
 			
 			# txtstring.each do |k1, v1|
