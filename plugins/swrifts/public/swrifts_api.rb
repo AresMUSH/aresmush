@@ -616,8 +616,8 @@ module AresMUSH
 				end
 		hjstr.each do |k,v|
 			tempcifstring = []
-			txtstring.each do |v1|
-				tempcifstring[v] = v1
+			txtstring.each do |k1, v1|
+				tempcifstring << {k1:k1, v1:v1}
 			end
 		end
 		return (tempcifstring) 
