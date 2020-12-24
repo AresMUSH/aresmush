@@ -617,7 +617,7 @@ module AresMUSH
 				end
 				
 
-		hjstr.each do |k, v|
+		hjstr.each_with_index do |k, v|
 			tempcifstring << {Key1: k, Value1: v}
 			# txtstring.each do |k1, v1|
 				# tempcifstring[k] = k1
