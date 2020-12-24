@@ -608,6 +608,7 @@ module AresMUSH
 	def self.acl_get_hj_tables(hjtables, charicf) #hjtables is the HJ's set on the char, charicf is the one selected by the player (not used)
 		txtstring = []
 		hjstr = []
+		tempcifstring =  Hash.new
 
 		hjstring = hjtables.to_a.sort_by { |a| a.name }
 			.each_with_index
@@ -616,10 +617,9 @@ module AresMUSH
 					hjstr << {name: a.name}
 				end
 				
-		hjstr.each do |k, v|
-			tempcifstring = []		
+		hjstr.each do |k, v|	
 			k.each do |n, t|
-			 tempcifstring["#{t}"]={table: 'dkdkdkd', mine: 'ldldld'}
+			 tempcifstring[t]=k
 			end
 			
 			# txtstring.each do |k1, v1|
