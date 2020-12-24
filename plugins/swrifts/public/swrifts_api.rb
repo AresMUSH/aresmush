@@ -613,11 +613,12 @@ module AresMUSH
 			.each_with_index
 				.map do |a, i| 
 					txtstring << {table: a.table, name: a.name}
-					hjstr << {name: a.name}
+					hjstr << {a.name}
 				end
 				
+		return (hjstr)
 		hjstr.each do |k, v|
-			return (k.name)
+			return (k['name'])
 			
 			# txtstring.each do |k1, v1|
 				# tempcifstring[k] = k1
