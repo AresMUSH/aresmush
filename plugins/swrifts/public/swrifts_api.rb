@@ -157,9 +157,11 @@ module AresMUSH
 		# Get the base CGen slots that might be filled
 		swrifts_init = Global.read_config('swrifts', 'init')
 		cgslots = returncgslotsforcg(swrifts_init) #Prolly don't need this 25 Dec 2020
+		
+####### This is probably not needed - I still have to calculate the points dynamically ####		
 		chargenpoints = char.swrifts_chargenpoints
 		chargenpoints = acl_returncgpoints(chargenpoints)
-		# chargenpoints = "#{chargenpoints.class}"
+#######
 		
 		# Get the Characters Traits	
 		swrifts_iconicf = Global.read_config('swrifts', 'iconicf')
@@ -226,7 +228,7 @@ module AresMUSH
 		syshind = returnsysedgesforcg(cgsyshind, cghinder, 'hind')	
 
 		hjslots = acl_get_hj_slots(swrifts_iconicf, rawcharicf) #swrifts_icf is the system icf's, charicf is the one selected by the player	
-		# hjslots = ("#{hjslots}"); 
+		hjslots = ("#{hjslots}"); 
 		
 		hjtables = acl_get_hj_tables(cghjtables, rawcharicf)
 		# hjtables = hjtables.inspect
@@ -635,6 +637,7 @@ module AresMUSH
 	end
 
 
+  ####### This is probably not needed - I still have to calculate the points dynamically ####
 	def self.acl_returncgpoints(cg) #cg is swrifts_chargenpoints, the points set on the character object.
 		txtstring = []
 		cg.to_a.sort_by { |a| a.name }
@@ -644,6 +647,8 @@ module AresMUSH
 			end
 			return (txtstring)
 	end	
+	
+#########
 	
 	def self.save_abilities_for_chargen(char, chargen_data)		
 
