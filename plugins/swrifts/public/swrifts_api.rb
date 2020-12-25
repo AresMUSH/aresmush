@@ -156,7 +156,8 @@ module AresMUSH
 
 		# Get the base CGen slots that might be filled
 		swrifts_init = Global.read_config('swrifts', 'init')
-		cgslots = returncgslotsforcg(swrifts_init)
+		cgslots = returncgslotsforcg(swrifts_init) #Prolly don't need this 25 Dec 2020
+		chargenpoints = char.swrifts_chargenpoints
 		
 		# Get the Characters Traits	
 		swrifts_iconicf = Global.read_config('swrifts', 'iconicf')
@@ -237,7 +238,8 @@ module AresMUSH
 		  charrace: charrace, #Char Race
 		  cgpoints: cgtraits, #CG points for the character
 		  inicgpoints: initcgpoints, #CG points set by system.
-		  cgslots: cgslots,
+		  cgslots: cgslots, #prolly not needed 25 Dec 2020
+		  cgpoints: chargenpoints, #Get the cgpoints that are stored on the character sheet
 		  initracepoints: initracepoints,
 		  cgedges: cgedg, #Edges on Character
 		  cghind: cghind, #Hinderances on Character
