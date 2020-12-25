@@ -636,12 +636,13 @@ module AresMUSH
 
 
 	def self.acl_returncgpoints(cg) #cg is swrifts_chargenpoints, the points set on the character object.
-		txtstring = ''
+		txtstring = []
 		cg.to_a.sort_by { |a| a.name }
 			.each_with_index
 				.map do |a, i| 
-					return ("#{a.inspect}")
+					txtstring << {name: a.name, rating: a.rating}			
 			end
+			return (txtstring)
 	end	
 	
 	def self.save_abilities_for_chargen(char, chargen_data)		
