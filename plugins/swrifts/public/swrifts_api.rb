@@ -593,6 +593,8 @@ module AresMUSH
 			
 			charcgicf = swrifts_iconicf.select { |ss| ss['name'].downcase == charicf.downcase }.first
 			# get the entry in global file that matches the ICF name selected. We're going to make this pretty.
+			
+			return ("#{charcgicf}")
 						
 			pattern = 'hj'
 			charhjicf = charcgicf.select{ |k,v| k[pattern] }
