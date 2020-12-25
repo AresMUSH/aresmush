@@ -158,6 +158,7 @@ module AresMUSH
 		swrifts_init = Global.read_config('swrifts', 'init')
 		cgslots = returncgslotsforcg(swrifts_init) #Prolly don't need this 25 Dec 2020
 		chargenpoints = char.swrifts_chargenpoints
+		chargenpoints = "#{chargenpoints.inspect}"
 		
 		# Get the Characters Traits	
 		swrifts_iconicf = Global.read_config('swrifts', 'iconicf')
