@@ -158,7 +158,8 @@ module AresMUSH
 		swrifts_init = Global.read_config('swrifts', 'init')
 		cgslots = returncgslotsforcg(swrifts_init) #Prolly don't need this 25 Dec 2020
 		chargenpoints = char.swrifts_chargenpoints
-		chargenpoints = "#{chargenpoints.class}"
+		chargenpoints acl_returncgpoints(chargenpoints)
+		# chargenpoints = "#{chargenpoints.class}"
 		
 		# Get the Characters Traits	
 		swrifts_iconicf = Global.read_config('swrifts', 'iconicf')
@@ -629,6 +630,17 @@ module AresMUSH
 				.map do |a, i| 
 				if a.name.downcase == "#{traitname}"
 					return ("#{a.rating}")
+				end
+			end	
+	end
+
+
+	def self.acl_returncgpoints(cg) #cg is swrifts_chargenpoints, the points set on the character object.
+		txtstring = ''
+		cg.to_a.sort_by { |a| a.name }
+			.each_with_index
+				.map do |a, i| 
+					return ("#{a.inspect}")
 				end
 			end	
 	end	
