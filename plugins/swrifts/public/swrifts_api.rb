@@ -641,8 +641,7 @@ module AresMUSH
 			.each_with_index
 				.map do |a, i| 
 					return ("#{a.inspect}")
-				end
-			end	
+			end
 	end	
 	
 	def self.save_abilities_for_chargen(char, chargen_data)		
