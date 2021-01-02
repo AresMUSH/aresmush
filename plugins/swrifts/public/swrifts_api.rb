@@ -596,7 +596,7 @@ module AresMUSH
 						
 			pattern = 'hj'
 			charhjicf = charcgicf.select{ |k,v| k[pattern] }
-			return (charhjicf.inspect);
+			return ("#{charhjicf.inspect}");
 			if (charhjicf.length > 0) 
 				charhjicf.each do |k,v|
 					tempcifstring = []
