@@ -2696,6 +2696,21 @@ swrifts:
                 - Cybernetics*
                 - Higher Standard*
                 - Power Activators*
+            hj1_options:
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism
+            hj2_options:
+                - Body Armor
+                - Close Combat Weapons
+                - Education
+                - Enchanted Items
+                - Experience & Wisdom
+                - Magic & Mysticism                
+                - Psionics
+                - Ranged Weapons
+                - Training
+                - Underworld & Black Ops
         -
             name: Techno-Wizard
             book_reference: TLPG 50
