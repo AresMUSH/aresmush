@@ -32,8 +32,7 @@ module AresMUSH
 
         message = t('magic.given_magic_item', :name => enactor.name, :item => self.item_name)
         Login.emit_if_logged_in self.target, message
-        Mail.send_mail([target.name], t('magic.given_magic_item_subj', :item => self.item_name), message, nil)
-
+        Login.notify(self.target, :item, message, nil)
       end
 
 

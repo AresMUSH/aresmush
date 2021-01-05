@@ -34,8 +34,7 @@ module AresMUSH
 
         message = t('magic.magic_item_removed', :name => enactor.name, :item => item_name)
         client.emit_success message
-        Mail.send_mail([target.name], t('magic.magic_item_removed_subj', :item => item_name), message, nil)
-
+        Login.notify(self.target, :item, message, nil)
       end
 
 
