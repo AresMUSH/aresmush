@@ -702,9 +702,11 @@ button,  select {
 
 .plot-box {
   background: $main-purple;
-  border-radius: 5px;
-  padding: 5px;
-  margin: 5px;
+  padding: 5px 15px;
+  text-align: initial;
+  -webkit-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.3);
+  -moz-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.3);
+  box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.3);
 }
 
 /* ---------End Landing Page-------------- */
