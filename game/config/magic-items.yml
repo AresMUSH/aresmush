@@ -133,6 +133,11 @@ magic-items:
     name: Rosewing
     desc: "Just under nine inches, the slender wand of oak is beautifully polished with age. Delicate rose quartz is inlaid along the length of it in intricate designs, and it's topped with a sharp, many-pointed star of pink sapphire. Gives +1 to spellcasting."
     spell_mod: 1
+  Slay Bells:
+    name: Slay Bells
+    desc: "A set of metal bells afixed to a leather strap nearly a foot long embues the holder with additional strength to accomplish their goal."
+    spells:
+    - Strength
   Soul Stone Ring:
     name: Soul Stone Ring
     desc: A pair of thick bronze rings each set with a single round opalescent stone. The stone changes color to indicate shifts in the emotional status of whoever sports its mate. When worn, the magic infused in the object allows the user to experience the other wearer's condition for his or her self. An excellent way to keep tabs on allies, loved ones, and mortal enemies.
