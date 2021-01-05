@@ -9,8 +9,8 @@
 <p><i>Interested in joining us? <a href="/wiki/guides:join_us">Start here!</a></i></p>
 
 <div class="plot-box">
-<h3>Current Story</h3>
-<b><a href="https://spiritlakemu.com/plot/47">Flowering Sword</a></b>
+<h3 style="text-align:center; font-variant:small-caps;">Current Story</h3>
+<p style="font-style:bold; font-variant:small-caps;"><a href="https://spiritlakemu.com/plot/47">Flowering Sword</a></p>
 <p>The group once known as Wild Rose West has turned out to be a front for a much larger and deeper organization called Flowering Sword. The mages of Grand Lake know little about them, except that they hunt the gems an ancient mage once used to wield great power.</p>
 <p style="align:right;"><a href="https://spiritlakemu.com/plots">See more story...</a></p>
 </div>
