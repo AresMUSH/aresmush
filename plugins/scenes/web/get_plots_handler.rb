@@ -9,6 +9,7 @@ module AresMUSH
                   start_date: p.start_date || "",
                   end_date: p.end_date || "",
                   completed: p.completed,
+                  background: p.background,
                   content_warning: p.content_warning,
                   storytellers: get_storytellers(p)
                 }}
@@ -30,3 +31,4 @@ module AresMUSH
     end
   end
 end
+ 
