@@ -1,7 +1,18 @@
-<br><p style="font-size:30px; font-variant:small-caps;">Spirit Lake is in <a href="/wiki/beta">Beta</a>.</p>
+<br>
+
+
 
 <p>In the shadow of the Rocky Mountains lies a little town that is rediscovering its history.</p>
 <p>And its <a href="/wiki/magic">magic.</a></p>
 <p>Welcome to <a href="/wiki/about_us">Spirit Lake.</a></p>
 <p><b>Applications are currently closed. They will re-open on January 14.</p>
 <p><i>Interested in joining us? <a href="/wiki/guides:join_us">Start here!</a></i></p>
+
+<div class="plot-box">
+<h3>Current Story</h3>
+<b><a href="https://spiritlakemu.com/plot/47">Flowering Sword</a></b>
+<p>The group once known as Wild Rose West has turned out to be a front for a much larger and deeper organization called Flowering Sword. The mages of Grand Lake know little about them, except that they hunt the gems an ancient mage once used to wield great power.</p>
+<p style="align:right;"><a href="https://spiritlakemu.com/plots">See more story...</a></p>
+</div>
+
+<p style="font-style:italic; font-variant:small-caps;">Spirit Lake is in <a href="/wiki/beta">Beta</a>.</p>
