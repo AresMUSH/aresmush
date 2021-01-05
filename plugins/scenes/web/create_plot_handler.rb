@@ -23,7 +23,8 @@ module AresMUSH
           title: request.args[:title],
           description: request.args[:description],
           summary: request.args[:summary],
-          content_warning: request.args[:content_warning]
+          content_warning: request.args[:content_warning],
+          background: (request.args[:background] || "").to_bool
         )
 
         storyteller_names.each do |storyteller|

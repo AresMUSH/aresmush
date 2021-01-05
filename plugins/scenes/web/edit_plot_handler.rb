@@ -41,6 +41,7 @@ module AresMUSH
         plot.update(title: request.args[:title])
         plot.update(description: request.args[:description])
         plot.update(completed: (request.args[:completed] || "").to_bool)
+        plot.update(background: (request.args[:background] || "").to_bool)
         {}
       end
     end

@@ -6,6 +6,7 @@ module AresMUSH
     attribute :description
     attribute :summary
     attribute :completed, :type => DataType::Boolean
+    attribute :background, :type => DataType::Boolean
     attribute :content_warning
 
     set :storytellers, "AresMUSH::Character"
@@ -32,6 +33,10 @@ module AresMUSH
 
     def is_open?
       !self.completed
+    end
+
+    def is_bg?
+      self.background 
     end
 
     def plot_links

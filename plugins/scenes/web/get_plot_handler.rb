@@ -38,6 +38,7 @@ module AresMUSH
           start_date: plot.start_date,
           end_date: plot.end_date,
           completed: plot.completed,
+          background: plot.background, 
           content_warning: plot.content_warning,
           scenes: {
             scenes: scenes,
