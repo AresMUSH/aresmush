@@ -12,7 +12,7 @@ Magical items range from weapons enchanted to cause increased damage to amulets 
 
 `items [<name>]` - See the items owned by a character and what they have equipped.
 `item/equip <item>` - Equip an item.
-`item/uneqip <item>` - Unequip an item.
+`item/unequip <item>` - Unequip an item.
 `item/give <name>=<item>` - Give an item to someone.
 
 **Admin Only**
