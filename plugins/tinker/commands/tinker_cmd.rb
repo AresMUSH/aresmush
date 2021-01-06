@@ -3,7 +3,7 @@ module AresMUSH
     class TinkerCmd
       include CommandHandler
 
-      attr_accessor :spell
+      attr_accessor :role
 
 
       def check_can_manage
