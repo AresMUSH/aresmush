@@ -12,14 +12,14 @@ module AresMUSH
       end
 
       def parse_args
-        self.spell = titlecase_arg(cmd.args)
+        self.role = titlecase_arg(cmd.args)
       end
 
 
       def handle
-        client.emit self.spell.upcase
+        client.emit self.role.upcase
         client.emit "___________________________________"
-        chars = Chargen.approved_chars.select { |c| Magic.knows_spell?(c, self.spell) }
+        chars = Chargen.approved_chars.select { |c| c.has_role?(role) }
 
         chars.each do |c|
           client.emit c.name
