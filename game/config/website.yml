@@ -138,6 +138,8 @@ website:
       title: Locations
     - route: achievements
       title: Achievements
+    - route: roles
+      title: Roles
     - divider: true
     - route: files
       title: Files
