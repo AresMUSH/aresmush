@@ -7,7 +7,7 @@
 <p>Welcome to <a href="/wiki/about_us">Spirit Lake.</a></p>
 <p><b>Applications are currently closed. They will re-open on January 14.</p>
 <p><i>Interested in joining us? <a href="/wiki/guides:join_us">Start here!</a></i></p>
-<hr style="border:1px solid #6a6363;">
+<hr>
 
 <div class="plot-box">
 <h3 style="text-align:center; font-variant:small-caps;">Current Story</h3>
@@ -15,5 +15,3 @@
 <p style="font-size: 95%">The group once known as Wild Rose West has turned out to be a front for a much larger and deeper organization called Flowering Sword. The mages of Grand Lake know little about them, except that they hunt the gems an ancient mage once used to wield great power.</p>
 <p style="text-align:right; font-size: 90%""><a href="https://spiritlakemu.com/plots">See more story...</a></p>
 </div>
-
-<p style="font-style:italic; font-variant:small-caps;">Spirit Lake is in <a href="/wiki/beta">Beta</a>.</p>
