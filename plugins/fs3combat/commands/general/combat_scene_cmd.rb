@@ -23,6 +23,11 @@ module AresMUSH
           return
         end
         
+        if (!Scenes.can_read_scene?(enactor, scene))
+          client.emit_failure t('fs3combat.cant_link_scene')
+          return
+        end
+        
         combat.update(scene: scene)
         client.emit_success t('fs3combat.scene_set', :scene => scene.id)
         
