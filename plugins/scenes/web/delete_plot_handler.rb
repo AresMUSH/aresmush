@@ -18,6 +18,8 @@ module AresMUSH
           return { error: t('dispatcher.not_allowed') }
         end
         
+        Website.add_to_recent_changes('plot', t('scenes.plot_deleted', :title => plot.title), {}, enactor.name)
+        
         plot.delete
         {
         }
