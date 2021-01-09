@@ -8,8 +8,9 @@
 <% end %>
 <% if show_age %>
 
-%xh<%= left( t('profile.birthdate_title'), 12 ) %>%xn <%= left( demographic('birthdate'), 25 ) %>%xh<%= left( t('profile.age_title'), 12 ) %>%xn <%= left( age, 25 ) %>
+%xh<%= left( t('profile.birthdate_title'), 12 ) %>%xn <%= left( demographic('birthdate'), 25 ) %>%xh<%= left( t('profile.age_title'), 12 ) %>%xn <%= left( age, 25 ) -%>
 <% end %>
+
 %xh<%= left( t('profile.wiki_title'), 12) %>%xn <%= wiki %>
 <%= divider -%>
 <% groups.each_with_index do |g, i| %>

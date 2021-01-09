@@ -317,7 +317,7 @@ fs3combat:
       penetration: 2
     Bipod:
       description: Bipod Brace
-      recoi: -3
+      recoil: -3
     Scope:
       description: Sniper scope
       accuracy: 2
