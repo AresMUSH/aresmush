@@ -118,7 +118,7 @@ module AresMUSH
           next if !p.respond_to?(:get_event_handler)
           AresMUSH.with_error_handling(nil, "Handling #{event_name}.") do            
             handler_class = p.get_event_handler(event_name)
-            if (handler_class)              
+            if (handler_class)
               if (should_log_event?(event_name))
                 Global.logger.debug "#{handler_class} handling #{event_name}"
               end
