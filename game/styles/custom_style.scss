@@ -703,12 +703,18 @@ button,  select {
 .plot-box {
   background:#2b2c31;
   padding: 5px 15px;
+  font-size: 90%
   text-align: initial;
   -webkit-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.3);
   -moz-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.3);
   box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.3);
   max-width: 80%;
   margin: auto;
+}
+
+.plot-title {
+  font-style: bold;
+  font-variant: small-caps;
 }
 
 /* ---------End Landing Page-------------- */
