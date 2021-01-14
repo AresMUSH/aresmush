@@ -29,6 +29,8 @@ module AresMUSH
           search_id = nil
         end
 
+        story = Global.read_config('website', 'story')
+
         {
           type: 'game',
           id: 1,
@@ -37,7 +39,7 @@ module AresMUSH
           port: Global.read_config('server', 'port'),
           description: Global.read_config('game', 'description'),
           website_welcome: Website.welcome_text,
-          story: Website.format_markdown_for_html(Global.read_config('website', 'story')),
+          story: Website.format_markdown_for_html(story),
           ictime: ICTime.ic_datestr(ICTime.ictime),
           scene_start_date: ICTime.ictime.strftime("%Y-%m-%d"),
           unread_scenes_count: unread_scenes.count,
