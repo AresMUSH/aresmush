@@ -52,7 +52,6 @@ module AresMUSH
           token_expiry_warning: token_expiry_warning,
           motd: Game.master.login_motd ? Website.format_markdown_for_html(Game.master.login_motd) : nil,
           notification_count: notifications == 0 ? nil : notifications,
-          story: Global.read_config('game', 'story'),
           alts: alts
         }
       end
