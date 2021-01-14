@@ -440,6 +440,16 @@ spells:
     name: Wild Shape Fly
     roll: true
     school: Nature
+  Wild Shape Horse:
+    available: true
+    armor: Tough hide
+    desc: Wild Shape Horse
+    level: 5
+    name: Wild Shape Horse
+    roll: true
+    school: Nature
+    range: Self
+    weapon: Hard Hooves
   Wild Shape Hrafn:
     available: true
     armor: Bird
