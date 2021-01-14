@@ -37,7 +37,7 @@ module AresMUSH
           port: Global.read_config('server', 'port'),
           description: Global.read_config('game', 'description'),
           website_welcome: Website.welcome_text,
-          story: Global.read_config('website', 'story'),
+          story: Website.format_markdown_for_html(Global.read_config('website', 'story')),
           ictime: ICTime.ic_datestr(ICTime.ictime),
           scene_start_date: ICTime.ictime.strftime("%Y-%m-%d"),
           unread_scenes_count: unread_scenes.count,
