@@ -609,6 +609,19 @@ spells:
     school: Corpus
     target_num: 3
     target_optional: true
+  Necromancy:
+    available: false
+    casting_time: 1 Round
+    desc: "Up to 3 sapient creatures who have died within the last 30 days are reanimated and bound to do the caster's bidding. Their minds and bodies remain dead, but they can be made to perform simple tasks and come to the caster's aid in battle. They cannot cast spells and may have some physical limitations depending on the state of the corpses. When the spell ends, the corpses return to their inanimate state.\n\nIn combat, reanimated corpses should be represented by NPCs level 3 and below, according to their condition. They may not have weapons or armor."
+    duration: 1 hour
+    effect: Other
+    level: 7
+    line_of_sight: true
+    name: Necromancy
+    range: Short
+    rounds: 100
+    school: Corpus
+    target_num: 3
   #Level 8
   Elaborate Shapeshift:
     available: false
