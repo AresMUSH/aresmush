@@ -18,7 +18,7 @@ module AresMUSH
           notifications = enactor.unread_notifications.count
           if (enactor.handle)
             alts = AresCentral.alts(enactor) # Note - will include the original character
-            
+
             if (alts.count > 1)
               alts = alts.map { |alt| {
                 name: alt.name,
@@ -52,6 +52,7 @@ module AresMUSH
           token_expiry_warning: token_expiry_warning,
           motd: Game.master.login_motd ? Website.format_markdown_for_html(Game.master.login_motd) : nil,
           notification_count: notifications == 0 ? nil : notifications,
+          story: Global.read_config('game', 'story'),
           alts: alts
         }
       end
