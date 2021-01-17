@@ -659,7 +659,9 @@ module AresMUSH
 		
 		#Get the iconic framework and race set on the form
 		c_iconicf = chargen_data[:custom][:iconicf][:class]
-		c_race = chargen_data[:custom][:race][:class]
+		if (chargen_data[:custom][:race][:class]
+			c_race = chargen_data[:custom][:race][:class]
+		end
 		c_edges = chargen_data[:custom][:cgedges]
 		c_edgesnofw = chargen_data[:custom][:cgedgesnofw]
 		c_edgesfw = chargen_data[:custom][:cgedgesfw]
