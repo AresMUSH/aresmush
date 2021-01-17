@@ -718,21 +718,21 @@ module AresMUSH
 				end
 			end
 			
-			if (c_hj) #If there are heroes journey tables, save them.
-				return ("Here")
-				c_hj.each do |key, value| #cycle through each one
-					element_name = "#{value['name']}" #hj1
-					element_table = "#{value['table']}" #Body Armor
-					if (element_table) != 'None'
-						element_desc = Swrifts.hj_desc(char, element_name, element_table)
-						hj_element = char.swrifts_heroesj.select { |a| a.name.downcase == element_name }.first			
-						hj_element.update(table: element_table)	
-						hj_element.update(description: element_desc)
-						dbgstr << "HJ: #{element_name}, #{element_table}, #{element_desc}"
-					end
+			# if (c_hj) #If there are heroes journey tables, save them.
+				# return ("Here")
+				# c_hj.each do |key, value| #cycle through each one
+					# element_name = "#{value['name']}" #hj1
+					# element_table = "#{value['table']}" #Body Armor
+					# if (element_table) != 'None'
+						# element_desc = Swrifts.hj_desc(char, element_name, element_table)
+						# hj_element = char.swrifts_heroesj.select { |a| a.name.downcase == element_name }.first			
+						# hj_element.update(table: element_table)	
+						# hj_element.update(description: element_desc)
+						# dbgstr << "HJ: #{element_name}, #{element_table}, #{element_desc}"
+					# end
 
-				end
-			end
+				# end
+			# end
 		return (dbgstr)
 	end
 	
