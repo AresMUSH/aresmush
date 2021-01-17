@@ -657,6 +657,7 @@ module AresMUSH
 		init = Global.read_config('swrifts', 'init')
 		dbgstr = ''	
 		
+		return ("here")
 		#Get the iconic framework and race set on the form
 		c_iconicf = chargen_data[:custom][:iconicf][:class]
 		# if (chargen_data[:custom][:race][:class])
