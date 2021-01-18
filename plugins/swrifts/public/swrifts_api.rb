@@ -657,7 +657,7 @@ module AresMUSH
 		init = Global.read_config('swrifts', 'init')
 		dbgstr = ''	
 		
-		return ("here")
+		
 		#Get the iconic framework and race set on the form
 		c_iconicf = chargen_data[:custom][:iconicf][:class]
 		# if (chargen_data[:custom][:race][:class])
@@ -670,6 +670,8 @@ module AresMUSH
 		c_hindnofw = chargen_data[:custom][:cghindnofw]
 		c_hindfw = chargen_data[:custom][:cghindfw]
 		c_hj = chargen_data[:custom][:hjtables]
+		
+		return ("here")
 
 		icf_downcase = c_iconicf.downcase.strip  # Stripped and downcased iconicframework name.
 		race_downcase = c_race.downcase.strip  # Stripped and downcased race name.
