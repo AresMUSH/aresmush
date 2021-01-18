@@ -658,10 +658,11 @@ module AresMUSH
 		dbgstr = ''	
 		
 
-		return ("here")		
+	
 		#Get the iconic framework and race set on the form
 		if (chargen_data[:custom][iconicf][:class])
 			c_iconicf = chargen_data[:custom][:iconicf][:class]
+			return ("here")				
 			icf_downcase = c_iconicf.downcase.strip  # Stripped and downcased iconicframework name.
 		else
 			icf_downcase = ''
