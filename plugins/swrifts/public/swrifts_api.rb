@@ -671,10 +671,11 @@ module AresMUSH
 		c_hindfw = chargen_data[:custom][:cghindfw]
 		c_hj = chargen_data[:custom][:hjtables]
 		
-		return ("here")
+
 
 		icf_downcase = c_iconicf.downcase.strip  # Stripped and downcased iconicframework name.
 		race_downcase = c_race.downcase.strip  # Stripped and downcased race name.
+		return ("here")
 
 		## ----- Update Iconic Framework
 		
