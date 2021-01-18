@@ -674,8 +674,9 @@ module AresMUSH
 
 
 		icf_downcase = c_iconicf.downcase.strip  # Stripped and downcased iconicframework name.
+		return ("here")		
 		race_downcase = c_race.downcase.strip  # Stripped and downcased race name.
-		return ("here")
+
 
 		## ----- Update Iconic Framework
 		
