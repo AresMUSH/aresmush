@@ -659,10 +659,19 @@ module AresMUSH
 		
 		
 		#Get the iconic framework and race set on the form
-		c_iconicf = chargen_data[:custom][:iconicf][:class]
-		# if (chargen_data[:custom][:race][:class])
-			# c_race = chargen_data[:custom][:race][:class]
-		# end
+		if (chargen_data[:custom][iconicf][:class])
+			c_iconicf = chargen_data[:custom][:iconicf][:class]
+			icf_downcase = c_iconicf.downcase.strip  # Stripped and downcased iconicframework name.
+		else
+			icf_downcase = ''
+		end
+			
+		if (chargen_data[:custom][:race][:class])
+			c_race = chargen_data[:custom][:race][:class]
+			race_downcase = c_race.downcase.strip  # Stripped and downcased race name.
+		else
+			race_downcase = ''
+		end
 		c_edges = chargen_data[:custom][:cgedges]
 		c_edgesnofw = chargen_data[:custom][:cgedgesnofw]
 		c_edgesfw = chargen_data[:custom][:cgedgesfw]
@@ -670,12 +679,6 @@ module AresMUSH
 		c_hindnofw = chargen_data[:custom][:cghindnofw]
 		c_hindfw = chargen_data[:custom][:cghindfw]
 		c_hj = chargen_data[:custom][:hjtables]
-		
-
-
-		icf_downcase = c_iconicf.downcase.strip  # Stripped and downcased iconicframework name.
-		return ("here")		
-		race_downcase = c_race.downcase.strip  # Stripped and downcased race name.
 
 
 		## ----- Update Iconic Framework
