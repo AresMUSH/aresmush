@@ -24,10 +24,6 @@ module AresMUSH
         "<a target=\"_blank\" href=\"#{link}\">#{link}</a>"
       end
       
-      def wiki_url(text)
-        
-      end
-      
       def postprocess(text)
         return text if text =~ /\[\[disableWikiExtensions\]\]/
         

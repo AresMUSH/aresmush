@@ -6,6 +6,7 @@ module AresMUSH
         comment = request.args[:comment]
         enactor = request.enactor
         
+        request.log_request
         
         event = Event[event_id.to_i]
         if (!event)

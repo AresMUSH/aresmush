@@ -56,6 +56,10 @@ module AresMUSH
       def category_color
         Jobs.category_color(@job.job_category.name)
       end
+      
+      def job_url
+        "#{AresMUSH::Game.web_portal_url}/job/#{@job.id}"
+      end
     end
   end
 end

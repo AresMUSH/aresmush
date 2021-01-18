@@ -47,7 +47,9 @@ module AresMUSH
         {
           id: event.id,
           title: event.title,
-          organizer: event.organizer_name,
+          organizer: { 
+            name: event.character.name, 
+            icon: Website.icon_for_char(event.character) },
           description: description,
           date: datetime.before(' '),
           time: datetime.after( ' '),

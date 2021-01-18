@@ -14,11 +14,13 @@ module AresMUSH
         elsif (Login.is_banned?(nil, request.ip_addr, request.hostname))
           return { error: Login.site_blocked_message }
         end
-              
+                      
         name = request.args[:name]
         pw = request.args[:password]
         confirm_pw = request.args[:confirm_password]
         recaptcha_response = request.args[:recaptcha]
+        
+        Global.logger.info "#{name} registered from web from #{request.ip_addr}."
       
         if (recaptcha.is_enabled? && !recaptcha.verify(recaptcha_response))
           return { error: t('login.recaptcha_failed') }

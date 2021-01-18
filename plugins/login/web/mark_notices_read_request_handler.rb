@@ -7,6 +7,8 @@ module AresMUSH
         error = Website.check_login(request)
         return error if error
         
+        request.log_request
+        
         enactor.login_notices.find(is_unread: true).each { |n| n.update(is_unread: false)}
         
         {}

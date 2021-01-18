@@ -421,3 +421,5 @@ en:
         reload_action_msg_short: "Reload"
         reload_resolution_msg: "%{name} reloads."
         cant_reload: "That weapon can't be reloaded."
+
+        cant_link_scene: "You are not a part of that scene, so you can't link combat to it."
