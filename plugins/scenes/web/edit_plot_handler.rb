@@ -16,7 +16,7 @@ module AresMUSH
           return { error: t('dispatcher.not_allowed') }
         end
 
-        Global.logger.debug "Plot #{plot.id} edited by #{enactor.name}."
+        Global.logger.info "Plot #{plot.id} edited by #{enactor.name}."
 
         [ :title, :summary ].each do |field|
           if (request.args[field].blank?)
@@ -42,6 +42,9 @@ module AresMUSH
         plot.update(description: request.args[:description])
         plot.update(completed: (request.args[:completed] || "").to_bool)
         plot.update(background: (request.args[:background] || "").to_bool)
+
+        Website.add_to_recent_changes('plot', t('scenes.plot_updated', :title => plot.title), { id: plot.id }, enactor.name)
+
         {}
       end
     end

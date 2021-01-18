@@ -7,14 +7,16 @@ module AresMUSH
         tags = (request.args[:tags] || []).map { |t| t.downcase }.select { |t| !t.blank? }
         title = request.args[:title]
         name = request.args[:name]
-        
-        if (name.blank?)
-          name = title
-        end
     
         error = Website.check_login(request)
         return error if error
         
+        Global.logger.info "#{enactor.name} created wiki page #{title} - #{name}."
+            
+        if (name.blank?)
+          name = title
+        end
+    
         name = WikiPage.sanitize_page_name(name)
         page = WikiPage.find_by_name_or_id(name)
         if (page)
