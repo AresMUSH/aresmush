@@ -463,7 +463,7 @@ spells:
     roll: true
     school: Will
   Transmission Objects:
-    available: false
+    available: true
     area: 1,000 mile radius
     casting_time: 1 round
     desc: "The caster creates a link between two objects of up to 100 pounds, allowing communication over long distances through the objects.\n\n The objects will pick up and transmit all sounds directed at them (including any loud ambient noises) for the duration of the spell. Anyone can use one object to communicate with the other one, but only the caster can turn the spell off.\n\n The caster can sense the direction of the other linked object, and it if is moved, the caster will feel the change in its location and be able to track it. The feeling of the link becomes vaguer the more distant the object is, but the caster can always tell the direction of it.\n\n Only two objects can be linked at a time."

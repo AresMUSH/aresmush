@@ -199,7 +199,7 @@ spells:
     weapon: Stun (Nature)
     rounds: 1
   Shield Of The Forest:
-    available: false
+    available: true
     casting_time: 3 rounds
     desc: 'Swiftly grow a barrier that protects the caster or their target by placing them in [cover](https://www.aresmush.com/fs3/fs3-3/combat/#stance) for one round.'
     duration: 1 round
@@ -245,7 +245,7 @@ spells:
     target_optional: true
     weapon: Thorn Growth
   Track Animal:
-    available: false
+    available: true
     casting_time: 1 round
     desc: "The caster can sense whether any animals of a chosen genus has been within 100 yards of their current position within the last hour. If they sense a target, they are able to track the location of an individual animal for the duration of the spell."
     duration: 15 minutes
