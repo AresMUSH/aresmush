@@ -665,6 +665,8 @@ module AresMUSH
 		else
 			icf_downcase = ''
 		end
+		
+		return ("here")
 			
 		if (chargen_data[:custom][:race][:class])
 			c_race = chargen_data[:custom][:race][:class]
