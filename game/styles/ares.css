@@ -1753,6 +1753,9 @@ button, select {
 .input-button {
   background: #e6e6e6; }
 
+.fa-trash {
+  color: #d1d2d3; }
+
 /* ------End Buttons------ */
 /* ------Header & Nav------ */
 .header-wrap {
@@ -1793,6 +1796,10 @@ button, select {
 .admin-only-reply, .admin-only-reply .markdown-editor {
   background-color: #494b61;
   border-color: #383a4f; }
+
+.inline-response {
+  border: 1px solid #565353;
+  padding: 20px; }
 
 .job-status-HOLD {
   background-color: #A31B1B; }
@@ -1878,6 +1885,28 @@ button, select {
   max-width: 75%;
   width: 500px;
   opacity: .8; }
+
+.plot-box {
+  background: #2b2c31;
+  padding: 5px 15px;
+  font-size: 90%;
+  text-align: initial;
+  -webkit-box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.3);
+  box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.3);
+  max-width: 80%;
+  margin: auto; }
+
+.plot-box p {
+  font-size: 95%; }
+
+.plot-box a {
+  font-size: 110%;
+  font-variant: small-caps; }
+
+.plot-title {
+  font-style: bold;
+  font-variant: small-caps; }
 
 /* ---------End Landing Page-------------- */
 /* ---------Images-------------- */

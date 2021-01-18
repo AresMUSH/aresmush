@@ -2,77 +2,75 @@ BEGIN:VCALENDAR
 VERSION:2.0
 PRODID:-//hacksw/handcal//NONSGML v1.0//EN
 BEGIN:VEVENT
-UID:732f931b-6961-427a-9727-931cd68c877a@Spirit Lake-spiritlakemu.com
-DTSTART:20201213T190000Z
-DTSTAMP:20201126T002335Z
-SUMMARY:Festival of Lights
-DESCRIPTION:A weekend night enjoying Grand Lake's Festival of Lights, including song, shops, cookies, and hot drinks! Social event scene.
-  
-  **Open. Ammit setting.**
-END:VEVENT
-BEGIN:VEVENT
-UID:dcbb3f7e-28e1-4288-b80c-dce0a623fd7a@Spirit Lake-spiritlakemu.com
-DTSTART:20201206T200000Z
-DTSTAMP:20201123T201725Z
-SUMMARY:Deck the Carver House
-DESCRIPTION:Decorate the Carver house, including a giant tree. Mages are encouraged to bring an ornament to add - something that represents them and their magic.
-END:VEVENT
-BEGIN:VEVENT
-UID:abec2436-a73f-4708-aeee-489b77e96741@Spirit Lake-spiritlakemu.com
-DTSTART:20201219T180000Z
-DTSTAMP:20201126T002218Z
-SUMMARY:Down Through The Chimney
-DESCRIPTION:Ho, ho ho! Who wouldn't go? Ho, ho ho! Who wouldn't go?
-  Up on the library, swish, swish, swish
-  Down through the chimney....
+UID:2bed1471-4d1e-40a2-a7e5-bf7992151a88@Spirit Lake-spiritlakemu.com
+DTSTART:20210131T013000Z
+DTSTAMP:20210107T190740Z
+SUMMARY:Festival of the Heavens (Casting Out the Darkness)
+DESCRIPTION:A kind of a ‘New Year’ festival, beginning at sunset. The residents of Kleiosis gather to remind themselves of their history and honor their ancestors. They clean and repair the acropolis and city below it, sweeping away the bad luck from the year before and welcome in good luck. All night, residents will drink, share stories of those who have passed, and watch the stars.
   
   ---
   
-  Something has invaded the Library and taken up residence in front of the fireplace.
-  
-  **RSVP, 1-4 players. Ammit GMing.**
+  Open. GMing by Ammit.
 END:VEVENT
 BEGIN:VEVENT
-UID:8644237a-8cca-4c02-a955-9d2125c906d9@Spirit Lake-spiritlakemu.com
-DTSTART:20201213T013000Z
-DTSTAMP:20201126T002319Z
-SUMMARY:End Of Season Snack
-DESCRIPTION:It's late into the autumn season in the Forest of Feynthorn and many of the inhabitants are preparing for their long winter sleep. 
+UID:0793c2ae-5b6a-488b-bbb7-9567464c142f@Spirit Lake-spiritlakemu.com
+DTSTART:20210131T183000Z
+DTSTAMP:20210107T190800Z
+SUMMARY:Festival of the Heavens (Bringing Forth of the Sun)
+DESCRIPTION:The second part of ‘New Year’ festival, beginning at dawn. The residents of Kleiosis celebrate the ‘birth’ of the sun and welcome new possibilities with it. They gather to watch the sunrise then have a ‘breakfast’ feast. The day will then be spent giving offerings for the coming year, having mock battles to ‘scare’ away enemies, and smashing pomegranates against thresholds for good luck.
   
-  I will take up to 5! Expect some combat. Hydra is GMing.
+  ---
+  
+  Open. GMing by Ammit.
 END:VEVENT
 BEGIN:VEVENT
-UID:8b3a90a7-a1b7-45cc-85e2-6e66f586f772@Spirit Lake-spiritlakemu.com
-DTSTART:20201219T013000Z
-DTSTAMP:20201129T151435Z
-SUMMARY:Santa Ice Maze
-DESCRIPTION:On Friday the 18th the SANTA ICE MAZE will be up and running at the Training Fields. Many dummies will be dressed up and sacrificed in the name of Christmas Silly Times. Boozed up drinks as well as not boozed up drinks will be offered.
-  
-  In the days leading up to this, everyone is welcome and encouraged to hang out at the fields and get involved in the maze building process in whatever way best suits their skill set! This is all just for fun, so don't overthink it too much. After the event, what remains of the maze will be allowed to hang out until it melts or Erik gets tired of a bunch of random stuff littering his field. Whichever comes first.
-  
-  Disclaimer: No Real Santas Will Be Harmed
+UID:18dbd65d-213e-4148-8d00-4343a5d4e48f@Spirit Lake-spiritlakemu.com
+DTSTART:20210121T010000Z
+DTSTAMP:20210112T213451Z
+SUMMARY:Bonnie's Dirty Thirty Party
+DESCRIPTION:Bonnie is turning thirty and she wants to do a thing. Anyone that knows Bonnie or met her is welcome to attend. Please no gifts. Fun Only. There will be free-flowing of booze from wine, beer, hard alcohol with mixers and pizza provided by Grumpy's of a wide variety. 
 END:VEVENT
 BEGIN:VEVENT
-UID:cdeaafa6-9aa3-4e09-9cd7-522cbd21d68b@Spirit Lake-spiritlakemu.com
-DTSTART:20201220T190000Z
-DTSTAMP:20201203T163906Z
-SUMMARY:Christmas Party - Afternoon
-DESCRIPTION:A Weird Christmas party!
+UID:04b3ec77-50ec-4373-9b2a-56a664fe4435@Spirit Lake-spiritlakemu.com
+DTSTART:20210123T200000Z
+DTSTAMP:20210111T161410Z
+SUMMARY:Water Meetup
+DESCRIPTION:Water mage meetup in the beach portal! Bring food if you want to (but not required!)!
 END:VEVENT
 BEGIN:VEVENT
-UID:b9068d6a-9c65-4e96-8ab4-5658355a7567@Spirit Lake-spiritlakemu.com
-DTSTART:20201221T010000Z
-DTSTAMP:20201203T164047Z
-SUMMARY:Christmas Party - Evening
-DESCRIPTION:A Weird Christmas party!
-END:VEVENT
-BEGIN:VEVENT
-UID:d6f94101-2685-4575-8579-cd0533fdeb33@Spirit Lake-spiritlakemu.com
-DTSTART:20201205T190000Z
-DTSTAMP:20201204T190934Z
-SUMMARY:Monster Hunters Inc.
-DESCRIPTION:A gathering of mages to discuss a potential monster problem.
+UID:c39dfe95-d651-4874-9c3e-5a70da971308@Spirit Lake-spiritlakemu.com
+DTSTART:20210124T010000Z
+DTSTAMP:20210112T213149Z
+SUMMARY:Maureen's NOT-BIRTHDAY Beach Party
+DESCRIPTION:There's something to be said for being held back from your own masquerade birthday party and needing to reschedule, only to be kidnapped by Faeries the next day. Needless to say, Maureen's rescheduled masquerade didn't happen.
   
-  NOTE: I am bad at time. If this doesn't work for anyone, let me know. We'll figure something out! Earlier/later. W/e.
+  Now she's making up for it by having a NOT BIRTHDAY party at the Beach Portal. All members of the Weird are welcome. Masq's and costumes not required, but don't forget to bring the bathing suit if you want to go swimming!
+  
+  There are rumors of tiki decorations being provided. Food will be provided, having someone to grill the meat would be welcomed. Trust Maureen, you don't want her to grill.
+END:VEVENT
+BEGIN:VEVENT
+UID:9c959f24-334e-48e6-bd74-30a54fb833e2@Spirit Lake-spiritlakemu.com
+DTSTART:20210122T150000Z
+DTSTAMP:20210112T221605Z
+SUMMARY:Nature Meetup
+DESCRIPTION:Come to Feixuzhichang for an overnight Nature retreat just at the edge of the city. This will be an all day/night even and is open to all Nature Mages (major and minor). 
+END:VEVENT
+BEGIN:VEVENT
+UID:d039e617-e27f-43a7-b3f8-2fd112418a6c@Spirit Lake-spiritlakemu.com
+DTSTART:20210221T013000Z
+DTSTAMP:20210113T024002Z
+SUMMARY:Festival of Unification
+DESCRIPTION:The inhabitants of Stochieion celebrate the Festival of Unification, when Spirit magic is at its strongest in their lands. 
+  
+  This will be three days of self-directed events, Friday, February 19 - Sunday, February 21. More info to come.
+END:VEVENT
+BEGIN:VEVENT
+UID:246a078f-a4c9-4b95-bc05-aa02079b8b89@Spirit Lake-spiritlakemu.com
+DTSTART:20210128T000000Z
+DTSTAMP:20210117T010207Z
+SUMMARY:Faerie Teachers Welcome
+DESCRIPTION:Faerie welcomes its totally willing and not at all coerced magic teachers from Grand Lake! 
+  
+  ((This is for any Grand Lake mage who has volunteered to be a teacher in Faerie!))
 END:VEVENT
 END:VCALENDAR
