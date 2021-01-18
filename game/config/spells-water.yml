@@ -63,7 +63,7 @@ spells:
     weapon: Chill Touch
   Chilled Limbs:
     attack_mod: -1
-    available: false
+    available: true
     casting_time: 1 round
     defense_mod: -1
     desc: "Chill someone's limbs, making it difficult for them to move effectively. "
@@ -118,7 +118,7 @@ spells:
     school: Water
     rounds: 60
   Ice Talons:
-    available: false
+    available: true
     casting_time: 1 round
     desc: The caster's fingertips become ice talons capable of inflicting damage. Talons can be broken off and thrown for a ranged attack.
     duration: 1 round

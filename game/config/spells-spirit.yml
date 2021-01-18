@@ -158,7 +158,7 @@ spells:
     target_optional: true
     #Level 3
   Awaken Terror:
-    available: false
+    available: true
     casting_time: 1 round
     desc: Target becomes afraid of the caster and attempts to flee to the nearest place they could safely hide. They will not move in the direction of the caster for the duration of the spell unless forced.
     damage_type: Psionic
@@ -223,7 +223,7 @@ spells:
     target_optional: true
     effect: Psionic
   Flagging Spirits:
-    available: false
+    available: true
     casting_time: 1 round
     damage_type: Psionic
     desc: Target loses their will to fight.

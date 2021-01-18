@@ -77,7 +77,7 @@ spells:
     school: Earth
   Tremor:
     attack_mod: -1
-    available: false
+    available: true
     casting_time: 1 round
     desc: "The earth shudders beneath a target's feet, making it difficult for them to aim."
     duration: 2 rounds.
@@ -312,7 +312,7 @@ spells:
     school: Earth
   Diamond Armor:
     armor: Diamond
-    available: false
+    available: true
     casting_time: 1 round
     desc: The caster protects the target's body by augmenting it with a layer of hard diamond armor. Coloring may vary.
     duration: 8 hours

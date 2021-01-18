@@ -321,7 +321,7 @@ spells:
     weapon: Blow Object
   Electric Burst:
     area: 10 yard radius
-    available: false
+    available: true
     casting_time: 1 round
     desc: The caster discharges electrical energy from their hands, causing lightning bolts to arc through the air and strike up to 3 targets.
     effect: AOE Damage
