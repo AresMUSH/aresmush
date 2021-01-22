@@ -702,6 +702,16 @@ spells:
     roll: true
     school: Nature
     weapon: Antlers
+  Greater Wild Shape Corvidae:
+    available: true
+    armor: Bird
+    desc: Greater Wild Shape Corvidae.
+    level: 7
+    name: Wild Shape Corvidae
+    roll: true
+    school: Nature
+    range: Self
+    weapon: Claws
   Greater Wild Shape Bull:
     available: false
     armor: Tough Hide
