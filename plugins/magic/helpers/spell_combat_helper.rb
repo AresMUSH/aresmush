@@ -269,19 +269,19 @@ module AresMUSH
         target.update(lethal_mod_counter: rounds)
         target.update(damage_lethality_mod: lethal_mod)
         message = [t('magic.cast_mod', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target =>  target.name, :mod => lethal_mod, :type => "lethality")]
-      else
-        if damage_type == "Psionic" && target.mind_shield > 0
-          shield_held = Magic.check_shield(target, combatant.name, spell, result) == "shield"
-          if shield_held
-             message = [t('magic.shield_held', :name => combatant.name, :spell => spell, :mod => "", :shield => "Mind Shield", :target => target.name)]
-          else
-            target.update(lethal_mod_counter: rounds)
-            target.update(damage_lethality_mod: lethal_mod)
-            message = [t('magic.mind_shield_failed', :name => combatant.name, :spell => spell, :mod => "", :shield => "Mind Shield", :target => target.name, :succeeds => "%xgSUCCEEDS%xn")]
-          end
+      elsif damage_type == "Psionic" && target.mind_shield > 0
+        shield_held = Magic.check_shield(target, combatant.name, spell, result) == "shield"
+        if shield_held
+           message = [t('magic.shield_held', :name => combatant.name, :spell => spell, :mod => "", :shield => "Mind Shield", :target => target.name)]
         else
-          message = [t('magic.spell_target_resolution_msg', :name => combatant.name, :spell => spell, :mod => "", :target => target.name, :succeeds => "%xgSUCCEEDS%xn")]
+          target.update(lethal_mod_counter: rounds)
+          target.update(damage_lethality_mod: lethal_mod)
+          message = [t('magic.mind_shield_failed', :name => combatant.name, :spell => spell, :mod => "", :shield => "Mind Shield", :target => target.name, :succeeds => "%xgSUCCEEDS%xn")]
         end
+      else
+        target.update(lethal_mod_counter: rounds)
+        target.update(damage_lethality_mod: lethal_mod)
+        message = [t('magic.cast_mod', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target =>  target.name, :mod => lethal_mod, :type => "lethality")]
       end
       return message
     end
@@ -291,19 +291,19 @@ module AresMUSH
         target.update(attack_mod_counter: rounds)
         target.update(spell_attack_mod: attack_mod)
         message = [t('magic.cast_mod', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target =>  target.name, :mod => attack_mod, :type => "attack")]
-      else
-        if damage_type == "Psionic" && target.mind_shield > 0
-          shield_held = Magic.check_shield(target, combatant.name, spell, result) == "shield"
-          if shield_held
-             message = [t('magic.shield_held', :name => combatant.name, :spell => spell, :mod => "", :shield => "Mind Shield", :target => target.name)]
-          else
-            target.update(attack_mod_counter: rounds)
-            target.update(spell_attack_mod: attack_mod)
-            message = [t('magic.mind_shield_failed', :name => combatant.name, :spell => spell, :mod => "", :shield => "Mind Shield", :target => target.name, :succeeds => "%xgSUCCEEDS%xn")]
-          end
+      elsif damage_type == "Psionic" && target.mind_shield > 0
+        shield_held = Magic.check_shield(target, combatant.name, spell, result) == "shield"
+        if shield_held
+           message = [t('magic.shield_held', :name => combatant.name, :spell => spell, :mod => "", :shield => "Mind Shield", :target => target.name)]
         else
-          message = [t('magic.spell_target_resolution_msg', :name => combatant.name, :spell => spell, :mod => "", :target => target.name, :succeeds => "%xgSUCCEEDS%xn")]
+          target.update(attack_mod_counter: rounds)
+          target.update(spell_attack_mod: attack_mod)
+          message = [t('magic.mind_shield_failed', :name => combatant.name, :spell => spell, :mod => "", :shield => "Mind Shield", :target => target.name, :succeeds => "%xgSUCCEEDS%xn")]
         end
+      else
+        target.update(attack_mod_counter: rounds)
+        target.update(spell_attack_mod: attack_mod)
+        message = [t('magic.cast_mod', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target =>  target.name, :mod => attack_mod, :type => "attack")]
       end
       return message
     end
@@ -313,21 +313,20 @@ module AresMUSH
         target.update(defense_mod_counter: rounds)
         target.update(spell_defense_mod: defense_mod)
         message = [t('magic.cast_mod', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target =>  target.name, :mod => defense_mod, :type => "defense")]
-      else
-        if damage_type == "Psionic" && target.mind_shield > 0
-          shield_held = Magic.check_shield(target, combatant.name, spell, result) == "shield"
-          if shield_held
-             message = [t('magic.shield_held', :name => combatant.name, :spell => spell, :mod => "", :shield => "Mind Shield", :target => target.name)]
-          else
-            target.update(defense_mod_counter: rounds)
-            target.update(spell_defense_mod: defense_mod)
-            message = [t('magic.mind_shield_failed', :name => combatant.name, :spell => spell, :mod => "", :shield => "Mind Shield", :target => target.name, :succeeds => "%xgSUCCEEDS%xn")]
-          end
+      elsif damage_type == "Psionic" && target.mind_shield > 0
+        shield_held = Magic.check_shield(target, combatant.name, spell, result) == "shield"
+        if shield_held
+           message = [t('magic.shield_held', :name => combatant.name, :spell => spell, :mod => "", :shield => "Mind Shield", :target => target.name)]
         else
-          message = [t('magic.spell_target_resolution_msg', :name => combatant.name, :spell => spell, :mod => "", :target => target.name, :succeeds => "%xgSUCCEEDS%xn")]
+          target.update(defense_mod_counter: rounds)
+          target.update(spell_defense_mod: defense_mod)
+          message = [t('magic.mind_shield_failed', :name => combatant.name, :spell => spell, :mod => "", :shield => "Mind Shield", :target => target.name, :succeeds => "%xgSUCCEEDS%xn")]
         end
+      else
+        target.update(defense_mod_counter: rounds)
+        target.update(spell_defense_mod: defense_mod)
+        message = [t('magic.cast_mod', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target =>  target.name, :mod => defense_mod, :type => "defense")]
       end
-
       return message
     end
 
@@ -336,21 +335,20 @@ module AresMUSH
         target.update(spell_mod_counter: rounds)
         target.update(spell_mod: spell_mod)
         message = [t('magic.cast_mod', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target =>  target.name, :mod => spell_mod, :type => "spell")]
-      else
-        if damage_type == "Psionic" && target.mind_shield > 0
-          shield_held = Magic.check_shield(target, combatant.name, spell, result) == "shield"
-          if shield_held
-             message = [t('magic.shield_held', :name => combatant.name, :spell => spell, :mod => "", :shield => "Mind Shield", :target => target.name)]
-          else
-            target.update(spell_mod_counter: rounds)
-            target.update(spell_mod: spell_mod)
-            message = [t('magic.mind_shield_failed', :name => combatant.name, :spell => spell, :mod => "", :shield => "Mind Shield", :target => target.name, :succeeds => "%xgSUCCEEDS%xn")]
-          end
+      elsif damage_type == "Psionic" && target.mind_shield > 0
+        shield_held = Magic.check_shield(target, combatant.name, spell, result) == "shield"
+        if shield_held
+           message = [t('magic.shield_held', :name => combatant.name, :spell => spell, :mod => "", :shield => "Mind Shield", :target => target.name)]
         else
-          message = [t('magic.spell_target_resolution_msg', :name => combatant.name, :spell => spell, :mod => "", :target => target.name, :succeeds => "%xgSUCCEEDS%xn")]
+          target.update(spell_mod_counter: rounds)
+          target.update(spell_mod: spell_mod)
+          message = [t('magic.mind_shield_failed', :name => combatant.name, :spell => spell, :mod => "", :shield => "Mind Shield", :target => target.name, :succeeds => "%xgSUCCEEDS%xn")]
         end
+      else
+        target.update(spell_mod_counter: rounds)
+        target.update(spell_mod: spell_mod)
+        message = [t('magic.cast_mod', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target =>  target.name, :mod => spell_mod, :type => "spell")]
       end
-
       return message
     end
 
@@ -359,18 +357,14 @@ module AresMUSH
         target.update(init_spell_mod_counter: rounds)
         target.update(init_spell_mod: init_mod)
         message = [t('magic.cast_mod', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target =>  target.name, :mod => init_mod, :type => "initiative")]
-      else
-        if damage_type == "Psionic" && target.mind_shield > 0
-          shield_held = Magic.check_shield(target, combatant.name, spell, result) == "shield"
-          if shield_held
-             message = [t('magic.shield_held', :name => combatant.name, :spell => spell, :mod => "", :shield => "Mind Shield", :target => target.name)]
-          else
-            target.update(init_spell_mod_counter: rounds)
-            target.update(init_spell_mod: init_mod)
-            message = [t('magic.mind_shield_failed', :name => combatant.name, :spell => spell, :mod => "", :shield => "Mind Shield", :target => target.name, :succeeds => "%xgSUCCEEDS%xn")]
-          end
+      elsif damage_type == "Psionic" && target.mind_shield > 0
+        shield_held = Magic.check_shield(target, combatant.name, spell, result) == "shield"
+        if shield_held
+           message = [t('magic.shield_held', :name => combatant.name, :spell => spell, :mod => "", :shield => "Mind Shield", :target => target.name)]
         else
-          message = [t('magic.spell_target_resolution_msg', :name => combatant.name, :spell => spell, :mod => "", :target => target.name, :succeeds => "%xgSUCCEEDS%xn")]
+          target.update(init_spell_mod_counter: rounds)
+          target.update(init_spell_mod: init_mod)
+          message = [t('magic.mind_shield_failed', :name => combatant.name, :spell => spell, :mod => "", :shield => "Mind Shield", :target => target.name, :succeeds => "%xgSUCCEEDS%xn")]
         end
       end
 

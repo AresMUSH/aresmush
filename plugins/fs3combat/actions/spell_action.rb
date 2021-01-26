@@ -99,6 +99,8 @@ module AresMUSH
         weapon = Global.read_config("spells", self.spell, "weapon")
         weapon_specials_str = Global.read_config("spells", self.spell, "weapon_specials")
 
+        puts "ATTACK MOD: #{attack_mod}"
+
         messages = []
         combatant.log "~* #{self.combatant.name.upcase} CASTING #{self.spell.upcase} *~"
 
@@ -207,6 +209,7 @@ module AresMUSH
               end
 
               if attack_mod
+                puts "HITTING THIS"
                 message = Magic.cast_attack_mod(combatant, target, spell, damage_type, rounds, attack_mod, succeeds[:result])
                 messages.concat message
               end
