@@ -484,6 +484,7 @@ spells:
     level: 6
     name: Unbreakable Skin
     range: Touch
+    rounds: 100
     school: Corpus
   #Level 7
   Brink Of Death:
