@@ -128,6 +128,78 @@ fs3combat:
         Arm: 8
         Body: 9
         Fin: 6
+    Crocodile:
+      description: Wild Shape Crocodile
+      is_magic: true
+      defense: 0
+      protection:
+        Head: 4
+        Neck: 4
+        Chest: 4
+        Abdomen: 4
+        Left Leg: 4
+        Right Leg: 4
+        Groin: 4
+        Left Arm: 4
+        Right Arm: 4
+        Left Hand: 4
+        Right Hand: 4
+        Left Foot: 4
+        Right Foot: 4
+    Bird:
+      description: Armor for feathered birds.
+      is_magic: true
+      protection:
+        Head: 0
+        Neck: 0
+        Chest: 0
+        Abdomen: 0
+        Left Leg: 0
+        Right Leg: 0
+        Groin: 0
+        Left Arm: 0
+        Right Arm: 0
+        Left Hand: 0
+        Right Hand: 0
+        Left Foot: 0
+        Right Foot: 0
+        Right Wing: 0
+        Left Wing: 0
+    Big Cat:
+      description: Armor for lynx, panthera, etc.
+      is_magic: true
+      protection:
+        Head: 0
+        Neck: 0
+        Chest: 0
+        Abdomen: 0
+        Left Leg: 0
+        Right Leg: 0
+        Groin: 0
+        Left Arm: 0
+        Right Arm: 0
+        Left Hand: 0
+        Right Hand: 0
+        Left Foot: 0
+        Right Foot: 0
+      defense: 2
+    Moth:
+      description: Wild Shape Moth
+      is_magic: true
+      protection:
+        Head: 0
+        Neck: 0
+        Chest: 0
+        Abdomen: 0
+        Left Leg: 0
+        Right Leg: 0
+        Groin: 0
+        Left Arm: 0
+        Right Arm: 0
+        Left Hand: 0
+        Right Hand: 0
+        Left Foot: 0
+        Right Foot: 0
     #HUMANOID
     Tactical:
       description: Military-Grade Kevlar Vest and Helmet
@@ -321,83 +393,11 @@ fs3combat:
         Right Foot: 11
   #LEVEL 5
     #WILD SHAPE
-    Crocodile:
-      description: Wild Shape Crocodile
-      is_magic: true
-      defense: 0
-      protection:
-        Head: 4
-        Neck: 4
-        Chest: 4
-        Abdomen: 4
-        Left Leg: 4
-        Right Leg: 4
-        Groin: 4
-        Left Arm: 4
-        Right Arm: 4
-        Left Hand: 4
-        Right Hand: 4
-        Left Foot: 4
-        Right Foot: 4
-    Bird:
-      description: Armor for feathered birds.
-      is_magic: true
-      protection:
-        Head: 0
-        Neck: 0
-        Chest: 0
-        Abdomen: 0
-        Left Leg: 0
-        Right Leg: 0
-        Groin: 0
-        Left Arm: 0
-        Right Arm: 0
-        Left Hand: 0
-        Right Hand: 0
-        Left Foot: 0
-        Right Foot: 0
-      defense: 1
-    Big Cat:
-      description: Armor for lynx, panthera, etc.
-      is_magic: true
-      protection:
-        Head: 0
-        Neck: 0
-        Chest: 0
-        Abdomen: 0
-        Left Leg: 0
-        Right Leg: 0
-        Groin: 0
-        Left Arm: 0
-        Right Arm: 0
-        Left Hand: 0
-        Right Hand: 0
-        Left Foot: 0
-        Right Foot: 0
-      defense: 2
-    Moth:
-      description: Wild Shape Moth
-      is_magic: true
-      protection:
-        Head: 0
-        Neck: 0
-        Chest: 0
-        Abdomen: 0
-        Left Leg: 0
-        Right Leg: 0
-        Groin: 0
-        Left Arm: 0
-        Right Arm: 0
-        Left Hand: 0
-        Right Hand: 0
-        Left Foot: 0
-        Right Foot: 0
-      defense: 10
+
     #LEVEL 6
     Jenu:
       description: Level 6 Nature spell
       is_magic: true
-      defense: 3
       protection:
         Head: 0
     Diamond:
@@ -525,7 +525,7 @@ fs3combat:
         Left Hand: 13
         Right Hand: 13
         Left Foot: 13
-        Right Foot: 13        
+        Right Foot: 13
 #LEVEL 7
     Demon Form:
       description: Level 7 Corpus spell
