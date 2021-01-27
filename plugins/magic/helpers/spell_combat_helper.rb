@@ -187,12 +187,15 @@ module AresMUSH
 
     def self.cast_combat_heal(combatant, target, spell, heal_points)
       wound = FS3Combat.worst_treatable_wound(target.associated_model)
-      if target.death_count > 0
+      if wound.blank?
+        message = [t('magic.no_healable_wounds', :target => target.name)]
+      elsif target.death_count > 0
         message = [t('magic.cast_ko_heal', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target => target.name, :points => heal_points)]
+        FS3Combat.heal(wound, heal_points)
       else
         message = [t('magic.cast_heal', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target => target.name, :points => heal_points)]
+        FS3Combat.heal(wound, heal_points)
       end
-      FS3Combat.heal(wound, heal_points)
       target.update(death_count: 0  )
       return message
     end
@@ -215,14 +218,19 @@ module AresMUSH
       spell_mod = Global.read_config("spells", spell, "spell_mod")
       Magic.set_spell_weapon_effects(target, spell)
       attack_mod = Global.read_config("spells", spell, "attack_mod")
-
+      wound = FS3Combat.worst_treatable_wound(target.associated_model)
       weapon = combatant.weapon.before("+")
       FS3Combat.set_weapon(enactor = nil, target, weapon, [weapon_specials_str])
-      if heal_points
+      if (heal_points && wound)
+        puts "IF HEAL AND WOUND"
         message = []
+      # elsif (heal_points && !wound)
+      #   puts "ELSIF HEAL POINTS #{heal_points} #{wound.blank?} #{wound}"
+      #   message = [t('magic.casts_spell', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn")]
       elsif lethal_mod || defense_mod || attack_mod || spell_mod
         message = []
       else
+        puts "ELSE"
         message = [t('magic.casts_spell', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn")]
       end
     end
