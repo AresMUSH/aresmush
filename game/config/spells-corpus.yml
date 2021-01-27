@@ -10,7 +10,7 @@ spells:
     name: Breath of Healing
     range: Touch
     school: Corpus
-    target_optional: true
+
     target_num: 1
   Eye Color:
     available: true
@@ -37,7 +37,7 @@ spells:
     roll: true
     school: Corpus
     target_num: 1
-    target_optional: true
+
   Minor Allergy:
     available: true
     casting_time: 1 round
@@ -51,7 +51,7 @@ spells:
     roll: true
     school: Corpus
     target_num: 1
-    target_optional: true
+
 #Level Two
   Change Hair:
     available: true
@@ -79,7 +79,7 @@ spells:
     range: Short
     school: Corpus
     target_num: 1
-    target_optional: true
+
   Touch Of Enfeeblement:
     attack_mod: -1
     available: true
@@ -96,7 +96,7 @@ spells:
     rounds: 1
     school: Corpus
     target_num: 1
-    target_optional: true
+
   #Level 3
   Endure Extreme Temperatures:
     available: true
@@ -123,7 +123,7 @@ spells:
     range: Short
     rounds: 1
     target_num: 1
-    target_optional: true
+
     school: Corpus
   Flesh Wound:
     available: true
@@ -137,7 +137,7 @@ spells:
     range: Short
     school: Corpus
     target_num: 1
-    target_optional: true
+
   Medium Heal:
     available: true
     casting_time: 1 round
@@ -151,7 +151,7 @@ spells:
     range: Short
     school: Corpus
     target_num: 1
-    target_optional: true
+
   Remove Cosmetic Scar:
     available: true
     casting_time: 1 round
@@ -165,7 +165,7 @@ spells:
     roll: true
     school: Corpus
     target_num: 1
-    target_optional: true
+
   Strength:
     available: true
     casting_time: 1 round
@@ -210,7 +210,7 @@ spells:
     range: Touch
     roll: true
     school: Corpus
-    target_optional: true
+
     target_num: 1
   Exoskeleton:
     armor: Exoskeleton
@@ -241,7 +241,7 @@ spells:
     roll: false
     school: Corpus
     target_num: 1
-    target_optional: true
+
   Minor Group Heal:
     area: 10 yard radius
     available: true
@@ -255,7 +255,7 @@ spells:
     range: Short
     school: Corpus
     target_num: 3
-    target_optional: true
+
   Potions (Corpus):
     desc: The caster has learned the art of potion-making and can craft potions in any school. This is not a spell in the same sense of most, but rather an art learned through study. It takes time, effort, and materials to brew a potion.
     effect: Other
@@ -278,7 +278,7 @@ spells:
     rounds: 100
     school: Corpus
     target_num: 1
-    target_optional: true
+
     weapon_specials: Vitality
     weapon: Spell
   #Level 5
@@ -295,7 +295,7 @@ spells:
     range: Long
     rounds: 2
     target_num: 1
-    target_optional: true
+
     school: Corpus
   Grow Self:
     available: true
@@ -323,7 +323,7 @@ spells:
     range: Short
     school: Corpus
     target_num: 1
-    target_optional: true
+
   Shrink Self:
     available: true
     casting_time: 1 round
@@ -348,7 +348,7 @@ spells:
     range: Touch
     roll: true
     school: Corpus
-    target_optional: true
+
     target_num: 1
     weapon: Demon Tails
   Familiar (Corpus):
@@ -375,7 +375,7 @@ spells:
     rounds: 100
     school: Corpus
     target_num: 1
-    target_optional: true
+
     weapon_specials: Fatal Vitality
     weapon: Spell
   Fortified Body:
@@ -406,7 +406,7 @@ spells:
     range: Short
     rounds: 2
     target_num: 3
-    target_optional: true
+
     school: Corpus
   Mass Hemorrhage:
     available: false
@@ -421,7 +421,7 @@ spells:
     range: Long
     school: Corpus
     target_num: 3
-    target_optional: true
+
     weapon: Mass Hemorrhage
   Massive Heal:
     available: true
@@ -436,7 +436,7 @@ spells:
     roll: false
     school: Corpus
     target_num: 1
-    target_optional: true
+    
   Revenant:
     available: true
     casting_time: 1 round
@@ -501,7 +501,7 @@ spells:
     range: Touch
     school: Corpus
     target_num: 1
-    target_optional: true
+
   Demon Form:
     available: true
     armor: Demon Form
@@ -525,7 +525,7 @@ spells:
     roll: true
     school: Corpus
     target_num: 1
-    target_optional: true
+
   Extreme Speed:
     available: true
     casting_time: 1 round
@@ -538,7 +538,7 @@ spells:
     roll: true
     school: Corpus
     target_num: 1
-    target_optional: true
+
   Energize Dimensional Anchor (Corpus):
     available: true
     casting_time: 2 minutes
@@ -564,7 +564,7 @@ spells:
     roll: false
     school: Corpus
     target_num: 3
-    target_optional: true
+
   Incorporeal:
     available: true
     casting_time: 1 Round
@@ -595,7 +595,7 @@ spells:
     roll: false
     school: Corpus
     target_num: 3
-    target_optional: true
+
   Miasma:
     attack_mod: -3
     available: true
@@ -611,7 +611,7 @@ spells:
     rounds: 3
     school: Corpus
     target_num: 3
-    target_optional: true
+
   Necromancy:
     available: false
     casting_time: 1 Round
@@ -636,7 +636,7 @@ spells:
     range: Short
     roll: true
     school: Corpus
-    target_optional: true
+
     target_num: 1
   Meld:
     available: false

@@ -15,7 +15,7 @@ spells:
   #   school: Spirit
   #   spell_mod: -2
   #   target_num: 20
-  #   target_optional: true
+  #
   Stochieion 1:
     available: false
     casting_time: 1 round
@@ -29,7 +29,7 @@ spells:
     school: Spirit
     spell_mod: 1
     target_num: 20
-    target_optional: true
+
   Stochieion 2:
     available: false
     casting_time: 1 round
@@ -43,7 +43,7 @@ spells:
     school: Spirit
     spell_mod: 2
     target_num: 20
-    target_optional: true
+
   Locate Object:
     available: true
     casting_time: 1 round
@@ -82,7 +82,7 @@ spells:
     roll: true
     school: Spirit
     target_num: 1
-    target_optional: true
+
   Share Image:
     available: true
     casting_time: 1 round
@@ -96,7 +96,7 @@ spells:
     roll: true
     school: Spirit
     target_num: 1
-    target_optional: true
+
   #Level 2
   Beckon:
     available: true
@@ -123,7 +123,7 @@ spells:
     range: Short
     roll: true
     school: Spirit
-    target_optional: true
+
     target_num: 1
   Restful Sleep:
     available: true
@@ -140,7 +140,7 @@ spells:
     range: Touch
     roll: true
     school: Spirit
-    target_optional: true
+
     target_num: 1
   Telepathic Correspondence:
     available: true
@@ -155,7 +155,7 @@ spells:
     roll: true
     school: Spirit
     target_num: 1
-    target_optional: true
+
     #Level 3
   Awaken Terror:
     available: true
@@ -172,7 +172,7 @@ spells:
     range: Short
     school: Spirit
     target_num: 1
-    target_optional: true
+
     weapon: Stun (Spirit)
   Charmed:
     available: true
@@ -189,7 +189,7 @@ spells:
     range: Short
     school: Spirit
     target_num: 1
-    target_optional: true
+
     weapon: Stun (Spirit)
   Comprehend Languages:
     available: true
@@ -205,7 +205,7 @@ spells:
     roll: true
     school: Spirit
     target_num: 1
-    target_optional: true
+
   Emotional Aura:
     available: true
     casting_time: 1 round
@@ -220,7 +220,7 @@ spells:
     roll: true
     school: Spirit
     target_num: 1
-    target_optional: true
+
     effect: Psionic
   Flagging Spirits:
     available: true
@@ -238,7 +238,7 @@ spells:
     range: Short
     school: Spirit
     target_num: 1
-    target_optional: true
+
     weapon: Stun (Spirit)
   Mind Bolt:
     available: true
@@ -253,7 +253,7 @@ spells:
     range: Short
     school: Spirit
     target_num: 1
-    target_optional: true
+
     weapon: Mind Bolt
   Minor Jinx:
     attack_mod: -1
@@ -273,7 +273,7 @@ spells:
     school: Spirit
     spell_mod: -1
     target_num: 1
-    target_optional: true
+
   Minor Luck:
     attack_mod: 1
     available: true
@@ -292,7 +292,7 @@ spells:
     school: Spirit
     spell_mod: 1
     target_num: 1
-    target_optional: true
+
   #Level 4
   Detect Magic:
     available: true
@@ -306,7 +306,7 @@ spells:
     roll: true
     school: Spirit
     target_num: 1
-    target_optional: true
+
   Group Comprehend Languages:
     available: true
     casting_time: 1 round
@@ -321,7 +321,7 @@ spells:
     roll: true
     school: Spirit
     target_num: 3
-    target_optional: true
+
   Share Sensation:
     available: true
     casting_time: 1 round
@@ -334,7 +334,7 @@ spells:
     roll: true
     school: Spirit
     target_num: 1
-    target_optional: true
+
     effect: Psionic
 #Level 4
   Group Telepathic Correspondence:
@@ -350,7 +350,7 @@ spells:
     roll: true
     school: Spirit
     target_num: 4
-    target_optional: true
+
   Mind Shield:
     available: true
     casting_time: 1 round
@@ -363,7 +363,7 @@ spells:
     range: Short
     school: Spirit
     target_num: 1
-    target_optional: true
+
     duration: 30 minutes
     rounds: 180
   Potions (Spirit):
@@ -385,7 +385,7 @@ spells:
     roll: true
     school: Spirit
     target_num: 1
-    target_optional: true
+
   Spirit Of Pacifism:
     available: true
     casting_time: 1 round
@@ -412,7 +412,7 @@ spells:
     roll: true
     school: Spirit
     target_num: 1
-    target_optional: true
+
   Trick Senses:
     available: true
     casting_time: 1 round
@@ -426,7 +426,7 @@ spells:
     roll: true
     school: Spirit
     target_num: 1
-    target_optional: true
+
     #Level 5
   Commune With Local Spirit:
     available: true
@@ -471,7 +471,7 @@ spells:
     school: Spirit
     spell_mod: -2
     target_num: 1
-    target_optional: true
+
   Medium Luck:
     attack_mod: 2
     available: true
@@ -489,7 +489,7 @@ spells:
     school: Spirit
     spell_mod: 2
     target_num: 1
-    target_optional: true
+
   Memory Dive:
     available: true
     casting_time: "1+ rounds at GM\u2019s discretion."
@@ -503,7 +503,7 @@ spells:
     roll: true
     school: Spirit
     target_num: 1
-    target_optional: true
+
   Rally Spirit:
     available: true
     casting_time: 1 round
@@ -517,7 +517,7 @@ spells:
     roll: true
     school: Spirit
     target_num: 1
-    target_optional: true
+
   Pass Unseen:
     available: true
     casting_time: 1 round
@@ -531,7 +531,7 @@ spells:
     roll: true
     school: Spirit
     target_num: 100
-    target_optional: true
+
   Simple Command:
     available: true
     casting_time: 1 round
@@ -546,7 +546,7 @@ spells:
     roll: true
     school: Spirit
     target_num: 3
-    target_optional: true
+
   Telepathic Link:
     area: 150 mile radius
     available: true
@@ -560,7 +560,7 @@ spells:
     range: Short
     roll: true
     school: Spirit
-    target_optional: true
+
     target_num: 1
 #LEVEL SIX
   Bewitch:
@@ -592,7 +592,7 @@ spells:
     rounds: 800
     school: Spirit
     target_num: 1
-    target_optional: true
+
   Familiar (Spirit):
     desc: "A familiar is a spirit associated or allied with a school of magic that has taken residence in a physical vessel with the shape of an animal. It functions as a companion, assistant, and guardian. \n\nFamiliars may be capable of some or all of the following: sharing telepathic or empathic communication, providing knowledge of the arcane, sharing senses, lending physical aid as spies or fighters, delivering spells at a distance of up to three miles."
     effect: Other
@@ -617,7 +617,7 @@ spells:
     roll: true
     school: Spirit
     target_num: 5
-    target_optional: true
+
   Mass Awaken Terror:
     available: false
     damage_type: Psionic
@@ -632,7 +632,7 @@ spells:
     roll: true
     school: Spirit
     target_num: 3
-    target_optional: true
+
     weapon: Stun (Spirit)
   Mass Charmed:
     available: false
@@ -648,7 +648,7 @@ spells:
     roll: true
     school: Spirit
     target_num: 3
-    target_optional: true
+
   Rewrite Memory:
     available: true
     casting_time: "1 round to cast, additional rounds for rewriting at GM's discretion."
@@ -662,7 +662,7 @@ spells:
     roll: true
     school: Spirit
     target_num: 1
-    target_optional: true
+
   Sleep:
     available: false
     casting_time: 1 round
@@ -678,7 +678,7 @@ spells:
     rounds: 90
     school: Spirit
     target_num: 1
-    target_optional: true
+
   #LEVEL 7
   Clarity:
     available: true
@@ -695,7 +695,7 @@ spells:
     roll: true
     school: Spirit
     target_num: 20
-    target_optional: true
+
   Energize Dimensional Anchor (Spirit):
     available: true
     casting_time: 2 minutes
@@ -729,7 +729,7 @@ spells:
     roll: true
     school: Spirit
     target_num: 1
-    target_optional: true
+
   Dreamtrap:
     available: true
     casting_time: 1 round
@@ -743,7 +743,7 @@ spells:
     roll: true
     school: Spirit
     target_num: 1
-    target_optional: true
+
   Group Dampen Magic:
     available: false
     casting_time: 1 round
@@ -796,7 +796,7 @@ spells:
     roll: true
     school: Spirit
     target_num: 1
-    target_optional: true
+
   Rewrite History:
     available: true
     casting_time: "1 round to cast, plus additional rounds at GM's discretion according to complexity of the rewrite."
@@ -812,7 +812,7 @@ spells:
     roll: true
     school: Spirit
     target_num: 1
-    target_optional: true
+
     #Level 8
   Binding Oath:
     available: false
@@ -827,7 +827,7 @@ spells:
     roll: true
     school: Spirit
     target_num: 1
-    target_optional: true
+
   Create Librarian:
     available: false
     casting_time: 1 hour
@@ -842,7 +842,7 @@ spells:
     roll: true
     school: Spirit
     target_num: 1
-    target_optional: true
+
   Creeping Possession:
     available: true
     casting_time: 10 minutes, plus additional rounds for commands
@@ -856,7 +856,7 @@ spells:
     roll: true
     school: Spirit
     target_num: 1
-    target_optional: true
+
   Curse Of Twilight:
     available: false
     casting_time: 1 round
@@ -871,7 +871,7 @@ spells:
     roll: true
     school: Spirit
     target_num: 1
-    target_optional: true
+
   Dispel All Magic:
     available: true
     casting_time: 1 round
@@ -883,7 +883,7 @@ spells:
     roll: true
     school: Spirit
     target_num: 1
-    target_optional: true
+
   Heirloom Object:
     available: true
     casting_time: 3 hours
@@ -895,7 +895,7 @@ spells:
     roll: true
     school: Spirit
     target_num: 1
-    target_optional: true
+
   Group Restrain Magic:
     available: false
     casting_time: 1 round

@@ -23,7 +23,7 @@ spells:
     roll: true
     school: Air
     target_num: 1
-    target_optional: true
+
   #Level 2
   Adjust Volume:
     available: true
@@ -51,7 +51,7 @@ spells:
     school: Air
     stance: Hidden
     target_num: 1
-    target_optional: true
+
   Shape Air:
     area: 10 cubic feet
     available: true
@@ -119,7 +119,7 @@ spells:
     roll: false
     school: Air
     target_num: 1
-    target_optional: true
+
     weapon: Stun (Air)
   Whispering Wind:
     available: true
@@ -146,7 +146,7 @@ spells:
     school: Air
     stance: cover
     target_num: 1
-    target_optional: true
+
   #Level 4
   Aeromancy:
     area: 10 cubic yards
@@ -175,7 +175,7 @@ spells:
     range: Short
     school: Air
     target_num: 1
-    target_optional: true
+
     weapon: Stun (Air)
   Air Scooter:
     area: 5 yard radius
@@ -203,7 +203,7 @@ spells:
     range: Short
     school: Air
     target_num: 3
-    target_optional: true
+
     weapon: Breathless
   Create Sound:
     available: true
@@ -230,7 +230,7 @@ spells:
     school: Air
     weapon: Lightning Bolt
     target_num: 1
-    target_optional: true
+
   Lightning Weapon:
     available: true
     casting_time: 1 round
@@ -245,7 +245,7 @@ spells:
     rounds: 100
     school: Air
     target_num: 1
-    target_optional: true
+
     weapon_specials: Lightning
     weapon: Spell
   Potions (Air):
@@ -317,7 +317,7 @@ spells:
     range: Long
     school: Air
     target_num: 1
-    target_optional: true
+
     weapon: Blow Object
   Electric Burst:
     area: 10 yard radius
@@ -332,7 +332,7 @@ spells:
     range: Long
     school: Air
     target_num: 3
-    target_optional: true
+
     weapon: Electric Burst
   Sonic Blast:
     available: true
@@ -350,7 +350,7 @@ spells:
     school: Air
     spell_mod: -2
     target_num: 1
-    target_optional: true
+
   Sound Barrier:
     available: true
     casting_time: 1 round
@@ -365,7 +365,7 @@ spells:
     school: Air
     stance: cover
     target_num: 3
-    target_optional: true
+
   Storm Power:
     available: false
     casting_time: 1 round
@@ -381,7 +381,7 @@ spells:
     rounds: 6
     school: Air
     target_num: 1
-    target_optional: true
+
   #LEVEL 6
   Air Form:
     available: true
@@ -422,7 +422,7 @@ spells:
     range: Short
     school: Air
     target_num: 3
-    target_optional: true
+    
     weapon: Stun (Air)
   Storm Armor:
     available: true
@@ -476,7 +476,7 @@ spells:
     rounds: 4
     school: Air
     target_num: 3
-    target_optional: true
+
   Energize Dimensional Anchor (Air):
     available: true
     casting_time: 2 minutes
@@ -503,7 +503,7 @@ spells:
     range: Self
     rounds: 4
     school: Air
-    target_optional: true
+
     target_num: 3
   Lightning Strike:
     available: true
@@ -518,7 +518,7 @@ spells:
     range: Long
     roll: true
     school: Air
-    target_optional: true
+
     target_num: 1
     weapon: Lightning Strike
   Suffocate:
@@ -533,7 +533,7 @@ spells:
     range: Long
     school: Air
     target_num: 1
-    target_optional: true
+
     weapon: Suffocate
   #Level 8
   Tempest:
@@ -549,5 +549,5 @@ spells:
     range: Massive
     school: Air
     target_num: 100
-    target_optional: true
+
     weapon: Tempest
