@@ -112,7 +112,6 @@ module AresMUSH
     end
 
     def self.set_spell_weapon_effects(combatant, spell)
-      puts "Before special effects: #{combatant.spell_weapon_effects}"
       rounds = Global.read_config("spells", spell, "rounds")
       special = Global.read_config("spells", spell, "weapon_specials")
       weapon = combatant.weapon.before("+")
@@ -125,7 +124,6 @@ module AresMUSH
         weapon_specials[weapon] = {special => rounds}
       end
       combatant.update(spell_weapon_effects: weapon_specials)
-      puts "After special effects: #{combatant.spell_weapon_effects}"
     end
 
     def self.spell_armor_effects(combatant, spell)
@@ -222,7 +220,6 @@ module AresMUSH
       weapon = combatant.weapon.before("+")
       FS3Combat.set_weapon(enactor = nil, target, weapon, [weapon_specials_str])
       if (heal_points && wound)
-        puts "IF HEAL AND WOUND"
         message = []
       # elsif (heal_points && !wound)
       #   puts "ELSIF HEAL POINTS #{heal_points} #{wound.blank?} #{wound}"
@@ -230,7 +227,6 @@ module AresMUSH
       elsif lethal_mod || defense_mod || attack_mod || spell_mod
         message = []
       else
-        puts "ELSE"
         message = [t('magic.casts_spell', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn")]
       end
     end
