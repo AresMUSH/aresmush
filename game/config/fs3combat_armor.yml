@@ -148,7 +148,7 @@ fs3combat:
         Right Foot: 4
     Bird:
       description: Armor for feathered birds.
-      is_magic: true
+      is_magic: false
       protection:
         Head: 0
         Neck: 0
@@ -167,7 +167,7 @@ fs3combat:
         Left Wing: 0
     Big Cat:
       description: Armor for lynx, panthera, etc.
-      is_magic: true
+      is_magic: false
       protection:
         Head: 0
         Neck: 0
