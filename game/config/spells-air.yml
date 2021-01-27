@@ -435,6 +435,7 @@ spells:
     name: Storm Armor
     range: Touch
     school: Air
+    target_num: 1
   Wind Rider:
     available: true
     casting_time: 1 round

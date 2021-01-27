@@ -321,6 +321,7 @@ spells:
     name: Diamond Armor
     range: Touch
     school: Earth
+    target_num: 1
   Dust Devils:
     attack_mod: -2
     available: false

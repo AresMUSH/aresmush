@@ -627,6 +627,7 @@ spells:
     name: Ironwood Skin
     range: Touch
     school: Nature
+    target_num: 1
   Mass Calm Animal:
     available: false
     casting_time: 1 round

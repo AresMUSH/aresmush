@@ -391,6 +391,7 @@ spells:
     name: Fortified Body
     range: Touch
     school: Corpus
+    target_num: 1
     weapon_specials: Fortified Body
   Group Nap:
     available: true
@@ -486,6 +487,7 @@ spells:
     range: Touch
     rounds: 100
     school: Corpus
+    target_num: 1
   #Level 7
   Brink Of Death:
     available: true
