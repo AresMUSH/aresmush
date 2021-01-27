@@ -59,7 +59,7 @@ spells:
     range: Touch
     school: Water
     target_num: 1
-    target_optional: true
+
     weapon: Chill Touch
   Chilled Limbs:
     attack_mod: -1
@@ -76,7 +76,7 @@ spells:
     rounds: 1
     school: Water
     target_num: 1
-    target_optional: true
+
   Shape Water:
     area: 5 cubic feet
     available: true
@@ -156,7 +156,7 @@ spells:
     range: Short
     school: Water
     target_num: 1
-    target_optional: true
+
     weapon: Stun (Water)
   Water Walk:
     available: true
@@ -186,7 +186,7 @@ spells:
     range: Short
     school: Water
     target_num: 3
-    target_optional: true
+
     weapon: Cone Of Cold
   Ice Armor:
     armor: Ice
@@ -215,7 +215,7 @@ spells:
     range: Short
     school: Water
     target_num: 1
-    target_optional: true
+
     weapon: Ice Blast
   Ice Weapon:
     available: true
@@ -262,7 +262,7 @@ spells:
     range: Long
     school: Water
     target_num: 3
-    target_optional: true
+
     weapon: Slick Ground
   Water Whip:
     available: true
@@ -276,7 +276,7 @@ spells:
     range: Short
     school: Water
     target_num: 1
-    target_optional: true
+
     weapon: Water Whip
 #Level 5
   Cold Calm:
@@ -307,7 +307,7 @@ spells:
     range: Long
     school: Water
     target_num: 3
-    target_optional: true
+
     weapon: Exploding Ice
   Group Endure Cold:
     available: true
@@ -321,7 +321,7 @@ spells:
     range: Short
     school: Water
     target_num: 3
-    target_optional: true
+
     rounds: 600
   Group Water Walk:
     available: true
@@ -335,7 +335,7 @@ spells:
     range: Short
     roll: true
     school: Water
-    target_optional: true
+
     target_num: 3
   Ice Block:
     available: true
@@ -351,7 +351,7 @@ spells:
     rounds: 5
     school: Water
     stance: cover
-    target_optional: true
+
     target_num: 3
   Reviving Cold:
     available: true
@@ -365,7 +365,7 @@ spells:
     range: Short
     school: Water
     target_num: 1
-    target_optional: true
+    
   #LEVEL 6
   Familiar (Water):
     available: true
@@ -390,7 +390,7 @@ spells:
     range: Touch
     school: Water
     weapon: Glacial Ice
-    target_optional: true
+
     target_num: 1
   Glacial Ice Weapon:
     available: true
@@ -403,7 +403,7 @@ spells:
     range: Touch
     school: Water
     weapon_specials: Glacial Ice
-    target_optional: true
+
     target_num: 1
   Hydroplane:
     available: true
@@ -441,7 +441,7 @@ spells:
     range: Long
     school: Water
     target_num: 1
-    target_optional: true
+
     weapon: Shatter
 #LEVEL 7
   Energize Dimensional Anchor (Water):
@@ -469,7 +469,7 @@ spells:
     range: Long
     school: Water
     target_num: 3
-    target_optional: true
+
     weapon: Ice Storm
   Ice Wall:
     area: 20 yards long, 5 yards thick, 10 yards tall
@@ -494,7 +494,7 @@ spells:
     name: Mass Hydroplane
     range: Short
     school: Water
-    target_optional: true
+
     target_num: 5
   Greater Purify Water:
     available: false
@@ -520,7 +520,7 @@ spells:
     range: Long
     school: Water
     target_num: 1
-    target_optional: true
+
   #Level 8
   Land Of Ice:
     area: Up to 1 square mile
@@ -536,5 +536,5 @@ spells:
     range: Massive
     school: Water
     target_num: 100
-    target_optional: true
+
     weapon: Land Of Ice

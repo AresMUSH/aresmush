@@ -101,7 +101,7 @@ spells:
     range: Short
     school: Fire
     target_num: 1
-    target_optional: true
+
     weapon: Flame Dart
   Hot Hands:
     available: true
@@ -116,7 +116,7 @@ spells:
     range: Touch
     school: Fire
     target_num: 1
-    target_optional: true
+
     weapon: Hot Hands
   Laser Zap:
     available: true
@@ -131,7 +131,7 @@ spells:
     line_of_sight: true
     school: Fire
     target_num: 1
-    target_optional: true
+
     weapon: Laser Zap
   #Level 4
   Fire Weapon:
@@ -147,7 +147,7 @@ spells:
     rounds: 100
     school: Fire
     target_num: 1
-    target_optional: true
+
     weapon_specials: Fire
     weapon: Spell
   Flame Burst:
@@ -163,7 +163,7 @@ spells:
     range: Short
     school: Fire
     target_num: 1
-    target_optional: true
+
     weapon: Flame Burst
   Potions (Fire):
     desc: The caster has learned the art of potion-making and can craft potions in any school. This is not a spell in the same sense of most, but rather an art learned through study. It takes time, effort, and materials to brew a potion.
@@ -213,7 +213,7 @@ spells:
     range: Long
     school: Fire
     target_num: 3
-    target_optional: true
+
     weapon: Flares
   Group Endure Fire:
     available: true
@@ -242,7 +242,7 @@ spells:
     school: Fire
     stance: hidden
     target_num: 1
-    target_optional: true
+
 
   #Level 6
   Double Vision:
@@ -282,7 +282,7 @@ spells:
     range: Long
     school: Fire
     target_num: 1
-    target_optional: true
+
     weapon: Laser Blast
   Pyre:
     available: true
@@ -297,7 +297,7 @@ spells:
     range: Long
     school: Fire
     target_num: 1
-    target_optional: true
+
     weapon: Pyre
   Complex Illusion:
     area: '10 yard radius'
@@ -313,7 +313,7 @@ spells:
     roll: true
     school: Fire
     target_num: 1
-    target_optional: true
+
   Energize Dimensional Anchor (Fire):
     available: true
     casting_time: 2 minutes
@@ -352,7 +352,7 @@ spells:
     roll: false
     school: Fire
     target_num: 1
-    target_optional: true
+
   #LEVEL 8
   Firestorm:
     area: Up to 1 square mile
@@ -368,7 +368,7 @@ spells:
     range: Massive
     school: Fire
     target_num: 100
-    target_optional: true
+
     weapon: Firestorm
   Phoenix's Last Flight:
     available: true
@@ -383,4 +383,3 @@ spells:
     range: Long
     school: Fire
     target_num: 1
-    target_optional: true

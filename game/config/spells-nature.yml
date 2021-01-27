@@ -11,7 +11,6 @@ spells:
     range: Short
     school: Nature
     target_num: 5
-    target_optional: true
     weapon: Sharp Teeth
     effect: Damage
   Dire wolf Claws:
@@ -26,7 +25,6 @@ spells:
     range: Short
     school: Nature
     target_num: 5
-    target_optional: true
     weapon: Sharp Claws
     effect: Damage
   Beckon Tiny Animal:
@@ -153,7 +151,6 @@ spells:
     range: Short
     school: Nature
     target_num: 1
-    target_optional: true
     weapon: Sling Barb
     effect: Damage
   #Level 3
@@ -181,7 +178,6 @@ spells:
     roll: true
     school: Nature
     target_num: 1
-    target_optional: true
   Entangle:
     available: true
     casting_time: 1 round
@@ -195,7 +191,6 @@ spells:
     range: Short
     school: Nature
     target_num: 1
-    target_optional: true
     weapon: Stun (Nature)
     rounds: 1
   Shield Of The Forest:
@@ -212,7 +207,6 @@ spells:
     school: Nature
     stance: cover
     target_num: 1
-    target_optional: true
   Swarm:
     available: true
     casting_time: 1 round
@@ -227,7 +221,6 @@ spells:
     range: Short
     school: Nature
     target_num: 1
-    target_optional: true
     weapon: Stun (Nature)
   Thorn Growth:
     area: 10 yard radius
@@ -242,7 +235,6 @@ spells:
     range: Short
     school: Nature
     target_num: 3
-    target_optional: true
     weapon: Thorn Growth
   Track Animal:
     available: true
@@ -269,7 +261,6 @@ spells:
     range: Short
     school: Nature
     target_num: 1
-    target_optional: true
     weapon: Acid Spit
   Animal Friendship:
     available: true
@@ -283,7 +274,6 @@ spells:
     roll: true
     school: Nature
     target_num: 1
-    target_optional: true
   Heal Animal:
     available: true
     casting_time: 1 round
@@ -296,7 +286,6 @@ spells:
     range: Short
     school: Nature
     target_num: 1
-    target_optional: true
   Gills:
     available: false
     casting_time: 1 round
@@ -319,7 +308,6 @@ spells:
     range: Self
     school: Nature
     target_num: 1
-    target_optional: true
   Photosynthesis:
     available: true
     casting_time: 1 round
@@ -400,7 +388,6 @@ spells:
     range: Long
     school: Nature
     target_num: 3
-    target_optional: true
     weapon: Vine Thrash
   Wild Shape Bear:
     available: true
@@ -416,6 +403,7 @@ spells:
     available: true
     armor: Bird
     desc: Wild Shape Corvidae.
+    defense_mod: 1
     level: 5
     name: Wild Shape Corvidae
     roll: true
@@ -436,6 +424,7 @@ spells:
     available: true
     armor: Bird
     desc: Wild Shape Falcon
+    defense_mod: 1
     level: 5
     name: Wild Shape
     roll: true
@@ -464,6 +453,7 @@ spells:
     available: true
     armor: Bird
     desc: Wild Shape Hrafn. Form able to change the color of its feathers and vocally mimic a few phrases, as well as use Flesh Wound.
+    defense_mod: 1
     level: 5
     name: Wild Shape
     roll: true
@@ -484,6 +474,7 @@ spells:
     available: true
     armor: Big Cat
     desc: Wild Shape Panthera
+    defense_mod: 2
     level: 5
     name: Wild Shape Panthera
     roll: true
@@ -502,11 +493,11 @@ spells:
     range: Short
     school: Magic
     target_num: 1
-    target_optional: true
   Wild Shape Lynx:
     available: false
     armor: Big Cat
     desc: Wild Shape Lynx
+    defense_mod: 2
     level: 5
     name: Wild Shape Lynx
     roll: true
@@ -516,6 +507,7 @@ spells:
     available: false
     armor: Moth
     desc: Wild Shape Moth
+    defense_mod: 10
     level: 5
     name: Wild Shape
     roll: true
@@ -524,6 +516,7 @@ spells:
     available: true
     armor: Bird
     desc: Wild Shape Owl - genus Strix
+    defense_mod: 1
     level: 5
     name: Wild Shape Owl
     roll: true
@@ -585,6 +578,7 @@ spells:
     available: false
     armor: Jenu
     desc: Half Shift (Jenu)
+    defense_mod: 3
     level: 6
     name: Half Shift (Jenu)
     school: Nature
@@ -619,6 +613,7 @@ spells:
     name: Ironwood Skin
     range: Touch
     school: Nature
+    target_num: 1
   Mass Calm Animal:
     available: false
     casting_time: 1 round
@@ -644,7 +639,6 @@ spells:
     range: Long
     school: Nature
     target_num: 3
-    target_optional: true
     weapon: Poison Puffs
   Winged Flight:
     available: true
@@ -706,6 +700,7 @@ spells:
     available: true
     armor: Bird
     desc: Greater Wild Shape Corvidae.
+    defense_mod: 1
     level: 7
     name: Allows the caster to transform into any animal in the Corvidae family.
     roll: true
@@ -823,7 +818,6 @@ spells:
     roll: true
     school: Nature
     target_num: 1
-    target_optional: true
   Massive Thorn Wall:
     area: 1,000 yards long, 25 yards thick, 25 yards tall
     available: false

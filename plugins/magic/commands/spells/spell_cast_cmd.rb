@@ -24,8 +24,8 @@ module AresMUSH
         spell_list = Global.read_config("spells")
         return t('magic.not_spell') if !spell_list.include?(self.spell)
         return t('magic.dont_know_spell') if (Magic.knows_spell?(enactor, self.spell) == false && !Magic.item_spells(enactor).include?(spell))
-        target_optional = Global.read_config("spells", self.spell, "target_optional")
-        return t('magic.doesnt_use_target') if (self.has_target && target_optional.nil?)
+        target_num = Global.read_config("spells", self.spell, "target_num")
+        return t('magic.doesnt_use_target') if (self.has_target && !target_num)
         return "That is the wrong format. Try spell/cast <spell>/<target>." if (cmd.args =~ /\=/)
         return nil
       end
