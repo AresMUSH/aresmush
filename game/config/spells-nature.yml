@@ -551,7 +551,7 @@ spells:
     weapon: Claws
   Wild Shape:
     available: true
-    desc: Caster chooses any alternate form from a specified animal genus. They lose the ability to cast spells and speak while in wild shape but can communicate with other animals of that genus. They may revert back to human form at will.
+    desc: "Caster chooses any alternate form from a specified animal genus. They lose the ability to cast spells and speak while in wild shape but can communicate with other animals of that genus. They may revert back to human form at will.\n\nSpells may be cast on mages in Wild Shape unless the spell provides a Transformation effect. "
     effect: Transformation
     level: 5
     name: Wild Shape
@@ -684,7 +684,7 @@ spells:
   Greater Wild Shape:
     available: true
     casting_time: 1 round
-    desc: Caster chooses any alternate form from a specified animal family. They retain the ability to cast spells and speak while in wild shape in addition to being able to communicate with other animals of that family. They may revert back to human form at will.
+    desc: "Caster chooses any alternate form from a specified animal family. They retain the ability to cast spells and speak while in wild shape in addition to being able to communicate with other animals of that family. They may revert back to human form at will.\n\nSpells may be cast on mages in Greater Wild Shape unless the spell provides a Transformation effect. "
     duration: 1 hour
     effect: Transformation
     level: 7
@@ -695,7 +695,7 @@ spells:
   Greater Wild Shape Cervidae:
     available: true
     armor: Tough Hide
-    desc: Greater Wild Shape Cervidae
+    desc: Allows the caster to transform into any animal in the Cervidae family.
     defense_mod: 2
     level: 7
     name: Greater Wild Shape Cervidae
@@ -707,7 +707,7 @@ spells:
     armor: Bird
     desc: Greater Wild Shape Corvidae.
     level: 7
-    name: Wild Shape Corvidae
+    name: Allows the caster to transform into any animal in the Corvidae family.
     roll: true
     school: Nature
     range: Self
@@ -725,19 +725,29 @@ spells:
   Greater Wild Shape Canidae:
     available: true
     armor: Tough Hide
-    desc: Wild Shape Canidae
+    desc: Allows the caster to transform into any animal in the Canidae family.
     level: 7
     name: Wild Shape Canidae
     roll: true
     school: Nature
     range: Self
     weapon: Claws
+  Greater Wild Shape Equidae:
+    available: true
+    armor: Tough hide
+    desc: Allows the caster to transform into any animal in the Equidae family.
+    level: 5
+    name: Greater Wild Shape Equidae
+    roll: true
+    school: Nature
+    range: Self
+    weapon: Hard Hooves
   Greater Wild Shape Felidae:
     available: true
     armor: Tough Hide
-    desc: Wild Shape Felidae
+    desc: Allows the caster to transform into any animal in the Felidae family.
     level: 7
-    name: Wild Shape Felidae
+    name: Greater Wild Shape Felidae
     roll: true
     school: Nature
     range: Self
@@ -745,7 +755,7 @@ spells:
   Greater Wild Shape Ursidae:
     available: true
     armor: Tough Hide
-    desc: Greater Wild Shape Ursidae
+    desc: Allows the caster to transform into any animal in the Ursidae family.
     level: 7
     name: Greater Wild Shape Ursidae
     roll: true
