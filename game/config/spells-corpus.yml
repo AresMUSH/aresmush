@@ -302,7 +302,7 @@ spells:
     casting_time: 1 round
     desc: "The caster instantly enlarges their own body, multiplying their height and weight by 3. \n\nIf there is insufficient space for growth, the caster increases to the maximum possible size and makes a brawn check to burst any enclosures. \n\nAll equipment worn or carried by a creature is similarly enlarged by the spell.  Any item that leaves the caster's possession instantly returns to its normal size."
     duration: 5 rounds
-    effect: TransformationBuff
+    effect: Transformation
     level: 5
     name: Grow Self
     range: Self
@@ -436,7 +436,7 @@ spells:
     roll: false
     school: Corpus
     target_num: 1
-    
+
   Revenant:
     available: true
     casting_time: 1 round
