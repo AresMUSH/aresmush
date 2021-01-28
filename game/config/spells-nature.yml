@@ -252,8 +252,7 @@ spells:
     available: true
     casting_time: 1 round
     desc: The caster spits out a stream of corrosive acid at a target, dealing damage.
-    effect: Communication
-    effect: Damage.
+    effect: Damage
     fs3_attack: true
     level: 4
     line_of_sight: true
@@ -393,6 +392,7 @@ spells:
     available: true
     armor: Tough Hide
     desc: Wild Shape Bear
+    effect: Transformation
     level: 5
     name: Wild Shape
     roll: true
@@ -404,6 +404,7 @@ spells:
     armor: Bird
     desc: Wild Shape Corvidae.
     defense_mod: 1
+    effect: Transformation
     level: 5
     name: Wild Shape Corvidae
     roll: true
@@ -414,6 +415,7 @@ spells:
     available: false
     armor: Crocodile
     desc: Wild Shape Crocodile
+    effect: Transformation
     level: 5
     name: Wild Shape
     roll: true
@@ -425,6 +427,7 @@ spells:
     armor: Bird
     desc: Wild Shape Falcon
     defense_mod: 1
+    effect: Transformation
     level: 5
     name: Wild Shape
     roll: true
@@ -435,6 +438,7 @@ spells:
     available: false
     defense_mod: 10
     desc: Wild Shape Fly
+    effect: Transformation
     level: 5
     name: Wild Shape Fly
     roll: true
@@ -443,6 +447,7 @@ spells:
     available: true
     armor: Tough hide
     desc: Wild Shape Horse
+    effect: Transformation
     level: 5
     name: Wild Shape Horse
     roll: true
@@ -454,6 +459,7 @@ spells:
     armor: Bird
     desc: Wild Shape Hrafn. Form able to change the color of its feathers and vocally mimic a few phrases, as well as use Flesh Wound.
     defense_mod: 1
+    effect: Transformation
     level: 5
     name: Wild Shape
     roll: true
@@ -464,6 +470,7 @@ spells:
     available: true
     armor: None
     desc: Wild Shape Octopus.
+    effect: Transformation
     level: 5
     name: Wild Shape Octopus
     roll: true
@@ -475,6 +482,7 @@ spells:
     armor: Big Cat
     desc: Wild Shape Panthera
     defense_mod: 2
+    effect: Transformation
     level: 5
     name: Wild Shape Panthera
     roll: true
@@ -498,6 +506,7 @@ spells:
     armor: Big Cat
     desc: Wild Shape Lynx
     defense_mod: 2
+    effect: Transformation
     level: 5
     name: Wild Shape Lynx
     roll: true
@@ -508,6 +517,7 @@ spells:
     armor: Moth
     desc: Wild Shape Moth
     defense_mod: 10
+    effect: Transformation
     level: 5
     name: Wild Shape
     roll: true
@@ -517,6 +527,7 @@ spells:
     armor: Bird
     desc: Wild Shape Owl - genus Strix
     defense_mod: 1
+    effect: Transformation
     level: 5
     name: Wild Shape Owl
     roll: true
@@ -527,6 +538,7 @@ spells:
     available: true
     defense_mod: 2
     desc: Wild Shape Racoon
+    effect: Transformation
     level: 5
     name: Wild Shape Racoon
     roll: true
@@ -536,6 +548,7 @@ spells:
     available: true
     armor: Tough Hide
     desc: Wild Shape Wolf
+    effect: Transformation
     level: 5
     name: Wild Shape
     roll: true
@@ -570,6 +583,7 @@ spells:
     available: true
     armor: Tough Hide
     desc: Grants the caster Claws, Teeth, and Tough Hide, while also improving their sense of hearing, sight, and smell  to wolf standards.
+    effect: Transformation
     level: 6
     name: Half Shift (Direwolf)
     school: Nature
@@ -578,6 +592,7 @@ spells:
     available: false
     armor: Jenu
     desc: Half Shift (Jenu)
+    effect: Transformation
     defense_mod: 3
     level: 6
     name: Half Shift (Jenu)
@@ -587,6 +602,7 @@ spells:
     available: true
     armor: Thick Shell
     desc: Grants the caster Claws, Poison Stinger, and Thick Shell, two extra arms, and a set of wings large enough to carry them in flight, allowing them to travel at a speed of up to 35 mph, while also improving their sense of sight and smell to wasp standards.
+    effect: Transformation
     level: 6
     name: Half Shift (Wasp)
     school: Nature
@@ -691,6 +707,7 @@ spells:
     armor: Tough Hide
     desc: Allows the caster to transform into any animal in the Cervidae family.
     defense_mod: 2
+    effect: Transformation
     level: 7
     name: Greater Wild Shape Cervidae
     roll: true
@@ -701,6 +718,7 @@ spells:
     armor: Bird
     desc: Greater Wild Shape Corvidae.
     defense_mod: 1
+    effect: Transformation
     level: 7
     name: Allows the caster to transform into any animal in the Corvidae family.
     roll: true
@@ -711,6 +729,7 @@ spells:
     available: false
     armor: Tough Hide
     desc: Allows the caster to transform into any animal in the Bovidae family.
+    effect: Transformation
     level: 7
     name: Greater Wild Shape Bull
     roll: true
@@ -721,6 +740,7 @@ spells:
     available: true
     armor: Tough Hide
     desc: Allows the caster to transform into any animal in the Canidae family.
+    effect: Transformation
     level: 7
     name: Wild Shape Canidae
     roll: true
@@ -731,6 +751,7 @@ spells:
     available: true
     armor: Tough hide
     desc: Allows the caster to transform into any animal in the Equidae family.
+    effect: Transformation
     level: 5
     name: Greater Wild Shape Equidae
     roll: true
@@ -741,6 +762,7 @@ spells:
     available: true
     armor: Tough Hide
     desc: Allows the caster to transform into any animal in the Felidae family.
+    effect: Transformation
     level: 7
     name: Greater Wild Shape Felidae
     roll: true
@@ -751,6 +773,7 @@ spells:
     available: true
     armor: Tough Hide
     desc: Allows the caster to transform into any animal in the Ursidae family.
+    effect: Transformation
     level: 7
     name: Greater Wild Shape Ursidae
     roll: true
