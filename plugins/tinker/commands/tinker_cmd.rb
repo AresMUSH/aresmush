@@ -17,16 +17,18 @@ module AresMUSH
 
 
       def handle
-        client.emit self.role.upcase
-        client.emit "___________________________________"
-        chars = Chargen.approved_chars.select { |c| c.has_role?(role) }
 
-        chars.each do |c|
-          client.emit c.name
+
+        Creature.all.each do |p|
+          # client.emit p.major_school
+          client.emit p.name
+          client.emit p.major_school[:name]
+          # p.update(primary_school: "#{p.primary_school['name']}")
+          # client.emit "DONE: #{p.primary_school}"
         end
-
-
       end
+
+
 
     end
   end
