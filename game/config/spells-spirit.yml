@@ -221,7 +221,6 @@ spells:
     school: Spirit
     target_num: 1
     target_optional: true
-    effect: Psionic
   Flagging Spirits:
     available: false
     casting_time: 1 round
@@ -335,7 +334,6 @@ spells:
     school: Spirit
     target_num: 1
     target_optional: true
-    effect: Psionic
 #Level 4
   Group Telepathic Correspondence:
     available: true
