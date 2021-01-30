@@ -36,19 +36,9 @@ module AresMUSH
           end
         end
 
-        Global.logger.debug "Plot #{plot.id} created by #{enactor.name}."
+        Website.add_to_recent_changes('plot', t('scenes.plot_created', :title => plot.title), { id: plot.id }, enactor.name)
 
-        storyteller_names = request.args[:storytellers] || []
-        plot.storytellers.replace []
-
-        storyteller_names.each do |storyteller|
-          storyteller = Character.find_one_by_name(storyteller.strip)
-          if (storyteller)
-            if (!plot.storytellers.include?(storyteller))
-              Custom.add_storyteller(plot, storyteller)
-            end
-          end
-        end
+        Global.logger.info "Plot #{plot.id} created by #{enactor.name}."
 
         { id: plot.id }
       end

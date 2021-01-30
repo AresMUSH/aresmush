@@ -13,7 +13,11 @@ module AresMUSH
       end
 
       def handle
-        guests = Login.guests
+        if (Global.read_config("login", "random_guest_selection"))
+          guests = Login.guests.shuffle
+        else
+          guests = Login.guests.sort_by{ |g| g.name }
+        end
         
         if (guests.count == 0)
           message = Global.read_config('login', 'guest_disabled_message')
@@ -29,7 +33,7 @@ module AresMUSH
           return
         end
         
-        guest = guests.sort_by{ |g| g.name }.select { |g| !Login.is_online?(g) }.first
+        guest = guests.select { |g| !Login.is_online?(g) }.first
 
         if (!guest)
           client.emit_ooc t('login.all_guests_taken')

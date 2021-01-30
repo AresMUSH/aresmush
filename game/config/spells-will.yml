@@ -48,7 +48,7 @@ spells:
     range: Short
     school: Will
     target_num: 1
-    target_optional: true
+
     weapon: Fling
     effect: Damage
   Minor Telekinesis:
@@ -76,7 +76,7 @@ spells:
     rounds: 1
     school: Will
     target_num: 1
-    target_optional: true
+
     effect: Debuff
     attack_mod: -1
   #Level 3
@@ -119,7 +119,7 @@ spells:
     school: Will
     stance: cover
     target_num: 1
-    target_optional: true
+
   Telekinetic Hold:
     available: true
     casting_time: 1 round
@@ -135,7 +135,7 @@ spells:
     range: Short
     school: Will
     target_num: 1
-    target_optional: true
+
     weapon: Stun (Will)
   #Level 4
   Alter Object:
@@ -193,7 +193,7 @@ spells:
     range: Short
     school: Will
     target_num: 1
-    target_optional: true
+
     weapon: Telekinetic Burst
   Transform Weapon:
     available: true
@@ -236,7 +236,7 @@ spells:
     school: Will
     stance: cover
     target_num: 3
-    target_optional: true
+
   Multiple Telekinesis:
     area: 10 yard radius
     available: true
@@ -272,7 +272,7 @@ spells:
     range: Long
     school: Will
     weapon: Telekinetic Crush
-    target_optional: true
+    
     target_num: 1
   #LEVEL 6
   Familiar (Will):
@@ -321,7 +321,7 @@ spells:
     notes: This probably shouldn't cover the whole body? Maybe a use for armor specials.
     range: Touch
     school: Will
-    target_optional: true
+
     target_num: 1
   #LEVEL 7
   Analyze Object:
@@ -389,7 +389,7 @@ spells:
     roll: true
     school: Will
     target_num: 5
-    target_optional: true
+
   Massive Telekinetic Hold:
     available: true
     casting_time: 1 round
@@ -405,7 +405,7 @@ spells:
     range: Long
     school: Will
     target_num: 3
-    target_optional: true
+
     weapon: Stun (Will)
   Mass Telekinetic Burst:
     area: 15 yard radius
@@ -420,7 +420,7 @@ spells:
     range: Long
     school: Will
     target_num: 3
-    target_optional: true
+
     weapon: Mass Telekinetic Burst
   Object Survey:
     available: true
@@ -463,7 +463,7 @@ spells:
     roll: true
     school: Will
   Transmission Objects:
-    available: false
+    available: true
     area: 1,000 mile radius
     casting_time: 1 round
     desc: "The caster creates a link between two objects of up to 100 pounds, allowing communication over long distances through the objects.\n\n The objects will pick up and transmit all sounds directed at them (including any loud ambient noises) for the duration of the spell. Anyone can use one object to communicate with the other one, but only the caster can turn the spell off.\n\n The caster can sense the direction of the other linked object, and it if is moved, the caster will feel the change in its location and be able to track it. The feeling of the link becomes vaguer the more distant the object is, but the caster can always tell the direction of it.\n\n Only two objects can be linked at a time."

@@ -10,6 +10,8 @@ module AresMUSH
         error = Website.check_login(request)
         return error if error
 
+        request.log_request
+
         thread = PageThread[key]
         if (!thread)
           return { error: t('page.invalid_thread') }

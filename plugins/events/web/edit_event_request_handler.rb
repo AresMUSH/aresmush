@@ -10,9 +10,12 @@ module AresMUSH
         warning = request.args[:content_warning]
         tags = (request.args[:tags] || []).map { |t| t.downcase }.select { |t| !t.blank? }
         enactor = request.enactor
+        organizer = Character.named(request.args[:organizer])
+        
+        request.log_request
         
         event = Event[event_id.to_i]
-        if (!event)
+        if (!event || !organizer)
           return { error: t('webportal.not_found') }
         end
         
@@ -41,6 +44,9 @@ module AresMUSH
         end
 
         Events.update_event(event, enactor, title, datetime, Website.format_input_for_mush(desc), Website.format_input_for_mush(warning), tags)
+        
+        # Handled separately from the other updates.
+        event.update(character: organizer)
         
         {}
       end

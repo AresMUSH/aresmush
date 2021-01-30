@@ -50,7 +50,7 @@ spells:
     rounds: 1
     school: Earth
     target_num: 1
-    target_optional: true
+
     effect: Debuff
   Glow Stone:
     available: true
@@ -77,7 +77,7 @@ spells:
     school: Earth
   Tremor:
     attack_mod: -1
-    available: false
+    available: true
     casting_time: 1 round
     desc: "The earth shudders beneath a target's feet, making it difficult for them to aim."
     duration: 2 rounds.
@@ -88,7 +88,7 @@ spells:
     range: Short
     rounds: 2
     school: Earth
-    target_optional: true
+
     target_num: 1
   #Level 3
   Earth Bolt:
@@ -104,7 +104,7 @@ spells:
     range: Short
     school: Earth
     target_num: 3
-    target_optional: true
+
     weapon: Earth Bolt
   Floating Earth:
     area: 5 yard radius
@@ -143,7 +143,7 @@ spells:
     range: Short
     school: Earth
     target_num: 1
-    target_optional: true
+
     weapon: Stone Slam
   Touchstone:
     area: 40 mile radius
@@ -184,7 +184,7 @@ spells:
     rounds: 100
     school: Earth
     target_num: 1
-    target_optional: true
+
     weapon_specials: Diamond
     weapon: Spell
   Earth Shudder:
@@ -202,7 +202,7 @@ spells:
     range: Long
     school: Earth
     target_num: 3
-    target_optional: true
+
     weapon: Earth Shudder
   Potions (Earth):
     desc: The caster has learned the art of potion-making and can craft potions in any school. This is not a spell in the same sense of most, but rather an art learned through study. It takes time, effort, and materials to brew a potion.
@@ -224,7 +224,7 @@ spells:
     range: Self
     school: Earth
     target_num: 1
-    target_optional: true
+
     weapon: Rock Skin
   Seismic Sense:
     area: 5 yard radius
@@ -278,7 +278,7 @@ spells:
     range: Long
     school: Earth
     target_num: 1
-    target_optional: true
+
     weapon: Stalagmite
   Stone Shackles:
     available: true
@@ -295,7 +295,7 @@ spells:
     rounds: 2
     school: Earth
     target_num: 1
-    target_optional: true
+
     weapon: Stun (Earth)
   #Level 6
   Alter Metal:
@@ -312,7 +312,7 @@ spells:
     school: Earth
   Diamond Armor:
     armor: Diamond
-    available: false
+    available: true
     casting_time: 1 round
     desc: The caster protects the target's body by augmenting it with a layer of hard diamond armor. Coloring may vary.
     duration: 8 hours
@@ -321,6 +321,7 @@ spells:
     name: Diamond Armor
     range: Touch
     school: Earth
+    target_num: 1
   Dust Devils:
     attack_mod: -2
     available: false
@@ -336,7 +337,7 @@ spells:
     rounds: 3
     school: Earth
     target_num: 3
-    target_optional: true
+
     effect: Debuff
   Familiar (Earth):
     desc: "A familiar is a spirit associated or allied with a school of magic that has taken residence in a physical vessel with the shape of an animal. It functions as a companion, assistant, and guardian. \n\nFamiliars may be capable of some or all of the following: sharing telepathic or empathic communication, providing knowledge of the arcane, sharing senses, lending physical aid as spies or fighters, delivering spells at a distance of up to three miles."
@@ -377,7 +378,7 @@ spells:
     range: Short
     school: Earth
     target_num: 3
-    target_optional: true
+
     weapon: Stun (Earth)
   Stone Daggers:
     available: true
@@ -391,7 +392,7 @@ spells:
     range: Long
     school: Earth
     target_num: 1
-    target_optional: true
+
     weapon: Stone Daggers
   Energize Dimensional Anchor (Earth):
     available: true
@@ -416,7 +417,7 @@ spells:
     range: Long
     school: Earth
     target_num: 3
-    target_optional: true
+
     weapon: Exploding Earth
   #Level 8
   Massive Quake:
@@ -432,5 +433,5 @@ spells:
     range: Massive
     school: Earth
     target_num: 100
-    target_optional: true
+    
     weapon: Massive Quake

@@ -13,6 +13,8 @@ module AresMUSH
         error = Website.check_login(request)
         return error if error
         
+        Global.logger.info "#{enactor.name} uploading file #{name}."
+        
         if (name.blank? || folder.blank?)
           return { error: t('webportal.missing_required_fields') }
         end
@@ -20,8 +22,11 @@ module AresMUSH
         is_wiki_admin = Website.can_manage_wiki?(enactor)
         extension = File.extname(name) || ""
 
-        if (!is_wiki_admin && !['.png', '.jpg', '.gif'].include?(extension.downcase))
-          return { error: t('webportal.only_upload_images') }
+        allowed_extensions = (Global.read_config("website", "uploadable_extensions") || []).map { |e| e.downcase }
+        if (allowed_extensions.any?)
+          if (!is_wiki_admin && !allowed_extensions.include?(extension.downcase))
+            return { error: t('webportal.only_upload_images', extensions: allowed_extensions.join(", ")) }
+          end
         end
         
         # Unapproved chars can only update their own profile image.

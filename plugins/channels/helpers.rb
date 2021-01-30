@@ -367,7 +367,7 @@ module AresMUSH
          can_talk: true,
          muted: false,
          is_page: true,
-         is_unread: Page.is_thread_unread?(thread, enactor),
+         new_messages: Page.is_thread_unread?(thread, enactor) ? 1 : nil,
          last_activity: thread.last_activity,
          is_recent: thread.last_activity ? (Time.now - thread.last_activity < (86400 * 2)) : false,
          who: thread.characters.map { |c| {

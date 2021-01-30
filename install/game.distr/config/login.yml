@@ -37,3 +37,4 @@ login:
   permissions:
     login: Able to log in.
     manage_login: Can access login-related admin tools like resetting someone's password.
+  random_guest_selection: true

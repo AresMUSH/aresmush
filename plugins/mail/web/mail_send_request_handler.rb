@@ -10,6 +10,8 @@ module AresMUSH
         error = Website.check_login(request)
         return error if error
         
+        Global.logger.info "#{enactor.name} sending mail to #{to_list}."
+        
         if (subject.blank? || message.blank? || to_list.blank?)
           return { error: t('webportal.missing_required_fields') }
         end

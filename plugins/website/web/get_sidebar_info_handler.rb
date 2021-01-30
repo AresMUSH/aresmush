@@ -18,7 +18,7 @@ module AresMUSH
           notifications = enactor.unread_notifications.count
           if (enactor.handle)
             alts = AresCentral.alts(enactor) # Note - will include the original character
-            
+
             if (alts.count > 1)
               alts = alts.map { |alt| {
                 name: alt.name,
