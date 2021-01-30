@@ -498,7 +498,6 @@ spells:
     level: 7
     line_of_sight: true
     fs3_attack: true
-    range: long
     name: Lightning Flash
     range: Self
     rounds: 4
@@ -513,7 +512,6 @@ spells:
     level: 7
     line_of_sight: true
     fs3_attack: true
-    range: long
     name: Lightning Strike
     range: Long
     roll: true
