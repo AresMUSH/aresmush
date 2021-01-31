@@ -731,7 +731,7 @@ spells:
     available: true
     armor: Tough hide
     desc: Allows the caster to transform into any animal in the Equidae family.
-    level: 5
+    level: 7
     name: Greater Wild Shape Equidae
     roll: true
     school: Nature
