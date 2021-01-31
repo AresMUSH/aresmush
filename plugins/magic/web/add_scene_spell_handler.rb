@@ -34,14 +34,18 @@ module AresMUSH
           spell = spell_string.titlecase
         end
 
-        target_optional = Global.read_config("spells", spell, "target_optional")
-        if (!target_optional && !target_name_arg.blank?)
-          return { error: t('magic.doesnt_use_target') }
-        end
+        # target_optional = Global.read_config("spells", spell, "target_optional")
+        # if (!target_optional && !target_name_arg.blank?)
+        #   return { error: t('magic.doesnt_use_target') }
+        # end
 
+        target_num = Global.read_config("spells", spell, "target_num")
         if !target_name_arg.blank?
-          target_num = Global.read_config("spells", spell, "target_num")
-          target_name_string = target_name_arg
+          if !target_num
+            return { error: t('magic.doesnt_use_target') }
+          else
+            target_name_string = target_name_arg
+          end
         else
           target_name_string = enactor.name
         end
