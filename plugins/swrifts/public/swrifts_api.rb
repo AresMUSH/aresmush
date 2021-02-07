@@ -659,11 +659,11 @@ module AresMUSH
 		
 		
 		
-		if (chargen_data[:custom][:race])
-			return (chargen_data[:custom][:race][:class])
-		else
-			return ("hello")
-		end
+		# if (chargen_data[:custom][:race])
+			# return (chargen_data[:custom][:race][:class])
+		# else
+			# return ("hello")
+		# end
 		
 		#Get the iconic framework and race set on the form
 		if (chargen_data[:custom][:iconicf])
@@ -673,7 +673,7 @@ module AresMUSH
 			icf_downcase = ''
 		end
 			
-		if (chargen_data[:custom][:race])
+		if (chargen_data[:custom][:race] && chargen_data[:custom][:race][:class] != 'None')
 			c_race = chargen_data[:custom][:race][:class]
 			race_downcase = c_race.downcase.strip  # Stripped and downcased race name.
 		else
