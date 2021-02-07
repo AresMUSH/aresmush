@@ -660,7 +660,7 @@ module AresMUSH
 		
 		
 		if (chargen_data[:custom][:race])
-			return ("Race: ",chargen_data[:custom][:race])
+			return ("No Race")
 		else
 			return ("hello")
 		end
