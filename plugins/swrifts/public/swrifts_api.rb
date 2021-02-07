@@ -657,6 +657,8 @@ module AresMUSH
 		init = Global.read_config('swrifts', 'init')
 		dbgstr = ''	
 		
+		return ("hello")
+		
 		return (chargen_data[:custom][:race])
 		
 		#Get the iconic framework and race set on the form
