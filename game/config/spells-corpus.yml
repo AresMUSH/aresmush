@@ -10,7 +10,6 @@ spells:
     name: Breath of Healing
     range: Touch
     school: Corpus
-
     target_num: 1
   Eye Color:
     available: true
@@ -37,7 +36,6 @@ spells:
     roll: true
     school: Corpus
     target_num: 1
-
   Minor Allergy:
     available: true
     casting_time: 1 round
@@ -51,7 +49,6 @@ spells:
     roll: true
     school: Corpus
     target_num: 1
-
 #Level Two
   Change Hair:
     available: true
@@ -79,7 +76,18 @@ spells:
     range: Short
     school: Corpus
     target_num: 1
-
+  Mellow:
+    available: false
+    casting_time: 1 round
+    desc: Slightly relax the muscles, lower the heart rate, and calm the breathing of a target, lowering any stress responses occurring in their body. The spell is broken if they are hit by an attack or effected by any other extreme stress.
+    duration: 10 minutes
+    effect: Other
+    level: 2
+    line_of_sight: true
+    name: Mellow
+    range: Short
+    roll: true
+    school: Corpus    
   Touch Of Enfeeblement:
     attack_mod: -1
     available: true
@@ -436,7 +444,7 @@ spells:
     roll: false
     school: Corpus
     target_num: 1
-    
+
   Revenant:
     available: true
     casting_time: 1 round
