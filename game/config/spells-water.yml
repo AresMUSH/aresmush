@@ -365,7 +365,7 @@ spells:
     range: Short
     school: Water
     target_num: 1
-    
+
   #LEVEL 6
   Familiar (Water):
     available: true
@@ -482,6 +482,7 @@ spells:
     line_of_sight: true
     name: Ice Wall
     range: Long
+    roll: true
     school: Water
   Mass Hydroplane:
     available: true

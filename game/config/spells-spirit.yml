@@ -21,6 +21,7 @@ spells:
     casting_time: 1 round
     desc: "Casting non-elemental or non-spirit spells in Stochieion grants +1 to spellcasting."
     duration: 100 rounds
+    effect: Other
     level: 1
     line_of_sight: true
     name: Stochieion 2
@@ -35,6 +36,7 @@ spells:
     casting_time: 1 round
     desc: "Casting elemental or spirit spells in Stochieion grants +2 to spellcasting."
     duration: 100 rounds
+    effect: Other
     level: 1
     line_of_sight: true
     name: Stochieion 2
@@ -369,6 +371,7 @@ spells:
   Potions (Spirit):
     available: true
     desc: The caster has learned the art of potion-making and can craft potions in any school. This is not a spell in the same sense of most, but rather an art learned through study. It takes time, effort, and materials to brew a potion.
+    effect: Other
     level: 4
     name: Potions (Spirit)
     school: Spirit
@@ -700,6 +703,7 @@ spells:
     available: true
     casting_time: 2 minutes
     desc: "Provide the necessary magical energy of the appropriate School to a Dimensional Anchor spell, enabling the linked casters to permanently open or close an interdimensional portal.\n\nIf cast on an open portal, the caster can sense if the spell's School is the necessary magical energy to enable opening or closing the portal, as well as the magical coordinates of the portal's existence in the magical universe."
+    effect: Other
     level: 7
     name: Dimensional Anchor
     range: Touch
@@ -820,6 +824,7 @@ spells:
     damage_type: Psionic
     desc: "The caster specifies a contract which the target agrees to. Upon agreement, the magical oath is sealed.\n\n
     Either party breaking the oath results in an instant impairment of their mental facilities and the loss of all memories since the moment the oath was enacted. Their 'Wits' and 'Perception' are lowered to 1, and they are incapable of higher-level mental tasks such as complicated mathematics, science, and reading. Mentally, they will be capable at the level of a three year old.\n\n    Memories return sporadically over the course of six months. Cognitive development a year, eventually returning the oath breaker's mental facilities to what they were before."
+    effect: Psionic
     level: 8
     line_of_sight: true
     name: Binding Oath
@@ -889,6 +894,7 @@ spells:
     casting_time: 3 hours
     damage_type: Psionic
     desc: "The caster is capable of concealing a fragment of their spirit and binding it to an inanimate object. If the caster is killed, their full spirit enters the object after 60 seconds.\n\nUsing this spell does not harm the caster. Though it may contain a portion of the caster's spirit, they have no awareness of the object once leaving its presence. \n\nThe object may be stored anywhere, but there must be an open portal path between the caster and the object within 60 seconds of death in order for the spirit to enter the object. Otherwise, they are killed.\n\nOnce their full spirit has entered the object, the caster exists as a sapient object. They are incapable of movement but retain their spell casting abilities. Any who hold the trinket can freely converse with the caster via telepathy.\n\nIf the object is destroyed, so is that piece of the caster\u2019s spirit. If the object is destroyed after the caster fully inhabits it, the caster dies permanently."
+    effect: Psionic
     level: 8
     name: Heirloom Object
     range: Touch
@@ -915,6 +921,7 @@ spells:
     casting_time: 10 minutes
     desc: "The caster restores a target's access to magic. They must have previously been capable of magic to benefit from this spell."
     duration: Permanent
+    effect: Psionic
     level: 8
     line_of_sight: true
     name: Restore Magic
