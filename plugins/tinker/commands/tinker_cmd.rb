@@ -11,21 +11,31 @@ module AresMUSH
         return nil
       end
 
-      def parse_args
-        self.role = titlecase_arg(cmd.args)
-      end
 
+
+      # def parse_args
+      #   self.role = titlecase_arg(cmd.args)
+      # end
+      #
+      #
+      # def handle
+      #   client.emit self.role.upcase
+      #   client.emit "___________________________________"
+      #   chars = Chargen.approved_chars.select { |c| c.has_role?(role) }
+      #
+      #   chars.each do |c|
+      #     client.emit c.name
+      #   end
+      #
+      #
+      # end
 
       def handle
-        client.emit self.role.upcase
-        client.emit "___________________________________"
-        chars = Chargen.approved_chars.select { |c| c.has_role?(role) }
-
+        chars = Character.all.select {|c| c.scenes_starring.count == 0};
+        chars = chars.select {|c| c.idle_state == "Gone"}
         chars.each do |c|
-          client.emit c.name
+          client.emit "#{c.name} - #{c.scenes_starring.count} scenes - #{c.idle_state}"
         end
-
-
       end
 
     end
