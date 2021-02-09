@@ -455,7 +455,7 @@ spells:
     range: Touch
     roll: true
     school: Will
-Phasing:
+  Phasing:
     available: false
     area: 6 cubic feet
     casting_time: 1 round
