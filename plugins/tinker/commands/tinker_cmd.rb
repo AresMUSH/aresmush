@@ -35,9 +35,9 @@ module AresMUSH
 
         client.emit "---------------PORTALS----------"
         client.emit "---------------Primary School----------"
-        Portal.all.each do |p| != "None"
+        Portal.all.each do |p|
           client.emit "#{p.name}: #{p.primary_school['name']}"
-          if p.primary_school['name']
+          if p.primary_school['name'] != "None"
             p.update(primary_school: "#{p.primary_school['name']}")
           end
         end
