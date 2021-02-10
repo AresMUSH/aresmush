@@ -1,8 +1,9 @@
 module AresMUSH
   module Magic
     class GetSpellEffectsRequestHandler
-      def handle(request)
 
+      def handle(request)
+        Global.logger.debug "Getting Spell Request Handler"
         spells = Global.read_config("spells")
         spells = spells.map {|k, v| {id: v['name'], effect: v['effect']}}
         effects = []
