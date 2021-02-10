@@ -6,7 +6,7 @@ module AresMUSH
     attribute :name
     attribute :name_upcase
     index :name_upcase
-    attribute :primary_school, :type => DataType::Hash, :default => {}
+    attribute :primary_school
     attribute :all_schools, :type => DataType::Array, :default => []
     attribute :other_creatures
     attribute :npcs

@@ -2,7 +2,7 @@ module AresMUSH
   module Portals
     class PortalCreateRequestHandler
       def handle(request)
-
+        puts  "Portal Created: #{request.args}"
         enactor = request.enactor
 
         error = Website.check_login(request)
@@ -18,26 +18,12 @@ module AresMUSH
           end
         end
 
-        all_schools_names = request.args[:all_schools]
-        all_schools = []
-        if all_schools_names
-          all_schools_names.each do |school|
-            school_name = Global.read_config("schools", school, "name")
-            all_schools_id = Global.read_config("schools", school, "id")
-            new_school = [{:name => school_name, :id => all_schools_id}]
-            all_schools.concat new_school
-          end
-        end
-
-        school_name = request.args[:primary_school].to_s
-        school_id = Global.read_config("schools", school_name, "id")
-        primary_school = {:name => school_name, :id => school_id}
 
         portal = Portal.create(
           name: request.args[:name],
           pinterest: request.args[:pinterest],
-          all_schools: all_schools,
-          primary_school: primary_school,
+          all_schools: request.args[:all_schools],
+          primary_school: request.args[:primary_school],
           other_creatures: request.args[:other_creatures],
           npcs: request.args[:npcs],
           location: request.args[:location],

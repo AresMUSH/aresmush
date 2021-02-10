@@ -40,7 +40,6 @@ module AresMUSH
           wound = FS3Combat.worst_treatable_wound(target.associated_model)
           heal_points = Global.read_config("spells", self.spell, "heal_points")
           weapon = Global.read_config("spells", self.spell, "weapon")
-          puts "wound? #{wound.blank?} weapon: #{weapon}"
           return t('magic.no_healable_wounds', :target => target.name) if (heal_points && wound.blank? && !weapon)
           # Check that weapon specials can be added to weapon
           weapon_specials_str = Global.read_config("spells", self.spell, "weapon_specials")
@@ -57,6 +56,7 @@ module AresMUSH
           end
 
         end
+
         return nil
       end
 
@@ -76,6 +76,7 @@ module AresMUSH
       end
 
       def resolve
+        # puts "TARGET: #{target} #{target.name} COMBATANT: #{combatant} #{combatant.name}"
         armor = Global.read_config("spells", self.spell, "armor")
         armor_specials_str = Global.read_config("spells", self.spell, "armor_specials")
         attack_mod = Global.read_config("spells", self.spell, "attack_mod")
@@ -100,8 +101,6 @@ module AresMUSH
         # target_optional = Global.read_config("spells", self.spell, "target_optional")
         weapon = Global.read_config("spells", self.spell, "weapon")
         weapon_specials_str = Global.read_config("spells", self.spell, "weapon_specials")
-
-        puts "ATTACK MOD: #{attack_mod}"
 
         messages = []
         combatant.log "~* #{self.combatant.name.upcase} CASTING #{self.spell.upcase} *~"
@@ -211,7 +210,6 @@ module AresMUSH
               end
 
               if attack_mod
-                puts "HITTING THIS"
                 message = Magic.cast_attack_mod(combatant, target, spell, damage_type, rounds, attack_mod, succeeds[:result])
                 messages.concat message
               end
@@ -245,6 +243,9 @@ module AresMUSH
             #End targets.each do for non FS3 spells (if spell succeeds)
             end
           #Spell fails
+
+          elsif !target
+            messages.concat [t('magic.spell_resolution_msg', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xrFAILS%xn")]
           else
             messages.concat [t('magic.spell_target_resolution_msg', :name =>  combatant.name, :spell => self.spell, :target => print_target_names, :succeeds => "%xrFAILS%xn")]
           #End spell rolls

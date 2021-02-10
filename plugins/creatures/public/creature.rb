@@ -6,8 +6,8 @@ module AresMUSH
     attribute :name
     attribute :name_upcase
     index :name_upcase
-    attribute :major_school, :type => DataType::Hash, :default => {}
-    attribute :minor_school, :type => DataType::Hash, :default => {}
+    attribute :major_school
+    attribute :minor_school
     attribute :sapient, :type => DataType::Boolean, :default => false
     attribute :language
     attribute :traits

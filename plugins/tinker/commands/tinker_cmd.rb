@@ -52,9 +52,9 @@ module AresMUSH
           p.update(all_schools: all_schools)
 
         end
-
-
       end
+
+
 
 
 
