@@ -11,19 +11,20 @@ module AresMUSH
            effects.concat [s[:effect]]
         end
         effects = effects.uniq
+        return effects
 
-        damage = []
-        spells.each do |s|
-           damage.concat [s[:damage_type]]
-        end
+        # damage = []
+        # spells.each do |s|
+        #    damage.concat [s[:damage_type]]
+        # end
+        #
+        # damage = damage.uniq
 
-        damage = damage.uniq
 
-
-        {
-          effects: effects,
-          damage: damage
-        }
+          # {
+          #   effects: effects,
+          #   damage: damage
+          # }
 
 
         # effects = []
