@@ -2,7 +2,7 @@ module AresMUSH
   module Magic
     class GetSpellDamageRequestHandler
       def handle(request)
-        puts "YES"
+        Global.logger.debug "Getting Damage Request Handler"
 
         spells = Global.read_config("spells")
         spells = spells.map {|k, v| {name: v['name'], damage: v['damage_type']}}
