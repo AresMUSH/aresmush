@@ -21,19 +21,25 @@ module AresMUSH
         client.emit "---------------Major School----------"
         Creature.all.each do |p|
           client.emit "#{p.name}: #{p.major_school['name']}"
-          p.update(major_school: "#{p.major_school['name']}")
+          if p.major_school['name']
+            p.update(major_school: "#{p.major_school['name']}")
+          end
         end
         client.emit "---------------Minor School----------"
         Creature.all.each do |p|
           client.emit "#{p.name}: #{p.minor_school['name']}"
-          p.update(minor_school: "#{p.minor_school['name']}")
+          if p.minor_school['name']
+            p.update(minor_school: "#{p.minor_school['name']}")
+          end
         end
 
         client.emit "---------------PORTALS----------"
         client.emit "---------------Primary School----------"
         Portal.all.each do |p|
           client.emit "#{p.name}: #{p.primary_school['name']}"
-          p.update(primary_school: "#{p.primary_school['name']}")
+          if p.primary_school['name']
+            p.update(primary_school: "#{p.primary_school['name']}")
+          end          
         end
         client.emit "--------------All Schools----------"
         Portal.all.each do |p|
