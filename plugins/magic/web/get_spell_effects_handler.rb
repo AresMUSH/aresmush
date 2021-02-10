@@ -1,6 +1,6 @@
 module AresMUSH
   module Magic
-    class GetSpellDataRequestHandler
+    class GetSpellEffectsRequestHandler
       def handle(request)
 
         spells = Global.read_config("spells")
