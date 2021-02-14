@@ -17,16 +17,46 @@ module AresMUSH
 
 
       def handle
-        client.emit self.role.upcase
-        client.emit "___________________________________"
-        chars = Chargen.approved_chars.select { |c| c.has_role?(role) }
-
-        chars.each do |c|
-          client.emit c.name
+        client.emit "---------------CREATURES----------"
+        client.emit "---------------Major School----------"
+        Creature.all.each do |p|
+          client.emit "#{p.name}: #{p.major_school['name']}"
+          if p.major_school['name'] != "None"
+            p.update(major_school: "#{p.major_school['name']}")
+          end
+        end
+        client.emit "---------------Minor School----------"
+        Creature.all.each do |p|
+          client.emit "#{p.name}: #{p.minor_school['name']}"
+          if p.minor_school['name'] != "None"
+            p.update(minor_school: "#{p.minor_school['name']}")
+          end
         end
 
+        client.emit "---------------PORTALS----------"
+        client.emit "---------------Primary School----------"
+        Portal.all.each do |p|
+          client.emit "#{p.name}: #{p.primary_school['name']}"
+          if p.primary_school['name'] != "None"
+            p.update(primary_school: "#{p.primary_school['name']}")
+          end
+        end
+        client.emit "--------------All Schools----------"
+        Portal.all.each do |p|
+          schools = p.all_schools
+          all_schools = []
+          schools.each do |s|
+            all_schools.concat [s['name']]
+          end
+          client.emit "#{p.name}: #{all_schools}"
+          p.update(all_schools: all_schools)
 
+        end
       end
+
+
+
+
 
     end
   end

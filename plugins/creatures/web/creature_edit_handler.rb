@@ -16,7 +16,7 @@ module AresMUSH
           return { error: t('dispatcher.not_allowed') }
         end
 
-        Global.logger.debug "Creature #{creature.id} (#{creature.name}) edited by #{enactor.name}."
+        Global.logger.debug "Creature #{creature.id} (#{creature.name}) edited by #{enactor.name}. Request: #{request.args}"
 
           gm_names = request.args[:gms] || []
           creature.gms.replace []
@@ -42,23 +42,23 @@ module AresMUSH
             end
           end
 
-          if !request.args[:major_school].blank?
-            major_school_name = request.args[:major_school]
-            id = Global.read_config("schools", request.args[:major_school], "id")
-            major_school = {:name => major_school_name, :id => id}
-            creature.update(major_school: major_school)
-          end
-
-          if !request.args[:minor_school].blank?
-            minor_school_name = request.args[:minor_school]
-            id = Global.read_config("schools", request.args[:minor_school], "id")
-            minor_school = {:name => minor_school_name, :id => id}
-            creature.update(minor_school: minor_school)
-          end
-          puts "Sapient request args: #{request.args[:sapient]}"
+          # if !request.args[:major_school].blank?
+          #   major_school_name = request.args[:major_school]
+          #   id = Global.read_config("schools", request.args[:major_school], "id")
+          #   major_school = {:name => major_school_name, :id => id}
+          #   creature.update(major_school: major_school)
+          # end
+          #
+          # if !request.args[:minor_school].blank?
+          #   minor_school_name = request.args[:minor_school]
+          #   id = Global.read_config("schools", request.args[:minor_school], "id")
+          #   minor_school = {:name => minor_school_name, :id => id}
+          #   creature.update(minor_school: minor_school)
+          # end
           sapient = (request.args[:sapient] || "").to_bool
 
-
+          creature.update(minor_school: request.args[:minor_school])
+          creature.update(major_school: request.args[:major_school])
           creature.update(name: request.args[:name])
           creature.update(pinterest: request.args[:pinterest].blank? ? nil : request.args[:pinterest])
           creature.update(found: request.args[:found].blank? ? nil : request.args[:found])

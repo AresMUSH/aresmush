@@ -482,6 +482,7 @@ spells:
     line_of_sight: true
     name: Ice Wall
     range: Long
+    roll: true
     school: Water
   Mass Hydroplane:
     available: true

@@ -2,20 +2,22 @@ module AresMUSH
   module Magic
     class SearchSpellsRequestHandler
       def handle(request)
-        Global.logger.debug "REQUEST: #{request}"
+        Global.logger.debug "REQUEST: #{request.args}"
         searchName = (request.args[:searchName] || "").strip
         searchLevel = (request.args[:searchLevel] || "").strip.to_i
         searchSchool = (request.args[:searchSchool] || "").strip
-        searchEffect = (request.args[:searchEffect] || "").strip
+        searchEffect = (request.args[:searchEffect] || "")
         searchDesc = (request.args[:searchDesc] || "").strip
         searchAvailable = (request.args[:searchAvailable] || "")
         searchPotion = (request.args[:searchPotion] || "")
         searchLOS = (request.args[:searchLOS] || "")
+        searchDamage = (request.args[:searchDamage] || "")
 
         all_spells = Global.read_config("spells")
-        spells = build_list(all_spells)
+        search_spells = self.build_spell_list(all_spells)
 
-        spells.each do |s|
+
+        search_spells.each do |s|
           weapon = Global.read_config("spells", s[:name], "weapon")
           weapon_specials = Global.read_config("spells", s[:name], "weapon_specials")
           armor = Global.read_config("spells", s[:name], "armor")
@@ -82,44 +84,49 @@ module AresMUSH
         end
 
 
+
         # spells = spells.group_by { |s| s[:level] }
 
         if (!searchName.blank?)
-          spells = spells.select { |s| s[:name] =~ /\b#{searchName}\b/i }
+          search_spells = search_spells.select { |s| s[:name] =~ /\b#{searchName}\b/i }
         end
 
         if searchLevel != 0
-          spells = spells.select { |s| s[:level] == searchLevel }
+          search_spells = search_spells.select { |s| s[:level] == searchLevel }
         end
 
         if (!searchSchool.blank?)
-          spells = spells.select { |s| s[:school] =~ /\b#{searchSchool}\b/i }
+          search_spells = search_spells.select { |s| s[:school] =~ /\b#{searchSchool}\b/i }
+        end
+
+        if (!searchDamage.blank?)
+          search_spells = search_spells.select { |s| s[:damage] =~ /\b#{searchDamage}\b/i }
         end
 
         if (!searchEffect.blank?)
-          spells = spells.select { |s| s[:effect] =~ /\b#{searchEffect}\b/i }
+          search_spells = search_spells.select { |s| s[:effect] =~ /\b#{searchEffect}\b/i }
         end
 
         if (!searchDesc.blank?)
-          spells = spells.select { |s| s[:desc] =~ /\b#{searchDesc}\b/i }
+          search_spells = search_spells.select { |s| s[:desc] =~ /\b#{searchDesc}\b/i }
         end
 
         if searchAvailable == "true"
-          spells = spells.select { |s| s[:available] == true }
+          search_spells = search_spells.select { |s| s[:available] == true }
         end
 
         if searchPotion == "true"
-          spells = spells.select { |s| s[:potion] == true }
+          search_spells = search_spells.select { |s| s[:potion] == true }
         end
 
         if searchLOS == "true"
-          spells = spells.select { |s| s[:line_of_sight] == true }
+          search_spells = search_spells.select { |s| s[:line_of_sight] == true }
         end
 
-        spells.sort_by { |s| s[:level] }
+        search_spells.sort_by { |s| s[:level] }
       end
 
-      def build_list(hash)
+      def build_spell_list(hash)
         hash.sort.map { |name, data| {
           key: name,
           name: name.titleize,
@@ -145,8 +152,8 @@ module AresMUSH
           armor_specials: data['armor_specials'],
           weapon_specials: data['weapon_specials'],
           effect: data['effect'],
-          damage_type: data['damage_type']
-
+          damage_type: data['damage_type'],
+          damage: data['damage_type']
           }
         }
       end

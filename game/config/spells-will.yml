@@ -272,7 +272,7 @@ spells:
     range: Long
     school: Will
     weapon: Telekinetic Crush
-    
+
     target_num: 1
   #LEVEL 6
   Familiar (Will):
@@ -298,6 +298,17 @@ spells:
     range: Self
     roll: Will
     school: Will
+  Mirrored Objects:
+    available: false
+    casting_time: 1 round
+    desc: "The caster creates a link between two mostly identical objects of up to 1/2 a pound each, allowing one to mirror the movements of the other when used, as long as both are in a location where magic is present. The objects will pick up and transmit all motions when being used for the duration of the spell. Anyone can use one object to mirror motions to the other one, but only the caster can turn the spell off.\n\nThe caster can sense the direction of the other linked object, and it if is moved, the caster will feel the change in its location and be able to track it. The feeling of the link becomes vaguer the more distant the object is, but the caster can always tell the direction of it.\n\nOnly two objects can be linked at a time."
+    duration: 48 hours
+    effect: Other
+    level: 6
+    name: 'Mirrored Objects'
+    range: Touch
+    roll: Will
+    school: Will
   Summon Object:
     available: true
     casting_time: 1 round
@@ -321,14 +332,13 @@ spells:
     notes: This probably shouldn't cover the whole body? Maybe a use for armor specials.
     range: Touch
     school: Will
-
     target_num: 1
   #LEVEL 7
   Analyze Object:
     available: true
     area: 100 yards
     casting_time: 1 round
-    desc: "The caster senses all the physical properties of an inanimate object. This includes the type of materials it is composed of, their density, hardness, conductivity, and freezing, melting and boiling points.\n\nThe caster can also sense whether magic is affecting, being performed, or capable of being performed by the inanimate target. They are able to identify the magic's School, its specific affect(s), its range, and targets if applicable. The caster can also sense whether a sapient target is capable of magic, and the target's Schools.\n\nGMs should provide the name of the spell if the caster would be aware of it."
+    desc: "The caster senses all the physical properties of an inanimate object. This includes the type of materials it is composed of, their density, hardness, conductivity, and freezing, melting and boiling points.\n\nThe caster can also sense whether magic is affecting, being performed, or capable of being performed by the inanimate target. They are able to identify the magic's School, its specific affect(s), its range, and targets if applicable. The caster can also sense whether a sapient object (a spirit in an inanimate object) is capable of magic, and the target's Schools.\n\nGMs should provide the name of the spell if the caster would be aware of it."
     duration: 15 minutes
     effect: Other
     level: 7
@@ -389,7 +399,6 @@ spells:
     roll: true
     school: Will
     target_num: 5
-
   Massive Telekinetic Hold:
     available: true
     casting_time: 1 round
@@ -405,7 +414,6 @@ spells:
     range: Long
     school: Will
     target_num: 3
-
     weapon: Stun (Will)
   Mass Telekinetic Burst:
     area: 15 yard radius
@@ -420,7 +428,6 @@ spells:
     range: Long
     school: Will
     target_num: 3
-
     weapon: Mass Telekinetic Burst
   Object Survey:
     available: true
@@ -446,6 +453,18 @@ spells:
     level: 7
     name: Open Local Portal
     range: Touch
+    roll: true
+    school: Will
+  Phasing:
+    available: false
+    area: 6 cubic feet
+    casting_time: 1 round
+    desc: "The caster temporarily transforms an object, or an area of an object up to 6 cubic feet, intangible. For the spell's duration, anyone (or anything) can enter or pass through the object as easily as one might pass through air. Object returns to its natural original state when the spell ends.\n\nWhen phasing through an object, a being cannot breathe, limiting their ability to remain inside an intangible object or act according to how long they can hold their breath. Base speed and mode of movement remain the same."
+    duration: 1 minute
+    effect: Travel
+    level: 7
+    name: Phasing
+    range: Short
     roll: true
     school: Will
   Local Gateway:
