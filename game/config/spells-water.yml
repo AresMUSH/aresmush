@@ -68,7 +68,7 @@ spells:
     defense_mod: -1
     desc: "Chill someone's limbs, making it difficult for them to move effectively. "
     duration: 1 round
-    effect: Debuf
+    effect: Debuff
     level: 2
     line_of_sight: true
     name: Chilled Limbs
@@ -365,7 +365,7 @@ spells:
     range: Short
     school: Water
     target_num: 1
-    
+
   #LEVEL 6
   Familiar (Water):
     available: true

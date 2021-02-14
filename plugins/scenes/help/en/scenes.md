@@ -93,7 +93,7 @@ A scene can be open (anyone's invited), private (only those invited should join 
 `scene/icdate [<#>=]<icdate>` - Sets the scene date.
 `scene/location [<#>=]=[<area>/]<location>` - Sets the scene location.
 `scene/type [<#>=]<type>` - Sets the scene type.  `scene/types` lists types.
-`scene/pacing [<#=]<pacing>` - Sets the scene pacing. Traditional, Distracted, or Asynchronous. (you can abbreviate the name)
+`scene/pacing [<#=]<pacing>` - Sets the scene pacing. Traditional, Distracted, or Asynchronous. (you can abbreviate the name). See the [Scenes Tutorial](/help/scenes_tutorial) for definitions.
 `scene/warning [<#=]<warning>` - Sets a content warning on the scene.
 `scene/set <desc>` - Sets the scene in the current room.  Leave blank to clear.
 `scene/addchar <#>=<names>` - Adds participants to the scene log. Normally used when someone poses from an alt but you want the other char added too.
