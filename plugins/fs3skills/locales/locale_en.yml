@@ -88,7 +88,7 @@ en:
         magic_attribute_too_high: "%xh%xr< Magic attribute is too high. (%{max} max) >%xn"
         unusual_abilities_check: "Checking for unusual skills."
         unusual_skill: "%xh%xy< %{skill} is an unusual skill; be sure there's good reason for it. >%xn"
-        high_bg: "%xh%xy< %{skill} is pretty high.  Remember that a 2 is professional level and a 3 signifies notable expertise in the field. >%xn"
+        high_bg: "%xh%xy< %{skill} is pretty high.  Remember that a 2 is professional level and a 3 signifies notable expertise. >%xn"
 
 
         # ------------------------------------------------------
