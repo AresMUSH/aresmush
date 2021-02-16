@@ -5,8 +5,9 @@ module AresMUSH
     end
 
     def self.bg_app_review(char)
+      puts "BACKGROUND SIZE #{char.background.size}"
       error = char.background.to_s.empty? ? t('chargen.not_set') : t('chargen.ok')
-      error = char.background.size > 4000 ? "%xrBackgrounds should be 4,000 characters or less (about 700 words).%xn" : t('chargen.ok')
+      error = char.background.size > 4000 ? "%xrBackgrounds should be 4,000 characters or less. Currently #{char.background.size.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse} characters. %xn" : t('chargen.ok')
       Chargen.format_review_status t('chargen.background_review'), error
     end
 
