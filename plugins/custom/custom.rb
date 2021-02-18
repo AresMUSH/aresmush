@@ -14,6 +14,8 @@ module AresMUSH
       case cmd.root
       when "plotcheck"
         return PlotcheckCmd
+      when "wordcount"
+        return WordCountCmd
       end   
       return nil
     end
