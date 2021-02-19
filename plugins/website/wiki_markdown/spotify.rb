@@ -10,9 +10,14 @@ module AresMUSH
         return "" if !input
 
         template = HandlebarsTemplate.new(File.join(AresMUSH.plugin_path, 'website', 'templates', 'spotify.hbs'))
+        linktype = "playlist"
+        if (input.after(' ').strip == "track")
+          linktype = "track"
+        end
 
         data = {
-          "playlist" => input
+          "code" => input.before(' '),
+          "linktype" => linktype
         }
         
         template.render(data)
