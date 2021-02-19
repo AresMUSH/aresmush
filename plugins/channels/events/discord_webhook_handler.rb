@@ -2,12 +2,23 @@ module AresMUSH
   module Channels
     class DiscordWebhookHandler
       def handle(request)
+        user = request.args['user'] || ""
+        nickname = request.args['nickname']
+        
         token = request.args['token'] || ""
-        name = request.args['nickname'] || ( request.args['user'] || "" )
+        name = nickname || user 
         message = request.args['message'] || ""
         discord_channel_name = request.args['channel'] || ""
         
+        debug_enabled = Global.read_config('channels', 'debug_discord')
+        if (debug_enabled) 
+          Global.logger.debug("Discord Message: user=#{user} nick=#{nickname} message=#{message} channel=#{discord_channel_name}")
+        end
+        
         if (Global.read_config('secrets', 'discord', 'api_token') != token)
+          if (debug_enabled) 
+            Global.logger.debug("Invalid discord API token.")
+          end
           return { error: "Invalid channel API token." }
         end
         
@@ -16,12 +27,19 @@ module AresMUSH
            .first
         
         if (!hook)
+          if (debug_enabled) 
+            Global.logger.debug("No matching channel hook found.")
+          end
           return {}
         end
         
         mush_channel_name = hook['mush_channel']
         channel = Channel.named(mush_channel_name)
         if (!channel)
+          if (debug_enabled) 
+            Global.logger.debug("Channel not found: #{mush_channel_name}.")
+          end
+          
           return { error: t('channels.channel_doesnt_exist', :name => mush_channel_name) }
         end
         
