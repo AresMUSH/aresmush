@@ -30,6 +30,16 @@ module AresMUSH
             return
           end
           room = find_result[:room]
+          
+          if (!room)
+            client.emit_failure t('rooms.destination_not_found')
+            return
+          end
+          
+          if (room.is_temp_room?)
+            client.emit_failure t('rooms.cant_open_exit_to_temp_room')
+            return
+          end
         end
         client.emit_success Rooms.open_exit(self.name, enactor_room, room)
       end
