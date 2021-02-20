@@ -111,7 +111,7 @@ module AresMUSH
       if (char.background.blank?)
         show_background = false
       else
-        show_background = char == viewer || char.on_roster? || char.bg_shared || Chargen.can_view_bgs?(enactor)
+        show_background = char == viewer || char.on_roster? || char.bg_shared || Chargen.can_view_bgs?(viewer)
       end
       
       {
@@ -130,7 +130,15 @@ module AresMUSH
         bg_shared: char.bg_shared,
         rp_hooks: Website.format_input_for_html(char.rp_hooks)
       }
-      
+    end
+    
+    def self.save_web_profile_data(char, enactor, args)
+      char.update(rp_hooks: Website.format_input_for_mush(args[:rp_hooks]))
+      char.update(bg_shared: args[:bg_shared].to_bool)
+      if (Chargen.can_manage_bgs?(enactor))
+        char.update(cg_background: Website.format_input_for_mush(args[:background]))
+      end
+      return nil
     end
   end
 end
