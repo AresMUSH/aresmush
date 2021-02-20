@@ -185,6 +185,29 @@ module AresMUSH
       }
     end
     
+    def self.save_web_profile_data(char, enactor, args)            
+      args[:demographics].each do |name, value|
+        if (value.blank? && Demographics.required_demographics.include?(name))
+          return t('webportal.missing_required_field', :name => name) 
+        end
+        if (name == 'birthdate')
+          # Standard db format
+          if (value =~ /\d\d\d\d-\d\d-\d\d/)
+            char.update_demographic name, value
+          # Game-specific format
+          else
+            result = Demographics.set_birthday(char, value)
+            if (result[:error])
+              return result[:error]
+            end
+          end
+        else
+          char.update_demographic name, value
+        end
+      end
+      return nil
+    end
+    
     def self.build_web_demographics_data(char, viewer)
       visible_demographics = Demographics.visible_demographics(char, viewer)
       demographics = visible_demographics.each.map { |d| 

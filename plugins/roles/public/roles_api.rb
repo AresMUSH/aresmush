@@ -56,5 +56,35 @@ module AresMUSH
         show_roles_tab: role_manager,
       }
     end
+    
+    def self.save_web_profile_data(char, enactor, args)
+      return nil if !Roles.can_assign_role?(enactor)
+        
+      role_names = args['roles']
+      
+      existing_roles = char.roles.map { |r| r.name }
+      delta_roles = existing_roles - role_names | role_names - existing_roles
+    
+      return nil if !delta_roles.any?
+    
+      delta_roles.each do |r|
+        if (Roles.is_restricted?(r) && !enactor.is_master_admin?)
+          return t('roles.role_restricted', :name => Game.master.master_admin.name) 
+        end
+      end
+    
+      Global.logger.info "#{enactor.name} changing roles for #{char.name}: #{role_names}"
+    
+      new_roles = []
+      role_names.each do |r|
+        role = Role.find_one_by_name(r)
+        if (role)
+          new_roles << role
+        end
+        char.roles.replace new_roles
+      end
+      
+      return nil
+    end
   end
 end
