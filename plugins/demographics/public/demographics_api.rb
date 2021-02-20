@@ -156,6 +156,35 @@ module AresMUSH
       return bday
     end
     
+    def self.build_web_profile_data(char, viewer)
+      {
+        all_fields: Demographics.build_web_all_fields_data(char, viewer),
+        demographics: Demographics.build_web_demographics_data(char, viewer),
+        groups: Demographics.build_web_groups_data(char)
+      }
+    end
+    
+    def self.build_web_profile_edit_data(char, viewer, is_profile_manager)
+      demographics = {}
+      if (is_profile_manager)
+        props = Demographics.all_demographics
+      else
+        props = Global.read_config('demographics')['editable_properties']
+      end
+              
+      props.each do |d| 
+        demographics[d.downcase] = 
+          {
+            name: d.titlecase,
+            value: char.demographic(d)
+          }
+      end
+      {
+        demographics: demographics,
+        genders: Demographics.genders
+      }
+    end
+    
     def self.build_web_demographics_data(char, viewer)
       visible_demographics = Demographics.visible_demographics(char, viewer)
       demographics = visible_demographics.each.map { |d| 
