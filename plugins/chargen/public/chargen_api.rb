@@ -105,5 +105,32 @@ module AresMUSH
       
       args
     end
+    
+    def self.build_web_profile_data(char, viewer)
+      
+      if (char.background.blank?)
+        show_background = false
+      else
+        show_background = char == viewer || char.on_roster? || char.bg_shared || Chargen.can_view_bgs?(enactor)
+      end
+      
+      {
+        can_approve: Chargen.can_approve?(viewer),
+        background: show_background ? Website.format_markdown_for_html(char.background) : nil,
+        rp_hooks: char.rp_hooks ? Website.format_markdown_for_html(char.rp_hooks) : ''
+      }
+    end
+    
+    def self.build_web_profile_edit_data(char, viewer, is_profile_manager)
+      bg_manager = Chargen.can_manage_bgs?(viewer)
+      
+      {
+        background: Website.format_input_for_html(char.background),
+        show_background_tab: bg_manager,
+        bg_shared: char.bg_shared,
+        rp_hooks: Website.format_input_for_html(char.rp_hooks)
+      }
+      
+    end
   end
 end
