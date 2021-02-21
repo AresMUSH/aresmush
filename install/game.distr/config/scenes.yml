@@ -78,3 +78,11 @@ scenes:
   permissions:
     control_npcs: Pose from NPCs in scenes.
     manage_scenes: Can use scene-related admin tools, like stopping or unsharing scenes.
+  content_warnings:
+  - graphic violence
+  - sexual assault
+  - nsfw
+  - self-harm
+  - suicide
+  - bigotry
+  - torture
