@@ -19,7 +19,7 @@ module AresMUSH
           list = enactor.sorted_page_threads
           thread = list[self.names[0].to_i - 1]
         else
-          thread = Page.thread_for_names(self.names.concat([enactor_name]).uniq)
+          thread = Page.thread_for_names(self.names, enactor)
         end
         if (!thread)
           client.emit_failure t('page.invalid_thread')
