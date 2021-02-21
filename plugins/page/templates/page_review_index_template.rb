@@ -11,7 +11,7 @@ module AresMUSH
       end
 
       def title(thread)
-        thread.title_without_viewer(@enactor)
+        thread.title_customized(@enactor)
       end
       
       def unread_marker(thread)

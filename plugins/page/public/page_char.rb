@@ -7,6 +7,8 @@ module AresMUSH
     attribute :page_monitor, :type => DataType::Hash, :default => {}
     set :page_ignored, "AresMUSH::Character"
 
+    attribute :hidden_page_threads, :type => DataType::Array, :default => []
+        
     # OBSOLETE - use read_tracker instead
     attribute :read_page_threads, :type => DataType::Array, :default => []
 

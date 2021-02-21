@@ -359,9 +359,10 @@ module AresMUSH
     end
     
     def self.build_page_web_data(thread, enactor)
+      is_hidden = thread.is_hidden?(enactor)
       {
          key: thread.id,
-         title: thread.title_without_viewer(enactor),
+         title: thread.title_customized(enactor),
          enabled: true,
          can_join: true,
          can_talk: true,
@@ -369,7 +370,8 @@ module AresMUSH
          is_page: true,
          new_messages: Page.is_thread_unread?(thread, enactor) ? 1 : nil,
          last_activity: thread.last_activity,
-         is_recent: thread.last_activity ? (Time.now - thread.last_activity < (86400 * 2)) : false,
+         is_recent: !is_hidden && (thread.last_activity ? (Time.now - thread.last_activity < (86400 * 2)) : false),
+         is_hidden: is_hidden,
          who: thread.characters.map { |c| {
           name: c.name,
           ooc_name: c.ooc_name,

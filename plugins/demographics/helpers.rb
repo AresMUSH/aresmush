@@ -66,7 +66,7 @@ module AresMUSH
           counts[val] = count + 1
         end
       end
-      counts.sort_by { |k,v| [0-v, k] }
+      counts.sort
     end
     
     def self.set_group(char, group_name, group)
