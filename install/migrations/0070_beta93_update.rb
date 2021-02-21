@@ -25,6 +25,14 @@ module AresMUSH
           "torture"
         ]
         DatabaseMigrator.write_config_file("scenes.yml", config)
+        
+        Character.all.each do |c| 
+          c.update(hidden_page_threads: [])
+        end
+        
+        PageThread.all.each do |p|
+          p.update(custom_titles: {})
+        end
       end
     end    
   end
