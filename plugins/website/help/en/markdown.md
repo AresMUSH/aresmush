@@ -81,7 +81,7 @@ There are several social media codes to make it easy to embed playlists, videos 
 
 `[[musicplayer E5TsA6CHpII Description]]`
 `[[pinterest Rreader01/agent-carter]]`
-`[[spotify 37i9dQZEVXbLRQDuF5jeBp]]`
+`[[spotify 37i9dQZEVXbLRQDuF5jeBp linktype]]` - linktype can be 'playlist' (default) or 'track'
 `[[youtube E5TsA6CHpII]]`
 
 ## Collapsible Text

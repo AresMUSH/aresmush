@@ -13,12 +13,7 @@ module AresMUSH
         end
 
         profile_manager = Profile.can_manage_profiles?(enactor)
-        bg_manager = Chargen.can_manage_bgs?(enactor)
-        roster_manager = Idle.can_manage_roster?(enactor)
-        idle_manager = Idle.can_idle_sweep?(enactor)
-        role_manager = Roles.can_assign_role?(enactor)
-        show_admin_tab = idle_manager || roster_manager || role_manager || bg_manager
-        
+
         if (!Profile.can_manage_char_profile?(enactor, char))
           return { error: t('dispatcher.not_allowed') }
         end
@@ -27,23 +22,9 @@ module AresMUSH
           return { error: t('profile.not_yet_approved') }
         end
         
-        demographics = {}
         profile = {}
         relationships = {}
         
-        if (profile_manager)
-          props = Demographics.all_demographics
-        else
-          props = Global.read_config('demographics')['editable_properties']
-        end
-                
-        props.each do |d| 
-          demographics[d.downcase] = 
-            {
-              name: d.titlecase,
-              value: char.demographic(d)
-            }
-        end
                   
         profile = char.profile.sort.each_with_index.map { |(section, data), index| 
           {
@@ -64,31 +45,14 @@ module AresMUSH
           text: Website.format_input_for_html(data['relationship'])
         }}
         
-        roster = {
-            on_roster: char.on_roster?,
-            notes: Website.format_input_for_html(char.roster_notes),
-            contact: char.roster_contact,
-            played: char.roster_played,
-            restricted: char.roster_restricted
-          }
         
         files = Profile.character_page_files(char)
         files = files.sort.map { |f| Website.get_file_info(f) }
         
         
-        {
+        profile_data = {
           id: char.id,
           name: char.name,
-          demographics: demographics,
-          background: Website.format_input_for_html(char.background),
-          show_background_tab: bg_manager,
-          show_roster_tab: roster_manager,
-          show_roles_tab: role_manager,
-          show_idle_tab: idle_manager,
-          show_admin_tab: show_admin_tab,
-          rp_hooks: Website.format_input_for_html(char.rp_hooks),
-          desc: Website.format_input_for_html(char.description),
-          shortdesc: char.shortdesc ? char.shortdesc : '',
           relationships: relationships,
           relationships_category_order: char.relationships_category_order.join(","),
           profile: profile,
@@ -98,16 +62,22 @@ module AresMUSH
           profile_image: char.profile_image ? Website.get_file_info(char.profile_image) : nil,
           profile_icon: char.profile_icon ? Website.get_file_info(char.profile_icon) : nil,
           profile_order: char.profile_order.join(","),
-          bg_shared: char.bg_shared,
-          lastwill: Website.format_input_for_html(char.idle_lastwill),
-          idle_notes: Website.format_input_for_html(char.idle_notes),
-          custom: CustomCharFields.get_fields_for_editing(char, enactor),
-          descs: Describe.get_web_descs_for_edit(char),
-          genders: Demographics.genders,
-          roster: roster,
-          roles: char.roles.map { |r| r.name },
-          all_roles: Role.all.to_a.sort_by { |r| r.name }.map { |r| r.name }
+          custom: CustomCharFields.get_fields_for_editing(char, enactor)
         }
+        
+        add_to_profile profile_data, Demographics.build_web_profile_edit_data(char, enactor, profile_manager)
+        add_to_profile profile_data, Chargen.build_web_profile_edit_data(char, enactor, profile_manager)
+        add_to_profile profile_data, Idle.build_web_profile_edit_data(char, enactor, profile_manager)
+        add_to_profile profile_data, Describe.build_web_profile_edit_data(char, enactor, profile_manager)
+        add_to_profile profile_data, Roles.build_web_profile_edit_data(char, enactor, profile_manager)
+        
+        profile_data
+      end
+      
+      def add_to_profile(profile_data, sections)
+        sections.each do |name, data|
+          profile_data[name] = data
+        end
       end
     end
   end
