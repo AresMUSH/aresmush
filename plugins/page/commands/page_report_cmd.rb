@@ -17,8 +17,7 @@ module AresMUSH
       end
       
       def handle
-        self.names << enactor_name
-        thread = Page.thread_for_names(self.names.uniq)
+        thread = Page.thread_for_names(self.names, enactor)
         if (!thread)
           client.emit_failure t('page.invalid_thread')
           return

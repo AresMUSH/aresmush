@@ -5,10 +5,17 @@ module AresMUSH
     collection :page_messages, "AresMUSH::PageMessage"
     set :characters, "AresMUSH::Character"
     
+    attribute :custom_titles, :type => DataType::Hash, :default => {}
+    
     before_delete :delete_pages
     
     def delete_pages
       self.page_messages.each { |p| p.delete }
+    end
+    
+    def title_customized(viewer)
+      custom = (self.custom_titles || {})["#{viewer.id}"]
+      custom ? custom : title_without_viewer(viewer)
     end
     
     def title
@@ -26,6 +33,10 @@ module AresMUSH
     def last_activity
       last_message = self.sorted_messages.to_a[-1]
       last_message ? last_message.created_at : DateTime.new
+    end
+    
+    def is_hidden?(enactor)
+      (enactor.hidden_page_threads || []).include?("#{self.id}")
     end
   end
   
