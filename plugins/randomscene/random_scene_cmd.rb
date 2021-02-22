@@ -34,11 +34,13 @@ module AresMUSH
           excluded_areas = Global.read_config("randomscene", "excluded_areas")
           Global.logger.debug "EXCLUDED in CONFIG #{excluded_areas}"
           all_excluded_areas = []
-          excluded_areas.each do |area|
-            area = Area.find_one_by_name(area)
-            Area.all.each do |a|
-              if Rooms.has_parent_area(area, a)
-                all_excluded_areas.concat [a.name]
+          Area.all.each do |area|
+            excluded_areas.each do |excluded_area_name|
+              excluded_area = Area.find_one_by_name(excluded_area_name)
+              if Rooms.has_parent_area(area, excluded_area)
+                puts "Area - #{excluded_area.name} / A - #{area.name}"
+                all_excluded_areas.concat [area.name]
+                all_excluded_areas  = all_excluded_areas.uniq
               end
             end
             Global.logger.debug "EXCLUDED #{all_excluded_areas}"
