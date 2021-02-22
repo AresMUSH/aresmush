@@ -367,7 +367,7 @@ spells:
     * Personal knowledge of the portal's opening point. They have visited it themselves and can remember the location.\n
     * The ability to see someone else's memory of the location.\n
     * Magical coordinates of the portal's existence in the magical universe.\n
-    * A realistic depiction of a location in the portal world, created at any time.\n\n
+    * A realistic depiction of a location in the portal world which still exists largely unchanged.\n\n
     When closing a portal, travel, perception, and attacks through it are reduced as the Anchor forces the portal to shrink. When opening a portal, these same effects may increase. Once the spell is completed, the portal is either completely closed or opened and the effect is permanent.\n\n
     If cast on an open portal, the caster can sense the magical coordinates of the portal's existence in the magical universe."
     effect: Travel
