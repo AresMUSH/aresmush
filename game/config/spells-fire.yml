@@ -173,7 +173,7 @@ spells:
     fs3_attack: true
     level: 4
     line_of_sight: true
-    name: Flame Burst
+    name: Flame Breath
     range: Short
     school: Fire
     target_num: 3
