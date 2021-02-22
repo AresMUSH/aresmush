@@ -32,14 +32,18 @@ module AresMUSH
           msg = t('randomscene.random_scenario', :scenario => scenario.sample)
         elsif type == 1
           excluded_areas = Global.read_config("randomscene", "excluded_areas")
+          Global.server.debug "EXCLUDED in CONFIG #{excluded_areas}"
           all_excluded_areas = []
           excluded_areas.each do |area|
             area = Area.find_one_by_name(area)
             Area.all.each do |a|
               if Rooms.has_parent_area(area, a)
-                all_excluded_areas.concat [a.name]
+                all_excluded_areas.concat [area.name]
               end
             end
+            Global.server.debug "EXCLUDED #{all_excluded_areas}"
+            all_excluded_areas.concat excluded_areas
+            Global.server.debug "EXCLUDED #{all_excluded_areas}"
           end
           room_list = Room.all.select { |r| (r.room_type == "IC" && r.area && !all_excluded_areas.include?(r.area_name)) }
           room = room_list.sample
