@@ -147,7 +147,6 @@ spells:
     rounds: 100
     school: Fire
     target_num: 1
-
     weapon_specials: Fire
     weapon: Spell
   Flame Burst:
@@ -163,8 +162,22 @@ spells:
     range: Short
     school: Fire
     target_num: 1
-
     weapon: Flame Burst
+  Flame Breath:
+    available: false
+    area: Direct line from caster, 5 yards wide
+    casting_time: 1 round
+    damage_type: Fire
+    desc: The caster blows a plume of fire away from themselves, the flames extending outward in a cone shape and doing minor fire damage to up to 3 targets.
+    effect: AOE Damage
+    fs3_attack: true
+    level: 4
+    line_of_sight: true
+    name: Flame Burst
+    range: Short
+    school: Fire
+    target_num: 3
+    weapon: Flame Breath
   Potions (Fire):
     desc: The caster has learned the art of potion-making and can craft potions in any school. This is not a spell in the same sense of most, but rather an art learned through study. It takes time, effort, and materials to brew a potion.
     effect: Other

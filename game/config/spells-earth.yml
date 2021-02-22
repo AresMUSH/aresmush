@@ -378,8 +378,19 @@ spells:
     range: Short
     school: Earth
     target_num: 3
-
     weapon: Stun (Earth)
+  Rock Slide:
+    available: false
+    casting_time: 1 round
+    desc: "The caster manipulates dirt, stone, or natural earth to carry themselves at a speed of up to 60 mph. They are able to slide along the surface of any dirt, stone, or natural earth. They can also slide beneath the surface to burrow at the same fast speeds.\n\nWhen burrowing beneath the earth, the caster cannot breathe, limiting their ability to travel or act according to how long they can hold their breath. While beneath the earth, they can detect vibrations in the ground to roughly perceive objects, people, and other aspects of their environment within 5 yards of their person via Seismic Sense (see that spell for further details).\n\nMods to defense and attack may be applied at the GM's discretion according to actions taken while in motion."
+    effect: Travel
+    duration: 1 hour
+    level: 6
+    name: Rock Slide
+    roll: true
+    school: Earth
+    range: Self
+    line_of_sight: true
   Stone Daggers:
     available: true
     casting_time: 1 round
@@ -433,5 +444,5 @@ spells:
     range: Massive
     school: Earth
     target_num: 100
-    
+
     weapon: Massive Quake

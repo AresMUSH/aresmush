@@ -87,7 +87,7 @@ spells:
     name: Mellow
     range: Short
     roll: true
-    school: Corpus    
+    school: Corpus
   Touch Of Enfeeblement:
     attack_mod: -1
     available: true
@@ -633,6 +633,18 @@ spells:
     rounds: 100
     school: Corpus
     target_num: 3
+  Shapeshift Sentinel Jackal:
+    available: false
+    armor: Tough Hide
+    casting_time: 1 round
+    desc: "Allows the caster to transform into a Sentinel Jackal from the Duat, gaining their natural defenses and abilities (improving their sense of hearing, sight, and smell to canine standards and allowing then to form telepathic connections with others) while retaining the ability to cast spells and speak.\n\nMay equip Claws or Teeth."
+    duration: 3 hours
+    effect: Transformation
+    level: 7
+    name: Shapeshift Sentinel Jackal
+    range: Self
+    school: Corpus
+    weapon: Claws
   #Level 8
   Elaborate Shapeshift:
     available: false
