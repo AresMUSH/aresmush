@@ -38,7 +38,7 @@ module AresMUSH
             area = Area.find_one_by_name(area)
             Area.all.each do |a|
               if Rooms.has_parent_area(area, a)
-                all_excluded_areas.concat [area.name]
+                all_excluded_areas.concat [a.name]
               end
             end
             Global.logger.debug "EXCLUDED #{all_excluded_areas}"
