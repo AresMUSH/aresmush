@@ -44,7 +44,7 @@ module AresMUSH
     
     def self.build_web_profile_data(char, viewer)
       {
-        roles: viewer.is_admin? ? char.roles.map { |r| r.name } : nil
+        roles: (viewer && viewer.is_admin?) ? char.roles.map { |r| r.name } : nil
       }
     end
     
