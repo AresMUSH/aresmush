@@ -1,7 +1,7 @@
 ---
 randomscene:
   excluded_areas:
-    - "Grand Lake Homes"
+  - "Grand Lake Homes"
   scenarios:
   - "A case of mistaken identity."
   - "A moose has wandered into town."
