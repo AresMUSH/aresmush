@@ -156,6 +156,58 @@ module AresMUSH
       return bday
     end
     
+    def self.build_web_profile_data(char, viewer)
+      {
+        all_fields: Demographics.build_web_all_fields_data(char, viewer),
+        demographics: Demographics.build_web_demographics_data(char, viewer),
+        groups: Demographics.build_web_groups_data(char)
+      }
+    end
+    
+    def self.build_web_profile_edit_data(char, viewer, is_profile_manager)
+      demographics = {}
+      if (is_profile_manager)
+        props = Demographics.all_demographics
+      else
+        props = Global.read_config('demographics')['editable_properties']
+      end
+              
+      props.each do |d| 
+        demographics[d.downcase] = 
+          {
+            name: d.titlecase,
+            value: char.demographic(d)
+          }
+      end
+      {
+        demographics: demographics,
+        genders: Demographics.genders
+      }
+    end
+    
+    def self.save_web_profile_data(char, enactor, args)            
+      args[:demographics].each do |name, value|
+        if (value.blank? && Demographics.required_demographics.include?(name))
+          return t('webportal.missing_required_field', :name => name) 
+        end
+        if (name == 'birthdate')
+          # Standard db format
+          if (value =~ /\d\d\d\d-\d\d-\d\d/)
+            char.update_demographic name, value
+          # Game-specific format
+          else
+            result = Demographics.set_birthday(char, value)
+            if (result[:error])
+              return result[:error]
+            end
+          end
+        else
+          char.update_demographic name, value
+        end
+      end
+      return nil
+    end
+    
     def self.build_web_demographics_data(char, viewer)
       visible_demographics = Demographics.visible_demographics(char, viewer)
       demographics = visible_demographics.each.map { |d| 
