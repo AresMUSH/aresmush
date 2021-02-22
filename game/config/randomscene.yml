@@ -1,5 +1,7 @@
 ---
 randomscene:
+  excluded_areas:
+  - "Grand Lake Homes"
   scenarios:
   - "A case of mistaken identity."
   - "A moose has wandered into town."
@@ -46,16 +48,13 @@ randomscene:
   - "Trying an exotic food."
   - "Uncontrollable laughter."
   - "Unseasonal weather"
-  - "We shouldn't be here.""
+  - "We shouldn't be here."
   - "Well, that was lucky."
   - "What movie are you watching?"
   - "Wishing star."
   - "Workout equipment is broken."
   - "Wow, that was really loud."
   - "Wow, that was really rude."
-
-
-
   npcs:
   - "A bachelorette party"
   - "A belligerent student"
@@ -84,7 +83,6 @@ randomscene:
   - "An overexcited antiques dealer"
   - "An overwhelmed instructor"
   - "One of the bartenders"
-
   actions:
   - "breaks up a fight"
   - "breaks into a business"
@@ -493,5 +491,3 @@ randomscene:
   - "worry"
   - "write"
   - "yes"
-  excluded_areas:
-  - "Grand Lake Homes"  
