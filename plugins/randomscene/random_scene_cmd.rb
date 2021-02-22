@@ -50,7 +50,7 @@ module AresMUSH
         end
         room = room_list.sample
 
-        type = rand(2)
+        type = rand(3)
         if type == 0
           scenario = Global.read_config("randomscene", "scenarios")
           msg = t('randomscene.random_scenario', :scenario => scenario.sample, :area => room.area.name, :room => room.name)
@@ -62,6 +62,7 @@ module AresMUSH
           end
           msg = t('randomscene.prompt_total', :prompts => prompts, :area => room.area.name, :room => room.name)
         elsif type == 2
+          puts "HELLO NPCS"
           npc_list = Global.read_config("randomscene", "npcs")
           action_list = Global.read_config("randomscene", "actions")
           msg = t('randomscene.npc_scenario', :npc => npc_list.sample, :action => action_list.sample, :area => room.area.name, :room => room.name)
