@@ -167,19 +167,6 @@ module AresMUSH
     end
 
     def self.set_weapon(enactor, combatant, weapon, specials = nil)
-
-      # Set weapon specials gained from equipped magical items
-      specials = Magic.set_magic_item_weapon_specials(combatant, specials)
-
-      # Set weapon specials gained from spells
-
-      if specials && combatant.spell_weapon_effects[weapon]
-        spell_specials = combatant.spell_weapon_effects[weapon].keys
-        specials = specials.concat spell_specials
-      elsif combatant.spell_weapon_effects[weapon]
-        specials = combatant.spell_weapon_effects[weapon].keys
-      end
-
       max_ammo = weapon ? FS3Combat.weapon_stat(weapon, "ammo") : 0
       weapon = weapon ? weapon.titlecase : "Unarmed"
       prior_ammo = combatant.prior_ammo || {}
@@ -206,17 +193,6 @@ module AresMUSH
     end
 
     def self.set_armor(enactor, combatant, armor, specials = nil)
-
-      specials = Magic.set_magic_item_armor_specials(combatant, specials)
-
-      # Set armor specials gained from spells
-      if specials && combatant.spell_armor_effects[armor]
-        spell_specials = combatant.spell_armor_effects[armor].keys
-        specials = specials.concat spell_specials
-      elsif combatant.spell_armor_effects[armor]
-        specials = combatant.spell_armor_effects[armor].keys
-      end
-
       combatant.update(armor_name: armor ? armor.titlecase : nil)
       combatant.update(armor_specials: specials ? specials.map { |s| s.titlecase }.uniq : [])
       message = t('fs3combat.armor_changed', :name => combatant.name, :armor => combatant.armor)

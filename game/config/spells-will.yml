@@ -119,7 +119,6 @@ spells:
     school: Will
     stance: cover
     target_num: 1
-
   Telekinetic Hold:
     available: true
     casting_time: 1 round
