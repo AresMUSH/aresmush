@@ -14,6 +14,7 @@ module AresMUSH
         end
 
         self.spell = self.spell.titlecase
+        # puts "***** #{combatant.name}'s ACTION IS #{self.spell} ON #{targets}'"
 
         # self.target_optional = Global.read_config("spells", self.spell, "target_optional")
         error = self.parse_targets(self.names)
@@ -76,7 +77,8 @@ module AresMUSH
       end
 
       def resolve
-        # puts "TARGET: #{target} #{target.name} COMBATANT: #{combatant} #{combatant.name}"
+
+
         armor = Global.read_config("spells", self.spell, "armor")
         armor_specials_str = Global.read_config("spells", self.spell, "armor_specials")
         attack_mod = Global.read_config("spells", self.spell, "attack_mod")
@@ -121,7 +123,6 @@ module AresMUSH
 
             #Spells roll for success individually because they only do one thing, and need to use different measures of success. Also, because weapon changes are on the caster, not the target.
             targets.each do |target|
-
 
               #Stun
               if is_stun
@@ -231,6 +232,7 @@ module AresMUSH
 
               #Change Stance
               if stance
+                puts "%%%%%%%%%% Combatant #{combatant.name} / Target #{target.name} / Spell #{spell} / Stance #{stance}"
                 message = Magic.cast_stance(combatant, target, spell, damage_type, rounds, stance, succeeds[:result])
                 messages.concat message
               end

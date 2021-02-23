@@ -187,10 +187,11 @@ module AresMUSH
 
           initiative_order.each do |id|
             c = Combatant[id]
+            puts "WHAT IS HAPPENING #{c.name} has #{c.action} set"
             next if !c.action
             next if c.is_noncombatant?
 
-            combat.log "Action #{c.name} #{c.action ? c.action.print_action_short : "-"} #{c.is_noncombatant?}"
+            combat.log "Action: #{c.name} #{c.action ? c.action.print_action_short : "-"} / Noncombatant? #{c.is_noncombatant?}"
 
             messages = c.action.resolve
             all_messages.concat messages
