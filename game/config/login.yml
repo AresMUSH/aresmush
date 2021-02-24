@@ -1,6 +1,6 @@
 ---
 login:
-  allow_web_registration: true
+  allow_web_registration: false
   guest_role: guest
   use_terms_of_service: false
   activity_cron:
@@ -30,9 +30,9 @@ login:
     kick: boot
     password/change: password/set
     notice: notices
-  allow_creation: true
+  allow_creation: false
   login_not_allowed_message: Logins for unapproved characters is turned off at the
-    moment, as Spirit Lake is currently in an app pause.  We'll be accepting applications again on January 14.
+    moment, as Spirit Lake is currently in an app pause.  We'll be accepting applications again on March 31.
   creation_not_allowed_message: Sorry, Spirit Lake is full. Watch the website to see
     when we're accepting applications again.
   portal_requires_registration: false
