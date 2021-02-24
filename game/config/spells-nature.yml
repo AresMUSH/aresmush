@@ -264,7 +264,7 @@ spells:
   Animal Friendship:
     available: true
     casting_time: 1 round
-    desc: 'The caster may befriend and converse with a single non-sapient creature for a time. The pair forms a mental bond which allows the animal to communicate and provide specific answers to questions within the limits of their experience and intelligence. Outside observers see only the usual animalistic modes of communication, including verbalization and body language. Animals react favorably to the caster, but maintain their animal instincts, intellectual capacity, memory, and priorities.'
+    desc: "The caster may befriend and converse with a single non-sapient creature for a time. The pair forms a mental bond which allows the animal to communicate and provide specific answers to questions within the limits of their experience and intelligence. \n\nMost animals do not think in words, but communicate using feelings, images, and sensations. Highly intelligent animals may communicate in simple phrases. Outside observers see only the usual animalistic modes of communication, including verbalization and body language.\n\nAnimals are unaggressive toward the caster, but maintain their animal instincts, intellectual capacity, memory, and priorities. This may include aggressive behavior toward others nearby."
     duration: 3 hours
     effect: Communication
     level: 4
