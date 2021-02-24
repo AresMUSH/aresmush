@@ -5,6 +5,6 @@
 <p>In the shadow of the Rocky Mountains lies a little town that is rediscovering its history.</p>
 <p>And its <a href="/wiki/magic">magic.</a></p>
 <p>Welcome to <a href="/wiki/about_us">Spirit Lake.</a></p>
-<p style"font-size:125%; font-weight:"bold">Applications are currently closed. We will begin accepting applications again on March 31.</p>
+<p style="font-size: 125%; font-weight:"bold">Applications are currently closed. We will begin accepting applications again on March 31.</p>
 <p><i>Interested in joining us? <a href="/wiki/guides:join_us">Start here!</a></i></p>
 <hr>
