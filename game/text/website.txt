@@ -7,3 +7,5 @@
 <p>Welcome to <a href="/wiki/about_us">Spirit Lake.</a></p>
 <p><i>Interested in joining us? <a href="/wiki/guides:join_us">Start here!</a></i></p>
 <hr>
+<p style="font-size: 145%; font-weight:bold;">Applications are currently closed. We will begin accepting applications again on March 31.</p>
+<hr>
