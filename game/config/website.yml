@@ -87,9 +87,6 @@ website:
       title: Magical Items
       id: magical_items
     - route: wiki-page
-      title: Magical Orders
-      id: magical_orders
-    - route: wiki-page
       title: Portals
       id: portals
     - route: wiki-page
