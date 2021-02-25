@@ -288,8 +288,8 @@ magic-items:
     - Simple Illusion
     - Fire Starter
   #Rowan's Hook
-  Bealtaine’s Reaver:
-    name: Bealtaine’s Reaver
+  Bealtaine's Reaver:
+    name: Bealtaine's Reaver
     desc: "A one-handed battle axe, the head of which is forged from a superb steel that has lasted many an age. Polished and shined to reflect light on its surface, the cutting edge of the blade is curved and deadly, the bottom of the cutting edge extended into hook shape, designed for grabbing enemy shields. Delicate images have been tooled onto the metal: Faeries astride strapping horses that pursue game through the forest and a burst of flame, leaves whirling through the wind, and other depictions of magic are shown in the hunt. The overall effect has a degree of dark whimsy—beautiful, but clear this is a warrior's weapon and not a child's plaything. The slightly curved handle is made up of a dark wood wrapped in leather to provide a strong grip with the weapon's name carved into the wood in faerie runes. The axe hits true and allows the bearer to cast %xBIntermediate Telekinesis%xn."
     spells:
     - Intermediate Telekinesis
