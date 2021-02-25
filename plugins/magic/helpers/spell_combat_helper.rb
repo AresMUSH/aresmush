@@ -141,19 +141,23 @@ module AresMUSH
       combatant.update(spell_armor_effects:armor_specials)
     end
 
-    def self.set_spell_weapon(enactor, combatant, weapon, specials = nil)
-
+    def self.set_magic_weapon_specials(enactor, combatant, weapon)
       # Set weapon specials gained from equipped magical items
       specials = Magic.set_magic_item_weapon_specials(combatant, specials)
 
       # Set weapon specials gained from spells
-
       if specials && combatant.spell_weapon_effects[weapon]
         spell_specials = combatant.spell_weapon_effects[weapon].keys
         specials = specials.concat spell_specials
       elsif combatant.spell_weapon_effects[weapon]
         specials = combatant.spell_weapon_effects[weapon].keys
       end
+      return specials
+    end
+
+    def self.set_spell_weapon(enactor, combatant, weapon, specials = nil)
+
+      specials = Magic.set_magic_weapon_specials(enactor, combatant, weapon)
 
       max_ammo = weapon ? FS3Combat.weapon_stat(weapon, "ammo") : 0
       weapon = weapon ? weapon.titlecase : "Unarmed"

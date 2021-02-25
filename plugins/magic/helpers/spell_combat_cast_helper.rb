@@ -74,10 +74,10 @@ module AresMUSH
       lethal_mod = Global.read_config("spells", spell, "lethal_mod")
       defense_mod = Global.read_config("spells", spell, "defense_mod")
       spell_mod = Global.read_config("spells", spell, "spell_mod")
-      Magic.set_spell_weapon_effects(target, spell)
       attack_mod = Global.read_config("spells", spell, "attack_mod")
       wound = FS3Combat.worst_treatable_wound(target.associated_model)
       weapon = target.weapon.before("+")
+      Magic.set_spell_weapon_effects(target, spell)
       Magic.set_spell_weapon(enactor = nil, target, weapon, [weapon_specials_str])
       if (heal_points && wound)
         message = []
