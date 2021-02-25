@@ -111,7 +111,7 @@ fs3combat:
       init_mod: 0
       is_magic: true
     #LORE HOOKS
-    Bealtaine’s Reaver:
+    Bealtaine's Reaver:
       dsecription: A magical axe imbued with unnatural accuracy, which always returns to its owner. Owned by Rowan.
       skill: Melee
       lethality: 0
