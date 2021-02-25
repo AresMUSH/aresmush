@@ -308,7 +308,6 @@ spells:
     roll: true
     school: Spirit
     target_num: 1
-
   Group Comprehend Languages:
     available: true
     casting_time: 1 round
@@ -323,7 +322,6 @@ spells:
     roll: true
     school: Spirit
     target_num: 3
-
   Share Sensation:
     available: true
     casting_time: 1 round
@@ -336,8 +334,6 @@ spells:
     roll: true
     school: Spirit
     target_num: 1
-
-    effect: Psionic
 #Level 4
   Group Telepathic Correspondence:
     available: true
@@ -352,7 +348,6 @@ spells:
     roll: true
     school: Spirit
     target_num: 4
-
   Mind Shield:
     available: true
     casting_time: 1 round
@@ -365,7 +360,6 @@ spells:
     range: Short
     school: Spirit
     target_num: 1
-
     duration: 30 minutes
     rounds: 180
   Potions (Spirit):
@@ -474,7 +468,6 @@ spells:
     school: Spirit
     spell_mod: -2
     target_num: 1
-
   Medium Luck:
     attack_mod: 2
     available: true
@@ -492,7 +485,6 @@ spells:
     school: Spirit
     spell_mod: 2
     target_num: 1
-
   Memory Dive:
     available: true
     casting_time: "1+ rounds at GM\u2019s discretion."
@@ -549,7 +541,6 @@ spells:
     roll: true
     school: Spirit
     target_num: 3
-
   Telepathic Link:
     area: 150 mile radius
     available: true
@@ -563,7 +554,6 @@ spells:
     range: Short
     roll: true
     school: Spirit
-
     target_num: 1
 #LEVEL SIX
   Bewitch:
@@ -635,7 +625,6 @@ spells:
     roll: true
     school: Spirit
     target_num: 3
-
     weapon: Stun (Spirit)
   Mass Charmed:
     available: false
@@ -651,7 +640,6 @@ spells:
     roll: true
     school: Spirit
     target_num: 3
-
   Rewrite Memory:
     available: true
     casting_time: "1 round to cast, additional rounds for rewriting at GM's discretion."
@@ -681,7 +669,6 @@ spells:
     rounds: 90
     school: Spirit
     target_num: 1
-
   #LEVEL 7
   Clarity:
     available: true
@@ -747,7 +734,6 @@ spells:
     roll: true
     school: Spirit
     target_num: 1
-
   Group Dampen Magic:
     available: false
     casting_time: 1 round
@@ -816,7 +802,6 @@ spells:
     roll: true
     school: Spirit
     target_num: 1
-
     #Level 8
   Binding Oath:
     available: false
@@ -832,7 +817,6 @@ spells:
     roll: true
     school: Spirit
     target_num: 1
-
   Create Librarian:
     available: false
     casting_time: 1 hour

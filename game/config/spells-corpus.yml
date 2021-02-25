@@ -243,13 +243,9 @@ spells:
     level: 4
     line_of_sight: true
     name: Impair
-    notes: Desc on this probably needs fixed to match others.  Also needs tested to
-      see if level is appropriate
     range: Short
-    roll: false
     school: Corpus
     target_num: 1
-
   Minor Group Heal:
     area: 10 yard radius
     available: true
@@ -263,7 +259,6 @@ spells:
     range: Short
     school: Corpus
     target_num: 3
-
   Potions (Corpus):
     desc: The caster has learned the art of potion-making and can craft potions in any school. This is not a spell in the same sense of most, but rather an art learned through study. It takes time, effort, and materials to brew a potion.
     effect: Other
@@ -286,7 +281,6 @@ spells:
     rounds: 100
     school: Corpus
     target_num: 1
-
     weapon_specials: Vitality
     weapon: Spell
   #Level 5
@@ -303,7 +297,6 @@ spells:
     range: Long
     rounds: 2
     target_num: 1
-
     school: Corpus
   Grow Self:
     available: true
@@ -331,7 +324,6 @@ spells:
     range: Short
     school: Corpus
     target_num: 1
-
   Shrink Self:
     available: true
     casting_time: 1 round
@@ -356,7 +348,6 @@ spells:
     range: Touch
     roll: true
     school: Corpus
-
     target_num: 1
     weapon: Demon Tails
   Familiar (Corpus):
@@ -383,7 +374,6 @@ spells:
     rounds: 100
     school: Corpus
     target_num: 1
-
     weapon_specials: Fatal Vitality
     weapon: Spell
   Fortified Body:
@@ -533,7 +523,6 @@ spells:
     roll: true
     school: Corpus
     target_num: 1
-
   Extreme Speed:
     available: true
     casting_time: 1 round
@@ -572,7 +561,6 @@ spells:
     roll: false
     school: Corpus
     target_num: 3
-
   Incorporeal:
     available: true
     casting_time: 1 Round
@@ -584,7 +572,7 @@ spells:
     level: 7
     name: Incorporeal
     range: Self
-    roll: false
+    roll: true
     school: Corpus
     target_num: 1
   Mass Impair:
@@ -600,10 +588,8 @@ spells:
     notes: Desc on this probably needs fixed to match others.  Also needs tested to
       see if level is appropriate
     range: Long
-    roll: false
     school: Corpus
     target_num: 3
-
   Miasma:
     attack_mod: -3
     available: true
@@ -619,7 +605,6 @@ spells:
     rounds: 3
     school: Corpus
     target_num: 3
-
   Necromancy:
     available: false
     casting_time: 1 Round
@@ -656,7 +641,6 @@ spells:
     range: Short
     roll: true
     school: Corpus
-
     target_num: 1
   Meld:
     available: false
