@@ -187,7 +187,6 @@ module AresMUSH
 
           initiative_order.each do |id|
             c = Combatant[id]
-            puts "WHAT IS HAPPENING #{c.name} has #{c.action} set"
             next if !c.action
             next if c.is_noncombatant?
 

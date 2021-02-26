@@ -5,7 +5,7 @@ module AresMUSH
       include TemplateFormatters
 
       def handle
-        template = GearListTemplate.new FS3Combat.mundane_weapons, t('fs3combat.weapons_title')
+        template = GearListTemplate.new Magic.mundane_weapons, t('fs3combat.weapons_title')
         client.emit template.render
       end
     end

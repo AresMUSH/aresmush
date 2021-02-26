@@ -42,10 +42,7 @@ module AresMUSH
       end
 
       def handle
-
-        if Magic.is_magic_weapon(self.weapon)
-          FS3Combat.emit_to_combat(enactor.combat, t('magic.cast_to_use', :name => self.weapon))
-        end
+        Magic.warn_if_magic_gear(enactor, self.weapon)
         self.names.each do |name|
           FS3Combat.with_a_combatant(name, client, enactor) do |combat, combatant|
             FS3Combat.set_weapon(enactor, combatant, self.weapon, self.specials)

@@ -25,24 +25,6 @@ module AresMUSH
       return message
     end
 
-    # def self.cast_endure_fire(combatant, target, spell, rounds, result)
-    #   shield_strength = result
-    #   target.update(endure_fire: shield_strength)
-    #   target.update(endure_fire_counter: rounds)
-    #   combatant.log "Setting #{target.name}'s Endure Fire to #{target.endure_fire}"
-    #   message = [t('magic.cast_shield', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target =>  target.name, :type => "fire")]
-    #   return message
-    # end
-    #
-    # def self.cast_endure_cold(combatant, target, spell, rounds, result)
-    #   shield_strength = result
-    #   target.update(endure_cold: shield_strength)
-    #   target.update(endure_cold_counter: rounds)
-    #   combatant.log "Setting #{target.name}'s Endure Cold to #{target.endure_cold}"
-    #   message = [t('magic.cast_shield', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target =>  target.name, :type => "cold")]
-    #   return message
-    # end
-
     def self.cast_combat_heal(combatant, target, spell, heal_points)
       wound = FS3Combat.worst_treatable_wound(target.associated_model)
       if wound.blank?
@@ -363,7 +345,6 @@ module AresMUSH
 
     def self.cast_attack_target(combatant, target, called_shot = nil, result)
         return [ t('fs3combat.has_no_target', :name => combatant.name) ] if !target
-
         margin = Magic.determine_magic_attack_margin(combatant, target, result = result, combatant.weapon)
 
         # Update recoil after determining the attack success but before returning out for a miss
@@ -373,7 +354,6 @@ module AresMUSH
         return [margin[:message]] if !margin[:hit]
 
         weapon = combatant.weapon
-
         attacker_net_successes = margin[:attacker_net_successes]
 
         FS3Combat.resolve_attack(combatant, combatant.name, target, weapon, attacker_net_successes, called_shot)

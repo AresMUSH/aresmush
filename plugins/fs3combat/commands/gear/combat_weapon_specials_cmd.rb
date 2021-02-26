@@ -29,6 +29,7 @@ module AresMUSH
           target_combat.update(spell_weapon_specials: [])
           client.emit_success t('custom.updated_weapon_specials', :target => target_combat.name, :specials => "None")
         else
+          #MAGIC - putting this here so I remember to move it.
           target_combat.update(spell_weapon_specials: specials ? specials.map { |s| s.titlecase }.uniq : [])
           client.emit_success t('custom.updated_weapon_specials', :target => target_combat.name, :specials => target_combat.spell_weapon_specials.join(", "))
         end
