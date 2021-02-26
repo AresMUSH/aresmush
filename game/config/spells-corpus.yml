@@ -362,7 +362,7 @@ spells:
     line_of_sight: true
     available: true
   Fatal Vitality Weapon:
-    available: false
+    available: true
     casting_time: 1 round
     desc: Augment one specified pre-existing weapon with the power of life and death. The weapon becomes more lethal, and when the spell is cast, a medium amount of healing energy is restored to the wielder.
     duration: 6 hours

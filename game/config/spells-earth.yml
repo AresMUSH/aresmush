@@ -361,7 +361,7 @@ spells:
     casting_time: 1 round
     range: Short
     line_of_sight: true
-    available: false
+    available: true
   Quicksand:
     area: 2.5 ft radius
     available: true
