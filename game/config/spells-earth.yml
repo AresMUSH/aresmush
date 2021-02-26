@@ -324,11 +324,11 @@ spells:
     target_num: 1
   Dust Devils:
     attack_mod: -2
-    available: false
+    available: true
     casting_time: 1 round
     defense_mod: -2
     desc: "The caster swirls small clouds of dirt around up to three targets, obscuring their vision and making it harder for them to attack or defend."
-    duration: 1 round
+    duration: 2 rounds
     effect: Debuff
     level: 6
     line_of_sight: true
@@ -361,7 +361,7 @@ spells:
     casting_time: 1 round
     range: Short
     line_of_sight: true
-    available: false
+    available: true
   Quicksand:
     area: 2.5 ft radius
     available: true

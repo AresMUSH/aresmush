@@ -12,7 +12,6 @@ spells:
     school: Nature
     target_num: 5
     weapon: Sharp Teeth
-    effect: Damage
   Dire wolf Claws:
     available: false
     casting_time: 1 round
@@ -217,7 +216,6 @@ spells:
     rounds: 1
     level: 3
     name: Swarm
-    notes: Configured without the damage aspect.
     range: Short
     school: Nature
     target_num: 1
