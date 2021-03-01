@@ -1,6 +1,6 @@
 module AresMUSH
   module Magic
-    class CharSpellsRequestHandler
+    class CharSpellListRequestHandler
       def handle(request)
         char = Character.find_one_by_name request.args[:id]
         enactor = request.enactor
