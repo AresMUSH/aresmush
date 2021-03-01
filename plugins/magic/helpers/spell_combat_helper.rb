@@ -76,12 +76,9 @@ module AresMUSH
         message = t('fs3combat.attack_near_miss', :name => combatant.name, :target => target.name, :weapon => weapon)
       elsif (stopped_by_cover)
         message = t('fs3combat.attack_hits_cover', :name => combatant.name, :target => target.name, :weapon => weapon)
-      elsif stopped_by_shield == "Endure Fire Held"
-        message = t('custom.shield_held', :name => combatant.name, :spell => combatant.weapon, :mod => "", :shield => "Endure Fire", :target => target.name)
-      elsif stopped_by_shield == "Endure Cold Held"
-        message = t('custom.shield_held', :name => combatant.name, :spell => combatant.weapon, :mod => "", :shield => "Endure Cold", :target => target.name)
-      elsif stopped_by_shield == "Mind Shield Held"
-        message = t('custom.shield_held', :name => combatant.name, :spell => combatant.weapon, :mod => "", :shield => "Mind Shield", :target => target.name)
+      elsif stopped_by_shield
+        message = stopped_by_shield[:msg]
+        hit = stopped_by_shield[:hit]
       elsif (attacker_net_successes < 0)
         # Only can evade when being attacked by melee or when in a vehicle.
         if (weapon_type == 'Melee' || target.is_in_vehicle?)
@@ -94,15 +91,11 @@ module AresMUSH
             message = t('fs3combat.attack_near_miss', :name => combatant.name, :target => target.name, :weapon => weapon)
         end
       else
-        if stopped_by_shield == "Mind Shield Failed"
-          message = [t('magic.mind_shield_failed', :name => combatant.name, :spell => spell, :mod => "", :shield => "Mind Shield", :target => target.name, :succeeds => "%xgSUCCEEDS%xn")]
-        end
         hit = true
       end
 
       combatant.log "ATTACK MARGIN: called=#{called_shot} " +
       "attack=#{attack_roll} defense=#{defense_roll} hit=#{hit} cover=#{stopped_by_cover} shield=#{stopped_by_shield} result=#{message}"
-
       {
         message: message,
         hit: hit,
@@ -124,6 +117,12 @@ module AresMUSH
         weapon_specials[weapon] = {special => rounds}
       end
       combatant.update(spell_weapon_effects: weapon_specials)
+    end
+
+    def self.warn_if_magic_gear(enactor, gear)
+      if Magic.is_magic_armor(gear) || Magic.is_magic_weapon(gear)
+        FS3Combat.emit_to_combat(enactor.combat, t('magic.cast_to_use', :name => gear))
+      end
     end
 
     def self.spell_armor_effects(combatant, spell)

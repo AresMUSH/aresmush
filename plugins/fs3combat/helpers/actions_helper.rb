@@ -483,29 +483,11 @@ module AresMUSH
         melee_damage_mod = [(strength_roll - 1) * 5, 0].max
       end
 
-      if weapon == "Cold Shrapnel"
-        damage_type = "Cold"
-      elsif weapon == "Fire Shrapnel"
-        damage_type = "Fire"
-      else
-        damage_type = Global.read_config("spells", weapon, "damage_type")
-      end
+      damage_type = Magic.spell_damage_type(weapon)
+      shield_mods = Magic.shield_mods(target, damage_type)
 
-      if (damage_type == "Fire" && target.endure_fire > 0)
-        math = target.endure_fire * 5
-        endure_fire_mod = -20 - math
-        endure_cold_mod = 0
-      elsif (damage_type == "Cold" && target.endure_cold > 0)
-        math = target.endure_cold * 5
-        endure_cold_mod = -20 - math
-        endure_fire_mod = 0
-      else
-        endure_cold_mod = 0
-        endure_fire_mod = 0
-      end
-
-      total_damage_mod = hit_mod + melee_damage_mod + attack_luck_mod - defense_luck_mod - armor + endure_fire_mod + endure_cold_mod
-      target.log "Damage modifiers: attack_luck=#{attack_luck_mod} hit=#{hit_mod} melee=#{melee_damage_mod} defense_luck=#{defense_luck_mod} armor=#{armor} endure_fire_mod=#{endure_fire_mod} endure_cold_mod=#{endure_cold_mod} total=#{total_damage_mod}"
+      total_damage_mod = hit_mod + melee_damage_mod + attack_luck_mod - defense_luck_mod - armor + shield_mods
+      target.log "Damage modifiers: attack_luck=#{attack_luck_mod} hit=#{hit_mod} melee=#{melee_damage_mod} defense_luck=#{defense_luck_mod} armor=#{armor} shield_mods=#{shield_mods} total=#{total_damage_mod}"
 
 
       damage = FS3Combat.determine_damage(target, hitloc, weapon, total_damage_mod, crew_hit)
@@ -525,22 +507,7 @@ module AresMUSH
 
       target.add_stress(1)
 
-      messages = []
-
-      if (damage_type == "Fire" && target.endure_fire > 0)
-        if weapon == "Fire Shrapnel"
-          messages.concat [t('magic.shrapnel_shield_failed', :name => attack_name, :weapon => weapon, :mod => "", :shield => "Endure Fire", :target => target.name)]
-        else
-          messages.concat [t('magic.shield_failed', :name => attack_name, :spell => weapon, :mod => "", :shield => "Endure Fire", :target => target.name)]
-        end
-      elsif (damage_type == "Cold" && target.endure_cold > 0)
-        if weapon == "Cold Shrapnel"
-          messages.concat [t('magic.shrapnel_shield_failed', :name => attack_name, :weapon => weapon, :mod => "", :shield => "Endure Cold", :target => target.name)]
-        else
-          messages.concat [t('magic.shield_failed', :name => attack_name, :spell => weapon, :mod => "", :shield => "Endure Cold", :target => target.name)]
-        end
-      end
-
+      messages = Magic.shield_failed_msgs(target, damage_type, weapon, attack_name)
 
       weapon_type = FS3Combat.weapon_stat(weapon, 'weapon_type')
       if (weapon_type == "Explosive")
