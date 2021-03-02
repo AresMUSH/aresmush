@@ -16,10 +16,6 @@ module AresMUSH
         if (!category)
           return { error: t('webportal.not_found') }
         end
-        
-        if (!Forum.can_read_category?(enactor, category))
-          return { error: t('forum.cannot_access_category') }
-        end
 
         prefs = Forum.get_forum_prefs(enactor, category)
         if (!prefs)

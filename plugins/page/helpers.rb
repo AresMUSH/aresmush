@@ -104,13 +104,13 @@ module AresMUSH
 
       everyone.each do |char| 
         next if char == enactor   
-        Login.notify(char, :pm, t('page.new_pm', :thread => thread.title_without_viewer(char)), thread.id, "", false)
+        Login.notify(char, :pm, t('page.new_pm', :thread => thread.title_customized(char)), thread.id, "", false)
       end
       
       # Can't use notify_web_clients here because the notification is different for each person.
       Global.dispatcher.spawn("Page notification", nil) do
-        everyone.each do |char|    
-          title = thread.title_without_viewer(char)
+        everyone.each do |char|          
+          title = thread.title_customized(char)
           data = {
             id: thread.id,
             key: thread.id,
@@ -134,9 +134,13 @@ module AresMUSH
       PageThread.all.select { |t| (t.characters.map { |c| c.id }.sort == chars.map { |c| c.id }.sort) }.first
     end
     
-    def self.thread_for_names(names)
+    def self.thread_for_names(names, enactor)
+      thread = enactor.page_threads.first { |t| t.title_customized(enactor).upcase == names.join(" ").upcase}
+      return thread if thread
+      
+      all_names = names.concat([enactor.name]).uniq
       chars = []
-      names.each do |name|
+      all_names.each do |name|
         char = Character.named(name)
         if (!char)
           return nil
@@ -174,7 +178,7 @@ module AresMUSH
     def self.report_page_abuse(enactor, thread, messages, reason)
       log = messages.map { |m| "  [#{OOCTime.local_long_timestr(enactor, m.created_at)}] #{m.message}"}.join("%R")
       
-      body = t('page.page_reported_body', :name => thread.title_without_viewer(enactor), :reporter => enactor.name)
+      body = t('page.page_reported_body', :name => thread.title_customized(enactor), :reporter => enactor.name)
       body << reason
       body << "%R"
       body << log

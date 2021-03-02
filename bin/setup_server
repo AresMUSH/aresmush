@@ -12,7 +12,7 @@ add-apt-repository -y ppa:chris-lea/redis-server
 
 apt-get -y update
 apt-get -y install dialog apt-utils
-apt-get -y upgrade
+apt-get -y -o Dpkg::Options::="--force-confnew" upgrade
 
 # #########################################################################################
 

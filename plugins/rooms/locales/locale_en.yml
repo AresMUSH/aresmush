@@ -17,6 +17,8 @@ en:
        exit_linked: "The exit now leads to %{room}."
        exit_source_linked: "The exit now leads from %{room} to here."
        exit_unlinked: "Exit unlinked."
+       cant_open_exit_to_temp_room: "You can't link an exit to a temporary room."
+       destination_not_found: "Destination not found."
        
        meetme_target_missing: "You didn't invite anyone!"
        no_meetme_invite: "Nobody has asked you to meet them."
