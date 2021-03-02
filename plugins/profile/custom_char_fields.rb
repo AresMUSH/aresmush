@@ -15,6 +15,7 @@ module AresMUSH
       def self.get_fields_for_viewing(char, viewer)
         spells = Magic.spell_list_all_data(char.spells_learned)
         return {
+          test: "Testing",
           spells: spells,
           major_spells: Magic.major_school_spells(char, spells),
           minor_spells: Magic.minor_school_spells(char, spells),

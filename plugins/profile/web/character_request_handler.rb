@@ -60,6 +60,15 @@ module AresMUSH
         end
 
         profile_data = {
+          #---CUSTOM PIECES---
+          comps: Compliments.get_comps(char),
+          lore_hook_name: char.lore_hook_name,
+          lore_hook_desc: char.lore_hook_desc,
+          lore_hook_item: Lorehooks.lore_hook_type(char)[:item],
+          lore_hook_pet: Lorehooks.lore_hook_type(char)[:pet],
+          lore_hook_ancestry: Lorehooks.lore_hook_type(char)[:ancestry],
+          plot_prefs: Website.format_markdown_for_html(char.plot_prefs),
+          #---END CUSTOM PIECES---
           id: char.id,
           name: char.name,
           name_and_nickname: Demographics.name_and_nickname(char),
@@ -80,14 +89,6 @@ module AresMUSH
           show_notes: char == enactor || Utils.can_manage_notes?(enactor),
           siteinfo: siteinfo,
           custom: CustomCharFields.get_fields_for_viewing(char, enactor),
-          #---CUSTOM PIECES---
-          comps: Compliments.get_comps(char),          
-          lore_hook_name: char.lore_hook_name,
-          lore_hook_desc: char.lore_hook_desc,
-          lore_hook_item: Lorehooks.lore_hook_type(char)[:item],
-          lore_hook_pet: Lorehooks.lore_hook_type(char)[:pet],
-          lore_hook_ancestry: Lorehooks.lore_hook_type(char)[:ancestry],
-          plot_prefs: Website.format_markdown_for_html(char.plot_prefs),
         }
 
         add_to_profile profile_data, Demographics.build_web_profile_data(char, enactor)
