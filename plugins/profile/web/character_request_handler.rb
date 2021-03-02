@@ -59,9 +59,20 @@ module AresMUSH
           siteinfo = nil
         end
 
+        spells = Magic.spell_list_all_data(char.spells_learned)
+
         profile_data = {
           #---CUSTOM PIECES---
           comps: Compliments.get_comps(char),
+          spells: spells,
+          major_spells: Magic.major_school_spells(char, spells),
+          minor_spells: Magic.minor_school_spells(char, spells),
+          other_spells: Magic.other_spells(char, spells),
+          major_school: char.group("Major School"),
+          minor_school: char.group("Minor School"),
+          magic_items: Magic.get_magic_items(char),
+          potions: Magic.get_potions(char),
+          potions_creating: Magic.get_potions_creating(char),
           lore_hook_name: char.lore_hook_name,
           lore_hook_desc: char.lore_hook_desc,
           lore_hook_item: Lorehooks.lore_hook_type(char)[:item],
