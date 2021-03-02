@@ -82,5 +82,11 @@ module AresMUSH
         type_icon: icon_types["#{data[:type]}"] || "fa-question"
       }}
     end
+    
+    def self.build_web_profile_data(char, viewer)
+      {
+        achievements: Achievements.is_enabled? ? Achievements.build_achievements(char) : nil
+      }
+    end
   end
 end

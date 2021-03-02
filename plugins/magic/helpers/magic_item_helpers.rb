@@ -85,5 +85,16 @@ module AresMUSH
       end
     end
 
+    def self.get_magic_items(char)
+      list = char.magic_items
+      puts "List #{list}"
+      list.map { |i|
+        {
+          name: i,
+          desc:  Website.format_markdown_for_html(Magic.item_desc(i))
+        }}
+    end
+
+
   end
 end

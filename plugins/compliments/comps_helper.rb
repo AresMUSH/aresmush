@@ -10,5 +10,16 @@ module AresMUSH
       end
     end
 
+    def self.get_comps(char)
+      list = char.comps
+      list = list.to_a.sort_by { |c| c.created_at }.reverse
+      list[0...10].map { |c|
+        {
+          from: c.from,
+          msg:  Website.format_markdown_for_html(c.comp_msg),
+          date: OOCTime.format_date_for_entry(c.created_at)
+        }}
+    end
+
   end
 end
