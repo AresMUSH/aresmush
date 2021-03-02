@@ -34,6 +34,25 @@ module AresMUSH
       char.potions_has.select { |a| a.name == potion }.first
     end
 
+    def self.get_potions(char)
+      list = char.potions_has
+      list.to_a.sort_by { |a| a.name }
+        .each_with_index
+          .map do |a, i|
+            "#{ a.name }"
+      end
+    end
+
+    def self.get_potions_creating(char)
+      list = char.potions_creating
+      list.to_a.sort_by { |a| a.name }
+        .each_with_index
+          .map do |a, i|
+            "#{ a.name }"
+      end
+    end
+
+
     def self.handle_potions_made_achievement(char)
       char.update(potions_made: char.potions_made + 1)
       [ 1, 10, 20, 50, 100, 200 ].each do |count|

@@ -66,5 +66,11 @@ module AresMUSH
       
       groups_data['all_ranks'] = Global.read_config('ranks', 'ranks')
     end
+    
+    def self.build_web_profile_data(char, viewer)
+      {
+        military_name: Ranks.military_name(char)
+      }
+    end
   end
 end

@@ -125,15 +125,15 @@ module AresMUSH
       when "searchSpells"
         return SearchSpellsRequestHandler
       when "getSpellDamage"
-        return GetSpellDamageRequestHandler     
+        return GetSpellDamageRequestHandler
       when "getSpellEffects"
         return GetSpellEffectsRequestHandler
       when "getSchools"
         return GetSchoolsRequestHandler
       when "addSceneSpell"
         return AddSceneSpellRequestHandler
-      when "charSpells"
-        return CharSpellsRequestHandler
+      when "charSpellList"
+        return CharSpellListRequestHandler
       end
       nil
     end

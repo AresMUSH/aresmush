@@ -390,18 +390,9 @@ module AresMUSH
         message = t('fs3combat.attack_hits_mount', :name => combatant.name, :target => target.name, :weapon => weapon, :effect => mount_effect)
       elsif (stopped_by_cover)
         message = t('fs3combat.attack_hits_cover', :name => combatant.name, :target => target.name, :weapon => weapon)
-      elsif stopped_by_shield == "Endure Fire Held"
-        if weapon == "Fire Shrapnel"
-          message = t('magic.shrapnel_shield_held', :name => combatant.name, :weapon => combatant.weapon, :mod => "", :shield => "Endure Fire", :target => target.name)
-        else
-          message = t('magic.shield_held', :name => combatant.name, :spell => combatant.weapon, :mod => "", :shield => "Endure Fire", :target => target.name)
-        end
-      elsif stopped_by_shield == "Endure Cold Held"
-        if weapon == "Cold Shrapnel"
-          message = t('magic.shrapnel_shield_held', :name => combatant.name, :weapon => combatant.weapon, :mod => "", :shield => "Endure Cold", :target => target.name)
-        else
-          message = t('magic.shield_held', :name => combatant.name, :spell => combatant.weapon, :mod => "", :shield => "Endure Cold", :target => target.name)
-        end
+      # elsif stopped_by_shield
+      #   message = stopped_by_shield[:msg]
+      #   hit = stopped_by_shield[:hit]
       elsif (attacker_net_successes < 0)
         # Only can evade when being attacked by melee or when in a vehicle.
         if (weapon_type == 'Melee' || target.is_in_vehicle?)
