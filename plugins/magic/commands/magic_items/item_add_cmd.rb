@@ -13,7 +13,7 @@ module AresMUSH
       end
 
       def check_can_set
-        return t('dispatcher.not_allowed') if !enactor.has_permission?(control_npcs)
+        return t('dispatcher.not_allowed') if !enactor.has_permission?("control_npcs")
       end
 
       def check_errors
