@@ -23,7 +23,7 @@ module AresMUSH
           name: combatant.name,
           combatant_type: combatant.combatant_type,
           weapon: combatant.weapon_name,
-          weapon_specials: AresMUSH::FS3Combat.mundane_weapon_specials.keys.map { |k| {
+          weapon_specials: AresMUSH::Magic.mundane_weapon_specials.keys.map { |k| {
             name: k,
             selected: (combatant.weapon_specials || []).include?(k)
           }},
@@ -41,10 +41,10 @@ module AresMUSH
           npc_skill: combatant.is_npc? ? combatant.npc.level : nil,
           combat: combatant.combat.id,
           options: {
-            weapons: AresMUSH::FS3Combat.mundane_weapons.keys.sort,
-            weapon_specials: AresMUSH::FS3Combat.mundane_weapon_specials.keys.sort,
+            weapons: AresMUSH::Magic.mundane_weapons.keys.sort,
+            weapon_specials: AresMUSH::Magic.mundane_weapon_specials.keys.sort,
             armor_specials:  AresMUSH::FS3Combat.armor_specials.keys.sort,
-            armor: AresMUSH::FS3Combat.mundane_armors.keys.sort,
+            armor: AresMUSH::Magic.mundane_armors.keys.sort,
             stances: FS3Combat.stances.keys,
             npc_skills: FS3Combat.npc_type_names,
             actions: actions,

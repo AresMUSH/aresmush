@@ -113,6 +113,11 @@ magic-items:
   Mistletoe:
     name: Mistletoe
     desc: A small bundle of white berries with green leaves, secured with a red bow. Gives the holder luck for a good kiss or hug.
+  Ring Of Restraint:
+    name: Ring of Restraint
+    desc: A rubbery feeling ring that fits very snugly no matter who wears it. It takes the edge off all strong feelings while worn.
+    spells:
+      - Dampen Emotion
   Raven's Blessing:
     name: Raven's Blessing
     desc:  Strung together with stiff cords and bird bones, the necklace hangs loose and just below the collarbone. The bones are bleached white and decorated with little carvings. Adhered to the bones are short, slim raven feathers. The pendant is a bird skull, but the brow has been hollowed out and set with a dull black stone that doesn't reflect any light. It grants the wearer the ability to cast Group Comprehend Languages
@@ -188,6 +193,14 @@ magic-items:
     - Light
     - Awaken Terror
     spell_mod: 1
+  #Cameron's Hook
+  Harmonia's Lyre:
+    name: Harmonia's Lyre
+    desc: An antiquated silver lyre crafted in the ancient Greek style, with pillars curving from the thicker body and strings stretched between the body and the small neck that connects the pillars. It is a small, delicate instrument–barely larger than the hand of the average human man—a size that allows it to be easily carried when traveling. Despite its age, its strings sound with perfect pitch when strummed and it seems like it never needs to be tuned. It allows the bearer to cast %xBMinor Fog%xn, %xBShape Fire%xn, and %xBEarth Shudder%xn.
+    spells:
+    - Minor Fog
+    - Shape Fire
+    - Earth Shudder
   #Dimas's Hook
   Flask Of Good Spirits:
     name: Flask of Good Spirits
@@ -211,13 +224,7 @@ magic-items:
     spells:
     - Intermediate Telekinesis
     armor_specials: Dragon Visage
-  #Ethan's Hook
-  Aos Si Coin:
-    name: Aos Si Coin
-    desc: "Gold in color, the coin is much harder than it has any right to be. The face is beaten and left rough, and there are several chinks across its edge. It will still spin, barely, but it's likely to fall over after just a few turns. About the size of a half dollar, the designs on both faces have faded considerably over time. Around the edge of both sides is a Celtic weave, tight and slim, that's broken in places. On one face is a triskele bound together by a circular weave that touches the ancient symbol's outer edges. Large, it occupies nearly the entire face of the golden coin. On the other side is a woman in profile. Clothed in flowing robes, she's flanked by a wolf, or perhaps a dog, but many of the details on that side have faded with time, or have been chipped free. Allows the bearer to cast %xBMedium Luck%xn"
-    spells:
-    - Medium Luck
-    weapon_specials: Aos Si Coin
+#Ethan's hook
   Burning Ring Of Fire:
     name: Burning Ring of Fire
     attack_mod: 1
@@ -232,6 +239,14 @@ magic-items:
     spells:
     - Trick Senses
     - Emotional Aura
+  #Jakobi's Hook
+  Agathos Coin:
+    name: Agathos Coin
+    desc: "A bronze coin a little larger than a quarter, with two detailed faces—though the details on both sides have been worn down and polished with use through the ages. On one face is the head of a gorgon, depicted with a grotesque frontal stare, wings on top of her head, and writhing snakes for hair.  On the other side is a stylized depiction of an eye, decorative lines curling above and below it. Impressed into the metal beneath the large eye are runes in Soitos that read "Fortune favours the bold".. Allows the bearer to cast %xBMedium Luck%xn, and %xBLocate Object%xn."
+    spells:
+    - Medium Luck
+    - Medium Jinx
+    - Locate Object
   #Jackson's Hook
   Somnolent Tragedie:
     name: Somnolent Tragedie

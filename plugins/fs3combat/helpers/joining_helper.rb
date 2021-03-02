@@ -35,15 +35,9 @@ module AresMUSH
         combatant = Combatant.create(:combatant_type => combatant_type,
           :character => char,
           :team => 1,
-          :combat => combat,
-          :mind_shield => char.mind_shield,
-          :mind_shield_counter => 1,
-          :endure_fire =>  char.endure_fire,
-          :endure_fire_counter =>  1,
-          :endure_cold =>  char.endure_cold,
-          :endure_cold_counter =>  1)
+          :combat => combat)
           FS3Combat.handle_combat_join_achievement(char)
-          puts "COMBATANT mind shield #{combatant.mind_shield}, endure fire #{combatant.endure_fire}, endure cold #{combatant.endure_cold}"
+          Magic.apply_out_of_combat_shields(char, combatant)
       else
 
         if FS3Combat.is_in_combat?(name)
