@@ -13,7 +13,7 @@ module AresMUSH
       return {
         item: item,
         pet: pet,
-        ancestry: ancestry
+        ancestry: ancestry 
       }
     end
 

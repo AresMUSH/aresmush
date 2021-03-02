@@ -102,15 +102,13 @@ module AresMUSH
 
     def self.major_school_spells(char, spell_list)
       major_school = char.group("Major School")
-      puts "School: #{major_school}"
       major_spells = []
-      puts "Spell_list #{spell_list}"
       spell_list.each do |s|
         if (s[:school] == major_school)
           major_spells.concat [s]
         end
       end
-      puts "MAJOR SPELLS #{major_spells}"
+      return major_spells
     end
 
     def self.minor_school_spells(char, spell_list)
@@ -125,6 +123,7 @@ module AresMUSH
       else
         minor_spells = nil
       end
+      return minor_spells
     end
 
     def self.other_spells(char, spell_list)
@@ -136,6 +135,7 @@ module AresMUSH
           other_spells.concat [s]
         end
       end
+      return other_spells
     end
 
   end

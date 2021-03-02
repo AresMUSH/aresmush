@@ -2,7 +2,6 @@ module AresMUSH
   module Profile
     class CharacterRequestHandler
       def handle(request)
-          puts "NEW THING YES"
         char = Character.find_one_by_name request.args[:id]
         enactor = request.enactor
 
@@ -13,80 +12,11 @@ module AresMUSH
         error = Website.check_login(request, true)
         return error if error
 
-        #-------------CUSTOM STUFF-------------
-
-        lh_type = Lorehooks.lore_hook_type(char)
-        spells = Magic.spell_list_all_data(char.spells_learned)
-
-        #-------------END CUSTOM STUFF-------------
-
-
         all_fields = Demographics.build_web_all_fields_data(char, enactor)
         demographics = Demographics.build_web_demographics_data(char, enactor)
         groups = Demographics.build_web_groups_data(char)
 
-        major = Magic.major_school_spells(char, spells)
-        puts "NEW THING YES #{major}"
-
-                #Spells
-
-
-                # def get_spell_list(list)
-                #   list.to_a.sort_by { |a| a.level }.map { |a|
-                #     {
-                #       name: a.name,
-                #       level: a.level,
-                #       school: a.school,
-                #       learned: a.learning_complete,
-                #       desc: Website.format_markdown_for_html(Global.read_config("spells", a.name, "desc")),
-                #       potion: Global.read_config("spells", a.name, "potion"),
-                #       weapon: Global.read_config("spells", a.name, "weapon"),
-                #       weapon_specials:  Global.read_config("spells", a.name, "weapon_specials"),
-                #       armor: Global.read_config("spells", a.name, "armor"),
-                #       armor_specials: Global.read_config("spells", a.name, "armor_specials"),
-                #       attack_mod: Global.read_config("spells", a.name, "attack_mod"),
-                #       lethal_mod: Global.read_config("spells", a.name, "lethal_mod"),
-                #       spell_mod:  Global.read_config("spells", a.name, "spell_mod"),
-                #       defense_mod:  Global.read_config("spells", a.name, "defense_mod"),
-                #       duration: Global.read_config("spells", a.name, "duration"),
-                #       casting_time: Global.read_config("spells", a.name, "casting_time"),
-                #       range: Global.read_config("spells", a.name, "range"),
-                #       area: Global.read_config("spells", a.name, "area"),
-                #       los: Global.read_config("spells", a.name, "los"),
-                #       targets: Global.read_config("spells", a.name, "targets"),
-                #       heal: Global.read_config("spells", a.name, "heal_points"),
-                #       effect: Global.read_config("spells", a.name, "effect"),
-                #       damage_type:  Global.read_config("spells", a.name, "damage_type"),
-                #       available: Global.read_config("spells", a.name, "available"),
-                #       los:  Global.read_config("spells", a.name, "line_of_sight")
-                #       }}
-                # end
-
-
-
-
-
-                # major_spells = []
-                # spells.each do |s|
-                #   if (s[:school] == major_school && s[:learned])
-                #     major_spells.concat [s]
-                #   end
-                # end
-                #
-                # if minor_school != "None"
-                #   minor_spells = []
-                #   spells.each do |s|
-                #     if (s[:school] == minor_school && s[:learned])
-                #       minor_spells.concat [s]
-                #     end
-                #   end
-                # else
-                #   minor_spells = nil
-                # end
-
-
-
-        profile = char.profile
+      profile = char.profile
         .sort_by { |k, v| [ char.profile_order.index { |p| p.downcase == k.downcase } || 999, k ] }
         .each_with_index
         .map { |(section, data), index|
@@ -103,40 +33,6 @@ module AresMUSH
         else
           gallery_files = char.profile_gallery.select { |g| g =~ /\w\.\w/ }
         end
-
-        def get_potions(list)
-          list.to_a.sort_by { |a| a.name }
-            .each_with_index
-              .map do |a, i|
-                "#{ a.name }"
-          end
-        end
-
-        potions = get_potions(char.potions_has)
-
-        potions_creating = get_potions(char.potions_creating)
-
-        def get_magic_items(list)
-          list.map { |i|
-            {
-              name: i,
-              desc:  Website.format_markdown_for_html(Magic.item_desc(i))
-            }}
-        end
-
-        magic_items = get_magic_items(char.magic_items)
-
-        def get_comps(list)
-          list = list.to_a.sort_by { |c| c.created_at }.reverse
-          list[0...10].map { |c|
-            {
-              from: c.from,
-              msg:  Website.format_markdown_for_html(c.comp_msg),
-              date: OOCTime.format_date_for_entry(c.created_at)
-            }}
-        end
-
-        comps = get_comps(char.comps)
 
         relationships_by_category = Profile.relationships_by_category(char)
         relationships = relationships_by_category.map { |category, relationships| {
@@ -163,14 +59,6 @@ module AresMUSH
           show_background = false
         else
           show_background = can_manage || char.on_roster? || char.bg_shared || Chargen.can_view_bgs?(enactor)
-        end
-
-        if char.lore_hook_type == "Item"
-          item = char.lore_hook_name ? true : false
-        elsif char.lore_hook_type == "Pet"
-          pet = char.lore_hook_name ? char.lore_hook_name.gsub(" Pet","") : false
-        elsif char.lore_hook_type == "Ancestry"
-          ancestry = char.lore_hook_name ? char.lore_hook_name.gsub(" Ancestry","") : false
         end
 
         files = Profile.character_page_files(char)
@@ -217,6 +105,8 @@ module AresMUSH
           roles = nil
         end
 
+        spells = Magic.spell_list_all_data(char.spells_learned)
+
         {
           id: char.id,
           name: char.name,
@@ -258,21 +148,21 @@ module AresMUSH
           siteinfo: siteinfo,
           roles: roles,
           #---CUSTOM PIECES---
-          comps: comps,
+          comps: Compliments.get_comps(char),
           spells: spells,
           major_spells: Magic.major_school_spells(char, spells),
           minor_spells: Magic.minor_school_spells(char, spells),
           other_spells: Magic.other_spells(char, spells),
           major_school: char.group("Major School"),
           minor_school: char.group("Minor School"),
-          magic_items: magic_items,
-          potions: potions,
-          potions_creating: potions_creating,
+          magic_items: Magic.get_magic_items(char),
+          potions: Magic.get_potions(char),
+          potions_creating: Magic.get_potions_creating(char),
           lore_hook_name: char.lore_hook_name,
           lore_hook_desc: char.lore_hook_desc,
-          lore_hook_item: lh_type[:item],
-          lore_hook_pet: lh_type[:pet],
-          lore_hook_ancestry: lh_type[:ancestry],
+          lore_hook_item: Lorehooks.lore_hook_type(char)[:item],
+          lore_hook_pet: Lorehooks.lore_hook_type(char)[:pet],
+          lore_hook_ancestry: Lorehooks.lore_hook_type(char)[:ancestry],
           plot_prefs: Website.format_markdown_for_html(char.plot_prefs)
 
         }
