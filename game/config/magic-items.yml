@@ -242,7 +242,7 @@ magic-items:
   #Jakobi's Hook
   Agathos Coin:
     name: Agathos Coin
-    desc: "A bronze coin a little larger than a quarter, with two detailed faces—though the details on both sides have been worn down and polished with use through the ages. On one face is the head of a gorgon, depicted with a grotesque frontal stare, wings on top of her head, and writhing snakes for hair.  On the other side is a stylized depiction of an eye, decorative lines curling above and below it. Impressed into the metal beneath the large eye are runes in Soitos that read 'Fortune favours the bold'. Allows the bearer to cast %xBMedium Luck%xn, and %xBLocate Object%xn."
+    desc: "A bronze coin a little larger than a quarter, with two detailed faces—though the details on both sides have been worn down and polished with use through the ages. On one face is the head of a gorgon, depicted with a grotesque frontal stare, wings on top of her head, and writhing snakes for hair.  On the other side is a stylized depiction of an eye, decorative lines curling above and below it. Impressed into the metal beneath the large eye are runes in Soitos that read //Fortune favours the bold//. Allows the bearer to cast %xBMedium Luck%xn, and %xBLocate Object%xn."
     spells:
     - Medium Luck
     - Medium Jinx
