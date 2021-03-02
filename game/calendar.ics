@@ -2,75 +2,79 @@ BEGIN:VCALENDAR
 VERSION:2.0
 PRODID:-//hacksw/handcal//NONSGML v1.0//EN
 BEGIN:VEVENT
-UID:2bed1471-4d1e-40a2-a7e5-bf7992151a88@Spirit Lake-spiritlakemu.com
-DTSTART:20210131T013000Z
-DTSTAMP:20210107T190740Z
-SUMMARY:Festival of the Heavens (Casting Out the Darkness)
-DESCRIPTION:A kind of a ‘New Year’ festival, beginning at sunset. The residents of Kleiosis gather to remind themselves of their history and honor their ancestors. They clean and repair the acropolis and city below it, sweeping away the bad luck from the year before and welcome in good luck. All night, residents will drink, share stories of those who have passed, and watch the stars.
-  
-  ---
-  
-  Open. GMing by Ammit.
-END:VEVENT
-BEGIN:VEVENT
-UID:0793c2ae-5b6a-488b-bbb7-9567464c142f@Spirit Lake-spiritlakemu.com
-DTSTART:20210131T183000Z
-DTSTAMP:20210107T190800Z
-SUMMARY:Festival of the Heavens (Bringing Forth of the Sun)
-DESCRIPTION:The second part of ‘New Year’ festival, beginning at dawn. The residents of Kleiosis celebrate the ‘birth’ of the sun and welcome new possibilities with it. They gather to watch the sunrise then have a ‘breakfast’ feast. The day will then be spent giving offerings for the coming year, having mock battles to ‘scare’ away enemies, and smashing pomegranates against thresholds for good luck.
-  
-  ---
-  
-  Open. GMing by Ammit.
-END:VEVENT
-BEGIN:VEVENT
-UID:18dbd65d-213e-4148-8d00-4343a5d4e48f@Spirit Lake-spiritlakemu.com
-DTSTART:20210121T010000Z
-DTSTAMP:20210112T213451Z
-SUMMARY:Bonnie's Dirty Thirty Party
-DESCRIPTION:Bonnie is turning thirty and she wants to do a thing. Anyone that knows Bonnie or met her is welcome to attend. Please no gifts. Fun Only. There will be free-flowing of booze from wine, beer, hard alcohol with mixers and pizza provided by Grumpy's of a wide variety. 
-END:VEVENT
-BEGIN:VEVENT
-UID:04b3ec77-50ec-4373-9b2a-56a664fe4435@Spirit Lake-spiritlakemu.com
-DTSTART:20210123T200000Z
-DTSTAMP:20210111T161410Z
-SUMMARY:Water Meetup
-DESCRIPTION:Water mage meetup in the beach portal! Bring food if you want to (but not required!)!
-END:VEVENT
-BEGIN:VEVENT
-UID:c39dfe95-d651-4874-9c3e-5a70da971308@Spirit Lake-spiritlakemu.com
-DTSTART:20210124T010000Z
-DTSTAMP:20210112T213149Z
-SUMMARY:Maureen's NOT-BIRTHDAY Beach Party
-DESCRIPTION:There's something to be said for being held back from your own masquerade birthday party and needing to reschedule, only to be kidnapped by Faeries the next day. Needless to say, Maureen's rescheduled masquerade didn't happen.
-  
-  Now she's making up for it by having a NOT BIRTHDAY party at the Beach Portal. All members of the Weird are welcome. Masq's and costumes not required, but don't forget to bring the bathing suit if you want to go swimming!
-  
-  There are rumors of tiki decorations being provided. Food will be provided, having someone to grill the meat would be welcomed. Trust Maureen, you don't want her to grill.
-END:VEVENT
-BEGIN:VEVENT
-UID:9c959f24-334e-48e6-bd74-30a54fb833e2@Spirit Lake-spiritlakemu.com
-DTSTART:20210122T150000Z
-DTSTAMP:20210112T221605Z
-SUMMARY:Nature Meetup
-DESCRIPTION:Come to Feixuzhichang for an overnight Nature retreat just at the edge of the city. This will be an all day/night even and is open to all Nature Mages (major and minor). 
-END:VEVENT
-BEGIN:VEVENT
 UID:d039e617-e27f-43a7-b3f8-2fd112418a6c@Spirit Lake-spiritlakemu.com
-DTSTART:20210221T013000Z
-DTSTAMP:20210113T024002Z
+DTSTART:20210227T013000Z
+DTSTAMP:20210217T191332Z
 SUMMARY:Festival of Unification
 DESCRIPTION:The inhabitants of Stochieion celebrate the Festival of Unification, when Spirit magic is at its strongest in their lands. 
   
-  This will be three days of self-directed events, Friday, February 19 - Sunday, February 21. More info to come.
+  This will be three(ish) days of self-directed events, starting Friday the 26th and running through Sunday the 28th, with a possible bleed into early the following week if there's interest. More info to come.
 END:VEVENT
 BEGIN:VEVENT
-UID:246a078f-a4c9-4b95-bc05-aa02079b8b89@Spirit Lake-spiritlakemu.com
-DTSTART:20210128T000000Z
-DTSTAMP:20210117T010207Z
-SUMMARY:Faerie Teachers Welcome
-DESCRIPTION:Faerie welcomes its totally willing and not at all coerced magic teachers from Grand Lake! 
+UID:2d54a8b3-55bb-4594-a242-70b235b713f1@Spirit Lake-spiritlakemu.com
+DTSTART:20210306T013000Z
+DTSTAMP:20210216T132611Z
+SUMMARY:Corpus Meet Up
+DESCRIPTION:We haven't done one of these in awhile so lets do the thing.
+END:VEVENT
+BEGIN:VEVENT
+UID:815ac799-4f09-4d18-916b-10d294bee6f2@Spirit Lake-spiritlakemu.com
+DTSTART:20210304T013000Z
+DTSTAMP:20210217T164845Z
+SUMMARY:A Storm Blows In
+DESCRIPTION:Kleiosis is known for storms that spring up unexpectedly- and dangerously. Grand Lake mages find out why.
   
-  ((This is for any Grand Lake mage who has volunteered to be a teacher in Faerie!))
+  There will be two parts to this: 
+  
+  1) Social background, where you can RP getting caught in the storm and hunkering down in the below-ground portions of Kleiosis with the others who are stuck there. Anyone can participate in this. You'll be stuck from Wednesday mid-day until Thursday evening, ICly. 
+  
+  2) Combat for Ray, Erik, and up to 3 others who would have been observing the lay of the land from the wall's ramparts as the storm blew in. Priority will be given to characters who haven't had GM'd activity lately.
+  
+  Please note which you're signing up for in your RSVP! 
+  
+  GM: Nessie
+END:VEVENT
+BEGIN:VEVENT
+UID:199b4d62-fadb-493c-88ec-70f6a91c5755@Spirit Lake-spiritlakemu.com
+DTSTART:20210304T200000Z
+DTSTAMP:20210217T164823Z
+SUMMARY:The Storm Rages On
+DESCRIPTION:A general placeholder for the day. The storm in Kleiosis continues, and those trapped there can RP among themselves anywhere in the underground city. 
+END:VEVENT
+BEGIN:VEVENT
+UID:029ac765-704f-4a2d-bb10-bf5f70dc00cb@Spirit Lake-spiritlakemu.com
+DTSTART:20210227T230000Z
+DTSTAMP:20210217T191848Z
+SUMMARY:At the Stochi Ballet
+DESCRIPTION:The creatures of Stochieion put on a performance of their own take on the human artform of ballet, to celebrate the Festival of Unification and the debut of the native dancers - under the tutelage of humans Ray and Lisette. Come for the dancing, stay for the Spirit.
+  
+  This event will have no combat or risk but there'll be Spirit magic escapades and dancing. 
+  
+  GM: Selkie
+END:VEVENT
+BEGIN:VEVENT
+UID:541492a5-2ad0-4d1b-8c7f-f9bdf83c5a70@Spirit Lake-spiritlakemu.com
+DTSTART:20210226T010000Z
+DTSTAMP:20210221T181342Z
+SUMMARY:Dinner Party
+DESCRIPTION:Taisha's response to most strong feelings and experiences is to cook.  After the vampire dinner party from hell, she's cooking a lot.  Come over and eat her food.  
+END:VEVENT
+BEGIN:VEVENT
+UID:a061e058-d591-4d97-b05c-be234d4f7849@Spirit Lake-spiritlakemu.com
+DTSTART:20210308T000000Z
+DTSTAMP:20210225T174155Z
+SUMMARY:Grand Opening of MMA Gym
+DESCRIPTION:Brandon's new MMA gym is fully functional. Octagon cages are up and operational. This is a party for mages only to celebrate the finishing of the gym and kiss Rowan on the cheeks for finishing it. If people want to fight in the cages, that can definitely happen but this will mostly probably be a party. 
+END:VEVENT
+BEGIN:VEVENT
+UID:5e36a87b-e39f-48e9-9700-8b21c7cb9af0@Spirit Lake-spiritlakemu.com
+DTSTART:20210321T223000Z
+DTSTAMP:20210222T173828Z
+SUMMARY:The Writhing Mass
+DESCRIPTION:The Sentinel Jackals believe there's a serpent nest in the lower level of the temple and are going on a hunt. Mages of Grand Lake are welcome to join them.
+  
+  ---
+  
+  Ammit GMing. RSVP. Room for for 2-5 players. Priority given to those who haven't gotten a GM'd scene recently. 
 END:VEVENT
 END:VCALENDAR
