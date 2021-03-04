@@ -171,12 +171,12 @@ module AresMUSH
         prior_ammo[combatant.weapon_name] = combatant.ammo
         combatant.update(prior_ammo: prior_ammo)
       end
-      puts "THIS IS RUNNING"
-      puts "Specials #{specials}"
-      puts "Magic specials #{Magic.set_magic_weapon_specials(enactor, combatant, weapon)}"
-      specials = specials.concat([Magic.set_magic_weapon_specials(enactor, combatant, weapon)]) || Magic.set_magic_weapon_specials(enactor, combatant, weapon)
-
-      puts "Specials2 #{specials}"
+      # puts "THIS IS RUNNING"
+      # puts "Specials #{specials}"
+      # puts "Magic specials #{Magic.set_magic_weapon_specials(enactor, combatant, weapon)}"
+      # specials = specials.concat([Magic.set_magic_weapon_specials(enactor, combatant, weapon)]) || Magic.set_magic_weapon_specials(enactor, combatant, weapon)
+      #
+      # puts "Specials2 #{specials}"
 
       combatant.update(weapon_name: weapon)
       combatant.update(weapon_specials: specials)
