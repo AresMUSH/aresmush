@@ -156,7 +156,6 @@ spells:
     range: Short
     school: Water
     target_num: 1
-
     weapon: Stun (Water)
   Water Walk:
     available: true
@@ -186,7 +185,6 @@ spells:
     range: Short
     school: Water
     target_num: 3
-
     weapon: Cone Of Cold
   Ice Armor:
     armor: Ice
@@ -454,6 +452,19 @@ spells:
     range: Touch
     roll: true
     school: Water
+  Ice Elemental:
+    available: false
+    casting_time: 1 round
+    damage_type: Cold
+    desc: "The caster creates an elemental made of ice mixed with snow and/or water from the environment. It is bound to do the caster's bidding, able to perform simple tasks and come to the caster's aid in battle. It cannot cast spells. When the spell ends, the elemental melts away.\n\nIn combat, the ice elemental should be represented by an NPC of level four with Ice Armor."
+    duration: 30 minutes
+    effect: Other
+    level: 7
+    line_of_sight: true
+    name: Ice Elemental
+    roll: true
+    range: Short
+    school: Water
   Ice Storm:
     area: 20 yard radius
     available: true
@@ -469,7 +480,6 @@ spells:
     range: Long
     school: Water
     target_num: 3
-
     weapon: Ice Storm
   Ice Wall:
     area: 20 yards long, 5 yards thick, 10 yards tall

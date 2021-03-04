@@ -206,6 +206,19 @@ spells:
     rounds: 5
     school: Corpus
     weapon: Spell
+  Dampen Pain:
+    available: false
+    casting_time: 1 round
+    desc: "Calms the target's central nervous system response to bodily injury to dampen any physical feelings of pain for the duration of the spell. The spell does not prevent injuries or provide any healing to existing injuries; in the absence of pain, a careless target may re-open or worsen existing injuries."
+    duration: 4 hours
+    effect: Other
+    is_potion: true
+    level: 4
+    name: Dampen Pain
+    range: Touch
+    roll: true
+    school: Corpus
+    target_num: 1    
   Diagnose:
     available: true
     casting_time: 1 round
@@ -218,7 +231,6 @@ spells:
     range: Touch
     roll: true
     school: Corpus
-
     target_num: 1
   Exoskeleton:
     armor: Exoskeleton
