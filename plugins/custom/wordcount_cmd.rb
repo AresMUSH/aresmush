@@ -10,9 +10,7 @@ module AresMUSH
             end
 
             def format_number(number)
-              number = number.to_s.split('.')
-              number[0].reverse!.gsub!(/(\d{3})(?=\d)/, '\\1,').reverse!
-              number.join('.')
+              number.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse
             end
             
             def handle
