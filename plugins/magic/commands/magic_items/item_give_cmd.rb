@@ -15,7 +15,7 @@ module AresMUSH
       def check_errors
         return t('magic.dont_have_item') if !enactor.magic_items.include?(self.item_name)
         return t('magic.not_character') if !self.target
-        return t('magic.unequip_first', :item => item.name) if item_name == enactor.magic_item_equipped
+        return t('magic.unequip_first', :item => item_name) if (item_name == enactor.magic_item_equipped && enactor.magic_items.count(item_name) < 2)
         return nil
       end
 
