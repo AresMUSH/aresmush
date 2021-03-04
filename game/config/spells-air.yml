@@ -422,7 +422,7 @@ spells:
     range: Short
     school: Air
     target_num: 3
-    
+
     weapon: Stun (Air)
   Storm Armor:
     available: true
@@ -547,5 +547,4 @@ spells:
     range: Massive
     school: Air
     target_num: 100
-
     weapon: Tempest
