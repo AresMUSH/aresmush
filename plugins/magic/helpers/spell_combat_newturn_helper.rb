@@ -76,6 +76,7 @@ module AresMUSH
         combatant.update(action_klass: "AresMUSH::FS3Combat::SpellAction")
         combatant.update(action_args: "#{combatant.name}/Phoenix's Healing Flames")
         Magic.delete_all_untreated_damage(combatant.associated_model)
+        # EMIT SOMETHING
       end
 
     end
