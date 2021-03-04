@@ -8,6 +8,7 @@ fs3combat:
     - strength
     - grow
     - sparring
+    - guilt-weighted gloves
     Ranged:
     - cold calm
     - diamond
@@ -36,6 +37,7 @@ fs3combat:
     - strength
     - transform
     - vitality
+    - guilt-weighted gloves
     Spell:
     - cold calm
 

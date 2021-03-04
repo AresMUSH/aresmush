@@ -143,7 +143,6 @@ module AresMUSH
     def self.set_magic_weapon_specials(enactor, combatant, weapon)
       # Set weapon specials gained from equipped magical items
       specials = Magic.set_magic_item_weapon_specials(combatant, specials)
-
       # Set weapon specials gained from spells
       if specials && combatant.spell_weapon_effects[weapon]
         spell_specials = combatant.spell_weapon_effects[weapon].keys
