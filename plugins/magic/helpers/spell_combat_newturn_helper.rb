@@ -68,7 +68,20 @@ module AresMUSH
       else
         combatant.update(spell_mod_counter: combatant.spell_mod_counter - 1)
       end
+
+      if combatant.associated_model.auto_revive? && combatant.is_ko
+        combatant.update(is_ko: false)
+        combatant.update(death_count: 0)
+        combatant.log "Phoenix's Healing Flames: Setting #{combatant.name}'s KO to #{combatant.is_ko}."
+        combatant.update(action_klass: "AresMUSH::FS3Combat::SpellAction")
+        combatant.update(action_args: "#{combatant.name}/Phoenix's Healing Flames")
+        Magic.delete_all_untreated_damage(combatant.associated_model)
+      end
+
     end
+
+
+
 
   end
 end

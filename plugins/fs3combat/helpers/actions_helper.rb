@@ -49,7 +49,7 @@ module AresMUSH
     end
 
     def self.reset_for_new_turn(combatant)
-      FS3Combat.custom_new_turn_reset(combatant)
+
 
       # Reset aim if they've done anything other than aiming.
       if (combatant.is_aiming? && combatant.action_klass != "AresMUSH::FS3Combat::AimAction")
@@ -84,6 +84,8 @@ module AresMUSH
         # Be sure to do this AFTER checking for KO up above.
         combatant.update(damaged_by: [])
       end
+
+      FS3Combat.custom_new_turn_reset(combatant)
     end
 
     def self.reset_stress(combatant)
@@ -119,15 +121,6 @@ module AresMUSH
           FS3Combat.emit_to_combat combatant.combat, t('fs3combat.is_koed', :name => combatant.name, :damaged_by => damaged_by), nil, true
         else
           FS3Combat.emit_to_combat combatant.combat, t('fs3combat.is_killed', :name => combatant.name, :damaged_by => damaged_by), nil, true
-        end
-
-        if (!combatant.is_npc? && Magic.knows_spell?(combatant, "Phoenix's Healing Flames"))
-          combatant.update(is_ko: false)
-          combatant.update(death_count: 0)
-          combatant.log "Phoenix's Healing Flames: Setting #{combatant.name}'s KO to #{combatant.is_ko}."
-          combatant.update(action_klass: "AresMUSH::FS3Combat::SpellAction")
-          combatant.update(action_args: "#{combatant.name}/Phoenix's Healing Flames")
-          Magic.delete_all_untreated_damage(combatant.associated_model)
         end
       end
     end
