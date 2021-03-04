@@ -498,7 +498,7 @@ module AresMUSH
 
       target.add_stress(1)
 
-      messages = Magic.shield_failed_msgs(target, damage_type, weapon, attack_name)
+      messages = Magic.shield_failed_msgs(target, damage_type, weapon, attack_name) || []
 
       weapon_type = FS3Combat.weapon_stat(weapon, 'weapon_type')
       if (weapon_type == "Explosive")
@@ -506,6 +506,8 @@ module AresMUSH
       else
         weapon_name = weapon
       end
+      puts "Messages #{messages}"
+      puts "Name #{attack_name} Weapon-#{weapon_name} Target-#{target.name} Hitloc-#{hitloc} Armor-#{reduced_by_armor} Damage-#{FS3Combat.display_severity(damage)}"
       FS3Combat.award_hit_achievement(attacker, damage, weapon_type)
       messages << t('fs3combat.attack_hits',
                     :name => attack_name,
