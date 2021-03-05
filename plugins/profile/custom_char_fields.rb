@@ -15,7 +15,7 @@ module AresMUSH
       def self.get_fields_for_viewing(char, viewer)
         spells = Magic.spell_list_all_data(char.spells_learned)
         return {
-          test: "Testing",
+          comps: Compliments.get_comps(char),
           spells: spells,
           major_spells: Magic.major_school_spells(char, spells),
           minor_spells: Magic.minor_school_spells(char, spells),
@@ -24,7 +24,13 @@ module AresMUSH
           minor_school: char.group("Minor School"),
           magic_items: Magic.get_magic_items(char),
           potions: Magic.get_potions(char),
-          potions_creating: Magic.get_potions_creating(char)
+          potions_creating: Magic.get_potions_creating(char),
+          lore_hook_name: char.lore_hook_name,
+          lore_hook_desc: char.lore_hook_desc,
+          lore_hook_item: Lorehooks.lore_hook_type(char)[:item],
+          lore_hook_pet: Lorehooks.lore_hook_type(char)[:pet],
+          lore_hook_ancestry: Lorehooks.lore_hook_type(char)[:ancestry],
+          plot_prefs: Website.format_markdown_for_html(char.plot_prefs)
         }
       end
 
@@ -66,7 +72,7 @@ module AresMUSH
       #        char.update(goals: Website.format_input_for_mush(char_data[:custom][:goals]))
       #        return []
       def self.save_fields_from_profile_edit(char, char_data)
-        return []
+        char.update(plot_prefs: Website.format_input_for_mush(char_data[:custom][:plot_prefs]))
       end
 
       # Saves fields from character creation (chargen).

@@ -71,14 +71,14 @@ module AresMUSH
       end
     end
 
-    def self.delete_all_untreated_damage(char)
+    def self.delete_all_unhealed_damage(char)
       damage = char.damage
       damage.each do |d|
-        if !d.healed
-          d.delete
+        if d.current_severity != "HEAL"
+          d.update(current_severity: "HEAL")
         end
-        Global.logger.info "Phoenix's Healing Flames deleting #{char.name}'s damage."
       end
+      Global.logger.info "Auto-revive spell healing all #{char.name}'s damage."
     end
 
   end

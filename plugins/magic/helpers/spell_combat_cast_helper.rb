@@ -99,6 +99,20 @@ module AresMUSH
       return message
     end
 
+    def self.cast_auto_revive(combatant, target, spell)
+      target.update(death_count: 0)
+      target.update(is_ko: false)
+      target.log "Auto-revive spell setting #{target.name}'s KO to #{target.is_ko}."
+      Magic.delete_all_unhealed_damage(target.associated_model)
+      FS3Combat.emit_to_combatant target, t('magic.been_revived', :name => combatant.name)
+      if target != combatant
+        message = [t('magic.cast_auto_revive_target', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target => target.name)]
+      else
+        message = [t('magic.cast_auto_revive', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn")]
+      end
+      return message
+    end
+
     def self.cast_resurrection(combatant, target, spell)
       Custom.undead(target.associated_model)
       message = [t('magic.cast_res', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target => target.name)]
