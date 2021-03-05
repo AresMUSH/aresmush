@@ -3,16 +3,7 @@ en:
   magic:
       invalid_name: "%xrCharacter not found.%xn"
       updated_weapon_specials: "You have updated %{target}'s persistent weapon specials to %{specials}."
-      # luck_requested: "You have requested luck. Check your requests for updates."
-      # plot_proposed: "You have proposed your plot. Check your requests for updates and responses."
-      # comps_title: "%{name}'S COMPS"
-      # left_comp: "You have left a comp for %{name}."
-      # has_left_comp: "%xc%{from} has left you a comp. Type `comps` to see it.%xn"
-      #   # ----------------------------
-      #   # SCHOOLS
-      #   # ----------------------------
-      # schools_title: "Schools"
-      # schools_blurb: "Schools reflect the type of spells a magic user is able to do. A magic user may have an affinity for a single School, or they may possess an affinity for two, one lesser and one greater. System-wise, Schools function in the same way as action skills."
+
         # ----------------------------
         # POTIONS
         # ----------------------------
@@ -53,10 +44,41 @@ en:
       casts_spell: "%{name} casts %xB%{spell}%xn%{mod} and %{succeeds}."
       casts_spell_on_target: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{succeeds}."
       will_cast_fs3_attack: "%{name} will cast %xB%{spell}%xn on %{target} this turn."
-      cast_heal: "%{name} casts %xB%{spell}%xn%{mod} and %{succeeds}. %{target} receives up to %{points} points of healing to a wound."
+      not_ko: "%{target} is not knocked out."
+
+      cast_damage: "%{name} casts %xB%{spell}%xn on %{target} and %{succeeds}, giving %{target} a wound."
+      cast_mod: "%{name} casts %xB%{spell}%xn on %{target} and %{succeeds}, giving %{target} a %xg%{mod} %{type} modification%xn."
+      cast_stance: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{succeeds}, changing %{target}'s stance to %{stance}. It will last for %{rounds} more round(s)."
+      cast_stun: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{succeeds}. They will be stunned for %{rounds} more round(s)."
+      cast_failed_stun: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and the spell %{succeeds}, but %{target} resists and is not stunned."
+      not_spell: "That is not a spell."
+      cant_cast_on_gear: "You cannot cast %{spell} on %{target}'s %{gear}."
+      doesnt_use_target: "This spell does not use a target."
+      needs_target: "You need to identify a target. Do spell/cast <spell>=<target>."
+      caster_should_not_equal_target: "You cannot target yourself. Do spell/cast <spell> instead."
+      cast_to_use: "%xbYou cannot use %{name} without casting a spell. Only equip it if this spell is still active.%xn"
+      level_eight_fatigue: "%x39%{name}%xn %x39has cast a level 8 spell and is overcome by spell casting fatigue. They are unable to cast spells or fight until they have recovered.%xn"
+
+      # ----------------------------
+      # HeALING. RESING, AND REVIVING
+      # ----------------------------
       cast_ko_heal: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{succeeds}. %{target} receives up to %{points} points of healing to a wound and they are no longer dying."
       no_healable_wounds: "%{target} has no healable wounds."
       cast_heal_no_effect: "%{name} casts %xB%{spell}%xn%{mod} and %{succeeds}, but %{target} has no healable wounds. The spell has no effect."
+      cast_heal: "%{name} casts %xB%{spell}%xn%{mod} and %{succeeds}. %{target} receives up to %{points} points of healing to a wound."
+      cast_auto_revive: "%{name} casts %xB%{spell}%xn%{mod} and %{succeeds}. They have been revived, and all wounds have been healed."
+      cast_auto_revive_target: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{succeeds}. %{target} has been revived, and all wounds have been healed."
+      cast_revive: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{succeeds}, reviving %{target} so they can rejoin the fight."
+      been_revived: "%xgYou have been revived by %{name}.%xn"
+      cast_res: "%{name} casts %xB%{spell}%xn on %{target} and %{succeeds}. They have been snatched from death's grip."
+      been_resed: "%xgYou have been resurrected by %{name}. You are both incapacitated and suffering from spell fatigue, and cannot act without further healing.%xn"
+      raised_dead: "%xB%{name} has raised %{target} from the dead.%xn"
+      npc_rejoin: "If you want them to act again, have %{target} rejoin the combat by doing combat/join %{target}=%{id}."
+      not_dead: "%{target} is not dead."
+
+      # ----------------------------
+      # MAGIC SHIELDS
+      # ----------------------------
       cast_shield: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{succeeds}. They are protected against %{type} attacks."
       shield_failed: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{target}'s %{shield} failed to stop it. %{name} %xgSUCCEEDS%xn, but the damage is reduced."
       shrapnel_shield_failed: "%{name}'s %xB%{weapon}%xn hits %{target} and %{target}'s %{shield} failed to stop it, but the damage is reduced."
@@ -65,37 +87,20 @@ en:
       shield_failed_stun_resisted: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{target}'s %{shield} failed to stop it, but %{target} resists and %xris not stunned%xn."
       mind_shield_failed: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{target}'s %{shield} failed to stop it. %{name} %xgSUCCEEDS%xn."
       shield_held: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and their %{shield} stopped it. %{name} %xrFAILS%xn."
-
-      shield_wore_off: "%{name}'s %{shield} has worn off."
       no_shield: "%{name} does not have{spell} active."
       not_shield: "%{shield} is not a shield."
       turn_shield_off: "%xhIf it has ICly been longer than the spell's duration, %{name} should do `shield/off %{spell}`.%xn"
       turned_shield_off: "You have turned off %{name}'s %{shield}."
-      cast_phoenix_heal: "%{name} casts %xB%{spell}%xn%{mod} and %{succeeds}. They have been revived, and all untreated wounds have been healed."
-      cast_phoenix_heal_target: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{succeeds}. %{target} has been revived, and all untreated wounds have been healed."
-      not_ko: "%{target} is not knocked out."
-      cast_revive: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{succeeds}, reviving %{target} so they can rejoin the fight."
-      been_revived: "%xgYou have been revived by %{name}. You will be able to take an action next turn.%xn"
-      cast_damage: "%{name} casts %xB%{spell}%xn on %{target} and %{succeeds}, giving %{target} a wound."
-      cast_res: "%{name} casts %xB%{spell}%xn on %{target} and %{succeeds}. They have been snatched from death's grip."
-      been_resed: "%xgYou have been resurrected by %{name}. You are both incapacitated and suffering from spell fatigue, and cannot act without further healing.%xn"
-      raised_dead: "%xB%{name} has raised %{target} from the dead.%xn"
-      npc_rejoin: "If you want them to act again, have %{target} rejoin the combat by doing combat/join %{target}=%{id}."
-      not_dead: "%{target} is not dead."
-      cast_mod: "%{name} casts %xB%{spell}%xn on %{target} and %{succeeds}, giving %{target} a %xg%{mod} %{type} modification%xn."
+      cast_failed_stun_shield: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{target}'s %{shield} failed to stop it. The spell %{succeeds}, but %{target} resists and is not stunned."
+
+
+      # ----------------------------
+      # SPELLs WEAR OFF
+      # ----------------------------
+      shield_wore_off: "%{name}'s %{shield} has worn off."
       mod_wore_off: "%{name}'s %{mod} %{type} modification has worn off."
       stance_wore_off: "%{name}'s %{spell} spell has worn off and they are no longer %{stance}."
-      cast_stance: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{succeeds}, changing %{target}'s stance to %{stance}. It will last for %{rounds} more round(s)."
-      cast_stun: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{succeeds}. They will be stunned for %{rounds} more round(s)."
-      cast_failed_stun: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and the spell %{succeeds}, but %{target} resists and is not stunned."
-      cast_failed_stun_shield: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{target}'s %{shield} failed to stop it. The spell %{succeeds}, but %{target} resists and is not stunned."
-      not_spell: "That is not a spell."
-      cant_cast_on_gear: "You cannot cast %{spell} on %{target}'s %{gear}."
-      doesnt_use_target: "This spell does not use a target."
-      needs_target: "You need to identify a target. Do spell/cast <spell>=<target>."
-      caster_should_not_equal_target: "You cannot target yourself. Do spell/cast <spell> instead."
-      cast_to_use: "%xbYou cannot use %{name} without casting a spell. Only equip it if this spell is still active.%xn"
-      level_eight_fatigue: "%x39%{name}%xn %x39has cast a level 8 spell and is overcome by spell casting fatigue. They are unable to cast spells or fight until they have recovered.%xn"
+
 
       # ----------------------------
       # LEARNING SPELLS
@@ -134,7 +139,7 @@ en:
       reduce_spell_learn_time_job: "%{name} spent 2 luck points and reduced the learn time of %{spell} by a week."
 
       # ----------------------------
-      # FS3 COMBAT SPELL
+      # FS3 COMBAT SPELL ACTION
       # ----------------------------
       spell_target_action_msg_short: "Spell %{target}"
       spell_target_action_msg_long: "%{name} will cast %xB%{spell}%xn on %{target} this turn."
@@ -143,8 +148,9 @@ en:
       spell_action_msg_long: "%{name} will cast %xB%{spell}%xn this turn."
       spell_resolution_msg: "%{name} casts %xB%{spell}%xn and %{succeeds}."
       too_many_targets: "%xr%{spell} can only target %{num} target(s).%xn"
+
       # ----------------------------
-      # FS3 COMBAT POTION
+      # FS3 COMBAT POTION ACTION
       # ----------------------------
 
       potion_action_msg_long: "%{name} will use a %xM%{potion}%xn potion this turn."

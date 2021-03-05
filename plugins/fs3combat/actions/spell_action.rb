@@ -12,16 +12,14 @@ module AresMUSH
           self.names = combatant.name
           self.spell = self.action_args
         end
-
         self.spell = self.spell.titlecase
-        # puts "***** #{combatant.name}'s ACTION IS #{self.spell} ON #{targets}'"
 
-        # self.target_optional = Global.read_config("spells", self.spell, "target_optional")
         error = self.parse_targets(self.names)
         return error if error
 
         spell_list = Global.read_config("spells")
         return t('magic.not_spell') if !spell_list.include?(self.spell)
+
         if !combatant.is_npc?
           item_spells = Magic.item_spells(combatant.associated_model) || []
           return t('magic.dont_know_spell') if (Magic.knows_spell?(combatant, self.spell) == false && !item_spells.include?(spell))
@@ -33,11 +31,13 @@ module AresMUSH
 
         is_res = Global.read_config("spells", self.spell, "is_res")
         is_revive = Global.read_config("spells", self.spell, "is_revive")
+        auto_revive = Global.read_config("spells", self.spell, "auto_revive")
 
         targets.each do |target|
           return t('magic.dont_target_self') if target == combatant && Global.read_config("spells", self.spell, "fs3_attack")
+          # Don't let people waste a spell that won't have an effect
           return t('magic.not_dead', :target => target.name) if (is_res && !target.associated_model.dead)
-          return t('magic.not_ko', :target => target.name) if (is_revive && !target.is_ko)
+          return t('magic.not_ko', :target => target.name) if ((is_revive || auto_revive) && !target.is_ko)
           wound = FS3Combat.worst_treatable_wound(target.associated_model)
           heal_points = Global.read_config("spells", self.spell, "heal_points")
           weapon = Global.read_config("spells", self.spell, "weapon")
@@ -67,7 +67,7 @@ module AresMUSH
           msg = t('magic.spell_target_action_msg_long', :name => self.name, :spell => self.spell, :target => print_target_names)
           msg
         else
-          msg = t('magic.spell_action_msg_long', :name => self.name, :spell => self.spell, :target => print_target_names)
+          msg = t('magic.spell_action_msg_long', :name => self.name, :spell => self.spell)
           msg
         end
       end
@@ -77,11 +77,10 @@ module AresMUSH
       end
 
       def resolve
-
-
         armor = Global.read_config("spells", self.spell, "armor")
         armor_specials_str = Global.read_config("spells", self.spell, "armor_specials")
         attack_mod = Global.read_config("spells", self.spell, "attack_mod")
+        auto_revive = Global.read_config("spells", self.spell, "auto_revive")
         damage_inflicted = Global.read_config("spells", self.spell, "damage_inflicted")
         damage_desc = Global.read_config("spells", spell, "damage_desc")
         damage_type = Global.read_config("spells", self.spell, "damage_type")
@@ -100,7 +99,6 @@ module AresMUSH
         spell_mod = Global.read_config("spells", self.spell, "spell_mod")
         stance = Global.read_config("spells", self.spell, "stance")
         school = Global.read_config("spells", self.spell, "school")
-        # target_optional = Global.read_config("spells", self.spell, "target_optional")
         weapon = Global.read_config("spells", self.spell, "weapon")
         weapon_specials_str = Global.read_config("spells", self.spell, "weapon_specials")
 
@@ -108,7 +106,14 @@ module AresMUSH
         combatant.log "~* #{self.combatant.name.upcase} CASTING #{self.spell.upcase} *~"
 
         succeeds = Magic.roll_combat_spell_success(combatant, spell)
-        #The roll_combat_spell_success handles combat mods via roll_combat_spell
+        if (auto_revive && targets.include?(self.combatant))
+          succeeds = {:succeeds=>"%xgSUCCEEDS%xn", :result=>5}
+        end
+
+        puts "SUCCESS #{succeeds}"
+        # roll_combat_spell_success handles combat mods via roll_combat_spell
+
+        #Spells roll for success individually because they can only do one thing. This is because attacks need to use different measures of success. Also, because weapon changes for FS3 attacks are on the caster, not the target.
 
         if (fs3_attack || is_stun)
 
@@ -119,16 +124,10 @@ module AresMUSH
             end
 
             weapon_type = FS3Combat.weapon_stat(self.combatant.weapon, "weapon_type")
-
-
-            #Spells roll for success individually because they only do one thing, and need to use different measures of success. Also, because weapon changes are on the caster, not the target.
             targets.each do |target|
-
-              #Stun
               if is_stun
                 message = Magic.cast_stun(self.combatant, target, self.spell, rounds, result = succeeds[:result])
                 messages.concat message
-              #Attacks
               elsif weapon_type == "Explosive"
                 message = Magic.cast_explosion(self.combatant, target, self.spell, result = succeeds[:result])
                 messages.concat message
@@ -144,10 +143,9 @@ module AresMUSH
             messages.concat [t('magic.spell_target_resolution_msg', :name =>  combatant.name, :spell => self.spell, :target => print_target_names, :succeeds => "%xrFAILS%xn")]
           end
         else
-          # succeeds = Magic.roll_combat_spell_success(combatant, spell)
-          #Spells here do not roll for success individually because they may do more than one thing and so need one success roll.
-          if succeeds[:succeeds] == "%xgSUCCEEDS%xn"
 
+          #Spell effects here do not roll for success individually because a spell may do more than one thing and so need one success roll.
+          if succeeds[:succeeds] == "%xgSUCCEEDS%xn"
             targets.each do |target|
 
               #Shields
@@ -156,45 +154,47 @@ module AresMUSH
                 messages.concat message
               end
 
-              #Healing
+              #Healing, REviving, and Resurrecting
               if heal_points
                 message = Magic.cast_combat_heal(combatant, target, self.spell, heal_points)
                 messages.concat message
               end
 
-              #Equip Weapon
-              if (weapon && weapon != "Spell")
-                message = Magic.cast_weapon(combatant, target, self.spell, weapon)
-                messages.concat message
-              end
-
-              #Equip Weapon Specials
-              if weapon_specials_str
-                message = Magic.cast_weapon_specials(combatant, target, self.spell, weapon_specials_str)
-                messages.concat message
-              end
-
-              #Equip Armor
-              if armor
-                message = Magic.cast_armor(combatant, target, self.spell, armor)
-                messages.concat message
-              end
-
-              #Equip Armor Specials
-              if armor_specials_str
-                message = Magic.cast_armor_specials(combatant, target, self.spell, rounds)
-                messages.concat message
-              end
-
-              #Reviving
               if is_revive
                 message = Magic.cast_revive(combatant, target, self.spell)
                 messages.concat message
               end
 
-              #Ressurrection
+              if auto_revive
+                puts "Hitting auto revive"
+                message = Magic.cast_auto_revive(combatant, target, self.spell)
+                messages.concat message
+              end
+
               if is_res
                 message = Magic.cast_resurrection(combatant, target, self.spell)
+                messages.concat message
+              end
+
+              #Weapons & Weapon specials
+              if (weapon && weapon != "Spell")
+                message = Magic.cast_weapon(combatant, target, self.spell, weapon)
+                messages.concat message
+              end
+
+              if weapon_specials_str
+                message = Magic.cast_weapon_specials(combatant, target, self.spell, weapon_specials_str)
+                messages.concat message
+              end
+
+              #Armor & Armor Specials
+              if armor
+                message = Magic.cast_armor(combatant, target, self.spell, armor)
+                messages.concat message
+              end
+
+              if armor_specials_str
+                message = Magic.cast_armor_specials(combatant, target, self.spell, rounds)
                 messages.concat message
               end
 
@@ -242,18 +242,16 @@ module AresMUSH
                 message = Magic.cast_combat_roll(combatant, target, spell, damage_type, succeeds[:result])
                 messages.concat message
               end
-            #End targets.each do for non FS3 spells (if spell succeeds)
+            #End targets.each do for non FS3 attack spells (if spell succeeds)
             end
-          #Spell fails
 
+          #Spell fails
           elsif !target
             messages.concat [t('magic.spell_resolution_msg', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xrFAILS%xn")]
           else
             messages.concat [t('magic.spell_target_resolution_msg', :name =>  combatant.name, :spell => self.spell, :target => print_target_names, :succeeds => "%xrFAILS%xn")]
           #End spell rolls
           end
-        # elsif self.spell == "Phoenix's Healing Flames"
-        #   messages.concat [t('magic.cast_phoenix_heal', :name => self.name, :spell => self.spell, :succeeds => "%xgSUCCEEDS%xn")]
         end
         level = Global.read_config("spells", self.spell, "level")
         if level == 8

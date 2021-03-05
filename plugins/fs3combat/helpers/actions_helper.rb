@@ -50,7 +50,6 @@ module AresMUSH
 
     def self.reset_for_new_turn(combatant)
 
-
       # Reset aim if they've done anything other than aiming.
       if (combatant.is_aiming? && combatant.action_klass != "AresMUSH::FS3Combat::AimAction")
         combatant.log "Reset aim for #{combatant.name}."
