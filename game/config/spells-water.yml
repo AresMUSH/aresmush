@@ -505,7 +505,6 @@ spells:
     name: Mass Hydroplane
     range: Short
     school: Water
-
     target_num: 5
   Greater Purify Water:
     available: false
@@ -522,7 +521,7 @@ spells:
     available: true
     auto_revive: true
     casting_time: 1 round
-    desc: "A knocked out target is deluged by waters and soaked through. From beneath the water, they are revived and able to return to the fight. \n\nA revived target has no wounds and no spell fatigue.\n\n A magic user who knows this spell is automatically drenched and revived when they themselves can no longer fight. This takes 1 round after they are knocked out."
+    desc: "A knocked out target is deluged by waters and soaked through. From beneath the water, they are revived and able to return to the fight. All wounds are healed. \n\nA magic user who knows this spell is automatically drenched and revived when they themselves can no longer fight. This takes 1 round after they are knocked out."
     effect: Revive
     level: 7
     line_of_sight: true
