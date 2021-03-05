@@ -359,6 +359,7 @@ spells:
     name: Mind Shield
     range: Short
     school: Spirit
+    shields_against: Psionic
     target_num: 1
     duration: 30 minutes
     rounds: 180
@@ -382,7 +383,6 @@ spells:
     roll: true
     school: Spirit
     target_num: 1
-
   Spirit Of Pacifism:
     available: true
     casting_time: 1 round
@@ -526,7 +526,6 @@ spells:
     roll: true
     school: Spirit
     target_num: 100
-
   Simple Command:
     available: true
     casting_time: 1 round
@@ -584,8 +583,8 @@ spells:
     roll: true
     rounds: 800
     school: Spirit
+    shields_against: Psionic
     target_num: 1
-
   Familiar (Spirit):
     desc: "A familiar is a spirit associated or allied with a school of magic that has taken residence in a physical vessel with the shape of an animal. It functions as a companion, assistant, and guardian. \n\nFamiliars may be capable of some or all of the following: sharing telepathic or empathic communication, providing knowledge of the arcane, sharing senses, lending physical aid as spies or fighters, delivering spells at a distance of up to three miles."
     effect: Other

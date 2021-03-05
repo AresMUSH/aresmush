@@ -4,9 +4,13 @@ module AresMUSH
     attribute :spells_cast, :type => DataType::Integer
     attribute :achievement_spells_learned, :type => DataType::Integer
     attribute :achievement_spells_discarded, :type => DataType::Integer
+    attribute :magic_shields, :type => DataType::Array, :default => []
+
+
     attribute :mind_shield, :type => DataType::Integer, :default => 0
     attribute :endure_fire, :type => DataType::Integer, :default => 0
     attribute :endure_cold, :type => DataType::Integer, :default => 0
+
 
     def auto_revive?
       auto_revive_spell = self.spells_learned.to_a.select { |spell| Global.read_config("spells", spell.name, "auto_revive")}

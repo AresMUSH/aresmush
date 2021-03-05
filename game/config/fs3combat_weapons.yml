@@ -152,7 +152,7 @@ fs3combat:
       lethality: 0
       penetration: 6
       weapon_type: Ranged
-      ammo: 0
+      ammo: 3
       recoil: 0
       damage_type: Physical
       accuracy: 1
@@ -164,7 +164,7 @@ fs3combat:
       lethality: 5
       penetration: 4
       weapon_type: Ranged
-      ammo: 0
+      ammo: 3
       recoil: 0
       damage_type: Physical
       accuracy: 1

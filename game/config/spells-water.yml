@@ -116,6 +116,7 @@ spells:
     name: Endure Cold
     range: Self
     school: Water
+    shields_against: Cold
     rounds: 60
   Ice Talons:
     available: true
@@ -318,8 +319,8 @@ spells:
     name: Group Endure Cold
     range: Short
     school: Water
+    shields_against: Cold
     target_num: 3
-
     rounds: 600
   Group Water Walk:
     available: true

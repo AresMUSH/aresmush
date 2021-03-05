@@ -2,25 +2,19 @@ module AresMUSH
   module Magic
 
     def self.cast_shield(combatant, target, spell, rounds, result)
-      shield_strength = result
-      if spell.include?("Mind Shield")
-        type = "psionic"
-        target.update(mind_shield: shield_strength)
-        target.update(mind_shield_counter: rounds)
-        shield_value = target.mind_shield
-      elsif spell.include?("Endure Cold")
-        type = "cold"
-        target.update(endure_cold: shield_strength)
-        target.update(endure_cold_counter: rounds)
-        shield_value = target.endure_cold
-      elsif spell.include?("Endure Fire")
-        type = "fire"
-        target.update(endure_fire: shield_strength)
-        target.update(endure_fire_counter: rounds)
-        shield_value = target.endure_fire
-      end
+      type =  Global.read_config("spells", spell, "shields_against")
+      magic_shields = target.magic_shields || []
+      magic_shields.delete_if { |shield| shield['name'] == spell }
+      shield = [{
+        name: spell,
+        strength: result,
+        shields_against: type,
+        rounds: rounds
+        }]
+      magic_shields.concat shield
+      target.update(magic_shields: magic_shields)
 
-      combatant.log "Setting #{target.name}'s #{spell} to #{shield_value}"
+      combatant.log "Setting #{target.name}'s #{spell.upcase} to #{result}"
       message = [t('magic.cast_shield', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target =>  target.name, :type => type)]
       return message
     end

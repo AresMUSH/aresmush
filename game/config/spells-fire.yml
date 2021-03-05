@@ -83,6 +83,7 @@ spells:
     effect: Buff
     is_potion: true
     is_shield: true
+    shields_against: Fire
     level: 3
     name: Endure Fire
     range: Self
@@ -238,6 +239,7 @@ spells:
     level: 5
     name: Group Endure Fire
     range: Short
+    shields_against: Fire
     school: Fire
     rounds: 100
     target_num: 3

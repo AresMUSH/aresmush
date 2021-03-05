@@ -4,6 +4,7 @@ module AresMUSH
     attribute :spell_mod, :type => DataType::Integer, :default => 0
     attribute :gm_spell_mod, :type => DataType::Integer, :default => 0
     attribute :has_cast, :type => DataType::Boolean, :default => false
+    attribute :magic_shields, :type => DataType::Array, :default => []
     attribute :magic_stun, :type => DataType::Boolean, :default => false
     attribute :magic_stun_spell
     attribute :magic_stun_counter, :type => DataType::Integer, :default => 0
@@ -29,4 +30,4 @@ module AresMUSH
     attribute :endure_cold_counter, :type => DataType::Integer, :default => 0
 
   end
-end 
+end

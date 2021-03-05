@@ -2,11 +2,16 @@ module AresMUSH
   module Magic
 
     def self.spell_shields
-      ["Mind Shield", "Endure Fire", "Endure Cold", "Group Endure Cold", "Enduring Mind Shield", "Group Endure Fire"]
+      Global.read_config("spells").select { |spell| Global.read_config("spells", spell, "shields_against")}.map {|name, data| name}
     end
 
     def self.shields_expire (char)
       room = char.room
+
+      magic_shields = target.magic_shields || []
+      magic_shields.each do |shield|
+        if 
+
       if (char.mind_shield > 0)
         room.emit_ooc t('magic.shield_wore_off', :name => char.name, :shield => "Mind Shield")
         char.update(mind_shield: 0)
