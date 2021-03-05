@@ -326,7 +326,6 @@ spells:
     roll: true
     school: Fire
     target_num: 1
-
   Energize Dimensional Anchor (Fire):
     available: true
     casting_time: 2 minutes
@@ -355,7 +354,7 @@ spells:
     available: true
     auto_revive: true
     casting_time: 1 round
-    desc: "A knocked out target is overtaken by flames and reduced to ashes. From beneath those ashes, they are revived and able to return to the fight. \n\nA revived target has no wounds and no spell fatigue.\n\n A magic user who knows this spell is automatically consumed and revived when they themselves can no longer fight. This takes 1 round after they are knocked out."
+    desc: "A knocked out target is overtaken by flames and reduced to ashes. From beneath those ashes, they are revived and able to return to the fight. All wounds are healed.\n\n A magic user who knows this spell is automatically consumed and revived when they themselves can no longer fight. This takes 1 round after they are knocked out."
     effect: Revive
     level: 7
     line_of_sight: true
@@ -365,7 +364,6 @@ spells:
     roll: false
     school: Fire
     target_num: 1
-
   #LEVEL 8
   Firestorm:
     area: Up to 1 square mile
