@@ -28,9 +28,5 @@ module AresMUSH
     attribute :endure_cold, :type => DataType::Integer, :default => 0
     attribute :endure_cold_counter, :type => DataType::Integer, :default => 0
 
-    # def auto_revive?
-    #     return true if combatant.associated_model.spells_learned.select { |a| (a.auto_revive? == true)}
-    # end
-
   end
-end
+end 
