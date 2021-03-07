@@ -89,21 +89,22 @@ module AresMUSH
         add_to_profile profile_data, Idle.build_web_profile_data(char, enactor)
         add_to_profile profile_data, Chargen.build_web_profile_data(char, enactor)
         add_to_profile profile_data, Roles.build_web_profile_data(char, enactor)
+        add_to_profile profile_data, Scenes.build_web_profile_data(char, enactor)
         
         if (FS3Skills.is_enabled?)
           profile_data['fs3'] = FS3Skills::CharProfileRequestHandler.new.handle(request)
         end
         
         if Manage.is_extra_installed?("traits")
-          add_to_profile profile_data, Traits.get_traits_for_web_viewing(char, enactor)
+          profile_data['traits'] = Traits.get_traits_for_web_viewing(char, enactor)
         end
         
         if Manage.is_extra_installed?("rpg")
-          add_to_profile profile_data, Rpg.get_sheet_for_web_viewing(char, enactor)
+          profile_data['rpg'] = Rpg.get_sheet_for_web_viewing(char, enactor)
         end
         
         if Manage.is_extra_installed?("fate")
-          add_to_profile profile_data, Fate.get_web_sheet(char, enactor)
+          profile_data['fate'] = Fate.get_web_sheet(char, enactor)
         end
         
         profile_data
