@@ -94,9 +94,29 @@ fs3combat:
     fs3_joined_combat:
       type: fs3
       message: Joined %{count} combats.
+      levels:
+      - 1
+      - 10
+      - 20
+      - 50
+      - 100
+      - 200
+      - 500
+      - 1000
     fs3_wounded:
       type: fs3
       message: Wounded %{count} times in combat.
+      levels:
+      - 1
+      - 5
+      - 10
+      - 20
+      - 50
+      - 100
+      - 150
+      - 200
+      - 250
+      - 500
     fs3_hard_hitter:
       type: fs3
       message: Incapacitated an opponent in combat.

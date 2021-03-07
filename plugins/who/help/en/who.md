@@ -20,7 +20,7 @@ The `where` command shows you who's online and where they are.
 `where` - Shows the who list including character locations.
 `where/ic` - Only show people who are IC.
 `where/friends` - Only show where your friends are.
-`hide` and `unhide` - Controls whether your location shows up on the who list and live scene list.
+`hide` and `unhide` - Controls whether your grid location shows up on the who/where list and live scene list.
 
 > **Note:** There is no way in Ares to completely omit yourself from the who list or room descriptions (i.e. no dark power.)
 
