@@ -51,7 +51,6 @@ en:
        motd_title: "Message of the Day:"
        unread_mail: "- You have %xh%xmunread mail%xn messages. %xh%xx(mail/new)%xn"
        no_unread_mail: "- No unread mail."
-       unread_forum: "- There are %xh%xmnew forum%xn posts.  %xh%xx(forum/new)%xn"
        no_unread_forum: "- No new forum posts."
        unread_requests: "- There is new activity on your %xhrequests%xn. %xh%xx(requests)%xn"
        unread_jobs: "- There are %xh%xmunread jobs%xn. %xh%xx(jobs/new)%xn"
