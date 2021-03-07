@@ -20,7 +20,14 @@ module AresMUSH
         template = HandlebarsTemplate.new(File.join(AresMUSH.plugin_path, 'website', 'templates', 'scene_list.hbs'))
 
         data = {
-          "scenes" => matches.sort_by { |m| m.icdate || m.created_at }.map { |m| {id: m.id, title: m.date_title, summary: m.summary, participant_names: m.participant_names} }
+          "scenes" => matches.sort_by { |m| m.icdate || m.created_at }.map { |m| 
+            { 
+              id: m.id, 
+              title: m.date_title, 
+              summary: Website.format_markdown_for_html(m.summary), 
+              participant_names: m.participant_names
+            } 
+          }
         }
         
         template.render(data)
