@@ -64,9 +64,14 @@ BASIC CONTAINERS
 }
 
 .thumbnail-gallery {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.thumbnail-gallery-item {
     height: 150px; 
-    width: 150px;
-    float:left;
+    width: 150px;    
 }
 
 .code-editor {
@@ -1208,6 +1213,11 @@ CHARACTERS SCREEN
     background-size: cover;
     background-repeat: no-repeat;
     background-image:url('/game/uploads/theme_images/box-bg.png');
+}
+
+.achievement-levels {
+  padding-top: 5px;
+  color: #bbb;
 }
 
 table.char-ability-list { 
