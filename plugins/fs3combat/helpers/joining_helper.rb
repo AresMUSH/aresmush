@@ -71,7 +71,7 @@ module AresMUSH
     
     def self.handle_combat_join_achievement(char)
       char.update(combats_participated_in: char.combats_participated_in + 1)
-      [ 1, 10, 20, 50, 100 ].reverse.each do |count|
+      Achievements.achievement_levels("fs3_joined_combat").reverse.each do |count|
         if (char.combats_participated_in >= count)
           Achievements.award_achievement(char, "fs3_joined_combat", count)
           break
