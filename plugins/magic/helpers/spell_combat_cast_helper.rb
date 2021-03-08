@@ -2,19 +2,24 @@ module AresMUSH
   module Magic
 
     def self.cast_shield(combatant, target, spell, rounds, result)
-      type =  Global.read_config("spells", spell, "shields_against")
-      magic_shields = target.magic_shields || []
-      magic_shields.delete_if { |shield| shield['name'] == spell }
-      shield = [{
-        name: spell,
-        strength: result,
-        shields_against: type,
-        rounds: rounds
-        }]
-      magic_shields.concat shield
-      target.update(magic_shields: magic_shields)
+      shield = Magic.find_shield_named(target.associated_model, spell)
 
-      combatant.log "Setting #{target.name}'s #{spell.upcase} to #{result}"
+      if shield
+        shield.update(strength: result)
+        shield.update(rounds: rounds)
+      else
+        shield = {
+          name: spell,
+          strength: result,
+          rounds: rounds,
+          character: target.associated_model
+          }
+        MagicShields.create(shield)
+      end
+      puts "***************ALL SHIELDS #{target.associated_model.magic_shields.to_a}***************"
+
+      type = Global.read_config("spells", spell, "shields_against")
+      combatant.log "Setting #{target.name}'s #{spell.upcase} to #{shield.strength}"
       message = [t('magic.cast_shield', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target =>  target.name, :type => type)]
       return message
     end
@@ -124,112 +129,138 @@ module AresMUSH
       return message
     end
 
-    def self.cast_lethal_mod(combatant, target, spell, damage_type, rounds, lethal_mod, result)
-      if target == combatant
-        target.update(lethal_mod_counter: rounds)
-        target.update(damage_lethality_mod: lethal_mod)
-        message = [t('magic.cast_mod', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target =>  target.name, :mod => lethal_mod, :type => "lethality")]
-      elsif damage_type == "Psionic" && target.mind_shield > 0
-        shield_held = Magic.check_shield(target, combatant.name, spell, result) == "shield"
-        if shield_held
-           message = [t('magic.shield_held', :name => combatant.name, :spell => spell, :mod => "", :shield => "Mind Shield", :target => target.name)]
+    def self.cast_mod(combatant, target, spell, damage_type, rounds, result, attack_mod = nil, defense_mod = nil, init_mod = nil, lethal_mod = nil, spell_mod = nil)
+      if Magic.shield_types.include?(damage_type)
+        check_shield = Magic.stopped_by_shield?(target, combatant, spell, result)
+        if check_shield[:hit]
+          mod_msg = Magic.update_spell_mods(target, rounds, attack_mod, defense_mod, init_mod, lethal_mod, spell_mod)
+          message = [t('magic.mod_shield_failed', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target =>  target.name, :mod_msg => mod_msg, :shield => check_shield[:shield])]
         else
-          target.update(lethal_mod_counter: rounds)
-          target.update(damage_lethality_mod: lethal_mod)
-          message = [t('magic.mind_shield_failed', :name => combatant.name, :spell => spell, :mod => "", :shield => "Mind Shield", :target => target.name, :succeeds => "%xgSUCCEEDS%xn")]
+          message = [check_shield[:msg]]
         end
       else
-        target.update(lethal_mod_counter: rounds)
-        target.update(damage_lethality_mod: lethal_mod)
-        message = [t('magic.cast_mod', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target =>  target.name, :mod => lethal_mod, :type => "lethality")]
+        mod_msg = Magic.update_spell_mods(target, rounds, attack_mod, defense_mod, init_mod, lethal_mod, spell_mod)
+        message = [t('magic.cast_mod', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target =>  target.name, :mod_msg => mod_msg)]
       end
       return message
     end
 
-    def self.cast_attack_mod(combatant, target, spell, damage_type, rounds, attack_mod, result)
-      if target == combatant
-        target.update(attack_mod_counter: rounds)
-        target.update(spell_attack_mod: attack_mod)
-        message = [t('magic.cast_mod', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target =>  target.name, :mod => attack_mod, :type => "attack")]
-      elsif damage_type == "Psionic" && target.mind_shield > 0
-        shield_held = Magic.check_shield(target, combatant.name, spell, result) == "shield"
-        if shield_held
-           message = [t('magic.shield_held', :name => combatant.name, :spell => spell, :mod => "", :shield => "Mind Shield", :target => target.name)]
-        else
-          target.update(attack_mod_counter: rounds)
-          target.update(spell_attack_mod: attack_mod)
-          message = [t('magic.mind_shield_failed', :name => combatant.name, :spell => spell, :mod => "", :shield => "Mind Shield", :target => target.name, :succeeds => "%xgSUCCEEDS%xn")]
-        end
-      else
-        target.update(attack_mod_counter: rounds)
-        target.update(spell_attack_mod: attack_mod)
-        message = [t('magic.cast_mod', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target =>  target.name, :mod => attack_mod, :type => "attack")]
+    def self.update_spell_mods (target, rounds, attack_mod = nil, defense_mod = nil, init_mod = nil, lethal_mod = nil, spell_mod = nil)
+      mod_msg = []
+      if attack_mod
+        target.update(magic_attack_mod: attack_mod)
+        target.update(magic_attack_mod_counter: rounds)
+        mod_msg.concat ["#{attack_mod} attack"]
       end
-      return message
-    end
-
-    def self.cast_defense_mod(combatant, target, spell, damage_type, rounds, defense_mod, result)
-      if target == combatant
-        target.update(defense_mod_counter: rounds)
-        target.update(spell_defense_mod: defense_mod)
-        message = [t('magic.cast_mod', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target =>  target.name, :mod => defense_mod, :type => "defense")]
-      elsif damage_type == "Psionic" && target.mind_shield > 0
-        shield_held = Magic.check_shield(target, combatant.name, spell, result) == "shield"
-        if shield_held
-           message = [t('magic.shield_held', :name => combatant.name, :spell => spell, :mod => "", :shield => "Mind Shield", :target => target.name)]
-        else
-          target.update(defense_mod_counter: rounds)
-          target.update(spell_defense_mod: defense_mod)
-          message = [t('magic.mind_shield_failed', :name => combatant.name, :spell => spell, :mod => "", :shield => "Mind Shield", :target => target.name, :succeeds => "%xgSUCCEEDS%xn")]
-        end
-      else
-        target.update(defense_mod_counter: rounds)
-        target.update(spell_defense_mod: defense_mod)
-        message = [t('magic.cast_mod', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target =>  target.name, :mod => defense_mod, :type => "defense")]
+      if defense_mod
+        target.update(magic_defense_mod: defense_mod)
+        target.update(magic_defense_mod_counter: rounds)
+        mod_msg.concat ["#{defense_mod} defense"]
       end
-      return message
-    end
-
-    def self.cast_spell_mod(combatant, target, spell, damage_type, rounds, spell_mod, result)
-      if target == combatant
-        target.update(spell_mod_counter: rounds)
+      if init_mod
+        target.update(magic_init_mod: init_mod)
+        target.update(magic_init_mod_counter: rounds)
+        mod_msg.concat ["#{init_mod} initative"]
+      end
+      if lethal_mod
+        target.update(magic_lethal_mod: lethal_mod)
+        target.update(magic_lethal_mod_counter: rounds)
+        mod_msg.concat ["#{lethal_mod} lethality"]
+      end
+      if spell_mod
         target.update(spell_mod: spell_mod)
-        message = [t('magic.cast_mod', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target =>  target.name, :mod => spell_mod, :type => "spell")]
-      elsif damage_type == "Psionic" && target.mind_shield > 0
-        shield_held = Magic.check_shield(target, combatant.name, spell, result) == "shield"
-        if shield_held
-           message = [t('magic.shield_held', :name => combatant.name, :spell => spell, :mod => "", :shield => "Mind Shield", :target => target.name)]
-        else
-          target.update(spell_mod_counter: rounds)
-          target.update(spell_mod: spell_mod)
-          message = [t('magic.mind_shield_failed', :name => combatant.name, :spell => spell, :mod => "", :shield => "Mind Shield", :target => target.name, :succeeds => "%xgSUCCEEDS%xn")]
-        end
-      else
         target.update(spell_mod_counter: rounds)
-        target.update(spell_mod: spell_mod)
-        message = [t('magic.cast_mod', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target =>  target.name, :mod => spell_mod, :type => "spell")]
+        mod_msg.concat ["#{spell_mod} spell casting"]
       end
-      return message
+      mod_msg = mod_msg.join(", ")
+      target.combat.log "SETTING SPELL MODS (mod/rounds): Attack:#{target.magic_attack_mod}/#{target.magic_attack_mod_counter} Defense:#{target.magic_defense_mod}/#{target.magic_defense_mod_counter} Init:#{target.magic_init_mod}/#{target.magic_init_mod_counter} Lethal:#{target.magic_lethal_mod}/#{target.magic_lethal_mod_counter} Spell:#{target.spell_mod}/#{target.spell_mod_counter}"
+      return mod_msg
     end
 
-    def self.cast_init_mod(combatant, target, spell, damage_type, rounds, init_mod, result)
-      if target == combatant
-        target.update(init_spell_mod_counter: rounds)
-        target.update(init_spell_mod: init_mod)
-        message = [t('magic.cast_mod', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target =>  target.name, :mod => init_mod, :type => "initiative")]
-      elsif damage_type == "Psionic" && target.mind_shield > 0
-        shield_held = Magic.check_shield(target, combatant.name, spell, result) == "shield"
-        if shield_held
-           message = [t('magic.shield_held', :name => combatant.name, :spell => spell, :mod => "", :shield => "Mind Shield", :target => target.name)]
-        else
-          target.update(init_spell_mod_counter: rounds)
-          target.update(init_spell_mod: init_mod)
-          message = [t('magic.mind_shield_failed', :name => combatant.name, :spell => spell, :mod => "", :shield => "Mind Shield", :target => target.name, :succeeds => "%xgSUCCEEDS%xn")]
-        end
-      end
-
-      return message
-    end
+    # def self.cast_attack_mod(combatant, target, spell, damage_type, rounds, attack_mod, result)
+    #   if target == combatant
+    #     target.update(attack_mod_counter: rounds)
+    #     target.update(spell_attack_mod: attack_mod)
+    #     message = [t('magic.cast_mod', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target =>  target.name, :mod => attack_mod, :type => "attack")]
+    #   elsif damage_type == "Psionic" && target.mind_shield > 0
+    #     shield_held = Magic.check_shield(target, combatant.name, spell, result) == "shield"
+    #     if shield_held
+    #        message = [t('magic.shield_held', :name => combatant.name, :spell => spell, :mod => "", :shield => "Mind Shield", :target => target.name)]
+    #     else
+    #       target.update(attack_mod_counter: rounds)
+    #       target.update(spell_attack_mod: attack_mod)
+    #       message = [t('magic.mind_shield_failed', :name => combatant.name, :spell => spell, :mod => "", :shield => "Mind Shield", :target => target.name, :succeeds => "%xgSUCCEEDS%xn")]
+    #     end
+    #   else
+    #     target.update(attack_mod_counter: rounds)
+    #     target.update(spell_attack_mod: attack_mod)
+    #     message = [t('magic.cast_mod', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target =>  target.name, :mod => attack_mod, :type => "attack")]
+    #   end
+    #   return message
+    # end
+    #
+    # def self.cast_defense_mod(combatant, target, spell, damage_type, rounds, defense_mod, result)
+    #   if target == combatant
+    #     target.update(defense_mod_counter: rounds)
+    #     target.update(spell_defense_mod: defense_mod)
+    #     message = [t('magic.cast_mod', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target =>  target.name, :mod => defense_mod, :type => "defense")]
+    #   elsif damage_type == "Psionic" && target.mind_shield > 0
+    #     shield_held = Magic.check_shield(target, combatant.name, spell, result) == "shield"
+    #     if shield_held
+    #        message = [t('magic.shield_held', :name => combatant.name, :spell => spell, :mod => "", :shield => "Mind Shield", :target => target.name)]
+    #     else
+    #       target.update(defense_mod_counter: rounds)
+    #       target.update(spell_defense_mod: defense_mod)
+    #       message = [t('magic.mind_shield_failed', :name => combatant.name, :spell => spell, :mod => "", :shield => "Mind Shield", :target => target.name, :succeeds => "%xgSUCCEEDS%xn")]
+    #     end
+    #   else
+    #     target.update(defense_mod_counter: rounds)
+    #     target.update(spell_defense_mod: defense_mod)
+    #     message = [t('magic.cast_mod', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target =>  target.name, :mod => defense_mod, :type => "defense")]
+    #   end
+    #   return message
+    # end
+    #
+    # def self.cast_spell_mod(combatant, target, spell, damage_type, rounds, spell_mod, result)
+    #   if target == combatant
+    #     target.update(spell_mod_counter: rounds)
+    #     target.update(spell_mod: spell_mod)
+    #     message = [t('magic.cast_mod', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target =>  target.name, :mod => spell_mod, :type => "spell")]
+    #   elsif damage_type == "Psionic" && target.mind_shield > 0
+    #     shield_held = Magic.check_shield(target, combatant.name, spell, result) == "shield"
+    #     if shield_held
+    #        message = [t('magic.shield_held', :name => combatant.name, :spell => spell, :mod => "", :shield => "Mind Shield", :target => target.name)]
+    #     else
+    #       target.update(spell_mod_counter: rounds)
+    #       target.update(spell_mod: spell_mod)
+    #       message = [t('magic.mind_shield_failed', :name => combatant.name, :spell => spell, :mod => "", :shield => "Mind Shield", :target => target.name, :succeeds => "%xgSUCCEEDS%xn")]
+    #     end
+    #   else
+    #     target.update(spell_mod_counter: rounds)
+    #     target.update(spell_mod: spell_mod)
+    #     message = [t('magic.cast_mod', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target =>  target.name, :mod => spell_mod, :type => "spell")]
+    #   end
+    #   return message
+    # end
+    #
+    # def self.cast_init_mod(combatant, target, spell, damage_type, rounds, init_mod, result)
+    #   if target == combatant
+    #     target.update(init_spell_mod_counter: rounds)
+    #     target.update(init_spell_mod: init_mod)
+    #     message = [t('magic.cast_mod', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target =>  target.name, :mod => init_mod, :type => "initiative")]
+    #   elsif damage_type == "Psionic" && target.mind_shield > 0
+    #     shield_held = Magic.check_shield(target, combatant.name, spell, result) == "shield"
+    #     if shield_held
+    #        message = [t('magic.shield_held', :name => combatant.name, :spell => spell, :mod => "", :shield => "Mind Shield", :target => target.name)]
+    #     else
+    #       target.update(init_spell_mod_counter: rounds)
+    #       target.update(init_spell_mod: init_mod)
+    #       message = [t('magic.mind_shield_failed', :name => combatant.name, :spell => spell, :mod => "", :shield => "Mind Shield", :target => target.name, :succeeds => "%xgSUCCEEDS%xn")]
+    #     end
+    #   end
+    #
+    #   return message
+    # end
 
     def self.cast_stance(combatant, target, spell, damage_type, rounds, stance, result)
       if target == combatant

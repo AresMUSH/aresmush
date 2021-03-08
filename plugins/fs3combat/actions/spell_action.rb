@@ -205,28 +205,8 @@ module AresMUSH
               end
 
               #Apply Mods
-              if lethal_mod
-                message = Magic.cast_lethal_mod(combatant, target, spell, damage_type, rounds, lethal_mod, succeeds[:result])
-                messages.concat message
-              end
-
-              if attack_mod
-                message = Magic.cast_attack_mod(combatant, target, spell, damage_type, rounds, attack_mod, succeeds[:result])
-                messages.concat message
-              end
-
-              if defense_mod
-                message = Magic.cast_defense_mod(combatant, target, spell, damage_type, rounds, defense_mod, succeeds[:result])
-                messages.concat message
-              end
-
-              if spell_mod
-                message = Magic.cast_spell_mod(combatant, target, spell, damage_type, rounds, spell_mod, succeeds[:result])
-                messages.concat message
-              end
-
-              if init_mod
-                message = Magic.cast_init_mod(combatant, target, spell, damage_type, rounds, init_mod, succeeds[:result])
+              if attack_mod || defense_mod || init_mod || lethal_mod || spell_mod
+                message = Magic.cast_mod(combatant, target, spell, damage_type, rounds, succeeds[:result], attack_mod, defense_mod, init_mod, lethal_mod, spell_mod)
                 messages.concat message
               end
 
