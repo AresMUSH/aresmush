@@ -160,6 +160,11 @@ magic-items:
     desc: This spear is 5 feet in length with a smooth, oiled shaft that is decorated in ogham runes along one side. It has a simple, but sharp spearhead, and allows its bearer to cast Track Animal.
     spells:
     - Track Animal
+  Wristlet of Eternal Evergreen:
+    name: Wristlet of Eternal Evergreen
+    desc: "A bracelet of a Torejad evergreen branch that grants the wearer the ability to cast Minor Heal."
+    spells:
+    - Minor Heal
 
   #LORE HOOKS
   #Adelaide's Hook
