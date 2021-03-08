@@ -47,7 +47,7 @@ en:
       not_ko: "%{target} is not knocked out."
 
       cast_damage: "%{name} casts %xB%{spell}%xn on %{target} and %{succeeds}, giving %{target} a wound."
-      cast_mod: "%{name} casts %xB%{spell}%xn on %{target} and %{succeeds}, giving %{target} a %xg%{mod} %{type} modification%xn."
+      cast_mod: "%{name} casts %xB%{spell}%xn on %{target} and %{succeeds}, giving %{target} a %xg%{mod_msg} modification%xn."
       cast_stance: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{succeeds}, changing %{target}'s stance to %{stance}. It will last for %{rounds} more round(s)."
       cast_stun: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{succeeds}. They will be stunned for %{rounds} more round(s)."
       cast_failed_stun: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and the spell %{succeeds}, but %{target} resists and is not stunned."
@@ -82,6 +82,7 @@ en:
       cast_shield: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{succeeds}. They are protected against %{type} attacks."
       shield_failed: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{target}'s %{shield} failed to stop it. %{name} %xgSUCCEEDS%xn, but the damage is reduced."
       shrapnel_shield_failed: "%{name}'s %xB%{weapon}%xn hits %{target} and %{target}'s %{shield} failed to stop it, but the damage is reduced."
+      mod_shield_failed:  "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{target}'s %{shield} failed to stop it. %{name} %xgSUCCEEDS%xn, giving %{target} a %xg%{mod_msg}%xn modification."
       shrapnel_shield_held: "%{name}'s %xB%{weapon}%xn hits %{target}, but %{target}'s %{shield} stopped it."
       shield_failed_stun: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{target}'s %{shield} failed to stop it. %{name} %xgSUCCEEDS%xn and %{target} will be stunned for %{rounds} more rounds."
       shield_failed_stun_resisted: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{target}'s %{shield} failed to stop it, but %{target} resists and %xris not stunned%xn."
