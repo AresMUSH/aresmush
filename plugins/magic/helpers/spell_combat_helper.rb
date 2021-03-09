@@ -67,7 +67,7 @@ module AresMUSH
       stopped_by_cover = target.stance == "Cover" ? FS3Combat.stopped_by_cover?(attacker_net_successes, combatant) : false
       hit = false
 
-      stopped_by_shield = Magic.stopped_by_shield?(spell, target, combatant, attack_roll)
+      stopped_by_shield = Magic.stopped_by_shield?(target, combatant, spell, attack_roll)
       weapon_type = FS3Combat.weapon_stat(combatant.weapon, "weapon_type")
 
       if (attack_roll <= 0)
@@ -78,7 +78,7 @@ module AresMUSH
         message = t('fs3combat.attack_hits_cover', :name => combatant.name, :target => target.name, :weapon => weapon)
       elsif stopped_by_shield
         message = stopped_by_shield[:msg]
-        hit = stopped_by_shield[:hit]
+        hit = Magic.stun_successful?(stopped_by_shield[:hit], attacker_net_successes)
       elsif (attacker_net_successes < 0)
         # Only can evade when being attacked by melee or when in a vehicle.
         if (weapon_type == 'Melee' || target.is_in_vehicle?)
@@ -104,19 +104,27 @@ module AresMUSH
       }
     end
 
-    def self.set_spell_weapon_effects(combatant, spell)
+    def self.stun_successful?(hit, attacker_net_successes)
+      if hit && attacker_net_successes > 0
+        return true
+      else
+        return false
+      end
+    end
+
+    def self.set_magic_weapon_effects(combatant, spell)
       rounds = Global.read_config("spells", spell, "rounds")
       special = Global.read_config("spells", spell, "weapon_specials")
       weapon = combatant.weapon.before("+")
-      weapon_specials = combatant.spell_weapon_effects
+      weapon_specials = combatant.magic_weapon_effects
 
-      if combatant.spell_weapon_effects.has_key?(weapon)
+      if combatant.magic_weapon_effects.has_key?(weapon)
         old_weapon_specials = weapon_specials[weapon]
         weapon_specials[weapon] = old_weapon_specials.merge!( special => rounds)
       else
         weapon_specials[weapon] = {special => rounds}
       end
-      combatant.update(spell_weapon_effects: weapon_specials)
+      combatant.update(magic_weapon_effects: weapon_specials)
     end
 
     def self.warn_if_magic_gear(enactor, gear)
@@ -125,30 +133,30 @@ module AresMUSH
       end
     end
 
-    def self.spell_armor_effects(combatant, spell)
+    def self.magic_armor_effects(combatant, spell)
       rounds = Global.read_config("spells", spell, "rounds")
       special = Global.read_config("spells", spell, "armor_specials")
       weapon = combatant.armor.before("+")
-      weapon_specials = combatant.spell_armor_effects
+      weapon_specials = combatant.magic_armor_effects
 
-      if combatant.spell_armor_effects.has_key?(armor)
+      if combatant.magic_armor_effects.has_key?(armor)
         old_armor_specials = armor_specials[armor]
         armor_specials[armor] = old_armor_specials.merge!( special => rounds)
       else
         armor_specials[armor] = {special => rounds}
       end
-      combatant.update(spell_armor_effects:armor_specials)
+      combatant.update(magic_armor_effects:armor_specials)
     end
 
     def self.set_magic_weapon_specials(enactor, combatant, weapon)
       # Set weapon specials gained from equipped magical items
       specials = Magic.set_magic_item_weapon_specials(combatant, specials)
       # Set weapon specials gained from spells
-      if specials && combatant.spell_weapon_effects[weapon]
-        spell_specials = combatant.spell_weapon_effects[weapon].keys
+      if specials && combatant.magic_weapon_effects[weapon]
+        spell_specials = combatant.magic_weapon_effects[weapon].keys
         specials = specials.concat spell_specials
-      elsif combatant.spell_weapon_effects[weapon]
-        specials = combatant.spell_weapon_effects[weapon].keys
+      elsif combatant.magic_weapon_effects[weapon]
+        specials = combatant.magic_weapon_effects[weapon].keys
       end
       return specials
     end
@@ -186,11 +194,11 @@ module AresMUSH
       specials = Magic.set_magic_item_armor_specials(combatant, specials)
 
       # Set armor specials gained from spells
-      if specials && combatant.spell_armor_effects[armor]
-        spell_specials = combatant.spell_armor_effects[armor].keys
+      if specials && combatant.magic_armor_effects[armor]
+        spell_specials = combatant.magic_armor_effects[armor].keys
         specials = specials.concat spell_specials
-      elsif combatant.spell_armor_effects[armor]
-        specials = combatant.spell_armor_effects[armor].keys
+      elsif combatant.magic_armor_effects[armor]
+        specials = combatant.magic_armor_effects[armor].keys
       end
 
       combatant.update(armor_name: armor ? armor.titlecase : nil)

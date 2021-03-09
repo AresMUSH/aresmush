@@ -39,7 +39,7 @@ en:
         # SPELL CASTING
         # ----------------------------
       use_combat_spell: "Use combat/spell when you are in combat."
-      dont_target_self: "Be sure to specify a target when using an attack spell so you don't attack yourself. "
+      dont_target_self: "Be sure to specify a target when using a stun or attack spell so you don't attack yourself. "
       spell_ko: "You cannot cast a spell while Knocked Out."
       casts_spell: "%{name} casts %xB%{spell}%xn%{mod} and %{succeeds}."
       casts_spell_on_target: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{succeeds}."
@@ -50,7 +50,7 @@ en:
       cast_mod: "%{name} casts %xB%{spell}%xn on %{target} and %{succeeds}, giving %{target} a %xg%{mod_msg} modification%xn."
       cast_stance: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{succeeds}, changing %{target}'s stance to %{stance}. It will last for %{rounds} more round(s)."
       cast_stun: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{succeeds}. They will be stunned for %{rounds} more round(s)."
-      cast_failed_stun: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and the spell %{succeeds}, but %{target} resists and is not stunned."
+      cast_stun_resisted: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and the spell %{succeeds}, but %{target} resists and is not stunned."
       not_spell: "That is not a spell."
       cant_cast_on_gear: "You cannot cast %{spell} on %{target}'s %{gear}."
       doesnt_use_target: "This spell does not use a target."
@@ -86,13 +86,13 @@ en:
       shrapnel_shield_held: "%{name}'s %xB%{weapon}%xn hits %{target}, but %{target}'s %{shield} stopped it."
       shield_failed_stun: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{target}'s %{shield} failed to stop it. %{name} %xgSUCCEEDS%xn and %{target} will be stunned for %{rounds} more rounds."
       shield_failed_stun_resisted: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{target}'s %{shield} failed to stop it, but %{target} resists and %xris not stunned%xn."
-      mind_shield_failed: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{target}'s %{shield} failed to stop it. %{name} %xgSUCCEEDS%xn."
+      no_damage_shield_failed: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{target}'s %{shield} failed to stop it. %{name} %xgSUCCEEDS%xn."
       shield_held: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and their %{shield} stopped it. %{name} %xrFAILS%xn."
       no_shield: "%{name} does not have{spell} active."
       not_shield: "%{shield} is not a shield."
       turn_shield_off: "%xhIf it has ICly been longer than the spell's duration, %{name} should do `shield/off %{spell}`.%xn"
       turned_shield_off: "You have turned off %{name}'s %{shield}."
-      cast_failed_stun_shield: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{target}'s %{shield} failed to stop it. The spell %{succeeds}, but %{target} resists and is not stunned."
+      # cast_failed_stun_shield: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{target}'s %{shield} failed to stop it. The spell %{succeeds}, but %{target} resists and is not stunned."
 
 
       # ----------------------------

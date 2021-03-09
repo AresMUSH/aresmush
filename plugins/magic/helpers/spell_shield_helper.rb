@@ -18,8 +18,9 @@ module AresMUSH
       if (char_or_combatant.class == Combatant)
         char = char_or_combatant.associated_model
       else
-        char = char_or_combatant
+        char = Character.named(char_or_combatant)
       end
+      puts "CHAR #{char}"
       shields = char.magic_shields.select { |shield| shield.shields_against == damage_type}
       best_shield = shields.max_by { |s| s.strength}
 
@@ -44,6 +45,7 @@ module AresMUSH
     def self.stopped_by_shield?(target, char_or_combatant, spell, result)
       damage_type = Global.read_config("spells", spell, "damage_type")
       school = Global.read_config("spells", spell, "school")
+      puts "TARGET #{target}"
       shield = Magic.find_best_shield(target, damage_type)
       if shield
         successes = result
@@ -64,6 +66,16 @@ module AresMUSH
           winner = "caster"
         end
 
+        type_does_damage = Global.read_config("magic", damage_type, "does_damage")
+        is_stun = Global.read_config("spells", spell, "is_stun")
+        if type_does_damage
+          failed_msg = t('magic.shield_failed', :name => caster_name, :spell => spell, :mod => "", :shield => shield.name, :target => target.name)
+        elsif is_stun
+          failed_msg = t('magic.shield_failed_stun', :name => caster_name, :spell => spell, :shield=> shield.name, :mod => "", :target => target.name, :rounds => Global.read_config("spells", spell, "rounds"))
+        else
+          failed_msg = t('magic.no_damage_shield_failed', :name => caster_name, :spell => spell, :mod => "", :shield => shield.name, :target => target.name)
+        end
+
         if winner == "shield"
           return {
           msg: t('magic.shield_held', :name => caster_name, :spell => spell, :mod => "", :shield => shield.name, :target => target.name),
@@ -72,7 +84,7 @@ module AresMUSH
           }
         else
           return {
-          msg: t('magic.shield_failed', :name => caster_name, :spell => spell, :mod => "", :shield => shield.name, :target => target.name),
+          msg: failed_msg,
           shield: shield.name,
           hit: true
           }
