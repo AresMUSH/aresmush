@@ -111,13 +111,15 @@ spells:
     desc: 'Deflect attacks directed against you or a single comrade with a telekinetic wall, effectively putting the target in [cover](https://www.aresmush.com/fs3/fs3-3/combat/#stance).'
     duration: 3 rounds
     effect: Defense
+    is_shield: true
     level: 3
     line_of_sight: true
     name: 'Telekinetic Block '
     range: Short
     rounds: 3
     school: Will
-    stance: cover
+    shields_against: All
+    # stance: cover
     target_num: 1
   Telekinetic Hold:
     available: true
@@ -227,15 +229,16 @@ spells:
     desc: "Deflect attacks directed against up to three targets with a telekinetic wall, effectively putting the targets in [cover](https://www.aresmush.com/fs3/fs3-3/combat/#stance)."
     duration: 4 rounds
     effect: Defense
+    is_shield: true
     level: 5
     line_of_sight: true
     name: 'Group Telekinetic Block '
     range: Long
     rounds: 4
     school: Will
-    stance: cover
+    shields_against: All
+    # stance: cover
     target_num: 3
-
   Multiple Telekinesis:
     area: 10 yard radius
     available: true

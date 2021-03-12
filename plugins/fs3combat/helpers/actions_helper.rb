@@ -353,13 +353,13 @@ module AresMUSH
     # Returns { hit: true/false, attacker_net_successes: #, message: explains miss reason }
     def self.determine_attack_margin(combatant, target, mod = 0, called_shot = nil, mount_hit = false)
       weapon = combatant.weapon
+      puts "Recoil: #{combatant.recoil} Mod: #{mod}"
       attack_roll = FS3Combat.roll_attack(combatant, target, mod - combatant.recoil)
       defense_roll = FS3Combat.roll_defense(target, weapon)
 
       attacker_net_successes = attack_roll - defense_roll
       stopped_by_cover = target.stance == "Cover"  ?  FS3Combat.stopped_by_cover?(attacker_net_successes, combatant) : false
       hit = false
-      stopped_by_shield = Magic.stopped_by_shield?(combatant.weapon, target, combatant, attacker_net_successes)
 
       weapon_type = FS3Combat.weapon_stat(combatant.weapon, "weapon_type")
       hit_mount = FS3Combat.hit_mount?(combatant, target, attacker_net_successes, mount_hit)
@@ -382,9 +382,6 @@ module AresMUSH
         message = t('fs3combat.attack_hits_mount', :name => combatant.name, :target => target.name, :weapon => weapon, :effect => mount_effect)
       elsif (stopped_by_cover)
         message = t('fs3combat.attack_hits_cover', :name => combatant.name, :target => target.name, :weapon => weapon)
-      # elsif stopped_by_shield
-      #   message = stopped_by_shield[:msg]
-      #   hit = stopped_by_shield[:hit]
       elsif (attacker_net_successes < 0)
         # Only can evade when being attacked by melee or when in a vehicle.
         if (weapon_type == 'Melee' || target.is_in_vehicle?)
@@ -398,6 +395,11 @@ module AresMUSH
         end
       else
         hit = true
+        stopped_by_shield = Magic.determine_margin_with_shield(target, combatant, weapon, attack_roll)
+        if stopped_by_shield
+          hit = stopped_by_shield[:hit]
+          message = stopped_by_shield[:message]
+        end
       end
 
 
@@ -408,7 +410,8 @@ module AresMUSH
       {
         message: message,
         hit: hit,
-        attacker_net_successes: attacker_net_successes
+        attacker_net_successes: attacker_net_successes,
+        stopped_by_shield: stopped_by_shield
       }
     end
 
@@ -466,8 +469,8 @@ module AresMUSH
         melee_damage_mod = [(strength_roll - 1) * 5, 0].max
       end
 
-      damage_type = Magic.spell_damage_type(weapon)
-      shield_mods = Magic.shield_mods(target, damage_type)
+      damage_type = Magic.magic_damage_type(weapon)
+      Magic.find_best_shield(target, damage_type) ? shield_mods = Magic.shield_mods(target, damage_type) : shield_mods = 0
 
       total_damage_mod = hit_mod + melee_damage_mod + attack_luck_mod - defense_luck_mod - armor + shield_mods
       target.log "Damage modifiers: attack_luck=#{attack_luck_mod} hit=#{hit_mod} melee=#{melee_damage_mod} defense_luck=#{defense_luck_mod} armor=#{armor} shield_mods=#{shield_mods} total=#{total_damage_mod}"
@@ -489,8 +492,9 @@ module AresMUSH
       end
 
       target.add_stress(1)
-
-      messages = Magic.shield_failed_msgs(target, damage_type, weapon, attack_name) || []
+      puts "ATTACK NAME: #{attack_name}"
+      puts "ATTACKER: #{attacker}"
+      Magic.find_best_shield(target, damage_type) ? messages = [Magic.shield_failed_msgs(target, attack_name, weapon)] : messages = []
 
       weapon_type = FS3Combat.weapon_stat(weapon, 'weapon_type')
       if (weapon_type == "Explosive")
@@ -498,8 +502,6 @@ module AresMUSH
       else
         weapon_name = weapon
       end
-      puts "Messages #{messages}"
-      puts "Name #{attack_name} Weapon-#{weapon_name} Target-#{target.name} Hitloc-#{hitloc} Armor-#{reduced_by_armor} Damage-#{FS3Combat.display_severity(damage)}"
       FS3Combat.award_hit_achievement(attacker, damage, weapon_type)
       messages << t('fs3combat.attack_hits',
                     :name => attack_name,

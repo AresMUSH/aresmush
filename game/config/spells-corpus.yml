@@ -138,6 +138,7 @@ spells:
     casting_time: 1 round
     damage_desc: Flesh Wound Spell
     damage_inflicted: FLESH
+    damage_type: Bypass
     desc: "Inflict a flesh wound, slowing an enemy down. \n\nSpell ignores target's armor."
     effect: Damage
     level: 3
@@ -249,6 +250,7 @@ spells:
     casting_time: 1 round
     damage_desc: Impair Spell
     damage_inflicted: IMPAIR
+    damage_type: Bypass
     desc: "Inflict an impaired wound, making it difficult for an enemy to use the affected body part. \n\nSpell ignores target's armor."
     effect: Damage
     level: 4
@@ -591,6 +593,7 @@ spells:
     casting_time: 1 round
     damage_desc: Impair Spell
     damage_inflicted: IMPAIR
+    damage_type: Bypass
     desc: "Inflict an impaired wound on up to 3 targets, making it difficult for an enemy to use the affected body part. \n\nSpell ignores target's armor."
     effect: Damage
     level: 7

@@ -21,20 +21,19 @@ module AresMUSH
       return nil if !weapon
 
       value = weapon[stat]
-      return nil if !value
+      # return nil if !value
 
       special_names = name_with_specials.after("+")
       special_names = special_names ? special_names.split("+") : []
-
       special_names.each do |s|
         special = specials[s]
         next if !special
-
         special_value = special[stat]
         next if !special_value
-
         if value.is_a? Integer
           value = value + special_value
+        elsif stat == "magic_damage_type"
+          value = special_value
         end
       end
       value

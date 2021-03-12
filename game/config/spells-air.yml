@@ -138,15 +138,16 @@ spells:
     desc: "Deflect ranged projectile attacks directed against you or a single comrade with a gust wind, effectively putting the target in [cover](https://www.aresmush.com/fs3/fs3-3/combat/#stance)."
     duration: 3 rounds
     effect: Defense
+    is_shield: true
     level: 3
     line_of_sight: true
     name: Wind Wall
     range: Short
     rounds: 3
     school: Air
-    stance: cover
+    shields_against: All
+    # stance: cover
     target_num: 1
-
   #Level 4
   Aeromancy:
     area: 10 cubic yards
@@ -357,15 +358,16 @@ spells:
     desc: "Creates a barrier of air using high frequency vibrations to deflect attacks directed against up to three targets, effectively putting the targets in [cover](https://www.aresmush.com/fs3/fs3-3/combat/#stance)."
     duration: 5 rounds
     effect: Defense
+    is_shield: true
     level: 5
     line_of_sight: true
     name: Sound Barrier
     range: Short
     rounds: 5
     school: Air
-    stance: cover
+    shields_against: All
+    # stance: cover
     target_num: 3
-
   Storm Power:
     available: false
     casting_time: 1 round

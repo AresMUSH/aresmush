@@ -58,51 +58,56 @@ module AresMUSH
       return {:succeeds => succeeds, :result => die_result}
     end
 
-    def self.determine_magic_attack_margin(combatant, target, called_shot = nil, result, spell)
-      weapon = combatant.weapon
-      attack_roll = result
-      defense_roll = FS3Combat.roll_defense(target, weapon)
-
-      attacker_net_successes = attack_roll - defense_roll
-      stopped_by_cover = target.stance == "Cover" ? FS3Combat.stopped_by_cover?(attacker_net_successes, combatant) : false
-      hit = false
-
-      stopped_by_shield = Magic.stopped_by_shield?(target, combatant, spell, attack_roll)
-      weapon_type = FS3Combat.weapon_stat(combatant.weapon, "weapon_type")
-
-      if (attack_roll <= 0)
-        message = t('fs3combat.attack_missed', :name => combatant.name, :target => target.name, :weapon => weapon)
-      elsif (called_shot && (attacker_net_successes > 0) && (attacker_net_successes < 2))
-        message = t('fs3combat.attack_near_miss', :name => combatant.name, :target => target.name, :weapon => weapon)
-      elsif (stopped_by_cover)
-        message = t('fs3combat.attack_hits_cover', :name => combatant.name, :target => target.name, :weapon => weapon)
-      elsif stopped_by_shield
-        message = stopped_by_shield[:msg]
-        hit = Magic.stun_successful?(stopped_by_shield[:hit], attacker_net_successes)
-      elsif (attacker_net_successes < 0)
-        # Only can evade when being attacked by melee or when in a vehicle.
-        if (weapon_type == 'Melee' || target.is_in_vehicle?)
-          if (attacker_net_successes < -2)
-            message = t('fs3combat.attack_dodged_easily', :name => combatant.name, :target => target.name, :weapon => weapon)
-          else
-            message = t('fs3combat.attack_dodged', :name => combatant.name, :target => target.name, :weapon => weapon)
-          end
-        else
-            message = t('fs3combat.attack_near_miss', :name => combatant.name, :target => target.name, :weapon => weapon)
-        end
-      else
-        hit = true
-      end
-
-      combatant.log "ATTACK MARGIN: called=#{called_shot} " +
-      "attack=#{attack_roll} defense=#{defense_roll} hit=#{hit} cover=#{stopped_by_cover} shield=#{stopped_by_shield} result=#{message}"
-      {
-        message: message,
-        hit: hit,
-        attacker_net_successes: attacker_net_successes,
-        stopped_by_shield: stopped_by_shield
-      }
-    end
+    # def self.determine_magic_attack_margin(combatant, target, called_shot = nil, result, spell)
+    #   weapon = combatant.weapon
+    #   attack_roll = result
+    #   defense_roll = FS3Combat.roll_defense(target, weapon)
+    #
+    #   attacker_net_successes = attack_roll - defense_roll
+    #   stopped_by_cover = target.stance == "Cover" ? FS3Combat.stopped_by_cover?(attacker_net_successes, combatant) : false
+    #   hit = false
+    #
+    #   stopped_by_shield = Magic.stopped_by_shield?(target, combatant, spell, attack_roll)
+    #   weapon_type = FS3Combat.weapon_stat(combatant.weapon, "weapon_type")
+    #
+    #   if (attack_roll <= 0)
+    #     message = t('fs3combat.attack_missed', :name => combatant.name, :target => target.name, :weapon => weapon)
+    #   elsif (called_shot && (attacker_net_successes > 0) && (attacker_net_successes < 2))
+    #     message = t('fs3combat.attack_near_miss', :name => combatant.name, :target => target.name, :weapon => weapon)
+    #   elsif (stopped_by_cover)
+    #     message = t('fs3combat.attack_hits_cover', :name => combatant.name, :target => target.name, :weapon => weapon)
+    #   elsif stopped_by_shield
+    #     message = stopped_by_shield[:msg]
+    #     is_stun = Global.read_config("spells", spell, "is_stun")
+    #     if is_stun
+    #       hit = Magic.stun_successful?(stopped_by_shield[:hit], attacker_net_successes)
+    #     else
+    #       hit = stopped_by_shield[:hit]
+    #     end
+    #   elsif (attacker_net_successes < 0)
+    #     # Only can evade when being attacked by melee or when in a vehicle.
+    #     if (weapon_type == 'Melee' || target.is_in_vehicle?)
+    #       if (attacker_net_successes < -2)
+    #         message = t('fs3combat.attack_dodged_easily', :name => combatant.name, :target => target.name, :weapon => weapon)
+    #       else
+    #         message = t('fs3combat.attack_dodged', :name => combatant.name, :target => target.name, :weapon => weapon)
+    #       end
+    #     else
+    #         message = t('fs3combat.attack_near_miss', :name => combatant.name, :target => target.name, :weapon => weapon)
+    #     end
+    #   else
+    #     hit = true
+    #   end
+    #
+    #   combatant.log "ATTACK MARGIN: called=#{called_shot} " +
+    #   "attack=#{attack_roll} defense=#{defense_roll} hit=#{hit} cover=#{stopped_by_cover} shield=#{stopped_by_shield} result=#{message}"
+    #   {
+    #     message: message,
+    #     hit: hit,
+    #     attacker_net_successes: attacker_net_successes,
+    #     stopped_by_shield: stopped_by_shield
+    #   }
+    # end
 
     def self.stun_successful?(hit, attacker_net_successes)
       if hit && attacker_net_successes > 0
@@ -110,6 +115,10 @@ module AresMUSH
       else
         return false
       end
+    end
+
+    def self.magic_damage_type(weapon_or_spell)
+      Global.read_config("spells", weapon_or_spell, "damage_type") || FS3Combat.weapon_stat(weapon_or_spell, "magic_damage_type") || Global.read_config("magic", "default_damage_type")
     end
 
     def self.set_magic_weapon_effects(combatant, spell)
@@ -161,7 +170,7 @@ module AresMUSH
       return specials
     end
 
-    def self.set_spell_weapon(enactor, combatant, weapon, specials = nil)
+    def self.set_magic_weapon(enactor, combatant, weapon, specials = nil)
 
       specials = Magic.set_magic_weapon_specials(enactor, combatant, weapon)
 
