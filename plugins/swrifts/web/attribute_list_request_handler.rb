@@ -9,11 +9,13 @@ module AresMUSH
           # mounts: build_list(FS3Combat.mounts),
           # allow_vehicles: FS3Combat.vehicles_allowed?,
           # allow_mounts: FS3Combat.mounts_allowed?
-		  edges: return_hw()
+		  # edges: return_hw()
+		  edges: build_list(Swrifts.swrifts_edges)
         } 
       end
       
       def build_list(hash)
+		return hash.inspect
         hash.sort.map { |name, data| {
           key: name,
           name: name.titleize,
