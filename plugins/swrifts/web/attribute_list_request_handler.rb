@@ -9,7 +9,7 @@ module AresMUSH
           # mounts: build_list(FS3Combat.mounts),
           # allow_vehicles: FS3Combat.vehicles_allowed?,
           # allow_mounts: FS3Combat.mounts_allowed?
-		  edges: build_list(Swrifts.swrifts_edges)
+		  swrifts-edges: 'Hellow World'
         } 
       end
       
