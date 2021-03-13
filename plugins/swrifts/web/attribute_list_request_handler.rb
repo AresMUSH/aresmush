@@ -9,7 +9,7 @@ module AresMUSH
           # mounts: build_list(FS3Combat.mounts),
           # allow_vehicles: FS3Combat.vehicles_allowed?,
           # allow_mounts: FS3Combat.mounts_allowed?
-		  edges: "Hellow World"
+		  edges: return_hw()
         } 
       end
       
@@ -20,6 +20,10 @@ module AresMUSH
           description: data['description']
           }
         }
+      end
+
+      def return_hw()
+		return "Hellow World"
       end
     end
   end
