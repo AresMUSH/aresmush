@@ -128,6 +128,8 @@ module AresMUSH
       case request.cmd
       when "abilities"
         return AbilitiesRequestHandler
+      when "edges"
+        return AttributeListRequestHandler	#See web/attribute_list_request_handler.rb
       end
       nil
     end
