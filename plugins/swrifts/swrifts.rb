@@ -130,6 +130,8 @@ module AresMUSH
         return AbilitiesRequestHandler
       when "edges"
         return AttributeListRequestHandler	#See web/attribute_list_request_handler.rb
+	  when "hinderances"
+        return AttributeListRequestHandler	#See web/attribute_list_request_handler.rb
       end
       nil
     end
