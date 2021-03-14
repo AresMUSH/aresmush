@@ -286,7 +286,7 @@ swrifts:
             - fighting: d8
     -
         name: Improved Block
-        description: Replaces block: Parry +2 and hostile Gang Up bonus -2.
+        description: Replaces block Parry +2 and hostile Gang Up bonus -2.
         book_reference: SWADE 40
         type: Combat
         pre-reqs:
