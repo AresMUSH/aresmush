@@ -15,13 +15,8 @@ module AresMUSH
       end
       
       def build_list(hash)
+        hash.name.sort
 		return hash
-        hash.sort.map { |name, data| {
-          key: name,
-          name: name.titleize,
-          description: data['description']
-		  }
-        }
       end
 
       def return_hw()
