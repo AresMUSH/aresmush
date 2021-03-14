@@ -27,12 +27,14 @@ swrifts:
     -
         name: Alertness
         description: +2 to Notice rolls
+        book_reference: SWADE 37
         type: Background
         pre-reqs: 
             - rank: Novice
     -
         name: Ambidextrous
         description: Ignore -2 penalty when making Trait rolls with off-hand.
+        book_reference: SWADE 37
         type: Background
         pre-reqs:
             - rank: Novice
@@ -40,6 +42,7 @@ swrifts:
     -
         name: AB Magic
         description: Magical Arcane Background
+        book_reference: TLPG 120
         type: Background
         chargen_points:
             magic_slots: 3
@@ -52,6 +55,7 @@ swrifts:
     -
         name: AB Psionics
         description: Psionics Arcane Background
+        book_reference: TLPG 120
         type: Background
         chargen_points:
             psionic_slots: 3
@@ -64,6 +68,7 @@ swrifts:
     -
         name: AB Miracles
         description: Miracles Arcane Background
+        book_reference: TLPG 120
         type: Background
         chargen_points:
             miracle_slots: 3
@@ -76,11 +81,12 @@ swrifts:
     -
         name: AB Gifted
         description: Gifted Arcane Background
+        book_reference: TLPG 120
         type: Background
         chargen_points:
             gifted_slots: 1
         counters:
-            pp_max: 15
+            ppg_max: 15
         skills:
             Spellcasting: 0
         pre-reqs:     
@@ -88,11 +94,12 @@ swrifts:
     -
         name: AB Weird Science
         description: Weird Science Arcane Background
+        book_reference: TLPG 121
         type: Background
         chargen_points:
             power_slots: 2
         counters:
-            pp_max: 15
+            ppw_max: 15
         skills:
             Weird Science: 0
         pre-reqs:     
@@ -100,6 +107,7 @@ swrifts:
     -
         name: AB Techno-Wizardry
         description: Techno-Wizardry Arcane Background
+        book_reference: TLPG 51
         type: Background
         chargen_points:
             power_slots: 3
@@ -109,9 +117,11 @@ swrifts:
             Techno-Wizardry: 0
         pre-reqs:     
             - rank: Novice
+	    - iconicf: Techno-Wizard
     -
         name: Arcane Resistance
         description: Arcane skills targeting the hero sufer a −2 penalty; magical damage is reduced by 2
+        book_reference: SWADE 37
         type: Background
         pre-reqs:     
             - rank: Novice
@@ -119,19 +129,15 @@ swrifts:
     -
         name: Improved Arcane Resistance
         description: As Arcane Resistance except penalty is -4 and magical damage is reduced by 4.
+        book_reference: SWADE 37
         type: Background
         pre-reqs:     
             - rank: Novice
             - edge: Arcane Resistance
     -
-        name: Aristocrat
-        description: +2 to Common Knowledge and networking with upper class.
-        type: Background
-        pre-reqs:     
-            - rank: Novice
-    -
         name: Attractive
         description: +1 to Performance and Persuasion rolls.
+        book_reference: SWADE 38
         type: Background
         pre-reqs:     
             - rank: Novice
@@ -139,6 +145,7 @@ swrifts:
     -
         name: Very Attractive
         description: +2 to Performance and Persuasion rolls.
+        book_reference: SWADE 38
         type: Background
         pre-reqs:     
             - rank: Novice
@@ -146,19 +153,22 @@ swrifts:
     -
         name: Berserk
         description: Attacks after being Shaken or Wounded must be Wild. Take Fagitue after every 5 rounds.
+        book_reference: SWADE 38
         type: Background
         pre-reqs:
             - rank: Novice
     -
         name: Brave
         description: +2 to Fear checks and –2 to rolls on the Fear Table.
+        book_reference: SWADE 38
         type: Background
         pre-reqs:
             - rank: Novice
             - spirit: d6
     -
         name: Brawny
-        description: Size/Toughness +1. Treat Strength as one die type higher for Enc and Min Str
+        description: Toughness +1. Treat Strength as one die type higher for Enc and Min Str
+        book_reference: SWADE 38, TLPG 71
         type: Background
         pre-reqs:
             - rank: Novice
@@ -167,6 +177,7 @@ swrifts:
     -
         name: Brute
         description: Link Athletics to Strength instead of Agility. Increases range with thrown weapons. 
+        book_reference: SWADE 38
         type: Background
         pre-reqs:
             - rank: Novice
@@ -175,6 +186,7 @@ swrifts:
     -
         name: Charismatic
         description: Free reroll when using Persuasion.
+        book_reference: SWADE 38
         type: Background
         pre-reqs:
             - rank: Novice
@@ -182,6 +194,7 @@ swrifts:
     -
         name: Elan
         description: +2 when spending a Benny to reroll a Trait roll.
+        book_reference: SWADE 39
         type: Background
         pre-reqs:
             - rank: Novice
@@ -189,12 +202,14 @@ swrifts:
     -
         name: Fame
         description: +1 Persuasion rolls when recognized (Common Knowledge), double usual fee for Performance.
+        book_reference: SWADE 39
         type: Background
         pre-reqs:
             - rank: Novice
     -
         name: Famous
         description: +2 Persuasion when recognized, 5× or more usual fee for Performance.
+        book_reference: SWADE 39
         type: Background
         pre-reqs:
             - rank: Seasoned
@@ -202,6 +217,7 @@ swrifts:
     -
         name: Fast Healer
         description: +2 Vigor when rolling for natural healing; check every 3 days.
+        book_reference: SWADE 39
         type: Background
         pre-reqs:
             - rank: Novice
@@ -209,6 +225,7 @@ swrifts:
     -
         name: Fleet-Footed
         description: Pace +2, increase running die one step.
+        book_reference: SWADE 39
         type: Background
         pre-reqs:
             - rank: Novice
@@ -216,6 +233,7 @@ swrifts:
     -
         name: Linguist
         description: Character has d6 in languages equal to half her Smarts die.
+        book_reference: SWADE 40
         type: Background
         pre-reqs:
             - rank: Novice
@@ -223,12 +241,14 @@ swrifts:
     -
         name: Luck
         description: +1 Benny at the start of each session.
+        book_reference: SWADE 40
         type: Background
         pre-reqs:
             - rank: Novice
     -
         name: Great Luck
         description: +2 Bennies at the start of each session.
+        book_reference: SWADE 40
         type: Background
         pre-reqs:
             - rank: Novice
@@ -236,649 +256,935 @@ swrifts:
     -
         name: Quick
         description: The hero may discard and redraw Action Cards of 5 or lower.
+        book_reference: SWADE 40
         type: Background
         pre-reqs:
             - rank: Novice
             - agility: d8
     -
         name: Rich
-        description: Character starts with three times the starting funds and a $150K annual salary.
+        description: Begin with 15k credits and 2 rolls on the gear tables. May trade the 2 rolls for 1 weapon, body armor or gear item of choice.
+        book_reference: TLPG 71
         type: Background
         pre-reqs:
             - rank: Novice
     -
         name: Filthy Rich
-        description: Five times starting funds and $500K average salary.
+        description: Begin with 25k credits and 4 rolls on the gear tables. May give up 2 rolls as with Rich or 3 rolls for one non robot vehicle of choice.
+        book_reference: TLPG 71
         type: Background
         pre-reqs:
             - rank: Novice
             - edge: Rich
     -
         name: Block
-        description: 
+        description: Parry +1 and hostile Gang Up bonus -1. 
         book_reference: SWADE 40
-        type: 
+        type: Combat
         pre-reqs:
+	    - rank: Seasoned
+	    - fighting: d8
     -
         name: Improved Block
-        description: 
+        description: Replaces block: Parry +2 and hostile Gang Up bonus -2.
         book_reference: SWADE 40
-        type: 
+        type: Combat
         pre-reqs:
+	    - edge: Block
+	    - rank: Veteran
     -
         name: Brawler
-        description: 
+        description: Toughness +1. Unarmed attacks Str +d4 or +1 die type to natural weapons.
         book_reference: SWADE 41
-        type: 
+        type: Combat
         pre-reqs:
+	    - rank: Novice
+	    - strength: d8
+	    - vigor: d8
     -
         name: Bruiser
-        description: 
+        description: Replaces Brawler. Toughness +2. Unarmed attacks Str +d6 or +2 die type to natural weapons.
         book_reference: SWADE 41
-        type: 
+        type: Combat
         pre-reqs:
+	    - rank: Seasoned
+	    - edge: Brawler
     -
         name: Calculating
-        description: 
+        description: Ignore up to 2 points of penalty on action card of 5 or less.
         book_reference: SWADE 41
-        type: 
+        type: Combat
         pre-reqs:
+	    - rank: Novice
+	    - smarts: d8
     -
         name: Combat Reflexes
-        description: 
+        description: +2 to recover from shaken or stunned.
         book_reference: SWADE 41
-        type: 
+        type: Combat
         pre-reqs:
+	    - rank: Seasoned
     -
         name: Counterattack
-        description: 
+        description: Once per round, take a free attack immediately after a failed attack on you.
         book_reference: SWADE 41
-        type: 
+        type: Combat
         pre-reqs:
+	    - rank: Seasoned
+	    - fighting: d8
+    -
+        name: Improved Counterattack
+        description: Replaces Counterattack: Up to 3 times per round, take a free attack immediately after a failed attack on you.
+        book_reference: SWADE 41
+        type: Combat
+        pre-reqs:
+	    - rank: Veteran
+	    - edge: Counterattack
     -
         name: Dead Shot
-        description: 
+        description: Double total damage for first successful Athletics (throwing) or shooting attack when action card is Joker.
         book_reference: SWADE 41
-        type: 
+        type: Combat
         pre-reqs:
+	    - wildcard: 1
+	    - rank: Novice
+	    - athletics: d8 OR shooting: d8
     -
         name: Dodge
-        description: 
+        description: -2 to ranged attacks made against you unless taken by surprise. Does not stack with cover. 
         book_reference: SWADE 41
-        type: 
+        type: Combat
         pre-reqs:
+	    - rank: Seasoned
+	    - agility: d8
     -
         name: Improved Dodge
-        description: 
+        description: +2 to evade area of effect attacks.
         book_reference: SWADE 41
-        type: 
+        type: Combat
         pre-reqs:
+	    - rank: Seasoned
+	    - edge: Dodge
     -
         name: Double Tap
-        description: 
-        book_reference: SWADE 41
-        type: 
-        pre-reqs:
+        description: +1 to hit and damage using RoF 1 weapons, uses 1 extra shot. See SWADE 41 and TLPG 71 for restrictions.
+        book_reference: SWADE 41, TLPG 71
+        type: Combat
+        pre-reqs: 
+	    - rank: Seasoned
+	    - shooting: d6
     -
         name: Extraction
-        description: 
+        description: When withdrawing from melee one opponent of choice does not get a free attack.
         book_reference: SWADE 41
-        type: 
+        type: Combat
         pre-reqs:
+	    - rank: Novice
+	    - agility: d8
     -
         name: Improved Extraction
-        description: 
+        description: Replaces Extrication. When withdrawing from melee three opponents of choice do not get a free attack.
         book_reference: SWADE 42
-        type: 
+        type: Combat
         pre-reqs:
+	    - rank: Seasoned
+	    - edge: Extrication
     -
         name: Feint
-        description: 
+        description: When making a Test with fighting, can force opponent to resist with Smarts instead of Agility.
         book_reference: SWADE 42
-        type: 
+        type: Combat
         pre-reqs:
+	    - rank: Novice
+	    - fighting: d8
     -
         name: First Strike
-        description: 
+        description: If not shaken or stunned, once per round gain a free attack against opponent who just moved into Reach.
         book_reference: SWADE 42
-        type: 
+        type: Combat
         pre-reqs:
+	    - rank: Novice
+	    - agility: d8
     -
         name: Improved First Strike
-        description: 
+        description: Replaces First Strike. If not shaken or stunned, three times per round gain a free attack against opponent who just moved into Reach.
         book_reference: SWADE 42
-        type: 
+        type: Combat
         pre-reqs:
+	    - rank: Heroic
+	    - edge: First Strike
     -
         name: Free Runner
-        description: 
+        description: Move full Pace over suitable Difficult Ground. +2 athletics when climbing or in foot Chases.
         book_reference: SWADE 42
-        type: 
+        type: Combat
         pre-reqs:
+	    - rank: Novice
+	    - agility: d8, athletics: d6
     -
         name: Frenzy
-        description: 
+        description: On one fighting roll per turn roll a second fighting die to allocate as desired. Resolve each fighting die separately.
         book_reference: SWADE 42
-        type: 
+        type: Combat
         pre-reqs:
+	    - rank: Seasoned
+	    - fighting: d8
     -
         name: Improved Frenzy
-        description: 
+        description: Replaces Frenzy. On up to 2 fighting rolls per turn roll a second fighting die to allocate as desired. Resolve each fighting die separately.
         book_reference: SWADE 42
-        type: 
+        type: Combat
         pre-reqs:
+	    - rank: Veteran
+	    - edge: Frenzy
     -
         name: Giant Killer
-        description: 
+        description: +1d6 damage to creatures at least 3 sizes larger than you. 
         book_reference: SWADE 42
-        type: 
+        type: Combat
         pre-reqs:
+	    - rank: Veteran
     -
         name: Hard to Kill
-        description: 
+        description: Igonore wound penalties when rolling Vigor to avoid Bleeding Out.
         book_reference: SWADE 42
-        type: 
+        type: Combat
         pre-reqs:
+	    - rank: Novice
+	    - spirit: d8
     -
         name: Harder to Kill
-        description: 
+        description: If you are ever killed, roll a die. On an even result you survive in a manner left up to you and the scene runner. 
         book_reference: SWADE 42
-        type: 
+        type: Combat
         pre-reqs:
+	    - rank: Veteran
+	    - edge: Hard to Kill
     -
         name: Improvisational Fighter
-        description: 
+        description: Ignore -2 penalty for using Improvised Weapons. 
         book_reference: SWADE 42
-        type: 
+        type: Combat
         pre-reqs:
+	    - rank: Seasoned
+	    - smarts: d6
     -
         name: Iron Jaw
-        description: 
+        description: +2 to soak rolls and Vigor rolls to avoid Knockout Blows.
         book_reference: SWADE 42
-        type: 
+        type: Combat
         pre-reqs:
+	    - rank: Novice
+	    - vigor: d8
     -
         name: Killer Instinct
-        description: 
+        description: Gain a free reroll in any opposed Test you initiate.  
         book_reference: SWADE 43
-        type: 
+        type: Combat
         pre-reqs:
+	    - rank: Seasoned
     -
         name: Level Headed
-        description: 
+        description: In combat, draw an additional action card and pick which to use.
         book_reference: SWADE 43
-        type: 
+        type: Combat
         pre-reqs:
+	    - rank: Seasoned
+	    - smarts: d8
     -
         name: Improved Level Headed
-        description: 
+        description: Replaces Level Headed. In combat, draw 2 additional action cards and pick which to use.
         book_reference: SWADE 43
-        type: 
+        type: Combat
         pre-reqs:
+	    - rank: Seasoned
+	    - edge: Level Headed
     -
         name: Marksman
-        description: 
+        description: +1 to athletics (throwing) or shooting, or ignore up to 2 points of penalty. Does not stack with aim. Only if did not move, fired at RoF 1 and attack was first action.
         book_reference: SWADE 43
-        type: 
+        type: Combat
         pre-reqs:
+	    - rank: Seasoned
+	    - athletics: d8 OR shooting: d8
     -
         name: Martial Artist
-        description: 
+        description: Unarmed attacks count as Natural Wepaons. +1 Fighting with them. Strength +d4 damage or +1 die type to claws. Does not improve other Natural Weapons.
         book_reference: SWADE 43
-        type: 
+        type: Combat
         pre-reqs:
+	    - rank: Novice
+	    - fighting: d6
     -
         name: Martial Warrior
-        description: 
+        description: Replaces Martial Artist. Unarmed attacks count as Natural Weapons. +2 to Fighting with them. Strength +d6 or +2 die type to claws. Does not improve other Natural Weapons.
         book_reference: SWADE 43
-        type: 
+        type: Combat
         pre-reqs:
+	    - rank: Seasoned
+	    - edge: Martial Artist
     -
         name: Mighty Blow
-        description: 
+        description: Double damage of first successful fighting attack if action card is Joker.
         book_reference: SWADE 43
-        type: 
+        type: Combat
         pre-reqs:
+	    - wildcard: 1
+	    - rank: Novice
+	    - fighting: d8
     -
         name: Nerves of Steel
-        description: 
+        description: Ignore 1 point of wound penalties. 
         book_reference: SWADE 43
-        type: 
+        type: Combat
         pre-reqs:
+	    - rank: Novice
+	    - vigor: d8
     -
         name: Improved Nerves of Steel
-        description: 
+        description: Replaces Nerves of Steel: Ignore 2 points of wound penalties.
         book_reference: SWADE 43
-        type: 
+        type: Combat
         pre-reqs:
+	    - rank: Novice
+	    - edge: Nerves of Steel
     -
         name: No Mercy
-        description: 
+        description: When spending a Benny to reroll damage, +2 to final total. 
         book_reference: SWADE 43
-        type: 
-        pre-reqs:
+        type: Combat
+        pre-reqs: 
+	     - rank: Seasoned
     -
         name: Rapid Fire
-        description: 
-        book_reference: SWADE 43
-        type: 
+        description: Once per turn, RoF +2 for any one shooting attack. Must have sufficient ammo and an appropriate weapon (TLPG 71).
+        book_reference: SWADE 43, TLPG 71
+        type: Combat
         pre-reqs:
+	    - rank: Seasoned
+	    - shooting: d6
     -
         name: Improved Rapid Fire
-        description: 
+        description: Replaces Rapid Fire. Twice per turn (via a Multi-Action), RoF +1 for a shooting attack. Must have sufficient ammo and an appropriate weapon. 
         book_reference: SWADE 43
-        type: 
+        type: Combat
         pre-reqs:
+	    - rank: Veteran
+	    - edge: Rapid Fire
     -
         name: Rock and Roll!
-        description: 
+        description: If you do not move, ignore recoil penalty when firing at RoF 2 or higher.
         book_reference: SWADE 44
-        type: 
+        type: Combat
         pre-reqs:
+	    - rank: Seasoned
+	    - shooting: d8
     -
         name: Steady Hands
-        description: 
+        description: Ignore the Unstable Platform penalty for ranged attacks. -1 penalty for ranged attack while running, instead of -2. 
         book_reference: SWADE 44
-        type: 
+        type: Combat
         pre-reqs:
+	    - rank: Novice
+	    - agility: d8
     -
         name: Sweep
-        description: 
+        description: Once per turn roll fighting -2 against every target in Reach (roll only once). Resolve damage separately for each hit. Does not combine with Frenzy.
         book_reference: SWADE 44
-        type: 
+        type: Combat
         pre-reqs:
+	    - rank: Novice
+	    - strength: d8
     -
         name: Improved Sweep
-        description: 
+        description: Replaces Sweep. Once per turn roll fighting against every target in Reach (roll only once). Resolve damage separately for each hit. Does not combine with Frenzy.
         book_reference: SWADE 44
-        type: 
+        type: Combat
         pre-reqs:
+	    - rank: Veteran
+	    - edge: Sweep
     -
         name: Trademark Weapon
-        description: 
+        description: +1 to attack rolls with the specific, unique trademark weapon. +1 to parry when it is readied.
         book_reference: SWADE 44
-        type: 
+        type: Combat
         pre-reqs:
+	     - rank: Novice
+	     - relevant weapon skill: d8
     -
         name: Improved Trademark Weapon
-        description: 
+        description: Replaces Trademark Weapon. +2 to attack rolls with the specific, unique trademark weapon. +2 to parry when it is readied.
         book_reference: SWADE 44
-        type: 
+        type: Combat
         pre-reqs:
+	    - rank: Seasoned
+	    - edge: Trademark Weapon
     -
         name: Two-Fisted
-        description: 
+        description: If using a melee weapon in each hand, the second attack (with the second weapon) ignores the Multi-Action penalty. Off Hand penalty still applies. Combines with Two-Gun Kid.
         book_reference: SWADE 44
-        type: 
+        type: Combat
         pre-reqs:
+	    - rank: Novice
+	    - agility: d8
     -
         name: Two-Gun Kid
-        description: 
+        description: If using a ranged weapon in each hand, the second attack (with the second weapon) ignores the Multi-Action penalty. Off hand penalty still applies. Combines with Two-Fisted
         book_reference: SWADE 44
-        type: 
+        type: Combat
         pre-reqs:
+	    - rank: Novice
+	    - agility: d8
     -
         name: Command
-        description: 
+        description: Extras in command range (10 yards) add +1 to Spirit and Vigor rolls to recover from being Shaken and Stunned.
         book_reference: SWADE 45
-        type: 
+        type: Leadership
         pre-reqs:
+	    - rank: Novice
+	    - Smarts: d6
     -
         name: Command Presence
-        description: 
+        description: Command range is now 20 yards.
         book_reference: SWADE 45
-        type: 
+        type: Leadership
         pre-reqs:
+	    - rank: Seasoned
+	    - edge: Command
     -
         name: Fervor
-        description: 
+        description: Extras in command range add +1 to Fighting damage rolls.
         book_reference: SWADE 45
-        type: 
+        type: Leadership
         pre-reqs:
+	    - rank: Veteran
+	    - spirit: d8
+	    - edge: Command
     -
         name: Hold the Line!
-        description: 
+        description: Extras under your command have +1 toughness.
         book_reference: SWADE 45
-        type: 
+        type: Leadership
         pre-reqs:
+	    - rank: Seasoned
+	    - Smarts: d8
+	    - edge: Command
     -
         name: Inspire
-        description: 
+        description: Once per turn roll Battle to Support one type of Trait roll and apply it to all Extras in command range. Uses an action and requires communication.
         book_reference: SWADE 45
-        type: 
+        type: Leadership
         pre-reqs:
+	    - rank: Seasoned
+	    - edge: Command
     -
         name: Natural Leader
-        description: 
+        description: Leadership edges that apply to Extras now also apply to Wild Cards.
         book_reference: SWADE 45
-        type: 
+        type: Leadership
         pre-reqs:
+	    - rank: Seasoned
+	    - spirit: d8
+	    - edge: Command
     -
         name: Tactician
-        description: 
+        description: In combat or chase, take an extra action card. At the start of the round, discard it or give it to an allied Extra in command range.
         book_reference: SWADE 45
-        type: 
+        type: Leadership
         pre-reqs:
+	    - rank: Seasoned
+	    - smarts: d8, battle: d6
+	    - edge: Command
     -
         name: Master Tactician
-        description: 
+        description: Replaces Tactician. In combat or chase, take two extra action cards. At the start of the round, discard or give them to allied Extras in command range.
         book_reference: SWADE 45
-        type: 
+        type: Leadership
         pre-reqs:
+	    - rank: Veteran
+	    - edge: Tactician
     -
         name: Artificer
-        description: 
+        description: Can create Arcane Devices using the Arcane Device rules.
         book_reference: SWADE 45
-        type: 
+        type: Power
         pre-reqs:
+	    - rank: Seasoned
+	    - edge: AB Any
     -
         name: Channeling
-        description: 
+        description: Reduce PP cost by 1 to a min of 0 when getting a raise on an AB skill roll or Arcane Device activation roll. 
         book_reference: SWADE 46
-        type: 
+        type: Power
         pre-reqs:
+	    - rank: Seasoned
+	    - edge: AB Any
     -
         name: Concentration
-        description: 
+        description: Base duration of any non instant power is doubled. Includes maintaining powers. 
         book_reference: SWADE 46
-        type: 
+        type: Power
         pre-reqs:
+	    - rank: Seasoned
+	    - edg: AB Any
     -
         name: Extra Effort
-        description: 
+        description: After rolling Focus, spend 1 PP to add +1, or 3 PP to add +2. Cannot use on critical failure.
         book_reference: SWADE 46
-        type: 
+        type: Power
         pre-reqs:
+	    - rank: Seasoned
+	    - edge: AB Gifted
+	    - focus: d6
     -
         name: Gadgeteer
-        description: 
+        description: Spend up to 3 PP and roll Weird Science -2 to make a device that casts any power normally available for Weird Science at your rank. Takes an entire turn and falls apart after use/initial duration.
         book_reference: SWADE 46
-        type: 
+        type: Power
         pre-reqs:
+	    - rank: Seasoned
+	    - edge: AB Weird Science
+	    - weird science: d6
     -
         name: Holy/Unholy Warrior
-        description: 
+        description: Spend PP improve the result of a soak roll. +1 for each PP spent, max 4.
         book_reference: SWADE 46
-        type: 
+        type: Power
         pre-reqs:
+	    - rank: Seasoned
+	    - edge: AB Miracles
+	    - faith: d6
     -
         name: Mentalist
-        description: 
+        description: +2 to opposed Psionics rolls. 
         book_reference: SWADE 46
-        type: 
+        type: Power
         pre-reqs:
+	    - rank: Seasoned
+	    - edge: AB Psionics
+	    - psionics: d6
     -
         name: New Powers
-        description: 
+        description: Learn 2 new powers of your rank or lower appropriate to your AB. May instead add a trapping to an already known power, if applicable.
         book_reference: SWADE 47
-        type: 
+        type: Power
         pre-reqs:
+	    - rank: Novice
+	    - edge: AB Any
     -
         name: PP Magic
-        description: 
+        description: Gain 5 PPE. May be taken once per rank up to Legendary. 
         book_reference: SWADE 47
-        type: 
+        type: Power
         pre-reqs:
+	    - rank: Novice
+	    - edge: AB Magic OR edge: AB Techno-Wizardry
         counters: 
             ppe_max: 5
     -
-        name: PP Psionic
-        description: 
+        name: PP Magic Legendary
+        description: Gain 2 PPE. May be taken repeatedly 
         book_reference: SWADE 47
-        type: 
+        type: Power
         pre-reqs:
+	    - rank: Legendary
+	    - edge: AB Magic OR edge: AB Techno-Wizardry
+        counters: 
+            ppe_max: 2
+    -
+        name: PP Psionic
+        description: Gain 5 ISP. May be taken once per rank up to Legendary.
+        book_reference: SWADE 47
+        type: Power
+        pre-reqs:
+	    - rank: Novice
+	    - edge: AB Psionics
         counters: 
             isp_max: 5
     -
-        name: PP Miracle
-        description: 
+        name: PP Psionic Legendary
+        description: Gain 2 ISP. May be taken repeatedly 
         book_reference: SWADE 47
-        type: 
+        type: Power
         pre-reqs:
+	    - rank: Legendary
+	    - edge: AB Psionics
+        counters: 
+            isp_max: 2
+    -
+        name: PP Miracles
+        description: Gain 5 PPE. May be taken once per rank up to Legendary. 
+        book_reference: SWADE 47
+        type: Power
+        pre-reqs:
+	    - rank: Novice
+	    - edge: AB Miracles
         counters: 
             ppe_max: 5
     -
-        name: PP Gifted
-        description: 
+        name: PP Miracles Legendary
+        description: Gain 2 PPE. May be taken repeatedly 
         book_reference: SWADE 47
-        type: 
+        type: Power
         pre-reqs:
+	    - rank: Legendary
+	    - edge: AB Miracles
         counters: 
-            pp_max: 5
+            ppe_max: 2
+    -
+        name: PP Gifted
+        description: Gain 5 Gifted power points. May be taken once per rank up to Legendary.
+        book_reference: SWADE 47
+        type: Power
+        pre-reqs:
+	    - rank: Novice
+	    - edge: AB Gifted
+        counters: 
+            ppg_max: 5
+    -
+        name: PP Gifted Legendary
+        description: Gain 2 Gifted power points. May be taken repeatedly 
+        book_reference: SWADE 47
+        type: Power
+        pre-reqs:
+	    - rank: Legendary
+	    - edge: AB Gifted
+        counters: 
+            ppg_max: 2
+    -
+        name: PP Weird Science
+        description: Gain 5 Weird Science power points. May be taken once per rank up to Legendary.
+        book_reference: SWADE 47
+        type: Power
+        pre-reqs:
+	    - rank: Novice
+	    - edge: AB Weird Science
+        counters: 
+            ppw_max: 5
+    -
+        name: PP Gifted Legendary
+        description: Gain 2 Weird Science power points. May be taken repeatedly 
+        book_reference: SWADE 47
+        type: Power
+        pre-reqs:
+	    - rank: Legendary
+	    - edge: AB Weird Science
+        counters: 
+            ppw_max: 2
     -
         name: Power Surge
-        description: 
+        description: Recover 10 power points up to a maximum of your limit when your action card is Joker.
         book_reference: SWADE 47
-        type: 
+        type: Power
         pre-reqs:
+	    - wildcard: 1
+	    - rank: Novice
+	    - edge: AB Any
+	    - arcane skill: d8
     -
         name: Rapid Recharge
-        description: 
+        description: Power points recharge at a rate of 10 per hour. 
         book_reference: SWADE 47
-        type: 
+        type: Power
         pre-reqs:
+	    - rank: Seasoned
+	    - spirit: d6
+	    - edge: AB Any
     -
         name: Improved Rapid Recharge
-        description: 
+        description: Replaces Rapid Recharge. Power points recharge at a rate of 20 per hour. 
         book_reference: SWADE 47
-        type: 
+        type: Power
         pre-reqs:
+	    - rank: Veteran
+	    - edge: Rapid Recharge
     -
         name: Soul Drain
-        description: 
+        description: May take levels of fatigue up to Exhausted to recover 5 power points per level. Fatigue can only be recovered naturally. 
         book_reference: SWADE 47
-        type: 
+        type: Power
         pre-reqs:
+	    - rank: Seasoned
+	    - edge: AB Any
+	    - arcane skill: d10
     -
         name: Wizard
-        description: 
+        description: Spend 1 PPE when casting a power to change its trapping. 
         book_reference: SWADE 47
-        type: 
+        type: Power
         pre-reqs:
+	    - rank: Seasoned
+	    - edge: AB Magic
     -
         name: Ace
-        description: 
+        description: Ignore 2 points of penalties to any Boating, Driving or Piloting roll. May spend Bennies to soak vehicle damage using the appropriate vehicle skill. 
         book_reference: SWADE 47
-        type: 
+        type: Professional
         pre-reqs:
+	    - rank: Novice
+	    - agility: d8
     -
         name: Acrobat
-        description: 
+        description: Get one free reroll on Atheltics totals that involve balance, tumbling or grappling. Cannot be used to interrupt actions, climb, swim or throw.
         book_reference: SWADE 48
-        type: 
+        type: Professional
         pre-reqs:
+	    - rank: Novice
+	    - agility: d8, atheltics: d8
     -
         name: Combat Acrobat
-        description: 
+        description: -1 to attacks against you so long as you have room to move, are aware of the attack and not suffering enc or min str penalties.
         book_reference: SWADE 48
-        type: 
+        type: Professional
         pre-reqs:
+	    - rank: Seasoned
+	    - edge: Acrobat
     -
         name: Assassin
-        description: 
+        description: +2 to damage rolls when the target is Vulnerable and you have The Drop.
         book_reference: SWADE 48
-        type: 
+        type: Professional
         pre-reqs:
+	    - rank: Novice
+	    - agility: d8, fighting: d6, stealth: d8
     -
         name: Investigator
-        description: 
+        description: +2 to Research and Notice rolls made to physically find information and clues.
         book_reference: SWADE 48
-        type: 
+        type: Professional
         pre-reqs:
+	    - rank: Novice
+	    - smarts: d8, research: d8
     -
         name: Jack-of-all-Trades
-        description: 
+        description: May make a Smarts roll after observing or studdying a subject to gain d4 in a relevant skill or d6 with a raise. Lasts 1 hour or until another attempt is made.
         book_reference: SWADE 48
-        type: 
+        type: Professional
         pre-reqs:
+	    - rank: Novice
+	    - smarts: d10
     -
         name: McGyver
-        description: 
+        description: May make a repair roll to craft improvised weapons or tools. Takes an entire turn.
         book_reference: SWADE 49
-        type: 
+        type: Professional
         pre-reqs:
+	    - rank: Novice
+	    - smarts: d6, notice: d8, repair: d6
     -
         name: Mr. Fix It
-        description: 
+        description: +2 to repair rolls. Halve the time to repair with a raise.
         book_reference: SWADE 49
-        type: 
+        type: Professional
         pre-reqs:
+	    - rank: Novice
+	    - repair: d8
     -
         name: Scholar
-        description: 
+        description: Pick any one of Academics, Battle, Occult, or Science. You are +2 to that skill. This edge may be taken multiple times for multiple skills.
         book_reference: SWADE 49
-        type: 
+        type: Professional
         pre-reqs:
+	    - rank: Novice
+	    - research: d8
     -
         name: Soldier
-        description: 
+        description: Treat your str as one die higher for purposes of encumbrance and min str. Free Vigor reroll to survive environmental hazards.  
         book_reference: SWADE 49
-        type: 
+        type: Professional
         pre-reqs:
+	    - rank: Novice
+	    - strength: d6, vigor: d6
     -
         name: Thief
-        description: 
+        description: +1 Athletics to climb in urban areas. +1 Stealth in the same. +1 Theivery in general.
         book_reference: SWADE 49
-        type: 
+        type: Professional
         pre-reqs:
+	    - rank: Novice
+	    - agility: d8, stealth: d6, theivery: d6 
     -
         name: Woodsman
-        description: 
+        description: +2 Survival and Stealth in the wild.
         book_reference: SWADE 50
-        type: 
+        type: Professional
         pre-reqs:
+	    - rank: Novice
+	    - spirit: d6, survival: d8
     -
         name: Bolster
-        description: 
+        description: When you successfully Test a foe you may also remove Distracted or Vulnerable from an ally.
         book_reference: SWADE 50
-        type: 
+        type: Social
         pre-reqs:
+	    - rank: Novice
+	    - spirit: d8
     -
         name: Common Bond
-        description: 
+        description: May freely give your Bennies to any other character you can communicate with.
         book_reference: SWADE 50
-        type: 
+        type: Social
         pre-reqs:
+	    - wildcard: 1
+	    - rank: Novice
+	    - spirit: d8
     -
         name: Connections
-        description: 
+        description: You are connected to an organization of some kind. Once per session, call in a favor (worked out with the scene runner). May be taken multiple times. 
         book_reference: SWADE 50
-        type: 
+        type: Social
         pre-reqs:
+	    - rank: Novice
     -
         name: Humiliate
-        description: 
+        description: Get a free reroll on Taunt tests.
         book_reference: SWADE 50
-        type: 
+        type: Social
         pre-reqs:
+	    - rank: Novice
+	    - taunt: d8
     -
         name: Menacing
-        description: 
+        description: +2 Intimidation 
         book_reference: SWADE 50
-        type: 
+        type: Social
         pre-reqs:
+	    - rank: Novice
+	    - hundrance: Bloodthirsty OR hindrance: Mean, OR hindrance: Ruthless, OR hindrance: Ugly
     -
         name: Provoke
-        description: 
+        description: Once per turn with a raise on a Taunt test, Provoke the foe. Provoked foe is -2 to attack anyone else. Stacks with Distracted. Lasts until a Joker is drawn.
         book_reference: SWADE 50
-        type: 
+        type: Social
         pre-reqs:
+	    - rank: Novice
+	    - taunt: d6
     -
         name: Rabble-Rouser
-        description: 
+        description: Once per turn Test with Intimidation or Taunt against all enemies within 8 yards who can see and her you. Each resists separately.
         book_reference: SWADE 50
-        type: 
+        type: Social
         pre-reqs:
+	    - rank: Seasoned
+	    - spirit: d8
     -
         name: Reliable
-        description: 
+        description: Free reroll on any Support roll. 
         book_reference: SWADE 51
-        type: 
+        type: Social
         pre-reqs:
+	    - rank: Novice
+	    - spirit: d8
     -
         name: Retort
-        description: 
+        description: When resisting a Taunt or Intimidation test with a raise, foe becomes Distracted.
         book_reference: SWADE 51
-        type: 
+        type: Social
         pre-reqs:
+	    - rank: Novice
+	    - taunt: d6
     -
         name: Streetwise
-        description: 
+        description: +2 to Intimidation or Persuasion rolls made to Network with underworld or shady elements. +2 Common Kowledge about illegal activities. 
         book_reference: SWADE 51
-        type: 
+        type: Social
         pre-reqs:
+	    - rank: Novice
+	    - smarts: d6
     -
         name: Strong Willed
-        description: 
+        description: +2 when resisting tests with Smarts or Spirit.
         book_reference: SWADE 51
-        type: 
+        type: Social
         pre-reqs:
+	    - rank: Novice
+	    - smarts: d6
     -
         name: Iron Will
-        description: 
+        description: +2 to resists powers or negate their effects. Does not stack with Brave.
         book_reference: SWADE 51
-        type: 
+        type: Social
         pre-reqs:
+	    - rank: Seasoned
+	    - edge: Brave, edge: Strong Willed
     -
         name: Work the Room
-        description: 
+        description: Once per turn, roll an additional die when Supporting with Persuasion or Performance. The additional die Supports any other ally who can see or hear you.
         book_reference: SWADE 51
-        type: 
+        type: Social
         pre-reqs:
+	    - rank: Novice
+	    - spirit: d8
     -
         name: Work the Crowd
-        description: Work the Crowd
+        description: Replaces Work the Room. Twice per turn, roll an additional die when Supporting with Persuasion or Performance. The additional die Supports any other ally who can see or hear you.
         book_reference: SWADE 51
-        type: 
+        type: Social
         pre-reqs:
+	    - rank: Seasoned
+	    - edge: Work the Room
     -
         name: Beast Bond
-        description: 
+        description: May spend Bennies for any animals under your control including mounts, familiars and similar.
         book_reference: SWADE 51
-        type: 
+        type: Weird
         pre-reqs:
+	    - rank: Novice
     -
         name: Beast Master
-        description: 
+        description: Animals will not attack you unless attacked first or otherwise enraged. You have an Extra in the form of loyal animal companion. May be taken more than once for more or more powerful companions.
         book_reference: SWADE 51
-        type: 
+        type: Weird
         pre-reqs:
+	    - rank: Novice
+	    - spirit: d8
     -
         name: Champion
-        description: 
+        description: +2 when attacking supernatural forces aligned against yours.
         book_reference: SWADE 52
-        type: 
+        type: Weird
         pre-reqs:
+	    - rank: Novice
+	    - spirit: d8, fighting: d6
     -
         name: Chi
-        description: 
+        description: Gain a Chi point at the start of each encounter. Spend that point to reroll a failed attack, make an enemy reroll an attack, or add +d6 to a successful attack. Unspent Chi is lost at the end of the encounter.
         book_reference: SWADE 52
-        type: 
+        type: Weird
         pre-reqs:
+	    - rank: Veteran
+	    - edge: Martial Warrior
     -
         name: Danger Sense
-        description: 
+        description: +2 notice when rolling for Suprise. With a raise you start the encounter on hold. +2 to notice in other situations when a roll is allowed. Notice -2 to avoid danger that can't normally be noticed.
         book_reference: SWADE 52
-        type: 
+        type: Weird
         pre-reqs:
+	    - rank: Novice
     -
         name: Healer
-        description: 
+        description: +2 to all healing rolls. 
         book_reference: SWADE 52
-        type: 
+        type: Weird
         pre-reqs:
+	    - rank: Novice
+	    - spirit: d8
     -
         name: Liquid Courage
-        description: 
+        description: The round after consuming a stiff drink, +1 vigor die type and ignore one level of wound penalties. -1 to smarts, agility and all linked skills. Lasts for 1 hour, at which point take 1 level of Fatigue for 4 hours. 
         book_reference: SWADE 52
-        type: 
+        type: Weird
         pre-reqs:
+	    - rank: Novice
+	    - vigor: d8
     -
         name: Scavenger
-        description: 
+        description: Once per encounter, you may find or suddenly remember something needed, a handful of ammo or something similarly useful. Work with scene runner.
         book_reference: SWADE 52
-        type: 
+        type: Weird
         pre-reqs:
+	    - rank: Novice
+	    - edge: Luck
     -
         name: Followers
         description: The hero has five followers.
@@ -1057,99 +1363,168 @@ swrifts:
     -
         name: Magi of Dweomer
         book_reference: A&M 28
-        description:   
-        type: 
+        description: Gains edge: Master of Magic, free reroll against banish or dispell, hindrance: Vow - Major (Serve Dweomer), always knows how to find Dweomer.  
+        type: Background
         pre-reqs: 
+	    - iconicf: Magus
+	    - edge: AB Magic
     -
         name: Psychic of Psyscape
         book_reference: A&M 28
-        description:   
-        type: 
+        description: Gains Empathy power, Detect Arcana as an innate ability with +2 to sense evil, hindrance: Vow - Major (Serve Psyscape), may enter ley line stasis.
+        type: Background
         pre-reqs: 
+	    - edge: AB Psionics
+	    - occult: d6
     -
         name: Arcane Marksman
         book_reference: A&M 29
-        description:   
-        type: 
+        description: +1 to Bolt power attack roll or similar, or ignore up to 2 points of penalty. Does not stack with aim. Only if did not move and attack was first action.   
+        type: Combat
         pre-reqs: 
+	    - rank: Seasoned
+	    - edge: AB Any
     -
         name: Elemental Attunement
         book_reference: A&M 29
-        description:   
-        type: 
+        description: Attune new element, gain access to elements power list and learn one power from it. Once per rank.   
+        type: Iconic
         pre-reqs: 
+	    - rank: Seasoned
+	    - iconicf: Elemental Fusionist
+	    - spirit: d8, focus: d8 
     -
         name: Life Sign Harmony
         book_reference: A&M 29
-        description:   
-        type: 
+        description: Gain Elem. Manip. and Env. Prot. as innate abilities with bonuses for life sign element.   
+        type: Iconic
         pre-reqs: 
+	    - rank: Novice
+	    - iconicf: Elemental Fusionist
+	    - spirit: d10
     -
         name: Warlock
         book_reference: A&M 29
-        description:   
-        type: 
+        description: Gain access to the Warlock power list and learn one immediately.   
+        type: Iconic
         pre-reqs: 
+	    - rank: Heroic
+	    - iconicf: Elemental Fusionist
+	    - focus: d10
+	    - edge: Elemental Attunement (x3)
     -
         name: Dream Vision
         book_reference: A&M 29
-        description:   
-        type: 
+        description: Once per session, while asleep or meditating use Diviniation with enhancements.
+        type: Power
         pre-reqs: 
+	    - rank: Veteran OR edge: Grey Seer
+	    - edge: Major Psionic
+	    - power: Divination
     -
         name: Minor Item Creation
-        book_reference: A&M 29
-        description:   
-        type: 
+        book_reference: A&M 30
+        description: Can create minor items per rules in A&M 30.  
+        type: Power
         pre-reqs: 
+	    - rank: Seasoned
+	    - edge: Artificer, edge: AB Magic OR edge: AB Miracles
+	    - repair: d8
     -
         name: Major Item Creation
-        book_reference: A&M 29
-        description:   
-        type: 
+        book_reference: A&M 30
+        description: Can create major items per rules in A&M 30.  
+        type: Power
         pre-reqs: 
+	    - rank: Veteran
+	    - edge: Minor Item Creation
+	    - occult: d10
     -
         name: Psi-Weapon Manipulation
         book_reference: A&M 31
-        description:   
-        type: 
+        description: Change the appearance of Psi-Blade to any medieval melee weapon, gaining relevant properties except the Claws property. Damage is unchanged.  
+        type: Power
         pre-reqs: 
+	    - rank: Seasoned
+	    - edge: Psi-Blade OR iconicf: Cyber-Knight
     -
         name: Adept
         book_reference: A&M 31
-        description:   
-        type: 
+        description: Upgrade one power you know from the list per rank to be an innate ability with Range (self).  
+        type: Professional
         pre-reqs: 
+	    - rank: Novice
+	    - edge: AB Magic OR edge: AB Psionics OR edge: AB Miracles
+	    - arcane skill: d8, fighting: d8
     -
         name: Conjurer
         book_reference: A&M 31
-        description:   
-        type: 
+        description: Conjure items and beasts out of thin air per restrictions in A&M 31.  
+        type: Professional
         pre-reqs: 
+	    - rank: Novice
+	    - edge: AB Magic
+	    - occult: d8, spellcasting: d8
     -
         name: Controller
         book_reference: A&M 32
-        description:   
-        type: 
+        description: Able to operate Automatons.  
+        type: Professional
         pre-reqs: 
+	    - rank: Novice
+	    - edge: AB Magic
+	    - agility: d6, smarts: d6, occult: d6, piloting: d6
     -
         name: Grey Seer
         book_reference: A&M 32
-        description:   
-        type: 
+        description: Gains hindrance: Pacifist - Minor, hindrance: Vow (Poverty), enhanced Spiritual Channel per A&M 32.  
+        type: Professional
         pre-reqs: 
+	    - rank: Novice
+	    - iconicf: Mystic
     -
         name: Totem Warrior
         book_reference: A&M 33
-        description:   
-        type: 
+        description: Add the specified powers to your power list and learn one. May activiate powers in animal form.  
+        type: Professional
         pre-reqs: 
+	    - iconicf: Shaman OR iconicf: Spirit Warrior
     -
-        name: One with Magic
-        book_reference: B&B 33
-        description:   
-        type: 
+        name: One with Magic Novice
+        book_reference: A&M 33
+        description: Gain detect/conceal arcana as innate ability. +2 to use if power already known.
+        type: Weird
         pre-reqs: 
+	    - edge: AB Magic, edge: Master of Magic
+	    - occult: d8, smarts: d8
+    -
+        name: One with Magic Seasoned
+        book_reference: A&M 33
+        description: Gain Ley Line Rejuvenation and Ley Line Sense from the Ley Line Walker Iconic Framework. +2 to use if already Ley Line Walker.
+        type: Weird
+        pre-reqs: 
+	    - edge: One with Magic Novice
+    -
+        name: One with Magic Veteran
+        book_reference: A&M 33
+        description: Age at 1/5 the rate. May make natural healing rolls once per day, or once per hour on a ley line. May recover from permanent injuries.
+        type: Weird
+        pre-reqs: 
+	    - edge: One with Magic Seasoned
+    -
+        name: One with Magic Heroic
+        book_reference: A&M 33
+        description: Chose one non-instant power to use as an innate ability at no PPE cost.
+        type: Weird
+        pre-reqs: 
+	    - edge: One with Magic Veteran
+    -
+        name: One with Magic Legendary
+        book_reference: A&M 33
+        description: Become a creature of magic. Gain +4 MDC natural armor.
+        type: Weird
+        pre-reqs: 
+	    - edge: One with Magic Heroic
     -
         name: Quick Draw
         book_reference: TLFM 10
