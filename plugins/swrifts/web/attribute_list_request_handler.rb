@@ -5,7 +5,6 @@ module AresMUSH
         {
 		  edges: build_list(Swrifts.swrifts_edges),
 		  # hinderances: build_list(Swrifts.swrifts_hinderances)
-		  hinderances: return_hw
         } 
       end
       
