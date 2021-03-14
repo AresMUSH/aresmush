@@ -4,7 +4,7 @@ module AresMUSH
       def handle(request)
         {
 		  edges: build_list(Swrifts.swrifts_edges),
-		  # hinderances: build_list(Swrifts.swrifts_hinderances)
+		  hinderances: build_list(Swrifts.swrifts_hinderances)
         } 
       end
       
