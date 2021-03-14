@@ -15,7 +15,7 @@ module AresMUSH
       end
       
       def build_list(hash)
-		return hash.inspect
+		return hash
         hash.sort.map { |name, data| {
           key: name,
           name: name.titleize,
