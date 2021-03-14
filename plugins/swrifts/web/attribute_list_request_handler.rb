@@ -20,6 +20,7 @@ module AresMUSH
           key: name,
           name: name.titleize,
           description: data['description']
+		  }
         }
       end
 
