@@ -195,6 +195,11 @@ module AresMUSH
 			element = char.set.select { |a| a.name.downcase == element_title }.first
 			element ? element.rating : 0
 		end
+		
+		## ---- Return all Edges
+		def self.swrifts_edges
+			Global.read_config('swrifts', 'edges')
+		end			
 
 		
 		## ----- Die Step
