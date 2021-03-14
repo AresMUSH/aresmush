@@ -334,7 +334,7 @@ swrifts:
             - fighting: d8
     -
         name: Improved Counterattack
-        description: Replaces Counterattack: Up to 3 times per round, take a free attack immediately after a failed attack on you.
+        description: Replaces Counterattack Up to 3 times per round, take a free attack immediately after a failed attack on you.
         book_reference: SWADE 41
         type: Combat
         pre-reqs:
