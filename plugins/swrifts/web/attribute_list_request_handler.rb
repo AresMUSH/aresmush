@@ -15,7 +15,7 @@ module AresMUSH
       end
       
       def build_list(hash)
-        hash.key.sort
+        hash.sort
 		return hash
       end
 
