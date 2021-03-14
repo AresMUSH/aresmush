@@ -3,7 +3,7 @@ module AresMUSH
     class AttributeListRequestHandler
       def handle(request)
         {
-		  edges: build_list(Swrifts.swrifts_edges)
+		  edges: build_list(Swrifts.swrifts_edges),
 		  hinderances: build_list(Swrifts.swrifts_hinderances)
         } 
       end
