@@ -201,6 +201,11 @@ module AresMUSH
 			Global.read_config('swrifts', 'edges')
 		end			
 
+		## ---- Return all Hinderances
+		def self.swrifts_hinderances
+			Global.read_config('swrifts', 'hinderances')
+		end			
+
 		
 		## ----- Die Step
 		
