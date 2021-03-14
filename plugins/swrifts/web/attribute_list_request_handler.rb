@@ -15,7 +15,7 @@ module AresMUSH
       end
       
       def build_list(hash)
-        hash.sort_by { |k, v| v[:name] }
+        hash.sort_by { |a| a['name'] }
 		return hash
       end
 
