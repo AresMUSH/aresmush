@@ -15,12 +15,11 @@ module AresMUSH
       end
       
       def build_list(hash)
-		return hash.inspect
+		# return hash.inspect
         hash.sort.map { |name, data| {
           key: name,
           name: name.titleize,
           description: data['description']
-          }
         }
       end
 
