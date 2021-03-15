@@ -5,10 +5,7 @@ module AresMUSH
         {
 		  edges: build_list(Swrifts.swrifts_edges),
 		  hinderances: build_list(Swrifts.swrifts_hinderances),
-		  iconicf: build_list(Swrifts.swrifts_icf),
-		  powers: build_list(Swrifts.swrifts_powers),
-		  race: build_list(Swrifts.swrifts_races),
-		  skills: build_list(Swrifts.swrifts_skills)
+		  iconicf: build_list(Swrifts.swrifts_icf)
         } 
       end
       
