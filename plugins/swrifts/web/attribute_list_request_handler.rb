@@ -5,7 +5,8 @@ module AresMUSH
         {
 		  edges: build_list(Swrifts.swrifts_edges),
 		  hinderances: build_list(Swrifts.swrifts_hinderances),
-		  iconicf: build_list(Swrifts.swrifts_icf)
+		  iconicf: build_list(Swrifts.swrifts_icf),
+		  race: build_list(Swrifts.swrifts_races)		  
         } 
       end
       
