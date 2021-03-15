@@ -196,6 +196,16 @@ module AresMUSH
 			element ? element.rating : 0
 		end
 		
+		## ---- Return all Iconic Frameworks
+		def self.swrifts_icf
+			Global.read_config('swrifts', 'iconicf')
+		end
+
+		## ---- Return all Races
+		def self.swrifts_races
+			Global.read_config('swrifts', 'races')
+		end		
+		
 		## ---- Return all Edges
 		def self.swrifts_edges
 			Global.read_config('swrifts', 'edges')
@@ -204,6 +214,16 @@ module AresMUSH
 		## ---- Return all Hinderances
 		def self.swrifts_hinderances
 			Global.read_config('swrifts', 'hinderances')
+		end
+
+		## ---- Return all Skills
+		def self.swrifts_skills
+			Global.read_config('swrifts', 'skills')
+		end	
+		
+		## ---- Return all Powers
+		def self.swrifts_powers
+			Global.read_config('swrifts', 'ppowers')
 		end			
 
 		
