@@ -4,7 +4,11 @@ module AresMUSH
       def handle(request)
         {
 		  edges: build_list(Swrifts.swrifts_edges),
-		  hinderances: build_list(Swrifts.swrifts_hinderances)
+		  hinderances: build_list(Swrifts.swrifts_hinderances),
+		  icf: build_list(Swrifts.swrifts_icf),
+		  powers: build_list(Swrifts.swrifts_powers),
+		  race: build_list(Swrifts.swrifts_races),
+		  skills: build_list(Swrifts.swrifts_skills)
         } 
       end
       
