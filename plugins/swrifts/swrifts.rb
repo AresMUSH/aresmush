@@ -132,6 +132,14 @@ module AresMUSH
         return AttributeListRequestHandler	#See web/attribute_list_request_handler.rb
 	  when "hinderances"
         return AttributeListRequestHandler	#See web/attribute_list_request_handler.rb
+	  when "iconicf"
+        return AttributeListRequestHandler	#See web/attribute_list_request_handler.rb
+	  when "race"
+        return AttributeListRequestHandler	#See web/attribute_list_request_handler.rb
+	  when "skills"
+        return AttributeListRequestHandler	#See web/attribute_list_request_handler.rb
+	  when "powers"
+        return AttributeListRequestHandler	#See web/attribute_list_request_handler.rb
       end
       nil
     end
