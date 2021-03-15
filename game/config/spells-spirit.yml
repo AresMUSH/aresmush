@@ -453,7 +453,7 @@ spells:
     target_num: 1
   Medium Jinx:
     attack_mod: -2
-    available: false
+    available: true
     casting_time: 1 round
     defense_mod: -2
     damage_type: Psionic
