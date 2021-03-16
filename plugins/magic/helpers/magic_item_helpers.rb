@@ -87,7 +87,6 @@ module AresMUSH
 
     def self.get_magic_items(char)
       list = char.magic_items
-      puts "List #{list}"
       list.map { |i|
         {
           name: i,

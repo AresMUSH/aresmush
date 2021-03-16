@@ -110,7 +110,6 @@ module AresMUSH
           succeeds = {:succeeds=>"%xgSUCCEEDS%xn", :result=>5}
         end
 
-        puts "SUCCESS #{succeeds}"
         # roll_combat_spell_success handles combat mods via roll_combat_spell
 
         #Spells roll for success individually because they can only do one thing. This is because attacks need to use different measures of success. Also, because weapon changes for FS3 attacks are on the caster, not the target.
@@ -166,7 +165,6 @@ module AresMUSH
               end
 
               if auto_revive
-                puts "Hitting auto revive"
                 message = Magic.cast_auto_revive(combatant, target, self.spell)
                 messages.concat message
               end
@@ -232,7 +230,6 @@ module AresMUSH
 
               #Change Stance
               if stance
-                puts "%%%%%%%%%% Combatant #{combatant.name} / Target #{target.name} / Spell #{spell} / Stance #{stance}"
                 message = Magic.cast_stance(combatant, target, spell, damage_type, rounds, stance, succeeds[:result])
                 messages.concat message
               end
