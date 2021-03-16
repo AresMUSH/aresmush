@@ -47,30 +47,39 @@ module AresMUSH
       end
     end
 
-    def self.determine_margin_with_shield(target, combatant, weapon_or_spell, attacker_net_successes)
-      stopped_by_shield = Magic.stopped_by_shield?(target, combatant, combatant.weapon, attacker_net_successes)
+    def self.determine_margin_with_shield(target, combatant, weapon_or_spell, attack_roll, defense_roll)
+      attacker_net_successes = attack_roll - defense_roll
+      stopped_by_shield = Magic.stopped_by_shield?(target, combatant, combatant.weapon, attack_roll)
+      puts "***********#{stopped_by_shield}"
       if stopped_by_shield
-        message = stopped_by_shield[:msg]
-        shield = stopped_by_shield[:shield]
-        is_stun = Global.read_config("spells", weapon_or_spell, "is_stun") || false
-        if is_stun
-          hit = Magic.stun_successful?(stopped_by_shield[:hit], attacker_net_successes)
-        else
-          hit = stopped_by_shield[:hit]
+        if stopped_by_shield[:hit]
+          puts "Did this hit? #{stopped_by_shield[:hit]}"
+          is_stun = Global.read_config("spells", weapon_or_spell, "is_stun") || FS3Combat.weapon_stat(weapon_or_spell, "is_stun") || false
+          puts "Is stun? #{is_stun}"
+          if is_stun
+            hit = Magic.stun_successful?(stopped_by_shield[:hit], attacker_net_successes)
+            puts "STUN SUCCEEDS? #{hit} Input: sbs(#{stopped_by_shield[:hit]}) net success (#{attacker_net_successes})"
+          else
+            hit = stopped_by_shield[:hit]
+          end
+        elsif !stopped_by_shield[:hit]
+          hit = false
         end
         return {
           hit: hit,
-          message: message,
-          shield: shield
+          message: stopped_by_shield[:msg],
+          shield: stopped_by_shield[:shield],
+          shield_held: stopped_by_shield[:shield_held]
         }
       end
+      #There is no shield in effect
     end
 
     def self.stopped_by_shield?(target, char_or_combatant, weapon_or_spell, result)
       damage_type = Magic.magic_damage_type(weapon_or_spell)
       roll_name = FS3Combat.weapon_stat(weapon_or_spell, "skill") || Global.read_config("spells", weapon_or_spell, "school")
       shield = Magic.find_best_shield(target, damage_type)
-      puts "All shields: #{target.associated_model.magic_shields.to_a} Best shield #{shield} "
+      puts "All shields: #{target.associated_model.magic_shields.to_a} Best shield: #{shield} "
       if shield
         successes = result
         if (char_or_combatant.class == Combatant)
@@ -102,12 +111,15 @@ module AresMUSH
           return {
           msg: success_msg,
           shield: shield.name,
+          shield_held: true,
           hit: false
           }
         else
+          puts "WINNER IS CASTER"
           return {
           msg: failed_msg,
           shield: shield.name,
+          shield_held: false,
           hit: true
           }
         end
@@ -119,7 +131,8 @@ module AresMUSH
       damage_type =  Magic.magic_damage_type(weapon_or_spell)
       shield = Magic.find_best_shield(target, damage_type)
       type_does_damage = Global.read_config("magic",  "type_does_damage", damage_type)
-      is_stun = Global.read_config("spells", weapon_or_spell, "is_stun")
+      is_stun = Global.read_config("spells", weapon_or_spell, "is_stun") || Global.read_config("spells", weapon_or_spell, "is_stun") || FS3Combat.weapon_stat(weapon_or_spell, "is_stun") || false
+      puts "#{weapon_or_spell} IS STUN? #{is_stun}"
       if weapon_or_spell.include?("Shrapnel")
           t('magic.shield_failed_against_shrapnel', :name => caster_name, :weapon => weapon_or_spell, :mod => "", :shield => shield.name, :target => target.name)
       elsif !Magic.is_spell?(weapon_or_spell)

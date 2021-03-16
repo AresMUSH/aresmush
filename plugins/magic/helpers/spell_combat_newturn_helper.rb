@@ -1,7 +1,7 @@
 module AresMUSH
   module Magic
 
-    def self.spell_newturn(combatant)
+    def self.spell_newturn(combatant) 
 
       Magic.shield_newturn_countdown(combatant)
 

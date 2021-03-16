@@ -111,8 +111,10 @@ module AresMUSH
 
     def self.stun_successful?(hit, attacker_net_successes)
       if hit && attacker_net_successes > 0
+        puts "Stun successful"
         return true
       else
+        puts "Stun failed"
         return false
       end
     end

@@ -5,12 +5,9 @@ module AresMUSH
       shield = Magic.find_shield_named(target.associated_model, spell)
 
       if shield
-        puts "Shield exists already"
         shield.update(strength: result)
         shield.update(rounds: rounds)
       else
-        puts "Creating new shield for #{target.associated_model.name}"
-
         shield = {
           name: spell,
           strength: result,
@@ -67,9 +64,6 @@ module AresMUSH
       Magic.set_magic_weapon(enactor = nil, target, weapon, [weapon_specials_str])
       if (heal_points && wound)
         message = []
-      # elsif (heal_points && !wound)
-      #   puts "ELSIF HEAL POINTS #{heal_points} #{wound.blank?} #{wound}"
-      #   message = [t('magic.casts_spell', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn")]
       elsif lethal_mod || defense_mod || attack_mod || spell_mod
         message = []
       elsif combatant != target
@@ -220,31 +214,35 @@ module AresMUSH
         message = t('magic.dont_target_self')
         return message
       end
-
       margin = FS3Combat.determine_attack_margin(combatant, target)
       stopped_by_shield = margin[:stopped_by_shield] || []
-      puts "STOPPED BY SHIELD #{stopped_by_shield}"
+      puts "++++ #{margin}"
+      puts "++++ #{stopped_by_shield}"
       ###NEEDS TO GRAB THE SHIELD NAME ARG
       if (margin[:hit])
+        puts "Stun hits"
         target.update(subdued_by: combatant)
         target.update(magic_stun: true)
         target.update(magic_stun_counter: rounds.to_i)
         target.update(magic_stun_spell: spell)
         target.update(action_klass: nil)
         target.update(action_args: nil)
-        if stopped_by_shield
-          #Needs to define own message instead of using stopped_by_shield[:message] so it can grab the spell name instead of the weapon name.
-          message =[t('magic.shield_held', :name => combatant.name, :spell => spell, :mod => "", :shield => stopped_by_shield[:shield], :target => target.name)]
+        if !stopped_by_shield.empty?
+          #Needs to grab its own message instead of using stopped_by_shield[:message] so it can grab the spell name.
+          message = [Magic.shield_failed_msgs(target, combatant.name, spell)]
         else
           message = [t('magic.cast_stun', :name => combatant.name, :spell => spell, :mod => "", :target => target.name, :succeeds => "%xgSUCCEEDS%xn", :rounds => rounds)]
         end
       else
-        if !stopped_by_shield[:hit]
-          #Needs to grab its own message instead of using stopped_by_shield[:message] so it can grab the spell name.
-          message = Magic.shield_failed_msgs(target, combatant.name, spell)
-        elsif stopped_by_shield
+        if (!stopped_by_shield.empty? && stopped_by_shield[:shield_held])
+          puts "^^^^^^There is a shield, and it held (hit = false)"
+          #Needs to define own message instead of using stopped_by_shield[:message] so it can grab the spell name instead of the weapon name.
+          message =[t('magic.shield_held', :name => combatant.name, :spell => spell, :mod => "", :shield => stopped_by_shield[:shield], :target => target.name)]
+        elsif !stopped_by_shield.empty?
+          puts "^^^^^^There is a shield and hit != false"
           message = [t('magic.shield_failed_stun_resisted', :name => combatant.name, :spell => spell, :shield=> stopped_by_shield[:shield], :mod => "", :target => target.name)]
         else
+          puts "^^^^^^There is no shield"
           message = [t('magic.cast_stun_resisted', :name => combatant.name, :spell => spell, :mod => "", :target => target.name, :succeeds => "%xgSUCCEEDS%xn")]
         end
       end
@@ -262,21 +260,17 @@ module AresMUSH
         messages << margin[:message]
         max_shrapnel = 2
       end
-      "Before shrapnel messages #{messages}"
       if (FS3Combat.weapon_stat(combatant.weapon, "has_shrapnel"))
         #If there's shrapnel, figure out how much by choosing a random number from max_shrapnel
-        shrapnel = rand(max_shrapnel)
+        shrapnel = rand(max_shrapnel).round()
         damage_type =  Magic.magic_damage_type(spell)
         shrapnel.times.each do |s|
           margin = FS3Combat.determine_attack_margin(combatant, target, result = result, spell)
-          puts "SHRAPNEL MARGIN #{margin}"
           attacker_net_successes = margin[:attacker_net_successes]
           if damage_type
             messages.concat FS3Combat.resolve_attack(nil, combatant.name, target, "#{damage_type} Shrapnel", attacker_net_successes)
-            puts "Damage type messages #{messages}"
           else
             messages.concat FS3Combat.resolve_attack(nil, combatant.name, target, "Shrapnel", attacker_net_successes)
-            puts "No Damage type messages #{messages}"
           end
 
         end
