@@ -14,12 +14,7 @@ module AresMUSH
       char.magic_shields.select { |shield| shield.name == shield_name }.first
     end
 
-    def self.find_best_shield(char_or_combatant, damage_type)
-      if (char_or_combatant.class == Combatant)
-        char = char_or_combatant.associated_model
-      else
-        char = Character.named(char_or_combatant)
-      end
+    def self.find_best_shield(char, damage_type)
       shields = []
       exceptions = Global.read_config("magic", "shields_against_all_exceptions")
       if !exceptions.include?(damage_type)
@@ -75,18 +70,27 @@ module AresMUSH
       #There is no shield in effect
     end
 
-    def self.stopped_by_shield?(target, char_or_combatant, weapon_or_spell, result)
+    def self.stopped_by_shield?(target_char_or_combatant, char_or_combatant, weapon_or_spell, result)
+      if (target_char_or_combatant.class == Combatant)
+        target = target_char_or_combatant.associated_model
+      else
+        target = target_char_or_combatant
+      end
       damage_type = Magic.magic_damage_type(weapon_or_spell)
       roll_name = FS3Combat.weapon_stat(weapon_or_spell, "skill") || Global.read_config("spells", weapon_or_spell, "school")
       shield = Magic.find_best_shield(target, damage_type)
-      puts "All shields: #{target.associated_model.magic_shields.to_a} Best shield: #{shield} "
+      puts "All shields: #{target.magic_shields.to_a}"
+      # puts "Best shield: #{shield.name} #{shield.strength}"
       if shield
         successes = result
         if (char_or_combatant.class == Combatant)
           caster_name = char_or_combatant.associated_model.name
           char_or_combatant.log "#{shield.name.upcase}: #{caster_name}'s #{roll_name} (#{successes} successes) vs #{target.name}'s #{shield.name} (strength #{shield.strength})."
+        # elsif !char_or_combatant.class
+        #   caster_name = char_or_combatant
+        #   Global.logger.info "#{shield.name.upcase}: #{caster_name}'s #{roll_name} (#{successes} successes) vs #{target.name}'s #{shield.name} (strength #{shield.strength})."
         else
-          caster_name = Character.named(char_or_combatant).name
+          caster_name = char_or_combatant.name
           Global.logger.info "#{shield.name.upcase}: #{caster_name}'s #{roll_name} (#{successes} successes) vs #{target.name}'s #{shield.name} (strength #{shield.strength})."
         end
 

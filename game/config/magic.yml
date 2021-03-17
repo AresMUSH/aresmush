@@ -18,6 +18,7 @@ magic:
     Ancestry: Somewhere in your family tree, your bloodline became crossed with that of a Magical Creature.
     Storyteller: Let Storytellers decide your Lore Hook.
   shields_against_all_exceptions:
+  - Bypass
   - Psionic
   default_damage_type:
     Physical

@@ -195,6 +195,7 @@ spells:
     area: 10 ft radius
     available: true
     casting_time: 1 round
+    damage_type: Bypass
     desc: 'Draw all oxygen from an area, dousing any flames present and creating oxygen deprivation for up to 3 air-breathing creatures of your choice caught in its range. '
     duration: 1 round
     effect: Damage
@@ -204,7 +205,6 @@ spells:
     range: Short
     school: Air
     target_num: 3
-
     weapon: Breathless
   Create Sound:
     available: true

@@ -16,6 +16,7 @@ module AresMUSH
            self.target = Character.named(target_name_arg)
          else
            self.target = self.caster
+           self.target_name_arg = enactor.name
          end
       end
 
@@ -30,24 +31,14 @@ module AresMUSH
       end
 
       def handle
-        if target_name_arg
-          target_name = self.target.name
-        else
-          target_name = nil
-        end
+        targets = Magic.parse_spell_targets(target_name_arg, self.potion_name)
 
-        heal_points = Global.read_config("spells", self.potion_name, "heal_points")
+        #Checking errors for each target.
+        error =  Magic.target_errors(enactor, targets, self.potion_name)
+        if error then return client.emit_failure error end
 
-        if heal_points
-          message = Magic.cast_non_combat_heal(self.caster.name, target_name, self.potion_name, mod = nil, is_potion = true)
-        elsif Magic.spell_shields.include?(self.potion_name)
-          school = "Magic"
-          cast_mod = FS3Skills.ability_rating(caster, "Magic") * 2
-          roll = self.caster.roll_ability(school, cast_mod)[:successes]
-          message = Magic.cast_noncombat_shield(self.caster, self.caster.name, target_name, self.potion_name, mod = nil, roll, is_potion = true)
-        else
-          message = Magic.cast_noncombat_spell(self.caster.name, target_name, self.potion_name, mod = nil, result = roll, is_potion = true)
-        end
+        message = Magic.cast_noncombat_spell(self.caster.name, targets, self.potion_name, mod = nil, result = 2, using_potion = true)
+
         message.each do |message|
           self.caster.room.emit message
           if self.caster.room.scene

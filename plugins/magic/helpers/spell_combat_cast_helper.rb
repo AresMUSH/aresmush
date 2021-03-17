@@ -1,8 +1,15 @@
 module AresMUSH
   module Magic
 
-    def self.cast_shield(combatant, target, spell, rounds, result)
-      shield = Magic.find_shield_named(target.associated_model, spell)
+    def self.cast_shield(char_or_combatant, target_char_or_combatant, spell, rounds, result)
+      if (char_or_combatant.class == Combatant)
+        caster = char_or_combatant.associated_model
+        target = target_char_or_combatant.associated_model
+      else
+        caster = char_or_combatant
+        target = target_char_or_combatant
+      end
+      shield = Magic.find_shield_named(target, spell)
 
       if shield
         shield.update(strength: result)
@@ -12,32 +19,37 @@ module AresMUSH
           name: spell,
           strength: result,
           rounds: rounds,
-          character: target.associated_model,
-          npc: target.associated_model
+          character: target,
+          npc: target
           }
         MagicShields.create(shield)
       end
-      puts "***************ALL SHIELDS #{target.associated_model.magic_shields.to_a}***************"
-      shield = Magic.find_shield_named(target.associated_model, spell)
+      puts "***************ALL SHIELDS #{target.magic_shields.to_a}***************"
+
+      shield = Magic.find_shield_named(target, spell)
       type = Global.read_config("spells", spell, "shields_against")
-      type = "All" ? type = "all" : type = type
-      combatant.log "Setting #{target.name}'s #{spell.upcase} to #{shield.strength}"
-      message = [t('magic.cast_shield', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target =>  target.name, :type => type)]
+      # type = "All" ? type = "all" : type = type
+      if (char_or_combatant.class == Combatant)
+        combatant.log "Setting #{target.name}'s #{spell.upcase} to #{shield.strength}"
+      else
+        Global.logger.info "Setting #{target.name}'s #{spell.upcase} to #{shield.strength}"
+      end
+      message = [t('magic.cast_shield', :name => caster.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target =>  target.name, :type => type)]
       return message
     end
 
-    def self.cast_combat_heal(combatant, target, spell, heal_points)
-      wound = FS3Combat.worst_treatable_wound(target.associated_model)
+    def self.cast_heal(char_or_combatant, target, spell, heal_points)
+      wound = FS3Combat.worst_treatable_wound(target)
       if wound.blank?
         message = [t('magic.no_healable_wounds', :target => target.name)]
-      elsif target.death_count > 0
-        message = [t('magic.cast_ko_heal', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target => target.name, :points => heal_points)]
+      elsif target.class == Combatant && target.death_count > 0
+        message = [t('magic.cast_ko_heal', :name => char_or_combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target => target.name, :points => heal_points)]
+        target.update(death_count: 0 )
         FS3Combat.heal(wound, heal_points)
       else
-        message = [t('magic.cast_heal', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target => target.name, :points => heal_points)]
+        message = [t('magic.cast_heal', :name => char_or_combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target => target.name, :points => heal_points)]
         FS3Combat.heal(wound, heal_points)
       end
-      target.update(death_count: 0  )
       return message
     end
 
@@ -101,7 +113,7 @@ module AresMUSH
       target.update(death_count: 0)
       target.update(is_ko: false)
       target.log "Auto-revive spell setting #{target.name}'s KO to #{target.is_ko}."
-      Magic.delete_all_unhealed_damage(target.associated_model)
+      Magic.heal_all_unhealed_damage(target.associated_model)
       FS3Combat.emit_to_combatant target, t('magic.been_revived', :name => combatant.name)
       if target != combatant
         message = [t('magic.cast_auto_revive_target', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target => target.name)]
@@ -129,13 +141,13 @@ module AresMUSH
     end
 
     def self.cast_mod(combatant, target, spell, damage_type, rounds, result, attack_mod = nil, defense_mod = nil, init_mod = nil, lethal_mod = nil, spell_mod = nil)
-      if Magic.shield_types.include?(damage_type) && combatant != target
-        check_shield = Magic.stopped_by_shield?(target, combatant, spell, result)
-        if check_shield[:hit]
+      stopped_by_shield = Magic.stopped_by_shield?(target, combatant, spell, result)
+      if stopped_by_shield && combatant != target
+        if stopped_by_shield[:hit]
           mod_msg = Magic.update_spell_mods(target, rounds, attack_mod, defense_mod, init_mod, lethal_mod, spell_mod)
-          message = [t('magic.mod_shield_failed', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target =>  target.name, :mod_msg => mod_msg, :shield => check_shield[:shield])]
+          message = [t('magic.mod_shield_failed', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target =>  target.name, :mod_msg => mod_msg, :shield => stopped_by_shield[:shield])]
         else
-          message = [check_shield[:msg]]
+          message = [stopped_by_shield[:msg]]
         end
       else
         mod_msg = Magic.update_spell_mods(target, rounds, attack_mod, defense_mod, init_mod, lethal_mod, spell_mod)
@@ -177,14 +189,14 @@ module AresMUSH
     end
 
     def self.cast_stance(combatant, target, spell, damage_type, rounds, stance, result)
-      if Magic.shield_types.include?(damage_type) && combatant != target
-        check_shield = Magic.stopped_by_shield?(target, combatant, spell, result)
-        if check_shield[:hit]
+      stopped_by_shield = Magic.stopped_by_shield?(target, combatant, spell, result)
+      if stopped_by_shield&& combatant != target
+        if stopped_by_shield[:hit]
           target.update(stance: stance.titlecase)
           target.update(stance_counter: rounds)
           target.update(stance_spell: spell)
         end
-        message = [check_shield[:msg]]
+        message = [stopped_by_shield[:msg]]
       else
         target.update(stance: stance.titlecase)
         target.update(stance_counter: rounds)
@@ -195,11 +207,10 @@ module AresMUSH
     end
 
     def self.cast_combat_roll(combatant, target, spell, damage_type, result = nil)
-      #Make this check to see i a shield protecting against that combat type exists first
       if combatant != target
-        check_shield = Magic.stopped_by_shield?(target, combatant, spell, result)
-        if check_shield
-          message = [check_shield[:msg]]
+        stopped_by_shield = Magic.stopped_by_shield?(target, combatant, spell, result)
+        if stopped_by_shield
+          message = [stopped_by_shield[:msg]]
         else
           message = [t('magic.spell_target_resolution_msg', :name => combatant.name, :spell => spell, :mod => "", :target => target.name, :succeeds => "%xgSUCCEEDS%xn")]
         end

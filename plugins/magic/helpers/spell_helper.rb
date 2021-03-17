@@ -71,11 +71,12 @@ module AresMUSH
       end
     end
 
-    def self.delete_all_unhealed_damage(char)
+    def self.heal_all_unhealed_damage(char)
       damage = char.damage
       damage.each do |d|
-        if d.current_severity != "HEAL"
+        if !d.healed 
           d.update(current_severity: "HEAL")
+          d.update(healed: true)
         end
       end
       Global.logger.info "Auto-revive spell healing all #{char.name}'s damage."

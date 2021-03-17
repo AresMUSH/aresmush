@@ -227,7 +227,6 @@ spells:
     range: Long
     school: Fire
     target_num: 3
-
     weapon: Flares
   Group Endure Fire:
     available: true

@@ -1,7 +1,7 @@
 module AresMUSH
   module Magic
 
-    def self.spell_newturn(combatant) 
+    def self.spell_newturn(combatant)
 
       Magic.shield_newturn_countdown(combatant)
 
@@ -72,12 +72,9 @@ module AresMUSH
       if !combatant.is_npc? && combatant.associated_model.auto_revive? && combatant.is_ko
         puts " Auto rev spell: #{combatant.associated_model.auto_revive?}"
         auto_revive_spell = combatant.associated_model.auto_revive?
-        # combatant.update(is_ko: false)
-        # Magic.delete_all_unhealed_damage(combatant.associated_model)
         combatant.update(action_klass: "AresMUSH::FS3Combat::SpellAction")
         combatant.update(action_args: "#{auto_revive_spell}/#{combatant.name}")
         FS3Combat.emit_to_combat combatant.combat,t('magic.spell_action_msg_long', :name => combatant.name, :spell => auto_revive_spell), nil, true
-        # EMIT SOMETHING
       end
 
     end
