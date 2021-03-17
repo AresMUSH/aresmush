@@ -1,13 +1,13 @@
 module AresMUSH
   module Magic
 
-    def self.shields
-      Global.read_config("spells").select { |spell| Global.read_config("spells", spell, "shields_against")}.map {|name, data| name}
-    end
+    # def self.shields
+    #   Global.read_config("spells").select { |spell| Global.read_config("spells", spell, "shields_against")}.map {|name, data| name}
+    # end
 
-    def self.shield_types
-      Global.read_config("spells").select { |spell| Global.read_config("spells", spell, "shields_against")}.map {|name, data| data['shields_against']}.uniq
-    end
+    # def self.shield_types
+    #   Global.read_config("spells").select { |spell| Global.read_config("spells", spell, "shields_against")}.map {|name, data| data['shields_against']}.uniq
+    # end
 
     def self.find_shield_named(char, shield_name)
       shield_name = shield_name.titlecase
@@ -45,15 +45,11 @@ module AresMUSH
     def self.determine_margin_with_shield(target, combatant, weapon_or_spell, attack_roll, defense_roll)
       attacker_net_successes = attack_roll - defense_roll
       stopped_by_shield = Magic.stopped_by_shield?(target, combatant, combatant.weapon, attack_roll)
-      puts "***********#{stopped_by_shield}"
       if stopped_by_shield
         if stopped_by_shield[:hit]
-          puts "Did this hit? #{stopped_by_shield[:hit]}"
           is_stun = Global.read_config("spells", weapon_or_spell, "is_stun") || FS3Combat.weapon_stat(weapon_or_spell, "is_stun") || false
-          puts "Is stun? #{is_stun}"
           if is_stun
             hit = Magic.stun_successful?(stopped_by_shield[:hit], attacker_net_successes)
-            puts "STUN SUCCEEDS? #{hit} Input: sbs(#{stopped_by_shield[:hit]}) net success (#{attacker_net_successes})"
           else
             hit = stopped_by_shield[:hit]
           end
@@ -80,15 +76,11 @@ module AresMUSH
       roll_name = FS3Combat.weapon_stat(weapon_or_spell, "skill") || Global.read_config("spells", weapon_or_spell, "school")
       shield = Magic.find_best_shield(target, damage_type)
       puts "All shields: #{target.magic_shields.to_a}"
-      # puts "Best shield: #{shield.name} #{shield.strength}"
       if shield
         successes = result
         if (char_or_combatant.class == Combatant)
           caster_name = char_or_combatant.associated_model.name
           char_or_combatant.log "#{shield.name.upcase}: #{caster_name}'s #{roll_name} (#{successes} successes) vs #{target.name}'s #{shield.name} (strength #{shield.strength})."
-        # elsif !char_or_combatant.class
-        #   caster_name = char_or_combatant
-        #   Global.logger.info "#{shield.name.upcase}: #{caster_name}'s #{roll_name} (#{successes} successes) vs #{target.name}'s #{shield.name} (strength #{shield.strength})."
         else
           caster_name = char_or_combatant.name
           Global.logger.info "#{shield.name.upcase}: #{caster_name}'s #{roll_name} (#{successes} successes) vs #{target.name}'s #{shield.name} (strength #{shield.strength})."
