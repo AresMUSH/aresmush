@@ -46,3 +46,5 @@ magic:
     equipped_magic_item:
       type: spell
       message: "Equipped a magic item."
+  permissions:
+    manage_magic: "Add and remove spells, potions, and magic items from characters."

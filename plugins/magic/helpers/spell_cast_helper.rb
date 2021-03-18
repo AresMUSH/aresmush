@@ -55,9 +55,9 @@ module AresMUSH
         end
       end
 
-      if Global.read_config("spells", spell, "fs3_attack") || Global.read_config("spells", spell, "is_stun")
-        messages.concat ["%xrAttack and stun spells have no real damage effects outside of combat. Start a combat if you want damage to persist.%xn"]
-      end
+      # if Global.read_config("spells", spell, "fs3_attack") || Global.read_config("spells", spell, "is_stun")
+      #   messages.concat ["%xrAttack and stun spells have no real damage effects outside of combat. Start a combat if you want damage to persist.%xn"]
+      # end
 
       return messages
     end
@@ -91,7 +91,7 @@ module AresMUSH
       type = Global.read_config("spells", spell, "shields_against")
       # type = "All" ? type = "all" : type = type
       if (char_or_combatant.class == Combatant)
-        combatant.log "Setting #{target.name}'s #{spell.upcase} to #{shield.strength}"
+        char_or_combatant.log "Setting #{target.name}'s #{spell.upcase} to #{shield.strength}"
       else
         Global.logger.info "Setting #{target.name}'s #{spell.upcase} to #{shield.strength}"
       end
@@ -100,6 +100,13 @@ module AresMUSH
     end
 
     def self.cast_heal(char_or_combatant, target, spell, heal_points)
+      if (char_or_combatant.class == Combatant)
+        caster = char_or_combatant.associated_model
+        target = target.associated_model
+      else
+        caster = char_or_combatant
+        target = target
+      end
       wound = FS3Combat.worst_treatable_wound(target)
       if wound.blank?
         message = [t('magic.no_healable_wounds', :target => target.name)]

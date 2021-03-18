@@ -13,7 +13,7 @@ module AresMUSH
       end
 
       def check_can_set
-        return t('dispatcher.not_allowed') if !enactor.has_permission?("view_bgs")
+        return t('dispatcher.not_allowed') if !enactor.has_permission?("manage_magic")
       end
 
       def check_errors

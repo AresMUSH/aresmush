@@ -318,7 +318,6 @@ spells:
     range: Long
     school: Air
     target_num: 1
-
     weapon: Blow Object
   Electric Burst:
     area: 10 yard radius
@@ -333,7 +332,6 @@ spells:
     range: Long
     school: Air
     target_num: 3
-
     weapon: Electric Burst
   Sonic Blast:
     available: true

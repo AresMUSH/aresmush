@@ -254,6 +254,7 @@ module AresMUSH
       # Armor doesn't cover this hit location
       return 0 if !protect
       random_die = rand(8) + 1
+      Global.logger.debug "random die #{random_die} + net_succ #{attacker_net_successes} + pen #{pen} - pro #{protect}"
       result = random_die + attacker_net_successes + pen - protect
 
       if (result >= 8) # 8-9

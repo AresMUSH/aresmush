@@ -37,7 +37,6 @@ module AresMUSH
           :team => 1,
           :combat => combat)
           FS3Combat.handle_combat_join_achievement(char)
-          Magic.apply_out_of_combat_shields(char, combatant)
       else
 
         if FS3Combat.is_in_combat?(name)
