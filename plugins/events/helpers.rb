@@ -27,8 +27,8 @@ module AresMUSH
           raise "Unrecognized date time separator.  Check your 'short' date format in datetime.yml."
         end
 
-        
-        
+
+
         date_time = OOCTime.parse_datetime(date.strip.downcase)
         if (date_time < DateTime.now)
           return nil, nil, t('events.no_past_events')
@@ -84,6 +84,7 @@ module AresMUSH
       Channels.announce_notification(t('events.event_created_notification', :title => title))
       Events.events_updated
       Achievements.award_achievement(enactor, "event_created")
+      PostEvent.create_forum_post(event)
       return event
     end
 
@@ -112,6 +113,7 @@ module AresMUSH
         Login.notify(s.character, :event, message, event.id)
       end
       Channels.announce_notification(message)
+      if Global.read_config("post_event", "reply_on_edit?") then PostEvent.reply_to_forum_post(event) end
     end
 
     def self.format_timestamp(time)
