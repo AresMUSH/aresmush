@@ -18,7 +18,6 @@ module AresMUSH
           self.weapon = titlecase_arg(args.arg1)
           specials_str = titlecase_arg(args.arg2)
         end
-        puts "WORKING"
         self.specials = specials_str ? specials_str.split('+') : nil
       end
 

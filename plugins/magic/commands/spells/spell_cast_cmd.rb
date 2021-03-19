@@ -8,7 +8,6 @@ module AresMUSH
       def parse_args
         args = cmd.parse_args(/(?<spell>[^+\-\/]+[^+\-\/\s])\s*(?<mod>[+\-]\s*\d+)?(\/(?<target>.*))?/)
         self.spell = titlecase_arg(args.spell)
-        puts "SPELL: #{self.spell}"
         self.mod = args.mod
         if !args.target
           self.target_name_string = enactor.name

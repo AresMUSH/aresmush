@@ -63,9 +63,6 @@ module AresMUSH
       Magic.set_spell_weapon(enactor = nil, target, weapon, [weapon_specials_str])
       if (heal_points && wound)
         message = []
-      # elsif (heal_points && !wound)
-      #   puts "ELSIF HEAL POINTS #{heal_points} #{wound.blank?} #{wound}"
-      #   message = [t('magic.casts_spell', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn")]
       elsif lethal_mod || defense_mod || attack_mod || spell_mod
         message = []
       elsif combatant != target

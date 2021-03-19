@@ -6,7 +6,6 @@ module AresMUSH
 
         spells = Global.read_config("spells")
         spells = spells.map {|k, v| {name: v['name'], damage: v['damage_type']}}
-        puts spells
         damage = []
         spells.each do |s|
           if s[:damage]
@@ -15,10 +14,7 @@ module AresMUSH
 
         end
         damage = damage.uniq
-        puts damage
         return damage
-
-
       end
 
 
