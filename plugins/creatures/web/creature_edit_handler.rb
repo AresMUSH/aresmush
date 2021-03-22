@@ -30,15 +30,23 @@ module AresMUSH
             end
           end
 
+          plot_ids = request.args[:plots] || []
+          creature.plots.replace []
+
+          plot_ids.each do |plot|
+            plot = Plot.find_one_by_name(plot.strip)
+            if (plot)
+              Creatures.add_plot(portal, plot)
+            end
+          end
+
           portal_ids = request.args[:portals] || []
           creature.portals.replace []
 
           portal_ids.each do |portal|
             portal = Portal.find_one_by_name(portal.strip)
             if (portal)
-              if (!creature.portals.include?(portal))
-                Creatures.add_portal(creature, portal)
-              end
+              Creatures.add_portal(creature, portal)
             end
           end
 
@@ -66,6 +74,7 @@ module AresMUSH
           creature.update(language: request.args[:language].blank? ? nil : request.args[:language])
           creature.update(traits: request.args[:traits].blank? ? nil : request.args[:traits])
           creature.update(society: request.args[:society].blank? ? nil : request.args[:society])
+          creature.update(short_desc: request.args[:short_desc].blank? ? nil : request.args[:short_desc])
           creature.update(magical_abilities: request.args[:magical_abilities].blank? ? nil : request.args[:magical_abilities])
           creature.update(events: request.args[:events].blank? ? nil : request.args[:events])
           Website.add_to_recent_changes('creature', t('creatures.creature_updated', :name => creature.name), { id: creature.id }, enactor.name)

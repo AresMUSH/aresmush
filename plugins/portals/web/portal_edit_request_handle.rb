@@ -24,9 +24,16 @@ module AresMUSH
           gm_names.each do |gm|
             gm = Character.find_one_by_name(gm.strip)
             if (gm)
-              if (!portal.gms.include?(gm))
-                Portals.add_gm(portal, gm)
-              end
+              Portals.add_gm(portal, gm)
+            end
+          end
+
+          plot_ids = request.args[:plots] || []
+          portal.plots.replace []
+          plot_ids.each do |plot|
+            plot = Character.find_one_by_name(plot.strip)
+            if (plot)
+              Portals.add_plot(portal, plot)
             end
           end
 
@@ -35,9 +42,7 @@ module AresMUSH
           creature_ids.each do |creature|
             creature = Creature.find_one_by_name(creature.strip)
             if (creature)
-              if (!portal.creatures.include?(creature))
-                Portals.add_creature(portal, creature)
-              end
+              Portals.add_creature(portal, creature)
             end
           end
 
@@ -72,6 +77,7 @@ module AresMUSH
           portal.update(events: request.args[:events].blank? ? nil : request.args[:events])
           portal.update(society: request.args[:society].blank? ? nil : request.args[:society])
           portal.update(rp_suggestions: request.args[:rp_suggestions].blank? ? nil : request.args[:rp_suggestions])
+          portal.update(short_desc: request.args[:short_desc].blank? ? nil : request.args[:short_desc])
           Website.add_to_recent_changes('portal', t('portals.portal_updated', :name => portal.name), { id: portal.id }, enactor.name)
           {}
       end

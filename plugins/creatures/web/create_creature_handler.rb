@@ -16,19 +16,7 @@ module AresMUSH
           return { error: t('webportal.missing_required_fields') }
         end
 
-
-
-        # major_school_name = request.args[:major_school]
-        # major_school_id = Global.read_config("schools", request.args[:major_school], "id")
-        # major_school = {:name => major_school_name, :id => major_school_id}
-        #
-        # minor_school_name = request.args[:minor_school]
-        # minor_school_id = Global.read_config("schools", request.args[:minor_school], "id")
-        # minor_school = {:name => minor_school_name, :id => minor_school_id}
-
         sapient = (request.args[:sapient] || "").to_bool
-
-
 
         creature = Creature.create(
           name: request.args[:name],
@@ -42,6 +30,7 @@ module AresMUSH
           society: request.args[:society],
           magical_abilities: request.args[:magical_abilities],
           events: request.args[:events],
+          short_desc: request.args[:short_desc],
         )
 
 
@@ -68,6 +57,15 @@ module AresMUSH
           portal = Portal.find_one_by_name(portal.strip)
           if (portal)
             Creatures.add_portal(creature, portal)
+          end
+        end
+
+        plot_ids = request.args[:plots] || []
+
+        plot_ids.each do |plot|
+          plot = Plot.find_one_by_name(plot.strip)
+          if (plot)
+            Creatures.add_plot(portal, plot)
           end
         end
 

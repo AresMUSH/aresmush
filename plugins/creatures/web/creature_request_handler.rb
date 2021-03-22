@@ -35,6 +35,10 @@ module AresMUSH
             .sort_by {|portal| portal.name }
             .map { |portal| { name: portal.name, id: portal.id }}
 
+        plots = creature.plots.to_a
+            .sort_by {|plot| plot.title }
+            .map { |plot| { name: plot.title, id: plot.id }}
+
         # if creature.sapient
         #   sapient = "Sapient"
         # else
@@ -60,7 +64,10 @@ module AresMUSH
           magical_abilities: Website.format_markdown_for_html(creature.magical_abilities),
           edit_events:  Website.format_input_for_html(creature.events),
           events: Website.format_markdown_for_html(creature.events),
-          scenes: scenes
+          scenes: scenes,
+          plots: plots,
+          edit_short_desc: Website.format_input_for_html(creature.short_desc),
+          short_desc: Website.format_markdown_for_html(creature.short_desc),
         }
       end
 
