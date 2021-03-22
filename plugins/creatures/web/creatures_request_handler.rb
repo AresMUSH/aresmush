@@ -10,6 +10,7 @@ module AresMUSH
                   id: c.id,
                   name: c.name,
                   sapient: c.sapient,
+                  short_desc: c.short_desc
                   # icon: Website.icon_for_char(c)
                 }}
 

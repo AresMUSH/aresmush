@@ -36,6 +36,9 @@ module AresMUSH
             .sort_by {|creature| creature.name }
             .map { |creature| { name: creature.name, id: creature.id }}
 
+        plots = portal.plots.to_a
+              .sort_by {|plot| plot.title }
+              .map { |plot| { title: plot.title , id: plot.id }}
 
         all_schools = portal.all_schools.to_a
 
@@ -61,6 +64,9 @@ module AresMUSH
           society: Website.format_markdown_for_html(portal.society),
           edit_rp_suggestions:  Website.format_input_for_html(portal.rp_suggestions),
           rp_suggestions: Website.format_markdown_for_html(portal.rp_suggestions),
+          edit_short_desc: Website.format_input_for_html(portal.short_desc),
+          short_desc: Website.format_markdown_for_html(portal.short_desc),
+          plots: plots,
           id: portal.id,
           pinterest: portal.pinterest,
           longitude: portal.longitude,

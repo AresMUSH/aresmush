@@ -34,7 +34,8 @@ module AresMUSH
           society: request.args[:society],
           latitude: request.args[:latitude],
           longitude: request.args[:longitude],
-          rp_suggestions: request.args[:rp_suggestions]
+          rp_suggestions: request.args[:rp_suggestions],
+          short_desc: request.args[:short_desc]
         )
 
         Global.logger.debug "Portal #{portal.id} (#{portal.name}) created by #{enactor.name}."
@@ -57,6 +58,15 @@ module AresMUSH
           creature = Creature.find_one_by_name(creature.strip)
           if (creature)
             Portals.add_creature(portal, creature)
+          end
+        end
+
+        plot_ids = request.args[:plots] || []
+
+        plot_ids.each do |plot|
+          plot = Plot.find_one_by_name(plot.strip)
+          if (plot)
+            Portals.add_plot(portal, plot)
           end
         end
 

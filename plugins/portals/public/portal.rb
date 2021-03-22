@@ -16,15 +16,18 @@ module AresMUSH
     attribute :trivia
     attribute :events
     attribute :pinterest
+    attribute :short_desc
     attribute :rp_suggestions
     attribute :society
     attribute :longitude
     attribute :latitude
     before_save :save_upcase
 
+
     collection :scenes, "AresMUSH::Scene"
     set :gms, "AresMUSH::Character"
     set :creatures, "AresMUSH::Creature"
+    set :plots, "AresMUSH::Plot"
 
     def save_upcase
       self.name_upcase = self.name ? self.name.upcase : nil
