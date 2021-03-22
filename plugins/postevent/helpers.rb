@@ -26,7 +26,7 @@ module AresMUSH
       category = BbsBoard.find_one_by_name(category_name)
       if post == "error"
         client = Global.client_monitor.find_client(author)
-        return client.emit_failure "Cannot reply to event forum post with updates. The event name may have changed."
+        return client.emit_failure "Cannot reply to event forum post with updates; you may want to do it manually. This happens when the event name has changed."
       else
         Forum.reply(category, post, author, reply)
       end
@@ -35,7 +35,7 @@ module AresMUSH
     def self.find_event_post(event)
       category_name = Global.read_config("post_event", "event_forum")
       category = BbsBoard.find_one_by_name(category_name)
-      post = category.bbs_posts.select { |post| post.subject == event.title}[0]
+      post = category.bbs_posts.select { |post| post.subject == event.title}.last
       if !post
         return "error"
       else

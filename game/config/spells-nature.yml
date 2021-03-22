@@ -693,7 +693,7 @@ spells:
     available: true
     casting_time: 1 round
     desc: "Caster chooses any alternate form from a specified animal family. They retain the ability to cast spells and speak while in wild shape in addition to being able to communicate with other animals of that family. They may revert back to human form at will.\n\nSpells may be cast on mages in Greater Wild Shape unless the spell provides a Transformation effect. "
-    duration: 1 hour
+    duration: 3 hours
     effect: Transformation
     level: 7
     name: Greater Wild Shape
@@ -745,6 +745,18 @@ spells:
     school: Nature
     range: Self
     weapon: Claws
+  Greater Wild Shape Delphinidae:
+    available: true
+    armor: Tough Hide
+    desc: Allows the caster to transform into any animal in the Delphinidae family.
+    defense_mod: 2
+    effect: Transformation
+    level: 7
+    name: Wild Shape Delphinidae
+    roll: true
+    school: Nature
+    range: Self
+    weapon: Teeth
   Greater Wild Shape Equidae:
     available: true
     armor: Tough hide
