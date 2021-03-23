@@ -49,6 +49,7 @@ spells:
   Locate Object:
     available: true
     casting_time: 1 round
+    damage_type: None
     desc: The caster is able to sense the direction of an object they have physically encountered.
     duration: 10 minutes
     effect: Other
@@ -60,6 +61,7 @@ spells:
   Object Whisper:
     available: true
     casting_time: 1 round
+    damage_type: None
     desc: "Caster hears a random, uncontrollable thought (no more than a short sentence of up to 10 words) from an object held by a sapient creature in the past 48 hours. Successive casts on the same object yield the same sentence. When possible, the sentence should be chosen by a GM or someone other than the caster."
     effect: Communication
     is_potion: true
@@ -73,6 +75,7 @@ spells:
   Share Emotion:
     available: true
     casting_time: 1 round
+    damage_type: None
     desc: Share a single dominant emotion with a target within visual range of the caster.
     damage_type: Psionic
     duration: 10 minutes
@@ -88,6 +91,7 @@ spells:
   Share Image:
     available: true
     casting_time: 1 round
+    damage_type: None
     desc: 'The caster can share a still mental image with another person via telepathy.'
     damage_type: Psionic
     duration: 10 minutes
@@ -103,6 +107,7 @@ spells:
   Beckon:
     available: true
     casting_time: 1 round
+    damage_type: None
     desc: "You create the ghostly image of a hand (or anything small and of the caster) which you can send to find anyone. The hand leads that person back to you if they are willing to follow."
     damage_type: Psionic
     duration: 1 hour
@@ -299,6 +304,7 @@ spells:
   Detect Magic:
     available: true
     casting_time: 1 round
+    damage_type: Psionic
     desc: "The caster senses whether magic is affecting or being performed by a sapient target. They are able to identify the magic's School, its specific affect(s), its range, and targets if applicable. The caster can also sense whether a sapient target is capable of magic, and the target's Schools.\n\nGMs should provide the name of the spell if the caster would be aware of it.\n\nThose with Spirit may notice that the spell has been cast, and may attempt to do so with a roll of the caster's Spirit vs the target's Spirit-4. A draw goes to the caster. This does not prevent the spell's effects or identify the caster in any way."
     effect: Psionic
     level: 4
@@ -374,6 +380,7 @@ spells:
   Spell Fatigue Heal:
     available: true
     casting_time: 1 round
+    damage_type: Psionic
     desc: Heal a target of spell fatigue. Cannot be cast on oneself.
     effect: Heal
     is_potion: true
@@ -429,6 +436,7 @@ spells:
   Commune With Local Spirit:
     available: true
     casting_time: 1 round to conjure, 1 round per question.
+    damage_type: None
     desc: "The caster may may contact a [spirit](http://spiritlakemu.com/wiki/creatures#spirits-and-ghosts) for a time and ask them one question per round. The spirit may have an appearance like they had in life or be indistinct, depending on how much of their sense of self remains. The spirit's knowledge is limited to matters within their immediate area or expertise. Only the caster communes with the spirit, outside observers cannot see or hear anything communicated by the spirit. "
     duration: 15 minutes
     effect: Communication
@@ -503,6 +511,7 @@ spells:
   Rally Spirit:
     available: true
     casting_time: 1 round
+    damage_type: Psionic
     desc: "The caster boosts the emotional resolve of a knocked out target, returning them to the fight."
     effect: Revive
     is_revive: true
@@ -574,7 +583,7 @@ spells:
   Enduring Mind Shield:
     available: true
     casting_time: "1 round"
-    damage_type: Psionic
+    damage_type: None
     desc: "Cast a long lasting protective psionic shield on a target. The strength of the shield is determined by the caster's Spirit roll.\n\nWhen the target is targeted by another spell with a psionic effect or doing psionic damage, the opposing caster rolls Spirit vs the strength of the shield to determine whether the spell succeeds, or whether the mind shield holds. The shield raises an alarm which informs the target that a psionic spell of some sort has been cast on them, whether the spell succeeds in bypassing the shield or not."
     duration: 8 hours
     effect: Defense
@@ -713,6 +722,7 @@ spells:
   Dispel Magic:
     available: true
     casting_time: 1 round
+    damage_type: Psionic
     desc: "Caster can remove the effects of one spell level 7 or below from a sapient target. They are able to differentiate between the effects of different spells, but cannot remove only a portion of a spell's effect.\n\nThe caster can sense the magic that is affecting a sapient target. They are able to identify the magic's School, its specific affect(s), its range, its level, and targets if applicable. GMs should provide the name of the spell if the caster would be aware of it.\n\nThose with Spirit may notice that the spell has been cast, and may attempt to do so with a roll of the caster's Spirit vs the target's Spirit-4. A draw goes to the caster. This does not prevent the spell's effects or identify the caster in any way."
     effect: Psionic
     level: 7
@@ -752,6 +762,7 @@ spells:
   Manifest Spirit:
     available: true
     casting_time: 5 minutes
+    damage_type: None
     desc: "Caster calls forth a local spirit. The spirit manifests as a visible presence able to communicate and physically interact with the world in their immediate area. The spirit's knowledge is limited to matters within its location or personal expertise. If the spirit possessed magical abilities in life, it is capable of casting known spells of level 5 or below."
     duration: 15 minutes
     effect: Psionic
@@ -865,6 +876,7 @@ spells:
   Dispel All Magic:
     available: true
     casting_time: 1 round
+    damage_type: Psionic
     desc: "Caster removes all magical effects of all levels from any sapient, non-sapient, or inanimate target. They are able to differentiate between the effects of different spells, and can remove all magical effects or choose the spells to remove. They cannot remove a portion of a spell's effect.\n\nThe caster can sense the magic that is affecting the target. They are able to identify the magic's School, its specific affect(s), its range, and targets if applicable. The caster can also sense whether a sapient target is capable of magic, and the target's Schools.\n\nGMs should provide the name of the spell if the caster would be aware of it.\n\nThose with Spirit may notice that the spell has been cast, and may attempt to do so with a roll of the caster's Spirit vs the target's Spirit-4. A draw goes to the caster. This does not prevent the spell's effects or identify the caster in any way."
     effect: Psionic
     level: 8

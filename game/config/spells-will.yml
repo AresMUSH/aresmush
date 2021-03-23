@@ -4,6 +4,7 @@ spells:
     available: true
     area: 10 yard radius
     casting_time: 1 round, plus additional rounds to manipulate at GM's discretion
+    damage_type: None
     desc: The caster is able to slowly lift and manipulate 1 pound of material almost as if with their hands. This manipulation is not precise and cannot travel above 2 mph.
     duration: 10 minutes
     effect: Other
@@ -27,6 +28,7 @@ spells:
   Mend:
     available: true
     casting_time: 1 round
+    damage_type: None
     desc: "Make simple or cosmetic repairs on an object.\n\nFor example, repair a one inch rip or crack, remove a small spot of tarnish or dirt, or fix a scratch of no more than a few inches."
     effect: Creation
     is_potion: true
@@ -55,6 +57,7 @@ spells:
     available: true
     area: 10 yard radius
     casting_time: 1 round, plus additional rounds to manipulate at GM's discretion
+    damage_type: None
     desc: The caster is able to slowly lift and manipulate 5 pounds of material almost as if with their hands. This manipulation is not precise and cannot travel above 10 mph.
     duration: 1 hour
     effect: Other
@@ -84,6 +87,7 @@ spells:
     available: true
     area: 10 yard radius
     casting_time: 1 round, plus additional rounds for movement at the GM's discretion
+    damage_type: None
     desc: The caster can lift and move an object weighing up to 100 lbs at will from a distance. This manipulation is not precise and cannot travel above 25 mph.
     duration: 1 hour
     effect: Other
@@ -108,6 +112,7 @@ spells:
   Telekinetic Block:
     available: true
     casting_time: 1 round
+    damage_type: None
     desc: 'Deflect attacks directed against you or a single comrade with a telekinetic wall, effectively putting the target in [cover](https://www.aresmush.com/fs3/fs3-3/combat/#stance).'
     duration: 3 rounds
     effect: Defense
@@ -124,6 +129,7 @@ spells:
   Telekinetic Hold:
     available: true
     casting_time: 1 round
+    damage_type: Bypass
     desc: Subdue an enemy with telekinetic strength, disabling them for one round.
     duration: 1 round
     effect: Stun
@@ -136,7 +142,6 @@ spells:
     range: Short
     school: Will
     target_num: 1
-
     weapon: Stun (Will)
   #Level 4
   Alter Object:
@@ -155,6 +160,7 @@ spells:
     available: true
     area: 10 yard radius
     casting_time: 1 round, plus additional rounds for movement at the GM's discretion
+    damage_type: None
     desc: The caster can lift and move an object or person weighing up to 250 lbs at will from a distance. This manipulation is not precise and cannot travel above 35 mph.
     duration: 1 hour
     effect: Other
@@ -174,6 +180,7 @@ spells:
     armor: Telekinetic
     available: true
     casting_time: 1 round
+    damage_type: None
     desc: A telekinetic shield envelops the caster's body, acting as armor.
     duration: 3 hours
     effect: Armor
@@ -199,6 +206,7 @@ spells:
   Transform Weapon:
     available: true
     casting_time: 1 round
+    damage_type: None
     desc: Transform any weapon into a more powerful version of itself.
     duration: 3 hours
     effect: Buff
@@ -226,6 +234,7 @@ spells:
   Group Telekinetic Block:
     available: true
     casting_time: 1 round
+    damage_type: None
     desc: "Deflect attacks directed against up to three targets with a telekinetic wall, effectively putting the targets in [cover](https://www.aresmush.com/fs3/fs3-3/combat/#stance)."
     duration: 4 rounds
     effect: Defense
@@ -243,6 +252,7 @@ spells:
     area: 10 yard radius
     available: true
     casting_time: 1 round, plus additional rounds for movement at the GM's discretion
+    damage_type: None
     desc: 'The caster can lift and move up to five objects weighing up to 100 lbs total. The more items they manipulate, the less precise their manipulation is. A single item can be manipulated with good precision, but manipulating three items is imprecise, and more than three items can only be manipulated with rudimentary control such as broad movements through the air. Objects cannot be smaller than 5cm or travel above 25 mph.'
     duration: 1 hour
     effect: Other
@@ -255,6 +265,7 @@ spells:
     available: true
     area: 10 yard radius
     casting_time: 1 round, plus additional rounds to manipulate at GM's discretion
+    damage_type: None
     desc: "The caster can manipulate a small object with great precision. Objects may range in size from 1 mm  to 5 cm.\n\n Manipulation requires knowledge. The caster cannot use telekinesis to pick locks without lockpicking knowledge, or to load a gun without firearms knowledge."
     duration: 1 hour
     effect: Other
@@ -266,6 +277,7 @@ spells:
   Telekinetic Crush:
     available: true
     casting_time: 1 round
+    damage_type: Bypass
     desc: "Crush an enemy with telekinetic strength, doing damage."
     effect: Damage
     fs3_attack: true
@@ -292,6 +304,7 @@ spells:
     area: 100 yard radius
     available: true
     casting_time: 1 round, plus additional rounds for movement at the GM's discretion
+    damage_type: None
     desc: 'The caster can move an object weighing up to 5 tons. This is imprecise, and objects move at a speed inverse to their weight. Smaller objects may move up to 35 mph; larger objects move 15 mph.'
     duration: 1 hour
     effect: Other
@@ -303,6 +316,7 @@ spells:
   Mirrored Objects:
     available: false
     casting_time: 1 round
+    damage_type: None
     desc: "The caster creates a link between two mostly identical objects of up to 1/2 a pound each, allowing one to mirror the movements of the other when used, as long as both are in a location where magic is present. The objects will pick up and transmit all motions when being used for the duration of the spell. Anyone can use one object to mirror motions to the other one, but only the caster can turn the spell off.\n\nThe caster can sense the direction of the other linked object, and it if is moved, the caster will feel the change in its location and be able to track it. The feeling of the link becomes vaguer the more distant the object is, but the caster can always tell the direction of it.\n\nOnly two objects can be linked at a time."
     duration: 48 hours
     effect: Other
@@ -314,6 +328,7 @@ spells:
   Summon Object:
     available: true
     casting_time: 1 round
+    damage_type: None
     desc: "The caster creates a link between themselves and an object of up to 100 pounds, allowing them to teleport the object to themselves. The object may be stored anywhere, but to summon between dimensions there must be an open portal path between the caster and the object. They can sense the direction of the linked object, and it if is moved, the caster will feel the change in its location and be able to track it. The feeling of the link becomes vaguer the more distant the object is, but the caster can always tell the direction of it. Only one object can be bonded to the caster at a time."
     duration: 48 hours
     effect: Other
@@ -326,6 +341,7 @@ spells:
     armor: Transmutation
     available: true
     casting_time: 1 round
+    damage_type: None
     desc: Transforms the caster's clothing into formidable armor.
     duration: 8 hours
     effect: Armor
@@ -340,6 +356,7 @@ spells:
     available: true
     area: 100 yards
     casting_time: 1 round
+    damage_type: None
     desc: "The caster senses all the physical properties of an inanimate object. This includes the type of materials it is composed of, their density, hardness, conductivity, and freezing, melting and boiling points.\n\nThe caster can also sense whether magic is affecting, being performed, or capable of being performed by the inanimate target. They are able to identify the magic's School, its specific affect(s), its range, and targets if applicable. The caster can also sense whether a sapient object (a spirit in an inanimate object) is capable of magic, and the target's Schools.\n\nGMs should provide the name of the spell if the caster would be aware of it."
     duration: 15 minutes
     effect: Other
@@ -353,6 +370,7 @@ spells:
     area: 15 yard radius
     available: false
     casting_time: 10 minutes, plus additional rounds for commands
+    damage_type: None
     desc: "The caster creates a being of pure Will. The being is capable of any Will abilities of level 5 or below. It can be actively directed by its master via a short command of up to four words. A command is in effect until countered by the caster or until the being is dispelled or defeated. Giving a new command takes a turn.\n\nWhile active, the being requires a significant amount of Will energy, and its creator casts Will spells with a -1 modifier.\n\n In combat, the being should be represented by an NPC of level five."
     duration: 30 minutes
     effect: Other
@@ -365,6 +383,7 @@ spells:
   Dimensional Anchor:
     available: true
     casting_time: 2 minutes
+    damage_type: None
     desc: "With the aid of at least one other caster of the appropriate School, become an Anchor for the opening or closing of a dimensional portal. May require additional casters according to the portal's magical energies. They must have two of the following in order to open a portal to a location:\n\n
     * Personal knowledge of the portal's opening point. They have visited it themselves and can remember the location.\n
     * The ability to see someone else's memory of the location.\n
@@ -381,6 +400,7 @@ spells:
   Energize Dimensional Anchor (Will):
     available: true
     casting_time: 2 minutes
+    damage_type: None
     desc: "Provide the necessary magical energy of the appropriate School to a Dimensional Anchor spell, enabling the linked casters to permanently open or close an interdimensional portal.\n\nIf cast on an open portal, the caster can sense if the spell's School is the necessary magical energy to enable opening or closing the portal, as well as the magical coordinates of the portal's existence in the magical universe."
     effect: Travel
     level: 7
@@ -391,6 +411,7 @@ spells:
   Mass Flight:
     available: true
     casting_time: 1 round
+    damage_type: None
     desc: "Confers the power of flight upon up to 5 targets. Each recipient of the spell must remain within 30 yards of at least one other recipient, or the spell ends for the target that is separated from the others. This manipulation is not precise and cannot travel above 35 mph.\n\n Should the spell duration expire while the caster is still aloft, the magic fails slowly, lowering the caster safely to the ground."
     duration: 30 minutes
     effect: Travel
@@ -404,6 +425,7 @@ spells:
   Massive Telekinetic Hold:
     available: true
     casting_time: 1 round
+    damage_type: Bypass
     desc: Subdue up to three enemies with a hold of telekinetic force, disabling them for four rounds.
     duration: 1 round
     effect: Stun
@@ -435,6 +457,7 @@ spells:
     available: true
     area: 100 yards
     casting_time: 1 round
+    damage_type: None
     desc: "The caster extends their senses to all non-organic objects within range. While their body lies senseless and incapacitated, they can identify the presence, quantity, and location of all objects in the area. This allows them to make a map of the non-organic landscape, including structures such as walls and buildings, based on the location of non-organic matter.\n\nThe caster can choose to survey all of the objects at a surface level, or focus their attention on up to five individual objects at a time for more details. They can identify any movement or impacts effecting these five objects, though they cannot tell who or what is interacting with the objects."
     duration: 15 minutes
     effect: Other
@@ -472,6 +495,7 @@ spells:
   Local Gateway:
     available: true
     casting_time: 5 minutes
+    damage_type: None
     desc: "The caster opens or closes a permanent gateway to a location in the same dimensional world they are currently in. Gateways can be closed at will, and a maxium of 3 gateways can be active at a time. They must have two of the following in order to open a gateway to a location:\n\n
       * Personal knowledge of the gateway's opening point. They have visited it themselves and can remember the location.\n
       * The ability to see someone else''s memory of the location.\n
@@ -487,6 +511,7 @@ spells:
     available: true
     area: 1,000 mile radius
     casting_time: 1 round
+    damage_type: None
     desc: "The caster creates a link between two objects of up to 100 pounds, allowing communication over long distances through the objects.\n\n The objects will pick up and transmit all sounds directed at them (including any loud ambient noises) for the duration of the spell. Anyone can use one object to communicate with the other one, but only the caster can turn the spell off.\n\n The caster can sense the direction of the other linked object, and it if is moved, the caster will feel the change in its location and be able to track it. The feeling of the link becomes vaguer the more distant the object is, but the caster can always tell the direction of it.\n\n Only two objects can be linked at a time."
     duration: 12 hours
     effect: Communication
@@ -500,6 +525,7 @@ spells:
     area: 100 yard sphere
     available: true
     casting_time: 1 round
+    damage_type: None
     desc: An invisible, protective sphere is created in a 50 yard radius from the caster in all directions. Anything that attempts to cross the spell's boundary is deflected and the caster can open and close doorways through the barrier at will.
     duration: 12 hours
     effect: Defense
@@ -512,6 +538,7 @@ spells:
     available: false
     area: 1 ft radius
     casting_time: 1 round, plus additional rounds to manipulate at GM's discretion
+    damage_type: None
     desc: "The caster can manipulate a microscopic object with great precision. Objects may range in size from 1 micrometer  to 1 milimeter.\n\n Manipulation requires knowledge. The caster cannot use telekinesis to vanquish disease without exact medical knowledge, or to repair fine machinery without engineering knowledge."
     duration: 1 hour
     effect: Other
@@ -523,6 +550,7 @@ spells:
   Titanic Telekinesis:
     area: 10 yard radius
     available: false
+    damage_type: None
     casting_time: 1 round, plus additional rounds for movement at the GM's discretion
     desc: 'Move an object weighing up to 100 tons. This is imprecise, and objects move at a speed inverse to their weight. Smaller objects may move up to 35 mph; larger objects move a yard per minute.'
     duration: 1 hour
