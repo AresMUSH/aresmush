@@ -14,7 +14,12 @@ module AresMUSH
       char.magic_shields.select { |shield| shield.name == shield_name }.first
     end
 
-    def self.find_best_shield(char, damage_type)
+    def self.find_best_shield(char_or_combatant, damage_type)
+      if (char_or_combatant.class == Combatant)
+        char = char_or_combatant.associated_model
+      else
+        char = char_or_combatant
+      end
       shields = []
       exceptions = Global.read_config("magic", "shields_against_all_exceptions")
       if !exceptions.include?(damage_type)

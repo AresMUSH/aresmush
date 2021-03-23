@@ -153,7 +153,7 @@ module AresMUSH
                 messages.concat message
               end
 
-              #Healing, REviving, and Resurrecting
+              #Healing, Reviving, and Resurrecting
               if heal_points
                 message = Magic.cast_heal(combatant, target, self.spell, heal_points)
                 messages.concat message
