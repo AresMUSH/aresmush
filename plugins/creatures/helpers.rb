@@ -20,7 +20,20 @@ module AresMUSH
       Global.logger.debug "Portals: #{creature.portals.to_a}"
     end
 
+    def self.build_image_path(creature, arg)
+      return nil if !arg
+      folder = Creatures.creature_page_folder(creature)
+      File.join folder, arg.downcase
+    end
 
+    def self.creature_page_folder(creature)
+    Website::FilenameSanitizer.sanitize(creature.name.downcase)
+    end
+
+    def self.creature_page_files(creature)
+      folder = Creatures.creature_page_folder(creature)
+      Dir[File.join(AresMUSH.website_uploads_path, "#{folder}/**")].sort
+    end
 
   end
 end

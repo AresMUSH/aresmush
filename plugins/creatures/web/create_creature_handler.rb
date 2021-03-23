@@ -12,11 +12,13 @@ module AresMUSH
           return { error: t('dispatcher.not_allowed') }
         end
 
-        if (request.args[:name].blank?)
+        if (request.args[:name].blank? || request.args[:short_desc].blank?)
           return { error: t('webportal.missing_required_fields') }
         end
 
         sapient = (request.args[:sapient] || "").to_bool
+        banner_image = Creature.build_image_path(creature, request.args[:banner_image])
+
 
         creature = Creature.create(
           name: request.args[:name],
@@ -31,6 +33,7 @@ module AresMUSH
           magical_abilities: request.args[:magical_abilities],
           events: request.args[:events],
           short_desc: request.args[:short_desc],
+          banner_image: banner_image,
         )
 
 

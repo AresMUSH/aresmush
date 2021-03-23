@@ -12,6 +12,10 @@ module AresMUSH
         error = Website.check_login(request, true)
         return error if error
 
+        if (request.args[:name].blank? || request.args[:short_desc].blank?)
+          return { error: t('webportal.missing_required_fields') }
+        end
+
         if (!enactor.is_approved?)
           return { error: t('dispatcher.not_allowed') }
         end
@@ -77,6 +81,11 @@ module AresMUSH
           creature.update(short_desc: request.args[:short_desc].blank? ? nil : request.args[:short_desc])
           creature.update(magical_abilities: request.args[:magical_abilities].blank? ? nil : request.args[:magical_abilities])
           creature.update(events: request.args[:events].blank? ? nil : request.args[:events])
+          banner_image = Creatures.build_image_path(creature, request.args[:banner_image])
+          gallery = (request.args[:image_gallery] || '').split.map { |g| g.downcase }
+          creature.update(image_gallery: gallery)
+          creature.update(banner_image: banner_image)
+
           Website.add_to_recent_changes('creature', t('creatures.creature_updated', :name => creature.name), { id: creature.id }, enactor.name)
 
           {}

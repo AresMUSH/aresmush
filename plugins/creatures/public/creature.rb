@@ -17,6 +17,8 @@ module AresMUSH
     attribute :pinterest
     attribute :found
     attribute :short_desc
+    attribute :banner_image
+    attribute :image_gallery, :type => DataType::Array, :default => []
     before_save :save_upcase
 
     collection :scenes, "AresMUSH::Scene"
