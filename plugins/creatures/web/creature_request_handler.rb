@@ -72,6 +72,7 @@ module AresMUSH
           edit_short_desc: Website.format_input_for_html(creature.short_desc),
           short_desc: Website.format_markdown_for_html(creature.short_desc),
           banner_image: creature.banner_image ? Website.get_file_info(creature.banner_image) : nil,
+          profile_image: creature.profile_image ? Website.get_file_info(creature.profile_image) : nil,
           image_gallery: (creature.image_gallery || []).join(' '),
           display_image_gallery: gallery_files.map { |g| Website.get_file_info(g) },
           files: files,

@@ -18,6 +18,7 @@ module AresMUSH
 
         sapient = (request.args[:sapient] || "").to_bool
         banner_image = Creature.build_image_path(creature, request.args[:banner_image])
+        profile_image = Creature.build_image_path(creature, request.args[:profile_image])
 
 
         creature = Creature.create(
@@ -34,6 +35,7 @@ module AresMUSH
           events: request.args[:events],
           short_desc: request.args[:short_desc],
           banner_image: banner_image,
+          profile_image: profile_image,
         )
 
 

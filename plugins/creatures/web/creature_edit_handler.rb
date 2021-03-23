@@ -82,9 +82,11 @@ module AresMUSH
           creature.update(magical_abilities: request.args[:magical_abilities].blank? ? nil : request.args[:magical_abilities])
           creature.update(events: request.args[:events].blank? ? nil : request.args[:events])
           banner_image = Creatures.build_image_path(creature, request.args[:banner_image])
+          profile_image = Creatures.build_image_path(creature, request.args[:profile_image])
           gallery = (request.args[:image_gallery] || '').split.map { |g| g.downcase }
           creature.update(image_gallery: gallery)
           creature.update(banner_image: banner_image)
+          creature.update(profile_image: profile_image)
 
           Website.add_to_recent_changes('creature', t('creatures.creature_updated', :name => creature.name), { id: creature.id }, enactor.name)
 
