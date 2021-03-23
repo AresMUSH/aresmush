@@ -368,7 +368,7 @@ input:focus, .ember-power-select-search-input:focus, textarea:focus {
 }
 
 .directory-card {
-  background-color: #404B56;
+  background-color: $dark-gray-bg;
   opacity: 85%;
   padding: 10px;
   margin: 15px;
@@ -386,9 +386,10 @@ input:focus, .ember-power-select-search-input:focus, textarea:focus {
 }
 
 .directory-title {
-    text-shadow: 2px 2px 5px $dark-gray-bg;
+    text-shadow: 2px 2px 5px #2b2f33;
     font-size: 120%;
-}
+    margin-top: 35px;
+  }
 
 .short-desc {
     background: #404B56;
