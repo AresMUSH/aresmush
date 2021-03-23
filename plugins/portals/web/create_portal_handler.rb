@@ -18,6 +18,8 @@ module AresMUSH
           end
         end
 
+        banner_image = Portals.build_image_path(portal, request.args[:banner_image])
+        profile_image = Portals.build_image_path(portal, request.args[:profile_image])
 
         portal = Portal.create(
           name: request.args[:name],
@@ -35,7 +37,9 @@ module AresMUSH
           latitude: request.args[:latitude],
           longitude: request.args[:longitude],
           rp_suggestions: request.args[:rp_suggestions],
-          short_desc: request.args[:short_desc]
+          short_desc: request.args[:short_desc],
+          banner_image: banner_image,
+          profile_image: profile_image,
         )
 
         Global.logger.debug "Portal #{portal.id} (#{portal.name}) created by #{enactor.name}."

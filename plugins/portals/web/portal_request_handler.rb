@@ -42,6 +42,15 @@ module AresMUSH
 
         all_schools = portal.all_schools.to_a
 
+        if (portal.image_gallery.empty?)
+          gallery_files = Portals.portal_page_files(portal) || []
+        else
+          gallery_files = portal.image_gallery.select { |g| g =~ /\w\.\w/ }
+        end
+
+        files = Portals.portal_page_files(portal)
+        files = files.map { |f| Website.get_file_info(f) }
+
         {
           name: portal.name,
           primary_school: portal.primary_school,
@@ -71,7 +80,12 @@ module AresMUSH
           pinterest: portal.pinterest,
           longitude: portal.longitude,
           latitude: portal.latitude,
-          scenes: scenes
+          scenes: scenes,
+          banner_image: portal.banner_image ? Website.get_file_info(portal.banner_image) : nil,
+          profile_image: portal.profile_image ? Website.get_file_info(portal.profile_image) : nil,
+          image_gallery: (portal.image_gallery || []).join(' '),
+          display_image_gallery: gallery_files.map { |g| Website.get_file_info(g) },
+          files: files,
         }
       end
 

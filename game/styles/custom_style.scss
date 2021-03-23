@@ -365,6 +365,7 @@ input:focus, .ember-power-select-search-input:focus, textarea:focus {
 
 .info-box {
    opacity: 90%;
+   max-width: 500px;
 }
 
 .directory-card {
@@ -384,6 +385,10 @@ input:focus, .ember-power-select-search-input:focus, textarea:focus {
     margin: 15px;
     font-style: italic;
     margin-right: 25%;
+}
+
+.directory-title a {
+  color: white;
 }
 
 .directory-title {
