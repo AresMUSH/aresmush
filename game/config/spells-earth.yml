@@ -2,6 +2,7 @@ spells:
   Create Crystal:
     available: true
     casting_time: 1 round
+    damage_type: None
     desc: The caster is able to create a permanent shard of crystal of moderate value. The shard may be no larger than 2 inches, but may be very hard and sharp. Colors may vary.
     effect: Creation
     level: 1
@@ -25,6 +26,7 @@ spells:
   Rock Dance:
     available: true
     casting_time: 1 round
+    damage_type: None
     desc: Send half a dozen pebbles and stones smaller than your fist dancing according to your will.
     duration: 10 minutes
     effect: Other
@@ -50,11 +52,11 @@ spells:
     rounds: 1
     school: Earth
     target_num: 1
-
     effect: Debuff
   Glow Stone:
     available: true
     casting_time: 1 round
+    damage_type: None
     desc: "The caster imbues up to 1 cubic foot of pre-existing rock or gemstone with the ability to fluoresce, making it able emit a soft glow in the dark after being charged in the light for a short period of time. The light from the stone is dim, equivalent to a small candle flame (12 lumens)."
     duration: 1 hour
     effect: Creation
@@ -66,6 +68,7 @@ spells:
   Shape Stone:
     available: true
     casting_time: 1 round
+    damage_type: None
     desc: "For the duration of the spell, the caster can cause up to 1 cubic foot of pre-existing rock or stone to form into simple non-weaponized shapes that animate at their direction. Rock or stone returns to its natural - but not necessarily original - state when the spell ends. "
     duration: 1 hour
     effect: Creation
@@ -88,7 +91,6 @@ spells:
     range: Short
     rounds: 2
     school: Earth
-
     target_num: 1
   #Level 3
   Earth Bolt:
@@ -104,12 +106,12 @@ spells:
     range: Short
     school: Earth
     target_num: 3
-
     weapon: Earth Bolt
   Floating Earth:
     area: 5 yard radius
     available: true
     casting_time: 1 round
+    damage_type: None
     desc: Create a chunk of earth capable of bearing weight up to 250 lbs and propelling itself through the air at speeds up to 35 mph. Must remain in range or it dissipates.
     duration: 1 hour
     effect: Travel
@@ -122,6 +124,7 @@ spells:
   Stone Fists:
     available: true
     casting_time: 1 round
+    damage_type: None
     desc: The caster's hands become stone fists capable of inflicting damage.
     duration: 30 minutes
     effect: Damage
@@ -143,12 +146,12 @@ spells:
     range: Short
     school: Earth
     target_num: 1
-
     weapon: Stone Slam
   Touchstone:
     area: 40 mile radius
     available: true
     casting_time: 1 round
+    damage_type: None
     desc: "The caster creates a link between themselves and a rock, gem, or piece of unalloyed metal, allowing them to always sense its location and direction from their person. If the touchstone is moved, the caster will feel the change in its location and be able to track it. The feeling of the link becomes vaguer the more distant the touchstone is, but the caster can always tell the direction of the touchstone as long as they are in range for the duration of the spell. Only one touchstone can be active at a time."
     duration: 24 hours
     effect: Other
@@ -163,6 +166,7 @@ spells:
     armor: Crystalline
     available: true
     casting_time: 1 round
+    damage_type: None
     desc: The caster's skin becomes as hard as densely formed crystal to increase defenses significantly. Colors may vary.
     effect: Armor
     duration: 3 hours
@@ -174,6 +178,7 @@ spells:
   Diamond Weapon:
     available: true
     casting_time: 1 round
+    damage_type: None
     desc: Augment one specified pre-existing weapon with diamond, making it far sharper and increasing its penetration.
     duration: 3 hours
     effect: Buff
@@ -184,7 +189,6 @@ spells:
     rounds: 100
     school: Earth
     target_num: 1
-
     weapon_specials: Diamond
     weapon: Spell
   Earth Shudder:
@@ -202,7 +206,6 @@ spells:
     range: Long
     school: Earth
     target_num: 3
-
     weapon: Earth Shudder
   Potions (Earth):
     desc: The caster has learned the art of potion-making and can craft potions in any school. This is not a spell in the same sense of most, but rather an art learned through study. It takes time, effort, and materials to brew a potion.
@@ -215,6 +218,7 @@ spells:
     armor: Rock Skin
     available: true
     casting_time: 1 round
+    damage_type: None
     desc: Caster weaponizes and protects their own body by augmenting it with stone and rock.
     duration: 3 hours
     effect: Armor
@@ -224,12 +228,12 @@ spells:
     range: Self
     school: Earth
     target_num: 1
-
     weapon: Rock Skin
   Seismic Sense:
     area: 5 yard radius
     available: true
     casting_time: 1 round
+    damage_type: None
     desc: For the duration of the spell, the caster can detect vibrations in the ground to roughly perceive objects, people, and other aspects of their environment within 10 yards of their person. Vibrations can be sensed underground, past objects that would normally block line of sight, and through invisibility, darkness or any other conditions that effect eyesight. The caster is not required to make perception checks to notice hidden beings within range. Cannot be used on things that have no physical contact with the ground.
     duration: 10 minutes
     effect: Other
@@ -242,6 +246,7 @@ spells:
   Terramancy:
     available: true
     casting_time: 1 round
+    damage_type: None
     desc: "For the duration of the spell, the caster can move around and shape up to a total of 5 cubic feet of pre-existing dirt, rock, or stone. The caster can sculpt detailed, non-weaponized shapes that animate at their direction. Earth returns to its natural, but not necessarily original, state when the spell ends. "
     duration: 15 minutes
     effect: Creation
@@ -256,6 +261,7 @@ spells:
     available: true
     attack_mod: 2
     casting_time: 1 round
+    damage_type: None
     desc: The caster becomes more connected to the earth. They pull a cloud of dust and rocks around themselves and gain more solid footing on the ground, increasing their ability to attack and defend.
     defense_mod: 2
     duration: 6 rounds
@@ -278,7 +284,6 @@ spells:
     range: Long
     school: Earth
     target_num: 1
-
     weapon: Stalagmite
   Stone Shackles:
     available: true
@@ -295,12 +300,12 @@ spells:
     rounds: 2
     school: Earth
     target_num: 1
-
     weapon: Stun (Earth)
   #Level 6
   Alter Metal:
     available: false
     casting_time: 1 round
+    damage_type: None
     desc: "For the duration of the spell, the caster can reshape up to 4 cubic inches of pre-existing non-alloy or two-alloy metal. The caster can can sculpt detailed shapes that animate at their direction. The density and composition of the metal does not change, but its shape can be altered, which also allows for repairs or damage to the metal parts of an object. Metal returns to its natural, but not necessarily original, state when the spell ends.\n\nEntire objects can be sculpted using Alter Metal, but making a functional object requires knowledge of how the object is made and works. The caster cannot make a functional knife, lock, clock, etc. without the knowledge of how they mechanically and structurally work—which may require steps beyond the spell to make the object function correctly.\n\nThe caster can manipulate small pieces of metal, no smaller 1 mm, with great precision. Manipulation of metal to use a pre-existing object requires knowledge. For example, the caster cannot use Alter Metal to move tumblers to open a lock without lockpicking knowledge.\n\nIn combat, damaging a weapon enough to disable it takes 3-5 rounds, at the GM's discretion."
     duration: 15 minutes
     effect: Creation
@@ -314,6 +319,7 @@ spells:
     armor: Diamond
     available: true
     casting_time: 1 round
+    damage_type: None
     desc: The caster protects the target's body by augmenting it with a layer of hard diamond armor. Coloring may vary.
     duration: 8 hours
     effect: Armor
@@ -326,6 +332,7 @@ spells:
     attack_mod: -2
     available: true
     casting_time: 1 round
+    damage_type: None
     defense_mod: -2
     desc: "The caster swirls small clouds of dirt around up to three targets, obscuring their vision and making it harder for them to attack or defend."
     duration: 2 rounds
@@ -337,7 +344,6 @@ spells:
     rounds: 3
     school: Earth
     target_num: 3
-
     effect: Debuff
   Familiar (Earth):
     desc: "A familiar is a spirit associated or allied with a school of magic that has taken residence in a physical vessel with the shape of an animal. It functions as a companion, assistant, and guardian. \n\nFamiliars may be capable of some or all of the following: sharing telepathic or empathic communication, providing knowledge of the arcane, sharing senses, lending physical aid as spies or fighters, delivering spells at a distance of up to three miles."
@@ -351,6 +357,7 @@ spells:
     line_of_sight: true
     available: true
   Golem:
+    damage_type: None
     desc: "The caster creates a golem made of rock mixed with sand, dirt and/or clay from the environment. It is bound to do the caster's bidding, able to perform simple tasks and come to the caster's aid in battle. It cannot cast spells. When the spell ends, the golem crumbles away.\n\nIn combat, the golem should be represented by an NPC of level three with Rock Skin."
     effect: Other
     duration: 10 minutes
@@ -408,6 +415,7 @@ spells:
   Energize Dimensional Anchor (Earth):
     available: true
     casting_time: 2 minutes
+    damage_type: None
     desc: "Provide the necessary magical energy of the appropriate School to a Dimensional Anchor spell, enabling the linked casters to permanently open or close an interdimensional portal.\n\nIf cast on an open portal, the caster can sense if the spell's School is the necessary magical energy to enable opening or closing the portal, as well as the magical coordinates of the portal's existence in the magical universe."
     effect: Travel
     level: 7
