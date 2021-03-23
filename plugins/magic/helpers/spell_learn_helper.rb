@@ -23,7 +23,8 @@ module AresMUSH
     def self.knows_potion?(char)
       spell_names = char.spells_learned.map { |s| s.name }
       list = spell_names.join " "
-      potion = list.include?("Potions")
+      potion_spell = Global.read_config("magic", "potion_spell")
+      potion = list.include?(potion_spell)
       return potion
     end
 

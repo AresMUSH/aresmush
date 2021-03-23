@@ -25,8 +25,8 @@ en:
       potion_ko: "You cannot use a potion while Knocked Out."
       use_potion: "%{name} uses a %xM%{potion}%xn potion."
       use_potion_target: "%{name} uses a %xM%{potion}%xn potion on %{target}."
-      potion_heal: "%{name} uses a %xM%{potion}%xn potion. %{target} receives up to %{points} points of healing to a wound."
-      potion_shield: "%{name} uses a %xM%{spell}%xn potion. %{target} is protected against %{type} attacks."
+      use_potion_heal: "%{name} uses a %xM%{potion}%xn potion. %{target} receives up to %{points} points of healing to a wound."
+      use_potion_shield: "%{name} uses a %xM%{potion}%xn potion. %{target} is protected against %{type} attacks."
       potion_heal_ko_target: "%{name} uses a %xM%{potion}%xn potion. %{target} receives up to %{points} points of healing to a wound and is no longer dying."
       potion_ko_heal: "%{name} uses a %xM%{potion}%xn potion. %{target} receives up to %{points} points of healing to a wound and is no longer dying."
       potion_stance: "%{name} uses a %xM%{potion}%xn potion, changing their stance to %{stance}."
@@ -39,7 +39,7 @@ en:
         # SPELL CASTING
         # ----------------------------
       use_combat_spell: "Use combat/spell when you are in combat."
-      dont_target_self: "Be sure to specify a target when using an attack spell so you don't attack yourself. "
+      dont_target_self: "Be sure to specify a target when using a stun or attack spell so you don't attack yourself. "
       spell_ko: "You cannot cast a spell while Knocked Out."
       casts_spell: "%{name} casts %xB%{spell}%xn%{mod} and %{succeeds}."
       casts_spell_on_target: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{succeeds}."
@@ -47,10 +47,10 @@ en:
       not_ko: "%{target} is not knocked out."
 
       cast_damage: "%{name} casts %xB%{spell}%xn on %{target} and %{succeeds}, giving %{target} a wound."
-      cast_mod: "%{name} casts %xB%{spell}%xn on %{target} and %{succeeds}, giving %{target} a %xg%{mod} %{type} modification%xn."
+      cast_mod: "%{name} casts %xB%{spell}%xn on %{target} and %{succeeds}, giving %{target} a %xg%{mod_msg} modification%xn."
       cast_stance: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{succeeds}, changing %{target}'s stance to %{stance}. It will last for %{rounds} more round(s)."
       cast_stun: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{succeeds}. They will be stunned for %{rounds} more round(s)."
-      cast_failed_stun: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and the spell %{succeeds}, but %{target} resists and is not stunned."
+      cast_stun_resisted: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and the spell %{succeeds}, but %{target} resists and is not stunned."
       not_spell: "That is not a spell."
       cant_cast_on_gear: "You cannot cast %{spell} on %{target}'s %{gear}."
       doesnt_use_target: "This spell does not use a target."
@@ -80,19 +80,22 @@ en:
       # MAGIC SHIELDS
       # ----------------------------
       cast_shield: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{succeeds}. They are protected against %{type} attacks."
-      shield_failed: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{target}'s %{shield} failed to stop it. %{name} %xgSUCCEEDS%xn, but the damage is reduced."
-      shrapnel_shield_failed: "%{name}'s %xB%{weapon}%xn hits %{target} and %{target}'s %{shield} failed to stop it, but the damage is reduced."
-      shrapnel_shield_held: "%{name}'s %xB%{weapon}%xn hits %{target}, but %{target}'s %{shield} stopped it."
-      shield_failed_stun: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{target}'s %{shield} failed to stop it. %{name} %xgSUCCEEDS%xn and %{target} will be stunned for %{rounds} more rounds."
-      shield_failed_stun_resisted: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{target}'s %{shield} failed to stop it, but %{target} resists and %xris not stunned%xn."
-      mind_shield_failed: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{target}'s %{shield} failed to stop it. %{name} %xgSUCCEEDS%xn."
-      shield_held: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and their %{shield} stopped it. %{name} %xrFAILS%xn."
+      cast_shield_no_target: "%{name} casts %xB%{spell}%xn%{mod} and %{succeeds}. They are protected against %{type} attacks."
       no_shield: "%{name} does not have{spell} active."
       not_shield: "%{shield} is not a shield."
       turn_shield_off: "%xhIf it has ICly been longer than the spell's duration, %{name} should do `shield/off %{spell}`.%xn"
       turned_shield_off: "You have turned off %{name}'s %{shield}."
-      cast_failed_stun_shield: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{target}'s %{shield} failed to stop it. The spell %{succeeds}, but %{target} resists and is not stunned."
 
+      shield_held: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{target}'s %X17%{shield}%xn stopped it. %{name}'s spell has %xrNO EFFECT%xn."
+      shield_failed: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{target}'s %X17%{shield}%xn failed to stop it. %{name} %xgSUCCEEDS%xn, but the damage is reduced."
+      # shield_held_against_shrapnel: "%{name}'s %xB%{weapon}%xn hits %{target}, but %{target}'s %xB%{shield}%xn stopped it."
+      shield_failed_against_shrapnel: "%{name}'s %xB%{weapon}%xn hits %{target} and %{target}'s %X17%{shield}%xn failed to stop it, but the damage is reduced."
+      mod_shield_failed:  "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{target}'s %X17%{shield}%xn failed to stop it. %{name} %xgSUCCEEDS%xn, giving %{target} a %xg%{mod_msg}%xn modification."
+      shield_failed_stun: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{target}'s %X17%{shield}%xn failed to stop it. %{name} %xgSUCCEEDS%xn and %{target} will be stunned for %{rounds} more rounds."
+      shield_failed_stun_resisted: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{target}'s %X17%{shield}%xn failed to stop it, but %{target} resists and %xris not stunned%xn."
+      no_damage_shield_failed: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{target}'s %X17%{shield}%xn failed to stop it. %{name} %xgSUCCEEDS%xn."
+      shield_held_against_attack: "%{name} attacks %{target} with %{weapon}, but %{target}'s %X17%{shield}%xn %xrSTOPPED IT%xn."
+      shield_failed_against_attack: "%{name} attacks %{target} with %{weapon} and %{target}'s %X17%{shield}%xn failed to stop it. %{name} %xgHITS%xn, but the damage is reduced."
 
       # ----------------------------
       # SPELLs WEAR OFF

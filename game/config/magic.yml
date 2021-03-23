@@ -17,6 +17,17 @@ magic:
     Pet: A magical creature takes a shine to you and decides to stay.
     Ancestry: Somewhere in your family tree, your bloodline became crossed with that of a Magical Creature.
     Storyteller: Let Storytellers decide your Lore Hook.
+  potion_spell: Potions
+  shields_against_all_exceptions:
+  - Bypass
+  - Psionic
+  default_damage_type:
+    Physical
+  type_does_damage:
+    Psionic: false
+    Cold: true
+    Fire: true
+    Physical: true
   achievements:
     potions_made:
       type: potion
@@ -36,3 +47,5 @@ magic:
     equipped_magic_item:
       type: spell
       message: "Equipped a magic item."
+  permissions:
+    manage_magic: "Add and remove spells, potions, and magic items from characters."

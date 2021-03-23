@@ -26,6 +26,28 @@ module AresMUSH
           wound = FS3Combat.worst_treatable_wound(target.associated_model)
           return t('magic.no_healable_wounds', :target => target.name) if (heal_points && wound.blank?)
         end
+
+        targets.each do |target|
+          # Don't let people waste a spell that won't have an effect
+          wound = FS3Combat.worst_treatable_wound(target.associated_model)
+          heal_points = Global.read_config("spells", self.spell, "heal_points")
+          weapon = Global.read_config("spells", self.spell, "weapon")
+          return t('magic.no_healable_wounds', :target => target.name) if (heal_points && wound.blank? && !weapon)
+          # Check that weapon specials can be added to weapon
+          weapon_specials_str = Global.read_config("spells", self.spell, "weapon_specials")
+          if weapon_specials_str
+            weapon_special_group = FS3Combat.weapon_stat(target.weapon, "special_group") || ""
+            weapon_allowed_specials = Global.read_config("fs3combat", "weapon special groups", weapon_special_group) || []
+            return t('magic.cant_cast_on_gear', :spell => self.spell, :target => target.name, :gear => "weapon") if !weapon_allowed_specials.include?(weapon_specials_str.downcase)
+          end
+          #Check that armor specials can be added to weapon
+          armor_specials_str = Global.read_config("spells", self.spell, "armor_specials")
+          if armor_specials_str
+            armor_allowed_specials = FS3Combat.armor_stat(target.armor, "allowed_specials") || []
+            return t('magic.cant_cast_on_gear', :spell => self.spell, :target => target.name, :gear => "armor") if !armor_allowed_specials.include?(armor_specials_str)
+          end
+        end
+
         return nil
       end
 
@@ -51,6 +73,7 @@ module AresMUSH
         lethal_mod = Global.read_config("spells", self.spell, "lethal_mod")
         attack_mod = Global.read_config("spells", self.spell, "attack_mod")
         defense_mod = Global.read_config("spells", self.spell, "defense_mod")
+        init_mod = Global.read_config("spells", self.spell, "init_mod")
         spell_mod = Global.read_config("spells", self.spell, "spell_mod")
         stance = Global.read_config("spells", self.spell, "stance")
         roll = Global.read_config("spells", self.spell, "roll")
@@ -78,7 +101,7 @@ module AresMUSH
 
           #Equip Weapon
           if (weapon && weapon != "Spell")
-            Magic.set_spell_weapon(combatant, target, weapon)
+            Magic.set_magic_weapon(combatant, target, weapon)
             if armor
 
             else
@@ -93,8 +116,8 @@ module AresMUSH
           #Equip Weapon Specials
           if weapon_specials_str
             weapon = target.weapon.before("+")
-            Magic.set_spell_weapon_effects(target, self.spell)
-            Magic.set_spell_weapon(enactor = nil, target, weapon, [weapon_specials_str])
+            Magic.set_magic_weapon_effects(target, self.spell)
+            Magic.set_magic_weapon(enactor = nil, target, weapon, [weapon_specials_str])
             if (heal_points && wound)
 
             elsif lethal_mod || defense_mod || attack_mod || spell_mod
@@ -110,7 +133,7 @@ module AresMUSH
 
           #Equip Armor
           if armor
-            Magic.set_spell_armor(combatant, target, armor)
+            Magic.set_magic_armor(combatant, target, armor)
             if target.name == combatant.name
               messages.concat [t('magic.use_potion', :name => self.name, :potion => self.spell)]
             else
@@ -121,7 +144,7 @@ module AresMUSH
           #Equip Armor Specials
           if armor_specials_str
             armor_specials = armor_specials_str ? armor_specials_str.split('+') : nil
-            Magic.set_spell_armor(combatant, target, target.armor, armor_specials)
+            Magic.set_magic_armor(combatant, target, target.armor, armor_specials)
             if target.name == combatant.name
               messages.concat [t('magic.use_potion', :name => self.name, :potion => self.spell)]
             else
@@ -132,32 +155,42 @@ module AresMUSH
 
           #Apply Mods
           if lethal_mod
-            target.update(lethal_mod_counter: rounds)
-            target.update(spell_damage_lethality_mod: lethal_mod)
+            target.update(magic_lethal_mod_counter: rounds)
+            target.update(magic_lethal_mod: lethal_mod)
             if target.name == combatant.name
-              messages.concat  [t('magic.potion_mod', :name => self.name, :potion => self.spell, :mod => target.spell_damage_lethality_mod, :type => "lethality")]
+              messages.concat  [t('magic.potion_mod', :name => self.name, :potion => self.spell, :mod => target.magic_lethal_mod, :type => "lethality")]
             else
-              messages.concat  [t('magic.potion_mod_target', :name => self.name, :potion => self.spell, :target => target.name, :mod => target.spell_damage_lethality_mod, :type => "lethality")]
+              messages.concat  [t('magic.potion_mod_target', :name => self.name, :potion => self.spell, :target => target.name, :mod => target.magic_lethal_mod, :type => "lethality")]
             end
           end
 
           if attack_mod
-            target.update(attack_mod_counter: rounds)
-            target.update(spell_attack_mod: attack_mod)
+            target.update(magic_attack_mod: rounds)
+            target.update(magic_attack_mod_counter: attack_mod)
             if target.name == combatant.name
-              messages.concat  [t('magic.potion_mod', :name => self.name, :potion => self.spell, :mod => target.spell_attack_mod, :type => "attack")]
+              messages.concat  [t('magic.potion_mod', :name => self.name, :potion => self.spell, :mod => target.magic_attack_mod, :type => "attack")]
             else
-              messages.concat  [t('magic.potion_mod_target', :name => self.name, :potion => self.spell, :target => target.name, :mod => target.spell_attack_mod, :type => "attack")]
+              messages.concat  [t('magic.potion_mod_target', :name => self.name, :potion => self.spell, :target => target.name, :mod => target.magic_attack_mod, :type => "attack")]
             end
           end
 
           if defense_mod
-            target.update(defense_mod_counter: rounds)
-            target.update(spell_defense_mod: defense_mod)
+            target.update(magic_defense_mod_counter: rounds)
+            target.update(magic_defense_mod: defense_mod)
             if target.name == combatant.name
-              messages.concat  [t('magic.potion_mod', :name => self.name, :potion => self.spell, :mod => target.spell_defense_mod, :type => "defense")]
+              messages.concat  [t('magic.potion_mod', :name => self.name, :potion => self.spell, :mod => target.magic_defense_mod, :type => "defense")]
             else
-              messages.concat  [t('magic.potion_mod_target', :name => self.name, :potion => self.spell, :target => target.name, :mod => target.spell_defense_mod, :type => "defense")]
+              messages.concat  [t('magic.potion_mod_target', :name => self.name, :potion => self.spell, :target => target.name, :mod => target.magic_defense_mod, :type => "defense")]
+            end
+          end
+
+          if init_mod
+            target.update(magic_init_mod: rounds)
+            target.update(magic_init_mod_counter: attack_mod)
+            if target.name == combatant.name
+              messages.concat  [t('magic.potion_mod', :name => self.name, :potion => self.spell, :mod => target.magic_init_mod, :type => "attack")]
+            else
+              messages.concat  [t('magic.potion_mod_target', :name => self.name, :potion => self.spell, :target => target.name, :mod => target.magic_init_mod, :type => "attack")]
             end
           end
 
@@ -174,8 +207,8 @@ module AresMUSH
           #Change Stance
           if stance
             target.update(stance: stance)
-            target.update(stance_counter: rounds)
-            target.update(stance_spell: self.spell)
+            target.update(magic_stance_counter: rounds)
+            target.update(magic_stance_spell: self.spell)
             if target.name == combatant.name
               messages.concat [t('magic.potion_stance', :name => self.name, :potion => self.spell, :stance => stance, :rounds => rounds)]
             else

@@ -198,13 +198,15 @@ spells:
     desc: 'Swiftly grow a barrier that protects the caster or their target by placing them in [cover](https://www.aresmush.com/fs3/fs3-3/combat/#stance) for one round.'
     duration: 1 round
     effect: Defense
+    is_shield: true
     level: 3
     line_of_sight: true
     name: Shield of the Forest
     range: Short
     rounds: 3
     school: Nature
-    stance: cover
+    shields_against: All
+    # stance: cover
     target_num: 1
   Swarm:
     available: true

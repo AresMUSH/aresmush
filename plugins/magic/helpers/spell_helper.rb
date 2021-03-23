@@ -71,11 +71,102 @@ module AresMUSH
       end
     end
 
-    def self.delete_all_unhealed_damage(char)
+    def self.parse_spell_targets(name_string, spell)
+      target_num = Global.read_config("spells", spell, "target_num") || 1
+      return t('fs3combat.no_targets_specified') if (!name_string)
+      target_names = name_string.split(" ").map { |n| InputFormatter.titlecase_arg(n) }
+      targets = []
+      target_names.each do |name|
+        target = Character.named(name)
+        if !target then return "no_target" end
+        targets << target
+      end
+      targets = targets
+      if (targets.count > target_num)
+        return "too_many_targets"
+      else
+        return targets
+      end
+    end
+
+    def self.print_target_names(name_string)
+      target_names = name_string.split(" ").map { |n| InputFormatter.titlecase_arg(n) }
+      print_names = []
+      target_names.each do |name|
+        target = Character.named(name)
+        return "no_target" if !target
+        print_names << target.name
+      end
+      print_names = print_names.join(", ")
+      return print_names
+    end
+
+    def self.roll_noncombat_spell_success(caster_name, spell, mod = nil, dice = nil)
+      if Character.named(caster_name)
+        caster = Character.named(caster_name)
+      else
+        caster = caster_name
+        is_npc = true
+      end
+      if is_npc
+        roll = FS3Skills.roll_dice(dice)
+        die_result = FS3Skills.get_success_level(roll)
+        succeeds = Magic.spell_success(spell, die_result)
+        Global.logger.info "#{caster_name} rolling #{dice} dice to cast #{spell}. Result: #{roll} (#{die_result} successes)"
+      else
+        schools = [caster.group("Minor School"), caster.group("Major School")]
+        school = Global.read_config("spells", spell, "school")
+        if schools.include?(school)
+          skill = school
+        else
+          skill = "Magic"
+          cast_mod = FS3Skills.ability_rating(caster, "Magic") * 2
+          mod = mod.to_i + cast_mod
+        end
+        level = Global.read_config("spells", spell, "level")
+        if level == 1
+          level_mod = 0
+        else
+          level_mod = 0 - level
+        end
+        spell_mod = Magic.item_spell_mod(caster)
+        total_mod = mod.to_i + spell_mod.to_i + level_mod.to_i
+        Global.logger.info "#{caster.name} rolling #{skill} to cast #{spell}. Level Mod=#{level_mod} Mod=#{mod} Item Mod=#{spell_mod} Off-school cast mod=#{cast_mod} total=#{total_mod}"
+        roll = caster.roll_ability(skill, total_mod)
+        die_result = roll[:successes]
+        succeeds = Magic.spell_success(spell, die_result)
+      end
+
+      return {:succeeds => succeeds, :result => die_result}
+    end
+
+    def self.target_errors(caster, targets, spell)
+      target_num = Global.read_config("spells", spell, "target_num")
+      heal_points = Global.read_config("spells", spell, "heal_points")
+      if targets == "no_target"
+        return t('magic.invalid_name')
+      elsif targets == "too_many_targets"
+        return t('magic.too_many_targets', :spell => spell, :num => target_num )
+      else
+        targets.each do |target|
+          wound = FS3Combat.worst_treatable_wound(target)
+          # if (target == caster && Global.read_config("spells", spell, "fs3_attack"))
+          #   return  t('magic.dont_target_self')
+          if (heal_points && wound.blank?)
+            return t('magic.no_healable_wounds', :target => target.name)
+          else
+            return nil
+          end
+        end
+      end
+    end
+
+    def self.heal_all_unhealed_damage(char)
       damage = char.damage
       damage.each do |d|
-        if d.current_severity != "HEAL"
+        if !d.healed
           d.update(current_severity: "HEAL")
+          d.update(healed: true)
         end
       end
       Global.logger.info "Auto-revive spell healing all #{char.name}'s damage."

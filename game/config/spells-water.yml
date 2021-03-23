@@ -116,6 +116,7 @@ spells:
     name: Endure Cold
     range: Self
     school: Water
+    shields_against: Cold
     rounds: 60
   Ice Talons:
     available: true
@@ -305,7 +306,6 @@ spells:
     range: Long
     school: Water
     target_num: 3
-
     weapon: Exploding Ice
   Group Endure Cold:
     available: true
@@ -318,8 +318,8 @@ spells:
     name: Group Endure Cold
     range: Short
     school: Water
+    shields_against: Cold
     target_num: 3
-
     rounds: 600
   Group Water Walk:
     available: true
@@ -341,6 +341,7 @@ spells:
     desc: "Deflect attacks directed against up to three targets with a wall of ice effectively putting the targets in [cover](https://www.aresmush.com/fs3/fs3-3/combat/#stance)."
     duration: 5 rounds
     effect: Defense
+    is_shield: true
     level: 5
     line_of_sight: true
     name: Ice Block
@@ -348,8 +349,8 @@ spells:
     roll: true
     rounds: 5
     school: Water
-    stance: cover
-
+    shields_against: All
+    # stance: cover
     target_num: 3
   Reviving Cold:
     available: true

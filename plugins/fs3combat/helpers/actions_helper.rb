@@ -216,8 +216,6 @@ module AresMUSH
         severity = -30
       end
 
-
-
       npc = combatant.is_npc? ? combatant.npc.wound_modifier : 0
       npc_mod = combatant.damage_lethality_mod + npc
 
@@ -256,6 +254,7 @@ module AresMUSH
       # Armor doesn't cover this hit location
       return 0 if !protect
       random_die = rand(8) + 1
+      Global.logger.debug "random die #{random_die} + net_succ #{attacker_net_successes} + pen #{pen} - pro #{protect}"
       result = random_die + attacker_net_successes + pen - protect
 
       if (result >= 8) # 8-9
@@ -359,7 +358,6 @@ module AresMUSH
       attacker_net_successes = attack_roll - defense_roll
       stopped_by_cover = target.stance == "Cover"  ?  FS3Combat.stopped_by_cover?(attacker_net_successes, combatant) : false
       hit = false
-      stopped_by_shield = Magic.stopped_by_shield?(combatant.weapon, target, combatant, attacker_net_successes)
 
       weapon_type = FS3Combat.weapon_stat(combatant.weapon, "weapon_type")
       hit_mount = FS3Combat.hit_mount?(combatant, target, attacker_net_successes, mount_hit)
@@ -382,9 +380,6 @@ module AresMUSH
         message = t('fs3combat.attack_hits_mount', :name => combatant.name, :target => target.name, :weapon => weapon, :effect => mount_effect)
       elsif (stopped_by_cover)
         message = t('fs3combat.attack_hits_cover', :name => combatant.name, :target => target.name, :weapon => weapon)
-      # elsif stopped_by_shield
-      #   message = stopped_by_shield[:msg]
-      #   hit = stopped_by_shield[:hit]
       elsif (attacker_net_successes < 0)
         # Only can evade when being attacked by melee or when in a vehicle.
         if (weapon_type == 'Melee' || target.is_in_vehicle?)
@@ -400,15 +395,21 @@ module AresMUSH
         hit = true
       end
 
+      stopped_by_shield = Magic.determine_margin_with_shield(target, combatant, weapon, attack_roll, defense_roll)
+      if stopped_by_shield
+        hit = stopped_by_shield[:hit]
+        message = stopped_by_shield[:message]
+      end
+      puts "!!!!!Determining Margin with shield #{stopped_by_shield}"
 
       combatant.log "Attack Margin: mod=#{mod} called=#{called_shot} " +
       " attack=#{attack_roll} defense=#{defense_roll} hit=#{hit} cover=#{stopped_by_cover} shield=#{stopped_by_shield } result=#{message}"
 
-
       {
         message: message,
         hit: hit,
-        attacker_net_successes: attacker_net_successes
+        attacker_net_successes: attacker_net_successes,
+        stopped_by_shield: stopped_by_shield
       }
     end
 
@@ -466,12 +467,12 @@ module AresMUSH
         melee_damage_mod = [(strength_roll - 1) * 5, 0].max
       end
 
-      damage_type = Magic.spell_damage_type(weapon)
-      shield_mods = Magic.shield_mods(target, damage_type)
+      damage_type = Magic.magic_damage_type(weapon)
+      Magic.find_best_shield(target, damage_type) ? shield_mods = Magic.shield_mods(target, damage_type) : shield_mods = 0
+      Magic.find_best_shield(target, damage_type) ? messages = [Magic.shield_failed_msgs(target, attack_name, weapon)] : messages = []
 
       total_damage_mod = hit_mod + melee_damage_mod + attack_luck_mod - defense_luck_mod - armor + shield_mods
       target.log "Damage modifiers: attack_luck=#{attack_luck_mod} hit=#{hit_mod} melee=#{melee_damage_mod} defense_luck=#{defense_luck_mod} armor=#{armor} shield_mods=#{shield_mods} total=#{total_damage_mod}"
-
 
       damage = FS3Combat.determine_damage(target, hitloc, weapon, total_damage_mod, crew_hit)
 
@@ -490,16 +491,12 @@ module AresMUSH
 
       target.add_stress(1)
 
-      messages = Magic.shield_failed_msgs(target, damage_type, weapon, attack_name) || []
-
       weapon_type = FS3Combat.weapon_stat(weapon, 'weapon_type')
       if (weapon_type == "Explosive")
         weapon_name = t('fs3combat.concussion_from', :weapon => weapon)
       else
         weapon_name = weapon
       end
-      puts "Messages #{messages}"
-      puts "Name #{attack_name} Weapon-#{weapon_name} Target-#{target.name} Hitloc-#{hitloc} Armor-#{reduced_by_armor} Damage-#{FS3Combat.display_severity(damage)}"
       FS3Combat.award_hit_achievement(attacker, damage, weapon_type)
       messages << t('fs3combat.attack_hits',
                     :name => attack_name,
