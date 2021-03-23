@@ -12,6 +12,10 @@ module AresMUSH
         error = Website.check_login(request, true)
         return error if error
 
+        if (request.args[:name].blank? || request.args[:short_desc].blank?)
+          return { error: t('webportal.missing_required_fields') }
+        end
+
         if (!enactor.is_approved?)
           return { error: t('dispatcher.not_allowed') }
         end
