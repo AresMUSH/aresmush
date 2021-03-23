@@ -10,7 +10,8 @@ module AresMUSH
                   id: c.id,
                   name: c.name,
                   sapient: c.sapient,
-                  short_desc: c.short_desc
+                  short_desc: c.short_desc,
+                  banner_image: c.banner_image ? Website.get_file_info(c.banner_image) : nil,
                   # icon: Website.icon_for_char(c)
                 }}
 

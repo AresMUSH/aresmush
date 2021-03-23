@@ -363,12 +363,42 @@ input:focus, .ember-power-select-search-input:focus, textarea:focus {
   }
 }
 
-.creature-box {
-   margin: 15px 15px 0px 5px;
-   width: 350px;
-   border-radius: 10px;
-   border: 2px solid #293038;
+.info-box {
+   opacity: 90%;
 }
+
+.directory-card {
+  background-color: #404B56;
+  opacity: 85%;
+  padding: 10px;
+  margin: 15px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.directory-info {
+    background: #404B56;
+    opacity: 85%;
+    padding: 10px;
+    margin: 15px;
+    font-style: italic;
+}
+
+.directory-title {
+    text-shadow: 2px 2px 5px $dark-gray-bg;
+    font-size: 120%;
+}
+
+.short-desc {
+    background: #404B56;
+    opacity: 85%;
+    padding: 10px;
+    margin: 15px;
+    font-style: italic;
+}
+
+
 
 .infobox {
    margin: 15px 15px 0px 5px;

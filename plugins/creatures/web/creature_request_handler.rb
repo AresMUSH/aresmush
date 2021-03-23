@@ -39,11 +39,14 @@ module AresMUSH
             .sort_by {|plot| plot.title }
             .map { |plot| { name: plot.title, id: plot.id }}
 
-        # if creature.sapient
-        #   sapient = "Sapient"
-        # else
-        #   sapient = "Non Sapient"
-        # end
+        if (creature.image_gallery.empty?)
+          gallery_files = Creatures.creature_page_files(creature) || []
+        else
+          gallery_files = creature.image_gallery.select { |g| g =~ /\w\.\w/ }
+        end
+
+        files = Creatures.creature_page_files(creature)
+        files = files.map { |f| Website.get_file_info(f) }
 
         {
           name: creature.name,
@@ -68,6 +71,10 @@ module AresMUSH
           plots: plots,
           edit_short_desc: Website.format_input_for_html(creature.short_desc),
           short_desc: Website.format_markdown_for_html(creature.short_desc),
+          banner_image: creature.banner_image ? Website.get_file_info(creature.banner_image) : nil,
+          image_gallery: (creature.image_gallery || []).join(' '),
+          display_image_gallery: gallery_files.map { |g| Website.get_file_info(g) },
+          files: files,
         }
       end
 
