@@ -46,22 +46,6 @@ module AresMUSH
             end
           end
 
-          # if !request.args[:all_schools].blank?
-          #   all_schools_names = request.args[:all_schools] || []
-          #   portal.all_schools.replace []
-          #   all_schools = []
-          #   all_schools_names.each do |school|
-          #     school_name = Global.read_config("schools", school, "name")
-          #     id = Global.read_config("schools", school, "id")
-          #     new_school = [{:name => school_name, :id => id}]
-          #     all_schools.concat new_school
-          #   end
-          #   portal.update(all_schools: request.args[:all_schools])
-          # end
-          # school_name = request.args[:primary_school].to_s
-          # id = Global.read_config("schools", request.args[:primary_school], "id")
-          # primary_school = {:name => school_name, :id => id}
-
           portal.update(all_schools: request.args[:all_schools])
           portal.update(primary_school: request.args[:primary_school])
           portal.update(name: request.args[:name])
@@ -78,6 +62,12 @@ module AresMUSH
           portal.update(society: request.args[:society].blank? ? nil : request.args[:society])
           portal.update(rp_suggestions: request.args[:rp_suggestions].blank? ? nil : request.args[:rp_suggestions])
           portal.update(short_desc: request.args[:short_desc].blank? ? nil : request.args[:short_desc])
+          banner_image = Portals.build_image_path(portal, request.args[:banner_image])
+          profile_image = Portals.build_image_path(portal, request.args[:profile_image])
+          gallery = (request.args[:image_gallery] || '').split.map { |g| g.downcase }
+          portal.update(image_gallery: gallery)
+          portal.update(banner_image: banner_image)
+          portal.update(profile_image: profile_image)
           Website.add_to_recent_changes('portal', t('portals.portal_updated', :name => portal.name), { id: portal.id }, enactor.name)
           {}
       end

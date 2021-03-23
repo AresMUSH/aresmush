@@ -5,7 +5,7 @@ module AresMUSH
       ability = FS3Combat.weapon_stat(combatant.weapon, "skill")
       accuracy_mod = FS3Combat.weapon_stat(combatant.weapon, "accuracy")
       attack_mod = combatant.attack_mod
-      spell_attack_mod = combatant.spell_attack_mod
+      magic_attack_mod = combatant.magic_attack_mod
       if !combatant.is_npc?
         item_attack_mod  = Magic.item_attack_mod(combatant.associated_model)
       else
@@ -26,9 +26,9 @@ module AresMUSH
         mount_mod = 0
       end
 
-      combatant.log "Attack roll for #{combatant.name} ability=#{ability} aiming=#{aiming_mod} mod=#{mod} accuracy=#{accuracy_mod} damage=#{damage_mod} stance=#{stance_mod} mount=#{mount_mod} luck=#{luck_mod} spell_luck=#{spell_luck_mod} item_attack=#{item_attack_mod} stress=#{stress_mod} attack=#{attack_mod} spell_attack=#{spell_attack_mod}"
+      combatant.log "Attack roll for #{combatant.name} ability=#{ability} aiming=#{aiming_mod} mod=#{mod} accuracy=#{accuracy_mod} damage=#{damage_mod} stance=#{stance_mod} mount=#{mount_mod} luck=#{luck_mod} spell_luck=#{spell_luck_mod} item_attack=#{item_attack_mod} stress=#{stress_mod} attack=#{attack_mod} magic_attack=#{magic_attack_mod}"
 
-      mod = mod + accuracy_mod + damage_mod + stance_mod + aiming_mod + luck_mod - stress_mod + attack_mod + mount_mod + item_attack_mod.to_i + spell_luck_mod.to_i + spell_attack_mod.to_i
+      mod = mod + accuracy_mod + damage_mod + stance_mod + aiming_mod + luck_mod - stress_mod + attack_mod + mount_mod + item_attack_mod.to_i + spell_luck_mod.to_i + magic_attack_mod.to_i
 
 
       combatant.roll_ability(ability, mod)
@@ -40,13 +40,13 @@ module AresMUSH
       luck_mod = (combatant.luck == "Defense") ? 3 : 0
       damage_mod = combatant.total_damage_mod
       defense_mod = combatant.defense_mod
-      spell_defense_mod = combatant.spell_defense_mod
+      magic_defense_mod = combatant.magic_defense_mod
       dodge_mod = FS3Combat.vehicle_dodge_mod(combatant)
       armor_mod = FS3Combat.armor_stat(combatant.armor, 'defense') || 0
 
-      mod = stance_mod + luck_mod + damage_mod + defense_mod + spell_defense_mod + dodge_mod + armor_mod
+      mod = stance_mod + luck_mod + damage_mod + defense_mod + magic_defense_mod + dodge_mod + armor_mod
 
-      combatant.log "Defense roll for #{combatant.name} ability=#{ability} stance=#{stance_mod} damage=#{damage_mod} luck=#{luck_mod} defense=#{defense_mod} spell_defense=#{spell_defense_mod} armor=#{armor_mod} dodge=#{dodge_mod}"
+      combatant.log "Defense roll for #{combatant.name} ability=#{ability} stance=#{stance_mod} damage=#{damage_mod} luck=#{luck_mod} defense=#{defense_mod} magic_defense=#{magic_defense_mod} armor=#{armor_mod} dodge=#{dodge_mod}"
 
       combatant.roll_ability(ability, mod)
     end
@@ -125,7 +125,7 @@ module AresMUSH
     end
 
     def self.roll_initiative(combatant, ability)
-      init_spell_mod = combatant.init_spell_mod
+      magic_init_mod = combatant.magic_init_mod
       luck_mod = combatant.luck == "Initiative" ? 3 : 0
       action_mod = 0
       if (combatant.action_klass == "AresMUSH::FS3Combat::SuppressAction" ||
@@ -137,7 +137,7 @@ module AresMUSH
       gm_mod = combatant.initiative_mod
       roll = combatant.roll_ability(ability, weapon_mod + action_mod + luck_mod + combatant.total_damage_mod + gm_mod)
 
-      combatant.log "Initiative roll for #{combatant.name} ability=#{ability} action=#{action_mod} weapon=#{weapon_mod} luck=#{luck_mod} spell=#{init_spell_mod} gm=#{gm_mod} roll=#{roll}"
+      combatant.log "Initiative roll for #{combatant.name} ability=#{ability} action=#{action_mod} weapon=#{weapon_mod} luck=#{luck_mod} magic=#{magic_init_mod} gm=#{gm_mod} roll=#{roll}"
 
       roll
     end

@@ -24,5 +24,20 @@ module AresMUSH
         portal.all_schools.concat [added_school]
     end
 
+    def self.build_image_path(portal, arg)
+      return nil if !arg
+      folder = Portals.portal_page_folder(portal)
+      File.join folder, arg.downcase
+    end
+
+    def self.portal_page_folder(portal)
+      Website::FilenameSanitizer.sanitize(portal.name.downcase)
+    end
+
+    def self.portal_page_files(portal)
+      folder = Portals.portal_page_folder(portal)
+      Dir[File.join(AresMUSH.website_uploads_path, "#{folder}/**")].sort
+    end
+
   end
 end

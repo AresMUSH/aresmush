@@ -1,251 +1,160 @@
 module AresMUSH
   module Magic
 
-    def self.spell_shields
-      ["Mind Shield", "Endure Fire", "Endure Cold", "Group Endure Cold", "Enduring Mind Shield", "Group Endure Fire"]
-    end
-
-    def self.shields_expire (char)
-      room = char.room
-      if (char.mind_shield > 0)
-        room.emit_ooc t('magic.shield_wore_off', :name => char.name, :shield => "Mind Shield")
-        char.update(mind_shield: 0)
-      end
-
-      if (char.endure_fire > 0)
-        room.emit_ooc t('magic.shield_wore_off', :name => char.name, :shield => "Endure Fire")
-        char.update(endure_fire: 0)
-      end
-
-      if (char.endure_cold > 0)
-        room.emit_ooc t('magic.shield_wore_off', :name => char.name, :shield => "Endure Cold")
-        char.update(endure_cold: 0)
-      end
-    end
-
-    def self.apply_out_of_combat_shields(char, combatant)
-      combatant.update(mind_shield: char.mind_shield)
-      combatant.update(mind_shield_counter: 10)
-      combatant.update(endure_fire: char.endure_fire)
-      combatant.update(endure_fire_counter: 10)
-      combatant.update(endure_cold: char.endure_cold)
-      combatant.update(endure_cold_counter: 10)
-    end
-
-    def self.check_spell_vs_shields(target, caster_name, spell, mod, result)
-      damage_type = Global.read_config("spells", spell, "damage_type")
-
-      if Character.named(caster_name)
-        caster = Character.named(caster_name)
-        caster_name = caster.name
-        held = Magic.check_shield(target, caster_name, spell, result) == "shield"
-      else
-        caster = caster_name
-        held = Magic.check_shield(target, caster_name, spell, result) == "shield"
-      end
-
-      if (damage_type == "Psionic" && target.mind_shield > 0)
-        if held
-          message = t('magic.shield_held', :name => caster_name, :spell => spell, :mod => mod, :target => target.name, :shield => "Mind Shield")
-        else
-          message = t('magic.mind_shield_failed', :name => caster_name, :spell =>  spell, :mod => mod, :target => target.name, :shield => "Mind Shield")
-        end
-      elsif (damage_type == "Fire" && target.endure_fire > 0)
-        if held
-          message = t('magic.shield_held', :name => caster_name, :spell => spell, :mod => mod, :target => target.name, :shield => "Endure Fire")
-        else
-          message = t('magic.shield_failed', :name =>caster_name, :spell => spell, :mod => mod, :target => target.name, :shield => "Endure Fire")
-        end
-      elsif (damage_type == "Cold" && target.endure_cold > 0)
-        if held
-          message = t('magic.shield_held', :name => caster_name, :spell => spell, :mod => mod, :target => target.name, :shield => "Endure Cold")
-        else
-          message = t('magic.shield_failed', :name => caster_name, :spell => spell, :mod => mod, :target => target.name, :shield => "Endure Cold")
-        end
-      else
-        message = nil
-      end
-      return message
-    end
-
-    def self.stopped_by_shield?(spell, target, combatant, result)
-      # ignore = ["Stun (Air)", "Stun (Corpus)", "Stun (Earth)", "Stun (Fire)", "Stun (Nature)", "Stun (Water)", "Stun (Will)", "Spell"]
-      #
-      # if ignore.include?(combatant.weapon)
-      #   return nil
-      if ((target.mind_shield > 0 || target.endure_fire > 0 || target.endure_cold > 0 ) && Magic.is_magic_weapon(combatant.weapon))
-
-
-        damage_type = Global.read_config("spells", spell, "damage_type")
-        roll_shield = Magic.check_shield(target, combatant.name, spell, result)
-        if roll_shield == "shield"
-          if (damage_type == "Fire" && target.endure_fire > 0)
-            return {
-            msg: t('custom.shield_held', :name => combatant.name, :spell => combatant.weapon, :mod => "", :shield => "Endure Fire", :target => target.name),
-            hit: false
-            }
-          elsif (damage_type == "Cold" && target.endure_cold > 0)
-            return  {
-            msg: t('custom.shield_held', :name => combatant.name, :spell => combatant.weapon, :mod => "", :shield => "Endure Cold", :target => target.name),
-            hit: false
-            }
-          elsif (damage_type == "Psionic" && target.mind_shield > 0)
-            return {
-            msg: t('custom.shield_held', :name => combatant.name, :spell => combatant.weapon, :mod => "", :shield => "Mind Shield", :target => target.name),
-            hit: false
-            }
-          end
-
-        elsif roll_shield == "caster"
-          if (damage_type == "Fire" && target.endure_fire > 0)
-            return {
-            msg: t('custom.shield_failed', :name => combatant.name, :spell => combatant.weapon, :mod => "", :shield => "Endure Fire", :target => target.name),
-            hit: true
-            }
-          elsif (damage_type == "Cold" && target.endure_cold > 0)
-            return {
-            msg: t('custom.shield_failed', :name => combatant.name, :spell => combatant.weapon, :mod => "", :shield => "Endure Cold", :target => target.name),
-            hit: true
-            }
-          elsif (damage_type == "Psionic" && target.mind_shield > 0)
-            return {
-            msg: t('custom.shield_failed', :name => combatant.name, :spell => combatant.weapon, :mod => "", :shield => "Mind Shield", :target => target.name),
-            hit: true
-            }
-          end
-        else
-          return false
-        end
-      else
-        return nil
-      end
-    end
-
-    # def self.stopped_by_shield_msg(combatant, target, stopped_by_shield)
-    #   if stopped_by_shield == "Endure Fire Held"
-    #     message = t('custom.shield_held', :name => combatant.name, :spell => combatant.weapon, :mod => "", :shield => "Endure Fire", :target => target.name)
-    #   elsif stopped_by_shield == "Endure Cold Held"
-    #     message = t('custom.shield_held', :name => combatant.name, :spell => combatant.weapon, :mod => "", :shield => "Endure Cold", :target => target.name)
-    #   elsif stopped_by_shield == "Mind Shield Held"
-    #     message = t('custom.shield_held', :name => combatant.name, :spell => combatant.weapon, :mod => "", :shield => "Mind Shield", :target => target.name)
-    #   end
+    # def self.shields
+    #   Global.read_config("spells").select { |spell| Global.read_config("spells", spell, "shields_against")}.map {|name, data| name}
     # end
 
-    def self.check_shield(target, caster_name, spell, result)
-      damage_type = Global.read_config("spells", spell, "damage_type")
-      school = Global.read_config("spells", spell, "school")
+    # def self.shield_types
+    #   Global.read_config("spells").select { |spell| Global.read_config("spells", spell, "shields_against")}.map {|name, data| data['shields_against']}.uniq
+    # end
 
-      if Character.named(caster_name)
-        caster = Character.named(caster_name)
-        caster_name = caster.name
-        if caster.combat
-          in_combat = true
-        end
+    def self.find_shield_named(char, shield_name)
+      shield_name = shield_name.titlecase
+      char.magic_shields.select { |shield| shield.name == shield_name }.first
+    end
+
+    def self.find_best_shield(char_or_combatant, damage_type)
+      if (char_or_combatant.class == Combatant)
+        char = char_or_combatant.associated_model
       else
-        caster = caster_name
+        char = char_or_combatant
       end
-
-      if damage_type == "Fire"
-        shield_strength = target.endure_fire
-        shield = "Endure Fire"
-      elsif damage_type == "Cold"
-        shield_strength = target.endure_cold
-        shield = "Endure Cold"
-      elsif damage_type == "Psionic"
-        shield_strength = target.mind_shield
-        shield = "Mind Shield"
+      shields = []
+      exceptions = Global.read_config("magic", "shields_against_all_exceptions")
+      if !exceptions.include?(damage_type)
+        shields.concat char.magic_shields.select { |shield| shield.shields_against == "All" }
+      end
+      shields_against_type = char.magic_shields.select { |shield| shield.shields_against == damage_type}
+      sheilds = shields.concat shields_against_type
+      best_shield = shields.max_by { |s| s.strength}
+      if best_shield
+        return best_shield
       else
-        shield_strength = 0
-        shield = "None"
-      end
-
-      successes = result
-      delta = shield_strength - successes
-
-      if in_combat
-        caster.combatant.log "#{shield.upcase}: #{caster_name}'s #{school} (#{successes} successes) vs #{target.name}'s #{shield} (strength #{shield_strength})."
-      else
-        Global.logger.info "#{shield.upcase}: #{caster_name}'s #{school} (#{successes} successes) vs #{target.name}'s #{shield} (strength #{shield_strength})."
-      end
-
-      case delta
-      when 0..99
-        return "shield"
-      when -99..-1
-        return "caster"
+        return false
       end
     end
 
-    def self.spell_damage_type(weapon)
-      if weapon == "Cold Shrapnel"
-        damage_type = "Cold"
-      elsif weapon == "Fire Shrapnel"
-        damage_type = "Fire"
-      else
-        damage_type = Global.read_config("spells", weapon, "damage_type")
+    def self.shield_newturn_countdown(combatant)
+      shields = combatant.associated_model.magic_shields
+      shields.each do |shield|
+        if shield.rounds == 0
+          FS3Combat.emit_to_combat combatant.combat, t('magic.shield_wore_off', :name => combatant.name, :shield => shield.name), nil, true
+          shield.delete
+        else
+          shield.update(rounds: shield.rounds - 1)
+        end
       end
-      return damage_type
     end
 
-    def self.shield_failed_msgs(target, damage_type, weapon, attack_name)
-      messages = []
-      if (damage_type == "Fire" && target.endure_fire > 0)
-        if weapon == "Fire Shrapnel"
-          messages.concat [t('magic.shrapnel_shield_failed', :name => attack_name, :weapon => weapon, :mod => "", :shield => "Endure Fire", :target => target.name)]
-        else
-          messages.concat [t('magic.shield_failed', :name => attack_name, :spell => weapon, :mod => "", :shield => "Endure Fire", :target => target.name)]
+    def self.determine_margin_with_shield(target, combatant, weapon_or_spell, attack_roll, defense_roll)
+      attacker_net_successes = attack_roll - defense_roll
+      stopped_by_shield = Magic.stopped_by_shield?(target, combatant, combatant.weapon, attack_roll)
+      if stopped_by_shield
+        if stopped_by_shield[:hit]
+          is_stun = Global.read_config("spells", weapon_or_spell, "is_stun") || FS3Combat.weapon_stat(weapon_or_spell, "is_stun") || false
+          if is_stun
+            hit = Magic.stun_successful?(stopped_by_shield[:hit], attacker_net_successes)
+          else
+            hit = stopped_by_shield[:hit]
+          end
+        elsif !stopped_by_shield[:hit]
+          hit = false
         end
-      elsif (damage_type == "Cold" && target.endure_cold > 0)
-        if weapon == "Cold Shrapnel"
-          messages.concat [t('magic.shrapnel_shield_failed', :name => attack_name, :weapon => weapon, :mod => "", :shield => "Endure Cold", :target => target.name)]
+        return {
+          hit: hit,
+          message: stopped_by_shield[:msg],
+          shield: stopped_by_shield[:shield],
+          shield_held: stopped_by_shield[:shield_held]
+        }
+      end
+      #There is no shield in effect
+    end
+
+    def self.stopped_by_shield?(target_char_or_combatant, char_or_combatant, weapon_or_spell, result)
+      if (target_char_or_combatant.class == Combatant)
+        target = target_char_or_combatant.associated_model
+      else
+        target = target_char_or_combatant
+      end
+      damage_type = Magic.magic_damage_type(weapon_or_spell)
+      roll_name = FS3Combat.weapon_stat(weapon_or_spell, "skill") || Global.read_config("spells", weapon_or_spell, "school")
+      shield = Magic.find_best_shield(target, damage_type)
+      puts "All shields: #{target.magic_shields.to_a}"
+      if shield
+        successes = result
+        if (char_or_combatant.class == Combatant)
+          caster_name = char_or_combatant.associated_model.name
+          char_or_combatant.log "#{shield.name.upcase}: #{caster_name}'s #{roll_name} (#{successes} successes) vs #{target.name}'s #{shield.name} (strength #{shield.strength})."
         else
-          messages.concat [t('magic.shield_failed', :name => attack_name, :spell => weapon, :mod => "", :shield => "Endure Cold", :target => target.name)]
+          caster_name = char_or_combatant.name
+          Global.logger.info "#{shield.name.upcase}: #{caster_name}'s #{roll_name} (#{successes} successes) vs #{target.name}'s #{shield.name} (strength #{shield.strength})."
         end
+
+        delta = shield.strength - successes
+        case delta
+        when 0..99
+          winner = "shield"
+        when -99..-1
+          winner = "caster"
+        end
+
+        puts "Shield delta #{shield.strength} - #{successes} #{delta} WINNER IS #{winner}"
+        if !Magic.is_spell?(weapon_or_spell)
+          success_msg = t('magic.shield_held_against_attack', :name => caster_name, :weapon => weapon_or_spell, :mod => "", :shield => shield.name, :target => target.name)
+        else
+          success_msg = t('magic.shield_held', :name => caster_name, :spell => weapon_or_spell, :mod => "", :shield => shield.name, :target => target.name)
+        end
+        failed_msg = Magic.shield_failed_msgs(target, caster_name, weapon_or_spell)
+
+        if winner == "shield"
+          puts "WINNER IS SHIELD"
+          return {
+          msg: success_msg,
+          shield: shield.name,
+          shield_held: true,
+          hit: false
+          }
+        else
+          puts "WINNER IS CASTER"
+          return {
+          msg: failed_msg,
+          shield: shield.name,
+          shield_held: false,
+          hit: true
+          }
+        end
+      end
+      #There is no shield protecting against the damage type.
+    end
+
+    def self.shield_failed_msgs(target, caster_name, weapon_or_spell)
+      damage_type =  Magic.magic_damage_type(weapon_or_spell)
+      shield = Magic.find_best_shield(target, damage_type)
+      type_does_damage = Global.read_config("magic",  "type_does_damage", damage_type)
+      is_stun = Global.read_config("spells", weapon_or_spell, "is_stun") || Global.read_config("spells", weapon_or_spell, "is_stun") || FS3Combat.weapon_stat(weapon_or_spell, "is_stun") || false
+      puts "#{weapon_or_spell} IS STUN? #{is_stun}"
+      if weapon_or_spell.include?("Shrapnel")
+          t('magic.shield_failed_against_shrapnel', :name => caster_name, :weapon => weapon_or_spell, :mod => "", :shield => shield.name, :target => target.name)
+      elsif !Magic.is_spell?(weapon_or_spell)
+        t('magic.shield_failed_against_attack', :name => caster_name, :weapon => weapon_or_spell, :mod => "", :shield => shield.name, :target => target.name)
+      elsif type_does_damage
+        t('magic.shield_failed', :name => caster_name, :spell => weapon_or_spell, :mod => "", :shield => shield.name, :target => target.name)
+      elsif is_stun
+         t('magic.shield_failed_stun', :name => caster_name, :spell => weapon_or_spell, :shield=> shield.name, :mod => "", :target => target.name, :rounds => Global.read_config("spells", weapon_or_spell, "rounds"))
+      else
+        t('magic.no_damage_shield_failed', :name => caster_name, :spell => weapon_or_spell, :mod => "", :shield => shield.name, :target => target.name)
       end
     end
 
     def self.shield_mods(target, damage_type)
-      if (damage_type == "Fire" && target.endure_fire > 0)
-        math = target.endure_fire * 5
-        endure_fire_mod = -20 - math
-        endure_cold_mod = 0
-      elsif (damage_type == "Cold" && target.endure_cold > 0)
-        math = target.endure_cold * 5
-        endure_cold_mod = -20 - math
-        endure_fire_mod = 0
-      else
-        endure_cold_mod = 0
-        endure_fire_mod = 0
-      end
-      target.log "Shield modifiers: endure_fire=#{endure_fire_mod} endure_cold=#{endure_cold_mod}"
-      return endure_fire_mod + endure_cold_mod
+      shield = Magic.find_best_shield(target, damage_type)
+      shield_mod = (-20 - (shield.strength * 5))
+      target.log "#{shield.name} mod: #{shield_mod}"
+      return shield_mod
     end
 
-    def self.shield_newturn_countdown(combatant)
-      if (combatant.mind_shield_counter == 0 && combatant.mind_shield > 0)
-        FS3Combat.emit_to_combat combatant.combat, t('custom.shield_wore_off', :name => combatant.name, :shield => "Mind Shield"), nil, true
-        combatant.update(mind_shield: 0)
-        combatant.log "#{combatant.name} no longer has a Mind Shield."
-      elsif (combatant.mind_shield_counter > 0 && combatant.mind_shield > 0)
-        combatant.update(mind_shield_counter: combatant.mind_shield_counter - 1)
-      end
 
-      if (combatant.endure_fire_counter == 0 && combatant.endure_fire > 0)
-        FS3Combat.emit_to_combat combatant.combat, t('custom.shield_wore_off', :name => combatant.name, :shield => "Endure Fire"), nil, true
-        combatant.update(endure_fire: 0)
-        combatant.log "#{combatant.name} can no longer Endure Fire."
-      elsif (combatant.endure_fire_counter > 0 && combatant.endure_fire > 0)
-        combatant.update(endure_fire_counter: combatant.endure_fire_counter - 1)
-      end
-
-      if (combatant.endure_cold_counter == 0 && combatant.endure_cold > 0)
-        FS3Combat.emit_to_combat combatant.combat, t('custom.shield_wore_off', :name => combatant.name, :shield => "Endure Cold"), nil, true
-        combatant.update(endure_cold: 0)
-        combatant.log "#{combatant.name} can no longer Endure Cold."
-      elsif (combatant.endure_cold_counter > 0 && combatant.endure_cold > 0)
-        combatant.update(endure_cold_counter: combatant.endure_cold_counter - 1)
-      end
-    end
 
   end
 end

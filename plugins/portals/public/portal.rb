@@ -21,6 +21,10 @@ module AresMUSH
     attribute :society
     attribute :longitude
     attribute :latitude
+    attribute :banner_image
+    attribute :profile_image
+    attribute :image_gallery, :type => DataType::Array, :default => []
+
     before_save :save_upcase
 
 
