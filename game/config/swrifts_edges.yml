@@ -1,5 +1,5 @@
 ---
-      swrifts:
+swrifts:
     edges:
     -
         name: TestEdge
