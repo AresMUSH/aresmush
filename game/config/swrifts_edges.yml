@@ -1635,4 +1635,31 @@ swrifts:
             - iconicf: Elemental Fusionist
             - edge: Elementalist
             - edge: Life Sign Harmony            
-            
+    -
+        name: Diabolist
+        book_reference: TLFM 11
+        description: May use the Diabolist ally chart when casting summon ally.
+        type: Power
+        pre-reqs: 
+            - rank: Veteran
+            - occult: d8
+            - power: summon ally
+    -
+        name: Diabolist (Shifter))
+        book_reference: TLFM 11
+        description: May use the Diabolist ally chart when casting summon ally.
+        type: Power
+        pre-reqs: 
+            - rank: Novice
+            - iconicf: Shifter
+            - occult: d8
+            - power: summon ally
+    -
+        name: Elementalist
+        book_reference: TLFM 11
+        description: May use the Elemental ally chart when casting summon ally.
+        type: Power
+        pre-reqs: 
+            - rank: Veteran
+            - occult: d10
+            - power: summon ally           
