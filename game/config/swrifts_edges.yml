@@ -1055,3 +1055,67 @@ swrifts:
         pre-reqs:
             - rank: Novice
             - hinderance: Bloodthirsty OR hindrance Mean, OR hindrance Ruthless, OR hindrance Ugly
+    -
+        name: Provoke
+        description: Once per turn with a raise on a Taunt test, Provoke the foe. Provoked foe is -2 to attack anyone else. Stacks with Distracted. Lasts until a Joker is drawn.
+        book_reference: SWADE 50
+        type: Social
+        pre-reqs:
+            - rank: Novice
+            - taunt: d6
+    -
+        name: Rabble-Rouser
+        description: Once per turn Test with Intimidation or Taunt against all enemies within 8 yards who can see and her you. Each resists separately.
+        book_reference: SWADE 50
+        type: Social
+        pre-reqs:
+            - rank: Seasoned
+            - spirit: d8
+    -
+        name: Reliable
+        description: Free reroll on any Support roll. 
+        book_reference: SWADE 51
+        type: Social
+        pre-reqs:
+            - rank: Novice
+            - spirit: d8
+    -
+        name: Retort
+        description: When resisting a Taunt or Intimidation test with a raise, foe becomes Distracted.
+        book_reference: SWADE 51
+        type: Social
+        pre-reqs:
+            - rank: Novice
+            - taunt: d6
+    -
+        name: Streetwise
+        description: +2 to Intimidation or Persuasion rolls made to Network with underworld or shady elements. +2 Common Kowledge about illegal activities. 
+        book_reference: SWADE 51
+        type: Social
+        pre-reqs:
+            - rank: Novice
+            - smarts: d6
+    -
+        name: Strong Willed
+        description: +2 when resisting tests with Smarts or Spirit.
+        book_reference: SWADE 51
+        type: Social
+        pre-reqs:
+            - rank: Novice
+            - smarts: d6
+    -
+        name: Iron Will
+        description: +2 to resists powers or negate their effects. Does not stack with Brave.
+        book_reference: SWADE 51
+        type: Social
+        pre-reqs:
+            - rank: Seasoned
+            - edge: Brave, edge Strong Willed
+    -
+        name: Work the Room
+        description: Once per turn, roll an additional die when Supporting with Persuasion or Performance. The additional die Supports any other ally who can see or hear you.
+        book_reference: SWADE 51
+        type: Social
+        pre-reqs:
+            - rank: Novice
+            - spirit: d8
