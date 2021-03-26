@@ -991,4 +991,67 @@ swrifts:
         pre-reqs:
             - rank: Novice
             - research: d8
-
+    -
+        name: Soldier
+        description: Treat your str as one die higher for purposes of encumbrance and min str. Free Vigor reroll to survive environmental hazards.  
+        book_reference: SWADE 49
+        type: Professional
+        pre-reqs:
+            - rank: Novice
+            - strength: d6, vigor d6
+    -
+        name: Thief
+        description: +1 Athletics to climb in urban areas. +1 Stealth in the same. +1 Theivery in general.
+        book_reference: SWADE 49
+        type: Professional
+        pre-reqs:
+            - rank: Novice
+            - agility: d8, stealth d6, theivery d6 
+    -
+        name: Woodsman
+        description: +2 Survival and Stealth in the wild.
+        book_reference: SWADE 50
+        type: Professional
+        pre-reqs:
+            - rank: Novice
+            - spirit: d6, survival d8
+    -
+        name: Bolster
+        description: When you successfully Test a foe you may also remove Distracted or Vulnerable from an ally.
+        book_reference: SWADE 50
+        type: Social
+        pre-reqs:
+            - rank: Novice
+            - spirit: d8
+    -
+        name: Common Bond
+        description: May freely give your Bennies to any other character you can communicate with.
+        book_reference: SWADE 50
+        type: Social
+        pre-reqs:
+            - wildcard: 1
+            - rank: Novice
+            - spirit: d8
+    -
+        name: Connections
+        description: You are connected to an organization of some kind. Once per session, call in a favor (worked out with the scene runner). May be taken multiple times. 
+        book_reference: SWADE 50
+        type: Social
+        pre-reqs:
+            - rank: Novice
+    -
+        name: Humiliate
+        description: Get a free reroll on Taunt tests.
+        book_reference: SWADE 50
+        type: Social
+        pre-reqs:
+            - rank: Novice
+            - taunt: d8
+    -
+        name: Menacing
+        description: +2 Intimidation 
+        book_reference: SWADE 50
+        type: Social
+        pre-reqs:
+            - rank: Novice
+            - hinderance: Bloodthirsty OR hindrance Mean, OR hindrance Ruthless, OR hindrance Ugly
