@@ -2280,7 +2280,13 @@ swrifts:
             - iconicf: Juicer
     -
         name: Synthetic Immortality
-        description: 'Dead' constructs can be repaired wit the consciousness intact.
+        description: Dead constructs can be repaired wit the consciousness intact.
+        book_reference: EohH 31
+        type: Iconic
+        pre-reqs:
+            - rank: Novice
+            - spirit: d6
+            - iconicf: Intelligent Construct
     -
         name: Titan Treatment
         description: Increased size, strength, toughness and vigor, reduced pace, running, burn and the Big negative racial trait.
