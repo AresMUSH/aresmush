@@ -348,7 +348,7 @@ swrifts:
         pre-reqs:
             - wildcard: 1
             - rank: Novice
-            - athletics: d8 OR shooting: d8
+            - athletics: d8 OR shooting d8
     -
         name: Dodge
         description: -2 to ranged attacks made against you unless taken by surprise. Does not stack with cover. 
