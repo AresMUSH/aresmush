@@ -1459,7 +1459,7 @@ swrifts:
         type: Power
         pre-reqs: 
             - rank: Seasoned
-            - edge: Artificer, edge AB Magic OR edge: AB Miracles
+            - edge: Artificer, edge AB Magic OR edge AB Miracles
             - repair: d8
     -
         name: Major Item Creation
@@ -1510,7 +1510,7 @@ swrifts:
     -
         name: Grey Seer
         book_reference: A&M 32
-        description: Gains hindrance: Pacifist - Minor, hindrance: Vow (Poverty), enhanced Spiritual Channel per A&M 32.  
+        description: Gains hindrance Pacifist - Minor, hindrance Vow (Poverty), enhanced Spiritual Channel per A&M 32.  
         type: Professional
         pre-reqs: 
             - rank: Novice
