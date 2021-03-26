@@ -2280,6 +2280,7 @@ swrifts:
             - iconicf: Juicer
     -
         name: Synthetic Immortality
+        description: 'Dead' constructs can be repaired wit the consciousness intact.
     -
         name: Titan Treatment
         description: Increased size, strength, toughness and vigor, reduced pace, running, burn and the Big negative racial trait.
