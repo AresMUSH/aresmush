@@ -1002,7 +1002,7 @@ swrifts:
         type: Professional
         pre-reqs:
             - rank: Novice
-            - agility: d8, stealth: d6, theivery: d6 
+            - agility: d8, stealth d6, theivery d6 
     -
         name: Woodsman
         description: +2 Survival and Stealth in the wild.
@@ -1010,7 +1010,7 @@ swrifts:
         type: Professional
         pre-reqs:
             - rank: Novice
-            - spirit: d6, survival: d8
+            - spirit: d6, survival d8
     -
         name: Bolster
         description: When you successfully Test a foe you may also remove Distracted or Vulnerable from an ally.
@@ -1106,7 +1106,7 @@ swrifts:
         type: Social
         pre-reqs:
             - rank: Seasoned
-            - edge: Brave, edge: Strong Willed
+            - edge: Brave, edge Strong Willed
     -
         name: Work the Room
         description: Once per turn, roll an additional die when Supporting with Persuasion or Performance. The additional die Supports any other ally who can see or hear you.
@@ -1195,14 +1195,14 @@ swrifts:
             - wildcard: 1
     -
         name: Professional
-        description: The characterâ€™s Trait and its limit increases one step.
+        description: The character's Trait and its limit increases one step.
         book_reference: SWADE 53
         pre-reqs: 
             - rank: Legendary
             - one attribute at max
     -
         name: Expert
-        description: The characterâ€™s Trait and its limit increases one step.
+        description: The character's Trait and its limit increases one step.
         book_reference: SWADE 53
         pre-reqs: 
             - rank: Legendary
@@ -1232,7 +1232,7 @@ swrifts:
             - vigor: d8
     -
         name: Tougher than Nails
-        description: The hero can take fve Wounds before being Incapacitated.
+        description: The hero can take five Wounds before being Incapacitated.
         book_reference: SWADE 53
         type: Legendary
         pre-reqs: 
@@ -1459,7 +1459,7 @@ swrifts:
         type: Power
         pre-reqs: 
             - rank: Seasoned
-            - edge: Artificer, edge: AB Magic OR edge: AB Miracles
+            - edge: Artificer, edge AB Magic OR edge: AB Miracles
             - repair: d8
     -
         name: Major Item Creation
@@ -1506,7 +1506,7 @@ swrifts:
         pre-reqs: 
             - rank: Novice
             - edge: AB Magic
-            - agility: d6, smarts: d6, occult: d6, piloting: d6
+            - agility: d6, smarts d6, occult d6, piloting d6
     -
         name: Grey Seer
         book_reference: A&M 32
