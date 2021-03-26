@@ -778,7 +778,7 @@ swrifts:
         type: Power
         pre-reqs:
             - rank: Novice
-            - edge: AB Magic OR edge: AB Techno-Wizardry
+            - edge: AB Magic OR edge AB Techno-Wizardry
         counters: 
             ppe_max: 5
     -
