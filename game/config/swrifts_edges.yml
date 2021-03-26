@@ -1662,4 +1662,386 @@ swrifts:
         pre-reqs: 
             - rank: Veteran
             - occult: d10
-            - power: summon ally           
+            - power: summon ally
+               -
+        name: Elementalist (Elemental Fusionist)
+        book_reference: TLFM 11
+        description: May use the Elemental ally chart when casting summon ally. 
+        type: Power
+        pre-reqs: 
+            - rank: Novice
+            - iconicf: Elemental Fusionist
+            - occult: d10
+            - power: summon ally
+    -
+        name: Born to Ride
+        book_reference: TLFM 12
+        description: Gain Nimble, or Uncanny Reflexes if you already have Nimble, when controlling a Size (Normal) vehicle with exposed crew. Free reroll to avoid out of control.
+        type: Professional
+        pre-reqs: 
+            - rank: Novice
+            - agility: d10
+    -
+        name: Live to Ride
+        book_reference: TLFM 12
+        description: When controlling a vehicle per Born to Ride, you are only hit on Called Shots and are +4 damage to fighting attacks if you moved at least 12 yards.
+        type: Professional
+        pre-reqs: 
+            - rank: Seasoned
+            - edge: Born to Ride
+    -
+        name: Supernatural Strength
+        book_reference: TLFM 12
+        description: Str die type +1 up to race or framework max. Stacks with advancement attribute increases. May be taken more than once.
+        type: Weird
+        pre-reqs: 
+            - strength: d10 OR race or framework that provides at least +2 strength die type OR have no strength maximum
+    -
+        name: Familiar Link
+        book_reference: TLFM 12
+        description: Metaphysical bond with an animalistic creature. 
+        type: Weird
+        pre-reqs: 
+            - rank: Novice (Shifter) or Veteran
+            - edge: AB Magic
+            - skill: Occult d10+, Spellcasting d10+
+    -
+        name: Flame Blast
+        description: Flame Bolts now affect a 6/8/10 yard area for 1/2/3 extra ISP.
+        book_reference: TLPG 72
+        type: Iconic
+        pre-reqs:  
+            - rank: Seasoned
+            - iconicf: Burster
+    -
+        name: Improved Fiery Aura
+        description: Fiery Aura does 3d8 damage and may choose to affect a 6 yard circle centered on the Burster.
+        book_reference: TLPG 72
+        type: Iconic
+        pre-reqs:
+            - rank: Seasoned
+            - iconicf: Burster
+    -
+        name: Improved Fire Mastery
+        description: Fire Mastery range is Smarts x2, strength of fire effects is d12.
+        book_reference: TLPG 72
+        type: Iconic
+        pre-reqs:
+            - rank: Seasoned
+            - iconicf: Burster
+    -
+        name: Improved Flame Bolt
+        description: 2 ISP flame bolt does 5d6 MD, 6d6 with raise. Range is Smarts x3.
+        book_reference: TLPG 72
+        type: Iconic
+        pre-reqs:
+            - rank: Novice
+            - iconicf: Burster
+            - spirit: d10
+    -
+        name: Rapid Flame Bolt
+        description: Spend 1 ISP to make Flame Bolt ROF 2.
+        book_reference: TLPG 72
+        type: Iconic
+        pre-reqs:
+            - rank: Veteran
+            - iconicf: Burster
+    -
+        name: Read the Flame
+        description: Roll notice to read a fire. Success tells how it started and how long it has burned. Raise reveals what kind of being started it.
+        book_reference: TLPG 72
+        type: Iconic
+        pre-reqs:
+            - rank: Novice
+            - iconicf: Burster
+            - notice: d6
+    -
+        name: Beyond the Limit
+        description: +6 maximum strain but take one of the Unstable Psyche hindrances.
+        book_reference: TLPG 72
+        type: Iconic
+        pre-reqs:
+            - rank: Veteran
+            - iconicf: Combat Cyborg OR iconicf MARS
+    -
+        name: Upgrade
+        description: Install one piece of new cyberware or upgrade an existing piece. Once per rank.
+        book_reference: TLPG 72
+        type: Iconic
+        pre-reqs:
+            - rank: Seasoned
+            - iconicf: Combat Cyborg OR iconicf MARS
+    -
+        name: Gun Nut
+        description: While Loosing It, +2 to Shooting and damage with pistols against adjacent melee opponents.
+        book_reference: TLPG 72
+        type: Iconic
+        pre-reqs:
+            - rank: Novice
+            - iconicf: Crazy
+            - shooting: d8
+    -
+        name: Gymnastic Mastery
+        description: +2 Athletics for Jumping, +2 Parry when Defending, Ascend at athletics die per round, check Agility to reduce falling distances.
+        book_reference: TLPG 73
+        type: Iconic
+        pre-reqs:
+            - rank: Veteran
+            - edge: Acrobat
+            - edge: Free Runner
+            - iconicf: Crazy OR iconicf Juicer
+            - strength: d10
+    -
+        name: Off the Handle
+        description: Ignore -2 Smarts penalty when recovering from Losing It, half all Getting It Together penalties with a raise.
+        book_reference: TLPG 73
+        type: Iconic
+        pre-reqs:
+            - rank: Seasoned
+            - iconicf: Crazy
+    -
+        name: Split the Seconds
+        description: Ignore 2 points of Multi-Action penalty.
+        book_reference: TLPG 73
+        type: Iconic
+        pre-reqs:
+            - rank: seasoned
+            - iconicf: Crazy OR iconicf Juicer
+            - agility: d10
+    -
+        name: Sublime Chaos
+        description: Does not take Fatigue when Berserk, is able to perform actions normally, half time spent Getting It Together.
+        book_reference: TLPG 73
+        type: Iconic
+        pre-reqs:
+            - rank: Veteran
+            - iconicf: Crazy
+            - spirit: d8
+    -
+        name: Cyberkinetic Awareness
+        description: As an action, make enemies within Smarts x2 yards -2 on all trait rolls involving technology rolls against you. Lasts until end of encounter.
+        book_reference: TLPG 73
+        type: Iconic
+        pre-reqs:
+            - rank: Seasoned
+            - iconicf: Cyber-Knight
+            - notice: d6
+    -
+        name: Improved Cyberkinetic Awareness
+        description: As an action, make enemies within Smarts x2 yards -4 on all trait rolls involving technology rolls against you. Lasts until end of encounter. 
+        book_reference: TLPG 73
+        type: Iconic
+        pre-reqs:
+            - rank: Veteran
+            - edge: Cyberkinetic Awareness
+            - notice: d8
+    -
+        name: Cyberkinetic Denial
+        description: Once Cyberkinetic Awareness is activated, gain a free reroll on all associated opposed rolls. 
+        book_reference: TLPG 74
+        type: Iconic
+        pre-reqs:
+            - rank: Heroic
+            - edge: Improved Cyberkinetic Awarenss
+    -
+        name: Improved Cyber-Armor
+        description: Cyber-Armor grants +4 total toughness. 
+        book_reference: TLPG 74
+        type: Iconic
+        pre-reqs:
+            - rank: Seasoned
+            - iconicf: Cyber-Knight
+    -
+        name: Master Cyber-Armor
+        description: Cyber-Armor grants +6 total toughness. If wearing Cyber-Knight medium or heavy EBA, the suit is MDC. 
+        book_reference: TLPG 74
+        type: Iconic
+        pre-reqs:
+            - rank: Heroic
+            - edge: Improved Cyber-Armor
+    -
+        name: Improved Psi-Sword
+        description: Psi-Sword does Str x2 + Spr x2 damage with AP of Psionics x2. If split, each blade's AP is equal to Psionics.
+        book_reference: TLPG 74
+        type: Iconic
+        pre-reqs:
+            - rank: Seasoned
+            - iconicf: Cyber-Knight
+            - spirit: d8
+            - psionics: d8
+            - Not CGen
+    -
+        name: Master Psi-Sword
+        description: Spend 1-6 ISP before rolling an attack. Each ISP adds +2 to the damage total. If split, each blade gains +1 damage per ISP.
+        book_reference: TLPG 74
+        type: Iconic
+        pre-reqs:
+            - rank: Veteran
+            - edge: Improved Psi-Sword
+            - psionics: d10
+    -
+        name: Psi-Shield
+        description: Free action to summon a Psi-Shield granting +3 Parry and -4 Cover penalty to hostile ranged strikes. Costs no ISP, MDC armor equal to Spirit against penetrations.
+        book_reference: TLPG 74
+        type: Iconic
+        pre-reqs:
+            - rank: Seasoned
+            - iconicf: Cyber-Knight
+    -
+        name: Dragon Fast Regeneration
+        description: Check for Natural Healing every round, +2 to recover from Shaken or Stunned. 
+        book_reference: TLPG 74
+        type: Iconic
+        pre-reqs:
+            - rank: Veteran
+            - iconicf: Dragon Hatchling
+            - vigor: d10
+    -
+        name: Dragon Flaming Scales
+        description: As an action, activate a flaming Damage Field per power. Deals 3d6 damage for Spirit rounds. Effected targets may ignite, must wait 10 min between uses. 
+        book_reference: TLPG 74
+        type: Iconic
+        pre-reqs:
+            - rank: Seasoned
+            - iconicf: Dragon Hatchling
+            - race: Flame Wind Dragon
+    -
+        name: Dragon Low Light Vision
+        description: Ignore Dim and Dark Illumination penalties. 
+        book_reference: TLPG 74
+        type: Iconic
+        pre-reqs:
+            - rank: Novice
+            - iconcif: Dragon Hatchling
+    -
+        name: Dragon Metamorphosis
+        description: May shapeshift into any living creature between house cat size and natural size and maintain even while sleeping. Gains no special abilities from this. 
+        book_reference: TLPG 74
+        type: Iconic
+        pre-reqs:
+            - rank: Veteran
+            - iconicf: Dragon Hatchling
+    -
+        name: Dragon Grows Larger
+        description: +1 str die type, Size 7 in natural form, +1 toughness and +4 armor for size increase.
+        book_reference: TLPG 74
+        type: Iconic
+        pre-reqs:
+            - rank: Veteran
+            - iconicf: Dragon Hatchling
+    -
+        name: Dragon Grows Huge
+        description: +1 str die type, Size 8 in natural form, +3 toughness and +4 MDC armor. Claw/Bite does Str +3d4 AP size x2. +1 breath weapon die type, -2 to opposing Fear checks. 
+        book_reference: TLPG 74
+        type: Iconic
+        pre-reqs:
+            - rank: Heroic
+            - edge: Dragon Grows Larger
+            - iconicf: Dragon Hatchling
+    -
+        name: Dragon Teleportation
+        description: Teleport as an action by checking Spirit and spending PPE. Double effect for Range modifier, but cannot use others. At Veteran may teleport to previously visisted dimensions on a nexus point. 
+        book_reference: TLPG 75
+        type: Iconic
+        pre-reqs:
+            - rank: Seasoned
+            - iconicf: Dragon Hatchling
+    -
+        name: Burn Brighter
+        description: Any time the burn die rolls 1, add 6 to the Trait roll. 
+        book_reference: TLPG 75
+        type: Iconic
+        pre-reqs:
+            - rank: Novice
+            - iconicf: Juicer
+            - spirit: d6
+    -
+        name: Burn for Glory
+        description: Spend a point of Burn with no roll to double the result of any Trait or damage roll. 
+        book_reference: TLPG 75
+        type: Iconic
+        pre-reqs:
+            - rank: Legendary
+            - edge: Burn Brighter
+    -
+        name: Burn Faster
+        description: Spend a point of Burn to ignore 4 points of Multi-Action penalty each turn when Action Card is a face card. Lasts 5 rounds. 
+        book_reference: TLPG 75
+        type: Iconic
+        pre-reqs:
+            - rank: Heroic
+            - iconicf: Juicer
+            - edge: Split the Seconds
+    -
+        name: Burn Past the Pain
+        description: Spend a point of Burn to ignore all Wound penalties for the remainder of combat, including to Vigor rolls for Incapacitation. 
+        book_reference: TLPG 75
+        type: Iconic
+        pre-reqs:
+            - rank: Seasoned
+            - iconicf: Juicer
+            - vigor: d10
+    -
+        name: Burn for Tomorrow
+        description: When rolling the Death and Defeat table, may add your Burn Die to the D20 roll. 
+        book_reference: TLPG 75
+        type: Iconic
+        pre-reqs:
+            - rank: Veteran
+            - edge: Burn Past the Pain
+    -
+        name: Freshly Juiced
+        description: +2 to burn rating. -1 Hero's Journey rolls. 
+        book_reference: TLPG 75
+        type: Iconic
+        pre-reqs:
+            - rank: Novice
+            - iconicf: Juicer
+            - CGen
+    -
+        name: Ley Line Observation Sphere
+        description: Conjure a moveable sphere of energy to act as a channel for your senses.
+        book_reference: TLPG 76
+        type: Iconic
+        pre-reqs:
+            - rank: Seasoned
+            - iconicf: Ley Line Walker
+    -
+        name: Ley Line Phasing
+        description: Teleport along ley lines as an action, can cause Fatigue. 
+        book_reference: TLPG 76
+        type: Iconic
+        pre-reqs:
+            - rank: Veteran
+            - iconicf: Ley Line Walker
+    -
+        name: Ley Line Gate
+        description: Ley Line Phase will carrying up to Smarts passengers. Can cause Fatigue. 
+        book_reference: TLPG 76
+        type: Iconic
+        pre-reqs:
+            - rank: Heroic
+            - edge: Ley Line Phasing
+    -
+        name: Upgradeable
+        description: +6 max strain. Already included in some Iconic Frameworks.
+        book_reference: TLPG 76
+        type: Background
+        pre-reqs:
+            rank: Novice
+    -
+        name: Charge
+        description: Move at running pace and make a fight attack at the end of the move with no penalty. 
+        book_reference: TLPG 76
+        type: Combat
+        pre-reqs:
+            - rank: Seasoned
+            - fighting: d10
+    -
+        name: Overrun
+        description: +2 damage if charging further than normal pace. Any target Shaken is knocked prone.
+        book_reference: TLPG 76
+        type: Combat
+        pre-reqs:
+            - rank: Veteran
+            - edge: Charge
