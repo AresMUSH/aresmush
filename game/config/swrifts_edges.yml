@@ -2045,3 +2045,370 @@ swrifts:
         pre-reqs:
             - rank: Veteran
             - edge: Charge
+    -
+        name: Dirty Fighter
+        description: +2 when Testing against an enemy if next action is Fighting attack against same enemy. 
+        book_reference: TLPG 76
+        type: Combat
+        pre-reqs:
+            - rank: Seasoned
+    -
+        name: Tricky Fighter
+        description: Ignore multi action penalty when testing against an enemy if next action is a fighting attack against same enemy.
+        book_reference: TLPG 76
+        type: Combat
+        pre-reqs:
+            - rank: Veteran
+            - edge: Dirty Fighter
+            - fighting: d8
+    -
+        name: Blaster
+        description: Allows access to the Blaster Power Modifier. (TLPG 77) 
+        book_reference: TLPG 77
+        type: Power
+        pre-reqs:
+            - rank: Veteran
+            - edge: AB Any
+            - smarts: d6
+            - spirit: d6
+            - arcane skill: d8
+    -
+        name: Expert Blaster
+        description: Allows access to the Expert Blaster Power Modifier. (TLPG 77) 
+        book_reference: TLPG 77
+        type: Power
+        pre-reqs:
+            - rank: Heroic
+            - edge: AB Any
+            - edge: Blaster
+            - smarts: d8
+            - spirit: d8
+            - arcane skill: d10
+    -
+        name: Master Blaster
+        description: Allows access to the Master Blaster Power Modifier. (TLPG 77) 
+        book_reference: TLPG 77
+        type: Power
+        pre-reqs:
+            - rank: Legendary
+            - edge: Expert Blaster
+            - arcane skill: d12
+    -
+        name: Cyber-Psychic Alignment
+        description: Ignore 1 level of strain penalty when using powers.
+        book_reference: TLPG 77
+        type: Power
+        pre-reqs:
+            - rank: Seasoned
+            - edge: AB Any
+            - spirit: d10
+            - vigor: d6
+    -
+        name: Improved Cyber-Psychic Alignment
+        description: Ignore 2 levels of strain penalty when using powers.
+        book_reference: TLPG 77
+        type: Power
+        pre-reqs:
+            - rank: Veteran
+            - edge: Cyber-Psychic Alignment
+            - vigor: d10
+    -
+        name: Major Psionic
+        description: Double ISP from AB and Power Points edges. May spend ISP for bonuses on Psionics rolls.
+        book_reference: TLPG 77
+        type: Power
+        pre-reqs:
+            - rank: Seasoned
+            - edge: AB Psionics
+            - smarts: d6
+            - spirit: d8
+            - Psionics: d8
+    -
+        name: Master Psionic
+        description: Gain access to all Mega Power modifiers for known powers. Add powers options per TLPG 78. 
+        book_reference: TLPG 78
+        type: Power
+        pre-reqs:
+            - rank: Veteran
+            - edge: Major Psionic
+            - smarts: d8
+            - Psionics: d10
+    -
+        name: Master of Magic
+        description: Gain access to all Mega Power modifiers for known powers. 
+        book_reference: TLPG 78
+        type: Power
+        pre-reqs:
+            - rank: seasoned
+            - edge: AB Magic OR AB Miracles OR AB Techno-Wizardry
+            - smarts: d8
+            - arcane skill: d8
+            - occult: d8
+    -
+        name: Possession
+        description: Allows use of the Puppet power to inhabit and control the target body. 
+        book_reference: TLPG 78
+        type: Power
+        pre-reqs:
+            - rank: Seasoned
+            - edge: Master Psionic
+            - power: Puppet
+    -
+        name: Psi-Blade
+        description: Can manifest smite as a Psi-Blade with Str+Smarts+smite bonus damage, AP Psionics x2. 
+        book_reference: TLPG 79
+        type: Power
+        pre-reqs:
+            - rank: Seasoned
+            - edge: Master Psionic
+            - power: Smite
+    -
+        name: Exceptional Rapid Recharge
+        description: Power points recover at 30/hr.
+        book_reference: TLPG 79
+        type: Power
+        pre-reqs:
+            - rank: Veteran
+            - edge: AB Any
+            - edge: Improved Rapid Recharge
+            - spirit: d8
+    -
+        name: Sixth Sense
+        description: Enhances Danger Sense mechanics. 
+        book_reference: TLPG 79
+        type: Power
+        pre-reqs:
+            - rank: Veteran
+            - edge: Danger Sense
+            - edge: Major Psionic
+    -
+        name: Telemechanics
+        description: Use mind link on machines for understanding of the machine and bonuses on certain skill rolls related to it.
+        book_reference: TLPG 79
+        type: Power
+        pre-reqs:
+            - rank: Seasoned
+            - edge: Master Psionic
+            - power: Mind Link
+    -
+        name: Combat Ace
+        description: Ignore multi action penalty for making Boating, Driving or Piloting check and taking another action.
+        book_reference: TLPG 79
+        type: Profesisonal
+        pre-reqs:
+            - rank: Seasoned
+            - edge: Ace
+    -
+        name: Power Armor Jock
+        description: Ignore -2 agility and skill roll penalty while wearing power armor.
+        book_reference: TLPG 79
+        type: Professional
+        pre-reqs:
+            - rank: Novice
+            - agility: d6
+            - smarts: d6
+            - electronics: d6
+            - piloting: d6
+    -
+        name: Robot Vehicle Jock
+        description: Ignore -2 skill roll penalty while piloting a robot vehicle.
+        book_reference: TLPG 80
+        type: Professional
+        pre-reqs:
+            - rank: Novice
+            - agility: d6
+            - smarts: d6
+            - electronics: d6
+            - piloting: d6
+    -
+        name: I Know a Guy
+        description: Once per session use to effectively have a relevant Connections edge.  
+        book_reference: TLPG 80
+        type: Social
+        pre-reqs:
+            - rank: Novice
+            - persuasion: d6
+            - edge: Charismatic
+    -
+        name: Scrounger
+        description: Once per session in an appropriate environment, scrounge per the rules on pg 80. 
+        book_reference: TLPG 80
+        type: Social
+        pre-reqs:
+            - rank: Novice
+            - edge: Streetwise
+    -
+        name: Delphi Juicer Treatment
+        description: Becomes a minor psychic, gains powers.
+        book_reference: EohH 30
+        type: Iconic
+        pre-reqs:
+            - rank: Novice
+            - iconicf: Juicer
+    -
+        name: Genius
+        description: Unskilled checks are now d6. 
+        book_reference: EohH 30
+        type: Iconic
+        pre-reqs:
+            - rank: Veteran
+            - iconicf: Vagabond
+            - smarts: d10
+    -
+        name: Hyperion Treatment
+        description: Gains speed, jumping and initiative related enhancements. Requires double the food.
+        book_reference: EohH 30
+        type: Iconic
+        pre-reqs:
+            - rank: Novice
+            - iconicif: Juicer
+    -
+        name: Mega-Juicer Treatment
+        description: Gain Unstoppable per TLPG 68. Explode on death. 
+        book_reference: EohH 30
+        type: Iconic
+        pre-reqs:
+            - rank: Novice
+            - iconicf: Juicer
+    -
+        name: Phaeton Treatment
+        description: Enhanced unskilled agility checks, attacker penalties to vehicles under your control, bonuses to evade for said vehicles. 
+        book_reference: EohH 30
+        type: Iconic
+        pre-reqs:
+            - rank: Novice
+            - iconicf: Juicer
+    -
+        name: Synthetic Immortality
+        description: 'Dead' constructs can be repaired wit the consciousness intact. 
+        book_reference: EohH 31
+        type: Iconic
+        pre-reqs:
+            - rank: Novice
+            - spirit: d6
+            - iconicf: Intelligent Construct
+    -
+        name: Titan Treatment
+        description: Increased size, strength, toughness and vigor, reduced pace, running, burn and the Big negative racial trait.
+        book_reference: EohH 31
+        type: Iconic
+        pre-reqs:
+            - rank: Novice
+            - iconicf: Juicer
+    -
+        name: Sharpshooting
+        description: +1 to hit or ignore 4 points of penalties when attacking with ROF 1 weapons. 
+        book_reference: EohH 31
+        type: Combat
+        pre-reqs:
+            - rank: Seasoned
+            - edge: Marksman
+            - agility: d8
+    -
+        name: Trick Shooting
+        description: Enhanced shooting skill options, stacks with effects of Sharpshooting. See EohH 31. 
+        book_reference: EohH 32
+        type: Combat
+        pre-reqs:
+            - rank: Veteran
+            - edge: Sharpshooting
+            - edge: Steady Hands
+            - agility: d10
+    -
+        name: Take 'em Down
+        description: +4 AP when attacking MDC targets with MD attacks.
+        book_reference: EohH 33
+        type: Combat
+        pre-reqs:
+            - rank: Seasoned
+    -
+        name: Improved Take 'em Down
+        description: When attacking MDC targets with MD attacks, you can reroll damage once w/o spending a Benny. 
+        book_reference: EohH 33
+        type: Combat
+        pre-reqs:
+            - rank: Veteran
+            - edge: Take 'em Down
+    -
+        name: Combat Lifesaver
+        description: Ignore 1 point of wound penalties to heal or stabilize, Support roll to assist Smarts in extras for recovery per Aftermath and Extras rules.
+        book_reference: EohH 33
+        type: Professional
+        pre-reqs:
+            - rank: Seasoned
+            - healing: d4
+            - smarts: d6
+    -
+        name: Improved Combat Lifesaver
+        description: Ignore 2 points of wound penalties to heal or stabilize, may make support roll to aid an ally making a Death and Defeat roll.
+        book_reference: EohH 33
+        type: Professional
+        pre-reqs:
+            - rank: Veteran
+            - edge: Combat Lifesaver
+            - healing: d6
+    -
+        name: Conditioned
+        description: +2 to rolls to resist interrogation in any form, ignore 1 point of fatigue penalties.
+        book_reference: EohH 33
+        type: Professional
+        pre-reqs:
+            - rank: Veteran
+            - edge: Soldier
+            - spirit: d6
+            - survival: d6
+    -
+        name: Demolitionist
+        description: Capable of setting, defusing and trapping explosives. Ignore up to 2 points of penalties when doing so. Only sets bombs off on a critical failure.
+        book_reference: EohH 33
+        type: Professional
+        pre-reqs:
+            - rank: Novice
+            - agility: d6
+            - smarts: d6
+            - repair: d6
+    -
+        name: Expert Demolitionist
+        description: Ignore up to 4 points of penalty when handling explosives, may spend Benny to reroll crit failures.
+        book_reference: EohH 33
+        type: Professional
+        pre-reqs:
+            - rank: Seasoned
+            - edge: Demolitionist
+            - science: d6
+    -
+        name: Field Intel
+        description: Expert in detecting and setting up unit ambushes, bonuses to detect and gain intel on enemy forces, or to gain information from information, transmission or enemy corpses.
+        book_reference: EohH 34
+        type: Professional
+        pre-reqs:
+            - rank: Seasoned
+            - smarts: d8
+    -
+        name: Legacy Scout
+        description: +2 to rolls related to Relic Salvage Operations, and complete them in half normal time.
+        book_reference: EohH 34
+        type: Professional
+        pre-reqs:
+            - rank: Novice
+            - academics: d6
+            - survival: d6
+    -
+        name: Justice Ranger
+        description: Bonuses and benefits to social rolls due to reputation, and to hunt down criminals. Able to organize a posse. Basic equipment on call. Takes Major Vow - Code of the New West
+        book_reference: EohH 34
+        type: Professional
+        pre-reqs:
+            - rank: Novice
+            - spirit: d6
+            - survival: d6
+    -
+        name: Monster Slayer
+        description: Occult rolls to identify supernatural opponents, grant allies bonuses to trait rolls against known creatures.
+        book_reference: EohH 34
+        type: Professional
+        pre-reqs:
+            - rank: Seasoned
+            - smarts: d6
+            - occult: d8
+            - notice: d6            
