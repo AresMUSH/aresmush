@@ -24,3 +24,148 @@ swrifts:
         name: choice
         description: Placeholder item
         type: Administrative
+    - 
+        name: choice
+        description: Placeholder item
+        type: Administrative
+    -
+        name: Alertness
+        description: +2 to Notice rolls
+        book_reference: SWADE 37
+        type: Background
+        pre-reqs: 
+            - rank: Novice
+    -
+        name: Ambidextrous
+        description: Ignore -2 penalty when making Trait rolls with off-hand.
+        book_reference: SWADE 37
+        type: Background
+        pre-reqs:
+            - rank: Novice
+            - Agility: d8
+    -
+        name: AB Magic
+        description: Magical Arcane Background
+        book_reference: TLPG 120
+        type: Background
+        chargen_points:
+            magic_slots: 3
+        counters:
+            ppe_max: 10
+        skills:
+            Spellcasting: 0
+        pre-reqs:
+            - rank: Novice
+    -
+        name: AB Psionics
+        description: Psionics Arcane Background
+        book_reference: TLPG 120
+        type: Background
+        chargen_points:
+            psionic_slots: 3
+        counters:
+            isp_max: 10
+        skills:
+            Psionics: 0
+        pre-reqs:
+            - rank: Novice
+    -
+        name: AB Miracles
+        description: Miracles Arcane Background
+        book_reference: TLPG 120
+        type: Background
+        chargen_points:
+            miracle_slots: 3
+        counters:
+            ppe_max: 10
+        skills:
+            Faith: 0
+        pre-reqs:     
+            - rank: Novice
+    -
+        name: AB Gifted
+        description: Gifted Arcane Background
+        book_reference: TLPG 120
+        type: Background
+        chargen_points:
+            gifted_slots: 1
+        counters:
+            ppg_max: 15
+        skills:
+            Spellcasting: 0
+        pre-reqs:     
+            - rank: Novice
+    -
+        name: AB Weird Science
+        description: Weird Science Arcane Background
+        book_reference: TLPG 121
+        type: Background
+        chargen_points:
+            power_slots: 2
+        counters:
+            ppw_max: 15
+        skills:
+            Weird Science: 0
+        pre-reqs:     
+            - rank: Novice
+    -
+        name: AB Techno-Wizardry
+        description: Techno-Wizardry Arcane Background
+        book_reference: TLPG 51
+        type: Background
+        chargen_points:
+            power_slots: 3
+        counters:
+            ppe_max: 15
+        skills:
+            Techno-Wizardry: 0
+        pre-reqs:     
+            - rank: Novice
+            - iconicf: Techno-Wizard
+    -
+        name: Arcane Resistance
+        description: Arcane skills targeting the hero sufer a âˆ’2 penalty; magical damage is reduced by 2
+        book_reference: SWADE 37
+        type: Background
+        pre-reqs:     
+            - rank: Novice
+            - Spirit: d8
+    -
+        name: Improved Arcane Resistance
+        description: As Arcane Resistance except penalty is -4 and magical damage is reduced by 4.
+        book_reference: SWADE 37
+        type: Background
+        pre-reqs:     
+            - rank: Novice
+            - edge: Arcane Resistance
+    -
+        name: Attractive
+        description: +1 to Performance and Persuasion rolls.
+        book_reference: SWADE 38
+        type: Background
+        pre-reqs:     
+            - rank: Novice
+            - vigor: d6
+    -
+        name: Very Attractive
+        description: +2 to Performance and Persuasion rolls.
+        book_reference: SWADE 38
+        type: Background
+        pre-reqs:     
+            - rank: Novice
+            - edge: Attractive
+    -
+        name: Berserk
+        description: Attacks after being Shaken or Wounded must be Wild. Take Fagitue after every 5 rounds.
+        book_reference: SWADE 38
+        type: Background
+        pre-reqs:
+            - rank: Novice
+    -
+        name: Brave
+        description: +2 to Fear checks and â€“2 to rolls on the Fear Table.
+        book_reference: SWADE 38
+        type: Background
+        pre-reqs:
+            - rank: Novice
+            - spirit: d6
