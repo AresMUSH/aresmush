@@ -420,7 +420,7 @@ swrifts:
         type: Combat
         pre-reqs:
             - rank: Novice
-            - agility: d8, athletics: d6
+            - agility: d8, athletics d6
     -
         name: Frenzy
         description: On one fighting roll per turn roll a second fighting die to allocate as desired. Resolve each fighting die separately.
@@ -506,7 +506,7 @@ swrifts:
         type: Combat
         pre-reqs:
             - rank: Seasoned
-            - athletics: d8 OR shooting: d8
+            - athletics: d8 OR shooting d8
     -
         name: Martial Artist
         description: Unarmed attacks count as Natural Wepaons. +1 Fighting with them. Strength +d4 damage or +1 die type to claws. Does not improve other Natural Weapons.
@@ -542,7 +542,7 @@ swrifts:
             - vigor: d8
     -
         name: Improved Nerves of Steel
-        description: Replaces Nerves of Steel: Ignore 2 points of wound penalties.
+        description: Replaces Nerves of Steel Ignore 2 points of wound penalties.
         book_reference: SWADE 43
         type: Combat
         pre-reqs:
@@ -788,7 +788,7 @@ swrifts:
         type: Power
         pre-reqs:
             - rank: Legendary
-            - edge: AB Magic OR edge: AB Techno-Wizardry
+            - edge: AB Magic OR edge AB Techno-Wizardry
         counters: 
             ppe_max: 2
     -
@@ -930,7 +930,7 @@ swrifts:
         type: Professional
         pre-reqs:
             - rank: Novice
-            - agility: d8, atheltics: d8
+            - agility: d8, atheltics d8
     -
         name: Combat Acrobat
         description: -1 to attacks against you so long as you have room to move, are aware of the attack and not suffering enc or min str penalties.
@@ -946,7 +946,7 @@ swrifts:
         type: Professional
         pre-reqs:
             - rank: Novice
-            - agility: d8, fighting: d6, stealth: d8
+            - agility: d8, fighting d6, stealth d8
     -
         name: Investigator
         description: +2 to Research and Notice rolls made to physically find information and clues.
@@ -954,7 +954,7 @@ swrifts:
         type: Professional
         pre-reqs:
             - rank: Novice
-            - smarts: d8, research: d8
+            - smarts: d8, research d8
     -
         name: Jack-of-all-Trades
         description: May make a Smarts roll after observing or studdying a subject to gain d4 in a relevant skill or d6 with a raise. Lasts 1 hour or until another attempt is made.
@@ -970,7 +970,7 @@ swrifts:
         type: Professional
         pre-reqs:
             - rank: Novice
-            - smarts: d6, notice: d8, repair: d6
+            - smarts: d6, notice d8, repair d6
     -
         name: Mr. Fix It
         description: +2 to repair rolls. Halve the time to repair with a raise.
@@ -994,7 +994,7 @@ swrifts:
         type: Professional
         pre-reqs:
             - rank: Novice
-            - strength: d6, vigor: d6
+            - strength: d6, vigor d6
     -
         name: Thief
         description: +1 Athletics to climb in urban areas. +1 Stealth in the same. +1 Theivery in general.
@@ -1050,7 +1050,7 @@ swrifts:
         type: Social
         pre-reqs:
             - rank: Novice
-            - hundrance: Bloodthirsty OR hindrance: Mean, OR hindrance: Ruthless, OR hindrance: Ugly
+            - hundrance: Bloodthirsty OR hindrance Mean, OR hindrance Ruthless, OR hindrance Ugly
     -
         name: Provoke
         description: Once per turn with a raise on a Taunt test, Provoke the foe. Provoked foe is -2 to attack anyone else. Stacks with Distracted. Lasts until a Joker is drawn.
@@ -1145,7 +1145,7 @@ swrifts:
         type: Weird
         pre-reqs:
             - rank: Novice
-            - spirit: d8, fighting: d6
+            - spirit: d8, fighting d6
     -
         name: Chi
         description: Gain a Chi point at the start of each encounter. Spend that point to reroll a failed attack, make an enemy reroll an attack, or add +d6 to a successful attack. Unspent Chi is lost at the end of the encounter.
@@ -1209,7 +1209,7 @@ swrifts:
             - edge: Professional
     -
         name: Master
-        description: The characterâ€™s Wild Die is a d10 with a chosen Trait.
+        description: The character's Wild Die is a d10 with a chosen Trait.
         book_reference: SWADE 53
         pre-reqs: 
             - rank: Legendary
