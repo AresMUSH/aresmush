@@ -1,7 +1,7 @@
 ---
 swrifts:
     edges:
-    -
+    - 
         name: TestEdge
         description: Blah blah blah.
         type: Background
