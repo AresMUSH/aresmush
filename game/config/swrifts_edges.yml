@@ -1356,5 +1356,12 @@ swrifts:
         pre-reqs: 
             - rank: Novice
             - spirit: d8
-
+    -
+        name: Reid's Ranger
+        book_reference: B&B 31
+        description: Membership in Reid's Rangers faction, +1 social checks on friends of the Rangers, Beast Master Edge and dog/wolf companion.
+        type: Professional
+        pre-reqs: 
+            - rank: Novice
+            - edge: Vampire Killer
  
