@@ -693,7 +693,7 @@ swrifts:
         type: Leadership
         pre-reqs:
             - rank: Seasoned
-            - smarts: d8, battle: d6
+            - smarts: d8, battle d6
             - edge: Command
     -
         name: Master Tactician
