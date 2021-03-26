@@ -25,10 +25,6 @@ swrifts:
         description: Placeholder item
         type: Administrative
     - 
-        name: choice
-        description: Placeholder item
-        type: Administrative
-    -
         name: Alertness
         description: +2 to Notice rolls
         book_reference: SWADE 37
