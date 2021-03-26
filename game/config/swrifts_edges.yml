@@ -1626,16 +1626,6 @@ swrifts:
             - iconicf: Dragon Hatchling
             - race: Dragon Great Horned
     -
-        name: Master Elementalist
-        book_reference: TLFM 11
-        description: Gain minor elemental ally per TLFM 11.   
-        type: Iconic
-        pre-reqs: 
-            - rank: Seasoned
-            - iconicf: Elemental Fusionist
-            - edge: Elementalist
-            - edge: Life Sign Harmony
-    -
         name: Diabolist
         book_reference: TLFM 11
         description: May use the Diabolist ally chart when casting summon ally.
