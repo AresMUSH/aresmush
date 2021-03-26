@@ -1364,4 +1364,150 @@ swrifts:
         pre-reqs: 
             - rank: Novice
             - edge: Vampire Killer
- 
+    -
+        name: Tundra Ranger
+        book_reference: B&B 32
+        description: Membership in the Tundra Rangers faction, +1 social checks with allies of the Tundra Rangers, Vow Major - Code of the Tundra Rangers, bonuses and gear per B&B 32.
+        type: Professional
+        pre-reqs: 
+            - rank: Novice
+            - riding: d6
+            - survival: d6
+    -
+        name: Vampire Killer
+        book_reference: B&B 32
+        description: +2 on Occult, Notice and Survival checks regarding vampires.
+        type: Professional
+        pre-reqs: 
+            - rank: Novice
+            - spirit: d6
+            - notice: d6
+            - occult: d6
+    -
+        name: Elite Vampire Killer
+        book_reference: B&B 32
+        description: +2 to resist vampire fear or mind control, +2 networking and research to investigate topics related to vampire activities and nests.
+        type: Professional
+        pre-reqs:
+            - rank: Veteran
+            - edge: Vampire Killer
+            - spirit: d8
+            - notice: d8
+            - research: d6
+    -
+        name: Magi of Dweomer
+        book_reference: A&M 28
+        description: Gains edge - Master of Magic, free reroll against banish or dispell, hindrance  Vow - Major (Serve Dweomer), always knows how to find Dweomer.  
+        type: Background
+        pre-reqs: 
+            - iconicf: Magus
+            - edge: AB Magic
+    -
+        name: Psychic of Psyscape
+        book_reference: A&M 28
+        description: Gains Empathy power, Detect Arcana as an innate ability with +2 to sense evil, hindrance Vow - Major (Serve Psyscape), may enter ley line stasis.
+        type: Background
+        pre-reqs: 
+            - edge: AB Psionics
+            - occult: d6
+    -
+        name: Arcane Marksman
+        book_reference: A&M 29
+        description: +1 to Bolt power attack roll or similar, or ignore up to 2 points of penalty. Does not stack with aim. Only if did not move and attack was first action.   
+        type: Combat
+        pre-reqs: 
+            - rank: Seasoned
+            - edge: AB Any
+    -
+        name: Elemental Attunement
+        book_reference: A&M 29
+        description: Attune new element, gain access to elements power list and learn one power from it. Once per rank.   
+        type: Iconic
+        pre-reqs: 
+            - rank: Seasoned
+            - iconicf: Elemental Fusionist
+            - spirit: d8
+            - focus: d8 
+    -
+        name: Life Sign Harmony
+        book_reference: A&M 29
+        description: Gain Elem. Manip. and Env. Prot. as innate abilities with bonuses for life sign element.   
+        type: Iconic
+        pre-reqs: 
+            - rank: Novice
+            - iconicf: Elemental Fusionist
+            - spirit: d10
+    -
+        name: Warlock
+        book_reference: A&M 29
+        description: Gain access to the Warlock power list and learn one immediately.   
+        type: Iconic
+        pre-reqs: 
+            - rank: Heroic
+            - iconicf: Elemental Fusionist
+            - focus: d10
+            - edge: Elemental Attunement (x3)
+    -
+        name: Dream Vision
+        book_reference: A&M 29
+        description: Once per session, while asleep or meditating use Diviniation with enhancements.
+        type: Power
+        pre-reqs: 
+            - rank: Veteran OR edge Grey Seer
+            - edge: Major Psionic
+            - power: Divination
+    -
+        name: Minor Item Creation
+        book_reference: A&M 30
+        description: Can create minor items per rules in A&M 30.  
+        type: Power
+        pre-reqs: 
+            - rank: Seasoned
+            - edge: Artificer, edge AB Magic OR edge AB Miracles
+            - repair: d8
+    -
+        name: Major Item Creation
+        book_reference: A&M 30
+        description: Can create major items per rules in A&M 30.  
+        type: Power
+        pre-reqs: 
+            - rank: Veteran
+            - edge: Minor Item Creation
+            - occult: d10
+    -
+        name: Psi-Weapon Manipulation
+        book_reference: A&M 31
+        description: Change the appearance of Psi-Blade to any medieval melee weapon, gaining relevant properties except the Claws property. Damage is unchanged.  
+        type: Power
+        pre-reqs: 
+            - rank: Seasoned
+            - edge: Psi-Blade OR iconicf Cyber-Knight
+    -
+        name: Adept
+        book_reference: A&M 31
+        description: Upgrade one power you know from the list per rank to be an innate ability with Range (self).  
+        type: Professional
+        pre-reqs: 
+            - rank: Novice
+            - edge: AB Magic OR edge AB Psionics OR edge AB Miracles
+            - arcane skill: d8 
+            - fighting: d8
+    -
+        name: Conjurer
+        book_reference: A&M 31
+        description: Conjure items and beasts out of thin air per restrictions in A&M 31.  
+        type: Professional
+        pre-reqs: 
+            - rank: Novice
+            - edge: AB Magic
+            - occult: d8 
+            - spellcasting: d8
+    -
+        name: Controller
+        book_reference: A&M 32
+        description: Able to operate Automatons.  
+        type: Professional
+        pre-reqs: 
+            - rank: Novice
+            - edge: AB Magic
+            - agility: d6, smarts d6, occult d6, piloting d6
