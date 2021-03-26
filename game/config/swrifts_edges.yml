@@ -1589,3 +1589,77 @@ swrifts:
         pre-reqs: 
             - rank: Novice
             - iconicf: Mind Melter
+    -
+        name: Dragon Celerity
+        book_reference: TLFM 10
+        description: Increase pace to 12, d12 run die, counts as Nimble.   
+        type: Iconic
+        pre-reqs: 
+            - rank: Novice
+            - iconicf: Dragon Hatchling
+            - race: Dragon Forest Runner
+    -
+        name: Dragon Frost Scales
+        book_reference: TLFM 10
+        description: Emit a damaging cold per Damage Field power with 3d6 damage for Spirit rounds. 10 min recharge.
+        type: Iconic
+        pre-reqs: 
+            - rank: Seasoned
+            - iconicf: Dragon Hatchling
+            - race: Dragon Snow Lizard
+    -
+        name: Dragon Master Psychic
+        book_reference: TLFM 11
+        description: Gain Master Psionic and learn a power from the Mind Melter list. Further powers are learned per TLFM 11.   
+        type: Iconic
+        pre-reqs: 
+            - rank: Seasoned
+            - iconicf: Dragon Hatchling
+            - race: Dragon Royal Frilled
+    -
+        name: Dragon Sharp Horns
+        book_reference: TLFM 11
+        description: Gain +4 AP to claw, horn and tail lash attacks. Tail lash now deals damage as per claws.   
+        type: Iconic
+        pre-reqs: 
+            - rank: Seasoned
+            - iconicf: Dragon Hatchling
+            - race: Dragon Great Horned
+    -
+        name: Master Elementalist
+        book_reference: TLFM 11
+        description: Gain minor elemental ally per TLFM 11.   
+        type: Iconic
+        pre-reqs: 
+            - rank: Seasoned
+            - iconicf: Elemental Fusionist
+            - edge: Elementalist
+            - edge: Life Sign Harmony
+    -
+        name: Diabolist
+        book_reference: TLFM 11
+        description: May use the Diabolist ally chart when casting summon ally.
+        type: Power
+        pre-reqs: 
+            - rank: Veteran
+            - occult: d8
+            - power: summon ally
+-
+        name: Diabolist (Shifter))
+        book_reference: TLFM 11
+        description: May use the Diabolist ally chart when casting summon ally.
+        type: Power
+        pre-reqs: 
+            - rank: Novice
+            - iconicf: Shifter
+            - occult: d8
+            - power: summon ally
+    -
+        name: Elementalist
+        book_reference: TLFM 11
+        description: May use the Elemental ally chart when casting summon ally.
+        type: Power
+        pre-reqs: 
+            - rank: Veteran
+            - occult: d10
+            - power: summon ally
