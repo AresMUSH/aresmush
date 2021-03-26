@@ -120,7 +120,7 @@ swrifts:
             - iconicf: Techno-Wizard
     -
         name: Arcane Resistance
-        description: Arcane skills targeting the hero sufer a âˆ’2 penalty; magical damage is reduced by 2
+        description: Arcane skills targeting the hero sufer a −2 penalty; magical damage is reduced by 2
         book_reference: SWADE 37
         type: Background
         pre-reqs:     
@@ -159,7 +159,7 @@ swrifts:
             - rank: Novice
     -
         name: Brave
-        description: +2 to Fear checks and â€“2 to rolls on the Fear Table.
+        description: +2 to Fear checks and –2 to rolls on the Fear Table.
         book_reference: SWADE 38
         type: Background
         pre-reqs:
@@ -208,7 +208,7 @@ swrifts:
             - rank: Novice
     -
         name: Famous
-        description: +2 Persuasion when recognized, 5Ã— or more usual fee for Performance.
+        description: +2 Persuasion when recognized, 5× or more usual fee for Performance.
         book_reference: SWADE 39
         type: Background
         pre-reqs:
@@ -726,7 +726,7 @@ swrifts:
         type: Power
         pre-reqs:
             - rank: Seasoned
-            - edge: AB Any
+            - edg: AB Any
     -
         name: Extra Effort
         description: After rolling Focus, spend 1 PP to add +1, or 3 PP to add +2. Cannot use on critical failure.
@@ -1188,36 +1188,31 @@ swrifts:
     -
         name: Followers
         description: The hero has five followers.
-        book_reference: SWADE 53
         type: Legendary
         pre-reqs: 
             - rank: Legendary
             - wildcard: 1
     -
         name: Professional
-        description: The characterâ€™s Trait and its limit increases one step.
-        book_reference: SWADE 53
+        description: The character’s Trait and its limit increases one step.
         pre-reqs: 
             - rank: Legendary
             - one attribute at max
     -
         name: Expert
-        description: The characterâ€™s Trait and its limit increases one step.
-        book_reference: SWADE 53
+        description: The character’s Trait and its limit increases one step.
         pre-reqs: 
             - rank: Legendary
             - edge: Professional
     -
         name: Master
-        description: The characterâ€™s Wild Die is a d10 with a chosen Trait.
-        book_reference: SWADE 53
+        description: The character’s Wild Die is a d10 with a chosen Trait.
         pre-reqs: 
             - rank: Legendary
             - edge: Expert
     -
         name: Sidekick
         description: The character gains a Wild Card sidekick.
-        book_reference: SWADE 53
         type: Legendary
         pre-reqs: 
             - rank: Legendary
@@ -1225,7 +1220,6 @@ swrifts:
     -
         name: Tough as Nails
         description: The hero can take four Wounds before being Incapacitated.
-        book_reference: SWADE 53
         type: Legendary
         pre-reqs: 
             - rank: Legendary
@@ -1233,7 +1227,6 @@ swrifts:
     -
         name: Tougher than Nails
         description: The hero can take fve Wounds before being Incapacitated.
-        book_reference: SWADE 53
         type: Legendary
         pre-reqs: 
             - rank: Legendary
@@ -1242,7 +1235,6 @@ swrifts:
     -
         name: Weapon Master
         description: Parry increases by +1 and Fighting bonus damage die is d8.
-        book_reference: SWADE 53
         type: Legendary
         pre-reqs: 
             - rank: Legendary
@@ -1250,7 +1242,6 @@ swrifts:
     -
         name: Master of Arms
         description: Parry increases another +1 and Fighting bonus damage die is d10.
-        book_reference: SWADE 53
         type: Legendary
         pre-reqs: 
             - rank: Legendary
@@ -1301,7 +1292,7 @@ swrifts:
         type: Iconic
         pre-reqs: 
             - rank: Veteran
-            - iconicf: Heroic Vampire OR iconicf Werecat
+            - iconicf: Heroic Vampire, Werecat
     -
         name: Shift the Arcane
         book_reference: B&B 30
@@ -1317,7 +1308,7 @@ swrifts:
         type: Iconic
         pre-reqs: 
             - rank: Novice
-            - iconicf: Ley Line Walker OR iconicf Shifter
+            - iconicf: Ley Line Walker or Shifter
             - powers: teleport
     -
         name: Beast Rider
@@ -1330,66 +1321,45 @@ swrifts:
     -
         name: Frontiersman
         book_reference: B&B 31
-        description: +2 to identify flora/fauna/monstes/weather conditions in the wild. May substitute survival for stealth in some conditions in the wild.
-        type: Professional
+        description:   
+        type: 
         pre-reqs: 
-            - rank: Seasoned
-            - edge: Woodsman
     -
         name: Pathfinder
         book_reference: B&B 31
-        description: Ignore difficult terrain penalties on foot or on bike, may redraw one action card for encounters.
-        type: Professional
+        description:   
+        type: 
         pre-reqs: 
-            - rank: Seasoned
-            - edge: Woodsman
-            - notice: d6
     -
         name: Squire of the White Rose
         book_reference: B&B 31
-        description: Vow Major - Code of the White Rose, +1 social checks with friends of the order, mind link between squire and pledged Knight.
-        type: Professional
+        description:   
+        type: 
         pre-reqs: 
-            - rank: Novice
-            - spirit: d8
     -
         name: Reid's Ranger
         book_reference: B&B 31
-        description: Membership in Reid's Rangers faction, +1 social checks on friends of the Rangers, Beast Master Edge and dog/wolf companion.
-        type: Professional
+        description:   
+        type: 
         pre-reqs: 
-            - rank: Novice
-            - edge: Vampire Killer
     -
         name: Tundra Ranger
         book_reference: B&B 32
-        description: Membership in the Tundra Rangers faction, +1 social checks with allies of the Tundra Rangers, Vow Major - Code of the Tundra Rangers, bonuses and gear per B&B 32.
-        type: Professional
+        description:   
+        type: 
         pre-reqs: 
-            - rank: Novice
-            - riding: d6
-            - survival: d6
     -
         name: Vampire Killer
         book_reference: B&B 32
-        description: +2 on Occult, Notice and Survival checks regarding vampires.
-        type: Professional
+        description:   
+        type: 
         pre-reqs: 
-            - rank: Novice
-            - spirit: d6
-            - notice: d6
-            - occult: d6
     -
         name: Elite Vampire Killer
         book_reference: B&B 32
-        description: +2 to resist vampire fear or mind control, +2 networking and research to investigate topics related to vampire activities and nests.
-        type: Professional
-        pre-reqs:
-            - rank: Veteran
-            - edge: Vampire Killer
-            - spirit: d8
-            - notice: d8
-            - research: d6
+        description:   
+        type: 
+        pre-reqs: 
     -
         name: Magi of Dweomer
         book_reference: A&M 28
@@ -1422,8 +1392,7 @@ swrifts:
         pre-reqs: 
             - rank: Seasoned
             - iconicf: Elemental Fusionist
-            - spirit: d8
-            - focus: d8 
+            - spirit: d8, focus: d8 
     -
         name: Life Sign Harmony
         book_reference: A&M 29
@@ -1449,7 +1418,7 @@ swrifts:
         description: Once per session, while asleep or meditating use Diviniation with enhancements.
         type: Power
         pre-reqs: 
-            - rank: Veteran OR edge Grey Seer
+            - rank: Veteran OR edge: Grey Seer
             - edge: Major Psionic
             - power: Divination
     -
@@ -1477,7 +1446,7 @@ swrifts:
         type: Power
         pre-reqs: 
             - rank: Seasoned
-            - edge: Psi-Blade OR iconicf Cyber-Knight
+            - edge: Psi-Blade OR iconicf: Cyber-Knight
     -
         name: Adept
         book_reference: A&M 31
@@ -1485,9 +1454,8 @@ swrifts:
         type: Professional
         pre-reqs: 
             - rank: Novice
-            - edge: AB Magic OR edge AB Psionics OR edge AB Miracles
-            - arcane skill: d8 
-            - fighting: d8
+            - edge: AB Magic OR edge: AB Psionics OR edge: AB Miracles
+            - arcane skill: d8, fighting: d8
     -
         name: Conjurer
         book_reference: A&M 31
@@ -1496,8 +1464,7 @@ swrifts:
         pre-reqs: 
             - rank: Novice
             - edge: AB Magic
-            - occult: d8 
-            - spellcasting: d8
+            - occult: d8, spellcasting: d8
     -
         name: Controller
         book_reference: A&M 32
@@ -1521,17 +1488,15 @@ swrifts:
         description: Add the specified powers to your power list and learn one. May activiate powers in animal form.  
         type: Professional
         pre-reqs: 
-            - iconicf: Shaman OR iconicf Spirit Warrior
+            - iconicf: Shaman OR iconicf: Spirit Warrior
     -
         name: One with Magic Novice
         book_reference: A&M 33
         description: Gain detect/conceal arcana as innate ability. +2 to use if power already known.
         type: Weird
         pre-reqs: 
-            - edge: AB Magic 
-            - edge: Master of Magic
-            - occult: d8
-            - smarts: d8
+            - edge: AB Magic, edge: Master of Magic
+            - occult: d8, smarts: d8
     -
         name: One with Magic Seasoned
         book_reference: A&M 33
@@ -1563,135 +1528,81 @@ swrifts:
     -
         name: Quick Draw
         book_reference: TLFM 10
-        description: When on Hold, +2 agility to interrupt by drawing a weapon. May check Agility when rolling for Surprise.   
-        type: Combat
+        description:   
+        type: 
         pre-reqs: 
-            - rank: Novice
-            - agility: d8
     -
         name: Fast Draw
         book_reference: TLFM 10
-        description: When on Hold, +4 agility to interrupt by drawing a weapon. May check Agility when rolling for Surprise. May ready up to 4 items per turn as a free action.
-        type: Combat
+        description:   
+        type: 
         pre-reqs: 
-            - rank: Seasoned
-            - agility: d10
-            - edge: Quick Draw
     -
         name: Bio-Manipulation
         book_reference: TLFM 10
-        description: Inflict fatigue against single targets when using blind, confusion, lower Trait, silence, sloth, slumber or stun with a raise.
-        type: Iconic
+        description:   
+        type: 
         pre-reqs: 
-            - rank: Novice
-            - iconicf: Mind Melter
     -
         name: Dragon Celerity
         book_reference: TLFM 10
-        description: Increase pace to 12, d12 run die, counts as Nimble.   
-        type: Iconic
+        description:   
+        type: 
         pre-reqs: 
-            - rank: Novice
-            - iconicf: Dragon Hatchling
-            - race: Dragon Forest Runner
     -
         name: Dragon Frost Scales
         book_reference: TLFM 10
-        description: Emit a damaging cold per Damage Field power with 3d6 damage for Spirit rounds. 10 min recharge.
-        type: Iconic
+        description:   
+        type: 
         pre-reqs: 
-            - rank: Seasoned
-            - iconicf: Dragon Hatchling
-            - race: Dragon Snow Lizard
     -
         name: Dragon Master Psychic
         book_reference: TLFM 11
-        description: Gain Master Psionic and learn a power from the Mind Melter list. Further powers are learned per TLFM 11.   
-        type: Iconic
+        description:   
+        type: 
         pre-reqs: 
-            - rank: Seasoned
-            - iconicf: Dragon Hatchling
-            - race: Dragon Royal Frilled
     -
         name: Dragon Sharp Horns
         book_reference: TLFM 11
-        description: Gain +4 AP to claw, horn and tail lash attacks. Tail lash now deals damage as per claws.   
-        type: Iconic
+        description:   
+        type: 
         pre-reqs: 
-            - rank: Seasoned
-            - iconicf: Dragon Hatchling
-            - race: Dragon Great Horned
     -
         name: Master Elementalist
         book_reference: TLFM 11
-        description: Gain minor elemental ally per TLFM 11.   
-        type: Iconic
+        description:   
+        type: 
         pre-reqs: 
-            - rank: Seasoned
-            - iconicf: Elemental Fusionist
-            - edge: Elementalist
-            - edge: Life Sign Harmony
     -
         name: Diabolist
         book_reference: TLFM 11
-        description: May use the Diabolist ally chart when casting summon ally.
-        type: Power
+        description:   
+        type: 
         pre-reqs: 
-            - rank: Veteran
-            - occult: d8
-            - power: summon ally
--
-        name: Diabolist (Shifter))
-        book_reference: TLFM 11
-        description: May use the Diabolist ally chart when casting summon ally.
-        type: Power
-        pre-reqs: 
-            - rank: Novice
-            - iconicf: Shifter
-            - occult: d8
-            - power: summon ally
     -
         name: Elementalist
         book_reference: TLFM 11
-        description: May use the Elemental ally chart when casting summon ally.
-        type: Power
+        description:   
+        type: 
         pre-reqs: 
-            - rank: Veteran
-            - occult: d10
-            - power: summon ally
-    -
-        name: Elementalist (Elemental Fusionist)
-        book_reference: TLFM 11
-        description: May use the Elemental ally chart when casting summon ally. 
-        type: Power
-        pre-reqs: 
-            - rank: Novice
-            - iconicf: Elemental Fusionist
-            - occult: d10
-            - power: summon ally
     -
         name: Born to Ride
         book_reference: TLFM 12
-        description: Gain Nimble, or Uncanny Reflexes if you already have Nimble, when controlling a Size (Normal) vehicle with exposed crew. Free reroll to avoid out of control.
-        type: Professional
+        description:   
+        type: 
         pre-reqs: 
-            - rank: Novice
-            - agility: d10
     -
         name: Live to Ride
         book_reference: TLFM 12
-        description: When controlling a vehicle per Born to Ride, you are only hit on Called Shots and are +4 damage to fighting attacks if you moved at least 12 yards.
-        type: Professional
+        description:   
+        type: 
         pre-reqs: 
-            - rank: Seasoned
-            - edge: Born to Ride
     -
         name: Supernatural Strength
         book_reference: TLFM 12
-        description: Str die type +1 up to race or framework max. Stacks with advancement attribute increases. May be taken more than once.
-        type: Weird
+        description:   
+        type: 
         pre-reqs: 
-            - strength: d10 OR race or framework that provides at least +2 strength die type OR have no strength maximum
     -
         name: Familiar Link
         book_reference: TLFM 12
@@ -1703,708 +1614,493 @@ swrifts:
             - skill: Occult d10+, Spellcasting d10+
     -
         name: Flame Blast
-        description: Flame Bolts now affect a 6/8/10 yard area for 1/2/3 extra ISP.
+        description: 
         book_reference: TLPG 72
-        type: Iconic
-        pre-reqs:  
-            - rank: Seasoned
-            - iconicf: Burster
+        type: 
+        pre-reqs:
     -
         name: Improved Fiery Aura
-        description: Fiery Aura does 3d8 damage and may choose to affect a 6 yard circle centered on the Burster.
+        description: 
         book_reference: TLPG 72
-        type: Iconic
+        type: 
         pre-reqs:
-            - rank: Seasoned
-            - iconicf: Burster
-    -
-        name: Improved Fire Mastery
-        description: Fire Mastery range is Smarts x2, strength of fire effects is d12.
-        book_reference: TLPG 72
-        type: Iconic
-        pre-reqs:
-            - rank: Seasoned
-            - iconicf: Burster
     -
         name: Improved Flame Bolt
-        description: 2 ISP flame bolt does 5d6 MD, 6d6 with raise. Range is Smarts x3.
+        description: 
         book_reference: TLPG 72
-        type: Iconic
+        type: 
         pre-reqs:
-            - rank: Novice
-            - iconicf: Burster
-            - spirit: d10
     -
         name: Rapid Flame Bolt
-        description: Spend 1 ISP to make Flame Bolt ROF 2.
+        description: 
         book_reference: TLPG 72
-        type: Iconic
+        type: 
         pre-reqs:
-            - rank: Veteran
-            - iconicf: Burster
     -
-        name: Read the Flame
-        description: Roll notice to read a fire. Success tells how it started and how long it has burned. Raise reveals what kind of being started it.
+        name: Rad the Flame
+        description: 
         book_reference: TLPG 72
-        type: Iconic
+        type: 
         pre-reqs:
-            - rank: Novice
-            - iconicf: Burster
-            - notice: d6
     -
         name: Beyond the Limit
-        description: +6 maximum strain but take one of the Unstable Psyche hindrances.
+        description: 
         book_reference: TLPG 72
-        type: Iconic
+        type: 
         pre-reqs:
-            - rank: Veteran
-            - iconicf: Combat Cyborg OR iconicf MARS
     -
         name: Upgrade
-        description: Install one piece of new cyberware or upgrade an existing piece. Once per rank.
+        description: 
         book_reference: TLPG 72
-        type: Iconic
+        type: 
         pre-reqs:
-            - rank: Seasoned
-            - iconicf: Combat Cyborg OR iconicf MARS
     -
         name: Gun Nut
-        description: While Loosing It, +2 to Shooting and damage with pistols against adjacent melee opponents.
+        description: 
         book_reference: TLPG 72
-        type: Iconic
+        type: 
         pre-reqs:
-            - rank: Novice
-            - iconicf: Crazy
-            - shooting: d8
     -
         name: Gymnastic Mastery
-        description: +2 Athletics for Jumping, +2 Parry when Defending, Ascend at athletics die per round, check Agility to reduce falling distances.
+        description: 
         book_reference: TLPG 73
-        type: Iconic
+        type: 
         pre-reqs:
-            - rank: Veteran
-            - edge: Acrobat
-            - edge: Free Runner
-            - iconicf: Crazy OR iconicf Juicer
-            - strength: d10
     -
         name: Off the Handle
-        description: Ignore -2 Smarts penalty when recovering from Losing It, half all Getting It Together penalties with a raise.
+        description: 
         book_reference: TLPG 73
-        type: Iconic
+        type: 
         pre-reqs:
-            - rank: Seasoned
-            - iconicf: Crazy
     -
         name: Split the Seconds
-        description: Ignore 2 points of Multi-Action penalty.
+        description: 
         book_reference: TLPG 73
-        type: Iconic
+        type: 
         pre-reqs:
-            - rank: seasoned
-            - iconicf: Crazy OR iconicf Juicer
-            - agility: d10
     -
         name: Sublime Chaos
-        description: Does not take Fatigue when Berserk, is able to perform actions normally, half time spent Getting It Together.
+        description: 
         book_reference: TLPG 73
-        type: Iconic
+        type: 
         pre-reqs:
-            - rank: Veteran
-            - iconicf: Crazy
-            - spirit: d8
     -
         name: Cyberkinetic Awareness
-        description: As an action, make enemies within Smarts x2 yards -2 on all trait rolls involving technology rolls against you. Lasts until end of encounter.
+        description: 
         book_reference: TLPG 73
-        type: Iconic
+        type: 
         pre-reqs:
-            - rank: Seasoned
-            - iconicf: Cyber-Knight
-            - notice: d6
     -
         name: Improved Cyberkinetic Awareness
-        description: As an action, make enemies within Smarts x2 yards -4 on all trait rolls involving technology rolls against you. Lasts until end of encounter. 
+        description: 
         book_reference: TLPG 73
-        type: Iconic
+        type: 
         pre-reqs:
-            - rank: Veteran
-            - edge: Cyberkinetic Awareness
-            - notice: d8
     -
         name: Cyberkinetic Denial
-        description: Once Cyberkinetic Awareness is activated, gain a free reroll on all associated opposed rolls. 
+        description: 
         book_reference: TLPG 74
-        type: Iconic
+        type: 
         pre-reqs:
-            - rank: Heroic
-            - edge: Improved Cyberkinetic Awarenss
     -
         name: Improved Cyber-Armor
-        description: Cyber-Armor grants +4 total toughness. 
+        description: 
         book_reference: TLPG 74
-        type: Iconic
+        type: 
         pre-reqs:
-            - rank: Seasoned
-            - iconicf: Cyber-Knight
     -
         name: Master Cyber-Armor
-        description: Cyber-Armor grants +6 total toughness. If wearing Cyber-Knight medium or heavy EBA, the suit is MDC. 
+        description: 
         book_reference: TLPG 74
-        type: Iconic
+        type: 
         pre-reqs:
-            - rank: Heroic
-            - edge: Improved Cyber-Armor
     -
         name: Improved Psi-Sword
-        description: Psi-Sword does Str x2 + Spr x2 damage with AP of Psionics x2. If split, each blade's AP is equal to Psionics.
+        description: 
         book_reference: TLPG 74
-        type: Iconic
+        type: 
         pre-reqs:
-            - rank: Seasoned
-            - iconicf: Cyber-Knight
-            - spirit: d8
-            - psionics: d8
-            - Not CGen
     -
         name: Master Psi-Sword
-        description: Spend 1-6 ISP before rolling an attack. Each ISP adds +2 to the damage total. If split, each blade gains +1 damage per ISP.
+        description: 
         book_reference: TLPG 74
-        type: Iconic
+        type: 
         pre-reqs:
-            - rank: Veteran
-            - edge: Improved Psi-Sword
-            - psionics: d10
     -
         name: Psi-Shield
-        description: Free action to summon a Psi-Shield granting +3 Parry and -4 Cover penalty to hostile ranged strikes. Costs no ISP, MDC armor equal to Spirit against penetrations.
+        description: 
         book_reference: TLPG 74
-        type: Iconic
+        type: 
         pre-reqs:
-            - rank: Seasoned
-            - iconicf: Cyber-Knight
     -
         name: Dragon Fast Regeneration
-        description: Check for Natural Healing every round, +2 to recover from Shaken or Stunned. 
+        description: 
         book_reference: TLPG 74
-        type: Iconic
+        type: 
         pre-reqs:
-            - rank: Veteran
-            - iconicf: Dragon Hatchling
-            - vigor: d10
     -
         name: Dragon Flaming Scales
-        description: As an action, activate a flaming Damage Field per power. Deals 3d6 damage for Spirit rounds. Effected targets may ignite, must wait 10 min between uses. 
+        description: 
         book_reference: TLPG 74
-        type: Iconic
+        type: 
         pre-reqs:
-            - rank: Seasoned
-            - iconicf: Dragon Hatchling
-            - race: Flame Wind Dragon
     -
         name: Dragon Low Light Vision
-        description: Ignore Dim and Dark Illumination penalties. 
+        description: 
         book_reference: TLPG 74
-        type: Iconic
+        type: 
         pre-reqs:
-            - rank: Novice
-            - iconcif: Dragon Hatchling
     -
         name: Dragon Metamorphosis
-        description: May shapeshift into any living creature between house cat size and natural size and maintain even while sleeping. Gains no special abilities from this. 
+        description: 
         book_reference: TLPG 74
-        type: Iconic
+        type: 
         pre-reqs:
-            - rank: Veteran
-            - iconicf: Dragon Hatchling
     -
         name: Dragon Grows Larger
-        description: +1 str die type, Size 7 in natural form, +1 toughness and +4 armor for size increase.
+        description: 
         book_reference: TLPG 74
-        type: Iconic
+        type: 
         pre-reqs:
-            - rank: Veteran
-            - iconicf: Dragon Hatchling
     -
         name: Dragon Grows Huge
-        description: +1 str die type, Size 8 in natural form, +3 toughness and +4 MDC armor. Claw/Bite does Str +3d4 AP size x2. +1 breath weapon die type, -2 to opposing Fear checks. 
+        description: 
         book_reference: TLPG 74
-        type: Iconic
+        type: 
         pre-reqs:
-            - rank: Heroic
-            - edge: Dragon Grows Larger
-            - iconicf: Dragon Hatchling
     -
         name: Dragon Teleportation
-        description: Teleport as an action by checking Spirit and spending PPE. Double effect for Range modifier, but cannot use others. At Veteran may teleport to previously visisted dimensions on a nexus point. 
+        description: 
         book_reference: TLPG 75
-        type: Iconic
+        type: 
         pre-reqs:
-            - rank: Seasoned
-            - iconicf: Dragon Hatchling
     -
         name: Burn Brighter
-        description: Any time the burn die rolls 1, add 6 to the Trait roll. 
+        description: 
         book_reference: TLPG 75
-        type: Iconic
+        type: 
         pre-reqs:
-            - rank: Novice
-            - iconicf: Juicer
-            - spirit: d6
     -
         name: Burn for Glory
-        description: Spend a point of Burn with no roll to double the result of any Trait or damage roll. 
+        description: 
         book_reference: TLPG 75
-        type: Iconic
+        type: 
         pre-reqs:
-            - rank: Legendary
-            - edge: Burn Brighter
     -
         name: Burn Faster
-        description: Spend a point of Burn to ignore 4 points of Multi-Action penalty each turn when Action Card is a face card. Lasts 5 rounds. 
+        description: 
         book_reference: TLPG 75
-        type: Iconic
+        type: 
         pre-reqs:
-            - rank: Heroic
-            - iconicf: Juicer
-            - edge: Split the Seconds
     -
         name: Burn Past the Pain
-        description: Spend a point of Burn to ignore all Wound penalties for the remainder of combat, including to Vigor rolls for Incapacitation. 
+        description: 
         book_reference: TLPG 75
-        type: Iconic
+        type: 
         pre-reqs:
-            - rank: Seasoned
-            - iconicf: Juicer
-            - vigor: d10
     -
         name: Burn for Tomorrow
-        description: When rolling the Death and Defeat table, may add your Burn Die to the D20 roll. 
+        description: 
         book_reference: TLPG 75
-        type: Iconic
+        type: 
         pre-reqs:
-            - rank: Veteran
-            - edge: Burn Past the Pain
     -
         name: Freshly Juiced
-        description: +2 to burn rating. -1 Hero's Journey rolls. 
+        description: 
         book_reference: TLPG 75
-        type: Iconic
+        type: 
         pre-reqs:
-            - rank: Novice
-            - iconicf: Juicer
-            - CGen
+    -
+        name: Gymnastic Mastery
+        description: 
+        book_reference: TLPG 75
+        type: 
+        pre-reqs:
+    -
+        name: Split the Seconds
+        description: 
+        book_reference: TLPG 76
+        type: 
+        pre-reqs:
     -
         name: Ley Line Observation Sphere
-        description: Conjure a moveable sphere of energy to act as a channel for your senses.
+        description: 
         book_reference: TLPG 76
-        type: Iconic
+        type: 
         pre-reqs:
-            - rank: Seasoned
-            - iconicf: Ley Line Walker
     -
         name: Ley Line Phasing
-        description: Teleport along ley lines as an action, can cause Fatigue. 
+        description: 
         book_reference: TLPG 76
-        type: Iconic
+        type: 
         pre-reqs:
-            - rank: Veteran
-            - iconicf: Ley Line Walker
     -
         name: Ley Line Gate
-        description: Ley Line Phase will carrying up to Smarts passengers. Can cause Fatigue. 
+        description: 
         book_reference: TLPG 76
-        type: Iconic
+        type: 
         pre-reqs:
-            - rank: Heroic
-            - edge: Ley Line Phasing
+    -
+        name: Beyond the Limit
+        description: 
+        book_reference: TLPG 76
+        type: 
+        pre-reqs:
+    -
+        name: Upgrade
+        description: 
+        book_reference: TLPG 76
+        type: 
+        pre-reqs:
     -
         name: Upgradeable
-        description: +6 max strain. Already included in some Iconic Frameworks.
+        description: 
         book_reference: TLPG 76
-        type: Background
+        type: 
         pre-reqs:
-            rank: Novice
     -
         name: Charge
-        description: Move at running pace and make a fight attack at the end of the move with no penalty. 
+        description: 
         book_reference: TLPG 76
-        type: Combat
+        type: 
         pre-reqs:
-            - rank: Seasoned
-            - fighting: d10
     -
         name: Overrun
-        description: +2 damage if charging further than normal pace. Any target Shaken is knocked prone.
+        description: 
         book_reference: TLPG 76
-        type: Combat
+        type: 
         pre-reqs:
-            - rank: Veteran
-            - edge: Charge
     -
         name: Dirty Fighter
-        description: +2 when Testing against an enemy if next action is Fighting attack against same enemy. 
+        description: 
         book_reference: TLPG 76
-        type: Combat
+        type: 
         pre-reqs:
-            - rank: Seasoned
     -
         name: Tricky Fighter
-        description: Ignore multi action penalty when testing against an enemy if next action is a fighting attack against same enemy.
+        description: 
         book_reference: TLPG 76
-        type: Combat
+        type: 
         pre-reqs:
-            - rank: Veteran
-            - edge: Dirty Fighter
-            - fighting: d8
     -
         name: Blaster
-        description: Allows access to the Blaster Power Modifier. (TLPG 77) 
+        description: 
         book_reference: TLPG 77
-        type: Power
+        type: 
         pre-reqs:
-            - rank: Veteran
-            - edge: AB Any
-            - smarts: d6
-            - spirit: d6
-            - arcane skill: d8
     -
         name: Expert Blaster
-        description: Allows access to the Expert Blaster Power Modifier. (TLPG 77) 
+        description: 
         book_reference: TLPG 77
-        type: Power
+        type: 
         pre-reqs:
-            - rank: Heroic
-            - edge: AB Any
-            - edge: Blaster
-            - smarts: d8
-            - spirit: d8
-            - arcane skill: d10
     -
         name: Master Blaster
-        description: Allows access to the Master Blaster Power Modifier. (TLPG 77) 
+        description: 
         book_reference: TLPG 77
-        type: Power
+        type: 
         pre-reqs:
-            - rank: Legendary
-            - edge: Expert Blaster
-            - arcane skill: d12
     -
         name: Cyber-Psychic Alignment
-        description: Ignore 1 level of strain penalty when using powers.
+        description: 
         book_reference: TLPG 77
-        type: Power
+        type: 
         pre-reqs:
-            - rank: Seasoned
-            - edge: AB Any
-            - spirit: d10
-            - vigor: d6
     -
         name: Improved Cyber-Psychic Alignment
-        description: Ignore 2 levels of strain penalty when using powers.
+        description: 
         book_reference: TLPG 77
-        type: Power
+        type: 
         pre-reqs:
-            - rank: Veteran
-            - edge: Cyber-Psychic Alignment
-            - vigor: d10
     -
         name: Major Psionic
-        description: Double ISP from AB and Power Points edges. May spend ISP for bonuses on Psionics rolls.
+        description: 
         book_reference: TLPG 77
-        type: Power
+        type: 
         pre-reqs:
-            - rank: Seasoned
-            - edge: AB Psionics
-            - smarts: d6
-            - spirit: d8
-            - Psionics: d8
     -
         name: Master Psionic
-        description: Gain access to all Mega Power modifiers for known powers. Add powers options per TLPG 78. 
+        description: 
         book_reference: TLPG 78
-        type: Power
+        type: 
         pre-reqs:
-            - rank: Veteran
-            - edge: Major Psionic
-            - smarts: d8
-            - Psionics: d10
     -
         name: Master of Magic
-        description: Gain access to all Mega Power modifiers for known powers. 
+        description: 
         book_reference: TLPG 78
-        type: Power
+        type: 
         pre-reqs:
-            - rank: seasoned
-            - edge: AB Magic OR AB Miracles OR AB Techno-Wizardry
-            - smarts: d8
-            - arcane skill: d8
-            - occult: d8
     -
         name: Possession
-        description: Allows use of the Puppet power to inhabit and control the target body. 
+        description: 
         book_reference: TLPG 78
-        type: Power
+        type: 
         pre-reqs:
-            - rank: Seasoned
-            - edge: Master Psionic
-            - power: Puppet
     -
         name: Psi-Blade
-        description: Can manifest smite as a Psi-Blade with Str+Smarts+smite bonus damage, AP Psionics x2. 
+        description: 
         book_reference: TLPG 79
-        type: Power
+        type: 
         pre-reqs:
-            - rank: Seasoned
-            - edge: Master Psionic
-            - power: Smite
     -
         name: Exceptional Rapid Recharge
-        description: Power points recover at 30/hr.
+        description: 
         book_reference: TLPG 79
-        type: Power
+        type: 
         pre-reqs:
-            - rank: Veteran
-            - edge: AB Any
-            - edge: Improved Rapid Recharge
-            - spirit: d8
     -
         name: Sixth Sense
-        description: Enhances Danger Sense mechanics. 
+        description: 
         book_reference: TLPG 79
-        type: Power
+        type: 
         pre-reqs:
-            - rank: Veteran
-            - edge: Danger Sense
-            - edge: Major Psionic
     -
         name: Telemechanics
-        description: Use mind link on machines for understanding of the machine and bonuses on certain skill rolls related to it.
+        description: 
         book_reference: TLPG 79
-        type: Power
+        type: 
         pre-reqs:
-            - rank: Seasoned
-            - edge: Master Psionic
-            - power: Mind Link
     -
         name: Combat Ace
-        description: Ignore multi action penalty for making Boating, Driving or Piloting check and taking another action.
+        description: 
         book_reference: TLPG 79
-        type: Profesisonal
+        type: 
         pre-reqs:
-            - rank: Seasoned
-            - edge: Ace
     -
         name: Power Armor Jock
-        description: Ignore -2 agility and skill roll penalty while wearing power armor.
+        description: 
         book_reference: TLPG 79
-        type: Professional
+        type: 
         pre-reqs:
-            - rank: Novice
-            - agility: d6
-            - smarts: d6
-            - electronics: d6
-            - piloting: d6
     -
         name: Robot Vehicle Jock
-        description: Ignore -2 skill roll penalty while piloting a robot vehicle.
+        description: 
         book_reference: TLPG 80
-        type: Professional
+        type: 
         pre-reqs:
-            - rank: Novice
-            - agility: d6
-            - smarts: d6
-            - electronics: d6
-            - piloting: d6
     -
         name: I Know a Guy
-        description: Once per session use to effectively have a relevant Connections edge.  
+        description: 
         book_reference: TLPG 80
-        type: Social
+        type: 
         pre-reqs:
-            - rank: Novice
-            - persuasion: d6
-            - edge: Charismatic
     -
         name: Scrounger
-        description: Once per session in an appropriate environment, scrounge per the rules on pg 80. 
+        description: 
         book_reference: TLPG 80
-        type: Social
+        type: 
         pre-reqs:
-            - rank: Novice
-            - edge: Streetwise
     -
         name: Delphi Juicer Treatment
-        description: Becomes a minor psychic, gains powers.
+        description: 
         book_reference: EohH 30
-        type: Iconic
+        type: 
         pre-reqs:
-            - rank: Novice
-            - iconicf: Juicer
     -
         name: Genius
-        description: Unskilled checks are now d6. 
+        description: 
         book_reference: EohH 30
-        type: Iconic
+        type: 
         pre-reqs:
-            - rank: Veteran
-            - iconicf: Vagabond
-            - smarts: d10
     -
         name: Hyperion Treatment
-        description: Gains speed, jumping and initiative related enhancements. Requires double the food.
+        description: 
         book_reference: EohH 30
-        type: Iconic
+        type: 
         pre-reqs:
-            - rank: Novice
-            - iconicif: Juicer
     -
         name: Mega-Juicer Treatment
-        description: Gain Unstoppable per TLPG 68. Explode on death. 
+        description: 
         book_reference: EohH 30
-        type: Iconic
+        type: 
         pre-reqs:
-            - rank: Novice
-            - iconicf: Juicer
     -
         name: Phaeton Treatment
-        description: Enhanced unskilled agility checks, attacker penalties to vehicles under your control, bonuses to evade for said vehicles. 
+        description: 
         book_reference: EohH 30
-        type: Iconic
+        type: 
         pre-reqs:
-            - rank: Novice
-            - iconicf: Juicer
     -
         name: Synthetic Immortality
-        description: 'Dead' constructs can be repaired wit the consciousness intact. 
+        description: 
         book_reference: EohH 31
-        type: Iconic
+        type: 
         pre-reqs:
-            - rank: Novice
-            - spirit: d6
-            - iconicf: Intelligent Construct
     -
         name: Titan Treatment
-        description: Increased size, strength, toughness and vigor, reduced pace, running, burn and the Big negative racial trait.
+        description: 
         book_reference: EohH 31
-        type: Iconic
+        type: 
         pre-reqs:
-            - rank: Novice
-            - iconicf: Juicer
     -
         name: Sharpshooting
-        description: +1 to hit or ignore 4 points of penalties when attacking with ROF 1 weapons. 
+        description: 
         book_reference: EohH 31
-        type: Combat
+        type: 
         pre-reqs:
-            - rank: Seasoned
-            - edge: Marksman
-            - agility: d8
     -
         name: Trick Shooting
-        description: Enhanced shooting skill options, stacks with effects of Sharpshooting. See EohH 31. 
-        book_reference: EohH 32
-        type: Combat
+        description: 
+        book_reference: EohH 31
+        type: 
         pre-reqs:
-            - rank: Veteran
-            - edge: Sharpshooting
-            - edge: Steady Hands
-            - agility: d10
     -
         name: Take 'em Down
-        description: +4 AP when attacking MDC targets with MD attacks.
+        description: 
         book_reference: EohH 33
-        type: Combat
+        type: 
         pre-reqs:
-            - rank: Seasoned
     -
         name: Improved Take 'em Down
-        description: When attacking MDC targets with MD attacks, you can reroll damage once w/o spending a Benny. 
+        description: 
         book_reference: EohH 33
-        type: Combat
+        type: 
         pre-reqs:
-            - rank: Veteran
-            - edge: Take 'em Down
     -
         name: Combat Lifesaver
-        description: Ignore 1 point of wound penalties to heal or stabilize, Support roll to assist Smarts in extras for recovery per Aftermath and Extras rules.
+        description: 
         book_reference: EohH 33
-        type: Professional
+        type: 
         pre-reqs:
-            - rank: Seasoned
-            - healing: d4
-            - smarts: d6
-    -
-        name: Improved Combat Lifesaver
-        description: Ignore 2 points of wound penalties to heal or stabilize, may make support roll to aid an ally making a Death and Defeat roll.
-        book_reference: EohH 33
-        type: Professional
-        pre-reqs:
-            - rank: Veteran
-            - edge: Combat Lifesaver
-            - healing: d6
     -
         name: Conditioned
-        description: +2 to rolls to resist interrogation in any form, ignore 1 point of fatigue penalties.
+        description: 
         book_reference: EohH 33
-        type: Professional
+        type: 
         pre-reqs:
-            - rank: Veteran
-            - edge: Soldier
-            - spirit: d6
-            - survival: d6
     -
         name: Demolitionist
-        description: Capable of setting, defusing and trapping explosives. Ignore up to 2 points of penalties when doing so. Only sets bombs off on a critical failure.
+        description: 
         book_reference: EohH 33
-        type: Professional
+        type: 
         pre-reqs:
-            - rank: Novice
-            - agility: d6
-            - smarts: d6
-            - repair: d6
     -
         name: Expert Demolitionist
-        description: Ignore up to 4 points of penalty when handling explosives, may spend Benny to reroll crit failures.
+        description: 
         book_reference: EohH 33
-        type: Professional
+        type: 
         pre-reqs:
-            - rank: Seasoned
-            - edge: Demolitionist
-            - science: d6
     -
         name: Field Intel
-        description: Expert in detecting and setting up unit ambushes, bonuses to detect and gain intel on enemy forces, or to gain information from information, transmission or enemy corpses.
+        description: 
         book_reference: EohH 34
-        type: Professional
+        type: 
         pre-reqs:
-            - rank: Seasoned
-            - smarts: d8
     -
         name: Legacy Scout
-        description: +2 to rolls related to Relic Salvage Operations, and complete them in half normal time.
+        description: 
         book_reference: EohH 34
-        type: Professional
+        type: 
         pre-reqs:
-            - rank: Novice
-            - academics: d6
-            - survival: d6
     -
         name: Justice Ranger
-        description: Bonuses and benefits to social rolls due to reputation, and to hunt down criminals. Able to organize a posse. Basic equipment on call. Takes Major Vow - Code of the New West
+        description: 
         book_reference: EohH 34
-        type: Professional
+        type: 
         pre-reqs:
-            - rank: Novice
-            - spirit: d6
-            - survival: d6
     -
         name: Monster Slayer
-        description: Occult rolls to identify supernatural opponents, grant allies bonuses to trait rolls against known creatures.
+        description: 
         book_reference: EohH 34
-        type: Professional
+        type: 
         pre-reqs:
-            - rank: Seasoned
-            - smarts: d6
-            - occult: d8
-            - notice: d6
