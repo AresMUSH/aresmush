@@ -1204,3 +1204,463 @@ swrifts:
         pre-reqs: 
             - rank: Legendary
             - one attribute at max
+    -
+        name: Expert
+        description: The character's Trait and its limit increases one step.
+        book_reference: SWADE 53
+        pre-reqs: 
+            - rank: Legendary
+            - edge: Professional
+    -
+        name: Master
+        description: The character's Wild Die is a d10 with a chosen Trait.
+        book_reference: SWADE 53
+        pre-reqs: 
+            - rank: Legendary
+            - edge: Expert
+    -
+        name: Sidekick
+        description: The character gains a Wild Card sidekick.
+        book_reference: SWADE 53
+        type: Legendary
+        pre-reqs: 
+            - rank: Legendary
+            - wildcard: 1
+    -
+        name: Tough as Nails
+        description: The hero can take four Wounds before being Incapacitated.
+        book_reference: SWADE 53
+        type: Legendary
+        pre-reqs: 
+            - rank: Legendary
+            - vigor: d8
+    -
+        name: Tougher than Nails
+        description: The hero can take five Wounds before being Incapacitated.
+        book_reference: SWADE 53
+        type: Legendary
+        pre-reqs: 
+            - rank: Legendary
+            - edge: Tough as Nails
+            - vigor: d12
+    -
+        name: Weapon Master
+        description: Parry increases by +1 and Fighting bonus damage die is d8.
+        book_reference: SWADE 53
+        type: Legendary
+        pre-reqs: 
+            - rank: Legendary
+            - fighting: d12
+    -
+        name: Master of Arms
+        description: Parry increases another +1 and Fighting bonus damage die is d10.
+        book_reference: SWADE 53
+        type: Legendary
+        pre-reqs: 
+            - rank: Legendary
+            - edge: Weapon Master
+    -
+        name: Dimensional Portal
+        book_reference: B&B 29
+        description: Open a portal to a previously visited dimension, or a previously visited region of the current dimension. 
+        type: Iconic
+        pre-reqs: 
+            - rank: Veteran
+            - edge: Master of Magic
+            - skill: Arcane d8+
+    -
+        name: Gardener of the White Rose
+        book_reference: B&B 29
+        description: Gain the healing miracle power and access to its Mega Power modifiers. 
+        type: Iconic
+        pre-reqs: 
+            - rank: Novice
+            - iconicf: Knight of the White Rose
+            - skill: Healing d6+
+        miracle_powers:
+            - healing
+    -
+        name: Gateway Knight
+        book_reference: B&B 29
+        description: Knights of the White Rose that shuttle people in and out of the hidden refuge.  
+        type: Iconic
+        pre-reqs: 
+            - rank: Novice
+            - iconicf: Knight of the White Rose
+            - skill: Psionics d8+
+        psionic_powers: 
+            - teleport
+    -
+        name: Master Necromancer
+        book_reference: B&B 30
+        description: Necromancer raises especially strong Undead.  
+        type: Iconic
+        pre-reqs: 
+            - rank: Veteran
+            - iconicf: Necromancer
+    -
+        name: Pounce
+        book_reference: B&B 30
+        description: Doubles jumping distance and adds +4 damage when making a Wild Attack when coupled with a leap.  
+        type: Iconic
+        pre-reqs: 
+            - rank: Veteran
+            - iconicf: Heroic Vampire OR iconicf Werecat
+    -
+        name: Shift the Arcane
+        book_reference: B&B 30
+        description: Alter the course of certain arcane abilities. 
+        type: Iconic
+        pre-reqs: 
+            - rank: Seasoned
+            - iconicf: Shifter
+    -
+        name: Teleportational Hitchhiker
+        book_reference: B&B 30
+        description: Follow someone teleporting. 
+        type: Iconic
+        pre-reqs: 
+            - rank: Novice
+            - iconicf: Ley Line Walker OR iconicf Shifter
+            - powers: teleport
+    -
+        name: Beast Rider
+        book_reference: B&B 31
+        description: Increases the animal companions offered by the Beast Master edge. 
+        type: Professional
+        pre-reqs: 
+            - edge: Beast Master
+            - skill: Riding d10+
+    -
+        name: Frontiersman
+        book_reference: B&B 31
+        description: +2 to identify flora/fauna/monstes/weather conditions in the wild. May substitute survival for stealth in some conditions in the wild.
+        type: Professional
+        pre-reqs: 
+            - rank: Seasoned
+            - edge: Woodsman
+    -
+        name: Pathfinder
+        book_reference: B&B 31
+        description: Ignore difficult terrain penalties on foot or on bike, may redraw one action card for encounters.
+        type: Professional
+        pre-reqs: 
+            - rank: Seasoned
+            - edge: Woodsman
+            - notice: d6
+    -
+        name: Squire of the White Rose
+        book_reference: B&B 31
+        description: Vow Major - Code of the White Rose, +1 social checks with friends of the order, mind link between squire and pledged Knight.
+        type: Professional
+        pre-reqs: 
+            - rank: Novice
+            - spirit: d8
+    -
+        name: Reid's Ranger
+        book_reference: B&B 31
+        description: Membership in Reid's Rangers faction, +1 social checks on friends of the Rangers, Beast Master Edge and dog/wolf companion.
+        type: Professional
+        pre-reqs: 
+            - rank: Novice
+            - edge: Vampire Killer
+    -
+        name: Tundra Ranger
+        book_reference: B&B 32
+        description: Membership in the Tundra Rangers faction, +1 social checks with allies of the Tundra Rangers, Vow Major - Code of the Tundra Rangers, bonuses and gear per B&B 32.
+        type: Professional
+        pre-reqs: 
+            - rank: Novice
+            - riding: d6
+            - survival: d6
+    -
+        name: Vampire Killer
+        book_reference: B&B 32
+        description: +2 on Occult, Notice and Survival checks regarding vampires.
+        type: Professional
+        pre-reqs: 
+            - rank: Novice
+            - spirit: d6
+            - notice: d6
+            - occult: d6
+    -
+        name: Elite Vampire Killer
+        book_reference: B&B 32
+        description: +2 to resist vampire fear or mind control, +2 networking and research to investigate topics related to vampire activities and nests.
+        type: Professional
+        pre-reqs:
+            - rank: Veteran
+            - edge: Vampire Killer
+            - spirit: d8
+            - notice: d8
+            - research: d6
+    -
+        name: Magi of Dweomer
+        book_reference: A&M 28
+        description: Gains edge - Master of Magic, free reroll against banish or dispell, hindrance  Vow - Major (Serve Dweomer), always knows how to find Dweomer.  
+        type: Background
+        pre-reqs: 
+            - iconicf: Magus
+            - edge: AB Magic
+    -
+        name: Psychic of Psyscape
+        book_reference: A&M 28
+        description: Gains Empathy power, Detect Arcana as an innate ability with +2 to sense evil, hindrance Vow - Major (Serve Psyscape), may enter ley line stasis.
+        type: Background
+        pre-reqs: 
+            - edge: AB Psionics
+            - occult: d6
+    -
+        name: Arcane Marksman
+        book_reference: A&M 29
+        description: +1 to Bolt power attack roll or similar, or ignore up to 2 points of penalty. Does not stack with aim. Only if did not move and attack was first action.   
+        type: Combat
+        pre-reqs: 
+            - rank: Seasoned
+            - edge: AB Any
+    -
+        name: Elemental Attunement
+        book_reference: A&M 29
+        description: Attune new element, gain access to elements power list and learn one power from it. Once per rank.   
+        type: Iconic
+        pre-reqs: 
+            - rank: Seasoned
+            - iconicf: Elemental Fusionist
+            - spirit: d8
+            - focus: d8 
+    -
+        name: Life Sign Harmony
+        book_reference: A&M 29
+        description: Gain Elem. Manip. and Env. Prot. as innate abilities with bonuses for life sign element.   
+        type: Iconic
+        pre-reqs: 
+            - rank: Novice
+            - iconicf: Elemental Fusionist
+            - spirit: d10
+    -
+        name: Warlock
+        book_reference: A&M 29
+        description: Gain access to the Warlock power list and learn one immediately.   
+        type: Iconic
+        pre-reqs: 
+            - rank: Heroic
+            - iconicf: Elemental Fusionist
+            - focus: d10
+            - edge: Elemental Attunement (x3)
+    -
+        name: Dream Vision
+        book_reference: A&M 29
+        description: Once per session, while asleep or meditating use Diviniation with enhancements.
+        type: Power
+        pre-reqs: 
+            - rank: Veteran OR edge Grey Seer
+            - edge: Major Psionic
+            - power: Divination
+    -
+        name: Minor Item Creation
+        book_reference: A&M 30
+        description: Can create minor items per rules in A&M 30.  
+        type: Power
+        pre-reqs: 
+            - rank: Seasoned
+            - edge: Artificer, edge AB Magic OR edge AB Miracles
+            - repair: d8
+    -
+        name: Major Item Creation
+        book_reference: A&M 30
+        description: Can create major items per rules in A&M 30.  
+        type: Power
+        pre-reqs: 
+            - rank: Veteran
+            - edge: Minor Item Creation
+            - occult: d10
+    -
+        name: Psi-Weapon Manipulation
+        book_reference: A&M 31
+        description: Change the appearance of Psi-Blade to any medieval melee weapon, gaining relevant properties except the Claws property. Damage is unchanged.  
+        type: Power
+        pre-reqs: 
+            - rank: Seasoned
+            - edge: Psi-Blade OR iconicf Cyber-Knight
+    -
+        name: Adept
+        book_reference: A&M 31
+        description: Upgrade one power you know from the list per rank to be an innate ability with Range (self).  
+        type: Professional
+        pre-reqs: 
+            - rank: Novice
+            - edge: AB Magic OR edge AB Psionics OR edge AB Miracles
+            - arcane skill: d8 
+            - fighting: d8
+    -
+        name: Conjurer
+        book_reference: A&M 31
+        description: Conjure items and beasts out of thin air per restrictions in A&M 31.  
+        type: Professional
+        pre-reqs: 
+            - rank: Novice
+            - edge: AB Magic
+            - occult: d8 
+            - spellcasting: d8
+    -
+        name: Controller
+        book_reference: A&M 32
+        description: Able to operate Automatons.  
+        type: Professional
+        pre-reqs: 
+            - rank: Novice
+            - edge: AB Magic
+            - agility: d6, smarts d6, occult d6, piloting d6
+    -
+        name: Grey Seer
+        book_reference: A&M 32
+        description: Gains hindrance Pacifist - Minor, hindrance Vow (Poverty), enhanced Spiritual Channel per A&M 32.  
+        type: Professional
+        pre-reqs: 
+            - rank: Novice
+            - iconicf: Mystic
+    -
+        name: Totem Warrior
+        book_reference: A&M 33
+        description: Add the specified powers to your power list and learn one. May activiate powers in animal form.  
+        type: Professional
+        pre-reqs: 
+            - iconicf: Shaman OR iconicf Spirit Warrior
+    -
+        name: One with Magic Novice
+        book_reference: A&M 33
+        description: Gain detect/conceal arcana as innate ability. +2 to use if power already known.
+        type: Weird
+        pre-reqs: 
+            - edge: AB Magic 
+            - edge: Master of Magic
+            - occult: d8
+            - smarts: d8
+    -
+        name: One with Magic Seasoned
+        book_reference: A&M 33
+        description: Gain Ley Line Rejuvenation and Ley Line Sense from the Ley Line Walker Iconic Framework. +2 to use if already Ley Line Walker.
+        type: Weird
+        pre-reqs: 
+            - edge: One with Magic Novice
+    -
+        name: One with Magic Veteran
+        book_reference: A&M 33
+        description: Age at 1/5 the rate. May make natural healing rolls once per day, or once per hour on a ley line. May recover from permanent injuries.
+        type: Weird
+        pre-reqs: 
+            - edge: One with Magic Seasoned
+    -
+        name: One with Magic Heroic
+        book_reference: A&M 33
+        description: Chose one non-instant power to use as an innate ability at no PPE cost.
+        type: Weird
+        pre-reqs: 
+            - edge: One with Magic Veteran
+    -
+        name: One with Magic Legendary
+        book_reference: A&M 33
+        description: Become a creature of magic. Gain +4 MDC natural armor.
+        type: Weird
+        pre-reqs: 
+            - edge: One with Magic Heroic
+    -
+        name: Quick Draw
+        book_reference: TLFM 10
+        description: When on Hold, +2 agility to interrupt by drawing a weapon. May check Agility when rolling for Surprise.   
+        type: Combat
+        pre-reqs: 
+            - rank: Novice
+            - agility: d8
+    -
+        name: Fast Draw
+        book_reference: TLFM 10
+        description: When on Hold, +4 agility to interrupt by drawing a weapon. May check Agility when rolling for Surprise. May ready up to 4 items per turn as a free action.
+        type: Combat
+        pre-reqs: 
+            - rank: Seasoned
+            - agility: d10
+            - edge: Quick Draw
+    -
+        name: Bio-Manipulation
+        book_reference: TLFM 10
+        description: Inflict fatigue against single targets when using blind, confusion, lower Trait, silence, sloth, slumber or stun with a raise.
+        type: Iconic
+        pre-reqs: 
+            - rank: Novice
+            - iconicf: Mind Melter
+    -
+        name: Dragon Celerity
+        book_reference: TLFM 10
+        description: Increase pace to 12, d12 run die, counts as Nimble.   
+        type: Iconic
+        pre-reqs: 
+            - rank: Novice
+            - iconicf: Dragon Hatchling
+            - race: Dragon Forest Runner
+    -
+        name: Dragon Frost Scales
+        book_reference: TLFM 10
+        description: Emit a damaging cold per Damage Field power with 3d6 damage for Spirit rounds. 10 min recharge.
+        type: Iconic
+        pre-reqs: 
+            - rank: Seasoned
+            - iconicf: Dragon Hatchling
+            - race: Dragon Snow Lizard
+    -
+        name: Dragon Master Psychic
+        book_reference: TLFM 11
+        description: Gain Master Psionic and learn a power from the Mind Melter list. Further powers are learned per TLFM 11.   
+        type: Iconic
+        pre-reqs: 
+            - rank: Seasoned
+            - iconicf: Dragon Hatchling
+            - race: Dragon Royal Frilled
+    -
+        name: Dragon Sharp Horns
+        book_reference: TLFM 11
+        description: Gain +4 AP to claw, horn and tail lash attacks. Tail lash now deals damage as per claws.   
+        type: Iconic
+        pre-reqs: 
+            - rank: Seasoned
+            - iconicf: Dragon Hatchling
+            - race: Dragon Great Horned
+    -
+        name: Master Elementalist
+        book_reference: TLFM 11
+        description: Gain minor elemental ally per TLFM 11.   
+        type: Iconic
+        pre-reqs: 
+            - rank: Seasoned
+            - iconicf: Elemental Fusionist
+            - edge: Elementalist
+            - edge: Life Sign Harmony
+    -
+        name: Diabolist
+        book_reference: TLFM 11
+        description: May use the Diabolist ally chart when casting summon ally.
+        type: Power
+        pre-reqs: 
+            - rank: Veteran
+            - occult: d8
+            - power: summon ally
+-
+        name: Diabolist (Shifter))
+        book_reference: TLFM 11
+        description: May use the Diabolist ally chart when casting summon ally.
+        type: Power
+        pre-reqs: 
+            - rank: Novice
+            - iconicf: Shifter
+            - occult: d8
+            - power: summon ally
+    -
+        name: Elementalist
+        book_reference: TLFM 11
+        description: May use the Elemental ally chart when casting summon ally.
+        type: Power
+        pre-reqs: 
+            - rank: Veteran
+            - occult: d10
+            - power: summon ally
+ 
