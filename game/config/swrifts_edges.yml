@@ -1119,3 +1119,88 @@ swrifts:
         pre-reqs:
             - rank: Novice
             - spirit: d8
+    -
+        name: Work the Crowd
+        description: Replaces Work the Room. Twice per turn, roll an additional die when Supporting with Persuasion or Performance. The additional die Supports any other ally who can see or hear you.
+        book_reference: SWADE 51
+        type: Social
+        pre-reqs:
+            - rank: Seasoned
+            - edge: Work the Room
+    -
+        name: Beast Bond
+        description: May spend Bennies for any animals under your control including mounts, familiars and similar.
+        book_reference: SWADE 51
+        type: Weird
+        pre-reqs:
+            - rank: Novice
+    -
+        name: Beast Master
+        description: Animals will not attack you unless attacked first or otherwise enraged. You have an Extra in the form of loyal animal companion. May be taken more than once for more or more powerful companions.
+        book_reference: SWADE 51
+        type: Weird
+        pre-reqs:
+            - rank: Novice
+            - spirit: d8
+    -
+        name: Champion
+        description: +2 when attacking supernatural forces aligned against yours.
+        book_reference: SWADE 52
+        type: Weird
+        pre-reqs:
+            - rank: Novice
+            - spirit: d8, fighting d6
+    -
+        name: Chi
+        description: Gain a Chi point at the start of each encounter. Spend that point to reroll a failed attack, make an enemy reroll an attack, or add +d6 to a successful attack. Unspent Chi is lost at the end of the encounter.
+        book_reference: SWADE 52
+        type: Weird
+        pre-reqs:
+            - rank: Veteran
+            - edge: Martial Warrior
+    -
+        name: Danger Sense
+        description: +2 notice when rolling for Suprise. With a raise you start the encounter on hold. +2 to notice in other situations when a roll is allowed. Notice -2 to avoid danger that can't normally be noticed.
+        book_reference: SWADE 52
+        type: Weird
+        pre-reqs:
+            - rank: Novice
+    -
+        name: Healer
+        description: +2 to all healing rolls. 
+        book_reference: SWADE 52
+        type: Weird
+        pre-reqs:
+            - rank: Novice
+            - spirit: d8
+    -
+        name: Liquid Courage
+        description: The round after consuming a stiff drink, +1 vigor die type and ignore one level of wound penalties. -1 to smarts, agility and all linked skills. Lasts for 1 hour, at which point take 1 level of Fatigue for 4 hours. 
+        book_reference: SWADE 52
+        type: Weird
+        pre-reqs:
+            - rank: Novice
+            - vigor: d8
+    -
+        name: Scavenger
+        description: Once per encounter, you may find or suddenly remember something needed, a handful of ammo or something similarly useful. Work with scene runner.
+        book_reference: SWADE 52
+        type: Weird
+        pre-reqs:
+            - rank: Novice
+            - edge: Luck
+    -
+        name: Followers
+        description: The hero has five followers.
+        book_reference: SWADE 53
+        type: Legendary
+        pre-reqs: 
+            - rank: Legendary
+            - wildcard: 1
+    -
+        name: Professional
+        description: The character's Trait and its limit increases one step.
+        book_reference: SWADE 53
+        pre-reqs: 
+            - rank: Legendary
+            - one attribute at max
