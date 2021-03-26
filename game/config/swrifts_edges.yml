@@ -1393,7 +1393,7 @@ swrifts:
     -
         name: Magi of Dweomer
         book_reference: A&M 28
-        description: Gains edge: Master of Magic, free reroll against banish or dispell, hindrance: Vow - Major (Serve Dweomer), always knows how to find Dweomer.  
+        description: Gains edge - Master of Magic, free reroll against banish or dispell, hindrance  Vow - Major (Serve Dweomer), always knows how to find Dweomer.  
         type: Background
         pre-reqs: 
             - iconicf: Magus
@@ -1401,7 +1401,7 @@ swrifts:
     -
         name: Psychic of Psyscape
         book_reference: A&M 28
-        description: Gains Empathy power, Detect Arcana as an innate ability with +2 to sense evil, hindrance: Vow - Major (Serve Psyscape), may enter ley line stasis.
+        description: Gains Empathy power, Detect Arcana as an innate ability with +2 to sense evil, hindrance Vow - Major (Serve Psyscape), may enter ley line stasis.
         type: Background
         pre-reqs: 
             - edge: AB Psionics
