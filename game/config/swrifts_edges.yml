@@ -1511,3 +1511,81 @@ swrifts:
             - rank: Novice
             - edge: AB Magic
             - agility: d6, smarts d6, occult d6, piloting d6
+    -
+        name: Grey Seer
+        book_reference: A&M 32
+        description: Gains hindrance Pacifist - Minor, hindrance Vow (Poverty), enhanced Spiritual Channel per A&M 32.  
+        type: Professional
+        pre-reqs: 
+            - rank: Novice
+            - iconicf: Mystic
+    -
+        name: Totem Warrior
+        book_reference: A&M 33
+        description: Add the specified powers to your power list and learn one. May activiate powers in animal form.  
+        type: Professional
+        pre-reqs: 
+            - iconicf: Shaman OR iconicf Spirit Warrior
+    -
+        name: One with Magic Novice
+        book_reference: A&M 33
+        description: Gain detect/conceal arcana as innate ability. +2 to use if power already known.
+        type: Weird
+        pre-reqs: 
+            - edge: AB Magic 
+            - edge: Master of Magic
+            - occult: d8
+            - smarts: d8
+    -
+        name: One with Magic Seasoned
+        book_reference: A&M 33
+        description: Gain Ley Line Rejuvenation and Ley Line Sense from the Ley Line Walker Iconic Framework. +2 to use if already Ley Line Walker.
+        type: Weird
+        pre-reqs: 
+            - edge: One with Magic Novice
+    -
+        name: One with Magic Veteran
+        book_reference: A&M 33
+        description: Age at 1/5 the rate. May make natural healing rolls once per day, or once per hour on a ley line. May recover from permanent injuries.
+        type: Weird
+        pre-reqs: 
+            - edge: One with Magic Seasoned
+    -
+        name: One with Magic Heroic
+        book_reference: A&M 33
+        description: Chose one non-instant power to use as an innate ability at no PPE cost.
+        type: Weird
+        pre-reqs: 
+            - edge: One with Magic Veteran
+    -
+        name: One with Magic Legendary
+        book_reference: A&M 33
+        description: Become a creature of magic. Gain +4 MDC natural armor.
+        type: Weird
+        pre-reqs: 
+            - edge: One with Magic Heroic
+    -
+        name: Quick Draw
+        book_reference: TLFM 10
+        description: When on Hold, +2 agility to interrupt by drawing a weapon. May check Agility when rolling for Surprise.   
+        type: Combat
+        pre-reqs: 
+            - rank: Novice
+            - agility: d8
+    -
+        name: Fast Draw
+        book_reference: TLFM 10
+        description: When on Hold, +4 agility to interrupt by drawing a weapon. May check Agility when rolling for Surprise. May ready up to 4 items per turn as a free action.
+        type: Combat
+        pre-reqs: 
+            - rank: Seasoned
+            - agility: d10
+            - edge: Quick Draw
+    -
+        name: Bio-Manipulation
+        book_reference: TLFM 10
+        description: Inflict fatigue against single targets when using blind, confusion, lower Trait, silence, sloth, slumber or stun with a raise.
+        type: Iconic
+        pre-reqs: 
+            - rank: Novice
+            - iconicf: Mind Melter
