@@ -5,10 +5,13 @@ module AresMUSH
       def on_event(event)
         shield_cron = Global.read_config("magic", "shield_cron")
         if Cron.is_cron_match?(shield_cron, event.time)
-          Global.logger.debug "Non-combat magic shields expiring."
+          Global.logger.debug "Magic shields expiring."
 
           Character.all.each do |c|
-            Magic.shields_expire(c)
+            shields = c.magic_shields
+            shields.each do |shield|
+              shield.delete
+            end
           end
         end
 
