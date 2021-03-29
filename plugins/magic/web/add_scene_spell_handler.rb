@@ -34,11 +34,6 @@ module AresMUSH
           spell = spell_string.titlecase
         end
 
-        # target_optional = Global.read_config("spells", spell, "target_optional")
-        # if (!target_optional && !target_name_arg.blank?)
-        #   return { error: t('magic.doesnt_use_target') }
-        # end
-
         target_num = Global.read_config("spells", spell, "target_num")
         if !target_name_arg.blank?
           if !target_num
@@ -54,23 +49,18 @@ module AresMUSH
           return { error:  t('magic.dont_know_spell') }
         end
 
-        heal_points = Global.read_config("spells", spell, "heal_points")
-        success = Magic.roll_noncombat_spell_success(enactor.name, spell, mod, dice = nil)
         print_names = Magic.print_target_names(target_name_string)
+        targets = Magic.parse_spell_targets(target_name_string, spell)
+        error =  Magic.target_errors(enactor, targets, self.spell)
+        return error if error
+
+
+        success = Magic.roll_noncombat_spell_success(enactor.name, spell, mod, dice = nil)
+
 
         if success[:succeeds] == "%xgSUCCEEDS%xn"
-          if heal_points
-            message = Magic.cast_non_combat_heal(caster_name, target_name_string, spell, mod)
-          elsif Magic.spell_shields.include?(spell)
-            message = Magic.cast_noncombat_shield(caster, caster_name, target_name_string, spell, mod, success[:result])
-          else
-            if has_target
-              message = Magic.cast_noncombat_spell(caster_name, target_name_string, spell, mod, success[:result])
-            else
-              message = Magic.cast_noncombat_spell(caster_name, target_name_string=nil, spell, mod, success[:result])
-            end
-          end
-          Magic.handle_spell_cast_achievement(caster)
+          message = Magic.cast_noncombat_spell(enactor.name, targets, spell, mod, success[:result])
+          Magic.handle_spell_cast_achievement(enactor)
         else
           if target_name_arg.blank?
             message = [t('magic.casts_spell', :name => caster.name, :spell => spell, :mod => mod, :succeeds => success[:succeeds])]

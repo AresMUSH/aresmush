@@ -99,7 +99,7 @@ module AresMUSH
       FS3Combat.emit_to_combat combatant.combat, message, FS3Combat.npcmaster_text(combatant.name, enactor)
     end
 
-    def self.set_spell_armor(enactor, combatant, armor, specials = nil)
+    def self.set_magic_armor(enactor, combatant, armor, specials = nil)
 
       specials = Magic.set_magic_item_armor_specials(combatant, specials)
 

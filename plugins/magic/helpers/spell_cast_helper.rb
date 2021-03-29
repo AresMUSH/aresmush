@@ -20,7 +20,9 @@ module AresMUSH
           names.concat [target.name]
           if is_shield
             Magic.cast_shield(caster, target, spell, rounds, result)
-          elsif heal_points
+          end
+
+          if heal_points
             Magic.cast_heal(caster, target, spell, heal_points)
           end
         end
@@ -35,7 +37,8 @@ module AresMUSH
             type = Global.read_config("spells", spell, "shields_against")
             message = [t('magic.cast_shield_no_target', :name => caster.name, :spell => spell, :mod => "", :succeeds => success, :type => type)]
             messages.concat message
-          else
+          end
+          if !heal_points && !is_shield
             message = [t('magic.casts_spell', :name => caster_name, :spell => spell, :mod => mod, :succeeds => success)]
             messages.concat message
           end
@@ -45,10 +48,12 @@ module AresMUSH
             type = Global.read_config("spells", spell, "shields_against")
             message = [t('magic.cast_shield', :name => caster.name, :spell => spell, :mod => "", :succeeds => success, :target =>  print_names, :type => type)]
             messages.concat message
-          elsif heal_points
+          end
+          if heal_points
             message = [t('magic.cast_heal', :name => caster.name, :spell => spell, :mod => "", :succeeds => success, :target => print_names, :points => heal_points)]
             messages.concat message
-          else
+          end
+          if !heal_points && !is_shield
             message = [t('magic.casts_spell_on_target', :name => caster_name, :target => print_names, :spell => spell, :mod => mod, :succeeds => success)]
             messages.concat message
           end
@@ -154,7 +159,7 @@ module AresMUSH
     end
 
     def self.cast_armor(combatant, target, spell, armor)
-      Magic.set_spell_armor(combatant, target, armor)
+      Magic.set_magic_armor(combatant, target, armor)
       if combatant != target
         message = [t('magic.casts_spell_on_target', :name => combatant.name, :spell => spell, :mod => "", :target => target.name, :succeeds => "%xgSUCCEEDS%xn")]
       else
@@ -165,7 +170,7 @@ module AresMUSH
 
     def self.cast_armor_specials(combatant, target, spell, armor_specials_str)
       armor_specials = armor_specials_str ? armor_specials_str.split('+') : nil
-      Magic.set_spell_armor(combatant, target, target.armor, armor_specials)
+      Magic.set_magic_armor(combatant, target, target.armor, armor_specials)
       message = [t('magic.casts_spell', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn")]
       return message
     end
