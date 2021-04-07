@@ -49,7 +49,7 @@ module AresMUSH
 
     def self.determine_margin_with_shield(target, combatant, weapon_or_spell, attack_roll, defense_roll)
       attacker_net_successes = attack_roll - defense_roll
-      stopped_by_shield = Magic.stopped_by_shield?(target, combatant, combatant.weapon, attack_roll)
+      stopped_by_shield = Magic.stopped_by_shield?(target, combatant.name, combatant.weapon, attack_roll)
       if stopped_by_shield
         if stopped_by_shield[:hit]
           is_stun = Global.read_config("spells", weapon_or_spell, "is_stun") || FS3Combat.weapon_stat(weapon_or_spell, "is_stun") || false
@@ -71,7 +71,7 @@ module AresMUSH
       #There is no shield in effect
     end
 
-    def self.stopped_by_shield?(target_char_or_combatant, char_or_combatant, weapon_or_spell, result)
+    def self.stopped_by_shield?(target_char_or_combatant, caster_name, weapon_or_spell, result)
       if (target_char_or_combatant.class == Combatant)
         target = target_char_or_combatant.associated_model
       else
@@ -83,11 +83,9 @@ module AresMUSH
       puts "All shields: #{target.magic_shields.to_a}"
       if shield
         successes = result
-        if (char_or_combatant.class == Combatant)
-          caster_name = char_or_combatant.associated_model.name
-          char_or_combatant.log "#{shield.name.upcase}: #{caster_name}'s #{roll_name} (#{successes} successes) vs #{target.name}'s #{shield.name} (strength #{shield.strength})."
+        if (target_char_or_combatant.class == Combatant)
+          target_char_or_combatant.log "#{shield.name.upcase}: #{caster_name}'s #{roll_name} (#{successes} successes) vs #{target.name}'s #{shield.name} (strength #{shield.strength})."
         else
-          caster_name = char_or_combatant.name
           Global.logger.info "#{shield.name.upcase}: #{caster_name}'s #{roll_name} (#{successes} successes) vs #{target.name}'s #{shield.name} (strength #{shield.strength})."
         end
 

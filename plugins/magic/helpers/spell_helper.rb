@@ -71,14 +71,18 @@ module AresMUSH
       end
     end
 
-    def self.parse_spell_targets(name_string, spell)
+    def self.parse_spell_targets(name_string, spell, npc = nil)
       target_num = Global.read_config("spells", spell, "target_num") || 1
       return t('fs3combat.no_targets_specified') if (!name_string)
       target_names = name_string.split(" ").map { |n| InputFormatter.titlecase_arg(n) }
       targets = []
       target_names.each do |name|
         target = Character.named(name)
-        if !target then return "no_target" end
+        if (!target && !npc)
+          return "no_target"
+        elsif npc == name
+         return "npc_target"
+        end
         targets << target
       end
       targets = targets
@@ -99,6 +103,29 @@ module AresMUSH
       end
       print_names = print_names.join(", ")
       return print_names
+    end
+
+    def self.target_errors(caster, targets, spell)
+      target_num = Global.read_config("spells", spell, "target_num")
+      heal_points = Global.read_config("spells", spell, "heal_points")
+      if targets == "no_target"
+        return t('magic.invalid_name')
+      elsif targets == "too_many_targets"
+        return t('magic.too_many_targets', :spell => spell, :num => target_num )
+      elsif targets == "npc_target"
+        return false
+      else
+        targets.each do |target|
+          wound = FS3Combat.worst_treatable_wound(target)
+          # if (target == caster && Global.read_config("spells", spell, "fs3_attack"))
+          #   return  t('magic.dont_target_self')
+          if (heal_points && wound.blank?)
+            return t('magic.no_healable_wounds', :target => target.name)
+          else
+            return nil
+          end
+        end
+      end
     end
 
     def self.roll_noncombat_spell_success(caster_name, spell, mod = nil, dice = nil)
@@ -140,26 +167,7 @@ module AresMUSH
       return {:succeeds => succeeds, :result => die_result}
     end
 
-    def self.target_errors(caster, targets, spell)
-      target_num = Global.read_config("spells", spell, "target_num")
-      heal_points = Global.read_config("spells", spell, "heal_points")
-      if targets == "no_target"
-        return t('magic.invalid_name')
-      elsif targets == "too_many_targets"
-        return t('magic.too_many_targets', :spell => spell, :num => target_num )
-      else
-        targets.each do |target|
-          wound = FS3Combat.worst_treatable_wound(target)
-          # if (target == caster && Global.read_config("spells", spell, "fs3_attack"))
-          #   return  t('magic.dont_target_self')
-          if (heal_points && wound.blank?)
-            return t('magic.no_healable_wounds', :target => target.name)
-          else
-            return nil
-          end
-        end
-      end
-    end
+
 
     def self.heal_all_unhealed_damage(char)
       damage = char.damage
