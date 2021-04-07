@@ -534,6 +534,7 @@ spells:
     range: Self
     roll: true
     school: Will
+    shields_against: All
   Microscopic Telekinesis:
     available: false
     area: 1 ft radius

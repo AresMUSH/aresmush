@@ -51,7 +51,7 @@ module AresMUSH
 
         print_names = Magic.print_target_names(target_name_string)
         targets = Magic.parse_spell_targets(target_name_string, spell)
-        error =  Magic.target_errors(enactor, targets, self.spell)
+        error =  Magic.target_errors(enactor, targets, spell)
         return error if error
 
 

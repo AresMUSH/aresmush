@@ -32,14 +32,14 @@ module AresMUSH
       def handle
         print_names = Magic.print_target_names(self.target_name_string)
         result = Magic.roll_noncombat_spell_success(enactor.name, self.spell, self.mod, dice = nil)
-        self.targets = Magic.parse_spell_targets(target_name_string, spell)
+        targets = Magic.parse_spell_targets(self.target_name_string, spell, npc = nil)
 
         #Checking errors for each target.
         error =  Magic.target_errors(enactor, targets, self.spell)
         if error then return client.emit_failure error end
 
         if result[:succeeds] == "%xgSUCCEEDS%xn"
-          message = Magic.cast_noncombat_spell(enactor.name, self.targets, spell, mod, result[:result])
+          message = Magic.cast_noncombat_spell(enactor.name, targets, spell, mod, result[:result])
           Magic.handle_spell_cast_achievement(enactor)
         else
           #Spell fails
