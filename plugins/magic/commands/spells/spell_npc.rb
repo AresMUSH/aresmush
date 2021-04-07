@@ -33,8 +33,7 @@ module AresMUSH
         print_names = Magic.print_target_names(self.target_name_string)
         result = Magic.roll_noncombat_spell_success(self.npc, self.spell, mod = nil, self.dice)
         targets = Magic.parse_spell_targets(self.target_name_string, spell, npc = self.npc)
-        puts " Name string: #{self.target_name_string} targets #{targets}"
-
+        
         error =  Magic.target_errors(enactor, targets, self.spell)
         if error then return client.emit_failure error end
 
