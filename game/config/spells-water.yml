@@ -424,7 +424,6 @@ spells:
     range: Touch
     school: Water
     weapon_specials: Glacial Ice
-
     target_num: 1
   Hydroplane:
     available: true
@@ -436,6 +435,7 @@ spells:
     level: 6
     name: Hydroplane
     range: Self
+    roll: true
     school: Water
   Liquid Form:
     available: true
