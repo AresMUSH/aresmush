@@ -43,15 +43,21 @@ blockquote {
 
 .nav-tabs > li > a {
     background-color: #272938;
-
     color: $light-words-color;
+    border: 0px;
+}
+
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+    background-color: #383A4F;
+    color: white;
+    border: 0px;
+    margin: 1px;
 }
 
 .tab-content > .active {
     margin-top: 5px;
-    background: #343438;
+    // background: #343438;
 }
-
 
 .tab-content {
   border: 0px;
