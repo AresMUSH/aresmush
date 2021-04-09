@@ -37,9 +37,30 @@ pre {
 blockquote {
     color:$dark-words-color;
 }
+.nav-tabs {
+    border-bottom: 5px solid #37394e;
+}
+
+.nav-tabs > li > a {
+    background-color: #272938;
+
+    color: $light-words-color;
+}
+
+.tab-content > .active {
+    margin-top: 5px;
+    background: #343438;    
+}
+
 
 .tab-content {
-    margin-bottom: 15px;
+  border: 0px;
+  border-top: 2px solid #383A4F;
+  padding: 10px;
+  min-height: 50px;
+  background: #2f3031;
+  box-shadow: 8px 8px 10px rgb(10 10 10);
+  margin-bottom: 15px;
 }
 
 .label-pill {
@@ -137,13 +158,6 @@ code {
     width: fit-content;
 }
 
-.nav-tabs > li > a {
-    background: #343438;
-}
-
-.tab-content > .active {
-    margin-top: 5px;
-}
 
 /*------------ Menus ----------------*/
 
