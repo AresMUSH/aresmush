@@ -149,7 +149,7 @@ module AresMUSH
 
               #Shields
               if is_shield == true
-                message = Magic.cast_shield(combatant, target, self.spell, rounds, succeeds[:result])
+                message = Magic.cast_shield(combatant.name, target, self.spell, rounds, succeeds[:result])
                 messages.concat message
               end
 
