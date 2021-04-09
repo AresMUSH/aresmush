@@ -37,6 +37,16 @@ pre {
 blockquote {
     color:$dark-words-color;
 }
+
+// .nav>li>a:focus, .nav>li>a:hover {
+//     background-color: #1A1B1C;
+// }
+
+.nav .open>a, .nav .open>a:focus, .nav .open>a:hover {
+    background-color: #1A1B1C;
+    border-color: #1A1B1C;
+}
+
 .nav-tabs {
     border-bottom: 5px solid #272938;
 }
@@ -66,7 +76,7 @@ blockquote {
 .tab-content {
   border: 0px;
   border-top: 2px solid #383A4F;
-  padding: 10px;
+  padding: 20px;
   min-height: 50px;
   background: #2f3031;
   box-shadow: 8px 8px 10px rgb(10, 10, 10);
@@ -621,15 +631,6 @@ button,  select {
 
 .fs3-divider {
     background-color: #2E2F30;
-}
-
-.nav>li>a:focus, .nav>li>a:hover {
-    background-color: #1A1B1C;
-}
-
-.nav .open>a, .nav .open>a:focus, .nav .open>a:hover {
-    background-color: #1A1B1C;
-    border-color: #1A1B1C;
 }
 
 .label-danger {
