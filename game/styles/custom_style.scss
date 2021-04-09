@@ -49,7 +49,7 @@ blockquote {
 
 .tab-content > .active {
     margin-top: 5px;
-    background: #343438;    
+    background: #343438;
 }
 
 
@@ -59,7 +59,8 @@ blockquote {
   padding: 10px;
   min-height: 50px;
   background: #2f3031;
-  box-shadow: 8px 8px 10px rgb(10 10 10);
+  box-shadow: 8px 8px 10px rgb(10, 10, 10);
+  -webkit-box-shadow:  8px 8px 10px rgb(10, 10, 10);
   margin-bottom: 15px;
 }
 
