@@ -38,7 +38,7 @@ blockquote {
     color:$dark-words-color;
 }
 .nav-tabs {
-    border-bottom: 5px solid #37394e;
+    border-bottom: 5px solid #272938;
 }
 
 .nav-tabs > li > a {
@@ -49,9 +49,13 @@ blockquote {
 
 .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
     background-color: #383A4F;
-    color: white;
+    color: $light-words-color;
     border: 0px;
-    margin: 1px;
+}
+
+.nav > li > a:focus, .nav > li > a:hover {
+  background-color: #383A4F;
+  color: $light-words-color;
 }
 
 .tab-content > .active {
