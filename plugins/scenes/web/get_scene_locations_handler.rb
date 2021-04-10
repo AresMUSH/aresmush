@@ -15,7 +15,7 @@ module AresMUSH
         end
         
         Room.all.select { |r| r.room_type == "IC" }
-          .sort_by { |r| [(r.area_name == area_name) ? 0 : 1, r.name] }
+          .sort_by { |r| [(r.area_name == area_name) ? 0 : 1, r.name_and_area] }
           .map { |r| r.name_and_area }
         
       end

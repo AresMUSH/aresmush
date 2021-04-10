@@ -6,7 +6,10 @@
 %xh<%= t('events.tags_title') %>%xn <%= event.tags.join(" ") %>
 
 <%= event.description %>
+<% if !event.content_warning.blank? %>
 
+%xh%xr<%= t('events.content_warning') %>%xn <%= event.content_warning %>
+<% end %>
 %ld
 %xh<%= t('events.signups')%>%xn
 
