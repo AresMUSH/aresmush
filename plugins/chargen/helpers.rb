@@ -212,7 +212,7 @@ module AresMUSH
 
        custom_review = Chargen.custom_app_review(char)
        custom_app = custom_review ? MushFormatter.format(custom_review) : nil
-
+       
        { 
          abilities: abilities_app,
          demographics: demographics_app,
@@ -224,7 +224,8 @@ module AresMUSH
          id: char.id,
          job: char.approval_job ? char.approval_job.id : nil,
          custom: custom_app,
-         allow_web_submit: (char == enactor) && Global.read_config("chargen", "allow_web_submit")
+         allow_web_submit: (char == enactor) && Global.read_config("chargen", "allow_web_submit"),
+         preset_responses: Jobs.preset_job_responses_for_web
        }
      end
   end
