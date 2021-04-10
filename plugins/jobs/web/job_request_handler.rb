@@ -65,10 +65,7 @@ module AresMUSH
             id: c.id, 
             name: c.name 
             }},
-          responses: (Global.read_config('jobs', 'responses') || []).map { |r| {
-            name: r["name"],
-            value: Website.format_input_for_html(r["text"])
-          }}
+          responses: Jobs.preset_job_responses_for_web
         }
       end
     end
