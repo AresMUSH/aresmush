@@ -62,7 +62,7 @@ module AresMUSH
         char.update(roster_notes: Website.format_input_for_mush(roster_fields['notes']))
         char.update(roster_contact: roster_fields['contact'])
         char.update(roster_played: (roster_fields['played'] || "").to_bool)
-        char.update(roster_restricted: (roster_fields['played'] || "").to_bool)
+        char.update(roster_restricted: (roster_fields['restricted'] || "").to_bool)
       end
       return nil
     end
