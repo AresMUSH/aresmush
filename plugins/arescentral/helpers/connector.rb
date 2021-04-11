@@ -94,6 +94,11 @@ module AresMUSH
         AresResponse.new(json)
       end
       
+      def register_plugin(params)
+        json = @rest.post("plugins/register", params)
+        AresResponse.new(json)
+      end
+      
     end
   end
 end
