@@ -60,5 +60,14 @@ module AresMUSH
     def self.status_vals
       Global.read_config("jobs", "status").keys
     end
+    
+    def self.preset_job_responses_for_web
+      responses = Global.read_config('jobs', 'responses') || []
+      responses.map { |r| {
+            name: r["name"],
+            value: Website.format_input_for_html(r["text"])
+          }
+        }
+    end
   end
 end
