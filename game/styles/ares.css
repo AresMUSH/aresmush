@@ -1381,7 +1381,38 @@ pre {
 blockquote {
   color: #1c1713; }
 
+.nav .open > a, .nav .open > a:focus, .nav .open > a:hover {
+  background-color: #1A1B1C;
+  border-color: #1A1B1C; }
+
+.nav-tabs {
+  border-bottom: 5px solid #272938; }
+
+.nav-tabs > li > a {
+  background-color: #272938;
+  color: #d1d2d3;
+  border: 0px; }
+
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+  background-color: #383A4F;
+  color: #d1d2d3;
+  border: 0px; }
+
+.nav > li > a:focus, .nav > li > a:hover {
+  background-color: #383A4F;
+  color: #d1d2d3; }
+
+.tab-content > .active {
+  margin-top: 5px; }
+
 .tab-content {
+  border: 0px;
+  border-top: 2px solid #383A4F;
+  padding: 20px;
+  min-height: 50px;
+  background: #2f3031;
+  box-shadow: 8px 8px 10px #0a0a0a;
+  -webkit-box-shadow: 8px 8px 10px #0a0a0a;
   margin-bottom: 15px; }
 
 .label-pill {
@@ -1458,12 +1489,6 @@ code {
   border-radius: 0px 5px 5px 5px;
   position: relative;
   width: fit-content; }
-
-.nav-tabs > li > a {
-  background: #343438; }
-
-.tab-content > .active {
-  margin-top: 5px; }
 
 /*------------ Menus ----------------*/
 select {
@@ -1630,11 +1655,41 @@ input:focus, .ember-power-select-search-input:focus, textarea:focus {
     right: 0;
     width: 300px; } }
 
-.creature-box {
-  margin: 15px 15px 0px 5px;
-  width: 350px;
-  border-radius: 10px;
-  border: 2px solid #293038; }
+.info-box {
+  opacity: 90%;
+  max-width: 500px; }
+
+.directory-card {
+  background-color: #2b2f33;
+  opacity: 85%;
+  padding: 10px;
+  margin: 15px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center; }
+
+.directory-info {
+  background: #404B56;
+  opacity: 85%;
+  padding: 10px;
+  margin: 15px;
+  font-style: italic;
+  margin-right: 25%; }
+
+.directory-title a {
+  color: white; }
+
+.directory-title {
+  text-shadow: 2px 2px 5px #2b2f33;
+  font-size: 120%;
+  margin-top: 35px; }
+
+.short-desc {
+  background: #404B56;
+  opacity: 85%;
+  padding: 10px;
+  margin: 15px;
+  font-style: italic; }
 
 .infobox {
   margin: 15px 15px 0px 5px;
@@ -1783,13 +1838,6 @@ button, select {
 
 .fs3-divider {
   background-color: #2E2F30; }
-
-.nav > li > a:focus, .nav > li > a:hover {
-  background-color: #1A1B1C; }
-
-.nav .open > a, .nav .open > a:focus, .nav .open > a:hover {
-  background-color: #1A1B1C;
-  border-color: #1A1B1C; }
 
 .label-danger {
   background-color: #A9353E; }

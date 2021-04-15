@@ -2,79 +2,58 @@ BEGIN:VCALENDAR
 VERSION:2.0
 PRODID:-//hacksw/handcal//NONSGML v1.0//EN
 BEGIN:VEVENT
-UID:d039e617-e27f-43a7-b3f8-2fd112418a6c@Spirit Lake-spiritlakemu.com
-DTSTART:20210227T013000Z
-DTSTAMP:20210217T191332Z
-SUMMARY:Festival of Unification
-DESCRIPTION:The inhabitants of Stochieion celebrate the Festival of Unification, when Spirit magic is at its strongest in their lands. 
+UID:a6d28937-699c-47a9-a84d-b78575b63922@Spirit Lake-spiritlakemu.com
+DTSTART:20210426T003000Z
+DTSTAMP:20210323T213200Z
+SUMMARY:Spring Has Sprung, Oh No
+DESCRIPTION:Spring is well underway in Feynthorn, which means the Velathari village is a bustling center of activity.
   
-  This will be three(ish) days of self-directed events, starting Friday the 26th and running through Sunday the 28th, with a possible bleed into early the following week if there's interest. More info to come.
+  It also means that everything that was hibernating over the winter is awake.
+  
+  And hungry. 
+  
+  Taking up to 5.
 END:VEVENT
 BEGIN:VEVENT
-UID:2d54a8b3-55bb-4594-a242-70b235b713f1@Spirit Lake-spiritlakemu.com
-DTSTART:20210306T013000Z
-DTSTAMP:20210216T132611Z
-SUMMARY:Corpus Meet Up
-DESCRIPTION:We haven't done one of these in awhile so lets do the thing.
+UID:5b029e52-138b-4a8f-818c-899ae39a51c9@Spirit Lake-spiritlakemu.com
+DTSTART:20210415T003000Z
+DTSTAMP:20210411T200651Z
+SUMMARY:A Prisoner at Carver House
+DESCRIPTION:Please choose only ONE of this week's events (Prisoner in Stochieion, Prisoner at Carver House, The Will Gem) per player to attend. 
+  
+  Christopher Bates is brought to the Carver House to talk.
 END:VEVENT
 BEGIN:VEVENT
-UID:815ac799-4f09-4d18-916b-10d294bee6f2@Spirit Lake-spiritlakemu.com
-DTSTART:20210304T013000Z
-DTSTAMP:20210217T164845Z
-SUMMARY:A Storm Blows In
-DESCRIPTION:Kleiosis is known for storms that spring up unexpectedly- and dangerously. Grand Lake mages find out why.
-  
-  There will be two parts to this: 
-  
-  1) Social background, where you can RP getting caught in the storm and hunkering down in the below-ground portions of Kleiosis with the others who are stuck there. Anyone can participate in this. You'll be stuck from Wednesday mid-day until Thursday evening, ICly. 
-  
-  2) Combat for Ray, Erik, and up to 3 others who would have been observing the lay of the land from the wall's ramparts as the storm blew in. Priority will be given to characters who haven't had GM'd activity lately.
-  
-  Please note which you're signing up for in your RSVP! 
-  
-  GM: Nessie
-END:VEVENT
-BEGIN:VEVENT
-UID:199b4d62-fadb-493c-88ec-70f6a91c5755@Spirit Lake-spiritlakemu.com
-DTSTART:20210304T200000Z
-DTSTAMP:20210217T164823Z
-SUMMARY:The Storm Rages On
-DESCRIPTION:A general placeholder for the day. The storm in Kleiosis continues, and those trapped there can RP among themselves anywhere in the underground city. 
-END:VEVENT
-BEGIN:VEVENT
-UID:029ac765-704f-4a2d-bb10-bf5f70dc00cb@Spirit Lake-spiritlakemu.com
-DTSTART:20210227T230000Z
-DTSTAMP:20210217T191848Z
-SUMMARY:At the Stochi Ballet
-DESCRIPTION:The creatures of Stochieion put on a performance of their own take on the human artform of ballet, to celebrate the Festival of Unification and the debut of the native dancers - under the tutelage of humans Ray and Lisette. Come for the dancing, stay for the Spirit.
-  
-  This event will have no combat or risk but there'll be Spirit magic escapades and dancing. 
-  
-  GM: Selkie
-END:VEVENT
-BEGIN:VEVENT
-UID:541492a5-2ad0-4d1b-8c7f-f9bdf83c5a70@Spirit Lake-spiritlakemu.com
-DTSTART:20210226T010000Z
-DTSTAMP:20210221T181342Z
-SUMMARY:Dinner Party
-DESCRIPTION:Taisha's response to most strong feelings and experiences is to cook.  After the vampire dinner party from hell, she's cooking a lot.  Come over and eat her food.  
-END:VEVENT
-BEGIN:VEVENT
-UID:a061e058-d591-4d97-b05c-be234d4f7849@Spirit Lake-spiritlakemu.com
-DTSTART:20210308T000000Z
-DTSTAMP:20210225T174155Z
-SUMMARY:Grand Opening of MMA Gym
-DESCRIPTION:Brandon's new MMA gym is fully functional. Octagon cages are up and operational. This is a party for mages only to celebrate the finishing of the gym and kiss Rowan on the cheeks for finishing it. If people want to fight in the cages, that can definitely happen but this will mostly probably be a party. 
-END:VEVENT
-BEGIN:VEVENT
-UID:5e36a87b-e39f-48e9-9700-8b21c7cb9af0@Spirit Lake-spiritlakemu.com
-DTSTART:20210321T223000Z
-DTSTAMP:20210222T173828Z
-SUMMARY:The Writhing Mass
-DESCRIPTION:The Sentinel Jackals believe there's a serpent nest in the lower level of the temple and are going on a hunt. Mages of Grand Lake are welcome to join them.
+UID:b416180d-554e-4105-92a4-a1407c41b274@Spirit Lake-spiritlakemu.com
+DTSTART:20210420T013000Z
+DTSTAMP:20210412T170520Z
+SUMMARY:Trying to Make Contact
+DESCRIPTION:Part of the Marisol's Portal Expedition tries to contact the flying cat creatures who may have taken the Air Gem.
   
   ---
   
-  Ammit GMing. RSVP. Room for for 2-5 players. Priority given to those who haven't gotten a GM'd scene recently. 
+  Requested scene. Participants are: **Anthony, Danielle, Ethan, Joel, Maureen.** GMing by Ammit.
+END:VEVENT
+BEGIN:VEVENT
+UID:4e953713-4e75-4dc6-86ef-57eec5946cf2@Spirit Lake-spiritlakemu.com
+DTSTART:20210421T003000Z
+DTSTAMP:20210412T170503Z
+SUMMARY:Surveying the Landscape
+DESCRIPTION:Part of the Marisol's Portal Expedition tries to survey the dens of the flying cat creatures who may have taken the Air Gem.
+  
+  GM: Selkie
+  
+  ---
+  
+  Requested scene. Participants are: **Cameron, Jakobi, Rowan, Taisha, (and Diego, if he can make it).** GMing by Selkie.
+END:VEVENT
+BEGIN:VEVENT
+UID:8c192f05-eb43-4e4c-af0c-79a2cc8d5a4b@Spirit Lake-spiritlakemu.com
+DTSTART:20210415T180000Z
+DTSTAMP:20210414T132055Z
+SUMMARY:Returning to Stochieon 
+DESCRIPTION:Christopher is escorted back to his makeshift prison in Stochieon. Things happen on the way. 
+  
+  Limited to 2 PCs - if I get more sign-ups, I'll focus on those who haven't had GMing yet, or randomize, depending on the make-up.
 END:VEVENT
 END:VCALENDAR
