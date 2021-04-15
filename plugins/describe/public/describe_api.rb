@@ -50,13 +50,13 @@ module AresMUSH
     
     def self.save_web_descs(model, data)
       model.update(description: Website.format_input_for_mush(data['current']))
-      
       if (model.kind_of?(Character))
         outfits = {}
         (data['outfits'] || []).each do |name, desc|
           outfits[name.titlecase] =  Website.format_input_for_mush(desc)
         end
         model.update(outfits: outfits)
+        model.update(shortdesc: data['short'])
       end
       details = {}
       (data['details'] || []).each do |name, desc|
@@ -71,7 +71,8 @@ module AresMUSH
         details: char.details.map { |name, desc| {
           name: name,
           desc: Website.format_markdown_for_html(desc)
-        }}
+          }},
+        shortdesc: Website.format_markdown_for_html(char.shortdesc) 
       }      
     end
     

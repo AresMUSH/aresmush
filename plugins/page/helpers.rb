@@ -135,7 +135,7 @@ module AresMUSH
     end
     
     def self.thread_for_names(names, enactor)
-      thread = enactor.page_threads.first { |t| t.title_customized(enactor).upcase == names.join(" ").upcase}
+      thread = enactor.page_threads.select { |t| t.title_customized(enactor).upcase == names.join(" ").upcase}.first
       return thread if thread
       
       all_names = names.concat([enactor.name]).uniq
