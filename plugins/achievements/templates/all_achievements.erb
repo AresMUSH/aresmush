@@ -1,0 +1,8 @@
+%lh
+%xh<%= t('achievements.all_achievements_title') %>%xn
+
+<% achievements.each do |name, data| -%>
+<%= left(message(data), 50) %><%= left(achievement_type(data), 10) -%>
+<%= achievement_key(name) %><%= levels(name, data) %>
+<% end %>
+%lf

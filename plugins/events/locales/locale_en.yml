@@ -34,3 +34,5 @@ en:
         event_updated_change: "%{title} updated."
         event_deleted_change: "%{title} deleted."
         event_created_change: "%{title} created."
+        
+        content_warning: "Content Warning:"

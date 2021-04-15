@@ -9,6 +9,12 @@ module AresMUSH
       
       def validate
         @validator.require_hash("achievements")
+        
+        Achievements.all_achievements.keys.each do |a|
+          if (a !~ /^[a-z0-9\-\_ ]+$/)
+            @validator.add_error "Invalid achievement key: #{a} - lowercase letters, numbers, _ and - only."
+          end
+        end
         @validator.errors
       end
     end
