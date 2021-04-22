@@ -767,7 +767,6 @@ spells:
     duration: 15 minutes
     effect: Psionic
     level: 7
-    line_of_sight: true
     name: Manifest Spirit
     range: Short
     roll: true
