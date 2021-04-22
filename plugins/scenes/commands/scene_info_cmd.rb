@@ -86,7 +86,6 @@ module AresMUSH
         end
 
         scene.update(private_scene: is_private)
-        scene.update(watchable_scene: is_watchable)
         if (is_private)
           scene.watchers.replace []
         end
