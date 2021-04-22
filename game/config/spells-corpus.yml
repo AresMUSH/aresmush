@@ -509,6 +509,20 @@ spells:
     range: Self
     rounds: 12
     school: Corpus
+  Major Strength:
+    available: false
+    casting_time: 1 round
+    damage_type: None
+    desc: The caster's strength is significantly increased. They can lift up to an additional 250 lbs, and they hit harder when attacking.
+    duration: 6 hours
+    effect: Buff
+    level: 6
+    name: Major Strength
+    range: Self
+    rounds: 100
+    school: Corpus
+    weapon_specials: Major Strength
+    weapon: Spell
   Unbreakable Skin:
     armor: Unbreakable Skin
     available: true

@@ -4,6 +4,7 @@ fs3combat:
     Body:
     - cold calm
     - fortified body
+    - major strength
     - shrink
     - strength
     - grow
@@ -32,6 +33,7 @@ fs3combat:
     - grow
     - ice
     - lightning
+    - major strength
     - shrink
     - sparring
     - strength
