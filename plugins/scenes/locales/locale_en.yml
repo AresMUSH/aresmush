@@ -37,7 +37,7 @@ en:
         limited: "Open*"
         scene_notes: "Notes"
         scene_already_going: "There's already a scene going in this room.  You have to stop it first."
-        private_scene_in_public_room: "If you're having a private scene on the public grid, please do `scene/start<location name>=private` and use a temp room instead."
+        private_scene_in_public_room: "%xhIf you're having a private scene on the public grid, please do `scene/start<location name>=private` and use a temp room instead.%xn"
         amended_pose: "%{name} has amended %{pronoun} last pose."
         no_pose_found: "You haven't posed yet."
         deleted_pose: "%{name} has retracted %{pronoun} previous pose."
