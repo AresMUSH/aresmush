@@ -97,7 +97,7 @@ module AresMUSH
     def self.build_web_profile_data(char, viewer)
       # Note: The scenes themselves come in a different request. This is just misc scene-related stats info.
       return {} if (char != viewer)
-
+ 
       words = char.pose_word_count
       scenes = char.scenes_participated_in.count
       if (words > 0 && scenes > 0)

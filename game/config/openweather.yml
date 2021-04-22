@@ -34,6 +34,8 @@ openweather:
         coords:
           lat: 24.087710641082648
           lon: 32.90414008467037
+      Eld Aisteryn:
+        zip: 43701
       Elysium:
         coords:
             lat: 37.080665
@@ -58,12 +60,16 @@ openweather:
             lon: -102.292502
       Lualea:
         zip: 93940
+      Nokor Phnom:
+        zip: 84536
       Stochieion:
         coords:
             lat: 14.240831
             lon: 40.304199
       Takutaima:
         zip: 96795
+      Torejad:
+        zip: 93940
 
 
   # Runs every hour to update weather data.
