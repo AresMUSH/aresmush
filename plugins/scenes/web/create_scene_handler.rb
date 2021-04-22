@@ -36,7 +36,6 @@ module AresMUSH
         completed: completed,
         date_completed: completed ? Time.now : nil,
         private_scene: completed ? false : (privacy == "Private"),
-        watchable_scene: completed ? false : (privacy == "Watchable"),
         owner: enactor
         )
 

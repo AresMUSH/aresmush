@@ -63,7 +63,7 @@ module AresMUSH
           icdate: scene.icdate,
           participants: participants,
           limit: scene.limit,
-          privacy: scene.completed ? "Open" : (scene.private_scene ? "Private" : (scene.watchable_scene ? "Watchable" : "Open")),
+          privacy: scene.completed ? "Open" : (scene.private_scene ? "Private" : "Open"),
           scene_type: scene.scene_type ? scene.scene_type.titlecase : 'unknown',
           scene_pacing: scene.scene_pacing,
           log: log,

@@ -60,14 +60,6 @@ module AresMUSH
 
         scene = Scenes.start_scene(enactor, self.location, private_scene,  Scenes.scene_types.first, self.temp)
 
-        # scene = Scene.create(owner: enactor,
-        #     location: self.location,
-        #     private_scene: self.privacy == "Private",
-        #     watchable_scene: self.privacy == "Watchable",
-        #     scene_type: Scenes.scene_types.first,
-        #     temp_room: self.temp,
-        #     icdate: ICTime.ictime.strftime("%Y-%m-%d"))
-
         Global.logger.info "Scene #{scene.id} started by #{enactor.name} in #{self.temp ? 'temp room' : enactor_room.name}."
 
         if (self.temp)

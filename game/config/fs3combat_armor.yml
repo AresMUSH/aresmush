@@ -607,3 +607,7 @@ fs3combat:
         Chest: 7
         Abdomen: 7
         Groin: 7
+    Naga Mitmor:
+      description: A magical knife. Owned by Diego.
+      defense: 1
+      is_magic: true

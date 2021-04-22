@@ -39,11 +39,11 @@ While you can always do free-form RP on the grid or in the RP room, there are a 
 
 > **Tip:** If your location name matches a grid location, the desc will be copied over.  You can use Area/Room for the location name to distinguish between rooms with the same name in different areas.
 
-A scene can be open (anyone's invited), private (only those invited should join or view), or watchable (only those invited should join, but anyone can view on the web portal). Open and Watchable scenes are visible on the web portal while active, and Private scenes are not. You can set a scene Private and still share the log afterwards.
+A scene can be open (anyone's invited, though some limitations may be listed in the 'notes' section) or private (only those invited should join or view). Open scenes are visible on the web portal while active, and Private scenes are not. You can set a scene Private and still share the log afterwards.
 
-`scene/privacy [<#>=]<private/open/watchable>` - Changes the privacy level.
+`scene/privacy [<#>=]<private/open>` - Changes the privacy level.
 
-> **Tip:** Admins and Storytellers with the `manage_scenes` permission can stop and delete other people's scenes, as well as pose into Watchable or Open scenes. They cannot see or pose into Private scenes.
+> **Tip:** Admins and Storytellers with the `manage_scenes` permission can stop and delete other people's scenes, as well as pose into Open scenes. They cannot see or pose into Private scenes.
 
 
 ## Finding & Joining Scenes
