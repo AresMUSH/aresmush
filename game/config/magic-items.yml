@@ -221,6 +221,14 @@ magic-items:
     spells:
     - Medium Heal
     weapon_specials: Scythe Of Isis
+  #Diego's Hook
+  Naga Mitmor:
+    name: Naga Mitmor
+    desc: "A handheld knife with a gently curved blade and decorative handle. The iron blade is about six inches long with a slight, almost serpentine curve to its shape, ending in a sharp point. Its bronze handle is seamlessly attached to the blade, with only the color difference between the metals indicating where they were bonded together. The handle itself is very detailed, with an intricate texture like scales covering it, up to the pommel of the knife, which takes the shape of the seven heads of the serpentine naga. It's exceptionally crafted, with each of the fourteen eyes set with tiny, sparkling garnets. Allows the bearer to cast %xBMedium Heal%xn and %xBDustup%xn."
+    spells:
+    - Medium Heal
+    - Dustup
+    armor_specials: Naga Mitmor
   #Elke's Hook
   Dragon Visage:
     name: Dragon Visage
