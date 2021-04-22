@@ -7,7 +7,7 @@ module AresMUSH
 
       {
         schools:char.groups.map { |k, v| { school_type: k.titlecase, school_name: v } },
-        abilites: self.char_fs3_abilities(char)
+        abilities: Scenes.char_fs3_abilities(char)
       }
 
 
@@ -24,14 +24,39 @@ module AresMUSH
     end
 
     def self.char_fs3_abilities(char)
-      abilities = []
-      [ char.fs3_attributes, char.fs3_action_skills, char.fs3_background_skills, char.fs3_languages, char.fs3_advantages ].each do |list|
-        list.each do |a|
-          abilities << a.name
-        end
-        return abilities
-      end
+      damage = char.damage.to_a.sort { |d| d.created_at }.map { |d| {
+        date: d.ictime_str,
+        description: d.description,
+        original_severity: MushFormatter.format(FS3Combat.display_severity(d.initial_severity)),
+        severity: MushFormatter.format(FS3Combat.display_severity(d.current_severity))
+        }}
+
+      {
+      attributes: self.get_ability_list(char.fs3_attributes),
+      action_skills: self.get_ability_list(char.fs3_action_skills, true),
+      backgrounds: self.get_ability_list(char.fs3_background_skills),
+      languages: self.get_ability_list(char.fs3_languages),
+      damage: damage,
+      luck_points: char.luck.floor,
+      }
     end
+
+    def self.get_ability_list(list, include_specs = false)
+      new_list = []
+      list.to_a.each do |a|
+        if a.rating > 0
+          new_list << a
+        end
+      end
+
+      new_list.sort_by { |a| a.name }.map { |a|
+        {
+          name: a.name,
+          rating: a.rating,
+          rating_name: a.rating_name,
+        }}
+    end
+
 
   end
 end
