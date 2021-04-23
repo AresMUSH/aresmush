@@ -3,11 +3,18 @@ module AresMUSH
 
     def self.custom_char_card_fields(char, viewer)
 
-
-
-      {
+      spells = Magic.spell_list_all_data(char.spells_learned)
+      return {
         schools:char.groups.map { |k, v| { school_type: k.titlecase, school_name: v } },
-        abilities: Scenes.char_fs3_abilities(char)
+        abilities: Scenes.char_fs3_abilities(char),
+        major_spells: Magic.major_school_spells(char, spells),
+        minor_spells: Magic.minor_school_spells(char, spells),
+        other_spells: Magic.other_spells(char, spells),
+        major_school: char.group("Major School"),
+        minor_school: char.group("Minor School"),
+        magic_items: Magic.get_magic_items(char),
+        potions: Magic.get_potions(char),
+        potions_creating: Magic.get_potions_creating(char)
       }
 
 
@@ -55,6 +62,20 @@ module AresMUSH
           rating: a.rating,
           rating_name: a.rating_name,
         }}
+    end
+
+    def self.spell_list(char)
+      spells = []
+      spells_learned = char.spells_learned.select { |l| l.learning_complete }
+      spells_learned.each do |s|
+        spells << s.name
+      end
+      item_spells = Magic.item_spells(char)
+      item_spells.each do |s|
+        spells << s
+      end
+      spells = spells.sort
+      return spells
     end
 
 
