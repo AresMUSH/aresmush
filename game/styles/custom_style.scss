@@ -84,6 +84,13 @@ blockquote {
   margin-bottom: 15px;
 }
 
+.plain-tab-content {
+  box-shadow: unset;
+  -webkit-box-shadow: unset;
+  -moz-box-shadow: unset;
+  padding: 0px;
+}
+
 .label-pill {
     background-color: #862931;
 }
@@ -162,7 +169,7 @@ code {
 .modal-content {
   background-image: url("/game/uploads/theme_images/background.png");
   background-size: cover;
-  width: 725px;
+  width: 700px;
 }
 
 .modal-body {
@@ -206,6 +213,7 @@ li hr {
   color: $light-words-color;
   box-shadow: 0 0px 5px rgb(101, 102, 121);
   -webkit-box-shadow:  0 0px 5px rgb(101, 102, 121);
+  -moz-box-shadow: 0 0px 5px rgb(101, 102, 121);
 }
 /*------------End Menus ----------------*/
 
@@ -971,6 +979,18 @@ a.markdown-control-toggle {
   border: 0px;
 }
 
+.scene-details {
+  background: #292b2d;
+  box-shadow: 5px 5px 5px rgb(13, 13, 13);
+  -webkit-box-shadow: 5px 5px 5px rgb(13, 13, 13);
+  -moz-box-shadow: 5px 5px 5px rgb(13, 13, 13);
+}
+
+.weather {
+  display: inline;
+  vertical-align: middle;
+}
+
 .textbox-input {
   background: $dark-gray-bg;
   margin-left: 5px;
@@ -1023,6 +1043,8 @@ a.markdown-control-toggle {
       padding-top: 5px;
     }
   }
+
+
 
   .scene-pose-select, .scene-char-select {
     padding-top: 0;
