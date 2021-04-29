@@ -19,23 +19,25 @@ Using the web portal, you can:
 ###Roleplay
 
 * RP in [scenes](/scenes-live) ([help](/help/scenes_tutorial))
-* Read [scenes](/scenes)
-* Read and contribute to [WeirdNet](/wiki/weird_docs) documents
+* Read and [search](/search-scenes) [scenes](/scenes)
+* Read, [search](/search-wiki), and contribute to [WeirdNet](/wiki/weird_docs) documents
 
 ###Communicate OOCly
 
 * Chat on [channels](/play) and send private messages ([help](/help/chat_tutorial))
-* Check [mail](/mail) ([help](/help/mail_tutorial))
-* Read, post, and edit [forum](/forum) posts([help](/help/forum_tutorial))
+* Read and send [mail](/mail) ([help](/help/mail_tutorial))
+* Read, post, edit, and [search](/search-forum) for [forum](/forum) posts ([help](/help/forum_tutorial))
 * Put in [requests](/jobs) and view activity on them ([help](/help/jobs_tutorial))
+* Schedule [events](/events) ([help](/help/events_tutorial))
 
 ###Find & Share Information
 
-* View [help](/help)
+* View or [search](/search-help) for [help](/help)
 * Browse characters via the [directory](/chars) or the [census](/census)
 * Manage your character's profile ([help](/help/profile_tutorial))
 * Browse [magical portals](/portals)
 * Browse [magical creatures](/creatures)
+* Browse or [search](/search-spells) for spells
 
 > Note: AresMUSH is supported on Chrome, Safari and Edge.  It will probably work fine in other browsers too, but fixing minor layout issues or other oddities will not be a priority.
 
