@@ -102,7 +102,7 @@ module AresMUSH
       end
 
     def self.build_location_web_data(scene)
-      weather = Openweather.weather_for_area(scene.room.area_name)
+      weather =  scene.room ? Openweather.weather_for_area(scene.room.area_name) : nil
       return {
         name: scene.location,
         description: scene.room ? Website.format_markdown_for_html(scene.room.expanded_web_desc) : nil,
