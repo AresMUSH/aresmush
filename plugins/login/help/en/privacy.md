@@ -6,7 +6,9 @@ tutorial: true
 ---
 # Data and Privacy on Ares Games
 
-It's up to each individual Ares game to determine their privacy policies.  Ideally this will be conveyed to players in the terms of service acknowledgement or a policy file on the wiki.  This article provides some **general** information about privacy on Ares games.
+On Spirit Lake, no staff member is able to or will spy on player activities. They have no access to a 'dark' setting, no way to view private scenes, and no access t private communication such as mail or pages. The following information provides more details about how Ares works in terms of privacy. Spirit Lake has not made any changes to these functions.
+
+The game admins (Creature and Nessie) are the only staff members with access to error logs. Nessie is the only coder, although Faraday may sometimes visit to help with a tricky problem.
 
 > Note: This article is about the Ares game server.  For AresCentral and aresmush.com privacy practices, see the [website privacy policy](http://aresmush.com/privacy.html).
 

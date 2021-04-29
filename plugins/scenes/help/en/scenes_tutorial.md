@@ -11,7 +11,7 @@ aliases:
 
 While you can always do free-form RP on the grid or in the RP room, there are a variety of features available to you if you use the **Scenes** system to manage your RP scene.  Some features that the scenes system provides:
 
-* Creating temprooms for private scenes or places not on the grid.
+* Creating temprooms for private scenes in on-grid rooms, or in places not on the grid.
 * Advertising your scene as open so others know they're welcome to join.
 * Capture a log of poses, skill rolls and combat messages without the OOC spam.
 * Share a log easily to the game's web portal.
@@ -38,15 +38,15 @@ A scene can either be open (anyone's invited) or private.  Scenes on the grid ar
 
 > **Note:** Ares has no built-in commands to support admins spying on players.  Just as with any online service, though, **any** data transmitted to the server and/or stored in the database is ultimately accessible to the game owner and anyone they choose to share it with.  See [Privacy](/help/privacy).
 
-An open scene can include a note if there are any special considerations - like if a scene is open only to certain types of characters (Imperials only, Viper Pilots only, etc.), only a certain number of characters, or even to note that players can just come and watch. This is an advisory only--the scene is still open in all meaningful respects, it just alerts players that there may be some conditions to participating.
+An open scene can include a note if there are any special considerations - like if a scene is open only to certain types of characters (Mages only, Nature mages, etc.), only a certain number of characters, or even to note that players can just come and watch. This is an advisory only--the scene is still open in all meaningful respects, it just alerts players that there may be some conditions to participating.
 
 ## Scene Pacing
 
 MUSHes have traditionally been focused around live, synchronous RP, with players all being online together. With the web portal, Ares supports more varied playstyles. You can specify a **Pacing** for your scene to let other players know what to expect before they join.
 
 * **Traditional**: Live, synchronous RP with most poses coming 5-15 minutes apart. (Default Setting)
-* **Distracted**: RP that is still synchronous with most poses 5-15 minutes apart, but with occasional longer times between poses due to work or other distractions.
-* **Asynchronous**: RP with poses coming in at various times 30+ minutes apart, possibly in different timezones or schedules or even over multiple days.
+* **Distracted**: RP that is still synchronous with most poses 5-15 minutes apart, but with occasional longer times between poses due to work or other distractions. Often referred to as 'work slow.'
+* **Asynchronous**: RP with poses coming in at various times 30+ minutes apart, possibly in different timezones or schedules or even over multiple days. Please confirm with your partners that this is what they expect if you are looking for an asynchronous scene.
 
 If you wish to add extra detail about your scene's pacing, use the scene notes field.
 
@@ -96,4 +96,5 @@ Through the web portal, you can create "plots", which are a way to organize rela
 [Posing](/help/posing)
 [Pose Order](/help/pose_order)
 [Pose Formatting](/help/pose_format)
+[Texting](/help/txt)
 [Out-of-Character Remarks](/help/ooc)
