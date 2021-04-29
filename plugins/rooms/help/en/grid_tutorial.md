@@ -16,26 +16,28 @@ The MUSH grid consists of **Rooms** (virtual locations) connected by **Exits**. 
 
 The Grid is only important when you're playing via a MU client, because your character object is _always_ in a single room.  When you're playing through the Web Portal, your room is irrelevant.  You can join any number of scenes, irrespective of their rooms.
 
+On Spirit Lake, we don't consider your character's location to be IC until you have established that it is. You are welcome to wander the grid without ICly being in those rooms. You can also explore the grid on the web portal via the [Locations Director](/locations).
+
 [[toc]]
 
 ## Moving Around The Grid
 
 The room description shows available exits and their destinations.  For example:
-  
+
       [N] Green Hills
 
 You can use the `go` command to move through an exit, or just use the exit name as a shortcut.  For example:  "go n" or simply "n".
 
 `go <exit name>` or `<exit name>` - Move through an exit
-  
+
 ## Grid Shortcuts
 
 There are several shortcut commands for moving around the grid without going through exits.
 
 * `meetme` extends an invitation to another player so you can join each other.
 * `onstage` and `offstage` take you to the IC and OOC areas.
-* `home` and `work` let you 
-* `teleport` is usually limited to admins and builders, but lets you hop to any room or player.
+* `home` and `work` let you
+* `teleport` lets you hop to any room. `rooms` will give you a list of all rooms matching a partial name.
 
 ## Building
 
