@@ -18,13 +18,13 @@ Using the web portal, you can:
 
 ###Roleplay
 
-* RP in [scenes](/scenes-live) <a href="/help/scenes_tutorial"><i class="fas fa-question-circle fa-1x"></i></a>
+* RP in [scenes](/scenes-live) <a href="/help/scenes_tutorial"><i class="fas fa-question-circle fa-1x" title="Scenes Tutorial"></i></a>
 * Read and [search](/search-scenes) [scenes](/scenes)
 * Read, [search](/search-wiki), and contribute to [WeirdNet](/wiki/weird_docs) documents
 
 ###Communicate OOCly
 
-* Chat on [channels](/play) and send private messages <<a href="/help/chat_tutorial"><i class="fas fa-question-circle fa-1x"></i></a>
+* Chat on [channels](/play) and send private messages <a href="/help/chat_tutorial"><i class="fas fa-question-circle fa-1x"></i></a>
 * Read and send [mail](/mail) <a href="/help/mail_tutorial"><i class="fas fa-question-circle fa-1x"></i></a>
 * Read, post, edit, and [search](/search-forum) for [forum](/forum) posts <a href="/help/forum_tutorial"><i class="fas fa-question-circle fa-1x"></i></a>
 * Put in [requests](/jobs) and view activity on them
