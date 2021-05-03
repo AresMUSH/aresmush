@@ -18,7 +18,7 @@ Using the web portal, you can:
 
 ###Roleplay
 
-* RP in [scenes](/scenes-live) ([help](/help/scenes_tutorial))
+* RP in [scenes](/scenes-live) <a href="/help/scenes_tutorial"><i class="fas fa-dice fa-4x"></i></a>
 * Read and [search](/search-scenes) [scenes](/scenes)
 * Read, [search](/search-wiki), and contribute to [WeirdNet](/wiki/weird_docs) documents
 

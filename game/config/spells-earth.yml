@@ -410,8 +410,23 @@ spells:
     range: Long
     school: Earth
     target_num: 1
-
     weapon: Stone Daggers
+  Strong Rock Skin:
+    armor: Strong Rock Skin
+    available: true
+    casting_time: 1 round
+    damage_type: None
+    desc: Caster weaponizes and protects the target's body by augmenting it with metamorphic stone. In addition, the support of stone increases the target's strength, allowing them to lift up to an additional 150 lbs and hit harder when attacking.
+    duration: 8 hours
+    effect: Armor
+    is_potion: true
+    level: 4
+    name: Rock Skin
+    range: Touch
+    school: Earth
+    target_num: 1
+    weapon: Rock Skin
+  #Level 7
   Energize Dimensional Anchor (Earth):
     available: true
     casting_time: 2 minutes
