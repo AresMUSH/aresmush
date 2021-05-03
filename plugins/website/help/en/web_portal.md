@@ -24,18 +24,18 @@ Using the web portal, you can:
 
 ###Communicate OOCly
 
-* Chat on [channels](/play) and send private messages <a href="/help/chat_tutorial"><i class="fas fa-question-circle fa-1x"></i></a>
-* Read and send [mail](/mail) <a href="/help/mail_tutorial"><i class="fas fa-question-circle fa-1x"></i></a>
-* Read, post, edit, and [search](/search-forum) for [forum](/forum) posts <a href="/help/forum_tutorial"><i class="fas fa-question-circle fa-1x"></i></a>
+* Chat on [channels](/play) and send private messages <a href="/help/chat_tutorial"><i class="fas fa-question-circle fa-1x" title="Chat Tutorial"></i></a>
+* Read and send [mail](/mail) <a href="/help/mail_tutorial"><i class="fas fa-question-circle fa-1x" title="Mail Tutorial"></i></a>
+* Read, post, edit, and [search](/search-forum) for [forum](/forum) posts <a href="/help/forum_tutorial"><i class="fas fa-question-circle fa-1x" title="Forum Tutorial"></i></a>
 * Put in [requests](/jobs) and view activity on them
-<a href="/help/jobs_tutorial"><i class="fas fa-question-circle fa-1x"></i></a>
-* Schedule [events](/events) <a href="/help/events_tutorial"><i class="fas fa-question-circle fa-1x"></i></a>
+<a href="/help/jobs_tutorial"><i class="fas fa-question-circle fa-1x" title="Jobs Tutorial"></i></a>
+* Schedule [events](/events) <a href="/help/events_tutorial" title="Events Tutorial"><i class="fas fa-question-circle fa-1x"></i></a>
 
 ###Find & Share Information
 
 * View or [search](/search-help) for [help](/help)
 * Browse characters via the [directory](/chars) or the [census](/census)
-* Manage your character's profile <a href="/help/profile_tutorial"><i class="fas fa-question-circle fa-1x"></i></a>
+* Manage your character's profile <a href="/help/profile_tutorial" title="Profile Tutorial"><i class="fas fa-question-circle fa-1x"></i></a>
 * Browse [magical portals](/portals)
 * Browse [magical creatures](/creatures)
 * Browse or [search](/search-spells) for spells
