@@ -713,7 +713,6 @@ module AresMUSH
 					ss = Swrifts.add_feature(char, SwriftsEdges, "edges", edge_name) #Call the add_feature function helpers.rb
 					dbgstr << "Edge name: #{edge_name}, #{ss}"  #For troubleshooting.
 				end
-				dbgstr << "c_edgesnofw: #{c_edgesnofw.inspect}"  #For troubleshooting.
 			end
 			
 			#Save the no framework hinderance
