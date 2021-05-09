@@ -721,7 +721,7 @@ module AresMUSH
 				c_hindnofw.each do |key, value| #Cycle through each one
 					edge_name = "#{value['name']}".downcase #set the name to all lowercase
 					ss = Swrifts.add_feature(char, SwriftsHinderances, "hinderances", edge_name) #Call the add_feature function helpers.rb
-					dbgstr << "Edge name: #{edge_name}, #{ss}" #For troubleshooting
+					dbgstr << "Hind name: #{edge_name}, #{ss}" #For troubleshooting
 				end
 			end
 			
