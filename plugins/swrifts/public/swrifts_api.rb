@@ -707,8 +707,7 @@ module AresMUSH
 			end
 			
 			#Save the no framework edges
-			console.log (c_edgesnofw);
-			
+				dbgstr << "c_edgesnofw: #{c_edgesnofw}"  #For troubleshooting.
 			# if (c_edgesnofw)  #If there are edges not related to the Iconic Framework and Race
 				# c_edgesnofw.each do |key,value|  #Cycle through each one
 					# edge_name = "#{value['name']}".downcase #set the name to all lowercase
