@@ -412,7 +412,7 @@ spells:
     target_num: 1
     weapon: Stone Daggers
   Strong Rock Skin:
-    armor: Strong Rock Skin
+    armor: Strong Stone Skin
     available: true
     casting_time: 1 round
     damage_type: None
@@ -420,12 +420,12 @@ spells:
     duration: 8 hours
     effect: Armor
     is_potion: true
-    level: 4
-    name: Rock Skin
+    level: 6
+    name: Strong Stone Skin
     range: Touch
     school: Earth
     target_num: 1
-    weapon: Rock Skin
+    weapon: Strong Stone Skin
   #Level 7
   Energize Dimensional Anchor (Earth):
     available: true
