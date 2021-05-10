@@ -890,7 +890,7 @@ fs3combat:
       accuracy: 0
       init_mod: 0
       special_group: Spell
-    Strong Rock Skin:
+    Strong Stone Skin:
       description: Level 6 Earth spell
       is_magic: true
       skill: Brawl

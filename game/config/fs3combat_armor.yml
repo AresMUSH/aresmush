@@ -355,7 +355,7 @@ fs3combat:
         Right Hand: 8
         Left Foot: 8
         Right Foot: 8
-    Strong Rock Skin:
+    Strong Stone Skin:
       description: Level 6 Earth spell
       is_magic: true
       defense: 0
@@ -372,7 +372,7 @@ fs3combat:
         Left Hand: 12
         Right Hand: 12
         Left Foot: 12
-        Right Foot: 12        
+        Right Foot: 12
     Rock Skin:
       description: Level 4 Earth spell
       is_magic: true
