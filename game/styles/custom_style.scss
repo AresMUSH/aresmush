@@ -2,15 +2,21 @@
 
 @import url('https://fonts.googleapis.com/css?family=Libre Baskerville');
 
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+
+
 /* All Pages */
 
 body {
     color: $light-words-color;
-    font-family: Verdana, Geneva, sans-serif;
+    font-family: Dancing Script;
+    // font-family: Verdana, Geneva, sans-serif;
     font-size: 15px;
     line-height:1.5em;
 
 }
+
+
 
 .container-fluid {
     background: #101015;
