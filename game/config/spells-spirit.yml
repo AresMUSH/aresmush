@@ -71,7 +71,6 @@ spells:
     range: Touch
     roll: true
     school: Spirit
-    target_num: 0
   Share Emotion:
     available: true
     casting_time: 1 round
