@@ -8,7 +8,6 @@ module AresMUSH
       rounds = Global.read_config("spells", spell, "rounds")
       heal_points = Global.read_config("spells", spell, "heal_points")
       caster = Character.named(caster_name) || "NPC"
-
       names = []
       messages = []
       if targets == "npc_target"
@@ -40,7 +39,7 @@ module AresMUSH
       else
         if (!names.empty? && names.all?(caster_name))
           if is_shield
-            type = Global.read_config("spells", spell, "shields_against")
+            type = Global.read_config("spells", spell, "shields_against").downcase
             message = [t('magic.cast_shield_no_target', :name => caster.name, :spell => spell, :mod => "", :succeeds => success, :type => type)]
             messages.concat message
           end
@@ -75,7 +74,7 @@ module AresMUSH
       return messages
     end
 
-    def self.cast_shield(caster_name, target_char_or_combatant, spell, rounds, result)
+    def self.cast_shield(caster_name, target_char_or_combatant, spell, rounds, result, is_potion = false)
       if (target_char_or_combatant.class == Combatant)
         target = target_char_or_combatant.associated_model
       else
@@ -100,26 +99,33 @@ module AresMUSH
       puts "***************ALL SHIELDS #{target.magic_shields.to_a}***************"
 
       shield = Magic.find_shield_named(target, spell)
-      type = Global.read_config("spells", spell, "shields_against")
+      type = Global.read_config("spells", spell, "shields_against").downcase
       # type = "All" ? type = "all" : type = type
       if (target_char_or_combatant.class == Combatant)
         target_char_or_combatant.log "Setting #{target.name}'s #{spell.upcase} to #{shield.strength}"
       else
         Global.logger.info "Setting #{target.name}'s #{spell.upcase} to #{shield.strength}"
       end
-      message = [t('magic.cast_shield', :name => caster_name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target =>  target.name, :type => type)]
+      if is_potion
+        message = [t('magic.use_potion_shield', :name => caster_name, :potion => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target =>  target.name, :type => type)]
+      else
+        message = [t('magic.cast_shield', :name => caster_name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target =>  target.name, :type => type)]
+      end
       return message
     end
 
     def self.cast_heal(caster_name, target_char_or_combatant, spell, heal_points)
       if (target_char_or_combatant.class == Combatant)
         target = target_char_or_combatant.associated_model
+        combat = true
       else
         target = target_char_or_combatant
+        combat = false
       end
       wound = FS3Combat.worst_treatable_wound(target)
+      puts "Wound #{wound}"
       if wound.blank?
-        message = [t('magic.no_healable_wounds', :target => target.name)]
+        message = [t('magic.cast_heal_no_effect', :name => caster_name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target => target.name, :points => heal_points)]
       elsif target.class == Combatant && target.death_count > 0
         message = [t('magic.cast_ko_heal', :name => caster_name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target => target.name, :points => heal_points)]
         target.update(death_count: 0 )

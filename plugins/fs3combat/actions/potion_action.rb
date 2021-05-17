@@ -70,6 +70,7 @@ module AresMUSH
         armor = Global.read_config("spells", self.spell, "armor")
         armor_specials_str = Global.read_config("spells", self.spell, "armor_specials")
         heal_points = Global.read_config("spells", self.spell, "heal_points")
+        is_shield = Global.read_config("spells", spell, "is_shield")
         lethal_mod = Global.read_config("spells", self.spell, "lethal_mod")
         attack_mod = Global.read_config("spells", self.spell, "attack_mod")
         defense_mod = Global.read_config("spells", self.spell, "defense_mod")
@@ -214,6 +215,13 @@ module AresMUSH
             else
               messages.concat [t('magic.potion_stance_target', :name => self.name, :potion => self.spell, :target => target.name, :stance => stance, :rounds => rounds)]
             end
+          end
+
+          #Set Shields
+          if is_shield == true
+            #Potion shields default to strength (result) of 2
+            message = Magic.cast_shield(combatant.name, target, self.spell, rounds, 2, is_potion = true)
+            messages.concat message
           end
 
           #Roll

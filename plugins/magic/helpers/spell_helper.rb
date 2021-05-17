@@ -119,7 +119,7 @@ module AresMUSH
           wound = FS3Combat.worst_treatable_wound(target)
           # if (target == caster && Global.read_config("spells", spell, "fs3_attack"))
           #   return  t('magic.dont_target_self')
-          if (heal_points && wound.blank?)
+          if (heal_points && wound.blank? && caster.combat)
             return t('magic.no_healable_wounds', :target => target.name)
           else
             return nil
