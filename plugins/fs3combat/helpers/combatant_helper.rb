@@ -4,10 +4,10 @@ module AresMUSH
     def self.roll_attack(combatant, target, mod = 0)
       ability = FS3Combat.weapon_stat(combatant.weapon, "skill")
       accuracy_mod = FS3Combat.weapon_stat(combatant.weapon, "accuracy")
-      attack_mod = combatant.attack_mod
-      magic_attack_mod = combatant.magic_attack_mod
+      attack_mod = combatant.attack_mod  ? combatant.attack_mod  : 0
+      magic_attack_mod = combatant.magic_attack_mod  ? combatant.magic_attack_mod : 0
       if !combatant.is_npc?
-        item_attack_mod  = Magic.item_attack_mod(combatant.associated_model)
+        item_attack_mod  = Magic.item_attack_mod(combatant.associated_model)  ? Magic.item_attack_mod(combatant.associated_model) : 0
       else
         item_attack_mod = 0
       end
