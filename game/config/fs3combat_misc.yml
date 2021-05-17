@@ -172,7 +172,7 @@ fs3combat:
     Hidden:
       attack_mod: 0
       defense_mod: 0
-achievements:
+  achievements:
     fs3_hero:
       type: fs3
       message: Heroed from a knockout.
