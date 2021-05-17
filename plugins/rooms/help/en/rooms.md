@@ -1,5 +1,5 @@
 ---
-toc: Getting Around
+toc: Locations and Descriptions
 summary: Getting around the grid.
 order: 1
 aliases:

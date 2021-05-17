@@ -5,7 +5,6 @@ order: 1
 aliases:
 - build
 - open
-- rooms
 - dig
 - link
 - unlink

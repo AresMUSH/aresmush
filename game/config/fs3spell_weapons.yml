@@ -72,7 +72,7 @@ fs3combat:
     Major Strength:
       description: Level 6 Corpus spell
       is_magic: true
-      penetration: 7      
+      penetration: 7
     Shrink:
       description: Level 4 Corpus spell
       is_magic: true
@@ -890,6 +890,18 @@ fs3combat:
       accuracy: 0
       init_mod: 0
       special_group: Spell
+    Strong Stone Skin:
+      description: Level 6 Earth spell
+      is_magic: true
+      skill: Brawl
+      lethality: 15
+      penetration: 7
+      weapon_type: Melee
+      recoil: 0
+      damage_type: Physical
+      accuracy: 0
+      init_mod: 0
+      special_group: Body
   #Level 7
     Demon Form:
       description: Level 7 Corpus spell
