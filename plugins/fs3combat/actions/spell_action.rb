@@ -155,7 +155,7 @@ module AresMUSH
 
               #Healing, Reviving, and Resurrecting
               if heal_points
-                message = Magic.cast_heal(combatant, target, self.spell, heal_points)
+                message = Magic.cast_heal(combatant.name, target, self.spell, heal_points)
                 messages.concat message
               end
 
