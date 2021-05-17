@@ -97,8 +97,7 @@ module AresMUSH
     end
 
     # Returns the type (attribute, action, etc) for a skill being rolled.
-    def self.get_ability_type(ability)
-      Global.logger.debug "Ability: #{ability}"
+    def self.get_ability_type(ability)      
       ability = ability.titlecase
       if (attr_names.include?(ability))
         return :attribute
