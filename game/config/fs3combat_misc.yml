@@ -221,7 +221,7 @@ fs3combat:
       type: fs3
       message: Subdued a target in combat.
     fs3_distracted:
-      type: fs3
+      type: fs3 
       message: Distracted a target in combat.
     fs3_rallied:
       type: fs3
