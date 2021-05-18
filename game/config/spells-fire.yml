@@ -123,8 +123,6 @@ spells:
     name: Hot Hands
     range: Touch
     school: Fire
-    target_num: 1
-
     weapon: Hot Hands
   Laser Zap:
     available: true
