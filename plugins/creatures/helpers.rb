@@ -27,7 +27,7 @@ module AresMUSH
     end
 
     def self.creature_page_folder(creature)
-    Website::FilenameSanitizer.sanitize(creature.name.downcase)
+      Website::FilenameSanitizer.sanitize(creature.name.downcase)
     end
 
     def self.creature_page_files(creature)
