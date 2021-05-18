@@ -696,6 +696,11 @@ SCENES SCREEN
   color: #ffffff;
   padding: 0px 10px 10px 10px; }
 
+.scene-command {
+  margin-left: 25px;
+  color: #999999;
+  font-style: italic; }
+
 .scene-log {
   border: 1px solid #dddddd;
   margin: 2px;
@@ -863,6 +868,7 @@ SCENES SCREEN
 
 .live-scene-controls a, .chat-controls a, .unshared-scenes-controls a {
   padding-right: 15px;
+  padding-bottom: 5px;
   display: inline-block; }
 
 .live-scenes-controls a {
@@ -1305,6 +1311,9 @@ ul.reference-help-list > li:not(:last-child)::after {
 .idle-status {
   white-space: normal; }
 
+.server-migration {
+  padding-right: 10px; }
+
 /*.char-scene-list li:before { content: "\2666  "; }*/
 @media (max-width: 765px) {
   .site-title {
@@ -1372,7 +1381,38 @@ pre {
 blockquote {
   color: #1c1713; }
 
+.nav .open > a, .nav .open > a:focus, .nav .open > a:hover {
+  background-color: #1A1B1C;
+  border-color: #1A1B1C; }
+
+.nav-tabs {
+  border-bottom: 5px solid #272938; }
+
+.nav-tabs > li > a {
+  background-color: #272938;
+  color: #d1d2d3;
+  border: 0px; }
+
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+  background-color: #383A4F;
+  color: #d1d2d3;
+  border: 0px; }
+
+.nav > li > a:focus, .nav > li > a:hover {
+  background-color: #383A4F;
+  color: #d1d2d3; }
+
+.tab-content > .active {
+  margin-top: 5px; }
+
 .tab-content {
+  border: 0px;
+  border-top: 2px solid #383A4F;
+  padding: 20px;
+  min-height: 50px;
+  background: #2f3031;
+  box-shadow: 8px 8px 10px #0a0a0a;
+  -webkit-box-shadow: 8px 8px 10px #0a0a0a;
   margin-bottom: 15px; }
 
 .label-pill {
@@ -1449,12 +1489,6 @@ code {
   border-radius: 0px 5px 5px 5px;
   position: relative;
   width: fit-content; }
-
-.nav-tabs > li > a {
-  background: #343438; }
-
-.tab-content > .active {
-  margin-top: 5px; }
 
 /*------------ Menus ----------------*/
 select {
@@ -1621,11 +1655,41 @@ input:focus, .ember-power-select-search-input:focus, textarea:focus {
     right: 0;
     width: 300px; } }
 
-.creature-box {
-  margin: 15px 15px 0px 5px;
-  width: 350px;
-  border-radius: 10px;
-  border: 2px solid #293038; }
+.info-box {
+  opacity: 90%;
+  max-width: 500px; }
+
+.directory-card {
+  background-color: #2b2f33;
+  opacity: 85%;
+  padding: 10px;
+  margin: 15px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center; }
+
+.directory-info {
+  background: #404B56;
+  opacity: 85%;
+  padding: 10px;
+  margin: 15px;
+  font-style: italic;
+  margin-right: 25%; }
+
+.directory-title a {
+  color: white; }
+
+.directory-title {
+  text-shadow: 2px 2px 5px #2b2f33;
+  font-size: 120%;
+  margin-top: 35px; }
+
+.short-desc {
+  background: #404B56;
+  opacity: 85%;
+  padding: 10px;
+  margin: 15px;
+  font-style: italic; }
 
 .infobox {
   margin: 15px 15px 0px 5px;
@@ -1747,6 +1811,9 @@ button, select {
 .input-button {
   background: #e6e6e6; }
 
+.fa-trash {
+  color: #d1d2d3; }
+
 /* ------End Buttons------ */
 /* ------Header & Nav------ */
 .header-wrap {
@@ -1772,13 +1839,6 @@ button, select {
 .fs3-divider {
   background-color: #2E2F30; }
 
-.nav > li > a:focus, .nav > li > a:hover {
-  background-color: #1A1B1C; }
-
-.nav .open > a, .nav .open > a:focus, .nav .open > a:hover {
-  background-color: #1A1B1C;
-  border-color: #1A1B1C; }
-
 .label-danger {
   background-color: #A9353E; }
 
@@ -1787,6 +1847,10 @@ button, select {
 .admin-only-reply, .admin-only-reply .markdown-editor {
   background-color: #494b61;
   border-color: #383a4f; }
+
+.inline-response {
+  border: 1px solid #565353;
+  padding: 20px; }
 
 .job-status-HOLD {
   background-color: #A31B1B; }
@@ -1872,6 +1936,28 @@ button, select {
   max-width: 75%;
   width: 500px;
   opacity: .8; }
+
+.plot-box {
+  background: #2b2c31;
+  padding: 5px 15px;
+  font-size: 90%;
+  text-align: initial;
+  -webkit-box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.3);
+  box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.3);
+  max-width: 80%;
+  margin: auto; }
+
+.plot-box p {
+  font-size: 95%; }
+
+.plot-box a {
+  font-size: 110%;
+  font-variant: small-caps; }
+
+.plot-title {
+  font-style: bold;
+  font-variant: small-caps; }
 
 /* ---------End Landing Page-------------- */
 /* ---------Images-------------- */
