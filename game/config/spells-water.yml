@@ -62,8 +62,6 @@ spells:
     name: Chill Touch
     range: Touch
     school: Water
-    target_num: 1
-
     weapon: Chill Touch
   Chilled Limbs:
     attack_mod: -1
