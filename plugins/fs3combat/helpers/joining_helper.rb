@@ -36,7 +36,7 @@ module AresMUSH
           :character => char,
           :team => 1,
           :combat => combat)
-          FS3Combat.handle_combat_join_achievement(char)
+          # FS3Combat.handle_combat_join_achievement(char)
       else
 
         if FS3Combat.is_in_combat?(name)
