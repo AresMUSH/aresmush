@@ -88,6 +88,7 @@ module AresMUSH
             split_log = log.split
             split_log = split_log[0..split_log.count/participants.count].join(" ")
             Scenes.handle_word_count_achievements(p, split_log)
+            Scenes.handle_scene_participation_achievement(p, scene)
           end
           
         else
