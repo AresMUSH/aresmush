@@ -25,6 +25,7 @@ module AresMUSH
             reply_all:  Mail.reply_list(message, enactor, true),
             from: message.author_name,
             created: message.created_date_str(enactor),
+            created_long_format: OOCTime.local_long_timestr(enactor, message.created_at),
             tags: message.tags,
             can_reply: !!message.author,
             unread: !message.read,

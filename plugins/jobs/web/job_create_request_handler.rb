@@ -12,6 +12,10 @@ module AresMUSH
         error = Website.check_login(request)
         return error if error
         
+        if (title.blank?)
+          return { error: t('webportal.missing_required_fields') }
+        end
+        
         request.log_request
         
         job_admin = Jobs.can_access_jobs?(enactor)
