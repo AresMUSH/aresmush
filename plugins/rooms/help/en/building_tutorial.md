@@ -102,7 +102,9 @@ Areas can have a description (in which you might want to put some ASCII map art 
 
 > Note: If you want to include an ASCII map, include it in 'pre' tags to make it format correctly.  For example:  
 
-    [[pre]]  :-)  [[/pre]]
+    [[pre]]
+    ^^--->>>
+    [[/pre]]
 
 ### Area Hierarchy
 
@@ -152,3 +154,5 @@ Grid coordinates can help people navigate the grid.  You can use whatever coordi
 
 [Building Commands](/help/building)
 [Areas](/help/areas)
+
+[[disableWikiExtensions]]
