@@ -50,7 +50,7 @@ en:
         roster_url_hint: "The roster can be viewed more easily on the web portal: %{url}."
         roster_app_title: "Roster App - %{name}"
         roster_app_submitted: "You have submitted your application for %{name}."
-        roster_app_body: "%xhApp For:%xn %{target}%%xhRFrom:%xn %{name}%R%R%{app}"
+        roster_app_body: "%xhApp For:%xn %{target}%R%xhFrom:%xn %{name}%R%R%{app}"
         
         destroy_approved_warning: "WARNING! Destroying approved characters is not advised. See help idle sweep for details."
         

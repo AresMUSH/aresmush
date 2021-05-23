@@ -30,6 +30,13 @@ module AresMUSH
       Dir[File.join(AresMUSH.website_uploads_path, "#{name}/**")].sort
     end
     
+    # Moves character files, but you still have to manually update any links to them.
+    def self.move_character_files(model, new_name)
+      old_folder = File.join(AresMUSH.website_uploads_path, Profile.character_page_folder(model))
+      new_folder = File.join(AresMUSH.website_uploads_path, Website::FilenameSanitizer.sanitize(new_name.downcase))
+      FileUtils.mv(old_folder, new_folder)
+    end
+    
     def self.get_profile_status_message(char)
       case char.idle_state
       when "Roster"

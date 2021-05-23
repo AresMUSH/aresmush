@@ -107,6 +107,10 @@ module AresMUSH
           profile_data['fate'] = Fate.get_web_sheet(char, enactor)
         end
         
+        if Manage.is_extra_installed?("cookies")
+          profile_data['cookies'] = Cookies.get_web_sheet(char, enactor)
+        end
+        
         profile_data
       end
       
