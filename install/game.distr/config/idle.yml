@@ -36,7 +36,7 @@ idle:
     Tell us why you want to play this character:
 
 
-    If you're not submitting this from an existing character, provide an email where we can get back to you:
+    If you're submitting this from an existing character, check your messages to follow up. Otherwise, provide an email where we can get back to you:
   roster_app_category: APP
   restrict_roster: false
   roster_fields:
