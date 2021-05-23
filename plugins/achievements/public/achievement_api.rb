@@ -9,8 +9,6 @@ module AresMUSH
       return nil if !Achievements.is_enabled?
       return nil if char.is_admin? || char.is_npc? || char.is_guest?
       
-      Global.logger.info "Checking #{name} (#{count}) achievement for #{char.name}."
-      
       achievement_details = Achievements.achievement_data(name)          
       if (!achievement_details)
         Global.logger.warn "Achievement not found: #{name}"
