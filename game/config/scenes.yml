@@ -94,7 +94,7 @@ achievements:
     - 2500000
     - 2750000
     - 3000000
-  scene_participant:
+  scene_participant1:
     type: story
     message: Participated in %{count} scenes.
     levels:
