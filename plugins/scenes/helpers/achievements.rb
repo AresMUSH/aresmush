@@ -20,7 +20,7 @@ module AresMUSH
       count = scenes.count
 
       Achievements.award_achievement(char, "scene_participant_#{scene.scene_type.downcase}")
-      Achievements.achievement_levels("scene_participant1").reverse.each do |level|
+      Achievements.achievement_levels("scene_participant").reverse.each do |level|
         if ( count >= level )
           Achievements.award_achievement(char, "scene_participant", level)
           break
