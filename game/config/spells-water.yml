@@ -477,7 +477,7 @@ spells:
     roll: true
     school: Water
   Ice Elemental:
-    available: false
+    available: true
     casting_time: 1 round
     desc: "The caster creates an elemental made of ice mixed with snow and/or water from the environment. It is bound to do the caster's bidding, able to perform simple tasks and come to the caster's aid in battle. It cannot cast spells. When the spell ends, the elemental melts away.\n\nIn combat, the ice elemental should be represented by an NPC of level four with Ice Armor."
     duration: 30 minutes

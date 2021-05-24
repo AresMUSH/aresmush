@@ -314,7 +314,7 @@ spells:
     roll: Will
     school: Will
   Mirrored Objects:
-    available: false
+    available: true
     casting_time: 1 round
     damage_type: None
     desc: "The caster creates a link between two mostly identical objects of up to 1/2 a pound each, allowing one to mirror the movements of the other when used, as long as both are in a location where magic is present. The objects will pick up and transmit all motions when being used for the duration of the spell. Anyone can use one object to mirror motions to the other one, but only the caster can turn the spell off.\n\nThe caster can sense the direction of the other linked object, and it if is moved, the caster will feel the change in its location and be able to track it. The feeling of the link becomes vaguer the more distant the object is, but the caster can always tell the direction of it.\n\nOnly two objects can be linked at a time."

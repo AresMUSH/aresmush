@@ -303,7 +303,7 @@ spells:
     weapon: Stun (Earth)
   #Level 6
   Alter Metal:
-    available: false
+    available: true
     casting_time: 1 round
     damage_type: None
     desc: "For the duration of the spell, the caster can reshape up to 4 cubic inches of pre-existing non-alloy or two-alloy metal. The caster can can sculpt detailed shapes that animate at their direction. The density and composition of the metal does not change, but its shape can be altered, which also allows for repairs or damage to the metal parts of an object. Metal returns to its natural, but not necessarily original, state when the spell ends.\n\nEntire objects can be sculpted using Alter Metal, but making a functional object requires knowledge of how the object is made and works. The caster cannot make a functional knife, lock, clock, etc. without the knowledge of how they mechanically and structurally work—which may require steps beyond the spell to make the object function correctly.\n\nThe caster can manipulate small pieces of metal, no smaller 1 mm, with great precision. Manipulation of metal to use a pre-existing object requires knowledge. For example, the caster cannot use Alter Metal to move tumblers to open a lock without lockpicking knowledge.\n\nIn combat, damaging a weapon enough to disable it takes 3-5 rounds, at the GM's discretion."
@@ -387,7 +387,7 @@ spells:
     target_num: 3
     weapon: Stun (Earth)
   Rock Slide:
-    available: false
+    available: true
     casting_time: 1 round
     desc: "The caster manipulates dirt, stone, or natural earth to carry themselves at a speed of up to 60 mph. They are able to slide along the surface of any dirt, stone, or natural earth. They can also slide beneath the surface to burrow at the same fast speeds.\n\nWhen burrowing beneath the earth, the caster cannot breathe, limiting their ability to travel or act according to how long they can hold their breath. While beneath the earth, they can detect vibrations in the ground to roughly perceive objects, people, and other aspects of their environment within 5 yards of their person via Seismic Sense (see that spell for further details).\n\nMods to defense and attack may be applied at the GM's discretion according to actions taken while in motion."
     effect: Travel
@@ -411,7 +411,7 @@ spells:
     school: Earth
     target_num: 1
     weapon: Stone Daggers
-  Strong Rock Skin:
+  Strong Stone Skin:
     armor: Strong Stone Skin
     available: true
     casting_time: 1 round
@@ -451,8 +451,19 @@ spells:
     range: Long
     school: Earth
     target_num: 3
-
     weapon: Exploding Earth
+  Major Touchstone:
+    available: false
+    area: 1,000 mile radius
+    casting_time: 1 round
+    damage_type: None
+    desc: "The caster creates a link between themselves and a rock, gem, or piece of unalloyed metal, allowing them to always sense its location and direction from their person. If the touchstone is moved, the caster will feel the change in its location and be able to track it. The feeling of the link becomes vaguer the more distant the touchstone is, but the caster can always tell the direction of the touchstone as long as they are in range for the duration of the spell. Only one touchstone can be active at a time.\n\nFor the duration of the spell, the caster can detect vibrations against the touchstone, allowing them to roughly perceive motion in the immediate environment around the touchstone and hear sounds directed at it (including any loud ambient noises). Anyone can use the touchstone to communicate with the caster, but the communication is one-way and only the caster can turn the spell off."
+    effect: Communication
+    level: 7
+    name: Major Touchstone
+    range: Touch
+    roll: true
+    school: Earth
   #Level 8
   Massive Quake:
     area: Up to 1 square mile

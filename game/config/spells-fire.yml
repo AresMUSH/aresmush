@@ -171,7 +171,7 @@ spells:
     target_num: 1
     weapon: Flame Burst
   Flame Breath:
-    available: false
+    available: true
     area: Direct line from caster, 5 yards wide
     casting_time: 1 round
     damage_type: Fire
