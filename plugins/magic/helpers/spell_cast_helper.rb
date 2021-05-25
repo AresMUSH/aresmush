@@ -22,11 +22,14 @@ module AresMUSH
           else
             names.concat [target.name]
             if is_shield
-              Magic.cast_shield(caster_name, target, spell, rounds, result)
+              message = Magic.cast_shield(caster_name, target, spell, rounds, result)
+              messages.concat message
             end
 
             if heal_points
-              Magic.cast_heal(caster_name, target, spell, heal_points)
+              message = Magic.cast_heal(caster_name, target, spell, heal_points)
+              messages.concat message
+              puts "Message #{message}"
             end
 
           end
