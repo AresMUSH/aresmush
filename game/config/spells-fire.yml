@@ -294,6 +294,21 @@ spells:
     range: Short
     line_of_sight: true
     available: true
+  Fire Form:
+    available: false
+    casting_time: 1 round
+    damage_type: Fire
+    defense_mod: 10
+    desc: "The caster's body becomes burning fire and cannot be hit by attacks.\n\nWhile in fire form, the caster can pass through holes or narrow openings with anything they were carrying at the time the spell was cast. While made of fire, anything the caster contacts with their body will heat up, burn, or catch on fire depending on the material, which allows them to deliver minor fire damage via touch.."
+    duration: 5 rounds
+    effect: Transformation
+    level: 7
+    name: Fire Form
+    range: Self
+    roll: true
+    rounds: 5
+    school: Fire
+    weapon: Fire Form
   Laser Blast:
     available: true
     casting_time: 1 round
@@ -307,7 +322,6 @@ spells:
     range: Long
     school: Fire
     target_num: 1
-
     weapon: Laser Blast
   Pyre:
     available: true
@@ -322,7 +336,6 @@ spells:
     range: Long
     school: Fire
     target_num: 1
-
     weapon: Pyre
   Complex Illusion:
     area: '10 yard radius'

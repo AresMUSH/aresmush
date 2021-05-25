@@ -789,6 +789,19 @@ fs3combat:
       init_mod: 0
       has_shrapnel: true
       special_group: Body
+    Fire Form:
+      description: Level 6 Fire spell
+      is_magic: true
+      skill: Brawl
+      lethality: 0
+      penetration: 7
+      weapon_type: Explosive
+      recoil: 0
+      damage_type: Physical
+      accuracy: 1
+      init_mod: 0
+      has_shrapnel: false
+      special_group: Body
     Glacial Ice:
       description: Level 6 Water spell
       is_magic: true
