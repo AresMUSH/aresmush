@@ -18,6 +18,18 @@ scenes:
   - Communication
   - OOC
   - Meme
+  use_custom_char_cards: true
+  permissions:
+    control_npcs: Pose from NPCs in scenes.
+    manage_scenes: Can use scene-related admin tools, like stopping or unsharing scenes.
+  content_warnings:
+  - graphic violence
+  - sexual assault
+  - nsfw
+  - self-harm
+  - suicide
+  - bigotry
+  - torture
   shortcuts:
     scenes: scene
     scene/close: scene/stop
@@ -120,15 +132,3 @@ achievements:
     - 4000
     - 4500
     - 5000
-  use_custom_char_cards: true
-  permissions:
-    control_npcs: Pose from NPCs in scenes.
-    manage_scenes: Can use scene-related admin tools, like stopping or unsharing scenes.
-  content_warnings:
-  - graphic violence
-  - sexual assault
-  - nsfw
-  - self-harm
-  - suicide
-  - bigotry
-  - torture
