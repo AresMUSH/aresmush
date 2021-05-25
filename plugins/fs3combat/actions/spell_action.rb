@@ -34,7 +34,7 @@ module AresMUSH
         auto_revive = Global.read_config("spells", self.spell, "auto_revive")
 
         targets.each do |target|
-          return t('magic.dont_target_self') if target == combatant && Global.read_config("spells", self.spell, "fs3_attack")
+          return t('magic.dont_target_self') if target == combatant && (Global.read_config("spells", self.spell, "fs3_attack") || Global.read_config("spells", self.spell, "is_stun"))
           # Don't let people waste a spell that won't have an effect
           return t('magic.not_dead', :target => target.name) if (is_res && !target.associated_model.dead)
           return t('magic.not_ko', :target => target.name) if ((is_revive || auto_revive) && !target.is_ko)
