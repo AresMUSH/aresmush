@@ -124,6 +124,10 @@ module AresMUSH
         return SchoolsRequestHandler
       when "searchSpells"
         return SearchSpellsRequestHandler
+      when "spellFatigue"
+        return SpellFatigueRequestHandler
+      when "calculateSpellFatigue"
+        return CalculateSpellFatigueHandler
       when "getSpellDamage"
         return GetSpellDamageRequestHandler
       when "getSpellEffects"

@@ -49,3 +49,9 @@ magic:
       message: "Equipped a magic item."
   permissions:
     manage_magic: "Add and remove spells, potions, and magic items from characters."
+  fatigue:
+    Mild: "Mild"
+    Moderate: "Moderate"
+    Severe: "Severe"
+    Extreme: "Extreme"
+    Total: "Total"
