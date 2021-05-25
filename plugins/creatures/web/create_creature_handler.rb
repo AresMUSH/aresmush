@@ -18,8 +18,6 @@ module AresMUSH
 
         sapient = (request.args[:sapient] || "").to_bool
 
-
-
         creature = Creature.create(
           name: request.args[:name],
           major_school: request.args[:major_school],
@@ -36,11 +34,11 @@ module AresMUSH
         )
 
 
-        banner_image = Creature.build_image_path(creature, request.args[:banner_image])
-        profile_image = Creature.build_image_path(creature, request.args[:profile_image])
+        banner_image = Creatures.build_image_path(creature, request.args[:banner_image])
+        profile_image = Creatures.build_image_path(creature, request.args[:profile_image])
 
-        Creature.update(banner_image: banner_image)
-        Creature.update(profile_image: profile_image)
+        creature.update(banner_image: banner_image)
+        creature.update(profile_image: profile_image)
 
         Global.logger.debug "Creature #{creature.id} (#{creature.name}) created by #{enactor.name}."
 
