@@ -795,7 +795,7 @@ fs3combat:
       skill: Brawl
       lethality: 0
       penetration: 7
-      weapon_type: Explosive
+      weapon_type: Melee
       recoil: 0
       damage_type: Physical
       accuracy: 1
