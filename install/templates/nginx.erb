@@ -25,6 +25,11 @@ server {
 		try_files $uri $uri/ /index.html;
 		   
 	}
+  
+  location ~ /game/(config|logs) {
+     deny all;
+     return 404;
+  }
     
     location /api/ {
         proxy_set_header HOST $host;
