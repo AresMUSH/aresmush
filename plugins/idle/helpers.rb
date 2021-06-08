@@ -109,23 +109,7 @@ module AresMUSH
        Game.master.system_character)
          
        return { password: password }
-     end
-     
-     def self.save_web_roster_fields(char, fields)
-       on_roster = (fields['on_roster'] || "").to_bool
-       if (on_roster)
-         char.update(idle_state: "Roster")
-       elsif (char.idle_state == "Roster")
-         char.update(idle_state: nil)
-       else
-         # Don't mess with their idle state if they're not going on or coming off the roster.
-       end
-       
-       char.update(roster_notes: Website.format_input_for_mush(fields['notes']))
-       char.update(roster_contact: fields['contact'])
-       char.update(roster_played: (fields['played'] || "").to_bool)
-       char.update(roster_restricted: (fields['played'] || "").to_bool)
-     end
+     end     
      
      def self.build_idle_queue
        queue = {}

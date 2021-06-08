@@ -70,6 +70,7 @@ module AresMUSH
       
       def check_weapons
         @validator.require_hash('weapons')
+        @validator.require_hash('weapon specials')
         FS3Combat.weapons.each do |name, data|
           [ 'description', 'skill', 'lethality', 'penetration', 'weapon_type', 'recoil', 
             'damage_type', 'accuracy', 'init_mod' ].each do |prop|

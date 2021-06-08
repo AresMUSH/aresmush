@@ -65,6 +65,10 @@ module AresMUSH
         return MarkThreadReadRequestHandler
       when "reportPage"
         return ReportPageRequestHandler
+      when "hidePageThread"
+        return HidePageThreadRequestHandler
+      when "setPageThreadTitle"
+        return SetPageThreadTitleRequestHandler
       end
     end
     

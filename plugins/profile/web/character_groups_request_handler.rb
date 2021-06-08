@@ -1,6 +1,7 @@
 module AresMUSH
   module Profile
     class CharacterGroupsRequestHandler
+      
       def handle(request)
         enactor = request.enactor
         error = Website.check_login(request, true)
@@ -8,9 +9,9 @@ module AresMUSH
         
         group_key = (Global.read_config("website", "character_gallery_group") || "faction").downcase
         npc_groups = Character.all.select { |c| c.is_npc? && !c.idled_out? }
-           .group_by { |c| c.group(group_key) || "" }
-        char_groups = Chargen.approved_chars.group_by { |c| c.group(group_key).blank? ? "No #{group_key.titlecase}" : c.group(group_key) }
-                
+           .group_by { |c| get_group_value(c, group_key) }
+        char_groups = Chargen.approved_chars.group_by { |c| get_group_value(c, group_key) }
+        
         groups = []
         
         char_group_names = char_groups.keys
@@ -98,6 +99,12 @@ module AresMUSH
           dead: dead_chars,
           unapproved: new_chars
         }
+      end
+      
+      
+      def get_group_value(char, group_key)
+        group = char.group(group_key)
+        group.blank? ? "No #{group_key.titlecase}" : group
       end
     end
   end

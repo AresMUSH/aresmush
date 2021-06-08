@@ -11,7 +11,7 @@ module AresMUSH
         elsif (filter == 'Played By')
             groups = Chargen.approved_chars.group_by { |c| c.demographic('played by')}
         elsif (filter == 'Timezone')
-          groups = Chargen.approved_chars.group_by { |c| c.timezone}
+          groups = Chargen.approved_chars.group_by { |c| "#{OOCTime.utc_offset_display(c)} (#{c.timezone})" }
         elsif (filter == 'Rank')
           groups = Chargen.approved_chars.group_by { |c| c.rank}
         else

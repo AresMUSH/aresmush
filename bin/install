@@ -134,7 +134,7 @@ chmod +x bin/*
 echo -e "${ARES_INSTALL_TEXT} Installing Node for Ember."
 
 sudo npm install -g npm
-curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 nvm install 12

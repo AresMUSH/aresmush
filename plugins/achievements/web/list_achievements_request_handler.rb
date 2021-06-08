@@ -11,6 +11,7 @@ module AresMUSH
           message: (v['message'] % { count: "XXX" }),
           type: v['type'],
           type_icon: icon_types["#{v['type']}"] || "fa-question",
+          levels: (Achievements.achievement_levels(k) || []).join(", "),
           chars: chars_for_achievement(k, groups)
           }}
       end

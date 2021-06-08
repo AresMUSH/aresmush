@@ -25,5 +25,10 @@ module AresMUSH
     def self.format_achievement_name(name)
       name ? name.downcase.split.join("_") : nil
     end
+    
+    def self.achievement_levels(achievement, defaults = [])
+      data = self.achievement_data(achievement) || {}
+      data["levels"] || defaults
+    end
   end  
 end

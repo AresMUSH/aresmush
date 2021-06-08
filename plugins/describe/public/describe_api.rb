@@ -50,19 +50,38 @@ module AresMUSH
     
     def self.save_web_descs(model, data)
       model.update(description: Website.format_input_for_mush(data['current']))
-      
       if (model.kind_of?(Character))
         outfits = {}
         (data['outfits'] || []).each do |name, desc|
           outfits[name.titlecase] =  Website.format_input_for_mush(desc)
         end
         model.update(outfits: outfits)
+        model.update(shortdesc: data['short'])
       end
       details = {}
       (data['details'] || []).each do |name, desc|
         details[name.titlecase] =  Website.format_input_for_mush(desc)
       end
       model.update(details: details)
+    end
+    
+    def self.build_web_profile_data(char, viewer)
+      { 
+        description: Website.format_markdown_for_html(char.description),
+        details: char.details.map { |name, desc| {
+          name: name,
+          desc: Website.format_markdown_for_html(desc)
+          }},
+        shortdesc: Website.format_markdown_for_html(char.shortdesc) 
+      }      
+    end
+    
+    def self.build_web_profile_edit_data(char, viewer, is_profile_manager)
+      {
+        desc: Website.format_input_for_html(char.description),
+        shortdesc: char.shortdesc ? char.shortdesc : '',
+        descs: Describe.get_web_descs_for_edit(char)
+      }
     end
   end
 end

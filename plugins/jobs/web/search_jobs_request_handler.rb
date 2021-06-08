@@ -23,7 +23,7 @@ module AresMUSH
           end
         
           if (!search_category.blank?)
-            jobs = jobs.select { |j| j.category == search_category }
+            jobs = jobs.select { |j| j.job_category.name == search_category }
           end
         
           if (!search_status.blank?)
@@ -49,7 +49,7 @@ module AresMUSH
               title: j.title,
               unread: j.is_unread?(enactor),
               created: j.created_date_str(enactor),
-              category: j.category,
+              category: j.job_category.name,
               status: j.status,
               author: j.author_name,
               assigned_to: j.assigned_to ? j.assigned_to.name : "--"

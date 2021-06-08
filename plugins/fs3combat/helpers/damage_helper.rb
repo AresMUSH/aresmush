@@ -186,7 +186,7 @@ module AresMUSH
        return if is_mock
        
        damage_count = target.damage.count
-       [ 1, 5, 10, 20, 50, 100 ].reverse.each do |count|
+       Achievements.achievement_levels("fs3_wounded").reverse.each do |count|
          if (damage_count >= count)
            Achievements.award_achievement(target, "fs3_wounded", count)
            break
