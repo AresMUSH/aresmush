@@ -344,6 +344,7 @@ module AresMUSH
           message = [t('magic.cast_stun_resisted', :name => combatant.name, :spell => spell, :mod => "", :target => target.name, :succeeds => "%xgSUCCEEDS%xn")]
         end
       end
+      puts "Stun message #{message}"
       return message
     end
 
