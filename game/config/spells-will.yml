@@ -300,6 +300,21 @@ spells:
     range: Short
     line_of_sight: true
     available: true
+  Major Spatial Awareness:
+    available: false
+    area: 10 yards
+    attack_mod: 2
+    casting_time: 1 round
+    damage_type: None
+    desc: "The caster becomes more aware of the inanimate environment within 10 yards around them. This allows them to have solid footing and better avoid objects, increasing their ability to attack and defend."
+    defense_mod: 2
+    duration: 10 rounds
+    effect: Buff
+    level: 6
+    name: Major Spatial Awareness
+    range: Self
+    rounds: 10
+    school: Will
   Massive Telekinesis:
     area: 100 yard radius
     available: true

@@ -426,6 +426,22 @@ spells:
     target_num: 1
     weapon: Strong Stone Skin
   #Level 7
+
+  Burial And Revival:
+    available: false
+    auto_revive: true
+    casting_time: 1 round
+    damage_type: None
+    desc: "A knocked out target is completely covered by a layer of soil. Beneath the soil, all their wounds healed and they emerge revived and able to return to the fight.\n\nA magic user who knows this spell is automatically buried and revived when they themselves can no longer fight. This takes 1 round after they are knocked out."
+    effect: Revive
+    level: 7
+    line_of_sight: true
+    name: Burial snd Revival
+    notes: This can work, but needs more coding to remove wounds.
+    range: Long
+    roll: false
+    school: Fire
+    target_num: 1
   Energize Dimensional Anchor (Earth):
     available: true
     casting_time: 2 minutes

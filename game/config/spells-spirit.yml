@@ -679,6 +679,20 @@ spells:
     school: Spirit
     target_num: 1
   #LEVEL 7
+
+  Astral Projection:
+    available: false
+    casting_time: 1 round
+    damage_type: Psionic
+    desc: "The caster projects an illusion of their person to a target who is familiarly known or in line of sight, convincing the target's mind it is real. This enables them to psionically correspond with each other through the illusion of speech and hearing until the connection is severed. The caster looks and sounds real to the target, but has no physical presence. They cannot interact with the world around the target; they may project the illusion of doing so, but would have no lasting physical impact on objects. They cannot be touched, and attempting to do so reveals the illusion.\n\nThey are aware of anything in the environment that the target is aware of.\n\nThose with Spirit may notice that the spell has been cast, and those with Spirit or Corpus may identify the caster's projection as an illusion, and may attempt to do so with a roll of the caster's Spirit vs the target's Spirit-4 or Corpus-4. A draw goes to the caster.\n\nAlthough the mind works to provide logical explanations for the caster's presence as much as possible, a particularly noticeable diversion from reality, such as the caster appearing in a location where they would be unable to be, or appearing to a target when in the presence of others, may trigger recognition of the illusion by the target. At the GM's discretion, they may roll Alertness with a negative modifier, up to -11, according to the degree of diversion.\n\nThis does not prevent the spell's effects in any way, it merely allows for the recognition of the fact that the caster isn't physically there."
+    duration: 30 minutes
+    effect: Psionic
+    level: 7
+    name: Astral Projection
+    range: Massive
+    roll: true
+    school: Spirit
+    target_num: 1
   Clarity:
     available: true
     area: 100 yard radius
