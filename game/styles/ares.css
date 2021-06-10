@@ -1110,6 +1110,18 @@ CHAT SCREEN
 .play-sidebar:hover {
   overflow-y: auto; }
 
+.play-scene-title {
+  font-size: 2em;
+  color: #999999; }
+
+.play-scene-context-prompt {
+  font-weight: bold;
+  font-size: 1.5em;
+  color: #333333; }
+
+.play-scene-context-wrap {
+  margin-top: 10px; }
+
 .play-hint {
   color: #999999;
   margin-left: 5px;
