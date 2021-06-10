@@ -9,8 +9,6 @@ module AresMUSH
       return nil if !Achievements.is_enabled?
       return nil if char.is_admin? || char.is_npc? || char.is_guest?
 
-      Global.logger.info "Checking #{name} (#{count}) achievement for #{char.name}."
-
       achievement_details = Achievements.achievement_data(name)
       if (!achievement_details)
         Global.logger.warn "Achievement not found: #{name}"
@@ -82,7 +80,7 @@ module AresMUSH
         type_icon: icon_types["#{data[:type]}"] || "fa-question"
       }}
     end
-    
+
     def self.build_web_profile_data(char, viewer)
       {
         achievements: Achievements.is_enabled? ? Achievements.build_achievements(char) : nil
