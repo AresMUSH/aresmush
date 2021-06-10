@@ -2,6 +2,7 @@
 BASIC CONTAINERS
 ------------------------- */
 @import url("https://fonts.googleapis.com/css?family=Libre Baskerville");
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap");
 .container {
   background-color: #1A1B1C;
   margin: 0;
@@ -50,9 +51,13 @@ BASIC CONTAINERS
   max-height: 100px; }
 
 .thumbnail-gallery {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap; }
+
+.thumbnail-gallery-item {
   height: 150px;
-  width: 150px;
-  float: left; }
+  width: 150px; }
 
 .code-editor {
   font-family: Consolas,Monaco,Lucida Console,monospace; }
@@ -971,6 +976,10 @@ CHARACTERS SCREEN
   background-repeat: no-repeat;
   background-image: url("/game/uploads/theme_images/box-bg.png"); }
 
+.achievement-levels {
+  padding-top: 5px;
+  color: #bbb; }
+
 table.char-ability-list {
   width: 100%; }
 
@@ -1223,6 +1232,9 @@ JOBS SCREEN
 .job-template-editor {
   margin: 0px; }
 
+.preset-responses {
+  margin: 5px 0px 15px 0px; }
+
 /* -------------------------
 OTHER
 ------------------------- */
@@ -1415,6 +1427,12 @@ blockquote {
   -webkit-box-shadow: 8px 8px 10px #0a0a0a;
   margin-bottom: 15px; }
 
+.plain-tab-content {
+  box-shadow: unset;
+  -webkit-box-shadow: unset;
+  -moz-box-shadow: unset;
+  padding: 0px; }
+
 .label-pill {
   background-color: #862931; }
 
@@ -1477,7 +1495,8 @@ code {
 
 .modal-content {
   background-image: url("/game/uploads/theme_images/background.png");
-  background-size: cover; }
+  background-size: cover;
+  width: 700px; }
 
 .modal-body {
   background: #2b2f33;
@@ -1509,7 +1528,8 @@ li hr {
   background: #2b2f33;
   color: #d1d2d3;
   box-shadow: 0 0px 5px #656679;
-  -webkit-box-shadow: 0 0px 5px #656679; }
+  -webkit-box-shadow: 0 0px 5px #656679;
+  -moz-box-shadow: 0 0px 5px #656679; }
 
 /*------------End Menus ----------------*/
 /*------- input boxes & selectors --------*/
@@ -2100,6 +2120,16 @@ a.markdown-control-toggle {
   background: #1A1B1C;
   border: 0px; }
 
+.scene-details {
+  background: #292b2d;
+  box-shadow: 5px 5px 5px #0d0d0d;
+  -webkit-box-shadow: 5px 5px 5px #0d0d0d;
+  -moz-box-shadow: 5px 5px 5px #0d0d0d; }
+
+.weather {
+  display: flex;
+  align-items: center; }
+
 .textbox-input {
   background: #2b2f33;
   margin-left: 5px; }
@@ -2398,6 +2428,8 @@ a.markdown-control-toggle {
 /* ------------- End Chargen -------------*/
 /*------------------- Mobile ---------------------*/
 @media only screen and (max-width: 700px) {
+  .modal-content {
+    width: unset; }
   .navbar-inverse .navbar-nav .open .dropdown-menu > li > a {
     color: #d1d2d3; }
   .navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
