@@ -2,25 +2,37 @@ module AresMUSH
   module Magic
 
 
+
     def self.cast_noncombat_spell(caster_name, targets, spell, mod = nil, result = nil, using_potion = false)
       success = "%xgSUCCEEDS%xn"
-      is_shield = Global.read_config("spells", spell, "is_shield")
+
       rounds = Global.read_config("spells", spell, "rounds")
       heal_points = Global.read_config("spells", spell, "heal_points")
+      is_shield = Global.read_config("spells", spell, "is_shield")
       caster = Character.named(caster_name) || "NPC"
       names = []
       messages = []
+
       if targets == "npc_target"
         message = [t('magic.casts_spell', :name => caster_name, :spell => spell, :mod => mod, :succeeds => success)]
         messages.concat message
       else
         targets.each do |target|
           stopped_by_shield = Magic.stopped_by_shield?(target, caster_name, spell, result)
-          if stopped_by_shield && caster != target && !using_potion
+
+          puts "stopped_by_shield #{stopped_by_shield} && caster != target #{caster.name} #{target.name} && !using_potion #{using_potion}"
+
+          if stopped_by_shield && stopped_by_shield[:shield_held] && caster != target && !using_potion
             message = stopped_by_shield[:msg]
             messages.concat [message]
           else
             names.concat [target.name]
+
+            if stopped_by_shield
+              messages.concat [stopped_by_shield[:msg]]
+            end
+
+            puts "Is shield #{is_shield}"
             if is_shield
               message = Magic.cast_shield(caster_name, target, spell, rounds, result)
               messages.concat message
@@ -29,7 +41,6 @@ module AresMUSH
             if heal_points
               message = Magic.cast_heal(caster_name, target, spell, heal_points)
               messages.concat message
-              puts "Message #{message}"
             end
 
           end
@@ -41,27 +52,12 @@ module AresMUSH
         messages.concat message
       else
         if (!names.empty? && names.all?(caster_name))
-          if is_shield
-            type = Global.read_config("spells", spell, "shields_against").downcase
-            message = [t('magic.cast_shield_no_target', :name => caster.name, :spell => spell, :mod => "", :succeeds => success, :type => type)]
-            messages.concat message
-          end
           if !heal_points && !is_shield
             message = [t('magic.casts_spell', :name => caster_name, :spell => spell, :mod => mod, :succeeds => success)]
             messages.concat message
           end
         elsif !names.empty?
           print_names = names.join(", ")
-          if is_shield
-            type = Global.read_config("spells", spell, "shields_against")
-            message = [t('magic.cast_shield', :name => caster_name, :spell => spell, :mod => "", :succeeds => success, :target =>  print_names, :type => type)]
-            messages.concat message
-          end
-
-          if heal_points
-            message = [t('magic.cast_heal', :name => caster_name, :spell => spell, :mod => "", :succeeds => success, :target => print_names, :points => heal_points)]
-            messages.concat message
-          end
 
           if !heal_points && !is_shield
             message = [t('magic.casts_spell_on_target', :name => caster_name, :target => print_names, :spell => spell, :mod => mod, :succeeds => success)]
@@ -73,7 +69,6 @@ module AresMUSH
       # if Global.read_config("spells", spell, "fs3_attack") || Global.read_config("spells", spell, "is_stun")
       #   messages.concat ["%xrAttack and stun spells have no real damage effects outside of combat. Start a combat if you want damage to persist.%xn"]
       # end
-
       return messages
     end
 
