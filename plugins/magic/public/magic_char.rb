@@ -5,6 +5,7 @@ module AresMUSH
     attribute :spells_cast, :type => DataType::Integer
     attribute :achievement_spells_learned, :type => DataType::Integer
     attribute :achievement_spells_discarded, :type => DataType::Integer
+    attribute :magic_energy
 
     #Delete these eventually
     attribute :mind_shield, :type => DataType::Integer, :default => 0
@@ -21,6 +22,14 @@ module AresMUSH
     def auto_revive?
       auto_revive_spell = self.spells_learned.to_a.select { |spell| Global.read_config("spells", spell.name, "auto_revive")}
       return auto_revive_spell[0].name  if !auto_revive_spell.empty?
+    end
+
+    def total_magic_energy
+      major_school = self.group("Major School")
+      magic_ability = Global.read_config("magic", "magic_ability")
+      major_school_energy = FS3Skills.ability_rating(self, major_school)
+      magic_energy = FS3Skills.ability_rating(self, magic_ability)
+      return major_school_energy + magic_energy
     end
 
   end
