@@ -5,7 +5,7 @@ module AresMUSH
     attribute :spells_cast, :type => DataType::Integer
     attribute :achievement_spells_learned, :type => DataType::Integer
     attribute :achievement_spells_discarded, :type => DataType::Integer
-    attribute :magic_energy
+    attribute :magic_energy, :type => DataType::Integer, :default => 16
 
     #Delete these eventually
     attribute :mind_shield, :type => DataType::Integer, :default => 0
@@ -25,6 +25,14 @@ module AresMUSH
     end
 
     def total_magic_energy
+      major_school = self.group("Major School")
+      magic_ability = Global.read_config("magic", "magic_ability")
+      major_school_energy = FS3Skills.ability_rating(self, major_school)
+      magic_energy = FS3Skills.ability_rating(self, magic_ability)
+      return (major_school_energy + magic_energy) * 10
+    end
+
+    def magic_energy_rate
       major_school = self.group("Major School")
       magic_ability = Global.read_config("magic", "magic_ability")
       major_school_energy = FS3Skills.ability_rating(self, major_school)
