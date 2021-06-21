@@ -5,6 +5,7 @@
 <p>In the shadow of the Rocky Mountains lies a little town that is rediscovering its history.</p>
 <p>And its <a href="/wiki/magic">magic.</a></p>
 <p>Welcome to <a href="/wiki/about_us">Spirit Lake.</a></p>
+<p font-size="120%">After years of wonderful story, Spirit Lake will <a href="https://spiritlakemu.com/forum/1/1978">close its doors</a> sometime in early 2022. Applications will permanently close on June 30, 2021. Thanks for the ride!</p>
 <p><i>Interested in joining us? <a href="/wiki/guides:join_us">Start here!</a></i></p>
 <hr>
 
