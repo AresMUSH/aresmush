@@ -135,6 +135,16 @@ module AresMUSH
       return message
     end
 
+    def self.cast_fatigue_heal(caster_name, target_char, spell)
+      puts "Magic energy before heal IN method: #{target_char }#{target_char.name} #{target_char.magic_energy}"
+      energy_points = Global.read_config("spells", spell, "energy_points")
+      magic_energy = [(target_char.magic_energy + energy_points), (target_char.total_magic_energy * 0.8)].min
+      target_char.update(magic_energy: magic_energy)
+      message = [t('magic.cast_fatigue_heal', :name => caster_name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target => target_char.name, :points => energy_points)]
+      puts "Magic energy after heal IN method!: #{target_char }#{target_char.name} #{target_char.magic_energy}"
+      return message
+    end
+
     def self.cast_weapon(combatant, target, spell, weapon)
       armor = Global.read_config("spells", spell, "armor")
       Magic.set_magic_weapon(combatant, target, weapon)
