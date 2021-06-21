@@ -5,6 +5,12 @@ en:
       updated_weapon_specials: "You have updated %{target}'s persistent weapon specials to %{specials}."
 
         # ----------------------------
+        # ENERGY & FATIGUE
+        # ----------------------------
+      magic_fatigue: "%{name} is suffering from %{degree} spell fatigue. %{effect}"
+      fatigue_cant_cast: "You cannot cast spells while suffering from total spell fatigue."
+      cast_fatigue_heal: "%{name} casts %xB%{spell}%xn%{mod} and %{succeeds}. %{target} recovers %{points} points of magical energy."
+        # ----------------------------
         # POTIONS
         # ----------------------------
       use_combat_potion: "Use combat/potion while you are in combat."
@@ -60,7 +66,7 @@ en:
       level_eight_fatigue: "%x39%{name}%xn %x39has cast a level 8 spell and is overcome by spell casting fatigue. They are unable to cast spells or fight until they have recovered.%xn"
 
       # ----------------------------
-      # HeALING. RESING, AND REVIVING
+      # HeALING. RES'ING, AND REVIVING
       # ----------------------------
       cast_ko_heal: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{succeeds}. %{target} receives up to %{points} points of healing to a wound and they are no longer dying."
       no_healable_wounds: "%{target} has no healable wounds."
