@@ -24,6 +24,15 @@ module AresMUSH
           end
         end
 
+        energy_cron = Global.read_config("magic", "energy_cron")
+        if Cron.is_cron_match?(energy_cron, event.time)
+          Global.logger.debug "Magic energy updating."
+
+          Character.all.each do |c|
+            Magic.magic_energy_cron(c)
+          end
+        end
+
       end
 
     end
