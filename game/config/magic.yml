@@ -8,6 +8,9 @@ magic:
   potion_cron:
     minute:
     - 00
+  energy_cron:
+    minute:
+    - 00  
   shortcuts:
     combat/cast: combat/spell
     cast: spell/cast
@@ -49,10 +52,21 @@ magic:
       message: "Equipped a magic item."
   permissions:
     manage_magic: "Add and remove spells, potions, and magic items from characters."
-  fatigue:
-    Mild: "Mild"
-    Moderate: "Moderate"
-    Severe: "Severe"
-    Extreme: "Extreme"
-    Total: "Total"
+  energy_cost_by_level:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+    7: 7
+    8: 8
+    9: 9
+    10: 10
+  fatigue_effect:
+    Mild: "They are beginning to feel queasy, and everything is beginning to feel a little more difficult."
+    Moderate: "They are quite nauseous and feel increasingly tired. It's hard to focus, and everything is substantially more difficult."
+    Severe: "They are severely nauseous and are starting to feel exhausted. It's very difficult to focus."
+    Extreme: "They feel on the edge of collapse and even basic tasks are almost impossible. They desperately need a rest."
+    Total: "They have stretched themselves to their limit and can manage nothing more than basic movement."
   magic_ability: Magic

@@ -4,6 +4,7 @@ module AresMUSH
       attr_accessor  :spell, :target, :names, :has_target
 
       def prepare
+        puts "Combatant energy beginning of action: #{combatant.associated_model.magic_energy}"
         if (self.action_args =~ /\//)
           self.spell = self.action_args.before("/")
           self.names = self.action_args.after("/")
@@ -19,6 +20,10 @@ module AresMUSH
 
         spell_list = Global.read_config("spells")
         return t('magic.not_spell') if !spell_list.include?(self.spell)
+
+        fatigue = Magic.get_fatigue_level(combatant.associated_model)
+        return t('magic.fatigue_cant_cast') if fatigue[:degree] == "Total"
+
 
         if !combatant.is_npc?
           item_spells = Magic.item_spells(combatant.associated_model) || []
@@ -85,6 +90,7 @@ module AresMUSH
         damage_desc = Global.read_config("spells", spell, "damage_desc")
         damage_type = Global.read_config("spells", self.spell, "damage_type")
         defense_mod = Global.read_config("spells", self.spell, "defense_mod")
+        energy_points = Global.read_config("spells", self.spell, "energy_points")
         init_mod = Global.read_config("spells", self.spell, "init_mod")
         damage_type = Global.read_config("spells", self.spell, "damage_type")
         fs3_attack = Global.read_config("spells", self.spell, "fs3_attack")
@@ -159,6 +165,18 @@ module AresMUSH
                 messages.concat message
               end
 
+              puts "Magic energy before heal method: #{target.associated_model }#{target.associated_model.name} #{target.associated_model.magic_energy}"
+
+              if energy_points
+                message = Magic.cast_fatigue_heal(combatant.name, target.associated_model, self.spell)
+                if combatant == target
+                  combatant.associated_model.update(magic_energy: target.associated_model.magic_energy)
+                end
+                messages.concat message
+              end
+
+              puts "Magic energy after heal method!: #{target.associated_model }#{target.associated_model.name} #{target.associated_model.magic_energy}"
+
               if is_revive
                 message = Magic.cast_revive(combatant, target, self.spell)
                 messages.concat message
@@ -230,6 +248,13 @@ module AresMUSH
           #End spell rolls
           end
         end
+
+        Magic.subtract_magic_energy(combatant.associated_model, self.spell, succeeds[:succeeds])
+        fatigue_msg = Magic.get_fatigue_level(combatant.associated_model)[:msg]
+        if fatigue_msg
+          messages.concat [fatigue_msg]
+        end
+        puts "Combatant energy end of action: #{combatant.associated_model.magic_energy}"
         level = Global.read_config("spells", self.spell, "level")
         if level == 8
           messages.concat [t('magic.level_eight_fatigue', :name => self.name)]
