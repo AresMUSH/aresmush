@@ -387,9 +387,9 @@ spells:
     line_of_sight: true
     name: Spell Fatigue Heal
     range: Short
-    roll: true
     school: Spirit
     target_num: 1
+    energy_points: 10
   Spirit Of Pacifism:
     available: true
     casting_time: 1 round
