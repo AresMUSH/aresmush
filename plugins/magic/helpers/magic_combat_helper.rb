@@ -10,6 +10,7 @@ module AresMUSH
       stress_mod = combatant.stress
       attack_luck_mod = (combatant.luck == "Attack") ? 3 : 0
       spell_luck_mod = (combatant.luck == "Spell") ? 3 : 0
+      magic_energy_mod = Magic.get_magic_energy_mod(combatant.associated_model)
       distraction_mod = combatant.distraction
       gm_spell_mod = combatant.gm_spell_mod
       spell_mod = combatant.spell_mod ? combatant.spell_mod : 0
@@ -20,9 +21,9 @@ module AresMUSH
         item_spell_mod = 0
         item_attack_mod = 0
       end
-      total_mod = cast_mod + item_spell_mod.to_i + item_attack_mod.to_i + gm_spell_mod.to_i + spell_mod.to_i + accuracy_mod.to_i + damage_mod.to_i  + stance_mod.to_i  + attack_luck_mod.to_i  + spell_luck_mod.to_i - stress_mod.to_i  + magic_attack_mod.to_i + attack_mod.to_i - distraction_mod.to_i + level_mod.to_i
+      total_mod = cast_mod + item_spell_mod.to_i + item_attack_mod.to_i + gm_spell_mod.to_i + spell_mod.to_i + accuracy_mod.to_i + damage_mod.to_i  + stance_mod.to_i  + attack_luck_mod.to_i  + spell_luck_mod.to_i + magic_energy_mod.to_i - stress_mod.to_i  + magic_attack_mod.to_i + attack_mod.to_i - distraction_mod.to_i + level_mod.to_i
 
-      combatant.log "SPELL ROLL for #{combatant.name} school=#{school} level_mod=#{level_mod} off-school_cast_mod=#{cast_mod} spell_mod=#{spell_mod} spell_luck=#{spell_luck_mod} gm_spell_mod=#{gm_spell_mod} item_spell_mod=#{item_spell_mod} attack=#{attack_mod} magic_attack=#{magic_attack_mod} item_attack_mod=#{item_attack_mod} attack_luck=#{attack_luck_mod} accuracy=#{accuracy_mod} damage=#{damage_mod} stance=#{stance_mod}   stress=#{stress_mod}  distract=#{distraction_mod} total_mod=#{total_mod}"
+      combatant.log "SPELL ROLL for #{combatant.name} school=#{school} level_mod=#{level_mod} off-school_cast_mod=#{cast_mod} spell_level_mod=#{spell_mod} spell_luck=#{spell_luck_mod} gm_spell_mod=#{gm_spell_mod} item_spell_mod=#{item_spell_mod} spell_fatigue_mod=#{magic_energy_mod} attack=#{attack_mod} magic_attack=#{magic_attack_mod} item_attack_mod=#{item_attack_mod} attack_luck=#{attack_luck_mod} accuracy=#{accuracy_mod} damage=#{damage_mod} stance=#{stance_mod}   stress=#{stress_mod}  distract=#{distraction_mod} total_mod=#{total_mod}"
 
       successes = combatant.roll_ability(school, total_mod)
       return successes
