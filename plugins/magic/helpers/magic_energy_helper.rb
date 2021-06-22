@@ -3,7 +3,7 @@ module AresMUSH
 
     def self.subtract_magic_energy(char_or_npc, spell, success)
       char = char_or_npc
-      puts "Magic energy before: #{char.name} #{char.magic_energy}"
+      puts "Magic energy before subtraction: #{char.name} #{char.magic_energy}"
       level = Global.read_config("spells", spell, "level")
       spell_school = Global.read_config("spells", spell, "school")
       cost = Global.read_config("magic", "energy_cost_by_level", level)
@@ -24,7 +24,7 @@ module AresMUSH
       success == "%xrFAILS%xn" ? cost = cost/2 : cost = cost
       magic_energy = [(char.magic_energy - cost), 0].max
       char.update(magic_energy: magic_energy)
-      puts "Cost: #{cost} Magic energy after: #{char.name} #{char.magic_energy}"
+      puts "Cost: #{cost} Magic energy after subtraction: #{char.name} #{char.magic_energy}"
     end
 
     def self.get_fatigue_level(char_or_npc)
