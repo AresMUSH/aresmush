@@ -59,7 +59,7 @@ module AresMUSH
 
 
         if success[:succeeds] == "%xgSUCCEEDS%xn"
-          message = Magic.cast_noncombat_spell(enactor.name, targets, spell, mod, success[:result])
+          message = Magic.cast_noncombat_spell(enactor, enactor.name, targets, spell, mod, success[:result])
           Magic.handle_spell_cast_achievement(enactor)
         else
           if target_name_arg.blank?

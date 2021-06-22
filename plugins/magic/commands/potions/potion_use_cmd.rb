@@ -37,7 +37,7 @@ module AresMUSH
         error =  Magic.target_errors(enactor, targets, self.potion_name)
         if error then return client.emit_failure error end
 
-        message = Magic.cast_noncombat_spell(self.caster.name, targets, self.potion_name, mod = nil, result = 2, using_potion = true)
+        message = Magic.cast_noncombat_spell(self.caster, self.caster.name, targets, self.potion_name, mod = nil, result = 2, using_potion = true)
 
         message.each do |message|
           self.caster.room.emit message
