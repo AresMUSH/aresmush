@@ -158,7 +158,7 @@ module AresMUSH
         end
         spell_mod = Magic.item_spell_mod(caster)
         magic_energy_mod = Magic.get_magic_energy_mod(caster)
-        total_mod = mod.to_i + spell_mod.to_i + level_mod.to_i
+        total_mod = mod.to_i + spell_mod.to_i + level_mod.to_i + magic_energy_mod.to_i
         Global.logger.info "#{caster.name} rolling #{skill} to cast #{spell}. Level Mod=#{level_mod} Magic Energy Mod=#{magic_energy_mod} Mod=#{mod} Item Mod=#{spell_mod} Off-school cast mod=#{cast_mod} total=#{total_mod}"
         roll = caster.roll_ability(skill, total_mod)
         die_result = roll[:successes]
