@@ -3,13 +3,13 @@ module AresMUSH
 
 
 
-    def self.cast_noncombat_spell(caster_name, targets, spell, mod = nil, result = nil, using_potion = false)
+    def self.cast_noncombat_spell(caster, caster_name, targets, spell, mod = nil, result = nil, using_potion = false)
       success = "%xgSUCCEEDS%xn"
 
       rounds = Global.read_config("spells", spell, "rounds")
+      energy_points = Global.read_config("spells", spell, "energy_points")
       heal_points = Global.read_config("spells", spell, "heal_points")
       is_shield = Global.read_config("spells", spell, "is_shield")
-      caster = Character.named(caster_name) || "NPC"
       names = []
       messages = []
 
@@ -19,20 +19,31 @@ module AresMUSH
       else
         targets.each do |target|
           stopped_by_shield = Magic.stopped_by_shield?(target, caster_name, spell, result)
+          if target.name == caster.name
+            target = caster
+          end
 
-          puts "stopped_by_shield #{stopped_by_shield} && caster != target #{caster.name} #{target.name} && !using_potion #{using_potion}"
+          puts "stopped_by_shield #{stopped_by_shield} && caster != target #{caster} #{target} && !using_potion #{using_potion}"
 
           if stopped_by_shield && stopped_by_shield[:shield_held] && caster != target && !using_potion
+            #A shield exists and it held, the caster is not the target, and it's not a potion.
             message = stopped_by_shield[:msg]
             messages.concat [message]
           else
             names.concat [target.name]
 
-            if stopped_by_shield
+            if stopped_by_shield && caster != target
               messages.concat [stopped_by_shield[:msg]]
             end
 
-            puts "Is shield #{is_shield}"
+            if energy_points
+              message = Magic.cast_fatigue_heal(caster_name, target, spell)
+              # if caster = target
+              #   caster.update(magic_energy: target.magic_energy)
+              # end
+              messages.concat message
+            end
+
             if is_shield
               message = Magic.cast_shield(caster_name, target, spell, rounds, result)
               messages.concat message
@@ -52,17 +63,18 @@ module AresMUSH
         messages.concat message
       else
         if (!names.empty? && names.all?(caster_name))
-          if !heal_points && !is_shield
+          if !heal_points && !is_shield && !energy_points
             message = [t('magic.casts_spell', :name => caster_name, :spell => spell, :mod => mod, :succeeds => success)]
             messages.concat message
           end
         elsif !names.empty?
           print_names = names.join(", ")
 
-          if !heal_points && !is_shield
+          if !heal_points && !is_shield && !energy_points
             message = [t('magic.casts_spell_on_target', :name => caster_name, :target => print_names, :spell => spell, :mod => mod, :succeeds => success)]
             messages.concat message
           end
+          
         end
       end
 

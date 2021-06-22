@@ -25,21 +25,28 @@ module AresMUSH
         return t('magic.dont_know_spell') if (Magic.knows_spell?(enactor, self.spell) == false && !Magic.item_spells(enactor).include?(spell))
         target_num = Global.read_config("spells", spell, "target_num")
         return t('magic.doesnt_use_target') if (self.has_target && !target_num)
+        fatigue = Magic.get_fatigue_level(enactor)
+        return t('magic.fatigue_cant_cast') if fatigue[:degree] == "Total"
         return "That is the wrong format. Try spell/cast <spell>/<target>." if (cmd.args =~ /\=/)
         return nil
       end
 
       def handle
+        puts "~~~~MAGIC ENERGY START: #{enactor.magic_energy}"
         print_names = Magic.print_target_names(self.target_name_string)
         result = Magic.roll_noncombat_spell_success(enactor.name, self.spell, self.mod, dice = nil)
         targets = Magic.parse_spell_targets(self.target_name_string, spell, npc = nil)
+
+        puts "~~~~MAGIC ENERGY BEFORE SUBTRACTION: #{enactor.magic_energy}"
+        Magic.subtract_magic_energy(enactor, self.spell, result[:succeeds])
+        puts "~~~~MAGIC ENERGY AFTER SUBTRACTION: #{enactor.magic_energy}"
 
         #Checking errors for each target.
         error =  Magic.target_errors(enactor, targets, self.spell)
         if error then return client.emit_failure error end
 
         if result[:succeeds] == "%xgSUCCEEDS%xn"
-          message = Magic.cast_noncombat_spell(enactor.name, targets, spell, mod, result[:result])
+          message = Magic.cast_noncombat_spell(enactor, enactor.name, targets, spell, mod, result[:result])
           Magic.handle_spell_cast_achievement(enactor)
         else
           #Spell fails
@@ -50,12 +57,17 @@ module AresMUSH
           end
         end
 
+        fatigue_msg = Magic.get_fatigue_level(enactor)[:msg]
+        if fatigue_msg
+          message.concat [fatigue_msg]
+        end
         message.each do |msg|
           enactor.room.emit msg
           if enactor.room.scene
             Scenes.add_to_scene(enactor.room.scene, msg)
           end
         end
+        puts "~~~~MAGIC ENERGY END: #{enactor.magic_energy}"
       end
 
     end
