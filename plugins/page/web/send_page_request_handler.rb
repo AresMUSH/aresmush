@@ -15,6 +15,10 @@ module AresMUSH
           if (!thread)
             return { error: t('page.invalid_thread') }
           end
+          if (!thread.can_view?(enactor))
+            return { error: t('dispatcher.not_allowed') }
+          end
+          
           recipients = thread.characters.select { |c| c != enactor }
         else
           recipients = []
@@ -33,10 +37,12 @@ module AresMUSH
         end
         
         thread = Page.send_page(enactor, recipients, message, Login.find_client(enactor))
-        
-        {
-          thread: Channels.build_page_web_data(thread, enactor)
-        }
+        # Respond to existing thread - no return
+        if (thread_id)
+          return {}
+        else
+          return { thread: Channels.build_page_web_data(thread, enactor) }
+        end
       end
     end
   end

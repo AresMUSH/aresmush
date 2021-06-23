@@ -110,6 +110,8 @@ module AresMUSH
         return JoinChannelRequestHandler
       when "leaveChannel"
         return LeaveChannelRequestHandler
+      when "loadChatMessages"
+        return LoadChatMessagesRequestHandler
       when "manageChat"
         return ManageChatRequestHandler
       when "muteChannel"

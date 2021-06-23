@@ -23,7 +23,7 @@ module AresMUSH
       }
     end
     
-    def self.build_live_scene_web_data(scene, viewer)
+    def self.build_live_scene_web_data(scene, viewer, lazy_load = false)
       participants = Scenes.participants_and_room_chars(scene)
           .sort_by {|p| p.name }
           .map { |p| { 
@@ -49,6 +49,12 @@ module AresMUSH
         places = nil
       end
          
+      if (lazy_load)
+        poses = []
+      else
+        poses = scene.poses_in_order.map { |p| Scenes.build_scene_pose_web_data(p, viewer) }
+      end
+      
       combat = FS3Combat.is_enabled? ? FS3Combat.combat_for_scene(scene) : nil
       
       {
@@ -71,16 +77,17 @@ module AresMUSH
         pose_order: Scenes.build_pose_order_web_data(scene),
         combat: combat ? combat.id : nil,
         places: places,
-        poses: scene.poses_in_order.map { |p| Scenes.build_scene_pose_web_data(p, viewer) },
+        poses: poses,
         fs3_enabled: FS3Skills.is_enabled?,
         fs3combat_enabled: FS3Combat.is_enabled?,
         poseable_chars: Scenes.build_poseable_chars_data(scene, viewer),
         pose_order_type: scene.room ? scene.room.pose_order_type : nil,
         use_custom_char_cards: Scenes.use_custom_char_cards?,
         extras_installed: Global.read_config('plugins', 'extras') || [],
-        limit: scene.limit
+        limit: scene.limit,
+        lazy_loaded: lazy_load
       }
-    end    
+    end   
     
     def self.build_scene_summary_web_data(scene)
       {
