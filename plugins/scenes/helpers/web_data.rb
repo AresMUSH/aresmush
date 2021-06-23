@@ -52,7 +52,7 @@ module AresMUSH
       combat = FS3Combat.is_enabled? ? FS3Combat.combat_for_scene(scene) : nil
       
       {
-        id: scene.id,
+        id: "#{scene.id}",
         title: scene.title,
         location: Scenes.build_location_web_data(scene),
         completed: scene.completed,
@@ -84,7 +84,7 @@ module AresMUSH
     
     def self.build_scene_summary_web_data(scene)
       {
-        id: scene.id,
+        id: "#{scene.id}",
         title: scene.title,
         summary: Website.format_markdown_for_html(scene.summary),
         content_warning: scene.content_warning,
