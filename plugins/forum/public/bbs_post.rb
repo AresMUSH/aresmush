@@ -39,7 +39,7 @@ module AresMUSH
         return self.author_name
       else
         updater = self.sorted_replies[-1].author
-        return author ? author.name : t('global.deleted_character')
+        return updater ? updater.name : t('global.deleted_character')
       end
     end
     
