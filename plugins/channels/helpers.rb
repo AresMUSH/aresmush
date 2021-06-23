@@ -328,7 +328,21 @@ module AresMUSH
       end
     end
     
-    def self.build_channel_web_data(channel, enactor)
+    def self.build_channel_web_data(channel, enactor, lazy_load = false)
+      if (lazy_load || !Channels.is_on_channel?(enactor, channel))
+        messages = []
+      else
+        messages = channel.sorted_channel_messages.map { |m| {
+          message: Website.format_markdown_for_html(m.message),
+          id: m.id,
+          timestamp: OOCTime.local_short_date_and_time(enactor, m.created_at),
+          author: {
+            name: m.author_name,
+            icon: m.author ? Website.icon_for_char(m.author) : nil }
+            }
+          }
+      end
+      
       {
         key: channel.name.downcase,
         title: channel.name,
@@ -347,18 +361,25 @@ module AresMUSH
          muted: Channels.is_muted?(w, channel),
          status: Website.activity_status(w)
         }},
-        messages: Channels.is_on_channel?(enactor, channel) ? channel.sorted_channel_messages.map { |m| {
-          message: Website.format_markdown_for_html(m.message),
-          id: m.id,
-          timestamp: OOCTime.local_short_date_and_time(enactor, m.created_at),
-          author: {
-            name: m.author_name,
-            icon: m.author ? Website.icon_for_char(m.author) : nil }
-            }} : [],
+        messages: messages,
+        lazy_loaded: lazy_load
       }
     end
     
-    def self.build_page_web_data(thread, enactor)
+    def self.build_page_web_data(thread, enactor, lazy_load = false)
+      if (lazy_load)
+        messages = []
+      else
+        messages = thread.sorted_messages.map { |p| {
+            message: Website.format_markdown_for_html(p.message),
+            id: p.id,
+            timestamp: OOCTime.local_short_date_and_time(enactor, p.created_at),
+            author: {
+              name: p.author_name,
+              icon: p.author ? Website.icon_for_char(p.author) : nil }
+            }}        
+      end
+      
       is_hidden = thread.is_hidden?(enactor)
       {
          key: thread.id,
@@ -378,14 +399,8 @@ module AresMUSH
           icon: Website.icon_for_char(c),
           muted: false
          }},
-         messages: thread.sorted_messages.map { |p| {
-            message: Website.format_markdown_for_html(p.message),
-            id: p.id,
-            timestamp: OOCTime.local_short_date_and_time(enactor, p.created_at),
-            author: {
-              name: p.author_name,
-              icon: p.author ? Website.icon_for_char(p.author) : nil }
-            }}
+         messages: messages,
+        lazy_loaded: lazy_load
         }
     end
                       
