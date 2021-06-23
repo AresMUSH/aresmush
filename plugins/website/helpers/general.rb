@@ -143,19 +143,19 @@ module AresMUSH
       Website.emoji_regex
     end
     
-    def self.export_wiki
-      Global.dispatcher.spawn("Performing wiki export.", nil) do
+    def self.export_wiki(client = nil)
+      Global.dispatcher.spawn("Performing wiki export.", client) do
         Global.logger.debug "Exporting wiki."
         error = AresMUSH::Website::WikiExporter.export
         if (error)
           Global.logger.error "Error performing wiki export: #{error}"
+          if (client)
+            client.emit_failure t('webportal.wiki_export_error')
+          end
         else
-          backup_path = File.join(AresMUSH.game_path, "wiki_export.zip")
-          Zip::File.open(backup_path, 'w') do |zipfile|
-            export_path = AresMUSH::Website::WikiExporter.export_path
-            Dir["#{export_path}/**/**"].each do |file|
-              zipfile.add(file.sub(export_path+'/',''),file)
-            end
+          Global.logger.debug "Wiki export successful."
+          if (client)
+            client.emit_success t('webportal.wiki_export_success')
           end
         end
       end
