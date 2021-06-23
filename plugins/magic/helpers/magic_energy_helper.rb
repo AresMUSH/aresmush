@@ -76,8 +76,9 @@ module AresMUSH
     end
 
     def self.magic_energy_cron(char)
-      puts "Magic energy before cron: #{char.magic_energy}"
+      puts "Magic energy before cron: #{char.magic_energy} Rate #{char.magic_energy_rate}"
       new_magic_energy =  char.magic_energy + char.magic_energy_rate
+      puts "New energy #{new_magic_energy}"
       if new_magic_energy < char.total_magic_energy
         char.update(magic_energy: new_magic_energy )
       else
