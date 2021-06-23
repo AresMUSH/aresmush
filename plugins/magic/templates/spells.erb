@@ -1,6 +1,7 @@
 %lh
 <%= left( t('magic.spells_title', :name => char.name.upcase) , 65 ) -%>
 <%=  spell_count -%><%= "/30 spells" %>
+
 <%= t('magic.spells_header') %>
 <% if major_school %>
 <%= line_with_text major_school %>
@@ -69,4 +70,9 @@
   <% end %>
 <% end %>
 <% end %>
+
+<%= line_with_text "Magic Energy" %>
+<%=  magic_energy -%><%= "    " %><%= magic_energy_percent %><%= "% (" -%><%= spell_fatigue_degree -%><%= ")" %>
+
+<%= spell_fatigue_msg  %>
 %lf
