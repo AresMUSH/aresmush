@@ -38,6 +38,10 @@ module AresMUSH
     def is_hidden?(enactor)
       (enactor.hidden_page_threads || []).include?("#{self.id}")
     end
+    
+    def can_view?(viewer)
+      self.characters.include?(viewer)
+    end
   end
   
   class PageMessage < Ohm::Model
