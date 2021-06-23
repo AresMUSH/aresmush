@@ -24,7 +24,7 @@ module AresMUSH
           
         else
           
-          channel = Channel[key]
+          channel = Channel.find_one_by_name(key)
         
           if (!channel)
             return { error: t('webportal.not_found') }
@@ -34,7 +34,7 @@ module AresMUSH
             return { error: t('dispatcher.not_allowed') }
           end
         
-          Channels.build_channel_web_data(c, enactor)
+          Channels.build_channel_web_data(channel, enactor)
         end
       end
     end
