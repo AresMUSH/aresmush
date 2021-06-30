@@ -66,6 +66,11 @@ magic-items:
     desc: A metal drinking flask with a leather strap that never runs out of water.
     spells:
     - Create Water
+  Fancy Brush:
+    name: Fancy Brush
+    desc: "A lovely silver hair brush that allows the user to change the color of their hair, texture and length. The brush must be used every hour on the hour to maintain fanciness. Allows the user to cast %xBChange Hair%xn"
+    spells:
+    - Change Hair
   Finger Cymbals:
     name: Finger Cymbals
     desc: Bronze finger symbols that when gently chimed together, allows the wielder to soothe an animal via %xBCalm Animal%xn.
@@ -107,6 +112,11 @@ magic-items:
     spells:
     - Impair
     - Medium Heal
+  Kismet:
+    name: Kismet
+    desc: A deck of pristine-looking tarot cards with beautiful, unearthly artwork. When held, allows the holder to cast %xBMinor Jinx%xn.
+    spells:
+    - Minor Jinx
   Konvaskr:
     name: Konvaskr
     desc: A flying ship that really needs a better desc.
