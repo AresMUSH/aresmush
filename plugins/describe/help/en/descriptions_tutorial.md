@@ -26,7 +26,7 @@ Characters have a short description that shows up in things like the glance comm
 
 ## Details
 
-Details can be used to keep more detailed views separate from the main description.  
+Details can be used to keep more detailed views separate from the main description.  You can use details on characters or rooms.
 
 For example, if your character has a ring, you might create a really detailed description of that ring and put it in a "Ring" detail.  You could also do this for signs, notes, and other landmarks in rooms. 
 
