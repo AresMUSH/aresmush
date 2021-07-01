@@ -340,6 +340,19 @@ spells:
     school: Spirit
     target_num: 1
 #Level 4
+  Telepathic Connection:
+    available: true
+    casting_time: "1 round"
+    damage_type: Psionic
+    desc: "The caster and 1 target are telepathically connected. This enables them to telepathically correspond and share emotions, images, and sounds with each other at will until the connection is severed..\n\nTargets must be familiarly known to caster or in line of sight."
+    duration: 1 hour
+    effect: Psionic
+    level: 4
+    name: Telepathic Connection
+    range: Long
+    roll: true
+    school: Spirit
+    target_num: 1
   Group Telepathic Correspondence:
     available: true
     casting_time: 1 round

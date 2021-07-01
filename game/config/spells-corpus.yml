@@ -510,7 +510,7 @@ spells:
     rounds: 12
     school: Corpus
   Major Strength:
-    available: false
+    available: true
     casting_time: 1 round
     damage_type: None
     desc: The caster's strength is significantly increased. They can lift up to an additional 250 lbs, and they hit harder when attacking.
