@@ -36,7 +36,7 @@ module AresMUSH
           if spell_learned.learning_complete
             client.emit_failure t('magic.already_know_spell', :spell => self.spell)
           else
-            message = t('magic.reduce_spell_learn_time', :spell => self.spell)
+            # message = t('magic.reduce_spell_learn_time', :spell => self.spell)
 
             enactor.spend_luck(2)
             Achievements.award_achievement(enactor, "fs3_luck_spent")

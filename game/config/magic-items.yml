@@ -1,6 +1,8 @@
 ---
 magic-items:
   Band Of The Unseen:
+    available: true
+    cost: 1
     name: Band of the Unseen
     desc: A slender golden armband, the magical item is embossed with a depiction of the antagonist god Set. He is represented traditionally here. The only variation is the brightly colored blindfold that's been tied over his eyes. When worn in the open or beneath one's clothes, the armband acts as a blockade against intrusions from the Spirit school by those who would do the wearer ill. Magic users with friendly or sincerely good intentions are not protected against.
     spells:
@@ -77,6 +79,8 @@ magic-items:
     spells:
     - Calm Animal
   Guilt-Weighted Gloves:
+    available: true
+    cost: 2
     name: Guilt-Weighted Gloves
     desc: Fancy purple satin gloves with slightly fraying gold embroidery along the palm and knuckles. These gloves provide a bonus to lethality
     weapon_specials: Guilt-Weighted Gloves

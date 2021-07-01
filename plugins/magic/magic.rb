@@ -35,6 +35,8 @@ module AresMUSH
           return ItemRemoveCmd
         when "give"
           return GiveItemCmd
+        when 'buy'
+          return BuyItemCmd 
         end
       end
 
