@@ -188,7 +188,7 @@ en:
       item_unequipped: "You have unequipped %{item}."
       has_unequipped_item: "%{name} has unequipped %{item}"
       item_not_equipped: "That item is not equipped."
-      not_item: "That is not an item."
+      not_item: "That is not an item or potion. If it should be, put in a request for it to be added to the system."
       added_item: "You have added %{item} to %{target}."
       removed_item: "You have removed %{item} from %{target}."
       given_magic_item: "%{name} has given you the magical item %{item}."

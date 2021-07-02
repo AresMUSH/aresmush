@@ -10,19 +10,24 @@ module AresMUSH
       end
 
       def check_errors
-        return t('magic.not_item') if !Magic.is_item?(self.item_name)
-        return t('magic.item_not_available') if !Global.read_config("magic-items", self.item_name, "available")
-        luck = Global.read_config("magic-items", self.item_name, "cost")
+        return t('magic.not_item') if !Magic.is_item?(self.item_name) && !Magic.is_potion?(self.item_name)
+        return t('magic.item_not_available') if !Global.read_config("magic-items", self.item_name, "available") && !Magic.is_potion?(self.item_name)
+        luck = Global.read_config("magic-items", self.item_name, "cost") || Global.read_config("magic-items", "Potion", "cost")
         return t('fs3skills.not_enough_points') if enactor.luck < luck
         return nil
       end
 
       def handle
-        magic_items = enactor.magic_items
-        magic_items.concat [self.item_name]
-        enactor.update(magic_items: magic_items)
+        if Magic.is_potion?(self.item_name)
+          luck = Global.read_config("magic-items", "Potion", "cost")
+          PotionsHas.create(name: self.item_name, character: enactor)
+        else
+          magic_items = enactor.magic_items
+          magic_items.concat [self.item_name]
+          enactor.update(magic_items: magic_items)
+          luck = Global.read_config("magic-items", self.item_name, "cost")
+        end
 
-        luck = Global.read_config("magic-items", self.item_name, "cost")
         enactor.spend_luck(luck)
         Achievements.award_achievement(enactor, "fs3_luck_spent")
 
