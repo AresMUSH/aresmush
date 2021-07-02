@@ -205,10 +205,17 @@ magic-items:
   #Beto's Hook
   Rising Flames Spoon:
     name: Rising Flames Spoon
-    desc: "A small spoon forged from a brass common in Feixuzhicheng. Much like any other measuring spoon, this one is carefully made to add the perfect helping of spice to a dish or tea to a cup. A glossy, vivid blue colors the inside of the spoon's bowl while the backside is engraved with stylistic smoke and flames. The brass handle is crafted to resemble the wings of the magical phoenix of the land, the feng-huang, a creature at home in flames. The arch of the bird's graceful neck forms a loop through which a cord can be strung. It allows the bearer to cast **Pyromancy** and **Endure Fire**, to control flame and protect themselves against it."
+    desc: "A small spoon forged from a brass common in Feixuzhicheng. Much like any other measuring spoon, this one is carefully made to add the perfect helping of spice to a dish or tea to a cup. A glossy, vivid blue colors the inside of the spoon's bowl while the backside is engraved with stylistic smoke and flames. The brass handle is crafted to resemble the wings of the magical phoenix of the land, the feng-huang, a creature at home in flames. The arch of the bird's graceful neck forms a loop through which a cord can be strung. It allows the bearer to cast %XBPyromancy%xn and %XBEndure Fire%xn, to control flame and protect themselves against it."
     spells:
     - Pyromancy
     - Endure Fire
+  #Birdie's Hook
+  Sekhmet Necklace:
+    name: Sekhmet Necklace
+    desc: "A beaded Egyptian necklace with a heavy, trapezoidal pendant of gold and enamel decorated with two lionesses facing each other. The ceramic beads are red, blue, gold, and black shaped as very stylized flames. The inlay pendant is similarly colored, the features of the lions carefully detailed to the point of looking delicate. Between them is a scarab in an oval, below a red circle that represents the sun. Allows the bearer to cast %XBWild Shape Panthera%xn."
+    spells:
+    - Wild Shape Panthera
+    spell_mod: 1
   #Calgary's Hook
   Hell's Revenant:
     name: Hell's Revenant
