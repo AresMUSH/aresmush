@@ -3,7 +3,6 @@ module AresMUSH
     class SpellFatigueRequestHandler
 
       def handle(request)
-        puts "GETTING HERE"
         char = request.enactor
         spells = Magic.spell_list_all_data(char.spells_learned)
 
