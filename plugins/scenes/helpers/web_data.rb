@@ -72,7 +72,7 @@ module AresMUSH
         scene_pacing: scene.scene_pacing,
         can_edit: viewer && Scenes.can_edit_scene?(viewer, scene),
         can_delete: Scenes.can_delete_scene?(viewer, scene),
-        is_watching: viewer && scene.watchers.include?(viewer),
+        is_watching: Scenes.is_watching?(scene, viewer),
         is_unread: viewer && scene.is_unread?(viewer),
         pose_order: Scenes.build_pose_order_web_data(scene),
         combat: combat ? combat.id : nil,

@@ -46,7 +46,8 @@ module AresMUSH
     
     def self.is_watching?(scene, char)
       return false if !char
-      scene.watchers.include?(char)
+      alts = AresCentral.alts(char)
+      (scene.watchers.to_a & alts).any?
     end
     
     def self.is_participant?(scene, char)
