@@ -4,7 +4,7 @@ module AresMUSH
     def self.potion_equip_armor(enactor, caster_combat, spell)
       armor = Global.read_config("spells", spell, "armor")
       client = Login.find_client(caster_combat)
-      FS3Combat.emit_to_combat caster_combat.combat, t('magic.use_potion', :name => caster_combat.name, :potion => spell)
+      FS3Combat.emit_to_combat caster_combat.combat, t('magic.potion', :name => caster_combat.name, :potion => spell)
       FS3Combat.set_armor(enactor, caster_combat, armor)
       FS3Combat.set_action(client, caster_combat, caster_combat.combat, caster_combat, FS3Combat::PotionAction, "")
     end
@@ -13,7 +13,7 @@ module AresMUSH
       weapon_specials_str = Global.read_config("spells", spell, "weapon_specials")
       weapon_specials = weapon_specials_str ? weapon_specials_str.split('+') : nil
       client = Login.find_client(caster_combat)
-      FS3Combat.emit_to_combat caster_combat.combat, t('magic.use_potion', :name => caster_combat.name, :potion => spell)
+      FS3Combat.emit_to_combat caster_combat.combat, t('magic.potion', :name => caster_combat.name, :potion => spell)
       FS3Combat.set_weapon(enactor, caster_combat, caster_combat.weapon, weapon_specials)
       FS3Combat.set_action(client, caster_combat, caster_combat.combat, caster_combat, FS3Combat::PotionAction, "")
     end
@@ -29,13 +29,13 @@ module AresMUSH
       elsif is_stun
 
       elsif weapon_type == "Explosive"
-        FS3Combat.emit_to_combat caster_combat.combat, t('magic.use_potion', :name => caster_combat.name, :potion => spell)
+        FS3Combat.emit_to_combat caster_combat.combat, t('magic.potion', :name => caster_combat.name, :potion => spell)
         FS3Combat.emit_to_combatant enactor.combatant, t('magic.target_aoe')
       elsif weapon_type == "Supressive"
-        FS3Combat.emit_to_combat caster_combat.combat, t('magic.use_potion', :name => caster_combat.name, :potion => spell)
+        FS3Combat.emit_to_combat caster_combat.combat, t('magic.potion', :name => caster_combat.name, :potion => spell)
         FS3Combat.emit_to_combatant enactor.combatant, t('magic.target_suppress')
       else
-        FS3Combat.emit_to_combat caster_combat.combat, t('magic.use_potion', :name => caster_combat.name, :potion => spell)
+        FS3Combat.emit_to_combat caster_combat.combat, t('magic.potion', :name => caster_combat.name, :potion => spell)
         FS3Combat.emit_to_combatant enactor.combatant, t('magic.target_attack')
       end
     end
@@ -43,7 +43,7 @@ module AresMUSH
 
     def self.potion_roll_spell(caster_combat, spell)
       client = Login.find_client(caster_combat)
-      FS3Combat.emit_to_combat caster_combat.combat, t('magic.use_potion', :name => caster_combat.name, :potion => spell)
+      FS3Combat.emit_to_combat caster_combat.combat, t('magic.potion', :name => caster_combat.name, :potion => spell)
       FS3Combat.set_action(client, caster_combat, caster_combat.combat, caster_combat, FS3Combat::PotionAction, "")
     end
 
@@ -88,7 +88,7 @@ module AresMUSH
 
     def self.potion_stun_spell(enactor, caster_combat, spell)
       client = Login.find_client(caster_combat)
-      FS3Combat.emit_to_combat caster_combat.combat, t('magic.use_potion', :name => caster_combat.name, :potion => spell)
+      FS3Combat.emit_to_combat caster_combat.combat, t('magic.potion', :name => caster_combat.name, :potion => spell)
       FS3Combat.emit_to_combatant enactor.combatant, t('magic.target_stun')
     end
 
