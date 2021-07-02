@@ -20,8 +20,6 @@ module AresMUSH
         targets.each do |target|
           stopped_by_shield = Magic.stopped_by_shield?(target, caster_name, spell, result)
 
-          puts "stopped_by_shield #{stopped_by_shield} && caster != target #{caster.name} #{target.name} && !using_potion #{using_potion}"
-
           if stopped_by_shield && stopped_by_shield[:shield_held] && caster != target && !using_potion
             message = stopped_by_shield[:msg]
             messages.concat [message]
@@ -121,7 +119,6 @@ module AresMUSH
         combat = false
       end
       wound = FS3Combat.worst_treatable_wound(target)
-      puts "Wound #{wound}"
       if wound.blank?
         message = [t('magic.cast_heal_no_effect', :name => caster_name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target => target.name, :points => heal_points)]
       elsif target.class == Combatant && target.death_count > 0
