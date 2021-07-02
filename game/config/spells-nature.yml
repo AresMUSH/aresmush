@@ -431,6 +431,7 @@ spells:
     level: 5
     name: Wild Shape Corvidae
     roll: true
+    rounds: 100
     school: Nature
     range: Self
     weapon: Claws
@@ -458,6 +459,7 @@ spells:
     roll: true
     school: Nature
     range: Self
+    rounds: 100
     weapon: Claws
   Wild Shape Fly:
     available: false
@@ -467,6 +469,7 @@ spells:
     effect: Transformation
     level: 5
     name: Wild Shape Fly
+    rounds: 100
     roll: true
     school: Nature
   Wild Shape Horse:
@@ -491,6 +494,7 @@ spells:
     level: 5
     name: Wild Shape
     roll: true
+    rounds: 100
     school: Nature
     range: Self
     weapon: Claws
@@ -515,6 +519,7 @@ spells:
     effect: Transformation
     level: 5
     name: Wild Shape Panthera
+    rounds: 100
     roll: true
     school: Nature
     range: Self
@@ -540,6 +545,7 @@ spells:
     effect: Transformation
     level: 5
     name: Wild Shape Lynx
+    rounds: 100
     roll: true
     school: Nature
     weapon: Claws
@@ -552,6 +558,7 @@ spells:
     effect: Transformation
     level: 5
     name: Wild Shape
+    rounds: 100
     roll: true
     school: Nature
   Wild Shape Owl:
@@ -563,6 +570,7 @@ spells:
     effect: Transformation
     level: 5
     name: Wild Shape Owl
+    rounds: 100
     roll: true
     school: Nature
     range: Self
@@ -575,6 +583,7 @@ spells:
     effect: Transformation
     level: 5
     name: Wild Shape Racoon
+    rounds: 100
     roll: true
     school: Nature
     weapon: Teeth
@@ -757,6 +766,7 @@ spells:
     effect: Transformation
     level: 7
     name: Greater Wild Shape Cervidae
+    rounds: 100
     roll: true
     school: Nature
     weapon: Antlers
@@ -769,6 +779,7 @@ spells:
     effect: Transformation
     level: 7
     name: Allows the caster to transform into any animal in the Corvidae family.
+    rounds: 100
     roll: true
     school: Nature
     range: Self
@@ -806,6 +817,7 @@ spells:
     effect: Transformation
     level: 7
     name: Wild Shape Delphinidae
+    rounds: 100
     roll: true
     school: Nature
     range: Self
