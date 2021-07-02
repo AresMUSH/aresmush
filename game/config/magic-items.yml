@@ -1,198 +1,137 @@
 ---
 magic-items:
-  Band Of The Unseen:
+  Potion:
     available: true
-    cost: 1
-    name: Band of the Unseen
-    desc: A slender golden armband, the magical item is embossed with a depiction of the antagonist god Set. He is represented traditionally here. The only variation is the brightly colored blindfold that's been tied over his eyes. When worn in the open or beneath one's clothes, the armband acts as a blockade against intrusions from the Spirit school by those who would do the wearer ill. Magic users with friendly or sincerely good intentions are not protected against.
-    spells:
-    - Enduring Mind Shield
-  Bane of Elegast:
-    name: Bane of Elegast
-    desc: Crafted to hide from the legendary king and warlord, the broken chain allows anyone who carries it to cast Invisible, the Level 5 Fire spell. It currently resides in Silver's stomach after he swallowed it and fled retribution from the queen of Immeasurable Autumn, a faerie kingdom
-    spells:
-    - Invisible
+    cost: 2
+
+  # +================================+
+  # FOR PURCHASE
+  # +================================+
   Best Friends Bracelet:
+    available: true
+    cost: 5
     name: Best Friends Bracelet
     desc: "Two silver bracelets designed to intertwine to fit into a single whole. When divided, whoever wears one half of the bracelet can telepathically communicate with the wearer of the other half as long as they remain on and within range."
     spells:
     - Telepathic Correspondence
-  Birch's Embrace:
-    name: Birch's Embrace
-    desc:  A wooden ring that upon command causes the wearer to be protectively coated in pale bark and golden leaves
-    spells:
-    - Bark Skin
-  Bracelet Of Repel:
-    name: Beaded Bracelet
-    desc: "Upon a leather cord with a silver clasp, several wooden beads are strung. Each of the beads, walnut coloured, bear letters inscribed in Soitos. The letters look as though they’ve been soldered into the wood, charred and dark.\n\nThose who know the language will recognise the word ‘depart’."
-    spells:
-    - Repel Tiny Animal
-  Blessing Of Wisakedjak:
-    name: Blessing Of Wisakedjak
-    desc: A six-point deer antler with one tip jaggedly broken off. The base is wrapped and bound in leather that ends in a loop, perfect for attaching to a belt. It grants its owner the ability to cast %xBHalf Shift (Jenu)%xn, allowing them to transform a portion of their body into a Jenu.
-    spells:
-    - Half Shift (Jenu)
   Bottled Sunshine:
+    available: true
+    cost: 3
     name: Bottled Sunshine
     desc: A bottle of sunshine, acts as a torch. Evaporates if opened.
     spells:
     - Light
-  Charismatic Ruby:
-    name: Charismatic Ruby
-    desc: Slightly larger than a silver dollar, the ruby is elegant of proportion - if excessive of size. The deep red stone is cut in perfect, circular cabochon making it ideal to set in jewelry. It allows the bearer to cast %xBCharmed%xn.
+  Birch's Embrace:
+    available: true
+    cost: 6
+    name: Birch's Embrace
+    desc:  A wooden ring that upon command causes the wearer to be protectively coated in pale bark and golden leaves
     spells:
-    - Charmed
-  Chilled Pitcher:
-    name: Chilled Pitcher
-    desc: A glass pitcher which chills any liquid poured into it.
+    - Bark Skin
   Cool Glass:
+    available: true
+    cost: 5
     name: Cool Glass
     desc: A glass pitcher which chills any liquid poured into it.
   Cloud Slippers:
+    available: true
+    cost: 6
     name: Cloud Slippers
     desc: Delicate silk slippers allowing the wearer to dance on air for a time.
     spells:
     - Air Walk
-  Eye Of The Serpent:
-    name: Eye Of The Serpent
-    desc: A briliant diamond the size of a child's fist. It allows the bearer to cast %xBClarity%xn.
-    spells:
-    - Clarity
-  Eye Of Apepnet:
-    name: Eye Of Apepnet
-    desc: The eye is a perfect orb, larger than the size of a closed fist, composed of a freckled gold stone. It is preserved in an eternally seeing state with its diamond shaped pupil large and black as night. To look upon it for too long is unnerving as if the great snake still watches one's movements. It is cool to the touch. Allows the possessor to cast %xBDreamtrap%xn on a target.
-    spells:
-    - Dreamtrap
   Everfull Flask:
+    available: true
+    cost: 3
     name: Everfull Flask
     desc: A metal drinking flask with a leather strap that never runs out of water.
     spells:
     - Create Water
   Fancy Brush:
+    available: true
+    cost: 3
     name: Fancy Brush
     desc: "A lovely silver hair brush that allows the user to change the color of their hair, texture and length. The brush must be used every hour on the hour to maintain fanciness. Allows the user to cast %xBChange Hair%xn"
     spells:
     - Change Hair
   Finger Cymbals:
+    available: true
+    cost: 6
     name: Finger Cymbals
     desc: Bronze finger symbols that when gently chimed together, allows the wielder to soothe an animal via %xBCalm Animal%xn.
     spells:
     - Calm Animal
   Guilt-Weighted Gloves:
     available: true
-    cost: 2
+    cost: 5
     name: Guilt-Weighted Gloves
     desc: Fancy purple satin gloves with slightly fraying gold embroidery along the palm and knuckles. These gloves provide a bonus to lethality
     weapon_specials: Guilt-Weighted Gloves
   Hammered Vambraces:
+    available: true
+    cost: 6
     name: Hammered Vambraces
     desc: Slightly battered vambraces that cause the wearer's hands to turn to stone
     spells:
     - Stone Fists
-  Horn Of Uktena:
-    name: Horn Of Uktena
-    desc: A bit of worn horn that allows the bearer to cast %xBPhotosynthesis%xn.
-    spells:
-    - Photosynthesis
-  Huxian's Gift:
-    name: Huxian's Gift
-    desc: 'Not an actual object, but instead an effect Asher experiences that provides a boost to his energy and a positive modifier to his actions. Those around him experience the inverse: long term exposure leads to a slow sapping of energy and eventually, exhaustion. In his presence, others experience a negative modifier to their actions. This item cannot be given away.'
-    spell_mod: 3
-    attack_mod: 3
-    weapon_specials: Huxian's Gift
-    armor_specials: Huxian's Gift
-  Igneous Rod:
-    name: Igneous Rod
-    desc:  A baton about the length of a man's forearm made from lava rock, the sort of material common in the volcanoes of Stochieion. Flames yearn slightly toward it, and it allows the bearer to cast %xBShape Fire%xn.
-    spells:
-    - Shape Fire
-  Isarnon Shackles:
-    name: Isarnon Shackles
-    desc: Shackles crafted crudely of a heavy, dark metal are connected by a short chain. In addition to restraining most motion used for casting spells, the touch of the metal drains the ability to use magic.
-    spell_mod: -7
-  Jade Jaguar Pendant:
-    name: Jade Jaguar Pendant
-    desc: "A heavy, palm-sized Mayan pendant of jade stone carved into the head of a jaguar. The jade is a cloudy teal, almost translucent where the stone has been carved down to thinner details. The jaguar head is long, sculpted of curved simple shapes, with its mouth open in a snarl and fangs bared. It is detailed despite its simplicity, the eyes, nose, and mouth all outlined with gold that has been partially worn or smoothed away by time. Two gold rings are attached to the back of the head for a cord to be strung through. It gives the bearer power over the body, allowing them to cast %xBImpair%xn and %xBMedium Heal%xn."
-    spells:
-    - Impair
-    - Medium Heal
   Kismet:
+    available: true
+    cost: 6
     name: Kismet
     desc: A deck of pristine-looking tarot cards with beautiful, unearthly artwork. When held, allows the holder to cast %xBMinor Jinx%xn.
     spells:
     - Minor Jinx
-  Konvaskr:
-    name: Konvaskr
-    desc: A flying ship that really needs a better desc.
-    spells:
-    - Massive telekinesis
   Mending Trunk:
+    available: true
+    cost: 3
     name: Mending Trunk
     desc:  A trunk that completely, if slowly, mends and cleans an item put in and left for a week.
-  Mistletoe:
-    name: Mistletoe
-    desc: A small bundle of white berries with green leaves, secured with a red bow. Gives the holder luck for a good kiss or hug.
   Ring Of Restraint:
+    available: true
+    cost: 5
     name: Ring of Restraint
     desc: A rubbery feeling ring that fits very snugly no matter who wears it. It takes the edge off all strong feelings while worn.
     spells:
       - Dampen Emotion
-  Raven's Blessing:
-    name: Raven's Blessing
-    desc:  Strung together with stiff cords and bird bones, the necklace hangs loose and just below the collarbone. The bones are bleached white and decorated with little carvings. Adhered to the bones are short, slim raven feathers. The pendant is a bird skull, but the brow has been hollowed out and set with a dull black stone that doesn't reflect any light. It grants the wearer the ability to cast Group Comprehend Languages
-    spells:
-    - Group Comprehend Languages
-  Rising Sun Signet Ring:
-    name: Rising Sun Signet Ring
-    desc: "A Greek styled, thick gold ring set with a large, round malachite stone. An intaglio signet is engraved into the deep green, marbled stone. The signet features a sun disk wrapped in two snakes, their heads facing opposite directions. The stone is flanked by feathered wings on the gold band, their balanced forms detailed and decorated with scroll-work. Allows the bearer to cast %xBShape Light%xn and %xBWild Shape Falcon%xn. "
-    spells:
-    - Wild Shape Falcon
-    - Shape Light
   Warm Knit Cap:
+    available: true
+    cost: 6
     name: Warm Knit Cap
     desc: A knit cap that takes away the chill of winter
     spells:
     - Endure Cold
   Winter's Touch:
+    available: true
+    cost: 5
     name: Winter's touch
     desc: A set of silver rings with spokes like snowflakes that allow the wearer to %xBShape Ice%xn.
     spells:
     - Shape Ice
-  Rosewing:
-    name: Rosewing
-    desc: "Just under nine inches, the slender wand of oak is beautifully polished with age. Delicate rose quartz is inlaid along the length of it in intricate designs, and it's topped with a sharp, many-pointed star of pink sapphire. Gives +1 to spellcasting."
-    spell_mod: 1
   Slay Bells:
+    available: true
+    cost: 6
     name: Slay Bells
     desc: "A set of metal bells afixed to a leather strap nearly a foot long embues the holder with additional strength to accomplish their goal."
     spells:
     - Strength
-  Soul Stone Ring:
-    name: Soul Stone Ring
-    desc: A pair of thick bronze rings each set with a single round opalescent stone. The stone changes color to indicate shifts in the emotional status of whoever sports its mate. When worn, the magic infused in the object allows the user to experience the other wearer's condition for his or her self. An excellent way to keep tabs on allies, loved ones, and mortal enemies.
-  Skofnung:
-    name: Skofnung
-    desc: Ragnar's magical sword with a soul inside.
-
-  Spear Of The Hunt:
-    name: Spear of the Hunt
-    desc: This spear is 5 feet in length with a smooth, oiled shaft that is decorated in ogham runes along one side. It has a simple, but sharp spearhead, and allows its bearer to cast Track Animal.
-    spells:
-    - Track Animal
   Wristlet Of Eternal Evergreen:
+    available: true
+    cost: 5
     name: Wristlet of Eternal Evergreen
     desc: "A bracelet of a Torejad evergreen branch that grants the wearer the ability to cast Minor Heal."
     spells:
     - Minor Heal
+  # +================================+
+  # LORE HOOKS
+  # +================================+
 
-  #LORE HOOKS
   #Adelaide's Hook
   Zhujiang's Hairpin:
     name: Zhujiang's Hairpin
     desc: "A woman's hairpin crafted in a style preferred by the courtiers of Feixuzhicheng, similar to those found in ancient China. At first glance it appears to be crafted from silver, shining with a soft, pale metallic luster, though closer inspection would show it is in fact made from delicate scales. Dragon scales. It is topped by a small ornamental depiction of a dragon made from jade, clutching a pearl in its talons. Zhujiang's Hairpin allows the bearer to cast %xBFloating Earth.%xn"
     spells:
     - Floating Earth
-    spell_mod: 1
+    spell_mod: 3
     weapon_specials: Zhujiang's Hairpin
   #Asher's Hook
   Bagua Charm:
@@ -215,7 +154,7 @@ magic-items:
     desc: "A beaded Egyptian necklace with a heavy, trapezoidal pendant of gold and enamel decorated with two lionesses facing each other. The ceramic beads are red, blue, gold, and black shaped as very stylized flames. The inlay pendant is similarly colored, the features of the lions carefully detailed to the point of looking delicate. Between them is a scarab in an oval, below a red circle that represents the sun. Allows the bearer to cast %XBWild Shape Panthera%xn."
     spells:
     - Wild Shape Panthera
-    spell_mod: 1
+    spell_mod: 3
   #Calgary's Hook
   Hell's Revenant:
     name: Hell's Revenant
@@ -223,7 +162,7 @@ magic-items:
     spells:
     - Light
     - Awaken Terror
-    spell_mod: 1
+    spell_mod: 3
   #Cameron's Hook
   Harmonia's Lyre:
     name: Harmonia's Lyre
@@ -258,15 +197,22 @@ magic-items:
   #Elke's Hook
   Dragon Visage:
     name: Dragon Visage
-    attack_mod: 1
+    attack_mod: 3
     desc: "A tang dao, a type of Chinese saber similar in shape and size to a katana. The blade is colored a deep red and subtle, creamy, wavy lines, like haman, can be seen across its surface. Before the hilt is a raised design, also cream colored, in the shape of a dragon's head with a long snout. The guard is circular and made from red steel with a lighter hue than the blade. Its grip is wrapped in a solid piece of black leather, twined with a pale cloth wrapping, and bound tight to the surface. A little longer than normal, the grip can accommodate two hands. The pommel is a quarter-circle, as red as the blade, and inlaid with etchings that have been filled with ivory. A single character resides in the middle of the pommel's face: Harmony. Allows the bearer to cast %xBIntermediate Telekinesis%xn"
     spells:
     - Intermediate Telekinesis
     armor_specials: Dragon Visage
-#Ethan's hook
+  #Erik's Hook
+  Rising Sun Signet Ring:
+    name: Rising Sun Signet Ring
+    desc: "A Greek styled, thick gold ring set with a large, round malachite stone. An intaglio signet is engraved into the deep green, marbled stone. The signet features a sun disk wrapped in two snakes, their heads facing opposite directions. The stone is flanked by feathered wings on the gold band, their balanced forms detailed and decorated with scroll-work. Allows the bearer to cast %xBShape Light%xn and %xBWild Shape Falcon%xn. "
+    spells:
+    - Wild Shape Falcon
+    - Shape Light
+  #Ethan's hook
   Burning Ring Of Fire:
     name: Burning Ring of Fire
-    attack_mod: 1
+    attack_mod: 3
     desc: "This ring appears to be made out of wood, stained a deep, dark brown, so dark that it's almost black and the grain of the wood is lost entirely. The stone is unusual, a fiery orange opal, cut and polished so that it's smooth and a person peering closely can see inside of it. Within, vague shapes can be discerned: trees and rocks, a landscape on fire with ashes cast into the wind. It's devoid of any other identifiable markings. Allows the bearer to cast %xBFire Weapon%xn and %xBObject Whisper%xn"
     spells:
     - Fire Weapon
@@ -334,6 +280,13 @@ magic-items:
     spells:
     - Invisible
     armor_specials: Ring of Nolawyn
+  #Manny's Lore Hook
+  Jade Jaguar Pendant:
+    name: Jade Jaguar Pendant
+    desc: "A heavy, palm-sized Mayan pendant of jade stone carved into the head of a jaguar. The jade is a cloudy teal, almost translucent where the stone has been carved down to thinner details. The jaguar head is long, sculpted of curved simple shapes, with its mouth open in a snarl and fangs bared. It is detailed despite its simplicity, the eyes, nose, and mouth all outlined with gold that has been partially worn or smoothed away by time. Two gold rings are attached to the back of the head for a cord to be strung through. It gives the bearer power over the body, allowing them to cast %xBImpair%xn and %xBMedium Heal%xn."
+    spells:
+    - Impair
+    - Medium Heal
   #Midori's Lore Hook
   Sun-Slayer Longbow:
     name: Sun-Slayer Longbow
@@ -354,4 +307,101 @@ magic-items:
     spells:
     - Wind Wall
     - Shape Air
-    spell_mod: 1
+    spell_mod: 3
+  # +================================+
+  # OTHER
+  # +================================+
+
+
+  Band Of The Unseen:
+    name: Band of the Unseen
+    desc: A slender golden armband, the magical item is embossed with a depiction of the antagonist god Set. He is represented traditionally here. The only variation is the brightly colored blindfold that's been tied over his eyes. When worn in the open or beneath one's clothes, the armband acts as a blockade against intrusions from the Spirit school by those who would do the wearer ill. Magic users with friendly or sincerely good intentions are not protected against.
+    spells:
+    - Enduring Mind Shield
+  Bane of Elegast:
+    name: Bane of Elegast
+    desc: Crafted to hide from the legendary king and warlord, the broken chain allows anyone who carries it to cast Invisible, the Level 5 Fire spell. It currently resides in Silver's stomach after he swallowed it and fled retribution from the queen of Immeasurable Autumn, a faerie kingdom
+    spells:
+    - Invisible
+
+
+  Bracelet Of Repel:
+    name: Beaded Bracelet
+    desc: "Upon a leather cord with a silver clasp, several wooden beads are strung. Each of the beads, walnut coloured, bear letters inscribed in Soitos. The letters look as though they’ve been soldered into the wood, charred and dark.\n\nThose who know the language will recognise the word ‘depart’."
+    spells:
+    - Repel Tiny Animal
+  Blessing Of Wisakedjak:
+    name: Blessing Of Wisakedjak
+    desc: A six-point deer antler with one tip jaggedly broken off. The base is wrapped and bound in leather that ends in a loop, perfect for attaching to a belt. It grants its owner the ability to cast %xBHalf Shift (Jenu)%xn, allowing them to transform a portion of their body into a Jenu.
+    spells:
+    - Half Shift (Jenu)
+
+  Charismatic Ruby:
+    name: Charismatic Ruby
+    desc: Slightly larger than a silver dollar, the ruby is elegant of proportion - if excessive of size. The deep red stone is cut in perfect, circular cabochon making it ideal to set in jewelry. It allows the bearer to cast %xBCharmed%xn.
+    spells:
+    - Charmed
+  Chilled Pitcher:
+    name: Chilled Pitcher
+    desc: A glass pitcher which chills any liquid poured into it.
+
+  Eye Of The Serpent:
+    name: Eye Of The Serpent
+    desc: A briliant diamond the size of a child's fist. It allows the bearer to cast %xBClarity%xn.
+    spells:
+    - Clarity
+  Eye Of Apepnet:
+    name: Eye Of Apepnet
+    desc: The eye is a perfect orb, larger than the size of a closed fist, composed of a freckled gold stone. It is preserved in an eternally seeing state with its diamond shaped pupil large and black as night. To look upon it for too long is unnerving as if the great snake still watches one's movements. It is cool to the touch. Allows the possessor to cast %xBDreamtrap%xn on a target.
+    spells:
+    - Dreamtrap
+
+  Horn Of Uktena:
+    name: Horn Of Uktena
+    desc: A bit of worn horn that allows the bearer to cast %xBPhotosynthesis%xn.
+    spells:
+    - Photosynthesis
+  Huxian's Gift:
+    name: Huxian's Gift
+    desc: 'Not an actual object, but instead an effect Asher experiences that provides a boost to his energy and a positive modifier to his actions. Those around him experience the inverse: long term exposure leads to a slow sapping of energy and eventually, exhaustion. In his presence, others experience a negative modifier to their actions. This item cannot be given away.'
+    spell_mod: 6
+    attack_mod: 6
+    weapon_specials: Huxian's Gift
+    armor_specials: Huxian's Gift
+  Igneous Rod:
+    name: Igneous Rod
+    desc:  A baton about the length of a man's forearm made from lava rock, the sort of material common in the volcanoes of Stochieion. Flames yearn slightly toward it, and it allows the bearer to cast %xBShape Fire%xn.
+    spells:
+    - Shape Fire
+  Isarnon Shackles:
+    name: Isarnon Shackles
+    desc: Shackles crafted crudely of a heavy, dark metal are connected by a short chain. In addition to restraining most motion used for casting spells, the touch of the metal drains the ability to use magic.
+    spell_mod: -7
+  Konvaskr:
+    name: Konvaskr
+    desc: A flying ship that really needs a better desc.
+    spells:
+    - Massive telekinesis
+  Mistletoe:
+    name: Mistletoe
+    desc: A small bundle of white berries with green leaves, secured with a red bow. Gives the holder luck for a good kiss or hug.
+  Raven's Blessing:
+    name: Raven's Blessing
+    desc:  Strung together with stiff cords and bird bones, the necklace hangs loose and just below the collarbone. The bones are bleached white and decorated with little carvings. Adhered to the bones are short, slim raven feathers. The pendant is a bird skull, but the brow has been hollowed out and set with a dull black stone that doesn't reflect any light. It grants the wearer the ability to cast Group Comprehend Languages
+    spells:
+    - Group Comprehend Languages
+  Rosewing:
+    name: Rosewing
+    desc: "Just under nine inches, the slender wand of oak is beautifully polished with age. Delicate rose quartz is inlaid along the length of it in intricate designs, and it's topped with a sharp, many-pointed star of pink sapphire. Gives +3 to spellcasting."
+    spell_mod: 3
+  Soul Stone Ring:
+    name: Soul Stone Ring
+    desc: A pair of thick bronze rings each set with a single round opalescent stone. The stone changes color to indicate shifts in the emotional status of whoever sports its mate. When worn, the magic infused in the object allows the user to experience the other wearer's condition for his or her self. An excellent way to keep tabs on allies, loved ones, and mortal enemies.
+  Skofnung:
+    name: Skofnung
+    desc: Ragnar's magical sword with a soul inside.
+  Spear Of The Hunt:
+    name: Spear of the Hunt
+    desc: This spear is 5 feet in length with a smooth, oiled shaft that is decorated in ogham runes along one side. It has a simple, but sharp spearhead, and allows its bearer to cast Track Animal.
+    spells:
+    - Track Animal
