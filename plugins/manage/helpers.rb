@@ -161,9 +161,6 @@ module AresMUSH
     
     def self.uninstall_plugin(name)
       Global.plugin_manager.unload_plugin(name)
-      Global.config_reader.load_game_config
-      Help.reload_help
-      Global.locale.reload
       Manage.remove_extra_plugin_from_config(name)
     end
     
