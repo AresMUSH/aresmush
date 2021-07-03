@@ -10,7 +10,7 @@ aliases:
 
 You can set any of the basic character demographics (full name, gender, etc.) on another character.
 
-`demographic <name>=<field>/<value>`
+`demographic <name>=<field>/<value>` (be sure to include proper spacing, like 'full name' or 'played by')
 
 ## Setting Age or Birthday
 

@@ -10,6 +10,7 @@ chargen:
   app_resubmit_status: OPEN
   app_review_commands:
   - app %{name}
+  - look %{name}
   - profile %{name}
   - bg %{name}
   - hooks %{name}

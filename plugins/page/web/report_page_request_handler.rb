@@ -17,6 +17,9 @@ module AresMUSH
           return { error: t('page.invalid_thread') }
         end
         
+        if (!thread.can_view?(enactor))
+          return { error: t('dispatcher.not_allowed') }
+        end
         
         found = false
         messages = []
