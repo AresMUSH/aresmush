@@ -37,9 +37,6 @@ module AresMUSH
             command_text = command % { name: model.name }
             Global.dispatcher.queue_command(client, Command.new(command_text))
           end
-          
-          desc = Describe.desc_template(model, enactor)
-          client.emit desc.render
         end
       end
     end
