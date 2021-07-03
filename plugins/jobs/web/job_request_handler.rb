@@ -32,7 +32,8 @@ module AresMUSH
         job_admins = Character.all.select { |c| Jobs.can_access_job?(c, job) && c != system_char && c != master_admin }
         
         description = edit_mode ? job.description : Website.format_markdown_for_html(job.description)
-        
+        roster_char = Character.all.select { |c| c.roster_job == job }.first
+          
         {
           id: job.id,
           title: job.title,
@@ -45,6 +46,8 @@ module AresMUSH
           fs3_enabled: FS3Skills.is_enabled?,
           is_category_admin: Jobs.can_access_category?(enactor, job.job_category),
           is_approval_job: job.author && !job.author.is_approved? && (job.author.approval_job == job),
+          is_roster_job: roster_char && job.is_open?,
+          roster_name: roster_char ? roster_char.name : nil,
           author: { name: job.author_name, id: job.author ? job.author.id : nil, icon: Website.icon_for_char(job.author) },
           assigned_to: job.assigned_to ? { name: job.assigned_to.name, icon: Website.icon_for_char(job.assigned_to) } : nil,
           description: description,

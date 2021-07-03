@@ -35,7 +35,14 @@ en:
         roster_updated: "Roster updated."
         roster_column_titles: "Played?"
         not_on_roster: "%{name} is not on the roster."
+        pending_roster_app: "There is already an application pending for that character."
+        no_roster_app_pending: "There is no application pending for that character."
+        roster_password_set: "The password has been set to: %{password}"
         removed_from_roster: "%{name} has been removed from the roster."
+        roster_app_approved: "You approve the roster app for %{name}."
+        roster_app_rejected: "You reject the roster app for %{name}."
+        roster_approval_msg: Your roster app has been approved.
+        roster_rejection_msg: Sorry, your roster app could not be approved at this time.
         played_before: "Previously Played?:"
         played_by: "Played By:"
         wiki_page: "Wiki Page:"
