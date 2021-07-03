@@ -116,6 +116,8 @@ website:
     - id: markdown
       title: Editing Help
       route: help-topic
+    - title: Wiki Archive
+      route: wiki-archive
   - title: Help
     menu:
     - title: Requests
@@ -148,3 +150,4 @@ website:
   - ".jpg"
   - ".png"
   - ".gif"
+  auto_wiki_export: true
