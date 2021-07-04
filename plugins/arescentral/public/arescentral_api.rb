@@ -12,7 +12,7 @@ module AresMUSH
     # Note: This finds ALL characters registered to the same handle, so the character 
     # you're asking about is included in the resulting list.
     def self.alts(char)
-      return [] if !char.handle
+      return [char] if !char.handle
       Character.find_by_handle(char.handle).select { |c| c }
     end
       
@@ -22,6 +22,8 @@ module AresMUSH
     end
     
     def self.is_alt?(char1, char2)
+      return false if !char1 || !char2
+      return true if char1.name == char2.name
       return false if !char1.handle
       return false if !char2.handle
       char1.handle.name == char2.handle.name
@@ -40,6 +42,5 @@ module AresMUSH
       return false if !tag2
       return tag1 == tag2
     end
-    
   end
 end
