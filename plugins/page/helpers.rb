@@ -103,26 +103,27 @@ module AresMUSH
       end
 
       everyone.each do |char| 
-        next if char == enactor   
+        next if char == enactor
         Login.notify(char, :pm, t('page.new_pm', :thread => thread.title_customized(char)), thread.id, "", false)
       end
       
       # Can't use notify_web_clients here because the notification is different for each person.
       Global.dispatcher.spawn("Page notification", nil) do
-        everyone.each do |char|          
-          title = thread.title_customized(char)
+        everyone.each do |char|    
           data = {
             id: thread.id,
             key: thread.id,
-            title: title,
+            title: "",
             author: {name: enactor.name, icon: Website.icon_for_char(enactor), id: enactor.id},
             message: Website.format_markdown_for_html(message),
             is_page: true
           }
-                  
-          clients = Global.client_monitor.clients.select { |client| client.web_char_id == char.id }
-          clients.each do |client|
-            client.web_notify :new_page, "#{data.to_json}", true
+          AresCentral.alts(char).each do |alt|
+            data[:title] = thread.title_customized(alt)
+            clients = Global.client_monitor.clients.select { |client| client.web_char_id == alt.id }
+            clients.each do |client|
+              client.web_notify :new_page, "#{data.to_json}", true
+            end
           end
         end
       end
