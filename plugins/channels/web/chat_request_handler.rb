@@ -13,11 +13,15 @@ module AresMUSH
           channels <<  Channels.build_channel_web_data(c, enactor, true)
         end
         
-        enactor.page_threads
-           .to_a
-           .each do |t|
-             channels << Channels.build_page_web_data(t, enactor, true)
+        AresCentral.alts(enactor).each do |char|
+          char.page_threads
+             .to_a
+             .each do |t|
+               if (!channels.any? { |c| c[:key] == t.id } )
+                 channels << Channels.build_page_web_data(t, char, enactor, true)
+               end
           end
+        end
 
         Login.mark_notices_read(enactor, :pm)
                  

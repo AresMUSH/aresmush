@@ -40,7 +40,6 @@ module AresMUSH
     end
     
     def self.mark_read_for_player(char, post)
-      Forum.mark_read(post, char)
       AresCentral.alts(char).each do |alt|
         Forum.mark_read(post, alt)
       end
