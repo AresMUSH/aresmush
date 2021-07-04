@@ -30,8 +30,18 @@ module AresMUSH
           dest = File.join(AresMUSH.game_path, "scripts", "music_player.js")
           FileUtils.cp src, dest
           
+          backup_path = File.join(AresMUSH.game_path, "wiki_export.zip")
+          FileUtils.rm backup_path, :force=>true
+          Zip::File.open(backup_path, 'w') do |zipfile|
+            Dir["#{export_path}/**/**"].each do |file|
+              zipfile.add(file.sub(export_path+'/',''),file)
+            end
+          end
+          
+          return nil
         rescue Exception => ex
           puts "Error doing web export: #{ex} #{ex.backtrace[0,10]}"
+          return ex
         end
       end   
       

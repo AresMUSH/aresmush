@@ -21,7 +21,10 @@ module AresMUSH
       def handle
         begin
           Global.plugin_manager.unload_plugin(load_target)
+          Global.config_reader.load_game_config
           Help.reload_help
+          Global.locale.reload
+          
           client.emit_success t('manage.plugin_unloaded', :name => load_target)
         rescue SystemNotFoundException => e
           client.emit_failure t('manage.plugin_not_found', :name => load_target)

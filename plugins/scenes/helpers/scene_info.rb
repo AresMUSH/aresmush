@@ -46,7 +46,8 @@ module AresMUSH
     
     def self.is_watching?(scene, char)
       return false if !char
-      scene.watchers.include?(char)
+      alts = AresCentral.alts(char)
+      (scene.watchers.to_a & alts).any?
     end
     
     def self.is_participant?(scene, char)
@@ -55,18 +56,25 @@ module AresMUSH
     end
     
     def self.add_participant(scene, char, enactor)
+      if (!scene.watchers.include?(char))
+        scene.watchers.add char
+      end
+
       if (!scene.participants.include?(char))
         scene.participants.add char
         
-        if (!scene.completed && char != enactor)
-          message = t('scenes.scene_notify_added_to_scene', :num => scene.id)
-          Login.notify(char, :scene, message, scene.id, "", false)
-          Login.emit_ooc_if_logged_in char, message
+        if (!scene.completed)
+          scene_data = Scenes.build_live_scene_web_data(scene, char).to_json
+          Global.client_monitor.notify_web_clients(:joined_scene, scene_data, true) do |c|
+            c == char
+          end
+          
+          if (char != enactor)
+            message = t('scenes.scene_notify_added_to_scene', :num => scene.id)
+            Login.notify(char, :scene, message, scene.id, "", false)
+            Login.emit_ooc_if_logged_in char, message
+          end
         end
-      end
-      
-      if (!scene.watchers.include?(char))
-        scene.watchers.add char
       end
     end
     

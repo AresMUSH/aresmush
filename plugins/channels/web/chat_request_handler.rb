@@ -10,13 +10,13 @@ module AresMUSH
         channels = []
         
         Channel.all.to_a.each do |c|
-          channels <<  Channels.build_channel_web_data(c, enactor)
+          channels <<  Channels.build_channel_web_data(c, enactor, true)
         end
         
         enactor.page_threads
            .to_a
            .each do |t|
-             channels << Channels.build_page_web_data(t, enactor)
+             channels << Channels.build_page_web_data(t, enactor, true)
           end
 
         Login.mark_notices_read(enactor, :pm)

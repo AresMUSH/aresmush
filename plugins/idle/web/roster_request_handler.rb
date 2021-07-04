@@ -67,6 +67,7 @@ module AresMUSH
             contact: char.roster_contact,
             groups: groups,
             demographics: demographics,
+            app_pending: char.roster_job ? true: false
         }        
       end
       
