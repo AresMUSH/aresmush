@@ -59,6 +59,9 @@ module AresMUSH
     
     # Client may be nil if sent via portal.
     def self.send_page(enactor, recipients, message, client)
+      pp recipients.map { |r| r.name }
+      pp enactor.name
+      
       message = PoseFormatter.format(enactor.name_and_alias, message)
       everyone = [enactor].concat(recipients).uniq
       recipient_names = Page.format_recipient_indicator(recipients)
