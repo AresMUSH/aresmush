@@ -24,7 +24,7 @@ Roster characters are normally claimed with no fanfare using the `roster/claim` 
 When someone tries to claim a restricted character, the system will generate a job. You can add comments to the job as normal, but instead of closing it you'll want to use one of the following commands:
 
 `roster/approve <name>=<comment>` - Approves a character. Use the **roster** character name, not the applying character.
-`roster/reject <name>=<comment>` - Approves a character. Use the **roster** character name, not the applying character.
+`roster/reject <name>=<comment>` - Rejects a character. Use the **roster** character name, not the applying character.
 
 Approving a character will reset their password and add it as a comment to the job. Rejecting a roster app will free up the roster char so others can claim them (or the original player can re-apply). You can also do roster approval/rejections on the web portal through the job screen.
 

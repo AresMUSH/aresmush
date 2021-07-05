@@ -399,9 +399,20 @@ module AresMUSH
           icon: Website.icon_for_char(c),
           muted: false
          }},
+         poseable_chars: Channels.build_posable_chars_for_page_thread(thread, enactor),
          messages: messages,
         lazy_loaded: lazy_load
         }
+    end
+    
+    def self.build_posable_chars_for_page_thread(thread, enactor)
+      return [] if !enactor
+      pose_chars = thread.characters
+         .select { |c| AresCentral.is_alt?(enactor, c) }
+           
+      pose_chars.uniq
+         .sort_by { |p| [ p == enactor ? 0 : 1, p.name ]}
+         .map { |p| { id: p.id, name: p.name, icon: Website.icon_for_char(p) }}   
     end
                       
   end
