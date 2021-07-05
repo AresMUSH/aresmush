@@ -107,7 +107,7 @@ module AresMUSH
       else
         LoginNotice.create(character: char, type: type, message: message, data: data, reference_id: reference_id, is_unread: true, timestamp: Time.now)
       end
-      unread_count = Login.count_all_unread_notifications(char)
+      unread_count = Login.count_unread_notifs_for_all_alts(char)
       Global.client_monitor.notify_web_clients(:notification_update, "#{unread_count}", true) do |c|
         c && AresCentral.is_alt?(c, char)
       end
@@ -127,7 +127,7 @@ module AresMUSH
       end
     end
     
-    def self.count_all_unread_notifications(char)
+    def self.count_unread_notifs_for_all_alts(char)
       count = 0
       AresCentral.alts(char).each do |c|
         count += c.unread_notifications.count

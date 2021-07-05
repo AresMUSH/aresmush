@@ -112,8 +112,6 @@ module AresMUSH
         everyone_plus_alts = []
         everyone.each { |c| everyone_plus_alts.concat AresCentral.alts(c) }
         
-        pp thread.id
-        pp everyone_plus_alts.map { |c| c.name }
         everyone_plus_alts.uniq.each do |char|    
           data = {
             id: thread.id,
@@ -158,7 +156,7 @@ module AresMUSH
       tracker.is_page_thread_unread?(thread)
     end
     
-    def self.mark_thread_read(thread, char)      
+    def self.mark_thread_read(thread, char)    
       tracker = char.get_or_create_read_tracker
       tracker.mark_page_thread_read(thread)
       Login.mark_notices_read(char, :pm, thread.id)
