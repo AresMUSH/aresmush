@@ -32,7 +32,7 @@ module AresMUSH
             return { error: t('dispatcher.not_allowed') }
           end
           
-          recipients = thread.characters.to_a
+          recipients = thread.characters.select { |c| c != char }
         else
           recipients = []
           

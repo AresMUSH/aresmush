@@ -366,7 +366,7 @@ module AresMUSH
       }
     end
     
-    def self.build_page_web_data(thread, enactor, owner = nil, lazy_load = false)
+    def self.build_page_web_data(thread, enactor, lazy_load = false)
       if (lazy_load)
         messages = []
       else
@@ -383,7 +383,7 @@ module AresMUSH
       is_hidden = thread.is_hidden?(enactor)
       {
          key: thread.id,
-         title: thread.title_customized(owner || enactor),
+         title: thread.title_customized(enactor),
          enabled: true,
          can_join: true,
          can_talk: true,
