@@ -109,21 +109,23 @@ module AresMUSH
       
       # Can't use notify_web_clients here because the notification is different for each person.
       Global.dispatcher.spawn("Page notification", nil) do
-        everyone.each do |char|    
+        everyone_plus_alts = []
+        everyone.each { |c| everyone_plus_alts.concat AresCentral.alts(c) }
+        
+        pp thread.id
+        pp everyone_plus_alts.map { |c| c.name }
+        everyone_plus_alts.uniq.each do |char|    
           data = {
             id: thread.id,
             key: thread.id,
-            title: "",
+            title: thread.title_customized(char),
             author: {name: enactor.name, icon: Website.icon_for_char(enactor), id: enactor.id},
             message: Website.format_markdown_for_html(message),
             is_page: true
           }
-          AresCentral.alts(char).each do |alt|
-            data[:title] = thread.title_customized(alt)
-            clients = Global.client_monitor.clients.select { |client| client.web_char_id == alt.id }
-            clients.each do |client|
-              client.web_notify :new_page, "#{data.to_json}", true
-            end
+          clients = Global.client_monitor.clients.select { |client| client.web_char_id == char.id }
+          clients.each do |client|
+            client.web_notify :new_page, "#{data.to_json}", true
           end
         end
       end
