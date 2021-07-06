@@ -4,45 +4,41 @@ module AresMUSH
       def handle(request)
         tag = request.args[:id] || ''
         tag = tag.titlecase
-        pages = WikiPage.all.select { |p| p.tags.include?(tag.downcase) }
-           .sort_by { |p| p.heading }
-           .map { |p| {
-             id: p.name,
-             heading: p.heading
-           }}
+        
+        tags = ContentTag.find(name: tag.downcase)
+        
+        pages = tags.select { |t| t.content_type == 'wiki' }.map { |t| WikiPage[t.content_id] }.map { |p| {
+          id: p.id,
+          heading: p.heading
+        }}
            
-        chars = Character.all.select { |c| c.profile_tags.include?(tag.downcase) }
-           .sort_by { |c| c.name }
-           .map { |c| {
-             id: c.id,
-             name: c.name
-           }}
-        scenes = Scene.shared_scenes.select { |s| s.tags.include?(tag.downcase) }
-           .sort_by { |s| s.date_title }
-           .map { |s| {
-             id: s.id,
-             title: s.date_title
-           }}
+        chars = tags.select { |t| t.content_type == 'char' }.map { |t| Character[t.content_id] }.map { |c| {
+          id: c.id,
+          name: c.name
+        }}
+
+        scenes = tags.select { |t| t.content_type == 'scene' }.map { |t| Scene[t.content_id] }.map { |s| {
+          id: s.id,
+          title: s.date_title
+        }}
            
-         events = Event.all.select { |e| e.tags.include?(tag.downcase) }
-         .map { |e| {
-           id: e.id,
-           title: e.title
-         }}
+        events = tags.select { |t| t.content_type == 'event' }.map { |t| Event[t.content_id] }.map { |e| {
+          id: e.id,
+          title: e.title
+        }}
+        
+        plots = tags.select { |t| t.content_type == 'plot' }.map { |t| Plot[t.content_id] }.map { |p| {
+          id: p.id,
+          title: p.title
+        }}
          
-         plots = Plot.all.select { |e| e.tags.include?(tag.downcase) }
-         .map { |p| {
-           id: p.id,
-           title: p.title
-         }}
-         
-           {
-             pages: pages,
-             chars: chars,
-             scenes: scenes,
-             events: events,
-             plots: plots
-           }
+       {
+         pages: pages,
+         chars: chars,
+         scenes: scenes,
+         events: events,
+         plots: plots
+       }
       end
     end
   end

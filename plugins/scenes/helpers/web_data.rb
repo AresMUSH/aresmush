@@ -64,7 +64,7 @@ module AresMUSH
         completed: scene.completed,
         summary: Website.format_markdown_for_html(scene.summary),
         content_warning: scene.content_warning,
-        tags: scene.tags,
+        tags: scene.content_tags,
         icdate: scene.icdate,
         is_private: scene.private_scene,
         participants: participants,

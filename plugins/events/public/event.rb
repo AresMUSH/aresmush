@@ -9,10 +9,12 @@ module AresMUSH
     attribute :reminded, :type => DataType::Boolean
     attribute :ical_uid
     attribute :content_warning
-    attribute :tags, :type => DataType::Array, :default => []
     
     reference :character, "AresMUSH::Character"
     collection :signups, "AresMUSH::EventSignup"
+    
+    # DEPRECATED - Use content tags
+    attribute :tags, :type => DataType::Array, :default => []
     
     before_save :set_uid
     before_delete :delete_signups
@@ -28,6 +30,7 @@ module AresMUSH
     
     def delete_signups
       self.signups.each { |s| s.delete }
+      Website.find_tags('event', self.id).each { |t| t.delete }
     end
     
     def organizer_name
@@ -101,6 +104,10 @@ module AresMUSH
     def date_str
       format = Global.read_config("datetime", "short_date_format")
       l(self.starts, format: format)
+    end
+    
+    def content_tags
+      Website.find_tags('event', self.id).map { |t| t.name }
     end
   end
 end

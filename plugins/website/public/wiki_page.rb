@@ -8,7 +8,6 @@ module AresMUSH
     attribute :title
     attribute :preview, :type => DataType::Hash, :default => {}
     attribute :draft, :type => DataType::Hash, :default => {}
-    attribute :tags, :type => DataType::Array, :default => []
     attribute :locked_time, :type => DataType::Time
     
     index :name_upcase
@@ -16,6 +15,10 @@ module AresMUSH
     reference :locked_by, "AresMUSH::Character"
     
     collection :wiki_page_versions, "AresMUSH::WikiPageVersion"
+
+    # DEPRECATED - use content tags
+    attribute :tags, :type => DataType::Array, :default => []
+
     before_delete :delete_versions
     before_save :save_upcase
     
@@ -83,6 +86,7 @@ module AresMUSH
     
     def delete_versions
       self.wiki_page_versions.each { |v| v.delete }
+      Website.find_tags('wiki', self.id).each { |t| t.delete }
     end
     
     def get_lock_info(enactor)
@@ -95,6 +99,10 @@ module AresMUSH
       else
         return nil
       end
+    end
+    
+    def content_tags
+      Website.find_tags('wiki', self.id).map { |t| t.name }
     end
   end
 end
