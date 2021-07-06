@@ -38,7 +38,7 @@ module AresMUSH
         page = WikiPage.create(title: title, name: name)
         version = WikiPageVersion.create(wiki_page: page, text: text, character: enactor)
         Website.add_to_recent_changes('wiki', t('webportal.wiki_created', :name => page.title), { version_id: version.id, page_name: name }, enactor.name)
-        Website.update_tags('wiki', page.id, tags)
+        Website.update_tags(page, tags)
         
         Achievements.award_achievement(enactor, "wiki_create")
         

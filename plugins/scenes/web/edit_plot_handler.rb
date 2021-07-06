@@ -42,8 +42,7 @@ module AresMUSH
         plot.update(description: request.args[:description])
         plot.update(completed: (request.args[:completed] || "").to_bool)
         
-        tags = (request.args[:tags] || [])
-        Website.update_tags('plot', plot.id, tags)
+        Website.update_tags(plot, request.args[:tags])
         
         Website.add_to_recent_changes('plot', t('scenes.plot_updated', :title => plot.title), { id: plot.id }, enactor.name)
         

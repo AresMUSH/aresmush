@@ -25,7 +25,6 @@ module AresMUSH
           return { error: t('profile.not_yet_approved') }
         end
         
-        tags = (request.args[:tags] || [])
         gallery = (request.args[:profile_gallery] || '').split.map { |g| g.downcase }
         profile_image = build_image_path(char, request.args[:profile_image])
         profile_icon = build_image_path(char, request.args[:profile_icon])
@@ -34,7 +33,7 @@ module AresMUSH
         char.update(profile_gallery: gallery)
         char.update(profile_order: (request.args[:profile_order] || "").split(',').map { |o| o.strip })
         
-        Website.update_tags('char', char.id, tags)
+        Website.update_tags(char, request.args[:tags])
         
         relationships = {}
         (request.args[:relationships] || {}).each do |name, data|

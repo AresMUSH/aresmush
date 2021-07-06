@@ -42,7 +42,7 @@ module AresMUSH
         if (!minor_edit)
           Website.add_to_recent_changes('wiki', t('webportal.wiki_updated', :name => page.title), { version_id: version.id, page_name: page.name }, enactor.name)
         end
-        Website.update_tags('wiki', page.id, tags)
+        Website.update_tags(page, tags)
         
         
         Achievements.award_achievement(enactor, "wiki_edit")

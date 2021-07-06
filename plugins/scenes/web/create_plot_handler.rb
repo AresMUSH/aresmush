@@ -35,8 +35,7 @@ module AresMUSH
           end
         end
               
-        tags = (request.args[:tags] || [])
-        Website.update_tags('plot', plot.id, tags)
+        Website.update_tags(plot, request.args[:tags])
     
         Website.add_to_recent_changes('plot', t('scenes.plot_created', :title => plot.title), { id: plot.id }, enactor.name)
     

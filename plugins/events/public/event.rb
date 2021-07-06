@@ -30,7 +30,7 @@ module AresMUSH
     
     def delete_signups
       self.signups.each { |s| s.delete }
-      Website.find_tags('event', self.id).each { |t| t.delete }
+      Website.find_tags(self).each { |t| t.delete }
     end
     
     def organizer_name
@@ -107,7 +107,7 @@ module AresMUSH
     end
     
     def content_tags
-      Website.find_tags('event', self.id).map { |t| t.name }
+      Website.find_tags(self).map { |t| t.name }
     end
   end
 end

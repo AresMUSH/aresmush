@@ -9,7 +9,7 @@ module AresMUSH
 
         char = Character[event.char_id]
         if (char.content_tags.any? { |t| t.start_with?("player")})
-          Website.update_tags('char', char.id, char.content_tags.select { |t| !t.start_with?("player:") })
+          Website.update_tags(char, char.content_tags.select { |t| !t.start_with?("player:") })
         end
       end
     end

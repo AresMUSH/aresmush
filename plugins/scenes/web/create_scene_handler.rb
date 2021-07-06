@@ -74,8 +74,7 @@ module AresMUSH
           end
         end      
       
-        tags = (request.args[:tags] || [])
-        Website.update_tags('scene', scene.id, tags)
+        Website.update_tags(scene, request.args[:tags])
       
         if (!log.blank?)
           Scenes.add_to_scene(scene, log, enactor)
