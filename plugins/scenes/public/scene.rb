@@ -23,7 +23,6 @@ module AresMUSH
     attribute :logging_enabled, :type => DataType::Boolean, :default => true
     attribute :deletion_warned, :type => DataType::Boolean, :default => false
     attribute :icdate
-    attribute :tags, :type => DataType::Array, :default => []
     attribute :content_warning
     
     collection :scene_poses, "AresMUSH::ScenePose"
@@ -38,6 +37,9 @@ module AresMUSH
     # DEPRECATED - DO NOT USE (replaced by plot links)
     reference :plot, "AresMUSH::Plot"
     set :plots, "AresMUSH::Plot"
+
+    # DEPRECATED - replaced by content tags
+    attribute :tags, :type => DataType::Array, :default => []
     
     before_delete :on_delete
     
@@ -92,6 +94,7 @@ module AresMUSH
       delete_poses_and_log
       Scenes.find_all_scene_links(self).each { |s| s.delete }
       self.plot_links.each { |p| p.delete }
+      Website.find_tags('scene', self.id).each { |t| t.delete }
     end
     
     def all_info_set?
@@ -194,5 +197,8 @@ module AresMUSH
       self.plot_links.map { |p| p.plot }
     end
     
+    def content_tags
+      Website.find_tags('scene', self.id).map { |t| t.name }
+    end
   end
 end

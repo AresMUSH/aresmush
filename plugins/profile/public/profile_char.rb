@@ -6,16 +6,19 @@ module AresMUSH
     attribute :profile_image
     attribute :profile_icon
     attribute :profile_last_edited, :type => DataType::Time
-    attribute :profile_tags, :type => DataType::Array, :default => []
     attribute :profile_gallery, :type => DataType::Array, :default => []
     attribute :profile_order, :type => DataType::Array, :default => []
     
     collection :profile_versions, "AresMUSH::ProfileVersion"
     
     before_delete :delete_versions
+
+    # DEPRECATED - use content tag
+    attribute :profile_tags, :type => DataType::Array, :default => []
     
     def delete_versions
       self.profile_versions.each { |v| v.delete }
+      Website.find_tags('char', self.id).each { |t| t.delete }
     end
     
     def last_profile_version
@@ -42,6 +45,10 @@ module AresMUSH
       end
       version = ProfileVersion.create(character: self, text: history_text, author: enactor)
       Website.add_to_recent_changes('char', t('profile.profile_updated', :name => self.name), { version_id: version.id, char_name: self.name }, enactor.name)
+    end
+    
+    def content_tags
+      Website.find_tags('char', self.id).map { |t| t.name }
     end
   end
   

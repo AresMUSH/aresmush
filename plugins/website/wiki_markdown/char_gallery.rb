@@ -13,12 +13,7 @@ module AresMUSH
                 
         include_all = helper.or_tags.include?('all') || helper.required_tags.include?('all')
         
-        matches = Character.all.select { |c| 
-          ((c.profile_tags & helper.or_tags).any? && 
-          (c.profile_tags & helper.exclude_tags).empty?) &&
-          (helper.required_tags & c.profile_tags == helper.required_tags) &&
-          (include_all ? true : c.is_active?)
-        }
+        matches = Character.all.select { |c| match_tags(c, helper) }
         
         template = HandlebarsTemplate.new(File.join(AresMUSH.plugin_path, 'website', 'templates', 'char_gallery.hbs'))
 
@@ -28,6 +23,15 @@ module AresMUSH
         }
         
         template.render(data)        
+      end
+      
+      def match_tags(c, helper)
+        tags = c.content_tags
+        
+        ((tags & helper.or_tags).any? && 
+        (tags & helper.exclude_tags).empty?) &&
+        (helper.required_tags & tagss == helper.required_tags) &&
+        (include_all ? true : c.is_active?)
       end
     end
   end

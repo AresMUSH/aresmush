@@ -49,7 +49,7 @@ module AresMUSH
           date_created: OOCTime.local_short_timestr(enactor, scene.created_at),
           summary: summary,
           content_warning: scene.content_warning,
-          tags: scene.tags,
+          tags: scene.content_tags,
           icdate: scene.icdate,
           participants: participants,
           limit: scene.limit,

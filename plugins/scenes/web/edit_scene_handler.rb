@@ -105,8 +105,8 @@ module AresMUSH
           end
         end
       
-        tags = (request.args[:tags] || []).map { |t| t.downcase }.select { |t| !t.blank? }
-        scene.update(tags: tags.map { |t| t.downcase })
+        tags = (request.args[:tags] || [])
+        Website.update_tags('scene', scene.id, tags)
       
         {}
       end
