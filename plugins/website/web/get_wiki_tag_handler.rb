@@ -5,40 +5,26 @@ module AresMUSH
         tag = request.args[:id] || ''
         tag = tag.titlecase
         
-        tags = ContentTag.find(name: tag.downcase)
+        data = []
         
-        pages = tags.select { |t| t.content_type == 'wiki' }.map { |t| WikiPage[t.content_id] }.map { |p| {
-          id: p.id,
-          heading: p.heading
-        }}
-           
-        chars = tags.select { |t| t.content_type == 'char' }.map { |t| Character[t.content_id] }.map { |c| {
-          id: c.id,
-          name: c.name
-        }}
-
-        scenes = tags.select { |t| t.content_type == 'scene' }.map { |t| Scene[t.content_id] }.map { |s| {
-          id: s.id,
-          title: s.date_title
-        }}
-           
-        events = tags.select { |t| t.content_type == 'event' }.map { |t| Event[t.content_id] }.map { |e| {
-          id: e.id,
-          title: e.title
-        }}
+        groups = ContentTag.find(name: tag.downcase)
+          .group_by { |t| Website.title_for_tag_group(t) }
         
-        plots = tags.select { |t| t.content_type == 'plot' }.map { |t| Plot[t.content_id] }.map { |p| {
-          id: p.id,
-          title: p.title
-        }}
-         
-       {
-         pages: pages,
-         chars: chars,
-         scenes: scenes,
-         events: events,
-         plots: plots
-       }
+        groups.each do |name, tags|
+          data << {
+            name: name,
+            items: tags.map { |t| {
+              id: t.content_id,
+              route: Website.route_for_tag(t),
+              title: Website.title_for_tag_item(t)
+            }
+            }}
+        end
+        
+        {
+          name: tag,
+          groups: data
+        }
       end
     end
   end

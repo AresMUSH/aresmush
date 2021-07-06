@@ -86,7 +86,7 @@ module AresMUSH
     
     def delete_versions
       self.wiki_page_versions.each { |v| v.delete }
-      Website.find_tags('wiki', self.id).each { |t| t.delete }
+      Website.find_tags(self).each { |t| t.delete }
     end
     
     def get_lock_info(enactor)
@@ -102,7 +102,7 @@ module AresMUSH
     end
     
     def content_tags
-      Website.find_tags('wiki', self.id).map { |t| t.name }
+      Website.find_tags(self).map { |t| t.name }
     end
   end
 end

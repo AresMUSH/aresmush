@@ -40,11 +40,11 @@ module AresMUSH
     
     def on_delete
       self.plot_links.each { |p| p.delete }
-      Website.find_tags('plot', self.id).each { |t| t.delete }
+      Website.find_tags(self).each { |t| t.delete }
     end
     
     def content_tags
-      Website.find_tags('plot', self.id).map { |t| t.name }
+      Website.find_tags(self).map { |t| t.name }
     end
   end
 end
