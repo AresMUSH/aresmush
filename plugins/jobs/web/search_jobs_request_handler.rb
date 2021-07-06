@@ -8,6 +8,7 @@ module AresMUSH
         search_category = (request.args[:searchCategory] || "").strip
         search_status = (request.args[:searchStatus] || "").strip
         search_token = request.args[:searchToken] || ""
+        search_tag = request.args[:searchTag] || ""
         enactor = request.enactor
         
         error = Website.check_login(request)
@@ -43,6 +44,10 @@ module AresMUSH
             jobs = jobs.select { |j| "#{j.description} #{Jobs.visible_replies(enactor, j).map { |r| r.message }.join(' ')}" =~ /\b#{search_text}\b/i }
           end
                         
+          if (!search_tag.blank?)
+            jobs_with_tag = ContentTag.find(content_type: 'AresMUSH::Job', name: search_tag.downcase).map { |t| "#{t.content_id}" }
+            jobs = jobs.select { |c| jobs_with_tag.include?("#{c.id}") }
+          end
         
           data = jobs.sort_by { |j| j.created_at }.reverse.map { |j| {
               id: j.id,

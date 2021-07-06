@@ -1,6 +1,7 @@
 module AresMUSH
   class Plot < Ohm::Model
     include ObjectModel
+    include HasContentTags
     
     attribute :title
     attribute :description
@@ -40,11 +41,6 @@ module AresMUSH
     
     def on_delete
       self.plot_links.each { |p| p.delete }
-      Website.find_tags(self).each { |t| t.delete }
-    end
-    
-    def content_tags
-      Website.find_tags(self).map { |t| t.name }
     end
   end
 end

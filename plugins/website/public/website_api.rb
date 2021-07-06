@@ -68,12 +68,6 @@ module AresMUSH
       actor && actor.has_permission?("manage_theme")
     end
     
-    def self.find_tags(model)
-      type = model.class.to_s
-      id = model.id.to_s
-      ContentTag.find(content_type: type, content_id: id)
-    end
-    
     def self.update_tags(model, tags)
       tags = (tags || []).map { |t| t.downcase }.select { |t| !t.blank? }
       type = model.class.to_s

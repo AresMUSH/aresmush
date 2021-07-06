@@ -51,6 +51,7 @@ module AresMUSH
           author: { name: job.author_name, id: job.author ? job.author.id : nil, icon: Website.icon_for_char(job.author) },
           assigned_to: job.assigned_to ? { name: job.assigned_to.name, icon: Website.icon_for_char(job.assigned_to) } : nil,
           description: description,
+          tags: job.content_tags,
           unread_jobs_count: is_job_admin ? enactor.unread_jobs.count : enactor.unread_requests.count,
           replies: Jobs.visible_replies(enactor, job).map { |r| {
             author: { name: r.author_name, icon: Website.icon_for_char(r.author) },
