@@ -15,6 +15,9 @@ module AresMUSH
         Event.all.each do |e|
           tags = tags.concat e.tags
         end
+        Plot.all.each do |p|
+          tags = tags.concat p.tags
+        end
         
       
         tags.uniq.sort

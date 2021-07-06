@@ -30,11 +30,18 @@ module AresMUSH
            title: e.title
          }}
          
+         plots = Plot.all.select { |e| e.tags.include?(tag.downcase) }
+         .map { |p| {
+           id: p.id,
+           title: p.title
+         }}
+         
            {
              pages: pages,
              chars: chars,
              scenes: scenes,
-             events: events
+             events: events,
+             plots: plots
            }
       end
     end

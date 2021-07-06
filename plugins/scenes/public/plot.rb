@@ -7,6 +7,7 @@ module AresMUSH
     attribute :summary
     attribute :completed, :type => DataType::Boolean
     attribute :content_warning
+    attribute :tags, :type => DataType::Array, :default => []
     
     set :storytellers, "AresMUSH::Character"
     
@@ -41,5 +42,10 @@ module AresMUSH
     def on_delete
       self.plot_links.each { |p| p.delete }
     end
+    
+    def tags_text
+      self.tags.join(" ")
+    end
+    
   end
 end
