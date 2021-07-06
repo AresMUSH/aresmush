@@ -62,7 +62,8 @@ module AresMUSH
              can_edit: Forum.can_edit_post?(enactor, topic),
              authors: Forum.get_authorable_chars(enactor, category),
              can_pin: Forum.can_manage_forum?(enactor),
-             is_pinned: topic.is_pinned
+             is_pinned: topic.is_pinned,
+             tags: topic.content_tags
              
         }
       end

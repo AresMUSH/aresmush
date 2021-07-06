@@ -2,6 +2,7 @@ module AresMUSH
   class WikiPage < Ohm::Model
     include ObjectModel
     include FindByName
+    include HasContentTags
     
     attribute :name
     attribute :name_upcase
@@ -86,7 +87,6 @@ module AresMUSH
     
     def delete_versions
       self.wiki_page_versions.each { |v| v.delete }
-      Website.find_tags(self).each { |t| t.delete }
     end
     
     def get_lock_info(enactor)
@@ -99,10 +99,6 @@ module AresMUSH
       else
         return nil
       end
-    end
-    
-    def content_tags
-      Website.find_tags(self).map { |t| t.name }
     end
   end
 end

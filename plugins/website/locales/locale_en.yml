@@ -29,3 +29,4 @@ en:
         exporting_wiki: "Exporting wiki. This will take a minute. You'll see a message when it's done."
         wiki_export_error: "There was a problem exporting the wiki. Check the log for details."
         wiki_export_success: "Wiki export complete."
+        no_tag_content_visible: "You don't have access to any content in that tag."

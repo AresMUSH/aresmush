@@ -176,11 +176,13 @@ module AresMUSH
       end
     end
     
+    # allow_author lets them access jobs in categories they wouldn't ordinarily be able to see, if they are the author.
     def self.can_access_job?(enactor, job, allow_author = false)
       !Jobs.check_job_access(enactor, job, allow_author)
     end
     
     def self.check_job_access(enactor, job, allow_author = false)
+      return t('jobs.cant_view_job') if !enactor
       if (allow_author)
         return nil if enactor == job.author
         return nil if job.participants.include?(enactor)

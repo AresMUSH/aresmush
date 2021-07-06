@@ -2,6 +2,7 @@ module AresMUSH
   
   class Scene < Ohm::Model
     include ObjectModel
+    include HasContentTags
     
     reference :room, "AresMUSH::Room"
     reference :owner, "AresMUSH::Character"
@@ -94,7 +95,6 @@ module AresMUSH
       delete_poses_and_log
       Scenes.find_all_scene_links(self).each { |s| s.delete }
       self.plot_links.each { |p| p.delete }
-      Website.find_tags(self).each { |t| t.delete }
     end
     
     def all_info_set?
@@ -195,10 +195,6 @@ module AresMUSH
     
     def related_plots
       self.plot_links.map { |p| p.plot }
-    end
-    
-    def content_tags
-      Website.find_tags(self).map { |t| t.name }
     end
   end
 end

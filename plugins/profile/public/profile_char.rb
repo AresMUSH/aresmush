@@ -1,5 +1,7 @@
 module AresMUSH
   class Character
+    include HasContentTags
+
     attribute :profile, :type => DataType::Hash, :default => {}   
     attribute :relationships, :type => DataType::Hash, :default => {}
     attribute :relationships_category_order, :type => DataType::Array, :default => []
@@ -18,7 +20,6 @@ module AresMUSH
     
     def delete_versions
       self.profile_versions.each { |v| v.delete }
-      Website.find_tags(self).each { |t| t.delete }
     end
     
     def last_profile_version
@@ -45,10 +46,6 @@ module AresMUSH
       end
       version = ProfileVersion.create(character: self, text: history_text, author: enactor)
       Website.add_to_recent_changes('char', t('profile.profile_updated', :name => self.name), { version_id: version.id, char_name: self.name }, enactor.name)
-    end
-    
-    def content_tags
-      Website.find_tags(self).map { |t| t.name }
     end
   end
   

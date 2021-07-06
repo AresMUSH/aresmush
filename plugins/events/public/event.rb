@@ -2,6 +2,7 @@ module AresMUSH
   
   class Event < Ohm::Model
     include ObjectModel
+    include HasContentTags
 
     attribute :title
     attribute :description
@@ -30,7 +31,6 @@ module AresMUSH
     
     def delete_signups
       self.signups.each { |s| s.delete }
-      Website.find_tags(self).each { |t| t.delete }
     end
     
     def organizer_name
@@ -100,14 +100,9 @@ module AresMUSH
       "#{formatted_time}#{timezone}"
     end
     
-    
     def date_str
       format = Global.read_config("datetime", "short_date_format")
       l(self.starts, format: format)
-    end
-    
-    def content_tags
-      Website.find_tags(self).map { |t| t.name }
     end
   end
 end
