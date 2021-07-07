@@ -22,8 +22,11 @@ module AresMUSH
         
         Channels.leave_channel(char, channel)
         
+        data = Channels.build_channel_web_data(channel, enactor)
         {
-          enabled: AresCentral.alts(enactor).any? { |a| Channels.is_on_channel?(a, channel) }
+          enabled: data[:enabled],
+          who: data[:who],
+          poseable_chars: data[:poseable_chars]
         }
       end
     end
