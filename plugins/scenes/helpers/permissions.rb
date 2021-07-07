@@ -25,7 +25,7 @@ module AresMUSH
       if (scene.shared)
         return true if Scenes.can_manage_scenes?(actor)
       end
-      scene.participants.include?(actor)
+      (scene.participants.to_a & AresCentral.alts(actor)).any?
     end
     
     def self.can_delete_scene?(actor, scene)
