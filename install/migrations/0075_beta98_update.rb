@@ -3,24 +3,32 @@ module AresMUSH
   module Migrations
     class MigrationBeta98Update
       def require_restart
-        true
+        false
       end
       
       def migrate
         Global.logger.debug "Creating tags."
 
-        WikiPage.all.each do |p|
-          Website.update_tags(p, p.tags)
+        if (ContentTag.all.count == 0)
+          WikiPage.all.each do |p|
+            Website.update_tags(p, p.tags)
+          end
+          Character.all.each do |c|
+            Website.update_tags(c, c.profile_tags)
+          end
+          Scene.shared_scenes.each do |s|
+            Website.update_tags(s, s.tags)
+          end
+          Event.all.each do |e|
+            Website.update_tags(e, e.tags)
+          end
         end
-        Character.all.each do |c|
-          Website.update_tags(c, c.profile_tags)
-        end
-        Scene.shared_scenes.each do |s|
-          Website.update_tags(s, s.tags)
-        end
-        Event.all.each do |e|
-          Website.update_tags(e, e.tags)
-        end
+        
+        Global.logger.debug "Adding xp aliases."
+        config = DatabaseMigrator.read_config_file("fs3skills_misc.yml")
+        config['fs3skills']['shortcuts']['xp/subtract'] = 'xp/remove'
+        config['fs3skills']['shortcuts']['xp/add'] = 'xp/award'
+        DatabaseMigrator.write_config_file("fs3skills_misc.yml", config)     
       end
     end
   end    
