@@ -110,7 +110,7 @@ module AresMUSH
       # Can't use notify_web_clients here because the notification is different for each person.
       Global.dispatcher.spawn("Page notification", nil) do
         everyone_plus_alts = []
-        everyone.each { |c| everyone_plus_alts.concat AresCentral.alts(c) }
+        everyone.each { |c| everyone_plus_alts.concat AresCentral.play_screen_alts(c) }
         
         everyone_plus_alts.uniq.each do |char|    
           data = {

@@ -195,7 +195,7 @@ module AresMUSH
     end
 
     def self.alts_on_channel(char, channel)
-      (channel.characters.to_a & AresCentral.alts(char))
+      (channel.characters.to_a & AresCentral.play_screen_alts(char))
     end
     
     def self.has_alt_on_channel?(char, channel)
@@ -352,7 +352,7 @@ module AresMUSH
           }
       end
       
-      alts = AresCentral.alts(enactor)
+      alts = AresCentral.play_screen_alts(enactor)
       
       {
         key: channel.name.downcase,
@@ -396,7 +396,7 @@ module AresMUSH
             }}        
       end
       
-      alts = AresCentral.alts(enactor)
+      alts = AresCentral.play_screen_alts(enactor)
       
       is_hidden = thread.is_hidden?(enactor)
       {

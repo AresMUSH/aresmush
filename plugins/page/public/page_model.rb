@@ -41,7 +41,7 @@ module AresMUSH
     end
     
     def can_view?(viewer)
-      (self.characters.to_a & AresCentral.alts(viewer)).any?
+      (self.characters.to_a & AresCentral.play_screen_alts(viewer)).any?
     end
   end
   

@@ -16,7 +16,7 @@ module AresMUSH
       return true if !scene.is_private?
       return true if actor.room == scene.room
       return true if scene.invited.include?(actor)
-      (scene.participants.to_a & AresCentral.alts(actor)).any?
+      (scene.participants.to_a & AresCentral.play_screen_alts(actor)).any?
     end
     
     def self.can_edit_scene?(actor, scene)
@@ -25,7 +25,7 @@ module AresMUSH
       if (scene.shared)
         return true if Scenes.can_manage_scenes?(actor)
       end
-      (scene.participants.to_a & AresCentral.alts(actor)).any?
+      (scene.participants.to_a & AresCentral.play_screen_alts(actor)).any?
     end
     
     def self.can_delete_scene?(actor, scene)

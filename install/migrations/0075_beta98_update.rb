@@ -28,7 +28,10 @@ module AresMUSH
         config = DatabaseMigrator.read_config_file("fs3skills_misc.yml")
         config['fs3skills']['shortcuts']['xp/subtract'] = 'xp/remove'
         config['fs3skills']['shortcuts']['xp/add'] = 'xp/award'
-        DatabaseMigrator.write_config_file("fs3skills_misc.yml", config)     
+        DatabaseMigrator.write_config_file("fs3skills_misc.yml", config)
+        
+        Global.logger.debug "Set default play screen."
+        Character.all.each { |c| c.update(unified_play_screen: true)}
       end
     end
   end    
