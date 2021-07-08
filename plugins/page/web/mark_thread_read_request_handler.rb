@@ -18,7 +18,13 @@ module AresMUSH
         end
         
         
-        Page.mark_thread_read(thread, enactor)
+        if (enactor.unified_play_screen)
+          thread.characters.each do |p|
+            if (AresCentral.is_alt?(p, enactor))
+              Page.mark_thread_read(thread, p)
+            end
+          end
+        end
          
         {
         }

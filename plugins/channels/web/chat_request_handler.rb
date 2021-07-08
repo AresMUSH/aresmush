@@ -14,7 +14,7 @@ module AresMUSH
           channels <<  Channels.build_channel_web_data(c, enactor, true)
         end
         
-        AresCentral.alts(enactor).each do |char|
+        AresCentral.play_screen_alts(enactor).each do |char|
           char.page_threads
              .to_a
              .each do |t|

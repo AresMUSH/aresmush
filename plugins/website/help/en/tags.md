@@ -7,7 +7,7 @@ aliases:
 
 # Content Tags
 
-Content tags are like internet hashtags: a single-word label (you my use hyphens) that lets you organize related content. Many things on the web portal support tags: characters, scenes, wiki pages, forum posts, events, and jobs. 
+Content tags are like internet hashtags: a single-word label (you may use hyphens) that lets you organize related content. Many things on the web portal support tags: characters, scenes, wiki pages, forum posts, events, and jobs. 
 
 If a type of content supports tags, you will see an explicit "tags" field when editing. Here you can provide a space/comma-separated list of tags you wish to apply. (Forum posts are special - see below.)
 
