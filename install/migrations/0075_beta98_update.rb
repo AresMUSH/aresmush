@@ -32,6 +32,10 @@ module AresMUSH
         
         Global.logger.debug "Set default play screen."
         Character.all.each { |c| c.update(unified_play_screen: true)}
+        
+        Global.logger.debug "Combat messages."
+        Combat.all.each { |c| c.update(messages: [])}
+        
       end
     end
   end    

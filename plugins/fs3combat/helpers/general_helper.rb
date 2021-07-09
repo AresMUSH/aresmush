@@ -11,6 +11,10 @@ module AresMUSH
       actor.has_permission?("manage_combat")
     end
     
+    def self.can_manage_combat_from_web?(actor, combat)
+      AresCentral.play_screen_alts(actor).any? { |a| FS3Combat.can_manage_combat?(a, combat) }
+    end
+    
     def self.combats
       Combat.all.sort { |c| c.num }.reverse
     end
@@ -69,6 +73,13 @@ module AresMUSH
          c && c.combatant && c.combatant.combat == combat
       end
 
+      messages = combat.messages
+      messages << message
+      if (messages.length > 200)
+        messages.pop
+      end
+      combat.update(messages: messages)
+      
       combat.combatants.each do |combatant|
         FS3Combat.emit_to_combatant(combatant, message, filter_for_screenreader)
       end
@@ -221,7 +232,8 @@ module AresMUSH
     end
     
     def self.build_combat_web_data(combat, viewer)
-      can_manage = FS3Combat.can_manage_combat?(viewer, combat)
+      can_manage = viewer && AresCentral.play_screen_alts(viewer).any? { |a| FS3Combat.can_manage_combat?(a, combat) }
+      viewer_in_combat = viewer && AresCentral.play_screen_alts(viewer).any? { |a| a.combat == combat }
       
       teams = combat.active_combatants.sort_by { |c| c.team }
         .group_by { |c| c.team }
@@ -234,17 +246,16 @@ module AresMUSH
           }
         }
       
-      viewer_in_combat = viewer && viewer.combat == combat
       
       {
         id: combat.id,
-        combatant_id: viewer_in_combat ? viewer.combatant.id : nil,
         organizer: combat.organizer.name,
         can_manage: can_manage,
         combatant_types: FS3Combat.combatant_types.keys,
         teams: teams,
         in_combat: viewer_in_combat,
-        luck_points: viewer ? viewer.fs3_luck.floor : 0
+        messages: Website.format_markdown_for_html(combat.messages.join("\n")),
+        scene: combat.scene ? combat.scene.id : nil
       }
     end
     
