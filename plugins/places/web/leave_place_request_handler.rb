@@ -3,8 +3,9 @@ module AresMUSH
     class LeavePlaceRequestHandler
       def handle(request)
         scene = Scene[request.args[:scene_id]]
-        enactor = request.enactor
-        
+        enactor = request.enactor        
+        sender_name = request.args[:sender]
+
         error = Website.check_login(request)
         return error if error
         
@@ -13,14 +14,23 @@ module AresMUSH
         if (!scene)
           return { error: t('webportal.not_found') }
         end
+
+        sender = Character.named(sender_name)
+        if (!sender)
+          return { error: t('webportal.not_found') }
+        end
+        
+        if (!AresCentral.is_alt?(sender, enactor))
+          return { error: t('dispatcher.not_allowed') }
+        end
         
         if (scene.completed)
           return { error: t('places.scene_already_completed') }
         end
-        place = enactor.place(scene.room)
+        place = sender.place(scene.room)
       
         if (place)
-          Places.leave_place(enactor, place)
+          Places.leave_place(sender, place)
         end
         
         {}
