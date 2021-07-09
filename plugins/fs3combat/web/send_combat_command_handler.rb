@@ -21,28 +21,32 @@ module AresMUSH
     class SendCombatCommandRequestHandler
       def handle(request)
         combat_id = request.args[:combat_id]
-        combatant_id = request.args[:combatant_id]
+        sender_name = request.args[:sender]
         command_text = request.args[:command]
         enactor = request.enactor
-
+                
         error = Website.check_login(request)
         return error if error
         
+        sender = sender_name.blank? ? enactor : Character.named(sender_name)
         combat = Combat[combat_id]
-        combatant = Combatant[combatant_id]
-        if (!combat || !combatant)
+        if (!combat || !sender)
           return { error: t('webportal.not_found') }
         end
-
-        if (combatant.combat != combat)
+        
+        if (!AresCentral.is_alt?(sender, enactor))
+          return { error: t('dispatcher.not_allowed') }
+        end
+        
+        if (sender.combat != combat)
            return { error: t('fs3combat.you_are_not_in_combat') }
         end
         
         cmd = Command.new(command_text)
         
         client = DummyClient.new
-        handler_class = FS3Combat.get_cmd_handler(client, cmd, enactor)
-        handler = handler_class.new(client, cmd, enactor)
+        handler_class = FS3Combat.get_cmd_handler(client, cmd, sender)
+        handler = handler_class.new(client, cmd, sender)
         handler.on_command
          
         { 
