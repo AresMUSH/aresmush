@@ -139,9 +139,13 @@ module AresMUSH
       end
       
       def self.export_chars
-        approved_chars = Chargen.approved_chars.select { |c| !c.is_admin? && c.is_approved? }.sort_by { |c| c.name }
+        approved_chars = Chargen.approved_chars.select { |c| !c.is_admin? && c.is_approved? }
+        gone_chars = Character.all.select { |c| c.idle_state == 'Gone' }
+        dead_chars = Character.all.select { |c| c.idle_state == 'Dead' }
+
+        all_chars = approved_chars.concat(gone_chars).concat(dead_chars)
         
-        approved_chars.each do |c|
+        all_chars.sort_by { |c| c.name }.each do |c|
           puts "Parsing character #{c.name}"
         
           page_name = "#{c.name}.html"
@@ -165,7 +169,7 @@ module AresMUSH
         end
         
         File.open(File.join(export_path, "characters.html"), 'w') do |f|
-          data = approved_chars.map { |c| 
+          data = all_chars.map { |c| 
             {
               name: c.name,
               icon: Website.icon_for_char(c)

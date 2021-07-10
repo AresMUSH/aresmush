@@ -4,7 +4,7 @@ module AresMUSH
       def handle(request)
         enactor = request.enactor
         text = request.args[:text]
-        tags = (request.args[:tags] || []).map { |t| t.downcase }.select { |t| !t.blank? }
+        tags = (request.args[:tags] || [])
         title = request.args[:title]
         name = request.args[:name]
     
@@ -35,9 +35,10 @@ module AresMUSH
           return { error: t('dispatcher.not_allowed') }
         end
       
-        page = WikiPage.create(tags: tags, title: title, name: name)
+        page = WikiPage.create(title: title, name: name)
         version = WikiPageVersion.create(wiki_page: page, text: text, character: enactor)
         Website.add_to_recent_changes('wiki', t('webportal.wiki_created', :name => page.title), { version_id: version.id, page_name: name }, enactor.name)
+        Website.update_tags(page, tags)
         
         Achievements.award_achievement(enactor, "wiki_create")
         

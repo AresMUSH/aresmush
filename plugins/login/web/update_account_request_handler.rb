@@ -7,6 +7,7 @@ module AresMUSH
         email = request.args[:email]
         timezone = request.args[:timezone]
         pw = request.args[:confirm_password]
+        unified_play_screen = request.args[:unified_play_screen]
 
         error = Website.check_login(request)
         return error if error
@@ -42,6 +43,8 @@ module AresMUSH
             return { error: timezone_error }
           end
         end
+        
+        enactor.update(unified_play_screen: unified_play_screen)
         
         {
         }

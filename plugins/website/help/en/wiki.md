@@ -21,6 +21,10 @@ Changes will appear in the 'Recent Changes' page, which admins can use for revie
 
 Wiki pages use [markdown formatting](/help/markdown), with various "extensions" available for MUSH-specific things like dynamic character or scene lists.
 
+## Content Tags
+
+Wiki pages, along with many other kinds of data, can have content tags to help categorize them.  See [Tags](/help/tags) for more info.
+
 ## Viewing History and Source
 
 The 'Source/History' button at the bottom of a wiki page will show you a list of changes to that page.  You can see the page source (the text and formatting codes) of any version, and compare it the prior version.

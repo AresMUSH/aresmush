@@ -16,7 +16,13 @@ module AresMUSH
           return { error: t('scenes.scene_is_private') }
         end
        
-        scene.mark_read(enactor)
+        if (enactor.unified_play_screen)
+          scene.participants.each do |p|
+            if (AresCentral.is_alt?(p, enactor))
+              scene.mark_read(p)
+            end
+          end
+        end
        
         {}
       end

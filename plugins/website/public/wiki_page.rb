@@ -2,13 +2,13 @@ module AresMUSH
   class WikiPage < Ohm::Model
     include ObjectModel
     include FindByName
+    include HasContentTags
     
     attribute :name
     attribute :name_upcase
     attribute :title
     attribute :preview, :type => DataType::Hash, :default => {}
     attribute :draft, :type => DataType::Hash, :default => {}
-    attribute :tags, :type => DataType::Array, :default => []
     attribute :locked_time, :type => DataType::Time
     
     index :name_upcase
@@ -16,6 +16,10 @@ module AresMUSH
     reference :locked_by, "AresMUSH::Character"
     
     collection :wiki_page_versions, "AresMUSH::WikiPageVersion"
+
+    # DEPRECATED - use content tags
+    attribute :tags, :type => DataType::Array, :default => []
+
     before_delete :delete_versions
     before_save :save_upcase
     
