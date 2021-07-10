@@ -19,7 +19,7 @@ module AresMUSH
              .to_a
              .each do |t|
                if (!channels.any? { |c| c[:key] == t.id } )
-                 channels << Channels.build_page_web_data(t, enactor, true)
+                 channels << Page.build_page_web_data(t, enactor, true)
                end
           end
           
