@@ -23,7 +23,8 @@ module AresMUSH
     end
     
     def title_without_viewer(viewer)
-      self.characters.to_a.select { |c| c != viewer }.sort_by { |c| c.name }.map { |c| c.name }.join(" ")
+      #self.characters.to_a.select { |c| c != viewer }.sort_by { |c| c.name }.map { |c| c.name }.join(" ")
+      self.characters.to_a.sort_by { |c| [AresCentral.is_alt?(c, viewer) ? 0 : 1, c.name] }.map { |c| c.name }.join(" ")
     end
     
     def sorted_messages
@@ -40,7 +41,7 @@ module AresMUSH
     end
     
     def can_view?(viewer)
-      self.characters.include?(viewer)
+      (self.characters.to_a & AresCentral.play_screen_alts(viewer)).any?
     end
   end
   

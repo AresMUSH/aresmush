@@ -1,18 +1,22 @@
 module AresMUSH
   class Character
+    include HasContentTags
+
     attribute :profile, :type => DataType::Hash, :default => {}   
     attribute :relationships, :type => DataType::Hash, :default => {}
     attribute :relationships_category_order, :type => DataType::Array, :default => []
     attribute :profile_image
     attribute :profile_icon
     attribute :profile_last_edited, :type => DataType::Time
-    attribute :profile_tags, :type => DataType::Array, :default => []
     attribute :profile_gallery, :type => DataType::Array, :default => []
     attribute :profile_order, :type => DataType::Array, :default => []
     
     collection :profile_versions, "AresMUSH::ProfileVersion"
     
     before_delete :delete_versions
+
+    # DEPRECATED - use content tag
+    attribute :profile_tags, :type => DataType::Array, :default => []
     
     def delete_versions
       self.profile_versions.each { |v| v.delete }

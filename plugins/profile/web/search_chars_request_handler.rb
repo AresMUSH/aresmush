@@ -33,7 +33,8 @@ module AresMUSH
         end
         
         if (!search_tag.blank?)
-          chars = chars.select { |p| p.profile_tags.include?(search_tag.downcase) }
+          chars_with_tag = ContentTag.find(content_type: 'AresMUSH::Character', name: search_tag.downcase).map { |t| "#{t.content_id}" }
+          chars = chars.select { |c| chars_with_tag.include?("#{c.id}") }
         end
 
         if (!search_relation.blank?)

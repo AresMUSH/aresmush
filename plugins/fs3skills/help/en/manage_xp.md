@@ -12,6 +12,7 @@ aliases:
 Those with the proper permissions can award XP.
 
 `xp/award <name>=<# of XP>` - Awards XP.
+`xp/remove <name>=<# of XP>` - Awards XP.
 `xp <name>` - Views someone's XP progress.
 
 If someone accidentally spends XP on the wrong skill, you can use the 'undo' command.  This will refund them 1XP and reset the learning time on the incorrect skill.  If the XP had resulted in a skill raising a level, this command will reduce the skill level.

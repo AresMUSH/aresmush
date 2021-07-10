@@ -52,6 +52,8 @@ module AresMUSH
         return GetPlayerRequestHandler
       when "linkHandle"
         return HandleLinkRequestHandler
+      when "UnifyPlayScreen"
+        return UnifiedPlayScreenRequestHandler
       end
       nil
     end

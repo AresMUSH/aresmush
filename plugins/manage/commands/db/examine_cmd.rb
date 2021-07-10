@@ -36,14 +36,15 @@ module AresMUSH
 
         line = "-".repeat(78)
         if (self.attr_name)
-          attr_val = model.attributes[self.attr_name.to_sym]
-          display = "#{line}\n#{self.attr_name}: #{attr_val}\n#{line}"
+          attrs = model.attributes.keys
+             .select { |k| k.to_s.include?(self.attr_name) }
+             .map { |k| "#{k}: #{model.attributes[k]}" }
+          template = BorderedListTemplate.new attrs, self.attr_name
+          client.emit template.render
         else
           json = model.print_json
-          display = "#{line}\n#{model.name} (#{model.dbref})\n\n#{json}#{}\n#{line}"
+          client.emit_raw "#{line}\n#{model.name} (#{model.dbref})\n\n#{json}#{}\n#{line}"
         end
-        
-        client.emit_raw display
       end
       
       def print_model

@@ -151,3 +151,8 @@ website:
   - ".png"
   - ".gif"
   auto_wiki_export: true
+  wiki_export_cron:
+    hour:
+    - 3
+    minute:
+    - 37
