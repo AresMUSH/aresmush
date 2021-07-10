@@ -36,6 +36,13 @@ module AresMUSH
         Global.logger.debug "Combat messages."
         Combat.all.each { |c| c.update(messages: [])}
         
+        
+        Global.logger.debug "Wiki export cron."
+        config = DatabaseMigrator.read_config_file("website.yml")
+        config['website']['wiki_export_cron'] = { 'hour' => [3], 'minute' => [37] }
+        DatabaseMigrator.write_config_file("website.yml", config)
+        
+        
       end
     end
   end    
