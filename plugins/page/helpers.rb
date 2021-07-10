@@ -113,7 +113,15 @@ module AresMUSH
         everyone.each { |c| everyone_plus_alts.concat AresCentral.play_screen_alts(c) }
         
         everyone_plus_alts.uniq.each do |char|    
-          data = Page.build_page_web_data(thread, char, true)
+          data = {
+            id: thread.id,
+            key: thread.id,
+            title: thread.title_customized(char),
+            author: {name: enactor.name, icon: Website.icon_for_char(enactor), id: enactor.id},
+            message: Website.format_markdown_for_html(message),
+	    poseable_chars: Page.build_poseable_web_chars_data(char, thread),
+            is_page: true
+          }
           clients = Global.client_monitor.clients.select { |client| client.web_char_id == char.id }
           clients.each do |client|
             client.web_notify :new_page, "#{data.to_json}", true
