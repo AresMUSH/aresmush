@@ -396,7 +396,6 @@ module AresMUSH
             }}        
       end
       
-      alts = AresCentral.play_screen_alts(enactor)
       
       is_hidden = thread.is_hidden?(enactor)
       {
@@ -417,11 +416,7 @@ module AresMUSH
           icon: Website.icon_for_char(c),
           muted: false
          }},
-         poseable_chars: alts.select { |a| thread.characters.include?(a) }.map { |a| {
-           name: a.name,
-           icon: Website.icon_for_char(a),
-           id: a.id
-         }},
+         poseable_chars: Page.build_poseable_web_chars_data(enactor, thread),
          messages: messages,
         lazy_loaded: lazy_load
         }

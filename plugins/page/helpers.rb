@@ -119,6 +119,7 @@ module AresMUSH
             title: thread.title_customized(char),
             author: {name: enactor.name, icon: Website.icon_for_char(enactor), id: enactor.id},
             message: Website.format_markdown_for_html(message),
+            poseable_chars: Page.build_poseable_web_chars_data(char, thread),
             is_page: true
           }
           clients = Global.client_monitor.clients.select { |client| client.web_char_id == char.id }
@@ -129,6 +130,15 @@ module AresMUSH
       end
         
       thread
+    end
+    
+    def self.build_poseable_web_chars_data(enactor, thread)
+      alts = AresCentral.play_screen_alts(enactor)
+      alts.select { |a| thread.characters.include?(a) }.map { |a| {
+                 name: a.name,
+                 icon: Website.icon_for_char(a),
+                 id: a.id
+               }}
     end
     
     def self.find_thread(chars)
