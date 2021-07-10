@@ -10,6 +10,7 @@ module AresMUSH
         description = request.args[:description]
         submitter_name = request.args[:submitter]
         assignee_name = request.args[:assigned_to]
+        tags = request.args[:tags]
 
         error = Website.check_login(request)
         return error if error
@@ -69,13 +70,14 @@ module AresMUSH
         
         job.update(
           title: title,
-          submitter: submitter,
+          author: submitter,
           assigned_to: assignee,
           status: status,
           job_category: category,
           description: Website.format_input_for_mush(description)
         )
         job.participants.replace participants
+        Website.update_tags(job, tags)
         
         Jobs.notify(job, t('jobs.updated_job', :name => enactor.name, :title => job.title, :number => job.id), enactor)
        

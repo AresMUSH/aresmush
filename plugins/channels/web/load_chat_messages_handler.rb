@@ -29,8 +29,8 @@ module AresMUSH
           if (!channel)
             return { error: t('webportal.not_found') }
           end
-        
-          if !Channels.is_on_channel?(enactor, channel)
+          
+          if !Channels.has_alt_on_channel?(enactor, channel)
             return { error: t('dispatcher.not_allowed') }
           end
         

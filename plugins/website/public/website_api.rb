@@ -67,5 +67,25 @@ module AresMUSH
     def self.can_manage_theme?(actor)
       actor && actor.has_permission?("manage_theme")
     end
+    
+    def self.update_tags(model, tags)
+      tags = (tags || []).map { |t| t.downcase }.select { |t| !t.blank? }
+      type = model.class.to_s
+      id = model.id.to_s
+      
+      existing = ContentTag.find(content_type: type, content_id: id).to_a
+      existing.each do |t|
+        if (!tags.include?(t.name))
+          t.delete
+        end
+      end
+      
+      all_existing = existing.map { |e| e.name }
+      tags.each do |t|
+        if (!all_existing.include?(t))
+          ContentTag.create(name: t, content_type: type, content_id: id)
+        end
+      end
+    end
   end
 end
