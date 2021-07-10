@@ -1,6 +1,7 @@
 module AresMUSH  
   class BbsPost < Ohm::Model
     include ObjectModel
+    include HasContentTags
     
     attribute :subject
     attribute :message

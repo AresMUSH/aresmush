@@ -57,7 +57,7 @@ module AresMUSH
           relationships_category_order: char.relationships_category_order.join(","),
           profile: profile,
           profile_gallery: (char.profile_gallery || []).join(' '),
-          tags: char.profile_tags,
+          tags: char.content_tags,
           files: files, 
           profile_image: char.profile_image ? Website.get_file_info(char.profile_image) : nil,
           profile_icon: char.profile_icon ? Website.get_file_info(char.profile_icon) : nil,

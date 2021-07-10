@@ -8,6 +8,7 @@ module AresMUSH
         title = request.args[:title]
         description = request.args[:description]
         submitter_name = request.args[:submitter]
+        tags = request.args[:tags]
         
         error = Website.check_login(request)
         return error if error
@@ -40,6 +41,8 @@ module AresMUSH
           return {error: job[:error] }
         end
         job = result[:job]
+        
+        Website.update_tags(job, tags)
         
         if (participant_ids)
           participant_ids.each do |p|

@@ -68,7 +68,7 @@ module AresMUSH
           title: page.title,
           name: page.name,
           text: text,
-          tags: page.tags,
+          tags: page.content_tags,
           lock_info: lock_info,
           can_delete: can_manage_wiki && !restricted_page,
           can_edit: can_edit,

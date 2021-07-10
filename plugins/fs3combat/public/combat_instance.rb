@@ -8,7 +8,8 @@ module AresMUSH
     attribute :first_turn, :type => DataType::Boolean, :default => true
     attribute :team_targets, :type => DataType::Hash, :default => {}
     attribute :everyone_posed, :type => DataType::Boolean, :default => false
-
+    attribute :messages, :type => DataType::Array, :default => []
+    
     reference :scene, "AresMUSH::Scene"
     reference :organizer, "AresMUSH::Character"
     collection :combatants, "AresMUSH::Combatant"

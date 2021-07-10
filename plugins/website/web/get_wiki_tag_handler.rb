@@ -3,39 +3,53 @@ module AresMUSH
     class GetWikiTagRequestHandler
       def handle(request)
         tag = request.args[:id] || ''
-        tag = tag.titlecase
-        pages = WikiPage.all.select { |p| p.tags.include?(tag.downcase) }
-           .sort_by { |p| p.heading }
-           .map { |p| {
-             id: p.name,
-             heading: p.heading
-           }}
-           
-        chars = Character.all.select { |c| c.profile_tags.include?(tag.downcase) }
-           .sort_by { |c| c.name }
-           .map { |c| {
-             id: c.id,
-             name: c.name
-           }}
-        scenes = Scene.shared_scenes.select { |s| s.tags.include?(tag.downcase) }
-           .sort_by { |s| s.date_title }
-           .map { |s| {
-             id: s.id,
-             title: s.date_title
-           }}
-           
-         events = Event.all.select { |e| e.tags.include?(tag.downcase) }
-         .map { |e| {
-           id: e.id,
-           title: e.title
-         }}
-         
-           {
-             pages: pages,
-             chars: chars,
-             scenes: scenes,
-             events: events
-           }
+        tag = tag.downcase
+        
+        enactor = request.enactor
+        
+        error = Website.check_login(request, true)
+        return error if error
+        
+        data = []
+        
+        groups = ContentTag.find(name: tag.downcase)
+          .group_by { |t| Website.title_for_tag_group(t) }
+        
+        groups.each do |name, tags|
+          items = build_tag_items(tags, enactor)
+          
+          if (items.any?)
+            data << {
+              name: name,
+              items: items
+            }
+          end
+        end
+        
+        if (data.count == 0)
+          return { error: t('webportal.no_tag_content_visible') }
+        end
+        
+        {
+          name: tag,
+          groups: data
+        }
+      end
+      
+      def build_tag_items(tags, enactor)
+        items = []
+        tags.each do |t|
+          model = Website.find_model_for_tag(t)
+          if (Website.is_tag_item_visible?(model, enactor))
+            items << {
+              id: t.content_id,
+              route: Website.route_for_tag(t),
+              title: Website.title_for_tag_item(model),
+              type: t.content_type
+            }
+          end
+        end
+        items
       end
     end
   end

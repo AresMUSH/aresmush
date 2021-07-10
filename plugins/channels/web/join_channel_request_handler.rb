@@ -4,6 +4,7 @@ module AresMUSH
       def handle(request)
         enactor = request.enactor
         channel_name = request.args[:channel]
+        char = Character.named(request.args[:char])
         channel = Channel.find_one_by_name(channel_name)
         
         error = Website.check_login(request)
@@ -11,11 +12,15 @@ module AresMUSH
 
         request.log_request
         
-        if (!channel)
+        if (!channel || !char)
           return { error: t('webportal.not_found') }
         end
         
-        error = Channels.join_channel(channel, enactor, nil)
+        if (!AresCentral.is_alt?(char, enactor))
+          return { error: t('dispatcher.not_allowed') }
+        end
+        
+        error = Channels.join_channel(channel, char, nil)
         if (error)
           return { error: error }
         end

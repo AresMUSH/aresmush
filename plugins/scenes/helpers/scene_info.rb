@@ -46,7 +46,7 @@ module AresMUSH
     
     def self.is_watching?(scene, char)
       return false if !char
-      alts = AresCentral.alts(char)
+      alts = AresCentral.play_screen_alts(char)
       (scene.watchers.to_a & alts).any?
     end
     

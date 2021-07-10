@@ -50,8 +50,8 @@ module AresMUSH
       end
 
       if (char.is_playerbit?)
-        alts = AresCentral.alts_of(char)
-        alts = alts.concat Character.all.select { |c| c.profile_tags.include?("player:#{char.name}".downcase)}
+        alts = AresCentral.alts(char)
+        alts = alts.concat Character.all.select { |c| c.content_tags.include?("player:#{char.name}".downcase)}
         
         alts.each do |c|
           c.achievements.each do |a|
