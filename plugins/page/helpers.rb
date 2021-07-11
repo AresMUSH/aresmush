@@ -119,6 +119,7 @@ module AresMUSH
             title: thread.title_customized(char),
             author: {name: enactor.name, icon: Website.icon_for_char(enactor), id: enactor.id},
             message: Website.format_markdown_for_html(message),
+	    poseable_chars: Page.build_poseable_web_chars_data(char, thread),
             is_page: true
           }
           clients = Global.client_monitor.clients.select { |client| client.web_char_id == char.id }
@@ -129,7 +130,7 @@ module AresMUSH
       end
         
       thread
-    end
+    end    
     
     def self.find_thread(chars)
       PageThread.all.select { |t| (t.characters.map { |c| c.id }.sort == chars.map { |c| c.id }.sort) }.first
@@ -185,6 +186,57 @@ module AresMUSH
       body << log
       Jobs.create_job(Jobs.trouble_category, t('page.page_reported_title'), body, Game.master.system_character)
     end
+    
+    
+    def self.build_page_web_data(thread, enactor, lazy_load = false)
+      if (lazy_load)
+        messages = []
+      else
+        messages = thread.sorted_messages.map { |p| {
+            message: Website.format_markdown_for_html(p.message),
+            id: p.id,
+            timestamp: OOCTime.local_short_date_and_time(enactor, p.created_at),
+            author: {
+              name: p.author_name,
+              icon: p.author ? Website.icon_for_char(p.author) : nil }
+            }}        
+      end
+      
+      
+      is_hidden = thread.is_hidden?(enactor)
+      {
+         key: thread.id,
+         title: thread.title_customized(enactor),
+         enabled: true,
+         can_join: true,
+         can_talk: true,
+         muted: false,
+         is_page: true,
+         new_messages: Page.is_thread_unread?(thread, enactor) ? 1 : nil,
+         last_activity: thread.last_activity,
+         is_recent: !is_hidden && (thread.last_activity ? (Time.now - thread.last_activity < (86400 * 2)) : false),
+         is_hidden: is_hidden,
+         who: thread.characters.map { |c| {
+          name: c.name,
+          ooc_name: c.ooc_name,
+          icon: Website.icon_for_char(c),
+          muted: false
+         }},
+         poseable_chars: Page.build_poseable_web_chars_data(enactor, thread),
+         messages: messages,
+        lazy_loaded: lazy_load
+        }
+    end
+    
+    def self.build_poseable_web_chars_data(enactor, thread)
+      alts = AresCentral.play_screen_alts(enactor)
+      alts.select { |a| thread.characters.include?(a) }.map { |a| {
+                 name: a.name,
+                 icon: Website.icon_for_char(a),
+                 id: a.id
+               }}
+    end
+    
   end
 
 end
