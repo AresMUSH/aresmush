@@ -20,7 +20,7 @@ module AresMUSH
             return { error: t('dispatcher.not_allowed') }
           end
         
-          Channels.build_page_web_data(thread, enactor)
+          Page.build_page_web_data(thread, enactor)
           
         else
           

@@ -54,7 +54,7 @@ module AresMUSH
         if (thread_id)
           return {}
         else
-          return { thread: Channels.build_page_web_data(thread, enactor) }
+          return { thread: Page.build_page_web_data(thread, enactor) }
         end
       end
     end
