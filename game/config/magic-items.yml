@@ -308,6 +308,13 @@ magic-items:
     - Wind Wall
     - Shape Air
     spell_mod: 3
+  #Taisha's Hook
+  Vulcan Bracelet:
+    name: Vulcan Bracelet
+    desc:" A heavy, rounded bangle that shimmers like it's gilded with gold. The thick bracelet is made from a solid piece of pyrite rock, expertly crafted without any of the crystals and pits the stone would normally contain. The decoration sculpted onto the outside of the bangle depicts Hephaestus hammering metal on his anvil, but bald and with a short, straight beard. The edges of the bracelet band are inlaid with beads of turquoise. Allows the bearer to cast %xBCreate Crystal%xn and %xBAlter Metal%xn."
+    spells:
+    - Create Crystal
+    - Alter Metal
   # +================================+
   # OTHER
   # +================================+
