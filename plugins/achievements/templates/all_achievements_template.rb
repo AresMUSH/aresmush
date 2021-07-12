@@ -14,7 +14,6 @@ module AresMUSH
       end
       
       def message(data)
-        pp data
         (data['message'] || "---") % { count: 'XXX' }
       end
       

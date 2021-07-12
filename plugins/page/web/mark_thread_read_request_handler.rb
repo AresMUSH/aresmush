@@ -13,7 +13,18 @@ module AresMUSH
           return { error: t('page.invalid_thread') }
         end
         
-        Page.mark_thread_read(thread, enactor)
+        if (!thread.can_view?(enactor))
+          return { error: t('dispatcher.not_allowed') }
+        end
+        
+        
+        if (enactor.unified_play_screen)
+          thread.characters.each do |p|
+            if (AresCentral.is_alt?(p, enactor))
+              Page.mark_thread_read(thread, p)
+            end
+          end
+        end
          
         {
         }

@@ -20,10 +20,19 @@ module AresMUSH
           allow(@client).to receive(:emit_success)
           allow(plugin_manager).to receive(:unload_plugin)
           allow(Help).to receive(:reload_help)
+          allow(locale).to receive(:reload)
+          allow(config_reader).to receive(:load_game_config)
         end
           
         it "should unload the plugin" do
           expect(plugin_manager).to receive(:unload_plugin).with("foo")
+          @handler.handle
+        end
+        
+        it "should reload the help, locale, and config" do
+          expect(config_reader).to receive(:load_game_config)
+          expect(Help).to receive(:reload_help)
+          expect(locale).to receive(:reload)
           @handler.handle
         end
           
