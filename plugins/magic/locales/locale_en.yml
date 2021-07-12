@@ -104,6 +104,10 @@ en:
       mod_wore_off: "%{name}'s %{mod} %{type} modification has worn off."
       stance_wore_off: "%{name}'s %{spell} spell has worn off and they are no longer %{stance}."
 
+      # ----------------------------
+      # SHEET
+      # ----------------------------
+      schools_title: "Schools"
 
       # ----------------------------
       # LEARNING SPELLS
