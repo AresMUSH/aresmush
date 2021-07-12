@@ -13,8 +13,7 @@ module AresMUSH
           return { error: t('fs3combat.invalid_combat_number') }
         end
         
-        can_manage = enactor && (enactor == combat.organizer || enactor.is_admin?)
-        if (!can_manage)
+        if (!FS3Combat.can_manage_combat_from_web?(enactor, combat))
           return { error: t('dispatcher.not_allowed') }
         end        
 

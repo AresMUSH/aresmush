@@ -6,16 +6,33 @@ module AresMUSH
         message = request.args[:message]
         thread_id = request.args[:thread_id]
         names = request.args[:names]
+        sender_name = request.args[:sender]
         
         error = Website.check_login(request)
         return error if error
 
+        if (sender_name)
+          sender = Character.named(sender_name)
+          if (!sender)
+            return { error: t('webportal.not_found') }
+          end
+          if (!AresCentral.is_alt?(sender, enactor))
+            return { error: t('dispatcher.not_allowed') }
+          end
+        else
+          sender = enactor
+        end
+        
         if (thread_id)
           thread = PageThread[thread_id]
           if (!thread)
             return { error: t('page.invalid_thread') }
           end
-          recipients = thread.characters.select { |c| c != enactor }
+          if (!thread.can_view?(enactor))
+            return { error: t('dispatcher.not_allowed') }
+          end
+          
+          recipients = thread.characters.select { |c| c != sender }
         else
           recipients = []
           
@@ -32,11 +49,13 @@ module AresMUSH
           end
         end
         
-        thread = Page.send_page(enactor, recipients, message, Login.find_client(enactor))
-        
-        {
-          thread: Channels.build_page_web_data(thread, enactor)
-        }
+        thread = Page.send_page(sender, recipients, message, Login.find_client(enactor))
+        # Respond to existing thread - no return
+        if (thread_id)
+          return {}
+        else
+          return { thread: Page.build_page_web_data(thread, enactor) }
+        end
       end
     end
   end

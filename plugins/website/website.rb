@@ -26,6 +26,8 @@ module AresMUSH
       when "website"
         if (cmd.switch_is?("deploy"))
           return WebsiteDeployCmd
+        elsif (cmd.switch_is?("export"))
+          return WebsiteExportCmd
         else
           return WebsiteCmd
         end
@@ -64,6 +66,8 @@ module AresMUSH
         return CancelEditWikiPageRequestHandler
       when "searchWiki"
         return SearchWikiRequestHandler
+      when "wikiArchiveInfo"
+        return WikiArchiveInfoHandler
       when "wikiPage"
         return GetWikiPageRequestHandler
       when "wikiTagList"

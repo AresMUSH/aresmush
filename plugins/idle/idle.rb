@@ -37,6 +37,8 @@ module AresMUSH
         case cmd.switch
         when "add"
           return RosterAddCmd
+        when "approve", "reject"
+          return RosterApproveCmd
         when "claim"
           return RosterClaimCmd
         when "note", "contact", "played"
@@ -71,6 +73,8 @@ module AresMUSH
       case request.cmd
       when "roster"
         return RosterRequestHandler
+      when "approveRoster"
+        return RosterApproveRequestHandler
       when "claimRoster"
         return ClaimRosterRequestHandler
       when "idleReview"
