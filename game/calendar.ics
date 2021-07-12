@@ -2,47 +2,48 @@ BEGIN:VCALENDAR
 VERSION:2.0
 PRODID:-//hacksw/handcal//NONSGML v1.0//EN
 BEGIN:VEVENT
-UID:636043f7-b09f-4908-85d0-f2315b769d9e@Spirit Lake-spiritlakemu.com
-DTSTART:20210611T230000Z
-DTSTAMP:20210518T045225Z
-SUMMARY:It Looks Questionable To Me
-DESCRIPTION:Some visitors from another plane have an urgent request for the welfare of one of their companions. Grand Lake Mages volunteer to go investigate and help. 
-END:VEVENT
-BEGIN:VEVENT
-UID:ffafb621-32bb-42ca-abae-9d0b28b09614@Spirit Lake-spiritlakemu.com
-DTSTART:20210613T190000Z
-DTSTAMP:20210601T183944Z
-SUMMARY:Thief!
-DESCRIPTION:Things are going missing from the base camp set up in Marisol's Portal/Nokor Phnom. And it's not the first time something has up and disappeared. Someone or something is stealing from people visiting the portal!
+UID:a308deff-3383-4d94-8306-c598af9e4c86@Spirit Lake-spiritlakemu.com
+DTSTART:20210718T180000Z
+DTSTAMP:20210708T175238Z
+SUMMARY:Snakes on a Plain Bagel
+DESCRIPTION:The Spruce & Lark Cafe (formerly the Prickly Poppy Cafe, formerly The Cafe) once again has a problem of a magical nature.
   
   ---
   
-  GMing by Ammit. 1-5 players. Hijinks likely.
-  
+  GMing by Ammit. This scene is for **new characters** and characters new to magic. (And any S&L employees).
 END:VEVENT
 BEGIN:VEVENT
-UID:49789a88-299f-46d9-aa58-61c488c57c10@Spirit Lake-spiritlakemu.com
-DTSTART:20210613T000000Z
-DTSTAMP:20210606T005042Z
-SUMMARY:Spirit Mages: Plant Check
-DESCRIPTION:Maureen has called together a group of Spirit mages to come check out her cave garden and do a general check on what she thinks might be a sapient plant growing in the garden. Roo and Nevada signed up, but all Spirit mages interested are welcome to attend.
-  
-  Follow up after the scene may require a plot request for verification.
+UID:42510968-97c9-44fb-a882-a5c8eef46683@Spirit Lake-spiritlakemu.com
+DTSTART:20210713T000000Z
+DTSTAMP:20210708T152006Z
+SUMMARY:Mágosmáchia: Black Wolves vs Purple Jaguars
+DESCRIPTION:The Eld Aisteryn Black Wolves face off against the Grand Laker's Purple Jaguars in the Mágosmáchia!
 END:VEVENT
 BEGIN:VEVENT
-UID:56e095c6-a912-48f2-a44a-de30c0901792@Spirit Lake-spiritlakemu.com
-DTSTART:20210615T170000Z
-DTSTAMP:20210608T173819Z
-SUMMARY:The Empress of Rats
-DESCRIPTION:An Eld Aisteryn one-shot focusing on investigative elements and potential for combat. Geared toward new PCs who know about magic!
+UID:f0483a5a-e2e2-4157-b53a-49fbd0fa69ec@Spirit Lake-spiritlakemu.com
+DTSTART:20210714T193000Z
+DTSTAMP:20210709T153536Z
+SUMMARY:Tending the Memorial Garden (Open)
+DESCRIPTION:The Steward of Feixuzhicheng organizes a public tending of the Memorial Garden for his people and invites the Grand Lake mages to take part. Come for the weeding, stay to share stories about the beauty that can flourish after times of hardship.
   
-  **THIS TIME SLOT IS NEGOITABLE PLEASE TELL ME WHEN YOU CAN PLAY I DON'T KNOW TIME.**
+  GM: Selkie
+  
+  Open Feix event with some interaction with the local NPCs. Primarily social thing. 
 END:VEVENT
 BEGIN:VEVENT
-UID:9a15cbde-0b5c-48ed-a9a7-d7967741422f@Spirit Lake-spiritlakemu.com
-DTSTART:20210615T000000Z
-DTSTAMP:20210609T173643Z
-SUMMARY:Fire Meet in Stochi
-DESCRIPTION:Fire mages meet in Stochi and hang out.
+UID:a013965d-c62b-4ce9-85aa-ac3cc1e0b127@Spirit Lake-spiritlakemu.com
+DTSTART:20210716T003000Z
+DTSTAMP:20210712T130027Z
+SUMMARY:Seeds Of Change: Transit North
+DESCRIPTION:The trip to the snowy north begins! Likely to see combat. Dress warm!
+  
+  Open to those present at initial scene for this plot + anyone roped in through RP.
+END:VEVENT
+BEGIN:VEVENT
+UID:0e41009c-3e90-40b8-b7c8-a035c3b5a5a3@Spirit Lake-spiritlakemu.com
+DTSTART:20210717T003000Z
+DTSTAMP:20210712T130203Z
+SUMMARY:Seeds Of Change: A Blessing Received
+DESCRIPTION:The arrival in the North! Open to characters already involved in plot from prior scenes.
 END:VEVENT
 END:VCALENDAR
