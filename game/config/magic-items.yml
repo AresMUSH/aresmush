@@ -86,6 +86,13 @@ magic-items:
     cost: 3
     name: Mending Trunk
     desc:  A trunk that completely, if slowly, mends and cleans an item put in and left for a week.
+  Orunmila's Earrings:
+    available: true
+    cost: 6
+    name: Orunmila's Earrings
+    desc: "A set of silver earrings in the shape of two fish swimming in a small circle, which allow the user to understand languages when worn."
+    spells:
+    - Comprehend Languages
   Ring Of Restraint:
     available: true
     cost: 5
@@ -311,7 +318,7 @@ magic-items:
   #Taisha's Hook
   Vulcan Bracelet:
     name: Vulcan Bracelet
-    desc:" A heavy, rounded bangle that shimmers like it's gilded with gold. The thick bracelet is made from a solid piece of pyrite rock, expertly crafted without any of the crystals and pits the stone would normally contain. The decoration sculpted onto the outside of the bangle depicts Hephaestus hammering metal on his anvil, but bald and with a short, straight beard. The edges of the bracelet band are inlaid with beads of turquoise. Allows the bearer to cast %xBCreate Crystal%xn and %xBAlter Metal%xn."
+    desc: "A heavy, rounded bangle that shimmers like it's gilded with gold. The thick bracelet is made from a solid piece of pyrite rock, expertly crafted without any of the crystals and pits the stone would normally contain. The decoration sculpted onto the outside of the bangle depicts Hephaestus hammering metal on his anvil, but bald and with a short, straight beard. The edges of the bracelet band are inlaid with beads of turquoise. Allows the bearer to cast %xBCreate Crystal%xn and %xBAlter Metal%xn."
     spells:
     - Create Crystal
     - Alter Metal
@@ -397,6 +404,7 @@ magic-items:
     desc:  Strung together with stiff cords and bird bones, the necklace hangs loose and just below the collarbone. The bones are bleached white and decorated with little carvings. Adhered to the bones are short, slim raven feathers. The pendant is a bird skull, but the brow has been hollowed out and set with a dull black stone that doesn't reflect any light. It grants the wearer the ability to cast Group Comprehend Languages
     spells:
     - Group Comprehend Languages
+
   Rosewing:
     name: Rosewing
     desc: "Just under nine inches, the slender wand of oak is beautifully polished with age. Delicate rose quartz is inlaid along the length of it in intricate designs, and it's topped with a sharp, many-pointed star of pink sapphire. Gives +3 to spellcasting."
