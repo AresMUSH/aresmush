@@ -12,7 +12,6 @@ module AresMUSH
         if (self.gear_type == "weapon" || self.gear_type == "armor")
           allowed_specials = []
           self.list.each do |fields|
-            Global.logger.debug "FIELDS: #{fields}"
             if (fields[0] == "allowed_specials")
               allowed_specials = fields[1]
             end
@@ -21,7 +20,6 @@ module AresMUSH
           specials = {}
           all_specials = self.gear_type == "weapon" ? FS3Combat.weapon_specials : FS3Combat.armor_specials
           all_specials.each do |k, v|
-            Global.logger.debug "Allowed Specials #{allowed_specials} K #{k}"
             if (allowed_specials.include?(k))
               specials[k] = special_effects(k, v)
             end

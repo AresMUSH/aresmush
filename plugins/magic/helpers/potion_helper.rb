@@ -87,13 +87,13 @@ module AresMUSH
       is_shield = Global.read_config("spells", spell, "is_shield")
       type = Global.read_config("spells", spell, "shields_against")
       if heal_points
-        message = t('magic.use_potion_heal', :name => caster.name, :target => target.name, :potion => spell, :points => heal_points)
+        message = t('magic.potion_heal', :name => caster.name, :target => target.name, :potion => spell, :points => heal_points)
       elsif is_shield
-        message = t('magic.use_potion_shield', :name => caster.name, :target => target.name, :potion => spell, :type => type)
+        message = t('magic.potion_shield', :name => caster.name, :target => target.name, :potion => spell, :type => type)
       elsif caster == target
-        message = t('magic.use_potion', :name => caster.name, :potion => spell)
+        message = t('magic.potion', :name => caster.name, :potion => spell)
       else
-        message = t('magic.use_potion_target', :name => caster.name, :target => target.name, :potion => spell)
+        message = t('magic.potion_target', :name => caster.name, :target => target.name, :potion => spell)
       end
       return message
     end

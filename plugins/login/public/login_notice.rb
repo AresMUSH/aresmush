@@ -14,5 +14,9 @@ module AresMUSH
     def is_unread?
       self.is_unread
     end
+    
+    def can_view?(viewer)
+      AresCentral.is_alt?(viewer, self.character)
+    end
   end
 end

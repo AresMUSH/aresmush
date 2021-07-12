@@ -10,10 +10,11 @@ magic:
     - 00
   energy_cron:
     minute:
-    - 00  
+    - 00
   shortcuts:
     combat/cast: combat/spell
     cast: spell/cast
+    potion/buy: item/buy
   lore_hook_prefs:
     None: No Lore Hook at all
     Item: A magical item comes into your posession.
@@ -70,3 +71,4 @@ magic:
     Extreme: "They feel on the edge of collapse and even basic tasks are almost impossible. They desperately need a rest."
     Total: "They have stretched themselves to their limit and can manage nothing more than basic movement."
   magic_ability: Magic
+  item_category: LUCK

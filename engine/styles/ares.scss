@@ -363,6 +363,10 @@ textarea,
   padding: 4px; }
 
 
+.ember-basic-dropdown-trigger {
+  min-width: 100px;
+}
+
 li hr {
     margin: 2px;
     border-color: $secondary-color;
@@ -1322,7 +1326,7 @@ input[type='file'] {
 }
 
 #combat-log {
-  max-height: 100px;
+  max-height: 200px;
   overflow-y: scroll;
   overflow-x: hidden;
   margin: 5px;
@@ -1383,7 +1387,7 @@ CHAT SCREEN
 }
 
 .play-scene-context-prompt {
-  font-weight: bold;  
+  font-weight: bold;
   font-size: 1.5em;
   color: $text-color;
 }

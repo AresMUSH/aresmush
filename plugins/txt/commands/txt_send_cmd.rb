@@ -56,7 +56,6 @@ module AresMUSH
         end
 
         def handle
-          puts "DOING THIS"
           # Is scene real and can you text to it?
           if self.scene_id
             scene = Scene[self.scene_id]

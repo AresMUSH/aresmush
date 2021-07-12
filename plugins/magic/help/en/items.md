@@ -14,6 +14,7 @@ Magical items range from weapons enchanted to cause increased damage to amulets 
 `item/equip <item>` - Equip an item.
 `item/unequip <item>` - Unequip an item.
 `item/give <name>=<item>` - Give an item to someone.
+`item/buy <item>` - Buy an item which is available for sale. See items on [Portal Pages](/portals). If an item is not in the system for sale, but is on a page, put in a request so that it can be added.
 
 **Admin Only**
 `item/add <name>=<item>` - Add an item to someone.

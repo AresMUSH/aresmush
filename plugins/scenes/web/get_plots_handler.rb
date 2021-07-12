@@ -11,6 +11,7 @@ module AresMUSH
                   completed: p.completed,
                   background: p.background,
                   content_warning: p.content_warning,
+                  tags: p.content_tags,
                   storytellers: get_storytellers(p)
                 }}
         plots.sort_by { |p| [ p[:end_date], p[:start_date] ] }.reverse

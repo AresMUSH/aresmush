@@ -46,7 +46,8 @@ module AresMUSH
           end
       
           if (!search_tag.blank?)
-            scenes = scenes.select { |s| s.tags.include?(search_tag.downcase) }
+            scenes_with_tag = ContentTag.find(content_type: 'AresMUSH::Scene', name: search_tag.downcase).map { |t| "#{t.content_id}" }
+            scenes = scenes.select { |c| scenes_with_tag.include?("#{c.id}") }            
           end
       
           if (!search_location.blank?)

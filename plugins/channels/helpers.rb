@@ -112,7 +112,7 @@ module AresMUSH
       }
       
       Global.client_monitor.notify_web_clients(:new_chat, "#{data.to_json}", true) do |char|
-        char && Channels.is_on_channel?(char, channel) && !Channels.is_muted?(char, channel)
+        char && Channels.has_alt_on_channel?(char, channel) && !Channels.is_muted?(char, channel)
       end
     end
     
@@ -192,6 +192,14 @@ module AresMUSH
       end
       
       yield channel
+    end
+
+    def self.alts_on_channel(char, channel)
+      (channel.characters.to_a & AresCentral.play_screen_alts(char))
+    end
+    
+    def self.has_alt_on_channel?(char, channel)
+      Channels.alts_on_channel(char, channel).any?
     end
     
     def self.is_on_channel?(char, channel)
@@ -328,14 +336,31 @@ module AresMUSH
       end
     end
     
-    def self.build_channel_web_data(channel, enactor)
+    def self.build_channel_web_data(channel, enactor, lazy_load = false)
+      chars_on_channel = Channels.alts_on_channel(enactor, channel)
+      if (lazy_load || chars_on_channel.empty?)
+        messages = []
+      else
+        messages = channel.sorted_channel_messages.map { |m| {
+          message: Website.format_markdown_for_html(m.message),
+          id: m.id,
+          timestamp: OOCTime.local_short_date_and_time(enactor, m.created_at),
+          author: {
+            name: m.author_name,
+            icon: m.author ? Website.icon_for_char(m.author) : nil }
+            }
+          }
+      end
+      
+      alts = AresCentral.play_screen_alts(enactor)
+      
       {
         key: channel.name.downcase,
         title: channel.name,
         desc: channel.description,
-        enabled: Channels.is_on_channel?(enactor, channel),
-        can_join: Channels.can_join_channel?(enactor, channel),
-        can_talk: Channels.can_talk_on_channel?(enactor, channel),
+        enabled: chars_on_channel.any?,
+        can_join: alts.map { |a| Channels.can_join_channel?(a, channel) }.any?,
+        can_talk: alts.map { |a| Channels.can_talk_on_channel?(a, channel) }.any?,
         muted: Channels.is_muted?(enactor, channel),
         last_activity: channel.last_activity,
         is_recent: channel.last_activity ? (Time.now - channel.last_activity < (86400 * 2)) : false,
@@ -347,47 +372,14 @@ module AresMUSH
          muted: Channels.is_muted?(w, channel),
          status: Website.activity_status(w)
         }},
-        messages: Channels.is_on_channel?(enactor, channel) ? channel.sorted_channel_messages.map { |m| {
-          message: Website.format_markdown_for_html(m.message),
-          id: m.id,
-          timestamp: OOCTime.local_short_date_and_time(enactor, m.created_at),
-          author: {
-            name: m.author_name,
-            icon: m.author ? Website.icon_for_char(m.author) : nil }
-            }} : [],
+        poseable_chars: alts.select { |a| Channels.is_on_channel?(a, channel) }.map { |a| {
+          name: a.name,
+          icon: Website.icon_for_char(a),
+          id: a.id
+        }},
+        messages: messages,
+        lazy_loaded: lazy_load
       }
     end
-    
-    def self.build_page_web_data(thread, enactor)
-      is_hidden = thread.is_hidden?(enactor)
-      {
-         key: thread.id,
-         title: thread.title_customized(enactor),
-         enabled: true,
-         can_join: true,
-         can_talk: true,
-         muted: false,
-         is_page: true,
-         new_messages: Page.is_thread_unread?(thread, enactor) ? 1 : nil,
-         last_activity: thread.last_activity,
-         is_recent: !is_hidden && (thread.last_activity ? (Time.now - thread.last_activity < (86400 * 2)) : false),
-         is_hidden: is_hidden,
-         who: thread.characters.map { |c| {
-          name: c.name,
-          ooc_name: c.ooc_name,
-          icon: Website.icon_for_char(c),
-          muted: false
-         }},
-         messages: thread.sorted_messages.map { |p| {
-            message: Website.format_markdown_for_html(p.message),
-            id: p.id,
-            timestamp: OOCTime.local_short_date_and_time(enactor, p.created_at),
-            author: {
-              name: p.author_name,
-              icon: p.author ? Website.icon_for_char(p.author) : nil }
-            }}
-        }
-    end
-                      
   end
 end

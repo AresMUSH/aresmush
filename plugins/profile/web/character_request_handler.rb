@@ -68,7 +68,7 @@ module AresMUSH
           profile_image: Website.get_file_info(char.profile_image),
           handle: char.handle ? char.handle.name : nil,
           status_message: Profile.get_profile_status_message(char),
-          tags: char.profile_tags,
+          tags: char.content_tags,
           can_manage: can_manage,
           profile: profile,
           relationships: relationships,

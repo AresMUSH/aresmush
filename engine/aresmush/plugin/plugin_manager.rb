@@ -17,6 +17,7 @@ module AresMUSH
     end 
      
     def load_all
+      # zzz in front of custom causes it to be loaded last.
       self.all_plugin_folders.sort_by { |p| p == 'custom' ? 'zzzzzzzcustom' : p }.each do |p|
         load_plugin p
       end

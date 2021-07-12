@@ -81,32 +81,22 @@ module AresMUSH
       end
 
       def self.weather_icon(area_name)
-        puts "Area: #{area_name} "
         Openweather.load_weather_if_needed
         area_name = "#{area_name}"
-        puts "Getting here #{Openweather.current_weather.has_key?(area_name)}"
         # Get the weather for the current area if there is one.
         if (Openweather.current_weather.has_key?(area_name))
           weather = Openweather.current_weather[area_name]
-          puts "Yup"
         else
           area = Area.find_one_by_name(area_name)
-          puts "Else #{area}"
           # if (area && area.parent)
           #   return Openweather.weather_for_area(area.parent.name)
           # end
           weather = Openweather.current_weather["Default"]
-          puts "Else #{weather}"
 
         end
-        puts "Also getting here"
-        puts "Weather #{weather} "
         # This handles the 'no weather' case, returning nil.
         return nil if !weather || weather.empty?
-
-        puts "Weather #{weather} "
         icon = "#{weather[:weather].first[:icon]}"
-        puts "Icon #{icon}"
 
         return "http://openweathermap.org/img/wn/#{icon}@2x.png"
       end

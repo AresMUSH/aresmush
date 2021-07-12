@@ -75,7 +75,6 @@ module AresMUSH
         recipient_client  = Login.find_client(recipient)
         Login.emit_if_logged_in recipient, message
         Page.send_afk_message(client, recipient_client, recipient)
-        puts scene_id
       end
 
 

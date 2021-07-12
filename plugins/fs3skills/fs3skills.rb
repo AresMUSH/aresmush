@@ -54,7 +54,7 @@ module AresMUSH
         return SetAbilityCmd
       when "xp"
         case cmd.switch
-        when "award"
+        when "award", "remove"
           return XpAwardCmd
         when "undo"
           return XpUndoCmd
@@ -92,7 +92,7 @@ module AresMUSH
       end
       nil
     end
-    
+
     def self.check_config
       validator = FS3SkillsConfigValidator.new
       validator.validate

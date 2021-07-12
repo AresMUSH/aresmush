@@ -29,10 +29,10 @@ en:
       given_potion: "%{name} has given you a %{potion} potion."
       given_potion_subj: "%{potion} recieved"
       potion_ko: "You cannot use a potion while Knocked Out."
-      use_potion: "%{name} uses a %xM%{potion}%xn potion."
-      use_potion_target: "%{name} uses a %xM%{potion}%xn potion on %{target}."
-      use_potion_heal: "%{name} uses a %xM%{potion}%xn potion. %{target} receives up to %{points} points of healing to a wound."
-      use_potion_shield: "%{name} uses a %xM%{potion}%xn potion. %{target} is protected against %{type} attacks."
+      potion: "%{name} uses a %xM%{potion}%xn potion."
+      potion_target: "%{name} uses a %xM%{potion}%xn potion on %{target}."
+      potion_heal: "%{name} uses a %xM%{potion}%xn potion. %{target} receives up to %{points} points of healing to a wound."
+      potion_shield: "%{name} uses a %xM%{potion}%xn potion. %{target} is protected against %{type} attacks."
       potion_heal_ko_target: "%{name} uses a %xM%{potion}%xn potion. %{target} receives up to %{points} points of healing to a wound and is no longer dying."
       potion_ko_heal: "%{name} uses a %xM%{potion}%xn potion. %{target} receives up to %{points} points of healing to a wound and is no longer dying."
       potion_stance: "%{name} uses a %xM%{potion}%xn potion, changing their stance to %{stance}."
@@ -110,6 +110,10 @@ en:
       mod_wore_off: "%{name}'s %{mod} %{type} modification has worn off."
       stance_wore_off: "%{name}'s %{spell} spell has worn off and they are no longer %{stance}."
 
+      # ----------------------------
+      # SHEET
+      # ----------------------------
+      schools_title: "Schools"
 
       # ----------------------------
       # LEARNING SPELLS
@@ -194,7 +198,7 @@ en:
       item_unequipped: "You have unequipped %{item}."
       has_unequipped_item: "%{name} has unequipped %{item}"
       item_not_equipped: "That item is not equipped."
-      not_item: "That is not an item."
+      not_item: "That is not an item or potion. If it should be, put in a request for it to be added to the system."
       added_item: "You have added %{item} to %{target}."
       removed_item: "You have removed %{item} from %{target}."
       given_magic_item: "%{name} has given you the magical item %{item}."
@@ -206,3 +210,5 @@ en:
       give_item: "You have given %{target} %{item}."
       item_has_been_given: "%{name} has given you %{item}. Type `items` to see details."
       unequip_first: "You can't given away items you have equipped. Do `item/unequip %{item}` first."
+      bought_magic_item_job: "%{name} has bought %{item} for %{luck} luck."
+      item_not_available: "That item is not available for purchase."

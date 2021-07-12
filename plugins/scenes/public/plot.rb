@@ -1,6 +1,7 @@
 module AresMUSH
   class Plot < Ohm::Model
     include ObjectModel
+    include HasContentTags
 
     attribute :title
     attribute :description
@@ -36,7 +37,7 @@ module AresMUSH
     end
 
     def is_bg?
-      self.background 
+      self.background
     end
 
     def plot_links

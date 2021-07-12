@@ -142,5 +142,23 @@ module AresMUSH
       end
       Website.emoji_regex
     end
+    
+    def self.export_wiki(client = nil)
+      Global.dispatcher.spawn("Performing wiki export.", client) do
+        Global.logger.debug "Exporting wiki."
+        error = AresMUSH::Website::WikiExporter.export
+        if (error)
+          Global.logger.error "Error performing wiki export: #{error}"
+          if (client)
+            client.emit_failure t('webportal.wiki_export_error')
+          end
+        else
+          Global.logger.debug "Wiki export successful."
+          if (client)
+            client.emit_success t('webportal.wiki_export_success')
+          end
+        end
+      end
+    end
   end
 end

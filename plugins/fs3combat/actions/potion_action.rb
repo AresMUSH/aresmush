@@ -107,9 +107,9 @@ module AresMUSH
 
             else
               if target.name == combatant.name
-                messages.concat [t('magic.use_potion', :name => self.name, :potion => self.spell)]
+                messages.concat [t('magic.potion', :name => self.name, :potion => self.spell)]
               else
-                messages.concat [t('magic.use_potion_target', :name => self.name, :target => target.name, :potion => self.spell)]
+                messages.concat [t('magic.potion_target', :name => self.name, :target => target.name, :potion => self.spell)]
               end
             end
           end
@@ -125,9 +125,9 @@ module AresMUSH
 
             else
               if target.name == combatant.name
-                messages.concat [t('magic.use_potion', :name => self.name, :potion => self.spell)]
+                messages.concat [t('magic.potion', :name => self.name, :potion => self.spell)]
               else
-                messages.concat [t('magic.use_potion_target', :name => self.name, :target => target.name, :potion => self.spell)]
+                messages.concat [t('magic.potion_target', :name => self.name, :target => target.name, :potion => self.spell)]
               end
             end
           end
@@ -136,9 +136,9 @@ module AresMUSH
           if armor
             Magic.set_magic_armor(combatant, target, armor)
             if target.name == combatant.name
-              messages.concat [t('magic.use_potion', :name => self.name, :potion => self.spell)]
+              messages.concat [t('magic.potion', :name => self.name, :potion => self.spell)]
             else
-              messages.concat [t('magic.use_potion_target', :name => self.name, :target => target.name, :potion => self.spell)]
+              messages.concat [t('magic.potion_target', :name => self.name, :target => target.name, :potion => self.spell)]
             end
           end
 
@@ -147,9 +147,9 @@ module AresMUSH
             armor_specials = armor_specials_str ? armor_specials_str.split('+') : nil
             Magic.set_magic_armor(combatant, target, target.armor, armor_specials)
             if target.name == combatant.name
-              messages.concat [t('magic.use_potion', :name => self.name, :potion => self.spell)]
+              messages.concat [t('magic.potion', :name => self.name, :potion => self.spell)]
             else
-              messages.concat [t('magic.use_potion_target', :name => self.name, :target => target.name, :potion => self.spell)]
+              messages.concat [t('magic.potion_target', :name => self.name, :target => target.name, :potion => self.spell)]
             end
           end
 
@@ -227,9 +227,9 @@ module AresMUSH
           #Roll
           if roll
             if target.name == combatant.name
-              messages.concat [t('magic.use_potion', :name => self.name, :potion => self.spell)]
+              messages.concat [t('magic.potion', :name => self.name, :potion => self.spell)]
             else
-              messages.concat [t('magic.use_potion_target', :name => self.name, :target => target.name, :potion => self.spell)]
+              messages.concat [t('magic.potion_target', :name => self.name, :target => target.name, :potion => self.spell)]
             end
           end
 
