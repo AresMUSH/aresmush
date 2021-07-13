@@ -512,12 +512,14 @@ spells:
     desc: "The caster summons a single, solid wall of ice no greater than 20 yards long, 5 yards thick, 10 yards tall. It remains until melted or destroyed."
     effect: Defense
     fs3_attack: false
+    is_shield: true
     level: 7
     line_of_sight: true
     name: Ice Wall
     range: Long
     roll: true
     school: Water
+    shields_against: All
   Mass Hydroplane:
     available: true
     casting_time: 1 round

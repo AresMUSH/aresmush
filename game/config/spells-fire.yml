@@ -266,8 +266,20 @@ spells:
     school: Fire
     stance: hidden
     target_num: 1
-
-
+  Thermal Lift:
+    available: false
+    casting_time: 1 round
+    damage_type: Fire
+    desc: "The caster heats the atmosphere immediately around themselves, using heat convection to rise slowly into the air. They can control the speed of their ascend or descent, moving up to 10 mph. They are subject to the directional push of any wind currents.\n\nCaster is immune to fire and the negative effects of extreme heat up to 2,012 °F (1,110 °C). Spells that do fire damage may be stopped entirely by Thermal Lift; when they are not, the damage inflicted is decreased."
+    duration: 1 hour
+    effect: Travel
+    is_shield: true
+    level: 5
+    name: Thermal Lift
+    range: Self
+    rounds: 100
+    school: Fire
+    shields_against: Fire
   #Level 6
   Double Vision:
     available: true
@@ -363,6 +375,24 @@ spells:
     range: Touch
     roll: true
     school: Fire
+  Heatwave:
+    attack_mod: -2
+    available: false
+    area: 10 yard radius
+    casting_time: 1 Round
+    damage_type: Bypass
+    defense_mod: -2
+    desc: "Rapidly raise the temperature of an area, causing the bodies of up to 3 targets to overheat. The heat exhaustion makes it more difficult for the them to take their intended actions for a short time."
+    duration: 3 rounds
+    effect: Debuff
+    level: 7
+    line_of_sight: true
+    name: Heatwave
+    range: Long
+    rounds: 3
+    school: Fire
+    spell_mod: -2
+    target_num: 3
   Light Form:
     available: true
     casting_time: 1 round
