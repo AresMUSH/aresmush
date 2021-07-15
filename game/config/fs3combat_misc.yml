@@ -172,6 +172,9 @@ fs3combat:
     Hidden:
       attack_mod: 0
       defense_mod: 0
+    Panicked:
+      attack_mod: -3
+      defense_mod: -3
   achievements:
     fs3_hero:
       type: fs3
