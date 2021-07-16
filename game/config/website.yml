@@ -197,3 +197,9 @@ website:
     manage_theme: Edit web portal CSS and colors.
     manage_wiki: Create and delete restricted wiki pages.
   story: "[To the Victors, the Spoils](https://spiritlakemu.com/plot/50)\nThe Mages are invited to participate in a tournament, held in Kleiosis, the Mágosmáchia.\n\n[The Rubidon](https://spiritlakemu.com/plot/51)\nGrand Lake Mages go to help a few Lualea keepers that went to observe wildlife in Nokor Phnom. They encounter a very large issue which they work to help with alongside the keepers.\n\n  [Tempests of Air](https://spiritlakemu.com/plot/46)\nGrand Lake's mages seek the powerful Air gem in a new and unexplored portal. Storms and other dangers abound."
+  auto_wiki_export: true
+  wiki_export_cron:
+    hour:
+    - 3
+    minute:
+    - 37  
