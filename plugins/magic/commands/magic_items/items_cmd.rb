@@ -9,7 +9,7 @@ module AresMUSH
       end
 
       def check_errors
-        return t('magic.use_item') if self.target_name.includes?("/")        
+        return t('magic.use_item') if self.target_name.include?("/")        
       end
 
       def handle
