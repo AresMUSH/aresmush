@@ -678,7 +678,19 @@ spells:
     rounds: 100
     school: Corpus
     target_num: 3
-  Shapeshift Sentinel Jackal:
+  Shapeshift Fire Salamander:
+    available: false
+    armor: Tough Hide
+    casting_time: 1 round
+    damage_type: None
+    desc: "Allows the caster to transform into a Fire Salamander from the Stochieion, gaining their natural defenses and abilities (shift the glowing pattern of their body and protect themselves with Endure Fire) while retaining the ability to cast spells and speak."
+    duration: 3 hours
+    effect: Transformation
+    level: 7
+    name: Shapeshift Sentinel Jackal
+    range: Self
+    school: Corpus
+  Shapeshift Sentinel  Fire Salamander:
     available: true
     armor: Tough Hide
     casting_time: 1 round
