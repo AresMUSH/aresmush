@@ -8,6 +8,10 @@ module AresMUSH
          self.target_name = cmd.args ? titlecase_arg(cmd.args) : enactor_name
       end
 
+      def check_errors
+        return t('magic.use_item') if self.target_name.includes?("/")        
+      end
+
       def handle
         ClassTargetFinder.with_a_character(self.target_name, client, enactor) do |model|
            template = MagicItemsTemplate.new(model)
