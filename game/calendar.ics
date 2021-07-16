@@ -13,13 +13,6 @@ DESCRIPTION:The Spruce & Lark Cafe (formerly the Prickly Poppy Cafe, formerly Th
   GMing by Ammit. This scene is for **new characters** and characters new to magic. (And any S&L employees).
 END:VEVENT
 BEGIN:VEVENT
-UID:42510968-97c9-44fb-a882-a5c8eef46683@Spirit Lake-spiritlakemu.com
-DTSTART:20210713T000000Z
-DTSTAMP:20210708T152006Z
-SUMMARY:Mágosmáchia: Black Wolves vs Purple Jaguars
-DESCRIPTION:The Eld Aisteryn Black Wolves face off against the Grand Laker's Purple Jaguars in the Mágosmáchia!
-END:VEVENT
-BEGIN:VEVENT
 UID:f0483a5a-e2e2-4157-b53a-49fbd0fa69ec@Spirit Lake-spiritlakemu.com
 DTSTART:20210714T193000Z
 DTSTAMP:20210709T153536Z
@@ -45,5 +38,38 @@ DTSTART:20210717T003000Z
 DTSTAMP:20210712T130203Z
 SUMMARY:Seeds Of Change: A Blessing Received
 DESCRIPTION:The arrival in the North! Open to characters already involved in plot from prior scenes.
+END:VEVENT
+BEGIN:VEVENT
+UID:02fa9240-b072-4d6e-aa80-5d37a9b9f47e@Spirit Lake-spiritlakemu.com
+DTSTART:20210723T003000Z
+DTSTAMP:20210713T151406Z
+SUMMARY:All Deeds Will Be Weighed
+DESCRIPTION:Danielle, Layla, and Penny travel to the Duat, some seeking enlightenment and others seeking closure.
+  
+  ---
+  
+  GMing by Ammit. Closed scene as a response to Open Actions. 
+END:VEVENT
+BEGIN:VEVENT
+UID:4d90b0f4-580f-496f-8a7e-58ef3d0cafe3@Spirit Lake-spiritlakemu.com
+DTSTART:20210724T173000Z
+DTSTAMP:20210713T194649Z
+SUMMARY:League of Explorers
+DESCRIPTION:Manny and Kevin go exploring in Nokor Phnom to do some exploring. Things may get rocky.
+  
+  ---
+  
+  GMing by Ammit. Closed scene as a response to Open Actions.
+END:VEVENT
+BEGIN:VEVENT
+UID:4f2b1eb7-50e8-4e2f-b89f-f9312046fb7e@Spirit Lake-spiritlakemu.com
+DTSTART:20210717T013000Z
+DTSTAMP:20210713T195214Z
+SUMMARY:Storm Warning
+DESCRIPTION:Jakobi and Roo go looking for the sapient rock biter in Nokor Phnom. 
+  
+  ---
+  
+  GMing by Ammit. Closed scene as a response to Open Actions.
 END:VEVENT
 END:VCALENDAR

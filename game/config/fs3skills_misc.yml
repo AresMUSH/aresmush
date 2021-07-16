@@ -19,6 +19,8 @@ fs3skills:
     train: learn
     xp/raise: learn
     startcg: reset
+    xp/subtract: xp/remove
+    xp/add: xp/award
   job_on_luck_spend: true
   permissions:
     manage_abilities: Edit ability ratings on other chars.
