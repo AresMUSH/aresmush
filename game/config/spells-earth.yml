@@ -442,6 +442,19 @@ spells:
     roll: false
     school: Fire
     target_num: 1
+  Earth Survey:
+    available: false
+    area: 100 yard radius
+    casting_time: 1 round
+    damage_type: None
+    desc: "The caster extends their senses into the ground and earth within range. While their body lies senseless and incapacitated, they feel the shape of earth in that area, including absences like caves and or movements like tremors. This allows them to make a topographical map of the terrain, including where unnatural structures and objects impact or are buried in the earth.\n\nThey can identify the presence, quantity, type, and location of all dirt, sand, rock, stone, and ore in the area. As long as it remains in contact with the earth, they can also identify the presence and location of anything currently interacting with the earth in the area.\n\nThe caster can choose to absorb all experiences at a surface level, or focus their attention on up to five objects within or impacting the earth at a time for more details, though they cannot tell exactly what the objects or beings are, whether they are sapient or not, or precisely what they are doing or holding."
+    duration: 15 minutes
+    effect: Communication
+    level: 7
+    name: Earth Survey
+    range: Self
+    roll: true
+    school: Earth
   Energize Dimensional Anchor (Earth):
     available: true
     casting_time: 2 minutes

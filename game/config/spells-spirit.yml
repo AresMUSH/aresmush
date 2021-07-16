@@ -721,7 +721,20 @@ spells:
     roll: true
     school: Spirit
     target_num: 20
-
+  Command:
+    available: false
+    casting_time: 1 round, plus a round to give the command
+    damage_type: Psionic
+    desc: "Implant a single command of up to four words in a target's mind. Target becomes unaggressive toward the caster, but maintain their personal instincts, intellectual capacity, and memory, as well as their personal priorities outside the given command. This may include aggressive behavior toward others nearby. The target cannot be commanded to harm themselves.\n\nUnprotected minds must follow the command.\n\nThose with Spirit may notice that the spell has been cast, and may attempt to do so with a roll of the caster's Spirit vs the target's Spirit-4. A draw goes to the caster. This does not prevent the spell's effects or identify the caster in any way."
+    duration: 15 minutes, or until the command is completed
+    effect: Psionic
+    level: 7
+    line_of_sight: true
+    name: Command
+    range: Long
+    roll: true
+    school: Spirit
+    target_num: 1
   Energize Dimensional Anchor (Spirit):
     available: true
     casting_time: 2 minutes
@@ -785,6 +798,23 @@ spells:
     school: Spirit
     spell_mod: -3
     target_num: 6
+  Group Medium Luck:
+    attack_mod: 2
+    available: true
+    casting_time: 1 round
+    damage_type: Psionic
+    defense_mod: 2
+    desc: "For up to three targets, the chance of succeeding in their intended action is improved."
+    duration: 3 rounds
+    effect: Buff
+    level: 7
+    line_of_sight: true
+    name: Group Medium Luck
+    range: Long
+    rounds: 3
+    school: Spirit
+    spell_mod: 2
+    target_num: 3
   Manifest Spirit:
     available: true
     casting_time: 5 minutes

@@ -522,6 +522,20 @@ spells:
     range: Touch
     roll: true
     school: Will
+  Telekinetic Barrier:
+    area: 20 yard sphere
+    available: false
+    casting_time: 10 minutes
+    damage_type: None
+    desc: An invisible, protective sphere is created in a 10 yard radius from the caster in all directions, effectively shielding an area.
+    duration: 6 hours
+    effect: Defense
+    level: 7
+    name: Telekinetic Barrier
+    range: Self
+    roll: true
+    school: Will
+    shields_against: All
   Transmission Objects:
     available: true
     area: 1,000 mile radius
@@ -541,7 +555,7 @@ spells:
     available: true
     casting_time: 1 round
     damage_type: None
-    desc: An invisible, protective sphere is created in a 50 yard radius from the caster in all directions. Anything that attempts to cross the spell's boundary is deflected and the caster can open and close doorways through the barrier at will.
+    desc: An invisible, protective sphere is created in a 50 yard radius from the caster in all directions. The caster can open and close doorways through the barrier at will.
     duration: 12 hours
     effect: Defense
     level: 8
