@@ -14,7 +14,7 @@ module AresMUSH
         
       end
       
-      def updte_sitemap
+      def update_sitemap
         Global.logger.debug "Updating sitemap."
         path = File.join(AresMUSH.game_path, 'sitemap.xml')
         File.open(path, 'w') do |file|
@@ -31,12 +31,12 @@ module AresMUSH
           end
           file.puts '</urlset>'
         end
-        
-        def export_wiki
-  	      # Note: The spawn is inside the export method.
-          if (Global.read_config("website", "auto_wiki_export"))      
-            Website.export_wiki
-          end
+      end
+      
+      def export_wiki
+	      # Note: The spawn is inside the export method.
+        if (Global.read_config("website", "auto_wiki_export"))      
+          Website.export_wiki
         end
       end
     end
