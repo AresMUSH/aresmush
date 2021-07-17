@@ -2,6 +2,7 @@ module AresMUSH
   
   class Scene < Ohm::Model
     include ObjectModel
+    include HasContentTags
     
     reference :room, "AresMUSH::Room"
     reference :owner, "AresMUSH::Character"
@@ -23,7 +24,6 @@ module AresMUSH
     attribute :logging_enabled, :type => DataType::Boolean, :default => true
     attribute :deletion_warned, :type => DataType::Boolean, :default => false
     attribute :icdate
-    attribute :tags, :type => DataType::Array, :default => []
     attribute :content_warning
     
     collection :scene_poses, "AresMUSH::ScenePose"
@@ -38,6 +38,9 @@ module AresMUSH
     # DEPRECATED - DO NOT USE (replaced by plot links)
     reference :plot, "AresMUSH::Plot"
     set :plots, "AresMUSH::Plot"
+
+    # DEPRECATED - replaced by content tags
+    attribute :tags, :type => DataType::Array, :default => []
     
     before_delete :on_delete
     
@@ -193,6 +196,5 @@ module AresMUSH
     def related_plots
       self.plot_links.map { |p| p.plot }
     end
-    
   end
 end

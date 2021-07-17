@@ -10,9 +10,9 @@ module AresMUSH
         id = request.args[:id]
         unread = (request.args[:unread] || "").to_bool
         
-        notice = enactor.login_notices.select { |n| n.id == id }.first
-        if (!notice)
-          return { error: t('webportal.not_found') }
+        notice = LoginNotice[id]
+        if (!notice.can_view?(enactor))
+          return { error: t('dispatcher.not_allowed') }
         end
         
         notice.update(is_unread: unread)

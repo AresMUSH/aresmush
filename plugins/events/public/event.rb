@@ -2,6 +2,7 @@ module AresMUSH
   
   class Event < Ohm::Model
     include ObjectModel
+    include HasContentTags
 
     attribute :title
     attribute :description
@@ -9,10 +10,12 @@ module AresMUSH
     attribute :reminded, :type => DataType::Boolean
     attribute :ical_uid
     attribute :content_warning
-    attribute :tags, :type => DataType::Array, :default => []
     
     reference :character, "AresMUSH::Character"
     collection :signups, "AresMUSH::EventSignup"
+    
+    # DEPRECATED - Use content tags
+    attribute :tags, :type => DataType::Array, :default => []
     
     before_save :set_uid
     before_delete :delete_signups
@@ -96,7 +99,6 @@ module AresMUSH
       timezone = Global.read_config("datetime", "server_timezone")
       "#{formatted_time}#{timezone}"
     end
-    
     
     def date_str
       format = Global.read_config("datetime", "short_date_format")

@@ -142,5 +142,27 @@ module AresMUSH
       Manage.announce t('manage.database_upgrade_complete')
       return error
     end
+    
+    def self.add_extra_plugin_to_config(name)
+      config = DatabaseMigrator.read_config_file("plugins.yml")
+      extras = config['plugins']['extras']
+      extras << name
+      config['plugins']['extras'] = extras.uniq
+      DatabaseMigrator.write_config_file("plugins.yml", config)
+    end
+    
+    def self.remove_extra_plugin_from_config(name)
+      config = DatabaseMigrator.read_config_file("plugins.yml")
+      extras = config['plugins']['extras']
+      extras.delete name
+      config['plugins']['extras'] = extras.uniq
+      DatabaseMigrator.write_config_file("plugins.yml", config)
+    end
+    
+    def self.uninstall_plugin(name)
+      Global.plugin_manager.unload_plugin(name)
+      Manage.remove_extra_plugin_from_config(name)
+    end
+    
   end
 end

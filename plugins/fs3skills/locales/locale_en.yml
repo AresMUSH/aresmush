@@ -137,6 +137,7 @@ en:
         not_enough_xp: "You don't have any XP."
         invalid_xp_award: "That is not a valid number of XP."
         xp_awarded: "You award %{xp} XP to %{name}."
+        xp_removed: "You remove %{xp} XP from %{name}."
         xp_summary: "Learning Progress - %{name}"
         xp_progress_title: "Ability                 Progress                 Learn Again In"
         xp_days: "%{days} days"

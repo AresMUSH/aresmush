@@ -23,6 +23,7 @@ module AresMUSH
       char.update(roster_contact: contact || Global.read_config("idle", "default_contact"))
       char.update(idle_state: "Roster")
       char.update(roster_played: char.is_approved?)  # Assume played if approved.
+      char.update(roster_job: nil)
       Idle.idle_cleanup(char, "Roster")
     end
     
@@ -72,6 +73,9 @@ module AresMUSH
        if (!model.on_roster?)
          return { error: t('idle.not_on_roster', :name => model.name) }
        end
+       if (model.roster_job && model.roster_job.is_open?)
+         return { error: t('idle.pending_roster_app') }
+       end
        
        if (Idle.roster_app_required?(model))
          if (app_text.blank?)
@@ -80,13 +84,25 @@ module AresMUSH
            category = Global.read_config('idle', 'roster_app_category') || "APP"
            title = t('idle.roster_app_title', :name => model.name)
            body = t('idle.roster_app_body', :target => model.name, :name => enactor_name, :app => app_text )
-           Jobs.create_job(category, title, body, Game.master.system_character)
+           if (!enactor || enactor.is_guest?)
+             submitter = Game.master.system_character
+           else
+             submitter = enactor
+           end
+           status = Jobs.create_job(category, title, body, submitter)
+           if (status[:job])
+             model.update(roster_job: status[:job])
+           end
            return {}
          end
        end
 
        Global.logger.info("#{enactor_name} claimed #{model.name} from the roster.")
        
+       Idle.welcome_roster(model)
+     end     
+     
+     def self.welcome_roster(model)
        password = Login.set_random_password(model)
        model.update(idle_state: nil)
        model.update(terms_of_service_acknowledged: nil)
@@ -96,20 +112,20 @@ module AresMUSH
        Mail.send_mail([model.name], t('idle.roster_welcome_msg_subject'), welcome_message, nil)          
        
        forum_category = Global.read_config("idle", "arrivals_category")
-       return if !forum_category
-       return if forum_category.blank?
-
-       arrival_message = Global.read_config("idle", "roster_arrival_msg")
-       arrival_message_args = Chargen.welcome_message_args(model)
-       post_body = arrival_message % arrival_message_args
+       if (!forum_category.blank?)
+         arrival_message = Global.read_config("idle", "roster_arrival_msg")
+         arrival_message_args = Chargen.welcome_message_args(model)
+         post_body = arrival_message % arrival_message_args
       
-       Forum.post(forum_category, 
-       t('idle.roster_post_subject'), 
-       post_body, 
-       Game.master.system_character)
+         Forum.post(forum_category, 
+         t('idle.roster_post_subject'), 
+         post_body, 
+         Game.master.system_character)
+       end
          
        return { password: password }
-     end     
+     end
+     
      
      def self.build_idle_queue
        queue = {}
@@ -188,6 +204,41 @@ module AresMUSH
        Manage.announce t('idle.idle_sweep_finished')
 
        report
+     end
+     
+     def self.approve_roster(enactor, model, comment)
+       if (!model.on_roster?)
+         return t('idle.not_on_roster', :name => model.name)
+       end
+       
+       job = model.roster_job
+       if (!job)
+         return t('idle.no_roster_app_pending')
+       end
+       
+       response = Idle.welcome_roster(model)
+       newpass = response[:password]
+       message = "#{t('idle.roster_approval_msg')}%R%R" +
+                 "#{t('idle.roster_password_set', :password => newpass)}%R%R" +
+                 "#{comment}"
+       Jobs.close_job(enactor, job, message)
+       model.update(roster_job: nil)
+       return nil
+     end
+     
+     def self.reject_roster(enactor, model, comment)
+       if (!model.on_roster?)
+         return t('idle.not_on_roster', :name => model.name)
+       end
+       
+       job = model.roster_job
+       if (!job)
+         return t('idle.no_roster_app_pending')
+       end
+       message = "#{t('idle.roster_rejection_msg')}%R%R#{comment}"
+       Jobs.close_job(enactor, job, message)
+       model.update(roster_job: nil)
+       return nil
      end
   end
 end

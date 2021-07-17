@@ -15,6 +15,7 @@ errors.txt
 .yardoc
 doc/
 wiki_export
+wiki_md
 calendar.ics
 .sass-cache
 .DS_Store

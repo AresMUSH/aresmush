@@ -14,7 +14,8 @@ module AresMUSH
           email: enactor.login_email,
           name: enactor.name,
           timezone: enactor.ooctime_timezone,
-          timezones: timezones
+          timezones: timezones,
+          unified_play_screen: enactor.unified_play_screen
         }
       end
     end

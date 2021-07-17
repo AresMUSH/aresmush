@@ -6,7 +6,7 @@ module AresMUSH
         time = request.args[:time]
         title = request.args[:title]
         desc = request.args[:description]
-        tags = (request.args[:tags] || []).map { |t| t.downcase }.select { |t| !t.blank? }
+        tags = (request.args[:tags] || [])
         warning = request.args[:content_warning]
         enactor = request.enactor
         

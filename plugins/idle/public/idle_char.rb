@@ -9,6 +9,8 @@ module AresMUSH
     attribute :roster_restricted, :type => DataType::Boolean
     attribute :roster_played, :type => DataType::Boolean
     
+    reference :roster_job, "AresMUSH::Job"
+    
     def idled_out?
       !!self.idle_state
     end

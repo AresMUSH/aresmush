@@ -5,7 +5,8 @@ module AresMUSH
         scene = Scene[request.args[:scene_id]]
         enactor = request.enactor
         place_name = (request.args[:place_name] || "").titlecase
-                
+        sender_name = request.args[:sender]
+               
         error = Website.check_login(request)
         return error if error
 
@@ -15,6 +16,15 @@ module AresMUSH
           return { error: t('webportal.not_found') }
         end
         
+        sender = Character.named(sender_name)
+        if (!sender)
+          return { error: t('webportal.not_found') }
+        end
+        
+        if (!AresCentral.is_alt?(sender, enactor))
+          return { error: t('dispatcher.not_allowed') }
+        end
+
         if (scene.completed)
           return { error: t('places.scene_already_completed') }
         end
@@ -25,7 +35,7 @@ module AresMUSH
           place = Place.create(name: place_name, room: scene.room)
         end
         
-        Places.join_place(enactor, place)
+        Places.join_place(sender, place)
         
         {}
       end
