@@ -508,7 +508,9 @@ module AresMUSH
 		cgp = ''		
 		
 		if ( acldb )
-			return cg
+			cg.each do |c|
+				return c.name
+			end
 			# cgedgearray << {name: 'ne', disabled: 'false', class: 'you', rating: 'desc', trexcludes: 'false'}	
 		else	
 			if (fw == 'all')
