@@ -556,7 +556,7 @@ module AresMUSH
 				cgname = "#{c.name}"
 				cgnamenew = cgname.downcase
 				cgnamesub = cgname.gsub("^", "*")   #Trying to find out why the ^ are repeated
-				# if (cgnamesub.include?("*"))
+				if (cgnamesub.include?("*"))
 					cgnamenew = cgnamenew[/[^*]+/]
 					cgnamenew = cgnamenew[/[^^]+/]
 					cgnamenew = cgnamenew.strip
@@ -571,7 +571,7 @@ module AresMUSH
 						end						
 					end
 					cgedgearray << {name: cgnamenew, disabled: trdisabled, class: c.name, rating: cgdesc, trexcludes: trexcludes}
-				# end
+				end
 			end
 		end
 			
