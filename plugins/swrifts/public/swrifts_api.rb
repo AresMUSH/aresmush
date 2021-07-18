@@ -503,6 +503,8 @@ module AresMUSH
 		cgedgearray = []
 		cgp = ''
 		
+		cg.sort
+		
 		if (fw == 'all')
 			cg.each do |c|
 					cgname = "#{c.name}"
@@ -577,7 +579,6 @@ module AresMUSH
 				end
 			end
 		end
-		cgedgearray.sort_by { |k, v| v[:name] }
 		return (cgedgearray)
 	end	
 
