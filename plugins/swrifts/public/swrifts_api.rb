@@ -577,7 +577,7 @@ module AresMUSH
 				end
 			end
 		end
-			
+		cgedgearray.sort
 		return (cgedgearray)
 	end	
 
