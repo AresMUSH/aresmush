@@ -502,9 +502,7 @@ module AresMUSH
 		# CG = character traits, cgsys = systemtraits.
 		cgedgearray = []
 		cgp = ''
-		
-		cg.sort
-		
+			
 		if (fw == 'all')
 			cg.each do |c|
 					cgname = "#{c.name}"
