@@ -171,7 +171,7 @@ module AresMUSH
 		rawcharicf = acl_return_traits(swriftstraits,'iconicf') #Get the characters Iconic Framework from the traits		
 		rawcharrace = acl_return_traits(swriftstraits,'race') #Get the characters Race from the traits			
 		
-		cgedges = char.swrifts_edges
+		cgedges1 = char.swrifts_edges
 		cgsysedges = Global.read_config('swrifts', 'edges')
 		cghinder = char.swrifts_hinderances
 		cgsyshind = Global.read_config('swrifts', 'hinderances')
@@ -205,11 +205,11 @@ module AresMUSH
 		
 		#Get the Edges that were set on the character.
 		fw = "all"
-		cgedg = returnedgesforcg(cgedges,cgsysedges, fw, 'edge')
+		cgedg = returnedgesforcg(cgedges1,cgsysedges, fw, 'edge')
 		fw = "nofw"
-		cgedgnofw = returnedgesforcg(cgedges,cgsysedges, fw, 'edge')		
+		cgedgnofw = returnedgesforcg(cgedges1,cgsysedges, fw, 'edge')		
 		fw = "fw"
-		cgedgfw = returnedgesforcg(cgedges,cgsysedges, fw, 'edge')		
+		cgedgfw = returnedgesforcg(cgedges1,cgsysedges, fw, 'edge')		
 
 		
 		#Get the hinderances that were set on the character.
@@ -500,7 +500,10 @@ module AresMUSH
 	
 	def self.returnedgesforcg(cg, cgsys, fw, traittype)
 		acldb = true
-		# CG = character traits, cgsys = systemtraits.
+		### Passed in elements ###
+		## cg = character traits
+		## cgsys = systemtraits
+		##########################
 		cgedgearray = []
 		cgp = ''		
 		
