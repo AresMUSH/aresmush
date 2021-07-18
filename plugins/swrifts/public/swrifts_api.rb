@@ -499,81 +499,87 @@ module AresMUSH
 	end	
 	
 	def self.returnedgesforcg(cg, cgsys, fw, traittype)
-		# CG = character traits, cgsys = systemtraits.
-		cgedgearray = []
-		cgp = ''
+		acldb = true
+		
+		if ( acldb ) {
+			cgedgearray << {name: 'ne', disabled: 'false', class: 'you', rating: 'desc', trexcludes: 'false'}	
+		} else {
+			# CG = character traits, cgsys = systemtraits.
+			cgedgearray = []
+			cgp = ''
+				
+			if (fw == 'all')
+				cg.each do |c|
+						cgname = "#{c.name}"
+						cgname = cgname.downcase
+						cgname = cgname[/[^*]+/]
+						cgname = cgname[/[^^]+/]
+						cgname = cgname.strip
+						edgsel = cgsys.select { |ss| ss['name'].downcase == cgname.downcase }.first #Filter the icf's to find the one that's been selected	
+						if (edgsel)
+							cgdesc = edgsel['description']
+							if ( traittype == 'hind' && edgsel['excludes'])
+								trexcludes = edgsel['excludes'];
+							else 
+								trexcludes = '';
+							end						
+						end
+						cgedgearray << {name: cgname, disabled: 'false', class: c.name, rating: cgdesc, trexcludes: trexcludes}					
+				end
+			end
 			
-		if (fw == 'all')
-			cg.each do |c|
+			if (fw == "nofw")
+			trdisabled = false
+			# CG = character traits, cgsys = systemtraits.
+				cg.each do |c|
 					cgname = "#{c.name}"
 					cgname = cgname.downcase
-					cgname = cgname[/[^*]+/]
-					cgname = cgname[/[^^]+/]
-					cgname = cgname.strip
-					edgsel = cgsys.select { |ss| ss['name'].downcase == cgname.downcase }.first #Filter the icf's to find the one that's been selected	
-					if (edgsel)
-						cgdesc = edgsel['description']
-						if ( traittype == 'hind' && edgsel['excludes'])
-							trexcludes = edgsel['excludes'];
-						else 
-							trexcludes = '';
-						end						
+					cgnamesub = cgname.gsub("^", "*")  			
+					if (!cgnamesub.include?("*"))
+						cgname = cgname[/[^*]+/]
+						cgname = cgname[/[^^]+/]
+						cgname = cgname.strip
+						edgsel = cgsys.select { |ss| ss['name'].downcase == cgname.downcase }.first 
+						if (edgsel)
+							cgdesc = edgsel['description']
+							trdisabled = true;
+							if ( traittype == 'hind' && edgsel['excludes'])
+								trexcludes = edgsel['excludes'];
+							else 
+								trexcludes = '';
+							end						
+						end
+						cgedgearray << {name: cgname, disabled: trdisabled, class: c.name, rating: cgdesc, trexcludes: trexcludes}
 					end
-					cgedgearray << {name: cgname, disabled: 'false', class: c.name, rating: cgdesc, trexcludes: trexcludes}					
-			end
-		end
-		
-		if (fw == "nofw")
-		trdisabled = false
-		# CG = character traits, cgsys = systemtraits.
-			cg.each do |c|
-				cgname = "#{c.name}"
-				cgname = cgname.downcase
-				cgnamesub = cgname.gsub("^", "*")  			
-				if (!cgnamesub.include?("*"))
-					cgname = cgname[/[^*]+/]
-					cgname = cgname[/[^^]+/]
-					cgname = cgname.strip
-					edgsel = cgsys.select { |ss| ss['name'].downcase == cgname.downcase }.first 
-					if (edgsel)
-						cgdesc = edgsel['description']
-						trdisabled = true;
-						if ( traittype == 'hind' && edgsel['excludes'])
-							trexcludes = edgsel['excludes'];
-						else 
-							trexcludes = '';
-						end						
-					end
-					cgedgearray << {name: cgname, disabled: trdisabled, class: c.name, rating: cgdesc, trexcludes: trexcludes}
 				end
 			end
-		end
-			
-		if (fw == "fw")
-		trdisabled = false
-		# CG = character traits, cgsys = systemtraits.
-			cg.each do |c|
-				cgname = "#{c.name}"
-				cgnamenew = cgname.downcase
-				cgnamesub = cgname.gsub("^", "*")   #Trying to find out why the ^ are repeated
-				if (cgnamesub.include?("*"))
-					cgnamenew = cgnamenew[/[^*]+/]
-					cgnamenew = cgnamenew[/[^^]+/]
-					cgnamenew = cgnamenew.strip
-					edgsel = cgsys.select { |ss| ss['name'].downcase == cgnamenew.downcase }.first #Filter the icf's to find the one that's been selected	
-					if (edgsel)
-						cgdesc = edgsel['description']
-						trdisabled = true;
-						if ( traittype == 'hind' && edgsel['excludes'])
-							trexcludes = edgsel['excludes'];
-						else 
-							trexcludes = '';
-						end						
+				
+			if (fw == "fw")
+			trdisabled = false
+			# CG = character traits, cgsys = systemtraits.
+				cg.each do |c|
+					cgname = "#{c.name}"
+					cgnamenew = cgname.downcase
+					cgnamesub = cgname.gsub("^", "*")   #Trying to find out why the ^ are repeated
+					if (cgnamesub.include?("*"))
+						cgnamenew = cgnamenew[/[^*]+/]
+						cgnamenew = cgnamenew[/[^^]+/]
+						cgnamenew = cgnamenew.strip
+						edgsel = cgsys.select { |ss| ss['name'].downcase == cgnamenew.downcase }.first #Filter the icf's to find the one that's been selected	
+						if (edgsel)
+							cgdesc = edgsel['description']
+							trdisabled = true;
+							if ( traittype == 'hind' && edgsel['excludes'])
+								trexcludes = edgsel['excludes'];
+							else 
+								trexcludes = '';
+							end						
+						end
+						cgedgearray << {name: cgname, disabled: trdisabled, class: c.name, rating: cgdesc, trexcludes: trexcludes}
 					end
-					cgedgearray << {name: cgname, disabled: trdisabled, class: c.name, rating: cgdesc, trexcludes: trexcludes}
 				end
 			end
-		end
+		}
 		return (cgedgearray)
 	end	
 
