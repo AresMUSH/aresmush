@@ -222,7 +222,7 @@ module AresMUSH
 		
 
 		#Get the System Edges
-		sysedges = returnsysedgesforcg(cgsysedges, cgedges, 'edge')			
+		sysedges = returnsysedgesforcg(cgsysedges, cgedges1, 'edge')			
 		
 		#Get the System Hinderances
 		syshind = returnsysedgesforcg(cgsyshind, cghinder, 'hind')	
