@@ -558,7 +558,7 @@ module AresMUSH
 				cgnamesub = cgname.gsub("^", "*")   #Trying to find out why the ^ are repeated
 				# if (cgnamesub.include?("*"))
 					# cgnamenew = cgnamenew[/[^*]+/]
-					# cgnamenew = cgnamenew[/[^^]+/]
+					cgnamenew = cgnamenew[/[^^]+/]
 					# cgnamenew = cgnamenew.strip
 					edgsel = cgsys.select { |ss| ss['name'].downcase == cgnamenew.downcase }.first #Filter the icf's to find the one that's been selected	
 					if (edgsel)
