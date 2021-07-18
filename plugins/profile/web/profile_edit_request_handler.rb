@@ -70,6 +70,10 @@ module AresMUSH
         add_to_profile profile_data, Idle.build_web_profile_edit_data(char, enactor, profile_manager)
         add_to_profile profile_data, Describe.build_web_profile_edit_data(char, enactor, profile_manager)
         add_to_profile profile_data, Roles.build_web_profile_edit_data(char, enactor, profile_manager)
+
+        if Manage.is_extra_installed?("prefs")
+          add_to_profile profile_data, Prefs.build_web_profile_edit_data(char, enactor, profile_manager)
+        end
         
         profile_data
       end

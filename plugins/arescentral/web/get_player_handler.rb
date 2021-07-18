@@ -32,6 +32,8 @@ module AresMUSH
           profile << handle_profile_data
         end
         
+        prefs = Manage.is_extra_installed?("prefs") ? Website.format_markdown_for_html(player.rp_prefs) : nil
+        
          {
            id: player.id,
            handle: player.handle ? player.handle.name : nil,
@@ -41,7 +43,8 @@ module AresMUSH
            can_manage: enactor && Profile.can_manage_char_profile?(enactor, player),
            achievements: Achievements.is_enabled? ? Achievements.build_achievements(player) : nil,
            admin_role_title: player.role_admin_note,
-           profile: profile
+           profile: profile,
+           rp_prefs: prefs
          }
        end
      end
