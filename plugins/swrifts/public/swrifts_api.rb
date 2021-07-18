@@ -512,6 +512,7 @@ module AresMUSH
 				cgedgearray << {class: c.name}
 			end
 			# cgedgearray << {name: 'ne', disabled: 'false', class: 'you', rating: 'desc', trexcludes: 'false'}	
+			return (cgedgearray.inspect)
 		else	
 			if (fw == 'all')
 				cg.each do |c|
