@@ -519,7 +519,6 @@ module AresMUSH
 							trexcludes = '';
 						end						
 					end
-					cgname = cgname+'lllll';
 					cgedgearray << {name: cgname, disabled: 'false', class: c.name, rating: cgdesc, trexcludes: trexcludes}					
 			end
 		end
@@ -545,7 +544,6 @@ module AresMUSH
 							trexcludes = '';
 						end						
 					end
-					cgname = cgname+'ooooo';
 					cgedgearray << {name: cgname, disabled: trdisabled, class: c.name, rating: cgdesc, trexcludes: trexcludes}
 				end
 			end
@@ -572,7 +570,6 @@ module AresMUSH
 							trexcludes = '';
 						end						
 					end
-					cgname=cgname+"....";
 					cgedgearray << {name: cgname, disabled: trdisabled, class: c.name, rating: cgdesc, trexcludes: trexcludes}
 				end
 			end
