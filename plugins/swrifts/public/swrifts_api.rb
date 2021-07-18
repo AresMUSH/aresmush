@@ -577,7 +577,7 @@ module AresMUSH
 				end
 			end
 		end
-		cgedgearray.sort
+		cgedgearray.sort_by { |name| }
 		return (cgedgearray)
 	end	
 
