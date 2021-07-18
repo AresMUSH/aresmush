@@ -556,10 +556,10 @@ module AresMUSH
 				cgname = "#{c.name}"
 				cgnamenew = cgname.downcase
 				cgnamesub = cgname.gsub("^", "@")   #Trying to find out why the ^ are repeated
-				if (cgnamesub.include?("*"))
-					cgnamenew = cgnamenew[/[^*]+/]
-					cgnamenew = cgnamenew[/[^^]+/]
-					cgnamenew = cgnamenew.strip
+				# if (cgnamesub.include?("*"))
+					# cgnamenew = cgnamenew[/[^*]+/]
+					# cgnamenew = cgnamenew[/[^^]+/]
+					# cgnamenew = cgnamenew.strip
 					edgsel = cgsys.select { |ss| ss['name'].downcase == cgnamenew.downcase }.first #Filter the icf's to find the one that's been selected	
 					if (edgsel)
 						cgdesc = edgsel['description']
@@ -571,7 +571,7 @@ module AresMUSH
 						end						
 					end
 					cgedgearray << {name: cgname, disabled: trdisabled, class: c.name, rating: cgdesc, trexcludes: trexcludes}
-				end
+				# end
 			end
 		end
 			
