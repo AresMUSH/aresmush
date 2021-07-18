@@ -499,7 +499,7 @@ module AresMUSH
 	end	
 	
 	def self.returnedgesforcg(cg, cgsys, fw, traittype)
-		acldb = true
+		acldb = false
 		### Passed in elements ###
 		## cg = character traits
 		## cgsys = systemtraits
@@ -522,7 +522,7 @@ module AresMUSH
 						cgname = cgname[/[^*]+/]
 						cgname = cgname[/[^^]+/]
 						cgname = cgname.strip
-						edgsel = cgsys.select { |ss| ss['name'].downcase == cgname.downcase }.first #Filter the icf's to find the one that's been selected	
+						edgsel = cgsys.select { |ss| ss['name'].downcase == cgname.downcase }.first #Filter the traits's to find the one(s) that have been selected	
 						if (edgsel)
 							cgdesc = edgsel['description']
 							if ( traittype == 'hind' && edgsel['excludes'])
