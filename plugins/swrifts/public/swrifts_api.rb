@@ -505,9 +505,9 @@ module AresMUSH
 		cgp = ''		
 		
 		if ( acldb )
-			cgedgearray << {name: 'ne', disabled: 'false', class: 'you', rating: 'desc', trexcludes: 'false'}	
-		else
-				
+			return cgsys
+			# cgedgearray << {name: 'ne', disabled: 'false', class: 'you', rating: 'desc', trexcludes: 'false'}	
+		else	
 			if (fw == 'all')
 				cg.each do |c|
 						cgname = "#{c.name}"
