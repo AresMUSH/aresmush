@@ -501,9 +501,9 @@ module AresMUSH
 	def self.returnedgesforcg(cg, cgsys, fw, traittype)
 		acldb = true
 		
-		if ( acldb ) {
+		if ( acldb )
 			cgedgearray << {name: 'ne', disabled: 'false', class: 'you', rating: 'desc', trexcludes: 'false'}	
-		} else {
+		else
 			# CG = character traits, cgsys = systemtraits.
 			cgedgearray = []
 			cgp = ''
@@ -579,7 +579,7 @@ module AresMUSH
 					end
 				end
 			end
-		}
+		end
 		return (cgedgearray)
 	end	
 
