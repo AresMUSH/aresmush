@@ -508,11 +508,12 @@ module AresMUSH
 		cgp = ''		
 		
 		if ( acldb )
-			cg.each do |c|
-				cgedgearray << {class: c.name}
-			end
+			# cg.each do |c|
+				# cgedgearray << {class: c.name}
+			# end
 			# cgedgearray << {name: 'ne', disabled: 'false', class: 'you', rating: 'desc', trexcludes: 'false'}	
-			return (cgedgearray.inspect)
+			# return (cgedgearray.inspect)
+			return cgsys.inspect
 		else	
 			if (fw == 'all')
 				cg.each do |c|
