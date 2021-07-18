@@ -509,7 +509,7 @@ module AresMUSH
 		
 		if ( acldb )
 			cg.each do |c|
-				return c.name
+				cgedgearray << {class: c.name}
 			end
 			# cgedgearray << {name: 'ne', disabled: 'false', class: 'you', rating: 'desc', trexcludes: 'false'}	
 		else	
