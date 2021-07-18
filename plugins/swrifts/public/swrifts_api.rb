@@ -555,7 +555,7 @@ module AresMUSH
 			cg.each do |c|
 				cgname = "#{c.name}"
 				cgnamenew = cgname.downcase
-				cgnamesub = cgname.gsub("^", "*")
+				cgnamesub = cgname.gsub("^", "@")   #Trying to find out why the ^ are repeated
 				if (cgnamesub.include?("*"))
 					cgnamenew = cgnamenew[/[^*]+/]
 					cgnamenew = cgnamenew[/[^^]+/]
