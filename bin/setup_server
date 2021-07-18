@@ -54,12 +54,6 @@ apt-get install -y redis-server
 
 # #########################################################################################
 
-echo -e "${ARES_INSTALL_TEXT} Redis needs Transparent Huge Pages kernel feature disabled."
-apt-get install -y hugepages
-hugeadm --thp-never
-
-# #########################################################################################
-
 echo -e "${ARES_INSTALL_TEXT} Protect SSH from multiple failed logins."
 apt-get install -y fail2ban
 

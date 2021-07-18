@@ -26,8 +26,14 @@ The `find` command lists objects.  You can search by object type:  Room, Charact
 
 There is no equivalent to the generic 'set' command you might be familiar with from other MUSHes.  Instead, individual commands provide ways to update data.
 
+## Database Saves
+
+The database is kept in memory. It saves to disk automatically every few minutes and when the game shuts down.  If you want to make absolutely sure something is saved - like before a server reboot - you can manually do a save:
+
+`db/save` - Triggers a manual save.
+
 ## Database Backups
 
 Ares contains an automated backup system. By default, backups will be stored locally in the aresmush/backups folder. You can also set up external backups.  See [Managing Backups](https://aresmush.com/tutorials/manage/backups.html) for details.
 
-`backup` - Triggers an immediate backup.
+`db/backup` - Triggers an immediate backup.
