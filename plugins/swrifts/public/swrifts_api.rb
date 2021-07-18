@@ -505,7 +505,7 @@ module AresMUSH
 		cgp = ''		
 		
 		if ( acldb )
-			return cgsys.inspect
+			return cg.inspect
 			# cgedgearray << {name: 'ne', disabled: 'false', class: 'you', rating: 'desc', trexcludes: 'false'}	
 		else	
 			if (fw == 'all')
