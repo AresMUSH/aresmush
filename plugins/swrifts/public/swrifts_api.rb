@@ -500,13 +500,13 @@ module AresMUSH
 	
 	def self.returnedgesforcg(cg, cgsys, fw, traittype)
 		acldb = true
+		# CG = character traits, cgsys = systemtraits.
+		cgedgearray = []
+		cgp = ''		
 		
 		if ( acldb )
 			cgedgearray << {name: 'ne', disabled: 'false', class: 'you', rating: 'desc', trexcludes: 'false'}	
 		else
-			# CG = character traits, cgsys = systemtraits.
-			cgedgearray = []
-			cgp = ''
 				
 			if (fw == 'all')
 				cg.each do |c|
