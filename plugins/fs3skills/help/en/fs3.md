@@ -45,11 +45,11 @@ You can also do opposed rolls, which basically just compare the number of succes
     <FS3> Flare rolls Firearms (8 4 3 2 1) vs Ivan's Firearms (8 7 6 6 6 5 5 2 1 1)
     <FS3>          Crushing Victory for Ivan.
 
-When rolling an ability, you can do:
+When rolling an ability, the system will assume you want to use the default linked attribute. You can also specify which attribute to use, or roll _just_ an attribute (this is used when "defaulting" to a skill you don't have, and assumes an Everyman level):
 
     roll Firearms         Rolls Firearms + the linked attribute (shown on your sheet)
     roll Firearms+Wits    Rolls Firearms with an explicit linked attribute
-    roll Wits             Rolls Wits with an assumed skill of "Everyman" for a default roll
+    roll Wits             Rolls Wits with an assumed skill of "Everyman" (defaulting)
 
 You can add modifiers to any of the above, which just add dice.
 

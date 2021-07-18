@@ -163,6 +163,13 @@ module AresMUSH
       Global.plugin_manager.unload_plugin(name)
       Manage.remove_extra_plugin_from_config(name)
     end
-    
+
+    def self.save_db
+      begin
+        Ohm.redis.call "BGSAVE"
+      rescue 
+        Global.logger.warn "Error triggering manual DB save."
+      end
+    end
   end
 end

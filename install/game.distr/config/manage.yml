@@ -8,6 +8,7 @@ manage:
     wall: announce
     about: version
     update: upgrade
+    dbbackup: db/backup
   permissions:
     announce: Use the announce command.
     boot: Use the boot command.

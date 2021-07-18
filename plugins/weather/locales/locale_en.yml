@@ -1,9 +1,0 @@
-en:
-    weather:
-        invalid_temperature: "That is not a valid temperature.  Try one of these: %{temps}"
-        invalid_condition: "That is not a valid condition.  Try one of these: %{conditions}"
-        weather_set: "You set the weather for the %{area} area."
-        weather_reset: "You reset the weather."
-        default: "Everywhere Else"
-        condition: "The weather is %{condition}."
-        temperature: "It is a %{temperature} %{season} %{time_of_day}."

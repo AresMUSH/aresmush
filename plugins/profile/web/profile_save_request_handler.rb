@@ -69,6 +69,13 @@ module AresMUSH
         
         Describe.save_web_descs(char, request.args['descs'])
 
+        if Manage.is_extra_installed?("prefs")
+          error = Prefs.save_web_profile_data(char, enactor, request.args)
+          if (error)
+            return { error: error }
+          end
+        end
+        
         error = Roles.save_web_profile_data(char, enactor, request.args)
         if (error)
           return { error: error }

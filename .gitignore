@@ -28,6 +28,7 @@ aresconfig.js
 _last_install.txt
 nginx.default
 sitemap.xml
+redis/
 
 # Process ID scripts
 # -----------------------------
