@@ -507,8 +507,8 @@ module AresMUSH
 			cg.each do |c|
 					cgname = "#{c.name}"
 					cgname = cgname.downcase
-					# cgname = cgname[/[^*]+/]
-					# cgname = cgname[/[^^]+/]
+					cgname = cgname[/[^*]+/]
+					cgname = cgname[/[^^]+/]
 					cgname = cgname.strip
 					edgsel = cgsys.select { |ss| ss['name'].downcase == cgname.downcase }.first #Filter the icf's to find the one that's been selected	
 					if (edgsel)
@@ -529,12 +529,12 @@ module AresMUSH
 			cg.each do |c|
 				cgname = "#{c.name}"
 				cgname = cgname.downcase
-				cgnamesub = cgname.gsub("^", "@")  #And here				
+				cgnamesub = cgname.gsub("^", "@")  			
 				if (!cgnamesub.include?("*"))
 					cgname = cgname[/[^*]+/]
 					cgname = cgname[/[^^]+/]
 					cgname = cgname.strip
-					edgsel = cgsys.select { |ss| ss['name'].downcase == cgname.downcase }.first #Filter the icf's to find the one that's been selected	
+					edgsel = cgsys.select { |ss| ss['name'].downcase == cgname.downcase }.first 
 					if (edgsel)
 						cgdesc = edgsel['description']
 						trdisabled = true;
