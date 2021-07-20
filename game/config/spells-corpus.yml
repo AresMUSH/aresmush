@@ -687,10 +687,10 @@ spells:
     duration: 3 hours
     effect: Transformation
     level: 7
-    name: Shapeshift Sentinel Jackal
+    name: Shapeshift Fire Salamander
     range: Self
     school: Corpus
-  Shapeshift Sentinel  Fire Salamander:
+  Shapeshift Sentinel Jackal:
     available: true
     armor: Tough Hide
     casting_time: 1 round
