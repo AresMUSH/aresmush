@@ -2,44 +2,6 @@ BEGIN:VCALENDAR
 VERSION:2.0
 PRODID:-//hacksw/handcal//NONSGML v1.0//EN
 BEGIN:VEVENT
-UID:a308deff-3383-4d94-8306-c598af9e4c86@Spirit Lake-spiritlakemu.com
-DTSTART:20210718T180000Z
-DTSTAMP:20210708T175238Z
-SUMMARY:Snakes on a Plain Bagel
-DESCRIPTION:The Spruce & Lark Cafe (formerly the Prickly Poppy Cafe, formerly The Cafe) once again has a problem of a magical nature.
-  
-  ---
-  
-  GMing by Ammit. This scene is for **new characters** and characters new to magic. (And any S&L employees).
-END:VEVENT
-BEGIN:VEVENT
-UID:f0483a5a-e2e2-4157-b53a-49fbd0fa69ec@Spirit Lake-spiritlakemu.com
-DTSTART:20210714T193000Z
-DTSTAMP:20210709T153536Z
-SUMMARY:Tending the Memorial Garden (Open)
-DESCRIPTION:The Steward of Feixuzhicheng organizes a public tending of the Memorial Garden for his people and invites the Grand Lake mages to take part. Come for the weeding, stay to share stories about the beauty that can flourish after times of hardship.
-  
-  GM: Selkie
-  
-  Open Feix event with some interaction with the local NPCs. Primarily social thing. 
-END:VEVENT
-BEGIN:VEVENT
-UID:a013965d-c62b-4ce9-85aa-ac3cc1e0b127@Spirit Lake-spiritlakemu.com
-DTSTART:20210716T003000Z
-DTSTAMP:20210712T130027Z
-SUMMARY:Seeds Of Change: Transit North
-DESCRIPTION:The trip to the snowy north begins! Likely to see combat. Dress warm!
-  
-  Open to those present at initial scene for this plot + anyone roped in through RP.
-END:VEVENT
-BEGIN:VEVENT
-UID:0e41009c-3e90-40b8-b7c8-a035c3b5a5a3@Spirit Lake-spiritlakemu.com
-DTSTART:20210717T003000Z
-DTSTAMP:20210712T130203Z
-SUMMARY:Seeds Of Change: A Blessing Received
-DESCRIPTION:The arrival in the North! Open to characters already involved in plot from prior scenes.
-END:VEVENT
-BEGIN:VEVENT
 UID:02fa9240-b072-4d6e-aa80-5d37a9b9f47e@Spirit Lake-spiritlakemu.com
 DTSTART:20210723T003000Z
 DTSTAMP:20210713T151406Z
@@ -62,14 +24,12 @@ DESCRIPTION:Manny and Kevin go exploring in Nokor Phnom to do some exploring. Th
   GMing by Ammit. Closed scene as a response to Open Actions.
 END:VEVENT
 BEGIN:VEVENT
-UID:4f2b1eb7-50e8-4e2f-b89f-f9312046fb7e@Spirit Lake-spiritlakemu.com
-DTSTART:20210717T013000Z
-DTSTAMP:20210713T195214Z
-SUMMARY:Storm Warning
-DESCRIPTION:Jakobi and Roo go looking for the sapient rock biter in Nokor Phnom. 
+UID:46af4019-24c0-4b57-8d52-1980b12243d7@Spirit Lake-spiritlakemu.com
+DTSTART:20210728T150000Z
+DTSTAMP:20210720T142130Z
+SUMMARY:OA: The Ghosts of Faerie
+DESCRIPTION:Midori and Birdie find someone who can tell them about owls past.
   
-  ---
-  
-  GMing by Ammit. Closed scene as a response to Open Actions.
+  This is an OA event.
 END:VEVENT
 END:VCALENDAR

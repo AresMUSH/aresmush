@@ -1341,6 +1341,15 @@ ul.reference-help-list > li:not(:last-child)::after {
 .server-migration {
   padding-right: 10px; }
 
+.prefs-list-item {
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid #dddddd;
+  padding: 10px; }
+
+.prefs-list-description {
+  padding-left: 20px; }
+
 /*.char-scene-list li:before { content: "\2666  "; }*/
 @media (max-width: 765px) {
   .site-title {

@@ -9,13 +9,18 @@ plugins:
   - fs3combat
   - fs3skills
   - ranks
-  - weather
   config_help_links:
     ffg: https://github.com/AresMUSH/ares-extras/tree/master/plugins/ffg
     fate: https://github.com/AresMUSH/ares-extras/tree/master/plugins/fate
     cortex: https://github.com/AresMUSH/ares-extras/tree/master/plugins/cortex
     prefs: https://github.com/AresMUSH/ares-extras/tree/master/plugins/prefs
     traits: https://github.com/AresMUSH/ares-extras/tree/master/plugins/traits
+    dice: https://github.com/AresMUSH/ares-dice-plugin
+    txt: https://github.com/SpiritLake/ares-txt-plugin
+    compliments: https://github.com/spiritlake/ares-compliments-plugin
+    eshtraits: https://github.com/ClockworkEJD/ares-eshtraits-plugin
+    weather: https://github.com/aresmush/ares-weather-plugin
   extras:
   - openweather
   - txt
+  - weather
