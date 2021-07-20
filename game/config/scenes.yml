@@ -79,7 +79,7 @@ scenes:
     hour:
     - 12
     minute:
-    - 37
+    - 40
   unshared_scene_deletion_days: 90
   unshared_scene_warning_days: 83
   achievements:
