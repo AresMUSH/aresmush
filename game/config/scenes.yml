@@ -75,11 +75,11 @@ scenes:
     - Fri
   unshared_scene_cleanup_cron:
     day_of_week:
-    - Fri
+    - Tues
     hour:
-    - 22
+    - 12
     minute:
-    - 2
+    - 35
   unshared_scene_deletion_days: 90
   unshared_scene_warning_days: 83
   achievements:
