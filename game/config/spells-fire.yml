@@ -221,6 +221,23 @@ spells:
     roll: true
     school: Fire
   #Level 5
+  Darkness:
+    available: false
+    area: 10 ft radius
+    casting_time: 1 round
+    damage_type: None
+    defense_mod: 3
+    desc:  "The caster quenches all light within a 10 ft radius area, making anything caught in the darkness hidden and blind. Spell does not put out any sources of light, but stops them from illuminating the area.  Darkened area cannot be moved.\n\nAttacks which require line of sight may target those within the darkness, but hidden targets receive an automatic +3 to defense. Targets should be selected via a random roll (`dice d1<number of targets>`, select alphabetically) and should include any allies. Attacks which do not require line of sight may target hidden creatures with a +3 to attack (to cancel the +3 defense).\n\nBlinded beings may attack at GM discretion with a -3 attack mod (not automatic).\n\nDoes not effect spells, senses and abilities that do not require line of sight."
+    duration: 15 minutes
+    effect: Defense
+    level: 5
+    line_of_sight: true
+    name: Darkness
+    range: Short
+    rounds: 90
+    school: Fire
+    stance: hidden
+    target_num: 5
   Flares:
     area: 10 yard radius
     available: true
@@ -255,7 +272,8 @@ spells:
     available: true
     casting_time: 1 round
     damage_type: None
-    desc: "The caster bends light around the target''s form, making them invisible and effectively [hidden.](https://www.aresmush.com/fs3/fs3-3/combat/#stance) The caster may end the spell at any time."
+    defense_mod: 3
+    desc: "The caster bends light around the target's form, making them invisible and effectively [hidden.](https://www.aresmush.com/fs3/fs3-3/combat/#stance).\n\nAttacks which require line of sight may target invisible creatures if they have a reason to know their location, but the target recieves an automatic +3 mod to their defense. Attacks which do not require line of sight may target invisible creatures with a +3 to attack (to cancel the +3 defense)."
     duration: 5 minutes
     effect: Defense
     level: 5

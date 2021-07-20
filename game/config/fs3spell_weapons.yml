@@ -90,6 +90,12 @@ fs3combat:
       accuracy: 1
       lethality: 5
       penetration: 1
+    Transmutation :
+      description: Level 7 Will spell
+      is_magic: true
+      accuracy: 2
+      lethality: 15
+      penetration: 4      
     Vitality:
       description: Level 4 Corpus spells
       is_magic: true

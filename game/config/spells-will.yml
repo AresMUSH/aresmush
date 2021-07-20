@@ -201,7 +201,6 @@ spells:
     range: Short
     school: Will
     target_num: 1
-
     weapon: Telekinetic Burst
   Transform Weapon:
     available: true
@@ -549,6 +548,20 @@ spells:
     range: Touch
     roll: true
     school: Will
+  Transmutation  Weapon:
+    available: false
+    casting_time: 1 round
+    damage_type: None
+    desc: Transmute any weapon, making it into a more powerful version of itself and allowing the caster to make simple aesthetic changes to its appearance.
+    duration: 6 hours
+    effect: Buff
+    level: 7
+    name: Transmutation Weapon
+    range: Touch
+    rounds: 100
+    school: Will
+    weapon_specials: Transmutation 
+    weapon: Spell
   #LEVEL 8
   Massive Telekinetic Barrier:
     area: 100 yard sphere
