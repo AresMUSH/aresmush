@@ -170,12 +170,11 @@ module AresMUSH
 
 
     def self.heal_all_unhealed_damage(char)
-      damage = char.damage
-      damage.each do |d|
-        if !d.healed
-          d.update(current_severity: "HEAL")
-          d.update(healed: true)
-        end
+      wounds = char.damage.select { |d| d.healing_points > 0 }
+      wounds.each do |w|
+        w.update(current_severity: "HEAL")
+        w.update(healed: true)
+        w.update(healing_points: 0)
       end
       Global.logger.info "Auto-revive spell healing all #{char.name}'s damage."
     end
