@@ -107,3 +107,4 @@ en:
         theme_installed: "Theme installed. Please check the readme file at %{url} for any additional instructions."
         
         mismatched_versions: "Your game and webportal versions are mismatched.  Try reloading the page or clearing your browser cache. If the problem persists, there may be an upgrade issue."
+        db_save_triggered: "Database save initiated."

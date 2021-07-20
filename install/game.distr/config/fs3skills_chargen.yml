@@ -10,8 +10,8 @@ fs3skills:
     '3': 4
     '4': 2
   max_points_on_action: 28
-  max_points_on_attrs: 12
   max_points_on_advantages: 12
+  max_points_on_attrs: 12
   max_skill_rating: 7
   max_skills_at_or_above:
     '5': 3
