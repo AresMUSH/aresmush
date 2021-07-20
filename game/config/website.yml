@@ -1,0 +1,205 @@
+---
+website:
+  allow_html_in_markdown: true
+  character_gallery_group: Major School
+  character_gallery_subgroup: ''
+  left_sidebar: false
+  max_upload_size_kb: 500
+  max_folder_size_kb: 5000
+  restricted_pages:
+  - home
+  - policies
+  - admin
+  sitemap_update_cron:
+    hour:
+    - 2
+    minute:
+    - 17
+  top_navbar:
+  - title: About Us
+    menu:
+    - route: wiki-page
+      title: About Spirit Lake
+      id: about_us
+    - route: wiki-page
+      title: World Intro
+      id: world_intro
+    - route: wiki-page
+      title: Policies
+      id: policies
+    - route: wiki-page
+      title: Join Us
+      id: guides:join_us
+    - route: wiki-page
+      title: Staff Team
+      id: staff
+  - title: Play
+    menu:
+    - route: chargen
+      title: Create a Character
+    - route: roster
+      title: Pre-Made Characters
+    - divider: true
+    - route: scenes-play
+      title: Play
+    - route: scenes-live
+      title: Active Scenes
+    - route: scenes-unshared
+      title: Your Unshared Scenes
+    - route: scene-create
+      title: Start New Scene
+    - route: combats
+      title: Combats
+    - divider: true
+    - route: client
+      title: Web Client
+  - title: Game
+    menu:
+    - route: wiki-page
+      title: Getting Started
+      id: guides:getting_started
+    - route: wiki-page
+      title: Hooks & Hopes
+      id: hooks__amp__hopes
+    - route: wiki-page
+      title: Guides
+      id: guides
+    - route: help
+      title: Help
+    - divider: true
+    - route: forum
+      title: Forum
+    - route: events
+      title: Events
+  - title: World
+    menu:
+    - route: wiki-page
+      title: Grand Lake
+      id: grand_lake
+    - divider: true
+    - route: wiki-page
+      title: Magic
+      id: magic
+    - route: wiki-page
+      title: Schools
+      id: schools
+    - route: wiki-page
+      title: Magical Items
+      id: magical_items
+    - route: wiki-page
+      title: Portals
+      id: portals
+    - route: wiki-page
+      title: Creatures
+      id: creatures
+    - route: wiki-page
+      title: Familiars
+      id: familiars
+  - title: Story
+    menu:
+    - route: scenes
+      title: Scenes
+    - route: plots
+      title: Plots
+    - divider: true
+    - route: wiki-page
+      title: WeirdDocs
+      id: weird_docs
+    - route: wiki-page
+      title: Under-Library
+      id: underlibrary
+    - divider: true
+    - route: wiki-page
+      title: Story So Far
+      id: story_so_far
+  - title: Directory
+    menu:
+    - route: spells
+      title: Spells
+    - route: portals
+      title: Portals
+    - route: creatures
+      title: Creatures
+    - route: characters
+      title: Characters
+    - route: lore-hooks
+      title: Lore Hooks
+    - route: fs3combat-gear
+      title: Gear List
+    - divider: true
+    - route: players
+      title: Players
+    - route: census
+      title: Census
+    - route: locations
+      title: Locations
+    - route: achievements
+      title: Achievements
+    - route: roles
+      title: Roles
+    - divider: true
+    - route: files
+      title: Files
+  - title: System
+    menu:
+    - route: wiki-page
+      title: Combat Guide
+      id: guides:combat_guide
+    - route: wiki-page
+      title: Combat Organizer's Guide
+      id: guides:combat_org_guide
+    - route: wiki-page
+      title: Combat Tactics Guide
+      id: guides:combat_tactics
+    - divider: true
+    - route: wiki-page
+      title: Magic System
+      id: magic_system
+    - divider: true
+    - route: fs3skills-abilities
+      title: Abilities List
+    - route: wiki-page
+      title: Luck Points
+      id: luck_points
+    - route: wiki-page
+      title: XP
+      id: xp
+    - route: fs3-limits
+      title: FS3 Limits
+    - divider: true
+    - route: wiki-page
+      title: Plot System
+      id: plot_system
+    - route: wiki-page
+      title: Player Run Plots
+      id: guides:player_run_plots
+    - route: wiki-page
+      title: One-Shot Adventures
+      id: one-shot_adventures
+    - divider: true
+    - target: blank
+      title: FS3 Player's Guide <i class="fa fa-external-link-alt" aria-hidden="true">
+      url: http://aresmush.com/fs3/fs3-3
+    - target: blank
+      title: FS3 Combat Quick Reference <i class="fa fa-external-link-alt" aria-hidden="true">
+      url: http://aresmush.com/fs3/fs3-3/combat-quickref.html
+    - target: blank
+      title: FS3 Interactive Combat Walkthrough <i class="fa fa-external-link-alt"
+        aria-hidden="true">
+      url: http://aresmush.com/fs3/fs3-3/combat-walkthrough.html
+  website_code_path: "/home/ares/ares-webportal"
+  wiki_aliases:
+    main: home
+    weird_docs:weirdnet: weirdnet
+    weird_docs:underlibrary: underlibrary
+    under-library: underlibrary
+  permissions:
+    manage_theme: Edit web portal CSS and colors.
+    manage_wiki: Create and delete restricted wiki pages.
+  story: "[To the Victors, the Spoils](https://spiritlakemu.com/plot/50)\nThe Mages are invited to participate in a tournament, held in Kleiosis, the Mágosmáchia.\n\n[The Rubidon](https://spiritlakemu.com/plot/51)\nGrand Lake Mages go to help a few Lualea keepers that went to observe wildlife in Nokor Phnom. They encounter a very large issue which they work to help with alongside the keepers.\n\n  [Tempests of Air](https://spiritlakemu.com/plot/46)\nGrand Lake's mages seek the powerful Air gem in a new and unexplored portal. Storms and other dangers abound."
+  auto_wiki_export: true
+  wiki_export_cron:
+    hour:
+    - 3
+    minute:
+    - 37 
