@@ -81,7 +81,7 @@ scenes:
     minute:
     - 40
   unshared_scene_deletion_days: 90
-  unshared_scene_warning_days: 83
+  unshared_scene_warning_days: 80
   achievements:
     word_count:
       type: story
