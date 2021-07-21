@@ -128,12 +128,10 @@ module AresMUSH
     end
     
     def self.mark_read(message, enactor)
-      thread = message.thread ? message.thread : message
-      thread.mark_read
-      thread.find_replies(enactor).each do |reply|
-        reply.mark_read
+      message.thread_messages(enactor).each do |m|
+        m.mark_read
       end
-      Login.mark_notices_read(message.character, :mail, thread.id)
+      Login.mark_notices_read(message.character, :mail, message.id)
     end
     
     def self.build_mail_web_data(message, enactor)
@@ -156,7 +154,7 @@ module AresMUSH
            in_trash: message.tags.include?(Mail.trashed_tag),
            raw_body: message.body,
            unread_mail_count: enactor.num_unread_mail,
-           replies: message.find_replies(enactor).map { |m| {
+           replies: message.thread_messages(enactor).map { |m| {
              from: {
                name: message.author_name,
                icon: Website.icon_for_char(message.author)

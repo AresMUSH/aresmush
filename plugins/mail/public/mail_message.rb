@@ -1,4 +1,15 @@
 module AresMUSH
+  class MailThread < Ohm::Model
+    include ObjectModel
+    
+    collection :messages, "AresMUSH::MailMessage", :thread
+    
+    def messages_for(enactor)
+      self.messages.select { |m| m.character == enactor }.sort_by { |m| m.created_at }
+    end
+  end
+  
+
   class MailMessage < Ohm::Model
     include ObjectModel
       
@@ -12,7 +23,7 @@ module AresMUSH
     attribute :read, :type => DataType::Boolean
     attribute :tags, :type => DataType::Array
     
-    reference :thread, "AresMUSH::MailMessage"
+    reference :thread, "AresMUSH::MailThread"
     
     index :read
     
@@ -28,15 +39,9 @@ module AresMUSH
       OOCTime.local_short_timestr(viewer, self.created_at)
     end
     
-    def find_replies(enactor)
-      thread_id = self.thread ? self.thread.id : self.id
-      enactor.mail.find(thread_id: thread_id).to_a.sort_by { |m| m.created_at }
+    def thread_messages(enactor)
+      return [] if !self.thread
+      self.thread.messages_for(enactor)
     end
-    
-    def is_reply?
-      !!self.thread
-    end
-    
-    
   end
 end

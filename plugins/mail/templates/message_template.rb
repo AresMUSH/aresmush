@@ -7,7 +7,7 @@ module AresMUSH
       def initialize(enactor, message)
         @enactor = enactor
         @message = message
-        @replies = message.find_replies(enactor)
+        @replies = message.thread_messages(enactor)
         super File.dirname(__FILE__) + "/message.erb"
       end
       

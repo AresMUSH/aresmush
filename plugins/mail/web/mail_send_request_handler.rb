@@ -13,13 +13,7 @@ module AresMUSH
         
         Global.logger.info "#{enactor.name} sending mail to #{to_list}."
         
-        thread = nil
-        if (!thread_id.blank?)
-          thread_msg = MailMessage[thread_id]
-          if (thread_msg && thread_msg.thread)
-            thread = thread_msg.thread
-          end
-        end
+        thread = thread_id.blank? ? nil : MailMessage[thread_id]
         
         if (subject.blank? || message.blank? || to_list.blank?)
           return { error: t('webportal.missing_required_fields') }

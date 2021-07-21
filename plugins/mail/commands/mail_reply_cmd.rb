@@ -39,10 +39,8 @@ module AresMUSH
         Global.logger.debug("#{self.class.name} #{client} replying to message #{self.num} (#{msg.subject}).")
         subject = t('mail.reply_subject', :subject => msg.subject)
         recipients = Mail.reply_list(msg, enactor, cmd.switch_is?("replyall"))
-        
-        thread = msg.thread ? msg.thread : msg
-        
-        if (Mail.send_mail(recipients, subject, body, client, enactor, thread))
+                
+        if (Mail.send_mail(recipients, subject, body, client, enactor, msg.thread))
           client.emit_ooc t('mail.message_sent')
         end
       end

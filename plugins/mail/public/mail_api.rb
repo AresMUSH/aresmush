@@ -28,6 +28,10 @@ module AresMUSH
       
       to_list = recipients.map { |r| r.name }.join(" ")
       notification = t('mail.new_mail', :from => author.name, :subject => subject)
+
+      if (thread == nil)
+        thread = MailThread.create
+      end
       
       notify = true
       recipients.each do |r|
