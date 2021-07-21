@@ -192,8 +192,27 @@ code {
     position: relative;
     width: fit-content;
 }
+/*------------ Bingo ----------------*/
+
+td.bingo-done {
+    border: 1px solid #dcdcdc;
+    height: 10em;
+    width: 10em;
+    text-align: center;
+    background-color: #545454;
+    color: #dcdcdc;
+    text-decoration: line-through;
+}
 
 
+td.bingo {
+    vertical-align: center;
+    text-align: center;
+    height: 10em;
+    width: 10em;
+    border: 1px solid #dcdcdc;
+    background-color: #181b1d;
+}
 /*------------ Menus ----------------*/
 
 select {
