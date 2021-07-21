@@ -3,8 +3,16 @@
 <%= divider %>
 <%= left( t('mail.to'), 6 ) %> <%= message.to_list %>
 <%= left( t('mail.from'), 6 ) %> <%= author %>
-<%= left( t('mail.sent'), 6 ) %> <%= date %>
+<%= left( t('mail.sent'), 6 ) %> <%= date(message) %>
 <%= left( t('mail.tags'), 6 ) %> <%= tags %>
 <%= divider %>
 <%= message.body %>
+<%= message.id %> <%= message.thread ? message.thread.id : "--" %>
+<% if replies.any? %>
+<% replies.each do |reply| %>
+
+%xh(<%= date(reply) %>) <%= reply.author_name %>%xn
+<%= reply.body %>
+<% end %>
+<% end %>
 <%= footer %>

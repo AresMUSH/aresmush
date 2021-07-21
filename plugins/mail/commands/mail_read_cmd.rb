@@ -15,9 +15,10 @@ module AresMUSH
        
       def handle
         Mail.with_a_delivery(client, enactor, self.num) do |delivery|
-          template = MessageTemplate.new(enactor, delivery)
+          thread = delivery.thread ? delivery.thread : delivery
+          template = MessageTemplate.new(enactor, thread)
           client.emit template.render
-          Mail.mark_read(delivery)
+          Mail.mark_read(thread, enactor)
           client.program[:last_mail] = delivery
         end
       end

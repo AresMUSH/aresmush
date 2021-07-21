@@ -1,7 +1,7 @@
 module AresMUSH
   module Mail
     
-    def self.send_mail(names, subject, body, client, author = nil)
+    def self.send_mail(names, subject, body, client, author = nil, thread = nil)
       author = author || Game.master.system_character
       recipients = []
       
@@ -31,7 +31,7 @@ module AresMUSH
       
       notify = true
       recipients.each do |r|
-        delivery = MailMessage.create(subject: subject, body: body, author: author, to_list: to_list, character: r)
+        delivery = MailMessage.create(subject: subject, body: body, author: author, to_list: to_list, character: r, thread: thread)
         tags = []
         if (r == author && !names.include?(author.name))
           delivery.update(read: true)

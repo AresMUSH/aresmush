@@ -12,6 +12,8 @@ module AresMUSH
     attribute :read, :type => DataType::Boolean
     attribute :tags, :type => DataType::Array
     
+    reference :thread, "AresMUSH::MailMessage"
+    
     index :read
     
     def mark_read
@@ -25,5 +27,16 @@ module AresMUSH
     def created_date_str(viewer)
       OOCTime.local_short_timestr(viewer, self.created_at)
     end
+    
+    def find_replies(enactor)
+      thread_id = self.thread ? self.thread.id : self.id
+      enactor.mail.find(thread_id: thread_id).to_a.sort_by { |m| m.created_at }
+    end
+    
+    def is_reply?
+      !!self.thread
+    end
+    
+    
   end
 end

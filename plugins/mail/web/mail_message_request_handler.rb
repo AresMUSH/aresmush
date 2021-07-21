@@ -16,25 +16,9 @@ module AresMUSH
           return { error: t('dispatcher.not_allowed') }
         end
         
-        Mail.mark_read(message)
-        
-       {
-            id: message.id,
-            subject: message.subject,
-            to_list: message.to_list,
-            reply_all:  Mail.reply_list(message, enactor, true),
-            from: message.author_name,
-            created: message.created_date_str(enactor),
-            created_long_format: OOCTime.local_long_timestr(enactor, message.created_at),
-            tags: message.tags,
-            can_reply: !!message.author,
-            unread: !message.read,
-            body: Website.format_markdown_for_html(message.body),
-            all_tags: Mail.all_tags(enactor),
-            in_trash: message.tags.include?(Mail.trashed_tag),
-            raw_body: message.body,
-            unread_mail_count: enactor.num_unread_mail
-        }
+        Mail.mark_read(message, enactor)
+        thread = message.thread ? message.thread : message
+        Mail.build_mail_web_data(thread, enactor)
       end
     end
   end

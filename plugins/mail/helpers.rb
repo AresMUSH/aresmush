@@ -127,10 +127,46 @@ module AresMUSH
       recipients.uniq
     end
     
-    def self.mark_read(message)
-      message.mark_read
-      Login.mark_notices_read(message.character, :mail, message.id)
+    def self.mark_read(message, enactor)
+      thread = message.thread ? message.thread : message
+      thread.mark_read
+      thread.find_replies(enactor).each do |reply|
+        reply.mark_read
+      end
+      Login.mark_notices_read(message.character, :mail, thread.id)
     end
     
+    def self.build_mail_web_data(message, enactor)
+      {
+           id: message.id,
+           subject: message.subject,
+           to_list: message.to_list,
+           reply_all:  Mail.reply_list(message, enactor, true),
+           from: {
+             name: message.author_name,
+             icon: Website.icon_for_char(message.author)
+           },  
+           created: message.created_date_str(enactor),
+           created_long_format: OOCTime.local_long_timestr(enactor, message.created_at),
+           tags: message.tags,
+           can_reply: !!message.author,
+           unread: !message.read,
+           body: Website.format_markdown_for_html(message.body),
+           all_tags: Mail.all_tags(enactor),
+           in_trash: message.tags.include?(Mail.trashed_tag),
+           raw_body: message.body,
+           unread_mail_count: enactor.num_unread_mail,
+           replies: message.find_replies(enactor).map { |m| {
+             from: {
+               name: message.author_name,
+               icon: Website.icon_for_char(message.author)
+             },
+             created: message.created_date_str(enactor),
+             created_long_format: OOCTime.local_long_timestr(enactor, message.created_at),
+             unread: !message.read,
+             body: Website.format_markdown_for_html(message.body)             
+           }}
+       }
+     end
   end
 end

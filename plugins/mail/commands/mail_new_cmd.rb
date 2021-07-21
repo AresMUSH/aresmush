@@ -10,7 +10,7 @@ module AresMUSH
         else
           template = MessageTemplate.new(enactor, unread)
           client.emit template.render
-          Mail.mark_read(unread)
+          Mail.mark_read(unread, enactor)
           client.program[:last_mail] = unread
         end
       end

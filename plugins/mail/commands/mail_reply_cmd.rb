@@ -40,7 +40,9 @@ module AresMUSH
         subject = t('mail.reply_subject', :subject => msg.subject)
         recipients = Mail.reply_list(msg, enactor, cmd.switch_is?("replyall"))
         
-        if (Mail.send_mail(recipients, subject, body, client, enactor))
+        thread = msg.thread ? msg.thread : msg
+        
+        if (Mail.send_mail(recipients, subject, body, client, enactor, thread))
           client.emit_ooc t('mail.message_sent')
         end
       end
