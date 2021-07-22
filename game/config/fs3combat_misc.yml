@@ -50,7 +50,7 @@ fs3combat:
       armor: Thick Shell
       weapon: Sharp Claws
     Insect:
-      weapon: Teeth
+      weapon: Bug Bite
       weapon_specials:
       armor: None
       hitloc: Insect
