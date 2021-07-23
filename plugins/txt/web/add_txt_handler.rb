@@ -18,7 +18,7 @@ module AresMUSH
                  return { error: t('dispatcher.not_allowed') }
                end
 
-              Global.logger.debug "Pose char: #{pose_char} -  #{pose_char.name} Texting char: #{char} - #{char.name}"
+              # Global.logger.debug "Pose char: #{pose_char} -  #{pose_char.name} Texting char: #{char} - #{char.name}"
 
                 # if !enactor.txt_last_scene
                 #     enactor.update(txt_last_scene: [])
