@@ -3,6 +3,7 @@ module AresMUSH
         class AddTxtRequestHandler
 
             def handle(request)
+              Global.logger.debug  "Request: #{request.args}"
                 scene_id = request.args[:scene_id]
                 scene = Scene[request.args[:scene_id]]
                 pose = request.args[:pose]
@@ -17,7 +18,7 @@ module AresMUSH
                  return { error: t('dispatcher.not_allowed') }
                end
 
-               puts "NEW CODE1"
+              Global.logger.debug "Pose char: #{pose_char} -  #{pose_char.name} Texting char: #{char} - #{char.name}"
 
                 # if !enactor.txt_last_scene
                 #     enactor.update(txt_last_scene: [])
