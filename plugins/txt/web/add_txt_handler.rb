@@ -96,12 +96,12 @@ module AresMUSH
                     :name => char.name )
 
                     if (!scene.participants.include?(char))
-                      scene.participants.add char
+                      Scenes.add_participant(scene, char, enactor)
                     end
 
-                    if (!scene.watchers.include?(char))
-                      scene.watchers.add char
-                    end
+                    # if (!scene.watchers.include?(char))
+                    #   scene.watchers.add char
+                    # end
                   end
 
                   txt_received = "#{recipient_names}"

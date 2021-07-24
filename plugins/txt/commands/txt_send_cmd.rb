@@ -7,11 +7,12 @@ module AresMUSH
           attr_accessor :names, :message, :scene_id, :scene, :txt, :txt_recipient, :use_only_nick
 
         def parse_args
-          if (!cmd.args)
-            #why is this here?
-            self.names = []
+          # if (!cmd.args)
+          #   #why is this here?
+          #   self.names = []
+          #  IF YOU PUT THIS BACK IN, CHANGE NEXT LIKE TO ELSIF
 
-          elsif (cmd.args.start_with?("="))
+          if (cmd.args.start_with?("="))
             self.names = enactor.txt_last
             self.scene_id = enactor.txt_scene
             self.message = cmd.args.after("=")
@@ -43,7 +44,7 @@ module AresMUSH
 
           else
             #Text your last recipient and scene
-            self.names = enactor.txt_last
+            self.names = enactor.txt_last || []
             self.scene_id = enactor.txt_scene
             self.message = cmd.args
           end
@@ -104,11 +105,7 @@ module AresMUSH
                 end
 
                 if (!scene.participants.include?(char))
-                  scene.participants.add char
-                end
-
-                if (!scene.watchers.include?(char))
-                  scene.watchers.add char
+                  Scenes.add_participant(scene, char, enactor)
                 end
 
               end

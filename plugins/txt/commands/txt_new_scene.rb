@@ -51,16 +51,10 @@ module AresMUSH
       # Checks if the names are valid. If so, starts a scene.
       Global.dispatcher.queue_command(client, Command.new("txt #{self.names_raw}/#{scene.id}=#{self.message}"))
 
-      scene.participants.add enactor
-      scene.watchers.add enactor
-
       self.names.each do |name|
         char = Character.named(name)
         if (!scene.participants.include?(char))
-          scene.participants.add char
-        end
-        if (!scene.watchers.include?(char))
-          scene.watchers.add char
+          Scenes.add_participant(scene, char, enactor)
         end
       end
 
