@@ -59,11 +59,11 @@ module AresMUSH
                         end
                         recipients = [char]
                         names.each do |name|
-                          char = Character.named(name)
-                          if !char
+                          recipient_char = Character.named(name)
+                          if !recipient_char
                             return { error: t('txt.no_such_character') }
                           else
-                            recipients.concat [char]
+                            recipients.concat [recipient_char]
                           end
                         end
                         message = pose.rest("=")
