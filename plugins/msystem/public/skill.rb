@@ -8,7 +8,6 @@ module AresMUSH
     attribute :type
     attribute :base, :type => DataType::Integer, :default => 0
     attribute :rating, :type => DataType::Integer, :default => 0
-    attribute :last_raise, :type => DataType::Time, :default => Time.now
 
     index :name
 
