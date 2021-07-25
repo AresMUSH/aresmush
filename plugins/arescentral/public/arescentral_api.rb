@@ -42,8 +42,16 @@ module AresMUSH
       return false if !tag2
       return tag1 == tag2
     end
+    
     def self.play_screen_alts(char)
+      return false if !char
       char.unified_play_screen ? AresCentral.alts(char) : [char]
+    end
+    
+    def self.is_play_screen_alt?(char1, char2)
+      return false if !char1
+      return false if !char2
+      AresCentral.play_screen_alts(char1).include?(char2)
     end
     
   end
