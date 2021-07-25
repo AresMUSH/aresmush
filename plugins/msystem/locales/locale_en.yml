@@ -1,4 +1,17 @@
 ---
 en:
   msystem:
+    invalid_character: "Character not found."
     no_special_characters: "No special characters."
+
+    # rolls
+    augmented_by: "(augmented by %{name})"
+    critical_success: "Critical Success"
+    failure: "Failure"
+    fumble: "Fumble"
+    invalid_terms_found: "The following terms are invalid or could not be found: %{values}."
+    only_one_augment: "A skill can only be augmented by one other skill."
+    roll_difficulty_at: "at %{difficulty} difficulty"
+    rolled: "Rolled"
+    simple_roll_result: "%xy<%{system}>%xn %xc%{name} rolls %xw%{roll}%xn%xm:%xn %{success} %xw[%xn %{dice} %xw]%xn"
+    success: "Success"

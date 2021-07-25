@@ -15,6 +15,10 @@ module AresMUSH
       actor.has_role?("staff") || actor.is_admin?
     end
 
+    def self.system_prompt
+      Global.read_config("mspace", "system_prompt")
+    end
+
     def self.characteristics
       Global.read_config("mspace", "characteristics")
     end
@@ -29,6 +33,30 @@ module AresMUSH
 
     def self.careers
       Global.read_config("mspace", "careers")
+    end
+
+    def self.difficulties
+      settings = Global.read_config("mspace", "system")
+      diff = settings["static_difficulty"] ? "static" : "skill"
+      settings["#{diff}_difficulties"].keys
+    end
+
+    def self.get_difficulty(diff, skill_value = 0)
+      settings = Global.read_config("mspace", "system")
+      if settings["static_difficulty"]
+        settings["static_difficulties"][diff]
+      else
+        (skill_value * settings["skill_difficulties"][diff]).ceil
+      end
+    end
+
+    def self.get_augment(skill_value)
+      return (skill_value * 0.2).ceil
+    end
+
+    def self.get_partial(list, partial)
+      list.select{ |p| Regexp.new("^#{partial}", Regexp::IGNORECASE).match?(p.gsub(/\s+/,"")) }
+        .first
     end
 
     def self.get_stat_names(stat)
