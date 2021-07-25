@@ -3,11 +3,7 @@ module AresMUSH
     def self.get_skill_base(char, name)
       skill = get_skill(name)
       skill["base"].reduce(0) do |base, n|
-        if n.is_a? Integer
-          base + n
-        else
-          base + char.characteristics.find(name: n).first.rating
-        end
+        base + ((n.is_a? Integer) ? n : char.characteristics.find(name: n).first.rating)
       end
     end
 
@@ -35,7 +31,6 @@ module AresMUSH
       )
       set_hit_locs(char, get_stat_total(char, settings["hit_points"]))
     end
-
 
     def self.set_hit_locs(char, total)
       species = Global.read_config("mspace", "species", char.species)
