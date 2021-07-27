@@ -104,6 +104,8 @@ module AresMUSH
         return CreateChannelRequestHandler
       when "deleteChannel"
         return DeleteChannelRequestHandler
+      when "downloadChat"
+        return DownloadChatRequestHandler
       when "editChannel"
         return EditChannelRequestHandler
       when "joinChannel"
