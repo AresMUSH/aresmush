@@ -69,6 +69,12 @@ fs3combat:
       lethality: 5
       penetration: 1
       init_mod: 2
+    Lightning Storm:
+      description: Level 6 Air spell
+      is_magic: true
+      lethality: 10
+      penetration: 2
+      init_mod: 4      
     Major Strength:
       description: Level 6 Corpus spell
       is_magic: true
@@ -95,7 +101,7 @@ fs3combat:
       is_magic: true
       accuracy: 2
       lethality: 15
-      penetration: 4      
+      penetration: 4
     Vitality:
       description: Level 4 Corpus spells
       is_magic: true

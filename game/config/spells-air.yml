@@ -430,6 +430,36 @@ spells:
     school: Air
     target_num: 3
     weapon: Stun (Air)
+  Lightning Reflexes:
+    available: false
+    attack_mod: 1
+    casting_time: 1 round
+    damage_effect: None
+    defense_mod: 1
+    desc: "The caster imbues themselves with electricity, charging their body to significantly improve their reflexes. They move like lightning, allowing them to act very quickly and slightly improving their offensive and defensive abilities for the duration of the spell."
+    duration: 5 rounds
+    effect: Buff
+    init_mod: 4
+    level: 6
+    name: Lightning Reflexes
+    range: Self
+    rounds: 10
+    school: Air
+    target_num: 1
+  Lightning Storm Weapon:
+    available: false
+    casting_time: 1 round
+    desc: Augment one specified pre-existing weapon with storming lightning, increasing its damage and speed.
+    effect: Buff
+    duration: 6 hours
+    level: 6
+    name: 'Lightning Storm Weapon '
+    range: Touch
+    rounds: 600
+    school: Air
+    target_num: 1
+    weapon_specials: Lightning Storm
+    weapon: Spell
   Storm Armor:
     available: true
     armor: Storm

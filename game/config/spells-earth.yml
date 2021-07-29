@@ -301,6 +301,22 @@ spells:
     school: Earth
     target_num: 1
     weapon: Stun (Earth)
+  Stone Wall:
+    available: false
+    casting_time: 1 round
+    damage_type: None
+    desc: "Creates a a low wall of stone to deflect or reduce damage from attacks directed against up to three targets."
+    effect: Shield
+    duration: 5 rounds
+    is_shield: true
+    level: 5
+    line_of_sight: true
+    name: Stone Wall
+    rounds: 5
+    school: Earth
+    range: Short
+    shields_against: Physical
+    target_num: 3
   #Level 6
   Alter Metal:
     available: true
