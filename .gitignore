@@ -51,3 +51,5 @@ game/config/server.yml
 game/config/database.yml
 game/config/game.yml
 game/config/sites.yml
+Gemfile.lock
+game/scripts/aresconfig.js
