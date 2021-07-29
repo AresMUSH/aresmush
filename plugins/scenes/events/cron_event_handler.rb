@@ -66,7 +66,7 @@ module AresMUSH
             Global.logger.info "Deleting scene #{scene.id} - #{scene.title} completed #{scene.date_completed}"
             scene.delete
           elsif (elapsed_days > warn_days && !scene.deletion_warned)
-            message = t('scenes.scene_delete_warn', :id => scene.id)
+            message = t('scenes.scene_delete_warn', :id => scene.id, :title => scene.title, url => scene.url)
             scene.participant_names.each do |participant|
               char = Character.named(participant)
               next if !char
