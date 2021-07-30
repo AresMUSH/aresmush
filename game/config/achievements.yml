@@ -35,5 +35,8 @@ achievements:
     library_token:
       type: library
       message: Obtained a Scholar's token
+    vignette_10000:
+      type: meme
+      message: Participated in Scene 10,000's vignettes.
   permissions:
     manage_achievements: Award and remove achievements.
