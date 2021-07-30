@@ -42,7 +42,8 @@ module AresMUSH
 
     #Gives time in seconds
     def self.time_to_next_learn_spell(spell)
-      (7 * 86400) - (Time.now - spell.last_learned)
+      days = Global.read_config("magic", "days_between_learning_spells")
+      (days * 86400) - (Time.now - spell.last_learned)
     end
 
     def self.days_to_next_learn_spell(spell)
