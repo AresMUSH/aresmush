@@ -81,7 +81,7 @@ module AresMUSH
         creature_ids.each do |creature|
           creature = Creature.find_one_by_name(creature.strip)
           if (creature)
-            Custom.add_creature(scene, creature)
+            Creatures.add_creature_to_scene(scene, creature)
           end
         end
 
@@ -91,7 +91,7 @@ module AresMUSH
         portal_ids.each do |portal|
           portal = Portal.find_one_by_name(portal.strip)
           if (portal)
-            Custom.add_portal(scene, portal)
+            Portals.add_portal_to_scene(scene, portal)
           end
         end
 
