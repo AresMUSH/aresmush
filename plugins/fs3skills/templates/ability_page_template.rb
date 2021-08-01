@@ -29,7 +29,7 @@ module AresMUSH
       end
 
       def schools_blurb
-        Custom.schools_blurb
+        Magic.schools_blurb
       end
 
       def bg_blurb
