@@ -1,6 +1,12 @@
 module AresMUSH
   module Creatures
 
+    def self.add_creature_to_scene(scene, creature)
+      if (!scene.creatures.include?(creature))
+        scene.creatures.add creature
+      end
+    end
+
     def self.add_gm(creature, char)
       if (!creature.gms.include?(char))
         creature.gms.add char

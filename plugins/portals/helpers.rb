@@ -1,6 +1,12 @@
 module AresMUSH
   module Portals
 
+    def self.add_portal_to_scene(scene, portal)
+      if (!scene.portals.include?(portal))
+        scene.portals.add portal
+      end
+    end
+
     def self.add_gm(portal, char)
       if (!portal.gms.include?(char))
         portal.gms.add char
@@ -12,6 +18,8 @@ module AresMUSH
         portal.creatures.add creature
       end
     end
+
+
 
     def self.add_plot(portal, plot)
       if (!portal.plots.include?(plot))
