@@ -60,3 +60,4 @@ magic:
     Extreme: "Extreme"
     Total: "Total"
   item_category: LUCK
+  days_between_learning_spells: 7
