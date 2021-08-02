@@ -19,6 +19,9 @@ module AresMUSH
       end
       
       def handle
+        if (self.topic.end_with?("s"))
+          self.topic = self.topic.chop
+        end
         self.topic = Help.strip_prefix(self.topic)
         search_topic = self.topic.gsub('/', ' ').split(' ').first
         

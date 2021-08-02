@@ -1368,7 +1368,8 @@ CHAT SCREEN
 ------------------------- */
 
 #chat-window {
-    max-height: 400px;
+    height: calc(100vh - 400px);
+    min-height: 400px;
     overflow-y: scroll;
     overflow-x: hidden;
     border: 1px solid $border-color;

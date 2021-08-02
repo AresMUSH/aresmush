@@ -190,7 +190,7 @@ module AresMUSH
       
       def self.render_template(template_path, data, title)
         template = ExportHandlebarsTemplate.new(template_path)
-        text = template.render(data)
+        text = template.render(data || "")
         WikiExporter.format_wiki_template(text, title)
       end
       
