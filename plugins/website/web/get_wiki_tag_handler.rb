@@ -44,6 +44,7 @@ module AresMUSH
             items << {
               id: t.content_id,
               route: Website.route_for_tag(t),
+              route_id: Website.route_id_for_tag(model),
               title: Website.title_for_tag_item(model),
               type: t.content_type
             }
