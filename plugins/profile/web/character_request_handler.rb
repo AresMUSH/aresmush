@@ -64,6 +64,7 @@ module AresMUSH
         profile_data = {
           id: char.id,
           name: char.name,
+          profile_title: Profile.profile_title(char),
           name_and_nickname: Demographics.name_and_nickname(char),
           fullname: char.fullname,
           icon: Website.icon_for_char(char),
