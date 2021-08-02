@@ -190,7 +190,7 @@ module AresMUSH
 
     def self.cast_auto_revive(combatant, target, spell)
       if Manage.is_extra_installed("death")
-        target.update(death_count: 0
+        target.update(death_count: 0)
       end
       target.update(is_ko: false)
       target.log "Auto-revive spell setting #{target.name}'s KO to #{target.is_ko}."
