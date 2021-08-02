@@ -69,10 +69,6 @@ module AresMUSH
       combatant.update(recoil: 0)
       FS3Combat.reset_stress(combatant)
 
-      if (combatant.combat.is_real && combatant.is_ko && !combatant.is_npc?)
-        Custom.death_counter(combatant)
-      end
-
       FS3Combat.check_for_ko(combatant)
       combatant.update(freshly_damaged: false)
 
@@ -112,7 +108,7 @@ module AresMUSH
 
       if (roll <= 0)
         combatant.update(is_ko: true)
-        combatant.update(death_count: 1)
+        Death.one(combatant)
         combatant.update(action_klass: nil)
         combatant.update(action_args: nil)
         damaged_by = combatant.damaged_by.join(", ")

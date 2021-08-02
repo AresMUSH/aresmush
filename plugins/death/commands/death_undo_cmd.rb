@@ -1,5 +1,5 @@
 module AresMUSH
-  module Custom
+  module Death
     class DeathUndoCmd
     #death/undo <name>
       include CommandHandler
@@ -11,8 +11,8 @@ module AresMUSH
 
       def handle
         target = Character.find_one_by_name(cmd.args)
-        Custom.undead(target)
-        Rooms.emit_to_room(enactor.room, t('custom.raised_dead', :name => enactor.name, :target => target.name))
+        Death.undead(target)
+        Rooms.emit_to_room(enactor.room, t('death.raised_dead', :name => enactor.name, :target => target.name))
       end
 
     end

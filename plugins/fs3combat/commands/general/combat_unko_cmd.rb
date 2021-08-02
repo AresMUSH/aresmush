@@ -23,7 +23,8 @@ module AresMUSH
           end
 
           combatant.update(is_ko: false)
-          combatant.update(death_count: 0  )
+          Death.zero(combatant)
+
           FS3Combat.emit_to_combat combatant.combat, t('fs3combat.is_no_longer_koed', :name => combatant.name), nil, true
         end
       end

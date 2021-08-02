@@ -36,7 +36,7 @@ module AresMUSH
         targets.each do |target|
           return t('magic.dont_target_self') if target == combatant && (Global.read_config("spells", self.spell, "fs3_attack") || Global.read_config("spells", self.spell, "is_stun"))
           # Don't let people waste a spell that won't have an effect
-          return t('magic.not_dead', :target => target.name) if (is_res && !target.associated_model.dead)
+          return t('magic.not_dead', :target => target.name) if (Manage.is_extra_installed?("death") && is_res && !target.associated_model.dead)
           return t('magic.not_ko', :target => target.name) if ((is_revive || auto_revive) && !target.is_ko)
           wound = FS3Combat.worst_treatable_wound(target.associated_model)
           heal_points = Global.read_config("spells", self.spell, "heal_points")

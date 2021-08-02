@@ -9,8 +9,6 @@ module AresMUSH
     attribute :magic_stance_spell
     attribute :magic_stance_counter, :type => DataType::Integer, :default => 0
 
-    attribute :death_count, :type => DataType::Integer, :default => 0
-
     attribute :magic_weapon_effects, :type => DataType::Hash, :default => {}
     attribute :magic_armor_effects, :type => DataType::Hash, :default => {}
 

@@ -22,7 +22,7 @@ module AresMUSH
           Achievements.award_achievement(enactor, "fs3_hero")
 
           combatant.update(is_ko: false)
-          combatant.update(death_count: 0  )
+          Death.zero(combatant)
           wound = FS3Combat.worst_treatable_wound(enactor)
           if (wound)
             FS3Combat.heal(wound, 1)

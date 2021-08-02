@@ -132,7 +132,6 @@ module AresMUSH
 
        if (!wound)
          return t('fs3combat.no_treatable_wounds', :healer => healer_name, :patient => patient_name)
-         patient_char_or_npc.combatant.update(death_count: 0 )
        end
 
        skill = FS3Combat.treat_skill
@@ -153,16 +152,7 @@ module AresMUSH
        end
 
        FS3Combat.heal(wound, 1)
-       if patient_char_or_npc.combat
-         patient_char_or_npc.combatant.update(death_count: 0 )
-         if patient_char_or_npc.combatant.is_ko
-           t('fs3combat.treat_success_not_dying', :healer => healer_name, :patient => patient_name)
-         else
-           t('fs3combat.treat_success', :healer => healer_name, :patient => patient_name)
-         end
-       else
-         t('fs3combat.treat_success', :healer => healer_name, :patient => patient_name)
-       end
+       Death.treat_dying(healer_name, patient_char_or_npc)
 
      end
 

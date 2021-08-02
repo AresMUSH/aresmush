@@ -5,8 +5,7 @@ module AresMUSH
     attribute :name
     attribute :name_upcase
     attribute :level
-    attribute :dead, :type => DataType::Boolean, :default => false
-
+  
     collection :damage, "AresMUSH::Damage"
     reference :combat, "AresMUSH::Combat"
 
