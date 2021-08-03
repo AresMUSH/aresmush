@@ -5,6 +5,8 @@ module AresMUSH
     attribute :spells_cast, :type => DataType::Integer
     attribute :achievement_spells_learned, :type => DataType::Integer
     attribute :achievement_spells_discarded, :type => DataType::Integer
+    attribute :dead, :type => DataType::Boolean, :default => false
+    attribute :has_died, :type => DataType::Integer
 
     #Delete these eventually
     attribute :mind_shield, :type => DataType::Integer, :default => 0
