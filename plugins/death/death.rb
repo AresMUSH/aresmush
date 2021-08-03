@@ -1,7 +1,7 @@
 $:.unshift File.dirname(__FILE__)
 
 module AresMUSH
-  module Death
+  module Death 
     def self.plugin_dir
       File.dirname(__FILE__)
     end
@@ -17,7 +17,7 @@ module AresMUSH
         when "undo"
           return DeathUndoCmd
         end
-      end      
+      end
       return nil
     end
   end
