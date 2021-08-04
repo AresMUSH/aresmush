@@ -1,5 +1,5 @@
 module AresMUSH
-  module Death
+  module Death 
 
     def self.new_turn(combatant)
       if (combatant.combat.is_real && combatant.is_ko && !combatant.is_npc?)

@@ -2,7 +2,7 @@
 toc: Magic
 summary: Death and dying
 aliases:
-- dying
+- dying 
 - dead
 ---
 #Death

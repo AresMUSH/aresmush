@@ -1,7 +1,5 @@
 # Death
 
-
-
 ## Overview
 
 This plugin creates 'death' in FS3 combat. PCs who are KO'd have 3 rounds to be treated, rallied, to combat/hero, or to be otherwise revived before they 'bleed out'. A warning emits at the end of every turn during which a character remains KO'd.
