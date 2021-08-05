@@ -417,7 +417,6 @@ spells:
     effect: Transformation
     level: 5
     name: Wild Shape
-    roll: true
     school: Nature
     range: Self
     weapon: Claws
@@ -430,7 +429,6 @@ spells:
     effect: Transformation
     level: 5
     name: Wild Shape Corvidae
-    roll: true
     rounds: 100
     school: Nature
     range: Self
@@ -443,7 +441,6 @@ spells:
     effect: Transformation
     level: 5
     name: Wild Shape
-    roll: true
     school: Nature
     range: Self
     weapon: Claws
@@ -456,7 +453,6 @@ spells:
     effect: Transformation
     level: 5
     name: Wild Shape
-    roll: true
     school: Nature
     range: Self
     rounds: 100
@@ -470,7 +466,6 @@ spells:
     level: 5
     name: Wild Shape Fly
     rounds: 100
-    roll: true
     school: Nature
   Wild Shape Horse:
     available: true
@@ -480,7 +475,6 @@ spells:
     effect: Transformation
     level: 5
     name: Wild Shape Horse
-    roll: true
     school: Nature
     range: Self
     weapon: Hard Hooves
@@ -493,7 +487,6 @@ spells:
     effect: Transformation
     level: 5
     name: Wild Shape
-    roll: true
     rounds: 100
     school: Nature
     range: Self
@@ -506,7 +499,6 @@ spells:
     effect: Transformation
     level: 5
     name: Wild Shape Octopus
-    roll: true
     school: Nature
     range: Self
     weapon: Beak
@@ -520,7 +512,6 @@ spells:
     level: 5
     name: Wild Shape Panthera
     rounds: 100
-    roll: true
     school: Nature
     range: Self
     weapon: Sharp Claws
@@ -546,7 +537,6 @@ spells:
     level: 5
     name: Wild Shape Lynx
     rounds: 100
-    roll: true
     school: Nature
     weapon: Claws
   Wild Shape Moth:
@@ -559,7 +549,6 @@ spells:
     level: 5
     name: Wild Shape
     rounds: 100
-    roll: true
     school: Nature
   Wild Shape Owl:
     available: true
@@ -571,7 +560,6 @@ spells:
     level: 5
     name: Wild Shape Owl
     rounds: 100
-    roll: true
     school: Nature
     range: Self
     weapon: Claws
@@ -584,7 +572,6 @@ spells:
     level: 5
     name: Wild Shape Racoon
     rounds: 100
-    roll: true
     school: Nature
     weapon: Teeth
   Wild Shape Wolf:
@@ -595,7 +582,6 @@ spells:
     effect: Transformation
     level: 5
     name: Wild Shape
-    roll: true
     school: Nature
     range: Self
     weapon: Claws
@@ -606,7 +592,6 @@ spells:
     effect: Transformation
     level: 5
     name: Wild Shape
-    roll: true
     school: Nature
     range: Self
     duration: 3 hours
@@ -717,7 +702,6 @@ spells:
     effect: Transformation
     level: 6
     range: Self
-    roll: true
     rounds: 100
     school: Nature
   #LEVEL 7
@@ -755,7 +739,6 @@ spells:
     level: 7
     name: Greater Wild Shape
     range: Self
-    roll: true
     school: Nature
   Greater Wild Shape Cervidae:
     available: true
@@ -767,7 +750,6 @@ spells:
     level: 7
     name: Greater Wild Shape Cervidae
     rounds: 100
-    roll: true
     school: Nature
     weapon: Antlers
   Greater Wild Shape Corvidae:
@@ -780,7 +762,6 @@ spells:
     level: 7
     name: Allows the caster to transform into any animal in the Corvidae family.
     rounds: 100
-    roll: true
     school: Nature
     range: Self
     weapon: Claws
@@ -792,7 +773,6 @@ spells:
     effect: Transformation
     level: 7
     name: Greater Wild Shape Bull
-    roll: true
     school: Nature
     range: Self
     weapon: Horns
@@ -804,7 +784,6 @@ spells:
     effect: Transformation
     level: 7
     name: Wild Shape Canidae
-    roll: true
     school: Nature
     range: Self
     weapon: Claws
@@ -818,7 +797,6 @@ spells:
     level: 7
     name: Wild Shape Delphinidae
     rounds: 100
-    roll: true
     school: Nature
     range: Self
     weapon: Teeth
@@ -830,7 +808,6 @@ spells:
     effect: Transformation
     level: 7
     name: Greater Wild Shape Equidae
-    roll: true
     school: Nature
     range: Self
     weapon: Hard Hooves
@@ -842,7 +819,6 @@ spells:
     effect: Transformation
     level: 7
     name: Greater Wild Shape Felidae
-    roll: true
     school: Nature
     range: Self
     weapon: Claws
@@ -854,7 +830,6 @@ spells:
     effect: Transformation
     level: 7
     name: Greater Wild Shape Ursidae
-    roll: true
     school: Nature
     weapon: Claws
   Mass Flora:
@@ -932,8 +907,9 @@ spells:
     desc: Create a massive wall of thorns. Can be created in any shape, and the caster can open and close doorways through the wall at will.
     duration: 24 hours
     effect: Defense
+    is_shield: true
     level: 8
     name: Massive Thorn Wall
     range: Long
-    roll: true
     school: Nature
+    shields_against: All
