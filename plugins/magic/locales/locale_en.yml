@@ -100,9 +100,10 @@ en:
       # ----------------------------
       # SPELLs WEAR OFF
       # ----------------------------
-      shield_wore_off: "%{name}'s %{shield} has worn off."
-      mod_wore_off: "%{name}'s %{mod} %{type} modification has worn off."
-      stance_wore_off: "%{name}'s %{spell} spell has worn off and they are no longer %{stance}."
+      shield_wore_off: "%{name}'s %X17%{shield}%xn %x11has worn off%xn."
+      mod_wore_off: "%{name}'s %xg%{mods} modification%xn %x11has worn off%xn."
+      mods_wore_off: "%{name}'s %xg%{mods} modifications%xn %x11have worn off%xn."
+      stance_wore_off: "%{name}'s %xB%{spell}%xn spell %x11has worn off%xn and they are no longer %{stance}."
 
       # ----------------------------
       # SHEET
