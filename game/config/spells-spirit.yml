@@ -45,7 +45,6 @@ spells:
     school: Spirit
     spell_mod: 2
     target_num: 20
-
   Locate Object:
     available: true
     casting_time: 1 round
@@ -74,7 +73,6 @@ spells:
   Share Emotion:
     available: true
     casting_time: 1 round
-    damage_type: None
     desc: Share a single dominant emotion with a target within visual range of the caster.
     damage_type: Psionic
     duration: 10 minutes
@@ -86,11 +84,9 @@ spells:
     roll: true
     school: Spirit
     target_num: 1
-
   Share Image:
     available: true
     casting_time: 1 round
-    damage_type: None
     desc: 'The caster can share a still mental image with another person via telepathy.'
     damage_type: Psionic
     duration: 10 minutes
@@ -106,9 +102,8 @@ spells:
   Beckon:
     available: true
     casting_time: 1 round
-    damage_type: None
-    desc: "You create the ghostly image of a hand (or anything small and of the caster) which you can send to find anyone. The hand leads that person back to you if they are willing to follow."
     damage_type: Psionic
+    desc: "You create the ghostly image of a hand (or anything small and of the caster) which you can send to find anyone. The hand leads that person back to you if they are willing to follow."
     duration: 1 hour
     effect: Communication
     level: 2
