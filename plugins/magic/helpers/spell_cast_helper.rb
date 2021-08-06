@@ -273,7 +273,7 @@ module AresMUSH
 
     def self.cast_stance(combatant, target, spell, damage_type, rounds, stance, result)
       stopped_by_shield = Magic.stopped_by_shield?(target, combatant.name, spell, result)
-      if stopped_by_shield&& combatant != target
+      if stopped_by_shield && combatant != target
         if stopped_by_shield[:hit]
           target.update(stance: stance.titlecase)
           target.update(stance_counter: rounds)
@@ -284,7 +284,7 @@ module AresMUSH
         target.update(stance: stance.titlecase)
         target.update(stance_counter: rounds)
         target.update(stance_spell: spell)
-        message = [t('magic.spell_target_resolution_msg', :name => combatant.name, :spell => spell, :mod => "", :target => target.name, :succeeds => "%xgSUCCEEDS%xn")]
+        message = [t('magic.cast_stance', :name => combatant.name, :spell => spell, :mod => "", :target => target.name, :stance => stance, :rounds => rounds, :succeeds => "%xgSUCCEEDS%xn")]
       end
       return message
     end
@@ -322,8 +322,10 @@ module AresMUSH
         target.update(action_klass: nil)
         target.update(action_args: nil)
         if !stopped_by_shield.empty?
-          #Needs to grab its own message instead of using stopped_by_shield[:message] so it can grab the spell name.
+          puts "1. SPELL NAME #{spell}"
+          #Needs to grab its own message instead of using stopped_by_shield[:message] so it can grab the spell name - attack margin uses the Stun weapon instead.
           message = [Magic.shield_failed_msgs(target, combatant.name, spell)]
+          puts "2. MESSAGE #{message}"
         else
           message = [t('magic.cast_stun', :name => combatant.name, :spell => spell, :mod => "", :target => target.name, :succeeds => "%xgSUCCEEDS%xn", :rounds => rounds)]
         end
@@ -340,7 +342,7 @@ module AresMUSH
           message = [t('magic.cast_stun_resisted', :name => combatant.name, :spell => spell, :mod => "", :target => target.name, :succeeds => "%xgSUCCEEDS%xn")]
         end
       end
-      puts "Stun message #{message}"
+      puts "2. Stun message #{message}"
       return message
     end
 
