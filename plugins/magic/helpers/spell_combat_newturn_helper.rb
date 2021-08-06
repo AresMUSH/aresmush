@@ -21,13 +21,13 @@ module AresMUSH
       end
 
       if (combatant.magic_stun_counter == 0 && combatant.magic_stun)
-        messages.concat [t('fs3combat.stun_wore_off', :name => combatant.name)]
+        messages.concat [t('magic.stun_wore_off', :name => combatant.name)]
         combatant.update(magic_stun: false)
         combatant.update(magic_stun_spell: nil)
         combatant.log "#{combatant.name} is no longer magically stunned."
       elsif (combatant.magic_stun_counter > 0 && combatant.magic_stun)
         subduer = combatant.subdued_by
-        messages.concat [t('fs3combat.still_stunned', :name => combatant.name, :stunned_by => subduer.name, :rounds => combatant.magic_stun_counter)]
+        messages.concat [t('magic.still_stunned', :name => combatant.name, :stunned_by => subduer.name, :rounds => combatant.magic_stun_counter)]
         combatant.update(magic_stun_counter: combatant.magic_stun_counter - 1)
       end
 
