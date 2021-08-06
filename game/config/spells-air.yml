@@ -2,6 +2,7 @@ spells:
   Gust:
     available: true
     casting_time: 1 round
+    damage_type: None
     desc: Create a brief gust of wind capable of blowing a door shut.
     duration: 10 minutes
     effect: Creation
@@ -27,7 +28,7 @@ spells:
   Adjust Volume:
     available: true
     casting_time: 1 round
-    damage_type: None
+    damage_type: Bypass
     desc: "For the duration of the spell, the caster can amplify or decrease the volume of the sound coming from a target. Sounds cannot be made louder than 100 db (a loud vehicle, a train whistle, a hand drill), nor can sounds be made softer than 30 db (a quiet whisper)."
     duration: 1 hour
     effect: Creation
@@ -56,7 +57,7 @@ spells:
     area: 10 cubic feet
     available: true
     casting_time: 1 round
-    damage_type: None
+    damage_type: Bypass
     desc: "For the duration of the spell, the caster can move and shape up to 10 cubic feet of gaseous substances. The caster can control the flow, density, and dispersion of a gaseous substance to form breathable bubbles in water, draw the oxygen away from a flame, or push poisonous gases away."
     duration: 1 hour
     effect: Creation
@@ -83,7 +84,7 @@ spells:
   Air Walk:
     available: true
     casting_time: 1 round
-    damage_type: None
+    damage_type: Bypass
     desc: 'Tread air as if walking on solid ground. Moving upward is similar to walking up a hill. '
     duration: 1 hour
     effect: Travel
@@ -108,6 +109,7 @@ spells:
   Shock:
     available: true
     casting_time: 1 round
+    damage_type: None
     desc: Shock an opponent with a burst of electricity, stunning them for one round.
     duration: 1 round
     effect: Stun
@@ -124,7 +126,7 @@ spells:
   Whispering Wind:
     available: true
     casting_time: 1 round, plus additional rounds to listen at GM's discretion.
-    damage_type: None
+    damage_type: Bypass
     desc: "Use sound carried on the wind to overhear targets at a distance of up to one mile (1.6 km) for as long as you can maintain your concentration. You must know the direction of your target to focus the wind."
     duration: 10 minutes
     effect: Communication
@@ -154,7 +156,7 @@ spells:
     area: 10 cubic yards
     available: true
     casting_time: 1 round
-    damage_type: None
+    damage_type: Bypass
     desc: "For the duration of the spell, the caster can move and shape up to 10 cubic yards of gaseous substances. The caster can control the flow, density, and dispersion of a gaseous substance to form breathable bubbles in water, draw the oxygen towards or away from a flame, or push poisonous gases, pollution, or vapor away. They can also condense the air to create mild precipitation or form clouds."
     duration: 30 minutes
     effect: Creation
@@ -167,6 +169,7 @@ spells:
     area: 5 ft radius
     available: true
     casting_time: 1 round
+    damage_type: None
     desc: Create a powerful blast of wind that knocks an enemy back 5 yards, stunning them.
     duration: 1 round
     effect: Stun
@@ -183,7 +186,7 @@ spells:
     area: 5 yard radius
     available: true
     casting_time: 1 round
-    damage_type: None
+    damage_type: Bypass
     desc: Create a bubble of air capable of bearing up to 250 lbs and traveling in any direction up to 60 mph. The bubble can act as a seal against liquid and gas for up to 1 minute. Must remain in range or it dissipates.
     duration: 1 hour
     effect: Travel
@@ -197,7 +200,7 @@ spells:
     area: 10 ft radius
     available: true
     casting_time: 1 round
-    damage_type: None
+    damage_type: Bypass
     desc: 'Draw all oxygen from an area, dousing any flames present and creating oxygen deprivation for up to 3 air-breathing creatures of your choice caught in its range. '
     duration: 1 round
     effect: Damage
@@ -211,7 +214,7 @@ spells:
   Create Sound:
     available: true
     casting_time: 1 round
-    damage_type: None
+    damage_type: Bypass
     desc: "For the duration of the spell, the caster can vibrate the air to create simple sounds. These sounds can be a single noise, a melody, or a short sentence of up to fifteen, one-syllable words. Sound created cannot be louder than 100 db (a loud vehicle, a train whistle, a hand drill).\n\nThe sound may be identified as artificial with a roll of the caster's Air vs the observer's Alertness-5. Those with enhanced hearing are more likely to identify the sound as artificial according to its content and range, and GMs may choose to adjust the modification as appropriate."
     duration: 15 minutes
     effect: Illusion
@@ -261,7 +264,7 @@ spells:
     area: 5 ft radius
     available: true
     casting_time: 1 round
-    damage_type: None
+    damage_type: Bypass
     desc: Create a bubble up to 10 ft in diameter centered on a target that functions as a barrier which sound cannot pass through. Inside the boundary of the bubble sound can be heard normally, but no noise from within the bubble can be heard outside it and no noise from the outside world can be heard by those within the bubble.
     duration: 10 minutes
     effect: Communication
@@ -275,7 +278,7 @@ spells:
     area: 15 yard radius
     available: true
     casting_time: 1 round
-    damage_type: None
+    damage_type: Bypass
     desc: Create a steady wind capable of blowing up to 30 mph.
     duration: 2 hours
     effect: Other
@@ -288,7 +291,7 @@ spells:
     area: 15 yard radius
     available: true
     casting_time: 1 round
-    damage_type: None
+    damage_type: Bypass
     desc: Quiet any wind into complete stillness.
     duration: 1 hour
     effect: Other
@@ -302,7 +305,7 @@ spells:
     available: true
     area: 15 yard radius
     casting_time: 1 round
-    damage_type: None
+    damage_type: Bypass
     desc: "For the duration of the spell, the caster can manipulate air currents, allowing them to conjure light breezes, strong gusts, or whirling vortexes. These can allow the caster to push or lift an object weighing up to 75 lbs. A windborne object cannot be manipulated with exact precision or dexterity and cannot travel above 40 mph."
     duration: 2 hours
     effect: Other
@@ -373,7 +376,7 @@ spells:
   Storm Power:
     available: false
     casting_time: 1 round
-    damage_type: None
+    damage_type: Bypass
     desc: "The caster is imbued with the power of a storm. Cloud cover makes them more difficult to hit and lightning streaks augment their body, providing a boost to movements which allows them to attack and dodge slightly faster."
     defense_mod: 3
     duration: 1 minute (6 rounds)
@@ -390,7 +393,7 @@ spells:
   Air Form:
     available: true
     casting_time: 1 round
-    damage_type: None
+    damage_type: Bypass
     defense_mod: 10
     desc: "The caster's body becomes a gaseous cloud and cannot be hit by attacks.\n\nWhile in air form, the caster can pass through small holes or narrow openings, even mere cracks, with anything they were carrying at the time the spell was cast. The form also allows them to float up into the surrounding air in a limited form of flight, capable of moving up to 5 mph."
     duration: 5 rounds
@@ -432,7 +435,7 @@ spells:
     available: false
     attack_mod: 1
     casting_time: 1 round
-    damage_type: None
+    damage_type: Bypass
     defense_mod: 1
     desc: "The caster imbues themselves with electricity, charging their body to significantly improve their reflexes. They move like lightning, allowing them to act very quickly and slightly improving their offensive and defensive abilities for the duration of the spell."
     duration: 5 rounds
@@ -462,7 +465,7 @@ spells:
     available: true
     armor: Storm
     casting_time: 1 round
-    damage_type: None
+    damage_type: Bypass
     desc: "Defensive storms are summoned around the target. Lightning envelopes the target's body, the electric field acting as armor to deflect attacks while swirling clouds make the target more difficult to hit."
     duration: 8 hours
     effect: Armor
@@ -474,7 +477,7 @@ spells:
   Wind Rider:
     available: true
     casting_time: 1 round
-    damage_type: None
+    damage_type: Bypass
     desc: "The caster conjures wind to ride in flight. The wind can carry them at a speed of up to 200 mph. They can stay aloft easily and hover in midair, but cannot deftly maneuver while in flight. Mods to defense and attack may be applied at the GM's discretion according to actions taken while in flight.\n\n
     Should the spell duration expire while the caster is still aloft, the magic fails slowly, lowering the caster safely to the ground."
     duration: 1 hour
@@ -489,7 +492,7 @@ spells:
     area: 50 cubic yards
     available: true
     casting_time: 1 round
-    damage_type: None
+    damage_type: Bypass
     desc: "For the duration of the spell, the caster can move and shape up to 50 cubic yards of gaseous substances. The caster can control the flow, density, and dispersion of a gaseous substance to form breathable bubbles in water, draw the oxygen towards or away from a flame, push poisonous gases, pollution, or vapor away, or pull pre-existing air from materials (like water) within the area of the spell. They can also change the pressure of the air to create precipitation, form clouds, or adjust the temperature up or down by 20°F."
     duration: 1 hour
     effect: Creation
@@ -502,7 +505,7 @@ spells:
     available: true
     attack_mod: 2
     casting_time: 1 round
-    damage_type: None
+    damage_type: Bypass
     desc: "For the duration of the spell, the caster can vibrate the air to create complex sounds. These sounds can be several noises at once, music, or conversational speech. Sound created cannot be louder than 100 db (a loud vehicle, a train whistle, a hand drill).\n\nMusic can be used to affect people, able to bolster morale of up to three targets which improves their attacks for 4 rounds.\n\nThe sound may be identified as artificial with a roll of the caster's Air vs the observer's Alertness-5. Those with enhanced hearing are more likely to identify the sound as artificial according to its content and range, and GMs may choose to adjust the modification as appropriate."
     duration: 15 min
     effect: Buff
@@ -516,7 +519,7 @@ spells:
   Energize Dimensional Anchor (Air):
     available: true
     casting_time: 2 minutes
-    damage_type: None
+    damage_type: Bypass
     desc: "Provide the necessary magical energy of the appropriate School to a Dimensional Anchor spell, enabling the linked casters to permanently open or close an interdimensional portal.\n\nIf cast on an open portal, the caster can sense if the spell's School is the necessary magical energy to enable opening or closing the portal, as well as the magical coordinates of the portal's existence in the magical universe."
     effect: Travel
     level: 7
@@ -527,7 +530,7 @@ spells:
   Group Wind Rider:
     available: false
     casting_time: 1 round
-    damage_type: None
+    damage_type: Bypass
     desc: "Conjures wind to ride in flight for up to 3 targets, including the caster. The wind can carry them at a speed of up to 200 mph. They can stay aloft easily and hover in midair, but cannot deftly maneuver while in flight. Each recipient of the spell must remain within 30 yards of at least one other recipient, or the spell ends for the target that is separated from the others. Mods to defense and attack may be applied at the GM's discretion according to actions taken while in flight.\n\nShould the spell duration expire while the targets is still aloft, the magic fails slowly, lowering the targets safely to the ground."
     duration: 30 minutes
     effect: Travel
@@ -542,7 +545,7 @@ spells:
     available: true
     area: 2,000 miles travel / 20 ft radius stun
     casting_time: 1 round
-    damage_type: None
+    damage_type: Bypass
     desc: The caster travels through the air as a streak of lightning, transporting themselves from one location to another up to 2,000 miles away with anything they were carrying at the time the spell was cast. While traveling, the lightning can break through low or non-conductive materials, such as a glass, wood, plastic, or concrete. It cannot break through anything electrically grounded or thicker than 6 inches. The caster lands with a discharge of electricity, able to arc the shock outward to stun up to three targets within a 20ft radius of their landing spot.
     duration: 4 rounds
     effect: Stun

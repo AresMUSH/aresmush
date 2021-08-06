@@ -15,7 +15,7 @@ spells:
   Light:
     available: true
     casting_time: 1 round
-    damage_type: None
+    damage_type: Bypass
     desc: Create a beam of light equivilent to 300 lumens (a small LED flashlight).
     duration: 10 minutes
     effect: Creation
@@ -28,7 +28,7 @@ spells:
   Snuff Flame:
     available: true
     casting_time: 1 round
-    damage_type: None
+    damage_type: Bypass
     desc: Extinguish a flame the size of a lighter.
     effect: Other
     level: 1
@@ -41,7 +41,7 @@ spells:
   Blur Image:
     available: true
     casting_time: 1 round
-    damage_type: None
+    damage_type: Bypass
     defense_mod: 1
     desc: Through a trick of light, the caster bolsters their defense by making themselves more difficult to target for a round.
     duration: 2 rounds
@@ -56,7 +56,7 @@ spells:
     area: 5 cubic feet
     available: true
     casting_time: 1 round
-    damage_type: None
+    damage_type: Bypass
     desc: "For the duration of the spell, the caster can influence up to 5 cubic feet of flames, forming them into simple non-weaponized shapes that animate at their direction. Within the size limit, they can make flames grow or snuff them out entirely. When the spell ends, the flames return to their natural state in their current location."
     duration: 1 hour
     effect: Creation
@@ -70,7 +70,7 @@ spells:
     area: 5 cubic feet
     available: true
     casting_time: 1 round
-    damage_type: None
+    damage_type: Bypass
     desc: "For the duration of the spell, the caster can cause ambient light to form into simple non-weaponized shapes and colors that animate at their direction. The shapes must form a single continuous image and do not include fine details, although they can be three dimensional and may be as large as 5 cubic feet.  Any intelligent creature can identify images made with this spell as artificial."
     duration: 1 hour
     effect: Illusion
@@ -84,7 +84,7 @@ spells:
   Endure Fire:
     available: true
     casting_time: 1 round
-    damage_type: None
+    damage_type: Bypass
     desc: Caster is immune to fire and the negative effects of extreme heat up to 2,012 °F (1,110 °C). Spells that do fire damage may be stopped entirely by Endure Fire; when they are not, the damage inflicted is decreased.
     duration: 10 minutes
     effect: Buff
@@ -143,7 +143,7 @@ spells:
   Fire Weapon:
     available: true
     casting_time: 1 round
-    damage_type: None
+    damage_type: Bypass
     desc: Augment one specified pre-existing weapon with dancing flames, increasing its damage.
     duration: 3 hours
     effect: Buff
@@ -196,7 +196,7 @@ spells:
     area: 15 cubic feet
     available: true
     casting_time: 1 round
-    damage_type: None
+    damage_type: Bypass
     desc: "For the duration of the spell, the caster can create or influence up to 15 cubic feet of fire, moving and shaping it into detailed, non-weaponized shapes that animate at their direction. Within the size limit, they can control the size and heat of the flames, making them grow, dim, or snuff them out entirely. When the spell ends, the flames return to their natural state in their current location."
     duration: 30 min
     effect: Creation
@@ -210,7 +210,7 @@ spells:
     area: 5 cubic feet
     available: true
     casting_time: 1 minute (6 rounds)
-    damage_type: None
+    damage_type: Bypass
     desc: "Create a convincing illusion of a single subject that fools most observers. It is able to animate at the caster's discretion. The illusion cannot be larger than 3 cubic yards.\n\n The image may be identified as an illusion with a roll of the caster's Fire vs the observer's Alertness-5. Those with enhanced senses such as smell, hearing, or psionic abilities are more likely to identify the subject as an illusion according to its content and range, and GMs may choose to adjust the modification as appropriate. If the illusion serves to hide the targets in combat, they should change their stance to 'Hidden' and attacks targetting them which require line of sight recieve a -3 attack mod."
     duration: 15 minutes
     effect: Illusion
@@ -225,7 +225,7 @@ spells:
     available: false
     area: 10 ft radius
     casting_time: 1 round
-    damage_type: None
+    damage_type: Bypass
     defense_mod: 3
     desc:  "The caster quenches all light within a 10 ft radius area, making anything caught in the darkness hidden and blind. Spell does not put out any sources of light, but stops them from illuminating the area.  Darkened area cannot be moved.\n\nAttacks which require line of sight may target those within the darkness, but hidden targets receive an automatic +3 to defense. Targets should be selected via a random roll (`dice d1<number of targets>`, select alphabetically) and should include any allies. Attacks which do not require line of sight may target hidden creatures with a +3 to attack (to cancel the +3 defense).\n\nBlinded beings may attack at GM discretion with a -3 attack mod (not automatic).\n\nDoes not effect spells, senses and abilities that do not require line of sight."
     duration: 15 minutes
@@ -256,7 +256,7 @@ spells:
   Group Endure Fire:
     available: true
     casting_time: 1 round
-    damage_type: None
+    damage_type: Bypass
     desc: Caster is immune to fire and the negative effects of extreme heat up to 2,012 °F (1,110 °C). Spells that do fire damage may be stopped entirely by Endure Fire; when they are not, the damage inflicted is decreased.
     duration: 1 hour
     effect: Buff
@@ -302,7 +302,7 @@ spells:
   Double Vision:
     available: true
     casting_time: 1 round
-    damage_type: None
+    damage_type: Bypass
     desc: "Through a trick of light, the caster creates a single mirror image of themselves. Until the spell ends, the duplicate image mimics the caster's actions, making it difficult to know which image is real, which bolsters their defense by making them more difficult to hit.\n\nThe mirror image may be identified as an illusion with a roll of the caster's Fire vs the observer's Alertness-5. Those with enhanced senses such as smell, hearing, or psionic abilities are more likely to identify the subject as an illusion according to its content and range, and GMs may choose to adjust the modification as appropriate."
     defense_mod: 3
     duration: 2 minutes
@@ -370,7 +370,7 @@ spells:
     area: '10 yard radius'
     available: true
     casting_time: 1 minute
-    damage_type: None
+    damage_type: Bypass
     desc: "Create a complicated, convincing visual illusion that fools most observers. The illusion can be quite large, with many moving parts, such as a forest scene or a busy street. Can be used to hide groups.\n\nThe image may be identified as an illusion with a roll of the caster's Fire vs the observer's Alertness-5. Those with enhanced senses such as smell, hearing, or psionic abilities are more likely to identify the subject as an illusion according to its content and range, and GMs may choose to adjust the modification as appropriate."
     duration: 30 minutes
     effect: Illusion
@@ -384,7 +384,7 @@ spells:
   Energize Dimensional Anchor (Fire):
     available: true
     casting_time: 2 minutes
-    damage_type: None
+    damage_type: Bypass
     desc: "Provide the necessary magical energy of the appropriate School to a Dimensional Anchor spell, enabling the linked casters to permanently open or close an interdimensional portal.\n\nIf cast on an open portal, the caster can sense if the spell's School is the necessary magical energy to enable opening or closing the portal, as well as the magical coordinates of the portal's existence in the magical universe."
     effect: Travel
     level: 7
@@ -413,7 +413,7 @@ spells:
   Light Form:
     available: true
     casting_time: 1 round
-    damage_type: None
+    damage_type: Bypass
     defense_mod: 10
     desc: "The caster's body becomes white light and cannot be hit by attacks.\n\nWhile in light form, the caster can pass through small holes, narrow openings, or transparent objects with anything they were carrying at the time the spell was cast. The form also allows them to cross distances seemingly instantaneously, able to travel up to 4,000 miles total for the duration of the spell."
     duration: 10 rounds
@@ -428,7 +428,7 @@ spells:
     available: true
     auto_revive: true
     casting_time: 1 round
-    damage_type: None
+    damage_type: Bypass
     desc: "A knocked out target is overtaken by flames and reduced to ashes. From beneath those ashes, they are revived and able to return to the fight. All wounds are healed.\n\n A magic user who knows this spell is automatically consumed and revived when they themselves can no longer fight. This takes 1 round after they are knocked out."
     effect: Revive
     level: 7
@@ -458,7 +458,7 @@ spells:
   Phoenix's Last Flight:
     available: true
     casting_time: 1 round
-    damage_type: None
+    damage_type: Bypass
     desc: "A target who has died in the last 60 seconds is overtaken by flames and reduced to ashes. From beneath those ashes, they are revived. \n\nA revived target is unable to return to the fight without further healing. They are both incapacitated and suffering from spell fatigue.\n\n A magic user who knows this spell is automatically consumed and revived when they themselves fall."
     effect: Resurrection
     is_res: true

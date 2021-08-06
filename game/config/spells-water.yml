@@ -3,7 +3,7 @@ spells:
   Bubble Dance:
     available: true
     casting_time: 1 round
-    damage_type: None
+    damage_type: Bypass
     desc: "Send a stream of water bubbles dancing according to your will. The size of the bubbles can range from foam to fist-sized."
     duration: 10 minutes
     effect: Creation
@@ -16,7 +16,7 @@ spells:
     area: 1-5 ft radius
     available: true
     casting_time: 1 round
-    damage_type: None
+    damage_type: Bypass
     desc: "Draw up to 2 gallons of clean drinking water from the moisture in the air\u2014possibly creating a downpour or filling many small receptacles.\n\nThe water is generally reflective of the temperature in which it is created, but it is always liquid on creation. The temperature around it may freeze or heat the water after creation."
     effect: Creation
     level: 1
@@ -28,7 +28,7 @@ spells:
     area: 1-3 ft radius
     available: true
     casting_time: 1 round
-    damage_type: None
+    damage_type: Bypass
     desc: "Creates a fine layer of frost on a target the caster touches, covering an area up to 3 square feet."
     effect: Creation
     level: 1
@@ -40,7 +40,7 @@ spells:
     area: 5 cubic feet
     available: true
     casting_time: 1 round
-    damage_type: None
+    damage_type: Bypass
     desc: A cloud of fog fills a small area, no greater than five cubic feet. The fog may creep along the ground or cling near the caster's skin.
     duration: 10 minutes
     effect: Creation
@@ -84,7 +84,7 @@ spells:
     area: 5 cubic feet
     available: true
     casting_time: 1 round
-    damage_type: None
+    damage_type: Bypass
     desc: "For the duration of the spell, the caster can influence up to 5 cubic feet of preexisting water, moving and shaping it into simple non-weaponized shapes that animates at their direction. The caster can control the flow, density, and dispersion of water to form dry spots, move puddles, or reroute small streams. When the spell ends, the water returns to its natural state in its current location."
     duration: 1 hour
     effect: Creation
@@ -98,7 +98,7 @@ spells:
     area: 1 cubic foot
     available: true
     casting_time: 1 round
-    damage_type: None
+    damage_type: Bypass
     desc: "For the duration of the spell, the caster can create or inpfluence up to 1 cubic foot of ice and form it into simple non-weaponized shapes that animate at their direction. Ice returns to its natural - but not necessarily original - state when the spell ends. If the ice was created from water, it will remain ice until it naturally melts."
     duration: 1 hour
     effect: Creation
@@ -112,7 +112,7 @@ spells:
   Endure Cold:
     available: true
     casting_time: 1 round
-    damage_type: None
+    damage_type: Bypass
     desc: Caster is immune to the negative effects of extreme cold. Spells that do cold damage may be stopped entirely by Endure Cold; when they are not, the damage inflicted is decreased.
     duration: 10 minutes
     effect: Buff
@@ -127,7 +127,7 @@ spells:
   Ice Talons:
     available: true
     casting_time: 1 round
-    damage_type: None
+    damage_type: Bypass
     desc: The caster's fingertips become ice talons capable of inflicting damage. Talons can be broken off and thrown for a ranged attack.
     duration: 1 round
     effect: Creation
@@ -141,7 +141,7 @@ spells:
   Water Breathing:
     available: true
     casting_time: 1 round
-    damage_type: None
+    damage_type: Bypass
     desc: Create a bubble of air in water, drawing oxygen from the surrounding water to replenish your breathing supply underwater.
     duration: 1 hour
     effect: Other
@@ -154,6 +154,7 @@ spells:
   Water Cannon:
     available: true
     casting_time: 1 round
+    damage_type: None
     desc: The caster blasts a target with a powerful water attack, knocking them off their feet and incapacitating them for one round.
     duration: 1 round
     effect: Stun
@@ -169,7 +170,7 @@ spells:
   Water Walk:
     available: true
     casting_time: 1 round
-    damage_type: None
+    damage_type: Bypass
     desc: The caster may tread on a liquid surface as if on solid ground.
     duration: 1 hour
     effect: Travel
@@ -200,7 +201,7 @@ spells:
     armor: Ice
     available: true
     casting_time: 1 round
-    damage_type: None
+    damage_type: Bypass
     desc: Caster weaponizes and protects their own body by augmenting it with thick sheets of ice that form into talons capping each finger. Increases defenses slightly and adds a bladed weapon.
     duration: 3 hours
     effect: Armor
@@ -229,7 +230,7 @@ spells:
   Ice Weapon:
     available: true
     casting_time: 1 round
-    damage_type: None
+    damage_type: Bypass
     desc: Augment one specified pre-existing weapon with a fine coating of freezing ice. Though less useful against armor, this weapon does incredible damage against unprotected skin, even through normal clothing.
     duration: 3 hours
     effect: Buff
@@ -251,7 +252,7 @@ spells:
   Purify Water:
     available: true
     casting_time: 10 minutes
-    damage_type: None
+    damage_type: Bypass
     desc: "The caster can purify up to 30 cubic feet of preexisting water, drawing impurities out of the water, such as pollution, small organisms, pyrogens, dissolved compounds, and suspended particles."
     effect: Other
     level: 4
@@ -324,7 +325,7 @@ spells:
   Group Endure Cold:
     available: true
     casting_time: 1 round
-    damage_type: None
+    damage_type: Bypass
     desc: Targets are immune to the negative effects of extreme cold up to -346°F (-210 °C). Spells that do cold damage may be stopped entirely by Endure Cold; when they are not, the damage inflicted is decreased.
     duration: 1 hour
     effect: Travel
@@ -339,7 +340,7 @@ spells:
   Group Water Walk:
     available: true
     casting_time: 1 round
-    damage_type: None
+    damage_type: Bypass
     desc: The caster conveys the ability to walk on a liquid surface as if it were solid ground on up to 3 targets. Each recipient of the spell must remain within 15 yards of each other, or the spell ends for the target that is separated.
     duration: 1 hour
     effect: Travel
@@ -349,13 +350,12 @@ spells:
     range: Short
     roll: true
     school: Water
-
     target_num: 3
   Ice Block:
     available: true
     casting_time: 1 round
-    damage_type: None
-    desc: "Deflect attacks directed against up to three targets with a wall of ice effectively putting the targets in [cover](https://www.aresmush.com/fs3/fs3-3/combat/#stance)."
+    damage_type: Bypass
+    desc: "Deflect attacks directed against up to three targets with a wall of ice that shields its targets."
     duration: 5 rounds
     effect: Defense
     is_shield: true
@@ -399,7 +399,7 @@ spells:
     available: true
     armor: Glacial Ice
     casting_time: 1 round
-    damage_type: None
+    damage_type: Bypass
     desc: "Caster weaponizes and protects the target's body by augmenting it with dense sheets of ice that form into sharp icicles protruding from their knuckles. Increases defenses and adds a weapon."
     duration: 8 hours
     effect: Armor
@@ -413,7 +413,7 @@ spells:
   Glacial Ice Weapon:
     available: true
     casting_time: 1 round
-    damage_type: None
+    damage_type: Bypass
     desc: "Augment one specified pre-existing weapon with a freezing coating of sharp ice. Though less useful against armor, this weapon does incredible damage against unprotected skin, even through normal clothing."
     duration: 6 hours
     effect: Buff
@@ -425,7 +425,7 @@ spells:
     target_num: 1
   Hydroplane:
     available: true
-    damage_type: None
+    damage_type: Bypass
     casting_time: 1 round
     desc: "The caster manipulates water, snow, or ice to carry themselves at a speed of up to 60 mph. They are able to ski along the surface of any water, snow, or ice. They can also slide beneath the surface to swim at the same fast speeds, able to breathe in the water for the duration of the spell. Mods to defense and attack may be applied at the GM's discretion according to actions taken while in motion."
     duration: 1 hour
@@ -438,7 +438,7 @@ spells:
   Liquid Form:
     available: true
     casting_time: 1 round
-    damage_type: None
+    damage_type: Bypass
     defense_mod: 10
     desc: "The caster's body becomes clear liquid and cannot be hit by attacks.\n\n While in liquid form, the caster can pass through small holes or narrow openings, even mere cracks, with anything they were carrying at the time the spell was cast.  "
     duration: 5 rounds
@@ -468,7 +468,7 @@ spells:
   Energize Dimensional Anchor (Water):
     available: true
     casting_time: 2 minutes
-    damage_type: None
+    damage_type: Bypass
     desc: "Provide the necessary magical energy of the appropriate School to a Dimensional Anchor spell, enabling the linked casters to permanently open or close an interdimensional portal.\n\nIf cast on an open portal, the caster can sense if the spell's School is the necessary magical energy to enable opening or closing the portal, as well as the magical coordinates of the portal's existence in the magical universe."
     effect: Travel
     level: 7
@@ -508,7 +508,7 @@ spells:
     area: 20 yards long, 5 yards thick, 10 yards tall
     available: true
     casting_time: 1 round
-    damage_type: None
+    damage_type: Bypass
     desc: "The caster summons a single, solid wall of ice no greater than 20 yards long, 5 yards thick, 10 yards tall. It remains until melted or destroyed."
     effect: Defense
     fs3_attack: false
@@ -523,7 +523,7 @@ spells:
   Mass Hydroplane:
     available: true
     casting_time: 1 round
-    damage_type: None
+    damage_type: Bypass
     desc: "Confers water breathing and the ability to move through water, snow, and ice upon up to 5 targets. They are able to ski across the surface or swim below the surface of any water or snow at a speeds of up to 30 mph. Each recipient of the spell must remain within 30 yards of at least one other recipient, or the spell ends for the target that is separated from the others."
     duration: 30 minutes
     effect: Travel
@@ -536,7 +536,7 @@ spells:
   Greater Purify Water:
     available: false
     casting_time: 15 minutes
-    damage_type: None
+    damage_type: Bypass
     desc: "The caster can purify up to 150 cubic feet of preexisting water, drawing impurities out of the water, such as pollution, small organisms, pyrogens, dissolved compounds, suspended particles and magical contaminations."
     effect: Other
     level: 7
