@@ -304,11 +304,12 @@ module AresMUSH
     end
 
     def self.cast_stun(combatant, target, spell, rounds, result)
+      puts "RESULT: #{result}"
       if target == combatant
         message = t('magic.dont_target_self')
         return message
       end
-      margin = FS3Combat.determine_attack_margin(combatant, target)
+      margin = FS3Combat.determine_attack_margin(combatant, target, mod = 0, called_shot = nil, mount_hit = false, result = nil)
       stopped_by_shield = margin[:stopped_by_shield] || []
       puts "++++ #{margin}"
       puts "++++ #{stopped_by_shield}"
@@ -348,7 +349,7 @@ module AresMUSH
 
     def self.cast_explosion(combatant, target, spell, result)
       messages = []
-      margin = FS3Combat.determine_attack_margin(combatant, target, result = result, spell)
+      margin = FS3Combat.determine_attack_margin(combatant, target, mod = 0, called_shot = nil, mount_hit = false, result)
       if (margin[:hit])
         attacker_net_successes = margin[:attacker_net_successes]
         messages.concat FS3Combat.resolve_attack(combatant, combatant.name, target, combatant.weapon, attacker_net_successes)
@@ -362,7 +363,7 @@ module AresMUSH
         shrapnel = rand(max_shrapnel).round()
         damage_type =  Magic.magic_damage_type(spell)
         shrapnel.times.each do |s|
-          margin = FS3Combat.determine_attack_margin(combatant, target, result = result, spell)
+          margin = FS3Combat.determine_attack_margin(combatant, target, mod = 0, called_shot = nil, mount_hit = false, result)
           attacker_net_successes = margin[:attacker_net_successes]
           if damage_type
             messages.concat FS3Combat.resolve_attack(nil, combatant.name, target, "#{damage_type} Shrapnel", attacker_net_successes)
@@ -393,7 +394,7 @@ module AresMUSH
 
     def self.cast_attack_target(combatant, target, called_shot = nil, result)
         return [ t('fs3combat.has_no_target', :name => combatant.name) ] if !target
-        margin = FS3Combat.determine_attack_margin(combatant, target, result = result, combatant.weapon)
+        margin = FS3Combat.determine_attack_margin(combatant, target, mod = 0, called_shot = nil, mount_hit = false, result)
 
         # Update recoil after determining the attack success but before returning out for a miss
         recoil = FS3Combat.weapon_stat(combatant.weapon, "recoil")

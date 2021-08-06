@@ -75,7 +75,7 @@ module AresMUSH
         auto_revive_spell = combatant.associated_model.auto_revive?
         combatant.update(action_klass: "AresMUSH::FS3Combat::SpellAction")
         combatant.update(action_args: "#{auto_revive_spell}/#{combatant.name}")
-        messages.cocat [t('magic.spell_action_msg_long', :name => combatant.name, :spell => auto_revive_spell)]
+        messages.concat [t('magic.spell_action_msg_long', :name => combatant.name, :spell => auto_revive_spell)]
       end
 
       if !mods.empty?

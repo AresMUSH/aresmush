@@ -346,10 +346,14 @@ module AresMUSH
     end
 
     # Returns { hit: true/false, attacker_net_successes: #, message: explains miss reason }
-    def self.determine_attack_margin(combatant, target, mod = 0, called_shot = nil, mount_hit = false)
+    def self.determine_attack_margin(combatant, target, mod = 0, called_shot = nil, mount_hit = false, result = nil)
       weapon = combatant.weapon
-      attack_roll = FS3Combat.roll_attack(combatant, target, mod - combatant.recoil)
+      puts "Result: #{result}"
+      result ? attack_roll = result : attack_roll = FS3Combat.roll_attack(combatant, target, mod - combatant.recoil)
+      # attack_roll = result || FS3Combat.roll_attack(combatant, target, mod - combatant.recoil)
       defense_roll = FS3Combat.roll_defense(target, weapon)
+
+      puts "Result: #{result} Attack roll: #{attack_roll} Called: #{called_shot}"
 
       attacker_net_successes = attack_roll - defense_roll
       stopped_by_cover = target.stance == "Cover"  ?  FS3Combat.stopped_by_cover?(attacker_net_successes, combatant) : false

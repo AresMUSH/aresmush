@@ -100,7 +100,7 @@ module AresMUSH
 
         puts "Shield delta #{shield.strength} - #{successes} #{delta} WINNER IS #{winner}"
         #This is the issue - some spells give people a weapon they use to attack with, not just cast
-        if !Magic.is_spell?(weapon_or_spell)
+        if Magic.is_spell?(weapon_or_spell) && !Global.read_config("spells", weapon_or_spell, "fs3_attack") || !Magic.is_spell?(weapon_or_spell)
           success_msg = t('magic.shield_held_against_attack', :name => caster_name, :weapon => weapon_or_spell, :mod => "", :shield => shield.name, :target => target.name)
         else
           success_msg = t('magic.shield_held', :name => caster_name, :spell => weapon_or_spell, :mod => "", :shield => shield.name, :target => target.name)
