@@ -23,6 +23,7 @@ spells:
     range: Short
     roll: true
     school: Earth
+    target_num: 1
   Rock Dance:
     available: true
     casting_time: 1 round
