@@ -85,6 +85,7 @@ module AresMUSH
         else
           mods = mods.join()
           messages.concat  [t('magic.mod_wore_off', :name => combatant.name, :mods => mods)]
+        end
       end
 
       messages.uniq.each do |msg|
