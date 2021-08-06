@@ -25,14 +25,14 @@ magic:
   shields_against_all_exceptions:
   - Bypass
   - Psionic
-  - None
+  - None Bypass
   default_damage_type:
     Physical
   type_does_damage:
-    Psionic: false
     Cold: true
     Fire: true
     Physical: true
+    Bypass: true
   achievements:
     potions_made:
       type: potion

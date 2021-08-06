@@ -42,7 +42,7 @@ spells:
   Minor Allergy:
     available: true
     casting_time: 1 round
-    damage_type: Bypass
+    damage_type: None Bypass
     desc: Cause a target to have a mild allergic reaction such as sneezing, a small itchy spot on the skin, mildly itchy eyes, or minor congestion. Treatment with antihistamines or other medicines that affect symptoms are effective against this spell.
     duration: 10 minutes
     effect: Other
@@ -85,7 +85,7 @@ spells:
   Mellow:
     available: true
     casting_time: 1 round
-    damage_type: Bypass
+    damage_type: None Bypass
     desc: Slightly relax the muscles, lower the heart rate, and calm the breathing of a target, lowering any stress responses occurring in their body. The spell is broken if they are hit by an attack or effected by any other extreme stress.
     duration: 10 minutes
     effect: Other
@@ -99,7 +99,7 @@ spells:
     attack_mod: -1
     available: true
     casting_time: 1 round
-    damage_type: Bypass
+    damage_type: None Bypass
     defense_mod: -1
     desc: 'Target loses their strength, becoming physically weak and fatigued. '
     duration: 1 round
@@ -129,7 +129,7 @@ spells:
   Drowsy:
     available: true
     casting_time: 1 round
-    damage_type: Bypass
+    damage_type: None Bypass
     desc: Make a target suddenly feel extremely drowsy and cause them to briefly fall asleep. In combat, they are stunned for one round. In other situations, they remain asleep until they are woken or wake naturally.
     duration: Until woken or 20 seconds in situations with disturbances
     effect: Stun
@@ -157,7 +157,7 @@ spells:
   Medium Heal:
     available: true
     casting_time: 1 round
-    damage_type: Bypass
+    damage_type: None Bypass
     desc: Provide a middling amount of healing magic to a target's most severe treatable wound, speeding their healing by up to nearly a week and restoring some of their vigor.
     effect: Heal
     heal_points: 7
@@ -314,7 +314,7 @@ spells:
   Disable:
     available: true
     casting_time: 1 round
-    damage_type: Bypass
+    damage_type: None Bypass
     desc: Subdue an enemy by paralyzing their limbs, immobilizing them briefly.
     duration: 2 rounds
     effect: Stun
@@ -428,7 +428,7 @@ spells:
   Group Nap:
     available: true
     casting_time: 1 round
-    damage_type: Bypass
+    damage_type: None Bypass
     desc: Make up to 3 targets suddenly feel extremely drowsy and cause them to briefly fall asleep. In combat, they are stunned for two rounds. In other situations, they remain asleep until they are woken or wake naturally.
     duration: Until woken or 20 seconds in situations with disturbances
     effect: Stun
@@ -652,7 +652,7 @@ spells:
     attack_mod: -3
     available: true
     casting_time: 1 Round
-    damage_type: Bypass
+    damage_type: None Bypass
     defense_mod: -3
     desc: "The caster weakens the bodies of up to 3 targets, causing fever symptoms and inflaming their sinuses. The targets suddenly feel faint, losing their strength and becoming fatigued."
     duration: 3 rounds
