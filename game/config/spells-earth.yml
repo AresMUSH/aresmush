@@ -22,6 +22,7 @@ spells:
     name: Glitterdust
     range: Short
     roll: true
+    rounds: 1
     school: Earth
     target_num: 1
   Rock Dance:
