@@ -72,6 +72,7 @@ module AresMUSH
     end
 
     def self.stopped_by_shield?(target_char_or_combatant, caster_name, weapon_or_spell, result)
+      puts "3. Stopped by shield spell #{weapon_or_spell}"
       if (target_char_or_combatant.class == Combatant)
         target = target_char_or_combatant.associated_model
       else
@@ -98,6 +99,7 @@ module AresMUSH
         end
 
         puts "Shield delta #{shield.strength} - #{successes} #{delta} WINNER IS #{winner}"
+        #This is the issue - some spells give people a weapon they use to attack with, not just cast
         if !Magic.is_spell?(weapon_or_spell)
           success_msg = t('magic.shield_held_against_attack', :name => caster_name, :weapon => weapon_or_spell, :mod => "", :shield => shield.name, :target => target.name)
         else
@@ -130,8 +132,9 @@ module AresMUSH
       damage_type =  Magic.magic_damage_type(weapon_or_spell)
       shield = Magic.find_best_shield(target, damage_type)
       type_does_damage = Global.read_config("magic",  "type_does_damage", damage_type)
+      puts "4. #{weapon_or_spell} #{damage_type} Does damage? #{type_does_damage}"
       is_stun = Global.read_config("spells", weapon_or_spell, "is_stun") || Global.read_config("spells", weapon_or_spell, "is_stun") || FS3Combat.weapon_stat(weapon_or_spell, "is_stun") || false
-      puts "#{weapon_or_spell} IS STUN? #{is_stun}"
+      puts "5. #{weapon_or_spell} IS STUN? #{is_stun}"
       if weapon_or_spell.include?("Shrapnel")
           t('magic.shield_failed_against_shrapnel', :name => caster_name, :weapon => weapon_or_spell, :mod => "", :shield => shield.name, :target => target.name)
       elsif !Magic.is_spell?(weapon_or_spell)
@@ -139,7 +142,7 @@ module AresMUSH
       elsif type_does_damage
         t('magic.shield_failed', :name => caster_name, :spell => weapon_or_spell, :mod => "", :shield => shield.name, :target => target.name)
       elsif is_stun
-         t('magic.shield_failed_stun', :name => "FIX", :spell => weapon_or_spell, :shield=> "FIX", :mod => "", :target => "FIX", :rounds => Global.read_config("spells", weapon_or_spell, "rounds"))
+         t('magic.shield_failed_stun', :name => caster_name, :spell => weapon_or_spell, :shield=> shield.name, :mod => "", :target => target.name, :rounds => Global.read_config("spells", weapon_or_spell, "rounds"))
       else
         t('magic.no_damage_shield_failed', :name => caster_name, :spell => weapon_or_spell, :mod => "", :shield => shield.name, :target => target.name)
       end
