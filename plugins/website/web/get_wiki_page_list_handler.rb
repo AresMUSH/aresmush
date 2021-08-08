@@ -10,10 +10,9 @@ module AresMUSH
           }}
         category_pages = WikiPage.all
           .group_by { |p| p.category }
-          .select { |category, pages| !category.blank? }
           .map { |category, pages | 
           {
-            name: category,
+            name: category.blank? ? "(uncategorized)" : category,
             pages: pages.sort_by { |p| p.heading }.map { |p| {
               heading: p.heading,
               id: p.name
