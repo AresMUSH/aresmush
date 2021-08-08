@@ -262,5 +262,17 @@ module AresMUSH
     def self.age_enabled?
       Demographics.all_demographics.include?('birthdate')
     end 
+    
+    def self.firstname_lastname(char)
+      names = char.fullname.split(" ")
+      if names.count == 1
+        first_name = names[0]
+        last_name = ""
+      else
+        first_name = names[0]
+        last_name = names[-1]
+      end
+      "#{first_name} #{last_name}"
+    end
   end  
 end

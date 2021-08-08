@@ -19,11 +19,7 @@ module AresMUSH
     end
     
     def self.military_name(char)
-      fullname = char.fullname
-      
-      return fullname if !Ranks.is_enabled?
-      
-      names = fullname.split(" ")
+      names = char.fullname.split(" ")
       if names.count == 1
         first_name = names[0]
         last_name = ""

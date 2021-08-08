@@ -150,6 +150,7 @@ module AresMUSH
       
       # Boot from portal
       bootee.update(login_api_token: nil)
+      Global.client_monitor.clients.select { |c| c.web_char_id == bootee.id.to_s }.each { |c| c.disconnect }
       
       return nil
     end

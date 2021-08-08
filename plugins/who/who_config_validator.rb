@@ -15,7 +15,7 @@ module AresMUSH
           check_who_config
 
         rescue Exception => ex
-          @validator.add_error "Unknown website config error.  Fix other errors first and try again. #{ex} #{ex.backtrace[0]}"
+          @validator.add_error "Unknown website config error.  Fix other errors first and try again. #{ex} #{ex.backtrace[0, 3]}"
           
         end
         

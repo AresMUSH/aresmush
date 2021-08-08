@@ -3,20 +3,23 @@ module AresMUSH
     
     def self.new_scene_activity(scene, activity_type, data)
       last_posed = scene.last_posed ? scene.last_posed.name : nil
-      
       # **NOTE** Don't add any more pipes after 'data' because poses can contain pipes.
       web_msg = "#{scene.id}|#{last_posed}|#{activity_type}|#{data}"
       Global.client_monitor.notify_web_clients(:new_scene_activity, web_msg, true) do |char|
         Scenes.can_read_scene?(char, scene) && Scenes.is_watching?(scene, char)
       end
       if (activity_type =~ /pose/)
-        message = t('scenes.new_scene_activity', :id => scene.id)
-        watching_participants = scene.watchers.to_a & scene.participants.to_a
-        watching_participants.each do |w|
-          if (last_posed != w.name)
-            is_in_room = scene.room && scene.room == w.room
-            Login.notify(w, :scene, message, scene.id, "", !is_in_room)
-          end
+        Scenes.create_new_pose_notification(scene, last_posed)
+      end
+    end
+    
+    def self.create_new_pose_notification(scene, last_posed_name)
+      message = t('scenes.new_scene_activity', :id => scene.id)
+      watching_participants = scene.watchers.to_a & scene.participants.to_a
+      watching_participants.each do |w|
+        if (last_posed_name != w.name)
+          is_in_room = scene.room && scene.room == w.room
+          Login.notify(w, :scene, message, scene.id, "", !is_in_room)
         end
       end
     end
