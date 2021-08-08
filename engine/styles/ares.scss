@@ -425,6 +425,15 @@ BOOTSTRAP OVERRIDES
     border-color: $border-color;
 }
 
+.panel-primary > .panel-heading {
+    background-color: $secondary-color;
+    border-color: $secondary-color;
+}
+
+.panel-primary, .panel-default {
+  border-top: none;
+}
+
 .btn-primary {
     background-color: $primary-color;
     border-color: $primary-color;
