@@ -1,0 +1,31 @@
+<h1>{{model.name}}</h1>
+
+{{{model.descs.current}}}
+
+{{#each model.descs.details as |detail|}}
+<p><i>{{detail.name}}:</i> {{{detail.desc}}}</p>
+{{/each}}
+
+
+{{#if model.area}}
+<h3>Located In</h3>
+
+{{model.area.full_name}}
+{{/if}}
+
+{{#if model.owners}}
+<h3>Owners</h3>
+  <ul>
+  {{#each model.owners as |owner|}}
+    <li>{{owner}}</li>
+  {{/each}}
+  </ul>
+{{/if}}
+
+<h3>Leads To</h3>
+
+<ul>
+  {{#each model.destinations as |dest|}}
+  <li>{{dest.name}}</li>
+  {{/each}}
+</ul>
