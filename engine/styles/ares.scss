@@ -363,6 +363,10 @@ textarea,
   padding: 4px; }
 
 
+input.color-select {
+  height: 40px;
+}
+
 .ember-basic-dropdown-trigger {
   min-width: 100px;
 }
@@ -419,6 +423,15 @@ BOOTSTRAP OVERRIDES
 .panel-default > .panel-heading {
     background-color: $border-color;
     border-color: $border-color;
+}
+
+.panel-primary > .panel-heading {
+    background-color: $secondary-color;
+    border-color: $secondary-color;
+}
+
+.panel-primary, .panel-default {
+  border-top: none;
 }
 
 .btn-primary {
@@ -1364,7 +1377,8 @@ CHAT SCREEN
 ------------------------- */
 
 #chat-window {
-    max-height: 400px;
+    height: calc(100vh - 400px);
+    min-height: 400px;
     overflow-y: scroll;
     overflow-x: hidden;
     border: 1px solid $border-color;
@@ -1612,6 +1626,11 @@ OTHER
   margin-bottom: 10px;
 }
 
+.wiki-page-columns {
+  column-count: 3;
+  
+}
+
 .help-heading {
   margin-top: 5px;
 }
@@ -1748,6 +1767,10 @@ h3 {
   min-height: 100px;
 }
 
+.wiki-page-columns {
+  column-count: 1;
+  
+}
 
 }
 

@@ -71,5 +71,17 @@ module AresMUSH
       end
       return errors
     end
+    
+    # The name that shows up as a "title" on profile displays.
+    def self.profile_title(char)
+      if (Ranks.is_enabled?)
+        Ranks.military_name(char)
+      elsif !Global.read_config("demographics", "nickname_field").blank?
+        Demographics.name_and_nickname(char)
+      else
+        Demographics.firstname_lastname(char)
+      end
+    end
+    
   end
 end
