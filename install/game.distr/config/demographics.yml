@@ -119,6 +119,8 @@ demographics:
   min_age: 18
   nickname_field: ''
   nickname_format: "%{name} (%{nickname})"
+  permissions:
+    manage_demographics: Edit demographics on other players.
   private_properties: []
   required_properties:
   - played by
@@ -139,5 +141,3 @@ demographics:
     actor: demographic/set played by=
     fullname: demographic/set full name=
     playedby: demographic/set played by=
-  permissions:
-    manage_demographics: Edit demographics on other players.

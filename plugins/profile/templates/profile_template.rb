@@ -104,6 +104,10 @@ module AresMUSH
         arescentral = Global.read_config("arescentral", "arescentral_url")
         "#{arescentral}/handle/#{@char.handle.name}"
       end
+      
+      def profile_title
+        Profile.profile_title(@char)
+      end
     end
   end
 end

@@ -9,7 +9,6 @@ module AresMUSH
         
         open_scenes = Scene.all.select { |s| !s.completed }
            .sort { |s1, s2| sort_scene(s1, s2, enactor) }
-           .reverse
            .map { |s| scene_data(s, enactor) }
            
         if (enactor)        
@@ -68,20 +67,22 @@ module AresMUSH
       end
       
       def sort_scene(s1, s2, enactor)
-        if (Scenes.is_participant?(s1, enactor))
+        
+        if (Scenes.is_participant?(s2, enactor) && !Scenes.is_participant?(s1, enactor))
           return 1
         end
         
-        if (Scenes.is_participant?(s2, enactor))
+        if (Scenes.is_participant?(s1, enactor) && !Scenes.is_participant?(s2, enactor))
           return -1
         end
         
+        
         if (!s1.private_scene && s2.private_scene)
-          return 1
+          return -1
         end
         
         if (s1.private_scene && !s2.private_scene)
-          return -1
+          return 1
         end
         
         if (s1.updated_at < s2.updated_at)

@@ -8,6 +8,11 @@ plugins:
     prefs: https://github.com/AresMUSH/ares-prefs-plugin
     rpg: https://github.com/AresMUSH/ares-rpg-plugin
     traits: https://github.com/AresMUSH/ares-traits-plugin
+    dice: https://github.com/AresMUSH/ares-dice-plugin
+    txt: https://github.com/SpiritLake/ares-txt-plugin
+    compliments: https://github.com/spiritlake/ares-compliments-plugin
+    eshtraits: https://github.com/ClockworkEJD/ares-eshtraits-plugin
+    weather: https://github.com/aresmush/ares-weather-plugin
   disabled_plugins: []
   extras: []
   optional_plugins:
@@ -17,7 +22,6 @@ plugins:
   - fs3combat
   - fs3skills
   - ranks
-  - weather
   unlogged_events:
   - CronEvent
   - ConnectionEstablishedEvent

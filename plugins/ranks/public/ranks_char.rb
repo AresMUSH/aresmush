@@ -5,9 +5,5 @@ module AresMUSH
     def rank
       self.ranks_rank
     end
-    
-    def military_name
-      Ranks.military_name(self)
-    end
   end
 end

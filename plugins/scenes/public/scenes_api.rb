@@ -30,10 +30,35 @@ module AresMUSH
       scene.mark_unread(character)
                   
       scene.update(last_activity: Time.now)
-      data = Scenes.build_scene_pose_web_data(scene_pose, nil, true)
-      data[:pose_order] = Scenes.build_pose_order_web_data(scene)
+      pose_order_data = Scenes.build_pose_order_web_data(scene)
+      
+      notifications = {}
+      
+      scene.watchers.each do |p|
+        AresCentral.play_screen_alts(p).each do |alt|
+          next if notifications.has_key?(alt.id)
+          data = Scenes.build_scene_pose_web_data(scene_pose, alt, true)
+          data[:pose_order] = pose_order_data
 
-      Scenes.new_scene_activity(scene, :new_pose, data.to_json)
+          notifications[alt.id] = data
+        end
+      end
+              
+      # Can't use notify_web_clients here because the notification is different for each person.
+      Global.dispatcher.spawn("Scene notification", nil) do
+        clients = Global.client_monitor.clients
+        clients.each do |client|
+          char_id = client.web_char_id
+          if (char_id && notifications.has_key?(char_id))
+            web_msg = "#{scene.id}|#{character.name}|#{:new_pose}|#{notifications[char_id].to_json}"
+            puts "Notifying #{char_id}: #{web_msg}"
+            client.web_notify :new_scene_activity, web_msg, true
+          end
+        end
+      end
+
+      Scenes.create_new_pose_notification(scene, character.name)
+            
       return scene_pose
     end
     
@@ -76,6 +101,14 @@ module AresMUSH
         scene.update(room: room)
         room.emit_ooc t('scenes.announce_scene_start', :privacy => private_scene ? "Private" : "Open", :name => enactor.name, :num => scene.id)
       end
+      
+
+      scene_data = Scenes.build_live_scene_web_data(scene, enactor).to_json
+      alts = AresCentral.play_screen_alts(enactor)
+      Global.client_monitor.notify_web_clients(:joined_scene, scene_data, true) do |c|
+        c && alts.include?(c)
+      end
+      
       return scene
     end
     

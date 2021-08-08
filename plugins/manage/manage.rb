@@ -18,8 +18,13 @@ module AresMUSH
         return AnnounceCmd
       when "ban"
         return BanCmd
-      when "dbbackup"
-        return BackupCmd
+      when "db"
+        case cmd.switch
+        when "backup"
+          return BackupCmd
+        when "save"
+          return DbSaveCmd
+        end
       when "config"
         case cmd.switch
         when "check"

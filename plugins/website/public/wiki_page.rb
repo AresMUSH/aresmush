@@ -77,7 +77,7 @@ module AresMUSH
     end
         
     def category
-      self.name.before(":")
+      self.name.include?(":") ? self.name.before(":") : ""
     end
     
     def save_upcase

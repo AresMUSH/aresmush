@@ -55,6 +55,18 @@ module AresMUSH
       end
     end
     
+    def self.route_id_for_tag(model)
+      if model.class == AresMUSH::Character
+        return model.name
+      elsif model.class == AresMUSH::WikiPage
+        return model.name
+      elsif model.class == AresMUSH::BbsPost
+        return "#{model.bbs_board.name} - #{model.subject}"
+      else
+        return model.id
+      end
+    end
+    
     def self.title_for_tag_group(tag)
       case tag.content_type
       when "AresMUSH::Character"
