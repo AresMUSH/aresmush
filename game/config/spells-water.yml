@@ -421,6 +421,7 @@ spells:
     school: Water
     weapon_specials: Glacial Ice
     target_num: 1
+    weapon: Spell
   Hydroplane:
     available: true
     damage_type: Bypass
