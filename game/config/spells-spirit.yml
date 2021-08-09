@@ -326,6 +326,7 @@ spells:
     casting_time: 1 round
     damage_type: Psionic
     desc: "The caster shares any specific physical sensation that they are currently feeling with a target."
+    duration: 10 minutes
     effect: Psionic
     level: 3
     name: Share Sensation
