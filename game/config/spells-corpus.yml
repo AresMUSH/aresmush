@@ -409,7 +409,7 @@ spells:
     school: Corpus
     target_num: 1
     weapon_specials: Fatal Vitality
-
+    weapon: Spell
   Fortified Body:
     armor: Fortified Body
     available: false
