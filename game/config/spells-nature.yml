@@ -167,6 +167,7 @@ spells:
     armor: Bark Skin
     damage_type: Bypass
     desc: "The caster grows defensive bark from a woody plant over their skin. Plant is from the same genus each time the spell is cast."
+    duration: 1 hour
     effect: Armor
     level: 3
     name: Bark Skin
@@ -209,7 +210,7 @@ spells:
     casting_time: 3 rounds
     desc: 'Swiftly grow a barrier that protects the caster or their target by placing them in [cover](https://www.aresmush.com/fs3/fs3-3/combat/#stance) for one round.'
     duration: 1 round
-    effect: Defense
+    effect: Shield
     is_shield: true
     level: 3
     line_of_sight: true
@@ -250,6 +251,7 @@ spells:
     weapon: Thorn Growth
   Track Animal:
     available: true
+    area: 100 yards
     casting_time: 1 round
     damage_type: Bypass
     desc: "The caster can sense whether any animals of a chosen genus has been within 100 yards of their current position within the last hour. If they sense a target, they are able to track the location of an individual animal for the duration of the spell."
@@ -907,7 +909,7 @@ spells:
     damage_type: Bypass
     desc: Create a massive wall of thorns. Can be created in any shape, and the caster can open and close doorways through the wall at will.
     duration: 24 hours
-    effect: Defense
+    effect: Shield
     is_shield: true
     level: 8
     name: Massive Thorn Wall

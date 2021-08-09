@@ -447,19 +447,19 @@ fs3combat:
       accuracy: 0
       init_mod: 0
       special_group: Spell
-    # Mind Bolt:
-    #   description: Level 3 Spirit spell
-    #   is_magic: true
-    #   skill: Spirit
-    #   lethality: 0
-    #   penetration: 0
-    #   weapon_type: Suppressive
-    #   is_automatic: true
-    #   recoil: 0
-    #   damage_type: Stun
-    #   accuracy: 3
-    #   init_mod: 0
-    #   special_group: Spell
+    Mind Bolt:
+      description: Level 3 Spirit spell
+      is_magic: true
+      skill: Spirit
+      lethality: 0
+      penetration: 0
+      weapon_type: Suppressive
+      is_automatic: true
+      recoil: 0
+      damage_type: Stun
+      accuracy: 3
+      init_mod: 0
+      special_group: Spell
     Stone Slam:
       description: Level 3 Earth spell
       is_magic: true
@@ -817,19 +817,6 @@ fs3combat:
       init_mod: 0
       has_shrapnel: false
       special_group: Body
-    Glacial Ice:
-      description: Level 6 Water spell
-      is_magic: true
-      skill: Brawl
-      lethality: 10
-      penetration: 8
-      weapon_type: Melee
-      recoil: 0
-      damage_type: Physical
-      accuracy: 0
-      init_mod: 0
-      special_group: Melee
-      magic_damage_type: Cold
     Iron Body:
       description: Level 6 Corpus spell
       is_magic: true

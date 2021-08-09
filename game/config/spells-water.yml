@@ -115,7 +115,7 @@ spells:
     damage_type: Bypass
     desc: Caster is immune to the negative effects of extreme cold. Spells that do cold damage may be stopped entirely by Endure Cold; when they are not, the damage inflicted is decreased.
     duration: 10 minutes
-    effect: Buff
+    effect: Shield
     is_potion: true
     is_shield: true
     level: 3
@@ -328,7 +328,7 @@ spells:
     damage_type: Bypass
     desc: Targets are immune to the negative effects of extreme cold up to -346°F (-210 °C). Spells that do cold damage may be stopped entirely by Endure Cold; when they are not, the damage inflicted is decreased.
     duration: 1 hour
-    effect: Travel
+    effect: Shield
     is_shield: true
     level: 5
     name: Group Endure Cold
@@ -357,7 +357,7 @@ spells:
     damage_type: Bypass
     desc: "Deflect attacks directed against up to three targets with a wall of ice that shields its targets."
     duration: 5 rounds
-    effect: Defense
+    effect: Shield
     is_shield: true
     level: 5
     line_of_sight: true
@@ -407,7 +407,6 @@ spells:
     range: Touch
     school: Water
     weapon: Glacial Ice
-
     target_num: 1
   Glacial Ice Weapon:
     available: true
@@ -509,7 +508,7 @@ spells:
     casting_time: 1 round
     damage_type: Bypass
     desc: "The caster summons a single, solid wall of ice no greater than 20 yards long, 5 yards thick, 10 yards tall. It remains until melted or destroyed."
-    effect: Defense
+    effect: Shield
     fs3_attack: false
     is_shield: true
     level: 7

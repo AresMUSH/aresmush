@@ -138,9 +138,9 @@ spells:
   Wind Wall:
     available: true
     casting_time: 1 round
-    desc: "Deflect ranged projectile attacks directed against you or a single comrade with a gust wind, effectively putting the target in [cover](https://www.aresmush.com/fs3/fs3-3/combat/#stance)."
+    desc: "Deflect ranged projectile attacks directed against you or a single comrade with a gust wind."
     duration: 3 rounds
-    effect: Defense
+    effect: Shield
     is_shield: true
     level: 3
     line_of_sight: true
@@ -360,9 +360,9 @@ spells:
   Sound Barrier:
     available: true
     casting_time: 1 round
-    desc: "Creates a barrier of air using high frequency vibrations to deflect attacks directed against up to three targets, effectively putting the targets in [cover](https://www.aresmush.com/fs3/fs3-3/combat/#stance)."
+    desc: "Creates a barrier of air using high frequency vibrations to deflect attacks directed against up to three targets."
     duration: 5 rounds
-    effect: Defense
+    effect: Shield
     is_shield: true
     level: 5
     line_of_sight: true
