@@ -44,6 +44,12 @@ BASIC CONTAINERS
 }
 
 
+body {
+  font-size: 14px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  line-height: 1.428571429;
+}
+
 .body-wrap
 {
     padding: 0px 20px 0px 20px;
@@ -158,11 +164,17 @@ code {
 td > ul  {
   padding-inline-start: 10px;
 }
+
+p {
+  margin: 0px;
+  margin-bottom: 10px;
+}
+
 /* -------------------------
 NAVIGATION
 ------------------------- */
 
-a {
+a, .nav-link {
     color: $secondary-color;    
     text-decoration: none;
 }
@@ -190,11 +202,12 @@ a:focus{
     padding-right: 10px;
 }
 
-.navbar-inverse .navbar-nav>li>a {
-    color: $primary-words-color;
+.navbar-dark .navbar-nav .nav-link {
+  color: $primary-words-color;
 }
-.navbar-inverse .navbar-nav>li>a:hover {
-    color: $secondary-color;
+
+.navbar-dark .navbar-nav .nav-link:hover {
+  color: $secondary-color;
 }
 
 .navbar {
@@ -389,21 +402,38 @@ BOOTSTRAP OVERRIDES
     margin-bottom: 0px;
 }
 
-.label-pill {
+.badge-pill {
   padding-right: .6em;
   padding-left: .6em;
   border-radius: 20rem;
 }
 
-.label-primary {
+.badge-primary {
     background-color: $primary-color;
     color: $primary-words-color;
 }
-.nav-tabs>li>a {
-    border: 1px solid $border-color;
+
+
+.nav-tabs {
+  border-bottom: none;
 }
 
-.nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus {
+.nav-tabs .nav-link {
+    border: 1px solid $border-color;
+    border-bottom: none;
+    
+}
+
+
+.nav-tabs .nav-link, 
+.nav-tabs .nav-link>a:hover, 
+.nav-tabs .nav-link>a:focus {
+    color: $secondary-color;
+}
+
+.nav-tabs .nav-link.active, 
+.nav-tabs .nav-link.active>a:hover, 
+.nav-tabs .nav-link.active>a:focus {
     background-color: $primary-color;
     color: white;
 }
@@ -437,6 +467,12 @@ BOOTSTRAP OVERRIDES
 .btn-primary {
     background-color: $primary-color;
     border-color: $primary-color;
+}
+
+.btn-secondary {
+  background-color: $background-color;
+  border-color: $border-color;
+  color: $text-color;
 }
 
 .btn-info { 
@@ -775,6 +811,16 @@ HOME SCREEN
    width: 400px;
 }
 
+.jumbotron p {
+  margin-bottom: 15px;
+  font-size: 21px;
+  font-weight: 200;
+}
+
+.jumbotron > hr {
+  border-top-color: $border-color;
+}
+
 .jumbotron-tagline
 {
     font-size: 3em;
@@ -805,6 +851,7 @@ HOME SCREEN
 
 .jumbotron .splash p {
   font-size: 1.25em;
+  font-weight: 200;
 }
 
 /* -------------------------
@@ -951,6 +998,21 @@ SCENES SCREEN
     text-align: center;
     font-weight: bold;
     color: $log-icon-text-color;
+}
+
+
+/* !important needed because of bootstrap */
+
+.bg-primary {
+  background-color: $primary-color !important;
+}
+
+.bg-secondary {
+  background-color: $secondary-color !important;
+}
+
+.bg-info {
+  background-color: $secondary-color !important;
 }
 
 .scene-event {
@@ -1146,6 +1208,7 @@ SCENES SCREEN
 
 .content-warning-label {
   margin: 0px 5px;
+  background-color: #ffc107;
 }
 
 
