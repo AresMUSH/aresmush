@@ -214,6 +214,10 @@ a:focus{
   z-index: 2000;
 }
 
+.navbar-nav>.nav-item {
+  padding-right: 15px;
+}
+
 .navbar-collapse.in {
     background-color: #000;
 }
@@ -418,10 +422,13 @@ BOOTSTRAP OVERRIDES
   border-bottom: none;
 }
 
+.nav-tabs>.nav-item {
+  padding-right: 2px;
+}
+
 .nav-tabs .nav-link {
     border: 1px solid $border-color;
     border-bottom: none;
-    
 }
 
 
@@ -448,6 +455,12 @@ BOOTSTRAP OVERRIDES
 .panel {
     background-color: $background-color;
     border-color: $border-color;
+    margin-bottom: 20px;
+    border-radius: 4px;
+}
+
+.panel-heading {
+  padding: 10px 15px;
 }
 
 .panel-default > .panel-heading {
@@ -464,18 +477,18 @@ BOOTSTRAP OVERRIDES
   border-top: none;
 }
 
-.btn-primary {
+.btn-primary, .btn-primary:hover, .btn-primary:focus {
     background-color: $primary-color;
     border-color: $primary-color;
 }
 
-.btn-secondary {
+.btn-secondary, .btn-secondary:hover, .btn-secondary:focus {
   background-color: $background-color;
   border-color: $border-color;
   color: $text-color;
 }
 
-.btn-info { 
+.btn-info, .btn-info:hover, .btn-info:focus { 
     background-color: $secondary-color;
     border-color: $secondary-color;
 }
@@ -486,7 +499,7 @@ mark {
   color: white;
 }
 
-.pull-right {
+.float-right {
     padding: 10px;
 }
 
@@ -497,6 +510,18 @@ mark {
 .row {
     margin-right: 0px;
     margin-left: 0px;
+}
+
+.dropdown-item {
+  font-size: 14px;
+  padding: 3px 20px;
+  color: $text-color;
+  line-height: 1.4;
+}
+
+.dropdown-item.active, .dropdown-item:active {
+  background-color: $primary-color;
+  color: $primary-words-color;
 }
 
 /* -------------------------
@@ -783,6 +808,14 @@ img {
 .icon-status-game-inactive {
   border: 3px solid #ccc;
   border-radius: 30px;
+}
+
+.folder-list {
+  column-count: 4;
+}
+
+.folder-item {
+  width: 200px;
 }
 
 /* -------------------------
@@ -1287,7 +1320,7 @@ CHARACTERS SCREEN
     border-radius: 8px;
     border: 1px solid $primary-outline-color; 
     background-color: $background-color;
-    margin:5px;
+    margin-top:5px;
     padding:15px; 
     background-position:left top;
     background-size: cover;
@@ -1357,6 +1390,9 @@ table.char-ability-list {
     color: white;
     background-color: $secondary-color;
     text-align: center;
+    font-size: 1.25em;
+    font-weight: bold;
+    padding: 2px;
 }
 
 .tab-cover {
@@ -1644,9 +1680,7 @@ OTHER
   
 }
 
-.xp-progress-points {
-    position: absolute;
-    left: 0;
+.progress-value {
     width: 100%;
     text-align: center;
 }
