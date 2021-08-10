@@ -548,7 +548,7 @@ spells:
     range: Touch
     roll: true
     school: Will
-  Transmutation  Weapon:
+  Transmutation Weapon:
     available: false
     casting_time: 1 round
     damage_type: Bypass
