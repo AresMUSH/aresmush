@@ -224,7 +224,7 @@ module AresMUSH
       end
       
       def self.format_wiki_template(text, title)
-        text = text.gsub("src=\"/", "src=\"")
+        text = (text || "").gsub("src=\"/", "src=\"")
         text = text.gsub(/href\=\"\/wiki\/([^\"]+)\/?/) { "href=\"#{FilenameSanitizer.sanitize($1)}.html" }
         text = AnsiFormatter.strip_ansi(text)
 
