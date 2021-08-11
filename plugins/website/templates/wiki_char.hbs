@@ -3,7 +3,9 @@
 
 <h1>{{char.name}}</h1>
 
-    <div class="col-md-4 col-sm-12 col-xs-12">
+<div class="row">
+
+    <div class="col col-xs-12 col-md-4">
     {{#if char.profile_image.name}}
         <img src="game/uploads/{{char.profile_image.path}}" alt="{{char.name}}'s icon"  class="profile-image">
     {{else}}
@@ -11,7 +13,7 @@
     {{/if}}
     </div>
 
-    <div class="col-md-8 col-sm-12 col-xs-12">        
+    <div class="col col-xs-12 col-md-8">        
 
         <div class="profile-box">
         <div class="profile-title">
@@ -62,21 +64,19 @@
       </div>
         
     </div>
-
-<div class="profile-tab">
-  <ul class="nav nav-tabs">
-      <li class="active"><a data-toggle="tab" href="#supplementalindex">+</a></li>
-      {{#each char.profile as |profile| }}
-          <li><a data-toggle="tab" href="#{{profile.key}}">{{profile.name}}</a></li>
-      {{/each}}
-  </ul>
 </div>
 
-
 <div class="profile-tab">
+  <ul class="nav nav-tabs" role="tablist">
+      <li class="nav-item"><a data-bs-toggle="tab" href="#supplementalindex" class="nav-link active">+</a></li>
+      {{#each char.profile as |profile| }}
+          <li class="nav-item"><a data-bs-toggle="tab" href="#{{profile.key}}" class="nav-link">{{profile.name}}</a></li>
+      {{/each}}
+  </ul>
+
   <div class="tab-content">
 
-    <div id="supplementalindex" class="tab-pane fade in active">
+    <div id="supplementalindex" class="tab-pane fade show active">
         <div class="tab-cover">Supplemental Information</div>
     </div>
   
@@ -91,21 +91,21 @@
     {{/each}}
   
  </div>
-  
-  
-
-  <ul class="nav nav-tabs">
-      <li class="active"><a data-toggle="tab" href="#relationshipindex">+</a></li>
-      {{#each char.relationships as |cat|}}
-      <li><a data-toggle="tab" href="#{{cat.key}}">{{cat.name}}</a></li>
-      {{/each}}
-  </ul>
 </div>
 
+  
 <div class="profile-tab">
+
+  <ul class="nav nav-tabs" role="tablist">
+      <li class="nav-item"><a data-bs-toggle="tab" href="#relationshipindex" class="nav-link active">+</a></li>
+      {{#each char.relationships as |cat|}}
+      <li class="nav-item"><a data-bs-toggle="tab" href="#{{cat.key}}" class="nav-link">{{cat.name}}</a></li>
+      {{/each}}
+  </ul>
+
   <div class="tab-content">
 
-    <div id="relationshipindex" class="tab-pane fade in active">
+    <div id="relationshipindex" class="tab-pane fade show active">
         <div class="tab-cover">Relationships</div>
     </div>
   
@@ -156,24 +156,24 @@
 
 
 <div class="profile-tab">
-  <ul class="nav nav-tabs">
-    <li class="active"><a data-toggle="tab" href="#systeminfo">+</a></li>
+  <ul class="nav nav-tabs" role="tablist">
+    <li class="nav-item"><a data-bs-toggle="tab" href="#systeminfo" class="nav-link active">+</a></li>
 
-    <li><a data-toggle="tab" href="#systemhooks">RP Hooks</a></li>
+    <li><a data-bs-toggle="tab" href="#systemhooks" class="nav-link">RP Hooks</a></li>
 
     {{#if char.background}}
-        <li><a data-toggle="tab" href="#systembg">Background</a></li> 
+        <li class="nav-item"><a data-bs-toggle="tab" href="#systembg" class="nav-link">Background</a></li> 
     {{/if}}
   
     {{#if char.description}}
-    <li><a data-toggle="tab" href="#systemdesc">Description</a></li>
+    <li class="nav-item"><a data-bs-toggle="tab" href="#systemdesc" class="nav-link">Description</a></li>
     {{/if}}
   
   </ul>
 
 
   <div class="tab-content">
-    <div id="systeminfo" class="tab-pane fade in active">
+    <div id="systeminfo" class="tab-pane fade show active">
         <div class="tab-cover">System Information</div>
     </div>
   

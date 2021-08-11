@@ -244,6 +244,13 @@ GENERAL HTML ELEMENTS
 ------------------------- */
 
 
+h1, .h1,
+h2, .h2,
+h3, .h3 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
 h1
 {
     background-color: $primary-color;
@@ -265,10 +272,10 @@ h2
 }
 
 
-td {
-        padding: 5px;
+td, .table th, .table td {
+      padding: 5px;
+      vertical-align: middle;
 }
-
 
 textarea.pre {
     font-family:Consolas,Monaco,Lucida Console,monospace;
@@ -477,18 +484,22 @@ BOOTSTRAP OVERRIDES
   border-top: none;
 }
 
-.btn-primary, .btn-primary:hover, .btn-primary:focus {
+.btn {
+  font-size: 1em;
+}
+
+.btn-primary, .btn-primary:hover, .btn-primary:focus, .btn-primary:active {
     background-color: $primary-color;
     border-color: $primary-color;
 }
 
-.btn-secondary, .btn-secondary:hover, .btn-secondary:focus {
+.btn-secondary, .btn-secondary:hover, .btn-secondary:focus, .btn-secondary:active {
   background-color: $background-color;
   border-color: $border-color;
   color: $text-color;
 }
 
-.btn-info, .btn-info:hover, .btn-info:focus { 
+.btn-info, .btn-info:hover, .btn-info:focus, .btn-info:active { 
     background-color: $secondary-color;
     border-color: $secondary-color;
 }
@@ -1142,9 +1153,6 @@ SCENES SCREEN
 .scene-menu { 
   display: inline-block;
 }
-.scene-menu .dropdown-toggle {
-  padding: 0px;
-}
 
 .scene-pose-select, .scene-char-select, .forum-char-select {
   width: 175px;
@@ -1452,6 +1460,21 @@ input[type='file'] {
 
 }
 
+.fs3-gear-row {
+  border-bottom: 1px solid $border-color;
+  margin-bottom: 10px;
+}
+
+.fs3-combat-controls {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 10px;
+}
+
+.fs3-combat-command {
+  padding-bottom: 10px;
+}
+
 .roster-table {
   width: 100%;
 }
@@ -1647,10 +1670,6 @@ JOBS SCREEN
 .admin-only-reply, .admin-only-reply .markdown-editor {
   background-color: #fcf8e3;
   border-color: #faebcc;
-}
-
-.job-participant-edit-box {
-  padding-left: 15px;
 }
 
 .job-template-editor {
