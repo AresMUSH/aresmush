@@ -1,7 +1,7 @@
-<ul class="nav nav-tabs">
-  <li class="active"><a data-toggle="tab" href="#scenecontrol">+</a></li>
+<ul class="nav nav-tabs" role="tablist">
+  <li class="nav-item"><a data-bs-toggle="tab" href="#scenecontrol" class="nav-link active">+</a></li>
 {{#each types as |sceneType|}}
-  <li><a data-toggle="tab" href="#{{sceneType}}">{{sceneType}}</a></li>
+  <li class="nav-item"><a data-bs-toggle="tab" href="#{{sceneType}}" class="nav-link">{{sceneType}}</a></li>
 {{/each}}
 </ul>
 
@@ -11,7 +11,7 @@
   </div>
   
 {{#each scenes_by_type as |sbt|}}
-  <div id="{{sbt.name}}" class="tab-pane fade in">
+  <div id="{{sbt.name}}" class="tab-pane fade show">
         {{#each sbt.scenes as |sceneData|}}
         <p><b><a href="{{sceneData.page}}">{{sceneData.title}}</a></b>
           <br/>{{sceneData.summary}}
