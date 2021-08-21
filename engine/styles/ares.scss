@@ -170,6 +170,28 @@ p {
   margin-bottom: 10px;
 }
 
+.action-buttons {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.action-buttons .btn {
+  margin-left: 5px;
+}
+
+.action-buttons-spaced {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  align-items: center;
+}
+
+
+
 /* -------------------------
 NAVIGATION
 ------------------------- */
@@ -351,7 +373,8 @@ td {
 textarea {
     width: 98%;
     padding: 5px;
-    margin: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -384,7 +407,9 @@ textarea,
   border: 1px solid $border-color;
   border-radius: 3px;
   transition: border 0.3s linear;
-  padding: 4px; }
+  padding-top: 4px; 
+  padding-bottom: 4px; 
+}
 
 
 input.color-select {
@@ -1463,12 +1488,6 @@ input[type='file'] {
 .fs3-gear-row {
   border-bottom: 1px solid $border-color;
   margin-bottom: 10px;
-}
-
-.fs3-combat-controls {
-  display: flex;
-  justify-content: space-between;
-  padding-bottom: 10px;
 }
 
 .fs3-combat-command {
