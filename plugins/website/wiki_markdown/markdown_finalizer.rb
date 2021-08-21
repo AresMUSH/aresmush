@@ -41,11 +41,11 @@ module AresMUSH
             html << template.render(data)     
             
           elsif (line =~ /^(<p>)?(<br>)?\[\[\/tabview\]\]/)
-            html << '<ul class="nav nav-tabs">'
+            html << '<ul class="nav nav-tabs" role="tablist">'
             tabs.each_with_index do |(tab_name, tab_lines), i|
               id = clean_anchor(tab_name)
-              active = i == 0 ? "class=\"active\"" : ""
-              html << "<li #{active}><a data-toggle=\"tab\" href=\"##{id}\">#{tab_name}</a></li>" 
+              link_class = i == 0 ? "nav-link active" : "nav-link"
+              html << "<li class=\"nav-item\"><a data-bs-toggle=\"tab\" href=\"##{id}\" class=\"#{link_class}\">#{tab_name}</a></li>" 
             end
             html << '</ul>'
             
@@ -53,7 +53,7 @@ module AresMUSH
             tabs.each_with_index do |(tab_name, tab_lines), i|
               id = clean_anchor(tab_name)
               active = i == 0 ? "active" : ""
-              html << "<div id=\"#{id}\" class=\"tab-pane fade in #{active}\">"
+              html << "<div id=\"#{id}\" class=\"tab-pane fade show #{active}\">"
               tab_lines.each do |tab_line|
                 html << "#{tab_line}\n"
               end
