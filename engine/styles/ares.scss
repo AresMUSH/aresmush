@@ -484,28 +484,28 @@ BOOTSTRAP OVERRIDES
     min-height: 50px;
 }
 
-.panel {
+.card {
     background-color: $background-color;
     border-color: $border-color;
     margin-bottom: 20px;
     border-radius: 4px;
 }
 
-.panel-heading {
+.card-heading {
   padding: 10px 15px;
 }
 
-.panel-default > .panel-heading {
+.card-default > .card-heading {
     background-color: $border-color;
     border-color: $border-color;
 }
 
-.panel-primary > .panel-heading {
+.card-primary > .card-heading {
     background-color: $secondary-color;
     border-color: $secondary-color;
 }
 
-.panel-primary, .panel-default {
+.card-primary, .card-default {
   border-top: none;
 }
 
