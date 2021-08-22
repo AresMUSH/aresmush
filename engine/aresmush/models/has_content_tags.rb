@@ -2,7 +2,7 @@ module AresMUSH
   module HasContentTags
     def self.included(base)
       base.send :extend, ClassMethods   
-      #base.send :register_data_members
+      base.send :register_data_members
     end
  
     module ClassMethods
