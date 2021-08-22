@@ -245,6 +245,10 @@ module AresMUSH
       visible_demographics = Demographics.visible_demographics(char, viewer)
       visible_demographics.each do |d|
         all_fields[d.gsub(' ', '_')] = char.demographic(d)
+        
+        if (d == "birthdate")
+          all_fields['age'] = char.age
+        end
       end
       
       Demographics.all_groups.each do |k, v|
@@ -252,9 +256,6 @@ module AresMUSH
       end
       if (Ranks.is_enabled?)
         all_fields['rank'] = char.rank
-      end
-      if (visible_demographics.include?('birthdate'))
-        all_fields['age'] = char.age
       end
       all_fields
     end

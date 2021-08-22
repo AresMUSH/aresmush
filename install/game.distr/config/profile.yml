@@ -25,3 +25,4 @@ profile:
   - outfits/all
   permissions:
     manage_profiles: Allows editing other characters' profiles.
+  profile_title_format: bitname

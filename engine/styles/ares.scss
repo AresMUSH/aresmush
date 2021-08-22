@@ -44,6 +44,12 @@ BASIC CONTAINERS
 }
 
 
+body {
+  font-size: 14px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  line-height: 1.428571429;
+}
+
 .body-wrap
 {
     padding: 0px 20px 0px 20px;
@@ -158,11 +164,39 @@ code {
 td > ul  {
   padding-inline-start: 10px;
 }
+
+p {
+  margin: 0px;
+  margin-bottom: 10px;
+}
+
+.action-buttons {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.action-buttons .btn {
+  margin-left: 5px;
+}
+
+.action-buttons-spaced {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  align-items: center;
+}
+
+
+
 /* -------------------------
 NAVIGATION
 ------------------------- */
 
-a {
+a, .nav-link {
     color: $secondary-color;    
     text-decoration: none;
 }
@@ -190,15 +224,20 @@ a:focus{
     padding-right: 10px;
 }
 
-.navbar-inverse .navbar-nav>li>a {
-    color: $primary-words-color;
+.navbar-dark .navbar-nav .nav-link {
+  color: $primary-words-color;
 }
-.navbar-inverse .navbar-nav>li>a:hover {
-    color: $secondary-color;
+
+.navbar-dark .navbar-nav .nav-link:hover {
+  color: $secondary-color;
 }
 
 .navbar {
   z-index: 2000;
+}
+
+.navbar-nav>.nav-item {
+  padding-right: 15px;
 }
 
 .navbar-collapse.in {
@@ -227,6 +266,13 @@ GENERAL HTML ELEMENTS
 ------------------------- */
 
 
+h1, .h1,
+h2, .h2,
+h3, .h3 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
 h1
 {
     background-color: $primary-color;
@@ -248,10 +294,10 @@ h2
 }
 
 
-td {
-        padding: 5px;
+td, .table th, .table td {
+      padding: 5px;
+      vertical-align: middle;
 }
-
 
 textarea.pre {
     font-family:Consolas,Monaco,Lucida Console,monospace;
@@ -327,7 +373,8 @@ td {
 textarea {
     width: 98%;
     padding: 5px;
-    margin: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -360,7 +407,9 @@ textarea,
   border: 1px solid $border-color;
   border-radius: 3px;
   transition: border 0.3s linear;
-  padding: 4px; }
+  padding-top: 4px; 
+  padding-bottom: 4px; 
+}
 
 
 input.color-select {
@@ -389,21 +438,41 @@ BOOTSTRAP OVERRIDES
     margin-bottom: 0px;
 }
 
-.label-pill {
+.badge-pill {
   padding-right: .6em;
   padding-left: .6em;
   border-radius: 20rem;
 }
 
-.label-primary {
+.badge-primary {
     background-color: $primary-color;
     color: $primary-words-color;
 }
-.nav-tabs>li>a {
-    border: 1px solid $border-color;
+
+
+.nav-tabs {
+  border-bottom: none;
 }
 
-.nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus {
+.nav-tabs>.nav-item {
+  padding-right: 2px;
+}
+
+.nav-tabs .nav-link {
+    border: 1px solid $border-color;
+    border-bottom: none;
+}
+
+
+.nav-tabs .nav-link, 
+.nav-tabs .nav-link>a:hover, 
+.nav-tabs .nav-link>a:focus {
+    color: $secondary-color;
+}
+
+.nav-tabs .nav-link.active, 
+.nav-tabs .nav-link.active>a:hover, 
+.nav-tabs .nav-link.active>a:focus {
     background-color: $primary-color;
     color: white;
 }
@@ -415,31 +484,47 @@ BOOTSTRAP OVERRIDES
     min-height: 50px;
 }
 
-.panel {
+.card {
     background-color: $background-color;
     border-color: $border-color;
+    margin-bottom: 20px;
+    border-radius: 4px;
 }
 
-.panel-default > .panel-heading {
+.card-heading {
+  padding: 10px 15px;
+}
+
+.card-default > .card-heading {
     background-color: $border-color;
     border-color: $border-color;
 }
 
-.panel-primary > .panel-heading {
+.card-primary > .card-heading {
     background-color: $secondary-color;
     border-color: $secondary-color;
 }
 
-.panel-primary, .panel-default {
+.card-primary, .card-default {
   border-top: none;
 }
 
-.btn-primary {
+.btn {
+  font-size: 1em;
+}
+
+.btn-primary, .btn-primary:hover, .btn-primary:focus, .btn-primary:active {
     background-color: $primary-color;
     border-color: $primary-color;
 }
 
-.btn-info { 
+.btn-secondary, .btn-secondary:hover, .btn-secondary:focus, .btn-secondary:active {
+  background-color: $background-color;
+  border-color: $border-color;
+  color: $text-color;
+}
+
+.btn-info, .btn-info:hover, .btn-info:focus, .btn-info:active { 
     background-color: $secondary-color;
     border-color: $secondary-color;
 }
@@ -450,7 +535,7 @@ mark {
   color: white;
 }
 
-.pull-right {
+.float-right {
     padding: 10px;
 }
 
@@ -461,6 +546,18 @@ mark {
 .row {
     margin-right: 0px;
     margin-left: 0px;
+}
+
+.dropdown-item {
+  font-size: 14px;
+  padding: 3px 20px;
+  color: $text-color;
+  line-height: 1.4;
+}
+
+.dropdown-item.active, .dropdown-item:active {
+  background-color: $primary-color;
+  color: $primary-words-color;
 }
 
 /* -------------------------
@@ -749,6 +846,14 @@ img {
   border-radius: 30px;
 }
 
+.folder-list {
+  column-count: 4;
+}
+
+.folder-item {
+  width: 200px;
+}
+
 /* -------------------------
 HOME SCREEN
 ------------------------- */
@@ -773,6 +878,16 @@ HOME SCREEN
 .jumbotron img {
    max-width: 70%;
    width: 400px;
+}
+
+.jumbotron p {
+  margin-bottom: 15px;
+  font-size: 21px;
+  font-weight: 200;
+}
+
+.jumbotron > hr {
+  border-top-color: $border-color;
 }
 
 .jumbotron-tagline
@@ -805,6 +920,7 @@ HOME SCREEN
 
 .jumbotron .splash p {
   font-size: 1.25em;
+  font-weight: 200;
 }
 
 /* -------------------------
@@ -953,6 +1069,21 @@ SCENES SCREEN
     color: $log-icon-text-color;
 }
 
+
+/* !important needed because of bootstrap */
+
+.bg-primary {
+  background-color: $primary-color !important;
+}
+
+.bg-secondary {
+  background-color: $secondary-color !important;
+}
+
+.bg-info {
+  background-color: $secondary-color !important;
+}
+
 .scene-event {
     background-color: #337ab7;
 }
@@ -1046,9 +1177,6 @@ SCENES SCREEN
 
 .scene-menu { 
   display: inline-block;
-}
-.scene-menu .dropdown-toggle {
-  padding: 0px;
 }
 
 .scene-pose-select, .scene-char-select, .forum-char-select {
@@ -1146,6 +1274,7 @@ SCENES SCREEN
 
 .content-warning-label {
   margin: 0px 5px;
+  background-color: #ffc107;
 }
 
 
@@ -1224,7 +1353,7 @@ CHARACTERS SCREEN
     border-radius: 8px;
     border: 1px solid $primary-outline-color; 
     background-color: $background-color;
-    margin:5px;
+    margin-top:5px;
     padding:15px; 
     background-position:left top;
     background-size: cover;
@@ -1294,6 +1423,9 @@ table.char-ability-list {
     color: white;
     background-color: $secondary-color;
     text-align: center;
+    font-size: 1.25em;
+    font-weight: bold;
+    padding: 2px;
 }
 
 .tab-cover {
@@ -1351,6 +1483,15 @@ input[type='file'] {
   font-size: .7em;
   color: $faded-text-color;
 
+}
+
+.fs3-gear-row {
+  border-bottom: 1px solid $border-color;
+  margin-bottom: 10px;
+}
+
+.fs3-combat-command {
+  padding-bottom: 10px;
 }
 
 .roster-table {
@@ -1550,10 +1691,6 @@ JOBS SCREEN
   border-color: #faebcc;
 }
 
-.job-participant-edit-box {
-  padding-left: 15px;
-}
-
 .job-template-editor {
   margin: 0px;
 }
@@ -1581,9 +1718,7 @@ OTHER
   
 }
 
-.xp-progress-points {
-    position: absolute;
-    left: 0;
+.progress-value {
     width: 100%;
     text-align: center;
 }
