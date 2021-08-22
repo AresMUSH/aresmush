@@ -41,6 +41,8 @@ website:
       route: forum
     - title: Mail
       route: mail
+    - title: Events
+      route: events
     - divider: true
     - title: Web Client
       route: client
