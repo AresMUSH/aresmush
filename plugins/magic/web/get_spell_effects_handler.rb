@@ -3,14 +3,13 @@ module AresMUSH
     class GetSpellEffectsRequestHandler
 
       def handle(request)
-        Global.logger.debug "Getting Spell Request Handler"
         spells = Global.read_config("spells")
         spells = spells.map {|k, v| {id: v['name'], effect: v['effect']}}
         effects = []
         spells.each do |s|
            effects.concat [s[:effect]]
         end
-        effects = effects.uniq
+        effects = effects.uniq.sort
         return effects
 
         # damage = []
