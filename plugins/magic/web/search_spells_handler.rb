@@ -23,6 +23,7 @@ module AresMUSH
           armor = Global.read_config("spells", s[:name], "armor")
           armor_specials = Global.read_config("spells", s, "armor_specials")
           attack = Global.read_config("spells", s[:name], "attack_mod")
+          init = Global.read_config("spells", s[:name], "init_mod")
           lethal = Global.read_config("spells", s[:name], "lethal_mod")
           spell = Global.read_config("spells", s[:name], "spell_mod")
           defense = Global.read_config("spells", s[:name], "defense_mod")
@@ -145,6 +146,7 @@ module AresMUSH
           heal: data['heal_points'],
           defense_mod: data['defense_mod'],
           attack_mod: data['attack_mod'],
+          init_mod: data['init_mod'],
           lethal_mod: data['lethal_mod'],
           spell_mod: data['spell_mod'],
           weapon: data['weapon'],
