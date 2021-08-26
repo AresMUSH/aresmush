@@ -15,6 +15,7 @@ module AresMUSH
           armor: Global.read_config("spells", a.name, "armor"),
           armor_specials: Global.read_config("spells", a.name, "armor_specials"),
           attack_mod: Global.read_config("spells", a.name, "attack_mod"),
+          init_mod: Global.read_config("spells", a.name, "init_mod"),
           lethal_mod: Global.read_config("spells", a.name, "lethal_mod"),
           spell_mod:  Global.read_config("spells", a.name, "spell_mod"),
           defense_mod:  Global.read_config("spells", a.name, "defense_mod"),
