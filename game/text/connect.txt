@@ -16,5 +16,6 @@
                  \__| .__/|_|_|  |_|\__| \____/\__,_|_|\_\___|
     ----------------|_|-------------------------------------------------
     Create <name> <password> to create a character.
-    Connect <name> <password> to connect to your existing character.    
+    Connect <name> <password> to connect to your existing character.
+         The portal and the game use the same name and password.
     --------------------------------------------------------------------
