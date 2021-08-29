@@ -1,4 +1,8 @@
 <%= header %>
+<% if paginator.current_page == 1 %>
+<%= t('help.help_intro', :help_url => help_url) %>
+
+<% end %>
 <% paginator.items.each do |section| %>
 %xg<%= line_with_text(section) %>%xn
 <% toc_topics(section).each do |title, data| %>
@@ -8,7 +12,6 @@
 %xh%xxCommand Topics:%xn <%= section_topics(section) %>
 
 <% end %>
-<%= paginator.page_footer %>
-<%= t('help.pages_tip') %>
-<%= t('help.help_topic_footer', :url => help_url )%>
+%ld
+<%= left(paginator.page_marker, 39)%><%= right(next_page_prompt,39) %>
 <%= footer %>
