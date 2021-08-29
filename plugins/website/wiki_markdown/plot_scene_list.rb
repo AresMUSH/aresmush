@@ -45,9 +45,9 @@ module AresMUSH
         end
         
         if (char)
-          matches = plot.scenes.select { |s| s.participants.include?(char) }
+          matches = plot.sorted_scenes.select { |s| s.participants.include?(char) }
         else
-          matches = plot.scenes.to_a
+          matches = plot.sorted_scenes.to_a
         end
           
         Global.logger.debug("Plot scene list for plot=#{plot_id} char=#{char_name} matches=#{matches.count}")
