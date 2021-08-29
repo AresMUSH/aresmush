@@ -2,7 +2,12 @@ module AresMUSH
   module Scenes
     class PlotsRequestHandler
       def handle(request)
-        plots = Plot.all.to_a.map { |p| {
+        
+        archive = (request.args["archive"] || "").to_bool
+        
+        plots = Plot.all
+          .select { |p| archive ? p.completed : !p.completed }
+          .to_a.map { |p| {
                   id: p.id,
                   title: p.title,
                   summary: Website.format_markdown_for_html(p.summary),
@@ -13,6 +18,7 @@ module AresMUSH
                   tags: p.content_tags,
                   storytellers: get_storytellers(p)
                 }}
+       
         plots.sort_by { |p| [ p[:end_date], p[:start_date] ] }.reverse
       end
       
