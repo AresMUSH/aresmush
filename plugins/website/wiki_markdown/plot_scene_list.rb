@@ -50,6 +50,8 @@ module AresMUSH
           matches = plot.scenes.to_a
         end
           
+        Global.logger.debug("Plot scene list for plot=#{plot_id} char=#{char_name} matches=#{matches.count}")
+          
         template = HandlebarsTemplate.new(File.join(AresMUSH.plugin_path, 'website', 'templates', 'scene_list.hbs'))
 
         data = {
