@@ -51,7 +51,6 @@ module AresMUSH
           char_id = client.web_char_id
           if (char_id && notifications.has_key?(char_id))
             web_msg = "#{scene.id}|#{character.name}|#{:new_pose}|#{notifications[char_id].to_json}"
-            puts "Notifying #{char_id}: #{web_msg}"
             client.web_notify :new_scene_activity, web_msg, true
           end
         end
