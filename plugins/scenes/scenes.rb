@@ -199,8 +199,6 @@ module AresMUSH
         return GetSceneRequestHandler
       when "scenes"
         return GetScenesRequestHandler
-      when "sceneCard"
-        return GetSceneCardRequestHandler
       when "sceneLocations"
         return GetSceneLocationsHandler
       when "sceneOptions"

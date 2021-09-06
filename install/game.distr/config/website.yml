@@ -84,8 +84,6 @@ website:
       route: fs3-limits
     - title: XP Costs
       route: fs3-xp-costs
-    - title: Skill Scan
-      route: fs3skills-scan
     - title: Roles
       route: roles
     - divider: true
@@ -144,7 +142,7 @@ website:
     - target: blank
       title: MUSH 101 Tutorial <i class="fa fa-external-link-alt" aria-hidden="true">
       url: https://aresmush.com/mush-101/
-  website_code_path: "/Users/lynn/Code/ares-webportal"
+  website_code_path: "/home/ares/ares-webportal"
   wiki_aliases:
     main: home
   permissions:
@@ -154,7 +152,6 @@ website:
   - ".jpg"
   - ".png"
   - ".gif"
-  - ".jpeg"
   auto_wiki_export: true
   wiki_export_cron:
     hour:

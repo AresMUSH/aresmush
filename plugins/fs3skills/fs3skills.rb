@@ -85,8 +85,6 @@ module AresMUSH
         return AddJobRollRequestHandler
       when "addSceneRoll"
         return AddSceneRollRequestHandler
-      when "fs3Scan"
-        return SkillScanRequestHandler
       when "learnAbility"
         return LearnAbilityRequestHandler
       when"spendLuck"

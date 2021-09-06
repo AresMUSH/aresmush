@@ -213,8 +213,7 @@ module AresMUSH
         description: Website.format_markdown_for_html(char.description || ""),
         status_message: Profile.get_profile_status_message(char),
         is_ooc: char.is_admin? || char.is_playerbit?,
-        custom: Scenes.custom_char_card_fields(char, viewer),
-        fs3: FS3Skills.is_enabled? ? FS3Skills.build_web_char_data(char, viewer) : nil
+        custom: Scenes.custom_char_card_fields(char, viewer)
       }
     end
   end

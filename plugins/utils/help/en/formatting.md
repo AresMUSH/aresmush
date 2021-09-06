@@ -1,5 +1,5 @@
 ---
-toc: Utilities / Miscellaneous
+toc: Formatting Text
 summary: Using formatting and substition codes.
 aliases:
 - subs
