@@ -50,11 +50,6 @@ demographics:
       subjective_pronoun: they
       objective_pronoun: them
       noun: person
-    Robot:
-      possessive_pronoun: their
-      subjective_pronoun: they
-      objective_pronoun: them
-      noun: robot
   groups:
     Faction:
       desc: Military faction.

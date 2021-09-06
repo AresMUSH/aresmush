@@ -18,6 +18,13 @@ module AresMUSH
       scene.update(deletion_warned: false)
       scene.watchers.replace scene.participants.to_a
       Scenes.new_scene_activity(scene, :status_changed, nil)
+      
+      scene_data = Scenes.build_live_scene_web_data(scene, nil).to_json
+      alts = []
+      scene.participants.each { |p| alts.concat AresCentral.play_screen_alts(p) }
+      Global.client_monitor.notify_web_clients(:joined_scene, scene_data, true) do |c|
+        c && alts.include?(c)
+      end
     end
     
     def self.unshare_scene(enactor, scene)

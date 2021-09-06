@@ -225,6 +225,7 @@ module AresMUSH
          job: char.approval_job ? char.approval_job.id : nil,
          custom: custom_app,
          allow_web_submit: (char == enactor) && Global.read_config("chargen", "allow_web_submit"),
+         app_notes_prompt: Global.read_config("chargen", "app_notes_prompt"),
          preset_responses: Jobs.preset_job_responses_for_web
        }
      end
