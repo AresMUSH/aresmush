@@ -110,3 +110,5 @@ chargen:
   permissions:
     manage_apps: Approve and reject character apps.
     view_bgs: Can view other characters' backgrounds
+  app_notes_prompt: If you want to make any special notes about your application,
+    you can enter them below.

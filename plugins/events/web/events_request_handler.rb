@@ -18,7 +18,7 @@ module AresMUSH
           start_time_standard: e.start_time_standard,
           content_warning: e.content_warning,
           is_signed_up: e.is_signed_up?(enactor),
-          tags: e.tags
+          tags: e.content_tags
         }}
         
         
