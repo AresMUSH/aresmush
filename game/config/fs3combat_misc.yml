@@ -13,6 +13,10 @@ fs3combat:
       hitloc: Crab
       armor: Shell
       weapon: Claws
+    Crocodile:
+      hitloc: QuadrapedWithTail
+      armor: Tough Hide
+      weapon: Sharp Teeth
     Deathcap:
       hitloc: Deathcap
       weapon: Club
@@ -55,6 +59,10 @@ fs3combat:
       armor: None
       hitloc: Insect
       defense_skill: Reflexes
+    Hippo:
+      weapon: Strong Teeth
+      armor: Touch Hide
+      hitloc: Quadraped
     Karchtapodi:
       weapon: Sharp Teeth
       armor: Very Tough Hide

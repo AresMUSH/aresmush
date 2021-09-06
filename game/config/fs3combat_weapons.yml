@@ -309,6 +309,17 @@ fs3combat:
       accuracy: 0
       init_mod: 0
       special_group: Body
+    Charge:
+      description: The charge of a massive animal without natural weaponry like horns or antlers.
+      skill: Melee
+      lethality: -10
+      penetration: 2
+      weapon_type: Melee
+      recoil: 0
+      damage_type: Physical
+      accuracy: 0
+      init_mod: 0
+      special_group: Body
     Claws:
       description: Animal or creature claws
       skill: Melee
@@ -402,6 +413,17 @@ fs3combat:
       skill: Melee
       lethality: 0
       penetration: 6
+      weapon_type: Melee
+      recoil: 0
+      damage_type: Physical
+      accuracy: 0
+      init_mod: 0
+      special_group: Body
+    Strong Teeth:
+      description: Upper level animal or creature teeth
+      skill: Melee
+      lethality: 0
+      penetration: 7
       weapon_type: Melee
       recoil: 0
       damage_type: Physical
