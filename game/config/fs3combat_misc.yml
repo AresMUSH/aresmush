@@ -60,7 +60,7 @@ fs3combat:
       hitloc: Insect
       defense_skill: Reflexes
     Hippo:
-      weapon: Strong Teeth
+      weapon: Strong Teeth+Major Strength
       armor: Very Tough Hide
       hitloc: Quadraped
     Karchtapodi:
