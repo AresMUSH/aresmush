@@ -166,5 +166,10 @@ module AresMUSH
         char.update(fs3_scene_luck: luck_tracker)
       end
     end
+    
+    def self.build_web_char_data(char, viewer)
+      builder = WebCharDataBuilder.new
+      builder.build(char, viewer)
+    end
   end
 end
