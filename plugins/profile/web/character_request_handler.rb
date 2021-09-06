@@ -96,7 +96,7 @@ module AresMUSH
         add_to_profile profile_data, Scenes.build_web_profile_data(char, enactor)
         
         if (FS3Skills.is_enabled?)
-          profile_data['fs3'] = FS3Skills::CharProfileRequestHandler.new.handle(request)
+          profile_data['fs3'] = FS3Skills.build_web_char_data(char, enactor)
         end
         
         if Manage.is_extra_installed?("traits")

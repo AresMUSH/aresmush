@@ -1,5 +1,5 @@
 ---
-toc: Formatting Text
+toc: Utilities / Miscellaneous
 summary: Using Markdown text.
 ---
 # Markdown Formatting

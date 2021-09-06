@@ -1,18 +1,8 @@
 module AresMUSH
   module FS3Skills
-    class CharProfileRequestHandler
-      def handle(request)
-        char = Character.find_one_by_name request.args[:id]
-        enactor = request.enactor
-        
-        if (!char)
-          return { error: t('webportal.not_found') }
-        end
-
-        error = Website.check_login(request, true)
-        return error if error
-      
-        is_owner = (enactor && enactor.id == char.id)
+    class WebCharDataBuilder
+      def build(char, viewer)
+        is_owner = (viewer && viewer.id == char.id)
         
         if (FS3Combat.is_enabled?)
           damage = char.damage.to_a.sort { |d| d.created_at }.map { |d| {
@@ -25,9 +15,9 @@ module AresMUSH
           damage = nil
         end
         
-        show_sheet = FS3Skills.can_view_sheets?(enactor) || is_owner
+        show_sheet = FS3Skills.can_view_sheets?(viewer) || is_owner
         
-        if (FS3Skills.can_view_xp?(enactor, char))
+        if (FS3Skills.can_view_xp?(viewer, char))
           xp = {
             attributes: get_xp_list(char, char.fs3_attributes),
             action_skills: get_xp_list(char, char.fs3_action_skills),
@@ -63,7 +53,7 @@ module AresMUSH
           }
         end
       end
-    
+      
       def get_ability_list(list, include_specs = false)        
         list.to_a.sort_by { |a| a.name }.map { |a| 
           { 
@@ -89,4 +79,3 @@ module AresMUSH
     end
   end
 end
-
