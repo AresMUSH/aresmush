@@ -37,7 +37,7 @@ module AresMUSH
       # Typically used with a list of spells drawn from config (ie, all spells in a school, all spells overall)
       list.sort.map { |name, data| {
         key: name,
-        name: name.titleize,
+        name: name,
         desc: Website.format_markdown_for_html(data['desc']),
         available: data['available'],
         level: data['level'],
@@ -66,6 +66,7 @@ module AresMUSH
     end
 
     def self.spell_list_all_data(list)
+      puts list
       if list.is_a?(Array)
         spells = Magic.spell_data_from_array(list)
       else
