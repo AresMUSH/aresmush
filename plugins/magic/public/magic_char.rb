@@ -21,7 +21,7 @@ module AresMUSH
     end
 
     def auto_revive?
-      auto_revive_spell = self.spells_learned.to_a.select { |spell| Global.read_config("spells", spell.name, "auto_revive")}
+      auto_revive_spell = self.spells_learned.to_a.select { |spell| spell.learning_complete && Global.read_config("spells", spell.name, "auto_revive")}
       return auto_revive_spell[0].name  if !auto_revive_spell.empty?
     end
 
