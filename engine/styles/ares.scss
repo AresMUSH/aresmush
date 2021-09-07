@@ -564,6 +564,10 @@ mark {
     margin-bottom: 1rem;
 }
 
+.modal-dialog {
+  max-width: 650px;
+}
+
 /* -------------------------
 GOOGLE SEARCH OVERRIDES
 ------------------------- */
@@ -1346,11 +1350,14 @@ CHARACTERS SCREEN
 ------------------------- */
 
 .profile-gallery {
-    display: inline-block;
-    padding-left: 10px;
-    padding-right: 10px;
-    width: 150px;
-    
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  
+.profile-gallery img {
+    padding: 10px;
+    width: 150px;    
 }
 
 .profile-gallery-input textarea {
