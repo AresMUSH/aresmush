@@ -74,12 +74,16 @@ module AresMUSH
     
     # The name that shows up as a "title" on profile displays.
     def self.profile_title(char)
-      if (Ranks.is_enabled?)
+      format = Global.read_config("profile", "profile_title_format")
+      case format
+      when "military"
         Ranks.military_name(char)
-      elsif !Global.read_config("demographics", "nickname_field").blank?
+      when "nickname"
         Demographics.name_and_nickname(char)
+      when "fullname"
+        char.fullname
       else
-        Demographics.firstname_lastname(char)
+        char.name
       end
     end
     
