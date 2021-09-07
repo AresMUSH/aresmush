@@ -111,6 +111,7 @@ module AresMUSH
     end
 
     def self.cast_heal(caster_name, target_char_or_combatant, spell, heal_points)
+      puts "COMING TO CAST HEAL!!!!!!!!!"
       if (target_char_or_combatant.class == Combatant)
         target = target_char_or_combatant.associated_model
         combat = true
@@ -121,11 +122,13 @@ module AresMUSH
       wound = FS3Combat.worst_treatable_wound(target)
       if wound.blank?
         message = [t('magic.cast_heal_no_effect', :name => caster_name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target => target.name, :points => heal_points)]
-      elsif Manage.is_extra_installed?("death") && target.class == Combatant && target.death_count > 0
+      elsif Manage.is_extra_installed?("death") && combat && target.combatant.death_count > 0
+        puts "!!!RUNNING DEATH"
         message = [t('magic.cast_ko_heal', :name => caster_name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target => target.name, :points => heal_points)]
-        target.update(death_count: 0 )
+        Death.one(target.combatant)
         FS3Combat.heal(wound, heal_points)
       else
+        puts "!!!!WRONG HEAL"
         message = [t('magic.cast_heal', :name => caster_name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target => target.name, :points => heal_points)]
         FS3Combat.heal(wound, heal_points)
       end
