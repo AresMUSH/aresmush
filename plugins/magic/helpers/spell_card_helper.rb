@@ -57,7 +57,7 @@ module AresMUSH
         weapon: data['weapon'],
         armor: data['armor'],
         armor_specials: data['armor_specials'],
-        weapon_specials: data['weapon_specials'],
+        weapon_specials: data['weapon_special'],
         effect: data['effect'],
         damage_type: data['damage_type']
         }
