@@ -32,7 +32,7 @@ module AresMUSH
           }}
     end
 
-    def self.spell_data_from_array(list)
+    def self.spell_data_from_array_or_hash(list)
       # Typically used with a list of spells drawn from config (ie, all spells in a school, all spells overall)
       list.sort.map { |name, data| {
         key: name,
@@ -66,8 +66,8 @@ module AresMUSH
 
     def self.spell_list_all_data(list)
       puts list
-      if list.is_a?(Array)
-        spells = Magic.spell_data_from_array(list)
+      if list.is_a?(Array) || list.is_a?(Hash)
+        spells = Magic.spell_data_from_array_or_hash(list)
       else
         spells = Magic.spell_data_from_set(list)
       end
