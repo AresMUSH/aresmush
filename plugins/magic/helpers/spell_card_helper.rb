@@ -1,8 +1,7 @@
 module AresMUSH
   module Magic
 
-    def self.spell_data_from_set(list)
-      # Typically used with char.spells_learned
+    def self.spell_list_config_data(list)
       list.to_a.sort_by { |a| a.level }.map { |a|
         {
           name: a.name,
@@ -12,7 +11,7 @@ module AresMUSH
           desc: Website.format_markdown_for_html(Global.read_config("spells", a.name, "desc")),
           potion: Global.read_config("spells", a.name, "potion"),
           weapon: Global.read_config("spells", a.name, "weapon"),
-          weapon_specials:  Global.read_config("spells", a.name, "weapon_specials"),
+          weapon_specials:  Global.read_config("spells", a.name, "weapon_special"), 
           armor: Global.read_config("spells", a.name, "armor"),
           armor_specials: Global.read_config("spells", a.name, "armor_specials"),
           attack_mod: Global.read_config("spells", a.name, "attack_mod"),
@@ -33,53 +32,17 @@ module AresMUSH
           }}
     end
 
-    def self.spell_data_from_array(list)
-      # Typically used with a list of spells drawn from config (ie, all spells in a school, all spells overall)
-      list.sort.map { |name, data| {
-        key: name,
-        name: name.titleize,
-        desc: Website.format_markdown_for_html(data['desc']),
-        available: data['available'],
-        level: data['level'],
-        school: data['school'],
-        potion: data['is_potion'],
-        duration: data['duration'],
-        casting_time: data['casting_time'],
-        range: data['range'],
-        area: data['area'],
-        los: data['line_of_sight'],
-        targets: data['target_num'],
-        heal: data['heal_points'],
-        defense_mod: data['defense_mod'],
-        init_mod: data['init_mod'],
-        attack_mod: data['attack_mod'],
-        lethal_mod: data['lethal_mod'],
-        spell_mod: data['spell_mod'],
-        weapon: data['weapon'],
-        armor: data['armor'],
-        armor_specials: data['armor_specials'],
-        weapon_specials: data['weapon_specials'],
-        effect: data['effect'],
-        damage_type: data['damage_type']
-        }
-      }
-    end
-
     def self.spell_list_all_data(list)
-      if list.is_a?(Array)
-        spells = Magic.spell_data_from_array(list)
-      else
-        spells = Magic.spell_data_from_set(list)
-      end
+      spells = Magic.spell_list_config_data(list)
       spells.each do |s|
-        # weapon = Global.read_config("spells", s[:name], "weapon")
-        # weapon_specials = Global.read_config("spells", s[:name], "weapon_specials")
-        # armor = Global.read_config("spells", s[:name], "armor")
-        # armor_specials = Global.read_config("spells", s, "armor_specials")
-        # attack = Global.read_config("spells", s[:name], "attack_mod")
-        # lethal = Global.read_config("spells", s[:name], "lethal_mod")
-        # spell = Global.read_config("spells", s[:name], "spell_mod")
-        # defense = Global.read_config("spells", s[:name], "defense_mod")
+        weapon = Global.read_config("spells", s[:name], "weapon")
+        weapon_specials = Global.read_config("spells", s[:name], "weapon_specials")
+        armor = Global.read_config("spells", s[:name], "armor")
+        armor_specials = Global.read_config("spells", s, "armor_specials")
+        attack = Global.read_config("spells", s[:name], "attack_mod")
+        lethal = Global.read_config("spells", s[:name], "lethal_mod")
+        spell = Global.read_config("spells", s[:name], "spell_mod")
+        defense = Global.read_config("spells", s[:name], "defense_mod")
         if s[:level] == 8
           s[:level_8] = true
           s[:xp] = 12
@@ -105,29 +68,29 @@ module AresMUSH
         elsif s[:range] == "Long"
           s[:range_desc] = "(100 yards)"
         end
-        s[:weapon_lethality] = FS3Combat.weapon_stat(s[:weapon], "lethality")
-        s[:weapon_penetration] = FS3Combat.weapon_stat(s[:weapon], "penetration")
-        s[:weapon_type] = FS3Combat.weapon_stat(s[:weapon], "weapon_type")
-        s[:weapon_accuracy] = FS3Combat.weapon_stat(s[:weapon], "accuracy")
-        s[:weapon_shrapnel] = FS3Combat.weapon_stat(s[:weapon], "has_shrapnel")
-        s[:weapon_init] = FS3Combat.weapon_stat(s[:weapon], "init_mod")
-        s[:weapon_damage_type] = FS3Combat.weapon_stat(s[:weapon], "damage_type")
-        if s[:weapon_specials]
+        s[:weapon_lethality] = FS3Combat.weapon_stat(weapon, "lethality")
+        s[:weapon_penetration] = FS3Combat.weapon_stat(weapon, "penetration")
+        s[:weapon_type] = FS3Combat.weapon_stat(weapon, "weapon_type")
+        s[:weapon_accuracy] = FS3Combat.weapon_stat(weapon, "accuracy")
+        s[:weapon_shrapnel] = FS3Combat.weapon_stat(weapon, "has_shrapnel")
+        s[:weapon_init] = FS3Combat.weapon_stat(weapon, "init_mod")
+        s[:weapon_damage_type] = FS3Combat.weapon_stat(weapon, "damage_type")
+        if weapon_specials
           weapon_special = "Spell+#{weapon_specials}"
           s[:weapon_special_lethality] = FS3Combat.weapon_stat(weapon_special, "lethality")
           s[:weapon_special_penetration] = FS3Combat.weapon_stat(weapon_special, "penetration")
           s[:weapon_special_init] = FS3Combat.weapon_stat(weapon_special, "init_mod")
           s[:weapon_special_accuracy] = FS3Combat.weapon_stat(weapon_special, "accuracy")
         end
-        if (s[:attack_mod] || s[:defense_mod] || s[:init_mod]|| s[:lethal_mod] || s[:spell_mod])
+        if (attack || defense || lethal || spell)
           s[:mod] = true
         end
-        protection = FS3Combat.armor_stat(s[:armor], "protection")
+        protection = FS3Combat.armor_stat(armor, "protection")
         if protection
           protection = protection["Chest"]
         end
         s[:armor_protection] = protection
-        s[:armor_defense] = FS3Combat.armor_stat(s[:armor], "defense")
+        s[:armor_defense] = FS3Combat.armor_stat(armor, "defense")
         if s[:targets] == nil
 
         elsif s[:targets] == 1
