@@ -10,7 +10,6 @@ module AresMUSH
            effects.concat [s[:effect]]
         end
         effects = effects.uniq.sort
-        Global.logger.debug "Effect: #{effects}"
         return effects
       end
 
