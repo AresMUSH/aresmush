@@ -34,8 +34,10 @@ module AresMUSH
           end
           job_message = t('custom.spent_luck', :name => enactor.name, :reason => self.reason)
           category = Global.read_config("jobs", "luck_category")
-          Jobs.create_job(category, t('custom.spent_luck_title', :name => enactor.name, :reason => "combat: #{self.reason}"), job_message, enactor)
-
+          status = Jobs.create_job(category, t('custom.spent_luck_title', :name => enactor.name, :reason => "combat: #{self.reason}"), job_message, enactor)
+          if (status[:job])
+            Jobs.close_job(Game.master.system_character, status[:job])
+          end
           combatant.update(luck: self.reason)
 
           FS3Combat.emit_to_combat combat, t('fs3combat.spending_luck', :name => enactor_name, :reason => self.reason)
