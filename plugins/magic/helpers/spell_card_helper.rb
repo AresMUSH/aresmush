@@ -1,7 +1,7 @@
 module AresMUSH
   module Magic
 
-    def self.spell_list_config_data(list)
+    def self.spell_data_from_set(list)
       list.to_a.sort_by { |a| a.level }.map { |a|
         {
           name: a.name,
