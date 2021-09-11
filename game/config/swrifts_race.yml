@@ -137,6 +137,8 @@ swrifts:
                 - Flight^
                 - Size 6^
                 - Limited Metamorphosis*
+            complications:
+                - Dragon*
         -
             name: Dragon Forest Runner
             stats:
@@ -153,6 +155,8 @@ swrifts:
                 - Resistant to Fire and Cold^
                 - Runner^
                 - Size 4^
+            complications:
+                - Dragon*                
             edges:
                 - Major Psionic^
             chargen_points:
@@ -177,6 +181,8 @@ swrifts:
                 - Limited Metamorphosis^
                 - Flight^
                 - Size 6^
+            complications:
+                - Dragon*                
             counters:
                 ppe_max: 5
             edges:
@@ -199,6 +205,8 @@ swrifts:
                 - Toxic Breath^
                 - Flight^
                 - Size 6^
+            complications:
+                - Dragon*                
             counters:
                 ppe_max: 10
             edges: 
@@ -225,6 +233,8 @@ swrifts:
                 - Snowstorm Transformation^
                 - Size 6^
                 - Limited Metamorphosis^
+            complications:
+                - Dragon*                
         - 
             name: Fennodi
             book_reference: TLPG
