@@ -76,7 +76,8 @@ module AresMUSH
           #Global.logger.debug "Parsing scene #{s.id} #{s.title}"
         
           filename = FilenameSanitizer.sanitize(s.title)
-          page_name = "#{s.icdate}-#{filename}.html"
+          clean_date = "#{s.icdate}".gsub("/", "-")
+          page_name = "#{clean_date}-#{filename}.html"
           index[page_name] = {}
           index[page_name][:title] = s.date_title
           index[page_name][:summary] = s.summary

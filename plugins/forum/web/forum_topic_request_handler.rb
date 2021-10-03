@@ -29,7 +29,7 @@ module AresMUSH
             name: r.author_name,
             icon: r.author ? Website.icon_for_char(r.author) : nil },
             message: Website.format_markdown_for_html(r.message),
-            raw_message: r.message,
+            raw_message: Website.format_input_for_html(r.message),
             date: r.created_date_str(enactor),
             can_edit: Forum.can_edit_post?(enactor, r)
           }
@@ -56,7 +56,7 @@ module AresMUSH
                name: topic.author_name,
                icon: topic.author ? Website.icon_for_char(topic.author) : nil },
              message: Website.format_markdown_for_html(topic.message),
-             raw_message: topic.message,
+             raw_message: Website.format_input_for_html(topic.message),
              replies: replies,
              can_reply: Forum.can_write_to_category?(enactor, category),
              can_edit: Forum.can_edit_post?(enactor, topic),
