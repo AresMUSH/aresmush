@@ -139,7 +139,7 @@ You can include a tab view with multiple tab selections.
 `[[/tab]]` 
 `[[/tabview]]` 
 
-## Templates and Includes
+## Includes
 
 If you have a common snippet that you want to use in multiple places, you can put it into a wiki page of its own and then include it in other pages with the include tag.
 
@@ -156,7 +156,11 @@ In the page, `%{foo}` will be replaced with "Foo Value".  Be sure to separate th
 
 Tip: If the page you're including has an actual % in it, you'll need to format it as two percents (%%) otherwise the variable processing will get confused.
 
-You can also create templates containing starter text for various kinds of pages. See [Wiki Tutorial](/help/wiki) for more information.
+## Templates
+
+Templates are basically starter text for a blank wiki page, so you can prompt players to fill in the necessary fields.  You can create templates for wiki pages by naming the page `template:<name>`. 
+
+Note: Updating a template does not affect existing pages; it just gives different starter text the next time someone tries to use that template.
 
 ## Table of Contents
 
@@ -180,7 +184,7 @@ You can add a button that takes you to the "create wiki page" page, with the abi
 
 Separate parameters with a "|".  All parameters are optional.  Possible values include:
 
-* Template - name of the wiki template to use. (default is 'blank')
+* Template - name of the wiki template to use. (default is 'blank')  Use just the base name of the template, not including the "template:" prefix.
 * Category - a category value that will be prepended to the page name like "category:name". (default is no category)
 * Button - text to put on the button. (default is "Create Page")
 * Tags - Space-separated list of tags you want to add to the page.

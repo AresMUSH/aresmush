@@ -20,7 +20,7 @@ en:
         scene_ending: "%{name} has stopped this scene."
         scene_ending_public: "%{name} has stopped this scene.  You can restart it at any time, but it will restart in a temp room and NOT in this room."
         scene_stopped: "The scene has ended.  To share the log, set the scene info (help scene info) and then use `scene/share %{id}` to share it."
-        scene_not_specified: "You must either be in a room with an active scene, or specifiy a scene number for this command."
+        scene_not_specified: "You must either be in a room with an active scene, or specify a scene number for this command."
         scene_not_found: "Scene not found."
         pose_added: "Pose added to scene."
         invalid_privacy: "Invalid privacy setting.  Please use 'open' or 'private'."
