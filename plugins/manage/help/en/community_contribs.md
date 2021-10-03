@@ -4,6 +4,7 @@ summary: Using community-contributed plugins and themes.
 aliases:
 - extras
 - contribs
+- theme
 ---
 # Community Contributions
 

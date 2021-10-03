@@ -16,7 +16,7 @@ module AresMUSH
           everybody[name] = {}
           levels.times.each do |lvl|
             everybody[name][lvl + 1] = skills
-               .select { |s| s.character && s.character.is_approved? && s.rating == lvl + 1}
+               .select { |s| s.character && s.character.is_approved? && s.character.is_active? && s.rating == lvl + 1}
                .map { |s| s.character.name }
           end
         end

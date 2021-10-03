@@ -93,7 +93,7 @@ module AresMUSH
           author: {name: author_name, icon: Website.icon_for_char(author), id: author.id},
           subject: subject,
           message: Website.format_markdown_for_html(message),
-          raw_message: message,
+          raw_message: Website.format_input_for_html(message),
           type: 'new_forum_post'
         }
         Forum.notify(new_post, category, :new_forum_post, message, data)
@@ -130,7 +130,7 @@ module AresMUSH
           author: { name: author.name, icon: Website.icon_for_char(author), id: author.id },
           subject: post.subject,
           message: Website.format_markdown_for_html(reply),
-          raw_message: reply,
+          raw_message: Website.format_input_for_html(reply),
           type: 'forum_reply'
         }
         
@@ -256,7 +256,7 @@ module AresMUSH
         author: {name: enactor.name, icon: Website.icon_for_char(enactor), id: enactor.id},
         subject: post.subject,
         message: Website.format_markdown_for_html(message),
-        raw_message: message,
+        raw_message: Website.format_input_for_html(message),
         tags: post.content_tags,
         type: 'forum_edited'
       }
@@ -283,7 +283,7 @@ module AresMUSH
         subject: post.subject,
         author: {name: enactor.name, icon: Website.icon_for_char(enactor), id: enactor.id},
         message: Website.format_markdown_for_html(message),
-        raw_message: message,
+        raw_message: Website.format_input_for_html(message),
         type: 'reply_edited'
       }
       
@@ -319,7 +319,7 @@ module AresMUSH
      end
      
      def self.update_tags(post)
-       hashtags = (post.message || "").scan(/\s#\S+/).map { |t| t.after('#') }
+       hashtags = (post.message || "").scan(/\s#[^#]\S+/).map { |t| t.after('#') }
        Website.update_tags(post, hashtags)
      end
   end

@@ -14,7 +14,7 @@ module AresMUSH
         
         data = {
           "button_text" => button_text,
-          "id" => SecureRandom.uuid.gsub('-','')
+          "id" => "col#{SecureRandom.uuid.gsub('-','')}"
         }
         
         template.render(data)        
