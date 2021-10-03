@@ -88,6 +88,7 @@ body {
 .markdown-editor {
     padding: 0px;
     margin-bottom: 5px;
+    border: 0px;
 }
 
 .markdown-preview {
@@ -297,6 +298,11 @@ h2
 td, .table th, .table td {
       padding: 5px;
       vertical-align: middle;
+}
+
+.table-striped > tbody > tr:nth-of-type(odd),
+.table-striped > tbody > tr:nth-of-type(even) {
+  color: $text-color;
 }
 
 textarea.pre {
@@ -511,6 +517,10 @@ BOOTSTRAP OVERRIDES
 
 .btn {
   font-size: 1em;
+}
+
+.btn-primary a {
+  color: $primary-words-color;
 }
 
 .btn-primary, .btn-primary:hover, .btn-primary:focus, .btn-primary:active {
