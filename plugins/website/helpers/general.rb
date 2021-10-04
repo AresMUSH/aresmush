@@ -129,10 +129,11 @@ module AresMUSH
     def self.wiki_templates
       templates = WikiPage.all.select { |p| p.category == "template" }.map { |p| {
         title: p.title.gsub("template:", ""),
+        name: p.name.gsub("template:", ""),
         text: p.text
       }
       }
-      templates << { title: 'blank', text: '' }
+      templates << { title: 'blank', name: 'blank', text: '' }
       templates
     end
     

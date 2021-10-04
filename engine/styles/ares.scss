@@ -88,6 +88,7 @@ body {
 .markdown-editor {
     padding: 0px;
     margin-bottom: 5px;
+    border: 0px;
 }
 
 .markdown-preview {
@@ -297,6 +298,11 @@ h2
 td, .table th, .table td {
       padding: 5px;
       vertical-align: middle;
+}
+
+.table-striped > tbody > tr:nth-of-type(odd),
+.table-striped > tbody > tr:nth-of-type(even) {
+  color: $text-color;
 }
 
 textarea.pre {
@@ -513,6 +519,10 @@ BOOTSTRAP OVERRIDES
   font-size: 1em;
 }
 
+.btn-primary a {
+  color: $primary-words-color;
+}
+
 .btn-primary, .btn-primary:hover, .btn-primary:focus, .btn-primary:active {
     background-color: $primary-color;
     border-color: $primary-color;
@@ -562,6 +572,10 @@ mark {
 
 .form-group {
     margin-bottom: 1rem;
+}
+
+.modal-dialog {
+  max-width: 650px;
 }
 
 /* -------------------------
@@ -1346,11 +1360,14 @@ CHARACTERS SCREEN
 ------------------------- */
 
 .profile-gallery {
-    display: inline-block;
-    padding-left: 10px;
-    padding-right: 10px;
-    width: 150px;
-    
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  
+.profile-gallery img {
+    padding: 10px;
+    width: 150px;    
 }
 
 .profile-gallery-input textarea {
