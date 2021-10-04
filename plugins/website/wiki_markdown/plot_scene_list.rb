@@ -45,7 +45,7 @@ module AresMUSH
         end
         
         if (char)
-          matches = plot.sorted_scenes.select { |s| s.shared & s.participants.include?(char) }
+          matches = plot.sorted_scenes.select { |s| s.shared && s.participants.include?(char) }
         else
           matches = plot.sorted_scenes.select { |s| s.shared }
         end
