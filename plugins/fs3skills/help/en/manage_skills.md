@@ -15,7 +15,7 @@ Those with the proper permissions can adjust skills, luck and XP.
 
 Some games may have multiple pages of the character sheet, and some pages might be configured to be private.  Private sheets can only be viewed by people with the `view_sheets` permission.
 
-`sheet <name>`
+`sheet <name>` - View someone else's sheet.
 
 ## Roll Results
 
@@ -25,14 +25,14 @@ Roll results can be sent to a channel, configured in the FS3Skills settings.  St
 
 You can adjust skill levels:
 
-`ability <name>=<ability>/<rating>`
+`ability <name>=<ability>/<rating>` - Set someone else's ability.
 
 To remove a skill, just set its rating to 0.
 
 You can also adjust specialties:
 
-`specialty/add <name>=<ability name>/<specialty>`
-`specialty/remove <name>=<ability name>/<specialty>`
+`specialty/add <name>=<ability name>/<specialty>` - Set someone else's specialty.
+`specialty/remove <name>=<ability name>/<specialty>` - Remove someone else's specialty.
 
 ## Awarding Luck
 
