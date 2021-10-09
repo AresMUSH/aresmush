@@ -1,0 +1,13 @@
+<%= header %>
+<%= line_with_text(t('help.regular_commands')) %>
+<% @main_list.each do |line| %>
+<%= format_line(line) %>
+<% end %>
+<% if @manage_list.any? %>
+
+<%= line_with_text(t('help.manage_commands')) %>
+<% @manage_list.each do |line| %>
+<%= format_line(line) %>
+<% end %>
+<% end %>
+<%= footer %>

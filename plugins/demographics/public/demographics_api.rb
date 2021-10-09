@@ -210,17 +210,20 @@ module AresMUSH
     
     def self.build_web_demographics_data(char, viewer)
       visible_demographics = Demographics.visible_demographics(char, viewer)
-      demographics = visible_demographics.each.map { |d| 
-          {
+      demographics = []
+      
+      visible_demographics.each do |d| 
+        demographics <<  {
             name: d.titleize,
             key: d.titleize,
             value: char.demographic(d)
           }
-        }
+          
+        if (d == "birthdate")
+          demographics << { name: t('profile.age_title'), key: 'Age', value: char.age }
+        end
+      end
     
-      if (visible_demographics.include?('birthdate'))
-        demographics << { name: t('profile.age_title'), key: 'Age', value: char.age }
-      end        
       demographics
     end
     
