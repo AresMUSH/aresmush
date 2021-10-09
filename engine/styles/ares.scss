@@ -1183,9 +1183,10 @@ SCENES SCREEN
 .log-box { 
 
     background-color: white;
-    margin-left: 30px;
-    margin-right: 30px;
-    padding: 20px;    
+    margin-top: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding: 10px;    
 }
 
 .log-wrap {
@@ -1359,15 +1360,24 @@ SCENES SCREEN
 CHARACTERS SCREEN
 ------------------------- */
 
-.profile-gallery {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
-  
+.profile-gallery, .icon-gallery {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap; 
+}
+
+.icon-gallery .icon-gallery-item {
+  width: 150px;
+  margin: 5px 5px 0px 0px;
+}
+
+.icon-gallery .icon-gallery-item img {
+  width: 150px; 
+}
+
 .profile-gallery img {
-    padding: 10px;
-    width: 150px;    
+  padding: 10px;
+  width: 150px; 
 }
 
 .profile-gallery-input textarea {
