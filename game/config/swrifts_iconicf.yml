@@ -1920,6 +1920,7 @@ swrifts:
                 advance_points: 4
             chargen_points:
                 fandg_slots: 2
+                cyber_slots: 3
             skills:
                 electronics: 1
                 hacking: 1
