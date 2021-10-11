@@ -102,7 +102,7 @@ swrifts:
                 - Mutant^
                 - Ley Line Hypersensitivity^
         -  
-            name: D'Norr 
+            name: DNorr 
             book_reference: TLPG 57
             desc: Devilmen
             edges:
