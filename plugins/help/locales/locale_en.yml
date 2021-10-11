@@ -20,3 +20,6 @@ en:
         pages_tip: "ctd. in help%{next_page}"
         quickref_tip: "Use %xcqr <command>%xn for a command quick reference."
         related_topics_title: "Other topics in '%{section}':"
+
+        regular_commands: "Player Commands"
+        manage_commands: "Admin Commands"
