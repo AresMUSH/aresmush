@@ -373,6 +373,7 @@ module AresMUSH
 				end
 			end
 		end
+		
 	
         list = cgsys.sort_by { |a| a['name']}
 		list.each do |c|
