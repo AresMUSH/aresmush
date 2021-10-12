@@ -367,6 +367,7 @@ module AresMUSH
 			dname = dname.gsub("^", "")
 			trexlarray = cgsys.select { |ss| ss['name'].downcase.start_with?"#{dname}" }.first #Filter the trait's to find the one that's been selected
 			trex = trexlarray['excludes']
+			return (trex.inspect);
 			if (trex)
 				trex.each do |e|
 					ttss << {name: e.downcase}
