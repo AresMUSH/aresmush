@@ -363,7 +363,6 @@ module AresMUSH
 		# Create an array of the excluded traits for the ones that are already set on the character.
 		cg.each do |d|
 			dname = d.name.downcase
-			return (dname);
 			dname = dname.gsub("*", "")
 			dname = dname.gsub("^", "")
 			trexlarray = cgsys.select { |ss| ss['name'].downcase.start_with?"#{dname}" }.first #Filter the trait's to find the one that's been selected
