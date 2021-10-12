@@ -373,8 +373,6 @@ module AresMUSH
 				end
 			end
 		end
-		
-		return (ttss.inspect);
 	
         list = cgsys.sort_by { |a| a['name']}
 		list.each do |c|
