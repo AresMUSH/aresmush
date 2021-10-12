@@ -354,9 +354,10 @@ module AresMUSH
 	#This is used for Edges and Traits. 
 	
 	def self.returnsysedgesforcg(cgsys, cg, traittype)
-		#cgsys = System Traits, cg = character traits
-
-			
+		#cgsys = System Traits
+		#cg = character traits
+		#traittype = Edge or Hinderance
+		
 		iconicfarray = []	
 		ttss = []
 		# Create an array of the excluded traits for the ones that are already set on the character.
@@ -372,6 +373,8 @@ module AresMUSH
 				end
 			end
 		end
+		
+		return (ttss.inspect);
 	
         list = cgsys.sort_by { |a| a['name']}
 		list.each do |c|
