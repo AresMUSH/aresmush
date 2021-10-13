@@ -7,7 +7,7 @@ swrifts:
       type: Background
       pre-reqs: 
           - rank: Novice
-          - iconicf: Techno-Wizard          
+          - iconicf: Mystic          
       hind_points: 2
       stats:
           Strength: -2
