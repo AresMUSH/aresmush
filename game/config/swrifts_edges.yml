@@ -5,9 +5,8 @@ swrifts:
       name: TestEdge
       description: Blah blah blah.
       type: Background
-      pre_reqs: 
-          rank: Novice
-          iconicf: Mystic          
+      pre-reqs: 
+          rank: Novice         
       hind_points: 2
       stats:
           Strength: -2
