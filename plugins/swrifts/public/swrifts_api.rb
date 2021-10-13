@@ -381,7 +381,7 @@ module AresMUSH
 
 			if (trex && traittype == 'edge' )
 			
-				return ( {"#trex"} )
+				return ( "#{trex}" )
 				# trex.each do |e|
 					# ttss << {name: e.downcase}
 				# end
