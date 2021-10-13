@@ -367,26 +367,23 @@ module AresMUSH
 			dname = dname.gsub("^", "")
 			trexlarray = cgsys.select { |ss| ss['name'].downcase.start_with?"#{dname}" }.first #Filter the trait's to find the one that's been selected	
 
-			if ( traittype == 'hinderance' ) 
+			if ( traittype == 'hind' ) 
 				trex = trexlarray['excludes']
 			else 
 				trex = trexlarray['pre-reqs']
-				trex = trex
+				trex = trex['iconicf']
 			end
 			
-			if (trex && traittype == 'hinderance' )
+			if (trex && traittype == 'hind' )
 				trex.each do |e|
 					ttss << {name: e.downcase}
 				end
-				# return ( "#{ttss}" )
 			end
 
 			if (trex && traittype == 'edge' )
-			
-				# return ( "#{trex}" )
-				# trex.each do |e|
-					# ttss << {name: e.downcase}
-				# end
+				trex.each do |e|
+					ttss << {name: e.downcase}
+				end
 			end
 		end
 		
