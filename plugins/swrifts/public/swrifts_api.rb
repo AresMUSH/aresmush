@@ -380,7 +380,9 @@ module AresMUSH
 			end
 		end
 		
-		return ("#{ttss}")
+		if ( traittype == 'edge' )
+			return ("#{ttss}")
+		end
 		
         list = cgsys.sort_by { |a| a['name']}
 		list.each do |c|
