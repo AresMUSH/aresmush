@@ -39,7 +39,7 @@ module AresMUSH
 			if (group['chargen_points'])
 				set=group['chargen_points']	
 				charhash = model.swrifts_chargenpoints
-return (charhas)
+return (charhash)
 				Swrifts.element_update(model, set, charhash)
 			else 
 				
