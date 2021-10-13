@@ -665,12 +665,12 @@ module AresMUSH
 	end
 
 	def self.acl_return_traits(st,traitname) #st is the traits pulled from the character. traitname is whether we want the ICF traits or Race Traits.
-		traitname = traitname.downcase
+		traitnamedc = traitname.downcase
 		txtstring = ''
 		st.to_a.sort_by { |a| a.name }
 			.each_with_index
 				.map do |a, i| 
-				if a.name.downcase == "#{traitname}"
+				if a.name.downcase == "#{traitnamedc}"
 					return ("#{a.rating}")
 				end
 			end	
