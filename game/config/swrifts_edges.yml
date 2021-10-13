@@ -6,7 +6,8 @@ swrifts:
       description: Blah blah blah.
       type: Background
       pre-reqs: 
-          rank: Novice
+          - rank: Novice
+          - iconicf: Techno-Wizard          
       hind_points: 2
       stats:
           Strength: -2
