@@ -5,7 +5,7 @@ swrifts:
       name: TestEdge
       description: Blah blah blah.
       type: Background
-      pre-reqs: 
+      pre_reqs: 
           rank: Novice
           iconicf: Mystic          
       hind_points: 2
