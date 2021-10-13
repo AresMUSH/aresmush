@@ -371,7 +371,7 @@ module AresMUSH
 				trex = trexlarray['excludes']
 			else 
 				trex = trexlarray['pre-reqs']
-				trex = trex['iconicf']
+				# trex = trex['iconicf']
 			end
 			
 			if (trex && traittype == 'hind' )
@@ -405,7 +405,7 @@ module AresMUSH
 			end
 			
 			if ( traittype == 'edge' && c['pre-reqs'] )
-				trexcludes = c['pre-reqs'];
+				# trexcludes = c['pre-reqs'];
 			else
 				trexcludes = '';
 			end
