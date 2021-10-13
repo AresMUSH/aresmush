@@ -371,7 +371,7 @@ module AresMUSH
 				trex = trexlarray['excludes']
 			else 
 				trex = trexlarray['pre-reqs']
-				# trex = trex['iconicf']
+				trex = trex['iconicf']
 			end
 			
 			if (trex && traittype == 'hind' )
@@ -383,11 +383,10 @@ module AresMUSH
 			
 			if (trex && traittype == 'edge' )
 				trex.each do |e|
-					# ttss << {name: e.downcase}
+					ttss << {name: e.downcase}
 				end
 			end
 		end
-
 
 return ("#{ttss}")		
 
