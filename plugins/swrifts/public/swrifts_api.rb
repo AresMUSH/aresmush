@@ -388,7 +388,7 @@ module AresMUSH
 			end
 		end
 
-return ("#{ttss}")		
+# return ("#{ttss}")		
 
 		if ( traittype == 'edge' )
 			# return ("#{ttss}")
