@@ -11,7 +11,7 @@ module AresMUSH
 			# system_name - testhind
 			collection.create(name: system_name, character: model)
 			system_name = system_name.downcase
-			# return (system_name)
+			return (system_name)
 			system_name = system_name.gsub("*", "")	 #remove the * that appear in the feature name		
 			system_name = system_name.gsub("^", "")	 #remove the ^ that appear in the feature name		
 			systemhash = Global.read_config('swrifts', system) #the whole System from the yml
