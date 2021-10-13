@@ -371,6 +371,7 @@ module AresMUSH
 				trex = trexlarray['excludes']
 			else 
 				trex = trexlarray['pre-reqs']
+				trex = trex
 			end
 			
 			if (trex && traittype == 'hinderance' )
@@ -382,7 +383,7 @@ module AresMUSH
 
 			if (trex && traittype == 'edge' )
 			
-				return ( "#{trex}" )
+				# return ( "#{trex}" )
 				# trex.each do |e|
 					# ttss << {name: e.downcase}
 				# end
@@ -390,7 +391,7 @@ module AresMUSH
 		end
 		
 		if ( traittype == 'edge' )
-			return ("#{ttss}")
+			# return ("#{ttss}")
 		end
 		
         list = cgsys.sort_by { |a| a['name']}
