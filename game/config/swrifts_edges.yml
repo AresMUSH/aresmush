@@ -6,8 +6,8 @@ swrifts:
       description: Blah blah blah.
       type: Background
       pre-reqs: 
-          - rank: Novice
-          - iconicf: Mystic          
+          rank: Novice
+          iconicf: Mystic          
       hind_points: 2
       stats:
           Strength: -2
