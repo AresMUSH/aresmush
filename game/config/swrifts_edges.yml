@@ -13,6 +13,7 @@ swrifts:
           size: 1
           running: 2
       chargen_points:
+          stats_points: 2
           hj_slots: 3          
       counters:
           bennies_current: 2
