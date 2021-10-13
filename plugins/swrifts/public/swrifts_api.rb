@@ -780,7 +780,8 @@ module AresMUSH
 
 				end
 			end
-		return (dbgstr)
+		return ()
+		# return (dbgstr)
 	end
 	
   end
