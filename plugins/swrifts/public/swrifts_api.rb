@@ -706,7 +706,8 @@ module AresMUSH
 			icf_downcase = ''
 		end
 			
-		if (chargen_data[:custom][:race] && chargen_data[:custom][:race][:class] != 'None')
+		# if (chargen_data[:custom][:race] && chargen_data[:custom][:race][:class] != 'None')
+		if (chargen_data[:custom][:race])
 			c_race = chargen_data[:custom][:race][:class]
 			race_downcase = c_race.downcase.strip  # Stripped and downcased race name.
 		else
