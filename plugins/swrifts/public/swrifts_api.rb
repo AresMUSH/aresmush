@@ -185,7 +185,8 @@ module AresMUSH
 		end
 		
 		# Set the Characters Race			
-		if ( rawcharrace.length > 0 && rawcharrace.downcase != "none" )
+		# if ( rawcharrace.length > 0 && rawcharrace.downcase != "none" )
+		if ( rawcharrace.length > 0 )
 			charrace = getcharrace(rawcharrace,swrifts_race)
 		else
 			charrace = "None"		
