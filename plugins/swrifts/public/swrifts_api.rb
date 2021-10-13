@@ -373,10 +373,18 @@ module AresMUSH
 				trex = trexlarray['pre-reqs']
 			end
 			
-			if (trex)
+			if (trex && traittype == 'hinderance' )
 				trex.each do |e|
 					ttss << {name: e.downcase}
 				end
+			end
+
+			if (trex && traittype == 'edge' )
+			
+				return ( {"#trex"} )
+				# trex.each do |e|
+					# ttss << {name: e.downcase}
+				# end
 			end
 		end
 		
