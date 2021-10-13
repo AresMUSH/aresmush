@@ -366,6 +366,9 @@ module AresMUSH
 			dname = dname.gsub("*", "")
 			dname = dname.gsub("^", "")
 			trexlarray = cgsys.select { |ss| ss['name'].downcase.start_with?"#{dname}" }.first #Filter the trait's to find the one that's been selected
+			
+			return ("#{trexlarray}")
+			
 			trex = trexlarray['excludes']
 			if (trex)
 				trex.each do |e|
@@ -413,7 +416,7 @@ module AresMUSH
 			
 			iconicfarray << {name: ifname, disabled: ifdisabled, desc: desc, trexcludes: trexcludes}
 		end
-		return ("#{iconicfarray}")
+		return ( iconicfarray )
 	end	
 	
 	def self.returninitcgforcg(model)
