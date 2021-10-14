@@ -47,11 +47,17 @@ module AresMUSH
       topics
     end
     
+    def self.help_commands
+      Global.help_reader.help_commands.sort
+    end
+    
     # Finds topic keys that are a partial match for the command being searched.
     def self.find_quickref(topic)
       search = strip_prefix(topic).downcase.gsub(/[\/ ]/, "_")
       search = search.split("_").first
-      return Help.topic_keys.select { |k, v| k =~ /#{search}/ }
+      matching = []
+      Help.help_commands.select { |cmd, topics| cmd =~ /#{search}/ }.each { |cmd, topics| matching.concat(topics) }
+      matching.uniq
     end
         
     # Finds topic keys for topic names and aliases matching the search string - with some added logic

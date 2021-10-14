@@ -33,5 +33,5 @@ Channel admins can create, edit and delete channels.  Go to [Admin -> Setup -> S
 
 Channel administrators can add or remove characters from a channel:
 
-`channel/addchar <char>=<channel>`
-`channel/removechar <char>=<channel>`
+`channel/addchar <char>=<channel>` - Add someone to a channel.
+`channel/removechar <char>=<channel>`  - Remove someone from a channel.
