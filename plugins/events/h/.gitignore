@@ -1,0 +1,47 @@
+# Secret files
+# -----------------------------
+secrets.yml
+real_database.yml
+packer_vars.json
+
+# Logs and errors
+# -----------------------------
+*.log
+errors.txt
+/game/logs/
+
+# Generated files
+# -----------------------------
+.yardoc
+doc/
+wiki_export
+wiki_md
+calendar.ics
+.sass-cache
+.DS_Store
+tmp/restart.txt
+applied.txt
+*.zip
+blacklist.txt
+*.css
+aresconfig.js
+_last_install.txt
+nginx.default
+sitemap.xml
+redis/
+
+# Process ID scripts
+# -----------------------------
+save_pid.txt
+killares
+*.pid
+*.pid.lock
+
+# Website file storage
+# -----------------------------
+/game/uploads
+/theme_archive
+
+# Game directory
+# -----------------------------
+/game/
