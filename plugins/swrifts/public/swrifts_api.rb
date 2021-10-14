@@ -369,12 +369,12 @@ module AresMUSH
 			trexlarray = cgsys.select { |ss| ss['name'].downcase.start_with?"#{dname}" }.first #Filter the trait's to find the one that's been selected	
 
 			if ( trexlarray ) 
-				# return ( "#{trexlarray}" )
 				if ( traittype == 'hind' ) 
 					trex = trexlarray['excludes']
 				else 
 					trex = ''
 					if ( trexlarray['pre-reqs'] )
+									return ( "#{trexlarray}" )
 						trex = trexlarray['pre-reqs']
 						# trex = trex['iconicf']
 					end
