@@ -381,7 +381,7 @@ module AresMUSH
 							prearray = preqs.select { |ss| ss['iconicf'] }
 							if (prearray['iconicf'])
 								trex = prearray['iconicf']
-							else if (prearray['race'])
+							elsif (prearray['race'])
 								trex = prearray['race']
 							end
 							return ("#{prearray}")
