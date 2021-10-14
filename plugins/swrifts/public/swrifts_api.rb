@@ -369,7 +369,7 @@ module AresMUSH
 			dname = dname.gsub("*", "")
 			dname = dname.gsub("^", "")
 			trexlarray = cgsys.select { |ss| ss['name'].downcase.start_with?"#{dname}" }.first #Filter the trait's to find the one that's been selected	
-
+return ("#{trexlarray}")
 			if ( trexlarray ) 
 				if ( traittype == 'hind' ) 
 					trex = trexlarray['excludes']
