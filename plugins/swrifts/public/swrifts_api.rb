@@ -376,12 +376,17 @@ module AresMUSH
 				else 
 					trex = ''
 					if ( trexlarray['pre-reqs'] )
-						if trexlarray['name'] == 'TestEdge'
+						# if trexlarray['name'] == 'TestEdge'
 							preqs = trexlarray['pre-reqs']
 							prearray = preqs.select { |ss| ss['iconicf'] }
+							if (prearray['iconicf'])
+								trex = prearray['iconicf']
+							else if (prearray['race'])
+								trex = prearray['race']
+							end
 							return ("#{prearray}")
-						end
-						trex = trexlarray['pre-reqs']
+						# end
+						# trex = trexlarray['pre-reqs']
 					end
 				end
 				
