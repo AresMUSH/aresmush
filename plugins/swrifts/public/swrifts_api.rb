@@ -375,7 +375,6 @@ module AresMUSH
 					trex = ''
 					if ( trexlarray['pre-reqs'] )
 						trex = trexlarray['pre-reqs']
-						return ( "#{trexlarray}" )
 						# trex = trex['iconicf']
 					end
 				end
@@ -389,6 +388,7 @@ module AresMUSH
 				
 				if (trex && traittype == 'edge' )
 					trex.each do |e|
+						return ( "#{trexlarray}" )
 						ttss << {name: e.downcase}
 						ttss << { name: "#{e}" }
 					end
