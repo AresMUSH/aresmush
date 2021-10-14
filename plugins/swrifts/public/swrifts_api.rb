@@ -374,8 +374,8 @@ module AresMUSH
 				else 
 					trex = ''
 					if ( trexlarray['pre-reqs'] )
-									return ( "#{trexlarray}" )
 						trex = trexlarray['pre-reqs']
+						return ( "#{trexlarray}" )
 						# trex = trex['iconicf']
 					end
 				end
