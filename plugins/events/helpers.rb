@@ -111,8 +111,7 @@ module AresMUSH
       message = t('events.event_updated_notification', :title => title)
       event.signups.each do |s|
         Login.notify(s.character, :event, message, event.id)
-      if Global.read_config("postevent", "reply_on_edit") then PostEvent.reply_to_forum_post(event)
-      end
+      if Global.read_config("postevent", "reply_on_edit") then PostEvent.reply_to_forum_post(event)end
       Channels.announce_notification(message)
     end
 
