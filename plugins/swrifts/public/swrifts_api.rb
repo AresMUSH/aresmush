@@ -378,13 +378,17 @@ module AresMUSH
 					if ( trexlarray['pre-reqs'] )
 						# if trexlarray['name'] == 'TestEdge'
 							preqs = trexlarray['pre-reqs']
-							prearray = preqs.select { |ss| ss['iconicf'] }
-							if (prearray['iconicf'])
-								trex = prearray['iconicf']
-							elsif (prearray['race'])
-								trex = prearray['race']
+							if ( preqs.length > 0 )
+								prearray = preqs.select { |ss| ss['iconicf'] }
+								if ( prearray['iconicf'].length > 0 )
+									trex = prearray['iconicf']
+								end
+								prearray = preqs.select { |ss| ss['race'] )
+								if ( prearray['race'].length > 0 )
+									trex = prearray['race']
+								end
+								return ("#{prearray}")
 							end
-							return ("#{prearray}")
 						# end
 						# trex = trexlarray['pre-reqs']
 					end
