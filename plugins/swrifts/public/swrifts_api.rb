@@ -386,11 +386,10 @@ module AresMUSH
 
 				
 				if (trex.length > 0 && traittype == 'edge' )
-					return ( "#{trex}" )
 					trex.each do |e|
 						if ( trex['iconicf'] )
-							# ttss << {name: e.downcase}
-							# ttss << { name: "#{e}" }
+							ttss << {name: e.downcase}
+							ttss << { name: "#{e}" }
 						end
 					end
 				end
