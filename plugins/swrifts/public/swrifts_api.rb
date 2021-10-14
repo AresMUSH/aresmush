@@ -370,7 +370,8 @@ module AresMUSH
 
 			if ( traittype == 'hind' ) 
 				trex = trexlarray['excludes']
-			# else 
+			else 
+				trex = ''
 				# if ( trexlarray['pre-reqs'] )
 					# trex = trexlarray['pre-reqs']
 					# trex = trex['iconicf']
