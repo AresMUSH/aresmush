@@ -393,9 +393,10 @@ module AresMUSH
 					end
 				end
 			end
+			return ( "#{trexlarray}" )			
 		end
 
-						return ( "#{trexlarray}" )
+
 # return ("#{ttss}")		
 
 		if ( traittype == 'edge' )
