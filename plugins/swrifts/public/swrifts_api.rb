@@ -362,7 +362,7 @@ module AresMUSH
 		iconicfarray = []	
 		ttss = []
 		
-		return("#{cgsys}")
+		# return("#{cgsys}")
 		# Create an array of the excluded traits for the ones that are already set on the character.
 		cg.each do |d|
 			dname = d.name.downcase
@@ -376,6 +376,9 @@ module AresMUSH
 				else 
 					trex = ''
 					if ( trexlarray['pre-reqs'] )
+						if trexlarray['name'] == 'TestEdge'
+							return ("#{trexlarray}")
+						end
 						trex = trexlarray['pre-reqs']
 					end
 				end
