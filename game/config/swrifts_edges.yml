@@ -16,7 +16,8 @@ swrifts:
           stats_points: 2
           hj_slots: 3  
       pre-reqs: 
-          - rank: Novice
+          - rank: Novice          
+          - iconicf: Mystic
       counters:
           bennies_current: 2
           ppe_max: 10
