@@ -383,7 +383,7 @@ module AresMUSH
 								if ( prearray['iconicf'].length > 0 )
 									trex = prearray['iconicf']
 								end
-								prearray = preqs.select { |ss| ss['race'] )
+								prearray = preqs.select { |ss| ss['race'] }
 								if ( prearray['race'].length > 0 )
 									trex = prearray['race']
 								end
