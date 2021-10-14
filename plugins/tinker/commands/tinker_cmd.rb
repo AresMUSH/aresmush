@@ -9,7 +9,8 @@ module AresMUSH
       end
       
       def handle
-        client.emit_success "Done!"
+        template = BorderedDisplayTemplate.new "Some text to show.", "A Title"
+        client.emit template.render
       end
 
     end
