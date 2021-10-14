@@ -387,11 +387,10 @@ module AresMUSH
 				
 				if (trex.length > 0 && traittype == 'edge' )
 					trex.each do |e|
-						if ( trex['iconicf'] )
-							return ("#{trex}")
+						# if ( trex['iconicf'] )
 							# ttss << {name: e.downcase}
 							# ttss << { name: "#{e}" }
-						end
+						# end
 					end
 				end
 			end
@@ -443,8 +442,8 @@ module AresMUSH
 			
 			iconicfarray << {name: ifname, disabled: ifdisabled, desc: desc, trexcludes: trexcludes}
 		end
-		return ( iconicfarray )
-		# return ( "#{iconicfarray}" )
+		# return ( iconicfarray )
+		return ( "#{iconicfarray}" )
 	end	
 	
 	def self.returninitcgforcg(model)
