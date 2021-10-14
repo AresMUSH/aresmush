@@ -84,7 +84,8 @@ module AresMUSH
       Channels.announce_notification(t('events.event_created_notification', :title => title))
       Events.events_updated
       Achievements.award_achievement(enactor, "event_created")
-      PostEvent.create_forum_post(event) return event
+      PostEvent.create_forum_post(event)
+      return event
     end
 
     def self.delete_event(event, enactor)
@@ -111,7 +112,7 @@ module AresMUSH
       event.signups.each do |s|
         Login.notify(s.character, :event, message, event.id)
       Channels.announce_notification(message)
-      if Global.read_config("postevent", "reply_on_edit") then PostEvent.reply_to_forum_post(event) end
+      if Global.read_config("postevent", "reply_on_edit") then PostEvent.reply_to_forum_post(event)
     end
 
     def self.format_timestamp(time)
