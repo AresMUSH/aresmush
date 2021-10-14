@@ -373,7 +373,7 @@ module AresMUSH
 			# else 
 				# if ( trexlarray['pre-reqs'] )
 					# trex = trexlarray['pre-reqs']
-					trex = trex['iconicf']
+					# trex = trex['iconicf']
 				# end
 			# end
 			
