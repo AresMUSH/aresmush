@@ -391,9 +391,10 @@ module AresMUSH
 						ttss << {name: e.downcase}
 						ttss << { name: "#{e}" }
 					end
+			return ( "#{trexlarray}" )					
 				end
 			end
-			return ( "#{trexlarray}" )			
+			
 		end
 
 
