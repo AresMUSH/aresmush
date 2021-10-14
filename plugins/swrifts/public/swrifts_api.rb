@@ -390,8 +390,9 @@ module AresMUSH
 					trex.each do |e|
 						ttss << {name: e.downcase}
 						ttss << { name: "#{e}" }
+			return ( "#{trexlarray}" )							
 					end
-			return ( "#{trexlarray}" )					
+				
 				end
 			end
 			
