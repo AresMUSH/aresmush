@@ -18,30 +18,30 @@ fs3skills:
     '5': 3
     '6': 2
     '7': 1
-  min_backgrounds: 2
+  min_backgrounds: 0
   starting_skills:
     Everyone:
       skills:
-        Alertness: 2
-        Athletics: 2
-        Composure: 2
-        Firearms: 2
-        Medicine: 2
-        Melee: 2
-        Standard: 3
+        Alertness: 0
+        Athletics: 0
+        Composure: 0
+        Firearms: 0
+        Medicine: 0
+        Melee: 0
+        Standard: 0
     Position:
       Viper Pilot:
         skills:
-          Piloting: 3
-          Gunnery: 3
+          Piloting: 0
+          Gunnery: 0
         specialties:
           Piloting:
           - Viper
           - Raptor
       Raptor Pilot:
         skills:
-          Piloting: 3
-          Gunnery: 3
+          Piloting: 0
+          Gunnery: 0
         specialties:
           Piloting:
           - Raptor
