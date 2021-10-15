@@ -10,4 +10,4 @@ aliases:
 
 Those with the proper permissions can adjust luck points.
 
-`luck/award <name>=<number of luck points>/<reason>`
+`luck/award <name>=<number of luck points>/<reason>` - Give someone luck.
