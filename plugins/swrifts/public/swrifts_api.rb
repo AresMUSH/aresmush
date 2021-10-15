@@ -380,17 +380,11 @@ module AresMUSH
 						# if trexlarray['name'] == 'TestEdge'
 							preqs = trexlarray['pre-reqs']
 							if ( preqs.length > 0 )
-								preqs.each do |p|
-									ttss << "#{preqs['iconicf']}"
-								end
 								prearray = preqs.select { |ss| ss['iconicf'] }
 								if ( prearray.length > 0 )
-								prearray.each do |t|
-									# ttss << {preqs: "#{t['iconicf']}"}
-								end
-									# return ("#{prearray}")								
-									# trex = prearray['iconicf']
-									# return ("#{trex}")									
+									prearray.each do |t|
+										ttss << { name: "#{t['iconicf']}" }										
+									end								
 								end
 								# prearray = preqs.select { |ss| ss['race'] }
 								# if ( prearray.length > 0 )
@@ -399,7 +393,6 @@ module AresMUSH
 								# end
 							# end
 						end
-						# trex = trexlarray['pre-reqs']
 					end
 				end
 				
@@ -408,26 +401,6 @@ module AresMUSH
 						ttss << {name: e.downcase}
 					end
 				end
-				
-				# if ( trex.length > 0 )
-					# return ("Trex: #{trex}")
-					# ttss << {trex: "#{trex}"}
-				# end
-				
-				# if (traittype == 'edge') 
-					# return ("tt: #{traittype}")
-				# end
-				
-				# if (trex.length > 0 && traittype == 'edge' )
-					# return ("Trex: #{trex}")
-					# trex.each do |e|
-						# return ("#{e}")
-						# if ( trex['iconicf'] )
-							# ttss << {name: e.downcase}
-							# ttss << { name: "#{e}" }
-						# end
-					# end
-				# end
 			end
 		end
 
