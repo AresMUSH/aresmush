@@ -364,7 +364,7 @@ module AresMUSH
 		iconicfarray = []	
 		ttss = []
 				
-		return("#{charicf}")
+		return("#{charrace}")
 		# Create an array of the excluded traits for the ones that are already set on the character.
 		cg.each do |d|
 			dname = d.name.downcase
@@ -440,6 +440,10 @@ module AresMUSH
 					f.each do |k, v|
 						return ("ttss: #{ttss}, k: #{k}, v: #{v}")
 						if ( k == 'name' && ifnamedowncase == v.downcase )
+							ifdisabled = true
+						elsif ( k == 'icfex' && charicf['class'].downcase == v.downcase )
+							ifdisabled = true
+						elsif ( k == 'raceex' && charrace['class'].downcase == v.downcase )
 							ifdisabled = true
 						end
 					end
