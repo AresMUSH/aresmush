@@ -381,12 +381,12 @@ module AresMUSH
 							preqs = trexlarray['pre-reqs']
 							if ( preqs.length > 0 )
 								prearray = preqs.select { |ss| ss['iconicf'] }
-								# ttss << {preqs: "#{prearray}"}
-								# if ( prearray.length > 0 )
+								if ( prearray.length > 0 )
+									ttss << {preqs: "#{prearray}"}
 									# return ("#{prearray}")								
 									# trex = prearray['iconicf']
 									# return ("#{trex}")									
-								# end
+								end
 								# prearray = preqs.select { |ss| ss['race'] }
 								# if ( prearray.length > 0 )
 									# trex = prearray['race']
