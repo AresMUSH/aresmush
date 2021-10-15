@@ -380,10 +380,13 @@ module AresMUSH
 						# if trexlarray['name'] == 'TestEdge'
 							preqs = trexlarray['pre-reqs']
 							if ( preqs.length > 0 )
+								if ( preqs['iconicf'] )
+									return "#{preqs['iconicf']}"
+								end
 								prearray = preqs.select { |ss| ss['iconicf'] }
 								if ( prearray.length > 0 )
 								prearray.each do |t|
-									ttss << {preqs: "#{t['iconicf']}"}
+									# ttss << {preqs: "#{t['iconicf']}"}
 								end
 									# return ("#{prearray}")								
 									# trex = prearray['iconicf']
