@@ -393,7 +393,7 @@ module AresMUSH
 									# return ("#{trex}")									
 								# end
 							# end
-						# end
+						end
 						# trex = trexlarray['pre-reqs']
 					end
 				end
