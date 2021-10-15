@@ -429,11 +429,12 @@ module AresMUSH
 			end
 			
 			if (cg)
-				edgsel = cg.select { |ss| ss.name.downcase.start_with?"#{ifnamedowncase}" }.first #Filter the trait's to find the one that's been selected
+				edgsel = cg.select { |ss| ss.name.downcase.start_with?"#{ifnamedowncase}" }.first #Filter the trait's to find the one that's been selected				
 			end
-			whatsthis << {name: edgsel}
+
 			
 			if (edgsel)
+				whatsthis << {name: edgsel}
 				ifdisabled = true	#if the current trait has been selected by the player, set disabled to true (just in case).						
 			end
 			
