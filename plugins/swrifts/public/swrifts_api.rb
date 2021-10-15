@@ -437,8 +437,8 @@ module AresMUSH
 			
 			if (ttss.length > 0) # Check to see if this is an excluded trait because of the selection.
 				ttss.each do |f|
-					return ("ttss: #{ttss}, f: #{f}")
 					f.each do |k, v|
+						return ("ttss: #{ttss}, k: #{k}, v: #{v}")
 						if (ifnamedowncase == v.downcase)
 							ifdisabled = true
 						end
