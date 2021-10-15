@@ -404,32 +404,33 @@ module AresMUSH
 				end
 				
 				if ( trex.length > 0 )
-					return ("Trex: #{trex}")
+					# return ("Trex: #{trex}")
+					ttss << (trex: "#{trex}")
 				end
 				
-				if (traittype == 'edge') 
-					return ("tt: #{traittype}")
-				end
+				# if (traittype == 'edge') 
+					# return ("tt: #{traittype}")
+				# end
 				
-				if (trex.length > 0 && traittype == 'edge' )
-					return ("Trex: #{trex}")
-					trex.each do |e|
-						return ("#{e}")
+				# if (trex.length > 0 && traittype == 'edge' )
+					# return ("Trex: #{trex}")
+					# trex.each do |e|
+						# return ("#{e}")
 						# if ( trex['iconicf'] )
 							# ttss << {name: e.downcase}
 							# ttss << { name: "#{e}" }
 						# end
-					end
-				end
+					# end
+				# end
 			end
 		end
 
 
-# return ("#{ttss}")		
+return ("#{ttss}")		
 
-		if ( traittype == 'edge' )
+		# if ( traittype == 'edge' )
 			# return ("#{ttss}")
-		end
+		# end
 		
         list = cgsys.sort_by { |a| a['name']}
 		list.each do |c|
