@@ -439,7 +439,7 @@ module AresMUSH
 				ttss.each do |f|
 					f.each do |k, v|
 						return ("ttss: #{ttss}, k: #{k}, v: #{v}")
-						if (ifnamedowncase == v.downcase)
+						if ( k == 'name' && ifnamedowncase == v.downcase )
 							ifdisabled = true
 						end
 					end
