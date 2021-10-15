@@ -405,6 +405,7 @@ module AresMUSH
 
 				
 				if (trex.length > 0 && traittype == 'edge' )
+					return ("#{trex}")
 					trex.each do |e|
 						return ("#{e}")
 						# if ( trex['iconicf'] )
