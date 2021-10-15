@@ -377,21 +377,19 @@ module AresMUSH
 				else 
 					trex = ''
 					if ( trexlarray['pre-reqs'] )
-						# if trexlarray['name'] == 'TestEdge'
-							preqs = trexlarray['pre-reqs']
-							if ( preqs.length > 0 )
-								prearray = preqs.select { |ss| ss['iconicf'] }
-								if ( prearray.length > 0 )
-									prearray.each do |t|
-										ttss << { name: "#{t['iconicf']}" }										
-									end								
-								end
-								# prearray = preqs.select { |ss| ss['race'] }
-								# if ( prearray.length > 0 )
-									# trex = prearray['race']
-									# return ("#{trex}")									
-								# end
-							# end
+						preqs = trexlarray['pre-reqs']
+						if ( preqs.length > 0 )
+							prearray = preqs.select { |ss| ss['iconicf'] }
+							if ( prearray.length > 0 )
+								prearray.each do |t|
+									ttss << { icfex: "#{t['iconicf']}" }										
+								end								
+							end
+							prearray = preqs.select { |ss| ss['race'] }
+							if ( prearray.length > 0 )
+								prearray.each do |t|
+									ttss << { raceex: "#{t['race']}" }								
+							end
 						end
 					end
 				end
@@ -405,12 +403,8 @@ module AresMUSH
 		end
 
 
-return ("#{ttss}")		
+		# return ("#{ttss}")		
 
-		# if ( traittype == 'edge' )
-			# return ("#{ttss}")
-		# end
-		
         list = cgsys.sort_by { |a| a['name']}
 		list.each do |c|
 			ifdisabled = false  
