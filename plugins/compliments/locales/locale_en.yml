@@ -1,0 +1,9 @@
+---
+en:
+  compliments:
+    comps_title: "%{name}'S COMPLIMENTS"
+    left_comp: "You have left a comp for %{name}."
+    has_left_comp: "%xc%{from} has left you a comp. Type `comps` to see it.%xn"
+    invalid_name: "That is not a character."
+    not_scene: "That is not a scene number."
+    comp_scenes_not_enabled: "Your game does not have complimenting all participants of a scenes enabled. Try complimenting the characters instead."

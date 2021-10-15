@@ -1,0 +1,14 @@
+%lh
+<%= "%xc" -%>
+<%= t('compliments.comps_title', :name => char.name.upcase) -%>
+<%= "%xn"  %>
+
+<% paginator.page_items.each do |c| -%>
+<%= "%xcFrom "  -%>
+<%=  c.from -%>
+<%=  right(date(c), 65 ) -%>
+<%= "%xn"  %>
+<%=  c.comp_msg %>
+
+<% end %>
+<%= paginator.page_footer %>
