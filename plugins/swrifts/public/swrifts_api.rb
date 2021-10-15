@@ -431,28 +431,29 @@ module AresMUSH
 			if (cg)
 				edgsel = cg.select { |ss| ss.name.downcase.start_with?"#{ifnamedowncase}" }.first #Filter the trait's to find the one that's been selected
 			end
-
+			whatsthis << {name: edgsel}
+			
 			if (edgsel)
 				ifdisabled = true	#if the current trait has been selected by the player, set disabled to true (just in case).						
 			end
 			
 			if (ttss.length > 0) # Check to see if this is an excluded trait because of the selection.
 				ttss.each do |f|
-					whatsthis << {k: f}
+					# whatsthis << {k: f}
 					f.each do |k, v|
 
 						if ( k == 'name' && ifnamedowncase == v.downcase )
 							ifdisabled = true
-							whatsthis << {name: ifname, type: k, value: v}
+							# whatsthis << {name: ifname, type: k, value: v}
 						elsif ( k == 'icfex' )
 						# return ( "ICF: #{charicf['class']}, value: #{v}" )
 						
 						elsif ( k == 'icfex' && charicf['class'].downcase != v.downcase )
 							ifdisabled = true
-							whatsthis << {name: ifname, type: k, value: v}							
+							# whatsthis << {name: ifname, type: k, value: v}							
 						elsif ( k == 'raceex' && charrace['class'].downcase != v.downcase )
 							ifdisabled = true
-							whatsthis << {name: ifname, type: k, value: v}							
+							# whatsthis << {name: ifname, type: k, value: v}							
 						end
 					end
 				end
