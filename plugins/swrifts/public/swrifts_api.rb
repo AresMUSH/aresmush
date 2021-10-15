@@ -364,7 +364,7 @@ module AresMUSH
 		iconicfarray = []	
 		ttss = []
 				
-		return("#{cgsys}")
+		# return("#{cgsys}")
 		# Create an array of the excluded traits for the ones that are already set on the character.
 		cg.each do |d|
 			dname = d.name.downcase
@@ -408,8 +408,8 @@ module AresMUSH
 
 		# return ("#{ttss}")		
 
-        list = cgsys.sort_by { |a| a['name']}
-		list.each do |c|
+        list = cgsys.sort_by { |a| a['name']} #convert the system traits (that's whole honking lot of them) to an array and sort by name.
+		list.each do |c| #cycle through the array so we can set the appropriate ones to disabled
 			ifdisabled = false  
 			ifname = c['name']
 			ifnamedowncase = ifname.downcase
@@ -432,11 +432,12 @@ module AresMUSH
 			end
 
 			if (edgsel)
-				ifdisabled = true							
+				ifdisabled = true	#if the current trait has been selected by the player, set disabled to true (just in case).						
 			end
 			
 			if (ttss.length > 0) # Check to see if this is an excluded trait because of the selection.
 				ttss.each do |f|
+					return ("ttss: #{ttss}, f: #{f}")
 					f.each do |k, v|
 						if (ifnamedowncase == v.downcase)
 							ifdisabled = true
