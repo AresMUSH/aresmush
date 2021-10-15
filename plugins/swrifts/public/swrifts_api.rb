@@ -403,6 +403,10 @@ module AresMUSH
 					end
 				end
 				
+				if (traittype == 'edge') 
+					return ("tt: #{traittype}")
+				end
+				
 				if (trex.length > 0 && traittype == 'edge' )
 					return ("Trex: #{trex}")
 					trex.each do |e|
