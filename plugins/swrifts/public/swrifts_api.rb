@@ -441,9 +441,9 @@ module AresMUSH
 						# return ("ttss: #{ttss}, k: #{k}, v: #{v}")
 						if ( k == 'name' && ifnamedowncase == v.downcase )
 							ifdisabled = true
-						elsif ( k == 'icfex' && charicf['class'].downcase == v.downcase )
+						elsif ( k == 'icfex' && charicf['class'].downcase != v.downcase )
 							ifdisabled = true
-						elsif ( k == 'raceex' && charrace['class'].downcase == v.downcase )
+						elsif ( k == 'raceex' && charrace['class'].downcase != v.downcase )
 							ifdisabled = true
 						end
 					end
@@ -452,8 +452,8 @@ module AresMUSH
 			
 			iconicfarray << {name: ifname, disabled: ifdisabled, desc: desc, trexcludes: trexcludes}
 		end
-		# return ( iconicfarray )
-		return ( "#{iconicfarray}" )
+		return ( iconicfarray )
+		# return ( "#{iconicfarray}" )
 	end	
 	
 	def self.returninitcgforcg(model)
