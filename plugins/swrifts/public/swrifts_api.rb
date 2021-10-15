@@ -382,7 +382,7 @@ module AresMUSH
 							if ( preqs.length > 0 )
 								prearray = preqs.select { |ss| ss['iconicf'] }
 								if ( prearray.length > 0 )
-									ttss << {preqs: "#{prearray['iconicf']}"}
+									ttss << {preqs: "#{prearray.class}"}
 									# return ("#{prearray}")								
 									# trex = prearray['iconicf']
 									# return ("#{trex}")									
