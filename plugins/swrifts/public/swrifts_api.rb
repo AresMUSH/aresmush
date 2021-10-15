@@ -383,7 +383,7 @@ module AresMUSH
 								prearray = preqs.select { |ss| ss['iconicf'] }
 								if ( prearray.length > 0 )
 								prearray.each do |t|
-									ttss << {preqs: "#{t.class}"}
+									ttss << {preqs: "#{t['iconicf']}"}
 								end
 									# return ("#{prearray}")								
 									# trex = prearray['iconicf']
