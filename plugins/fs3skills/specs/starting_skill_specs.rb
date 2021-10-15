@@ -65,7 +65,7 @@ module AresMUSH
           allow(@char).to receive(:group).with("Position") { "Other" }
           allow(@char).to receive(:group).with("Faction") { "Other" }
           allow(Global).to receive(:read_config).with("fs3skills", "action_skills") { [ { 'name' => 'Melee' } ] }
-          allow(Global).to receive(:read_config).with("fs3skills", "allow_incapable_action_skills") { false }
+          allow(Global).to receive(:read_config).with("fs3skills", "allow_incapable_action_skills") { true }
           skills = { "A" => 2, "B" => 3, "Melee" => 1 }
           expect(StartingSkills.get_skills_for_char(@char)).to eq skills
         end
