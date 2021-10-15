@@ -363,6 +363,7 @@ module AresMUSH
 		
 		iconicfarray = []	
 		ttss = []
+		whatsthis = []
 				
 		# return("#{charrace}")
 		# Create an array of the excluded traits for the ones that are already set on the character.
