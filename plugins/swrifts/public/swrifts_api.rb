@@ -389,6 +389,7 @@ module AresMUSH
 							if ( prearray.length > 0 )
 								prearray.each do |t|
 									ttss << { raceex: "#{t['race']}" }								
+								end
 							end
 						end
 					end
