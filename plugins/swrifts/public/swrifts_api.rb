@@ -223,10 +223,10 @@ module AresMUSH
 		
 
 		#Get the System Edges
-		sysedges = returnsysedgesforcg(cgsysedges, cgedges1, 'edge')			
+		sysedges = returnsysedgesforcg(cgsysedges, cgedges1, charicf, charrace, 'edge')			
 		
 		#Get the System Hinderances
-		syshind = returnsysedgesforcg(cgsyshind, cghinder, 'hind')	
+		syshind = returnsysedgesforcg(cgsyshind, cghinder, charicf, charrace, 'hind')	
 
 		hjslots = acl_get_hj_slots(swrifts_iconicf, rawcharicf) #swrifts_icf is the system icf's, charicf is the one selected by the player	
 		# hjslots = ("#{hjslots}"); 
@@ -354,13 +354,17 @@ module AresMUSH
 	  
 	#This is used for Edges and Traits. 
 	
-	def self.returnsysedgesforcg(cgsys, cg, traittype)
+	def self.returnsysedgesforcg(cgsys, cg, charicf, charrace, traittype)
 		#cgsys = System Traits
 		#cg = character traits
+		#charicf = ICF Chosen 
+		#charrace = Race Chosen
 		#traittype = Edge or Hinderance
 		
 		iconicfarray = []	
 		ttss = []
+		
+		return ("ICF: #{charicf}, Race: #{charrace}")
 		
 		# return("#{cgsys}")
 		# Create an array of the excluded traits for the ones that are already set on the character.
