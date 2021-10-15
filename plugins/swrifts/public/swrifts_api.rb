@@ -381,7 +381,7 @@ module AresMUSH
 							preqs = trexlarray['pre-reqs']
 							if ( preqs.length > 0 )
 								if ( preqs['iconicf'] )
-									return "#{preqs['iconicf']}"
+									return "#{preqs['iconicf'].class}"
 								end
 								prearray = preqs.select { |ss| ss['iconicf'] }
 								if ( prearray.length > 0 )
