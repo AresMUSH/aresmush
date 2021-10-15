@@ -373,7 +373,7 @@ module AresMUSH
 			if ( trexlarray ) 
 				if ( traittype == 'hind' ) 
 					trex = trexlarray['excludes']
-					return ("#{trex}")
+					return ("#{trex}") 
 				else 
 					trex = ''
 					if ( trexlarray['pre-reqs'] )
@@ -382,14 +382,14 @@ module AresMUSH
 							if ( preqs.length > 0 )
 								prearray = preqs.select { |ss| ss['iconicf'] }
 								if ( prearray.length > 0 )
-									return ("#{prearray}")								
+									# return ("#{prearray}")								
 									trex = prearray['iconicf']
-									return ("#{trex}")									
+									# return ("#{trex}")									
 								end
 								prearray = preqs.select { |ss| ss['race'] }
 								if ( prearray.length > 0 )
 									trex = prearray['race']
-									return ("#{trex}")									
+									# return ("#{trex}")									
 								end
 							end
 						# end
@@ -406,6 +406,7 @@ module AresMUSH
 				
 				if (trex.length > 0 && traittype == 'edge' )
 					trex.each do |e|
+						return ("#{e}")
 						# if ( trex['iconicf'] )
 							# ttss << {name: e.downcase}
 							# ttss << { name: "#{e}" }
