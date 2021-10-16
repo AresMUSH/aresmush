@@ -392,7 +392,7 @@ module AresMUSH
 									# If the ICF chosen by the player doesn't match t['iconicfc'] then remove this trait from the main array (cg).																		
 									if ( charicf[:class].downcase != t['iconicf'].downcase ) 
 										# cg.delete(d.name)
-										return ( "#{charicf[:class]}" "#{t['iconicf']}" )
+										# return ( "#{charicf[:class]}" "#{t['iconicf']}" )
 										# return ( "#{cg}" )
 									end
 								end
@@ -415,7 +415,7 @@ module AresMUSH
 			end
 		end
 
-return ( "#{ttsl}" )
+# return ( "#{ttsl}" )
 
         list = cgsys.sort_by { |a| a['name']} #convert the system traits (that's whole honking lot of them) to an array and sort by name.
 		list.each do |c| #cycle through the array so we can set the appropriate ones to disabled
@@ -472,8 +472,8 @@ return ( "#{ttsl}" )
 
 			iconicfarray << {name: ifname, disabled: ifdisabled, desc: desc, trexcludes: trexcludes}
 		end
-		return ( "#{whatsthis}" )
-		# return ( iconicfarray )
+		# return ( "#{whatsthis}" )
+		return ( iconicfarray )
 		# return ( "#{iconicfarray}" )
 	end
 
