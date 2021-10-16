@@ -361,7 +361,6 @@ module AresMUSH
 		#charrace = Race Chosen
 		#traittype = Edge or Hinderance
 
-    return ("#{cgsys} #{cg} #{charicf} #{charrace}")
 		iconicfarray = []
 		ttss = []
 		whatsthis = []
@@ -369,6 +368,7 @@ module AresMUSH
 		# return("#{charrace}")
 		# Create an array of the excluded traits for the ones that are already set on the character.
 		cg.each do |d|
+			tts1 << { name: "#{d}" }
 			dname = d.name.downcase
 			dname = dname.gsub("*", "")
 			dname = dname.gsub("^", "")
@@ -377,7 +377,7 @@ module AresMUSH
 			if ( trexlarray )
 				if ( traittype == 'hind' )
 					trex = trexlarray['excludes']
-					return ("#{trex}")
+					# return ("#{trex}")
 				else
 					trex = ''
 					if ( trexlarray['pre-reqs'] )
@@ -407,7 +407,7 @@ module AresMUSH
 			end
 		end
 
-
+return ( "#{tts1}" )
         list = cgsys.sort_by { |a| a['name']} #convert the system traits (that's whole honking lot of them) to an array and sort by name.
 		list.each do |c| #cycle through the array so we can set the appropriate ones to disabled
 			ifdisabled = false
