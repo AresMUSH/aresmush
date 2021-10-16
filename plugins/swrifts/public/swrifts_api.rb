@@ -366,7 +366,7 @@ module AresMUSH
 		whatsthis = []
 		ttsl = []
 
-		return("#{charicf}")
+		# return("#{charicf}")
 		# Create an array of the excluded traits for the ones that are already set on the character.
 		cg.each do |d|
 			ttsl << { name: "#{d.name}" }
@@ -388,7 +388,7 @@ module AresMUSH
 							if ( prearray.length > 0 )
 								prearray.each do |t|
 									ttss << { icfex: "#{t['iconicf']}" }
-									
+									return("#{t['iconicf']} #{charicf['class']}")									
 									# If the ICF chosen by the player doesn't match t['iconicfc'] then remove this trait from the main array (cg).																		
 									if ( charicf['class'].downcase != t['iconicf'].downclass ) 
 										return ( "#{t['iconicf']}" )
