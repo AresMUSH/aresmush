@@ -390,7 +390,7 @@ module AresMUSH
 									ttss << { icfex: "#{t['iconicf']}" }
 									# return("#{t['iconicf']} #{charicf[:class]}")									
 									# If the ICF chosen by the player doesn't match t['iconicfc'] then remove this trait from the main array (cg).																		
-									if ( charicf[:class].downcase != t['iconicf'].downclass ) 
+									if ( charicf[:class].downcase != t['iconicf'].downcase ) 
 										return ( "#{t['iconicf']}" )
 									end
 								end
