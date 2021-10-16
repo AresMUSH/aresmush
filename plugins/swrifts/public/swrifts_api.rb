@@ -388,7 +388,7 @@ module AresMUSH
 							if ( prearray.length > 0 )
 								prearray.each do |t|
 									ttss << { icfex: "#{t['iconicf']}" }
-									return("#{t['iconicf']} #{charicf}")									
+									return("#{t['iconicf']} #{charicf[:class]}")									
 									# If the ICF chosen by the player doesn't match t['iconicfc'] then remove this trait from the main array (cg).																		
 									if ( charicf['class'].downcase != t['iconicf'].downclass ) 
 										return ( "#{t['iconicf']}" )
