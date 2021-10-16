@@ -361,7 +361,7 @@ module AresMUSH
 		#charrace = Race Chosen
 		#traittype = Edge or Hinderance
 
-    return ("#{cg}")
+    return ("#{cgsys} #{cg} #{charicf} #{charrace}")
 		iconicfarray = []
 		ttss = []
 		whatsthis = []
