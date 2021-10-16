@@ -437,7 +437,7 @@ module AresMUSH
 				whatsthis << {name: edgsel}
 				ifdisabled = true	#if the current trait has been selected by the player, set disabled to true (just in case).
 			end
-			<<<!!!CHARLY YOU ARE HERE !!!>>>
+			# <<<!!!CHARLY YOU ARE HERE !!!>>>
 
 
 			if (ttss.length > 0) # Check to see if this is an excluded trait because of the selection.
