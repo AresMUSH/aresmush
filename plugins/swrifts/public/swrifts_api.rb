@@ -391,8 +391,8 @@ module AresMUSH
 									# return("#{t['iconicf']} #{charicf[:class]}")									
 									# If the ICF chosen by the player doesn't match t['iconicfc'] then remove this trait from the main array (cg).																		
 									if ( charicf[:class].downcase != t['iconicf'].downcase ) 
-										cg.delete(d.name)
-										return ( "#{cg}" )
+										# cg.delete(d.name)
+										# return ( "#{cg}" )
 									end
 								end
 							end
