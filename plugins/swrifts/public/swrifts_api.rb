@@ -364,11 +364,12 @@ module AresMUSH
 		iconicfarray = []
 		ttss = []
 		whatsthis = []
+		ttsl = []
 
 		# return("#{charrace}")
 		# Create an array of the excluded traits for the ones that are already set on the character.
 		cg.each do |d|
-			tts1 << { name: "#{d.name}" }
+			ttsl << { name: "#{d.name}" }
 			dname = d.name.downcase
 			dname = dname.gsub("*", "")
 			dname = dname.gsub("^", "")
@@ -407,7 +408,7 @@ module AresMUSH
 			end
 		end
 
-return ( "#{tts1}" )
+return ( "#{ttsl}" )
 
         list = cgsys.sort_by { |a| a['name']} #convert the system traits (that's whole honking lot of them) to an array and sort by name.
 		list.each do |c| #cycle through the array so we can set the appropriate ones to disabled
