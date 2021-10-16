@@ -361,6 +361,7 @@ module AresMUSH
 		#charrace = Race Chosen
 		#traittype = Edge or Hinderance
 
+    return ("#{cg}")
 		iconicfarray = []
 		ttss = []
 		whatsthis = []
@@ -406,8 +407,6 @@ module AresMUSH
 			end
 		end
 
-
-		return ("CG: #{cg}")
 
         list = cgsys.sort_by { |a| a['name']} #convert the system traits (that's whole honking lot of them) to an array and sort by name.
 		list.each do |c| #cycle through the array so we can set the appropriate ones to disabled
