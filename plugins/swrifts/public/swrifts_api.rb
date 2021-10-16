@@ -407,7 +407,7 @@ module AresMUSH
 		end
 
 
-		return ("TTSS: #{ttss} CG: #{cg}")
+		return ("TTSS: #{ttss} CG: #{cg.inspect}")
 
         list = cgsys.sort_by { |a| a['name']} #convert the system traits (that's whole honking lot of them) to an array and sort by name.
 		list.each do |c| #cycle through the array so we can set the appropriate ones to disabled
