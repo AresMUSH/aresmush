@@ -1,7 +1,7 @@
 module AresMUSH
   module Swrifts
     include CommandHandler
-	
+
     # Return the code to display the font awesome die type based on rating. This should probably be moved to somewhere else.
     def self.die_rating(name,rating)
 	  rating = "#{rating}".to_i
@@ -23,34 +23,34 @@ module AresMUSH
  	    return "<i class='fad fa-dice-d12' title='#{name} d12+#{statstep}'></i> +<span class='statrating'>#{statstep}</span>"
       end
     end
-	
+
     def self.get_abilities_for_web_viewing(char, viewer)
 	    # Format skill table
 		skills = returnskillsforweb(char.swrifts_skills)
-		skills = skills.join(" ") #removes the comma's that seperates the entries		
-		
+		skills = skills.join(" ") #removes the comma's that seperates the entries
+
 		stats = returnstatsforweb(char.swrifts_stats)
 		stats = stats.join(" ") #removes the comma's that seperates the entries
-		
+
 		#bennies = returnbenniesforweb(char.swrifts_bennies)
-		
+
 
 		#conviction = returnconvictionforweb(char.swrifts_conviction)
 		#conviction = conviction.join(" ") #removes the comma's that seperates the entries
-		
+
         return {
           skills: skills,
 		  stats: stats,
 		  #bennies: bennies,
 		  #conviction: conviction
-        } 
+        }
 	end
-	
+
 	#Get skills for website
 	def self.returnskillsforweb(skills)
-		skills.to_a.sort_by { |a| a.name }	
+		skills.to_a.sort_by { |a| a.name }
 		.each_with_index
-			.map do |a, i| 
+			.map do |a, i|
 				correcttitle = "#{a.name}".titleize
 				downsizetitle = "#{a.name}".downcase
 				rating = die_rating(correcttitle,a.rating)
@@ -68,7 +68,7 @@ module AresMUSH
 					swlinkedstat = ''
 				end
 
-				#Set up the skills table		
+				#Set up the skills table
 				openrow = i % 3 == 0 ? " <div class='row skills skilldata'>" : ""
 				cssclass = "#{a.name}".strip
 				cellopenid="<div class='col-sm-4'>"
@@ -93,7 +93,7 @@ module AresMUSH
 	def self.returnstatsforweb(stats)
 		stats.to_a.sort_by { |a| a.name }
 		.each_with_index
-			.map do |a, i| 
+			.map do |a, i|
 				correcttitle = "#{a.name}".titleize
 				downsizetitle = "#{a.name}".downcase
 				rating = die_rating(correcttitle,a.rating)
@@ -109,7 +109,7 @@ module AresMUSH
 					swdesc = ''
 				end
 
-				#Set up the stats table		
+				#Set up the stats table
 				openrow = i % 5 == 0 ? " <div class='row stats statdata'>" : ""
 				cssclass = "#{a.name}".strip
 				cellopenid="<div class='col-sm-2'>"
@@ -131,25 +131,25 @@ module AresMUSH
 
 	#Get the bennies for the website
 	def self.returnbenniesforweb(bennies)
-		bennies = "#{bennies}".to_i	
+		bennies = "#{bennies}".to_i
 		if (bennies)
 			return bennies
 		else
 			return "None"
 		end
-	end	
-	
+	end
+
 	#Get the conviction for the website
 	def self.returnconvictionforweb(conviction)
-		conviction = "#{conviction}".to_i	
+		conviction = "#{conviction}".to_i
 		if (conviction)
 			return conviction
 		else
 			return "None"
 		end
 	end
-	
-	
+
+
 	#### CHARGEN ####
 
 	def self.get_abilities_for_chargen(char)
@@ -157,62 +157,62 @@ module AresMUSH
 		# Get the base CGen slots that might be filled
 		swrifts_init = Global.read_config('swrifts', 'init')
 		cgslots = returncgslotsforcg(swrifts_init) #Prolly don't need this 25 Dec 2020
-		
-####### This is probably not needed - I still have to calculate the points dynamically ####		
+
+####### This is probably not needed - I still have to calculate the points dynamically ####
 		chargenpoints = char.swrifts_chargenpoints
 		chargenpoints = acl_returncgpoints(chargenpoints)
 #######
-		
-		# Get the Characters Traits	
+
+		# Get the Characters Traits
 		swrifts_iconicf = Global.read_config('swrifts', 'iconicf')
-		swrifts_race = Global.read_config('swrifts', 'races')			
-	
-		swriftstraits = char.swrifts_traits	
-		rawcharicf = acl_return_traits(swriftstraits,'iconicf') #Get the characters Iconic Framework from the traits		
-		rawcharrace = acl_return_traits(swriftstraits,'race') #Get the characters Race from the traits			
-		
+		swrifts_race = Global.read_config('swrifts', 'races')
+
+		swriftstraits = char.swrifts_traits
+		rawcharicf = acl_return_traits(swriftstraits,'iconicf') #Get the characters Iconic Framework from the traits
+		rawcharrace = acl_return_traits(swriftstraits,'race') #Get the characters Race from the traits
+
 		cgedges1 = char.swrifts_edges
 		cgsysedges = Global.read_config('swrifts', 'edges')
 		cghinder = char.swrifts_hinderances
 		cgsyshind = Global.read_config('swrifts', 'hinderances')
 		cghjtables = char.swrifts_heroesj
-	
+
 		# Set the Characters Iconic Framework
 		if ( rawcharicf.length > 0 )
 			charicf = getcharicf(rawcharicf,swrifts_iconicf)
 		else
 			charicf="None"
 		end
-		
-		# Set the Characters Race			
+
+		# Set the Characters Race
 		# if ( rawcharrace.length > 0 && rawcharrace.downcase != "none" )
 		if ( rawcharrace.length > 0 )
 			charrace = getcharrace(rawcharrace,swrifts_race)
 		else
-			charrace = "None"		
+			charrace = "None"
 		end
-		
+
 		# Format Iconic Framework table
 		iconicf = returniconicforcg(char, swrifts_race, rawcharrace, swrifts_iconicf)
-		initcgpoints = returninitcgforcg(swrifts_iconicf)	
-		
+		initcgpoints = returninitcgforcg(swrifts_iconicf)
+
 		#Get the race list for drop down.
-		cgrace = returnraceforcg(char, swrifts_race, rawcharicf, swrifts_race)		
+		cgrace = returnraceforcg(char, swrifts_race, rawcharicf, swrifts_race)
 		initracepoints = returninitraceforcg(swrifts_race)
-		
+
 		# Set up Chargen Points from Character not YML
 		cgpoints = char.swrifts_chargenpoints
 		cgtraits = returncgpforcg(cgpoints)
-		
+
 		#Get the Edges that were set on the character.
 		fw = "all"
 		cgedg = returnedgesforcg(cgedges1,cgsysedges, fw, 'edge')
 		fw = "nofw"
-		cgedgnofw = returnedgesforcg(cgedges1,cgsysedges, fw, 'edge')		
+		cgedgnofw = returnedgesforcg(cgedges1,cgsysedges, fw, 'edge')
 		fw = "fw"
-		cgedgfw = returnedgesforcg(cgedges1,cgsysedges, fw, 'edge')		
+		cgedgfw = returnedgesforcg(cgedges1,cgsysedges, fw, 'edge')
 
-		
+
 		#Get the hinderances that were set on the character.
 		fw = "all"
 		cghind = returnedgesforcg(cghinder,cgsyshind, fw, 'hind')
@@ -220,17 +220,17 @@ module AresMUSH
 		cghindnofw = returnedgesforcg(cghinder,cgsyshind, fw, 'hind')
 		fw = "fw"
 		cghindfw = returnedgesforcg(cghinder,cgsyshind, fw, 'hind')
-		
+
 
 		#Get the System Edges
-		sysedges = returnsysedgesforcg(cgsysedges, cgedges1, charicf, charrace, 'edge')			
-		
-		#Get the System Hinderances
-		syshind = returnsysedgesforcg(cgsyshind, cghinder, charicf, charrace, 'hind')	
+		sysedges = returnsysedgesforcg(cgsysedges, cgedges1, charicf, charrace, 'edge')
 
-		hjslots = acl_get_hj_slots(swrifts_iconicf, rawcharicf) #swrifts_icf is the system icf's, charicf is the one selected by the player	
-		# hjslots = ("#{hjslots}"); 
-		
+		#Get the System Hinderances
+		syshind = returnsysedgesforcg(cgsyshind, cghinder, charicf, charrace, 'hind')
+
+		hjslots = acl_get_hj_slots(swrifts_iconicf, rawcharicf) #swrifts_icf is the system icf's, charicf is the one selected by the player
+		# hjslots = ("#{hjslots}");
+
 		hjtables = acl_get_hj_tables(cghjtables, rawcharicf)
 		# hjtables = hjtables.inspect
 
@@ -256,10 +256,10 @@ module AresMUSH
 		  swsyshind: syshind, #Hinderances from system
 		  hjslots: hjslots,
 		  hjtables: hjtables,
-		} 
-	end	
-	
-	def self.getcharicf(charicf,swrifts_iconicf) 
+		}
+	end
+
+	def self.getcharicf(charicf,swrifts_iconicf)
 		cifstring = Array.new
 		# get the entry in global file that matches the ICF name selected. We're going to make this pretty.
 		charcgicf = swrifts_iconicf.select { |ss| ss['name'].downcase == charicf.downcase }.first
@@ -271,41 +271,41 @@ module AresMUSH
 			ifstring << " ~ ("
 			ifstring << book
 			ifstring << ")"
-		end	
+		end
 		cifstring = {class: ifname, name: ifstring, rating: desc}
 		return (cifstring)
-	end	
-	
-	def self.getcharrace(charrace,swrifts_race) 
+	end
+
+	def self.getcharrace(charrace,swrifts_race)
 		# get the entry in global file that matches the ICF name selected. We're going to make this pretty.
 		cracestring = Array.new
 		charcgrace = swrifts_race.select { |ss| ss['name'].downcase == charrace.downcase }.first
 		newcgr = charcgrace.inspect
-		if ( charcgrace ) 
+		if ( charcgrace )
 			racename = charcgrace['name']
 			desc = charcgrace['desc']
 			book = charcgrace['book_reference']
 			racestring = "#{racename}"
-			
-			if desc || book 
+
+			if desc || book
 				racestring << " ~ "
 			end
-			
+
 			if desc
 				racestring << " "
 				racestring << desc
 			end
-			
+
 			if book
 				racestring << " ("
 				racestring << book
 				racestring << ")"
 			end
 		end
-		cracestring = {class: racename, name: racestring, rating: desc}		
+		cracestring = {class: racename, name: racestring, rating: desc}
 		return (cracestring)
-	end 
-	
+	end
+
 	def self.returncgslotsforcg(model)
 		# cginitarray = Hash.new #We're going to pass this back to the char custom fields.
 		list = model['chargen_points'] #only get the chargen points
@@ -315,14 +315,14 @@ module AresMUSH
 		list.each do |key, value|
 				cgname = key
 				cgn = cgname.gsub("_", " ")
-				cgname = cgn.titleize				
+				cgname = cgn.titleize
 				cginitarray << {class: key, name: cgname, rating:value}
 		end
 		return (cginitarray)
-	end	
-	
+	end
+
 	def self.returniconicforcg(char, swrifts_race, rawcharrace, model)
-		#(char, swrifts_race, rawcharrace, swrifts_iconicf)	
+		#(char, swrifts_race, rawcharrace, swrifts_iconicf)
 		iconicfarray = []
 		newtt =''
         list = model.sort_by { |a| a['name']}
@@ -335,49 +335,49 @@ module AresMUSH
 				ifstring << " ~ ("
 				ifstring << book
 				ifstring << ")"
-			end		
+			end
 			ifdisabled=false # Will need better logic here.
-			if ( rawcharrace.length > 0 )				
+			if ( rawcharrace.length > 0 )
 				swrifts_race = Swrifts.find_race_config(rawcharrace) #get the Race entry we're working with from the yml
 				# Is there a character race selected?
 				rc = Swrifts.race_check(char, swrifts_race, rawcharrace, ifname)
-				if (rc == true) 
+				if (rc == true)
 					ifdisabled = true
 				end
-			end		
+			end
 			iconicfarray << {name: ifstring, disabled: ifdisabled, desc: desc, class: ifname}
 		end
 		blankstrg = {name: 'None ~ Select to reset Iconic Framework', disabled: false, desc: 'Choose to reset Iconic Framework', class: "none"}
 		iconicfarray.unshift(blankstrg)
 		return (iconicfarray)
-	end	
-	  
-	#This is used for Edges and Traits. 
-	
+	end
+
+	#This is used for Edges and Traits.
+
 	def self.returnsysedgesforcg(cgsys, cg, charicf, charrace, traittype)
 		#cgsys = System Traits
 		#cg = character traits
-		#charicf = ICF Chosen 
+		#charicf = ICF Chosen
 		#charrace = Race Chosen
 		#traittype = Edge or Hinderance
-		
-		iconicfarray = []	
+
+		iconicfarray = []
 		ttss = []
 		whatsthis = []
-				
+
 		# return("#{charrace}")
 		# Create an array of the excluded traits for the ones that are already set on the character.
 		cg.each do |d|
 			dname = d.name.downcase
 			dname = dname.gsub("*", "")
 			dname = dname.gsub("^", "")
-			trexlarray = cgsys.select { |ss| ss['name'].downcase.start_with?"#{dname}" }.first #Filter the trait's to find the one that's been selected	
+			trexlarray = cgsys.select { |ss| ss['name'].downcase.start_with?"#{dname}" }.first #Filter the trait's to find the one that's been selected
 
-			if ( trexlarray ) 
-				if ( traittype == 'hind' ) 
+			if ( trexlarray )
+				if ( traittype == 'hind' )
 					trex = trexlarray['excludes']
-					return ("#{trex}") 
-				else 
+					return ("#{trex}")
+				else
 					trex = ''
 					if ( trexlarray['pre-reqs'] )
 						preqs = trexlarray['pre-reqs']
@@ -385,19 +385,19 @@ module AresMUSH
 							prearray = preqs.select { |ss| ss['iconicf'] }
 							if ( prearray.length > 0 )
 								prearray.each do |t|
-									ttss << { icfex: "#{t['iconicf']}" }										
-								end								
+									ttss << { icfex: "#{t['iconicf']}" }
+								end
 							end
 							prearray = preqs.select { |ss| ss['race'] }
 							if ( prearray.length > 0 )
 								prearray.each do |t|
-									ttss << { raceex: "#{t['race']}" }								
+									ttss << { raceex: "#{t['race']}" }
 								end
 							end
 						end
 					end
 				end
-				
+
 				if (trex && traittype == 'hind' )
 					trex.each do |e|
 						ttss << {name: e.downcase}
@@ -407,37 +407,39 @@ module AresMUSH
 		end
 
 
-		# return ("#{ttss}")		
+		return ("#{ttss}")
 
         list = cgsys.sort_by { |a| a['name']} #convert the system traits (that's whole honking lot of them) to an array and sort by name.
 		list.each do |c| #cycle through the array so we can set the appropriate ones to disabled
-			ifdisabled = false  
+			ifdisabled = false
 			ifname = c['name']
 			ifnamedowncase = ifname.downcase
 			desc = c['description']
-			
+
 			if ( traittype == 'hind' && c['excludes'] )
 				trexcludes = c['excludes'];
-			else 
+			else
 				trexcludes = '';
 			end
-			
+
 			if ( traittype == 'edge' && c['pre-reqs'] )
 				# trexcludes = c['pre-reqs'];
 			else
 				trexcludes = '';
 			end
-			
+
 			if (cg)
-				edgsel = cg.select { |ss| ss.name.downcase.start_with?"#{ifnamedowncase}" }.first #Filter the trait's to find the one that's been selected				
+				edgsel = cg.select { |ss| ss.name.downcase.start_with?"#{ifnamedowncase}" }.first #Filter the trait's to find the one that's been selected
 			end
 
-			
+
 			if (edgsel)
 				whatsthis << {name: edgsel}
-				ifdisabled = true	#if the current trait has been selected by the player, set disabled to true (just in case).						
+				ifdisabled = true	#if the current trait has been selected by the player, set disabled to true (just in case).
 			end
-			
+			<<<!!!CHARLY YOU ARE HERE !!!>>>
+
+
 			if (ttss.length > 0) # Check to see if this is an excluded trait because of the selection.
 				ttss.each do |f|
 					# whatsthis << {k: f}
@@ -448,36 +450,36 @@ module AresMUSH
 							# whatsthis << {name: ifname, type: k, value: v}
 						elsif ( k == 'icfex' )
 						# return ( "ICF: #{charicf['class']}, value: #{v}" )
-						
+
 						elsif ( k == 'icfex' && charicf['class'].downcase != v.downcase )
 							ifdisabled = true
-							# whatsthis << {name: ifname, type: k, value: v}							
+							# whatsthis << {name: ifname, type: k, value: v}
 						elsif ( k == 'raceex' && charrace['class'].downcase != v.downcase )
 							ifdisabled = true
-							# whatsthis << {name: ifname, type: k, value: v}							
+							# whatsthis << {name: ifname, type: k, value: v}
 						end
 					end
 				end
-			end				
-			
+			end
+
 			iconicfarray << {name: ifname, disabled: ifdisabled, desc: desc, trexcludes: trexcludes}
 		end
 		return ( "#{whatsthis}" )
 		# return ( iconicfarray )
 		# return ( "#{iconicfarray}" )
-	end	
-	
+	end
+
 	def self.returninitcgforcg(model)
 		initcgpointsarray = [] #We're going to pass this back to the char custom fields.
 		d = Array.new #initialise the array we're going to use to pull the cgen points from.
 		list = model.sort_by { |a| a['name']} #sort the iconic frameworks by name
-		list.each do |c|  # roll through the if's 
+		list.each do |c|  # roll through the if's
 				d = c['chargen_points'] # d is now an array of points set at the time of init
 				n = c['name'] # This is the name of iconic frame.
 				if (d)  # Are there any cgen points with this if?
-					d.each do |key, rating|  # loop through the cgen points 
+					d.each do |key, rating|  # loop through the cgen points
 						ifname = n.downcase  #set name to all lowercase for ease of testing later
-						initcgpointsarray << {ifname: ifname, name: key, rating: rating}  # set the hash 
+						initcgpointsarray << {ifname: ifname, name: key, rating: rating}  # set the hash
 					end
 				end
 		end
@@ -488,19 +490,19 @@ module AresMUSH
 		initcgpointsarray = [] #We're going to pass this back to the char custom fields.
 		d = Array.new #initialise the array we're going to use to pull the cgen points from.
 		list = model.sort_by { |a| a['name']} #sort the race by name
-		list.each do |c|  # roll through the races 
+		list.each do |c|  # roll through the races
 				d = c['chargen_points'] # d is now an array of points set at the time of init
 				n = c['name'] # This is the name of iconic frame.
 				if (d)  # Are there any cgen points with this if?
-					d.each do |key, rating|  # loop through the cgen points 
+					d.each do |key, rating|  # loop through the cgen points
 						ifname = n.downcase  #set name to all lowercase for ease of testing later
-						initcgpointsarray << {ifname: ifname, name: key, rating: rating}  # set the hash 
+						initcgpointsarray << {ifname: ifname, name: key, rating: rating}  # set the hash
 					end
 				end
 		end
 		return (initcgpointsarray) #return the complete hash.
-	end		
-	
+	end
+
 	def self.returnraceforcg(char, swrifts_race, ifname, model)
 		#(char, swrifts_race, rawcharrace, swrifts_iconicf)
 		racearray = []
@@ -510,52 +512,52 @@ module AresMUSH
 			desc = c['desc']
 			book = c['book_reference']
 			racestring = "#{racename}"
-			
-			if desc || book 
+
+			if desc || book
 				racestring << " ~ "
 			end
-			
+
 			if desc
 				racestring << " "
 				racestring << desc
 			end
-			
+
 			if book
 				racestring << " ("
 				racestring << book
 				racestring << ")"
 			end
-			
+
 			ifdisabled=false # Will need better logic here.
 			swrifts_race = Swrifts.find_race_config(racename) #get the Race entry we're working with from the yml
 			# Is there a character race selected?
-			if ( ifname.length > 0 && ifname != "none" )	
+			if ( ifname.length > 0 && ifname != "none" )
 				rc = Swrifts.race_check(char, swrifts_race, racename, ifname)
-				if (rc == true) 
+				if (rc == true)
 					ifdisabled = true
 				end
-			end			
+			end
 			racearray << {name: racestring, disabled: ifdisabled, desc: desc, class: racename}
-						
+
 		end
 		blankstrg = {name: "None ~ Select to reset Race", disabled: false, desc: 'Choose to reset Race', class: 'none'}
 		racearray.unshift(blankstrg)
 		return (racearray)
 	end
-	
+
 	def self.returncgpforcg(cg)
 		cgpointsarray = []
 		cgp = ''
 		cg.each do |c|
 				cgname = c.name
 				cgn = cgname.gsub("_", " ")
-				cgname = cgn.titleize				
+				cgname = cgn.titleize
 				cgrating = c.rating
 				cgpointsarray << {class: c.name, name: cgname, rating:cgrating}
 		end
 		return (cgpointsarray)
-	end	
-	
+	end
+
 	def self.returnedgesforcg(cg, cgsys, fw, traittype)
 		acldb = false
 		### Passed in elements ###
@@ -563,16 +565,16 @@ module AresMUSH
 		## cgsys = systemtraits
 		##########################
 		cgedgearray = []
-		cgp = ''		
-		
+		cgp = ''
+
 		if ( acldb )
 			# cg.each do |c|
 				# cgedgearray << {class: c.name}
 			# end
-			# cgedgearray << {name: 'ne', disabled: 'false', class: 'you', rating: 'desc', trexcludes: 'false'}	
+			# cgedgearray << {name: 'ne', disabled: 'false', class: 'you', rating: 'desc', trexcludes: 'false'}
 			# return (cgedgearray.inspect)
 			return cgsys.inspect
-		else	
+		else
 			if (fw == 'all')
 				cg.each do |c|
 						cgname = "#{c.name}"
@@ -580,45 +582,45 @@ module AresMUSH
 						cgname = cgname[/[^*]+/]
 						cgname = cgname[/[^^]+/]
 						cgname = cgname.strip
-						edgsel = cgsys.select { |ss| ss['name'].downcase == cgname.downcase }.first #Filter the traits's to find the one(s) that have been selected	
+						edgsel = cgsys.select { |ss| ss['name'].downcase == cgname.downcase }.first #Filter the traits's to find the one(s) that have been selected
 						if (edgsel)
 							cgdesc = edgsel['description']
 							if ( traittype == 'hind' && edgsel['excludes'])
 								trexcludes = edgsel['excludes'];
-							else 
+							else
 								trexcludes = '';
-							end						
+							end
 						end
-						cgedgearray << {name: cgname, disabled: 'false', class: c.name, rating: cgdesc, trexcludes: trexcludes}					
+						cgedgearray << {name: cgname, disabled: 'false', class: c.name, rating: cgdesc, trexcludes: trexcludes}
 				end
 			end
-			
+
 			if (fw == "nofw")
 			trdisabled = false
 			# CG = character traits, cgsys = systemtraits.
 				cg.each do |c|
 					cgname = "#{c.name}"
 					cgname = cgname.downcase
-					cgnamesub = cgname.gsub("^", "*")  			
+					cgnamesub = cgname.gsub("^", "*")
 					if (!cgnamesub.include?("*"))
 						cgname = cgname[/[^*]+/]
 						cgname = cgname[/[^^]+/]
 						cgname = cgname.strip
-						edgsel = cgsys.select { |ss| ss['name'].downcase == cgname.downcase }.first 
+						edgsel = cgsys.select { |ss| ss['name'].downcase == cgname.downcase }.first
 						if (edgsel)
 							cgdesc = edgsel['description']
 							trdisabled = true;
 							if ( traittype == 'hind' && edgsel['excludes'])
 								trexcludes = edgsel['excludes'];
-							else 
+							else
 								trexcludes = '';
-							end						
+							end
 						end
 						cgedgearray << {name: cgname, disabled: trdisabled, class: c.name, rating: cgdesc, trexcludes: trexcludes}
 					end
 				end
 			end
-				
+
 			if (fw == "fw")
 			trdisabled = false
 			# CG = character traits, cgsys = systemtraits.
@@ -630,15 +632,15 @@ module AresMUSH
 						cgnamenew = cgnamenew[/[^*]+/]
 						cgnamenew = cgnamenew[/[^^]+/]
 						cgnamenew = cgnamenew.strip
-						edgsel = cgsys.select { |ss| ss['name'].downcase == cgnamenew.downcase }.first #Filter the icf's to find the one that's been selected	
+						edgsel = cgsys.select { |ss| ss['name'].downcase == cgnamenew.downcase }.first #Filter the icf's to find the one that's been selected
 						if (edgsel)
 							cgdesc = edgsel['description']
 							trdisabled = true;
 							if ( traittype == 'hind' && edgsel['excludes'])
 								trexcludes = edgsel['excludes'];
-							else 
+							else
 								trexcludes = '';
-							end						
+							end
 						end
 						cgedgearray << {name: cgname, disabled: trdisabled, class: c.name, rating: cgdesc, trexcludes: trexcludes}
 					end
@@ -646,39 +648,39 @@ module AresMUSH
 			end
 		end
 		return (cgedgearray)
-	end	
+	end
 
 	def self.acl_get_hj_slots(swrifts_iconicf, charicf) #swrifts_icf is the system icf's, charicf is the one selected by the player
-	
-		# attribute :name #hj1, hj2, etc. 
+
+		# attribute :name #hj1, hj2, etc.
 		# attribute :rating, :type => DataType::Integer #the random roll
-		# attribute :table #Body Armor, etc. 
+		# attribute :table #Body Armor, etc.
 		# attribute :description #text from table
 		# reference :character, "AresMUSH::Character"
-		
-		
+
+
 		if charicf #has there an ICF selected?
 			cifstring = Hash.new
 			tempcifstring = []
-			
+
 			charcgicf = swrifts_iconicf.select { |ss| ss['name'].downcase == charicf.downcase }.first
-			# get the entry in global file that matches the ICF name selected. We're going to make this pretty.			
+			# get the entry in global file that matches the ICF name selected. We're going to make this pretty.
 			pattern = 'hj'
 			charhjicf = charcgicf.select{ |k,v| k[pattern] }
-			if (charhjicf.length > 0) 
+			if (charhjicf.length > 0)
 				charhjicf.each do |k,v|
 					tempcifstring = []
 					hjopt = k.split("_")[0]
 					v.each do |k1,v1|
 						tempcifstring << {table: k1, name: hjopt}
 					end
-					cifstring[hjopt] = tempcifstring				
+					cifstring[hjopt] = tempcifstring
 				end
 			end
 		end
 		return (cifstring);
 	end
-	
+
 	def self.acl_get_hj_tables(hjtables, charicf) #hjtables is the HJ's set on the char, charicf is the one selected by the player (not used)
 		txtstring = []
 		hjstr = []
@@ -686,10 +688,10 @@ module AresMUSH
 
 		hjstring = hjtables.to_a.sort_by { |a| a.name }
 			.each_with_index
-				.map do |a, i| 
+				.map do |a, i|
 					tempcifstring[a.name] = {table: a.table, name: a.name}
 				end
-		return (tempcifstring) 
+		return (tempcifstring)
 	end
 
 	def self.acl_return_traits(st,traitname) #st is the traits pulled from the character. traitname is whether we want the ICF traits or Race Traits.
@@ -697,11 +699,11 @@ module AresMUSH
 		txtstring = ''
 		st.to_a.sort_by { |a| a.name }
 			.each_with_index
-				.map do |a, i| 
+				.map do |a, i|
 				if a.name.downcase == "#{traitnamedc}"
 					return ("#{a.rating}")
 				end
-			end	
+			end
 	end
 
 
@@ -710,31 +712,31 @@ module AresMUSH
 		txtstring = []
 		cg.to_a.sort_by { |a| a.name }
 			.each_with_index
-				.map do |a, i| 
-					txtstring << {name: a.name, rating: a.rating}			
+				.map do |a, i|
+					txtstring << {name: a.name, rating: a.rating}
 			end
 			return (txtstring)
-	end	
-	
-#########
-	
-	def self.save_abilities_for_chargen(char, chargen_data)		
+	end
 
-		if (!chargen_data[:custom]) 
+#########
+
+	def self.save_abilities_for_chargen(char, chargen_data)
+
+		if (!chargen_data[:custom])
 			return ["No Custom Data"]
 		end
-		
+
 		init = Global.read_config('swrifts', 'init')
-		dbgstr = ''	
-		
+		dbgstr = ''
+
 		#Get the iconic framework and race set on the form
 		if (chargen_data[:custom][:iconicf])
-			c_iconicf = chargen_data[:custom][:iconicf][:class]			
+			c_iconicf = chargen_data[:custom][:iconicf][:class]
 			icf_downcase = c_iconicf.downcase.strip  # Stripped and downcased iconicframework name.
 		else
 			icf_downcase = ''
 		end
-			
+
 		# if (chargen_data[:custom][:race] && chargen_data[:custom][:race][:class] != 'None')
 		if (chargen_data[:custom][:race])
 			c_race = chargen_data[:custom][:race][:class]
@@ -752,23 +754,23 @@ module AresMUSH
 
 
 		## ----- Update Iconic Framework
-		
-			char.delete_swrifts_chargen #clear out the character	
+
+			char.delete_swrifts_chargen #clear out the character
 			tt = Swrifts.run_init(char, init)  #Calls run_init in helpers.rb
-			
-			# If an Iconic Framework has been chosen 
+
+			# If an Iconic Framework has been chosen
 			if (icf_downcase)
 				#Set the iconic framework
 				iconicf = Global.read_config('swrifts', 'iconicf') #Read the config file for Iconic Frameworks
-				icfsel = iconicf.select { |ss| ss['name'].downcase == icf_downcase }.first #Filter the icf's to find the one that's been selected	
-				
-				tt1 = Swrifts.run_system(char, icfsel) #Set the base stats based on the ICF chosen.			
-				trait = Swrifts.find_traits(char, 'iconicf')   #Calls find_traits in helpers.rb				
+				icfsel = iconicf.select { |ss| ss['name'].downcase == icf_downcase }.first #Filter the icf's to find the one that's been selected
+
+				tt1 = Swrifts.run_system(char, icfsel) #Set the base stats based on the ICF chosen.
+				trait = Swrifts.find_traits(char, 'iconicf')   #Calls find_traits in helpers.rb
 				trait.update(rating: icf_downcase)  #Update the Icf with the one chosen.
 			end
-			
+
 			if (race_downcase)
-				race = Swrifts.find_race_config(race_downcase) #get the Race entry we're working with from the yml			
+				race = Swrifts.find_race_config(race_downcase) #get the Race entry we're working with from the yml
 				if (!icf_downcase)
 					tt3 = Swrifts.run_system(char, race)
 				end
@@ -776,7 +778,7 @@ module AresMUSH
 				race_trait = Swrifts.find_traits(char, 'race')	 #get the Race trait off of the character
 				race_trait.update(rating: race_downcase) #Update the race with the one chosen.
 			end
-			
+
 			#Save the no framework edges
 			if (c_edgesnofw)  #If there are edges not related to the Iconic Framework and Race
 				c_edgesnofw.each do |key,value|  #Cycle through each one
@@ -785,7 +787,7 @@ module AresMUSH
 					dbgstr << "Edge name: #{edge_name}, #{ss}"  #For troubleshooting.
 				end
 			end
-			
+
 			#Save the no framework hinderance
 
 			if (c_hindnofw) #If there are hinderances not related to the Iconic Framework and Race
@@ -795,15 +797,15 @@ module AresMUSH
 					dbgstr << "Hind name: #{edge_name}, #{ss}" #For troubleshooting
 				end
 			end
-			
+
 			if (c_hj) #If there are heroes journey tables, save them.
 				c_hj.each do |key, value| #cycle through each one
 					element_name = "#{value['name']}" #hj1
 					element_table = "#{value['table']}" #Body Armor
 					if (element_table) != 'None'
 						element_desc = Swrifts.hj_desc(char, element_name, element_table)
-						hj_element = char.swrifts_heroesj.select { |a| a.name.downcase == element_name }.first			
-						hj_element.update(table: element_table)	
+						hj_element = char.swrifts_heroesj.select { |a| a.name.downcase == element_name }.first
+						hj_element.update(table: element_table)
 						hj_element.update(description: element_desc)
 						dbgstr << "HJ: #{element_name}, #{element_table}, #{element_desc}"
 					end
@@ -812,7 +814,7 @@ module AresMUSH
 			end
 		return (dbgstr)
 	end
-	
+
   end
 
 end
