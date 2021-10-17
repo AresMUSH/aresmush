@@ -436,9 +436,10 @@ module AresMUSH
 				# whatsthis << { name: "#{trexcludes}" }
 				if ( trexcludes.length > 0 )
 					trexcludes.each do |t|
-						if ( ifnamedowncase == t["name"] )
-							ifdisabled = true
-						end
+						whatsthis << { name: "#{t} #{ifnamedowncase}"
+						# if ( ifnamedowncase == t["name"] )
+							# ifdisabled = true
+						# end
 					end
 				end
 			else
@@ -489,8 +490,8 @@ module AresMUSH
 
 			iconicfarray << {name: ifname, disabled: ifdisabled, desc: desc, trexcludes: trexcludes}
 		end
-		# return ( "#{whatsthis}" )
-		return ( iconicfarray )
+		return ( "#{whatsthis}" )
+		# return ( iconicfarray )
 		# return ( "#{iconicfarray}" )
 	end
 
