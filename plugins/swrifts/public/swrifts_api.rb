@@ -424,7 +424,7 @@ module AresMUSH
 
         list = cgsys.sort_by { |a| a['name']} #convert the system traits (that's whole honking lot of them) to an array and sort by name.
 		list.each do |c| #cycle through the array so we can set the appropriate ones to disabled
-			whatsthis << { name: c }
+			# whatsthis << { name: c }
 			ifdisabled = false
 			ifname = c['name']
 			ifnamedowncase = ifname.downcase
@@ -433,44 +433,44 @@ module AresMUSH
 			if ( traittype == 'hind' && c['excludes'] )
 				trexcludes = c['excludes'];
 			else
-				trexcludes = '';
+				trexcludes = "";
 			end
 
 			if ( traittype == 'edge' && c['pre-reqs'] )
-				# trexcludes = c['pre-reqs'];
+				trex = ''
+				preqs = trexlarray['pre-reqs']
+				if ( preqs.length > 0 )
+					prearray = preqs.select { |ss| ss['iconicf'] }
+					if ( prearray.length > 0 )
+						prearray.each do |t|
+							# return("#{t['iconicf']} #{charicf[:class]}")									
+							# If the edge requires a specific ICF and that's not chosen, then disable it.																		
+							if ( charicf[:class].downcase != t['iconicf'].downcase ) 
+								trexcludes = t['iconicf']
+								ifdisabled = true
+							end
+						end
+					end
+					prearray = preqs.select { |ss| ss['race'] }
+					if ( prearray.length > 0 )
+						prearray.each do |t|
+							# If the Race chosen by the player doesn't match t['race'] then remove this trait from the main array (cg).										
+							if ( charrace[:class].downcase != t['race'].downcase )
+								trexcludes = t['race']
+								ifdisabled = true
+							end
+						end
+					end
+				end
 			else
 				trexcludes = '';
 			end
-			
-
-			if (cg)
-				edgsel = cg.select { |ss| ss.name.downcase.start_with?"#{ifnamedowncase}" }.first #Filter the trait's to find the one that's been selected
-			end
-
-
-			if (edgsel)
-				# whatsthis << {name: edgsel}
-				ifdisabled = true	#if the current trait has been selected by the player, set disabled to true (just in case).
-			end
-
 
 			if (ttss.length > 0) # Check to see if this is an excluded trait because of the selection.
 				ttss.each do |f|
-					whatsthis << {k: f}
+					# whatsthis << {k: f}
 					f.each do |k, v|
-
 						if ( k == 'name' && ifnamedowncase == v.downcase )
-							ifdisabled = true
-							# whatsthis << {name: ifname, type: k, value: v}
-						elsif ( k == 'icfex' )
-						return ( "ICF: #{charicf[:class]}, value: #{v}" )
-							if ( charicf[:class].downcase != v.downcase )
-								ifdisabled = true
-							end
-						elsif ( k == 'icfex' && charicf['class'].downcase != v.downcase )
-							ifdisabled = true
-							# whatsthis << {name: ifname, type: k, value: v}
-						elsif ( k == 'raceex' && charrace['class'].downcase != v.downcase )
 							ifdisabled = true
 							# whatsthis << {name: ifname, type: k, value: v}
 						end
@@ -480,8 +480,8 @@ module AresMUSH
 
 			iconicfarray << {name: ifname, disabled: ifdisabled, desc: desc, trexcludes: trexcludes}
 		end
-		return ( "#{whatsthis}" )
-		# return ( iconicfarray )
+		# return ( "#{whatsthis}" )
+		return ( iconicfarray )
 		# return ( "#{iconicfarray}" )
 	end
 
