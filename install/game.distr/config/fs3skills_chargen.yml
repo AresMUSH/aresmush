@@ -20,16 +20,13 @@ fs3skills:
   starting_skills:
     Everyone:
       skills:
-        Alertness: 1
-        Archery: 1
-        Athletics: 1
-        Composure: 1
-        Driving: 1
-        Firearms: 1
-        Medicine: 1
-        Melee: 1
-        Research: 1
-        English: 3
+        Alertness: 0
+        Athletics: 0
+        Composure: 0
+        Firearms: 0
+        Medicine: 0
+        Melee: 0
+        Standard: 0
     Position:
       Viper Pilot:
         skills:
