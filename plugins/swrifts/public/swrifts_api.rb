@@ -387,13 +387,11 @@ module AresMUSH
 							prearray = preqs.select { |ss| ss['iconicf'] }
 							if ( prearray.length > 0 )
 								prearray.each do |t|
-									ttss << { icfex: "#{t['iconicf']}" }
-									# return("#{t['iconicf']} #{charicf[:class]}")									
-									# If the ICF chosen by the player doesn't match t['iconicfc'] then remove this trait from the main array (cg).																		
+									ttss << { icfex: "#{t['iconicf']}" }								
+									# If the ICF chosen by the player doesn't match t['iconicf'] then remove this trait from the main array (cg).																		
 									if ( charicf[:class].downcase != t['iconicf'].downcase ) 
-										# cg.delete(d.name)
-										return ( "#{charicf[:class]}" "#{t['iconicf']}" "#{d.name}" )
-										# return ( "#{cg}" )
+										cg.delete(d.name)
+	
 									end
 								end
 							end
@@ -401,6 +399,11 @@ module AresMUSH
 							if ( prearray.length > 0 )
 								prearray.each do |t|
 									ttss << { raceex: "#{t['race']}" }
+									
+									# If the Race chosen by the player doesn't match t['race'] then remove this trait from the main array (cg)									
+									if ( charrace[:class].downcase != t['race'].downcase )
+										cg.delete(d.name)
+									end
 								end
 							end
 						end
@@ -445,7 +448,6 @@ module AresMUSH
 				whatsthis << {name: edgsel}
 				ifdisabled = true	#if the current trait has been selected by the player, set disabled to true (just in case).
 			end
-			# <<<!!!CHARLY YOU ARE HERE !!!>>>
 
 
 			if (ttss.length > 0) # Check to see if this is an excluded trait because of the selection.
@@ -473,8 +475,8 @@ module AresMUSH
 			iconicfarray << {name: ifname, disabled: ifdisabled, desc: desc, trexcludes: trexcludes}
 		end
 		# return ( "#{whatsthis}" )
-		return ( iconicfarray )
-		# return ( "#{iconicfarray}" )
+		# return ( iconicfarray )
+		return ( "#{iconicfarray}" )
 	end
 
 	def self.returninitcgforcg(model)
