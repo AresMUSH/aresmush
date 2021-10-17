@@ -1909,7 +1909,7 @@ swrifts:
         type: Iconic
         pre-reqs:
             - rank: Novice
-            - iconcif: Dragon Hatchling
+            - iconicf: Dragon Hatchling
     -
         name: Dragon Metamorphosis
         description: May shapeshift into any living creature between house cat size and natural size and maintain even while sleeping. Gains no special abilities from this. 
