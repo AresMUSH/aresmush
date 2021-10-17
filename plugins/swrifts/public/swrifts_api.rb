@@ -438,7 +438,7 @@ module AresMUSH
 
 			if ( traittype == 'edge' && c['pre-reqs'] )
 				trex = ''
-				preqs = trexlarray['pre-reqs']
+				preqs = c['pre-reqs']
 				if ( preqs.length > 0 )
 					prearray = preqs.select { |ss| ss['iconicf'] }
 					if ( prearray.length > 0 )
