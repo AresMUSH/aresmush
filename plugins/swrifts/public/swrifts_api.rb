@@ -378,7 +378,7 @@ module AresMUSH
 			if ( trexlarray )
 				if ( traittype == 'hind' )
 					trex = trexlarray['excludes']
-					return ("#{trex}")
+					# whatsthis << { name: "#{trex}" }
 				else
 					trex = ''
 					if ( trexlarray['pre-reqs'] )
@@ -433,6 +433,7 @@ module AresMUSH
 			if ( traittype == 'hind' && c['excludes'] )
 				trexcludes = c['excludes'];
 				# return ("#{trexcludes}")
+				whatsthis << { name: "#{trexcludes}" }
 			else
 				trexcludes = "";
 			end
