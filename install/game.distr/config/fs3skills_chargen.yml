@@ -1,4 +1,5 @@
-fs3skills:
+---
+  fs3skills:
   advantages_cost: 2
   allow_incapable_action_skills: true
   free_backgrounds: 6
