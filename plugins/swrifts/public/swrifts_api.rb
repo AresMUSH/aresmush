@@ -437,9 +437,9 @@ module AresMUSH
 				if ( trexcludes.length > 0 )
 					trexcludes.each do |t|
 						whatsthis << { name: "#{t} #{ifnamedowncase}" }
-						if ( ifnamedowncase == t["name"].downcase )
-							ifdisabled = true
-						end
+						# if ( ifnamedowncase == t['name'].downcase )
+							# ifdisabled = true
+						# end
 					end
 				end
 			else
