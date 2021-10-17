@@ -393,7 +393,7 @@ module AresMUSH
 									if ( charicf[:class].downcase != t['iconicf'].downcase ) 
 										# cg.delete(d.name)
 										d.delete
-										return ( "#{charicf[:class]} " "#{t['iconicf']} " "#{d.name} " "#{cg.class} #{d.class}" )
+										# return ( "#{charicf[:class]} " "#{t['iconicf']} " "#{d.name} " "#{cg.class} #{d.class}" )
 										# return ( "#{cg}" )
 									end
 								end
