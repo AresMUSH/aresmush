@@ -432,7 +432,7 @@ module AresMUSH
 
 			if ( traittype == 'hind' && c['excludes'] )
 				trexcludes = c['excludes'];
-				return ("#{trexcludes}")
+				# return ("#{trexcludes}")
 			else
 				trexcludes = "";
 			end
