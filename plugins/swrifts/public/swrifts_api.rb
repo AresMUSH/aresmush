@@ -434,7 +434,7 @@ module AresMUSH
 				trexcludes = c['excludes'];
 				# return ("#{trexcludes}")
 				whatsthis << { name: "#{trexcludes}" }
-				if ( ifnamedowncase == trexcludes['name'] )
+				if ( ifnamedowncase == trexcludes[:name] )
 					ifdisabled = true
 				end
 			else
