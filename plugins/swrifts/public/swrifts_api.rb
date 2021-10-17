@@ -433,10 +433,14 @@ module AresMUSH
 			if ( traittype == 'hind' && c['excludes'] )
 				trexcludes = c['excludes'];
 				# return ("#{trexcludes}")
-				whatsthis << { name: "#{trexcludes}" }
-				# if ( ifnamedowncase == trexcludes[:name] )
-					# ifdisabled = true
-				# end
+				# whatsthis << { name: "#{trexcludes}" }
+				if ( trexcludes.length > 0 )
+					trexcludes.each do |t|
+						if ( ifnamedowncase == t["name"] )
+							ifdisabled = true
+						end
+					end
+				end
 			else
 				trexcludes = "";
 			end
