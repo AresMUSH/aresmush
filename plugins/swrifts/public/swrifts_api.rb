@@ -389,7 +389,7 @@ module AresMUSH
 								prearray.each do |t|
 									ttss << { icfex: "#{t['iconicf']}" }
 									# return("#{t['iconicf']} #{charicf[:class]}")									
-									# If the ICF chosen by the player doesn't match t['iconicfc'] then remove this trait from the main array (cg).																		
+									# If the ICF chosen by the player doesn't match t['iconicf'] then remove this trait from the main array (cg).																		
 									if ( charicf[:class].downcase != t['iconicf'].downcase ) 
 										# cg.delete(d.name)
 										d.delete
@@ -402,8 +402,9 @@ module AresMUSH
 							if ( prearray.length > 0 )
 								prearray.each do |t|
 									ttss << { raceex: "#{t['race']}" }
+									# If the Race chosen by the player doesn't match t['race'] then remove this trait from the main array (cg).										
 									if ( charrace[:class].downcase != t['race'].downcase )
-										# cg.delete(d.name)
+										d.delete
 									end
 								end
 							end
@@ -449,7 +450,6 @@ module AresMUSH
 				whatsthis << {name: edgsel}
 				ifdisabled = true	#if the current trait has been selected by the player, set disabled to true (just in case).
 			end
-			# <<<!!!CHARLY YOU ARE HERE !!!>>>
 
 
 			if (ttss.length > 0) # Check to see if this is an excluded trait because of the selection.
