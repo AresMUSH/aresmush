@@ -1,7 +1,7 @@
 ---
-  fs3skills:
+fs3skills:
   advantages_cost: 2
-  allow_incapable_action_skills: true
+  allow_incapable_action_skills: false
   free_backgrounds: 6
   free_languages: 3
   max_ap: 40
@@ -17,30 +17,30 @@
     '5': 3
     '6': 2
     '7': 1
-  min_backgrounds: 0
+  min_backgrounds: 2
   starting_skills:
     Everyone:
       skills:
-        Alertness: 0
-        Athletics: 0
-        Composure: 0
-        Firearms: 0
-        Medicine: 0
-        Melee: 0
-        Standard: 0
+        Alertness: 2
+        Athletics: 2
+        Composure: 2
+        Firearms: 2
+        Medicine: 2
+        Melee: 2
+        Standard: 3
     Position:
       Viper Pilot:
         skills:
-          Piloting: 0
-          Gunnery: 0
+          Piloting: 3
+          Gunnery: 3
         specialties:
           Piloting:
           - Viper
           - Raptor
       Raptor Pilot:
         skills:
-          Piloting: 0
-          Gunnery: 0
+          Piloting: 3
+          Gunnery: 3
         specialties:
           Piloting:
           - Raptor
