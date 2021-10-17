@@ -461,7 +461,7 @@ module AresMUSH
 							ifdisabled = true
 							# whatsthis << {name: ifname, type: k, value: v}
 						elsif ( k == 'icfex' )
-						# return ( "ICF: #{charicf['class']}, value: #{v}" )
+						return ( "ICF: #{charicf[:class]}, value: #{v}" )
 							if ( charicf[:class].downcase != v.downcase )
 								ifdisabled = true
 							end
