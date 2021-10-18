@@ -425,6 +425,7 @@ module AresMUSH
 
 			if ( traittype == 'hind' )
 				# Go through excluded hinderances and mark them as disabled
+				trexcludes = ''
 				if ( ttss.length > 0)
 					incg = ttss.select { |ss| ss[:exclude].downcase == ifnamedowncase }
 					if ( incg.length > 0 )
@@ -434,6 +435,7 @@ module AresMUSH
 						end
 					else
 						ifdisabled = false
+						trexcludes = ''
 					end
 				end
 			end
