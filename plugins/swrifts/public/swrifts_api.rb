@@ -366,7 +366,9 @@ module AresMUSH
 		whatsthis = []
 		ttsl = []
 
-		return("#{cg.inspect}")
+		if (traittype == 'hind')
+			return("#{cg.inspect}")
+		end
 		# Create an array of the excluded traits for the ones that are already set on the character.
 		cg.each do |d|
 			ttsl << { name: "#{d.name}" }
