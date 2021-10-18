@@ -380,8 +380,22 @@ module AresMUSH
 
 			if ( trexlarray )
 				if ( traittype == 'hind' )
-					trex = trexlarray['excludes']
-					whatsthis << { name: "#{trex}" }
+					if ( trexlarray['excludes'] )
+						trex = trexlarray['excludes']
+						if ( trex.length > 0 )
+							trex.each do |t|
+								ttss << { hind: "#{dname}", exclude: "#{t}" }
+									# return("#{t['iconicf']} #{charicf[:class]}")									
+									# If the ICF chosen by the player doesn't match t['iconicf'] then remove this trait from the main array (cg).																		
+									# if ( charicf[:class].downcase != t['iconicf'].downcase ) 
+										# cg.delete(d.name)
+										# d.delete
+										# return ( "#{charicf[:class]} " "#{t['iconicf']} " "#{d.name} " "#{cg.class} #{d.class}" )
+										# return ( "#{cg}" )
+									# end
+							end
+						end
+					end
 				else
 					trex = ''
 					if ( trexlarray['pre-reqs'] )
