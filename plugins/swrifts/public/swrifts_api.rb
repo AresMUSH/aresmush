@@ -629,7 +629,6 @@ module AresMUSH
 					cgname = "#{c.name}"
 					cgname = cgname.downcase
 					cgnamesub = cgname.gsub("^", "*")
-					testret << {name: "#{cgname}", subname: "#{cgnamesub}"}
 					if (!cgnamesub.include?("*"))
 						cgname = cgname[/[^*]+/]
 						cgname = cgname[/[^^]+/]
@@ -643,6 +642,8 @@ module AresMUSH
 							else
 								trexcludes = '';
 							end
+							
+							testret << {name: "#{cgname}", subname: "#{cgnamesub}", edge: "#{edsel['name']}", disabled: trdisabled}							
 						end
 						cgedgearray << {name: cgname, disabled: trdisabled, class: c.name, rating: cgdesc, trexcludes: trexcludes}
 					end
