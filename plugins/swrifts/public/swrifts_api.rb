@@ -508,7 +508,7 @@ module AresMUSH
 
 			iconicfarray << {name: ifname, disabled: ifdisabled, desc: desc, trexcludes: trexcludes}
 		end
-		# return ("What's this: #{whatsthis}")
+		return ("TTSS: #{ttss}")
 		return ( iconicfarray )
 	end
 
