@@ -253,7 +253,7 @@ module AresMUSH
 		  cghindnofw: cghindnofw, #Hinderances on Character for framework stuff
 		  cghindfw: cghindfw, #Only framework Hinderances on Character for framework stuff
 		  sysedges: sysedges, #Edges from system
-		  swsyshind: syshind, #Hinderances from system
+		  syshind: syshind, #Hinderances from system
 		  hjslots: hjslots,
 		  hjtables: hjtables,
 		}
