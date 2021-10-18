@@ -449,7 +449,7 @@ module AresMUSH
 								if ( t['iconicf'].length > 0 )
 									trexcludes = t['iconicf']
 								else
-									trexcludes = ''
+									trexcludes = 'false'
 								end
 								ifdisabled = true
 							end
@@ -463,7 +463,7 @@ module AresMUSH
 								if ( t['race'].length > 0)
 									trexcludes = t['race']
 								else	
-									trexcludes = ''
+									trexcludes = 'false'
 								end
 								ifdisabled = true
 							end
@@ -471,7 +471,7 @@ module AresMUSH
 					end
 				end
 			else
-				trexcludes = '';
+				trexcludes = 'false';
 			end
 			
 			#Now we do this the other way. Find if the current trait has been selected by the player and mark it disabled from selection	
