@@ -392,14 +392,10 @@ module AresMUSH
 							prearray = preqs.select { |ss| ss['iconicf'] }
 							if ( prearray.length > 0 )
 								prearray.each do |t|
-									ttss << { icfex: "#{t['iconicf']}" }
-									# return("#{t['iconicf']} #{charicf[:class]}")									
+									ttss << { icfex: "#{t['iconicf']}" }							
 									# If the ICF chosen by the player doesn't match t['iconicf'] then remove this trait from the main array (cg).																		
 									if ( charicf[:class].downcase != t['iconicf'].downcase ) 
-										# cg.delete(d.name)
 										d.delete
-										# return ( "#{charicf[:class]} " "#{t['iconicf']} " "#{d.name} " "#{cg.class} #{d.class}" )
-										# return ( "#{cg}" )
 									end
 								end
 							end
@@ -427,32 +423,14 @@ module AresMUSH
 			ifnamedowncase = ifname.downcase
 			desc = c['description']
 
-			# if ( traittype == 'hind' && c['excludes'] )
-				# trexcludes = c['excludes'];
-				# return ("#{trexcludes}")
-				# if ( trexcludes.length > 0 )
-					# trexcludes.each do |t|
-						# incg = cg.select { |h| h['name'].downcase == t.downcase }
-						# whatsthis << { trex: "#{t}" }
-						# if ( incg )
-							# ifdisabled = true
-						# end
-					# end
-				# end
-			# else
-				# trexcludes = "";
-			# end
-
 			if ( traittype == 'hind' )
 				# Go through excluded hinderances and mark them as disabled
 				if ( ttss.length > 0)
 					incg = ttss.select { |ss| ss[:exclude].downcase == ifnamedowncase }
 					if ( incg.length > 0 )
 						incg.each do |ic|
-							# return ("#{ic}")
 							ifdisabled = true
 							trexcludes = ic[:exclude]
-							# whatsthis << { name: ifnamedowncase, excluded: "yes" }
 						end
 					else
 						ifdisabled = false
@@ -468,7 +446,11 @@ module AresMUSH
 						prearray.each do |t|							
 							# If the edge requires a specific ICF and that's not chosen, then disable it.																		
 							if ( charicf[:class].downcase != t['iconicf'].downcase ) 
-								trexcludes = t['iconicf']
+								if ( t['iconicf'].length > 0 )
+									trexcludes = t['iconicf']
+								else
+									trexcludes = ''
+								end
 								ifdisabled = true
 							end
 						end
@@ -478,7 +460,11 @@ module AresMUSH
 						prearray.each do |t|
 							# If the Race chosen by the player doesn't match t['race'] then remove this trait from the main array (cg).										
 							if ( charrace[:class].downcase != t['race'].downcase )
-								trexcludes = t['race']
+								if ( t['race'].length > 0)
+									trexcludes = t['race']
+								else	
+									trexcludes = ''
+								end
 								ifdisabled = true
 							end
 						end
@@ -496,18 +482,7 @@ module AresMUSH
 				if ( dname == ifnamedowncase )
 					ifdisabled = true
 				end
-			end
-
-			# if (ttss.length > 0) # Check to see if this is an excluded trait because of the selection.
-				# ttss.each do |f|
-					# f.each do |k, v|					
-						# if ( k == 'name' && ifnamedowncase == v.downcase )
-							# ifdisabled = true							
-						# end
-					# end
-				# end
-			# end
-			
+			end		
 			iconicfarray << {name: ifname, disabled: ifdisabled, desc: desc, trexcludes: trexcludes}
 		end
 		# return ("TTSS: #{ttss}")
