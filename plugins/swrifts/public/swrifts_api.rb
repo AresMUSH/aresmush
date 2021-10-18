@@ -437,7 +437,7 @@ module AresMUSH
 				if ( trexcludes.length > 0 )
 					trexcludes.each do |t|
 						incg = cg.select { |h| h['name'].downcase == t["name"].downcase }
-						whatsthis << { trex: "#{t}", incg: "#{incg}" }
+						whatsthis << { trex: "#{t}" }
 						# if ( incg )
 							# ifdisabled = true
 						# end
