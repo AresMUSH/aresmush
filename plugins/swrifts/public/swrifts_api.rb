@@ -631,11 +631,12 @@ module AresMUSH
 							cgdesc = edgsel['description']
 							trdisabled = true;
 							if ( traittype == 'hind' && edgsel['excludes'])
-								# trexcludes = edgsel['excludes'];
-								trexcludes = 'yeah something';
+								trexcludes = edgsel['excludes'];
 							else
 								trexcludes = 'false';
-							end							
+							end	
+						else
+							trexcludes = 'false';
 						end
 						cgedgearray << {name: cgname, disabled: trdisabled, class: c.name, rating: cgdesc, trexcludes: trexcludes }
 					end
