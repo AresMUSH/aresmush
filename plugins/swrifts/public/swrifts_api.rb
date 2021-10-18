@@ -454,6 +454,7 @@ module AresMUSH
 					incg = ttss.select { |ss| ss[:exclude].downcase == ifnamedowncase }
 					if ( incg.length > 0 )
 						incg.each do |ic|
+							return ("#{ic}")
 							ifdisabled = true
 							trexcludes = ic[:exclude]
 							whatsthis << { name: ifnamedowncase, excluded: "yes" }
@@ -495,11 +496,9 @@ module AresMUSH
 
 			if (ttss.length > 0) # Check to see if this is an excluded trait because of the selection.
 				ttss.each do |f|
-					# whatsthis << {k: f}
 					f.each do |k, v|
 						if ( k == 'name' && ifnamedowncase == v.downcase )
 							ifdisabled = true
-							# whatsthis << {name: ifname, type: k, value: v}
 						end
 					end
 				end
@@ -507,9 +506,7 @@ module AresMUSH
 
 			iconicfarray << {name: ifname, disabled: ifdisabled, desc: desc, trexcludes: trexcludes}
 		end
-		# return ( "What's this: #{whatsthis}" )
 		return ( iconicfarray )
-		# return ( "#{iconicfarray}" )
 	end
 
 	def self.returninitcgforcg(model)
