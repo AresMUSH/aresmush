@@ -451,8 +451,9 @@ module AresMUSH
 			if ( traittype == 'hind' )
 				# Go through excluded hinderances and mark them as disabled
 				if ( ttss.length > 0)
+					return ("#{ttss}")
 					incg = ttss.select { |ic| ic['name'].downcase == ifnamedowncase }
-					whatsthis << { name: ifnamedowncase, incg: "#{incg}" }
+					# whatsthis << { name: ifnamedowncase, incg: "#{incg}" }
 				end
 			end
 			if ( traittype == 'edge' && c['pre-reqs'] )
