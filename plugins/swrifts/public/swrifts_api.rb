@@ -494,6 +494,7 @@ module AresMUSH
 			
 			#Now we do this the other way. Find if the current trait has been selected by the player and mark it disabled from selection
 			
+			return ("CG: #{cg}")
 			traitchosen = cg.select { |tc| tc['name'].downcase == ifnamedowncase }
 			if ( traitchosen.length > 0 )
 				ifdisabled = true
