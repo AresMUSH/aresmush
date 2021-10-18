@@ -453,7 +453,7 @@ module AresMUSH
 				if ( ttss.length > 0)
 					incg = ttss.select { |ss| ss[:exclude].downcase == ifnamedowncase }
 					if ( incg )
-										return ("#{incg}")
+										return ("INCG: #{incg}")
 					end
 					if ( ifnamedowncase == ttss['exclude'].downcase )
 						whatsthis << { name: ifnamedowncase, excluded: "yes" }
