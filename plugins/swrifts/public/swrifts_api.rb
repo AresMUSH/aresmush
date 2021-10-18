@@ -492,22 +492,23 @@ module AresMUSH
 			else
 				trexcludes = '';
 			end
+			
+			
+			
 
-			if (ttss.length > 0) # Check to see if this is an excluded trait because of the selection.
-				ttss.each do |f|
-					f.each do |k, v|	
-						whatsthis << { k: "#{k}", v: "#{v}", ifname: "#{ifnamedowncase}" }					
-						if ( k == 'name' && ifnamedowncase == v.downcase )
-															
-							ifdisabled = true
-						end
-					end
-				end
-			end
+			# if (ttss.length > 0) # Check to see if this is an excluded trait because of the selection.
+				# ttss.each do |f|
+					# f.each do |k, v|					
+						# if ( k == 'name' && ifnamedowncase == v.downcase )
+							# ifdisabled = true
+						# end
+					# end
+				# end
+			# end
 
 			iconicfarray << {name: ifname, disabled: ifdisabled, desc: desc, trexcludes: trexcludes}
 		end
-		return ("What's this: #{whatsthis}")
+		# return ("What's this: #{whatsthis}")
 		return ( iconicfarray )
 	end
 
