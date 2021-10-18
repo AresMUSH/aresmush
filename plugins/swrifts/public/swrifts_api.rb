@@ -452,8 +452,11 @@ module AresMUSH
 				# Go through excluded hinderances and mark them as disabled
 				if ( ttss.length > 0)
 					incg = ttss.select { |ss| ss[:exclude].downcase == ifnamedowncase }
-					if ( incg )										
-						whatsthis << { name: ifnamedowncase, excluded: "yes" }
+					if ( incg.length > 0 )
+						incg.each do |ic|
+							return ("IC: #{ic} ifname: #{ifnamedowncase}")
+							whatsthis << { name: ifnamedowncase, excluded: "yes" }
+						end
 					else
 						whatsthis << { name: ifnamedowncase, excluded: "no" }
 					end
