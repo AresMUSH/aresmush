@@ -454,7 +454,7 @@ module AresMUSH
 					incg = ttss.select { |ss| ss[:exclude].downcase == ifnamedowncase }
 					if ( incg.length > 0 )
 						incg.each do |ic|
-							return ("#{ic}")
+							# return ("#{ic}")
 							ifdisabled = true
 							trexcludes = ic[:exclude]
 							whatsthis << { name: ifnamedowncase, excluded: "yes" }
@@ -470,8 +470,7 @@ module AresMUSH
 				if ( preqs.length > 0 )
 					prearray = preqs.select { |ss| ss['iconicf'] }
 					if ( prearray.length > 0 )
-						prearray.each do |t|
-							# return("#{t['iconicf']} #{charicf[:class]}")									
+						prearray.each do |t|							
 							# If the edge requires a specific ICF and that's not chosen, then disable it.																		
 							if ( charicf[:class].downcase != t['iconicf'].downcase ) 
 								trexcludes = t['iconicf']
@@ -498,6 +497,7 @@ module AresMUSH
 				ttss.each do |f|
 					f.each do |k, v|
 						if ( k == 'name' && ifnamedowncase == v.downcase )
+							whatsthis << { k: "#{k}", v: "#{v}", ifname: "#{ifnamedowncase}" }
 							ifdisabled = true
 						end
 					end
@@ -506,6 +506,7 @@ module AresMUSH
 
 			iconicfarray << {name: ifname, disabled: ifdisabled, desc: desc, trexcludes: trexcludes}
 		end
+		return ("What's this: #{whatsthis}")
 		return ( iconicfarray )
 	end
 
