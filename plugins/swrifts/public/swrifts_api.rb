@@ -643,7 +643,7 @@ module AresMUSH
 								trexcludes = '';
 							end							
 						end
-						cgedgearray << {name: cgname, disabled: trdisabled, class: c.name, rating: cgdesc, trexcludes: trexcludes}
+						cgedgearray << {name: cgname, disabled: trdisabled, class: c.name, rating: cgdesc, trexcludes: trexcludes, edgsel: "#{edgsel}" }
 					end
 				end
 			end
