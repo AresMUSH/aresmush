@@ -366,9 +366,9 @@ module AresMUSH
 		whatsthis = []
 		ttsl = []
 		
-		if ( traittype == 'hind' )
-			return ( "CGSYS: #{cgsys} - CGHIND: #{cg}" )
-		}
+		# if ( traittype == 'hind' )
+			# return ( "CGSYS: #{cgsys} - CGHIND: #{cg}" )
+		# }
 
 		# Create an array of the excluded traits for the ones that are already set on the character.
 		cg.each do |d|
