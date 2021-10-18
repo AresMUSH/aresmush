@@ -366,10 +366,6 @@ module AresMUSH
 		whatsthis = []
 		ttsl = []
 
-		if (traittype == 'hind')
-			return("#{cg}")
-		end
-		
 		# Create an array of the excluded traits for the ones that are already set on the character.
 		cg.each do |d|
 			ttsl << { name: "#{d.name}" }
@@ -424,7 +420,6 @@ module AresMUSH
 		end
 
 # return ( "#{ttsl}" )
-return ("#{cg}")
 
         list = cgsys.sort_by { |a| a['name']} #convert the system traits (that's whole honking lot of them) to an array and sort by name.
 		list.each do |c| #cycle through the array so we can set the appropriate ones to disabled
@@ -495,8 +490,8 @@ return ("#{cg}")
 
 			iconicfarray << {name: ifname, disabled: ifdisabled, desc: desc, trexcludes: trexcludes}
 		end
-		return ( "#{whatsthis}" )
-		# return ( iconicfarray )
+		# return ( "#{whatsthis}" )
+		return ( iconicfarray )
 		# return ( "#{iconicfarray}" )
 	end
 
