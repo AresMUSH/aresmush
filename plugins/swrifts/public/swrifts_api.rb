@@ -365,6 +365,8 @@ module AresMUSH
 		ttss = []
 		whatsthis = []
 		ttsl = []
+		
+		return (traittype)
 
 		if (traittype == 'hind')
 			return ("CG: #{cg}")
