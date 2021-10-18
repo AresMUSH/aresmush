@@ -454,11 +454,12 @@ module AresMUSH
 					incg = ttss.select { |ss| ss[:exclude].downcase == ifnamedowncase }
 					if ( incg.length > 0 )
 						incg.each do |ic|
-							return ("IC: #{ic} ifname: #{ifnamedowncase}")
+							ifdisabled = true
+							trexcludes = ic[:exclude]
 							whatsthis << { name: ifnamedowncase, excluded: "yes" }
 						end
 					else
-						whatsthis << { name: ifnamedowncase, excluded: "no" }
+						ifdisabled = false
 					end
 				end
 			end
@@ -506,8 +507,8 @@ module AresMUSH
 
 			iconicfarray << {name: ifname, disabled: ifdisabled, desc: desc, trexcludes: trexcludes}
 		end
-		return ( "What's this: #{whatsthis}" )
-		# return ( iconicfarray )
+		# return ( "What's this: #{whatsthis}" )
+		return ( iconicfarray )
 		# return ( "#{iconicfarray}" )
 	end
 
