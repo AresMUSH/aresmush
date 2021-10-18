@@ -440,7 +440,7 @@ module AresMUSH
 			if ( traittype == 'edge' && c['pre-reqs'] )
 				trex = ''
 				preqs = c['pre-reqs']
-				trexcludes = 'false'
+				trexcludes = ''
 				if ( preqs.length > 0 )
 					prearray = preqs.select { |ss| ss['iconicf'] }
 					if ( prearray.length > 0 )
@@ -450,7 +450,7 @@ module AresMUSH
 								if ( t['iconicf'].length > 0 )
 									trexcludes = t['iconicf']
 								else
-									trexcludes = 'false'
+									trexcludes = ''
 								end
 								ifdisabled = true
 							end
@@ -464,7 +464,7 @@ module AresMUSH
 								if ( t['race'].length > 0)
 									trexcludes = t['race']
 								else	
-									trexcludes = 'false'
+									trexcludes = ''
 								end
 								ifdisabled = true
 							end
@@ -472,7 +472,7 @@ module AresMUSH
 					end
 				end
 			else
-				trexcludes = 'false';
+				trexcludes = '';
 			end
 			
 			#Now we do this the other way. Find if the current trait has been selected by the player and mark it disabled from selection	
