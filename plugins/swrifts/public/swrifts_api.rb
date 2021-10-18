@@ -495,6 +495,7 @@ module AresMUSH
 				dname = dname.gsub("^", "")	
 				if ( dname == ifnamedowncase )
 					ifdisabled = true
+				end
 			end
 
 			# if (ttss.length > 0) # Check to see if this is an excluded trait because of the selection.
