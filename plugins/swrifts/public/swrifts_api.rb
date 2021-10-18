@@ -593,6 +593,7 @@ module AresMUSH
 		##########################
 		cgedgearray = []
 		cgp = ''
+		testret = []
 
 		if ( acldb )
 			# cg.each do |c|
@@ -624,12 +625,12 @@ module AresMUSH
 
 			if (fw == "nofw")
 			trdisabled = false
-			return ("#{cg.inspect}")
 			# CG = character traits, cgsys = systemtraits.
 				cg.each do |c|
 					cgname = "#{c.name}"
 					cgname = cgname.downcase
 					cgnamesub = cgname.gsub("^", "*")
+					testret << {name: "#{cgname}", subname: "#{cgnamesub}"}
 					if (!cgnamesub.include?("*"))
 						cgname = cgname[/[^*]+/]
 						cgname = cgname[/[^^]+/]
@@ -675,7 +676,8 @@ module AresMUSH
 				end
 			end
 		end
-		return (cgedgearray)
+		return ("#{testret}")
+		# return (cgedgearray)
 	end
 
 	def self.acl_get_hj_slots(swrifts_iconicf, charicf) #swrifts_icf is the system icf's, charicf is the one selected by the player
