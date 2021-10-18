@@ -384,7 +384,7 @@ module AresMUSH
 						trex = trexlarray['excludes']
 						if ( trex.length > 0 )
 							trex.each do |t|
-								ttss << { name: "#{dname}", exclude: "#{t}" }
+								# ttss << { name: "#{dname}", exclude: "#{t}" }
 							end
 						end
 					end
@@ -396,7 +396,7 @@ module AresMUSH
 							prearray = preqs.select { |ss| ss['iconicf'] }
 							if ( prearray.length > 0 )
 								prearray.each do |t|
-									ttss << { icfex: "#{t['iconicf']}" }
+									# ttss << { icfex: "#{t['iconicf']}" }
 									# return("#{t['iconicf']} #{charicf[:class]}")									
 									# If the ICF chosen by the player doesn't match t['iconicf'] then remove this trait from the main array (cg).																		
 									if ( charicf[:class].downcase != t['iconicf'].downcase ) 
@@ -422,7 +422,7 @@ module AresMUSH
 				end
 			end
 		end
-return ("TTSS: #{ttss}")
+# return ("TTSS: #{ttss}")
 
         list = cgsys.sort_by { |a| a['name']} #convert the system traits (that's whole honking lot of them) to an array and sort by name.
 		list.each do |c| #cycle through the array so we can set the appropriate ones to disabled
