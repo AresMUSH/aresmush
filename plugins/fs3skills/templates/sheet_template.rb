@@ -29,9 +29,9 @@ module AresMUSH
 
       def action_skills
         list = []
-        @char.fs3_action_skills.sort_by(:schools).each_with_index do |a, i|
-          schools = Global.read_config("schools")
-          if !schools.include? a.name
+        @char.fs3_action_skills.sort_by(:magic_spheres).each_with_index do |a, i|
+          magic_spheres = Global.read_config("magic_spheres")
+          if !magic_spheres.include? a.name
             if a.rating_name != "Incapable"
               list << format_attr(a, i)
             end
@@ -40,9 +40,9 @@ module AresMUSH
         list
       end
 
-      def schools
+      def magic_spheres
        list = []
-        @char.fs3_action_skills.sort_by(:schools).each_with_index do |a, i|
+        @char.fs3_action_skills.sort_by(:magic_spheres).each_with_index do |a, i|
           if (a.name == "Air") || (a.name == "Corpus") || (a.name == "Earth") || (a.name =="Fire") || (a.name == "Nature") || (a.name == "Spirit") || (a.name == "Water") || (a.name == "Will")
             if a.rating_name != "Incapable"
               list << format_attr(a, i)
@@ -150,9 +150,9 @@ module AresMUSH
 
       def action_skills
         list = []
-        @char.fs3_action_skills.sort_by(:schools).each_with_index do |a, i|
-          schools = Global.read_config("schools")
-          if !schools.include? a.name
+        @char.fs3_action_skills.sort_by(:magic_spheres).each_with_index do |a, i|
+          magic_spheres = Global.read_config("magic_spheres")
+          if !magic_spheres.include? a.name
             if a.rating_name != "Incapable"
               list << format_attr(a, i)
             end
@@ -161,9 +161,9 @@ module AresMUSH
         list
       end
 
-      def schools
+      def magic_spheres
        list = []
-        @char.fs3_action_skills.sort_by(:schools).each_with_index do |a, i|
+        @char.fs3_action_skills.sort_by(:magic_spheres).each_with_index do |a, i|
           if (a.name == "Air") || (a.name == "Corpus") || (a.name == "Earth") || (a.name =="Fire") || (a.name == "Nature") || (a.name == "Spirit") || (a.name == "Water") || (a.name == "Will")
             if a.rating_name != "Incapable"
               list << format_attr(a, i)
