@@ -422,8 +422,7 @@ module AresMUSH
 				end
 			end
 		end
-# return ("TTSS: #{ttss}")
-
+		
         list = cgsys.sort_by { |a| a['name']} #convert the system traits (that's whole honking lot of them) to an array and sort by name.
 		list.each do |c| #cycle through the array so we can set the appropriate ones to disabled
 			# whatsthis << { name: c }
@@ -493,22 +492,28 @@ module AresMUSH
 				trexcludes = '';
 			end
 			
+			#Now we do this the other way. Find if the current trait has been selected by the player and mark it disabled from selection
 			
-			
+			traitchosen = cg.select { |tc|  ss['name'].downcase == ifnamedowncase }
+			if ( traitchosen.length > 0 )
+				ifdisabled = true
+			else
+				ifdisabled = false
+			end
 
 			# if (ttss.length > 0) # Check to see if this is an excluded trait because of the selection.
 				# ttss.each do |f|
 					# f.each do |k, v|					
 						# if ( k == 'name' && ifnamedowncase == v.downcase )
-							# ifdisabled = true
+							# ifdisabled = true							
 						# end
 					# end
 				# end
 			# end
-
+			
 			iconicfarray << {name: ifname, disabled: ifdisabled, desc: desc, trexcludes: trexcludes}
 		end
-		return ("TTSS: #{ttss}")
+		# return ("TTSS: #{ttss}")
 		return ( iconicfarray )
 	end
 
