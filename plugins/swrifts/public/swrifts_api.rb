@@ -608,7 +608,7 @@ module AresMUSH
 							if ( traittype == 'hind' && edgsel['excludes'])
 								trexcludes = edgsel['excludes'];
 							else
-								trexcludes = '';
+								trexcludes = 'false';
 							end
 						end
 						cgedgearray << {name: cgname, disabled: 'false', class: c.name, rating: cgdesc, trexcludes: trexcludes}
@@ -633,7 +633,7 @@ module AresMUSH
 							if ( traittype == 'hind' && edgsel['excludes'])
 								trexcludes = edgsel['excludes'];
 							else
-								trexcludes = '';
+								trexcludes = 'false';
 							end							
 						end
 						cgedgearray << {name: cgname, disabled: trdisabled, class: c.name, rating: cgdesc, trexcludes: trexcludes }
@@ -659,7 +659,7 @@ module AresMUSH
 							if ( traittype == 'hind' && edgsel['excludes'])
 								trexcludes = edgsel['excludes'];
 							else
-								trexcludes = '';
+								trexcludes = 'false';
 							end
 						end
 						cgedgearray << {name: cgname, disabled: trdisabled, class: c.name, rating: cgdesc, trexcludes: trexcludes}
