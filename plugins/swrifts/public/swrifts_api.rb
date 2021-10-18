@@ -641,14 +641,11 @@ module AresMUSH
 								trexcludes = edgsel['excludes'];
 							else
 								trexcludes = '';
-							end
-							
-							# testret << {name: "#{cgname}", subname: "#{cgnamesub}", edge: "#{edgsel['name']}", disabled: trdisabled}							
+							end							
 						end
 						cgedgearray << {name: cgname, disabled: trdisabled, class: c.name, rating: cgdesc, trexcludes: trexcludes}
 					end
 				end
-				return ("Testret: #{cgedgearray}")
 			end
 
 			if (fw == "fw")
@@ -677,8 +674,7 @@ module AresMUSH
 				end
 			end
 		end
-		return ("Testret: #{testret}")
-		# return (cgedgearray)
+		return (cgedgearray)
 	end
 
 	def self.acl_get_hj_slots(swrifts_iconicf, charicf) #swrifts_icf is the system icf's, charicf is the one selected by the player
