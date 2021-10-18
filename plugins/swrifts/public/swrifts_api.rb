@@ -622,6 +622,7 @@ module AresMUSH
 					cgname = "#{c.name}"
 					cgname = cgname.downcase
 					cgnamesub = cgname.gsub("^", "*")
+					trexcludes = 'kkkkk'
 					if (!cgnamesub.include?("*"))
 						cgname = cgname[/[^*]+/]
 						cgname = cgname[/[^^]+/]
