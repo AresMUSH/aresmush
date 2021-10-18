@@ -434,11 +434,10 @@ module AresMUSH
 			if ( traittype == 'hind' && c['excludes'] )
 				trexcludes = c['excludes'];
 				# return ("#{trexcludes}")
-				whatsthis << { name: "#{trexcludes}" }
 				if ( trexcludes.length > 0 )
 					trexcludes.each do |t|
 						# incg = cg.select { |h| h['name'].downcase == t["name"].downcase }
-						whatsthis << { trex: "#{t}" }
+						whatsthis << { trex: "#{t}", incg: "#{incg}" }
 						# if ( incg )
 							# ifdisabled = true
 						# end
