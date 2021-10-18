@@ -631,7 +631,8 @@ module AresMUSH
 							cgdesc = edgsel['description']
 							trdisabled = true;
 							if ( traittype == 'hind' && edgsel['excludes'])
-								trexcludes = edgsel['excludes'];
+								# trexcludes = edgsel['excludes'];
+								trexcludes = 'yeah something';
 							else
 								trexcludes = 'false';
 							end							
