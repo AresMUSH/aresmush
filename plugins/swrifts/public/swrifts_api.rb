@@ -451,7 +451,7 @@ module AresMUSH
 			if ( traittype == 'hind' )
 				# Go through excluded hinderances and mark them as disabled
 				if ( ttss.length > 0)
-					incg = ttss.select { |ss| ss['exclude'].downcase == ifnamedowncase }
+					incg = ttss.select { |ss| ss[:exclude].downcase == ifnamedowncase }
 					if ( incg )
 										return ("#{incg}")
 					end
