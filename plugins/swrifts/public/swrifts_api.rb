@@ -366,6 +366,9 @@ module AresMUSH
 		whatsthis = []
 		ttsl = []
 		
+		if ( traittype == 'hind' )
+			return ( "CGSYS: #{cgsys} - CGHIND: #{cg}" )
+		}
 
 		# Create an array of the excluded traits for the ones that are already set on the character.
 		cg.each do |d|
@@ -419,8 +422,6 @@ module AresMUSH
 				end
 			end
 		end
-
-# return ( "#{ttsl}" )
 
         list = cgsys.sort_by { |a| a['name']} #convert the system traits (that's whole honking lot of them) to an array and sort by name.
 		list.each do |c| #cycle through the array so we can set the appropriate ones to disabled
