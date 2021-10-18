@@ -455,8 +455,8 @@ module AresMUSH
 					if ( incg.length > 0 )
 						incg.each do |ic|
 							# return ("#{ic}")
-							# ifdisabled = true
-							# trexcludes = ic[:exclude]
+							ifdisabled = true
+							trexcludes = ic[:exclude]
 							# whatsthis << { name: ifnamedowncase, excluded: "yes" }
 						end
 					else
