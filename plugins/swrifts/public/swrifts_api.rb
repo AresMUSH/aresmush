@@ -624,7 +624,7 @@ module AresMUSH
 
 			if (fw == "nofw")
 			trdisabled = false
-			return ("#{cg}")
+			return ("#{cg.inspect}")
 			# CG = character traits, cgsys = systemtraits.
 				cg.each do |c|
 					cgname = "#{c.name}"
