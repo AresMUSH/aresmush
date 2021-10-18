@@ -451,7 +451,7 @@ return ("TTSS: #{ttss}")
 			if ( traittype == 'hind' )
 				# Go through excluded hinderances and mark them as disabled
 				if ( ttss.length > 0)
-					incg = ttss.select ( |ic| ic['name'].downcase == ifnamedowncase
+					incg = ttss.select { |ic| ic['name'].downcase == ifnamedowncase }
 					whatsthis << { name: ifnamedowncase, incg: "#{incg}" }
 				end
 			end
