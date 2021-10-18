@@ -367,7 +367,7 @@ module AresMUSH
 		ttsl = []
 		
 		if ( traittype == 'hind' )
-			# return ( "CGHIND: #{cg}" )
+			return ( "CGHIND: #{cg}" )
 		end
 
 		# Create an array of the excluded traits for the ones that are already set on the character.
