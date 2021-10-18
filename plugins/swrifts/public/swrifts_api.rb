@@ -676,7 +676,7 @@ module AresMUSH
 				end
 			end
 		end
-		return ("#{testret}")
+		return ("Testret: #{testret}")
 		# return (cgedgearray)
 	end
 
