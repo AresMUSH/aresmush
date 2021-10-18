@@ -384,15 +384,7 @@ module AresMUSH
 						trex = trexlarray['excludes']
 						if ( trex.length > 0 )
 							trex.each do |t|
-								ttss << { hind: "#{dname}", exclude: "#{t}" }
-									# return("#{t['iconicf']} #{charicf[:class]}")									
-									# If the ICF chosen by the player doesn't match t['iconicf'] then remove this trait from the main array (cg).																		
-									# if ( charicf[:class].downcase != t['iconicf'].downcase ) 
-										# cg.delete(d.name)
-										# d.delete
-										# return ( "#{charicf[:class]} " "#{t['iconicf']} " "#{d.name} " "#{cg.class} #{d.class}" )
-										# return ( "#{cg}" )
-									# end
+								ttss << { name: "#{dname}", exclude: "#{t}" }
 							end
 						end
 					end
@@ -428,12 +420,6 @@ module AresMUSH
 						end
 					end
 				end
-
-				if (trex && traittype == 'hind' )
-					trex.each do |e|
-						ttss << {name: e.downcase}
-					end
-				end
 			end
 		end
 return ("TTSS: #{ttss}")
@@ -446,22 +432,29 @@ return ("TTSS: #{ttss}")
 			ifnamedowncase = ifname.downcase
 			desc = c['description']
 
-			if ( traittype == 'hind' && c['excludes'] )
-				trexcludes = c['excludes'];
+			# if ( traittype == 'hind' && c['excludes'] )
+				# trexcludes = c['excludes'];
 				# return ("#{trexcludes}")
-				if ( trexcludes.length > 0 )
-					trexcludes.each do |t|
-						incg = cg.select { |h| h['name'].downcase == t.downcase }
-						whatsthis << { trex: "#{t}" }
+				# if ( trexcludes.length > 0 )
+					# trexcludes.each do |t|
+						# incg = cg.select { |h| h['name'].downcase == t.downcase }
+						# whatsthis << { trex: "#{t}" }
 						# if ( incg )
 							# ifdisabled = true
 						# end
-					end
-				end
-			else
-				trexcludes = "";
-			end
+					# end
+				# end
+			# else
+				# trexcludes = "";
+			# end
 
+			if ( traittype == 'hind' )
+				# Go through excluded hinderances and mark them as disabled
+				if ( ttss.length > 0)
+					incg = ttss.select ( |ic| ic['name'].downcase == ifnamedowncase
+					whatsthis << { name: ifnamedowncase, incg: "#{incg}" }
+				end
+			end
 			if ( traittype == 'edge' && c['pre-reqs'] )
 				trex = ''
 				preqs = c['pre-reqs']
