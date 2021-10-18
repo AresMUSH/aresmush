@@ -366,10 +366,6 @@ module AresMUSH
 		whatsthis = []
 		ttsl = []
 		
-		# if ( traittype == 'hind' )
-			# return ( "CGHIND: #{cg.inspect}" )
-		# end
-
 		# Create an array of the excluded traits for the ones that are already set on the character.
 		cg.each do |d|
 			ttsl << { name: "#{d.name}" }
@@ -492,14 +488,16 @@ module AresMUSH
 				trexcludes = '';
 			end
 			
-			#Now we do this the other way. Find if the current trait has been selected by the player and mark it disabled from selection
-			
-			return ("CG: #{cg}")
-			traitchosen = cg.select { |tc| tc['name'].downcase == ifnamedowncase }
-			if ( traitchosen.length > 0 )
-				ifdisabled = true
-			else
-				ifdisabled = false
+			#Now we do this the other way. Find if the current trait has been selected by the player and mark it disabled from selection	
+			cg.each do |d|	
+				dname = d.name.downcase
+				dname = dname.gsub("*", "")
+				dname = dname.gsub("^", "")	
+				if ( dname == ifnamedowncase )
+					ifdisabled = true
+				else
+					ifdisabled = false
+				end
 			end
 
 			# if (ttss.length > 0) # Check to see if this is an excluded trait because of the selection.
