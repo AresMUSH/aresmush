@@ -1634,7 +1634,6 @@ swrifts:
                 Vigor: 4
             hinderances: 
                 - Ugly-*
-                    - (Inhuman)
             edges:
                 - Fleet-Footed*
                 - Size*
