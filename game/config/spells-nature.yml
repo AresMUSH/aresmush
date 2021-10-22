@@ -448,7 +448,7 @@ spells:
     rounds: 100
     school: Nature
     range: Self
-    weapon: Claws
+    weapon: Teeth
   Wild Shape Crocodile:
     available: false
     armor: Crocodile
