@@ -140,7 +140,7 @@ module AresMUSH
       elsif !Magic.is_spell?(weapon_or_spell)
         t('magic.shield_failed_against_attack', :name => caster_name, :weapon => weapon_or_spell, :mod => "", :shield => shield.name, :target => target.name)
       elsif type_does_damage
-        t('magic.shield_failed', :name => caster_name, :spell => weapon_or_spell, :mod => "", :shield => shield.name, :target => target.name)
+        t('magic.shield_failed', :name => caster_name, :spell => weapon_or_spell, :mod => "", :shield => "Shield name", :target => target.name)
       elsif is_stun
          t('magic.shield_failed_stun', :name => caster_name, :spell => weapon_or_spell, :shield=> shield.name, :mod => "", :target => target.name, :rounds => Global.read_config("spells", weapon_or_spell, "rounds"))
       else
