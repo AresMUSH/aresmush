@@ -122,7 +122,7 @@ module AresMUSH
       wound = FS3Combat.worst_treatable_wound(target)
       if wound.blank?
         message = [t('magic.cast_heal_no_effect', :name => caster_name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target => target.name, :points => heal_points)]
-      elsif Manage.is_extra_installed?("death") && combat && target.combatant.death_count > 0
+      elsif Manage.is_extra_installed?("death") && combat && target_char_or_combatant.death_count > 0
         puts "!!!RUNNING DEATH"
         message = [t('magic.cast_ko_heal', :name => caster_name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target => target.name, :points => heal_points)]
         Death.one(target.combatant)
