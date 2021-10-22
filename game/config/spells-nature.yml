@@ -436,6 +436,19 @@ spells:
     school: Nature
     range: Self
     weapon: Claws
+  Wild Shape Chrysopelea:
+    available: true
+    armor: Bird
+    damage_type: Bypass
+    desc: Wild Shape Chrysopelea.
+    defense_mod: 1
+    effect: Transformation
+    level: 5
+    name: Wild Shape Chrysopelea
+    rounds: 100
+    school: Nature
+    range: Self
+    weapon: Claws
   Wild Shape Crocodile:
     available: false
     armor: Crocodile
