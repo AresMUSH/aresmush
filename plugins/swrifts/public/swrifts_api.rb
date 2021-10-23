@@ -560,9 +560,9 @@ module AresMUSH
 			swrifts_race = Swrifts.find_race_config(racename) #get the Race entry we're working with from the yml
 			# Is there a character icf selected?
 			if ( ifname.length > 0 && ifname != "none" )
-                  return ("Race: #{racestring}, disabled: #{ifdisabled}") 
 				rc = Swrifts.race_check(char, swrifts_race, racename, ifname)
 				if (rc == true)
+          return ("Race: #{racestring}, disabled: #{ifdisabled}")           
 					ifdisabled = true
 				end
 			end
