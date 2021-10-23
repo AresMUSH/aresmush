@@ -561,7 +561,6 @@ module AresMUSH
 			# Is there a character icf selected?
 			if ( ifname.length > 0 && ifname != "none" )
 				rc = Swrifts.race_check(char, swrifts_race, racename, ifname)
-        return ("#{rc}")
 				if (rc == true)
 					ifdisabled = true
 				end
