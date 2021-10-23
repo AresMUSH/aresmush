@@ -18,9 +18,10 @@ module AresMUSH
 			if ( norace_icf )
 				nr_value = norace_icf[1]
 				# norace_icf = norace_icf.include?("No Race")
+				nr_value = nr_value.include?("No Race")
 				return (nr_value)
 			end
-			
+
 			if dragon_race && dragon_icf
 				return false
 			elsif dragon_race || dragon_icf
