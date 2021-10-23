@@ -570,7 +570,7 @@ module AresMUSH
 		end
 		blankstrg = {name: "None ~ Select to reset Race", disabled: false, desc: 'Choose to reset Race', class: 'none'}
 		racearray.unshift(blankstrg)
-		return (racearray)
+		return ("#{racearray}")
 	end
 
 	def self.returncgpforcg(cg)
