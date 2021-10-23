@@ -527,7 +527,6 @@ module AresMUSH
 	end
 
 	def self.returnraceforcg(char, swrifts_race, ifname, model)
-    char, swrifts_race, rawcharicf, swrifts_race
 		# char: character
     # swrifts_race: system races
     # ifname: rawcharicf
