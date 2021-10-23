@@ -15,8 +15,9 @@ module AresMUSH
 			dragon_race = race_name.include?("dragon")
 			dragon_icf = icf_name.include?("dragon")
 			norace_icf = iconicf.select{ |nr| nr == 'complications' }.first #pull the complications from the ICF array
+			nr_value = norace_icf[1]
 			# norace_icf = norace_icf.include?("No Race")
-			return (norace_icf)
+			return (nr_value)
 
 			if dragon_race && dragon_icf
 				return false
