@@ -365,7 +365,7 @@ module AresMUSH
 		ttss = []
 		whatsthis = []
 		ttsl = []
-		
+
 		# Create an array of the excluded traits for the ones that are already set on the character.
 		cg.each do |d|
 			ttsl << { name: "#{d.name}" }
@@ -392,9 +392,9 @@ module AresMUSH
 							prearray = preqs.select { |ss| ss['iconicf'] }
 							if ( prearray.length > 0 )
 								prearray.each do |t|
-									ttss << { icfex: "#{t['iconicf']}" }							
-									# If the ICF chosen by the player doesn't match t['iconicf'] then remove this trait from the main array (cg).																		
-									if ( charicf[:class].downcase != t['iconicf'].downcase ) 
+									ttss << { icfex: "#{t['iconicf']}" }
+									# If the ICF chosen by the player doesn't match t['iconicf'] then remove this trait from the main array (cg).
+									if ( charicf[:class].downcase != t['iconicf'].downcase )
 										d.delete
 									end
 								end
@@ -403,7 +403,7 @@ module AresMUSH
 							if ( prearray.length > 0 )
 								prearray.each do |t|
 									ttss << { raceex: "#{t['race']}" }
-									# If the Race chosen by the player doesn't match t['race'] then remove this trait from the main array (cg).										
+									# If the Race chosen by the player doesn't match t['race'] then remove this trait from the main array (cg).
 									if ( charrace[:class].downcase != t['race'].downcase )
 										d.delete
 									end
@@ -414,7 +414,7 @@ module AresMUSH
 				end
 			end
 		end
-		
+
         list = cgsys.sort_by { |a| a['name']} #convert the system traits (that's whole honking lot of them) to an array and sort by name.
 		list.each do |c| #cycle through the array so we can set the appropriate ones to disabled
 			# whatsthis << { name: c }
@@ -446,9 +446,9 @@ module AresMUSH
 				if ( preqs.length > 0 )
 					prearray = preqs.select { |ss| ss['iconicf'] }
 					if ( prearray.length > 0 )
-						prearray.each do |t|							
-							# If the edge requires a specific ICF and that's not chosen, then disable it.																		
-							if ( charicf[:class].downcase != t['iconicf'].downcase ) 
+						prearray.each do |t|
+							# If the edge requires a specific ICF and that's not chosen, then disable it.
+							if ( charicf[:class].downcase != t['iconicf'].downcase )
 								if ( t['iconicf'].length > 0 )
 									trexcludes = t['iconicf']
 								else
@@ -461,11 +461,11 @@ module AresMUSH
 					prearray = preqs.select { |ss| ss['race'] }
 					if ( prearray.length > 0 )
 						prearray.each do |t|
-							# If the Race chosen by the player doesn't match t['race'] then remove this trait from the main array (cg).										
+							# If the Race chosen by the player doesn't match t['race'] then remove this trait from the main array (cg).
 							if ( charrace[:class].downcase != t['race'].downcase )
 								if ( t['race'].length > 0)
 									trexcludes = t['race']
-								else	
+								else
 									trexcludes = ''
 								end
 								ifdisabled = true
@@ -476,16 +476,16 @@ module AresMUSH
 			else
 				trexcludes = ''
 			end
-			
-			#Now we do this the other way. Find if the current trait has been selected by the player and mark it disabled from selection	
-			cg.each do |d|	
+
+			#Now we do this the other way. Find if the current trait has been selected by the player and mark it disabled from selection
+			cg.each do |d|
 				dname = d.name.downcase
 				dname = dname.gsub("*", "")
-				dname = dname.gsub("^", "")	
+				dname = dname.gsub("^", "")
 				if ( dname == ifnamedowncase )
 					ifdisabled = true
 				end
-			end		
+			end
 			iconicfarray << {name: ifname, disabled: ifdisabled, desc: desc, trexcludes: trexcludes}
 		end
 		# return ("TTSS: #{ttss}")
@@ -527,9 +527,14 @@ module AresMUSH
 	end
 
 	def self.returnraceforcg(char, swrifts_race, ifname, model)
-		#(char, swrifts_race, rawcharrace, swrifts_iconicf)
+    char, swrifts_race, rawcharicf, swrifts_race
+		# char: character
+    # swrifts_race: system races
+    # ifname: rawcharicf
+    # model: system races (again?)
+    return ( "Swrifts race: #{swrifts_race} ifname: #{ifname} model: #{model}" )
 		racearray = []
-        list = model.sort_by { |a| a['name']}
+    list = model.sort_by { |a| a['name']}
 		list.each do |c|
 			racename = c['name'];
 			desc = c['desc']
@@ -638,7 +643,7 @@ module AresMUSH
 								trexcludes = edgsel['excludes'];
 							else
 								trexcludes = 'false';
-							end	
+							end
 						else
 							trexcludes = 'false';
 						end
