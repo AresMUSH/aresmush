@@ -561,7 +561,6 @@ module AresMUSH
 			# Is there a character icf selected?
 			if ( ifname.length > 0 && ifname != "none" )
 				rc = Swrifts.race_check(char, swrifts_race, racename, ifname)
-        #re#turn ("RC #{rc}")
 				if (rc == true)
 					ifdisabled = true
 				end
@@ -572,7 +571,7 @@ module AresMUSH
 		end
 		blankstrg = {name: "None ~ Select to reset Race", disabled: false, desc: 'Choose to reset Race', class: 'none'}
 		racearray.unshift(blankstrg)
-		return ("#{racearray}")
+		return (racearray)
 	end
 
 	def self.returncgpforcg(cg)
