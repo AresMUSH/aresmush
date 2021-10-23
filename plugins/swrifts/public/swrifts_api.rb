@@ -531,10 +531,10 @@ module AresMUSH
     # swrifts_race: system races
     # ifname: rawcharicf
     # model: system races (again?)
-    return ( "Swrifts race: #{swrifts_race} ifname: #{ifname} model: #{model}" )
+    # return ( "Swrifts race: #{swrifts_race} ifname: #{ifname} model: #{model}" )
 		racearray = []
-    list = model.sort_by { |a| a['name']}
-		list.each do |c|
+    list = model.sort_by { |a| a['name']} #sort the system icf or race by name.
+		list.each do |c| #loop though the list and assign the variables needed.
 			racename = c['name'];
 			desc = c['desc']
 			book = c['book_reference']
@@ -564,6 +564,8 @@ module AresMUSH
 					ifdisabled = true
 				end
 			end
+
+
 			racearray << {name: racestring, disabled: ifdisabled, desc: desc, class: racename}
 
 		end
