@@ -532,6 +532,7 @@ module AresMUSH
     # ifname: rawcharicf
     # model: system races (again?)
     # return ( "Swrifts race: #{swrifts_race} ifname: #{ifname} model: #{model}" )
+    return ( "Swrifts race: #{swrifts_race}" )
 		racearray = []
     list = model.sort_by { |a| a['name']} #sort the system icf or race by name.
 		list.each do |c| #loop though the list and assign the variables needed.
@@ -557,15 +558,13 @@ module AresMUSH
 
 			ifdisabled=false # Will need better logic here.
 			swrifts_race = Swrifts.find_race_config(racename) #get the Race entry we're working with from the yml
-			# Is there a character race selected?
+			# Is there a character icf selected?
 			if ( ifname.length > 0 && ifname != "none" )
 				rc = Swrifts.race_check(char, swrifts_race, racename, ifname)
 				if (rc == true)
 					ifdisabled = true
 				end
 			end
-
-
 			racearray << {name: racestring, disabled: ifdisabled, desc: desc, class: racename}
 
 		end
