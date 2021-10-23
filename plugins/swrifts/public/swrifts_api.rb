@@ -563,7 +563,6 @@ module AresMUSH
 				rc = Swrifts.race_check(char, swrifts_race, racename, ifname)
         return ("RC #{rc}")
 				if (rc == true)
-          #return ("Race: #{racestring}, disabled: #{ifdisabled}")
 					ifdisabled = true
 				end
 			end
