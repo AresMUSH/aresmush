@@ -14,7 +14,8 @@ module AresMUSH
 
 			dragon_race = race_name.include?("dragon")
 			dragon_icf = icf_name.include?("dragon")
-			return (iconicf)
+			norace_icf = iconicf['complications']
+			return (norace_icf)
 
 			if dragon_race && dragon_icf
 				return false
