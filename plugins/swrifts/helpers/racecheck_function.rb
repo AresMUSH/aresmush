@@ -12,15 +12,19 @@ module AresMUSH
 				iconicf = Swrifts.find_iconicf_config(icf_name) #get the Iconic Framework entry we're working with from the
 			end
 
-			dragon_race = race_name.include?("dragon")
-			dragon_icf = icf_name.include?("dragon")
+			# We need to check if the ICF can actually have a race at all.  If it can't just don't do the rest of this function.
 			norace_icf = iconicf.select{ |nr| nr == 'complications' }.first #pull the complications from the ICF array
 			if ( norace_icf )
 				nr_value = norace_icf[1]
 				# norace_icf = norace_icf.include?("No Race")
 				nr_value = nr_value.include?("No Race")
-				return (nr_value)
-			end
+				if (nr_value == true)
+					return
+				end
+			end	
+
+			dragon_race = race_name.include?("dragon")
+			dragon_icf = icf_name.include?("dragon")
 
 			if dragon_race && dragon_icf
 				return false
