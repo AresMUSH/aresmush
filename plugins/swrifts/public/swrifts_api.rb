@@ -564,8 +564,9 @@ module AresMUSH
 				if (rc == true)
 					ifdisabled = true
 				end
+              return ("Race: #{racestring}, disabled: #{ifdisabled}")
 			end
-      return ("Race: #{racestring}, disabled: #{ifdisabled}")
+
 			racearray << {name: racestring, disabled: ifdisabled, desc: desc, class: racename}
 
 		end
