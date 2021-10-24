@@ -483,7 +483,6 @@ module AresMUSH
 				trexcludes = ''
 			end
 
-return ("#{whatsthis}")
 			#Now we do this the other way. Find if the current trait has been selected by the player and mark it disabled from selection
 			cg.each do |d|
 				dname = d.name.downcase
@@ -495,6 +494,7 @@ return ("#{whatsthis}")
 			end
 			iconicfarray << {name: ifname, disabled: ifdisabled, desc: desc, trexcludes: trexcludes}
 		end
+    return ("#{whatsthis}")
 		# return ("TTSS: #{ttss}")
 		return ( iconicfarray )
 	end
