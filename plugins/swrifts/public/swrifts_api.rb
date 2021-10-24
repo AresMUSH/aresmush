@@ -418,7 +418,7 @@ module AresMUSH
     list = cgsys.sort_by { |a| a['name']} #convert the system traits (that's whole honking lot of them) to an array and sort by name.
 
 		list.each do |c| #cycle through the array so we can set the appropriate ones to disabled
-			# whatsthis << { name: c }
+			whatsthis << { name: c }
 			ifdisabled = false
 			ifname = c['name']
 			ifnamedowncase = ifname.downcase
@@ -440,6 +440,7 @@ module AresMUSH
 					end
         else
           if ( c['excludes'] )
+            whatthis << {excludes: c['excludes']}
             trexcludes = c['excludes']
           end
 				end
@@ -482,6 +483,7 @@ module AresMUSH
 				trexcludes = ''
 			end
 
+return ("#{whatsthis}")
 			#Now we do this the other way. Find if the current trait has been selected by the player and mark it disabled from selection
 			cg.each do |d|
 				dname = d.name.downcase
