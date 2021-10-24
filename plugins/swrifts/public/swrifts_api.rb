@@ -440,7 +440,7 @@ module AresMUSH
 					end
         else
           if ( c['excludes'].length > 0 )
-            whatsthis << {excludes: c['excludes']}
+            whatthis << {name: c['name'], excludes: c['excludes']}
             trexcludes = c['excludes']
           end
 				end
@@ -494,7 +494,7 @@ module AresMUSH
 			end
 			iconicfarray << {name: ifname, disabled: ifdisabled, desc: desc, trexcludes: trexcludes}
 		end
-    return ("#{whatsthis}")
+    return ("#{whatthis}")
 		# return ("TTSS: #{ttss}")
 		return ( iconicfarray )
 	end
