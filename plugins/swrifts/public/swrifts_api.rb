@@ -365,6 +365,7 @@ module AresMUSH
 		ttss = []
 		whatsthis = []
 		ttsl = []
+    whatthis = []
 
 		# Create an array of the excluded traits for the ones that are already set on the character.
 		cg.each do |d|
