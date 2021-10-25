@@ -1702,6 +1702,8 @@ swrifts:
                 - Magic*
                 - Needs Action*
                 - Unstable Psyche*
+                - Inhuman Physiology+^
+                - Inhuman Physiology++^
         -
             name: Cyber-Knight
             book_reference: TLPG
@@ -1820,6 +1822,8 @@ swrifts:
                 - Cybernetics*
                 - Drug-induced Euphoria/Tranquility
                 - Psionics and Magic*
+                - Inhuman Physiology+^
+                - Inhuman Physiology++^                
         -
             name: Ley Line Walker
             book_reference: TLPG
