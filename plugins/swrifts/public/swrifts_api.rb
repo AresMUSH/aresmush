@@ -419,6 +419,9 @@ module AresMUSH
     list = cgsys.sort_by { |a| a['name']} #convert the system traits (that's whole honking lot of them) to an array and sort by name.
 
 		list.each do |c| #cycle through the array so we can set the appropriate ones to disabled
+      if (c['name'] == "Bad Eyes-")
+        return ("name: #{c['name']}, excludes: #{c['excludes']}")
+      end
 			whatsthis << { name: c['name'], trexcludes: c['excludes'] }
 			ifdisabled = false
 			ifname = c['name']
