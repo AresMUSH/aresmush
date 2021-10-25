@@ -501,7 +501,7 @@ module AresMUSH
 			end
 
       if (c['name'] == "Arcane Averse+")
-        return ("Name: #{c:name}, TREXCL: #{trexcludes}")
+        return ("Name: #{c['name']}, TREXCL: #{trexcludes}")
       end
 			iconicfarray << {name: ifname, disabled: ifdisabled, desc: desc, trexcludes: trexcludes}
 		end
