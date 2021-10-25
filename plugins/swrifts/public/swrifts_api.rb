@@ -436,7 +436,7 @@ module AresMUSH
 							trexcludes = ic[:exclude]
 						end
 					else
-            whatthis << (exclude: c['excludes'])
+            whatthis << {exclude: c['excludes']}
             if ( c['excludes'] )
   					  trexcludes = c['excludes']
             else
