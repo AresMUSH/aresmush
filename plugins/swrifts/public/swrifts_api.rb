@@ -487,7 +487,7 @@ module AresMUSH
 					end
 				end
 			else
-				#trexcludes = ''
+				trexcludes = ''
 			end
 
 			#Now we do this the other way. Find if the current trait has been selected by the player and mark it disabled from selection
