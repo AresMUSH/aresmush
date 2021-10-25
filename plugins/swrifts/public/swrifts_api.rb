@@ -433,10 +433,10 @@ module AresMUSH
 					if ( incg.length > 0 )
 						incg.each do |ic|
 							ifdisabled = true
-							trexcludes = ic[:exclude]
+							trexcludes = c['excludes']
 						end
             if (c['name'] == "Bad Eyes-")
-              return ("name: #{c['name']}, excludes: #{c['excludes']}, trexcludes: #{trexcludes}")
+              #return ("name: #{c['name']}, excludes: #{c['excludes']}, trexcludes: #{trexcludes}")
             end
 					else
             whatthis << {exclude: c['excludes']}
