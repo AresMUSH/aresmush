@@ -419,7 +419,6 @@ module AresMUSH
     list = cgsys.sort_by { |a| a['name']} #convert the system traits (that's whole honking lot of them) to an array and sort by name.
 
 		list.each do |c| #cycle through the array so we can set the appropriate ones to disabled
-			whatsthis << { name: c['name'], trexcludes: c['excludes'] }
 			ifdisabled = false
 			ifname = c['name']
 			ifnamedowncase = ifname.downcase
@@ -436,9 +435,7 @@ module AresMUSH
 							trexcludes = c['excludes']
 						end
 					else
-            whatthis << {exclude: c['excludes']}
             if ( c['excludes'] )
-              whatthis << {exclude1: c['excludes']}
   					  trexcludes = c['excludes']
             else
               trexcludes = ''
@@ -498,11 +495,10 @@ module AresMUSH
 					ifdisabled = true
 				end
 			end
-      
+
 			iconicfarray << {name: ifname, disabled: ifdisabled, desc: desc, trexcludes: trexcludes}
 		end
-    #return ("#{whatthis}")
-		# return ("TTSS: #{ttss}")
+
 		return ( iconicfarray )
 	end
 
