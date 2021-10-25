@@ -432,15 +432,15 @@ module AresMUSH
 				# Go through excluded hinderances and mark them as disabled
 				trexcludes = ''
 				if ( ttss.length > 0)
-          if (c['name'] == "Bad Eyes-")
-            return ("name: #{c['name']}, excludes: #{c['excludes']}")
-          end          
   					incg = ttss.select { |ss| ss[:exclude].downcase == ifnamedowncase }
 					if ( incg.length > 0 )
 						incg.each do |ic|
 							ifdisabled = true
 							trexcludes = ic[:exclude]
 						end
+            if (c['name'] == "Bad Eyes-")
+              return ("name: #{c['name']}, excludes: #{c['excludes']}, trexcludes: #{trexcludes}")
+            end           
 					else
             whatthis << {exclude: c['excludes']}
             if ( c['excludes'] )
