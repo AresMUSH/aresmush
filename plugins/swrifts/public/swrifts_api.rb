@@ -499,14 +499,14 @@ module AresMUSH
 				end
 			end
 
-      if (c['name'] == "Arcane Averse+")
-        return ("Name: #{c['name']}, TREXCL: #{trexcludes}")
-      end
+      #if (c['name'] == "Arcane Averse+")
+      #return ("Name: #{c['name']}, TREXCL: #{trexcludes}")
+    #end
 			iconicfarray << {name: ifname, disabled: ifdisabled, desc: desc, trexcludes: trexcludes}
 		end
-    return ("#{whatthis}")
+    #return ("#{whatthis}")
 		# return ("TTSS: #{ttss}")
-		#return ( iconicfarray )
+		return ( iconicfarray )
 	end
 
 	def self.returninitcgforcg(model)
