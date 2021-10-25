@@ -429,22 +429,24 @@ module AresMUSH
 				# Go through excluded hinderances and mark them as disabled
 				trexcludes = ''
 				if ( ttss.length > 0)
-          whatthis << {name: c['name1'], excludes: c['excludes']}
-					incg = ttss.select { |ss| ss[:exclude].downcase == ifnamedowncase }
+  					incg = ttss.select { |ss| ss[:exclude].downcase == ifnamedowncase }
 					if ( incg.length > 0 )
 						incg.each do |ic|
 							ifdisabled = true
 							trexcludes = ic[:exclude]
 						end
 					else
-					#	ifdisabled = false
-					#	trexcludes = ''
+					ifdisabled = false
+          if ( c['excludes'] )
+					  trexcludes = c['excludes']
+          else
+            trexcludes = ''
 					end
         else
-          whatthis << {name: c['name'], excludes: c['excludes']}
           if ( c['excludes'] )
-            whatthis << {name: c['name'], excludes: c['excludes']}
             trexcludes = c['excludes']
+          else
+            trexcludes = ''
           end
 				end
 			end
@@ -497,9 +499,9 @@ module AresMUSH
 			end
 			iconicfarray << {name: ifname, disabled: ifdisabled, desc: desc, trexcludes: trexcludes}
 		end
-    return ("#{whatthis}")
+    #return ("#{whatthis}")
 		# return ("TTSS: #{ttss}")
-		return ( iconicfarray )
+		return ( iconicfarray )S
 	end
 
 	def self.returninitcgforcg(model)
