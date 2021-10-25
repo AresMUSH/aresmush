@@ -501,7 +501,7 @@ module AresMUSH
 		end
     #return ("#{whatthis}")
 		# return ("TTSS: #{ttss}")
-		return ( iconicfarray )S
+		return ( iconicfarray )
 	end
 
 	def self.returninitcgforcg(model)
