@@ -437,11 +437,12 @@ module AresMUSH
 						end
 					else
 					ifdisabled = false
-          if ( c['excludes'] )
-					  trexcludes = c['excludes']
-          else
-            trexcludes = ''
-					end
+            if ( c['excludes'] )
+  					  trexcludes = c['excludes']
+            else
+              trexcludes = ''
+  					end
+          end
         else
           if ( c['excludes'] )
             trexcludes = c['excludes']
