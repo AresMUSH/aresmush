@@ -451,8 +451,7 @@ module AresMUSH
             trexcludes = ''
           end
 				end
-			end
-			if ( traittype == 'edge' && c['pre-reqs'] )
+			elsif ( traittype == 'edge' && c['pre-reqs'] )
 				trex = ''
 				preqs = c['pre-reqs']
 				trexcludes = ''
