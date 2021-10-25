@@ -435,9 +435,6 @@ module AresMUSH
 							ifdisabled = true
 							trexcludes = c['excludes']
 						end
-            if (c['name'] == "Bad Eyes-")
-              #return ("name: #{c['name']}, excludes: #{c['excludes']}, trexcludes: #{trexcludes}")
-            end
 					else
             whatthis << {exclude: c['excludes']}
             if ( c['excludes'] )
@@ -501,10 +498,7 @@ module AresMUSH
 					ifdisabled = true
 				end
 			end
-
-      if (c['name'] == "Bad Eyes-")
-        return ("Name: #{c['name']}, TREXCL: #{trexcludes}, #{whatthis}")
-      end
+      
 			iconicfarray << {name: ifname, disabled: ifdisabled, desc: desc, trexcludes: trexcludes}
 		end
     #return ("#{whatthis}")
