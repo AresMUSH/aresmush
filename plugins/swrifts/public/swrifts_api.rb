@@ -487,7 +487,7 @@ module AresMUSH
 					end
 				end
 			else
-				trexcludes = ''
+				#trexcludes = ''
 			end
 
 			#Now we do this the other way. Find if the current trait has been selected by the player and mark it disabled from selection
@@ -501,7 +501,7 @@ module AresMUSH
 			end
 
       if (c['name'] == "Arcane Averse+")
-        return ("Name: #{c['name']}, TREXCL: #{trexcludes}")
+        return ("Name: #{c['name']}, TREXCL: #{trexcludes}, #{whatthis}")
       end
 			iconicfarray << {name: ifname, disabled: ifdisabled, desc: desc, trexcludes: trexcludes}
 		end
