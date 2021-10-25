@@ -500,7 +500,7 @@ module AresMUSH
 			end
 
       if (c['name'] == "Bad Eyes-")
-        return ("Name: #{c['name']}, TREXCL: #{trexcludes}")
+        return ("Name: #{c['name']}, TREXCL: #{trexcludes}, #{whatthis}")
       end
 			iconicfarray << {name: ifname, disabled: ifdisabled, desc: desc, trexcludes: trexcludes}
 		end
