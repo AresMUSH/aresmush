@@ -438,6 +438,7 @@ module AresMUSH
 					else
             whatthis << {exclude: c['excludes']}
             if ( c['excludes'] )
+              whatthis << {exclude1: c['excludes']}
   					  trexcludes = c['excludes']
             else
               trexcludes = ''
