@@ -436,7 +436,7 @@ module AresMUSH
 							trexcludes = ic[:exclude]
 						end
 					else
-					ifdisabled = false
+            whatthis << (exclude: c['excludes'])
             if ( c['excludes'] )
   					  trexcludes = c['excludes']
             else
@@ -500,9 +500,9 @@ module AresMUSH
 			end
 			iconicfarray << {name: ifname, disabled: ifdisabled, desc: desc, trexcludes: trexcludes}
 		end
-    #return ("#{whatthis}")
+    return ("#{whatthis}")
 		# return ("TTSS: #{ttss}")
-		return ( iconicfarray )
+		#return ( iconicfarray )
 	end
 
 	def self.returninitcgforcg(model)
