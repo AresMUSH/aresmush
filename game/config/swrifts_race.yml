@@ -5,7 +5,7 @@ swrifts:
             name: None
         -
             name: Test
-            book_reference: 
+            book_reference:
             desc: Test
             edges:
                 - Attractive^
@@ -13,7 +13,7 @@ swrifts:
             hinderances:
                 - Overconfident^
                 - Blind^
-            stats: 
+            stats:
                 Agility: 1
                 Strength: 1
                 Vigor: 1
@@ -44,8 +44,8 @@ swrifts:
                 - Arcane Protection^
                 - Detect Arcana^
                 - Conceal Arcana^
-                - Empathy^        
-        - 
+                - Empathy^
+        -
             name: Altara
             book_reference: TLPG 56
             desc: Warrior Women
@@ -55,7 +55,7 @@ swrifts:
                 - AB Psionics^
             hinderances:
                 - Blind^
-            stats: 
+            stats:
                 Agility: 1
                 Strength: 1
                 Vigor: 1
@@ -80,7 +80,7 @@ swrifts:
                 - Detect Arcana^
                 - Conceal Arcana^
                 - Empathy^
-        -  
+        -
             name: Dog Boy
             book_reference: TLPG 58
             desc: Psi-Hound
@@ -101,13 +101,13 @@ swrifts:
                 - Restricted Path PPE^
                 - Mutant^
                 - Ley Line Hypersensitivity^
-        -  
-            name: D'Norr 
+        -
+            name: D'Norr
             book_reference: TLPG 57
             desc: Devilmen
             edges:
                 - Charismatic^
-            stats: 
+            stats:
                 Smarts: 1
                 Spirit: 1
             stat_max:
@@ -122,7 +122,7 @@ swrifts:
                 - Skill Penalty+^
                     -Fear
             ppe: 5
-        - 
+        -
             name: Dragon Flame Wind
             book_reference: TLPG 28
             stats:
@@ -156,7 +156,7 @@ swrifts:
                 - Runner^
                 - Size 4^
             complications:
-                - Dragon*                
+                - Dragon*
             edges:
                 - Major Psionic^
             chargen_points:
@@ -164,7 +164,7 @@ swrifts:
             dstats:
                 pace: 4
                 running: 2
-        - 
+        -
             name: Dragon Great Horned
             stats:
                 Strength: 8
@@ -182,12 +182,12 @@ swrifts:
                 - Flight^
                 - Size 6^
             complications:
-                - Dragon*                
+                - Dragon*
             counters:
                 ppe_max: 5
             edges:
                 - Major Psionic^
-        - 
+        -
             name: Dragon Royal Frilled
             stats:
                 Strength: 7
@@ -197,7 +197,7 @@ swrifts:
                 Vigor: 100
             hinderances:
                 - choice^
-            abilities: 
+            abilities:
                 - Extended Metamorphosis^
                 - Keen Claws^
                 - Royal Frilled Fear^
@@ -206,19 +206,19 @@ swrifts:
                 - Flight^
                 - Size 6^
             complications:
-                - Dragon*                
+                - Dragon*
             counters:
                 ppe_max: 10
-            edges: 
+            edges:
                 - AB Magic^
                 - AB Psionic^
                 - Major Psionic^
             skills:
                 spellcasting: 1
                 psionics: 1
-            chargen_points: 
+            chargen_points:
                 psionic_slots: -1
-        - 
+        -
             name: Dragon Snow Lizard
             stats:
                 Strength: 8
@@ -234,22 +234,24 @@ swrifts:
                 - Size 6^
                 - Limited Metamorphosis^
             complications:
-                - Dragon*                
-        - 
+                - Dragon*
+        -
             name: Fennodi
             book_reference: TLPG
+            complications:
+                - Inhuman Physiology+^             
         -
-            name: Grackle Tooth   
-            book_reference: TLPG  
+            name: Grackle Tooth
+            book_reference: TLPG
         -
             name: Human
             book_reference: TLPG
             chargen_points:
                 edge_slots: 1
-        -  
+        -
             name: Lyn-Srial
             book_reference: TLPG
-        -   
+        -
             name: Psi-Stalker
             book_reference: TLPG
             desc: Psychic Predator
@@ -265,7 +267,7 @@ swrifts:
                 - Mutant^
                 - Racial Enemy (Simvan)^
                 - Restricted Path PPE^
-        -  
+        -
             name: Quick Flex
             book_reference: TLPG
             desc: Contortionist Daredevils
@@ -274,7 +276,7 @@ swrifts:
                 - Quick^
             hinderances:
                 - Overconfident^
-            attributes: 
+            attributes:
                 Agility: 2
             abilities:
                 - Elusive^
@@ -284,7 +286,7 @@ swrifts:
                 - Alien Phsiology^
                 - Restricted Path PPE^
                 - Short Attention Span^
-        -  
+        -
             name: Simvan
             book_reference: TLPG
             desc: Monster Riders
@@ -312,7 +314,7 @@ swrifts:
             skills:
                 Repair: 2
             chargen_points:
-                skills_points: 6 
+                skills_points: 6
             abilities:
                 - Long Arms^
             complications:
@@ -328,13 +330,13 @@ swrifts:
         -
             name: Half-Folk
             book_reference: SWADE
-        -  
+        -
             name: Human
             book_reference: SWADE
-        -  
+        -
             name: Rakashan
             book_reference: SWADE
-        -  
+        -
             name: Saurian
             book_reference: SWADE
         -
@@ -349,10 +351,10 @@ swrifts:
         -
             name: Mutant Rat
             book_reference: EofH
-        -  
+        -
             name: Psi-X Alien
             book_reference: EofH
-        -  
+        -
             name: Cactus People
             book_reference: A&M 23
             desc: Plant-like people with regenerative blood
@@ -373,17 +375,17 @@ swrifts:
                 - Hunted-^
                 - Sunlight Dependency
                 - Restricted Path PPE^
-            powers: 
+            powers:
                 - Mind Link^
                 - Detect Arcana^
                 - Conceal Arcana^
                 - Empathy^
-            chargen_points: 
+            chargen_points:
                 - psionic_slots: 2
         -
             name: Dwarf
             book_reference: A&M
-            desc: 
+            desc:
             stats:
                 Strength: 1
                 Vigor: 1
@@ -392,8 +394,8 @@ swrifts:
                 Vigor: 1
             edges:
             hinderances:
-            attributes: 
-            max_attribute_step: 
+            attributes:
+            max_attribute_step:
             skills:
             abilities:
                 - Low Light Vision^
@@ -401,8 +403,8 @@ swrifts:
                 - D-Bee-^
                 - Near-Human Physiology^
                 - Racial Animosity^
-            powers: 
-            chargen_points: 
+            powers:
+            chargen_points:
         -
             name: Elf
             book_reference: A&M
@@ -429,9 +431,9 @@ swrifts:
                 - Four Arms^
                 - Natural Psionics^
             hinderances:
-            attributes: 
+            attributes:
                 Srength: 1
-            max_attribute_step: 
+            max_attribute_step:
             skills:
                 Athletics: 2
             abilities:
@@ -440,12 +442,12 @@ swrifts:
                 - Bad Reputation-^
                 - Bizarre Physiology^
                 - D-Bee+^
-                - It's a Weird World^                
+                - It's a Weird World^
                 - Non-Standard Build^
             isp: 10
-            powers: 
+            powers:
                 - Arcane Protection^
                 - Mind Link^
                 - Telekinesis^
-            chargen_points: 
+            chargen_points:
                 psionic_slots: 2
