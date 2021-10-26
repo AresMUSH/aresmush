@@ -1,0 +1,113 @@
+pl:
+  global:
+    y: "Tak"
+    n: "Nie"
+    none: "Brak"
+    or: "lub"
+    done: "Zakończ"
+    ok: "OK"
+    deleted_character: "(Usunięto)"
+    system: "System"
+    afk_status: "AFK"
+    offline_status: "Niedostępny"
+    web_status: "Serwer"
+
+  date:
+    # Don't forget the nil at the beginning; there's no such thing as a 0th month
+    month_names: [~, Styczeń, Luty, Marzec, Kwiecień, Maj, Czerwiec, Lipiec, Sierpień, Wrzesień, Październik, Listopad, Grudzień]
+    abbr_month_names: [~, Sty, Lut, Mar, Kwi, Maj, Cze, Lip, Sie, Wrz, Paź, Lis, Gru]
+    day_names: [Niedziela, Poniedziałek, Wtorek, Środa, Czwartek, Piątek, Sobota]
+    abbr_day_names: [Nie, Pon, Wto, Śro, Czw, Pt, Sob]
+    order:
+    - rok
+    - miesiąc
+    - dzień
+
+  dispatcher:
+    unexpected_error: "Przepraszamy! Kod zgubił swój rozum w trakcie wykonywania polecenia. NNie twoja wina.
+      Wyślij ten błąd do administracji i powiedz co wtedy robiłeś / robiłaś:
+      Opis: "%{desc}"
+      Błąd: "%{error_info}"
+    huh: "Polecenie: %{command} nie rostało rozpoznane. Zobacz pomoc: `help`."
+    not_allowed: "Brak uprawnień"
+    must_be_logged_in: "Musisz być zalogowany / zalogowana aby użyć tej funkcji lub polecenia."
+    cmd_no_args: "To polecenie nie ma parametrów"
+    cmd_no_switches: "To polecenie nie pobiera parametrów"
+    cmd_invalid_switch: "Nieprawidłowy parametr"
+    invalid_syntax: "Zła składnia. Zobacz pomoc: `help %{cmd}`."
+    invalid_on_off_option: "Użyj tylko 'on' lub 'off'."
+    you_are_statue: "Zamieniono ciebie w posąg i zablokowano wykonywanie poleceń"
+  
+  db:
+    object_not_found: "Brak wyników"
+    object_ambiguous: "Znaleziono wiele wyników z tą nazwą"
+    no_char_online_found: "%{name} nie jest online, ale może grać poprzez portal"
+    ambiguous_char_online: "Jest wiele postaci zawierających %{name}.
+    Proszę sprecyzować"
+    
+  
+  object:
+     say: '%{name} powiedział/powiedziała, "%{msg}"'
+     pose: "%{name} %{msg}"
+     semipose: "%{name}%{msg}"
+     me: "ja"
+     here: "tutaj"
+     
+  validation:
+    password_too_short: "Hasło musi mieć minimum 5 znaków"
+    password_cant_have_equals: "Hasło nie może zawierać znaku '='"
+    char_name_taken: "Nazwa jest zajęta"
+    name_too_short: "Nazwa musi mieć minimum 2 znaki"
+    name_must_be_capitalized: "Nazwa musi zaczynać się z dużej litery"
+    name_is_restricted: "Ta nazwa nie jest dozwolona"
+    name_contains_invalid_chars: "Nie można użyć znaków specjalnych z wyjątkiem '-'"
+
+  chars_connected:
+    zero: "Brak graczy"
+    one: "1 gracz."
+    other: "Liczba graczy: %{count} " 
+    
+  client:   
+    welcome: "Witaj na serwerze AresMUSH w wersji %{version} (http://www.aresmush.com%R%%% ).
+
+      Wpisz: 'help' aby uzyskać pomoc
+
+      Wpisz: 'tour' aby połączyć się jako gość i zapoznać się z grą"
+    anonymous: "Anonimowy"
+
+  number:
+    separator: '.'
+
+  pages:
+    page_x_of_y: "Strona %{x} z %{y}"
+    not_that_many_pages: "Nie ma tylu stron"
+    no_items: "Brak elementów do wyświetlenia"
+    
+  time:
+    seconds: "%{time} sek."
+    minutes: "%{time} min."
+    hours: "%{time} godz."
+    days: "%{time} dni"
+    weeks: "%{time} tyg."
+    am: "am"
+    pm: "pm"
+    formats:
+      default: "%Y/%m/%d"    
+        
+    
+  api:
+    # Common command error messages.
+    invalid_char_id: "Zły identyfikator postaci"
+    invalid_handle: "Zły uchwyt. Nazwa musi zaczynać się znakiem '@'"
+    character_not_linked: "Postać nie jest powiązana z tym uchwytem"
+    use_command_on_central: "To polecenie musi być użyte w centrali"
+    use_command_on_satellite: "Nie można użyć tego polecenia w centrali (satelita)"
+    unrecognized_command: "Nierozpoznane polecenie"
+    no_handle_set: "Musisz połączyć postać z uchwytem przed użyciem tego polecenia"
+    
+    # Engine errors
+    api_error: "Błąd komunikacji z centralą (Błąd API). W przypadku ciągłości błędu, powiadom administrację"
+    response_error: "Błąd z zdalnego serwera: %{error}."
+    sending_to_remote: "Wysyłanie wiadomości do centrali. To może zająć chwilę"
+    api_cipher_error: "Błąd komunikacji z centralą (Błąd szyfrowania). W przypadku ciągłości błędu, powiadom administrację"
+    game_not_found: "Nie znaleziono gry"  
