@@ -160,8 +160,8 @@ module AresMUSH
     # Set the Characters Iconic Framework
     if ( rawcharicf.length > 0 )
       mycharicf = getcharicf(rawcharicf,swrifts_iconicf)
-      each.mycharicf[:abilities].do | aa |
-        return "#{aa}"
+      mycharicf[:abilities].each do | aa |
+        return aa.inspect
       end
       #get the character abilities to list
       #abilites =
