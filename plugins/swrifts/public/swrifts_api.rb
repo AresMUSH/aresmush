@@ -171,7 +171,7 @@ module AresMUSH
     		  aastring = {name: abilname, descripton: abildesc}
         end
       end
-      return aastring.inspect
+      return 'Astring: '.aastring.inspect
       #get the character abilities to list
       #abilites =
       title = "<p class='test'>#{mycharicf[:name]}: #{mycharicf[:rating]}</p>"
