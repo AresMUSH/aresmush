@@ -165,7 +165,7 @@ module AresMUSH
     else
       mycharicf="None"
     end
-    return mycharicf
+    return title
   end
 
 
