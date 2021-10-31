@@ -162,6 +162,7 @@ module AresMUSH
     else
       mycharicf="None"
     end
+    return mycharicf
   end
 
 
