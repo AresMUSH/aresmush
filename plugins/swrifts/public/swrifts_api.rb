@@ -163,7 +163,7 @@ module AresMUSH
         title = "<p class='test'>#{cicf.inspect}</p>"
       end
     else
-      mycharicf="None"
+      title="None"
     end
     return title
   end
