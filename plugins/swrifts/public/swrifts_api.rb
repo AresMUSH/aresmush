@@ -287,13 +287,13 @@ module AresMUSH
 		desc = charcgicf['description']
 		ifstring = "#{ifname}"
 		book = charcgicf['book_reference']
-    abilites = charcgicf['abilities']
+    abilities = charcgicf['abilities']
 		if book
 			ifstring << " ~ ("
 			ifstring << book
 			ifstring << ")"
 		end
-		cifstring = {class: ifname, name: ifstring, rating: desc, bookref: book, abilitie:abils}
+		cifstring = {class: ifname, name: ifstring, rating: desc, bookref: book, abilities:abilities}
 		return (cifstring)
 	end
 
