@@ -44,7 +44,7 @@ module AresMUSH
         return {
           skills: skills,
 		      stats: stats,
-          charicf: charcicf,
+          charicf: charicf,
 		      #bennies: bennies,
 		      #conviction: conviction
         }
