@@ -38,13 +38,21 @@ module AresMUSH
     		#conviction = returnconvictionforweb(char.swrifts_conviction)
     		#conviction = conviction.join(" ") #removes the comma's that seperates the entries
 
-        charicf = returnicfforweb(char.swrifts_iconicf)
+        swriftstraits = char.swrifts_traits
+        rawcharicf = acl_return_traits(swriftstraits,'iconicf') #Get the characters Iconic Framework from the traits
 
+        # Set the Characters Iconic Framework
+    		if ( rawcharicf.length > 0 )
+    			mycharicf = getcharicf(rawcharicf,swrifts_iconicf)
+    		else
+    			mycharicf="None"
+    		end
+        #charicf = returnicfforweb(mycharicf)
 
         return {
           skills: skills,
 		      stats: stats,
-          charicf: charicf,
+          charicf: mycharicf,
 		      #bennies: bennies,
 		      #conviction: conviction
         }
