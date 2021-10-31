@@ -158,10 +158,12 @@ module AresMUSH
     swrifts_iconicf = Global.read_config('swrifts', 'iconicf')
     # Set the Characters Iconic Framework
     if ( rawcharicf.length > 0 )
-      mycharicf = getcharicf(rawcharicf,swrifts_iconicf).inspect
-      #mycharicf.each do |cicf|
+      mycharicf = getcharicf(rawcharicf,swrifts_iconicf)
+      mycharicf.each do |cicf|
+        thistest = cicf.inspect
+        return thistest
         #title = "<p class='test'>#{cicf.inspect}</p>"
-      #end
+      end
     else
       mycharicf="None"
     end
