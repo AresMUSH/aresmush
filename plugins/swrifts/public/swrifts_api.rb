@@ -155,12 +155,12 @@ module AresMUSH
   def self.returnicfforweb(char)
     swriftstraits = char.swrifts_traits
     rawcharicf = acl_return_traits(swriftstraits,'iconicf') #Get the characters Iconic Framework from the traits
-    return rawcharicf.inspect
     swrifts_iconicf = Global.read_config('swrifts', 'iconicf')
     swrifts_abilities = Global.read_config('swrifts', 'abilities')
     # Set the Characters Iconic Framework
     if ( rawcharicf.length > 0 )
       mycharicf = getcharicf(rawcharicf,swrifts_iconicf)
+      return mycharicf.inspect
       #get the character abilities to list
       #abilites =
       title = "<p class='test'>#{mycharicf[:name]}: #{mycharicf[:rating]}</p>"
@@ -287,12 +287,13 @@ module AresMUSH
 		desc = charcgicf['description']
 		ifstring = "#{ifname}"
 		book = charcgicf['book_reference']
+    abilites = charcgicf['abilities']
 		if book
 			ifstring << " ~ ("
 			ifstring << book
 			ifstring << ")"
 		end
-		cifstring = {class: ifname, name: ifstring, rating: desc}
+		cifstring = {class: ifname, name: ifstring, rating: desc, bookref: book, abilitie:abils}
 		return (cifstring)
 	end
 
