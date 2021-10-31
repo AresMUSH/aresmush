@@ -164,7 +164,7 @@ module AresMUSH
         mycharicf[:abilities].each do | aa |
           aaname = aa.gsub("*", "")
           aaname = aa.gsub("^", "")
-          return "#{aaname}"
+          return "AAstring: #{aaname}"
           aadeets = swrifts_abilities.select { |ss| ss['name'].downcase == aaname.downcase }.first
           abilname = aa
       		desc = aadeets['description']
