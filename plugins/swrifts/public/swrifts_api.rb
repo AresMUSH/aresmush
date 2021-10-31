@@ -154,7 +154,7 @@ module AresMUSH
 
   def self.returnicfforweb(char)
     swriftstraits = char.swrifts_traits
-    return "#{swriftstraits.inspect}"
+    return "#{swriftstraits}"
     rawcharicf = acl_return_traits(swriftstraits,'iconicf') #Get the characters Iconic Framework from the traits
     swrifts_iconicf = Global.read_config('swrifts', 'iconicf')
     swrifts_abilities = Global.read_config('swrifts', 'abilities')
