@@ -165,7 +165,6 @@ module AresMUSH
     else
       title="None"
     end
-    return title
   end
 
 
