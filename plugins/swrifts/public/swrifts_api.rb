@@ -162,8 +162,7 @@ module AresMUSH
       mycharicf = getcharicf(rawcharicf,swrifts_iconicf)
       if ( mycharicf.length > 0 )
         mycharicf[:abilities].each do | aa |
-          return "#{aa}.class"
-          aaname = aa.gsub("*", "")
+          aaname = "#{aa}".gsub("*", "")
           aaname = aa.gsub("^", "")
           return "AAstring: #{aaname}"
           aadeets = swrifts_abilities.select { |ss| ss['name'].downcase == aaname.downcase }.first
