@@ -161,6 +161,7 @@ module AresMUSH
       mycharicf = getcharicf(rawcharicf,swrifts_iconicf).inspect
       mycharicf.each do |cicf|
         title = "<p class='test'>#{cicf.class}</p><p class='test'>#{cicf.rating}</p>"
+      end
     else
       mycharicf="None"
     end
