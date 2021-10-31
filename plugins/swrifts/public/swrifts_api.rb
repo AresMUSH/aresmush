@@ -38,21 +38,12 @@ module AresMUSH
     		#conviction = returnconvictionforweb(char.swrifts_conviction)
     		#conviction = conviction.join(" ") #removes the comma's that seperates the entries
 
-        swriftstraits = char.swrifts_traits
-        rawcharicf = acl_return_traits(swriftstraits,'iconicf') #Get the characters Iconic Framework from the traits
-        swrifts_iconicf = Global.read_config('swrifts', 'iconicf')
-        # Set the Characters Iconic Framework
-    		if ( rawcharicf.length > 0 )
-    			mycharicf = getcharicf(rawcharicf,swrifts_iconicf).inspect
-    		else
-    			mycharicf="None"
-    		end
-        #charicf = returnicfforweb(mycharicf)
+        charicf = returnicfforweb(char)
 
         return {
           skills: skills,
 		      stats: stats,
-          charicf: mycharicf,
+          charicf: charicf,
 		      #bennies: bennies,
 		      #conviction: conviction
         }
@@ -161,11 +152,15 @@ module AresMUSH
 		end
 	end
 
-  def self.returnicfforweb(icf)
-    if (icf)
-      return (icf)
+  def self.returnicfforweb(char)
+    swriftstraits = char.swrifts_traits
+    rawcharicf = acl_return_traits(swriftstraits,'iconicf') #Get the characters Iconic Framework from the traits
+    swrifts_iconicf = Global.read_config('swrifts', 'iconicf')
+    # Set the Characters Iconic Framework
+    if ( rawcharicf.length > 0 )
+      mycharicf = getcharicf(rawcharicf,swrifts_iconicf).inspect
     else
-      return "None Selected"
+      mycharicf="None"
     end
   end
 
