@@ -40,7 +40,7 @@ module AresMUSH
 
         swriftstraits = char.swrifts_traits
         rawcharicf = acl_return_traits(swriftstraits,'iconicf') #Get the characters Iconic Framework from the traits
-
+        swrifts_iconicf = Global.read_config('swrifts', 'iconicf')
         # Set the Characters Iconic Framework
     		if ( rawcharicf.length > 0 )
     			mycharicf = getcharicf(rawcharicf,swrifts_iconicf)
