@@ -26,25 +26,29 @@ module AresMUSH
 
     def self.get_abilities_for_web_viewing(char, viewer)
 	    # Format skill table
-		skills = returnskillsforweb(char.swrifts_skills)
-		skills = skills.join(" ") #removes the comma's that seperates the entries
+    		skills = returnskillsforweb(char.swrifts_skills)
+    		skills = skills.join(" ") #removes the comma's that seperates the entries
 
-		stats = returnstatsforweb(char.swrifts_stats)
-		stats = stats.join(" ") #removes the comma's that seperates the entries
+    		stats = returnstatsforweb(char.swrifts_stats)
+    		stats = stats.join(" ") #removes the comma's that seperates the entries
 
-		#bennies = returnbenniesforweb(char.swrifts_bennies)
+    		#bennies = returnbenniesforweb(char.swrifts_bennies)
 
 
-		#conviction = returnconvictionforweb(char.swrifts_conviction)
-		#conviction = conviction.join(" ") #removes the comma's that seperates the entries
+    		#conviction = returnconvictionforweb(char.swrifts_conviction)
+    		#conviction = conviction.join(" ") #removes the comma's that seperates the entries
+
+        charicf = returnicfforweb(char.swrifts_iconicf)
+
 
         return {
           skills: skills,
 		      stats: stats,
+          charicf: charcicf,
 		      #bennies: bennies,
 		      #conviction: conviction
         }
-	end
+	  end
 
 	#Get skills for website
 	def self.returnskillsforweb(skills)
@@ -148,6 +152,14 @@ module AresMUSH
 			return "None"
 		end
 	end
+
+  def self.returnicfforweb(icf)
+    if (icf)
+      return (icf)
+    else
+      return "None Selected"
+    end
+  end
 
 
 	#### CHARGEN ####
