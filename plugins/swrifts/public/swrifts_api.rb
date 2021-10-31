@@ -160,9 +160,17 @@ module AresMUSH
     # Set the Characters Iconic Framework
     if ( rawcharicf.length > 0 )
       mycharicf = getcharicf(rawcharicf,swrifts_iconicf)
-      mycharicf[:abilities].each do | aa |
-        return aa.inspect
+      if ( mycharicf.length > 0 )
+        mycharicf[:abilities].each do | aa |
+          aaname = aa.gsub("*", "")
+          aaname = aaname.gsub("^", "")
+          aadeets = swrifts_abilities.select { |ss| ss['name'].downcase == aaname.downcase }.first
+          abilname = aa
+      		desc = aadeets['description']
+    		  aastring = {name: abilname, descripton: abildesc}
+        end
       end
+      return aastring.inspect
       #get the character abilities to list
       #abilites =
       title = "<p class='test'>#{mycharicf[:name]}: #{mycharicf[:rating]}</p>"
