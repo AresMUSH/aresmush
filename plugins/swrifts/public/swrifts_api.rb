@@ -154,11 +154,15 @@ module AresMUSH
 
   def self.returnicfforweb(char)
     swriftstraits = char.swrifts_traits
+    return "#{swriftstraits.inspect}"
     rawcharicf = acl_return_traits(swriftstraits,'iconicf') #Get the characters Iconic Framework from the traits
     swrifts_iconicf = Global.read_config('swrifts', 'iconicf')
+    swrifts_abilities = Global.read_config('swrifts', 'abilities')
     # Set the Characters Iconic Framework
     if ( rawcharicf.length > 0 )
       mycharicf = getcharicf(rawcharicf,swrifts_iconicf)
+      #get the character abilities to list
+      #abilites =
       title = "<p class='test'>#{mycharicf[:name]}: #{mycharicf[:rating]}</p>"
     else
       title="None"
