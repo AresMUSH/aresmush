@@ -127,7 +127,7 @@ module AresMUSH
 				else
 				    closerow =''
 				end
-				title = "<span class='statname' title='#{correcttitle}: #{swdesc}'>dddd#{correcttitle}</span>: "
+				title = "<span class='statname' title='#{correcttitle}: #{swdesc}'>#{correcttitle}</span>: "
 				"#{openrow}#{cellopenid}#{title}#{rating}#{cellcloseid}#{closerow}"
 
 				#Used for debugging - need to delete when complete
@@ -179,16 +179,18 @@ module AresMUSH
     if ( rawcharicf.length > 0 )
       mycharicf = getcharicf(rawcharicf,swrifts_iconicf)
       if ( mycharicf.length > 0 )
-        mycharicf[:abilities].each do | aa, value |
-          aaname = aa.gsub("*", "")
-          aaname = aaname.gsub("^", "")
-          aadeets = swrifts_abilities.select { |ss| ss['name'].downcase == aaname.downcase }.first
-          if ( aadeets )
-      		  desc = aadeets['description']
-          else
-            desc = "better fill out the abilities file hmmm?"
+        mycharicf[:abilities].each
+          .map do | key, aa |
+            aaname = aa.gsub("*", "")
+            aaname = aaname.gsub("^", "")
+            aadeets = swrifts_abilities.select { |ss| ss['name'].downcase == aaname.downcase }.first
+            if ( aadeets )
+        		  desc = aadeets['description']
+            else
+              desc = "better fill out the abilities file hmmm?"
+            end
+            title = "<span class='test'><strong>Name: </strong>#{aa}: Desc: #{desc}</span>"
           end
-          title = "<span class='test'><strong>Name: </strong>#{aa}: Desc: #{desc}</span>"
         end
       end
     end
