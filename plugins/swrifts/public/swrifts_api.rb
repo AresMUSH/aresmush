@@ -166,7 +166,7 @@ module AresMUSH
           aaname = aa
   				aaval = value
   				aaarray << {class: aaname, rating:aaval}
-          aaname = aaname.gsub("*", "")
+          aaname = aa.gsub("*", "")
           return "AAstring: #{aaname}"
           aadeets = swrifts_abilities.select { |ss| ss['name'].downcase == aaname.downcase }.first
           abilname = aa
