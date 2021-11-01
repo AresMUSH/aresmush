@@ -140,8 +140,8 @@ module AresMUSH
         return AttributeListRequestHandler	#See web/attribute_list_request_handler.rb
 	  	when "powers"
         return AttributeListRequestHandler	#See web/attribute_list_request_handler.rb
-			when "abilities"
-        return AttributeListRequestHandler	#See web/attribute_list_request_handler.rb				
+			when "swabilities"
+        return AttributeListRequestHandler	#See web/attribute_list_request_handler.rb
       end
       nil
     end
