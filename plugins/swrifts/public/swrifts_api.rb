@@ -181,7 +181,7 @@ module AresMUSH
     if ( rawcharicf.length > 0 )
       mycharicf = getcharicf(rawcharicf,swrifts_iconicf)
       if ( mycharicf.length > 0 )
-        mycharicf[:abilities].each_with_index
+        mycharicf[:abilities].each
           .map do |aa, i|
             aaname = aa.gsub("*", "")
             aaname = aaname.gsub("^", "")
