@@ -2,11 +2,11 @@ $:.unshift File.dirname(__FILE__)
 
 module AresMUSH
 	module Swrifts
-		
+
 		def self.plugin_dir
 			File.dirname(__FILE__)
 		end
-    
+
 		def self.shortcuts
 			Global.read_config("swrifts", "shortcuts")
 		end
@@ -28,19 +28,19 @@ module AresMUSH
 				when "reset"
 					return ResetCmd
 				when "race"
-					if (!cmd.args)					 
+					if (!cmd.args)
 						return RaceCmd
 					else
 						return RaceSetCmd
 					end
 				when "hj"
-					if (!cmd.args)							 
+					if (!cmd.args)
 						return HjCmd
 					else
 						return HJSetCmd
 					end
 				when "fandg"
-					if (!cmd.args)							 
+					if (!cmd.args)
 						# return FandgCmd
 						return PendingCmd
 					else
@@ -48,25 +48,25 @@ module AresMUSH
 						return PendingCmd
 					end
 				when "stats"
-					if (!cmd.args)							 
+					if (!cmd.args)
 						return StatsCmd
 					else
 						return StatsSetCmd
 					end
 				when "skills"
-					if (!cmd.args)							 
+					if (!cmd.args)
 						return SkillCmd
 					else
 						return SkillsSetCmd
 					end
 				when "hind"
-					if (!cmd.args)							 
+					if (!cmd.args)
 						return HindCmd
 					else
 						return HinderanceSetCmd
 					end
 				when "edge"
-					if (!cmd.args)							 
+					if (!cmd.args)
 						# return EdgeCmd
 						return PendingCmd
 					else
@@ -74,7 +74,7 @@ module AresMUSH
 						return PendingCmd
 					end
 				when "ppower"
-					if (!cmd.args)							 
+					if (!cmd.args)
 						# return PpowerCmd
 						return PendingCmd
 					else
@@ -82,7 +82,7 @@ module AresMUSH
 						return PendingCmd
 					end
 				when "mpower"
-					if (!cmd.args)							 
+					if (!cmd.args)
 						# return MpowerSetCmd
 						return PendingCmd
 					else
@@ -90,7 +90,7 @@ module AresMUSH
 						return PendingCmd
 					end
 				when "cyber"
-					if (!cmd.args)							 
+					if (!cmd.args)
 						# return CyberSetCmd
 						return PendingCmd
 					else
@@ -123,23 +123,25 @@ module AresMUSH
 			nil
 		end
 
-# Somehow the webrequests come in here. Check the ./public folder for handlers etc 
+# Somehow the webrequests come in here. Check the ./public folder for handlers etc
     def self.get_web_request_handler(request)
       case request.cmd
       when "abilities"
         return AbilitiesRequestHandler
       when "edges"
         return AttributeListRequestHandler	#See web/attribute_list_request_handler.rb
-	  when "hinderances"
+	  	when "hinderances"
         return AttributeListRequestHandler	#See web/attribute_list_request_handler.rb
-	  when "iconicf"
+	  	when "iconicf"
         return AttributeListRequestHandler	#See web/attribute_list_request_handler.rb
-	  when "race"
+	  	when "race"
         return AttributeListRequestHandler	#See web/attribute_list_request_handler.rb
-	  when "skills"
+	  	when "skills"
         return AttributeListRequestHandler	#See web/attribute_list_request_handler.rb
-	  when "powers"
+	  	when "powers"
         return AttributeListRequestHandler	#See web/attribute_list_request_handler.rb
+			when "abilities"
+        return AttributeListRequestHandler	#See web/attribute_list_request_handler.rb				
       end
       nil
     end
