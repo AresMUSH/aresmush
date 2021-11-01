@@ -189,17 +189,13 @@ module AresMUSH
       		  desc = aadeets['description']
     		    aastring = {name: abilname, descripton: desc}
           else
-            abilname = "Oops! #{aa} is missing from the file."
-            aastring = {name: abilname, description: 'better fill out the abilities file hmmm?'}
+            desc = "better fill out the abilities file hmmm?"
           end
+          title = "<p class='test'><strong>Name: </strong>#{aa}: #{desc}</p>"
         end
-        return "#{aastring}"
       end
-      #get the character abilities to list
-      #abilites =
-      title = "<p class='test'>#{mycharicf[:name]}: #{mycharicf[:rating]}</p>"
     else
-      title="None"
+      title="<p class='test'>None</p>"
     end
   end
 
