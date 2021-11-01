@@ -183,7 +183,7 @@ module AresMUSH
           aaname = aa.gsub("*", "")
           aaname = aaname.gsub("^", "")
           aadeets = swrifts_abilities.select { |ss| ss['name'].downcase == aaname.downcase }.first
-          if ( aadeets.length > 0 )
+          if ( aadeets.length > 0 || aadeets )
             abilname = aa
       		  desc = aadeets['description']
     		    aastring = {name: abilname, descripton: desc}
