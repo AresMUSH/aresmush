@@ -126,6 +126,8 @@ module AresMUSH
 # Somehow the webrequests come in here. Check the ./public folder for handlers etc
     def self.get_web_request_handler(request)
       case request.cmd
+			when "swabilities"
+        return AttributeListRequestHandler	#See web/attribute_list_request_handler.rb				
       when "abilities"
         return AbilitiesRequestHandler
       when "edges"
@@ -139,8 +141,6 @@ module AresMUSH
 	  	when "skills"
         return AttributeListRequestHandler	#See web/attribute_list_request_handler.rb
 	  	when "powers"
-        return AttributeListRequestHandler	#See web/attribute_list_request_handler.rb
-			when "swabilities"
         return AttributeListRequestHandler	#See web/attribute_list_request_handler.rb
       end
       nil
