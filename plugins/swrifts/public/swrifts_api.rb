@@ -45,7 +45,7 @@ module AresMUSH
           skills: skills,
 		      stats: stats,
           charicf: charicf,
-          #charabils: charabils,
+          charabils: charabils,
 		      #bennies: bennies,
 		      #conviction: conviction
         }
@@ -193,7 +193,7 @@ module AresMUSH
           end
         end
       end
-      return aastring.inspect
+      return aastring
       #get the character abilities to list
       #abilites =
       title = "<p class='test'>#{mycharicf[:name]}: #{mycharicf[:rating]}</p>"
