@@ -14,7 +14,6 @@ module AresMUSH
       end
 
       def build_list(hash)
-        return "Hewlllso"
         nh = hash.sort_by { |a| a['name'] }
 		    return nh
       end
