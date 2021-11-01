@@ -39,13 +39,13 @@ module AresMUSH
     		#conviction = conviction.join(" ") #removes the comma's that seperates the entries
 
         charicf = returnicfforweb(char)
-        charabils = returnabilitiesforweb(char)
+        #charabils = returnabilitiesforweb(char)
 
         return {
           skills: skills,
 		      stats: stats,
           charicf: charicf,
-          charabils: charabils,
+          #charabils: charabils,
 		      #bennies: bennies,
 		      #conviction: conviction
         }
