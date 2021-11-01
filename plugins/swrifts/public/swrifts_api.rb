@@ -176,6 +176,7 @@ module AresMUSH
     #return swrifts_abilities
     # Set the Characters Iconic Framework
     aaarray = []
+    aastring = Array.new
     if ( rawcharicf.length > 0 )
       mycharicf = getcharicf(rawcharicf,swrifts_iconicf)
       if ( mycharicf.length > 0 )
