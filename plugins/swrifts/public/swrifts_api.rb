@@ -180,7 +180,7 @@ module AresMUSH
       mycharicf = getcharicf(rawcharicf,swrifts_iconicf)
       if ( mycharicf.length > 0 )
         mycharicf[:abilities].each
-          .map do | key, aa |
+          .map do | aa |
             aaname = aa.gsub("*", "")
             aaname = aaname.gsub("^", "")
             aadeets = swrifts_abilities.select { |ss| ss['name'].downcase == aaname.downcase }.first
