@@ -181,23 +181,20 @@ module AresMUSH
     if ( rawcharicf.length > 0 )
       mycharicf = getcharicf(rawcharicf,swrifts_iconicf)
       if ( mycharicf.length > 0 )
-        mycharicf[:abilities].each
-          .map do |aa, i|
-            aaname = aa.gsub("*", "")
-            aaname = aaname.gsub("^", "")
-            aadeets = swrifts_abilities.select { |ss| ss['name'].downcase == aaname.downcase }.first
-            if ( aadeets )
-              abilname = aa
-        		  desc = aadeets['description']
-      		    aastring = {name: abilname, descripton: desc}
-            else
-              desc = "better fill out the abilities file hmmm?"
-            end
-            title = "<p class='test'><strong>Name: </strong>#{aa}: Desc: #{desc}</p>"
+        mycharicf[:abilities].each do | aa, value |
+          aaname = aa.gsub("*", "")
+          aaname = aaname.gsub("^", "")
+          aadeets = swrifts_abilities.select { |ss| ss['name'].downcase == aaname.downcase }.first
+          if ( aadeets )
+            abilname = aa
+      		  desc = aadeets['description']
+    		    aastring = {name: abilname, descripton: desc}
+          else
+            desc = "better fill out the abilities file hmmm?"
           end
+          title = "<p class='test'><strong>Name: </strong>#{aa}: Desc: #{desc}</p>"
         end
       end
-    end
   end
 
 
