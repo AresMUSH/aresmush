@@ -191,7 +191,6 @@ module AresMUSH
             end
             title = "<span class='test'><strong>Name: </strong>#{aa}: Desc: #{desc}</span>"
           end
-        end
       end
     end
   end
