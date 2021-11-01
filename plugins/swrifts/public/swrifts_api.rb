@@ -191,13 +191,12 @@ module AresMUSH
           else
             desc = "better fill out the abilities file hmmm?"
           end
-          title = "<p class='test'><strong>Name: </strong>#{aa}: #{desc}</p>"
+          title = "<p class='test'><strong>Name: </strong>#{aa}: Desc: #{desc}</p>"
         end
       end
     else
       title="<p class='test'>None</p>"
     end
-    return title
   end
 
 
