@@ -127,7 +127,7 @@ module AresMUSH
 				else
 				    closerow =''
 				end
-				title = "<span class='statname' title='#{correcttitle}: #{swdesc}'>#{correcttitle}</span>: "
+				title = "<span class='statname' title='#{correcttitle}: #{swdesc}'>dddd#{correcttitle}</span>: "
 				"#{openrow}#{cellopenid}#{title}#{rating}#{cellcloseid}#{closerow}"
 
 				#Used for debugging - need to delete when complete
