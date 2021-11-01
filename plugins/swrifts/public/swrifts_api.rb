@@ -195,6 +195,7 @@ module AresMUSH
           title = "<p class='test'><strong>Name: </strong>#{aa}: Desc: #{desc}</p>"
         end
       end
+    end
   end
 
 
