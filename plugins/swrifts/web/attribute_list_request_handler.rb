@@ -8,7 +8,7 @@ module AresMUSH
 		  iconicf: build_list(Swrifts.swrifts_icf),
 		  race: build_list(Swrifts.swrifts_races),
 		  skills: build_list(Swrifts.swrifts_skills),
-      swabilities: return_hw()
+      swabilities: build_list(Swrifts.swrifts_abilities)
         }
       end
 
