@@ -8,13 +8,13 @@ module AresMUSH
 		  iconicf: build_list(Swrifts.swrifts_icf),
 		  race: build_list(Swrifts.swrifts_races),
 		  skills: build_list(Swrifts.swrifts_skills),
-      swabilities: build_list(Swrifts.swrifts_abilities)
+      #swabilities: build_list(Swrifts.swrifts_abilities)
         }
       end
 
       def build_list(hash)
         nh = hash.sort_by { |a| a['name'] }
-		return nh
+		    return nh
       end
 
       def return_hw()
