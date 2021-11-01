@@ -197,6 +197,7 @@ module AresMUSH
     else
       title="<p class='test'>None</p>"
     end
+    return title
   end
 
 
