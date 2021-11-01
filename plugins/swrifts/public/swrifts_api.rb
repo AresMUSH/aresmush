@@ -176,8 +176,6 @@ module AresMUSH
     swrifts_abilities = Global.read_config('swrifts', 'abilities')
 
     # Set the Characters Iconic Framework
-    aaarray = []
-    aastring = Array.new
     if ( rawcharicf.length > 0 )
       mycharicf = getcharicf(rawcharicf,swrifts_iconicf)
       if ( mycharicf.length > 0 )
@@ -186,13 +184,11 @@ module AresMUSH
           aaname = aaname.gsub("^", "")
           aadeets = swrifts_abilities.select { |ss| ss['name'].downcase == aaname.downcase }.first
           if ( aadeets )
-            abilname = aa
       		  desc = aadeets['description']
-    		    aastring = {name: abilname, descripton: desc}
           else
             desc = "better fill out the abilities file hmmm?"
           end
-          title = "<p class='test'><strong>Name: </strong>#{aa}: Desc: #{desc}</p>"
+          title = "<span class='test'><strong>Name: </strong>#{aa}: Desc: #{desc}</span>"
         end
       end
     end
