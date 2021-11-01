@@ -16,7 +16,6 @@ module AresMUSH
 		collection :swrifts_ppowers, "AresMUSH::SwriftsPpowers"
 		collection :swrifts_cybernetics, "AresMUSH::SwriftsCybernetics"
 		collection :swrifts_abilities, "AresMUSH::SwriftsAbilities"
-		collection :swrifts_swabilities, "AresMUSH::SwriftsnewAbilities"		
 		collection :swrifts_complications, "AresMUSH::SwriftsComplications"
 		collection :swrifts_heroesj, "AresMUSH::SwriftsHeroesj"
 		collection :swrifts_randnum, "AresMUSH::SwriftsRandnum"
@@ -93,15 +92,6 @@ module AresMUSH
 	end
 
 	class SwriftsSkills < Ohm::Model
-		include ObjectModel
-
-		attribute :name
-		attribute :rating
-		reference :character, "AresMUSH::Character"
-		index :name
-	end
-
-	class SwriftsnewAbilities < Ohm::Model
 		include ObjectModel
 
 		attribute :name
