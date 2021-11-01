@@ -161,8 +161,11 @@ module AresMUSH
     if ( rawcharicf.length > 0 )
       mycharicf = getcharicf(rawcharicf,swrifts_iconicf)
       if ( mycharicf.length > 0 )
-        mycharicf[:abilities].each do | aa |
-          return aa.class
+        mycharicf[:abilities].each do | aa, value |
+          aaname = aa
+  				aaval = value
+  				aaarray << {class: aaname, rating:aaval}
+          return aaarray.inspect
           aaname = "#{aa}".gsub("*", "")
           aaname = aa.gsub("^", "")
           return "AAstring: #{aaname}"
