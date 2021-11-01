@@ -174,7 +174,7 @@ module AresMUSH
     rawcharicf = acl_return_traits(swriftstraits,'iconicf') #Get the characters Iconic Framework from the traits
     swrifts_iconicf = Global.read_config('swrifts', 'iconicf')
     swrifts_abilities = Global.read_config('swrifts', 'abilities')
-    #return swrifts_abilities
+
     # Set the Characters Iconic Framework
     aaarray = []
     aastring = Array.new
