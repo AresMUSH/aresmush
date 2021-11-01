@@ -186,7 +186,7 @@ module AresMUSH
           if ( aadeets.length > 0 )
             abilname = aa
       		  desc = aadeets['description']
-    		    aastring = {name: abilname, descripton: abildesc}
+    		    aastring = {name: abilname, descripton: desc}
           else
             aastring = {name: 'oops', description: 'better fill out the abilities file hmmm?'}
           end
