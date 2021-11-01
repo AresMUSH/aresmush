@@ -40,6 +40,7 @@ module AresMUSH
 
         charicf = returnicfforweb(char)
         charabils = returnabilitiesforweb(char)
+        charabils = charabils.join(" ") #removes the comma's that seperates the entries
 
         return {
           skills: skills,
