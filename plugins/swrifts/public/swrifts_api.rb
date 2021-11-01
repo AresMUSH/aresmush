@@ -195,9 +195,6 @@ module AresMUSH
           title = "<p class='test'><strong>Name: </strong>#{aa}: Desc: #{desc}</p>"
         end
       end
-    else
-      title="<p class='test'>None</p>"
-    end
   end
 
 
