@@ -189,7 +189,7 @@ module AresMUSH
       		  desc = aadeets['description']
     		    aastring = {name: abilname, descripton: desc}
           else
-            abilname = "Oops! #{abilname} is missing from the file."
+            abilname = "Oops! #{aa} is missing from the file."
             aastring = {name: abilname, description: 'better fill out the abilities file hmmm?'}
           end
         end
