@@ -189,7 +189,7 @@ module AresMUSH
             else
               desc = "better fill out the abilities file hmmm?"
             end
-            title = "<p class='swabil'><span><strong>Name: </strong>#{aa}<br /><strong>Description:</strong> #{desc}</span></p>"
+            title = "<p class='swabil'><span><strong>Name: </strong>#{aa}<br />#{desc}</span></p>"
           end
       end
     end
