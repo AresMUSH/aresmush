@@ -157,7 +157,7 @@ module AresMUSH
     rawcharicf = acl_return_traits(swriftstraits,'iconicf') #Get the characters Iconic Framework from the traits
     swrifts_iconicf = Global.read_config('swrifts', 'iconicf')
     swrifts_abilities = Global.read_config('swrifts', 'abilities')
-    return swrifts_abilities
+    #return swrifts_abilities
     # Set the Characters Iconic Framework
     aaarray = []
     if ( rawcharicf.length > 0 )
@@ -166,7 +166,7 @@ module AresMUSH
         mycharicf[:abilities].each do | aa, value |
           aaname = aa.gsub("*", "")
           aaname = aaname.gsub("^", "")
-          aadeets = swrifts_abilities.select { |ss| ss['name'].downcase == aaname.downcase }.first
+          aadeets = swrifts_abilities.select { |ss| ss['name'].downcase == "burning bright" }.first
           if ( aadeets.length > 0 )
             abilname = aa
       		  desc = aadeets['description']
