@@ -177,7 +177,7 @@ module AresMUSH
     counters.each
       .map do | bb |
         if (trait == 'bennies' && ( bb.name == 'bennies_current' || bb.name == 'bennies_max' ))
-          counterarray << {name: bb.name, rating: bb.rating}
+          counterarray << {"#{bb.name}": bb.rating}
         elsif (trait == 'conviction' && ( bb.name == 'conviction_current' || bb.name == 'conviction' ))
           counterarray << {name: bb.name, rating: bb.rating}
         end
