@@ -153,7 +153,7 @@ module AresMUSH
         if (bb.name == 'bennies_current')
           title = "<p class=''><strong>Current Bennies:</strong> #{bb.rating}</p>"
         elsif (bb.name == "bennies_max")
-          title = "<p class=''><strong>Current Bennies:</strong> #{bb.rating}</p>"
+          title = "<p class=''><strong>Max Bennies:</strong> #{bb.rating}</p>"
         end
     end
 	end
