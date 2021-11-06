@@ -146,12 +146,13 @@ module AresMUSH
 	#Get the bennies for the website
 	def self.returnbenniesforweb(bennies)
 
+    btrait = []
     bennies.each
       .map do | bb |
-        btrait = bb
-      end
+        btrait << {name: bb}
+    end
       return "#{btrait}"
-      
+
 		bennies = "#{bennies}".to_i
 		if (bennies)
 			return bennies
