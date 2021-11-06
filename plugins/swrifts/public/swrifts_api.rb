@@ -206,16 +206,10 @@ module AresMUSH
     swrifts_iconicf = Global.read_config('swrifts', 'iconicf')
     swrifts_abilities = Global.read_config('swrifts', 'edges')
 
-    ttsl = []
-    swriftstraits.each do |d|
-			ttsl << { name: "#{d.name}" }
-    end
-    
-    return ("#{ttsl}")
-
-    # Set the Characters Iconic Framework
+  # Set the Characters Iconic Framework
     if ( rawcharicf.length > 0 )
       mycharicf = getcharicf(rawcharicf,swrifts_iconicf)
+      return ("#{mycharicf}")
       if ( mycharicf.length > 0 )
         mycharicf[:edges].each
           .map do | aa |
