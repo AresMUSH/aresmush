@@ -150,7 +150,7 @@ module AresMUSH
       btrait = []
     bennies.each
       .map do | bb |
-        btrait << {name: bb[:name]}
+        btrait << {name: bb.name}
     end
       return "#{btrait}"
 
