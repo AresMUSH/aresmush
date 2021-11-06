@@ -207,7 +207,7 @@ module AresMUSH
     swrifts_abilities = Global.read_config('swrifts', 'edges')
     charedges = char.swrifts_edges
 
-    return ("#{charedges}")
+    return ("#{charedges.inspect}")
   # Set the Characters Iconic Framework
     if ( rawcharicf.length > 0 )
       mycharicf = getcharicf(rawcharicf,swrifts_iconicf)
