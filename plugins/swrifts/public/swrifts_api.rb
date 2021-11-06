@@ -196,6 +196,33 @@ module AresMUSH
   end
 
 
+  def self.returnedgesforweb(char)
+    swriftstraits = char.swrifts_traits
+    rawcharicf = acl_return_traits(swriftstraits,'iconicf') #Get the characters Iconic Framework from the traits
+    swrifts_iconicf = Global.read_config('swrifts', 'iconicf')
+    swrifts_abilities = Global.read_config('swrifts', 'edges')
+
+    # Set the Characters Iconic Framework
+    if ( rawcharicf.length > 0 )
+      mycharicf = getcharicf(rawcharicf,swrifts_iconicf)
+      if ( mycharicf.length > 0 )
+        mycharicf[:abilities].each
+          .map do | aa |
+            aaname = aa.gsub("*", "")
+            aaname = aaname.gsub("^", "")
+            aadeets = swrifts_abilities.select { |ss| ss['name'].downcase == aaname.downcase }.first
+            if ( aadeets )
+              desc = aadeets['description']
+            else
+              desc = "better fill out the abilities file hmmm?"
+            end
+            title = "<p class='swabil'><span><strong>#{aa}</strong><br />#{desc}</span></p>"
+          end
+      end
+    end
+  end
+
+
 	#### CHARGEN ####
 
 	def self.get_abilities_for_chargen(char)
