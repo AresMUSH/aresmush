@@ -157,7 +157,7 @@ module AresMUSH
         elsif (trait == 'conviction')
           if (bb.name == 'conviction_current')
             title = "<span class='skillname'>Current Conviction:</span> <span class='rating'>#{bb.rating}</span><br />"
-          elsif (bb.name == "bennies_max")
+          elsif (bb.name == "conviction_max")
             title = "<span class='skillname'>Max Conviction:</span> <span class='rating'>#{bb.rating}</span>"
           end
         end
