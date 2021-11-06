@@ -32,12 +32,11 @@ module AresMUSH
     		stats = returnstatsforweb(char.swrifts_stats)
     		stats = stats.join(" ") #removes the comma's that seperates the entries
 
-    		#bennies = returnbenniesforweb(char.swrifts_chargenpoints)
-        bennies = returnbenniesforweb(char.swrifts_counters)
+        bennies = returnbandcforweb(char.swrifts_counters, 'bennies')
         bennies = bennies.join(" ") #removes the comma's that seperates the entries
 
-    		#conviction = returnconvictionforweb(char.swrifts_conviction)
-    		#conviction = conviction.join(" ") #removes the comma's that seperates the entries
+        conviction = returnbandcforweb(char.swrifts_counters, 'conviction')
+        conviction = conviction.join(" ") #removes the comma's that seperates the entries
 
         charicf = returnicfforweb(char)
         charabils = returnabilitiesforweb(char)
@@ -57,7 +56,7 @@ module AresMUSH
           charedges: charedges,
           charhind: charhind,
 		      bennies: bennies,
-		      #conviction: conviction
+		      conviction: conviction
         }
 	  end
 
@@ -145,27 +144,24 @@ module AresMUSH
 	end
 
 	#Get the bennies for the website
-	def self.returnbenniesforweb(bennies)
+	def self.returnbenniesforweb(counters,trait)
 
-      btrait = []
-    bennies.each
+    counters.each
       .map do | bb |
-        if (bb.name == 'bennies_current')
-          title = "<span class='skillname'>Current Bennies:</span> <span class='rating'>#{bb.rating}</span><br />"
-        elsif (bb.name == "bennies_max")
-          title = "<span class='skillname'>Max Bennies:</span> <span class='rating'>#{bb.rating}</span>"
+        if (trait == 'bennies')
+          if (bb.name == 'bennies_current')
+            title = "<span class='skillname'>Current Bennies:</span> <span class='rating'>#{bb.rating}</span><br />"
+          elsif (bb.name == "bennies_max")
+            title = "<span class='skillname'>Max Bennies:</span> <span class='rating'>#{bb.rating}</span>"
+          end
+        elsif (trait == 'conviction')
+          if (bb.name == 'conviction_current')
+            title = "<span class='skillname'>Current Conviction:</span> <span class='rating'>#{bb.rating}</span><br />"
+          elsif (bb.name == "bennies_max")
+            title = "<span class='skillname'>Max Conviction:</span> <span class='rating'>#{bb.rating}</span>"
+          end
         end
     end
-	end
-
-	#Get the conviction for the website
-	def self.returnconvictionforweb(conviction)
-		conviction = "#{conviction}".to_i
-		if (conviction)
-			return conviction
-		else
-			return "None"
-		end
 	end
 
   def self.returnicfforweb(char)
