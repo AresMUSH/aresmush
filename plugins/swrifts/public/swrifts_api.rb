@@ -150,16 +150,12 @@ module AresMUSH
       btrait = []
     bennies.each
       .map do | bb |
-        btrait << {name: bb.name}
+        if (bb.name == 'bennies_current')
+          title = "<p class=''><strong>Current Bennies:</strong> #{bb.rating}</p>"
+        elsif (bb.name == "bennies_max")
+          title = "<p class=''><strong>Current Bennies:</strong> #{bb.rating}</p>"
+        end
     end
-      return "#{btrait}"
-
-		bennies = "#{bennies}".to_i
-		if (bennies)
-			return bennies
-		else
-			return "None"
-		end
 	end
 
 	#Get the conviction for the website
