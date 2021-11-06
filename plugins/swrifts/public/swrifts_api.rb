@@ -209,7 +209,7 @@ module AresMUSH
 
     cgedgearray = []
     charedges.each do |c|
-     cgedgearray << {class: c.inspect}
+     cgedgearray << {class: c.name}
     end
     return ("#{cgedgearray}")
   # Set the Characters Iconic Framework
