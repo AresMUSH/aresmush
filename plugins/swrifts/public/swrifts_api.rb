@@ -209,7 +209,7 @@ module AresMUSH
       .map do |c| #Loop through each edge on the character
         cedgename = c.name.gsub("*","")
         cedgename = cedgename.gsub("^","")
-        cgedgedeets = swrifts_edges.select { |ce| ce.name.downcase == cedgename.downcase }.first
+        cgedgedeets = swrifts_edges.select { |ce| ce['name'].downcase == cedgename.downcase }.first
         if ( cgedgedeets )
           desc = cgedgedeets['description']
         else
