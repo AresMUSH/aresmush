@@ -35,8 +35,12 @@ module AresMUSH
         bennies = returnbandcforweb(char.swrifts_counters, 'bennies')
         bennies = bennies.join(" ") #removes the comma's that seperates the entries
 
+        benniesnew = returnbandcnewforweb(char.swrifts_counters, 'bennies')
+
         conviction = returnbandcforweb(char.swrifts_counters, 'conviction')
         conviction = conviction.join(" ") #removes the comma's that seperates the entries
+
+        convictionnew = returnbandnewforweb(char.swrifts_counters, 'conviction')
 
         charicf = returnicfforweb(char)
         charabils = returnabilitiesforweb(char)
@@ -56,7 +60,9 @@ module AresMUSH
           charedges: charedges,
           charhind: charhind,
 		      bennies: bennies,
-		      conviction: conviction
+		      conviction: conviction,
+          benniesnew: benniesnew,
+		      convictionnew: convictionnew,
         }
 	  end
 
@@ -143,7 +149,7 @@ module AresMUSH
 			end
 	end
 
-	#Get the bennies for the website
+	#Get the bennies and conviction for the website
 	def self.returnbandcforweb(counters,trait)
 
     counters.each
@@ -163,6 +169,21 @@ module AresMUSH
         end
     end
 	end
+
+  #Get the bennies and conviction for the website
+  def self.returnbandcnewforweb(counters,trait)
+
+    counterarray = []
+    counters.each
+      .map do | bb |
+        if (trait == 'bennies' && ( bb.name == 'bennies_current' || bb.name == 'bennies_max' ))
+          counterarray << {name: bb.name, rating: bb.rating}
+        elsif (trait == 'conviction' && ( bb.name == 'conviction_current' || bb.name == 'conviction' ))
+          counterarray << {name: bb.name, rating: bb.rating}
+        end
+    end
+    return ("#{counterarray}")
+  end
 
   def self.returnicfforweb(char)
     swriftstraits = char.swrifts_traits
