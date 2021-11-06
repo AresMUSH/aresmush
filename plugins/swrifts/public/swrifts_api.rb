@@ -34,7 +34,7 @@ module AresMUSH
 
     		#bennies = returnbenniesforweb(char.swrifts_chargenpoints)
         bennies = returnbenniesforweb(char.swrifts_counters)
-
+        bennies = bennies.join(" ") #removes the comma's that seperates the entries
 
     		#conviction = returnconvictionforweb(char.swrifts_conviction)
     		#conviction = conviction.join(" ") #removes the comma's that seperates the entries
