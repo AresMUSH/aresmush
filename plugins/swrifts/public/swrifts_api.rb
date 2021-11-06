@@ -147,11 +147,10 @@ module AresMUSH
 	#Get the bennies for the website
 	def self.returnbenniesforweb(bennies)
 
-    return ("#{bennies['bennies_current']}")
-    btrait = []
+      btrait = []
     bennies.each
       .map do | bb |
-        btrait << {name: bb}
+        btrait << {name: bb[:name]}
     end
       return "#{btrait}"
 
