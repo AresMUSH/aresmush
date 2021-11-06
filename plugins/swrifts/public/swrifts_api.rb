@@ -151,9 +151,9 @@ module AresMUSH
     bennies.each
       .map do | bb |
         if (bb.name == 'bennies_current')
-          title = "<p class=''><strong>Current Bennies:</strong> #{bb.rating}</p>"
+          title = "<span class='skillname'>Current Bennies:</span> <span class='rating'>#{bb.rating}</span><br />"
         elsif (bb.name == "bennies_max")
-          title = "<p class=''><strong>Max Bennies:</strong> #{bb.rating}</p>"
+          title = "<span class='skillname'>Max Bennies:</span> <span class='rating'>#{bb.rating}</span>"
         end
     end
 	end
