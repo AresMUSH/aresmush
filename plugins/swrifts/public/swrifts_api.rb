@@ -217,7 +217,7 @@ module AresMUSH
       .map do |c| #Loop through each edge on the character
         ctraitname = c.name.gsub("*","")
         ctraitname = ctraitname.gsub("^","")
-        ctraitdeets = swrifts_traits.select { |ce| ce['name'].downcase == ctraitname.downcase }.first
+        ctraitdeets = swrifts_trait.select { |ce| ce['name'].downcase == ctraitname.downcase }.first
         if ( cgtraitdeets )
           desc = cgtraitdeets['description']
         else
