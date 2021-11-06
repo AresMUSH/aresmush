@@ -209,7 +209,7 @@ module AresMUSH
   # Set the Characters Iconic Framework
     if ( rawcharicf.length > 0 )
       mycharicf = getcharicf(rawcharicf,swrifts_iconicf)
-      return ("#{mycharicf.inspect}")
+      #return ("#{mycharicf.inspect}")
       if ( mycharicf.length > 0 )
         mycharicf[:edges].each
           .map do | aa |
