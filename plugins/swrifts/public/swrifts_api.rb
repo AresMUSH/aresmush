@@ -50,7 +50,7 @@ module AresMUSH
 		      stats: stats,
           charicf: charicf,
           charabils: charabils,
-          charedges: charedges,
+          #charedges: charedges,
 		      #bennies: bennies,
 		      #conviction: conviction
         }
