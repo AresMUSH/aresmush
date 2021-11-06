@@ -40,7 +40,7 @@ module AresMUSH
         conviction = returnbandcforweb(char.swrifts_counters, 'conviction')
         conviction = conviction.join(" ") #removes the comma's that seperates the entries
 
-        convictionnew = returnbandnewforweb(char.swrifts_counters, 'conviction')
+        convictionnew = returnbandcnewforweb(char.swrifts_counters, 'conviction')
 
         charicf = returnicfforweb(char)
         charabils = returnabilitiesforweb(char)
