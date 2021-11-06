@@ -46,7 +46,7 @@ module AresMUSH
         charedges = charedges.join(" ") #removes the comma's that seperates the entries
 
         charhind = returnedgesforweb(char,'hind')
-        charhind = charedges.join(" ") #removes the comma's that seperates the entries
+        charhind = charhind.join(" ") #removes the comma's that seperates the entries
 
         return {
           skills: skills,
