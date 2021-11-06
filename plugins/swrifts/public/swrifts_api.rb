@@ -42,7 +42,7 @@ module AresMUSH
         charabils = returnabilitiesforweb(char)
         charabils = charabils.join(" ") #removes the comma's that seperates the entries
 
-        charedges = returnedgesforweb(char)
+        #charedges = returnedgesforweb(char)
         #charedges = charedges.join(" ") #removes the comma's that seperates the entries
 
         return {
