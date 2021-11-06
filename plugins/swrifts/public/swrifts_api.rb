@@ -158,7 +158,7 @@ module AresMUSH
           if (bb.name == 'conviction_current')
             title = "<span class='skillname'>Current Conviction:</span> <span class='rating'>#{bb.rating}</span><br />"
           elsif (bb.name == "conviction")
-            title = "<span class='skillname'>Max Conviction:</span> <span class='rating'>#{bb.rating}</span>"
+            title = "<span class='skillname'>Max Conviction:</span> <span class='rating'>#{bb.rating}</span><br />"
           end
         end
     end
