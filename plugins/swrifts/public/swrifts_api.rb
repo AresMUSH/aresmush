@@ -147,6 +147,7 @@ module AresMUSH
 	#Get the bennies for the website
 	def self.returnbenniesforweb(bennies)
 
+    return ("#{bennies.inspect}")
     btrait = []
     bennies.each
       .map do | bb |
