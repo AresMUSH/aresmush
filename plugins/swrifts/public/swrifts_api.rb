@@ -215,7 +215,7 @@ module AresMUSH
         else
           desc = "Better fill out a desc, hmmmm?"
         end
-        title = "<p class='swabil'><span><strong>#{cgedgename}</strong><br />#{desc}</span></p>"
+        title = "<p class='swabil'><span><strong>#{cedgename}</strong><br />#{desc}</span></p>"
     end
   end
 
