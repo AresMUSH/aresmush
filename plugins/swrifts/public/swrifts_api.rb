@@ -144,7 +144,7 @@ module AresMUSH
 	end
 
 	#Get the bennies for the website
-	def self.returnbenniesforweb(counters,trait)
+	def self.returnbandcforweb(counters,trait)
 
     counters.each
       .map do | bb |
