@@ -201,15 +201,13 @@ module AresMUSH
 
 
   def self.returnedgesforweb(char)
-    swriftstraits = char.swrifts_traits
-    rawcharicf = acl_return_traits(swriftstraits,'iconicf') #Get the characters Iconic Framework from the traits
-    swrifts_iconicf = Global.read_config('swrifts', 'iconicf')
-    swrifts_abilities = Global.read_config('swrifts', 'edges')
-    charedges = char.swrifts_edges
+    swrifts_edges = Global.read_config('swrifts', 'edges') #Get all the edges so we can grab the up to date descriptions
+    charedges = char.swrifts_edges #Get what's set on the Character
 
-    cgedgearray = []
-    charedges.each do |c|
-     cgedgearray << {class: c.name}
+    cgedgearray = [] #Might not be needed
+    charedges.each
+      .map do |c| #Loop through each edge on the character
+        cgedgearray << {class: c.inspect}
     end
     return ("#{cgedgearray}")
   # Set the Characters Iconic Framework
