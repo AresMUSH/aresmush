@@ -42,11 +42,15 @@ module AresMUSH
         charabils = returnabilitiesforweb(char)
         charabils = charabils.join(" ") #removes the comma's that seperates the entries
 
+        charedges = returnedgesforweb(char)
+        charedges = charedges.join(" ") #removes the comma's that seperates the entries
+
         return {
           skills: skills,
 		      stats: stats,
           charicf: charicf,
           charabils: charabils,
+          charedges: charedges,
 		      #bennies: bennies,
 		      #conviction: conviction
         }
@@ -197,6 +201,7 @@ module AresMUSH
 
 
   def self.returnedgesforweb(char)
+    return ("You Are Here")
     swriftstraits = char.swrifts_traits
     rawcharicf = acl_return_traits(swriftstraits,'iconicf') #Get the characters Iconic Framework from the traits
     swrifts_iconicf = Global.read_config('swrifts', 'iconicf')
