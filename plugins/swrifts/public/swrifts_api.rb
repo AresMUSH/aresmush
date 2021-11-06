@@ -182,7 +182,7 @@ module AresMUSH
           counterarray << {name: bb.name, rating: bb.rating}
         end
     end
-    return ("#{counterarray}")
+    return (counterarray)
   end
 
   def self.returnicfforweb(char)
