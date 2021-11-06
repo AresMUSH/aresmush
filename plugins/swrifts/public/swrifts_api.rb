@@ -209,9 +209,10 @@ module AresMUSH
     ttsl = []
     swriftstraits.each do |d|
 			ttsl << { name: "#{d.name}" }
-    }
-
+    end
+    
     return ("#{ttsl}")
+
     # Set the Characters Iconic Framework
     if ( rawcharicf.length > 0 )
       mycharicf = getcharicf(rawcharicf,swrifts_iconicf)
