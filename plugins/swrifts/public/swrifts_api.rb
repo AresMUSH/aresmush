@@ -43,7 +43,7 @@ module AresMUSH
         charabils = charabils.join(" ") #removes the comma's that seperates the entries
 
         charedges = returnedgesforweb(char)
-        charedges = charedges.join(" ") #removes the comma's that seperates the entries
+        #charedges = charedges.join(" ") #removes the comma's that seperates the entries
 
         return {
           skills: skills,
@@ -209,6 +209,7 @@ module AresMUSH
     # Set the Characters Iconic Framework
     if ( rawcharicf.length > 0 )
       mycharicf = getcharicf(rawcharicf,swrifts_iconicf)
+      return ("#{mycharicf}")
       if ( mycharicf.length > 0 )
         mycharicf[:edges].each
           .map do | aa |
