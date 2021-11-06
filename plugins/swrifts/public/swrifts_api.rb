@@ -42,8 +42,11 @@ module AresMUSH
         charabils = returnabilitiesforweb(char)
         charabils = charabils.join(" ") #removes the comma's that seperates the entries
 
-        charedges = returnedgesforweb(char)
-        #charedges = charedges.join(" ") #removes the comma's that seperates the entries
+        charedges = returnedgesforweb(char,'edge')
+        charedges = charedges.join(" ") #removes the comma's that seperates the entries
+
+        charhind = returnedgesforweb(char,'hind')
+        charhind = charedges.join(" ") #removes the comma's that seperates the entries
 
         return {
           skills: skills,
@@ -51,6 +54,7 @@ module AresMUSH
           charicf: charicf,
           charabils: charabils,
           charedges: charedges,
+          charhind: charhind,
 		      #bennies: bennies,
 		      #conviction: conviction
         }
@@ -200,22 +204,26 @@ module AresMUSH
   end
 
 
-  def self.returnedgesforweb(char)
-    swrifts_edges = Global.read_config('swrifts', 'edges') #Get all the edges so we can grab the up to date descriptions
-    charedges = char.swrifts_edges #Get what's set on the Character
+  def self.returnedgesforweb(char,trait)
+    if (trait == 'edge')
+      swrifts_trait = Global.read_config('swrifts', 'edges') #Get all the edges so we can grab the up to date descriptions
+      chartraits = char.swrifts_edges #Get what's set on the Character
+    elsif (trait == 'hind')
+      swrifts_trait = Global.read_config('swrifts', 'hinderances') #Get all the hinderances so we can grab the up to date descriptions
+      chartraits = char.swrifts_hinderances #Get what's set on the Character
+    end
 
-    cgedgearray = [] #Might not be needed
-    charedges.each
+    chartraits.each
       .map do |c| #Loop through each edge on the character
-        cedgename = c.name.gsub("*","")
-        cedgename = cedgename.gsub("^","")
-        cgedgedeets = swrifts_edges.select { |ce| ce['name'].downcase == cedgename.downcase }.first
-        if ( cgedgedeets )
-          desc = cgedgedeets['description']
+        ctraitname = c.name.gsub("*","")
+        ctraitname = ctraitname.gsub("^","")
+        ctraitdeets = swrifts_traits.select { |ce| ce['name'].downcase == ctraitname.downcase }.first
+        if ( cgtraitdeets )
+          desc = cgtraitdeets['description']
         else
           desc = "Better fill out a desc, hmmmm?"
         end
-        title = "<p class='swabil'><span><strong>#{cedgename}</strong><br />#{desc}</span></p>"
+        title = "<p class='swabil'><span><strong>#{ctraitname}</strong><br />#{desc}</span></p>"
     end
   end
 
