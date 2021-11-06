@@ -201,7 +201,6 @@ module AresMUSH
 
 
   def self.returnedgesforweb(char)
-    return ("You Are Here")
     swriftstraits = char.swrifts_traits
     rawcharicf = acl_return_traits(swriftstraits,'iconicf') #Get the characters Iconic Framework from the traits
     swrifts_iconicf = Global.read_config('swrifts', 'iconicf')
@@ -211,7 +210,7 @@ module AresMUSH
     if ( rawcharicf.length > 0 )
       mycharicf = getcharicf(rawcharicf,swrifts_iconicf)
       if ( mycharicf.length > 0 )
-        mycharicf[:abilities].each
+        mycharicf[:edges].each
           .map do | aa |
             aaname = aa.gsub("*", "")
             aaname = aaname.gsub("^", "")
