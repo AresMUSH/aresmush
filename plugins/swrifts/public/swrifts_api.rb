@@ -201,12 +201,12 @@ module AresMUSH
 
 
   def self.returnedgesforweb(char)
-    swriftstraits = char.swrifts_traits
+    swriftstraits = char.swrifts_edges
     rawcharicf = acl_return_traits(swriftstraits,'iconicf') #Get the characters Iconic Framework from the traits
     swrifts_iconicf = Global.read_config('swrifts', 'iconicf')
     swrifts_abilities = Global.read_config('swrifts', 'edges')
 
-    return ("#{char.inspect}")
+    return ("#{swriftstraits}")
     # Set the Characters Iconic Framework
     if ( rawcharicf.length > 0 )
       mycharicf = getcharicf(rawcharicf,swrifts_iconicf)
