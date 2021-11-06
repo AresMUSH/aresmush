@@ -218,8 +218,8 @@ module AresMUSH
         ctraitname = c.name.gsub("*","")
         ctraitname = ctraitname.gsub("^","")
         ctraitdeets = swrifts_trait.select { |ce| ce['name'].downcase == ctraitname.downcase }.first
-        if ( cgtraitdeets )
-          desc = cgtraitdeets['description']
+        if ( ctraitdeets )
+          desc = ctraitdeets['description']
         else
           desc = "Better fill out a desc, hmmmm?"
         end
