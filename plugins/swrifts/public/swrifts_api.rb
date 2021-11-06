@@ -146,7 +146,7 @@ module AresMUSH
 	#Get the bennies for the website
 	def self.returnbenniesforweb(bennies)
 
-    return ("#{bennies}")
+    return ("#{bennies.inspect}")
 		bennies = "#{bennies}".to_i
 		if (bennies)
 			return bennies
