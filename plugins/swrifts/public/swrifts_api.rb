@@ -207,27 +207,15 @@ module AresMUSH
     cgedgearray = [] #Might not be needed
     charedges.each
       .map do |c| #Loop through each edge on the character
-        cgedgearray << {class: c.inspect}
-    end
-    return ("#{cgedgearray}")
-  # Set the Characters Iconic Framework
-    if ( rawcharicf.length > 0 )
-      mycharicf = getcharicf(rawcharicf,swrifts_iconicf)
-      return ("#{mycharicf.inspect}")
-      if ( mycharicf.length > 0 )
-        mycharicf[:edges].each
-          .map do | aa |
-            aaname = aa.gsub("*", "")
-            aaname = aaname.gsub("^", "")
-            aadeets = swrifts_abilities.select { |ss| ss['name'].downcase == aaname.downcase }.first
-            if ( aadeets )
-              desc = aadeets['description']
-            else
-              desc = "better fill out the abilities file hmmm?"
-            end
-            title = "<p class='swabil'><span><strong>#{aa}</strong><br />#{desc}</span></p>"
-          end
-      end
+        cedgename = c.name.gsub("*","")
+        cedgename = cedgename.gsub("^","")
+        cedgedeets = charedges.select { |ce| ce['name'].downcase == cedgename.downcase }.first
+        if ( cgedgedeets )
+          desc = cgedgedeets['description']
+        else
+          desc = "Better fill out a desc, hmmmm?"
+        end
+        title = "<p class='swabil'><span><strong>#{cgedgename}</strong><br />#{desc}</span></p>"
     end
   end
 
