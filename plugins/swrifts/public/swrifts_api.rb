@@ -32,7 +32,7 @@ module AresMUSH
     		stats = returnstatsforweb(char.swrifts_stats)
     		stats = stats.join(" ") #removes the comma's that seperates the entries
 
-    		#bennies = returnbenniesforweb(char.swrifts_bennies)
+    		bennies = returnbenniesforweb(char.swrifts_bennies)
 
 
     		#conviction = returnconvictionforweb(char.swrifts_conviction)
@@ -55,7 +55,7 @@ module AresMUSH
           charabils: charabils,
           charedges: charedges,
           charhind: charhind,
-		      #bennies: bennies,
+		      bennies: bennies,
 		      #conviction: conviction
         }
 	  end
@@ -145,6 +145,7 @@ module AresMUSH
 
 	#Get the bennies for the website
 	def self.returnbenniesforweb(bennies)
+    return ("#{bennies}")
 		bennies = "#{bennies}".to_i
 		if (bennies)
 			return bennies
