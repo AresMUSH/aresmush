@@ -797,14 +797,17 @@ module AresMUSH
 			charhjicf = charcgicf.select{ |k,v| k[pattern] }
         # If the framework has Hero Journeys, we need to break them out.
 			if (charhjicf.length > 0)
+        i = 0
 				charhjicf.each do |k,v|
-					tempcifstring = []
+					tempcifstring[i] = []
 					hjopt = k.split("_")[0]
           hjnumber = hjopt.gsub("hj", "")
 					v.each do |k1,v1|
-						tempcifstring << {table: k1, name: hjopt, tablenumber: hjnumber}
+            tempcifstring << {tablenumber: hjnumber}
+						tempcifstring[i] << {table: k1, name: hjopt}
 					end
 					cifstring[hjopt] = tempcifstring
+          i++
 				end
 			end
 		end
