@@ -806,7 +806,7 @@ module AresMUSH
 					v.each do |k1,v1|
 						tempcifstring[i] << {table: k1, name: hjopt}
 					end
-          return ("#{temcifstring}")
+          return ("#{tempcifstring}")
 					cifstring[hjopt] = tempcifstring
           ++i
 				end
