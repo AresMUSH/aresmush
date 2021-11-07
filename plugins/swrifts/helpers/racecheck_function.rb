@@ -4,6 +4,12 @@ module AresMUSH
 ## ----- Start Race Check
 
 		def self.race_check(model, race, race_name, icf_name)
+			# model: char
+			# race: All the Races
+			# race_name: Selected Race
+			# icf_name: name of ICF Chosen.
+
+			return (icf_name)
 			carray = race.include? 'complications' #Does the race have complications? We'll use this a bit later.
 
 			if icf_name == "none"

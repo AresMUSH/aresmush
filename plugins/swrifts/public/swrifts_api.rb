@@ -406,7 +406,10 @@ module AresMUSH
 	end
 
 	def self.returniconicforcg(char, swrifts_race, rawcharrace, model)
-		#(char, swrifts_race, rawcharrace, swrifts_iconicf)
+    # char: Character
+    # swrifts_race: All Races
+    # rawcharrace: Character Race
+    # model: All ICFs
 		iconicfarray = []
 		newtt =''
         list = model.sort_by { |a| a['name']}
@@ -423,8 +426,10 @@ module AresMUSH
 			ifdisabled=false # Will need better logic here.
 			if ( rawcharrace.length > 0 )
 				swrifts_race = Swrifts.find_race_config(rawcharrace) #get the Race entry we're working with from the yml
-				# Is there a character race selected?
+
+        #Check the race to make sure it can use this stuff.
 				rc = Swrifts.race_check(char, swrifts_race, rawcharrace, ifname)
+        return ("#{rc}")
 				if (rc == true)
 					ifdisabled = true
 				end
