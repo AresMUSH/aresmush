@@ -15,8 +15,7 @@ module AresMUSH
 				return false
 			else
 				iconicf = Swrifts.find_iconicf_config(icf_name) #get the Iconic Framework entry we're working with from the
-				icfarray = iconicf.include? 'complications'
-				return icfarray
+				icfarray = iconicf.include? 'complications' #Does the ICF Complications?
 			end
 
 			# We need to check if the ICF can actually have a race at all.  If it can't just don't do the rest of this function.
@@ -28,7 +27,7 @@ module AresMUSH
 					return true
 				end
 
-				if ( carray ) #Does the Race have complications?
+				if ( carray || icfarray ) #Does the Race have complications?
 					norace_race = race.select{ |nr| nr == 'complications' }.first #pull the complications from the Race array
 					nrace_value = norace_race[1]
 					nrace_valuenew = nrace_value.include?("Dragon*") #Does the complications say Dragon?
