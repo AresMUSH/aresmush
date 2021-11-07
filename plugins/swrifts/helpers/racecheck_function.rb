@@ -31,12 +31,7 @@ module AresMUSH
 							return false
 						end
 					end
-				end	
-			end
-
-
-
-
+				end
 			end
 
 			dragon_race = race_name.include?("dragon")
