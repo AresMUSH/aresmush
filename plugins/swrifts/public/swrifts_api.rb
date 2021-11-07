@@ -797,10 +797,9 @@ module AresMUSH
 			# Search the ICF for any key that has 'hj' in it. This allows us to have multiple Hero Journey tables on one framework.
 			pattern = 'hj'
 			charhjicf = charcgicf.select{ |k,v| k[pattern] }
-        Global.logger.debug "You are here"
-      # If the framework has Hero Journeys, we need to break them out.
+        # If the framework has Hero Journeys, we need to break them out.
 			if (charhjicf.length > 0)
-
+        return ("#{charhjicf}")
 				charhjicf.each do |k,v|
 					tempcifstring = []
 					hjopt = k.split("_")[0]
