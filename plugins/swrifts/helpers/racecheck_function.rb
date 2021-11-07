@@ -25,8 +25,6 @@ module AresMUSH
 					norace_race = race.select{ |nr| nr == 'complications' }.first #pull the complications from the Race array
 					nrace_value = norace_race[1]
 					nrace_valuenew = nrace_value.include?("Dragon*") #Does the complications say Dragon?
-
-					return (nrace_valuenew)
 					if ( nrace_valuenew ) #if it does
 						nr_valuenew = nr_value.include?("Dragon*") #Does the ICF say it can be a dragon?
 						if ( !nr_valuenew ) #if not, disable entry
@@ -36,15 +34,15 @@ module AresMUSH
 				end
 			end
 
-			dragon_race = race_name.include?("dragon")
-			dragon_icf = icf_name.include?("dragon")
+			#dragon_race = race_name.include?("dragon")
+			#dragon_icf = icf_name.include?("dragon")
 
-			if dragon_race && dragon_icf
-				return false
-			elsif dragon_race || dragon_icf
-				return true
-			else
-			end
+			#if dragon_race && dragon_icf
+				#return false
+			#elsif dragon_race || dragon_icf
+				#return true
+			#else
+			#end
 
 
 			if carray == true
