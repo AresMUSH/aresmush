@@ -4,8 +4,8 @@ module AresMUSH
 ## ----- Start Race Check
 
 		def self.race_check(model, race, race_name, icf_name)
-			carray = race.include? 'complications'
-			return (carray)
+			carray = race.include? 'complications' #Does the race have complications? We'll use this a bit later.
+
 			if icf_name == "none"
 				return false
 			else
@@ -20,8 +20,21 @@ module AresMUSH
 				if (nr_valuenew == true)
 					return true
 				end
-				# Now check to see if the ICF can have Dragon Races
-				nr_valuenew = nr_value.include?("Dragon*")
+
+				if ( carray ) #Does the Race have complications?
+					norace_race = race.select{ |nr| nr == 'complications' }.first #pull the complications from the Race array
+					nrace_value = norace_race[1]
+					nrace_valuenew = nrace_value.include?("Dragon*") #Does the complications say Dragon?
+					if ( nrace_valuenew ) #if it does
+						nr_valuenew = nr_value.include?("Dragon*") #Does the ICF say it can be a dragon?
+						if ( !nr_valuenew ) #if not, disable entry
+							return false
+						end
+					end
+				end	
+			end
+
+
 
 
 			end
