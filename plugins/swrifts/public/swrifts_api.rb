@@ -808,7 +808,7 @@ module AresMUSH
 						tempcifstring[i] << {table: k1, name: hjopt}
 					end
 					cifstring[hjopt] = tempcifstring
-          cifstring[:tablenumber] = hjnumber
+          cifstring[hjopt][:tablenumber] = hjnumber
           ++i
 				end
 			end
