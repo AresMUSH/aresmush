@@ -799,15 +799,16 @@ module AresMUSH
 			if (charhjicf.length > 0)
         i = 0
 				charhjicf.each do |k,v|
+          tempcifstring = []
 					tempcifstring[i] = []
 					hjopt = k.split("_")[0]
           hjnumber = hjopt.gsub("hj", "")
-          tablename = 'tablename'
+          tablenumber = 'tablenumber'
+          tempcifstring << {tablenumber: hjnumber}
 					v.each do |k1,v1|
 						tempcifstring[i] << {table: k1, name: hjopt}
 					end
 					cifstring[hjopt] = tempcifstring
-          cifstring[hjopt][tablename] = hjnumber
           ++i
 				end
 			end
