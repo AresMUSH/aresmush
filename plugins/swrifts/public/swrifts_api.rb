@@ -802,7 +802,7 @@ module AresMUSH
 					tempcifstring[i] = []
 					hjopt = k.split("_")[0]
           hjnumber = hjopt.gsub("hj", "")
-          tempcifstring['tablenumber']= hjnumber
+          tempcifstring['tablenumber'] = {hjnumber}
 					v.each do |k1,v1|
 						tempcifstring[i] << {table: k1, name: hjopt}
 					end
