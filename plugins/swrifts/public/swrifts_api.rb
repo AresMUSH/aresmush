@@ -786,6 +786,7 @@ module AresMUSH
 		# attribute :description #text from table
 		# reference :character, "AresMUSH::Character"
 
+    return ("Here")
 
 		if charicf #has there an ICF selected?
 			cifstring = Hash.new
@@ -799,7 +800,6 @@ module AresMUSH
 			charhjicf = charcgicf.select{ |k,v| k[pattern] }
         # If the framework has Hero Journeys, we need to break them out.
 			if (charhjicf.length > 0)
-        return ("#{charhjicf}")
 				charhjicf.each do |k,v|
 					tempcifstring = []
 					hjopt = k.split("_")[0]
