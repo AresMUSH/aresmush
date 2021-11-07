@@ -35,12 +35,8 @@ module AresMUSH
         bennies = returnbandcforweb(char.swrifts_counters, 'bennies')
         bennies = bennies.join(" ") #removes the comma's that seperates the entries
 
-        benniesnew = returnbandcnewforweb(char.swrifts_counters, 'bennies')
-
         conviction = returnbandcforweb(char.swrifts_counters, 'conviction')
         conviction = conviction.join(" ") #removes the comma's that seperates the entries
-
-        convictionnew = returnbandcnewforweb(char.swrifts_counters, 'conviction')
 
         charicf = returnicfforweb(char)
         charabils = returnabilitiesforweb(char)
