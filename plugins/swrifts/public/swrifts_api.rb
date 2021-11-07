@@ -802,6 +802,7 @@ module AresMUSH
           tempcifstring = []
 					tempcifstring[i] = []
 					hjopt = k.split("_")[0]
+          cifstring[hjopt] = Hash.new
           hjnumber = hjopt.gsub("hj", "")
           tablenumber = 'tablenumber'
 					v.each do |k1,v1|
