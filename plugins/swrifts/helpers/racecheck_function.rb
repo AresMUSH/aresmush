@@ -26,7 +26,7 @@ module AresMUSH
 					return true
 				end
 
-				dr_value= nr_value.include("Dragon*")
+				dr_value= nr_value.include?("Dragon*")
 				if ( dr_value == true )
 					return true
 				end
