@@ -28,7 +28,7 @@ module AresMUSH
 					if ( nrace_valuenew ) #if it does
 						nr_valuenew = nr_value.include?("Dragon*") #Does the ICF say it can be a dragon?
 						if ( !nr_valuenew ) #if not, disable entry
-							return false
+							return true
 						end
 					end
 				end
