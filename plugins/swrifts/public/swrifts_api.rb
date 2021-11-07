@@ -800,6 +800,7 @@ module AresMUSH
 
       # If the framework has Hero Journeys, we need to break them out.
 			if (charhjicf.length > 0)
+        Global.logger.debug "You are here"
 				charhjicf.each do |k,v|
 					tempcifstring = []
 					hjopt = k.split("_")[0]
