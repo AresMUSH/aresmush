@@ -807,7 +807,7 @@ module AresMUSH
 					v.each do |k1,v1|
 						tempcifstring[i] << {table: k1, name: hjopt}
 					end
-					cifstring[hjopt] = tempcifstring
+					cifstring[hjopt][:details] = tempcifstring
           cifstring[hjopt][:tablenumber] = hjnumber
           ++i
 				end
