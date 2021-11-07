@@ -804,14 +804,14 @@ module AresMUSH
           hjnumber = hjopt.gsub("hj", "")
           tempcifstring << {tablenumber: hjnumber}
 					v.each do |k1,v1|
-						tempcifstring[i] << {table: k1, name: hjopt}
+						tempcifstring << {table: k1, name: hjopt}
 					end
 					cifstring[hjopt] = tempcifstring
           ++i
 				end
 			end
 		end
-		return (cifstring)
+		return ("#{cifstring}")
 	end
 
 	def self.acl_get_hj_tables(hjtables, charicf) #hjtables is the HJ's set on the char, charicf is the one selected by the player (not used)
