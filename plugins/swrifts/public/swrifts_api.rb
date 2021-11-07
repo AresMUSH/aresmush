@@ -791,10 +791,14 @@ module AresMUSH
 			cifstring = Hash.new
 			tempcifstring = []
 
+      # Get the ICF from the system file and filter it for the one chosen by the player.
 			charcgicf = swrifts_iconicf.select { |ss| ss['name'].downcase == charicf.downcase }.first
-			# get the entry in global file that matches the ICF name selected. We're going to make this pretty.
+
+			# Search the ICF for any key that has 'hj' in it. This allows us to have multiple Hero Journey tables on one framework.
 			pattern = 'hj'
 			charhjicf = charcgicf.select{ |k,v| k[pattern] }
+
+      # If the framework has Hero Journeys, we need to break them out.
 			if (charhjicf.length > 0)
 				charhjicf.each do |k,v|
 					tempcifstring = []
@@ -806,7 +810,7 @@ module AresMUSH
 				end
 			end
 		end
-		return (cifstring);
+		return ("#{cifstring}");
 	end
 
 	def self.acl_get_hj_tables(hjtables, charicf) #hjtables is the HJ's set on the char, charicf is the one selected by the player (not used)
