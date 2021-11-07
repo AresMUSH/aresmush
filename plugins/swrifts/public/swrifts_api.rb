@@ -810,7 +810,7 @@ module AresMUSH
 				end
 			end
 		end
-		return ("#{cifstring}")
+		return (cifstring)
 	end
 
 	def self.acl_get_hj_tables(hjtables, charicf) #hjtables is the HJ's set on the char, charicf is the one selected by the player (not used)
