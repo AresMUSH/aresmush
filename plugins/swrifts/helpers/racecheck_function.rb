@@ -5,7 +5,7 @@ module AresMUSH
 
 		def self.race_check(model, race, race_name, icf_name)
 			carray = race.include? 'complications'
-
+			return (carray)
 			if icf_name == "none"
 				return false
 			else
@@ -16,10 +16,14 @@ module AresMUSH
 			norace_icf = iconicf.select{ |nr| nr == 'complications' }.first #pull the complications from the ICF array
 			if ( norace_icf )
 				nr_value = norace_icf[1]
-				nr_value = nr_value.include?("No Race")
-				if (nr_value == true)
+				nr_valuenew = nr_value.include?("No Race")
+				if (nr_valuenew == true)
 					return true
 				end
+				# Now check to see if the ICF can have Dragon Races
+				nr_valuenew = nr_value.include?("Dragon*")
+
+
 			end
 
 			dragon_race = race_name.include?("dragon")

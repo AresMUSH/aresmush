@@ -61,8 +61,6 @@ module AresMUSH
           charhind: charhind,
 		      bennies: bennies,
 		      conviction: conviction,
-          benniesnew: benniesnew,
-		      convictionnew: convictionnew,
         }
 	  end
 
@@ -169,21 +167,6 @@ module AresMUSH
         end
     end
 	end
-
-  #Get the bennies and conviction for the website
-  def self.returnbandcnewforweb(counters,trait)
-
-    counterarray = []
-    counters.each
-      .map do | bb |
-        if (trait == 'bennies' && ( bb.name == 'bennies_current' || bb.name == 'bennies_max' ))
-          counterarray << {"#{bb.name}": bb.rating}
-        elsif (trait == 'conviction' && ( bb.name == 'conviction_current' || bb.name == 'conviction' ))
-          counterarray << {name: bb.name, rating: bb.rating}
-        end
-    end
-    return (counterarray)
-  end
 
   def self.returnicfforweb(char)
     swriftstraits = char.swrifts_traits
@@ -672,6 +655,7 @@ module AresMUSH
 			# Is there a character icf selected?
 			if ( ifname.length > 0 && ifname != "none" )
 				rc = Swrifts.race_check(char, swrifts_race, racename, ifname)
+        return ("#{rc}")
 				if (rc == true)
 					ifdisabled = true
 				end
