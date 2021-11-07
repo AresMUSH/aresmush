@@ -786,7 +786,7 @@ module AresMUSH
 		# attribute :description #text from table
 		# reference :character, "AresMUSH::Character"
 		if charicf #has there an ICF selected?
-			cifstring = Hash.new
+			cifstring = []
 			tempcifstring = []
 
       # Get the ICF from the system file and filter it for the one chosen by the player.
