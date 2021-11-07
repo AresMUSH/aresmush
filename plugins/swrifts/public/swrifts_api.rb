@@ -788,6 +788,7 @@ module AresMUSH
 		if charicf #has there an ICF selected?
 			cifstring = Hash.new
 			tempcifstring = []
+      tempcifhash = Hash.new
 
       # Get the ICF from the system file and filter it for the one chosen by the player.
 			charcgicf = swrifts_iconicf.select { |ss| ss['name'].downcase == charicf.downcase }.first
@@ -804,15 +805,19 @@ module AresMUSH
 					hjopt = k.split("_")[0]
           hjnumber = hjopt.gsub("hj", "")
           tablenumber = 'tablenumber'
-          tempcifstring[:tablenumber] = hjnumber
+          #tempcifstring[:tablenumber] = hjnumber
+          tempcifhash[:tablenumber] = hjnumber
 					v.each do |k1,v1|
 						tempcifstring[i] << {table: k1, name: hjopt}
+            tempcifhash[i][:table] = k1
+            tempcifhash[i][:name] = hjopt
 					end
 					cifstring[hjopt] = tempcifstring
           ++i
 				end
 			end
 		end
+    return ("#{tempcifhash}")
 		return ("#{cifstring}")
 	end
 
