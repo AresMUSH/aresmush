@@ -788,7 +788,6 @@ module AresMUSH
 		if charicf #has there an ICF selected?
 			cifstring = Hash.new
 			tempcifstring = []
-      tempcifhash = Hash.new
 
       # Get the ICF from the system file and filter it for the one chosen by the player.
 			charcgicf = swrifts_iconicf.select { |ss| ss['name'].downcase == charicf.downcase }.first
