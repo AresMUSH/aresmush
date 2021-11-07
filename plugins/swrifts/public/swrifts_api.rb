@@ -308,7 +308,7 @@ module AresMUSH
 		syshind = returnsysedgesforcg(cgsyshind, cghinder, charicf, charrace, 'hind')
 
 		hjslots = acl_get_hj_slots(swrifts_iconicf, rawcharicf) #swrifts_icf is the system icf's, charicf is the one selected by the player
-		hjslots = ("#{hjslots}");
+		#hjslots = ("#{hjslots}");
 
 		hjtables = acl_get_hj_tables(cghjtables, rawcharicf)
 		# hjtables = hjtables.inspect
@@ -785,9 +785,6 @@ module AresMUSH
 		# attribute :table #Body Armor, etc.
 		# attribute :description #text from table
 		# reference :character, "AresMUSH::Character"
-
-    return ("Here")
-
 		if charicf #has there an ICF selected?
 			cifstring = Hash.new
 			tempcifstring = []
