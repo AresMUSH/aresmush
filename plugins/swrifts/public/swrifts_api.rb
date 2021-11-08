@@ -800,9 +800,8 @@ module AresMUSH
         i = 0
 				charhjicf.each do |k,v|
           tempcifstring = []
-					tempcifstring[i] = []
 					hjopt = k.split("_")[0]
-          cifstring[hjopt] = Hash.new
+          #cifstring[hjopt] = Hash.new
           hjnumber = hjopt.gsub("hj", "")
 					v.each do |k1,v1|
 						tempcifstring << {table: k1, name: hjopt, tablenumber: hjnumber}
