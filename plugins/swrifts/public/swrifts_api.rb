@@ -778,43 +778,35 @@ module AresMUSH
 		return (cgedgearray)
 	end
 
-	def self.acl_get_hj_slots(swrifts_iconicf, charicf) #swrifts_icf is the system icf's, charicf is the one selected by the player
+  def self.acl_get_hj_slots(swrifts_iconicf, charicf) #swrifts_icf is the system icf's, charicf is the one selected by the player
 
 		# attribute :name #hj1, hj2, etc.
 		# attribute :rating, :type => DataType::Integer #the random roll
 		# attribute :table #Body Armor, etc.
 		# attribute :description #text from table
 		# reference :character, "AresMUSH::Character"
+
+
 		if charicf #has there an ICF selected?
 			cifstring = Hash.new
 			tempcifstring = []
 
-      # Get the ICF from the system file and filter it for the one chosen by the player.
 			charcgicf = swrifts_iconicf.select { |ss| ss['name'].downcase == charicf.downcase }.first
-
-			# Search the ICF for any key that has 'hj' in it. This allows us to have multiple Hero Journey tables on one framework.
+			# get the entry in global file that matches the ICF name selected. We're going to make this pretty.
 			pattern = 'hj'
 			charhjicf = charcgicf.select{ |k,v| k[pattern] }
-        # If the framework has Hero Journeys, we need to break them out.
 			if (charhjicf.length > 0)
-        i = 0
 				charhjicf.each do |k,v|
-          tempcifstring = []
+					tempcifstring = []
 					hjopt = k.split("_")[0]
-          #cifstring[hjopt] = Hash.new
-          hjnumber = hjopt.gsub("hj", "")
 					v.each do |k1,v1|
-						tempcifstring << {table: k1, name: hjopt, tablenumber: hjnumber}
-            #cifstring[hjopt][:name] = hjopt
-            #cifstring[hjopt][:table] = k1
-            #cifstring[hjopt][:tablenumber] = hjnumber
+						tempcifstring << {table: k1, name: hjopt}
 					end
-          ++i
-          cifstring[hjopt] = tempcifstring
+					cifstring[hjopt] = tempcifstring
 				end
 			end
 		end
-		return (cifstring)
+		return (cifstring);
 	end
 
 	def self.acl_get_hj_tables(hjtables, charicf) #hjtables is the HJ's set on the char, charicf is the one selected by the player (not used)
