@@ -22,6 +22,7 @@ fs3combat:
     - scope
     - shrink
     - transform
+    - transmutation
     - vitality
     Melee:
     - cold calm
@@ -38,6 +39,7 @@ fs3combat:
     - sparring
     - strength
     - transform
+    - transmutation
     - vitality
     - guilt-weighted gloves
     Spell:
