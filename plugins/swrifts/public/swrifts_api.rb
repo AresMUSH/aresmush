@@ -912,9 +912,9 @@ module AresMUSH
 			if (c_edgesnofw)  #If there are edges not related to the Iconic Framework and Race
 				c_edgesnofw.each do |key,value|  #Cycle through each one
 					edge_name = "#{value['name']}" #set the name to all lowercase
-					#ss = Swrifts.add_feature(char, SwriftsEdges, "edges", edge_name) #Call the add_feature function helpers.rb
-					#dbgstr << "Edge name: #{edge_name}, SS: #{ss}"  #For troubleshooting.
-          dbgstr << "Edge name: #{edge_name}"
+					ss = Swrifts.add_feature(char, SwriftsEdges, "edges", edge_name) #Call the add_feature function helpers.rb
+					dbgstr << "Edge name: #{edge_name}, SS: #{ss}"  #For troubleshooting.
+          #dbgstr << "Edge name: #{edge_name}"
 				end
                   return (dbgstr)
 			end
