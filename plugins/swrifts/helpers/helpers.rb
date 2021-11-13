@@ -23,9 +23,10 @@ module AresMUSH
 			set.each do |key, rating|
 				#return (set)
 				element_name = "#{key}".downcase
-				return (element_name)
+				#return (element_name)
 				mod = "#{rating}".to_i
-				system.create(name: element_name, rating: mod, character: model)
+				yy = system.create(name: element_name, rating: mod, character: model)
+				return ( yy )
 			end
 		end
 
