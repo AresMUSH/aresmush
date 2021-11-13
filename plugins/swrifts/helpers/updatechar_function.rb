@@ -87,7 +87,7 @@ module AresMUSH
 			if (system['hinderances'])
 				system_hinderances=system['hinderances']
 				system_hinderances.each do |key|
-					hinderance_name = "#{key}".downcase
+					hinderance_name = "#{key}"
 					ss = Swrifts.add_feature(model, SwriftsHinderances, "hinderances", hinderance_name)
 				end
 			else
@@ -98,8 +98,7 @@ module AresMUSH
 			if (system['edges'])
 				system_edges=system['edges']
 				system_edges.each do |key|
-					#edge_name = "#{key}".downcase
-					edge_name = "#{key}"					
+					edge_name = "#{key}"
 					ss = Swrifts.add_feature(model, SwriftsEdges, "edges", edge_name)
 					# dbgstr << "Edge name: #{edge_name}, #{ss}%r"
 				end
