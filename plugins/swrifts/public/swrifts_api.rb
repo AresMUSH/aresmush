@@ -918,7 +918,7 @@ module AresMUSH
 			end
 
 			#Save the no framework hinderance
-
+      dbgstr << "Hind: #{c_hindnofw.inspect}"
 			if (c_hindnofw) #If there are hinderances not related to the Iconic Framework and Race
 				#c_hindnofw.each do |key, value| #Cycle through each one
 					#edge_name = "#{value['name']}" #set the name to all lowercase
