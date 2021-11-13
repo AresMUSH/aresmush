@@ -235,7 +235,7 @@ module AresMUSH
 
 		# Get the base CGen slots that might be filled
 		swrifts_init = Global.read_config('swrifts', 'init')
-		cgslots = returncgslotsforcg(swrifts_init) #Prolly don't need this 25 Dec 2020
+		cgslots = returncgslotsforcg(swrifts_init)
 
 ####### This is probably not needed - I still have to calculate the points dynamically ####
 		chargenpoints = char.swrifts_chargenpoints
@@ -322,7 +322,7 @@ module AresMUSH
 		  charrace: charrace, #Char Race
 		  cgpoints: cgtraits, #CG points for the character
 		  inicgpoints: initcgpoints, #CG points set by system.
-		  cgslots: cgslots, #prolly not needed 25 Dec 2020
+		  cgslots: cgslots, #CG points set at init
 		  cgpoints: chargenpoints, #Get the cgpoints that are stored on the character sheet
 		  initracepoints: initracepoints,
 		  cgedges: cgedg, #Edges on Character
@@ -702,7 +702,7 @@ module AresMUSH
 			if (fw == 'all')
 				cg.each do |c|
 						cgname = "#{c.name}"
-						cgname = cgname.downcase
+						#cgname = cgname.downcase
 						cgname = cgname[/[^*]+/]
 						cgname = cgname[/[^^]+/]
 						cgname = cgname.strip
