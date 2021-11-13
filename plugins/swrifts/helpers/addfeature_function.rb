@@ -64,7 +64,7 @@ module AresMUSH
 				set=group['skills']
 				charhash = model.swrifts_counters
 				system = SwriftsSkills
-				return (system.inspect)				
+				#return (system.inspect)				
 				ss = Swrifts.element_create(model, set, system)
 			else
 
