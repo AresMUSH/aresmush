@@ -29,7 +29,7 @@ module AresMUSH
 				set=group['stats']
 				#return (set.inspect) # "Strength"=>-2, "Agility"=>-2
 				charhash = model.swrifts_stats
-				return (charhash.inspect)
+				#return (charhash.inspect)
 				ss = Swrifts.element_update(model, set, charhash)
 				#return (ss.inspect)
 			else
@@ -64,8 +64,8 @@ module AresMUSH
 				set=group['skills']
 				charhash = model.swrifts_counters
 				system = SwriftsSkills
+				return (system.inspect)				
 				ss = Swrifts.element_create(model, set, system)
-				return (ss.inspect)
 			else
 
 			end
