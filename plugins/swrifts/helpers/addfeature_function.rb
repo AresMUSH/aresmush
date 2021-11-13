@@ -16,11 +16,11 @@ module AresMUSH
 			system_name = system_name.gsub("^", "")	 #remove the ^ that appear in the feature name
 			systemhash = Global.read_config('swrifts', system) #the whole System from the yml
 			# return (systemhash.inspect)
-			return (system_name)
+			#return (system_name)
 			newsh = systemhash.select { |a| a['name'].to_s != '' } #the whole System minus empty entries
 		  #return (newsh)
 			group = newsh.select { |a| a['name'].downcase == system_name.downcase }.first #the whole Group
-			#return ( group.inspect );
+			return ( group.inspect );
 			if (!group) #If the feature has been entered incorrectly in the yml file, do nothing with it.
 				return
 			end
