@@ -724,7 +724,7 @@ module AresMUSH
 			# CG = character traits, cgsys = systemtraits.
 				cg.each do |c|
 					cgname = "#{c.name}"
-					cgname = cgname.downcase
+					#cgname = cgname.downcase
 					cgnamesub = cgname.gsub("^", "*")
 					trexcludes = 'kkkkk'
 					if (!cgnamesub.include?("*"))
@@ -753,7 +753,7 @@ module AresMUSH
 			# CG = character traits, cgsys = systemtraits.
 				cg.each do |c|
 					cgname = "#{c.name}"
-					cgnamenew = cgname.downcase
+					#cgnamenew = cgname.downcase
 					cgnamesub = cgname.gsub("^", "*")   #Trying to find out why the ^ are repeated
 					if (cgnamesub.include?("*"))
 						cgnamenew = cgnamenew[/[^*]+/]
