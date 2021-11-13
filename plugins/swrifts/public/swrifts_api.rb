@@ -924,7 +924,7 @@ module AresMUSH
 					#edge_name = "#{value['name']}" #set the name to all lowercase
 					#ss = Swrifts.add_feature(char, SwriftsHinderances, "hinderances", edge_name) #Call the add_feature function helpers.rb
 					#dbgstr << "Hind name: #{edge_name}, #{ss}" #For troubleshooting
-          dbgstr << "hinderances"
+          #dbgstr << "hinderances"
 				#end
 			end
 
