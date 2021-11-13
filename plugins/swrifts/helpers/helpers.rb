@@ -7,7 +7,7 @@ module AresMUSH
 			set.each do |key, rating|
 				# return (set)
 				element_name = "#{key}".downcase
-				# return (element_name)
+				return (element_name)
 				mod = "#{rating}".to_i
 				# return (element_name.inspect)
 				element = charhash.select { |a| a.name.downcase == element_name }.first
