@@ -774,8 +774,8 @@ module AresMUSH
 				end
 			end
 		end
-		# return ("#{cgedgearray}")
-		return (cgedgearray)
+		 return ("#{cgedgearray}")
+		#return (cgedgearray)
 	end
 
   def self.acl_get_hj_slots(swrifts_iconicf, charicf) #swrifts_icf is the system icf's, charicf is the one selected by the player
