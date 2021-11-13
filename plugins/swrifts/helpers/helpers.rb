@@ -21,9 +21,9 @@ module AresMUSH
 
 		def self.element_create(model, set, system)
 			set.each do |key, rating|
-				return (set)
+				#return (set)
 				element_name = "#{key}".downcase
-				# return (element_name)
+				return (element_name)
 				mod = "#{rating}".to_i
 				system.create(name: element_name, rating: mod, character: model)
 			end
