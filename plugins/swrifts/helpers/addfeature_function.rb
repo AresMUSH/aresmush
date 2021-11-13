@@ -11,7 +11,7 @@ module AresMUSH
 			# system_name - testhind
 			collection.create(name: system_name, character: model)
 			system_name = system_name.downcase
-			return (system_name.inspect)
+			#return (system_name.inspect)
 			system_name = system_name.gsub("*", "")	 #remove the * that appear in the feature name
 			system_name = system_name.gsub("^", "")	 #remove the ^ that appear in the feature name
 			systemhash = Global.read_config('swrifts', system) #the whole System from the yml
@@ -20,7 +20,7 @@ module AresMUSH
 			newsh = systemhash.select { |a| a['name'].to_s != '' } #the whole System minus empty entries
 			# return (newfg)
 			group = newsh.select { |a| a['name'].downcase == system_name.downcase }.first #the whole Group
-			#return ( group );
+			return ( group.inspect );
 			if (!group) #If the feature has been entered incorrectly in the yml file, do nothing with it.
 				return
 			end
