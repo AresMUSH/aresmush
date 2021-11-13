@@ -919,13 +919,13 @@ module AresMUSH
 
 			#Save the no framework hinderance
 
-			if (c_hindnofw) #If there are hinderances not related to the Iconic Framework and Race
-				c_hindnofw.each do |key, value| #Cycle through each one
-					edge_name = "#{value['name']}" #set the name to all lowercase
-					ss = Swrifts.add_feature(char, SwriftsHinderances, "hinderances", edge_name) #Call the add_feature function helpers.rb
-					dbgstr << "Hind name: #{edge_name}, #{ss}" #For troubleshooting
-				end
-			end
+			#if (c_hindnofw) #If there are hinderances not related to the Iconic Framework and Race
+				#c_hindnofw.each do |key, value| #Cycle through each one
+					#edge_name = "#{value['name']}" #set the name to all lowercase
+					#ss = Swrifts.add_feature(char, SwriftsHinderances, "hinderances", edge_name) #Call the add_feature function helpers.rb
+					#dbgstr << "Hind name: #{edge_name}, #{ss}" #For troubleshooting
+				#end
+			#end
 
 			if (c_hj) #If there are heroes journey tables, save them.
 				c_hj.each do |key, value| #cycle through each one
