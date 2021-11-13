@@ -908,6 +908,8 @@ module AresMUSH
 				race_trait.update(rating: race_downcase) #Update the race with the one chosen.
 			end
 
+              dbgstr << "Hind: #{c_hindnofw.inspect}"
+              return (dbgstr)
 			#Save the no framework edges
 			if (c_edgesnofw)  #If there are edges not related to the Iconic Framework and Race
 				c_edgesnofw.each do |key,value|  #Cycle through each one
