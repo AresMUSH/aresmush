@@ -20,7 +20,7 @@ module AresMUSH
 			newsh = systemhash.select { |a| a['name'].to_s != '' } #the whole System minus empty entries
 			# return (newfg)
 			group = newsh.select { |a| a['name'].downcase == system_name.downcase }.first #the whole Group
-			# return ( group );
+			return ( group );
 			if (!group) #If the feature has been entered incorrectly in the yml file, do nothing with it.
 				return
 			end
@@ -64,7 +64,8 @@ module AresMUSH
 				set=group['skills']
 				charhash = model.swrifts_counters
 				system = SwriftsSkills
-				Swrifts.element_create(model, set, system)
+				ss = Swrifts.element_create(model, set, system)
+				return (ss.inspect)
 			else
 
 			end
