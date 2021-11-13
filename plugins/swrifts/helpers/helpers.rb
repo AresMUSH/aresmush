@@ -7,14 +7,14 @@ module AresMUSH
 			set.each do |key, rating|
 				# return (set)
 				element_name = "#{key}".downcase
-				return (element_name)
+				#return (element_name)
 				mod = "#{rating}".to_i
 				# return (element_name.inspect)
 				element = charhash.select { |a| a.name.downcase == element_name }.first
-				#return (element.inspect)
+				return (element.inspect)
 				current_rating = element ? element.rating : 0
 				new_rating = current_rating + mod
-				return (new_rating)
+				#return (new_rating)
 				element.update(rating: new_rating)
 			end
 		end

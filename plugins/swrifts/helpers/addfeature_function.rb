@@ -1,10 +1,10 @@
 module AresMUSH
 	module Swrifts
-		
-				
+
+
 		## ----- Features
-		
-		def self.add_feature(model, collection, system, system_name) 
+
+		def self.add_feature(model, collection, system, system_name)
 			# model - Aliana
 			# collection - SwriftsEdges
 			# system - "edges"
@@ -12,8 +12,8 @@ module AresMUSH
 			collection.create(name: system_name, character: model)
 			system_name = system_name.downcase
 			# return (system_name)
-			system_name = system_name.gsub("*", "")	 #remove the * that appear in the feature name		
-			system_name = system_name.gsub("^", "")	 #remove the ^ that appear in the feature name		
+			system_name = system_name.gsub("*", "")	 #remove the * that appear in the feature name
+			system_name = system_name.gsub("^", "")	 #remove the ^ that appear in the feature name
 			systemhash = Global.read_config('swrifts', system) #the whole System from the yml
 			# return (systemhash.inspect)
 			# return (system_name)
@@ -24,40 +24,40 @@ module AresMUSH
 			if (!group) #If the feature has been entered incorrectly in the yml file, do nothing with it.
 				return
 			end
-			
-			if (group['stats']) 			
+
+			if (group['stats'])
 				set=group['stats']
 				# return (set.inspect) # "Strength"=>-2, "Agility"=>-2
 				charhash = model.swrifts_stats
 				#return (charhash.inspect)
 				ss = Swrifts.element_update(model, set, charhash)
-				# return (ss.inspect)
-			else 
-				
+				return (ss.inspect)
+			else
+
 			end
-			
+
 			if (group['chargen_points'])
-				set=group['chargen_points']			
+				set=group['chargen_points']
 				charhash = model.swrifts_chargenpoints
 				Swrifts.element_update(model, set, charhash)
-			else 
-				
+			else
+
 			end
 
 			if (group['dstats'])
 				set=group['dstats']
 				charhash = model.swrifts_dstats
 				Swrifts.element_update(model, set, charhash)
-			else 
-				
+			else
+
 			end
 
 			if (group['counters'])
 				set=group['counters']
 				charhash = model.swrifts_counters
 				Swrifts.element_update(model, set, charhash)
-			else 
-				
+			else
+
 			end
 
 			if (group['skills'])
@@ -65,10 +65,10 @@ module AresMUSH
 				charhash = model.swrifts_counters
 				system = SwriftsSkills
 				Swrifts.element_create(model, set, system)
-			else 
-				
+			else
+
 			end
-					
+
 		end
 
 	end
