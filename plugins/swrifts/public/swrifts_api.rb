@@ -916,7 +916,6 @@ module AresMUSH
 					dbgstr << "Edge name: #{edge_name}, SS: #{ss}"  #For troubleshooting.
           #dbgstr << "Edge name: #{edge_name}"
 				end
-                  return (dbgstr)
 			end
 
 			#Save the no framework hinderance
