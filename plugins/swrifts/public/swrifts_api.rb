@@ -918,8 +918,9 @@ module AresMUSH
 			end
 
 			#Save the no framework hinderance
-      dbgstr << "Hind: #{c_hindnofw.inspect}"
+
 			if (c_hindnofw) #If there are hinderances not related to the Iconic Framework and Race
+              dbgstr << "Hind: #{c_hindnofw.inspect}"
 				#c_hindnofw.each do |key, value| #Cycle through each one
 					#edge_name = "#{value['name']}" #set the name to all lowercase
 					#ss = Swrifts.add_feature(char, SwriftsHinderances, "hinderances", edge_name) #Call the add_feature function helpers.rb
