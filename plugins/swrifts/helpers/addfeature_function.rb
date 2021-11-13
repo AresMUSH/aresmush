@@ -31,7 +31,7 @@ module AresMUSH
 				charhash = model.swrifts_stats
 				#return (charhash.inspect)
 				ss = Swrifts.element_update(model, set, charhash)
-				return (ss.inspect)
+				#return (ss.inspect)
 			else
 
 			end
