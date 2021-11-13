@@ -26,7 +26,6 @@ module AresMUSH
 				#return (element_name)
 				mod = "#{rating}".to_i
 				yy = system.create(name: element_name, rating: mod, character: model)
-				return ( yy )
 			end
 		end
 
