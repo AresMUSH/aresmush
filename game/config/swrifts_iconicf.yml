@@ -2041,45 +2041,4 @@ swrifts:
     chargen_points:
         fandg_slots: 2
     description: Headhunter is the term for the common mercenaries focused on improving their combat value via cybernetic enhancement. Many are partial reconstruction cyborgs vets maimed in war who wear the badge of Headhunter with honor and revel in the trade of blood and steel for credit
-    chargen_points:
-        cyber_slots: 7
-    edges:
-        - Iron Jaw*
-        - Soldier*
-        - Upgradeable*
-    hj1_options:
-        - Body Armor
-        - Close Combat Weapons
-        - Cybernetics
-        - Education
-        - Enchanted Items
-        - Experience & Wisdom
-        - Magic & Mysticism
-        - Psionics
-        - Ranged Weapons
-        - Training
-        - Underworld & Black Ops
-    hj2_options:
-        - Body Armor
-        - Close Combat Weapons
-        - Cybernetics
-        - Education
-        - Enchanted Items
-        - Experience & Wisdom
-        - Magic & Mysticism
-        - Psionics
-        - Ranged Weapons
-        - Training
-        - Underworld & Black Ops
-    hj3_options:
-        - Body Armor
-        - Close Combat Weapons
-        - Cybernetics
-        - Education
-        - Enchanted Items
-        - Experience & Wisdom
-        - Magic & Mysticism
-        - Psionics
-        - Ranged Weapons
-        - Training
-        - Underworld & Black Ops
+        
