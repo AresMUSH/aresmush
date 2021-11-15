@@ -21,8 +21,8 @@ swrifts:
                 stats_points: 5
                 skills_points: 15
             skills:
-                Notice: 2            
-            hinderances: 
+                Notice: 2
+            hinderances:
                 - TestHind*
                 - Elderly*
             edges:
@@ -36,7 +36,7 @@ swrifts:
                 - Arcane Duality*
                 - Cybernetics*
                 - Higher Standard*
-                - Power Activators* 
+                - Power Activators*
             hj1_options:
                 - Body Armor
                 - Close Combat Weapons
@@ -76,7 +76,7 @@ swrifts:
         -
             name: Dragon Juicer
             book_reference: A&M 7
-            description: When the drug augmenting you is dragon blood. 
+            description: When the drug augmenting you is dragon blood.
             counters:
                 ppe_max: 10
                 burn: 6
@@ -91,23 +91,23 @@ swrifts:
             dstats:
                 Pace: 2
                 Running: 1
-            hinderances: 
+            hinderances:
                 - CHOICE*
                 - Enemy+*
                 - Death Wish*
             edges:
                 - Brawny*
-                - Quick* 
+                - Quick*
             magic_powers:
-                - Detect Arcana*    
+                - Detect Arcana*
                     - Innate
             abilities:
                 - Armored  Hide*
                 - Blood of Dragons*
                 - Inherently Magical*
                 - Strength of Dragons*
-                - Super Endurance* 
-                - Uncanny Reflexes* 
+                - Super Endurance*
+                - Uncanny Reflexes*
             complications:
                 - Cybernetics*
                 - Dragon Blood is Life*
@@ -117,7 +117,7 @@ swrifts:
                 - Weakness*
                 - Inhuman Physiology+^
                 - Inhuman Physiology++^
-        -   
+        -
             name: Elemental Fusionist
             book_reference: A&M 10
             description: Mutant humans with a unique connection to the primeval forces of earth, air, water, and fire.
@@ -131,34 +131,34 @@ swrifts:
             skills:
                 Survival: 2
                 Focus: 2
-            hinderances: 
+            hinderances:
                 - Enemy-*
             edges:
                 - AB Gifted*
                 - Charismatic*
-                - Woodsman* 
+                - Woodsman*
             gifted_powers:
-                - Detect Arcana* 
+                - Detect Arcana*
             abilities:
                 - Elemental Fusion*
                     - CHOICE
                 - Elemental Brotherhood*
-                - Primal Conduit* 
+                - Primal Conduit*
                 - Primordial Bond*
                 - Sense Life Sign*
-                - Variable Trappings* 
+                - Variable Trappings*
             complications:
                 - All Thumbs*
                 - Arcane Backgrounds*
                 - Cybernetics*
                 - Human Mutant*
-        -   
+        -
             name: MARS Battle Magus
             book_reference: A&M 17
             description: Warrior-Mages of Dweomer
             traits:
                 rank: Seasoned
-            counters: 
+            counters:
                 advance_points: 4
             chargen_points:
                 fandg_slots: 2
@@ -208,13 +208,13 @@ swrifts:
                 - Ranged Weapons
                 - Training
                 - Underworld & Black Ops
-        -   
+        -
             name: MARS Combat Mage
             book_reference: A&M 18
-            description: Combat Magic Specialists 
+            description: Combat Magic Specialists
             traits:
                 rank: Seasoned
-            counters: 
+            counters:
                 advance_points: 4
             chargen_points:
                 fandg_slots: 2
@@ -264,13 +264,13 @@ swrifts:
                 - Ranged Weapons
                 - Training
                 - Underworld & Black Ops
-        -   
+        -
             name: MARS High Magus
             book_reference: A&M 19
             description: Dweomer's Artificers and Creators
             traits:
                 rank: Seasoned
-            counters: 
+            counters:
                 advance_points: 4
             chargen_points:
                 fandg_slots: 2
@@ -320,13 +320,13 @@ swrifts:
                 - Ranged Weapons
                 - Training
                 - Underworld & Black Ops
-        -   
+        -
             name: MARS Lord Magus
             book_reference: A&M 19
             description: Scholar-Mages of Dweomer
             traits:
                 rank: Seasoned
-            counters: 
+            counters:
                 advance_points: 4
             chargen_points:
                 fandg_slots: 2
@@ -375,13 +375,13 @@ swrifts:
                 - Ranged Weapons
                 - Training
                 - Underworld & Black Ops
-        -   
+        -
             name: MARS Psi-Druid
             book_reference: A&M 20
             description: Psychic healers and beastmasters
             traits:
                 rank: Seasoned
-            counters: 
+            counters:
                 advance_points: 4
             chargen_points:
                 fandg_slots: 2
@@ -434,13 +434,13 @@ swrifts:
                 - Ranged Weapons
                 - Training
                 - Underworld & Black Ops
-        -   
+        -
             name: MARS Psi-Slinger
-            book_reference: A&M 20 
+            book_reference: A&M 20
             description: Telekinetic marksmen
             traits:
                 rank: Seasoned
-            counters: 
+            counters:
                 advance_points: 4
             chargen_points:
                 fandg_slots: 2
@@ -448,7 +448,7 @@ swrifts:
             skills:
                 Psionics: 2
                 Shooting: 2
-            hinderances: 
+            hinderances:
                 - Choice*
             edges:
                 - AB Psionics*
@@ -456,7 +456,7 @@ swrifts:
                 - Steady Hands*
                 - Danger Sense*
                 - Quick*
-            psychic_powers: 
+            psychic_powers:
                 - bolt*
                 - smite*
                 - telekinesis*
@@ -500,13 +500,13 @@ swrifts:
                 - Ranged Weapons
                 - Training
                 - Underworld & Black Ops
-        -   
+        -
             name: MARS Psi-Warrior
             book_reference: A&M 21
             description: Psionic martial artists trained in an ancient tradition.
             traits:
                 rank: Seasoned
-            counters: 
+            counters:
                 advance_points: 4
             chargen_points:
                 fandg_slots: 2
@@ -514,11 +514,11 @@ swrifts:
             Skills:
                 Psionics: 2
                 Fighting: 2
-            hinderances: 
+            hinderances:
                 - Choice*
             hind_choices:
                 - Code of Honor*
-                - Heroic* 
+                - Heroic*
             edges:
                 - Adept*
                 - Block*
@@ -570,13 +570,13 @@ swrifts:
                 - Ranged Weapons
                 - Training
                 - Underworld & Black Ops
-        -   
+        -
             name: MARS Shaman
             book_reference: A&M 21
             description: Spirit magic magi and speakers for nature
             traits:
                 rank: Seasoned
-            counters: 
+            counters:
                 advance_points: 4
             chargen_points:
                 fandg_slots: 2
@@ -630,13 +630,13 @@ swrifts:
                 - Ranged Weapons
                 - Training
                 - Underworld & Black Ops
-        -   
+        -
             name: MARS Spirit Warrior
             book_reference: A&M
             description: Spirit-magic empowered fighters
             traits:
                 rank: Seasoned
-            counters: 
+            counters:
                 advance_points: 4
             chargen_points:
                 fandg_slots: 2
@@ -687,13 +687,13 @@ swrifts:
                 - Ranged Weapons
                 - Training
                 - Underworld & Black Ops
-        -   
+        -
             name: Nega-Psychic
             book_reference: A&M 12
             description: Psychic dispellers of the supernatural.
             skills:
                 Psionics: 2
-            hinderances: 
+            hinderances:
                 - Enemy+*
             edges:
                 - AB Psionics*
@@ -709,13 +709,13 @@ swrifts:
             complications:
                 - Beneficial Powers Resistance*
                 - Cybernetics*
-        -   
+        -
             name: Zapper
             book_reference: A&M
             description: Wielders of Lightning and Thunder
             skills:
                 psionics: 2
-            hinderances: 
+            hinderances:
                 - Enemy+*
             edges:
                 - AB Psionics*
@@ -736,10 +736,10 @@ swrifts:
             complications:
                 - Cybernetics
                 - Glitchy Electronics
-        -   
+        -
             name: Knight of the White Rose
             book_reference: B&B 7
-            description: Order of renegade Mystic Knights that fight for Good. 
+            description: Order of renegade Mystic Knights that fight for Good.
             counters:
                 isp_max: 10
             chargen_points:
@@ -748,50 +748,50 @@ swrifts:
             skills:
                 Faith: 2
                 Fighting: 2
-            hinderances: 
+            hinderances:
                 - Enemy-*
             edges:
                 - AB Psionics*
-                - AB Miracles* 
-                - Martial Artist* 
+                - AB Miracles*
+                - Martial Artist*
                 - Ley Line Magic Mastery*
-                - Ley Line Rejuvenation* 
+                - Ley Line Rejuvenation*
                 - Ley Line Sense*
             magic_powers:
                 - Bolt*
                     - Miracle
             abilities:
                 - Mind and Spirit*
-                - Energy Invulnerability* 
-                - Onslaught* 
+                - Energy Invulnerability*
+                - Onslaught*
                 - Steal Ley Line Energy*
             complications:
                 - Cybernetics*
-                - Distrusted Order* 
+                - Distrusted Order*
                 - Power Activators*
                 - Vow of the White Rose*
-        -   
+        -
             name: MARS Barbarian
             book_reference: B&B 24
-            description: Those whose ancestors clung to life in the nigh-uninhabitable wilderness of the east and west coasts after the comming of the Rifts. 
+            description: Those whose ancestors clung to life in the nigh-uninhabitable wilderness of the east and west coasts after the comming of the Rifts.
             stats:
                 Strength: 1
                 Vigor: 1
             traits:
                 rank: Seasoned
-            counters: 
+            counters:
                 advance_points: 4
             chargen_points:
                 fandg_slots: 2
             skills:
                 Notice: 1
                 Survival: 3
-            hinderances: 
+            hinderances:
                 - Illiterate*
             edges:
                 - Alertness*
                 - Brawny*
-                - Woodsman* 
+                - Woodsman*
             abilities:
                 - Resist Disease and Poison*
             complications:
@@ -832,13 +832,13 @@ swrifts:
                 - Ranged Weapons
                 - Training
                 - Underworld & Black Ops
-        -   
+        -
             name: MARS Barbarian Eco-Wizard
             book_reference: B&B 24
             description: Barbarian spellcasters
             traits:
                 rank: Seasoned
-            counters: 
+            counters:
                 advance_points: 4
             chargen_points:
                 fandg_slots: 2
@@ -854,7 +854,7 @@ swrifts:
                 - Minor Item Creation*
             magic_powers:
                 - Detect Arcana*
-                - Conceal Arcana* 
+                - Conceal Arcana*
             hj1_options:
                 - Body Armor
                 - Close Combat Weapons
@@ -891,13 +891,13 @@ swrifts:
                 - Ranged Weapons
                 - Training
                 - Underworld & Black Ops
-        -   
+        -
             name: MARS Dinosaur Hunter
             book_reference: B&B
-            description: Taking 'Big Game Hunter' to a whole new level. 
+            description: Taking 'Big Game Hunter' to a whole new level.
             traits:
                 rank: Seasoned
-            counters: 
+            counters:
                 advance_points: 4
             chargen_points:
                 fandg_slots: 2
@@ -907,9 +907,9 @@ swrifts:
                 Survival: 3
             edges:
                 - Giant Killer*
-                - Frontiersman* 
+                - Frontiersman*
                 - Marksman*
-                - Woodsman* 
+                - Woodsman*
             abilities:
                 - Megafauna Specialist*
             hj1_options:
@@ -948,13 +948,13 @@ swrifts:
                 - Ranged Weapons
                 - Training
                 - Underworld & Black Ops
-        -   
+        -
             name: MARS Vampire Hunter
             book_reference: B&B 25
-            description: Those who have dedicated their lives to rooting out and exterminating the undead. 
+            description: Those who have dedicated their lives to rooting out and exterminating the undead.
             traits:
                 rank: Seasoned
-            counters: 
+            counters:
                 advance_points: 4
             chargen_points:
                 fandg_slots: 2
@@ -1011,10 +1011,10 @@ swrifts:
                 - Ranged Weapons
                 - Training
                 - Underworld & Black Ops
-        -   
+        -
             name: Necromancer
             book_reference: B&B 10
-            description: Masters of death 
+            description: Masters of death
             counters:
                 ppe_max: 15
             chargen_points:
@@ -1023,7 +1023,7 @@ swrifts:
             skills:
                 Spellcasting: 2
                 Repair: 2
-            hinderances: 
+            hinderances:
                 - Enemy-*
             edges:
                 - AB Magic*
@@ -1033,7 +1033,7 @@ swrifts:
             magic_powers:
                 - Divination*
                 - Zombie*
-                - Detect Arcana*  
+                - Detect Arcana*
                     - Innate
                 - Conceal Arcana*
                     - Innate
@@ -1045,7 +1045,7 @@ swrifts:
                 - Undead Link*
             complications:
                 - Cybernetics*
-                - Oath* 
+                - Oath*
                 - Power Activators*
                 - Spooky*
         -
@@ -1057,7 +1057,7 @@ swrifts:
             skills:
                 Occult: 2
                 Spellcasting: 2
-            hinderances: 
+            hinderances:
                 - Enemy-*
             edges:
                 - AB Magic*
@@ -1109,10 +1109,10 @@ swrifts:
                 - Ranged Weapons
                 - Training
                 - Underworld & Black Ops
-        -   
+        -
             name: Werecat
             book_reference: B&B 20
-            description: Natives of Earth before the Rifts, these felines work to preserve the balance of nature. 
+            description: Natives of Earth before the Rifts, these felines work to preserve the balance of nature.
             counters:
                 ppe_max: 10
                 isp_max: 10
@@ -1125,7 +1125,7 @@ swrifts:
             skills:
                 Spellcasting: 1
                 Psionics: 1
-            hinderances: 
+            hinderances:
                 - Habit-*
                     - Hunter's Instinct
                 - Enemy+*
@@ -1155,16 +1155,16 @@ swrifts:
                     - Silver
                     - Supernatural
                 - Wild Beast*
-        -   
+        -
             name: MARS RCSG Scientist
             description: Subject matter expert dedicated to Rifts, Ley Lines, magic, the supernatural, how they function in a scientific sense, and how to control them through technology.
             traits:
                 rank: Seasoned
-            counters: 
+            counters:
                 advance_points: 4
             chargen_points:
                 fandg_slots: 2
-            stats: 
+            stats:
                 smarts: 1
             stat_max:
                 smarts: 1
@@ -1226,7 +1226,7 @@ swrifts:
             description: Elite, highly trained and deadly special operations soldiers
             traits:
                 rank: Seasoned
-            counters: 
+            counters:
                 advance_points: 4
             chargen_points:
                 fandg_slots: 2
@@ -1289,7 +1289,7 @@ swrifts:
             description: Versatile riders and frontiersmen
             traits:
                 rank: Seasoned
-            counters: 
+            counters:
                 advance_points: 4
             chargen_points:
                 fandg_slots: 2
@@ -1346,7 +1346,7 @@ swrifts:
             Description: Military bomb defusal and demolitions specialists
             traits:
                 rank: Seasoned
-            counters: 
+            counters:
                 advance_points: 4
             chargen_points:
                 fandg_slots: 2
@@ -1403,11 +1403,11 @@ swrifts:
                 - Underworld & Black Ops
         -
             name: MARS Gunslinger
-            book_reference: 
+            book_reference:
             description: Sharpshooters, trick shooters and quick draw experts
             traits:
                 rank: Seasoned
-            counters: 
+            counters:
                 advance_points: 4
             chargen_points:
                 fandg_slots: 2
@@ -1415,7 +1415,7 @@ swrifts:
                 Agility: 2
             skills:
                 Shooting: 3
-            hinderances: 
+            hinderances:
                 - Choice*
             edges:
                 - Marksman*
@@ -1467,7 +1467,7 @@ swrifts:
             Description: Military information specialists and occasional spies
             traits:
                 rank: Seasoned
-            counters: 
+            counters:
                 advance_points: 4
             chargen_points:
                 fandg_slots: 2
@@ -1487,7 +1487,7 @@ swrifts:
                 - Field Intel*
             edge_choices:
                 - Alertness*
-                - Linguist* 
+                - Linguist*
                 - Streetwise*
             hind_note:
                 - Cannot take All Thumbs or Illiterate
@@ -1540,18 +1540,18 @@ swrifts:
                 - Expanded Detection and Security Array*
                 - Nano-Repair System*
                 - Optics Package*
-                - Targeting Eye* 
+                - Targeting Eye*
             stats:
                 strength: 3
                 agility: 1
                 vigor: 1
-            stat_max: 
+            stat_max:
                 strength: 100
                 agility: 100
                 vigor: 100
             chargen_points:
-                magic_slots: 
-                psionic_slots: 
+                magic_slots:
+                psionic_slots:
                 hj_slots: 2
             skills:
                 occult: 3
@@ -1561,14 +1561,14 @@ swrifts:
                 performance: 2
                 survival: 6
                 psionics: 2
-            hinderances: 
+            hinderances:
                 - Enemy+*
             edges:
-                - Scholar* 
+                - Scholar*
                     - Occult
                 - Monster Slayer*
                 - Chi*
-                - Brave* 
+                - Brave*
                 - AB Psionics*
             psionic_powers:
                 - arcane protection*
@@ -1588,17 +1588,17 @@ swrifts:
         -
             name: Dragon Hatchling
             book_reference: TLPG
-            description: 
+            description:
             skills:
                 Psionics: 1
-            counters: 
+            counters:
                 ppe_max: 10
             chargen_points:
                 psionic_slots: 2
                 stats_points: -2
                 skills_points: -5
                 hj_slots: -1
-            hinderances: 
+            hinderances:
                 - Enemy+*
                 - Outsider+*
             edges:
@@ -1612,12 +1612,12 @@ swrifts:
                 - Inherently Magical*
                 - Nigh-Immortality*
                 - Slow Regeneration*
-                - Tail Lash* 
+                - Tail Lash*
             complications:
                 - Cybernetics*
                 - Dragon*
                 - Form Limits*
-                - Hatched* 
+                - Hatched*
                 - Territorial*
                 - Very Young*
             magic_powers:
@@ -1634,7 +1634,7 @@ swrifts:
                 Agility: 3
                 Strength: 6
                 Vigor: 4
-            hinderances: 
+            hinderances:
                 - Ugly-*
                     - (Inhuman)
             edges:
@@ -1669,7 +1669,7 @@ swrifts:
         -
             name: Crazy
             book_reference: TLPG 22
-            description: Trading away sanity for exceptional power and capabilities. 
+            description: Trading away sanity for exceptional power and capabilities.
             stats:
                 agility: 2
                 strength: 2
@@ -1684,7 +1684,7 @@ swrifts:
                 hj_slots: 2
             skills:
                 notice: 2
-                survival: 2   
+                survival: 2
                 psionics: 2
             edges:
                 - Nerves of Steel*
@@ -1695,8 +1695,8 @@ swrifts:
             abilities:
                 - Bio-Regeneration*
                 - Enhanced Endurance*
-                - Enhanced Speed* 
-                - Heightened Senses* 
+                - Enhanced Speed*
+                - Heightened Senses*
                 - Uncanny Reflexes*
             complications:
                 - Cybernetics*
@@ -1728,15 +1728,15 @@ swrifts:
         -
             name: Burster
             book_reference: TLPG
-            description: Bursters are pyrokineticsâ€”they telekinetically accelerate molecules to the point of ignition. 
+            description: Bursters are pyrokineticsâ€”they telekinetically accelerate molecules to the point of ignition.
             chargen_points:
                 hj_slots: 2
             skills:
                 Psionics: 2
-            hinderances: 
+            hinderances:
                 - Enemy-*
                 - Quirk*
-                    - Pyromaniac 
+                    - Pyromaniac
             edges:
                 - AB Psionics*
                 - Blaster*
@@ -1759,7 +1759,7 @@ swrifts:
             skills:
                 electronics: 2
                 piloting: 2
-            hinderances: 
+            hinderances:
                 - Enemy+*
             edges:
                 - Power Armor Jock*
@@ -1777,7 +1777,7 @@ swrifts:
                 - Close Combat Weapons
                 - Ranged Weapons
                 - Training
-            hj2_options: 
+            hj2_options:
                 - Body Armor
                 - Close Combat Weapons
                 - Cybernetics
@@ -1794,7 +1794,7 @@ swrifts:
         -
             name: Juicer
             book_reference: TLPG 35
-            description: Drug-powered super-soldiers. 
+            description: Drug-powered super-soldiers.
             counters:
                 burn: 8
             chargen_points:
@@ -1835,7 +1835,7 @@ swrifts:
             chargen_points:
                 magic_slots: 5
                 hj_slots: 2
-            hinderances: 
+            hinderances:
                 - Enemy-*
             edges:
                 - AB Magic*
@@ -1865,7 +1865,7 @@ swrifts:
             description: Doctors and Healers
             traits:
                 rank: Seasoned
-            counters: 
+            counters:
                 advance_points: 4
             chargen_points:
                 fandg_slots: 2
@@ -1922,7 +1922,7 @@ swrifts:
             description: Denizens of the underbelly of civilization
             traits:
                 rank: Seasoned
-            counters: 
+            counters:
                 advance_points: 4
             chargen_points:
                 fandg_slots: 2
@@ -1980,7 +1980,7 @@ swrifts:
             description: Cybernetics Surgeons
             traits:
                 rank: Seasoned
-            counters: 
+            counters:
                 advance_points: 4
             chargen_points:
                 fandg_slots: 2
@@ -2036,7 +2036,7 @@ swrifts:
             book_reference: TLPG 42
             traits:
                 rank: Seasoned
-            counters: 
+            counters:
                 advance_points: 4
             chargen_points:
                 fandg_slots: 2
@@ -2092,7 +2092,7 @@ swrifts:
             book_reference: TLPG 42
             traits:
                 rank: Seasoned
-            counters: 
+            counters:
                 advance_points: 4
             chargen_points:
                 fandg_slots: 2
@@ -2148,7 +2148,7 @@ swrifts:
             book_reference: TLPG 42
             traits:
                 rank: Seasoned
-            counters: 
+            counters:
                 advance_points: 4
             chargen_points:
                 fandg_slots: 2
@@ -2208,7 +2208,7 @@ swrifts:
             book_reference: TLPG 42
             traits:
                 rank: Seasoned
-            counters: 
+            counters:
                 advance_points: 4
             chargen_points:
                 fandg_slots: 2
@@ -2267,7 +2267,7 @@ swrifts:
             book_reference: TLPG 43
             traits:
                 rank: Seasoned
-            counters: 
+            counters:
                 advance_points: 4
             chargen_points:
                 fandg_slots: 2
@@ -2328,7 +2328,7 @@ swrifts:
             book_reference: TLPG 43
             traits:
                 rank: Seasoned
-            counters: 
+            counters:
                 advance_points: 4
             chargen_points:
                 fandg_slots: 2
@@ -2385,13 +2385,13 @@ swrifts:
             book_reference: TLPG 43
             traits:
                 rank: Seasoned
-            counters: 
+            counters:
                 advance_points: 4
             chargen_points:
                 fandg_slots: 2
             description: Dedicated to uncovering the mysteries and truths of the past, Rogue Scholars risk worse than censure at the hands of the Coalition and others who refuse to see things beyond their view. For Rogue Scientist concepts, simply select the appropriate skills.
             chargen_points:
-                skills_points: 6 
+                skills_points: 6
             skills:
                 research: 2
             edges:
@@ -2441,22 +2441,22 @@ swrifts:
             book_reference: TLPG
             traits:
                 rank: Seasoned
-            counters: 
+            counters:
                 advance_points: 4
             chargen_points:
                 fandg_slots: 2
-            description: 
+            description:
             counters:
-                ppe_max: 
+                ppe_max:
                 isp_max:
             stats:
 
             chargen_points:
-                magic_slots: 
-                psionic_slots: 
+                magic_slots:
+                psionic_slots:
             skills:
-            
-            hinderances: 
+
+            hinderances:
                 -
             edges:
                 -
@@ -2507,22 +2507,22 @@ swrifts:
             book_reference: TLPG
             traits:
                 rank: Seasoned
-            counters: 
+            counters:
                 advance_points: 4
             chargen_points:
                 fandg_slots: 2
-            # description: 
+            # description:
             # counters:
-                # ppe_max: 
+                # ppe_max:
                 # isp_max:
             # stats:
 
             # chargen_points:
-                # magic_slots: 
-                # psionic_slots: 
+                # magic_slots:
+                # psionic_slots:
             # skills:
-            
-            # hinderances: 
+
+            # hinderances:
                 # -
             # edges:
                 # -
@@ -2573,7 +2573,7 @@ swrifts:
             book_reference: TLPG 45
             description: The name itself fairly describes the general populationâ€™s feelings about the most powerful psi-masters in the world. They certainly didnâ€™t give it to themselves, but most Mind Melters wear the name like a badge of honor, reveling in the respect and (far more often) fear their very presence generates. Even the ones with a more noble or gentle intent fully grasp just how terrifying their powerful minds are.
             counters:
-                ppe_max: 
+                ppe_max:
                 isp_max:
             stats:
 
@@ -2581,7 +2581,7 @@ swrifts:
                 psionic_slots: 2
             skills:
                 psionics: 2
-            hinderances: 
+            hinderances:
                 - Quirk*
                 - Enemy+*
             edges:
@@ -2675,14 +2675,14 @@ swrifts:
         -
             name: Mystic
             book_reference: TLPG 47
-            description: Enlightened spell weavers in tune with the greater comic forces of the universe. 
+            description: Enlightened spell weavers in tune with the greater comic forces of the universe.
             chargen_points:
                 magic_slots: 3
                 psionic_slots: 3
             skills:
                 Faith: 2
                 Psionics: 2
-            hinderances: 
+            hinderances:
                 - Enemy-*
                 - CHOICE*
             edges:
@@ -2714,7 +2714,7 @@ swrifts:
                 - Education
                 - Enchanted Items
                 - Experience & Wisdom
-                - Magic & Mysticism                
+                - Magic & Mysticism
                 - Psionics
                 - Ranged Weapons
                 - Training
@@ -2729,7 +2729,7 @@ swrifts:
                 occult: 2
                 repair: 2
                 science: 2
-            hinderances: 
+            hinderances:
                 - Enemy-*
                 - Quirk*
             edges:
@@ -2777,7 +2777,7 @@ swrifts:
                 - drain Power Points
                 - entangle
                 - environmental protection
-                - farsight 
+                - farsight
                 - fly
                 - havoc
                 - healing
@@ -2807,7 +2807,7 @@ swrifts:
             description: Bounty hunters specialize in bringing desperadoes, fugitives, and wanted men or monsters in dead or alive. Combining the expertise of wilderness scouts, city rats, and merc soldiers, these tireless hunters are hard men and women driven to tackle the toughest prey.
             traits:
                 rank: Seasoned
-            counters: 
+            counters:
                 advance_points: 4
             chargen_points:
                 fandg_slots: 2
@@ -2817,7 +2817,7 @@ swrifts:
                 occult: 2
                 research: 2
                 survival: 2
-            hinderances: 
+            hinderances:
                 - Choice*
             hind_choices:
                 - Greedy-*
