@@ -2,10 +2,10 @@
 swrifts:
     races:
         -
-            name: None
+            name: none
         -
             name: Test
-            book_reference:
+            book_reference: 
             desc: Test
             edges:
                 - Attractive^
@@ -13,7 +13,7 @@ swrifts:
             hinderances:
                 - Overconfident^
                 - Blind^
-            stats:
+            stats: 
                 Agility: 1
                 Strength: 1
                 Vigor: 1
@@ -31,31 +31,24 @@ swrifts:
             complications:
                 - Skill Penalty Common Knowledge^
                 - Storm-Fouled Senses^
-                - Inhuman Physiology-^
+                - Inhuman Physiology++^
                 - Racial Enemy^
                 - Restricted Path PPE^
                 - Restricted Path ISP^
                 - Non-Standard Build^
                 - Cyber Resistant^
-                - Bizarre Physiology^
             counters:
                 isp_max: 10
             powers:
                 - Arcane Protection^
                 - Detect Arcana^
                 - Conceal Arcana^
-                - Empathy^
-        -
+                - Empathy^        
+        - 
             name: Altara
             book_reference: TLPG 56
             desc: Warrior Women
-            edges:
-                - Attractive^
-                - Alertness^
-                - AB Psionics^
-            hinderances:
-                - Blind^
-            stats:
+            stats: 
                 Agility: 1
                 Strength: 1
                 Vigor: 1
@@ -63,24 +56,30 @@ swrifts:
                 Agility: 1
                 Strength: 1
                 Vigor: 1
-            skills:
-                Common Knowledge: -3
-                Psionics: 1
+            edges:
+                - Attractive^
+                - Alertness^
+                - AB Psionics^
+            hinderances:
+                - Blind^
             complications:
                 - Bad Reputation^
                 - Skill Penalty^
                     - Common Knowledge^
                 - Storm-Fouled Senses^
-                - Inhuman Physiology-^
+                - Inhuman Physiology^
                 - Racial Enemy^
-            chargen_points:
-                psionic_slots: -1
+            skills:
+                Common Knowledge: -3
+                Psionics: 1
             powers:
                 - Arcane Protection^
                 - Detect Arcana^
                 - Conceal Arcana^
                 - Empathy^
-        -
+            chargen_points:
+                psionic_slots: -1
+        -  
             name: Dog Boy
             book_reference: TLPG 58
             desc: Psi-Hound
@@ -101,18 +100,18 @@ swrifts:
                 - Restricted Path PPE^
                 - Mutant^
                 - Ley Line Hypersensitivity^
-        -
-            name: D'Norr
+        -  
+            name: D'Norr 
             book_reference: TLPG 57
             desc: Devilmen
             edges:
                 - Charismatic^
-            stats:
+            stats: 
                 Smarts: 1
                 Spirit: 1
             stat_max:
-                Smarts: d12+1
-                Spirit: d12+1
+                Smarts: 1
+                Spirit: 1
             abilities:
                 - Horns^
             complications:
@@ -121,8 +120,9 @@ swrifts:
                 - Restricted Path ISP^
                 - Skill Penalty+^
                     -Fear
-            ppe: 5
-        -
+            counters:
+                ppe_max: 5
+        - 
             name: Dragon Flame Wind
             book_reference: TLPG 28
             stats:
@@ -139,6 +139,8 @@ swrifts:
                 - Limited Metamorphosis*
             complications:
                 - Dragon*
+            dstats:
+                toughness: 6
         -
             name: Dragon Forest Runner
             stats:
@@ -147,6 +149,8 @@ swrifts:
             stat_max:
                 Strength: 100
                 Vigor: 100
+            edges:
+                - Major Psionic^
             abilities:
                 - Chameleon Scales^
                 - Enhanced Metamorphosis^
@@ -156,15 +160,14 @@ swrifts:
                 - Runner^
                 - Size 4^
             complications:
-                - Dragon*
-            edges:
-                - Major Psionic^
+                - Dragon*                
             chargen_points:
                 psionic_slots: 4
             dstats:
                 pace: 4
                 running: 2
-        -
+                toughness: 4
+        - 
             name: Dragon Great Horned
             stats:
                 Strength: 8
@@ -173,6 +176,8 @@ swrifts:
             stat_max:
                 Strength: 100
                 Vigor: 100
+            edges:
+                - Major Psionic^
             abilities:
                 - Great Horned Armor^
                 - Flame Breath^
@@ -182,12 +187,12 @@ swrifts:
                 - Flight^
                 - Size 6^
             complications:
-                - Dragon*
+                - Dragon*                
             counters:
                 ppe_max: 5
-            edges:
-                - Major Psionic^
-        -
+            dstats:
+                toughness: 6
+        - 
             name: Dragon Royal Frilled
             stats:
                 Strength: 7
@@ -195,9 +200,13 @@ swrifts:
             stat_max:
                 Strength: 100
                 Vigor: 100
+            edges: 
+                - AB Magic^
+                - AB Psionic^
+                - Major Psionic^
             hinderances:
                 - choice^
-            abilities:
+            abilities: 
                 - Extended Metamorphosis^
                 - Keen Claws^
                 - Royal Frilled Fear^
@@ -206,19 +215,17 @@ swrifts:
                 - Flight^
                 - Size 6^
             complications:
-                - Dragon*
-            counters:
-                ppe_max: 10
-            edges:
-                - AB Magic^
-                - AB Psionic^
-                - Major Psionic^
+                - Dragon*  
             skills:
                 spellcasting: 1
                 psionics: 1
-            chargen_points:
+            counters:
+                ppe_max: 10
+            chargen_points: 
                 psionic_slots: -1
-        -
+            dstats:
+                toughness: 6
+        - 
             name: Dragon Snow Lizard
             stats:
                 Strength: 8
@@ -234,24 +241,89 @@ swrifts:
                 - Size 6^
                 - Limited Metamorphosis^
             complications:
-                - Dragon*
-        -
+                - Dragon*   
+            dstats:
+                toughness: 6
+        - 
             name: Fennodi
             book_reference: TLPG
+            desc: Bewhiskered D-Bee psychics
+            stats:
+                Spirit: 1
+            stat_max:
+                Spirit: 1
+            edges:
+                - AB Psionic^
+            abilities:
+                - Infravision^
+                - Visual Acuity^ - +2 to sight based Notice checks
             complications:
-                - Inhuman Physiology+^             
+                - Inhuman Physiology+^
+                - D-Bee+^
+                - Environmental Weakness^ - Cold
+            powers:
+                - Intangibility^
+                - Protection^
+                - Mind Link^
+            comments: 
+                - Fuckery with psionic ICFs, will have to come back to figure it out.
         -
-            name: Grackle Tooth
-            book_reference: TLPG
+            name: Grackle Tooth   
+            book_reference: TLPG  
+            dsc: Vaguely lizard-like action heroes
+            stats: 
+                Strength: 2
+                Vigor: 1
+            stat_max: 
+                Strength: 4
+                Vigor: 1
+            hinderances: 
+                - choice^ - Heroic or Overconfident
+            abilities:
+                - Bite^
+                - Claws+^
+                - Additional Action^ - Prehensile Tail as justification
+                - Size 2^
+                - Regeneration+^
+            complications: 
+                - Inhuman Physiology++^
+                - Cyber Resistant^
+                - D-Bee+^
+                - Environmental Weakness^ - Cold
+                - Non-Standard Build^
+                - Restricted Path PPE^
+                - Restricted Path ISP^
+            dstats:
+                toughness: 2
         -
             name: Human
             book_reference: TLPG
+            desc: Standard issue humanity
             chargen_points:
                 edge_slots: 1
-        -
+        -  
             name: Lyn-Srial
             book_reference: TLPG
-        -
+            desc: Four armed bird folk
+            stats:
+                Strength: 1
+            stat_max:
+                Strength: 1
+                edges:
+                hinderances:
+                    - Wanted+^
+                    - Heroic^
+                abilities:
+                    - Flight^
+                    - Additional Action^ Extra Arms as justification
+                    - Low Light Vision^
+                    - Regeneration^
+                complications:
+                    - Inhuman Physiology+^
+                    - Cyber Resistant^
+                    - D-Bee+^
+                    - Non-Standard Build^
+        -   
             name: Psi-Stalker
             book_reference: TLPG
             desc: Psychic Predator
@@ -260,67 +332,82 @@ swrifts:
             skills:
                 Riding: 1
             abilities:
-                - Fast^
                 - Psychic Sense^
                 - Psychic Vampire^
             complications:
                 - Mutant^
                 - Racial Enemy (Simvan)^
                 - Restricted Path PPE^
-        -
+            dstats:
+                pace: 2
+                running: 1
+        -  
             name: Quick Flex
             book_reference: TLPG
             desc: Contortionist Daredevils
+            stats: 
+                Agility: 2
+            stat_max: 
+                Agility: 2
             edges:
                 - Ambidextrous^
                 - Quick^
             hinderances:
                 - Overconfident^
-            attributes:
-                Agility: 2
             abilities:
-                - Elusive^
-                - Fast^
             complications:
                 - D-Bee+^
-                - Alien Phsiology^
+                - Inhuman Physiology+^
                 - Restricted Path PPE^
-                - Short Attention Span^
-        -
+                - Attribute Penalty^ - Smarts
+            dstats:
+                parry: 1
+                pace: 2
+                running: 1
+        -  
             name: Simvan
             book_reference: TLPG
             desc: Monster Riders
             edges:
+                - AB Psionics^
+            hinderances: 
+                - Bloodthirsty^
+            abilities:
                 - Beast Master^
                 - Low Light Vision^
                 - Monstrous Beast Affinity^
                 - Natural Psionics^
-            skills:
-                Riding: 1
             complications:
                 - D-Bee+^
                 - Bad Reputation+^
-                - Bloodthirsty^
-                - Instinct Over Intellect^ - -1 to Smarts rolls
+                - Attribute Penalty^ - Smarts
                 - Near-Human Physiology^
                 - Racial Enemy^
                     - Psi-Stalkers
+            skills:
+                Riding: 1
+            powers:
+                - Beast Friend^
+            chargen_points:
+                psionic_slots: 2
+            counters:
+                isp_max: 5
         -
             name: Trimadore
             book_reference: TLPG
             desc: DBee Operators
             edges:
                 - Mr Fix It^
+            abilities:
+                - Reach^
+            complications:
+                - Inhuman Physiology+^
+                - Non-Standard Build^
+                - D-Bee+^
             skills:
                 Repair: 2
-            chargen_points:
-                skills_points: 6
-            abilities:
-                - Long Arms^
-            complications:
-                - Alien Physiology^
-                - Big Boned^
-                - D-Bee+^
+                choice: 2 - electronics, hacking or science
+                choice: 2 - electronics, hacking or science
         -
             name: Aquarian
             book_reference: SWADE
@@ -330,30 +417,152 @@ swrifts:
         -
             name: Half-Folk
             book_reference: SWADE
-        -
+        -  
             name: Human
             book_reference: SWADE
-        -
+        -  
             name: Rakashan
             book_reference: SWADE
-        -
+        -  
             name: Saurian
             book_reference: SWADE
         -
             name: Battle Cat
-            book_reference: EofH
+            book_reference: EofH 25
+            desc: Mutant Cats from generally smaller and more social stock
+            edges:
+                - Breed Advantage^
+            hinderances:
+                - Curious^
+                - Wanted^ - CS Ferals
+            abilities:
+                - Bite^
+                - Claws^
+                - Skill Bonus^ - Notice with Hearing
+                - Leaper^
+                - Low Light Vision^
+                - Psychic Sense^
+            complications:
+                - Mutant^
+                - Near-Human Phsiology^
+                - Non-Standard Build^
+                - Restricted Path PPE^
+                - Ley Line Hypersensitivity^
         -
             name: Kill Cat
-            book_reference: EofH
+            book_reference: EofH 25
+            desc: Mutant Cats derived from stock such as lions, tigers or leopards
+            stats: 
+                Agility: 2
+                Strength: 2
+            stat_max:
+                Agility: 1
+                Strength: 3
+            edges:
+                - Breed Advantage^
+            hinderances:
+                - Bloodthirsty^
+                - Curious^
+                - Wanted+^ - CS Ferals
+            abilities:
+                - Bite+^
+                - Claws+^
+                - Skill Bonus^ - Notice with Hearing
+                - Leaper^
+                - Low Light Vision^
+                - Size 2^
+            complications:
+                - Attribute Penalty^ - Smarts
+                - Mutant^
+                - Inhuman Physiology^
+                - Non-Standard Build^
+                - Restricted Path PPE^
+            dstats:
+                toughess: 2
         -
-            name: Mutant Battle
-            book_reference: EofH
+            name: Mutant Bat 
+            book_reference: EofH 22
+            desc: Vaguely humanoid mutant bats
+            edges:
+            hinderances:
+                - Wanted^
+            abilities:
+                - Bite^
+                - Claws^
+                - Echolocation^ - Low Light Vision but works in pitch dark.
+                - Flight^
+                - Skill Bonus^ - Notice with Hearing
+                - Skill Bonus^ - Notice with Smell
+                - Skill Bonus^ - Survival to track with Smell
+            complications:
+                - Skill Penalty+^ - Notice in bright light with unprotected eyes.
+                - Mutant^
+                - Near-Human Phsyiology^
+                - Non-Standard Build^
+                - Restricted Path PPE^
+                - Size -1^
+            dstats:
+                toughness: -2
         -
             name: Mutant Rat
-            book_reference: EofH
-        -
+            book_reference: EofH 23
+            desc: Humanoid rodents of unusual size
+            stats:
+                Agility: 2
+            stat_max:
+                Agility: 2
+            edges:
+                - Acrobatic^
+            hinderances:
+                - Jealous^
+                - Wanted+^
+            abilities:
+                - Bite^
+                - Claws^
+                - Skill Bonus^ - Notice with Smell
+                - Skill Bonus^ - Survival for tracking with Smell
+            complications:
+                - Mutant^
+                - Non-Standard Build^
+                - Restricted Path PPE^
+                - Size -1^
+            skills:
+                - Athletics: 1
+            dstats:
+                toughness: -1
+        -  
             name: Psi-X Alien
             book_reference: EofH
+            desc: Grey skinned humanoids reminiscent of Roswell aliens.
+            stats: 
+                Smarts: 2
+            stat_max: 
+                Smarts: 2
+            edges: 
+                - AB Psionics^
+            hinderances:
+                - Habit+^
+                - Quirk^ - Dissociative with Humanity
+            abilities:
+                - Low Light Vision^
+                - Skill Bonus^ - Bonus to the chosen smarts based skill
+                - Skill Bonus^ - Notice with Sight
+                - Psychic Sight^ - Per Mind Melter ICF
+            complications:
+                - Skill Penalty+^ - Notice in bright light with unprotected eyes
+                - Skill Penalty+^ - Common Knowledge
+                - D-Bee^
+                - Restricted Path PPE^
+                - Touch of Madness^ - Roll once on the Crazy Psychic Degredation table
+            skills: 
+                - choice: 1 - Smarts based skill.
+            powers:
+                - Mind Link^
+                - Telekinesis^
+            chargen_points:
+                psionic_slots: 1 - Mind melter list
+            comments:
+                - +2 psi slots with psychic ICF. Will have to figure that one out.
         -
             name: Cactus People
             book_reference: A&M 23
@@ -367,25 +576,25 @@ swrifts:
                 - Disease and Poison Resistant^
                 - Low Light Vision^
                 - Natural Psionics^
-                - Regeneration^
+                - Regeneration+^
             complications:
-                - Bizarre Physiology^
+                - Inhuman Physiology++^
                 - Cannot Speak^
                 - D-Bee+^
                 - Hunted-^
-                - Sunlight Dependency
+                - Sunlight Dependency^
                 - Restricted Path PPE^
-            powers:
+            powers: 
                 - Mind Link^
                 - Detect Arcana^
                 - Conceal Arcana^
                 - Empathy^
-            chargen_points:
+            chargen_points: 
                 - psionic_slots: 2
         -
             name: Dwarf
             book_reference: A&M
-            desc:
+            desc: 
             stats:
                 Strength: 1
                 Vigor: 1
@@ -394,17 +603,15 @@ swrifts:
                 Vigor: 1
             edges:
             hinderances:
-            attributes:
-            max_attribute_step:
             skills:
             abilities:
                 - Low Light Vision^
             complications:
                 - D-Bee-^
-                - Near-Human Physiology^
+                - Inhuman Physiology^
                 - Racial Animosity^
-            powers:
-            chargen_points:
+            powers: 
+            chargen_points: 
         -
             name: Elf
             book_reference: A&M
@@ -431,23 +638,23 @@ swrifts:
                 - Four Arms^
                 - Natural Psionics^
             hinderances:
-            attributes:
+            attributes: 
                 Srength: 1
-            max_attribute_step:
+            max_attribute_step: 
             skills:
                 Athletics: 2
             abilities:
                 - Semi-Aquatic^
             complications:
                 - Bad Reputation-^
-                - Bizarre Physiology^
+                - Inhuman Physiology++^
                 - D-Bee+^
-                - It's a Weird World^
+                - It's a Weird World^                
                 - Non-Standard Build^
             isp: 10
-            powers:
+            powers: 
                 - Arcane Protection^
                 - Mind Link^
                 - Telekinesis^
-            chargen_points:
+            chargen_points: 
                 psionic_slots: 2
