@@ -1750,3 +1750,169 @@ swrifts:
             - Flame Bolt*
         complications:
             - Cybernetics*
+    -
+        name: Glitter Boy
+        book_reference: TLPG
+        description: Elite pilot, walking tank, big damn gun.
+        chargen_points:
+            hj_slots: 2
+        skills:
+            electronics: 2
+            piloting: 2
+        hinderances:
+            - Enemy+*
+        edges:
+            - Power Armor Jock*
+        abilities:
+            - Many Have Fallen*
+        complications:
+            - Big and Shiny*
+            - Closed Off*
+            - Digging In*
+            - Highly Technical Machinery*
+            - Sonic Boom*
+            - Stand By to Fire*
+        hj1_options:
+            - Cybernetics
+            - Close Combat Weapons
+            - Ranged Weapons
+            - Training
+        hj2_options:
+            - Body Armor
+            - Close Combat Weapons
+            - Cybernetics
+            - Education
+            - Enchanted Items
+            - Experience & Wisdom
+            - Magic & Mysticism
+            - Psionics
+            - Ranged Weapons
+            - Training
+            - Underworld & Black Ops
+        gear:
+            - Glitter Boy Armor*
+    -
+        name: Juicer
+        book_reference: TLPG 35
+        description: Drug-powered super-soldiers.
+        counters:
+            burn: 8
+        chargen_points:
+            hj_slots: 2
+        stats:
+            Vigor: 2
+            Agility: 2
+            Strength: 2
+        stat_max:
+            Vigor: 2
+            Agility: 2
+            Strength: 2
+        dstats:
+            Pace: 6
+        edges:
+            - Quick*
+            - Brawny*
+        hinderances:
+            - Death Wish*
+        abilities:
+            - Burning Bright*
+            - Internal Repair System*
+            - Super Endurance*
+            - Super Speed*
+            - Uncanny Reflexes*
+        complications:
+            - Cybernetics*
+            - Drug-induced Euphoria/Tranquility
+            - Psionics and Magic*
+            - Inhuman Physiology+^
+            - Inhuman Physiology++^
+    -
+        name: Ley Line Walker
+        book_reference: TLPG
+        description: Spell slinging wizards and masters of ley lines.
+        counters:
+            ppe_max: 20
+        chargen_points:
+            magic_slots: 5
+            hj_slots: 2
+        hinderances:
+            - Enemy-*
+        edges:
+            - AB Magic*
+            - Power Points*
+            - Rapid Recharge*
+            - Master of Magic*
+        magic_powers:
+            - Detect Arcana*
+                - innate
+                - self
+                - aspect
+        abilities:
+            - Expanded Awareness*
+            - Ley Line Mastery*
+            - Arcane Academic*
+            - Ley Line Rejuvenation*
+            - Ley Line Sense*
+            - Ley Line Transmission*
+            - Ley Line Walking*
+        complications:
+            - Cybernetics*
+            - Disconnected*
+            - Power Activators*
+    -
+        name: MARS Body-Fixer
+        book_reference: TLPG
+        description: Doctors and Healers
+        traits:
+            rank: Seasoned
+        counters:
+            advance_points: 4
+        chargen_points:
+            fandg_slots: 2
+        stats:
+            smarts: 1
+        skills:
+            electronics: 3
+            healing: 3
+            repair: 2
+            science: 2
+        edges:
+            - Healer*
+        abilities:
+            - Body-Fixer*
+        hj1_options:
+            - Body Armor
+            - Close Combat Weapons
+            - Cybernetics
+            - Education
+            - Enchanted Items
+            - Experience & Wisdom
+            - Magic & Mysticism
+            - Psionics
+            - Ranged Weapons
+            - Training
+            - Underworld & Black Ops
+        hj2_options:
+            - Body Armor
+            - Close Combat Weapons
+            - Cybernetics
+            - Education
+            - Enchanted Items
+            - Experience & Wisdom
+            - Magic & Mysticism
+            - Psionics
+            - Ranged Weapons
+            - Training
+            - Underworld & Black Ops
+        hj3_options:
+            - Body Armor
+            - Close Combat Weapons
+            - Cybernetics
+            - Education
+            - Enchanted Items
+            - Experience & Wisdom
+            - Magic & Mysticism
+            - Psionics
+            - Ranged Weapons
+            - Training
+            - Underworld & Black Ops
