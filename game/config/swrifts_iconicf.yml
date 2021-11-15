@@ -2031,3 +2031,773 @@ swrifts:
             - Ranged Weapons
             - Training
             - Underworld & Black Ops
+    -
+        name: MARS Headhunter Techno-Warrior
+        book_reference: TLPG 42
+        traits:
+            rank: Seasoned
+        counters:
+            advance_points: 4
+        chargen_points:
+            fandg_slots: 2
+        description: Headhunter is the term for the common mercenaries focused on improving their combat value via cybernetic enhancement. Many are partial reconstruction cyborgsâ€”vets maimed in warâ€”who wear the badge of â€œHeadhunterâ€ with honor and revel in the trade of blood and steel for credit
+        chargen_points:
+            cyber_slots: 7
+        edges:
+            - Iron Jaw*
+            - Soldier*
+            - Upgradeable*
+        hj1_options:
+            - Body Armor
+            - Close Combat Weapons
+            - Cybernetics
+            - Education
+            - Enchanted Items
+            - Experience & Wisdom
+            - Magic & Mysticism
+            - Psionics
+            - Ranged Weapons
+            - Training
+            - Underworld & Black Ops
+        hj2_options:
+            - Body Armor
+            - Close Combat Weapons
+            - Cybernetics
+            - Education
+            - Enchanted Items
+            - Experience & Wisdom
+            - Magic & Mysticism
+            - Psionics
+            - Ranged Weapons
+            - Training
+            - Underworld & Black Ops
+        hj3_options:
+            - Body Armor
+            - Close Combat Weapons
+            - Cybernetics
+            - Education
+            - Enchanted Items
+            - Experience & Wisdom
+            - Magic & Mysticism
+            - Psionics
+            - Ranged Weapons
+            - Training
+            - Underworld & Black Ops
+        gear:
+            armor: Bushman EBA
+            melee_weapon: Vibro-Shortsword
+            ranged_weapon: NG-LG6 Laser Rifle & Launcher
+    -
+        name: MARS Merc Soldier
+        book_reference: TLPG 42
+        traits:
+            rank: Seasoned
+        counters:
+            advance_points: 4
+        chargen_points:
+            fandg_slots: 2
+        description: Though they like to be paid, itâ€™s not always about the money. This package also applies to anyone with a professional military or security background.
+        chargen_points:
+            skills_points: 3
+            edge_slots: 4
+        edges:
+            - Soldier
+        hj1_options:
+            - Body Armor
+            - Close Combat Weapons
+            - Cybernetics
+            - Education
+            - Enchanted Items
+            - Experience & Wisdom
+            - Magic & Mysticism
+            - Psionics
+            - Ranged Weapons
+            - Training
+            - Underworld & Black Ops
+        hj2_options:
+            - Body Armor
+            - Close Combat Weapons
+            - Cybernetics
+            - Education
+            - Enchanted Items
+            - Experience & Wisdom
+            - Magic & Mysticism
+            - Psionics
+            - Ranged Weapons
+            - Training
+            - Underworld & Black Ops
+        hj3_options:
+            - Body Armor
+            - Close Combat Weapons
+            - Cybernetics
+            - Education
+            - Enchanted Items
+            - Experience & Wisdom
+            - Magic & Mysticism
+            - Psionics
+            - Ranged Weapons
+            - Training
+            - Underworld & Black Ops
+        gear:
+            armor: Any Body Armor
+            melee_weapon: Choice
+            ranged_weapon: Choice
+            credits: 5d6 x 1000
+    -
+        name: MARS Operator
+        book_reference: TLPG 42
+        traits:
+            rank: Seasoned
+        counters:
+            advance_points: 4
+        chargen_points:
+            fandg_slots: 2
+        description: The mechanical and electrical geniuses who keep civilization running on technology no longer widely understood, Operators are a welcome sight in every community.
+        skills:
+            electronics: 2
+            repair: 3
+            boating: 1
+            driving: 1
+            piloting: 1
+        edges:
+            - McGyver*
+            - Ace*
+        abilities:
+            - Gearhead*
+        hj1_options:
+            - Body Armor
+            - Close Combat Weapons
+            - Cybernetics
+            - Education
+            - Enchanted Items
+            - Experience & Wisdom
+            - Magic & Mysticism
+            - Psionics
+            - Ranged Weapons
+            - Training
+            - Underworld & Black Ops
+        hj2_options:
+            - Body Armor
+            - Close Combat Weapons
+            - Cybernetics
+            - Education
+            - Enchanted Items
+            - Experience & Wisdom
+            - Magic & Mysticism
+            - Psionics
+            - Ranged Weapons
+            - Training
+            - Underworld & Black Ops
+        hj3_options:
+            - Body Armor
+            - Close Combat Weapons
+            - Cybernetics
+            - Education
+            - Enchanted Items
+            - Experience & Wisdom
+            - Magic & Mysticism
+            - Psionics
+            - Ranged Weapons
+            - Training
+            - Underworld & Black Ops
+        gear:
+            misc: Wilk's Laser Torch
+            misc: Field Repair Kit
+    -
+        name: MARS Power Armor Ace
+        book_reference: TLPG 42
+        traits:
+            rank: Seasoned
+        counters:
+            advance_points: 4
+        chargen_points:
+            fandg_slots: 2
+        description: This power armor jock is highly skilled and ready for action.
+        skills:
+            electronics: 2
+            piloting: 2
+        edges:
+            - Combat Ace*
+            - Power Armor Jock*
+        abilities:
+            - Evasive Maneuvers*
+        complications:
+            -
+        hj1_options:
+            - Body Armor
+            - Close Combat Weapons
+            - Cybernetics
+            - Education
+            - Enchanted Items
+            - Experience & Wisdom
+            - Magic & Mysticism
+            - Psionics
+            - Ranged Weapons
+            - Training
+            - Underworld & Black Ops
+        hj2_options:
+            - Body Armor
+            - Close Combat Weapons
+            - Cybernetics
+            - Education
+            - Enchanted Items
+            - Experience & Wisdom
+            - Magic & Mysticism
+            - Psionics
+            - Ranged Weapons
+            - Training
+            - Underworld & Black Ops
+        hj3_options:
+            - Body Armor
+            - Close Combat Weapons
+            - Cybernetics
+            - Education
+            - Enchanted Items
+            - Experience & Wisdom
+            - Magic & Mysticism
+            - Psionics
+            - Ranged Weapons
+            - Training
+            - Underworld & Black Ops
+        gear:
+            armor: Any Power Armor except Glitter Boy
+            weapon: choice of close combat weapons or personal ranged weapon
+    -
+        name: MARS Psi-Operator
+        book_reference: TLPG 43
+        traits:
+            rank: Seasoned
+        counters:
+            advance_points: 4
+        chargen_points:
+            fandg_slots: 2
+        description: A variation on the Operator concept, these technicians focus on psionic abilities.
+        chargen_points:
+            psionic_slots: 2
+        skills:
+            psionics: 2
+            electronics: 3
+            repair: 3
+        edges:
+            - AB Pisonics*
+            - Major Psionic*
+            - Telemechanics*
+            - Gadgeteer
+        psionic_powers:
+            - mind link
+        hj1_options:
+            - Body Armor
+            - Close Combat Weapons
+            - Cybernetics
+            - Education
+            - Enchanted Items
+            - Experience & Wisdom
+            - Magic & Mysticism
+            - Psionics
+            - Ranged Weapons
+            - Training
+            - Underworld & Black Ops
+        hj2_options:
+            - Body Armor
+            - Close Combat Weapons
+            - Cybernetics
+            - Education
+            - Enchanted Items
+            - Experience & Wisdom
+            - Magic & Mysticism
+            - Psionics
+            - Ranged Weapons
+            - Training
+            - Underworld & Black Ops
+        hj3_options:
+            - Body Armor
+            - Close Combat Weapons
+            - Cybernetics
+            - Education
+            - Enchanted Items
+            - Experience & Wisdom
+            - Magic & Mysticism
+            - Psionics
+            - Ranged Weapons
+            - Training
+            - Underworld & Black Ops
+        gear:
+            misc: Field Repair Kit
+    -
+        name: MARS Robot Vehicle Ace
+        book_reference: TLPG 43
+        traits:
+            rank: Seasoned
+        counters:
+            advance_points: 4
+        chargen_points:
+            fandg_slots: 2
+        description: This robot vehicle jock is a veritable titan on the battlefield
+        skills:
+            electronics: 2
+            piloting: 2
+        edges:
+            - Ace*
+            - Robot Vehicle Jock*
+        abilities:
+            - Killing Machine*
+        hj1_options:
+            - Body Armor
+            - Close Combat Weapons
+            - Cybernetics
+            - Education
+            - Enchanted Items
+            - Experience & Wisdom
+            - Magic & Mysticism
+            - Psionics
+            - Ranged Weapons
+            - Training
+            - Underworld & Black Ops
+        hj2_options:
+            - Body Armor
+            - Close Combat Weapons
+            - Cybernetics
+            - Education
+            - Enchanted Items
+            - Experience & Wisdom
+            - Magic & Mysticism
+            - Psionics
+            - Ranged Weapons
+            - Training
+            - Underworld & Black Ops
+        hj3_options:
+            - Body Armor
+            - Close Combat Weapons
+            - Cybernetics
+            - Education
+            - Enchanted Items
+            - Experience & Wisdom
+            - Magic & Mysticism
+            - Psionics
+            - Ranged Weapons
+            - Training
+            - Underworld & Black Ops
+        gear:
+            vehicle: one Robot Vehicle
+            misc: tool kit
+    -
+        name: MARS Rogue Scholar
+        book_reference: TLPG 43
+        traits:
+            rank: Seasoned
+        counters:
+            advance_points: 4
+        chargen_points:
+            fandg_slots: 2
+        description: Dedicated to uncovering the mysteries and truths of the past, Rogue Scholars risk worse than censure at the hands of the Coalition and others who refuse to see things beyond their view. For Rogue Scientist concepts, simply select the appropriate skills.
+        chargen_points:
+            skills_points: 6
+        skills:
+            research: 2
+        edges:
+            - Scholar*
+            - Scholar*
+            - Investigator*
+        hj1_options:
+            - Body Armor
+            - Close Combat Weapons
+            - Cybernetics
+            - Education
+            - Enchanted Items
+            - Experience & Wisdom
+            - Magic & Mysticism
+            - Psionics
+            - Ranged Weapons
+            - Training
+            - Underworld & Black Ops
+        hj2_options:
+            - Body Armor
+            - Close Combat Weapons
+            - Cybernetics
+            - Education
+            - Enchanted Items
+            - Experience & Wisdom
+            - Magic & Mysticism
+            - Psionics
+            - Ranged Weapons
+            - Training
+            - Underworld & Black Ops
+        hj3_options:
+            - Body Armor
+            - Close Combat Weapons
+            - Cybernetics
+            - Education
+            - Enchanted Items
+            - Experience & Wisdom
+            - Magic & Mysticism
+            - Psionics
+            - Ranged Weapons
+            - Training
+            - Underworld & Black Ops
+        gear:
+            credits: 4d10 x 1000
+    -
+        name: MARS Vagabond
+        book_reference: TLPG
+        traits:
+            rank: Seasoned
+        counters:
+            advance_points: 4
+        chargen_points:
+            fandg_slots: 2
+        description:
+        counters:
+            ppe_max:
+            isp_max:
+        stats:
+
+        chargen_points:
+            magic_slots:
+            psionic_slots:
+        skills:
+
+        hinderances:
+            -
+        edges:
+            -
+        magic_powers:
+            -
+        abilities:
+            -
+        complications:
+            -
+        hj1_options:
+            - Body Armor
+            - Close Combat Weapons
+            - Cybernetics
+            - Education
+            - Enchanted Items
+            - Experience & Wisdom
+            - Magic & Mysticism
+            - Psionics
+            - Ranged Weapons
+            - Training
+            - Underworld & Black Ops
+        hj2_options:
+            - Body Armor
+            - Close Combat Weapons
+            - Cybernetics
+            - Education
+            - Enchanted Items
+            - Experience & Wisdom
+            - Magic & Mysticism
+            - Psionics
+            - Ranged Weapons
+            - Training
+            - Underworld & Black Ops
+        hj3_options:
+            - Body Armor
+            - Close Combat Weapons
+            - Cybernetics
+            - Education
+            - Enchanted Items
+            - Experience & Wisdom
+            - Magic & Mysticism
+            - Psionics
+            - Ranged Weapons
+            - Training
+            - Underworld & Black Ops
+    -
+        name: MARS Wilderness Scout
+        book_reference: TLPG
+        traits:
+            rank: Seasoned
+        counters:
+            advance_points: 4
+        chargen_points:
+            fandg_slots: 2
+        # description:
+        # counters:
+            # ppe_max:
+            # isp_max:
+        # stats:
+
+        # chargen_points:
+            # magic_slots:
+            # psionic_slots:
+        # skills:
+
+        # hinderances:
+            # -
+        # edges:
+            # -
+        # magic_powers:
+            # -
+        # abilities:
+            # -
+        # complications:
+            # -
+        hj1_options:
+            - Body Armor
+            - Close Combat Weapons
+            - Cybernetics
+            - Education
+            - Enchanted Items
+            - Experience & Wisdom
+            - Magic & Mysticism
+            - Psionics
+            - Ranged Weapons
+            - Training
+            - Underworld & Black Ops
+        hj2_options:
+            - Body Armor
+            - Close Combat Weapons
+            - Cybernetics
+            - Education
+            - Enchanted Items
+            - Experience & Wisdom
+            - Magic & Mysticism
+            - Psionics
+            - Ranged Weapons
+            - Training
+            - Underworld & Black Ops
+        hj3_options:
+            - Body Armor
+            - Close Combat Weapons
+            - Cybernetics
+            - Education
+            - Enchanted Items
+            - Experience & Wisdom
+            - Magic & Mysticism
+            - Psionics
+            - Ranged Weapons
+            - Training
+            - Underworld & Black Ops
+    -
+        name: Mind Melter
+        book_reference: TLPG 45
+        description: The name itself fairly describes the general populationâ€™s feelings about the most powerful psi-masters in the world. They certainly didnâ€™t give it to themselves, but most Mind Melters wear the name like a badge of honor, reveling in the respect and (far more often) fear their very presence generates. Even the ones with a more noble or gentle intent fully grasp just how terrifying their powerful minds are.
+        counters:
+            ppe_max:
+            isp_max:
+        stats:
+
+        chargen_points:
+            psionic_slots: 2
+        skills:
+            psionics: 2
+        hinderances:
+            - Quirk*
+            - Enemy+*
+        edges:
+            - AB Psionics*
+            - Power Points*
+            - Major Psionic*
+            - Master Psionic*
+        psionic_powers:
+            - conceal arcana*
+                - innate
+                - range self
+            - detect arcana*
+                - innate
+                - range self
+                - aspect
+        abilities:
+            - Alter Aura*
+            - Master of Psionics*
+            - Mental Resistance*
+        complications:
+            - Cybernetics*
+            - Feared*
+        hj1_options:
+            - Enchanted Items
+            - Experience & Wisdom
+            - Psionics
+        hj2_options:
+            - Body Armor
+            - Close Combat Weapons
+            - Education
+            - Enchanted Items
+            - Experience & Wisdom
+            - Psionics
+            - Ranged Weapons
+            - Training
+            - Underworld & Black Ops
+        psionic_list:
+            - arcane protection
+            - barrier
+            - blind
+            - bolt
+            - boost trait
+            - lower trait
+            - confusion
+            - damage field
+                - range self
+            - darksight
+                - range self
+            - deflection
+                - range self
+            - disguise
+            - divination
+            - elemental manipulation
+            - empathy
+            - entangle
+            - environmental protection
+                - range self
+            - farsight
+                - range self
+            - fear
+            - fly
+                - range self
+            - havoc
+            - healing
+            - illusion
+            - intangibility
+                - range self
+            - invisibility
+                - range self
+            - mind reading
+            - mind link
+            - mind wipe
+            - object reading
+            - protection
+                - range self
+            - puppet
+            - relief
+            - sloth
+            - speed
+            - slumber
+            - smite
+                - range self
+            - sound
+            - silence
+            - speak language
+                - range self
+            - stun
+            - telekinesis
+            - warriorâ€™s gift
+                - range self
+    -
+        name: Mystic
+        book_reference: TLPG 47
+        description: Enlightened spell weavers in tune with the greater comic forces of the universe.
+        chargen_points:
+            magic_slots: 3
+            psionic_slots: 3
+        skills:
+            Faith: 2
+            Psionics: 2
+        hinderances:
+            - Enemy-*
+            - CHOICE*
+        edges:
+            - AB Miracles*
+            - Master of Magic*
+            - AB Psionics*
+            - Major Psionic*
+            - Alertness*
+            - Danger Sense*
+        magic_powers:
+            - Concel Arcana*
+            - Detect Arcana*
+            - Divination*
+        abilities:
+            - Cosmic Confluence*
+            - Mystic Power Modifiers*
+        complications:
+            - Arcane Duality*
+            - Cybernetics*
+            - Higher Standard*
+            - Power Activators*
+        hj1_options:
+            - Enchanted Items
+            - Experience & Wisdom
+            - Magic & Mysticism
+        hj2_options:
+            - Body Armor
+            - Close Combat Weapons
+            - Education
+            - Enchanted Items
+            - Experience & Wisdom
+            - Magic & Mysticism
+            - Psionics
+            - Ranged Weapons
+            - Training
+            - Underworld & Black Ops
+    -
+        name: Techno-Wizard
+        book_reference: TLPG 50
+        description: Arcane runes and copper wires conducting eldritch energy to gems at enchanted junctions, and classic vehicles soaring the skies as much by will as by wireâ€”these are the defning joys of the Techno-Wizard. He loves machines, but he loves the magic potential of machines even more, and heâ€™s dedicated his life to fulflling that potential wherever he can.
+        skills:
+            techno-wizardry: 2
+            electronics: 2
+            occult: 2
+            repair: 2
+            science: 2
+        hinderances:
+            - Enemy-*
+            - Quirk*
+        edges:
+            - AB Techno-Wizardry*
+        magic_powers:
+            -
+        abilities:
+            - Arcane Machinist*
+            - Machine Maestro*
+        complications:
+            - Cybernetics*
+            - Device Dependent*
+        hj1_options:
+            - Education
+            - Enchanted Items
+            - Magic & Mysticism
+        hj2_options:
+            - Body Armor
+            - Close Combat Weapons
+            - Cybernetics
+            - Education
+            - Enchanted Items
+            - Experience & Wisdom
+            - Magic & Mysticism
+            - Ranged Weapons
+            - Training
+            - Underworld & Black Ops
+        magic_list:
+            - arcane protection
+            - barrier
+            - blast
+            - blind
+            - bolt
+            - boost trait
+            - lower trait
+            - burrow
+            - burst
+            - confusion
+            - damage field
+            - darksight
+            - deflection
+            - detect arcana
+            - conceal arcana
+            - dispel
+            - drain Power Points
+            - entangle
+            - environmental protection
+            - farsight
+            - fly
+            - havoc
+            - healing
+            - intangibility
+            - invisibility
+            - light
+            - darkness
+            - protection
+            - relief
+            - slumber
+            - smite
+            - sound
+            - silence
+            - speak language
+            - sloth
+            - speed
+            - stun
+            - telekinesis
+            - teleport
+            - wall walker
+            - warriorâ€™s gift
+        notes:
+            - Any Trappings except Necromantic
