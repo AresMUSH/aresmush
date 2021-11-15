@@ -3,3 +3,73 @@ swrifts:
     iconicf:
     -
       name: none
+    -
+        name: Test
+        book_reference: None
+        description: A testing framework for staff use
+        counters:
+            ppe_max: 5
+            isp_max: 5
+        traits:
+            rank: Legendary
+        stats:
+            Strength: 4
+            Agility: 4
+        chargen_points:
+            magic_slots: 2
+            psionic_slots: 1
+            stats_points: 5
+            skills_points: 15
+        skills:
+            Notice: 2
+        hinderances:
+            - TestHind*
+            - Elderly*
+        edges:
+            - TestEdge*
+        magic_powers:
+            - Bolt*
+        abilities:
+            - Cosmic Confluence*
+            - Mystic Power Modifiers*
+        complications:
+            - Arcane Duality*
+            - Cybernetics*
+            - Higher Standard*
+            - Power Activators*
+        hj1_options:
+            - Body Armor
+            - Close Combat Weapons
+            - Cybernetics
+            - Education
+            - Enchanted Items
+            - Experience & Wisdom
+            - Magic & Mysticism
+            - Psionics
+            - Ranged Weapons
+            - Training
+            - Underworld & Black Ops
+        hj2_options:
+            - Body Armor
+            - Close Combat Weapons
+            - Cybernetics
+            - Education
+            - Enchanted Items
+            - Experience & Wisdom
+            - Magic & Mysticism
+            - Psionics
+            - Ranged Weapons
+            - Training
+            - Underworld & Black Ops
+        hj3_options:
+            - Body Armor
+            - Close Combat Weapons
+            - Cybernetics
+            - Education
+            - Enchanted Items
+            - Experience & Wisdom
+            - Magic & Mysticism
+            - Psionics
+            - Ranged Weapons
+            - Training
+            - Underworld & Black Ops
