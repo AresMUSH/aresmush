@@ -2031,12 +2031,12 @@ swrifts:
             - Ranged Weapons
             - Training
             - Underworld & Black Ops
-  -
-      name: MARS Headhunter Techno-Warrior
-      book_reference: TLPG 42
-      traits:
-          rank: Seasoned
-      counters:
-          advance_points: 4
-      chargen_points:
-          fandg_slots: 2
+    -
+        name: MARS Headhunter Techno-Warrior
+        book_reference: TLPG 42
+        traits:
+            rank: Seasoned
+        counters:
+            advance_points: 4
+        chargen_points:
+            fandg_slots: 2
