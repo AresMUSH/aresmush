@@ -458,6 +458,11 @@ module AresMUSH
 			dname = d.name.downcase
 			dname = dname.gsub("*", "")
 			dname = dname.gsub("^", "")
+      if ( traittype == "hind")
+        hindpoints = "#{d.hind_points}"
+      else
+        hindpoints = 0
+      end
 			trexlarray = cgsys.select { |ss| ss['name'].downcase.start_with?"#{dname}" }.first #Filter the trait's to find the one that's been selected
 
 			if ( trexlarray )
@@ -581,7 +586,7 @@ module AresMUSH
 				end
 			end
 
-			iconicfarray << {name: ifname, disabled: ifdisabled, desc: desc, trexcludes: trexcludes}
+			iconicfarray << {name: ifname, disabled: ifdisabled, desc: desc, trexcludes: trexcludes, hind_points: hindpoints }
 		end
 
 		return ( iconicfarray )
