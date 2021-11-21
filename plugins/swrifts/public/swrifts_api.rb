@@ -458,11 +458,6 @@ module AresMUSH
 			dname = d.name.downcase
 			dname = dname.gsub("*", "")
 			dname = dname.gsub("^", "")
-      if ( traittype == "hind")
-        hindpoints = "#{d.hind_points}"
-      else
-        hindpoints = 0
-      end
 			trexlarray = cgsys.select { |ss| ss['name'].downcase.start_with?"#{dname}" }.first #Filter the trait's to find the one that's been selected
 
 			if ( trexlarray )
@@ -538,6 +533,7 @@ module AresMUSH
             trexcludes = ''
           end
 				end
+        hindpoints = c['hind_points']
 			elsif ( traittype == 'edge' && c['pre-reqs'] )
 				trex = ''
 				preqs = c['pre-reqs']
@@ -572,8 +568,10 @@ module AresMUSH
 						end
 					end
 				end
+        hindpoints = 0
 			else
 				trexcludes = ''
+        hindpoints = 0
 			end
 
 			#Now we do this the other way. Find if the current trait has been selected by the player and mark it disabled from selection
