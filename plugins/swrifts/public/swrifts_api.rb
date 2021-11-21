@@ -314,7 +314,7 @@ module AresMUSH
 		# hjtables = hjtables.inspect
 
     #Get the Perk points set on the character
-    charhindpoints = char.swrifts_charhindpoints 
+    charhindpoints = char.swrifts_charhindpoints
 
 
 		return {
@@ -929,13 +929,13 @@ module AresMUSH
 			#Save the no framework hinderance
 
 			if (c_hindnofw) #If there are hinderances not related to the Iconic Framework and Race
-              dbgstr << "Hind: #{c_hindnofw.inspect}"
-				#c_hindnofw.each do |key, value| #Cycle through each one
-					#edge_name = "#{value['name']}" #set the name to all lowercase
-					#ss = Swrifts.add_feature(char, SwriftsHinderances, "hinderances", edge_name) #Call the add_feature function helpers.rb
-					#dbgstr << "Hind name: #{edge_name}, #{ss}" #For troubleshooting
-          #dbgstr << "hinderances"
-				#end
+          # dbgstr << "Hind: #{c_hindnofw.inspect}"
+  				c_hindnofw.each do |key, value| #Cycle through each one
+  					edge_name = "#{value['name']}" #set the name to all lowercase
+  					ss = Swrifts.add_feature(char, SwriftsHinderances, "hinderances", edge_name) #Call the add_feature function helpers.rb
+  					dbgstr << "Hind name: #{edge_name}, #{ss}" #For troubleshooting
+            dbgstr << "hinderances"
+  				end
 			end
 
 			if (c_hj) #If there are heroes journey tables, save them.
