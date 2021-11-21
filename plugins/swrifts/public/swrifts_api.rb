@@ -887,6 +887,7 @@ module AresMUSH
 		c_hind = chargen_data[:custom][:cghind]
 		c_hindnofw = chargen_data[:custom][:cghindnofw]
 		c_hindfw = chargen_data[:custom][:cghindfw]
+    c_charhindpoints = chargen_data[:custom][:charhindpoints]
 		c_hj = chargen_data[:custom][:hjtables]
 
 
