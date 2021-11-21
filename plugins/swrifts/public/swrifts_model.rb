@@ -20,6 +20,7 @@ module AresMUSH
 		collection :swrifts_heroesj, "AresMUSH::SwriftsHeroesj"
 		collection :swrifts_randnum, "AresMUSH::SwriftsRandnum"
 		collection :swrifts_fandg, "AresMUSH::SwriftsFandg"
+		collection :swrifts_charhindpoints, "AresMUSH::SwriftsCharHindPoints"
 
 
 		attribute :swrifts_iconicf
@@ -200,6 +201,15 @@ module AresMUSH
 	end
 
 	class SwriftsRandnum < Ohm::Model
+		include ObjectModel
+
+		attribute :name
+		attribute :rating, :type => DataType::Integer
+		reference :character, "AresMUSH::Character"
+		index :name
+	end
+
+	class SwriftsCharHindPoints < Ohm::Model
 		include ObjectModel
 
 		attribute :name

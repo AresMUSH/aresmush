@@ -313,6 +313,10 @@ module AresMUSH
 		hjtables = acl_get_hj_tables(cghjtables, rawcharicf)
 		# hjtables = hjtables.inspect
 
+    #Get the Perk points set on the character
+    charhindpoints = char.swrifts_charhindpoints 
+
+
 		return {
 		  iconicf: iconicf, #System iconic frameworks
 		  sysiconicf: swrifts_iconicf, # Full System iconic frameworks
@@ -335,6 +339,7 @@ module AresMUSH
 		  syshind: syshind, #Hinderances from system
 		  hjslots: hjslots,
 		  hjtables: hjtables,
+      charhindpoints: charhindpoints,
 		}
 	end
 
