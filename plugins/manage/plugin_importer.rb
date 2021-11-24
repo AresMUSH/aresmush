@@ -4,7 +4,7 @@ module AresMUSH
       def initialize(github_url)
         @tmp_dir = "/tmp/ares-extras"
         @github_url = github_url
-        @repo_name = (github_url || "").split("/").last.downcase
+        @repo_name = (github_url || "").split("/").last.downcase.gsub(".git", "")
         @source_dir = File.join(@tmp_dir, @repo_name)
       end
       
