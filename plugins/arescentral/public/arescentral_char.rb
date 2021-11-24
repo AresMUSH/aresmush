@@ -1,6 +1,6 @@
 module AresMUSH
   class Character
-    attribute :unified_play_screen, :type => DataType::Boolean
+    attribute :unified_play_screen, :type => DataType::Boolean, :default => true
 
     def alts
       # Note - includes the original character
