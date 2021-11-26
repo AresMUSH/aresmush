@@ -14,6 +14,7 @@ module AresMUSH
         {
           folder: folder.gsub(AresMUSH.website_uploads_path, '').gsub('/', ''),
           folder_size: Website.folder_size_kb(folder_path),
+          can_edit: Website.can_edit_wiki_file?(enactor, folder),
           files: files.select { |f| !File.directory?(f) }.sort.map { |f| 
             {
              name: File.basename(f),
