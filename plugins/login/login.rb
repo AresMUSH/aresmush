@@ -18,6 +18,17 @@ module AresMUSH
       case cmd.root
       when "activity"
         return ActivityCmd
+      when "ban"
+        case cmd.switch
+        when "list"
+          return BanListCmd
+        when "add"
+          return BanAddCmd
+        when "remove"
+          return BanRemoveCmd
+        when nil
+          return BanCmd
+        end
       when "boot"
         return BootCmd
       when "connect"
@@ -156,6 +167,14 @@ module AresMUSH
         return LoginNoticesMarkReadRequestHandler
       when "markNotificationRead"
         return LoginNoticeMarkReadRequestHandler
+      when "banList"
+        return BanListRequestHandler
+      when "banAdd"
+        return BanAddRequestHandler
+      when "banRemove"
+        return BanRemoveRequestHandler
+      when "banPlayer"
+        return BanPlayerRequestHandler
       end
       nil
     end
