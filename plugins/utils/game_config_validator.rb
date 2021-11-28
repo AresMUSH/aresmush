@@ -75,7 +75,6 @@ module AresMUSH
       
       def check_sites
         validator = Manage::ConfigValidator.new("sites")
-        validator.require_list('banned')
         validator.require_list('suspect')
         validator.require_boolean('ban_proxies')
         self.error_list.concat(validator.errors)

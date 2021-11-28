@@ -58,7 +58,6 @@ module AresMUSH
 
             scenes = [ @private1, @private2 ]
             sorted = scenes.sort { |s1, s2| @handler.sort_scene(s1, s2, @enactor) }
-            pp sorted.inspect
             expect(sorted[0]).to eq @private1
             expect(sorted[1]).to eq @private2
           end
@@ -76,7 +75,6 @@ module AresMUSH
 
             scenes = [ @open1, @private2, @yours2, @yours1, @open2, @private1 ]
             sorted = scenes.sort { |s1, s2| @handler.sort_scene(s1, s2, @enactor) }
-            pp sorted.inspect
             expect(sorted[0]).to eq @yours2
             expect(sorted[1]).to eq @yours1
             expect(sorted[2]).to eq @open2
