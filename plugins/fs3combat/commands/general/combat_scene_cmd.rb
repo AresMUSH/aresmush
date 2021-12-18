@@ -29,6 +29,7 @@ module AresMUSH
         end
         
         combat.update(scene: scene)
+        Scenes.combat_started(scene, combat)
         client.emit_success t('fs3combat.scene_set', :scene => scene.id)
         
       end
