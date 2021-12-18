@@ -146,5 +146,9 @@ module AresMUSH
       }
     end
     
+    def self.combat_started(scene, combat)
+      Scenes.new_scene_activity(scene, :status_changed, nil)
+    end
+    
   end
 end
