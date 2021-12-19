@@ -16,6 +16,7 @@ module AresMUSH
           num_exits: Exit.all.count,
           server_start: Global.server_start,
           server_uptime: TimeFormatter.format(Time.now - Global.server_start),
+          plugins: Manage.list_plugins_with_versions,
           mush_version: AresMUSH.version
         }
       end
