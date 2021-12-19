@@ -163,7 +163,7 @@ module AresMUSH
     # Splits an argument into an array and trims//help/s each item in the list.  Returns nil if 'arg' is nil.  
     # By default, splits at spaces but you can pass something else (like to split at a comma)
     def titlecase_list_arg(arg, split = " ")
-      arg ? arg.split(split).map { |a| titlecase_arg(a) } : nil
+      arg ? arg.split(split).map { |a| titlecase_arg(a) }.select { |a| !a.blank? } : nil
     end
   end
 end

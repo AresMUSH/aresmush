@@ -1,7 +1,7 @@
 $:.unshift File.dirname(__FILE__)
 
 module AresMUSH
-     module Achievements
+  module Achievements
 
     def self.plugin_dir
       File.dirname(__FILE__)

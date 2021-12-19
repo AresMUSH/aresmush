@@ -88,6 +88,8 @@ module AresMUSH
         return GetFilesRequestHandler
       when "folders"
         return GetFoldersRequestHandler
+      when "moveFolder"
+        return MoveFolderRequestHandler
       when "updateFile"
         return FileUpdateRequestHandler
       when "uploadFile"

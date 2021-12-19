@@ -8,7 +8,6 @@ module AresMUSH
           
           # This has nothing to do with rooms, but there's no better place to put it.
           char.screen_reader = false
-          char.fansi_on = true
           char.color_mode = "FANSI"
           
           Rooms.move_to(client, char, Game.master.welcome_room)

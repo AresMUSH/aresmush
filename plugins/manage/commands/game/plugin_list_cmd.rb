@@ -9,8 +9,7 @@ module AresMUSH
       end
 
       def handle
-        list = Global.plugin_manager.plugins.map { |p| p.name.rest("AresMUSH::") }.sort
-
+        list = Manage.list_plugins_with_versions
         template = BorderedTableTemplate.new list, 25, t('manage.plugins')
         client.emit template.render
       end

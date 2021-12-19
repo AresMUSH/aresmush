@@ -16,8 +16,6 @@ module AresMUSH
         return AliasCmd
       when "announce"
         return AnnounceCmd
-      when "ban"
-        return BanCmd
       when "db"
         case cmd.switch
         when "backup"

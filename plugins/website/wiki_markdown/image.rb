@@ -39,8 +39,14 @@ module AresMUSH
           source = "/game/uploads/#{source}"
         end
         
+        parts = source.gsub("/game/uploads/", "").split("/")
+        folder = parts[0]
+        name = parts[1]
+        file_meta = WikiFileMeta.find_meta(folder, name)
+        title = file_meta ? file_meta.description : ''
+        
         if url.blank?
-          url = source
+          url = "/file/#{folder}/#{name}"
         end
         
         template = HandlebarsTemplate.new(File.join(AresMUSH.plugin_path, 'website', 'templates', 'image.hbs'))
@@ -49,7 +55,8 @@ module AresMUSH
           "source" => source,
           "style" => style, 
           "align" => align,
-          "url" => url
+          "url" => url,
+          "title" => title
         }
         
         template.render(data)        
