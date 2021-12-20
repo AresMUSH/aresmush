@@ -171,5 +171,9 @@ module AresMUSH
         Global.logger.warn "Error triggering manual DB save."
       end
     end
+    
+    def self.list_plugins_with_versions
+      Global.plugin_manager.plugins.map { |p| "#{p.name.rest("AresMUSH::")} #{p.respond_to?(:version) ? p.version : ''}" }.sort
+    end
   end
 end

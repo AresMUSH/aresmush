@@ -91,3 +91,9 @@ en:
        
        only_switch_arescentral_alts: "You can only switch between your AresCentral alts."
        motd_announce: "New Message of the Day from %{enactor}: %{message}"
+       
+       ban_list_title: "Banned Sites"
+       ban_already_exists: "A ban entry for that site already exists. Delete it first if you want to replace it."
+       ban_added: "Ban added. Note: This does not affect any players who are currently logged in."
+       ban_doesnt_exist: "No ban entry found. Be sure to use the exact site or IP shown in the ban list."
+       ban_removed: "Ban removed."

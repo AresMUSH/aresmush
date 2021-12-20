@@ -8,6 +8,7 @@ module AresMUSH
         enactor = request.enactor
         name = request.args[:name]
         folder = request.args[:folder]
+        new_description = request.args[:new_description]
         new_name = (request.args[:new_name] || "").downcase
         new_folder = (request.args[:new_folder] || "").downcase
 
@@ -35,7 +36,7 @@ module AresMUSH
           return { error: t('webportal.missing_required_fields') }
         end
         
-        if (File.exists?(new_path))
+        if (File.exists?(new_path) && path != new_path)
           return { error: t('webportal.file_already_exists')  }
         end
         
@@ -47,7 +48,16 @@ module AresMUSH
           Dir.mkdir(new_folder_path)
         end
         
-        FileUtils.mv(path, new_path)
+        file_meta = WikiFileMeta.find_meta(folder, name)
+        if (file_meta)
+          file_meta.update(description: new_description, name: new_name, folder: new_folder)
+        else
+          WikiFileMeta.create(name: new_name, folder: new_folder, description: new_description)
+        end
+
+        if (path != new_path)
+          FileUtils.mv(path, new_path)
+        end
         
         Website.add_to_recent_changes('file', t('webportal.file_moved', :name => "#{folder}/#{name}"), { name: new_name, folder: new_folder }, enactor.name)
         

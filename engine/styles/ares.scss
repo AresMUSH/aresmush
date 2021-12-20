@@ -296,13 +296,9 @@ h2
 
 
 td, .table th, .table td {
-      padding: 5px;
-      vertical-align: middle;
-}
-
-.table-striped > tbody > tr:nth-of-type(odd),
-.table-striped > tbody > tr:nth-of-type(even) {
-  color: $text-color;
+    padding: 5px;
+    vertical-align: middle;
+    color: $text-color;
 }
 
 textarea.pre {
@@ -1905,6 +1901,10 @@ ul.reference-help-list > li:not(:last-child)::after {
 
 .server-migration {
   padding-right: 10px;
+}
+
+.server-plugin {
+  padding-right: 15px;
 }
 
 .prefs-list-item {
