@@ -28,7 +28,7 @@ module AresMUSH
           end
           @validator.check_forum_exists('trending_scenes_category')
         rescue Exception => ex
-          @validator.add_error "Unknown scenes config error.  Fix other errors first and try again. #{ex} #{ex.backtrace[0]}"
+          @validator.add_error "Unknown scenes config error.  Fix other errors first and try again. #{ex} #{ex.backtrace[0, 3]}"
         end
         
         @validator.errors

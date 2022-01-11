@@ -68,8 +68,8 @@ module AresMUSH
       return false if char && char.is_admin?
 
       # Check explicitly banned sites.
-      banned = Global.read_config("sites", "banned") || []
-      banned.each do |s|
+      banned = Game.master.banned_sites || {}
+      banned.each do |s, desc|
         if (Login.is_site_match?(ip_addr, hostname, s, s))
           return true
         end
@@ -208,6 +208,87 @@ module AresMUSH
         return t('validation.char_name_taken')
       end
       
+      return nil
+    end
+    
+    def self.remove_site_ban(enactor, site)
+      list = (Game.master.banned_sites || {})
+      if (!list.has_key?(site))
+        return t('login.ban_doesnt_exist')
+      end
+
+      ban_message = "#{enactor.name} removed a ban for #{site}."
+      
+      list.delete site
+      Game.master.update(banned_sites: list)
+      
+      Global.logger.warn ban_message
+      job = Jobs.create_job(Jobs.trouble_category, 
+        t('manage.ban_title'), 
+        ban_message, 
+        Game.master.system_character)
+        
+      return nil
+    end
+    
+    def self.add_site_ban(enactor, site, reason)
+      list = (Game.master.banned_sites || {})
+      
+      ban_message = "#{enactor.name} added a ban for #{site}: #{reason}"
+
+      if (list.has_key?(site))
+        list[site] = "#{list[site]}\n\n#{reason}"
+      else
+        list[site] = reason
+      end
+      Game.master.update(banned_sites: list)
+
+      Global.logger.warn ban_message
+      Jobs.create_job(Jobs.trouble_category, 
+        t('manage.ban_title'), 
+        ban_message, 
+        Game.master.system_character)
+        
+      return nil
+    end
+    
+    def self.ban_player(enactor, model, reason)
+      if (model.is_admin?)
+        return t('manage.cant_ban_admins')
+      end
+      
+      host_and_ip = "IP: #{model.last_ip}  Host: #{model.last_hostname}"
+      handle_info = model.handle ? " (@#{model.handle.name})" : ''
+      ban_message = "#{model.name}#{handle_info} banned by #{enactor.name} for #{reason}.  #{host_and_ip}"
+      Global.logger.warn ban_message
+
+      # Includes the main char
+      alts = AresCentral.alts(model)
+      alts.each do |alt|
+        if (!alt.is_admin?)
+          Login.set_random_password(alt)
+        end
+        
+        if (alt.handle)
+          alt.handle.delete
+        end
+      end
+       
+      banned = Game.master.banned_sites
+      site = "#{model.last_ip}"
+      if (banned.has_key?(site))
+        banned[site] = "#{banned[site]}\n\n#{ban_message}"
+      else
+        banned[site] = ban_message
+      end
+      Game.master.update(banned_sites: banned)
+      
+      Login.boot_char(model, t('manage.you_have_been_banned'))
+      
+      job = Jobs.create_job(Jobs.trouble_category, 
+        t('manage.ban_title'), 
+        ban_message, 
+        Game.master.system_character)
       return nil
     end
   end

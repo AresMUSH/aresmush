@@ -1,7 +1,7 @@
 module AresMUSH
   class HelpReader
     
-    attr_accessor :help_file_index, :help_toc, :help_keys, :help_text
+    attr_accessor :help_file_index, :help_toc, :help_keys, :help_text, :help_commands
     
     def initialize
       self.clear_help
@@ -12,6 +12,7 @@ module AresMUSH
       self.help_toc = {}
       self.help_keys = {}
       self.help_text = {}
+      self.help_commands = {}
     end
     
     def load_game_help
@@ -55,6 +56,20 @@ module AresMUSH
           end
           (meta['aliases'] || []).each do |a|
             self.help_keys[a] = topic
+          end
+          
+          lines = md.contents.split("\n")
+          lines.each do |l|
+            if (l.start_with?("`"))
+              if (l =~ /([^`]+)/)
+                command_str = $1
+                if (self.help_commands.has_key?(command_str))
+                  self.help_commands[command_str] << topic
+                else
+                  self.help_commands[command_str] = [ topic ]
+                end
+              end
+            end
           end
           
           self.help_text[topic] = md.contents

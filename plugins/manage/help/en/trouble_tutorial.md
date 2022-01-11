@@ -62,9 +62,7 @@ Most game-altering commands (building, posting to forums, starting scenes) are l
 
 Banning a site doesn't target a particular character, but a particular IP or hostname.  It prevents ANY characters from logging in, being created, or accessing the web portal from that site.  Be aware that this could potentially block _other_ players logging in from the same ISP.
 
-In the [Web Portal banned/suspect sites configuration](http://aresmush.com/tutorials/config/sites.html), you can designate specific IP addresses and/or hostnames as banned sites.
-
-The `ban` command is a shortcut for editing the site config and re-passwording a troublesome player and all their alts.
+Use the `ban` command to ban characters.
 
 ### Blacklisting Proxy Sites
 

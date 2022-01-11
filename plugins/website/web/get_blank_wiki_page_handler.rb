@@ -16,7 +16,7 @@ module AresMUSH
         end
                 
         templates = Website.wiki_templates
-        template = templates.select { |t| (t[:title]).strip == template_name }.first
+        template = templates.select { |t| (t[:name]).strip == template_name }.first
         
         if (!category.blank?)
           name = "#{category}:#{WikiPage.sanitize_page_name(title)}"

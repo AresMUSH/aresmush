@@ -30,10 +30,34 @@ module AresMUSH
       scene.mark_unread(character)
 
       scene.update(last_activity: Time.now)
-      data = Scenes.build_scene_pose_web_data(scene_pose, nil, true)
-      data[:pose_order] = Scenes.build_pose_order_web_data(scene)
+      pose_order_data = Scenes.build_pose_order_web_data(scene)
 
-      Scenes.new_scene_activity(scene, :new_pose, data.to_json)
+      notifications = {}
+
+      scene.watchers.each do |p|
+        AresCentral.play_screen_alts(p).each do |alt|
+          next if notifications.has_key?(alt.id)
+          data = Scenes.build_scene_pose_web_data(scene_pose, alt, true)
+          data[:pose_order] = pose_order_data
+
+          notifications[alt.id] = data
+        end
+      end
+
+      # Can't use notify_web_clients here because the notification is different for each person.
+      Global.dispatcher.spawn("Scene notification", nil) do
+        clients = Global.client_monitor.clients
+        clients.each do |client|
+          char_id = client.web_char_id
+          if (char_id && notifications.has_key?(char_id))
+            web_msg = "#{scene.id}|#{character.name}|#{:new_pose}|#{notifications[char_id].to_json}"
+            client.web_notify :new_scene_activity, web_msg, true
+          end
+        end
+      end
+
+      Scenes.create_new_pose_notification(scene, character.name)
+
       return scene_pose
     end
 
@@ -76,6 +100,14 @@ module AresMUSH
         scene.update(room: room)
         room.emit_ooc t('scenes.announce_scene_start', :privacy => private_scene ? "Private" : "Open", :name => enactor.name, :num => scene.id)
       end
+
+
+      scene_data = Scenes.build_live_scene_web_data(scene, enactor).to_json
+      alts = AresCentral.play_screen_alts(enactor)
+      Global.client_monitor.notify_web_clients(:joined_scene, scene_data, true) do |c|
+        c && alts.include?(c)
+      end
+
       return scene
     end
 
@@ -97,7 +129,7 @@ module AresMUSH
     def self.build_web_profile_data(char, viewer)
       # Note: The scenes themselves come in a different request. This is just misc scene-related stats info.
       return {} if (char != viewer)
- 
+
       words = char.pose_word_count
       scenes = char.scenes_participated_in.count
       if (words > 0 && scenes > 0)
@@ -112,6 +144,10 @@ module AresMUSH
           words_per_scene: words_per_scene
         }
       }
+    end
+
+    def self.combat_started(scene, combat)
+      Scenes.new_scene_activity(scene, :status_changed, nil)
     end
 
   end

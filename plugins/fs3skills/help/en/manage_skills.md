@@ -7,7 +7,15 @@ aliases:
 ---
 # Managing FS3 Skills
 
-> **These commands require the Admin role or the permission: manage\_abilities**
+> **Permission Required:** These commands require the Admin role or the permission: manage\_abilities
+
+Those with the proper permissions can adjust skills, luck and XP.
+
+## Viewing Sheets
+
+Some games may have multiple pages of the character sheet, and some pages might be configured to be private.  Private sheets can only be viewed by people with the `view_sheets` permission.
+
+`sheet <name>` - View someone else's sheet.
 
 ## Roll Results
 
@@ -15,10 +23,17 @@ Roll results can be sent to a channel.  Storytellers can join that channel in or
 
 ## Adjusting Skills
 
-`ability <name>=<ability>/<rating>` - Adjust a skill level. To remove a skill, set its rating to 0.
+You can adjust skill levels:
 
-`specialty/add <name>=<ability name>/<specialty>` - Add a specialty.
-`specialty/remove <name>=<ability name>/<specialty>` - Remove a specialty.
+`ability <name>=<ability>/<rating>` - Set someone else's ability.
+
+To remove a skill, just set its rating to 0.
+
+You can also adjust specialties:
+
+`specialty/add <name>=<ability name>/<specialty>` - Set someone else's specialty.
+`specialty/remove <name>=<ability name>/<specialty>` - Remove someone else's specialty.
+
 
 `xp <name>` - Views someone's XP progress.
 

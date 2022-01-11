@@ -12,8 +12,8 @@ module AresMUSH
         helper = TagMatchHelper.new(input)
           
         matches = Scene.shared_scenes.select { |p| 
-          ((p.tags & helper.or_tags).any? && 
-          (p.tags & helper.exclude_tags).empty?) &&
+          ((p.content_tags & helper.or_tags).any? && 
+          (p.content_tags & helper.exclude_tags).empty?) &&
           (helper.required_tags & p.tags == helper.required_tags)
         }
           
