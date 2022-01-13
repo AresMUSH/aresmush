@@ -272,6 +272,7 @@ magic-items:
     desc: "One-hundred and seven small brown and white beads, made from stone resembling the great rock biters, have been strung along a thin but deceptively strong bit of pale thread. They can be worn around the neck or wrapped around one's wrist for times of prayer and contemplation. A single bit of clear crystal, like a diamond, is emerald-cut and etched with a seven-headed serpent, has been strung among the beads so that it takes the place of the one-hundred and eighth bead. It falls over one's heart if the strand is worn as a necklace. Tiny knots have been tied along the string between each bead, painstaking work which has made the whole stronger. Allows the bearer to cast Blur Image and Wild Shape Chrysopelea."
     spells:
     - Wild Shape Chrysopelea
+    - Blur Image
   #Luisa's Hook
   Beads Of The Wilds:
     name: Beads of the Wilds
