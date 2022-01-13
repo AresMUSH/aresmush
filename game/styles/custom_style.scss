@@ -17,9 +17,8 @@ body {
 }
 
 
-
 .container-fluid {
-    background: #101015;
+    background: unset;
 }
 
 .col-xs-4 {
@@ -97,23 +96,23 @@ blockquote {
   padding: 0px;
 }
 
-.label-pill {
+.rounded-pill {
     background-color: #862931;
 }
 
-.panel {
+.card {
     background: inherit;
 }
 
-.panel-body {
+.card-body {
     background: #1A1B1C;
 }
 
-.panel-default {
+.card-default {
     border: 0px;
 }
 
-.panel-default>.panel-heading {
+.card-default>.card-heading {
     color: $light-words-color;
     background-color: #314254;
     border-color: #314254;
@@ -591,7 +590,7 @@ input:focus, .ember-power-select-search-input:focus, textarea:focus {
     // line-height:1px;
 }
 
-.btn-default {
+.btn-secondary {
   background: #bbbfc1;
   color: #1a1a1c;
   border: 0px;
@@ -671,6 +670,11 @@ button,  select {
 .label-danger {
     background-color: #A9353E;
 }
+
+.badge {
+    background-color: #A9353E;
+}
+
 
 /* ------End Header & Nav------ */
 

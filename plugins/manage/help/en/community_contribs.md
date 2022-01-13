@@ -4,6 +4,7 @@ summary: Using community-contributed plugins and themes.
 aliases:
 - extras
 - contribs
+- theme
 ---
 # Community Contributions
 
@@ -13,7 +14,7 @@ aliases:
 
 Several community-contributed plugins are available in the [AresCentral directory](https://arescentral.aresmush.com/plugins).  You can install them directly from the game:
 
-`plugin/install <github url>`
+`plugin/install <github url>` - Install a community plugin.
   
 > **Note:!** Many plugins require some additional manual install steps.  Be sure to check the README file in each plugin's folder for detailed information on installation and configuration.
 

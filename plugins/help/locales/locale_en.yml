@@ -12,10 +12,14 @@ en:
         
         help_topic_header: "Help for '%{command}'"
         help_topic_footer: "View help online at the web portal: %{url}"
-        view_help_online: "AresMUSH help files are best viewed online at the web portal: %{url}.  To see the in-game help, use 'help %{topic}'."
+        help_intro: "This help system will guide you through the game commands. Type %%xchelp <topic>%%xn (e.g., help beginner) to view a topic.%RYou can also browse the help on the game's web portal at %{help_url}."
         command_help_title: "Command Quick Reference"
         command_help_footer: "For more help, use %xchelp %{topic}%xn or visit the web portal: %{url}."
         beginner_set: "You set your beginner flag to %{option}."
-        pages_tip: "For additional pages, put the page # after the command (e.g. help2, help3, etc.)"
+        help_topic_prompt: "To see a help topic, type %xchelp <topic>%xn (e.g., help beginner)."
+        pages_tip: "ctd. in help%{next_page}"
         quickref_tip: "Use %xcqr <command>%xn for a command quick reference."
         related_topics_title: "Other topics in '%{section}':"
+
+        regular_commands: "Player Commands"
+        manage_commands: "Admin Commands"

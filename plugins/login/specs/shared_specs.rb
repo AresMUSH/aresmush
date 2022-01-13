@@ -79,7 +79,9 @@ module AresMUSH
       describe :is_banned? do
         before do
           @char = double
-          allow(Global).to receive(:read_config).with("sites", "banned") { [ "123.45.678" ] }
+          @game = double
+          allow(Game).to receive(:master) { @game }
+          allow(@game).to receive(:banned_sites) { { "123.45.678" => "Reason" }}
           allow(config_reader).to receive(:get_text).with("blacklist.txt") { "234.56.789\n345.67.890" }
         end
         

@@ -15,7 +15,7 @@ en:
         max_folder_size_kb: "Max folder size is %{kb}."
         config_error: "There was a problem loading your config YAML for %{file}.  See http://aresmush.com/tutorials for troubleshooting help: %{error}"
         tinker_error: "There was a problem with the tinker code: %{error}"
-        redeploying_website: "Redeploying web portal.  This may take a couple minutes.  You'll see a message when it's done."
+        redeploying_website: "Redeploying web portal.  This may take a couple minutes.  You'll see a message when it's done.  NOTE! If you see nothing after about 5 minutes, you may need to restart your server."
         portal_deployed: "Web portal deployed!%R%RBuild Output:%R%{output}%R%R'npm WARN' statements are OK. A successful deploy will end with a list of file sizes.%RDone!"
         only_upload_images: "That is not a valid file format: %{extensions}."
         file_uploaded: "%{name} uploaded."

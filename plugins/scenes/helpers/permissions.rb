@@ -22,7 +22,7 @@ module AresMUSH
     def self.can_edit_scene?(actor, scene)
       return false if !actor
       return true if scene.owner == actor
-      if (scene.shared)
+      if (scene.shared || !scene.is_private?)
         return true if Scenes.can_manage_scenes?(actor)
       end
       Scenes.has_alt_in_scene?(actor, scene)

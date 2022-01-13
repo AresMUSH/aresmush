@@ -57,10 +57,16 @@ module AresMUSH
       return nil if !file_path
       relative_path = file_path.gsub(AresMUSH.website_uploads_path, '')
       folder = File.dirname(relative_path).gsub(AresMUSH.website_uploads_path, '').gsub('/', '')
+      name = File.basename(relative_path)
+      file_meta = WikiFileMeta.find_meta(folder, name)
+      description = (file_meta && file_meta.description) ? file_meta.description : '' 
+      
       {
         path: relative_path,
-        name: File.basename(relative_path),
-        folder: folder.blank? ? '/' : folder
+        name: name,
+        folder: folder.blank? ? '/' : folder,
+        description: description,
+        title: description.blank? ? '' : description
       }
     end
     
@@ -129,10 +135,11 @@ module AresMUSH
     def self.wiki_templates
       templates = WikiPage.all.select { |p| p.category == "template" }.map { |p| {
         title: p.title.gsub("template:", ""),
+        name: p.name.gsub("template:", ""),
         text: p.text
       }
       }
-      templates << { title: 'blank', text: '' }
+      templates << { title: 'blank', name: 'blank', text: '' }
       templates
     end
     

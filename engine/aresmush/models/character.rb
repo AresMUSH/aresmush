@@ -7,7 +7,6 @@ module AresMUSH
     attribute :name_upcase
     attribute :alias
     attribute :alias_upcase
-    attribute :fansi_on, :default => true
     attribute :color_mode, :default => "FANSI"
     attribute :screen_reader, :type => DataType::Boolean, :default => false
     attribute :ascii_mode_enabled, :type => DataType::Boolean, :default => false
@@ -16,6 +15,9 @@ module AresMUSH
     attribute :password_hash
 
     attribute :shortcuts, :type => DataType::Hash, :default => {}
+
+    # DEPRECATED - use color_mode instead
+    attribute :fansi_on
 
     index :name_upcase
     index :alias_upcase

@@ -41,7 +41,7 @@ module AresMUSH
           check_status 'open_status', Global.read_config('jobs', 'open_status')
           
         rescue Exception => ex
-          @validator.add_error "Unknown jobs config error.  Fix other errors first and try again. #{ex} #{ex.backtrace[0]}"
+          @validator.add_error "Unknown jobs config error.  Fix other errors first and try again. #{ex} #{ex.backtrace[0, 3]}"
         end
         
         @validator.errors

@@ -10,6 +10,7 @@ module AresMUSH
             FileUtils.mkdir_p(export_path)
           end
   
+          export_locations
           export_wiki
           export_scenes
           export_chars
@@ -75,7 +76,8 @@ module AresMUSH
           #Global.logger.debug "Parsing scene #{s.id} #{s.title}"
         
           filename = FilenameSanitizer.sanitize(s.title)
-          page_name = "#{s.icdate}-#{filename}.html"
+          clean_date = "#{s.icdate}".gsub("/", "-")
+          page_name = "#{clean_date}-#{filename}.html"
           index[page_name] = {}
           index[page_name][:title] = s.date_title
           index[page_name][:summary] = s.summary
@@ -113,6 +115,34 @@ module AresMUSH
         
       end 
 
+      def self.export_locations
+        index = {}
+        Global.logger.debug "Exporting locations."
+        Room.all.to_a.sort_by { |r| r.name_and_area }.each do |r|
+          page_name = "#{FilenameSanitizer.sanitize(r.name_and_area)}.html"
+          index[page_name] = r.name_and_area
+                    
+          File.open(File.join(export_path, page_name), 'w') do |f|
+            request = WebRequest.new( { args: { id: r.id } } )
+            response = Rooms::LocationRequestHandler.new.handle(request)
+            
+            template = HandlebarsTemplate.new(File.join(AresMUSH.plugin_path, 'website', 'templates', 'wiki_location.hbs'))
+            text = template.render(model: response)
+            f.puts format_wiki_template(text, r.name_and_area)
+          end
+        end
+        
+        File.open(File.join(export_path, "locations.html"), 'w') do |f|
+          text = "<h1>Locations</h1>"
+          text << "<ul>"
+          index.each do |page, title|
+            text << "<li><a href=\"#{page}\">#{title}</a>"
+          end
+          text << "</ul>"
+          f.puts format_wiki_template(text, "Locations")
+        end
+      end
+      
       def self.export_wiki
         index = {}
         Global.logger.debug "Exporting wiki."
@@ -190,12 +220,12 @@ module AresMUSH
       
       def self.render_template(template_path, data, title)
         template = ExportHandlebarsTemplate.new(template_path)
-        text = template.render(data)
+        text = template.render(data || "")
         WikiExporter.format_wiki_template(text, title)
       end
       
       def self.format_wiki_template(text, title)
-        text = text.gsub("src=\"/", "src=\"")
+        text = (text || "").gsub("src=\"/", "src=\"")
         text = text.gsub(/href\=\"\/wiki\/([^\"]+)\/?/) { "href=\"#{FilenameSanitizer.sanitize($1)}.html" }
         text = AnsiFormatter.strip_ansi(text)
 
