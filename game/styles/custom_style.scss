@@ -100,6 +100,10 @@ blockquote {
     background-color: #862931;
 }
 
+.bg-primary {
+  background: unset;
+}
+
 .card {
     background: inherit;
 }
@@ -116,6 +120,10 @@ blockquote {
     color: $light-words-color;
     background-color: #314254;
     border-color: #314254;
+}
+
+.markdown-editor{
+  background: #2F3031;
 }
 
 .topboxes {
@@ -323,6 +331,10 @@ input:focus, .ember-power-select-search-input:focus, textarea:focus {
 
 
   /*------- tables --------*/
+  td, .table th, .table td {
+    color: $light-words-color;
+  }
+
 .table-striped>tbody>tr:nth-of-type(odd) {
     background: #D9DCDF;
     color: $dark-words-color;
@@ -351,6 +363,7 @@ input:focus, .ember-power-select-search-input:focus, textarea:focus {
 
 .table-striped>thead>th {
     background: #314254;
+    color: $light-words-color;
 }
 
   /*------- end tables --------*/
@@ -597,6 +610,10 @@ input:focus, .ember-power-select-search-input:focus, textarea:focus {
   border-radius: 2px;
 }
 
+.btn-secondary, .btn-secondary:hover, .btn-secondary:focus, .btn-secondary:active {
+  background: $link-blue;
+}
+
 .btn-primary {
     background-color: #2b2d3a;
     border-color: #383A4F;
@@ -672,7 +689,7 @@ button,  select {
 }
 
 .badge {
-    background-color: #A9353E;
+    background-color: #A9353E !important;
 }
 
 
@@ -1147,6 +1164,10 @@ a.markdown-control-toggle {
   background-image: linear-gradient(to right, #383A4F, #1a1b1c);
 }
 
+.play-scene-context-prompt {
+  color: $link-blue;
+}
+
 .markdown-preview {
 
 }
@@ -1320,7 +1341,7 @@ a.markdown-control-toggle {
 }
 
 .badge-likes {
-    background-color: #99233A;
+    background-color: #99233A !important;
 }
 
 .ansi-blue-bg {
