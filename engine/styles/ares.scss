@@ -28,20 +28,21 @@ BASIC CONTAINERS
 {
     background-image: url('/game/uploads/theme_images/background.png');
     background-size: cover;
-    height: 200px;
-    background-position: center;
+    height: 200px;   
+    background-position: center; 
 }
 
 .title-wrap
-{
-    height: 149px;
+{    
+    height: 149px;   
     color: $primary-words-color;
     padding: 10px;
-    padding-left: 20px;
+    padding-left: 20px;    
     padding-top: 21px;
     margin: 0px;
-    background-color: rgba(0, 0, 0, .25);
+    background-color: rgba(0, 0, 0, .25); 
 }
+
 
 body {
   font-size: 14px;
@@ -56,7 +57,7 @@ body {
 }
 
 .body-container {
-    padding: 10px;
+    padding: 10px;        
 }
 
 .centered {
@@ -75,13 +76,13 @@ body {
 }
 
 .thumbnail-gallery-item {
-    height: 150px;
-    width: 150px;
+    height: 150px; 
+    width: 150px;    
 }
 
 .code-editor {
     font-family:Consolas,Monaco,Lucida Console,monospace;
-
+    
 }
 
 .markdown-editor {
@@ -125,12 +126,12 @@ body {
   border-bottom: 0px;
 }
 
-.idle-status, .app-status, #console, #console pre, #sendMsg, #sendMsg2, #manageLog {
+.idle-status, .app-status, #console, #console pre, #sendMsg, #sendMsg2, #manageLog { 
     white-space: pre-wrap;
     background-color: black;
     color: white;
     font-family: "Lucida Console", Monaco, 'Andale Mono', 'Courier New', Courier, monospace;
-    font-size: 14px;
+    font-size: 14px; 
     padding: 10px;
 }
 
@@ -138,7 +139,7 @@ code {
   white-space: pre-wrap;
   color: $primary-color;
   font-family: "Lucida Console", Monaco, 'Andale Mono', 'Courier New', Courier, monospace;
-  font-size: 14px;
+  font-size: 14px; 
 }
 
 
@@ -191,12 +192,13 @@ p {
 }
 
 
+
 /* -------------------------
 NAVIGATION
 ------------------------- */
 
 a, .nav-link {
-    color: $secondary-color;
+    color: $secondary-color;    
     text-decoration: none;
 }
 
@@ -206,7 +208,7 @@ a:focus{
     text-decoration: none;
 }
 
-.user-bar {
+.user-bar { 
     padding-right: 10px;
 }
 
@@ -306,19 +308,19 @@ textarea.pre {
 pre {
     border: 0;
     padding: 0;
-    white-space: pre-wrap;
+    white-space: pre-wrap;      
     white-space: -moz-pre-wrap;
-    white-space: -pre-wrap;
-    white-space: -o-pre-wrap;
-    word-wrap: normal;
-    word-break: normal;
-    overflow-x:hidden;
-    overflow-wrap: normal;
+    white-space: -pre-wrap;    
+    white-space: -o-pre-wrap;  
+    word-wrap: normal;   
+    word-break: normal;  
+    overflow-x:hidden; 
+    overflow-wrap: normal; 
     background-color: inherit;
 }
 
 
-.ace-editor {
+.ace-editor { 
     position: relative;
     height: 500px;
     width: 100%;
@@ -332,7 +334,7 @@ pre {
 blockquote{
   margin: 0.4em 0;
   width: 80%;
-  padding: 10px;
+  padding: 10px;	
   font-size: 1em;
   background-color: $border-color;
   border: 0px;
@@ -343,7 +345,7 @@ blockquote{
   -webkit-margin-end: 40px;
 }
 
-pre code {
+pre code { 
 	border: 2px solid $border-color;
     border-radius: 5px;
     font-size: 1em;
@@ -407,8 +409,8 @@ textarea,
   border: 1px solid $border-color;
   border-radius: 3px;
   transition: border 0.3s linear;
-  padding-top: 4px;
-  padding-bottom: 4px;
+  padding-top: 4px; 
+  padding-bottom: 4px; 
 }
 
 
@@ -420,7 +422,7 @@ input.color-select {
   min-width: 100px;
 }
 
-li hr {
+li hr { 
     margin: 2px;
     border-color: $secondary-color;
     border-width: 4px;
@@ -464,14 +466,14 @@ BOOTSTRAP OVERRIDES
 }
 
 
-.nav-tabs .nav-link,
-.nav-tabs .nav-link>a:hover,
+.nav-tabs .nav-link, 
+.nav-tabs .nav-link>a:hover, 
 .nav-tabs .nav-link>a:focus {
     color: $secondary-color;
 }
 
-.nav-tabs .nav-link.active,
-.nav-tabs .nav-link.active>a:hover,
+.nav-tabs .nav-link.active, 
+.nav-tabs .nav-link.active>a:hover, 
 .nav-tabs .nav-link.active>a:focus {
     background-color: $primary-color;
     color: white;
@@ -528,7 +530,7 @@ BOOTSTRAP OVERRIDES
   color: $text-color;
 }
 
-.btn-info, .btn-info:hover, .btn-info:focus, .btn-info:active {
+.btn-info, .btn-info:hover, .btn-info:focus, .btn-info:active { 
     background-color: $secondary-color;
     border-color: $secondary-color;
 }
@@ -630,7 +632,7 @@ YOUTUBE MUSIC PLAYER
     border:none;
     background:transparent;
     outline:none;
-    display:block;
+    display:block; 
 }
 
 .musicplayer-frame, .musicplayer-preload  {
@@ -638,7 +640,7 @@ YOUTUBE MUSIC PLAYER
     height:1px;
     overflow:hidden;
     position:absolute;
-    display:inline
+    display:inline 
 }
 
 .musicplayer-wrap {
@@ -681,7 +683,7 @@ HEADER
     text-align: right;
 }
 
-.alts-switcher
+.alts-switcher 
 {
   width: 100%;
 }
@@ -692,7 +694,7 @@ FOOTER
 
 .footer {
     font-size: 0.9em;
-    color: $faded-text-color;
+    color: $faded-text-color;    
     border-top: 1px solid $faded-text-color;
     margin-top: 40px;
     padding-top: 10px;
@@ -742,7 +744,7 @@ SIDEBAR
   word-wrap: break-word;
 }
 
-.search-hint {
+.search-hint { 
     color: $faded-text-color;
     font-style: italic;
 }
@@ -785,7 +787,7 @@ GENERAL UTILITIES
 .faded {
   background-color: gray;
   opacity: 0.4;
-  filter: alpha(opacity=40);
+  filter: alpha(opacity=40);  
 }
 
 .inline-response {
@@ -799,14 +801,14 @@ GENERAL UTILITIES
     padding-bottom: 20px;
 }
 
-.hint {
+.hint { 
     color: $faded-text-color;
     font-style: italic;
     font-weight: bold;
     padding-left: 10px;
 }
 
-.tinyhint {
+.tinyhint { 
     color: $faded-text-color;
     font-style: italic;
     padding-left: 10px;
@@ -883,7 +885,7 @@ HOME SCREEN
   max-width: 100%;
   background: url('/game/uploads/theme_images/jumbotron.png');
   background-size: cover;
-  background-position: center;
+  background-position: center; 
   margin: auto;
 }
 
@@ -955,12 +957,12 @@ PLAY SCREEN
     margin-top: 5px;
     border: 0px;
 }
-
+     
 /* -------------------------
 CHARGEN SCREEN
 ------------------------- */
 
-.cg-tip {
+.cg-tip { 
     color: $faded-text-color;
     font-style: italic;
     font-size: 1em;
@@ -1011,7 +1013,7 @@ CHARGEN SCREEN
 
 .card-specialties {
   color: $faded-text-color;
-  font-style: italic;
+  font-style: italic;  
   padding-bottom: 10px;
 }
 
@@ -1076,7 +1078,7 @@ SCENES SCREEN
     min-height: 400px;
     overflow-y: scroll;
     overflow-x: hidden;
-    margin: 2px 0px;
+    margin: 2px 0px;    
 }
 
 .log-icon-container {
@@ -1084,7 +1086,7 @@ SCENES SCREEN
     height: 150px;
     -moz-border-radius: 25px;
     -webkit-border-radius: 25px;
-    border-radius: 25px;
+    border-radius: 25px;    
     overflow: hidden;
     background: $log-icon-color;
 }
@@ -1094,7 +1096,7 @@ SCENES SCREEN
     height: 150px;
     margin-left: auto;
     margin-right: auto;
-    display: block;
+    display: block;    
     object-fit: cover;
     object-position: center 10%;
 }
@@ -1107,10 +1109,10 @@ SCENES SCREEN
     top: -19px;
     -moz-border-radius: 25px 0px;
     -webkit-border-radius: 25px 0px;
-    border-bottom-left-radius: 25px;
-    border-bottom-right-radius: 25px;
+    border-bottom-left-radius: 25px;  
+    border-bottom-right-radius: 25px;  
     opacity: 0.8;
-    filter: alpha(opacity=80);
+    filter: alpha(opacity=80);  
     vertical-align: middle;
 }
 .log-icon-title {
@@ -1174,21 +1176,21 @@ SCENES SCREEN
   color: white;
 }
 
-.log-box {
+.log-box { 
 
     background-color: white;
     margin-top: 10px;
     margin-left: 20px;
     margin-right: 20px;
-    padding: 10px;
+    padding: 10px;    
 }
 
 .log-wrap {
     border-radius: 8px;
-    border: 1px solid $primary-outline-color;
+    border: 1px solid $primary-outline-color; 
     background-color: $background-color;
     margin:5px;
-    padding:5px;
+    padding:5px; 
     background-position:left top;
     background-size: cover;
     background-repeat: no-repeat;
@@ -1210,7 +1212,7 @@ SCENES SCREEN
 .pose-divider {
     margin: 20px 25px 20px 25px;
     border: 1px solid #eee;
-    align: center;
+    align: center; 
     height: 1px;
 }
 
@@ -1224,10 +1226,10 @@ SCENES SCREEN
 
 .your-pose-order {
   font-weight: bold;
-  color: green;
+  color: green;  
 }
 
-.scene-menu {
+.scene-menu { 
   display: inline-block;
 }
 
@@ -1236,11 +1238,11 @@ SCENES SCREEN
   padding-top: 10px;
 }
 
-.scene-pose-box {
+.scene-pose-box { 
     margin: 10px 0px;
     width: 100%;
 }
-
+ 
 .scene-controls-box {
   border: 1px solid #ccc;
   background: #F5F5F5;
@@ -1256,7 +1258,7 @@ SCENES SCREEN
     display: flex;
     flex-flow: row-reverse wrap;
 }
-
+ 
 .pose-buttons .btn {
     margin-left: 4px;
 }
@@ -1275,7 +1277,7 @@ SCENES SCREEN
 .scene-char-select .tiny-profile-icon {
     margin: 0 2px 3px 0;
 }
-
+ 
 .live-scene-controls a, .chat-controls a,  .unshared-scenes-controls a  {
   padding-right: 15px;
   padding-bottom: 5px;
@@ -1316,7 +1318,7 @@ SCENES SCREEN
 }
 
 .scene-info-label {
-  font-weight: bold;
+  font-weight: bold;  
 }
 
 .live-scenes-block .scene-title-block {
@@ -1338,11 +1340,11 @@ SCENES SCREEN
         padding-top: 10px;
         align-items: flex-end;
      }
-
+ 
      .scene-controls-left .scene-menu {
          margin-left: 4px;
      }
-
+     
      .scene-controls-left .dropdown-menu {
          right: 0;
          left: auto;
@@ -1357,7 +1359,7 @@ CHARACTERS SCREEN
 .profile-gallery, .icon-gallery {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
+  flex-wrap: wrap; 
 }
 
 .icon-gallery .icon-gallery-item {
@@ -1366,16 +1368,16 @@ CHARACTERS SCREEN
 }
 
 .icon-gallery .icon-gallery-item img {
-  width: 150px;
+  width: 150px; 
 }
 
 .profile-gallery img {
   padding: 10px;
-  width: 150px;
+  width: 150px; 
 }
 
 .profile-gallery-input textarea {
-  margin: 0px;
+  margin: 0px;  
   width: 100%;
 }
 
@@ -1384,12 +1386,12 @@ CHARACTERS SCREEN
   background-color: $background-color;
 }
 
-.profile-box {
+.profile-box { 
 
     background-color: white;
     margin-left: 30px;
     margin-right: 30px;
-    padding: 20px;
+    padding: 20px;    
 }
 
 .profile-box .row {
@@ -1415,10 +1417,10 @@ CHARACTERS SCREEN
 
 .profile-wrap {
     border-radius: 8px;
-    border: 1px solid $primary-outline-color;
+    border: 1px solid $primary-outline-color; 
     background-color: $background-color;
     margin-top:5px;
-    padding:15px;
+    padding:15px; 
     background-position:left top;
     background-size: cover;
     background-repeat: no-repeat;
@@ -1445,7 +1447,7 @@ CHARACTERS SCREEN
   margin-right: 10px;
 }
 
-table.char-ability-list {
+table.char-ability-list { 
   width: 100%;
 }
 
@@ -1473,7 +1475,9 @@ table.char-ability-list {
     height: 100px;
     margin-left: auto;
     margin-right: auto;
-    display: block;
+    display: block;       
+    object-fit: cover;
+    object-position: center 10%;
 }
 
 .relationship-icon-container {
@@ -1481,7 +1485,7 @@ table.char-ability-list {
     height: 100px;
     -moz-border-radius: 25px;
     -webkit-border-radius: 25px;
-    border-radius: 25px;
+    border-radius: 25px;    
     overflow: hidden;
     background: $log-icon-color;
 }
@@ -1511,7 +1515,7 @@ table.char-ability-list {
     text-align: center;
 }
 
-.profile-tab {
+.profile-tab { 
     padding-top: 15px;
     padding-bottom: 15px;
 }
@@ -1615,7 +1619,7 @@ CHAT SCREEN
     padding: 5px;
 }
 
-.play-sidebar:hover {
+.play-sidebar:hover { 
   overflow-y: auto;
 }
 
@@ -1625,7 +1629,7 @@ CHAT SCREEN
 }
 
 .play-scene-context-prompt {
-  font-weight: bold;
+  font-weight: bold;  
   font-size: 1.5em;
   color: $text-color;
 }
@@ -1643,11 +1647,6 @@ CHAT SCREEN
 .chat-box {
   padding: 3px;
   margin: 0px;
-}
-.chat-button {
-  width: 100%;
-  white-space:normal !important;
-  word-wrap: break-word;
 }
 
 .chat-report {
@@ -1801,7 +1800,7 @@ OTHER
   display: inline-block;
   margin-bottom: 5px;
   position: relative;
-
+  
 }
 
 .progress-value {
@@ -1849,7 +1848,7 @@ OTHER
 
 .wiki-page-columns {
   column-count: 3;
-
+  
 }
 
 .help-heading {
@@ -1862,7 +1861,7 @@ OTHER
       display: block;
       margin-left: auto;
       margin-right: auto;
-      padding: 10px;
+      padding: 10px;  
 }
 
 ul.regular-help-list {
@@ -1881,7 +1880,7 @@ ul.reference-help-list > li:not(:last-child)::after {
     margin: 0 .25em;
 }
 
-.reference-help-title {
+.reference-help-title { 
   color: $faded-text-color;
   font-style: italic;
   font-weight: bold;
@@ -1919,7 +1918,7 @@ ul.reference-help-list > li:not(:last-child)::after {
 }
 /*.char-scene-list li:before { content: "\2666  "; }*/
 
-@media (max-width:992px)  {
+@media (max-width:992px)  { 
 
   .site-title {
       font-size: 2em;
@@ -1939,20 +1938,20 @@ ul.reference-help-list > li:not(:last-child)::after {
   }
 
 
-  .profile-wrap {
-      padding: 5px;
+  .profile-wrap { 
+      padding: 5px; 
   }
 
-  .profile-box {
+  .profile-box { 
       padding: 5px;
       margin: 5px;
   }
 
-  .log-wrap {
+  .log-wrap { 
       padding: 5px;
   }
 
-  .log-box {
+  .log-box { 
       padding: 5px;
       margin: 5px;
   }
@@ -1973,7 +1972,7 @@ ul.reference-help-list > li:not(:last-child)::after {
 
   .wiki-page-columns {
     column-count: 1;
-
+  
   }
 
   .char-achievements {
@@ -1983,13 +1982,13 @@ ul.reference-help-list > li:not(:last-child)::after {
 }
 
 
-@media (max-width:768px)  {
+@media (max-width:768px)  { 
 
-  .body-row
+  .body-row 
   {
     display: flex;
     flex-direction: column;
-
+  
   }
 
   .left-sidebar {

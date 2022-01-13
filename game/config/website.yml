@@ -196,7 +196,7 @@ website:
   permissions:
     manage_theme: Edit web portal CSS and colors.
     manage_wiki: Create and delete restricted wiki pages.
-  story: "[The Multi-Colored Place](https://spiritlakemu.com/plot/49)\nWhat begins as a quest for Tír na nÓg turns into a political tangle between fae kingdoms as the Grand Lake mages discover that Winter is in a dire state. \n\n[To the Victors, the Spoils](https://spiritlakemu.com/plot/50)\nThe Mages are invited to participate in a tournament, held in Kleiosis, the Mágosmáchia.\n\n [Tempests of Air](https://spiritlakemu.com/plot/46)\nGrand Lake's mages seek the powerful Air gem in a new and unexplored portal. Storms and other dangers abound.\n\n[Be As The Scales Of Justice](https://spiritlakemu.com/plot/52)\nWith the assistance of Grand Lake's mages, the sentinel jackals are working to restore the Temple of the Sky to its former glory and retake it from deadly serpents. "
+  story: "[Tremors of Earth](https://spiritlakemu.com/plot/42)\nThe Heritor, in possession of the Earth Gem, stirs again from the Diyu - and this time, his sights are set on Feixuzicheng and all its kingdoms.\n\n[Be As The Scales Of Justice](https://spiritlakemu.com/plot/52)\nWith the assistance of Grand Lake's mages, the sentinel jackals are working to restore the Temple of the Sky to its former glory and retake it from deadly serpents. "
   auto_wiki_export: true
   wiki_export_cron:
     hour:
