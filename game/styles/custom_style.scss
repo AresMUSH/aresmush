@@ -124,6 +124,7 @@ blockquote {
 
 .markdown-editor{
   background: #2F3031;
+  margin: 0px 10px 10px 10px;
 }
 
 .topboxes {
@@ -331,9 +332,9 @@ input:focus, .ember-power-select-search-input:focus, textarea:focus {
 
 
   /*------- tables --------*/
-  td, .table th, .table td {
-    color: $light-words-color;
-  }
+  // td, .table th, .table td {
+  //   color: $light-words-color;
+  // }
 
 .table-striped>tbody>tr:nth-of-type(odd) {
     background: #D9DCDF;
@@ -610,7 +611,7 @@ input:focus, .ember-power-select-search-input:focus, textarea:focus {
   border-radius: 2px;
 }
 
-.btn-secondary, .btn-secondary:hover, .btn-secondary:focus, .btn-secondary:active {
+.btn-secondary:hover, .btn-secondary:focus, .btn-secondary:active {
   background: $link-blue;
 }
 
@@ -708,69 +709,69 @@ button,  select {
 }
 
 .job-status-HOLD {
-    background-color: #A31B1B;
+    background-color: #A31B1B !important;
 }
 
 .job-status-ASANA {
-    background-color: #fa5858;
+    background-color: #fa5858 !important;
 }
 
 .job-status-OPEN {
-    background-color: #448444;
+    background-color: #448444 !important;
 }
 
 .job-category-APP {
-    background-color: #804c80;
+    background-color: #804c80 !important;
 }
 
 .job-category-ALERT, .job-category-BUG {
-    background-color: #C12020;
+    background-color: #C12020 !important;
 }
 
 .job-category-REQ {
-    background-color: gray;
+    background-color: gray !important;
 }
 
 .job-category-SPELL {
-    background-color: #3E7499;
+    background-color: #3E7499 !important;
 }
 
 .job-category-LH {
-    background-color: #4a90bf;
+    background-color: #4a90bf !important;
 }
 
 .job-category-PRP {
-    background-color: #69a5a5;
+    background-color: #69a5a5 !important;
 }
 
 .job-category-PLOT{
-    background-color: #477878;
+    background-color: #477878 !important;
 }
 
 .job-category-SECRET{
-    background-color: #3e5b5b;
+    background-color: #3e5b5b !important;
 }
 
 .job-category-BUILD{
-    background-color: #640404;
+    background-color: #640404 !important;
     color: white;
 }
 
 .job-category-CODE{
-    background-color: orange;
+    background-color: orange !important;
 }
 
 .job-category-SYS{
-    background-color: #5bc0de;
+    background-color: #5bc0de !important;
 }
 
 .job-category-PLAYER{
-    background-color: #fef64a;
+    background-color: #fef64a !important;
     color: black;
 }
 
 .job-category-LUCK{
-    background-color: #068431;
+    background-color: #068431 !important;
 }
 
 /* ---------End Jobs----------- */
@@ -1166,10 +1167,6 @@ a.markdown-control-toggle {
 
 .play-scene-context-prompt {
   color: $link-blue;
-}
-
-.markdown-preview {
-
 }
 
 .timestamp-tip {
