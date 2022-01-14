@@ -334,10 +334,13 @@ input:focus, .ember-power-select-search-input:focus, textarea:focus {
 
 
   /*------- tables --------*/
-tr, .table tr, .table tr {
+td, .table th, .table td {
     color: $light-words-color;
   }
 
+.table-striped>td {
+  color: $dark-words-color;
+}
 
 .table-striped>tbody>tr:nth-of-type(odd) {
     background: #D9DCDF;
