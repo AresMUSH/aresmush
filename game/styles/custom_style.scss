@@ -54,7 +54,9 @@ blockquote {
 
 .nav-tabs {
     border-bottom: 5px solid #272938;
-}
+    background: #252736;
+    border: 1px solid #262837;
+  }
 
 .nav-tabs > li > a {
     background-color: #272938;
@@ -335,6 +337,9 @@ input:focus, .ember-power-select-search-input:focus, textarea:focus {
   // td, .table th, .table td {
   //   color: $light-words-color;
   // }
+table {
+  color: $light-words-color
+}
 
 .table-striped>tbody>tr:nth-of-type(odd) {
     background: #D9DCDF;
@@ -1307,6 +1312,10 @@ a.markdown-control-toggle {
 
 
 /*---------------- Scene List & Logs ---------------- */
+.scene-text {
+  background: #65aae6;
+}
+
 .scene-communication {
   background: #6f5bde;
 }
