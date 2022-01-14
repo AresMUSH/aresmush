@@ -337,11 +337,11 @@ input:focus, .ember-power-select-search-input:focus, textarea:focus {
 
 
 
-.table td {
+.table th, .table td {
     color: $light-words-color;
   }
 
-  .table-striped td {
+.table-striped td {
     color: $dark-words-color;
   }
 
