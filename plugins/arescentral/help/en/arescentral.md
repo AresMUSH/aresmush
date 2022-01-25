@@ -17,7 +17,7 @@ Private games do not appear on the AresCentral game directory, but they can stil
 
 ## Player Handles
 
-AresCentral Player Handles bring a little taste of social media to MUSHing.  A handle is your OOC identity, used across all Ares games. Through your handle, people can identify you as a player, not just as a character.
+AresCentral [Player Handles](https://aresmush.com/handles) bring a little taste of social media to MUSHing.  A handle is your OOC identity, used across all Ares games. Through your handle, people can identify you as a player, not just as a character.
 
 Having a handle does nothing until you **link** a character to it. This basically tells everyone that you play that character. It also allows access to handle features from that character. More on that in a moment.  Linking is optional; you can pick and choose which characters you want to link.  
 
@@ -46,5 +46,5 @@ Having characters linked enables various features:
 
 ## Command Reference
 
-[Player Handle Commands](/tutorials/handles)
-[Managing Game Directory Info](/tutorials/game_directory)
+[Player Handle Commands](/help/handles)
+[Managing Game Directory Info](/help/game_directory)
