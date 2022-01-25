@@ -632,6 +632,7 @@ spells:
     name: Incorporeal
     range: Self
     roll: true
+    rounds: 30
     school: Corpus
     target_num: 1
   Mass Impair:
