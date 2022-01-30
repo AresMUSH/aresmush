@@ -411,7 +411,6 @@ magic-items:
     desc:  Strung together with stiff cords and bird bones, the necklace hangs loose and just below the collarbone. The bones are bleached white and decorated with little carvings. Adhered to the bones are short, slim raven feathers. The pendant is a bird skull, but the brow has been hollowed out and set with a dull black stone that doesn't reflect any light. It grants the wearer the ability to cast Group Comprehend Languages
     spells:
     - Group Comprehend Languages
-
   Rosewing:
     name: Rosewing
     desc: "Just under nine inches, the slender wand of oak is beautifully polished with age. Delicate rose quartz is inlaid along the length of it in intricate designs, and it's topped with a sharp, many-pointed star of pink sapphire. Gives +3 to spellcasting."
@@ -427,3 +426,51 @@ magic-items:
     desc: This spear is 5 feet in length with a smooth, oiled shaft that is decorated in ogham runes along one side. It has a simple, but sharp spearhead, and allows its bearer to cast Track Animal.
     spells:
     - Track Animal
+
+  # +================================+
+  # Kleiosis Gifts
+  # +================================+
+
+  # Calgary
+  Cerberus's Eye:
+    name: Cerberus's Eye
+    desc: Standing at the gates to the Underworld, barring passage, is said to be the fierce three-headed hound, Cerberus. This wring, known as Máti tou Kérverou, is inspired by this myth. A cloudy, dark stone sits in a burnished, bronze ring etched with Soitos that reads; The Way to the Spirit is Sealed. When activated, it emits a baleful red light. Gives the bearer the ability to cast %xBMind Shield.%xn
+    spells:
+    - Mind Shield
+  # Deluz
+  Laurel Wreath:
+    name: Laurel Wreath
+    desc: A crown-sized wreath of silver bay laurel leaves. The delicately crafted leaves are exquisitely detailed, the veins and midribs visible on every leaf, making the wreath look as if it's made of living branches. The abundant branches bend around from the back of the crown so the points of the leaves meet gently at the front. Allows the bearer to cast %xBMind Shield.%xn
+    spells:
+    - Mind Shield
+  # Isao
+  Eel-skin Bracelet:
+    name: Eel-skin Bracelet
+    desc: A inch wide bracelet made of some sort of dark brown fish skin with a faint sheen to it.  The bracelet itself shrinks or grows to fit snug to the wearers wrist and provides the wearer with a slight boost in speed like a darting eel. Provides +1 defense.
+    defense_mod: 1
+  # Kevin
+  Soteria's Caress:
+    name: Soteria's Caress
+    desc: A fibula made from bronze that has been shaped to resemble a leaf of laurel. It has been coated in a thin layer of silver and can be worn as a simple yet decorative adornment of clothing. Traditionally, fibulae have been used to fasten clothes or cloaks, but some Kleiosians wear them as mere jewelry as well. Provides +1 defense.
+    defense_mod: 1
+  # Manny
+  Aureus of Mercury:
+    name: Aureus of Mercury
+    desc: A small silver coin inscribed with a wing on either side. Grants the wearer +1 initiative.
+    init_mod: 1
+  # Olive
+  Isis's Blessing:
+    name: Isis's Blessing
+    desc: A small crystal pendant hangs on a short cord. Light seems to dance off of it, scattering rainbows from time to time.
+    spells:
+    - Spell Fatigue Heal
+  # Roo
+  Hermes' Shoelaces:
+    name: Hermes' Shoelaces
+    desc: At first glance, these are just normal looking laces. However, upon closer inspection, there seems to be glittery thread woven throughout, looking like little traces of lightning. When one's shoes are laced up with these, they make the wearer move just a wee bit more swiftly and grants them +1 initiative.
+    init_mod: 1
+  #Rowan
+  Asp's Bite:
+    name: Asp's Bite
+    desc: A coiled golden snake bracer that runs along the forearm. Grants the wearer +1 to attack.
+    attack_mod: 1
