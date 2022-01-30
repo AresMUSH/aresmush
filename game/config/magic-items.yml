@@ -454,7 +454,7 @@ magic-items:
     desc: A fibula made from bronze that has been shaped to resemble a leaf of laurel. It has been coated in a thin layer of silver and can be worn as a simple yet decorative adornment of clothing. Traditionally, fibulae have been used to fasten clothes or cloaks, but some Kleiosians wear them as mere jewelry as well. Provides +1 defense.
     defense_mod: 1
   # Manny
-  Aureus of Mercury:
+  Aureus Of Mercury:
     name: Aureus of Mercury
     desc: A small silver coin inscribed with a wing on either side. Grants the wearer +1 initiative.
     init_mod: 1
