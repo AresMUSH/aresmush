@@ -444,7 +444,7 @@ magic-items:
     spells:
     - Mind Shield
   # Isao
-  Eel-skin Bracelet:
+  Eel-Skin Bracelet:
     name: Eel-skin Bracelet
     desc: A inch wide bracelet made of some sort of dark brown fish skin with a faint sheen to it.  The bracelet itself shrinks or grows to fit snug to the wearers wrist and provides the wearer with a slight boost in speed like a darting eel. Provides +1 defense.
     defense_mod: 1
