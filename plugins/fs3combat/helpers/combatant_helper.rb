@@ -127,7 +127,7 @@ module AresMUSH
     def self.roll_initiative(combatant, ability)
       Global.logger.debug "Combatant: #{combatant.name}"
       magic_init_mod = combatant.magic_init_mod || 0
-      !combatant.is_npc? ? item_init_mod = combatant.item_init_mod || 0 : item_init_mod = 0
+      !combatant.is_npc? ? item_init_mod = Magic.item_init_mod(combatant.associated_model) || 0 : item_init_mod = 0
       luck_mod = combatant.luck == "Initiative" ? 3 : 0
       action_mod = 0
       if (combatant.action_klass == "AresMUSH::FS3Combat::SuppressAction" ||
