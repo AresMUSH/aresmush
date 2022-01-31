@@ -125,9 +125,7 @@ module AresMUSH
       elsif Manage.is_extra_installed?("death") && combat && target_char_or_combatant.death_count > 0
         puts "!!!RUNNING DEATH"
         message = [t('magic.cast_ko_heal', :name => caster_name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target => target.name, :points => heal_points)]
-        if !target.is_npc?
-          Death.one(target.combatant)
-        end
+        Death.one(target.combatant)
         FS3Combat.heal(wound, heal_points)
       else
         puts "!!!!WRONG HEAL"
