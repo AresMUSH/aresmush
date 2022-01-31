@@ -85,6 +85,15 @@ module AresMUSH
       end
     end
 
+    def self.item_init_mod(char)
+      item_name = char.magic_item_equipped
+      if item_name == "None"
+        0
+      else
+        Global.read_config("magic-items", item_name, "init_mod")
+      end
+    end
+
     def self.get_magic_items(char)
       list = char.magic_items
       list.map { |i|
