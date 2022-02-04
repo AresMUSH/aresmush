@@ -437,6 +437,12 @@ magic-items:
     desc: Standing at the gates to the Underworld, barring passage, is said to be the fierce three-headed hound, Cerberus. This wring, known as Máti tou Kérverou, is inspired by this myth. A cloudy, dark stone sits in a burnished, bronze ring etched with Soitos that reads; The Way to the Spirit is Sealed. When activated, it emits a baleful red light. Gives the bearer the ability to cast %xBMind Shield.%xn
     spells:
     - Mind Shield
+  #Danielle
+  Kleiosian Brooch:
+    name: Kleiosian Brooch
+    desc: Made of silver, this oval shaped pin shows a column in bass relief with a Corinthian capital at the top of it matching those found on the Bibliothēkē. A small tyet symbol in red jasper is set on the column under the capital that matches the one on the Scythe of Isis once carried by Hypatia. Etching around the edge of the pin reveals a quote in Soitos from Hypatia's writings. The words wrap around the column to say, "Reserve your right to think, for even to think wrongly is better than not to think at all." Gives the bearer the ability to cast %xBMind Shield.%xn
+    spells:
+    - Mind Shield
   # Deluz
   Laurel Wreath:
     name: Laurel Wreath
@@ -461,7 +467,7 @@ magic-items:
   # Olive
   Isis's Blessing:
     name: Isis's Blessing
-    desc: A small crystal pendant hangs on a short cord. Light seems to dance off of it, scattering rainbows from time to time.
+    desc: A small crystal pendant hangs on a short cord. Light seems to dance off of it, scattering rainbows from time to time. Gives the bearer the ability to cast %xBSpell Fatigue Heal.%xn
     spells:
     - Spell Fatigue Heal
   # Roo
