@@ -481,7 +481,7 @@ magic-items:
     desc: A coiled golden snake bracer that runs along the forearm. Grants the wearer +1 to attack.
     attack_mod: 1
   #Taisha
-  Wings of the Bennu:
+  Wings Of The Bennu:
     name: Wings of the Bennu
     desc: A pendant in the shape of a bennu, wings outstretched, worked in gold filigree. Gives the bearer +1 attack.
     attack_mod: 1
