@@ -826,7 +826,7 @@ spells:
     available: false
     casting_time: 1 round
     damage_type: Psionic
-    desc: "The target's ability to cast spells is made very difficult for a short time.YES"
+    desc: "The target's ability to cast spells is made very difficult for a short time."
     duration: 3 rounds
     effect: Debuff
     level: 7
@@ -963,6 +963,20 @@ spells:
     school: Spirit
     spell_mod: -6
     target_num: 10
+  Massive Restrain Magic:
+    available: false
+    casting_time: 1 round
+    damage_type: Psionic
+    desc: "The target in unable to access magic or cast spells for 24 hours."
+    duration: 24 hours
+    effect: Debuff
+    level: 8
+    name: Massive Restrain Magic
+    range: Long
+    rounds: 8640
+    school: Spirit
+    spell_mod: -30
+    target_num: 1
   Restore Magic:
     available: false
     casting_time: 10 minutes

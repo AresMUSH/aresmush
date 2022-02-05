@@ -449,6 +449,11 @@ magic-items:
     desc: A crown-sized wreath of silver bay laurel leaves. The delicately crafted leaves are exquisitely detailed, the veins and midribs visible on every leaf, making the wreath look as if it's made of living branches. The abundant branches bend around from the back of the crown so the points of the leaves meet gently at the front. Allows the bearer to cast %xBMind Shield.%xn
     spells:
     - Mind Shield
+  Exspirare:
+    name: Exspirare
+    desc: A wand crafted of black marble, marked with an engraving of a shen ring at its base. Allows the bearer to cast %x/bMassive Restrain Magic.%xn
+    spells:
+    - Massive Restrain Magic
   # Isao
   Eel-Skin Bracelet:
     name: Eel-skin Bracelet
