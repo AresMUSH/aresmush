@@ -2,12 +2,12 @@ module AresMUSH
   module Forum
     class ForumListRequestHandler
       def handle(request)
-
+                
         enactor = request.enactor
 
         error = Website.check_login(request, true)
         return error if error
-
+        
         categories = Forum.visible_categories(enactor)
            .sort_by { |b| [ Forum.can_read_category?(enactor, b) ? 0 : 1, b.order ] }
            .map { |b| {
@@ -18,29 +18,29 @@ module AresMUSH
              last_activity: last_activity(b, enactor),
              can_read: Forum.can_read_category?(enactor, b)
            }}
-
+           
        hidden =Forum.hidden_categories(enactor)
           .map { |b| {
              id: b.id,
-             name: b.name
+             name: b.name   
           }}
-
-
+        
+          
           {
             categories: categories,
             hidden: hidden,
             is_muted: Forum.is_forum_muted?(enactor)
           }
       end
-
+      
       def last_activity(board, enactor)
         return nil if !Forum.can_read_category?(enactor, board)
-
+        
         last_post = board.last_post_with_activity
         if (!last_post)
           return nil
         end
-
+        
         replies = last_post.sorted_replies
         if (replies.empty?)
           post = last_post
@@ -56,8 +56,8 @@ module AresMUSH
           author_icon = last_reply.author ?  Website.icon_for_char(last_reply.author) : nil
           date = last_reply.created_at
         end
-
-
+        
+        
         {
           id: post.id,
           subject: post.subject,

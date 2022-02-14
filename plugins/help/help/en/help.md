@@ -1,12 +1,10 @@
 ---
 toc: 1 - Getting Started
 summary: Learn about the help system.
-aliases:
-- qr
 ---
 # Help System
 
-The MUSH help system is here to help you learn how to use the in-game commands.  You can view help articles on either the [Web Portal](/help) or via the help command.
+The MUSH help system is here to help you learn how to use the in-game commands.  You can view help articles on either the web portal (typically under Help -> Game Help) or via the help command.
 
 > Learn more about the help system in the [Help Tutorial](/help/help_tutorial).
 

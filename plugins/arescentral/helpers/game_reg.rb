@@ -26,6 +26,7 @@ module AresMUSH
       
       Global.logger.info "Creating game registration."
       params = AresCentral.build_game_params
+      
       connector = AresCentral::AresConnector.new    
       response = connector.register_game(params)
       

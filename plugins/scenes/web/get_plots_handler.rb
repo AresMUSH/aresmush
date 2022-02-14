@@ -14,7 +14,6 @@ module AresMUSH
                   start_date: p.start_date || "",
                   end_date: p.end_date || "",
                   completed: p.completed,
-                  background: p.background,
                   content_warning: p.content_warning,
                   tags: p.content_tags,
                   storytellers: get_storytellers(p)
@@ -22,20 +21,12 @@ module AresMUSH
        
         plots.sort_by { |p| [ p[:end_date], p[:start_date] ] }.reverse
       end
-
+      
       def get_storytellers(plot)
         storytellers = plot.storytellers.to_a
             .sort_by {|storyteller| storyteller.name }
             .map { |storyteller| { name: storyteller.name, id: storyteller.id, icon: Website.icon_for_char(storyteller), is_ooc: storyteller.is_admin? || storyteller.is_playerbit?  }}
       end
-
-      def get_storytellers(plot)
-        storytellers = plot.storytellers.to_a
-            .sort_by {|storyteller| storyteller.name }
-            .map { |storyteller| { name: storyteller.name, id: storyteller.id, icon: Website.icon_for_char(storyteller), is_ooc: storyteller.is_admin? || storyteller.is_playerbit?  }}
-      end
-
     end
   end
 end
- 

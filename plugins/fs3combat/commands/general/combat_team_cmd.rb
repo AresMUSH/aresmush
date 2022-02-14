@@ -3,9 +3,9 @@ module AresMUSH
     class CombatTeamCmd
       include CommandHandler
       include NotAllowedWhileTurnInProgress
-
+      
       attr_accessor :names, :team
-
+      
       def parse_args
         if (cmd.args =~ /=/)
           args = cmd.parse_args(ArgParser.arg1_equals_arg2)
@@ -25,10 +25,10 @@ module AresMUSH
         return t('fs3combat.invalid_team') if self.team < 1 || self.team > 9
         return nil
       end
-
+      
       def handle
         self.names.each do |name|
-          FS3Combat.with_a_combatant(name, client, enactor) do |combat, combatant|
+          FS3Combat.with_a_combatant(name, client, enactor) do |combat, combatant|        
             FS3Combat.change_team(combat, combatant, enactor, self.team)
           end
         end

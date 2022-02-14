@@ -1,5 +1,7 @@
 ---
 mail:
+  start_marker: "["
+  end_marker: "]"
   shortcuts:
     mail/clear: mail/delete
     mail/unclear: mail/undelete
@@ -8,5 +10,3 @@ mail:
     mail/folder: mail/filter
     mail/fo: mail/filter
     mail/file: mail/archive
-  end_marker: "]"
-  start_marker: "["

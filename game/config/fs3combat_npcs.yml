@@ -1,58 +1,28 @@
 ---
 fs3combat:
+  default_npc_type: 'Goon'
   npc_types:
-    Zero:
-      Default: 2
-      Reflexes: 1
-      Wounds: 60
-    One:
-      Default: 2
-      Reflexes: 1
+    Goon:
+      Default: 4
+      Firearms: 6
+      Gunnery: 6
+      Melee: 6
       Wounds: 30
-    Two:
-      Default: 3
-      Reflexes: 2
-      Wounds: 30
-    Three:
-      Default: 5
-      Reflexes: 2
-      Wounds: 30
-    Four:
-      Default: 7
-      Reflexes: 2
+    Henchman:
+      Default: 6
+      Firearms: 8
+      Gunnery: 8
+      Melee: 8
       Wounds: 20
-    Five:
-      Default: 8
-      Reflexes: 3
+    Miniboss:
+      Default: 9
+      Firearms: 11
+      Gunnery: 11
+      Melee: 11
       Wounds: 15
-    Six:
-      Default: 10
-      Reflexes: 3
-      Wounds: 15
-    Seven:
+    Boss:
       Default: 11
-      Reflexes: 3
+      Firearms: 13
+      Gunnery: 13
+      Melee: 13
       Wounds: 0
-    Eight:
-      Default: 12
-      Reflexes: 4
-      Wounds: -10
-    Nine:
-      Default: 14
-      Reflexes: 4
-      Wounds: -10
-    Ten:
-      Default: 17
-      Reflexes: 4
-      Wounds: -30
-    Fifteen:
-      Default: 20
-      Reflexes: 2
-      Composure: 20
-      Wounds: -35
-    Twenty:
-      Default: 20
-      Reflexes: 2
-      Composure: 25
-      Wounds: -60
-  default_npc_type: Three

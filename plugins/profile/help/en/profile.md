@@ -16,10 +16,10 @@ Each character has a character profile showing various information.
 `profile` - Views your profile.
 `profile <name>` - Views someone's profile.
 
+> **Note:** Any IC information is provided for OOC reference; do not use it inappropriately if you have no IC reason to know it.
+
 ## Managing Your Profile
 
-The basic fields in your profile will be set up as part of character creation.  You can also set custom profile fields for extra things like notes, quotes, etc. by using the Web Portal.
-
-## Setting Relationships
-
-You can also track IC relationships in your profile.  See [Relationships](/help/relationships).
+`profile/add <field>=<value>` - Adds or updates a custom profile field
+`profile/delete <field>` - Deletes a custom profile field
+`profile/edit <field>` - Snags the field into your input buffer, if your client allows.  (see [Editing](/help/edit))

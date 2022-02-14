@@ -23,12 +23,12 @@ module AresMUSH
         if (error)
           return { error: error }
         end
-
+        
         error = Jobs.check_job_access(assignee, job)
         if (error)
           return { error: t('jobs.cannot_handle_jobs') }
         end
-
+        
         Jobs.assign(job, assignee, enactor)
 
         {

@@ -15,5 +15,5 @@ The places system allows you to manage large scenes by keeping track of who's wh
 `place/leave` - Leaves your place.
 `place/delete <title>` - Removes a place from the room.
 `place/emit <title>=<emit>` - Emits from a place you're not in. (useful for storytellers)
-
+  
 > **Tip:** Places code is designed to **highlight conversations at your place**, not hide conversations at other places.  You will still see all poses, but ones from people in your place will be highlighted.

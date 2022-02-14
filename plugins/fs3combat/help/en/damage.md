@@ -2,43 +2,32 @@
 toc: FS3 Skills and Combat
 summary: Damage and healing in combat.
 aliases:
-- medicine
-- hospitals
-- damage
-- wounds
-- firstaid
-- heal
 - treat
-- revive
-- reviving
-- rally
+- heal
 - healing
 - combat_damage
 ---
-#Healing and Damage
 
-## Damage
+# Damage
 
-`damage` - Views your damage.
+The damage commands are part of the FS3Combat system.
+
+> Learn how the combat system works in the [Combat Tutorial](/help/fs3combat_tutorial).
+
+`damage` - Views your damage. 
 `damage <name>` - Views someone else's damage.
 
-The healing progress bar on the damage display shows how close you are to reducing the wound by one level.
+> **Note:** The healing progress bar on the damage display just shows how close you are to reducing the wound by one level. It may take several levels before you're fully healed.
 
 ## Treating
 
-For first aid/treatment immediately after an injury, medics can use the treat command.  Each treatment affects only a single wound. Requires Medicine.
+> **Note:** Treating only works soon after an injury, and only affects a single wound.  Inside combat, you use `combat/treat <name>` instead.
 
-`combat/treat <name>` - In combat, treats someone's wounds with immediate first aid.
 `treat <name>` - Treats someone's wounds with immediate first aid.
 
-## Reviving
-`combat/rally <name>` - Rally a knocked out person (without first aid).
-`combat/hero` - Spends a luck point to un-KO yourself and receive a very small amount of healing, making that wound un-healable by others. This doesn't erase the damage, it just lets you soldier on in spite of it.
+## Healing
 
-
-## Mundane Healing
-
-For more longer-term healing, doctors can use the heal command. You will continue healing someone until they are well. Requires Medicine.
+> **Note:** Healing is more of ongoing care, like a nurse or doctor might give. You will continue healing someone until they are well. 
 
 `heal/start <name>` - Takes someone as a patient.
 `heal/stop <name>` - Removes a patient.
@@ -47,10 +36,8 @@ For more longer-term healing, doctors can use the heal command. You will continu
 
 ## Adjusting Damage
 
-Admins, combat organizers, and characters with the manage_combat permission can add or modify damage.
+Admins and characters with the `manage_combat` permission can add or modify damage.
 
 `damage/inflict <name>=<description>/<severity>` - Inflicts damage outside combat.
 `damage/modify <name>/<damage #>=<description>/<initial severity>/<current severity>/<IC date>` - Modifies damage.
 `damage/delete <name>/<damage #>` - Deletes damage.
-
-`combat/unko` - Un-KO's someone who shouldn't have been. Use sparingly.

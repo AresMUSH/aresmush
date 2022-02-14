@@ -2,42 +2,38 @@
 demographics:
   census_fields:
   - field: name
-    width: 12
+    width: 28
     title: Name
   - field: demographic
-    width: 9
+    width: 10
     title: Gender
     value: gender
   - field: group
-    width: 10
-    title: Major
-    value: Major School
+    width: 20
+    title: Faction
+    value: Faction
   - field: group
-    width: 10
-    title: Minor
-    value: Minor School
-  - field: demographic
-    width: 24
-    title: Job
-    value: job
+    width: 20
+    title: Position
+    value: Position
   demographics:
-  - fullname
-  - birthdate
+  - full name
+  - callsign
+  - gender
   - hair
   - eyes
   - skin
   - height
   - physique
-  - gender
-  - job
-  - actor
-  disable_auto_shortcuts: true
+  - played by
+  - birthdate
+  disable_auto_shortcuts: false
   editable_properties:
-  - fullname
+  - full name
+  - callsign
+  - gender
   - hair
   - physique
-  - job
-  - actor
   genders:
     Male:
       possessive_pronoun: his
@@ -55,62 +51,88 @@ demographics:
       objective_pronoun: them
       noun: person
   groups:
-    Major School:
-      desc: The school of magic with which you have a major affinity.
+    Faction:
+      desc: Military faction.
+      wiki: ''
       values:
-        None: None
-        Air: Magic focused on air, wind, and lightning.
-        Corpus: Magic focused on the body of sentient creatures.
-        Earth: Magic focused on earth, rock, and metal.
-        Fire: Magic focused on fire, heat, and light.
-        Nature: Magic focused on plants and non-sentient animals.
-        Spirit: Magic focused on the sentient mind, emotions, and spirit.
-        Water: Magic focused on water and ice.
-        Will: Magic focused on the physical world.
-    Minor School:
-      desc: The school of magic with which you have a minor affinity.
+        Navy: Join the fleet, see the worlds.
+        Marines: Semper fi.
+    Department:
+      wiki: ''
+      desc: The ship is divided into several departments.  See the wiki for details.
       values:
-        None: None
-        Air: Magic focused on air, wind, and lightning.
-        Corpus: Magic focused on the body of sentient creatures.
-        Earth: Magic focused on earth, rock, and metal.
-        Fire: Magic focused on fire, heat, and light.
-        Nature: Magic focused on plants and non-sentient animals.
-        Spirit: Magic focused on the sentient mind, emotions, and spirit.
-        Water: Magic focused on water and ice.
-        Will: Magic focused on the physical world.
+        Air Wing: Viper and Raptor crews and deckhands. (Officers and Enlisted)
+        Marines: Boots on the ground. (Enlisted only)
+        Support: Support personnel - Deck crew, medical. (Officers and Enlisted)
+    Colony:
+      desc: Your character's home world.
+      wiki: ''
+      values:
+        Aerilon: Bread basket of the colonies.
+        Aquaria: Cold, harsh world popular with tourists.
+        Canceron: Crowded and hot, a developing nation.
+        Caprica: Rich center of colonial culture and industry.
+        Gemenon: Fundamentalist religion and isolationist people.
+        Leonis: Old imperialist empire in decline, still known for culture and fashion.
+        Libran: Neutral colony renowned for fostering inter-colonial cooperation.
+        Picon: Water world famous for its beaches and strong navy.
+        Sagittaron: Poor colony, oft-exploited, now carved into several protectorates.
+        Scorpia: Lush jungles and bitter clan warfare. Home to shipyards constructing
+          the Battlestars.
+        Tauron: An up-and-coming socialist republic with a strong agricultural base
+          and developing industries.
+        Virgon: A monarchy in decline, clinging to old traditions.
+    Position:
+      desc: Job.
+      wiki: ''
+      values:
+        Viper Pilot: Navy Viper pilot.
+        Raptor Pilot: Navy Raptor pilot.
+        Raptor ECO: Navy Raptor Electronic Countermeasures Officer
+        Rifleman: Marine rifleman.
+        Gunner: Marine support/heavy weapons specialist.
+        Combat Engineer: Marine demolitions, construction, maintenance.
+        Recon: Marine scout.
+        Combat Medic: Marine medic.
+        Doctor: Navy doc.
+        Nurse: Navy nurse.
+        Corpsman: Navy medic.
+        Medical Support: Other medical personnel.
+        Deck Crew: Air wing support/maintenance personnel.
+        Other: Any other position.
   help_text:
-    actor: See 'help actors'.
-    physique: Build/body type - athletic, wiry, slim, pudgy, etc.
-    gender: Male/Female/Other
-    hair: Hair color
-    eyes: Eye color
-    skin: Complexion
-    birthdate: Specify a date mm/dd/yyyy or use %xcage <years>.%xn
-    callsign: Callsign for pilots.  Non-pilots may leave blank or enter a nickname.
-  max_age: 95
+    played by: "%xcplayedby <actor>%xn - Your 'dream casting' for your character."
+    physique: "%xcphysique <build/body type>%xn - athletic, wiry, slim, pudgy, etc."
+    gender: "%xcgender <male/female/other>%xn"
+    hair: "%xchair <hair color>%xn"
+    eyes: "%xceyes <eye color>%xn"
+    skin: "%xcskin <complexion>%xn"
+    birthdate: "%xcbirthdate <mm/dd/yyy>%xn or %xcage <years>%xn"
+    callsign: "%xccallsign <callsign>%xn - Non-pilots may leave blank or enter a nickname."
+    full name: "%xcfullname <name>%xn - Your character's full name."
+  max_age: 65
   min_age: 18
-  nickname_field: 'Nickname'
+  nickname_field: ''
   nickname_format: "%{name} (%{nickname})"
+  permissions:
+    manage_demographics: Edit demographics on other players.
   private_properties: []
   required_properties:
+  - played by
   - hair
   - eyes
   - skin
   - height
   - physique
-  - fullname
+  - full name
   - gender
   - birthdate
-  secret_prefs:
-    None: No secrets at all
-    PC-created: You help GMs choose a secret for your character, which will be based
-      on your preferences.
-    GM-created: GMs will create the secret for your character without your input,
-      and you will not know it until it comes out in play.
   shortcuts:
     groups: group
     colonies: group colony
     demographics: demographic
-  permissions:
-    manage_demographics: Edit demographics on other players.
+    birthday: birthdate
+    actors: census played by
+    actor: demographic/set played by=
+    fullname: demographic/set full name=
+    playedby: demographic/set played by=

@@ -8,10 +8,10 @@ fs3combat:
   damage_table:
     GRAZE: 20
     FLESH: 70
-    IMPAIR: 90
+    IMPAIR: 95
   healing_cron:
     hour:
-    - 0
+    - 2
     minute:
     - 47
   healing_points:

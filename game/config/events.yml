@@ -1,5 +1,9 @@
 ---
 events:
+  achievements:
+    event_created:
+      type: community
+      message: Scheduled an event.
   event_alert_cron:
     minute:
     - 0
@@ -10,6 +14,5 @@ events:
     events: event
     event/add: event/create
     event/remove: event/delete
-    cal: event
   permissions:
     manage_events: Edit/delete events you didn't create.

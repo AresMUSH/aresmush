@@ -7,7 +7,7 @@ module AresMUSH
 
         error = Website.check_login(request)
         return error if error
-
+        
         combatant = Combatant[id]
         if (!combatant)
           return { error: t('webportal.not_found') }
@@ -15,7 +15,7 @@ module AresMUSH
 
         combat = combatant.combat
         can_manage = FS3Combat.can_manage_combat?(enactor, combat) || (enactor.name == combatant.name)
-
+        
         if (!can_manage)
           return { error: t('dispatcher.not_allowed') }
         end
@@ -42,16 +42,18 @@ module AresMUSH
         npc_level = request.args[:npc_skill]
         vehicle = request.args[:vehicle] || ''
         passenger_type = request.args[:passenger_type] || 'none'
-
+        
         error = FS3Combat.update_combatant(combat, combatant, enactor, team, stance, weapon, selected_weapon_specials, armor, selected_armor_specials, npc_level, action, action_args, vehicle, passenger_type)
-
+        
         if (error)
           return { error: error }
         end
-
+        
         {
         }
       end
     end
   end
 end
+
+

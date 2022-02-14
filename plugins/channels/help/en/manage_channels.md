@@ -3,7 +3,8 @@ toc: ~admin~ Managing the Game
 summary: Managing channels.
 ---
 # Managing Channels
-**These commands require the Admin role or the permission: manage\_channels**
+
+> **Permission Required:** These commands require the Admin role or the permission: manage\_channels
 
 ## Creating and Deleting Channels
 

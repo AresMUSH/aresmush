@@ -2,19 +2,8 @@
 toc: FS3 Skills and Combat
 summary: Managing combat scenes.
 aliases:
-- running
-- organizer
-- mod
-- mods
-- modifier
-- combat_organizing
-- combat_organize
 - combat_organizer
-- combat_running
-- running_combat
-- organizing_combat
-- start_combat
-- stop_combat
+- combat_organizing
 - combat_start
 - combat_npc
 - combat_mod
@@ -23,60 +12,61 @@ aliases:
 - combat_defensemod
 - combat_lethalmod
 - combat_initmod
-- combat_spellmod
 - combat_team
 - combat_stop
 - combat_newturn
 - combat_log
 - combat_target
+- combat_ai
 ---
-# Organizing FS3 Combat
 
-This is a quick reference for combat organizer commands. Also  check out the [Combat Organizer's Guide](/combat_org_guide).
+# Organizing Combat
 
-## Running Combat
+This is a quick reference for combat organizer commands.  
+
+> Learn how the combat system works in the [Combat Tutorial](/help/fs3combat_tutorial).
+
 `combat/start [<mock or real>]` - Starts a combat (default real).
-`combat/stop <combat #>` - Stops a combat.
-`combats` - Shows all combats going on.
-`combat/newturn` - Starts a new turn. Alias newturn.
+`combat/stop <combat #>` - Stops a combat. 
+`combats` - Shows all combats going on. 
+`combat/newturn` - Starts the first turn.
 
-`combat/join <list of names>=<combat #>[/<type>]` - Adds characters or NPCs to combats.
+`combat/join <list of names>=<combat #>[/<type>]` - Adds people to combats.
   Use `combat/types` to see available types and their associated gear.
 
 `combat/summary [<name>]` - Summary of everyone's skills/gear/etc. Also shows who hasn't posed or set their actions. Specifying a name will match only combatants whose names start with the given text.
 `combat/idle <name>` - Sets someone as idle/not idle.  They won't be counted in pose tracking until you use the command on them again.
+
+`combat/npc <name>=<level>` - Adjusts a NPC's skill level.  See `combat/npcs` for a list of options.
+`combat/vehicles` - See a breakdown of who's in what vehicles.
+
+`combat/unko` - Un-KO's someone who shouldn't have been
+
+`combat/attackmod <name>=<modifier>` - Gives the combatant a modifier to attack.
+`combat/defensemod <name>=<modifier>` - Gives the combatant a modifier to defend.
+`combat/lethalmod <name>=<modifier>` - Gives the combatant a modifier to lethality on damage TAKEN.
+`combat/initmod <name>=<modifier>` - Gives the combatant a modifier to initiative.
+`combat/ammo <name>=<ammo>` - Adjusts remaining ammo.
+
+`combat/transfer <name>` - Transfer organizer powers to another person in combat.
+
+`combat/scene <scene id>` - Ties combat to a scene, so combat messages will be included in the scene log.  
+    This will happen automatically as soon as someone poses.  The command exists in case you ever need to change it.
+
 `combat/log <page>` - Views the combat log, with detailed messages about the rolls and effects.
 
-## NPCs
-You can always specify a NPC or player name in front of any action command to make them do something.  For example, `combat/join Bob/#123`.
-Most commands support multiple names as well, so you can do: `combat/attack A B/C`.
-**See [NPC](/help/npc) for more information on how spells, potions, and levels work for NPCs**
 
-`combat/team <list of names>=<team#>` - Switches teams.
-`combat/target <team#>=<list of team #s>` - Sets it up so NPCs on a given team will only target people on the listed teams.  "combat/target 3=1 4" means team 3 will only target people on teams 1 and 4.
+## Targeting
 
-`combat/ai` - Auto-targets any NPCs who don't have actions yet.
-`combat/ai force` - Auto-targets NPCs even if they have an action set.
+`combat/targets` - See a breakdown of who's targeting whom.
 
-## Damage, KOs, and death
-Admins, combat organizers, and characters with the manage_combat permission can add or modify damage.
+`combat/team <list of names>=<team#>` - Switches teams. 
+`combat/target <team#>=<list of team #s>` - Sets it up so NPCs on a given team will only 
+    target people on the listed teams.  "combat/target 3=1 4" means team 3 will only target 
+    people on teams 1 and 4.
 
-`damage/inflict <name>=<description>/<severity>` - Inflicts damage outside combat.
-`damage/modify <name>/<damage #>=<description>/<initial severity>/<current severity>/<IC date>` - Modifies damage.
-`damage/delete <name>/<damage #>` - Deletes damage.
-
-`combat/unko` - Un-KO's someone who shouldn't have been.
-`death/undo` - Admin-only command to raise someone from the dead.
-
-## Mods
-`combat/attackmod <name>=<modifier>` - Gives the combatant a modifier to attack
-`combat/defensemod <name>=<modifier>` - Gives the combatant a modifier to defend
-`combat/lethalmod <name>=<modifier>` - Gives the combatant a modifier to lethality on damage TAKEN
-`combat/initmod <name>=<modifier>` - Gives the combatant a modifier to initiative.
-`combat/spellmod <name>=<modifier>` - Gives the combatant a modifier to spellcasting.
-`combat/clearmods <name>` - Clears all modifiers from combatant and sets to 0.  This will not erase spell mods.
-`combat/seemods <name>` Shows all combat mods set on a combatant, both by a GM and by spells.
-
-## Housekeeping
-`combat/transfer <name>` - Transfer organizer powers to another person in combat.
-`combat/scene <scene id>` - Ties combat to a scene, so combat messages will be included in the scene log. This will happen automatically as soon as someone poses.  The command exists in case you ever need to change it.
+`combat/ai` - Selects actions/targets for any NPCs who don't have actions yet.
+`combat/ai force` - Selects new actions/targets ALL NPCs, even if they have an action set.
+`combat/ai <list>` - Selects actions/targets for the list of NPCs.   You can specify a target for any or all
+    NPcs by doing "npc:target".  For example:  combat/ai Bob:Tom Harry:Sally Mick  will have Bob
+    target Tom, Harry target Sally, and Mick pick a random target.

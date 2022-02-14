@@ -1,8 +1,8 @@
 ---
 describe:
   always_show_idle_in_rooms: false
-  exit_end_bracket: ")"
-  exit_start_bracket: "("
+  exit_end_bracket: "]"
+  exit_start_bracket: "["
   glance_format: "%{height_title} height, %{age} year-old %{gender_noun} with %{hair}
     hair and %{eyes} eyes."
   shortcuts:
@@ -23,10 +23,10 @@ describe:
     vista/add: vista/set
     vista/create: vista/set
     vista/remove: vista/delete
-    here: glance
   tag_colors:
     admin: "%xb"
     beginner: "%xg"
+    web: "%xh%xx"
   permissions:
     desc_anything: Edit descs on any object.
     desc_places: Edit descs on rooms and exits

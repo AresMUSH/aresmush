@@ -1,163 +1,8 @@
 ---
 fs3combat:
-  allow_mounts: false
-  allow_vehicles: false
-  combatant_types:
-    Archer:
-      weapon: Recurve Bow
-      weapon_specials:
-      armor: Leather
-      hitloc: Humanoid
-      defense_skill: Reflexes
-    Crab:
-      hitloc: Crab
-      armor: Shell
-      weapon: Claws
-    Crocodile:
-      hitloc: QuadrapedWithTail
-      armor: Tough Hide
-      weapon: Sharp Teeth
-    Deathcap:
-      hitloc: Deathcap
-      weapon: Club
-    Dragon:
-      weapon: Claws
-      weapon_specials:
-      armor: Very Tough Hide
-      hitloc: Flying4LeggedCreature
-      defense_skill: Reflexes
-    Eel:
-      hitloc: Fish
-      armor: Tough Hide
-    Fish:
-      hitloc: Fish
-    Flying Insect:
-      weapon: Stinger
-      weapon_specials:
-      armor: Tough Hide
-      hitloc: FlyingInsect
-      defense_skill: Reflexes
-    Flying 2 Legged Creature:
-      weapon: Claws
-      weapon_specials:
-      armor: Tough Hide
-      hitloc: Flying2LeggedCreature
-      defense_skill: Reflexes
-    Flying 4 Legged Creature:
-      weapon: Claws
-      weapon_specials:
-      armor: Tough Hide
-      hitloc: Flying4LeggedCreature
-      defense_skill: Reflexes
-    Fykia:
-      hitloc: Crab
-      armor: Thick Shell
-      weapon: Sharp Claws
-    Insect:
-      weapon: Bug Bite
-      weapon_specials:
-      armor: None
-      hitloc: Insect
-      defense_skill: Reflexes
-    Hippo:
-      weapon: Strong Teeth+Major Strength
-      armor: Very Tough Hide
-      hitloc: Quadraped
-    Karchtapodi:
-      weapon: Sharp Teeth
-      armor: Very Tough Hide
-      hitloc: Octopus
-    Knight:
-      weapon: Sword
-      weapon_specials:
-      armor: Plate
-      hitloc: Humanoid
-      defense_skill: Reflexes
-    Lindworm:
-      weapon: Claws
-      weapon_specials:
-      armor: Very Tough Hide
-      hitloc: Flying2LeggedCreature
-      defense_skill: Reflexes
-    Merperson:
-      hitloc: Merperson
-    Modern Soldier:
-      weapon: Rifle
-      weapon_specials:
-      armor: Tactical
-      hitloc: Humanoid
-      defense_skill: Reflexes
-    Nerofialt:
-      weapon: Sharp Teeth
-      armor: Very Tough Hide
-      hitloc: Fish
-    Plant:
-      hitloc: Plant
-      weapon: Club
-      armor: Tough Hide
-      defense_skill: Reflexes
-    Rogue:
-      weapon: Knife
-      weapon_specials:
-      armor: Leather
-      hitloc: Humanoid
-      defense_skill: Reflexes
-    Spider:
-      weapon: Stinger
-      weapon_specials:
-      armor: Tough Hide
-      hitloc: Spider
-      defense_skill: Reflexes
-    Swordsman:
-      weapon: Sword
-      weapon_specials:
-      armor: Chainmail
-      hitloc: Humanoid
-      defense_skill: Reflexes
-    Observer:
-      hitloc: Humanoid
-    Octopus:
-      hitloc: Octopus
-      weapon: Beak
-      defense_skill: Reflexes
-    Quadraped:
-      hitloc: Quadraped
-      weapon: Teeth
-      defense_skill: Reflexes
-    Serpent:
-      hitloc: Serpent
-      weapon: Teeth
-      defense_skill: Reflexes
-    Target:
-      hitloc: Target
-      weapon: Unarmed
-      defense_skill: None
-    Tree:
-      hitloc: Tree
-      weapon: Club
-      armor: Tough Hide
-      defense_skill: Reflexes
-    Unarmed Combatant:
-      weapon: Unarmed
-      armor: None
-      hitloc: Humanoid
-      defense_skill: Reflexes
-  default_type: Unarmed Combatant
-  shortcuts:
-    combat/skill: combat/summary
-    combat/skills: combat/summary
-    combat/slackers: combat/summary
-    combat/add: combat/join
-    combat/remove: combat/leave
-    combat/hitlocs: combat/hitloc
-    vehicles: vehicle
-    hospitals: hospital/list
-    healing: heal/list
-    mounts: mount
-    weapons: weapon
-    attack: combat/attack
-    combat/stun: combat/suppress
-    newturn: combat/newturn
+  default_type: Soldier
+  allow_vehicles: true
+  allow_mounts: true
   stances:
     Aggressive:
       attack_mod: 2
@@ -180,9 +25,68 @@ fs3combat:
     Hidden:
       attack_mod: 0
       defense_mod: 0
-    Panicked:
-      attack_mod: -3
-      defense_mod: -3
+  combatant_types:
+    Observer:
+      hitloc: Humanoid
+    Soldier:
+      weapon: Rifle
+      weapon_specials:
+      - Ap
+      armor: Tactical
+      hitloc: Humanoid
+      defense_skill: Reflexes
+    Unarmed:
+      weapon: Unarmed
+      hitloc: Humanoid
+      defense_skill: Reflexes
+    Centurion:
+      weapon: LMG
+      weapon_specials:
+      - Bipod
+      armor: Centurion
+      hitloc: Humanoid
+      defense_skill: Reflexes
+    Aa:
+      weapon: Missile
+      armor: Centurion
+      vehicle: Aa Battery
+      hitloc: Humanoid
+      defense_skill: Reflexes
+    Cylon:
+      weapon: Pistol
+      armor: Cylon
+      hitloc: Humanoid
+      defense_skill: Reflexes
+    Viper:
+      vehicle: Viper
+      hitloc: Humanoid
+      defense_skill: Piloting
+    Raptor:
+      vehicle: Raptor
+      hitloc: Humanoid
+      defense_skill: Piloting
+    Raider:
+      vehicle: Raider
+      hitloc: Humanoid
+      defense_skill: Piloting
+    Heavy:
+      vehicle: Heavy Raider
+      hitloc: Humanoid
+      defense_skill: Piloting
+    Target:
+      hitloc: Target
+      weapon: Unarmed
+  shortcuts:
+    combat/skill: combat/summary
+    combat/skills: combat/summary
+    combat/slackers: combat/summary
+    combat/add: combat/join
+    combat/remove: combat/leave
+    combat/hitlocs: combat/hitloc
+    vehicles: vehicle
+    healing: heal/list
+    weapons: weapon
+    mounts: mount
   achievements:
     fs3_hero:
       type: fs3

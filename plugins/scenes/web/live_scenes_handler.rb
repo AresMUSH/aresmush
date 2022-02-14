@@ -3,31 +3,31 @@ module AresMUSH
     class LiveScenesRequestHandler
       def handle(request)
         enactor = request.enactor
-
+        
         error = Website.check_login(request, true)
         return error if error
-
+        
         open_scenes = Scene.all.select { |s| !s.completed }
            .sort { |s1, s2| sort_scene(s1, s2, enactor) }
            .map { |s| scene_data(s, enactor) }
-
-        if (enactor)
+           
+        if (enactor)        
           unshared = enactor.unshared_scenes.sort_by { |s| s.id.to_i }.reverse.map { |s| {
-             title: s.date_title,
+             title: s.date_title, 
              people: s.participant_names.join(' '),
              id: s.id }}
-        else
+        else 
           unshared = nil
         end
-
+        
         {
           active: open_scenes,
           unshared: unshared,
           unshared_deletion_days: Global.read_config('scenes', 'unshared_scene_deletion_days')
         }
-
+  
       end
-
+      
       def scene_data(s, enactor)
         {
           id: s.id,
@@ -42,11 +42,11 @@ module AresMUSH
           participants: Scenes.participants_and_room_chars(s)
               .select { |p| !p.who_hidden }
               .sort_by { |p| p.name }
-              .map { |p| {
+              .map { |p| { 
                  name: p.name,
                  nick: p.nick,
-                 id: p.id,
-                 icon: Website.icon_for_char(p),
+                 id: p.id, 
+                 icon: Website.icon_for_char(p), 
                  status: Website.activity_status(p),
                  online: Login.is_online?(p),
                  last_posed: s.last_posed == p }},
@@ -61,40 +61,40 @@ module AresMUSH
           last_pose_time_str: s.last_pose_time_str(enactor)
         }
       end
-
+      
       def can_read?(enactor, s)
         Scenes.can_read_scene?(enactor, s)
       end
-
+      
       def sort_scene(s1, s2, enactor)
-
+        
         if (Scenes.is_participant?(s2, enactor) && !Scenes.is_participant?(s1, enactor))
           return 1
         end
-
+        
         if (Scenes.is_participant?(s1, enactor) && !Scenes.is_participant?(s2, enactor))
           return -1
         end
-
-
+        
+        
         if (!s1.private_scene && s2.private_scene)
           return -1
         end
-
+        
         if (s1.private_scene && !s2.private_scene)
           return 1
         end
-
+        
         if (s1.updated_at < s2.updated_at)
           return 1
         end
-
+        
         if (s2.updated_at < s1.updated_at)
           return -1
         end
-
+        
         return 0
-
+        
       end
     end
   end

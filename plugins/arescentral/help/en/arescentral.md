@@ -30,7 +30,7 @@ Linking a character is a multi-step process:
 1. Log into or create your [AresCentral](http://arescentral.aresmush.com/) account.
 2. In AresCentral, select My Account -> Manage Characters -> Get a New Link Code.
 3. In the game, enter the link code on your account page (usually under Help -> Account) or use `handle/link <handle name>=<link code>`.
-
+  
 You can unlink your character from your handle at AresCentral.
 
 ### Linked Character Features

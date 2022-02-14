@@ -5,18 +5,18 @@ module AresMUSH
     def self.plugin_dir
       File.dirname(__FILE__)
     end
-
+ 
     def self.shortcuts
       Global.read_config("fs3combat", "shortcuts")
     end
-
+ 
     def self.achievements
       Global.read_config('fs3combat', 'achievements')
     end
-
+ 
     def self.get_cmd_handler(client, cmd, enactor)
       case cmd.root
-      when "damage"
+      when"damage"
          case cmd.switch
          when "inflict"
            return InflictDamageCmd
@@ -67,25 +67,19 @@ module AresMUSH
        when "combats"
          return CombatListCmd
        when "combat"
-         case cmd.switch
+         case cmd.switch        
          when "all", "list"
            return CombatListCmd
          when "ammo"
            return CombatAmmoCmd
-         when "attackmod", "defensemod", "lethalmod", "initmod", "spellmod"
+         when "attackmod", "defensemod", "lethalmod", "initmod"
            return CombatModCmd
-         when "clearmods"
-           return CombatClearModsCmd
-         when "seemods"
-           return CombatSeeModsCmd
          when "armor"
            return CombatArmorCmd
          when "hitloc"
            return CombatHitlocsCmd
          when "weapon"
            return CombatWeaponCmd
-         when "weaponspecials"
-           return WeaponSpecialsCmd
          when "ai"
            return CombatAiCmd
          when "disembark"
@@ -98,8 +92,6 @@ module AresMUSH
            return CombatJoinCmd
          when "leave"
            return CombatLeaveCmd
-         when "type"
-           return CombatTypeCmd
          when "log"
            return CombatLogCmd
          when "luck"
@@ -155,7 +147,7 @@ module AresMUSH
            return CombatActionCmd
          end
        end
-
+       
        nil
     end
 
@@ -168,7 +160,7 @@ module AresMUSH
       end
       nil
     end
-
+    
     def self.get_web_request_handler(request)
       case request.cmd
       when "addCombatant"
@@ -209,7 +201,7 @@ module AresMUSH
         return StopCombatRequestHandler
       end
     end
-
+    
     def self.check_config
       validator = FS3CombatConfigValidator.new
       validator.validate

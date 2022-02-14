@@ -16,9 +16,9 @@ rooms:
     room/area: area/set
     map: area
     owners: owner
+    location: room
     rooms: room
     locations: room
-    location: room
   permissions:
     build: Access build commands to create rooms and exits.
     go_home: Use the home and work commands.

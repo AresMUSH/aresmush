@@ -3,7 +3,7 @@ module AresMUSH
     class WebCharDataBuilder
       def build(char, viewer)
         is_owner = (viewer && viewer.id == char.id)
-
+        
         if (FS3Combat.is_enabled?)
           damage = char.damage.to_a.sort { |d| d.created_at }.map { |d| {
             date: d.ictime_str,
@@ -14,9 +14,9 @@ module AresMUSH
         else
           damage = nil
         end
-
+        
         show_sheet = FS3Skills.can_view_sheets?(viewer) || is_owner
-
+        
         if (FS3Skills.can_view_xp?(viewer, char))
           xp = {
             attributes: get_xp_list(char, char.fs3_attributes),
@@ -31,7 +31,7 @@ module AresMUSH
         else
           xp = nil
         end
-
+      
         if (show_sheet)
           {
             attributes: get_ability_list(char.fs3_attributes),
@@ -53,18 +53,18 @@ module AresMUSH
           }
         end
       end
-
-      def get_ability_list(list, include_specs = false)
-        list.to_a.sort_by { |a| a.name }.map { |a|
-          {
-            name: a.name,
-            rating: a.rating,
+      
+      def get_ability_list(list, include_specs = false)        
+        list.to_a.sort_by { |a| a.name }.map { |a| 
+          { 
+            name: a.name, 
+            rating: a.rating, 
             rating_name: a.rating_name,
             specialties: include_specs ? a.specialties.join(", ") : nil,
             linked_attr: include_specs ? FS3Skills.get_linked_attr(a.name)[0..2].upcase : nil
           }}
       end
-
+      
       def get_xp_list(char, list)
         list.to_a.sort_by { |a| a.name }.map { |a| {
           name: a.name,

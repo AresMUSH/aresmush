@@ -52,10 +52,8 @@ Ares also supports MUX-style mail composition, which lets you write your mail in
 
 > **Tip:** The trash is emptied when you log out, so you can recover a message until then.
 
-`mail/backup` - Prints out your mail, which you can save to a log file.
+## Reporting Offensive Mails
 
-## Requests/Jobs and Mail
-**Admin Only**
-Admins can convert a mail message into a job.
+You can report an offensive mail to the game admin.
 
-`mail/job <#>` - Turns a mail message into a job request.
+`mail/report <#>=<explanation>` - Reports an offensive mail message.

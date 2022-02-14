@@ -9,7 +9,7 @@ en:
         invalid_action: "Not a valid idle action.  Try one of these: %{actions}"
 
         idle_roster: "Added to roster"
-        idle_warn: "In danger of idling out."
+        idle_warn: "In danger of idling out.  Please come back!"
         idle_dead: "Dead"
         idle_gone: "Left the Grid"
         idle_reset: "No Longer Idle"
@@ -20,11 +20,11 @@ en:
         idle_post_body: "The following characters have idled out or are in danger of doing so.%{report}"
         not_eligible_for_idle: "This command can't be used on NPCs, roster characters and chracters exempt from the idle purge."
         idle_preview: "%{name} last on %{last_on}.  Status: %{status}. Suggested idle action: %{idle_action}.  Last will: %{lastwill}"
-
+        
         lastwill_set: "Last will instructions set."
         lastwill: "Your last will instructions are: %{will}."
         lastwill_not_set: "You have no last will set."
-
+        
         use_npc_cmd: "Use the 'npc' command to make someone a NPC or not."
         use_roster_cmd: "Use the 'roster' command to add/remove someone from the roster."
         idle_status_set: "%{name}'s idle status is now %{status}."
@@ -58,9 +58,9 @@ en:
         roster_app_title: "Roster App - %{name}"
         roster_app_submitted: "You have submitted your application for %{name}."
         roster_app_body: "%xhApp For:%xn %{target}%R%xhFrom:%xn %{name}%R%R%{app}"
-
+        
         destroy_approved_warning: "WARNING! Destroying approved characters is not advised. See help idle sweep for details."
-
+        
         idle_warning_subject: "Idle Warning"
         idle_sweep_beginning: "Sweeping idled characters.  Please stand by."
         idle_sweep_finished: "Idle sweep completed. Carry on."

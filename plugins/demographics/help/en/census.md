@@ -9,7 +9,3 @@ You can use the census command to find out how many characters already exist wit
 `census` - Lists all characters.
 `census/types` - See what census view types are available.
 `census <type>` - Views a census.
-For example:
-`census gender` - Counts characters by gender.
-`census major school` - Counts characters by Major School
-`census minor school` - Counts characters by Minor School

@@ -10,15 +10,15 @@ module AresMUSH
         end
       end
     end
-
+        
     def self.handle_scene_participation_achievement(char, scene)
       return if Scenes.participated_in_scene?(char, scene)
-
+      
       scenes = char.scenes_participated_in
       scenes << "#{scene.id}"
       char.update(scenes_participated_in: scenes)
       count = scenes.count
-
+      
       Achievements.award_achievement(char, "scene_participant_#{scene.scene_type.downcase}")
       Achievements.achievement_levels("scene_participant").reverse.each do |level|
         if ( count >= level )

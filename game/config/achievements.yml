@@ -1,42 +1,12 @@
 ---
 achievements:
-  announce_channel: Achievements
-  custom_achievements: {}
+  achievements: {}
   shortcuts:
     achievements: achievement
   types:
-    plot: fa-book-open
-    comp: fa-hand-holding-heart
-    spell: fa-magic
-    potion: fa-flask
-    death: fa-skull-crossbones
-    meme: fa-award
-    fs3: fa-cubes
-    story: fa-book
     community: fa-users
     portal: fa-globe
-    library: fa-book-reader
-  achievements:
-    object_meme:
-      type: meme
-      message: Participated in the Object Meme
-    vignette_challenge:
-      type: meme
-      message: Participated in a Vignette Challenge
-    playlist_meme:
-      type: meme
-      message: Participated in the Playlist Meme
-    question_meme:
-      type: meme
-      message: Participated in the Question Meme
-    ran_prp:
-      type: plot
-      message: Ran a player-run plot
-    library_token:
-      type: library
-      message: Obtained a Scholar's token
-    vignette_10000:
-      type: meme
-      message: Participated in Scene 10,000's vignettes.
+    fs3: fa-cubes
+    story: fa-book
   permissions:
     manage_achievements: Award and remove achievements.

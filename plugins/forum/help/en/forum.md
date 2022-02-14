@@ -12,11 +12,10 @@ aliases:
 - bbedit
 - bbmove
 - bbdelete
-- reply
 ---
 # Forum Commands
 
-The Ares Forum provides MU-wide discussion topics, available in-game and on the web portal.
+Inspired by the widely-loved [Myrrdin’s Bulletin Board System](http://www.firstmagic.com/~merlin/mushcode/mc.bb.html), the Ares Forum provides MU-wide discussion topics, available in-game and on the web portal.
 
 > Learn how the forum system works in the [Forum Tutorial](/help/forum_tutorial).
 
@@ -24,33 +23,27 @@ The Ares Forum provides MU-wide discussion topics, available in-game and on the 
 
 > **Tip:** For all of the forum commands, you can specify either the category name or number.  Those familiar with Myrddin's BBS should find that the commands you're used to (bbread, bbpost, etc.) also work here.
 
-## Reading Forums
-`forum` - Lists available categories. 'rw' tells you whether you can read and/or write to that category.
+`forum` - Lists available categories.
 `forum <category>` - Lists posts on the selected category.
+`forum <category>/<topic #>` - Reads the selected topic.   You can also specify a range of topics (e.g. 2-5)
+`forum/hide <category>` - Hide a category so it won't show up on forum/scan or the portal list.
+`forum/unhide <category>` - Show a hidden category.
 
-To read a specific topic, you use the category name/number and topic number.  To read the first message in the Announcements category, you could use `forum 1/1` or `forum announce/1`.
+## Reading Posts
 
-`forum <category>/<topic #>` - Reads the selected topic.
 `forum/new` - Reads the first unread message on any category.
 `forum/catchup <category>` - Marks all unread messages in that category as read.
+`forum/mute` - Mutes notifications about a forum until your next login.
+`forum/unmute` - Unmutes notifications.
 
 > Tip:  If you link your characters to a [Player Handle](/help/handles), the game will automatically mark a post as read on all your characters when you read it on one.
-
-## Hiding Categories & Muting Notifications
-
-You can hide categories and mute notifications of new posts.
-
-`forum/hide <category>`  - Hide a category.
-`forum/unhide <category>` - Show a hidden category.
-`forum/mute` - Mutes all forum notifications until your next login.
-`forum/unmute` - Unutes notifications.
 
 ## Posting and Replying
 
 `forum/post <category>=<title>/<body>` - Creates a new topic.
 `forum/reply <category name or number>/<topic number>=<reply>` - Replies to a forum topic.
 `forum/reply <reply>` - Replies to the last post you read.
-
+  
 ## Editing, Moving and Deleting Posts
 
 You can edit, move and delete your own forum posts.  Forum administrators with the **can\_manage\_forum** permission are able to manage other peoples' posts and replies as well.
