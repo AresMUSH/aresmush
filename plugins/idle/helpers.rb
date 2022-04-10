@@ -144,7 +144,7 @@ module AresMUSH
            end
          end
        end
-       queue
+       queue.sort_by { |k, v| v == "Warn" ? 0 : 1 }
      end
      
      def self.execute_idle_sweep(enactor, queue)
