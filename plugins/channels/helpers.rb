@@ -372,7 +372,9 @@ module AresMUSH
          muted: Channels.is_muted?(w, channel),
          status: Website.activity_status(w)
         }},
-        poseable_chars: alts.select { |a| Channels.is_on_channel?(a, channel) }.map { |a| {
+        poseable_chars: alts.select { |a| Channels.is_on_channel?(a, channel) }
+        .sort_by { |a| [ a.name == enactor.name ? 0 : 1, a.name ]}
+        .map { |a| {
           name: a.name,
           icon: Website.icon_for_char(a),
           id: a.id
