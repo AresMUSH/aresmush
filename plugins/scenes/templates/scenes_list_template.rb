@@ -13,8 +13,7 @@ module AresMUSH
       end
       
       def characters(scene)
-        chars = scene.participants.to_a.concat [ scene.owner ]
-        chars.uniq.select { |p| !p.who_hidden }
+        scene.participants.uniq.select { |p| !p.who_hidden }
            .sort_by { |p| p.name }
            .map { |p| Status.is_active?(p) ? p.name : "%xh%xx#{p.name}%xn"}
            .join(", ")
