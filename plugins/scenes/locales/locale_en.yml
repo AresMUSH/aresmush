@@ -13,6 +13,7 @@ en:
         organizer_title: "Organized By: %{name}"
         organizer_deleted: "(Organizer Deleted)"
         last_activity: "Last Activity: "
+        tags_title: "Tags: "
         
         grid_scene: "On Grid"
         temproom_scene: "Temp Room"
