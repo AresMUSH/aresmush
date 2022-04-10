@@ -20,7 +20,7 @@ en:
         only_upload_images: "That is not a valid file format: %{extensions}."
         file_uploaded: "%{name} uploaded."
         file_deleted: "%{name} deleted."
-        file_moved: "%{name} moved."
+        file_moved: "%{name} updated."
         wiki_updated: "%{name} updated."
         wiki_deleted: "%{name} deleted."
         wiki_created: "%{name} created."
