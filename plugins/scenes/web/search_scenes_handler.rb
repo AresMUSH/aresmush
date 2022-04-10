@@ -53,27 +53,32 @@ module AresMUSH
           if (!search_location.blank?)
             scenes = scenes.select { |s| s.location =~ /\b#{search_location}\b/i }
           end
-      
-          if (!search_log.blank?)
-            scenes = scenes.select { |s| "#{s.summary} #{s.scene_log.log}" =~ /\b#{search_log}\b/i }
+          
+          warning = nil
+          if (scenes.count > 200)
+            warning = "Too many scenes for summary/log search! Narrow down what you're looking for."
+          else
+            if (!search_log.blank?)
+              scenes = scenes.select { |s| "#{s.summary} #{s.scene_log.log}" =~ /\b#{search_log}\b/i }
+            end
           end
       
           scenes = scenes.sort_by { |s| s.date_shared || s.created_at }.reverse
           scenes_per_page = 30
-      
+    
           paginator = Paginator.paginate(scenes, page, scenes_per_page)
-      
+    
           if (paginator.out_of_bounds?)
-            data = { scenes: [], pages: nil }
+            data = { scenes: [], pages: nil, warning: 'Invalid page number.' }
           else
-        
+      
             data = {  
               scenes: paginator.page_items.map { |s| Scenes.build_scene_summary_web_data(s) },
-              pages: paginator.total_pages.times.to_a.map { |i| i+1 }
+              pages: paginator.total_pages.times.to_a.map { |i| i+1 },
+              warning: warning
             }
-            
           end
-          
+            
           Global.client_monitor.notify_web_clients(:search_results, "scenes|#{search_token}|#{data.to_json}", true) do |char|
             char == enactor
           end
