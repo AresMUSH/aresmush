@@ -22,6 +22,12 @@
     {
       "type": "shell",
       "inline": [
+        "cloud-init status --wait"
+      ]
+    },
+    {
+      "type": "shell",
+      "inline": [
         "echo 'debconf debconf/frontend select Noninteractive' | sudo debconf-set-selections",
         "curl https://raw.githubusercontent.com/aresmush/aresmush/master/bin/setup_server > setup_server",
         "chmod +x setup_server",

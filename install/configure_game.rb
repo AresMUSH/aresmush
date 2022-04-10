@@ -32,6 +32,12 @@ module AresMUSH
         template_data = self.ask_for_options
       end
   
+      if (template_data["host_name"] =~  /[A-Za-z]+/)
+        template_data["nginx_hostname"] = template_data["host_name"]
+      else
+        template_data["nginx_hostname"] = "_"
+      end
+      
       template = Erubis::Eruby.new(File.read(File.join(template_path, 'database.yml.erb'), :encoding => "UTF-8"))
       File.open(File.join(AresMUSH.game_path, 'config', 'database.yml'), 'w') do |f|
         f.write(template.evaluate(template_data))
@@ -133,14 +139,14 @@ module AresMUSH
       puts "\nGive your MUSH a name.  You can change your game name, description and category later in the web portal configuration screen."
       mush_name = get_required_field "MUSH Name"      
 
-      puts "\nGreat.  Now we need to know the hostname, like yourmush.aresmush.com. You can use the server's IP address if you don't have a domain name."
+      puts "\nEnter the hostname, like yourmush.aresmush.com. You can use the server's IP address if you don't want a domain name."
       server_host = get_required_field "Server hostname (ex: yourmush.aresmush.com or an IP)"
       
-      puts "\nNow you can choose the port that people will connect to from a MUSH client.  See https://aresmush.com/tutorials/install/install-game.html#ports for help."
+      puts "\nChoose the port that people will connect to from a MUSH client.  See https://aresmush.com/tutorials/install/install-game.html#ports for help."
       
       server_port = get_optional_field "Server telnet port", "4201"
 
-      puts "\nAres also uses other ports for the web portal, web-game communication, and database.  You can accept the default values for typical systems.  See https://aresmush.com/tutorials/install/install-game.html#ports for help."
+      puts "\nAres also uses other ports for the web portal, web-game communication, and database.  For typical systems, just accept the default values.  See https://aresmush.com/tutorials/install/install-game.html#ports for help."
 
       websocket_port = get_optional_field "Server web socket port", "4202"
       engine_api_port = get_optional_field "Server engine API port", "4203"
