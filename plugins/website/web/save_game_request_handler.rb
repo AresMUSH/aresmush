@@ -28,7 +28,7 @@ module AresMUSH
 
         error = Manage.reload_config  
         if (error)
-          Global.logger.warn "Trouble loading YAML config: #{error}"
+          Global.logger.error "Game registration not updated due to configuration errors: #{error}"
           return { :warnings => Website.format_markdown_for_html(error) }
         end
                   

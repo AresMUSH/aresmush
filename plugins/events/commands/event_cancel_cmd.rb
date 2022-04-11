@@ -19,7 +19,13 @@ module AresMUSH
       def handle
         Events.with_an_event(self.num, client, enactor) do |event| 
           
-          error = Events.cancel_signup(event, self.name, enactor)
+          char = Character.named(self.name)
+          if (!char)
+            client.emit_failure t('dispatcher.not_found')
+            return
+          end
+          
+          error = Events.cancel_signup(event, char, enactor)
           if (error)
             client.emit_failure error
           else
