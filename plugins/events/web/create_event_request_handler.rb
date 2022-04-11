@@ -16,7 +16,7 @@ module AresMUSH
         
         request.log_request
         
-        can_create = enactor && enactor.is_approved?
+        can_create = enactor && enactor.is_approved? && organizer && organizer.is_approved?
         if (!can_create)
           return { error: t('dispatcher.not_allowed') }
         end

@@ -17,7 +17,7 @@ module AresMUSH
       def handle
         Events.with_an_event(self.num, client, enactor) do |event| 
           
-          if (Events.can_manage_event(enactor, event))
+          if (Events.can_manage_event?(enactor, event))
             Events.delete_event(event, enactor)  
             client.emit_success t('events.event_deleted')           
            else
