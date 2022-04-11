@@ -100,6 +100,7 @@ scenes:
     scene/addpose: scene/emit
     scene/pose: scene/emit
     scene/mine: scene/unshared
+    scene/create: scene/start
   trending_scenes_category: Trending Scenes
   trending_scenes_cron:
     hour:

@@ -1,0 +1,55 @@
+{
+  
+  "variables": {
+    "do_api_key": "",
+    "ssh_pass": ""
+  },
+  "sensitive-variables": ["do_api_key"],
+  "builders": [
+    {
+      "type": "digitalocean",
+      "api_token": "{{user `do_api_key`}}",
+      "image": "ubuntu-20-04-x64",
+      "region": "nyc1",
+      "size": "s-1vcpu-1gb",
+      "ssh_username": "root",
+      "droplet_name": "ares-{{user `droplet_name`}}-{{timestamp}}",
+      "snapshot_name": "ares-{{user `droplet_name`}}-{{timestamp}}",
+      "communicator": "ssh"
+      }
+    ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "inline": [
+        "cloud-init status --wait"
+      ]
+    },
+    {
+      "type": "file",
+      "source": "files/etc/",
+      "destination": "/etc/"
+    },
+    {
+      "type": "shell",
+      "inline": [
+        "echo 'debconf debconf/frontend select Noninteractive' | sudo debconf-set-selections",
+        "cd /etc/aresmush",
+        "chmod +x complete_setup.sh",
+        "chmod +x initial_image.sh",
+        "chmod +x /etc/update-motd.d/99-aresmush-install",
+
+        "sudo ./initial_image.sh",
+        
+        "rm initial_image.sh"
+      ]
+    },
+    {
+      "type": "shell",
+      "scripts": [
+        "scripts/90-cleanup.sh",
+        "scripts/99-img-check.sh"
+      ]
+    }
+  ] 
+}

@@ -36,8 +36,7 @@ module AresMUSH
       end
       
       def birthdate
-        dob = @char.demographic(:birthdate)
-        !dob ? "" : ICTime.ic_datestr(dob)
+        @char.formatted_birthdate
       end
 
       def groups

@@ -44,7 +44,9 @@ module AresMUSH
           end
         end
         
-        enactor.update(unified_play_screen: unified_play_screen)
+        AresCentral.alts(enactor).each do |alt|
+          alt.update(unified_play_screen: unified_play_screen)
+        end
         
         {
         }

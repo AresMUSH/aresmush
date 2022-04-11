@@ -1,0 +1,15 @@
+#!/bin/sh
+#
+# Configured as part of the DigitalOcean 1-Click Image build process
+
+myip=$(hostname -I | awk '{print$1}')
+cat <<EOF
+********************************************************************************
+Welcome to the AresMUSH 1-Click Droplet
+
+For instructions on how to use this droplet and set up your game, see:
+
+https://aresmush.com/tutorials/install/oneclick.html
+
+********************************************************************************
+EOF
