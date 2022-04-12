@@ -4,13 +4,18 @@ module AresMUSH
       def handle(request)
         ability = request.args[:ability]
         enactor = request.enactor
+        char = Character.named(request.args[:char]) || enactor
         
         error = Website.check_login(request)
         return error if error
 
         request.log_request
 
-        error = FS3Skills.learn_ability(enactor, ability)
+        if (!AresCentral.is_alt?(enactor, char))
+          return { error: t('dispatcher.not_allowed') }
+        end
+        
+        error = FS3Skills.learn_ability(char, ability)
         if (error)
           return { error: error }
         end
