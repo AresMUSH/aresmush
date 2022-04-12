@@ -24,7 +24,7 @@ module AresMUSH
         end
 
         Global.logger.debug "Default unified play."
-        Character.all.each { |c| c.update(unified_play: true) }
+        Character.all.each { |c| c.update(unified_play_screen: true) }
 
       end
     end
