@@ -9,9 +9,9 @@ module AresMUSH
       can_manage_notes = Utils.can_manage_notes?(viewer)
       case section
       when 'player'
-        return char == viewer
+        return AresCentral.is_alt?(char, viewer)
       when 'shared'
-        return true if char == viewer
+        return true if AresCentral.is_alt?(char, viewer)
         return can_manage_notes
       else
         return can_manage_notes
