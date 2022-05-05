@@ -137,6 +137,15 @@ sudo apt-get install -y autoconf automake bison libffi-dev libgdbm-dev libncurse
 
 # #########################################################################################
 
+echo -e "${ARES_INSTALL_TEXT} Setup certbot requirements"
+
+sudo snap install core
+sudo snap refresh core
+sudo snap install --classic certbot
+sudo ln -s /snap/bin/certbot /usr/bin/certbot
+
+# #########################################################################################
+
 echo -e "${ARES_INSTALL_TEXT} User ${ARES_USERNAME} created with password $PASSWD  You will need it in a minute.  Please refer back to the installation instructions for the next steps."
 
 echo -e "${ARES_INSTALL_TEXT} Done!"
