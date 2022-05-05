@@ -57,6 +57,11 @@ module AresMUSH
           scene.room.update(scene_set: parse_results[:pose])
         end
         
+        # Update last online time for alts who maybe didn't log in directly
+        if (Time.now - char.last_on > 86400)
+          Login.update_site_info(request.ip_addr, request.hostname, char)
+        end
+        
         {}
       end
     end
