@@ -26,7 +26,7 @@ server {
 		   
 	}
   
-  location ~ /game/(config|logs) {
+  location ~ /game/(config|help|logs|text) {
      deny all;
      return 404;
   }
