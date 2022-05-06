@@ -30,7 +30,7 @@ module AresMUSH
           id: char.id,
           name: char.name,
           notes: notes,
-          can_edit: char == enactor || Utils.can_manage_notes?(enactor)
+          can_edit: AresCentral.is_alt?(char, enactor) || Utils.can_manage_notes?(enactor)
         }
       end
     end
