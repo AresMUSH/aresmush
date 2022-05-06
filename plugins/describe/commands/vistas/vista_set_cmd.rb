@@ -19,7 +19,6 @@ module AresMUSH
       
       def check_vista_name
         names = [ 'Spring', 'Summer', 'Fall', 'Winter', 'Morning', 'Day', 'Evening', 'Night']
-        puts "Checking names: #{names} #{self.name}"
         names.include?(self.name) ? nil : t('describe.vista_invalid_name', :names => names.join(' '))
       end
       
