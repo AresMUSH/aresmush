@@ -34,11 +34,7 @@
         "sudo ./setup_server {{user `ares_password`}}",
         "sudo su - ares -c 'curl https://raw.githubusercontent.com/aresmush/aresmush/master/bin/install > install'",
         "sudo su - ares -c 'chmod +x install'",
-        "sudo su - ares -c 'echo {{user `ares_password`}} | sudo -Ss -u ares ./install \"mush_name={{user `mush_name`}}~server_port={{user `server_port`}}~host_name={{user `host_name`}}\"'",
-        "sudo snap install core",
-        "sudo snap refresh core",
-        "sudo snap install --classic certbot",
-        "sudo ln -s /snap/bin/certbot /usr/bin/certbot"
+        "sudo su - ares -c 'echo {{user `ares_password`}} | sudo -Ss -u ares ./install \"mush_name={{user `mush_name`}}~server_port={{user `server_port`}}~host_name={{user `host_name`}}\"'"
     ]
     }
   ]

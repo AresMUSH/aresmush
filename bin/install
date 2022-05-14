@@ -137,8 +137,8 @@ sudo npm install -g npm
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
-nvm install 16
-nvm use 16
+nvm install 12
+nvm use 12
 
 # #########################################################################################
 
