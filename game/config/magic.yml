@@ -1,0 +1,32 @@
+---
+magic:
+  shield_cron:
+    hour:
+    - 02
+    minute:
+    - 01
+  potion_cron:
+    minute:
+    - 00
+  shortcuts:
+    combat/cast: combat/spell
+    cast: spell/cast
+  achievements:
+    potions_made:
+      type: potion
+      message: Made %{count} potions.
+    potions_used:
+      type: potion
+      message: Used %{count} potions.
+    spells_learned:
+      type: spell
+      message: Learned %{count} spells.
+    spells_discarded:
+      type: spell
+      message: Discarded %{count} spells.
+    spells_cast:
+      type: spell
+      message: Cast %{count} spells.
+    equipped_magic_item:
+      type: spell
+      message: "Equipped a magic item."

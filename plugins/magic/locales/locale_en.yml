@@ -1,0 +1,222 @@
+---
+en:
+  magic:
+      invalid_name: "%xrCharacter not found.%xn"
+      updated_weapon_specials: "You have updated %{target}'s persistent weapon specials to %{specials}."
+
+        # ----------------------------
+        # POTIONS
+        # ----------------------------
+      use_combat_potion: "Use combat/potion while you are in combat."
+      potions_title: "%{name}'S POTIONS"
+      potions_creating_title: "Potions Currently Creating"
+      potions_has_title: "Potions Inventory"
+      no_potions_spell: "You have not learned how to make potions."
+      not_potion: "That spell cannot be made into a potion."
+      dont_have_potion: "You don't have that potion. Type 'potions' to see what potions you have."
+      begun_creating_potion: "You have begun to create a %{potion_name} potion. It will be ready in %{hours_to_create} hours. Type 'potions' to track the potions you are creating."
+      potion_completed: "Your %{potion} potion is ready for use."
+      potion_completed_subj: "%{potion} Potion Ready"
+      added_potion: "You have added a %{potion} potion to %{target}'s inventory."
+      potion_has_been_added: "%{name} has added a #{potion_name} potion to your inventory."
+      give_potion: "You have given %{target} a %{potion} potion."
+      given_potion: "%{name} has given you a %{potion} potion."
+      given_potion_subj: "%{potion} recieved"
+      potion_ko: "You cannot use a potion while Knocked Out."
+      potion: "%{name} uses a %xM%{potion}%xn potion."
+      potion_target: "%{name} uses a %xM%{potion}%xn potion on %{target}."
+      potion_heal: "%{name} uses a %xM%{potion}%xn potion. %{target} receives up to %{points} points of healing to a wound."
+      potion_shield: "%{name} uses a %xM%{potion}%xn potion. %{target} is protected against %{type} attacks."
+      potion_heal_ko_target: "%{name} uses a %xM%{potion}%xn potion. %{target} receives up to %{points} points of healing to a wound and is no longer dying."
+      potion_ko_heal: "%{name} uses a %xM%{potion}%xn potion. %{target} receives up to %{points} points of healing to a wound and is no longer dying."
+      potion_stance: "%{name} uses a %xM%{potion}%xn potion, changing their stance to %{stance}."
+      potion_stance_target: "%{name} uses a %xM%{potion}%xn potion on %{target}, changing their stance to %{stance} It will last for %{rounds} more round(s)."
+      potion_mod: "%{name} uses a %xM%{potion}%xn potion, giving them a %{mod} %{type} modification."
+      potion_mod_target: "%{name} uses a %xM%{potion}%xn potion on %{target}, giving them a %{mod} %{type} modification."
+      not_character: "%xr%{name} is not a character.%xn"
+
+        # ----------------------------
+        # SPELL CASTING
+        # ----------------------------
+      use_combat_spell: "Use combat/spell when you are in combat."
+      dont_target_self: "Be sure to specify a target when using a stun or attack spell so you don't attack yourself. "
+      spell_ko: "You cannot cast a spell while Knocked Out."
+      casts_spell: "%{name} casts %xB%{spell}%xn%{mod} and %{succeeds}."
+      casts_spell_on_target: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{succeeds}."
+      will_cast_fs3_attack: "%{name} will cast %xB%{spell}%xn on %{target} this turn."
+      not_ko: "%{target} is not knocked out."
+
+      cast_damage: "%{name} casts %xB%{spell}%xn on %{target} and %{succeeds}, giving %{target} a wound."
+      cast_mod: "%{name} casts %xB%{spell}%xn on %{target} and %{succeeds}, giving %{target} a %xg%{mod_msg} modification%xn."
+      cast_stance: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{succeeds}, changing %{target}'s stance to %{stance}. It will last for %{rounds} more round(s)."
+      not_spell: "That is not a spell."
+      cant_cast_on_gear: "You cannot cast %{spell} on %{target}'s %{gear}."
+      doesnt_use_target: "This spell does not use a target."
+      needs_target: "You need to identify a target. Do spell/cast <spell>=<target>."
+      caster_should_not_equal_target: "You cannot target yourself. Do spell/cast <spell> instead."
+      cast_to_use: "%xbYou cannot use %{name} without casting a spell. Only equip it if this spell is still active.%xn"
+      level_eight_fatigue: "%x39%{name}%xn %x39has cast a level 8 spell and is overcome by spell casting fatigue. They are unable to cast spells or fight until they have recovered.%xn"
+
+      # ----------------------------
+      # HeALING. RESING, AND REVIVING
+      # ----------------------------
+      cast_ko_heal: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{succeeds}. %{target} receives up to %{points} points of healing to a wound and they are no longer dying."
+      no_healable_wounds: "%{target} has no healable wounds."
+      cast_heal_no_effect: "%{name} casts %xB%{spell}%xn%{mod} and %{succeeds}, but %{target} has no healable wounds. The spell has no effect."
+      cast_heal: "%{name} casts %xB%{spell}%xn%{mod} and %{succeeds}. %{target} receives up to %{points} points of healing to a wound."
+      cast_auto_revive: "%{name} casts %xB%{spell}%xn%{mod} and %{succeeds}. They have been revived, and all wounds have been healed."
+      cast_auto_revive_target: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{succeeds}. %{target} has been revived, and all wounds have been healed."
+      cast_revive: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{succeeds}, reviving %{target} so they can rejoin the fight."
+      been_revived: "%xgYou have been revived by %{name}.%xn"
+      cast_res: "%{name} casts %xB%{spell}%xn on %{target} and %{succeeds}. They have been snatched from death's grip."
+      been_resed: "%xgYou have been resurrected by %{name}. You are both incapacitated and suffering from spell fatigue, and cannot act without further healing.%xn"
+      raised_dead: "%xB%{name} has raised %{target} from the dead.%xn"
+      npc_rejoin: "If you want them to act again, have %{target} rejoin the combat by doing combat/join %{target}=%{id}."
+      not_dead: "%{target} is not dead."
+
+      # ----------------------------
+      # MAGIC SHIELDS
+      # ----------------------------
+      cast_shield: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{succeeds}. They are protected against %{type} attacks."
+      cast_shield_no_target: "%{name} casts %xB%{spell}%xn%{mod} and %{succeeds}. They are protected against %{type} attacks."
+      no_shield: "%{name} does not have{spell} active."
+      not_shield: "%{shield} is not a shield."
+      turn_shield_off: "%xhIf it has ICly been longer than the spell's duration, %{name} should do `shield/off %{spell}`.%xn"
+      turned_shield_off: "You have turned off %{name}'s %{shield}."
+
+      shield_held: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{target}'s %X17%{shield}%xn stopped it. %{name}'s spell has %xrNO EFFECT%xn."
+      shield_failed: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{target}'s %X17%{shield}%xn failed to stop it. %{name} %xgSUCCEEDS%xn, but the damage is reduced."
+      # shield_held_against_shrapnel: "%{name}'s %xB%{weapon}%xn hits %{target}, but %{target}'s %xB%{shield}%xn stopped it."
+      shield_failed_against_shrapnel: "%{name}'s %xB%{weapon}%xn hits %{target} and %{target}'s %X17%{shield}%xn failed to stop it, but the damage is reduced."
+      mod_shield_failed:  "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{target}'s %X17%{shield}%xn failed to stop it. %{name} %xgSUCCEEDS%xn, giving %{target} a %xg%{mod_msg}%xn modification."
+      shield_failed_stun: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{target}'s %X17%{shield}%xn failed to stop it. %{name} %xgSUCCEEDS%xn and %{target} will be %xmstunned%xn for %{rounds} more rounds."
+      shield_failed_stun_resisted: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{target}'s %X17%{shield}%xn failed to stop it, but %{target} resists and %xris not stunned%xn."
+      no_damage_shield_failed: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{target}'s %X17%{shield}%xn failed to stop it. %{name} %xgSUCCEEDS%xn."
+      shield_held_against_attack: "%{name} attacks %{target} with %{weapon}, but %{target}'s %X17%{shield}%xn %xrSTOPPED IT%xn."
+      shield_failed_against_attack: "%{name} attacks %{target} with %{weapon} and %{target}'s %X17%{shield}%xn failed to stop it. %{name} %xgHITS%xn, but the damage is reduced."
+
+      # ----------------------------
+      # STUNS
+      # ----------------------------
+
+      # stun_action_msg_long: "%{name} will stun %{target} this turn."
+      # stun_action_msg_short: "Stun %{target}"
+      # stun_action_success: "%{name} successfully stuns %{target}."
+      # stun_action_failed: "%{name} tries to stun %{target} but FAILS."
+      stun_wore_off: "%{name} is no longer %xmstunned%xn."
+      still_stunned: "%{name} is %xmstunned%xn by %{stunned_by}. They will be %xmstunned for %{rounds} more round(s).%xn"
+      cast_stun: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{succeeds}. They will be %xmstunned%xn for %{rounds} more round(s)."
+      cast_stun_resisted: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and the spell %{succeeds}, but %{target} resists and is not stunned."
+
+      # ----------------------------
+      # SPELLs WEAR OFF
+      # ----------------------------
+      shield_wore_off: "%{name}'s %X17%{shield}%xn %x11has worn off%xn."
+      mod_wore_off: "%{name}'s %xg%{mods} modification%xn %x11has worn off%xn."
+      mods_wore_off: "%{name}'s %xg%{mods} modifications%xn %x11have worn off%xn."
+      stance_wore_off: "%{name}'s %xB%{spell}%xn spell %x11has worn off%xn and they are no longer %{stance}."
+
+      # ----------------------------
+      # SHEET
+      # ----------------------------
+      schools_title: "Schools"
+      schools_blurb: "Schools reflect the type of spells a magic user is able to do. A magic user may have an affinity for a single School, or they may possess an affinity for two, one lesser and one greater. System-wise, Schools function in the same way as action skills."
+
+      # ----------------------------
+      # LEARNING SPELLS
+      # ----------------------------
+      do_spell_learn: "You can't add spells as background skills. Did you mean to do spell/learn <spell>?"
+      learning_too_many_spells: "You can only learn %{can_learn_num} spells at a time. Raise your major school to learn more spells at once."
+      spell_requested: "Your spell has been requested. You can view all your active requests by typing 'requests'"
+      wrong_school: "That spell does not belong to one of your schools."
+      wrong_school_check: "%xhThat spell does not belong to one of %{name}'s schools and should only be added if they are gaining it through special means.%xn"
+      spells_title: "%xh%{name}'S KNOWN SPELLS%xn"
+      learning_spells_title: "%xhSPELLS %{name} IS LEARNING%xn"
+      spells_header: "SPELL                        LEVEL"
+      spells_learning_header: "SPELL                         LEVEL      PROGRESS              LEARN AGAIN IN"
+      start_learning: "You start learning the %{spell} spell."
+      not_learning_spell: "You aren't learning the %{spell} spell."
+      already_know_spell: "You already know or are learning the %{spell} spell."
+      complete_learning: "Congratulations! You have finished learning the %{spell} spell."
+      additional_learning: "You put in additional work to learn the %{spell} spell."
+      xp_learned_spell: "%{name} has learned %{spell}, a level %{level} %{school} spell."
+      xp_learned_spell_title: "%{name} learned %{spell}"
+      need_previous_level: "You must have a spell at the previous level in the same school before you can learn this spell."
+      cant_learn_yet: "You have %{days} days before you can learn the %{spell} spell again."
+      too_many_spells: "You can only learn up to 30 spells. Discard a spell before learning a new one."
+      dont_know_spell: "You don't know that spell. Type 'spells' to see the spells you know."
+      cant_discard: "You can't discard that spell. You must have one spell at each prior level in the same school in order to discard a spell."
+      discarded_spell: "You have discarded the %{spell} spell."
+      added_spell: "You have added the %{spell} spell to %{name}."
+      removed_spell: "You have removed the %{spell} spell from %{name}."
+      use_school_version: "Be sure to specify the school for this spell. IE, spell/learn Potions (Fire) or Familiar (Air)"
+      request_spell: "To learn this spell, please spell/request the specific animal you would like. We will create a custom spell for you to learn."
+      need_same_level: "You must have a spell of the same level in this School before you can spend luck to reduce the learn time of %{spell}."
+      no_xp: "You don't have any XP to spend on this spell."
+      only_1_xp_needed: "You only have 1 XP left to spend on this spell. You cannot reduce the learn time further."
+      reduce_spell_learn_time: "You reduce the learn time of %{spell} by a week. You can `spell/learn` to learn it again."
+      can_learn_now: "You can learn that spell now - no need to spend luck!"
+      reduce_spell_learn_time_job: "%{name} spent 2 luck points and reduced the learn time of %{spell} by a week."
+
+      # ----------------------------
+      # FS3 COMBAT SPELL ACTION
+      # ----------------------------
+      spell_target_action_msg_short: "Spell %{target}"
+      spell_target_action_msg_long: "%{name} will cast %xB%{spell}%xn on %{target} this turn."
+      spell_target_resolution_msg: "%{name} casts %xB%{spell}%xn on %{target} and %{succeeds}."
+      spell_action_msg_short: "Spell"
+      spell_action_msg_long: "%{name} will cast %xB%{spell}%xn this turn."
+      spell_resolution_msg: "%{name} casts %xB%{spell}%xn and %{succeeds}."
+      too_many_targets: "%xr%{spell} can only target %{num} target(s).%xn"
+
+      # ----------------------------
+      # FS3 COMBAT POTION ACTION
+      # ----------------------------
+
+      potion_action_msg_long: "%{name} will use a %xM%{potion}%xn potion this turn."
+      potion_action_target_msg_long: "%{name} will use a %xM%{potion}%xn potion on %{target} this turn."
+      potion_action_resolution_msg_long: "%{name} uses a %xM%{potion}%xn potion."
+      potion_action_target_resolution_msg_long: "%{name} uses a %xM%{potion}%xn potion on %{target}."
+      potion_action_msg_short: "Potion"
+      potion_action_target_msg_short: "Potion %{target}"
+      potion_resolution_msg: "%{name} used a %xM%{potion}%xn potion"
+
+      # ----------------------------
+      # FS3 COMBAT DEATH
+      # ----------------------------
+      one_death: "%xR%{name} has been knocked out for one round. In two more rounds, they will bleed out and die.%xn"
+      two_death: "%xR%{name} has been knocked out for two rounds. If they are not revived, healed, or treated this round, they will die.%xn"
+      died: "%xR%{name} has died.%xn"
+
+      # # ----------------------------
+      # # LUCK
+      # # ----------------------------
+
+      spent_luck: "%{name} has spent 1 luck point. %R%RReason: %{reason}"
+      spent_luck_title: "%{name} spent luck on %{reason}"
+
+      # ----------------------------
+      # MAGIC ITEMS
+      # ----------------------------
+      magic_items_title: "%{name}'S MAGIC ITEMS"
+      item_equipped: "You have equipped %{item}."
+      equipped_item: "%{name} has equipped %{item}."
+      has_equipped_item: "%{name} has equipped %{item}"
+      item_unequipped: "You have unequipped %{item}."
+      has_unequipped_item: "%{name} has unequipped %{item}"
+      item_not_equipped: "That item is not equipped."
+      not_item: "That is not an item or potion. If it should be, put in a request for it to be added to the system."
+      added_item: "You have added %{item} to %{target}."
+      removed_item: "You have removed %{item} from %{target}."
+      given_magic_item: "%{name} has given you the magical item %{item}."
+      given_magic_item_subj: "%{item} Recieved"
+      target_does_not_have_item: "They do not have that item."
+      magic_item_removed: "%{name} has removed the magical item %{item} from your inventory."
+      magic_item_removed_subj: "%{item} Removed"
+      dont_have_item: "You do not have that item."
+      give_item: "You have given %{target} %{item}."
+      item_has_been_given: "%{name} has given you %{item}. Type `items` to see details."
+      unequip_first: "You can't given away items you have equipped. Do `item/unequip %{item}` first."
+      bought_magic_item_job: "%{name} has bought %{item} for %{luck} luck."
+      item_not_available: "That item is not available for purchase."
+      use_item: "Use 'item' in your command, not 'items'."
