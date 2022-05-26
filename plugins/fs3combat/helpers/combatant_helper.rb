@@ -4,13 +4,20 @@ module AresMUSH
     def self.roll_attack(combatant, target, mod = 0)
       ability = FS3Combat.weapon_stat(combatant.weapon, "skill")
       accuracy_mod = FS3Combat.weapon_stat(combatant.weapon, "accuracy")
-      special_mod = combatant.attack_mod
+      attack_mod = combatant.attack_mod  ? combatant.attack_mod  : 0
       damage_mod = combatant.total_damage_mod
       stance_mod = combatant.attack_stance_mod
       stress_mod = combatant.stress
       aiming_mod = (combatant.is_aiming? && (combatant.aim_target == combatant.action.target)) ? 3 : 0
       luck_mod = (combatant.luck == "Attack") ? 3 : 0
-
+      spell_luck_mod = (combatant.luck == "Spell") ? 3 : 0
+      if !combatant.is_npc?
+        item_attack_mod  = Magic.item_attack_mod(combatant.associated_model)  ? Magic.item_attack_mod(combatant.associated_model) : 0
+      else
+        item_attack_mod = 0
+      end
+      magic_attack_mod = combatant.magic_attack_mod  ? combatant.magic_attack_mod : 0
+    
       if (combatant.mount_type && !target.mount_type)
         mount_mod = FS3Combat.mount_stat(combatant.mount_type, "mod_vs_unmounted")
       elsif (!combatant.mount_type && target.mount_type)
@@ -18,12 +25,12 @@ module AresMUSH
       else
         mount_mod = 0
       end
-
-      combatant.log "Attack roll for #{combatant.name} ability=#{ability} aiming=#{aiming_mod} mod=#{mod} accuracy=#{accuracy_mod} damage=#{damage_mod} stance=#{stance_mod} mount=#{mount_mod} luck=#{luck_mod} stress=#{stress_mod} special=#{special_mod}"
-
-      mod = mod + accuracy_mod + damage_mod + stance_mod + aiming_mod + luck_mod - stress_mod + special_mod + mount_mod
-      
-      
+    
+      combatant.log "Attack roll for #{combatant.name} ability=#{ability} aiming=#{aiming_mod} mod=#{mod} accuracy=#{accuracy_mod} damage=#{damage_mod} stance=#{stance_mod} mount=#{mount_mod} luck=#{luck_mod} spell_luck=#{spell_luck_mod} item_attack=#{item_attack_mod} stress=#{stress_mod} attack=#{attack_mod} magic_attack=#{magic_attack_mod}"
+    
+      mod = mod + accuracy_mod + damage_mod + stance_mod + aiming_mod + luck_mod - stress_mod + attack_mod + mount_mod + item_attack_mod.to_i + spell_luck_mod.to_i + magic_attack_mod.to_i
+    
+    
       combatant.roll_ability(ability, mod)
     end
     
