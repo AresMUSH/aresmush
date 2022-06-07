@@ -1,10 +1,5 @@
 ---
 magic-items:
-  Charismatic Ruby:
-    name: Charismatic Ruby
-    desc: Slightly larger than a silver dollar, the ruby is elegant of proportion - if excessive of size. The deep red stone is cut in perfect, circular cabochon making it ideal to set in jewelry. It allows the bearer to cast %xBCharmed%xn.
-    spells:
-    - Charmed
   Guilt-Weighted Gloves:
     name: Guilt-Weighted Gloves
     desc: Fancy purple satin gloves with slightly fraying gold embroidery along the palm and knuckles. These gloves provide a bonus to lethality

@@ -51,6 +51,24 @@ demographics:
       objective_pronoun: them
       noun: person
   groups:
+    Major School:
+      desc: Major School
+      wiki: ''
+      values:
+        Air: Air
+        Corpus: Corpus
+        Earth: Earth
+        Fire: Fire
+        None: None
+    Minor School: 
+      desc: Minor School
+      wiki: ''
+      values:
+        Air: Air
+        Corpus: Corpus
+        Earth: Earth
+        Fire: Fire
+        None: None
     Faction:
       desc: Military faction.
       wiki: ''

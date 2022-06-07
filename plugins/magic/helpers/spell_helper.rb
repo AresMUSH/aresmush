@@ -13,7 +13,7 @@ module AresMUSH
       end
     end
 
-    def self.find_spell_school(char, spell_name)
+    def self.find_spell_school(spell_name)
       Global.read_config("spells", spell_name.titlecase, "school")
     end
 

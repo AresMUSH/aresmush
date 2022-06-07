@@ -1,3 +1,4 @@
+require "byebug"
 module AresMUSH
   module Magic
 
@@ -22,15 +23,18 @@ module AresMUSH
 
     def self.knows_potion?(char)
       spell_names = char.spells_learned.map { |s| s.name }
+      item_spells = Magic.item_spells(char)
       list = spell_names.join " "
       potion_spell = Global.read_config("magic", "potion_spell")
-      potion = list.include?(potion_spell)
+      potion = list.include?(potion_spell) || item_spells.include?(potion_spell)
       return potion
     end
 
     def self.count_spells_total(char)
-      major_school = char.group("Major School")
-      minor_school = char.group("Minor School")
+      major_school_group = Global.read_config("magic", "major_school_group")
+      minor_school_group = Global.read_config("magic", "minor_school_group")
+      major_school = char.group(major_school_group)
+      minor_school = char.group(minor_school_group)
       spells_learned = char.spells_learned.select { |l| l.learning_complete && ( l.school == major_school || l.school == minor_school)}
       spells_learned.count
     end
@@ -59,7 +63,7 @@ module AresMUSH
     def self.previous_level_spell?(char, spell_name)
       spell_name = spell_name.titlecase
       spell_level = Magic.find_spell_level(char, spell_name)
-      school = Magic.find_spell_school(char, spell_name)
+      school = Magic.find_spell_school(spell_name)
       level_below = spell_level.to_i - 1
       spells_learned =  char.spells_learned.to_a
       if spells_learned.any? {|s| s.level == level_below && s.school == school && s.learning_complete == true}
@@ -74,7 +78,7 @@ module AresMUSH
     def self.equal_level_spell?(char, spell_name)
       spell_name = spell_name.titlecase
       spell_level = Magic.find_spell_level(char, spell_name)
-      school = Magic.find_spell_school(char, spell_name)
+      school = Magic.find_spell_school( spell_name)
       spells_learned =  char.spells_learned.to_a
 
       if spells_learned.any? {|s| s.level == spell_level && s.school == school && s.learning_complete == true}
@@ -85,10 +89,13 @@ module AresMUSH
     end
 
     def self.can_discard?(char, spell)
+      
+      return true if spell.level == 1
+      # byebug
       level = spell.level
       school = spell.school
       spells_learned =  char.spells_learned.to_a
-      if_discard = spells_learned.delete(spell)
+      spells_learned.delete(spell)
       if spells_learned.any? {|s| s.level > level && s.school == school}
         if spells_learned.any? {|s| s.level == level && s.school == school}
           return true
@@ -102,23 +109,7 @@ module AresMUSH
 
     def self.spell_xp_needed(spell)
       level = Global.read_config("spells", spell, "level")
-      if level == 1
-        xp_needed = 1
-      elsif level == 2
-        xp_needed = 2
-      elsif level == 3
-        xp_needed = 3
-      elsif level == 4
-        xp_needed = 4
-      elsif level == 5
-        xp_needed = 5
-      elsif level == 6
-        xp_needed = 6
-      elsif level == 7
-        xp_needed = 7
-      elsif level == 8
-        xp_needed = 13
-      end
+      return Global.read_config("magic", "xp_per_level", level)
     end
 
   end

@@ -1,6 +1,18 @@
 ---
 fs3skills:
   action_skills:
+  - name: Air
+    desc: Air
+    linked_attr: Magic
+  - name: Corpus
+    desc: Corpus
+    linked_attr: Magic
+  - name: Earth
+    desc: Earth
+    linked_attr: Magic
+  - name: Fire
+    desc: Fire
+    linked_attr: Magic              
   - name: Alertness
     desc: Noticing things and being aware of your surroundings.
     linked_attr: Perception
