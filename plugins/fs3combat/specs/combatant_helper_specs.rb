@@ -25,6 +25,10 @@ module AresMUSH
           @target = double
           allow(@target).to receive(:mount_type) { nil }
           allow(@combatant).to receive(:mount_type) { nil }
+          allow(@combatant).to receive(:is_npc?) {false}
+          allow(@combatant).to receive(:associated_model) {double}
+          allow(@combatant).to receive(:magic_attack_mod) {0}
+          allow(Magic).to receive(:item_attack_mod) {0}
         end
         
         it "should roll the weapon attack stat" do

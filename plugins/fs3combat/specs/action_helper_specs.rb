@@ -19,6 +19,7 @@ module AresMUSH
           allow(@combatant).to receive(:luck) { "Defense" }
           allow(FS3Combat).to receive(:reset_stress)
           allow(FS3Combat).to receive(:check_for_ko)
+          allow(Magic).to receive(:spell_newturn)
         end
         
         it "should reset luck spent" do
@@ -606,6 +607,7 @@ module AresMUSH
           allow(@target).to receive(:stance) { "Normal" }
           
           allow(FS3Combat).to receive(:hit_mount?) { false }
+          allow(Magic).to receive(:determine_margin_with_shield) {nil}
         end
         
         it "should roll attack and defense" do
@@ -825,6 +827,11 @@ module AresMUSH
           allow(@target).to receive(:update).with(damaged_by: [ "A" ]) {}
           allow(@combatant).to receive(:luck) { "" }
           allow(FS3Combat).to receive(:award_hit_achievement) {}
+          @shield = double
+          allow(Magic).to receive(:find_best_shield) {@shield}
+          allow(@shield).to receive(:name){"Shield"}
+          allow(Magic).to receive(:magic_damage_type) {"Damage"}
+          allow(Magic).to receive(:shield_mods) {0}
         end
             
         
