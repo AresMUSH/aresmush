@@ -1,7 +1,36 @@
 module AresMUSH
   module Magic
 
+    def self.spell_skill(caster, spell)
+      cast_mod = 0
+      if caster.npc
+        skill = Global.read_config("spells", spell, "school")
+      else
+        caster = Magic.get_associated_model(caster)
+        schools = [caster.group("Minor School"), caster.group("Major School")]
+        school = Global.read_config("spells", spell, "school")
+        if schools.include?(school)
+          skill = school
+        else
+          skill = "Magic"
+          cast_mod = FS3Skills.ability_rating(caster, "Magic") * 2
+        end
+      end
+      return {
+        cast_mod: cast_mod,
+        skill: skill
+      }
+    end
 
+    def self.spell_level_mod(spell)
+      level = Global.read_config("spells", spell, "level")
+      if level == 1
+        mod = 0
+      else
+        mod = 0 - level
+      end
+      return mod
+    end
 
     def self.cast_noncombat_spell(caster_name, targets, spell, mod = nil, result = nil, using_potion = false)
       success = "%xgSUCCEEDS%xn"
