@@ -30,6 +30,7 @@ module AresMUSH
         
         @char = double
         allow(@char).to receive(:spells_learned) {[@spell1, @spell2, @spell3, @spellalso3] }
+        allow(@char).to receive(:is_npc?) { false }
 
         @combatant = double
         allow(@combatant).to receive(:class) { Combatant }
@@ -42,10 +43,8 @@ module AresMUSH
 
       describe :knows_spell? do
         it "should let NPCs know all spells" do
-          @npc = double
-          allow(@npc).to receive(:is_npc?) { true }
-          allow(@npc).to receive(:class) { Combatant }
-          expect(Magic.knows_spell?(@npc, "Spell")).to eq true
+          allow(@combatant).to receive(:is_npc?) { true }
+          expect(Magic.knows_spell?(@combatant, "Spell")).to eq true
         end
 
         it "should let characters cast spells from magic items in combat" do

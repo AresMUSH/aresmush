@@ -83,16 +83,16 @@ en:
       not_shield: "%{shield} is not a shield."
       turn_shield_off: "%xhIf it has ICly been longer than the spell's duration, %{name} should do `shield/off %{spell}`.%xn"
       turned_shield_off: "You have turned off %{name}'s %{shield}."
-
-      shield_held: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{target}'s %X17%{shield}%xn stopped it. %{name}'s spell has %xrNO EFFECT%xn."
-      shield_failed: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{target}'s %X17%{shield}%xn failed to stop it. %{name} %xgSUCCEEDS%xn, but the damage is reduced."
+      shield_held_against_attack: "%{name} attacks %{target} with %{weapon}, but %{target}'s %X17%{shield}%xn %xrSTOPPED IT%xn."
+      shield_held_against_spell: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{target}'s %X17%{shield}%xn stopped it. %{name}'s spell has %xrNO EFFECT%xn."
+      shield_failed_against_spell: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{target}'s %X17%{shield}%xn failed to stop it. %{name} %xgSUCCEEDS%xn, but the damage is reduced."
       # shield_held_against_shrapnel: "%{name}'s %xB%{weapon}%xn hits %{target}, but %{target}'s %xB%{shield}%xn stopped it."
       shield_failed_against_shrapnel: "%{name}'s %xB%{weapon}%xn hits %{target} and %{target}'s %X17%{shield}%xn failed to stop it, but the damage is reduced."
       mod_shield_failed:  "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{target}'s %X17%{shield}%xn failed to stop it. %{name} %xgSUCCEEDS%xn, giving %{target} a %xg%{mod_msg}%xn modification."
       shield_failed_stun: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{target}'s %X17%{shield}%xn failed to stop it. %{name} %xgSUCCEEDS%xn and %{target} will be %xmstunned%xn for %{rounds} more rounds."
       shield_failed_stun_resisted: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{target}'s %X17%{shield}%xn failed to stop it, but %{target} resists and %xris not stunned%xn."
       no_damage_shield_failed: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{target}'s %X17%{shield}%xn failed to stop it. %{name} %xgSUCCEEDS%xn."
-      shield_held_against_attack: "%{name} attacks %{target} with %{weapon}, but %{target}'s %X17%{shield}%xn %xrSTOPPED IT%xn."
+      
       shield_failed_against_attack: "%{name} attacks %{target} with %{weapon} and %{target}'s %X17%{shield}%xn failed to stop it. %{name} %xgHITS%xn, but the damage is reduced."
 
       # ----------------------------

@@ -1,6 +1,11 @@
 module AresMUSH
   module Magic
 
+    def self.get_associated_model(char_or_combatant)
+      return char_or_combatant.associated_model if char_or_combatant.class == Combatant
+      return char_or_combatant
+    end
+
     def self.roll_combat_spell(char, combatant, school, cast_mod = 0, level_mod)
       accuracy_mod = FS3Combat.weapon_stat(combatant.weapon, "accuracy")
       attack_mod = combatant.attack_mod

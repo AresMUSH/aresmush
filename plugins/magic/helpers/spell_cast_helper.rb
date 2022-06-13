@@ -20,7 +20,7 @@ module AresMUSH
         targets.each do |target|
           stopped_by_shield = Magic.stopped_by_shield?(target, caster_name, spell, result)
 
-          if stopped_by_shield && stopped_by_shield[:shield_held] && caster != target && !using_potion
+          if stopped_by_shield && !stopped_by_shield[:hit] && caster != target && !using_potion
             message = stopped_by_shield[:msg]
             messages.concat [message]
           else
@@ -71,12 +71,7 @@ module AresMUSH
     end
 
     def self.cast_shield(caster_name, target_char_or_combatant, spell, rounds, result, is_potion = false)
-      if (target_char_or_combatant.class == Combatant)
-        target = target_char_or_combatant.associated_model
-      else
-        target = target_char_or_combatant
-      end
-
+      target = Magic.get_associated_model(target_char_or_combatant)
       shield = Magic.find_shield_named(target, spell)
 
       if shield
@@ -112,6 +107,7 @@ module AresMUSH
 
     def self.cast_heal(caster_name, target_char_or_combatant, spell, heal_points)
       puts "COMING TO CAST HEAL!!!!!!!!!"
+      # Change this to Magic.get_associated_model and change 'combat' to target.combat once testing works
       if (target_char_or_combatant.class == Combatant)
         target = target_char_or_combatant.associated_model
         combat = true
@@ -337,7 +333,7 @@ module AresMUSH
         if (!stopped_by_shield.empty? && stopped_by_shield[:shield_held])
           puts "^^^^^^There is a shield, and it held (hit = false)"
           #Needs to define own message instead of using stopped_by_shield[:message] so it can grab the spell name instead of the weapon name.
-          message =[t('magic.shield_held', :name => combatant.name, :spell => spell, :mod => "", :shield => stopped_by_shield[:shield], :target => target.name)]
+          message =[t('magic.shield_held_against_spell', :name => combatant.name, :spell => spell, :mod => "", :shield => stopped_by_shield[:shield], :target => target.name)]
         elsif !stopped_by_shield.empty?
           puts "^^^^^^There is a shield and hit != false"
           message = [t('magic.shield_failed_stun_resisted', :name => combatant.name, :spell => spell, :shield=> stopped_by_shield[:shield], :mod => "", :target => target.name)]

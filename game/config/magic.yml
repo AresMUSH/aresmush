@@ -14,6 +14,20 @@ magic:
     6: 6
     7: 7
     8: 8
+  shield_base_defense: 20
+  shield_strength_multiplier: 5
+  potion_spell: Potions
+  shields_against_all_exceptions:
+  - Bypass
+  - Psionic
+  - None Bypass
+  default_damage_type:
+    Physical
+  type_does_damage:
+    Cold: true
+    Fire: true
+    Physical: true
+    Bypass: true
   shield_cron:
     hour:
     - 02
