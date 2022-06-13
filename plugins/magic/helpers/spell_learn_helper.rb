@@ -1,4 +1,3 @@
-require "byebug"
 module AresMUSH
   module Magic
 
@@ -93,7 +92,6 @@ module AresMUSH
     def self.can_discard?(char, spell)
       
       return true if spell.level == 1
-      # byebug
       level = spell.level
       school = spell.school
       spells_learned =  char.spells_learned.to_a

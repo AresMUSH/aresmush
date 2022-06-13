@@ -11,7 +11,6 @@ module AresMUSH
 
     def self.find_shield_named(char, shield_name)
       shield_name = shield_name.titlecase
-      byebug
       char.magic_shields.select { |shield| shield.name == shield_name }.first
     end
 
@@ -33,13 +32,11 @@ module AresMUSH
     end
 
     def self.shield_newturn_countdown(combatant)
-    #   byebug
       shields = combatant.associated_model.magic_shields
       puts "Shields: #{shields.to_a}"
       shields.each do |shield|
         puts "Rounds: #{shield.name} #{shield.rounds}"
         if shield.rounds == 0
-          # byebug
           FS3Combat.emit_to_combat combatant.combat, t('magic.shield_wore_off', :name => combatant.name, :shield => shield.name), nil, true
           shield.delete
           puts ""
@@ -50,7 +47,6 @@ module AresMUSH
     end
 
     def self.determine_margin_with_shield(target, combatant, weapon_or_spell, attack_roll, defense_roll)
-      # byebug
       attacker_net_successes = attack_roll - defense_roll
       stopped_by_shield = Magic.stopped_by_shield?(target, combatant.name, combatant.weapon, attack_roll)
       if stopped_by_shield
@@ -148,7 +144,6 @@ module AresMUSH
       multiplier = Global.read_config("magic", "shield_strength_multiplier")
       shield = Magic.find_best_shield(target, damage_type)
       shield_mod = (-base - (shield.strength * multiplier))
-      byebug
       target.log "#{shield.name} mod: #{shield_mod}"
       return shield_mod
     end
