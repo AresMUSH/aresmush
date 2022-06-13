@@ -105,7 +105,7 @@ module AresMUSH
         messages = []
         combatant.log "~* #{self.combatant.name.upcase} CASTING #{self.spell.upcase} *~"
 
-        succeeds = Magic.roll_combat_spell_success(combatant, spell)
+        succeeds = Magic.roll_combat_spell(combatant, spell)
         if (auto_revive && targets.include?(self.combatant))
           succeeds = {:succeeds=>"%xgSUCCEEDS%xn", :result=>5}
         end
