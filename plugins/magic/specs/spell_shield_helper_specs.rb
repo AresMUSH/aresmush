@@ -136,8 +136,8 @@ module AresMUSH
               # allow(FS3Combat).to receive(weapon_stat).with(weapon_or_spell, "is_stun") {false}
             end
             it "determines whether the stun was successful" do
-              expect(Magic).to receive(:stun_successful?).with(true, 2)
-              Magic.determine_margin_with_shield(@target, @combatant, @spell, 4, 2)
+              expect(Magic.determine_margin_with_shield(@target, @combatant, @spell, 4, 2)[:hit]).to eq true
+              expect(Magic.determine_margin_with_shield(@target, @combatant, @spell, 2, 4)[:hit]).to eq false
             end
           end
 
@@ -147,8 +147,8 @@ module AresMUSH
               allow(FS3Combat).to receive(:weapon_stat).with(@spell, "is_stun") {true}
             end
             it "determines whether the stun was successful" do
-              expect(Magic).to receive(:stun_successful?).with(true, 2)
-              Magic.determine_margin_with_shield(@target, @combatant, @spell, 4, 2)
+              expect(Magic.determine_margin_with_shield(@target, @combatant, @spell, 4, 2)[:hit]).to eq true
+              expect(Magic.determine_margin_with_shield(@target, @combatant, @spell, 2, 4)[:hit]).to eq false
             end
           end
 
@@ -306,14 +306,16 @@ module AresMUSH
 
           context "when the weapon is a stun" do
             it "returns the shield_failed_stun msg" do
+              allow(Global).to receive(:read_config).with("spells", @weapon_or_spell, "rounds") {0}
               allow(FS3Combat).to receive(:weapon_stat).with(@weapon_or_spell, "is_stun") {true}
-              expect(subject).to eq "magic.shield_failed_against_stun"
+              expect(subject).to eq "magic.shield_failed_stun"
             end
           end
           context "when the spell is a stun" do
             it "returns the shield_failed_stun msg" do
+              allow(Global).to receive(:read_config).with("spells", @weapon_or_spell, "rounds") {0}
               allow(Global).to receive(:read_config).with("spells", @weapon_or_spell, "is_stun") {true}
-              expect(subject).to eq "magic.shield_failed_against_stun"
+              expect(subject).to eq "magic.shield_failed_stun"
             end
           end
         end
