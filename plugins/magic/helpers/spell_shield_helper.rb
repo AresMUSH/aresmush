@@ -47,12 +47,13 @@ module AresMUSH
     end
 
     def self.determine_margin_with_shield(target, combatant, weapon_or_spell, attack_roll, defense_roll)
-      attacker_net_successes = attack_roll - defense_roll
+      
       stopped_by_shield = Magic.stopped_by_shield?(target, combatant.name, combatant.weapon, attack_roll)
       if stopped_by_shield
         is_stun = Global.read_config("spells", weapon_or_spell, "is_stun") || FS3Combat.weapon_stat(weapon_or_spell, "is_stun") || false
         if stopped_by_shield[:hit] && is_stun
-          hit = Magic.stun_successful?(stopped_by_shield[:hit], attacker_net_successes)
+          attacker_net_successes = attack_roll - defense_roll
+          hit = attacker_net_successes > 0
         else 
           hit = stopped_by_shield[:hit]
         end
@@ -60,7 +61,7 @@ module AresMUSH
           hit: hit,
           message: stopped_by_shield[:msg],
           shield: stopped_by_shield[:shield],
-          shield_held: stopped_by_shield[:shield_held]
+          # shield_held: stopped_by_shield[:shield_held]
         }
       end
       #There is no shield in effect

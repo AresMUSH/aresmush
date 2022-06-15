@@ -359,7 +359,7 @@ module AresMUSH
           message = [t('magic.cast_stun', :name => combatant.name, :spell => spell, :mod => "", :target => target.name, :succeeds => "%xgSUCCEEDS%xn", :rounds => rounds)]
         end
       else
-        if (!stopped_by_shield.empty? && stopped_by_shield[:shield_held])
+        if (!stopped_by_shield.empty? && !stopped_by_shield[:hit])
           puts "^^^^^^There is a shield, and it held (hit = false)"
           #Needs to define own message instead of using stopped_by_shield[:message] so it can grab the spell name instead of the weapon name.
           message =[t('magic.shield_held_against_spell', :name => combatant.name, :spell => spell, :mod => "", :shield => stopped_by_shield[:shield], :target => target.name)]
