@@ -30,3 +30,5 @@ gem 'handlebars', '~>0.8.0'
 gem "rack", ">= 2.1.4"
 gem 'byebug'
 gem 'coderay'
+gem 'dead_end'
+gem 'solargraph'
