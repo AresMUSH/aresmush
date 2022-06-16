@@ -158,7 +158,7 @@ module AresMUSH
     end
 
     def self.magic_init_mod_newturn(combatant)
-      if combatant.magic_defense_mod_counter == 0 
+      if combatant.magic_init_mod_counter == 0 
         msg = "#{combatant.magic_init_mod} initiative"
         combatant.update(magic_init_mod: 0)
         combatant.log "#{combatant.name} resetting initiative mod to #{combatant.magic_init_mod}."
@@ -170,7 +170,7 @@ module AresMUSH
 
     def self.magic_lethal_mod_newturn(combatant)
       if combatant.magic_lethal_mod_counter == 0 
-        msg = "#{combatant.magic_lethal_mod_counter} lethality"
+        msg = "#{combatant.magic_lethal_mod} lethality"
         combatant.update(magic_lethal_mod: 0)
         combatant.log "#{combatant.name} resetting lethality mod to #{combatant.magic_lethal_mod}."
         return msg
@@ -180,7 +180,7 @@ module AresMUSH
     end
 
     def self.magic_spell_mod_newturn(combatant)
-      if combatant.magic_spell_mod_counter == 0 
+      if combatant.spell_mod_counter == 0 
         msg = "#{combatant.spell_mod} spell"
         combatant.update(spell_mod: 0)
         combatant.log "#{combatant.name} resetting spell mod to #{combatant.spell_mod}."
