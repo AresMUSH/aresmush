@@ -4,7 +4,9 @@ module AresMUSH
       before do
         @combatant = double
         allow(@combatant).to receive(:class) { Combatant }
+        allow(@combatant).to receive(:name) { "CombatantName" }        
         @char = double
+        allow(@char).to receive(:name) { "CharName" }
         @npc = double
       end
 
@@ -56,7 +58,6 @@ module AresMUSH
           allow(@combatant).to receive(:magic_attack_mod) { 0 }
           allow(@combatant).to receive(:gm_spell_mod) { 0 }
           allow(@combatant).to receive(:spell_mod) { 0 }
-          allow(@combatant).to receive(:name) { 'Name' }
           allow(@combatant).to receive(:log)
 
           @spell = double
@@ -188,7 +189,6 @@ module AresMUSH
           allow(@combatant).to receive(:is_npc?) {false}
           allow(@combatant).to receive(:is_ko) {false}
           allow(@combatant).to receive(:associated_model) {@char}
-          allow(@combatant).to receive(:name) {"Combatant"}
           allow(@char).to receive(:auto_revive?) {false}
           allow(@combatant).to receive(:log) 
           allow(@combatant).to receive(:combat) 
@@ -200,8 +200,6 @@ module AresMUSH
         subject do
           Magic.spell_newturn(@combatant)
         end
-        #'m I'm testsing this wrong - I should be testing the return of the correct message in the individual method. This one just needs to stub out the correct message and just be sure it's returning a message at all
-
         it "returns a msg when a stun wears off" do
           allow(@combatant).to receive(:magic_stun) {true}
           allow(Magic).to receive(:stun_newturn) {"Msg"}          
@@ -212,28 +210,28 @@ module AresMUSH
         it "returns a msg when a magic attack mod wears off" do
           allow(@combatant).to receive(:magic_attack_mod) {1}
           allow(Magic).to receive(:magic_attack_mod_newturn) {"mod"}          
-          expect(FS3Combat).to receive(:emit_to_combat).with(@combat,"Combatant's %xgmod modification%xn %x11has worn off%xn.", nil, true)  
+          expect(FS3Combat).to receive(:emit_to_combat).with(@combat,"CombatantName's %xgmod modification%xn %x11has worn off%xn.", nil, true)  
           Magic.spell_newturn(@combatant)          
         end
 
         it "returns a msg when a magic defense mod wears off" do
           allow(@combatant).to receive(:magic_defense_mod) {1}
           allow(Magic).to receive(:magic_defense_mod_newturn) {"mod"}          
-          expect(FS3Combat).to receive(:emit_to_combat).with(@combat,"Combatant's %xgmod modification%xn %x11has worn off%xn.", nil, true)  
+          expect(FS3Combat).to receive(:emit_to_combat).with(@combat,"CombatantName's %xgmod modification%xn %x11has worn off%xn.", nil, true)  
           Magic.spell_newturn(@combatant)          
         end
 
         it "returns a msg when a magic init mod wears off" do
           allow(@combatant).to receive(:magic_init_mod) {1}
           allow(Magic).to receive(:magic_init_mod_newturn) {"mod"}          
-          expect(FS3Combat).to receive(:emit_to_combat).with(@combat,"Combatant's %xgmod modification%xn %x11has worn off%xn.", nil, true)  
+          expect(FS3Combat).to receive(:emit_to_combat).with(@combat,"CombatantName's %xgmod modification%xn %x11has worn off%xn.", nil, true)  
           Magic.spell_newturn(@combatant)          
         end
 
         it "returns a msg when a magic lethal mod wears off" do
           allow(@combatant).to receive(:magic_lethal_mod) {1}
           allow(Magic).to receive(:magic_lethal_mod_newturn) {"mod"}          
-          expect(FS3Combat).to receive(:emit_to_combat).with(@combat,"Combatant's %xgmod modification%xn %x11has worn off%xn.", nil, true)  
+          expect(FS3Combat).to receive(:emit_to_combat).with(@combat,"CombatantName's %xgmod modification%xn %x11has worn off%xn.", nil, true)  
           Magic.spell_newturn(@combatant)
           
         end
@@ -241,7 +239,7 @@ module AresMUSH
         it "returns a msg when a magic spell mod wears off" do
           allow(@combatant).to receive(:spell_mod) {1}
           allow(Magic).to receive(:magic_spell_mod_newturn) {"mod"}          
-          expect(FS3Combat).to receive(:emit_to_combat).with(@combat,"Combatant's %xgmod modification%xn %x11has worn off%xn.", nil, true)  
+          expect(FS3Combat).to receive(:emit_to_combat).with(@combat,"CombatantName's %xgmod modification%xn %x11has worn off%xn.", nil, true)  
           Magic.spell_newturn(@combatant)          
         end
 
@@ -250,7 +248,7 @@ module AresMUSH
           allow(Magic).to receive(:magic_spell_mod_newturn) {"spell"}          
           allow(@combatant).to receive(:magic_lethal_mod) {1}
           allow(Magic).to receive(:magic_lethal_mod_newturn) {"lethality"}  
-          expect(FS3Combat).to receive(:emit_to_combat).with(@combat,"Combatant's %xglethality, spell modifications%xn %x11have worn off%xn.", nil, true)  
+          expect(FS3Combat).to receive(:emit_to_combat).with(@combat,"CombatantName's %xglethality, spell modifications%xn %x11have worn off%xn.", nil, true)  
           Magic.spell_newturn(@combatant)         
         end
 
@@ -262,7 +260,7 @@ module AresMUSH
           Magic.spell_newturn(@combatant)          
         end
 
-        fit "should handle multiple messages" do
+        it "should handle multiple messages" do
           allow(@char).to receive(:auto_revive?) {true}
           allow(@combatant).to receive(:is_ko) {true}
           allow(@combatant).to receive(:spell_mod) {1}
@@ -270,11 +268,256 @@ module AresMUSH
           allow(@combatant).to receive(:magic_lethal_mod) {1}
           allow(Magic).to receive(:magic_lethal_mod_newturn) {"lethality"}  
           allow(Magic).to receive(:magic_auto_revive) {"Msg"}          
-          expect(FS3Combat).to receive(:emit_to_combat).with(@combat,"Msg\nCombatant's %xglethality, spell modifications%xn %x11have worn off%xn.", nil, true)  
-          Magic.spell_newturn(@combatant)   
-          
+          expect(FS3Combat).to receive(:emit_to_combat).with(@combat,"Msg\nCombatantName's %xglethality, spell modifications%xn %x11have worn off%xn.", nil, true)  
+          Magic.spell_newturn(@combatant)            
+        end
+      end
+
+      describe :stun_newturn do
+        before do
+          stub_translate_for_testing
         end
 
+        subject do 
+          Magic.stun_newturn(@combatant)
+        end
+
+        context "when the counter is 0" do
+          before do
+            allow(@combatant).to receive(:magic_stun_counter) {0}
+            allow(@combatant).to receive(:log)
+            allow(@combatant).to receive(:update)
+          end
+
+          it "sets magic_stun to false and deletes the magic_stun_spell" do            
+            allow(@combatant).to receive(:log)
+            expect(@combatant).to receive(:update).with(magic_stun: false)
+            expect(@combatant).to receive(:update).with(magic_stun_spell: nil)         
+            subject
+          end
+
+          it "sends stun_wore_off msg" do
+            expect(subject).to eq "magic.stun_wore_off"
+          end
+        end
+
+        context "when the counter is > 0" do
+          before do
+            allow(@combatant).to receive(:magic_stun_counter) {2}
+            allow(@combatant).to receive(:update)
+            allow(@combatant).to receive(:subdued_by) {@char}
+          end
+
+          it "reduces the counter by 1" do
+            expect(@combatant).to receive(:update).with(magic_stun_counter: 1)
+            subject
+          end
+
+          it "sends still_stunned msg with the correct number of rounds" do
+            expect(subject).to eq "magic.still_stunned"
+          end          
+        end
+
+      end
+
+      describe :magic_attack_mod_newturn do
+        before do
+          allow(@combatant).to receive(:magic_attack_mod) {3}
+          allow(@combatant).to receive(:log)
+          allow(@combatant).to receive(:update)
+        end
+
+        subject do 
+          Magic.magic_attack_mod_newturn(@combatant)
+        end
+
+        context "when the counter is 0" do
+          before do
+            allow(@combatant).to receive(:magic_attack_mod_counter) {0}
+          end
+          it "sets the mod to 0" do
+            expect(@combatant).to receive(:update).with({magic_attack_mod: 0})
+            subject
+          end
+
+          it "returns the mod value and type" do
+            expect(subject).to eq "3 attack"
+          end
+        end
+        context "when the counter is > 0" do
+          before do
+            allow(@combatant).to receive(:magic_attack_mod_counter) {3}
+          end
+
+          it "reduces the counter by 1" do
+            expect(@combatant).to receive(:update).with({magic_attack_mod_counter: 2})
+            subject
+          end
+        end
+      end
+
+      describe :magic_defense_mod_newturn do
+        before do
+          allow(@combatant).to receive(:magic_defense_mod) {3}
+          allow(@combatant).to receive(:log)
+          allow(@combatant).to receive(:update)
+        end
+
+        subject do 
+          Magic.magic_defense_mod_newturn(@combatant)
+        end
+
+        context "when the counter is 0" do
+          before do
+            allow(@combatant).to receive(:magic_defense_mod_counter) {0}
+          end
+          it "sets the mod to 0" do
+            expect(@combatant).to receive(:update).with({magic_defense_mod: 0})
+            subject
+          end
+
+          it "returns the mod value and type" do
+            expect(subject).to eq "3 defense"
+          end
+        end
+        context "when the counter is > 0" do
+          before do
+            allow(@combatant).to receive(:magic_defense_mod_counter) {3}
+          end
+
+          it "reduces the counter by 1" do
+            expect(@combatant).to receive(:update).with({magic_defense_mod_counter: 2})
+            subject
+          end
+        end
+      end
+
+      describe :magic_init_mod_newturn do
+        before do
+          allow(@combatant).to receive(:magic_init_mod) {3}
+          allow(@combatant).to receive(:log)
+          allow(@combatant).to receive(:update)
+        end
+
+        subject do 
+          Magic.magic_init_mod_newturn(@combatant)
+        end
+
+        context "when the counter is 0" do
+          before do
+            allow(@combatant).to receive(:magic_init_mod_counter) {0}
+          end
+          it "sets the mod to 0" do
+            expect(@combatant).to receive(:update).with({magic_init_mod: 0})
+            subject
+          end
+
+          it "returns the mod value and type" do
+            expect(subject).to eq "3 initiative"
+          end
+        end
+        context "when the counter is > 0" do
+          before do
+            allow(@combatant).to receive(:magic_init_mod_counter) {3}
+          end
+
+          it "reduces the counter by 1" do
+            expect(@combatant).to receive(:update).with({magic_init_mod_counter: 2})
+            subject
+          end
+        end
+      end
+
+      describe :magic_lethal_mod_newturn do
+        before do
+          allow(@combatant).to receive(:magic_lethal_mod) {3}
+          allow(@combatant).to receive(:log)
+          allow(@combatant).to receive(:update)
+        end
+
+        subject do 
+          Magic.magic_lethal_mod_newturn(@combatant)
+        end
+
+        context "when the counter is 0" do
+          before do
+            allow(@combatant).to receive(:magic_lethal_mod_counter) {0}
+          end
+          it "sets the mod to 0" do
+            expect(@combatant).to receive(:update).with({magic_lethal_mod: 0})
+            subject
+          end
+
+          it "returns the mod value and type" do
+            expect(subject).to eq "3 lethality"
+          end
+        end
+        context "when the counter is > 0" do
+          before do
+            allow(@combatant).to receive(:magic_lethal_mod_counter) {3}
+          end
+
+          it "reduces the counter by 1" do
+            expect(@combatant).to receive(:update).with({magic_lethal_mod_counter: 2})
+            subject
+          end
+        end
+      end
+
+      describe :magic_spell_mod_newturn do
+        before do
+          allow(@combatant).to receive(:spell_mod) {3}
+          allow(@combatant).to receive(:log)
+          allow(@combatant).to receive(:update)
+        end
+
+        subject do 
+          Magic.magic_spell_mod_newturn(@combatant)
+        end
+
+        context "when the counter is 0" do
+          before do
+            allow(@combatant).to receive(:spell_mod_counter) {0}
+          end
+          it "sets the mod to 0" do
+            expect(@combatant).to receive(:update).with({spell_mod: 0})
+            subject
+          end
+
+          it "returns the mod value and type" do
+            expect(subject).to eq "3 spell"
+          end
+        end
+        context "when the counter is > 0" do
+          before do
+            allow(@combatant).to receive(:spell_mod_counter) {3}
+          end
+
+          it "reduces the counter by 1" do
+            expect(@combatant).to receive(:update).with({spell_mod_counter: 2})
+            subject
+          end
+        end
+      end
+
+      describe :magic_auto_revive do
+        before do
+          allow(@char).to receive(:auto_revive?) {"ReviveSpell"}
+          allow(@combatant).to receive(:associated_model) {@char}
+          allow(@combatant).to receive(:update)
+        end
+        subject do 
+          Magic.magic_auto_revive(@combatant)
+        end
+        it "sets a character's action to cast their auto revive spell" do
+          expect(@combatant).to receive(:update).with({action_klass: "AresMUSH::FS3Combat::SpellAction"})
+          expect(@combatant).to receive(:update).with({action_args: "ReviveSpell/CombatantName"})
+          subject
+        end
+        it "returns spell_action_msg_long" do
+          stub_translate_for_testing
+          expect(subject).to eq 'magic.spell_action_msg_long'
+        end
       end
 
     end
