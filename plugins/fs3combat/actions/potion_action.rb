@@ -119,7 +119,7 @@ module AresMUSH
           #Equip Weapon Specials
           if weapon_specials_str
             weapon = target.weapon.before("+")
-            Magic.set_magic_weapon_effects(target, self.spell)
+            Magic.set_magic_weapon_specials(target, self.spell)
             Magic.set_magic_weapon(enactor = nil, target, weapon, [weapon_specials_str])
             if (heal_points && wound)
 
@@ -136,7 +136,7 @@ module AresMUSH
 
           #Equip Armor
           if armor
-            Magic.set_magic_armor(combatant, target, armor)
+            FS3Combat.set_armor(combatant, target, armor)
             if target.name == combatant.name
               messages.concat [t('magic.potion', :name => self.name, :potion => self.spell)]
             else
@@ -147,7 +147,7 @@ module AresMUSH
           #Equip Armor Specials
           if armor_specials_str
             armor_specials = armor_specials_str ? armor_specials_str.split('+') : nil
-            Magic.set_magic_armor(combatant, target, target.armor, armor_specials)
+            FS3Combat.set_armor(combatant, target, target.armor, armor_specials)
             if target.name == combatant.name
               messages.concat [t('magic.potion', :name => self.name, :potion => self.spell)]
             else

@@ -179,7 +179,7 @@ module AresMUSH
       attack_mod = Global.read_config("spells", spell, "attack_mod")
       wound = FS3Combat.worst_treatable_wound(target.associated_model)
       weapon = target.weapon.before("+")
-      Magic.set_magic_weapon_effects(target, spell)
+      Magic.set_magic_weapon_specials(target, spell)
       Magic.set_magic_weapon(enactor = nil, target, weapon, [weapon_specials_str])
       if (heal_points && wound)
         message = []
@@ -193,7 +193,7 @@ module AresMUSH
     end
 
     def self.cast_armor(combatant, target, spell, armor)
-      Magic.set_magic_armor(combatant, target, armor)
+      FS3Combat.set_armor(combatant, target, armor)
       if combatant != target
         message = [t('magic.casts_spell_on_target', :name => combatant.name, :spell => spell, :mod => "", :target => target.name, :succeeds => "%xgSUCCEEDS%xn")]
       else
@@ -203,8 +203,9 @@ module AresMUSH
     end
 
     def self.cast_armor_specials(combatant, target, spell, armor_specials_str)
+      #This doesn't set rounds or use Magic.set_magic_armor_effects
       armor_specials = armor_specials_str ? armor_specials_str.split('+') : nil
-      Magic.set_magic_armor(combatant, target, target.armor, armor_specials)
+      FS3Combat.set_armor(combatant, target, target.armor, armor_specials)
       message = [t('magic.casts_spell', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn")]
       return message
     end
