@@ -49,7 +49,6 @@ module AresMUSH
           allow(@combatant).to receive(:is_aiming?) { false }
           allow(@combatant).to receive(:weapon) { 'Fireball' }
           allow(@combatant).to receive(:luck)
-          allow(@combatant).to receive(:distraction) { 0 }
           @target = double
           allow(@target).to receive(:mount_type) { nil }
           allow(@combatant).to receive(:mount_type) { nil }
