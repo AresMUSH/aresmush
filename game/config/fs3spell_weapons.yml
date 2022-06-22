@@ -22,7 +22,7 @@ fs3combat:
       description: Magic item
       is_magic: true
       lethality: 5
-#SPELLS
+    #SPELLS
     Fire:
       description: Level 4 Fire spell
       is_magic: true
