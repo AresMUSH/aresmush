@@ -40,15 +40,9 @@ module AresMUSH
       combatant.log "SPELL ROLL for #{combatant.name} skill=#{skill} |FS3 MODS| accuracy=#{accuracy_mod} attack=#{attack_mod} damage=#{damage_mod} stance=#{stance_mod} stress=-#{stress_mod} |MAGIC_MODS| level=#{level_mod} gm_spell=#{gm_spell_mod} magic_attack=#{magic_attack_mod} off_school_cast=#{off_school_cast_mod} spell_mod=#{spell_mod} item_attack=#{item_attack_mod} item_spell_mod=#{item_spell_mod} |LUCK MODS| attack_luck=#{attack_luck_mod} spell_luck=#{spell_luck_mod} total_mod=#{total_mod}"
 
       die_result = combatant.roll_ability(skill, total_mod)
-      succeeds = Magic.spell_success(spell, die_result)
+      succeeds = Magic.spell_success(die_result)
       return {:succeeds => succeeds, :result => die_result}
     end
-
-    # def self.shield_failed_stun_successful?(attacker_net_successes)
-    #   #Fix how this works - it's dumb to break this out and I'm not sure the logic is sound
-    #   return  attacker_net_successes > 0
-    #   return false
-    # end
 
     def self.magic_damage_type(weapon_or_spell)
       Global.read_config("spells", weapon_or_spell, "damage_type") || FS3Combat.weapon_stat(weapon_or_spell, "magic_damage_type") || Global.read_config("magic", "default_damage_type")

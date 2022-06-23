@@ -30,6 +30,7 @@ module AresMUSH
         mod = 0 - level
       end
       return mod
+      #returns negative number
     end
 
     def self.cast_noncombat_spell(caster_name, targets, spell, mod = nil, result = nil, using_potion = false)
