@@ -49,17 +49,16 @@ module AresMUSH
           return { error:  t('magic.dont_know_spell') }
         end
 
-        print_names = Magic.print_target_names(target_name_string)
-        targets = Magic.parse_spell_targets(target_name_string, spell)
-        error =  Magic.target_errors(caster, targets, spell)
+        targets = Magic.parse_spell_targets(target_name_string, )
+        error = Magic.spell_target_errors(targets, spell)
         return error if error
+        print_names = Magic.print_target_names(targets)
 
-
-        success = Magic.roll_noncombat_spell_success(caster.name, spell, mod, dice = nil)
+        success = Magic.roll_noncombat_spell(caster, spell, mod)
 
 
         if success[:succeeds] == "%xgSUCCEEDS%xn"
-          message = Magic.cast_noncombat_spell(caster.name, targets, spell, mod, success[:result])
+          message = Magic.cast_noncombat_spell(caster.name, self.targets, spell, mod, success[:result])
           Magic.handle_spell_cast_achievement(caster)
         else
           if target_name_arg.blank?
