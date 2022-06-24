@@ -8,9 +8,10 @@ module AresMUSH
     end
 
     def self.roll_combat_spell(combatant, spell, cast_mod = 0)
+      is_attack = Global.read_config("spells", spell, "fs3_attack")
       #FS3 mods
       accuracy_mod = FS3Combat.weapon_stat(combatant.weapon, "accuracy")
-      attack_mod = combatant.attack_mod      
+      attack_mod = is_attack ? combatant.attack_mod : 0  
       damage_mod = combatant.total_damage_mod
       # distraction_mod = combatant.distraction
       stance_mod = combatant.attack_stance_mod
@@ -19,16 +20,16 @@ module AresMUSH
       #Magic mods
       level_mod = Magic.spell_level_mod(spell)
       gm_spell_mod = combatant.gm_spell_mod
-      magic_attack_mod = combatant.magic_attack_mod
+      magic_attack_mod = is_attack ? combatant.magic_attack_mod : 0
       off_school_cast_mod = Magic.spell_skill(combatant, spell)[:cast_mod]
       spell_mod = combatant.spell_mod || 0
 
       #Item mods
-      item_attack_mod = Magic.item_attack_mod(combatant.associated_model)
+      item_attack_mod = is_attack ? Magic.item_attack_mod(combatant.associated_model) : 0
       item_spell_mod = Magic.item_spell_mod(combatant.associated_model)
       
       #Luck mods
-      attack_luck_mod = (combatant.luck == "Attack") ? 3 : 0
+      attack_luck_mod = ((combatant.luck == "Attack") && is_attack) ? 3 : 0
       spell_luck_mod = (combatant.luck == "Spell") ? 3 : 0
       
       skill = Magic.spell_skill(combatant, spell)[:skill]
