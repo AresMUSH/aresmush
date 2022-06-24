@@ -73,6 +73,55 @@ module AresMUSH
           Magic.roll_combat_spell(@combatant, @spell)
         end
 
+        context "when the spell is attack" do
+          before do 
+            allow(Global).to receive(:read_config).with("spells", @spell, "fs3_attack") {true}
+          end
+
+          it 'accounts for magic attack modifiers' do            
+            allow(@combatant).to receive(:magic_attack_mod) { 2 }
+            expect(@combatant).to receive(:roll_ability).with('Fire', 2)
+            Magic.roll_combat_spell(@combatant, @spell)
+          end
+
+          it 'accounts for luck spent on attack' do
+            allow(@combatant).to receive(:luck) { 'Attack' }
+            expect(@combatant).to receive(:roll_ability).with('Fire', 3)
+            Magic.roll_combat_spell(@combatant, @spell)
+          end
+
+          it 'accounts for item attack modifiers' do
+            allow(Magic).to receive(:item_attack_mod) { 2 }
+            expect(@combatant).to receive(:roll_ability).with('Fire', 2)
+            Magic.roll_combat_spell(@combatant, @spell)
+          end
+  
+        end
+        
+        context "when the spell is not an attack" do
+          before do  
+            allow(Global).to receive(:read_config).with("spells", @spell, "fs3_attack") {nil}
+          end
+
+          it "does not apply magic attack modifiers" do           
+            allow(@combatant).to receive(:magic_attack_mod) { 2 }
+            expect(@combatant).to receive(:roll_ability).with('Fire', 0)
+            Magic.roll_combat_spell(@combatant, @spell)
+          end
+
+          it 'does not apply luck spent on attack' do
+            allow(@combatant).to receive(:luck) { 'Attack' }
+            expect(@combatant).to receive(:roll_ability).with('Fire', 0)
+            Magic.roll_combat_spell(@combatant, @spell)
+          end
+
+          it 'does not apply item attack modifiers' do
+            allow(Magic).to receive(:item_attack_mod) { 2 }
+            expect(@combatant).to receive(:roll_ability).with('Fire', 0)
+            Magic.roll_combat_spell(@combatant, @spell)
+          end
+        end
+
         it 'accounts for wound modifiers' do
           allow(@combatant).to receive(:total_damage_mod) { -1 }
           expect(@combatant).to receive(:roll_ability).with('Fire', -1)
@@ -109,12 +158,6 @@ module AresMUSH
           Magic.roll_combat_spell(@combatant, @spell)
         end
 
-        it 'accounts for magic attack modifiers' do
-          allow(@combatant).to receive(:magic_attack_mod) { 2 }
-          expect(@combatant).to receive(:roll_ability).with('Fire', 2)
-          Magic.roll_combat_spell(@combatant, @spell)
-        end
-
         it 'accounts for off school cast modifiers' do
           allow(Magic).to receive(:spell_skill).with(@combatant, @spell) { { skill: 'Fire', cast_mod: 3 } }
           expect(@combatant).to receive(:roll_ability).with('Fire', 3)
@@ -127,23 +170,12 @@ module AresMUSH
           Magic.roll_combat_spell(@combatant, @spell)
         end
 
-        it 'accounts for item attack modifiers' do
-          allow(Magic).to receive(:item_attack_mod) { 2 }
-          expect(@combatant).to receive(:roll_ability).with('Fire', 2)
-          Magic.roll_combat_spell(@combatant, @spell)
-        end
-
         it 'accounts for item spell modifiers' do
           allow(Magic).to receive(:item_spell_mod) { 3 }
           expect(@combatant).to receive(:roll_ability).with('Fire', 3)
           Magic.roll_combat_spell(@combatant, @spell)
         end
 
-        it 'accounts for luck spent on attack' do
-          allow(@combatant).to receive(:luck) { 'Attack' }
-          expect(@combatant).to receive(:roll_ability).with('Fire', 3)
-          Magic.roll_combat_spell(@combatant, @spell)
-        end
 
         it 'accounts for luck spent on spells' do
           allow(@combatant).to receive(:luck) { 'Spell' }
