@@ -12,8 +12,8 @@ module AresMUSH
         if schools.include?(school)
           skill = school
         else
-          skill = "Magic"
-          cast_mod = FS3Skills.ability_rating(caster, "Magic") * 2
+          skill = Global.read_config("magic", "magic_attribute")
+          cast_mod = FS3Skills.ability_rating(caster, skill) * 2
         end
       end
       return {
