@@ -53,3 +53,5 @@ game/config/game.yml
 game/config/sites.yml
 Gemfile.lock
 game/scripts/aresconfig.js
+.byebug_history
+.vscode/settings.json
