@@ -21,7 +21,7 @@ module AresMUSH
 
         it "returns nil if combatant is an NPC" do
           allow(@combatant).to receive(:npc) {false}
-          expect(subject).to eq nil
+          expect(subject).to eq [nil]
         end
 
         it "returns nil if no item is equipped" do
@@ -38,7 +38,7 @@ module AresMUSH
         it "returns an empty array if no specials are defined on the item" do
           allow(@char).to receive(:magic_item_equipped) {"Item"}
           allow(Global).to receive(:read_config).with("magic-items", "Item", "weapon_specials") {}
-          expect(subject).to eq []            
+          expect(subject).to eq [nil]            
         end
         
       end
@@ -56,7 +56,7 @@ module AresMUSH
 
         it "returns nil if combatant is an NPC" do
           allow(@combatant).to receive(:npc) {false}
-          expect(subject).to eq nil
+          expect(subject).to eq [nil]
         end
 
         it "returns nil if no item is equipped" do
@@ -73,7 +73,7 @@ module AresMUSH
         it "returns an empty array if no specials are defined on the item" do
           allow(@char).to receive(:magic_item_equipped) {"Item"}
           allow(Global).to receive(:read_config).with("magic-items", "Item", "armor_specials") {}
-          expect(subject).to eq []            
+          expect(subject).to eq [nil]            
         end
         
       end

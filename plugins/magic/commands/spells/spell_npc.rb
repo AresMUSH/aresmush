@@ -35,7 +35,7 @@ module AresMUSH
         if error then return client.emit_failure error end
         print_names = Magic.print_target_names(targets)
 
-        result = Magic.roll_noncombat_spell_success(self.npc, self.spell, mod = nil, self.dice)
+        result = Magic.roll_npc_spell(self.npc, self.spell, self.dice)
         if result[:succeeds] == "%xgSUCCEEDS%xn"
           message = Magic.cast_noncombat_spell(self.npc, self.targets, spell, mod, result[:result])
           Magic.handle_spell_cast_achievement(enactor)

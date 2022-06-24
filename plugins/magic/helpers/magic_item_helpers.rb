@@ -36,7 +36,7 @@ module AresMUSH
     #   end
     # end
 
-    def self.magic_item_armor_specials(combatant, specials)
+    def self.magic_item_armor_specials(combatant)
       return nil if combatant.npc
       item_name = combatant.associated_model.magic_item_equipped
       return nil if item_name == "None"
