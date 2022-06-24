@@ -20,6 +20,10 @@ module AresMUSH
         self.spells_learned.sort_by { |s| s.level }
       end
 
+      def spell_max
+        Magic.spell_max
+      end
+
       def major_school
         char.group("Major School")
       end

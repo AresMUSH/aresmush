@@ -1,5 +1,7 @@
 ---
 magic:
+  magic_attribute: "Magic"
+  spell_max: 30
   days_between_learning_spells: 7
   item_category: "Luck"
   potion_spell: "Potion"

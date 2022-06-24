@@ -3,6 +3,10 @@ module AresMUSH
 
     attr_accessor :targets
 
+    def self.spell_max
+      Global.read_config("magic", "spell_max")
+    end
+
     def self.is_spell?(spell)
       spell_list = Global.read_config("spells")
       spell_name = spell.titlecase
