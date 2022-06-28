@@ -3,6 +3,14 @@ module AresMUSH
 
     attr_accessor :targets
 
+    def self.log_magic_msg(char_or_combatant, msg)
+      if (char_or_combatant.class == Combatant)
+        char_or_combatant.log msg
+      else
+        Global.logger.info msg
+      end
+    end
+
     def self.spell_max
       Global.read_config("magic", "spell_max")
     end
