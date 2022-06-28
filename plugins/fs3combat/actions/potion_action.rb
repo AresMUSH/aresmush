@@ -119,7 +119,7 @@ module AresMUSH
           #Equip Weapon Specials
           if weapon_specials_str
             weapon = target.weapon.before("+")
-            Magic.set_magic_weapon_specials(target, self.spell)
+            Magic.magic_weapon_specials(target, self.spell)
             Magic.set_magic_weapon(enactor = nil, target, weapon, [weapon_specials_str])
             if (heal_points && wound)
 
