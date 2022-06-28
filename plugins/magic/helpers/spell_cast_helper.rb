@@ -1,9 +1,10 @@
+require 'byebug'
 module AresMUSH
   module Magic
 
     def self.spell_skill(caster, spell)
       cast_mod = 0
-      if caster.npc
+      if caster.is_npc?
         skill = Global.read_config("spells", spell, "school")
       else
         caster = Magic.get_associated_model(caster)
@@ -33,77 +34,75 @@ module AresMUSH
       #returns negative number
     end
 
-    def self.cast_noncombat_spell(caster_name, targets, spell, mod = nil, result = nil, using_potion = false)
+    def self.cast_noncombat_spell(caster_name, targets, spell_name, mod = nil, result = nil, using_potion = false)
       success = "%xgSUCCEEDS%xn"
-
-      rounds = Global.read_config("spells", spell, "rounds")
-      heal_points = Global.read_config("spells", spell, "heal_points")
-      is_shield = Global.read_config("spells", spell, "is_shield")
+      spell = Global.read_config("spells", spell_name)
       caster = Character.named(caster_name) || "NPC"
       names = []
       messages = []
+      
+      #Used for spell/npc when npcs cast on themselves - does nothing but emit success
+      npc_msg = t('magic.casts_spell', :name => caster_name, :spell => spell_name, :mod => mod, :succeeds => success)
+      return messages.concat [npc_msg] if (targets == "npc_target")
 
-      if targets == "npc_target"
-        message = [t('magic.casts_spell', :name => caster_name, :spell => spell, :mod => mod, :succeeds => success)]
-        messages.concat message
-      else
-        targets.each do |target|
-          stopped_by_shield = Magic.stopped_by_shield?(target, caster_name, spell, result)
+      #Run all the spell or potion effects
+      targets.each do |target|
+        
+        #Shields don't stop potion use or casting on oneself
+        stopped_by_shield = ((caster != target) && !using_potion ) ? Magic.stopped_by_shield?(target, caster_name, spell_name, result) : nil
 
-          if stopped_by_shield && !stopped_by_shield[:hit] && caster != target && !using_potion
-            message = stopped_by_shield[:msg]
-            messages.concat [message]
-          else
-            names.concat [target.name]
+        if stopped_by_shield && !stopped_by_shield[:hit]
+          #adds the shield message regardless of whether it failed or succeeded. 
+          messages.concat [stopped_by_shield[:msg]]
+        else 
+          #Add effects and messages for shields that failed or when no relevant shields are active
+          names.concat [target.name]
 
-            if stopped_by_shield
-              messages.concat [stopped_by_shield[:msg]]
-            end
+          if stopped_by_shield
+            #This has to be separate 
+            messages.concat [stopped_by_shield[:msg]]
+          end
 
-            puts "Is shield #{is_shield}"
-            if is_shield
-              message = Magic.cast_shield(caster_name, target, spell, rounds, result)
-              messages.concat message
-            end
+          if spell['is_shield']
+            message = Magic.cast_shield(caster_name, target, spell_name, spell['rounds'], result)
+            messages.concat message
+          end
 
-            if heal_points
-              message = Magic.cast_heal(caster_name, target, spell, heal_points)
-              messages.concat message
-            end
-
+          if spell['heal_points']
+            message = Magic.cast_heal(caster_name, target, spell_name, spell['heal_points'])
+            messages.concat message
           end
         end
+
+
       end
 
       if using_potion
-        message = [Magic.get_potion_message(caster, names[0], spell)]
+        message = [Magic.get_potion_message(caster, names[0], spell_name)]
         messages.concat message
       else
         if (!names.empty? && names.all?(caster_name))
-          if !heal_points && !is_shield
-            message = [t('magic.casts_spell', :name => caster_name, :spell => spell, :mod => mod, :succeeds => success)]
+          if !spell['heal_points'] && !spell['is_shield']
+            message = [t('magic.casts_spell', :name => caster_name, :spell => spell_name, :mod => mod, :succeeds => success)]
             messages.concat message
           end
         elsif !names.empty?
           print_names = names.join(", ")
 
-          if !heal_points && !is_shield
-            message = [t('magic.casts_spell_on_target', :name => caster_name, :target => print_names, :spell => spell, :mod => mod, :succeeds => success)]
+          if !spell['heal_points'] && !spell['is_shield']
+            message = [t('magic.casts_spell_on_target', :name => caster_name, :target => print_names, :spell => spell_name, :mod => mod, :succeeds => success)]
             messages.concat message
           end
         end
       end
+      messages = messages.uniq
 
-      # if Global.read_config("spells", spell, "fs3_attack") || Global.read_config("spells", spell, "is_stun")
-      #   messages.concat ["%xrAttack and stun spells have no real damage effects outside of combat. Start a combat if you want damage to persist.%xn"]
-      # end
       return messages
     end
 
     def self.cast_shield(caster_name, target_char_or_combatant, spell, rounds, result, is_potion = false)
       target = Magic.get_associated_model(target_char_or_combatant)
-      shield = Magic.find_shield_named(target, spell)
-
+      shield = Magic.find_shield_named(target)
       if shield
         shield.update(strength: result)
         shield.update(rounds: rounds)
@@ -117,16 +116,14 @@ module AresMUSH
           }
         MagicShields.create(shield)
       end
-      puts "***************ALL SHIELDS #{target.magic_shields.to_a}***************"
 
-      shield = Magic.find_shield_named(target, spell)
+      shield = Magic.find_shield_named(target, spell)     
+       
+      msg = "Setting #{target.name}'s #{spell.upcase} to #{shield.strength}"
+      Magic.log_magic_msg(target_char_or_combatant, msg)
+
       type = Global.read_config("spells", spell, "shields_against").downcase
-      # type = "All" ? type = "all" : type = type
-      if (target_char_or_combatant.class == Combatant)
-        target_char_or_combatant.log "Setting #{target.name}'s #{spell.upcase} to #{shield.strength}"
-      else
-        Global.logger.info "Setting #{target.name}'s #{spell.upcase} to #{shield.strength}"
-      end
+
       if is_potion
         message = [t('magic.use_potion_shield', :name => caster_name, :potion => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target =>  target.name, :type => type)]
       else
@@ -136,25 +133,15 @@ module AresMUSH
     end
 
     def self.cast_heal(caster_name, target_char_or_combatant, spell, heal_points)
-      puts "COMING TO CAST HEAL!!!!!!!!!"
-      # Change this to Magic.get_associated_model and change 'combat' to target.combat once testing works
-      if (target_char_or_combatant.class == Combatant)
-        target = target_char_or_combatant.associated_model
-        combat = true
-      else
-        target = target_char_or_combatant
-        combat = false
-      end
+      target = Magic.get_associated_model(target_char_or_combatant)
       wound = FS3Combat.worst_treatable_wound(target)
       if wound.blank?
         message = [t('magic.cast_heal_no_effect', :name => caster_name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target => target.name, :points => heal_points)]
-      elsif Manage.is_extra_installed?("death") && combat && target_char_or_combatant.death_count > 0
-        puts "!!!RUNNING DEATH"
+      elsif Manage.is_extra_installed?("death") && target.combat && target_char_or_combatant.death_count > 0
         message = [t('magic.cast_ko_heal', :name => caster_name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target => target.name, :points => heal_points)]
         Death.one(target_char_or_combatant)
         FS3Combat.heal(wound, heal_points)
       else
-        puts "!!!!WRONG HEAL"
         message = [t('magic.cast_heal', :name => caster_name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target => target.name, :points => heal_points)]
         FS3Combat.heal(wound, heal_points)
       end
@@ -172,24 +159,21 @@ module AresMUSH
       return message
     end
 
-    def self.cast_weapon_specials(combatant, target, spell, weapon_specials_str)
-      heal_points = Global.read_config("spells", spell, "heal_points")
-      lethal_mod = Global.read_config("spells", spell, "lethal_mod")
-      defense_mod = Global.read_config("spells", spell, "defense_mod")
-      spell_mod = Global.read_config("spells", spell, "spell_mod")
-      attack_mod = Global.read_config("spells", spell, "attack_mod")
+    def self.cast_weapon_specials(combatant, target, spell_name, weapon_specials_str)
+      spell = Global.read_config("spells", spell_name)
       wound = FS3Combat.worst_treatable_wound(target.associated_model)
       weapon = target.weapon.before("+")
-      Magic.set_magic_weapon_specials(target, spell)
-      Magic.set_magic_weapon(enactor = nil, target, weapon, [weapon_specials_str])
-      if (heal_points && wound)
+      #Adds specials that were already in effect on the weapon or that are given by an item - this is WRONG, I changed this to a thing that doesn't work now, because this needs to add weapon_specials to the magic_weapon_specials hash and it no longer does. NEeds to go to set_magic_weapon_effects
+      weapon_specials = [weapon_specials_str].concat Magic.magic_weapon_specials(target, spell)
+      Magic.set_magic_weapon(enactor = nil, target, weapon, weapon_specials)
+      if (spell['heal_points'] && wound)
         message = []
-      elsif lethal_mod || defense_mod || attack_mod || spell_mod
+      elsif spell['lethal_mod'] || spell['defense_mod'] || spell['attack_mod'] || spell['spell_mod']
         message = []
       elsif combatant != target
-        message = [t('magic.casts_spell_on_target', :name => combatant.name, :spell => spell, :mod => "", :target => target.name, :succeeds => "%xgSUCCEEDS%xn")]
+        message = [t('magic.casts_spell_on_target', :name => combatant.name, :spell => spell_name, :mod => "", :target => target.name, :succeeds => "%xgSUCCEEDS%xn")]
       else
-        message = [t('magic.casts_spell', :name => combatant.name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn")]
+        message = [t('magic.casts_spell', :name => combatant.name, :spell => spell_name, :mod => "", :succeeds => "%xgSUCCEEDS%xn")]
       end
     end
 
