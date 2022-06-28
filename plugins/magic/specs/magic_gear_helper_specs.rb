@@ -5,7 +5,7 @@ module AresMUSH
         @combatant = double
       end
 
-      describe :set_magic_weapon_specials do
+      describe :magic_weapon_effects do
         before do
           allow(@combatant).to receive(:weapon) {"Knife"}
           allow(@combatant).to receive(:magic_weapon_effects) {{"Knife"=>{"Fire":75}}}

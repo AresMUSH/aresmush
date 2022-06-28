@@ -37,7 +37,7 @@ module AresMUSH
 
         result = Magic.roll_noncombat_spell(enactor, self.spell, self.mod)
         if result[:succeeds] == "%xgSUCCEEDS%xn"
-          message = Magic.cast_noncombat_spell(enactor.name, self.targets, spell, mod, result[:result])
+          message = Magic.cast_noncombat_spell(enactor.name, targets, spell, mod, result[:result])
           Magic.handle_spell_cast_achievement(enactor)
         else
           #Spell fails
