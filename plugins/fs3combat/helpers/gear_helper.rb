@@ -187,7 +187,10 @@ module AresMUSH
     
     def self.set_armor(enactor, combatant, armor, specials = nil)
       magic_specials = Magic.magic_armor_specials(combatant, armor)
-      magic_specials != nil ? specials = specials.concat([magic_specials]) : specials = specials
+      if magic_specials.any? 
+        specials = [] if specials.empty?
+        specials = specials.concat([magic_specials])
+      end
       combatant.update(armor_name: armor ? armor.titlecase : nil)
       combatant.update(armor_specials: specials ? specials.map { |s| s.titlecase }.uniq : [])
       message = t('fs3combat.armor_changed', :name => combatant.name, :armor => combatant.armor)
