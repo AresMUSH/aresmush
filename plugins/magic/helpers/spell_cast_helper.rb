@@ -102,7 +102,7 @@ module AresMUSH
 
     def self.cast_shield(caster_name, target_char_or_combatant, spell, rounds, result, is_potion = false)
       target = Magic.get_associated_model(target_char_or_combatant)
-      shield = Magic.find_shield_named(target)
+      shield = Magic.find_shield_named(target, spell)
       if shield
         shield.update(strength: result)
         shield.update(rounds: rounds)
