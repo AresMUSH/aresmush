@@ -1,3 +1,6 @@
+
+require 'byebug'
+
 module AresMUSH
   # Searches for a target (haracter/room/exit) with a given name in the viewer's room.
   # Handles special keywords 'me' and 'here'.
@@ -13,13 +16,15 @@ module AresMUSH
       rooms = viewer_room.name_upcase == name ? [ viewer_room ] : []
       exits = viewer_room.exits.select { |e| e.name_upcase == name }
       chars = viewer_room.characters.select { |c| c.name_upcase == name }
-      contents = [chars, exits, rooms].flatten(1)
+      mounts = Mount.all.select { |m| m.name_upcase == name }
+      contents = [chars, exits, rooms, mounts].flatten(1)
             
       if (contents.count == 0)
         exits = viewer_room.exits.select { |e| e.name_upcase.start_with?(name) }
         chars = viewer_room.characters.select { |c| c.name_upcase.start_with?(name) }
+        mounts = Mount.all.select { |m| m.name_upcase.start_with?(name) }
         rooms = viewer_room.name_upcase == name ? [ viewer_room ] : []
-        contents = [chars, exits, rooms].flatten(1)
+        contents = [chars, exits, rooms, mounts].flatten(1)
       end
       
       SingleResultSelector.select(contents)
