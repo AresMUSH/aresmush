@@ -417,11 +417,53 @@ module AresMUSH
       end
 
       describe :cast_inflict_damage do 
+        before do
+          @target = double
+          allow(@target).to receive(:associated_model)
+          allow(FS3Combat).to receive(:inflict_damage)
+          allow(@target).to receive(:update)
+          allow(@target).to receive(:name)
+          allow(@target).to receive(:damaged_by) {["Other"]}
+          allow(@char).to receive(:name) {"Caster"}
+
+        end
+
+        subject do 
+          Magic.cast_inflict_damage(@char, @target, "Spell", "FLESH", "Spell inflicted damage")
+        end
+
+        it "sets the target to freshly damaged" do
+          expect(@target).to receive(:update).with(freshly_damaged: true)
+          subject
+        end
+
+        it "adds the caster to the damaged_by list" do
+          expect(@target).to receive(:update).with(damaged_by: ["Other", "Caster"])
+          subject
+        end
+
+        it "returns cast_damage" do
+          expect(subject).to eq ["magic.cast_damage"]
+        end
+      
 
       end
 
       describe :cast_mod do
 
+        before do
+          allow(Magic).to receive(:stopped_by_shield) {nil}
+
+        end
+
+        subject do
+          Magic.cast_mod(@char, @target, "Spell", "Damage", 10, 10)
+        end
+
+      end
+
+      describe :update_spell_mods do
+        
       end
 
       describe :cast_stance do
