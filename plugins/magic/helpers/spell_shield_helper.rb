@@ -69,11 +69,6 @@ module AresMUSH
 
     def self.stopped_by_shield?(target_char_or_combatant, caster_name, weapon_or_spell, result)
       target = Magic.get_associated_model(target_char_or_combatant)
-      # if (target_char_or_combatant.class == Combatant)
-      #   target = target_char_or_combatant.associated_model
-      # else
-      #   target = target_char_or_combatant
-      # end
       damage_type = Magic.magic_damage_type(weapon_or_spell)
       shield = Magic.find_best_shield(target, damage_type)
       puts "All shields: #{target.magic_shields.to_a}"
