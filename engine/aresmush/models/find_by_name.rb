@@ -1,3 +1,20 @@
+# NOTE!
+#
+# To use this in your Ohm object, just add this to your class:
+#    include FindByName
+#
+# Also make sure you have the following members/methods defined in your class:
+#
+# attribute :name
+# attribute :name_upcase
+#
+# index :name_upcase
+#
+# before_save :save_upcase_name
+# def save_upcase_name
+#   self.name_upcase = self.name.upcase
+# end
+
 module AresMUSH
   module FindByName
 
