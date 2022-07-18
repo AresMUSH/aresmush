@@ -14,7 +14,7 @@ The relationships command lets you keep track of IC relationships in your charac
 `relationships <name>` - Sees someone else's relationships.
 
 ## Adding / Editing Relationships
-
+  
 `relationship/add <name>=<category>/<details>` - Adds a relationship.
 `relationship/update <name>=<category>/<details>` - Updates a relationship.
 `relationship/delete <name>` - Deletes a relationship.

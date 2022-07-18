@@ -1,30 +1,36 @@
 ---
 fs3skills:
   action_skills:
+  - name: Air
+    desc: Air
+    linked_attr: Magic
+  - name: Corpus
+    desc: Corpus
+    linked_attr: Magic
+  - name: Earth
+    desc: Earth
+    linked_attr: Magic
+  - name: Fire
+    desc: Fire
+    linked_attr: Magic              
   - name: Alertness
-    desc: Awareness of your surroundings. Reaction in combat.
+    desc: Noticing things and being aware of your surroundings.
     linked_attr: Perception
-    is_school: false
-  - name: Archery
-    desc: Shooting with a bow and arrow.
-    linked_attr: Reflexes
-    is_school: false
   - name: Athletics
+    linked_attr: Brawn
     desc: General running, jumping, climbing, etc.
-    linked_attr: Brawn
-    is_school: false
-  - name: Brawl
-    desc: Unarmed fighting.
-    linked_attr: Brawn
-    is_school: false
   - name: Composure
-    desc: Coolness under pressure. Keep going in combat.
+    desc: Coolness under pressure.
     linked_attr: Grit
-    is_school: false
+  - name: Demolitions
+    desc: Blowing stuff up.
+    linked_attr: Wits
   - name: Firearms
     desc: Shooting guns.
     linked_attr: Reflexes
-    is_school: false
+  - name: Gunnery
+    desc: Vehicle/special weapons (cannons, rockets/missiles, ECM packages).
+    linked_attr: Reflexes
   - name: Medicine
     desc: Tending to the ill and injured.
     linked_attr: Wits
@@ -33,60 +39,25 @@ fs3skills:
     - Surgeon
     - Nurse
     - Medic
-    - First Aid
     - Other
-    is_school: false
   - name: Melee
-    desc: Fighting with hand-to-hand weapons.
+    desc: Fighting with fists, knives, and hand-to-hand weapons.
     linked_attr: Brawn
-    is_school: false
-  - name: Research
-    desc: Navigating information systems and using books, records, and other recorded information.
-    linked_attr: Wits
+  - name: Piloting
+    desc: Flying air and spacecraft.
+    linked_attr: Reflexes
+    specialties:
+    - Viper
+    - Raptor
+    - Freighter
+    - Other
   - name: Stealth
     desc: Being sneaky.
     linked_attr: Reflexes
-    is_school: false
-  - name: Survival
-    desc: Know-how and ability to survive in the wilderness.
+  - name: Technician
+    desc: General mechanics/electronics and fixing things.
     linked_attr: Wits
-    is_school: false
-    # Magic Schools
-  - name: Air
-    desc: Magic focused on air, wind, and lightning.
-    linked_attr: Magic
-    is_school: true
-  - name: Corpus
-    desc: Magic focused on the body of sapient creatures.
-    linked_attr: Magic
-    is_school: true
-  - name: Earth
-    desc: Magic focused on earth, rock, and metal.
-    linked_attr: Magic
-    is_school: true
-  - name: Fire
-    desc: Magic focused on fire, heat, and light.
-    linked_attr: Magic
-    is_school: true
-  - name: Nature
-    desc: Magic focused on plants and non-sapient animals.
-    linked_attr: Magic
-    is_school: true
-  - name: Spirit
-    desc: Magic focused on the sapient mind, emotions, and spirit.
-    linked_attr: Magic
-    is_school: true
-  - name: Water
-    desc: Magic focused on water and ice.
-    linked_attr: Magic
-    is_school: true
-  - name: Will
-    desc: Magic focused on the physical world.
-    linked_attr: Magic
-    is_school: true
-
-
-
   action_skills_blurb: 'Action Skills represent your ability in areas deemed important
-    for gameplay, as well as your ability in your Major and Minor Schools of magic.  Action Skills are rated from 0-8. See [FS3: Action Skills](https://aresmush.com/fs3/fs3-3/chargen.html#action-skills)
-    for details.  '
+    for gameplay.  Action Skills are rated from 0-8, but some games limit the highest
+    and lowest ratings. See <a href="https://aresmush.com/fs3/fs3-3/chargen.html#action-skills"
+    target="_blank">FS3: Action Skills</a> for details.'

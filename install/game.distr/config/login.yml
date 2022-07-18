@@ -33,6 +33,7 @@ login:
     conn: connect
     kick: boot
     password/change: password/set
+    ban/delete: ban/remove
     notice: notices
   permissions:
     login: Able to log in.

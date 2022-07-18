@@ -13,6 +13,7 @@ module AresMUSH
         
         if (!combat.scene && room.scene)
           combat.update(scene: room.scene)
+          Scenes.combat_started(room.scene, combat)
         end
 
         slackers = combat.active_combatants.select { |c| !c.is_npc? && !c.posed && !c.is_ko && !c.idle }

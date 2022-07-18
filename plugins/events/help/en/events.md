@@ -27,3 +27,4 @@ The events system is an in-game calendar that lets you schedule events.
 `event/signup <#>=<comment>` - Sign up for an event.  If already signed up, this command can be used to change your comment.
 `event/cancel <#>` - Removes your signup.
 `event/cancel <#>=<name>` - Removes someone's signup (organizers only)
+

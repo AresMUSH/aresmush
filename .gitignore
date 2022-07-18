@@ -29,6 +29,7 @@ aresconfig.js
 _last_install.txt
 nginx.default
 sitemap.xml
+redis/
 
 # Process ID scripts
 # -----------------------------
@@ -50,3 +51,7 @@ game/config/server.yml
 game/config/database.yml
 game/config/game.yml
 game/config/sites.yml
+Gemfile.lock
+game/scripts/aresconfig.js
+.byebug_history
+.vscode/settings.json

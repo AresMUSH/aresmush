@@ -1,5 +1,35 @@
 ---
 magic:
+  magic_attribute: "Magic"
+  spell_max: 30
+  days_between_learning_spells: 7
+  item_category: "Luck"
+  potion_spell: "Potion"
+  major_school_group: "Major School"
+  minor_school_group: "Minor School"
+  xp_per_level: 
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+    6: 6
+    7: 7
+    8: 8
+  shield_base_defense: 20
+  shield_strength_multiplier: 5
+  potion_spell: Potions
+  shields_against_all_exceptions:
+  - Bypass
+  - Psionic
+  - None Bypass
+  default_damage_type:
+    Physical
+  type_does_damage:
+    Cold: true
+    Fire: true
+    Physical: true
+    Bypass: true
   shield_cron:
     hour:
     - 02
@@ -11,27 +41,11 @@ magic:
   energy_cron:
     minute:
     - 00
+  permissions:
+    manage_magic: Add and remove magic items, potions, and spells to and from characters. 
   shortcuts:
     combat/cast: combat/spell
     cast: spell/cast
-    potion/buy: item/buy
-  lore_hook_prefs:
-    None: No Lore Hook at all
-    Item: A magical item comes into your posession.
-    Pet: A magical creature takes a shine to you and decides to stay.
-    Ancestry: Somewhere in your family tree, your bloodline became crossed with that of a Magical Creature.
-    Storyteller: Let Storytellers decide your Lore Hook.
-  potion_spell: Potions
-  shields_against_all_exceptions:
-  - Bypass
-  - Psionic
-  default_damage_type:
-    Physical
-  type_does_damage:
-    Psionic: false
-    Cold: true
-    Fire: true
-    Physical: true
   achievements:
     potions_made:
       type: potion
@@ -51,8 +65,6 @@ magic:
     equipped_magic_item:
       type: spell
       message: "Equipped a magic item."
-  permissions:
-    manage_magic: "Add and remove spells, potions, and magic items from characters."
   energy_cost_by_level:
     1: 1
     2: 2

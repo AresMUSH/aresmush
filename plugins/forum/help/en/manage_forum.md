@@ -21,7 +21,6 @@ Forum admins can create and delete categories on the web portal.  Go to [Admin -
 * Write Roles - People with these [roles](/help/roles) are allowed to post and reply to the forum. To prevent abuse, it is advised that you minimally lock each forum to the 'approved' role.
 
 `forum/createcat <name>`
-
 `forum/describe <category>=<description>`
 `forum/rename <category>=<new name>`
 `forum/deletecat <category>`
@@ -33,7 +32,7 @@ Forum admins can create and delete categories on the web portal.  Go to [Admin -
 
 You can edit and delete other peoples' posts as well as their own.  You can also mass delete posts to clean up categories.
 
-**Tip:** It is recommended that you archive a category before doing a mass delete, as there is no 'undo'.  Deleted messages are permanently gone.
+> **Tip:** It is recommended that you archive a category before doing a mass delete, as there is no 'undo'.  Deleted messages are permanently gone.
 
 `forum/delete <category>/<#>-<#>`
 
@@ -42,7 +41,7 @@ You can edit and delete other peoples' posts as well as their own.  You can also
 Posts can be pinned (or made sticky) so they show up first regardless of when they were posted.
 
 `forum/pin <category>/<#>=<on or off>`
-
+  
 ## Archiving a Board
 
 You can archive the messages from a forum category for offline storage.  The default format is suitable for a wiki page.

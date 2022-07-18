@@ -12,7 +12,7 @@ aliases:
 
 > **Permission Required:** These commands require the Admin role or the manage\_game permission.
 
-Plugin code, help files, configuration files and translation (locale) files are all stored on disk on the server.
+Plugin code, help files, configuration files and translation (locale) files are all stored on disk on the server. 
 
 ## Enabling and Disabling Plugins
 
@@ -36,7 +36,7 @@ When you make code changes, plugin code can be loaded dynamically without restar
 ## Loading Plugin Config
 
 You can also reload the game configuration.  See [Config](/help/config).
-
+   
 ## Loading Locale Translations
 
 The plugin translation files must be loaded separately.
@@ -57,12 +57,13 @@ If you aren't sure what all you need to load, you can reload all the plugins, th
 
 ## Unloading Plugin Code
 
-You can unload an entire plugin, but this must be done with caution.
+You can unload an entire plugin, but this must be done with caution. 
 
-> Note: Unloading a plugin is not normally necessary, and if done inappropriately can cause errors in your game.
+> Note: Unloading a plugin is not normally necessary, and if done inappropriately can cause errors in your game. 
 
-Only unload a plugin if
-a) You added it yourself, like custom code or an ares extra you installed or
+Only unload a plugin if 
+a) You added it yourself, like custom code or an ares extra you installed or 
 b) You have done the necessary code surgery to ensure it can be excised safely. See the [coding tutorials](https://aresmush.com/tutorials/code/plugins.html) for more information.
 
 `unload <plugin name>` - Unloads a plugin. See notes for important cautions.
+

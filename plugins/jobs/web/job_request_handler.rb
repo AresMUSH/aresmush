@@ -5,35 +5,35 @@ module AresMUSH
         enactor = request.enactor
         job = Job[request.args[:id]]
         edit_mode = request.args[:edit_mode]
-
+        
         error = Website.check_login(request)
         return error if error
 
         if (!job)
           return { error: t('webportal.not_found') }
         end
-
+        
         is_job_admin = Jobs.can_access_jobs?(enactor)
-
+        
         if (edit_mode && !is_job_admin)
           return { error: t('dispatcher.not_allowed') }
         end
-
+        
         # Authors can access their own job.
         error = Jobs.check_job_access(enactor, job, true)
         if (error)
           return { error: error }
         end
-
+        
         Jobs.mark_read(job, enactor)
-
+        
         system_char = Game.master.system_character
         master_admin = Game.master.master_admin
         job_admins = Character.all.select { |c| Jobs.can_access_job?(c, job) && c != system_char && c != master_admin }
-
+        
         description = edit_mode ? job.description : Website.format_markdown_for_html(job.description)
         roster_char = Character.all.select { |c| c.roster_job == job }.first
-
+          
         {
           id: job.id,
           title: job.title,
@@ -65,18 +65,12 @@ module AresMUSH
             icon: Website.icon_for_char(p),
             id: p.id
           }},
-          job_admins: job_admins.map { |c|  {
-            id: c.id,
-            name: c.name
+          job_admins: job_admins.map { |c|  { 
+            id: c.id, 
+            name: c.name 
             }},
           responses: Jobs.preset_job_responses_for_web
         }
-      end
-
-      def get_job_staff
-        Character.all.select { |c| Jobs.can_access_jobs?(c) && c.id.to_i > 3 }.map do |c|
-	  { id: c.id, name: c.name }
-        end
       end
     end
   end

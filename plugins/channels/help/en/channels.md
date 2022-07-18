@@ -43,4 +43,7 @@ You can talk on a channel using the full channel name followed by the message.  
 `channel/color <channel>=<ansi prefix>` - Sets a channel's display color. Use full ansi code(s) not just the color name.  For example: \%xc  You can use multiple codes.  For example:  \%xh\%xr
 
 ## Reporting Abuse
+
+If someone is behaving badly on channel, you can bring it to the game admin's attention - along with an automatic, verified log of the channel recall buffer.  
+
 `channel/report <channel>=<explanation>`

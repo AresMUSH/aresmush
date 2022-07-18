@@ -4,8 +4,8 @@ module AresMUSH
       def handle(request)
         scene = Scene[request.args[:scene_id]]
         enactor = request.enactor
-        caster = request.enactor
-        caster_name = caster.name
+        pose_char = request.args[:pose_char]
+        caster = pose_char ? Character[pose_char] : request.enactor
         spell_string = request.args[:spell_string]
         target_name_arg = request.args[:target_name]
         mod = request.args[:mod]
@@ -42,25 +42,24 @@ module AresMUSH
             target_name_string = target_name_arg
           end
         else
-          target_name_string = enactor.name
+          target_name_string = caster.name
         end
 
-        if !Magic.knows_spell?(enactor, spell)
+        if !Magic.knows_spell?(caster, spell)
           return { error:  t('magic.dont_know_spell') }
         end
 
-        print_names = Magic.print_target_names(target_name_string)
-        targets = Magic.parse_spell_targets(target_name_string, spell)
-        error =  Magic.target_errors(enactor, targets, spell)
+        targets = Magic.parse_spell_targets(target_name_string, )
+        error = Magic.spell_target_errors(targets, spell)
         return error if error
+        print_names = Magic.print_target_names(targets)
 
-
-        success = Magic.roll_noncombat_spell_success(enactor.name, spell, mod, dice = nil)
+        success = Magic.roll_noncombat_spell(caster, spell, mod)
 
 
         if success[:succeeds] == "%xgSUCCEEDS%xn"
-          message = Magic.cast_noncombat_spell(enactor, enactor.name, targets, spell, mod, success[:result])
-          Magic.handle_spell_cast_achievement(enactor)
+          message = Magic.cast_noncombat_spell(caster.name, self.targets, spell, mod, success[:result])
+          Magic.handle_spell_cast_achievement(caster)
         else
           if target_name_arg.blank?
             message = [t('magic.casts_spell', :name => caster.name, :spell => spell, :mod => mod, :succeeds => success[:succeeds])]

@@ -13,5 +13,3 @@ When you log in, you'll be alerted if you have any personal notifications. This 
 `notices` - Shows notifications
 `notices/unread` - Shows only unread notifications.
 `notices/catchup` - Marks all notifications as read.
-
-`onconnect <comma-separated list of commands to run when you connect>`

@@ -32,7 +32,7 @@ module AresMUSH
         begin
           check_stages
         rescue Exception => ex
-          @validator.add_error "Unknown chargen config error.  Fix other errors first and try again. #{ex} #{ex.backtrace[0]}"
+          @validator.add_error "Unknown chargen config error.  Fix other errors first and try again. #{ex} #{ex.backtrace[0, 3]}"
         end
         
         @validator.errors

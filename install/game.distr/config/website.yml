@@ -41,6 +41,8 @@ website:
       route: forum
     - title: Mail
       route: mail
+    - title: Events
+      route: events
     - divider: true
     - title: Web Client
       route: client
@@ -82,6 +84,8 @@ website:
       route: fs3-limits
     - title: XP Costs
       route: fs3-xp-costs
+    - title: Skill Scan
+      route: fs3skills-scan
     - title: Roles
       route: roles
     - divider: true
@@ -150,6 +154,7 @@ website:
   - ".jpg"
   - ".png"
   - ".gif"
+  - ".jpeg"
   auto_wiki_export: true
   wiki_export_cron:
     hour:

@@ -1,15 +1,10 @@
 ---
 toc: ~admin~ Managing the Game
 summary: Managing character applications.
-aliases:
-- manage_applications
-- unapprove
-- approve
-- reject
 ---
 # Managing Applications
 
-**These commands require the Admin role or the permission: manage\_apps**
+> **Permission Required:** These commands require the Admin role or the permission: manage\_apps
 
 ## Application Workflow
 
@@ -26,7 +21,7 @@ All of this can be done either through the web portal or through in-game app com
 
 ## App Review
 
-A key feature is that characters are not *prevented* from doing things in chargen, they're only **warned** about it on the app review screen.
+A key feature that allows Ares chargen to remain generic is that characters are not *prevented* from doing things in chargen, they're only **warned** about it on the app review screen.
 
 For example, the game will not stop them from taking a skill too high or set a weird combination of faction/job, but it will *warn* them if they've done so.  They can then tweak that or submit a justification for why they've done something unusual.
 
@@ -43,8 +38,7 @@ When a character is approved, they will get a message (that you configure) telli
 `app/approve <name>` - Approves a character.
 `app/reject <name>=<message>` - Rejects a character and unlocks them so they can make changes.
 
-## Editing Backgrounds
-App Staff can view and edit other character backgrounds, in case you need to make simple tweaks during the approval process.
+Application managers can view and edit other character backgrounds, in case you need to make simple tweaks during the approval process.
 
 `bg/set <name>=<background>` - Sets a background.
 `bg/edit <name>` - Grabs the existing background text into your input buffer.
@@ -53,3 +47,4 @@ App Staff can view and edit other character backgrounds, in case you need to mak
 If you ever make a mistake and accidentally approve someone, you can unapprove them.
 
 `app/unapprove <name>` - Unapproves someone.
+

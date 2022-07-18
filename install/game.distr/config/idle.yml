@@ -12,7 +12,6 @@ idle:
     - 0
     day:
     - 1
-    - 14
   monthly_reminder_title: Monthly Chores
   monthly_reminder: It's time to run the idle sweep!
   reminder_category: MISC

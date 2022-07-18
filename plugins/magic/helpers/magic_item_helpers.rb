@@ -10,51 +10,38 @@ module AresMUSH
       Global.read_config("magic-items", item, "desc")
     end
 
-    def self.item_weapon_specials(char)
-      item_name = char.magic_item_equipped
-      if item_name == "None"
-        nil
-      else
-        Global.read_config("magic-items", item_name, "weapon_specials")
-      end
+    # def self.item_weapon_specials(char)
+    #   item_name = char.magic_item_equipped
+    #   if item_name == "None"
+    #     nil
+    #   else
+    #     Global.read_config("magic-items", item_name, "weapon_specials")
+    #   end
+    # end
+
+    def self.magic_item_weapon_specials(combatant)
+      return nil if combatant.npc
+      item_name = combatant.associated_model.magic_item_equipped
+      return nil if item_name == "None"
+      specials =  Global.read_config("magic-items", item_name, "weapon_specials")
+      return [specials]
     end
 
-    def self.set_magic_item_weapon_specials(combatant, specials)
-      if !combatant.npc
-        item_specials = Magic.item_weapon_specials(combatant.associated_model)
-      else
-        item_specials = nil
-      end
+    # def self.magic_item_armor_specials(char)
+    #   item_name = char.magic_item_equipped
+    #   if item_name == "None"
+    #     nil
+    #   else
+    #     Global.read_config("magic-items", item_name, "armor_specials")
+    #   end
+    # end
 
-      if !combatant.npc && combatant.associated_model.magic_item_equipped && specials && item_specials
-        specials.concat [item_specials]
-      elsif !combatant.npc && combatant.associated_model.magic_item_equipped && item_specials
-        specials = [item_specials]
-      end
-      return specials
-    end
-
-    def self.item_armor_specials(char)
-      item_name = char.magic_item_equipped
-      if item_name == "None"
-        nil
-      else
-        Global.read_config("magic-items", item_name, "armor_specials")
-      end
-    end
-
-    def self.set_magic_item_armor_specials(combatant, specials)
-      if !combatant.npc
-        item_specials = Magic.item_armor_specials(combatant.associated_model)
-      end
-      if !combatant.npc && specials && combatant.associated_model.magic_item_equipped && item_specials
-        specials.concat [item_specials]
-      elsif !combatant.npc && combatant.associated_model.magic_item_equipped && item_specials
-        specials = [item_specials]
-      else
-        specials = nil
-      end
-      return specials
+    def self.magic_item_armor_specials(combatant)
+      return nil if combatant.npc
+      item_name = combatant.associated_model.magic_item_equipped
+      return nil if item_name == "None"
+      specials =  Global.read_config("magic-items", item_name, "armor_specials")
+      return [specials]
     end
 
 
@@ -82,6 +69,15 @@ module AresMUSH
         0
       else
         Global.read_config("magic-items", item_name, "attack_mod")
+      end
+    end
+
+    def self.item_init_mod(char)
+      item_name = char.magic_item_equipped
+      if item_name == "None"
+        0
+      else
+        Global.read_config("magic-items", item_name, "init_mod")
       end
     end
 

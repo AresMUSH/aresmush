@@ -62,7 +62,7 @@ module AresMUSH
           check_misc
           
         rescue Exception => ex
-          @validator.add_error "Unknown FS3Skills config error.  Fix other errors first and try again. #{ex} #{ex.backtrace[0]}"
+          @validator.add_error "Unknown FS3Skills config error.  Fix other errors first and try again. #{ex} #{ex.backtrace[0, 3]}"
         end
         
         @validator.errors
@@ -230,7 +230,8 @@ module AresMUSH
           if (FS3Skills.check_ability_name(skill))
             @validator.add_error "fs3skills:starting_skills #{skill} is an invalid skill name."
           end
-          if (!rating.kind_of?(Integer) || rating.to_i < 1 || rating.to_i > 8)
+          min_rating = Global.read_config("fs3skills", "allow_incapable_action_skills") ? 0 : 1
+          if (!rating.kind_of?(Integer) || rating.to_i < min_rating || rating.to_i > 8)
             @validator.add_error "fs3skills:starting_skills #{skill} has an invalid rating."
           end
         end

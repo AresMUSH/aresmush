@@ -9,14 +9,16 @@ aliases:
 - approval
 - app
 ---
-# Character Creation
+# Character Creation Commands
+ 
+You can access the chargen commands from anywhere on the game.  The chargen tutorial will prompt you step by step.
 
-This game uses a web-based applications system for character approvals.
+> Learn about character creation in the [Chargen Tutorial](/help/chargen_tutorial).
 
-Log in to the web portal with your character name and password, then visit [Create a Character](/chargen) to complete your application online. As you are going through character creation, you can save and review your application.  The system will flag common issues.
+`cg/start` - Starts chargen.
+`cg/next` and `cg/prev` - Navigates the stages in chargen.
+`cg` - View the current chargen page again.
 
-* Visit our [Guidelines & Help](/wiki/join_us) for information on restrictions and more.
-* [Hooks & Hopes](/wiki/hooks__amp__hopes) offers hooks to new characters and lists characters others are searching for.
-* The [roster](/roster) has pre-made characters you can pick up easily.
-
-You can view responses to your application in your requests.
+`app` - Shows a summary of your character application and any issues.
+`app/submit [<optional notes about your app>]` - Submits your application.
+`app/unsubmit` - Un-submit your application.

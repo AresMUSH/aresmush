@@ -1,104 +1,36 @@
 ---
 fs3combat:
+  weapon special groups:
+    Body:
+    - cold calm
+    - fortified body
+    - sparring
+    Ranged:
+    - cold calm
+    - fire
+    - scope
+    Melee:
+    - cold calm
+    - fire
+    - fatal vitality
+    - sparring
+    Spell:
+    - cold calm
   weapon specials:
-    #LORE HOOKS
-    Aos Si Coin:
-      description: A magical lucky coin. Owned by Ethan.
-      init_mod: 1
-    Scythe Of Isis:
-      description: A magical Scythe. Owned by Danielle.
-      attack: 2
-    Zhujiang's Hairpin:
-      description: A magical hair pin. Owned by Adelaide.
-      accuracy: 1
     #MAGIC ITEMS
     Guilt-Weighted Gloves:
       description: Magic item
       is_magic: true
       lethality: 5
-    Huxian's Gift:
-      description: Magical item
-      is_magic: true
-      accuracy: 3
-      init_mod: 3
-#SPELLS
-    Cold Calm:
-      description: Level 5 Water Spell
-      is_magic: true
-      accuracy: 3
-    Diamond:
-      description: Level 4 Earth spell
-      is_magic: true
-      penetration: 2
-      magic_damage_type: Physical
-    Fatal Vitality:
-      description: Level 6 Corpus spell
-      is_magic: true
-      lethality: 30
+    #SPELLS
     Fire:
       description: Level 4 Fire spell
       is_magic: true
       lethality: 10
       accuracy: 1
-      magic_damage_type: Fire
-    Fortified Body:
-      description: Level 6 Corpus spell
-      is_magic: true
-      lethality: 10
-      penetration: 2
-    Glacial Ice:
-      description: Level 6 Water spell
-      is_magic: true
-      lethality: 20
-      penetration: 2
-      magic_damage_type: Cold
-    Grow:
-      description: Level 4 Corpus spell
-      is_magic: true
-      lethality: 15
-      penetration: 5
-    Ice:
-      description: Level 4 Ice spell
-      is_magic: true
-      lethality: 15
-      penetration: -1
-      magic_damage_type: Cold
-    Lightning:
-      description: Level 4 Air spell
-      is_magic: true
-      lethality: 5
-      penetration: 1
-      init_mod: 2
-    Major Strength:
-      description: Level 6 Corpus spell
-      is_magic: true
-      penetration: 7
-    Shrink:
-      description: Level 4 Corpus spell
-      is_magic: true
-      lethality: -20
-      penetration: -5
-      init_mod: 1
-    Strength:
-      description: Level 3 Corpus spell
-      is_magic: true
-      lethality: -5
-      penetration: 5
-    Transform:
-      description: Level 4 Will spell
-      is_magic: true
-      accuracy: 1
-      lethality: 5
-      penetration: 1
-    Vitality:
-      description: Level 4 Corpus spells
-      is_magic: true
-      lethality: 10
-
   weapons:
     Cold Shrapnel:
       description: Shrapnel that does cold damage
-      magic_damage_type: Cold
       skill: 3
       lethality: 0
       penetration: 5
@@ -110,7 +42,6 @@ fs3combat:
       is_magic: true
     Fire Shrapnel:
       description: Shrapnel that does fire damage
-      magic_damage_type: Fire
       skill: 3
       lethality: 0
       penetration: 5
@@ -120,84 +51,11 @@ fs3combat:
       accuracy: 0
       init_mod: 0
       is_magic: true
-    Physical Shrapnel:
-      description: Shrapnel that does physical damage
-      magic_damage_type: Physical
-      skill: 3
-      lethality: 0
-      penetration: 5
-      weapon_type: Ranged
-      recoil: 0
-      damage_type: Physical
-      accuracy: 0
-      init_mod: 0
-      is_magic: true
-    #LORE HOOKS
-    Bealtaine's Reaver:
-      dsecription: A magical axe imbued with unnatural accuracy, which always returns to its owner. Owned by Rowan.
-      skill: Melee
-      lethality: 0
-      penetration: 5
-      weapon_type: Melee
-      recoil: 0
-      damage_type: Physical
-      accuracy: 2
-      init_mod: 0
-      special_group: Melee
-      is_owned: true
-    Hell's Revenant:
-      description: A magical single-edged Chinese longsword with a cleaver-like tip. Owned by Calgary.
-      skill: Melee
-      lethality: 0
-      penetration: 6
-      weapon_type: Melee
-      recoil: 0
-      damage_type: Physical
-      accuracy: 0
-      init_mod: 0
-      special_group: Melee
-      is_owned: true
-    Dragon Visage:
-      description: A tang dao, a type of Chinese saber similar in shape and size to a katana. Owned by Elke.
-      skill: Melee
-      lethality: 0
-      penetration: 5
-      weapon_type: Melee
-      recoil: 0
-      damage_type: Physical
-      accuracy: 0
-      init_mod: 0
-      special_group: Melee
-      is_owned: true
-    Scythe Of Isis:
-      description: An ancient bronze scythe with a long, crescent blade fitted to a slightly curved handle. Owned by Danielle.
-      skill: Melee
-      lethality: 0
-      penetration: 5
-      weapon_type: Melee
-      recoil: 0
-      damage_type: Physical
-      accuracy: 0
-      init_mod: 0
-      special_group: Melee
-      is_owned: true
-    Sun-Slayer's Longbow:
-      description: Longbow
-      skill: Archery
-      lethality: 0
-      penetration: 4
-      weapon_type: Ranged
-      ammo: 0
-      recoil: 0
-      damage_type: Physical
-      accuracy: 1
-      init_mod: 0
-      special_group: Ranged
-    #General
+
+#General
     Spell:
       description: Spell with no stats to make it easier to grab special stats.
       is_magic: true
-      is_stun: true
       skill: Athletics
       lethality: 0
       penetration: 0
@@ -209,7 +67,6 @@ fs3combat:
     Stun (Air):
       description: Stun spell
       is_magic: true
-      is_stun: true
       skill: Air
       lethality: 0
       penetration: 0
@@ -221,7 +78,6 @@ fs3combat:
     Stun (Corpus):
       description: Stun spell
       is_magic: true
-      is_stun: true
       skill: Corpus
       lethality: 0
       penetration: 0
@@ -233,7 +89,6 @@ fs3combat:
     Stun (Earth):
       description: Stun spell
       is_magic: true
-      is_stun: true
       skill: Earth
       lethality: 0
       penetration: 0
@@ -245,7 +100,6 @@ fs3combat:
     Stun (Fire):
       description: Stun spell
       is_magic: true
-      is_stun: true
       skill: Fire
       lethality: 0
       penetration: 0
@@ -254,11 +108,9 @@ fs3combat:
       damage_type: Physical
       accuracy: 0
       init_mod: 0
-      magic_damage_type: Fire
     Stun (Nature):
       description: Stun spell
       is_magic: true
-      is_stun: true
       skill: Nature
       lethality: 0
       penetration: 0
@@ -270,7 +122,6 @@ fs3combat:
     Stun (Spirit):
       description: Stun spell
       is_magic: true
-      is_stun: true
       skill: Spirit
       lethality: 0
       penetration: 0
@@ -279,11 +130,9 @@ fs3combat:
       damage_type: Physical
       accuracy: 0
       init_mod: 0
-      magic_damage_type: Psionic
     Stun (Water):
       description: Stun spell
       is_magic: true
-      is_stun: true
       skill: Water
       lethality: 0
       penetration: 0
@@ -295,7 +144,6 @@ fs3combat:
     Stun (Will):
       description: Stun spell
       is_magic: true
-      is_stun: true
       skill: Will
       lethality: 0
       penetration: 0
@@ -304,58 +152,32 @@ fs3combat:
       damage_type: Physical
       accuracy: 0
       init_mod: 0
-  #Level 1
-  #Level 2
-    Chill Touch:
-      description: Level 2 Water spell
+
+#SPELLS
+    Breathless:
+      description: Level 4 Air spell
       is_magic: true
-      skill: Brawl
-      lethality: -10
-      penetration: 4
-      weapon_type: Melee
+      skill: Air
+      lethality: -20
+      penetration: 50
+      weapon_type: Explosive
       recoil: 0
       damage_type: Physical
       accuracy: 0
       init_mod: 0
-      special_group: Body
-      magic_damage_type: Cold
-    Fling:
-      description: Level 2 Will spell
+      special_group: Spell
+    Lightning Strike:
+      description: Level 7 Air spell
       is_magic: true
-      skill: Will
-      lethality: -15
-      penetration: 3
+      skill: Air
+      lethality: 20
+      penetration: 13
       weapon_type: Ranged
       recoil: 0
       damage_type: Physical
       accuracy: 0
       init_mod: 0
       special_group: Spell
-    Natural Weaponry:
-      description: Level 2 Nature spell
-      is_magic: true
-      skill: Brawl
-      lethality: -10
-      penetration: 4
-      weapon_type: Melee
-      recoil: 0
-      damage_type: Physical
-      accuracy: 0
-      init_mod: 0
-      special_group: Body
-    Sling Barb:
-      description: Level 2 Nature spell
-      is_magic: true
-      skill: Nature
-      lethality: -15
-      penetration: 3
-      weapon_type: Ranged
-      recoil: 0
-      damage_type: Physical
-      accuracy: 0
-      init_mod: 0
-      special_group: Spell
-  #Level 3
     Earth Bolt:
       description: Level 3 Earth spell
       is_magic: true
@@ -381,70 +203,6 @@ fs3combat:
       accuracy: 0
       init_mod: 0
       special_group: Body
-    Flame Dart:
-      description: Level 3 Fire spell
-      is_magic: true
-      skill: Fire
-      lethality: -5
-      penetration: 5
-      weapon_type: Ranged
-      recoil: 0
-      damage_type: Physical
-      accuracy: 0
-      init_mod: 0
-      special_group: Spell
-      magic_damage_type: Fire
-    Hot Hands:
-      description: Level 3 Fire spell
-      is_magic: true
-      skill: Brawl
-      lethality: -5
-      penetration: 6
-      weapon_type: Melee
-      recoil: 0
-      damage_type: Physical
-      accuracy: 3
-      init_mod: 0
-      special_group: Body
-      magic_damage_type: Fire
-    Ice Talons:
-      description: Level 3 Water spell
-      is_magic: true
-      skill: Brawl
-      lethality: -5
-      penetration: 5
-      weapon_type: Melee
-      recoil: 0
-      damage_type: Physical
-      accuracy: 0
-      init_mod: 0
-      special_group: Body
-      magic_damage_type: Cold
-    Laser Zap:
-      description: Level 3 Fire spell
-      is_magic: true
-      skill: Fire
-      lethality: -5
-      penetration: 5
-      weapon_type: Ranged
-      recoil: 0
-      damage_type: Physical
-      accuracy: 0
-      init_mod: 0
-      special_group: Spell
-    # Mind Bolt:
-    #   description: Level 3 Spirit spell
-    #   is_magic: true
-    #   skill: Spirit
-    #   lethality: 0
-    #   penetration: 0
-    #   weapon_type: Suppressive
-    #   is_automatic: true
-    #   recoil: 0
-    #   damage_type: Stun
-    #   accuracy: 3
-    #   init_mod: 0
-    #   special_group: Spell
     Stone Slam:
       description: Level 3 Earth spell
       is_magic: true
@@ -457,36 +215,35 @@ fs3combat:
       accuracy: 0
       init_mod: 0
       special_group: Spell
-    Thorn Growth:
-      description: Level 3 Nature spell
+    Hot Hands:
+      description: Level 3 Fire spell
       is_magic: true
-      skill: Nature
+      skill: Brawl
+      lethality: -5
+      penetration: 6
+      weapon_type: Melee
+      recoil: 0
+      damage_type: Physical
+      accuracy: 3
+      init_mod: 0
+      special_group: Body
+    Natural Weaponry:
+      description: Level 2 Nature spell
+      is_magic: true
+      skill: Brawl
       lethality: -10
       penetration: 4
-      weapon_type: Explosive
+      weapon_type: Melee
       recoil: 0
       damage_type: Physical
       accuracy: 0
       init_mod: 0
-      special_group: Spell
-  #Level 4
-    Acid Spit:
-      description: Level 4 Nature spell
+      special_group: Body
+    Poison Puffs:
+      description: Level 6 Nature spell
       is_magic: true
       skill: Nature
-      lethality: 0
-      penetration: 7
-      weapon_type: Ranged
-      recoil: 0
-      damage_type: Physical
-      accuracy: 0
-      init_mod: 0
-      special_group: Spell
-    Breathless:
-      description: Level 4 Air spell
-      is_magic: true
-      skill: Air
-      lethality: -20
+      lethality: -15
       penetration: 50
       weapon_type: Explosive
       recoil: 0
@@ -494,7 +251,18 @@ fs3combat:
       accuracy: 0
       init_mod: 0
       special_group: Spell
-      magic_damage_type: Bypass
+    Ice Talons:
+      description: Level 3 Water spell
+      is_magic: true
+      skill: Brawl
+      lethality: -5
+      penetration: 5
+      weapon_type: Melee
+      recoil: 0
+      damage_type: Physical
+      accuracy: 0
+      init_mod: 0
+      special_group: Body
     Cone Of Cold:
       description: Level 4 Water spell
       is_magic: true
@@ -508,45 +276,6 @@ fs3combat:
       has_shrapnel: true
       init_mod: 0
       special_group: Spell
-      magic_damage_type: Cold
-    Exoskeleton:
-      description: Level 4 Corpus spell
-      is_magic: true
-      skill: Melee
-      lethality: 0
-      penetration: 5
-      weapon_type: Melee
-      recoil: 0
-      damage_type: Physical
-      accuracy: 0
-      init_mod: 0
-      special_group: Body
-    Flame Burst:
-      description: Level 4 Fire spell
-      is_magic: true
-      skill: Fire
-      lethality: 0
-      penetration: 7
-      weapon_type: Ranged
-      recoil: 0
-      damage_type: Physical
-      accuracy: 0
-      init_mod: 0
-      special_group: Spell
-      magic_damage_type: Fire
-    Flame Breath:
-      description: Level 4 Fire spell
-      is_magic: true
-      skill: Fire
-      lethality: 0
-      penetration: 6
-      weapon_type: Ranged
-      recoil: 0
-      damage_type: Physical
-      accuracy: 0
-      init_mod: 0
-      special_group: Spell
-      magic_damage_type: Fire
     Ice Armor:
       description: Level 4 Water spell
       is_magic: true
@@ -559,87 +288,38 @@ fs3combat:
       accuracy: 0
       init_mod: 0
       special_group: Body
-      magic_damage_type: Cold
-    Ice Blast:
-      description: Level 4 Water spell
+    Slick Ground:
+      description: Level 5 Water spell
       is_magic: true
       skill: Water
-      lethality: 15
-      penetration: 5
-      weapon_type: Ranged
-      recoil: 0
-      damage_type: Physical
-      accuracy: 0
-      init_mod: 0
-      special_group: Spell
-      magic_damage_type: Cold
-    Jenu:
-      description: Form for Half Shift spell
-      is_magic: true
-      skill: Athletics
-      lethality: 5
-      penetration: 5
-      weapon_type: Melee
-      recoil: 0
-      damage_type: Physical
-      accuracy: 0
-      init_mod: 0
-      special_group: Body
-    Lightning Bolt:
-      description: Level 4 Air spell
-      is_magic: true
-      skill: Air
       lethality: 0
-      penetration: 7
-      weapon_type: Ranged
+      penetration: 0
+      weapon_type: Suppressive
+      is_automatic: true
       recoil: 0
-      damage_type: Physical
-      accuracy: 0
+      damage_type: Stun
+      accuracy: 3
       init_mod: 0
       special_group: Spell
-    Telekinetic Burst:
-      description: Level 4 Will spell
+    Exploding Ice:
+      description: Level 5 Water spell
+      is_magic: true
+      skill: Water
+      lethality: 5
+      penetration: 8
+      weapon_type: Explosive
+      recoil: 0
+      damage_type: Physical
+      accuracy: 1
+      has_shrapnel: true
+      init_mod: 0
+      special_group: Spell
+    Fling:
+      description: Level 2 Will spell
       is_magic: true
       skill: Will
-      lethality: -5
-      penetration: 8
-      weapon_type: Ranged
-      recoil: 0
-      damage_type: Physical
-      accuracy: 0
-      init_mod: 0
-      special_group: Spell
-    Rock Skin:
-      description: Level 4 Earth spell
-      is_magic: true
-      skill: Brawl
-      lethality: 5
-      penetration: 6
-      weapon_type: Melee
-      recoil: 0
-      damage_type: Physical
-      accuracy: 0
-      init_mod: 0
-      special_group: Body
-    Water Whip:
-      description: Level 4 Water spell
-      is_magic: true
-      skill: Water
-      lethality: 0
-      penetration: 7
-      weapon_type: Ranged
-      recoil: 0
-      damage_type: Physical
-      accuracy: 0
-      init_mod: 0
-      special_group: Spell
-  #Level 5
-    Blow Object:
-      description: Level 5 Air spell
-      is_magic: true
-      skill: Air
-      lethality: 12
-      penetration: 9
+      lethality: -15
+      penetration: 3
       weapon_type: Ranged
       recoil: 0
       damage_type: Physical
@@ -656,411 +336,6 @@ fs3combat:
       recoil: 0
       damage_type: Physical
       accuracy: 0
-      has_shrapnel: true
-      init_mod: 0
-      special_group: Spell
-    Earth Shudder:
-      description: Level 5 Earth spell
-      is_magic: true
-      skill: Earth
-      lethality: 0
-      penetration: 0
-      weapon_type: Suppressive
-      is_automatic: true
-      recoil: 0
-      damage_type: Stun
-      accuracy: 3
-      init_mod: 0
-      special_group: Spell
-    Electric Burst:
-      description: Level 5 Air spell
-      is_magic: true
-      skill: Air
-      lethality: 7
-      penetration: 9
-      weapon_type: Ranged
-      is_automatic: true
-      recoil: 0
-      damage_type: Physical
-      accuracy: 1
-      init_mod: 0
-      special_group: Spell
-    Flares:
-      description: Level 5 Air spell
-      is_magic: true
-      skill: Air
-      lethality: 7
-      penetration: 9
-      weapon_type: Explosive
-      recoil: 0
-      damage_type: Physical
-      accuracy: 1
-      init_mod: 0
-      special_group: Spell
-      magic_damage_type: Fire
-    Exploding Ice:
-      description: Level 5 Water spell
-      is_magic: true
-      skill: Water
-      lethality: 5
-      penetration: 8
-      weapon_type: Explosive
-      recoil: 0
-      damage_type: Physical
-      accuracy: 1
-      has_shrapnel: true
-      init_mod: 0
-      special_group: Spell
-      magic_damage_type: Cold
-    Flares:
-      description: Level 5 Fire spell
-      is_magic: true
-      skill: Fire
-      lethality: 7
-      penetration: 9
-      weapon_type: Explosive
-      recoil: 0
-      damage_type: Physical
-      accuracy: 1
-      init_mod: 0
-      special_group: Spell
-      magic_damage_type: Fire
-    Slick Ground:
-      description: Level 5 Water spell
-      is_magic: true
-      skill: Water
-      lethality: 0
-      penetration: 0
-      weapon_type: Suppressive
-      is_automatic: true
-      recoil: 0
-      damage_type: Stun
-      accuracy: 3
-      init_mod: 0
-      special_group: Spell
-    Stalagmite:
-      description: Level 5 Earth spell
-      is_magic: true
-      skill: Earth
-      lethality: 10
-      penetration: 10
-      weapon_type: Ranged
-      recoil: 0
-      damage_type: Physical
-      accuracy: 1
-      init_mod: 0
-      special_group: Spell
-    Telekinetic Crush:
-      description: Level 5 Will spell
-      is_magic: true
-      skill: Will
-      lethality: 6
-      penetration: 10
-      weapon_type: Ranged
-      recoil: 0
-      damage_type: Physical
-      accuracy: 0
-      init_mod: 0
-      special_group: Spell
-    Vine Thrash:
-      description: Level 5 Nature spell
-      is_magic: true
-      skill: Nature
-      lethality: 10
-      penetration: 7
-      weapon_type: Explosive
-      recoil: 0
-      damage_type: Physical
-      accuracy: 1
-      has_shrapnel: false
-      init_mod: 0
-      special_group: Spell
-  #Level 6
-    Demon Tails:
-      description: Level 6 Corpus spell
-      is_magic: true
-      skill: Melee
-      lethality: 12
-      penetration: 10
-      weapon_type: Explosive
-      recoil: 0
-      damage_type: Physical
-      accuracy: 0
-      init_mod: 0
-      has_shrapnel: true
-      special_group: Body
-    Fire Form:
-      description: Level 6 Fire spell
-      is_magic: true
-      skill: Brawl
-      lethality: 0
-      penetration: 7
-      weapon_type: Melee
-      recoil: 0
-      damage_type: Physical
-      accuracy: 1
-      init_mod: 0
-      has_shrapnel: false
-      special_group: Body
-    Glacial Ice:
-      description: Level 6 Water spell
-      is_magic: true
-      skill: Brawl
-      lethality: 10
-      penetration: 8
-      weapon_type: Melee
-      recoil: 0
-      damage_type: Physical
-      accuracy: 0
-      init_mod: 0
-      special_group: Melee
-      magic_damage_type: Cold
-    Iron Body:
-      description: Level 6 Corpus spell
-      is_magic: true
-      skill: Brawl
-      lethality: 5
-      penetration: 6
-      weapon_type: Melee
-      recoil: 0
-      damage_type: Physical
-      accuracy: 0
-      init_mod: 0
-      special_group: Body
-    Mass Hemorrhage:
-      description: Level 6 Corpus spell
-      is_magic: true
-      skill: Corpus
-      lethality: -15
-      penetration: 50
-      weapon_type: Ranged
-      recoil: 0
-      damage_type: Physical
-      accuracy: 0
-      init_mod: 0
-      special_group: Spell
-      magic_damage_type: Bypass
-    Poison Puffs:
-      description: Level 6 Nature spell
-      is_magic: true
-      skill: Nature
-      lethality: -15
-      penetration: 50
-      weapon_type: Explosive
-      recoil: 0
-      damage_type: Physical
-      accuracy: 0
-      init_mod: 0
-      special_group: Spell
-    Laser Blast:
-      description: Level 6 Fire spell
-      is_magic: true
-      skill: Fire
-      lethality: 10
-      penetration: 13
-      weapon_type: Ranged
-      recoil: 0
-      damage_type: Physical
-      accuracy: 0
-      init_mod: 0
-      special_group: Spell
-    Pyre:
-      description: Level 6 Fire spell
-      is_magic: true
-      skill: Fire
-      lethality: 15
-      penetration: 12
-      weapon_type: Ranged
-      recoil: 0
-      damage_type: Physical
-      accuracy: 0
-      init_mod: 0
-      special_group: Spell
-      magic_damage_type: Fire
-    Shatter:
-      description: Level 6 Ice spell
-      is_magic: true
-      skill: Water
-      accuracy: 1
-      lethality: 18
-      penetration: 10
-      weapon_type: Ranged
-      recoil: 0
-      damage_type: Physical
-      init_mod: 0
-      special_group: Spell
-      magic_damage_type: Cold
-    Stone Daggers:
-      description: Level 6 Earth spell
-      is_magic: true
-      skill: Earth
-      lethality: 15
-      penetration: 12
-      weapon_type: Ranged
-      is_automatic: true
-      recoil: 0
-      damage_type: Physical
-      accuracy: 0
-      init_mod: 0
-      special_group: Spell
-    Strong Stone Skin:
-      description: Level 6 Earth spell
-      is_magic: true
-      skill: Brawl
-      lethality: 15
-      penetration: 7
-      weapon_type: Melee
-      recoil: 0
-      damage_type: Physical
-      accuracy: 0
-      init_mod: 0
-      special_group: Body
-  #Level 7
-    Demon Form:
-      description: Level 7 Corpus spell
-      accuracy: 1
-      is_magic: true
-      skill: Melee
-      lethality: 12
-      penetration: 9
-      weapon_type: Melee
-      is_automatic: true
-      recoil: 0
-      damage_type: Physical
-      accuracy: 0
-      init_mod: 0
-      special_group: Body
-    Exploding Earth:
-      description: Level 7 Earth spell
-      is_magic: true
-      skill: Earth
-      lethality: 15
-      penetration: 13
-      weapon_type: Explosive
-      is_automatic: true
-      recoil: 0
-      damage_type: Physical
-      accuracy: 1
-      has_shrapnel: true
-      init_mod: 0
-      special_group: Spell
-    Ice Storm:
-      description: Level 7 Water spell
-      is_magic: true
-      skill: Water
-      lethality: 15
-      penetration: 13
-      weapon_type: Explosive
-      is_automatic: true
-      recoil: 0
-      damage_type: Physical
-      accuracy: 1
-      has_shrapnel: true
-      init_mod: 0
-      special_group: Spell
-      magic_damage_type: Cold
-    Lightning Strike:
-      description: Level 7 Air spell
-      is_magic: true
-      skill: Air
-      lethality: 20
-      penetration: 13
-      weapon_type: Ranged
-      recoil: 0
-      damage_type: Physical
-      accuracy: 0
-      init_mod: 0
-      special_group: Spell
-    Mass Telekinetic Burst:
-      description: Level 7 Will spell
-      is_magic: true
-      skill: Will
-      lethality: 15
-      penetration: 13
-      weapon_type: Explosive
-      is_automatic: true
-      recoil: 0
-      damage_type: Physical
-      accuracy: 1
-      init_mod: 0
-      special_group: Spell
-    Suffocate:
-      description: Level 7 Air spell
-      is_magic: true
-      skill: Air
-      lethality: 5
-      penetration: 50
-      weapon_type: Ranged
-      recoil: 0
-      damage_type: Physical
-      accuracy: 0
-      init_mod: 0
-      special_group: Spell
-      magic_damage_type: Bypass
-    Verdurous:
-      description: Level 7 Nature spell
-      is_magic: true
-      skill: Melee
-      lethality: 5
-      penetration: 7
-      weapon_type: Explosive
-      recoil: 0
-      damage_type: Physical
-      accuracy: 0
-      init_mod: 0
-      special_group: Body
-  #Level 8
-    Firestorm:
-      description: Level 8 Fire spell
-      is_magic: true
-      skill: Fire
-      lethality: 45
-      penetration: 20
-      weapon_type: Explosive
-      recoil: 0
-      damage_type: Physical
-      accuracy: 4
-      has_shrapnel: true
-      init_mod: 0
-      special_group: Spell
-      magic_damage_type: Fire
-    Land Of Ice:
-      description: Level 8 Water spell
-      is_magic: true
-      skill: Water
-      lethality: 45
-      penetration: 20
-      weapon_type: Explosive
-      recoil: 0
-      damage_type: Physical
-      accuracy: 4
-      has_shrapnel: true
-      init_mod: 0
-      special_group: Spell
-      magic_damage_type: Cold
-    Massive Quake:
-      description: Level 8 Earth spell
-      is_magic: true
-      skill: Earth
-      lethality: 45
-      penetration: 20
-      weapon_type: Explosive
-      recoil: 0
-      damage_type: Physical
-      accuracy: 4
-      has_shrapnel: true
-      init_mod: 0
-      special_group: Spell
-    Tempest:
-      description: Level 8 Air spell
-      is_magic: true
-      skill: Air
-      lethality: 45
-      penetration: 2
-      weapon_type: Explosive
-      recoil: 0
-      damage_type: Physical
-      accuracy: 4
       has_shrapnel: true
       init_mod: 0
       special_group: Spell

@@ -140,6 +140,8 @@ module AresMUSH
           allow(@combatant).to receive(:weapon_specials)
           allow(@combatant).to receive(:prior_ammo) { nil }
           allow(@combatant).to receive(:weapon_name) { nil }
+          # allow(@combatant).to receive(:npc) {false}
+          allow(Magic).to receive(:magic_weapon_specials)
         end
 
         it "should pretty up the weapon and specials if set" do

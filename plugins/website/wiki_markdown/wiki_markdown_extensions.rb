@@ -37,6 +37,7 @@ module AresMUSH
           PageListMarkdownExtension,
           CategoryListMarkdownExtension,
           SceneListMarkdownExtension,
+          PlotSceneListMarkdownExtension,
           StartDivBlockMarkdownExtension,
           StartSpanBlockMarkdownExtension,
           EndDivBlockMarkdownExtension,

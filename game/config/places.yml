@@ -6,5 +6,5 @@ places:
   same_place_color: "%xc%xB"
   shortcuts:
     places: place
-  start_marker: "("
-  end_marker: ")"
+  start_marker: "["
+  end_marker: "]"

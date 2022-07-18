@@ -36,6 +36,18 @@ module AresMUSH
       def help_url
         "#{web_portal_url}/help"
       end
+      
+      def page_display
+        center("%xh[ #{paginator.page_marker} ~ #{next_page_tip} ]%xn", 78, '-')
+      end
+      
+      def next_page_prompt
+        if (@paginator.current_page != @paginator.total_pages)
+          t('help.pages_tip', :next_page => paginator.current_page + 1)
+        else
+          ""
+        end
+      end
     end
   end
 end

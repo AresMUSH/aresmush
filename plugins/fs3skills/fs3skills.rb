@@ -5,7 +5,7 @@ module AresMUSH
     def self.plugin_dir
       File.dirname(__FILE__)
     end
-
+ 
     def self.shortcuts
       Global.read_config("fs3skills", "shortcuts")
     end
@@ -13,7 +13,7 @@ module AresMUSH
     def self.achievements
       Global.read_config('fs3skills', 'achievements')
     end
-
+ 
     def self.get_cmd_handler(client, cmd, enactor)
       case cmd.root
       when "abilities"
@@ -55,28 +55,28 @@ module AresMUSH
       when "xp"
         case cmd.switch
         when "award", "remove"
-          return XpAwardCmd
+          return XpAwardCmd    
         when "undo"
-          return XpUndoCmd
+          return XpUndoCmd     
         else
           return XpCmd
         end
       end
-
+      
       nil
     end
 
-    def self.get_event_handler(event_name)
+    def self.get_event_handler(event_name) 
       case event_name
       when "CronEvent"
         return XpCronHandler
       when "CharIdledOutEvent"
         return CharIdledOutEventHandler
       end
-
+      
       nil
     end
-
+    
     def self.get_web_request_handler(request)
       case request.cmd
       when "abilities"
@@ -85,6 +85,8 @@ module AresMUSH
         return AddJobRollRequestHandler
       when "addSceneRoll"
         return AddSceneRollRequestHandler
+      when "fs3Scan"
+        return SkillScanRequestHandler
       when "learnAbility"
         return LearnAbilityRequestHandler
       when"spendLuck"
@@ -92,7 +94,7 @@ module AresMUSH
       end
       nil
     end
-
+    
     def self.check_config
       validator = FS3SkillsConfigValidator.new
       validator.validate

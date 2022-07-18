@@ -4,7 +4,6 @@ summary: Looking around.
 order: 1
 aliases:
 - glance
-- here
 ---
 # Look Commands
 

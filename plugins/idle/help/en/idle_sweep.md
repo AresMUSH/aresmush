@@ -6,7 +6,9 @@ aliases:
 ---
 # Idle Sweeping Old Characters
 
-**These commands require the Admin role or the permission: manage\_idle.**
+> **Permission Required:** These commands require the Admin role or the permission: manage\_idle.
+
+The idle system lets you sweep the database for players who haven't logged in for awhile, so you can decide what to do with them.
 
 ## Idle Workflow
 
@@ -14,7 +16,7 @@ The idle sweep is not performed automatically. By default, the game will remind 
 
 1. Start the idle sweep with `idle/start`.
 2. Remove anyone who shouldn't be affected (either because of known vacations or other immunity) with `idle/remove`.
-3. Set an action to take on everyone else (or accept the default action) with `idle/action`.  Add an optional publicly viewable note with `idle/note`.
+3. Set an action to take on everyone else (or accept the default action) with `idle/action`.  Add an optional note with `idle/note`.
 4. Execute the idle sweep with `idle/execute`.
 
 There are several idle actions you can take with someone who comes up on the idle sweep:
@@ -22,7 +24,7 @@ There are several idle actions you can take with someone who comes up on the idl
 * Warn - Notify them they're in danger of idling out.  This is the default for approved characters.
 * Destroy - Get rid of them.  This is the default for unapproved characters.
 * Gone - Mark that they've left the IC area.
-* NPC - Mark that they're a NPC.
+* NPC - Mark that they're a NPC. 
 * Dead - Mark that they're dead.
 * Roster - Put them on the roster.
 
@@ -34,15 +36,29 @@ The system also posts a list of everyone who's idled out to the forum so people 
 
 Except for warn, the other actions also reset their password so they cannot just log back in and act like nothing happened.  To reclaim their character they will have to go through the game admin.
 
-`idle/preview <name>` - View idle information without adding someone to the idle queue.
-
-
 ## Setting Idle Status Directly
 
-`idle/set <name>=<status>` - Sets someone's status without running through the idle queue. Only 'None', 'Dead' and 'Gone' are valid options here.
-`npc <name>=<on or off>` - Admin-only command to mark a character as a staff-run NPC.
-`roster/add <name>=<contact>` - Adds someone to the roster.  Contact is optional.
+Sometimes you want to immediately idle someone out without going through the whole idle queue process.  You can do this with the `idle/now` command.  Only 'None', 'Dead' and 'Gone' are valid options here.  You can also clear someone's idle status by setting it to 'None'.
 
 ## Protected Roles
 
 You can't mark certain individuals as permanently safe from the idle sweep, but you can protect people with certain roles by specifying those roles in the idle config settings.
+
+## Rostered Characters
+
+For help managing the roster, see [Managing the Roster](/help/manage_roster)
+
+## Command Reference
+
+Here are the idle sweep commands for quick reference.  The system is explained in more detail below.
+
+`idle/start` - Builds up a list of idle players.
+`idle` - Review everyone's actions.
+`idle/action <name>=<action>` - Decides what to do with someone.  Note: If someone isn't already on the list, this will add them.  You can also use idle/gone, idle/warn, etc.
+`idle/remove <list of names>` - Removes someone from the list.
+`idle/execute` - Takes care of the actions and posts a summary to the BBS.
+`idle/note <name>=<note>` - Adds a note about what happened to them.
+
+`idle/preview <name>` - View idle information without adding someone to the idle queue.
+`idle/now <name>=<status>` - Sets someone's status without running through the idle queue.
+

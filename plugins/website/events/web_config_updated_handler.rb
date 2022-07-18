@@ -9,7 +9,7 @@ module AresMUSH
         rescue
           use_api_proxy = false
         end
-
+        
         config = {
           "mush_port" => Global.read_config("server", "port"),
           "web_portal_port" => Global.read_config("server", "web_portal_port"),
@@ -22,14 +22,13 @@ module AresMUSH
           "uploads_path" => AresMUSH.website_uploads_path,
           "game_name" => Global.read_config("game", "name"),
           "use_api_proxy" => use_api_proxy,
-          "use_https" => Global.read_config("server", "use_https"),
-          "ssl" => Global.read_config("server", "use_https")
+          "use_https" => Global.read_config("server", "use_https")
         }
-
+        
         if (!Dir.exist?(AresMUSH.website_scripts_path))
           Dir.mkdir AresMUSH.website_scripts_path
         end
-
+        
         File.open(file_path, 'w') do |f|
           f.write "var aresconfig = #{config.to_json};"
         end

@@ -3,11 +3,11 @@ module AresMUSH
 
     def self.build_scene_pose_web_data(pose, viewer, live_update = false)
       {
-        char: { name: pose.character ? pose.character.name : t('global.deleted_character'),
-                nick: pose.character ? pose.character.nick : t('global.deleted_character'),
+        char: { name: pose.character ? pose.character.name : t('global.deleted_character'), 
+                nick: pose.character ? pose.character.nick : t('global.deleted_character'), 
                 icon: Website.icon_for_char(pose.character),
-                id: pose.character ? pose.character.id : 0 },
-        order: pose.order,
+                id: pose.character ? pose.character.id : 0 }, 
+        order: pose.order, 
         id: pose.id,
         timestamp: OOCTime.local_short_date_and_time(viewer, pose.created_at),
         is_setpose: pose.is_setpose,
@@ -22,21 +22,21 @@ module AresMUSH
         live_update: live_update
       }
     end
-
+    
     def self.build_live_scene_web_data(scene, viewer, lazy_load = false)
       participants = Scenes.participants_and_room_chars(scene)
           .sort_by {|p| p.name }
-          .map { |p| {
-            name: p.name,
+          .map { |p| { 
+            name: p.name, 
             nick: p.nick,
-            id: p.id,
-            icon: Website.icon_for_char(p),
+            id: p.id, 
+            icon: Website.icon_for_char(p), 
             status: Website.activity_status(p),
             is_ooc: p.is_admin? || p.is_playerbit?,
             online: Login.is_online?(p),
             char_card: Scenes.build_char_card_web_data(p, viewer)
             }}
-
+      
       if (scene.room)
         places = scene.room.places.to_a.sort_by { |p| p.name }.map { |p| {
           name: p.name,
@@ -48,18 +48,18 @@ module AresMUSH
       else
         places = nil
       end
-
+         
       if (lazy_load)
         poses = []
       else
         poses = scene.poses_in_order.map { |p| Scenes.build_scene_pose_web_data(p, viewer) }
       end
-
+      
       combat = FS3Combat.is_enabled? ? FS3Combat.combat_for_scene(scene) : nil
       if (combat)
         combat_data = FS3Combat.build_combat_web_data(combat, viewer)
       end
-
+      
       {
         id: "#{scene.id}",
         title: scene.title,
@@ -74,7 +74,6 @@ module AresMUSH
         scene_type: scene.scene_type ? scene.scene_type.titlecase : 'unknown',
         scene_pacing: scene.scene_pacing,
         can_edit: viewer && Scenes.can_edit_scene?(viewer, scene),
-        can_read: Scenes.can_read_scene?(viewer, scene),
         can_delete: Scenes.can_delete_scene?(viewer, scene),
         is_watching: Scenes.is_watching?(scene, viewer),
         is_unread: viewer && scene.is_unread?(viewer),
@@ -91,8 +90,8 @@ module AresMUSH
         limit: scene.limit,
         lazy_loaded: lazy_load
       }
-    end
-
+    end   
+    
     def self.build_scene_summary_web_data(scene)
       {
         id: "#{scene.id}",
@@ -103,56 +102,53 @@ module AresMUSH
         location: scene.location,
         icdate: scene.icdate,
         likes: scene.likes,
-        participants: scene.participants.to_a.sort_by { |p| p.name }.map { |p|
+        participants: scene.participants.to_a.sort_by { |p| p.name }.map { |p| 
           { name: p.name, nick: p.nick, id: p.id, icon: Website.icon_for_char(p) }},
         scene_type: scene.scene_type ? scene.scene_type.titlecase : 'Unknown',
         scene_pacing: scene.scene_pacing,
         limit: scene.limit
         }
       end
-
+    
     def self.build_location_web_data(scene)
-      weather =  scene.room ? Openweather.weather_for_area(scene.room.area_name) : nil
-      return {
+      {
         name: scene.location,
-        description: scene.room ? Website.format_markdown_for_html(scene.room.expanded_web_desc) : nil,
-        weather: scene.room ? Website.format_markdown_for_html(weather) : nil,
-        weather_icon: scene.room ? Openweather.weather_icon(scene.room.area_name) : nil,
+        description: scene.room ? Website.format_markdown_for_html(scene.room.expanded_desc) : nil,
         scene_set: scene.room ? Website.format_markdown_for_html(scene.room.scene_set) : nil,
         details: scene.room ? scene.room.details.map { |k, v| { name: k, desc: Website.format_markdown_for_html(v) } } : []
       }
     end
-
+    
     def self.build_pose_order_web_data(scene)
       return {} if !scene.room
-      scene.room.sorted_pose_order.map { |name, time|
+      scene.room.sorted_pose_order.map { |name, time| 
         {
          name: name,
          time: Time.parse(time).rfc2822
          }}
     end
-
+    
     def self.build_poseable_chars_data(scene, enactor)
       return [] if !enactor
       pose_chars = scene.participants
          .select { |p| Scenes.can_pose_char?(enactor, p) }
-
+      
       pose_chars << enactor
-
+         
       pose_chars.uniq
          .sort_by { |p| [ p == enactor ? 0 : 1, p.name ]}
-         .map { |p| { id: p.id, name: p.name, icon: Website.icon_for_char(p) }}
+         .map { |p| { id: p.id, name: p.name, icon: Website.icon_for_char(p) }}   
     end
-
+    
 
     def self.parse_web_pose(pose, enactor, pose_type)
       is_setpose = pose_type == 'setpose'
       is_gmpose = pose_type == 'gm'
       is_ooc = pose_type == 'ooc'
-
+      
       command = ((pose.split(" ").first) || "").downcase
       is_emit = false
-
+      
       if (command == "ooc")
         is_ooc = true
         is_gmpose = false
@@ -163,7 +159,7 @@ module AresMUSH
         is_setpose = true
         is_emit = true
         pose = pose.after(" ")
-      elsif (command == "emit/set")
+      elsif (command == "emit/set") 
         is_setpose = true
         is_emit = true
         pose = pose.after(" ")
@@ -180,11 +176,11 @@ module AresMUSH
         markers.delete "'"
         if (pose.start_with?(*markers) || is_ooc)
           pose = PoseFormatter.format(enactor.name, pose)
-        else
+        else 
           is_emit = true
         end
       end
-
+      
       {
         pose: pose,
         is_emit: is_emit,
@@ -193,11 +189,11 @@ module AresMUSH
         is_gmpose: is_gmpose
       }
     end
-
+    
     def self.use_custom_char_cards?
       Global.read_config("scenes", "use_custom_char_cards") || false
     end
-
+    
     def self.build_char_card_web_data(char, viewer)
       if (!char)
         return {
@@ -206,7 +202,7 @@ module AresMUSH
           id: nil
         }
       end
-
+      
       {
         name: char.name,
         icon: Website.icon_for_char(char),
@@ -217,7 +213,8 @@ module AresMUSH
         description: Website.format_markdown_for_html(char.description || ""),
         status_message: Profile.get_profile_status_message(char),
         is_ooc: char.is_admin? || char.is_playerbit?,
-        custom: Scenes.custom_char_card_fields(char, viewer)
+        custom: Scenes.custom_char_card_fields(char, viewer),
+        fs3: FS3Skills.is_enabled? ? FS3Skills.build_web_char_data(char, viewer) : nil
       }
     end
   end

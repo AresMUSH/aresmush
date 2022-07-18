@@ -1,21 +1,22 @@
 ---
 channels:
+  announce_channel: Game
   approved_channels:
-  - Chat
   - RP Requests
-  - Big Scene
-  - Game
-  - Questions
-  - Plotting
   clear_history_cron:
     hour:
     - 4
     minute:
     - 47
   default_channels:
-  - New Characters
-  - Game
-  end_marker: "]"
+  - Questions
+  - Chat
+  discord_gravatar_style: retro
+  discord_prefix: "[D]"
+  end_marker: ">"
+  ooc_lounge_channel: ''
+  recall_buffer_size: 500
+  recall_timeout_days: 3
   shortcuts:
     chan: channel
     channels: channel
@@ -31,11 +32,7 @@ channels:
     delcom: channel/leave
     comtitle: channel/title
     channel/name: channel/rename
-  start_marker: "["
-  ooc_lounge_channel: ''
-  recall_timeout_days: 1
-  recall_buffer_size: 500
-  announce_channel: Game
+  start_marker: "<"
   permissions:
     manage_channels: Create and modify channels.
     set_comtitle: Can use the com title command.

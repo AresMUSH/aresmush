@@ -11,7 +11,7 @@ module AresMUSH
     
     attribute :read, :type => DataType::Boolean
     attribute :tags, :type => DataType::Array
-    
+        
     index :read
     
     def mark_read

@@ -1,11 +1,10 @@
 ---
 login:
-  allow_web_registration: false
-  guest_role: guest
-  use_terms_of_service: false
   activity_cron:
     minute:
     - 0
+  allow_creation: true
+  allow_web_registration: true
   blacklist_cron:
     day:
     - 1
@@ -14,14 +13,19 @@ login:
     - 3
     minute:
     - 0
+  creation_not_allowed_message: ''
+  guest_disabled_message: ''
+  guest_role: guest
+  login_not_allowed_message: ''
   notice_cleanup_cron:
     day:
     - 18
     hour:
-    - 7
+    - 2
     minute:
-    - 32
+    - 19
   notice_timeout_days: 60
+  portal_requires_registration: false
   shortcuts:
     logout: quit
     con: connect
@@ -29,14 +33,9 @@ login:
     conn: connect
     kick: boot
     password/change: password/set
+    ban/delete: ban/remove
     notice: notices
-  allow_creation: false
-  login_not_allowed_message: Logins for unapproved characters is turned off at the
-    moment, as Spirit Lake is currently in an app pause.  We'll be accepting applications again on March 31.
-  creation_not_allowed_message: Spirit Lake is closing in early 2021. Applications are now closed.
-  portal_requires_registration: false
-  guest_disabled_message: Sorry, Spirit Lake is full. Watch the website to see when
-    we're accepting applications again.
   permissions:
     login: Able to log in.
     manage_login: Can access login-related admin tools like resetting someone's password.
+  random_guest_selection: false

@@ -1,7 +1,7 @@
 module AresMUSH
   module Magic
 
-    def self.spell_list_config_data(list)
+    def self.spell_data_from_set(list)
       list.to_a.sort_by { |a| a.level }.map { |a|
         {
           name: a.name,
@@ -11,10 +11,11 @@ module AresMUSH
           desc: Website.format_markdown_for_html(Global.read_config("spells", a.name, "desc")),
           potion: Global.read_config("spells", a.name, "potion"),
           weapon: Global.read_config("spells", a.name, "weapon"),
-          weapon_specials:  Global.read_config("spells", a.name, "weapon_specials"),
+          weapon_specials:  Global.read_config("spells", a.name, "weapon_special"),
           armor: Global.read_config("spells", a.name, "armor"),
           armor_specials: Global.read_config("spells", a.name, "armor_specials"),
           attack_mod: Global.read_config("spells", a.name, "attack_mod"),
+          init_mod: Global.read_config("spells", a.name, "init_mod"),
           lethal_mod: Global.read_config("spells", a.name, "lethal_mod"),
           spell_mod:  Global.read_config("spells", a.name, "spell_mod"),
           defense_mod:  Global.read_config("spells", a.name, "defense_mod"),
@@ -31,8 +32,44 @@ module AresMUSH
           }}
     end
 
+    def self.spell_data_from_array_or_hash(list)
+      # Typically used with a list of spells drawn from config (ie, all spells in a school, all spells overall, all spells in search result)
+      list.sort.map { |name, data| {
+        key: name,
+        name: name,
+        desc: Website.format_markdown_for_html(data['desc']),
+        available: data['available'],
+        level: data['level'],
+        school: data['school'],
+        potion: data['is_potion'],
+        duration: data['duration'],
+        casting_time: data['casting_time'],
+        range: data['range'],
+        area: data['area'],
+        los: data['line_of_sight'],
+        targets: data['target_num'],
+        heal: data['heal_points'],
+        defense_mod: data['defense_mod'],
+        init_mod: data['init_mod'],
+        attack_mod: data['attack_mod'],
+        lethal_mod: data['lethal_mod'],
+        spell_mod: data['spell_mod'],
+        weapon: data['weapon'],
+        armor: data['armor'],
+        armor_specials: data['armor_specials'],
+        weapon_specials: data['weapon_special'],
+        effect: data['effect'],
+        damage_type: data['damage_type']
+        }
+      }
+    end
+
     def self.spell_list_all_data(list)
-      spells = Magic.spell_list_config_data(list)
+      if list.is_a?(Array) || list.is_a?(Hash)
+        spells = Magic.spell_data_from_array_or_hash(list)
+      else
+        spells = Magic.spell_data_from_set(list)
+      end
       spells.each do |s|
         weapon = Global.read_config("spells", s[:name], "weapon")
         weapon_specials = Global.read_config("spells", s[:name], "weapon_specials")
@@ -44,17 +81,17 @@ module AresMUSH
         defense = Global.read_config("spells", s[:name], "defense_mod")
         if s[:level] == 8
           s[:level_8] = true
-          s[:xp] = 13
+          s[:xp] = 12
         elsif s[:level] == 7
-          s[:xp] = 11
+          s[:xp] = 8
         elsif s[:level] == 6
-          s[:xp] = 9
+          s[:xp] = 7
         elsif s[:level] == 5
-          s[:xp] = 9
+          s[:xp] = 6
         elsif s[:level] == 4
           s[:xp] = 5
         elsif s[:level] == 3
-          s[:xp] = 5
+          s[:xp] = 4
         elsif s[:level] == 2
           s[:xp] = 3
         elsif s[:level] == 1

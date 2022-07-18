@@ -37,6 +37,7 @@ module AresMUSH
           allow(@client).to receive(:char) { @char }
           @welcome_room = double
           allow(@game).to receive(:welcome_room) { @welcome_room }
+          allow(@char).to receive(:update)
           @login = CharDisconnectedEventHandler.new
         end
            
@@ -45,6 +46,12 @@ module AresMUSH
           expect(Rooms).to receive(:move_to).with(@client, @char, @welcome_room)
           @login.on_event CharDisconnectedEvent.new(@client, @char_id)
         end
+        
+        it "should reset guest's client prefs" do
+          expect(@char).to receive(:update).with(:screen_reader, false)
+          expect(@char).to receive(:update).with(:color_mode, 'FANSI')
+        end
+        
 
         it "should not move around regular characters" do
           allow(@char).to receive(:is_guest?) { false }

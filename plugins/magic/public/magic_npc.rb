@@ -3,6 +3,7 @@ module AresMUSH
 
     collection :magic_shields, "AresMUSH::MagicShields"
     attribute :magic_energy, :type => DataType::Integer, :default => 100
+    attribute :magic_item_equipped, :default => "None"
 
     before_delete :clear_shields
 

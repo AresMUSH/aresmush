@@ -10,28 +10,28 @@ module AresMUSH
         search_token = request.args[:searchToken] || ""
         search_tag = request.args[:searchTag] || ""
         enactor = request.enactor
-
+        
         error = Website.check_login(request)
         return error if error
-
-        Global.dispatcher.spawn("Searching scene", nil) do
-
+        
+        Global.dispatcher.spawn("Searching scene", nil) do  
+        
           job_admin = Jobs.can_access_jobs?(enactor)
           if (job_admin)
             jobs = Jobs.accessible_jobs(enactor, nil, true)
           else
             jobs = enactor.requests.to_a
           end
-
+        
           if (!search_category.blank?)
             jobs = jobs.select { |j| j.job_category.name == search_category }
           end
-
+        
           if (!search_status.blank?)
             jobs = jobs.select { |j| j.status == search_status }
           end
-
-
+        
+        
           if (!search_title.blank?)
             jobs = jobs.select { |j| j.title =~ /#{search_title}/i }
           end
@@ -43,12 +43,12 @@ module AresMUSH
           if (!search_text.blank?)
             jobs = jobs.select { |j| "#{j.description} #{Jobs.visible_replies(enactor, j).map { |r| r.message }.join(' ')}" =~ /\b#{search_text}\b/i }
           end
-
+                        
           if (!search_tag.blank?)
             jobs_with_tag = ContentTag.find(content_type: 'AresMUSH::Job', name: search_tag.downcase).map { |t| "#{t.content_id}" }
             jobs = jobs.select { |c| jobs_with_tag.include?("#{c.id}") }
           end
-
+        
           data = jobs.sort_by { |j| j.created_at }.reverse.map { |j| {
               id: j.id,
               title: j.title,
@@ -59,11 +59,11 @@ module AresMUSH
               author: j.author_name,
               assigned_to: j.assigned_to ? j.assigned_to.name : "--"
             }}
-
+            
           Global.client_monitor.notify_web_clients(:search_results, "jobs|#{search_token}|#{data.to_json}", true) do |char|
             char == enactor
           end
-
+                        
         end
       end
     end

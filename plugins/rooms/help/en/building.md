@@ -5,6 +5,7 @@ order: 1
 aliases:
 - build
 - open
+- rooms
 - dig
 - link
 - unlink
@@ -16,15 +17,15 @@ aliases:
 - foyer
 - owners
 ---
-# Requesting a Build
-You can request that a room or series of rooms be built for many reasons, including a place of business, a home, or a location for a plot.
-`build/request <room name>=<details>`- Request a room be built. Include where it should be built and any other needed info. If you need several rooms built, you can do a single request.
+# Creating Rooms
+
+> **Permission Required:** These commands require the Admin role or the build permission.
 
 > Learn about building in the [Building Tutorial](/help/building_tutorial).
 
-# Creating Rooms
+## Building a Room
 
-> **These commands require the Admin role or the build permission.**
+You can create a room and optionally specify an outgoing exit (from your current room to the new one) and a return exit.
 
 `build <name>[=<outgoing exit name>,<return exit name>]` - Creates a room.
 
@@ -37,7 +38,7 @@ You can request that a room or series of rooms be built for many reasons, includ
 `unlink <exit>` - Unlinks an exit from its destination.
 
 `alias <exit name>=<exit alias>` - Sets a **single** alias for the exit.
-`shortdesc <exit name>=<short description>` - Sets the destination description that appears next to the exit name.
+`shortdesc <exit name>=<short description>` - Sets the destination description that appears next to the exit name. 
 
 > **Tip:** Any exit named "O" is automatically aliased to "Out".  Also, if no specific 'out' exit exists, 'out' will simply take you out the first exit it can find.
 

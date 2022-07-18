@@ -5,13 +5,12 @@ module AresMUSH
       char.rank
     end
     
-    # Fullname with rank and callsign, if set.  (e.g. Commander William "Husker" Adama)
-    def military_name(char)
-      Ranks.military_name(char)
-    end
-    
     def actor(char)
       char.demographic('played by')
+    end
+    
+    def profile_title(char)
+      Profile.profile_title(char)
     end
     
   end

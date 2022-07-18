@@ -55,8 +55,6 @@ en:
       cast_damage: "%{name} casts %xB%{spell}%xn on %{target} and %{succeeds}, giving %{target} a wound."
       cast_mod: "%{name} casts %xB%{spell}%xn on %{target} and %{succeeds}, giving %{target} a %xg%{mod_msg} modification%xn."
       cast_stance: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{succeeds}, changing %{target}'s stance to %{stance}. It will last for %{rounds} more round(s)."
-      cast_stun: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{succeeds}. They will be stunned for %{rounds} more round(s)."
-      cast_stun_resisted: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and the spell %{succeeds}, but %{target} resists and is not stunned."
       not_spell: "That is not a spell."
       cant_cast_on_gear: "You cannot cast %{spell} on %{target}'s %{gear}."
       doesnt_use_target: "This spell does not use a target."
@@ -91,29 +89,44 @@ en:
       not_shield: "%{shield} is not a shield."
       turn_shield_off: "%xhIf it has ICly been longer than the spell's duration, %{name} should do `shield/off %{spell}`.%xn"
       turned_shield_off: "You have turned off %{name}'s %{shield}."
-
-      shield_held: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{target}'s %X17%{shield}%xn stopped it. %{name}'s spell has %xrNO EFFECT%xn."
-      shield_failed: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{target}'s %X17%{shield}%xn failed to stop it. %{name} %xgSUCCEEDS%xn, but the damage is reduced."
+      shield_held_against_attack: "%{name} attacks %{target} with %{weapon}, but %{target}'s %X17%{shield}%xn %xrSTOPPED IT%xn."
+      shield_held_against_spell: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{target}'s %X17%{shield}%xn stopped it. %{name}'s spell has %xrNO EFFECT%xn."
+      shield_failed_against_spell: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{target}'s %X17%{shield}%xn failed to stop it. %{name} %xgSUCCEEDS%xn, but the damage is reduced."
       # shield_held_against_shrapnel: "%{name}'s %xB%{weapon}%xn hits %{target}, but %{target}'s %xB%{shield}%xn stopped it."
       shield_failed_against_shrapnel: "%{name}'s %xB%{weapon}%xn hits %{target} and %{target}'s %X17%{shield}%xn failed to stop it, but the damage is reduced."
       mod_shield_failed:  "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{target}'s %X17%{shield}%xn failed to stop it. %{name} %xgSUCCEEDS%xn, giving %{target} a %xg%{mod_msg}%xn modification."
-      shield_failed_stun: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{target}'s %X17%{shield}%xn failed to stop it. %{name} %xgSUCCEEDS%xn and %{target} will be stunned for %{rounds} more rounds."
+      shield_failed_stun: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{target}'s %X17%{shield}%xn failed to stop it. %{name} %xgSUCCEEDS%xn and %{target} will be %xmstunned%xn for %{rounds} more rounds."
       shield_failed_stun_resisted: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{target}'s %X17%{shield}%xn failed to stop it, but %{target} resists and %xris not stunned%xn."
       no_damage_shield_failed: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{target}'s %X17%{shield}%xn failed to stop it. %{name} %xgSUCCEEDS%xn."
-      shield_held_against_attack: "%{name} attacks %{target} with %{weapon}, but %{target}'s %X17%{shield}%xn %xrSTOPPED IT%xn."
+      
       shield_failed_against_attack: "%{name} attacks %{target} with %{weapon} and %{target}'s %X17%{shield}%xn failed to stop it. %{name} %xgHITS%xn, but the damage is reduced."
+
+      # ----------------------------
+      # STUNS
+      # ----------------------------
+
+      # stun_action_msg_long: "%{name} will stun %{target} this turn."
+      # stun_action_msg_short: "Stun %{target}"
+      # stun_action_success: "%{name} successfully stuns %{target}."
+      # stun_action_failed: "%{name} tries to stun %{target} but FAILS."
+      stun_wore_off: "%{name} is no longer %xmstunned%xn."
+      still_stunned: "%{name} is %xmstunned%xn by %{stunned_by}. They will be %xmstunned for %{rounds} more round(s).%xn"
+      cast_stun: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{succeeds}. They will be %xmstunned%xn for %{rounds} more round(s)."
+      cast_stun_resisted: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and the spell %{succeeds}, but %{target} resists and is not stunned."
 
       # ----------------------------
       # SPELLs WEAR OFF
       # ----------------------------
-      shield_wore_off: "%{name}'s %{shield} has worn off."
-      mod_wore_off: "%{name}'s %{mod} %{type} modification has worn off."
-      stance_wore_off: "%{name}'s %{spell} spell has worn off and they are no longer %{stance}."
+      shield_wore_off: "%{name}'s %X17%{shield}%xn %x11has worn off%xn."
+      mod_wore_off: "%{name}'s %xg%{mods} modification%xn %x11has worn off%xn."
+      mods_wore_off: "%{name}'s %xg%{mods} modifications%xn %x11have worn off%xn."
+      stance_wore_off: "%{name}'s %xB%{spell}%xn spell %x11has worn off%xn and they are no longer %{stance}."
 
       # ----------------------------
       # SHEET
       # ----------------------------
       schools_title: "Schools"
+      schools_blurb: "Schools reflect the type of spells a magic user is able to do. A magic user may have an affinity for a single School, or they may possess an affinity for two, one lesser and one greater. System-wise, Schools function in the same way as action skills."
 
       # ----------------------------
       # LEARNING SPELLS
@@ -212,3 +225,4 @@ en:
       unequip_first: "You can't given away items you have equipped. Do `item/unequip %{item}` first."
       bought_magic_item_job: "%{name} has bought %{item} for %{luck} luck."
       item_not_available: "That item is not available for purchase."
+      use_item: "Use 'item' in your command, not 'items'."
