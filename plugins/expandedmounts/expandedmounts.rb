@@ -1,7 +1,7 @@
 $:.unshift File.dirname(__FILE__)
 
 module AresMUSH
-     module Expandedmounts
+  module ExpandedMounts
 
     def self.plugin_dir
       File.dirname(__FILE__)
@@ -12,6 +12,10 @@ module AresMUSH
     end
 
     def self.get_cmd_handler(client, cmd, enactor)
+      case cmd.root
+      when "test"
+        return MountsListCmd
+      end
       nil
     end
 

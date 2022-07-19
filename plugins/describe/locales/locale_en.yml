@@ -51,6 +51,7 @@ en:
        vista_deleted: "Vista deleted."
        vista_set: "Vista set."
        vistas_title: "Vistas for %{name}"
+       vista_invalid_name: "Invalid vist name. Try one of: %{names}"
        
        notify_set: "You turn the notifications when someone looks at you %{status}."
        

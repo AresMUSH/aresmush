@@ -261,7 +261,6 @@ module AresMUSH
         type: 'forum_edited'
       }
       
-      Forum.add_recent_post(post)
       Forum.notify(post, category, :forum_edited, notification, data)
       Forum.mark_read_for_player(enactor, post)
     end
@@ -287,7 +286,6 @@ module AresMUSH
         type: 'reply_edited'
       }
       
-      Forum.add_recent_post(post)
       Forum.notify(post, category, :reply_edited, notification, data)
       Forum.mark_read_for_player(enactor, post)
     end

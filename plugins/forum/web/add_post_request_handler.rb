@@ -6,16 +6,16 @@ module AresMUSH
         category_id = request.args[:category_id]
         message = request.args[:message]
         subject = request.args[:subject]
-        author = Character.find_one_by_name(request.args[:author_id])
+        author = Character.find_one_by_name(request.args[:author_id]) || enactor
         enactor = request.enactor
 
         error = Website.check_login(request)
         return error if error
         
-        request.log_request
+        request.log_request        
         
-        if (!author)
-          author = enactor
+        if !AresCentral.is_alt?(enactor, author)
+          return { error: t('dispatcher.not_allowed') }
         end
         
         category = BbsBoard[category_id.to_i]

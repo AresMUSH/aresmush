@@ -49,6 +49,11 @@ module AresMUSH
           end
         end
         
+        # Update last online time for alts who maybe didn't log in directly
+        if (Time.now - sender.last_on > 86400)
+          Login.update_site_info(request.ip_addr, request.hostname, sender)
+        end
+        
         thread = Page.send_page(sender, recipients, message, Login.find_client(sender))
         # Respond to existing thread - no return
         if (thread_id)
