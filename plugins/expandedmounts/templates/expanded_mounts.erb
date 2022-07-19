@@ -1,0 +1,7 @@
+<%= header %>
+%xh<%= t('expanded_mounts.mounts_list_title') %>%xn
+
+<% mounts.each do |mount| %>
+%xh<%= left( mount.name, 20 ) %>%xn <%= total %>
+<% end %>
+<%= footer %> 
