@@ -1,7 +1,7 @@
 $:.unshift File.dirname(__FILE__)
 
 module AresMUSH
-     module ExpandedMounts
+  module ExpandedMounts
 
     def self.plugin_dir
       File.dirname(__FILE__)

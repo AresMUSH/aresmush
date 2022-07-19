@@ -4,7 +4,7 @@ module AresMUSH
       include CommandHandler
       
       def handle
-        template = MountsListTemplate.new 
+        template = ExpandedMountsListTemplate.new 
         client.emit template.render
       end
       

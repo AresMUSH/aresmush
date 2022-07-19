@@ -1,6 +1,6 @@
 module AresMUSH
   module ExpandedMounts
-    class ExpandedMountsTemplate < ErbTemplateRenderer
+    class ExpandedMountsListTemplate < ErbTemplateRenderer
 
 
       attr_accessor :title, :list
@@ -10,7 +10,7 @@ module AresMUSH
       end
       
       def mounts
-        Mount.all
+        Mount.all.to_a
       end
     end
   end
