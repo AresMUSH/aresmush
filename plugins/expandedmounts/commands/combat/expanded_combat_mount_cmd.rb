@@ -10,20 +10,27 @@ module AresMUSH
         if (cmd.args =~ /=/)
           args = cmd.parse_args(ArgParser.arg1_equals_arg2) 
           self.name = titlecase_arg(args.arg1)
-          self.vehicle = titlecase_arg(args.arg2)
+          self.mount_name = titlecase_arg(args.arg2)
         else
           self.name = enactor.name
-          self.vehicle = titlecase_arg(cmd.args)
+          self.mount_name = titlecase_arg(cmd.args)
         end
         #if enactor is bonded, they're pilot. Otherwise, passenger.
 
-        # self.names = self.names ? self.names.split(/[ ,]/) : nil
-        
-        # self.passenger_type = cmd.switch_is?("passenger") ? "Passenger" : "Pilot"
+
+        passenger = Character.named(self.name)
+        mount = Mount.named(self.mount_name)
+        return "That's not a mount" if !mount
+        if passenger == mount.bonded 
+          self.passenger_type = "Pilot" 
+        else
+          self.passenger_type = "Passenger"
+        end
+  
       end
 
       def required_args
-        [ self.names, self.vehicle, self.passenger_type ]
+        [ self.name, self.mount_name, self.passenger_type ]
       end
       
       def check_in_combat
@@ -33,7 +40,6 @@ module AresMUSH
       
       def check_valid_mount
         # Check to see if the mount exists
-        # Check to see if the mount belongs to the rider
         # Check to be sure the mount isn't full.
         return nil
       end
@@ -43,9 +49,9 @@ module AresMUSH
 
         # Allow joining someone who's already in a vehicle by name.  It's not
         # actually the vehicle name, it's their name.
-        combatant = combat.find_combatant(self.vehicle)
+        combatant = combat.find_combatant(self.mount_name)
         if (combatant && combatant.vehicle)
-          self.vehicle = combatant.vehicle.name
+          self.mount_name = combatant.vehicle.name
         end
         
         self.names.each do |name|
@@ -53,7 +59,7 @@ module AresMUSH
           # vehicle = FS3Combat.find_or_create_vehicle(combat, self.vehicle) 
           # Find vehicle based on mounts list. Should also create it as a vehicle so the riding_in and piloting attributes work? Not quite sure how to link this.
             
-          if (!vehicle)
+          if (!mount_name)
             client.emit_failure t('fs3combat.invalid_vehicle_name')
             # Replace with my own message
             return
