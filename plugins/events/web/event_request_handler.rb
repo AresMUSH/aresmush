@@ -25,12 +25,6 @@ module AresMUSH
         end
         
         if (enactor)
-          current_signup = event.signups.select { |s| s.character == enactor }.first
-        else
-          current_signup = nil
-        end
-
-        if (enactor)
           Login.mark_notices_read(enactor, :event, event.id)
         end
 
@@ -41,8 +35,14 @@ module AresMUSH
                     icon: s.character ? Website.icon_for_char(s.character) : nil
                   },
             comment: s.comment,
-            author: enactor && s.character == enactor
+            author: enactor && s.character == enactor,
+            can_edit: Events.can_manage_signup?(event, s.character, enactor)
             }}
+        if (enactor)
+          signupChars = AresCentral.alts(enactor).map { |p| { id: p.id, name: p.name, icon: Website.icon_for_char(p) }}   
+        else
+          sigupChars = []
+        end
                   
         {
           id: event.id,
@@ -55,14 +55,13 @@ module AresMUSH
           time: datetime.after( ' '),
           tags: event.content_tags,
           signups: signups,
-          signed_up: !!current_signup,
-          signup_comment: current_signup ? current_signup.comment : nil,
-          can_manage: enactor && Events.can_manage_event(enactor, event),
+          can_manage: enactor && Events.can_manage_event?(enactor, event),
           date_entry_format: Global.read_config("datetime", 'date_entry_format_help').upcase,
           start_datetime_local: event.start_datetime_local(request.enactor),
           start_time_standard: event.start_time_standard,
           content_warning: content_warning,
-          server_time: OOCTime.server_timestr
+          server_time: OOCTime.server_timestr,
+          available_alts: signupChars
         }
         
       end

@@ -38,7 +38,7 @@ module AresMUSH
         end
           
         demographics['age'] = char.age
-        demographics['birthdate'] = char.demographic(:birthdate)
+        demographics['birthdate'] = char.formatted_birthdate
         
         groups = {}
         

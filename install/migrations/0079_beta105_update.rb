@@ -21,12 +21,11 @@ module AresMUSH
           Game.master.update(banned_sites: banned)
           config['sites'].delete 'banned'
           DatabaseMigrator.write_config_file("sites.yml", config)     
-
-
-          Global.logger.debug "Default unified play."
-          Character.all.each { |c| c.update(unified_play: true) }
-
         end
+
+        Global.logger.debug "Default unified play."
+        Character.all.each { |c| c.update(unified_play_screen: true) }
+
       end
     end
   end    

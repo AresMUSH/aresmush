@@ -46,12 +46,12 @@ module AresMUSH
          when "scan"
            return HealScanCmd
          end
-       when "mount"
-         if (cmd.args)
-           return MountDetailCmd
-         else
-           return MountsListCmd
-         end
+      #  when "mount"
+      #    if (cmd.args)
+      #      return MountDetailCmd
+      #    else
+      #      return MountsListCmd
+      #    end
        when "vehicle"
          if (cmd.args)
            return VehicleDetailCmd

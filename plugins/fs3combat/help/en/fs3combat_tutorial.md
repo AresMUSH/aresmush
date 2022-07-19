@@ -17,10 +17,10 @@ The FS3 Combat system is designed to bring some order to the chaos of large comb
 
 The following resources on AresMUSH.com will help you learn the basics of how combat works.
 
-* [FS3 Combat Player's Guide](http://aresmush.com/fs3/fs3-3/combat.html) - Overview of key combat concepts.
-* [Interactive Combat Walkthrough](http://aresmush.com/fs3/fs3-3/combat-walkthrough.html) - Interactive simulation showing you how to use the combat system.
-* [Quick Reference](http://aresmush.com/fs3/fs3-3/combat-quickref.html) - Easy reference for the most common combat commands.
-* [Running Combats](http://aresmush.com/fs3/fs3-3/running-combat.html) - For combat organizer
+* [FS3 Combat Player's Guide](https://aresmush.com/fs3/fs3-3/combat.html) - Overview of key combat concepts.
+* [Interactive Combat Walkthrough](https://aresmush.com/fs3/fs3-3/combat-walkthrough.html) - Interactive simulation showing you how to use the combat system.
+* [Quick Reference](https://aresmush.com/fs3/fs3-3/combat-quickref.html) - Easy reference for the most common combat commands.
+* [Running Combats](https://aresmush.com/fs3/fs3-3/running-combat.html) - For combat organizer
 
 ## Starting and Joining Combats
 

@@ -53,7 +53,7 @@ module AresMUSH
       yield events.to_a[num - 1]
     end    
     
-    def self.can_manage_event(enactor, event)
+    def self.can_manage_event?(enactor, event)
       return Events.can_manage_events?(enactor) || enactor == event.character
     end
     
@@ -138,14 +138,14 @@ module AresMUSH
       end
     end
     
-    def self.cancel_signup(event, name, enactor)
-      if (name != enactor.name && !Events.can_manage_event(enactor, event))
+    def self.cancel_signup(event, char, enactor)
+      if (!Events.can_manage_signup?(event, char, enactor))
         return t('dispatcher.not_allowed')
       end
       
-      signup = event.signups.select { |s| s.character.name == name }.first
+      signup = event.signups.select { |s| s.character == char }.first
       if (!signup)
-        return t('events.not_signed_up', :name => name)
+        return t('events.not_signed_up', :name => char.name)
       end
       
       organizer = event.character
@@ -158,6 +158,24 @@ module AresMUSH
       signup.delete
       
       return nil
+    end
+    
+    def self.is_signed_up?(event, char)
+      return nil if !char
+      
+      alts = AresCentral.alts(char)
+      
+      alts.each do |alt|
+        return true if event.character == alt
+        return true if alt.event_signups.any? { |e| e.event == event }
+      end
+      return false
+    end
+    
+    def self.can_manage_signup?(event, char, enactor)
+      return false if !enactor
+      return true if Events.can_manage_event?(enactor, event)
+      AresCentral.is_alt?(enactor, char)
     end
   end
 end
