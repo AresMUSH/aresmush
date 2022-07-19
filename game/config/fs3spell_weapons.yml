@@ -1,0 +1,341 @@
+---
+fs3combat:
+  weapon special groups:
+    Body:
+    - cold calm
+    - fortified body
+    - sparring
+    Ranged:
+    - cold calm
+    - fire
+    - scope
+    Melee:
+    - cold calm
+    - fire
+    - fatal vitality
+    - sparring
+    Spell:
+    - cold calm
+  weapon specials:
+    #MAGIC ITEMS
+    Guilt-Weighted Gloves:
+      description: Magic item
+      is_magic: true
+      lethality: 5
+    #SPELLS
+    Fire:
+      description: Level 4 Fire spell
+      is_magic: true
+      lethality: 10
+      accuracy: 1
+  weapons:
+    Cold Shrapnel:
+      description: Shrapnel that does cold damage
+      skill: 3
+      lethality: 0
+      penetration: 5
+      weapon_type: Ranged
+      recoil: 0
+      damage_type: Physical
+      accuracy: 0
+      init_mod: 0
+      is_magic: true
+    Fire Shrapnel:
+      description: Shrapnel that does fire damage
+      skill: 3
+      lethality: 0
+      penetration: 5
+      weapon_type: Ranged
+      recoil: 0
+      damage_type: Physical
+      accuracy: 0
+      init_mod: 0
+      is_magic: true
+
+#General
+    Spell:
+      description: Spell with no stats to make it easier to grab special stats.
+      is_magic: true
+      skill: Athletics
+      lethality: 0
+      penetration: 0
+      weapon_type: Suppressive
+      recoil: 0
+      damage_type: Stun
+      accuracy: 0
+      init_mod: 0
+    Stun (Air):
+      description: Stun spell
+      is_magic: true
+      skill: Air
+      lethality: 0
+      penetration: 0
+      weapon_type: Melee
+      recoil: 0
+      damage_type: Physical
+      accuracy: 0
+      init_mod: 0
+    Stun (Corpus):
+      description: Stun spell
+      is_magic: true
+      skill: Corpus
+      lethality: 0
+      penetration: 0
+      weapon_type: Melee
+      recoil: 0
+      damage_type: Physical
+      accuracy: 0
+      init_mod: 0
+    Stun (Earth):
+      description: Stun spell
+      is_magic: true
+      skill: Earth
+      lethality: 0
+      penetration: 0
+      weapon_type: Melee
+      recoil: 0
+      damage_type: Physical
+      accuracy: 0
+      init_mod: 0
+    Stun (Fire):
+      description: Stun spell
+      is_magic: true
+      skill: Fire
+      lethality: 0
+      penetration: 0
+      weapon_type: Melee
+      recoil: 0
+      damage_type: Physical
+      accuracy: 0
+      init_mod: 0
+    Stun (Nature):
+      description: Stun spell
+      is_magic: true
+      skill: Nature
+      lethality: 0
+      penetration: 0
+      weapon_type: Melee
+      recoil: 0
+      damage_type: Physical
+      accuracy: 0
+      init_mod: 0
+    Stun (Spirit):
+      description: Stun spell
+      is_magic: true
+      skill: Spirit
+      lethality: 0
+      penetration: 0
+      weapon_type: Melee
+      recoil: 0
+      damage_type: Physical
+      accuracy: 0
+      init_mod: 0
+    Stun (Water):
+      description: Stun spell
+      is_magic: true
+      skill: Water
+      lethality: 0
+      penetration: 0
+      weapon_type: Melee
+      recoil: 0
+      damage_type: Physical
+      accuracy: 0
+      init_mod: 0
+    Stun (Will):
+      description: Stun spell
+      is_magic: true
+      skill: Will
+      lethality: 0
+      penetration: 0
+      weapon_type: Melee
+      recoil: 0
+      damage_type: Physical
+      accuracy: 0
+      init_mod: 0
+
+#SPELLS
+    Breathless:
+      description: Level 4 Air spell
+      is_magic: true
+      skill: Air
+      lethality: -20
+      penetration: 50
+      weapon_type: Explosive
+      recoil: 0
+      damage_type: Physical
+      accuracy: 0
+      init_mod: 0
+      special_group: Spell
+    Lightning Strike:
+      description: Level 7 Air spell
+      is_magic: true
+      skill: Air
+      lethality: 20
+      penetration: 13
+      weapon_type: Ranged
+      recoil: 0
+      damage_type: Physical
+      accuracy: 0
+      init_mod: 0
+      special_group: Spell
+    Earth Bolt:
+      description: Level 3 Earth spell
+      is_magic: true
+      skill: Earth
+      lethality: -10
+      penetration: 4
+      weapon_type: Explosive
+      recoil: 0
+      damage_type: Physical
+      accuracy: 2
+      has_shrapnel: true
+      init_mod: 0
+      special_group: Spell
+    Stone Fists:
+      description: Level 3 Earth spell
+      is_magic: true
+      skill: Brawl
+      lethality: 0
+      penetration: 5
+      weapon_type: Melee
+      recoil: 0
+      damage_type: Physical
+      accuracy: 0
+      init_mod: 0
+      special_group: Body
+    Stone Slam:
+      description: Level 3 Earth spell
+      is_magic: true
+      skill: Earth
+      lethality: -5
+      penetration: 5
+      weapon_type: Ranged
+      recoil: 0
+      damage_type: Physical
+      accuracy: 0
+      init_mod: 0
+      special_group: Spell
+    Hot Hands:
+      description: Level 3 Fire spell
+      is_magic: true
+      skill: Brawl
+      lethality: -5
+      penetration: 6
+      weapon_type: Melee
+      recoil: 0
+      damage_type: Physical
+      accuracy: 3
+      init_mod: 0
+      special_group: Body
+    Natural Weaponry:
+      description: Level 2 Nature spell
+      is_magic: true
+      skill: Brawl
+      lethality: -10
+      penetration: 4
+      weapon_type: Melee
+      recoil: 0
+      damage_type: Physical
+      accuracy: 0
+      init_mod: 0
+      special_group: Body
+    Poison Puffs:
+      description: Level 6 Nature spell
+      is_magic: true
+      skill: Nature
+      lethality: -15
+      penetration: 50
+      weapon_type: Explosive
+      recoil: 0
+      damage_type: Physical
+      accuracy: 0
+      init_mod: 0
+      special_group: Spell
+    Ice Talons:
+      description: Level 3 Water spell
+      is_magic: true
+      skill: Brawl
+      lethality: -5
+      penetration: 5
+      weapon_type: Melee
+      recoil: 0
+      damage_type: Physical
+      accuracy: 0
+      init_mod: 0
+      special_group: Body
+    Cone Of Cold:
+      description: Level 4 Water spell
+      is_magic: true
+      skill: Water
+      lethality: -5
+      penetration: 6
+      weapon_type: Explosive
+      recoil: 0
+      damage_type: Physical
+      accuracy: 0
+      has_shrapnel: true
+      init_mod: 0
+      special_group: Spell
+    Ice Armor:
+      description: Level 4 Water spell
+      is_magic: true
+      skill: Brawl
+      lethality: 0
+      penetration: 6
+      weapon_type: Melee
+      recoil: 0
+      damage_type: Physical
+      accuracy: 0
+      init_mod: 0
+      special_group: Body
+    Slick Ground:
+      description: Level 5 Water spell
+      is_magic: true
+      skill: Water
+      lethality: 0
+      penetration: 0
+      weapon_type: Suppressive
+      is_automatic: true
+      recoil: 0
+      damage_type: Stun
+      accuracy: 3
+      init_mod: 0
+      special_group: Spell
+    Exploding Ice:
+      description: Level 5 Water spell
+      is_magic: true
+      skill: Water
+      lethality: 5
+      penetration: 8
+      weapon_type: Explosive
+      recoil: 0
+      damage_type: Physical
+      accuracy: 1
+      has_shrapnel: true
+      init_mod: 0
+      special_group: Spell
+    Fling:
+      description: Level 2 Will spell
+      is_magic: true
+      skill: Will
+      lethality: -15
+      penetration: 3
+      weapon_type: Ranged
+      recoil: 0
+      damage_type: Physical
+      accuracy: 0
+      init_mod: 0
+      special_group: Spell
+    Buckshot:
+      description: Level 5 Will spell
+      is_magic: true
+      skill: Will
+      lethality: 5
+      penetration: 8
+      weapon_type: Explosive
+      recoil: 0
+      damage_type: Physical
+      accuracy: 0
+      has_shrapnel: true
+      init_mod: 0
+      special_group: Spell

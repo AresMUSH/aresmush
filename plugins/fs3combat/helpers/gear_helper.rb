@@ -22,7 +22,6 @@ module AresMUSH
       return nil if !weapon
       
       value = weapon[stat]
-      return nil if !value
       
       special_names = name_with_specials.after("+")
       special_names = special_names ? special_names.split("+") : []
@@ -34,7 +33,11 @@ module AresMUSH
         special_value = special[stat]
         next if !special_value
       
-        value = value + special_value
+        if value.is_a? Integer
+          value = value + special_value
+        elsif stat == "magic_damage_type"
+          value = special_value
+        end
       end
       value
     end
@@ -168,6 +171,8 @@ module AresMUSH
         prior_ammo[combatant.weapon_name] = combatant.ammo
         combatant.update(prior_ammo: prior_ammo)
       end
+      magic_specials = Magic.magic_weapon_specials(combatant, weapon)
+      magic_specials != nil ? specials = specials.concat([magic_specials]) : specials = specials
       combatant.update(weapon_name: weapon)
       combatant.update(weapon_specials: specials)
       combatant.update(ammo: current_ammo)
@@ -181,6 +186,11 @@ module AresMUSH
     end
     
     def self.set_armor(enactor, combatant, armor, specials = nil)
+      magic_specials = Magic.magic_armor_specials(combatant, armor)
+      if magic_specials.any? 
+        specials = [] if specials.empty?
+        specials = specials.concat([magic_specials])
+      end
       combatant.update(armor_name: armor ? armor.titlecase : nil)
       combatant.update(armor_specials: specials ? specials.map { |s| s.titlecase }.uniq : [])
       message = t('fs3combat.armor_changed', :name => combatant.name, :armor => combatant.armor)

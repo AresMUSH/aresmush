@@ -1,0 +1,8 @@
+---
+datetime:
+  date_and_time_entry_format_help: mm/dd/yyyy hh:mm<am or pm>
+  date_entry_format_help: mm/dd/yyyy
+  long_date_format: "%a %b %d, %Y %l:%M%P"
+  server_timezone: EST
+  short_date_format: "%m/%d/%Y"
+  time_format: "%l:%M%P"

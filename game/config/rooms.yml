@@ -1,0 +1,25 @@
+---
+rooms:
+  room_lock_cron:
+    minute:
+    - 0
+  shortcuts:
+    tel: teleport
+    move: go
+    dig: build
+    o: out
+    dig/teleport: build
+    dig/tel: build
+    mjoin: meetme/join
+    msummon: meetme/bring
+    room/type: roomtype
+    room/area: area/set
+    map: area
+    owners: owner
+    location: room
+    rooms: room
+    locations: room
+  permissions:
+    build: Access build commands to create rooms and exits.
+    go_home: Use the home and work commands.
+    teleport: Can teleport anywhere.

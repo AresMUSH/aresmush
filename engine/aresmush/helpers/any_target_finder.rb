@@ -12,8 +12,9 @@ module AresMUSH
       chars = Character.find_any_by_name(name_or_id)
       exits = Exit.find_any_by_name(name_or_id)
       rooms = Room.find_any_by_name(name_or_id)
+      mounts = Mount.find_any_by_name(name_or_id)
       
-      contents = [chars, exits, rooms].flatten(1).select { |c| c }   
+      contents = [chars, exits, rooms, mounts].flatten(1).select { |c| c }   
             
       SingleResultSelector.select(contents)
     end

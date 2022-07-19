@@ -1,0 +1,39 @@
+---
+fs3combat:
+  armor:
+    Natural Defenses:
+      description: Level 2 Nature spell
+      is_magic: false
+      defense: 0
+      protection:
+        Head: 4
+        Neck: 4
+        Chest: 4
+        Abdomen: 4
+        Left Leg: 4
+        Right Leg: 4
+        Groin: 4
+        Left Arm: 4
+        Right Arm: 4
+        Left Hand: 4
+        Right Hand: 4
+        Left Foot: 4
+        Right Foot: 4
+    Ice:
+      description: Level 4 Water spell
+      is_magic: true
+      defense: 0
+      protection:
+        Head: 8
+        Neck: 8
+        Chest: 8
+        Abdomen: 8
+        Left Leg: 8
+        Right Leg: 8
+        Groin: 8
+        Left Arm: 8
+        Right Arm: 8
+        Left Hand: 8
+        Right Hand: 8
+        Left Foot: 8
+        Right Foot: 8

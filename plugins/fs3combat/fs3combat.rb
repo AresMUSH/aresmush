@@ -74,6 +74,8 @@ module AresMUSH
            return CombatAmmoCmd
          when "attackmod", "defensemod", "lethalmod", "initmod"
            return CombatModCmd
+        when "seemods"
+          return CombatSeeModsCmd
          when "armor"
            return CombatArmorCmd
          when "hitloc"

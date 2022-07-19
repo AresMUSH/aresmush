@@ -1,0 +1,84 @@
+---
+fs3combat:
+  vehicles:
+    Viper:
+      description: Viper space fighter
+      pilot_skill: Piloting
+      toughness: 0
+      hitloc_chart: Fighter
+      armor: Viper
+      weapons:
+      - Kew
+      dodge: 1
+    Raider:
+      description: Cylon Raider space fighter
+      pilot_skill: Piloting
+      toughness: -1
+      hitloc_chart: Fighter
+      armor: Raider
+      weapons:
+      - Kew
+      - Missile
+      - Nuke
+      dodge: 1
+    Raptor:
+      description: Raptor space command and control
+      pilot_skill: Piloting
+      toughness: 2
+      hitloc_chart: Transport
+      armor: Raptor
+      weapons:
+      - Kew
+      - Ecm
+      - Kew
+      - Missile
+      - Talons
+      - Rocket
+      dodge: 0
+    Heavy Raider:
+      description: Cylon Heavy Raider space transport/bomber
+      pilot_skill: Piloting
+      toughness: 2
+      hitloc_chart: Transport
+      armor: Heavy Raider
+      weapons:
+      - Missile
+      - Kew
+      - Rocket
+      dodge: 0
+    Tank:
+      description: Ground battle tank.
+      pilot_skill: Piloting
+      toughness: 3
+      hitloc_chart: Tank
+      armor: Tank
+      weapons:
+      - Cannon
+      dodge: 0
+    Apc:
+      description: Armored troop transport.
+      pilot_skill: Piloting
+      toughness: 2
+      hitloc_chart: Tank
+      armor: Apc
+      weapons:
+      - Hmg
+      dodge: 0
+    Truck:
+      description: Unarmored truck
+      pilot_skill: Piloting
+      toughness: 0
+      hitloc_chart: Truck
+      armor: Truck
+      weapons:
+      - Unarmed
+      dodge: 0
+    Aa Battery:
+      description: Anti-Aircraft Battery
+      pilot_skill: Piloting
+      toughness: -2
+      hitloc_chart: Aa Battery
+      armor: Aa Battery
+      weapons:
+      - Missile
+      dodge: 0

@@ -1,0 +1,26 @@
+---
+magic-items:
+  Guilt-Weighted Gloves:
+    name: Guilt-Weighted Gloves
+    desc: Fancy purple satin gloves with slightly fraying gold embroidery along the palm and knuckles. These gloves provide a bonus to lethality
+    weapon_specials: Guilt-Weighted Gloves
+  Hammered Vambraces:
+    name: Hammered Vambraces
+    desc: Slightly battered vambraces that cause the wearer's hands to turn to stone
+    spells:
+    - Stone Fists
+  Isarnon Shackles:
+    name: Isarnon Shackles
+    desc: Shackles crafted crudely of a heavy, dark metal are connected by a short chain. In addition to restraining most motion used for casting spells, the touch of the metal drains the ability to use magic.
+    spell_mod: -7
+  Warm Knit Cap:
+    name: Warm Knit Cap
+    desc: A knit cap that takes away the chill of winter
+    spells:
+    - Endure Cold
+  Zhujiang's Hairpin:
+    name: Zhujiang's Hairpin
+    desc: "A woman's hairpin crafted in a style preferred by the courtiers of Feixuzhicheng, similar to those found in ancient China. At first glance it appears to be crafted from silver, shining with a soft, pale metallic luster, though closer inspection would show it is in fact made from delicate scales. Dragon scales. It is topped by a small ornamental depiction of a dragon made from jade, clutching a pearl in its talons. Zhujiang's Hairpin allows the bearer to cast %xBFloating Earth.%xn"
+    spells:
+    - Floating Earth
+    spell_mod: 1

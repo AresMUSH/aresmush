@@ -1,0 +1,148 @@
+---
+fs3combat:
+  default_type: Soldier
+  allow_vehicles: true
+  allow_mounts: true
+  stances:
+    Aggressive:
+      attack_mod: 2
+      defense_mod: -2
+    Reckless:
+      attack_mod: 4
+      defense_mod: -4
+    Normal:
+      attack_mod: 0
+      defense_mod: 0
+    Defensive:
+      attack_mod: -2
+      defense_mod: 2
+    Evasive:
+      attack_mod: -4
+      defense_mod: 4
+    Cover:
+      attack_mod: 0
+      defense_mod: 0
+    Hidden:
+      attack_mod: 0
+      defense_mod: 0
+  combatant_types:
+    Observer:
+      hitloc: Humanoid
+    Soldier:
+      weapon: Rifle
+      weapon_specials:
+      - Ap
+      armor: Tactical
+      hitloc: Humanoid
+      defense_skill: Reflexes
+    Unarmed:
+      weapon: Unarmed
+      hitloc: Humanoid
+      defense_skill: Reflexes
+    Centurion:
+      weapon: LMG
+      weapon_specials:
+      - Bipod
+      armor: Centurion
+      hitloc: Humanoid
+      defense_skill: Reflexes
+    Aa:
+      weapon: Missile
+      armor: Centurion
+      vehicle: Aa Battery
+      hitloc: Humanoid
+      defense_skill: Reflexes
+    Cylon:
+      weapon: Pistol
+      armor: Cylon
+      hitloc: Humanoid
+      defense_skill: Reflexes
+    Viper:
+      vehicle: Viper
+      hitloc: Humanoid
+      defense_skill: Piloting
+    Raptor:
+      vehicle: Raptor
+      hitloc: Humanoid
+      defense_skill: Piloting
+    Raider:
+      vehicle: Raider
+      hitloc: Humanoid
+      defense_skill: Piloting
+    Heavy:
+      vehicle: Heavy Raider
+      hitloc: Humanoid
+      defense_skill: Piloting
+    Target:
+      hitloc: Target
+      weapon: Unarmed
+  shortcuts:
+    combat/skill: combat/summary
+    combat/skills: combat/summary
+    combat/slackers: combat/summary
+    combat/add: combat/join
+    combat/remove: combat/leave
+    combat/hitlocs: combat/hitloc
+    vehicles: vehicle
+    healing: heal/list
+    weapons: weapon
+    mounts: mount
+  achievements:
+    fs3_hero:
+      type: fs3
+      message: Heroed from a knockout.
+    fs3_joined_combat:
+      type: fs3
+      message: Joined %{count} combats.
+      levels:
+      - 1
+      - 10
+      - 20
+      - 50
+      - 100
+      - 200
+      - 500
+      - 1000
+    fs3_wounded:
+      type: fs3
+      message: Wounded %{count} times in combat.
+      levels:
+      - 1
+      - 5
+      - 10
+      - 20
+      - 50
+      - 100
+      - 150
+      - 200
+      - 250
+      - 500
+    fs3_hard_hitter:
+      type: fs3
+      message: Incapacitated an opponent in combat.
+    fs3_explosive_hit:
+      type: fs3
+      message: Did damage with an explosive weapon.
+    fs3_melee_hit:
+      type: fs3
+      message: Did damage with a melee weapon.
+    fs3_ranged_hit:
+      type: fs3
+      message: Did damage with a ranged weapon.
+    fs3_suppressed:
+      type: fs3
+      message: Suppressed a target in combat.
+    fs3_subdued:
+      type: fs3
+      message: Subdued a target in combat.
+    fs3_distracted:
+      type: fs3
+      message: Distracted a target in combat.
+    fs3_rallied:
+      type: fs3
+      message: Rallied someone in combat.
+    fs3_treated:
+      type: fs3
+      message: Treated someone in combat.
+  permissions:
+    manage_combat: Control combats that you didn't organize.

@@ -1,0 +1,38 @@
+---
+fs3skills:
+  action_dots_beyond_chargen_max: 5
+  allow_advantages_xp: false
+  attr_dots_beyond_chargen_max: 2
+  advantage_dots_beyond_chargen_max: 2
+  days_between_learning: 30
+  max_xp_hoard: 4
+  periodic_xp: 1
+  xp_costs:
+    language:
+      '1': 4
+      '2': 12
+    action:
+      '1': 1
+      '2': 2
+      '3': 3
+      '4': 6
+      '5': 8
+      '6': 8
+      '7': 12
+    background:
+      '1': 4
+      '2': 8
+    attribute:
+      '1': 1
+      '2': 4
+      '3': 8
+    advantage:
+      '1': 4
+      '2': 12
+  xp_cron:
+    day_of_week:
+    - Sat
+    hour:
+    - 21
+    minute:
+    - 0
