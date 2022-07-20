@@ -1,3 +1,8 @@
 ---
 en:
-  expandedmounts: {}
+  expandedmounts: 
+        invalid_vehicle_name: "That is not a valid vehicle name or vehicle type."
+        not_in_vehicle: "%{name} is not in a vehicle."
+        new_pilot: "%{name} mounts %{vehicle}."
+        new_passenger: "%{name} is now a passenger on %{vehicle}."
+        disembarks_vehicle: "%{name} dismounts from %{vehicle}."

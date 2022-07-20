@@ -14,7 +14,7 @@ fs3combat:
       accuracy: 5
       has_shrapnel: false
       init_mod: 0
-    Frag Grenade:
+    Dragon's Breath:
       description: Fragmentation Hand Grenade
       skill: Athletics
       lethality: 0
@@ -232,7 +232,7 @@ fs3combat:
       accuracy: 0
       has_shrapnel: false
       init_mod: 0
-    Knife:
+    Talons:
       description: Knife
       skill: Melee
       lethality: -5

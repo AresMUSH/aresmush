@@ -15,6 +15,8 @@ module AresMUSH
       case cmd.root
       when "mounts"
         return MountsListCmd
+      when "test"
+        return MountsListCmd
       end
       case cmd.root
       when "combat"

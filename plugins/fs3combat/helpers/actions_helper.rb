@@ -462,12 +462,23 @@ module AresMUSH
       end
       
       FS3Combat.award_hit_achievement(attacker, damage, weapon_type)
+      #EM Changes
+      if target.vehicle
+        hitloc_msg = "#{target.vehicle.name}'s #{hitloc}"
+        target_names = "#{target.name} astride #{target.vehicle.name}"
+      else 
+        hitloc_msg = hitloc
+        target_names = target.name
+      end
+      #/EM Changes
       
       messages << t('fs3combat.attack_hits', 
                     :name => attack_name, 
                     :weapon => weapon_name,
-                    :target => target.name,
-                    :hitloc => hitloc,
+                    #EM Changes
+                    :target => target_names,
+                    :hitloc => hitloc_msg,
+                    #/EM Changes
                     :armor => reduced_by_armor,
                     :damage => FS3Combat.display_severity(damage)) 
 
