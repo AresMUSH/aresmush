@@ -13,8 +13,17 @@ module AresMUSH
 
     def self.get_cmd_handler(client, cmd, enactor)
       case cmd.root
-      when "test"
+      when "mounts"
         return MountsListCmd
+      end
+      case cmd.root
+      when "combat"
+        case cmd.switch
+        when "mount"
+          return ExpandedCombatMountCmd
+        when "test"
+          return ExpandedCombatMountCmd
+        end
       end
       nil
     end
