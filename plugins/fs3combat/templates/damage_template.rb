@@ -1,3 +1,4 @@
+require 'byebug'
 module AresMUSH
   module FS3Combat
     class DamageTemplate < ErbTemplateRenderer

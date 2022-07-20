@@ -15,6 +15,9 @@ module AresMUSH
     reference :character, "AresMUSH::Character"
     reference :npc, "AresMUSH::Npc"
     reference :vehicle, "AresMUSH::Vehicle"
+    #EM Changes
+    reference :mount, "AresMUSH::Mount"
+    #/EM Changes
 
     def is_stun?
       is_stun
