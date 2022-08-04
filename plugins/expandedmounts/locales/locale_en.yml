@@ -1,7 +1,5 @@
 ---
 en:
-  expandedmounts: {}
-=======
   expandedmounts: 
         invalid_vehicle_name: "That is not a valid vehicle name or vehicle type."
         not_in_vehicle: "%{name} is not mounted."
