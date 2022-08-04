@@ -42,6 +42,7 @@ killares
 # -----------------------------
 /game/uploads
 /theme_archive
+game/uploads
 
 # Game directory
 # -----------------------------
@@ -55,3 +56,4 @@ Gemfile.lock
 game/scripts/aresconfig.js
 .byebug_history
 .vscode/settings.json
+
