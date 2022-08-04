@@ -95,6 +95,7 @@ module AresMUSH
           fs3: fs3,
           traits: traits,
           rpg: rpg,
+          lore_hook_pref: { value: char.lore_hook_pref, desc: char.lore_hook_pref },
           custom: Profile::CustomCharFields.get_fields_for_chargen(char)
         }
       end
