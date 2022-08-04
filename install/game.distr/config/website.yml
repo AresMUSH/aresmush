@@ -8,8 +8,8 @@ website:
       type: portal
       message: Edited a wiki page.
   allow_html_in_markdown: true
-  character_gallery_group: Faction
-  character_gallery_subgroup: Position
+  character_gallery_group: Organization
+  character_gallery_subgroup: Mythic
   left_sidebar: false
   max_folder_size_kb: 2000
   max_upload_size_kb: 300
