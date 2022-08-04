@@ -15,8 +15,6 @@ fs3skills:
     desc: Senses and general awareness.
   - name: Presence
     desc: Charisma and beauty.
-  - name: Magic
-    desc: Magic ability
   attributes_blurb: 'Attributes represent basic abilities that everyone has to some
     extent. Attributes boost related skills, and come into play when no skill directly
     applies.  Attributes are rated from 1-4. See <a href="https://aresmush.com/fs3/fs3-3/chargen.html#attributes"

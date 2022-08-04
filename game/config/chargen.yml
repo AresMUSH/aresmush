@@ -19,7 +19,7 @@ chargen:
     to go forth and RP.  You may want to customize your character profile on the web
     portal.
   arrivals_category: New Arrivals
-  bg_blurb: A background is your character's backstory or history.  You don''t need
+  bg_blurb: A background is your character's backstory or history.  You don't need
     to write a novel. Just cover the basics--who you are, why are you here, and anything
     noteworthy about you. Be sure to explain any unusual skills.
   demographics_blurb: Demographics record your basic character info.
@@ -101,7 +101,7 @@ chargen:
         given the background, and that you haven't missed anything important in chargen.
         See `help apps` for additional help on the app review process.
   welcome_message: |-
-    Please welcome %{name}, our latest %{position} to be approved!
+    Please welcome %{name}, our latest %{mythic} rider to be approved!
 
     Profile: %{profile_link}
 
