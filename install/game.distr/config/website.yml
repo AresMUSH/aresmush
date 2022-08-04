@@ -11,7 +11,7 @@ website:
   character_gallery_group: Organization
   character_gallery_subgroup: Mythic
   left_sidebar: false
-  max_folder_size_kb: 2000
+  max_folder_size_kb: 2000 
   max_upload_size_kb: 300
   restricted_pages:
   - home
