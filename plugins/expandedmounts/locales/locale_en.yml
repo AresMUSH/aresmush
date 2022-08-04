@@ -1,3 +1,15 @@
 ---
 en:
+<<<<<<< Updated upstream
   expandedmounts: {}
+=======
+  expandedmounts: 
+        invalid_vehicle_name: "That is not a valid vehicle name or vehicle type."
+        not_in_vehicle: "%{name} is not mounted."
+        new_pilot: "%{name} mounts %{vehicle}."
+        new_passenger: "%{name} is now a passenger on %{vehicle}."
+        disembarks_vehicle: "%{name} dismounts from %{vehicle}."
+        combat_name: "%{combatant} atop %{mount}"
+        mount_created: "%{name} created."
+        mount_updated: "%{name} created."
+>>>>>>> Stashed changes

@@ -1,3 +1,4 @@
+require 'byebug'
 module AresMUSH
   class CombatAction
     
@@ -10,7 +11,13 @@ module AresMUSH
     end
     
     def name
-      self.combatant.name
+      #EM Changes
+      if self.combatant.is_in_vehicle?
+        t('expandedmounts.combat_name', :combatant => self.combatant.name, :mount => combatant.vehicle.name)
+      else 
+        self.combatant.name
+      end
+      #/EM Changes
     end
     
     def combat
@@ -22,7 +29,15 @@ module AresMUSH
       target_names = name_string.split(" ").map { |n| InputFormatter.titlecase_arg(n) }.uniq
       targets = []
       target_names.each do |name|
-        target = self.combat.find_combatant(name)
+        #EM Changes
+        mount = Mount.named(name)
+        if mount
+          target = mount.vehicle.pilot 
+        else
+          target = self.combat.find_combatant(name) 
+        end
+        #/EM Changes
+        
         return t('fs3combat.not_in_combat', :name => name) if !target
         return t('fs3combat.cant_target_noncombatant', :name => name) if target.is_noncombatant?
         targets << target
@@ -36,7 +51,17 @@ module AresMUSH
     end
     
     def target_names
-      self.targets.map { |t| t.name }
+      #EM Changes
+      target_names = []
+      targets.each do |t|
+        if t.is_in_vehicle?
+          target_names.concat [t('expandedmounts.combat_name', :combatant => t.name, :mount => t.vehicle.name)]
+        else 
+          target_names.concat [t.name ]
+        end
+      end
+      target_names
+      #/EM Changes
     end
     
     def print_target_names

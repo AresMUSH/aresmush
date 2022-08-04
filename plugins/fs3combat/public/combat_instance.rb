@@ -21,6 +21,13 @@ module AresMUSH
     
     def delete_objects
       combatants.each { |c| c.delete }
+<<<<<<< Updated upstream
+=======
+      #EM Changes
+      ExpandedMounts.copy_damage_to_mount(vehicles)
+      ExpandedMounts.remove_mount_link(vehicles)
+      #/EM Changes
+>>>>>>> Stashed changes
       vehicles.each { |v| v.delete }
       debug_log.delete if debug_log
     end
