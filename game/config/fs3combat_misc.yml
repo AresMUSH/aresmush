@@ -86,7 +86,10 @@ fs3combat:
     vehicles: vehicle
     healing: heal/list
     weapons: weapon
-    mounts: mount
+    mounts: combat/vehicles
+    combat/mounts: combat/vehicles
+    newturn: combat/newturn
+
   achievements:
     fs3_hero:
       type: fs3

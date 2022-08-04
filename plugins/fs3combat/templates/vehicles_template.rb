@@ -13,6 +13,10 @@ module AresMUSH
       def vehicles
         combat.vehicles.sort_by(:name, :order => "ALPHA" )
       end
+
+      def format_vehicle(vehicle)
+        "#{vehicle.name} (#{vehicle.vehicle_type})" 
+      end
       
       def pilot(v)
         v.pilot ? v.pilot.name : "---"

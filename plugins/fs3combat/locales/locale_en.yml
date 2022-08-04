@@ -209,7 +209,7 @@ en:
         vehicle_title_armor: "Armor:"
         vehicle_title_hitloc_chart: "Hit Locations:"
         vehicle_title_toughness: "Toughness:"
-        vehicles_summary_title: "Vehicle         Pilot               Passengers"
+        vehicles_summary_title: "Sentinel                 Warden               Passengers"
         vehicles_disabled: "Vehicles are disabled here."
         
         # ----------------------------
