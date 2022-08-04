@@ -84,6 +84,7 @@ demographics:
   private_properties: []
   required_properties:
   - full name
+  - birthdate
   shortcuts:
     groups: group
     demographics: demographic
