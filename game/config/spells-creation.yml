@@ -1,0 +1,130 @@
+spells:
+  #LEVEL 1
+  Breath Of Healing:
+    available: true
+    casting_time: 1 round
+    desc: Provide a minute amount of healing magic to a target's most severe treatable wound, speeding their healing by up to a day and restoring some of their vigor.
+    effect: Heal
+    heal_points: 1
+    is_potion: true
+    level: 1
+    name: Breath of Healing
+    range: Touch
+    school: Creation
+    target_num: 1
+  #LEVEL 2
+  Minor Heal:
+    available: true
+    casting_time: 1 round
+    desc: Provide a minor amount of healing magic to a target's most severe treatable wound, speeding their healing by up to a couple of days and restoring some of their vigor.
+    effect: Heal
+    heal_points: 3
+    is_potion: true
+    level: 2
+    line_of_sight: true
+    name: Minor Heal
+    range: Short
+    school: Creation
+    target_num: 1
+  Minor Group Heal:
+    area: 10 yard radius
+    available: true
+    casting_time: 1 round
+    desc: 'Provide a minor amount of healing magic to the most severe treatable wound of up to three targets the caster can see, speeding their healing by up to a couple of days and restoring some of their vigor. '
+    effect: Heal
+    heal_points: 3
+    level: 4
+    line_of_sight: true
+    name: Minor Group Heal
+    range: Short
+    school: Creation
+    target_num: 3
+  Revive:
+    available: true
+    casting_time: 1 round
+    desc: 'Return a knocked out comrade to the fight.'
+    effect: Revive
+    is_revive: true
+    level: 5
+    line_of_sight: true
+    name: Revive
+    range: Short
+    school: Creation
+    target_num: 1
+  Brink Of Death:
+    available: true
+    casting_time: 1 round
+    desc: "Return someone who has died in the last 30 seconds to life at the cost of the caster''s own stamina.  \n\n A revived target is unable to return to the fight without further healing. They are both incapacitated and suffering from spell fatigue.\n\n
+    The caster is unable to fight or cast spells for 24 hours.\n\n"
+    effect: Resurrection
+    is_res: true
+    level: 7
+    name: Brink Of Death
+    range: Touch
+    school: Corpus
+    target_num: 1    
+  Stone Fists:
+    available: true
+    casting_time: 1 round
+    desc: The caster's hands become stone fists capable of inflicting damage.
+    duration: 30 minutes
+    effect: Damage
+    is_potion: true
+    level: 3
+    name: Stone Fists
+    range: Self
+    school: Earth
+    weapon: Stone Fists
+  Stone Slam:
+    available: true
+    casting_time: 1 round
+    desc: Slam a stone the size of a basketball into an opponent with force.
+    effect: Damage
+    fs3_attack: true
+    level: 3
+    line_of_sight: true
+    name: Stone Slam
+    range: Short
+    school: Earth
+    target_num: 1
+    weapon: Stone Slam    
+  Natural Defenses:
+    available: true
+    desc: The caster grows natural defenses from a specific animal of their choice. These take the form of armored skin, spines, etc. Animal is from the same genus each time the spell is cast.
+    effect: Armor
+    level: 2
+    name: Natural Defenses
+    school: Creation
+    range: Self
+    effect: Armor
+    duration: 15 minutes
+    is_potion: true
+    armor: Natural Defenses
+    casting_time: 1 round
+  Natural Weaponry:
+    available: true
+    casting_time: 1 round
+    desc: The caster grows natural weaponry from a specific animal of their choice for the purpose of attack. These take the form of non-venomous fangs, claws, horns etc. Animal is from the same genus each time the spell is cast.
+    duration: 15 minutes
+    effect: Weapon
+    is_potion: true
+    level: 2
+    name: Natural Weaponry
+    school: Nature
+    range: Self
+    weapon: Natural Weaponry    
+  Poison Puffs:
+    area: 10 yard radius
+    available: false
+    casting_time: 1 round
+    desc: Grow an area of mushrooms in an area that you can see. As they grow, they release a poisonous gas into the surrounding air, affecting up to 3 targets.
+    duration: 1 round
+    effect: AOE Damage
+    fs3_attack: true
+    level: 6
+    line_of_sight: true
+    name: Poison Puffs
+    range: Long
+    school: Creation
+    target_num: 3
+    weapon: Poison Puffs    
