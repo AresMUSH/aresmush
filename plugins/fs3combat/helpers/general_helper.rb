@@ -1,3 +1,4 @@
+require 'byebug'
 module AresMUSH
   module FS3Combat
     
@@ -128,10 +129,16 @@ module AresMUSH
     
     # Finds a character, vehicle or NPC by name
     def self.find_named_thing(name, enactor)
-      result = ClassTargetFinder.find(name, Character, enactor)
+      result = ClassTargetFinder.find(name, Character, enactor) 
       if (result.found?)
         return result.target
       end
+      #EM Changes
+      result = ClassTargetFinder.find(name, Mount, enactor) 
+      if (result.found?)
+        return result.target
+      end
+      #/EM Changes
       
       combatant = enactor.combatant
       if (!combatant)

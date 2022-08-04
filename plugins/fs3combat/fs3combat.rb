@@ -52,6 +52,8 @@ module AresMUSH
       #    else
       #      return MountsListCmd
       #    end
+        when "test"
+          return ExpandedCombatMountCmd
        when "vehicle"
          if (cmd.args)
            return VehicleDetailCmd
@@ -98,10 +100,10 @@ module AresMUSH
            return CombatLogCmd
          when "luck"
            return CombatLuckCmd
-         when "mount"
-           return CombatMountCmd
-         when "dismount"
-           return CombatDismountCmd
+        #  when "mount"
+        #    return CombatMountCmd
+        #  when "dismount"
+        #    return CombatDismountCmd
          when "npc"
            return CombatNpcCmd
          when "npcs"

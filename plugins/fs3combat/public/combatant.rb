@@ -2,7 +2,7 @@ module AresMUSH
   
   class Combatant < Ohm::Model
     include ObjectModel
-      
+    attribute :mount_name
     attribute :action_klass
     attribute :action_args    
     attribute :combatant_type

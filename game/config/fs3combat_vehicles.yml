@@ -10,25 +10,25 @@ fs3combat:
       weapons:
       - Kew
       dodge: 1
-    Raider:
+    Dragon:
       description: Cylon Raider space fighter
       pilot_skill: Piloting
       toughness: -1
       hitloc_chart: Fighter
       armor: Raider
       weapons:
-      - Kew
+      - Dragon's Breath
       - Missile
       - Nuke
       dodge: 1
-    Raptor:
+    Griffon:
       description: Raptor space command and control
       pilot_skill: Piloting
       toughness: 2
       hitloc_chart: Transport
       armor: Raptor
       weapons:
-      - Kew
+      - Talons
       - Ecm
       - Kew
       - Missile

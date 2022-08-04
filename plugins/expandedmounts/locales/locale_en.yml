@@ -1,6 +1,5 @@
 ---
 en:
-<<<<<<< Updated upstream
   expandedmounts: {}
 =======
   expandedmounts: 
@@ -12,4 +11,3 @@ en:
         combat_name: "%{combatant} atop %{mount}"
         mount_created: "%{name} created."
         mount_updated: "%{name} created."
->>>>>>> Stashed changes
