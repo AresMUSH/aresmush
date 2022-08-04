@@ -1,1 +1,251 @@
 /* Put any custom styles here.  They will override the default styles. */
+
+// WIKI INCLUDES
+
+.pagebox {
+  height: 13.5em;
+  float: left;
+  padding: .75em 1em .8em;
+  margin: .5em;
+  background-image: url(/game/uploads/theme_images/boxbg.png), linear-gradient(to bottom, #f4e2ba 0, 9.352517873%, #f2e4bf 18.7050357461%, 19.6043163538%, #f4e6c1 20.5035969615%, 44.7841726243%, #f0e2bd 69.0647482872%, 84.5323741436%, #f2e3bc 100%);
+  overflow-y: auto;
+  width: 31.5%;
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-start;
+  min-width: 260px; }
+
+.pagebox::-webkit-scrollbar {
+  background-color: transparent; }
+
+.pagebox::-webkit-scrollbar-thumb {
+  background-clip: content-box;
+  border: 4px solid transparent;
+  border-radius: 7px;
+  box-shadow: #45948e inset 0 0 0 10px;
+  width: 10px; }
+
+.pagebox p {
+  margin: 0; }
+
+.pageboxl {
+  padding-top: 0;
+  text-align: right;
+  font-family: 'Special Elite', monospace;
+  color: red;
+  font-size: 1em; }
+
+.pageboxs {
+  font-style: italic;
+  font-size: .95em;
+  padding-top: .25em;
+  color: #191919; }
+
+.pageboxh {
+  border-bottom: 2px solid #3a4146;
+  margin-left: 3px;
+  margin-top: 0 !important;
+  font-family: "Special Elite", monospace !important;
+  font-size: calc(14px + 0.4vw); }
+
+.pageboxh .fas,
+.pageboxh-pic .fas {
+  position: absolute;
+  right: .125em;
+  top: .2em; }
+
+.pageboxh p {
+  position: relative; }
+
+.pagebox-pic {
+  height: 11.8em;
+  float: left;
+  padding: .75em 1em;
+  margin: .5em;
+  background-image: url(/game/uploads/theme_images/boxbg.png), linear-gradient(to bottom, #f4e2ba 0, 9.352517873%, #f2e4bf 18.7050357461%, 19.6043163538%, #f4e6c1 20.5035969615%, 44.7841726243%, #f0e2bd 69.0647482872%, 84.5323741436%, #f2e3bc 100%);
+  overflow-y: auto;
+  width: 48.5%;
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-start;
+  min-width: 400px; }
+
+.pagebox-pic::-webkit-scrollbar {
+  background-color: transparent; }
+
+.pagebox-pic::-webkit-scrollbar-thumb {
+  background-clip: content-box;
+  border: 4px solid transparent;
+  border-radius: 7px;
+  box-shadow: #45948e inset 0 0 0 10px;
+  width: 10px; }
+
+.pagebox-pic p {
+  margin: 0; }
+
+.pagebox-info {
+  margin-left: 10px;
+  flex-basis: 73%; }
+
+.pageboxs-pic {
+  font-style: italic;
+  font-size: .95em;
+  padding-top: .25em;
+  color: #191919; }
+
+.pageboxh-pic {
+  border-bottom: 2px solid #3a4146;
+  margin-left: 3px;
+  margin-top: 0 !important;
+  font-family: "Special Elite", monospace !important;
+  font-size: calc(14px + 0.4vw);
+  position: relative; }
+
+.pagebox-icon-container {
+  overflow: hidden;
+  overflow-x: hidden;
+  background: #090909;
+  width: 150px;
+  height: 150px;
+  top: 0;
+  position: sticky; }
+
+.pagebox-icon-container p,
+.pagebox-icon-container br {
+  display: none; }
+
+.pagebox-icon-container a > img,
+.pagebox-icon-container > img {
+  width: 150px;
+  height: 150px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  object-fit: cover;
+  object-position: center 10%; }
+
+.pagebox-icon-container .image-container {
+  padding: 0; }
+
+  .box {
+    background-image: url(/game/uploads/theme_images/box-bg.png);
+    background-size: cover;
+    background-position: left top;
+    margin: 10px;
+    padding: 12px; }
+  
+  .box > p {
+    padding: 0;
+    margin: 0; }
+  
+  .boxinfo {
+    margin-top: 3px;
+    background-image: url(/game/uploads/theme_images/paper-texture.png), linear-gradient(to bottom, #f4e2ba 0, 9.352517873%, #f2e4bf 18.7050357461%, 19.6043163538%, #f4e6c1 20.5035969615%, 44.7841726243%, #f0e2bd 69.0647482872%, 84.5323741436%, #f2e3bc 100%); }
+  
+  .pageboxl a:hover {
+    color: #191919; }
+  
+  .boxtable-row {
+    border-bottom: 1px solid #45948e;
+    padding: 5px; }
+  
+  .boxtable-last {
+    padding: 5px; }
+  
+  .boxpic {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 400px; }
+  
+  .boxpic img {
+    width: 100%;
+    border: 10px solid #f9f9ef;
+    box-shadow: 2px 2px 2px rgba(54, 38, 9, 0.3); }
+  
+  .boxpic p {
+    margin: 0;
+    line-height: 0;
+    padding: 0; }
+  
+  .boxpic .image-container {
+    padding: 0;
+    margin-top: -17px; }
+  
+  .box-header {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    border-bottom: 2px solid #3a4146;
+    margin-right: 4px; }
+  
+  .box-title {
+    flex-basis: 60%; }
+  
+  .box-title h2,
+  .box-title .h2 {
+    font-size: calc(14px + 0.4vw) !important;
+    color: #621624 !important;
+    margin-bottom: 0;
+    margin-top: .15em;
+    padding-top: 0;
+    line-height: 1.1; }
+  
+  .box-header p {
+    margin-bottom: 5px; }
+  
+  .box-loc {
+    flex-basis: 40%;
+    text-align: right;
+    font-family: "Special Elite", monospace !important;
+    font-size: calc(14px + 0.4vw) !important;
+    color: #621624; }
+  
+  .box .tab-content {
+    background-image: url(/game/uploads/theme_images/paper-texture.png), linear-gradient(to bottom, #f4e2ba 0, 9.352517873%, #f2e4bf 18.7050357461%, 19.6043163538%, #f4e6c1 20.5035969615%, 44.7841726243%, #f0e2bd 69.0647482872%, 84.5323741436%, #f2e3bc 100%);
+    background-color: transparent;
+    border-color: transparent;
+    color: #191919; }
+  
+  .box .nav-tabs > li > a {
+    background-color: #171a1c;
+    color: #d9c66a;
+    border-color: #090909;
+    font-family: 'Special Elite', monospace;
+    font-size: 1em;
+    letter-spacing: 1px;
+    font-weight: none;
+    line-height: 1;
+    padding-bottom: .25em; }
+
+    .theme-page .nav-tabs .nav-link {
+      padding-top: 10px;
+      font-family: 'Special Elite', monospace;
+      line-height: 1;
+      border-radius: 0;
+      background: #444;
+      border: 0;
+      color: #898989;
+      text-shadow: none; }
+    
+    .theme-page .nav-tabs .nav-link:hover {
+      color: #ebebeb; }
+    
+    .theme-page .nav-tabs .nav-link > a:hover,
+    .nav-tabs .nav-link > a:focus,
+    .nav-tabs .nav-link:hover,
+    .nav-tabs .nav-link:focus {
+      background-color: transparent;
+      border-color: 0;
+      border-bottom-color: #090909; }
+    
+    .theme-page .nav-tabs .nav-link.active,
+    .nav-tabs .nav-link.active > a:hover,
+    .nav-tabs .nav-link.active > a:focus {
+      border: 1px solid #090909;
+      border-bottom: 0;
+      background-color: #lighter-green;
+      color: #ebebeb;
+      text-shadow: none; }
