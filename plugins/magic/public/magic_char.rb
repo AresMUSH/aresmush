@@ -23,11 +23,11 @@ module AresMUSH
     end
 
     def major_schools
-      self.schools.select { |k, v| v == "Major"}.keys
+      self.schools.select { |k, v| v == "Major"}.keys if self.schools
     end
 
     def minor_schools
-      self.schools.select { |k, v| v == "Minor"}.keys
+      self.schools.select { |k, v| v == "Minor"}.keys if self.schools
     end
 
     def auto_revive?
@@ -37,9 +37,11 @@ module AresMUSH
 
     def highest_major_school_rating
       num = 0
-      self.major_schools.each do |s|
-        rating = FS3Skills.ability_rating(self, s)
-        num = rating if rating > num
+      if self.major_schools
+        self.major_schools.each do |s|
+          rating = FS3Skills.ability_rating(self, s)
+          num = rating if rating > num
+        end
       end
       return num
     end

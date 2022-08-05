@@ -5,8 +5,12 @@ magic:
   days_between_learning_spells: 7
   item_category: "Luck"
   potion_spell: "Potion"
-  major_school_group: "Major School"
-  minor_school_group: "Minor School"
+  major_schools: 
+  - Arcane
+  - Creation
+  minor_schools: 
+  - Aether
+  - Entropy
   xp_per_level: 
     1: 1
     2: 2
