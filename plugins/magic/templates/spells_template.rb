@@ -35,36 +35,43 @@ module AresMUSH
         @char.spells_learned.to_a
       end
 
-      def spell_list
-        self.spells_learned.sort_by { |s| s.level }
+      def spells_learned_list
+        self.spells_learned.select { |s| s.learning_complete}.sort_by { |s| s.level }
+      end
+
+      def spells_still_learning_list
+        self.spells_learned.select { |s| !s.learning_complete}.sort_by { |s| s.level }
       end
 
       def spell_max
         Magic.spell_max
       end
 
-      def major_school
-        char.group("Major School")
+      def spells_for_school(school)
+        spells_learned_list.select {|s| s.school == school  }
       end
 
-      def minor_school
-        char.group("Minor School")
+      def still_learning_spells_for_school(school)
+        spells_still_learning_list.select {|s| s.school == school  }
+      end
+
+      def spell_display(spell)
+        "#{left(spell.name, 30)} #{left(spell.level, 40)}"
+      end
+
+      def spell_display_w_school(spell)
+        spell = spell.name
+        level = Global.read_config("spells", spell, "level")
+        school = Global.read_config("spells", spell, "school")
+        "#{left( spell, 29 )} Level #{level} #{school} spell"
       end
 
       def item_spells
         Magic.item_spells(char)
       end
 
-      def item_spell_display(spell)
-        level = Global.read_config("spells", spell, "level")
-        school = Global.read_config("spells", spell, "school")
-        "#{left( spell, 29 )} Level #{level} #{school} spell"
-      end
-
-      def other_spell_display(spell)
-        level = Global.read_config("spells", spell.name, "level")
-        school = Global.read_config("spells", spell.name, "school")
-        "#{left( spell.name, 29 )} Level #{level} #{school} spell"
+      def other_spells
+        spells_learned_list.select { |s| !char.major_schools.include?(s.school) && !char.minor_schools.include?(s.school)}
       end
 
       def days_left(spell)
@@ -87,7 +94,7 @@ module AresMUSH
         ProgressBarFormatter.format(xp, total_xp_needed)
       end
 
-      def display(spell)
+      def display_learning(spell)
         "#{left(spell.name, 30)} #{spell.level} #{right(progress(spell), 18)} #{detail(spell)} #{days_left(spell)}"
       end
 
