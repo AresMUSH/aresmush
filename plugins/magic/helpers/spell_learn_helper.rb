@@ -22,6 +22,15 @@ module AresMUSH
       end
     end
 
+    def self.num_can_learn(char)
+      num = 1
+      char.major_schools.each do |s|
+        rating = FS3Skills.ability_rating(char, s)
+        num = rating if rating > num
+      end
+      return num
+    end
+
     def self.knows_potion?(char)
       spell_names = char.spells_learned.map { |s| s.name }
       item_spells = Magic.item_spells(char)

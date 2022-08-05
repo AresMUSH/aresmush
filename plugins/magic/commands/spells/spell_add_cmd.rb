@@ -21,7 +21,7 @@ module AresMUSH
         return t('magic.invalid_name') if !self.target
         return t('magic.not_spell') if !Magic.is_spell?(self.spell)
         return t('magic.already_know_spell', :spell => self.spell) if Magic.find_spell_learned(self.target, self.spell)
-        if self.target.groups.values.include? self.school
+        if self.target.schools.keys.include? self.school
           return nil
         else
           client.emit t('magic.wrong_school_check', :name => self.target.name)

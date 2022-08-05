@@ -20,10 +20,9 @@ module AresMUSH
         return t('magic.too_many_spells', :spell_max => Magic.spell_max) if Magic.count_spells_total(enactor) >= Magic.spell_max
         previous = Magic.previous_level_spell?(enactor, self.spell)
         return t('magic.need_previous_level') if Magic.previous_level_spell?(enactor, self.spell) == false
-        major_school = enactor.group("Major School")
-        can_learn_num = FS3Skills.ability_rating(enactor, major_school)
-        return t('magic.learning_too_many_spells', :can_learn_num => can_learn_num) if (Magic.count_spells_learning(enactor) > (can_learn_num - 1) && !Magic.find_spell_learned(enactor, self.spell))
-        return t('magic.wrong_school') if !enactor.groups.values.include? self.school
+        num_can_learn = Magic.num_can_learn(enactor)
+        return t('magic.learning_too_many_spells', :num_can_learn => num_can_learn) if (Magic.count_spells_learning(enactor) > (num_can_learn - 1) && !Magic.find_spell_learned(enactor, self.spell))
+        return t('magic.wrong_school') if !enactor.schools.keys.include? self.school
         return "Level 8 spells aren't available yet" if self.spell_level == 8
         return nil
       end

@@ -61,7 +61,7 @@ spells:
     level: 7
     name: Brink Of Death
     range: Touch
-    school: Corpus
+    school: Creation
     target_num: 1    
   Stone Fists:
     available: true
@@ -73,7 +73,7 @@ spells:
     level: 3
     name: Stone Fists
     range: Self
-    school: Earth
+    school: Creation
     weapon: Stone Fists
   Stone Slam:
     available: true
@@ -85,7 +85,7 @@ spells:
     line_of_sight: true
     name: Stone Slam
     range: Short
-    school: Earth
+    school: Creation
     target_num: 1
     weapon: Stone Slam    
   Natural Defenses:
@@ -110,7 +110,7 @@ spells:
     is_potion: true
     level: 2
     name: Natural Weaponry
-    school: Nature
+    school: Creation
     range: Self
     weapon: Natural Weaponry    
   Poison Puffs:

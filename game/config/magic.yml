@@ -82,5 +82,4 @@ magic:
     Severe: "They are severely nauseous and are starting to feel exhausted. It's very difficult to focus."
     Extreme: "They feel on the edge of collapse and even basic tasks are almost impossible. They desperately need a rest."
     Total: "They have stretched themselves to their limit and can manage nothing more than basic movement."
-  magic_ability: Magic
   item_category: LUCK

@@ -11,11 +11,9 @@ module AresMUSH
       if (char.class == Npc)
         cost = cost + 1
       else
-        major_school = char.group("Major School")
-        minor_school = char.group("Minor School")
-        if spell_school == major_school
+        if char.major_schools.include?(spell_school) 
           cost = cost
-        elsif spell_school == minor_school
+        elsif char.minor_schools.include?(spell_school) 
           cost = cost + 2
         else
           cost = cost + 3
