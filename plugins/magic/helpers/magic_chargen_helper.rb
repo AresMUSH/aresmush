@@ -29,7 +29,11 @@ module AresMUSH
 
     def self.save_starting_spells(char, spells)
       Magic.starting_spells(char).each do |s|
-        s.delete if !spells.include?(s)
+        puts s
+        if !spells.include?(s)
+          spell = Magic.find_spell_learned(char, s)
+          spell.delete
+        end
       end
 
       spells.each do |spell|
