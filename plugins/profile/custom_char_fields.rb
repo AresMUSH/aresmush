@@ -44,7 +44,12 @@ module AresMUSH
           minor_school: Website.format_input_for_html(char.minor_schools.join()),
           minor_schools: Global.read_config("magic", "minor_schools"),
           cg_spells: Magic.cg_spells,
-          starting_spells: Magic.starting_spells(char)
+          starting_spells: Magic.starting_spells(char),
+          mount_name: Magic.mount_name(char),
+          mount_types: ["Dragon", "Griffin", "Roc", "Pantherine", "Lupine", "Pegasus"],
+          mount_type: Magic.mount_type(char),
+          mount_desc: Magic.mount_desc(char),
+          mount_shortdesc: Magic.mount_shortdesc(char)
         }
       end
       
@@ -77,6 +82,7 @@ module AresMUSH
         Magic.save_major_school(char, chargen_data[:custom][:major_school]) if chargen_data[:custom][:major_school]
         Magic.save_minor_school(char, chargen_data[:custom][:minor_school]) if chargen_data[:custom][:minor_school] 
         Magic.save_starting_spells(char, chargen_data[:custom][:starting_spells]) if chargen_data[:custom][:starting_spells]
+        Magic.save_mount(char, chargen_data)
         return []
       end
       
