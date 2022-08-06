@@ -155,6 +155,7 @@ website:
     shattered_monsters: cryptids
     creatures: cryptids
     cradle_s: cradle
+    cradle's: cradle
   permissions:
     manage_theme: Edit web portal CSS and colors.
     manage_wiki: Create and delete restricted wiki pages.
