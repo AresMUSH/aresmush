@@ -38,7 +38,19 @@ module AresMUSH
       # @example
       #    return { goals: Website.format_input_for_html(char.goals) }
       def self.get_fields_for_chargen(char)
-        return {}
+        return {
+          major_school: Website.format_input_for_html(char.major_schools.join()),
+          major_schools: Global.read_config("magic", "major_schools"),
+          minor_school: Website.format_input_for_html(char.minor_schools.join()),
+          minor_schools: Global.read_config("magic", "minor_schools"),
+          cg_spells: Magic.cg_spells,
+          starting_spells: Magic.starting_spells(char),
+          mount_name: Magic.mount_name(char),
+          mount_types: ["Dragon", "Griffin", "Roc", "Pantherine", "Lupine", "Pegasus"],
+          mount_type: Magic.mount_type(char),
+          mount_desc: Magic.mount_desc(char),
+          mount_shortdesc: Magic.mount_shortdesc(char)
+        }
       end
       
       # Saves fields from profile editing.
@@ -66,6 +78,10 @@ module AresMUSH
       #        char.update(goals: Website.format_input_for_mush(chargen_data[:custom][:goals]))
       #        return []
       def self.save_fields_from_chargen(char, chargen_data)
+        Magic.save_major_school(char, chargen_data[:custom][:major_school]) if chargen_data[:custom][:major_school]
+        Magic.save_minor_school(char, chargen_data[:custom][:minor_school]) if chargen_data[:custom][:minor_school] 
+        Magic.save_starting_spells(char, chargen_data[:custom][:starting_spells]) if chargen_data[:custom][:starting_spells]
+        Magic.save_mount(char, chargen_data)
         return []
       end
       
