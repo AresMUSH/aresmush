@@ -1,6 +1,12 @@
 module AresMUSH
   module Magic
 
+    def self.add_spell(char, spell_name)
+      spell_level = Global.read_config("spells", spell_name, "level")
+      school = Global.read_config("spells", spell_name, "school")
+      SpellsLearned.create(name: spell_name, last_learned: Time.now, level: spell_level, school: school, character: char, xp_needed: 0, learning_complete: true)
+    end
+
     def self.knows_spell?(char_or_combatant, spell_name)
       spell_name = spell_name.titlecase
       return true if (char_or_combatant.is_npc?)
@@ -41,11 +47,7 @@ module AresMUSH
     end
 
     def self.count_spells_total(char)
-      major_school_group = Global.read_config("magic", "major_school_group")
-      minor_school_group = Global.read_config("magic", "minor_school_group")
-      major_school = char.group(major_school_group)
-      minor_school = char.group(minor_school_group)
-      spells_learned = char.spells_learned.select { |l| l.learning_complete && ( l.school == major_school || l.school == minor_school)}
+      spells_learned = char.spells_learned.select { |s| char.major_schools.include?(s.school) || char.minor_schools.include?(s.school)}
       spells_learned.count
     end
 

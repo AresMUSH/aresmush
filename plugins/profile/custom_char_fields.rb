@@ -42,7 +42,9 @@ module AresMUSH
           major_school: Website.format_input_for_html(char.major_schools.join()),
           major_schools: Global.read_config("magic", "major_schools"),
           minor_school: Website.format_input_for_html(char.minor_schools.join()),
-          minor_schools: Global.read_config("magic", "minor_schools")
+          minor_schools: Global.read_config("magic", "minor_schools"),
+          cg_spells: Magic.cg_spells,
+          starting_spells: Magic.starting_spells(char)
         }
       end
       
@@ -72,11 +74,9 @@ module AresMUSH
       #        char.update(goals: Website.format_input_for_mush(chargen_data[:custom][:goals]))
       #        return []
       def self.save_fields_from_chargen(char, chargen_data)
-        puts char
-        puts chargen_data[:custom][:major_school]
-        puts chargen_data[:custom][:minor_school]
         Magic.save_major_school(char, chargen_data[:custom][:major_school]) if chargen_data[:custom][:major_school]
         Magic.save_minor_school(char, chargen_data[:custom][:minor_school]) if chargen_data[:custom][:minor_school] 
+        Magic.save_starting_spells(char, chargen_data[:custom][:starting_spells]) if chargen_data[:custom][:starting_spells]
         return []
       end
       

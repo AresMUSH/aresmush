@@ -9,8 +9,7 @@ module AresMUSH
         args = cmd.parse_args(ArgParser.arg1_equals_arg2)
         self.target = Character.find_one_by_name(args.arg1)
         self.spell = titlecase_arg(args.arg2)
-        self.spell_level = Global.read_config("spells", self.spell, "level")
-        self.school = Global.read_config("spells", self.spell, "school")
+        
       end
 
       def check_can_set
@@ -32,7 +31,8 @@ module AresMUSH
       end
 
       def handle
-        SpellsLearned.create(name: self.spell, last_learned: Time.now, level: self.spell_level, school: self.school, character: target, xp_needed: 0, learning_complete: true)
+        Magic.add_spell(target, self.spell)
+        
         client.emit_success t('magic.added_spell', :spell => self.spell, :name => self.target.name)
       end
 
