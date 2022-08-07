@@ -3,7 +3,7 @@ module AresMUSH
     class GetSceneRequestHandler
       def handle(request)
         scene = Scene[request.args[:id]]
-        edit_mode = request.args[:edit_mode]
+        edit_mode = (request.args[:edit_mode] || "").to_bool
         enactor = request.enactor
 
         error = Website.check_login(request, !edit_mode)

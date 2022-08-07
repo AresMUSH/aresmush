@@ -3,7 +3,7 @@ module AresMUSH
     class GetNotesRequestHandler
       def handle(request)
         char = Character.find_one_by_name request.args[:id]
-        edit_mode = request.args[:edit_mode]
+        edit_mode = (request.args[:edit_mode] || "").to_bool
         enactor = request.enactor
         
         if (!char)
