@@ -28,6 +28,8 @@ module AresMUSH
         Website.can_manage_theme?(enactor)
       when "config"
         Manage.can_manage_game?(enactor)
+      when "code"
+        enactor.is_coder?
       else
         false
       end
@@ -166,6 +168,29 @@ module AresMUSH
           end
         end
       end
+    end
+    
+    def self.editable_code_files
+      web_code_path = File.join(AresMUSH.website_code_path, 'app')
+      
+      {
+        'char-edit-custom-tabs.hbs' => File.join(web_code_path, 'templates', 'components', 'char-edit-custom-tabs.hbs'),
+        'char-edit-custom.hbs' => File.join(web_code_path, 'templates', 'components', 'char-edit-custom.hbs'),
+        'char-edit-custom.js' => File.join(web_code_path, 'components', 'char-edit-custom.js'),
+        'profile-custom-tabs.hbs' => File.join(web_code_path, 'templates', 'components', 'profile-custom-tabs.hbs'),  
+        'profile-custom.hbs' => File.join(web_code_path, 'templates', 'components', 'profile-custom.hbs'),  
+        'profile-custom.js' => File.join(web_code_path, 'components', 'profile-custom.js'),
+        'char-card-custom.hbs' => File.join(web_code_path, 'templates', 'components', 'char-card-custom.hbs'),  
+        'char-card-custom.js' => File.join(web_code_path, 'components', 'char-card-custom.js'),
+        'chargen-custom.hbs' => File.join(web_code_path, 'templates', 'components', 'chargen-custom.hbs'),  
+        'chargen-custom.js' => File.join(web_code_path, 'components', 'chargen-custom.js'),
+        'live-scene-custom-play.hbs' => File.join(web_code_path, 'templates', 'components', 'live-scene-custom-play.hbs'),  
+        'live-scene-custom-play.js' => File.join(web_code_path, 'components', 'live-scene-custom-play.js'),
+        'live-scene-custom-scenepose.hbs' => File.join(web_code_path, 'templates', 'components', 'live-scene-custom-scenepose.hbs'),  
+        'live-scene-custom-scenepose.js' => File.join(web_code_path, 'components', 'live-scene-custom-scenepose.js'),
+        
+        
+      }
     end
   end
 end
