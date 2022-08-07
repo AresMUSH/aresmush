@@ -3,7 +3,7 @@ module AresMUSH
     class EventRequestHandler
       def handle(request)
         event_id = request.args[:event_id]
-        edit_mode = request.args[:edit_mode]
+        edit_mode = (request.args[:edit_mode] || "").to_bool
         enactor = request.enactor
         
         event = Event[event_id.to_i]

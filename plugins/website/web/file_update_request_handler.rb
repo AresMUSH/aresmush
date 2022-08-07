@@ -8,7 +8,7 @@ module AresMUSH
         enactor = request.enactor
         name = request.args[:name]
         folder = request.args[:folder]
-        new_description = request.args[:new_description]
+        new_description = Website.format_input_for_mush(request.args[:new_description])
         new_name = (request.args[:new_name] || "").downcase
         new_folder = (request.args[:new_folder] || "").downcase
 

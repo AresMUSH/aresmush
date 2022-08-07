@@ -27,4 +27,4 @@ gem 'diffy', '~> 3.2.0'
 gem 'sassc', '~> 2.2.1'
 gem 'htmlentities', '~>4.3.4'
 gem 'handlebars', '~>0.8.0'
-gem "rack", ">= 2.1.4"
+gem "rack", ">= 2.2.4"
