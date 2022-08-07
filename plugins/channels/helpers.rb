@@ -306,14 +306,12 @@ module AresMUSH
     end
     
     def self.notify_discord_webhook(channel, message, enactor)
-      debug_enabled = Global.read_config('channels', 'debug_discord')
+      debug_enabled = Global.read_config('channels', 'discord_debug')
 
       name = enactor.ooc_name
-      hook = (Global.read_config('secrets', 'discord', 'webhooks') || [])
-         .select { |h| (h['mush_channel'] || "").upcase == channel.name_upcase }
-         .first
+      url = channel.discord_webhook
 
-       if (!hook)
+       if (!url)
          if (debug_enabled)
            Global.logger.debug "No discord hook found for #{channel.name}."
          end
@@ -321,7 +319,6 @@ module AresMUSH
        end
       
       Global.dispatcher.spawn("Sending discord webhook", nil) do
-        url = hook['webhook_url']
         
         if (debug_enabled)
           Global.logger.debug "Sending discord webhook to #{url} for #{channel.name}."

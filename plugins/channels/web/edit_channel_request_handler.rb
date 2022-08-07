@@ -20,7 +20,9 @@ module AresMUSH
               color: channel.color,
               desc: Website.format_input_for_html(channel.description),
               can_join: channel.join_roles.map { |r| r.name },
-              can_talk: channel.talk_roles.map { |r| r.name }
+              can_talk: channel.talk_roles.map { |r| r.name },
+              discord_channel: channel.discord_channel,
+              discord_webhook: channel.discord_webhook
             },
             roles: Role.all.to_a.sort_by { |r| r.name }.map { |r| r.name }
           }
