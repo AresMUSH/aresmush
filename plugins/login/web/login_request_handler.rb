@@ -40,6 +40,9 @@ module AresMUSH
         
         Login.update_site_info(request.ip_addr, request.hostname, char)
         
+        char.update(login_failures: 0)
+        char.update(boot_timeout: nil)
+        
         if (char.handle)
           AresCentral.sync_handle(char)
         end
