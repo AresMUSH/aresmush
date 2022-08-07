@@ -10,6 +10,8 @@ module AresMUSH
     attribute :announce, :type => DataType::Boolean, :default => true
     attribute :default_alias, :type => DataType::Array
     attribute :recall_enabled, :type => DataType::Boolean, :default => true
+    attribute :discord_channel
+    attribute :discord_webhook
     
     index :name_upcase
     
