@@ -147,6 +147,22 @@ website:
   website_code_path: "/home/ares/ares-webportal"
   wiki_aliases:
     main: home
+    shattering: history
+    monsters: cryptids
+    mythics: cryptids
+    blood: blood_magic
+    bonding: bond
+    shattered_monsters: cryptids
+    creatures: cryptids
+    cradle_s: cradle
+    cradle's: cradle
+    mythic: cryptids
+    cryptid: cryptids
+    weyrs: weyr
+    magical: magic
+
+
+
   permissions:
     manage_theme: Edit web portal CSS and colors.
     manage_wiki: Create and delete restricted wiki pages.
