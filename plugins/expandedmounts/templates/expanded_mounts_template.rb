@@ -12,6 +12,10 @@ module AresMUSH
       def mounts
         Mount.all.to_a
       end
+
+      def format_mount(mount)
+        "#{mount.name} (#{mount.mount_type})"
+      end
     end
   end
 end 

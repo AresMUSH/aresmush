@@ -9,3 +9,5 @@ en:
         combat_name: "%{combatant} atop %{mount}"
         mount_created: "%{name} created."
         mount_updated: "%{name} created."
+        mounts_list_title: NAME                  BONDED MAGE
+  
