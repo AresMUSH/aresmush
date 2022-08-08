@@ -44,7 +44,9 @@ module AresMUSH
           return nil
         end
       
-        npc = Npc.create(name: name, combat: combat, level: FS3Combat.default_npc_type)
+        npc_type = FS3Combat.combatant_type_stat(combatant_type, "npc_type") || FS3Combat.default_npc_type
+      
+        npc = Npc.create(name: name, combat: combat, level: npc_type)
         combatant = Combatant.create(:combatant_type => combatant_type, 
         :npc => npc,
         :team =>  9,

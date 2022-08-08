@@ -86,5 +86,23 @@ module AresMUSH
         end
       end
     end  
+    
+    def self.check_for_forgotten_password(char, password)
+      return false if !AresCentral.is_registered?
+      return false if !char.handle
+      
+      AresMUSH.with_error_handling(nil, "Checking AresCentral for forgotten password.") do
+        Global.logger.debug "Checking AresCentral for forgotten password."
+
+        connector = AresCentral::AresConnector.new
+        response = connector.reset_password(char.handle.handle_id, password, char.id.to_s)
+
+        if (response.is_success? && response.data["matched"])
+          Global.logger.info "Password for #{char.name} reset via AresCentral."
+          return true
+        end
+      end
+      return false
+    end
   end
 end

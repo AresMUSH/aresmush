@@ -10,7 +10,7 @@ module AresMUSH
         
         Global.logger.debug "Adding debug setting."
         config = DatabaseMigrator.read_config_file("channels.yml")
-        config['channels']['debug_discord'] = false
+        config['channels']['discord_debug'] = false
         DatabaseMigrator.write_config_file("channels.yml", config)
         
         Global.logger.debug "Adding content warnings."

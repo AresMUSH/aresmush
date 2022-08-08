@@ -28,6 +28,8 @@ module AresMUSH
         Website.can_manage_theme?(enactor)
       when "config"
         Manage.can_manage_game?(enactor)
+      when "code"
+        enactor.is_coder?
       else
         false
       end
@@ -166,6 +168,112 @@ module AresMUSH
           end
         end
       end
+    end
+    
+    def self.find_code_file_path(search_name)
+      Website.editable_code_files.each do |section|
+        section[:files].each do |name, path|
+          if (name == search_name)
+            return path
+          end
+        end
+      end
+      raise "File #{search_name} not found in editable file list."
+    end
+    
+    def self.editable_code_files
+      web_code_path = File.join(AresMUSH.website_code_path, 'app')
+      plugin_code_path = AresMUSH.plugin_path
+      
+      [
+        {
+          name: "Profile Display",
+          help: "https://aresmush.com/tutorials/code/hooks/char-fields.html",
+          files: {
+            'profile-custom-tabs.hbs' => File.join(web_code_path, 'templates', 'components', 'profile-custom-tabs.hbs'),  
+            'profile-custom.hbs' => File.join(web_code_path, 'templates', 'components', 'profile-custom.hbs'),  
+            'profile-custom.js' => File.join(web_code_path, 'components', 'profile-custom.js'),
+            'custom_char_fields.rb' => File.join(plugin_code_path, 'profile', 'custom_char_fields.rb'),
+          }
+        },
+
+        {
+          name: "Profile Editing",
+          help: "https://aresmush.com/tutorials/code/hooks/char-fields.html",
+          files: {
+            'char-edit-custom-tabs.hbs' => File.join(web_code_path, 'templates', 'components', 'char-edit-custom-tabs.hbs'),
+            'char-edit-custom.hbs' => File.join(web_code_path, 'templates', 'components', 'char-edit-custom.hbs'),
+            'char-edit-custom.js' => File.join(web_code_path, 'components', 'char-edit-custom.js'),
+            'custom_char_fields.rb' => File.join(plugin_code_path, 'profile', 'custom_char_fields.rb'),
+          }
+        },
+
+        
+        {
+          name: "Chargen",
+          help: "https://aresmush.com/tutorials/code/hooks/char-fields.html",
+          files: {
+            'chargen-custom.hbs' => File.join(web_code_path, 'templates', 'components', 'chargen-custom.hbs'),  
+            'chargen-custom-tabs.hbs' => File.join(web_code_path, 'templates', 'components', 'chargen-custom-tabs.hbs'),  
+            'chargen-custom.js' => File.join(web_code_path, 'components', 'chargen-custom.js'),
+            'custom_char_fields.rb' => File.join(plugin_code_path, 'profile', 'custom_char_fields.rb'),
+          }
+        },
+        
+        {
+          name: "Chargen App Review",
+          help: "https://aresmush.com/tutorials/code/hooks/app-review.html",
+          files: {
+            'custom_app_review.rb' => File.join(plugin_code_path, 'chargen', 'custom_app_review.rb'),
+          }
+        },
+        
+        {
+          name: "Chargen Approval Triggers",
+          help: "https://aresmush.com/tutorials/code/hooks/approval-triggers.html",
+          files: {
+            'custom_approval.rb' => File.join(plugin_code_path, 'chargen', 'custom_approval.rb'),
+          }
+        },
+        
+        {
+          name: "Scene Actions",
+          help: "https://aresmush.com/tutorials/code/hooks/scene-buttons.html",
+          files: {
+            'live-scene-custom-play.hbs' => File.join(web_code_path, 'templates', 'components', 'live-scene-custom-play.hbs'),  
+            'live-scene-custom-play.js' => File.join(web_code_path, 'components', 'live-scene-custom-play.js'),
+            'live-scene-custom-scenepose.hbs' => File.join(web_code_path, 'templates', 'components', 'live-scene-custom-scenepose.hbs'),  
+            'live-scene-custom-scenepose.js' => File.join(web_code_path, 'components', 'live-scene-custom-scenepose.js'),
+          }
+        },
+        
+        {
+          name: "Scene Character Cards",
+          help: "https://aresmush.com/tutorials/code/hooks/char-cards.html",
+          files: {
+            'char-card-custom.hbs' => File.join(web_code_path, 'templates', 'components', 'char-card-custom.hbs'),  
+            'char-card-custom.js' => File.join(web_code_path, 'components', 'char-card-custom.js'),
+            'custom_char_card.rb' => File.join(plugin_code_path, 'scenes', 'custom_char_card.rb'),
+          }
+        },
+        
+        {
+          name: "Combat Actions",
+          help: "https://aresmush.com/tutorials/code/hooks/fs3-actions.html",
+          files: {
+            'custom_hooks.rb' => File.join(plugin_code_path, 'fs3combat', 'custom_hooks.rb'),
+            }
+        },
+        
+        {
+          name: "Combat New Turn Triggers",
+          help: "https://aresmush.com/tutorials/code/hooks/fs3-new-turn.html",
+          files: {
+            'custom_hooks.rb' => File.join(plugin_code_path, 'fs3combat', 'custom_hooks.rb'),
+          }
+        },
+        
+      ]
     end
   end
 end

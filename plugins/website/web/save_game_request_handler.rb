@@ -28,8 +28,8 @@ module AresMUSH
 
         error = Manage.reload_config  
         if (error)
-          Global.logger.error "Game registration not updated due to configuration errors: #{error}"
-          return { :warnings => Website.format_markdown_for_html(error) }
+          Global.logger.warn "Game registration not updated due to configuration errors: #{error}"
+          return { warning: Website.format_markdown_for_html( t('webportal.game_directory_not_updated', :error => error) ) } 
         end
                   
         if (AresCentral.is_registered?)

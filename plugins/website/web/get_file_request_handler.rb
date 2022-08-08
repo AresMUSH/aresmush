@@ -5,6 +5,7 @@ module AresMUSH
         enactor = request.enactor
         name = request.args[:name]
         folder = request.args[:folder]
+        edit_mode = (request.args[:edit_mode] || "").to_bool
         
         error = Website.check_login(request, true)
         return error if error
@@ -29,10 +30,16 @@ module AresMUSH
           uploaded_by = nil
         end
                
+        if (edit_mode)
+          description = file_meta ? Website.format_input_for_html(file_meta.description) : ''
+        else
+          description = file_meta ? Website.format_markdown_for_html(file_meta.description) : ''
+        end
+                 
         {
           name: name,
           folder: folder,
-          description: file_meta ? file_meta.description : '',
+          description: description,
           uploaded_by: uploaded_by,
           path: path,
           can_edit: Website.can_edit_wiki_file?(enactor, folder)

@@ -20,6 +20,12 @@ module AresMUSH
       Chargen.format_review_status t('describe.description_review'), error
     end
     
+    def self.format_exit_name(ex)
+      start_bracket = Global.read_config("describe", "exit_start_bracket")
+      end_bracket = Global.read_config("describe", "exit_end_bracket")
+      "#{start_bracket}#{ex.name}#{end_bracket}"
+    end
+    
     def self.get_web_descs_for_edit(model)
       if (model.kind_of?(Character))
         outfits = model.outfits.each_with_index.map { |(name, desc), index| { name: name, desc: Website.format_input_for_html(desc), key: index }}
