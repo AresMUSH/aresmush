@@ -15,7 +15,8 @@ module AresMUSH
           
         {
           who_count: who.count,
-          who: who.values.sort_by { |v| v[:name] }
+          who: who.values.sort_by { |v| v[:name] },
+          can_boot: Login.can_boot?(enactor)
         }
       end
 

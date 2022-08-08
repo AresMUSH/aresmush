@@ -12,3 +12,6 @@ The `sheet` command lets you view your character sheet, showing your abilities.
 
 `sheet` - Views your own sheet.
 `sheet <name>` - Views someone else's sheet.
+`sheet/<section> [<name>]` - Views just a specific section of someone's sheet or your own. 
+  Valid sections are: attributes, action, background, languages, and (if enabled) advantages
+  For example, `sheet/action` will view just action skills

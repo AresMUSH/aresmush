@@ -2,11 +2,12 @@ module AresMUSH
   module FS3Skills
     class SheetTemplate < ErbTemplateRenderer
       
-      attr_accessor :char, :client
+      attr_accessor :char, :client, :section
       
-      def initialize(char, client)
+      def initialize(char, client, section = nul)
         @char = char
         @client = client
+        @section = section
         super File.dirname(__FILE__) + "/sheet.erb"
       end
      
@@ -16,6 +17,14 @@ module AresMUSH
       
       def luck
         @char.luck.floor
+      end
+      
+      def show_section(section)
+        sections = ['attributes', 'action', 'background', 'languages', 'advantages']
+        return true if self.section.blank?
+        return true if !sections.include?(section)
+        return true if !sections.include?(self.section)
+        return section == self.section
       end
       
       def attrs

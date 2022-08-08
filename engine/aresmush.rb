@@ -66,6 +66,11 @@ module AresMUSH
   def self.website_uploads_path
     File.join(AresMUSH.game_path, 'uploads')
   end
+  
+  # Note: This one can only be called once the game is up and running.
+  def self.website_code_path
+    Global.read_config('website', 'website_code_path')
+  end
 end
 
 require 'aresmush/bootstrapper.rb'

@@ -48,6 +48,22 @@ module AresMUSH
           FS3Combat.join_combat(@combat, "Bob", "soldier", @enactor, @client)
         end
         
+        it "should create a NPC with a specific level" do
+          expect(ClassTargetFinder).to receive(:find).with("Bob", Character, @enactor) { FindResult.new(nil, "error") }
+          npc = double
+          expect(Npc).to receive(:create).with(name: "Bob", combat: @combat, level: "Goon") { npc }
+          allow(FS3Combat).to receive(:default_npc_type) { "Boss" }
+          allow(FS3Combat).to receive(:combatant_type_stat).with("soldier", "npc_type"){ "Goon" }
+          
+          expect(Combatant).to receive(:create) do |params|
+            expect(params[:combatant_type]).to eq "soldier"
+            expect(params[:team]).to eq 9
+            expect(params[:npc]).to eq npc
+            expect(params[:combat]).to eq @combat
+          end
+          FS3Combat.join_combat(@combat, "Bob", "soldier", @enactor, @client)
+        end
+        
         it "should create a combatant for a character if found" do
           expect(ClassTargetFinder).to receive(:find).with("Bob", Character, @enactor) { FindResult.new(@char) }
           expect(Combatant).to receive(:create) do |params|

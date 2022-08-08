@@ -16,7 +16,11 @@ module AresMUSH
       
       char.update(room: room)
       if (client)
-        Rooms.emit_here_desc(client, char)
+        if (client.screen_reader)
+          client.emit_ooc t('rooms.screen_reader_arrived', :room => room.name)
+        else
+          Rooms.emit_here_desc(client, char)
+        end
       end
       
       room.emit_ooc t('rooms.char_has_arrived', :name => char.name)
