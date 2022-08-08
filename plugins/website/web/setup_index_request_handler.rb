@@ -16,7 +16,14 @@ module AresMUSH
         textfiles << { name: 'colors.scss', file_type: 'style' }
         textfiles << { name: 'custom_style.scss', file_type: 'style' }
                 
-        codefiles = Website.editable_code_files.map { |name, path| { name: name, file_type: 'code' }}
+        codefiles = []
+        Website.editable_code_files.each do |section|
+          codefiles << {
+            name: section[:name],
+            help: section[:help],
+            files: section[:files].keys
+          }
+        end
         
         {
           config: ConfigReader.config_files.sort.map { |f| { name: File.basename(f) } },
