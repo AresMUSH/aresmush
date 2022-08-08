@@ -23,7 +23,7 @@ module AresMUSH
         when "style"
           path = File.join(AresMUSH.website_styles_path, file)
         when "code"
-          path = Website.editable_code_files[file]
+          path = Website.find_code_file_path(file)
         end
         
         if (!File.exists?(path))
