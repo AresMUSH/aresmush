@@ -22,7 +22,7 @@ module AresMUSH
           return { error: "Invalid channel API token." }
         end
 
-        channel = Channel.all.select { |c| c.discord_channel == discord_channel_name }
+        channel = Channel.all.select { |c| c.discord_channel == discord_channel_name }.first
         
         if (!channel)
           if (debug_enabled) 
