@@ -50,7 +50,7 @@ For help with exit locks, see [Locks](/help/lock).
 
 `rooms`- Lists all rooms
 `rooms <search>` - Search for rooms.
-`exits` - Lists all exits in your current room.
+`exits/details` - Lists all exits in your current room.
 
 ## Destroying Rooms and Exits
 
