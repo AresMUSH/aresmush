@@ -172,6 +172,7 @@ module AresMUSH
     
     def self.editable_code_files
       web_code_path = File.join(AresMUSH.website_code_path, 'app')
+      plugin_code_path = AresMUSH.plugin_path
       
       {
         'char-edit-custom-tabs.hbs' => File.join(web_code_path, 'templates', 'components', 'char-edit-custom-tabs.hbs'),
@@ -188,6 +189,11 @@ module AresMUSH
         'live-scene-custom-play.js' => File.join(web_code_path, 'components', 'live-scene-custom-play.js'),
         'live-scene-custom-scenepose.hbs' => File.join(web_code_path, 'templates', 'components', 'live-scene-custom-scenepose.hbs'),  
         'live-scene-custom-scenepose.js' => File.join(web_code_path, 'components', 'live-scene-custom-scenepose.js'),
+        'custom_app_review.rb' => File.join(plugin_code_path, 'chargen', 'custom_app_review.rb'),
+        'custom_approval.rb' => File.join(plugin_code_path, 'chargen', 'custom_approval.rb'),
+        'custom_char_fields.rb' => File.join(plugin_code_path, 'profile', 'custom_char_fields.rb'),
+        'custom_char_card.rb' => File.join(plugin_code_path, 'scenes', 'custom_char_card.rb'),
+        'custom_scene_commands.rb' => File.join(plugin_code_path, 'scenes', 'custom_scene_commands.rb'),
         
         
       }
