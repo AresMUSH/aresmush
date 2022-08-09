@@ -42,7 +42,7 @@ module AresMUSH
         Magic.subtract_magic_energy(enactor, self.spell, result[:succeeds])
         puts "~~~~MAGIC ENERGY AFTER SUBTRACTION: #{enactor.magic_energy}"
         if result[:succeeds] == "%xgSUCCEEDS%xn"
-          message = Magic.cast_noncombat_spell(enactor, enactor.name, targets, spell, mod, result[:result])
+          message = Magic.cast_noncombat_spell(enactor.name, targets, spell, mod, result[:result])
           Magic.handle_spell_cast_achievement(enactor)
         else
           #Spell fails

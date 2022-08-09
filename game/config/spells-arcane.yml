@@ -40,6 +40,7 @@ spells:
     name: Mind Shield
     range: Short
     school: Arcane
+    shields_against: Psionic
     target_num: 1
     duration: 30 minutes
     rounds: 180
@@ -70,6 +71,7 @@ spells:
     roll: true
     rounds: 800
     school: Arcane
+    shields_against: Psionic
     target_num: 1
   Sleep:
     available: false

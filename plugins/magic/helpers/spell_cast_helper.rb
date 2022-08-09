@@ -37,6 +37,7 @@ module AresMUSH
     def self.cast_noncombat_spell(caster_name, targets, spell_name, mod = nil, result = nil, using_potion = false)
       success = "%xgSUCCEEDS%xn"
       spell = Global.read_config("spells", spell_name)
+      puts "Caster name #{caster_name}"
       caster = Character.named(caster_name) || "NPC"
       names = []
       messages = []
