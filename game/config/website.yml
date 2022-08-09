@@ -8,11 +8,15 @@ website:
       type: portal
       message: Edited a wiki page.
   allow_html_in_markdown: true
+  auto_wiki_export: true
   character_gallery_group: Organization
   character_gallery_subgroup: Mythic
   left_sidebar: false
   max_folder_size_kb: 2000
   max_upload_size_kb: 300
+  permissions:
+    manage_theme: Edit web portal CSS and colors.
+    manage_wiki: Create and delete restricted wiki pages.
   restricted_pages:
   - home
   sitemap_update_cron:
@@ -51,7 +55,7 @@ website:
     - title: Characters
       route: characters
     - title: Cryptids
-      route: cryptids
+      route: creatures
     - title: Scenes
       route: scenes
     - title: Plots
@@ -146,6 +150,11 @@ website:
     - target: blank
       title: MUSH 101 Tutorial <i class="fa fa-external-link-alt" aria-hidden="true">
       url: https://aresmush.com/mush-101/
+  uploadable_extensions:
+  - ".jpg"
+  - ".png"
+  - ".gif"
+  - ".jpeg"
   website_code_path: "/home/ares/ares-webportal"
   wiki_aliases:
     main: home
@@ -162,16 +171,6 @@ website:
     cryptid: cryptids
     weyrs: weyr
     magical: magic
-
-  permissions:
-    manage_theme: Edit web portal CSS and colors.
-    manage_wiki: Create and delete restricted wiki pages.
-  uploadable_extensions:
-  - ".jpg"
-  - ".png"
-  - ".gif"
-  - ".jpeg"
-  auto_wiki_export: true
   wiki_export_cron:
     hour:
     - 3

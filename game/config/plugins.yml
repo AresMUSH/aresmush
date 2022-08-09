@@ -13,7 +13,8 @@ plugins:
     compliments: https://github.com/spiritlake/ares-compliments-plugin
     eshtraits: https://github.com/ClockworkEJD/ares-eshtraits-plugin
     weather: https://github.com/aresmush/ares-weather-plugin
-  disabled_plugins: []
+  disabled_plugins:
+  - ranks
   extras: []
   optional_plugins:
   - achievements
