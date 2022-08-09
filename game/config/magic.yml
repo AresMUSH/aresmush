@@ -2,6 +2,8 @@
 magic:
   magic_attribute: "Magic"
   spell_max: 30
+  cg_spell_max: 7
+  cg_max_spell_level: 5
   days_between_learning_spells: 7
   item_category: "Luck"
   potion_spell: "Potion"
