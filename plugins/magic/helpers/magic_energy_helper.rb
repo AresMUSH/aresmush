@@ -69,6 +69,8 @@ module AresMUSH
         mod = -7
       elsif degree == "Total"
         mod = -100
+      else
+        mod = 0
       end
       return mod
     end
