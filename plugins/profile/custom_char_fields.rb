@@ -81,14 +81,14 @@ module AresMUSH
       #        char.update(goals: Website.format_input_for_mush(chargen_data[:custom][:goals]))
       #        return []
       def self.save_fields_from_chargen(char, chargen_data)
+        errors = []
         Magic.save_major_school(char, chargen_data[:custom][:major_school]) if chargen_data[:custom][:major_school]
         Magic.save_minor_school(char, chargen_data[:custom][:minor_school]) if chargen_data[:custom][:minor_school] 
         starting_spells = Magic.starting_spell_names(chargen_data[:custom][:starting_spells])
         Magic.save_starting_spells(char, starting_spells) 
-        Magic.save_mount(char, chargen_data)
+        errors.concat Magic.save_mount(char, chargen_data)
         char.update(lore_hook_pref: chargen_data[:custom][:lore_hook_pref][:value])
-        puts "Starting spell names: #{Magic.starting_spell_names(chargen_data[:custom][:starting_spells])}"
-        errors = []
+        puts "Starting spell names: #{Magic.starting_spell_names(chargen_data[:custom][:starting_spells])}"        
         errors.concat Magic.check_cg_spell_errors(char)
         puts "Errors: #{errors}"
         return errors

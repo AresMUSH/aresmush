@@ -23,6 +23,7 @@ module AresMUSH
       lore_hook_config.each do |k, v|
         lore_hook_prefs << { desc: v, value: k }
       end
+      return lore_hook_prefs
     end
 
   end
