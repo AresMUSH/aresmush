@@ -4,6 +4,13 @@ en:
       invalid_name: "%xrCharacter not found.%xn"
       updated_weapon_specials: "You have updated %{target}'s persistent weapon specials to %{specials}."
 
+    # ----------------------------
+    # CG
+    # ----------------------------
+      wrong_school_cg: "Some of your spells are in the wrong school. Spells must belong to one of your schools."
+      wrong_level_cg: "Some of your spells are the wrong level. You must have a spell of the previous level in the same school in order to know a higher level spell."
+      too_many_spells_cg: "You have selected too many spells. You may only know %{num} spells in chargen."
+
         # ----------------------------
         # ENERGY & FATIGUE
         # ----------------------------

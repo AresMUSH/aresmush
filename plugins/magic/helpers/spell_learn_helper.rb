@@ -4,7 +4,14 @@ module AresMUSH
     def self.add_spell(char, spell_name)
       spell_level = Global.read_config("spells", spell_name, "level")
       school = Global.read_config("spells", spell_name, "school")
-      SpellsLearned.create(name: spell_name, last_learned: Time.now, level: spell_level, school: school, character: char, xp_needed: 0, learning_complete: true)
+      puts "Adding spell in Magic.add_spell: #{spell_name} #{spell_level} #{school}"
+      SpellsLearned.create(name: spell_name.strip, last_learned: Time.now, level: spell_level, school: school, character: char, xp_needed: 0, learning_complete: true)
+    end
+
+    def self.delete_all_spells(char)
+      char.spells_learned.each do |s|
+        s.delete
+      end
     end
 
     def self.knows_spell?(char_or_combatant, spell_name)

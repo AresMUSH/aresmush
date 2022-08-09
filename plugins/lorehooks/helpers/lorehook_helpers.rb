@@ -17,5 +17,13 @@ module AresMUSH
       }
     end
 
+    def self.lore_hook_cg_prefs
+      lore_hook_config = Global.read_config('lorehooks', 'lore_hook_prefs')
+      lore_hook_prefs = []
+      lore_hook_config.each do |k, v|
+        lore_hook_prefs << { desc: v, value: k }
+      end
+    end
+
   end
 end
