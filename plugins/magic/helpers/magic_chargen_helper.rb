@@ -133,10 +133,13 @@ module AresMUSH
         mount.update(description: chargen_data[:custom][:mount_desc])
         mount.update(shortdesc: chargen_data[:custom][:mount_shortdesc])
       else
+        return [t('expandedmounts.already_mount_named')] if Mount.named(chargen_data[:custom][:mount_name])
+
         mount = Mount.create(bonded: char, name: chargen_data[:custom][:mount_name], mount_type: chargen_data[:custom][:mount_type], description: chargen_data[:custom][:mount_desc], shortdesc: chargen_data[:custom][:mount_shortdesc])
         char.update(bonded: mount)
+        puts "creating new moutn"
       end
+      return []
     end
-
   end
 end

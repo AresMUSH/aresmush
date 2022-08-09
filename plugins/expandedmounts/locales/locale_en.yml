@@ -10,4 +10,5 @@ en:
         mount_created: "%{name} created."
         mount_updated: "%{name} created."
         mounts_list_title: NAME                  BONDED MAGE
+        already_mount_named: "There is already a mythic using that name."
   
