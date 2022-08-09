@@ -1,0 +1,6 @@
+---
+en:
+  creatures:
+    creature_not_found: "Creature not found."
+    creature_created: "%{name} created."
+    creature_updated: "%{name} updated."
