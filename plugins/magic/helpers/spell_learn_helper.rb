@@ -8,6 +8,25 @@ module AresMUSH
       SpellsLearned.create(name: spell_name.strip, last_learned: Time.now, level: spell_level, school: school, character: char, xp_needed: 0, learning_complete: true)
     end
 
+    def self.new_char_can_learn(char, spell)
+      return false if Magic.new_spells_time_left(char) <= 0
+      num = Global.read_config("magic", "cg_spell_max")
+      return false if char.spells_learned.count >= num
+      max_level = Global.read_config("magic", "cg_max_spell_level")
+      return false if Global.read_config("spells", spell, "level") > max_level
+      return false if !char.schools.keys.include?(Global.read_config("spells", spell, "school"))
+      return false if !Magic.previous_level_spell?(char, spell)
+      return true
+    end
+
+    def self.new_spells_time_left(char)
+      days_after_approval = Global.read_config("magic", "cg_days_to_choose_spells")
+      secs = days_after_approval * 86400
+      #Need to change this to approved_at once it's in core
+      days_left = ((char.created_at + secs) - Time.now) / 86400
+      days_left.round()
+    end
+
     def self.delete_all_spells(char)
       char.spells_learned.each do |s|
         s.delete

@@ -55,6 +55,14 @@ module AresMUSH
               Magic.handle_spell_learn_achievement(enactor)
             end
           end
+        elsif Magic.new_char_can_learn(enactor, self.spell)
+
+          SpellsLearned.create(name: self.spell, last_learned: Time.now, level: self.spell_level, school: self.school, character: enactor, xp_needed: 0, learning_complete: true)
+          
+          time_left = Magic.new_spells_time_left(enactor)
+          num = Global.read_config("magic", "cg_spell_max")
+          client.emit t('magic.starting_spell', :spell => self.spell, :time => time_left, :num => num)
+
         else
           xp_needed = Magic.spell_xp_needed(self.spell)
           FS3Skills.modify_xp(enactor, -1)

@@ -10,6 +10,7 @@ en:
       wrong_school_cg: "Some of your spells are in the wrong school. Spells must belong to one of your schools."
       wrong_level_cg: "Some of your spells are the wrong level. You must have a spell of the previous level in the same school in order to know a higher level spell."
       too_many_spells_cg: "You have selected too many spells. You may only know %{num} spells in chargen."
+      starting_spell: "You have added %{spell} to your starting spell list. You have %{time_left} days to add %{num} a total of free starting spells."
 
         # ----------------------------
         # ENERGY & FATIGUE
