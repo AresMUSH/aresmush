@@ -50,6 +50,8 @@ website:
     menu:
     - title: Characters
       route: characters
+    - title: Cryptids
+      route: cryptids
     - title: Scenes
       route: scenes
     - title: Plots
@@ -160,8 +162,6 @@ website:
     cryptid: cryptids
     weyrs: weyr
     magical: magic
-
-
 
   permissions:
     manage_theme: Edit web portal CSS and colors.
