@@ -142,7 +142,7 @@ spells:
     level: 3
     name: Hot Hands
     range: Touch
-    school: Fire
+    school: Aether
     target_num: 1
     weapon: Hot Hands
   Fire Weapon:

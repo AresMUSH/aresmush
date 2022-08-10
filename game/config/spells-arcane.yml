@@ -44,6 +44,21 @@ spells:
     target_num: 1
     duration: 30 minutes
     rounds: 180
+  Spell Fatigue Heal:
+    available: true
+    casting_time: 1 round
+    damage_type: Psionic
+    desc: Heal a target of spell fatigue. Cannot be cast on oneself.
+    effect: Heal
+    energy_points: 10
+    is_potion: true
+    level: 4
+    line_of_sight: true
+    name: Spell Fatigue Heal
+    range: Short
+    # roll: true
+    school: Arcane
+    target_num: 1    
   Dampen Magic:
     available: false
     casting_time: 1 round
