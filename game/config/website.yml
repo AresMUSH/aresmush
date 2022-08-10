@@ -52,6 +52,8 @@ website:
       route: characters
     - title: Cryptids
       route: creatures
+    - title: Spells
+      route: spells
     - title: Scenes
       route: scenes
     - title: Plots
