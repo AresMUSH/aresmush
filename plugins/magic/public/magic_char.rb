@@ -9,6 +9,8 @@ module AresMUSH
     attribute :dead, :type => DataType::Boolean, :default => false
     attribute :has_died, :type => DataType::Integer
     attribute :schools, :type => DataType::Hash, :default => {}
+    attribute :magic_items, :type => DataType::Array, :default => []
+    attribute :magic_item_equipped, :default => "None"
 
     #Delete these eventually
     # attribute :mind_shield, :type => DataType::Integer, :default => 0
