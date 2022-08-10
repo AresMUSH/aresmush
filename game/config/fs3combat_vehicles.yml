@@ -1,7 +1,7 @@
 ---
 fs3combat:
   vehicles:
-    Viper:
+    Pantherine:
       description: Viper space fighter
       pilot_skill: Piloting
       toughness: 0
@@ -35,7 +35,7 @@ fs3combat:
       - Talons
       - Rocket
       dodge: 0
-    Heavy Raider:
+    Pegasus:
       description: Cylon Heavy Raider space transport/bomber
       pilot_skill: Piloting
       toughness: 2
@@ -46,7 +46,7 @@ fs3combat:
       - Kew
       - Rocket
       dodge: 0
-    Tank:
+    Lupine:
       description: Ground battle tank.
       pilot_skill: Piloting
       toughness: 3
@@ -55,7 +55,7 @@ fs3combat:
       weapons:
       - Cannon
       dodge: 0
-    Apc:
+    Roc:
       description: Armored troop transport.
       pilot_skill: Piloting
       toughness: 2
