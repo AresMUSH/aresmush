@@ -23,6 +23,8 @@ module AresMUSH
         case cmd.switch
         when "mount"
           return ExpandedCombatMountCmd
+        when "dismount"
+          return ExpandedCombatDismountCmd
         when "test"
           return ExpandedCombatMountCmd
         end
