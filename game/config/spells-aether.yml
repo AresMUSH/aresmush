@@ -25,8 +25,8 @@ spells:
     name: Cloud Cover
     range: Self
     rounds: 90
+    roll: true
     school: Aether
-    stance: Hidden
     target_num: 1
   #LEVEL 4
   Air Blast:

@@ -66,7 +66,7 @@ module AresMUSH
       #Used for setting a weapon via magic
       #Does not reset action, unlike vanilla FS3 set_weapon
       #Does not allow additional specials
-      specials = Magic.magic_weapon_specials(enactor, combatant, weapon)
+      specials = Magic.magic_weapon_specials(combatant, weapon)
 
       max_ammo = weapon ? FS3Combat.weapon_stat(weapon, "ammo") : 0
       weapon = weapon ? weapon.titlecase : "Unarmed"
