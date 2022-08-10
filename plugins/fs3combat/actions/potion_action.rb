@@ -207,18 +207,6 @@ module AresMUSH
             end
           end
 
-          #Change Stance
-          if stance
-            target.update(stance: stance)
-            target.update(magic_stance_counter: rounds)
-            target.update(magic_stance_spell: self.spell)
-            if target.name == combatant.name
-              messages.concat [t('magic.potion_stance', :name => self.name, :potion => self.spell, :stance => stance, :rounds => rounds)]
-            else
-              messages.concat [t('magic.potion_stance_target', :name => self.name, :potion => self.spell, :target => target.name, :stance => stance, :rounds => rounds)]
-            end
-          end
-
           #Set Shields
           if is_shield == true
             #Potion shields default to strength (result) of 2

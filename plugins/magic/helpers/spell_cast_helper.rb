@@ -305,23 +305,23 @@ module AresMUSH
       return mod_msg
     end
 
-    def self.cast_stance(combatant, target, spell, damage_type, rounds, stance, result)
-      stopped_by_shield = Magic.stopped_by_shield?(target, combatant.name, spell, result)
-      if stopped_by_shield && combatant != target
-        if stopped_by_shield[:hit]
-          target.update(stance: stance.titlecase)
-          target.update(stance_counter: rounds)
-          target.update(stance_spell: spell)
-        end
-        message = [stopped_by_shield[:msg]]
-      else
-        target.update(stance: stance.titlecase)
-        target.update(stance_counter: rounds)
-        target.update(stance_spell: spell)
-        message = [t('magic.cast_stance', :name => combatant.name, :spell => spell, :mod => "", :target => target.name, :stance => stance, :rounds => rounds, :succeeds => "%xgSUCCEEDS%xn")]
-      end
-      return message
-    end
+    # def self.cast_stance(combatant, target, spell, damage_type, rounds, stance, result)
+    #   stopped_by_shield = Magic.stopped_by_shield?(target, combatant.name, spell, result)
+    #   if stopped_by_shield && combatant != target
+    #     if stopped_by_shield[:hit]
+    #       target.update(stance: stance.titlecase)
+    #       target.update(stance_counter: rounds)
+    #       target.update(stance_spell: spell)
+    #     end
+    #     message = [stopped_by_shield[:msg]]
+    #   else
+    #     target.update(stance: stance.titlecase)
+    #     target.update(stance_counter: rounds)
+    #     target.update(stance_spell: spell)
+    #     message = [t('magic.cast_stance', :name => combatant.name, :spell => spell, :mod => "", :target => target.name, :stance => stance, :rounds => rounds, :succeeds => "%xgSUCCEEDS%xn")]
+    #   end
+    #   return message
+    # end
 
     def self.cast_combat_roll(combatant, target, spell, damage_type, result = nil)
       if combatant != target
