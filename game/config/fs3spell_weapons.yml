@@ -7,11 +7,11 @@ fs3combat:
     - sparring
     Ranged:
     - cold calm
-    - fire
+    - Aether
     - scope
     Melee:
     - cold calm
-    - fire
+    - Aether
     - fatal vitality
     - sparring
     Spell:
@@ -23,8 +23,8 @@ fs3combat:
       is_magic: true
       lethality: 5
     #SPELLS
-    Fire:
-      description: Level 4 Fire spell
+    Aether:
+      description: Level 4 Aether spell
       is_magic: true
       lethality: 10
       accuracy: 1
@@ -40,8 +40,8 @@ fs3combat:
       accuracy: 0
       init_mod: 0
       is_magic: true
-    Fire Shrapnel:
-      description: Shrapnel that does fire damage
+    Aether Shrapnel:
+      description: Shrapnel that does Aether damage
       skill: 3
       lethality: 0
       penetration: 5
@@ -64,10 +64,10 @@ fs3combat:
       damage_type: Stun
       accuracy: 0
       init_mod: 0
-    Stun (Air):
+    Stun (Aether):
       description: Stun spell
       is_magic: true
-      skill: Air
+      skill: Aether
       lethality: 0
       penetration: 0
       weapon_type: Melee
@@ -75,10 +75,10 @@ fs3combat:
       damage_type: Physical
       accuracy: 0
       init_mod: 0
-    Stun (Corpus):
+    Stun (Arcane):
       description: Stun spell
       is_magic: true
-      skill: Corpus
+      skill: Arcane
       lethality: 0
       penetration: 0
       weapon_type: Melee
@@ -86,10 +86,10 @@ fs3combat:
       damage_type: Physical
       accuracy: 0
       init_mod: 0
-    Stun (Earth):
+    Stun (Creation):
       description: Stun spell
       is_magic: true
-      skill: Earth
+      skill: Creation
       lethality: 0
       penetration: 0
       weapon_type: Melee
@@ -97,54 +97,10 @@ fs3combat:
       damage_type: Physical
       accuracy: 0
       init_mod: 0
-    Stun (Fire):
+    Stun (Entropy):
       description: Stun spell
       is_magic: true
-      skill: Fire
-      lethality: 0
-      penetration: 0
-      weapon_type: Melee
-      recoil: 0
-      damage_type: Physical
-      accuracy: 0
-      init_mod: 0
-    Stun (Nature):
-      description: Stun spell
-      is_magic: true
-      skill: Nature
-      lethality: 0
-      penetration: 0
-      weapon_type: Melee
-      recoil: 0
-      damage_type: Physical
-      accuracy: 0
-      init_mod: 0
-    Stun (Spirit):
-      description: Stun spell
-      is_magic: true
-      skill: Spirit
-      lethality: 0
-      penetration: 0
-      weapon_type: Melee
-      recoil: 0
-      damage_type: Physical
-      accuracy: 0
-      init_mod: 0
-    Stun (Water):
-      description: Stun spell
-      is_magic: true
-      skill: Water
-      lethality: 0
-      penetration: 0
-      weapon_type: Melee
-      recoil: 0
-      damage_type: Physical
-      accuracy: 0
-      init_mod: 0
-    Stun (Will):
-      description: Stun spell
-      is_magic: true
-      skill: Will
+      skill: Entropy
       lethality: 0
       penetration: 0
       weapon_type: Melee
@@ -153,11 +109,12 @@ fs3combat:
       accuracy: 0
       init_mod: 0
 
+
 #SPELLS
     Breathless:
-      description: Level 4 Air spell
+      description: Level 4 Aether spell
       is_magic: true
-      skill: Air
+      skill: Aether
       lethality: -20
       penetration: 50
       weapon_type: Explosive
@@ -167,9 +124,9 @@ fs3combat:
       init_mod: 0
       special_group: Spell
     Lightning Strike:
-      description: Level 7 Air spell
+      description: Level 7 Aether spell
       is_magic: true
-      skill: Air
+      skill: Aether
       lethality: 20
       penetration: 13
       weapon_type: Ranged
@@ -178,10 +135,10 @@ fs3combat:
       accuracy: 0
       init_mod: 0
       special_group: Spell
-    Earth Bolt:
-      description: Level 3 Earth spell
+    Entropy Bolt:
+      description: Level 3 Entropy spell
       is_magic: true
-      skill: Earth
+      skill: Entropy
       lethality: -10
       penetration: 4
       weapon_type: Explosive
@@ -192,7 +149,7 @@ fs3combat:
       init_mod: 0
       special_group: Spell
     Stone Fists:
-      description: Level 3 Earth spell
+      description: Level 3 Entropy spell
       is_magic: true
       skill: Brawl
       lethality: 0
@@ -204,9 +161,9 @@ fs3combat:
       init_mod: 0
       special_group: Body
     Stone Slam:
-      description: Level 3 Earth spell
+      description: Level 3 Entropy spell
       is_magic: true
-      skill: Earth
+      skill: Entropy
       lethality: -5
       penetration: 5
       weapon_type: Ranged
@@ -216,7 +173,7 @@ fs3combat:
       init_mod: 0
       special_group: Spell
     Hot Hands:
-      description: Level 3 Fire spell
+      description: Level 3 Aether spell
       is_magic: true
       skill: Brawl
       lethality: -5
@@ -228,7 +185,7 @@ fs3combat:
       init_mod: 0
       special_group: Body
     Natural Weaponry:
-      description: Level 2 Nature spell
+      description: Level 2 Creation spell
       is_magic: true
       skill: Brawl
       lethality: -10
@@ -240,9 +197,9 @@ fs3combat:
       init_mod: 0
       special_group: Body
     Poison Puffs:
-      description: Level 6 Nature spell
+      description: Level 6 Creation spell
       is_magic: true
-      skill: Nature
+      skill: Creation
       lethality: -15
       penetration: 50
       weapon_type: Explosive
@@ -252,7 +209,7 @@ fs3combat:
       init_mod: 0
       special_group: Spell
     Ice Talons:
-      description: Level 3 Water spell
+      description: Level 3 Entropy spell
       is_magic: true
       skill: Brawl
       lethality: -5
@@ -264,9 +221,9 @@ fs3combat:
       init_mod: 0
       special_group: Body
     Cone Of Cold:
-      description: Level 4 Water spell
+      description: Level 4 Entropy spell
       is_magic: true
-      skill: Water
+      skill: Entropy
       lethality: -5
       penetration: 6
       weapon_type: Explosive
@@ -277,7 +234,7 @@ fs3combat:
       init_mod: 0
       special_group: Spell
     Ice Armor:
-      description: Level 4 Water spell
+      description: Level 4 Entropy spell
       is_magic: true
       skill: Brawl
       lethality: 0
@@ -289,9 +246,9 @@ fs3combat:
       init_mod: 0
       special_group: Body
     Slick Ground:
-      description: Level 5 Water spell
+      description: Level 5 Entropy spell
       is_magic: true
-      skill: Water
+      skill: Entropy
       lethality: 0
       penetration: 0
       weapon_type: Suppressive
@@ -302,9 +259,9 @@ fs3combat:
       init_mod: 0
       special_group: Spell
     Exploding Ice:
-      description: Level 5 Water spell
+      description: Level 5 Entropy spell
       is_magic: true
-      skill: Water
+      skill: Entropy
       lethality: 5
       penetration: 8
       weapon_type: Explosive
@@ -315,9 +272,9 @@ fs3combat:
       init_mod: 0
       special_group: Spell
     Fling:
-      description: Level 2 Will spell
+      description: Level 2 Aether spell
       is_magic: true
-      skill: Will
+      skill: Aether
       lethality: -15
       penetration: 3
       weapon_type: Ranged
@@ -327,9 +284,9 @@ fs3combat:
       init_mod: 0
       special_group: Spell
     Buckshot:
-      description: Level 5 Will spell
+      description: Level 5 Aether spell
       is_magic: true
-      skill: Will
+      skill: Aether
       lethality: 5
       penetration: 8
       weapon_type: Explosive

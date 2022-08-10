@@ -5,8 +5,8 @@ fs3skills:
   attr_dots_beyond_chargen_max: 2
   advantage_dots_beyond_chargen_max: 2
   days_between_learning: 30
-  max_xp_hoard: 4
-  periodic_xp: 1
+  max_xp_hoard: 9
+  periodic_xp: 2
   xp_costs:
     language:
       '1': 4

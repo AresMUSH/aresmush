@@ -1,6 +1,6 @@
 ---
 fs3skills:
-  max_luck: 3
+  max_luck: 6
   luck_for_scene:
     0: 0.1
     10: 0.075

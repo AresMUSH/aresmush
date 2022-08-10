@@ -1,8 +1,8 @@
 ---
 fs3combat:
-  default_type: Soldier
+  default_type: Unarmed
   allow_vehicles: true
-  allow_mounts: true
+  allow_mounts: false
   stances:
     Aggressive:
       attack_mod: 2
@@ -30,8 +30,6 @@ fs3combat:
       hitloc: Humanoid
     Soldier:
       weapon: Rifle
-      weapon_specials:
-      - Ap
       armor: Tactical
       hitloc: Humanoid
       defense_skill: Reflexes
@@ -39,43 +37,36 @@ fs3combat:
       weapon: Unarmed
       hitloc: Humanoid
       defense_skill: Reflexes
-    Centurion:
-      weapon: LMG
-      weapon_specials:
-      - Bipod
-      armor: Centurion
-      hitloc: Humanoid
+    Dragon:
+      weapon: Sharp Teeth
+      armor: Tough Hide
+      hitloc: Dragon
       defense_skill: Reflexes
-    Aa:
-      weapon: Missile
-      armor: Centurion
-      vehicle: Aa Battery
-      hitloc: Humanoid
+    Griffin:
+      weapon: Talons
+      armor: Tough Hide
+      hitloc: Winged Mythic
       defense_skill: Reflexes
-    Cylon:
-      weapon: Pistol
-      armor: Cylon
-      hitloc: Humanoid
+    Roc:
+      weapon: Talons
+      armor: Tough Hide
+      hitloc: Winged Mythic
       defense_skill: Reflexes
-    Viper:
-      vehicle: Viper
-      hitloc: Humanoid
-      defense_skill: Piloting
-    Raptor:
-      vehicle: Raptor
-      hitloc: Humanoid
-      defense_skill: Piloting
-    Raider:
-      vehicle: Raider
-      hitloc: Humanoid
-      defense_skill: Piloting
-    Heavy:
-      vehicle: Heavy Raider
-      hitloc: Humanoid
-      defense_skill: Piloting
-    Target:
-      hitloc: Target
-      weapon: Unarmed
+    Pegasus:
+      weapon: Hard Hooves
+      hitloc: Winged Mythic
+      armor: Tough Hide
+      defense_skill: Reflexes
+    Lupine:
+      weapon: Sharp Claws
+      hitloc: Winged Mythic
+      armor: Tough Hide
+      defense_skill: Reflexes
+    Patherine:
+      weapon: Sharp Claws
+      hitloc: Winged Mythic
+      armor: Tough Hide
+      defense_skill: Reflexes
   shortcuts:
     combat/skill: combat/summary
     combat/skills: combat/summary

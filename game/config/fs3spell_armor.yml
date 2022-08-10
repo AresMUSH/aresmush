@@ -2,7 +2,7 @@
 fs3combat:
   armor:
     Natural Defenses:
-      description: Level 2 Nature spell
+      description: "Spell"
       is_magic: false
       defense: 0
       protection:

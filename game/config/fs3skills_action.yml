@@ -22,11 +22,11 @@ fs3skills:
   - name: Composure
     desc: Coolness under pressure.
     linked_attr: Grit
-  - name: Demolitions
-    desc: Blowing stuff up.
-    linked_attr: Wits
   - name: Firearms
     desc: Shooting guns.
+    linked_attr: Reflexes
+  - name: Archery
+    desc: Shooting bows.
     linked_attr: Reflexes
   - name: Brawl
     desc: Grappling, wrestling, and fighting with fists.
@@ -43,22 +43,15 @@ fs3skills:
   - name: Melee
     desc: Fighting with knives, swords, and other hand-to-hand weapons.
     linked_attr: Brawn
-  - name:  Bond
-    desc: How well you and your mythic act as one in stressful situations.
-    linked_attr: Magic
-    specialties:
-    - Griffon
-    - Dragon
-    - Pegasus
-    - Pantherine
-    - Lupine
-    - Roc
   - name: Stealth
     desc: Being sneaky.
     linked_attr: Reflexes
   - name: Technician
     desc: General mechanics/electronics and fixing things.
     linked_attr: Wits
+  - name: Bond
+    desc: How well you fly
+    linked_attr: Magic
   action_skills_blurb: 'Action Skills represent your ability in areas deemed important
     for gameplay.  Action Skills are rated from 0-8, but some games limit the highest
     and lowest ratings. See <a href="https://aresmush.com/fs3/fs3-3/chargen.html#action-skills"

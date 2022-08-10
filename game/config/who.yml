@@ -9,13 +9,9 @@ who:
     width: 20
     title: Name
   - field: group
-    value: department
+    value: mythic
     width: 16
-    title: Department
-  - field: group
-    value: position
-    width: 18
-    title: Position
+    title: Mythic
   - field: connected
     width: 7
     title: Conn

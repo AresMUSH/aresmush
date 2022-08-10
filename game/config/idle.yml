@@ -25,8 +25,6 @@ idle:
   roster_arrival_msg: |-
     %{name} has been claimed off the roster.
 
-    Position: %{position}
-
     RP Hooks:
     %{rp_hooks}
   roster_welcome_msg: Welcome!  You may wish to check your %xcnotes%xn and web portal
@@ -49,12 +47,8 @@ idle:
     value: gender
   - field: group
     width: 17
-    title: Faction
-    value: Faction
-  - field: group
-    width: 17
-    title: Position
-    value: Position
+    title: Mythic
+    value: Mythic
   shortcuts:
     idle/add: idle/action
     roster/update: roster/add

@@ -2,83 +2,64 @@
 fs3combat:
   vehicles:
     Pantherine:
-      description: Viper space fighter
-      pilot_skill: Piloting
+      description: A large winged cat.
+      pilot_skill: Bond
       toughness: 0
-      hitloc_chart: Fighter
-      armor: Viper
+      hitloc_chart: Winged Mythic
+      armor: Tough Hide
       weapons:
-      - Kew
-      dodge: 1
+      - Sharp Teeth
+      - Sharp Claws
+      dodge: 2
     Dragon:
-      description: Cylon Raider space fighter
-      pilot_skill: Piloting
-      toughness: -1
-      hitloc_chart: Fighter
-      armor: Raider
+      description: A winged reptile with four legs.
+      pilot_skill: Bond
+      toughness: 2
+      hitloc_chart: Dragon
+      armor: Tough Hide
       weapons:
       - Dragon's Breath
-      - Missile
-      - Nuke
-      dodge: 1
+      - Sharp Claws
+      - Sharp Teeth
+      dodge: -1
     Griffon:
-      description: Raptor space command and control
-      pilot_skill: Piloting
-      toughness: 2
-      hitloc_chart: Transport
-      armor: Raptor
+      description: Half bird of prey, half large cat.
+      pilot_skill: Bond
+      toughness: 0
+      hitloc_chart: Winged Mythic
+      armor: Tough Hide
       weapons:
       - Talons
-      - Ecm
-      - Kew
-      - Missile
-      - Talons
-      - Rocket
-      dodge: 0
+      - Beak
+      - Sharp Claws
+      dodge: 1
     Pegasus:
-      description: Cylon Heavy Raider space transport/bomber
-      pilot_skill: Piloting
-      toughness: 2
-      hitloc_chart: Transport
-      armor: Heavy Raider
+      description: A winged horse, horn optional.
+      pilot_skill: Bond
+      toughness: 1
+      hitloc_chart: Winged Mythic
+      armor: Tough Hide
       weapons:
-      - Missile
-      - Kew
-      - Rocket
+      - Hard Hooves
+      - Horns
       dodge: 0
     Lupine:
-      description: Ground battle tank.
-      pilot_skill: Piloting
-      toughness: 3
-      hitloc_chart: Tank
-      armor: Tank
+      description: A large winged wolf.
+      pilot_skill: Bond
+      toughness: 0
+      hitloc_chart: Winged Mythic
+      armor: Tough Hide
       weapons:
-      - Cannon
+      - Sharp Claws
+      - Sharp Teeth
       dodge: 0
     Roc:
-      description: Armored troop transport.
-      pilot_skill: Piloting
-      toughness: 2
-      hitloc_chart: Tank
-      armor: Apc
-      weapons:
-      - Hmg
-      dodge: 0
-    Truck:
-      description: Unarmored truck
-      pilot_skill: Piloting
+      description: Giant bird of prey.
+      pilot_skill: Bond
       toughness: 0
-      hitloc_chart: Truck
-      armor: Truck
+      hitloc_chart: Winged Mythic
+      armor: Tough Hide
       weapons:
-      - Unarmed
-      dodge: 0
-    Aa Battery:
-      description: Anti-Aircraft Battery
-      pilot_skill: Piloting
-      toughness: -2
-      hitloc_chart: Aa Battery
-      armor: Aa Battery
-      weapons:
-      - Missile
-      dodge: 0
+      - Beak
+      - Talons
+      dodge: 2
