@@ -1,6 +1,7 @@
 ---
 fs3combat:
   hitloc:
+
     Humanoid:
       areas:
         Chest:
@@ -131,410 +132,1013 @@ fs3combat:
       - Head
       - Neck
       - Groin
-    Fighter:
+    Dragon:
       areas:
-        Body:
-        - Controls
-        - Tail
-        - Weapon
-        - Wing
-        - Wing
-        - Cockpit
-        - Nose
-        - Body
-        - Body
-        - Body
-        Engine:
-        - Controls
-        - Wing
-        - Weapon
-        - Body
-        - Body
+        Rear Left Leg:
+        - Chest
+        - Rear Right Leg
+        - Rear Right Leg
+        - Abdomen
+        - Abdomen
         - Tail
         - Tail
-        - Engine
-        - Engine
-        - Engine
+        - Rear Left Leg
+        - Rear Left Leg
+        - Rear Left Leg
+        Rear Right Leg:
+        - Chest
+        - Rear Left Leg
+        - Rear Left Leg
+        - Abdomen
+        - Abdomen
+        - Tail
+        - Tail
+        - Rear Right Leg
+        - Rear Right Leg
+        - Rear Right Leg
+        Front Left Leg:
+        - Abdomen
+        - Head
+        - Chest
+        - Chest
+        - Front Right Leg
+        - Front Right Leg
+        - Front Right Leg
+        - Front Left Leg
+        - Front Left Leg
+        - Front Left Leg
+        Front Right Leg:
+        - Abdomen
+        - Head
+        - Chest
+        - Chest
+        - Front Left Leg
+        - Front Left Leg
+        - Front Left Leg
+        - Front Right Leg
+        - Front Right Leg
+        - Front Right Leg
+        Right Wing:
+        - Head
+        - Chest
+        - Chest
+        - Abdomen
+        - Abdomen
+        - Front Right Leg
+        - Front Right Leg
+        - Right Wing
+        - Right Wing
+        - Right Wing
+        Left Wing:
+        - Head
+        - Chest
+        - Chest
+        - Abdomen
+        - Abdomen
+        - Front Left Leg
+        - Front Left Leg
+        - Left Wing
+        - Left Wing
+        - Left Wing
+        Head:
+        - Front Right Leg
+        - Front Right Leg
+        - Front Left Leg
+        - Front Left Leg
+        - Chest
+        - Chest
+        - Chest
+        - Head
+        - Head
+        - Head
+        Abdomen:
+        - Rear Left Leg
+        - Rear Right Leg
+        - Rear Left Leg
+        - Rear Right Leg
+        - Tail
+        - Chest
+        - Chest
+        - Abdomen
+        - Abdomen
+        - Abdomen
+        Tail: 
+        - Chest
+        - Abdomen
+        - Abdomen
+        - Rear Left Leg
+        - Rear Right Leg
+        - Rear Left Leg
+        - Rear Right Leg
+        - Tail
+        - Tail
+        - Tail
+      vital_areas:
+      - Abdomen
+      - Chest
+      critical_areas:
+      - Head
+    Winged Mythic:
+      areas:
+        Rear Left Leg:
+        - Chest
+        - Rear Right Leg
+        - Rear Right Leg
+        - Rear Right Leg
+        - Abdomen
+        - Abdomen
+        - Abdomen
+        - Rear Left Leg
+        - Rear Left Leg
+        - Rear Left Leg
+        Rear Right Leg:
+        - Chest
+        - Rear Left Leg
+        - Rear Left Leg
+        - Rear Left Leg
+        - Abdomen
+        - Abdomen
+        - Abdomen
+        - Rear Right Leg
+        - Rear Right Leg
+        - Rear Right Leg
+        Front Left Leg:
+        - Abdomen
+        - Head
+        - Chest
+        - Chest
+        - Front Right Leg
+        - Front Right Leg
+        - Front Right Leg
+        - Front Left Leg
+        - Front Left Leg
+        - Front Left Leg
+        Front Right Leg:
+        - Abdomen
+        - Head
+        - Chest
+        - Chest
+        - Front Left Leg
+        - Front Left Leg
+        - Front Left Leg
+        - Front Right Leg
+        - Front Right Leg
+        - Front Right Leg
+        Right Wing:
+        - Head
+        - Chest
+        - Chest
+        - Abdomen
+        - Abdomen
+        - Front Right Leg
+        - Front Right Leg
+        - Right Wing
+        - Right Wing
+        - Right Wing
+        Left Wing:
+        - Head
+        - Chest
+        - Chest
+        - Abdomen
+        - Abdomen
+        - Front Left Leg
+        - Front Left Leg
+        - Left Wing
+        - Left Wing
+        - Left Wing
+        Head:
+        - Front Right Leg
+        - Front Right Leg
+        - Front Left Leg
+        - Front Left Leg
+        - Chest
+        - Chest
+        - Chest
+        - Head
+        - Head
+        - Head
+        Abdomen:
+        - Rear Left Leg
+        - Rear Right Leg
+        - Rear Left Leg
+        - Rear Right Leg
+        - Chest
+        - Chest
+        - Chest
+        - Abdomen
+        - Abdomen
+        - Abdomen
+      vital_areas:
+      - Abdomen
+      - Chest
+      critical_areas:
+      - Head      
+
+
+
+
+
+
+
+
+
+
+
+
+
+  # ----------------------
+  # CURRENTLY NOT USED
+  # ----------------------
+    Crab:
+      areas:
+        Eyes:
+        - Right Claw
+        - Right Claw
+        - Left Claw
+        - Left Claw
+        - Abdomen
+        - Abdomen
+        - Abdomen
+        - Abdomen
+        - Eyes
+        - Eyes
+        Leg:
+        - Right Claw
+        - Left Claw
+        - Abdomen
+        - Abdomen
+        - Carapace
+        - Carapace
+        - Leg
+        - Leg
+        - Leg
+        - Leg
+        Abdomen:
+        - Leg
+        - Leg
+        - Leg
+        - Carapace
+        - Carapace
+        - Carapace
+        - Carapace
+        - Abdomen
+        - Abdomen
+        - Abdomen
+        Carapace:
+        - Leg
+        - Leg
+        - Leg
+        - Abdomen
+        - Abdomen
+        - Abdomen
+        - Abdomen
+        - Carapace
+        - Carapace
+        - Carapace
+        Right Claw:
+        - Eyes
+        - Leg
+        - Leg
+        - Leg
+        - Carapace
+        - Carapace
+        - Left Claw
+        - Right Claw
+        - Right Claw
+        - Right Claw
+        Left Claw:
+        - Eyes
+        - Leg
+        - Leg
+        - Leg
+        - Carapace
+        - Carapace
+        - Right Claw
+        - Left Claw
+        - Left Claw
+        - Left Claw
+      vital_areas:
+      - Eyes
+      critical_areas:
+      - Abdomen
+    Deathcap:
+      areas:
+        Trunk:
+        - Left Leg
+        - Right Leg
+        - Left Arm
+        - Right Arm
+        - Left Arm
+        - Head
+        - Head
+        - Trunk
+        - Trunk
+        - Trunk
+        Left Leg:
+        - Trunk
+        - Trunk
+        - Right Foot
+        - Right Leg
+        - Right Leg
+        - Left Foot
+        - Left Foot
+        - Left Leg
+        - Left Leg
+        - Left Leg
+        Right Leg:
+        - Trunk
+        - Left Foot
+        - Left Leg
+        - Left Leg
+        - Trunk
+        - Trunk
+        - Right Foot
+        - Right Leg
+        - Right Leg
+        - Right Leg
+        Left Hand:
+        - Trunk
+        - Trunk
+        - Trunk
+        - Left Arm
+        - Left Arm
+        - Left Arm
+        - Left Arm
+        - Left Hand
+        - Left Hand
+        - Left Hand
+        Right Hand:
+        - Trunk
+        - Trunk
+        - Right Arm
+        - Right Arm
+        - Right Arm
+        - Right Arm
+        - Right Arm
+        - Right Hand
+        - Right Hand
+        - Right Hand
+        Left Arm:
+        - Head
+        - Trunk
+        - Trunk
+        - Trunk
+        - Left Hand
+        - Left Hand
+        - Left Hand
+        - Left Arm
+        - Left Arm
+        - Left Arm
+        Right Arm:
+        - Head
+        - Trunk
+        - Trunk
+        - Trunk
+        - Right Hand
+        - Right Hand
+        - Right Hand
+        - Right Arm
+        - Right Arm
+        - Right Arm
+        Head:
+        - Right Arm
+        - Right Arm
+        - Left Arm
+        - Left Arm
+        - Trunk
+        - Trunk
+        - Trunk
+        - Head
+        - Head
+        - Head
+      vital_areas:
+      - Trunk
+      critical_areas:
+      - Head
+    Fish:
+      areas:
+        Head:
+        - Fin
+        - Fin
+        - Body
+        - Body
+        - Body
+        - Body
+        - Body
+        - Head
+        - Head
+        - Head
         Tail:
-        - Controls
-        - Wing
-        - Weapon
+        - Fin
+        - Fin
         - Body
         - Body
-        - Engine
-        - Engine
-        - Tail
-        - Tail
-        - Tail
-        Wing:
-        - Controls
-        - Cockpit
-        - Weapon
+        - Body
         - Body
         - Body
         - Tail
         - Tail
-        - Wing
-        - Wing
-        - Wing
-        Weapon:
-        - Controls
-        - Controls
+        - Tail
+        Body:
+        - Fin
+        - Fin
+        - Tail
+        - Tail
+        - Head
+        - Head
         - Body
         - Body
-        - Wing
-        - Wing
-        - Wing
-        - Weapon
-        - Weapon
-        - Weapon
-        Nose:
-        - Controls
-        - Weapon
-        - Wing
-        - Wing
-        - Cockpit
         - Body
         - Body
-        - Nose
-        - Nose
-        - Nose
-        Cockpit:
-        - Controls
-        - Weapon
-        - Wing
+        Fin:
+        - Head
+        - Tail
+        - Tail
         - Body
         - Body
-        - Nose
-        - Nose
-        - Cockpit
-        - Cockpit
-        - Cockpit
-        Controls:
-        - Cockpit
-        - Weapon
-        - Wing
         - Body
         - Body
-        - Nose
-        - Nose
-        - Controls
-        - Controls
-        - Controls
+        - Fin
+        - Fin
+        - Fin
       vital_areas:
       - Body
-      - Engine
       critical_areas:
-      - Cockpit
-      - Controls
-      crew_areas:
-      - Cockpit
-    Transport:
+      - Head
+
+    Merperson:
       areas:
-        Body:
-        - Controls
-        - Tail
-        - Weapon
-        - Wing
-        - Wing
-        - Cockpit
-        - Nose
-        - Body
-        - Body
-        - Body
-        Engine:
-        - Controls
-        - Wing
-        - Weapon
-        - Body
-        - Body
+        Chest:
         - Tail
         - Tail
-        - Engine
-        - Engine
-        - Engine
+        - Left Arm
+        - Right Arm
+        - Abdomen
+        - Abdomen
+        - Head
+        - Chest
+        - Chest
+        - Chest
         Tail:
-        - Controls
-        - Wing
-        - Weapon
-        - Body
-        - Body
-        - Engine
-        - Engine
+        - Chest
+        - Chest
+        - Abdomen
+        - Abdomen
+        - Abdomen
+        - Abdomen
         - Tail
         - Tail
         - Tail
-        Wing:
-        - Controls
-        - Cockpit
-        - Weapon
-        - Body
-        - Body
+        - Tail
+        Groin:
+        - Abdomen
+        - Abdomen
+        - Abdomen
         - Tail
         - Tail
-        - Wing
-        - Wing
-        - Wing
-        Weapon:
-        - Controls
-        - Controls
-        - Body
-        - Body
-        - Wing
-        - Wing
-        - Wing
-        - Weapon
-        - Weapon
-        - Weapon
-        Nose:
-        - Controls
-        - Weapon
-        - Wing
-        - Wing
-        - Cockpit
-        - Body
-        - Body
-        - Nose
-        - Nose
-        - Nose
-        Cockpit:
-        - Controls
-        - Weapon
-        - Wing
-        - Body
-        - Body
-        - Nose
-        - Nose
-        - Cockpit
-        - Cockpit
-        - Cockpit
-        Controls:
-        - Cockpit
-        - Weapon
-        - Wing
-        - Body
-        - Body
-        - Nose
-        - Nose
-        - Controls
-        - Controls
-        - Controls
-        Cabin:
-        - Controls
         - Tail
-        - Weapon
-        - Wing
-        - Wing
-        - Cockpit
-        - Nose
-        - Cabin
-        - Cabin
-        - Cabin
+        - Tail
+        - Groin
+        - Groin
+        - Groin
+        Left Hand:
+        - Chest
+        - Chest
+        - Abdomen
+        - Abdomen
+        - Left Arm
+        - Left Arm
+        - Left Arm
+        - Left Hand
+        - Left Hand
+        - Left Hand
+        Right Hand:
+        - Chest
+        - Chest
+        - Abdomen
+        - Abdomen
+        - Right Arm
+        - Right Arm
+        - Right Arm
+        - Right Hand
+        - Right Hand
+        - Right Hand
+        Left Arm:
+        - Head
+        - Chest
+        - Chest
+        - Abdomen
+        - Abdomen
+        - Left Hand
+        - Left Hand
+        - Left Arm
+        - Left Arm
+        - Left Arm
+        Right Arm:
+        - Head
+        - Chest
+        - Chest
+        - Abdomen
+        - Abdomen
+        - Right Hand
+        - Right Hand
+        - Right Arm
+        - Right Arm
+        - Right Arm
+        Head:
+        - Right Arm
+        - Right Arm
+        - Left Arm
+        - Chest
+        - Chest
+        - Neck
+        - Neck
+        - Head
+        - Head
+        - Head
+        Neck:
+        - Right Arm
+        - Right Arm
+        - Left Arm
+        - Chest
+        - Chest
+        - Head
+        - Head
+        - Neck
+        - Neck
+        - Neck
+        Abdomen:
+        - Tail
+        - Tail
+        - Tail
+        - Tail
+        - Chest
+        - Chest
+        - Chest
+        - Abdomen
+        - Abdomen
+        - Abdomen
       vital_areas:
-      - Body
-      - Engine
+      - Chest
+      - Abdomen
       critical_areas:
-      - Cockpit
-      - Controls
-      crew_areas:
-      - Cockpit
-      - Cabin
-    Truck:
+      - Head
+      - Neck
+      - Groin
+    Octopus:
       areas:
-        Body:
-        - Wheel
-        - Bed
-        - Bed
-        - Engine
-        - Cab
-        - Cab
-        - Body
-        - Body
-        - Body
-        - Body
-        Engine:
-        - Wheel
-        - Wheel
-        - Cab
-        - Cab
-        - Body
-        - Body
-        - Engine
-        - Engine
-        - Engine
-        - Engine
-        Cab:
-        - Wheel
-        - Bed
-        - Engine
-        - Engine
-        - Body
-        - Body
-        - Body
-        - Cab
-        - Cab
-        - Cab
-        Bed:
-        - Cab
-        - Wheel
-        - Engine
-        - Engine
-        - Body
-        - Body
-        - Body
-        - Bed
-        - Bed
-        - Bed
-        Wheel:
-        - Cab
-        - Cab
-        - Engine
-        - Engine
-        - Body
-        - Body
-        - Wheel
-        - Wheel
-        - Wheel
-        - Wheel
+        Mantle:
+        - Arm
+        - Arm
+        - Arm
+        - Arm
+        - Arm
+        - Arm
+        - Head
+        - Mantle
+        - Mantle
+        - Mantle
+        Head:
+        - Arm
+        - Arm
+        - Arm
+        - Arm
+        - Arm
+        - Arm
+        - Mantle
+        - Mantle
+        - Head
+        - Head
+        Arm:
+        - Mantle
+        - Mantle
+        - Head
+        - Head
+        - Arm
+        - Arm
+        - Arm
+        - Arm
+        - Arm
+        - Arm
       vital_areas:
-      - Body
-      - Wheel
+      - Mantle
       critical_areas:
-      - Cab
-      - Engine
-      crew_areas:
-      - Cab
-      - Bed
-    Tank:
+      - Head
+    Plant:
       areas:
-        Body:
-        - Track
-        - Track
-        - Engine
-        - Engine
-        - Weapon
-        - Weapon
-        - Body
-        - Body
-        - Body
-        - Body
-        Engine:
-        - Track
-        - Track
-        - Weapon
-        - Weapon
-        - Body
-        - Body
-        - Engine
-        - Engine
-        - Engine
-        - Engine
-        Weapon:
-        - Track
-        - Track
-        - Engine
-        - Engine
-        - Body
-        - Body
-        - Body
-        - Weapon
-        - Weapon
-        - Weapon
-        Track:
-        - Weapon
-        - Weapon
-        - Engine
-        - Engine
-        - Body
-        - Body
-        - Track
-        - Track
-        - Track
-        - Track
-        Side:
-        - Weapon
-        - Track
-        - Track
-        - Body
-        - Body
-        - Body
-        - Side
-        - Side
-        - Side
-        - Side
-        Cabin:
-        - Side
-        - Side
-        - Track
-        - Track
-        - Body
-        - Body
-        - Body
-        - Cabin
-        - Cabin
-        - Cabin
+        Stem:
+        - Left Vines
+        - Left Vines
+        - Flower
+        - Flower
+        - Right Vines
+        - Right Vines
+        - Stem
+        - Stem
+        - Stem
+        - Stem
+        Right Vines:
+        - Right Vines
+        - Left Vines
+        - Left Vines
+        - Flower
+        - Flower
+        - Stem
+        - Right Vines
+        - Right Vines
+        - Right Vines
+        - Right Vines
+        Left Vines:
+        - Flower
+        - Flower
+        - Right Vines
+        - Right Vines
+        - Stem
+        - Left Vines
+        - Left Vines
+        - Left Vines
+        - Left Vines
+        - Left Vines
+        Flower:
+        - Left Vines
+        - Left Vines
+        - Left Vines
+        - Right Vines
+        - Right Vines
+        - Stem
+        - Stem
+        - Flower
+        - Flower
+        - Flower
       vital_areas:
-      - Body
-      - Track
-      - Side
+      - Stem
       critical_areas:
-      - Weapon
-      - Engine
-      crew_areas:
-      - Cabin
-    Aa Battery:
+      - Flower
+    Quadraped:
       areas:
-        Weapon:
-        - Crew
+        Chest:
+        - Rear Left Leg
+        - Rear Right Leg
+        - Front Left Leg
+        - Front Right Leg
+        - Abdomen
+        - Abdomen
+        - Head
+        - Chest
+        - Chest
+        - Chest
+        Rear Left Leg:
+        - Chest
+        - Rear Right Leg
+        - Rear Right Leg
+        - Rear Right Leg
+        - Abdomen
+        - Abdomen
+        - Abdomen
+        - Rear Left Leg
+        - Rear Left Leg
+        - Rear Left Leg
+        Rear Right Leg:
+        - Chest
+        - Rear Left Leg
+        - Rear Left Leg
+        - Rear Left Leg
+        - Abdomen
+        - Abdomen
+        - Rear Right Leg
+        - Rear Right Leg
+        - Rear Right Leg
+        - Rear Right Leg
+        Groin:
+        - Abdomen
+        - Abdomen
+        - Abdomen
+        - Rear Left Leg
+        - Rear Right Leg
+        - Rear Left Leg
+        - Rear Right Leg
+        - Groin
+        - Groin
+        - Groin
+        Front Left Leg:
+        - Head
+        - Chest
+        - Chest
+        - Chest
+        - Abdomen
+        - Abdomen
+        - Front Left Leg
+        - Front Left Leg
+        - Front Left Leg
+        - Front Left Leg
+        Front Right Leg:
+        - Head
+        - Chest
+        - Chest
+        - Abdomen
+        - Abdomen
+        - Abdomen
+        - Front Right Leg
+        - Front Right Leg
+        - Front Right Leg
+        - Front Right Leg
+        Head:
+        - Front Right Leg
+        - Front Right Leg
+        - Front Left Leg
+        - Chest
+        - Chest
+        - Neck
+        - Neck
+        - Head
+        - Head
+        - Head
+        Neck:
+        - Front Right Leg
+        - Front Right Leg
+        - Front Left Leg
+        - Chest
+        - Chest
+        - Head
+        - Head
+        - Neck
+        - Neck
+        - Neck
+        Abdomen:
+        - Rear Left Leg
+        - Rear Right Leg
+        - Rear Left Leg
+        - Rear Right Leg
+        - Chest
+        - Chest
+        - Chest
+        - Abdomen
+        - Abdomen
+        - Abdomen
+      vital_areas:
+      - Chest
+      - Abdomen
+      critical_areas:
+      - Head
+      - Neck
+      - Groin
+    QuadrapedWithTail:
+      areas:
+        Chest:
+        - Rear Left Leg
+        - Rear Right Leg
+        - Front Left Leg
+        - Front Right Leg
+        - Abdomen
+        - Abdomen
+        - Head
+        - Chest
+        - Chest
+        - Chest
+        Rear Left Leg:
+        - Rear Right Leg
+        - Rear Right Leg
+        - Tail
+        - Tail
+        - Abdomen
+        - Abdomen
+        - Abdomen
+        - Rear Left Leg
+        - Rear Left Leg
+        - Rear Left Leg
+        Rear Right Leg:
+        - Rear Left Leg
+        - Rear Left Leg
+        - Tail
+        - Tail
+        - Abdomen
+        - Abdomen
+        - Rear Right Leg
+        - Rear Right Leg
+        - Rear Right Leg
+        - Rear Right Leg
+        Tail:
+        - Chest
+        - Rear Left Leg
+        - Rear Left Leg
+        - Rear Right Leg
+        - Abdomen
+        - Abdomen
+        - Tail
+        - Tail
+        - Tail
+        - Tail
+        Groin:
+        - Abdomen
+        - Abdomen
+        - Abdomen
+        - Rear Left Leg
+        - Rear Right Leg
+        - Rear Left Leg
+        - Rear Right Leg
+        - Groin
+        - Groin
+        - Groin
+        Front Left Leg:
+        - Head
+        - Chest
+        - Chest
+        - Chest
+        - Abdomen
+        - Abdomen
+        - Front Left Leg
+        - Front Left Leg
+        - Front Left Leg
+        - Front Left Leg
+        Front Right Leg:
+        - Head
+        - Chest
+        - Chest
+        - Abdomen
+        - Abdomen
+        - Abdomen
+        - Front Right Leg
+        - Front Right Leg
+        - Front Right Leg
+        - Front Right Leg
+        Head:
+        - Front Right Leg
+        - Front Right Leg
+        - Front Left Leg
+        - Chest
+        - Chest
+        - Neck
+        - Neck
+        - Head
+        - Head
+        - Head
+        Neck:
+        - Front Right Leg
+        - Front Right Leg
+        - Front Left Leg
+        - Chest
+        - Chest
+        - Head
+        - Head
+        - Neck
+        - Neck
+        - Neck
+        Abdomen:
+        - Rear Left Leg
+        - Rear Right Leg
+        - Rear Left Leg
+        - Rear Right Leg
+        - Chest
+        - Chest
+        - Chest
+        - Abdomen
+        - Abdomen
+        - Abdomen
+      vital_areas:
+      - Chest
+      - Abdomen
+      critical_areas:
+      - Head
+      - Neck
+      - Groin
+    Spider:
+      areas:
+        Abdomen:
+        - Leg
+        - Leg
+        - Leg
+        - Leg
+        - Thorax
+        - Thorax
+        - Head
+        - Abdomen
+        - Abdomen
+        - Abdomen
+        Thorax:
+        - Leg
+        - Leg
+        - Leg
+        - Leg
+        - Abdomen
+        - Abdomen
+        - Head
+        - Thorax
+        - Thorax
+        - Thorax
+        Head:
+        - Leg
+        - Leg
+        - Leg
+        - Leg
+        - Leg
+        - Leg
+        - Abdomen
+        - Abdomen
+        - Head
+        - Head
+        Leg:
+        - Abdomen
+        - Abdomen
+        - Head
+        - Thorax
+        - Thorax
+        - Leg
+        - Leg
+        - Leg
+        - Leg
+        - Leg
+      vital_areas:
+      - Abdomen
+      - Thorax
+      critical_areas:
+      - Head
+    Serpent:
+      areas:
+        Head:
         - Body
         - Body
         - Body
-        - Controls
-        - Controls
-        - Controls
-        - Weapon
-        - Weapon
-        - Weapon
-        Controls:
-        - Crew
-        - Weapon
-        - Weapon
-        - Weapon
         - Body
         - Body
         - Body
-        - Controls
-        - Controls
-        - Controls
+        - Head
+        - Head
+        - Head
+        - Head
         Body:
-        - Controls
-        - Controls
-        - Controls
-        - Crew
-        - Weapon
-        - Weapon
-        - Weapon
+        - Tail
+        - Tail
+        - Tail
+        - Head
+        - Head
         - Body
         - Body
         - Body
-        Crew:
-        - Weapon
-        - Weapon
         - Body
         - Body
-        - Controls
-        - Controls
-        - Controls
-        - Crew
-        - Crew
-        - Crew
+        Tail:
+        - Body
+        - Body
+        - Body
+        - Body
+        - Body
+        - Tail
+        - Tail
+        - Tail
+        - Tail
+        - Tail
       vital_areas:
       - Body
       critical_areas:
-      - Controls
-      - Weapon
-      crew_areas:
-      - Crew
+      - Head
+    Tree:
+      areas:
+        Trunk:
+        - Right Branches
+        - Right Branches
+        - Left Branches
+        - Left Branches
+        - Upper Branches
+        - Upper Branches
+        - Trunk
+        - Trunk
+        - Trunk
+        - Trunk
+        Right Branches:
+        - Left Branches
+        - Left Branches
+        - Upper Branches
+        - Upper Branches
+        - Upper Branches
+        - Trunk
+        - Trunk
+        - Right Branches
+        - Right Branches
+        - Right Branches
+        Left Branches:
+        - Upper Branches
+        - Upper Branches
+        - Upper Branches
+        - Right Branches
+        - Right Branches
+        - Trunk
+        - Trunk
+        - Left Branches
+        - Left Branches
+        - Left Branches
+        Upper Branches:
+        - Left Branches
+        - Left Branches
+        - Left Branches
+        - Right Branches
+        - Right Branches
+        - Trunk
+        - Trunk
+        - Upper Branches
+        - Upper Branches
+        - Upper Branches
+      vital_areas: []
+      critical_areas: []
     Target:
       areas:
         Bullseye:
@@ -550,3 +1154,299 @@ fs3combat:
         - Bullseye
       vital_areas: []
       critical_areas: []
+    Insect:
+      areas:
+        Left Leg:
+        - Thorax
+        - Right Leg
+        - Right Leg
+        - Right Leg
+        - Abdomen
+        - Abdomen
+        - Abdomen
+        - Left Leg
+        - Left Leg
+        - Left Leg
+        Right Leg:
+        - Thorax
+        - Abdomen
+        - Abdomen
+        - Abdomen
+        - Left Leg
+        - Left Leg
+        - Left Leg
+        - Right Leg
+        - Right Leg
+        - Right Leg
+        Rear Left Leg:
+        - Thorax
+        - Rear Right Leg
+        - Rear Right Leg
+        - Rear Right Leg
+        - Abdomen
+        - Abdomen
+        - Abdomen
+        - Rear Left Leg
+        - Rear Left Leg
+        - Rear Left Leg
+        Rear Right Leg:
+        - Thorax
+        - Rear Left Leg
+        - Rear Left Leg
+        - Rear Left Leg
+        - Abdomen
+        - Abdomen
+        - Rear Right Leg
+        - Rear Right Leg
+        - Rear Right Leg
+        - Rear Right Leg
+        Front Left Leg:
+        - Head
+        - Thorax
+        - Thorax
+        - Thorax
+        - Abdomen
+        - Abdomen
+        - Front Left Leg
+        - Front Left Leg
+        - Front Left Leg
+        - Front Left Leg
+        Front Right Leg:
+        - Head
+        - Thorax
+        - Thorax
+        - Abdomen
+        - Abdomen
+        - Abdomen
+        - Front Right Leg
+        - Front Right Leg
+        - Front Right Leg
+        - Front Right Leg
+        Head:
+        - Front Right Leg
+        - Front Right Leg
+        - Front Left Leg
+        - Abdomen
+        - Abdomen
+        - Thorax
+        - Thorax
+        - Head
+        - Head
+        - Head
+        Abdomen:
+        - Rear Left Leg
+        - Rear Right Leg
+        - Rear Left Leg
+        - Rear Right Leg
+        - Chest
+        - Chest
+        - Chest
+        - Abdomen
+        - Abdomen
+        - Abdomen
+      vital_areas:
+      - Abdomen
+      critical_areas:
+      - Thorax
+
+    Flying2LeggedCreature:
+      areas:
+        Left Leg:
+        - Neck
+        - Right Leg
+        - Right Leg
+        - Chest
+        - Chest
+        - Abdomen
+        - Abdomen
+        - Left Leg
+        - Left Leg
+        - Left Leg
+        Right Leg:
+        - Neck
+        - Left Leg
+        - Left Leg
+        - Chest
+        - Chest
+        - Abdomen
+        - Abdomen
+        - Right Leg
+        - Right Leg
+        - Right Leg
+        Right Wing:
+        - Head
+        - Chest
+        - Chest
+        - Abdomen
+        - Abdomen
+        - Front Right Leg
+        - Front Right Leg
+        - Right Wing
+        - Right Wing
+        - Right Wing
+        Left Wing:
+        - Head
+        - Chest
+        - Chest
+        - Abdomen
+        - Abdomen
+        - Front Left Leg
+        - Front Left Leg
+        - Left Wing
+        - Left Wing
+        - Left Wing
+        Neck:
+        - Right Leg
+        - Left Leg
+        - Head
+        - Head
+        - Chest
+        - Chest
+        - Chest
+        - Neck
+        - Neck
+        - Neck
+        Head:
+        - Right Leg
+        - Left Leg
+        - Neck
+        - Neck
+        - Chest
+        - Chest
+        - Chest
+        - Head
+        - Head
+        - Head
+        Abdomen:
+        - Left Leg
+        - Right Leg
+        - Left Leg
+        - Right Leg
+        - Chest
+        - Chest
+        - Chest
+        - Abdomen
+        - Abdomen
+        - Abdomen
+      vital_areas:
+      - Abdomen
+      - Chest
+      - Neck
+      critical_areas:
+      - Head
+    FlyingInsect:
+      areas:
+        Left Leg:
+        - Thorax
+        - Right Leg
+        - Right Leg
+        - Right Leg
+        - Abdomen
+        - Abdomen
+        - Abdomen
+        - Left Leg
+        - Left Leg
+        - Left Leg
+        Right Leg:
+        - Thorax
+        - Abdomen
+        - Abdomen
+        - Abdomen
+        - Left Leg
+        - Left Leg
+        - Left Leg
+        - Right Leg
+        - Right Leg
+        - Right Leg
+        Rear Left Leg:
+        - Thorax
+        - Rear Right Leg
+        - Rear Right Leg
+        - Rear Right Leg
+        - Abdomen
+        - Abdomen
+        - Abdomen
+        - Rear Left Leg
+        - Rear Left Leg
+        - Rear Left Leg
+        Rear Right Leg:
+        - Thorax
+        - Rear Left Leg
+        - Rear Left Leg
+        - Rear Left Leg
+        - Abdomen
+        - Abdomen
+        - Rear Right Leg
+        - Rear Right Leg
+        - Rear Right Leg
+        - Rear Right Leg
+        Front Left Leg:
+        - Head
+        - Thorax
+        - Thorax
+        - Thorax
+        - Abdomen
+        - Abdomen
+        - Front Left Leg
+        - Front Left Leg
+        - Front Left Leg
+        - Front Left Leg
+        Front Right Leg:
+        - Head
+        - Thorax
+        - Thorax
+        - Abdomen
+        - Abdomen
+        - Abdomen
+        - Front Right Leg
+        - Front Right Leg
+        - Front Right Leg
+        - Front Right Leg
+        Right Wing:
+        - Head
+        - Thorax
+        - Thorax
+        - Abdomen
+        - Abdomen
+        - Front Right Leg
+        - Front Right Leg
+        - Right Wing
+        - Right Wing
+        - Right Wing
+        Left Wing:
+        - Head
+        - Thorax
+        - Thorax
+        - Abdomen
+        - Abdomen
+        - Front Left Leg
+        - Front Left Leg
+        - Left Wing
+        - Left Wing
+        - Left Wing
+        Head:
+        - Front Right Leg
+        - Front Right Leg
+        - Front Left Leg
+        - Front Left Leg
+        - Thorax
+        - Thorax
+        - Thorax
+        - Head
+        - Head
+        - Head
+        Abdomen:
+        - Rear Left Leg
+        - Rear Right Leg
+        - Rear Left Leg
+        - Rear Right Leg
+        - Chest
+        - Chest
+        - Chest
+        - Abdomen
+        - Abdomen
+        - Abdomen
+      vital_areas:
+      - Abdomen
+      critical_areas:
+      - Thorax
