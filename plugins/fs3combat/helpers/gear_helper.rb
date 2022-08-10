@@ -157,7 +157,6 @@ module AresMUSH
     end
     
     def self.set_weapon(enactor, combatant, weapon, specials = nil)
-      Global.logger.debug "Enactor: #{enactor.name} Combatant #{combatant} Weapon #{weapon} Specials #{specials}"
       weapon = weapon ? weapon.titlecase : "Unarmed"
       specials = specials ? specials.map { |s| s.titlecase }.uniq : []
       special_text = specials.empty? ? nil : "+#{specials.join("+")}"
@@ -173,10 +172,8 @@ module AresMUSH
         prior_ammo[combatant.weapon_name] = combatant.ammo
         combatant.update(prior_ammo: prior_ammo)
       end
-      Global.logger.debug "2: Enactor: #{enactor.name} Combatant #{combatant} Weapon #{weapon} Specials #{specials}"
       magic_specials = Magic.magic_weapon_specials(combatant, weapon)
       magic_specials != nil ? specials = specials.concat([magic_specials]) : specials = specials
-      Global.logger.debug "3: Enactor: #{enactor.name} Combatant #{combatant} Weapon #{weapon} Specials #{specials}"
       combatant.update(weapon_name: weapon)
       combatant.update(weapon_specials: specials)
       combatant.update(ammo: current_ammo)
