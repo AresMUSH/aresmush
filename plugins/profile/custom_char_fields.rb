@@ -45,11 +45,11 @@ module AresMUSH
           minor_schools: Global.read_config("magic", "minor_schools"),
           cg_spells: Magic.cg_spells(char),
           starting_spells: Magic.starting_spells(char),
-          mount_name: Magic.mount_name(char),
+          mount_name: ExpandedMounts.mount_name(char),
           mount_types: ["Dragon", "Griffin", "Roc", "Pantherine", "Lupine", "Pegasus"],
-          mount_type: Magic.mount_type(char),
-          mount_desc: Magic.mount_desc(char),
-          mount_shortdesc: Magic.mount_shortdesc(char),
+          mount_type: ExpandedMounts.mount_type(char),
+          mount_desc: ExpandedMounts.mount_desc(char),
+          mount_shortdesc: ExpandedMounts.mount_shortdesc(char),
           lore_hook_pref: { value: char.lore_hook_pref, desc: char.lore_hook_pref },
           lore_hook_prefs: Lorehooks.lore_hook_cg_prefs
         }
