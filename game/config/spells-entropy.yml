@@ -86,7 +86,7 @@ spells:
     line_of_sight: true
     name: Chilled Limbs
     range: Short
-    rounds: 1
+    rounds: 2
     school: Entropy
     target_num: 1    
   Ice Talons:

@@ -67,13 +67,13 @@ module AresMUSH
       end
 
       if combatant.magic_attack_mod != 0 
-        msg = Magic.magic_attack_mod_newturn(combatant)
-        mods.concat [msg]
+        attack_msg = Magic.magic_attack_mod_newturn(combatant)
+        mods.concat [attack_msg]
       end
 
-      if combatant.magic_defense_mod != 0
-        msg = Magic.magic_defense_mod_newturn(combatant)
-        mods.concat [msg]
+      if combatant.magic_defense_mod != 0        
+        # msg = Magic.magic_defense_mod_newturn(combatant)        
+        mods.concat [Magic.magic_defense_mod_newturn(combatant)]
       end
 
       if combatant.magic_init_mod > 0
@@ -96,13 +96,12 @@ module AresMUSH
         messages.concat [msg]
       end
 
-      if !mods.empty? && mods.count > 1
+      if mods.any? && mods.count > 1
         messages.concat  [t('magic.mods_wore_off', :name => combatant.name, :mods => mods.join(", "))] 
-      elsif !mods.empty?
+      elsif mods.any?
         messages.concat  [t('magic.mod_wore_off', :name => combatant.name, :mods => mods.join())]
       end
       # byebug
-
       FS3Combat.emit_to_combat combatant.combat, messages.join("\n"), nil, true
 
     end
@@ -140,17 +139,20 @@ module AresMUSH
         return msg
       else
         combatant.update(magic_attack_mod_counter: combatant.magic_attack_mod_counter - 1)
+        return 
       end
     end
 
     def self.magic_defense_mod_newturn(combatant)
       if combatant.magic_defense_mod_counter == 0 
         msg = "#{combatant.magic_defense_mod} defense"
+        
         combatant.update(magic_defense_mod: 0)
         combatant.log "#{combatant.name} resetting defense mod to #{combatant.magic_defense_mod}."
         return msg
       else
         combatant.update(magic_defense_mod_counter: combatant.magic_defense_mod_counter - 1)
+        return 
       end
     end
 
@@ -162,6 +164,7 @@ module AresMUSH
         return msg
       elsif combatant.magic_init_mod_counter > 0 
         combatant.update(magic_init_mod_counter: combatant.magic_init_mod_counter - 1)
+        return
       end
     end
 
@@ -173,6 +176,7 @@ module AresMUSH
         return msg
       else
         combatant.update(magic_lethal_mod_counter: combatant.magic_lethal_mod_counter - 1)
+        return
       end
     end
 

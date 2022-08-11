@@ -191,7 +191,7 @@ module AresMUSH
 
               #Apply Mods
               if spell['attack_mod'] || spell['defense_mod'] || spell['init_mod'] || spell['lethal_mod'] || spell['spell_mod']
-                message = Magic.cast_mod(combatant, target, spell, spell['damage_type'], spell['rounds'], succeeds[:result], spell['attack_mod'], spell['defense_mod'], spell['init_mod'], spell['lethal_mod'], spell['spell_mod'])
+                message = Magic.cast_mod(combatant, target, self.spell_name, spell['damage_type'], spell['rounds'], succeeds[:result], spell['attack_mod'], spell['defense_mod'], spell['init_mod'], spell['lethal_mod'], spell['spell_mod'])
                 messages.concat message
               end
 
