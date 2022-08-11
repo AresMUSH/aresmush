@@ -17,7 +17,7 @@ module AresMUSH
       return nil if !name_with_specials
       
       specials = FS3Combat.weapon_specials
-      puts name_with_specials
+      Global.logger.debug "Name with specials #{name_with_specials}"
       name = name_with_specials.before("+")
       weapon = FS3Combat.weapon(name)
       return nil if !weapon
