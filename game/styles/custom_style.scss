@@ -1,4 +1,355 @@
-/* Put any custom styles here.  They will override the default styles. */
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Beth+Ellen&family=Homemade+Apple&family=Julius+Sans+One&family=Loved+by+the+King&family=Rubik+Distressed&family=Staatliches&display=swap');
+
+$light-grey: #ebebeb;
+$dark-grey: #3a4146;
+$darker-grey: #23272a;
+$darkest-grey: #171a1c;
+$blackest-grey: #191919;
+$almost-black: #090909;
+
+$rose: #852A35;
+$light-rose: #A34752;
+$lighter-rose: #C8757F;
+$dark-rose: #61111A;
+$darker-rose: #3D0007;
+$slate: #384367;
+$light-slate: #505B7E;
+$lighter-slate: #747D9A;
+$dark-slate: #242F54;
+$darker-slate: #121C3E;
+$dusky-purple: #554665;
+$light-purple: #6E607D;
+$lighter-purple: #8E839A;
+$dark-purple: #382D44;
+$darker-purple: #2C1C3E;
+$lighter-green: #81b08b;
+$light-green: #3a5d42;
+$dark-green: #233333;
+$darker-green: #182424;
+$lighter-teal: #2d605c;
+$lightest-teal: #45948e;
+$medium-teal: #035371;
+$darkest-teal: #011C26;
+$yellow: #d9c66a;
+$medium-blue: #02188b;
+$dark-blue: #010b40;
+$rust: #B04402;
+$dark-rust: #8D3600;
+$dark-red: #621624;
+$darkest-red: #380c14;
+
+// MAIN BODY
+
+body {
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: .9em
+}
+
+.body-container {
+    z-index: 1
+}
+
+.ansi-green-bg {
+    background-color: #8bb678;
+}
+
+.ansi-green-fg {
+    color: #8bb678;
+}
+
+#jobMenuBottom {
+    float: left;
+    margin-top: 5px;
+}
+
+#jobMenuBottom + .action-buttons {
+    float: right;
+    width: fit-content;
+}
+
+body>.container-fluid {
+    padding: 0;
+    margin: 0;
+    margin-left: 6px;
+    width: calc(100% - 6px)
+}
+
+p {
+    margin: 0 0 16px;
+    line-height: 1.6
+}
+
+select {
+    background-color: $dark-grey;
+    color: $light-grey;
+    min-height: 30px;
+    border: 1px solid $almost-black;
+    outline: 0
+}
+
+input {
+    color: $light-grey;
+    outline: 0;
+    border: 2px solid $almost-black;
+    border-radius: 0
+}
+
+input:focus,
+textarea:focus,
+input[type="text"]:focus {
+    box-shadow: 0 0 1px 1px $light-green inset;
+}
+
+.ember-power-select-trigger:focus {
+    border-bottom: 0!important;
+    border-top: 0!important;
+    box-shadow: none!important;
+    border-left: 0!important;
+    border-right: 0!important;
+}
+
+textarea,
+input {
+    background-color: $dark-grey;
+    border: 1px solid $almost-black;
+    border-radius: 0;
+    outline: 0;
+    min-height: 32px
+}
+
+textarea {
+    width: 100%;
+    margin: 0;
+    border-top: 0!important
+}
+
+pre code {
+    color: $light-grey
+}
+
+pre {
+    color: $light-grey
+}
+
+code {
+    background-color: $almost-black;
+    color: $lightest-teal;
+}
+
+.status-message p {
+    margin: 1em;
+    line-height: 1
+}
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table
+}
+
+.ember-power-select-trigger {
+    background-color: $dark-grey;
+    border: 1px solid $almost-black;
+    border-radius: 0;
+    min-height: 39px
+}
+
+.ember-power-select-option[aria-current=true] {
+    background-color: $lighter-green;
+    color: inherit
+}
+
+.ember-basic-dropdown-content {
+    background-color: $dark-grey
+}
+
+.ember-power-select-option[aria-selected=true] {
+    background-color: #34735c
+}
+
+.ember-power-select-dropdown.ember-basic-dropdown-content--above {
+    border-top: 1px solid $almost-black;
+    border-bottom: 1px solid $almost-black
+}
+
+.ember-power-select-dropdown.ember-basic-dropdown-content--below,
+.ember-power-select-dropdown.ember-basic-dropdown-content--in-place {
+    border-top: 1px solid $almost-black;
+    border-bottom: 1px solid $almost-black
+}
+
+.ember-power-select-dropdown {
+    border-left: 1px solid $almost-black;
+    border-right: 1px solid $almost-black
+}
+
+input[type="text"],
+.ember-text-field {
+    background: $dark-grey;
+    border: 1px solid $almost-black;
+    padding: 5px;
+    border-radius: 0;
+    outline: 0;
+    height: 39px
+}
+
+// DROPDOWN MENUS
+
+.navbar-dark .navbar-nav .show>.nav-link,
+.navbar-dark .navbar-nav .nav-link.show,
+.navbar-dark .navbar-nav .nav-link.active,
+.navbar-dark .navbar-nav .nav-link:hover {
+    color: $yellow
+}
+
+.navbar-dark .navbar-nav .nav-link.active,
+.navbar-dark .navbar-nav .nav-link:active {
+    color: $light-grey
+}
+
+.navbar-dark .navbar-nav>.open>a,
+.navbar-dark .navbar-nav>.open>a:focus,
+.navbar-dark .navbar-nav>.open>a:hover {
+    color: $light-grey;
+    background-color: $almost-black
+}
+
+.dropdown-menu {
+    background-color: $darkest-teal;
+    color: $light-grey;
+    font-size: 14px;
+    text-transform: none;
+    font-family: Verdana, Geneva, sans-serif
+}
+
+.dropdown-menu>li>a {
+    font-weight: 400;
+    color: $light-grey;
+    background-color: $darkest-teal
+}
+
+.dropdown-menu>li>a:hover {
+    background-color: $light-green;
+    color: $light-grey;
+    text-shadow: none
+}
+
+.dropdown-item.active,
+.dropdown-item:active {
+    background-color: transparent;
+    color: $light-grey;
+}
+
+// HEADER
+
+.site-title a,
+.site-title a:hover,
+.site-title a:active {
+    color: #fff;
+    text-decoration: none;
+    text-shadow: 2px 2px $almost-black;
+    font-family: 'Rubik Distressed', sans-serif;
+    font-weight: 400;
+    font-size: 1.4em
+}
+
+// BUTTONS
+
+button {
+    background-color: $dark-rose;
+    border-color: $darker-rose;
+    outline: 0;
+    border-style: none;
+    border-radius: 4px;
+    padding: .225em .75em .35em;
+    min-width: 40px
+}
+
+.btn-success {
+    text-shadow: none;
+    font-family: 'Julius Sans One', sans-serif;
+    text-transform: uppercase;
+    font-size: 18px
+}
+
+.btn-success:hover {
+    color: #333;
+    background-color: $light-grey;
+    border-color: #adadad;
+}
+
+.btn-secondary,
+.btn-collapse,
+.btn-default {
+    text-shadow: none;
+    font-family: 'Julius Sans One', sans-serif;
+    text-transform: uppercase;
+    font-size: 18px;
+    background-color: $dark-rose;
+    color: $light-grey;
+    border-color: $darker-rose;
+}
+
+.btn-secondary:hover,
+.btn-collapse:hover,
+.btn-default:hover,
+.btn-primary:hover {
+    text-shadow: none;
+    background-color: $dusky-purple;
+    border-color: $darker-purple;
+    color: $light-grey;
+}
+
+.btn.active.focus,
+.btn.active:focus,
+.btn.focus,
+.btn:active.focus,
+.btn:active:focus,
+.btn:focus {
+    outline: 0
+}
+
+.btn-primary {
+    background-color: $dark-slate;
+    border-color: $dark-slate;
+    color: $light-grey;
+    text-shadow: none;
+    outline: 0;
+    font-family: 'Julius Sans One', sans-serif;
+    text-transform: uppercase;
+    font-size: 18px
+}
+
+.btn-warning {
+    text-shadow: none;
+    outline: 0;
+    font-family: 'Julius Sans One', sans-serif;
+    text-transform: uppercase;
+    font-size: 18px;
+    background-color: #bf8450;
+    border-color: #c69163
+}
+
+// FS3
+
+.fs3-divider {
+    visibility: hidden
+}
+
+.fs3-skillbutton {
+    color: $light-grey
+}
+
+#fs3abilities .row {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center
+}
+
+.fs3-rating-display {
+    flex-basis: 30%
+}
 
 // WIKI INCLUDES
 
@@ -257,3 +608,73 @@
     background-position: right;
     background-repeat: no-repeat;
   }
+
+// CHAR PAGES
+
+    .profile-box {
+       background-color: $darker-grey;
+    }
+
+// ICONS
+
+    .log-icon-container {
+        height: 175px;
+        border-radius: 0px;
+    }
+
+    .log-icon {
+        height: 175px;
+        object-position: center;
+    }
+
+    .log-icon-title-container {
+        height: 25px;
+        top: -25px;
+        border-radius: 0px;
+        background-color: transparent;
+        background-image: url(/game/uploads/css_files/name-tape.png);
+        background-repeat: no-repeat;
+        background-size: 170px;
+        background-position: -10px;
+        left: -3px;
+        width: 170px;
+        transform: rotate(1deg);
+        opacity: 1;
+    }
+
+    .log-icon-title {
+        color: $almost-black;
+        padding-right: 1em;
+        padding-top: 0.18em;
+        font-family: 'Loved by the King', Helvetica, sans-serif;
+        text-transform: uppercase;
+        font-size: 1.5em;
+    }
+
+// HEADERS
+
+h1,
+.h1 {
+    background-color: #B8996E;
+    background-image: url(/game/uploads/css_files/h1-left.png), url(/game/uploads/css_files/h1-right.png);
+    background-size: contain, contain;
+    background-repeat: no-repeat;
+    background-position: left, right;
+    padding: 0.5em 2.7em 0em 2.2em;
+    color: #090909;
+    font-family: 'Homemade Apple', 'Lucida Handwriting', cursive;
+    /* text-transform: uppercase; */
+    font-size: 3em;
+    font-weight: normal;
+    border: transparent;
+    letter-spacing: 0.1em;
+    border-top-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+    transform: rotate(0.15deg);
+    }
+
+@media only screen and (max-width: 767px) {
+h1 {
+    font-size: 6vw !important;
+}
+}
