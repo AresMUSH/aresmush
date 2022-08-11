@@ -13,14 +13,10 @@ website:
   character_gallery_subgroup: Mythic
   left_sidebar: false
   max_folder_size_kb: 2000
-<<<<<<< HEAD
-  max_upload_size_kb: 300
+  max_upload_size_kb: 3000
   permissions:
     manage_theme: Edit web portal CSS and colors.
     manage_wiki: Create and delete restricted wiki pages.
-=======
-  max_upload_size_kb: 3000
->>>>>>> 9ddaf3919bb199b325c8988713135e6e2379a3b4
   restricted_pages:
   - home
   sitemap_update_cron:
