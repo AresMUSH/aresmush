@@ -230,9 +230,14 @@ module AresMUSH
       
       # Not wearing armor at all.
       return 0 if armor.blank?
+      Global.logger.debug "#{combatant.name}'s armor: #{combatant.armor}"
       
       pen = FS3Combat.weapon_stat(weapon, "penetration")
+      Global.logger.debug "#{combatant.name}'s pen: #{pen}"
+
       protect = FS3Combat.armor_stat(armor, "protection")[hitloc]
+      Global.logger.debug "#{combatant.name}'s protect: #{protect}"
+
             
       # Armor doesn't cover this hit location
       return 0 if !protect
@@ -462,7 +467,7 @@ module AresMUSH
       end
       
       FS3Combat.award_hit_achievement(attacker, damage, weapon_type)
-      #EM Changes
+      #EM Changes - Adds vehicle's name to the hit message
       if target.vehicle
         hitloc_msg = "#{target.vehicle.name}'s #{hitloc}"
         target_names = "#{target.name} astride #{target.vehicle.name}"
@@ -475,7 +480,7 @@ module AresMUSH
       messages << t('fs3combat.attack_hits', 
                     :name => attack_name, 
                     :weapon => weapon_name,
-                    #EM Changes
+                    #EM Changes - Adds vehicle's name to the hit message
                     :target => target_names,
                     :hitloc => hitloc_msg,
                     #/EM Changes
