@@ -82,7 +82,7 @@ module AresMUSH
       return targets
     end
 
-    def self.spell_target_errors(targets, spell)
+    def self.spell_target_errors(enactor, targets, spell)
       # spell/npc is targeting the npc who cast the spell
       return false if targets == "npc_target" 
 
@@ -96,6 +96,10 @@ module AresMUSH
           return t('magic.no_healable_wounds', :target => target.name) if wound.blank?
         end
       end
+
+      energy_points = Global.read_config("spells", spell, "heal_points")
+      return t('magic.cant_spell_fatigue_heal_yourself') if targets.include?(enactor)
+
       return false
     end
 

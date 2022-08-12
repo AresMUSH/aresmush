@@ -27,7 +27,6 @@ module AresMUSH
 
     def self.get_fatigue_level(char_or_npc)
       char = char_or_npc
-      puts "Name: #{char.name} Total magic #{char.total_magic_energy} Magic #{char.magic_energy}"
       if (char.magic_energy <= char.total_magic_energy*0.8) && (char.magic_energy >= char.total_magic_energy*0.6)
         degree = "Mild"
         effect = Global.read_config("magic", "fatigue_effect", "Mild")
@@ -76,7 +75,7 @@ module AresMUSH
     end
 
     def self.magic_energy_cron(char)
-      puts "Magic energy before cron: #{char.magic_energy} Rate #{char.magic_energy_rate}"
+      puts "Magic energy before cron: #{char.name} #{char.magic_energy} Rate #{char.magic_energy_rate}"
       new_magic_energy =  char.magic_energy + char.magic_energy_rate
       puts "New energy #{new_magic_energy}"
       if new_magic_energy < char.total_magic_energy
