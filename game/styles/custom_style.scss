@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Beth+Ellen&family=Homemade+Apple&family=Julius+Sans+One&family=Loved+by+the+King&family=Rubik+Distressed&family=Staatliches&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Beth+Ellen&family=Homemade+Apple&family=Julius+Sans+One&family=Loved+by+the+King&family=Noto+Serif:wght@700&family=Staatliches&display=swap');
 
 $light-grey: #ebebeb;
 $dark-grey: #3a4146;
@@ -6,6 +6,12 @@ $darker-grey: #23272a;
 $darkest-grey: #171a1c;
 $blackest-grey: #191919;
 $almost-black: #090909;
+
+$greyish-green: #2F3E41;
+$green: #326B64;
+$red: #7F181B;
+$taupe: #BF9075;
+$tan: #F1D8C2;
 
 $rose: #852A35;
 $light-rose: #A34752;
@@ -43,6 +49,14 @@ $darkest-red: #380c14;
 body {
     font-family: Verdana, Geneva, sans-serif;
     font-size: .9em
+}
+
+.body-wrap {
+    background-color: #141D2A;
+}
+
+.left-body {
+    background-color: #1F252F;
 }
 
 .body-container {
@@ -248,9 +262,11 @@ input[type="text"],
     color: #fff;
     text-decoration: none;
     text-shadow: 2px 2px $almost-black;
-    font-family: 'Rubik Distressed', sans-serif;
-    font-weight: 400;
-    font-size: 1.4em
+    font-family: 'Noto Serif', Georgina, sans-serif;
+    font-weight: 700;
+    font-size: 1.4em;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
 }
 
 // BUTTONS
@@ -659,21 +675,60 @@ h1,
     background-size: contain, contain;
     background-repeat: no-repeat;
     background-position: left, right;
-    padding: 0.5em 2.7em 0em 2.2em;
+    padding: 0.2em 2em 0em 2em;
     color: #090909;
-    font-family: 'Homemade Apple', 'Lucida Handwriting', cursive;
-    /* text-transform: uppercase; */
-    font-size: 3em;
-    font-weight: normal;
+    font-family: 'Loved by the King', 'Arial Narrow', sans-serif;
+    text-transform: uppercase;
+    font-size: 2.5em;
     border: transparent;
-    letter-spacing: 0.1em;
     border-top-right-radius: 0px;
     border-bottom-left-radius: 0px;
     transform: rotate(0.15deg);
+    margin-right: 25px;
+    }
+
+h2 {
+    background-image: url(/game/uploads/css_files/ink-splatter.png);
+    background-size: contain;
+    background-repeat: repeat-x;
+    background-position: bottom left;
+    font-family: 'Homemade Apple', 'Brush Script MT', cursive;
+    width: fit-content;
     }
 
 @media only screen and (max-width: 767px) {
 h1 {
     font-size: 6vw !important;
+    background-image: none;
+    margin-right: 0px;
+    padding: 0.2em 0.5em 0em 0.5em;
 }
 }
+
+// SIDEBAR
+
+.right-sidebar {
+    background-color: #141D2A;
+    }
+
+.sidebar-heading h2 {
+    color: #ebebeb;
+    font-variant: none;
+    padding: 10px;
+    background-color: #1F252F;
+    font-family: 'Julius Sans One';
+    background-image: none;
+    width: auto;
+}
+
+.sidebar-box-right {
+    border-left: none;
+    }
+
+.sidebar-box {
+    border-top: none;
+    }
+
+.sidebar-list {
+    line-height: 1;
+    }
