@@ -1,3 +1,1 @@
-<div class="jumbotron-tagline">A New Breed of MUSH Server</div>
-
-Welcome to AresMUSH!
+<div class="jumbotron-tagline">In its Shattering, the world was born anew.</div>

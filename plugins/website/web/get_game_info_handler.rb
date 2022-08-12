@@ -28,6 +28,8 @@ module AresMUSH
         if (search_id.blank?)
           search_id = nil
         end
+
+        story = Global.read_config('website', 'story')
         
         {
           type: 'game',
@@ -46,7 +48,8 @@ module AresMUSH
           who_count: Who.all_online.count,
           scene_count: active_scenes.count,
           roster_enabled: Idle.roster_enabled?,
-          gcse_search_id: search_id
+          gcse_search_id: search_id,
+          story: Website.format_markdown_for_html(story)
         } 
       end
     end
