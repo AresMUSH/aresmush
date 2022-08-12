@@ -1,6 +1,6 @@
 ---
 fs3combat:
-  default_type: Unarmed
+  default_type: Unarmed Combatant
   allow_vehicles: true
   allow_mounts: false
   stances:
@@ -33,8 +33,9 @@ fs3combat:
       armor: Tactical
       hitloc: Humanoid
       defense_skill: Reflexes
-    Unarmed:
+    Unarmed Combatant:
       weapon: Unarmed
+      armor: None
       hitloc: Humanoid
       defense_skill: Reflexes
     Dragon:
