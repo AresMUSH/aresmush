@@ -40,8 +40,8 @@ fs3combat:
       accuracy: 0
       init_mod: 0
       is_magic: true
-    Aether Shrapnel:
-      description: Shrapnel that does Aether damage
+    Physical Shrapnel:
+      description: Shrapnel that does Physical damage
       skill: 3
       lethality: 0
       penetration: 5
@@ -51,6 +51,18 @@ fs3combat:
       accuracy: 0
       init_mod: 0
       is_magic: true
+    Fire Shrapnel:
+      description: Shrapnel that does Fire damage
+      skill: 3
+      lethality: 0
+      penetration: 5
+      weapon_type: Ranged
+      recoil: 0
+      damage_type: Physical
+      accuracy: 0
+      init_mod: 0
+      is_magic: true
+
 
 #General
     Spell:
