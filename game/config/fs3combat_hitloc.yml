@@ -238,6 +238,8 @@ fs3combat:
       - Chest
       critical_areas:
       - Head
+      crew_areas:
+      - Chest
     Winged Mythic:
       areas:
         Rear Left Leg:
@@ -333,6 +335,8 @@ fs3combat:
       - Chest
       critical_areas:
       - Head      
+      crew_areas:
+      - Chest
 
 
 
