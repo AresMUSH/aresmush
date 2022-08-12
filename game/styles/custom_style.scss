@@ -269,6 +269,48 @@ input[type="text"],
     letter-spacing: 0.1em;
 }
 
+// JUMBOTRON
+.jumbotron img {
+  width: unset;
+}
+
+.jumbotron-tagline {
+  font-size: 2em;
+  color: #96bdb4;
+}
+
+.jumbotron .splash {
+  width: 90%;
+  font-size: .65em;
+  color: #bdccd5;
+}
+
+.plot-box {
+  background:#2b2c31;
+  padding: 5px 15px;
+  font-size: 90%;
+  text-align: initial;
+  -webkit-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.3);
+  -moz-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.3);
+  box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.3);
+  max-width: 80%;
+  margin: auto;
+}
+
+.plot-box p {
+  font-size: 95%;
+}
+
+.plot-box a {
+  font-size: 110%;
+  font-variant: small-caps;
+}
+
+.plot-title {
+  font-style: bold;
+  font-variant: small-caps;
+}
+
 // BUTTONS
 
 button {
