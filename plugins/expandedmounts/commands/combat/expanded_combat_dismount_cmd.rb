@@ -18,18 +18,13 @@ module AresMUSH
         [ self.name ]
       end
       
-      def check_vehicles_allowed
-        return t('fs3combat.vehicles_disabled') if !FS3Combat.vehicles_allowed?
-        return nil
-      end
-      
       def handle
         FS3Combat.with_a_combatant(self.name, client, enactor) do |combat, combatant|   
-          if (!combatant.is_in_vehicle?)
-            client.emit_failure t('expandedmounts.not_in_vehicle', :name => self.name)
+          if (!combatant.is_on_mount?)
+            client.emit_failure t('expandedmounts.not_on_mount', :name => self.name)
             return
           end
-          ExpandedMounts.leave_vehicle(combat, combatant)
+          ExpandedMounts.leave_mount(combat, combatant)
         end
       end
     end

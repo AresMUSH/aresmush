@@ -17,7 +17,6 @@ module AresMUSH
       return nil if !name_with_specials
       
       specials = FS3Combat.weapon_specials
-      Global.logger.debug "Name with specials #{name_with_specials}"
       name = name_with_specials.before("+")
       weapon = FS3Combat.weapon(name)
       return nil if !weapon
@@ -118,6 +117,9 @@ module AresMUSH
     end
     
     def self.mount_stat(name, stat)
+      #EM Changes
+      return 0 if !FS3Combat.mount(name)
+      #/EM Changes
       m = FS3Combat.mount(name)
       m ? m[stat] : nil
     end

@@ -14,25 +14,27 @@ module AresMUSH
     def self.get_cmd_handler(client, cmd, enactor)
       case cmd.root
       when "mounts"
-        return MountsListCmd
-      when "test"
-        return MountsListCmd
+        return ExpandedMountsListCmd
       end
-      case cmd.root
-      when "combat"
-        case cmd.switch
-        when "mount"
-          return ExpandedCombatMountCmd
-        when "dismount"
-          return ExpandedCombatDismountCmd
-        when "test"
-          return ExpandedCombatMountCmd
-        end
-      end
+      # case cmd.root
+      # when "combat"
+      #   case cmd.switch
+      #   when "mount"
+      #     return ExpandedCombatMountCmd
+      #   when "dismount"
+      #     return ExpandedCombatDismountCmd
+      #   when "test"
+      #     return ExpandedCombatMountCmd
+      #   end
+      # end
       nil
     end
 
     def self.get_event_handler(event_name)
+      case event_name
+      when "CronEvent"
+        return ExpandedMountsDamageCronHandler
+      end
       nil
     end
 

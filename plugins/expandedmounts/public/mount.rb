@@ -14,55 +14,162 @@ module AresMUSH
     end
 
     attribute :birthdate, :type => DataType::Date
-    attribute :mount_type
+    attribute :expanded_mount_type
     attribute :description
     attribute :shortdesc
     attribute :details, :type => DataType::Hash, :default => {}
     reference :bonded, "AresMUSH::Character"
-    reference :vehicle, "AresMUSH::Vehicle"
-
+  
     collection :damage, "AresMUSH::Damage"
-    # reference :combat, "AresMUSH::Combat"
-    # collection :passengers, 'AresMUSH::Combatant', :riding_in
+    attribute :damaged_by, :type => DataType::Array, :default => []
+
+    ## COMBAT
+
+    reference :combat, "AresMUSH::Combat"
+
+    attribute :freshly_damaged, :type => DataType::Boolean, :default => false
+
+    
+    reference :rider, 'AresMUSH::Combatant'
+    collection :passengers, 'AresMUSH::Combatant', :riding_in
 
     before_delete :delete_damage
 
-   
-    # def combatant
-    #   Combatant.find(character_id: self.id).first
-    # end
-    
-    # def delete_damage
-    #   self.damage.each { |d| d.delete }
-    # end
-    
-    def patients
-      Healing.find(character_id: self.id).map { |h| h.patient }
+    def delete_damage
+      self.damage.each { |d| d.delete }
     end
+
+    def is_mount?
+      true
+    end
+
+    ## MOUNT STATS & GEAR
+    def default_weapon
+      Global.read_config("expandedmounts", self.expanded_mount_type, "weapons" ).first
+    end
+    
+    def weapon
+      self.bonded.combatant.weapon
+    end
+
+    def armor
+      puts self.expanded_mount_type
+      Global.read_config("expandedmounts", self.expanded_mount_type, "armor" )
+    end
+
+    def defense
+      Global.read_config("expandedmounts", self.expanded_mount_type, "defense" )
+    end
+
+    def attack
+      Global.read_config("expandedmounts", self.expanded_mount_type, "attack" )
+    end
+
+    def composure
+      Global.read_config("expandedmounts", self.expanded_mount_type, "composure" )
+    end
+    
+    def hitloc_type
+      Global.read_config("expandedmounts", self.expanded_mount_type, "hitloc_chart" )
+    end
+
+    def total_damage_mod
+      FS3Combat.total_damage_mod(self)
+    end
+
+    ## MISC COMBAT
+
+    def is_noncombatant?
+      !self.is_in_combat?
+    end
+
+    def is_in_combat?
+      !!combat
+    end  
+  
+    def log(msg)
+      self.combat.log(msg)
+    end
+
+    def roll_ability(ability, mod = 0)
+      puts "Mythic ability #{ability}"
+      #probably put methods here to determine reflexes, etc
+      self.bonded.combatant.roll_ability(ability, mod)
+    end
+
+    def combatant_type
+      self.expanded_mount_type
+    end
+
+    ## DAMAGE AND HEALING
     
     def doctors
       Healing.find(patient_id: self.id).map { |h| h.character }
     end
-    
-    # def is_in_combat?
-    #   !!combatant
-    # end
-    
-   def combat
-       nil
-    end 
 
-    # def armor
-    #   FS3Combat.vehicle_stat(self.mount_type, "armor")
-    # end
-    
-    # def hitloc_type
-    #   FS3Combat.vehicle_stat(self.mount_type, "hitloc_chart")
-    # end
+    def inflict_damage(severity, desc, is_stun = false, is_crew_hit = false)
+      FS3Combat.inflict_damage(self, severity, desc, is_stun, !self.combat.is_real)
+    end
 
-    # def total_damage_mod
-    #   FS3Combat.total_damage_mod(self)
-    # end
+    ## A MOUNT'S MODS, SHIELDS, AND STANCE ARE THE SAME AS THEIR BONDED'S 
+    def stance
+      self.bonded.combatant.stance
+    end
+
+    def magic_shields
+      self.bonded.magic_shields
+    end    
+
+    def defense_stance_mod
+      self.bonded.combatant.defense_stance_mod
+    end
+
+    def defense_mod
+      self.bonded.combatant.defense_mod
+    end
+
+    def luck
+      self.bonded.combatant.luck
+    end
+
+    def damage_mod
+      (self.bonded.combatant.total_damage_mod + FS3.total_damage_mod(self)) / 2
+    end
+
+    def damage_lethality_mod
+      self.bonded.combatant.damage_lethality_mod
+    end
+
+    ## STRESS TO A MOUNT TRANSFERS TO THEIR BONDED
+    def add_stress(num)
+      self.bonded.combatant.add_stress(num)
+    end
+
+    ## DEFINED AS A DEFAULT VALUE SO COMBAT WON'T BREAK. THESE SHOULD NOT CHANGE.
+ 
+    def riding_in
+      false
+    end
+
+    def is_in_vehicle?
+      false
+    end
+
+    def vehicle
+      nil
+    end
+
+    def is_npc?
+      false
+    end
+
+    def mount_type
+      #Do NOT give this a value, it fucks with vanilla mount code.
+    end
+
+    def associated_model
+      self
+    end
 
   end
 end

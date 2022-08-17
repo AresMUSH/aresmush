@@ -24,17 +24,17 @@ module AresMUSH
       self.combatant.combat
     end
     
-    def parse_targets(name_string)
+    def parse_targets(name_string) 
       return t('fs3combat.no_targets_specified') if (name_string.blank?)
       target_names = name_string.split(" ").map { |n| InputFormatter.titlecase_arg(n) }.uniq
       targets = []
       target_names.each do |name|
         #EM Changes
         mount = Mount.named(name)
-        if mount
-          target = mount.vehicle.pilot 
+        if mount && mount.combat
+          target = mount
         else
-          target = self.combat.find_combatant(name) 
+          target = self.combat.find_combatant(name)
         end
         #/EM Changes
         
@@ -54,8 +54,10 @@ module AresMUSH
       #EM Changes
       target_names = []
       targets.each do |t|
-        if t.is_in_vehicle?
-          target_names.concat [t('expandedmounts.combat_name', :combatant => t.name, :mount => t.vehicle.name)]
+        if Mount.named(t.name) && t.rider
+          target_names.concat [t('expandedmounts.combat_name', :combatant => t.rider.name, :mount => t.name)]
+        elsif !Mount.named(t.name) && t.is_on_mount?
+          target_names.concat [t('expandedmounts.combat_name', :combatant => t.name, :mount => t.mount.name)]
         else 
           target_names.concat [t.name ]
         end

@@ -100,10 +100,12 @@ module AresMUSH
            return CombatLogCmd
          when "luck"
            return CombatLuckCmd
-        #  when "mount"
-        #    return CombatMountCmd
-        #  when "dismount"
-        #    return CombatDismountCmd
+         when "mount"
+           return ExpandedMounts::ExpandedCombatMountCmd
+         when "dismount"
+           return ExpandedMounts::ExpandedCombatDismountCmd
+         when "mounts"
+            return ExpandedMounts::CombatExpandedMountsCmd
          when "npc"
            return CombatNpcCmd
          when "npcs"
