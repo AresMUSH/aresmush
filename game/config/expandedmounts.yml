@@ -20,6 +20,46 @@ expandedmounts:
     attack: 8
     composure: 12
     heal_roll: 8
+  Lupine: 
+    armor: Tough Hide
+    weapons:
+    - Sharp Teeth
+    - Sharp Claws
+    hitloc_chart: Flying Mythic
+    reflexes: 6
+    attack: 8
+    composure: 12
+    heal_roll: 8
+  Patherine: 
+    armor: Tough Hide
+    weapons:
+    - Sharp Teeth
+    - Sharp Claws
+    hitloc_chart: Flying Mythic
+    reflexes: 6
+    attack: 8
+    composure: 12
+    heal_roll: 8
+  Roc: 
+    armor: Tough Hide
+    weapons:
+    - Sharp Teeth
+    - Sharp Claws
+    hitloc_chart: Flying Mythic
+    reflexes: 6
+    attack: 8
+    composure: 12
+    heal_roll: 8    
+  Pegasus: 
+    armor: Tough Hide
+    weapons:
+    - Hard Hooves
+    - Sharp Claws
+    hitloc_chart: Flying Mythic
+    reflexes: 6
+    attack: 8
+    composure: 12
+    heal_roll: 8            
   healing_cron:
     hour:
     - 19
