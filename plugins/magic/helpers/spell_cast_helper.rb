@@ -70,7 +70,7 @@ module AresMUSH
           end
           
           if spell['energy_points']
-            message = Magic.cast_fatigue_heal(caster_name, target, spell)
+            message = Magic.cast_fatigue_heal(caster_name, target, spell_name)
             # if caster = target
             #   caster.update(magic_energy: target.magic_energy)
             # end
@@ -164,7 +164,7 @@ module AresMUSH
       magic_energy = [(target_char.magic_energy + energy_points), (target_char.total_magic_energy * 0.8)].min
       target_char.update(magic_energy: magic_energy)
       message = [t('magic.cast_fatigue_heal', :name => caster_name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target => target_char.name, :points => energy_points)]
-      puts "Magic energy after heal IN method!: #{target_char }#{target_char.name} #{target_char.magic_energy}"
+      puts "Magic energy after heal IN method!: #{target_char } #{target_char.name} #{target_char.magic_energy}"
       return message
     end
 

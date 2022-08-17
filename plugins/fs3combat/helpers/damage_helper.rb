@@ -36,6 +36,7 @@ module AresMUSH
       
     def self.inflict_damage(target, severity, desc, is_stun = false, is_mock = false)
       Global.logger.info "Damage inflicted on #{target.name}: #{desc} #{severity} stun=#{is_stun}"
+      
 
       # Graze wounds aren't saved.
       return if severity == "GRAZE"
@@ -53,6 +54,10 @@ module AresMUSH
         params[:character] = target
       elsif (target.class == Vehicle)
         params[:vehicle] = target
+      #EM Changes
+      elsif (target.class == Mount)
+        params[:mount] = target
+      #/EM Changes
       else
         params[:npc] = target
       end

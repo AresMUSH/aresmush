@@ -74,6 +74,10 @@ module AresMUSH
           return c.vehicle.name
         elsif (c.mount_type)
           return c.mount_type
+        #EM changes
+        elsif (c.mount)
+          return c.mount.name
+        #/EM changes
         else
           return ''
         end
