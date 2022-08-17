@@ -28,54 +28,33 @@ module AresMUSH
     reference :combat, "AresMUSH::Combat"
 
     attribute :freshly_damaged, :type => DataType::Boolean, :default => false
+
     
     reference :rider, 'AresMUSH::Combatant'
     collection :passengers, 'AresMUSH::Combatant', :riding_in
 
     before_delete :delete_damage
 
-   
-    # def combatant
-    #   Combatant.find(character_id: self.id).first
-    # end
-    
     def delete_damage
       self.damage.each { |d| d.delete }
-    end
-
-    def weapon
-      self.bonded.combatant.weapon
-    end
-    
- 
-    def is_noncombatant?
-      !self.is_in_combat?
     end
 
     def is_mount?
       true
     end
-    
-    
-    def patients
-      Healing.find(character_id: self.id).map { |h| h.patient }
+
+    ## MOUNT STATS & GEAR
+    def default_weapon
+      Global.read_config("expandedmounts", self.expanded_mount_type, "weapons" ).first
     end
     
-    def doctors
-      Healing.find(patient_id: self.id).map { |h| h.character }
+    def weapon
+      self.bonded.combatant.weapon
     end
-    
-    def is_in_combat?
-      !!combat
-    end
-    
+
     def armor
       puts self.expanded_mount_type
       Global.read_config("expandedmounts", self.expanded_mount_type, "armor" )
-    end
-
-    def default_weapon
-      Global.read_config("expandedmounts", self.expanded_mount_type, "weapons" ).first
     end
 
     def defense
@@ -98,13 +77,48 @@ module AresMUSH
       FS3Combat.total_damage_mod(self)
     end
 
-    def riding_in
-      false
+    ## MISC COMBAT
+
+    def is_noncombatant?
+      !self.is_in_combat?
     end
 
-    def is_in_vehicle?
-      false
+    def is_in_combat?
+      !!combat
+    end  
+  
+    def log(msg)
+      self.combat.log(msg)
     end
+
+    def roll_ability(ability, mod = 0)
+      puts "Mythic ability #{ability}"
+      #probably put methods here to determine reflexes, etc
+      self.bonded.combatant.roll_ability(ability, mod)
+    end
+
+    def combatant_type
+      self.expanded_mount_type
+    end
+
+    ## DAMAGE AND HEALING
+    
+    def doctors
+      Healing.find(patient_id: self.id).map { |h| h.character }
+    end
+
+    def inflict_damage(severity, desc, is_stun = false, is_crew_hit = false)
+      FS3Combat.inflict_damage(self, severity, desc, is_stun, !self.combat.is_real)
+    end
+
+    ## A MOUNT'S MODS, SHIELDS, AND STANCE ARE THE SAME AS THEIR BONDED'S 
+    def stance
+      self.bonded.combatant.stance
+    end
+
+    def magic_shields
+      self.bonded.magic_shields
+    end    
 
     def defense_stance_mod
       self.bonded.combatant.defense_stance_mod
@@ -126,34 +140,23 @@ module AresMUSH
       self.bonded.combatant.damage_lethality_mod
     end
 
-    def log(msg)
-      self.combat.log(msg)
+    ## STRESS TO A MOUNT TRANSFERS TO THEIR BONDED
+    def add_stress(num)
+      self.bonded.combatant.add_stress(num)
     end
 
-    def roll_ability(ability, mod = 0)
-      puts "Mythic ability #{ability}"
-      #probably put methods here to determine reflexes, etc
-      self.bonded.combatant.roll_ability(ability, mod)
+    ## DEFINED AS A DEFAULT VALUE SO COMBAT WON'T BREAK. THESE SHOULD NOT CHANGE.
+ 
+    def riding_in
+      false
     end
 
-    def stance
-      self.bonded.combatant.stance
-    end
-
-    def magic_shields
-      self.bonded.magic_shields
+    def is_in_vehicle?
+      false
     end
 
     def vehicle
       nil
-    end
-
-    def combatant_type
-      self.expanded_mount_type
-    end
-
-    def inflict_damage(severity, desc, is_stun = false, is_crew_hit = false)
-      FS3Combat.inflict_damage(self, severity, desc, is_stun, !self.combat.is_real)
     end
 
     def is_npc?
@@ -164,8 +167,8 @@ module AresMUSH
       #Do NOT give this a value, it fucks with vanilla mount code.
     end
 
-    def add_stress(num)
-      self.bonded.combatant.add_stress(num)
+    def associated_model
+      self
     end
 
   end
