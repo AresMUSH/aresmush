@@ -83,7 +83,7 @@ module AresMUSH
   end
 
   def self.target_rider(spell)
-    return true unless spell['fs3_attack'] || spell['is_stun'] || spell['heal_points'] || spell['damage_inflicted']
+    return true unless spell['fs3_attack'] || spell['heal_points'] || spell['damage_inflicted']
     return false
   end
 
