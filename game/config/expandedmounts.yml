@@ -9,6 +9,7 @@ expandedmounts:
     reflexes: 6
     attack: 8
     composure: 12
+    heal_roll: 10
   Griffon: 
     armor: Tough Hide
     weapons:
@@ -18,3 +19,9 @@ expandedmounts:
     reflexes: 6
     attack: 8
     composure: 12
+    heal_roll: 8
+  healing_cron:
+    hour:
+    - 19
+    minute:
+    - 45
