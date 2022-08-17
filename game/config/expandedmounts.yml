@@ -1,2 +1,20 @@
 ---
-expandedmounts: {}
+expandedmounts: 
+  Dragon: 
+    armor: Tough Hide
+    weapons:
+    - Sharp Teeth
+    - Sharp Claws
+    hitloc_chart: Dragon
+    reflexes: 6
+    attack: 8
+    composure: 12
+  Griffon: 
+    armor: Tough Hide
+    weapons:
+    - Sharp Teeth
+    - Sharp Claws
+    hitloc_chart: Flying Mythic
+    reflexes: 6
+    attack: 8
+    composure: 12
