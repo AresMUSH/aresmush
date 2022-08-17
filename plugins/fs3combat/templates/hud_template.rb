@@ -44,7 +44,9 @@ module AresMUSH
             text << "(pas)"
           end
         end
-        if (c.mount_type)
+        #EM Changes
+        if (c.expanded_mount_type)
+        #/EM Changes
           text << "(mnt)"
         end
         
