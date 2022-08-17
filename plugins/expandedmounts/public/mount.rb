@@ -19,11 +19,17 @@ module AresMUSH
     attribute :shortdesc
     attribute :details, :type => DataType::Hash, :default => {}
     reference :bonded, "AresMUSH::Character"
-    reference :vehicle, "AresMUSH::Vehicle"
-
+  
     collection :damage, "AresMUSH::Damage"
-    # reference :combat, "AresMUSH::Combat"
-    # collection :passengers, 'AresMUSH::Combatant', :riding_in
+
+    ## COMBAT
+
+    reference :combat, "AresMUSH::Combat"
+
+    attribute :freshly_damaged, :type => DataType::Boolean, :default => false
+    
+    reference :rider, 'AresMUSH::Combatant'
+    collection :passengers, 'AresMUSH::Combatant', :riding_in
 
     before_delete :delete_damage
 
@@ -35,6 +41,20 @@ module AresMUSH
     # def delete_damage
     #   self.damage.each { |d| d.delete }
     # end
+
+    def weapon
+      self.bonded.combatant.weapon
+    end
+    
+ 
+    def is_noncombatant?
+      !self.is_in_combat?
+    end
+
+    def is_mount?
+      true
+    end
+    
     
     def patients
       Healing.find(character_id: self.id).map { |h| h.patient }
@@ -44,25 +64,48 @@ module AresMUSH
       Healing.find(patient_id: self.id).map { |h| h.character }
     end
     
-    # def is_in_combat?
-    #   !!combatant
-    # end
+    def is_in_combat?
+      !!combat
+    end
     
-   def combat
-       nil
-    end 
+    def armor
+      Global.read_config("expandedmounts", self.mount_type, "armor" )
+    end
 
-    # def armor
-    #   FS3Combat.vehicle_stat(self.mount_type, "armor")
-    # end
+    def default_weapon
+      Global.read_config("expandedmounts", self.mount_type, "weapons" ).first
+    end
+
+    def defense
+      Global.read_config("expandedmounts", self.mount_type, "defense" )
+    end
+
+    def attack
+      Global.read_config("expandedmounts", self.mount_type, "attack" )
+    end
+
+    def composure
+      Global.read_config("expandedmounts", self.mount_type, "composure" )
+    end
     
-    # def hitloc_type
-    #   FS3Combat.vehicle_stat(self.mount_type, "hitloc_chart")
-    # end
+    def hitloc_type
+      Global.read_config("expandedmounts", self.mount_type, "hitloc_chart" )
+    end
 
-    # def total_damage_mod
-    #   FS3Combat.total_damage_mod(self)
-    # end
+    def total_damage_mod
+      FS3Combat.total_damage_mod(self)
+    end
+
+    def riding_in
+      false
+    end
+
+    def is_in_vehicle?
+      false
+    end
+
+
+
 
   end
 end

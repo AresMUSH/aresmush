@@ -1,14 +1,15 @@
 ---
 en:
   expandedmounts: 
-        invalid_vehicle_name: "That is not a valid vehicle name or vehicle type."
-        not_in_vehicle: "%{name} is not mounted."
-        new_pilot: "%{name} mounts %{vehicle}."
-        new_passenger: "%{name} is now a passenger on %{vehicle}."
-        disembarks_vehicle: "%{name} dismounts from %{vehicle}."
+        invalid_mount_name: "That is not a valid mount name."
+        not_on_mount: "%{name} is not mounted."
+        new_rider: "%{name} climbs atop %{mount}."
+        new_passenger: "%{name} is now a passenger on %{mount}."
+        dismounts: "%{name} climbs down from %{mount}."
         combat_name: "%{combatant} atop %{mount}"
         mount_created: "%{name} created."
         mount_updated: "%{name} created."
         mounts_list_title: NAME                  BONDED MAGE
         already_mount_named: "There is already a mythic using that name."
+        rider_not_in_combat: "%{mount}'s bonded mage %{rider} isn't in combat. Both mage and mythic must be in combat."
   

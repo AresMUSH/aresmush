@@ -2,7 +2,7 @@ require 'byebug'
 module AresMUSH
   module ExpandedMounts
 
-    def self.find_or_create_vehicle(combat, name)
+    def self.find_or_create_mount(combat, name)
       #Find a vehicle by link to mount model
       mount = Mount.named(name)
       return mount.vehicle if mount.vehicle
@@ -22,41 +22,40 @@ module AresMUSH
       end
     end
     
-    def self.join_vehicle(combat, combatant, vehicle, passenger_type)
-      old_pilot = vehicle.pilot
-      
-      if (passenger_type == "Pilot")
-        vehicle.update(pilot: combatant)
-        combatant.update(piloting: vehicle)
+    def self.join_mount(combat, combatant, mount, passenger_type)
+      puts "Combat: #{combat} - #{mount.combat}"
+      mount.update(combat: combat)
+      puts "Mount: #{mount.name} Combat: #{mount.combat}"
+      old_rider = mount.rider
+
+      if (passenger_type == "Rider")
+        mount.update(rider: combatant)
+        combatant.update(riding: mount)
+                
+        FS3Combat.set_weapon(nil, combatant, mount.default_weapon)
         
-        default_weapon = FS3Combat.vehicle_stat(vehicle.vehicle_type, "weapons").first
-        FS3Combat.set_weapon(nil, combatant, default_weapon)
-        
-        if (old_pilot && old_pilot != combatant)
-          old_pilot.update(piloting: nil)
-          old_pilot.update(riding_in: vehicle)
-        end
-        FS3Combat.emit_to_combat combat, t('expandedmounts.new_pilot', :name => combatant.name, :vehicle => combatant.mount_name)
+        FS3Combat.emit_to_combat combat, t('expandedmounts.new_rider', :name => combatant.name, :mount => combatant.mount.name)
       else
-        combatant.update(riding_in: vehicle)
-        FS3Combat.emit_to_combat combat, t('expandedmounts.new_passenger', :name => combatant.name, :vehicle => combatant.mount_name)
+        combatant.update(passenger_on: mount)
+        FS3Combat.emit_to_combat combat, t('expandedmounts.new_passenger', :name => combatant.name, :mount => combatant.mount.name)
       end
     end
     
-    def self.leave_vehicle(combat, combatant)
-      
-       if (combatant.piloting)
-         vehicle = combatant.piloting
-         vehicle.update(pilot: nil)
-         combatant.update(piloting: nil)
-       elsif (combatant.riding_in)
-         vehicle = combatant.riding_in
-         combatant.update(riding_in: nil)
-       end
+    def self.leave_mount(combat, combatant)
+      FS3Combat.emit_to_combat combat, t('expandedmounts.dismounts', :name => combatant.name, :mount => combatant.mount.name)
+
+      if (combatant.riding)
+        mount = combatant.riding
+        mount.update(rider: nil)
+        combatant.update(riding: nil)
+      elsif (combatant.passenger_on)
+        mount = combatant.passenger_on
+        combatant.update(passenger_on: nil)
+      end
       # Why do I need this? - Probably to give them their weapon back.
       #  FS3Combat.set_default_gear(nil, combatant, Global.read_config("fs3combat", "default_type"))
        
-       FS3Combat.emit_to_combat combat, t('expandedmounts.disembarks_vehicle', :name => combatant.name, :vehicle => combatant.mount_name)
+       
     end
 
     def self.copy_damage_to_mount(vehicles)
