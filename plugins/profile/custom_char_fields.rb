@@ -46,7 +46,7 @@ module AresMUSH
           cg_spells: Magic.cg_spells(char),
           starting_spells: Magic.starting_spells(char),
           mount_name: ExpandedMounts.mount_name(char),
-          mount_types: ["Dragon", "Griffin", "Roc", "Pantherine", "Lupine", "Pegasus"],
+          mount_types: ["Dragon", "Griffon", "Roc", "Pantherine", "Lupine", "Pegasus"],
           mount_type: ExpandedMounts.mount_type(char),
           mount_desc: ExpandedMounts.mount_desc(char),
           mount_shortdesc: ExpandedMounts.mount_shortdesc(char),

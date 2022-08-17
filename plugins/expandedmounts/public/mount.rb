@@ -14,13 +14,14 @@ module AresMUSH
     end
 
     attribute :birthdate, :type => DataType::Date
-    attribute :mount_type
+    attribute :expanded_mount_type
     attribute :description
     attribute :shortdesc
     attribute :details, :type => DataType::Hash, :default => {}
     reference :bonded, "AresMUSH::Character"
   
     collection :damage, "AresMUSH::Damage"
+    attribute :damaged_by, :type => DataType::Array, :default => []
 
     ## COMBAT
 
@@ -38,9 +39,9 @@ module AresMUSH
     #   Combatant.find(character_id: self.id).first
     # end
     
-    # def delete_damage
-    #   self.damage.each { |d| d.delete }
-    # end
+    def delete_damage
+      self.damage.each { |d| d.delete }
+    end
 
     def weapon
       self.bonded.combatant.weapon
@@ -69,27 +70,28 @@ module AresMUSH
     end
     
     def armor
-      Global.read_config("expandedmounts", self.mount_type, "armor" )
+      puts self.expanded_mount_type
+      Global.read_config("expandedmounts", self.expanded_mount_type, "armor" )
     end
 
     def default_weapon
-      Global.read_config("expandedmounts", self.mount_type, "weapons" ).first
+      Global.read_config("expandedmounts", self.expanded_mount_type, "weapons" ).first
     end
 
     def defense
-      Global.read_config("expandedmounts", self.mount_type, "defense" )
+      Global.read_config("expandedmounts", self.expanded_mount_type, "defense" )
     end
 
     def attack
-      Global.read_config("expandedmounts", self.mount_type, "attack" )
+      Global.read_config("expandedmounts", self.expanded_mount_type, "attack" )
     end
 
     def composure
-      Global.read_config("expandedmounts", self.mount_type, "composure" )
+      Global.read_config("expandedmounts", self.expanded_mount_type, "composure" )
     end
     
     def hitloc_type
-      Global.read_config("expandedmounts", self.mount_type, "hitloc_chart" )
+      Global.read_config("expandedmounts", self.expanded_mount_type, "hitloc_chart" )
     end
 
     def total_damage_mod
@@ -104,8 +106,67 @@ module AresMUSH
       false
     end
 
+    def defense_stance_mod
+      self.bonded.combatant.defense_stance_mod
+    end
 
+    def defense_mod
+      self.bonded.combatant.defense_mod
+    end
 
+    def luck
+      self.bonded.combatant.luck
+    end
+
+    def damage_mod
+      (self.bonded.combatant.total_damage_mod + FS3.total_damage_mod(self)) / 2
+    end
+
+    def damage_lethality_mod
+      self.bonded.combatant.damage_lethality_mod
+    end
+
+    def log(msg)
+      self.combat.log(msg)
+    end
+
+    def roll_ability(ability, mod = 0)
+      puts "Mythic ability #{ability}"
+      #probably put methods here to determine reflexes, etc
+      self.bonded.combatant.roll_ability(ability, mod)
+    end
+
+    def stance
+      self.bonded.combatant.stance
+    end
+
+    def magic_shields
+      self.bonded.magic_shields
+    end
+
+    def vehicle
+      nil
+    end
+
+    def combatant_type
+      self.expanded_mount_type
+    end
+
+    def inflict_damage(severity, desc, is_stun = false, is_crew_hit = false)
+      FS3Combat.inflict_damage(self, severity, desc, is_stun, !self.combat.is_real)
+    end
+
+    def is_npc?
+      false
+    end
+
+    def mount_type
+      #Do NOT give this a value, it fucks with vanilla mount code.
+    end
+
+    def add_stress(num)
+      self.bonded.combatant.add_stress(num)
+    end
 
   end
 end

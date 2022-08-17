@@ -26,7 +26,7 @@ module AresMUSH
       puts "Combat: #{combat} - #{mount.combat}"
       mount.update(combat: combat)
       puts "Mount: #{mount.name} Combat: #{mount.combat}"
-      old_rider = mount.rider
+      combatant.update(expanded_mount_type: mount.expanded_mount_type)
 
       if (passenger_type == "Rider")
         mount.update(rider: combatant)
@@ -52,36 +52,41 @@ module AresMUSH
         mount = combatant.passenger_on
         combatant.update(passenger_on: nil)
       end
-      # Why do I need this? - Probably to give them their weapon back.
+
+      combatant.update(expanded_mount_type: nil)
+      # Why do I need this? - Probably to give them their weapon back. Also to be sure they aren't still wielding sharp teeth or something.
       #  FS3Combat.set_default_gear(nil, combatant, Global.read_config("fs3combat", "default_type"))
        
        
     end
 
-    def self.copy_damage_to_mount(vehicles)
-      vehicles.each do |vehicle|
-        vehicle.damage.each do |wound|
-          params = {
-          :description => wound.description,
-          :current_severity => wound.current_severity,
-          :initial_severity => wound.initial_severity,
-          :ictime_str => wound.ictime_str,
-          :healing_points => wound.healing_points,
-          :is_stun => wound.is_stun, 
-          :is_mock => wound.is_mock,
-          :mount => Mount.named(vehicle.name)
-          }
-          Damage.create(params)
-        end
-      end
-    end
+ 
 
-    def self.remove_mount_link(vehicles)
-      vehicles.each do |vehicle|
-        mount = Mount.named(vehicle.name)
-        mount.update(vehicle: nil)
-      end
-    end
+
+    # def self.copy_damage_to_mount(vehicles)
+    #   vehicles.each do |vehicle|
+    #     vehicle.damage.each do |wound|
+    #       params = {
+    #       :description => wound.description,
+    #       :current_severity => wound.current_severity,
+    #       :initial_severity => wound.initial_severity,
+    #       :ictime_str => wound.ictime_str,
+    #       :healing_points => wound.healing_points,
+    #       :is_stun => wound.is_stun, 
+    #       :is_mock => wound.is_mock,
+    #       :mount => Mount.named(vehicle.name)
+    #       }
+    #       Damage.create(params)
+    #     end
+    #   end
+    # end
+
+    # def self.remove_mount_link(vehicles)
+    #   vehicles.each do |vehicle|
+    #     mount = Mount.named(vehicle.name)
+    #     mount.update(vehicle: nil)
+    #   end
+    # end
 
 
 
