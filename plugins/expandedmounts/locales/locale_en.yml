@@ -12,4 +12,5 @@ en:
         mounts_list_title: NAME                  BONDED MAGE
         already_mount_named: "There is already a mythic using that name."
         rider_not_in_combat: "%{mount}'s bonded mage %{rider} isn't in combat. Both mage and mythic must be in combat."
+        cast_on_rider: "You can't use that spell on a mount. Target the bonded mage instead."
   
