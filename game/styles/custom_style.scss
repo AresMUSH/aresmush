@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Beth+Ellen&family=Homemade+Apple&family=Julius+Sans+One&family=Loved+by+the+King&family=Noto+Serif:wght@700&family=Staatliches&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Homemade+Apple&family=Julius+Sans+One&family=Loved+by+the+King&family=Noto+Serif:wght@700&family=Staatliches&display=swap');
 
 $light-grey: #ebebeb;
 $dark-grey: #3a4146;
@@ -8,10 +8,21 @@ $blackest-grey: #191919;
 $almost-black: #090909;
 
 $greyish-green: #2F3E41;
+$lighter-greyish-green: #455a5f;
 $green: #326B64;
+$darker-green: #224844;
 $red: #7F181B;
 $taupe: #BF9075;
 $tan: #F1D8C2;
+$photo-box: #f9f9ef;
+
+$darkest-blue: #141D2A;
+
+$darkest-rust: #522617;
+$darker-rust: #903A19;
+$rust: #B8430F;
+$brass: #CD9671;
+$ruddy-brown: #B25A27;
 
 $rose: #852A35;
 $light-rose: #A34752;
@@ -39,8 +50,6 @@ $darkest-teal: #011C26;
 $yellow: #d9c66a;
 $medium-blue: #02188b;
 $dark-blue: #010b40;
-$rust: #B04402;
-$dark-rust: #8D3600;
 $dark-red: #621624;
 $darkest-red: #380c14;
 
@@ -213,12 +222,25 @@ input[type="text"],
 .navbar-dark .navbar-nav .nav-link.show,
 .navbar-dark .navbar-nav .nav-link.active,
 .navbar-dark .navbar-nav .nav-link:hover {
-    color: $yellow
+    color: $secondary-color;
+}
+
+@media (min-width: 992px) {
+.navbar-expand-lg .navbar-nav .dropdown-menu {
+    box-shadow: -2px 2px 2px 1px #292929;
+}
+}
+
+.navbar {
+    font-family: 'Staatliches', Georgina, serif;
+    text-transform: uppercase;
+    font-size: 20px;
+    letter-spacing: 1px;
 }
 
 .navbar-dark .navbar-nav .nav-link.active,
 .navbar-dark .navbar-nav .nav-link:active {
-    color: $light-grey
+    color: $light-grey;
 }
 
 .navbar-dark .navbar-nav>.open>a,
@@ -229,21 +251,26 @@ input[type="text"],
 }
 
 .dropdown-menu {
-    background-color: $darkest-teal;
+    background-color: $darkest-blue;
+    background-image: url('/game/uploads/theme_files/rust-texture_50opac-half.png');
+    background-repeat: no-repeat;
+    background-position: top right;
+    background-size: 200px;
     color: $light-grey;
     font-size: 14px;
     text-transform: none;
-    font-family: Verdana, Geneva, sans-serif
+    font-family: Verdana, Geneva, sans-serif;
+    letter-spacing: normal;
 }
 
 .dropdown-menu>li>a {
     font-weight: 400;
     color: $light-grey;
-    background-color: $darkest-teal
+    background-color: transparent;
 }
 
 .dropdown-menu>li>a:hover {
-    background-color: $light-green;
+    background-color: $green;
     color: $light-grey;
     text-shadow: none
 }
@@ -321,14 +348,20 @@ button {
     border-style: none;
     border-radius: 4px;
     padding: .225em .75em .35em;
-    min-width: 40px
+    min-width: 40px;
+    background-image: url('/game/uploads/css_files/rust-texture.png');
+    background-size: cover;
+    padding-top: 8px;
 }
 
 .btn-success {
     text-shadow: none;
-    font-family: 'Julius Sans One', sans-serif;
+    font-family: 'Black Ops One', monospace;
     text-transform: uppercase;
-    font-size: 18px
+    font-size: 18px;
+    background-image: url('/game/uploads/css_files/rust-texture.png');
+    background-size: cover;
+    padding-top: 8px;
 }
 
 .btn-success:hover {
@@ -341,22 +374,29 @@ button {
 .btn-collapse,
 .btn-default {
     text-shadow: none;
-    font-family: 'Julius Sans One', sans-serif;
+    font-family: 'Black Ops One', monospace;
     text-transform: uppercase;
-    font-size: 18px;
-    background-color: $dark-rose;
+    font-size: 16px;
+    background-color: $darker-grey;
+    border-color: $darkest-grey;
     color: $light-grey;
-    border-color: $darker-rose;
+    background-image: url('/game/uploads/css_files/rust-texture.png');
+    background-size: cover;
+    padding-top: 8px;
 }
 
 .btn-secondary:hover,
 .btn-collapse:hover,
 .btn-default:hover,
-.btn-primary:hover {
+.btn-primary:hover,
+.btn-danger:hover {
     text-shadow: none;
-    background-color: $dusky-purple;
-    border-color: $darker-purple;
+    background-color: $green;
+    border-color: $darker-green;
     color: $light-grey;
+    background-image: url('/game/uploads/css_files/rust-texture.png');
+    background-size: cover;
+    padding-top: 8px;
 }
 
 .btn.active.focus,
@@ -369,24 +409,37 @@ button {
 }
 
 .btn-primary {
-    background-color: $dark-slate;
-    border-color: $dark-slate;
+    background-color: $lighter-greyish-green;
+    border-color: $greyish-green;
     color: $light-grey;
+    border-color: #522617;
     text-shadow: none;
     outline: 0;
-    font-family: 'Julius Sans One', sans-serif;
+    font-family: 'Black Ops One', monospace;
     text-transform: uppercase;
-    font-size: 18px
+    font-size: 16px;
+    background-image: url('/game/uploads/css_files/rust-texture.png');
+    background-size: cover;
+    padding-top: 8px;
 }
 
 .btn-warning {
     text-shadow: none;
     outline: 0;
-    font-family: 'Julius Sans One', sans-serif;
+    font-family: 'Black Ops One', monospace;
     text-transform: uppercase;
-    font-size: 18px;
+    font-size: 16px;
     background-color: #bf8450;
-    border-color: #c69163
+    border-color: #c69163;
+    background-image: url('/game/uploads/css_files/rust-texture.png');
+    background-size: cover;
+    padding-top: 8px;
+}
+
+.btn-danger {
+    font-family: 'Black Ops One', monospace;
+    text-transform: uppercase;
+    font-size: 16px;
 }
 
 // FS3
@@ -678,6 +731,7 @@ button {
     .log-icon-container {
         height: 175px;
         border-radius: 0px;
+        border: 5px solid $photo-box;
     }
 
     .log-icon {
@@ -744,7 +798,8 @@ h1 {
     font-size: 6vw !important;
     background-image: none;
     margin-right: 0px;
-    padding: 0.2em 0.5em 0em 0.5em;
+    padding: 0.5em 0.2em 0.2em;
+    text-align: center;
 }
 }
 
@@ -775,3 +830,173 @@ h1 {
 .sidebar-list {
     line-height: 1;
     }
+
+// PLAY SCREEN & LOGS
+
+.scene-ooc-pose {
+    background-color: $dark-grey;
+    color: $light-grey;
+    padding: 5px;
+    margin: 0 10px 1em 12px;
+    vertical-align: middle
+}
+
+.scene-ooc-pose p {
+    margin-bottom: 4px;
+    margin-left: 5px;
+    margin-top: 4px
+}
+
+.scene-ooc-pose .badge {
+    float: left;
+    margin: 5px;
+    margin-right: 10px;
+    vertical-align: top
+}
+
+.scene-ooc-pose .bg-primary {
+    background-color: $darker-rust!important;
+    border-color: #d9a05b;
+    color: $light-grey;
+}
+
+.scene-log {
+    border: 0
+}
+
+.scene-controls-box {
+    border: transparent;
+    background: $darkest-blue;
+}
+
+.profile-image {
+    width: 400px!important;
+    border: 10px solid $photo-box;
+    box-shadow: 2px 2px 2px rgba(54, 38, 9, 0.3);
+    border-radius: 0;
+}
+
+.char-name {
+    font-family: 'Homemade Apple', cursive;
+    text-transform: none;
+    font-size: 3.5em;
+    padding-top: 0.45em;
+    padding-left: 3em;
+}
+
+// LIVE SCENES
+
+@media screen and (min-width:768px) {
+    .live-scenes-heading .col-sm-6 {
+        width: 75%
+    }
+    .live-scenes-heading .col-sm-4 {
+        width: 16.66667%
+    }
+    .live-scenes-heading .col-sm-2 {
+        width: 8.33333%
+    }
+    .scene-summary {
+        overflow: visible;
+        width: calc(100% + 18em)
+    }
+    .scene-summary>a:first-child {
+        display: none
+    }
+    .scene-summary>div {
+        display: block;
+        position: relative;
+        height: auto!important
+    }
+    .scene-summary>div p:last-child {
+        padding-bottom: 0
+    }
+    .live-scenes-block .col:last-child .scene-info-label {
+        width: 3em;
+        display: inline-block
+    }
+}
+
+@media screen and (max-width:767px) {
+    .live-scenes-block .col.col-xs-12.col-sm-6 {
+        padding-bottom: .25em
+    }
+    .live-scenes-block .col.col-xs-12.col-sm-4,
+    .live-scenes-block .col.col-xs-12.col-sm-2 {
+        padding-top: 0
+    }
+    .live-scenes-block>.row:last-child>div:first-child {
+        padding-bottom: .25em
+    }
+    .live-scenes-block>.row:last-child>div:last-child {
+        padding-top: 0
+    }
+    .live-scenes-block>.row:last-child>div:last-child>div {
+        width: calc(50% - .13em);
+        display: inline-block
+    }
+    .live-scenes-block>.row:last-child>div:last-child>div:last-child {
+        text-align: right
+    }
+    .live-scenes-heading>.col:last-child {
+        max-width: 5em;
+        min-width: 5em
+    }
+    .live-scenes-heading>.col:nth-last-child(2) {
+        max-width: calc(100% - 5em);
+        min-width: calc(100% - 5em)
+    }
+    .scene-summary {
+        padding-top: .25em
+    }
+    .scene-summary>div {
+        padding: 0 .75em .25em 1em
+    }
+    .unshared-scenes-heading .col-xs-4 {
+        text-align: right
+    }
+    .unshared-scene-block>.row:last-child>div:nth-child(2) {
+        padding: 0 .75em
+    }
+    .unshared-scene-block>.row:last-child>div:nth-child(2)>div {
+        display: inline-block
+    }
+    .unshared-scene-block>.row:last-child>div:nth-child(2)>div:first-child:after {
+        content: ","
+    }
+    .live-scenes-heading>.col,
+    .live-scenes-block .col-xs-12,
+    .unshared-scenes-heading>.col,
+    .unshared-scene-block .col-xs-12 {
+        flex-basis: 100%;
+        min-width: 100%
+    }
+}
+
+.live-scenes-block~.alert>p>a {
+    font-weight: 700
+}
+
+.live-scenes-block~.alert>p:last-child,
+.live-scenes-block~br,
+.live-scenes-block~hr {
+    display: none
+}
+
+h1+p+table~span+hr+h2~div {
+    position: relative
+}
+
+h1+p+table~span+hr+h2~div>p:last-of-type:not(:first-of-type) {
+    display: block;
+    position: absolute;
+    right: 1em;
+    top: .25em
+}
+
+// CARD & MODAL
+
+.card {
+    background-color: $darkest-blue;
+    border-color: transparent;
+}
