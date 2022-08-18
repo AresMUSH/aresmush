@@ -14,7 +14,7 @@ module AresMUSH
       end
 
       def format_mount(mount)
-        "#{mount.name} (#{mount.mount_type})"
+        "#{mount.name} (#{mount.expanded_mount_type})"
       end
     end
   end
