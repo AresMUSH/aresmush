@@ -106,10 +106,10 @@ module AresMUSH
         damaged_by = combatant.damaged_by.join(", ")
         FS3Combat.emit_to_combat combatant.combat, t('fs3combat.is_koed', :name => combatant.name, :damaged_by => damaged_by), nil, true
         #EM Changes
-        if combatant.class == Mount && combatant.rider
+        if combatant.is_mount? && combatant.rider
           ExpandedMounts.leave_mount(combatant.rider)
         end 
-        if combatant.class == Mount && combatant.passengers
+        if combatant.is_mount? && combatant.passengers
           combatant.passengers.each do |p|
             ExpandedMounts.leave_mount(p)
           end
@@ -129,6 +129,7 @@ module AresMUSH
     end
     
     def self.make_ko_roll(combatant, ko_mod = 0)
+      puts "MAKING KO ROLL"
       pc_mod = combatant.is_npc? ? 0 : Global.read_config("fs3combat", "pc_knockout_bonus")
 
       composure = Global.read_config("fs3combat", "composure_skill")
@@ -145,7 +146,7 @@ module AresMUSH
       mod = damage_mod + damage_mod + pc_mod + vehicle_mod + ko_mod
       puts "CHECKING MOUNT KOS"
       #EM Changes
-      if combatant.class == Mount 
+      if combatant.is_mount?
         rider_dice = FS3Skills.ability_rating(combatant.rider.associated_model, composure)
         composure_dice = (rider_dice + combatant.composure) / 2
         dice = composure_dice + mod
@@ -163,7 +164,8 @@ module AresMUSH
         roll = combatant.roll_ability(composure, mod)
       end
       #/EM Changes
-      
+      puts "#{combatant.name} checking KO. roll=#{roll} composure=#{composure} damage=#{damage_mod} vehicle=#{vehicle_mod} pc=#{pc_mod} mod=#{ko_mod}"
+
       combatant.log "#{combatant.name} checking KO. roll=#{roll} composure=#{composure} damage=#{damage_mod} vehicle=#{vehicle_mod} pc=#{pc_mod} mod=#{ko_mod}"
       
       roll
@@ -353,7 +355,7 @@ module AresMUSH
       hit = false
       weapon_type = FS3Combat.weapon_stat(combatant.weapon, "weapon_type")
       hit_mount = FS3Combat.hit_mount?(combatant, target, attacker_net_successes, mount_hit)
-      
+
       if (attack_roll <= 0)
         message = t('fs3combat.attack_missed', :name => combatant.name, :target => target.name, :weapon => weapon)
       elsif (called_shot && (attacker_net_successes > 0) && (attacker_net_successes < 2))
@@ -401,7 +403,7 @@ module AresMUSH
       {
         message: message,
         hit: hit,
-        attacker_net_successes: attacker_net_successes
+        attacker_net_successes: attacker_net_successes,
       }
     end
       
@@ -412,8 +414,11 @@ module AresMUSH
       if (target.riding_in && target.riding_in.pilot)
         target = target.riding_in.pilot
       end
+
+
       
       margin = FS3Combat.determine_attack_margin(combatant, target, mod, called_shot, mount_hit)
+      target = margin[:target]
 
       # Update recoil after determining the attack success but before returning out for a miss
       recoil = FS3Combat.weapon_stat(combatant.weapon, "recoil")
@@ -424,12 +429,23 @@ module AresMUSH
       weapon = combatant.weapon
       
       attacker_net_successes = margin[:attacker_net_successes]
+      puts "COMBATANT #{combatant.name}"
             
       FS3Combat.resolve_attack(combatant, combatant.name, target, weapon, attacker_net_successes, called_shot, crew_hit)
     end
     
     # Attacker may be nil for automated attacks like shrapnel
     def self.resolve_attack(attacker, attack_name, target, weapon, attacker_net_successes = 0, called_shot = nil, crew_hit = false)
+      #EM Changes
+      puts "ATTACKER: #{attacker} "
+      hit_expanded_mount_or_rider = ExpandedMounts.determine_target(target, attacker, attacker_net_successes)
+      
+      if !hit_expanded_mount_or_rider[:hit_target]
+        original_target = target
+        target = hit_expanded_mount_or_rider[:target]
+      end
+      #/EM Changes
+
       hitloc = FS3Combat.determine_hitloc(target, attacker_net_successes, called_shot, crew_hit)
       armor = FS3Combat.determine_armor(target, hitloc, weapon, attacker_net_successes)
         
@@ -487,7 +503,13 @@ module AresMUSH
       target.add_stress(1)
       
       messages = []
-      
+      #EMChanges
+      if !hit_expanded_mount_or_rider[:hit_target]
+        messages << t('expandedmounts.hit_mount_or_rider', :name => attack_name, :aiming_at => original_target.name, :but_hit => target.name)
+        original_target = target
+        target = hit_expanded_mount_or_rider[:target]
+      end
+      #/EM changes
       weapon_type = FS3Combat.weapon_stat(weapon, 'weapon_type')
       if (weapon_type == "Explosive")
         weapon_name = t('fs3combat.concussion_from', :weapon => weapon)
@@ -496,22 +518,13 @@ module AresMUSH
       end
       
       FS3Combat.award_hit_achievement(attacker, damage, weapon_type)
-      #EM Changes - Adds vehicle's name to the hit message
-      if target.vehicle
-        hitloc_msg = "#{target.vehicle.name}'s #{hitloc}"
-        target_names = "#{target.name} astride #{target.vehicle.name}"
-      else 
-        hitloc_msg = hitloc
-        target_names = target.name
-      end
-      #/EM Changes
       
       messages << t('fs3combat.attack_hits', 
                     :name => attack_name, 
                     :weapon => weapon_name,
                     #EM Changes - Adds vehicle's name to the hit message
-                    :target => target_names,
-                    :hitloc => hitloc_msg,
+                    :target => target.name,
+                    :hitloc => hitloc,
                     #/EM Changes
                     :armor => reduced_by_armor,
                     :damage => FS3Combat.display_severity(damage)) 

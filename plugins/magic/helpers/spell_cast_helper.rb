@@ -400,9 +400,9 @@ module AresMUSH
           margin = FS3Combat.determine_attack_margin(combatant, target, mod = 0, called_shot = nil, mount_hit = false, result)
           attacker_net_successes = margin[:attacker_net_successes]
           if damage_type
-            messages.concat FS3Combat.resolve_attack(nil, caster_name, target, "#{damage_type} Shrapnel", attacker_net_successes)
+            messages.concat FS3Combat.resolve_attack(combatant, caster_name, target, "#{damage_type} Shrapnel", attacker_net_successes)
           else
-            messages.concat FS3Combat.resolve_attack(nil, caster_name, target, "Shrapnel", attacker_net_successes)
+            messages.concat FS3Combat.resolve_attack(combatant, caster_name, target, "Shrapnel", attacker_net_successes)
           end
 
         end

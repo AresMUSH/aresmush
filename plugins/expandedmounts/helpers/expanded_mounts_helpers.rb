@@ -3,7 +3,7 @@ module AresMUSH
   module ExpandedMounts
 
     def self.caster_name(combatant_or_mount)
-      if combatant_or_mount.class == Mount && combatant_or_mount.rider
+      if combatant_or_mount.is_mount? && combatant_or_mount.rider
         return t('expandedmounts.combat_name', :combatant => combatant_or_mount.bonded.name, :mount => combatant_or_mount.name )
       elsif combatant_or_mount.class == Combatant && combatant_or_mount.riding
         return t('expandedmounts.combat_name', :combatant => combatant_or_mount.name, :mount => combatant_or_mount.riding.name )
@@ -116,6 +116,42 @@ module AresMUSH
       m.update(rider: nil)
       m.update(passengers: nil)
     end
+  end
+  
+  def self.determine_target(target, attacker, attacker_net_successes)
+    return {hit_target: true, target: target } if !attacker  
+    hit_target = true
+    if (target.is_mount? && target.rider )|| target.mount
+      hit_chance = 0
+
+      if (attacker.mount)
+        hit_chance = 15
+      else
+        hit_chance = 30
+      end
+      
+      roll = rand(100) 
+      result = roll < hit_chance
+            
+      target.log "Determined expanded mount or rider hit: chance=#{hit_chance} roll=#{roll} result=#{result}"
+      
+      if result
+        hit_target = false
+        if target.is_mount? && target.rider
+          target = target.rider
+        elsif target.riding
+          target = target.riding
+        elsif target.passenger_on
+          target = targer.passenger_on
+        end
+      end
+    end
+
+    puts "TARGET: #{target.name} hit target? #{hit_target}"
+    return {
+      hit_target: hit_target,
+      target: target
+    }
   end
 
     # def self.copy_damage_to_mount(vehicles)

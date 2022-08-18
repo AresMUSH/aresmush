@@ -13,5 +13,9 @@ module AresMUSH
       self.riding || self.passenger_on
     end
 
+    def is_mount?
+      false
+    end
+
   end
 end
