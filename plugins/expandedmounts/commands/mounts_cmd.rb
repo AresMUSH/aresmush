@@ -1,10 +1,10 @@
 module AresMUSH
   module ExpandedMounts
-    class ExpandedMountsCmd
+    class ExpandedMountsListCmd
       include CommandHandler
       
       def handle
-        template = ExpandedMountsTemplate.new
+        template = ExpandedMountsListTemplate.new
         client.emit template.render
       end
     end
