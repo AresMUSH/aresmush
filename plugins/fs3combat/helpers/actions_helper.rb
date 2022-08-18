@@ -87,6 +87,7 @@ module AresMUSH
     end
     
     def self.check_for_ko(combatant)
+      puts "Checking for KO"
       return if (!combatant.freshly_damaged || combatant.is_ko || combatant.total_damage_mod > -1.0)
 
       combatant.log "Checking for KO: #{combatant.name} damaged=#{combatant.freshly_damaged} ko=#{combatant.is_ko} mod=#{combatant.total_damage_mod}"
@@ -127,12 +128,29 @@ module AresMUSH
         vehicle_mod = FS3Combat.vehicle_stat(vehicle.vehicle_type, "toughness").to_i
       else
         vehicle_mod = 0
-      end
+      end      
       
       damage_mod = combatant.total_damage_mod
       
       mod = damage_mod + damage_mod + pc_mod + vehicle_mod + ko_mod
-      roll = combatant.roll_ability(composure, mod)
+
+      #EM Changes
+      if combatant.class == Mount 
+        rider_dice = FS3Skills.ability_rating(combatant.rider.associated_model, composure)
+        composure_dice = (rider_dice + combatant.composure) / 2
+        dice = composure_dice + mod
+        results = FS3Skills.roll_dice(composure_dice)
+        roll = FS3Skills.get_success_level(results)
+      elsif combatant.riding
+        rider_dice = FS3Skills.ability_rating(combatant.associated_model, composure)
+        composure_dice = (rider_dice + combatant.riding.composure) / 2
+        dice = composure_dice + mod
+        results = FS3Skills.roll_dice(composure_dice)
+        roll = FS3Skills.get_success_level(results)
+      else
+        roll = combatant.roll_ability(composure, mod)
+      end
+      #/EM Changes
       
       combatant.log "#{combatant.name} checking KO. roll=#{roll} composure=#{composure} damage=#{damage_mod} vehicle=#{vehicle_mod} pc=#{pc_mod} mod=#{ko_mod}"
       
@@ -169,8 +187,7 @@ module AresMUSH
       default_targets.delete(attacking_team)
       team_targets = combat.team_targets[attacking_team.to_s] || default_targets
       
-      possible_targets = combat.active_combatants.select { |t| team_targets.include?(t.team) && 
-                                                               t.stance != "Hidden"}
+      possible_targets = combat.active_combatants.select { |t| team_targets.include?(t.team) && t.stance != "Hidden"}
       possible_targets.shuffle.first
     end
     

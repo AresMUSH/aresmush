@@ -2,6 +2,16 @@ require 'byebug'
 module AresMUSH
   module ExpandedMounts
 
+    def self.caster_name(combatant_or_mount)
+      if combatant_or_mount.class == Mount && combatant_or_mount.rider
+        return t('expandedmounts.combat_name', :combatant => combatant_or_mount.bonded.name, :mount => combatant_or_mount.name )
+      elsif combatant_or_mount.class == Combatant && combatant_or_mount.riding
+        return t('expandedmounts.combat_name', :combatant => combatant_or_mount.name, :mount => combatant_or_mount.riding.name )
+      else
+        return combatant_or_mount.name
+      end
+    end
+
     # def self.find_or_create_mount(combat, name)
     #   #Find a vehicle by link to mount model
     #   mount = Mount.named(name)
@@ -85,6 +95,13 @@ module AresMUSH
   def self.target_rider(spell)
     return true unless spell['fs3_attack'] || spell['heal_points'] || spell['damage_inflicted']
     return false
+  end
+
+  def self.new_turn(combat)
+    mounts = combat.mounts
+    mounts.each do |m|
+      FS3Combat.check_for_ko(m)
+    end
   end
 
 

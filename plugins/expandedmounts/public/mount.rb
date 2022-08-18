@@ -28,6 +28,7 @@ module AresMUSH
     reference :combat, "AresMUSH::Combat"
 
     attribute :freshly_damaged, :type => DataType::Boolean, :default => false
+    attribute :is_ko
 
     
     reference :rider, 'AresMUSH::Combatant'
@@ -111,7 +112,7 @@ module AresMUSH
       FS3Combat.inflict_damage(self, severity, desc, is_stun, !self.combat.is_real)
     end
 
-    ## A MOUNT'S MODS, SHIELDS, AND STANCE ARE THE SAME AS THEIR BONDED'S 
+      ## A MOUNT'S MODS, SHIELDS, AND STANCE ARE THE SAME AS THEIR BONDED'S 
     def stance
       self.bonded.combatant.stance
     end

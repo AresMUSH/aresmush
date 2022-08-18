@@ -216,7 +216,10 @@ module AresMUSH
       
           FS3Combat.emit_to_combat combat, all_messages.join("\n"), nil, true, true
 
-          combat.log "---- Resolutions ----"
+          combat.log "------ Resolutions ------"
+          #EM Changes
+          ExpandedMounts.new_turn(combat)
+          #/EM Changes
           combat.active_combatants.each { |c| FS3Combat.reset_for_new_turn(c) }
           # This will reset their action if it's no longer valid.  Do this after everyone's been KO'd.
           combat.active_combatants.each { |c| c.action }
