@@ -7,6 +7,7 @@ en:
         new_passenger: "%{name} is now a passenger on %{mount}."
         dismounts: "%{name} climbs down from %{mount}."
         combat_name: "%{combatant} atop %{mount}"
+        combat_mounts_list_title: "Sentinel                 Warden               Passengers"
         mount_created: "%{name} created."
         mount_updated: "%{name} created."
         mounts_list_title: NAME                  BONDED MAGE

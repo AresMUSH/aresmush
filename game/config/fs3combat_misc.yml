@@ -38,6 +38,11 @@ fs3combat:
       armor: None
       hitloc: Humanoid
       defense_skill: Reflexes
+    Unarmed:
+      weapon: Unarmed
+      armor: None
+      hitloc: Humanoid
+      defense_skill: Reflexes
     Dragon:
       weapon: Sharp Teeth
       armor: Tough Hide
@@ -78,7 +83,6 @@ fs3combat:
     vehicles: vehicle
     healing: heal/list
     weapons: weapon
-    combat/mounts: combat/vehicles
     newturn: combat/newturn
 
   achievements:
