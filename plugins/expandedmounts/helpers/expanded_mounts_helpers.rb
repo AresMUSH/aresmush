@@ -51,8 +51,12 @@ module AresMUSH
       end
     end
     
-    def self.leave_mount(combat, combatant)
-      FS3Combat.emit_to_combat combat, t('expandedmounts.dismounts', :name => combatant.name, :mount => combatant.mount.name)
+    def self.leave_mount(combatant)
+      if combatant.mount.is_ko
+        FS3Combat.emit_to_combat combatant.combat, t('expandedmounts.ko_dismount', :name => combatant.name, :mount => combatant.mount.name)
+      else
+        FS3Combat.emit_to_combat combatant.combat, t('expandedmounts.dismounts', :name => combatant.name, :mount => combatant.mount.name)
+      end
 
       if (combatant.riding)
         mount = combatant.riding
@@ -98,12 +102,21 @@ module AresMUSH
   end
 
   def self.new_turn(combat)
-    mounts = combat.mounts
-    mounts.each do |m|
+    combat.mounts.each do |m|
       FS3Combat.check_for_ko(m)
+      m.update(freshly_damaged: false)
     end
   end
 
+  def self.combat_stop(combat)
+    combat.mounts.each do |m|
+      m.update(combat: nil)
+      m.update(freshly_damaged: false)
+      m.update(is_ko: false)
+      m.update(rider: nil)
+      m.update(passengers: nil)
+    end
+  end
 
     # def self.copy_damage_to_mount(vehicles)
     #   vehicles.each do |vehicle|

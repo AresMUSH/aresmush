@@ -98,13 +98,23 @@ module AresMUSH
       else
         roll = FS3Combat.make_ko_roll(combatant)
       end
-      
+
       if (roll <= 0)
         combatant.update(is_ko: true)
         combatant.update(action_klass: nil)
         combatant.update(action_args: nil)
         damaged_by = combatant.damaged_by.join(", ")
         FS3Combat.emit_to_combat combatant.combat, t('fs3combat.is_koed', :name => combatant.name, :damaged_by => damaged_by), nil, true
+        #EM Changes
+        if combatant.class == Mount && combatant.rider
+          ExpandedMounts.leave_mount(combatant.rider)
+        end 
+        if combatant.class == Mount && combatant.passengers
+          combatant.passengers.each do |p|
+            ExpandedMounts.leave_mount(p)
+          end
+        end
+        #/EM Changes
       end
     end
       
@@ -133,20 +143,22 @@ module AresMUSH
       damage_mod = combatant.total_damage_mod
       
       mod = damage_mod + damage_mod + pc_mod + vehicle_mod + ko_mod
-
+      puts "CHECKING MOUNT KOS"
       #EM Changes
       if combatant.class == Mount 
         rider_dice = FS3Skills.ability_rating(combatant.rider.associated_model, composure)
         composure_dice = (rider_dice + combatant.composure) / 2
         dice = composure_dice + mod
-        results = FS3Skills.roll_dice(composure_dice)
+        results = FS3Skills.roll_dice(dice)
         roll = FS3Skills.get_success_level(results)
+        puts "#{combatant.name} KO check: rider_dice:#{rider_dice} composure dice:#{composure_dice} dice:#{dice} results:#{results} roll:#{roll}"
       elsif combatant.riding
         rider_dice = FS3Skills.ability_rating(combatant.associated_model, composure)
         composure_dice = (rider_dice + combatant.riding.composure) / 2
         dice = composure_dice + mod
-        results = FS3Skills.roll_dice(composure_dice)
+        results = FS3Skills.roll_dice(dice)
         roll = FS3Skills.get_success_level(results)
+        puts "#{combatant.name} KO check: rider_dice:#{rider_dice} composure dice:#{composure_dice} dice:#{dice} results:#{results} roll:#{roll}"
       else
         roll = combatant.roll_ability(composure, mod)
       end
