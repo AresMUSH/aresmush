@@ -7,12 +7,12 @@ fs3combat:
     - sparring
     Ranged:
     - cold calm
-    - Aether
+    - fire
     - scope
     Melee:
     - cold calm
-    - Aether
     - fatal vitality
+    - fire
     - sparring
     Spell:
     - cold calm
@@ -23,7 +23,7 @@ fs3combat:
       is_magic: true
       lethality: 5
     #SPELLS
-    Aether:
+    Fire:
       description: Level 4 Aether spell
       is_magic: true
       lethality: 10

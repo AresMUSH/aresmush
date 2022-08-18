@@ -54,10 +54,8 @@ module AresMUSH
       #EM Changes
       target_names = []
       targets.each do |t|
-        if Mount.named(t.name) && t.rider
-          target_names.concat [t('expandedmounts.combat_name', :combatant => t.rider.name, :mount => t.name)]
-        elsif !Mount.named(t.name) && t.is_on_mount?
-          target_names.concat [t('expandedmounts.combat_name', :combatant => t.name, :mount => t.mount.name)]
+        if Mount.named(t.name)
+          target_names.concat [t.name]
         else 
           target_names.concat [t.name ]
         end

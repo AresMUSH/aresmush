@@ -62,7 +62,7 @@ module AresMUSH
       return specials
     end
 
-    def self.set_magic_weapon(enactor, combatant, weapon)
+    def self.set_magic_weapon(enactor, combatant, weapon,specials = nil)
       #Used for setting a weapon via magic
       #Does not reset action, unlike vanilla FS3 set_weapon
       #Does not allow additional specials
