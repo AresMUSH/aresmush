@@ -45,7 +45,9 @@ module AresMUSH
     end
       
     def find_combatant(name)
-      combatants.select { |c| c.name.upcase == name.upcase }.first
+      #EM Changes
+      combatants.select { |c| c.name.upcase == name.upcase }.first || mounts.select { |c| c.name.upcase == name.upcase }.first
+      #/EM changes
     end
     
     # Finds a vehicle, combatant or NPC
