@@ -87,7 +87,7 @@ module AresMUSH
     end
     
     def self.check_for_ko(combatant)
-      puts "Checking for KO"
+      puts "Checking for KO #{combatant.name}"
       return if (!combatant.freshly_damaged || combatant.is_ko || combatant.total_damage_mod > -1.0)
 
       combatant.log "Checking for KO: #{combatant.name} damaged=#{combatant.freshly_damaged} ko=#{combatant.is_ko} mod=#{combatant.total_damage_mod}"
@@ -145,28 +145,29 @@ module AresMUSH
       
       mod = damage_mod + damage_mod + pc_mod + vehicle_mod + ko_mod
       puts "CHECKING MOUNT KOS"
-      #EM Changes
-      if combatant.is_mount?
-        rider_dice = FS3Skills.ability_rating(combatant.rider.associated_model, composure)
-        composure_dice = (rider_dice + combatant.composure) / 2
-        dice = composure_dice + mod
-        results = FS3Skills.roll_dice(dice)
-        roll = FS3Skills.get_success_level(results)
-        puts "#{combatant.name} KO check: rider_dice:#{rider_dice} composure dice:#{composure_dice} dice:#{dice} results:#{results} roll:#{roll}"
-      elsif combatant.riding
-        rider_dice = FS3Skills.ability_rating(combatant.associated_model, composure)
-        composure_dice = (rider_dice + combatant.riding.composure) / 2
-        dice = composure_dice + mod
-        results = FS3Skills.roll_dice(dice)
-        roll = FS3Skills.get_success_level(results)
-        puts "#{combatant.name} KO check: rider_dice:#{rider_dice} composure dice:#{composure_dice} dice:#{dice} results:#{results} roll:#{roll}"
-      else
-        roll = combatant.roll_ability(composure, mod)
-      end
-      #/EM Changes
+      # #EM Changes
+      # if combatant.is_mount?
+      #   rider_dice = FS3Skills.ability_rating(combatant.rider.associated_model, composure)
+      #   composure_dice = (rider_dice + combatant.composure) / 2
+      #   dice = composure_dice + mod
+      #   results = FS3Skills.roll_dice(dice)
+      #   roll = FS3Skills.get_success_level(results)
+      #   puts "#{combatant.name} KO check: rider_dice:#{rider_dice} composure dice:#{composure_dice} dice:#{dice} results:#{results} roll:#{roll}"
+      # elsif combatant.riding
+      #   rider_dice = FS3Skills.ability_rating(combatant.associated_model, composure)
+      #   composure_dice = (rider_dice + combatant.riding.composure) / 2
+      #   dice = composure_dice + mod
+      #   results = FS3Skills.roll_dice(dice)
+      #   roll = FS3Skills.get_success_level(results)
+      #   puts "#{combatant.name} KO check: rider_dice:#{rider_dice} composure dice:#{composure_dice} dice:#{dice} results:#{results} roll:#{roll}"
+      # else
+      #   roll = combatant.roll_ability(composure, mod)
+      # end
+      # #/EM 
+      roll = combatant.roll_ability(composure, mod)
       puts "#{combatant.name} checking KO. roll=#{roll} composure=#{composure} damage=#{damage_mod} vehicle=#{vehicle_mod} pc=#{pc_mod} mod=#{ko_mod}"
 
-      combatant.log "#{combatant.name} checking KO. roll=#{roll} composure=#{composure} damage=#{damage_mod} vehicle=#{vehicle_mod} pc=#{pc_mod} mod=#{ko_mod}"
+      combatant.log "#{combatant.name.upcase} checking KO. roll=#{roll} composure=#{composure} damage=#{damage_mod} vehicle=#{vehicle_mod} pc=#{pc_mod} mod=#{ko_mod}"
       
       roll
     end
@@ -261,14 +262,9 @@ module AresMUSH
       
       # Not wearing armor at all.
       return 0 if armor.blank?
-      Global.logger.debug "#{combatant.name}'s armor: #{combatant.armor}"
-      
+
       pen = FS3Combat.weapon_stat(weapon, "penetration")
-      Global.logger.debug "#{combatant.name}'s pen: #{pen}"
-
       protect = FS3Combat.armor_stat(armor, "protection")[hitloc]
-      Global.logger.debug "#{combatant.name}'s protect: #{protect}"
-
             
       # Armor doesn't cover this hit location
       return 0 if !protect
@@ -348,6 +344,7 @@ module AresMUSH
     def self.determine_attack_margin(combatant, target, mod = 0, called_shot = nil, mount_hit = false, result = nil)
       weapon = combatant.weapon
       result ? attack_roll = result : attack_roll = FS3Combat.roll_attack(combatant, target, mod - combatant.recoil)
+      
       defense_roll = FS3Combat.roll_defense(target, weapon)
       
       attacker_net_successes = attack_roll - defense_roll
@@ -416,10 +413,11 @@ module AresMUSH
       end
 
 
-      
+      puts "1 COMBATANT #{combatant.name} TARGET #{target}"
       margin = FS3Combat.determine_attack_margin(combatant, target, mod, called_shot, mount_hit)
-      target = margin[:target]
-
+      #EM Changes
+      # target = margin[:target]
+      #/EM Changes
       # Update recoil after determining the attack success but before returning out for a miss
       recoil = FS3Combat.weapon_stat(combatant.weapon, "recoil")
       combatant.update(recoil: combatant.recoil + recoil)
@@ -429,7 +427,7 @@ module AresMUSH
       weapon = combatant.weapon
       
       attacker_net_successes = margin[:attacker_net_successes]
-      puts "COMBATANT #{combatant.name}"
+      puts "2 COMBATANT #{combatant.name} TARGET #{target}"
             
       FS3Combat.resolve_attack(combatant, combatant.name, target, weapon, attacker_net_successes, called_shot, crew_hit)
     end
@@ -437,7 +435,6 @@ module AresMUSH
     # Attacker may be nil for automated attacks like shrapnel
     def self.resolve_attack(attacker, attack_name, target, weapon, attacker_net_successes = 0, called_shot = nil, crew_hit = false)
       #EM Changes
-      puts "ATTACKER: #{attacker} "
       hit_expanded_mount_or_rider = ExpandedMounts.determine_target(target, attacker, attacker_net_successes)
       
       if !hit_expanded_mount_or_rider[:hit_target]
@@ -503,13 +500,16 @@ module AresMUSH
       target.add_stress(1)
       
       messages = []
+
       #EMChanges
       if !hit_expanded_mount_or_rider[:hit_target]
         messages << t('expandedmounts.hit_mount_or_rider', :name => attack_name, :aiming_at => original_target.name, :but_hit => target.name)
         original_target = target
         target = hit_expanded_mount_or_rider[:target]
       end
+      attack_name = ExpandedMounts.mounted_names(attacker)
       #/EM changes
+
       weapon_type = FS3Combat.weapon_stat(weapon, 'weapon_type')
       if (weapon_type == "Explosive")
         weapon_name = t('fs3combat.concussion_from', :weapon => weapon)

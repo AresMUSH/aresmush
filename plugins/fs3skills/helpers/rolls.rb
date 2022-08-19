@@ -9,7 +9,16 @@ module AresMUSH
     # Good for when you're doing a regular roll because you can show the raw dice and
     # use the other methods in this class to get the success level and title to display.
     def self.roll_ability(char, roll_params)
-      dice = FS3Skills.dice_to_roll_for_ability(char, roll_params)
+      puts ":::::::::::Roll params: #{char.name} #{roll_params} #{roll_params.to_s.include?("Reflexes")}"
+      #EM Changes
+      if char.combat && (char.combatant.is_mount? || char.bonded)
+        dice = ExpandedMounts.dice_to_roll_for_ability(char, roll_params)        
+      else 
+        dice = FS3Skills.dice_to_roll_for_ability(char, roll_params)
+        puts "Unmounted dice: #{dice}"
+      end
+      #/EM Changes
+
       roll = FS3Skills.roll_dice(dice)
       Global.logger.info "#{char.name} rolling #{roll_params} dice=#{dice} result=#{roll}"
       Achievements.award_achievement(char, "fs3_roll")

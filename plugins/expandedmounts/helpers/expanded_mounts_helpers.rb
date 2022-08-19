@@ -2,7 +2,7 @@ require 'byebug'
 module AresMUSH
   module ExpandedMounts
 
-    def self.caster_name(combatant_or_mount)
+    def self.mounted_names(combatant_or_mount)
       if combatant_or_mount.is_mount? && combatant_or_mount.rider
         return t('expandedmounts.combat_name', :combatant => combatant_or_mount.bonded.name, :mount => combatant_or_mount.name )
       elsif combatant_or_mount.class == Combatant && combatant_or_mount.riding
@@ -33,9 +33,7 @@ module AresMUSH
     # end
     
     def self.join_mount(combat, combatant, mount, passenger_type)
-      puts "Combat: #{combat} - #{mount.combat}"
       mount.update(combat: combat)
-      puts "Mount: #{mount.name} Combat: #{mount.combat}"
       combatant.update(expanded_mount_type: mount.expanded_mount_type)
 
       if (passenger_type == "Rider")
@@ -132,8 +130,6 @@ module AresMUSH
       
       roll = rand(100) 
       result = roll < hit_chance
-            
-      target.log "Determined expanded mount or rider hit: chance=#{hit_chance} roll=#{roll} result=#{result}"
       
       if result
         hit_target = false
@@ -147,11 +143,41 @@ module AresMUSH
       end
     end
 
-    puts "TARGET: #{target.name} hit target? #{hit_target}"
+    target.log "Determined hit for mounted target: chance=#{hit_chance} roll=#{roll} result=#{result} target=#{target.name}"
+
     return {
       hit_target: hit_target,
       target: target
     }
+  end
+
+  def self.dice_to_roll_for_ability(mount_or_rider, roll_params)
+    #mount_or_rider must be in combat - if rider, their mount must also be in combat
+    ability = roll_params.ability
+    mount_or_rider.class == Mount ? mount = mount_or_rider : mount = mount_or_rider.bonded
+    mount_or_rider.class == Character ? char = mount_or_rider : char = mount_or_rider.rider
+
+    if ability == "Reflexes"
+      mount_dice = Global.read_config("expandedmounts", mount.expanded_mount_type, "reflexes")
+      rider_dice = FS3Skills.dice_to_roll_for_ability(char, roll_params)
+    elsif ability == "Melee" ||  ability == "Brawl"
+      mount_dice = Global.read_config("expandedmounts", mount.expanded_mount_type, "attack")
+      rider_dice = FS3Skills.dice_to_roll_for_ability(char, roll_params)
+    elsif  ability == "Composure"
+      mount_dice = Global.read_config("expandedmounts", mount.expanded_mount_type, "composure")
+      rider_dice = FS3Skills.dice_to_roll_for_ability(char, roll_params)
+    else
+      #Don't average skills that mounts don't affect
+      mount_dice = FS3Skills.dice_to_roll_for_ability(char, roll_params)
+      rider_dice = FS3Skills.dice_to_roll_for_ability(char, roll_params)
+      no_log = true
+    end
+    dice = (rider_dice + mount_dice) / 2
+    if !no_log
+      char.combatant.log "TOTAL #{roll_params.ability.upcase} DICE: #{char.name}'s #{rider_dice} + #{mount.name}'s #{mount_dice} / 2 = #{dice}"
+    end
+    puts "Grabbing rider and mount dice: #{rider_dice} + #{mount_dice} / 2 = #{dice}"
+    return dice
   end
 
     # def self.copy_damage_to_mount(vehicles)
