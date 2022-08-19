@@ -119,17 +119,32 @@ module AresMUSH
   def self.determine_target(target, attacker, attacker_net_successes)
     return {hit_target: true, target: target } if !attacker  
     hit_target = true
-    if (target.is_mount? && target.rider )|| target.mount
-      hit_chance = 0
+    #only run code if the target is a mount with a rider or a rider/passenger on a mount
+    if (target.is_mount? && target.rider ) || target.mount
+      hit_target_chance = 100
 
-      if (attacker.mount)
-        hit_chance = 15
+      if target.is_mount?
+        hit_target_chance = 90 + attacker_net_successes
       else
-        hit_chance = 30
+        if (attacker.mount)
+          if FS3Combat.weapon_stat(attacker.weapon, "weapon_type") == "Melee"  
+            hit_target_chance = 75 + attacker_net_successes
+          else
+            hit_target_chance = 85 + attacker_net_successes
+          end  
+        else
+          if FS3Combat.weapon_stat(attacker.weapon, "weapon_type") == "Melee"  
+            hit_target_chance = 30 + attacker_net_successes
+          else
+            hit_target_chance = 75 + attacker_net_successes
+          end 
+        end
+
       end
-      
+
       roll = rand(100) 
-      result = roll < hit_chance
+      puts "roll #{roll} hit_target #{hit_target_chance} net success #{attacker_net_successes}"
+      result = roll >= hit_target_chance
       
       if result
         hit_target = false
@@ -141,9 +156,10 @@ module AresMUSH
           target = targer.passenger_on
         end
       end
+
     end
 
-    target.log "Determined hit for mounted target: chance=#{hit_chance} roll=#{roll} result=#{result} target=#{target.name}"
+    target.log "Determined hit target for mounts: chance=#{hit_target_chance} roll=#{roll} result=#{result} target=#{target.name}"
 
     return {
       hit_target: hit_target,
