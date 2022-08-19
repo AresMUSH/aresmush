@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Homemade+Apple&family=Julius+Sans+One&family=Loved+by+the+King&family=Noto+Serif:wght@700&family=Staatliches&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Homemade+Apple&family=Loved+by+the+King&family=Noto+Serif:wght@700&family=PT+Sans:wght@400;700&display=swap');
 
 $light-grey: #ebebeb;
 $dark-grey: #3a4146;
@@ -15,6 +15,7 @@ $red: #7F181B;
 $taupe: #BF9075;
 $tan: #F1D8C2;
 $photo-box: #f9f9ef;
+$pink-brown: #795b50;
 
 $darkest-blue: #141D2A;
 
@@ -100,6 +101,18 @@ body>.container-fluid {
 p {
     margin: 0 0 16px;
     line-height: 1.6
+}
+
+.form-group:nth-of-type(6)>.col-sm-9>p {
+    width: 50%;
+    float: left;
+    min-width: 200px;
+    margin: 0
+}
+
+p:nth-of-type(2)>#location {
+    width: calc(100% - .5em);
+    margin-left: .5em
 }
 
 select {
@@ -227,15 +240,14 @@ input[type="text"],
 
 @media (min-width: 992px) {
 .navbar-expand-lg .navbar-nav .dropdown-menu {
-    box-shadow: -2px 2px 2px 1px #292929;
+    box-shadow: -2px 2px 1px #292929;
 }
 }
 
 .navbar {
-    font-family: 'Staatliches', Georgina, serif;
+    font-family: 'PT Sans', sans-serif;
     text-transform: uppercase;
-    font-size: 20px;
-    letter-spacing: 1px;
+    font-size: 15px;
 }
 
 .navbar-dark .navbar-nav .nav-link.active,
@@ -350,18 +362,21 @@ button {
     padding: .225em .75em .35em;
     min-width: 40px;
     background-image: url('/game/uploads/css_files/rust-texture.png');
-    background-size: cover;
+    background-size: 500px;
     padding-top: 8px;
 }
 
 .btn-success {
     text-shadow: none;
-    font-family: 'Black Ops One', monospace;
+    font-family: 'PT Sans', sans-serif;
     text-transform: uppercase;
     font-size: 18px;
+    font-weight: 700;
     background-image: url('/game/uploads/css_files/rust-texture.png');
-    background-size: cover;
+    background-size: 500px;
     padding-top: 8px;
+    letter-spacing: .03em;
+    text-shadow: 1px 1px 1px $blackest-grey;
 }
 
 .btn-success:hover {
@@ -374,15 +389,18 @@ button {
 .btn-collapse,
 .btn-default {
     text-shadow: none;
-    font-family: 'Black Ops One', monospace;
+    font-family: 'PT Sans', sans-serif;
+    font-weight: 700;
     text-transform: uppercase;
     font-size: 16px;
     background-color: $darker-grey;
     border-color: $darkest-grey;
     color: $light-grey;
     background-image: url('/game/uploads/css_files/rust-texture.png');
-    background-size: cover;
+    background-size: 500px;
     padding-top: 8px;
+    letter-spacing: .03em;
+    text-shadow: 1px 1px 1px $blackest-grey;
 }
 
 .btn-secondary:hover,
@@ -395,8 +413,10 @@ button {
     border-color: $darker-green;
     color: $light-grey;
     background-image: url('/game/uploads/css_files/rust-texture.png');
-    background-size: cover;
+    background-size: 500px;
     padding-top: 8px;
+    letter-spacing: .03em;
+    text-shadow: 1px 1px 1px $blackest-grey;
 }
 
 .btn.active.focus,
@@ -415,31 +435,44 @@ button {
     border-color: #522617;
     text-shadow: none;
     outline: 0;
-    font-family: 'Black Ops One', monospace;
+    font-family: 'PT Sans', sans-serif;
+    font-weight: 700;
     text-transform: uppercase;
     font-size: 16px;
     background-image: url('/game/uploads/css_files/rust-texture.png');
-    background-size: cover;
+    background-size: 500px;
     padding-top: 8px;
+    letter-spacing: .03em;
+    text-shadow: 1px 1px 1px $blackest-grey;
 }
 
 .btn-warning {
     text-shadow: none;
     outline: 0;
-    font-family: 'Black Ops One', monospace;
+    font-family: 'PT Sans', sans-serif;
+    font-weight: 700;
     text-transform: uppercase;
     font-size: 16px;
     background-color: #bf8450;
     border-color: #c69163;
     background-image: url('/game/uploads/css_files/rust-texture.png');
-    background-size: cover;
+    background-size: 500px;
     padding-top: 8px;
+    letter-spacing: .03em;
+    text-shadow: 1px 1px 1px $blackest-grey;
+}
+
+.btn-warning:disabled {
+    color: #light-grey;
 }
 
 .btn-danger {
-    font-family: 'Black Ops One', monospace;
+    font-family: 'PT Sans', sans-serif;
+    font-weight: 700;
     text-transform: uppercase;
     font-size: 16px;
+    letter-spacing: .03em;
+    text-shadow: 2px 2px $blackest-grey;
 }
 
 // FS3
@@ -720,10 +753,48 @@ button {
     background-repeat: no-repeat;
   }
 
+.user-bar p {
+    line-height: normal;
+    margin: 0 0 10px;
+    text-align: right
+}
+
 // CHAR PAGES
 
     .profile-box {
-       background-color: $darker-grey;
+        background-color: $darker-grey;
+    }
+
+    .profile-tab .nav-tabs > .nav-item:first-child > .nav-link {
+        min-width: auto;
+        border-radius: 0px;
+        clip-path: none;
+        background-color: #f7e0c0;
+        font-family: 'PT Sans', sans-serif;
+        color: $almost-black;
+    }
+
+    .tab-cover {
+        font-variant: none;
+        color: #090909;
+        font-family: 'Homemade Apple';
+    }
+
+// TABS
+
+    .nav-tabs .nav-link, .nav-tabs .nav-link > a:hover, .nav-tabs .nav-link > a:focus {
+        background-color: #795b50;
+        color: #090909;
+        clip-path: polygon(0 0, 88% 0, 100% 100%, 0% 100%);
+        border-radius: 10px 0px 0px 0px;
+        min-width: 140px;
+        font-family: 'Homemade Apple';
+    }
+
+    .tab-content {
+        background-color: #f7e0c0;
+        border: none;
+        border-top: none;
     }
 
 // ICONS
@@ -767,14 +838,14 @@ button {
 
 h1,
 .h1 {
-    background-color: #B8996E;
+    background-color: $pink-brown;
     background-image: url(/game/uploads/css_files/h1-left.png), url(/game/uploads/css_files/h1-right.png);
     background-size: contain, contain;
     background-repeat: no-repeat;
     background-position: left, right;
-    padding: 0.2em 2em 0em 2em;
-    color: #090909;
-    font-family: 'Loved by the King', 'Arial Narrow', sans-serif;
+    padding: 0.2em 3.5em 0.2em 2em;
+    color: $light-grey;
+    font-family: 'Noto Serif', Georgia, sans-serif;
     text-transform: uppercase;
     font-size: 2.5em;
     border: transparent;
@@ -782,6 +853,7 @@ h1,
     border-bottom-left-radius: 0px;
     transform: rotate(0.15deg);
     margin-right: 25px;
+    width: fit-content;
     }
 
 h2 {
@@ -810,12 +882,12 @@ h1 {
     }
 
 .sidebar-heading h2 {
-    color: #ebebeb;
+    color: $light-grey;
+    background-image: none;
     font-variant: none;
     padding: 10px;
     background-color: #1F252F;
-    font-family: 'Julius Sans One';
-    background-image: none;
+    font-family: 'PT Sans', sans-serif;
     width: auto;
 }
 
@@ -999,4 +1071,221 @@ h1+p+table~span+hr+h2~div>p:last-of-type:not(:first-of-type) {
 .card {
     background-color: $darkest-blue;
     border-color: transparent;
+}
+
+// PAPER AND TAPE
+
+:root {
+  --antique-white: #faebd7;
+  --antique-white-dark: rgba(247, 224, 192, 0.75);
+  --tape-gray: #dbd8be;
+  --tape-edge-gray: #b7b49d;
+  --transparent: rgba(255, 255, 255, 0);
+}
+
+.paper {
+  --paper-color: var(--antique-white);
+  --paper-dark: var(--antique-white-dark);
+  --shadow-size: 1px;
+  --transparent: rgba(236, 178, 186, 0);
+  position: relative;
+  background: linear-gradient(
+      to bottom right,
+      var(--paper-dark),
+      20%,
+      var(--transparent)
+    ),
+    var(--paper-color);
+  min-width: 250px;
+  min-height: 130px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Homemade Apple", cursive;
+  color: #090909;
+  font-size: 2rem;
+  box-shadow: var(--shadow-size) var(--shadow-size) 2px var(--paper-dark);
+  margin-left: 100px;
+  margin-right: 100px;
+  margin-top: 50px;
+}
+
+.paper::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+      var(--transparent),
+      50%,
+      var(--paper-dark),
+      51%,
+      var(--transparent)
+    ),
+    linear-gradient(
+      to right,
+      var(--transparent),
+      50%,
+      var(--paper-dark),
+      51%,
+      var(--transparent)
+    );
+}
+
+.tape-section {
+  position: absolute;
+  width: 100%;
+}
+
+.tape-section:first-of-type {
+  top: 0;
+}
+
+.tape-section:last-of-type {
+  bottom: 0;
+}
+
+.tape-section::before,
+.tape-section::after {
+  content: "";
+  width: 10vmin;
+  height: 4vmin;
+  position: absolute;
+  background-color: var(--tape-gray);
+  opacity: 0.5;
+  border-right: 1px dotted var(--tape-edge-gray);
+  border-left: 1px dotted var(--tape-edge-gray);
+}
+
+.tape-section:last-of-type::after {
+  transform: rotate(-45deg);
+  right: -4vmin;
+  top: -3vmin;
+}
+
+.tape-section:first-of-type::before {
+  transform: rotate(-45deg);
+  left: -4vmin;
+}
+
+.tape-section:first-of-type::after {
+  transform: rotate(45deg);
+  right: -4vmin;
+  top: 0;
+}
+
+.tape-section:last-of-type::before {
+  transform: rotate(45deg);
+  left: -4vmin;
+  bottom: 0;
+}
+
+// TOC AND BLOCKQUOTE
+
+.toc {
+  --paper-color: var(--antique-white);
+  --paper-dark: var(--antique-white-dark);
+  --shadow-size: 1px;
+  --transparent: rgba(236, 178, 186, 0);
+  position: relative;
+  background: linear-gradient(
+      to bottom right,
+      var(--paper-dark),
+      20%,
+      var(--transparent)
+    ),
+    var(--paper-color);
+  border-radius: 0;
+  color: #090909;
+  box-shadow: var(--shadow-size) var(--shadow-size) 2px var(--paper-dark);
+  margin-left: 100px;
+  margin-right: 25px;
+  float: right;
+  width: 400px;
+}
+
+.toc::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+      var(--transparent),
+      50%,
+      var(--paper-dark),
+      51%,
+      var(--transparent)
+    ),
+    linear-gradient(
+      to right,
+      var(--transparent),
+      50%,
+      var(--paper-dark),
+      51%,
+      var(--transparent)
+    );
+    top: 0;
+    left: 0;
+pointer-events: none;
+}
+
+.toc > ul {
+  width: 100%;
+}
+
+.toc > ul:first-of-type {
+  top: 0;
+}
+
+.toc > ul:last-of-type {
+  bottom: 0;
+}
+
+.toc > ul::before,
+.toc > ul::after {
+  content: "";
+  width: 10vmin;
+  height: 4vmin;
+  position: absolute;
+  background-color: var(--tape-gray);
+  opacity: 0.5;
+  border-right: 1px dotted var(--tape-edge-gray);
+  border-left: 1px dotted var(--tape-edge-gray);
+}
+
+.toc > ul:last-of-type::after {
+  transform: rotate(-45deg);
+  right: -4vmin;
+  top: -3vmin;
+}
+
+.toc > ul:first-of-type::before {
+  transform: rotate(-45deg);
+  left: -4vmin;
+}
+
+.toc > ul:first-of-type::after {
+  transform: rotate(45deg);
+  right: -4vmin;
+  top: 0;
+}
+
+.toc > ul:last-of-type::before {
+  transform: rotate(45deg);
+  left: -4vmin;
+  bottom: 0;
+}
+
+.toc a:hover {
+    text-shadow: none;
+    color: $green;
+}
+
+.toc a {
+    color: $blackest-grey
+}
+
+.toc h4 {
+    font-family: 'Homemade Apple', monospace;
+    color: $darkest-rust
 }
