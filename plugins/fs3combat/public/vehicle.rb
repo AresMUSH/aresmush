@@ -14,16 +14,16 @@ module AresMUSH
     
     before_delete :clear_damage
     
-    # def name
-    #   digits = "#{self.id}".split("")
+    def name
+      digits = "#{self.id}".split("")
       
-    #   # Turn first digit into a letter.
-    #   callsign = (digits[0].to_i + 64).chr
-    #   if (digits.length > 1)
-    #     callsign = "#{callsign}#{digits[1..-1].join}"
-    #   end
-    #   self.vehicle_type + '-' + callsign
-    # end
+      # Turn first digit into a letter.
+      callsign = (digits[0].to_i + 64).chr
+      if (digits.length > 1)
+        callsign = "#{callsign}#{digits[1..-1].join}"
+      end
+      self.vehicle_type + '-' + callsign
+    end
     
     def armor
       FS3Combat.vehicle_stat(self.vehicle_type, "armor")
