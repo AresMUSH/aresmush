@@ -17,6 +17,10 @@ module AresMUSH
       def required_args
         [ self.name ]
       end
+
+      def check_errors
+        return t('fs3combat.invalid_combatant_name') if Mount.named(self.name)
+      end
       
       def handle
         FS3Combat.with_a_combatant(self.name, client, enactor) do |combat, combatant|   
