@@ -1,9 +1,9 @@
 module AresMUSH
   module FS3Combat
     class AttackAction < CombatAction
-      
-      attr_accessor :mod, :is_burst, :called_shot, :crew_hit, :mount_hit
-      
+      #EM changes
+      attr_accessor :mod, :is_burst, :called_shot, :crew_hit, :mount_hit, :mounted_names
+      #/EM changes
       def prepare
         if (self.action_args =~ /\//)
           names = self.action_args.before("/")
@@ -27,6 +27,10 @@ module AresMUSH
         self.mod = 0
         self.crew_hit = false
         self.mount_hit = false
+
+        #EM Changes
+        self.mounted_names = ExpandedMounts.mounted_names(combatant)
+        #/EM Changes
                 
         error = self.parse_specials(specials)
         return error if error
@@ -67,7 +71,9 @@ module AresMUSH
       end
       
       def print_action
-        msg = t('fs3combat.attack_action_msg_long', :name => self.name, :target => print_target_names)
+        #EM Changes
+        msg = t('fs3combat.attack_action_msg_long', :name => self.mounted_names, :target => print_target_names)
+        #/EM Changes
         if (self.is_burst)
           msg << " #{t('fs3combat.attack_special_burst')}"
         end
