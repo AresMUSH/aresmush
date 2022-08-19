@@ -6,7 +6,7 @@ en:
         new_rider: "%{name} climbs atop %{mount}."
         new_passenger: "%{name} is now a passenger on %{mount}."
         dismounts: "%{name} climbs down from %{mount}."
-        ko_dismount: "%{name} has been thrown from %{mount}!"
+        ko_dismount: "%xr%{name} has been thrown from %{mount}!%xn"
         combat_name: "%{combatant} atop %{mount}"
         combat_mounts_list_title: "Sentinel                 Warden               Passengers"
         mount_created: "%{name} created."
