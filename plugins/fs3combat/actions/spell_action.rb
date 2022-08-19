@@ -17,8 +17,7 @@ module AresMUSH
         spell = Global.read_config("spells", self.spell_name)
         error = self.parse_targets(self.names)
         return error if error
-        self.caster_name = ExpandedMounts.caster_name(combatant)
-        puts "CASTER NAME #{self.caster_name}"
+        self.caster_name = ExpandedMounts.mounted_names(combatant)
 
         spell_list = Global.read_config("spells")
         return t('magic.not_spell') if !spell_list.include?(self.spell_name)
@@ -38,14 +37,13 @@ module AresMUSH
 
         targets.each do |target|
           return t('magic.dont_target_self') if target == combatant && (spell['fs3_attack'] || spell['is_stun'])
-          return t('expandedmounts.cast_on_rider') if target.class == Mount && ExpandedMounts.target_rider(spell)
+          return t('expandedmounts.cast_on_rider') if target.is_mount? && ExpandedMounts.target_rider(spell)
           # Don't let people waste a spell that won't have an effect
           return t('magic.not_dead', :target => target.name) if (Manage.is_extra_installed?("death") && spell['is_res'] && !target.associated_model.dead)
           return t('magic.not_ko', :target => target.name) if ((spell['is_revive'] || spell['auto_revive']) && !target.is_ko)
           wound = FS3Combat.worst_treatable_wound(target.associated_model)
           return t('magic.no_healable_wounds', :target => target.name) if (spell['heal_points'] && wound.blank? && !spell['weapon'])
           # Check that weapon specials can be added to weapon
-          puts "WEAPON SPECIALS: #{spell['weapon_specials']}"
           if spell['weapon_specials']
             return "This spell is currently broken. Don't worry, I know."
             weapon_special_group = FS3Combat.weapon_stat(target.weapon, "special_group") || ""

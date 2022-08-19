@@ -4,7 +4,6 @@ module AresMUSH
     def self.add_spell(char, spell_name)
       spell_level = Global.read_config("spells", spell_name, "level")
       school = Global.read_config("spells", spell_name, "school")
-      puts "Adding spell in Magic.add_spell: #{spell_name} #{spell_level} #{school}"
       SpellsLearned.create(name: spell_name.strip, last_learned: Time.now, level: spell_level, school: school, character: char, xp_needed: 0, learning_complete: true)
     end
 

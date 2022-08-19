@@ -54,7 +54,6 @@ module AresMUSH
     end
 
     def armor
-      puts self.expanded_mount_type
       Global.read_config("expandedmounts", self.expanded_mount_type, "armor" )
     end
 
@@ -93,7 +92,7 @@ module AresMUSH
     end
 
     def roll_ability(ability, mod = 0)
-      puts "Mythic ability #{ability}"
+
       #probably put methods here to determine reflexes, etc
       self.bonded.combatant.roll_ability(ability, mod)
     end
@@ -169,6 +168,10 @@ module AresMUSH
     end
 
     def associated_model
+      self
+    end
+
+    def combatant
       self
     end
 

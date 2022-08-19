@@ -37,7 +37,6 @@ module AresMUSH
     def self.cast_noncombat_spell(caster_name, targets, spell_name, mod = nil, result = nil, using_potion = false)
       success = "%xgSUCCEEDS%xn"
       spell = Global.read_config("spells", spell_name)
-      puts "Caster name #{caster_name}"
       caster = Character.named(caster_name) || "NPC"
       names = []
       messages = []
@@ -349,7 +348,6 @@ module AresMUSH
       puts "++++ #{stopped_by_shield}"
       ###NEEDS TO GRAB THE SHIELD NAME ARG
       if (margin[:hit])
-        puts "Stun hits"
         target.update(subdued_by: combatant)
         target.update(magic_stun: true)
         target.update(magic_stun_counter: rounds.to_i)
@@ -357,10 +355,8 @@ module AresMUSH
         target.update(action_klass: nil)
         target.update(action_args: nil)
         if !stopped_by_shield.empty?
-          puts "1. SPELL NAME #{spell}"
           #Needs to grab its own message instead of using stopped_by_shield[:message] so it can grab the spell name - attack margin uses the Stun weapon instead.
           message = [Magic.shield_failed_msgs(target, caster_name, spell)]
-          puts "2. MESSAGE #{message}"
         else
           message = [t('magic.cast_stun', :name => caster_name, :spell => spell, :mod => "", :target => target.name, :succeeds => "%xgSUCCEEDS%xn", :rounds => rounds)]
         end
@@ -377,7 +373,6 @@ module AresMUSH
           message = [t('magic.cast_stun_resisted', :name => caster_name, :spell => spell, :mod => "", :target => target.name, :succeeds => "%xgSUCCEEDS%xn")]
         end
       end
-      puts "2. Stun message #{message}"
       return message
     end
 

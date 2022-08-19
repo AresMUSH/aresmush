@@ -59,7 +59,6 @@ module AresMUSH
       major_school_energy = self.highest_major_school_rating
       magic_attribute = Global.read_config("magic", "magic_attribute")
       magic_energy = FS3Skills.ability_rating(self, magic_attribute)
-      puts "Magic energy #{magic_energy}"
       return major_school_energy + magic_energy
     end
 
