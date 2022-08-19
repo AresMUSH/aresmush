@@ -37,6 +37,7 @@ module AresMUSH
       def check_in_combat
         return t('fs3combat.you_are_not_in_combat') if !enactor.is_in_combat?
         return t('expandedmounts.rider_not_in_combat', :rider => self.mount.bonded.name, :mount => self.mount.name  ) if !self.mount.bonded.is_in_combat?
+        return t('expandedmounts.already_on_mount', :mount => self.mount.name) if enactor.combatant.mount == self.mount
         return nil
       end
       
@@ -51,10 +52,10 @@ module AresMUSH
 
         # Allow joining someone who's already in a vehicle by name.  It's not
         # actually the vehicle name, it's their name.
-        combatant = combat.find_combatant(self.mount.name)
-        if (combatant && combatant.mount)
-          self.mount_name = combatant.mount.name
-        end
+        # combatant = combat.find_combatant(self.mount.name)
+        # if (combatant && combatant.mount)
+        #   self.mount_name = combatant.mount.name
+        # end
         
         # self.names.each do |name|
         
@@ -67,7 +68,7 @@ module AresMUSH
             end
             
             if (combatant.is_on_mount?)
-              ExpandedMounts.leave_mount(combat, combatant)
+              ExpandedMounts.leave_mount(combatant)
             end
             ExpandedMounts.join_mount(combat, combatant, mount, self.passenger_type)
           # end

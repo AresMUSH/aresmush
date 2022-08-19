@@ -24,7 +24,7 @@ module AresMUSH
             client.emit_failure t('expandedmounts.not_on_mount', :name => self.name)
             return
           end
-          ExpandedMounts.leave_mount(combat, combatant)
+          ExpandedMounts.leave_mount(combatant)
         end
       end
     end

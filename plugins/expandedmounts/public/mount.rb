@@ -32,7 +32,7 @@ module AresMUSH
 
     
     reference :rider, 'AresMUSH::Combatant'
-    collection :passengers, 'AresMUSH::Combatant', :riding_in
+    collection :passengers, 'AresMUSH::Combatant', :passenger_on
 
     before_delete :delete_damage
 
