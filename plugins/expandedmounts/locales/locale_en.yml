@@ -22,7 +22,7 @@ en:
         combat_mounts_list_title: "Sentinel                 Warden               Passengers"
         rider_not_in_combat: "%{mount}'s bonded mage %{rider} isn't in combat. Both mage and mythic must be in combat."
         cast_on_rider: "You can't use that spell on a mount. Target the bonded mage instead."
-        hit_mount_or_rider: "%xm%{name} was aiming for %{aiming_at}, but hit %{but_hit}.%xn"        
+        hit_mount_or_rider: "%xm%{name} was aiming for %{aiming_at} but hit %{but_hit}.%xn"        
 
 #--------------------------
 # CHARGEN & EDITS
