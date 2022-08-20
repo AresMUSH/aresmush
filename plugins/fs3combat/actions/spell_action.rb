@@ -112,7 +112,7 @@ module AresMUSH
                 message = Magic.cast_suppress(self.caster_name, self.combatant, target, self.spell_name, succeeds[:result])
                 messages.concat message
               else
-                message = Magic.cast_attack_target(self.combatant, target, result = succeeds[:result])
+                message = Magic.cast_attack_target(self.caster_name, self.combatant, target, result = succeeds[:result])
                 messages.concat message
               end
             end
