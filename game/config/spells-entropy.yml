@@ -73,7 +73,7 @@ spells:
     range: Short
     school: Entropy
     target_num: 3
-    weapon: Stun (Earth)
+    weapon: Stun (Entropy)
   Chilled Limbs:
     attack_mod: -1
     available: true

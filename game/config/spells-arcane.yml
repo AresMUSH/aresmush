@@ -28,7 +28,7 @@ spells:
     range: Short
     school: Arcane
     target_num: 1
-    weapon: Stun (Spirit)
+    weapon: Stun (Arcane)
   Mind Shield:
     available: true
     casting_time: 1 round

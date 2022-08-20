@@ -44,7 +44,7 @@ spells:
     range: Short
     school: Aether
     target_num: 1
-    weapon: Stun (Air)
+    weapon: Stun (Aether)
   Breathless:
     area: 10 ft radius
     available: true
