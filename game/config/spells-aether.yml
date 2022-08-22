@@ -1,4 +1,191 @@
 spells:
+#---------------
+# LEVEL 1
+#---------------
+  Fire Starter:
+    available: true
+    casting_time: 1 round
+    damage_type: None
+    desc: Create or snuff out a flame the size of a lighter.
+    duration: 10 minutes
+    effect: Other
+    level: 1
+    line_of_sight: true
+    name: Fire Starter
+    range: Short
+    roll: true
+    school: Aether
+  Light:
+    available: true
+    casting_time: 1 round
+    damage_type: Bypass
+    desc: Create a beam of light equivilent to 300 lumens (a small LED flashlight).
+    duration: 30 minutes
+    effect: Other
+    level: 1
+    line_of_sight: true
+    name: Light
+    range: Short
+    roll: true
+    school: Aether
+  Spark:
+    available: true
+    casting_time: 1 round
+    desc: The caster creates a small electric current visible between two fingers. The electricity can be used to recharge up to 5% of a communicator battery or power electronics less than 3 volts (2 AA batteries) for the length of the spell. It causes a static shock-like effects in individuals.
+    duration: 30 minutes
+    effect: Other
+    level: 1
+    name: Spark
+    range: Touch
+    roll: true
+    school: Aether
+    target_num: 1    
+  Adjust Volume:
+    available: true
+    casting_time: 1 round
+    damage_type: Bypass
+    desc: "For the duration of the spell, the caster can amplify or decrease the volume of the sound coming from a target. Sounds cannot be made louder than 80 db (a loud truck, a vacuum cleaner), nor can sounds be made softer than 30 db (a quiet whisper)."
+    duration: 30 minutes
+    effect: Illusion
+    level: 2
+    name: Adjust Volume
+    range: Short
+    roll: true
+    school: Aether    
+#---------------
+# LEVEL 2
+#---------------
+  Cloud Cover:
+    area: 5 ft radius
+    available: true
+    casting_time: 1 round
+    damage_type: None
+    desc: "Misty vapor gathers around you. It follows you as you move, but can be dispersed by a strong wind. The vapor obscures all sight in a 5 ft radius, effectively making the caster hidden as long as they make no noise and cast no magic."
+    duration: 15 minutes
+    effect: Defense
+    is_potion: true
+    level: 2
+    name: Cloud Cover
+    range: Self
+    school: Aether
+    target_num: 1
+  Dustup:
+    attack_mod: -1
+    available: true
+    casting_time: 1 round
+    defense_mod: -1
+    desc: "The caster blows a small cloud of dirt around a target, briefly obscuring their vision and making it harder for them to attack or defend."
+    duration: 1 round
+    effect: Debuff
+    level: 2
+    line_of_sight: true
+    name: Dustup
+    range: Short
+    rounds: 1
+    school: Aether
+    target_num: 1
+    effect: Debuff    
+#---------------
+# LEVEL 3
+#---------------
+  Wind Wall:
+    available: true
+    casting_time: 1 round
+    desc: "Deflect ranged projectile attacks directed against you or a single comrade with gusting winds."
+    duration: 3 rounds
+    effect: Shield
+    is_shield: true
+    level: 3
+    line_of_sight: true
+    name: Wind Wall
+    range: Short
+    rounds: 3
+    school: Aether
+    shields_against: All
+    target_num: 1
+  Shock:
+    available: true
+    casting_time: 1 round
+    damage_type: None
+    desc: Shock an opponent with a burst of electricity, stunning them for one round.
+    duration: 1 round
+    effect: Stun
+    is_stun: true
+    rounds: 1
+    level: 3
+    line_of_sight: true
+    name: Shock
+    range: Short
+    school: Aether
+    target_num: 1
+    weapon: Stun (Aether)    
+#---------------
+# LEVEL 4
+#---------------
+  Create Sound:
+    available: true
+    casting_time: 1 round
+    damage_type: Bypass
+    desc: "For the duration of the spell, the caster can vibrate the air to create simple sounds. These sounds can be a single noise, a melody, or a short sentence of up to fifteen, one-syllable words. Sound created cannot be louder than 80 db (a loud truck, a vacuum).\n\nThe sound may be identified as artificial with a roll of the caster's Air vs the observer's Alertness-5. Those with enhanced hearing are more likely to identify the sound as artificial according to its content and range, and GMs may choose to adjust the modification as appropriate."
+    duration: 15 minutes
+    effect: Illusion
+    level: 4
+    name: Create Sound
+    range: Short
+    roll: true
+    school: Aether    
+  Lightning Bolt:
+    available: true
+    casting_time: 1 round
+    desc: The caster calls a bolt of lightning from the sky, striking a target and causing damage.
+    effect: Damage
+    fs3_attack: true
+    level: 4
+    line_of_sight: true
+    name: Lightning Bolt
+    range: Short
+    require_target: true
+    school: Aether
+    weapon: Lightning Bolt
+    target_num: 1    
+  Lightning Weapon:
+    available: true
+    casting_time: 1 round
+    desc: Augment a pre-existing weapon with crackling electricity, increasing its damage and speed.
+    effect: Buff
+    duration: 3 hours
+    is_potion: true
+    level: 4
+    name: 'Lightning Weapon '
+    notes: Weapon special config'd, but needs the stun portion
+    range: Touch
+    rounds: 100
+    school: Aether
+    target_num: 1
+    weapon_specials: Lightning
+    weapon: Spell    
+#---------------
+# LEVEL 5
+#---------------
+#---------------
+# LEVEL 6
+#---------------
+#---------------
+# LEVEL 7
+#---------------
+#---------------
+# LEVEL 8
+#---------------
+#---------------
+# LEVEL 9
+#---------------
+#---------------
+# LEVEL 10
+#---------------    
+
+
+
+#TEST SPELLS
 # LEVEL 1
   Gust:
     available: true

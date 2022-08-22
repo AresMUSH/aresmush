@@ -8,23 +8,35 @@ fs3combat:
     Ranged:
     - cold calm
     - fire
+    - lightning
     - scope
     Melee:
     - cold calm
     - fatal vitality
     - fire
+    - lightning
     - sparring
     Spell:
     - cold calm
   weapon specials:
-    #MAGIC ITEMS
+#---------------      
+# MAGIC ITEMS
+#---------------
     Guilt-Weighted Gloves:
       description: Magic item
       is_magic: true
       lethality: 5
-    #SPELLS
+#---------------      
+# SPELLS
+#---------------      
+    Lightning:
+      description: Aether spell
+      is_magic: true
+      lethality: 5
+      penetration: 1
+      init_mod: 2
     Fire:
-      description: Level 4 Aether spell
+      description: Aether spell
       is_magic: true
       lethality: 10
       accuracy: 1

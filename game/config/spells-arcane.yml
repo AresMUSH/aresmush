@@ -1,5 +1,11 @@
 spells:
 
+
+
+
+
+##TEST SPELLS
+
   Calm Animal:
     available: true
     casting_time: 1 round
