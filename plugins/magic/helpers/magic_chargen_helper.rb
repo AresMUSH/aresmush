@@ -11,6 +11,32 @@ module AresMUSH
       points
     end
 
+    def self.check_magic_attribute_rating(char)
+      magic = FS3Skills.ability_rating(char, "Magic")
+      if magic > 3
+        error = "%xr< Your Magic attribute cannot be higher than 3. >%xn"
+      else
+        error = t('chargen.ok')
+      end
+      return {
+        msg: 'Checking Magic',
+        error: error
+        }
+    end
+    
+    def self.check_points_on_spells(char)
+      if Magic.points_on_spells(char) > 15
+        error = "%xr< You cannot spend more than 15 points on spells. >%xn"
+      else
+        error = t('chargen.ok')
+      end
+      return  {
+        msg: 'Checking Spells',
+        error: error
+        }
+
+    end
+
     def self.cg_max_points_by_age(char)
       default_points = Global.read_config("fs3skills", "max_ap")
       if !char.age || char.age < 25
