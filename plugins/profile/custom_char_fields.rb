@@ -47,7 +47,7 @@ module AresMUSH
           starting_spells: Magic.starting_spells(char),
           mount_name: ExpandedMounts.mount_name(char),
           mount_types: ["Dragon", "Griffon", "Roc", "Pantherine", "Lupine", "Pegasus"],
-          mount_type: ExpandedMounts.mount_type(char),
+          mount_type: ExpandedMounts.expanded_mount_type(char),
           mount_desc: ExpandedMounts.mount_desc(char),
           mount_shortdesc: ExpandedMounts.mount_shortdesc(char),
           lore_hook_pref: { value: char.lore_hook_pref, desc: char.lore_hook_pref },
@@ -86,7 +86,7 @@ module AresMUSH
         Magic.save_minor_school(char, chargen_data[:custom][:minor_school]) if chargen_data[:custom][:minor_school] 
         starting_spells = Magic.starting_spell_names(chargen_data[:custom][:starting_spells])
         Magic.save_starting_spells(char, starting_spells) 
-        errors.concat Magic.save_mount(char, chargen_data)
+        errors.concat ExpandedMounts.save_mount(char, chargen_data)
         char.update(lore_hook_pref: chargen_data[:custom][:lore_hook_pref][:value])
         puts "Starting spell names: #{Magic.starting_spell_names(chargen_data[:custom][:starting_spells])}"        
         errors.concat Magic.check_cg_spell_errors(char)
