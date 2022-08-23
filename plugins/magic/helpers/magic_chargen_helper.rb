@@ -2,11 +2,34 @@ require 'byebug'
 module AresMUSH
   module Magic
 
+    def self.points_on_spells(char)
+      spells = Magic.starting_spells(char)
+      points = 0
+      spells.each do |s|
+        points = points + s[:level]
+      end
+      points
+    end
+
+    def self.cg_max_points_by_age(char)
+      default_points = Global.read_config("fs3skills", "max_ap")
+      if !char.age || char.age < 25
+        points = default_points
+      elsif (26..35).include? char.age 
+        points = default_points + 5
+      elsif (36..45).include? char.age 
+        points = default_points + 10
+      elsif char.age > 45
+        points = default_points + 15
+      end
+    end
+
     def self.check_cg_spell_errors(char)
       errors = []
       errors.concat Magic.check_wrong_school(char)
       errors.concat Magic.check_wrong_levels(char)
       errors.concat Magic.check_spell_numbers(char)
+      return errors
     end
 
     def self.check_spell_numbers(char)
@@ -30,13 +53,10 @@ module AresMUSH
     end
 
     def self.starting_spell_names(starting_spell_data)
-      puts "Data: #{starting_spell_data}"
       return nil if !starting_spell_data
       spells = starting_spell_data.values
-      puts "Spells:  #{spells}"
       names = []
       spells.each do |spell|
-        puts "Spell: #{spell}"
         names << spell['name']
       end
       names
@@ -82,25 +102,19 @@ module AresMUSH
     end
 
     def self.save_starting_spells(char, spells)
-      puts spells
       if spells.nil?
         Magic.delete_all_spells(char)
       else
         starting_spells = Magic.starting_spells(char).map {|s| s[:name]}
-        puts "Starting spell names #{starting_spells}"
         starting_spells.each do |s|
           puts "Checking whether to delete a spell in CG. #{s}"
-          puts "Spells names #{spells}"
           if !spells.include?(s)
             spell = Magic.find_spell_learned(char, s)
-            puts "Deleting spell #{spell.name}"
             spell.delete
           end
         end
 
         spells.each do |spell|
-          puts "Checking to see whether we should create a new spell #{spell}"
-          
           if !starting_spells.include?(spell)
           puts "Adding a new spell #{spell} - #{spell.titlecase}"
             Magic.add_spell(char, spell.titlecase)

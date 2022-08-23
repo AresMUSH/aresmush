@@ -88,7 +88,8 @@ module AresMUSH
         
     def self.total_point_review(char)
       points =  AbilityPointCounter.total_points(char)
-      max = Global.read_config("fs3skills", "max_ap")
+      max = Magic.cg_max_points_by_age(char)
+      # max = Global.read_config("fs3skills", "max_ap")
       error = points > max ? t('chargen.too_many') : t('chargen.ok')
       Chargen.format_review_status(t('fs3skills.total_points_spent', :total => points, :max => max), error)
     end

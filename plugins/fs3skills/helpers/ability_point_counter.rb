@@ -4,7 +4,7 @@ module AresMUSH
       def self.total_points(char)
         return self.points_on_attrs(char) + self.points_on_action(char) + 
            self.points_on_background(char) + self.points_on_language(char) +
-           self.points_on_specialties(char) + self.points_on_advantages(char)
+           self.points_on_specialties(char) + self.points_on_advantages(char) + Magic.points_on_spells(char)
       end
       
       def self.points_on_attrs(char)
