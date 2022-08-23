@@ -1,6 +1,6 @@
 module AresMUSH
   module ExpandedMounts
-    class MountsListCmd
+    class ExpandedMountsListCmd
       include CommandHandler
       
       def handle
