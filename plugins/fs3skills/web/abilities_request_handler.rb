@@ -3,8 +3,8 @@ module AresMUSH
     class AbilitiesRequestHandler
       def handle(request)
         attrs = FS3Skills.attrs.map { |a| { name: a['name'].titleize, description: a['desc'] } }
-        backgrounds = FS3Skills.background_skills.select { |s| !s['is_school'] }.map { |name, desc| { name: name, description: desc } }
-        action_skills = FS3Skills.action_skills.sort_by { |a| a['name'] }.map { |a| {
+        backgrounds = FS3Skills.background_skills.map { |name, desc| { name: name, description: desc } }
+        action_skills = FS3Skills.action_skills.select { |s| !s['is_school'] }.sort_by { |a| a['name'] }.map { |a| {
           name: a['name'].titleize,
           linked_attr: a['linked_attr'],
           description: a['desc'],
@@ -25,7 +25,7 @@ module AresMUSH
           background_blurb: Website.format_markdown_for_html(FS3Skills.bg_blurb),
           language_blurb: Website.format_markdown_for_html(FS3Skills.language_blurb),
           advantages_blurb:  Website.format_markdown_for_html(FS3Skills.advantages_blurb),          
-          
+          magic_skills: magic_skills,
           attrs: attrs,
           action_skills: action_skills,
           backgrounds: backgrounds,
