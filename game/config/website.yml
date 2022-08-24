@@ -190,21 +190,35 @@ website:
   - ".jpeg"
   website_code_path: "/home/ares/ares-webportal"
   wiki_aliases:
-    main: world
+    main: world    
+    home: world
+    history: world:history
     shattering: world:history
+    cryptids: world:cryptids    
+    mythic:  world:cryptids
+    cryptid:  world:cryptids    
     monsters: world:cryptids
     mythics:  world:cryptids
-    blood:  magic:blood_magic
-    bonding:  world:bond
     shattered_monsters:  world:cryptids
     creatures:  world:cryptids
+    bonding:  world:bond
+    bond: world:bond
+    locations: world:locations
     cradle_s: locations:cradle
     cradle's: locations:cradle
-    mythic:  world:cryptids
-    cryptid:  world:cryptids
+    weyr: locations:weyr    
     weyrs: locations:weyr
+    prism_passes: locations:prism_passes
     magical:  world:magic
-    home: world
+    magic: world:magic
+    blood_magic: magic:blood_magic
+    blood:  magic:blood_magic
+    telekinesis: magic:telekinesis
+    telekinetic: magic:telekinesis
+    telepathy: magic:telepathy
+    telepathic: magic:telepathy
+    wardens: world:wardens
+    warden: world:warden
   wiki_export_cron:
     hour:
     - 3
