@@ -1,5 +1,193 @@
 ---
 fs3combat:
+    #---------------      
+    # SPELL WEAPONS
+    #---------------
+    # LEVEL 2
+    Sling Barb:
+      description: Level 2 Creation spell
+      is_magic: true
+      skill: Creation
+      lethality: 0
+      penetration: 3
+      weapon_type: Ranged
+      recoil: 0
+      damage_type: Physical
+      accuracy: 0
+      init_mod: 0
+      special_group: Spell
+    # LEVEL 3
+    Stone Slam:
+      description: Level 3 Creation spell
+      is_magic: true
+      skill: Creation
+      lethality: 0
+      penetration: 5
+      weapon_type: Ranged
+      recoil: 0
+      damage_type: Physical
+      accuracy: 0
+      init_mod: 0
+      special_group: Spell    
+    # LEVEL 4
+    Stone Skin:
+      description: Level 4 Creation spell
+      is_magic: true
+      skill: Brawl
+      lethality: 5
+      penetration: 6
+      weapon_type: Melee
+      recoil: 0
+      damage_type: Physical
+      accuracy: 0
+      init_mod: 0
+      special_group: Body      
+    # LEVEL 5
+    Breathless:
+      description: Level 5 Aether spell
+      is_magic: true
+      skill: Aether
+      lethality: -20
+      penetration: 50
+      weapon_type: Ranged
+      recoil: 0
+      damage_type: Physical
+      accuracy: 0
+      init_mod: 0
+      special_group: Spell
+      magic_damage_type: Bypass
+    Fireball:
+      description: Level 5 Aether spell
+      is_magic: true
+      skill: Aether
+      lethality: 10
+      penetration: 7
+      weapon_type: Ranged
+      recoil: 0
+      damage_type: Fire
+      accuracy: 0
+      init_mod: 0
+      special_group: Spell
+    #LEVEL 6
+    Flares:
+      description: Level 6 Aether spell
+      is_magic: true
+      skill: Aether
+      lethality: 10
+      penetration: 6
+      weapon_type: Ranged
+      recoil: 0
+      damage_type: Physical
+      accuracy: 1
+      init_mod: 0
+      special_group: Spell
+      magic_damage_type: Fire
+    Lightning Bolt:
+      description: Level 6 Aether spell
+      is_magic: true
+      skill: Aether
+      lethality: 0
+      penetration: 9
+      weapon_type: Ranged
+      recoil: 0
+      damage_type: Physical
+      accuracy: 0
+      init_mod: 0
+      special_group: Spell    
+    Stalagmite:
+      description: Level 6 Creation spell
+      is_magic: true
+      skill: Creation
+      lethality: 10
+      penetration: 8
+      weapon_type: Ranged
+      recoil: 0
+      damage_type: Physical
+      accuracy: 1
+      init_mod: 0
+      special_group: Spell        
+  #LEVEL 7
+    Pyre:
+      description: Level 7 Aether spell
+      is_magic: true
+      skill: Aether
+      lethality: 10
+      penetration: 10
+      weapon_type: Ranged
+      recoil: 0
+      damage_type: Physical
+      accuracy: 0
+      init_mod: 0
+      special_group: Spell
+      magic_damage_type: Fire
+    Poison Puffs:
+      description: Level 7 Creation spell
+      is_magic: true
+      skill: Creation
+      lethality: -15
+      penetration: 50
+      weapon_type: Ranged
+      recoil: 0
+      damage_type: Physical
+      accuracy: 0
+      init_mod: -1
+      special_group: Spell      
+    Stone Daggers:
+      description: Level 7 Creation spell
+      is_magic: true
+      skill: Creation
+      lethality: 15
+      penetration: 9
+      weapon_type: Ranged
+      is_automatic: true
+      recoil: 0
+      damage_type: Physical
+      accuracy: 0
+      init_mod: 0
+      special_group: Spell      
+    #LEVEL 8
+    Exploding Earth:
+      description: Level 8 Creation spell
+      is_magic: true
+      skill: Creation
+      lethality: 10
+      penetration: 9
+      weapon_type: Explosive
+      is_automatic: true
+      recoil: 0
+      damage_type: Physical
+      accuracy: 0
+      has_shrapnel: true
+      init_mod: 0
+      special_group: Spell    
+    Lightning Strike:
+      description: Level 8 Aether spell
+      is_magic: true
+      skill: Aether
+      lethality: 15
+      penetration: 11
+      weapon_type: Ranged
+      recoil: 0
+      damage_type: Physical
+      accuracy: 0
+      init_mod: 0
+      special_group: Spell    
+    Suffocate:
+      description: Level 8 Aether spell
+      is_magic: true
+      skill: Aether
+      lethality: 5
+      penetration: 50
+      weapon_type: Ranged
+      recoil: 0
+      damage_type: Physical
+      accuracy: 0
+      init_mod: 0
+      special_group: Spell
+      magic_damage_type: Bypass
+#---------------      
+# WEAPON SPECIAL GROUPS
+#---------------          
   weapon special groups:
     Body:
     - cold calm
@@ -43,12 +231,17 @@ fs3combat:
       is_magic: true
       lethality: 10
       accuracy: 1
+    Strength:
+      description: Creation spell
+      is_magic: true
+      lethality: -5
+      penetration: 3      
 #---------------      
 # WEAPONS
 #---------------  
   weapons:
   #---------------      
-  # GENERAL WEAPONS
+  # GENERAL SPELL WEAPONS
   #---------------    
     Cold Shrapnel:
       description: Shrapnel that does cold damage
@@ -139,101 +332,7 @@ fs3combat:
       accuracy: 0
       init_mod: 0
 
-    #---------------      
-    # SPELL WEAPONS
-    #---------------
-    # LEVEL 5
-    Breathless:
-      description: Level 5 Aether spell
-      is_magic: true
-      skill: Aether
-      lethality: -20
-      penetration: 50
-      weapon_type: Ranged
-      recoil: 0
-      damage_type: Physical
-      accuracy: 0
-      init_mod: 0
-      special_group: Spell
-      magic_damage_type: Bypass
-    Fireball:
-      description: Level 5 Aether spell
-      is_magic: true
-      skill: Aether
-      lethality: 10
-      penetration: 7
-      weapon_type: Ranged
-      recoil: 0
-      damage_type: Fire
-      accuracy: 0
-      init_mod: 0
-      special_group: Spell
-    #LEVEL 6
-    Flares:
-      description: Level 6 Aether spell
-      is_magic: true
-      skill: Aether
-      lethality: 10
-      penetration: 6
-      weapon_type: Ranged
-      recoil: 0
-      damage_type: Physical
-      accuracy: 1
-      init_mod: 0
-      special_group: Spell
-      magic_damage_type: Fire
-    Lightning Bolt:
-      description: Level 6 Aether spell
-      is_magic: true
-      skill: Aether
-      lethality: 0
-      penetration: 9
-      weapon_type: Ranged
-      recoil: 0
-      damage_type: Physical
-      accuracy: 0
-      init_mod: 0
-      special_group: Spell      
-  #LEVEL 7
-    Pyre:
-      description: Level 7 Aether spell
-      is_magic: true
-      skill: Aether
-      lethality: 15
-      penetration: 10
-      weapon_type: Ranged
-      recoil: 0
-      damage_type: Physical
-      accuracy: 0
-      init_mod: 0
-      special_group: Spell
-      magic_damage_type: Fire
-    #LEVEL 8
-    Lightning Strike:
-      description: Level 8 Aether spell
-      is_magic: true
-      skill: Aether
-      lethality: 15
-      penetration: 11
-      weapon_type: Ranged
-      recoil: 0
-      damage_type: Physical
-      accuracy: 0
-      init_mod: 0
-      special_group: Spell    
-    Suffocate:
-      description: Level 8 Aether spell
-      is_magic: true
-      skill: Aether
-      lethality: 5
-      penetration: 50
-      weapon_type: Ranged
-      recoil: 0
-      damage_type: Physical
-      accuracy: 0
-      init_mod: 0
-      special_group: Spell
-      magic_damage_type: Bypass
+
 
 
 

@@ -332,6 +332,11 @@ input[type="text"],
 	color: #bdccd5;
 }
 
+.jumbotron p {
+	font-size: unset;
+	text-align: left;
+}
+
 .plot-box {
 	background: #141d2a;
 	padding: 5px 15px;

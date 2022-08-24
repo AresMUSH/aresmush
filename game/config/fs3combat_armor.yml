@@ -1,14 +1,51 @@
 ---
 fs3combat:
   armor:
-    None:
-      description: In case you need to take off armor
-      is_magic: false
+  #--------------
+  # MAGIC ARMOR
+  #--------------
+  # LEVEL 4
+  Rock Skin:
+    description: Level 4 Creation spell
+    is_magic: true
+    defense: 0
+    protection:
+      Head: 6
+      Neck: 6
+      Chest: 6
+      Abdomen: 6
+      Left Leg: 6
+      Right Leg: 6
+      Groin: 6
+      Left Arm: 6
+      Right Arm: 6
+      Left Hand: 6
+      Right Hand: 6
+      Left Foot: 6
+      Right Foot: 6
+    # LEVEL 6
+    Diamond Armor:
+      description: Level 6 Creation spell
+      is_magic: true
       defense: 0
       protection:
-        Nowhere: 0
+        Head: 9
+        Neck: 9
+        Chest: 9
+        Abdomen: 9
+        Left Leg: 9
+        Right Leg: 9
+        Groin: 9
+        Left Arm: 9
+        Right Arm: 9
+        Left Hand: 9
+        Right Hand: 9
+        Left Foot: 9
+        Right Foot: 9  
 
-    #CREATURES
+  #--------------
+  # CREATURE ARMOR
+  #--------------
     Shell:
       description: Low level animal shell armor
       defense: 0
@@ -179,7 +216,15 @@ fs3combat:
         Right Hand: 0
         Left Foot: 0
         Right Foot: 0
-    #HUMANOID
+  #--------------
+  # MUNDANE HUMAN ARMOR
+  #--------------
+    None:
+      description: In case you need to take off armor
+      is_magic: false
+      defense: 0
+      protection:
+        Nowhere: 0
     Tactical:
       description: Military-Grade Kevlar Vest and Helmet
       is_magic: false
@@ -240,7 +285,9 @@ fs3combat:
       allowed_specials:
       - Modern Helmet
 
- 
+  #--------------
+  # ARMOR SPECIALS
+  #--------------
   armor specials:
     Modern Helmet:
       description: A modern combat or police helmet

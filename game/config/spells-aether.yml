@@ -376,179 +376,179 @@ spells:
 
 
 
-#TEST SPELLS
-# LEVEL 1
-  Gust:
-    available: true
-    casting_time: 1 round
-    desc: Create a brief gust of wind capable of blowing a door shut.
-    duration: 10 minutes
-    effect: Creation
-    level: 1
-    name: Gust
-    range: Short
-    roll: true
-    school: Aether
-    target_num: 1
-  # LEVEL 2
-  Cloud Cover:
-    area: 5 ft radius
-    available: true
-    casting_time: 1 round
-    desc: "Misty vapor gathers around you. It is stationary once created, and can be dispersed by a strong wind. The vapor obscures all sight in a 5 ft radius, effectively making anyone in its midst [hidden](https://www.aresmush.com/fs3/fs3-3/combat/#stance) while standing still."
-    duration: 15 minutes
-    effect: Defense
-    is_potion: true
-    level: 2
-    name: Cloud Cover
-    range: Self
-    rounds: 90
-    roll: true
-    school: Aether
-    target_num: 1
-  #LEVEL 4
-  Air Blast:
-    area: 5 ft radius
-    available: true
-    casting_time: 1 round
-    desc: Create a powerful blast of wind that knocks an enemy back 5 yards, stunning them.
-    duration: 1 round
-    effect: Stun
-    is_stun: true
-    rounds: 1
-    level: 4
-    line_of_sight: true
-    name: 'Air Blast '
-    range: Short
-    school: Aether
-    target_num: 1
-    weapon: Stun (Aether)
-  Breathless:
-    area: 10 ft radius
-    available: true
-    casting_time: 1 round
-    desc: 'Draw all oxygen from an area, dousing any flames present and creating oxygen deprivation for up to 3 air-breathing creatures of your choice caught in its range. '
-    duration: 1 round
-    effect: Damage
-    fs3_attack: true
-    level: 4
-    name: Breathless
-    range: Short
-    school: Aether
-    target_num: 3
-    weapon: Breathless
-  #LEVEL 5
-  Sonic Blast:
-    available: true
-    attack_mod: -2
-    casting_time: 1 round
-    desc: The target is blasted by an intense burst of sound, leaving them disoriented. For a short time, it is more difficult for the them to take their intended actions.
-    defense_mod: -2
-    duration: 3 rounds
-    effect: Debuff
-    level: 5
-    line_of_sight: true
-    name: Sonic Blast
-    range: Long
-    rounds: 3
-    school: Aether
-    spell_mod: -2
-    target_num: 1
-#Level 7
-  Lightning Strike:
-    available: true
-    casting_time: 1 round
-    desc: A streak of powerful lightning plunges from the sky to strike a target, doing damage.
-    effect: Damage
-    level: 7
-    line_of_sight: true
-    fs3_attack: true
-    name: Lightning Strike
-    range: Long
-    roll: true
-    school: Aether
-    target_num: 1
-    weapon: Lightning Strike
+# #TEST SPELLS
+# # LEVEL 1
+#   Gust:
+#     available: true
+#     casting_time: 1 round
+#     desc: Create a brief gust of wind capable of blowing a door shut.
+#     duration: 10 minutes
+#     effect: Creation
+#     level: 1
+#     name: Gust
+#     range: Short
+#     roll: true
+#     school: Aether
+#     target_num: 1
+#   # LEVEL 2
+#   Cloud Cover:
+#     area: 5 ft radius
+#     available: true
+#     casting_time: 1 round
+#     desc: "Misty vapor gathers around you. It is stationary once created, and can be dispersed by a strong wind. The vapor obscures all sight in a 5 ft radius, effectively making anyone in its midst [hidden](https://www.aresmush.com/fs3/fs3-3/combat/#stance) while standing still."
+#     duration: 15 minutes
+#     effect: Defense
+#     is_potion: true
+#     level: 2
+#     name: Cloud Cover
+#     range: Self
+#     rounds: 90
+#     roll: true
+#     school: Aether
+#     target_num: 1
+#   #LEVEL 4
+#   Air Blast:
+#     area: 5 ft radius
+#     available: true
+#     casting_time: 1 round
+#     desc: Create a powerful blast of wind that knocks an enemy back 5 yards, stunning them.
+#     duration: 1 round
+#     effect: Stun
+#     is_stun: true
+#     rounds: 1
+#     level: 4
+#     line_of_sight: true
+#     name: 'Air Blast '
+#     range: Short
+#     school: Aether
+#     target_num: 1
+#     weapon: Stun (Aether)
+#   Breathless:
+#     area: 10 ft radius
+#     available: true
+#     casting_time: 1 round
+#     desc: 'Draw all oxygen from an area, dousing any flames present and creating oxygen deprivation for up to 3 air-breathing creatures of your choice caught in its range. '
+#     duration: 1 round
+#     effect: Damage
+#     fs3_attack: true
+#     level: 4
+#     name: Breathless
+#     range: Short
+#     school: Aether
+#     target_num: 3
+#     weapon: Breathless
+#   #LEVEL 5
+#   Sonic Blast:
+#     available: true
+#     attack_mod: -2
+#     casting_time: 1 round
+#     desc: The target is blasted by an intense burst of sound, leaving them disoriented. For a short time, it is more difficult for the them to take their intended actions.
+#     defense_mod: -2
+#     duration: 3 rounds
+#     effect: Debuff
+#     level: 5
+#     line_of_sight: true
+#     name: Sonic Blast
+#     range: Long
+#     rounds: 3
+#     school: Aether
+#     spell_mod: -2
+#     target_num: 1
+# #Level 7
+#   Lightning Strike:
+#     available: true
+#     casting_time: 1 round
+#     desc: A streak of powerful lightning plunges from the sky to strike a target, doing damage.
+#     effect: Damage
+#     level: 7
+#     line_of_sight: true
+#     fs3_attack: true
+#     name: Lightning Strike
+#     range: Long
+#     roll: true
+#     school: Aether
+#     target_num: 1
+#     weapon: Lightning Strike
 
-  Fire Starter:
-    available: true
-    casting_time: 1 round
-    desc: Create a flame the size of a lighter.
-    duration: 10 minutes
-    effect: Creation
-    level: 1
-    line_of_sight: true
-    name: Fire Starter
-    range: Short
-    roll: true
-    school: Aether
-  Blur Image:
-    available: true
-    casting_time: 1 round
-    defense_mod: 1
-    desc: Through a trick of light, the caster bolsters their defense by making themselves more difficult to target for a round.
-    duration: 2 rounds
-    effect: Buff
-    is_potion: true
-    level: 2
-    name: Blur Image
-    range: Self
-    rounds: 2
-    school: Aether
-  Endure Fire:
-    available: true
-    casting_time: 1 round
-    desc: Caster is immune to fire and the negative effects of extreme heat up to 2,012 °F (1,110 °C). Spells that do fire damage may be stopped entirely by Endure Fire; when they are not, the damage inflicted is decreased.
-    duration: 10 minutes
-    effect: Buff
-    is_potion: true
-    is_shield: true
-    level: 3
-    name: Endure Fire
-    range: Self
-    school: Aether
-    shields_against: Fire
-    rounds: 60
-  Hot Hands:
-    available: true
-    casting_time: 1 round
-    damage_type: Fire
-    desc: Caster can heat their hands to a chosen temperature ranging from a minor warmth to hot enough to deliver minor fire damage via touch.
-    duration: 30 minutes
-    effect: Weapon
-    is_potion: true
-    level: 3
-    name: Hot Hands
-    range: Touch
-    school: Aether
-    target_num: 1
-    weapon: Hot Hands
-  Fire Weapon:
-    available: true
-    casting_time: 1 round
-    desc: Augment one specified pre-existing weapon with dancing flames, increasing its damage.
-    duration: 3 hours
-    effect: Buff
-    is_potion: true
-    level: 4
-    name: Fire Weapon
-    range: Touch
-    rounds: 100
-    school: Aether
-    target_num: 1
-    weapon_specials: Fire
-    weapon: Spell
-  Group Endure Fire:
-    available: true
-    casting_time: 1 round
-    desc: Caster is immune to fire and the negative effects of extreme heat up to 2,012 °F (1,110 °C). Spells that do fire damage may be stopped entirely by Endure Fire; when they are not, the damage inflicted is decreased.
-    duration: 1 hour
-    effect: Buff
-    is_shield: true    
-    level: 5
-    name: Group Endure Fire
-    range: Short
-    shields_against: Fire
-    school: Aether
-    rounds: 100
-    target_num: 3    
+#   Fire Starter:
+#     available: true
+#     casting_time: 1 round
+#     desc: Create a flame the size of a lighter.
+#     duration: 10 minutes
+#     effect: Creation
+#     level: 1
+#     line_of_sight: true
+#     name: Fire Starter
+#     range: Short
+#     roll: true
+#     school: Aether
+#   Blur Image:
+#     available: true
+#     casting_time: 1 round
+#     defense_mod: 1
+#     desc: Through a trick of light, the caster bolsters their defense by making themselves more difficult to target for a round.
+#     duration: 2 rounds
+#     effect: Buff
+#     is_potion: true
+#     level: 2
+#     name: Blur Image
+#     range: Self
+#     rounds: 2
+#     school: Aether
+#   Endure Fire:
+#     available: true
+#     casting_time: 1 round
+#     desc: Caster is immune to fire and the negative effects of extreme heat up to 2,012 °F (1,110 °C). Spells that do fire damage may be stopped entirely by Endure Fire; when they are not, the damage inflicted is decreased.
+#     duration: 10 minutes
+#     effect: Buff
+#     is_potion: true
+#     is_shield: true
+#     level: 3
+#     name: Endure Fire
+#     range: Self
+#     school: Aether
+#     shields_against: Fire
+#     rounds: 60
+#   Hot Hands:
+#     available: true
+#     casting_time: 1 round
+#     damage_type: Fire
+#     desc: Caster can heat their hands to a chosen temperature ranging from a minor warmth to hot enough to deliver minor fire damage via touch.
+#     duration: 30 minutes
+#     effect: Weapon
+#     is_potion: true
+#     level: 3
+#     name: Hot Hands
+#     range: Touch
+#     school: Aether
+#     target_num: 1
+#     weapon: Hot Hands
+#   Fire Weapon:
+#     available: true
+#     casting_time: 1 round
+#     desc: Augment one specified pre-existing weapon with dancing flames, increasing its damage.
+#     duration: 3 hours
+#     effect: Buff
+#     is_potion: true
+#     level: 4
+#     name: Fire Weapon
+#     range: Touch
+#     rounds: 100
+#     school: Aether
+#     target_num: 1
+#     weapon_specials: Fire
+#     weapon: Spell
+#   Group Endure Fire:
+#     available: true
+#     casting_time: 1 round
+#     desc: Caster is immune to fire and the negative effects of extreme heat up to 2,012 °F (1,110 °C). Spells that do fire damage may be stopped entirely by Endure Fire; when they are not, the damage inflicted is decreased.
+#     duration: 1 hour
+#     effect: Buff
+#     is_shield: true    
+#     level: 5
+#     name: Group Endure Fire
+#     range: Short
+#     shields_against: Fire
+#     school: Aether
+#     rounds: 100
+#     target_num: 3    
