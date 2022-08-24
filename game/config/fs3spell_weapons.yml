@@ -1,5 +1,9 @@
 ---
 fs3combat:
+#---------------      
+# WEAPONS
+#---------------  
+  weapons:
     #---------------      
     # SPELL WEAPONS
     #---------------
@@ -236,10 +240,7 @@ fs3combat:
       is_magic: true
       lethality: -5
       penetration: 3      
-#---------------      
-# WEAPONS
-#---------------  
-  weapons:
+
   #---------------      
   # GENERAL SPELL WEAPONS
   #---------------    

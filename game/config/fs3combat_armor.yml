@@ -5,24 +5,24 @@ fs3combat:
   # MAGIC ARMOR
   #--------------
   # LEVEL 4
-  Rock Skin:
-    description: Level 4 Creation spell
-    is_magic: true
-    defense: 0
-    protection:
-      Head: 6
-      Neck: 6
-      Chest: 6
-      Abdomen: 6
-      Left Leg: 6
-      Right Leg: 6
-      Groin: 6
-      Left Arm: 6
-      Right Arm: 6
-      Left Hand: 6
-      Right Hand: 6
-      Left Foot: 6
-      Right Foot: 6
+    Rock Skin:
+      description: Level 4 Creation spell
+      is_magic: true
+      defense: 0
+      protection:
+        Head: 6
+        Neck: 6
+        Chest: 6
+        Abdomen: 6
+        Left Leg: 6
+        Right Leg: 6
+        Groin: 6
+        Left Arm: 6
+        Right Arm: 6
+        Left Hand: 6
+        Right Hand: 6
+        Left Foot: 6
+        Right Foot: 6
     # LEVEL 6
     Diamond Armor:
       description: Level 6 Creation spell
