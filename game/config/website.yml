@@ -204,6 +204,7 @@ website:
     bonding:  world:bond
     bond: world:bond
     locations: world:locations
+    cradle: locations:cradle
     cradle_s: locations:cradle
     cradle's: locations:cradle
     weyr: locations:weyr    
