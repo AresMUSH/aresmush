@@ -1,26 +1,32 @@
 ---
 fs3skills:
   action_skills:
+  #MAGIC SCHOOLS
   - name: Aether
-    desc: Aether
+    desc: Mythic ability to control the intangible forces of the natural world.
     linked_attr: Magic
+    is_school: true
   - name: Arcane
-    desc: Arcane
+    desc: Human ability to control the intangible forces of the mind and magic.
     linked_attr: Magic
+    is_school: true
   - name: Creation
-    desc: Creation
+    desc: Human ability to control the tangible forces of life and creation.
     linked_attr: Magic
+    is_school: true
   - name: Entropy
-    desc: Entropy
-    linked_attr: Magic              
+    desc: Mythic ability to control the tangible forces of death and destruction.
+    linked_attr: Magic       
+    is_school: true       
+  #MUNDANE SKILLS
   - name: Alertness
-    desc: Noticing things and being aware of your surroundings.
+    desc: Noticing things and being aware of your surroundings. Combat initiative.
     linked_attr: Perception
   - name: Athletics
     linked_attr: Brawn
     desc: General running, jumping, climbing, etc.
   - name: Composure
-    desc: Coolness under pressure.
+    desc: Coolness under pressure. Resist KO in combat.
     linked_attr: Grit
   - name: Firearms
     desc: Shooting guns.
@@ -49,9 +55,6 @@ fs3skills:
   - name: Technician
     desc: General mechanics/electronics and fixing things.
     linked_attr: Wits
-  - name: Bond
-    desc: How well you fly
-    linked_attr: Magic
   action_skills_blurb: 'Action Skills represent your ability in areas deemed important
     for gameplay.  Action Skills are rated from 0-8, but some games limit the highest
     and lowest ratings. See <a href="https://aresmush.com/fs3/fs3-3/chargen.html#action-skills"
