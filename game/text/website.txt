@@ -1,1 +1,1 @@
-<div class="jumbotron-tagline">In its Shattering, the world was born anew.</div>
+<div class="jumbotron-tagline">In the wake of its shattering, the world was born anew.</div>

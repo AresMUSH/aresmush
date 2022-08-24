@@ -25,6 +25,37 @@ website:
     minute:
     - 17
   top_navbar:
+  - title: Game
+    menu: 
+    - title: About Us
+      route: wiki-page
+      id: ooc:about_us
+    - title: Policies
+      route: wiki-page
+      id: ooc:policies
+    - title: Join Us
+      route: wiki-page
+      id: ooc:join_us
+    - title: Staff Team
+      route: wiki-page
+      id: ooc:staff      
+  - title: World
+    menu:
+    - title: World Intro
+      route: wiki-page
+      id: home
+    - title: Cryptids
+      route: wiki-page
+      id: world:cryptids
+    - title: Magic
+      route: wiki-page
+      id: world:magic
+    - title: Wardens
+      route: wiki-page
+      id: world:wardens
+    - title: Places
+      route: wiki-page
+      id: world:locations
   - title: Play
     menu:
     - title: Create a Character
@@ -173,6 +204,7 @@ website:
     cryptid: cryptids
     weyrs: weyr
     magical: magic
+    world: home
   wiki_export_cron:
     hour:
     - 3
