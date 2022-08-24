@@ -204,7 +204,7 @@ website:
     cryptid: cryptids
     weyrs: weyr
     magical: magic
-    world: home
+    # world: home
   wiki_export_cron:
     hour:
     - 3
