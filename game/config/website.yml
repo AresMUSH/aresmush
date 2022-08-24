@@ -190,21 +190,21 @@ website:
   - ".jpeg"
   website_code_path: "/home/ares/ares-webportal"
   wiki_aliases:
-    main: home
-    shattering: history
-    monsters: cryptids
-    mythics: cryptids
-    blood: blood_magic
-    bonding: bond
-    shattered_monsters: cryptids
-    creatures: cryptids
-    cradle_s: cradle
-    cradle's: cradle
-    mythic: cryptids
-    cryptid: cryptids
-    weyrs: weyr
-    magical: magic
-    # world: home
+    main: world
+    shattering: world:history
+    monsters: world:cryptids
+    mythics:  world:cryptids
+    blood:  magic:blood_magic
+    bonding:  world:bond
+    shattered_monsters:  world:cryptids
+    creatures:  world:cryptids
+    cradle_s: locations:cradle
+    cradle's: locations:cradle
+    mythic:  world:cryptids
+    cryptid:  world:cryptids
+    weyrs: locations:weyr
+    magical:  world:magic
+    home: world
   wiki_export_cron:
     hour:
     - 3
