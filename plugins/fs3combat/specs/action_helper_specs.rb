@@ -19,7 +19,7 @@ module AresMUSH
           allow(@combatant).to receive(:luck) { "Defense" }
           allow(FS3Combat).to receive(:reset_stress)
           allow(FS3Combat).to receive(:check_for_ko)
-          allow(Magic).to receive(:spell_newturn)
+          allow(Magic).to receive(:spell_new_turn)
         end
         
         it "should reset luck spent" do

@@ -12,15 +12,15 @@ en:
       too_many_spells_cg: "You have selected too many spells. You may only know %{num} spells in chargen."
       starting_spell: "You have added %{spell} to your starting spell list. You have %{time_left} days to add %{num} a total of free starting spells."
 
-        # ----------------------------
-        # ENERGY & FATIGUE
-        # ----------------------------
+    # ----------------------------
+    # ENERGY & FATIGUE
+    # ----------------------------
       magic_fatigue: "%{name} is suffering from %{degree} spell fatigue. %{effect}"
       fatigue_cant_cast: "You cannot cast spells while suffering from total spell fatigue."
       cast_fatigue_heal: "%{name} casts %xB%{spell}%xn%{mod} and %{succeeds}. %{target} recovers %{points} points of magical energy."
-        # ----------------------------
-        # POTIONS
-        # ----------------------------
+    # ----------------------------
+    # POTIONS
+    # ----------------------------
       use_combat_potion: "Use combat/potion while you are in combat."
       potions_title: "%{name}'S POTIONS"
       potions_creating_title: "Potions Currently Creating"
@@ -49,9 +49,9 @@ en:
       potion_mod_target: "%{name} uses a %xM%{potion}%xn potion on %{target}, giving them a %{mod} %{type} modification."
       not_character: "%xr%{name} is not a character.%xn"
 
-        # ----------------------------
-        # SPELL CASTING
-        # ----------------------------
+    # ----------------------------
+    # SPELL CASTING
+    # ----------------------------
       use_combat_spell: "Use combat/spell when you are in combat."
       dont_target_self: "Be sure to specify a target when using a stun or attack spell so you don't attack yourself. "
       spell_ko: "You cannot cast a spell while Knocked Out."
@@ -71,9 +71,9 @@ en:
       cast_to_use: "%xbYou cannot use %{name} without casting a spell. Only equip it if this spell is still active.%xn"
       level_eight_fatigue: "%x39%{name}%xn %x39has cast a level 8 spell and is overcome by spell casting fatigue. They are unable to cast spells or fight until they have recovered.%xn"
 
-      # ----------------------------
-      # HeALING. RES'ING, AND REVIVING
-      # ----------------------------
+    # ----------------------------
+    # HeALING. RES'ING, AND REVIVING
+    # ----------------------------
       cast_ko_heal: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{succeeds}. %{target} receives up to %{points} points of healing to a wound and they are no longer dying."
       no_healable_wounds: "%{target} has no healable wounds."
       cast_heal_no_effect: "%{name} casts %xB%{spell}%xn%{mod} and %{succeeds}, but %{target} has no healable wounds. The spell has no effect."
@@ -88,9 +88,9 @@ en:
       npc_rejoin: "If you want them to act again, have %{target} rejoin the combat by doing combat/join %{target}=%{id}."
       not_dead: "%{target} is not dead."
 
-      # ----------------------------
-      # MAGIC SHIELDS
-      # ----------------------------
+    # ----------------------------
+    # MAGIC SHIELDS
+    # ----------------------------
       cast_shield: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{succeeds}. They are protected against %{type} attacks."
       cast_shield_no_target: "%{name} casts %xB%{spell}%xn%{mod} and %{succeeds}. They are protected against %{type} attacks."
       no_shield: "%{name} does not have{spell} active."
@@ -109,9 +109,9 @@ en:
       
       shield_failed_against_attack: "%{name} attacks %{target} with %{weapon} and %{target}'s %X17%{shield}%xn failed to stop it. %{name} %xgHITS%xn, but the damage is reduced."
 
-      # ----------------------------
-      # STUNS
-      # ----------------------------
+    # ----------------------------
+    # STUNS
+    # ----------------------------
 
       # stun_action_msg_long: "%{name} will stun %{target} this turn."
       # stun_action_msg_short: "Stun %{target}"
@@ -130,18 +130,18 @@ en:
       mods_wore_off: "%{name}'s %xg%{mods} modifications%xn %x11have worn off%xn."
       stance_wore_off: "%{name}'s %xB%{spell}%xn spell %x11has worn off%xn and they are no longer %{stance}."
 
-      # ----------------------------
-      # SHEET & SPELLS LIST
-      # ----------------------------
+    # ----------------------------
+    # SHEET & SPELLS LIST
+    # ----------------------------
       schools_title: "Schools"
       schools_blurb: "Schools reflect the type of spells a magic user is able to do. A magic user may have an affinity for a single School, or they may possess an affinity for two, one lesser and one greater. System-wise, Schools function in the same way as action skills."
       spells_header: "SPELL                        LEVEL"
       spells_learning_header: "SPELL                         LEVEL      PROGRESS              LEARN AGAIN IN"
       magic_energy_header: "MANA"
 
-      # ----------------------------
-      # LEARNING SPELLS
-      # ----------------------------
+    # ----------------------------
+    # LEARNING SPELLS
+    # ----------------------------
       do_spell_learn: "You can't add spells as background skills. Did you mean to do spell/learn <spell>?"
       learning_too_many_spells: "You can only learn %{num_can_learn} spells at a time. Raise your major school to learn more spells at once."
       spell_requested: "Your spell has been requested. You can view all your active requests by typing 'requests'"
@@ -174,9 +174,9 @@ en:
       can_learn_now: "You can learn that spell now - no need to spend luck!"
       reduce_spell_learn_time_job: "%{name} spent 2 luck points and reduced the learn time of %{spell} by a week."
 
-      # ----------------------------
-      # FS3 COMBAT SPELL ACTION
-      # ----------------------------
+    # ----------------------------
+    # FS3 COMBAT SPELL ACTION
+    # ----------------------------
       spell_target_action_msg_short: "Spell %{target}"
       spell_target_action_msg_long: "%{name} will cast %xB%{spell}%xn on %{target} this turn."
       spell_target_resolution_msg: "%{name} casts %xB%{spell}%xn on %{target} and %{succeeds}."
@@ -185,10 +185,9 @@ en:
       spell_resolution_msg: "%{name} casts %xB%{spell}%xn and %{succeeds}."
       too_many_targets: "%xr%{spell} can only target %{num} target(s).%xn"
 
-      # ----------------------------
-      # FS3 COMBAT POTION ACTION
-      # ----------------------------
-
+    # ----------------------------
+    # FS3 COMBAT POTION ACTION
+    # ----------------------------
       potion_action_msg_long: "%{name} will use a %xM%{potion}%xn potion this turn."
       potion_action_target_msg_long: "%{name} will use a %xM%{potion}%xn potion on %{target} this turn."
       potion_action_resolution_msg_long: "%{name} uses a %xM%{potion}%xn potion."
@@ -197,16 +196,16 @@ en:
       potion_action_target_msg_short: "Potion %{target}"
       potion_resolution_msg: "%{name} used a %xM%{potion}%xn potion"
 
-      # ----------------------------
-      # FS3 COMBAT DEATH
-      # ----------------------------
+    # ----------------------------
+    # FS3 COMBAT DEATH
+    # ----------------------------
       one_death: "%xR%{name} has been knocked out for one round. In two more rounds, they will bleed out and die.%xn"
       two_death: "%xR%{name} has been knocked out for two rounds. If they are not revived, healed, or treated this round, they will die.%xn"
       died: "%xR%{name} has died.%xn"
 
-      # # ----------------------------
-      # # LUCK
-      # # ----------------------------
+    # # ----------------------------
+    # # LUCK
+    # # ----------------------------
 
       spent_luck: "%{name} has spent 1 luck point. %R%RReason: %{reason}"
       spent_luck_title: "%{name} spent luck on %{reason}"

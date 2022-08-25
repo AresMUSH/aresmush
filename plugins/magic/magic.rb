@@ -17,6 +17,15 @@ module AresMUSH
 
     def self.get_cmd_handler(client, cmd, enactor)
 
+      #DEATHS
+      case cmd.root
+      when "death"
+        case cmd.switch
+        when "undo"
+          return DeathUndoCmd
+        end
+      end
+
       #ITEMS
       case cmd.root
       when "items"

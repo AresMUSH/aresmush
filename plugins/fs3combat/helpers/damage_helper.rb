@@ -156,7 +156,7 @@ module AresMUSH
        end
        
        FS3Combat.heal(wound, 1)
-       t('fs3combat.treat_success', :healer => healer_name, :patient => patient_name)
+       Magic.treat_dying(healer_name, patient_char_or_npc)
      end
      
     

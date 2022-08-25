@@ -252,9 +252,10 @@ spells:
     target_num: 1          
   Stone Wall:
     available: false
+    area: 5 yard length
     casting_time: 1 round
     damage_type: Bypass
-    desc: "Creates a low wall of stone to deflect or reduce damage from attacks directed against up to three targets."
+    desc: "Creates a low wall of stone to deflect or reduce damage from attacks directed against up to three targets in its range."
     effect: Shield
     duration: 3 rounds
     is_shield: true
