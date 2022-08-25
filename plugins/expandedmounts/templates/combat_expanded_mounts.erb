@@ -3,6 +3,7 @@
 
 <% mounts.each do |m| %>
 <%= left( format_mount(m), 25 ) -%>
+<%= left( format_damage(m), 10 ) -%>
 <%= left( rider(m), 20 ) -%>
 <%= passengers(m) %>
 <% end %>
