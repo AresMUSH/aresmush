@@ -49,7 +49,7 @@ module AresMUSH
       Global.read_config("spells", weapon_or_spell, "damage_type") || FS3Combat.weapon_stat(weapon_or_spell, "magic_damage_type") || Global.read_config("magic", "default_damage_type")
     end
 
-    def self.spell_newturn(combatant)
+    def self.spell_new_turn(combatant)
 
       Magic.shield_newturn_countdown(combatant)
       mods = []
