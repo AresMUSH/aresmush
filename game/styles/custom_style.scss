@@ -886,6 +886,18 @@ button {
 	letter-spacing: 0;
 }
 
+.search_results {
+	font-style: italic;
+	font-weight: bold;
+	float: right;
+	background: $manilla;
+	color: $blackest-grey;
+	padding-left: 10px;
+	padding-right: 10px;
+	border-radius: 20px;
+	margin-bottom: 35px;
+}
+
 //TABS
 
 .nav-tabs .nav-link, .nav-tabs .nav-link > a:hover, .nav-tabs .nav-link > a:focus {
