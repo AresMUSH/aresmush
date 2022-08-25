@@ -146,9 +146,9 @@ module AresMUSH
       wound = FS3Combat.worst_treatable_wound(target)
       if wound.blank?
         message = [t('magic.cast_heal_no_effect', :name => caster_name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target => target.name, :points => heal_points)]
-      elsif Manage.is_extra_installed?("death") && target.combat && target_char_or_combatant.death_count > 0
+      elsif target.combat && target_char_or_combatant.death_count > 0
         message = [t('magic.cast_ko_heal', :name => caster_name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target => target.name, :points => heal_points)]
-        Death.one(target_char_or_combatant)
+        Magic.death_zero(target_char_or_combatant)
         FS3Combat.heal(wound, heal_points)
       else
         message = [t('magic.cast_heal', :name => caster_name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target => target.name, :points => heal_points)]
@@ -222,9 +222,7 @@ module AresMUSH
     end
 
     def self.cast_auto_revive(combatant, target, spell)
-      if Manage.is_extra_installed?("death")
-        target.update(death_count: 0)
-      end
+      target.update(death_count: 0)
       target.update(is_ko: false)
       target.log "Auto-revive spell setting #{target.name}'s KO to #{target.is_ko}."
       Magic.heal_all_unhealed_damage(target.associated_model)
@@ -238,9 +236,7 @@ module AresMUSH
     end
 
     def self.cast_resurrection(caster_name, combatant, target, spell)
-      if Manage.is_extra_installed?("death")
-        Death.undead(target.associated_model)
-      end
+      Magic.undead(target.associated_model)
       message = [t('magic.cast_res', :name => caster_name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target => target.name)]
       FS3Combat.emit_to_combatant target, t('magic.been_resed', :name => caster_name)
       return message

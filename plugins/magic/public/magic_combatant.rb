@@ -26,6 +26,9 @@ module AresMUSH
     attribute :magic_attack_mod, :type => DataType::Integer, :default => 0
     attribute :magic_attack_mod_counter, :type => DataType::Integer, :default => 0
 
+    # Death
+    attribute :death_count, :type => DataType::Integer, :default => 0
+
 
 
 

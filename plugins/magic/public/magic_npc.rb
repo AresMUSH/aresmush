@@ -5,6 +5,8 @@ module AresMUSH
     attribute :magic_energy, :type => DataType::Integer, :default => 100
     attribute :magic_item_equipped, :default => "None"
 
+    attribute :dead, :type => DataType::Boolean, :default => false
+
     before_delete :clear_shields
 
     def clear_shields

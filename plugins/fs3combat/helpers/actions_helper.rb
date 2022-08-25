@@ -67,12 +67,12 @@ module AresMUSH
       FS3Combat.check_for_ko(combatant)
       combatant.update(freshly_damaged: false)
       
-      if (combatant.is_ko && combatant.is_npc?)
-        FS3Combat.leave_combat(combatant.combat, combatant)
-      else
+      # if (combatant.is_ko && combatant.is_npc?)
+      #   FS3Combat.leave_combat(combatant.combat, combatant)
+      # else
         # Be sure to do this AFTER checking for KO up above.
         combatant.update(damaged_by: [])
-      end
+      # end
     end
     
     def self.reset_stress(combatant)
@@ -100,6 +100,7 @@ module AresMUSH
       end
 
       if (roll <= 0)
+        Magic.death_one(combatant)
         combatant.update(is_ko: true)
         combatant.update(action_klass: nil)
         combatant.update(action_args: nil)

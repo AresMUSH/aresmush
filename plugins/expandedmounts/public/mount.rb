@@ -29,7 +29,8 @@ module AresMUSH
 
     attribute :freshly_damaged, :type => DataType::Boolean, :default => false
     attribute :is_ko
-
+    attribute :death_count, :type => DataType::Integer, :default => 0
+    attribute :dead, :type => DataType::Boolean, :default => false
     
     reference :rider, 'AresMUSH::Combatant'
     collection :passengers, 'AresMUSH::Combatant', :passenger_on

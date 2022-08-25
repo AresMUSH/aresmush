@@ -102,6 +102,7 @@ module AresMUSH
   def self.new_turn(combat)
     combat.mounts.each do |m|
       FS3Combat.check_for_ko(m)
+      Magic.death_new_turn(m)
       m.update(freshly_damaged: false)
     end
   end
@@ -120,7 +121,7 @@ module AresMUSH
     return {hit_target: true, target: target } if !attacker  
     hit_target = true
     #only run code if the target is a mount with a rider or a rider/passenger on a mount
-    if (target.is_mount? && target.rider ) || target.mount
+    if (target.is_mount? && target.rider ) || (!target.is_mount? && target.mount)
       hit_target_chance = 100
 
       if target.is_mount?
