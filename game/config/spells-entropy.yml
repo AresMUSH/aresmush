@@ -1,10 +1,56 @@
 spells:
-# ----------
-# LEVEL 3
-# ----------
+#---------------
+# LEVEL 1
+#---------------
+  Create Frost:
+    area: 1-3 ft radius
+    available: true
+    casting_time: 1 round
+    damage_type: Bypass
+    desc: "Creates a fine layer of frost on a target the caster touches, covering an area up to 3 square feet."
+    effect: Creation
+    level: 1
+    name: Create Frost
+    range: Touch
+    roll: true
+    school: Entropy
+    
+#---------------
+# LEVEL 2
+#---------------
+
+  Touch Of Enfeeblement:
+    attack_mod: -1
+    available: true
+    casting_time: 1 round
+    damage_type: Bypass
+    defense_mod: -1
+    desc: 'Target loses their strength, becoming physically weak and fatigued. '
+    duration: 1 round
+    effect: Debuff
+    is_potion: true
+    level: 2
+    line_of_sight: true
+    name: Touch of Enfeeblement
+    range: Touch
+    rounds: 1
+    school: Entropy
+    target_num: 1
+  Wither:
+    available: true
+    casting_time: 1 round
+    damage_type: Bypass
+    desc: Causes up to 3 cubic feet of plant life to wither and die within a matter of minutes.
+    effect: Other
+    level: 2
+    line_of_sight: true
+    name: Wither
+    range: Short
+    school: Entropy 
   Drowsy:
     available: true
     casting_time: 1 round
+    damage_type: Bypass
     desc: Make a target suddenly feel extremely drowsy and cause them to briefly fall asleep. In combat, they are stunned for one round. In other situations, they remain asleep until they are woken or wake naturally.
     duration: Until woken or 20 seconds in situations with disturbances
     effect: Stun
@@ -15,34 +61,171 @@ spells:
     range: Short
     rounds: 1
     target_num: 1
-    school: Entropy
-  Flesh Wound:
+    school: Entropy       
+#---------------
+# LEVEL 3
+#---------------
+  Ice Talons:
     available: true
     casting_time: 1 round
-    damage_desc: Flesh Wound Spell
-    damage_inflicted: FLESH
-    desc: "Inflict a flesh wound, slowing an enemy down. \n\nSpell ignores target's armor."
-    effect: Damage
+    damage_type: Bypass
+    desc: The caster's fingertips become ice talons capable of inflicting damage. Talons can be broken off and thrown for a ranged attack.
+    duration: 1 round
+    effect: Creation
+    fs3_attack: true
+    is_potion: true
     level: 3
-    name: Flesh Wound
-    range: Short
+    name: Ice Talons
+    range: Self
     school: Entropy
-    target_num: 1
-  Tremor:
-    attack_mod: -1
+    weapon: Ice Talons
+#---------------
+# LEVEL 4
+#---------------
+  Earth Shudder:
+    area: 10 yard radius
     available: true
     casting_time: 1 round
-    desc: "The earth shudders beneath a target's feet, making it difficult for them to aim."
-    duration: 2 rounds.
+    defense_mod: -2
+    desc: Cause the earth to shudder, making up to 3 enemies within its range lose their footing
+     and giving them a penalty to attack.
+    duration: 1 round
     effect: Debuff
-    level: 2
+    fs3_attack: true
+    level: 4
     line_of_sight: true
-    name: Tremor
+    name: Earth Shudder
+    range: Long
+    school: Entropy
+    target_num: 3
+  Ice Armor:
+    armor: Ice
+    available: true
+    casting_time: 1 round
+    damage_type: Bypass
+    desc: Caster weaponizes and protects their own body by augmenting it with thick sheets of ice that form into talons capping each finger. Increases defenses slightly and adds a bladed weapon.
+    duration: 3 hours
+    effect: Armor
+    damage_type: Cold
+    is_potion: true
+    level: 4
+    name: Ice Armor
+    range: Self
+    school: Entropy
+    weapon: Ice Armor   
+  Ice Blast:
+    available: true
+    casting_time: 1 round
+    damage_type: Cold
+    desc: The caster sends a chunk of snowy ice hurtling at a single target.
+    effect: Damage
+    fs3_attack: true
+    level: 4
+    line_of_sight: true
+    name: Ice Blast
     range: Short
-    rounds: 2
     school: Entropy
     target_num: 1
-  #Level 3
+    weapon: Ice Blast     
+  Ice Weapon:
+    available: true
+    casting_time: 1 round
+    damage_type: Bypass
+    desc: Augment one specified pre-existing weapon with a fine coating of freezing ice. Though less useful against armor, this weapon does incredible damage against unprotected skin, even through normal clothing.
+    duration: 3 hours
+    effect: Buff
+    is_potion: true
+    level: 4
+    name: Ice Weapon
+    range: Touch
+    rounds: 100
+    school: Entropy
+    weapon_specials: Ice
+    weapon: Spell
+  Weaken Weapon:
+    available: true
+    casting_time: 1 round
+    damage_type: Bypass
+    desc: Weaken a weapon by blunting sharp edges or weakening it's structural integrity.
+    duration: 3 hours
+    effect: Debuff
+    level: 4
+    name: Weaken Weapon
+    range: Short
+    rounds: 100
+    school: Entropy
+    weapon_specials: Weaken
+    weapon: Spell    
+#---------------
+# LEVEL 5
+#---------------
+  Paralyze:
+    available: true
+    casting_time: 1 round
+    damage_type: Bypass
+    desc: Subdue an enemy by paralyzing their limbs, immobilizing them briefly.
+    duration: 2 rounds
+    effect: Stun
+    is_stun: true
+    level: 5
+    line_of_sight: true
+    name: Paralyze
+    range: Long
+    rounds: 2
+    target_num: 1
+    school: Entropy
+  Ice Block:
+    available: true
+    area: 5 yard length
+    casting_time: 1 round
+    damage_type: Bypass
+    desc: "Deflect attacks with a wall of ice that shields up to 3 targets in its range."
+    duration: 5 rounds
+    effect: Shield
+    is_shield: true
+    level: 5
+    line_of_sight: true
+    name: Ice Block
+    range: Short
+    rounds: 5
+    school: Entropy
+    shields_against: All
+    target_num: 3    
+  Impair:
+    available: true
+    casting_time: 1 round
+    damage_desc: Impair Spell
+    damage_inflicted: IMPAIR
+    damage_type: Bypass
+    desc: "Inflict an impaired wound, making it difficult for an enemy to use the affected body part. \n\nSpell ignores target's armor."
+    effect: Damage
+    level: 4
+    line_of_sight: true
+    name: Impair
+    range: Short
+    school: Entropy
+    target_num: 1
+#---------------
+# LEVEL 6
+#---------------
+  Cone Of Cold:
+    area: 5 ft maximum width
+    available: true
+    casting_time: 1 round
+    damage_type: Cold
+    desc: Frigid cold emanates from the caster's hand and extends outward in a cone shape, doing minor cold damage to up to 3 targets. As the ice hits, it explodes, doing additional shrapnel damage.
+    effect: AOE Damage
+    fs3_attack: true
+    level: 6
+    line_of_sight: true
+    name: Cone Of Cold
+    range: Short
+    school: Entropy
+    target_num: 3
+    weapon: Cone Of Cold
+#---------------
+# LEVEL 7
+#---------------
   Earth Bolt:
     area: Direct line from caster, 5 yards wide
     available: true
@@ -56,108 +239,234 @@ spells:
     range: Short
     school: Entropy
     target_num: 3
-    weapon: Earth Bolt    
-  Quicksand:
-    area: 2.5 ft radius
+    weapon: Earth Bolt
+  Exhaustion:
+    attack_mod: -3
     available: true
-    casting_time: 1 round
-    desc: "The caster turns a 5-foot diameter patch of dirt into quicksand, making it possible to sink something easily into the earth at that spot. If cast on the ground below a target, the target sinks in, immobilizing them until they can climb back out or an ally uses a round to attempt to rescue them. Targets submerged in the ground cannot be attacked."
+    casting_time: 1 Round
+    damage_type: Bypass
+    defense_mod: -3
+    desc: "The caster weakens the bodies of up to 3 targets. They suddenly feel faint, losing their strength and becoming fatigued."
     duration: 3 rounds
-    effect: Stun
-    fs3_attack: true
-    is_stun: true
+    effect: Debuff
+    level: 7
+    line_of_sight: true
+    name: Miasma
+    range: Long
     rounds: 3
-    level: 6
-    line_of_sight: true
-    name: Quicksand
-    range: Short
     school: Entropy
-    target_num: 3
-    weapon: Stun (Entropy)
-  Chilled Limbs:
-    attack_mod: -1
-    available: true
-    casting_time: 1 round
-    defense_mod: -1
-    desc: "Chill someone's limbs, making it difficult for them to move effectively. "
-    duration: 1 round
-    effect: Debuff
-    level: 2
-    line_of_sight: true
-    name: Chilled Limbs
-    range: Short
-    rounds: 2
-    school: Entropy
-    target_num: 1    
-  Ice Talons:
-    available: true
-    casting_time: 1 round
-    desc: The caster's fingertips become ice talons capable of inflicting damage. Talons can be broken off and thrown for a ranged attack.
-    duration: 1 round
-    effect: Creation
-    fs3_attack: true
-    is_potion: true
-    level: 3
-    name: Ice Talons
-    range: Self
-    school: Entropy
-    weapon: Ice Talons
-  Cone Of Cold:
-    area: 5 ft maximum width
+    target_num: 3    
+#---------------
+# LEVEL 8
+#---------------
+  Ice Storm:
+    area: 20 yard radius
     available: true
     casting_time: 1 round
     damage_type: Cold
-    desc: Frigid cold emanaes from the caster's hand and extends outward in a cone shape, doing minor cold damage to up to 3 targets. As the ice hits, it explodes, doing additional shrapnel damage.
+    desc: Jagged shards of ice fall from the sky, doing damage to up to 3 targets within its range. When they hit, they explode, doing further shrapnel damage.
+    duration: 1 round
     effect: AOE Damage
     fs3_attack: true
-    level: 4
+    level: 8
     line_of_sight: true
-    name: Cone Of Cold
-    range: Short
-    school: Entropy
-    target_num: 3
-    weapon: Cone Of Cold    
-  Ice Armor:
-    armor: Ice
-    available: true
-    casting_time: 1 round
-    desc: Caster weaponizes and protects their own body by augmenting it with thick sheets of ice that form into talons capping each finger. Increases defenses slightly and adds a bladed weapon.
-    duration: 3 hours
-    effect: Armor
-    damage_type: Cold
-    is_potion: true
-    level: 4
-    name: Ice Armor
-    range: Self
-    school: Entropy
-    weapon: Ice Armor
-  Slick Ground:
-    area: 10 yard radius
-    available: true
-    casting_time: 1 round
-    desc: Coat the ground in slick ice, making footing difficult up to 3 opponents and giving them a penalty to attack.
-    duration: 1 round
-    effect: Debuff
-    fs3_attack: true
-    level: 4
-    line_of_sight: true
-    name: Slick Ground
+    name: Ice Storm
     range: Long
     school: Entropy
     target_num: 3
-    weapon: Slick Ground
-  Exploding Ice:
-    area: 10 yard radius
+    weapon: Ice Storm
+  Ice Wall:
+    area: 20 yards long, 5 yards thick, 10 yards tall
     available: true
     casting_time: 1 round
-    damage_type: Cold
-    desc: Send a ball of ice hurtling at a point the caster can see. It explodes into jagged shards on impact, hitting up to 3 targets.
-    effect: AOE Damage
-    fs3_attack: true
-    level: 5
+    damage_type: Bypass
+    desc: "The caster summons a single, solid wall of ice no greater than 20 yards long, 5 yards thick, 10 yards tall, shielding up to 5 targets in its range. It remains until melted or destroyed."
+    effect: Shield
+    is_shield: true
+    level: 8
     line_of_sight: true
-    name: Exploding Ice
+    name: Ice Wall
     range: Long
+    roll: true
     school: Entropy
-    target_num: 3
-    weapon: Exploding Ice    
+    shields_against: All
+    target_num: 5
+  Revenant:
+    available: true
+    casting_time: 1 round
+    damage_type: Bypass
+    desc: A sapient creature who has died in the last 30 seconds is reanimated and bound to do the caster's bidding. Its mind remains dead, but it can perform simple tasks and come to the caster's aid in battle. It cannot cast spells. When the spell ends, the revenant returns to its dead state.
+    duration: 10 minutes
+    effect: Other
+    level: 8
+    line_of_sight: true
+    name: Revenant
+    range: Short
+    roll: true
+    school: Entropy    
+#---------------
+# LEVEL 9
+#---------------
+#---------------
+# LEVEL 10
+#---------------
+
+  # Drowsy:
+  #   available: true
+  #   casting_time: 1 round
+  #   desc: Make a target suddenly feel extremely drowsy and cause them to briefly fall asleep. In combat, they are stunned for one round. In other situations, they remain asleep until they are woken or wake naturally.
+  #   duration: Until woken or 20 seconds in situations with disturbances
+  #   effect: Stun
+  #   is_stun: true
+  #   level: 3
+  #   line_of_sight: true
+  #   name: Drowsy
+  #   range: Short
+  #   rounds: 1
+  #   target_num: 1
+  #   school: Entropy
+  # Flesh Wound:
+  #   available: true
+  #   casting_time: 1 round
+  #   damage_desc: Flesh Wound Spell
+  #   damage_inflicted: FLESH
+  #   desc: "Inflict a flesh wound, slowing an enemy down. \n\nSpell ignores target's armor."
+  #   effect: Damage
+  #   level: 3
+  #   name: Flesh Wound
+  #   range: Short
+  #   school: Entropy
+  #   target_num: 1
+  # Tremor:
+  #   attack_mod: -1
+  #   available: true
+  #   casting_time: 1 round
+  #   desc: "The earth shudders beneath a target's feet, making it difficult for them to aim."
+  #   duration: 2 rounds.
+  #   effect: Debuff
+  #   level: 2
+  #   line_of_sight: true
+  #   name: Tremor
+  #   range: Short
+  #   rounds: 2
+  #   school: Entropy
+  #   target_num: 1
+  # #Level 3
+  # Earth Bolt:
+  #   area: Direct line from caster, 5 yards wide
+  #   available: true
+  #   casting_time: 1 round
+  #   desc: Geomantic force travels through the earth in a straight line, causing rocks to fly into the air and hit up to 3 creatures along its path for one round.
+  #   effect: AOE Damage
+  #   fs3_attack: true
+  #   level: 3
+  #   line_of_sight: true
+  #   name: Earth Bolt
+  #   range: Short
+  #   school: Entropy
+  #   target_num: 3
+  #   weapon: Earth Bolt    
+  # Quicksand:
+  #   area: 2.5 ft radius
+  #   available: true
+  #   casting_time: 1 round
+  #   desc: "The caster turns a 5-foot diameter patch of dirt into quicksand, making it possible to sink something easily into the earth at that spot. If cast on the ground below a target, the target sinks in, immobilizing them until they can climb back out or an ally uses a round to attempt to rescue them. Targets submerged in the ground cannot be attacked."
+  #   duration: 3 rounds
+  #   effect: Stun
+  #   fs3_attack: true
+  #   is_stun: true
+  #   rounds: 3
+  #   level: 6
+  #   line_of_sight: true
+  #   name: Quicksand
+  #   range: Short
+  #   school: Entropy
+  #   target_num: 3
+  #   weapon: Stun (Entropy)
+  # Chilled Limbs:
+  #   attack_mod: -1
+  #   available: true
+  #   casting_time: 1 round
+  #   defense_mod: -1
+  #   desc: "Chill someone's limbs, making it difficult for them to move effectively. "
+  #   duration: 1 round
+  #   effect: Debuff
+  #   level: 2
+  #   line_of_sight: true
+  #   name: Chilled Limbs
+  #   range: Short
+  #   rounds: 2
+  #   school: Entropy
+  #   target_num: 1    
+  # Ice Talons:
+  #   available: true
+  #   casting_time: 1 round
+  #   desc: The caster's fingertips become ice talons capable of inflicting damage. Talons can be broken off and thrown for a ranged attack.
+  #   duration: 1 round
+  #   effect: Creation
+  #   fs3_attack: true
+  #   is_potion: true
+  #   level: 3
+  #   name: Ice Talons
+  #   range: Self
+  #   school: Entropy
+  #   weapon: Ice Talons
+  # Cone Of Cold:
+  #   area: 5 ft maximum width
+  #   available: true
+  #   casting_time: 1 round
+  #   damage_type: Cold
+  #   desc: Frigid cold emanaes from the caster's hand and extends outward in a cone shape, doing minor cold damage to up to 3 targets. As the ice hits, it explodes, doing additional shrapnel damage.
+  #   effect: AOE Damage
+  #   fs3_attack: true
+  #   level: 4
+  #   line_of_sight: true
+  #   name: Cone Of Cold
+  #   range: Short
+  #   school: Entropy
+  #   target_num: 3
+  #   weapon: Cone Of Cold    
+  # Ice Armor:
+  #   armor: Ice
+  #   available: true
+  #   casting_time: 1 round
+  #   desc: Caster weaponizes and protects their own body by augmenting it with thick sheets of ice that form into talons capping each finger. Increases defenses slightly and adds a bladed weapon.
+  #   duration: 3 hours
+  #   effect: Armor
+  #   damage_type: Cold
+  #   is_potion: true
+  #   level: 4
+  #   name: Ice Armor
+  #   range: Self
+  #   school: Entropy
+  #   weapon: Ice Armor
+  # Slick Ground:
+  #   area: 10 yard radius
+  #   available: true
+  #   casting_time: 1 round
+  #   desc: Coat the ground in slick ice, making footing difficult up to 3 opponents and giving them a penalty to attack.
+  #   duration: 1 round
+  #   effect: Debuff
+  #   fs3_attack: true
+  #   level: 4
+  #   line_of_sight: true
+  #   name: Slick Ground
+  #   range: Long
+  #   school: Entropy
+  #   target_num: 3
+  #   weapon: Slick Ground
+  # Exploding Ice:
+  #   area: 10 yard radius
+  #   available: true
+  #   casting_time: 1 round
+  #   damage_type: Cold
+  #   desc: Send a ball of ice hurtling at a point the caster can see. It explodes into jagged shards on impact, hitting up to 3 targets.
+  #   effect: AOE Damage
+  #   fs3_attack: true
+  #   level: 5
+  #   line_of_sight: true
+  #   name: Exploding Ice
+  #   range: Long
+  #   school: Entropy
+  #   target_num: 3
+  #   weapon: Exploding Ice    
