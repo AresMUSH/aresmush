@@ -496,6 +496,8 @@ button {
 
 .fs3-skillbutton {
 	color: $light-grey;
+	background-color: $greyish-green!important;
+	background-image: none!important;
 }
 
 #fs3abilities .row {
@@ -893,10 +895,9 @@ button {
 	color: #090909;
 	clip-path: polygon(0 0, calc(100% - 1.5em) 0, 100% 100%, 0% 100%);
 	border-radius: 10px 0px 0px 0px;
-	min-width: 140px;
 	font-family: 'Special Elite', monospace;
 	text-transform: uppercase;
-	padding-right: 50px;
+	padding-right: 30px;
 }
 
 .nav-tabs .nav-link.active, .nav-tabs .nav-link.active > a:hover, .nav-tabs .nav-link.active > a:focus {
@@ -944,6 +945,10 @@ button {
 
 .nav-tabs {
 	border-bottom: 2px solid $manilla-darker;
+}
+
+.nav-tabs .nav-link {
+	border-color: transparent;
 }
 
 //ICONS
@@ -1533,4 +1538,61 @@ td {
 
 .notifications-list a {
 	color: #darker-slate;
+}
+
+thead {
+	vertical-align: middle;
+	font-family: 'PT Sans';
+	text-transform: uppercase;
+}
+
+thead p {
+	margin: 0;
+	line-height: 1;
+}
+
+th,
+.table-striped th {
+    padding-top: 0.4em;
+}
+
+//CHARGEN
+
+#fs3attrs > .card,
+#fs3action > .card,
+#fs3bg > .card,
+#fs3lang > .card,
+#fs3adv > .card {
+	background-color: $manilla-dark;
+}
+
+#fs3attrs > .card-default > .card-heading,
+#fs3action > .card-default > .card-heading,
+#fs3bg > .card-default > .card-heading,
+#fs3lang > .card-default > .card-heading,
+#fs3adv > .card-default > .card-heading {
+	background-color: $lighter-greyish-green;
+	color: $light-grey;
+}
+
+#fs3abilities > .nav-tabs .nav-link.active, .nav-tabs .nav-link.active > a:hover, .nav-tabs .nav-link.active > a:focus {
+	background-color: $manilla-dark !important;
+}
+
+.cg-tip {
+	color: $greyish-green
+}
+
+.cg-tip a {
+	color: $lighter-greyish-green;
+}
+
+#fs3abilities > .tab-content {
+	border-bottom: 2px solid $manilla-dark!important;
+	border-left: 2px solid $manilla-dark!important;
+	border-right: 2px solid $manilla-dark!important;
+}
+
+.alert-success {
+	margin-top: 10px;
 }
