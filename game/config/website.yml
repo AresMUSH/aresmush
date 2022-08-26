@@ -230,8 +230,7 @@ website:
     weyr: world:weyr    
     weyrs: world:weyr
     prism_passes: world:prism_passes
-    magical:  world:magic
-    magic: world:magic
+    magical:  magic
     blood_magic: magic:blood_magic
     blood:  magic:blood_magic
     school: world:school
