@@ -190,7 +190,7 @@ website:
     - title: Scenes
       route: search-scenes
     - title: Characters
-      route: search-characters 
+      route: search-chars
     - title: Wiki
       route: search-wiki 
     - title: Forum
@@ -199,7 +199,7 @@ website:
       route: search-help       
     - title: Locations
       route: search-locations 
-    - title: Jobs/Requests
+    - title: Jobs & Requests
       route: search-jobs                           
       
   uploadable_extensions:
