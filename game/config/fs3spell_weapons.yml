@@ -294,16 +294,21 @@ fs3combat:
     # SPELLS
     #---------------      
     Lightning:
-      description: Aether spell
+      description: Level 4 Aether spell
       is_magic: true
       lethality: 5
       penetration: 1
       init_mod: 2
     Fire:
-      description: Aether spell
+      description: Level 4 Aether spell
       is_magic: true
       lethality: 10
-      accuracy: 1
+      accuracy: 1      
+    Focus:
+      description: Level 2 Arcane spell
+      is_magic: true
+      lethality: 0
+      accuracy: 2
     Ice:
       description: Level 4 Ice spell
       is_magic: true
@@ -311,7 +316,7 @@ fs3combat:
       penetration: -1
       magic_damage_type: Cold      
     Strength:
-      description: Creation spell
+      description: Level 4 Creation spell
       is_magic: true
       lethality: -5
       penetration: 3      
