@@ -74,7 +74,7 @@ module AresMUSH
         end
 
         spells_by_level = spells.group_by { |s| s[:level] }
-        blurb = Global.read_config("schools", school, "blurb")
+        blurb = Global.read_config("magic", "schools", school)['blurb']
 
 
         {

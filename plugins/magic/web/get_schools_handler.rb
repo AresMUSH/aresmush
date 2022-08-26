@@ -2,7 +2,7 @@ module AresMUSH
   module Magic
     class GetSchoolsRequestHandler
       def handle(request)
-        all_schools = Global.read_config("schools")
+        all_schools = Global.read_config("magic", "schools")
         all_schools = all_schools.map {|k, v| {name: v['name'], id: v['id']}}
         schools = []
         all_schools.each do |s|
