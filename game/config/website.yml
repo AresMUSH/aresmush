@@ -44,18 +44,28 @@ website:
     - title: World Intro
       route: wiki-page
       id: home
-    - title: Cryptids
-      route: wiki-page
-      id: world:cryptids
     - title: Magic
       route: wiki-page
-      id: world:magic
+      id: magic
     - title: Wardens
       route: wiki-page
       id: world:wardens
-    - title: Places
+    - title: The Bond
       route: wiki-page
-      id: world:locations
+      id: world:bond
+    - title: Cryptids
+      route: wiki-page
+      id: world:cryptids  
+    - divider: true
+    - title: The Cradle
+      route: wiki-page
+      id: world:cradle
+    - title: Weyr
+      route: wiki-page
+      id: world:cradle
+    - title: Prism Passes
+      route: wiki-page
+      id: world:prism_passes
   - title: Play
     menu:
     - title: Create a Character
