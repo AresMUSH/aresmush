@@ -183,7 +183,7 @@ website:
     - target: blank
       title: MUSH 101 Tutorial <i class="fa fa-external-link-alt" aria-hidden="true">
       url: https://aresmush.com/mush-101/
-  - title: Search <i class="fa fa-search" aria-hidden="true"></i>
+  - title: Search
     menu:
     - title: Spells
       route: search-spells    
