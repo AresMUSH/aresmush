@@ -32,7 +32,7 @@ website:
       id: ooc:about_us
     - title: Policies
       route: wiki-page
-      id: ooc:policies
+      id: policies
     - title: Join Us
       route: wiki-page
       id: ooc:join_us
