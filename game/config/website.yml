@@ -183,6 +183,25 @@ website:
     - target: blank
       title: MUSH 101 Tutorial <i class="fa fa-external-link-alt" aria-hidden="true">
       url: https://aresmush.com/mush-101/
+  - title: Search <i class="fa fa-search" aria-hidden="true"></i>
+    menu:
+    - title: Spells
+      route: search-spells    
+    - title: Scenes
+      route: search-scenes
+    - title: Characters
+      route: search-characters 
+    - title: Wiki
+      route: search-wiki 
+    - title: Forum
+      route: search-forum          
+    - title: Help
+      route: search-help       
+    - title: Locations
+      route: search-locations 
+    - title: Jobs/Requests
+      route: search-jobs                           
+      
   uploadable_extensions:
   - ".jpg"
   - ".png"
@@ -203,17 +222,19 @@ website:
     creatures:  world:cryptids
     bonding:  world:bond
     bond: world:bond
+    bonded: world:bonded
     locations: world:locations
-    cradle: locations:cradle
-    cradle_s: locations:cradle
-    cradle's: locations:cradle
-    weyr: locations:weyr    
-    weyrs: locations:weyr
-    prism_passes: locations:prism_passes
+    cradle: world:cradle
+    cradle_s: world:cradle
+    cradle's: world:cradle
+    weyr: world:weyr    
+    weyrs: world:weyr
+    prism_passes: world:prism_passes
     magical:  world:magic
     magic: world:magic
     blood_magic: magic:blood_magic
     blood:  magic:blood_magic
+    school: world:school
     telekinesis: magic:telekinesis
     telekinetic: magic:telekinesis
     telepathy: magic:telepathy
