@@ -232,7 +232,7 @@ website:
     creatures:  world:cryptids
     bonding:  world:bond
     bond: world:bond
-    bonded: world:bonded
+    bonded: world:bond
     locations: world:locations
     cradle: world:cradle
     cradle_s: world:cradle
@@ -243,7 +243,10 @@ website:
     magical:  magic
     blood_magic: magic:blood_magic
     blood:  magic:blood_magic
+    mages: world:mages
     school: world:school
+    technology: world:technology
+    tech: world:technology
     telekinesis: magic:telekinesis
     telekinetic: magic:telekinesis
     telepathy: magic:telepathy
