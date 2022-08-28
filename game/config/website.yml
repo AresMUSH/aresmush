@@ -244,6 +244,8 @@ website:
     blood_magic: magic:blood_magic
     blood:  magic:blood_magic
     mages: world:mages
+    potion: magic:potions
+    potions: magic:potions
     school: world:school
     technology: world:technology
     tech: world:technology
