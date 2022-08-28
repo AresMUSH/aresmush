@@ -300,6 +300,27 @@ input[type="text"],
 	color: $light-grey;
 }
 
+#navbar .navbar-nav>li:nth-of-type(9) {
+    margin-top: -1px
+}
+
+#navbar .navbar-nav>li:nth-of-type(9) .dropdown-toggle {
+    font-size: 0
+}
+
+#navbar .navbar-nav>li:nth-of-type(9) .dropdown-toggle:before {
+    font-size: 1rem;
+    content: "\f002";
+    font-weight: 400;
+    font-family: "Font Awesome 5 Pro";
+    display: inline-block;
+    line-height: 18px
+}
+
+.nav.navbar-right li:nth-of-type(8) .dropdown-toggle .caret {
+    display: none
+}
+
 //HEADER
 
 .site-title a,
@@ -313,6 +334,10 @@ input[type="text"],
 	font-size: 1.4em;
 	text-transform: uppercase;
 	letter-spacing: 0.1em;
+}
+
+.title-wrap {
+	height: 147px;
 }
 
 //JUMBOTRON
@@ -591,31 +616,28 @@ button {
 	color: #191919;
 }
 
+@media only screen and (max-width:1413px) {
+    .pagebox-pic,
+    .pagebox {
+        width: 97%!important
+    }
+    .pagebox-info {
+        flex-basis: 95%!important;
+    }
+}
+
 //PAGEBOX (SMALL W/ IMAGES)
 
 .pagebox-pic {
-	height: 11.8em;
 	float: left;
 	padding: .75em 1em;
 	margin: .5em;
-	overflow-y: auto;
 	width: 48.5%;
 	display: flex;
 	flex-flow: column;
 	justify-content: flex-start;
 	min-width: 400px;
-}
-
-.pagebox-pic::-webkit-scrollbar {
-	background-color: transparent;
-}
-
-.pagebox-pic::-webkit-scrollbar-thumb {
-	background-clip: content-box;
-	border: 4px solid transparent;
-	border-radius: 7px;
-	box-shadow: #45948e inset 0 0 0 10px;
-	width: 10px;
+	background-image: url('/game/uploads/theme_images/leatherbg.jpg');
 }
 
 .pagebox-pic p {
@@ -639,9 +661,6 @@ button {
 }
 
 .pagebox-icon-container {
-	overflow: hidden;
-	overflow-x: hidden;
-	background: #090909;
 	width: 150px;
 	height: 150px;
 	top: 0;
@@ -669,8 +688,15 @@ button {
 }
 
 .pagebox-info {
-	margin-left: 10px;
+	margin: 20px 10px;
 	flex-basis: 73%;
+	background-color: #cfc4b9;
+	padding: 10px;
+	transform: rotate(1deg);
+}
+
+.pagebox-info a {
+	color: $dark-red;
 }
 
 //THEME BOX
