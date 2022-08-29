@@ -20,14 +20,12 @@ module AresMUSH
 
         creature = Creature.create(
           name: request.args[:name],
-          major_school: request.args[:major_school],
-          minor_school: request.args[:minor_school],
           pinterest: request.args[:pinterest],
           found: request.args[:found],
           sapient: sapient,
-          language: request.args[:language],
           traits: request.args[:traits],
           society: request.args[:society],
+          combat: request.args[:combat],
           magical_abilities: request.args[:magical_abilities],
           events: request.args[:events],
           short_desc: request.args[:short_desc],
@@ -52,16 +50,6 @@ module AresMUSH
             if (!creature.gms.include?(gm))
               Creatures.add_gm(creature, gm)
             end
-          end
-        end
-
-        portal_ids = request.args[:portals] || []
-        creature.portals.replace []
-
-        portal_ids.each do |portal|
-          portal = Portal.find_one_by_name(portal.strip)
-          if (portal)
-            Creatures.add_portal(creature, portal)
           end
         end
 

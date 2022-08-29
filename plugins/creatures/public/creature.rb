@@ -6,11 +6,10 @@ module AresMUSH
     attribute :name
     attribute :name_upcase
     index :name_upcase
-    attribute :major_school
-    attribute :minor_school
     attribute :sapient, :type => DataType::Boolean, :default => false
-    attribute :language
+ 
     attribute :traits
+    attribute :combat
     attribute :society
     attribute :magical_abilities
     attribute :events
@@ -24,7 +23,6 @@ module AresMUSH
 
     collection :scenes, "AresMUSH::Scene"
     set :gms, "AresMUSH::Character"
-    set :portals, "AresMUSH::Portal"
     set :plots, "AresMUSH::Plot"
 
     def save_upcase
