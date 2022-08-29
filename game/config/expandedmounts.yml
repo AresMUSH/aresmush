@@ -1,65 +1,77 @@
 ---
 expandedmounts: 
   Dragon: 
-    armor: Tough Hide
+    armor: Dragon
     weapons:
     - Sharp Teeth
     - Sharp Claws
-    hitloc_chart: Dragon
+    hitloc_chart: Dragon  
+    attack: 6
     reflexes: 6
-    attack: 8
-    composure: 12
-    heal_roll: 10
+    stealth: 6
+    alertness: 6
+    composure: 8
+    heal_roll: 8
   Griffon: 
-    armor: Tough Hide
+    armor: Griffon
     weapons:
     - Sharp Teeth
     - Sharp Claws
     hitloc_chart: Flying Mythic
-    reflexes: 6
-    attack: 8
-    composure: 12
-    heal_roll: 8
+    attack: 7
+    reflexes: 7
+    stealth: 7
+    alertness: 8
+    composure: 6
+    heal_roll: 6
   Lupine: 
-    armor: Tough Hide
+    armor: Lupine
     weapons:
     - Sharp Teeth
     - Sharp Claws
     hitloc_chart: Flying Mythic
+    attack: 6
     reflexes: 6
-    attack: 8
-    composure: 12
-    heal_roll: 8
+    stealth: 7
+    alertness: 8
+    composure: 7
+    heal_roll: 7
   Patherine: 
-    armor: Tough Hide
+    armor: Patherine
     weapons:
     - Sharp Teeth
     - Sharp Claws
     hitloc_chart: Flying Mythic
+    attack: 6
     reflexes: 6
-    attack: 8
-    composure: 12
-    heal_roll: 8
+    stealth: 8
+    alertness: 9
+    composure: 6
+    heal_roll: 6
   Roc: 
-    armor: Tough Hide
+    armor: Roc
     weapons:
     - Sharp Teeth
     - Sharp Claws
     hitloc_chart: Flying Mythic
-    reflexes: 6
     attack: 8
-    composure: 12
-    heal_roll: 8    
+    reflexes: 8
+    stealth: 6
+    alertness: 6
+    composure: 6
+    heal_roll: 6    
   Pegasus: 
-    armor: Tough Hide
+    armor: Pegasus
     weapons:
     - Hard Hooves
     - Sharp Claws
     hitloc_chart: Flying Mythic
-    reflexes: 6
-    attack: 8
-    composure: 12
-    heal_roll: 8            
+    attack: 7
+    reflexes: 7
+    stealth: 6
+    alertness: 6
+    composure: 7
+    heal_roll: 7       
   healing_cron:
     hour:
     - 19

@@ -1,7 +1,123 @@
 ---
 fs3combat:
   armor:
+  #--------------
+  # MYTHIC ARMOR
+  #--------------
  
+    Dragon:
+      description: Dragon hide
+      is_magic: false
+      defense: 0
+      protection:
+        Chest: 8
+        Rear Left Leg: 7
+        Rear Right Leg: 7
+        Front Left Leg: 7
+        Front Right Leg: 7
+        Tail: 6
+        Right Wing: 6
+        Left Wing: 6
+        Abdomen: 8
+        Head: 7
+        Neck: 6
+    Dragon:
+      description: Dragon hide
+      is_magic: false
+      defense: 0
+      protection:
+        Chest: 8
+        Rear Left Leg: 7
+        Rear Right Leg: 7
+        Front Left Leg: 7
+        Front Right Leg: 7
+        Tail: 6
+        Right Wing: 6
+        Left Wing: 6
+        Abdomen: 8
+        Head: 7
+        Neck: 6
+    Griffon:
+      description: Griffon hide
+      is_magic: false
+      defense: 0
+      protection:
+        Chest: 6
+        Rear Left Leg: 5
+        Rear Right Leg: 5
+        Front Left Leg: 5
+        Front Right Leg: 5
+        Tail: 4
+        Right Wing: 4
+        Left Wing: 4
+        Abdomen: 6
+        Head: 5
+        Neck: 4
+    Lupine:
+      description: Lupine hide
+      is_magic: false
+      defense: 0
+      protection:
+        Chest: 7
+        Rear Left Leg: 6
+        Rear Right Leg: 6
+        Front Left Leg: 6
+        Front Right Leg: 6
+        Tail: 5
+        Right Wing: 5
+        Left Wing: 5
+        Abdomen: 7
+        Head: 6
+        Neck: 5
+    Pantherine:
+      description: Dragon hide
+      is_magic: false
+      defense: 0
+      protection:
+        Chest: 7
+        Rear Left Leg: 6
+        Rear Right Leg: 6
+        Front Left Leg: 6
+        Front Right Leg: 6
+        Tail: 4
+        Right Wing: 4
+        Left Wing: 4
+        Abdomen: 7
+        Head: 6
+    Pegasus:
+      description: Pegasus hide
+      is_magic: false
+      defense: 0
+      protection:
+        Chest: 7
+        Rear Left Leg: 6
+        Rear Right Leg: 6
+        Front Left Leg: 6
+        Front Right Leg: 6
+        Tail: 5
+        Right Wing: 5
+        Left Wing: 5
+        Abdomen: 7
+        Head: 6
+        Neck: 5
+    Roc:
+      description: Roc hide
+      is_magic: false
+      defense: 0
+      protection:
+        Chest: 6
+        Rear Left Leg: 5
+        Rear Right Leg: 5
+        Front Left Leg: 5
+        Front Right Leg: 5
+        Tail: 4
+        Right Wing: 4
+        Left Wing: 4
+        Abdomen: 6
+        Head: 5
+        Neck: 4                                          
+
+
 
   #--------------
   # CREATURE ARMOR

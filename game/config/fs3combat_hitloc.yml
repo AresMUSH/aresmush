@@ -202,15 +202,26 @@ fs3combat:
         - Left Wing
         Head:
         - Front Right Leg
+        - Front Left Leg
+        - Neck
+        - Neck
+        - Chest
+        - Chest
+        - Chest
+        - Head
+        - Head
+        - Head
+        Neck:
+        - Chest
+        - Chest
+        - Chest
+        - Front Left Leg
         - Front Right Leg
-        - Front Left Leg
-        - Front Left Leg
-        - Chest
-        - Chest
-        - Chest
         - Head
         - Head
-        - Head
+        - Neck
+        - Neck
+        - Neck
         Abdomen:
         - Rear Left Leg
         - Rear Right Leg
@@ -236,6 +247,7 @@ fs3combat:
       vital_areas:
       - Abdomen
       - Chest
+      - Neck
       critical_areas:
       - Head
       crew_areas:
