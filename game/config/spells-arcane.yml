@@ -63,6 +63,19 @@ spells:
     school: Arcane
     target_num: 1    
     weapon_special: Focus
+  Telepathic Reading:
+    available: true
+    casting_time: 1 round
+    damage_type: Psionic
+    desc: Read someone's surface thoughts. Can penetrate the innate shield of a bonded mage.
+    duration: 30 minutes
+    effect: Psionic
+    level: 2
+    name: Telepathic Reading
+    range: Short
+    roll: true
+    school: Arcane
+    target_num: 1        
 #---------------
 # LEVEL 3
 #---------------
@@ -147,19 +160,7 @@ spells:
     school: Arcane
     spell_mod: 1
     target_num: 1    
-  Telepathic Reading:
-    available: true
-    casting_time: 1 round
-    damage_type: Psionic
-    desc: Read someone's surface thoughts.
-    duration: 30 minutes
-    effect: Psionic
-    level: 3
-    name: Telepathic Reading
-    range: Short
-    roll: true
-    school: Arcane
-    target_num: 1    
+
 #---------------
 # LEVEL 4
 #---------------
