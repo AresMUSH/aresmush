@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Homemade+Apple&family=Noto+Serif:wght@400;700&family=Special+Elite&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Homemade+Apple&family=Noto+Serif:wght@400;700&family=PT+Sans&family=PT+Sans+Narrow&display=swap');
 
 $light-grey: #ebebeb;
 $dark-grey: #3a4146;
@@ -573,7 +573,7 @@ button {
 .pageboxl {
 	padding-top: 0;
 	text-align: right;
-	font-family: 'Special Elite', monospace;
+	font-family: 'Courier Prime', monospace;
 	color: red;
 	font-size: 1em;
 }
@@ -589,7 +589,7 @@ button {
 	border-bottom: 2px solid #3a4146;
 	margin-left: 3px;
 	margin-top: 0 !important;
-	font-family: "Special Elite", monospace !important;
+	font-family: 'Homemade Apple', monospace !important;
 	font-size: calc(14px + 0.4vw);
 }
 
@@ -617,13 +617,14 @@ button {
 }
 
 @media only screen and (max-width:1413px) {
-    .pagebox-pic,
-    .pagebox {
-        width: 97%!important
-    }
-    .pagebox-info {
-        flex-basis: 95%!important;
-    }
+	.pagebox-pic,
+	.pagebox {
+		width: 97%!important;
+		min-width: unset!important;
+	}
+	.pagebox-info {
+		flex-basis: 95%!important;
+	}
 }
 
 //PAGEBOX (SMALL W/ IMAGES)
@@ -655,7 +656,7 @@ button {
 	border-bottom: 2px solid #3a4146;
 	margin-left: 3px;
 	margin-top: 0 !important;
-	font-family: "Special Elite", monospace !important;
+	font-family: "Courier Prime", monospace !important;
 	font-size: calc(14px + 0.4vw);
 	position: relative;
 }
@@ -664,7 +665,6 @@ button {
 	width: 150px;
 	height: 150px;
 	top: 0;
-	position: sticky;
 }
 
 .pagebox-icon-container p,
@@ -688,15 +688,20 @@ button {
 }
 
 .pagebox-info {
-	margin: 20px 10px;
+	margin: 10px;
 	flex-basis: 73%;
 	background-color: #cfc4b9;
 	padding: 10px;
-	transform: rotate(1deg);
 }
 
-.pagebox-info a {
-	color: $dark-red;
+.pagebox-info a,
+.tab-content a {
+	color: $lighter-greyish-green;
+}
+
+.pagebox-info a:hover,
+.tab-content a:hover {
+	color: $secondary-color;
 }
 
 //THEME BOX
@@ -765,14 +770,14 @@ button {
 	flex-basis: 60%;
 }
 
-.box-title h2,
-.box-title .h2 {
+.box-title {
 	font-size: calc(14px + 0.4vw) !important;
 	color: #621624 !important;
 	margin-bottom: 0;
 	margin-top: .15em;
 	padding-top: 0;
 	line-height: 1.1;
+	font-family: 'Homemade Apple', 'Brush Script MT', cursive;
 }
 
 .box-header p {
@@ -782,7 +787,7 @@ button {
 .box-loc {
 	flex-basis: 40%;
 	text-align: right;
-	font-family: "Special Elite", monospace !important;
+	font-family: 'Homemade Apple', 'Brush Script MT', cursive;
 	font-size: calc(14px + 0.4vw) !important;
 	color: #621624;
 }
@@ -798,7 +803,7 @@ button {
 	background-color: #171a1c;
 	color: #d9c66a;
 	border-color: #090909;
-	font-family: 'Special Elite', monospace;
+	font-family: 'Courier Prime', monospace;
 	font-size: 1em;
 	letter-spacing: 1px;
 	font-weight: none;
@@ -808,7 +813,7 @@ button {
 
 .theme-page .nav-tabs .nav-link {
 	padding-top: 10px;
-	font-family: 'Special Elite', monospace;
+	font-family: 'Courier Prime', monospace;
 	line-height: 1;
 	border-radius: 0;
 	background: #444;
@@ -901,7 +906,7 @@ button {
 .tab-cover {
 	font-variant: none;
 	color: #090909;
-	font-family: 'Homemade Apple';
+	font-family: 'Homemade Apple', 'Brush Script MT', cursive;
 	padding: 20px;
 }
 
@@ -909,7 +914,7 @@ button {
 	font-size: 1.5em;
 	background-color: transparent;
 	color: #090909;
-	font-family: 'Homemade Apple';
+	font-family: 'Homemade Apple', 'Brush Script MT', cursive;
 	border: none;
 	letter-spacing: 0;
 }
@@ -933,7 +938,7 @@ button {
 	color: #090909;
 	clip-path: polygon(0 0, calc(100% - 1.5em) 0, 100% 100%, 0% 100%);
 	border-radius: 10px 0px 0px 0px;
-	font-family: 'Special Elite', monospace;
+	font-family: 'Courier Prime', monospace;
 	text-transform: uppercase;
 	padding-right: 30px;
 }
@@ -1020,8 +1025,8 @@ button {
 .log-icon-title {
 	color: $almost-black;
 	padding-right: 1em;
-	padding-top: 0.4em;
-	font-family: 'Special Elite', monospace;
+	padding-top: 0.33em;
+	font-family: 'Courier Prime', monospace;
 	font-size: 1.2em;
 }
 
@@ -1047,13 +1052,18 @@ h1,
 	width: fit-content;
 }
 
-h2 {
-	background-image: url(/game/uploads/css_files/ink-splatter.png);
-	background-size: contain;
-	background-repeat: repeat-x;
-	background-position: bottom left;
-	font-family: 'Homemade Apple', 'Brush Script MT', cursive;
-	width: fit-content;
+h2,
+.h2 {
+	font-family: 'Courier Prime', 'Courier New', monospace;
+	border-bottom: 1px solid $light-grey;
+	overflow: hidden;
+	font-weight: 700;
+}
+
+h3,
+.h3 {
+	font-family: 'PT Sans', Arial;
+	font-size: 1.65rem;
 }
 
 @media only screen and (max-width: 767px) {
@@ -1080,6 +1090,7 @@ h2 {
 	background-color: #1F252F;
 	font-family: 'PT Sans', sans-serif;
 	width: auto;
+	border-bottom: 0px;
 }
 
 .sidebar-box-right {
@@ -1140,7 +1151,7 @@ h2 {
 }
 
 .char-name {
-	font-family: 'Homemade Apple', cursive;
+	font-family: 'Homemade Apple', 'Brush Script MT', cursive;
 	text-transform: none;
 	font-size: 3.5em;
 	padding-top: 0.45em;
@@ -1313,7 +1324,7 @@ h1+p+table~span+hr+h2~div>p:last-of-type:not(:first-of-type) {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	font-family: "Homemade Apple", cursive;
+	font-family: 'Homemade Apple', 'Brush Script MT', cursive;
 	color: #090909;
 	font-size: 2rem;
 	box-shadow: var(--shadow-size) var(--shadow-size) 2px var(--paper-dark);
@@ -1499,7 +1510,7 @@ h1+p+table~span+hr+h2~div>p:last-of-type:not(:first-of-type) {
 }
 
 .toc h4 {
-	font-family: 'Homemade Apple', monospace;
+	font-family: 'Homemade Apple', 'Brush Script MT', cursive;
 	color: $darkest-rust;
 }
 
@@ -1530,13 +1541,15 @@ tr:nth-of-type(even) {
 	background: $lightest-slate;
 }
 
-.table-striped>tbody>tr:nth-of-type(odd) {
+.table-striped>tbody>tr:nth-of-type(odd),
+.xp-ability:nth-of-type(odd) {
 	background: $lighter-slate;
 	color: $light-grey;
 	line-height: 2;
 }
 
-.table-striped>tbody>tr:nth-of-type(even) {
+.table-striped>tbody>tr:nth-of-type(even),
+.xp-ability:nth-of-type(even) {
 	background: $lightest-slate;
 	color: $light-grey;
 	line-height: 2;
