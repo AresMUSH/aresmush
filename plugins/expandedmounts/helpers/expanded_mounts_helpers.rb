@@ -183,6 +183,12 @@ module AresMUSH
     elsif  ability == "Composure"
       mount_dice = Global.read_config("expandedmounts", mount.expanded_mount_type, "composure")
       rider_dice = FS3Skills.dice_to_roll_for_ability(char, roll_params)
+    elsif ability == "Stealth"
+      mount_dice = Global.read_config("expandedmounts", mount.expanded_mount_type, "stealth")
+      rider_dice = FS3Skills.dice_to_roll_for_ability(char, roll_params)
+    elsif ability == "Alterness"
+      mount_dice = Global.read_config("expandedmounts", mount.expanded_mount_type, "alterness")
+      rider_dice = FS3Skills.dice_to_roll_for_ability(char, roll_params)
     else
       #Don't average skills that mounts don't affect
       mount_dice = FS3Skills.dice_to_roll_for_ability(char, roll_params)
