@@ -24,7 +24,7 @@ fs3skills:
     linked_attr: Perception
   - name: Athletics
     linked_attr: Brawn
-    desc: General running, jumping, climbing, etc.
+    desc: General running, jumping, climbing, riding, etc.
   - name: Composure
     desc: Coolness under pressure. Resist KO in combat.
     linked_attr: Grit
@@ -32,7 +32,7 @@ fs3skills:
     desc: Shooting guns.
     linked_attr: Reflexes
   - name: Archery
-    desc: Shooting bows.
+    desc: Shooting with a bow and arrows.
     linked_attr: Reflexes
   - name: Brawl
     desc: Grappling, wrestling, and fighting with fists.
@@ -42,7 +42,6 @@ fs3skills:
     linked_attr: Wits
     specialties:
     - Doctor
-    - Surgeon
     - Nurse
     - Medic
     - Other
@@ -53,7 +52,7 @@ fs3skills:
     desc: Being sneaky.
     linked_attr: Reflexes
   - name: Technician
-    desc: General mechanics/electronics and fixing things.
+    desc:  General mechanics/electronics and fixing things. 
     linked_attr: Wits
   action_skills_blurb: 'Action Skills represent your ability in areas deemed important
     for gameplay.  Action Skills are rated from 0-8, but some games limit the highest
