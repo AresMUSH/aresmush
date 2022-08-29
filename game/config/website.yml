@@ -35,7 +35,7 @@ website:
       id: policies
     - title: Join Us
       route: wiki-page
-      id: ooc:join_us
+      id: guide:join_us
     - title: Staff Team
       route: wiki-page
       id: ooc:staff      
@@ -247,6 +247,11 @@ website:
     potion: magic:potions
     potions: magic:potions
     school: world:school
+    staff: ooc:staff
+    storytellers: ooc:staff
+    app_staff: ooc:staff
+    sts: ooc:staff
+    admin: ooc:staff
     technology: world:technology
     tech: world:technology
     telekinesis: magic:telekinesis
