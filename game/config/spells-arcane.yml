@@ -9,7 +9,7 @@ spells:
     damage_type: Psionic
     duration: 10 minutes
     effect: Psionic
-    level: 2
+    level: 1
     line_of_sight: true
     name: Dampen Emotion
     range: Short
@@ -25,7 +25,7 @@ spells:
     damage_type: Psionic
     effect: Other
     is_potion: true
-    level: 2
+    level: 1
     line_of_sight: true
     name: Restful Sleep
     range: Touch
