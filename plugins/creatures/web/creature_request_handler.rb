@@ -44,6 +44,14 @@ module AresMUSH
         files = Creatures.creature_page_files(creature)
         files = files.map { |f| Website.get_file_info(f) }
 
+        stats = [
+          {name: "Composure", rating: Global.read_config("expandedmounts", creature.name, "composure")},
+          {name: "Attack", rating: Global.read_config("expandedmounts", creature.name, "attack")},
+          {name: "Reflexes", rating: Global.read_config("expandedmounts", creature.name, "reflexes")},
+          {name: "Stealth", rating: Global.read_config("expandedmounts", creature.name, "stealth")},
+          {name: "Alertness", rating: Global.read_config("expandedmounts", creature.name, "alertness")}
+        ]
+
         {
           name: creature.name,
           gms: gms,
@@ -70,6 +78,10 @@ module AresMUSH
           image_gallery: (creature.image_gallery || []).join(' '),
           display_image_gallery: gallery_files.map { |g| Website.get_file_info(g) },
           files: files,
+          stats: stats,
+          armor: Global.read_config("expandedmounts", creature.name, "armor"),
+          weapons: Global.read_config("expandedmounts", creature.name, "weapons"),
+
         }
       end
 
