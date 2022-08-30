@@ -25,8 +25,8 @@ module AresMUSH
     end
     
     def self.check_points_on_spells(char)
-      if Magic.points_on_spells(char) > 15
-        error = "%xr< You cannot spend more than 15 points on spells. >%xn"
+      if Magic.points_on_spells(char) > 25
+        error = "%xr< You cannot spend more than 25 points on spells. >%xn"
       else
         error = t('chargen.ok')
       end
