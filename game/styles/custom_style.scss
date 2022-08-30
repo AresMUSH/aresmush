@@ -1659,6 +1659,7 @@ th,
 	background-repeat: no-repeat;
 	background-position: center;
 	color: $light-grey;
+	width: 97%;
   }
   
   .directory-info {
@@ -1724,3 +1725,14 @@ th,
  .creature-wrap {
 	background-image: url("/game/uploads/theme_images/leatherbg.jpg");
  }
+
+
+ // SPELL CARDS
+
+ .spell_card {
+	background: $darker-slate;
+	padding: 15px;
+	border: 2px solid white;
+	border-radius: 14px;
+	margin: 15px;
+  }
