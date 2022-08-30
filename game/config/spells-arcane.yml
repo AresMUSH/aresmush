@@ -209,7 +209,7 @@ spells:
     roll: true
     school: Arcane
     target_num: 1    
-  Arcane Of Pacifism:
+  Spirit Of Pacifism:
     available: true
     casting_time: 1 round
     damage_type: Psionic
