@@ -4,23 +4,6 @@ fs3combat:
   #--------------
   # MYTHIC ARMOR
   #--------------
- 
-    Dragon:
-      description: Dragon hide
-      is_magic: false
-      defense: 0
-      protection:
-        Chest: 8
-        Rear Left Leg: 7
-        Rear Right Leg: 7
-        Front Left Leg: 7
-        Front Right Leg: 7
-        Tail: 6
-        Right Wing: 6
-        Left Wing: 6
-        Abdomen: 8
-        Head: 7
-        Neck: 6
     Dragon:
       description: Dragon hide
       is_magic: false
@@ -115,7 +98,7 @@ fs3combat:
         Left Wing: 4
         Abdomen: 6
         Head: 5
-        Neck: 4                                          
+        Neck: 4
 
 
 

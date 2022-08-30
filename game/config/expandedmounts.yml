@@ -1,18 +1,18 @@
 ---
-expandedmounts: 
-  Dragon: 
+expandedmounts:
+  Dragon:
     armor: Dragon
     weapons:
     - Sharp Teeth
     - Sharp Claws
-    hitloc_chart: Dragon  
+    hitloc_chart: Dragon
     attack: 6
     reflexes: 6
     stealth: 6
     alertness: 6
     composure: 8
     heal_roll: 8
-  Griffon: 
+  Griffon:
     armor: Griffon
     weapons:
     - Sharp Teeth
@@ -24,7 +24,7 @@ expandedmounts:
     alertness: 8
     composure: 6
     heal_roll: 6
-  Lupine: 
+  Lupine:
     armor: Lupine
     weapons:
     - Sharp Teeth
@@ -36,8 +36,8 @@ expandedmounts:
     alertness: 8
     composure: 7
     heal_roll: 7
-  Patherine: 
-    armor: Patherine
+  Pantherine:
+    armor: Pantherine
     weapons:
     - Sharp Teeth
     - Sharp Claws
@@ -48,7 +48,7 @@ expandedmounts:
     alertness: 9
     composure: 6
     heal_roll: 6
-  Roc: 
+  Roc:
     armor: Roc
     weapons:
     - Sharp Teeth
@@ -59,8 +59,8 @@ expandedmounts:
     stealth: 6
     alertness: 6
     composure: 6
-    heal_roll: 6    
-  Pegasus: 
+    heal_roll: 6
+  Pegasus:
     armor: Pegasus
     weapons:
     - Hard Hooves
@@ -71,7 +71,7 @@ expandedmounts:
     stealth: 6
     alertness: 6
     composure: 7
-    heal_roll: 7       
+    heal_roll: 7
   healing_cron:
     hour:
     - 19
