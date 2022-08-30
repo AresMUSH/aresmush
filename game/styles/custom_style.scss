@@ -1650,6 +1650,44 @@ th,
 
 // CREATURE PAGES
 
+.directory-card {
+	background-color: $dark-gray-bg;
+	opacity: 85%;
+	padding: 10px;
+	margin: 15px;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+  }
+  
+  .directory-info {
+	  background: #404B56;
+	  opacity: 85%;
+	  padding: 10px;
+	  margin: 15px;
+	  font-style: italic;
+	  margin-right: 25%;
+  }
+  
+  .directory-title a {
+	color: white;
+  }
+  
+  .directory-title {
+	  text-shadow: 2px 2px 5px #2b2f33;
+	  font-size: 120%;
+	  margin-top: 35px;
+	}
+  
+  .short-desc {
+	  background: #404B56;
+	  opacity: 85%;
+	  padding: 10px;
+	  margin: 15px;
+	  font-style: italic;
+  }
+  
+
 .infobox {
 	margin: 15px 15px 0px 5px;
 	width: 350px;
@@ -1658,13 +1696,13 @@ th,
  }
  
  .infobox-body {
-	 background: #404B56;
+	 background: $greyish-green;
 	 padding: 20px;
 	 border-radius: 0px 0px 5px 5px;
  }
  
  .infobox-heading {
-	 background-color: #314254;
+	 background-color: $darkest-blue;
 	 border-bottom: 4px solid #293038;
 	 border-radius: 8px 8px 0px 0px;
  }
@@ -1682,3 +1720,6 @@ th,
 	 padding-top: 5px;
  }
  
+ .creature-wrap {
+	background-image: url("/game/uploads/theme_images/leatherbg.jpg");
+ }
