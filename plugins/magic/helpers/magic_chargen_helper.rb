@@ -11,6 +11,59 @@ module AresMUSH
       points
     end
 
+    # CHECKING ERRORS FOR CG ALERTS AND APP REVIEW
+    def self.check_cg_spell_errors(char)
+      errors = []
+      errors.concat [Magic.check_points_on_spells(char)[:error]]
+      errors.concat [Magic.check_wrong_school(char)[:error]]
+      errors.concat [Magic.check_wrong_levels(char)[:error]]
+      errors.concat [Magic.check_points_on_spells(char)[:error]]
+      # errors.concat Magic.check_spell_numbers(char)
+      puts "Errors 1 #{errors}"
+      errors = errors.reject { |e| e == "%xh%xg< OK! >%xn"}
+      puts "Errors 2 #{errors}"
+      return errors
+    end
+
+    def self.check_spell_numbers(char)
+      num = Global.read_config("magic", "cg_spell_max")
+      return [t('magic.too_many_spells_cg', :num => num)] if char.spells_learned.count > num
+      return []
+    end
+
+    def self.check_wrong_school(char)
+      spell_schools = char.spells_learned.map {|s| s.school}
+      if !spell_schools.all? { |s| char.schools.include?(s)}
+        return {
+          error: t('magic.wrong_school_cg'),
+          msg: "Checking Spell Schools",
+        }
+      end
+      return {
+        error: t('chargen.ok'),
+        msg: 'Checking Spell Schools',
+      }
+    end
+
+    def self.check_wrong_levels(char)
+      spell_names = char.spells_learned.map {|s| s.name}
+      spell_names.each do |s|
+        if !Magic.previous_level_spell?(char, s)
+          puts "No previous level: #{s}"
+          return {
+            error: t('magic.wrong_level_cg'),
+            msg: 'Checking Spell Levels',
+          }
+        end
+      end
+
+      return {
+        error: t('chargen.ok'),
+        msg: 'Checking Spell Levels',
+      }
+
+    end
+
     def self.check_magic_attribute_rating(char)
       magic = FS3Skills.ability_rating(char, "Magic")
       if magic > 3
@@ -23,66 +76,51 @@ module AresMUSH
         error: error
         }
     end
-    
+
     def self.check_points_on_spells(char)
       if Magic.points_on_spells(char) > 25
-        error = "%xr< You cannot spend more than 25 points on spells. >%xn"
+        points = 25
+        error = t('magic.too_many_points',)
       else
         error = t('chargen.ok')
       end
       return  {
-        msg: 'Checking Spells',
+        msg: 'Checking Spell Points',
         error: error
         }
 
     end
 
+    # --------------
+
     def self.cg_max_points_by_age(char)
       default_points = Global.read_config("fs3skills", "max_ap")
       if !char.age || char.age < 25
         points = default_points
-      elsif (26..35).include? char.age 
+      elsif (26..35).include? char.age
         points = default_points + 5
-      elsif (36..45).include? char.age 
+      elsif (36..45).include? char.age
         points = default_points + 10
       elsif char.age > 45
         points = default_points + 15
       end
     end
 
-    def self.check_cg_spell_errors(char)
-      errors = []
-      errors.concat Magic.check_wrong_school(char)
-      errors.concat Magic.check_wrong_levels(char)
-      errors.concat Magic.check_points_on_spells(char)[:error]
-      # errors.concat Magic.check_spell_numbers(char)
-      errors = errors.delete(t('chargen.ok'))
-      return errors
-    end
 
-    def self.check_spell_numbers(char)
-      num = Global.read_config("magic", "cg_spell_max")
-      return [t('magic.too_many_spells_cg', :num => num)] if char.spells_learned.count > num
-      return []
-    end
 
-    def self.check_wrong_school(char)
-      spell_schools = char.spells_learned.map {|s| s.school}
-      return [t('magic.wrong_school_cg')] if !spell_schools.all? { |s| char.schools.include?(s)}
-      return []
-    end
+    def self.starting_spell_names(custom_chargen_data)
+      return nil if !custom_chargen_data
 
-    def self.check_wrong_levels(char)
-      spell_names = char.spells_learned.map {|s| s.school}
-      spell_names.each do |s|
-        return [t('magic.wrong_level_cg')] if !Magic.previous_level_spell?(char, s) 
+      if custom_chargen_data[:mage_starting_spells] && !custom_chargen_data[:mythic_starting_spells]
+        spells = custom_chargen_data[:mage_starting_spells].values
+      elsif !custom_chargen_data[:mage_starting_spells] && custom_chargen_data[:mythic_starting_spells]
+        spells = custom_chargen_data[:mythic_starting_spells].values
+      elsif custom_chargen_data[:mage_starting_spells] && custom_chargen_data[:mythic_starting_spells]
+        spells = custom_chargen_data[:mage_starting_spells].values.merge(custom_chargen_data[:mythic_starting_spells])
+      else
+        return nil
       end
-      return []
-    end
 
-    def self.starting_spell_names(starting_spell_data)
-      return nil if !starting_spell_data
-      spells = starting_spell_data.values
       names = []
       spells.each do |spell|
         names << spell['name']
@@ -122,7 +160,7 @@ module AresMUSH
     def self.mage_cg_spells(char)
       level = Global.read_config("magic", "cg_max_spell_level")
       spells = Global.read_config("spells").values.select { |s| s['level'] <= level }
-      spells = spells.select { |s| (s['school'] == "Creation" || s['school'] == "Arcane")} 
+      spells = spells.select { |s| (s['school'] == "Creation" || s['school'] == "Arcane")}
 
       cg_spells = []
 
@@ -135,7 +173,7 @@ module AresMUSH
     def self.mythic_cg_spells(char)
       level = Global.read_config("magic", "cg_max_spell_level")
       spells = Global.read_config("spells").values.select { |s| s['level'] <= level }
-      spells = spells.select { |s| (s['school'] == "Aether" || s['school'] == "Entropy")} 
+      spells = spells.select { |s| (s['school'] == "Aether" || s['school'] == "Entropy")}
 
       cg_spells = []
 
@@ -156,7 +194,7 @@ module AresMUSH
     end
 
     def self.mage_starting_spells(char)
-      spells = char.spells_learned.to_a.select {|s| (s.learning_complete == true &&  (s['school'] == "Arcane" || s['school'] == "Creation"))}
+      spells = char.spells_learned.to_a.select {|s| (s.learning_complete == true &&  (s.school == "Arcane" || s.school == "Creation"))}
       starting_spells = []
 
       spells.each do |spell|
@@ -166,7 +204,7 @@ module AresMUSH
     end
 
     def self.mythic_starting_spells(char)
-      spells = char.spells_learned.to_a.select {|s| (s.learning_complete == true) &&  (s['school'] == "Aether" || s['school'] == "Entropy")}
+      spells = char.spells_learned.to_a.select {|s| (s.learning_complete == true) &&  (s.school == "Aether" || s.school == "Entropy")}
       starting_spells = []
 
       spells.each do |spell|

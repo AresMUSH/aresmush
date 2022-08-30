@@ -7,10 +7,11 @@ en:
     # ----------------------------
     # CG
     # ----------------------------
-      wrong_school_cg: "Some of your spells are in the wrong school. Spells must belong to one of your schools."
-      wrong_level_cg: "Some of your spells are the wrong level. You must have a spell of the previous level in the same school in order to know a higher level spell."
+      wrong_school_cg: "Some of your spells are in the wrong school."
+      wrong_level_cg: "Some of your spells are the wrong level."
       too_many_spells_cg: "You have selected too many spells. You may only know %{num} spells in chargen."
       starting_spell: "You have added %{spell} to your starting spell list. You have %{time_left} days to add %{num} a total of free starting spells."
+      too_many_points: "You cannot spend more than %{num} points on spells."
 
     # ----------------------------
     # ENERGY & FATIGUE
@@ -106,7 +107,7 @@ en:
       shield_failed_stun: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{target}'s %X17%{shield}%xn failed to stop it. %{name} %xgSUCCEEDS%xn and %{target} will be %xmstunned%xn for %{rounds} more rounds."
       shield_failed_stun_resisted: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{target}'s %X17%{shield}%xn failed to stop it, but %{target} resists and %xris not stunned%xn."
       no_damage_shield_failed: "%{name} casts %xB%{spell}%xn%{mod} on %{target} and %{target}'s %X17%{shield}%xn failed to stop it. %{name} %xgSUCCEEDS%xn."
-      
+
       shield_failed_against_attack: "%{name} attacks %{target} with %{weapon} and %{target}'s %X17%{shield}%xn failed to stop it. %{name} %xgHITS%xn, but the damage is reduced."
 
     # ----------------------------
