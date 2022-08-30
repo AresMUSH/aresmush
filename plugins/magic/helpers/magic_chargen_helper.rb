@@ -54,7 +54,9 @@ module AresMUSH
       errors = []
       errors.concat Magic.check_wrong_school(char)
       errors.concat Magic.check_wrong_levels(char)
-      errors.concat Magic.check_spell_numbers(char)
+      errors.concat Magic.check_points_on_spells(char)[:error]
+      # errors.concat Magic.check_spell_numbers(char)
+      errors = errors.delete(t('chargen.ok'))
       return errors
     end
 
