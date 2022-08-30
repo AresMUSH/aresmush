@@ -238,7 +238,7 @@ spells:
 #---------------
 # LEVEL 5
 #---------------
-  Commune With Local Arcane:
+  Commune With Local Spirit:
     available: true
     casting_time: 1 round to conjure, 1 round per question.
     damage_type: Bypass
@@ -246,7 +246,7 @@ spells:
     duration: 15 minutes
     effect: Communication
     level: 5
-    name: Commune with Local Arcane
+    name: Commune with Local Spirit
     range: Short
     roll: true
     school: Arcane
