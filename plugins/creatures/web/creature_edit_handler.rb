@@ -52,7 +52,7 @@ module AresMUSH
           creature.update(found: request.args[:found].blank? ? nil : request.args[:found])
           creature.update(sapient: sapient)
           creature.update(traits: request.args[:traits].blank? ? nil : request.args[:traits])
-          creature.update(traits: request.args[:combat].blank? ? nil : request.args[:combat])
+          creature.update(combat: request.args[:combat].blank? ? nil : request.args[:combat])
           creature.update(society: request.args[:society].blank? ? nil : request.args[:society])
           creature.update(short_desc: request.args[:short_desc].blank? ? nil : request.args[:short_desc])
           creature.update(magical_abilities: request.args[:magical_abilities].blank? ? nil : request.args[:magical_abilities])
