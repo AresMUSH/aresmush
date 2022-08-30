@@ -501,7 +501,7 @@ button {
 }
 
 .btn-warning:disabled {
-	color: #light-grey;
+	color: $light-grey;
 }
 
 .btn-danger {
@@ -840,7 +840,7 @@ button {
     .nav-tabs .nav-link.active > a:focus {
 	border: 1px solid #090909;
 	border-bottom: 0;
-	background-color: #lighter-green;
+	background-color: $lighter-green;
 	color: #ebebeb;
 	text-shadow: none;
 }
@@ -1588,7 +1588,7 @@ td {
 }
 
 .notifications-list a {
-	color: #darker-slate;
+	color: $darker-slate;
 }
 
 thead {
@@ -1647,3 +1647,38 @@ th,
 .alert-success {
 	margin-top: 10px;
 }
+
+// CREATURE PAGES
+
+.infobox {
+	margin: 15px 15px 0px 5px;
+	width: 350px;
+	border-radius: 10px;
+	border: 2px solid #293038;
+ }
+ 
+ .infobox-body {
+	 background: #404B56;
+	 padding: 20px;
+	 border-radius: 0px 0px 5px 5px;
+ }
+ 
+ .infobox-heading {
+	 background-color: #314254;
+	 border-bottom: 4px solid #293038;
+	 border-radius: 8px 8px 0px 0px;
+ }
+ 
+ .infobox-title-text {
+	 font-size: 20px;
+	 font-weight: bold;
+	 padding: 10px;
+	 text-align: left;
+ }
+ 
+ .infobox-subtitle {
+	 font-style: italic;
+	 font-size: 14px;
+	 padding-top: 5px;
+ }
+ 
