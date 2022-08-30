@@ -16,8 +16,8 @@ fs3skills:
     is_school: true
   - name: Entropy
     desc: Mythic ability to control the tangible forces of death and destruction.
-    linked_attr: Magic       
-    is_school: true       
+    linked_attr: Magic
+    is_school: true
   #MUNDANE SKILLS
   - name: Alertness
     desc: Noticing things and being aware of your surroundings. Combat initiative.
@@ -29,7 +29,7 @@ fs3skills:
     desc: Coolness under pressure. Resist KO in combat.
     linked_attr: Grit
   - name: Firearms
-    desc: Shooting guns.
+    desc: Shooting guns. A vanishingly rare skill in this world.
     linked_attr: Reflexes
   - name: Archery
     desc: Shooting with a bow and arrows.
@@ -52,7 +52,7 @@ fs3skills:
     desc: Being sneaky.
     linked_attr: Reflexes
   - name: Technician
-    desc:  General mechanics/electronics and fixing things. 
+    desc:  General mechanics/electronics and fixing things.
     linked_attr: Wits
   action_skills_blurb: 'Action Skills represent your ability in areas deemed important
     for gameplay.  Action Skills are rated from 0-8, but some games limit the highest
