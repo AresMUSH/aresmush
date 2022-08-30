@@ -117,8 +117,54 @@ module AresMUSH
       cg_spells.sort_by { |s| [s[:school], s[:level]] }
     end
 
+    def self.mage_cg_spells(char)
+      level = Global.read_config("magic", "cg_max_spell_level")
+      spells = Global.read_config("spells").values.select { |s| s['level'] <= level }
+      spells = spells.select { |s| (s['school'] == "Creation" || s['school'] == "Arcane")} 
+
+      cg_spells = []
+
+      spells.each do |k, v|
+        cg_spells << { name: k['name'], school: k['school'], level: [k['level']] }
+      end
+      cg_spells.sort_by { |s| [s[:school], s[:level]] }
+    end
+
+    def self.mythic_cg_spells(char)
+      level = Global.read_config("magic", "cg_max_spell_level")
+      spells = Global.read_config("spells").values.select { |s| s['level'] <= level }
+      spells = spells.select { |s| (s['school'] == "Aether" || s['school'] == "Entropy")} 
+
+      cg_spells = []
+
+      spells.each do |k, v|
+        cg_spells << { name: k['name'], school: k['school'], level: [k['level']] }
+      end
+      cg_spells.sort_by { |s| [s[:school], s[:level]] }
+    end
+
     def self.starting_spells(char)
       spells = char.spells_learned.to_a.select {|s| s.learning_complete == true}
+      starting_spells = []
+
+      spells.each do |spell|
+        starting_spells << { name: spell.name, school: spell.school, level: spell.level }
+      end
+      starting_spells.sort_by { |s| [s[:school], s[:level]] }
+    end
+
+    def self.mage_starting_spells(char)
+      spells = char.spells_learned.to_a.select {|s| (s.learning_complete == true &&  (s['school'] == "Arcane" || s['school'] == "Creation"))}
+      starting_spells = []
+
+      spells.each do |spell|
+        starting_spells << { name: spell.name, school: spell.school, level: spell.level }
+      end
+      starting_spells.sort_by { |s| [s[:school], s[:level]] }
+    end
+
+    def self.mythic_starting_spells(char)
+      spells = char.spells_learned.to_a.select {|s| (s.learning_complete == true) &&  (s['school'] == "Aether" || s['school'] == "Entropy")}
       starting_spells = []
 
       spells.each do |spell|
