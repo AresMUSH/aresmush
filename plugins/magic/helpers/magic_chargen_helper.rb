@@ -116,7 +116,7 @@ module AresMUSH
       elsif !custom_chargen_data[:mage_starting_spells] && custom_chargen_data[:mythic_starting_spells]
         spells = custom_chargen_data[:mythic_starting_spells].values
       elsif custom_chargen_data[:mage_starting_spells] && custom_chargen_data[:mythic_starting_spells]
-        spells = custom_chargen_data[:mage_starting_spells].values.merge(custom_chargen_data[:mythic_starting_spells])
+        spells = custom_chargen_data[:mage_starting_spells].values.concat custom_chargen_data[:mythic_starting_spells].values
       else
         return nil
       end
