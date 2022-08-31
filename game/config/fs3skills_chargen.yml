@@ -38,6 +38,6 @@ fs3skills:
           Melee: 3
           Stealth: 3
           Technician: 2
-  unusual_skills: {}
+  unusual_skills: []
 
 
