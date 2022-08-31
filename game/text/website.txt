@@ -1,6 +1,6 @@
 <div class="jumbotron-tagline">In the wake of its shattering, the world is born anew.</div>
 
-<div class="intro-txt"><p>Seventy-five years ago, the barrier between our world and theirs shattered. Monsters and magic ravaged humanity, tearing it apart.</p>
+<div class="intro-txt"><p>Fifty years ago, the barrier between our world and theirs shattered. Monsters and magic ravaged humanity, tearing it apart.</p>
 
 <p>But humanity will not go easily.</p>
 
