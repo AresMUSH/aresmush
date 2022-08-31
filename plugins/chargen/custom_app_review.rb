@@ -1,7 +1,16 @@
 module AresMUSH
   module Chargen
+
+    def self.bg_too_long(char)
+      msg = "Checking Background Length"
+      error = t('chargen.ok')
+      error = "Background should be less than 4,000 characters." if char.background.length > 4100
+      return { error: error, msg: msg }
+    end
+
     def self.custom_app_review(char)
       messages = []
+      messages.concat [Chargen.bg_too_long(char)]
       messages.concat [Magic.check_magic_attribute_rating(char)]
       messages.concat [Magic.check_points_on_spells(char)]
       messages.concat [Magic.check_wrong_school(char)]
