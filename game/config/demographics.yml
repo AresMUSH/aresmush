@@ -18,6 +18,7 @@ demographics:
     value: Mythic
   demographics:
   - full name
+  - callsign
   - gender
   - hair
   - eyes
@@ -29,6 +30,7 @@ demographics:
   disable_auto_shortcuts: false
   editable_properties:
   - full name
+  - callsign
   - gender
   - hair
   - skin
@@ -65,10 +67,11 @@ demographics:
         Roc: A massive bird of prey.
         Pantherine: A great winged cat.
         Lupine: An enormous winged wolf.
-        Dragon: Four legs, wings, and a breath that can kill.    
+        Dragon: Four legs, wings, and a breath that can kill.
   help_text:
     played by: "%xcplayedby <actor>%xn - Your 'dream casting' for your character."
     physique: "%xcphysique <build/body type>%xn - athletic, wiry, slim, pudgy, etc."
+    callsign: "%xccallsign <callsign>%xn - Non-Wardens may leave blank."
     gender: "%xcgender <male/female/other>%xn"
     hair: "%xchair <hair color>%xn"
     eyes: "%xceyes <eye color>%xn"
