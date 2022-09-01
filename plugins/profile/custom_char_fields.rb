@@ -53,7 +53,11 @@ module AresMUSH
           mount_desc: ExpandedMounts.mount_desc(char),
           mount_shortdesc: ExpandedMounts.mount_shortdesc(char),
           lore_hook_pref: { value: char.lore_hook_pref, desc: char.lore_hook_pref },
-          lore_hook_prefs: Lorehooks.lore_hook_cg_prefs
+          lore_hook_prefs: Lorehooks.lore_hook_cg_prefs,
+          magic_blurb: Global.read_config("magic", "cg_blurb"),
+          mythic_blurb: Global.read_config("expandedmounts", "cg_blurb"),
+          mythic_magic_blurb: Global.read_config("expandedmounts", "magic_blurb"),
+          lorehook_blurb: Global.read_config("magic", "lorehook_blurb"),
         }
       end
 

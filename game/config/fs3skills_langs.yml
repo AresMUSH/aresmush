@@ -1,8 +1,6 @@
 ---
 fs3skills:
-  language_blurb: 'Languages represent your ability to speak and read other languages.  Languages
-    have a descriptive rating.   See <a href="https://aresmush.com/fs3/fs3-3/chargen.html#languages"
-    target="_blank">FS3: Languages</a> for details.'
+  language_blurb: "Languages represent your ability to speak and read other languages. On Shattered, we do not track languages. Everyone receives English for free. <br><br>You're welcome to assume one other language at any level of fluency you choose, but remember that the world is very different, and encounters with foreign languages are far less common. If you plan to do this, reflect the language in question with a Background skill."
   languages:
   - name: English
     desc: English

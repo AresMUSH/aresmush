@@ -53,21 +53,21 @@ demographics:
       noun: person
   groups:
     Organization:
-      desc: Organization
+      desc: Most characters will be Wardens.
       wiki: ''
       values:
         Warden: Protect the Cradle.
         Other: Less Cool.
     Mythic:
       wiki: ''
-      desc: What type of mythic are you bonded with?
+      desc: "What type of mythic is your character bonded with?"
       values:
         Griffin: Half bird of prey, half large cat.
         Pegasus: Flying horse, horn optional.
         Roc: A massive bird of prey.
         Pantherine: A great winged cat.
         Lupine: An enormous winged wolf.
-        Dragon: Four legs, wings, and a breath that can kill.
+        Dragon: Four legs, leathery wings, and a tail.
   help_text:
     played by: "%xcplayedby <actor>%xn - Your 'dream casting' for your character."
     physique: "%xcphysique <build/body type>%xn - athletic, wiry, slim, pudgy, etc."

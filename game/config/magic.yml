@@ -8,13 +8,13 @@ magic:
   days_between_learning_spells: 7
   item_category: "Luck"
   potion_spell: "Potion"
-  major_schools: 
+  major_schools:
   - Arcane
   - Creation
-  minor_schools: 
+  minor_schools:
   - Aether
   - Entropy
-  xp_per_level: 
+  xp_per_level:
     1: 1
     2: 2
     3: 3
@@ -49,7 +49,7 @@ magic:
     minute:
     - 00
   permissions:
-    manage_magic: Add and remove magic items, potions, and spells to and from characters. 
+    manage_magic: Add and remove magic items, potions, and spells to and from characters.
   shortcuts:
     combat/cast: combat/spell
     cast: spell/cast
@@ -84,9 +84,24 @@ magic:
     9: 9
     10: 10
   fatigue_effect:
-    Mild: "They are beginning to feel queasy, and everything is beginning to feel a little more difficult."
-    Moderate: "They are quite nauseous and feel increasingly tired. It's hard to focus, and everything is substantially more difficult."
-    Severe: "They are severely nauseous and are starting to feel exhausted. It's very difficult to focus."
-    Extreme: "They feel on the edge of collapse and even basic tasks are almost impossible. They desperately need a rest."
-    Total: "They have stretched themselves to their limit and can manage nothing more than basic movement."
+    Mild: "They are beginning to feel queasy, and everything is beginning to feel a little more
+    difficult."
+    Moderate: "They are quite nauseous and feel increasingly tired. It's hard to focus, and
+     everything is substantially more difficult."
+    Severe: "They are severely nauseous and are starting to feel exhausted. It's very difficult to
+    focus."
+    Extreme: "They feel on the edge of collapse and even basic tasks are almost impossible. They
+    desperately need a rest."
+    Total: "They have stretched themselves to their limit and can manage nothing more than basic
+    movement."
   item_category: LUCK
+  cg_blurb: 'Mages have access to either <a href="/school/arcane">Arcane</a> or <a href="/school/aether">Creation</a> magic.
+    <ul><li>Spells cost 1 AP per level.</li>
+    <li>You can spend 25 AP on spells (both mage and mythic).</li>
+    <li>Spells must be in your mage school.</li>
+    <li>You must have a spell in each previous level.</li></ul>'
+  lorehook_blurb: 'Lore Hooks are bits of fun lore that are unique to you. Storytellers begin working
+  on Lore Hooks when a character has been played for at least two months. Most Lore Hooks are handed
+  out after 4-6 months of play.<br><br>If you have preferences for the sort of Lore Hook you receive,
+  feel free to leave them in the comments before submitting your application. You can also set or
+  change your preference any time after CG.'
