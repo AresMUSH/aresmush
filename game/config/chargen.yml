@@ -40,9 +40,7 @@ chargen:
       your character at a glance. Providing a profile icon is optional. You can upload
       additional character images once you're approved.<br><br>All images should be publicly available
       and feature public persons such as actors, models, or professional athletes."
-  lastwill_blurb: The fate of idled-out characters is at the game admin's discretion,
-    but you can register a preference with your character's 'last will'. You may ask
-    to be killed off, or turned into a NPC, or whatever.
+  lastwill_blurb: Idled out characters will generally be presumed to be on a duty rotation at a Warden Outpost, so that they can be picked back up if you wish to return. If you have a different preference, you can register it with your character's 'last will'.
   post_approval_message: Please make sure they have a profile image for their log
     icon.
   rank_blurb: Military rank.
