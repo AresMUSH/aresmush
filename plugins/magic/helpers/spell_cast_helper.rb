@@ -40,26 +40,26 @@ module AresMUSH
       caster = Character.named(caster_name) || "NPC"
       names = []
       messages = []
-      
+
       #Used for spell/npc when npcs cast on themselves - does nothing but emit success
       npc_msg = t('magic.casts_spell', :name => caster_name, :spell => spell_name, :mod => mod, :succeeds => success)
       return messages.concat [npc_msg] if (targets == "npc_target")
 
       #Run all the spell or potion effects
       targets.each do |target|
-        
+
         #Shields don't stop potion use or casting on oneself
         stopped_by_shield = ((caster != target) && !using_potion ) ? Magic.stopped_by_shield?(target, caster_name, spell_name, result) : nil
 
         if stopped_by_shield && !stopped_by_shield[:hit]
-          #adds the shield message regardless of whether it failed or succeeded. 
+          #adds the shield message regardless of whether it failed or succeeded.
           messages.concat [stopped_by_shield[:msg]]
-        else 
+        else
           #Add effects and messages for shields that failed or when no relevant shields are active
           names.concat [target.name]
 
           if stopped_by_shield
-            #This has to be separate 
+            #This has to be separate
             messages.concat [stopped_by_shield[:msg]]
           end
 
@@ -67,9 +67,9 @@ module AresMUSH
             message = Magic.cast_shield(caster_name, target, spell_name, spell['rounds'], result)
             messages.concat message
           end
-          
+
           if spell['energy_points']
-            message = Magic.cast_fatigue_heal(caster_name, target, spell_name)
+            message = Magic.cast_fatigue_heal(caster_name, target.name, spell_name)
             # if caster = target
             #   caster.update(magic_energy: target.magic_energy)
             # end
@@ -126,8 +126,8 @@ module AresMUSH
         MagicShields.create(shield)
       end
 
-      shield = Magic.find_shield_named(target, spell)     
-       
+      shield = Magic.find_shield_named(target, spell)
+
       msg = "Setting #{target.name}'s #{spell.upcase} to #{shield.strength}"
       Magic.log_magic_msg(target_char_or_combatant, msg)
 
@@ -157,14 +157,23 @@ module AresMUSH
       return message
     end
 
-    def self.cast_fatigue_heal(caster_name, target_char, spell)
+    def self.cast_fatigue_heal(caster_name, target_name, spell)
+      target_char = Character.named(target_name)
       puts "Magic energy before heal IN method: #{target_char }#{target_char.name} #{target_char.magic_energy}"
       energy_points = Global.read_config("spells", spell, "energy_points")
-      magic_energy = [(target_char.magic_energy + energy_points), (target_char.total_magic_energy * 0.8)].min
-      target_char.update(magic_energy: magic_energy)
+      new_magic_energy = [(target_char.magic_energy + energy_points), (target_char.total_magic_energy * 0.8)].min
+      puts "Magic energy #{new_magic_energy}"
+      target_char.update(magic_energy: new_magic_energy)
+      puts "Char #{target_char} #{target_char.name} #{target_char.magic_energy}"
       message = [t('magic.cast_fatigue_heal', :name => caster_name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn", :target => target_char.name, :points => energy_points)]
       puts "Magic energy after heal IN method!: #{target_char } #{target_char.name} #{target_char.magic_energy}"
       return message
+    end
+
+    def self.do_fatigue_heal(target_name, new_magic_energy)
+      char = Character.named(target_name)
+      char.update(magic_energy: new_magic_energy)
+      puts "Char #{char} #{char.name} #{char.magic_energy}"
     end
 
     def self.cast_weapon(caster_name, combatant, target, spell, weapon)
