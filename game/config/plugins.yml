@@ -15,7 +15,9 @@ plugins:
     weather: https://github.com/aresmush/ares-weather-plugin
   disabled_plugins:
   - ranks
-  extras: []
+  extras:
+  - txt
+  - postevent
   optional_plugins:
   - achievements
   - chargen

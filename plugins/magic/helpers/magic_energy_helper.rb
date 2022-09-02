@@ -11,9 +11,9 @@ module AresMUSH
       if (char.class == Npc)
         cost = cost + 1
       else
-        if char.major_schools.include?(spell_school) 
+        if char.major_schools.include?(spell_school)
           cost = cost
-        elsif char.minor_schools.include?(spell_school) 
+        elsif char.minor_schools.include?(spell_school)
           cost = cost + 2
         else
           cost = cost + 3
@@ -48,7 +48,9 @@ module AresMUSH
         effect = Global.read_config("magic", "fatigue_effect", "Total")
         msg = t('magic.magic_fatigue', :name => char.name, :degree => "%xrTOTAL%xn", :effect => effect)
       else
-        degree = nil
+        degree = "None"
+        effect = Global.read_config("magic", "fatigue_effect", "None")
+        msg = t('magic.magic_fatigue', :name => char.name, :degree => "%xgno%xn", :effect => effect)
       end
       return {
         msg: msg,
