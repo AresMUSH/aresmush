@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Homemade+Apple&family=Noto+Serif:wght@400;700&family=PT+Sans&family=PT+Sans+Narrow&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Homemade+Apple&family=Noto+Serif:wght@400;700&family=PT+Sans&family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 $light-grey: #ebebeb;
 $dark-grey: #3a4146;
@@ -408,7 +408,7 @@ button {
 	text-shadow: none;
 	font-family: 'PT Sans', sans-serif;
 	text-transform: uppercase;
-	font-size: 18px;
+	font-size: 16px;
 	font-weight: 700;
 	background-image: url('/game/uploads/css_files/rust-texture.png');
 	background-size: 500px;
@@ -418,8 +418,8 @@ button {
 }
 
 .btn-success:hover {
-	color: #333;
-	background-color: $light-grey;
+	color: $light-grey;
+	background-color: $darker-rust;
 	border-color: #adadad;
 }
 
@@ -447,8 +447,8 @@ button {
 .btn-primary:hover,
 .btn-danger:hover {
 	text-shadow: none;
-	background-color: $green;
-	border-color: $darker-green;
+	background-color: $darker-rose;
+	border-color: $dark-rose;
 	color: $light-grey;
 	background-image: url('/game/uploads/css_files/rust-texture.png');
 	background-size: 500px;
@@ -589,7 +589,8 @@ button {
 	border-bottom: 2px solid #3a4146;
 	margin-left: 3px;
 	margin-top: 0 !important;
-	font-family: 'Homemade Apple', monospace !important;
+	font-family: 'Homemade Apple', 'Brush Script MT', cursive !important;
+	word-spacing: 10px;
 	font-size: calc(14px + 0.4vw);
 }
 
@@ -788,6 +789,7 @@ button {
 	flex-basis: 40%;
 	text-align: right;
 	font-family: 'Homemade Apple', 'Brush Script MT', cursive;
+	word-spacing: 10px;
 	font-size: calc(14px + 0.4vw) !important;
 	color: #621624;
 }
@@ -864,6 +866,11 @@ button {
 	background-color: $darker-grey;
 }
 
+.profile-divider {
+    background-color: $slate;
+    padding: 3px;
+}
+
 .profile-tab .nav-tabs > .nav-item:first-child > .nav-link {
 	min-width: auto;
 	border-radius: 0px;
@@ -908,6 +915,7 @@ button {
 	color: #090909;
 	font-family: 'Homemade Apple', 'Brush Script MT', cursive;
 	padding: 20px;
+	word-spacing: 10px;
 }
 
 .char-ability-title {
@@ -917,6 +925,7 @@ button {
 	font-family: 'Homemade Apple', 'Brush Script MT', cursive;
 	border: none;
 	letter-spacing: 0;
+	word-spacing: 10px;
 }
 
 .search_results {
@@ -1058,6 +1067,7 @@ h2,
 	border-bottom: 1px solid $light-grey;
 	overflow: hidden;
 	font-weight: 700;
+	line-height: unset;
 }
 
 h3, .h3,
@@ -1065,22 +1075,27 @@ h4, .h4,
 h5, .h5,
 h6, .h6 {
 	font-family: 'PT Sans', Arial;
+	line-height: unset;
 }
 
 h3, .h3 {
 	font-size: 1.5rem;
+	line-height: unset;
 }
 
 h4, .h4 {
 	font-size: 1.4rem;
+	line-height: unset;
 }
 
 h5, .h5 {
 	font-size: 1.3rem;
+	line-height: unset;
 }
 
 h6, .h6 {
 	font-size: 1.2rem;
+	line-height: unset;
 }
 
 @media only screen and (max-width: 767px) {
@@ -1342,6 +1357,7 @@ h1+p+table~span+hr+h2~div>p:last-of-type:not(:first-of-type) {
 	align-items: center;
 	justify-content: center;
 	font-family: 'Homemade Apple', 'Brush Script MT', cursive;
+	word-spacing: 10px;
 	color: #090909;
 	font-size: 2rem;
 	box-shadow: var(--shadow-size) var(--shadow-size) 2px var(--paper-dark);
@@ -1528,6 +1544,7 @@ h1+p+table~span+hr+h2~div>p:last-of-type:not(:first-of-type) {
 
 .toc h4 {
 	font-family: 'Homemade Apple', 'Brush Script MT', cursive;
+	word-spacing: 10px;
 	color: $darkest-rust;
 }
 
@@ -1763,7 +1780,7 @@ th,
 .index-card {
      width: 100%;
      height: fit-content;
-     background: repeating-linear-gradient( #fefbf7, #fefbf7 28px, #9198e5 29px, #9198e5 30px );
+     background: repeating-linear-gradient( #fefbf7, #fefbf7 28px, #cfd2f4 29px, #cfd2f4 30px );
      position: relative;
      display: flex;
      flex-direction: column;
@@ -1775,6 +1792,12 @@ th,
      background: linear-gradient( #fefbf7, #fefbf7 37px, pink 39px, pink 40px);
      color: #090909;
 }
+
+.card-title {
+     font-family: 'Homemade Apple', 'Brush Script MT', cursive;
+     word-spacing: 10px;
+}
+
  .card-text {
      position: relative;
      margin: 0 20px;
@@ -1783,17 +1806,24 @@ th,
      padding-bottom: 10px;
 }
 
+.card-text h5 {
+     font-family: 'Courier Prime', monospace;
+     font-size: 1.2em;
+}
+
 .spell-stats {
     display: flex;
     flex-flow: row nowrap;
 }
 
 .stats-left {
-    flex-basis: calc(100% - 200px);
+    flex-basis: calc(100% - 320px);
+    padding-right: 10px;
 }
 
 .stats-right {
-    flex-basis: 200px;
+    flex-basis: 320px;
+    font-family: 'Courier Prime', monospace;
 }
 
  .spell-icons {

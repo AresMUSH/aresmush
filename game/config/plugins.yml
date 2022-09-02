@@ -17,6 +17,7 @@ plugins:
   - ranks
   extras:
   - txt
+  - postevent
   optional_plugins:
   - achievements
   - chargen
