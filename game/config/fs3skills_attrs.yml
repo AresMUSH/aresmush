@@ -18,5 +18,5 @@ fs3skills:
   attributes_blurb: 'Attributes represent basic abilities that everyone has to some
     extent. Attributes boost related skills, and come into play when no skill directly
     applies.  Most attributes are rated from 1-4, but only magic users have a Magic attribute.. See <a href="https://aresmush.com/fs3/fs3-3/chargen.html#attributes"
-    target="_blank">FS3: Attributes</a> for details. <br><br> **See the <a href="/wiki/guide/join_us">character creation guide</a> for help choosing your skills.**'
+    target="_blank">FS3: Attributes</a> for details. <br><br> **See the <a href="/wiki/guide:join_us">character creation guide</a> for help choosing your skills.**'
   default_linked_attr: Wits
