@@ -29,7 +29,7 @@ module AresMUSH
       def action_skills
         list = []
         @char.fs3_action_skills.sort_by(:schools).each_with_index do |a, i|
-          schools = Global.read_config("schools")
+          schools = Global.read_config("magic", "schools")
           if !schools.include? a.name
             if a.rating_name != "Incapable"
               list << format_attr(a, i)
