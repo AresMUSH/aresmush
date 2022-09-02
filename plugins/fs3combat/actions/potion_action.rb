@@ -79,6 +79,7 @@ module AresMUSH
         stance = Global.read_config("spells", self.spell, "stance")
         roll = Global.read_config("spells", self.spell, "roll")
         rounds = Global.read_config("spells", self.spell, "rounds")
+        energy_points = Global.read_config("spells", self.spell, "energy_points")
 
         succeeds = "%xgSUCCEEDS%xn"
 
@@ -98,6 +99,16 @@ module AresMUSH
                messages.concat [t('magic.potion_heal_no_effect', :name => self.name, :potion => self.spell)]
             end
             target.update(death_count: 0  )
+          end
+
+          if energy_points
+            puts "Magic energy before heal method: #{target.associated_model }#{target.associated_model.name} #{target.associated_model.magic_energy}"
+            message = Magic.cast_fatigue_heal(self.name, target.associated_model, self.spell)
+            # if combatant == target
+            #   combatant.associated_model.update(magic_energy: target.associated_model.magic_energy)
+            # end
+            messages.concat message
+            puts "Magic energy after heal method!: #{target.associated_model }#{target.associated_model.name} #{target.associated_model.magic_energy}"
           end
 
           #Equip Weapon
