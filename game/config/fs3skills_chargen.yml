@@ -25,6 +25,7 @@ fs3skills:
         Entropy: 0
         Creation: 0
         Arcane: 0
+        English: 3
     Organization:
       Warden:
         skills:

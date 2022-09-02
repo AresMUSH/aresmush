@@ -40,7 +40,9 @@ module AresMUSH
       end
 
       def spells_still_learning_list
-        self.spells_learned.select { |s| !s.learning_complete}.sort_by { |s| s.level }
+        spells = self.spells_learned.select { |s| !s.learning_complete}.sort_by { |s| s.level }
+        spells.empty? : spells = nil : spells = spells
+        spells
       end
 
       def spell_max
