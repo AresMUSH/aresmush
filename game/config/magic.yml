@@ -84,6 +84,7 @@ magic:
     9: 9
     10: 10
   fatigue_effect:
+    None: "They feel well-rested and capable."
     Mild: "They are beginning to feel queasy, and everything is beginning to feel a little more
     difficult."
     Moderate: "They are quite nauseous and feel increasingly tired. It's hard to focus, and
