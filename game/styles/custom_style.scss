@@ -1060,10 +1060,27 @@ h2,
 	font-weight: 700;
 }
 
-h3,
-.h3 {
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6 {
 	font-family: 'PT Sans', Arial;
-	font-size: 1.65rem;
+}
+
+h3, .h3 {
+	font-size: 1.5rem;
+}
+
+h4, .h4 {
+	font-size: 1.4rem;
+}
+
+h5, .h5 {
+	font-size: 1.3rem;
+}
+
+h6, .h6 {
+	font-size: 1.2rem;
 }
 
 @media only screen and (max-width: 767px) {
@@ -1737,3 +1754,50 @@ th,
 	border-radius: 14px;
 	margin: 15px;
   }
+
+.spell-card {
+     margin: 10px;
+     margin-bottom: 15px;
+}
+
+.index-card {
+     width: 100%;
+     height: fit-content;
+     background: repeating-linear-gradient( #fefbf7, #fefbf7 28px, #9198e5 29px, #9198e5 30px );
+     position: relative;
+     display: flex;
+     flex-direction: column;
+     min-width: 0;
+     word-wrap: break-word;
+}
+ .card-header {
+     height: 40px;
+     background: linear-gradient( #fefbf7, #fefbf7 37px, pink 39px, pink 40px);
+     color: #090909;
+}
+ .card-text {
+     position: relative;
+     margin: 0 20px;
+     line-height: 30px;
+     color: #090909;
+     padding-bottom: 10px;
+}
+
+.spell-stats {
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.stats-left {
+    flex-basis: calc(100% - 200px);
+}
+
+.stats-right {
+    flex-basis: 200px;
+}
+
+ .spell-icons {
+     position: absolute;
+     top: 0.75em;
+     right: 1.5em;
+}
