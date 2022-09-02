@@ -41,7 +41,7 @@ module AresMUSH
 
       def spells_still_learning_list
         spells = self.spells_learned.select { |s| !s.learning_complete}.sort_by { |s| s.level }
-        spells.empty? : spells = nil : spells = spells
+        spells.empty? ? spells = nil : spells = spells
         spells
       end
 
