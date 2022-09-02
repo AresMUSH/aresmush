@@ -95,7 +95,7 @@ magic:
     Total: "They have stretched themselves to their limit and can manage nothing more than basic
     movement."
   item_category: LUCK
-  cg_blurb: 'Mages have access to either <a href="/school/arcane">Arcane</a> or <a href="/school/aether">Creation</a> magic.
+  cg_blurb: 'Mages have access to either <a href="/school/arcane">Arcane</a> or <a href="/school/creation">Creation</a> magic.
     <ul><li>Spells cost 1 AP per level.</li>
     <li>You can spend 25 AP on spells (both mage and mythic).</li>
     <li>Spells must be in your mage school.</li>
