@@ -43,6 +43,7 @@ module AresMUSH
           return t('magic.not_ko', :target => target.name) if ((spell['is_revive'] || spell['auto_revive']) && !target.is_ko)
           wound = FS3Combat.worst_treatable_wound(target.associated_model)
           return t('magic.no_healable_wounds', :target => target.name) if (spell['heal_points'] && wound.blank? && !spell['weapon'])
+          return t('magic.cannot_spell_fatigue_heal_further', :name => target.name) if (spell['energy_points'] && (target.associated_model.magic_energy >= (target.associated_model.total_magic_energy * 0.8)))
           # Check that weapon specials can be added to weapon
           if spell['weapon_specials']
             return "This spell is currently broken. Don't worry, I know."
@@ -136,7 +137,7 @@ module AresMUSH
                 message = Magic.cast_heal(self.caster_name, target, self.spell_name, spell['heal_points'])
                 messages.concat message
               end
-              
+
               if spell['energy_points']
                 puts "Magic energy before heal method: #{target.associated_model }#{target.associated_model.name} #{target.associated_model.magic_energy}"
                 message = Magic.cast_fatigue_heal(self.caster_name, target.associated_model, self.spell_name)

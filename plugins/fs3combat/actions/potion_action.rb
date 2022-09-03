@@ -33,6 +33,8 @@ module AresMUSH
           heal_points = Global.read_config("spells", self.spell, "heal_points")
           weapon = Global.read_config("spells", self.spell, "weapon")
           return t('magic.no_healable_wounds', :target => target.name) if (heal_points && wound.blank? && !weapon)
+          energy_points = Global.read_config("spells", self.spell, "energy_points")
+          return t('magic.cannot_spell_fatigue_heal_further', :name => target.name) if (energy_points && (target.associated_model.magic_energy >= (target.associated_model.total_magic_energy * 0.8)))
           # Check that weapon specials can be added to weapon
           weapon_specials_str = Global.read_config("spells", self.spell, "weapon_specials")
           if weapon_specials_str

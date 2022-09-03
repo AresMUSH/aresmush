@@ -61,7 +61,7 @@ module AresMUSH
       end
     end
 
-    def self.spell_success(die_result) 
+    def self.spell_success(die_result)
       if die_result < 1
         return "%xrFAILS%xn"
       else
@@ -72,22 +72,24 @@ module AresMUSH
     def self.parse_spell_targets(name_string, npc = false)
       #In combat, use FS3.parse_targets and then run the targets through spell_target_errors
       target_names = name_string.split(" ").map { |n| InputFormatter.titlecase_arg(n) }
-      targets = []     
+      targets = []
       target_names.each do |name|
         target = Character.named(name)
-        return t('magic.invalid_name') if (!target && !npc)     
+        return t('magic.invalid_name') if (!target && !npc)
         return "npc_target" if npc
-        targets << target        
+        targets << target
       end
       return targets
     end
 
     def self.spell_target_errors(enactor, targets, spell)
       # spell/npc is targeting the npc who cast the spell
-      return false if targets == "npc_target" 
-
+      return false if targets == "npc_target"
+      puts "CHECKING SPELL ERRORS"
       target_num = Global.read_config("spells", spell, "target_num") || 1
       return t('magic.too_many_targets', :spell => spell, :num => target_num ) if targets.count > target_num
+      energy_points = Global.read_config("spells", spell, "energy_points")
+      return t('magic.cant_spell_fatigue_heal_yourself') if targets.include?(enactor)
 
       heal_points = Global.read_config("spells", spell, "heal_points")
       targets.each do |target|
@@ -95,10 +97,14 @@ module AresMUSH
           wound = FS3Combat.worst_treatable_wound(target)
           return t('magic.no_healable_wounds', :target => target.name) if wound.blank?
         end
+        if energy_points
+          puts "energy points"
+        end
+        if target.magic_energy >= (target.total_magic_energy * 0.8)
+          puts "no more healing"
+        end
+        return t('magic.cannot_spell_fatigue_heal_further', :name => target.name) if (energy_points && (target.magic_energy >= (target.total_magic_energy * 0.8)))
       end
-
-      energy_points = Global.read_config("spells", spell, "heal_points")
-      return t('magic.cant_spell_fatigue_heal_yourself') if targets.include?(enactor)
 
       return false
     end
@@ -147,7 +153,7 @@ module AresMUSH
       die_result = roll[:successes]
       succeeds = Magic.spell_success(die_result)
       return {
-        succeeds: succeeds, 
+        succeeds: succeeds,
         result: die_result
       }
     end

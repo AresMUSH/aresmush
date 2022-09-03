@@ -18,7 +18,9 @@ en:
     # ----------------------------
       magic_fatigue: "%{name} is suffering from %{degree} spell fatigue. %{effect}"
       fatigue_cant_cast: "You cannot cast spells while suffering from total spell fatigue."
-      cast_fatigue_heal: "%{name} casts %xB%{spell}%xn%{mod} and %{succeeds}. %{target} recovers %{points} points of magical energy."
+      cast_fatigue_heal: "%{name} casts %xB%{spell}%xn%{mod} and %{succeeds}. %{target} recovers %{points} points of mana."
+      cant_spell_fatigue_heal_yourself: "You cannot restore your own mana."
+      cannot_spell_fatigue_heal_further: "%{name}'s mana cannot be restored further via magical means."
     # ----------------------------
     # POTIONS
     # ----------------------------
