@@ -46,7 +46,7 @@ module AresMUSH
           return t('magic.cannot_spell_fatigue_heal_further', :name => target.name) if (spell['energy_points'] && (target.associated_model.magic_energy >= (target.associated_model.total_magic_energy * 0.8)))
           # Check that weapon specials can be added to weapon
           if spell['weapon_specials']
-            return "This spell is currently broken. Don't worry, I know."
+            # return "This spell is currently broken. Don't worry, I know."
             weapon_special_group = FS3Combat.weapon_stat(target.weapon, "special_group") || ""
             weapon_allowed_specials = Global.read_config("fs3combat", "weapon special groups", weapon_special_group) || []
             return t('magic.cant_cast_on_gear', :spell => self.spell_name, :target => target.name, :gear => "weapon") if !weapon_allowed_specials.include?(spell['weapon_specials'].downcase)
@@ -54,7 +54,7 @@ module AresMUSH
           #Check that armor specials can be added to weapon
 
           if spell['armor_specials']
-            return "This spell is currently broken. Don't worry, I know."
+            # return "This spell is currently broken. Don't worry, I know."
             armor_allowed_specials = FS3Combat.armor_stat(target.armor, "allowed_specials") || []
             return t('magic.cant_cast_on_gear', :spell => self.spell_name, :target => target.name, :gear => "armor") if !armor_allowed_specials.include?(spell['armor_specials'])
           end
@@ -170,7 +170,7 @@ module AresMUSH
               end
 
               if spell['weapon_specials']
-                message = Magic.cast_weapon_specials(self.caster_name, combatant, target, self.spell_name, spell['weapon_specials'])
+                message = Magic.cast_weapon_specials(self.caster_name, combatant, target, self.spell_name)
                 messages.concat message
               end
 
