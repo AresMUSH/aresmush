@@ -15,7 +15,7 @@ module AresMUSH
          if target_name_arg
            self.target = Character.named(target_name_arg)
          else
-           self.target = self.caster
+           self.target = enactor
            self.target_name_arg = enactor.name
          end
       end
@@ -28,14 +28,12 @@ module AresMUSH
         wound = FS3Combat.worst_treatable_wound(self.target)
         heal_points = Global.read_config("spells", self.potion_name, "heal_points")
         return t('magic.no_healable_wounds', :target => target.name) if (wound.blank? && heal_points)
+        energy_points = Global.read_config("spells", self.potion_name, "energy_points")
+        return t('magic.cannot_spell_fatigue_heal_further', :name => target.name) if (energy_points && (target.magic_energy >= (target.total_magic_energy * 0.8)))
       end
 
       def handle
-        targets = Magic.parse_spell_targets(target_name_arg)
-        error = Magic.spell_target_errors(enactor, targets, potion_name, true)
-        if error then return client.emit_failure error end
-
-        message = Magic.cast_noncombat_spell(self.caster.name, targets, self.potion_name, mod = nil, result = 2, using_potion = true)
+        message = Magic.cast_noncombat_spell(self.caster.name, [self.target], self.potion_name, mod = nil, result = 2, using_potion = true)
 
         message.each do |message|
           self.caster.room.emit message
