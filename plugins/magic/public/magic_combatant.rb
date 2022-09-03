@@ -14,6 +14,9 @@ module AresMUSH
 
     attribute :gm_spell_mod, :type => DataType::Integer, :default => 0
 
+    collection :magic_weapon_specials, "AresMUSH::MagicWeaponSpecials"
+    collection :magic_armor_specials, "AresMUSH::MagicArmorSpecials"
+
     #Spell mods are separate from GM-set mods
     attribute :spell_mod, :type => DataType::Integer, :default => 0
     attribute :spell_mod_counter, :type => DataType::Integer, :default => 0

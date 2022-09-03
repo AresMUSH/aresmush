@@ -186,13 +186,25 @@ module AresMUSH
       return message
     end
 
-    def self.cast_weapon_specials(caster_name, ccombatant, target, spell_name, weapon_specials_str)
+    def self.cast_weapon_specials(caster_name, combatant, target, spell_name)
       spell = Global.read_config("spells", spell_name)
-      wound = FS3Combat.worst_treatable_wound(target.associated_model)
-      weapon = target.weapon.before("+")
-      #Adds specials that were already in effect on the weapon or that are given by an item - this is WRONG, I changed this to a thing that doesn't work now, because this needs to add weapon_specials to the magic_weapon_specials hash and it no longer does. NEeds to go to set_magic_weapon_effects
-      weapon_specials = [weapon_specials_str].concat Magic.magic_weapon_specials(target, spell)
-      Magic.set_magic_weapon(enactor = nil, target, weapon, weapon_specials)
+      weapon_special = Magic.find_weapon_special_named(target, spell['weapon_specials'])
+      if weapon_special
+        weapon_special.update(rounds: spell['rounds'])
+      else
+        weapon_special = {
+        name: spell['weapon_specials'],
+        rounds: spell['rounds'],
+        weapon: target.weapon,
+        combatant: combatant
+      }
+      puts "CREATING WEAPON SPECIAL: #{weapon_special}"
+      MagicWeaponSpecials.create(weapon_special)
+      end
+      puts "WEAPON SPECIALS: #{combatant.weapon_specials.to_a}"
+
+      Magic.set_magic_weapon(target, combatant.weapon)
+
       if (spell['heal_points'] && wound)
         message = []
       elsif spell['lethal_mod'] || spell['defense_mod'] || spell['attack_mod'] || spell['spell_mod']
@@ -202,7 +214,27 @@ module AresMUSH
       else
         message = [t('magic.casts_spell', :name => caster_name, :spell => spell_name, :mod => "", :succeeds => "%xgSUCCEEDS%xn")]
       end
+
+
     end
+
+    # def self.cast_weapon_specials(caster_name, ccombatant, target, spell_name, weapon_specials_str)
+    #   spell = Global.read_config("spells", spell_name)
+    #   wound = FS3Combat.worst_treatable_wound(target.associated_model)
+    #   weapon = target.weapon.before("+")
+    #   #Adds specials that were already in effect on the weapon or that are given by an item - this is WRONG, I changed this to a thing that doesn't work now, because this needs to add weapon_specials to the magic_weapon_specials hash and it no longer does. NEeds to go to set_magic_weapon_effects
+    #   weapon_specials = [weapon_specials_str].concat Magic.magic_weapon_specials(target, spell)
+    #   Magic.set_magic_weapon(enactor = nil, target, weapon, weapon_specials)
+    #   if (spell['heal_points'] && wound)
+    #     message = []
+    #   elsif spell['lethal_mod'] || spell['defense_mod'] || spell['attack_mod'] || spell['spell_mod']
+    #     message = []
+    #   elsif combatant != target
+    #     message = [t('magic.casts_spell_on_target', :name => caster_name, :spell => spell_name, :mod => "", :target => target.name, :succeeds => "%xgSUCCEEDS%xn")]
+    #   else
+    #     message = [t('magic.casts_spell', :name => caster_name, :spell => spell_name, :mod => "", :succeeds => "%xgSUCCEEDS%xn")]
+    #   end
+    # end
 
     def self.cast_armor(caster_name, combatant, target, spell, armor)
       FS3Combat.set_armor(combatant, target, armor)

@@ -35,7 +35,7 @@ module AresMUSH
       special = Global.read_config("spells", spell, "weapon_specials")
       weapon = combatant.weapon.before("+")
       weapon_specials = combatant.magic_weapon_effects
-      
+
       if combatant.magic_weapon_effects.has_key?(weapon)
         old_weapon_specials = weapon_specials[weapon]
         weapon_specials[weapon] = old_weapon_specials.merge!( special => rounds)
@@ -55,14 +55,16 @@ module AresMUSH
         specials = specials.concat item_specials
       end
 
-      weapon_effect_specials = combatant.magic_weapon_effects[weapon].keys if combatant.magic_weapon_effects[weapon]
-      if weapon_effect_specials
-        specials = specials.concat weapon_effect_specials
+      magic_weapon_specials = combatant.magic_weapon_specials.select{ |s| s.weapon == weapon}.map {|s| s.name}
+
+      if !magic_weapon_specials.empty?
+        specials = specials.concat magic_weapon_specials
       end
+
       return specials
     end
 
-    def self.set_magic_weapon(enactor, combatant, weapon,specials = nil)
+    def self.set_magic_weapon(combatant, weapon)
       #Used for setting a weapon via magic
       #Does not reset action, unlike vanilla FS3 set_weapon
       #Does not allow additional specials
@@ -86,15 +88,15 @@ module AresMUSH
       combatant.update(weapon_specials: specials ? specials.map { |s| s.titlecase }.uniq : [])
       combatant.update(ammo: current_ammo)
       combatant.update(max_ammo: max_ammo)
-      
+
       message = t('fs3combat.weapon_changed', :name => combatant.name,
         :weapon => combatant.weapon)
-      FS3Combat.emit_to_combat combatant.combat, message, FS3Combat.npcmaster_text(combatant.name, enactor)
+      FS3Combat.emit_to_combat combatant.combat, message
     end
 
 
     def self.set_magic_armor_effects(combatant, spell)
-      #Nothing uses this, but saving it in case I implement this. 
+      #Nothing uses this, but saving it in case I implement this.
       rounds = Global.read_config("spells", spell, "rounds")
       special = Global.read_config("spells", spell, "armor_specials")
       weapon = combatant.armor.before("+")
