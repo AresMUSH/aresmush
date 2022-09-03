@@ -410,8 +410,6 @@ button {
 	text-transform: uppercase;
 	font-size: 16px;
 	font-weight: 700;
-	background-image: url('/game/uploads/css_files/rust-texture.png');
-	background-size: 500px;
 	padding-top: 8px;
 	letter-spacing: .03em;
 	text-shadow: 1px 1px 1px $blackest-grey;
@@ -940,6 +938,208 @@ button {
 	margin-bottom: 35px;
 }
 
+#systemfs3xp {
+	> div:first-child > p:first-child {
+		margin: 0 .25em 1em;
+	}
+	> div > div > p {
+		font-size: 1.625em;
+		margin: 1.5em .25em .25em;
+		b {
+		    font-weight: normal;
+		}
+	}
+	hr {
+        margin-top: 0;
+    }
+    .char-ability-title {
+        margin-bottom: 0;
+    }
+    .xp-progress {
+    	margin: .25em 0;
+    	display: flex;
+    	align-items: center;
+    	width: 100%; 
+        min-width: 150px;
+        font-weight: bold;
+    }
+    .progress {
+        width: 100%;
+        height: 2em;
+        border-radius: 1em;
+    }
+    .progress-bar.bg-success {
+        background-color: $primary-color !important;
+    }
+    .progress-value {
+        position: absolute;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        color: $darkest-rust;
+    }
+    .xp-ability {
+        border-bottom: 1px dotted $primary-color;
+    	height: fit-content;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    #systemfs3xp {
+        .xp-ability {
+            width: 100%;
+            margin: 0;
+            min-height: unset;
+            .col-xs-12 {
+                flex-basis: 100%;
+            }
+            .col:last-of-type {
+                text-align: center;
+            }
+            .col:last-of-type .btn {
+                width: 100%;
+            }
+            .col:first-of-type {
+                width: 33.3333333%;
+                overflow: visible;
+                white-space: nowrap;
+                flex: 0 0 0%;
+            }
+            .col.col-xs-8:last-of-type {
+                text-align: right;
+            }
+        }
+	> div > p:last-of-type {
+            margin: 0 10px;
+            > input {
+                width: 100%;
+                margin: .25em 0;
+            }
+            .btn {
+                width: 100%;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 768px) {
+    #systemfs3xp {
+        .xp-ability {
+            margin: 0px;
+            display: flex;
+            align-items: center;
+            min-height: 3em;
+            padding-bottom: .375em;
+        }
+        .xp-ability-name, 
+        .xp-ability > .row, 
+        .xp-ability .col {
+            display: inline-block;
+            //width: auto;
+            margin-bottom: 0;
+            padding-bottom: 0;
+            flex-basis: auto;
+        }	
+        .xp-ability .col:first-of-type,
+        > div > p:last-of-type > b	{
+            width: 10em;
+            min-width: 10em;
+            flex: 0 0 10em;
+            display: inline-block;
+        }	
+    	.xp-ability .col:nth-of-type(2) {
+            max-width: 20em;
+        }		
+        .xp-ability .col:nth-of-type(3) {
+            padding-left: 1em;
+            min-width: 3em;
+            flex: 1 0 0%;
+        }
+        .xp-progress {
+            margin: 0;
+        }
+        .xp-ability .row {
+            display: flex;
+            align-items: center;
+            padding-bottom: .125em;
+        }
+        .xp-ability > .row > .col.col-xs-12.col-sm-6:last-child {
+            position: relative;
+            top: .075em;
+        }
+        .btn {
+            padding: .25em .5em;
+        }
+        .col .btn {
+            position: relative;
+            top: .125em;
+        }
+        > div > p {
+            padding: .5em;
+        }
+        p {
+            padding: .5em .375em !important;
+            margin: 0 !important;
+        }
+        > div > p > input {
+            margin: 0 .425em 0 0;
+            position: relative;
+            top: 1px;
+            width: 15em;
+        }	
+	    > div > p:last-of-type > b {
+            padding-left: .25em;
+        }
+    }
+}
+
+#systemfs3sheet > div > .row {
+    display: flex;
+    flex-flow: column;
+}
+
+#systemfs3sheet > div > .row > .col {
+    width: 100%;
+    max-width: 100%;
+}
+
+#systemfs3sheet > div > .row > .col table {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+#systemfs3sheet > div > .row > .col table tr {
+    min-width: 50%;
+    display: flex;
+    flex-flow: row wrap;
+}
+
+#systemfs3sheet > div > .row > .col table tr td {
+    flex: 0 1 135px;
+    white-space: nowrap;
+    min-width: 135px;
+    max-width: 135px;
+    border: none;
+}
+
+#systemfs3sheet > div > .row > .col table tr td:nth-of-type(2) {
+    flex: 0 1 150px;
+    overflow: visible;
+    min-width: 150px;
+    text-align: right;
+}
+
+.char-ability-list,
+.char-ability-list tr:last-of-type {
+    border: 0;
+    border-bottom: 0px!important;
+}
+
+.char-ability-list > tr:nth-of-type(odd),
+.char-ability-list > tr:nth-of-type(even) {
+    background-color: transparent;
+}
+
 //TABS
 
 .nav-tabs .nav-link, .nav-tabs .nav-link > a:hover, .nav-tabs .nav-link > a:focus {
@@ -1101,10 +1301,9 @@ h6, .h6 {
 @media only screen and (max-width: 767px) {
 	h1 {
 		font-size: 6vw !important;
-		background-image: none;
-		margin-right: 0px;
-		padding: 0.5em 0.2em 0.2em;
-		text-align: center;
+		background-image: url(/game/uploads/css_files/h1-left.png);
+		padding: 0.2em 0.2em 0.2em 2.2em;
+		width: 100%;
 	}
 }
 
@@ -1575,15 +1774,13 @@ tr:nth-of-type(even) {
 	background: $lightest-slate;
 }
 
-.table-striped>tbody>tr:nth-of-type(odd),
-.xp-ability:nth-of-type(odd) {
+.table-striped>tbody>tr:nth-of-type(odd) {
 	background: $lighter-slate;
 	color: $light-grey;
 	line-height: 2;
 }
 
-.table-striped>tbody>tr:nth-of-type(even),
-.xp-ability:nth-of-type(even) {
+.table-striped>tbody>tr:nth-of-type(even) {
 	background: $lightest-slate;
 	color: $light-grey;
 	line-height: 2;
@@ -1763,14 +1960,6 @@ th,
 
  // SPELL CARDS
 
- .spell_card {
-	background: $dark-slate;
-	color: $light-grey;
-	padding: 15px;
-	border: 2px solid white;
-	border-radius: 14px;
-	margin: 15px;
-  }
 
 .spell-card {
      margin: 10px;
@@ -1787,6 +1976,7 @@ th,
      min-width: 0;
      word-wrap: break-word;
 }
+
  .card-header {
      height: 40px;
      background: linear-gradient( #fefbf7, #fefbf7 37px, pink 39px, pink 40px);
@@ -1798,7 +1988,7 @@ th,
      word-spacing: 10px;
 }
 
- .card-text {
+.card-text {
      position: relative;
      margin: 0 20px;
      line-height: 30px;
@@ -1818,7 +2008,7 @@ th,
 
 .stats-left {
     flex-basis: calc(100% - 320px);
-    padding-right: 10px;
+    padding-right: 20px;
 }
 
 .stats-right {
@@ -1826,8 +2016,42 @@ th,
     font-family: 'Courier Prime', monospace;
 }
 
- .spell-icons {
+.spell-icons {
      position: absolute;
      top: 0.75em;
      right: 1.5em;
+}
+
+.spell-desc > p {
+     line-height: 30px;
+     margin: 0 0 30px;
+}
+
+.spell-attack-stats {
+     line-height: 18px;
+}
+
+.spell-desc {
+     padding-top: 30px;
+}
+
+.spell-info {
+     font-family:  'Courier Prime', monospace;
+     font-size: 1.2em;
+}
+
+.stats-left > hr {
+     height: 0px;
+}
+
+@media only screen and (max-width: 1020px) {
+	.spell-stats {
+		flex-flow: row wrap!important;
+	}
+        .stats-left {
+                flex-basis: 100%!important;
+        }
+        .attack-stats-block {
+                 padding-bottom: 30px;
+        }
 }
