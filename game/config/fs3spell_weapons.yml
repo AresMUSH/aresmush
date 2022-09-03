@@ -1,10 +1,10 @@
 ---
 fs3combat:
-#---------------      
+#---------------
 # WEAPONS
-#---------------  
+#---------------
   weapons:
-    #---------------      
+    #---------------
     # SPELL WEAPONS
     #---------------
     # LEVEL 2
@@ -33,7 +33,7 @@ fs3combat:
       accuracy: 0
       init_mod: 0
       special_group: Body
-      magic_damage_type: Cold    
+      magic_damage_type: Cold
     Stone Slam:
       description: Level 3 Creation spell
       is_magic: true
@@ -45,7 +45,7 @@ fs3combat:
       damage_type: Physical
       accuracy: 0
       init_mod: 0
-      special_group: Spell    
+      special_group: Spell
     # LEVEL 4
     Ice Blast:
       description: Level 4 Entropy spell
@@ -59,7 +59,7 @@ fs3combat:
       accuracy: 0
       init_mod: 0
       special_group: Spell
-      magic_damage_type: Cold    
+      magic_damage_type: Cold
     Stone Skin:
       description: Level 4 Creation spell
       is_magic: true
@@ -71,7 +71,7 @@ fs3combat:
       damage_type: Physical
       accuracy: 0
       init_mod: 0
-      special_group: Body      
+      special_group: Body
     # LEVEL 5
     Breathless:
       description: Level 5 Aether spell
@@ -86,7 +86,7 @@ fs3combat:
       init_mod: 0
       special_group: Spell
       magic_damage_type: Bypass
-  
+
     Fireball:
       description: Level 5 Aether spell
       is_magic: true
@@ -113,7 +113,7 @@ fs3combat:
       has_shrapnel: true
       init_mod: 0
       special_group: Spell
-      magic_damage_type: Cold        
+      magic_damage_type: Cold
     Flares:
       description: Level 6 Aether spell
       is_magic: true
@@ -138,7 +138,7 @@ fs3combat:
       damage_type: Physical
       accuracy: 0
       init_mod: 0
-      special_group: Spell    
+      special_group: Spell
     Stalagmite:
       description: Level 6 Creation spell
       is_magic: true
@@ -150,7 +150,7 @@ fs3combat:
       damage_type: Physical
       accuracy: 1
       init_mod: 0
-      special_group: Spell        
+      special_group: Spell
   #LEVEL 7
     Earth Bolt:
       description: Level 7 Entropy spell
@@ -164,7 +164,7 @@ fs3combat:
       accuracy: 2
       has_shrapnel: true
       init_mod: 0
-      special_group: Spell  
+      special_group: Spell
     Pyre:
       description: Level 7 Aether spell
       is_magic: true
@@ -189,7 +189,7 @@ fs3combat:
       damage_type: Physical
       accuracy: 0
       init_mod: -1
-      special_group: Spell      
+      special_group: Spell
     Stone Daggers:
       description: Level 7 Creation spell
       is_magic: true
@@ -202,7 +202,7 @@ fs3combat:
       damage_type: Physical
       accuracy: 0
       init_mod: 0
-      special_group: Spell      
+      special_group: Spell
     #LEVEL 8
     Exploding Earth:
       description: Level 8 Creation spell
@@ -217,7 +217,7 @@ fs3combat:
       accuracy: 0
       has_shrapnel: true
       init_mod: 0
-      special_group: Spell  
+      special_group: Spell
     Ice Storm:
       description: Level 8 Entropy spell
       is_magic: true
@@ -232,7 +232,7 @@ fs3combat:
       has_shrapnel: true
       init_mod: 0
       special_group: Spell
-      magic_damage_type: Cold        
+      magic_damage_type: Cold
     Lightning Strike:
       description: Level 8 Aether spell
       is_magic: true
@@ -244,7 +244,7 @@ fs3combat:
       damage_type: Physical
       accuracy: 0
       init_mod: 0
-      special_group: Spell    
+      special_group: Spell
     Suffocate:
       description: Level 8 Aether spell
       is_magic: true
@@ -258,41 +258,45 @@ fs3combat:
       init_mod: 0
       special_group: Spell
       magic_damage_type: Bypass
-#---------------      
+#---------------
 # WEAPON SPECIAL GROUPS
-#---------------          
+#---------------
   weapon special groups:
     Body:
-    - cold calm
-    - fortified body
     - sparring
+    - focus
+    - strength
+    - weaken
     Ranged:
-    - cold calm
     - fire
+    - focus
+    - ice
     - lightning
     - scope
     Melee:
-    - cold calm
-    - fatal vitality
     - fire
+    - focus
+    - ice
     - lightning
     - sparring
+    - strength
+    - weaken
     Spell:
-    - cold calm
-#---------------      
+    - focus
+#---------------
 # WEAPON SPECIALS
-#---------------    
+#---------------
   weapon specials:
-    #---------------      
+    #---------------
     # MAGIC ITEMS
     #---------------
     Guilt-Weighted Gloves:
       description: Magic item
       is_magic: true
       lethality: 5
-    #---------------      
+    #---------------
     # SPELLS
-    #---------------      
+    #---------------
     Lightning:
       description: Level 4 Aether spell
       is_magic: true
@@ -303,7 +307,7 @@ fs3combat:
       description: Level 4 Aether spell
       is_magic: true
       lethality: 10
-      accuracy: 1      
+      accuracy: 1
     Focus:
       description: Level 2 Arcane spell
       is_magic: true
@@ -314,21 +318,21 @@ fs3combat:
       is_magic: true
       lethality: 15
       penetration: -1
-      magic_damage_type: Cold      
+      magic_damage_type: Cold
     Strength:
       description: Level 4 Creation spell
       is_magic: true
       lethality: -5
-      penetration: 3      
+      penetration: 3
     Weaken:
       description: Level 4 Entropy spell
       is_magic: true
       lethality: -15
-      penetration: -1  
+      penetration: -1
 
-  #---------------      
+  #---------------
   # GENERAL SPELL WEAPONS
-  #---------------    
+  #---------------
     Cold Shrapnel:
       description: Shrapnel that does cold damage
       skill: 3
