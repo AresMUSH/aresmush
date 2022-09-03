@@ -85,9 +85,11 @@ module AresMUSH
     def self.spell_target_errors(enactor, targets, spell)
       # spell/npc is targeting the npc who cast the spell
       return false if targets == "npc_target"
-
+      puts "CHECKING SPELL ERRORS"
       target_num = Global.read_config("spells", spell, "target_num") || 1
       return t('magic.too_many_targets', :spell => spell, :num => target_num ) if targets.count > target_num
+      energy_points = Global.read_config("spells", spell, "energy_points")
+      return t('magic.cant_spell_fatigue_heal_yourself') if targets.include?(enactor)
 
       heal_points = Global.read_config("spells", spell, "heal_points")
       targets.each do |target|
@@ -95,10 +97,14 @@ module AresMUSH
           wound = FS3Combat.worst_treatable_wound(target)
           return t('magic.no_healable_wounds', :target => target.name) if wound.blank?
         end
+        if energy_points
+          puts "energy points"
+        end
+        if target.magic_energy >= (target.total_magic_energy * 0.8)
+          puts "no more healing"
+        end
+        return t('magic.cannot_spell_fatigue_heal_further', :name => target.name) if (energy_points && (target.magic_energy >= (target.total_magic_energy * 0.8)))
       end
-
-      energy_points = Global.read_config("spells", spell, "heal_points")
-      return t('magic.cant_spell_fatigue_heal_yourself') if targets.include?(enactor)
 
       return false
     end
