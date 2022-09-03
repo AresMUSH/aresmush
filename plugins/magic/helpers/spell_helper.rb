@@ -177,13 +177,9 @@ module AresMUSH
       Global.logger.info "Auto-revive spell healing all #{char.name}'s damage."
     end
 
-    def self.find_weapon_special_named(combatant, weapon_special)
-      combatant.magic_weapon_specials.select{ |s| s.name == weapon_special && s.weapon == combatant.weapon}.first
-    end
 
-    def self.find_armor_special_named(combatant, armor_special)
-      combatant.magic_armor_specials.select{ |s| s.name == armor_special && s.armor == combatant.armor}.first
-    end
+
+
 
   end
 end

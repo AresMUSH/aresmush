@@ -132,6 +132,7 @@ en:
       mod_wore_off: "%{name}'s %xg%{mods} modification%xn %x11has worn off%xn."
       mods_wore_off: "%{name}'s %xg%{mods} modifications%xn %x11have worn off%xn."
       stance_wore_off: "%{name}'s %xB%{spell}%xn spell %x11has worn off%xn and they are no longer %{stance}."
+      special_wore_off: "%{name}'s %xB%{special} %{type}%xn special has worn off."
 
     # ----------------------------
     # SHEET & SPELLS LIST

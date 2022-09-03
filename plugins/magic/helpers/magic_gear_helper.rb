@@ -29,39 +29,50 @@ module AresMUSH
       end
     end
 
-    def self.set_magic_weapon_effects(combatant, spell)
-      #Sets weapon specials that are gained via a spell
-      rounds = Global.read_config("spells", spell, "rounds")
-      special = Global.read_config("spells", spell, "weapon_specials")
-      weapon = combatant.weapon.before("+")
-      weapon_specials = combatant.magic_weapon_effects
+    # def self.set_magic_weapon_effects(combatant, spell)
+    #   #Sets weapon specials that are gained via a spell
+    #   rounds = Global.read_config("spells", spell, "rounds")
+    #   special = Global.read_config("spells", spell, "weapon_specials")
+    #   weapon = combatant.weapon.before("+")
+    #   weapon_specials = combatant.magic_weapon_effects
 
-      if combatant.magic_weapon_effects.has_key?(weapon)
-        old_weapon_specials = weapon_specials[weapon]
-        weapon_specials[weapon] = old_weapon_specials.merge!( special => rounds)
-        #Rounds don't actually count down on newturn.
-      else
-        weapon_specials[weapon] = {special => rounds}
-      end
-      combatant.update(magic_weapon_effects: weapon_specials)
+    #   if combatant.magic_weapon_effects.has_key?(weapon)
+    #     old_weapon_specials = weapon_specials[weapon]
+    #     weapon_specials[weapon] = old_weapon_specials.merge!( special => rounds)
+    #     #Rounds don't actually count down on newturn.
+    #   else
+    #     weapon_specials[weapon] = {special => rounds}
+    #   end
+    #   combatant.update(magic_weapon_effects: weapon_specials)
+    # end
+
+    # def self.magic_weapon_specials(combatant, weapon)
+    #   #Returns all specials gained by magical means
+    #   specials = []
+
+    #   item_specials = Magic.magic_item_weapon_specials(combatant)
+    #   if item_specials
+    #     specials = specials.concat item_specials
+    #   end
+
+    #   magic_weapon_specials = combatant.magic_weapon_specials.select{ |s| s.weapon == weapon}.map {|s| s.name}
+
+    #   if !magic_weapon_specials.empty?
+    #     specials = specials.concat magic_weapon_specials
+    #   end
+
+    #   return specials
+    # end
+
+    def self.find_armor_special_named(combatant, armor_special)
+      armor = combatant.armor.before("+")
+      puts "MAGIC ARMOR SPECIALS: #{combatant.magic_armor_specials}"
+      combatant.magic_armor_specials.select{ |s| s.name == armor_special && s.armor == armor}.first
     end
 
-    def self.magic_weapon_specials(combatant, weapon)
-      #Returns all specials gained by magical means
-      specials = []
-
-      item_specials = Magic.magic_item_weapon_specials(combatant)
-      if item_specials
-        specials = specials.concat item_specials
-      end
-
-      magic_weapon_specials = combatant.magic_weapon_specials.select{ |s| s.weapon == weapon}.map {|s| s.name}
-
-      if !magic_weapon_specials.empty?
-        specials = specials.concat magic_weapon_specials
-      end
-
-      return specials
+    def self.find_weapon_special_named(combatant, weapon_special)
+      weapon = combatant.weapon.before("+")
+      combatant.magic_weapon_specials.select{ |s| s.name == weapon_special && s.weapon == weapon}.first
     end
 
     def self.set_magic_weapon(combatant, weapon)
@@ -95,21 +106,21 @@ module AresMUSH
     end
 
 
-    def self.set_magic_armor_effects(combatant, spell)
-      #Nothing uses this, but saving it in case I implement this.
-      rounds = Global.read_config("spells", spell, "rounds")
-      special = Global.read_config("spells", spell, "armor_specials")
-      weapon = combatant.armor.before("+")
-      weapon_specials = combatant.magic_armor_effects
+    # def self.set_magic_armor_effects(combatant, spell)
+    #   #Nothing uses this, but saving it in case I implement this.
+    #   rounds = Global.read_config("spells", spell, "rounds")
+    #   special = Global.read_config("spells", spell, "armor_specials")
+    #   weapon = combatant.armor.before("+")
+    #   weapon_specials = combatant.magic_armor_effects
 
-      if combatant.magic_armor_effects.has_key?(armor)
-        old_armor_specials = armor_specials[armor]
-        armor_specials[armor] = old_armor_specials.merge!( special => rounds)
-      else
-        armor_specials[armor] = {special => rounds}
-      end
-      combatant.update(magic_armor_effects:armor_specials)
-    end
+    #   if combatant.magic_armor_effects.has_key?(armor)
+    #     old_armor_specials = armor_specials[armor]
+    #     armor_specials[armor] = old_armor_specials.merge!( special => rounds)
+    #   else
+    #     armor_specials[armor] = {special => rounds}
+    #   end
+    #   combatant.update(magic_armor_effects:armor_specials)
+    # end
 
     def self.magic_armor_specials(combatant, armor)
       #Returns all specials gained by magical means
@@ -120,9 +131,10 @@ module AresMUSH
         specials = specials.concat item_specials
       end
 
-      armor_effect_specials = combatant.magic_armor_effects[armor].keys if combatant.magic_armor_effects[armor]
-      if armor_effect_specials
-        specials = specials.concat armor_effect_specials
+      magic_armor_specials = combatant.magic_armor_specials.select{ |s| s.armor == armor}.map {|s| s.name}
+
+      if !magic_armor_specials.empty?
+        specials = specials.concat magic_armor_specials
       end
       return specials
     end

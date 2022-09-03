@@ -14,7 +14,7 @@ spells:
     range: Touch
     roll: true
     school: Entropy
-    
+
 #---------------
 # LEVEL 2
 #---------------
@@ -46,7 +46,7 @@ spells:
     line_of_sight: true
     name: Wither
     range: Short
-    school: Entropy 
+    school: Entropy
   Drowsy:
     available: true
     casting_time: 1 round
@@ -61,7 +61,7 @@ spells:
     range: Short
     rounds: 1
     target_num: 1
-    school: Entropy       
+    school: Entropy
 #---------------
 # LEVEL 3
 #---------------
@@ -112,7 +112,7 @@ spells:
     name: Ice Armor
     range: Self
     school: Entropy
-    weapon: Ice Armor   
+    weapon: Ice Armor
   Ice Blast:
     available: true
     casting_time: 1 round
@@ -126,7 +126,7 @@ spells:
     range: Short
     school: Entropy
     target_num: 1
-    weapon: Ice Blast     
+    weapon: Ice Blast
   Ice Weapon:
     available: true
     casting_time: 1 round
@@ -155,7 +155,22 @@ spells:
     rounds: 100
     school: Entropy
     weapon_specials: Weaken
-    weapon: Spell    
+    weapon: Spell
+  Weaken Armor:
+    available: true
+    casting_time: 1 round
+    damage_type: Bypass
+    desc: Make a target's armor less protective by weakening it's structural integrity.
+    duration: 30 seconds
+    effect: Debuff
+    level: 4
+    name: Weaken Armor
+    range: Short
+    rounds: 3
+    school: Entropy
+    armor_specials: Weaken
+
+
 #---------------
 # LEVEL 5
 #---------------
@@ -190,7 +205,7 @@ spells:
     rounds: 5
     school: Entropy
     shields_against: All
-    target_num: 3    
+    target_num: 3
   Impair:
     available: true
     casting_time: 1 round
@@ -255,7 +270,7 @@ spells:
     range: Long
     rounds: 3
     school: Entropy
-    target_num: 3    
+    target_num: 3
 #---------------
 # LEVEL 8
 #---------------
@@ -303,7 +318,7 @@ spells:
     name: Revenant
     range: Short
     roll: true
-    school: Entropy    
+    school: Entropy
 #---------------
 # LEVEL 9
 #---------------

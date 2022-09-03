@@ -321,6 +321,7 @@ fs3combat:
       - Leather Helmet
       - Metal Helmet
       - Chainmail Coif
+      - Weaken
     Leather:
       description: Leather armor
       is_magic: false
@@ -370,5 +371,11 @@ fs3combat:
       protection:
         Head: 5
         Neck: 4
+    Weaken:
+      description: Weakens armor
+      is_magic: true
+      protection:
+        Head: -5
+
     #ITEM ARMOR SPECIALS
 

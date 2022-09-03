@@ -198,10 +198,8 @@ module AresMUSH
         weapon: target.weapon,
         combatant: combatant
       }
-      puts "CREATING WEAPON SPECIAL: #{weapon_special}"
       MagicWeaponSpecials.create(weapon_special)
       end
-      puts "WEAPON SPECIALS: #{combatant.weapon_specials.to_a}"
 
       Magic.set_magic_weapon(target, combatant.weapon)
 
@@ -214,8 +212,37 @@ module AresMUSH
       else
         message = [t('magic.casts_spell', :name => caster_name, :spell => spell_name, :mod => "", :succeeds => "%xgSUCCEEDS%xn")]
       end
+    end
 
+    def self.cast_armor_specials(caster_name, combatant, target, spell_name)
+      spell = Global.read_config("spells", spell_name)
+      armor_special = Magic.find_armor_special_named(target, spell['armor_specials'])
+      if armor_special
+        armor_special.update(rounds: spell['rounds'])
+      else
+        armor_special = {
+        name: spell['armor_specials'],
+        rounds: spell['rounds'],
+        armor: target.armor,
+        combatant: combatant
+      }
+      puts "Creating armor special:"
 
+      MagicArmorSpecials.create(armor_special)
+      end
+      puts "Armor specials: #{combatant.magic_armor_specials.to_a}"
+
+      FS3Combat.set_armor(combatant, target, combatant.armor)
+
+      if (spell['heal_points'] && wound)
+        message = []
+      elsif spell['lethal_mod'] || spell['defense_mod'] || spell['attack_mod'] || spell['spell_mod']
+        message = []
+      elsif combatant != target
+        message = [t('magic.casts_spell_on_target', :name => caster_name, :spell => spell_name, :mod => "", :target => target.name, :succeeds => "%xgSUCCEEDS%xn")]
+      else
+        message = [t('magic.casts_spell', :name => caster_name, :spell => spell_name, :mod => "", :succeeds => "%xgSUCCEEDS%xn")]
+      end
     end
 
     # def self.cast_weapon_specials(caster_name, ccombatant, target, spell_name, weapon_specials_str)
@@ -246,13 +273,13 @@ module AresMUSH
       return message
     end
 
-    def self.cast_armor_specials(caster_name, combatant, target, spell, armor_specials_str)
-      #This doesn't set rounds or use Magic.set_magic_armor_effects
-      armor_specials = armor_specials_str ? armor_specials_str.split('+') : nil
-      FS3Combat.set_armor(combatant, target, target.armor, armor_specials)
-      message = [t('magic.casts_spell', :name => caster_name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn")]
-      return message
-    end
+    # def self.cast_armor_specials(caster_name, combatant, target, spell, armor_specials_str)
+    #   #This doesn't set rounds or use Magic.set_magic_armor_effects
+    #   armor_specials = armor_specials_str ? armor_specials_str.split('+') : nil
+    #   FS3Combat.set_armor(combatant, target, target.armor, armor_specials)
+    #   message = [t('magic.casts_spell', :name => caster_name, :spell => spell, :mod => "", :succeeds => "%xgSUCCEEDS%xn")]
+    #   return message
+    # end
 
     def self.cast_revive(caster_name, combatant, target, spell)
       target.update(is_ko: false)

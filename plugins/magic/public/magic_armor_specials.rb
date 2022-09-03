@@ -6,9 +6,6 @@ module AresMUSH
     attribute :rounds, :type => DataType::Integer
     attribute :armor
 
-    reference :character, "AresMUSH::Character"
-    reference :npc, "AresMUSH::Npc"
-
-
+    reference :combatant, "AresMUSH::Combatant"
   end
 end

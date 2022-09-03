@@ -181,7 +181,7 @@ module AresMUSH
               end
 
               if spell['armor_specials']
-                message = Magic.cast_armor_specials(self.caster_name, combatant, target, self.spell_name, spell['rounds'])
+                message = Magic.cast_armor_specials(self.caster_name, combatant, target, self.spell_name)
                 messages.concat message
               end
 
