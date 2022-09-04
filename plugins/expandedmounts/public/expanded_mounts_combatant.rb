@@ -17,5 +17,9 @@ module AresMUSH
       false
     end
 
+    def bonded
+      !self.is_npc? ? self.associated_model.bonded : nil
+    end
+
   end
 end

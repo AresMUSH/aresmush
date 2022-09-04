@@ -2,13 +2,13 @@ module AresMUSH
   class Mount < Ohm::Model
     include ObjectModel
     include FindByName
-    
+
     attribute :name
     attribute :name_upcase
     index :name_upcase
-    
+
     before_save :save_upcase_name
-    
+
     def save_upcase_name
       self.name_upcase = self.name.upcase
     end
@@ -19,7 +19,7 @@ module AresMUSH
     attribute :shortdesc
     attribute :details, :type => DataType::Hash, :default => {}
     reference :bonded, "AresMUSH::Character"
-  
+
     collection :damage, "AresMUSH::Damage"
     attribute :damaged_by, :type => DataType::Array, :default => []
 
@@ -31,7 +31,7 @@ module AresMUSH
     attribute :is_ko
     attribute :death_count, :type => DataType::Integer, :default => 0
     attribute :dead, :type => DataType::Boolean, :default => false
-    
+
     reference :rider, 'AresMUSH::Combatant'
     collection :passengers, 'AresMUSH::Combatant', :passenger_on
 
@@ -49,7 +49,7 @@ module AresMUSH
     def default_weapon
       Global.read_config("expandedmounts", self.expanded_mount_type, "weapons" ).first
     end
-    
+
     def weapon
       self.bonded.combatant.weapon
     end
@@ -69,7 +69,7 @@ module AresMUSH
     def composure
       Global.read_config("expandedmounts", self.expanded_mount_type, "composure" )
     end
-    
+
     def hitloc_type
       Global.read_config("expandedmounts", self.expanded_mount_type, "hitloc_chart" )
     end
@@ -86,8 +86,8 @@ module AresMUSH
 
     def is_in_combat?
       !!combat
-    end  
-  
+    end
+
     def log(msg)
       self.combat.log(msg)
     end
@@ -103,7 +103,7 @@ module AresMUSH
     end
 
     ## DAMAGE AND HEALING
-    
+
     def doctors
       Healing.find(patient_id: self.id).map { |h| h.character }
     end
@@ -112,14 +112,14 @@ module AresMUSH
       FS3Combat.inflict_damage(self, severity, desc, is_stun, !self.combat.is_real)
     end
 
-      ## A MOUNT'S MODS, SHIELDS, AND STANCE ARE THE SAME AS THEIR BONDED'S 
+      ## A MOUNT'S MODS, SHIELDS, AND STANCE ARE THE SAME AS THEIR BONDED'S
     def stance
       self.bonded.combatant.stance
     end
 
     def magic_shields
       self.bonded.magic_shields
-    end    
+    end
 
     def defense_stance_mod
       self.bonded.combatant.defense_stance_mod
@@ -137,6 +137,10 @@ module AresMUSH
       (self.bonded.combatant.total_damage_mod + FS3.total_damage_mod(self)) / 2
     end
 
+    def is_passing?
+      self.bonded.combatant.is_passing?
+    end
+
     def damage_lethality_mod
       self.bonded.combatant.damage_lethality_mod
     end
@@ -147,7 +151,7 @@ module AresMUSH
     end
 
     ## DEFINED AS A DEFAULT VALUE SO COMBAT WON'T BREAK. THESE SHOULD NOT CHANGE.
- 
+
     def riding_in
       false
     end
