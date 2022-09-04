@@ -26,7 +26,7 @@ website:
     - 17
   top_navbar:
   - title: Game
-    menu: 
+    menu:
     - title: About Us
       route: wiki-page
       id: ooc:about_us
@@ -38,7 +38,7 @@ website:
       id: guide:join_us
     - title: Staff Team
       route: wiki-page
-      id: ooc:staff      
+      id: ooc:staff
   - title: World
     menu:
     - title: World Intro
@@ -55,14 +55,14 @@ website:
       id: world:bond
     - title: Cryptids
       route: wiki-page
-      id: world:cryptids  
+      id: world:cryptids
     - divider: true
     - title: The Cradle
       route: wiki-page
       id: world:cradle
     - title: Weyr
       route: wiki-page
-      id: world:cradle
+      id: world:weyr
     - title: Prism Passes
       route: wiki-page
       id: world:prism_passes
@@ -196,22 +196,22 @@ website:
   - title: Search
     menu:
     - title: Spells
-      route: search-spells    
+      route: search-spells
     - title: Scenes
       route: search-scenes
     - title: Characters
       route: search-chars
     - title: Wiki
-      route: search-wiki 
+      route: search-wiki
     - title: Forum
-      route: search-forum          
+      route: search-forum
     - title: Help
-      route: search-help       
+      route: search-help
     - title: Locations
-      route: search-locations 
+      route: search-locations
     - title: Jobs & Requests
-      route: search-jobs                           
-      
+      route: search-jobs
+
   uploadable_extensions:
   - ".jpg"
   - ".png"
@@ -219,13 +219,13 @@ website:
   - ".jpeg"
   website_code_path: "/home/ares/ares-webportal"
   wiki_aliases:
-    main: world    
+    main: world
     home: world
     history: world:history
     shattering: world:history
-    cryptids: world:cryptids    
+    cryptids: world:cryptids
     mythic:  world:cryptids
-    cryptid:  world:cryptids    
+    cryptid:  world:cryptids
     monsters: world:cryptids
     mythics:  world:cryptids
     shattered_monsters:  world:cryptids
@@ -237,7 +237,7 @@ website:
     cradle: world:cradle
     cradle_s: world:cradle
     cradle's: world:cradle
-    weyr: world:weyr    
+    weyr: world:weyr
     weyrs: world:weyr
     prism_passes: world:prism_passes
     magical:  magic
