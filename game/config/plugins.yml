@@ -18,6 +18,8 @@ plugins:
   extras:
   - txt
   - postevent
+  - openweather
+  - compliments
   optional_plugins:
   - achievements
   - chargen

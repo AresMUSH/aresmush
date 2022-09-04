@@ -1,0 +1,9 @@
+---
+compliments:
+  give_luck: true
+  luck_amount: 0.05
+  comp_scenes: true
+  achievements:
+    gave_comps:
+      type: comp
+      message: Gave %{count} compliments.
