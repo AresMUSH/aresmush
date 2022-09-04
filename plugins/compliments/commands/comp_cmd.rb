@@ -29,20 +29,22 @@ module AresMUSH
           self.target_names = self.scene_or_names.split(" ").map { |n| InputFormatter.titlecase_arg(n) }
           self.target_names.each do |name|
             target = Character.named(name)
-             if !target
-               client.emit_failure t('compliments.invalid_name')
-               return
-             elsif target.name == enactor_name
-               client.emit_failure t('compliments.cant_comp_self')
-               return
-             end
+            if !target
+              client.emit_failure t('compliments.invalid_name')
+              return
+            elsif target.name == enactor_name
+              client.emit_failure t('compliments.cant_comp_self')
+              return
+            end
             targets << target
           end
         end
 
 
         date = Time.now.strftime("%Y-%m-%d")
-        luck_amount = Global.read_config("compliments", "luck_amount")
+        target_luck_amount = Global.read_config("compliments", "target_luck_amount")
+        comper_luck_amount = Global.read_config("compliments", "comper_luck_amount")
+        comper_luck_amount =
         give_luck = Global.read_config("compliments", "give_luck")
         comp_scenes = Global.read_config("compliments", "comp_scenes")
         if self.scene_id
@@ -54,7 +56,8 @@ module AresMUSH
               else
                 Comps.create(character: target, comp_msg: self.comp, from: enactor.name)
                 if give_luck
-                  FS3Skills.modify_luck(target, luck_amount)
+                  FS3Skills.modify_luck(target, target_luck_amount)
+                  FS3Skills.modify_luck(enactor, comper_luck_amount)
                 end
                 message = t('compliments.has_left_comp', :from => enactor.name)
                 Login.emit_if_logged_in target, message
