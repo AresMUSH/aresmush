@@ -46,23 +46,23 @@ module AresMUSH
     #   combatant.update(magic_weapon_effects: weapon_specials)
     # end
 
-    # def self.magic_weapon_specials(combatant, weapon)
-    #   #Returns all specials gained by magical means
-    #   specials = []
+    def self.magic_weapon_specials(combatant, weapon)
+      #Returns all specials gained by magical means
+      specials = []
 
-    #   item_specials = Magic.magic_item_weapon_specials(combatant)
-    #   if item_specials
-    #     specials = specials.concat item_specials
-    #   end
+      item_specials = Magic.magic_item_weapon_specials(combatant)
+      if item_specials
+        specials = specials.concat item_specials
+      end
 
-    #   magic_weapon_specials = combatant.magic_weapon_specials.select{ |s| s.weapon == weapon}.map {|s| s.name}
+      magic_weapon_specials = combatant.magic_weapon_specials.select{ |s| s.weapon == weapon}.map {|s| s.name}
 
-    #   if !magic_weapon_specials.empty?
-    #     specials = specials.concat magic_weapon_specials
-    #   end
+      if !magic_weapon_specials.empty?
+        specials = specials.concat magic_weapon_specials
+      end
 
-    #   return specials
-    # end
+      return specials
+    end
 
     def self.find_armor_special_named(combatant, armor_special)
       armor = combatant.armor.before("+")
