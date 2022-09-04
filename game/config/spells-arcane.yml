@@ -31,7 +31,7 @@ spells:
     range: Touch
     roll: true
     school: Arcane
-    target_num: 1    
+    target_num: 1
 #---------------
 # LEVEL 2
 #---------------
@@ -61,7 +61,7 @@ spells:
     name: Clear Mind
     range: Self
     school: Arcane
-    target_num: 1    
+    target_num: 1
     weapon_special: Focus
   Telepathic Reading:
     available: true
@@ -75,7 +75,7 @@ spells:
     range: Short
     roll: true
     school: Arcane
-    target_num: 1        
+    target_num: 1
 #---------------
 # LEVEL 3
 #---------------
@@ -98,7 +98,7 @@ spells:
   Charm:
     available: true
     casting_time: 1 round
-    desc: Target becomes charmed by the caster and attempts to move toward them. They are neutral toward all parties and will neither aid nor attack while under the spell. 
+    desc: Target becomes charmed by the caster and attempts to move toward them. They are neutral toward all parties and will neither aid nor attack while under the spell.
     damage_type: Psionic
     duration: 1 round
     effect: Psionic
@@ -110,7 +110,7 @@ spells:
     range: Short
     school: Arcane
     target_num: 1
-    weapon: Stun (Arcane) 
+    weapon: Stun (Arcane)
   Detect Magic:
     available: true
     casting_time: 1 round
@@ -123,7 +123,7 @@ spells:
     range: Short
     roll: true
     school: Arcane
-    target_num: 1       
+    target_num: 1
   Distract:
     attack_mod: -1
     available: true
@@ -159,13 +159,13 @@ spells:
     rounds: 2
     school: Arcane
     spell_mod: 1
-    target_num: 1    
+    target_num: 1
 
 #---------------
 # LEVEL 4
 #---------------
   Dampen Magic:
-    available: false
+    available: true
     casting_time: 1 round
     damage_type: Psionic
     desc: "The target's ability to cast spells is made more difficult for a short time."
@@ -193,7 +193,7 @@ spells:
     shields_against: Psionic
     target_num: 1
     duration: 2 hours
-    rounds: 7200   
+    rounds: 7200
   Restore Mana:
     available: true
     casting_time: 1 round
@@ -208,7 +208,7 @@ spells:
     range: Short
     roll: true
     school: Arcane
-    target_num: 1    
+    target_num: 1
   Spirit Of Pacifism:
     available: true
     casting_time: 1 round
@@ -221,7 +221,7 @@ spells:
     name: Arcane of Pacifism
     range: Self
     roll: true
-    school: Arcane    
+    school: Arcane
   Trick Senses:
     available: true
     casting_time: 1 round
@@ -234,7 +234,7 @@ spells:
     range: Short
     roll: true
     school: Arcane
-    target_num: 1    
+    target_num: 1
 #---------------
 # LEVEL 5
 #---------------
@@ -263,7 +263,7 @@ spells:
     range: Short
     roll: true
     school: Arcane
-    target_num: 1    
+    target_num: 1
   Memory Dive:
     available: true
     casting_time: "1 round to cast, addition rounds to find a memory, at GM's discretion."
@@ -276,12 +276,12 @@ spells:
     range: Short
     roll: true
     school: Arcane
-    target_num: 1    
+    target_num: 1
 #---------------
 # LEVEL 6
 #---------------
   Group Awaken Terror:
-    available: false
+    available: true
     damage_type: Psionic
     desc: Targets become afraid of the caster and attempt to flee to the nearest place they could safely hide. They will not move in the direction of the caster or attack for the duration of the spell unless forced.
     duration: 2 rounds
@@ -296,7 +296,7 @@ spells:
     target_num: 3
     weapon: Stun (Arcane)
   Group Dampen Magic:
-    available: false
+    available: true
     casting_time: 1 round
     damage_type: Psionic
     desc: "The targets' ability to cast spells is made very difficult for a short time."
@@ -308,7 +308,7 @@ spells:
     rounds: 3
     school: Arcane
     spell_mod: -3
-    target_num: 3  
+    target_num: 3
   Rewrite Memory:
     available: true
     casting_time: "1 round to cast, additional rounds for rewriting at GM's discretion."
@@ -321,7 +321,7 @@ spells:
     range: Short
     roll: true
     school: Arcane
-    target_num: 1    
+    target_num: 1
 #---------------
 # LEVEL 7
 #---------------
@@ -351,7 +351,7 @@ spells:
     range: Short
     roll: true
     school: Arcane
-    target_num: 1    
+    target_num: 1
   Dispel Magic:
     available: true
     casting_time: 1 round
@@ -363,7 +363,7 @@ spells:
     range: Short
     roll: true
     school: Arcane
-    target_num: 1    
+    target_num: 1
   Pass Unseen:
     available: true
     casting_time: 1 round
@@ -376,7 +376,7 @@ spells:
     range: Self
     roll: true
     school: Arcane
-    target_num: 100    
+    target_num: 100
   Restore Memory:
     available: true
     casting_time: "1 round to cast, plus additional rounds at GM's discretion according to the complexity of the restoration"
@@ -390,7 +390,7 @@ spells:
     school: Arcane
     target_num: 1
   Restrain Magic:
-    available: false
+    available: true
     casting_time: 1 round
     damage_type: Psionic
     desc: "The target's ability to cast spells is made very difficult for a short time."
@@ -402,7 +402,7 @@ spells:
     rounds: 3
     school: Arcane
     spell_mod: -5
-    target_num: 1    
+    target_num: 1
 
 #---------------
 # LEVEL 8
@@ -433,7 +433,7 @@ spells:
     range: Short
     roll: true
     school: Arcane
-    target_num: 1    
+    target_num: 1
 #---------------
 # LEVEL 9
 #---------------

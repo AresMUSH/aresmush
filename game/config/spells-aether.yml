@@ -39,7 +39,7 @@ spells:
     range: Touch
     roll: true
     school: Aether
-    target_num: 1    
+    target_num: 1
   Adjust Volume:
     available: true
     casting_time: 1 round
@@ -51,7 +51,7 @@ spells:
     name: Adjust Volume
     range: Short
     roll: true
-    school: Aether    
+    school: Aether
 #---------------
 # LEVEL 2
 #---------------
@@ -84,7 +84,7 @@ spells:
     rounds: 1
     school: Aether
     target_num: 1
-    effect: Debuff    
+    effect: Debuff
 #---------------
 # LEVEL 3
 #---------------
@@ -118,7 +118,7 @@ spells:
     range: Short
     school: Aether
     target_num: 1
-    weapon: Stun (Aether)    
+    weapon: Stun (Aether)
 #---------------
 # LEVEL 4
 #---------------
@@ -133,7 +133,7 @@ spells:
     name: Create Sound
     range: Short
     roll: true
-    school: Aether    
+    school: Aether
   Lightning Weapon:
     available: true
     casting_time: 1 round
@@ -149,7 +149,7 @@ spells:
     school: Aether
     target_num: 1
     weapon_specials: Lightning
-    weapon: Spell    
+    weapon: Spell
   Simple Illusion:
     area: 5 cubic feet
     available: true
@@ -163,7 +163,7 @@ spells:
     name: Simple Illusion
     range: Short
     roll: true
-    school: Aether    
+    school: Aether
 #---------------
 # LEVEL 5
 #---------------
@@ -260,10 +260,10 @@ spells:
     rounds: 3
     school: Aether
     spell_mod: -2
-    target_num: 1    
+    target_num: 1
 #---------------
 # LEVEL 7
-#---------------    
+#---------------
   Complex Illusion:
     area: '10 yard radius'
     available: true
@@ -291,7 +291,7 @@ spells:
     name: Complex Sound
     range: Short
     school: Aether
-    target_num: 1  
+    target_num: 1
   Dust Devils:
     attack_mod: -2
     available: true
@@ -308,7 +308,7 @@ spells:
     rounds: 3
     school: Aether
     target_num: 3
-    effect: Debuff      
+    effect: Debuff
   Pyre:
     available: true
     casting_time: 1 round
@@ -322,7 +322,7 @@ spells:
     range: Long
     school: Aether
     target_num: 1
-    weapon: Pyre    
+    weapon: Pyre
 #---------------
 # LEVEL 8
 #---------------
@@ -352,11 +352,11 @@ spells:
     range: Long
     school: Aether
     target_num: 1
-    weapon: Suffocate    
+    weapon: Suffocate
 #---------------
 # LEVEL 9
 #---------------
 #---------------
 # LEVEL 10
-#---------------    
+#---------------
 

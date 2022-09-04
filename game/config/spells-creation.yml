@@ -55,7 +55,7 @@ spells:
     school: Creation
     target_num: 1
     weapon: Sling Barb
-    effect: Damage    
+    effect: Damage
 #---------------
 # LEVEL 3
 #---------------
@@ -87,7 +87,7 @@ spells:
     rounds: 3
     school: Creation
     shields_against: All
-    target_num: 1    
+    target_num: 1
   Stone Slam:
     available: true
     casting_time: 1 round
@@ -116,7 +116,7 @@ spells:
     range: Short
     school: Creation
     target_num: 1
-    weapon: Stun (Creation)    
+    weapon: Stun (Creation)
 #---------------
 # LEVEL 4
 #---------------
@@ -149,7 +149,7 @@ spells:
     name: Minor Group Heal
     range: Short
     school: Creation
-    target_num: 3  
+    target_num: 3
   Purify Water:
     available: true
     casting_time: 10 minutes
@@ -160,7 +160,7 @@ spells:
     name: Purify Water
     range: Short
     roll: true
-    school: Creation 
+    school: Creation
   Stone Skin:
     armor: Stone Skin
     available: true
@@ -175,7 +175,7 @@ spells:
     range: Self
     school: Creation
     target_num: 1
-    weapon: Stone Skin         
+    weapon: Stone Skin
   Strength:
     available: true
     casting_time: 1 round
@@ -190,7 +190,7 @@ spells:
     rounds: 100
     school: Creation
     weapon_specials: Strength
-    weapon: Spell     
+    weapon: Spell
 #---------------
 # LEVEL 5
 #---------------
@@ -236,7 +236,7 @@ spells:
     rounds: 3
     school: Creation
     target_num: 1
-    weapon: Stun (Creation)   
+    weapon: Stun (Creation)
   Revive:
     available: true
     casting_time: 1 round
@@ -249,9 +249,9 @@ spells:
     name: Revive
     range: Short
     school: Creation
-    target_num: 1          
+    target_num: 1
   Stone Wall:
-    available: false
+    available: true
     area: 5 yard length
     casting_time: 1 round
     damage_type: Bypass
@@ -266,7 +266,7 @@ spells:
     school: Creation
     range: Short
     shields_against: All
-    target_num: 3     
+    target_num: 3
 #---------------
 # LEVEL 6
 #---------------
@@ -295,7 +295,7 @@ spells:
     range: Long
     school: Creation
     target_num: 1
-    weapon: Stalagmite    
+    weapon: Stalagmite
 #---------------
 # LEVEL 7
 #---------------
@@ -326,7 +326,7 @@ spells:
     range: Long
     school: Creation
     target_num: 1
-    weapon: Stone Daggers    
+    weapon: Stone Daggers
 #---------------
 # LEVEL 8
 #---------------
@@ -356,7 +356,7 @@ spells:
     range: Long
     school: Creation
     target_num: 3
-    weapon: Exploding Earth    
+    weapon: Exploding Earth
   Group Revive:
     area: 15 yard radius
     available: true
@@ -372,11 +372,10 @@ spells:
     range: Long
     roll: false
     school: Creation
-    target_num: 3    
+    target_num: 3
 #---------------
 # LEVEL 9
 #---------------
 #---------------
 # LEVEL 10
 #---------------
- 
