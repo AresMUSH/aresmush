@@ -181,7 +181,7 @@ website:
     - title: Game Help
       route: help
     - title: Search
-      route: search-wiki
+      route: search-help
     - id: markdown
       title: Markdown Reference
       route: help-topic
