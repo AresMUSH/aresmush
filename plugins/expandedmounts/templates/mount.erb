@@ -1,0 +1,11 @@
+<%= header %>
+%xh<%= mount.name %>%xn
+<%= divider %>
+<%= mount.shortdesc %>
+<%= divider %>
+<%=  mount.description %>
+
+<% if details %>
+%xh<%= t('describe.details_available') %>%xn <%= details %>
+<% end %>
+<%= footer %>
