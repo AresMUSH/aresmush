@@ -4,7 +4,7 @@ module AresMUSH
       def handle(request)
         enactor = request.enactor
         job = Job[request.args[:id]]
-        edit_mode = request.args[:edit_mode]
+        edit_mode = (request.args[:edit_mode] || "").to_bool
         
         error = Website.check_login(request)
         return error if error

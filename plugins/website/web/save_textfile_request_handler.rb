@@ -23,6 +23,8 @@ module AresMUSH
           path = File.join(AresMUSH.website_styles_path, file)
         when "config"
           path = File.join(AresMUSH.game_path, 'config', file)
+        when "code"
+          path = Website.find_code_file_path(file)
         end
                 
         if (!File.exists?(path))

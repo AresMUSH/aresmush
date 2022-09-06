@@ -60,9 +60,7 @@ module AresMUSH
       end
     end
       
-    def self.login_char(char, client)
-      char.update(login_failures: 0)
-
+    def self.connect_client_after_login(char, client)
       # Handle reconnect
       existing_client = Login.find_client(char)
       client.char_id = char.id
@@ -135,26 +133,6 @@ module AresMUSH
       count
     end
     
-    def self.boot_char(bootee, boot_message)
-      status = Website.activity_status(bootee)
-      if (status == 'offline')
-        return t('login.cant_boot_disconnected_player')
-      end
-      
-      # Boot from game
-      boot_client = Login.find_client(bootee)
-      if (boot_client)
-        boot_client.emit_failure boot_message
-        boot_client.disconnect
-      end
-      
-      # Boot from portal
-      bootee.update(login_api_token: nil)
-      Global.client_monitor.clients.select { |c| c.web_char_id == bootee.id.to_s }.each { |c| c.disconnect }
-      
-      return nil
-    end
-    
     def self.build_web_site_info(char, viewer)
       matches = Character.all.select { |c| Login.is_site_match?(c.last_ip, 
         c.last_hostname, 
@@ -167,6 +145,13 @@ module AresMUSH
         last_hostname: char.last_hostname,
         findsite: findsite
       }
+    end
+    
+    def self.can_boot?(actor)
+      # Limit to admins or approved non-admins to prevent trolls from using it.
+      return false if !actor
+      not_new = actor.has_permission?("manage_login") || actor.is_approved?
+      actor.has_permission?("boot") && not_new
     end
   end
 end

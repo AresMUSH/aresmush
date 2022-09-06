@@ -175,6 +175,8 @@ module AresMUSH
         return BanRemoveRequestHandler
       when "banPlayer"
         return BanPlayerRequestHandler
+      when "bootPlayer"
+        return BootPlayerRequestHandler
       end
       nil
     end

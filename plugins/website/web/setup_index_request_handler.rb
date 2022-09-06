@@ -15,10 +15,20 @@ module AresMUSH
         textfiles = textfiles.select { |f| File.basename(f) != "blacklist.txt" }.sort.map { |f| { name: File.basename(f), file_type: 'text' }}
         textfiles << { name: 'colors.scss', file_type: 'style' }
         textfiles << { name: 'custom_style.scss', file_type: 'style' }
+                
+        codefiles = []
+        Website.editable_code_files.each do |section|
+          codefiles << {
+            name: section[:name],
+            help: section[:help],
+            files: section[:files].keys
+          }
+        end
         
         {
           config: ConfigReader.config_files.sort.map { |f| { name: File.basename(f) } },
-          textfiles: textfiles
+          textfiles: textfiles,
+          codefiles: codefiles
         }
         
       end

@@ -306,15 +306,23 @@ module AresMUSH
     end
     
     def self.notify_discord_webhook(channel, message, enactor)
-      name = enactor.ooc_name
-      hook = (Global.read_config('secrets', 'discord', 'webhooks') || [])
-         .select { |h| (h['mush_channel'] || "").upcase == channel.name_upcase }
-         .first
+      debug_enabled = Global.read_config('channels', 'discord_debug')
 
-      return if !hook
+      name = enactor.ooc_name
+      url = channel.discord_webhook
+
+       if (!url)
+         if (debug_enabled)
+           Global.logger.debug "No discord hook found for #{channel.name}."
+         end
+         return
+       end
       
       Global.dispatcher.spawn("Sending discord webhook", nil) do
-        url = hook['webhook_url']
+        
+        if (debug_enabled)
+          Global.logger.debug "Sending discord webhook to #{url} for #{channel.name}."
+        end
         
         formatted_msg = message
         if (message.start_with?(':'))
@@ -329,10 +337,13 @@ module AresMUSH
         icon_url = icon ? "#{Game.web_portal_url}/game/uploads/#{icon}" :
              "https://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(enactor.name)}?d=#{gravatar_style}"
         connector = RestConnector.new(url)
-        connector.post( "", { 
+        response = connector.post( "", { 
           content: formatted_msg, 
           username: name,
           avatar_url: icon_url } )
+        if (response && debug_enabled)
+          Global.logger.debug "Discord response: #{response}"
+        end
       end
     end
     
