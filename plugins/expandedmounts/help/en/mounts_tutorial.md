@@ -11,12 +11,9 @@ Mythics may only join a combat if their bonded partner is in the combat (`combat
 The mythic/mage pair get one action per round. This action can be attacking with the mythic's
 weapons (typically claws or teeth), casting a spell, or attacking with a suitable human weapon such as a bow.
 
-Because mythics and their bonded partners act in unison in times of high intensity, there is never
-a situation when both mythic and mage would take separate combat actions, even if the mage is not mounted. The mythic may act, or the mage may act, but not both.
+Because mythics and their bonded partners act in unison in times of high intensity, there is never a situation when both mythic and mage would take separate combat actions, even if the mage is not mounted. The mythic may act, or the mage may act, but not both.
 
-This unison also means that certain stats are always averaged between the mount and the mythic.
-Defense, attack, initiative, composure, and stealth rolls are always an average between the two -
-even if the mage is not mounted. In combat, this averaging is automatic.
+This unison also means that certain stats are always averaged between the mount and the mythic. Defense, attack, initiative, composure, and stealth rolls are always an average between the two - even if the mage is not mounted. In combat, this averaging is automatic.
 
 Mages and mythics also share the impact of attack, intiative, lethality, defense, and spell mods. This includes mods gained by spending luck points, taking damage, acquiring stress, or via magic. They also share magic shields and stances.
 
