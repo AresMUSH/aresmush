@@ -175,9 +175,10 @@ module AresMUSH
         combatant.update(prior_ammo: prior_ammo)
       end
       magic_specials = Magic.magic_weapon_specials(combatant, weapon)
-      !magic_specials.empty? ? specials = specials.concat([magic_specials]) : specials = specials
+      !magic_specials.empty? ? specials = specials.concat(magic_specials.uniq) : specials = specials
+
       combatant.update(weapon_name: weapon)
-      combatant.update(weapon_specials: specials)
+      combatant.update(weapon_specials: specials.uniq)
       combatant.update(ammo: current_ammo)
       combatant.update(max_ammo: max_ammo)
       combatant.update(action_klass: nil)
