@@ -8,8 +8,7 @@ order: 3
 
 Mythics may only join a combat if their bonded partner is in the combat (`combat/mount <name>`). Once a mount has been added to the combat by their partner, others may mount the mythic as a passenger. This has no system effects and is for RP purposes only.
 
-The mythic/mage pair get one action per round. This action can be attacking with the mythic's
-weapons (typically claws or teeth), casting a spell, or attacking with a suitable human weapon such as a bow.
+The mythic/mage pair get one action per round. This action can be attacking with the mythic's weapons (typically claws or teeth), casting a spell, or attacking with a suitable human weapon such as a bow.
 
 Because mythics and their bonded partners act in unison in times of high intensity, there is never a situation when both mythic and mage would take separate combat actions, even if the mage is not mounted. The mythic may act, or the mage may act, but not both.
 
