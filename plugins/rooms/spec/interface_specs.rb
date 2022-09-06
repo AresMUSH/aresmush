@@ -14,7 +14,7 @@ module AresMUSH
           setup_mock_client(@client, @char)
           
           allow(@char).to receive(:room) { @old_room }
-        
+          allow(@client).to receive(:screen_reader) { false }
           allow(@old_room).to receive(:emit_ooc)
           allow(@new_room).to receive(:emit_ooc)
           allow(@char).to receive(:update)
@@ -44,6 +44,14 @@ module AresMUSH
       
         it "should emit the new room desc" do
           expect(Rooms).to receive(:emit_here_desc).with(@client, @char)
+          Rooms.move_to(@client, @char, @new_room)
+        end
+        
+        it "should not emit the new room desc if screen reader enabled" do
+          allow(@client).to receive(:screen_reader) { true }
+          allow(@new_room).to receive(:name) { "Somewhere" }
+          expect(Rooms).to_not receive(:emit_here_desc).with(@client, @char)
+          expect(@client).to receive(:emit_ooc).with ("rooms.screen_reader_arrived")
           Rooms.move_to(@client, @char, @new_room)
         end
         

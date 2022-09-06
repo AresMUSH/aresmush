@@ -15,7 +15,7 @@ module AresMUSH
         error = Website.check_login(request)
         return error if error
         
-        can_manage = enactor && Events.can_manage_event(enactor, event)
+        can_manage = enactor && Events.can_manage_event?(enactor, event)
         if (!can_manage)
           return { error: t('dispatcher.not_allowed') }
         end

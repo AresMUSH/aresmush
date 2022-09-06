@@ -53,16 +53,17 @@ If he's working in the garage, we might wear `base casual` and get:
 
 ## Vistas
 
-Vistas allow you to have a catalog of room descriptions, much the same way that you can have multiple outfits for a character.  The base description is set via the `describe` command.  Then you have vistas that are added to that based on the time of day (morning, day, evening, night) and season (spring, summer, fall, winter).
+Vistas allow you to have a catalog of room descriptions, much the same way that you can have multiple outfits for a character.  The base description is set via the `describe` command, just like usual. On top of that, you set different description for time of day and season.
 
-All vistas are optional.  Think of them like building blocks.  If your room only has a 'night' vista and a 'summer' vista, then the description would be:
+The time of day vistas must be named: morning, day, evening, night
+The season vistas must be named: spring, summer, fall, winter
+
+The system will automatically select vistas to append to the base desc, depending on the time of day and season.  If a vista isn't set, it will just be ignored.  For example, assuming you have only a base desc, a night desc, and a summer desc, you would get:
 
 * On a summer night:  `[base desc] [night desc] [summer desc]`
 * On a summer day:  `[base desc] [summer desc]`
 * On a spring/fall/winter night:  `[base desc] [night desc]`
 * Any other time:  `[base desc]`
-
-> **Note:** The weather condition is also appended to the description if the weather system is enabled.
 
 ## Command Reference
 

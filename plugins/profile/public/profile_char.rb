@@ -47,6 +47,12 @@ module AresMUSH
       version = ProfileVersion.create(character: self, text: history_text, author: enactor)
       Website.add_to_recent_changes('char', t('profile.profile_updated', :name => self.name), { version_id: version.id, char_name: self.name }, enactor.name)
     end
+    
+    def formatted_birthdate
+      dob = self.birthdate
+      !dob ? "" : ICTime.ic_datestr(dob)
+    end
+    
   end
   
 end

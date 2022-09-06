@@ -52,7 +52,11 @@ module AresMUSH
         
           client.program.delete(:login_cmd)
           
-          Login.login_char(char, client)          
+          char.update(login_failures: 0)
+          char.update(boot_timeout: nil)
+          
+          Login.update_site_info(client.ip_addr, client.hostname, char)
+          Login.connect_client_after_login(char, client)          
         end
       end
       

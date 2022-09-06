@@ -13,6 +13,7 @@ module AresMUSH
     attribute :last_ip
     attribute :last_hostname
     attribute :last_on, :type => DataType::Time
+    attribute :boot_timeout, :type => DataType::Time
     
     attribute :notices_events, :type => DataType::Boolean, :default => true
   

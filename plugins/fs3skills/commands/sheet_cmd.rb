@@ -19,7 +19,7 @@ module AresMUSH
       
       def handle
         ClassTargetFinder.with_a_character(self.target, client, enactor) do |model|
-          template = SheetTemplate.new(model, client)
+          template = SheetTemplate.new(model, client, cmd.switch)
           client.emit template.render
         end
       end
