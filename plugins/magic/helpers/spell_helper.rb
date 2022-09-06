@@ -89,7 +89,7 @@ module AresMUSH
       target_num = Global.read_config("spells", spell, "target_num") || 1
       return t('magic.too_many_targets', :spell => spell, :num => target_num ) if targets.count > target_num
       energy_points = Global.read_config("spells", spell, "energy_points")
-      return t('magic.cant_spell_fatigue_heal_yourself') if targets.include?(enactor)
+      return t('magic.cant_spell_fatigue_heal_yourself') if targets.include?(enactor) && energy_points
 
       heal_points = Global.read_config("spells", spell, "heal_points")
       targets.each do |target|
