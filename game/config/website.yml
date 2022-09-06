@@ -50,6 +50,9 @@ website:
     - title: Wardens
       route: wiki-page
       id: world:wardens
+    - title: Mythics
+      route: wiki-page
+      id: world:mythics
     - title: The Bond
       route: wiki-page
       id: world:bond
