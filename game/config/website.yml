@@ -224,10 +224,10 @@ website:
     history: world:history
     shattering: world:history
     cryptids: world:cryptids
-    mythic:  world:cryptids
+    mythic:  world:mythics
     cryptid:  world:cryptids
     monsters: world:cryptids
-    mythics:  world:cryptids
+    mythics:  world:mythics
     shattered_monsters:  world:cryptids
     creatures:  world:cryptids
     bonding:  world:bond
