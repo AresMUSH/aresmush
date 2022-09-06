@@ -176,7 +176,7 @@ module AresMUSH
 
               #Armor & Armor Specials
               if spell['armor']
-                message = Magic.cast_armor(combatant, target, self.spell_name, spell['armor'])
+                message = Magic.cast_armor(self.caster_name, combatant, target, self.spell_name, spell['armor'])
                 messages.concat message
               end
 
