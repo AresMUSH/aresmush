@@ -24,6 +24,13 @@ fs3combat:
         Right Hand: 6
         Left Foot: 6
         Right Foot: 6
+        Tail: 6
+        Front Right Leg: 6
+        Rear Right Leg: 6
+        Front Left Leg: 6
+        Read Left Leg: 6
+        Right Wing: 6
+        Left Wing: 6
     Rock Skin:
       description: Level 4 Creation spell
       is_magic: true
@@ -42,6 +49,12 @@ fs3combat:
         Right Hand: 6
         Left Foot: 6
         Right Foot: 6
+        Tail: 6
+        Front Right Leg: 6
+        Rear Right Leg: 6
+        Front Left Leg: 6
+        Read Left Leg: 6
+        Right Wing: 6
     # LEVEL 6
     Diamond Armor:
       description: Level 6 Creation spell
@@ -60,4 +73,10 @@ fs3combat:
         Left Hand: 9
         Right Hand: 9
         Left Foot: 9
-        Right Foot: 9    
+        Right Foot: 9
+        Tail: 9
+        Front Right Leg: 9
+        Rear Right Leg: 9
+        Front Left Leg: 9
+        Read Left Leg: 9
+        Right Wing: 9
