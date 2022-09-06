@@ -3,7 +3,7 @@ module AresMUSH
     class CombatArmorCmd
       include CommandHandler
       include NotAllowedWhileTurnInProgress
-      
+
       attr_accessor :names, :armor, :specials
 
       def parse_args
@@ -18,19 +18,19 @@ module AresMUSH
           self.armor = titlecase_arg(args.arg1)
           specials_str = titlecase_arg(args.arg2)
         end
-        
+
         self.specials = specials_str ? specials_str.split('+') : nil
       end
-      
+
       def required_args
         [ self.names, self.armor ]
       end
-      
+
       def check_valid_armor
         return t('fs3combat.invalid_armor') if !FS3Combat.armor(self.armor)
         return nil
       end
-      
+
       def check_special_allowed
         return nil if !self.specials
         allowed_specials = FS3Combat.armor_stat(self.armor, "allowed_specials") || []
@@ -39,11 +39,12 @@ module AresMUSH
         end
         return nil
       end
-      
-      
+
+
       def handle
+        Magic.warn_if_magic_gear(enactor, self.armor)
         self.names.each do |name|
-          FS3Combat.with_a_combatant(name, client, enactor) do |combat, combatant|        
+          FS3Combat.with_a_combatant(name, client, enactor) do |combat, combatant|
             FS3Combat.set_armor(enactor, combatant, self.armor, self.specials)
           end
         end

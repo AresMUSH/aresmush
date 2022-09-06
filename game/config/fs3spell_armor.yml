@@ -31,7 +31,7 @@ fs3combat:
         Read Left Leg: 6
         Right Wing: 6
         Left Wing: 6
-    Rock Skin:
+    Stone Skin:
       description: Level 4 Creation spell
       is_magic: true
       defense: 0
