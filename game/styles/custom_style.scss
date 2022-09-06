@@ -16,6 +16,7 @@ $taupe: #BF9075;
 $tan: #F1D8C2;
 $photo-box: #f9f9ef;
 $pink-brown: #795b50;
+
 $manilla: #cfc4b9;
 $manilla-dark: #b09d8c;
 $manilla-darker: #8e7762;
@@ -93,11 +94,6 @@ body {
 	margin-top: 5px;
 }
 
-#jobMenuBottom + .action-buttons {
-	float: right;
-	width: fit-content;
-}
-
 body>.container-fluid {
 	padding: 0;
 	margin: 0;
@@ -163,7 +159,6 @@ input {
 textarea {
 	width: 100%;
 	margin: 0;
-	border-top: 0!important;
 }
 
 pre code {
@@ -236,6 +231,78 @@ input[type="text"],
 	height: 39px;
 }
 
+.markdown-control-toggle.active {
+	background-color: transparent;
+}
+
+.markdown-control-toggle {
+	border-left: 0;
+	border-right: 0;
+}
+
+.markdown-control-toggle:hover {
+	color: #ebebeb;
+}
+
+a:hover, a:focus {
+    color: $rust;
+}
+
+.tab-content {
+
+select,
+input,
+textarea,
+.ember-power-select-trigger,
+input[type="text"],
+.ember-text-field,
+.ember-basic-dropdown-content {
+	background-color: $manilla-dark!important;
+	color: $almost-black!important;
+	border: 1px solid $manilla-darker!important;
+}
+
+code {
+	background-color: $manilla-darker;
+	color: $manilla;
+}
+
+.ember-basic-dropdown-content,
+.ember-power-select-option[aria-selected=true] {
+	background-color: #34735c;
+	color: $almost-black;
+}
+
+.ember-power-select-dropdown.ember-basic-dropdown-content--above,
+.ember-power-select-dropdown.ember-basic-dropdown-content--below,
+.ember-power-select-dropdown.ember-basic-dropdown-content--in-place,
+.ember-power-select-dropdown {
+	border-top: 1px solid $manilla-darker;
+	border-bottom: 1px solid $manilla-darker;
+}
+
+.markdown-control-toggle:hover {
+	color: #ebebeb;
+}
+
+.hint {
+	color: $darker-slate;
+}
+
+.card {
+	background-color: $manilla-darker;
+}
+
+.card-default > .card-heading {
+	background-color: $lighter-slate;
+	border-color: $slate;
+}
+
+.ember-power-select-status-icon {
+	border-color: $almost-black transparent transparent transparent;
+}
+}
+
 //DROPDOWN MENUS
 
 .navbar-dark .navbar-nav .show>.nav-link,
@@ -290,7 +357,7 @@ input[type="text"],
 
 .dropdown-menu>li>a:hover {
 	background-color: $secondary-color;
-	color: $light-grey;
+	color: $almost-black;
 	text-shadow: none;
 }
 
@@ -334,6 +401,8 @@ input[type="text"],
 	font-size: 1.4em;
 	text-transform: uppercase;
 	letter-spacing: 0.1em;
+	border-top: 0;
+	border-bottom: 0;
 }
 
 .title-wrap {
@@ -398,8 +467,6 @@ button {
 	border-radius: 4px;
 	padding: .225em .75em .35em;
 	min-width: 40px;
-	background-image: url('/game/uploads/css_files/rust-texture.png');
-	background-size: 500px;
 	padding-top: 8px;
 	color: #ebebeb;
 }
@@ -421,6 +488,22 @@ button {
 	border-color: #adadad;
 }
 
+.action-buttons > .btn-secondary,
+.action-buttons > .btn-collapse,
+.action-buttons > .btn-default,
+.action-buttons > .btn-primary,
+.action-buttons > .btn-warning,
+.chat-menu > .dropdown.dropup > .btn-secondary,
+.scene-controls-right > .btn-primary {
+	background-image: url('/game/uploads/css_files/rust-texture.png');
+	background-size: 500px;
+}
+
+#jobMenuBottom + .action-buttons {
+	float: right;
+	width: fit-content;
+}
+
 .btn-secondary,
 .btn-collapse,
 .btn-default {
@@ -429,11 +512,9 @@ button {
 	font-weight: 700;
 	text-transform: uppercase;
 	font-size: 16px;
-	background-color: $darker-grey;
-	border-color: $darkest-grey;
+	background-color: $rose;
+	border-color: $dark-rose;
 	color: $light-grey;
-	background-image: url('/game/uploads/css_files/rust-texture.png');
-	background-size: 500px;
 	padding-top: 8px;
 	letter-spacing: .03em;
 	text-shadow: 1px 1px 1px $blackest-grey;
@@ -448,8 +529,6 @@ button {
 	background-color: $darker-rose;
 	border-color: $dark-rose;
 	color: $light-grey;
-	background-image: url('/game/uploads/css_files/rust-texture.png');
-	background-size: 500px;
 	padding-top: 8px;
 	letter-spacing: .03em;
 	text-shadow: 1px 1px 1px $blackest-grey;
@@ -475,8 +554,6 @@ button {
 	font-weight: 700;
 	text-transform: uppercase;
 	font-size: 16px;
-	background-image: url('/game/uploads/css_files/rust-texture.png');
-	background-size: 500px;
 	padding-top: 8px;
 	letter-spacing: .03em;
 	text-shadow: 1px 1px 1px $blackest-grey;
@@ -491,8 +568,6 @@ button {
 	font-size: 16px;
 	background-color: #bf8450;
 	border-color: #c69163;
-	background-image: url('/game/uploads/css_files/rust-texture.png');
-	background-size: 500px;
 	padding-top: 8px;
 	letter-spacing: .03em;
 	text-shadow: 1px 1px 1px $blackest-grey;
@@ -597,7 +672,7 @@ button {
 }
 
 .pageboxh a:hover {
-	color: $secondary-color;
+	color: $darker-rust;
 }
 
 .pageboxh .fas,
@@ -793,7 +868,7 @@ button {
 }
 
 .box .tab-content {
-	background-image: linear-gradient(to bottom, #f4e2ba 0, 9.352517873%, #f2e4bf 18.7050357461%, 19.6043163538%, #f4e6c1 20.5035969615%, 44.7841726243%, #f0e2bd 69.0647482872%, 84.5323741436%, #f2e3bc 100%);
+	background-image: linear-gradient(to bottom, #f4e2ba 9.352517873%, #f2e4bf 18.7050357461%, 19.6043163538%, #f4e6c1 20.5035969615%, 44.7841726243%, #f0e2bd 69.0647482872%, 84.5323741436%, #f2e3bc 100%);
 	background-color: transparent;
 	border-color: transparent;
 	color: #191919;
@@ -1336,6 +1411,10 @@ h6, .h6 {
 	line-height: 1;
 }
 
+.sidebar-box.sidebar-box-right.text-center {
+	display: none;
+}
+
 //PLAY SCREEN & LOGS
 
 .scene-ooc-pose {
@@ -1518,6 +1597,215 @@ h1+p+table~span+hr+h2~div>p:last-of-type:not(:first-of-type) {
 	position: absolute;
 	right: 1em;
 	top: .25em;
+}
+
+.play-sidebar {
+	--paper-color: var(--antique-white);
+	--paper-dark: var(--antique-white-dark);
+	--shadow-size: 1px;
+	--transparent: rgba(236, 178, 186, 0);
+	position: relative;
+	background: linear-gradient(
+      to bottom right,
+      var(--paper-dark),
+      20%,
+      var(--transparent)
+    ),
+    var(--paper-color);
+	border-radius: 0;
+	color: #090909;
+	box-shadow: var(--shadow-size) var(--shadow-size) 2px var(--paper-dark);
+	padding-left: 10px;
+	padding-right: 10px;
+	overflow-y: auto;
+	border: 0
+}
+
+.play-sidebar::after {
+	content: "";
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background: linear-gradient(
+      var(--transparent),
+      50%,
+      var(--paper-dark),
+      51%,
+      var(--transparent)
+    ),
+    linear-gradient(
+      to right,
+      var(--transparent),
+      50%,
+      var(--paper-dark),
+      51%,
+      var(--transparent)
+    );
+	top: 0;
+	left: 0;
+	pointer-events: none;
+}
+
+.play-section-title {
+    color: $darker-rust;
+    font-variant: none;
+    text-transform: uppercase;
+    font-family: 'Courier Prime', 'Courier New', monospace;
+    font-size: 1.2em;
+}
+
+.play-sidebar a {
+    text-shadow: none;
+    color: $blackest-grey;
+    font-family: 'PT Sans', sans-serif;
+    font-size: 1m;
+    text-transform: uppercase
+}
+
+.play-sidebar a .fa-plus-circle {
+    color: $slate!important;
+    font-size: 16px
+}
+
+.play-sidebar a .fa-caret-square-up {
+    color: $slate!important;
+    font-size: 16px
+}
+
+.play-sidebar a .fa-caret-square-down {
+    color: $slate!important;
+    font-size: 16px
+}
+
+.play-sidebar a .fa-users {
+    color: $slate!important;
+    font-size: 16px
+}
+
+.play-sidebar a .fa-share-square {
+    color: $slate!important;
+    font-size: 16px
+}
+
+.play-sidebar a .fa-play-circle {
+    color: $slate!important;
+    font-size: 16px
+}
+
+.play-section-title .hint--right:before,
+.play-section-title .hint--right::after {
+    z-index: 1000000!important;
+    right: calc(100% + 11px);
+    left: unset;
+}
+
+.play-section-title .fa,
+.play-section-title .fas {
+    font-size: .675em
+}
+
+.play-section-title a {
+    position: absolute;
+    right: .9em;
+    line-height: .6
+}
+
+.play-section-title a:nth-of-type(2) {
+    right: 1.9em
+}
+
+.play-section-title a:nth-of-type(3) {
+    right: 2.9em
+}
+
+.play-section-title a:nth-of-type(4) {
+    right: 3.96em
+}
+
+@media(max-width:992px) {
+    .play-sidebar-main {
+        flex-basis: 100%
+    }
+}
+
+.play-sidebar-main {
+    position: relative
+}
+
+@media(max-width:991px) {
+    .play-section-title a {
+        right: 1.25em
+    }
+    .play-section-title a:nth-of-type(2) {
+        right: 2.25em
+    }
+    .play-section-title a:nth-of-type(3) {
+        right: 3.25em
+    }
+    .play-section-title a:nth-of-type(4) {
+        right: 4.4em
+    }
+}
+
+.play-selector-active {
+    font-weight: bold;
+    background: linear-gradient(to right, $manilla 0%, #faebd7 100%);
+    background-color: transparent;
+}
+
+.play-section-title:last-of-type~.bg-primary {
+    background-color: $rose;
+}
+
+.play-hint {
+    margin-left: 5px;
+    font-size: .85em;
+    padding-left: 10px;
+    margin-bottom: 5px;
+    font-family: Verdana, Geneva, sans-serif;
+    font-style: italic;
+    color: $dark-blue
+}
+
+.play-sidebar .badge-primary {
+    background-color: #a9353e;
+    border: 0;
+    margin-left: 2px;
+    padding-top: 6px;
+    font-family: 'Courier Prime', monospace;
+    font-size: 60%;
+    vertical-align: middle
+}
+
+.play-sidebar .badge-primary .fa-flag {
+    font-size: 85%
+}
+
+.play-sidebar .fa-flag {
+    font-size: 14px
+}
+
+.play-sidebar::-webkit-scrollbar {
+    width: 14px;
+    background-color: transparent
+}
+
+.play-sidebar::-webkit-scrollbar-thumb {
+    background-clip: content-box;
+    border: 4px solid transparent;
+    border-radius: 7px;
+    box-shadow: $lightest-teal inset 0 0 0 10px;
+    width: 10px
+}
+
+.play-sidebar::-webkit-scrollbar-button {
+    width: 0;
+    height: 0;
+    display: none
+}
+
+.play-sidebar::-webkit-scrollbar-corner {
+    background-color: transparent
 }
 
 //CARD & MODAL
@@ -2054,4 +2342,30 @@ th,
         .attack-stats-block {
                  padding-bottom: 30px;
         }
+        .card-header {
+                height: 70px;
+                background: linear-gradient(#fefbf7, #fefbf7 67px, pink 69px, pink 70px);
+        }
+        .spell-attack-stats {
+                line-height: 30px;
+                margin-top: -8px;
+        }
+}
+
+// JOBS
+
+.admin-only-reply, .admin-only-reply .markdown-editor {
+    background-color: $dark-slate;
+    border-color: $darker-slate;
+}
+
+.markdown-editor textarea {
+	border: 0!important;
+}
+
+// CRYPTIDS
+
+.ansi > .ember-view > .char-ability-title,
+.ansi > .ember-view > .char-ability-list > tr > td {
+	color: $light-grey;
 }
