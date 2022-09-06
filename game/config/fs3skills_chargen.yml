@@ -4,7 +4,7 @@ fs3skills:
   allow_incapable_action_skills: true
   free_backgrounds: 6
   free_languages: 3
-  max_ap: 70
+  max_ap: 65
   max_attr_rating: 4
   max_attrs_at_or_above:
     '3': 4
@@ -15,9 +15,9 @@ fs3skills:
   max_skill_rating: 7
   max_skills_at_or_above:
     '5': 9
-    '6': 6
+    '6': 5
     '7': 1
-  min_backgrounds: 2
+  min_backgrounds: 3
   starting_skills:
     Everyone:
       skills:
