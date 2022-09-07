@@ -266,6 +266,8 @@ module AresMUSH
 
       pen = FS3Combat.weapon_stat(weapon, "penetration")
       protect = FS3Combat.armor_stat(armor, "protection")[hitloc]
+      puts "~~~~~~~~~~~~#{combatant.name}'s armor is #{combatant.armor}: pen #{pen} protect #{protect}"
+
 
       # Armor doesn't cover this hit location
       return 0 if !protect

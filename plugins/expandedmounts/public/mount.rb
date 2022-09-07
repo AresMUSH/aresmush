@@ -26,7 +26,9 @@ module AresMUSH
     ## COMBAT
 
     reference :combat, "AresMUSH::Combat"
-
+    attribute :armor_name
+    attribute :armor_specials, :type => DataType::Array, :default => []
+    collection :magic_armor_specials, "AresMUSH::MagicArmorSpecials"
     attribute :freshly_damaged, :type => DataType::Boolean, :default => false
     attribute :is_ko
     attribute :death_count, :type => DataType::Integer, :default => 0
@@ -55,6 +57,13 @@ module AresMUSH
     end
 
     def armor
+      specials = self.armor_specials || []
+      special_text = specials.empty? ? nil : "+#{specials.join("+")}"
+      "#{self.armor_name}#{special_text}"
+    end
+
+
+    def default_armor
       Global.read_config("expandedmounts", self.expanded_mount_type, "armor" )
     end
 
@@ -121,6 +130,8 @@ module AresMUSH
       self.bonded.magic_shields
     end
 
+
+
     def defense_stance_mod
       self.bonded.combatant.defense_stance_mod
     end
@@ -166,6 +177,14 @@ module AresMUSH
 
     def is_npc?
       false
+    end
+
+    def npc
+      false
+    end
+
+    def magic_item_equipped
+      "None"
     end
 
     def mount_type

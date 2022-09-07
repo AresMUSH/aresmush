@@ -12,26 +12,6 @@ module AresMUSH
       end
     end
 
-    # def self.find_or_create_mount(combat, name)
-    #   #Find a vehicle by link to mount model
-    #   mount = Mount.named(name)
-    #   return mount.vehicle if mount.vehicle
-    #   # if (existing)
-    #   #   return existing
-    #   # end
- 
-    #   vehicle_type = mount.mount_type
-    #   #checking the list of vehicle types in config to see whether 'name' is there.
-    #   vehicle = FS3Combat.vehicles.select { |k, v| k.titlecase == vehicle_type.titlecase }
-    #   if (vehicle.keys[0])
-    #     type = vehicle.keys[0]
-    #     Vehicle.create(combat: combat, vehicle_type: type, name: name)
-        
-    #   else
-    #     return nil
-    #   end
-    # end
-    
     def self.join_mount(combat, combatant, mount, passenger_type)
       mount.update(combat: combat)
       combatant.update(expanded_mount_type: mount.expanded_mount_type)
@@ -39,16 +19,17 @@ module AresMUSH
       if (passenger_type == "Rider")
         mount.update(rider: combatant)
         combatant.update(riding: mount)
-                
+
         FS3Combat.set_weapon(nil, combatant, mount.default_weapon)
-        
+        FS3Combat.set_armor(nil, combatant, mount.default_armor)
+
         FS3Combat.emit_to_combat combat, t('expandedmounts.new_rider', :name => combatant.name, :mount => combatant.mount.name)
       else
         combatant.update(passenger_on: mount)
         FS3Combat.emit_to_combat combat, t('expandedmounts.new_passenger', :name => combatant.name, :mount => combatant.mount.name)
       end
     end
-    
+
     def self.leave_mount(combatant)
       if combatant.mount.is_ko
         FS3Combat.emit_to_combat combatant.combat, t('expandedmounts.ko_dismount', :name => combatant.name, :mount => combatant.mount.name)
@@ -72,7 +53,7 @@ module AresMUSH
 
   def self.heal_wounds(mount)
     #cron heal
-    wounds = mount.damage.select { |d| d.healing_points > 0 } 
+    wounds = mount.damage.select { |d| d.healing_points > 0 }
     return if wounds.empty?
 
     heal_dice = Global.read_config("expandedmounts", mount.expanded_mount_type, "heal_roll")
@@ -80,22 +61,23 @@ module AresMUSH
     successes = FS3Skills.get_success_level(roll)
 
     doctors = mount.doctors.map { |d| d.name }
-    
+
     points = 1
-    
+
     if (doctors.count > 0 || successes > 0)
       points += 1
     end
-    
+
     Global.logger.info "Healing wounds on #{mount.name}: docs=#{doctors.join(",")} recovery=#{successes}."
-    
+
     wounds.each do |d|
       FS3Combat.heal(d, points)
     end
   end
 
   def self.target_rider(spell)
-    return true unless spell['fs3_attack'] || spell['heal_points'] || spell['damage_inflicted']
+    puts "HELLO CHECKING THIS"
+    return true unless spell['fs3_attack'] || spell['heal_points'] || spell['damage_inflicted'] || spell['armor'] || spell['armor_specials']
     return false
   end
 
@@ -116,9 +98,9 @@ module AresMUSH
       m.update(passengers: nil)
     end
   end
-  
+
   def self.determine_target(target, attacker, attacker_net_successes)
-    return {hit_target: true, target: target } if !attacker  
+    return {hit_target: true, target: target } if !attacker
     hit_target = true
     #only run code if the target is a mount with a rider or a rider/passenger on a mount
     if (target.is_mount? && target.rider ) || (!target.is_mount? && target.mount)
@@ -128,25 +110,25 @@ module AresMUSH
         hit_target_chance = 90 + attacker_net_successes
       else
         if (attacker.mount)
-          if FS3Combat.weapon_stat(attacker.weapon, "weapon_type") == "Melee"  
+          if FS3Combat.weapon_stat(attacker.weapon, "weapon_type") == "Melee"
             hit_target_chance = 75 + attacker_net_successes
           else
             hit_target_chance = 85 + attacker_net_successes
-          end  
+          end
         else
-          if FS3Combat.weapon_stat(attacker.weapon, "weapon_type") == "Melee"  
+          if FS3Combat.weapon_stat(attacker.weapon, "weapon_type") == "Melee"
             hit_target_chance = 30 + attacker_net_successes
           else
             hit_target_chance = 75 + attacker_net_successes
-          end 
+          end
         end
 
       end
 
-      roll = rand(100) 
+      roll = rand(100)
       puts "roll #{roll} hit_target #{hit_target_chance} net success #{attacker_net_successes}"
       result = roll >= hit_target_chance
-      
+
       if result
         hit_target = false
         if target.is_mount? && target.rider
@@ -212,7 +194,7 @@ module AresMUSH
     #       :initial_severity => wound.initial_severity,
     #       :ictime_str => wound.ictime_str,
     #       :healing_points => wound.healing_points,
-    #       :is_stun => wound.is_stun, 
+    #       :is_stun => wound.is_stun,
     #       :is_mock => wound.is_mock,
     #       :mount => Mount.named(vehicle.name)
     #       }

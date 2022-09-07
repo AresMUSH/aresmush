@@ -7,5 +7,6 @@ module AresMUSH
     attribute :armor
 
     reference :combatant, "AresMUSH::Combatant"
+    reference :mount, "AresMUSH::Mount"
   end
 end

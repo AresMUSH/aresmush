@@ -158,6 +158,7 @@ spells:
     weapon: Spell
   Weaken Armor:
     available: true
+    armor_specials: Weaken
     casting_time: 1 round
     damage_type: Bypass
     desc: Make a target's armor less protective by weakening it's structural integrity.
@@ -168,9 +169,7 @@ spells:
     range: Short
     rounds: 3
     school: Entropy
-    armor_specials: Weaken
-
-
+    target_num: 1
 #---------------
 # LEVEL 5
 #---------------

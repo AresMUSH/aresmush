@@ -55,6 +55,8 @@ fs3combat:
         Front Left Leg: 6
         Read Left Leg: 6
         Right Wing: 6
+      allowed_specials:
+      - Weaken
     # LEVEL 6
     Diamond Armor:
       description: Level 6 Creation spell

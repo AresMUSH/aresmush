@@ -164,7 +164,7 @@ module AresMUSH
               end
 
               #Weapons & Weapon specials
-              if (spell['weapon'] && spell['weapon'] != "Spell")
+              if (spell['weapon'] && spell['weapon'] != "Spell" && !target.is_mount?)
                 message = Magic.cast_weapon(self.caster_name, combatant, target, self.spell_name, spell['weapon'])
                 messages.concat message
               end

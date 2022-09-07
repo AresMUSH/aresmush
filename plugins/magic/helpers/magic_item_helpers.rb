@@ -37,7 +37,7 @@ module AresMUSH
     # end
 
     def self.magic_item_armor_specials(combatant)
-      return nil if combatant.npc
+      return nil if combatant.is_npc?
       item_name = combatant.associated_model.magic_item_equipped
       return nil if item_name == "None"
       specials =  Global.read_config("magic-items", item_name, "armor_specials")
