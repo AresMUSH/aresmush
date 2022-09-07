@@ -4,13 +4,19 @@ module AresMUSH
 
 
       attr_accessor :title, :list
-      
+
       def initialize
         super File.dirname(__FILE__) + "/expanded_mounts.erb"
       end
-      
+
       def mounts
-        Mount.all.to_a
+        mounts = []
+        Chargen.approved_chars.each do |c|
+          mounts.concat [c.bonded]
+          puts "MOUNTS: #{mounts}"
+        end
+        mounts
+        # Mount.all.to_a
       end
 
       def format_mount(mount)
@@ -18,4 +24,4 @@ module AresMUSH
       end
     end
   end
-end 
+end
