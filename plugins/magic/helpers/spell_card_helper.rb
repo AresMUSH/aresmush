@@ -164,8 +164,8 @@ module AresMUSH
     end
 
     def self.other_spells(char, spell_list)
-      minor_school = char.group("Minor School")
-      major_school = char.group("Major School")
+      minor_school = char.minor_schools.first
+      major_school = char.major_schools.first
       other_spells = []
       spell_list.each do |s|
         if (s[:school] != minor_school && s[:school] != major_school)
