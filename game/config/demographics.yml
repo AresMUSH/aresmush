@@ -2,20 +2,24 @@
 demographics:
   census_fields:
   - field: name
-    width: 28
+    width: 18
     title: Name
+  - field: callsign
+    width: 18
+    title: Callsign
+    value: callsign
+  - field: group
+    width: 15
+    title: Mythic
+    value: mythic
   - field: demographic
     width: 10
     title: Gender
     value: gender
-  - field: group
-    width: 20
-    title: Organization
-    value: Organization
-  - field: group
-    width: 20
-    title: Mythic
-    value: Mythic
+  - field: age
+    width: 5
+    title: Age
+    value: age
   demographics:
   - full name
   - callsign
