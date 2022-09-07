@@ -15,7 +15,7 @@ module AresMUSH
           mounts.concat [c.bonded]
           puts "MOUNTS: #{mounts}"
         end
-        mounts
+        mounts.sort
         # Mount.all.to_a
       end
 
