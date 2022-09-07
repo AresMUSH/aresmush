@@ -4,7 +4,7 @@ demographics:
   - field: name
     width: 18
     title: Name
-  - field: callsign
+  - field: demographic
     width: 18
     title: Callsign
     value: callsign
