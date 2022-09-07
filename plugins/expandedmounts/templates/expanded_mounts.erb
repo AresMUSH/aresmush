@@ -2,6 +2,6 @@
 %xh<%= t('expandedmounts.mounts_list_title') %>%xn
 
 <% mounts.each do |mount| %>
-%xh<%= left(format_mount(mount), 50)  -%>%xn   <%= mount.bonded.name %>
+%xh<%= left(format_mount(mount), 30)  -%>%xn   <%= mount.bonded.name %>
 <% end %>
 <%= footer %>
