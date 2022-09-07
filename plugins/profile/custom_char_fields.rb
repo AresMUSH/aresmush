@@ -13,7 +13,23 @@ module AresMUSH
       # @example
       #    return { goals: Website.format_markdown_for_html(char.goals) }
       def self.get_fields_for_viewing(char, viewer)
-        return {}
+        spells = Magic.spell_list_all_data(char.spells_learned)
+        return {
+          comps: Compliments.get_comps(char),
+          spells: spells,
+          major_spells: Magic.major_school_spells(char, spells),
+          minor_spells: Magic.minor_school_spells(char, spells),
+          other_spells: Magic.other_spells(char, spells),
+          major_school: char.major_schools,
+          minor_school: char.minor_schools,
+          magic_items: Magic.get_magic_items(char),
+          potions: Magic.get_potions(char),
+          potions_creating: Magic.get_potions_creating(char),
+          lore_hook_name: char.lore_hook_name,
+          lore_hook_desc: char.lore_hook_desc,
+          lore_hook_item: Lorehooks.lore_hook_type(char)[:item],
+          lore_hook_pet: Lorehooks.lore_hook_type(char)[:pet],
+        }
       end
 
       # Gets custom fields for the character profile editor.
