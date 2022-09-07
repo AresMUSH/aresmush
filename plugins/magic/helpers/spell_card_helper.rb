@@ -138,7 +138,7 @@ module AresMUSH
     end
 
     def self.major_school_spells(char, spell_list)
-      major_school = char.group("Major School")
+      major_school = char.major_schools.first
       major_spells = []
       spell_list.each do |s|
         if (s[:school] == major_school)
@@ -149,7 +149,7 @@ module AresMUSH
     end
 
     def self.minor_school_spells(char, spell_list)
-      minor_school = char.group("Minor School")
+      minor_school = char.minor_schools.first
       if minor_school != "None"
         minor_spells = []
         spell_list.each do |s|
