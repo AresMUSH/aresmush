@@ -37,7 +37,7 @@ module AresMUSH
       return error if !error.empty?
 
       mount_data = [chargen_data[:custom][:mount_type], chargen_data[:custom][:mount_name],  chargen_data[:custom][:mount_desc], chargen_data[:custom][:mount_shortdesc]]
-      return if mount_data.join.blank?
+      return [] if mount_data.join.blank?
 
       if char.bonded
         "BONDED"
