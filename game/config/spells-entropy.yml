@@ -8,13 +8,24 @@ spells:
     casting_time: 1 round
     damage_type: Bypass
     desc: "Creates a fine layer of frost on a target the caster touches, covering an area up to 3 square feet."
-    effect: Creation
+    effect: Other
     level: 1
     name: Create Frost
     range: Touch
     roll: true
     school: Entropy
-
+  Sense Decay:
+    available: true
+    area: 100 yard radius
+    casting_time: 1 round
+    damage_type: Bypass
+    desc: "The caster can sense the presence of death and decaying things from a distance and identify their location."
+    effect: Other
+    level: 1
+    name: Sense Decay
+    range: Self
+    roll: true
+    school: Entropy
 #---------------
 # LEVEL 2
 #---------------

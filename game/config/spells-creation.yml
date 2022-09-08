@@ -8,7 +8,7 @@ spells:
     damage_type: Bypass
     desc: Cause a flowering plant to grow and bloom from a seed.
     duration: 10 minutes
-    effect: Other
+    effect: Flora
     level: 1
     line_of_sight: true
     name: Create Bloom
@@ -35,7 +35,7 @@ spells:
     casting_time: 1 round
     damage_type: Bypass
     desc: Encourage an already existing berry, nut, or fruit-bearing plant to produce a small amount of edible food, no more than a handful, even out of season.
-    effect: Creation
+    effect: Flora
     level: 2
     line_of_sight: true
     name: Ripen
@@ -59,6 +59,34 @@ spells:
 #---------------
 # LEVEL 3
 #---------------
+  Aquamancy:
+    area: 5 cubic feet
+    available: true
+    casting_time: 1 round
+    damage_type: Bypass
+    desc: "For the duration of the spell, the caster can influence up to 5 cubic feet of preexisting water, moving and shaping it into simple non-weaponized shapes that animates at their direction. The caster can control the flow, density, and dispersion of water to form dry spots, move puddles, or reroute small streams. When the spell ends, the water returns to its natural state in its current location."
+    duration: 1 hour
+    effect: Manipulation
+    level: 3
+    line_of_sight: true
+    name: Aquamancy
+    range: Short
+    roll: true
+    school: Creation
+  Floramancy:
+    area: 2 cubic feet
+    available: true
+    casting_time: 1 round
+    damage_type: Bypass
+    desc: "For the duration of the spell, the caster can cause up to 2 cubic feet of pre-existing flexible vegetation such as vines and grasses to form into simple non-weaponized shapes that animate at their direction. Can include accelerating growth by up to 15 days in the span of a few seconds. Flora returns to its natural - but not necessarily original - state when the spell ends."
+    duration: 30 minutes
+    effect: Flora
+    level: 3
+    line_of_sight: true
+    name: Shape Flora
+    range: Short
+    roll: true
+    school: Creation
   Minor Heal:
     available: true
     casting_time: 1 round
@@ -101,6 +129,20 @@ spells:
     school: Creation
     target_num: 1
     weapon: Stone Slam
+  Terramancy:
+    available: true
+    area: 2 cubic feet
+    casting_time: 1 round
+    damage_type: Bypass
+    desc: "For the duration of the spell, the caster can move around and shape up to a total of 2 cubic feet of pre-existing dirt, rock, or stone. The caster can sculpt detailed, non-weaponized shapes that animate at their direction. Earth returns to its natural, but not necessarily original, state when the spell ends. "
+    duration: 30 minutes
+    effect: Manipulation
+    level: 3
+    line_of_sight: true
+    name: Terramancy
+    range: Short
+    roll: true
+    school: Creation
   Water Cannon:
     available: true
     casting_time: 1 round
@@ -199,7 +241,7 @@ spells:
     casting_time: 10 minutes
     damage_type: Bypass
     desc: Speed the growth of any kind of plant by a year.  It may bloom, but will not produce fruit without either more time or magic. There must be sufficient and appropriate resources for the plant to grow.
-    effect: Other
+    effect: Flora
     level: 5
     line_of_sight: true
     name: Germinate

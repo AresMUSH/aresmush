@@ -88,21 +88,33 @@ spells:
 #---------------
 # LEVEL 3
 #---------------
-  Wind Wall:
+  Aeromancy:
+    area: 1 cubic yard
     available: true
     casting_time: 1 round
-    desc: "Deflect ranged projectile attacks directed against you or a single comrade with gusting winds."
-    duration: 3 rounds
-    effect: Shield
-    is_shield: true
+    damage_type: Bypass
+    desc: "For the duration of the spell, the caster can move and shape up to 1 cubic yard of gaseous substances. The caster can control the flow, density, and dispersion of a gaseous substance to form breathable bubbles in water, draw the oxygen towards or away from a flame, or push poisonous gases, pollution, or vapor away."
+    duration: 30 minutes
+    effect: Manipulation
+    level: 3
+    name: Aeromancy
+    range: Short
+    roll: true
+    school: Aether
+  Pyromancy:
+    area: 5 cubic feet
+    available: true
+    casting_time: 1 round
+    damage_type: Bypass
+    desc: "For the duration of the spell, the caster can influence up to 5 cubic feet of flames, forming them into simple non-weaponized shapes that animate at their direction. Within the size limit, they can make flames grow or snuff them out entirely. When the spell ends, the flames return to their natural state in their current location."
+    duration: 30 minutes
+    effect: Manipulation
     level: 3
     line_of_sight: true
-    name: Wind Wall
+    name: Pyromancy
     range: Short
-    rounds: 3
+    roll: true
     school: Aether
-    shields_against: All
-    target_num: 1
   Shock:
     available: true
     casting_time: 1 round
@@ -119,6 +131,21 @@ spells:
     school: Aether
     target_num: 1
     weapon: Stun (Aether)
+  Wind Wall:
+    available: true
+    casting_time: 1 round
+    desc: "Deflect ranged projectile attacks directed against you or a single comrade with gusting winds."
+    duration: 3 rounds
+    effect: Shield
+    is_shield: true
+    level: 3
+    line_of_sight: true
+    name: Wind Wall
+    range: Short
+    rounds: 3
+    school: Aether
+    shields_against: All
+    target_num: 1
 #---------------
 # LEVEL 4
 #---------------
