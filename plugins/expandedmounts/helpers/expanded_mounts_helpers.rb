@@ -21,7 +21,7 @@ module AresMUSH
         combatant.update(riding: mount)
 
         FS3Combat.set_weapon(nil, combatant, mount.default_weapon)
-        FS3Combat.set_armor(nil, combatant, mount.default_armor)
+        FS3Combat.set_armor(nil, mount, mount.default_armor)
 
         FS3Combat.emit_to_combat combat, t('expandedmounts.new_rider', :name => combatant.name, :mount => combatant.mount.name)
       else
