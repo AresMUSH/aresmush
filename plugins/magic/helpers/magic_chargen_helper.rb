@@ -186,10 +186,11 @@ module AresMUSH
     def self.starting_spells(char)
       spells = char.spells_learned.to_a.select {|s| s.learning_complete == true}
       starting_spells = []
-
+      Global.logger.debug "Starting spells unsorted: #{spells}"
       spells.each do |spell|
         starting_spells << { name: spell.name, school: spell.school, level: spell.level }
       end
+      Global.logger.debug "Starting spells unsorted: #{starting_spells}"
       starting_spells.sort_by { |s| [s[:school], s[:level]] }
     end
 
