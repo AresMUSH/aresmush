@@ -298,10 +298,10 @@ fs3combat:
       is_magic: false
       defense: 0
       protection:
-        Chest: 8
-        Abdomen: 7
-        Left Arm: 8
-        Right Arm: 8
+        Chest: 6
+        Abdomen: 5
+        Left Arm: 6
+        Right Arm: 6
       allowed_specials:
       - Leather Helmet
       - Metal Helmet
@@ -311,12 +311,12 @@ fs3combat:
       is_magic: false
       defense: -1
       protection:
-        Chest: 9
-        Abdomen: 8
-        Left Arm: 9
-        Right Arm: 9
-        Right Leg: 7
-        Left Leg: 7
+        Chest: 7
+        Abdomen: 6
+        Left Arm: 7
+        Right Arm: 7
+        Right Leg: 5
+        Left Leg: 5
       allowed_specials:
       - Leather Helmet
       - Metal Helmet
@@ -327,10 +327,10 @@ fs3combat:
       is_magic: false
       defense: 0
       protection:
-        Chest: 7
-        Abdomen: 6
-        Left Arm: 7
-        Right Arm: 7
+        Chest: 5
+        Abdomen: 4
+        Left Arm: 5
+        Right Arm: 5
       allowed_specials:
       - Leather Helmet
       - Metal Helmet
