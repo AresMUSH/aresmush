@@ -17,13 +17,16 @@ module AresMUSH
       char.bonded.shortdesc if char.bonded
     end
 
-    def self.required_mount_info(chargen_data)
+    def self.required_mount_info(char, chargen_data)
       errors = []
+      puts "HELLO HERE MOUNT INFO"
       mount_data = [chargen_data[:custom][:mount_type], chargen_data[:custom][:mount_name],  chargen_data[:custom][:mount_desc], chargen_data[:custom][:mount_shortdesc]]
       if !mount_data.join.blank?
         errors.concat [t('expandedmounts.need_mount_type')] if chargen_data[:custom][:mount_type] == ""
         errors.concat [t('expandedmounts.need_mount_name')] if chargen_data[:custom][:mount_name] == ""
-        errors.concat [t('expandedmounts.already_mount_named')] if Mount.named(chargen_data[:custom][:mount_name])
+        mount =  Mount.named(chargen_data[:custom][:mount_name])
+        errors.concat [t('expandedmounts.already_mount_named')] if mount && mount.bonded != char
+        Global.logger.debug "Mount: #{mount.name} Bonded: #{mount.bonded} #{mount.bonded.name} Char: #{char} #{char.name}"
         #Minor school can be set separately from the mount, so is not in mount_data
         errors.concat [t('expandedmounts.need_school')] if chargen_data[:custom][:minor_school]  == ""
       end
@@ -32,8 +35,7 @@ module AresMUSH
     end
 
     def self.save_mount(char, chargen_data)
-      puts "HELLO?"
-      error = ExpandedMounts.required_mount_info(chargen_data)
+      error = ExpandedMounts.required_mount_info(char, chargen_data)
       return error if !error.empty?
 
       mount_data = [chargen_data[:custom][:mount_type], chargen_data[:custom][:mount_name],  chargen_data[:custom][:mount_desc], chargen_data[:custom][:mount_shortdesc]]
