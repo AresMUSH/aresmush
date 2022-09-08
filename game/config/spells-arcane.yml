@@ -218,7 +218,7 @@ spells:
     effect: Defense
     is_potion: true
     level: 4
-    name: Arcane of Pacifism
+    name: Spirit of Pacifism
     range: Self
     roll: true
     school: Arcane
