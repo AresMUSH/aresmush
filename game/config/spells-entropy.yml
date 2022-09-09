@@ -8,7 +8,7 @@ spells:
     casting_time: 1 round
     damage_type: Bypass
     desc: "Creates a fine layer of frost on a target the caster touches, covering an area up to 3 square feet."
-    effect: Other
+    effect: Manipulation
     level: 1
     name: Create Frost
     range: Touch
@@ -52,7 +52,7 @@ spells:
     casting_time: 1 round
     damage_type: Bypass
     desc: Causes up to 3 cubic feet of plant life to wither and die within a matter of minutes.
-    effect: Other
+    effect: Flora
     level: 2
     line_of_sight: true
     name: Wither
@@ -74,7 +74,7 @@ spells:
     target_num: 1
     school: Entropy
 #---------------
-# LEVEL 3
+# LEVEL 3image.png
 #---------------
   Ice Talons:
     available: true
@@ -82,7 +82,7 @@ spells:
     damage_type: Bypass
     desc: The caster's fingertips become ice talons capable of inflicting damage. Talons can be broken off and thrown for a ranged attack.
     duration: 1 round
-    effect: Creation
+    effect: Weapon
     fs3_attack: true
     is_potion: true
     level: 3

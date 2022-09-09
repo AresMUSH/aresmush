@@ -21,7 +21,7 @@ spells:
     casting_time: 1 round
     damage_type: Bypass
     desc: "Draw up to 2 gallons of clean drinking water from the moisture in the air\u2014possibly creating a downpour or filling many small receptacles.\n\nThe water is generally reflective of the temperature in which it is created, but it is always liquid on creation. The temperature around it may freeze or heat the water after creation."
-    effect: Other
+    effect: Manipulation
     level: 1
     name: Create Water
     range: Short
@@ -197,7 +197,7 @@ spells:
     casting_time: 10 minutes
     damage_type: Bypass
     desc: "The caster can purify up to 30 cubic feet (225 gallons) of preexisting water, drawing impurities out of the water, such as pollution, small organisms, pyrogens, dissolved compounds, and suspended particles."
-    effect: Other
+    effect: Manipulation
     level: 4
     name: Purify Water
     range: Short

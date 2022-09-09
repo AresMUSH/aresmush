@@ -8,7 +8,7 @@ spells:
     damage_type: None
     desc: Create or snuff out a flame the size of a lighter.
     duration: 10 minutes
-    effect: Other
+    effect: Manipulation
     level: 1
     line_of_sight: true
     name: Fire Starter
@@ -21,7 +21,7 @@ spells:
     damage_type: Bypass
     desc: Create a beam of light equivilent to 300 lumens (a small LED flashlight).
     duration: 30 minutes
-    effect: Other
+    effect: Manipulation
     level: 1
     line_of_sight: true
     name: Light
@@ -33,7 +33,7 @@ spells:
     casting_time: 1 round
     desc: The caster creates a small electric current visible between two fingers. The electricity can be used to recharge up to 5% of a communicator battery or power electronics less than 3 volts (2 AA batteries) for the length of the spell. It causes a static shock-like effects in individuals.
     duration: 30 minutes
-    effect: Other
+    effect: Manipulation
     level: 1
     name: Spark
     range: Touch
@@ -46,7 +46,7 @@ spells:
     damage_type: Bypass
     desc: "For the duration of the spell, the caster can amplify or decrease the volume of the sound coming from a target. Sounds cannot be made louder than 80 db (a loud truck, a vacuum cleaner), nor can sounds be made softer than 30 db (a quiet whisper)."
     duration: 30 minutes
-    effect: Illusion
+    effect: Manipulation
     level: 2
     name: Adjust Volume
     range: Short
