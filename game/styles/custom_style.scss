@@ -1043,7 +1043,7 @@ button {
     	margin: .25em 0;
     	display: flex;
     	align-items: center;
-    	width: 100%; 
+    	width: 100%;
         min-width: 150px;
         font-weight: bold;
     }
@@ -1115,25 +1115,25 @@ button {
             min-height: 3em;
             padding-bottom: .375em;
         }
-        .xp-ability-name, 
-        .xp-ability > .row, 
+        .xp-ability-name,
+        .xp-ability > .row,
         .xp-ability .col {
             display: inline-block;
             //width: auto;
             margin-bottom: 0;
             padding-bottom: 0;
             flex-basis: auto;
-        }	
+        }
         .xp-ability .col:first-of-type,
         > div > p:last-of-type > b	{
             width: 10em;
             min-width: 10em;
             flex: 0 0 10em;
             display: inline-block;
-        }	
+        }
     	.xp-ability .col:nth-of-type(2) {
             max-width: 20em;
-        }		
+        }
         .xp-ability .col:nth-of-type(3) {
             padding-left: 1em;
             min-width: 3em;
@@ -1170,7 +1170,7 @@ button {
             position: relative;
             top: 1px;
             width: 15em;
-        }	
+        }
 	    > div > p:last-of-type > b {
             padding-left: .25em;
         }
@@ -1327,6 +1327,10 @@ button {
 	font-size: 1.2em;
 }
 
+icon-gallery .icon-gallery-item {
+  margin: 5px 15px 0px 0px;
+}
+
 //HEADERS
 
 h1,
@@ -1471,6 +1475,7 @@ h6, .h6 {
 	border: 10px solid $photo-box;
 	box-shadow: 2px 2px 2px rgba(54, 38, 9, 0.3);
 	border-radius: 0;
+	border-color:  #f7f1ec;
 }
 
 .char-name {
@@ -2193,7 +2198,7 @@ th,
 	color: $light-grey;
 	width: 97%;
   }
-  
+
   .directory-info {
 	  background: $slate;
 	  opacity: 85%;
@@ -2202,17 +2207,17 @@ th,
 	  font-style: italic;
 	  margin-right: 25%;
   }
-  
+
   .directory-title a {
 	color: white;
   }
-  
+
   .directory-title {
 	  text-shadow: 2px 2px 5px #2b2f33;
 	  font-size: 120%;
 	  margin-top: 35px;
 	}
-  
+
   .short-desc {
 	  background: $darkest-blue;
 	  opacity: 85%;
@@ -2220,7 +2225,7 @@ th,
 	  margin: 15px;
 	  font-style: italic;
   }
-  
+
 
 .infobox {
 	margin: 15px 15px 0px 5px;
@@ -2228,32 +2233,32 @@ th,
 	border-radius: 10px;
 	border: 2px solid #293038;
  }
- 
+
  .infobox-body {
 	 background: $darkest-slate;
 	 padding: 20px;
 	 border-radius: 0px 0px 5px 5px;
  }
- 
+
  .infobox-heading {
 	 background-color: $darkest-blue;
 	 border-bottom: 4px solid #293038;
 	 border-radius: 8px 8px 0px 0px;
  }
- 
+
  .infobox-title-text {
 	 font-size: 20px;
 	 font-weight: bold;
 	 padding: 10px;
 	 text-align: left;
  }
- 
+
  .infobox-subtitle {
 	 font-style: italic;
 	 font-size: 14px;
 	 padding-top: 5px;
  }
- 
+
  .creature-wrap {
 	background-image: url("/game/uploads/theme_images/leatherbg.jpg");
  }
