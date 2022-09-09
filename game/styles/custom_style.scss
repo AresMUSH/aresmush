@@ -298,9 +298,18 @@ code {
 	border-color: $slate;
 }
 
+.card-heading a:focus {
+	color: $light-grey;
+}
+
 .ember-power-select-status-icon {
 	border-color: $almost-black transparent transparent transparent;
 }
+}
+
+.tab-content h1,
+.tab-content .h1 {
+	background-image: url(/game/uploads/misc/h1-manilla-left.png), url(/game/uploads/misc/h1-manilla-right.png);
 }
 
 //DROPDOWN MENUS
@@ -379,7 +388,7 @@ code {
     font-size: 1rem;
     content: "\f002";
     font-weight: 400;
-    font-family: "Font Awesome 5 Pro";
+    font-family: "FontAwesome";
     display: inline-block;
     line-height: 18px
 }
@@ -690,7 +699,7 @@ button {
 	color: #191919;
 }
 
-@media only screen and (max-width:1413px) {
+@media only screen and (max-width:1000px) {
 	.pagebox-pic,
 	.pagebox {
 		width: 97%!important;
@@ -1264,6 +1273,10 @@ button {
 	border: none;
 	border-top: none;
 	color: $almost-black;
+}
+
+.tab-content > .tab-pane > .ember-view > p > a.btn-secondary {
+	color: $light-grey;
 }
 
 .nav-tabs .nav-link.active, .nav-tabs .nav-link.active > a:hover, .nav-tabs .nav-link.active > a:focus {
