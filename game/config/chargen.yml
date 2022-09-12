@@ -98,11 +98,12 @@ chargen:
         given the background, and that you haven't missed anything important in chargen.
         See `help apps` for additional help on the app review process.
   welcome_message: |-
-    Please welcome %{name}, our latest %{mythic} rider to be approved!
+    Please welcome %{name}, our latest %{mythic}-bonded Warden to be approved!
 
     Profile: %{profile_link}
 
     RP Hooks:
+
     %{rp_hooks}
   permissions:
     manage_apps: Approve and reject character apps.
