@@ -247,6 +247,7 @@ website:
     blood_magic: magic:blood_magic
     blood:  magic:blood_magic
     mages: world:mages
+    one-shot_adventures: system:one-shot_adventures
     potion: magic:potions
     potions: magic:potions
     school: world:school
