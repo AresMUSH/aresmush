@@ -63,6 +63,7 @@ scenes:
   - Social
   - Event
   - Vignette
+  - Text
   shortcuts:
     scenes: scene
     scene/close: scene/stop
