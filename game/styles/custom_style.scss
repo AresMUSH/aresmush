@@ -6,6 +6,7 @@ $darker-grey: #23272a;
 $darkest-grey: #171a1c;
 $blackest-grey: #191919;
 $almost-black: #090909;
+$photo-box: #f9f9ef;
 
 $greyish-green: #2F3E41;
 $lighter-greyish-green: #455a5f;
@@ -1222,6 +1223,36 @@ button {
 .char-ability-list > tr:nth-of-type(odd),
 .char-ability-list > tr:nth-of-type(even) {
     background-color: transparent;
+}
+
+.card.profile-gallery img {
+    display: inline-block;
+    border-radius: 0;
+    padding: 0;
+    height: 175px;
+    width: auto;
+    margin: 0 1px;
+    border: 6px solid $photo-box;
+    transition: transform 0.75s ease;
+}
+
+.profile-gallery {
+    vertical-align: top;
+    height: auto;
+    border-radius: 0;
+    margin: 0 1.2em 1.4em;
+    padding: 0
+}
+
+.profile-tab .card img:hover {
+    transform: scale(2);
+    z-index: 100;
+    position: relative;
+    left: 30%;
+    outline: 0;
+    border: 6px solid transparent;
+    box-shadow: 10px 10px 20px $almost-black;
+    border: 6px solid $photo-box;
 }
 
 //TABS
