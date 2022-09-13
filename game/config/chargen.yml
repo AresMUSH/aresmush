@@ -15,9 +15,7 @@ chargen:
   - bg %{name}
   - hooks %{name}
   - sheet %{name}
-  approval_message: Congratulations!  Your application has been approved.  Type %xhonstage%xn
-    to go forth and RP.  You may want to customize your character profile on the web
-    portal.
+  approval_message: "Congratulations, your application has been approved! Welcome to the Wardens. We are glad to have you!\n\nCheck out the [Getting Started](/wiki/guide:getting_started) guide for more help, including information on how Ares works, how to find RP and get involved in the story, and more."
   arrivals_category: New Arrivals
   bg_blurb: "A background is your character's backstory or history.  Please keep backgrounds to
     4,000 characters (about 700 words) for readability.<br><br>Some questions to consider in your background
@@ -40,14 +38,12 @@ chargen:
       your character at a glance. Providing a profile icon is optional. You can upload
       additional character images once you're approved.<br><br>All images should be publicly available
       and feature public persons such as actors, models, or professional athletes."
+  intro_blurb: "The online character creation tool will guide you through creating your character. Before getting started, we recommend reading \n\n* [Join Us](/wiki/guide:join_us) - Guidelines for creating a character, restricted and overdone concepts, and help with CG. \n* [World Intro](/wiki/home) - A fast and dirty introduction to theme.\n\n "
   lastwill_blurb: Idled out characters will generally be presumed to be on a duty rotation at a Warden Outpost, so that they can be picked back up if you wish to return. If you have a different preference, you can register it with your character's 'last will'.
   post_approval_message: Please make sure they have a profile image for their log
     icon.
   rank_blurb: Military rank.
-  rejection_message: Sorry, your character could not be approved at the present time
-    for the reasons described below.  Please see %xhhelp app%xn for help making changes
-    and resubmitting, and contact the person handling your application if you have
-    any questions.
+  rejection_message: "Sorry, your character could not be approved at the present time for the reasons listed.  You can make changes to your app by visiting [Create a Character](/chargen) on the web portal. \n\nFeel free to leave comments in this request or to ask for help on the **New Characters** channel if you have any questions.\n\n-----------"
   shortcuts:
     chargen: cg
     cg/back: cg/prev
