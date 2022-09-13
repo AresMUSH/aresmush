@@ -72,7 +72,8 @@ module AresMUSH
           targets.each do |target|
             Comps.create(character: target, comp_msg: self.comp, from: enactor.name)
             if give_luck
-              FS3Skills.modify_luck(target, luck_amount)
+              FS3Skills.modify_luck(target, target_luck_amount)
+              FS3Skills.modify_luck(enactor, comper_luck_amount)
             end
             message = t('compliments.has_left_comp', :from => enactor.name)
             Login.emit_if_logged_in target, message
