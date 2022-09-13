@@ -52,7 +52,7 @@ scenes:
       - 5000
   delete_unshared_scenes: false
   idle_scene_timeout_days: 4
-  include_pose_separator: false
+  include_pose_separator: true
   ooc_color: "%xc"
   related_scenes_filter_days: 90
   room_cleanup_cron:
