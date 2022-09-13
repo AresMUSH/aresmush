@@ -2,27 +2,45 @@
 fs3combat:
   default_npc_type: 'Goon'
   npc_types:
-    Goon:
+    Trivial:
+      Default: 2
+      Firearms: 4
+      Archery: 4
+      Melee: 4
+      Brawl: 4
+      Wounds: 30
+    Easy:
       Default: 4
       Firearms: 6
-      Gunnery: 6
+      Archery: 6
       Melee: 6
+      Brawl: 6
       Wounds: 30
-    Henchman:
+    Normal:
       Default: 6
+      Archery: 8
+      Brawl: 8
       Firearms: 8
-      Gunnery: 8
       Melee: 8
       Wounds: 20
-    Miniboss:
+    Moderate:
       Default: 9
+      Archery: 11
+      Brawl: 11
       Firearms: 11
-      Gunnery: 11
       Melee: 11
       Wounds: 15
-    Boss:
+    Hard:
       Default: 11
+      Archery: 13
+      Brawl: 13
       Firearms: 13
-      Gunnery: 13
       Melee: 13
+      Wounds: 0
+    Impossible:
+      Default: 18
+      Archery: 20
+      Brawl: 20
+      Firearms: 20
+      Melee: 20
       Wounds: 0
