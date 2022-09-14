@@ -155,12 +155,13 @@ module AresMUSH
     ability = roll_params.ability
     mount_or_rider.class == Mount ? mount = mount_or_rider : mount = mount_or_rider.bonded
     mount_or_rider.class == Character ? char = mount_or_rider : char = mount_or_rider.rider
+    combatant = char.combatant
 
     if ability == "Reflexes"
-      mount_dice = Global.read_config("expandedmounts", mount.expanded_mount_type, "reflexes")
+      mount_dice = Global.read_config("expandedmounts", mount.expanded_mount_type, "reflexes") + combatant.defense_stance_mod
       rider_dice = FS3Skills.dice_to_roll_for_ability(char, roll_params)
     elsif ability == "Melee" ||  ability == "Brawl"
-      mount_dice = Global.read_config("expandedmounts", mount.expanded_mount_type, "attack")
+      mount_dice = Global.read_config("expandedmounts", mount.expanded_mount_type, "attack")  + combatant.attack_stance_mod
       rider_dice = FS3Skills.dice_to_roll_for_ability(char, roll_params)
     elsif  ability == "Composure"
       mount_dice = Global.read_config("expandedmounts", mount.expanded_mount_type, "composure")
@@ -169,7 +170,7 @@ module AresMUSH
       mount_dice = Global.read_config("expandedmounts", mount.expanded_mount_type, "stealth")
       rider_dice = FS3Skills.dice_to_roll_for_ability(char, roll_params)
     elsif ability == "Alterness"
-      mount_dice = Global.read_config("expandedmounts", mount.expanded_mount_type, "alterness")
+      mount_dice = Global.read_config("expandedmounts", mount.expanded_mount_type, "alertness")
       rider_dice = FS3Skills.dice_to_roll_for_ability(char, roll_params)
     else
       #Don't average skills that mounts don't affect
