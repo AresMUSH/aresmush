@@ -253,10 +253,6 @@ a:hover, a:focus {
     color: $rust;
 }
 
-.fa a:hover, a:focus {
-	color: $lightest-slate;
-}
-
 .tab-content {
 
 select,
@@ -957,6 +953,12 @@ button {
 	text-align: right;
 }
 
+.user-bar a:hover, a:focus {
+	color: $lightest-slate;
+}
+
+}
+
 //CHAR PAGES
 
 .profile-box {
@@ -1516,6 +1518,9 @@ h6, .h6 {
 
 .pose-divider {
 	border-bottom: 1px solid #3d495e;
+	border-top: 0px;
+	border-right: 0px;
+	border-left: 0px;
 }
 
 .scene-log {
