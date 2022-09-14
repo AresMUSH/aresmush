@@ -13,7 +13,7 @@ channels:
   - Chat
   discord_gravatar_style: retro
   discord_prefix: "[D]"
-  end_marker: ">"
+  end_marker: "]"
   ooc_lounge_channel: ''
   recall_buffer_size: 500
   recall_timeout_days: 3
@@ -32,7 +32,7 @@ channels:
     delcom: channel/leave
     comtitle: channel/title
     channel/name: channel/rename
-  start_marker: "<"
+  start_marker: "["
   permissions:
     manage_channels: Create and modify channels.
     set_comtitle: Can use the com title command.
