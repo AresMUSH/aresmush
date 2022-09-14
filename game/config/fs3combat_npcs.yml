@@ -1,6 +1,6 @@
 ---
 fs3combat:
-  default_npc_type: 'Goon'
+  default_npc_type: 'Normal'
   npc_types:
     Trivial:
       Default: 2
@@ -43,4 +43,54 @@ fs3combat:
       Brawl: 20
       Firearms: 20
       Melee: 20
+      Wounds: -10
+
+# MYTHICS
+    Dragon:
+      Default: 6
+      Composure: 8
+      Brawl: 6
+      Melee: 6
+      Reflexes: 6
+      Altertness: 6
+      Wounds: 0
+    Lupine:
+      Default: 6
+      Composure: 7
+      Brawl: 6
+      Melee: 6
+      Reflexes: 6
+      Altertness: 8
+      Wounds: 0
+    Pantherine:
+      Default: 6
+      Composure: 8
+      Brawl: 6
+      Melee: 6
+      Reflexes: 6
+      Altertness: 9
+      Wounds: 0
+    Pegasus:
+      Default: 6
+      Composure: 7
+      Brawl: 7
+      Melee: 7
+      Reflexes: 6
+      Altertness: 6
+      Wounds: 0
+    Griffon:
+      Default: 6
+      Composure: 8
+      Brawl: 7
+      Melee: 7
+      Reflexes: 6
+      Altertness: 8
+      Wounds: 0
+    Roc:
+      Default: 6
+      Composure: 8
+      Brawl: 8
+      Melee: 8
+      Reflexes: 8
+      Altertness: 6
       Wounds: 0
