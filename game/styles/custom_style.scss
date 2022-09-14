@@ -107,6 +107,10 @@ p {
 	line-height: 1.6;
 }
 
+a {
+	font-weight: bold;
+}
+
 .form-group:nth-of-type(6)>.col-sm-9>p {
 	width: 50%;
 	float: left;
@@ -785,7 +789,7 @@ button {
 
 .pagebox-info a:hover,
 .tab-content a:hover {
-	color: $secondary-color;
+	color: $darkest-rust;
 }
 
 //THEME BOX
@@ -1486,10 +1490,18 @@ h6, .h6 {
 	vertical-align: top;
 }
 
+.badge-likes {
+	background-color: $light-rose;
+}
+
 .scene-ooc-pose .bg-primary {
 	background-color: $darker-rust!important;
 	border-color: #d9a05b;
 	color: $light-grey;
+}
+
+.pose-divider {
+	border-bottom: 1px solid #3d495e;
 }
 
 .scene-log {
@@ -1555,6 +1567,10 @@ h6, .h6 {
 	width: 3em;
 	display: inline-block;
 }
+}
+
+.live-scenes-block {
+	background-color: $dark-slate;
 }
 
 @media screen and (max-width:767px) {
