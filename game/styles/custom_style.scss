@@ -783,13 +783,19 @@ button {
 }
 
 .pagebox-info a,
-.tab-content a {
+.tab-content a,
+.log-box a {
 	color: $lighter-greyish-green;
 }
 
-.pagebox-info a:hover,
-.tab-content a:hover {
+.pagebox-info a:hover {
 	color: $darkest-rust;
+}
+
+
+.tab-content a:hover,
+.log-box a:hover {
+	color: $secondary-color;
 }
 
 //THEME BOX
@@ -956,6 +962,10 @@ button {
 .profile-divider {
     background-color: $slate;
     padding: 3px;
+}
+
+.profile-box .row {
+    border-bottom: 1px solid #191919;
 }
 
 .profile-tab .nav-tabs > .nav-item:first-child > .nav-link {
@@ -1362,8 +1372,8 @@ button {
 	font-size: 1.2em;
 }
 
-icon-gallery .icon-gallery-item {
-  margin: 5px 15px 0px 0px;
+.icon-gallery .icon-gallery-item {
+	margin: 5px 20px 0px 0px;
 }
 
 //HEADERS
@@ -1529,6 +1539,19 @@ h6, .h6 {
 	padding-left: 3em;
 }
 
+.log-wrap {
+    background-image: url(/game/uploads/theme_images/leatherbg.jpg);
+}
+
+.log-box {
+    background-color: $manilla;
+    color: #090909;
+}
+
+.log-box .icon-gallery {
+    justify-content: center;
+}
+
 //LIVE SCENES
 
 @media screen and (min-width:768px) {
@@ -1597,7 +1620,7 @@ h6, .h6 {
 	}
 
 	.live-scenes-block>.row:last-child>div:last-child>div:last-child {
-		text-align: right;
+		text-align: left;
 	}
 
 	.live-scenes-heading>.col:last-child {
@@ -1651,6 +1674,16 @@ h6, .h6 {
 .live-scenes-block~br,
 .live-scenes-block~hr {
 	display: none;
+}
+
+.live-scenes-heading {
+	background-color: #141D2A;
+	padding: 8px 0px 8px 0px;
+}
+
+.live-scenes-block,
+.unshared-scene-block {
+    background-color: #0c1119!important;
 }
 
 h1+p+table~span+hr+h2~div {
@@ -1878,6 +1911,62 @@ h1+p+table~span+hr+h2~div>p:last-of-type:not(:first-of-type) {
 .card {
 	background-color: $darkest-blue;
 	border-color: transparent;
+}
+
+.modal-footer {
+    border-top: 1px solid $darker-slate;
+    background-color: $darker-grey;
+}
+
+.modal-header {
+    border-bottom: 1px solid $darker-slate;
+    background-color: $darker-grey;
+}
+
+.modal-content {
+    background-image: url('/game/uploads/theme_images/leatherbg.jpg');
+	width: 600px;
+}
+
+.modal-content .row {
+    margin-top: 5px;
+}
+
+.modal-body {
+    background-color: rgba(35, 39, 42, 0.25);
+}
+
+.modal-body .col-sm-3 {
+    width: 30%;
+}
+
+.modal-body .col-sm-9 {
+    width: 70%;
+}
+
+.modal-content>.alts-switcher {
+    background-image: none;
+}
+
+.alts-switcher td {
+    border-bottom: 1px none $primary-color;
+    vertical-align: middle;
+}
+
+.alts-switcher tr {
+    background: rgba(24, 27, 29, 0.7);
+}
+
+.alts-switcher {
+    border: 0;
+}
+
+.alts-switcher > tr > td > .btn .btn-secondary {
+    margin: auto;
+}
+
+.alts-switcher > tr:last-of-type {
+    border-bottom: 0!important;
 }
 
 //PAPER AND TAPE
