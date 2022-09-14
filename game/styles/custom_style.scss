@@ -26,7 +26,7 @@ $darkest-blue: #141D2A;
 
 $darkest-rust: #522617;
 $darker-rust: #903A19;
-$rust: #B8430F;
+$rust: #B0543E;
 $brass: #CD9671;
 $ruddy-brown: #B25A27;
 
@@ -251,6 +251,10 @@ input[type="text"],
 
 a:hover, a:focus {
     color: $rust;
+}
+
+.fa a:hover, a:focus {
+	color: $lightest-slate;
 }
 
 .tab-content {
