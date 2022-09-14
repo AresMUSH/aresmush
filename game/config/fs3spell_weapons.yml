@@ -258,78 +258,6 @@ fs3combat:
       init_mod: 0
       special_group: Spell
       magic_damage_type: Bypass
-#---------------
-# WEAPON SPECIAL GROUPS
-#---------------
-  weapon special groups:
-    Body:
-    - sparring
-    - focus
-    - strength
-    - weaken
-    Ranged:
-    - fire
-    - focus
-    - ice
-    - lightning
-    - scope
-    Melee:
-    - fire
-    - focus
-    - ice
-    - lightning
-    - sparring
-    - strength
-    - weaken
-    Spell:
-    - focus
-#---------------
-# WEAPON SPECIALS
-#---------------
-  weapon specials:
-    #---------------
-    # MAGIC ITEMS
-    #---------------
-    Guilt-Weighted Gloves:
-      description: Magic item
-      is_magic: true
-      lethality: 5
-    #---------------
-    # SPELLS
-    #---------------
-    Lightning:
-      description: Level 4 Aether spell
-      is_magic: true
-      lethality: 5
-      penetration: 1
-      init_mod: 2
-    Fire:
-      description: Level 4 Aether spell
-      is_magic: true
-      lethality: 10
-      accuracy: 1
-    Focus:
-      description: Level 2 Arcane spell
-      is_magic: true
-      lethality: 0
-      accuracy: 2
-    Ice:
-      description: Level 4 Ice spell
-      is_magic: true
-      lethality: 15
-      penetration: -1
-      magic_damage_type: Cold
-    Strength:
-      description: Level 4 Creation spell
-      is_magic: true
-      lethality: -5
-      penetration: 3
-    Weaken:
-      description: Level 4 Entropy spell
-      is_magic: true
-      lethality: -15
-      penetration: -1
-
   #---------------
   # GENERAL SPELL WEAPONS
   #---------------
@@ -421,6 +349,79 @@ fs3combat:
       damage_type: Physical
       accuracy: 0
       init_mod: 0
+#---------------
+# WEAPON SPECIAL GROUPS
+#---------------
+  weapon special groups:
+    Body:
+    - sparring
+    - focus
+    - strength
+    - weaken
+    Ranged:
+    - fire
+    - focus
+    - ice
+    - lightning
+    - scope
+    Melee:
+    - fire
+    - focus
+    - ice
+    - lightning
+    - sparring
+    - strength
+    - weaken
+    Spell:
+    - focus
+#---------------
+# WEAPON SPECIALS
+#---------------
+  weapon specials:
+    #---------------
+    # MAGIC ITEMS
+    #---------------
+    Guilt-Weighted Gloves:
+      description: Magic item
+      is_magic: true
+      lethality: 5
+    #---------------
+    # SPELLS
+    #---------------
+    Lightning:
+      description: Level 4 Aether spell
+      is_magic: true
+      lethality: 5
+      penetration: 1
+      init_mod: 2
+    Fire:
+      description: Level 4 Aether spell
+      is_magic: true
+      lethality: 10
+      accuracy: 1
+    Focus:
+      description: Level 2 Arcane spell
+      is_magic: true
+      lethality: 0
+      accuracy: 2
+    Ice:
+      description: Level 4 Ice spell
+      is_magic: true
+      lethality: 15
+      penetration: -1
+      magic_damage_type: Cold
+    Strength:
+      description: Level 4 Creation spell
+      is_magic: true
+      lethality: -5
+      penetration: 3
+    Weaken:
+      description: Level 4 Entropy spell
+      is_magic: true
+      lethality: -15
+      penetration: -1
+
+
 
 
 
