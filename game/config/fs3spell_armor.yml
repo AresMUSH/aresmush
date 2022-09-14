@@ -55,6 +55,7 @@ fs3combat:
         Front Left Leg: 6
         Read Left Leg: 6
         Right Wing: 6
+        Left Wing: 6
       allowed_specials:
       - Weaken
     # LEVEL 6
@@ -82,3 +83,4 @@ fs3combat:
         Front Left Leg: 9
         Read Left Leg: 9
         Right Wing: 9
+        Left Wing: 9
