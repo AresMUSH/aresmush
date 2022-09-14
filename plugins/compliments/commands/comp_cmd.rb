@@ -44,7 +44,6 @@ module AresMUSH
         date = Time.now.strftime("%Y-%m-%d")
         target_luck_amount = Global.read_config("compliments", "target_luck_amount")
         comper_luck_amount = Global.read_config("compliments", "comper_luck_amount")
-        comper_luck_amount =
         give_luck = Global.read_config("compliments", "give_luck")
         comp_scenes = Global.read_config("compliments", "comp_scenes")
         if self.scene_id
@@ -72,6 +71,7 @@ module AresMUSH
           targets.each do |target|
             Comps.create(character: target, comp_msg: self.comp, from: enactor.name)
             if give_luck
+              puts "Target: #{target_luck_amount} compter #{comper_luck_amount}"
               FS3Skills.modify_luck(target, target_luck_amount)
               FS3Skills.modify_luck(enactor, comper_luck_amount)
             end
