@@ -431,7 +431,7 @@ code {
 
 .jumbotron-tagline {
 	font-size: 2em;
-	color: #96bdb4;
+	color: #$secondary-color;
 }
 
 .jumbotron .splash {
@@ -954,7 +954,7 @@ button {
 }
 
 .user-bar a:hover, a:focus {
-	color: $lightest-slate;
+	color: $secondary-color;
 }
 
 //CHAR PAGES
