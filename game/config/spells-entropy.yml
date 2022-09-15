@@ -258,7 +258,7 @@ spells:
     desc: Geomantic force travels through the earth in a straight line, causing rocks to fly into the air and hit up to 3 creatures along its path for one round.
     effect: AOE Damage
     fs3_attack: true
-    level: 3
+    level: 7
     line_of_sight: true
     name: Earth Bolt
     range: Short
