@@ -71,7 +71,7 @@ body {
 }
 
 .body-wrap {
-	background-color: #141D2A;
+	background-color: $darkest-blue;
 }
 
 .left-body {
@@ -446,7 +446,7 @@ code {
 }
 
 .plot-box {
-	background: #141d2a;
+	background: $darkest-blue;
 	padding: 5px 15px;
 	font-size: 90%;
 	text-align: initial;
@@ -1451,7 +1451,7 @@ h6, .h6 {
 //SIDEBAR
 
 .right-sidebar {
-	background-color: #141D2A;
+	background-color: $darkest-blue;
 }
 
 .sidebar-heading h2 {
@@ -1502,6 +1502,18 @@ h6, .h6 {
 	margin: 5px;
 	margin-right: 10px;
 	vertical-align: top;
+}
+
+.scene-set-pose {
+  margin: 15px 20px 20px 0px;
+	border: 0px;
+	background: $darkest-blue;
+	padding: 5px;
+	border-radius: 5px;
+	padding-left: 40px;
+	-webkit-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.3);
+	-moz-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.3);
+	box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.3);
 }
 
 .badge-likes {
@@ -1684,7 +1696,7 @@ h6, .h6 {
 }
 
 .live-scenes-heading {
-	background-color: #141D2A;
+	background-color: $darkest-blue;
 	padding: 8px 0px 8px 0px;
 }
 
