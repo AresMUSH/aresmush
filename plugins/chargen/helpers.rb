@@ -156,6 +156,7 @@ module AresMUSH
       
       Roles.add_role(model, "approved")
       model.update(approval_job: nil)
+      model.update(approved_at: Time.now)
                             
       unless (model.on_roster? || model.is_npc?)
         Achievements.award_achievement(model, "created_character")
