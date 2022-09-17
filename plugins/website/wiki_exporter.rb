@@ -9,23 +9,30 @@ module AresMUSH
           unless File.directory?(export_path)
             FileUtils.mkdir_p(export_path)
           end
-  
-          export_locations
-          export_wiki
-          export_scenes
-          export_chars
-          export_index
-        
-          path = File.join(export_path, "game")
-          unless File.directory?(path)
-            FileUtils.mkdir_p(path)
+
+          game_export_path = File.join(export_path, "game")
+          unless File.directory?(game_export_path)
+            FileUtils.mkdir_p(game_export_path)
           end
   
-          path = File.join(export_path, "game")
-          FileUtils.cp_r(File.join(AresMUSH.game_path, "uploads"), path)
-          FileUtils.cp_r(File.join(AresMUSH.game_path, "styles"), path)
-          FileUtils.cp_r(File.join(AresMUSH.game_path, "scripts"), path)
-          
+          Global.logger.debug "Exporting uploads."
+          FileUtils.cp_r(File.join(AresMUSH.game_path, "uploads"), game_export_path)
+
+          export_locations
+          export_wiki
+
+          Global.logger.debug "Exporting styles."
+          FileUtils.cp_r(File.join(AresMUSH.game_path, "styles"), game_export_path)
+
+          export_scenes
+          export_chars
+
+          Global.logger.debug "Exporting scripts."
+          FileUtils.cp_r(File.join(AresMUSH.game_path, "scripts"), game_export_path)
+
+          export_index
+        
+            
           # Copy music player script
           src = File.join(Global.read_config("website", "website_code_path"), "public", "scripts", "music_player.js")
           dest = File.join(AresMUSH.game_path, "scripts", "music_player.js")
@@ -116,8 +123,9 @@ module AresMUSH
       end 
 
       def self.export_locations
-        index = {}
         Global.logger.debug "Exporting locations."
+
+        index = {}
         Room.all.to_a.sort_by { |r| r.name_and_area }.each do |r|
           page_name = "#{FilenameSanitizer.sanitize(r.name_and_area)}.html"
           index[page_name] = r.name_and_area
@@ -144,8 +152,9 @@ module AresMUSH
       end
       
       def self.export_wiki
-        index = {}
         Global.logger.debug "Exporting wiki."
+
+        index = {}
         WikiPage.all.to_a.sort_by { |p| p.heading }.each do |p|
           page_name = "#{FilenameSanitizer.sanitize(p.name)}.html"
           index[page_name] = p.heading
@@ -173,14 +182,14 @@ module AresMUSH
       end
       
       def self.export_chars
+        Global.logger.debug "Exporting characters."
+        
         approved_chars = Chargen.approved_chars.select { |c| !c.is_admin? && c.is_approved? }
         gone_chars = Character.all.select { |c| c.idle_state == 'Gone' }
         dead_chars = Character.all.select { |c| c.idle_state == 'Dead' }
 
         all_chars = approved_chars.concat(gone_chars).concat(dead_chars)
-        
-        Global.logger.debug "Exporting characters."
-        
+                
         all_chars.sort_by { |c| c.name }.each do |c|
           #Global.logger.debug "Parsing character #{c.name}"
         
