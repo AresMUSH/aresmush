@@ -217,6 +217,7 @@ module AresMUSH
       else
         combatant.update(spell_mod_counter: combatant.spell_mod_counter - 1)
       end
+      return
     end
 
     def self.magic_auto_revive(combatant)
