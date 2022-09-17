@@ -11,51 +11,51 @@ fs3combat:
       is_magic: true
       defense: 0
       protection:
-        Head: 6
-        Neck: 6
-        Chest: 6
-        Abdomen: 6
-        Left Leg: 6
-        Right Leg: 6
-        Groin: 6
-        Left Arm: 6
-        Right Arm: 6
-        Left Hand: 6
-        Right Hand: 6
-        Left Foot: 6
-        Right Foot: 6
-        Tail: 6
-        Front Right Leg: 6
-        Rear Right Leg: 6
-        Front Left Leg: 6
-        Read Left Leg: 6
-        Right Wing: 6
-        Left Wing: 6
+        Head: 5
+        Neck: 5
+        Chest: 5
+        Abdomen: 5
+        Left Leg: 5
+        Right Leg: 5
+        Groin: 5
+        Left Arm: 5
+        Right Arm: 5
+        Left Hand: 5
+        Right Hand: 5
+        Left Foot: 5
+        Right Foot: 5
+        Tail: 5
+        Front Right Leg: 5
+        Rear Right Leg: 5
+        Front Left Leg: 5
+        Read Left Leg: 5
+        Right Wing: 5
+        Left Wing: 5
     Stone Skin:
       description: Level 4 Creation spell
       is_magic: true
       defense: 0
       protection:
-        Head: 6
-        Neck: 6
-        Chest: 6
-        Abdomen: 6
-        Left Leg: 6
-        Right Leg: 6
-        Groin: 6
-        Left Arm: 6
-        Right Arm: 6
-        Left Hand: 6
-        Right Hand: 6
-        Left Foot: 6
-        Right Foot: 6
-        Tail: 6
-        Front Right Leg: 6
-        Rear Right Leg: 6
-        Front Left Leg: 6
-        Read Left Leg: 6
-        Right Wing: 6
-        Left Wing: 6
+        Head: 5
+        Neck: 5
+        Chest: 5
+        Abdomen: 5
+        Left Leg: 5
+        Right Leg: 5
+        Groin: 5
+        Left Arm: 5
+        Right Arm: 5
+        Left Hand: 5
+        Right Hand: 5
+        Left Foot: 5
+        Right Foot: 5
+        Tail: 5
+        Front Right Leg: 5
+        Rear Right Leg: 5
+        Front Left Leg: 5
+        Read Left Leg: 5
+        Right Wing: 5
+        Left Wing: 5
       allowed_specials:
       - Weaken
     # LEVEL 6
@@ -64,23 +64,23 @@ fs3combat:
       is_magic: true
       defense: 0
       protection:
-        Head: 9
-        Neck: 9
-        Chest: 9
-        Abdomen: 9
-        Left Leg: 9
-        Right Leg: 9
-        Groin: 9
-        Left Arm: 9
-        Right Arm: 9
-        Left Hand: 9
-        Right Hand: 9
-        Left Foot: 9
-        Right Foot: 9
-        Tail: 9
-        Front Right Leg: 9
-        Rear Right Leg: 9
-        Front Left Leg: 9
-        Read Left Leg: 9
-        Right Wing: 9
-        Left Wing: 9
+        Head: 7
+        Neck: 7
+        Chest: 7
+        Abdomen: 7
+        Left Leg: 7
+        Right Leg: 7
+        Groin: 7
+        Left Arm: 7
+        Right Arm: 7
+        Left Hand: 7
+        Right Hand: 7
+        Left Foot: 7
+        Right Foot: 7
+        Tail: 7
+        Front Right Leg: 7
+        Rear Right Leg: 7
+        Front Left Leg: 7
+        Read Left Leg: 7
+        Right Wing: 7
+        Left Wing: 7
