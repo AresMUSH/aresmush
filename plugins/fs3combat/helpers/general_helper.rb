@@ -233,7 +233,7 @@ module AresMUSH
     
     def self.build_combat_web_data(combat, viewer)
       can_manage = viewer && AresCentral.play_screen_alts(viewer).any? { |a| FS3Combat.can_manage_combat?(a, combat) }
-      viewer_in_combat = viewer && (viewer.combat == combat)
+      viewer_in_combat = viewer && AresCentral.play_screen_alts(viewer).any? { |a| a.combat == combat }
       
       teams = combat.active_combatants.sort_by { |c| c.team }
         .group_by { |c| c.team }
@@ -274,7 +274,6 @@ module AresMUSH
         damage_boxes: ([-combatant.total_damage_mod.floor, 5].min).times.map { |d| d },
         damage: FS3Combat.damage_list_web_data(combatant.associated_model, false),
         damage_mod: combatant.total_damage_mod.floor,
-        ## damage: combatant.associated_model.damage.select { |d| !d.healed }.map { |d| "#{d.current_severity} - #{d.description}" },
         vehicle: combatant.vehicle ? "#{combatant.vehicle.name} #{combatant.piloting ? 'Pilot' : 'Passenger'}" : "" ,
         stance: combatant.stance,
         action: combatant.action ? combatant.action.print_action_short : "",
