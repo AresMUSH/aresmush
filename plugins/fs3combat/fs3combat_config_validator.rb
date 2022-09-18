@@ -265,6 +265,10 @@ module AresMUSH
             @validator.add_error "fs3combat:combatant_types #{name} needs either a weapon or a vehicle."
           end
           
+          if (data['vehicle'] && data['mount'])
+            @validator.add_error "fs3combat:combatant_types #{name} can't use both a vehicle and a mount."
+          end
+          
           specials = data['weapon_specials']
           if (specials) 
             allowed_specials = FS3Combat.weapon_stat(data['weapon'], 'allowed_specials') || []
