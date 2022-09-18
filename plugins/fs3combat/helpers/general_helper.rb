@@ -233,7 +233,7 @@ module AresMUSH
     
     def self.build_combat_web_data(combat, viewer)
       can_manage = viewer && AresCentral.play_screen_alts(viewer).any? { |a| FS3Combat.can_manage_combat?(a, combat) }
-      viewer_in_combat = viewer && AresCentral.play_screen_alts(viewer).any? { |a| a.combat == combat }
+      viewer_in_combat = viewer && (viewer.combat == combat)
       
       teams = combat.active_combatants.sort_by { |c| c.team }
         .group_by { |c| c.team }
