@@ -76,6 +76,10 @@ module AresMUSH
           @errors << "#{field_key(field)} is not a hash." 
           return
         end
+        
+        # Empty hash is OK
+        return if value.empty?
+        
         value.each do |k, v|
           if !['day', 'day_of_week', 'hour', 'minute'].include?(k)
             @errors << "#{field_key(field)} - #{k} is not a valid setting."
