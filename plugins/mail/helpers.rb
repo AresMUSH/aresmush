@@ -24,12 +24,24 @@ module AresMUSH
       Global.read_config('mail', 'end_marker') || ']'
     end
         
+        
+    def self.tag_sort_weight(tag)
+      return 1 if tag == "Inbox"
+      return 3 if tag == "Sent"
+      return 4 if tag == "Archive"
+      return 5 if tag == "Trash"
+      return 2
+    end
+    
     def self.all_tags(char)
       all_tags = []
       char.mail.each do |msg|
         all_tags = all_tags.concat(msg.tags || [])
       end
-      all_tags.uniq
+      all_tags << "Archive"
+      all_tags << "Trash"
+      all_tags << "Sent"
+      all_tags.uniq.sort_by { |t| [ Mail.tag_sort_weight(t), t ] }
     end
     
     def self.filtered_mail(char, filter = Mail.inbox_tag)
