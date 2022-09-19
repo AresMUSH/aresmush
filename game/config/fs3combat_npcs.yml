@@ -1,7 +1,7 @@
 ---
 fs3combat:
   default_npc_type: 'Normal'
-npc_types:
+  npc_types:
     Trivial:
       Default: 2
       Firearms: 3
