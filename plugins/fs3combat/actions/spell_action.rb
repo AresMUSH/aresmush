@@ -31,7 +31,9 @@ module AresMUSH
           return t('magic.dont_know_spell') if (Magic.knows_spell?(combatant, self.spell_name) == false && !item_spells.include?(spell))
         end
 
-        num = Global.read_config("spells", self.spell_name, "target_num")
+        return t('magic.more_than_one_round', :spell => self.spell_name) if spell['casting_time'] != "1 round"
+
+        num = spell['target_num']
         return t('magic.doesnt_use_target') if ((num.nil?) && (self.has_target))
         return t('magic.too_many_targets', :spell => self.spell_name, :num => num) if (self.has_target && (self.targets.count > num))
 
