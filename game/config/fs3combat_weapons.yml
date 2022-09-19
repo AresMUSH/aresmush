@@ -29,30 +29,30 @@ fs3combat:
       accuracy: 1
       init_mod: 0
       special_group: Ranged
-    Flash Grenade:
-      description: 'Hand Grenade which blinds/deafens most targets for 5 secs '
-      skill: Athletics
-      lethality: 0
-      penetration: 8
-      weapon_type: Suppressive
-      recoil: 0
-      damage_type: Stun
-      accuracy: 5
-      init_mod: 0
-      special_group: Ranged
-    Frag Grenade:
-      description: Hand Grenade explodes on impact, doing shrapnel damage
-      skill: Athletics
-      lethality: 0
-      penetration: 8
-      weapon_type: Explosive
-      recoil: 0
-      damage_type: Physical
-      accuracy: 0
-      has_shrapnel: true
-      init_mod: 0
-      special_group: Ranged
-    Longbow:
+    # Flash Grenade:
+    #   description: 'Hand Grenade which blinds/deafens most targets for 5 secs '
+    #   skill: Athletics
+    #   lethality: 0
+    #   penetration: 8
+    #   weapon_type: Suppressive
+    #   recoil: 0
+    #   damage_type: Stun
+    #   accuracy: 5
+    #   init_mod: 0
+    #   special_group: Ranged
+    # Frag Grenade:
+    #   description: Hand Grenade explodes on impact, doing shrapnel damage
+    #   skill: Athletics
+    #   lethality: 0
+    #   penetration: 8
+    #   weapon_type: Explosive
+    #   recoil: 0
+    #   damage_type: Physical
+    #   accuracy: 0
+    #   has_shrapnel: true
+    #   init_mod: 0
+    #   special_group: Ranged
+    Bow:
       description: Longbow
       skill: Archery
       lethality: 0
@@ -68,7 +68,7 @@ fs3combat:
       description: Random Shrapnel
       skill: 3
       lethality: 0
-      penetration: 5
+      penetration: 4
       weapon_type: Ranged
       recoil: 0
       damage_type: Physical
@@ -79,18 +79,6 @@ fs3combat:
       skill: Firearms
       lethality: 0
       penetration: 5
-      weapon_type: Ranged
-      ammo: 0
-      recoil: 0
-      damage_type: Physical
-      accuracy: 0
-      init_mod: 0
-      special_group: Ranged
-    Recurve Bow:
-      description: Basic bow and arrows
-      skill: Archery
-      lethality: 0
-      penetration: 4
       weapon_type: Ranged
       ammo: 0
       recoil: 0
@@ -122,18 +110,18 @@ fs3combat:
       accuracy: 1
       init_mod: 0
       special_group: Ranged
-    Tazer:
-      description: Stun gun
-      skill: Firearms
-      lethality: 70
-      penetration: 10
-      weapon_type: Ranged
-      ammo: 0
-      recoil: 0
-      damage_type: Stun
-      accuracy: 0
-      init_mod: 0
-      special_group: Ranged
+    # Tazer:
+    #   description: Stun gun
+    #   skill: Firearms
+    #   lethality: 70
+    #   penetration: 10
+    #   weapon_type: Ranged
+    #   ammo: 0
+    #   recoil: 0
+    #   damage_type: Stun
+    #   accuracy: 0
+    #   init_mod: 0
+    #   special_group: Ranged
     #MELEE
     Axe:
       description: Axe of any type
@@ -146,23 +134,23 @@ fs3combat:
       accuracy: 0
       init_mod: 0
       special_group: Melee
-    Car:
-      description: Hitting things with a car.
-      skill: Alertness
-      lethality: 5
-      penetration: 4
-      weapon_type: Melee
-      ammo: 0
-      recoil: 0
-      damage_type: Physical
-      accuracy: 1
-      init_mod: 0
-      special_group: Melee
+    # Car:
+    #   description: Hitting things with a car.
+    #   skill: Alertness
+    #   lethality: 5
+    #   penetration: 4
+    #   weapon_type: Melee
+    #   ammo: 0
+    #   recoil: 0
+    #   damage_type: Physical
+    #   accuracy: 1
+    #   init_mod: 0
+    #   special_group: Melee
     Club:
       description: Mace/club/baton/chair leg etc
       skill: Melee
       lethality: -10
-      penetration: 0
+      penetration: 2
       weapon_type: Melee
       recoil: 0
       damage_type: Physical
@@ -252,7 +240,7 @@ fs3combat:
       description: Mild bug bites
       skill: Melee
       lethality: -25
-      penetration: 2
+      penetration: 1
       weapon_type: Melee
       recoil: 0
       damage_type: Physical
@@ -318,7 +306,7 @@ fs3combat:
       description: Upper level animal or creature claws
       skill: Melee
       lethality: 10
-      penetration: 6
+      penetration: 5
       weapon_type: Melee
       recoil: 0
       damage_type: Physical
@@ -329,7 +317,7 @@ fs3combat:
       description: Upper level animal or creature claws
       skill: Melee
       lethality: 0
-      penetration: 6
+      penetration: 5
       weapon_type: Melee
       recoil: 0
       damage_type: Physical
@@ -357,7 +345,7 @@ fs3combat:
       damage_type: Physical
       accuracy: 0
       init_mod: 0
-      special_group: Body      
+      special_group: Body
     Teeth:
       description: Animal or creature teeth
       skill: Melee
@@ -373,7 +361,7 @@ fs3combat:
       description: Upper level animal or creature teeth
       skill: Melee
       lethality: 0
-      penetration: 6
+      penetration: 5
       weapon_type: Melee
       recoil: 0
       damage_type: Physical
@@ -384,7 +372,7 @@ fs3combat:
       description: Upper level animal or creature teeth
       skill: Melee
       lethality: 0
-      penetration: 7
+      penetration: 6
       weapon_type: Melee
       recoil: 0
       damage_type: Physical
