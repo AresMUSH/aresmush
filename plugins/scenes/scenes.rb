@@ -175,6 +175,8 @@ module AresMUSH
         return EditPlotRequestHandler
       when "editScene"
         return EditSceneRequestHandler
+      when "inviteToScene"
+        return InviteToSceneRequestHandler
       when "joinScene"
         return JoinSceneRequestHandler
       when "likeScene"
