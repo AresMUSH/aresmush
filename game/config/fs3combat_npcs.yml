@@ -1,49 +1,56 @@
 ---
 fs3combat:
   default_npc_type: 'Normal'
-  npc_types:
+npc_types:
     Trivial:
       Default: 2
-      Firearms: 4
-      Archery: 4
-      Melee: 4
-      Brawl: 4
+      Firearms: 3
+      Archery: 3
+      Melee: 3
+      Brawl: 3
       Wounds: 30
     Easy:
       Default: 4
-      Firearms: 6
-      Archery: 6
-      Melee: 6
-      Brawl: 6
+      Firearms: 5
+      Archery: 5
+      Melee: 5
+      Brawl: 5
       Wounds: 20
     Normal:
       Default: 6
-      Archery: 8
-      Brawl: 8
-      Firearms: 8
-      Melee: 8
+      Archery: 7
+      Brawl: 7
+      Firearms: 7
+      Melee: 7
       Wounds: 10
     Moderate:
-      Default: 9
+      Default: 8
+      Archery: 9
+      Brawl: 9
+      Firearms: 9
+      Melee: 9
+      Wounds: 0
+    Hard:
+      Default: 10
       Archery: 11
       Brawl: 11
       Firearms: 11
       Melee: 11
-      Wounds: 0
-    Hard:
-      Default: 11
+      Wounds: -10
+    Difficult:
+      Default: 12
       Archery: 13
       Brawl: 13
       Firearms: 13
       Melee: 13
-      Wounds: -10
+      Wounds: -15
     Impossible:
       Default: 18
       Archery: 20
       Brawl: 20
       Firearms: 20
       Melee: 20
-      Wounds: -20
+      Wounds: -25
 
 # MYTHICS
     Dragon:
