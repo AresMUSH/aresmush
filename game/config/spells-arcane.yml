@@ -224,7 +224,7 @@ spells:
     school: Arcane
   Trick Senses:
     available: true
-    casting_time: 1 round
+    casting_time: 2 rounds
     damage_type: Psionic
     desc: "The caster convinces a sapient target's mind of a single sensory input (a smell, taste, sound, texture, temperature, or visual image) to trick their senses into believing it is real. The target’s mind, in conjunction with the spell, will fill in the gaps and discrepancies, glossing over irregularities."
     duration: 5 minutes
