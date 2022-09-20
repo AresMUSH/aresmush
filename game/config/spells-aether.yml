@@ -151,7 +151,7 @@ spells:
 #---------------
   Create Sound:
     available: true
-    casting_time: 1 round
+    casting_time: 30 seconds
     damage_type: Bypass
     desc: "For the duration of the spell, the caster can vibrate the air to create simple sounds. These sounds can be a single noise, a melody, or a short sentence of up to fifteen, one-syllable words. Sound created cannot be louder than 80 db (a loud truck, a vacuum).\n\nThe sound may be identified as artificial with a roll of the caster's Air vs the observer's Alertness-5. Those with enhanced hearing are more likely to identify the sound as artificial according to its content and range, and GMs may choose to adjust the modification as appropriate."
     duration: 15 minutes
@@ -180,7 +180,7 @@ spells:
   Simple Illusion:
     area: 5 cubic feet
     available: true
-    casting_time: 1 minute (6 rounds)
+    casting_time: 30 seconds
     damage_type: Bypass
     desc: "Create a convincing illusion of a single subject that fools most observers. It is able to animate at the caster's discretion. The illusion cannot be larger than 3 cubic yards.\n\n The image may be identified as an illusion with a roll of the caster's Aether vs the observer's Alertness-5. Those with enhanced senses such as smell, hearing, or psionic abilities are more likely to identify the subject as an illusion according to its content and range, and GMs may choose to adjust the modification as appropriate. If the illusion serves to hide the targets in combat, they should change their stance to 'Hidden' and attacks targeting them which require line of sight receive a -3 attack mod."
     duration: 15 minutes
