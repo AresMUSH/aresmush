@@ -76,6 +76,9 @@ fs3combat:
     Target:
       hitloc: Target
       weapon: Unarmed
+    Quadraped:
+      hitloc: Quadraped
+      defense_skill: Reflexes
   shortcuts:
     combat/skill: combat/summary
     combat/skills: combat/summary
