@@ -9,82 +9,67 @@ fs3combat:
       is_magic: false
       defense: 0
       protection:
-        Chest: 8
-        Rear Left Leg: 7
-        Rear Right Leg: 7
-        Front Left Leg: 7
-        Front Right Leg: 7
-        Tail: 6
-        Right Wing: 6
-        Left Wing: 6
-        Abdomen: 8
-        Head: 7
-        Neck: 6
+        Chest: 7
+        Rear Left Leg: 6
+        Rear Right Leg: 6
+        Front Left Leg: 6
+        Front Right Leg: 6
+        Tail: 5
+        Right Wing: 5
+        Left Wing: 5
+        Abdomen: 7
+        Head: 6
+        Neck: 5
     Griffon:
       description: Griffon hide
       is_magic: false
       defense: 0
       protection:
-        Chest: 6
-        Rear Left Leg: 5
-        Rear Right Leg: 5
-        Front Left Leg: 5
-        Front Right Leg: 5
-        Tail: 4
-        Right Wing: 4
-        Left Wing: 4
-        Abdomen: 6
-        Head: 5
-        Neck: 4
+        Chest: 5
+        Rear Left Leg: 4
+        Rear Right Leg: 4
+        Front Left Leg: 4
+        Front Right Leg: 4
+        Tail: 3
+        Right Wing: 3
+        Left Wing: 3
+        Abdomen: 5
+        Head: 4
+        Neck: 3
     Lupine:
       description: Lupine hide
       is_magic: false
       defense: 0
       protection:
-        Chest: 7
-        Rear Left Leg: 6
-        Rear Right Leg: 6
-        Front Left Leg: 6
-        Front Right Leg: 6
-        Tail: 5
-        Right Wing: 5
-        Left Wing: 5
-        Abdomen: 7
-        Head: 6
-        Neck: 5
+        Chest: 6
+        Rear Left Leg: 5
+        Rear Right Leg: 5
+        Front Left Leg: 5
+        Front Right Leg: 5
+        Tail: 4
+        Right Wing: 4
+        Left Wing: 4
+        Abdomen: 6
+        Head: 5
+        Neck: 4
     Pantherine:
       description: Dragon hide
       is_magic: false
       defense: 0
       protection:
-        Chest: 7
-        Rear Left Leg: 6
-        Rear Right Leg: 6
-        Front Left Leg: 6
-        Front Right Leg: 6
-        Tail: 4
-        Right Wing: 4
-        Left Wing: 4
-        Abdomen: 7
-        Head: 6
+        Chest: 5
+        Rear Left Leg: 4
+        Rear Right Leg: 4
+        Front Left Leg: 4
+        Front Right Leg: 4
+        Tail: 3
+        Right Wing: 3
+        Left Wing: 3
+        Abdomen: 5
+        Head: 4
+        Neck: 3
     Pegasus:
       description: Pegasus hide
-      is_magic: false
-      defense: 0
-      protection:
-        Chest: 7
-        Rear Left Leg: 6
-        Rear Right Leg: 6
-        Front Left Leg: 6
-        Front Right Leg: 6
-        Tail: 5
-        Right Wing: 5
-        Left Wing: 5
-        Abdomen: 7
-        Head: 6
-        Neck: 5
-    Roc:
-      description: Roc hide
       is_magic: false
       defense: 0
       protection:
@@ -99,6 +84,22 @@ fs3combat:
         Abdomen: 6
         Head: 5
         Neck: 4
+    Roc:
+      description: Roc hide
+      is_magic: false
+      defense: 0
+      protection:
+        Chest: 5
+        Rear Left Leg: 4
+        Rear Right Leg: 4
+        Front Left Leg: 4
+        Front Right Leg: 4
+        Tail: 3
+        Right Wing: 3
+        Left Wing: 3
+        Abdomen: 5
+        Head: 4
+        Neck: 3
 
 
 
@@ -109,52 +110,50 @@ fs3combat:
       description: Low level animal shell armor
       defense: 0
       protection:
-        Chest: 5
-        Rear Left Leg: 4
-        Rear Right Leg: 4
-        Front Left Leg: 4
-        Front Right Leg: 4
-        Left Leg: 4
-        Right Leg: 4
-        Tail: 4
-        Right Wing: 4
-        Left Wing: 4
+        Chest: 4
+        Rear Left Leg: 3
+        Rear Right Leg: 3
+        Front Left Leg: 3
+        Front Right Leg: 3
+        Left Leg: 3
+        Right Leg: 3
+        Tail: 3
+        Right Wing: 3
+        Left Wing: 3
         Abdomen: 4
-        Head: 4
-        Neck: 4
+        Head: 3
+        Neck: 3
         Groin: 4
-        Leg: 4
+        Leg: 3
         Eyes: 1
-        Right Claw: 4
-        Left Claw: 4
-        Carapace: 4
-        Abdomen: 4
+        Right Claw: 3
+        Left Claw: 3
+        Carapace: 3
+        Abdomen: 3
     Thick Shell:
       description: Animal shell on par with plate armor
       defense: 0
       protection:
-        Chest: 9
-        Rear Left Leg: 8
-        Rear Right Leg: 8
-        Front Left Leg: 8
-        Front Right Leg: 8
-        Right Wing: 7
-        Left Wing: 7
-        Left Leg: 8
-        Right Leg: 8
-        Tail: 8
-        Right Wing: 8
-        Left Wing: 8
-        Abdomen: 9
-        Head: 7
-        Neck: 6
+        Chest: 7
+        Rear Left Leg: 5
+        Rear Right Leg: 5
+        Front Left Leg: 5
+        Front Right Leg: 5
+        Right Wing: 6
+        Left Wing: 6
+        Left Leg: 5
+        Right Leg: 5
+        Tail: 6
+        Abdomen: 6
+        Head: 6
+        Neck: 5
         Groin: 5
-        Leg: 8
+        Leg: 5
         Eyes: 3
-        Right Claw: 8
-        Left Claw: 8
-        Carapace: 9
-        Abdomen: 8
+        Right Claw: 5
+        Left Claw: 5
+        Carapace: 7
+        Abdomen: 7
     Tough Hide:
       description: Low level animal hide
       is_magic: false
@@ -179,50 +178,32 @@ fs3combat:
         Body: 4
         Fin: 3
     Very Tough Hide:
-      description: Animal hide on par with plate armor
+      description: Animal hide on par with chainmail armor
       is_magic: false
       defense: 0
       protection:
-        Chest: 9
-        Rear Left Leg: 8
-        Rear Right Leg: 8
-        Front Left Leg: 8
-        Front Right Leg: 8
-        Left Leg: 8
-        Right Leg: 8
-        Tail: 8
-        Right Wing: 8
-        Left Wing: 8
-        Abdomen: 9
-        Head: 7
-        Neck: 6
-        Groin: 5
-        Leg: 8
-        Arm: 8
-        Body: 9
-        Fin: 6
-    Crocodile:
-      description: Wild Shape Crocodile
-      is_magic: true
-      defense: 0
-      protection:
-        Head: 4
+        Chest: 6
+        Rear Left Leg: 6
+        Rear Right Leg: 6
+        Front Left Leg: 6
+        Front Right Leg: 6
+        Left Leg: 6
+        Right Leg: 6
+        Tail: 6
+        Right Wing: 6
+        Left Wing: 6
+        Abdomen: 6
+        Head: 5
         Neck: 4
-        Chest: 4
-        Abdomen: 4
-        Left Leg: 4
-        Right Leg: 4
         Groin: 4
-        Left Arm: 4
-        Right Arm: 4
-        Left Hand: 4
-        Right Hand: 4
-        Left Foot: 4
-        Right Foot: 4
+        Leg: 5
+        Arm: 5
+        Body: 6
+        Fin: 4
     Bird:
       description: Armor for feathered birds.
       is_magic: false
-      defense: 0
+      defense: 3
       protection:
         Head: 0
         Neck: 0
@@ -257,24 +238,7 @@ fs3combat:
         Left Foot: 0
         Right Foot: 0
       defense: 2
-    Moth:
-      description: Wild Shape Moth
-      is_magic: true
-      defense: 0
-      protection:
-        Head: 0
-        Neck: 0
-        Chest: 0
-        Abdomen: 0
-        Left Leg: 0
-        Right Leg: 0
-        Groin: 0
-        Left Arm: 0
-        Right Arm: 0
-        Left Hand: 0
-        Right Hand: 0
-        Left Foot: 0
-        Right Foot: 0
+
   #--------------
   # MUNDANE HUMAN ARMOR
   #--------------
@@ -369,13 +333,13 @@ fs3combat:
         atop.
       is_magic: false
       protection:
-        Head: 5
-        Neck: 4
+        Head: 4
+        Neck: 3
     Weaken:
       description: Weakens armor
       is_magic: true
       protection:
-        Head: -5
+        Head: -3
 
     #ITEM ARMOR SPECIALS
 

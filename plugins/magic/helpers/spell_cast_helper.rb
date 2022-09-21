@@ -177,7 +177,7 @@ module AresMUSH
 
     def self.cast_weapon(caster_name, combatant, target, spell, weapon)
       armor = Global.read_config("spells", spell, "armor")
-      Magic.set_magic_weapon(combatant, target, weapon)
+      Magic.set_magic_weapon(target, weapon)
       if armor
         message = []
       else

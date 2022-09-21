@@ -188,6 +188,7 @@ en:
       spell_action_msg_long: "%{name} will cast %xB%{spell}%xn this turn."
       spell_resolution_msg: "%{name} casts %xB%{spell}%xn and %{succeeds}."
       too_many_targets: "%xr%{spell} can only target %{num} target(s).%xn"
+      more_than_one_round: "%xr%{spell} takes more than one round to cast and cannot be cast in combat.%xn"
 
     # ----------------------------
     # FS3 COMBAT POTION ACTION

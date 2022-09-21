@@ -227,6 +227,24 @@ module AresMUSH
       return t('magic.spell_action_msg_long', :name => combatant.name, :spell => auto_revive_spell)
     end
 
+    def self.determine_magic_stun_escape_margin(combatant, target)
+      spell = target.magic_stun_spell
+      school = Global.read_config("spells", spell, "school")
+
+      attack_roll =  combatant.roll_ability(school, 0)
+      defense_roll = target.roll_ability("Composure", 0)
+      attacker_net_successes = attack_roll - defense_roll
+
+      combatant.log "#{combatant.name} attempts to escape: attack=#{attack_roll} defense=#{defense_roll} net=#{attacker_net_successes}"
+      if attacker_net_successes > 0
+        hit = true
+      else
+        hit = false
+      end
+      {
+        hit: hit
+      }
+    end
 
 
 
