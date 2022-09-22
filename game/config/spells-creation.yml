@@ -2,12 +2,24 @@ spells:
 #---------------
 # LEVEL 1
 #---------------
+  Bioluminescence:
+    available: true
+    casting_time: 1 round
+    damage_type: Bypass
+    desc: The caster imbues up to 1 cubic foot of pre-existing rock, gemstone, or flora with a bioluminescent glow in a single phosphorescent color. The light is dim, equivalent to a small candle flame (12 lumens).
+    duration: 30 minutes
+    effect: Flora
+    level: 1
+    line_of_sight: true
+    name: Bioluminescence
+    range: Short
+    roll: true
+    school: Creation
   Create Bloom:
     available: true
     casting_time: 1 round
     damage_type: Bypass
-    desc: Cause a flowering plant to grow and bloom from a seed.
-    duration: 10 minutes
+    desc: Cause a budding plant to bloom.
     effect: Flora
     level: 1
     line_of_sight: true
