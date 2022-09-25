@@ -26,9 +26,8 @@ module AresMUSH
         
         Global.logger.debug "Scene #{scene.id} collapsed by #{enactor.name}."
                
-        Scenes.create_log(scene)
-        text = scene.scene_log.log
-        scene.scene_log.delete
+        text = Scenes.build_log_text(scene)
+        scene.scene_poses.each { |p| p.delete }  
         pose = Scenes.add_to_scene(scene, text, enactor)
         pose.update(restarted_scene_pose: true)
         

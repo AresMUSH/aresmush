@@ -207,6 +207,8 @@ module AresMUSH
         return GetSceneLocationsHandler
       when "sceneOptions"
         return GetSceneOptionsRequestHandler
+      when "sceneSource"
+        return GetSceneSourceRequestHandler
       when "searchScenes"
         return SearchScenesRequestHandler
       when "switchPoseOrder"
