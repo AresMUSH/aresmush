@@ -5,14 +5,11 @@ module AresMUSH
         is_owner = (viewer && viewer.id == char.id)
         
         if (FS3Combat.is_enabled?)
-          damage = char.damage.to_a.sort { |d| d.created_at }.map { |d| {
-            date: d.ictime_str,
-            description: d.description,
-            original_severity: MushFormatter.format(FS3Combat.display_severity(d.initial_severity)),
-            severity: MushFormatter.format(FS3Combat.display_severity(d.current_severity))
-            }}
+          damage = FS3Combat.damage_list_web_data(char)
+          damage_mod = FS3Combat.total_damage_mod(char).floor
         else
           damage = nil
+          damage_mod = nil
         end
         
         show_sheet = FS3Skills.can_view_sheets?(viewer) || is_owner
@@ -41,6 +38,7 @@ module AresMUSH
             advantages: get_ability_list(char.fs3_advantages),
             use_advantages: FS3Skills.use_advantages?,
             damage: damage,
+            damage_mod: damage_mod,
             show_sheet: show_sheet,
             luck_points: char.luck.floor,
             xp: xp
@@ -48,6 +46,7 @@ module AresMUSH
         else
           {
             damage: damage,
+            damage_mod: damage_mod,
             show_sheet: show_sheet,
             xp: xp
           }

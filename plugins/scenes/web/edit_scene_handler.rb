@@ -24,8 +24,8 @@ module AresMUSH
               return { error: t('webportal.missing_required_fields') }
             end
           end
-          scene.scene_log.update(log: request.args[:log])
           
+          Scenes.add_log_version(scene, request.args[:log], enactor)          
           Website.add_to_recent_changes('scene', t('scenes.scene_updated', :title => scene.title), { id: scene.id }, enactor.name)
           
         end

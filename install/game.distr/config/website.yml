@@ -148,8 +148,8 @@ website:
   wiki_aliases:
     main: home
   permissions:
-    manage_theme: Edit web portal CSS and colors.
-    manage_wiki: Create and delete restricted wiki pages.
+    manage_theme: Edit web portal CSS, colors, and theme images.
+    manage_wiki: Create and delete restricted wiki pages and override folder and file upload limits.
   uploadable_extensions:
   - ".jpg"
   - ".png"
@@ -157,7 +157,9 @@ website:
   - ".jpeg"
   auto_wiki_export: true
   wiki_export_cron:
+    day_of_week:
+    - Tue
     hour:
-    - 3
+    - 4
     minute:
     - 37

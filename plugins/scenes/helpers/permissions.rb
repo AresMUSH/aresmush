@@ -15,7 +15,7 @@ module AresMUSH
       return true if scene.owner == actor
       return true if !scene.is_private?
       return true if actor.room == scene.room
-      return true if scene.invited.include?(actor)
+      return true if AresCentral.play_screen_alts(actor).any? { |a| scene.invited.include?(a) }
       Scenes.has_alt_in_scene?(actor, scene)
     end
     

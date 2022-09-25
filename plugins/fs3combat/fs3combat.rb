@@ -181,6 +181,8 @@ module AresMUSH
         return CombatHeroRequestHandler
       when "combatSetup"
         return CombatSetupRequestHandler
+      when "joinCombat"
+        return JoinCombatRequestHandler
       when "newCombatTurn"
         return NewCombatTurnRequestHandler
       when "saveCombatSetup"
