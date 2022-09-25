@@ -51,7 +51,7 @@ module AresMUSH
             return { error:  t('scenes.scene_already_shared') }
           end
           
-          Scenes.share_scene(scene)
+          Scenes.share_scene(enactor, scene)
           
         when "unshare"
           if (!scene.shared)

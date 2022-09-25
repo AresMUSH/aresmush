@@ -1,16 +1,15 @@
 module AresMUSH
   module Scenes
     
-    def self.create_log(scene)
-      old_text = ""
-      if (scene.scene_log)
-        old_text = "#{scene.scene_log.log}\n"
-        scene.scene_log.delete
-      end
+    def self.create_log(enactor, scene)
       log = Scenes.build_log_text(scene)
-      scene_log = SceneLog.create(scene: scene, log: "#{old_text}#{log}")
-      scene.update(scene_log: scene_log)
+      Scenes.add_log_version(scene, log, enactor)
       scene.scene_poses.each { |p| p.delete }  
+    end
+    
+    def self.add_log_version(scene, log, enactor)
+      scene_log = SceneLog.create(scene: scene, log: log, character: enactor)
+      scene.update(scene_log: scene_log)
     end
     
     

@@ -278,7 +278,8 @@ module AresMUSH
     
     def self.hit_mount?(attacker, defender, attacker_net_successes, mount_hit)
       return false if !defender.mount_type
-
+      return false if attacker_net_successes < 0
+      
       # Bigger chance of hitting mount if you're on the ground.  Less chance if you rolled well - unless
       # of course you were aiming for the mount deliberately.
       if (attacker_net_successes > 0 && mount_hit)

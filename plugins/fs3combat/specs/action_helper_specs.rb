@@ -419,6 +419,13 @@ module AresMUSH
           expect(FS3Combat.hit_mount?(@combatant, @target, 3, false)).to be false
         end
         
+        it "should have 0% if they missed completely" do
+          allow(@target).to receive(:mount_type) { "Horse" }
+          allow(@combatant).to receive(:mount_type) { nil }
+          allow(FS3Combat).to receive(:rand) { 1 }
+          expect(FS3Combat.hit_mount?(@combatant, @target, -1, false)).to be false
+        end
+        
         it "should have 20% when attacker mounted" do
           allow(@target).to receive(:mount_type) { "Horse" }
           allow(@combatant).to receive(:mount_type) { "Horse" }

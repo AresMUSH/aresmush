@@ -21,6 +21,7 @@ module AresMUSH
         end
         
         is_wiki_admin = Website.can_manage_wiki?(enactor)
+        is_theme_admin = Website.can_manage_theme?(enactor)
         extension = File.extname(name) || ""
 
         allowed_extensions = (Global.read_config("website", "uploadable_extensions") || []).map { |e| e.downcase }
@@ -37,7 +38,7 @@ module AresMUSH
           allow_overwrite = true
         end
         
-        if (folder && folder.downcase == "theme_images" && !is_wiki_admin)
+        if (folder && folder.downcase == "theme_images" && !is_theme_admin)
           return { error: t('webportal.theme_locked_to_admin') }
         end
         
