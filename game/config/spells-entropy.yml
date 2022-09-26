@@ -223,14 +223,14 @@ spells:
     casting_time: 1 round
     damage_type: Bypass
     desc: "Deflect attacks with a wall of ice that shields up to 3 targets in its range."
-    duration: 5 rounds
+    duration: 3 rounds
     effect: Shield
     is_shield: true
     level: 5
     line_of_sight: true
     name: Ice Block
     range: Short
-    rounds: 5
+    rounds: 3
     school: Entropy
     shields_against: All
     target_num: 3
@@ -282,7 +282,7 @@ spells:
 #---------------
 # LEVEL 7
 #---------------
-  Earth Bolt:
+  Exploding Earth:
     area: Direct line from caster, 5 yards wide
     available: true
     casting_time: 1 round
@@ -297,11 +297,11 @@ spells:
     target_num: 3
     weapon: Earth Bolt
   Exhaustion:
-    attack_mod: -3
+    attack_mod: -2
     available: true
     casting_time: 1 Round
     damage_type: Bypass
-    defense_mod: -3
+    defense_mod: -2
     desc: "The caster weakens the bodies of up to 3 targets. They suddenly feel faint, losing their strength and becoming fatigued."
     duration: 3 rounds
     effect: Debuff
@@ -337,6 +337,7 @@ spells:
     casting_time: 1 round
     damage_type: Bypass
     desc: "The caster summons a single, solid wall of ice no greater than 20 yards long, 5 yards thick, 10 yards tall, shielding up to 5 targets in its range. It remains until melted or destroyed."
+    duration: Until melted or destroyed
     effect: Shield
     is_shield: true
     level: 8
@@ -344,6 +345,7 @@ spells:
     name: Ice Wall
     range: Long
     roll: true
+    rounds: 100
     school: Entropy
     shields_against: All
     target_num: 5

@@ -52,7 +52,7 @@ fs3combat:
       is_magic: true
       skill: Brawl
       lethality: 0
-      penetration: 6
+      penetration: 5
       weapon_type: Melee
       recoil: 0
       damage_type: Physical
@@ -64,7 +64,7 @@ fs3combat:
       is_magic: true
       skill: Entropy
       lethality: 15
-      penetration: 54
+      penetration: 5
       weapon_type: Ranged
       recoil: 0
       damage_type: Physical
@@ -130,7 +130,7 @@ fs3combat:
       description: Level 6 Aether spell
       is_magic: true
       skill: Aether
-      lethality: 10
+      lethality: 5
       penetration: 5
       weapon_type: Ranged
       recoil: 0
@@ -143,7 +143,7 @@ fs3combat:
       description: Level 6 Aether spell
       is_magic: true
       skill: Aether
-      lethality: 5
+      lethality: 15
       penetration: 8
       weapon_type: Ranged
       recoil: 0
@@ -164,7 +164,7 @@ fs3combat:
       init_mod: 0
       special_group: Spell
   #LEVEL 7
-    Earth Bolt:
+    Exploding Earth:
       description: Level 7 Entropy spell
       is_magic: true
       skill: Entropy
@@ -186,7 +186,7 @@ fs3combat:
       weapon_type: Ranged
       recoil: 0
       damage_type: Physical
-      accuracy: 0
+      accuracy: 1
       init_mod: 0
       special_group: Spell
       magic_damage_type: Fire
@@ -216,7 +216,7 @@ fs3combat:
       init_mod: 0
       special_group: Spell
     #LEVEL 8
-    Exploding Earth:
+    Earth Bolt:
       description: Level 8 Creation spell
       is_magic: true
       skill: Creation
@@ -240,7 +240,7 @@ fs3combat:
       is_automatic: true
       recoil: 0
       damage_type: Physical
-      accuracy: 1
+      accuracy: 0
       has_shrapnel: true
       init_mod: 0
       special_group: Spell
@@ -312,7 +312,7 @@ fs3combat:
       skill: Athletics
       lethality: 0
       penetration: 0
-      weapon_type: Suppressive
+      weapon_type: Ranged
       recoil: 0
       damage_type: Stun
       accuracy: 0
@@ -411,16 +411,16 @@ fs3combat:
       is_magic: true
       lethality: 10
       accuracy: 1
-    Focus:
+    Clear:
       description: Level 2 Arcane spell
       is_magic: true
       lethality: 0
-      accuracy: 2
+      accuracy: 1
     Ice:
       description: Level 4 Ice spell
       is_magic: true
-      lethality: 15
-      penetration: -1
+      lethality: 10
+      penetration: 1
       magic_damage_type: Cold
     Strength:
       description: Level 4 Creation spell

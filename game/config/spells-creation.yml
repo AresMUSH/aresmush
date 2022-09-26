@@ -107,7 +107,7 @@ spells:
     effect: Heal
     heal_points: 3
     is_potion: true
-    level: 2
+    level: 3
     line_of_sight: true
     name: Minor Heal
     range: Short
@@ -117,7 +117,7 @@ spells:
     available: true
     casting_time: 1 round
     desc: 'Swiftly grow a barrier that protects the caster or their target by placing them in [cover](https://www.aresmush.com/fs3/fs3-3/combat/#stance) for one round.'
-    duration: 1 round
+    duration: 3 rounds
     effect: Shield
     is_shield: true
     level: 3
@@ -371,15 +371,15 @@ spells:
   Stone Daggers:
     available: true
     casting_time: 1 round
-    desc: A myriad of tiny, sharp stone daggers spring from the earth and fly toward the target with speed and force, automatically seeking weak spots in the foe's armor.
-    effect: Damage
+    desc: A myriad of tiny, sharp stone daggers spring from the earth and fly toward up to 3 targets with speed and force, automatically seeking weak spots in the foe's armor.
+    effect: AOE Damage
     fs3_attack: true
     level: 7
     line_of_sight: true
     name: Stone Daggers
     range: Long
     school: Creation
-    target_num: 1
+    target_num: 3
     weapon: Stone Daggers
 #---------------
 # LEVEL 8
@@ -397,7 +397,7 @@ spells:
     range: Touch
     school: Creation
     target_num: 1
-  Exploding Earth:
+  Earth Bolt:
     area: 15 yard radius
     available: true
     casting_time: 1 round
